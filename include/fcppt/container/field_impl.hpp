@@ -18,13 +18,13 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
 
-#ifndef SGE_CONTAINER_FIELD_IMPL_HPP_INCLUDED
-#define SGE_CONTAINER_FIELD_IMPL_HPP_INCLUDED
+#ifndef FCPPT_CONTAINER_FIELD_IMPL_HPP_INCLUDED
+#define FCPPT_CONTAINER_FIELD_IMPL_HPP_INCLUDED
 
-#include <sge/container/field_decl.hpp>
-#include <sge/math/vector/basic_impl.hpp>
-#include <sge/math/dim/basic_impl.hpp>
-#include <sge/assert.hpp>
+#include <fcppt/container/field_decl.hpp>
+#include <fcppt/math/vector/basic_impl.hpp>
+#include <fcppt/math/dim/basic_impl.hpp>
+#include <fcppt/assert.hpp>
 #include <algorithm>
 #include <iterator>
 #include <ostream>
@@ -37,7 +37,7 @@ template<
 	> class ArrayType,
 	typename Alloc
 >
-sge::container::field<T, ArrayType, Alloc>::field(
+fcppt::container::field<T, ArrayType, Alloc>::field(
 	allocator_type const &alloc)
 :
 	dim_(dim_type::null()),
@@ -52,7 +52,7 @@ template<
 	> class ArrayType,
 	typename Alloc
 >
-sge::container::field<T, ArrayType, Alloc>::field(
+fcppt::container::field<T, ArrayType, Alloc>::field(
 	field const &r)
 :
 	dim_(r.dim_),
@@ -67,7 +67,7 @@ template<
 	> class ArrayType,
 	typename Alloc
 >
-sge::container::field<T, ArrayType, Alloc>::field(
+fcppt::container::field<T, ArrayType, Alloc>::field(
 	dim_type const &dim,
 	value_type const &t,
 	allocator_type const &alloc)
@@ -90,7 +90,7 @@ template<
 template<
 	typename Iterator
 >
-sge::container::field<T, ArrayType, Alloc>::field(
+fcppt::container::field<T, ArrayType, Alloc>::field(
 	dim_type const &dim_,
 	Iterator const b,
 	Iterator const e,
@@ -111,7 +111,7 @@ template<
 	typename Alloc
 >
 void
-sge::container::field<T, ArrayType, Alloc>::swap(
+fcppt::container::field<T, ArrayType, Alloc>::swap(
 	field<T, ArrayType, Alloc> &r)
 {
 	std::swap(
@@ -129,8 +129,8 @@ template<
 	> class ArrayType,
 	typename Alloc
 >
-sge::container::field<T, ArrayType, Alloc> &
-sge::container::field<T, ArrayType, Alloc>::operator=(
+fcppt::container::field<T, ArrayType, Alloc> &
+fcppt::container::field<T, ArrayType, Alloc>::operator=(
 	field<T, ArrayType, Alloc> const &r)
 {
 	if(&r != this)
@@ -149,8 +149,8 @@ template<
 	> class ArrayType,
 	typename Alloc
 >
-typename sge::container::field<T, ArrayType, Alloc>::size_type
-sge::container::field<T, ArrayType, Alloc>::size() const
+typename fcppt::container::field<T, ArrayType, Alloc>::size_type
+fcppt::container::field<T, ArrayType, Alloc>::size() const
 {
 	return array.size();
 }
@@ -163,8 +163,8 @@ template<
 	> class ArrayType,
 	typename Alloc
 >
-typename sge::container::field<T, ArrayType, Alloc>::size_type
-sge::container::field<T, ArrayType, Alloc>::max_size() const
+typename fcppt::container::field<T, ArrayType, Alloc>::size_type
+fcppt::container::field<T, ArrayType, Alloc>::max_size() const
 {
 	return array.max_size();
 }
@@ -178,7 +178,7 @@ template<
 	typename Alloc
 >
 bool
-sge::container::field<T, ArrayType, Alloc>::empty() const
+fcppt::container::field<T, ArrayType, Alloc>::empty() const
 {
 	return array.empty();
 }
@@ -191,8 +191,8 @@ template<
 	> class ArrayType,
 	typename Alloc
 >
-typename sge::container::field<T, ArrayType, Alloc>::iterator
-sge::container::field<T, ArrayType, Alloc>::begin()
+typename fcppt::container::field<T, ArrayType, Alloc>::iterator
+fcppt::container::field<T, ArrayType, Alloc>::begin()
 {
 	return array.begin();
 }
@@ -205,8 +205,8 @@ template<
 	> class ArrayType,
 	typename Alloc
 >
-typename sge::container::field<T, ArrayType, Alloc>::iterator
-sge::container::field<T, ArrayType, Alloc>::end()
+typename fcppt::container::field<T, ArrayType, Alloc>::iterator
+fcppt::container::field<T, ArrayType, Alloc>::end()
 {
 	return array.end();
 }
@@ -219,8 +219,8 @@ template<
 	> class ArrayType,
 	typename Alloc
 >
-typename sge::container::field<T, ArrayType, Alloc>::const_iterator
-sge::container::field<T, ArrayType, Alloc>::begin() const
+typename fcppt::container::field<T, ArrayType, Alloc>::const_iterator
+fcppt::container::field<T, ArrayType, Alloc>::begin() const
 {
 	return array.begin();
 }
@@ -233,8 +233,8 @@ template<
 	> class ArrayType,
 	typename Alloc
 >
-typename sge::container::field<T, ArrayType, Alloc>::const_iterator
-sge::container::field<T, ArrayType, Alloc>::end() const
+typename fcppt::container::field<T, ArrayType, Alloc>::const_iterator
+fcppt::container::field<T, ArrayType, Alloc>::end() const
 {
 	return array.end();
 }
@@ -247,8 +247,8 @@ template<
 	> class ArrayType,
 	typename Alloc
 >
-typename sge::container::field<T, ArrayType, Alloc>::reverse_iterator
-sge::container::field<T, ArrayType, Alloc>::rbegin()
+typename fcppt::container::field<T, ArrayType, Alloc>::reverse_iterator
+fcppt::container::field<T, ArrayType, Alloc>::rbegin()
 {
 	return array.rbegin();
 }
@@ -261,8 +261,8 @@ template<
 	> class ArrayType,
 	typename Alloc
 >
-typename sge::container::field<T, ArrayType, Alloc>::reverse_iterator
-sge::container::field<T, ArrayType, Alloc>::rend()
+typename fcppt::container::field<T, ArrayType, Alloc>::reverse_iterator
+fcppt::container::field<T, ArrayType, Alloc>::rend()
 {
 	return array.rend();
 }
@@ -275,8 +275,8 @@ template<
 	> class ArrayType,
 	typename Alloc
 >
-typename sge::container::field<T, ArrayType, Alloc>::const_reverse_iterator
-sge::container::field<T, ArrayType, Alloc>::rbegin() const
+typename fcppt::container::field<T, ArrayType, Alloc>::const_reverse_iterator
+fcppt::container::field<T, ArrayType, Alloc>::rbegin() const
 {
 	return array.rbegin();
 }
@@ -289,8 +289,8 @@ template<
 	> class ArrayType,
 	typename Alloc
 >
-typename sge::container::field<T, ArrayType, Alloc>::const_reverse_iterator
-sge::container::field<T, ArrayType, Alloc>::rend() const
+typename fcppt::container::field<T, ArrayType, Alloc>::const_reverse_iterator
+fcppt::container::field<T, ArrayType, Alloc>::rend() const
 {
 	return array.rend();
 }
@@ -303,8 +303,8 @@ template<
 	> class ArrayType,
 	typename Alloc
 >
-typename sge::container::field<T, ArrayType, Alloc>::vector_type const
-sge::container::field<T, ArrayType, Alloc>::position(
+typename fcppt::container::field<T, ArrayType, Alloc>::vector_type const
+fcppt::container::field<T, ArrayType, Alloc>::position(
 	const_iterator const it) const
 {
 	difference_type const diff = std::distance(begin(), it);
@@ -321,8 +321,8 @@ template<
 	> class ArrayType,
 	typename Alloc
 >
-typename sge::container::field<T, ArrayType, Alloc>::iterator
-sge::container::field<T, ArrayType, Alloc>::position_it(
+typename fcppt::container::field<T, ArrayType, Alloc>::iterator
+fcppt::container::field<T, ArrayType, Alloc>::position_it(
 	vector_type const &v)
 {
 	return begin() + v.y() * dim().w() + v.x();
@@ -336,8 +336,8 @@ template<
 	> class ArrayType,
 	typename Alloc
 >
-typename sge::container::field<T, ArrayType, Alloc>::const_iterator
-sge::container::field<T, ArrayType, Alloc>::position_it(
+typename fcppt::container::field<T, ArrayType, Alloc>::const_iterator
+fcppt::container::field<T, ArrayType, Alloc>::position_it(
 	vector_type const &v) const
 {
 	return begin() + v.y() * dim().w() + v.x();
@@ -351,8 +351,8 @@ template<
 	> class ArrayType,
 	typename Alloc
 >
-typename sge::container::field<T, ArrayType, Alloc>::allocator_type
-sge::container::field<T, ArrayType, Alloc>::get_allocator() const
+typename fcppt::container::field<T, ArrayType, Alloc>::allocator_type
+fcppt::container::field<T, ArrayType, Alloc>::get_allocator() const
 {
 	return array.get_allocator();
 }
@@ -382,7 +382,7 @@ template<
 	typename Alloc
 >
 void
-sge::container::field<T, ArrayType, Alloc>::resize_canvas(
+fcppt::container::field<T, ArrayType, Alloc>::resize_canvas(
 	dim_type const &n,
 	const_reference value)
 {
@@ -411,7 +411,7 @@ template<
 	typename Alloc
 >
 void
-sge::container::field<T, ArrayType, Alloc>::resize(
+fcppt::container::field<T, ArrayType, Alloc>::resize(
 	dim_type const &n,
 	const_reference value)
 {
@@ -433,8 +433,8 @@ template<
 	> class ArrayType,
 	typename Alloc
 >
-typename sge::container::field<T, ArrayType, Alloc>::value_type &
-sge::container::field<T, ArrayType, Alloc>::pos(
+typename fcppt::container::field<T, ArrayType, Alloc>::value_type &
+fcppt::container::field<T, ArrayType, Alloc>::pos(
 	vector_type const &p)
 {
 	range_check(p);
@@ -449,8 +449,8 @@ template<
 	> class ArrayType,
 	typename Alloc
 >
-typename sge::container::field<T, ArrayType, Alloc>::value_type const &
-sge::container::field<T, ArrayType, Alloc>::pos(
+typename fcppt::container::field<T, ArrayType, Alloc>::value_type const &
+fcppt::container::field<T, ArrayType, Alloc>::pos(
 	vector_type const &p) const
 {
 	range_check(p);
@@ -465,8 +465,8 @@ template<
 	> class ArrayType,
 	typename Alloc
 >
-typename sge::container::field<T, ArrayType, Alloc>::reference
-sge::container::field<T, ArrayType, Alloc>::front()
+typename fcppt::container::field<T, ArrayType, Alloc>::reference
+fcppt::container::field<T, ArrayType, Alloc>::front()
 {
 	return array.front();
 }
@@ -479,8 +479,8 @@ template<
 	> class ArrayType,
 	typename Alloc
 >
-typename sge::container::field<T, ArrayType, Alloc>::const_reference
-sge::container::field<T, ArrayType, Alloc>::front() const
+typename fcppt::container::field<T, ArrayType, Alloc>::const_reference
+fcppt::container::field<T, ArrayType, Alloc>::front() const
 {
 	return array.front();
 }
@@ -493,8 +493,8 @@ template<
 	> class ArrayType,
 	typename Alloc
 >
-typename sge::container::field<T, ArrayType, Alloc>::reference
-sge::container::field<T, ArrayType, Alloc>::back()
+typename fcppt::container::field<T, ArrayType, Alloc>::reference
+fcppt::container::field<T, ArrayType, Alloc>::back()
 {
 	return array.back();
 }
@@ -507,8 +507,8 @@ template<
 	> class ArrayType,
 	typename Alloc
 >
-typename sge::container::field<T, ArrayType, Alloc>::const_reference
-sge::container::field<T, ArrayType, Alloc>::back() const
+typename fcppt::container::field<T, ArrayType, Alloc>::const_reference
+fcppt::container::field<T, ArrayType, Alloc>::back() const
 {
 	return array.back();
 }
@@ -521,8 +521,8 @@ template<
 	> class ArrayType,
 	typename Alloc
 >
-typename sge::container::field<T, ArrayType, Alloc>::value_type
-sge::container::field<T, ArrayType, Alloc>::x(
+typename fcppt::container::field<T, ArrayType, Alloc>::value_type
+fcppt::container::field<T, ArrayType, Alloc>::x(
 	const_iterator const p) const
 {
 	check_w();
@@ -537,8 +537,8 @@ template<
 	> class ArrayType,
 	typename Alloc
 >
-typename sge::container::field<T, ArrayType, Alloc>::value_type
-sge::container::field<T, ArrayType, Alloc>::y(
+typename fcppt::container::field<T, ArrayType, Alloc>::value_type
+fcppt::container::field<T, ArrayType, Alloc>::y(
 	const_iterator const p) const
 {
 	check_w();
@@ -553,8 +553,8 @@ template<
 	> class ArrayType,
 	typename Alloc
 >
-typename sge::container::field<T, ArrayType, Alloc>::vector_type const
-sge::container::field<T, ArrayType, Alloc>::pos(
+typename fcppt::container::field<T, ArrayType, Alloc>::vector_type const
+fcppt::container::field<T, ArrayType, Alloc>::pos(
 	const_iterator const p) const
 {
 	return vector_type(x(p), y(p));
@@ -568,8 +568,8 @@ template<
 	> class ArrayType,
 	typename Alloc
 >
-typename sge::container::field<T, ArrayType, Alloc>::size_type
-sge::container::field<T, ArrayType, Alloc>::field_count() const
+typename fcppt::container::field<T, ArrayType, Alloc>::size_type
+fcppt::container::field<T, ArrayType, Alloc>::field_count() const
 {
 	return dim().content();
 }
@@ -582,8 +582,8 @@ template<
 	> class ArrayType,
 	typename Alloc
 >
-typename sge::container::field<T, ArrayType, Alloc>::dim_type const
-sge::container::field<T, ArrayType, Alloc>::dim() const
+typename fcppt::container::field<T, ArrayType, Alloc>::dim_type const
+fcppt::container::field<T, ArrayType, Alloc>::dim() const
 {
 	return dim_;
 }
@@ -597,10 +597,10 @@ template<
 	typename Alloc
 >
 void
-sge::container::field<T, ArrayType, Alloc>::range_check(
+fcppt::container::field<T, ArrayType, Alloc>::range_check(
 	vector_type const &v) const
 {
-	SGE_ASSERT(v.x() < dim().w() && v.y() < dim().h());
+	FCPPT_ASSERT(v.x() < dim().w() && v.y() < dim().h());
 }
 
 template<
@@ -612,9 +612,9 @@ template<
 	typename Alloc
 >
 void
-sge::container::field<T, ArrayType, Alloc>::check_w() const
+fcppt::container::field<T, ArrayType, Alloc>::check_w() const
 {
-	SGE_ASSERT(dim().w() != 0);
+	FCPPT_ASSERT(dim().w() != 0);
 }
 
 template<
@@ -626,7 +626,7 @@ template<
 	typename Alloc
 >
 bool
-sge::container::operator==(
+fcppt::container::operator==(
 	field<T, ArrayType, Alloc> const &l,
 	field<T, ArrayType, Alloc> const &r)
 {
@@ -643,7 +643,7 @@ template<
 	typename Alloc
 >
 bool
-sge::container::operator!=(
+fcppt::container::operator!=(
 	field<T, ArrayType, Alloc> const &l,
 	field<T, ArrayType, Alloc> const &r)
 {
@@ -661,7 +661,7 @@ template<
 	typename Traits
 >
 std::basic_ostream<Ch,Traits> &
-sge::container::operator<<(
+fcppt::container::operator<<(
 	std::basic_ostream<Ch,Traits> &stream,
 	field<T, ArrayType, Alloc> const &f)
 {

@@ -18,18 +18,18 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
 
-#ifndef SGE_MINMAX_PAIR_IMPL_HPP_INCLUDED
-#define SGE_MINMAX_PAIR_IMPL_HPP_INCLUDED
+#ifndef FCPPT_MINMAX_PAIR_IMPL_HPP_INCLUDED
+#define FCPPT_MINMAX_PAIR_IMPL_HPP_INCLUDED
 
-#include <sge/minmax_pair_decl.hpp>
-#include <sge/exception.hpp>
-#include <sge/format.hpp>
-#include <sge/text.hpp>
+#include <fcppt/minmax_pair_decl.hpp>
+#include <fcppt/exception.hpp>
+#include <fcppt/format.hpp>
+#include <fcppt/text.hpp>
 
 template<
 	typename T
 >
-sge::minmax_pair<T>::minmax_pair(
+fcppt::minmax_pair<T>::minmax_pair(
 	T const &min_,
 	T const &max_)
 :
@@ -42,7 +42,7 @@ sge::minmax_pair<T>::minmax_pair(
 template<
 	typename T
 >
-T sge::minmax_pair<T>::min() const
+T fcppt::minmax_pair<T>::min() const
 {
 	return min_;
 }
@@ -50,7 +50,7 @@ T sge::minmax_pair<T>::min() const
 template<
 	typename T
 >
-T sge::minmax_pair<T>::max() const
+T fcppt::minmax_pair<T>::max() const
 {
 	return max_;
 }
@@ -58,7 +58,7 @@ T sge::minmax_pair<T>::max() const
 template<
 	typename T
 >
-void sge::minmax_pair<T>::min(
+void fcppt::minmax_pair<T>::min(
 	T const &nmin)
 {
 	min_ = nmin;
@@ -68,7 +68,7 @@ void sge::minmax_pair<T>::min(
 template<
 	typename T
 >
-void sge::minmax_pair<T>::max(
+void fcppt::minmax_pair<T>::max(
 	T const &nmax)
 {
 	max_ = nmax;
@@ -78,12 +78,12 @@ void sge::minmax_pair<T>::max(
 template<
 	typename T
 >
-void sge::minmax_pair<T>::check()
+void fcppt::minmax_pair<T>::check()
 {
 	if(min() > max())
 		throw exception(
 			(format(
-				SGE_TEXT("minmax_pair out of range: %1% > %2%"))
+				FCPPT_TEXT("minmax_pair out of range: %1% > %2%"))
 			% min()
 			% max())
 				.str());

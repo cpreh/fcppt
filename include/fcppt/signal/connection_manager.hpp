@@ -18,39 +18,39 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
 
-#ifndef SGE_SIGNAL_CONNECTION_MANAGER_HPP_INCLUDED
-#define SGE_SIGNAL_CONNECTION_MANAGER_HPP_INCLUDED
+#ifndef FCPPT_SIGNAL_CONNECTION_MANAGER_HPP_INCLUDED
+#define FCPPT_SIGNAL_CONNECTION_MANAGER_HPP_INCLUDED
 
-#include <sge/signal/shared_connection.hpp>
-#include <sge/signal/auto_connection.hpp>
-#include <sge/export.hpp>
-#include <sge/noncopyable.hpp>
+#include <fcppt/signal/shared_connection.hpp>
+#include <fcppt/signal/auto_connection.hpp>
+#include <fcppt/export.hpp>
+#include <fcppt/noncopyable.hpp>
 #include <vector>
 
-namespace sge
+namespace fcppt
 {
 namespace signal
 {
 
 class connection_manager
 {
-	SGE_NONCOPYABLE(connection_manager)
+	FCPPT_NONCOPYABLE(connection_manager)
 public:
 	typedef std::vector<
 		shared_connection
 	> container;
 
-	SGE_SYMBOL connection_manager();
-	SGE_SYMBOL connection_manager(
+	FCPPT_SYMBOL connection_manager();
+	FCPPT_SYMBOL connection_manager(
 		container const &);
 
-	SGE_SYMBOL void connect(
+	FCPPT_SYMBOL void connect(
 		shared_connection const &);
 
-	SGE_SYMBOL void connect(
+	FCPPT_SYMBOL void connect(
 		auto_connection);
 
-	SGE_SYMBOL void clear();
+	FCPPT_SYMBOL void clear();
 private:
 	container connections;
 };

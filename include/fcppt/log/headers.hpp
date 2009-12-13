@@ -18,13 +18,13 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
 
-#ifndef SGE_LOG_HEADERS_HPP_INCLUDED
-#define SGE_LOG_HEADERS_HPP_INCLUDED
+#ifndef FCPPT_LOG_HEADERS_HPP_INCLUDED
+#define FCPPT_LOG_HEADERS_HPP_INCLUDED
 
-#include <sge/log/object.hpp>
-#include <sge/log/output_helper.hpp>
-#include <sge/log/temporary_output.hpp>
-#include <sge/log/trampoline.hpp>
-#include <sge/log/macros.hpp>
+#include <fcppt/log/object.hpp>
+#include <fcppt/log/output_helper.hpp>
+#include <fcppt/log/temporary_output.hpp>
+#include <fcppt/log/trampoline.hpp>
+#include <fcppt/log/macros.hpp>
 
 #endif

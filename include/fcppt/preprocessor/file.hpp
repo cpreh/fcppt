@@ -18,18 +18,18 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
 
-#ifndef SGE_PREPROCESSOR_FILE_HPP_INCLUDED
-#define SGE_PREPROCESSOR_FILE_HPP_INCLUDED
+#ifndef FCPPT_PREPROCESSOR_FILE_HPP_INCLUDED
+#define FCPPT_PREPROCESSOR_FILE_HPP_INCLUDED
 
-#include <sge/text.hpp>
-#include <sge/config.h>
+#include <fcppt/text.hpp>
+#include <fcppt/config.h>
 
-//#define SGE_DETAIL_WIDEN2(s) L ## s
-#ifdef SGE_NARROW_STRING
-#define SGE_PP_FILE __FILE__
+//#define FCPPT_DETAIL_WIDEN2(s) L ## s
+#ifdef FCPPT_NARROW_STRING
+#define FCPPT_PP_FILE __FILE__
 #else
-#define SGE_PP_DETAIL_WIDEN(s) SGE_TEXT(s)
-#define SGE_PP_FILE SGE_PP_DETAIL_WIDEN(__FILE__)
+#define FCPPT_PP_DETAIL_WIDEN(s) SGE_TEXT(s)
+#define FCPPT_PP_FILE SGE_PP_DETAIL_WIDEN(__FILE__)
 #endif
 
 #endif

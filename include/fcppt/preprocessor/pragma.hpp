@@ -18,13 +18,13 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
 
-#ifndef SGE_PREPROCESSOR_PRAGMA_HPP_INCLUDED
-#define SGE_PREPROCESSOR_PRAGMA_HPP_INCLUDED
+#ifndef FCPPT_PREPROCESSOR_PRAGMA_HPP_INCLUDED
+#define FCPPT_PREPROCESSOR_PRAGMA_HPP_INCLUDED
 
 #if defined(_MSC_VER)
-#define SGE_PP_PRAGMA(x) __pragma(x)
+#define FCPPT_PP_PRAGMA(x) __pragma(x)
 #elif defined(__GNUC__)
-#define SGE_PP_PRAGMA(x) _Pragma(#x)
+#define FCPPT_PP_PRAGMA(x) _Pragma(#x)
 #endif
 
 #endif

@@ -18,13 +18,13 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
 
-#ifndef SGE_STRING_HPP_INCLUDED
-#define SGE_STRING_HPP_INCLUDED
+#ifndef FCPPT_STRING_HPP_INCLUDED
+#define FCPPT_STRING_HPP_INCLUDED
 
-#include <sge/char_type.hpp>
+#include <fcppt/char_type.hpp>
 #include <string>
 
-namespace sge
+namespace fcppt
 {
 
 typedef std::basic_string<

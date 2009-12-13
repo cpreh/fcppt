@@ -18,13 +18,13 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
 
-#ifndef SGE_VARIANT_APPLY_BINARY_HPP_INCLUDED
-#define SGE_VARIANT_APPLY_BINARY_HPP_INCLUDED
+#ifndef FCPPT_VARIANT_APPLY_BINARY_HPP_INCLUDED
+#define FCPPT_VARIANT_APPLY_BINARY_HPP_INCLUDED
 
-#include <sge/variant/apply_unary.hpp>
-#include <sge/variant/detail/binary_unwrap.hpp>
+#include <fcppt/variant/apply_unary.hpp>
+#include <fcppt/variant/detail/binary_unwrap.hpp>
 
-namespace sge
+namespace fcppt
 {
 namespace variant
 {

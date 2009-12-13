@@ -18,14 +18,14 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
 
-#ifndef SGE_CHAR_TYPE_HPP_INCLUDED
-#define SGE_CHAR_TYPE_HPP_INCLUDED
+#ifndef FCPPT_CHAR_TYPE_HPP_INCLUDED
+#define FCPPT_CHAR_TYPE_HPP_INCLUDED
 
-#include <sge/config.h>
+#include <fcppt/config.h>
 
-namespace sge
+namespace fcppt
 {
-#ifdef SGE_NARROW_STRING
+#ifdef FCPPT_NARROW_STRING
 typedef char char_type;
 #else
 typedef wchar_t char_type;

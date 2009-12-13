@@ -18,11 +18,11 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
 
-#ifndef SGE_PREPROCESSOR_FIXME_HPP_INCLUDED
-#define SGE_PREPROCESSOR_FIXME_HPP_INCLUDED
+#ifndef FCPPT_PREPROCESSOR_FIXME_HPP_INCLUDED
+#define FCPPT_PREPROCESSOR_FIXME_HPP_INCLUDED
 
-#include <sge/preprocessor/message.hpp>
+#include <fcppt/preprocessor/message.hpp>
 
-#define SGE_PP_FIXME(x) SGE_PP_MESSAGE("FIXME: " x)
+#define FCPPT_PP_FIXME(x) SGE_PP_MESSAGE("FIXME: " x)
 
 #endif

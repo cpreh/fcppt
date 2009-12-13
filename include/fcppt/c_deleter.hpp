@@ -18,12 +18,12 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
 
-#ifndef SGE_C_DELETER_HPP_INCLUDED
-#define SGE_C_DELETER_HPP_INCLUDED
+#ifndef FCPPT_C_DELETER_HPP_INCLUDED
+#define FCPPT_C_DELETER_HPP_INCLUDED
 
 #include <cstdlib>
 
-namespace sge
+namespace fcppt
 {
 template<typename T>
 class c_deleter {

@@ -18,19 +18,19 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
 
-#ifndef SGE_FILESYSTEM_FIRST_FILE_HPP_INCLUDED
-#define SGE_FILESYSTEM_FIRST_FILE_HPP_INCLUDED
+#ifndef FCPPT_FILESYSTEM_FIRST_FILE_HPP_INCLUDED
+#define FCPPT_FILESYSTEM_FIRST_FILE_HPP_INCLUDED
 
-#include <sge/filesystem/directory_iterator.hpp>
-#include <sge/filesystem/path.hpp>
-#include <sge/export.hpp>
+#include <fcppt/filesystem/directory_iterator.hpp>
+#include <fcppt/filesystem/path.hpp>
+#include <fcppt/export.hpp>
 
-namespace sge
+namespace fcppt
 {
 namespace filesystem
 {
 
-SGE_SYMBOL directory_iterator const
+FCPPT_SYMBOL directory_iterator const
 first_file(
 	path const &);
 

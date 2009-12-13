@@ -1,27 +1,27 @@
-#ifndef SGE_THREAD_OBJECT_HPP_INCLUDED
-#define SGE_THREAD_OBJECT_HPP_INCLUDED
+#ifndef FCPPT_THREAD_OBJECT_HPP_INCLUDED
+#define FCPPT_THREAD_OBJECT_HPP_INCLUDED
 
-#include <sge/export.hpp>
-#include <sge/function/object.hpp>
+#include <fcppt/export.hpp>
+#include <fcppt/function/object.hpp>
 #include <boost/thread.hpp>
 
-namespace sge
+namespace fcppt
 {
 namespace thread
 {
-class SGE_CLASS_SYMBOL object
+class FCPPT_CLASS_SYMBOL object
 {
 public:
-	typedef sge::function::object<void ()> task;
+	typedef fcppt::function::object<void ()> task;
 
-	SGE_SYMBOL object(
+	FCPPT_SYMBOL object(
 		task const &);
-	SGE_SYMBOL void join();
-	SGE_SYMBOL ~object();
+	FCPPT_SYMBOL void join();
+	FCPPT_SYMBOL ~object();
 private:
 	boost::thread thread_;
 };
 }
 }
 
-#endif // SGE_THREAD_OBJECT_HPP_INCLUDED
+#endif // FCPPT_THREAD_OBJECT_HPP_INCLUDED

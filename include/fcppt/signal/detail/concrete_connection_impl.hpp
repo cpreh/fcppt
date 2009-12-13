@@ -18,19 +18,19 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
 
-#ifndef SGE_SIGNAL_DETAIL_CONCRETE_CONNECTION_IMPL_HPP_INCLUDED
-#define SGE_SIGNAL_DETAIL_CONCRETE_CONNECTION_IMPL_HPP_INCLUDED
+#ifndef FCPPT_SIGNAL_DETAIL_CONCRETE_CONNECTION_IMPL_HPP_INCLUDED
+#define FCPPT_SIGNAL_DETAIL_CONCRETE_CONNECTION_IMPL_HPP_INCLUDED
 
 template<typename T>
-sge::signal::detail::concrete_connection<T>::concrete_connection(
+fcppt::signal::detail::concrete_connection<T>::concrete_connection(
 	function_type const &_function)
 	: function_(_function)
 {
 }
 
 template<typename T>
-typename sge::signal::detail::concrete_connection<T>::function_type &
-	sge::signal::detail::concrete_connection<T>::function()
+typename fcppt::signal::detail::concrete_connection<T>::function_type &
+	fcppt::signal::detail::concrete_connection<T>::function()
 {
 	return function_;
 }

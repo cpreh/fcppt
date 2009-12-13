@@ -18,17 +18,17 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
 
-#ifndef SGE_STRONG_TYPEDEF_IMPL_HPP_INCLUDED
-#define SGE_STRONG_TYPEDEF_IMPL_HPP_INCLUDED
+#ifndef FCPPT_STRONG_TYPEDEF_IMPL_HPP_INCLUDED
+#define FCPPT_STRONG_TYPEDEF_IMPL_HPP_INCLUDED
 
-#include <sge/strong_typedef_decl.hpp>
-#include <sge/detail/strong_typedef_cast.hpp>
+#include <fcppt/strong_typedef_decl.hpp>
+#include <fcppt/detail/strong_typedef_cast.hpp>
 
 template<
 	typename T,
 	typename Tag
 >
-sge::strong_typedef<
+fcppt::strong_typedef<
 	T,
 	Tag
 >::strong_typedef()
@@ -43,7 +43,7 @@ template<
 template<
 	typename U
 >
-sge::strong_typedef<
+fcppt::strong_typedef<
 	T,
 	Tag
 >::strong_typedef(
@@ -66,11 +66,11 @@ template<
 template<
 	typename U
 >
-sge::strong_typedef<
+fcppt::strong_typedef<
 	T,
 	Tag
 > &
-sge::strong_typedef<
+fcppt::strong_typedef<
 	T,
 	Tag
 >::operator=(
@@ -91,7 +91,7 @@ template<
 	typename T,
 	typename Tag
 >
-sge::strong_typedef<
+fcppt::strong_typedef<
 	T,
 	Tag
 >::operator T &()
@@ -103,7 +103,7 @@ template<
 	typename T,
 	typename Tag
 >
-sge::strong_typedef<
+fcppt::strong_typedef<
 	T,
 	Tag
 >::operator T const &() const
@@ -117,7 +117,7 @@ template<
 	typename Tag
 >
 bool
-sge::strong_typedef<
+fcppt::strong_typedef<
 	T,
 	Tag
 >::operator < (

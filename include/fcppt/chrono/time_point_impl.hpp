@@ -18,11 +18,11 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
 
-#ifndef SGE_CHRONO_TIME_POINT_IMPL_HPP_INCLUDED
-#define SGE_CHRONO_TIME_POINT_IMPL_HPP_INCLUDED
+#ifndef FCPPT_CHRONO_TIME_POINT_IMPL_HPP_INCLUDED
+#define FCPPT_CHRONO_TIME_POINT_IMPL_HPP_INCLUDED
 
-#include <sge/chrono/time_point_decl.hpp>
-#include <sge/chrono/duration_impl.hpp>
+#include <fcppt/chrono/time_point_decl.hpp>
+#include <fcppt/chrono/duration_impl.hpp>
 #include <boost/type_traits/is_convertible.hpp>
 #include <boost/static_assert.hpp>
 
@@ -30,7 +30,7 @@ template<
 	typename Clock,
 	typename Duration
 >
-sge::chrono::time_point<
+fcppt::chrono::time_point<
 	Clock,
 	Duration
 >::time_point()
@@ -44,7 +44,7 @@ template<
 	typename Clock,
 	typename Duration
 >
-sge::chrono::time_point<
+fcppt::chrono::time_point<
 	Clock,
 	Duration
 >::time_point(
@@ -63,7 +63,7 @@ template<
 template<
 	typename Duration2
 >
-sge::chrono::time_point<
+fcppt::chrono::time_point<
 	Clock,
 	Duration
 >::time_point(
@@ -89,11 +89,11 @@ template<
 	typename Clock,
 	typename Duration
 >
-typename sge::chrono::time_point<
+typename fcppt::chrono::time_point<
 	Clock,
 	Duration
 >::duration
-sge::chrono::time_point<
+fcppt::chrono::time_point<
 	Clock,
 	Duration
 >::time_since_epoch() const
@@ -105,11 +105,11 @@ template<
 	typename Clock,
 	typename Duration
 >
-sge::chrono::time_point<
+fcppt::chrono::time_point<
 	Clock,
 	Duration
 > &
-sge::chrono::time_point<
+fcppt::chrono::time_point<
 	Clock,
 	Duration
 >::operator +=(
@@ -125,11 +125,11 @@ template<
 	typename Clock,
 	typename Duration
 >
-sge::chrono::time_point<
+fcppt::chrono::time_point<
 	Clock,
 	Duration
 > &
-sge::chrono::time_point<
+fcppt::chrono::time_point<
 	Clock,
 	Duration
 >::operator -=(
@@ -145,11 +145,11 @@ template<
 	typename Clock,
 	typename Duration
 >
-sge::chrono::time_point<
+fcppt::chrono::time_point<
 	Clock,
 	Duration
 >
-sge::chrono::time_point<
+fcppt::chrono::time_point<
 	Clock,
 	Duration
 >::min()
@@ -163,11 +163,11 @@ template<
 	typename Clock,
 	typename Duration
 >
-sge::chrono::time_point<
+fcppt::chrono::time_point<
 	Clock,
 	Duration
 >
-sge::chrono::time_point<
+fcppt::chrono::time_point<
 	Clock,
 	Duration
 >::max()

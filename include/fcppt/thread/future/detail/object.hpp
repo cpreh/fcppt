@@ -1,12 +1,12 @@
-#ifndef SGE_THREAD_FUTURE_DETAIL_OBJECT_HPP_INCLUDED
-#define SGE_THREAD_FUTURE_DETAIL_OBJECT_HPP_INCLUDED
+#ifndef FCPPT_THREAD_FUTURE_DETAIL_OBJECT_HPP_INCLUDED
+#define FCPPT_THREAD_FUTURE_DETAIL_OBJECT_HPP_INCLUDED
 
-#include <sge/thread/future/detail/object_base.hpp>
-#include <sge/thread/future/detail/traits.hpp>
-#include <sge/thread/future/state.hpp>
+#include <fcppt/thread/future/detail/object_base.hpp>
+#include <fcppt/thread/future/detail/traits.hpp>
+#include <fcppt/thread/future/state.hpp>
 #include <boost/type_traits/add_reference.hpp>
 
-namespace sge
+namespace fcppt
 {
 namespace thread
 {
@@ -75,17 +75,17 @@ public:
 
 #include <boost/thread/locks.hpp>
 #include <boost/throw_exception.hpp>
-#include <sge/thread/future/moved.hpp>
+#include <fcppt/thread/future/moved.hpp>
 
 template<typename T>
-sge::thread::future::detail::object<T>::object()
+fcppt::thread::future::detail::object<T>::object()
 :
 	result_(0)
 {
 }
 
 template<typename T>
-void sge::thread::future::detail::object<T>::mark_finished_with_result_internal(
+void fcppt::thread::future::detail::object<T>::mark_finished_with_result_internal(
 	source_reference _result)
 {
 	traits<T>::init(
@@ -95,7 +95,7 @@ void sge::thread::future::detail::object<T>::mark_finished_with_result_internal(
 }
 
 template<typename T>
-void sge::thread::future::detail::object<T>::mark_finished_with_result_internal(
+void fcppt::thread::future::detail::object<T>::mark_finished_with_result_internal(
 	move_source _result)
 {
 	traits<T>::init(
@@ -105,7 +105,7 @@ void sge::thread::future::detail::object<T>::mark_finished_with_result_internal(
 }
 
 template<typename T>
-void sge::thread::future::detail::object<T>::mark_finished_with_result(
+void fcppt::thread::future::detail::object<T>::mark_finished_with_result(
 	source_reference _result)
 {
 	boost::lock_guard<boost::mutex> lock(
@@ -115,7 +115,7 @@ void sge::thread::future::detail::object<T>::mark_finished_with_result(
 }
 
 template<typename T>
-void sge::thread::future::detail::object<T>::mark_finished_with_result(
+void fcppt::thread::future::detail::object<T>::mark_finished_with_result(
 	move_source _result)
 {
 	boost::lock_guard<boost::mutex> lock(
@@ -125,7 +125,7 @@ void sge::thread::future::detail::object<T>::mark_finished_with_result(
 }
 
 template<typename T>
-T sge::thread::future::detail::object<T>::move()
+T fcppt::thread::future::detail::object<T>::move()
 {
 	boost::unique_lock<boost::mutex> lock(
 		mutex_);
@@ -145,7 +145,7 @@ T sge::thread::future::detail::object<T>::move()
 }
 
 template<typename T>
-bool sge::thread::future::detail::object<T>::try_move(
+bool fcppt::thread::future::detail::object<T>::try_move(
 	reference _dest)
 {
 	boost::lock_guard<boost::mutex> lock(
@@ -164,7 +164,7 @@ bool sge::thread::future::detail::object<T>::try_move(
 }
 
 template<typename T>
-bool sge::thread::future::detail::object<T>::timed_move_until(
+bool fcppt::thread::future::detail::object<T>::timed_move_until(
 	reference _dest,
 	boost::system_time const &_time)
 {
@@ -184,7 +184,7 @@ bool sge::thread::future::detail::object<T>::timed_move_until(
 }
 
 template<typename T>
-typename sge::thread::future::detail::object<T>::reference sge::thread::future::detail::object<T>::get()
+typename fcppt::thread::future::detail::object<T>::reference sge::thread::future::detail::object<T>::get()
 {
 	boost::unique_lock<boost::mutex> lock(
 		mutex_);
@@ -199,7 +199,7 @@ typename sge::thread::future::detail::object<T>::reference sge::thread::future::
 }
 
 template<typename T>
-bool sge::thread::future::detail::object<T>::try_get(
+bool fcppt::thread::future::detail::object<T>::try_get(
 	reference _dest)
 {
 	boost::lock_guard<boost::mutex> lock(
@@ -216,7 +216,7 @@ bool sge::thread::future::detail::object<T>::try_get(
 }
 
 template<typename T>
-bool sge::thread::future::detail::object<T>::timed_get_until(
+bool fcppt::thread::future::detail::object<T>::timed_get_until(
 	reference _dest,
 	boost::system_time const &_time)
 {
@@ -234,7 +234,7 @@ bool sge::thread::future::detail::object<T>::timed_get_until(
 }
 
 template<typename T>
-sge::thread::future::state::type sge::thread::future::detail::object<T>::state()
+fcppt::thread::future::state::type sge::thread::future::detail::object<T>::state()
 {
 	boost::lock_guard<boost::mutex>
 		guard(
@@ -248,26 +248,26 @@ sge::thread::future::state::type sge::thread::future::detail::object<T>::state()
 }
 
 #if 0
-sge::thread::future::detail::object<void>::object()
+fcppt::thread::future::detail::object<void>::object()
 :
 	result_(
 		false)
 {}
 
-void sge::thread::future::detail::object<void>::mark_finished_with_result_internal()
+void fcppt::thread::future::detail::object<void>::mark_finished_with_result_internal()
 {
 	result_ = true;
 	mark_finished_internal();
 }
 
-void sge::thread::future::detail::object<void>::mark_finished_with_result()
+void fcppt::thread::future::detail::object<void>::mark_finished_with_result()
 {
 	boost::lock_guard<boost::mutex> lock(
 		mutex_);
 	mark_finished_with_result_internal();
 }
 
-void sge::thread::future::detail::object<void>::move()
+void fcppt::thread::future::detail::object<void>::move()
 {
 	boost::unique_lock<boost::mutex> lock(
 		mutex_);
@@ -281,7 +281,7 @@ void sge::thread::future::detail::object<void>::move()
 	result_ = false;
 }
 
-void sge::thread::future::detail::object<void>::get()
+void fcppt::thread::future::detail::object<void>::get()
 {
 	boost::unique_lock<boost::mutex> lock(
 		mutex_);
@@ -294,7 +294,7 @@ void sge::thread::future::detail::object<void>::get()
 		throw moved();
 }
 
-sge::thread::future::state::type sge::thread::future::detail::object<void>::state()
+fcppt::thread::future::state::type sge::thread::future::detail::object<void>::state()
 {
 	boost::lock_guard<boost::mutex> guard(
 		mutex_);
@@ -307,4 +307,4 @@ sge::thread::future::state::type sge::thread::future::detail::object<void>::stat
 }
 #endif
 
-#endif // SGE_THREAD_FUTURE_DETAIL_OBJECT_HPP_INCLUDED
+#endif // FCPPT_THREAD_FUTURE_DETAIL_OBJECT_HPP_INCLUDED

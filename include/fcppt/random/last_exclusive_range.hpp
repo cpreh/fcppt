@@ -18,16 +18,16 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
 
-#ifndef SGE_RANDOM_LAST_EXCLUSIVE_RANGE_HPP_INCLUDED
-#define SGE_RANDOM_LAST_EXCLUSIVE_RANGE_HPP_INCLUDED
+#ifndef FCPPT_RANDOM_LAST_EXCLUSIVE_RANGE_HPP_INCLUDED
+#define FCPPT_RANDOM_LAST_EXCLUSIVE_RANGE_HPP_INCLUDED
 
-#include <sge/random/range.hpp>
-#include <sge/random/exclusive_range_error.hpp>
-#include <sge/text.hpp>
+#include <fcppt/random/range.hpp>
+#include <fcppt/random/exclusive_range_error.hpp>
+#include <fcppt/text.hpp>
 #include <boost/utility/enable_if.hpp>
 #include <boost/type_traits/is_integral.hpp>
 
-namespace sge
+namespace fcppt
 {
 namespace random
 {
@@ -65,7 +65,7 @@ public:
 	{
 		if(first == last)
 			throw exclusive_range_error(
-				SGE_TEXT("last_exclusive_range empty!"));
+				FCPPT_TEXT("last_exclusive_range empty!"));
 	}
 };
 

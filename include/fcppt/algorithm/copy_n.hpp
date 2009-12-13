@@ -18,10 +18,10 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
 
-#ifndef SGE_ALGORITHM_COPY_N_HPP_INCLUDED
-#define SGE_ALGORITHM_COPY_N_HPP_INCLUDED
+#ifndef FCPPT_ALGORITHM_COPY_N_HPP_INCLUDED
+#define FCPPT_ALGORITHM_COPY_N_HPP_INCLUDED
 
-namespace sge
+namespace fcppt
 {
 namespace algorithm
 {
@@ -40,6 +40,6 @@ copy_n(
 }
 }
 
-#include <sge/algorithm/detail/copy_n_impl.hpp>
+#include <fcppt/algorithm/detail/copy_n_impl.hpp>
 
 #endif

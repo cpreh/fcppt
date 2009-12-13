@@ -18,19 +18,19 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
 
-#ifndef SGE_RANDOM_ACTOR_CALLBACK_HPP_INCLUDED
-#define SGE_RANDOM_ACTOR_CALLBACK_HPP_INCLUDED
+#ifndef FCPPT_RANDOM_ACTOR_CALLBACK_HPP_INCLUDED
+#define FCPPT_RANDOM_ACTOR_CALLBACK_HPP_INCLUDED
 
-#include <sge/function/object.hpp>
+#include <fcppt/function/object.hpp>
 
-namespace sge
+namespace fcppt
 {
 namespace random
 {
 namespace actor
 {
 
-typedef sge::function::object<
+typedef fcppt::function::object<
 	void ()
 > callback;
 

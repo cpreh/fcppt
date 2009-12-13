@@ -18,15 +18,15 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
 
-#ifndef SGE_RANDOM_UNIFORM_HPP_INCLUDED
-#define SGE_RANDOM_UNIFORM_HPP_INCLUDED
+#ifndef FCPPT_RANDOM_UNIFORM_HPP_INCLUDED
+#define FCPPT_RANDOM_UNIFORM_HPP_INCLUDED
 
-#include <sge/random/default_generator.hpp>
-#include <sge/random/uniform_distribution.hpp>
-#include <sge/time/time.hpp>
+#include <fcppt/random/default_generator.hpp>
+#include <fcppt/random/uniform_distribution.hpp>
+#include <fcppt/time/time.hpp>
 #include <tr1/random>
 
-namespace sge
+namespace fcppt
 {
 namespace random
 {
@@ -53,7 +53,7 @@ public:
 				static_cast<
 					typename Generator::result_type
 				>(
-					sge::time::time()
+					fcppt::time::time()
 				)
 			),
 			range_type(

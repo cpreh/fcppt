@@ -18,15 +18,15 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
 
-#ifndef SGE_ASSIGN_DETAIL_MAKE_CONTAINER_IMPL_HPP_INCLUDED
-#define SGE_ASSIGN_DETAIL_MAKE_CONTAINER_IMPL_HPP_INCLUDED
+#ifndef FCPPT_ASSIGN_DETAIL_MAKE_CONTAINER_IMPL_HPP_INCLUDED
+#define FCPPT_ASSIGN_DETAIL_MAKE_CONTAINER_IMPL_HPP_INCLUDED
 
-#include <sge/assign/detail/insert.hpp>
+#include <fcppt/assign/detail/insert.hpp>
 
 template<
 	typename Container
 >
-sge::assign::make_container<Container>::make_container(
+fcppt::assign::make_container<Container>::make_container(
 	typename container_type::const_reference r)
 {
 	(*this)(r);
@@ -35,8 +35,8 @@ sge::assign::make_container<Container>::make_container(
 template<
 	typename Container
 >
-sge::assign::make_container<Container> &
-sge::assign::make_container<Container>::operator()(
+fcppt::assign::make_container<Container> &
+fcppt::assign::make_container<Container>::operator()(
 	typename container_type::const_reference r
 )
 {
@@ -51,7 +51,7 @@ sge::assign::make_container<Container>::operator()(
 template<
 	typename Container
 >
-sge::assign::make_container<Container>::operator Container() const
+fcppt::assign::make_container<Container>::operator Container() const
 {
 	return c_;
 }

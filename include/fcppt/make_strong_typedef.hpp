@@ -18,18 +18,18 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
 
-#ifndef SGE_MAKE_STRONG_TYPEDEF_HPP_INCLUDED
-#define SGE_MAKE_STRONG_TYPEDEF_HPP_INCLUDED
+#ifndef FCPPT_MAKE_STRONG_TYPEDEF_HPP_INCLUDED
+#define FCPPT_MAKE_STRONG_TYPEDEF_HPP_INCLUDED
 
-#include <sge/strong_typedef_fwd.hpp>
+#include <fcppt/strong_typedef_fwd.hpp>
 
-#define SGE_MAKE_STRONG_TYPEDEF(val, name)\
-struct sge_strong_typedef_##name##_tag\
+#define FCPPT_MAKE_STRONG_TYPEDEF(val, name)\
+struct fcppt_strong_typedef_##name##_tag\
 {};\
 \
-typedef sge::strong_typedef<\
+typedef fcppt::strong_typedef<\
 	val,\
-	sge_strong_typedef_##name##_tag\
+	fcppt_strong_typedef_##name##_tag\
 > name;
 
 #endif

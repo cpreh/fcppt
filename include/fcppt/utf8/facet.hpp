@@ -18,27 +18,27 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
 
-#ifndef SGE_UTF8_FACET_HPP_INCLUDED
-#define SGE_UTF8_FACET_HPP_INCLUDED
+#ifndef FCPPT_UTF8_FACET_HPP_INCLUDED
+#define FCPPT_UTF8_FACET_HPP_INCLUDED
 
-#include <sge/export.hpp>
+#include <fcppt/export.hpp>
 
 #define BOOST_UTF8_BEGIN_NAMESPACE \
 namespace boost { \
-namespace sge {
+namespace fcppt {
 
 #define BOOST_UTF8_END_NAMESPACE }}
 
-#define BOOST_UTF8_DECL SGE_CLASS_SYMBOL
+#define BOOST_UTF8_DECL FCPPT_CLASS_SYMBOL
 
 #include <boost/detail/utf8_codecvt_facet.hpp>
 
-namespace sge
+namespace fcppt
 {
 namespace utf8
 {
 
-typedef ::boost::sge::utf8_codecvt_facet facet;
+typedef ::boost::fcppt::utf8_codecvt_facet facet;
 
 }
 }

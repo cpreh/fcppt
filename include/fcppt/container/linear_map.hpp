@@ -18,8 +18,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
 
-#ifndef SGE_CONTAINER_LINEAR_MAP_HPP_INCLUDED
-#define SGE_CONTAINER_LINEAR_MAP_HPP_INCLUDED
+#ifndef FCPPT_CONTAINER_LINEAR_MAP_HPP_INCLUDED
+#define FCPPT_CONTAINER_LINEAR_MAP_HPP_INCLUDED
 
 // std::less
 #include <functional>
@@ -30,7 +30,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 // std::pair
 #include <utility>
 
-namespace sge
+namespace fcppt
 {
 namespace container
 {

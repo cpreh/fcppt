@@ -18,28 +18,28 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
 
-#ifndef SGE_LOG_MACROS_HPP_INCLUDED
-#define SGE_LOG_MACROS_HPP_INCLUDED
+#ifndef FCPPT_LOG_MACROS_HPP_INCLUDED
+#define FCPPT_LOG_MACROS_HPP_INCLUDED
 
-#include <sge/log/level.hpp>
+#include <fcppt/log/level.hpp>
 
-#define SGE_LOG_LEVEL_IF_ENABLED(stream, l, x)\
+#define FCPPT_LOG_LEVEL_IF_ENABLED(stream, l, x)\
 	if((stream).activated(l))\
 		(stream).log(l, x);
 
-#define SGE_LOG_DEBUG(stream, x)\
-	SGE_LOG_LEVEL_IF_ENABLED(stream, sge::log::level::debug, x)
+#define FCPPT_LOG_DEBUG(stream, x)\
+	FCPPT_LOG_LEVEL_IF_ENABLED(stream, fcppt::log::level::debug, x)
 
-#define SGE_LOG_INFO(stream, x)\
-	SGE_LOG_LEVEL_IF_ENABLED(stream, sge::log::level::info, x)
+#define FCPPT_LOG_INFO(stream, x)\
+	FCPPT_LOG_LEVEL_IF_ENABLED(stream, fcppt::log::level::info, x)
 
-#define SGE_LOG_WARNING(stream, x)\
-	SGE_LOG_LEVEL_IF_ENABLED(stream, sge::log::level::warning, x)
+#define FCPPT_LOG_WARNING(stream, x)\
+	FCPPT_LOG_LEVEL_IF_ENABLED(stream, fcppt::log::level::warning, x)
 
-#define SGE_LOG_ERROR(stream, x)\
-	SGE_LOG_LEVEL_IF_ENABLED(stream, sge::log::level::error, x)
+#define FCPPT_LOG_ERROR(stream, x)\
+	FCPPT_LOG_LEVEL_IF_ENABLED(stream, fcppt::log::level::error, x)
 
-#define SGE_LOG_FATAL(stream, x)\
-	SGE_LOG_LEVEL_IF_ENABLED(stream, sge::log::level::fatal, x)
+#define FCPPT_LOG_FATAL(stream, x)\
+	FCPPT_LOG_LEVEL_IF_ENABLED(stream, fcppt::log::level::fatal, x)
 
 #endif

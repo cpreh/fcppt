@@ -18,16 +18,16 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
 
-#ifndef SGE_CONTAINER_IS_ASSOCIATIVE_HPP_INCLUDED
-#define SGE_CONTAINER_IS_ASSOCIATIVE_HPP_INCLUDED
+#ifndef FCPPT_CONTAINER_IS_ASSOCIATIVE_HPP_INCLUDED
+#define FCPPT_CONTAINER_IS_ASSOCIATIVE_HPP_INCLUDED
 
 // TODO: somehow forward declare this!
-#include <sge/container/map_fwd.hpp>
+#include <fcppt/container/map_fwd.hpp>
 #include <boost/type_traits/integral_constant.hpp>
 #include <set>
 #include <map>
 
-namespace sge
+namespace fcppt
 {
 namespace container
 {

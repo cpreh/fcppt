@@ -18,14 +18,14 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
 
-#ifndef SGE_FUNCTION_DETAIL_HAS_ADDRESSOF_OVERLOAD_HPP_INCLUDED
-#define SGE_FUNCTION_DETAIL_HAS_ADDRESSOF_OVERLOAD_HPP_INCLUDED
+#ifndef FCPPT_FUNCTION_DETAIL_HAS_ADDRESSOF_OVERLOAD_HPP_INCLUDED
+#define FCPPT_FUNCTION_DETAIL_HAS_ADDRESSOF_OVERLOAD_HPP_INCLUDED
 
 #include <boost/utility/enable_if.hpp>
 #include <boost/type_traits/is_class.hpp>
 #include <boost/mpl/bool.hpp>
 
-namespace sge
+namespace fcppt
 {
 
 namespace function
@@ -83,6 +83,6 @@ struct has_addressof_overload
 
 } // end namespace function
 
-} // end namespace sge
+} // end namespace fcppt
 
 #endif

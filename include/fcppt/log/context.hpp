@@ -18,48 +18,48 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
 
-#ifndef SGE_LOG_CONTEXT_HPP_INCLUDED
-#define SGE_LOG_CONTEXT_HPP_INCLUDED
+#ifndef FCPPT_LOG_CONTEXT_HPP_INCLUDED
+#define FCPPT_LOG_CONTEXT_HPP_INCLUDED
 
-#include <sge/log/context_fwd.hpp>
-#include <sge/log/object_fwd.hpp>
-#include <sge/log/location_fwd.hpp>
-#include <sge/log/tree_function.hpp>
-#include <sge/log/detail/context_tree.hpp>
-#include <sge/container/tree_decl.hpp>
-#include <sge/variant/object_decl.hpp>
-#include <sge/noncopyable.hpp>
-#include <sge/export.hpp>
+#include <fcppt/log/context_fwd.hpp>
+#include <fcppt/log/object_fwd.hpp>
+#include <fcppt/log/location_fwd.hpp>
+#include <fcppt/log/tree_function.hpp>
+#include <fcppt/log/detail/context_tree.hpp>
+#include <fcppt/container/tree_decl.hpp>
+#include <fcppt/variant/object_decl.hpp>
+#include <fcppt/noncopyable.hpp>
+#include <fcppt/export.hpp>
 
-namespace sge
+namespace fcppt
 {
 namespace log
 {
 
 class context {
-	SGE_NONCOPYABLE(context)
+	FCPPT_NONCOPYABLE(context)
 public:
-	SGE_SYMBOL context();
+	FCPPT_SYMBOL context();
 
-	SGE_SYMBOL ~context();
+	FCPPT_SYMBOL ~context();
 
-	SGE_SYMBOL void
+	FCPPT_SYMBOL void
 	add(
 		location const &,
 		object &
 	);
 
-	SGE_SYMBOL void
+	FCPPT_SYMBOL void
 	remove(
 		location const &
 	);
 
-	SGE_SYMBOL object *
+	FCPPT_SYMBOL object *
 	find(
 		location const &
 	) const;
 
-	SGE_SYMBOL void
+	FCPPT_SYMBOL void
 	apply(
 		location const &,
 		tree_function const &

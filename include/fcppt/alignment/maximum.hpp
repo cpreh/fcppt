@@ -18,13 +18,13 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
 
-#ifndef SGE_ALIGNMENT_MAXIMUM_HPP_INCLUDED
-#define SGE_ALIGNMENT_MAXIMUM_HPP_INCLUDED
+#ifndef FCPPT_ALIGNMENT_MAXIMUM_HPP_INCLUDED
+#define FCPPT_ALIGNMENT_MAXIMUM_HPP_INCLUDED
 
 #ifdef _MSC_VER
-#define SGE_ALIGNMENT_MAXIMUM 128
+#define FCPPT_ALIGNMENT_MAXIMUM 128
 #elif __GNUC__
-#define SGE_ALIGNMENT_MAXIMUM 32
+#define FCPPT_ALIGNMENT_MAXIMUM 32
 #else
 #error "Don't know what the maximum alignment should be!"
 #endif

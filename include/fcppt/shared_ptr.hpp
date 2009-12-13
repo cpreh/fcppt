@@ -18,15 +18,15 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
 
-#ifndef SGE_SHARED_PTR_HPP_INCLUDED
-#define SGE_SHARED_PTR_HPP_INCLUDED
+#ifndef FCPPT_SHARED_PTR_HPP_INCLUDED
+#define FCPPT_SHARED_PTR_HPP_INCLUDED
 
-#include <sge/shared_ptr_fwd.hpp>
-#include <sge/weak_ptr_fwd.hpp>
-#include <sge/auto_ptr.hpp>
+#include <fcppt/shared_ptr_fwd.hpp>
+#include <fcppt/weak_ptr_fwd.hpp>
+#include <fcppt/auto_ptr.hpp>
 #include <boost/shared_ptr.hpp>
 
-namespace sge
+namespace fcppt
 {
 
 template<

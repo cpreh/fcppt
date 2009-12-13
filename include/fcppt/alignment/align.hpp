@@ -18,13 +18,13 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
 
-#ifndef SGE_ALIGNMENT_ALIGN_HPP_INCLUDED
-#define SGE_ALIGNMENT_ALIGN_HPP_INCLUDED
+#ifndef FCPPT_ALIGNMENT_ALIGN_HPP_INCLUDED
+#define FCPPT_ALIGNMENT_ALIGN_HPP_INCLUDED
 
 #ifdef _MSC_VER
-#define SGE_ALIGNMENT_ALIGN(x) __declspec(align(x))
+#define FCPPT_ALIGNMENT_ALIGN(x) __declspec(align(x))
 #elif __GNUC__
-#define SGE_ALIGNMENT_ALIGN(x) __attribute__((__aligned__(x)))
+#define FCPPT_ALIGNMENT_ALIGN(x) __attribute__((__aligned__(x)))
 #else
 #error "Don't know how to align types!"
 #endif

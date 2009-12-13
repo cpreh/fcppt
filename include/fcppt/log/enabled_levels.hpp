@@ -18,19 +18,19 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
 
-#ifndef SGE_LOG_ENABLED_LEVELS_HPP_INCLUDED
-#define SGE_LOG_ENABLED_LEVELS_HPP_INCLUDED
+#ifndef FCPPT_LOG_ENABLED_LEVELS_HPP_INCLUDED
+#define FCPPT_LOG_ENABLED_LEVELS_HPP_INCLUDED
 
-#include <sge/log/enabled_level_array.hpp>
-#include <sge/log/level.hpp>
-#include <sge/export.hpp>
+#include <fcppt/log/enabled_level_array.hpp>
+#include <fcppt/log/level.hpp>
+#include <fcppt/export.hpp>
 
-namespace sge
+namespace fcppt
 {
 namespace log
 {
 
-SGE_SYMBOL enabled_level_array const
+FCPPT_SYMBOL enabled_level_array const
 enabled_levels(
 	level::type
 );

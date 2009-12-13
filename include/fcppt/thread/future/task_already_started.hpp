@@ -1,23 +1,23 @@
-#ifndef SGE_THREAD_FUTURE_TASK_ALREADY_STARTED_HPP_INCLUDED
-#define SGE_THREAD_FUTURE_TASK_ALREADY_STARTED_HPP_INCLUDED
+#ifndef FCPPT_THREAD_FUTURE_TASK_ALREADY_STARTED_HPP_INCLUDED
+#define FCPPT_THREAD_FUTURE_TASK_ALREADY_STARTED_HPP_INCLUDED
 
-#include <sge/exception.hpp>
+#include <fcppt/exception.hpp>
 
-namespace sge
+namespace fcppt
 {
 namespace thread
 {
 namespace future
 {
-class SGE_CLASS_SYMBOL task_already_started
+class FCPPT_CLASS_SYMBOL task_already_started
 :
 	public exception
 {
 public:
-	SGE_SYMBOL task_already_started();
+	FCPPT_SYMBOL task_already_started();
 };
 }
 }
 }
 
-#endif // SGE_THREAD_FUTURE_TASK_ALREADY_STARTED_HPP_INCLUDED
+#endif // FCPPT_THREAD_FUTURE_TASK_ALREADY_STARTED_HPP_INCLUDED

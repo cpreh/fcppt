@@ -18,13 +18,13 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
 
-#ifndef SGE_CHRONO_DURATION_COMPARISON_HPP_INCLUDED
-#define SGE_CHRONO_DURATION_COMPARISON_HPP_INCLUDED
+#ifndef FCPPT_CHRONO_DURATION_COMPARISON_HPP_INCLUDED
+#define FCPPT_CHRONO_DURATION_COMPARISON_HPP_INCLUDED
 
-#include <sge/chrono/duration_impl.hpp>
-#include <sge/chrono/common_type.hpp>
+#include <fcppt/chrono/duration_impl.hpp>
+#include <fcppt/chrono/common_type.hpp>
 
-namespace sge
+namespace fcppt
 {
 namespace chrono
 {

@@ -18,8 +18,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
 
-#ifndef SGE_SN_CAST_HPP_INCLUDED
-#define SGE_SN_CAST_HPP_INCLUDED
+#ifndef FCPPT_SN_CAST_HPP_INCLUDED
+#define FCPPT_SN_CAST_HPP_INCLUDED
 
 #include <boost/mpl/and.hpp>
 #include <boost/mpl/or.hpp>
@@ -29,7 +29,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #include <boost/type_traits/is_floating_point.hpp>
 #include <boost/utility/enable_if.hpp>
 
-namespace sge
+namespace fcppt
 {
 
 template<

@@ -18,13 +18,13 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
 
-#ifndef SGE_ALGORITHM_DETAIL_PTR_CONTAINER_ERASE_IMPL_HPP_INCLUDED
-#define SGE_ALGORITHM_DETAIL_PTR_CONTAINER_ERASE_IMPL_HPP_INCLUDED
+#ifndef FCPPT_ALGORITHM_DETAIL_PTR_CONTAINER_ERASE_IMPL_HPP_INCLUDED
+#define FCPPT_ALGORITHM_DETAIL_PTR_CONTAINER_ERASE_IMPL_HPP_INCLUDED
 
 template<
 	typename Container,
 	typename Ptr>
-void sge::algorithm::ptr_container_erase(
+void fcppt::algorithm::ptr_container_erase(
 	Container &c,
 	Ptr const s)
 {

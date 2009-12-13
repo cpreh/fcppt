@@ -18,25 +18,25 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
 
-#ifndef SGE_CHRONO_EXCEPTION_HPP_INCLUDED
-#define SGE_CHRONO_EXCEPTION_HPP_INCLUDED
+#ifndef FCPPT_CHRONO_EXCEPTION_HPP_INCLUDED
+#define FCPPT_CHRONO_EXCEPTION_HPP_INCLUDED
 
-#include <sge/exception.hpp>
-#include <sge/string.hpp>
-#include <sge/export.hpp>
+#include <fcppt/exception.hpp>
+#include <fcppt/string.hpp>
+#include <fcppt/export.hpp>
 
-namespace sge
+namespace fcppt
 {
 namespace chrono
 {
 
-class SGE_CLASS_SYMBOL exception
+class FCPPT_CLASS_SYMBOL exception
 :
-	public sge::exception
+	public fcppt::exception
 {
 public:
-	SGE_SYMBOL explicit exception(
-		sge::string const &
+	FCPPT_SYMBOL explicit exception(
+		fcppt::string const &
 	);
 };
 

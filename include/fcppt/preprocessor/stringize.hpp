@@ -18,21 +18,21 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
 
-#ifndef SGE_PREPROCESSOR_STRINGIZE_HPP_INCLUDED
-#define SGE_PREPROCESSOR_STRINGIZE_HPP_INCLUDED
+#ifndef FCPPT_PREPROCESSOR_STRINGIZE_HPP_INCLUDED
+#define FCPPT_PREPROCESSOR_STRINGIZE_HPP_INCLUDED
 
-#include <sge/config.h>
+#include <fcppt/config.h>
 
-#ifdef SGE_NARROW_STRING
+#ifdef FCPPT_NARROW_STRING
 #include <boost/preprocessor/stringize.hpp>
 #else
 #include <boost/preprocessor/wstringize.hpp>
 #endif
 
-#ifdef SGE_NARROW_STRING
-#define SGE_PP_STRINGIZE(s) BOOST_PP_STRINGIZE(s)
+#ifdef FCPPT_NARROW_STRING
+#define FCPPT_PP_STRINGIZE(s) BOOST_PP_STRINGIZE(s)
 #else
-#define SGE_PP_STRINGIZE(s) BOOST_PP_WSTRINGIZE(s)
+#define FCPPT_PP_STRINGIZE(s) BOOST_PP_WSTRINGIZE(s)
 #endif
 
 #endif

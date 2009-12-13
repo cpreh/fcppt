@@ -18,13 +18,13 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
 
-#ifndef SGE_ASSIGN_DETAIL_INSERT_HPP_INCLUDED
-#define SGE_ASSIGN_DETAIL_INSERT_HPP_INCLUDED
+#ifndef FCPPT_ASSIGN_DETAIL_INSERT_HPP_INCLUDED
+#define FCPPT_ASSIGN_DETAIL_INSERT_HPP_INCLUDED
 
-#include <sge/container/is_associative.hpp>
+#include <fcppt/container/is_associative.hpp>
 #include <boost/utility/enable_if.hpp>
 
-namespace sge
+namespace fcppt
 {
 namespace assign
 {

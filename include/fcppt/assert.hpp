@@ -18,21 +18,21 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
 
-#ifndef SGE_ASSERT_HPP_INCLUDED
-#define SGE_ASSERT_HPP_INCLUDED
+#ifndef FCPPT_ASSERT_HPP_INCLUDED
+#define FCPPT_ASSERT_HPP_INCLUDED
 
-#include <sge/preprocessor/stringize.hpp>
-#include <sge/preprocessor/file.hpp>
-#include <sge/string.hpp>
-#include <sge/export.hpp>
+#include <fcppt/preprocessor/stringize.hpp>
+#include <fcppt/preprocessor/file.hpp>
+#include <fcppt/string.hpp>
+#include <fcppt/export.hpp>
 
 // TODO: split this!
 
-namespace sge
+namespace fcppt
 {
 namespace detail
 {
-SGE_SYMBOL void process_assert(
+FCPPT_SYMBOL void process_assert(
 	string const &file,
 	string const &line,
 	string const &condition,
@@ -41,19 +41,19 @@ SGE_SYMBOL void process_assert(
 }
 }
 
-#define SGE_ASSERT_MESSAGE(cond,message)\
+#define FCPPT_ASSERT_MESSAGE(cond,message)\
 if (!(cond))\
-	sge::detail::process_assert(\
-		SGE_PP_FILE,\
-		SGE_PP_STRINGIZE(__LINE__),\
-		SGE_PP_STRINGIZE(cond),\
+	fcppt::detail::process_assert(\
+		FCPPT_PP_FILE,\
+		FCPPT_PP_STRINGIZE(__LINE__),\
+		FCPPT_PP_STRINGIZE(cond),\
 		message);
 
-#define SGE_ASSERT(cond)\
+#define FCPPT_ASSERT(cond)\
 if (!(cond))\
-	sge::detail::process_assert(\
-		SGE_PP_FILE,\
-		SGE_PP_STRINGIZE(__LINE__),\
-		SGE_PP_STRINGIZE(cond));
+	fcppt::detail::process_assert(\
+		FCPPT_PP_FILE,\
+		FCPPT_PP_STRINGIZE(__LINE__),\
+		FCPPT_PP_STRINGIZE(cond));
 
 #endif

@@ -18,13 +18,13 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
 
-#ifndef SGE_LEXICAL_CAST_HPP_INCLUDED
-#define SGE_LEXICAL_CAST_HPP_INCLUDED
+#ifndef FCPPT_LEXICAL_CAST_HPP_INCLUDED
+#define FCPPT_LEXICAL_CAST_HPP_INCLUDED
 
 #include <boost/utility/enable_if.hpp>
 #include <boost/type_traits/is_same.hpp>
 
-namespace sge
+namespace fcppt
 {
 
 template<
@@ -43,6 +43,6 @@ lexical_cast(
 	Src const &);
 }
 
-#include <sge/detail/lexical_cast_impl.hpp>
+#include <fcppt/detail/lexical_cast_impl.hpp>
 
 #endif

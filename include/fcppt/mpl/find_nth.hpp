@@ -18,8 +18,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
 
-#ifndef SGE_MPL_FIND_NTH_HPP_INCLUDED
-#define SGE_MPL_FIND_NTH_HPP_INCLUDED
+#ifndef FCPPT_MPL_FIND_NTH_HPP_INCLUDED
+#define FCPPT_MPL_FIND_NTH_HPP_INCLUDED
 
 #include <boost/mpl/advance.hpp>
 #include <boost/mpl/begin.hpp>
@@ -31,7 +31,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #include <boost/mpl/vector/vector10.hpp>
 #include <boost/type_traits/is_same.hpp>
 
-namespace sge
+namespace fcppt
 {
 namespace mpl
 {

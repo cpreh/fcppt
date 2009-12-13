@@ -18,23 +18,23 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
 
-#ifndef SGE_MPL_INVALID_INVOKE_HPP_INCLUDED
-#define SGE_MPL_INVALID_INVOKE_HPP_INCLUDED
+#ifndef FCPPT_MPL_INVALID_INVOKE_HPP_INCLUDED
+#define FCPPT_MPL_INVALID_INVOKE_HPP_INCLUDED
 
-#include <sge/exception.hpp>
-#include <sge/export.hpp>
+#include <fcppt/exception.hpp>
+#include <fcppt/export.hpp>
 
-namespace sge
+namespace fcppt
 {
 namespace mpl
 {
 
-class SGE_CLASS_SYMBOL invalid_invoke
+class FCPPT_CLASS_SYMBOL invalid_invoke
 :
-	public sge::exception
+	public fcppt::exception
 {
 public:
-	SGE_SYMBOL explicit invalid_invoke();
+	FCPPT_SYMBOL explicit invalid_invoke();
 };
 
 }

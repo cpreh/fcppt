@@ -18,14 +18,14 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
 
-#ifndef SGE_CHRONO_TIME_POINT_OUTPUT_HPP_INCLUDED
-#define SGE_CHRONO_TIME_POINT_OUTPUT_HPP_INCLUDED
+#ifndef FCPPT_CHRONO_TIME_POINT_OUTPUT_HPP_INCLUDED
+#define FCPPT_CHRONO_TIME_POINT_OUTPUT_HPP_INCLUDED
 
-#include <sge/chrono/time_point_impl.hpp>
-#include <sge/chrono/duration_output.hpp>
+#include <fcppt/chrono/time_point_impl.hpp>
+#include <fcppt/chrono/duration_output.hpp>
 #include <ostream>
 
-namespace sge
+namespace fcppt
 {
 namespace chrono
 {

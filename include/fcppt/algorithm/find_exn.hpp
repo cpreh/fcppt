@@ -18,10 +18,10 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
 
-#ifndef SGE_ALGORITHM_FIND_EXN_HPP_INCLUDED
-#define SGE_ALGORITHM_FIND_EXN_HPP_INCLUDED
+#ifndef FCPPT_ALGORITHM_FIND_EXN_HPP_INCLUDED
+#define FCPPT_ALGORITHM_FIND_EXN_HPP_INCLUDED
 
-namespace sge
+namespace fcppt
 {
 namespace algorithm
 {
@@ -39,6 +39,6 @@ find_exn(
 }
 }
 
-#include <sge/algorithm/detail/find_exn_impl.hpp>
+#include <fcppt/algorithm/detail/find_exn_impl.hpp>
 
 #endif

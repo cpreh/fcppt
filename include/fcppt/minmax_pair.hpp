@@ -18,10 +18,10 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
 
-#ifndef SGE_MINMAX_PAIR_HPP_INCLUDED
-#define SGE_MINMAX_PAIR_HPP_INCLUDED
+#ifndef FCPPT_MINMAX_PAIR_HPP_INCLUDED
+#define FCPPT_MINMAX_PAIR_HPP_INCLUDED
 
-#include <sge/minmax_pair_decl.hpp>
-#include <sge/minmax_pair_impl.hpp>
+#include <fcppt/minmax_pair_decl.hpp>
+#include <fcppt/minmax_pair_impl.hpp>
 
 #endif

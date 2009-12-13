@@ -18,18 +18,18 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
 
-#ifndef SGE_LOG_PARAMETERS_ROOT_HPP_INCLUDED
-#define SGE_LOG_PARAMETERS_ROOT_HPP_INCLUDED
+#ifndef FCPPT_LOG_PARAMETERS_ROOT_HPP_INCLUDED
+#define FCPPT_LOG_PARAMETERS_ROOT_HPP_INCLUDED
 
-#include <sge/log/parameters/root_fwd.hpp>
-#include <sge/log/parameters/all_fwd.hpp>
-#include <sge/log/level.hpp>
-#include <sge/log/context_fwd.hpp>
-#include <sge/string.hpp>
-#include <sge/ostream.hpp>
-#include <sge/export.hpp>
+#include <fcppt/log/parameters/root_fwd.hpp>
+#include <fcppt/log/parameters/all_fwd.hpp>
+#include <fcppt/log/level.hpp>
+#include <fcppt/log/context_fwd.hpp>
+#include <fcppt/string.hpp>
+#include <fcppt/ostream.hpp>
+#include <fcppt/export.hpp>
 
-namespace sge
+namespace fcppt
 {
 namespace log
 {
@@ -38,31 +38,31 @@ namespace parameters
 
 class root {
 public:
-	SGE_SYMBOL explicit root(
+	FCPPT_SYMBOL explicit root(
 		ostream &
 	);
 
-	SGE_SYMBOL root
+	FCPPT_SYMBOL root
 	prefix(
 		string const &
 	);
 
-	SGE_SYMBOL root
+	FCPPT_SYMBOL root
 	enabled(
 		bool
 	);
 
-	SGE_SYMBOL root
+	FCPPT_SYMBOL root
 	level(
 		log::level::type
 	);
 
-	SGE_SYMBOL root
+	FCPPT_SYMBOL root
 	context(
 		log::context &
 	);
 
-	SGE_SYMBOL all const
+	FCPPT_SYMBOL all const
 	create() const;
 private:
 	ostream &sink_;

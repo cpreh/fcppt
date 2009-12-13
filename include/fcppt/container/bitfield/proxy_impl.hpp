@@ -18,16 +18,16 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
 
-#ifndef SGE_CONTAINER_BITFIELD_PROXY_IMPL_HPP_INCLUDED
-#define SGE_CONTAINER_BITFIELD_PROXY_IMPL_HPP_INCLUDED
+#ifndef FCPPT_CONTAINER_BITFIELD_PROXY_IMPL_HPP_INCLUDED
+#define FCPPT_CONTAINER_BITFIELD_PROXY_IMPL_HPP_INCLUDED
 
-#include <sge/container/bitfield/proxy.hpp>
+#include <fcppt/container/bitfield/proxy.hpp>
 
 template<
 	typename StoredType,
-	sge::container::bitfield::size_type ElementBits
+	fcppt::container::bitfield::size_type ElementBits
 >
-sge::container::bitfield::proxy<StoredType, ElementBits>::proxy(
+fcppt::container::bitfield::proxy<StoredType, ElementBits>::proxy(
 	StoredType array,
 	size_type const pos)
 :
@@ -37,10 +37,10 @@ sge::container::bitfield::proxy<StoredType, ElementBits>::proxy(
 
 template<
 	typename StoredType,
-	sge::container::bitfield::size_type ElementBits
+	fcppt::container::bitfield::size_type ElementBits
 >
-sge::container::bitfield::size_type
-sge::container::bitfield::proxy<StoredType, ElementBits>::bit_offset(
+fcppt::container::bitfield::size_type
+fcppt::container::bitfield::proxy<StoredType, ElementBits>::bit_offset(
 	size_type const p)
 {
 	return p % ElementBits;
@@ -48,10 +48,10 @@ sge::container::bitfield::proxy<StoredType, ElementBits>::bit_offset(
 
 template<
 	typename StoredType,
-	sge::container::bitfield::size_type ElementBits
+	fcppt::container::bitfield::size_type ElementBits
 >
-sge::container::bitfield::size_type
-sge::container::bitfield::proxy<StoredType, ElementBits>::array_offset(
+fcppt::container::bitfield::size_type
+fcppt::container::bitfield::proxy<StoredType, ElementBits>::array_offset(
 	size_type const p)
 {
 	return p / ElementBits;
@@ -59,10 +59,10 @@ sge::container::bitfield::proxy<StoredType, ElementBits>::array_offset(
 
 template<
 	typename StoredType,
-	sge::container::bitfield::size_type ElementBits
+	fcppt::container::bitfield::size_type ElementBits
 >
-sge::container::bitfield::proxy<StoredType, ElementBits> &
-sge::container::bitfield::proxy<StoredType, ElementBits>::operator=(
+fcppt::container::bitfield::proxy<StoredType, ElementBits> &
+fcppt::container::bitfield::proxy<StoredType, ElementBits>::operator=(
 	value_type const b)
 {
 	size_type const
@@ -83,10 +83,10 @@ sge::container::bitfield::proxy<StoredType, ElementBits>::operator=(
 
 template<
 	typename StoredType,
-	sge::container::bitfield::size_type ElementBits
+	fcppt::container::bitfield::size_type ElementBits
 >
-sge::container::bitfield::proxy<StoredType, ElementBits>::operator
-sge::container::bitfield::value_type() const
+fcppt::container::bitfield::proxy<StoredType, ElementBits>::operator
+fcppt::container::bitfield::value_type() const
 {
 	return array[array_offset(pos)] & (1 << (bit_offset(pos)));
 }

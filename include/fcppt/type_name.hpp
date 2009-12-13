@@ -18,17 +18,17 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
 
-#ifndef SGE_TYPE_NAME_HPP_INCLUDED
-#define SGE_TYPE_NAME_HPP_INCLUDED
+#ifndef FCPPT_TYPE_NAME_HPP_INCLUDED
+#define FCPPT_TYPE_NAME_HPP_INCLUDED
 
-#include <sge/string.hpp>
-#include <sge/type_info.hpp>
-#include <sge/export.hpp>
+#include <fcppt/string.hpp>
+#include <fcppt/type_info.hpp>
+#include <fcppt/export.hpp>
 
-namespace sge
+namespace fcppt
 {
 
-SGE_SYMBOL string const
+FCPPT_SYMBOL string const
 type_name(
 	type_info const &);
 

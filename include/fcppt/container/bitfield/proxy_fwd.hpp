@@ -18,12 +18,12 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
 
-#ifndef SGE_CONTAINER_BITFIELD_PROXY_FWD_HPP_INCLUDED
-#define SGE_CONTAINER_BITFIELD_PROXY_FWD_HPP_INCLUDED
+#ifndef FCPPT_CONTAINER_BITFIELD_PROXY_FWD_HPP_INCLUDED
+#define FCPPT_CONTAINER_BITFIELD_PROXY_FWD_HPP_INCLUDED
 
-#include <sge/container/bitfield/size_type.hpp>
+#include <fcppt/container/bitfield/size_type.hpp>
 
-namespace sge
+namespace fcppt
 {
 namespace container
 {

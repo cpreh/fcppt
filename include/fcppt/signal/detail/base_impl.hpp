@@ -18,14 +18,14 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
 
-#ifndef SGE_SIGNAL_DETAIL_BASE_IMPL_HPP_INCLUDED
-#define SGE_SIGNAL_DETAIL_BASE_IMPL_HPP_INCLUDED
+#ifndef FCPPT_SIGNAL_DETAIL_BASE_IMPL_HPP_INCLUDED
+#define FCPPT_SIGNAL_DETAIL_BASE_IMPL_HPP_INCLUDED
 
-#include <sge/signal/detail/concrete_connection_impl.hpp>
+#include <fcppt/signal/detail/concrete_connection_impl.hpp>
 
 template<typename T>
-sge::signal::auto_connection
-sge::signal::detail::base<T>::connect(
+fcppt::signal::auto_connection
+fcppt::signal::detail::base<T>::connect(
 	function_type const &f)
 {
 	auto_connection a(
@@ -35,12 +35,12 @@ sge::signal::detail::base<T>::connect(
 }
 
 template<typename T>
-sge::signal::detail::base<T>::base()
+fcppt::signal::detail::base<T>::base()
 {}
 
 template<typename T>
-typename sge::signal::detail::base<T>::connection_list &
-sge::signal::detail::base<T>::connections()
+typename fcppt::signal::detail::base<T>::connection_list &
+fcppt::signal::detail::base<T>::connections()
 {
 	return connections_;
 }

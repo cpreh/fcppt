@@ -18,20 +18,20 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
 
-#ifndef SGE_NONCOPYABLE_HPP_INCLUDED
-#define SGE_NONCOPYABLE_HPP_INCLUDED
+#ifndef FCPPT_NONCOPYABLE_HPP_INCLUDED
+#define FCPPT_NONCOPYABLE_HPP_INCLUDED
 
-#include <sge/config.h>
+#include <fcppt/config.h>
 
-#ifdef SGE_HAVE_DEFAULTED_AND_DELETED_FUNCTIONS
+#ifdef FCPPT_HAVE_DEFAULTED_AND_DELETED_FUNCTIONS
 
-#define SGE_NONCOPYABLE(classname) \
+#define FCPPT_NONCOPYABLE(classname) \
 classname(classname const &) = delete; \
 classname &operator=(classname const &) = delete;
 
 #else
 
-#define SGE_NONCOPYABLE(classname) \
+#define FCPPT_NONCOPYABLE(classname) \
 private: \
 classname(classname const &); \
 classname &operator=(classname const &);

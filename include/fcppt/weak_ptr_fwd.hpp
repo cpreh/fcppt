@@ -18,12 +18,12 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
 
-#ifndef SGE_WEAK_PTR_FWD_HPP_INCLUDED
-#define SGE_WEAK_PTR_FWD_HPP_INCLUDED
+#ifndef FCPPT_WEAK_PTR_FWD_HPP_INCLUDED
+#define FCPPT_WEAK_PTR_FWD_HPP_INCLUDED
 
-#include <sge/heap_deleter.hpp>
+#include <fcppt/heap_deleter.hpp>
 
-namespace sge
+namespace fcppt
 {
 
 template<

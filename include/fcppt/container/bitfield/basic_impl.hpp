@@ -18,12 +18,12 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
 
-#ifndef SGE_CONTAINER_BITFIELD_BASIC_IMPL_HPP_INCLUDED
-#define SGE_CONTAINER_BITFIELD_BASIC_IMPL_HPP_INCLUDED
+#ifndef FCPPT_CONTAINER_BITFIELD_BASIC_IMPL_HPP_INCLUDED
+#define FCPPT_CONTAINER_BITFIELD_BASIC_IMPL_HPP_INCLUDED
 
-#include <sge/container/bitfield/basic_decl.hpp>
-#include <sge/container/bitfield/iterator_impl.hpp>
-#include <sge/container/bitfield/proxy_impl.hpp>
+#include <fcppt/container/bitfield/basic_decl.hpp>
+#include <fcppt/container/bitfield/iterator_impl.hpp>
+#include <fcppt/container/bitfield/proxy_impl.hpp>
 #include <boost/spirit/home/phoenix/core/argument.hpp>
 #include <boost/spirit/home/phoenix/operator/bitwise.hpp>
 #include <algorithm>
@@ -33,7 +33,7 @@ template<
 	Enum Size,
 	typename InternalType
 >
-sge::container::bitfield::basic<Enum, Size, InternalType>::basic()
+fcppt::container::bitfield::basic<Enum, Size, InternalType>::basic()
 :
 	array()
 {}
@@ -43,7 +43,7 @@ template<
 	Enum Size,
 	typename InternalType
 >
-sge::container::bitfield::basic<Enum, Size, InternalType>::basic(
+fcppt::container::bitfield::basic<Enum, Size, InternalType>::basic(
 	Enum const e)
 :
 	array()
@@ -56,8 +56,8 @@ template<
 	Enum Size,
 	typename InternalType
 >
-sge::container::bitfield::basic<Enum, Size, InternalType> &
-sge::container::bitfield::basic<Enum, Size, InternalType>::operator=(
+fcppt::container::bitfield::basic<Enum, Size, InternalType> &
+fcppt::container::bitfield::basic<Enum, Size, InternalType>::operator=(
 	Enum const e)
 {
 	clear();
@@ -66,8 +66,8 @@ sge::container::bitfield::basic<Enum, Size, InternalType>::operator=(
 }
 
 template<typename Enum, Enum Size, typename InternalType>
-typename sge::container::bitfield::basic<Enum, Size, InternalType>::iterator
-sge::container::bitfield::basic<Enum, Size, InternalType>::begin()
+typename fcppt::container::bitfield::basic<Enum, Size, InternalType>::iterator
+fcppt::container::bitfield::basic<Enum, Size, InternalType>::begin()
 {
 	return iterator(
 		array,
@@ -76,8 +76,8 @@ sge::container::bitfield::basic<Enum, Size, InternalType>::begin()
 }
 
 template<typename Enum, Enum Size, typename InternalType>
-typename sge::container::bitfield::basic<Enum, Size, InternalType>::const_iterator
-sge::container::bitfield::basic<Enum, Size, InternalType>::begin() const
+typename fcppt::container::bitfield::basic<Enum, Size, InternalType>::const_iterator
+fcppt::container::bitfield::basic<Enum, Size, InternalType>::begin() const
 {
 	return const_iterator(
 		array,
@@ -86,43 +86,43 @@ sge::container::bitfield::basic<Enum, Size, InternalType>::begin() const
 }
 
 template<typename Enum, Enum Size, typename InternalType>
-typename sge::container::bitfield::basic<Enum, Size, InternalType>::iterator
-sge::container::bitfield::basic<Enum, Size, InternalType>::end()
+typename fcppt::container::bitfield::basic<Enum, Size, InternalType>::iterator
+fcppt::container::bitfield::basic<Enum, Size, InternalType>::end()
 {
 	return iterator(array, size());
 }
 
 template<typename Enum, Enum Size, typename InternalType>
-typename sge::container::bitfield::basic<Enum, Size, InternalType>::const_iterator
-sge::container::bitfield::basic<Enum, Size, InternalType>::end() const
+typename fcppt::container::bitfield::basic<Enum, Size, InternalType>::const_iterator
+fcppt::container::bitfield::basic<Enum, Size, InternalType>::end() const
 {
 	return const_iterator(array, size());
 }
 
 template<typename Enum, Enum Size, typename InternalType>
-typename sge::container::bitfield::basic<Enum, Size, InternalType>::reverse_iterator
-sge::container::bitfield::basic<Enum, Size, InternalType>::rbegin()
+typename fcppt::container::bitfield::basic<Enum, Size, InternalType>::reverse_iterator
+fcppt::container::bitfield::basic<Enum, Size, InternalType>::rbegin()
 {
 	return reverse_iterator(end());
 }
 
 template<typename Enum, Enum Size, typename InternalType>
-typename sge::container::bitfield::basic<Enum, Size, InternalType>::const_reverse_iterator
-sge::container::bitfield::basic<Enum, Size, InternalType>::rbegin() const
+typename fcppt::container::bitfield::basic<Enum, Size, InternalType>::const_reverse_iterator
+fcppt::container::bitfield::basic<Enum, Size, InternalType>::rbegin() const
 {
 	return const_reverse_iterator(end());
 }
 
 template<typename Enum, Enum Size, typename InternalType>
-typename sge::container::bitfield::basic<Enum, Size, InternalType>::reverse_iterator
-sge::container::bitfield::basic<Enum, Size, InternalType>::rend()
+typename fcppt::container::bitfield::basic<Enum, Size, InternalType>::reverse_iterator
+fcppt::container::bitfield::basic<Enum, Size, InternalType>::rend()
 {
 	return reverse_iterator(begin());
 }
 
 template<typename Enum, Enum Size, typename InternalType>
-typename sge::container::bitfield::basic<Enum, Size, InternalType>::const_reverse_iterator
-sge::container::bitfield::basic<Enum, Size, InternalType>::rend() const
+typename fcppt::container::bitfield::basic<Enum, Size, InternalType>::const_reverse_iterator
+fcppt::container::bitfield::basic<Enum, Size, InternalType>::rend() const
 {
 	return const_reverse_iterator(begin());
 }
@@ -132,8 +132,8 @@ template<
 	Enum Size,
 	typename InternalType
 >
-typename sge::container::bitfield::size_type
-sge::container::bitfield::basic<
+typename fcppt::container::bitfield::size_type
+fcppt::container::bitfield::basic<
 	Enum,
 	Size,
 	InternalType
@@ -143,24 +143,24 @@ sge::container::bitfield::basic<
 }
 
 template<typename Enum, Enum Size, typename InternalType>
-typename sge::container::bitfield::basic<Enum, Size, InternalType>::const_reference
-sge::container::bitfield::basic<Enum, Size, InternalType>::operator[](
+typename fcppt::container::bitfield::basic<Enum, Size, InternalType>::const_reference
+fcppt::container::bitfield::basic<Enum, Size, InternalType>::operator[](
 	Enum const index) const
 {
 	return *(begin() + index);
 }
 
 template<typename Enum, Enum Size, typename InternalType>
-typename sge::container::bitfield::basic<Enum, Size, InternalType>::reference
-sge::container::bitfield::basic<Enum, Size, InternalType>::operator[](
+typename fcppt::container::bitfield::basic<Enum, Size, InternalType>::reference
+fcppt::container::bitfield::basic<Enum, Size, InternalType>::operator[](
 	Enum const index)
 {
 	return *(begin() + index);
 }
 
 template<typename Enum, Enum Size, typename InternalType>
-sge::container::bitfield::basic<Enum, Size, InternalType>&
-sge::container::bitfield::basic<Enum, Size, InternalType>::operator|=(
+fcppt::container::bitfield::basic<Enum, Size, InternalType>&
+fcppt::container::bitfield::basic<Enum, Size, InternalType>::operator|=(
 	Enum const e)
 {
 	set(e, true);
@@ -172,8 +172,8 @@ template<
 	Enum Size,
 	typename InternalType
 >
-sge::container::bitfield::basic<Enum, Size, InternalType> &
-sge::container::bitfield::basic<Enum, Size, InternalType>::operator|=(
+fcppt::container::bitfield::basic<Enum, Size, InternalType> &
+fcppt::container::bitfield::basic<Enum, Size, InternalType>::operator|=(
 	basic<Enum, Size, InternalType> const &r)
 {
 	namespace args = boost::phoenix::arg_names;
@@ -189,8 +189,8 @@ sge::container::bitfield::basic<Enum, Size, InternalType>::operator|=(
 }
 
 template<typename Enum, Enum Size, typename InternalType>
-sge::container::bitfield::basic<Enum, Size, InternalType>
-sge::container::bitfield::basic<Enum, Size, InternalType>::operator|(
+fcppt::container::bitfield::basic<Enum, Size, InternalType>
+fcppt::container::bitfield::basic<Enum, Size, InternalType>::operator|(
 	Enum const r) const
 {
 	basic ret(*this);
@@ -199,8 +199,8 @@ sge::container::bitfield::basic<Enum, Size, InternalType>::operator|(
 }
 
 template<typename Enum, Enum Size, typename InternalType>
-sge::container::bitfield::basic<Enum, Size, InternalType>
-sge::container::bitfield::basic<Enum, Size, InternalType>::operator|(
+fcppt::container::bitfield::basic<Enum, Size, InternalType>
+fcppt::container::bitfield::basic<Enum, Size, InternalType>::operator|(
 	basic<Enum, Size, InternalType> const &r) const
 {
 	basic ret(*this);
@@ -209,8 +209,8 @@ sge::container::bitfield::basic<Enum, Size, InternalType>::operator|(
 }
 
 template<typename Enum, Enum Size, typename InternalType>
-sge::container::bitfield::basic<Enum, Size, InternalType>&
-sge::container::bitfield::basic<Enum, Size, InternalType>::operator&=(
+fcppt::container::bitfield::basic<Enum, Size, InternalType>&
+fcppt::container::bitfield::basic<Enum, Size, InternalType>::operator&=(
 	basic<Enum, Size, InternalType> const &r)
 {
 	namespace args = boost::phoenix::arg_names;
@@ -226,8 +226,8 @@ sge::container::bitfield::basic<Enum, Size, InternalType>::operator&=(
 }
 
 template<typename Enum, Enum Size, typename InternalType>
-sge::container::bitfield::basic<Enum, Size, InternalType>
-sge::container::bitfield::basic<Enum, Size, InternalType>::operator& (
+fcppt::container::bitfield::basic<Enum, Size, InternalType>
+fcppt::container::bitfield::basic<Enum, Size, InternalType>::operator& (
 	basic<Enum, Size, InternalType> const &r) const
 {
 	basic ret(*this);
@@ -236,16 +236,16 @@ sge::container::bitfield::basic<Enum, Size, InternalType>::operator& (
 }
 
 template<typename Enum, Enum Size, typename InternalType>
-sge::container::bitfield::value_type
-sge::container::bitfield::basic<Enum, Size, InternalType>::operator& (
+fcppt::container::bitfield::value_type
+fcppt::container::bitfield::basic<Enum, Size, InternalType>::operator& (
 	Enum const where) const
 {
 	return get(where);
 }
 
 template<typename Enum, Enum Size, typename InternalType>
-sge::container::bitfield::basic<Enum, Size, InternalType>&
-sge::container::bitfield::basic<Enum, Size, InternalType>::operator^=(
+fcppt::container::bitfield::basic<Enum, Size, InternalType>&
+fcppt::container::bitfield::basic<Enum, Size, InternalType>::operator^=(
 	basic<Enum, Size, InternalType> const &r)
 {
 	namespace args = boost::phoenix::arg_names;
@@ -261,8 +261,8 @@ sge::container::bitfield::basic<Enum, Size, InternalType>::operator^=(
 }
 
 template<typename Enum, Enum Size, typename InternalType>
-sge::container::bitfield::basic<Enum, Size, InternalType>
-sge::container::bitfield::basic<Enum, Size, InternalType>::operator^(
+fcppt::container::bitfield::basic<Enum, Size, InternalType>
+fcppt::container::bitfield::basic<Enum, Size, InternalType>::operator^(
 	basic<Enum, Size, InternalType> const &r) const
 {
 	basic ret(*this);
@@ -271,8 +271,8 @@ sge::container::bitfield::basic<Enum, Size, InternalType>::operator^(
 }
 
 template<typename Enum, Enum Size, typename InternalType>
-sge::container::bitfield::basic<Enum, Size, InternalType>
-sge::container::bitfield::basic<Enum, Size, InternalType>::operator~() const
+fcppt::container::bitfield::basic<Enum, Size, InternalType>
+fcppt::container::bitfield::basic<Enum, Size, InternalType>::operator~() const
 {
 	namespace args = boost::phoenix::arg_names;
 
@@ -289,7 +289,7 @@ sge::container::bitfield::basic<Enum, Size, InternalType>::operator~() const
 }
 
 template<typename Enum, Enum Size, typename InternalType>
-void sge::container::bitfield::basic<Enum, Size, InternalType>::set(
+void fcppt::container::bitfield::basic<Enum, Size, InternalType>::set(
 	Enum const where,
 	value_type const value)
 {
@@ -297,21 +297,21 @@ void sge::container::bitfield::basic<Enum, Size, InternalType>::set(
 }
 
 template<typename Enum, Enum Size, typename InternalType>
-sge::container::bitfield::value_type
-sge::container::bitfield::basic<Enum, Size, InternalType>::get(
+fcppt::container::bitfield::value_type
+fcppt::container::bitfield::basic<Enum, Size, InternalType>::get(
 	Enum const where) const
 {
 	return (*this)[where];
 }
 
 template<typename Enum, Enum Size, typename InternalType>
-void sge::container::bitfield::basic<Enum, Size, InternalType>::clear()
+void fcppt::container::bitfield::basic<Enum, Size, InternalType>::clear()
 {
 	array.assign(0);
 }
 
 template<typename Enum, Enum Size, typename InternalType>
-bool sge::container::bitfield::basic<Enum, Size, InternalType>::operator==(
+bool fcppt::container::bitfield::basic<Enum, Size, InternalType>::operator==(
 	basic<Enum, Size, InternalType> const &r) const
 {
 	return std::equal(begin(), end(), r.begin());
@@ -323,7 +323,7 @@ template<
 	typename InternalType
 >
 bool
-sge::container::bitfield::basic<Enum, Size, InternalType>::operator!=(
+fcppt::container::bitfield::basic<Enum, Size, InternalType>::operator!=(
 	basic<Enum, Size, InternalType> const &r) const
 {
 	return !((*this)==r);
@@ -335,7 +335,7 @@ template<
 	typename InternalType
 >
 bool
-sge::container::bitfield::basic<Enum, Size, InternalType>::boolean_test() const
+fcppt::container::bitfield::basic<Enum, Size, InternalType>::boolean_test() const
 {
 	for (const_iterator i = begin(); i != end(); ++i)
 		if (*i)

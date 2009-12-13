@@ -18,20 +18,20 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
 
-#ifndef SGE_VARIANT_INVALID_GET_HPP_INCLUDED
-#define SGE_VARIANT_INVALID_GET_HPP_INCLUDED
+#ifndef FCPPT_VARIANT_INVALID_GET_HPP_INCLUDED
+#define FCPPT_VARIANT_INVALID_GET_HPP_INCLUDED
 
-#include <sge/exception.hpp>
-#include <sge/export.hpp>
+#include <fcppt/exception.hpp>
+#include <fcppt/export.hpp>
 
-namespace sge
+namespace fcppt
 {
 namespace variant
 {
 
 class invalid_get : public exception {
 public:
-	SGE_SYMBOL invalid_get();
+	FCPPT_SYMBOL invalid_get();
 };
 
 }

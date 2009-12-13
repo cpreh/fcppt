@@ -18,10 +18,10 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
 
-#ifndef SGE_SAFE_BOOL_HPP_INCLUDED
-#define SGE_SAFE_BOOL_HPP_INCLUDED
+#ifndef FCPPT_SAFE_BOOL_HPP_INCLUDED
+#define FCPPT_SAFE_BOOL_HPP_INCLUDED
 
-#define SGE_SAFE_BOOL(x)\
+#define FCPPT_SAFE_BOOL(x)\
 typedef void (x::*bool_type)() const; \
 void safe_bool_reference_function() const {}\
 public: \

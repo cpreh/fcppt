@@ -18,22 +18,22 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
 
-#ifndef SGE_LOG_PARAMETERS_INHERITED_HPP_INCLUDED
-#define SGE_LOG_PARAMETERS_INHERITED_HPP_INCLUDED
+#ifndef FCPPT_LOG_PARAMETERS_INHERITED_HPP_INCLUDED
+#define FCPPT_LOG_PARAMETERS_INHERITED_HPP_INCLUDED
 
-#include <sge/log/parameters/all.hpp>
-#include <sge/log/object_fwd.hpp>
-#include <sge/string.hpp>
-#include <sge/export.hpp>
+#include <fcppt/log/parameters/all.hpp>
+#include <fcppt/log/object_fwd.hpp>
+#include <fcppt/string.hpp>
+#include <fcppt/export.hpp>
 
-namespace sge
+namespace fcppt
 {
 namespace log
 {
 namespace parameters
 {
 
-SGE_SYMBOL all const
+FCPPT_SYMBOL all const
 inherited(
 	object &parent,
 	string const &sub_location

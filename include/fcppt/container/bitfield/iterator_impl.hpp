@@ -18,18 +18,18 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
 
-#ifndef SGE_CONTAINER_BITFIELD_ITERATOR_IMPL_HPP_INCLUDED
-#define SGE_CONTAINER_BITFIELD_ITERATOR_IMPL_HPP_INCLUDED
+#ifndef FCPPT_CONTAINER_BITFIELD_ITERATOR_IMPL_HPP_INCLUDED
+#define FCPPT_CONTAINER_BITFIELD_ITERATOR_IMPL_HPP_INCLUDED
 
-#include <sge/container/bitfield/iterator.hpp>
-#include <sge/container/bitfield/proxy_impl.hpp>
+#include <fcppt/container/bitfield/iterator.hpp>
+#include <fcppt/container/bitfield/proxy_impl.hpp>
 
 template<
 	typename StoredType,
 	typename Reference,
-	sge::container::bitfield::size_type ElementBits
+	fcppt::container::bitfield::size_type ElementBits
 >
-sge::container::bitfield::iterator<
+fcppt::container::bitfield::iterator<
 	StoredType,
 	Reference,
 	ElementBits
@@ -44,10 +44,10 @@ sge::container::bitfield::iterator<
 template<
 	typename StoredType,
 	typename Reference,
-	sge::container::bitfield::size_type ElementBits
+	fcppt::container::bitfield::size_type ElementBits
 >
 void
-sge::container::bitfield::iterator<
+fcppt::container::bitfield::iterator<
 	StoredType,
 	Reference,
 	ElementBits
@@ -60,10 +60,10 @@ sge::container::bitfield::iterator<
 template<
 	typename StoredType,
 	typename Reference,
-	sge::container::bitfield::size_type ElementBits
+	fcppt::container::bitfield::size_type ElementBits
 >
 void
-sge::container::bitfield::iterator<
+fcppt::container::bitfield::iterator<
 	StoredType,
 	Reference,
 	ElementBits
@@ -75,10 +75,10 @@ sge::container::bitfield::iterator<
 template<
 	typename StoredType,
 	typename Reference,
-	sge::container::bitfield::size_type ElementBits
+	fcppt::container::bitfield::size_type ElementBits
 >
 void
-sge::container::bitfield::iterator<
+fcppt::container::bitfield::iterator<
 	StoredType,
 	Reference,
 	ElementBits
@@ -90,10 +90,10 @@ sge::container::bitfield::iterator<
 template<
 	typename StoredType,
 	typename Reference,
-	sge::container::bitfield::size_type ElementBits
+	fcppt::container::bitfield::size_type ElementBits
 >
 bool
-sge::container::bitfield::iterator<
+fcppt::container::bitfield::iterator<
 	StoredType,
 	Reference,
 	ElementBits
@@ -110,10 +110,10 @@ sge::container::bitfield::iterator<
 template<
 	typename StoredType,
 	typename Reference,
-	sge::container::bitfield::size_type ElementBits
+	fcppt::container::bitfield::size_type ElementBits
 >
 Reference
-sge::container::bitfield::iterator<
+fcppt::container::bitfield::iterator<
 	StoredType,
 	Reference,
 	ElementBits
@@ -131,13 +131,13 @@ sge::container::bitfield::iterator<
 template<
 	typename StoredType,
 	typename Reference,
-	sge::container::bitfield::size_type ElementBits
+	fcppt::container::bitfield::size_type ElementBits
 >
 template<
 	typename OtherStoredType,
 	typename OtherReference
 >
-sge::container::bitfield::iterator<
+fcppt::container::bitfield::iterator<
 	StoredType,
 	Reference,
 	ElementBits

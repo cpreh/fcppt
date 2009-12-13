@@ -18,18 +18,18 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
 
-#ifndef SGE_ALIGNMENT_ARRAY_HPP_INCLUDED
-#define SGE_ALIGNMENT_ARRAY_HPP_INCLUDED
+#ifndef FCPPT_ALIGNMENT_ARRAY_HPP_INCLUDED
+#define FCPPT_ALIGNMENT_ARRAY_HPP_INCLUDED
 
-#include <sge/alignment/size_type.hpp>
-#include <sge/alignment/maximum.hpp>
-#include <sge/alignment/align.hpp>
+#include <fcppt/alignment/size_type.hpp>
+#include <fcppt/alignment/maximum.hpp>
+#include <fcppt/alignment/align.hpp>
 #include <tr1/array>
 #include <boost/preprocessor/arithmetic/mul.hpp>
 #include <boost/preprocessor/comparison/less_equal.hpp>
 #include <boost/preprocessor/repetition/for.hpp>
 
-namespace sge
+namespace fcppt
 {
 namespace alignment
 {
@@ -41,7 +41,7 @@ template<
 >
 struct array;
 
-#define SGE_ALIGNMENT_GENERATE_ARRAY(r, state)\
+#define FCPPT_ALIGNMENT_GENERATE_ARRAY(r, state)\
 template<\
 	typename T,\
 	size_type Size\
@@ -51,31 +51,31 @@ struct array<\
 	Size,\
 	state\
 > {\
-	typedef SGE_ALIGNMENT_ALIGN(state) std::tr1::array<\
+	typedef FCPPT_ALIGNMENT_ALIGN(state) std::tr1::array<\
 		T,\
 		Size\
 	> type;\
 };
 
-#define SGE_ALIGNMENT_GENERATE_ARRAY_END(r, state)\
+#define FCPPT_ALIGNMENT_GENERATE_ARRAY_END(r, state)\
 	BOOST_PP_LESS_EQUAL(\
 		state,\
-		SGE_ALIGNMENT_MAXIMUM\
+		FCPPT_ALIGNMENT_MAXIMUM\
 	)
 
-#define SGE_ALIGNMENT_GENERATE_ARRAY_ADD(r, state)\
+#define FCPPT_ALIGNMENT_GENERATE_ARRAY_ADD(r, state)\
 	BOOST_PP_MUL(state, 2)
 
 BOOST_PP_FOR(
 	1,
-	SGE_ALIGNMENT_GENERATE_ARRAY_END,
-	SGE_ALIGNMENT_GENERATE_ARRAY_ADD,
-	SGE_ALIGNMENT_GENERATE_ARRAY
+	FCPPT_ALIGNMENT_GENERATE_ARRAY_END,
+	FCPPT_ALIGNMENT_GENERATE_ARRAY_ADD,
+	FCPPT_ALIGNMENT_GENERATE_ARRAY
 )
 
-#undef SGE_ALIGNMENT_GENERATE_ARRAY_ADD
-#undef SGE_ALIGNMENT_GENERATE_ARRAY_END
-#undef SGE_ALIGNMENT_GENERATE_ARRAY
+#undef FCPPT_ALIGNMENT_GENERATE_ARRAY_ADD
+#undef FCPPT_ALIGNMENT_GENERATE_ARRAY_END
+#undef FCPPT_ALIGNMENT_GENERATE_ARRAY
 
 }
 }

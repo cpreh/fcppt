@@ -18,21 +18,21 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
 
-#ifndef SGE_VARIANT_OBJECT_DECL_HPP_INCLUDED
-#define SGE_VARIANT_OBJECT_DECL_HPP_INCLUDED
+#ifndef FCPPT_VARIANT_OBJECT_DECL_HPP_INCLUDED
+#define FCPPT_VARIANT_OBJECT_DECL_HPP_INCLUDED
 
-#include <sge/variant/object_fwd.hpp>
-#include <sge/variant/raw_type.hpp>
-#include <sge/variant/size_type.hpp>
-#include <sge/mpl/max_value.hpp>
-#include <sge/alignment/array.hpp>
+#include <fcppt/variant/object_fwd.hpp>
+#include <fcppt/variant/raw_type.hpp>
+#include <fcppt/variant/size_type.hpp>
+#include <fcppt/mpl/max_value.hpp>
+#include <fcppt/alignment/array.hpp>
 #include <boost/mpl/size.hpp>
 #include <boost/mpl/placeholders.hpp>
 #include <boost/mpl/sizeof.hpp>
 #include <boost/type_traits/alignment_of.hpp>
 #include <typeinfo>
 
-namespace sge
+namespace fcppt
 {
 namespace variant
 {

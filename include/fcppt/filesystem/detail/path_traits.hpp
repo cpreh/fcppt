@@ -18,13 +18,13 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
 
-#ifndef SGE_FILESYSTEM_DETAIL_PATH_TRAITS_HPP_INCLUDED
-#define SGE_FILESYSTEM_DETAIL_PATH_TRAITS_HPP_INCLUDED
+#ifndef FCPPT_FILESYSTEM_DETAIL_PATH_TRAITS_HPP_INCLUDED
+#define FCPPT_FILESYSTEM_DETAIL_PATH_TRAITS_HPP_INCLUDED
 
-#include <sge/string.hpp>
+#include <fcppt/string.hpp>
 #include <boost/filesystem/path.hpp>
 
-namespace sge
+namespace fcppt
 {
 namespace filesystem
 {

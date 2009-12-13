@@ -18,22 +18,22 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
 
-#ifndef SGE_OPTIONAL_DECL_HPP_INCLUDED
-#define SGE_OPTIONAL_DECL_HPP_INCLUDED
+#ifndef FCPPT_OPTIONAL_DECL_HPP_INCLUDED
+#define FCPPT_OPTIONAL_DECL_HPP_INCLUDED
 
-#include <sge/optional_fwd.hpp>
-#include <sge/safe_bool.hpp>
-#include <sge/alignment/array.hpp>
+#include <fcppt/optional_fwd.hpp>
+#include <fcppt/safe_bool.hpp>
+#include <fcppt/alignment/array.hpp>
 #include <boost/type_traits/alignment_of.hpp>
 
-namespace sge
+namespace fcppt
 {
 
 template<
 	typename T
 >
 class optional {
-	SGE_SAFE_BOOL(optional)
+	FCPPT_SAFE_BOOL(optional)
 public:
 	typedef T value_type;
 	typedef T &reference;

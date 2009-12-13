@@ -18,12 +18,12 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
 
-#ifndef SGE_RANDOM_INCLUSIVE_RANGE_HPP_INCLUDED
-#define SGE_RANDOM_INCLUSIVE_RANGE_HPP_INCLUDED
+#ifndef FCPPT_RANDOM_INCLUSIVE_RANGE_HPP_INCLUDED
+#define FCPPT_RANDOM_INCLUSIVE_RANGE_HPP_INCLUDED
 
-#include <sge/random/range.hpp>
+#include <fcppt/random/range.hpp>
 
-namespace sge
+namespace fcppt
 {
 namespace random
 {

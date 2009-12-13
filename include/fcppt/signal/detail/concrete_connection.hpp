@@ -18,13 +18,13 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
 
-#ifndef SGE_SIGNAL_DETAIL_CONCRETE_CONNECTION_HPP_INCLUDED
-#define SGE_SIGNAL_DETAIL_CONCRETE_CONNECTION_HPP_INCLUDED
+#ifndef FCPPT_SIGNAL_DETAIL_CONCRETE_CONNECTION_HPP_INCLUDED
+#define FCPPT_SIGNAL_DETAIL_CONCRETE_CONNECTION_HPP_INCLUDED
 
-#include <sge/signal/detail/connection.hpp>
-#include <sge/function/object.hpp>
+#include <fcppt/signal/detail/connection.hpp>
+#include <fcppt/function/object.hpp>
 
-namespace sge
+namespace fcppt
 {
 namespace signal
 {
@@ -35,7 +35,7 @@ class concrete_connection : public connection
 {
 public:
 	typedef T function_signature;
-	typedef sge::function::object<T> function_type;
+	typedef fcppt::function::object<T> function_type;
 
 	concrete_connection(
 		function_type const &);

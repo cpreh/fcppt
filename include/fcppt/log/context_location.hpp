@@ -18,33 +18,33 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
 
-#ifndef SGE_LOG_CONTEXT_LOCATION_HPP_INCLUDED
-#define SGE_LOG_CONTEXT_LOCATION_HPP_INCLUDED
+#ifndef FCPPT_LOG_CONTEXT_LOCATION_HPP_INCLUDED
+#define FCPPT_LOG_CONTEXT_LOCATION_HPP_INCLUDED
 
-#include <sge/log/context_location_fwd.hpp>
-#include <sge/log/location.hpp>
-#include <sge/log/context_fwd.hpp>
-#include <sge/optional_impl.hpp>
-#include <sge/export.hpp>
+#include <fcppt/log/context_location_fwd.hpp>
+#include <fcppt/log/location.hpp>
+#include <fcppt/log/context_fwd.hpp>
+#include <fcppt/optional_impl.hpp>
+#include <fcppt/export.hpp>
 
-namespace sge
+namespace fcppt
 {
 namespace log
 {
 
 class context_location {
 public:
-	SGE_SYMBOL context_location();
+	FCPPT_SYMBOL context_location();
 
-	SGE_SYMBOL context_location(
+	FCPPT_SYMBOL context_location(
 		log::context *,
 		log::location const &
 	);
 
-	SGE_SYMBOL log::context *
+	FCPPT_SYMBOL log::context *
 	context() const;
 
-	SGE_SYMBOL log::location const &
+	FCPPT_SYMBOL log::location const &
 	location() const;
 private:
 	typedef optional<

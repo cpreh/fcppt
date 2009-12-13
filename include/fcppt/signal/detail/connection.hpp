@@ -18,15 +18,15 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
 
-#ifndef SGE_SIGNAL_DETAIL_CONNECTION_HPP_INCLUDED
-#define SGE_SIGNAL_DETAIL_CONNECTION_HPP_INCLUDED
+#ifndef FCPPT_SIGNAL_DETAIL_CONNECTION_HPP_INCLUDED
+#define FCPPT_SIGNAL_DETAIL_CONNECTION_HPP_INCLUDED
 
-#include <sge/noncopyable.hpp>
-#include <sge/export.hpp>
+#include <fcppt/noncopyable.hpp>
+#include <fcppt/export.hpp>
 #include <boost/intrusive/list_hook.hpp>
 #include <boost/intrusive/link_mode.hpp>
 
-namespace sge
+namespace fcppt
 {
 namespace signal
 {
@@ -43,9 +43,9 @@ typedef boost::intrusive::list_base_hook<
 // this class is intentionally left blank
 class connection : public object_base_hook
 {
-	SGE_NONCOPYABLE(connection)
+	FCPPT_NONCOPYABLE(connection)
 public:
-	SGE_SYMBOL connection();
+	FCPPT_SYMBOL connection();
 };
 
 }

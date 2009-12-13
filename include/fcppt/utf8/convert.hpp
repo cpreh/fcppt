@@ -18,25 +18,25 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
 
-#ifndef SGE_UTF8_CONVERT_HPP_INCLUDED
-#define SGE_UTF8_CONVERT_HPP_INCLUDED
+#ifndef FCPPT_UTF8_CONVERT_HPP_INCLUDED
+#define FCPPT_UTF8_CONVERT_HPP_INCLUDED
 
-#include <sge/utf8/string.hpp>
-#include <sge/string.hpp>
-#include <sge/export.hpp>
+#include <fcppt/utf8/string.hpp>
+#include <fcppt/string.hpp>
+#include <fcppt/export.hpp>
 
-namespace sge
+namespace fcppt
 {
 namespace utf8
 {
 
-SGE_SYMBOL sge::string const
+FCPPT_SYMBOL fcppt::string const
 convert(
 	utf8::string const &);
 
-SGE_SYMBOL utf8::string const
+FCPPT_SYMBOL utf8::string const
 convert(
-	sge::string const &);
+	fcppt::string const &);
 
 }
 }

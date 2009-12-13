@@ -18,12 +18,12 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
 
-#ifndef SGE_ALIGNMENT_SIZE_TYPE_HPP_INCLUDED
-#define SGE_ALIGNMENT_SIZE_TYPE_HPP_INCLUDED
+#ifndef FCPPT_ALIGNMENT_SIZE_TYPE_HPP_INCLUDED
+#define FCPPT_ALIGNMENT_SIZE_TYPE_HPP_INCLUDED
 
 #include <cstddef>
 
-namespace sge
+namespace fcppt
 {
 namespace alignment
 {

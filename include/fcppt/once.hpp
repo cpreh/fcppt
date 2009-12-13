@@ -18,10 +18,10 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
 
-#ifndef SGE_ONCE_HPP_INCLUDED
-#define SGE_ONCE_HPP_INCLUDED
+#ifndef FCPPT_ONCE_HPP_INCLUDED
+#define FCPPT_ONCE_HPP_INCLUDED
 
-#define SGE_FUNCTION_ONCE\
+#define FCPPT_FUNCTION_ONCE\
 	static bool initialized = false;\
 	if(initialized)\
 		return;\

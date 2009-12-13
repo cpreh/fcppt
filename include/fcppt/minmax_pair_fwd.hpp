@@ -18,10 +18,10 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
 
-#ifndef SGE_MINMAX_PAIR_FWD_HPP_INCLUDED
-#define SGE_MINMAX_PAIR_FWD_HPP_INCLUDED
+#ifndef FCPPT_MINMAX_PAIR_FWD_HPP_INCLUDED
+#define FCPPT_MINMAX_PAIR_FWD_HPP_INCLUDED
 
-namespace sge
+namespace fcppt
 {
 
 template<

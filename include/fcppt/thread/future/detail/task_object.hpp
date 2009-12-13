@@ -1,9 +1,9 @@
-#ifndef SGE_THREAD_FUTURE_DETAIL_TASK_OBJECT_HPP_INCLUDED
-#define SGE_THREAD_FUTURE_DETAIL_TASK_OBJECT_HPP_INCLUDED
+#ifndef FCPPT_THREAD_FUTURE_DETAIL_TASK_OBJECT_HPP_INCLUDED
+#define FCPPT_THREAD_FUTURE_DETAIL_TASK_OBJECT_HPP_INCLUDED
 
-#include <sge/thread/future/detail/task_base.hpp>
+#include <fcppt/thread/future/detail/task_base.hpp>
 
-namespace sge
+namespace fcppt
 {
 namespace thread
 {
@@ -54,7 +54,7 @@ template
 	typename T,
 	typename F
 >
-sge::thread::future::detail::task_object<T,F>::task_object(
+fcppt::thread::future::detail::task_object<T,F>::task_object(
 	F const& _f)
 :
 	f_(
@@ -66,7 +66,7 @@ template
 	typename T,
 	typename F
 >
-sge::thread::future::detail::task_object<T,F>::task_object(
+fcppt::thread::future::detail::task_object<T,F>::task_object(
 	boost::detail::thread_move_t<F> _f)
 :
 	f_(
@@ -78,7 +78,7 @@ template
 	typename T,
 	typename F
 >
-void sge::thread::future::detail::task_object<T,F>::do_run()
+void fcppt::thread::future::detail::task_object<T,F>::do_run()
 {
 	try
 	{
@@ -96,7 +96,7 @@ template
 <
 	typename F
 >
-sge::thread::future::detail::task_object<void,F>::task_object(
+fcppt::thread::future::detail::task_object<void,F>::task_object(
 	F const& _f)
 :
 	f_(
@@ -107,7 +107,7 @@ template
 <
 	typename F
 >
-sge::thread::future::detail::task_object<void,F>::task_object(
+fcppt::thread::future::detail::task_object<void,F>::task_object(
 	boost::detail::thread_move_t<F> _f)
 :
 	f_(
@@ -118,7 +118,7 @@ template
 <
 	typename F
 >
-void sge::thread::future::detail::task_object<void,F>::do_run()
+void fcppt::thread::future::detail::task_object<void,F>::do_run()
 {
 	try
 	{
@@ -132,4 +132,4 @@ void sge::thread::future::detail::task_object<void,F>::do_run()
 }
 #endif
 
-#endif // SGE_THREAD_FUTURE_DETAIL_TASK_OBJECT_HPP_INCLUDED
+#endif // FCPPT_THREAD_FUTURE_DETAIL_TASK_OBJECT_HPP_INCLUDED

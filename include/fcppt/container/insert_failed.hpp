@@ -18,22 +18,22 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
 
-#ifndef SGE_CONTAINER_INSERT_FAILED_HPP_INCLUDED
-#define SGE_CONTAINER_INSERT_FAILED_HPP_INCLUDED
+#ifndef FCPPT_CONTAINER_INSERT_FAILED_HPP_INCLUDED
+#define FCPPT_CONTAINER_INSERT_FAILED_HPP_INCLUDED
 
-#include <sge/container/exception.hpp>
-#include <sge/string.hpp>
-#include <sge/export.hpp>
+#include <fcppt/container/exception.hpp>
+#include <fcppt/string.hpp>
+#include <fcppt/export.hpp>
 
-namespace sge
+namespace fcppt
 {
 namespace container
 {
 
-class SGE_CLASS_SYMBOL insert_failed : public exception {
+class FCPPT_CLASS_SYMBOL insert_failed : public exception {
 public:
-	SGE_SYMBOL explicit insert_failed(
-		sge::string const &);
+	FCPPT_SYMBOL explicit insert_failed(
+		fcppt::string const &);
 };
 
 }

@@ -18,13 +18,13 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
 
-#ifndef SGE_CHRONO_DURATION_IMPL_HPP_INCLUDED
-#define SGE_CHRONO_DURATION_IMPL_HPP_INCLUDED
+#ifndef FCPPT_CHRONO_DURATION_IMPL_HPP_INCLUDED
+#define FCPPT_CHRONO_DURATION_IMPL_HPP_INCLUDED
 
-#include <sge/chrono/duration_decl.hpp>
-#include <sge/chrono/duration_cast.hpp>
-#include <sge/chrono/duration_values.hpp>
-#include <sge/chrono/treat_as_floating_point.hpp>
+#include <fcppt/chrono/duration_decl.hpp>
+#include <fcppt/chrono/duration_cast.hpp>
+#include <fcppt/chrono/duration_values.hpp>
+#include <fcppt/chrono/treat_as_floating_point.hpp>
 #include <boost/type_traits/is_convertible.hpp>
 #include <boost/static_assert.hpp>
 
@@ -32,7 +32,7 @@ template<
 	typename Rep,
 	typename Period
 >
-sge::chrono::duration<
+fcppt::chrono::duration<
 	Rep,
 	Period
 >::duration()
@@ -47,7 +47,7 @@ template<
 template<
 	typename Rep2
 >
-sge::chrono::duration<
+fcppt::chrono::duration<
 	Rep,
 	Period
 >::duration(
@@ -84,7 +84,7 @@ template<
 	typename Rep2,
 	typename Period2
 >
-sge::chrono::duration<
+fcppt::chrono::duration<
 	Rep,
 	Period
 >::duration(
@@ -116,7 +116,7 @@ template<
 	typename Period
 >
 
-sge::chrono::duration<
+fcppt::chrono::duration<
 	Rep,
 	Period
 >::~duration()
@@ -126,7 +126,7 @@ template<
 	typename Rep,
 	typename Period
 >
-sge::chrono::duration<
+fcppt::chrono::duration<
 	Rep,
 	Period
 >::duration(
@@ -142,11 +142,11 @@ template<
 	typename Rep,
 	typename Period
 >
-sge::chrono::duration<
+fcppt::chrono::duration<
 	Rep,
 	Period
 > &
-sge::chrono::duration<
+fcppt::chrono::duration<
 	Rep,
 	Period
 >::operator =(
@@ -162,11 +162,11 @@ template<
 	typename Rep,
 	typename Period
 >
-typename sge::chrono::duration<
+typename fcppt::chrono::duration<
 	Rep,
 	Period
 >::rep
-sge::chrono::duration<
+fcppt::chrono::duration<
 	Rep,
 	Period
 >::count() const
@@ -178,11 +178,11 @@ template<
 	typename Rep,
 	typename Period
 >
-sge::chrono::duration<
+fcppt::chrono::duration<
 	Rep,
 	Period
 >
-sge::chrono::duration<
+fcppt::chrono::duration<
 	Rep,
 	Period
 >::operator +() const
@@ -194,11 +194,11 @@ template<
 	typename Rep,
 	typename Period
 >
-sge::chrono::duration<
+fcppt::chrono::duration<
 	Rep,
 	Period
 >
-sge::chrono::duration<
+fcppt::chrono::duration<
 	Rep,
 	Period
 >::operator -() const
@@ -212,11 +212,11 @@ template<
 	typename Rep,
 	typename Period
 >
-sge::chrono::duration<
+fcppt::chrono::duration<
 	Rep,
 	Period
 > &
-sge::chrono::duration<
+fcppt::chrono::duration<
 	Rep,
 	Period
 >::operator ++()
@@ -230,11 +230,11 @@ template<
 	typename Rep,
 	typename Period
 >
-sge::chrono::duration<
+fcppt::chrono::duration<
 	Rep,
 	Period
 >
-sge::chrono::duration<
+fcppt::chrono::duration<
 	Rep,
 	Period
 >::operator ++(int)
@@ -248,11 +248,11 @@ template<
 	typename Rep,
 	typename Period
 >
-sge::chrono::duration<
+fcppt::chrono::duration<
 	Rep,
 	Period
 > &
-sge::chrono::duration<
+fcppt::chrono::duration<
 	Rep,
 	Period
 >::operator --()
@@ -266,11 +266,11 @@ template<
 	typename Rep,
 	typename Period
 >
-sge::chrono::duration<
+fcppt::chrono::duration<
 	Rep,
 	Period
 >
-sge::chrono::duration<
+fcppt::chrono::duration<
 	Rep,
 	Period
 >::operator --(int)
@@ -284,11 +284,11 @@ template<
 	typename Rep,
 	typename Period
 >
-sge::chrono::duration<
+fcppt::chrono::duration<
 	Rep,
 	Period
 > &
-sge::chrono::duration<
+fcppt::chrono::duration<
 	Rep,
 	Period
 >::operator +=(
@@ -304,11 +304,11 @@ template<
 	typename Rep,
 	typename Period
 >
-sge::chrono::duration<
+fcppt::chrono::duration<
 	Rep,
 	Period
 > &
-sge::chrono::duration<
+fcppt::chrono::duration<
 	Rep,
 	Period
 >::operator -=(
@@ -324,11 +324,11 @@ template<
 	typename Rep,
 	typename Period
 >
-sge::chrono::duration<
+fcppt::chrono::duration<
 	Rep,
 	Period
 > &
-sge::chrono::duration<
+fcppt::chrono::duration<
 	Rep,
 	Period
 >::operator *=(
@@ -344,11 +344,11 @@ template<
 	typename Rep,
 	typename Period
 >
-sge::chrono::duration<
+fcppt::chrono::duration<
 	Rep,
 	Period
 > &
-sge::chrono::duration<
+fcppt::chrono::duration<
 	Rep,
 	Period
 >::operator /=(
@@ -364,11 +364,11 @@ template<
 	typename Rep,
 	typename Period
 >
-sge::chrono::duration<
+fcppt::chrono::duration<
 	Rep,
 	Period
 >
-sge::chrono::duration<
+fcppt::chrono::duration<
 	Rep,
 	Period
 >::zero()
@@ -384,11 +384,11 @@ template<
 	typename Rep,
 	typename Period
 >
-sge::chrono::duration<
+fcppt::chrono::duration<
 	Rep,
 	Period
 >
-sge::chrono::duration<
+fcppt::chrono::duration<
 	Rep,
 	Period
 >::min()
@@ -404,11 +404,11 @@ template<
 	typename Rep,
 	typename Period
 >
-sge::chrono::duration<
+fcppt::chrono::duration<
 	Rep,
 	Period
 >
-sge::chrono::duration<
+fcppt::chrono::duration<
 	Rep,
 	Period
 >::max()

@@ -18,31 +18,31 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
 
-#ifndef SGE_LOG_FORMAT_OBJECT_HPP_INCLUDED
-#define SGE_LOG_FORMAT_OBJECT_HPP_INCLUDED
+#ifndef FCPPT_LOG_FORMAT_OBJECT_HPP_INCLUDED
+#define FCPPT_LOG_FORMAT_OBJECT_HPP_INCLUDED
 
-#include <sge/string.hpp>
-#include <sge/export.hpp>
-#include <sge/noncopyable.hpp>
+#include <fcppt/string.hpp>
+#include <fcppt/export.hpp>
+#include <fcppt/noncopyable.hpp>
 
-namespace sge
+namespace fcppt
 {
 namespace log
 {
 namespace format
 {
 
-class SGE_CLASS_SYMBOL object {
-	SGE_NONCOPYABLE(object)
+class FCPPT_CLASS_SYMBOL object {
+	FCPPT_NONCOPYABLE(object)
 protected:
-	SGE_SYMBOL object();
+	FCPPT_SYMBOL object();
 public:
 	virtual string const
 	format(
 		string const &
 	) const = 0;
 
-	SGE_SYMBOL virtual ~object();
+	FCPPT_SYMBOL virtual ~object();
 };
 
 }

@@ -1,10 +1,10 @@
-#ifndef SGE_THREAD_FUTURE_DETAIL_TRAITS_HPP_INCLUDED
-#define SGE_THREAD_FUTURE_DETAIL_TRAITS_HPP_INCLUDED
+#ifndef FCPPT_THREAD_FUTURE_DETAIL_TRAITS_HPP_INCLUDED
+#define FCPPT_THREAD_FUTURE_DETAIL_TRAITS_HPP_INCLUDED
 
-#include <sge/scoped_ptr.hpp>
+#include <fcppt/scoped_ptr.hpp>
 #include <boost/thread/detail/move.hpp>
 
-namespace sge
+namespace fcppt
 {
 namespace thread
 {
@@ -81,7 +81,7 @@ public:
 }
 
 template<typename T>
-void sge::thread::future::detail::traits<T>::init(
+void fcppt::thread::future::detail::traits<T>::init(
 	storage &_storage,
 	T const &t)
 {
@@ -91,7 +91,7 @@ void sge::thread::future::detail::traits<T>::init(
 }
 
 template<typename T>
-void sge::thread::future::detail::traits<T>::init(
+void fcppt::thread::future::detail::traits<T>::init(
 	storage &_storage,
 	move_source t)
 {
@@ -101,7 +101,7 @@ void sge::thread::future::detail::traits<T>::init(
 }
 
 template<typename T>
-T sge::thread::future::detail::traits<T>::move(
+T fcppt::thread::future::detail::traits<T>::move(
 	storage &_storage)
 {
 	T res(
@@ -112,7 +112,7 @@ T sge::thread::future::detail::traits<T>::move(
 }
 
 template<typename T>
-void sge::thread::future::detail::traits<T>::move(
+void fcppt::thread::future::detail::traits<T>::move(
 	storage &_storage,
 	T &_dest)
 {
@@ -121,14 +121,14 @@ void sge::thread::future::detail::traits<T>::move(
 }
 
 template<typename T>
-void sge::thread::future::detail::traits<T>::cleanup(
+void fcppt::thread::future::detail::traits<T>::cleanup(
 	storage &_storage)
 {
 	_storage.reset();
 }
 
 template<typename T>
-void sge::thread::future::detail::traits<T&>::init(
+void fcppt::thread::future::detail::traits<T&>::init(
 	storage &_storage,
 	T &t)
 {
@@ -136,7 +136,7 @@ void sge::thread::future::detail::traits<T&>::init(
 }
 
 template<typename T>
-T &sge::thread::future::detail::traits<T&>::move(
+T &fcppt::thread::future::detail::traits<T&>::move(
 	storage &_storage)
 {
 	T &res = *_storage;
@@ -146,24 +146,24 @@ T &sge::thread::future::detail::traits<T&>::move(
 }
 
 template<typename T>
-void sge::thread::future::detail::traits<T&>::cleanup(
+void fcppt::thread::future::detail::traits<T&>::cleanup(
 	storage &_storage)
 {
 	_storage = 0;
 }
 
 /*
-void sge::thread::future::detail::traits<void>::init(
+void fcppt::thread::future::detail::traits<void>::init(
 	storage &_storage)
 {
 	_storage = true;
 }
 
-void sge::thread::future::detail::traits<void>::cleanup(
+void fcppt::thread::future::detail::traits<void>::cleanup(
 	storage &_storage)
 {
 	_storage = false;
 }
 */
 
-#endif // SGE_THREAD_FUTURE_DETAIL_TRAITS_HPP_INCLUDED
+#endif // FCPPT_THREAD_FUTURE_DETAIL_TRAITS_HPP_INCLUDED

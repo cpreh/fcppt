@@ -1,23 +1,23 @@
-#ifndef SGE_THREAD_FUTURE_PROMISE_ALREADY_SATISFIED_HPP_INCLUDED
-#define SGE_THREAD_FUTURE_PROMISE_ALREADY_SATISFIED_HPP_INCLUDED
+#ifndef FCPPT_THREAD_FUTURE_PROMISE_ALREADY_SATISFIED_HPP_INCLUDED
+#define FCPPT_THREAD_FUTURE_PROMISE_ALREADY_SATISFIED_HPP_INCLUDED
 
-#include <sge/exception.hpp>
+#include <fcppt/exception.hpp>
 
-namespace sge
+namespace fcppt
 {
 namespace thread
 {
 namespace future
 {
-class SGE_CLASS_SYMBOL promise_already_satisfied
+class FCPPT_CLASS_SYMBOL promise_already_satisfied
 :
 	public exception
 {
 public:
-	SGE_SYMBOL promise_already_satisfied();
+	FCPPT_SYMBOL promise_already_satisfied();
 };
 }
 }
 }
 
-#endif // SGE_THREAD_FUTURE_PROMISE_ALREADY_SATISFIED_HPP_INCLUDED
+#endif // FCPPT_THREAD_FUTURE_PROMISE_ALREADY_SATISFIED_HPP_INCLUDED

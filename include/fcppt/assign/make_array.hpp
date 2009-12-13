@@ -18,13 +18,13 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
 
-#ifndef SGE_ASSIGN_MAKE_ARRAY_HPP_INCLUDED
-#define SGE_ASSIGN_MAKE_ARRAY_HPP_INCLUDED
+#ifndef FCPPT_ASSIGN_MAKE_ARRAY_HPP_INCLUDED
+#define FCPPT_ASSIGN_MAKE_ARRAY_HPP_INCLUDED
 
 #include <tr1/array>
 #include <cstddef>
 
-namespace sge
+namespace fcppt
 {
 namespace assign
 {
@@ -60,6 +60,6 @@ detail::array<T,1> make_array(T const &);
 }
 }
 
-#include <sge/assign/detail/make_array_impl.hpp>
+#include <fcppt/assign/detail/make_array_impl.hpp>
 
 #endif

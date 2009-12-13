@@ -1,15 +1,15 @@
-#ifndef SGE_THREAD_FUTURE_DETAIL_BASE_HPP_INCLUDED
-#define SGE_THREAD_FUTURE_DETAIL_BASE_HPP_INCLUDED
+#ifndef FCPPT_THREAD_FUTURE_DETAIL_BASE_HPP_INCLUDED
+#define FCPPT_THREAD_FUTURE_DETAIL_BASE_HPP_INCLUDED
 
-#include <sge/thread/future/detail/object.hpp>
-#include <sge/thread/future/uninitialized.hpp>
-#include <sge/thread/future/state.hpp>
-#include <sge/shared_ptr.hpp>
+#include <fcppt/thread/future/detail/object.hpp>
+#include <fcppt/thread/future/uninitialized.hpp>
+#include <fcppt/thread/future/state.hpp>
+#include <fcppt/shared_ptr.hpp>
 #include <boost/type_traits/add_reference.hpp>
 #include <boost/thread/detail/move.hpp>
 #include <boost/thread/thread_time.hpp>
 
-namespace sge
+namespace fcppt
 {
 namespace thread
 {
@@ -71,13 +71,13 @@ public:
 }
 
 template<typename T>
-sge::thread::future::detail::base<T>::base()
+fcppt::thread::future::detail::base<T>::base()
 :
 	object_()
 {}
 
 template<typename T>
-sge::thread::future::detail::base<T>::base(
+fcppt::thread::future::detail::base<T>::base(
 	object_ptr _object)
 :
 	object_(
@@ -85,7 +85,7 @@ sge::thread::future::detail::base<T>::base(
 {}
 
 template<typename T>
-void sge::thread::future::detail::base<T>::swap(
+void fcppt::thread::future::detail::base<T>::swap(
 	base &_rhs)
 {
 	object_.swap(
@@ -93,7 +93,7 @@ void sge::thread::future::detail::base<T>::swap(
 }
 
 template<typename T>
-typename sge::thread::future::detail::base<T>::reference sge::thread::future::detail::base<T>::get()
+typename fcppt::thread::future::detail::base<T>::reference sge::thread::future::detail::base<T>::get()
 {
 	if (!object_)
 		throw uninitialized();
@@ -102,7 +102,7 @@ typename sge::thread::future::detail::base<T>::reference sge::thread::future::de
 
 template<typename T>
 bool
-sge::thread::future::detail::base<T>::try_get(
+fcppt::thread::future::detail::base<T>::try_get(
 	reference _dest)
 {
 	if (!object_)
@@ -115,7 +115,7 @@ sge::thread::future::detail::base<T>::try_get(
 template<typename T>
 template<typename Duration>
 bool
-sge::thread::future::detail::base<T>::timed_get(
+fcppt::thread::future::detail::base<T>::timed_get(
 	reference _dest,
 	Duration const &_time)
 {
@@ -127,7 +127,7 @@ sge::thread::future::detail::base<T>::timed_get(
 
 template<typename T>
 bool
-sge::thread::future::detail::base<T>::timed_get_until(
+fcppt::thread::future::detail::base<T>::timed_get_until(
 	reference _dest,
 	boost::system_time const &_time)
 {
@@ -140,7 +140,7 @@ sge::thread::future::detail::base<T>::timed_get_until(
 }
 
 template<typename T>
-sge::thread::future::state::type sge::thread::future::detail::base<T>::state() const
+fcppt::thread::future::state::type sge::thread::future::detail::base<T>::state() const
 {
 	if (!object_)
 		throw uninitialized();
@@ -148,13 +148,13 @@ sge::thread::future::state::type sge::thread::future::detail::base<T>::state() c
 }
 
 template<typename T>
-bool sge::thread::future::detail::base<T>::is_ready() const
+bool fcppt::thread::future::detail::base<T>::is_ready() const
 {
-	return state() == sge::thread::future::state::ready;
+	return state() == fcppt::thread::future::state::ready;
 }
 
 template<typename T>
-bool sge::thread::future::detail::base<T>::has_exception() const
+bool fcppt::thread::future::detail::base<T>::has_exception() const
 {
 	if(!object_)
 		return false;
@@ -165,7 +165,7 @@ bool sge::thread::future::detail::base<T>::has_exception() const
 }
 
 template<typename T>
-bool sge::thread::future::detail::base<T>::has_value() const
+bool fcppt::thread::future::detail::base<T>::has_value() const
 {
 	if(!object_)
 		return false;
@@ -176,13 +176,13 @@ bool sge::thread::future::detail::base<T>::has_value() const
 }
 
 template<typename T>
-bool sge::thread::future::detail::base<T>::was_moved() const
+bool fcppt::thread::future::detail::base<T>::was_moved() const
 {
-	return state() == sge::thread::future::state::moved;
+	return state() == fcppt::thread::future::state::moved;
 }
 
 template<typename T>
-void sge::thread::future::detail::base<T>::wait() const
+void fcppt::thread::future::detail::base<T>::wait() const
 {
 	if (!object_)
 		throw uninitialized();
@@ -191,7 +191,7 @@ void sge::thread::future::detail::base<T>::wait() const
 
 template<typename T>
 template<typename Duration>
-bool sge::thread::future::detail::base<T>::timed_wait(
+bool fcppt::thread::future::detail::base<T>::timed_wait(
 	Duration const& _time) const
 {
 	return
@@ -200,7 +200,7 @@ bool sge::thread::future::detail::base<T>::timed_wait(
 }
 
 template<typename T>
-bool sge::thread::future::detail::base<T>::timed_wait_until(
+bool fcppt::thread::future::detail::base<T>::timed_wait_until(
 	boost::system_time const& _time) const
 {
 	if (object_)
@@ -210,4 +210,4 @@ bool sge::thread::future::detail::base<T>::timed_wait_until(
 			_time);
 }
 
-#endif // SGE_THREAD_FUTURE_DETAIL_BASE_HPP_INCLUDED
+#endif // FCPPT_THREAD_FUTURE_DETAIL_BASE_HPP_INCLUDED

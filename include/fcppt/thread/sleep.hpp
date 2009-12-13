@@ -1,14 +1,14 @@
-#ifndef SGE_THREAD_SLEEP_HPP_INCLUDED
-#define SGE_THREAD_SLEEP_HPP_INCLUDED
+#ifndef FCPPT_THREAD_SLEEP_HPP_INCLUDED
+#define FCPPT_THREAD_SLEEP_HPP_INCLUDED
 
-#include <sge/export.hpp>
+#include <fcppt/export.hpp>
 #include <boost/thread/thread_time.hpp>
 
-namespace sge
+namespace fcppt
 {
 namespace thread
 {
-SGE_SYMBOL void sleep(
+FCPPT_SYMBOL void sleep(
 	int);
 }
 }

@@ -18,8 +18,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
 
-#ifndef SGE_TYPE_TRAITS_IS_ITERATOR_HPP_INCLUDED
-#define SGE_TYPE_TRAITS_IS_ITERATOR_HPP_INCLUDED
+#ifndef FCPPT_TYPE_TRAITS_IS_ITERATOR_HPP_INCLUDED
+#define FCPPT_TYPE_TRAITS_IS_ITERATOR_HPP_INCLUDED
 
 #include <boost/type_traits/integral_constant.hpp>
 #include <iterator>
@@ -37,7 +37,7 @@ class transform_iterator;
 
 }
 
-namespace sge
+namespace fcppt
 {
 namespace type_traits
 {

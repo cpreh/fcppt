@@ -18,12 +18,12 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
 
-#ifndef SGE_CHRONO_TREAT_AS_FLOATING_POINT_HPP_INCLUDED
-#define SGE_CHRONO_TREAT_AS_FLOATING_POINT_HPP_INCLUDED
+#ifndef FCPPT_CHRONO_TREAT_AS_FLOATING_POINT_HPP_INCLUDED
+#define FCPPT_CHRONO_TREAT_AS_FLOATING_POINT_HPP_INCLUDED
 
 #include <boost/type_traits/is_floating_point.hpp>
 
-namespace sge
+namespace fcppt
 {
 namespace chrono
 {

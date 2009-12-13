@@ -1,9 +1,9 @@
-#ifndef SGE_THREAD_FUTURE_SHARED_OBJECT_HPP_INCLUDED
-#define SGE_THREAD_FUTURE_SHARED_OBJECT_HPP_INCLUDED
+#ifndef FCPPT_THREAD_FUTURE_SHARED_OBJECT_HPP_INCLUDED
+#define FCPPT_THREAD_FUTURE_SHARED_OBJECT_HPP_INCLUDED
 
-#include <sge/thread/future/detail/base.hpp>
+#include <fcppt/thread/future/detail/base.hpp>
 
-namespace sge
+namespace fcppt
 {
 namespace thread
 {
@@ -46,14 +46,14 @@ public:
 }
 
 template<typename T>
-sge::thread::future::shared_object<T>::shared_object()
+fcppt::thread::future::shared_object<T>::shared_object()
 :
 	base()
 {
 }
 
 template<typename T>
-sge::thread::future::shared_object<T>::shared_object(
+fcppt::thread::future::shared_object<T>::shared_object(
 	shared_object const &_rhs)
 :
 	base(
@@ -62,7 +62,7 @@ sge::thread::future::shared_object<T>::shared_object(
 }
 
 template<typename T>
-sge::thread::future::shared_object<T>::shared_object(
+fcppt::thread::future::shared_object<T>::shared_object(
 	typename base::object_ptr _object)
 :
 	base(
@@ -71,7 +71,7 @@ sge::thread::future::shared_object<T>::shared_object(
 }
 
 template<typename T>
-sge::thread::future::shared_object<T>::shared_object(
+fcppt::thread::future::shared_object<T>::shared_object(
 	boost::detail::thread_move_t<shared_object> _other)
 :
 	base(
@@ -81,7 +81,7 @@ sge::thread::future::shared_object<T>::shared_object(
 }
 
 template<typename T>
-sge::thread::future::shared_object<T>::shared_object(
+fcppt::thread::future::shared_object<T>::shared_object(
 	boost::detail::thread_move_t<unique_object<T> > _other)
 :
 	base(
@@ -91,7 +91,7 @@ sge::thread::future::shared_object<T>::shared_object(
 }
 
 template<typename T>
-sge::thread::future::shared_object<T> &sge::thread::future::shared_object<T>::operator=(
+fcppt::thread::future::shared_object<T> &sge::thread::future::shared_object<T>::operator=(
 	shared_object const &_rhs)
 {
 	this->object_ = _rhs.object_;
@@ -99,7 +99,7 @@ sge::thread::future::shared_object<T> &sge::thread::future::shared_object<T>::op
 }
 
 template<typename T>
-sge::thread::future::shared_object<T> &sge::thread::future::shared_object<T>::operator=(
+fcppt::thread::future::shared_object<T> &sge::thread::future::shared_object<T>::operator=(
 	boost::detail::thread_move_t<shared_object> _other)
 {
 	this->object_ = _other->object_;
@@ -108,7 +108,7 @@ sge::thread::future::shared_object<T> &sge::thread::future::shared_object<T>::op
 }
 
 template<typename T>
-sge::thread::future::shared_object<T> &sge::thread::future::shared_object<T>::operator=(
+fcppt::thread::future::shared_object<T> &sge::thread::future::shared_object<T>::operator=(
 	boost::detail::thread_move_t<unique_object<T> > _other)
 {
 	this->object_.swap(
@@ -118,11 +118,11 @@ sge::thread::future::shared_object<T> &sge::thread::future::shared_object<T>::op
 }
 
 template<typename T>
-sge::thread::future::shared_object<T>::operator boost::detail::thread_move_t< sge::thread::future::shared_object<T> >()
+fcppt::thread::future::shared_object<T>::operator boost::detail::thread_move_t< sge::thread::future::shared_object<T> >()
 {
 	return
 		boost::detail::thread_move_t<shared_object>(
 			*this);
 }
 
-#endif // SGE_THREAD_FUTURE_SHARED_OBJECT_HPP_INCLUDED
+#endif // FCPPT_THREAD_FUTURE_SHARED_OBJECT_HPP_INCLUDED

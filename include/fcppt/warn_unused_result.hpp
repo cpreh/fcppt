@@ -18,14 +18,14 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
 
-#ifndef SGE_WARN_UNUSED_RESULT_HPP_INCLUDED
-#define SGE_WARN_UNUSED_RESULT_HPP_INCLUDED
+#ifndef FCPPT_WARN_UNUSED_RESULT_HPP_INCLUDED
+#define FCPPT_WARN_UNUSED_RESULT_HPP_INCLUDED
 
 // TODO
 #if defined(__GNUC__)
-#define SGE_WARN_UNUSED_RESULT __attribute__ ((warn_unused_result))
+#define FCPPT_WARN_UNUSED_RESULT __attribute__ ((warn_unused_result))
 #else
-#define SGE_WARN_UNUSED_RESULT
+#define FCPPT_WARN_UNUSED_RESULT
 #endif
 
 #endif

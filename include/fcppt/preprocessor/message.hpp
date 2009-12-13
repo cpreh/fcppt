@@ -18,16 +18,16 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
 
-#ifndef SGE_PREPROCESSOR_MESSAGE_HPP_INCLUDED
-#define SGE_PREPROCESSOR_MESSAGE_HPP_INCLUDED
+#ifndef FCPPT_PREPROCESSOR_MESSAGE_HPP_INCLUDED
+#define FCPPT_PREPROCESSOR_MESSAGE_HPP_INCLUDED
 
-#include <sge/preprocessor/pragma.hpp>
-#include <sge/config.h>
+#include <fcppt/preprocessor/pragma.hpp>
+#include <fcppt/config.h>
 
-#if defined(_MSC_VER) || defined(SGE_HAVE_GCC_PRAGMA_MESSAGE)
-#define SGE_PP_MESSAGE(x) SGE_PP_PRAGMA(message (x))
+#if defined(_MSC_VER) || defined(FCPPT_HAVE_GCC_PRAGMA_MESSAGE)
+#define FCPPT_PP_MESSAGE(x) SGE_PP_PRAGMA(message (x))
 #else
-#define SGE_PP_MESSAGE(x)
+#define FCPPT_PP_MESSAGE(x)
 #endif
 
 #endif

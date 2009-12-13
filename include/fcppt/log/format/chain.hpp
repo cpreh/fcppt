@@ -18,34 +18,34 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
 
-#ifndef SGE_LOG_FORMAT_CHAIN_HPP_INCLUDED
-#define SGE_LOG_FORMAT_CHAIN_HPP_INCLUDED
+#ifndef FCPPT_LOG_FORMAT_CHAIN_HPP_INCLUDED
+#define FCPPT_LOG_FORMAT_CHAIN_HPP_INCLUDED
 
-#include <sge/log/format/object.hpp>
-#include <sge/log/format/object_ptr.hpp>
-#include <sge/string.hpp>
-#include <sge/export.hpp>
+#include <fcppt/log/format/object.hpp>
+#include <fcppt/log/format/object_ptr.hpp>
+#include <fcppt/string.hpp>
+#include <fcppt/export.hpp>
 
-namespace sge
+namespace fcppt
 {
 namespace log
 {
 namespace format
 {
 
-class SGE_CLASS_SYMBOL chain
+class FCPPT_CLASS_SYMBOL chain
 :
 	public object
 {
 public:
-	SGE_SYMBOL chain(
+	FCPPT_SYMBOL chain(
 		const_object_ptr parent,
 		const_object_ptr child
 	);
 
-	SGE_SYMBOL ~chain();
+	FCPPT_SYMBOL ~chain();
 
-	SGE_SYMBOL string const
+	FCPPT_SYMBOL string const
 	format(
 		string const &
 	) const;

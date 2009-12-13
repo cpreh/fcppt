@@ -1,10 +1,10 @@
-#ifndef SGE_THREAD_FUTURE_DETAIL_TASK_BASE_HPP_INCLUDED
-#define SGE_THREAD_FUTURE_DETAIL_TASK_BASE_HPP_INCLUDED
+#ifndef FCPPT_THREAD_FUTURE_DETAIL_TASK_BASE_HPP_INCLUDED
+#define FCPPT_THREAD_FUTURE_DETAIL_TASK_BASE_HPP_INCLUDED
 
-#include <sge/thread/future/detail/object.hpp>
-#include <sge/thread/future/task_already_started.hpp>
+#include <fcppt/thread/future/detail/object.hpp>
+#include <fcppt/thread/future/task_already_started.hpp>
 
-namespace sge
+namespace fcppt
 {
 namespace thread
 {
@@ -30,14 +30,14 @@ public:
 }
 
 template<typename T>
-sge::thread::future::detail::task_base<T>::task_base()
+fcppt::thread::future::detail::task_base<T>::task_base()
 :
 	started_(
 		false)
 {}
 
 template<typename T>
-void sge::thread::future::detail::task_base<T>::run()
+void fcppt::thread::future::detail::task_base<T>::run()
 {
 	{
 		boost::lock_guard<boost::mutex> lk(
@@ -49,4 +49,4 @@ void sge::thread::future::detail::task_base<T>::run()
 	do_run();
 }
 
-#endif // SGE_THREAD_FUTURE_DETAIL_TASK_BASE_HPP_INCLUDED
+#endif // FCPPT_THREAD_FUTURE_DETAIL_TASK_BASE_HPP_INCLUDED

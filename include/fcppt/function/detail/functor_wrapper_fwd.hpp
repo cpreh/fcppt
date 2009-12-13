@@ -17,10 +17,10 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
-#ifndef SGE_FUNCTION_DETAIL_FUNCTOR_WRAPPER_FWD_HPP_INCLUDED
-#define SGE_FUNCTION_DETAIL_FUNCTOR_WRAPPER_FWD_HPP_INCLUDED
+#ifndef FCPPT_FUNCTION_DETAIL_FUNCTOR_WRAPPER_FWD_HPP_INCLUDED
+#define FCPPT_FUNCTION_DETAIL_FUNCTOR_WRAPPER_FWD_HPP_INCLUDED
 
-namespace sge
+namespace fcppt
 {
 
 namespace function
@@ -36,6 +36,6 @@ struct functor_wrapper;
 
 } // end namespace function
 
-} // end namespace sge
+} // end namespace fcppt
 
 #endif

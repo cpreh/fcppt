@@ -18,19 +18,19 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
 
-#ifndef SGE_CONTAINER_MAP_IMPL_HPP_INCLUDED
-#define SGE_CONTAINER_MAP_IMPL_HPP_INCLUDED
+#ifndef FCPPT_CONTAINER_MAP_IMPL_HPP_INCLUDED
+#define FCPPT_CONTAINER_MAP_IMPL_HPP_INCLUDED
 
-#include <sge/container/map_decl.hpp>
-#include <sge/container/insert_failed.hpp>
-#include <sge/container/not_found.hpp>
-#include <sge/text.hpp>
+#include <fcppt/container/map_decl.hpp>
+#include <fcppt/container/insert_failed.hpp>
+#include <fcppt/container/not_found.hpp>
+#include <fcppt/text.hpp>
 #include <utility>
 
 template<
 	typename MapType
 >
-sge::container::map<
+fcppt::container::map<
 	MapType
 >::map()
 {}
@@ -38,7 +38,7 @@ sge::container::map<
 template<
 	typename MapType
 >
-sge::container::map<
+fcppt::container::map<
 	MapType
 >::map(
 	map_type const &impl_
@@ -53,7 +53,7 @@ template<
 template<
 	typename In
 >
-sge::container::map<
+fcppt::container::map<
 	MapType
 >::map(
 	In const beg,
@@ -68,7 +68,7 @@ sge::container::map<
 template<
 	typename MapType
 >
-void sge::container::map<
+void fcppt::container::map<
 	MapType
 >::insert(
 	key_type const &k,
@@ -86,7 +86,7 @@ void sge::container::map<
 template<
 	typename MapType
 >
-void sge::container::map<
+void fcppt::container::map<
 	MapType
 >::insert(
 	value_type const &v
@@ -96,14 +96,14 @@ void sge::container::map<
 		!impl_.insert(v).second
 	)
 		throw insert_failed(
-			SGE_TEXT("insert in map failed!")
+			FCPPT_TEXT("insert in map failed!")
 		);
 }
 
 template<
 	typename MapType
 >
-void sge::container::map<
+void fcppt::container::map<
 	MapType
 >::erase(
 	key_type const &k
@@ -115,14 +115,14 @@ void sge::container::map<
 		)
 	)
 		throw not_found(
-			SGE_TEXT("erase from map failed!")
+			FCPPT_TEXT("erase from map failed!")
 		);
 }
 
 template<
 	typename MapType
 >
-void sge::container::map<
+void fcppt::container::map<
 	MapType
 >::erase(
 	iterator const it
@@ -136,10 +136,10 @@ void sge::container::map<
 template<
 	typename MapType
 >
-typename sge::container::map<
+typename fcppt::container::map<
 	MapType
 >::iterator
-sge::container::map<
+fcppt::container::map<
 	MapType
 >::find(
 	key_type const &k
@@ -151,10 +151,10 @@ sge::container::map<
 template<
 	typename MapType
 >
-typename sge::container::map<
+typename fcppt::container::map<
 	MapType
 >::const_iterator
-sge::container::map<
+fcppt::container::map<
 	MapType
 >::find(
 	key_type const &k
@@ -166,10 +166,10 @@ sge::container::map<
 template<
 	typename MapType
 >
-typename sge::container::map<
+typename fcppt::container::map<
 	MapType
 >::mapped_type const &
-sge::container::map<
+fcppt::container::map<
 	MapType
 >::operator[](
 	key_type const &k
@@ -183,7 +183,7 @@ sge::container::map<
 		it == impl_.end()
 	)
 		throw not_found(
-			SGE_TEXT("operator[] of map failed!")
+			FCPPT_TEXT("operator[] of map failed!")
 		);
 
 	return it->second;
@@ -192,10 +192,10 @@ sge::container::map<
 template<
 	typename MapType
 >
-typename sge::container::map<
+typename fcppt::container::map<
 	MapType
 >::mapped_type &
-sge::container::map<
+fcppt::container::map<
 	MapType
 >::operator[](
 	key_type const &k
@@ -218,7 +218,7 @@ template<
 	typename MapType
 >
 bool
-sge::container::map<
+fcppt::container::map<
 	MapType
 >::contains(
 	key_type const &key
@@ -230,10 +230,10 @@ sge::container::map<
 template<
 	typename MapType
 >
-typename sge::container::map<
+typename fcppt::container::map<
 	MapType
 >::iterator
-sge::container::map<
+fcppt::container::map<
 	MapType
 >::begin()
 {
@@ -243,10 +243,10 @@ sge::container::map<
 template<
 	typename MapType
 >
-typename sge::container::map<
+typename fcppt::container::map<
 	MapType
 >::const_iterator
-sge::container::map<
+fcppt::container::map<
 	MapType
 >::begin() const
 {
@@ -256,10 +256,10 @@ sge::container::map<
 template<
 	typename MapType
 >
-typename sge::container::map<
+typename fcppt::container::map<
 	MapType
 >::iterator
-sge::container::map<
+fcppt::container::map<
 	MapType
 >::end()
 {
@@ -269,10 +269,10 @@ sge::container::map<
 template<
 	typename MapType
 >
-typename sge::container::map<
+typename fcppt::container::map<
 	MapType
 >::const_iterator
-sge::container::map<
+fcppt::container::map<
 	MapType
 >::end() const
 {
@@ -282,10 +282,10 @@ sge::container::map<
 template<
 	typename MapType
 >
-typename sge::container::map<
+typename fcppt::container::map<
 	MapType
 >::size_type
-sge::container::map<
+fcppt::container::map<
 	MapType
 >::size() const
 {
@@ -296,7 +296,7 @@ template<
 	typename MapType
 >
 bool
-sge::container::map<
+fcppt::container::map<
 	MapType
 >::empty() const
 {

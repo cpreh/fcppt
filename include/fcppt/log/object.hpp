@@ -18,91 +18,91 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
 
-#ifndef SGE_LOG_OBJECT_HPP_INCLUDED
-#define SGE_LOG_OBJECT_HPP_INCLUDED
+#ifndef FCPPT_LOG_OBJECT_HPP_INCLUDED
+#define FCPPT_LOG_OBJECT_HPP_INCLUDED
 
-#include <sge/log/object_fwd.hpp>
-#include <sge/log/detail/auto_context.hpp>
-#include <sge/log/parameters/all_fwd.hpp>
-#include <sge/log/level_stream_array.hpp>
-#include <sge/log/enabled_level_array.hpp>
-#include <sge/log/temporary_output_fwd.hpp>
-#include <sge/log/level.hpp>
-#include <sge/log/level_stream_fwd.hpp>
-#include <sge/log/context_location_fwd.hpp>
-#include <sge/log/format/object_ptr.hpp>
-#include <sge/ostream.hpp>
-#include <sge/export.hpp>
-#include <sge/noncopyable.hpp>
+#include <fcppt/log/object_fwd.hpp>
+#include <fcppt/log/detail/auto_context.hpp>
+#include <fcppt/log/parameters/all_fwd.hpp>
+#include <fcppt/log/level_stream_array.hpp>
+#include <fcppt/log/enabled_level_array.hpp>
+#include <fcppt/log/temporary_output_fwd.hpp>
+#include <fcppt/log/level.hpp>
+#include <fcppt/log/level_stream_fwd.hpp>
+#include <fcppt/log/context_location_fwd.hpp>
+#include <fcppt/log/format/object_ptr.hpp>
+#include <fcppt/ostream.hpp>
+#include <fcppt/export.hpp>
+#include <fcppt/noncopyable.hpp>
 
-namespace sge
+namespace fcppt
 {
 namespace log
 {
 
 class object {
-	SGE_NONCOPYABLE(object)
+	FCPPT_NONCOPYABLE(object)
 public:
-	SGE_SYMBOL explicit object(
+	FCPPT_SYMBOL explicit object(
 		parameters::all const &
 	);
 
-	SGE_SYMBOL ~object();
+	FCPPT_SYMBOL ~object();
 
-	SGE_SYMBOL void
+	FCPPT_SYMBOL void
 	log(
 		level::type,
 		temporary_output const &
 	);
 
-	SGE_SYMBOL level_stream &
+	FCPPT_SYMBOL level_stream &
 	level_sink(
 		level::type
 	);
 
-	SGE_SYMBOL level_stream const &
+	FCPPT_SYMBOL level_stream const &
 	level_sink(
 		level::type
 	) const;
 
-	SGE_SYMBOL void
+	FCPPT_SYMBOL void
 	activate(
 		level::type
 	);
 
-	SGE_SYMBOL void
+	FCPPT_SYMBOL void
 	deactivate(
 		level::type
 	);
 
-	SGE_SYMBOL bool
+	FCPPT_SYMBOL bool
 	activated(
 		level::type
 	) const;
 
-	SGE_SYMBOL void
+	FCPPT_SYMBOL void
 	enable(
 		bool
 	);
 
-	SGE_SYMBOL bool
+	FCPPT_SYMBOL bool
 	enabled() const;
 
-	SGE_SYMBOL ostream &
+	FCPPT_SYMBOL ostream &
 	sink() const;
 
-	SGE_SYMBOL format::const_object_ptr const
+	FCPPT_SYMBOL format::const_object_ptr const
 	formatter() const;
 
-	SGE_SYMBOL
+	FCPPT_SYMBOL
 	log::context_location const
 	context_location() const;
 
-	SGE_SYMBOL
+	FCPPT_SYMBOL
 	level_stream_array const &
 	level_streams() const;
 
-	SGE_SYMBOL
+	FCPPT_SYMBOL
 	enabled_level_array const &
 	enabled_levels() const;
 private:

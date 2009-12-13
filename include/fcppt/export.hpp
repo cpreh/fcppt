@@ -18,33 +18,33 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
 
-#ifndef SGE_EXPORT_HPP_INCLUDED
-#define SGE_EXPORT_HPP_INCLUDED
+#ifndef FCPPT_EXPORT_HPP_INCLUDED
+#define FCPPT_EXPORT_HPP_INCLUDED
 
-#include <sge/config.h>
+#include <fcppt/config.h>
 
 #if defined(_MSC_VER)
-#	define SGE_EXPORT_SYMBOL __declspec(dllexport)
-#	define SGE_IMPORT_SYMBOL __declspec(dllimport)
+#	define FCPPT_EXPORT_SYMBOL __declspec(dllexport)
+#	define FCPPT_IMPORT_SYMBOL __declspec(dllimport)
 
-#	ifdef sgecore_EXPORTS
-#		define SGE_SYMBOL SGE_EXPORT_SYMBOL
+#	ifdef fcpptcore_EXPORTS
+#		define FCPPT_SYMBOL SGE_EXPORT_SYMBOL
 #	else
-#		define SGE_SYMBOL SGE_IMPORT_SYMBOL
+#		define FCPPT_SYMBOL SGE_IMPORT_SYMBOL
 #	endif
 
-#	define SGE_CLASS_SYMBOL
-#elif defined(__GNUC__) && defined(SGE_HAVE_GCC_VISIBILITY)
-#	define SGE_SYMBOL __attribute__ ((visibility("default")))
-#	define SGE_EXPORT_SYMBOL SGE_SYMBOL
-#	define SGE_IMPORT_SYMBOL
-#	define SGE_CLASS_SYMBOL SGE_SYMBOL
+#	define FCPPT_CLASS_SYMBOL
+#elif defined(__GNUC__) && defined(FCPPT_HAVE_GCC_VISIBILITY)
+#	define FCPPT_SYMBOL __attribute__ ((visibility("default")))
+#	define FCPPT_EXPORT_SYMBOL SGE_SYMBOL
+#	define FCPPT_IMPORT_SYMBOL
+#	define FCPPT_CLASS_SYMBOL SGE_SYMBOL
 #else
-#	define SGE_SYMBOL
-#	define SGE_EXPORT_SYMBOL
-#	define SGE_IMPORT_SYMBOL
-#	define SGE_CLASS_SYMBOL
+#	define FCPPT_SYMBOL
+#	define FCPPT_EXPORT_SYMBOL
+#	define FCPPT_IMPORT_SYMBOL
+#	define FCPPT_CLASS_SYMBOL
 #endif
 
 
-#endif // SGE_EXPORT_HPP_INCLUDED
+#endif // FCPPT_EXPORT_HPP_INCLUDED

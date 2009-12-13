@@ -18,15 +18,15 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
 
-#ifndef SGE_ASSIGN_DETAIL_MAKE_ARRAY_IMPL_HPP_INCLUDED
-#define SGE_ASSIGN_DETAIL_MAKE_ARRAY_IMPL_HPP_INCLUDED
+#ifndef FCPPT_ASSIGN_DETAIL_MAKE_ARRAY_IMPL_HPP_INCLUDED
+#define FCPPT_ASSIGN_DETAIL_MAKE_ARRAY_IMPL_HPP_INCLUDED
 
 #include <algorithm>
 
 template<
 	class T,
 	std::size_t N>
-sge::assign::detail::array<T,N>::array(
+fcppt::assign::detail::array<T,N>::array(
 	T const &t)
 {
 	a[0] = t;
@@ -35,7 +35,7 @@ sge::assign::detail::array<T,N>::array(
 template<
 	class T,
 	std::size_t N>
-sge::assign::detail::array<T,N>::array(
+fcppt::assign::detail::array<T,N>::array(
 	array<T,N-1> const &that,
 	T const &t)
 {
@@ -50,8 +50,8 @@ sge::assign::detail::array<T,N>::array(
 template<
 	class T,
 	std::size_t N>
-sge::assign::detail::array<T,N+1>
-sge::assign::detail::array<T,N>::operator()(
+fcppt::assign::detail::array<T,N+1>
+fcppt::assign::detail::array<T,N>::operator()(
 	T const &t)
 {
 	return array<T,N+1>(
@@ -62,13 +62,13 @@ sge::assign::detail::array<T,N>::operator()(
 template<
 	class T,
 	std::size_t N>
-sge::assign::detail::array<T,N>::operator container_type() const
+fcppt::assign::detail::array<T,N>::operator container_type() const
 {
 	return a;
 }
 
 template<typename T>
-sge::assign::detail::array<T,1> sge::assign::make_array(
+fcppt::assign::detail::array<T,1> sge::assign::make_array(
 	T const &t)
 {
 	return detail::array<T,1>(

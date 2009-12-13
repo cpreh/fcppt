@@ -18,30 +18,30 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
 
-#ifndef SGE_LOG_FORMAT_INSERTER_HPP_INCLUDED
-#define SGE_LOG_FORMAT_INSERTER_HPP_INCLUDED
+#ifndef FCPPT_LOG_FORMAT_INSERTER_HPP_INCLUDED
+#define FCPPT_LOG_FORMAT_INSERTER_HPP_INCLUDED
 
-#include <sge/log/format/object.hpp>
-#include <sge/string.hpp>
-#include <sge/export.hpp>
+#include <fcppt/log/format/object.hpp>
+#include <fcppt/string.hpp>
+#include <fcppt/export.hpp>
 
-namespace sge
+namespace fcppt
 {
 namespace log
 {
 namespace format
 {
 
-class SGE_CLASS_SYMBOL inserter
+class FCPPT_CLASS_SYMBOL inserter
 :
 	public object
 {
 public:
-	SGE_SYMBOL explicit inserter(
+	FCPPT_SYMBOL explicit inserter(
 		string const &format_string
 	);
 
-	SGE_SYMBOL string const
+	FCPPT_SYMBOL string const
 	format(
 		string const &
 	) const;

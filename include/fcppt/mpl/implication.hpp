@@ -18,13 +18,13 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
 
-#ifndef SGE_MPL_IMPLICATION_HPP_INCLUDED
-#define SGE_MPL_IMPLICATION_HPP_INCLUDED
+#ifndef FCPPT_MPL_IMPLICATION_HPP_INCLUDED
+#define FCPPT_MPL_IMPLICATION_HPP_INCLUDED
 
 #include <boost/mpl/or.hpp>
 #include <boost/mpl/not.hpp>
 
-namespace sge
+namespace fcppt
 {
 namespace mpl
 {

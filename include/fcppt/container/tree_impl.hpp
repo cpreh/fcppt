@@ -18,18 +18,18 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
 
-#ifndef SGE_CONTAINER_TREE_IMPL_HPP_INCLUDED
-#define SGE_CONTAINER_TREE_IMPL_HPP_INCLUDED
+#ifndef FCPPT_CONTAINER_TREE_IMPL_HPP_INCLUDED
+#define FCPPT_CONTAINER_TREE_IMPL_HPP_INCLUDED
 
-#include <sge/container/tree_decl.hpp>
-#include <sge/container/ptr_equal.hpp>
-#include <sge/make_auto_ptr.hpp>
-#include <sge/algorithm/find_if_exn.hpp>
+#include <fcppt/container/tree_decl.hpp>
+#include <fcppt/container/ptr_equal.hpp>
+#include <fcppt/make_auto_ptr.hpp>
+#include <fcppt/algorithm/find_if_exn.hpp>
 
 template<
 	typename T
 >
-sge::container::tree<T>::tree()
+fcppt::container::tree<T>::tree()
 :
 	value_(),
 	parent_(0)
@@ -38,7 +38,7 @@ sge::container::tree<T>::tree()
 template<
 	typename T
 >
-sge::container::tree<T>::tree(
+fcppt::container::tree<T>::tree(
 	init_tree<T> const &)
 :
 	value_(),
@@ -48,7 +48,7 @@ sge::container::tree<T>::tree(
 template<
 	typename T
 >
-sge::container::tree<T>::tree(
+fcppt::container::tree<T>::tree(
 	T const &value_)
 :
 	value_(value_),
@@ -58,7 +58,7 @@ sge::container::tree<T>::tree(
 template<
 	typename T
 >
-sge::container::tree<T>::~tree()
+fcppt::container::tree<T>::~tree()
 {
 	clear();
 }
@@ -66,8 +66,8 @@ sge::container::tree<T>::~tree()
 template<
 	typename T
 >
-typename sge::container::tree<T>::child_list &
-sge::container::tree<T>::children()
+typename fcppt::container::tree<T>::child_list &
+fcppt::container::tree<T>::children()
 {
 	return children_;
 }
@@ -75,8 +75,8 @@ sge::container::tree<T>::children()
 template<
 	typename T
 >
-typename sge::container::tree<T>::child_list const &
-sge::container::tree<T>::children() const
+typename fcppt::container::tree<T>::child_list const &
+fcppt::container::tree<T>::children() const
 {
 	return children_;
 }
@@ -84,8 +84,8 @@ sge::container::tree<T>::children() const
 template<
 	typename T
 >
-sge::container::tree<T> &
-sge::container::tree<T>::parent()
+fcppt::container::tree<T> &
+fcppt::container::tree<T>::parent()
 {
 	return *parent_;
 }
@@ -93,8 +93,8 @@ sge::container::tree<T>::parent()
 template<
 	typename T
 >
-sge::container::tree<T> const &
-sge::container::tree<T>::parent() const
+fcppt::container::tree<T> const &
+fcppt::container::tree<T>::parent() const
 {
 	return *parent_;
 }
@@ -102,8 +102,8 @@ sge::container::tree<T>::parent() const
 template<
 	typename T
 >
-sge::container::tree<T> *
-sge::container::tree<T>::parent_ptr()
+fcppt::container::tree<T> *
+fcppt::container::tree<T>::parent_ptr()
 {
 	return parent_;
 }
@@ -111,8 +111,8 @@ sge::container::tree<T>::parent_ptr()
 template<
 	typename T
 >
-sge::container::tree<T> const *
-sge::container::tree<T>::parent_ptr() const
+fcppt::container::tree<T> const *
+fcppt::container::tree<T>::parent_ptr() const
 {
 	return parent_;
 }
@@ -121,7 +121,7 @@ template<
 	typename T
 >
 bool
-sge::container::tree<T>::has_parent() const
+fcppt::container::tree<T>::has_parent() const
 {
 	return parent_;
 }
@@ -130,7 +130,7 @@ template<
 	typename T
 >
 void
-sge::container::tree<T>::parent(
+fcppt::container::tree<T>::parent(
 	tree &t)
 {
 	parent_ = &t;
@@ -140,7 +140,7 @@ template<
 	typename T
 >
 void
-sge::container::tree<T>::orphan()
+fcppt::container::tree<T>::orphan()
 {
 	if(!has_parent())
 		return;
@@ -155,8 +155,8 @@ sge::container::tree<T>::orphan()
 template<
 	typename T
 >
-typename sge::container::tree<T>::auto_ptr
-sge::container::tree<T>::release(
+typename fcppt::container::tree<T>::auto_ptr
+fcppt::container::tree<T>::release(
 	iterator const it)
 {
 	return children.release(
@@ -166,8 +166,8 @@ sge::container::tree<T>::release(
 template<
 	typename T
 >
-typename sge::container::tree<T>::iterator
-sge::container::tree<T>::child_position()
+typename fcppt::container::tree<T>::iterator
+fcppt::container::tree<T>::child_position()
 {
 	return algorithm::find_if_exn(
 		parent().begin(),
@@ -181,8 +181,8 @@ sge::container::tree<T>::child_position()
 template<
 	typename T
 >
-typename sge::container::tree<T>::const_iterator
-sge::container::tree<T>::child_position() const
+typename fcppt::container::tree<T>::const_iterator
+fcppt::container::tree<T>::child_position() const
 {
 	return const_iterator(
 		const_cast<
@@ -196,7 +196,7 @@ template<
 	typename T
 >
 void
-sge::container::tree<T>::value(
+fcppt::container::tree<T>::value(
 	T const &v)
 {
 	value_ = v;
@@ -206,7 +206,7 @@ template<
 	typename T
 >
 T &
-sge::container::tree<T>::value()
+fcppt::container::tree<T>::value()
 {
 	return value_;
 }
@@ -215,7 +215,7 @@ template<
 	typename T
 >
 T const &
-sge::container::tree<T>::value() const
+fcppt::container::tree<T>::value() const
 {
 	return value_;
 }
@@ -224,7 +224,7 @@ template<
 	typename T
 >
 void
-sge::container::tree<T>::push_back(
+fcppt::container::tree<T>::push_back(
 	auto_ptr r)
 {
 	insert(
@@ -236,7 +236,7 @@ template<
 	typename T
 >
 void
-sge::container::tree<T>::push_back(
+fcppt::container::tree<T>::push_back(
 	T const &t)
 {
 	insert(
@@ -248,7 +248,7 @@ template<
 	typename T
 >
 void
-sge::container::tree<T>::pop_back()
+fcppt::container::tree<T>::pop_back()
 {
 	children().pop_back();
 }
@@ -257,7 +257,7 @@ template<
 	typename T
 >
 void
-sge::container::tree<T>::push_front(
+fcppt::container::tree<T>::push_front(
 	auto_ptr r)
 {
 	insert(
@@ -269,7 +269,7 @@ template<
 	typename T
 >
 void
-sge::container::tree<T>::push_front(
+fcppt::container::tree<T>::push_front(
 	T const &t)
 {
 	insert(
@@ -281,7 +281,7 @@ template<
 	typename T
 >
 void
-sge::container::tree<T>::pop_front()
+fcppt::container::tree<T>::pop_front()
 {
 	children().pop_front();
 }
@@ -290,7 +290,7 @@ template<
 	typename T
 >
 void
-sge::container::tree<T>::clear()
+fcppt::container::tree<T>::clear()
 {
 	erase(
 		begin(),
@@ -301,8 +301,8 @@ sge::container::tree<T>::clear()
 template<
 	typename T
 >
-typename sge::container::tree<T>::reference
-sge::container::tree<T>::back()
+typename fcppt::container::tree<T>::reference
+fcppt::container::tree<T>::back()
 {
 	return children().back();
 }
@@ -310,8 +310,8 @@ sge::container::tree<T>::back()
 template<
 	typename T
 >
-typename sge::container::tree<T>::const_reference
-sge::container::tree<T>::back() const
+typename fcppt::container::tree<T>::const_reference
+fcppt::container::tree<T>::back() const
 {
 	return children().back();
 }
@@ -319,16 +319,16 @@ sge::container::tree<T>::back() const
 template<
 	typename T
 >
-typename sge::container::tree<T>::reference
-sge::container::tree<T>::front()
+typename fcppt::container::tree<T>::reference
+fcppt::container::tree<T>::front()
 {
 	return children().front();
 }
 template<
 	typename T
 >
-typename sge::container::tree<T>::const_reference
-sge::container::tree<T>::front() const
+typename fcppt::container::tree<T>::const_reference
+fcppt::container::tree<T>::front() const
 {
 	return children.front();
 }
@@ -336,8 +336,8 @@ sge::container::tree<T>::front() const
 template<
 	typename T
 >
-typename sge::container::tree<T>::iterator
-sge::container::tree<T>::begin()
+typename fcppt::container::tree<T>::iterator
+fcppt::container::tree<T>::begin()
 {
 	return children().begin();
 }
@@ -345,8 +345,8 @@ sge::container::tree<T>::begin()
 template<
 	typename T
 >
-typename sge::container::tree<T>::iterator
-sge::container::tree<T>::end()
+typename fcppt::container::tree<T>::iterator
+fcppt::container::tree<T>::end()
 {
 	return children().end();
 }
@@ -354,8 +354,8 @@ sge::container::tree<T>::end()
 template<
 	typename T
 >
-typename sge::container::tree<T>::const_iterator
-sge::container::tree<T>::begin() const
+typename fcppt::container::tree<T>::const_iterator
+fcppt::container::tree<T>::begin() const
 {
 	return children().begin();
 }
@@ -363,8 +363,8 @@ sge::container::tree<T>::begin() const
 template<
 	typename T
 >
-typename sge::container::tree<T>::const_iterator
-sge::container::tree<T>::end() const
+typename fcppt::container::tree<T>::const_iterator
+fcppt::container::tree<T>::end() const
 {
 	return children().end();
 }
@@ -372,8 +372,8 @@ sge::container::tree<T>::end() const
 template<
 	typename T
 >
-typename sge::container::tree<T>::reverse_iterator
-sge::container::tree<T>::rbegin()
+typename fcppt::container::tree<T>::reverse_iterator
+fcppt::container::tree<T>::rbegin()
 {
 	return children().rbegin();
 }
@@ -381,8 +381,8 @@ sge::container::tree<T>::rbegin()
 template<
 	typename T
 >
-typename sge::container::tree<T>::reverse_iterator
-sge::container::tree<T>::rend()
+typename fcppt::container::tree<T>::reverse_iterator
+fcppt::container::tree<T>::rend()
 {
 	return children.rend();
 }
@@ -390,8 +390,8 @@ sge::container::tree<T>::rend()
 template<
 	typename T
 >
-typename sge::container::tree<T>::const_reverse_iterator
-sge::container::tree<T>::rbegin() const
+typename fcppt::container::tree<T>::const_reverse_iterator
+fcppt::container::tree<T>::rbegin() const
 {
 	return children().rbegin();
 }
@@ -399,8 +399,8 @@ sge::container::tree<T>::rbegin() const
 template<
 	typename T
 >
-typename sge::container::tree<T>::const_reverse_iterator
-sge::container::tree<T>::rend() const
+typename fcppt::container::tree<T>::const_reverse_iterator
+fcppt::container::tree<T>::rend() const
 {
 	return children().rend();
 }
@@ -409,7 +409,7 @@ template<
 	typename T
 >
 void
-sge::container::tree<T>::insert(
+fcppt::container::tree<T>::insert(
 	iterator const it,
 	auto_ptr r)
 {
@@ -427,7 +427,7 @@ template<
 	typename T
 >
 void
-sge::container::tree<T>::insert(
+fcppt::container::tree<T>::insert(
 	iterator const it,
 	T const &t)
 {
@@ -445,7 +445,7 @@ template<
 	typename T
 >
 void
-sge::container::tree<T>::erase(
+fcppt::container::tree<T>::erase(
 	iterator const it)
 {
 	children().erase(
@@ -456,7 +456,7 @@ template<
 	typename T
 >
 void
-sge::container::tree<T>::erase(
+fcppt::container::tree<T>::erase(
 	iterator const beg,
 	iterator const end)
 {
@@ -468,8 +468,8 @@ sge::container::tree<T>::erase(
 template<
 	typename T
 >
-typename sge::container::tree<T>::size_type
-sge::container::tree<T>::size() const
+typename fcppt::container::tree<T>::size_type
+fcppt::container::tree<T>::size() const
 {
 	return children().size();
 }
@@ -477,8 +477,8 @@ sge::container::tree<T>::size() const
 template<
 	typename T
 >
-typename sge::container::tree<T>::size_type
-sge::container::tree<T>::max_size() const
+typename fcppt::container::tree<T>::size_type
+fcppt::container::tree<T>::max_size() const
 {
 	return children().max_size();
 }
@@ -487,7 +487,7 @@ template<
 	typename T
 >
 bool
-sge::container::tree<T>::empty() const
+fcppt::container::tree<T>::empty() const
 {
 	return children().empty();
 }

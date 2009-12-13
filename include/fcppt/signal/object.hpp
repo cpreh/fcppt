@@ -18,14 +18,14 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
 
-#ifndef SGE_SIGNAL_OBJECT_HPP_INCLUDED
-#define SGE_SIGNAL_OBJECT_HPP_INCLUDED
+#ifndef FCPPT_SIGNAL_OBJECT_HPP_INCLUDED
+#define FCPPT_SIGNAL_OBJECT_HPP_INCLUDED
 
-#include <sge/signal/detail/base.hpp>
-#include <sge/signal/detail/base_impl.hpp>
-#include <sge/signal/detail/operator_limit.hpp>
-#include <sge/signal/detail/define_operator.hpp>
-#include <sge/signal/detail/define_void_operator.hpp>
+#include <fcppt/signal/detail/base.hpp>
+#include <fcppt/signal/detail/base_impl.hpp>
+#include <fcppt/signal/detail/operator_limit.hpp>
+#include <fcppt/signal/detail/define_operator.hpp>
+#include <fcppt/signal/detail/define_void_operator.hpp>
 #include <boost/spirit/home/phoenix/core/argument.hpp>
 #include <boost/preprocessor/repetition/repeat.hpp>
 #include <boost/intrusive/list.hpp>
@@ -33,7 +33,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #include <boost/type_traits/function_traits.hpp>
 #include <boost/utility/enable_if.hpp>
 
-namespace sge
+namespace fcppt
 {
 namespace signal
 {
@@ -50,8 +50,8 @@ public:
 	typedef detail::base<T> base;
 	typedef typename base::connection_list connection_list;
 	typedef typename boost::function_traits<T>::result_type result_type;
-	//typedef typename sge::function::object<T>::result_type result_type;
-	typedef sge::function::object<result_type (result_type,result_type)> combiner_type;
+	//typedef typename fcppt::function::object<T>::result_type result_type;
+	typedef fcppt::function::object<result_type (result_type,result_type)> combiner_type;
 
 	explicit object(
 		combiner_type const &_combiner = boost::phoenix::arg_names::arg1)
@@ -65,8 +65,8 @@ public:
 		combiner_ = _combiner;
 	}
 
-	SGE_SIGNAL_DETAIL_DEFINE_EMPTY_OPERATOR
-	BOOST_PP_REPEAT(SGE_SIGNAL_DETAIL_OPERATOR_LIMIT,SGE_SIGNAL_DETAIL_DEFINE_OPERATOR,nil)
+	FCPPT_SIGNAL_DETAIL_DEFINE_EMPTY_OPERATOR
+	BOOST_PP_REPEAT(FCPPT_SIGNAL_DETAIL_OPERATOR_LIMIT,SGE_SIGNAL_DETAIL_DEFINE_OPERATOR,nil)
 private:
 	combiner_type combiner_;
 };
@@ -88,8 +88,8 @@ public:
 	typedef detail::base<T> base;
 	typedef typename base::connection_list connection_list;
 
-	SGE_SIGNAL_DETAIL_DEFINE_EMPTY_VOID_OPERATOR
-	BOOST_PP_REPEAT(SGE_SIGNAL_DETAIL_OPERATOR_LIMIT,SGE_SIGNAL_DETAIL_DEFINE_VOID_OPERATOR,nil)
+	FCPPT_SIGNAL_DETAIL_DEFINE_EMPTY_VOID_OPERATOR
+	BOOST_PP_REPEAT(FCPPT_SIGNAL_DETAIL_OPERATOR_LIMIT,SGE_SIGNAL_DETAIL_DEFINE_VOID_OPERATOR,nil)
 };
 
 }

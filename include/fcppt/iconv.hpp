@@ -18,27 +18,27 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
 
-#ifndef SGE_ICONV_HPP_INCLUDED
-#define SGE_ICONV_HPP_INCLUDED
+#ifndef FCPPT_ICONV_HPP_INCLUDED
+#define FCPPT_ICONV_HPP_INCLUDED
 
-#include <sge/config.h>
-#include <sge/string.hpp>
-#include <sge/export.hpp>
+#include <fcppt/config.h>
+#include <fcppt/string.hpp>
+#include <fcppt/export.hpp>
 #include <string>
 
-namespace sge
+namespace fcppt
 {
 
-#ifndef SGE_NARROW_STRING
-SGE_SYMBOL string const
+#ifndef FCPPT_NARROW_STRING
+FCPPT_SYMBOL string const
 iconv(
 	std::string const &input);
 
-SGE_SYMBOL std::string const
+FCPPT_SYMBOL std::string const
 iconv(
 	string const &input);
 #else
-SGE_SYMBOL string const
+FCPPT_SYMBOL string const
 iconv(
 	string const &);
 #endif

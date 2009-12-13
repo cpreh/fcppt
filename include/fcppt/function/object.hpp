@@ -18,15 +18,15 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
 
-#ifndef SGE_FUNCTION_OBJECT_HPP_INCLUDED
-#define SGE_FUNCTION_OBJECT_HPP_INCLUDED
+#ifndef FCPPT_FUNCTION_OBJECT_HPP_INCLUDED
+#define FCPPT_FUNCTION_OBJECT_HPP_INCLUDED
 
-#include <sge/function/object_fwd.hpp>
-#include <sge/function/detail/clear_type.hpp>
+#include <fcppt/function/object_fwd.hpp>
+#include <fcppt/function/detail/clear_type.hpp>
 // this include needs to be here to stop the cpp from bitching around
-#include <sge/function/detail/functor_wrapper.hpp>
+#include <fcppt/function/detail/functor_wrapper.hpp>
 
-namespace sge
+namespace fcppt
 {
 
 namespace function
@@ -64,123 +64,123 @@ void swap( object<Signature>& x, object<Signature>& y )
 
 } // end namespace function
 
-} // end namespace sge
+} // end namespace fcppt
 
-#define SGE_FUNCTION_OBJECT_PP_NUM_PARAMS 0
-#include <sge/function/object_template.ipp>
-#undef SGE_FUNCTION_OBJECT_PP_NUM_PARAMS
+#define FCPPT_FUNCTION_OBJECT_PP_NUM_PARAMS 0
+#include <fcppt/function/object_template.ipp>
+#undef FCPPT_FUNCTION_OBJECT_PP_NUM_PARAMS
 
-#define SGE_FUNCTION_OBJECT_PP_NUM_PARAMS 1
-#include <sge/function/object_template.ipp>
-#undef SGE_FUNCTION_OBJECT_PP_NUM_PARAMS
+#define FCPPT_FUNCTION_OBJECT_PP_NUM_PARAMS 1
+#include <fcppt/function/object_template.ipp>
+#undef FCPPT_FUNCTION_OBJECT_PP_NUM_PARAMS
 
-#define SGE_FUNCTION_OBJECT_PP_NUM_PARAMS 2
-#include <sge/function/object_template.ipp>
-#undef SGE_FUNCTION_OBJECT_PP_NUM_PARAMS
+#define FCPPT_FUNCTION_OBJECT_PP_NUM_PARAMS 2
+#include <fcppt/function/object_template.ipp>
+#undef FCPPT_FUNCTION_OBJECT_PP_NUM_PARAMS
 
-#define SGE_FUNCTION_OBJECT_PP_NUM_PARAMS 3
-#include <sge/function/object_template.ipp>
-#undef SGE_FUNCTION_OBJECT_PP_NUM_PARAMS
+#define FCPPT_FUNCTION_OBJECT_PP_NUM_PARAMS 3
+#include <fcppt/function/object_template.ipp>
+#undef FCPPT_FUNCTION_OBJECT_PP_NUM_PARAMS
 
-#define SGE_FUNCTION_OBJECT_PP_NUM_PARAMS 4
-#include <sge/function/object_template.ipp>
-#undef SGE_FUNCTION_OBJECT_PP_NUM_PARAMS
+#define FCPPT_FUNCTION_OBJECT_PP_NUM_PARAMS 4
+#include <fcppt/function/object_template.ipp>
+#undef FCPPT_FUNCTION_OBJECT_PP_NUM_PARAMS
 
-#define SGE_FUNCTION_OBJECT_PP_NUM_PARAMS 5
-#include <sge/function/object_template.ipp>
-#undef SGE_FUNCTION_OBJECT_PP_NUM_PARAMS
+#define FCPPT_FUNCTION_OBJECT_PP_NUM_PARAMS 5
+#include <fcppt/function/object_template.ipp>
+#undef FCPPT_FUNCTION_OBJECT_PP_NUM_PARAMS
 
-#define SGE_FUNCTION_OBJECT_PP_NUM_PARAMS 6
-#include <sge/function/object_template.ipp>
-#undef SGE_FUNCTION_OBJECT_PP_NUM_PARAMS
+#define FCPPT_FUNCTION_OBJECT_PP_NUM_PARAMS 6
+#include <fcppt/function/object_template.ipp>
+#undef FCPPT_FUNCTION_OBJECT_PP_NUM_PARAMS
 
-#define SGE_FUNCTION_OBJECT_PP_NUM_PARAMS 7
-#include <sge/function/object_template.ipp>
-#undef SGE_FUNCTION_OBJECT_PP_NUM_PARAMS
+#define FCPPT_FUNCTION_OBJECT_PP_NUM_PARAMS 7
+#include <fcppt/function/object_template.ipp>
+#undef FCPPT_FUNCTION_OBJECT_PP_NUM_PARAMS
 
-#define SGE_FUNCTION_OBJECT_PP_NUM_PARAMS 8
-#include <sge/function/object_template.ipp>
-#undef SGE_FUNCTION_OBJECT_PP_NUM_PARAMS
+#define FCPPT_FUNCTION_OBJECT_PP_NUM_PARAMS 8
+#include <fcppt/function/object_template.ipp>
+#undef FCPPT_FUNCTION_OBJECT_PP_NUM_PARAMS
 
-#define SGE_FUNCTION_OBJECT_PP_NUM_PARAMS 9
-#include <sge/function/object_template.ipp>
-#undef SGE_FUNCTION_OBJECT_PP_NUM_PARAMS
+#define FCPPT_FUNCTION_OBJECT_PP_NUM_PARAMS 9
+#include <fcppt/function/object_template.ipp>
+#undef FCPPT_FUNCTION_OBJECT_PP_NUM_PARAMS
 
-#define SGE_FUNCTION_OBJECT_PP_NUM_PARAMS 10
-#include <sge/function/object_template.ipp>
-#undef SGE_FUNCTION_OBJECT_PP_NUM_PARAMS
+#define FCPPT_FUNCTION_OBJECT_PP_NUM_PARAMS 10
+#include <fcppt/function/object_template.ipp>
+#undef FCPPT_FUNCTION_OBJECT_PP_NUM_PARAMS
 
-#define SGE_FUNCTION_OBJECT_PP_NUM_PARAMS 11
-#include <sge/function/object_template.ipp>
-#undef SGE_FUNCTION_OBJECT_PP_NUM_PARAMS
+#define FCPPT_FUNCTION_OBJECT_PP_NUM_PARAMS 11
+#include <fcppt/function/object_template.ipp>
+#undef FCPPT_FUNCTION_OBJECT_PP_NUM_PARAMS
 
-#define SGE_FUNCTION_OBJECT_PP_NUM_PARAMS 12
-#include <sge/function/object_template.ipp>
-#undef SGE_FUNCTION_OBJECT_PP_NUM_PARAMS
+#define FCPPT_FUNCTION_OBJECT_PP_NUM_PARAMS 12
+#include <fcppt/function/object_template.ipp>
+#undef FCPPT_FUNCTION_OBJECT_PP_NUM_PARAMS
 
-#define SGE_FUNCTION_OBJECT_PP_NUM_PARAMS 13
-#include <sge/function/object_template.ipp>
-#undef SGE_FUNCTION_OBJECT_PP_NUM_PARAMS
+#define FCPPT_FUNCTION_OBJECT_PP_NUM_PARAMS 13
+#include <fcppt/function/object_template.ipp>
+#undef FCPPT_FUNCTION_OBJECT_PP_NUM_PARAMS
 
-#define SGE_FUNCTION_OBJECT_PP_NUM_PARAMS 14
-#include <sge/function/object_template.ipp>
-#undef SGE_FUNCTION_OBJECT_PP_NUM_PARAMS
+#define FCPPT_FUNCTION_OBJECT_PP_NUM_PARAMS 14
+#include <fcppt/function/object_template.ipp>
+#undef FCPPT_FUNCTION_OBJECT_PP_NUM_PARAMS
 
-#define SGE_FUNCTION_OBJECT_PP_NUM_PARAMS 15
-#include <sge/function/object_template.ipp>
-#undef SGE_FUNCTION_OBJECT_PP_NUM_PARAMS
+#define FCPPT_FUNCTION_OBJECT_PP_NUM_PARAMS 15
+#include <fcppt/function/object_template.ipp>
+#undef FCPPT_FUNCTION_OBJECT_PP_NUM_PARAMS
 
-#define SGE_FUNCTION_OBJECT_PP_NUM_PARAMS 16
-#include <sge/function/object_template.ipp>
-#undef SGE_FUNCTION_OBJECT_PP_NUM_PARAMS
+#define FCPPT_FUNCTION_OBJECT_PP_NUM_PARAMS 16
+#include <fcppt/function/object_template.ipp>
+#undef FCPPT_FUNCTION_OBJECT_PP_NUM_PARAMS
 
-#define SGE_FUNCTION_OBJECT_PP_NUM_PARAMS 17
-#include <sge/function/object_template.ipp>
-#undef SGE_FUNCTION_OBJECT_PP_NUM_PARAMS
+#define FCPPT_FUNCTION_OBJECT_PP_NUM_PARAMS 17
+#include <fcppt/function/object_template.ipp>
+#undef FCPPT_FUNCTION_OBJECT_PP_NUM_PARAMS
 
-#define SGE_FUNCTION_OBJECT_PP_NUM_PARAMS 18
-#include <sge/function/object_template.ipp>
-#undef SGE_FUNCTION_OBJECT_PP_NUM_PARAMS
+#define FCPPT_FUNCTION_OBJECT_PP_NUM_PARAMS 18
+#include <fcppt/function/object_template.ipp>
+#undef FCPPT_FUNCTION_OBJECT_PP_NUM_PARAMS
 
-#define SGE_FUNCTION_OBJECT_PP_NUM_PARAMS 19
-#include <sge/function/object_template.ipp>
-#undef SGE_FUNCTION_OBJECT_PP_NUM_PARAMS
+#define FCPPT_FUNCTION_OBJECT_PP_NUM_PARAMS 19
+#include <fcppt/function/object_template.ipp>
+#undef FCPPT_FUNCTION_OBJECT_PP_NUM_PARAMS
 
-#define SGE_FUNCTION_OBJECT_PP_NUM_PARAMS 20
-#include <sge/function/object_template.ipp>
-#undef SGE_FUNCTION_OBJECT_PP_NUM_PARAMS
+#define FCPPT_FUNCTION_OBJECT_PP_NUM_PARAMS 20
+#include <fcppt/function/object_template.ipp>
+#undef FCPPT_FUNCTION_OBJECT_PP_NUM_PARAMS
 
-#define SGE_FUNCTION_OBJECT_PP_NUM_PARAMS 21
-#include <sge/function/object_template.ipp>
-#undef SGE_FUNCTION_OBJECT_PP_NUM_PARAMS
+#define FCPPT_FUNCTION_OBJECT_PP_NUM_PARAMS 21
+#include <fcppt/function/object_template.ipp>
+#undef FCPPT_FUNCTION_OBJECT_PP_NUM_PARAMS
 
-#define SGE_FUNCTION_OBJECT_PP_NUM_PARAMS 22
-#include <sge/function/object_template.ipp>
-#undef SGE_FUNCTION_OBJECT_PP_NUM_PARAMS
+#define FCPPT_FUNCTION_OBJECT_PP_NUM_PARAMS 22
+#include <fcppt/function/object_template.ipp>
+#undef FCPPT_FUNCTION_OBJECT_PP_NUM_PARAMS
 
-#define SGE_FUNCTION_OBJECT_PP_NUM_PARAMS 23
-#include <sge/function/object_template.ipp>
-#undef SGE_FUNCTION_OBJECT_PP_NUM_PARAMS
+#define FCPPT_FUNCTION_OBJECT_PP_NUM_PARAMS 23
+#include <fcppt/function/object_template.ipp>
+#undef FCPPT_FUNCTION_OBJECT_PP_NUM_PARAMS
 
-#define SGE_FUNCTION_OBJECT_PP_NUM_PARAMS 24
-#include <sge/function/object_template.ipp>
-#undef SGE_FUNCTION_OBJECT_PP_NUM_PARAMS
+#define FCPPT_FUNCTION_OBJECT_PP_NUM_PARAMS 24
+#include <fcppt/function/object_template.ipp>
+#undef FCPPT_FUNCTION_OBJECT_PP_NUM_PARAMS
 
-#define SGE_FUNCTION_OBJECT_PP_NUM_PARAMS 25
-#include <sge/function/object_template.ipp>
-#undef SGE_FUNCTION_OBJECT_PP_NUM_PARAMS
+#define FCPPT_FUNCTION_OBJECT_PP_NUM_PARAMS 25
+#include <fcppt/function/object_template.ipp>
+#undef FCPPT_FUNCTION_OBJECT_PP_NUM_PARAMS
 
-#define SGE_FUNCTION_OBJECT_PP_NUM_PARAMS 26
-#include <sge/function/object_template.ipp>
-#undef SGE_FUNCTION_OBJECT_PP_NUM_PARAMS
+#define FCPPT_FUNCTION_OBJECT_PP_NUM_PARAMS 26
+#include <fcppt/function/object_template.ipp>
+#undef FCPPT_FUNCTION_OBJECT_PP_NUM_PARAMS
 
-#define SGE_FUNCTION_OBJECT_PP_NUM_PARAMS 27
-#include <sge/function/object_template.ipp>
-#undef SGE_FUNCTION_OBJECT_PP_NUM_PARAMS
+#define FCPPT_FUNCTION_OBJECT_PP_NUM_PARAMS 27
+#include <fcppt/function/object_template.ipp>
+#undef FCPPT_FUNCTION_OBJECT_PP_NUM_PARAMS
 
-#define SGE_FUNCTION_OBJECT_PP_NUM_PARAMS 28
-#include <sge/function/object_template.ipp>
-#undef SGE_FUNCTION_OBJECT_PP_NUM_PARAMS
+#define FCPPT_FUNCTION_OBJECT_PP_NUM_PARAMS 28
+#include <fcppt/function/object_template.ipp>
+#undef FCPPT_FUNCTION_OBJECT_PP_NUM_PARAMS
 
 /**
  * variadic template version ...

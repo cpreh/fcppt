@@ -18,13 +18,13 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
 
-#ifndef SGE_BAD_LEXICAL_CAST_HPP_INCLUDED
-#define SGE_BAD_LEXICAL_CAST_HPP_INCLUDED
+#ifndef FCPPT_BAD_LEXICAL_CAST_HPP_INCLUDED
+#define FCPPT_BAD_LEXICAL_CAST_HPP_INCLUDED
 
-#include <sge/exception.hpp>
-#include <sge/type_info.hpp>
+#include <fcppt/exception.hpp>
+#include <fcppt/type_info.hpp>
 
-namespace sge
+namespace fcppt
 {
 
 class bad_lexical_cast
@@ -32,7 +32,7 @@ class bad_lexical_cast
 	public exception
 {
 public:
-	SGE_SYMBOL bad_lexical_cast(
+	FCPPT_SYMBOL bad_lexical_cast(
 		type_info const &source,
 		type_info const &dest
 	);

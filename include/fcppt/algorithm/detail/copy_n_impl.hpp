@@ -18,8 +18,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
 
-#ifndef SGE_ALGORITHM_DETAIL_COPY_N_IMPL_HPP_INCLUDED
-#define SGE_ALGORITHM_DETAIL_COPY_N_IMPL_HPP_INCLUDED
+#ifndef FCPPT_ALGORITHM_DETAIL_COPY_N_IMPL_HPP_INCLUDED
+#define FCPPT_ALGORITHM_DETAIL_COPY_N_IMPL_HPP_INCLUDED
 
 #include <algorithm>
 
@@ -29,7 +29,7 @@ template<
 	typename Size
 >
 Out
-sge::algorithm::copy_n(
+fcppt::algorithm::copy_n(
 	In const beg,
 	Size const sz,
 	Out const out)

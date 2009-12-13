@@ -18,16 +18,16 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
 
-#ifndef SGE_MPL_DETAIL_INVOKE_ON_HPP_INCLUDED
-#define SGE_MPL_DETAIL_INVOKE_ON_HPP_INCLUDED
+#ifndef FCPPT_MPL_DETAIL_INVOKE_ON_HPP_INCLUDED
+#define FCPPT_MPL_DETAIL_INVOKE_ON_HPP_INCLUDED
 
-#include <sge/mpl/invalid_invoke.hpp>
-#include <sge/workarounds.hpp>
+#include <fcppt/mpl/invalid_invoke.hpp>
+#include <fcppt/workarounds.hpp>
 #include <boost/mpl/deref.hpp>
 #include <boost/mpl/next.hpp>
 #include <boost/type_traits/is_same.hpp>
 
-namespace sge
+namespace fcppt
 {
 namespace mpl
 {
@@ -88,7 +88,7 @@ struct invoke_on<
 
 		return Counter::value == index
 			?
-#ifdef SGE_MSVC_DEPENDANT_TEMPLATE_BUG
+#ifdef FCPPT_MSVC_DEPENDANT_TEMPLATE_BUG
 			op.operator()<
 				item
 			>()

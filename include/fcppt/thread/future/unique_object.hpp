@@ -1,10 +1,10 @@
-#ifndef SGE_THREAD_FUTURE_UNIQUE_OBJECT_HPP_INCLUDED
-#define SGE_THREAD_FUTURE_UNIQUE_OBJECT_HPP_INCLUDED
+#ifndef FCPPT_THREAD_FUTURE_UNIQUE_OBJECT_HPP_INCLUDED
+#define FCPPT_THREAD_FUTURE_UNIQUE_OBJECT_HPP_INCLUDED
 
-#include <sge/thread/future/shared_object_fwd.hpp>
-#include <sge/thread/future/detail/base.hpp>
+#include <fcppt/thread/future/shared_object_fwd.hpp>
+#include <fcppt/thread/future/detail/base.hpp>
 
-namespace sge
+namespace fcppt
 {
 namespace thread
 {
@@ -51,14 +51,14 @@ private:
 }
 
 template<typename T>
-sge::thread::future::unique_object<T>::unique_object()
+fcppt::thread::future::unique_object<T>::unique_object()
 :
 	base()
 {
 }
 
 template<typename T>
-sge::thread::future::unique_object<T>::unique_object(
+fcppt::thread::future::unique_object<T>::unique_object(
 	typename base::object_ptr _object)
 :
 	base(
@@ -67,7 +67,7 @@ sge::thread::future::unique_object<T>::unique_object(
 }
 
 template<typename T>
-sge::thread::future::unique_object<T>::unique_object(
+fcppt::thread::future::unique_object<T>::unique_object(
 	boost::detail::thread_move_t<unique_object> _other)
 :
 	base(
@@ -77,7 +77,7 @@ sge::thread::future::unique_object<T>::unique_object(
 }
 
 template<typename T>
-sge::thread::future::unique_object<T> &sge::thread::future::unique_object<T>::operator=(
+fcppt::thread::future::unique_object<T> &sge::thread::future::unique_object<T>::operator=(
 	boost::detail::thread_move_t<unique_object> _other)
 {
 	this->object_ = _other->object_;
@@ -86,7 +86,7 @@ sge::thread::future::unique_object<T> &sge::thread::future::unique_object<T>::op
 }
 
 template<typename T>
-sge::thread::future::unique_object<T>::operator boost::detail::thread_move_t< sge::thread::future::unique_object<T> >()
+fcppt::thread::future::unique_object<T>::operator boost::detail::thread_move_t< sge::thread::future::unique_object<T> >()
 {
 	return
 		boost::detail::thread_move_t<unique_object>(
@@ -94,7 +94,7 @@ sge::thread::future::unique_object<T>::operator boost::detail::thread_move_t< sg
 }
 
 template<typename T>
-T sge::thread::future::unique_object<T>::move()
+T fcppt::thread::future::unique_object<T>::move()
 {
 	if (!this->object_)
 		throw uninitialized();
@@ -102,7 +102,7 @@ T sge::thread::future::unique_object<T>::move()
 }
 
 template<typename T>
-bool sge::thread::future::unique_object<T>::try_move(
+bool fcppt::thread::future::unique_object<T>::try_move(
 	reference _dest)
 {
 	if (!this->object_)
@@ -114,7 +114,7 @@ bool sge::thread::future::unique_object<T>::try_move(
 
 template<typename T>
 template<typename Duration>
-bool sge::thread::future::unique_object<T>::timed_move(
+bool fcppt::thread::future::unique_object<T>::timed_move(
 	reference _dest,
 	Duration const &_time)
 {
@@ -125,7 +125,7 @@ bool sge::thread::future::unique_object<T>::timed_move(
 }
 
 template<typename T>
-bool sge::thread::future::unique_object<T>::timed_move_until(
+bool fcppt::thread::future::unique_object<T>::timed_move_until(
 	reference _dest,
 	boost::system_time const &_time)
 {
@@ -137,4 +137,4 @@ bool sge::thread::future::unique_object<T>::timed_move_until(
 			_time);
 }
 
-#endif // SGE_THREAD_FUTURE_UNIQUE_OBJECT_HPP_INCLUDED
+#endif // FCPPT_THREAD_FUTURE_UNIQUE_OBJECT_HPP_INCLUDED

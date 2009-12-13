@@ -18,24 +18,24 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
 
-#ifndef SGE_FORMAT_HPP_INCLUDED
-#define SGE_FORMAT_HPP_INCLUDED
+#ifndef FCPPT_FORMAT_HPP_INCLUDED
+#define FCPPT_FORMAT_HPP_INCLUDED
 
-#include <sge/config.h>
-#include <sge/string.hpp>
-#include <sge/export.hpp>
+#include <fcppt/config.h>
+#include <fcppt/string.hpp>
+#include <fcppt/export.hpp>
 #include <boost/format.hpp>
 
-namespace sge
+namespace fcppt
 {
 
-#ifdef SGE_NARROW_STRING
+#ifdef FCPPT_NARROW_STRING
 typedef boost::format format;
 #else
 typedef boost::wformat format;
 #endif
 
-SGE_SYMBOL string const str(format const &);
+FCPPT_SYMBOL string const str(format const &);
 
 }
 

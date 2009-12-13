@@ -18,12 +18,12 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
 
-#ifndef SGE_VARIANT_DETAIL_COPY_HPP_INCLUDED
-#define SGE_VARIANT_DETAIL_COPY_HPP_INCLUDED
+#ifndef FCPPT_VARIANT_DETAIL_COPY_HPP_INCLUDED
+#define FCPPT_VARIANT_DETAIL_COPY_HPP_INCLUDED
 
-#include <sge/variant/raw_type.hpp>
+#include <fcppt/variant/raw_type.hpp>
 
-namespace sge
+namespace fcppt
 {
 namespace variant
 {

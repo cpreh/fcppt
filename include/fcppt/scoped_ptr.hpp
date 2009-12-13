@@ -18,15 +18,15 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
 
-#ifndef SGE_SCOPED_PTR_HPP_INCLUDED
-#define SGE_SCOPED_PTR_HPP_INCLUDED
+#ifndef FCPPT_SCOPED_PTR_HPP_INCLUDED
+#define FCPPT_SCOPED_PTR_HPP_INCLUDED
 
-#include <sge/auto_ptr.hpp>
-#include <sge/heap_deleter.hpp>
-#include <sge/noncopyable.hpp>
+#include <fcppt/auto_ptr.hpp>
+#include <fcppt/heap_deleter.hpp>
+#include <fcppt/noncopyable.hpp>
 #include <algorithm>
 
-namespace sge
+namespace fcppt
 {
 
 template<
@@ -36,7 +36,7 @@ template<
 	> class Deleter = heap_deleter
 >
 class scoped_ptr {
-	SGE_NONCOPYABLE(scoped_ptr)
+	FCPPT_NONCOPYABLE(scoped_ptr)
 public:
 	typedef T *pointer;
 

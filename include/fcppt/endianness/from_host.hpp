@@ -18,13 +18,13 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
 
-#ifndef SGE_ENDIANNESS_FROM_HOST_HPP_INCLUDED
-#define SGE_ENDIANNESS_FROM_HOST_HPP_INCLUDED
+#ifndef FCPPT_ENDIANNESS_FROM_HOST_HPP_INCLUDED
+#define FCPPT_ENDIANNESS_FROM_HOST_HPP_INCLUDED
 
-#include <sge/endianness/host_format.hpp>
-#include <sge/endianness/swap.hpp>
+#include <fcppt/endianness/host_format.hpp>
+#include <fcppt/endianness/swap.hpp>
 
-namespace sge
+namespace fcppt
 {
 namespace endianness
 {

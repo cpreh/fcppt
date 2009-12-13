@@ -18,16 +18,16 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
 
-#ifndef SGE_OPTIONAL_IMPL_HPP_INCLUDED
-#define SGE_OPTIONAL_IMPL_HPP_INCLUDED
+#ifndef FCPPT_OPTIONAL_IMPL_HPP_INCLUDED
+#define FCPPT_OPTIONAL_IMPL_HPP_INCLUDED
 
-#include <sge/optional.hpp>
+#include <fcppt/optional.hpp>
 #include <new>
 
 template<
 	typename T
 >
-sge::optional<T>::optional()
+fcppt::optional<T>::optional()
 :
 	storage_(),
 	data_(0)
@@ -37,7 +37,7 @@ sge::optional<T>::optional()
 template<
 	typename T
 >
-sge::optional<T>::optional(
+fcppt::optional<T>::optional(
 	const_reference ref)
 :
 	storage_(),
@@ -49,7 +49,7 @@ sge::optional<T>::optional(
 template<
 	typename T
 >
-sge::optional<T>::optional(
+fcppt::optional<T>::optional(
 	optional const &o)
 :
 	storage_(),
@@ -61,8 +61,8 @@ sge::optional<T>::optional(
 template<
 	typename T
 >
-sge::optional<T> &
-sge::optional<T>::operator=(
+fcppt::optional<T> &
+fcppt::optional<T>::operator=(
 	optional const &o)
 {
 	destroy();
@@ -73,8 +73,8 @@ sge::optional<T>::operator=(
 template<
 	typename T
 >
-sge::optional<T> &
-sge::optional<T>::operator=(
+fcppt::optional<T> &
+fcppt::optional<T>::operator=(
 	const_reference r)
 {
 	destroy();
@@ -85,7 +85,7 @@ sge::optional<T>::operator=(
 template<
 	typename T
 >
-sge::optional<T>::~optional()
+fcppt::optional<T>::~optional()
 {
 	destroy();
 }
@@ -93,8 +93,8 @@ sge::optional<T>::~optional()
 template<
 	typename T
 >
-typename sge::optional<T>::reference
-sge::optional<T>::operator*()
+typename fcppt::optional<T>::reference
+fcppt::optional<T>::operator*()
 {
 	return *data_;
 }
@@ -102,8 +102,8 @@ sge::optional<T>::operator*()
 template<
 	typename T
 >
-typename sge::optional<T>::const_reference
-sge::optional<T>::operator*() const
+typename fcppt::optional<T>::const_reference
+fcppt::optional<T>::operator*() const
 {
 	return *data_;
 }
@@ -111,8 +111,8 @@ sge::optional<T>::operator*() const
 template<
 	typename T
 >
-typename sge::optional<T>::pointer
-sge::optional<T>::operator->()
+typename fcppt::optional<T>::pointer
+fcppt::optional<T>::operator->()
 {
 	return data_;
 }
@@ -120,8 +120,8 @@ sge::optional<T>::operator->()
 template<
 	typename T
 >
-typename sge::optional<T>::const_pointer
-sge::optional<T>::operator->() const
+typename fcppt::optional<T>::const_pointer
+fcppt::optional<T>::operator->() const
 {
 	return data_;
 }
@@ -130,7 +130,7 @@ template<
 	typename T
 >
 void
-sge::optional<T>::reset()
+fcppt::optional<T>::reset()
 {
 	destroy();
 	data_ = 0;
@@ -140,7 +140,7 @@ template<
 	typename T
 >
 bool
-sge::optional<T>::boolean_test() const
+fcppt::optional<T>::boolean_test() const
 {
 	return data_;
 }
@@ -148,8 +148,8 @@ sge::optional<T>::boolean_test() const
 template<
 	typename T
 >
-typename sge::optional<T>::pointer
-sge::optional<T>::construct(
+typename fcppt::optional<T>::pointer
+fcppt::optional<T>::construct(
 	const_reference r)
 {
 	return data_ = new (storage_.data()) T(r);
@@ -158,8 +158,8 @@ sge::optional<T>::construct(
 template<
 	typename T
 >
-typename sge::optional<T>::pointer
-sge::optional<T>::construct(
+typename fcppt::optional<T>::pointer
+fcppt::optional<T>::construct(
 	optional const &o)
 {
 	return o.data_
@@ -171,7 +171,7 @@ template<
 	typename T
 >
 void
-sge::optional<T>::destroy()
+fcppt::optional<T>::destroy()
 {
 	if(data_)
 		data_->~T();

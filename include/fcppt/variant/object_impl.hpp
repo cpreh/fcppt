@@ -18,23 +18,23 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
 
-#ifndef SGE_VARIANT_OBJECT_IMPL_HPP_INCLUDED
-#define SGE_VARIANT_OBJECT_IMPL_HPP_INCLUDED
+#ifndef FCPPT_VARIANT_OBJECT_IMPL_HPP_INCLUDED
+#define FCPPT_VARIANT_OBJECT_IMPL_HPP_INCLUDED
 
-#include <sge/variant/object_decl.hpp>
-#include <sge/variant/apply_unary.hpp>
-#include <sge/variant/invalid_get.hpp>
-#include <sge/variant/detail/copy.hpp>
-#include <sge/variant/detail/destroy.hpp>
-#include <sge/variant/detail/construct.hpp>
-#include <sge/variant/detail/type_info.hpp>
-#include <sge/mpl/index_of.hpp>
+#include <fcppt/variant/object_decl.hpp>
+#include <fcppt/variant/apply_unary.hpp>
+#include <fcppt/variant/invalid_get.hpp>
+#include <fcppt/variant/detail/copy.hpp>
+#include <fcppt/variant/detail/destroy.hpp>
+#include <fcppt/variant/detail/construct.hpp>
+#include <fcppt/variant/detail/type_info.hpp>
+#include <fcppt/mpl/index_of.hpp>
 #include <boost/static_assert.hpp>
 
 template<
 	typename Types
 >
-sge::variant::object<Types>::object()
+fcppt::variant::object<Types>::object()
 :
 	storage_(),
 	index_(elements),
@@ -47,7 +47,7 @@ template<
 template<
 	typename U
 >
-sge::variant::object<Types>::object(
+fcppt::variant::object<Types>::object(
 	U const &u)
 :
 	storage_(),
@@ -62,7 +62,7 @@ sge::variant::object<Types>::object(
 template<
 	typename Types
 >
-sge::variant::object<Types>::object(
+fcppt::variant::object<Types>::object(
 	object const &o
 )
 :
@@ -87,8 +87,8 @@ template<
 template<
 	typename U
 >
-sge::variant::object<Types> &
-sge::variant::object<Types>::operator=(
+fcppt::variant::object<Types> &
+fcppt::variant::object<Types>::operator=(
 	U const &u)
 {
 	destroy();
@@ -103,8 +103,8 @@ sge::variant::object<Types>::operator=(
 template<
 	typename Types
 >
-sge::variant::object<Types> &
-sge::variant::object<Types>::operator=(
+fcppt::variant::object<Types> &
+fcppt::variant::object<Types>::operator=(
 	object const &o)
 {
 	if(o.empty())
@@ -130,7 +130,7 @@ sge::variant::object<Types>::operator=(
 template<
 	typename Types
 >
-sge::variant::object<Types>::~object()
+fcppt::variant::object<Types>::~object()
 {
 	destroy();
 }
@@ -139,7 +139,7 @@ template<
 	typename Types
 >
 bool
-sge::variant::object<Types>::empty() const
+fcppt::variant::object<Types>::empty() const
 {
 	return index_ == elements;
 }
@@ -151,7 +151,7 @@ template<
 	typename U
 >
 U const &
-sge::variant::object<Types>::get() const
+fcppt::variant::object<Types>::get() const
 {
 	check_get<U>();
 
@@ -169,7 +169,7 @@ template<
 	typename U
 >
 U &
-sge::variant::object<Types>::get()
+fcppt::variant::object<Types>::get()
 {
 	check_get<U>();
 
@@ -184,7 +184,7 @@ template<
 	typename Types
 >
 std::type_info const &
-sge::variant::object<Types>::type() const
+fcppt::variant::object<Types>::type() const
 {
 	return apply_unary(
 		detail::type_info(),
@@ -195,8 +195,8 @@ sge::variant::object<Types>::type() const
 template<
 	typename Types
 >
-sge::variant::size_type
-sge::variant::object<Types>::type_index() const
+fcppt::variant::size_type
+fcppt::variant::object<Types>::type_index() const
 {
 	return index_;
 }
@@ -208,7 +208,7 @@ template<
 	typename U
 >
 void
-sge::variant::object<Types>::check_get() const
+fcppt::variant::object<Types>::check_get() const
 {
 	if(
 		index_ != static_cast<
@@ -227,7 +227,7 @@ template<
 	typename U
 >
 void
-sge::variant::object<Types>::construct(
+fcppt::variant::object<Types>::construct(
 	U const &u)
 {
 	data_ = new (storage_.data()) U(u);
@@ -248,7 +248,7 @@ template<
 	typename Types
 >
 void
-sge::variant::object<Types>::destroy()
+fcppt::variant::object<Types>::destroy()
 {
 	if(empty())
 		return;

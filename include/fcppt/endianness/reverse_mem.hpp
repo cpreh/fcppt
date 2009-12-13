@@ -18,18 +18,18 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
 
-#ifndef SGE_ENDIANNESS_REVERSE_MEM_HPP_INCLUDED
-#define SGE_ENDIANNESS_REVERSE_MEM_HPP_INCLUDED
+#ifndef FCPPT_ENDIANNESS_REVERSE_MEM_HPP_INCLUDED
+#define FCPPT_ENDIANNESS_REVERSE_MEM_HPP_INCLUDED
 
-#include <sge/export.hpp>
+#include <fcppt/export.hpp>
 #include <cstddef>
 
-namespace sge
+namespace fcppt
 {
 namespace endianness
 {
 
-SGE_SYMBOL void reverse_mem(
+FCPPT_SYMBOL void reverse_mem(
 	unsigned char*,
 	std::size_t len);
 

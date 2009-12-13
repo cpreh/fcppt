@@ -18,13 +18,13 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
 
-#ifndef SGE_ALGORITHM_JOIN_STRINGS_HPP_INCLUDED
-#define SGE_ALGORITHM_JOIN_STRINGS_HPP_INCLUDED
+#ifndef FCPPT_ALGORITHM_JOIN_STRINGS_HPP_INCLUDED
+#define FCPPT_ALGORITHM_JOIN_STRINGS_HPP_INCLUDED
 
-#include <sge/string.hpp>
+#include <fcppt/string.hpp>
 #include <boost/foreach.hpp>
 
-namespace sge
+namespace fcppt
 {
 namespace algorithm
 {

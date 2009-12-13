@@ -18,21 +18,21 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
 
-#ifndef SGE_LOG_PARAMETERS_ALL_HPP_INCLUDED
-#define SGE_LOG_PARAMETERS_ALL_HPP_INCLUDED
+#ifndef FCPPT_LOG_PARAMETERS_ALL_HPP_INCLUDED
+#define FCPPT_LOG_PARAMETERS_ALL_HPP_INCLUDED
 
-#include <sge/log/parameters/all_fwd.hpp>
-#include <sge/log/object_fwd.hpp>
-#include <sge/log/context_fwd.hpp>
-#include <sge/log/level_stream_array.hpp>
-#include <sge/log/enabled_level_array.hpp>
-#include <sge/log/context_location.hpp>
-#include <sge/log/location_fwd.hpp>
-#include <sge/log/format/object_ptr.hpp>
-#include <sge/ostream.hpp>
-#include <sge/export.hpp>
+#include <fcppt/log/parameters/all_fwd.hpp>
+#include <fcppt/log/object_fwd.hpp>
+#include <fcppt/log/context_fwd.hpp>
+#include <fcppt/log/level_stream_array.hpp>
+#include <fcppt/log/enabled_level_array.hpp>
+#include <fcppt/log/context_location.hpp>
+#include <fcppt/log/location_fwd.hpp>
+#include <fcppt/log/format/object_ptr.hpp>
+#include <fcppt/ostream.hpp>
+#include <fcppt/export.hpp>
 
-namespace sge
+namespace fcppt
 {
 namespace log
 {
@@ -41,60 +41,60 @@ namespace parameters
 
 class all {
 public:
-	SGE_SYMBOL explicit all(
+	FCPPT_SYMBOL explicit all(
 		ostream &
 	);
 
-	SGE_SYMBOL all
+	FCPPT_SYMBOL all
 	parent(
 		object const &
 	);
 
-	SGE_SYMBOL all
+	FCPPT_SYMBOL all
 	context_location(
 		log::context *,
 		log::location const &
 	);
 
-	SGE_SYMBOL all
+	FCPPT_SYMBOL all
 	enabled(
 		bool
 	);
 
-	SGE_SYMBOL all
+	FCPPT_SYMBOL all
 	level_streams(
 		level_stream_array const &
 	);
 
-	SGE_SYMBOL all
+	FCPPT_SYMBOL all
 	enabled_levels(
 		enabled_level_array const &
 	);
 
-	SGE_SYMBOL all
+	FCPPT_SYMBOL all
 	formatter(
 		format::const_object_ptr
 	);
 
-	SGE_SYMBOL ostream &
+	FCPPT_SYMBOL ostream &
 	sink() const;
 
-	SGE_SYMBOL object const *
+	FCPPT_SYMBOL object const *
 	parent() const;
 
-	SGE_SYMBOL log::context_location const &
+	FCPPT_SYMBOL log::context_location const &
 	context_location() const;
 
-	SGE_SYMBOL bool
+	FCPPT_SYMBOL bool
 	enabled() const;
 
-	SGE_SYMBOL level_stream_array const &
+	FCPPT_SYMBOL level_stream_array const &
 	level_streams() const;
 
-	SGE_SYMBOL enabled_level_array const &
+	FCPPT_SYMBOL enabled_level_array const &
 	enabled_levels() const;
 
-	SGE_SYMBOL format::const_object_ptr const
+	FCPPT_SYMBOL format::const_object_ptr const
 	formatter() const;
 private:
 	ostream *sink_;

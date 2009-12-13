@@ -18,22 +18,22 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
 
-#ifndef SGE_CHRONO_CHRONO_HPP_INCLUDED
-#define SGE_CHRONO_CHRONO_HPP_INCLUDED
+#ifndef FCPPT_CHRONO_CHRONO_HPP_INCLUDED
+#define FCPPT_CHRONO_CHRONO_HPP_INCLUDED
 
-#include <sge/chrono/time_point.hpp>
-#include <sge/chrono/time_point_cast.hpp>
-#include <sge/chrono/duration.hpp>
-#include <sge/chrono/duration_cast.hpp>
-#include <sge/chrono/system_clock.hpp>
-#include <sge/chrono/monotonic_clock.hpp>
-#include <sge/chrono/high_resolution_clock.hpp>
-#include <sge/chrono/nanoseconds.hpp>
-#include <sge/chrono/microseconds.hpp>
-#include <sge/chrono/milliseconds.hpp>
-#include <sge/chrono/seconds.hpp>
-#include <sge/chrono/minutes.hpp>
-#include <sge/chrono/hours.hpp>
-#include <sge/chrono/days.hpp> // non standard
+#include <fcppt/chrono/time_point.hpp>
+#include <fcppt/chrono/time_point_cast.hpp>
+#include <fcppt/chrono/duration.hpp>
+#include <fcppt/chrono/duration_cast.hpp>
+#include <fcppt/chrono/system_clock.hpp>
+#include <fcppt/chrono/monotonic_clock.hpp>
+#include <fcppt/chrono/high_resolution_clock.hpp>
+#include <fcppt/chrono/nanoseconds.hpp>
+#include <fcppt/chrono/microseconds.hpp>
+#include <fcppt/chrono/milliseconds.hpp>
+#include <fcppt/chrono/seconds.hpp>
+#include <fcppt/chrono/minutes.hpp>
+#include <fcppt/chrono/hours.hpp>
+#include <fcppt/chrono/days.hpp> // non standard
 
 #endif

@@ -18,27 +18,27 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
 
-#ifndef SGE_LOG_TEMPORARY_OUTPUT_HPP_INCLUDED
-#define SGE_LOG_TEMPORARY_OUTPUT_HPP_INCLUDED
+#ifndef FCPPT_LOG_TEMPORARY_OUTPUT_HPP_INCLUDED
+#define FCPPT_LOG_TEMPORARY_OUTPUT_HPP_INCLUDED
 
-#include <sge/log/temporary_output_fwd.hpp>
-#include <sge/log/output_helper.hpp>
-#include <sge/export.hpp>
-#include <sge/shared_ptr.hpp>
-#include <sge/ostringstream.hpp>
-#include <sge/string.hpp>
+#include <fcppt/log/temporary_output_fwd.hpp>
+#include <fcppt/log/output_helper.hpp>
+#include <fcppt/export.hpp>
+#include <fcppt/shared_ptr.hpp>
+#include <fcppt/ostringstream.hpp>
+#include <fcppt/string.hpp>
 #include <ostream>
 
-namespace sge
+namespace fcppt
 {
 namespace log
 {
 
 class temporary_output {
 public:
-	SGE_SYMBOL temporary_output();
+	FCPPT_SYMBOL temporary_output();
 
-	SGE_SYMBOL string const
+	FCPPT_SYMBOL string const
 	result() const;
 private:
 	shared_ptr<

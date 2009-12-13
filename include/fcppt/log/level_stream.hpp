@@ -18,41 +18,41 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
 
-#ifndef SGE_LOG_LEVEL_STREAM_HPP_INCLUDED
-#define SGE_LOG_LEVEL_STREAM_HPP_INCLUDED
+#ifndef FCPPT_LOG_LEVEL_STREAM_HPP_INCLUDED
+#define FCPPT_LOG_LEVEL_STREAM_HPP_INCLUDED
 
-#include <sge/log/level_stream_fwd.hpp>
-#include <sge/log/temporary_output_fwd.hpp>
-#include <sge/log/format/object_ptr.hpp>
-#include <sge/ostream.hpp>
-#include <sge/export.hpp>
+#include <fcppt/log/level_stream_fwd.hpp>
+#include <fcppt/log/temporary_output_fwd.hpp>
+#include <fcppt/log/format/object_ptr.hpp>
+#include <fcppt/ostream.hpp>
+#include <fcppt/export.hpp>
 
-namespace sge
+namespace fcppt
 {
 namespace log
 {
 
 class level_stream {
 public:
-	SGE_SYMBOL level_stream(
+	FCPPT_SYMBOL level_stream(
 		ostream &,
 		format::const_object_ptr
 	);
 
-	SGE_SYMBOL ~level_stream();
+	FCPPT_SYMBOL ~level_stream();
 
-	SGE_SYMBOL void
+	FCPPT_SYMBOL void
 	log(
 		temporary_output const &,
 		format::const_object_ptr addtional_formatter
 	);
 
-	SGE_SYMBOL void
+	FCPPT_SYMBOL void
 	formatter(
 		format::const_object_ptr
 	);
 
-	SGE_SYMBOL format::const_object_ptr const
+	FCPPT_SYMBOL format::const_object_ptr const
 	formatter() const;
 private:
 	ostream &dest_;

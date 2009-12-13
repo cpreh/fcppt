@@ -18,18 +18,18 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
 
-#ifndef SGE_LOG_TRAMPOLINE_HPP_INCLUDED
-#define SGE_LOG_TRAMPOLINE_HPP_INCLUDED
+#ifndef FCPPT_LOG_TRAMPOLINE_HPP_INCLUDED
+#define FCPPT_LOG_TRAMPOLINE_HPP_INCLUDED
 
-#include <sge/log/output_helper.hpp>
-#include <sge/export.hpp>
+#include <fcppt/log/output_helper.hpp>
+#include <fcppt/export.hpp>
 
-namespace sge
+namespace fcppt
 {
 namespace log
 {
 
-SGE_SYMBOL extern output_helper const _;
+FCPPT_SYMBOL extern output_helper const _;
 
 }
 }

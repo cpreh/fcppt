@@ -18,14 +18,14 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
 
-#ifndef SGE_LOG_LEVEL_STREAM_ARRAY_HPP_INCLUDED
-#define SGE_LOG_LEVEL_STREAM_ARRAY_HPP_INCLUDED
+#ifndef FCPPT_LOG_LEVEL_STREAM_ARRAY_HPP_INCLUDED
+#define FCPPT_LOG_LEVEL_STREAM_ARRAY_HPP_INCLUDED
 
-#include <sge/log/level_stream_ptr.hpp>
-#include <sge/log/level.hpp>
+#include <fcppt/log/level_stream_ptr.hpp>
+#include <fcppt/log/level.hpp>
 #include <tr1/array>
 
-namespace sge
+namespace fcppt
 {
 namespace log
 {

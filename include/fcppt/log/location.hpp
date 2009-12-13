@@ -18,45 +18,45 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
 
-#ifndef SGE_LOG_LOCATION_HPP_INCLUDED
-#define SGE_LOG_LOCATION_HPP_INCLUDED
+#ifndef FCPPT_LOG_LOCATION_HPP_INCLUDED
+#define FCPPT_LOG_LOCATION_HPP_INCLUDED
 
-#include <sge/log/location_fwd.hpp>
-#include <sge/log/detail/location_vector.hpp>
-#include <sge/string.hpp>
-#include <sge/export.hpp>
+#include <fcppt/log/location_fwd.hpp>
+#include <fcppt/log/detail/location_vector.hpp>
+#include <fcppt/string.hpp>
+#include <fcppt/export.hpp>
 
-namespace sge
+namespace fcppt
 {
 namespace log
 {
 
 class location {
 public:
-	SGE_SYMBOL explicit location(
-		sge::string const &
+	FCPPT_SYMBOL explicit location(
+		fcppt::string const &
 	);
 
 	typedef detail::location_vector::const_iterator const_iterator;
 
-	SGE_SYMBOL location &
+	FCPPT_SYMBOL location &
 	operator +=(
-		sge::string const &
+		fcppt::string const &
 	);
 
-	SGE_SYMBOL const_iterator
+	FCPPT_SYMBOL const_iterator
 	begin() const;
 
-	SGE_SYMBOL const_iterator
+	FCPPT_SYMBOL const_iterator
 	end() const;
 
-	SGE_SYMBOL sge::string const
+	FCPPT_SYMBOL fcppt::string const
 	string() const;
 private:
 	detail::location_vector entries_;
 };
 
-SGE_SYMBOL location const
+FCPPT_SYMBOL location const
 operator +(
 	location,
 	string const &

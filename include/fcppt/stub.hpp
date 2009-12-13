@@ -18,19 +18,19 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
 
-#ifndef SGE_STUB_HPP_INCLUDED
-#define SGE_STUB_HPP_INCLUDED
+#ifndef FCPPT_STUB_HPP_INCLUDED
+#define FCPPT_STUB_HPP_INCLUDED
 
-#include <sge/log/headers.hpp>
+#include <fcppt/log/headers.hpp>
 #include <ostream>
 
-#define SGE_STUB_FUNCTION\
-SGE_LOG_WARNING(\
-	sge::log::global(),\
-	sge::log::_1\
-		<< SGE_TEXT("stub in ")\
+#define FCPPT_STUB_FUNCTION\
+FCPPT_LOG_WARNING(\
+	fcppt::log::global(),\
+	fcppt::log::_1\
+		<< FCPPT_TEXT("stub in ")\
 		<< __FILE__\
-		<< SGE_TEXT(" at ")\
+		<< FCPPT_TEXT(" at ")\
 		<< __LINE__);
 
 #endif

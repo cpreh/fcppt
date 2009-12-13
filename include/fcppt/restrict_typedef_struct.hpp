@@ -18,10 +18,10 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
 
-#ifndef SGE_RESTRICT_TYPEDEF_STRUCT_HPP_INCLUDED
-#define SGE_RESTRICT_TYPEDEF_STRUCT_HPP_INCLUDED
+#ifndef FCPPT_RESTRICT_TYPEDEF_STRUCT_HPP_INCLUDED
+#define FCPPT_RESTRICT_TYPEDEF_STRUCT_HPP_INCLUDED
 
-#define SGE_RESTRICT_TYPEDEF_STRUCT(classname) \
+#define FCPPT_RESTRICT_TYPEDEF_STRUCT(classname) \
 private: \
 classname();
 // TODO: what can we add here?

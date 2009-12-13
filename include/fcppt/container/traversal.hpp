@@ -18,17 +18,17 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
 
-#ifndef SGE_CONTAINER_TRAVERSAL_HPP_INCLUDED
-#define SGE_CONTAINER_TRAVERSAL_HPP_INCLUDED
+#ifndef FCPPT_CONTAINER_TRAVERSAL_HPP_INCLUDED
+#define FCPPT_CONTAINER_TRAVERSAL_HPP_INCLUDED
 
-#include <sge/assert.hpp>
+#include <fcppt/assert.hpp>
 #include <boost/iterator/iterator_facade.hpp>
 #include <boost/mpl/if.hpp>
 #include <boost/type_traits/is_const.hpp>
 #include <boost/next_prior.hpp>
 #include <stack>
 
-namespace sge
+namespace fcppt
 {
 namespace container
 {

@@ -18,20 +18,20 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
 
-#ifndef SGE_LOG_DETAIL_CONTEXT_TREE_HPP_INCLUDED
-#define SGE_LOG_DETAIL_CONTEXT_TREE_HPP_INCLUDED
+#ifndef FCPPT_LOG_DETAIL_CONTEXT_TREE_HPP_INCLUDED
+#define FCPPT_LOG_DETAIL_CONTEXT_TREE_HPP_INCLUDED
 
-#include <sge/log/detail/context_tree_node.hpp>
-#include <sge/container/tree_fwd.hpp>
+#include <fcppt/log/detail/context_tree_node.hpp>
+#include <fcppt/container/tree_fwd.hpp>
 
-namespace sge
+namespace fcppt
 {
 namespace log
 {
 namespace detail
 {
 
-typedef sge::container::tree<
+typedef fcppt::container::tree<
 	context_tree_node
 > context_tree;
 

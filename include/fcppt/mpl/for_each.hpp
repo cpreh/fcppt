@@ -18,15 +18,15 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
 
-#ifndef SGE_MPL_FOR_EACH_HPP_INCLUDED
-#define SGE_MPL_FOR_EACH_HPP_INCLUDED
+#ifndef FCPPT_MPL_FOR_EACH_HPP_INCLUDED
+#define FCPPT_MPL_FOR_EACH_HPP_INCLUDED
 
-#include <sge/workarounds.hpp>
+#include <fcppt/workarounds.hpp>
 #include <boost/mpl/deref.hpp>
 #include <boost/mpl/next.hpp>
 #include <boost/type_traits/is_same.hpp>
 
-namespace sge
+namespace fcppt
 {
 namespace mpl
 {
@@ -66,7 +66,7 @@ public:
 		typedef typename boost::mpl::deref<Iterator>::type item;
 		typedef typename boost::mpl::next<Iterator>::type iter;
 
-#ifdef SGE_MSVC_DEPENDANT_TEMPLATE_BUG
+#ifdef FCPPT_MSVC_DEPENDANT_TEMPLATE_BUG
 		f.operator()<item>();
 #else
 		f. template operator()<item>();

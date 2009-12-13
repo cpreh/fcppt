@@ -18,23 +18,23 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
 
-#ifndef SGE_LOG_NO_SUCH_LOCATION_HPP_INCLUDED
-#define SGE_LOG_NO_SUCH_LOCATION_HPP_INCLUDED
+#ifndef FCPPT_LOG_NO_SUCH_LOCATION_HPP_INCLUDED
+#define FCPPT_LOG_NO_SUCH_LOCATION_HPP_INCLUDED
 
-#include <sge/log/exception.hpp>
-#include <sge/log/location.hpp>
+#include <fcppt/log/exception.hpp>
+#include <fcppt/log/location.hpp>
 
-namespace sge
+namespace fcppt
 {
 namespace log
 {
 
-class SGE_CLASS_SYMBOL no_such_location
+class FCPPT_CLASS_SYMBOL no_such_location
 :
 	public exception
 {
 public:
-	SGE_SYMBOL explicit no_such_location(
+	FCPPT_SYMBOL explicit no_such_location(
 		log::location const &
 	);
 

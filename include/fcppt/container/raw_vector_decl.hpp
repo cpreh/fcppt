@@ -18,15 +18,15 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
 
-#ifndef SGE_CONTAINER_RAW_VECTOR_DECL_HPP_INCLUDED
-#define SGE_CONTAINER_RAW_VECTOR_DECL_HPP_INCLUDED
+#ifndef FCPPT_CONTAINER_RAW_VECTOR_DECL_HPP_INCLUDED
+#define FCPPT_CONTAINER_RAW_VECTOR_DECL_HPP_INCLUDED
 
-#include <sge/container/raw_vector_fwd.hpp>
+#include <fcppt/container/raw_vector_fwd.hpp>
 #include <boost/static_assert.hpp>
 #include <boost/type_traits/is_pod.hpp>
 #include <iterator>
 
-namespace sge
+namespace fcppt
 {
 namespace container
 {

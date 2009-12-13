@@ -6,8 +6,8 @@
 //  Distributed under the Boost Software License, Version 1.0.
 //  See http://www.boost.org/LICENSE_1_0.txt
 
-#ifndef SGE_RATIO_HPP_INCLUDED
-#define SGE_RATIO_HPP_INCLUDED
+#ifndef FCPPT_RATIO_HPP_INCLUDED
+#define FCPPT_RATIO_HPP_INCLUDED
 
 #include <cstdlib>
 #include <climits>
@@ -15,7 +15,7 @@
 #include <boost/cstdint.hpp>
 #include <boost/type_traits.hpp>
 
-namespace sge
+namespace fcppt
 {
 
 //----------------------------------------------------------------------------//

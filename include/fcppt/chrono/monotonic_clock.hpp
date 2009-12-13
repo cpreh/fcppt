@@ -18,17 +18,17 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
 
-#ifndef SGE_CHRONO_MONOTONIC_CLOCK_HPP_INCLUDED
-#define SGE_CHRONO_MONOTONIC_CLOCK_HPP_INCLUDED
+#ifndef FCPPT_CHRONO_MONOTONIC_CLOCK_HPP_INCLUDED
+#define FCPPT_CHRONO_MONOTONIC_CLOCK_HPP_INCLUDED
 
-#include <sge/chrono/monotonic_clock_fwd.hpp>
-#include <sge/chrono/duration_fwd.hpp>
-#include <sge/chrono/time_point_fwd.hpp>
-#include <sge/ratio.hpp>
-#include <sge/export.hpp>
+#include <fcppt/chrono/monotonic_clock_fwd.hpp>
+#include <fcppt/chrono/duration_fwd.hpp>
+#include <fcppt/chrono/time_point_fwd.hpp>
+#include <fcppt/ratio.hpp>
+#include <fcppt/export.hpp>
 #include <boost/cstdint.hpp>
 
-namespace sge
+namespace fcppt
 {
 namespace chrono
 {
@@ -39,7 +39,7 @@ public:
 
 	typedef nano period;
 
-	typedef sge::chrono::duration<
+	typedef fcppt::chrono::duration<
 		rep,
 		period
 	> duration;
@@ -50,7 +50,7 @@ public:
 
 	static bool const is_monotonic = true;
 
-	SGE_SYMBOL
+	FCPPT_SYMBOL
 	static time_point
 	now();
 };

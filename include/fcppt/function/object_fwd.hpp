@@ -18,10 +18,10 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
 
-#ifndef SGE_FUNCTION_OBJECT_FWD_HPP_INCLUDED
-#define SGE_FUNCTION_OBJECT_FWD_HPP_INCLUDED
+#ifndef FCPPT_FUNCTION_OBJECT_FWD_HPP_INCLUDED
+#define FCPPT_FUNCTION_OBJECT_FWD_HPP_INCLUDED
 
-namespace sge
+namespace fcppt
 {
 
 namespace function
@@ -32,7 +32,7 @@ namespace function
  *
  * This class was introduced beause the gcc implementation had problems
  * with boost::phoenix.
- * To encounter this, sge::function::object is a wrapper around std::tr1::function
+ * To encounter this, fcppt::function::object is a wrapper around std::tr1::function
  *
  */
 template< typename Singature >
@@ -40,6 +40,6 @@ class object;
 
 } // end namespace function
 
-} // end namespace sge
+} // end namespace fcppt
 
 #endif

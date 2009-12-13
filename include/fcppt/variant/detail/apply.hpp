@@ -18,16 +18,16 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
 
-#ifndef SGE_VARIANT_DETAIL_APPLY_HPP_INCLUDED
-#define SGE_VARIANT_DETAIL_APPLY_HPP_INCLUDED
+#ifndef FCPPT_VARIANT_DETAIL_APPLY_HPP_INCLUDED
+#define FCPPT_VARIANT_DETAIL_APPLY_HPP_INCLUDED
 
-#include <sge/variant/invalid_apply.hpp>
+#include <fcppt/variant/invalid_apply.hpp>
 #include <boost/mpl/deref.hpp>
 #include <boost/mpl/next.hpp>
 #include <boost/mpl/at.hpp>
 #include <boost/type_traits/is_same.hpp>
 
-namespace sge
+namespace fcppt
 {
 namespace variant
 {

@@ -18,16 +18,16 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
 
-#ifndef SGE_SIGNAL_DETAIL_BASE_HPP_INCLUDED
-#define SGE_SIGNAL_DETAIL_BASE_HPP_INCLUDED
+#ifndef FCPPT_SIGNAL_DETAIL_BASE_HPP_INCLUDED
+#define FCPPT_SIGNAL_DETAIL_BASE_HPP_INCLUDED
 
-#include <sge/signal/detail/concrete_connection.hpp>
-#include <sge/signal/auto_connection.hpp>
-#include <sge/noncopyable.hpp>
-#include <sge/function/object.hpp>
+#include <fcppt/signal/detail/concrete_connection.hpp>
+#include <fcppt/signal/auto_connection.hpp>
+#include <fcppt/noncopyable.hpp>
+#include <fcppt/function/object.hpp>
 #include <boost/intrusive/list.hpp>
 
-namespace sge
+namespace fcppt
 {
 namespace signal
 {
@@ -36,10 +36,10 @@ namespace detail
 template<typename T>
 class base
 {
-	SGE_NONCOPYABLE(base)
+	FCPPT_NONCOPYABLE(base)
 public:
 	typedef T function_signature;
-	typedef sge::function::object<T> function_type;
+	typedef fcppt::function::object<T> function_type;
 	typedef detail::concrete_connection<
 			function_signature
 		> concrete_connection;

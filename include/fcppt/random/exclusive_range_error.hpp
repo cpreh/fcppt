@@ -18,21 +18,21 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
 
-#ifndef SGE_RANDOM_EXCLUSIVE_RANGE_ERROR_HPP_INCLUDED
-#define SGE_RANDOM_EXCLUSIVE_RANGE_ERROR_HPP_INCLUDED
+#ifndef FCPPT_RANDOM_EXCLUSIVE_RANGE_ERROR_HPP_INCLUDED
+#define FCPPT_RANDOM_EXCLUSIVE_RANGE_ERROR_HPP_INCLUDED
 
-#include <sge/exception.hpp>
-#include <sge/export.hpp>
+#include <fcppt/exception.hpp>
+#include <fcppt/export.hpp>
 
-namespace sge
+namespace fcppt
 {
 namespace random
 {
 
 class exclusive_range_error : public exception {
 public:
-	SGE_SYMBOL explicit exclusive_range_error(
-		sge::string const &);
+	FCPPT_SYMBOL explicit exclusive_range_error(
+		fcppt::string const &);
 };
 
 }

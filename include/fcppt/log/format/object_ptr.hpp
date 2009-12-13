@@ -18,13 +18,13 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
 
-#ifndef SGE_LOG_FORMAT_OBJECT_PTR_HPP_INCLUDED
-#define SGE_LOG_FORMAT_OBJECT_PTR_HPP_INCLUDED
+#ifndef FCPPT_LOG_FORMAT_OBJECT_PTR_HPP_INCLUDED
+#define FCPPT_LOG_FORMAT_OBJECT_PTR_HPP_INCLUDED
 
-#include <sge/log/format/object_fwd.hpp>
-#include <sge/shared_ptr.hpp>
+#include <fcppt/log/format/object_fwd.hpp>
+#include <fcppt/shared_ptr.hpp>
 
-namespace sge
+namespace fcppt
 {
 namespace log
 {

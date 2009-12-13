@@ -18,16 +18,16 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
 
-#ifndef SGE_MPL_INVOKE_ON_HPP_INCLUDED
-#define SGE_MPL_INVOKE_ON_HPP_INCLUDED
+#ifndef FCPPT_MPL_INVOKE_ON_HPP_INCLUDED
+#define FCPPT_MPL_INVOKE_ON_HPP_INCLUDED
 
-#include <sge/mpl/detail/invoke_on.hpp>
+#include <fcppt/mpl/detail/invoke_on.hpp>
 #include <boost/mpl/integral_c.hpp>
 #include <boost/mpl/begin.hpp>
 #include <boost/mpl/end.hpp>
 #include <boost/mpl/empty.hpp>
 
-namespace sge
+namespace fcppt
 {
 namespace mpl
 {

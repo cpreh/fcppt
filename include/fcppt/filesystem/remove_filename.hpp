@@ -18,18 +18,18 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
 
-#ifndef SGE_FILESYSTEM_REMOVE_FILENAME_HPP_INCLUDED
-#define SGE_FILESYSTEM_REMOVE_FILENAME_HPP_INCLUDED
+#ifndef FCPPT_FILESYSTEM_REMOVE_FILENAME_HPP_INCLUDED
+#define FCPPT_FILESYSTEM_REMOVE_FILENAME_HPP_INCLUDED
 
-#include <sge/filesystem/path.hpp>
-#include <sge/export.hpp>
+#include <fcppt/filesystem/path.hpp>
+#include <fcppt/export.hpp>
 
-namespace sge
+namespace fcppt
 {
 namespace filesystem
 {
 
-SGE_SYMBOL path const
+FCPPT_SYMBOL path const
 remove_filename(
 	path);
 

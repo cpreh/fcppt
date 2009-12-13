@@ -18,16 +18,16 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
 
-#ifndef SGE_RANDOM_ACTOR_NORMALIZED_HPP_INCLUDED
-#define SGE_RANDOM_ACTOR_NORMALIZED_HPP_INCLUDED
+#ifndef FCPPT_RANDOM_ACTOR_NORMALIZED_HPP_INCLUDED
+#define FCPPT_RANDOM_ACTOR_NORMALIZED_HPP_INCLUDED
 
-#include <sge/random/actor/float_type.hpp>
-#include <sge/random/actor/container.hpp>
-#include <sge/random/uniform.hpp>
-#include <sge/export.hpp>
-#include <sge/noncopyable.hpp>
+#include <fcppt/random/actor/float_type.hpp>
+#include <fcppt/random/actor/container.hpp>
+#include <fcppt/random/uniform.hpp>
+#include <fcppt/export.hpp>
+#include <fcppt/noncopyable.hpp>
 
-namespace sge
+namespace fcppt
 {
 namespace random
 {
@@ -35,14 +35,14 @@ namespace actor
 {
 
 class normalized {
-	SGE_NONCOPYABLE(normalized)
+	FCPPT_NONCOPYABLE(normalized)
 public:
-	SGE_SYMBOL explicit normalized(
+	FCPPT_SYMBOL explicit normalized(
 		container const &);
 
-	SGE_SYMBOL ~normalized();
+	FCPPT_SYMBOL ~normalized();
 
-	SGE_SYMBOL void operator()();
+	FCPPT_SYMBOL void operator()();
 private:
 	typedef uniform<
 		float_type

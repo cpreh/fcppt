@@ -18,13 +18,13 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
 
-#ifndef SGE_SIGNAL_SHARED_CONNECTION_HPP_INCLUDED
-#define SGE_SIGNAL_SHARED_CONNECTION_HPP_INCLUDED
+#ifndef FCPPT_SIGNAL_SHARED_CONNECTION_HPP_INCLUDED
+#define FCPPT_SIGNAL_SHARED_CONNECTION_HPP_INCLUDED
 
-#include <sge/signal/detail/connection_fwd.hpp>
-#include <sge/shared_ptr.hpp>
+#include <fcppt/signal/detail/connection_fwd.hpp>
+#include <fcppt/shared_ptr.hpp>
 
-namespace sge
+namespace fcppt
 {
 namespace signal
 {

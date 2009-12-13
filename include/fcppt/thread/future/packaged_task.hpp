@@ -1,13 +1,13 @@
-#ifndef SGE_THREAD_FUTURE_PACKAGED_TASK_HPP_INCLUDED
-#define SGE_THREAD_FUTURE_PACKAGED_TASK_HPP_INCLUDED
+#ifndef FCPPT_THREAD_FUTURE_PACKAGED_TASK_HPP_INCLUDED
+#define FCPPT_THREAD_FUTURE_PACKAGED_TASK_HPP_INCLUDED
 
-#include <sge/noncopyable.hpp>
-#include <sge/thread/future/detail/task_object.hpp>
-#include <sge/thread/future/task_moved.hpp>
-#include <sge/thread/future/already_retrieved.hpp>
-#include <sge/thread/future/unique_object.hpp>
+#include <fcppt/noncopyable.hpp>
+#include <fcppt/thread/future/detail/task_object.hpp>
+#include <fcppt/thread/future/task_moved.hpp>
+#include <fcppt/thread/future/already_retrieved.hpp>
+#include <fcppt/thread/future/unique_object.hpp>
 
-namespace sge
+namespace fcppt
 {
 namespace thread
 {
@@ -16,7 +16,7 @@ namespace future
 template<typename T>
 class packaged_task
 {
-//SGE_NONCOPYABLE(packaged_task)
+//FCPPT_NONCOPYABLE(packaged_task)
 private:
 	packaged_task(
 		packaged_task &);
@@ -44,7 +44,7 @@ public:
 
 	void operator()();
 private:
-	typedef sge::shared_ptr<detail::task_base<T> > task_ptr;
+	typedef fcppt::shared_ptr<detail::task_base<T> > task_ptr;
 	task_ptr task_;
 	bool future_obtained_;
 };
@@ -54,7 +54,7 @@ private:
 
 template<typename T>
 template<class F>
-sge::thread::future::packaged_task<T>::packaged_task(
+fcppt::thread::future::packaged_task<T>::packaged_task(
 	F const &_f)
 :
 	task_(
@@ -67,7 +67,7 @@ sge::thread::future::packaged_task<T>::packaged_task(
 
 template<typename T>
 template<class F>
-sge::thread::future::packaged_task<T>::packaged_task(
+fcppt::thread::future::packaged_task<T>::packaged_task(
 	boost::detail::thread_move_t<F> _f)
 :
 	task_(
@@ -79,7 +79,7 @@ sge::thread::future::packaged_task<T>::packaged_task(
 }
 
 template<typename T>
-sge::thread::future::packaged_task<T>::packaged_task(
+fcppt::thread::future::packaged_task<T>::packaged_task(
 	boost::detail::thread_move_t<packaged_task> _f)
 :
 	future_obtained_(
@@ -90,7 +90,7 @@ sge::thread::future::packaged_task<T>::packaged_task(
 }
 
 template<typename T>
-sge::thread::future::packaged_task<T> &sge::thread::future::packaged_task<T>::operator=(
+fcppt::thread::future::packaged_task<T> &sge::thread::future::packaged_task<T>::operator=(
 	boost::detail::thread_move_t<packaged_task> rhs)
 {
 	packaged_task temp(
@@ -101,7 +101,7 @@ sge::thread::future::packaged_task<T> &sge::thread::future::packaged_task<T>::op
 }
 
 template<typename T>
-void sge::thread::future::packaged_task<T>::swap(
+void fcppt::thread::future::packaged_task<T>::swap(
 	packaged_task &rhs)
 {
 	task_.swap(
@@ -112,7 +112,7 @@ void sge::thread::future::packaged_task<T>::swap(
 }
 
 template<typename T>
-sge::thread::future::unique_object<T> sge::thread::future::packaged_task<T>::object()
+fcppt::thread::future::unique_object<T> sge::thread::future::packaged_task<T>::object()
 {
 	if (!task_)
 		throw task_moved();
@@ -127,11 +127,11 @@ sge::thread::future::unique_object<T> sge::thread::future::packaged_task<T>::obj
 }
 
 template<typename T>
-void sge::thread::future::packaged_task<T>::operator()()
+void fcppt::thread::future::packaged_task<T>::operator()()
 {
 	if (!task_)
 		throw task_moved();
 	task_->run();
 }
 
-#endif // SGE_THREAD_FUTURE_PACKAGED_TASK_HPP_INCLUDED
+#endif // FCPPT_THREAD_FUTURE_PACKAGED_TASK_HPP_INCLUDED

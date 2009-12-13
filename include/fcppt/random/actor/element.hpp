@@ -18,15 +18,15 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
 
-#ifndef SGE_RANDOM_ACTOR_ELEMENT_HPP_INCLUDED
-#define SGE_RANDOM_ACTOR_ELEMENT_HPP_INCLUDED
+#ifndef FCPPT_RANDOM_ACTOR_ELEMENT_HPP_INCLUDED
+#define FCPPT_RANDOM_ACTOR_ELEMENT_HPP_INCLUDED
 
-#include <sge/random/actor/element_fwd.hpp>
-#include <sge/random/actor/float_type.hpp>
-#include <sge/random/actor/callback.hpp>
-#include <sge/export.hpp>
+#include <fcppt/random/actor/element_fwd.hpp>
+#include <fcppt/random/actor/float_type.hpp>
+#include <fcppt/random/actor/callback.hpp>
+#include <fcppt/export.hpp>
 
-namespace sge
+namespace fcppt
 {
 namespace random
 {
@@ -35,14 +35,14 @@ namespace actor
 
 class element {
 public:
-	SGE_SYMBOL element(
+	FCPPT_SYMBOL element(
 		float_type,
 		actor::callback const &);
 
-	SGE_SYMBOL float_type
+	FCPPT_SYMBOL float_type
 	prob() const;
 
-	SGE_SYMBOL actor::callback const &
+	FCPPT_SYMBOL actor::callback const &
 	callback() const;
 private:
 	float_type prob_;

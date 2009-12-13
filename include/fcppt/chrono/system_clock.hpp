@@ -18,17 +18,17 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
 
-#ifndef SGE_CHRONO_SYSTEM_CLOCK_HPP_INCLUDED
-#define SGE_CHRONO_SYSTEM_CLOCK_HPP_INCLUDED
+#ifndef FCPPT_CHRONO_SYSTEM_CLOCK_HPP_INCLUDED
+#define FCPPT_CHRONO_SYSTEM_CLOCK_HPP_INCLUDED
 
-#include <sge/chrono/system_clock_fwd.hpp>
-#include <sge/chrono/duration_fwd.hpp>
-#include <sge/chrono/time_point_fwd.hpp>
-#include <sge/ratio.hpp>
-#include <sge/export.hpp>
+#include <fcppt/chrono/system_clock_fwd.hpp>
+#include <fcppt/chrono/duration_fwd.hpp>
+#include <fcppt/chrono/time_point_fwd.hpp>
+#include <fcppt/ratio.hpp>
+#include <fcppt/export.hpp>
 #include <ctime>
 
-namespace sge
+namespace fcppt
 {
 namespace chrono
 {
@@ -37,7 +37,7 @@ class system_clock {
 public:
 	typedef unsigned long rep;
 
-	typedef sge::micro period;
+	typedef fcppt::micro period;
 
 	typedef chrono::duration<
 		rep,
@@ -50,17 +50,17 @@ public:
 
 	static bool const is_monotonic = false;
 
-	SGE_SYMBOL static
+	FCPPT_SYMBOL static
 	time_point
 	now();
 
-	SGE_SYMBOL static
+	FCPPT_SYMBOL static
 	std::time_t
 	to_time_t(
 		time_point const &
 	);
 
-	SGE_SYMBOL
+	FCPPT_SYMBOL
 	static time_point
 	from_time_t(
 		std::time_t

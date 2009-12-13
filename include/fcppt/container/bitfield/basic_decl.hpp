@@ -18,15 +18,15 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
 
-#ifndef SGE_CONTAINER_BITFIELD_BASIC_DECL_HPP_INCLUDED
-#define SGE_CONTAINER_BITFIELD_BASIC_DECL_HPP_INCLUDED
+#ifndef FCPPT_CONTAINER_BITFIELD_BASIC_DECL_HPP_INCLUDED
+#define FCPPT_CONTAINER_BITFIELD_BASIC_DECL_HPP_INCLUDED
 
-#include <sge/container/bitfield/basic_fwd.hpp>
-#include <sge/container/bitfield/iterator_fwd.hpp>
-#include <sge/container/bitfield/proxy_fwd.hpp>
-#include <sge/container/bitfield/size_type.hpp>
-#include <sge/container/bitfield/value_type.hpp>
-#include <sge/safe_bool.hpp>
+#include <fcppt/container/bitfield/basic_fwd.hpp>
+#include <fcppt/container/bitfield/iterator_fwd.hpp>
+#include <fcppt/container/bitfield/proxy_fwd.hpp>
+#include <fcppt/container/bitfield/size_type.hpp>
+#include <fcppt/container/bitfield/value_type.hpp>
+#include <fcppt/safe_bool.hpp>
 #include <tr1/array>
 #include <iterator>
 #include <limits>
@@ -42,7 +42,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 // - operator|(Enum,Enum) shall not be declared!
 // - std::numeric_limits<InternalType>::digits shall be the number of bits usable in InternalType
 
-namespace sge
+namespace fcppt
 {
 namespace container
 {
@@ -55,7 +55,7 @@ template<
 	typename InternalType
 >
 class basic {
-	SGE_SAFE_BOOL(basic)
+	FCPPT_SAFE_BOOL(basic)
 private:
 	typedef InternalType internal_type;
 

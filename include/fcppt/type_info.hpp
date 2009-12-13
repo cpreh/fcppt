@@ -18,47 +18,47 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
 
-#ifndef SGE_TYPE_INFO_HPP_INCLUDED
-#define SGE_TYPE_INFO_HPP_INCLUDED
+#ifndef FCPPT_TYPE_INFO_HPP_INCLUDED
+#define FCPPT_TYPE_INFO_HPP_INCLUDED
 
-#include <sge/export.hpp>
-#include <sge/string.hpp>
+#include <fcppt/export.hpp>
+#include <fcppt/string.hpp>
 #include <typeinfo>
 
-namespace sge
+namespace fcppt
 {
 
 class type_info {
 public:
-	SGE_SYMBOL type_info(
+	FCPPT_SYMBOL type_info(
 		std::type_info const &
 	);
 
-	SGE_SYMBOL std::type_info const &
+	FCPPT_SYMBOL std::type_info const &
 	get() const;
 
-	SGE_SYMBOL bool
+	FCPPT_SYMBOL bool
 	before(
 		type_info const &rhs
 	) const;
 
-	SGE_SYMBOL string const
+	FCPPT_SYMBOL string const
 	name() const;
 private:
 	std::type_info const *info_;
 };
 
-SGE_SYMBOL bool operator==(const type_info& lhs, const type_info& rhs);
+FCPPT_SYMBOL bool operator==(const type_info& lhs, const type_info& rhs);
 
-SGE_SYMBOL bool operator<(const type_info& lhs, const type_info& rhs);
+FCPPT_SYMBOL bool operator<(const type_info& lhs, const type_info& rhs);
 
-SGE_SYMBOL bool operator!=(const type_info& lhs, const type_info& rhs);
+FCPPT_SYMBOL bool operator!=(const type_info& lhs, const type_info& rhs);
 
-SGE_SYMBOL bool operator>(const type_info& lhs, const type_info& rhs);
+FCPPT_SYMBOL bool operator>(const type_info& lhs, const type_info& rhs);
 
-SGE_SYMBOL bool operator<=(const type_info& lhs, const type_info& rhs);
+FCPPT_SYMBOL bool operator<=(const type_info& lhs, const type_info& rhs);
 
-SGE_SYMBOL bool operator>=(const type_info& lhs, const type_info& rhs);
+FCPPT_SYMBOL bool operator>=(const type_info& lhs, const type_info& rhs);
 
 }
 

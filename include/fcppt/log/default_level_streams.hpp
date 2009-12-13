@@ -18,19 +18,19 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
 
-#ifndef SGE_LOG_DEFAULT_LEVEL_STREAMS_HPP_INCLUDED
-#define SGE_LOG_DEFAULT_LEVEL_STREAMS_HPP_INCLUDED
+#ifndef FCPPT_LOG_DEFAULT_LEVEL_STREAMS_HPP_INCLUDED
+#define FCPPT_LOG_DEFAULT_LEVEL_STREAMS_HPP_INCLUDED
 
-#include <sge/log/level_stream_array.hpp>
-#include <sge/ostream.hpp>
-#include <sge/export.hpp>
+#include <fcppt/log/level_stream_array.hpp>
+#include <fcppt/ostream.hpp>
+#include <fcppt/export.hpp>
 
-namespace sge
+namespace fcppt
 {
 namespace log
 {
 
-SGE_SYMBOL level_stream_array const
+FCPPT_SYMBOL level_stream_array const
 default_level_streams(
 	ostream &
 );
