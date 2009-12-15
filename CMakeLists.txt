@@ -17,14 +17,16 @@ INCLUDE (FindPkgConfig)
 SET (CMAKE_VERBOSE_MAKEFILE ON)
 
 IF (MSVC)
-	OPTION (ENABLE_NARROW_STRING "Build sge with std::string instead of std::wstring" OFF)
+	OPTION (ENABLE_NARROW_STRING "Build fcppt with std::string instead of std::wstring" OFF)
 ELSE ()
-	OPTION (ENABLE_NARROW_STRING "Build sge with std::string instead of std::wstring" ON)
+	OPTION (ENABLE_NARROW_STRING "Build fcppt with std::string instead of std::wstring" ON)
 ENDIF ()
 
 IF (ENABLE_NARROW_STRING)
        SET (FCPPT_NARROW_STRING true)
 ENDIF()
+
+ADD_DEFINITIONS(-D BOOST_FILESYSTEM_NO_DEPRECATED)
 
 IF (CMAKE_COMPILER_IS_GNUCXX)
 	#CHECK_CXX_COMPILER_FLAG(
@@ -53,16 +55,10 @@ IF (CMAKE_COMPILER_IS_GNUCXX)
 		SET (CMAKE_CXX_FLAGS_DEBUG ${CMAKE_CXX_FLAGS_DEBUG}" -Wpadded -Weffc++")
 	ENDIF()
 
-	ADD_DEFINITIONS(-D BOOST_FILESYSTEM_NO_DEPRECATED)
-
 	SET (CMAKE_CXX_FLAGS_RELEASE "-O3 -fomit-frame-pointer -DNDEBUG")
-	
 
-# -fvisibility=hidden causes problems without inlining, so just switch it on
-# in release mode
 	IF (FCPPT_HAVE_GCC_VISIBILITY)
 		ADD_DEFINITIONS(-fvisibility=hidden)
-		#SET (CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} -fvisibility=hidden")
 	ENDIF ()
 
 	#IF (FCPPT_HAVE_VARIADIC_TEMPLATES)
@@ -101,7 +97,6 @@ ENDIF ()
 
 INCLUDE_DIRECTORIES (${CMAKE_SOURCE_DIR}/include)
 
-
 SET (LIBRARY_OUTPUT_PATH ${CMAKE_BINARY_DIR}/bin)
 SET (EXECUTABLE_OUTPUT_PATH ${CMAKE_BINARY_DIR}/bin)
 
@@ -124,29 +119,31 @@ FILE(WRITE ${pkgfile}
 #ENDIF()
 INSTALL (FILES ${pkgfile} DESTINATION ${CMAKE_INSTALL_PREFIX}/lib/pkgconfig)
 
-
+CHECK_CXX_SOURCE_RUNS(
+	"
+	#include <unistd.h>
+	#include <cstdlib>
+	int main()
+	{
+		return _POSIX_VERSION >= 200100
+			? EXIT_SUCCESS
+			: EXIT_FAILURE;
+	}"
+	FCPPT_HAVE_POSIX
+)
 
 CHECK_CXX_SOURCE_RUNS(
-	"#include <unistd.h>
-	 #include <cstdlib>
-	 int main()
-	 {
-	   return _POSIX_VERSION >= 200100
-	          ? EXIT_SUCCESS
-		  : EXIT_FAILURE;
-	 }"
-	 FCPPT_HAVE_POSIX)
-
-CHECK_CXX_SOURCE_RUNS(
-	"#include <unistd.h>
-	 #include <cstdlib>
+	"
+	#include <unistd.h>
+	#include <cstdlib>
 	int main()
 	{
 		return _POSIX_TIMERS > 0
 			? EXIT_SUCCESS
 			: EXIT_FAILURE;
 	}"
-	FCPPT_HAVE_CLOCK_GETTIME)
+	FCPPT_HAVE_CLOCK_GETTIME
+)
 
 # NOTE: we can't use this right now because -std=c++0x is broken with proto
 #CHECK_CXX_SOURCE_COMPILES(
@@ -166,7 +163,7 @@ FIND_PACKAGE(
 )
 
 IF(NOT Boost_FOUND)
-	MESSAGE(ERROR "Boost not found!")
+	MESSAGE(FATAL_ERROR "Boost not found!")
 ENDIF()
 
 CHECK_CXX_SOURCE_COMPILES(
