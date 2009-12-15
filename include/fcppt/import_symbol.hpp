@@ -18,33 +18,15 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
 
-#ifndef FCPPT_EXPORT_HPP_INCLUDED
-#define FCPPT_EXPORT_HPP_INCLUDED
-
-#include <fcppt/config.h>
+#ifndef FCPPT_IMPORT_SYMBOL_HPP_INCLUDED
+#define FCPPT_IMPORT_SYMBOL_HPP_INCLUDED
 
 #if defined(_MSC_VER)
-#	define FCPPT_EXPORT_SYMBOL __declspec(dllexport)
-#	define FCPPT_IMPORT_SYMBOL __declspec(dllimport)
-
-#	ifdef fcpptcore_EXPORTS
-#		define FCPPT_SYMBOL FCPPT_EXPORT_SYMBOL
-#	else
-#		define FCPPT_SYMBOL FCPPT_IMPORT_SYMBOL
-#	endif
-
-#	define FCPPT_CLASS_SYMBOL
-#elif defined(__GNUC__) && defined(FCPPT_HAVE_GCC_VISIBILITY)
-#	define FCPPT_SYMBOL __attribute__ ((visibility("default")))
-#	define FCPPT_EXPORT_SYMBOL FCPPT_SYMBOL
+#	define FCPPT_IMPORT_SYMBOL __declspec(dllexport)
+#elif defined(__GNUC__)
 #	define FCPPT_IMPORT_SYMBOL
-#	define FCPPT_CLASS_SYMBOL FCPPT_SYMBOL
 #else
-#	define FCPPT_SYMBOL
-#	define FCPPT_EXPORT_SYMBOL
-#	define FCPPT_IMPORT_SYMBOL
-#	define FCPPT_CLASS_SYMBOL
+#	error "Don't know what FCPPT_IMPORT_SYMBOL should be"
 #endif
 
-
-#endif // FCPPT_EXPORT_HPP_INCLUDED
+#endif
