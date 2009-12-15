@@ -21,8 +21,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #include <fcppt/endianness/host_format.hpp>
 #include <fcppt/config.h>
 
-#if defined(FCPPT_LITTLE_ENDIAN) && defined(SGE_BIG_ENDIAN)
-#error "FCPPT_LITTLE_ENDIAN and SGE_BIG_ENDIAN defined!"
+#if defined(FCPPT_LITTLE_ENDIAN) && defined(FCCPT_BIG_ENDIAN)
+#error "FCPPT_LITTLE_ENDIAN and FCCPT_BIG_ENDIAN defined!"
 #endif
 
 fcppt::endianness::format::type

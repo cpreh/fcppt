@@ -24,7 +24,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #include <fcppt/preprocessor/stringize.hpp>
 #include <fcppt/preprocessor/file.hpp>
 #include <fcppt/string.hpp>
-#include <fcppt/export.hpp>
+#include <fcppt/symbol.hpp>
 
 // TODO: split this!
 

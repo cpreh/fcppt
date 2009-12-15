@@ -49,43 +49,54 @@ fcppt::container::raw_vector<T, A>::end()
 }
 
 template<typename T, typename A>
-typename fcppt::container::raw_vector<T, A>::const_iterator sge::container::raw_vector<T, A>::end() const
+typename fcppt::container::raw_vector<T, A>::const_iterator
+fcppt::container::raw_vector<T, A>::end() const
 {
 	return data_end();
 }
 
 template<typename T, typename A>
-typename fcppt::container::raw_vector<T, A>::reverse_iterator sge::container::raw_vector<T, A>::rbegin()
+typename fcppt::container::raw_vector<T, A>::reverse_iterator
+fcppt::container::raw_vector<T, A>::rbegin()
 {
 	return reverse_iterator(end());
 }
 
 template<typename T, typename A>
-typename fcppt::container::raw_vector<T, A>::const_reverse_iterator sge::container::raw_vector<T, A>::rbegin() const
+typename fcppt::container::raw_vector<T, A>::const_reverse_iterator
+fcppt::container::raw_vector<T, A>::rbegin() const
 {
 	return const_reverse_iterator(end());
 }
 
 template<typename T, typename A>
-typename fcppt::container::raw_vector<T, A>::reverse_iterator sge::container::raw_vector<T, A>::rend()
+typename fcppt::container::raw_vector<T, A>::reverse_iterator
+fcppt::container::raw_vector<T, A>::rend()
 {
 	return reverse_iterator(begin());
 }
 
 template<typename T, typename A>
-typename fcppt::container::raw_vector<T, A>::const_reverse_iterator sge::container::raw_vector<T, A>::rend() const
+typename fcppt::container::raw_vector<T, A>::const_reverse_iterator
+fcppt::container::raw_vector<T, A>::rend() const
 {
 	return const_reverse_iterator(begin());
 }
 
 template<typename T, typename A>
-typename fcppt::container::raw_vector<T, A>::reference sge::container::raw_vector<T, A>::operator[] (const size_type n)
+typename fcppt::container::raw_vector<T, A>::reference
+fcppt::container::raw_vector<T, A>::operator[] (
+	size_type const n
+)
 {
 	return *(begin() + n);
 }
 
 template<typename T, typename A>
-typename fcppt::container::raw_vector<T, A>::const_reference sge::container::raw_vector<T, A>::operator[] (const size_type n) const
+typename fcppt::container::raw_vector<T, A>::const_reference
+fcppt::container::raw_vector<T, A>::operator[] (
+	size_type const n
+) const
 {
 	return *(begin() + n);
 }
@@ -98,39 +109,49 @@ void fcppt::container::raw_vector<T, A>::free_memory()
 }
 
 template<typename T, typename A>
-typename fcppt::container::raw_vector<T, A>::reference sge::container::raw_vector<T, A>::at(const size_type n)
+typename fcppt::container::raw_vector<T, A>::reference
+fcppt::container::raw_vector<T, A>::at(
+	size_type const n
+)
 {
 	range_check(n);
 	return (*this)[n];
 }
 
 template<typename T, typename A>
-typename fcppt::container::raw_vector<T, A>::const_reference sge::container::raw_vector<T, A>::at(const size_type n) const
+typename fcppt::container::raw_vector<T, A>::const_reference
+fcppt::container::raw_vector<T, A>::at(
+	size_type const n
+) const
 {
 	range_check(n);
 	return (*this)[n];
 }
 
 template<typename T, typename A>
-typename fcppt::container::raw_vector<T, A>::reference sge::container::raw_vector<T, A>::front()
+typename fcppt::container::raw_vector<T, A>::reference
+fcppt::container::raw_vector<T, A>::front()
 {
 	return *begin();
 }
 
 template<typename T, typename A>
-typename fcppt::container::raw_vector<T, A>::const_reference sge::container::raw_vector<T, A>::front() const
+typename fcppt::container::raw_vector<T, A>::const_reference
+fcppt::container::raw_vector<T, A>::front() const
 {
 	return *begin();
 }
 
 template<typename T, typename A>
-typename fcppt::container::raw_vector<T, A>::reference sge::container::raw_vector<T, A>::back()
+typename fcppt::container::raw_vector<T, A>::reference
+fcppt::container::raw_vector<T, A>::back()
 {
 	return *(boost::prior(end()));
 }
 
 template<typename T, typename A>
-typename fcppt::container::raw_vector<T, A>::const_reference sge::container::raw_vector<T, A>::back() const
+typename fcppt::container::raw_vector<T, A>::const_reference
+fcppt::container::raw_vector<T, A>::back() const
 {
 	return *(boost::prior(end()));
 }
@@ -164,34 +185,53 @@ fcppt::container::raw_vector<T, A>::data_end() const
 }
 
 template<typename T, typename A>
-fcppt::container::raw_vector<T, A>::raw_vector(const A& a)
+fcppt::container::raw_vector<T, A>::raw_vector(
+	A const &a
+)
 :
 	i(a)
 {}
 
 template<typename T, typename A>
-fcppt::container::raw_vector<T, A>::raw_vector(const size_type sz, const A& a)
-: i(a, sz)
+fcppt::container::raw_vector<T, A>::raw_vector(
+	size_type const sz,
+	A const &a
+)
+:
+	i(a, sz)
 {}
 
 template<typename T, typename A>
-fcppt::container::raw_vector<T, A>::raw_vector(const size_type sz, const T& t, const A& a)
-: i(a, sz)
+fcppt::container::raw_vector<T, A>::raw_vector(
+	size_type const sz,
+	T const &t,
+	A const &a
+)
+:
+	i(a, sz)
 {
 	assign(sz, t);
 }
 
 template<typename T, typename A>
 template<typename In>
-fcppt::container::raw_vector<T, A>::raw_vector(const In beg, const In end, const A& a)
-: i(a)
+fcppt::container::raw_vector<T, A>::raw_vector(
+	In const beg,
+	In const end,
+	A const &a
+)
+:
+	i(a)
 {
 	assign(beg, end);
 }
 
 template<typename T, typename A>
-fcppt::container::raw_vector<T, A>::raw_vector(const raw_vector& x)
-: i(x.i.a, x.size())
+fcppt::container::raw_vector<T, A>::raw_vector(
+	raw_vector const &x
+)
+:
+	i(x.i.a, x.size())
 {
 	assign(x.begin(), x.end());
 }
@@ -203,73 +243,98 @@ fcppt::container::raw_vector<T, A>::~raw_vector()
 }
 
 template<typename T, typename A>
-fcppt::container::raw_vector<T, A>& sge::container::raw_vector<T, A>::operator= (const raw_vector& x)
+fcppt::container::raw_vector<T, A> &
+fcppt::container::raw_vector<T, A>::operator= (
+	raw_vector const &x
+)
 {
 	if(&x == this)
 		return *this;
+	
 	assign(x.begin(), x.end());
+
 	return *this;
 }
 
 template<typename T, typename A>
 template<typename In>
-void fcppt::container::raw_vector<T, A>::assign(const In beg, const In end)
+void
+fcppt::container::raw_vector<T, A>::assign(
+	In const beg,
+	In const end
+)
 {
 	clear();
 	insert(begin(), beg, end);
 }
 
 template<typename T, typename A>
-void fcppt::container::raw_vector<T, A>::assign(const size_type n, const T& value)
+void
+fcppt::container::raw_vector<T, A>::assign(
+	size_type const n,
+	T const &value
+)
 {
 	clear();
 	insert(begin(), n, value);
 }
 
 template<typename T, typename A>
-void fcppt::container::raw_vector<T, A>::push_back(const T& x)
+void
+fcppt::container::raw_vector<T, A>::push_back(
+	T const &x
+)
 {
 	insert(end(), x);
 }
 
 template<typename T, typename A>
-void fcppt::container::raw_vector<T, A>::pop_back()
+void
+fcppt::container::raw_vector<T, A>::pop_back()
 {
 	erase(boost::prior(end()));
 }
 
 template<typename T, typename A>
-void fcppt::container::raw_vector<T, A>::clear()
+void
+fcppt::container::raw_vector<T, A>::clear()
 {
 	erase(begin(), end());
 }
 
 template<typename T, typename A>
-typename fcppt::container::raw_vector<T, A>::size_type sge::container::raw_vector<T, A>::size() const
+typename fcppt::container::raw_vector<T, A>::size_type
+fcppt::container::raw_vector<T, A>::size() const
 {
 	return i.last - i.first;
 }
 
 template<typename T, typename A>
-bool fcppt::container::raw_vector<T, A>::empty() const
+bool
+fcppt::container::raw_vector<T, A>::empty() const
 {
 	return size() == 0;
 }
 
 template<typename T, typename A>
-typename fcppt::container::raw_vector<T, A>::size_type sge::container::raw_vector<T, A>::max_size() const
+typename fcppt::container::raw_vector<T, A>::size_type
+fcppt::container::raw_vector<T, A>::max_size() const
 {
 	return i.a.max_size();
 }
 
 template<typename T, typename A>
-typename fcppt::container::raw_vector<T, A>::size_type sge::container::raw_vector<T, A>::capacity() const
+typename fcppt::container::raw_vector<T, A>::size_type
+fcppt::container::raw_vector<T, A>::capacity() const
 {
 	return i.cap - i.first;
 }
 
 template<typename T, typename A>
-void fcppt::container::raw_vector<T, A>::swap(raw_vector& x)
+void
+fcppt::container::raw_vector<T, A>::swap(
+	raw_vector &x
+)
 {
 	std::swap(i.first, x.i.first);
 	std::swap(i.last, x.i.last);
@@ -277,7 +342,10 @@ void fcppt::container::raw_vector<T, A>::swap(raw_vector& x)
 }
 
 template<typename T, typename A>
-void fcppt::container::raw_vector<T, A>::resize_uninitialized(const size_type sz)
+void
+fcppt::container::raw_vector<T, A>::resize_uninitialized(
+	size_type const sz
+)
 {
 	if(sz > size())
 	{
@@ -289,7 +357,11 @@ void fcppt::container::raw_vector<T, A>::resize_uninitialized(const size_type sz
 }
 
 template<typename T, typename A>
-void fcppt::container::raw_vector<T, A>::resize(const size_type sz, const T& value)
+void
+fcppt::container::raw_vector<T, A>::resize(
+	size_type const sz,
+	T const &value
+)
 {
 	if(sz > size())
 		insert(end(), sz - size(), value);
@@ -301,8 +373,10 @@ template<
 	typename T,
 	typename A
 >
-void fcppt::container::raw_vector<T, A>::reserve(
-	size_type const sz)
+void
+fcppt::container::raw_vector<T, A>::reserve(
+	size_type const sz
+)
 {
 	if(sz <= capacity())
 		return;
@@ -321,7 +395,8 @@ void fcppt::container::raw_vector<T, A>::reserve(
 }
 
 template <typename T, typename A>
-typename fcppt::container::raw_vector<T, A>::allocator_type sge::container::raw_vector<T, A>::get_allocator() const
+typename fcppt::container::raw_vector<T, A>::allocator_type
+fcppt::container::raw_vector<T, A>::get_allocator() const
 {
 	return i.a;
 }
@@ -330,7 +405,8 @@ template<typename T, typename A>
 typename fcppt::container::raw_vector<T, A>::iterator
 fcppt::container::raw_vector<T, A>::insert(
 	iterator const position,
-	T const &x)
+	T const &x
+)
 {
 	size_type const new_size = size() + 1;
 	if(new_size > capacity())

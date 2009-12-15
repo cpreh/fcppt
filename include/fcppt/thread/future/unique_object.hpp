@@ -77,7 +77,8 @@ fcppt::thread::future::unique_object<T>::unique_object(
 }
 
 template<typename T>
-fcppt::thread::future::unique_object<T> &sge::thread::future::unique_object<T>::operator=(
+fcppt::thread::future::unique_object<T> &
+fcppt::thread::future::unique_object<T>::operator=(
 	boost::detail::thread_move_t<unique_object> _other)
 {
 	this->object_ = _other->object_;
@@ -86,7 +87,8 @@ fcppt::thread::future::unique_object<T> &sge::thread::future::unique_object<T>::
 }
 
 template<typename T>
-fcppt::thread::future::unique_object<T>::operator boost::detail::thread_move_t< sge::thread::future::unique_object<T> >()
+fcppt::thread::future::unique_object<T>::operator
+boost::detail::thread_move_t< fcppt::thread::future::unique_object<T> >()
 {
 	return
 		boost::detail::thread_move_t<unique_object>(

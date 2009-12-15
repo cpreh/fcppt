@@ -2,7 +2,8 @@
 #define FCPPT_THREAD_FUTURE_DETAIL_OBJECT_BASE_HPP_INCLUDED
 
 #include <fcppt/noncopyable.hpp>
-#include <fcppt/export.hpp>
+#include <fcppt/symbol.hpp>
+#include <fcppt/class_symbol.hpp>
 #include <boost/exception_ptr.hpp>
 #include <boost/thread/mutex.hpp>
 #include <boost/thread/condition_variable.hpp>
@@ -17,7 +18,7 @@ namespace detail
 {
 class FCPPT_CLASS_SYMBOL object_base
 {
-FCPPT_NONCOPYABLE(object_base)
+	FCPPT_NONCOPYABLE(object_base)
 public:
 	FCPPT_SYMBOL object_base();
 	FCPPT_SYMBOL virtual ~object_base();

@@ -29,23 +29,29 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 template<class T,class Compare,class Allocator>
 fcppt::container::linear_set<T,Compare,Allocator>::linear_set(
 	Compare const &key_comp_,
-	Allocator const &alloc_)
-	: comp_(key_comp_),
-	  container_(alloc_)
+	Allocator const &alloc_
+)
+:
+	comp_(key_comp_),
+	container_(alloc_)
 {
 }
 
 template<class T,class Compare,class Allocator>
 fcppt::container::linear_set<T,Compare,Allocator>::linear_set(
-	linear_set const &lm)
-	: comp_(lm.key_comp()),
-	  container_(lm.container_)
+	linear_set const &lm
+)
+:
+	comp_(lm.key_comp()),
+	container_(lm.container_)
 {
 }
 
 template<class T,class Compare,class Allocator>
 fcppt::container::linear_set<T,Compare,Allocator> &
-	fcppt::container::linear_set<T,Compare,Allocator>::operator=(linear_set const &r)
+fcppt::container::linear_set<T,Compare,Allocator>::operator=(
+	linear_set const &r
+)
 {
 	clear();
 	insert(r.begin(),r.end());
@@ -54,7 +60,8 @@ fcppt::container::linear_set<T,Compare,Allocator> &
 }
 
 template<class T,class Compare,class Allocator>
-typename fcppt::container::linear_set<T,Compare,Allocator>::allocator_type sge::container::linear_set<T,Compare,Allocator>::get_allocator() const
+typename fcppt::container::linear_set<T,Compare,Allocator>::allocator_type
+fcppt::container::linear_set<T,Compare,Allocator>::get_allocator() const
 {
 	return container_.get_allocator();
 }
@@ -65,16 +72,22 @@ fcppt::container::linear_set<T,Compare,Allocator>::linear_set(
 	InputIterator const begin,
 	InputIterator const last,
 	Compare const &key_comp_,
-	Allocator const &alloc_)
-	: comp_(key_comp_),
-	  container_(alloc_)
+	Allocator const &alloc_
+)
+:
+	comp_(key_comp_),
+	container_(alloc_)
 {
 	insert(begin,last);
 }
 
 template<class T,class Compare,class Allocator>
 template<typename InputIterator>
-void fcppt::container::linear_set<T,Compare,Allocator>::insert(InputIterator it,InputIterator const last)
+void
+fcppt::container::linear_set<T,Compare,Allocator>::insert(
+	InputIterator it,
+	InputIterator const last
+)
 {
 	for (;it != last; ++it)
 		insert(*it);
@@ -82,49 +95,49 @@ void fcppt::container::linear_set<T,Compare,Allocator>::insert(InputIterator it,
 
 template<class T,class Compare,class Allocator>
 typename fcppt::container::linear_set<T,Compare,Allocator>::reverse_iterator
-	fcppt::container::linear_set<T,Compare,Allocator>::rbegin()
+fcppt::container::linear_set<T,Compare,Allocator>::rbegin()
 {
 	return container_.rbegin();
 }
 
 template<class T,class Compare,class Allocator>
 typename fcppt::container::linear_set<T,Compare,Allocator>::const_reverse_iterator
-	fcppt::container::linear_set<T,Compare,Allocator>::rbegin() const
+fcppt::container::linear_set<T,Compare,Allocator>::rbegin() const
 {
 	return container_.rbegin();
 }
 
 template<class T,class Compare,class Allocator>
 typename fcppt::container::linear_set<T,Compare,Allocator>::reverse_iterator
-	fcppt::container::linear_set<T,Compare,Allocator>::rend()
+fcppt::container::linear_set<T,Compare,Allocator>::rend()
 {
 	return container_.rend();
 }
 
 template<class T,class Compare,class Allocator>
 typename fcppt::container::linear_set<T,Compare,Allocator>::const_reverse_iterator
-	fcppt::container::linear_set<T,Compare,Allocator>::rend() const
+fcppt::container::linear_set<T,Compare,Allocator>::rend() const
 {
 	return container_.rend();
 }
 
 template<class T,class Compare,class Allocator>
 typename fcppt::container::linear_set<T,Compare,Allocator>::iterator
-	fcppt::container::linear_set<T,Compare,Allocator>::begin()
+fcppt::container::linear_set<T,Compare,Allocator>::begin()
 {
 	return container_.begin();
 }
 
 template<class T,class Compare,class Allocator>
 typename fcppt::container::linear_set<T,Compare,Allocator>::const_iterator
-	fcppt::container::linear_set<T,Compare,Allocator>::begin() const
+fcppt::container::linear_set<T,Compare,Allocator>::begin() const
 {
 	return container_.begin();
 }
 
 template<class T,class Compare,class Allocator>
 typename fcppt::container::linear_set<T,Compare,Allocator>::iterator
-	fcppt::container::linear_set<T,Compare,Allocator>::end()
+fcppt::container::linear_set<T,Compare,Allocator>::end()
 {
 	return container_.end();
 }

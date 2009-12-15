@@ -20,5 +20,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 #include <fcppt/log/trampoline.hpp>
 
-fcppt::log::output_helper const sge::log::_
+fcppt::log::output_helper const
+fcppt::log::_
 	= fcppt::log::output_helper();

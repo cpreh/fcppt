@@ -25,54 +25,66 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 template<
 	class T,
-	std::size_t N>
+	std::size_t N
+>
 fcppt::assign::detail::array<T,N>::array(
-	T const &t)
+	T const &t
+)
 {
 	a[0] = t;
 }
 
 template<
 	class T,
-	std::size_t N>
+	std::size_t N
+>
 fcppt::assign::detail::array<T,N>::array(
 	array<T,N-1> const &that,
-	T const &t)
+	T const &t
+)
 {
 	std::copy(
 		that.a.begin(),
 		that.a.end(),
-		a.begin());
+		a.begin()
+	);
 
 	a.back() = t;
 }
 
 template<
 	class T,
-	std::size_t N>
+	std::size_t N
+>
 fcppt::assign::detail::array<T,N+1>
 fcppt::assign::detail::array<T,N>::operator()(
-	T const &t)
+	T const &t
+)
 {
 	return array<T,N+1>(
 		*this,
-		t);
+		t
+	);
 }
 
 template<
 	class T,
-	std::size_t N>
+	std::size_t N
+>
 fcppt::assign::detail::array<T,N>::operator container_type() const
 {
 	return a;
 }
 
 template<typename T>
-fcppt::assign::detail::array<T,1> sge::assign::make_array(
-	T const &t)
+fcppt::assign::detail::array<T,1>
+fccpt::assign::make_array(
+	T const &t
+)
 {
 	return detail::array<T,1>(
-		t);
+		t
+	);
 }
 
 #endif

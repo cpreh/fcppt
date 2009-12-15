@@ -50,23 +50,30 @@ public:
 	typedef detail::base<T> base;
 	typedef typename base::connection_list connection_list;
 	typedef typename boost::function_traits<T>::result_type result_type;
-	//typedef typename fcppt::function::object<T>::result_type result_type;
 	typedef fcppt::function::object<result_type (result_type,result_type)> combiner_type;
 
 	explicit object(
-		combiner_type const &_combiner = boost::phoenix::arg_names::arg1)
+		combiner_type const &_combiner = boost::phoenix::arg_names::arg1
+	)
 	:
 		combiner_(_combiner)
 	{}
 
-	void combiner(
-		combiner_type const &_combiner)
+	void
+	combiner(
+		combiner_type const &_combiner
+	)
 	{
 		combiner_ = _combiner;
 	}
 
 	FCPPT_SIGNAL_DETAIL_DEFINE_EMPTY_OPERATOR
-	BOOST_PP_REPEAT(FCPPT_SIGNAL_DETAIL_OPERATOR_LIMIT,SGE_SIGNAL_DETAIL_DEFINE_OPERATOR,nil)
+
+	BOOST_PP_REPEAT(
+		FCPPT_SIGNAL_DETAIL_OPERATOR_LIMIT,
+		FCPPT_SIGNAL_DETAIL_DEFINE_OPERATOR,
+		nil
+	)
 private:
 	combiner_type combiner_;
 };
@@ -89,7 +96,12 @@ public:
 	typedef typename base::connection_list connection_list;
 
 	FCPPT_SIGNAL_DETAIL_DEFINE_EMPTY_VOID_OPERATOR
-	BOOST_PP_REPEAT(FCPPT_SIGNAL_DETAIL_OPERATOR_LIMIT,SGE_SIGNAL_DETAIL_DEFINE_VOID_OPERATOR,nil)
+
+	BOOST_PP_REPEAT(
+		FCPPT_SIGNAL_DETAIL_OPERATOR_LIMIT,
+		FCPPT_SIGNAL_DETAIL_DEFINE_VOID_OPERATOR,
+		nil
+	)
 };
 
 }

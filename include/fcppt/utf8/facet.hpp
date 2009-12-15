@@ -21,7 +21,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #ifndef FCPPT_UTF8_FACET_HPP_INCLUDED
 #define FCPPT_UTF8_FACET_HPP_INCLUDED
 
-#include <fcppt/export.hpp>
+#include <fcppt/symbol.hpp>
 
 #define BOOST_UTF8_BEGIN_NAMESPACE \
 namespace boost { \

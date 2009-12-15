@@ -18,17 +18,17 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
 
-#ifndef SGE_FUNCTION_OBJECT_HPP_INCLUDED
-#error "This file is not a standalone header. #include <sge/function/object.hpp> instead."
+#ifndef FCPPT_FUNCTION_OBJECT_HPP_INCLUDED
+#error "This file is not a standalone header. #include <fcppt/function/object.hpp> instead."
 #endif
 
-#ifndef SGE_FUNCTION_OBJECT_TEMPLATE_HPP_INCLUDED
-#define SGE_FUNCTION_OBJECT_TEMPLATE_HPP_INCLUDED
+#ifndef FCPPT_FUNCTION_OBJECT_TEMPLATE_HPP_INCLUDED
+#define FCPPT_FUNCTION_OBJECT_TEMPLATE_HPP_INCLUDED
 
-#include <sge/function/detail/has_addressof_overload.hpp>
-#include <sge/function/detail/clear_type.hpp>
+#include <fcppt/function/detail/has_addressof_overload.hpp>
+#include <fcppt/function/detail/clear_type.hpp>
 // this include leads to a cpp fail ...
-//#include <sge/function/detail/functor_wrapper.hpp>
+//#include <fcppt/function/detail/functor_wrapper.hpp>
 
 #include <boost/mpl/and.hpp>
 #include <boost/mpl/not.hpp>
@@ -42,30 +42,30 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #include <tr1/functional>
 #endif
 
-#define SGE_FUNCTION_OBJECT_PP_TEMPLATE_PARAMS \
-   typename R BOOST_PP_COMMA_IF( SGE_FUNCTION_OBJECT_PP_NUM_PARAMS ) \
-	BOOST_PP_ENUM_PARAMS( SGE_FUNCTION_OBJECT_PP_NUM_PARAMS, typename T )
+#define FCPPT_FUNCTION_OBJECT_PP_TEMPLATE_PARAMS \
+   typename R BOOST_PP_COMMA_IF( FCPPT_FUNCTION_OBJECT_PP_NUM_PARAMS ) \
+	BOOST_PP_ENUM_PARAMS( FCPPT_FUNCTION_OBJECT_PP_NUM_PARAMS, typename T )
 
-#define SGE_FUNCTION_OBJECT_PP_TEMPLATE_ARGS \
-	R( BOOST_PP_ENUM_PARAMS( SGE_FUNCTION_OBJECT_PP_NUM_PARAMS, T ) )
+#define FCPPT_FUNCTION_OBJECT_PP_TEMPLATE_ARGS \
+	R( BOOST_PP_ENUM_PARAMS( FCPPT_FUNCTION_OBJECT_PP_NUM_PARAMS, T ) )
 
-#define SGE_FUNCTION_OBJECT_PP_FUNCTION_OPERATOR \
-	R operator() ( SGE_FUNCTION_OBJECT_PP_FUNCTION_PARAMS )
+#define FCPPT_FUNCTION_OBJECT_PP_FUNCTION_OPERATOR \
+	R operator() ( FCPPT_FUNCTION_OBJECT_PP_FUNCTION_PARAMS )
 
-#define SGE_FUNCTION_OBJECT_PP_FUNCTION_PARAMS \
-	BOOST_PP_ENUM_BINARY_PARAMS( SGE_FUNCTION_OBJECT_PP_NUM_PARAMS, T, t )
+#define FCPPT_FUNCTION_OBJECT_PP_FUNCTION_PARAMS \
+	BOOST_PP_ENUM_BINARY_PARAMS( FCPPT_FUNCTION_OBJECT_PP_NUM_PARAMS, T, t )
 
-#define SGE_FUNCTION_OBJECT_PP_FUNCTION_ARGS \
-	BOOST_PP_ENUM_PARAMS( SGE_FUNCTION_OBJECT_PP_NUM_PARAMS, t )
+#define FCPPT_FUNCTION_OBJECT_PP_FUNCTION_ARGS \
+	BOOST_PP_ENUM_PARAMS( FCPPT_FUNCTION_OBJECT_PP_NUM_PARAMS, t )
 
-namespace sge
+namespace fcppt
 {
 
 namespace function
 {
 
-template< SGE_FUNCTION_OBJECT_PP_TEMPLATE_PARAMS  >
-class object< SGE_FUNCTION_OBJECT_PP_TEMPLATE_ARGS >
+template< FCPPT_FUNCTION_OBJECT_PP_TEMPLATE_PARAMS  >
+class object< FCPPT_FUNCTION_OBJECT_PP_TEMPLATE_ARGS >
 {
 	private:
 		/// This class is used to implement the safe_bool idiom.
@@ -81,7 +81,7 @@ class object< SGE_FUNCTION_OBJECT_PP_TEMPLATE_ARGS >
 
 	public:
 
-		typedef typename std::tr1::function< SGE_FUNCTION_OBJECT_PP_TEMPLATE_ARGS > function_type;
+		typedef typename std::tr1::function< FCPPT_FUNCTION_OBJECT_PP_TEMPLATE_ARGS > function_type;
 		typedef R result_type;
 
 		object()
@@ -126,7 +126,7 @@ class object< SGE_FUNCTION_OBJECT_PP_TEMPLATE_ARGS >
 						useless
 					>::type = useless()
 			)
-			: function_( detail::functor_wrapper< F, SGE_FUNCTION_OBJECT_PP_TEMPLATE_ARGS >( f ) )
+			: function_( detail::functor_wrapper< F, FCPPT_FUNCTION_OBJECT_PP_TEMPLATE_ARGS >( f ) )
 		{}
 
 		object& operator= ( const object& other )
@@ -174,7 +174,7 @@ class object< SGE_FUNCTION_OBJECT_PP_TEMPLATE_ARGS >
 					detail::functor_wrapper
 						<
 							F,
-							SGE_FUNCTION_OBJECT_PP_TEMPLATE_ARGS
+							FCPPT_FUNCTION_OBJECT_PP_TEMPLATE_ARGS
 						>( f )
 				).swap( *this );
 
@@ -196,14 +196,14 @@ class object< SGE_FUNCTION_OBJECT_PP_TEMPLATE_ARGS >
 				return 0;
 		}
 
-		SGE_FUNCTION_OBJECT_PP_FUNCTION_OPERATOR
+		FCPPT_FUNCTION_OBJECT_PP_FUNCTION_OPERATOR
 		{
-			return function_( SGE_FUNCTION_OBJECT_PP_FUNCTION_ARGS );
+			return function_( FCPPT_FUNCTION_OBJECT_PP_FUNCTION_ARGS );
 		}
 		
-		SGE_FUNCTION_OBJECT_PP_FUNCTION_OPERATOR const
+		FCPPT_FUNCTION_OBJECT_PP_FUNCTION_OPERATOR const
 		{
-			return function_( SGE_FUNCTION_OBJECT_PP_FUNCTION_ARGS );
+			return function_( FCPPT_FUNCTION_OBJECT_PP_FUNCTION_ARGS );
 		}
 
 		const std::type_info& target_type() const
@@ -236,10 +236,10 @@ class object< SGE_FUNCTION_OBJECT_PP_TEMPLATE_ARGS >
 
 } // end namespace function
 
-} // end namespace sge
+} // end namespace fccpt
 
-#undef SGE_FUNCTION_OBJECT_PP_TEMPLATE_PARAMS
-#undef SGE_FUNCTION_OBJECT_PP_TEMPLATE_ARGS
-#undef SGE_FUNCTION_OBJECT_PP_FUNCTION_PARAMS
-#undef SGE_FUNCTION_OBJECT_PP_FUNCTION_ARGS
-#undef SGE_FUNCTION_OBJECT_PP_FUNCTION_OPERATOR
+#undef FCPPT_FUNCTION_OBJECT_PP_TEMPLATE_PARAMS
+#undef FCPPT_FUNCTION_OBJECT_PP_TEMPLATE_ARGS
+#undef FCPPT_FUNCTION_OBJECT_PP_FUNCTION_PARAMS
+#undef FCPPT_FUNCTION_OBJECT_PP_FUNCTION_ARGS
+#undef FCPPT_FUNCTION_OBJECT_PP_FUNCTION_OPERATOR

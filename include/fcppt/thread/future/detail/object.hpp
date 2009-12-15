@@ -184,7 +184,8 @@ bool fcppt::thread::future::detail::object<T>::timed_move_until(
 }
 
 template<typename T>
-typename fcppt::thread::future::detail::object<T>::reference sge::thread::future::detail::object<T>::get()
+typename fcppt::thread::future::detail::object<T>::reference
+fcppt::thread::future::detail::object<T>::get()
 {
 	boost::unique_lock<boost::mutex> lock(
 		mutex_);
@@ -234,7 +235,8 @@ bool fcppt::thread::future::detail::object<T>::timed_get_until(
 }
 
 template<typename T>
-fcppt::thread::future::state::type sge::thread::future::detail::object<T>::state()
+fcppt::thread::future::state::type
+fcppt::thread::future::detail::object<T>::state()
 {
 	boost::lock_guard<boost::mutex>
 		guard(
@@ -294,7 +296,7 @@ void fcppt::thread::future::detail::object<void>::get()
 		throw moved();
 }
 
-fcppt::thread::future::state::type sge::thread::future::detail::object<void>::state()
+fcppt::thread::future::state::type fcppt::thread::future::detail::object<void>::state()
 {
 	boost::lock_guard<boost::mutex> guard(
 		mutex_);

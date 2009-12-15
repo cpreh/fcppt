@@ -1,7 +1,7 @@
 #ifndef FCPPT_THREAD_OBJECT_HPP_INCLUDED
 #define FCPPT_THREAD_OBJECT_HPP_INCLUDED
 
-#include <fcppt/export.hpp>
+#include <fcppt/symbol.hpp>
 #include <fcppt/function/object.hpp>
 #include <boost/thread.hpp>
 
@@ -15,8 +15,12 @@ public:
 	typedef fcppt::function::object<void ()> task;
 
 	FCPPT_SYMBOL object(
-		task const &);
-	FCPPT_SYMBOL void join();
+		task const &
+	);
+
+	FCPPT_SYMBOL void
+	join();
+
 	FCPPT_SYMBOL ~object();
 private:
 	boost::thread thread_;

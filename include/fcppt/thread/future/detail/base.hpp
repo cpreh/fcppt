@@ -93,7 +93,8 @@ void fcppt::thread::future::detail::base<T>::swap(
 }
 
 template<typename T>
-typename fcppt::thread::future::detail::base<T>::reference sge::thread::future::detail::base<T>::get()
+typename fcppt::thread::future::detail::base<T>::reference
+fcppt::thread::future::detail::base<T>::get()
 {
 	if (!object_)
 		throw uninitialized();
@@ -140,7 +141,8 @@ fcppt::thread::future::detail::base<T>::timed_get_until(
 }
 
 template<typename T>
-fcppt::thread::future::state::type sge::thread::future::detail::base<T>::state() const
+fcppt::thread::future::state::type
+fcppt::thread::future::detail::base<T>::state() const
 {
 	if (!object_)
 		throw uninitialized();

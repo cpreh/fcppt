@@ -21,7 +21,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #ifndef FCPPT_EXCEPTION_HPP_INCLUDED
 #define FCPPT_EXCEPTION_HPP_INCLUDED
 
-#include <fcppt/export.hpp>
+#include <fcppt/symbol.hpp>
+#include <fcppt/class_symbol.hpp>
 #include <fcppt/string.hpp>
 
 namespace fcppt
@@ -31,14 +32,17 @@ class FCPPT_CLASS_SYMBOL exception
 {
 public:
 	FCPPT_SYMBOL explicit exception(
-		fcppt::string const &s);
+		fcppt::string const &
+	);
 
 	FCPPT_SYMBOL exception(
-		exception const &);
+		exception const &
+	);
 
 	FCPPT_SYMBOL exception &
 	operator=(
-		exception const &);
+		exception const &
+	);
 
 	FCPPT_SYMBOL fcppt::string const &
 	string() const;

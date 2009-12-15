@@ -25,7 +25,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #include <fcppt/chrono/duration_fwd.hpp>
 #include <fcppt/chrono/time_point_fwd.hpp>
 #include <fcppt/ratio.hpp>
-#include <fcppt/export.hpp>
+#include <fcppt/symbol.hpp>
 #include <ctime>
 
 namespace fcppt

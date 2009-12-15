@@ -91,7 +91,8 @@ fcppt::thread::future::shared_object<T>::shared_object(
 }
 
 template<typename T>
-fcppt::thread::future::shared_object<T> &sge::thread::future::shared_object<T>::operator=(
+fcppt::thread::future::shared_object<T> &
+fcppt::thread::future::shared_object<T>::operator=(
 	shared_object const &_rhs)
 {
 	this->object_ = _rhs.object_;
@@ -99,7 +100,8 @@ fcppt::thread::future::shared_object<T> &sge::thread::future::shared_object<T>::
 }
 
 template<typename T>
-fcppt::thread::future::shared_object<T> &sge::thread::future::shared_object<T>::operator=(
+fcppt::thread::future::shared_object<T> &
+fcppt::thread::future::shared_object<T>::operator=(
 	boost::detail::thread_move_t<shared_object> _other)
 {
 	this->object_ = _other->object_;
@@ -108,7 +110,8 @@ fcppt::thread::future::shared_object<T> &sge::thread::future::shared_object<T>::
 }
 
 template<typename T>
-fcppt::thread::future::shared_object<T> &sge::thread::future::shared_object<T>::operator=(
+fcppt::thread::future::shared_object<T> &
+fcppt::thread::future::shared_object<T>::operator=(
 	boost::detail::thread_move_t<unique_object<T> > _other)
 {
 	this->object_.swap(
@@ -118,7 +121,8 @@ fcppt::thread::future::shared_object<T> &sge::thread::future::shared_object<T>::
 }
 
 template<typename T>
-fcppt::thread::future::shared_object<T>::operator boost::detail::thread_move_t< sge::thread::future::shared_object<T> >()
+fcppt::thread::future::shared_object<T>::operator
+boost::detail::thread_move_t< fcppt::thread::future::shared_object<T> >()
 {
 	return
 		boost::detail::thread_move_t<shared_object>(

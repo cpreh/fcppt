@@ -120,7 +120,8 @@ fcppt::thread::future::promise<T>::~promise()
 }
 
 template<typename T>
-fcppt::thread::future::promise<T> &sge::thread::future::promise<T>::operator=(
+fcppt::thread::future::promise<T> &
+fcppt::thread::future::promise<T>::operator=(
 	boost::detail::thread_move_t<promise> rhs)
 {
 	object_ = rhs->object_;
@@ -141,7 +142,8 @@ void fcppt::thread::future::promise<T>::swap(
 }
 
 template<typename T>
-fcppt::thread::future::unique_future<T> sge::thread::future::promise<T>::future()
+fcppt::thread::future::unique_future<T>
+fcppt::thread::future::promise<T>::future()
 {
 	if (!object_)
 		throw moved();
@@ -238,7 +240,7 @@ fcppt::thread::future::promise<void>::~promise()
 	}
 }
 
-fcppt::thread::future::promise<void> &sge::thread::future::promise<void>::operator=(
+fcppt::thread::future::promise<void> &fcppt::thread::future::promise<void>::operator=(
 	boost::detail::thread_move_t<promise> rhs)
 {
 	object_ = rhs->object_;
@@ -257,7 +259,7 @@ void fcppt::thread::future::promise<void>::swap(
 		_other.future_obtained_);
 }
 
-fcppt::thread::future::unique_future<void> sge::thread::future::promise<void>::get_future()
+fcppt::thread::future::unique_future<void> fcppt::thread::future::promise<void>::get_future()
 {
 	if(!object_)
 		throw moved();

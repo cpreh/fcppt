@@ -23,25 +23,29 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 fcppt::bad_lexical_cast::bad_lexical_cast(
 	fcppt::type_info const &_source,
-	fcppt::type_info const &_destination)
+	fcppt::type_info const &_destination
+)
 :
 	exception(
 		FCPPT_TEXT("Invalid lexical cast from type \"")+
 		_source.name()+
 		FCPPT_TEXT("\" to type \"")+
 		_destination.name()+
-		FCPPT_TEXT("\"")),
+		FCPPT_TEXT("\"")
+	),
 	source_(_source),
 	destination_(_destination)
 {
 }
 
-fcppt::type_info const &sge::bad_lexical_cast::source() const
+fcppt::type_info const &
+fccpt::bad_lexical_cast::source() const
 {
 	return source_;
 }
 
-fcppt::type_info const &sge::bad_lexical_cast::destination() const
+fcppt::type_info const &
+fcppt::bad_lexical_cast::destination() const
 {
 	return destination_;
 }

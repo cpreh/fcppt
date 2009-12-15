@@ -24,12 +24,11 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #include <fcppt/text.hpp>
 #include <fcppt/config.h>
 
-//#define FCPPT_DETAIL_WIDEN2(s) L ## s
 #ifdef FCPPT_NARROW_STRING
 #define FCPPT_PP_FILE __FILE__
 #else
-#define FCPPT_PP_DETAIL_WIDEN(s) SGE_TEXT(s)
-#define FCPPT_PP_FILE SGE_PP_DETAIL_WIDEN(__FILE__)
+#define FCPPT_PP_DETAIL_WIDEN(s) FCCPT_TEXT(s)
+#define FCPPT_PP_FILE FCCPT_PP_DETAIL_WIDEN(__FILE__)
 #endif
 
 #endif

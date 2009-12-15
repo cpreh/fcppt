@@ -23,7 +23,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 #include <fcppt/random/default_generator.hpp>
 #include <fcppt/random/uniform_distribution.hpp>
-#include <fcppt/time/time.hpp>
+#include <fcppt/chrono/high_resolution_clock.hpp>
+#include <fcppt/chrono/time_point_impl.hpp>
+#include <fcppt/chrono/duration_impl.hpp>
 #include <tr1/random>
 
 namespace fcppt
@@ -53,7 +55,7 @@ public:
 				static_cast<
 					typename Generator::result_type
 				>(
-					fcppt::time::time()
+					fcppt::chrono::high_resolution_clock::now().time_since_epoch().count()
 				)
 			),
 			range_type(

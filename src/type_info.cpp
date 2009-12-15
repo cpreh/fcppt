@@ -23,33 +23,45 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #include <fcppt/assert.hpp>
 
 fcppt::type_info::type_info(
-	std::type_info const &ti)
+	std::type_info const &ti
+)
 :
 	info_(&ti)
 {
 	FCPPT_ASSERT(info_);
 }
 
-bool fcppt::type_info::before(
-	type_info const &rhs) const
+bool
+fcppt::type_info::before(
+	type_info const &rhs
+) const
 {
 	FCPPT_ASSERT(info_);
+
 	return info_->before(*rhs.info_);
 }
 
-const std::type_info& fcppt::type_info::get() const
+std::type_info const &
+fcppt::type_info::get() const
 {
 	FCPPT_ASSERT(info_);
+
 	return *info_;
 }
 
-fcppt::string const sge::type_info::name() const
+fcppt::string const
+fccpt::type_info::name() const
 {
 	FCPPT_ASSERT(info_);
+
 	return type_name(*this);
 }
 
-bool fcppt::operator==(const type_info& lhs, const type_info& rhs)
+bool
+fcppt::operator==(
+	type_info const &lhs,
+	type_info const &rhs
+)
 {
 	return lhs.get() == rhs.get();
 }

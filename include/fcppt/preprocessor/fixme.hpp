@@ -23,6 +23,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 #include <fcppt/preprocessor/message.hpp>
 
-#define FCPPT_PP_FIXME(x) SGE_PP_MESSAGE("FIXME: " x)
+#define FCPPT_PP_FIXME(x) FCPPT_PP_MESSAGE("FIXME: " x)
 
 #endif

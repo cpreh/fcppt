@@ -22,7 +22,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #define FCPPT_SIGNAL_DETAIL_CONNECTION_HPP_INCLUDED
 
 #include <fcppt/noncopyable.hpp>
-#include <fcppt/export.hpp>
+#include <fcppt/symbol.hpp>
 #include <boost/intrusive/list_hook.hpp>
 #include <boost/intrusive/link_mode.hpp>
 

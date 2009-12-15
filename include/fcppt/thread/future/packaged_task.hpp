@@ -90,7 +90,8 @@ fcppt::thread::future::packaged_task<T>::packaged_task(
 }
 
 template<typename T>
-fcppt::thread::future::packaged_task<T> &sge::thread::future::packaged_task<T>::operator=(
+fcppt::thread::future::packaged_task<T> &
+fcppt::thread::future::packaged_task<T>::operator=(
 	boost::detail::thread_move_t<packaged_task> rhs)
 {
 	packaged_task temp(
@@ -112,7 +113,8 @@ void fcppt::thread::future::packaged_task<T>::swap(
 }
 
 template<typename T>
-fcppt::thread::future::unique_object<T> sge::thread::future::packaged_task<T>::object()
+fcppt::thread::future::unique_object<T>
+fcppt::thread::future::packaged_task<T>::object()
 {
 	if (!task_)
 		throw task_moved();
