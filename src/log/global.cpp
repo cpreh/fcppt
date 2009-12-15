@@ -23,15 +23,15 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #include <fcppt/log/global_context.hpp>
 #include <fcppt/log/parameters/root.hpp>
 #include <fcppt/log/parameters/all.hpp>
+#include <fcppt/io/cout.hpp>
 #include <fcppt/text.hpp>
-#include <fcppt/cout.hpp>
 
 fcppt::log::object &
 fcppt::log::global()
 {
 	static object global_(
 		parameters::root(
-			cout
+			io::cout
 		)
 		.prefix(
 			FCPPT_TEXT("fcppt")

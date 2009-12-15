@@ -25,8 +25,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #include <fcppt/log/parameters/all_fwd.hpp>
 #include <fcppt/log/level.hpp>
 #include <fcppt/log/context_fwd.hpp>
+#include <fcppt/io/ostream.hpp>
 #include <fcppt/string.hpp>
-#include <fcppt/ostream.hpp>
 #include <fcppt/symbol.hpp>
 
 namespace fcppt
@@ -39,7 +39,7 @@ namespace parameters
 class root {
 public:
 	FCPPT_SYMBOL explicit root(
-		ostream &
+		io::ostream &
 	);
 
 	FCPPT_SYMBOL root
@@ -65,7 +65,7 @@ public:
 	FCPPT_SYMBOL all const
 	create() const;
 private:
-	ostream &sink_;
+	io::ostream &sink_;
 
 	string prefix_;
 

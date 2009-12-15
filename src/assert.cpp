@@ -19,8 +19,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 
 #include <fcppt/assert.hpp>
+#include <fcppt/io/ostringstream.hpp>
 #include <fcppt/exception.hpp>
-#include <fcppt/ostringstream.hpp>
 #include <ostream>
 
 void
@@ -32,7 +32,7 @@ fcppt::detail::process_assert(
 	string const &function
 )
 {
-	ostringstream ss;
+	io::ostringstream ss;
 
 	ss << file << FCPPT_TEXT(':') << line;
 

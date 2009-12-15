@@ -24,7 +24,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #include <fcppt/log/format/object.hpp>
 
 fcppt::log::level_stream::level_stream(
-	ostream &dest_,
+	io::ostream &dest_,
 	format::const_object_ptr const formatter_
 )
 :

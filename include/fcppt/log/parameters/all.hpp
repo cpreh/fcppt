@@ -29,7 +29,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #include <fcppt/log/context_location.hpp>
 #include <fcppt/log/location_fwd.hpp>
 #include <fcppt/log/format/object_ptr.hpp>
-#include <fcppt/ostream.hpp>
+#include <fcppt/io/ostream.hpp>
 #include <fcppt/symbol.hpp>
 
 namespace fcppt
@@ -42,7 +42,7 @@ namespace parameters
 class all {
 public:
 	FCPPT_SYMBOL explicit all(
-		ostream &
+		io::ostream &
 	);
 
 	FCPPT_SYMBOL all
@@ -76,7 +76,7 @@ public:
 		format::const_object_ptr
 	);
 
-	FCPPT_SYMBOL ostream &
+	FCPPT_SYMBOL io::ostream &
 	sink() const;
 
 	FCPPT_SYMBOL object const *
@@ -97,7 +97,7 @@ public:
 	FCPPT_SYMBOL format::const_object_ptr const
 	formatter() const;
 private:
-	ostream *sink_;
+	io::ostream *sink_;
 
 	object const *parent_;
 

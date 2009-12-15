@@ -31,7 +31,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #include <fcppt/log/level_stream_fwd.hpp>
 #include <fcppt/log/context_location_fwd.hpp>
 #include <fcppt/log/format/object_ptr.hpp>
-#include <fcppt/ostream.hpp>
+#include <fcppt/io/ostream.hpp>
 #include <fcppt/symbol.hpp>
 #include <fcppt/noncopyable.hpp>
 
@@ -88,7 +88,7 @@ public:
 	FCPPT_SYMBOL bool
 	enabled() const;
 
-	FCPPT_SYMBOL ostream &
+	FCPPT_SYMBOL io::ostream &
 	sink() const;
 
 	FCPPT_SYMBOL format::const_object_ptr const
@@ -108,7 +108,7 @@ public:
 private:
 	object const *const parent_;
 
-	ostream &sink_;
+	io::ostream &sink_;
 
 	detail::auto_context auto_context_;
 

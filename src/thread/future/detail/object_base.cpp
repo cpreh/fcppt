@@ -1,5 +1,4 @@
 #include <fcppt/thread/future/detail/object_base.hpp>
-#include <fcppt/cerr.hpp>
 
 fcppt::thread::future::detail::object_base::object_base()
 :

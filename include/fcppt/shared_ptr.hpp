@@ -35,7 +35,8 @@ template<
 		typename
 	> class Deleter
 >
-class shared_ptr {
+class shared_ptr
+{
 public:
 	typedef boost::shared_ptr<T> impl_type;
 	typedef typename impl_type::element_type element_type;
@@ -323,20 +324,6 @@ polymorphic_pointer_cast(
 		r,
 		boost::detail::polymorphic_cast_tag());
 }
-
-/*
-template<
-	typename T,
-	template<
-		typename
-	> class Deleter
->
-T *pointer(
-	shared_ptr<T, Deleter> const & p)
-{
-    return p.get();
-}
-*/
 
 template<
 	typename Ch,

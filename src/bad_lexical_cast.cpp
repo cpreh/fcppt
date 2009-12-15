@@ -39,7 +39,7 @@ fcppt::bad_lexical_cast::bad_lexical_cast(
 }
 
 fcppt::type_info const &
-fccpt::bad_lexical_cast::source() const
+fcppt::bad_lexical_cast::source() const
 {
 	return source_;
 }

@@ -18,67 +18,65 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
 
-#ifndef FCPPT_LOG_TEMPORARY_OUTPUT_HPP_INCLUDED
-#define FCPPT_LOG_TEMPORARY_OUTPUT_HPP_INCLUDED
+#ifndef SGE_DETAIL_STRONG_TYPEDEF_CAST_HPP_INCLUDED
+#define SGE_DETAIL_STRONG_TYPEDEF_CAST_HPP_INCLUDED
 
-#include <fcppt/log/temporary_output_fwd.hpp>
-#include <fcppt/log/output_helper.hpp>
-#include <fcppt/io/ostringstream.hpp>
-#include <fcppt/symbol.hpp>
-#include <fcppt/shared_ptr.hpp>
-#include <fcppt/string.hpp>
-#include <ostream>
+#include <sge/sn_cast.hpp>
+#include <boost/mpl/and.hpp>
+#include <boost/type_traits/is_fundamental.hpp>
+#include <boost/utility/enable_if.hpp>
 
-namespace fcppt
+namespace sge
 {
-namespace log
+namespace detail
 {
-
-class temporary_output {
-public:
-	FCPPT_SYMBOL temporary_output();
-
-	FCPPT_SYMBOL string const
-	result() const;
-private:
-	shared_ptr<
-		io::ostringstream
-	> os;
-
-	template<
-		typename T
-	>
-	friend temporary_output const
-	operator<<(
-		temporary_output const &,
-		T const &
-	);
-};
 
 template<
-	typename T
+	typename T,
+	typename U
 >
-temporary_output const
-operator<<(
-	output_helper const &,
-	T const &t
+typename boost::disable_if<
+	boost::mpl::and_<
+		boost::is_fundamental<
+			T
+		>,
+		boost::is_fundamental<
+			U
+		>
+	>,
+	T
+>::type
+strong_typedef_cast(
+	U const &u
 )
 {
-	return temporary_output() << t;
+	return T(u);
 }
 
 template<
-	typename T
+	typename T,
+	typename U
 >
-temporary_output const
-operator<<(
-	temporary_output const &s,
-	T const &t
+typename boost::enable_if<
+	boost::mpl::and_<
+		boost::is_fundamental<
+			T
+		>,
+		boost::is_fundamental<
+			U
+		>
+	>,
+	T
+>::type
+strong_typedef_cast(
+	U const &u
 )
 {
-	temporary_output n(s);
-	*n.os << t;
-	return n;
+	return sn_cast<
+		T
+	>(
+		u
+	);
 }
 
 }

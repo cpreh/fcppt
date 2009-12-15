@@ -18,22 +18,20 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
 
-#ifndef FCPPT_LOG_DEFAULT_LEVEL_STREAMS_HPP_INCLUDED
-#define FCPPT_LOG_DEFAULT_LEVEL_STREAMS_HPP_INCLUDED
+#ifndef FCPPT_IO_ISTRINGSTREAM_HPP_INCLUDED
+#define FCPPT_IO_ISTRINGSTREAM_HPP_INCLUDED
 
-#include <fcppt/log/level_stream_array.hpp>
-#include <fcppt/io/ostream.hpp>
-#include <fcppt/symbol.hpp>
+#include <fcppt/char_type.hpp>
+#include <sstream>
 
 namespace fcppt
 {
-namespace log
+namespace io
 {
 
-FCPPT_SYMBOL level_stream_array const
-default_level_streams(
-	io::ostream &
-);
+typedef std::basic_istringstream<
+	char_type
+> istringstream;
 
 }
 }

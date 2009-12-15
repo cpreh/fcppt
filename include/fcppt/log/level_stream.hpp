@@ -24,7 +24,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #include <fcppt/log/level_stream_fwd.hpp>
 #include <fcppt/log/temporary_output_fwd.hpp>
 #include <fcppt/log/format/object_ptr.hpp>
-#include <fcppt/ostream.hpp>
+#include <fcppt/io/ostream.hpp>
 #include <fcppt/symbol.hpp>
 
 namespace fcppt
@@ -35,7 +35,7 @@ namespace log
 class level_stream {
 public:
 	FCPPT_SYMBOL level_stream(
-		ostream &,
+		io::ostream &,
 		format::const_object_ptr
 	);
 
@@ -55,7 +55,7 @@ public:
 	FCPPT_SYMBOL format::const_object_ptr const
 	formatter() const;
 private:
-	ostream &dest_;
+	io::ostream &dest_;
 	format::const_object_ptr formatter_;
 };
 

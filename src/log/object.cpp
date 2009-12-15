@@ -138,7 +138,7 @@ fcppt::log::object::enabled() const
 	return enabled_;
 }
 
-fcppt::ostream &
+fcppt::io::ostream &
 fcppt::log::object::sink() const
 {
 	return sink_;

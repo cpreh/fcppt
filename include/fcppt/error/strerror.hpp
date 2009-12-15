@@ -18,68 +18,21 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
 
-#ifndef FCPPT_LOG_TEMPORARY_OUTPUT_HPP_INCLUDED
-#define FCPPT_LOG_TEMPORARY_OUTPUT_HPP_INCLUDED
+#ifndef FCPPT_ERROR_STRERROR_HPP_INCLUDED
+#define FCPPT_ERROR_STRERROR_HPP_INCLUDED
 
-#include <fcppt/log/temporary_output_fwd.hpp>
-#include <fcppt/log/output_helper.hpp>
-#include <fcppt/io/ostringstream.hpp>
-#include <fcppt/symbol.hpp>
-#include <fcppt/shared_ptr.hpp>
 #include <fcppt/string.hpp>
-#include <ostream>
+#include <fcppt/symbol.hpp>
 
 namespace fcppt
 {
-namespace log
+namespace error
 {
 
-class temporary_output {
-public:
-	FCPPT_SYMBOL temporary_output();
-
-	FCPPT_SYMBOL string const
-	result() const;
-private:
-	shared_ptr<
-		io::ostringstream
-	> os;
-
-	template<
-		typename T
-	>
-	friend temporary_output const
-	operator<<(
-		temporary_output const &,
-		T const &
-	);
-};
-
-template<
-	typename T
->
-temporary_output const
-operator<<(
-	output_helper const &,
-	T const &t
-)
-{
-	return temporary_output() << t;
-}
-
-template<
-	typename T
->
-temporary_output const
-operator<<(
-	temporary_output const &s,
-	T const &t
-)
-{
-	temporary_output n(s);
-	*n.os << t;
-	return n;
-}
+FCPPT_SYMBOL string const
+strerror(
+	int errnum
+);
 
 }
 }

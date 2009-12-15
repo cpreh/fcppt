@@ -21,7 +21,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #include <fcppt/log/parameters/all.hpp>
 
 fcppt::log::parameters::all::all(
-	ostream &sink_
+	io::ostream &sink_
 )
 :
 	sink_(&sink_),
@@ -98,7 +98,7 @@ fcppt::log::parameters::all::formatter(
 	return *this;
 }
 
-fcppt::ostream &
+fcppt::io::ostream &
 fcppt::log::parameters::all::sink() const
 {
 	return *sink_;

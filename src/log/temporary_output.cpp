@@ -19,9 +19,15 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 
 #include <fcppt/log/temporary_output.hpp>
+#include <fcppt/make_shared_ptr.hpp>
 
 fcppt::log::temporary_output::temporary_output()
-  : os(new ostringstream())
+:
+	os(
+		make_shared_ptr<
+			io::ostringstream
+		>()
+	)
 {}
 
 fcppt::string const

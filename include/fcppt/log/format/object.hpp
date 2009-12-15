@@ -23,6 +23,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 #include <fcppt/string.hpp>
 #include <fcppt/symbol.hpp>
+#include <fcppt/class_symbol.hpp>
 #include <fcppt/noncopyable.hpp>
 
 namespace fcppt
@@ -32,7 +33,8 @@ namespace log
 namespace format
 {
 
-class FCPPT_CLASS_SYMBOL object {
+class FCPPT_CLASS_SYMBOL object
+{
 	FCPPT_NONCOPYABLE(object)
 protected:
 	FCPPT_SYMBOL object();

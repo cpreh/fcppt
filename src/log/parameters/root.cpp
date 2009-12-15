@@ -25,7 +25,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #include <fcppt/log/enabled_levels.hpp>
 
 fcppt::log::parameters::root::root(
-	ostream &sink_
+	io::ostream &sink_
 )
 :
 	sink_(sink_),

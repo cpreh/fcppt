@@ -50,7 +50,7 @@ fcppt::type_info::get() const
 }
 
 fcppt::string const
-fccpt::type_info::name() const
+fcppt::type_info::name() const
 {
 	FCPPT_ASSERT(info_);
 
@@ -66,27 +66,47 @@ fcppt::operator==(
 	return lhs.get() == rhs.get();
 }
 
-bool fcppt::operator<(const type_info& lhs, const type_info& rhs)
+bool
+fcppt::operator<(
+	type_info const &lhs,
+	type_info const &rhs
+)
 {
 	return lhs.before(rhs);
 }
 
-bool fcppt::operator!=(const type_info& lhs, const type_info& rhs)
+bool
+fcppt::operator!=(
+	type_info const &lhs,
+	type_info const &rhs
+)
 {
 	return !(lhs == rhs);
 }
 
-bool fcppt::operator>(const type_info& lhs, const type_info& rhs)
+bool
+fcppt::operator>(
+	type_info const &lhs,
+	type_info const &rhs
+)
 {
 	return rhs < lhs;
 }
 
-bool fcppt::operator<=(const type_info& lhs, const type_info& rhs)
+bool
+fcppt::operator<=(
+	type_info const &lhs,
+	type_info const &rhs
+)
 {
 	return !(lhs > rhs);
 }
 
-bool fcppt::operator>=(const type_info& lhs, const type_info& rhs)
+bool
+fcppt::operator>=(
+	type_info const &lhs,
+	type_info const &rhs
+)
 {
 	return !(lhs < rhs);
 }

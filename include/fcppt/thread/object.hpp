@@ -9,7 +9,7 @@ namespace fcppt
 {
 namespace thread
 {
-class FCPPT_CLASS_SYMBOL object
+class object
 {
 public:
 	typedef fcppt::function::object<void ()> task;
