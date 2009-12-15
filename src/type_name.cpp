@@ -18,27 +18,40 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
 
-#ifndef FCPPT_COM_DELETER_HPP_INCLUDED
-#define FCPPT_COM_DELETER_HPP_INCLUDED
-
-namespace fcppt
-{
-
-template<
-	typename T
->
-class com_deleter
-{
-public:
-	void
-	operator()(
-		T* const t
-	) const
-	{
-		t->Release();
-	}
-};
-
-}
-
+#include <fcppt/type_name.hpp>
+#include <fcppt/iconv.hpp>
+#ifdef FCPPT_HAS_GNU_DEMANGLE
+#include <cxxabi.h>
+#include <fcppt/scoped_ptr.hpp>
+#include <fcppt/c_deleter.hpp>
 #endif
+
+fcppt::string const
+fcppt::type_name(
+	fcppt::type_info const &ti)
+{
+#ifdef FCPPT_HAS_GNU_DEMANGLE
+	int status;
+
+	scoped_ptr<
+		char,
+		c_deleter
+	> name(
+		abi::__cxa_demangle(
+			ti.get().name(),
+			0,
+			0,
+			&status
+		)
+	);
+
+	// demangling failed?
+	return status
+		? iconv(ti.get().name())
+		: iconv(name.get());
+#else
+	return iconv(
+		ti.get().name()
+	);
+#endif
+}

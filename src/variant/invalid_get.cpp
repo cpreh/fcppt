@@ -18,27 +18,12 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
 
-#ifndef FCPPT_COM_DELETER_HPP_INCLUDED
-#define FCPPT_COM_DELETER_HPP_INCLUDED
+#include <fcppt/variant/invalid_get.hpp>
+#include <fcppt/text.hpp>
 
-namespace fcppt
-{
-
-template<
-	typename T
->
-class com_deleter
-{
-public:
-	void
-	operator()(
-		T* const t
-	) const
-	{
-		t->Release();
-	}
-};
-
-}
-
-#endif
+fcppt::variant::invalid_get::invalid_get()
+:
+	exception(
+		FCPPT_TEXT("Invalid get in variant!")
+	)
+{}

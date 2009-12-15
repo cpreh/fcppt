@@ -18,27 +18,12 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
 
-#ifndef FCPPT_COM_DELETER_HPP_INCLUDED
-#define FCPPT_COM_DELETER_HPP_INCLUDED
+#include <fcppt/variant/invalid_apply.hpp>
+#include <fcppt/text.hpp>
 
-namespace fcppt
-{
-
-template<
-	typename T
->
-class com_deleter
-{
-public:
-	void
-	operator()(
-		T* const t
-	) const
-	{
-		t->Release();
-	}
-};
-
-}
-
-#endif
+fcppt::variant::invalid_apply::invalid_apply()
+:
+	exception(
+		FCPPT_TEXT("apply has been called on a variant that is empty!")
+	)
+{}

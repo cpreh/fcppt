@@ -18,27 +18,25 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
 
-#ifndef FCPPT_COM_DELETER_HPP_INCLUDED
-#define FCPPT_COM_DELETER_HPP_INCLUDED
+#include "find_logger_node.hpp"
+#include "is_outer_node.hpp"
+#include <fcppt/container/tree_impl.hpp>
+#include <fcppt/variant/object_impl.hpp>
+#include <tr1/functional>
+#include <algorithm>
 
-namespace fcppt
+fcppt::log::detail::context_tree::iterator
+fcppt::log::find_logger_node(
+	detail::context_tree &tree_
+)
 {
-
-template<
-	typename T
->
-class com_deleter
-{
-public:
-	void
-	operator()(
-		T* const t
-	) const
-	{
-		t->Release();
-	}
-};
-
+	return
+		std::find_if(
+			tree_.begin(),
+			tree_.end(),
+			std::tr1::bind(
+				is_outer_node,
+				std::tr1::placeholders::_1
+			)
+		);
 }
-
-#endif

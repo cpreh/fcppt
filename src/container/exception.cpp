@@ -18,27 +18,10 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
 
-#ifndef FCPPT_COM_DELETER_HPP_INCLUDED
-#define FCPPT_COM_DELETER_HPP_INCLUDED
+#include <fcppt/container/exception.hpp>
 
-namespace fcppt
-{
-
-template<
-	typename T
->
-class com_deleter
-{
-public:
-	void
-	operator()(
-		T* const t
-	) const
-	{
-		t->Release();
-	}
-};
-
-}
-
-#endif
+fcppt::container::exception::exception(
+	fcppt::string const &e)
+:
+	fcppt::exception(e)
+{}

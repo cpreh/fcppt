@@ -18,27 +18,10 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
 
-#ifndef FCPPT_COM_DELETER_HPP_INCLUDED
-#define FCPPT_COM_DELETER_HPP_INCLUDED
+#include <fcppt/endianness/is_little_endian.hpp>
+#include <fcppt/endianness/host_format.hpp>
 
-namespace fcppt
+bool fcppt::endianness::is_little_endian()
 {
-
-template<
-	typename T
->
-class com_deleter
-{
-public:
-	void
-	operator()(
-		T* const t
-	) const
-	{
-		t->Release();
-	}
-};
-
+	return host_format() == format::little;
 }
-
-#endif

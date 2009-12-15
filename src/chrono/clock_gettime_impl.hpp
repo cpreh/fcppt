@@ -18,27 +18,51 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
 
-#ifndef FCPPT_COM_DELETER_HPP_INCLUDED
-#define FCPPT_COM_DELETER_HPP_INCLUDED
+#ifndef FCPPT_CHRONO_CLOCK_GETTIME_IMPL_HPP_INCLUDED
+#define FCPPT_CHRONO_CLOCK_GETTIME_IMPL_HPP_INCLUDED
+
+#include <fcppt/chrono/clock_failure.hpp>
+#include <fcppt/chrono/time_point_impl.hpp>
+#include <fcppt/chrono/duration_impl.hpp>
+#include <fcppt/text.hpp>
+#include <time.h>
 
 namespace fcppt
 {
+namespace chrono
+{
 
 template<
-	typename T
+	typename TimePoint
 >
-class com_deleter
+TimePoint const
+clock_gettime_impl(
+	clockid_t const clock_
+)
 {
-public:
-	void
-	operator()(
-		T* const t
-	) const
-	{
-		t->Release();
-	}
-};
+	struct timespec tp;
 
+	if(
+		clock_gettime(
+			clock_,
+			&tp
+		) != 0
+	)
+		throw clock_failure(
+			FCPPT_TEXT("clock_gettime failed")
+		);
+
+	typedef typename TimePoint::duration duration_;
+
+	return TimePoint(
+		duration_(
+			// FIXME!
+			tp.tv_sec * 1000 * 1000 * 1000 + tp.tv_nsec
+		)
+	);
+}
+
+}
 }
 
 #endif

@@ -18,27 +18,12 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
 
-#ifndef FCPPT_COM_DELETER_HPP_INCLUDED
-#define FCPPT_COM_DELETER_HPP_INCLUDED
+#include <fcppt/mpl/invalid_invoke.hpp>
+#include <fcppt/text.hpp>
 
-namespace fcppt
-{
-
-template<
-	typename T
->
-class com_deleter
-{
-public:
-	void
-	operator()(
-		T* const t
-	) const
-	{
-		t->Release();
-	}
-};
-
-}
-
-#endif
+fcppt::mpl::invalid_invoke::invalid_invoke()
+:
+	fcppt::exception(
+		FCPPT_TEXT("Invalid invoke!")
+	)
+{}

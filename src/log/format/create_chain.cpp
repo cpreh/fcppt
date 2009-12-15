@@ -18,27 +18,27 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
 
-#ifndef FCPPT_COM_DELETER_HPP_INCLUDED
-#define FCPPT_COM_DELETER_HPP_INCLUDED
+#include <fcppt/log/format/create_chain.hpp>
+#include <fcppt/log/format/chain.hpp>
+#include <fcppt/make_shared_ptr.hpp>
 
-namespace fcppt
+fcppt::log::format::const_object_ptr const
+fcppt::log::format::create_chain(
+	const_object_ptr const parent,
+	const_object_ptr const child
+)
 {
+	if(!parent)
+		return child;
 
-template<
-	typename T
->
-class com_deleter
-{
-public:
-	void
-	operator()(
-		T* const t
-	) const
-	{
-		t->Release();
-	}
-};
+	if(!child)
+		return parent;
 
+	return
+		make_shared_ptr<
+			chain
+		>(
+			parent,
+			child
+		);
 }
-
-#endif

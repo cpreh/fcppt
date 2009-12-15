@@ -18,27 +18,35 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
 
-#ifndef FCPPT_COM_DELETER_HPP_INCLUDED
-#define FCPPT_COM_DELETER_HPP_INCLUDED
+#include <fcppt/log/format/chain.hpp>
+#include <fcppt/text.hpp>
+#include <fcppt/exception.hpp>
 
-namespace fcppt
+fcppt::log::format::chain::chain(
+	const_object_ptr const parent,
+	const_object_ptr const child
+)
+:
+	parent(parent),
+	child(child)
 {
-
-template<
-	typename T
->
-class com_deleter
-{
-public:
-	void
-	operator()(
-		T* const t
-	) const
-	{
-		t->Release();
-	}
-};
-
+	if(!parent || !child)
+		throw exception(
+			FCPPT_TEXT("format::chain(): one of the objects is zero!")
+		);
 }
 
-#endif
+fcppt::log::format::chain::~chain()
+{}
+
+fcppt::string const
+fcppt::log::format::chain::format(
+	string const &str
+) const
+{
+	return parent->format(
+		child->format(
+			str
+		)
+	);
+}

@@ -18,27 +18,44 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
 
-#ifndef FCPPT_COM_DELETER_HPP_INCLUDED
-#define FCPPT_COM_DELETER_HPP_INCLUDED
+#include <fcppt/config.h>
+#ifdef FCPPT_WINDOWS_PLATFORM
+#include "query_performance_frequency.hpp"
+#include <fcppt/windows/windows.hpp>
+#include <fcppt/chrono/clock_failure.hpp>
+#include <fcppt/once.hpp>
+#include <fcppt/text.hpp>
 
-namespace fcppt
+namespace
 {
 
-template<
-	typename T
->
-class com_deleter
-{
-public:
-	void
-	operator()(
-		T* const t
-	) const
-	{
-		t->Release();
-	}
-};
+LARGE_INTEGER frequency;
 
+void
+init()
+{
+	FCPPT_FUNCTION_ONCE;
+
+	if(
+		QueryPerformanceFrequency(
+			&frequency
+		)
+		 == 0
+	)
+		throw fcppt::chrono::clock_failure(
+			FCPPT_TEXT("QueryPerformanceFrequency() failed!")
+		);
+
+}
+
+}
+
+LARGE_INTEGER
+fcppt::chrono::query_performance_frequency()
+{
+	init();
+
+	return frequency;
 }
 
 #endif

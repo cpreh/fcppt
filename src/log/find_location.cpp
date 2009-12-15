@@ -18,27 +18,44 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
 
-#ifndef FCPPT_COM_DELETER_HPP_INCLUDED
-#define FCPPT_COM_DELETER_HPP_INCLUDED
+#include "find_location.hpp"
+#include "find_inner_node.hpp"
+#include <fcppt/log/location.hpp>
+#include <fcppt/container/tree_impl.hpp>
+#include <fcppt/variant/object_impl.hpp>
 
-namespace fcppt
+fcppt::log::detail::context_tree *
+fcppt::log::find_location(
+	detail::context_tree &tree_,
+	location const &location_
+)
 {
+	detail::context_tree *cur(
+		&tree_
+	);
 
-template<
-	typename T
->
-class com_deleter
-{
-public:
-	void
-	operator()(
-		T* const t
-	) const
+	for(
+		location::const_iterator item(
+			location_.begin()
+		);
+		item != location_.end();
+		++item
+	)
 	{
-		t->Release();
+		detail::context_tree::iterator const item_it(
+			find_inner_node(
+				*cur,
+				*item
+			)
+		);
+
+		if(
+			item_it == cur->end()
+		)
+			return 0;
+
+		cur = &*item_it;
 	}
-};
 
+	return cur;
 }
-
-#endif

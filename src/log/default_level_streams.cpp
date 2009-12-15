@@ -18,27 +18,37 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
 
-#ifndef FCPPT_COM_DELETER_HPP_INCLUDED
-#define FCPPT_COM_DELETER_HPP_INCLUDED
+#include <fcppt/log/default_level_streams.hpp>
+#include <fcppt/log/format/default_level.hpp>
+#include <fcppt/log/level_stream.hpp>
+#include <fcppt/foreach_enumerator.hpp>
+#include <fcppt/make_shared_ptr.hpp>
+#include <tr1/functional>
 
-namespace fcppt
+fcppt::log::level_stream_array const
+fcppt::log::default_level_streams(
+	ostream &sink_
+)
 {
+	level_stream_array ret;
 
-template<
-	typename T
->
-class com_deleter
-{
-public:
-	void
-	operator()(
-		T* const t
-	) const
+	FCPPT_FOREACH_ENUMERATOR(
+		i,
+		level
+	)
 	{
-		t->Release();
+		ret[i] =
+			make_shared_ptr<
+				level_stream
+			>(
+				std::tr1::ref(
+					sink_
+				),
+				format::default_level(
+					i
+				)
+			);
 	}
-};
 
+	return ret;
 }
-
-#endif

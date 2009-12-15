@@ -18,27 +18,21 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
 
-#ifndef FCPPT_COM_DELETER_HPP_INCLUDED
-#define FCPPT_COM_DELETER_HPP_INCLUDED
+#include <fcppt/filesystem/create_directories_recursive.hpp>
+#include <fcppt/filesystem/create_directory_failed.hpp>
+#include <boost/filesystem/convenience.hpp>
 
-namespace fcppt
+void
+fcppt::filesystem::create_directories_recursive(
+	path const &p
+)
 {
-
-template<
-	typename T
->
-class com_deleter
-{
-public:
-	void
-	operator()(
-		T* const t
-	) const
-	{
-		t->Release();
-	}
-};
-
+	if(
+		!boost::filesystem::create_directories(
+			p
+		)
+	)
+		throw create_directory_failed(
+			p
+		);
 }
-
-#endif

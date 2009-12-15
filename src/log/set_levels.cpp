@@ -18,27 +18,23 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
 
-#ifndef FCPPT_COM_DELETER_HPP_INCLUDED
-#define FCPPT_COM_DELETER_HPP_INCLUDED
+#include "set_levels.hpp"
+#include <fcppt/log/object.hpp>
+#include <fcppt/foreach_enumerator.hpp>
 
-namespace fcppt
+void
+fcppt::log::set_levels(
+	object &object_,
+	level::type const level_,
+	void (object::*fun)(level::type)
+)
 {
-
-template<
-	typename T
->
-class com_deleter
-{
-public:
-	void
-	operator()(
-		T* const t
-	) const
-	{
-		t->Release();
-	}
-};
-
+	FCPPT_FOREACH_ENUMERATOR_2(
+		i,
+		level,
+		level_
+	)
+		(object_.*fun)(
+			i
+		);
 }
-
-#endif

@@ -18,27 +18,35 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
 
-#ifndef FCPPT_COM_DELETER_HPP_INCLUDED
-#define FCPPT_COM_DELETER_HPP_INCLUDED
+#include <fcppt/signal/connection_manager.hpp>
 
-namespace fcppt
+fcppt::signal::connection_manager::connection_manager()
+:
+	connections()
+{}
+
+fcppt::signal::connection_manager::connection_manager(
+	container const &_connections)
+:
+	connections(_connections)
+{}
+
+void fcppt::signal::connection_manager::connect(
+	shared_connection const &v)
 {
-
-template<
-	typename T
->
-class com_deleter
-{
-public:
-	void
-	operator()(
-		T* const t
-	) const
-	{
-		t->Release();
-	}
-};
-
+	connections.push_back(
+		v);
 }
 
-#endif
+void fcppt::signal::connection_manager::connect(
+	auto_connection v)
+{
+	connections.push_back(
+		shared_connection(
+			v));
+}
+
+void fcppt::signal::connection_manager::clear()
+{
+	connections.clear();
+}

@@ -18,27 +18,50 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
 
-#ifndef FCPPT_COM_DELETER_HPP_INCLUDED
-#define FCPPT_COM_DELETER_HPP_INCLUDED
+#include <fcppt/log/level_stream.hpp>
+#include <fcppt/log/temporary_output.hpp>
+#include <fcppt/log/format/create_chain.hpp>
+#include <fcppt/log/format/object.hpp>
 
-namespace fcppt
+fcppt::log::level_stream::level_stream(
+	ostream &dest_,
+	format::const_object_ptr const formatter_
+)
+:
+	dest_(dest_),
+	formatter_(formatter_)
+{}
+
+fcppt::log::level_stream::~level_stream()
+{}
+
+void
+fcppt::log::level_stream::log(
+	temporary_output const &output,
+	format::const_object_ptr const additional_formatter
+)
 {
+	dest_
+		<< format::create_chain(
+			additional_formatter,
+			formatter()
+		)->format(
+			output.result()
+		);
 
-template<
-	typename T
->
-class com_deleter
-{
-public:
-	void
-	operator()(
-		T* const t
-	) const
-	{
-		t->Release();
-	}
-};
-
+	dest_.flush();
 }
 
-#endif
+void
+fcppt::log::level_stream::formatter(
+	format::const_object_ptr const new_formatter
+)
+{
+	formatter_ = new_formatter;
+}
+
+fcppt::log::format::const_object_ptr const
+fcppt::log::level_stream::formatter() const
+{
+	return formatter_;
+}

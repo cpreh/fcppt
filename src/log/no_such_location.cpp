@@ -18,27 +18,25 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
 
-#ifndef FCPPT_COM_DELETER_HPP_INCLUDED
-#define FCPPT_COM_DELETER_HPP_INCLUDED
+#include <fcppt/log/no_such_location.hpp>
+#include <fcppt/text.hpp>
 
-namespace fcppt
+fcppt::log::no_such_location::no_such_location(
+	log::location const &nlocation_
+)
+:
+	exception(
+		FCPPT_TEXT("no such location \"")
+		+ nlocation_.string()
+		+ FCPPT_TEXT('"')
+	),
+	location_(
+		nlocation_
+	)
+{}
+
+fcppt::log::location const &
+fcppt::log::no_such_location::location() const
 {
-
-template<
-	typename T
->
-class com_deleter
-{
-public:
-	void
-	operator()(
-		T* const t
-	) const
-	{
-		t->Release();
-	}
-};
-
+	return location_;
 }
-
-#endif

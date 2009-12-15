@@ -18,27 +18,28 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
 
-#ifndef FCPPT_COM_DELETER_HPP_INCLUDED
-#define FCPPT_COM_DELETER_HPP_INCLUDED
+#include <fcppt/assert.hpp>
+#include <fcppt/exception.hpp>
+#include <fcppt/ostringstream.hpp>
+#include <ostream>
 
-namespace fcppt
+void fcppt::detail::process_assert(
+	string const &file,
+	string const &line,
+	string const &condition,
+	string const &message,
+	string const &function)
 {
+	ostringstream ss;
 
-template<
-	typename T
->
-class com_deleter
-{
-public:
-	void
-	operator()(
-		T* const t
-	) const
-	{
-		t->Release();
-	}
-};
+	ss << file << FCPPT_TEXT(':') << line;
 
+	if (!function.empty())
+		ss << FCPPT_TEXT(" function '") << function << SGE_TEXT('\'');
+	ss << FCPPT_TEXT(": assertion failed: ") << condition;
+
+	if (!message.empty())
+		ss << FCPPT_TEXT(", ") << message;
+
+	throw exception(ss.str());
 }
-
-#endif

@@ -18,27 +18,19 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
 
-#ifndef FCPPT_COM_DELETER_HPP_INCLUDED
-#define FCPPT_COM_DELETER_HPP_INCLUDED
+#include <fcppt/log/deactivate_levels.hpp>
+#include <fcppt/log/object.hpp>
+#include "set_levels.hpp"
 
-namespace fcppt
+void
+fcppt::log::deactivate_levels(
+	object &object_,
+	level::type const level_
+)
 {
-
-template<
-	typename T
->
-class com_deleter
-{
-public:
-	void
-	operator()(
-		T* const t
-	) const
-	{
-		t->Release();
-	}
-};
-
+	set_levels(
+		object_,
+		level_,
+		&object::deactivate
+	);
 }
-
-#endif

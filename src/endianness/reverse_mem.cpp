@@ -18,27 +18,13 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
 
-#ifndef FCPPT_COM_DELETER_HPP_INCLUDED
-#define FCPPT_COM_DELETER_HPP_INCLUDED
+#include <fcppt/endianness/reverse_mem.hpp>
+#include <algorithm>
 
-namespace fcppt
+void fcppt::endianness::reverse_mem(
+	unsigned char* const t,
+	std::size_t const len)
 {
-
-template<
-	typename T
->
-class com_deleter
-{
-public:
-	void
-	operator()(
-		T* const t
-	) const
-	{
-		t->Release();
-	}
-};
-
+	for(std::size_t i = 0; i < len / 2; ++i)
+		std::swap(t[i], t[len-i-1]);
 }
-
-#endif

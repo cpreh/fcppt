@@ -18,27 +18,32 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
 
-#ifndef FCPPT_COM_DELETER_HPP_INCLUDED
-#define FCPPT_COM_DELETER_HPP_INCLUDED
+#include <fcppt/endianness/host_format.hpp>
+#include <fcppt/config.h>
 
-namespace fcppt
-{
-
-template<
-	typename T
->
-class com_deleter
-{
-public:
-	void
-	operator()(
-		T* const t
-	) const
-	{
-		t->Release();
-	}
-};
-
-}
-
+#if defined(FCPPT_LITTLE_ENDIAN) && defined(SGE_BIG_ENDIAN)
+#error "FCPPT_LITTLE_ENDIAN and SGE_BIG_ENDIAN defined!"
 #endif
+
+fcppt::endianness::format::type
+fcppt::endianness::host_format()
+{
+#if   defined(FCPPT_LITTLE_ENDIAN)
+	return format::little;
+#elif defined(FCPPT_BIG_ENDIAN)
+	return format::big;
+#else
+	// if unsigned long and char are of the same size
+	// endianness doesn't matter
+	typedef unsigned long type;
+	union {
+		type t;
+		unsigned char c[sizeof(type)];
+	} u;
+	u.t = 1u;
+
+	return u.c[0] == u.t
+		? format::little
+		: format::big;
+#endif
+}

@@ -18,27 +18,24 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
 
-#ifndef FCPPT_COM_DELETER_HPP_INCLUDED
-#define FCPPT_COM_DELETER_HPP_INCLUDED
+#include <fcppt/random/actor/element.hpp>
 
-namespace fcppt
+fcppt::random::actor::element::element(
+	float_type const prob_,
+	actor::callback const &callback_)
+:
+	prob_(prob_),
+	callback_(callback_)
+{}
+
+fcppt::random::actor::float_type
+fcppt::random::actor::element::prob() const
 {
-
-template<
-	typename T
->
-class com_deleter
-{
-public:
-	void
-	operator()(
-		T* const t
-	) const
-	{
-		t->Release();
-	}
-};
-
+	return prob_;
 }
 
-#endif
+fcppt::random::actor::callback const &
+fcppt::random::actor::element::callback() const
+{
+	return callback_;
+}

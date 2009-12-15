@@ -18,27 +18,11 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
 
-#ifndef FCPPT_COM_DELETER_HPP_INCLUDED
-#define FCPPT_COM_DELETER_HPP_INCLUDED
+#include <fcppt/filesystem/is_regular.hpp>
+#include <boost/filesystem/operations.hpp>
 
-namespace fcppt
+bool fcppt::filesystem::is_regular(
+	path const &p)
 {
-
-template<
-	typename T
->
-class com_deleter
-{
-public:
-	void
-	operator()(
-		T* const t
-	) const
-	{
-		t->Release();
-	}
-};
-
+	return boost::filesystem::is_regular_file(p);
 }
-
-#endif

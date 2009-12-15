@@ -28,17 +28,17 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #	define FCPPT_IMPORT_SYMBOL __declspec(dllimport)
 
 #	ifdef fcpptcore_EXPORTS
-#		define FCPPT_SYMBOL SGE_EXPORT_SYMBOL
+#		define FCPPT_SYMBOL FCPPT_EXPORT_SYMBOL
 #	else
-#		define FCPPT_SYMBOL SGE_IMPORT_SYMBOL
+#		define FCPPT_SYMBOL FCPPT_IMPORT_SYMBOL
 #	endif
 
 #	define FCPPT_CLASS_SYMBOL
 #elif defined(__GNUC__) && defined(FCPPT_HAVE_GCC_VISIBILITY)
 #	define FCPPT_SYMBOL __attribute__ ((visibility("default")))
-#	define FCPPT_EXPORT_SYMBOL SGE_SYMBOL
+#	define FCPPT_EXPORT_SYMBOL FCPPT_SYMBOL
 #	define FCPPT_IMPORT_SYMBOL
-#	define FCPPT_CLASS_SYMBOL SGE_SYMBOL
+#	define FCPPT_CLASS_SYMBOL FCPPT_SYMBOL
 #else
 #	define FCPPT_SYMBOL
 #	define FCPPT_EXPORT_SYMBOL

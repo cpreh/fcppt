@@ -18,27 +18,40 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
 
-#ifndef FCPPT_COM_DELETER_HPP_INCLUDED
-#define FCPPT_COM_DELETER_HPP_INCLUDED
+#include <fcppt/exception.hpp>
 
-namespace fcppt
+fcppt::exception::exception(
+	fcppt::string const &s)
+:
+	s(s)
+{}
+
+fcppt::exception::exception(
+	exception const &e)
+:
+	s(e.s)
+{}
+
+fcppt::exception &
+fcppt::exception::operator=(
+	exception const &e)
 {
-
-template<
-	typename T
->
-class com_deleter
-{
-public:
-	void
-	operator()(
-		T* const t
-	) const
-	{
-		t->Release();
-	}
-};
-
+	s = e.s;
+	return *this;
 }
 
-#endif
+fcppt::string const &
+fcppt::exception::string() const
+{
+	return s;
+}
+
+/*
+char const *
+fcppt::exception::what() const throw()
+{
+	return "do not catch fcppt::exception as std::exception, no what() can be supplied";
+}*/
+
+fcppt::exception::~exception()
+{}

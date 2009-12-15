@@ -18,27 +18,13 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
 
-#ifndef FCPPT_COM_DELETER_HPP_INCLUDED
-#define FCPPT_COM_DELETER_HPP_INCLUDED
+#include <fcppt/filesystem/first_file.hpp>
+#include <fcppt/filesystem/skip_directories.hpp>
 
-namespace fcppt
+fcppt::filesystem::directory_iterator const
+fcppt::filesystem::first_file(
+	path const &p)
 {
-
-template<
-	typename T
->
-class com_deleter
-{
-public:
-	void
-	operator()(
-		T* const t
-	) const
-	{
-		t->Release();
-	}
-};
-
+	return skip_directories(
+		directory_iterator(p));
 }
-
-#endif
