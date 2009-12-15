@@ -41,9 +41,9 @@ template<
 	typename Element,
 	typename Number
 >
-class find_nth
+struct find_nth
 :
-public boost::mpl::deref<
+boost::mpl::deref<
 	typename boost::mpl::advance<
 		typename boost::mpl::begin<
 			typename boost::mpl::iter_fold<

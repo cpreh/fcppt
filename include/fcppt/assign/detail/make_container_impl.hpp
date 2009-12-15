@@ -27,7 +27,8 @@ template<
 	typename Container
 >
 fcppt::assign::make_container<Container>::make_container(
-	typename container_type::const_reference r)
+	typename container_type::const_reference r
+)
 {
 	(*this)(r);
 }

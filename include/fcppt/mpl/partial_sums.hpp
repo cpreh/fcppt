@@ -33,10 +33,12 @@ namespace fcppt
 namespace mpl
 {
 
-template<typename Elements>
-class partial_sums
+template<
+	typename Elements
+>
+struct partial_sums
 :
-public boost::mpl::fold<
+boost::mpl::fold<
 	Elements,
 	boost::mpl::vector_c<int, 0>, // mpl::plus<> converts its operands, so int is most conservative
 	boost::mpl::push_back<

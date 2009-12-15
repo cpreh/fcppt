@@ -25,6 +25,7 @@ namespace fcppt
 {
 namespace assign
 {
+
 template<typename Container>
 class make_container
 {

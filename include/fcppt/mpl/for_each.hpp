@@ -34,8 +34,8 @@ namespace detail
 {
 
 template<bool done = true>
-class for_each_impl {
-public:
+struct for_each_impl
+{
 	template<
 		typename Iterator,
 		typename LastIterator,
@@ -45,13 +45,14 @@ public:
 	execute(
 		Iterator *,
 		LastIterator *,
-		Fun const &)
+		Fun const &
+	)
 	{}
 };
 
 template<>
-class for_each_impl<false> {
-public:
+struct for_each_impl<false>
+{
 	template<
 		typename Iterator,
 		typename LastIterator,
@@ -61,7 +62,8 @@ public:
 	execute(
 		Iterator *,
 		LastIterator *,
-		Fun const &f)
+		Fun const &f
+	)
 	{
 		typedef typename boost::mpl::deref<Iterator>::type item;
 		typedef typename boost::mpl::next<Iterator>::type iter;
@@ -89,7 +91,8 @@ template<
 >
 void
 for_each(
-	Fun const &f)
+	Fun const &f
+)
 {
 	typedef typename boost::mpl::begin<Sequence>::type first;
 	typedef typename boost::mpl::end<Sequence>::type last;
