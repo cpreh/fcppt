@@ -22,6 +22,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #define FCPPT_RANDOM_EXCLUSIVE_RANGE_ERROR_HPP_INCLUDED
 
 #include <fcppt/exception.hpp>
+#include <fcppt/class_symbol.hpp>
 #include <fcppt/symbol.hpp>
 
 namespace fcppt
@@ -29,10 +30,14 @@ namespace fcppt
 namespace random
 {
 
-class exclusive_range_error : public exception {
+class FCPPT_CLASS_SYMBOL exclusive_range_error
+:
+	public exception
+{
 public:
 	FCPPT_SYMBOL explicit exclusive_range_error(
-		fcppt::string const &);
+		fcppt::string const &
+	);
 };
 
 }

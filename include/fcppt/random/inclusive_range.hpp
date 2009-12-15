@@ -31,11 +31,15 @@ namespace random
 template<
 	typename T
 >
-class inclusive_range : public range<T> {
+class inclusive_range
+:
+	public range<T>
+{
 public:
 	inclusive_range(
 		T const &first_,
-		T const &last_)
+		T const &last_
+	)
 	:
 		range<T>(
 			first_,
@@ -50,7 +54,8 @@ template<
 inclusive_range<T> const
 make_inclusive_range(
 	T const &first,
-	T const &last)
+	T const &last
+)
 {
 	return inclusive_range<T>(
 		first,

@@ -57,15 +57,18 @@ class last_exclusive_range<
 public:
 	last_exclusive_range(
 		T const &first,
-		T const &last)
+		T const &last
+	)
 	:
 		range<T>(
 			first,
-			last - static_cast<T>(1))
+			last - static_cast<T>(1)
+		)
 	{
 		if(first == last)
 			throw exclusive_range_error(
-				FCPPT_TEXT("last_exclusive_range empty!"));
+				FCPPT_TEXT("last_exclusive_range empty!")
+			);
 	}
 };
 
@@ -75,7 +78,8 @@ template<
 last_exclusive_range<T> const
 make_last_exclusive_range(
 	T const &first,
-	T const &last)
+	T const &last
+)
 {
 	return last_exclusive_range<T>(
 		first,

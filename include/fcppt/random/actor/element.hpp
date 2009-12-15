@@ -24,6 +24,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #include <fcppt/random/actor/element_fwd.hpp>
 #include <fcppt/random/actor/float_type.hpp>
 #include <fcppt/random/actor/callback.hpp>
+#include <fcppt/function/object.hpp>
 #include <fcppt/symbol.hpp>
 
 namespace fcppt
@@ -33,11 +34,13 @@ namespace random
 namespace actor
 {
 
-class element {
+class element
+{
 public:
 	FCPPT_SYMBOL element(
 		float_type,
-		actor::callback const &);
+		actor::callback const &
+	);
 
 	FCPPT_SYMBOL float_type
 	prob() const;

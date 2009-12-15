@@ -34,21 +34,25 @@ namespace random
 namespace actor
 {
 
-class normalized {
+class normalized
+{
 	FCPPT_NONCOPYABLE(normalized)
 public:
 	FCPPT_SYMBOL explicit normalized(
-		container const &);
+		container const &
+	);
 
 	FCPPT_SYMBOL ~normalized();
 
-	FCPPT_SYMBOL void operator()();
+	FCPPT_SYMBOL void
+	operator()();
 private:
 	typedef uniform<
 		float_type
 	> rng_type;
 
 	container const elements;
+
 	rng_type rng;
 };
 
