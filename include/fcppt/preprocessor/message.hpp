@@ -25,7 +25,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #include <fcppt/config.h>
 
 #if defined(_MSC_VER) || defined(FCPPT_HAVE_GCC_PRAGMA_MESSAGE)
-#define FCPPT_PP_MESSAGE(x) FCCPT_PP_PRAGMA(message (x))
+#define FCPPT_PP_MESSAGE(x) FCPPT_PP_PRAGMA(message (x))
 #else
 #define FCPPT_PP_MESSAGE(x)
 #endif

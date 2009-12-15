@@ -18,17 +18,40 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
 
-#ifndef FCPPT_PREPROCESSOR_FILE_HPP_INCLUDED
-#define FCPPT_PREPROCESSOR_FILE_HPP_INCLUDED
+#include <fcppt/algorithm/copy_n.hpp>
+#include <fcppt/algorithm/append.hpp>
+#include <fcppt/algorithm/find_exn.hpp>
+#include <fcppt/container/raw_vector_impl.hpp>
+#include <string>
+#include <ostream>
+#include <iostream>
 
-#include <fcppt/text.hpp>
-#include <fcppt/config.h>
+int main()
+{
+	typedef fcppt::container::raw_vector<
+		unsigned char
+	> vector_type;
 
-#ifdef FCPPT_NARROW_STRING
-#define FCPPT_PP_FILE __FILE__
-#else
-#define FCPPT_PP_DETAIL_WIDEN(s) FCPPT_TEXT(s)
-#define FCPPT_PP_FILE FCPPT_PP_DETAIL_WIDEN(__FILE__)
-#endif
+	std::string const str("test");
 
-#endif
+	vector_type a(str.size());
+
+	fcppt::algorithm::copy_n(str.data(), str.size(), a.data());
+
+	a.push_back(' ');
+
+	vector_type b(a);
+
+	fcppt::algorithm::append(
+		a,
+		b
+	);
+
+	fcppt::algorithm::find_exn(
+		str.begin(),
+		str.end(),
+		't'
+	);
+
+	std::cout << std::string(a.begin(), a.end()) << '\n';
+}

@@ -18,17 +18,45 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
 
-#ifndef FCPPT_PREPROCESSOR_FILE_HPP_INCLUDED
-#define FCPPT_PREPROCESSOR_FILE_HPP_INCLUDED
-
+#include <fcppt/io/cout.hpp>
+#include <fcppt/optional_impl.hpp>
+#include <fcppt/string.hpp>
 #include <fcppt/text.hpp>
-#include <fcppt/config.h>
 
-#ifdef FCPPT_NARROW_STRING
-#define FCPPT_PP_FILE __FILE__
-#else
-#define FCPPT_PP_DETAIL_WIDEN(s) FCPPT_TEXT(s)
-#define FCPPT_PP_FILE FCPPT_PP_DETAIL_WIDEN(__FILE__)
-#endif
+int main()
+{
+	typedef fcppt::optional<
+		fcppt::string
+	> optional_string;
 
-#endif
+	optional_string opt1(
+		FCPPT_TEXT("test")
+	);
+
+	optional_string opt2(
+		opt1
+	);
+
+	fcppt::io::cout
+		<< *opt1
+		<< FCPPT_TEXT('\n')
+		<< *opt2
+		<< FCPPT_TEXT('\n');
+
+	opt2 = FCPPT_TEXT("test2");
+	opt1 = opt2;
+
+	fcppt::io::cout
+		<< *opt1
+		<< FCPPT_TEXT('\n')
+		<< *opt2
+		<< FCPPT_TEXT('\n');
+
+	if(opt1)
+		fcppt::io::cout << FCPPT_TEXT("opt1 is set\n");
+
+	opt1.reset();
+
+	if(!opt1)
+		fcppt::io::cout << FCPPT_TEXT("opt1 is not set\n");
+}

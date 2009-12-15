@@ -236,7 +236,7 @@ class object< FCPPT_FUNCTION_OBJECT_PP_TEMPLATE_ARGS >
 
 } // end namespace function
 
-} // end namespace fccpt
+} // end namespace fcppt
 
 #undef FCPPT_FUNCTION_OBJECT_PP_TEMPLATE_PARAMS
 #undef FCPPT_FUNCTION_OBJECT_PP_TEMPLATE_ARGS

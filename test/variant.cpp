@@ -18,27 +18,75 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
 
-#ifndef FCPPT_HEAP_DELETER_HPP_INCLUDED
-#define FCPPT_HEAP_DELETER_HPP_INCLUDED
+#include <fcppt/variant/object_impl.hpp>
+#include <fcppt/variant/apply_binary.hpp>
+#include <fcppt/io/cerr.hpp>
+#include <fcppt/io/cout.hpp>
+#include <fcppt/string.hpp>
+#include <fcppt/text.hpp>
+#include <boost/mpl/vector/vector10.hpp>
+#include <cstdlib>
 
-namespace fcppt
+namespace
 {
 
-template<
-	typename T
->
-class heap_deleter
+struct visitor
 {
-public:
-	void
+	typedef void result_type;
+
+	template<
+		typename T1,
+		typename T2
+	>
+	result_type
 	operator()(
-		T *const t
+		T1 const &t1,
+		T2 const &t2
 	) const
 	{
-		delete t;
+		fcppt::io::cout
+			<< t1
+			<< FCPPT_TEXT(' ')
+			<< t2
+			<< FCPPT_TEXT('\n');
 	}
 };
 
 }
 
-#endif
+int main()
+try
+{
+	typedef fcppt::variant::object<
+		boost::mpl::vector2<
+			int,
+			fcppt::string
+		>
+	> variant;
+
+	variant v(
+		fcppt::string(
+			FCPPT_TEXT("blabla")
+		)
+	);
+
+	variant u(
+		42
+	);
+
+	fcppt::variant::apply_binary(
+		visitor(),
+		v,
+		u
+	);
+}
+catch(
+	fcppt::exception const &e
+)
+{
+	fcppt::io::cerr
+		<< e.string()
+		<< FCPPT_TEXT('\n');
+	
+	return EXIT_FAILURE;
+}

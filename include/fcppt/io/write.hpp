@@ -18,73 +18,51 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
 
-#ifndef FCPPT_ASSIGN_DETAIL_MAKE_ARRAY_IMPL_HPP_INCLUDED
-#define FCPPT_ASSIGN_DETAIL_MAKE_ARRAY_IMPL_HPP_INCLUDED
+#ifndef SGE_IO_WRITE_HPP_INCLUDED
+#define SGE_IO_WRITE_HPP_INCLUDED
 
-#include <algorithm>
+#include <fcppt/endianness/from_host.hpp>
+#include <fcppt/endianness/format.hpp>
+#include <boost/utility/enable_if.hpp>
+#include <boost/type_traits/is_fundamental.hpp>
+#include <ostream>
+
+namespace fcppt
+{
+namespace io
+{
 
 template<
-	class T,
-	std::size_t N
+	typename T
 >
-fcppt::assign::detail::array<T,N>::array(
-	T const &t
+typename boost::enable_if<
+	boost::is_fundamental<
+		T
+	>,
+	void
+>::type
+write(
+	std::ostream &s,
+	T const &t,
+	endianness::format::type const fmt
 )
 {
-	a[0] = t;
-}
-
-template<
-	class T,
-	std::size_t N
->
-fcppt::assign::detail::array<T,N>::array(
-	array<T,N-1> const &that,
-	T const &t
-)
-{
-	std::copy(
-		that.a.begin(),
-		that.a.end(),
-		a.begin()
+	T const tmp(
+		endianness::from_host(
+			t,
+			fmt
+		)
 	);
 
-	a.back() = t;
-}
-
-template<
-	class T,
-	std::size_t N
->
-fcppt::assign::detail::array<T,N+1>
-fcppt::assign::detail::array<T,N>::operator()(
-	T const &t
-)
-{
-	return array<T,N+1>(
-		*this,
-		t
+	s.write(
+		reinterpret_cast<
+			char const *
+		>(&tmp),
+		sizeof(T)
 	);
 }
 
-template<
-	class T,
-	std::size_t N
->
-fcppt::assign::detail::array<T,N>::operator container_type() const
-{
-	return a;
 }
-
-template<typename T>
-fcppt::assign::detail::array<T,1>
-fcppt::assign::make_array(
-	T const &t
-)
-{
-	return detail::array<T,1>(
-		t
-	);
 }
 
 #endif

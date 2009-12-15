@@ -1,22 +1,22 @@
 FILE (
-	GLOB_RECURSE fccptfiles 
+	GLOB_RECURSE fcpptfiles 
 	*.cpp
 )
 
 FILE (
-	GLOB_RECURSE fccptheaders
+	GLOB_RECURSE fcpptheaders
 	../include/*.hpp
 )
 
-SET (fccptfiles ${fccptfiles} ${fccptheaders})
+SET (fcpptfiles ${fcpptfiles} ${fcpptheaders})
 
-ADD_LIBRARY (fccpt SHARED ${fccptfiles})
+ADD_LIBRARY (fcppt SHARED ${fcpptfiles})
 
 IF (NOT MSVC)
 	TARGET_LINK_LIBRARIES (
-		fccpt
+		fcppt
 		${Boost_LIBRARIES}
 	)
 ENDIF ()
 
-INSTALL (TARGETS fccpt DESTINATION ${CMAKE_INSTALL_PREFIX}/lib)
+INSTALL (TARGETS fcppt DESTINATION ${CMAKE_INSTALL_PREFIX}/lib)

@@ -30,7 +30,7 @@ namespace fcppt
 namespace io
 {
 
-FCPPT_IO_SYMBOL extern istream &cin;
+FCPPT_SYMBOL extern istream &cin;
 
 }
 }

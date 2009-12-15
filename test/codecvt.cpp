@@ -18,17 +18,44 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
 
-#ifndef FCPPT_PREPROCESSOR_FILE_HPP_INCLUDED
-#define FCPPT_PREPROCESSOR_FILE_HPP_INCLUDED
-
+#include <fcppt/io/cerr.hpp>
+#include <fcppt/codecvt.hpp>
 #include <fcppt/text.hpp>
-#include <fcppt/config.h>
+#include <fcppt/exception.hpp>
+#include <string>
+#include <cstdlib>
 
-#ifdef FCPPT_NARROW_STRING
-#define FCPPT_PP_FILE __FILE__
-#else
-#define FCPPT_PP_DETAIL_WIDEN(s) FCPPT_TEXT(s)
-#define FCPPT_PP_FILE FCPPT_PP_DETAIL_WIDEN(__FILE__)
-#endif
+int main()
+try
+{
+	std::wstring const test(
+		L"localhost"
+	);
 
-#endif
+	std::string const narrow(
+		fcppt::narrow(
+			test
+		)
+	);
+
+	std::wstring const back(
+		fcppt::widen(
+			narrow
+		)
+	);
+
+	if(back != test)
+		fcppt::io::cerr << FCPPT_TEXT("Strings are not equal!\n");
+	else
+		fcppt::io::cerr << FCPPT_TEXT("Strings are equal!\n");
+}
+catch(
+	fcppt::exception const &e
+)
+{
+	fcppt::io::cerr
+		<< e.string()
+		<< FCPPT_TEXT('\n');
+	
+	return EXIT_FAILURE;
+}

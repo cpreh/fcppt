@@ -18,15 +18,15 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
 
-#ifndef SGE_DETAIL_STRONG_TYPEDEF_CAST_HPP_INCLUDED
-#define SGE_DETAIL_STRONG_TYPEDEF_CAST_HPP_INCLUDED
+#ifndef FCPPT_DETAIL_STRONG_TYPEDEF_CAST_HPP_INCLUDED
+#define FCPPT_DETAIL_STRONG_TYPEDEF_CAST_HPP_INCLUDED
 
-#include <sge/sn_cast.hpp>
+#include <fcppt/sn_cast.hpp>
 #include <boost/mpl/and.hpp>
 #include <boost/type_traits/is_fundamental.hpp>
 #include <boost/utility/enable_if.hpp>
 
-namespace sge
+namespace fcppt
 {
 namespace detail
 {

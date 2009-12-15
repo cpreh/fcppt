@@ -18,17 +18,17 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
 
-#ifndef FCPPT_PREPROCESSOR_FILE_HPP_INCLUDED
-#define FCPPT_PREPROCESSOR_FILE_HPP_INCLUDED
-
+#include <fcppt/io/cout.hpp>
+#include <fcppt/strong_typedef.hpp>
 #include <fcppt/text.hpp>
-#include <fcppt/config.h>
 
-#ifdef FCPPT_NARROW_STRING
-#define FCPPT_PP_FILE __FILE__
-#else
-#define FCPPT_PP_DETAIL_WIDEN(s) FCPPT_TEXT(s)
-#define FCPPT_PP_FILE FCPPT_PP_DETAIL_WIDEN(__FILE__)
-#endif
+FCPPT_MAKE_STRONG_TYPEDEF(int, strong_int)
 
-#endif
+int main()
+{
+	strong_int i(42);
+
+	fcppt::io::cout
+		<< i
+		<< FCPPT_TEXT('\n');
+}
