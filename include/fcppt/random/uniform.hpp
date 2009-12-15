@@ -22,11 +22,12 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #define FCPPT_RANDOM_UNIFORM_HPP_INCLUDED
 
 #include <fcppt/random/default_generator.hpp>
+#include <fcppt/random/range_fwd.hpp>
 #include <fcppt/random/uniform_distribution.hpp>
 #include <fcppt/chrono/high_resolution_clock.hpp>
 #include <fcppt/chrono/time_point_impl.hpp>
 #include <fcppt/chrono/duration_impl.hpp>
-#include <tr1/random>
+#include <fcppt/tr1/random.hpp>
 
 namespace fcppt
 {
@@ -34,21 +35,18 @@ namespace random
 {
 
 template<
-	typename T
->
-class range;
-
-template<
 	typename T,
 	typename Generator = default_generator
 >
-class uniform {
+class uniform
+{
 	typedef typename uniform_distribution<
 		T
 	>::type range_type;
 public:
 	explicit uniform(
-		range<T> const &range)
+		range<T> const &range
+	)
 	:
 		variate(
 			Generator(
@@ -67,7 +65,8 @@ public:
 
 	uniform(
 		range<T> const &range,
-		Generator const &gen)
+		Generator const &gen
+	)
 	:
 		variate(
 			gen,

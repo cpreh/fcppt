@@ -23,7 +23,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #include <fcppt/log/level_stream.hpp>
 #include <fcppt/foreach_enumerator.hpp>
 #include <fcppt/make_shared_ptr.hpp>
-#include <tr1/functional>
+#include <fcppt/tr1/functional.hpp>
 
 fcppt::log::level_stream_array const
 fcppt::log::default_level_streams(

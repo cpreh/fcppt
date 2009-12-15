@@ -21,6 +21,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #ifndef FCPPT_RANDOM_RANGE_HPP_INCLUDED
 #define FCPPT_RANDOM_RANGE_HPP_INCLUDED
 
+#include <fcppt/random/range_fwd.hpp>
+
 namespace fcppt
 {
 namespace random
@@ -29,11 +31,13 @@ namespace random
 template<
 	typename T
 >
-class range {
+class range
+{
 protected:
 	range(
 		T const &first_,
-		T const &last_)
+		T const &last_
+	)
 	:
 		first_(first_),
 		last_(last_)

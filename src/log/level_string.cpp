@@ -19,10 +19,11 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 
 #include <fcppt/log/level_string.hpp>
+#include <fcppt/tr1/array.hpp>
 #include <fcppt/text.hpp>
 #include <fcppt/exception.hpp>
-#include <tr1/array>
 #include <algorithm>
+#include <iterator>
 
 namespace
 {

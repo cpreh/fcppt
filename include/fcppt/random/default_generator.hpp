@@ -21,7 +21,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #ifndef FCPPT_RANDOM_DEFAULT_GENERATOR_HPP_INCLUDED
 #define FCPPT_RANDOM_DEFAULT_GENERATOR_HPP_INCLUDED
 
-#include <tr1/random>
+#include <fcppt/tr1/random.hpp>
 
 namespace fcppt
 {

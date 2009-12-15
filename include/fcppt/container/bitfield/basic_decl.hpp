@@ -26,8 +26,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #include <fcppt/container/bitfield/proxy_fwd.hpp>
 #include <fcppt/container/bitfield/size_type.hpp>
 #include <fcppt/container/bitfield/value_type.hpp>
+#include <fcppt/tr1/array>
 #include <fcppt/safe_bool.hpp>
-#include <tr1/array>
 #include <iterator>
 #include <limits>
 

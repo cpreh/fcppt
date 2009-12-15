@@ -22,7 +22,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #include "is_outer_node.hpp"
 #include <fcppt/container/tree_impl.hpp>
 #include <fcppt/variant/object_impl.hpp>
-#include <tr1/functional>
+#include <fcppt/tr1/functional.hpp>
 #include <algorithm>
 
 fcppt::log::detail::context_tree::iterator

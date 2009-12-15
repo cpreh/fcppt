@@ -21,7 +21,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #ifndef FCPPT_ASSIGN_MAKE_ARRAY_HPP_INCLUDED
 #define FCPPT_ASSIGN_MAKE_ARRAY_HPP_INCLUDED
 
-#include <tr1/array>
+#include <fcppt/tr1/array.hpp>
 #include <cstddef>
 
 namespace fcppt
@@ -32,7 +32,8 @@ namespace detail
 {
 template<
 	class T,
-	std::size_t N>
+	std::size_t N
+>
 class array
 {
 public:

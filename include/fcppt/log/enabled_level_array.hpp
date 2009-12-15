@@ -22,7 +22,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #define FCPPT_LOG_ENABLED_LEVEL_ARRAY_HPP_INCLUDED
 
 #include <fcppt/log/level.hpp>
-#include <tr1/array>
+#include <fcppt/tr1/array.hpp>
 
 namespace fcppt
 {

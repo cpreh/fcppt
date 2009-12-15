@@ -21,11 +21,11 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #include <fcppt/random/actor/normalized.hpp>
 #include <fcppt/random/actor/element.hpp>
 #include <fcppt/random/inclusive_range.hpp>
+#include <fcppt/tr1/functional.hpp>
 #include <fcppt/exception.hpp>
 #include <fcppt/text.hpp>
 #include <fcppt/format.hpp>
 #include <boost/foreach.hpp>
-#include <tr1/functional>
 #include <numeric>
 #include <functional>
 

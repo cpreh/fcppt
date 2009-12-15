@@ -27,6 +27,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 #include <fcppt/function/detail/has_addressof_overload.hpp>
 #include <fcppt/function/detail/clear_type.hpp>
+#include <fcppt/tr1/functional.hpp>
 // this include leads to a cpp fail ...
 //#include <fcppt/function/detail/functor_wrapper.hpp>
 
@@ -39,7 +40,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #include <boost/preprocessor/repetition/enum_params.hpp>
 #include <boost/preprocessor/repetition/enum_binary_params.hpp>
 
-#include <tr1/functional>
 #endif
 
 #define FCPPT_FUNCTION_OBJECT_PP_TEMPLATE_PARAMS \

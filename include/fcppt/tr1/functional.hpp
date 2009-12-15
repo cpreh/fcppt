@@ -1,3 +1,4 @@
+
 /*
 spacegameengine is a portable easy to use game engine written in C++.
 Copyright (C) 2006-2009 Carl Philipp Reh (sefi@s-e-f-i.de)
@@ -18,56 +19,11 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
 
-#ifndef FCPPT_RANDOM_UNIFORM_DISTRIBUTION_HPP_INCLUDED
-#define FCPPT_RANDOM_UNIFORM_DISTRIBUTION_HPP_INCLUDED
+#ifndef FCPPT_TR1_FUNCTIONAL_HPP_INCLUDED
+#define FCPPT_TR1_FUNCTIONAL_HPP_INCLUDED
 
-#include <fcppt/tr1/random.hpp>
-#include <boost/utility/enable_if.hpp>
-#include <boost/type_traits/is_floating_point.hpp>
-#include <boost/type_traits/is_integral.hpp>
+#include <fcppt/tr1/detail/make_header.hpp>
 
-namespace fcppt
-{
-namespace random
-{
-
-template<
-	typename T,
-	typename Enable = void
->
-class uniform_distribution;
-
-template<
-	typename T
->
-class uniform_distribution<
-	T,
-	typename boost::enable_if<
-		boost::is_floating_point<
-			T
-		>
-	>::type
-> {
-public:
-	typedef std::tr1::uniform_real<T> type;
-};
-
-template<
-	typename T
->
-class uniform_distribution<
-	T,
-	typename boost::enable_if<
-		boost::is_integral<
-			T
-		>
-	>::type
-> {
-public:
-	typedef std::tr1::uniform_int<T> type;
-};
-
-}
-}
+#include FCPPT_TR1_DETAIL_MAKE_HEADER(functional)
 
 #endif
