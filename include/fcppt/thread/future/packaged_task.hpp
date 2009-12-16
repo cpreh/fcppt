@@ -16,12 +16,7 @@ namespace future
 template<typename T>
 class packaged_task
 {
-//FCPPT_NONCOPYABLE(packaged_task)
-private:
-	packaged_task(
-		packaged_task &);
-	packaged_task &operator=(
-		packaged_task &);
+	FCPPT_NONCOPYABLE(packaged_task)
 public:
 	template<class F>
 	explicit packaged_task(

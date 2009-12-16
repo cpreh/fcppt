@@ -22,7 +22,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #define FCPPT_IMPORT_SYMBOL_HPP_INCLUDED
 
 #if defined(_MSC_VER)
-#	define FCPPT_IMPORT_SYMBOL __declspec(dllexport)
+#	define FCPPT_IMPORT_SYMBOL __declspec(dllimport)
 #elif defined(__GNUC__)
 #	define FCPPT_IMPORT_SYMBOL
 #else

@@ -21,6 +21,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #include <fcppt/thread/future/packaged_task.hpp>
 #include <fcppt/thread/future/shared_object.hpp>
 #include <fcppt/thread/object.hpp>
+#include <fcppt/tr1/functional.hpp>
 #include <fcppt/io/cerr.hpp>
 #include <fcppt/text.hpp>
 
