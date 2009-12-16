@@ -21,7 +21,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #include <fcppt/random/exclusive_range_error.hpp>
 
 fcppt::random::exclusive_range_error::exclusive_range_error(
-	fcppt::string const &s)
+	fcppt::string const &s
+)
 :
 	exception(s)
 {}

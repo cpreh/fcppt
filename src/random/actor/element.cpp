@@ -22,7 +22,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 fcppt::random::actor::element::element(
 	float_type const prob_,
-	actor::callback const &callback_)
+	actor::callback const &callback_
+)
 :
 	prob_(prob_),
 	callback_(callback_)
