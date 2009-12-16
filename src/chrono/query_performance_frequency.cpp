@@ -21,7 +21,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #include <fcppt/config.h>
 #ifdef FCPPT_WINDOWS_PLATFORM
 #include "query_performance_frequency.hpp"
-#include <fcppt/windows/windows.hpp>
+#define WIN32_LEAN_AND_MEAN
+#include <windows.h>
 #include <fcppt/chrono/clock_failure.hpp>
 #include <fcppt/once.hpp>
 #include <fcppt/text.hpp>

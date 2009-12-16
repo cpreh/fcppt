@@ -21,7 +21,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #ifndef FCPPT_CHRONO_QUERY_PERFORMANCE_FREQUENCY_HPP_INCLUDED
 #define FCPPT_CHRONO_QUERY_PERFORMANCE_FREQUENCY_HPP_INCLUDED
 
-#include <fcppt/windows/windows.hpp>
+#define WIN32_LEAN_AND_MEAN
+#include <windows.h>
 
 namespace fcppt
 {

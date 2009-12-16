@@ -42,7 +42,7 @@ public:
 		actor::callback const &
 	);
 
-	FCPPT_SYMBOL float_type
+	FCPPT_SYMBOL float_type const &
 	prob() const;
 
 	FCPPT_SYMBOL actor::callback const &

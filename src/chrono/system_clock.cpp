@@ -22,7 +22,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #include <fcppt/chrono/time_point_impl.hpp>
 #include <fcppt/config.h>
 #ifdef FCPPT_WINDOWS_PLATFORM
-#include <fcppt/windows/windows.hpp>
+#define WIN32_LEAN_AND_MEAN
+#include <windows.h>
 #elif FCPPT_POSIX_PLATFORM
 #include <fcppt/chrono/clock_failure.hpp>
 #include <fcppt/text.hpp>

@@ -21,11 +21,12 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #ifndef FCPPT_CHRONO_PERFORMANCE_COUNTER_TIME_HPP_INCLUDED
 #define FCPPT_CHRONO_PERFORMANCE_COUNTER_TIME_HPP_INCLUDED
 
-#include "query_performance_frequency.hpp"
-#include <fcppt/windows/windows.hpp>
 #include <fcppt/chrono/clock_failure.hpp>
 #include <fcppt/chrono/time_point_impl.hpp>
 #include <fcppt/text.hpp>
+#include "query_performance_frequency.hpp"
+#define WIN32_LEAN_AND_MEAN
+#include <windows.h>
 
 namespace fcppt
 {

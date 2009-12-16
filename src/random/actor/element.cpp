@@ -28,7 +28,7 @@ fcppt::random::actor::element::element(
 	callback_(callback_)
 {}
 
-fcppt::random::actor::float_type
+fcppt::random::actor::float_type const &
 fcppt::random::actor::element::prob() const
 {
 	return prob_;
