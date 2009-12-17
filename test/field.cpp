@@ -48,7 +48,7 @@ try
 	
 	fcppt::io::cout
 		<< f
-		<< SGE_TEXT('\n');
+		<< FCPPT_TEXT('\n');
 
 	f.resize_canvas(
 		field_type::dim_type(
@@ -60,16 +60,16 @@ try
 	
 	fcppt::io::cout
 		<< f
-		<< SGE_TEXT('\n');
+		<< FCPPT_TEXT('\n');
 }
 catch(
 	fcppt::exception const &e
 )
 {
 	fcppt::io::cerr
-		<< SGE_TEXT("caught fcppt exception: ")
+		<< FCPPT_TEXT("caught fcppt exception: ")
 		<< e.string()
-		<< SGE_TEXT('\n');
+		<< FCPPT_TEXT('\n');
 
 	return EXIT_FAILURE;
 }
