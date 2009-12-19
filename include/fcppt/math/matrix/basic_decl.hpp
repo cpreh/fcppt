@@ -81,26 +81,29 @@ public:
 	typedef typename base::reverse_iterator reverse_iterator;
 	typedef typename base::const_reverse_iterator const_reverse_iterator;
 
-	typedef typename dim::static_<size_type, 2>::type dim_type;
+	typedef typename math::dim::static_<size_type, 2>::type dim;
 
 	basic();
 
 	explicit basic(
-		dim_type const &);
+		dim const &
+	);
 
 	template<
 		typename In
 	>
 	basic(
 		In beg,
-		In end);
+		In end
+	);
 
 	template<
 		typename Container
 	>
 	basic(
-		dim_type const &,
-		Container const &);
+		dim const &,
+		Container const &
+	);
 
 #define FCPPT_MATH_DETAIL_MAKE_VARIADIC_CONSTRUCTOR_MAX_SIZE FCPPT_MATH_MATRIX_MAX_CTOR_PARAMS
 	FCPPT_MATH_DETAIL_MAKE_VARIADIC_CONSTRUCTOR_DECL(basic)
@@ -114,28 +117,39 @@ FCPPT_MATH_DETAIL_MAKE_OP_DECL(basic, op)
 public:
 	reference
 	operator[](
-		size_type);
+		size_type
+	);
 
 	const_reference const
 	operator[](
-		size_type) const;
+		size_type
+	) const;
 
-	pointer data();
-	const_pointer data() const;
+	pointer
+	data();
 
-	size_type size() const;
+	const_pointer
+	data() const;
 
-	size_type rows() const;
-	size_type columns() const;
+	size_type
+	size() const;
 
-	dim_type const
-	dim() const;
+	size_type
+	rows() const;
+
+	size_type
+	columns() const;
+
+	dim const
+	dimension() const;
 
 	static basic const
 	identity();
 
-	void resize(
-		dim_type const &);
+	void
+	resize(
+		dim const &
+	);
 private:
 	S storage;
 };

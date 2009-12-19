@@ -67,7 +67,7 @@ int main()
 	>::type dynamic_float_matrix;
 
 	dynamic_float_matrix matrix(
-		dynamic_float_matrix::dim_type(
+		dynamic_float_matrix::dim(
 			2,
 			3
 		),

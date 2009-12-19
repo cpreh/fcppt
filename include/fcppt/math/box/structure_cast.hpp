@@ -46,14 +46,14 @@ structure_cast(
 	return
 		Dest(
 			fcppt::math::vector::structure_cast<
-				typename Dest::pos_type
+				typename Dest::vector
 			>(
 				src.pos()
 			),
 			fcppt::math::dim::structure_cast<
-				typename Dest::dim_type
+				typename Dest::dim
 			>(
-				src.dim()
+				src.dimension()
 			)
 		);
 }

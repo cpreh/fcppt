@@ -52,9 +52,10 @@ template<
 	typename S
 >
 fcppt::math::matrix::basic<T, N, M, S>::basic(
-	dim_type const &dim)
+	dim const &dim_
+)
 {
-	resize(dim);
+	resize(dim_);
 }
 
 template<
@@ -68,7 +69,8 @@ template<
 >
 fcppt::math::matrix::basic<T, N, M, S>::basic(
 	In const beg,
-	In const end)
+	In const end
+)
 {
 	math::detail::initial_size(
 		storage,
@@ -94,8 +96,9 @@ template<
 	typename Container
 >
 fcppt::math::matrix::basic<T, N, M, S>::basic(
-	dim_type const &d,
-	Container const &c)
+	dim const &d,
+	Container const &c
+)
 {
 	resize(d);
 
@@ -104,7 +107,8 @@ fcppt::math::matrix::basic<T, N, M, S>::basic(
 	std::copy(
 		c.begin(),
 		c.end(),
-		storage.begin());
+		storage.begin()
+	);
 }
 
 #define FCPPT_MATH_DETAIL_MAKE_VARIADIC_CONSTRUCTOR_MAX_SIZE FCPPT_MATH_MATRIX_MAX_CTOR_PARAMS
@@ -119,7 +123,8 @@ fcppt::math::matrix::basic<T, N, M, S>::basic(
 	fcppt::math::matrix::basic<T, N, M, S>
 
 FCPPT_MATH_DETAIL_MAKE_VARIADIC_CONSTRUCTOR(
-	basic)
+	basic
+)
 
 #undef FCPPT_MATH_DETAIL_MAKE_VARIADIC_CONSTRUCTOR_MAX_SIZE
 
@@ -141,14 +146,17 @@ template<
 >
 typename fcppt::math::matrix::basic<T, N, M, S>::reference
 fcppt::math::matrix::basic<T, N, M, S>::operator[](
-	size_type const j)
+	size_type const j
+)
 {
 	return reference(
 		typename reference::storage_type(
 			data(),
 			j,
 			columns(),
-			rows()));
+			rows()
+		)
+	);
 }
 
 template<
@@ -159,14 +167,17 @@ template<
 >
 typename fcppt::math::matrix::basic<T, N, M, S>::const_reference const
 fcppt::math::matrix::basic<T, N, M, S>::operator[](
-	size_type const j) const
+	size_type const j
+) const
 {
 	return const_reference(
 		typename const_reference::storage_type(
 			data(),
 			j,
 			columns(),
-			rows()));
+			rows()
+		)
+	);
 }
 
 template<
@@ -179,7 +190,8 @@ typename fcppt::math::matrix::basic<T, N, M, S>::pointer
 fcppt::math::matrix::basic<T, N, M, S>::data()
 {
 	return math::detail::storage_data(
-		storage);
+		storage
+	);
 }
 
 template<
@@ -194,7 +206,8 @@ fcppt::math::matrix::basic<T, N, M, S>::data() const
 	return const_cast<
 		basic &
 	>(
-		*this).data();
+		*this
+	).data();
 }
 
 template<
@@ -244,12 +257,13 @@ template<
 	typename M,
 	typename S
 >
-typename fcppt::math::matrix::basic<T, N, M, S>::dim_type const
-fcppt::math::matrix::basic<T, N, M, S>::dim() const
+typename fcppt::math::matrix::basic<T, N, M, S>::dim const
+fcppt::math::matrix::basic<T, N, M, S>::dimension() const
 {
-	return dim_type(
+	return dim(
 		columns(),
-		rows());
+		rows()
+	);
 }
 
 template<
@@ -279,7 +293,8 @@ template<
 >
 void
 fcppt::math::matrix::basic<T, N, M, S>::resize(
-	dim_type const &d)
+	dim const &d
+)
 {
 	detail::resize(
 		d,
