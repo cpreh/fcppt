@@ -46,12 +46,11 @@ fcppt::exception::string() const
 	return s;
 }
 
-/*
 char const *
 fcppt::exception::what() const throw()
 {
-	return "do not catch fcppt::exception as std::exception, no what() can be supplied";
-}*/
+	return "Do not catch fcppt::exception as std::exception, no what() can be supplied";
+}
 
-fcppt::exception::~exception()
+fcppt::exception::~exception() throw()
 {}

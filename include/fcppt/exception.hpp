@@ -24,11 +24,14 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #include <fcppt/symbol.hpp>
 #include <fcppt/class_symbol.hpp>
 #include <fcppt/string.hpp>
+#include <exception>
 
 namespace fcppt
 {
 
 class FCPPT_CLASS_SYMBOL exception
+:
+	public std::exception
 {
 public:
 	FCPPT_SYMBOL explicit exception(
@@ -47,9 +50,10 @@ public:
 	FCPPT_SYMBOL fcppt::string const &
 	string() const;
 
-	//FCPPT_SYMBOL char const *what() const throw();
+	FCPPT_SYMBOL char const *
+	what() const throw();
 
-	FCPPT_SYMBOL virtual ~exception();
+	FCPPT_SYMBOL virtual ~exception() throw();
 private:
 	fcppt::string s;
 };
