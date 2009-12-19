@@ -38,9 +38,10 @@ template<
 	typename Alloc
 >
 fcppt::container::field<T, ArrayType, Alloc>::field(
-	allocator_type const &alloc)
+	allocator_type const &alloc
+)
 :
-	dim_(dim_type::null()),
+	dimension_(dim::null()),
 	array(alloc)
 {}
 
@@ -53,9 +54,10 @@ template<
 	typename Alloc
 >
 fcppt::container::field<T, ArrayType, Alloc>::field(
-	field const &r)
+	field const &r
+)
 :
-	dim_(r.dim_),
+	dimension_(r.dimension_),
 	array(r.array)
 {}
 
@@ -68,15 +70,17 @@ template<
 	typename Alloc
 >
 fcppt::container::field<T, ArrayType, Alloc>::field(
-	dim_type const &dim,
+	dim const &dimension_,
 	value_type const &t,
-	allocator_type const &alloc)
+	allocator_type const &alloc
+)
 :
-	dim_(dim),
+	dimension_(dimension_),
 	array(
-		field_count(),
+		size(),
 		t,
-		alloc)
+		alloc
+	)
 {}
 
 template<
@@ -91,15 +95,19 @@ template<
 	typename Iterator
 >
 fcppt::container::field<T, ArrayType, Alloc>::field(
-	dim_type const &dim_,
+	dim const &dimension_,
 	Iterator const b,
 	Iterator const e,
-	allocator_type const &alloc)
+	allocator_type const &alloc
+)
 :
-	dim_(dim_),
+	dimension_(dimension_),
 	array(alloc)
 {
-	array.resize(field_count());
+	array.resize(
+		size()
+	);
+
 	std::copy(b, e, begin());
 }
 template<
@@ -112,13 +120,17 @@ template<
 >
 void
 fcppt::container::field<T, ArrayType, Alloc>::swap(
-	field<T, ArrayType, Alloc> &r)
+	field<T, ArrayType, Alloc> &r
+)
 {
 	std::swap(
-		dim_,
-		r.dim_);
+		dimension_,
+		r.dimension_
+	);
+
 	array.swap(
-		r.array);
+		r.array
+	);
 }
 
 template<
@@ -131,13 +143,15 @@ template<
 >
 fcppt::container::field<T, ArrayType, Alloc> &
 fcppt::container::field<T, ArrayType, Alloc>::operator=(
-	field<T, ArrayType, Alloc> const &r)
+	field<T, ArrayType, Alloc> const &r
+)
 {
 	if(&r != this)
 	{
-		dim_ = r.dim_;
+		dimension_ = r.dimension_;
 		array = r.array;
 	}
+
 	return *this;
 }
 
@@ -303,14 +317,22 @@ template<
 	> class ArrayType,
 	typename Alloc
 >
-typename fcppt::container::field<T, ArrayType, Alloc>::vector_type const
+typename fcppt::container::field<T, ArrayType, Alloc>::vector const
 fcppt::container::field<T, ArrayType, Alloc>::position(
-	const_iterator const it) const
+	const_iterator const it
+) const
 {
-	difference_type const diff = std::distance(begin(), it);
-	return vector_type(
-		diff % dim().w(),
-		diff / dim().w());
+	difference_type const diff(
+		std::distance(
+			begin(),
+			it
+		)
+	);
+
+	return vector(
+		diff % dimension().w(),
+		diff / dimension().w()
+	);
 }
 
 template<
@@ -323,9 +345,10 @@ template<
 >
 typename fcppt::container::field<T, ArrayType, Alloc>::iterator
 fcppt::container::field<T, ArrayType, Alloc>::position_it(
-	vector_type const &v)
+	vector const &v
+)
 {
-	return begin() + v.y() * dim().w() + v.x();
+	return begin() + v.y() * dimension().w() + v.x();
 }
 
 template<
@@ -338,9 +361,10 @@ template<
 >
 typename fcppt::container::field<T, ArrayType, Alloc>::const_iterator
 fcppt::container::field<T, ArrayType, Alloc>::position_it(
-	vector_type const &v) const
+	vector const &v
+) const
 {
-	return begin() + v.y() * dim().w() + v.x();
+	return begin() + v.y() * dimension().w() + v.x();
 }
 
 template<
@@ -358,22 +382,6 @@ fcppt::container::field<T, ArrayType, Alloc>::get_allocator() const
 }
 
 template<
-	typename Cit,
-	typename It>
-void copy_overlap_right(
-	Cit const source_begin,
-	Cit const source_end,
-	It const dest_begin)
-{
-	std::copy_backward(
-		source_begin,
-		source_end,
-		boost::next(
-			dest_begin,
-			std::distance(source_begin,source_end)));
-}
-
-template<
 	typename T,
 	template<
 		typename,
@@ -383,23 +391,26 @@ template<
 >
 void
 fcppt::container::field<T, ArrayType, Alloc>::resize_canvas(
-	dim_type const &n,
-	const_reference value)
+	dim const &n,
+	const_reference value
+)
 {
 	// dimension hasn't changed?
-	if (dim() == n)
+	if (dimension() == n)
 		return;
 
 	field new_(
 		n,
-		value);
+		value
+	);
 
-	for (vector_type p = vector_type::null(); p.y() < std::min(n.h(),dim().h()); ++p.y())
-		for (p.x() = 0; p.x() < std::min(n.w(),dim().h()); ++p.x())
+	for (vector p = vector::null(); p.y() < std::min(n.h(),dimension().h()); ++p.y())
+		for (p.x() = 0; p.x() < std::min(n.w(),dimension().h()); ++p.x())
 			new_.pos(p) = pos(p);
 
 	swap(
-		new_);
+		new_
+	);
 }
 
 template<
@@ -412,17 +423,19 @@ template<
 >
 void
 fcppt::container::field<T, ArrayType, Alloc>::resize(
-	dim_type const &n,
-	const_reference value)
+	dim const &n,
+	const_reference value
+)
 {
-	if (dim_ == n)
+	if (dimension_ == n)
 		return;
 
-	dim_ = n;
+	dimension_ = n;
 
 	array.resize(
-		field_count(),
-		value);
+		size(),
+		value
+	);
 }
 
 template<
@@ -435,10 +448,14 @@ template<
 >
 typename fcppt::container::field<T, ArrayType, Alloc>::value_type &
 fcppt::container::field<T, ArrayType, Alloc>::pos(
-	vector_type const &p)
+	vector const &p
+)
 {
 	range_check(p);
-	return array[static_cast<size_type>(p.y() * dim().w() + p.x())];
+
+	return array[
+		static_cast<size_type>(p.y() * dimension().w() + p.x())
+	];
 }
 
 template<
@@ -451,10 +468,14 @@ template<
 >
 typename fcppt::container::field<T, ArrayType, Alloc>::value_type const &
 fcppt::container::field<T, ArrayType, Alloc>::pos(
-	vector_type const &p) const
+	vector const &p
+) const
 {
 	range_check(p);
-	return array[static_cast<size_type>(p.y() * dim().w() + p.x())];
+
+	return array[
+		static_cast<size_type>(p.y() * dimension().w() + p.x())
+	];
 }
 
 template<
@@ -523,10 +544,12 @@ template<
 >
 typename fcppt::container::field<T, ArrayType, Alloc>::value_type
 fcppt::container::field<T, ArrayType, Alloc>::x(
-	const_iterator const p) const
+	const_iterator const p
+) const
 {
 	check_w();
-	return std::distance(begin(), p) % dim().w();
+
+	return std::distance(begin(), p) % dimension().w();
 }
 
 template<
@@ -539,10 +562,12 @@ template<
 >
 typename fcppt::container::field<T, ArrayType, Alloc>::value_type
 fcppt::container::field<T, ArrayType, Alloc>::y(
-	const_iterator const p) const
+	const_iterator const p
+) const
 {
 	check_w();
-	return std::distance(begin(),p) / dim().w();
+
+	return std::distance(begin(),p) / dimension().w();
 }
 
 template<
@@ -553,11 +578,12 @@ template<
 	> class ArrayType,
 	typename Alloc
 >
-typename fcppt::container::field<T, ArrayType, Alloc>::vector_type const
+typename fcppt::container::field<T, ArrayType, Alloc>::vector const
 fcppt::container::field<T, ArrayType, Alloc>::pos(
-	const_iterator const p) const
+	const_iterator const p
+) const
 {
-	return vector_type(x(p), y(p));
+	return vector(x(p), y(p));
 }
 
 template<
@@ -568,24 +594,10 @@ template<
 	> class ArrayType,
 	typename Alloc
 >
-typename fcppt::container::field<T, ArrayType, Alloc>::size_type
-fcppt::container::field<T, ArrayType, Alloc>::field_count() const
+typename fcppt::container::field<T, ArrayType, Alloc>::dim const
+fcppt::container::field<T, ArrayType, Alloc>::dimension() const
 {
-	return dim().content();
-}
-
-template<
-	typename T,
-	template<
-		typename,
-		typename
-	> class ArrayType,
-	typename Alloc
->
-typename fcppt::container::field<T, ArrayType, Alloc>::dim_type const
-fcppt::container::field<T, ArrayType, Alloc>::dim() const
-{
-	return dim_;
+	return dimension_;
 }
 
 template<
@@ -598,9 +610,10 @@ template<
 >
 void
 fcppt::container::field<T, ArrayType, Alloc>::range_check(
-	vector_type const &v) const
+	vector const &v
+) const
 {
-	FCPPT_ASSERT(v.x() < dim().w() && v.y() < dim().h());
+	FCPPT_ASSERT(v.x() < dimension().w() && v.y() < dimension().h());
 }
 
 template<
@@ -614,7 +627,7 @@ template<
 void
 fcppt::container::field<T, ArrayType, Alloc>::check_w() const
 {
-	FCPPT_ASSERT(dim().w() != 0);
+	FCPPT_ASSERT(dimension().w() != 0);
 }
 
 template<
@@ -628,9 +641,11 @@ template<
 bool
 fcppt::container::operator==(
 	field<T, ArrayType, Alloc> const &l,
-	field<T, ArrayType, Alloc> const &r)
+	field<T, ArrayType, Alloc> const &r
+)
 {
-	return l.dim() == r.dim()
+	return
+		l.dimension() == r.dimension()
 		&& std::equal(l.begin(), l.end(), r.begin());
 }
 
@@ -645,7 +660,8 @@ template<
 bool
 fcppt::container::operator!=(
 	field<T, ArrayType, Alloc> const &l,
-	field<T, ArrayType, Alloc> const &r)
+	field<T, ArrayType, Alloc> const &r
+)
 {
 	return !(l == r);
 }
@@ -663,16 +679,17 @@ template<
 std::basic_ostream<Ch,Traits> &
 fcppt::container::operator<<(
 	std::basic_ostream<Ch,Traits> &stream,
-	field<T, ArrayType, Alloc> const &f)
+	field<T, ArrayType, Alloc> const &f
+)
 {
 	typedef field<T, ArrayType, Alloc> field_type;
 	typedef typename field_type::size_type size_type;
-	typedef typename field_type::vector_type vector_type;
+	typedef typename field_type::vector vector;
 
-	for (size_type y = 0; y < f.dim().h(); ++y)
+	for (size_type y = 0; y < f.dimension().h(); ++y)
 	{
-		for (size_type x = 0; x < f.dim().w(); ++x)
-			stream << f.pos(vector_type(x,y)) << stream.widen(' ');
+		for (size_type x = 0; x < f.dimension().w(); ++x)
+			stream << f.pos(vector(x,y)) << stream.widen(' ');
 		stream << stream.widen('\n');
 	}
 	return stream;

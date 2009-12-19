@@ -36,22 +36,22 @@ try
 	> field_type;
 
 	field_type f(
-		field_type::dim_type(
+		field_type::dim(
 			2,2
 		)
 	);
 
-	f.pos(field_type::vector_type(0,0)) = 0;
-	f.pos(field_type::vector_type(1,0)) = 1;
-	f.pos(field_type::vector_type(0,1)) = 2;
-	f.pos(field_type::vector_type(1,1)) = 3;
+	f.pos(field_type::vector(0,0)) = 0;
+	f.pos(field_type::vector(1,0)) = 1;
+	f.pos(field_type::vector(0,1)) = 2;
+	f.pos(field_type::vector(1,1)) = 3;
 	
 	fcppt::io::cout
 		<< f
 		<< FCPPT_TEXT('\n');
 
 	f.resize_canvas(
-		field_type::dim_type(
+		field_type::dim(
 			1,
 			1
 		),

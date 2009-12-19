@@ -43,7 +43,7 @@ template<
 >
 class field
 {
-	public:
+public:
 	typedef ArrayType<T,Alloc>                    array_type;
 
 	typedef T                                     value_type;
@@ -57,111 +57,166 @@ class field
 	typedef std::reverse_iterator<iterator>       reverse_iterator;
 	typedef std::reverse_iterator<const_iterator> const_reverse_iterator;
 
-	typedef typename math::vector::static_<size_type,2>::type      vector_type;
-	typedef typename math::dim::static_<size_type,2>::type         dim_type;
+	typedef value_type scalar;
+	typedef typename math::vector::static_<size_type,2>::type      vector;
+	typedef typename math::dim::static_<size_type,2>::type         dim;
 
 	explicit field(
-		allocator_type const &alloc = allocator_type());
+		allocator_type const &alloc = allocator_type()
+	);
 
 	field(
-		field const &r);
+		field const &r
+	);
 
 	explicit field(
-		dim_type const &dim,
-		value_type const &t = value_type(),
-		allocator_type const &alloc = allocator_type());
+		dim const &,
+		value_type const & = value_type(),
+		allocator_type const & = allocator_type()
+	);
 
 	template<
 		typename Iterator
 	>
 	field(
-		dim_type const &dim_,
-		Iterator b,
-		Iterator e,
-		allocator_type const &alloc = allocator_type());
+		dim const &,
+		Iterator begin,
+		Iterator end,
+		allocator_type const & = allocator_type()
+	);
 
-	void swap(
-		field &r);
+	void
+	swap(
+		field &r
+	);
 
 	field &
 	operator=(
-		field const &r);
+		field const &
+	);
 
-	size_type size() const;
-	size_type max_size() const;
-	bool empty() const;
-	iterator begin();
-	iterator end();
-	const_iterator begin() const;
-	const_iterator end() const;
-	reverse_iterator rbegin();
-	reverse_iterator rend();
-	const_reverse_iterator rbegin() const;
-	const_reverse_iterator rend() const;
+	size_type
+	size() const;
 
-	vector_type const
+	size_type
+	max_size() const;
+
+	bool
+	empty() const;
+
+	iterator
+	begin();
+
+	iterator
+	end();
+
+	const_iterator
+	begin() const;
+
+	const_iterator
+	end() const;
+
+	reverse_iterator
+	rbegin();
+
+	reverse_iterator
+	rend();
+
+	const_reverse_iterator
+	rbegin() const;
+
+	const_reverse_iterator
+	rend() const;
+
+	vector const
 	position(
-		const_iterator it) const;
+		const_iterator it
+	) const;
 
-	iterator position_it(
-		vector_type const &);
+	iterator
+	position_it(
+		vector const &
+	);
 
 	const_iterator
 	position_it(
-		vector_type const &) const;
+		vector const &
+	) const;
 
 	allocator_type
 	get_allocator() const;
 
-	void resize_canvas(
-		dim_type const &n,
-		const_reference value = value_type());
+	void
+	resize_canvas(
+		dim const &,
+		const_reference = value_type()
+	);
 
-	void resize(
-		dim_type const &n,
-		const_reference value = value_type());
+	void
+	resize(
+		dim const &,
+		const_reference = value_type()
+	);
 
 	value_type &
 	pos_mod(
-		vector_type const &);
+		vector const &
+	);
 
 	value_type const &
 	pos_mod(
-		vector_type const &p) const;
+		vector const &
+	) const;
 
 	value_type &
 	pos(
-		vector_type const &p);
+		vector const &
+	);
 
 	value_type const &
 	pos(
-		vector_type const &p) const;
+		vector const &
+	) const;
 
-	reference front();
-	const_reference front() const;
-	reference back();
-	const_reference back() const;
+	reference
+	front();
+
+	const_reference
+	front() const;
+
+	reference
+	back();
+
+	const_reference
+	back() const;
 
 	value_type
 	x(
-		const_iterator) const;
+		const_iterator
+	) const;
 
 	value_type
 	y(
-		const_iterator) const;
+		const_iterator
+	) const;
 
-	vector_type const
+	vector const
 	pos(
-		const_iterator p) const;
+		const_iterator p
+	) const;
 
-	size_type field_count() const;
-	dim_type const dim() const;
+	dim const
+	dimension() const;
 private:
-	void range_check(
-		vector_type const &) const;
-	void check_w() const;
+	void
+	range_check(
+		vector const &
+	) const;
 
-	dim_type   dim_;
+	void
+	check_w() const;
+
+	dim dimension_;
 	array_type array;
 };
 
@@ -176,7 +231,8 @@ template<
 >
 bool operator==(
 	field<T, ArrayType, Alloc> const &l,
-	field<T, ArrayType, Alloc> const &r);
+	field<T, ArrayType, Alloc> const &r
+);
 
 template<
 	typename T,
@@ -188,7 +244,8 @@ template<
 >
 bool operator!=(
 	field<T, ArrayType, Alloc> const &l,
-	field<T, ArrayType, Alloc> const &r);
+	field<T, ArrayType, Alloc> const &r
+);
 
 template<
 	typename T,
@@ -203,7 +260,8 @@ template<
 std::basic_ostream<Ch, Traits> &
 operator<<(
 	std::basic_ostream<Ch, Traits> &,
-	field<T, ArrayType, Alloc> const &);
+	field<T, ArrayType, Alloc> const &
+);
 
 }
 }
