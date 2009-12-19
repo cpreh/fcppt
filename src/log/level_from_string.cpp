@@ -18,29 +18,46 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
 
-#ifndef FCPPT_LOG_LEVEL_STRING_HPP_INCLUDED
-#define FCPPT_LOG_LEVEL_STRING_HPP_INCLUDED
+#include "level_strings.hpp"
+#include <fcppt/log/level_from_string.hpp>
+#include <fcppt/text.hpp>
+#include <fcppt/exception.hpp>
+#include <algorithm>
+#include <iterator>
 
-#include <fcppt/log/level.hpp>
-#include <fcppt/string.hpp>
-#include <fcppt/symbol.hpp>
-
-namespace fcppt
+fcppt::log::level::type
+fcppt::log::level_from_string(
+	string const &str
+)
 {
-namespace log
-{
+	level_string_array::const_iterator const it(
+		std::find(
+			level_strings.begin(),
+			level_strings.end(),
+			str
+		)
+	);
 
-FCPPT_SYMBOL level::type
-level_from_string(
-	string const &
-);
+	if(
+		it == level_strings.end()
+	)
+		throw exception(
+			FCPPT_TEXT("level_from_string(): \"")
+			+ str
+			+ FCPPT_TEXT("\" not found!")
+		);
 
-FCPPT_SYMBOL string const
-level_to_string(
-	level::type
-);
-
+	return
+		static_cast<
+			level::type
+		>(
+			std::distance(
+				static_cast<
+					level_string_array const &
+				>(
+					level_strings
+				).begin(),
+				it
+			)
+		);
 }
-}
-
-#endif

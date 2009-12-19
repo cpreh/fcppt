@@ -18,21 +18,26 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
 
-#include <fcppt/log/format/default_level.hpp>
-#include <fcppt/log/format/inserter.hpp>
-#include <fcppt/log/level_to_string.hpp>
-#include <fcppt/make_shared_ptr.hpp>
-#include <fcppt/text.hpp>
+#ifndef FCPPT_LOG_LEVEL_STRINGS_HPP_INCLUDED
+#define FCPPT_LOG_LEVEL_STRINGS_HPP_INCLUDED
 
-fcppt::log::format::const_object_ptr const
-fcppt::log::format::default_level(
-	level::type const level_
-)
+#include <fcppt/log/level.hpp>
+#include <fcppt/tr1/array.hpp>
+#include <fcppt/string.hpp>
+
+namespace fcppt
 {
-	return make_shared_ptr<
-		inserter
-	>(
-		level_to_string(level_)
-		+ FCPPT_TEXT(": %1%\n")
-	);
+namespace log
+{
+
+typedef std::tr1::array<
+	fcppt::string,
+	fcppt::log::level::size
+> level_string_array;
+
+extern level_string_array const level_strings;
+
 }
+}
+
+#endif

@@ -18,77 +18,18 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
 
-#include <fcppt/log/level_string.hpp>
-#include <fcppt/tr1/array.hpp>
-#include <fcppt/text.hpp>
-#include <fcppt/exception.hpp>
-#include <algorithm>
-#include <iterator>
-
-namespace
-{
-
-typedef std::tr1::array<
-	fcppt::string,
-	fcppt::log::level::size
-> name_array;
-
-name_array const names = {
-{
-	FCPPT_TEXT("debug"),
-	FCPPT_TEXT("info"),
-	FCPPT_TEXT("warning"),
-	FCPPT_TEXT("error"),
-	FCPPT_TEXT("fatal")
-} };
-
-}
-
-fcppt::log::level::type
-fcppt::log::level_from_string(
-	string const &str
-)
-{
-	name_array::const_iterator const it(
-		std::find(
-			names.begin(),
-			names.end(),
-			str
-		)
-	);
-
-	if(
-		it == names.end()
-	)
-		throw exception(
-			FCPPT_TEXT("level_from_string(): \"")
-			+ str
-			+ FCPPT_TEXT("\" not found!")
-		);
-
-	return
-		static_cast<
-			level::type
-		>(
-			std::distance(
-				static_cast<
-					name_array const &
-				>(
-					names
-				).begin(),
-				it
-			)
-		);
-}
+#include "level_strings.hpp"
+#include <fcppt/log/level_to_string.hpp>
 
 fcppt::string const
 fcppt::log::level_to_string(
-	level::type const level_)
+	level::type const level_
+)
 {
 	return
-		names.at(
+		level_strings.at(
 			static_cast<
-				name_array::size_type
+				level_string_array::size_type
 			>(
 				level_
 			)
