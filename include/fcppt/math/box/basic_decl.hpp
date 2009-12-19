@@ -39,27 +39,29 @@ template<
 	typename T,
 	size_type N
 >
-class basic {
+class basic
+{
 public:
 	typedef T value_type;
+	typedef value_type scalar;
 
 	typedef math::size_type size_type;
 
 	typedef typename math::vector::static_<
 		T,
 		N
-	>::type pos_type;
+	>::type vector;
 
 	typedef typename math::dim::static_<
 		T,
 		N
-	>::type dim_type;
+	>::type dim;
 
 	basic();
 
 	basic(
-		pos_type const &,
-		dim_type const &
+		vector const &,
+		dim const &
 	);
 
 	static basic const
@@ -77,14 +79,14 @@ public:
 	value_type
 	d() const;
 
-	pos_type const
+	vector const
 	pos() const;
 
-	pos_type const
+	vector const
 	max() const;
 
-	dim_type const
-	dim() const;
+	dim const
+	dimension() const;
 
 	value_type
 	pos(
@@ -97,7 +99,7 @@ public:
 	) const;
 
 	value_type
-	dim(
+	dimension(
 		size_type
 	) const;
 
@@ -136,12 +138,12 @@ public:
 
 	void
 	pos(
-		pos_type const &
+		vector const &
 	);
 
 	void
-	dim(
-		dim_type const &
+	dimension(
+		dim const &
 	);
 
 	void
@@ -151,7 +153,7 @@ public:
 	);
 
 	void
-	dim(
+	dimension(
 		size_type index,
 		value_type
 	);
@@ -181,9 +183,9 @@ public:
 		basic const &
 	) const;
 private:
-	pos_type pos_;
+	vector pos_;
 
-	dim_type dim_;
+	dim dimension_;
 };
 
 }

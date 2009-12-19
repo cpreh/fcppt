@@ -53,7 +53,7 @@ operator<<(
 		<< stream_.widen('(')
 		<< box_.pos()
 		<< stream_.widen(',')
-		<< box_.dim()
+		<< box_.dimension()
 		<< stream_.widen(')');
 }
 

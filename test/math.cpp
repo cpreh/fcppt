@@ -24,6 +24,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #include <fcppt/math/matrix/dynamic_impl.hpp>
 #include <fcppt/math/dim/dim.hpp>
 #include <fcppt/math/point_rotate.hpp>
+#include <fcppt/math/box/box.hpp>
+#include <fcppt/math/box/rect.hpp>	
 #include <fcppt/io/cout.hpp>
 #include <boost/assign/list_of.hpp>
 #include <istream>
@@ -132,5 +134,18 @@ int main()
 			43,
 			44
 		)
+		<< FCPPT_TEXT('\n');
+	
+	typedef fcppt::math::box::rect<
+		int
+	>::type int_rect;
+
+	int_rect test_rect(
+		int_rect::vector(1, 2),
+		int_rect::dim(3, 2)
+	);
+
+	fcppt::io::cout
+		<< test_rect
 		<< FCPPT_TEXT('\n');
 }
