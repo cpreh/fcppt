@@ -21,7 +21,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #ifndef FCPPT_ASSERT_MESSAGE_HPP_INCLUDED
 #define FCPPT_ASSERT_MESSAGE_HPP_INCLUDED
 
-#include <fccpt/detail/process_assert.hpp>
+#include <fcppt/detail/process_assert.hpp>
 #include <fcppt/preprocessor/stringize.hpp>
 #include <fcppt/preprocessor/file.hpp>
 
