@@ -18,20 +18,35 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
 
-#ifndef FCPPT_ASSERT_HPP_INCLUDED
-#define FCPPT_ASSERT_HPP_INCLUDED
-
 #include <fcppt/detail/process_assert.hpp>
-#include <fcppt/preprocessor/stringize.hpp>
-#include <fcppt/preprocessor/file.hpp>
+#include <fcppt/io/ostringstream.hpp>
+#include <fcppt/exception.hpp>
+#include <fcppt/text.hpp>
+#include <ostream>
 
-#define FCPPT_ASSERT(cond)\
-if (!(cond))\
-	fcppt::detail::process_assert(\
-		FCPPT_PP_FILE,\
-		FCPPT_PP_STRINGIZE(__LINE__),\
-		FCPPT_PP_STRINGIZE(cond),\
-		FCPPT_PP_STRINGIZE("")\
+void
+fcppt::detail::process_assert(
+	string const &file,
+	string const &line,
+	string const &condition,
+	string const &message
+)
+{
+	io::ostringstream ss;
+
+	ss
+		<< file
+		<< FCPPT_TEXT(':')
+		<< line
+		<< FCPPT_TEXT(": assertion failed: ")
+		<< condition;
+
+	if (!message.empty())
+		ss
+			<< FCPPT_TEXT(", ")
+			<< message;
+
+	throw exception(
+		ss.str()
 	);
-
-#endif
+}

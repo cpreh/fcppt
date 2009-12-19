@@ -18,20 +18,20 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
 
-#ifndef FCPPT_ASSERT_HPP_INCLUDED
-#define FCPPT_ASSERT_HPP_INCLUDED
+#ifndef FCPPT_ASSERT_MESSAGE_HPP_INCLUDED
+#define FCPPT_ASSERT_MESSAGE_HPP_INCLUDED
 
-#include <fcppt/detail/process_assert.hpp>
+#include <fccpt/detail/process_assert.hpp>
 #include <fcppt/preprocessor/stringize.hpp>
 #include <fcppt/preprocessor/file.hpp>
 
-#define FCPPT_ASSERT(cond)\
+#define FCPPT_ASSERT_MESSAGE(cond, message)\
 if (!(cond))\
 	fcppt::detail::process_assert(\
 		FCPPT_PP_FILE,\
 		FCPPT_PP_STRINGIZE(__LINE__),\
 		FCPPT_PP_STRINGIZE(cond),\
-		FCPPT_PP_STRINGIZE("")\
+		message\
 	);
 
 #endif
