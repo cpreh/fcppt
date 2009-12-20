@@ -1,14 +1,18 @@
 #include <fcppt/thread/object.hpp>
+#include <exception>
 
 fcppt::thread::object::object(
-	task const &_task)
+	task const &_task
+)
 :
 	thread_(
-		_task)
+		_task
+	)
 {
 }
 
-void fcppt::thread::object::join()
+void
+fcppt::thread::object::join()
 {
 	thread_.join();
 }
