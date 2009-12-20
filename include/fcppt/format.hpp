@@ -22,8 +22,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #define FCPPT_FORMAT_HPP_INCLUDED
 
 #include <fcppt/config.h>
-#include <fcppt/string.hpp>
-#include <fcppt/symbol.hpp>
 #include <boost/format.hpp>
 
 namespace fcppt
@@ -34,8 +32,6 @@ typedef boost::format format;
 #else
 typedef boost::wformat format;
 #endif
-
-FCPPT_SYMBOL string const str(format const &);
 
 }
 
