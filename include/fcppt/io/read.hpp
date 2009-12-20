@@ -39,7 +39,7 @@ typename boost::enable_if<
 	boost::is_fundamental<
 		T
 	>,
-	void
+	T	
 >::type
 read(
 	std::istream &s,
