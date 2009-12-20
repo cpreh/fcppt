@@ -18,8 +18,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
 
-#ifndef FCPPT_CODECVT_HPP_INCLUDED
-#define FCPPT_CODECVT_HPP_INCLUDED
+#ifndef FCPPT_NARROW_HPP_INCLUDED
+#define FCPPT_NARROW_HPP_INCLUDED
 
 #include <fcppt/symbol.hpp>
 #include <string>
@@ -29,11 +29,8 @@ namespace fcppt
 
 FCPPT_SYMBOL std::string const
 narrow(
-	std::wstring const &);
-
-FCPPT_SYMBOL std::wstring const
-widen(
-	std::string const &);
+	std::wstring const &
+);
 
 }
 

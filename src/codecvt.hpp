@@ -18,13 +18,16 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
 
-#include <fcppt/codecvt.hpp>
+#ifndef FCPPT_CODECVT_HPP_INCLUDED
+#define FCPPT_CODECVT_HPP_INCLUDED
+
 #include <fcppt/container/data.hpp>
 #include <fcppt/container/raw_vector_impl.hpp>
 #include <fcppt/exception.hpp>
 #include <fcppt/text.hpp>
 #include <locale>
 #include <iterator>
+#include <string>
 
 namespace
 {
@@ -40,10 +43,13 @@ typedef std::codecvt<
 template<
 	typename OutCh
 >
-class call_traits;
+struct call_traits;
 
 template<>
-class call_traits<char> {
+struct call_traits<
+	char
+>
+{
 public:
 	static std::codecvt_base::result
 	conv(
@@ -54,7 +60,8 @@ public:
 		wchar_t const *&from_next,
 		char *const to,
 		char *const to_limit,
-		char *&to_next)
+		char *&to_next
+	)
 	{
 		return cvt.out(
 			state,
@@ -63,12 +70,16 @@ public:
 			from_next,
 			to,
 			to_limit,
-			to_next);
+			to_next
+		);
 	}
 };
 
 template<>
-class call_traits<wchar_t> {
+struct call_traits<
+	wchar_t
+>
+{
 public:
 	static std::codecvt_base::result
 	conv(
@@ -104,8 +115,9 @@ template<
 	typename In
 >
 std::basic_string<Out> const
-convert(
-	std::basic_string<In> const &s)
+codecvt(
+	std::basic_string<In> const &s
+)
 {
 	typedef std::basic_string<
 		Out
@@ -198,16 +210,4 @@ convert(
 
 }
 
-std::string const
-fcppt::narrow(
-	std::wstring const &s)
-{
-	return convert<char>(s);
-}
-
-std::wstring const
-fcppt::widen(
-	std::string const &s)
-{
-	return convert<wchar_t>(s);
-}
+#endif
