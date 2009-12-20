@@ -24,9 +24,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #include <fcppt/chrono/high_resolution_clock_fwd.hpp>
 #include <fcppt/chrono/duration_fwd.hpp>
 #include <fcppt/chrono/time_point_fwd.hpp>
+#include <fcppt/chrono/rep.hpp>
 #include <fcppt/ratio.hpp>
 #include <fcppt/symbol.hpp>
-#include <boost/cstdint.hpp>
 
 namespace fcppt
 {
@@ -36,7 +36,7 @@ namespace chrono
 class high_resolution_clock
 {
 public:
-	typedef boost::uint64_t rep;
+	typedef chrono::rep rep;
 
 	typedef fcppt::nano period;
 

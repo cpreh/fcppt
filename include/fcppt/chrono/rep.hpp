@@ -18,43 +18,27 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
 
-#ifndef FCPPT_CHRONO_MONOTONIC_CLOCK_HPP_INCLUDED
-#define FCPPT_CHRONO_MONOTONIC_CLOCK_HPP_INCLUDED
+#ifndef SGE_CHRONO_REP_HPP_INCLUDED
+#define SGE_CHRONO_REP_HPP_INCLUDED
 
-#include <fcppt/chrono/monotonic_clock_fwd.hpp>
-#include <fcppt/chrono/duration_fwd.hpp>
-#include <fcppt/chrono/time_point_fwd.hpp>
-#include <fcppt/chrono/rep.hpp>
-#include <fcppt/ratio.hpp>
-#include <fcppt/symbol.hpp>
+#include <fcppt/config.h>
+#ifdef FCPPT_HAVE_ATLEAST_UINT64
+#include <boost/cstdint.hpp>
+#else
+#include <fcppt/preprocessor/warning.hpp>
+#endif
 
 namespace fcppt
 {
 namespace chrono
 {
 
-class monotonic_clock
-{
-public:
-	typedef chrono::rep rep;
-
-	typedef nano period;
-
-	typedef fcppt::chrono::duration<
-		rep,
-		period
-	> duration;
-
-	typedef chrono::time_point<
-		monotonic_clock
-	> time_point;
-
-	static bool const is_monotonic = true;
-
-	FCPPT_SYMBOL
-	static time_point
-	now();
-};
+#ifdef FCPPT_HAVE_ATLEAST_UINT64
+typedef boost::uint64_t rep;
+#else
+typedef unsigned long rep;
+SGE_PP_WARNING("This platform does not provide a 64 bit integer type. time_points might overflow too quickly.")
+#endif
 
 }
 }

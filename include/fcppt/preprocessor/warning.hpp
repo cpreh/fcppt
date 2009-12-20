@@ -18,45 +18,11 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
 
-#ifndef FCPPT_CHRONO_MONOTONIC_CLOCK_HPP_INCLUDED
-#define FCPPT_CHRONO_MONOTONIC_CLOCK_HPP_INCLUDED
+#ifndef FCPPT_PREPROCESSOR_WARNING_HPP_INCLUDED
+#define FCPPT_PREPROCESSOR_WARNING_HPP_INCLUDED
 
-#include <fcppt/chrono/monotonic_clock_fwd.hpp>
-#include <fcppt/chrono/duration_fwd.hpp>
-#include <fcppt/chrono/time_point_fwd.hpp>
-#include <fcppt/chrono/rep.hpp>
-#include <fcppt/ratio.hpp>
-#include <fcppt/symbol.hpp>
+#include <fcppt/preprocessor/message.hpp>
 
-namespace fcppt
-{
-namespace chrono
-{
-
-class monotonic_clock
-{
-public:
-	typedef chrono::rep rep;
-
-	typedef nano period;
-
-	typedef fcppt::chrono::duration<
-		rep,
-		period
-	> duration;
-
-	typedef chrono::time_point<
-		monotonic_clock
-	> time_point;
-
-	static bool const is_monotonic = true;
-
-	FCPPT_SYMBOL
-	static time_point
-	now();
-};
-
-}
-}
+#define FCPPT_PP_WARNING(x) FCPPT_PP_MESSAGE("warning: " x)
 
 #endif

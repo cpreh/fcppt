@@ -22,8 +22,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #define FCPPT_CHRONO_MICROSECONDS_HPP_INCLUDED
 
 #include <fcppt/chrono/duration_fwd.hpp>
+#include <fcppt/chrono/rep.hpp>
 #include <fcppt/ratio.hpp>
-#include <boost/cstdint.hpp>
 
 namespace fcppt
 {
@@ -31,7 +31,7 @@ namespace chrono
 {
 
 typedef duration<
-	boost::uint64_t,
+	rep,
 	micro
 > microseconds;
 
