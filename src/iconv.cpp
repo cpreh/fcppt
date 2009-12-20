@@ -20,18 +20,21 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 #include <fcppt/iconv.hpp>
 #ifndef FCPPT_NARROW_STRING
-#include <fcppt/codecvt.hpp>
+#include <fcppt/narrow.hpp>
+#include <fcppt/widen.hpp>
 
 fcppt::string const
 fcppt::iconv(
-	std::string const &input)
+	std::string const &input
+)
 {
 	return widen(input);
 }
 
 std::string const
 fcppt::iconv(
-	string const &input)
+	string const &input
+)
 {
 	return narrow(input);
 }
@@ -40,7 +43,8 @@ fcppt::iconv(
 
 fcppt::string const
 fcppt::iconv(
-	string const &s)
+	string const &s
+)
 {
 	return s;
 }
