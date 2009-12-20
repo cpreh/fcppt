@@ -18,8 +18,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
 
-#ifndef SGE_CHRONO_REP_HPP_INCLUDED
-#define SGE_CHRONO_REP_HPP_INCLUDED
+#ifndef FCPPT_CHRONO_REP_HPP_INCLUDED
+#define FCPPT_CHRONO_REP_HPP_INCLUDED
 
 #include <fcppt/config.h>
 #ifdef FCPPT_HAVE_ATLEAST_UINT64

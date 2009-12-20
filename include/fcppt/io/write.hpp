@@ -18,8 +18,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
 
-#ifndef SGE_IO_WRITE_HPP_INCLUDED
-#define SGE_IO_WRITE_HPP_INCLUDED
+#ifndef FCPPT_IO_WRITE_HPP_INCLUDED
+#define FCPPT_IO_WRITE_HPP_INCLUDED
 
 #include <fcppt/endianness/from_host.hpp>
 #include <fcppt/endianness/format.hpp>

@@ -19,7 +19,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 
 #ifndef FCPPT_STUB_FUNCTION_HPP_INCLUDED
-#define FCPPT_STUB_FCUNTION_HPP_INCLUDED
+#define FCPPT_STUB_FUNCTION_HPP_INCLUDED
 
 #include <fcppt/log/headers.hpp>
 #include <fcppt/log/global.hpp>
