@@ -32,15 +32,18 @@ namespace fcppt
 #ifndef FCPPT_NARROW_STRING
 FCPPT_SYMBOL string const
 iconv(
-	std::string const &input);
+	std::string const &input
+);
 
 FCPPT_SYMBOL std::string const
 iconv(
-	string const &input);
+	string const &input
+);
 #else
 FCPPT_SYMBOL string const
 iconv(
-	string const &);
+	string const &
+);
 #endif
 
 }
