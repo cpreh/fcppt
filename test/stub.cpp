@@ -18,19 +18,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
 
-#ifndef FCPPT_STUB_HPP_INCLUDED
-#define FCPPT_STUB_HPP_INCLUDED
+#include <fcppt/stub_function.hpp>
 
-#include <fcppt/log/headers.hpp>
-#include <ostream>
-
-#define FCPPT_STUB_FUNCTION\
-FCPPT_LOG_WARNING(\
-	fcppt::log::global(),\
-	fcppt::log::_1\
-		<< FCPPT_TEXT("stub in ")\
-		<< __FILE__\
-		<< FCPPT_TEXT(" at ")\
-		<< __LINE__);
-
-#endif
+int main()
+{
+	FCPPT_STUB_FUNCTION
+}
