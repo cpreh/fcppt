@@ -24,6 +24,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #include <fcppt/chrono/common_type.hpp>
 #include <fcppt/chrono/duration_impl.hpp>
 #include <fcppt/ratio.hpp>
+#include <boost/mpl/and.hpp>
+#include <boost/mpl/not.hpp>
+#include <boost/mpl/bool.hpp>
 #include <boost/type_traits/is_same.hpp>
 #include <boost/utility/enable_if.hpp>
 
@@ -65,11 +68,21 @@ template<
 	typename Rep,
 	typename Period
 >
-typename boost::enable_if_c<
-	ratio_divide<
-		Period,
-		typename ToDuration::period
-	>::type::num == 1,
+typename boost::enable_if<
+	boost::mpl::and_<
+		boost::mpl::bool_<
+			ratio_divide<
+				Period,
+				typename ToDuration::period
+			>::type::num == 1
+		>,
+		boost::mpl::not_<
+			boost::is_same<
+				typename ToDuration::period,
+				Period
+			>
+		>
+	>,
 	ToDuration
 >::type
 duration_cast(
@@ -111,11 +124,21 @@ template<
 	typename Rep,
 	typename Period
 >
-typename boost::enable_if_c<
-	ratio_divide<
-		Period,
-		typename ToDuration::period
-	>::type::den == 1,
+typename boost::enable_if<
+	boost::mpl::and_<
+		boost::mpl::bool_<
+			ratio_divide<
+				Period,
+				typename ToDuration::period
+			>::type::den == 1
+		>,
+		boost::mpl::not_<
+			boost::is_same<
+				typename ToDuration::period,
+				Period
+			>
+		>
+	>,
 	ToDuration
 >::type
 duration_cast(

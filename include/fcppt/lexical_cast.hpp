@@ -90,7 +90,7 @@ template<
 	typename Src
 >
 Src
-sge::lexical_cast(
+lexical_cast(
 	Src const &s
 )
 {
