@@ -166,7 +166,7 @@ template<
 typename fcppt::container::field<T, ArrayType, Alloc>::size_type
 fcppt::container::field<T, ArrayType, Alloc>::size() const
 {
-	return array.size();
+	return dimension_.content();
 }
 
 template<
