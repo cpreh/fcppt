@@ -67,7 +67,7 @@ intersection(
 			)
 		);
 
-		ret.dim(
+		ret.dimension(
 			i,
 			std::min(
 				a.max(i),
