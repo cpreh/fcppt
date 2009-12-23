@@ -21,6 +21,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #include <fcppt/container/raw_vector_impl.hpp>
 #include <fcppt/container/field_impl.hpp>
 #include <fcppt/io/cout.hpp>
+#include <fcppt/text.hpp>
+#include <vector>
 
 int main()
 {
@@ -29,6 +31,12 @@ int main()
 			bool
 		>
 	> field_vector;
+
+	typedef std::vector<
+		field_vector
+	> vector_of_fields;
+
+	vector_of_fields outer;
 
 	for(
 		unsigned i = 0;
@@ -43,8 +51,12 @@ int main()
 			)
 		);
 
-		fcppt::io::cout
-			<< test
-			<< FCPPT_TEXT('\n');
+		outer.push_back(
+			test	
+		);
 	}
+
+	fcppt::io::cout
+		<< outer[42]
+		<< FCPPT_TEXT('\n');
 }
