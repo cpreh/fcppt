@@ -18,7 +18,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
 
-
 #include <fcppt/container/map_impl.hpp>
 #include <fcppt/container/raw_vector_impl.hpp>
 #include <fcppt/io/cout.hpp>

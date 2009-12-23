@@ -30,14 +30,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #include <ostream>
 
 template<
-	typename T,
-	template<
-		typename,
-		typename
-	> class ArrayType,
-	typename Alloc
+	typename ArrayType
 >
-fcppt::container::field<T, ArrayType, Alloc>::field(
+fcppt::container::field<ArrayType>::field(
 	allocator_type const &alloc
 )
 :
@@ -46,14 +41,9 @@ fcppt::container::field<T, ArrayType, Alloc>::field(
 {}
 
 template<
-	typename T,
-	template<
-		typename,
-		typename
-	> class ArrayType,
-	typename Alloc
+	typename ArrayType
 >
-fcppt::container::field<T, ArrayType, Alloc>::field(
+fcppt::container::field<ArrayType>::field(
 	field const &r
 )
 :
@@ -62,14 +52,9 @@ fcppt::container::field<T, ArrayType, Alloc>::field(
 {}
 
 template<
-	typename T,
-	template<
-		typename,
-		typename
-	> class ArrayType,
-	typename Alloc
+	typename ArrayType
 >
-fcppt::container::field<T, ArrayType, Alloc>::field(
+fcppt::container::field<ArrayType>::field(
 	dim const &dimension_,
 	value_type const &t,
 	allocator_type const &alloc
@@ -84,17 +69,12 @@ fcppt::container::field<T, ArrayType, Alloc>::field(
 {}
 
 template<
-	typename T,
-	template<
-		typename,
-		typename
-	> class ArrayType,
-	typename Alloc
+	typename ArrayType
 >
 template<
 	typename Iterator
 >
-fcppt::container::field<T, ArrayType, Alloc>::field(
+fcppt::container::field<ArrayType>::field(
 	dim const &dimension_,
 	Iterator const b,
 	Iterator const e,
@@ -110,17 +90,13 @@ fcppt::container::field<T, ArrayType, Alloc>::field(
 
 	std::copy(b, e, begin());
 }
+
 template<
-	typename T,
-	template<
-		typename,
-		typename
-	> class ArrayType,
-	typename Alloc
+	typename ArrayType
 >
 void
-fcppt::container::field<T, ArrayType, Alloc>::swap(
-	field<T, ArrayType, Alloc> &r
+fcppt::container::field<ArrayType>::swap(
+	field<ArrayType> &r
 )
 {
 	std::swap(
@@ -134,16 +110,11 @@ fcppt::container::field<T, ArrayType, Alloc>::swap(
 }
 
 template<
-	typename T,
-	template<
-		typename,
-		typename
-	> class ArrayType,
-	typename Alloc
+	typename ArrayType
 >
-fcppt::container::field<T, ArrayType, Alloc> &
-fcppt::container::field<T, ArrayType, Alloc>::operator=(
-	field<T, ArrayType, Alloc> const &r
+fcppt::container::field<ArrayType> &
+fcppt::container::field<ArrayType>::operator=(
+	field<ArrayType> const &r
 )
 {
 	if(&r != this)
@@ -156,169 +127,109 @@ fcppt::container::field<T, ArrayType, Alloc>::operator=(
 }
 
 template<
-	typename T,
-	template<
-		typename,
-		typename
-	> class ArrayType,
-	typename Alloc
+	typename ArrayType
 >
-typename fcppt::container::field<T, ArrayType, Alloc>::size_type
-fcppt::container::field<T, ArrayType, Alloc>::size() const
+typename fcppt::container::field<ArrayType>::size_type
+fcppt::container::field<ArrayType>::size() const
 {
 	return dimension_.content();
 }
 
 template<
-	typename T,
-	template<
-		typename,
-		typename
-	> class ArrayType,
-	typename Alloc
+	typename ArrayType
 >
-typename fcppt::container::field<T, ArrayType, Alloc>::size_type
-fcppt::container::field<T, ArrayType, Alloc>::max_size() const
+typename fcppt::container::field<ArrayType>::size_type
+fcppt::container::field<ArrayType>::max_size() const
 {
 	return array.max_size();
 }
 
 template<
-	typename T,
-	template<
-		typename,
-		typename
-	> class ArrayType,
-	typename Alloc
+	typename ArrayType
 >
 bool
-fcppt::container::field<T, ArrayType, Alloc>::empty() const
+fcppt::container::field<ArrayType>::empty() const
 {
 	return array.empty();
 }
 
 template<
-	typename T,
-	template<
-		typename,
-		typename
-	> class ArrayType,
-	typename Alloc
+	typename ArrayType
 >
-typename fcppt::container::field<T, ArrayType, Alloc>::iterator
-fcppt::container::field<T, ArrayType, Alloc>::begin()
+typename fcppt::container::field<ArrayType>::iterator
+fcppt::container::field<ArrayType>::begin()
 {
 	return array.begin();
 }
 
 template<
-	typename T,
-	template<
-		typename,
-		typename
-	> class ArrayType,
-	typename Alloc
+	typename ArrayType
 >
-typename fcppt::container::field<T, ArrayType, Alloc>::iterator
-fcppt::container::field<T, ArrayType, Alloc>::end()
+typename fcppt::container::field<ArrayType>::iterator
+fcppt::container::field<ArrayType>::end()
 {
 	return array.end();
 }
 
 template<
-	typename T,
-	template<
-		typename,
-		typename
-	> class ArrayType,
-	typename Alloc
+	typename ArrayType
 >
-typename fcppt::container::field<T, ArrayType, Alloc>::const_iterator
-fcppt::container::field<T, ArrayType, Alloc>::begin() const
+typename fcppt::container::field<ArrayType>::const_iterator
+fcppt::container::field<ArrayType>::begin() const
 {
 	return array.begin();
 }
 
 template<
-	typename T,
-	template<
-		typename,
-		typename
-	> class ArrayType,
-	typename Alloc
+	typename ArrayType
 >
-typename fcppt::container::field<T, ArrayType, Alloc>::const_iterator
-fcppt::container::field<T, ArrayType, Alloc>::end() const
+typename fcppt::container::field<ArrayType>::const_iterator
+fcppt::container::field<ArrayType>::end() const
 {
 	return array.end();
 }
 
 template<
-	typename T,
-	template<
-		typename,
-		typename
-	> class ArrayType,
-	typename Alloc
+	typename ArrayType
 >
-typename fcppt::container::field<T, ArrayType, Alloc>::reverse_iterator
-fcppt::container::field<T, ArrayType, Alloc>::rbegin()
+typename fcppt::container::field<ArrayType>::reverse_iterator
+fcppt::container::field<ArrayType>::rbegin()
 {
 	return array.rbegin();
 }
 
 template<
-	typename T,
-	template<
-		typename,
-		typename
-	> class ArrayType,
-	typename Alloc
+	typename ArrayType
 >
-typename fcppt::container::field<T, ArrayType, Alloc>::reverse_iterator
-fcppt::container::field<T, ArrayType, Alloc>::rend()
+typename fcppt::container::field<ArrayType>::reverse_iterator
+fcppt::container::field<ArrayType>::rend()
 {
 	return array.rend();
 }
 
 template<
-	typename T,
-	template<
-		typename,
-		typename
-	> class ArrayType,
-	typename Alloc
+	typename ArrayType
 >
-typename fcppt::container::field<T, ArrayType, Alloc>::const_reverse_iterator
-fcppt::container::field<T, ArrayType, Alloc>::rbegin() const
+typename fcppt::container::field<ArrayType>::const_reverse_iterator
+fcppt::container::field<ArrayType>::rbegin() const
 {
 	return array.rbegin();
 }
 
 template<
-	typename T,
-	template<
-		typename,
-		typename
-	> class ArrayType,
-	typename Alloc
+	typename ArrayType
 >
-typename fcppt::container::field<T, ArrayType, Alloc>::const_reverse_iterator
-fcppt::container::field<T, ArrayType, Alloc>::rend() const
+typename fcppt::container::field<ArrayType>::const_reverse_iterator
+fcppt::container::field<ArrayType>::rend() const
 {
 	return array.rend();
 }
 
 template<
-	typename T,
-	template<
-		typename,
-		typename
-	> class ArrayType,
-	typename Alloc
+	typename ArrayType
 >
-typename fcppt::container::field<T, ArrayType, Alloc>::vector const
-fcppt::container::field<T, ArrayType, Alloc>::position(
+typename fcppt::container::field<ArrayType>::vector const
+fcppt::container::field<ArrayType>::position(
 	const_iterator const it
 ) const
 {
@@ -336,15 +247,10 @@ fcppt::container::field<T, ArrayType, Alloc>::position(
 }
 
 template<
-	typename T,
-	template<
-		typename,
-		typename
-	> class ArrayType,
-	typename Alloc
+	typename ArrayType
 >
-typename fcppt::container::field<T, ArrayType, Alloc>::iterator
-fcppt::container::field<T, ArrayType, Alloc>::position_it(
+typename fcppt::container::field<ArrayType>::iterator
+fcppt::container::field<ArrayType>::position_it(
 	vector const &v
 )
 {
@@ -352,15 +258,10 @@ fcppt::container::field<T, ArrayType, Alloc>::position_it(
 }
 
 template<
-	typename T,
-	template<
-		typename,
-		typename
-	> class ArrayType,
-	typename Alloc
+	typename ArrayType
 >
-typename fcppt::container::field<T, ArrayType, Alloc>::const_iterator
-fcppt::container::field<T, ArrayType, Alloc>::position_it(
+typename fcppt::container::field<ArrayType>::const_iterator
+fcppt::container::field<ArrayType>::position_it(
 	vector const &v
 ) const
 {
@@ -368,29 +269,19 @@ fcppt::container::field<T, ArrayType, Alloc>::position_it(
 }
 
 template<
-	typename T,
-	template<
-		typename,
-		typename
-	> class ArrayType,
-	typename Alloc
+	typename ArrayType
 >
-typename fcppt::container::field<T, ArrayType, Alloc>::allocator_type
-fcppt::container::field<T, ArrayType, Alloc>::get_allocator() const
+typename fcppt::container::field<ArrayType>::allocator_type
+fcppt::container::field<ArrayType>::get_allocator() const
 {
 	return array.get_allocator();
 }
 
 template<
-	typename T,
-	template<
-		typename,
-		typename
-	> class ArrayType,
-	typename Alloc
+	typename ArrayType
 >
 void
-fcppt::container::field<T, ArrayType, Alloc>::resize_canvas(
+fcppt::container::field<ArrayType>::resize_canvas(
 	dim const &n,
 	const_reference value
 )
@@ -414,15 +305,10 @@ fcppt::container::field<T, ArrayType, Alloc>::resize_canvas(
 }
 
 template<
-	typename T,
-	template<
-		typename,
-		typename
-	> class ArrayType,
-	typename Alloc
+	typename ArrayType
 >
 void
-fcppt::container::field<T, ArrayType, Alloc>::resize(
+fcppt::container::field<ArrayType>::resize(
 	dim const &n,
 	const_reference value
 )
@@ -439,15 +325,10 @@ fcppt::container::field<T, ArrayType, Alloc>::resize(
 }
 
 template<
-	typename T,
-	template<
-		typename,
-		typename
-	> class ArrayType,
-	typename Alloc
+	typename ArrayType
 >
-typename fcppt::container::field<T, ArrayType, Alloc>::value_type &
-fcppt::container::field<T, ArrayType, Alloc>::pos(
+typename fcppt::container::field<ArrayType>::value_type &
+fcppt::container::field<ArrayType>::pos(
 	vector const &p
 )
 {
@@ -459,15 +340,10 @@ fcppt::container::field<T, ArrayType, Alloc>::pos(
 }
 
 template<
-	typename T,
-	template<
-		typename,
-		typename
-	> class ArrayType,
-	typename Alloc
+	typename ArrayType
 >
-typename fcppt::container::field<T, ArrayType, Alloc>::value_type const &
-fcppt::container::field<T, ArrayType, Alloc>::pos(
+typename fcppt::container::field<ArrayType>::value_type const &
+fcppt::container::field<ArrayType>::pos(
 	vector const &p
 ) const
 {
@@ -479,71 +355,46 @@ fcppt::container::field<T, ArrayType, Alloc>::pos(
 }
 
 template<
-	typename T,
-	template<
-		typename,
-		typename
-	> class ArrayType,
-	typename Alloc
+	typename ArrayType
 >
-typename fcppt::container::field<T, ArrayType, Alloc>::reference
-fcppt::container::field<T, ArrayType, Alloc>::front()
+typename fcppt::container::field<ArrayType>::reference
+fcppt::container::field<ArrayType>::front()
 {
 	return array.front();
 }
 
 template<
-	typename T,
-	template<
-		typename,
-		typename
-	> class ArrayType,
-	typename Alloc
+	typename ArrayType
 >
-typename fcppt::container::field<T, ArrayType, Alloc>::const_reference
-fcppt::container::field<T, ArrayType, Alloc>::front() const
+typename fcppt::container::field<ArrayType>::const_reference
+fcppt::container::field<ArrayType>::front() const
 {
 	return array.front();
 }
 
 template<
-	typename T,
-	template<
-		typename,
-		typename
-	> class ArrayType,
-	typename Alloc
+	typename ArrayType
 >
-typename fcppt::container::field<T, ArrayType, Alloc>::reference
-fcppt::container::field<T, ArrayType, Alloc>::back()
+typename fcppt::container::field<ArrayType>::reference
+fcppt::container::field<ArrayType>::back()
 {
 	return array.back();
 }
 
 template<
-	typename T,
-	template<
-		typename,
-		typename
-	> class ArrayType,
-	typename Alloc
+	typename ArrayType
 >
-typename fcppt::container::field<T, ArrayType, Alloc>::const_reference
-fcppt::container::field<T, ArrayType, Alloc>::back() const
+typename fcppt::container::field<ArrayType>::const_reference
+fcppt::container::field<ArrayType>::back() const
 {
 	return array.back();
 }
 
 template<
-	typename T,
-	template<
-		typename,
-		typename
-	> class ArrayType,
-	typename Alloc
+	typename ArrayType
 >
-typename fcppt::container::field<T, ArrayType, Alloc>::value_type
-fcppt::container::field<T, ArrayType, Alloc>::x(
+typename fcppt::container::field<ArrayType>::value_type
+fcppt::container::field<ArrayType>::x(
 	const_iterator const p
 ) const
 {
@@ -553,15 +404,10 @@ fcppt::container::field<T, ArrayType, Alloc>::x(
 }
 
 template<
-	typename T,
-	template<
-		typename,
-		typename
-	> class ArrayType,
-	typename Alloc
+	typename ArrayType
 >
-typename fcppt::container::field<T, ArrayType, Alloc>::value_type
-fcppt::container::field<T, ArrayType, Alloc>::y(
+typename fcppt::container::field<ArrayType>::value_type
+fcppt::container::field<ArrayType>::y(
 	const_iterator const p
 ) const
 {
@@ -571,15 +417,10 @@ fcppt::container::field<T, ArrayType, Alloc>::y(
 }
 
 template<
-	typename T,
-	template<
-		typename,
-		typename
-	> class ArrayType,
-	typename Alloc
+	typename ArrayType
 >
-typename fcppt::container::field<T, ArrayType, Alloc>::vector const
-fcppt::container::field<T, ArrayType, Alloc>::pos(
+typename fcppt::container::field<ArrayType>::vector const
+fcppt::container::field<ArrayType>::pos(
 	const_iterator const p
 ) const
 {
@@ -587,29 +428,19 @@ fcppt::container::field<T, ArrayType, Alloc>::pos(
 }
 
 template<
-	typename T,
-	template<
-		typename,
-		typename
-	> class ArrayType,
-	typename Alloc
+	typename ArrayType
 >
-typename fcppt::container::field<T, ArrayType, Alloc>::dim const
-fcppt::container::field<T, ArrayType, Alloc>::dimension() const
+typename fcppt::container::field<ArrayType>::dim const
+fcppt::container::field<ArrayType>::dimension() const
 {
 	return dimension_;
 }
 
 template<
-	typename T,
-	template<
-		typename,
-		typename
-	> class ArrayType,
-	typename Alloc
+	typename ArrayType
 >
 void
-fcppt::container::field<T, ArrayType, Alloc>::range_check(
+fcppt::container::field<ArrayType>::range_check(
 	vector const &v
 ) const
 {
@@ -617,31 +448,21 @@ fcppt::container::field<T, ArrayType, Alloc>::range_check(
 }
 
 template<
-	typename T,
-	template<
-		typename,
-		typename
-	> class ArrayType,
-	typename Alloc
+	typename ArrayType
 >
 void
-fcppt::container::field<T, ArrayType, Alloc>::check_w() const
+fcppt::container::field<ArrayType>::check_w() const
 {
 	FCPPT_ASSERT(dimension().w() != 0);
 }
 
 template<
-	typename T,
-	template<
-		typename,
-		typename
-	> class ArrayType,
-	typename Alloc
+	typename ArrayType
 >
 bool
 fcppt::container::operator==(
-	field<T, ArrayType, Alloc> const &l,
-	field<T, ArrayType, Alloc> const &r
+	field<ArrayType> const &l,
+	field<ArrayType> const &r
 )
 {
 	return
@@ -650,39 +471,29 @@ fcppt::container::operator==(
 }
 
 template<
-	typename T,
-	template<
-		typename,
-		typename
-	> class ArrayType,
-	typename Alloc
+	typename ArrayType
 >
 bool
 fcppt::container::operator!=(
-	field<T, ArrayType, Alloc> const &l,
-	field<T, ArrayType, Alloc> const &r
+	field<ArrayType> const &l,
+	field<ArrayType> const &r
 )
 {
 	return !(l == r);
 }
 
 template<
-	typename T,
-	template<
-		typename,
-		typename
-	> class ArrayType,
-	typename Alloc,
+	typename ArrayType,
 	typename Ch,
 	typename Traits
 >
 std::basic_ostream<Ch,Traits> &
 fcppt::container::operator<<(
 	std::basic_ostream<Ch,Traits> &stream,
-	field<T, ArrayType, Alloc> const &f
+	field<ArrayType> const &f
 )
 {
-	typedef field<T, ArrayType, Alloc> field_type;
+	typedef field<ArrayType> field_type;
 	typedef typename field_type::size_type size_type;
 	typedef typename field_type::vector vector;
 

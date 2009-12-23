@@ -26,13 +26,16 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #include <exception>
 #include <iostream>
 #include <ostream>
+#include <vector>
 #include <cstdlib>
 
 int main()
 try
 {
 	typedef fcppt::container::field<
-		int
+		std::vector<
+			int
+		>
 	> field_type;
 
 	field_type f(

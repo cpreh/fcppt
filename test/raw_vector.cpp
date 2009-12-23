@@ -18,20 +18,33 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
 
-#ifndef FCPPT_CONTAINER_FIELD_FWD_HPP_INCLUDED
-#define FCPPT_CONTAINER_FIELD_FWD_HPP_INCLUDED
+#include <fcppt/container/raw_vector_impl.hpp>
+#include <fcppt/container/field_impl.hpp>
+#include <fcppt/io/cout.hpp>
 
-namespace fcppt
+int main()
 {
-namespace container
-{
+	typedef fcppt::container::field<
+		fcppt::container::raw_vector<
+			bool
+		>
+	> field_vector;
 
-template<
-	typename ArrayType
->
-class field;
+	for(
+		unsigned i = 0;
+		i < 100;
+		++i
+	)
+	{
+		field_vector test(
+			field_vector::dim(
+				4,
+				1
+			)
+		);
 
+		fcppt::io::cout
+			<< test
+			<< FCPPT_TEXT('\n');
+	}
 }
-}
-
-#endif

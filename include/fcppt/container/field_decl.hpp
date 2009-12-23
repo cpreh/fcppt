@@ -34,22 +34,17 @@ namespace container
 {
 
 template<
-	typename T,
-	template<
-		typename,
-		typename
-	> class ArrayType,
-	typename Alloc
+	typename ArrayType
 >
 class field
 {
 public:
-	typedef ArrayType<T,Alloc>                    array_type;
+	typedef ArrayType                             array_type;
 
-	typedef T                                     value_type;
-	typedef Alloc                                 allocator_type;
-	typedef T&                                    reference;
-	typedef const T&                              const_reference;
+	typedef typename ArrayType::value_type        value_type;
+	typedef typename ArrayType::allocator_type    allocator_type;
+	typedef typename ArrayType::reference         reference;
+	typedef typename ArrayType::const_reference   const_reference;
 	typedef typename array_type::iterator         iterator;
 	typedef typename array_type::const_iterator   const_iterator;
 	typedef typename array_type::size_type        size_type;
@@ -222,45 +217,32 @@ private:
 
 
 template<
-	typename T,
-	template<
-		typename,
-		typename
-	> class ArrayType,
-	typename Alloc
+	typename ArrayType
 >
-bool operator==(
-	field<T, ArrayType, Alloc> const &l,
-	field<T, ArrayType, Alloc> const &r
+bool
+operator==(
+	field<ArrayType> const &,
+	field<ArrayType> const &
 );
 
 template<
-	typename T,
-	template<
-		typename,
-		typename
-	> class ArrayType,
-	typename Alloc
+	typename ArrayType
 >
-bool operator!=(
-	field<T, ArrayType, Alloc> const &l,
-	field<T, ArrayType, Alloc> const &r
+bool
+operator!=(
+	field<ArrayType> const &l,
+	field<ArrayType> const &r
 );
 
 template<
-	typename T,
-	template<
-		typename,
-		typename
-	> class ArrayType,
-	typename Alloc,
+	typename ArrayType,
 	typename Ch,
 	typename Traits
 >
 std::basic_ostream<Ch, Traits> &
 operator<<(
 	std::basic_ostream<Ch, Traits> &,
-	field<T, ArrayType, Alloc> const &
+	field<ArrayType> const &
 );
 
 }
