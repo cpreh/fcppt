@@ -48,7 +48,8 @@ template<
 	typename U
 >
 fcppt::variant::object<Types>::object(
-	U const &u)
+	U const &u
+)
 :
 	storage_(),
 	index_(),
@@ -89,7 +90,8 @@ template<
 >
 fcppt::variant::object<Types> &
 fcppt::variant::object<Types>::operator=(
-	U const &u)
+	U const &u
+)
 {
 	destroy();
 
@@ -105,7 +107,8 @@ template<
 >
 fcppt::variant::object<Types> &
 fcppt::variant::object<Types>::operator=(
-	object const &o)
+	object const &o
+)
 {
 	if(o.empty())
 	{
@@ -228,7 +231,8 @@ template<
 >
 void
 fcppt::variant::object<Types>::construct(
-	U const &u)
+	U const &u
+)
 {
 	data_ = new (storage_.data()) U(u);
 

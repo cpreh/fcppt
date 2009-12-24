@@ -40,7 +40,8 @@ namespace variant
 template<
 	typename Types
 >
-class object {
+class object
+{
 public:
 	typedef Types types;
 

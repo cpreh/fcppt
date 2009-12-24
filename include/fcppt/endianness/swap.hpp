@@ -28,14 +28,25 @@ namespace fcppt
 namespace endianness
 {
 
-template<typename T>
-T swap(T t)
+template<
+	typename T
+>
+T
+swap(
+	T t
+)
 {
 	reverse_mem(
-		reinterpret_cast<unsigned char*>(
-			&t),
+		reinterpret_cast<
+			unsigned char *
+		>(
+			&t
+		),
 		sizeof(
-			T));
+			T
+		)
+	);
+
 	return t;
 }
 }

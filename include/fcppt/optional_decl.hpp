@@ -32,7 +32,8 @@ namespace fcppt
 template<
 	typename T
 >
-class optional {
+class optional
+{
 	FCPPT_SAFE_BOOL(optional)
 public:
 	typedef T value_type;
@@ -45,30 +46,42 @@ public:
 
 	// intentionally not explicit
 	optional(
-		const_reference);
+		const_reference
+	);
 
 	optional(
-		optional const &);
+		optional const &
+	);
 
 	optional &
 	operator=(
-		optional const &);
+		optional const &
+	);
 
 	optional &
 	operator=(
-		const_reference);
+		const_reference
+	);
 
 	~optional();
 
-	reference operator*();
-	const_reference operator*() const;
+	reference
+	operator*();
 
-	pointer operator->();
-	const_pointer operator->() const;
+	const_reference
+	operator*() const;
 
-	void reset();
+	pointer
+	operator->();
+
+	const_pointer
+	operator->() const;
+
+	void
+	reset();
 private:
-	bool boolean_test() const;
+	bool
+	boolean_test() const;
 
 	pointer
 	construct(

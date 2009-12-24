@@ -30,7 +30,8 @@ template<
 	typename T,
 	typename Tag
 >
-class strong_typedef {
+class strong_typedef
+{
 public:
 	typedef T value_type;
 

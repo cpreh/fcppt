@@ -45,98 +45,200 @@ public:
 	typedef typename impl_type::reference reference;
 
 	shared_ptr()
-	: impl()
-	{}
-
-	template<class Y>
-	explicit shared_ptr( Y *const p )
-	: impl(p, deleter())
-	{}
-
-	template<class Y, class D, class A> shared_ptr( Y *const p, const A& a )
-	: impl(p, deleter(), a)
+	:
+		impl()
 	{}
 
 	template<
 		typename Y
 	>
-	explicit shared_ptr(weak_ptr<Y, Deleter> const & r)
-	: impl(r)
+	explicit shared_ptr(
+		Y *const p
+	)
+	:
+		impl(p, deleter())
 	{}
 
-	template<class Y>
-	shared_ptr(shared_ptr<Y> const & r)
-	: impl(r.boost_ptr())
+	template<
+		typename Y,
+		typename D,
+		typename A
+	>
+	shared_ptr(
+		Y *const p,
+		A const &a
+	)
+	:
+		impl(
+			p,
+			deleter(),
+			a
+		)
 	{}
 
-	template<class Y>
-	shared_ptr(shared_ptr<Y> const & r, boost::detail::static_cast_tag)
-	: impl(r.boost_ptr(), boost::detail::static_cast_tag())
+	template<
+		typename Y
+	>
+	explicit shared_ptr(
+		weak_ptr<Y, Deleter> const &r
+	)
+	:
+		impl(r)
 	{}
 
-	template<class Y>
-	shared_ptr(shared_ptr<Y> const & r, boost::detail::const_cast_tag)
-	: impl(r.boost_ptr(), boost::detail::const_cast_tag())
+	template<
+		typename Y
+	>
+	shared_ptr(
+		shared_ptr<Y> const &r
+	)
+	:
+		impl(r.boost_ptr())
 	{}
 
-	template<class Y>
-	shared_ptr(shared_ptr<Y> const & r, boost::detail::dynamic_cast_tag)
-	: impl(r.boost_ptr(), boost::detail::dynamic_cast_tag())
+	template<
+		typename Y
+	>
+	shared_ptr(
+		shared_ptr<Y> const & r,
+		boost::detail::static_cast_tag
+	)
+	:
+		impl(
+			r.boost_ptr(),
+			boost::detail::static_cast_tag()
+		)
 	{}
 
-	template<class Y>
-	shared_ptr(shared_ptr<Y> const & r, boost::detail::polymorphic_cast_tag)
-	: impl(r.boost_ptr(), boost::detail::polymorphic_cast_tag())
+	template<
+		typename Y
+	>
+	shared_ptr(
+		shared_ptr<Y> const &r,
+		boost::detail::const_cast_tag
+	)
+	:
+		impl(
+			r.boost_ptr(),
+			boost::detail::const_cast_tag()
+		)
 	{}
 
-	template<class Y>
-	explicit shared_ptr(auto_ptr<Y> r)
-	//: impl(r)
+	template<
+		typename Y
+	>
+	shared_ptr(
+		shared_ptr<Y> const &r,
+		boost::detail::dynamic_cast_tag
+	)
+	:
+		impl(
+			r.boost_ptr(),
+			boost::detail::dynamic_cast_tag()
+		)
+	{}
+
+	template<
+		typename Y
+	>
+	shared_ptr(
+		shared_ptr<Y> const &r,
+		boost::detail::polymorphic_cast_tag
+	)
+	:
+		impl(
+			r.boost_ptr(),
+			boost::detail::polymorphic_cast_tag()
+		)
+	{}
+
+	template<
+		typename Y
+	>
+	explicit shared_ptr(
+		auto_ptr<Y> r
+	)
+	:
+		impl()
 	{
 		impl = r;
 	}
 
-	template<class Y>
-	shared_ptr & operator=(shared_ptr<Y> const & r)
+	template<
+		typename Y
+	>
+	shared_ptr &
+	operator=(
+		shared_ptr<Y> const &r
+	)
 	{
 		impl = r.impl;
 		return *this;
 	}
 
-	template<class Y>
-	shared_ptr & operator=( auto_ptr<Y> r )
+	template<
+		typename Y
+	>
+	shared_ptr &
+	operator=(
+		auto_ptr<Y> r
+	)
 	{
  		impl = r;
 		return *this;
 	}
 
-	void reset()
+	void
+	reset()
 	{
 		impl.reset();
 	}
 
-	template<class Y>
-	void reset(Y *const p)
+	template<
+		typename Y
+	>
+	void
+	reset(
+		Y *const p
+	)
 	{
-        	impl.reset(p, deleter());
+        	impl.reset(
+			p,
+			deleter()
+		);
 	}
 
-	template<class Y, class A> void reset( Y *const p, const A& a )
+	template<
+		typename Y,
+		typename A
+	>
+	void
+	reset(
+		Y *const p,
+		A const &a
+	)
 	{
-		impl.reset(p, deleter(), a);
+		impl.reset(
+			p,
+			deleter(),
+			a
+		);
 	}
 
-	reference operator* () const // never throws
+	reference
+	operator* () const // never throws
 	{
 		return *impl;
 	}
 
-	pointer operator-> () const // never throws
+	pointer
+	operator-> () const // never throws
 	{
 		return impl.operator->();
 	}
 
-	pointer get() const // never throws
+	pointer
+	get() const // never throws
 	{
         	return impl.get();
 	}
@@ -148,24 +250,33 @@ public:
 		return impl;
 	}
 
-	bool operator! () const // never throws
+	bool
+	operator! () const // never throws
 	{
 		return !impl;
 	}
 
-	bool unique() const // never throws
+	bool
+	unique() const // never throws
 	{
 		return impl.unique();
 	}
 
-	long use_count() const // never throws
+	long
+	use_count() const // never throws
 	{
 		return impl.use_count();
 	}
 
-	void swap(shared_ptr<T> & other) // never throws
+	void
+	swap(
+		shared_ptr<T> &other
+	) // never throws
 	{
-		std::swap(impl, other.impl);
+		std::swap(
+			impl,
+			other.impl
+		);
  	}
 
 	impl_type const
@@ -176,7 +287,8 @@ public:
 private:
 	impl_type impl;
 
-	static Deleter<T> deleter()
+	static Deleter<T> const
+	deleter()
 	{
 		return Deleter<T>();
 	}
@@ -187,7 +299,8 @@ private:
 		typename U
 	>
 	explicit shared_ptr(
-		boost::shared_ptr<U> const &p)
+		boost::shared_ptr<U> const &p
+	)
 	:
 		impl(p)
 	{}
@@ -211,9 +324,11 @@ template<
 		typename
 	> class Deleter
 >
-bool operator==(
+bool
+operator==(
 	shared_ptr<T, Deleter> const &a,
-	shared_ptr<U, Deleter> const &b)
+	shared_ptr<U, Deleter> const &b
+)
 {
 	return a.boost_ptr() == b.boost_ptr();
 }
@@ -225,9 +340,11 @@ template<
 		typename
 	> class Deleter
 >
-bool operator!=(
+bool
+operator!=(
 	shared_ptr<T, Deleter> const &a,
-	shared_ptr<U, Deleter> const &b)
+	shared_ptr<U, Deleter> const &b
+)
 {
 	return !(a==b);
 }
@@ -239,9 +356,11 @@ template<
 		typename
 	> class Deleter
 >
-bool operator<(
+bool
+operator<(
 	shared_ptr<T, Deleter> const &a,
-	shared_ptr<U, Deleter> const &b)
+	shared_ptr<U, Deleter> const &b
+)
 {
 	return a.boost_ptr() < b.boost_ptr();
 }
@@ -270,11 +389,13 @@ template<
 >
 shared_ptr<T, Deleter> const
 static_pointer_cast(
-	shared_ptr<U, Deleter> const &r)
+	shared_ptr<U, Deleter> const &r
+)
 {
 	return shared_ptr<T, Deleter>(
 		r,
-		boost::detail::static_cast_tag());
+		boost::detail::static_cast_tag()
+	);
 }
 
 template<
@@ -286,11 +407,13 @@ template<
 >
 shared_ptr<T, Deleter> const
 const_pointer_cast(
-	shared_ptr<U, Deleter> const &r)
+	shared_ptr<U, Deleter> const &r
+)
 {
 	return shared_ptr<T, Deleter>(
 		r,
-		boost::detail::const_cast_tag());
+		boost::detail::const_cast_tag()
+	);
 }
 
 template<
@@ -302,11 +425,13 @@ template<
 >
 shared_ptr<T, Deleter> const
 dynamic_pointer_cast(
-	shared_ptr<U, Deleter> const &r)
+	shared_ptr<U, Deleter> const &r
+)
 {
 	return shared_ptr<T, Deleter>(
 		r,
-		boost::detail::dynamic_cast_tag());
+		boost::detail::dynamic_cast_tag()
+	);
 }
 
 template<
@@ -318,11 +443,13 @@ template<
 >
 shared_ptr<T, Deleter> const
 polymorphic_pointer_cast(
-	shared_ptr<U, Deleter> const &r)
+	shared_ptr<U, Deleter> const &r
+)
 {
 	return shared_ptr<T, Deleter>(
 		r,
-		boost::detail::polymorphic_cast_tag());
+		boost::detail::polymorphic_cast_tag()
+	);
 }
 
 template<
@@ -336,7 +463,8 @@ template<
 std::basic_ostream<Ch, Traits> &
 operator<< (
 	std::basic_ostream<Ch, Traits> &os,
-	shared_ptr<T, Deleter> const & p)
+	shared_ptr<T, Deleter> const & p
+)
 {
 	os << p.get();
 	return os;

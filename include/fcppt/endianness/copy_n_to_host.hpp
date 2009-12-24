@@ -38,7 +38,8 @@ copy_n_to_host(
 	Size const n,
 	T *const dest,
 	Size const stride,
-	format::type const fmt)
+	format::type const fmt
+)
 {
 	// these operations are symmetrical
 	return copy_n_from_host(

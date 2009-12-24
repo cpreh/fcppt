@@ -29,9 +29,11 @@ namespace fcppt
 namespace endianness
 {
 
-FCPPT_SYMBOL void reverse_mem(
-	unsigned char*,
-	std::size_t len);
+FCPPT_SYMBOL void
+reverse_mem(
+	unsigned char *,
+	std::size_t len
+);
 
 }
 }
