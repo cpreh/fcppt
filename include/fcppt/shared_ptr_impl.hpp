@@ -249,6 +249,15 @@ template<
 		typename
 	> class Deleter
 >
+fcppt::shared_ptr<T, Deleter>::~shared_ptr()
+{}
+
+template<
+	typename T,
+	template<
+		typename
+	> class Deleter
+>
 void
 fcppt::shared_ptr<T, Deleter>::reset()
 {

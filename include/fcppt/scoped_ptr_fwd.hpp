@@ -18,10 +18,22 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
 
-#ifndef FCPPT_SCOPED_PTR_HPP_INCLUDED
-#define FCPPT_SCOPED_PTR_HPP_INCLUDED
+#ifndef FCPPT_SCOPED_PTR_FWD_HPP_INCLUDED
+#define FCPPT_SCOPED_PTR_FWD_HPP_INCLUDED
 
-#include <fcppt/scoped_ptr_fwd.hpp>
-#include <fcppt/scoped_ptr_impl.hpp>
+#include <fcppt/heap_deleter.hpp>
+
+namespace fcppt
+{
+
+template<
+	typename T,
+	template<
+		typename
+	> class Deleter = heap_deleter
+>
+class scoped_ptr;
+
+}
 
 #endif

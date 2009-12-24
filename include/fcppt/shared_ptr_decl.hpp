@@ -31,7 +31,7 @@ public:
 		typename Y
 	>
 	explicit shared_ptr(
-		Y *const p
+		Y *p
 	);
 
 	template<
@@ -40,7 +40,7 @@ public:
 		typename A
 	>
 	shared_ptr(
-		Y *const p,
+		Y *p,
 		A const &a
 	);
 
@@ -62,7 +62,7 @@ public:
 		typename Y
 	>
 	shared_ptr(
-		shared_ptr<Y> const & r,
+		shared_ptr<Y> const &r,
 		boost::detail::static_cast_tag
 	);
 
@@ -113,6 +113,8 @@ public:
 		auto_ptr<Y> r
 	);
 
+	~shared_ptr();
+
 	void
 	reset();
 
@@ -121,7 +123,7 @@ public:
 	>
 	void
 	reset(
-		Y *const p
+		Y *p
 	);
 
 	template<
@@ -130,7 +132,7 @@ public:
 	>
 	void
 	reset(
-		Y *const p,
+		Y *p,
 		A const &a
 	);
 
