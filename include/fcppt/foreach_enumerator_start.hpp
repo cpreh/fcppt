@@ -18,12 +18,14 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
 
-#ifndef FCPPT_FOREACH_ENUMERATOR_HPP_INCLUDED
-#define FCPPT_FOREACH_ENUMERATOR_HPP_INCLUDED
+#ifndef FCPPT_FOREACH_ENUMERATOR_START_HPP_INCLUDED
+#define FCPPT_FOREACH_ENUMERATOR_START_HPP_INCLUDED
 
-#include <fcppt/foreach_enumerator_start.hpp>
-
-#define FCPPT_FOREACH_ENUMERATOR(name, enum_)\
-	FCPPT_FOREACH_ENUMERATOR_START(name, enum_, static_cast<enum_::type>(0))
+#define FCPPT_FOREACH_ENUMERATOR_START(name, enum_, start)\
+for(\
+	enum_::type name = start;\
+	name < enum_::size;\
+	name = static_cast<enum_::type>(name + 1)\
+)
 
 #endif

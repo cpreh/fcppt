@@ -20,7 +20,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 #include "set_levels.hpp"
 #include <fcppt/log/object.hpp>
-#include <fcppt/foreach_enumerator.hpp>
+#include <fcppt/foreach_enumerator_start.hpp>
 
 void
 fcppt::log::set_levels(
@@ -29,7 +29,7 @@ fcppt::log::set_levels(
 	void (object::*fun)(level::type)
 )
 {
-	FCPPT_FOREACH_ENUMERATOR_2(
+	FCPPT_FOREACH_ENUMERATOR_START(
 		i,
 		level,
 		level_
