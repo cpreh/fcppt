@@ -18,13 +18,32 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
 
-#ifndef FCPPT_SHARED_PTR_HPP_INCLUDED
-#define FCPPT_SHARED_PTR_HPP_INCLUDED
+#ifndef FCPPT_STATIC_POINTER_CAST_HPP_INCLUDED
+#define FCPPT_STATIC_POINTER_CAST_HPP_INCLUDED
 
 #include <fcppt/shared_ptr_impl.hpp>
-#include <fcppt/const_pointer_cast.hpp>
-#include <fcppt/dynamic_pointer_cast.hpp>
-#include <fcppt/polymorphic_pointer_cast.hpp>
-#include <fcppt/static_pointer_cast.hpp>
+
+namespace fcppt
+{
+
+template<
+	typename T,
+	typename U,
+	template<
+		typename
+	> class Deleter
+>
+shared_ptr<T, Deleter> const
+static_pointer_cast(
+	shared_ptr<U, Deleter> const &r
+)
+{
+	return shared_ptr<T, Deleter>(
+		r,
+		boost::detail::static_cast_tag()
+	);
+}
+
+}
 
 #endif
