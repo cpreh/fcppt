@@ -24,6 +24,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 namespace fcppt
 {
 
+/**
+ * @brief A wrapper class to make a type optionally empty
+*/
 template<
 	typename T
 >

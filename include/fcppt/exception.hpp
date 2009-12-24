@@ -29,6 +29,15 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 namespace fcppt
 {
 
+/**
+ * @brief The base class for all exceptions.
+ *
+ * fcppt::exception is a wrapper around an exception
+ * that uses fcppt::string to store the error message.
+ * Note that you will have to use fcppt::exception::string
+ * to obtain the string. If you use what() nothing useful
+ * will be given.
+*/
 class FCPPT_CLASS_SYMBOL exception
 :
 	public std::exception

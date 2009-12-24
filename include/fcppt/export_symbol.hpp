@@ -21,6 +21,11 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #ifndef FCPPT_EXPORT_SYMBOL_HPP_INCLUDED
 #define FCPPT_EXPORT_SYMBOL_HPP_INCLUDED
 
+/**
+ * @brief Marks a symbol to be visible in dynamic libraries.
+ *
+ * FCPPT_EXPORT_SYMBOL may be used to override the default visibility.
+*/
 #if defined(_MSC_VER)
 #	define FCPPT_EXPORT_SYMBOL __declspec(dllexport)
 #elif defined(__GNUC__)

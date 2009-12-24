@@ -25,6 +25,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #include <fcppt/preprocessor/stringize.hpp>
 #include <fcppt/preprocessor/file.hpp>
 
+/**
+ * @brief Runtime assert macro that throws an exception with an additional message
+*/
 #define FCPPT_ASSERT_MESSAGE(cond, message)\
 if (!(cond))\
 	fcppt::detail::process_assert(\
