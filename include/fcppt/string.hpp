@@ -27,6 +27,11 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 namespace fcppt
 {
 
+/**
+ * @brief The string type used for text.
+ *
+ * @see char_type
+*/
 typedef std::basic_string<
 	char_type
 > string;
