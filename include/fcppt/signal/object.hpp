@@ -79,7 +79,8 @@ private:
 };
 
 template<
-	typename T>
+	typename T
+>
 class object<
 	T,
 	typename boost::enable_if<
