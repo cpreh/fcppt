@@ -38,7 +38,7 @@ fcppt::filesystem::is_executable(
 		::access(
 			path_.string().c_str(),
 			X_OK
-		)
+		) == 0
 	)
 		return true;
 	
