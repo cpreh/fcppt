@@ -32,12 +32,14 @@ template<
 	typename Operation,
 	typename Type
 >
-struct binary_applier {
+struct binary_applier
+{
 	typedef typename Operation::result_type result_type;
 
 	binary_applier(
 		Operation const &op,
-		Type const &t2)
+		Type const &t2
+	)
 	:
 		op(op),
 		t2(t2)
@@ -48,7 +50,8 @@ struct binary_applier {
 	>
 	result_type
 	operator()(
-		T const &t1) const
+		T const &t1
+	) const
 	{
 		return op(
 			t1,

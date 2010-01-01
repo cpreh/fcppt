@@ -33,13 +33,15 @@ template<
 	typename Type2,
 	typename Type3
 >
-struct ternary_applier {
+struct ternary_applier
+{
 	typedef typename Operation::result_type result_type;
 
 	ternary_applier(
 		Operation const &op,
 		Type2 const &t2,
-		Type3 const &t3)
+		Type3 const &t3
+	)
 	:
 		op(op),
 		t2(t2),
@@ -51,7 +53,8 @@ struct ternary_applier {
 	>
 	result_type
 	operator()(
-		T1 const &t1) const
+		T1 const &t1
+	) const
 	{
 		return op(
 			t1,

@@ -35,12 +35,14 @@ template<
 	typename Operation,
 	typename Variant
 >
-struct ternary_unwrap {
+struct ternary_unwrap
+{
 	typedef typename Operation::result_type result_type;
 
 	ternary_unwrap(
 		Operation const &op,
-		Variant const &obj)
+		Variant const &obj
+	)
 	:
 		op(op),
 		obj(obj)
@@ -53,7 +55,8 @@ struct ternary_unwrap {
 	result_type
 	operator()(
 		T2 const &t2,
-		T3 const &t3) const
+		T3 const &t3
+	) const
 	{
 		return apply_unary(
 			ternary_applier<

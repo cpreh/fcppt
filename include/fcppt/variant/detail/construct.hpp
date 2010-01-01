@@ -31,11 +31,13 @@ namespace detail
 template<
 	typename Variant
 >
-struct construct {
+struct construct
+{
 	typedef void result_type;
 
 	explicit construct(
-		Variant &obj)
+		Variant &obj
+	)
 	:
 		obj(obj)
 	{}
@@ -45,7 +47,8 @@ struct construct {
 	>
 	result_type
 	operator()(
-		T const &t) const
+		T const &t
+	) const
 	{
 		obj = t;
 	}

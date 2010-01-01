@@ -35,12 +35,14 @@ template<
 	typename Operation,
 	typename Variant
 >
-struct binary_unwrap {
+struct binary_unwrap
+{
 	typedef typename Operation::result_type result_type;
 
 	binary_unwrap(
 		Operation const &op,
-		Variant const &obj)
+		Variant const &obj
+	)
 	:
 		op(op),
 		obj(obj)
@@ -51,7 +53,8 @@ struct binary_unwrap {
 	>
 	result_type
 	operator()(
-		T2 const &t2) const
+		T2 const &t2
+	) const
 	{
 		return apply_unary(
 			binary_applier<

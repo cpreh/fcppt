@@ -28,7 +28,8 @@ namespace variant
 namespace detail
 {
 
-struct destroy {
+struct destroy
+{
 	typedef void result_type;
 
 	template<
@@ -36,7 +37,8 @@ struct destroy {
 	>
 	result_type
 	operator()(
-		T const &t) const
+		T const &t
+	) const
 	{
 		t.~T();
 	}

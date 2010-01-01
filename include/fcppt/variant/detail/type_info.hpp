@@ -30,7 +30,8 @@ namespace variant
 namespace detail
 {
 
-struct type_info {
+struct type_info
+{
 	typedef std::type_info const &result_type;
 
 	template<
@@ -38,7 +39,8 @@ struct type_info {
 	>
 	result_type
 	operator()(
-		T const &t) const
+		T const &t
+	) const
 	{
 		return typeid(t);
 	}

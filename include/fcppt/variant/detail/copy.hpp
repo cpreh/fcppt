@@ -30,11 +30,13 @@ namespace variant
 namespace detail
 {
 
-struct copy {
+struct copy
+{
 	typedef void *result_type;
 
 	explicit copy(
-		raw_type *const store)
+		raw_type *const store
+	)
 	:
 		store(store)
 	{}
