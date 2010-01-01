@@ -52,7 +52,7 @@ apply_unary(
 		>,
 		boost::mpl::empty<
 			types
-		>::value
+		>
 	>::execute(
 		static_cast<
 			typename boost::mpl::begin<

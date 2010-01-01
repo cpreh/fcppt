@@ -40,7 +40,8 @@ apply_ternary(
 	Operation const &op,
 	Variant1 const &obj1,
 	Variant2 const &obj2,
-	Variant3 const &obj3)
+	Variant3 const &obj3
+)
 {
 	return apply_binary(
 		detail::ternary_unwrap<

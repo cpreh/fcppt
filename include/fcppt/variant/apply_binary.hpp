@@ -38,7 +38,8 @@ typename Operation::result_type
 apply_binary(
 	Operation const &op,
 	Variant1 const &obj1,
-	Variant2 const &obj2)
+	Variant2 const &obj2
+)
 {
 	return apply_unary(
 		detail::binary_unwrap<
