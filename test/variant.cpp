@@ -27,6 +27,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #include <fcppt/string.hpp>
 #include <fcppt/text.hpp>
 #include <boost/mpl/vector/vector10.hpp>
+#include <ostream>
 #include <cstdlib>
 
 namespace
@@ -76,6 +77,26 @@ struct wrapper
 
 	recursive_variant member;
 };
+
+template<
+	typename Ch,
+	typename Traits
+>
+std::basic_ostream<
+	Ch,
+	Traits
+> &
+operator <<(
+	std::basic_ostream<
+		Ch,
+		Traits
+	> &stream_,
+	wrapper const &wrapper_
+)
+{
+	return
+		stream_ << wrapper_.member;
+}
 
 }
 
