@@ -99,7 +99,6 @@ try
 		42
 	);
 
-#if 0
 	fcppt::variant::apply_binary(
 		visitor(),
 		v,
@@ -116,6 +115,7 @@ try
 		)
 	));
 
+#if 0
 	fcppt::io::cout
 		<< rrv
 		<< FCPPT_TEXT('\n');

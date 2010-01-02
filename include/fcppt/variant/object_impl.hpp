@@ -31,6 +31,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #include <fcppt/variant/detail/index_of.hpp>
 #include <fcppt/variant/detail/real_type.hpp>
 #include <fcppt/variant/detail/unwrap_recursive.hpp>
+#include <fcppt/variant/detail/apply_unary_internal.hpp>
 #include <boost/static_assert.hpp>
 
 template<
@@ -76,7 +77,7 @@ fcppt::variant::object<Types>::object(
 	if(o.empty())
 		return;
 
-	data_ = variant::apply_unary(
+	data_ = detail::apply_unary_internal(
 		detail::copy(
 			storage_.data()
 		),
@@ -118,7 +119,7 @@ fcppt::variant::object<Types>::operator=(
 		return *this;
 	}
 
-	variant::apply_unary(
+	detail::apply_unary_internal(
 		detail::construct<
 			object<
 				Types
@@ -158,8 +159,6 @@ template<
 U const &
 fcppt::variant::object<Types>::get() const
 {
-	fcppt::io::cerr << "get begin\n";
-
 	if(
 		index_ != static_cast<
 			size_type
@@ -171,8 +170,6 @@ fcppt::variant::object<Types>::get() const
 		)
 	)
 		throw invalid_get();
-
-	fcppt::io::cerr << "get\n";
 
 	return
 		detail::unwrap_recursive(
@@ -276,17 +273,13 @@ fcppt::variant::object<Types>::destroy()
 	if(empty())
 		return;
 
-	fcppt::io::cerr << "destroy\n";
-
-	variant::apply_unary(
+	detail::apply_unary_internal(
 		detail::destroy(),
 		*this
 	);
 
 	index_ = elements;
 	data_ = 0;
-
-	fcppt::io::cerr << "destroy end\n";
 }
 
 #endif

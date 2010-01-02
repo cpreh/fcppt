@@ -18,13 +18,10 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
 
-#ifndef FCPPT_VARIANT_DETAIL_REAL_TYPE_HPP_INCLUDED
-#define FCPPT_VARIANT_DETAIL_REAL_TYPE_HPP_INCLUDED
+#ifndef FCPPT_VARIANT_DETAIL_OPERATION_WRAPPER_HPP_INCLUDED
+#define FCPPT_VARIANT_DETAIL_OPERATION_WRAPPER_HPP_INCLUDED
 
-#include <fcppt/variant/recursive_fwd.hpp>
-#include <boost/mpl/contains.hpp>
-#include <boost/mpl/if.hpp>
-#include <boost/type_traits/is_same.hpp>
+#include <fcppt/variant/detail/unwrap_recursive.hpp>
 
 namespace fcppt
 {
@@ -34,24 +31,37 @@ namespace detail
 {
 
 template<
-	typename Types,
-	typename Element
+	typename Operation
 >
-struct real_type
+class operation_wrapper
 {
-private:
-	typedef recursive<
-		Element
-	> recursive_type;
 public:
-	typedef typename boost::mpl::if_<
-		boost::mpl::contains<
-			Types,
-			recursive_type
-		>,
-		recursive_type,
-		Element
-	>::type type;
+	typedef typename Operation::result_type result_type;
+
+	explicit operation_wrapper(
+		Operation const &op_
+	)
+	:
+		op_(op_)
+	{}
+
+	template<
+		typename T
+	>
+	result_type
+	operator()(
+		T const &t
+	) const
+	{
+		return
+			op_(
+				detail::unwrap_recursive(
+					t
+				)
+			);
+	}
+private:
+	Operation const &op_;
 };
 
 }

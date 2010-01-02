@@ -28,8 +28,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #include <boost/type_traits/is_same.hpp>
 #include <boost/type_traits/integral_constant.hpp>
 
-#include <fcppt/io/cerr.hpp>
-
 namespace fcppt
 {
 namespace variant
