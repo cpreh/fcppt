@@ -50,9 +50,9 @@ apply_unary(
 			size_type,
 			0
 		>,
-		boost::mpl::empty<
+		typename boost::mpl::empty<
 			types
-		>
+		>::type
 	>::execute(
 		static_cast<
 			typename boost::mpl::begin<

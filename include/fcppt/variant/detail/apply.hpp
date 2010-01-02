@@ -37,9 +37,17 @@ namespace detail
 
 template<
 	typename Counter,
-	typename Done = boost::true_type
+	typename Done
 >
-struct apply
+struct apply;
+
+template<
+	typename Counter
+>
+struct apply<
+	Counter,
+	boost::true_type
+>
 {
 	template<
 		typename Iterator,
@@ -102,10 +110,10 @@ struct apply<
 				typename boost::mpl::next<
 					Counter
 				>::type,
-				boost::is_same<
+				typename boost::is_same<
 					iter,
 					LastIterator
-				>
+				>::type
 			>::execute(
 				static_cast<iter *>(0),
 				static_cast<LastIterator *>(0),
