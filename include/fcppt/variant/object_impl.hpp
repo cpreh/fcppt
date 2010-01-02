@@ -28,7 +28,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #include <fcppt/variant/detail/destroy.hpp>
 #include <fcppt/variant/detail/construct.hpp>
 #include <fcppt/variant/detail/type_info.hpp>
-#include <fcppt/mpl/index_of.hpp>
+#include <fcppt/variant/detail/index_of.hpp>
+#include <fcppt/variant/detail/real_type.hpp>
+#include <fcppt/variant/detail/unwrap_recursive.hpp>
 #include <boost/static_assert.hpp>
 
 template<
@@ -156,13 +158,33 @@ template<
 U const &
 fcppt::variant::object<Types>::get() const
 {
-	check_get<U>();
+	fcppt::io::cerr << "get begin\n";
 
-	return *static_cast<
-		U const *
-	>(
-		data_
-	);
+	if(
+		index_ != static_cast<
+			size_type
+		>(
+			detail::index_of<
+				Types,
+				U
+			>::value
+		)
+	)
+		throw invalid_get();
+
+	fcppt::io::cerr << "get\n";
+
+	return
+		detail::unwrap_recursive(
+			*static_cast<
+				typename detail::real_type<
+					Types,
+					U
+				>::type const *
+			>(
+				data_
+			)
+		);
 }
 
 template<
@@ -174,13 +196,18 @@ template<
 U &
 fcppt::variant::object<Types>::get()
 {
-	check_get<U>();
-
-	return *static_cast<
-		U *
-	>(
-		data_
-	);
+	return
+		const_cast<
+			U &
+		>(
+			const_cast<
+				object<Types> const *
+			>(
+				this
+			)-> template get<
+				U
+			>()
+		);
 }
 
 template<
@@ -211,39 +238,31 @@ template<
 	typename U
 >
 void
-fcppt::variant::object<Types>::check_get() const
-{
-	if(
-		index_ != static_cast<
-			size_type
-		>(
-			mpl::index_of<Types, U>::value
-		)
-	)
-		throw invalid_get();
-}
-
-template<
-	typename Types
->
-template<
-	typename U
->
-void
 fcppt::variant::object<Types>::construct(
 	U const &u
 )
 {
-	data_ = new (storage_.data()) U(u);
+	data_ =
+		new (
+			storage_.data()
+		)
+		typename detail::real_type<
+			Types,
+			U
+		>::type(
+			u
+		);
 
 	size_type const new_index(
-		mpl::index_of<
+		detail::index_of<
 			Types,
 			U
 		>::value
 	);
 
-	BOOST_STATIC_ASSERT(new_index < elements);
+	BOOST_STATIC_ASSERT(
+		new_index < elements
+	);
 
 	index_ = new_index;
 }
@@ -257,6 +276,8 @@ fcppt::variant::object<Types>::destroy()
 	if(empty())
 		return;
 
+	fcppt::io::cerr << "destroy\n";
+
 	variant::apply_unary(
 		detail::destroy(),
 		*this
@@ -264,6 +285,8 @@ fcppt::variant::object<Types>::destroy()
 
 	index_ = elements;
 	data_ = 0;
+
+	fcppt::io::cerr << "destroy end\n";
 }
 
 #endif

@@ -19,7 +19,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 
 #include <fcppt/variant/object_impl.hpp>
+#include <fcppt/variant/recursive.hpp>
 #include <fcppt/variant/apply_binary.hpp>
+#include <fcppt/variant/output.hpp>
 #include <fcppt/io/cerr.hpp>
 #include <fcppt/io/cout.hpp>
 #include <fcppt/string.hpp>
@@ -52,6 +54,29 @@ struct visitor
 	}
 };
 
+struct wrapper;
+
+typedef fcppt::variant::object<
+	boost::mpl::vector2<
+		fcppt::variant::recursive<
+			wrapper
+		>,
+		int
+	>
+> recursive_variant;
+
+struct wrapper
+{
+	wrapper(
+		recursive_variant const &member
+	)
+	:
+		member(member)
+	{}
+
+	recursive_variant member;
+};
+
 }
 
 int main()
@@ -74,11 +99,27 @@ try
 		42
 	);
 
+#if 0
 	fcppt::variant::apply_binary(
 		visitor(),
 		v,
 		u
 	);
+
+	recursive_variant rv(
+		42
+	);
+
+	recursive_variant rrv((
+		wrapper(
+			rv
+		)
+	));
+
+	fcppt::io::cout
+		<< rrv
+		<< FCPPT_TEXT('\n');
+#endif
 }
 catch(
 	fcppt::exception const &e

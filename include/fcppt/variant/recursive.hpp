@@ -18,55 +18,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
 
-#ifndef FCPPT_VARIANT_APPLY_UNARY_HPP_INCLUDED
-#define FCPPT_VARIANT_APPLY_UNARY_HPP_INCLUDED
+#ifndef FCPPT_VARIANT_RECURSIVE_HPP_INCLUDED
+#define FCPPT_VARIANT_RECURSIVE_HPP_INCLUDED
 
-#include <fcppt/variant/size_type.hpp>
-#include <fcppt/variant/detail/apply.hpp>
-#include <boost/mpl/integral_c.hpp>
-#include <boost/mpl/begin.hpp>
-#include <boost/mpl/end.hpp>
-#include <boost/mpl/empty.hpp>
-
-namespace fcppt
-{
-namespace variant
-{
-
-template<
-	typename Operation,
-	typename Variant
->
-typename Operation::result_type
-apply_unary(
-	Operation const &op,
-	Variant const &obj
-)
-{
-	typedef typename Variant::types types;
-
-	return detail::apply<
-		boost::mpl::integral_c<
-			size_type,
-			0
-		>,
-		typename boost::mpl::empty<
-			types
-		>::type
-	>:: template execute<
-		typename boost::mpl::begin<
-			types
-		>::type,
-		typename boost::mpl::end<
-			types
-		>::type
-	>(
-		op,
-		obj
-	);
-}
-
-}
-}
+#include <fcppt/variant/recursive_impl.hpp>
 
 #endif

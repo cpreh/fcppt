@@ -99,12 +99,6 @@ private:
 		typename U
 	>
 	void
-	check_get() const;
-
-	template<
-		typename U
-	>
-	void
 	construct(
 		U const &
 	);

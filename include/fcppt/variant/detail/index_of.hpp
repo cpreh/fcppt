@@ -18,54 +18,35 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
 
-#ifndef FCPPT_VARIANT_APPLY_UNARY_HPP_INCLUDED
-#define FCPPT_VARIANT_APPLY_UNARY_HPP_INCLUDED
+#ifndef FCPPT_VARIANT_DETAIL_INDEX_OF_HPP_INCLUDED
+#define FCPPT_VARIANT_DETAIL_INDEX_OF_HPP_INCLUDED
 
-#include <fcppt/variant/size_type.hpp>
-#include <fcppt/variant/detail/apply.hpp>
-#include <boost/mpl/integral_c.hpp>
-#include <boost/mpl/begin.hpp>
-#include <boost/mpl/end.hpp>
-#include <boost/mpl/empty.hpp>
+#include <fcppt/variant/detail/real_type.hpp>
+#include <fcppt/mpl/index_of.hpp>
 
 namespace fcppt
 {
 namespace variant
 {
+namespace detail
+{
 
 template<
-	typename Operation,
-	typename Variant
+	typename Types,
+	typename Element
 >
-typename Operation::result_type
-apply_unary(
-	Operation const &op,
-	Variant const &obj
-)
-{
-	typedef typename Variant::types types;
+struct index_of
+:
+fcppt::mpl::index_of<
+	Types,
+	typename real_type<
+		Types,
+		Element
+	>::type
+>
+{};
 
-	return detail::apply<
-		boost::mpl::integral_c<
-			size_type,
-			0
-		>,
-		typename boost::mpl::empty<
-			types
-		>::type
-	>:: template execute<
-		typename boost::mpl::begin<
-			types
-		>::type,
-		typename boost::mpl::end<
-			types
-		>::type
-	>(
-		op,
-		obj
-	);
 }
-
 }
 }
 

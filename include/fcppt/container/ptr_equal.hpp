@@ -29,12 +29,14 @@ namespace container
 template<
 	typename Ptr
 >
-class ptr_equal {
+class ptr_equal
+{
 public:
 	typedef bool result_type;
 
 	explicit ptr_equal(
-		Ptr const p)
+		Ptr const p
+	)
 	:
 		p(p)
 	{}
@@ -42,8 +44,10 @@ public:
 	template<
 		typename Val
 	>
-	bool operator()(
-		Val const &val) const
+	result_type
+	operator()(
+		Val const &val
+	) const
 	{
 		return &val == p;
 	}
@@ -56,7 +60,8 @@ template<
 >
 ptr_equal<Ptr> const
 make_ptr_equal(
-	Ptr const p)
+	Ptr const p
+)
 {
 	return ptr_equal<Ptr>(p);
 }

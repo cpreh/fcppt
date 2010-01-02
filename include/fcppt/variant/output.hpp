@@ -18,15 +18,13 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
 
-#ifndef FCPPT_VARIANT_APPLY_UNARY_HPP_INCLUDED
-#define FCPPT_VARIANT_APPLY_UNARY_HPP_INCLUDED
+#ifndef FCPPT_VARIANT_OUTPUT_HPP_INCLUDED
+#define FCPPT_VARIANT_OUTPUT_HPP_INCLUDED
 
-#include <fcppt/variant/size_type.hpp>
-#include <fcppt/variant/detail/apply.hpp>
-#include <boost/mpl/integral_c.hpp>
-#include <boost/mpl/begin.hpp>
-#include <boost/mpl/end.hpp>
-#include <boost/mpl/empty.hpp>
+#include <fcppt/variant/detail/output.hpp>
+#include <fcppt/variant/apply_unary.hpp>
+#include <fcppt/variant/object_fwd.hpp>
+#include <iosfwd>
 
 namespace fcppt
 {
@@ -34,37 +32,38 @@ namespace variant
 {
 
 template<
-	typename Operation,
-	typename Variant
+	typename Types,
+	typename Ch,
+	typename Traits
 >
-typename Operation::result_type
-apply_unary(
-	Operation const &op,
-	Variant const &obj
+std::basic_ostream<
+	Ch,
+	Traits
+> &
+operator<<(
+	std::basic_ostream<
+		Ch,
+		Traits
+	> &stream_,
+	object<
+		Types
+	> const &object_
 )
 {
-	typedef typename Variant::types types;
-
-	return detail::apply<
-		boost::mpl::integral_c<
-			size_type,
-			0
-		>,
-		typename boost::mpl::empty<
-			types
-		>::type
-	>:: template execute<
-		typename boost::mpl::begin<
-			types
-		>::type,
-		typename boost::mpl::end<
-			types
-		>::type
-	>(
-		op,
-		obj
-	);
+	return
+		apply_unary(
+			detail::output<
+				std::basic_ostream<
+					Ch,
+					Traits
+				>
+			>(
+				stream_
+			),
+			object_
+		);
 }
+
 
 }
 }

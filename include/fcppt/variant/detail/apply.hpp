@@ -28,6 +28,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #include <boost/type_traits/is_same.hpp>
 #include <boost/type_traits/integral_constant.hpp>
 
+#include <fcppt/io/cerr.hpp>
+
 namespace fcppt
 {
 namespace variant
@@ -49,8 +51,6 @@ struct apply
 	>
 	static typename Operation::result_type
 	execute(
-		Iterator *,
-		LastIterator *,
 		Operation const &,
 		Variant const &
 	)
@@ -75,8 +75,6 @@ struct apply<
 	>
 	static typename Operation::result_type
 	execute(
-		Iterator *,
-		LastIterator *,
 		Operation const &op,
 		Variant const &obj
 	)
@@ -94,6 +92,8 @@ struct apply<
 			Counter
 		>::type type;
 
+		fcppt::io::cerr << Counter::value << ' ' << obj.type_index() << '\n';
+
 		return Counter::value == obj.type_index()
 			? op(
 				obj. template get<type>()
@@ -106,9 +106,10 @@ struct apply<
 					iter,
 					LastIterator
 				>
-			>::execute(
-				static_cast<iter *>(0),
-				static_cast<LastIterator *>(0),
+			>:: template execute<
+				iter,
+				LastIterator
+			>(
 				op,
 				obj
 			);

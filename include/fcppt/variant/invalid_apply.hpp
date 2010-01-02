@@ -23,13 +23,17 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 #include <fcppt/exception.hpp>
 #include <fcppt/symbol.hpp>
+#include <fcppt/class_symbol.hpp>
 
 namespace fcppt
 {
 namespace variant
 {
 
-class invalid_apply : public exception {
+class FCPPT_CLASS_SYMBOL invalid_apply
+:
+	public exception
+{
 public:
 	FCPPT_SYMBOL invalid_apply();
 };

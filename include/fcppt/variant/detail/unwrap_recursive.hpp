@@ -18,54 +18,67 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
 
-#ifndef FCPPT_VARIANT_APPLY_UNARY_HPP_INCLUDED
-#define FCPPT_VARIANT_APPLY_UNARY_HPP_INCLUDED
+#ifndef FCPPT_VARIANT_DETAIL_UNWRAP_RECURSIVE_HPP_INCLUDED
+#define FCPPT_VARIANT_DETAIL_UNWRAP_RECURSIVE_HPP_INCLUDED
 
-#include <fcppt/variant/size_type.hpp>
-#include <fcppt/variant/detail/apply.hpp>
-#include <boost/mpl/integral_c.hpp>
-#include <boost/mpl/begin.hpp>
-#include <boost/mpl/end.hpp>
-#include <boost/mpl/empty.hpp>
+#include <fcppt/variant/recursive_fwd.hpp>
 
 namespace fcppt
 {
 namespace variant
 {
+namespace detail
+{
 
 template<
-	typename Operation,
-	typename Variant
+	typename Type
 >
-typename Operation::result_type
-apply_unary(
-	Operation const &op,
-	Variant const &obj
+Type &
+unwrap_recursive(
+	Type &t
 )
 {
-	typedef typename Variant::types types;
-
-	return detail::apply<
-		boost::mpl::integral_c<
-			size_type,
-			0
-		>,
-		typename boost::mpl::empty<
-			types
-		>::type
-	>:: template execute<
-		typename boost::mpl::begin<
-			types
-		>::type,
-		typename boost::mpl::end<
-			types
-		>::type
-	>(
-		op,
-		obj
-	);
+	return t;
 }
 
+template<
+	typename Type
+>
+Type const &
+unwrap_recursive(
+	Type const &t
+)
+{
+	return t;
+}
+
+template<
+	typename Type
+>
+Type &
+unwrap_recursive(
+	recursive<
+		Type
+	> &t
+)
+{
+	return t.get();
+}
+
+template<
+	typename Type
+>
+Type const &
+unwrap_recursive(
+	recursive<
+		Type
+	> const &t
+)
+{
+	return t.get();
+}
+
+}
 }
 }
 

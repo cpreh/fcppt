@@ -18,54 +18,49 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
 
-#ifndef FCPPT_VARIANT_APPLY_UNARY_HPP_INCLUDED
-#define FCPPT_VARIANT_APPLY_UNARY_HPP_INCLUDED
+#ifndef FCPPT_VARIANT_DETAIL_OUTPUT_HPP_INCLUDED
+#define FCPPT_VARIANT_DETAIL_OUTPUT_HPP_INCLUDED
 
-#include <fcppt/variant/size_type.hpp>
-#include <fcppt/variant/detail/apply.hpp>
-#include <boost/mpl/integral_c.hpp>
-#include <boost/mpl/begin.hpp>
-#include <boost/mpl/end.hpp>
-#include <boost/mpl/empty.hpp>
+#include <ostream>
 
 namespace fcppt
 {
 namespace variant
 {
+namespace detail
+{
 
 template<
-	typename Operation,
-	typename Variant
+	typename Stream
 >
-typename Operation::result_type
-apply_unary(
-	Operation const &op,
-	Variant const &obj
-)
+class output
 {
-	typedef typename Variant::types types;
+public:
+	typedef Stream &result_type;
 
-	return detail::apply<
-		boost::mpl::integral_c<
-			size_type,
-			0
-		>,
-		typename boost::mpl::empty<
-			types
-		>::type
-	>:: template execute<
-		typename boost::mpl::begin<
-			types
-		>::type,
-		typename boost::mpl::end<
-			types
-		>::type
-	>(
-		op,
-		obj
-	);
+	explicit output(
+		Stream &stream_
+	)
+	:
+		stream_(stream_)
+	{}
+
+	template<
+		typename T
+	>
+	result_type
+	operator()(
+		T const &t
+	) const
+	{
+		return
+			stream_ << t;
+	}
+private:
+	Stream &stream_;
+};
+
 }
-
 }
 }
 
