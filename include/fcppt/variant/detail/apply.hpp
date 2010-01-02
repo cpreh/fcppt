@@ -100,7 +100,7 @@ struct apply<
 
 		return Counter::value == obj.type_index()
 			? op(
-				obj. template get<type>()
+				obj. template get_raw<type>()
 			)
 			: detail::apply<
 				typename boost::mpl::next<

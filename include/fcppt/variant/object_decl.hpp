@@ -89,6 +89,18 @@ public:
 	U &
 	get();
 
+	template<
+		typename U
+	>
+	U const &
+	get_raw() const;
+
+	template<
+		typename U
+	>
+	U &
+	get_raw();
+
 	std::type_info const &
 	type() const;
 

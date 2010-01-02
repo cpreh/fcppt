@@ -173,14 +173,12 @@ fcppt::variant::object<Types>::get() const
 
 	return
 		detail::unwrap_recursive(
-			*static_cast<
+			get_raw<
 				typename detail::real_type<
 					Types,
 					U
-				>::type const *
-			>(
-				data_
-			)
+				>::type
+			>()
 		);
 }
 
@@ -204,6 +202,40 @@ fcppt::variant::object<Types>::get()
 			)-> template get<
 				U
 			>()
+		);
+}
+
+template<
+	typename Types
+>
+template<
+	typename U
+>
+U &
+fcppt::variant::object<Types>::get_raw()
+{
+	return
+		*static_cast<
+			U *
+		>(
+			data_
+		);
+}
+
+template<
+	typename Types
+>
+template<
+	typename U
+>
+U const &
+fcppt::variant::object<Types>::get_raw() const
+{
+	return
+		*static_cast<
+			U const *
+		>(
+			data_
 		);
 }
 

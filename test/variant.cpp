@@ -115,11 +115,9 @@ try
 		)
 	));
 
-#if 0
 	fcppt::io::cout
 		<< rrv
 		<< FCPPT_TEXT('\n');
-#endif
 }
 catch(
 	fcppt::exception const &e
