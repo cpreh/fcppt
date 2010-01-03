@@ -18,37 +18,13 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
 
-#ifndef FCPPT_BAD_LEXICAL_CAST_HPP_INCLUDED
-#define FCPPT_BAD_LEXICAL_CAST_HPP_INCLUDED
-
-#include <fcppt/exception.hpp>
-#include <fcppt/type_info.hpp>
-#include <fcppt/class_symbol.hpp>
-#include <fcppt/symbol.hpp>
+#ifndef FCPPT_TYPE_INFO_FWD_HPP_INCLUDED
+#define FCPPT_TYPE_INFO_FWD_HPP_INCLUDED
 
 namespace fcppt
 {
 
-class bad_lexical_cast
-:
-	public exception
-{
-public:
-	FCPPT_SYMBOL bad_lexical_cast(
-		type_info const &source,
-		type_info const &dest
-	);
-
-	type_info const &
-	source() const;
-
-	type_info const &
-	destination() const;
-private:
-	type_info
-		source_,
-		destination_;
-};
+class type_info;
 
 }
 

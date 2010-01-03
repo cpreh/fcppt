@@ -21,6 +21,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #ifndef FCPPT_TYPE_INFO_HPP_INCLUDED
 #define FCPPT_TYPE_INFO_HPP_INCLUDED
 
+#include <fcppt/type_info_fwd.hpp>
 #include <fcppt/symbol.hpp>
 #include <fcppt/string.hpp>
 #include <typeinfo>
@@ -28,7 +29,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 namespace fcppt
 {
 
-class type_info {
+class type_info
+{
 public:
 	FCPPT_SYMBOL type_info(
 		std::type_info const &

@@ -18,37 +18,84 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
 
-#ifndef FCPPT_BAD_LEXICAL_CAST_HPP_INCLUDED
-#define FCPPT_BAD_LEXICAL_CAST_HPP_INCLUDED
+#ifndef FCPPT_DYNAMIC_CAST_HPP_INCLUDED
+#define FCPPT_DYNAMIC_CAST_HPP_INCLUDED
 
-#include <fcppt/exception.hpp>
 #include <fcppt/type_info.hpp>
-#include <fcppt/class_symbol.hpp>
-#include <fcppt/symbol.hpp>
+#include <fcppt/bad_dynamic_cast.hpp>
+#include <boost/type_traits/is_reference.hpp>
+#include <boost/type_traits/is_pointer.hpp>
+#include <boost/utility/enable_if.hpp>
+#include <typeinfo>
+#include <stdexcept>
 
 namespace fcppt
 {
 
-class bad_lexical_cast
-:
-	public exception
+template<
+	typename Dest,
+	typename Src
+>
+typename boost::enable_if<
+	boost::is_reference<
+		Dest
+	>,
+	Dest
+>::type
+dynamic_cast_(
+	Src src
+)
 {
-public:
-	FCPPT_SYMBOL bad_lexical_cast(
-		type_info const &source,
-		type_info const &dest
-	);
+	try
+	{
+		return
+			dynamic_cast<
+				Dest
+			>(
+				src
+			);
+	}
+	catch(
+		std::bad_cast const &
+	)
+	{
+		throw
+			bad_dynamic_cast(
+				type_info(
+					typeid(
+						Src
+					)
+				),
+				type_info(
+					typeid(
+						Dest
+					)
+				)
+			);	
+	}
+}
 
-	type_info const &
-	source() const;
-
-	type_info const &
-	destination() const;
-private:
-	type_info
-		source_,
-		destination_;
-};
+template<
+	typename Dest,
+	typename Src
+>
+typename boost::enable_if<
+	boost::is_pointer<
+		Dest
+	>,
+	Dest
+>::type
+dynamic_cast_(
+	Src const src
+)
+{
+	return
+		dynamic_cast<
+			Dest
+		>(
+			src
+		);
+}
 
 }
 

@@ -18,38 +18,48 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
 
-#ifndef FCPPT_BAD_LEXICAL_CAST_HPP_INCLUDED
-#define FCPPT_BAD_LEXICAL_CAST_HPP_INCLUDED
+#include <fcppt/io/cerr.hpp>
+#include <fcppt/dynamic_cast.hpp>
+#include <fcppt/text.hpp>
 
-#include <fcppt/exception.hpp>
-#include <fcppt/type_info.hpp>
-#include <fcppt/class_symbol.hpp>
-#include <fcppt/symbol.hpp>
-
-namespace fcppt
+struct base
 {
-
-class bad_lexical_cast
-:
-	public exception
-{
-public:
-	FCPPT_SYMBOL bad_lexical_cast(
-		type_info const &source,
-		type_info const &dest
-	);
-
-	type_info const &
-	source() const;
-
-	type_info const &
-	destination() const;
-private:
-	type_info
-		source_,
-		destination_;
+	virtual ~base()
+	{}
 };
 
-}
+struct derived1
+:
+	base
+{
+};
 
-#endif
+struct derived2
+:
+	base
+{
+};
+
+int main()
+try
+{
+	derived1 d1;
+
+	base &b(
+		d1
+	);
+
+	fcppt::dynamic_cast_<
+		derived2 &
+	>(
+		b
+	);
+}
+catch(
+	fcppt::exception const &e
+)
+{
+	fcppt::io::cerr
+		<< e.string()
+		<< FCPPT_TEXT('\n');
+}
