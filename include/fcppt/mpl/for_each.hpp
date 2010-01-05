@@ -21,71 +21,15 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #ifndef FCPPT_MPL_FOR_EACH_HPP_INCLUDED
 #define FCPPT_MPL_FOR_EACH_HPP_INCLUDED
 
-#include <fcppt/workarounds.hpp>
-#include <boost/mpl/deref.hpp>
-#include <boost/mpl/next.hpp>
+#include <fcppt/mpl/detail/for_each.hpp>
 #include <boost/mpl/begin.hpp>
 #include <boost/mpl/end.hpp>
-#include <boost/type_traits/is_same.hpp>
+#include <boost/mpl/empty.hpp>
 
 namespace fcppt
 {
 namespace mpl
 {
-namespace detail
-{
-
-template<bool done = true>
-struct for_each_impl
-{
-	template<
-		typename Iterator,
-		typename LastIterator,
-		typename Fun
-	>
-	static void
-	execute(
-		Iterator *,
-		LastIterator *,
-		Fun const &
-	)
-	{}
-};
-
-template<>
-struct for_each_impl<false>
-{
-	template<
-		typename Iterator,
-		typename LastIterator,
-		typename Fun
-	>
-	static void
-	execute(
-		Iterator *,
-		LastIterator *,
-		Fun const &f
-	)
-	{
-		typedef typename boost::mpl::deref<Iterator>::type item;
-		typedef typename boost::mpl::next<Iterator>::type iter;
-
-#ifdef FCPPT_MSVC_DEPENDANT_TEMPLATE_BUG
-		f.operator()<item>();
-#else
-		f. template operator()<item>();
-#endif
-		for_each_impl<
-			boost::is_same<iter, LastIterator>::value
-		>::execute(
-			static_cast<iter *>(0),
-			static_cast<LastIterator *>(0),
-			f
-		);
-	}
-};
-
-}
 
 template<
 	typename Sequence,
@@ -96,16 +40,21 @@ for_each(
 	Fun const &f
 )
 {
-	typedef typename boost::mpl::begin<Sequence>::type first;
-	typedef typename boost::mpl::end<Sequence>::type last;
-
-	return detail::for_each_impl<
-		boost::is_same<first, last>::value
-	>::execute(
-		static_cast<first *>(0),
-		static_cast<last *>(0),
-		f
-	);
+	return
+		detail::for_each<
+			typename boost::mpl::empty<
+				Sequence
+			>::type
+		>:: template execute<
+			typename boost::mpl::begin<
+				Sequence
+			>::type,
+			typename boost::mpl::end<
+				Sequence
+			>::type
+		>(
+			f
+		);
 }
 
 }
