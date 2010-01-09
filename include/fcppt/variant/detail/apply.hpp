@@ -26,7 +26,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #include <boost/mpl/next.hpp>
 #include <boost/mpl/at.hpp>
 #include <boost/type_traits/is_same.hpp>
-#include <boost/type_traits/integral_constant.hpp>
 
 namespace fcppt
 {
@@ -37,7 +36,7 @@ namespace detail
 
 template<
 	typename Counter,
-	typename Done
+	bool Done
 >
 struct apply;
 
@@ -46,7 +45,7 @@ template<
 >
 struct apply<
 	Counter,
-	boost::true_type
+	true
 >
 {
 	template<
@@ -70,7 +69,7 @@ template<
 >
 struct apply<
 	Counter,
-	boost::false_type
+	false
 >
 {
 	template<
@@ -106,10 +105,10 @@ struct apply<
 				typename boost::mpl::next<
 					Counter
 				>::type,
-				typename boost::is_same<
+				boost::is_same<
 					iter,
 					LastIterator
-				>::type
+				>::value
 			>:: template execute<
 				iter,
 				LastIterator

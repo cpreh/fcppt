@@ -52,9 +52,9 @@ apply_unary_internal(
 			size_type,
 			0
 		>,
-		typename boost::mpl::empty<
+		boost::mpl::empty<
 			types
-		>::type
+		>::value
 	>:: template execute<
 		typename boost::mpl::begin<
 			types
