@@ -37,7 +37,8 @@ typename static_<T, 4, 4>::type const
 translation(
 	T x,
 	T y,
-	T z);
+	T z
+);
 
 }
 }

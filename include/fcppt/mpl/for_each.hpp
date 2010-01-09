@@ -42,9 +42,9 @@ for_each(
 {
 	return
 		detail::for_each<
-			typename boost::mpl::empty<
+			boost::mpl::empty<
 				Sequence
-			>::type
+			>::value
 		>:: template execute<
 			typename boost::mpl::begin<
 				Sequence

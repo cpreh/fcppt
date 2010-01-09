@@ -25,7 +25,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #include <boost/mpl/deref.hpp>
 #include <boost/mpl/next.hpp>
 #include <boost/type_traits/is_same.hpp>
-#include <boost/type_traits/integral_constant.hpp>
 
 namespace fcppt
 {
@@ -35,13 +34,13 @@ namespace detail
 {
 
 template<
-	typename Done
+	bool Done
 >
 struct for_each;
 
 template<>
 struct for_each<
-	boost::true_type
+	true
 >
 {
 	template<
@@ -58,7 +57,7 @@ struct for_each<
 
 template<>
 struct for_each<
-	boost::false_type
+	false
 >
 {
 	template<
@@ -80,10 +79,10 @@ struct for_each<
 		f. template operator()<item>();
 #endif
 		detail::for_each<
-			typename boost::is_same<
+			boost::is_same<
 				iter,
 				LastIterator
-			>::type
+			>::value
 		>:: template execute<
 			iter,
 			LastIterator

@@ -43,7 +43,7 @@ typename boost::enable_if<
 	Dest
 >::type
 dynamic_cast_(
-	Src src
+	Src &src
 )
 {
 	try
