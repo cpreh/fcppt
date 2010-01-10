@@ -51,17 +51,14 @@ invoke_on(
 		boost::mpl::empty<
 			Sequence
 		>::value
-	>::execute(
-		static_cast<
-			typename boost::mpl::begin<
-				Sequence
-			>::type *
-		>(0),
-		static_cast<
-			typename boost::mpl::end<
-				Sequence
-			>::type *
-		>(0),
+	>:: template execute<
+		typename boost::mpl::begin<
+			Sequence
+		>::type,
+		typename boost::mpl::end<
+			Sequence
+		>::type
+	>(
 		index,
 		fun
 	);

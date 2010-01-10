@@ -36,9 +36,18 @@ namespace detail
 
 template<
 	typename Counter,
-	bool done = true
+	bool Done
 >
-struct invoke_on {
+struct invoke_on;
+
+template<
+	typename Counter
+>
+struct invoke_on<
+	Counter,
+	true
+>
+{
 	template<
 		typename Iterator,
 		typename LastIterator,
@@ -47,8 +56,6 @@ struct invoke_on {
 	>
 	static typename Operation::result_type
 	execute(
-		Iterator *,
-		LastIterator *,
 		Index const &,
 		Operation const &
 	)
@@ -63,7 +70,8 @@ template<
 struct invoke_on<
 	Counter,
 	false
-> {
+>
+{
 	template<
 		typename Iterator,
 		typename LastIterator,
@@ -72,8 +80,6 @@ struct invoke_on<
 	>
 	static typename Operation::result_type
 	execute(
-		Iterator *,
-		LastIterator *,
 		Index const &index,
 		Operation const &op
 	)
@@ -106,9 +112,10 @@ struct invoke_on<
 					iter,
 					LastIterator
 				>::value
-			>::execute(
-				static_cast<iter *>(0),
-				static_cast<LastIterator *>(0),
+			>:: template execute<
+				iter,
+				LastIterator
+			>(
 				index,
 				op
 			);
