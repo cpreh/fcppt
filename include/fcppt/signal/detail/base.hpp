@@ -54,9 +54,9 @@ protected:
 	> connection_list;
 
 	base();
-	connection_list &connections();
+	connection_list &connections() const;
 private:
-	connection_list connections_;
+	mutable connection_list connections_;
 };
 }
 }

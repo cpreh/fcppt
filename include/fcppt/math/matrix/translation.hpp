@@ -22,6 +22,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #define FCPPT_MATH_MATRIX_TRANSLATION_HPP_INCLUDED
 
 #include <fcppt/math/matrix/static.hpp>
+#include <fcppt/math/matrix/basic_impl.hpp>
+#include <fcppt/math/vector/basic_impl.hpp>
 
 namespace fcppt
 {
@@ -35,6 +37,7 @@ template<
 >
 typename static_<T, 4, 4>::type const
 translation(
+	
 	T x,
 	T y,
 	T z
@@ -43,7 +46,5 @@ translation(
 }
 }
 }
-
-#include <fcppt/math/matrix/detail/translation_impl.hpp>
 
 #endif

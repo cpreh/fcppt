@@ -27,7 +27,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #include <boost/next_prior.hpp>
 
 #define FCPPT_SIGNAL_DETAIL_DEFINE_EMPTY_OPERATOR\
-	result_type operator()()\
+	result_type operator()() const\
 	{\
 		if (base::connections().empty()) \
 			return result_type(); \
@@ -44,7 +44,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 	BOOST_PP_ENUM_PARAMS_Z(z,BOOST_PP_INC(n),typename T)\
 	>\
 	result_type operator()(\
-		BOOST_PP_ENUM_BINARY_PARAMS(BOOST_PP_INC(n),T, const &param))\
+		BOOST_PP_ENUM_BINARY_PARAMS(BOOST_PP_INC(n),T, const &param)) const\
 	{\
 		if (base::connections().empty()) \
 			return result_type(); \

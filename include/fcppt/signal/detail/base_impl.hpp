@@ -40,7 +40,7 @@ fcppt::signal::detail::base<T>::base()
 
 template<typename T>
 typename fcppt::signal::detail::base<T>::connection_list &
-fcppt::signal::detail::base<T>::connections()
+fcppt::signal::detail::base<T>::connections() const
 {
 	return connections_;
 }
