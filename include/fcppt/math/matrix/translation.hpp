@@ -37,7 +37,6 @@ template<
 >
 typename static_<T, 4, 4>::type const
 translation(
-	
 	T x,
 	T y,
 	T z
@@ -46,5 +45,7 @@ translation(
 }
 }
 }
+
+#include <fcppt/math/matrix/detail/translation_impl.hpp>
 
 #endif
