@@ -18,61 +18,23 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
 
-#include <fcppt/io/cerr.hpp>
-#include <fcppt/io/cout.hpp>
+#ifndef FCPPT_TRY_DYNAMIC_CAST_HPP_INCLUDED
+#define FCPPT_TRY_DYNAMIC_CAST_HPP_INCLUDED
+
 #include <fcppt/dynamic_cast.hpp>
-#include <fcppt/try_dynamic_cast.hpp>
-#include <fcppt/text.hpp>
 
-struct base
-{
-	virtual ~base()
-	{}
-};
+#define FCPPT_TRY_DYNAMIC_CAST(\
+	dest_type,\
+	name,\
+	expression\
+)\
+	if(\
+		dest_type const name = \
+			fcppt::dynamic_cast_<\
+				dest_type\
+			>(\
+				expression\
+			)\
+	)\
 
-struct derived1
-:
-	base
-{
-};
-
-struct derived2
-:
-	base
-{
-};
-
-int main()
-try
-{
-	derived1 d1;
-
-	base &b(
-		d1
-	);
-
-#if 0
-	fcppt::dynamic_cast_<
-		derived2 &
-	>(
-		b
-	);
 #endif
-
-	FCPPT_TRY_DYNAMIC_CAST(
-		derived1 const *,
-		ptr,
-		&b
-	)
-		fcppt::io::cout
-			<< ptr
-			<< FCPPT_TEXT('\n');
-}
-catch(
-	fcppt::exception const &e
-)
-{
-	fcppt::io::cerr
-		<< e.string()
-		<< FCPPT_TEXT('\n');
-}
