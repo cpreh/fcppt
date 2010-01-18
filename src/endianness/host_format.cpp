@@ -25,6 +25,56 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #error "FCPPT_LITTLE_ENDIAN and FCPPT_BIG_ENDIAN defined!"
 #endif
 
+#if !(defined(FCPPT_LITTLE_ENDIAN) || defined(FCPPT_BIG_ENDIAN))
+#include <fcppt/algorithm/copy_n.hpp>
+#include <fcppt/tr1/array.hpp>
+#include <fcppt/function_once.hpp>
+
+namespace
+{
+
+fcppt::endianness::format::type endianness_;
+
+void
+init()
+{
+	FCPPT_FUNCTION_ONCE	
+
+	// if unsigned long and char are of the same size
+	// endianness doesn't matter
+
+	typedef unsigned long int_type;
+
+	int_type const t = 1u;
+
+	typedef std::tr1::array<
+		unsigned char,
+		sizeof(int_type)
+	> array_type;
+
+	array_type array;
+
+	fcppt::algorithm::copy_n(
+		reinterpret_cast<
+			unsigned char const *
+		>(
+			&t
+		),
+		sizeof(int_type),
+		array.data()
+	);
+
+	endianness_ =
+		array[0] == t
+		?
+			fcppt::endianness::format::little
+		:
+			fcppt::endianness::format::big;
+}
+
+}
+#endif
+
 fcppt::endianness::format::type
 fcppt::endianness::host_format()
 {
@@ -33,17 +83,8 @@ fcppt::endianness::host_format()
 #elif defined(FCPPT_BIG_ENDIAN)
 	return format::big;
 #else
-	// if unsigned long and char are of the same size
-	// endianness doesn't matter
-	typedef unsigned long type;
-	union {
-		type t;
-		unsigned char c[sizeof(type)];
-	} u;
-	u.t = 1u;
+	init();
 
-	return u.c[0] == u.t
-		? format::little
-		: format::big;
+	return endianness_;
 #endif
 }
