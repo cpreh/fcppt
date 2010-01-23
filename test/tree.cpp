@@ -19,8 +19,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 
 
-#include <fcppt/container/tree.hpp>
-#include <fcppt/container/traversal.hpp>
+#include <fcppt/container/tree/object.hpp>
+#include <fcppt/container/tree/in_order.hpp>
 #include <fcppt/io/cout.hpp>
 #include <fcppt/io/cerr.hpp>
 #include <fcppt/make_auto_ptr.hpp>
@@ -33,7 +33,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 int main()
 try
 {
-	typedef fcppt::container::tree<
+	typedef fcppt::container::tree::object<
 		fcppt::string
 	> string_tree;
 
@@ -74,7 +74,7 @@ try
 	);
 
 	typedef
-	fcppt::container::traversal<
+	fcppt::container::tree::in_order<
 		string_tree const
 	> traversal_type;
 

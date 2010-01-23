@@ -18,8 +18,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
 
-#ifndef FCPPT_CONTAINER_TRAVERSAL_HPP_INCLUDED
-#define FCPPT_CONTAINER_TRAVERSAL_HPP_INCLUDED
+#ifndef FCPPT_CONTAINER_TREE_IN_ORDER_HPP_INCLUDED
+#define FCPPT_CONTAINER_TREE_IN_ORDER_HPP_INCLUDED
 
 #include <fcppt/assert.hpp>
 #include <boost/iterator/iterator_facade.hpp>
@@ -32,13 +32,16 @@ namespace fcppt
 {
 namespace container
 {
+namespace tree
+{
 
 template<
 	typename Tree
 >
-class traversal {
+class in_order
+{
 public:
-	explicit traversal(
+	explicit in_order(
 		Tree &tree_
 	)
 	:
@@ -165,6 +168,7 @@ private:
 	Tree &tree_;
 };
 
+}
 }
 }
 

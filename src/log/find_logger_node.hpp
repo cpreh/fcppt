@@ -22,7 +22,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #define FCPPT_LOG_FIND_LOGGER_NODE_HPP_INCLUDED
 
 #include <fcppt/log/detail/context_tree.hpp>
-#include <fcppt/container/tree_decl.hpp>
+#include <fcppt/container/tree/object_decl.hpp>
 #include <fcppt/variant/object_decl.hpp>
 
 namespace fcppt

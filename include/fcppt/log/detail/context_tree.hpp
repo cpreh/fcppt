@@ -22,7 +22,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #define FCPPT_LOG_DETAIL_CONTEXT_TREE_HPP_INCLUDED
 
 #include <fcppt/log/detail/context_tree_node.hpp>
-#include <fcppt/container/tree_fwd.hpp>
+#include <fcppt/container/tree/object_fwd.hpp>
 
 namespace fcppt
 {
@@ -31,7 +31,7 @@ namespace log
 namespace detail
 {
 
-typedef fcppt::container::tree<
+typedef fcppt::container::tree::object<
 	context_tree_node
 > context_tree;
 

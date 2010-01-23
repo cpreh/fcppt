@@ -18,10 +18,10 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
 
-#ifndef FCPPT_CONTAINER_TREE_DECL_HPP_INCLUDED
-#define FCPPT_CONTAINER_TREE_DECL_HPP_INCLUDED
+#ifndef FCPPT_CONTAINER_TREE_OBJECT_DECL_HPP_INCLUDED
+#define FCPPT_CONTAINER_TREE_OBJECT_DECL_HPP_INCLUDED
 
-#include <fcppt/container/tree_fwd.hpp>
+#include <fcppt/container/tree/object_fwd.hpp>
 #include <fcppt/auto_ptr.hpp>
 #include <boost/ptr_container/ptr_list.hpp>
 
@@ -29,22 +29,21 @@ namespace fcppt
 {
 namespace container
 {
-
-template<
-	typename T
-> class init_tree;
+namespace tree
+{
 
 template<
 	typename T
 >
-class tree {
+class object
+{
 public:
 	typedef boost::ptr_list<
-		tree
+		object	
 	> child_list;
 
 	typedef fcppt::auto_ptr<
-		tree
+		object	
 	> auto_ptr;
 
 	typedef typename child_list::value_type value_type;
@@ -57,17 +56,13 @@ public:
 	typedef typename child_list::reverse_iterator reverse_iterator;
 	typedef typename child_list::const_reverse_iterator const_reverse_iterator;
 
-	tree();
+	object();
 
-	explicit tree(
-		init_tree<T> const &
-	);
-
-	explicit tree(
+	explicit object(
 		T const &
 	);
 
-	~tree();
+	~object();
 
 	child_list &
 	children();
@@ -75,16 +70,16 @@ public:
 	child_list const &
 	children() const;
 
-	tree &
+	object &
 	parent();
 
-	tree const &
+	object const &
 	parent() const;
 
-	tree *
+	object *
 	parent_ptr();
 
-	tree const *
+	object const *
 	parent_ptr() const;
 
 	bool
@@ -92,7 +87,7 @@ public:
 
 	void
 	parent(
-		tree &
+		object &
 	);
 
 	void
@@ -218,7 +213,7 @@ public:
 	empty() const;
 private:
 	T value_;
-	tree *parent_;
+	object *parent_;
 	child_list children_;
 };
 
@@ -227,8 +222,8 @@ template<
 >
 bool
 operator==(
-	tree<T> const &,
-	tree<T> const &
+	object<T> const &,
+	object<T> const &
 );
 
 template<
@@ -236,10 +231,11 @@ template<
 >
 bool
 operator!=(
-	tree<T> const &,
-	tree<T> const &
+	object<T> const &,
+	object<T> const &
 );
 
+}
 }
 }
 

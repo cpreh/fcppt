@@ -20,7 +20,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 #include "find_inner_node.hpp"
 #include "inner_node_name.hpp"
-#include <fcppt/container/tree_impl.hpp>
+#include <fcppt/container/tree/object_impl.hpp>
 #include <fcppt/variant/object_impl.hpp>
 #include <algorithm>
 

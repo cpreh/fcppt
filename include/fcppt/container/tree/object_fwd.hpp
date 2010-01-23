@@ -18,19 +18,22 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
 
-#ifndef FCPPT_CONTAINER_TREE_FWD_HPP_INCLUDED
-#define FCPPT_CONTAINER_TREE_FWD_HPP_INCLUDED
+#ifndef FCPPT_CONTAINER_TREE_OBJECT_FWD_HPP_INCLUDED
+#define FCPPT_CONTAINER_TREE_OBJECT_FWD_HPP_INCLUDED
 
 namespace fcppt
 {
 namespace container
 {
+namespace tree
+{
 
 template<
 	typename T
 >
-class tree;
+class object;
 
+}
 }
 }
 

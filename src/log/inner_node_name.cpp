@@ -23,13 +23,14 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #include <fcppt/log/detail/outer_context_node.hpp>
 #include <fcppt/variant/apply_unary.hpp>
 #include <fcppt/variant/object_impl.hpp>
-#include <fcppt/container/tree_impl.hpp>
+#include <fcppt/container/tree/object_impl.hpp>
 #include <fcppt/string.hpp>
 
 namespace
 {
 
-class compare {
+class compare
+{
 public:
 	typedef bool result_type;
 

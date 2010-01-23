@@ -25,8 +25,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #include <fcppt/log/context.hpp>
 #include <fcppt/log/location.hpp>
 #include <fcppt/log/no_such_location.hpp>
-#include <fcppt/container/tree_impl.hpp>
-#include <fcppt/container/traversal.hpp>
+#include <fcppt/container/tree/object_impl.hpp>
+#include <fcppt/container/tree/in_order.hpp>
 #include <fcppt/variant/object_impl.hpp>
 #include <fcppt/function/object.hpp>
 #include <fcppt/text.hpp>
@@ -211,7 +211,7 @@ fcppt::log::context::apply(
 		);
 
 	typedef
-	fcppt::container::traversal<
+	fcppt::container::tree::in_order<
 		detail::context_tree
 	> traversal_type;
 
