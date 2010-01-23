@@ -21,7 +21,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #ifndef FCPPT_FILESYSTEM_DETAIL_PATH_TRAITS_HPP_INCLUDED
 #define FCPPT_FILESYSTEM_DETAIL_PATH_TRAITS_HPP_INCLUDED
 
-#include <fcppt/string.hpp>
+#include <fcppt/config.h>
 #include <boost/filesystem/path.hpp>
 
 namespace fcppt
@@ -31,22 +31,11 @@ namespace filesystem
 namespace detail
 {
 
-template<typename Ch>
-class path_traits;
-
-template<>
-class path_traits<char> {
-public:
-	typedef boost::filesystem::path_traits type;
-};
-
-template<>
-class path_traits<wchar_t> {
-public:
-	typedef boost::filesystem::wpath_traits type;
-};
-
-typedef string path_string;
+#ifdef FCPPT_NARROW_STRING
+typedef boost::filesystem::path_traits path_traits;
+#else
+typedef boost::filesystem::wpath_traits path_traits;
+#endif
 
 }
 }
