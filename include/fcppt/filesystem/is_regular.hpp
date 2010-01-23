@@ -31,7 +31,8 @@ namespace filesystem
 
 FCPPT_SYMBOL bool
 is_regular(
-	path const &);
+	path const &
+);
 
 }
 }
