@@ -18,39 +18,22 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
 
-#ifndef FCPPT_MATH_NULL_HPP_INCLUDED
-#define FCPPT_MATH_NULL_HPP_INCLUDED
+#ifndef FCPPT_FILESYSTEM_REMOVE_HPP_INCLUDED
+#define FCPPT_FILESYSTEM_REMOVE_HPP_INCLUDED
 
-#include <fcppt/math/is_rational.hpp>
-#include <boost/utility/enable_if.hpp>
+#include <fcppt/filesystem/path.hpp>
+#include <fcppt/string.hpp>
+#include <fcppt/symbol.hpp>
 
 namespace fcppt
 {
-namespace math
+namespace filesystem
 {
-template<typename T>
-typename
-boost::disable_if
-<
-	fcppt::math::is_rational<T>,
-	T
->::type
-null()
-{
-	return static_cast<T>(0);
-}
 
-template<typename T>
-typename
-boost::enable_if
-<
-	fcppt::math::is_rational<T>,
-	T
->::type
-null()
-{
-	return T();
-}
+FCPPT_SYMBOL bool
+remove(
+	path const &);
+
 }
 }
 
