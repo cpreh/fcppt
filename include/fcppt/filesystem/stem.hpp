@@ -32,7 +32,8 @@ namespace filesystem
 
 FCPPT_SYMBOL string const
 stem(
-	path const &);
+	path const &
+);
 
 }
 }
