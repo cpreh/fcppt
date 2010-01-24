@@ -1,0 +1,2 @@
+#!/bin/sh
+quickbook-1_41 main.qbk && xsltproc --path /usr/share/boostbook-1_41/xsl/ html.xsl main.xml

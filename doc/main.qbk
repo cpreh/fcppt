@@ -93,7 +93,7 @@ its types are implemented with an mpl sequence directly and it offers up to tern
 [section Hello_World]
 Let's first start with an hello world example.
 
-[import ../fcppt/examples/log/helloworld.cpp]
+[import ../examples/log/helloworld.cpp]
 [loghelloworld]
 
 A logger object is constructed using the parameters::root class.
@@ -108,7 +108,7 @@ if(logger.activated(fcppt::log::level::debug))
 [section Inheritance]
 A logger can inherit from another logger to form a hierarchy.
 
-[import ../fcppt/examples/log/inheritance.cpp]
+[import ../examples/log/inheritance.cpp]
 [loginheritance]
 
 [endsect]
