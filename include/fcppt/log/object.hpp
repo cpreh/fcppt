@@ -40,9 +40,12 @@ namespace fcppt
 namespace log
 {
 
+/// The main logger class. If you need a new logger, you should create an object of it.
 class object {
 	FCPPT_NONCOPYABLE(object)
 public:
+	//! Constructs a logger. 
+	/** See parameters::root and parameters::inherited. */
 	FCPPT_SYMBOL explicit object(
 		parameters::all const &
 	);

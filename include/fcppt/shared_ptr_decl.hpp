@@ -10,6 +10,11 @@
 namespace fcppt
 {
 
+/// A shared_ptr class that get's the deleter as template parameter
+/* The class is implemented using boost::shared_ptr so it will inherit
+ * all its traits. This means that the class also uses type erasure
+ * for its deleter and internal ref count.
+*/
 template<
 	typename T,
 	template<

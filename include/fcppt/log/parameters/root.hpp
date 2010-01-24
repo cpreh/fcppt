@@ -36,7 +36,15 @@ namespace log
 namespace parameters
 {
 
-class root {
+/// A parameters class for a logger without parent.
+/** At least the associated ostream has to be specified in the constructor.
+ * The rest of the parameters can be specified with function calls to this object.
+ * All of them have default parameters: 1) empty prefix, 2) not enabled, 3) level is warning
+ * 4) no context
+ * The create function has to be called last to make the actual parameters class.
+*/
+class root
+{
 public:
 	FCPPT_SYMBOL explicit root(
 		io::ostream &

@@ -29,11 +29,22 @@ namespace fcppt
 namespace chrono
 {
 
+/// Represents a given point in time, measured by a Clock's now() function.
+/**
+ * Clock is the type of the clock from where the time_point was obtained.
+ * Duration is the associated duration.
+ * durations can be added to or subtracted from time_points to obtain a
+ * time_point further in the future or in the past.
+ * Two time_points can be subtracted to get the difference between them (as a duration).
+ * time_since_epoch() directly converts the time_point into a duration, using
+ * the clocks beginning time as a second time_point.
+*/
 template<
 	typename Clock,
 	typename Duration
 >
-class time_point {
+class time_point
+{
 public:
 	typedef Clock clock;
 	typedef Duration duration;
@@ -42,6 +53,9 @@ public:
 
 	time_point();
 
+	/// Constructs a time_point from a duration.
+	/** This duration is interpreted as if it were obtained from time_since_epoch().
+	*/
 	explicit time_point(
 		duration const &
 	);
@@ -56,6 +70,7 @@ public:
 		> const &
 	);
 
+	/// duration from the beginning of the Clock to this time_point
 	duration
 	time_since_epoch() const;
 

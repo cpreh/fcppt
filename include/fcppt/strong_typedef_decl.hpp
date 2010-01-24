@@ -26,6 +26,12 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 namespace fcppt
 {
 
+/// Used to create strong typedefs.
+/* The first template parameter is the type to be wrapped.
+ * The second template parameter should be a unique tag type.
+ * strong_typedef behaves like the wrapped type excpect that
+ * its constructor is explicit.
+*/
 template<
 	typename T,
 	typename Tag

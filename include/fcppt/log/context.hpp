@@ -36,29 +36,41 @@ namespace fcppt
 namespace log
 {
 
-class context {
+/// The logger context class is used for finding loggers at runtime.
+class context
+{
 	FCPPT_NONCOPYABLE(context)
 public:
 	FCPPT_SYMBOL context();
 
 	FCPPT_SYMBOL ~context();
 
+	/// Adds a logger to a location
+	/** The logger will call this indirectly if you provide a context in its parameters class.
+	*/
 	FCPPT_SYMBOL void
 	add(
 		location const &,
 		object &
 	);
 
+	/// Removes the logger that is associated with a location.
+	/* Loggers with a location set will indirectly call this on destruction.
+	*/
 	FCPPT_SYMBOL void
 	remove(
 		location const &
 	);
 
+	/// Finds a logger with a given location.
+	/** @return 0 if the logger was not found
+	*/
 	FCPPT_SYMBOL object *
 	find(
 		location const &
 	) const;
 
+	/// apply a function to a location recursively
 	FCPPT_SYMBOL void
 	apply(
 		location const &,

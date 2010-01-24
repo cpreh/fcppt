@@ -31,6 +31,7 @@ namespace fcppt
 namespace log
 {
 
+/// Creates a location from a string with delimiters delim
 FCPPT_SYMBOL location const
 make_location(
 	string const &name,

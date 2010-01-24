@@ -27,9 +27,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 namespace fcppt
 {
 
-/**
- * @brief Converts std::wstring to std::string
-*/
+/// convert an std::wstring to std::string using the default locale
 FCPPT_SYMBOL std::string const
 narrow(
 	std::wstring const &

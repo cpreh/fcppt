@@ -23,12 +23,17 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 #include <fcppt/strong_typedef_fwd.hpp>
 
-#define FCPPT_MAKE_STRONG_TYPEDEF(val, name)\
+/// Creates a new strong typedef using strong_typedef.
+/*
+ * @param type The type to be wrapped.
+ * @param name The name of the new typedef.
+*/
+#define FCPPT_MAKE_STRONG_TYPEDEF(type, name)\
 struct fcppt_strong_typedef_##name##_tag\
 {};\
 \
 typedef fcppt::strong_typedef<\
-	val,\
+	type,\
 	fcppt_strong_typedef_##name##_tag\
 > name;
 

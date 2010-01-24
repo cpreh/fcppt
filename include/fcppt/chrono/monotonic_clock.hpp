@@ -33,6 +33,10 @@ namespace fcppt
 namespace chrono
 {
 
+/// Provides a monotonic clock.
+/** For two calls to now() in sequence, t1 = now(); t2 = now();,
+ * t2 will always be greater than t1.
+*/
 class monotonic_clock
 {
 public:

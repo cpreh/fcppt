@@ -26,12 +26,12 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 namespace fcppt
 {
 
+/// Uses std::free(object) to destroy an object.
 template<
 	typename T
 >
-class c_deleter
+struct c_deleter
 {
-public:
 	void
 	operator()(
 		T *const t

@@ -33,6 +33,11 @@ namespace log
 namespace parameters
 {
 
+/// Constructs parameters for an inherited logger.
+/**
+ * @param parent The logger's parent class.
+ * @param sub_location The logger's associated string.
+*/
 FCPPT_SYMBOL all const
 inherited(
 	object &parent,

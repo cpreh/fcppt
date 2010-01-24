@@ -33,6 +33,10 @@ namespace fcppt
 namespace chrono
 {
 
+/// Provides a clock with the highest possible resolution.
+/** Beware that this clock usually isn't guaranteed to be monotonic,
+ * so it can, for example, wrap around after not too much time.
+*/
 class high_resolution_clock
 {
 public:

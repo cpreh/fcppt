@@ -29,6 +29,7 @@ namespace fcppt
 namespace log
 {
 
+/// fcppt's own logger root
 FCPPT_SYMBOL object &
 global();
 

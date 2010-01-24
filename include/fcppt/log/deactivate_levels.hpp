@@ -30,6 +30,9 @@ namespace fcppt
 namespace log
 {
 
+/// Deactivates all the log levels that are equal or higher.
+/** @see activate_levels
+*/
 FCPPT_SYMBOL void
 deactivate_levels(
 	object &,

@@ -24,12 +24,12 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 namespace fcppt
 {
 
+/// Uses object->Release() to destroy an object.
 template<
 	typename T
 >
-class com_deleter
+struct com_deleter
 {
-public:
 	void
 	operator()(
 		T* const t
