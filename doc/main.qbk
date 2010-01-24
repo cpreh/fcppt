@@ -1,0 +1,118 @@
+[article fcppt 
+	[quickbook 1.5]
+	[/ version none]
+	[authors [Reh, Carl Philipp]]
+	[copyright 2010 Carl Philipp Reh]
+	[purpose Freundlich's C++ Toolkit]
+	[license Boost Software License]
+]
+
+[/ Global Macro Definition ]
+
+[/ Sections ]
+
+[def __fcppt_introduction__ [link fcppt.introduction]]
+
+[/ End Macro Definition ]
+
+This is just a test: [@whiz:/test/index.html blubb]
+[@boost:/blubb.html test]
+
+[section Introduction]
+
+Boost already is a very useful general purpose library.
+If you use C++ without boost the need for something that
+is already provided by it will soon arise.
+However boost is not perfect (and Freundlich's C++ toolkit isn't either).
+The need for something that isn't provided by boost might arise, too,
+and there are even some things I consider not done "well" in boost.
+Freundlich's C++ toolkit (from now on shortened to fcppt)
+tries to fill in some gaps left by boost
+and even implements some replacements for a few boost components.
+[endsect]
+
+[section Overview]
+
+So what is provided by fcppt?
+
+* algorithm
+Some general utility algorithms like append, copy_n, find_if_exn, and so on.
+
+* alignment
+Compiler specific alignment macros. Also has alignment::array that can be used
+to implement raw buffers for placement new.
+
+* assign
+Container assignment utilities that can be used to directly initialize a container.
+
+* char_type abstraction
+fcppt's char_type depends on the platform. It is char for POSIX systems
+and wchar_t for VC++. This means that fcppt has its own functions and typedefs
+for anything that needs a char or a string.
+
+* chrono
+fcppt provides a full implementation of C++0x's chrono.
+
+* container
+Some additional containers.
+ * bitfield - A wrapper around a bitfield using an enum.
+ * field - A wrapper around a two dimensional container.
+ * linear_set/linear_map - set and map for very small numbers of elements.
+ * map - A wrapper around std::map that uses exceptions.
+ * raw_vector - A container like std::vector, but only for PODs. It provides the option not to initialize its elements.
+ * tree - A generic node class. nodes can be joined to form a tree.
+
+* logger
+Hierarchical logger clases with log levels, formatters and dynamic log manipulation.
+
+* mpl
+Some mpl metafunctions that like a better for_each, implication, partial_sums, and so on.
+
+* optional
+The optional class also doesn't use an undefined "union trick".
+
+* smart pointers
+Wrapper around shared_ptr, scoped_ptr and weak_ptr that use a deleter as template argument.
+
+* random
+Helper classes for tr1::random.
+
+* tr1
+Include wrappers for tr1 headers (VC++ uses <header> but gcc uses <tr1/header>).
+
+* variant
+fcppt's variant class is similar to the variant provided by boost.
+The differences are that it doesn't use an undefined "union trick",
+it can be empty (which means that the first type doesn't have to be default construbtible),
+its types are implemented with an mpl sequence directly and it offers up to ternary visitation.
+
+[endsect]
+
+[section Log]
+
+[section Hello_World]
+Let's first start with an hello world example.
+
+[import ../fcppt/examples/log/helloworld.cpp]
+[loghelloworld]
+
+A logger object is constructed using the parameters::root class.
+This logger will be a root logger which means that it won't inherit another one's properties.
+fcppt::log::_ is an output helper object. FCPPT_LOG_DEBUG is a helper macro so you don't
+have to write
+``
+if(logger.activated(fcppt::log::level::debug))
+  do_the_logging();
+``
+
+[section Inheritance]
+A logger can inherit from another logger to form a hierarchy.
+
+[import ../fcppt/examples/log/inheritance.cpp]
+[loginheritance]
+
+[endsect]
+
+[endsect]
+
+[endsect]

@@ -18,22 +18,23 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
 
-//[loghelloworld
+//[loginheritance
 #include <fcppt/log/object.hpp>
 #include <fcppt/log/headers.hpp>
 #include <fcppt/log/parameters/root.hpp>
+#include <fcppt/log/parameters/inherited.hpp>
 #include <fcppt/log/level.hpp>
 #include <fcppt/io/cout.hpp>
 #include <fcppt/text.hpp>
 
 int main()
 {
-	fcppt::log::object logger_(
+	fcppt::log::object parent_(
 		fcppt::log::parameters::root(
 			fcppt::io::cout
 		)
 		.prefix(
-			FCPPT_TEXT("mylogger")
+			FCPPT_TEXT("parent")
 		)
 		.enabled(
 			true
@@ -44,10 +45,17 @@ int main()
 		.create()
 	);
 
+	fcppt::log::object child_(
+		fcppt::log::parameters::inherited(
+			parent_,
+			FCPPT_TEXT("child")
+		)
+	);
+
 	FCPPT_LOG_DEBUG(
-		logger_,
+		child_,
 		fcppt::log::_
-			<< FCPPT_TEXT("Hello World")
+			<< FCPPT_TEXT("Print from child.")
 	);
 }
 //]

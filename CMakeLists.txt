@@ -207,6 +207,12 @@ IF (ENABLE_EXAMPLES)
 	ADD_SUBDIRECTORY (examples)
 ENDIF ()
 
+OPTION(ENABLE_DOC "Build the documentation" ON)
+
+IF (ENABLE_DOC)
+	ADD_SUBDIRECTORY (doc)
+ENDIF ()
+
 INSTALL (
 	DIRECTORY include/
 	DESTINATION include/
