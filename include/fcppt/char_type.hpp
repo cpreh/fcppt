@@ -25,6 +25,15 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 namespace fcppt
 {
+
+/**
+ * @brief The char_type used for text.
+ *
+ * Windows and Linux (for example) have different needs
+ * for their character types. While Linux usually uses
+ * UTF-8 and therefore plain char, Windows uses UTF-16
+ * and wchar_t.
+*/
 #ifdef FCPPT_NARROW_STRING
 typedef char char_type;
 #else
