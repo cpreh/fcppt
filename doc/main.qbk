@@ -20,6 +20,8 @@ This is just a test: [@whiz:/test/index.html blubb]
 
 [section Introduction]
 
+[xinclude ../doc_generated/xml/index.xml]
+
 Boost already is a very useful general purpose library.
 If you use C++ without boost the need for something that
 is already provided by it will soon arise.
@@ -104,14 +106,13 @@ have to write
 if(logger.activated(fcppt::log::level::debug))
   do_the_logging();
 ``
+[endsect]
 
 [section Inheritance]
 A logger can inherit from another logger to form a hierarchy.
 
 [import ../examples/log/inheritance.cpp]
 [loginheritance]
-
-[endsect]
 
 [endsect]
 
