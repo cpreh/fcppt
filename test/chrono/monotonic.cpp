@@ -18,45 +18,32 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
 
-#ifndef FCPPT_MATH_VECTOR_LENGTH_QUAD_HPP_INCLUDED
-#define FCPPT_MATH_VECTOR_LENGTH_QUAD_HPP_INCLUDED
+#include <fcppt/chrono/chrono.hpp>
+#define BOOST_TEST_MODULE ChronoMonotonic
+#include <boost/test/unit_test.hpp>
 
-#include <fcppt/math/vector/basic_impl.hpp>
-#include <boost/spirit/home/phoenix/operator/arithmetic.hpp>
-#include <boost/spirit/home/phoenix/core/argument.hpp>
-#include <numeric>
+BOOST_AUTO_TEST_CASE(chrono_monotonic)
+{
+	typedef fcppt::chrono::monotonic_clock::time_point time_point;
 
-namespace fcppt
-{
-namespace math
-{
-namespace vector
-{
+	time_point old_time(
+		fcppt::chrono::monotonic_clock::now()
+	);
 
-template<
-	typename T,
-	typename N,
-	typename S
->
-typename basic<T, N, S>::value_type
-length_quad(
-	basic<T, N, S> const &v
-)
-{
-	using boost::phoenix::arg_names::arg1;
-	using boost::phoenix::arg_names::arg2;
-
-	return
-		std::accumulate(
-			v.begin(),
-			v.end(),
-			static_cast<T>(0),
-			arg1 + arg2 * arg2
+	for(
+		unsigned i = 0;
+		i < 100;
+		++i
+	)
+	{
+		time_point const new_time(
+			fcppt::chrono::monotonic_clock::now()
 		);
-}
 
-}
-}
-}
+		BOOST_REQUIRE(
+			old_time < new_time
+		);
 
-#endif
+		old_time = new_time;
+	}
+}

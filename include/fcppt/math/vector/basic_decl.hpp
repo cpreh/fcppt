@@ -119,24 +119,32 @@ FCPPT_MATH_DETAIL_MAKE_OP_DECL(basic, op)
 
 	basic &
 	operator*=(
-		value_type const &);
+		value_type const &
+	);
 
 	basic &
 	operator/=(
-		value_type const &);
+		value_type const &
+	);
 
 	const_reference
 	operator[](
-		size_type) const;
+		size_type
+	) const;
 
 	reference
 	operator[](
-		size_type);
+		size_type
+	);
 
-	pointer data();
-	const_pointer data() const;
+	pointer
+	data();
 
-	size_type size() const;
+	const_pointer
+	data() const;
+
+	size_type
+	size() const;
 
 	static basic const
 	null();
@@ -150,8 +158,10 @@ FCPPT_MATH_DETAIL_MAKE_OP_DECL(basic, op)
 	reference w();
 	const_reference w() const;
 
-	void resize(
-		size_type);
+	void
+	resize(
+		size_type
+	);
 private:
 	S storage;
 };

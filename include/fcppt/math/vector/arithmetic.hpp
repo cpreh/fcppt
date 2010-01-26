@@ -39,7 +39,8 @@ template<\
 basic<T, N, S> const \
 operator op(\
 	basic<T, N, S> const &a,\
-	basic<T, N, S> const &b)\
+	basic<T, N, S> const &b\
+)\
 {\
 	return basic<T, N, S>(a) op##= b;\
 }
@@ -59,9 +60,14 @@ template<
 >
 basic<T, N, S> const
 operator -(
-	basic<T, N, S> a)
+	basic<T, N, S> a
+)
 {
-	for(typename basic<T, N, S>::size_type i = 0; i < a.size(); ++i)
+	for(
+		typename basic<T, N, S>::size_type i = 0;
+		i < a.size();
+		++i
+	)
 		a[i] = -a[i];
 	return a;
 }
@@ -74,7 +80,8 @@ template<
 basic<T, N, S> const
 operator *(
 	basic<T, N, S> a,
-	T const &s)
+	T const &s
+)
 {
 	return a *= s;
 }
@@ -87,7 +94,8 @@ template<
 basic<T, N, S> const
 operator *(
 	T const &s,
-	basic<T, N, S> const &a)
+	basic<T, N, S> const &a
+)
 {
 	return a * s;
 }
@@ -100,7 +108,8 @@ template<
 basic<T, N, S> const
 operator /(
 	basic<T, N, S> a,
-	T const &s)
+	T const &s
+)
 {
 	return a /= s;
 }

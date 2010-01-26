@@ -83,6 +83,72 @@ private:
 	Derived const &this_() const;
 };
 
+#define FCPPT_MATH_DETAIL_ARRAY_ADAPTER\
+	reference \
+	at(\
+		size_type\
+	);\
+\
+	const_reference \
+	at(\
+		size_type\
+	) const;\
+\
+	pointer \
+	data_end();\
+\
+	const_pointer \
+	data_end() const;\
+\
+	iterator \
+	begin();\
+\
+	const_iterator \
+	begin() const;\
+\
+	iterator \
+	end();\
+\
+	const_iterator \
+	end() const;\
+\
+	reverse_iterator \
+	rbegin();\
+\
+	const_reverse_iterator \
+	rbegin() const;\
+\
+	reverse_iterator \
+	rend();\
+\
+	const_reverse_iterator \
+	rend() const;\
+\
+	value_type &\
+	back();\
+\
+	value_type const &\
+	back() const;\
+\
+	value_type &\
+	front();\
+\
+	value_type const &\
+	front() const;\
+\
+	bool \
+	empty() const;\
+\
+	bool \
+	operator==(\
+		Derived const &\
+	) const;\
+\
+	bool \
+	operator!=(\
+		Derived const &\
+	) const;
+
 }
 }
 }

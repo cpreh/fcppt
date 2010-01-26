@@ -89,8 +89,8 @@ operator <(
 )
 {
 	return
-		lhs.since_time_epoch()
-		< rhs.since_time_epoch();
+		lhs.time_since_epoch()
+		< rhs.time_since_epoch();
 }
 
 template<

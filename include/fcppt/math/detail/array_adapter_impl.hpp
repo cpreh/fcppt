@@ -548,4 +548,162 @@ fcppt::math::detail::array_adapter<
 	return static_cast<Derived const &>(*this);
 }
 
+#define FCPPT_MATH_DETAIL_ARRAY_ADAPTER_IMPL\
+\
+FCPPT_MATH_DETAIL_TEMPLATE_PRE\
+typename FCPPT_MATH_DETAIL_CLASS_PRE ::reference \
+FCPPT_MATH_DETAIL_CLASS_PRE ::at(\
+	size_type const sz_\
+)\
+{\
+	FCPPT_ASSERT(index < size());\
+	return (*this)[index];\
+}\
+\
+FCPPT_MATH_DETAIL_TEMPLATE_PRE\
+typename FCPPT_MATH_DETAIL_CLASS_PRE ::reference \
+FCPPT_MATH_DETAIL_CLASS_PRE ::at(\
+	size_type const sz_\
+) const\
+{\
+	FCPPT_ASSERT(index < size());\
+	return (*this)[index];\
+}\
+\
+FCPPT_MATH_DETAIL_TEMPLATE_PRE\
+typename FCPPT_MATH_DETAIL_CLASS_PRE ::pointer \
+FCPPT_MATH_DETAIL_CLASS_PRE ::data_end() \
+{\
+	return data() + size();\
+}\
+\
+FCPPT_MATH_DETAIL_TEMPLATE_PRE\
+typename FCPPT_MATH_DETAIL_CLASS_PRE ::const_pointer \
+FCPPT_MATH_DETAIL_CLASS_PRE ::data_end() const\
+{\
+	return data() + size();\
+}\
+\
+FCPPT_MATH_DETAIL_TEMPLATE_PRE\
+typename FCPPT_MATH_DETAIL_CLASS_PRE ::iterator \
+FCPPT_MATH_DETAIL_CLASS_PRE ::begin() \
+{\
+	return iterator(data());\
+}\
+\
+FCPPT_MATH_DETAIL_TEMPLATE_PRE\
+typename FCPPT_MATH_DETAIL_CLASS_PRE ::const_iterator \
+FCPPT_MATH_DETAIL_CLASS_PRE ::begin() const\
+{\
+	return const_iterator(data());\
+}\
+\
+FCPPT_MATH_DETAIL_TEMPLATE_PRE\
+typename FCPPT_MATH_DETAIL_CLASS_PRE ::iterator \
+FCPPT_MATH_DETAIL_CLASS_PRE ::end()\
+{\
+	return iterator(data_end());\
+}\
+\
+FCPPT_MATH_DETAIL_TEMPLATE_PRE\
+typename FCPPT_MATH_DETAIL_CLASS_PRE ::const_iterator \
+FCPPT_MATH_DETAIL_CLASS_PRE ::end() const\
+{\
+	return const_iterator(data_end());\
+}\
+\
+FCPPT_MATH_DETAIL_TEMPLATE_PRE\
+typename FCPPT_MATH_DETAIL_CLASS_PRE ::iterator \
+FCPPT_MATH_DETAIL_CLASS_PRE ::rbegin() \
+{\
+	return reverse_iterator(end());\
+}\
+\
+FCPPT_MATH_DETAIL_TEMPLATE_PRE\
+typename FCPPT_MATH_DETAIL_CLASS_PRE ::const_iterator \
+FCPPT_MATH_DETAIL_CLASS_PRE ::rbegin() const\
+{\
+	return const_reverse_iterator(end());\
+}\
+\
+FCPPT_MATH_DETAIL_TEMPLATE_PRE\
+typename FCPPT_MATH_DETAIL_CLASS_PRE ::iterator \
+FCPPT_MATH_DETAIL_CLASS_PRE ::rend() \
+{\
+	return reverse_iterator(begin());\
+}\
+\
+FCPPT_MATH_DETAIL_TEMPLATE_PRE\
+typename FCPPT_MATH_DETAIL_CLASS_PRE ::const_iterator \
+FCPPT_MATH_DETAIL_CLASS_PRE ::rend() const\
+{\
+	return const_reverse_iterator(begin());\
+}\
+\
+FCPPT_MATH_DETAIL_TEMPLATE_PRE\
+typename FCPPT_MATH_DETAIL_CLASS_PRE ::reference \
+FCPPT_MATH_DETAIL_CLASS_PRE ::back()\
+{\
+	return *boost::prior(end());\
+}\
+\
+FCPPT_MATH_DETAIL_TEMPLATE_PRE\
+typename FCPPT_MATH_DETAIL_CLASS_PRE ::const_reference \
+FCPPT_MATH_DETAIL_CLASS_PRE ::back() const\
+{\
+	return *boost::prior(end());\
+}\
+\
+FCPPT_MATH_DETAIL_TEMPLATE_PRE\
+typename FCPPT_MATH_DETAIL_CLASS_PRE ::reference \
+FCPPT_MATH_DETAIL_CLASS_PRE ::front()\
+{\
+	return *begin();\
+}\
+\
+FCPPT_MATH_DETAIL_TEMPLATE_PRE\
+typename FCPPT_MATH_DETAIL_CLASS_PRE ::const_reference \
+FCPPT_MATH_DETAIL_CLASS_PRE ::front() const\
+{\
+	return *begin();\
+}\
+\
+FCPPT_MATH_DETAIL_TEMPLATE_PRE\
+bool \
+FCPPT_MATH_DETAIL_CLASS_PRE ::empty() const\
+{\
+	return size() == 0u;\
+}\
+\
+FCPPT_MATH_DETAIL_TEMPLATE_PRE\
+bool \
+FCPPT_MATH_DETAIL_CLASS_PRE ::operator==(\
+	FCPPT_MATH_DETAIL_CLASS_PRE const &other_\
+) const\
+{\
+	return \
+		size() == other_.size() \
+		&& std::equal(\
+			begin(),\
+			end(),\
+			r.begin(),\
+			std::tr1::bind(\
+				compare<\
+					value_type\
+				>,\
+				std::tr1::placeholders::_1,\
+				std::tr1::placeholders::_2\
+			)\
+		);\
+}\
+\
+FCPPT_MATH_DETAIL_TEMPLATE_PRE\
+bool \
+FCPPT_MATH_DETAIL_CLASS_PRE ::operator!=(\
+	FCPPT_MATH_DETAIL_CLASS_PRE const &other_\
+) const\
+{\
+	return !(*this == other_);\
+}
+
 #endif
