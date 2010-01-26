@@ -47,3 +47,8 @@ BOOST_AUTO_TEST_CASE(chrono_monotonic)
 		old_time = new_time;
 	}
 }
+
+int main()
+{
+	// FIXME
+}

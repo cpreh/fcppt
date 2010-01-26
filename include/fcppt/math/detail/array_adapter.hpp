@@ -21,68 +21,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #ifndef FCPPT_MATH_DETAIL_ARRAY_ADAPTER_HPP_INCLUDED
 #define FCPPT_MATH_DETAIL_ARRAY_ADAPTER_HPP_INCLUDED
 
-#include <iterator>
-
-namespace fcppt
-{
-namespace math
-{
-namespace detail
-{
-
-template<
-	typename Derived,
-	typename ValueType,
-	typename SizeType,
-	typename Reference = ValueType &,
-	typename ConstReference = ValueType const &
->
-class array_adapter {
-public:
-	typedef SizeType size_type;
-	typedef ValueType value_type;
-	typedef Reference reference;
-	typedef ConstReference const_reference;
-	typedef value_type *pointer;
-	typedef value_type const *const_pointer;
-	typedef pointer iterator;
-	typedef const_pointer const_iterator;
-	typedef std::reverse_iterator<iterator> reverse_iterator;
-	typedef std::reverse_iterator<const_iterator> const_reverse_iterator;
-
-	reference at(
-		size_type);
-	const_reference at(
-		size_type) const;
-
-	pointer data_end();
-	const_pointer data_end() const;
-
-	iterator begin();
-	const_iterator begin() const;
-	iterator end();
-	const_iterator end() const;
-	reverse_iterator rbegin();
-	const_reverse_iterator rbegin() const;
-	reverse_iterator rend();
-	const_reverse_iterator rend() const;
-
-	value_type &back();
-	value_type const &back() const;
-	value_type &front();
-	value_type const &front() const;
-
-	bool empty() const;
-
-	bool operator==(
-		Derived const &) const;
-	bool operator!=(
-		Derived const &) const;
-private:
-	Derived &this_();
-	Derived const &this_() const;
-};
-
 #define FCPPT_MATH_DETAIL_ARRAY_ADAPTER(name)\
 	reference \
 	at(\
@@ -124,16 +62,16 @@ private:
 	const_reverse_iterator \
 	rend() const;\
 \
-	value_type &\
+	reference \
 	back();\
 \
-	value_type const &\
+	const_reference \
 	back() const;\
 \
-	value_type &\
+	reference \
 	front();\
 \
-	value_type const &\
+	const_reference \
 	front() const;\
 \
 	bool \
@@ -148,9 +86,5 @@ private:
 	operator!=(\
 		name const &\
 	) const;
-
-}
-}
-}
 
 #endif

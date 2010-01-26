@@ -28,6 +28,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #include <fcppt/math/detail/array_adapter.hpp>
 #include <fcppt/type_traits/is_iterator.hpp>
 #include <boost/utility/enable_if.hpp>
+#include <iterator>
 
 namespace fcppt
 {
@@ -35,29 +36,6 @@ namespace math
 {
 namespace dim
 {
-namespace detail
-{
-
-template<
-	typename T,
-	typename N,
-	typename S
->
-class typedef_helper {
-public:
-	typedef math::detail::array_adapter<
-		basic<
-			T,
-			N,
-			S
-		>,
-		T,
-		typename N::value_type
-	> type;
-};
-
-}
-
 
 template<
 	typename T,
@@ -65,22 +43,21 @@ template<
 	typename S
 >
 class basic
-: public detail::typedef_helper<T, N, S>::type {
-	typedef typename detail::typedef_helper<T, N, S>::type base;
+{
 public:
 	typedef N dim_wrapper;
 	typedef S storage_type;
 
-	typedef typename base::size_type size_type;
-	typedef typename base::value_type value_type;
-	typedef typename base::reference reference;
-	typedef typename base::const_reference const_reference;
-	typedef typename base::pointer pointer;
-	typedef typename base::const_pointer const_pointer;
-	typedef typename base::iterator iterator;
-	typedef typename base::const_iterator const_iterator;
-	typedef typename base::reverse_iterator reverse_iterator;
-	typedef typename base::const_reverse_iterator const_reverse_iterator;
+	typedef typename N::value_type size_type;
+	typedef T value_type;
+	typedef value_type &reference;
+	typedef value_type const &const_reference;
+	typedef T *pointer;
+	typedef T const *const_pointer;
+	typedef pointer iterator;
+	typedef const_pointer const_iterator;
+	typedef std::reverse_iterator<iterator> reverse_iterator;
+	typedef std::reverse_iterator<const_iterator> const_reverse_iterator;
 
 	basic();
 
@@ -94,7 +71,10 @@ public:
 				In
 			>,
 			In
-		>::type end);
+		>::type end
+	);
+
+	FCPPT_MATH_DETAIL_ARRAY_ADAPTER(basic)
 
 #define FCPPT_MATH_DETAIL_MAKE_VARIADIC_CONSTRUCTOR_MAX_SIZE FCPPT_MATH_DIM_MAX_CTOR_PARAMS
 	FCPPT_MATH_DETAIL_MAKE_VARIADIC_CONSTRUCTOR_DECL(basic)

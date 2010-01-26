@@ -57,17 +57,22 @@ fcppt::math::dim::basic<T, N, S>::basic(
 			In
 		>,
 		In
-	>::type const end)
+	>::type const end
+)
 {
 	math::detail::initial_size(
 		storage,
 		std::distance(
 			beg,
-			end));
+			end
+		)
+	);
+
 	std::copy(
 		beg,
 		end,
-		data());
+		data()
+	);
 }
 
 #define FCPPT_MATH_DETAIL_MAKE_VARIADIC_CONSTRUCTOR_MAX_SIZE FCPPT_MATH_DIM_MAX_CTOR_PARAMS
@@ -80,8 +85,11 @@ fcppt::math::dim::basic<T, N, S>::basic(
 #define FCPPT_MATH_DETAIL_DEF_PRE\
 	fcppt::math::dim::basic<T, N, S>
 
+FCPPT_MATH_DETAIL_ARRAY_ADAPTER_IMPL
+
 FCPPT_MATH_DETAIL_MAKE_VARIADIC_CONSTRUCTOR(
-	basic)
+	basic
+)
 
 #undef FCPPT_MATH_DETAIL_MAKE_VARIADIC_CONSTRUCTOR_MAX_SIZE
 
@@ -263,11 +271,13 @@ template<
 typename fcppt::math::dim::basic<T, N, S>::size_type
 fcppt::math::dim::basic<T, N, S>::content() const
 {
-	return std::accumulate(
-		this->begin(),
-		this->end(),
-		1,
-		std::multiplies<size_type>());
+	return
+		std::accumulate(
+			this->begin(),
+			this->end(),
+			1,
+			std::multiplies<size_type>()
+		);
 }
 
 template<

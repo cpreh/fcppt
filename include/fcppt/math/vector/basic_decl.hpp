@@ -28,6 +28,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #include <fcppt/math/detail/array_adapter.hpp>
 #include <fcppt/type_traits/is_iterator.hpp>
 #include <boost/utility/enable_if.hpp>
+#include <iterator>
 
 namespace fcppt
 {

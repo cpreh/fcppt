@@ -22,14 +22,15 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #define FCPPT_MATH_MATRIX_BASIC_DECL_HPP_INCLUDED
 
 #include <fcppt/math/matrix/basic_fwd.hpp>
-#include <fcppt/math/matrix/detail/typedef_helper.hpp>
 #include <fcppt/math/matrix/detail/dim_storage.hpp>
+#include <fcppt/math/detail/view_storage.hpp>
 #include <fcppt/math/detail/make_op_decl.hpp>
 #include <fcppt/math/detail/make_variadic_constructor_decl.hpp>
 #include <fcppt/math/dim/static.hpp>
 #include <boost/mpl/times.hpp>
 #include <boost/type_traits/is_same.hpp>
 #include <boost/static_assert.hpp>
+#include <iterator>
 
 #ifndef FCPPT_MATH_MATRIX_MAX_CTOR_PARAMS
 #define FCPPT_MATH_MATRIX_MAX_CTOR_PARAMS 16
@@ -51,17 +52,16 @@ template<
 class basic
 :
 public
-	detail::typedef_helper<T, N, M, S>::type,
 	detail::dim_storage<N, M>
 {
-	typedef typename detail::typedef_helper<T, N, M, S>::type base;
 	typedef detail::dim_storage<N, M> dim_base;
 public:
 	BOOST_STATIC_ASSERT((
 		boost::is_same<
 			typename N::value_type,
 			typename M::value_type
-		>::value));
+		>::value
+	));
 
 	typedef typename boost::mpl::times<
 		N,
@@ -70,16 +70,39 @@ public:
 
 	typedef S storage_type;
 
-	typedef typename base::size_type size_type;
-	typedef typename base::value_type value_type;
-	typedef typename base::reference reference;
-	typedef typename base::const_reference const_reference;
-	typedef typename base::pointer pointer;
-	typedef typename base::const_pointer const_pointer;
-	typedef typename base::iterator iterator;
-	typedef typename base::const_iterator const_iterator;
-	typedef typename base::reverse_iterator reverse_iterator;
-	typedef typename base::const_reverse_iterator const_reverse_iterator;
+	typedef typename N::value_type size_type;
+
+	typedef T value_type;
+
+	typedef vector::basic<
+		T,
+		N,
+		math::detail::view_storage<
+			T,
+			N
+		>
+	> reference;
+
+	typedef vector::basic<
+		T,
+		N,
+		math::detail::view_storage<
+			T const,
+			N
+		>
+	> const_reference;
+
+	typedef T *pointer;
+
+	typedef T const *const_pointer;
+
+	typedef pointer iterator;
+
+	typedef const_pointer const_iterator;
+
+	typedef std::reverse_iterator<iterator> reverse_iterator;
+
+	typedef std::reverse_iterator<const_iterator> const_reverse_iterator;
 
 	typedef typename math::dim::static_<size_type, 2>::type dim;
 
@@ -104,6 +127,8 @@ public:
 		dim const &,
 		Container const &
 	);
+
+	FCPPT_MATH_DETAIL_ARRAY_ADAPTER(basic)
 
 #define FCPPT_MATH_DETAIL_MAKE_VARIADIC_CONSTRUCTOR_MAX_SIZE FCPPT_MATH_MATRIX_MAX_CTOR_PARAMS
 	FCPPT_MATH_DETAIL_MAKE_VARIADIC_CONSTRUCTOR_DECL(basic)

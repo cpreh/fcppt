@@ -34,6 +34,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #include <fcppt/math/detail/initial_size.hpp>
 #include <fcppt/math/detail/make_op_def.hpp>
 #include <fcppt/assert.hpp>
+#include <iterator>
 #include <algorithm>
 
 template<
@@ -121,6 +122,8 @@ fcppt::math::matrix::basic<T, N, M, S>::basic(
 	>
 #define FCPPT_MATH_DETAIL_DEF_PRE\
 	fcppt::math::matrix::basic<T, N, M, S>
+
+FCPPT_MATH_DETAIL_ARRAY_ADAPTER_IMPL
 
 FCPPT_MATH_DETAIL_MAKE_VARIADIC_CONSTRUCTOR(
 	basic
