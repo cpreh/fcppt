@@ -26,6 +26,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #include <fcppt/math/detail/view_storage.hpp>
 #include <fcppt/math/detail/make_op_decl.hpp>
 #include <fcppt/math/detail/make_variadic_constructor_decl.hpp>
+#include <fcppt/math/vector/basic_decl.hpp>
 #include <fcppt/math/dim/static.hpp>
 #include <boost/mpl/times.hpp>
 #include <boost/type_traits/is_same.hpp>
