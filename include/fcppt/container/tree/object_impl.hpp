@@ -18,8 +18,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
 
-#ifndef FCPPT_CONTAINER_TREE_IMPL_HPP_INCLUDED
-#define FCPPT_CONTAINER_TREE_IMPL_HPP_INCLUDED
+#ifndef FCPPT_CONTAINER_TREE_OBJECT_IMPL_HPP_INCLUDED
+#define FCPPT_CONTAINER_TREE_OBJECT_IMPL_HPP_INCLUDED
 
 #include <fcppt/container/tree/object_decl.hpp>
 #include <fcppt/container/ptr_equal.hpp>

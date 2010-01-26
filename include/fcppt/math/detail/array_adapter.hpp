@@ -83,7 +83,7 @@ private:
 	Derived const &this_() const;
 };
 
-#define FCPPT_MATH_DETAIL_ARRAY_ADAPTER\
+#define FCPPT_MATH_DETAIL_ARRAY_ADAPTER(name)\
 	reference \
 	at(\
 		size_type\
@@ -141,12 +141,12 @@ private:
 \
 	bool \
 	operator==(\
-		Derived const &\
+		name const &\
 	) const;\
 \
 	bool \
 	operator!=(\
-		Derived const &\
+		name const &\
 	) const;
 
 }
