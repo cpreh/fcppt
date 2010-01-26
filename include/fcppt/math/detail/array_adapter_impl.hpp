@@ -67,28 +67,28 @@ FCPPT_MATH_DETAIL_TEMPLATE_PRE \
 typename FCPPT_MATH_DETAIL_DEF_PRE ::iterator \
 FCPPT_MATH_DETAIL_DEF_PRE ::begin() \
 {\
-	return iterator(data());\
+	return static_cast<iterator>(data());\
 }\
 \
 FCPPT_MATH_DETAIL_TEMPLATE_PRE \
 typename FCPPT_MATH_DETAIL_DEF_PRE ::const_iterator \
 FCPPT_MATH_DETAIL_DEF_PRE ::begin() const\
 {\
-	return const_iterator(data());\
+	return static_cast<const_iterator>(data());\
 }\
 \
 FCPPT_MATH_DETAIL_TEMPLATE_PRE \
 typename FCPPT_MATH_DETAIL_DEF_PRE ::iterator \
 FCPPT_MATH_DETAIL_DEF_PRE ::end()\
 {\
-	return iterator(data_end());\
+	return static_cast<iterator>(data_end());\
 }\
 \
 FCPPT_MATH_DETAIL_TEMPLATE_PRE \
 typename FCPPT_MATH_DETAIL_DEF_PRE ::const_iterator \
 FCPPT_MATH_DETAIL_DEF_PRE ::end() const\
 {\
-	return const_iterator(data_end());\
+	return static_cast<const_iterator>(data_end());\
 }\
 \
 FCPPT_MATH_DETAIL_TEMPLATE_PRE \
