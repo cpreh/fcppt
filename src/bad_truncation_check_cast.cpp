@@ -18,16 +18,16 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
 
-#include <fcppt/bad_dynamic_cast.hpp>
+#include <fcppt/bad_truncation_check_cast.hpp>
 #include <fcppt/text.hpp>
 
-fcppt::bad_dynamic_cast::bad_dynamic_cast(
+fcppt::bad_truncation_check_cast::bad_truncation_check_cast(
 	fcppt::type_info const &_source,
 	fcppt::type_info const &_destination
 )
 :
 	exception(
-		FCPPT_TEXT("Invalid dynamic_cast from type \"")+
+		FCPPT_TEXT("Invalid truncation_check_cast from type \"")+
 		_source.name()+
 		FCPPT_TEXT("\" to type \"")+
 		_destination.name()+
@@ -39,13 +39,13 @@ fcppt::bad_dynamic_cast::bad_dynamic_cast(
 }
 
 fcppt::type_info const &
-fcppt::bad_dynamic_cast::source() const
+fcppt::bad_truncation_check_cast::source() const
 {
 	return source_;
 }
 
 fcppt::type_info const &
-fcppt::bad_dynamic_cast::destination() const
+fcppt::bad_truncation_check_cast::destination() const
 {
 	return destination_;
 }

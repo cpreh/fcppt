@@ -18,34 +18,38 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
 
-#include <fcppt/bad_dynamic_cast.hpp>
-#include <fcppt/text.hpp>
+#ifndef FCPPT_BAD_TRUNCATION_CHECK_CAST_HPP_INCLUDED
+#define FCPPT_BAD_TRUNCATION_CHECK_CAST_HPP_INCLUDED
 
-fcppt::bad_dynamic_cast::bad_dynamic_cast(
-	fcppt::type_info const &_source,
-	fcppt::type_info const &_destination
-)
+#include <fcppt/exception.hpp>
+#include <fcppt/type_info.hpp>
+#include <fcppt/class_symbol.hpp>
+#include <fcppt/symbol.hpp>
+
+namespace fcppt
+{
+
+class FCPPT_CLASS_SYMBOL bad_truncation_check_cast
 :
-	exception(
-		FCPPT_TEXT("Invalid dynamic_cast from type \"")+
-		_source.name()+
-		FCPPT_TEXT("\" to type \"")+
-		_destination.name()+
-		FCPPT_TEXT('"')
-	),
-	source_(_source),
-	destination_(_destination)
+	public exception
 {
+public:
+	FCPPT_SYMBOL bad_truncation_check_cast(
+		type_info const &source,
+		type_info const &dest
+	);
+
+	type_info const &
+	source() const;
+
+	type_info const &
+	destination() const;
+private:
+	type_info
+		source_,
+		destination_;
+};
+
 }
 
-fcppt::type_info const &
-fcppt::bad_dynamic_cast::source() const
-{
-	return source_;
-}
-
-fcppt::type_info const &
-fcppt::bad_dynamic_cast::destination() const
-{
-	return destination_;
-}
+#endif

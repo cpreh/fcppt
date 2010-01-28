@@ -18,34 +18,61 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
 
-#include <fcppt/bad_dynamic_cast.hpp>
-#include <fcppt/text.hpp>
+#ifndef FCPPT_TRUNCATION_CHECK_CAST_HPP_INCLUDED
+#define FCPPT_TRUNCATION_CHECK_CAST_HPP_INCLUDED
 
-fcppt::bad_dynamic_cast::bad_dynamic_cast(
-	fcppt::type_info const &_source,
-	fcppt::type_info const &_destination
+#include <fcppt/bad_truncation_check_cast.hpp>
+#include <boost/mpl/and.hpp>
+#include <boost/type_traits/is_fundamental.hpp>
+#include <boost/utility/enable_if.hpp>
+#include <typeinfo>
+
+namespace fcppt
+{
+
+template<
+	typename Dest,
+	typename Source
+>
+typename boost::enable_if<
+	boost::mpl::and_<
+		boost::is_fundamental<
+			Source
+		>,
+		boost::is_fundamental<
+			Dest
+		>
+	>,
+	Dest
+>::type
+truncation_check_cast(
+	Source const source
 )
-:
-	exception(
-		FCPPT_TEXT("Invalid dynamic_cast from type \"")+
-		_source.name()+
-		FCPPT_TEXT("\" to type \"")+
-		_destination.name()+
-		FCPPT_TEXT('"')
-	),
-	source_(_source),
-	destination_(_destination)
 {
+	Dest const dest(
+		static_cast<
+			Dest
+		>(
+			source
+		)
+	);
+
+	if(
+		static_cast<
+			Source
+		>(
+			dest
+		)
+		!= source
+	)
+		throw bad_truncation_check_cast(
+			typeid(Source),
+			typeid(Dest)
+		);
+	
+	return dest;
 }
 
-fcppt::type_info const &
-fcppt::bad_dynamic_cast::source() const
-{
-	return source_;
 }
 
-fcppt::type_info const &
-fcppt::bad_dynamic_cast::destination() const
-{
-	return destination_;
-}
+#endif
