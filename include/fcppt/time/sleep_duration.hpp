@@ -18,36 +18,32 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
 
-#include <fcppt/chrono/chrono.hpp>
-#define BOOST_TEST_MODULE ChronoMonotonic
-#include <boost/test/unit_test.hpp>
+#ifndef FCPPT_TIME_SLEEP_DURATION_HPP_INCLUDED
+#define FCPPT_TIME_SLEEP_DURATION_HPP_INCLUDED
 
-BOOST_AUTO_TEST_SUITE(foo)
+#include <fcppt/config.h>
+#if defined(FCPPT_WINDOWS_PLATFORM)
+#include <fcppt/chrono/milliseconds.hpp>
+#elif defined(FCPPT_POSIX_PLATFORM)
+#include <fcppt/chrono/nanoseconds.hpp>
+#else
+#error "Don't know what to include for the sleep_duration!"
+#endif
 
-BOOST_AUTO_TEST_CASE(chrono_monotonic)
+namespace fcppt
 {
-	typedef fcppt::chrono::monotonic_clock::time_point time_point;
+namespace time
+{
 
-	time_point old_time(
-		fcppt::chrono::monotonic_clock::now()
-	);
+#if defined(FCPPT_WINDOWS_PLATFORM)
+typedef fcppt::chrono::milliseconds sleep_duration;
+#elif defined(FCPPT_POSIX_PLATFORM)
+typedef fcppt::chrono::nanoseconds sleep_duration;
+#else
+#error "Don't know what the sleep duration should be!"
+#endif
 
-	for(
-		unsigned i = 0;
-		i < 100;
-		++i
-	)
-	{
-		time_point const new_time(
-			fcppt::chrono::monotonic_clock::now()
-		);
-
-		BOOST_REQUIRE(
-			old_time < new_time
-		);
-
-		old_time = new_time;
-	}
+}
 }
 
-BOOST_AUTO_TEST_SUITE_END()
+#endif

@@ -18,36 +18,51 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
 
-#include <fcppt/chrono/chrono.hpp>
-#define BOOST_TEST_MODULE ChronoMonotonic
-#include <boost/test/unit_test.hpp>
+#include <fcppt/time/sleep.hpp>
+#include <fcppt/time/sleep_interrupted.hpp>
+#include <fcppt/chrono/duration_impl.hpp>
+#include <fcppt/config.h>
+#if defined(FCPPT_WINDOWS_PLATFORM)
+#define WIN32_LEAN_AND_MEAN
+#include <windows.h>
+#elif defined(FCPPT_POSIX_PLATFORM)
+#include <time.h>
+#else
+#error "Don't know what to include for sleep!"
+#endif
 
-BOOST_AUTO_TEST_SUITE(foo)
-
-BOOST_AUTO_TEST_CASE(chrono_monotonic)
+void
+fcppt::time::sleep(
+	sleep_duration const &duration_
+)
 {
-	typedef fcppt::chrono::monotonic_clock::time_point time_point;
-
-	time_point old_time(
-		fcppt::chrono::monotonic_clock::now()
-	);
-
-	for(
-		unsigned i = 0;
-		i < 100;
-		++i
+#if defined(FCPPT_WINDOWS_PLATFORM)
+	if(
+		SleepEx(
+			duration_.count(),
+			TRUE
+		)
+		!= 0
 	)
+		throw sleep_interrupted();
+#elif defined(FCPPT_POSIX_PLATFORM)
+	timespec const req =
 	{
-		time_point const new_time(
-			fcppt::chrono::monotonic_clock::now()
-		);
+		duration_.count() / sleep_duration::period::den,
+		duration_.count() % sleep_duration::period::den
+	};
 
-		BOOST_REQUIRE(
-			old_time < new_time
-		);
-
-		old_time = new_time;
-	}
+	timespec rem;
+	
+	if(
+		nanosleep(
+			&req,
+			&rem
+		)
+		!= 0
+	)
+		throw sleep_interrupted();
+#else
+#error "Don't know which sleep to call!"
+#endif
 }
-
-BOOST_AUTO_TEST_SUITE_END()

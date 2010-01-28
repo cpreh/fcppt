@@ -18,36 +18,12 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
 
-#include <fcppt/chrono/chrono.hpp>
-#define BOOST_TEST_MODULE ChronoMonotonic
-#include <boost/test/unit_test.hpp>
+#include <fcppt/time/sleep_interrupted.hpp>
+#include <fcppt/text.hpp>
 
-BOOST_AUTO_TEST_SUITE(foo)
-
-BOOST_AUTO_TEST_CASE(chrono_monotonic)
-{
-	typedef fcppt::chrono::monotonic_clock::time_point time_point;
-
-	time_point old_time(
-		fcppt::chrono::monotonic_clock::now()
-	);
-
-	for(
-		unsigned i = 0;
-		i < 100;
-		++i
+fcppt::time::sleep_interrupted::sleep_interrupted()
+:
+	time::exception(
+		FCPPT_TEXT("Sleep interrupted")
 	)
-	{
-		time_point const new_time(
-			fcppt::chrono::monotonic_clock::now()
-		);
-
-		BOOST_REQUIRE(
-			old_time < new_time
-		);
-
-		old_time = new_time;
-	}
-}
-
-BOOST_AUTO_TEST_SUITE_END()
+{}
