@@ -59,3 +59,5 @@ BOOST_AUTO_TEST_CASE(chrono_monotonic)
 }
 
 BOOST_AUTO_TEST_SUITE_END()
+
+int main() {} // FIXME
