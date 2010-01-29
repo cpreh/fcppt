@@ -19,12 +19,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 
 #include <fcppt/chrono/chrono.hpp>
-#include <fcppt/chrono/seconds.hpp>
+#include <fcppt/chrono/minutes.hpp>
 #include <fcppt/time/sleep_any.hpp>
-#define BOOST_TEST_MODULE ChronoMonotonic
 #include <boost/test/unit_test.hpp>
-
-BOOST_AUTO_TEST_SUITE(foo)
 
 BOOST_AUTO_TEST_CASE(chrono_monotonic)
 {
@@ -36,7 +33,7 @@ BOOST_AUTO_TEST_CASE(chrono_monotonic)
 
 	for(
 		unsigned i = 0;
-		i < 100;
+		i < 3;
 		++i
 	)
 	{
@@ -51,13 +48,9 @@ BOOST_AUTO_TEST_CASE(chrono_monotonic)
 		old_time = new_time;
 
 		fcppt::time::sleep_any(
-			fcppt::chrono::seconds(
-				3u
+			fcppt::chrono::minutes(
+				1
 			)
 		);
 	}
 }
-
-BOOST_AUTO_TEST_SUITE_END()
-
-int main() {} // FIXME
