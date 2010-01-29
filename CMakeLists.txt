@@ -207,7 +207,7 @@ IF (ENABLE_EXAMPLES)
 	ADD_SUBDIRECTORY (examples)
 ENDIF ()
 
-OPTION(ENABLE_DOC "Build the documentation" ON)
+OPTION(ENABLE_DOC "Build the documentation" OFF)
 
 IF (ENABLE_DOC)
 	ADD_SUBDIRECTORY (doc)
