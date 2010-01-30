@@ -17,12 +17,31 @@ ADD_CUSTOM_TARGET(
 ADD_CUSTOM_COMMAND(
 	TARGET doc
 	COMMAND ${XSLT_COMMAND}
-	ARGS --path ${BOOSTBOOK_STYLESHEETS}/doxygen -o ${DOC_OUTPUT}/collected.xml collect.xsl ${DOC_OUTPUT}/xml/index.xml
+	ARGS
+		--xinclude
+		-o ${DOC_OUTPUT}/doxygen.xml
+		${BOOSTBOOK_STYLESHEETS}/doxygen/collect.xsl
+		${DOC_OUTPUT}/xml/index.xml
 	COMMAND ${XSLT_COMMAND}
-	ARGS --path ${BOOSTBOOK_STYLESHEETS}/doxygen -o ${DOC_OUTPUT}/doxygenboost.xml doxygen2boostbook.xsl ${DOC_OUTPUT}/collected.xml
+	ARGS
+		--xinclude
+		-o ${DOC_OUTPUT}/doxygen_boostbook.xml
+		${BOOSTBOOK_STYLESHEETS}/doxygen/doxygen2boostbook.xsl
+		${DOC_OUTPUT}/doxygen.xml
 	COMMAND ${QUICKBOOK_COMMAND}
-	ARGS ${CMAKE_SOURCE_DIR}/doc/main.qbk --output-file ${DOC_OUTPUT}/main.xml
+	ARGS
+		${CMAKE_SOURCE_DIR}/doc/main.qbk
+		--output-file ${DOC_OUTPUT}/main.xml
 	COMMAND ${XSLT_COMMAND}
-	ARGS --path ${BOOSTBOOK_STYLESHEETS} html.xsl main.xml
+		--xinclude
+		-o ${DOC_OUTPUT}/main_docbook.xml
+		${BOOSTBOOK_STYLESHEETS}/docbook.xsl
+		${DOC_OUTPUT}/main.xml
+	COMMAND ${XSLT_COMMAND}
+	ARGS
+		--xinclude
+		-o ${DOC_OUTPUT}/"html/"
+		${BOOSTBOOK_STYLESHEETS}/html.xsl
+		${DOC_OUTPUT}/main_docbook.xml
 	WORKING_DIRECTORY ${DOC_OUTPUT}
 )
