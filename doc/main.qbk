@@ -20,7 +20,7 @@ This is just a test: [@whiz:/test/index.html blubb]
 
 [section Introduction]
 
-[xinclude ../doc_generated/xml/index.xml]
+[xinclude ../doc_generated/doxygenboost.xml]
 
 Boost already is a very useful general purpose library.
 If you use C++ without boost the need for something that

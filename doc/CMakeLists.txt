@@ -17,7 +17,9 @@ ADD_CUSTOM_TARGET(
 ADD_CUSTOM_COMMAND(
 	TARGET doc
 	COMMAND ${XSLT_COMMAND}
-	ARGS --path ${BOOSTBOOK_STYLESHEETS}/doxygen doxygen2boostbook.xsl ${DOC_OUTPUT}/xml/index.xml
+	ARGS --path ${BOOSTBOOK_STYLESHEETS}/doxygen -o ${DOC_OUTPUT}/collected.xml collect.xsl ${DOC_OUTPUT}/xml/index.xml
+	COMMAND ${XSLT_COMMAND}
+	ARGS --path ${BOOSTBOOK_STYLESHEETS}/doxygen -o ${DOC_OUTPUT}/doxygenboost.xml doxygen2boostbook.xsl ${DOC_OUTPUT}/collected.xml
 	COMMAND ${QUICKBOOK_COMMAND}
 	ARGS ${CMAKE_SOURCE_DIR}/doc/main.qbk --output-file ${DOC_OUTPUT}/main.xml
 	COMMAND ${XSLT_COMMAND}
