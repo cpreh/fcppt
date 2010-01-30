@@ -24,6 +24,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #include <fcppt/chrono/clock_failure.hpp>
 #include <fcppt/chrono/time_point_impl.hpp>
 #include <fcppt/chrono/duration_impl.hpp>
+#include <fcppt/chrono/common_type.hpp>
+#include <fcppt/chrono/rep.hpp>
 #include <fcppt/text.hpp>
 #include <boost/type_traits/make_unsigned.hpp>
 #include <time.h>
@@ -55,8 +57,11 @@ clock_gettime_impl(
 
 	typedef typename TimePoint::duration duration_;
 
-	typedef boost::make_unsigned<
-		time_t
+	typedef common_type<
+		boost::make_unsigned<
+			time_t
+		>::type,
+		rep
 	>::type unsigned_type;
 
 	return TimePoint(

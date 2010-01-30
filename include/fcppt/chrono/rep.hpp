@@ -37,7 +37,7 @@ namespace chrono
 typedef boost::uint64_t rep;
 #else
 typedef unsigned long rep;
-FCPPT_PP_WARNING("This platform does not provide a 64 bit integer type. time_points might overflow too quickly.")
+FCPPT_PP_WARNING("This platform does not provide a 64 bit integer type. time_points may overflow too quickly.")
 #endif
 
 }
