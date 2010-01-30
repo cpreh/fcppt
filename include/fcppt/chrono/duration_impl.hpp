@@ -367,6 +367,46 @@ template<
 fcppt::chrono::duration<
 	Rep,
 	Period
+> &
+fcppt::chrono::duration<
+	Rep,
+	Period
+>::operator %=(
+	rep const &other
+)
+{
+	rep_ %= other;
+
+	return *this;
+}
+
+template<
+	typename Rep,
+	typename Period
+>
+fcppt::chrono::duration<
+	Rep,
+	Period
+> &
+fcppt::chrono::duration<
+	Rep,
+	Period
+>::operator %=(
+	duration const &other
+)
+{
+	rep_ %= other.count();
+
+	return *this;
+}
+
+template<
+	typename Rep,
+	typename Period
+>
+fcppt::chrono::duration<
+	Rep,
+	Period
 >
 fcppt::chrono::duration<
 	Rep,

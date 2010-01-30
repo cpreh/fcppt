@@ -128,6 +128,16 @@ public:
 		rep const &
 	);
 
+	duration &
+	operator %=(
+		rep const &
+	);
+
+	duration &
+	operator %=(
+		duration const &
+	);
+
 	static duration
 	zero();
 

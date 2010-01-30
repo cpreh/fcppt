@@ -23,6 +23,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 #include <fcppt/chrono/duration_impl.hpp>
 #include <fcppt/chrono/common_type.hpp>
+#include <fcppt/chrono/is_duration.hpp>
+#include <boost/static_assert.hpp>
 
 namespace fcppt
 {
@@ -56,19 +58,20 @@ operator +(
 	> const &rhs
 )
 {
-	return typename common_type<
-		duration<
-			Rep1,
-			Period1
-		>,
-		duration<
-			Rep2,
-			Period2
-		>
-	>::type(
-		lhs
-	)
-	+= rhs;
+	return
+		typename common_type<
+			duration<
+				Rep1,
+				Period1
+			>,
+			duration<
+				Rep2,
+				Period2
+			>
+		>::type(
+			lhs
+		)
+		+= rhs;
 }
 
 template<
@@ -98,19 +101,20 @@ operator -(
 	> const &rhs
 )
 {
-	return typename common_type<
-		duration<
-			Rep1,
-			Period1
-		>,
-		duration<
-			Rep2,
-			Period2
-		>
-	>::type(
-		lhs
-	)
-	-= rhs;
+	return
+		typename common_type<
+			duration<
+				Rep1,
+				Period1
+			>,
+			duration<
+				Rep2,
+				Period2
+			>
+		>::type(
+			lhs
+		)
+		-= rhs;
 }
 
 template<
@@ -242,6 +246,90 @@ operator /(
 		ct(
 			rhs
 		).count();
+}
+
+template<
+	typename Rep1,
+	typename Period,
+	typename Rep2
+>
+duration<
+	typename common_type<
+		Rep1,
+		Rep2
+	>::type,
+	Period
+>
+operator %(
+	duration<
+		Rep1,
+		Period
+	> const &d,
+	Rep2 const &s
+)
+{
+	typedef typename common_type<
+		Rep1,
+		Rep2
+	>::type ct;
+
+	BOOST_STATIC_ASSERT(
+		!is_duration<
+			Rep2
+		>::value
+	);
+
+	return
+		duration<
+			ct,
+			Period
+		>(
+			d
+		)
+		%= s;
+}
+
+template<
+	typename Rep1,
+	typename Period1,
+	typename Rep2,
+	typename Period2
+>
+typename common_type<
+	duration<
+		Rep1,
+		Period1
+	>,
+	duration<
+		Rep2,
+		Period2
+	>
+>::type
+operator %(
+	duration<
+		Rep1,
+		Period1
+	> const &lhs,
+	duration<
+		Rep2,
+		Period2
+	> const &rhs
+)
+{
+	return
+		typename common_type<
+			duration<
+				Rep1,
+				Period1
+			>,
+			duration<
+				Rep2,
+				Period2
+			>
+		>::type(
+			lhs
+		)
+		%= rhs;
 }
 
 }
