@@ -23,6 +23,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #include <fcppt/chrono/duration_impl.hpp>
 #include <fcppt/config.h>
 #if defined(FCPPT_WINDOWS_PLATFORM)
+#include <fcppt/truncation_check_cast.hpp>
 #define WIN32_LEAN_AND_MEAN
 #include <windows.h>
 #elif defined(FCPPT_POSIX_PLATFORM)
@@ -39,7 +40,11 @@ fcppt::time::sleep(
 #if defined(FCPPT_WINDOWS_PLATFORM)
 	if(
 		SleepEx(
-			duration_.count(),
+			truncation_check_cast<
+				DWORD
+			>(
+				duration_.count()
+			),
 			TRUE
 		)
 		!= 0
