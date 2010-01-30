@@ -21,8 +21,12 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #include <fcppt/filesystem/is_regular.hpp>
 #include <boost/filesystem/operations.hpp>
 
-bool fcppt::filesystem::is_regular(
-	path const &p)
+bool
+fcppt::filesystem::is_regular(
+	path const &path_
+)
 {
-	return boost::filesystem::is_regular_file(p);
+	return boost::filesystem::is_regular_file(
+		path_
+	);
 }
