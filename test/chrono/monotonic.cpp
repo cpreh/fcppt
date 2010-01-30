@@ -19,7 +19,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 
 #include <fcppt/chrono/chrono.hpp>
-#include <fcppt/chrono/minutes.hpp>
 #include <fcppt/time/sleep_any.hpp>
 #include <boost/test/unit_test.hpp>
 
@@ -48,7 +47,7 @@ BOOST_AUTO_TEST_CASE(chrono_monotonic)
 		old_time = new_time;
 
 		fcppt::time::sleep_any(
-			fcppt::chrono::minutes(
+			fcppt::chrono::seconds(
 				1
 			)
 		);

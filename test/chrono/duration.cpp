@@ -38,4 +38,17 @@ BOOST_AUTO_TEST_CASE(chrono_duration)
 	BOOST_REQUIRE(
 		sec.count() == 4u
 	);
+
+	fcppt::chrono::nanoseconds const convert_back(
+		fcppt::chrono::duration_cast<
+			fcppt::chrono::nanoseconds
+		>(
+			sec
+		)
+	);
+
+	BOOST_REQUIRE(
+		convert_back.count()
+		== 1000u * 1000u * 1000u * 4u
+	);
 }

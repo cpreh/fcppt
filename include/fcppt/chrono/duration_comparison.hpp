@@ -60,11 +60,15 @@ operator ==(
 		>::type ct;
 
 	return
-		ct(
+		static_cast<
+			ct
+		>(
 			lhs
 		).count()
 		==
-		ct(
+		static_cast<
+			ct
+		>(
 			rhs
 		).count();
 }
@@ -122,11 +126,15 @@ operator <(
 		>::type ct;
 
 	return
-		ct(
+		static_cast<
+			ct
+		>(
 			lhs
 		).count()
 		<
-		ct(
+		static_cast<
+			ct
+		>(
 			rhs
 		).count();
 }
