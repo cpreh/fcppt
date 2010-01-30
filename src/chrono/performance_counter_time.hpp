@@ -45,6 +45,7 @@ performance_counter_time()
 		QueryPerformanceCounter(
 			&ret
 		)
+		== 0
 	)
 		throw clock_failure(
 			FCPPT_TEXT("QueryPerformanceCounter() failed!")

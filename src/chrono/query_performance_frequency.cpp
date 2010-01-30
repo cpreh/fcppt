@@ -41,7 +41,7 @@ init()
 		QueryPerformanceFrequency(
 			&frequency
 		)
-		 == 0
+		== 0
 	)
 		throw fcppt::chrono::clock_failure(
 			FCPPT_TEXT("QueryPerformanceFrequency() failed!")

@@ -39,8 +39,6 @@ template<
 	typename S
 >
 fcppt::math::vector::basic<T, N, S>::basic()
-:
-	storage()
 {}
 
 template<
@@ -72,8 +70,6 @@ fcppt::math::vector::basic<T, N, S>::basic(
 		In
 	>::type const end
 )
-:
-	storage()
 {
 	math::detail::initial_size(
 		storage,
