@@ -1,5 +1,5 @@
-#ifndef FCPPT_RATIO_EQUAL_HPP_INCLUDED
-#define FCPPT_RATIO_EQUAL_HPP_INCLUDED
+#ifndef FCPPT_RATIO_GREATER_HPP_INCLUDED
+#define FCPPT_RATIO_GREATER_HPP_INCLUDED
 
 #include <fcppt/ratio/greater_fwd.hpp>
 #include <fcppt/ratio/less.hpp>
@@ -14,7 +14,7 @@ template<
 	typename R1,
 	typename R2
 >
-struct ratio_greater
+struct greater
 :
 boost::integral_constant<
 	bool,

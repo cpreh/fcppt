@@ -1,5 +1,5 @@
-#ifndef FCPPT_RATIO_EQUAL_EQUAL_HPP_INCLUDED
-#define FCPPT_RATIO_EQUAL_EQUAL_HPP_INCLUDED
+#ifndef FCPPT_RATIO_LESS_EQUAL_HPP_INCLUDED
+#define FCPPT_RATIO_LESS_EQUAL_HPP_INCLUDED
 
 #include <fcppt/ratio/less_equal_fwd.hpp>
 #include <fcppt/ratio/less.hpp>
