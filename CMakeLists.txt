@@ -131,19 +131,6 @@ CHECK_CXX_SOURCE_RUNS(
 	FCPPT_HAVE_POSIX
 )
 
-CHECK_CXX_SOURCE_RUNS(
-	"
-	#include <unistd.h>
-	#include <cstdlib>
-	int main()
-	{
-		return _POSIX_TIMERS > 0
-			? EXIT_SUCCESS
-			: EXIT_FAILURE;
-	}"
-	FCPPT_HAVE_CLOCK_GETTIME
-)
-
 # NOTE: we can't use this right now because -std=c++0x is broken with proto
 #CHECK_CXX_SOURCE_COMPILES(
 #	"struct test {
@@ -180,6 +167,14 @@ CHECK_CXX_SOURCE_COMPILES(
 	   boost::uint_least64_t test;
 	}"
 	FCPPT_HAVE_ATLEAST_UINT64
+)
+
+CHECK_CXX_SOURCE_COMPILES(
+	"int main()
+	{
+		long long test = 1LL;	
+	}"
+	FCPPT_HAVE_LONG_LONG
 )
 
 CHECK_CXX_SOURCE_RUNS(
