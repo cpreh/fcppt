@@ -15,9 +15,6 @@
 
 [/ End Macro Definition ]
 
-This is just a test: [@whiz:/test/index.html blubb]
-[@boost:/blubb.html test]
-
 [section Introduction]
 
 [xinclude ../doc_generated/doxygen_boostbook.xml]
