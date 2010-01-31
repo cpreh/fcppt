@@ -28,6 +28,7 @@ and there are even some things I consider not done "well" in boost.
 Freundlich's C++ toolkit (from now on shortened to fcppt)
 tries to fill in some gaps left by boost
 and even implements some replacements for a few boost components.
+
 [endsect]
 
 [section Overview]
@@ -87,30 +88,4 @@ its types are implemented with an mpl sequence directly and it offers up to tern
 
 [endsect]
 
-[section Log]
-
-[section Hello_World]
-Let's first start with an hello world example.
-
-[import ../examples/log/helloworld.cpp]
-[loghelloworld]
-
-A logger object is constructed using the parameters::root class.
-This logger will be a root logger which means that it won't inherit another one's properties.
-fcppt::log::_ is an output helper object. FCPPT_LOG_DEBUG is a helper macro so you don't
-have to write
-``
-if(logger.activated(fcppt::log::level::debug))
-  do_the_logging();
-``
-[endsect]
-
-[section Inheritance]
-A logger can inherit from another logger to form a hierarchy.
-
-[import ../examples/log/inheritance.cpp]
-[loginheritance]
-
-[endsect]
-
-[endsect]
+[include log.qbk]

@@ -1,10 +1,10 @@
 FIND_PACKAGE(Doxygen REQUIRED)
 
-SET(QUICKBOOK_COMMAND "quickbook-1_41") # FIXME!
+SET(QUICKBOOK_COMMAND "quickbook-${Boost_LIB_VERSION}") # FIXME!
 
 SET(XSLT_COMMAND "xsltproc") # FIXME!
 
-SET(BOOSTBOOK_STYLESHEETS "/usr/share/boostbook-1_41/xsl")
+SET(BOOSTBOOK_STYLESHEETS "/usr/share/boostbook-${Boost_LIB_VERSION}/xsl")
 
 SET(DOC_OUTPUT ${CMAKE_SOURCE_DIR}/doc_generated)
 

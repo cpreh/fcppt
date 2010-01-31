@@ -1,0 +1,27 @@
+[section Log]
+
+[section Hello_World]
+Let's first start with an hello world example.
+
+[import ../examples/log/helloworld.cpp]
+[loghelloworld]
+
+A logger object is constructed using the parameters::root class.
+This logger will be a root logger which means that it won't inherit another one's properties.
+fcppt::log::_ is an output helper object. FCPPT_LOG_DEBUG is a helper macro so you don't
+have to write
+``
+if(logger.activated(fcppt::log::level::debug))
+  do_the_logging();
+``
+[endsect]
+
+[section Inheritance]
+A logger can inherit from another logger to form a hierarchy.
+
+[import ../examples/log/inheritance.cpp]
+[loginheritance]
+
+[endsect]
+
+[endsect]
