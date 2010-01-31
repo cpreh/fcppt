@@ -34,7 +34,7 @@ struct ll_sub<X, Y, 1>
 {
 private:
 	static int_type const
-		min = min_c
+		min = min_c,
 		max = -min;
 
 	BOOST_STATIC_ASSERT(
@@ -61,7 +61,7 @@ struct ll_sub<X, Y, -1>
 {
 private:
 	static int_type const
-		min = min_c
+		min = min_c,
 		max = -min;
 
 	BOOST_STATIC_ASSERT(

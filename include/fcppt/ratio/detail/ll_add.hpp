@@ -34,7 +34,7 @@ struct ll_add<X, Y, 1>
 {
 private:
 	static int_type const
-		min = min_c
+		min = min_c,
 		max = -min;
 
 	BOOST_STATIC_ASSERT(

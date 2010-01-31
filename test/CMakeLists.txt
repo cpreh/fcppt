@@ -32,3 +32,4 @@ ENDMACRO()
 
 ADD_FCPPT_TEST(chrono/monotonic)
 ADD_FCPPT_TEST(chrono/duration)
+ADD_FCPPT_TEST(ratio/multiply)

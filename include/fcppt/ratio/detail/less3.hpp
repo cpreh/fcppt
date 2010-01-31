@@ -49,7 +49,7 @@ template<
 	typename R1,
 	typename R2
 >
-struct ratio_less3<R1, R2, false, true>
+struct less3<R1, R2, false, true>
 {
 	static bool const value = false;
 };
