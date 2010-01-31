@@ -1,0 +1,39 @@
+A simple documentation on how to write documentation.
+
+1. Quickbook
+
+Quickbook is used to provide the main documentation,
+which includes:
+- An overview of the library and its components
+- Introduction, explanations and motivating examples for every component
+- A link to the doxygen reference documentation
+
+main.qbk is the main file used for quickbook generation.
+From there additional files can be included by the [include file] directive.
+
+Code can be embedded with the [import sourcefile] directive and
+an additional directive for every codesnippet [codesnippetname].
+The code inside the sourcefile has to be embraced by //[codesnippetname 
+and //]. Every code snippet that is used in the documentation should go to
+examples/.
+
+2. Doxygen
+
+Doxygen is used to provide the reference documentation,
+which includes:
+- Every class should get at least a brief comment to make its intent clear.
+  Detailed comments that provide a general overview of the class's capabilities
+  are also appreciated.
+- Also every free standing function should at least receive a brief comment.
+- Member functions can be documented on a case by case basis if their intent
+  isn't clear from the class's description already.
+
+Arguments and return values should only be documented if the possible
+values aren't obvious. Often this can be fixed in the code instead.
+Brief comments should be made with ///. Long comments should be made
+with /** and */.
+
+3. Compilation
+
+'cmake -D ENABLE_DOC:=ON' must be set to activate the documentation.
+'make doc' can then be used to generate it.
