@@ -28,7 +28,7 @@ template<
 	typename R1,
 	typename R2
 >
-struct less<R1, R2, 1LL, 1LL>
+struct less<R1, R2, 1, 1>
 {
 	static bool const value = less1<R1, R2>::value;
 };
@@ -37,7 +37,7 @@ template<
 	typename R1,
 	typename R2
 >
-struct less<R1, R2, -1LL, -1LL>
+struct less<R1, R2, -1, -1>
 {
 	static bool const value
 		= less1<

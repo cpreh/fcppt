@@ -1,6 +1,7 @@
 #ifndef FCPPT_RATIO_DETAIL_LESS2_HPP_INCLUDED
 #define FCPPT_RATIO_DETAIL_LESS2_HPP_INCLUDED
 
+#include <fcppt/ratio/detail/min_c.hpp>
 #include <fcppt/ratio/detail/less3.hpp>
 
 namespace fcppt
@@ -17,7 +18,7 @@ template <
 >
 struct less2  // N1 < D1 == N2 < D2
 {
-	static int_type const max = -((1LL << (sizeof(intmax_t) * CHAR_BIT - 1)) + 1);
+	static int_type const max = -min_c;
 
 	static bool const
 		ok1 = R1::num <= max / R2::den,

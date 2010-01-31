@@ -2,8 +2,8 @@
 #define FCPPT_RATIO_DETAIL_LL_MUL_HPP_INCLUDED
 
 #include <fcppt/ratio/detail/static_abs.hpp>
+#include <fcppt/ratio/detail/min_c.hpp>
 #include <boost/static_assert.hpp>
-#include <climits>
 
 namespace fcppt
 {
@@ -20,8 +20,8 @@ struct ll_mul
 {
 private:
 	static int_type const
-		nan = (1LL << (sizeof(int_type) * CHAR_BIT - 1)),
-		min = nan + 1,
+		min = min_c,
+		nan = min - 1,
 		max = -min,
 		a_x = static_abs<X>::value,
 		a_y = static_abs<Y>::value;
