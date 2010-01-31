@@ -22,8 +22,8 @@ template<
 	int_type N,
 	int_type D
 >
-struct is_ratio<
-	ratio<
+struct is_object<
+	object<
 		N,
 		D
 	>

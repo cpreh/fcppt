@@ -16,7 +16,7 @@ template<
 >
 struct static_gcd
 {
-	static int_ype const value = static_gcd<Y, X % Y>::value;
+	static int_type const value = static_gcd<Y, X % Y>::value;
 };
 
 template<

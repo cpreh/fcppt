@@ -21,9 +21,9 @@ struct ll_mul
 private:
 	static int_type const
 		nan = (1LL << (sizeof(int_type) * CHAR_BIT - 1)),
-		min = nan + 1;
-		max = -min;
-		a_x = static_abs<X>::value;
+		min = nan + 1,
+		max = -min,
+		a_x = static_abs<X>::value,
 		a_y = static_abs<Y>::value;
 
 	BOOST_STATIC_ASSERT(

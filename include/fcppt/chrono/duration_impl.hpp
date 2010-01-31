@@ -11,6 +11,7 @@
 #include <fcppt/chrono/duration_cast.hpp>
 #include <fcppt/chrono/duration_values.hpp>
 #include <fcppt/chrono/treat_as_floating_point.hpp>
+#include <fcppt/ratio/divide.hpp>
 #include <boost/type_traits/is_convertible.hpp>
 #include <boost/static_assert.hpp>
 
@@ -90,7 +91,7 @@ fcppt::chrono::duration<
 {
 	BOOST_STATIC_ASSERT((
 		treat_as_floating_point<Rep>::value
-		|| ratio_divide<
+		|| ratio::divide<
 			Period2,
 			Period
 		>::type::den == 1

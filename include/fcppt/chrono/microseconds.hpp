@@ -9,7 +9,7 @@
 
 #include <fcppt/chrono/duration_fwd.hpp>
 #include <fcppt/chrono/rep.hpp>
-#include <fcppt/ratio.hpp>
+#include <fcppt/ratio/micro.hpp>
 
 namespace fcppt
 {
@@ -18,7 +18,7 @@ namespace chrono
 
 typedef duration<
 	rep,
-	micro
+	ratio::micro
 > microseconds;
 
 }

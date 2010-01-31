@@ -8,7 +8,7 @@ namespace fcppt
 namespace ratio
 {
 
-typedef ratio<
+typedef object<
 	1,
 	1000000L
 > micro;

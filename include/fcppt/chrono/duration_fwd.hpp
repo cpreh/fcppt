@@ -7,7 +7,7 @@
 #ifndef FCPPT_CHRONO_DURATION_FWD_HPP_INCLUDED
 #define FCPPT_CHRONO_DURATION_FWD_HPP_INCLUDED
 
-#include <fcppt/ratio.hpp>
+#include <fcppt/ratio/object.hpp>
 
 namespace fcppt
 {
@@ -17,7 +17,7 @@ namespace chrono
 template<
 	typename Rep,
 	typename Period
-		= ratio<1>
+		= ratio::object<1>
 >
 class duration;
 

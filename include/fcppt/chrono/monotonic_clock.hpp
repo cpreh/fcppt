@@ -11,7 +11,7 @@
 #include <fcppt/chrono/duration_fwd.hpp>
 #include <fcppt/chrono/time_point_fwd.hpp>
 #include <fcppt/chrono/rep.hpp>
-#include <fcppt/ratio.hpp>
+#include <fcppt/ratio/nano.hpp>
 #include <fcppt/symbol.hpp>
 
 namespace fcppt
@@ -28,7 +28,7 @@ class monotonic_clock
 public:
 	typedef chrono::rep rep;
 
-	typedef nano period;
+	typedef fcppt::ratio::nano period;
 
 	typedef fcppt::chrono::duration<
 		rep,

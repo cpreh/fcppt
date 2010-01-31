@@ -11,7 +11,7 @@
 #include <fcppt/chrono/duration_fwd.hpp>
 #include <fcppt/chrono/time_point_fwd.hpp>
 #include <fcppt/chrono/rep.hpp>
-#include <fcppt/ratio.hpp>
+#include <fcppt/ratio/micro.hpp>
 #include <fcppt/symbol.hpp>
 #include <ctime>
 
@@ -31,7 +31,7 @@ class system_clock
 public:
 	typedef chrono::rep rep;
 
-	typedef fcppt::micro period;
+	typedef fcppt::ratio::micro period;
 
 	typedef chrono::duration<
 		rep,

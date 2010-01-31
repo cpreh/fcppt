@@ -9,7 +9,7 @@
 
 #include <fcppt/chrono/common_type.hpp>
 #include <fcppt/chrono/duration_impl.hpp>
-#include <fcppt/ratio.hpp>
+#include <fcppt/ratio/divide.hpp>
 #include <boost/mpl/and.hpp>
 #include <boost/mpl/not.hpp>
 #include <boost/mpl/bool.hpp>
@@ -57,7 +57,7 @@ template<
 typename boost::enable_if<
 	boost::mpl::and_<
 		boost::mpl::bool_<
-			ratio_divide<
+			ratio::divide<
 				Period,
 				typename ToDuration::period
 			>::type::num == 1
@@ -96,7 +96,7 @@ duration_cast(
 			static_cast<
 				middle
 			>(
-				ratio_divide<
+				ratio::divide<
 					Period,
 					typename ToDuration::period
 				>::type::den
@@ -113,7 +113,7 @@ template<
 typename boost::enable_if<
 	boost::mpl::and_<
 		boost::mpl::bool_<
-			ratio_divide<
+			ratio::divide<
 				Period,
 				typename ToDuration::period
 			>::type::den == 1
@@ -152,7 +152,7 @@ duration_cast(
 			static_cast<
 				middle
 			>(
-				ratio_divide<
+				ratio::divide<
 					Period,
 					typename ToDuration::period
 				>::type::num
@@ -167,12 +167,12 @@ template<
 	typename Period
 >
 typename boost::enable_if_c<
-	ratio_divide<
+	ratio::divide<
 		Period,
 		typename ToDuration::period
 	>::type::num != 1
 	&&
-	ratio_divide<
+	ratio::divide<
 		Period,
 		typename ToDuration::period
 	>::type::den != 1,
@@ -190,7 +190,7 @@ duration_cast(
 		Rep
 	>::type middle;
 
-	typedef typename ratio_divide<
+	typedef typename ratio::divide<
 		Period,
 		typename ToDuration::period
 	>::type div;

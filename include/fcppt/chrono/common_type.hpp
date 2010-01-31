@@ -9,7 +9,7 @@
 
 #include <fcppt/chrono/time_point_fwd.hpp>
 #include <fcppt/chrono/duration_fwd.hpp>
-#include <fcppt/ratio.hpp>
+#include <fcppt/ratio/detail/gcd.hpp>
 #define BOOST_TYPEOF_SILENT
 #include <boost/typeof/typeof.hpp>
 
@@ -63,7 +63,7 @@ struct common_type<
 			Rep1,
 			Rep2
 		>::type,
-		typename detail::ratio_gcd<
+		typename ratio::detail::gcd<
 			Period1,
 			Period2
 		>::type

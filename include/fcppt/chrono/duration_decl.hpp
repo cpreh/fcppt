@@ -9,7 +9,7 @@
 
 #include <fcppt/chrono/duration_fwd.hpp>
 #include <fcppt/chrono/is_duration.hpp>
-#include <fcppt/ratio.hpp>
+#include <fcppt/ratio/is_object.hpp>
 #include <boost/static_assert.hpp>
 
 namespace fcppt
@@ -21,7 +21,8 @@ template<
 	typename Rep,
 	typename Period
 >
-class duration {
+class duration
+{
 public:
 	BOOST_STATIC_ASSERT(
 		!is_duration<
@@ -30,7 +31,7 @@ public:
 	);
 
 	BOOST_STATIC_ASSERT(
-		is_ratio<
+		ratio::is_object<
 			Period
 		>::value
 	);
