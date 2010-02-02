@@ -9,7 +9,6 @@
 #cmakedefine FCPPT_NARROW_STRING
 #cmakedefine FCPPT_STRING_IS_UTF8
 #cmakedefine FCPPT_HAS_GNU_DEMANGLE
-#cmakedefine FCPPT_HAVE_GCC_PRAGMA_MESSAGE
 
 #ifdef _WIN32
 #define FCPPT_WINDOWS_PLATFORM 1
@@ -20,8 +19,10 @@
 #endif
 #endif
 
+
 #ifdef __GNUC__
 #cmakedefine FCPPT_HAVE_GCC_VISIBILITY
+#define FCPPT_HAS_PRETTY_FUNCTION
 #endif
 
 #endif
