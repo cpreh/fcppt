@@ -22,12 +22,19 @@ A logger can inherit from another logger to form a hierarchy.
 [import ../examples/log/inheritance.cpp]
 [loginheritance]
 
+[endsect]
+
 [section Contexts]
 A context is a class that can be given to a logger that has a location.
 parameters::all and parameters::inherited implicitly construct a location for a logger.
 
 [import ../examples/log/context.cpp]
 [logcontext]
+
+The logger context has an apply function to apply an action to loggers recursively
+starting with the specified location. The statement will activate all loggers
+starting from root::child and beneath.
+This can be used to enable or disable loggers or log levels at runtime in an easy way.
 
 [endsect]
 
