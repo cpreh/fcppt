@@ -3,5 +3,6 @@ MACRO (ADD_FCPPT_LOG_EXAMPLE name)
 	TARGET_LINK_LIBRARIES (fcpptlog${name} fcppt)
 ENDMACRO ()
 
+ADD_FCPPT_LOG_EXAMPLE(context)
 ADD_FCPPT_LOG_EXAMPLE(helloworld)
 ADD_FCPPT_LOG_EXAMPLE(inheritance)
