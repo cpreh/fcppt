@@ -64,7 +64,7 @@ Some additional containers.
 Hierarchical logger clases with log levels, formatters and dynamic log manipulation.
 
 * mpl
-Some mpl metafunctions that like a better for_each, implication, partial_sums, and so on.
+Some mpl metafunctions like a better for_each, implication, partial_sums, and so on.
 
 * optional
 The optional class also doesn't use an undefined "union trick".
@@ -88,5 +88,6 @@ its types are implemented with an mpl sequence directly and it offers up to tern
 
 [include log.qbk]
 
-[include doxygen.qbk]
 [include utility.qbk]
+
+[include doxygen.qbk]
