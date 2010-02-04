@@ -7,20 +7,21 @@
 #ifndef FCPPT_ASSERT_MESSAGE_HPP_INCLUDED
 #define FCPPT_ASSERT_MESSAGE_HPP_INCLUDED
 
-#include <fcppt/detail/process_assert.hpp>
 #include <fcppt/preprocessor/stringize.hpp>
 #include <fcppt/preprocessor/file.hpp>
+#include <fcppt/preprocessor/function.hpp>
+#include <fcppt/assertion_failed.hpp>
 
 /**
- * @brief Runtime assert macro that throws an exception with an additional message
+ * @brief Runtime assert macro that throws an assertion_failed with an additional message
 */
 #define FCPPT_ASSERT_MESSAGE(cond, message)\
 if (!(cond))\
-	fcppt::detail::process_assert(\
+	throw assertion_failed(\
 		FCPPT_PP_FILE,\
-		FCPPT_PP_STRINGIZE(__LINE__),\
+		__LINE__,\
+		FCPPT_PP_FUNCTION,\
 		FCPPT_PP_STRINGIZE(cond),\
-		message\
-	);
+		message);
 
 #endif
