@@ -17,7 +17,7 @@
 */
 #define FCPPT_ASSERT_MESSAGE(cond, message)\
 if (!(cond))\
-	throw assertion_failed(\
+	throw fcppt::assertion_failed(\
 		FCPPT_PP_FILE,\
 		__LINE__,\
 		FCPPT_PP_FUNCTION,\

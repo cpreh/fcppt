@@ -1,0 +1,22 @@
+[section Utility]
+
+[section Assertions]
+
+The C standard library function `assert` (defined in `<cassert>`) doesn't throw an exception if the given condition isn't satisfied. Instead, `abort()` is called and all destructors are ignored. This can leave the system in a suboptimal state. Imagine a full screen renderer which doesn't change the videomode after a crash, leaving you with garbled video output.
+
+To remedy this situation, there are `FCPPT_ASSERT` and `FCPPT_ASSERT_MESSAGE`. These macros will throw `fcppt::assertion_failed` instead of aborting the program abruply. Here's a small example:
+
+``
+#include <fcppt/assert.hpp>
+#include <fcppt/assert_message.hpp>
+
+float a = 1.0f, b = 1.0f;
+FCPPT_ASSERT(a == b);
+FCPPT_ASSERT_MESSAGE(a != b,FCPPT_TEXT('Your float implementation did something strange.'));
+``
+
+Note that the asserts are still macros, because they use the `__LINE__` and `__FILE__` constants internally.
+
+Note also that it is currently impossible to deactivate assertions via a preprocessor directive and it is disputed if that will ever be possible.
+[endsect]
+[endsect]
