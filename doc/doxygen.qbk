@@ -1,0 +1,5 @@
+[section Doxygen]
+
+[xinclude ../doc_generated/doxygen_boostbook.xml]
+
+[endsect]

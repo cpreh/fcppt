@@ -17,8 +17,6 @@
 
 [section Introduction]
 
-[xinclude ../doc_generated/doxygen_boostbook.xml]
-
 Boost already is a very useful general purpose library.
 If you use C++ without boost the need for something that
 is already provided by it will soon arise.
@@ -89,4 +87,6 @@ its types are implemented with an mpl sequence directly and it offers up to tern
 [endsect]
 
 [include log.qbk]
+
+[include doxygen.qbk]
 [include utility.qbk]
