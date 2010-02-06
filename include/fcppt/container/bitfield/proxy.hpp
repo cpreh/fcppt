@@ -22,7 +22,8 @@ template<
 	typename StoredType,
 	size_type ElementBits
 >
-class proxy {
+class proxy
+{
 	proxy(
 		StoredType array,
 		size_type pos
@@ -39,15 +40,18 @@ class proxy {
 
 	static size_type
 	bit_offset(
-		size_type p);
+		size_type
+	);
 
 	static size_type
 	array_offset(
-		size_type p);
+		size_type
+	);
 public:
 	proxy &
 	operator=(
-		value_type);
+		value_type
+	);
 
 	operator value_type() const;
 };

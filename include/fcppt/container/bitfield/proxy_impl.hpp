@@ -15,7 +15,8 @@ template<
 >
 fcppt::container::bitfield::proxy<StoredType, ElementBits>::proxy(
 	StoredType array,
-	size_type const pos)
+	size_type const pos
+)
 :
 	array(array),
 	pos(pos)
@@ -27,7 +28,8 @@ template<
 >
 fcppt::container::bitfield::size_type
 fcppt::container::bitfield::proxy<StoredType, ElementBits>::bit_offset(
-	size_type const p)
+	size_type const p
+)
 {
 	return p % ElementBits;
 }
@@ -38,7 +40,8 @@ template<
 >
 fcppt::container::bitfield::size_type
 fcppt::container::bitfield::proxy<StoredType, ElementBits>::array_offset(
-	size_type const p)
+	size_type const p
+)
 {
 	return p / ElementBits;
 }
@@ -49,7 +52,8 @@ template<
 >
 fcppt::container::bitfield::proxy<StoredType, ElementBits> &
 fcppt::container::bitfield::proxy<StoredType, ElementBits>::operator=(
-	value_type const b)
+	value_type const b
+)
 {
 	size_type const
 		index(

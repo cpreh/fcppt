@@ -53,18 +53,37 @@ private:
 
 	iterator(
 		StoredType array,
-		size_type pos);
+		size_type pos
+	);
 
 	StoredType array;
 	size_type pos;
 
 	friend class boost::iterator_core_access;
 
-	void advance(difference_type d);
-	void increment();
-	void decrement();
-	bool equal(iterator const &) const;
-	Reference dereference() const;
+	void
+	advance(
+		difference_type
+	);
+
+	void
+	increment();
+
+	void
+	decrement();
+
+	bool
+	equal(
+		iterator const &
+	) const;
+
+	Reference
+	dereference() const;
+
+	difference_type
+	distance_to(
+		iterator const &
+	) const;
 
 	template<
 		typename OtherStoredType,
