@@ -86,10 +86,9 @@ public:
 		const_iterator
 	> const_reverse_iterator;
 
-private:
 	/// Uninitialized bitfield
 	basic();
-public:
+
 	// intentionally not explicit
 	/// Initializes every bit to false except the argument's bit
 	basic(
