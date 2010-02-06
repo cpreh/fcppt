@@ -10,6 +10,7 @@
 #include <fcppt/container/bitfield/proxy_fwd.hpp>
 #include <fcppt/container/bitfield/size_type.hpp>
 #include <fcppt/container/bitfield/value_type.hpp>
+#include <fcppt/nonassignable.hpp>
 
 namespace fcppt
 {
@@ -24,6 +25,8 @@ template<
 >
 class proxy
 {
+	FCPPT_NONASSIGNABLE(proxy)
+
 	proxy(
 		StoredType array,
 		size_type pos

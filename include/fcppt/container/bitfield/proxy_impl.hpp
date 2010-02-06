@@ -78,7 +78,12 @@ template<
 fcppt::container::bitfield::proxy<StoredType, ElementBits>::operator
 fcppt::container::bitfield::value_type() const
 {
-	return array[array_offset(pos)] & (1 << (bit_offset(pos)));
+	return
+		(
+			array[array_offset(pos)]
+			& (1 << (bit_offset(pos)))
+		)
+		!= 0;
 }
 
 #endif
