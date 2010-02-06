@@ -57,7 +57,7 @@ look_at(
 	vec3 const
 		f(
 			normalize(
-				lookat - eye
+				location - eye
 			)
 		),
 		s(
