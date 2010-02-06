@@ -8,6 +8,7 @@
 #define FCPPT_CODECVT_HPP_INCLUDED
 
 #include <fcppt/container/data.hpp>
+#include <fcppt/container/data_end.hpp>
 #include <fcppt/container/raw_vector_impl.hpp>
 #include <fcppt/exception.hpp>
 #include <fcppt/text.hpp>

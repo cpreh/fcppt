@@ -4,8 +4,8 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_CONTAINER_DATA_HPP_INCLUDED
-#define FCPPT_CONTAINER_DATA_HPP_INCLUDED
+#ifndef FCPPT_CONTAINER_DATA_END_HPP_INCLUDED
+#define FCPPT_CONTAINER_DATA_END_HPP_INCLUDED
 
 namespace fcppt
 {
@@ -16,22 +16,22 @@ template<
 	typename Container
 >
 typename Container::pointer
-data(
+data_end(
 	Container &c
 )
 {
-	return c.empty() ? 0 : &c[0];
+	return c.empty() ? 0 : &c[0] + c.size();
 }
 
 template<
 	typename Container
 >
 typename Container::const_pointer
-data(
+data_end(
 	Container const &c
 )
 {
-	return c.empty() ? 0 : &c[0];
+	return c.empty() ? 0 : &c[0] + c.size();
 }
 
 }
