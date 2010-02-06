@@ -14,6 +14,8 @@
 #include <fcppt/container/bitfield/value_type.hpp>
 #include <fcppt/tr1/array.hpp>
 #include <fcppt/safe_bool.hpp>
+#include <boost/type_traits/is_unsigned.hpp>
+#include <boost/static_assert.hpp>
 #include <iterator>
 #include <limits>
 
@@ -46,6 +48,12 @@ class basic
 	FCPPT_SAFE_BOOL(basic)
 private:
 	typedef InternalType internal_type;
+
+	BOOST_STATIC_ASSERT(
+		boost::is_unsigned<
+			internal_type
+		>::value
+	);
 
 	static size_type const element_bits = std::numeric_limits<internal_type>::digits;
 
