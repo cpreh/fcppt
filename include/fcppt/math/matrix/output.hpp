@@ -28,7 +28,8 @@ template<
 std::basic_ostream<Ch,Traits> &
 operator<< (
 	std::basic_ostream<Ch,Traits> &s,
-	basic<T, N, M, S> const &m)
+	basic<T, N, M, S> const &m
+)
 {
 	typedef typename basic<T, N, M, S>::size_type size_type;
 
