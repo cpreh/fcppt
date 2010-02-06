@@ -25,10 +25,10 @@ struct type_info
 	>
 	result_type
 	operator()(
-		T const &t
+		T const &
 	) const
 	{
-		return typeid(t);
+		return typeid(T);
 	}
 };
 

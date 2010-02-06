@@ -8,6 +8,7 @@
 #define FCPPT_CONTAINER_TREE_IN_ORDER_HPP_INCLUDED
 
 #include <fcppt/assert.hpp>
+#include <fcppt/noncopyable.hpp>
 #include <boost/iterator/iterator_facade.hpp>
 #include <boost/mpl/if.hpp>
 #include <boost/type_traits/is_const.hpp>
@@ -26,6 +27,7 @@ template<
 >
 class in_order
 {
+	FCPPT_NONCOPYABLE(in_order)
 public:
 	explicit in_order(
 		Tree &tree_

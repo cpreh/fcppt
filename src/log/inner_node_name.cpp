@@ -11,12 +11,14 @@
 #include <fcppt/variant/object_impl.hpp>
 #include <fcppt/container/tree/object_impl.hpp>
 #include <fcppt/string.hpp>
+#include <fcppt/nonassignable.hpp>
 
 namespace
 {
 
 class compare
 {
+	FCPPT_NONASSIGNABLE(compare)
 public:
 	typedef bool result_type;
 
