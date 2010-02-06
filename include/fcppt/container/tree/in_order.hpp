@@ -7,12 +7,15 @@
 #ifndef FCPPT_CONTAINER_TREE_IN_ORDER_HPP_INCLUDED
 #define FCPPT_CONTAINER_TREE_IN_ORDER_HPP_INCLUDED
 
+#include <fcppt/container/tree/is_object.hpp>
 #include <fcppt/assert.hpp>
 #include <fcppt/noncopyable.hpp>
 #include <boost/iterator/iterator_facade.hpp>
 #include <boost/mpl/if.hpp>
 #include <boost/type_traits/is_const.hpp>
+#include <boost/type_traits/remove_const.hpp>
 #include <boost/next_prior.hpp>
+#include <boost/static_assert.hpp>
 #include <stack>
 
 namespace fcppt
@@ -27,6 +30,14 @@ template<
 >
 class in_order
 {
+	BOOST_STATIC_ASSERT(
+		is_object<
+			typename boost::remove_const<
+				Tree
+			>::type
+		>::value
+	);
+
 	FCPPT_NONCOPYABLE(in_order)
 public:
 	explicit in_order(
