@@ -278,7 +278,7 @@ public:
 	void
 	shrink_to_fit();
 
-	/// Destroy this vector completly, it will then have empty storage
+	/// Destroy this vector completely, it will then have empty storage
 	/** Equivalent to resize(0); shrink_to_fit()
 	*/
 	void
@@ -331,27 +331,75 @@ private:
 	impl i;
 };
 
-template <typename T, typename A>
-bool operator==(const raw_vector<T, A>& x, const raw_vector<T,A>& y);
+template<
+	typename T,
+	typename A
+>
+bool
+operator==(
+	raw_vector<T, A> const &,
+	raw_vector<T, A> const &
+);
 
-template <typename T, typename A>
-bool operator< (const raw_vector<T, A>& x, const raw_vector<T, A>& y);
+template<
+	typename T,
+	typename A
+>
+bool
+operator<(
+	raw_vector<T, A> const &,
+	raw_vector<T, A> const &
+);
 
-template <typename T, typename A>
-bool operator!=(const raw_vector<T, A>& x, const raw_vector<T, A>& y);
+template<
+	typename T,
+	typename A
+>
+bool
+operator!=(
+	raw_vector<T, A> const &,
+	raw_vector<T, A> const &
+);
 
-template <typename T, typename A>
-bool operator> (const raw_vector<T, A>& x, const raw_vector<T, A>& y);
+template<
+	typename T,
+	typename A
+>
+bool
+operator>(
+	raw_vector<T, A> const &,
+	raw_vector<T, A> const &
+);
 
-template <typename T, typename A>
-bool operator>=(const raw_vector<T, A>& x, const raw_vector<T, A>& y);
+template<
+	typename T,
+	typename A
+>
+bool
+operator>=(
+	raw_vector<T, A> const &,
+	raw_vector<T, A> const &
+);
 
-template <typename T, typename A>
-bool operator<=(const raw_vector<T, A>& x, const raw_vector<T, A>& y);
+template<
+	typename T,
+	typename A
+>
+bool
+operator<=(
+	raw_vector<T, A> const &,
+	raw_vector<T, A> const &
+);
 
-template <typename T, typename A>
-void swap(raw_vector<T, A>& x, raw_vector<T, A>& y);
-
+template<
+	typename T,
+	typename A
+>
+void
+swap(
+	raw_vector<T, A> &,
+	raw_vector<T, A> &
+);
 
 }
 }

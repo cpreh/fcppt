@@ -551,7 +551,8 @@ fcppt::container::raw_vector<T, A>::insert(
 	T const &x
 )
 {
-	size_type const new_size = size() + 1;
+	size_type const new_size = size() + 1u;
+
 	if(new_size > capacity())
 	{
 		difference_type const insert_sz = position - begin();
@@ -561,7 +562,7 @@ fcppt::container::raw_vector<T, A>::insert(
 			std::uninitialized_copy(begin(), position, new_memory);
 		*(new_memory + insert_sz) = x;
 		if(!empty())
-			std::uninitialized_copy(position, end(), new_memory + insert_sz + 1);
+			std::uninitialized_copy(position, end(), new_memory + insert_sz + 1u);
 		deallocate();
 		set_pointers(new_memory, new_size, new_cap);
 		return begin() + insert_sz;
@@ -572,11 +573,11 @@ fcppt::container::raw_vector<T, A>::insert(
 			std::copy_backward(
 				position,
 				end(),
-				data_end() + 1
+				data_end() + 1u
 			);
 
 		*position = x;
-		i.last += 1;
+		++i.last;
 		return position;
 	}
 }
@@ -596,9 +597,9 @@ fcppt::container::raw_vector<T, A>::insert(
 
 	if(new_size > capacity())
 	{
-		const difference_type insert_sz = position - begin();
-		const size_type new_cap = new_capacity(new_size);
-		const pointer new_memory = i.a.allocate(new_cap);
+		difference_type const insert_sz = position - begin();
+		size_type const new_cap = new_capacity(new_size);
+		pointer const new_memory = i.a.allocate(new_cap);
 		if(!empty())
 			std::uninitialized_copy(begin(), position, new_memory);
 		std::uninitialized_fill(new_memory + insert_sz, new_memory + insert_sz + n, x);
@@ -676,8 +677,14 @@ fcppt::container::raw_vector<T, A>::erase(
 	iterator const position
 )
 {
-	std::uninitialized_copy(position + 1, end(), position);
+	std::uninitialized_copy(
+		position + 1u,
+		end(),
+		position
+	);
+
 	--i.last;
+
 	return position;
 }
 
