@@ -7,6 +7,9 @@
 #ifndef FCPPT_ALGORITHM_FIND_EXN_HPP_INCLUDED
 #define FCPPT_ALGORITHM_FIND_EXN_HPP_INCLUDED
 
+#include <fcppt/algorithm/element_not_found.hpp>
+#include <algorithm>
+
 namespace fcppt
 {
 namespace algorithm
@@ -18,13 +21,26 @@ template<
 >
 In
 find_exn(
-	In begin,
-	In end,
-	T const &);
+	In const begin,
+	In const end,
+	T const &t
+)
+{
+	In const ret(
+		std::find(
+			begin,
+			end,
+			t
+		)
+	);
+
+	if(ret == end)
+		throw element_not_found();
+
+	return ret;
+}
 
 }
 }
-
-#include <fcppt/algorithm/detail/find_exn_impl.hpp>
 
 #endif
