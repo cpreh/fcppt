@@ -14,7 +14,7 @@
 #include <fcppt/chrono/time_point_impl.hpp>
 #include <fcppt/chrono/duration_impl.hpp>
 #include <fcppt/tr1/random.hpp>
-#include <fcppt/noncopyable.hpp>
+#include <fcppt/nonassignable.hpp>
 
 namespace fcppt
 {
@@ -27,7 +27,7 @@ template<
 >
 class uniform
 {
-	FCPPT_NONCOPYABLE(uniform)
+	FCPPT_NONASSIGNABLE(uniform)
 
 	typedef typename uniform_distribution<
 		T
