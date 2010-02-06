@@ -8,6 +8,12 @@
 #include <fcppt/log/parameters/all.hpp>
 #include <fcppt/log/context.hpp>
 #include <fcppt/log/level_stream.hpp>
+#include <fcppt/preprocessor/push_warning.hpp>
+#include <fcppt/preprocessor/pop_warning.hpp>
+#include <fcppt/preprocessor/disable_vc_warning.hpp>
+
+FCPPT_PP_PUSH_WARNING
+FCPPT_PP_DISABLE_VC_WARNING(4355)
 
 fcppt::log::object::object(
 	parameters::all const &param_
@@ -37,6 +43,8 @@ fcppt::log::object::object(
 	)
 {
 }
+
+FCPPT_PP_POP_WARNING
 
 fcppt::log::object::~object()
 {}
