@@ -31,7 +31,7 @@ scaling(
 )
 {
 	T const
-		zero = zero,
+		zero = static_cast<T>(0),
 		one = static_cast<T>(1);
 	
 	return

@@ -14,6 +14,7 @@
 #include <fcppt/chrono/time_point_impl.hpp>
 #include <fcppt/chrono/duration_impl.hpp>
 #include <fcppt/tr1/random.hpp>
+#include <fcppt/noncopyable.hpp>
 
 namespace fcppt
 {
@@ -26,6 +27,8 @@ template<
 >
 class uniform
 {
+	FCPPT_NONCOPYABLE(uniform)
+
 	typedef typename uniform_distribution<
 		T
 	>::type range_type;
