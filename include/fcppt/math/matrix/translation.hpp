@@ -23,15 +23,45 @@ template<
 >
 typename static_<T, 4, 4>::type const
 translation(
-	T x,
-	T y,
-	T z
-);
+	T const x,
+	T const y,
+	T const z
+)
+{
+	return
+		typename static_<T, 4, 4>::type
+		(
+			static_cast<T>(1), static_cast<T>(0), static_cast<T>(0), x,
+		        static_cast<T>(0), static_cast<T>(1), static_cast<T>(0), y,
+		        static_cast<T>(0), static_cast<T>(0), static_cast<T>(1), z,
+	        	static_cast<T>(0), static_cast<T>(0), static_cast<T>(0), static_cast<T>(1)
+		);
+}
+
+template<
+	typename T,
+	typename N,
+	typename S
+>
+typename static_<T, 4, 4>::type const
+translation(
+	typename vector::basic<
+		T,
+		N,
+		S
+	>::type const &trans_
+)
+{
+	return
+		translation(
+			trans_.x(),
+			trans_.y(),
+			trans_.z()
+		);
+}
 
 }
 }
 }
-
-#include <fcppt/math/matrix/detail/translation_impl.hpp>
 
 #endif
