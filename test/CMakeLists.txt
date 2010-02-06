@@ -30,6 +30,11 @@ MACRO(
 	ADD_TEST(NAME ${TESTNAME} COMMAND ${TESTNAME})
 ENDMACRO()
 
-ADD_FCPPT_TEST(chrono/monotonic)
 ADD_FCPPT_TEST(chrono/duration)
+ADD_FCPPT_TEST(chrono/monotonic)
+ADD_FCPPT_TEST(container/bitfield)
+ADD_FCPPT_TEST(container/raw_vector)
+ADD_FCPPT_TEST(math/matrix/rotation_x)
+ADD_FCPPT_TEST(math/matrix/scaling)
+ADD_FCPPT_TEST(math/matrix/translation)
 ADD_FCPPT_TEST(ratio/multiply)

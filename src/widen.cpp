@@ -12,5 +12,5 @@ fcppt::widen(
 	std::string const &s
 )
 {
-	return ::codecvt<wchar_t>(s);
+	return fcppt::codecvt<wchar_t>(s);
 }

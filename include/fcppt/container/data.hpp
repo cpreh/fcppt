@@ -12,17 +12,13 @@ namespace fcppt
 namespace container
 {
 
-// these functions may be used on vector
-// (C++2003)
-// and on basic_string
-// (DR of 2005)
-
 template<
 	typename Container
 >
 typename Container::pointer
 data(
-	Container &c)
+	Container &c
+)
 {
 	return c.empty() ? 0 : &c[0];
 }
@@ -32,29 +28,10 @@ template<
 >
 typename Container::const_pointer
 data(
-	Container const &c)
+	Container const &c
+)
 {
 	return c.empty() ? 0 : &c[0];
-}
-
-template<
-	typename Container
->
-typename Container::pointer
-data_end(
-	Container &c)
-{
-	return c.empty() ? 0 : &c[0] + c.size();
-}
-
-template<
-	typename Container
->
-typename Container::const_pointer
-data_end(
-	Container const &c)
-{
-	return c.empty() ? 0 : &c[0] + c.size();
 }
 
 }

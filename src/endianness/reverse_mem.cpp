@@ -7,10 +7,19 @@
 #include <fcppt/endianness/reverse_mem.hpp>
 #include <algorithm>
 
-void fcppt::endianness::reverse_mem(
-	unsigned char* const t,
-	std::size_t const len)
+void
+fcppt::endianness::reverse_mem(
+	unsigned char *const t,
+	std::size_t const len
+)
 {
-	for(std::size_t i = 0; i < len / 2; ++i)
-		std::swap(t[i], t[len-i-1]);
+	for(
+		std::size_t i = 0;
+		i < len / 2;
+		++i
+	)
+		std::swap(
+			t[i],
+			t[len-i-1]
+		);
 }

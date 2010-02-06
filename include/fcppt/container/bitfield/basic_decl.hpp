@@ -14,19 +14,10 @@
 #include <fcppt/container/bitfield/value_type.hpp>
 #include <fcppt/tr1/array.hpp>
 #include <fcppt/safe_bool.hpp>
+#include <boost/type_traits/is_unsigned.hpp>
+#include <boost/static_assert.hpp>
 #include <iterator>
 #include <limits>
-
-// Requires:
-// - Enum shall be an enumeration type that doesn't contain any enumerators with explicit values.
-//   example 1: enum my_enum { value1, value2, value3 }; is perfectly valid
-//   example 2: enum my_enum { value = 100 }; is NOT valid
-// - Size shall be the number of enumerators defined in Enum.
-//   To achieve consistency you should define the enum's size within the enum itsself.
-//   example: enum my_enum { value1, value2, value3, _my_enum_size };
-//            typedef basic<my_enum,_my_enum_size> mybasic;
-// - operator|(Enum,Enum) shall not be declared!
-// - std::numeric_limits<InternalType>::digits shall be the number of bits usable in InternalType
 
 namespace fcppt
 {
@@ -35,15 +26,34 @@ namespace container
 namespace bitfield
 {
 
+/// A wrapper around a bitfield using an enum
+/** Requires:
+ * - Enum shall be an enumeration type that doesn't contain any enumerators with explicit values.
+ *   example 1: enum my_enum { value1, value2, value3 }; is perfectly valid
+ *   example 2: enum my_enum { value = 100 }; is NOT valid
+ * - Size shall be the number of enumerators defined in Enum.
+ *   To achieve consistency you should define the enum's size within the enum itsself.
+ *   example: enum my_enum { value1, value2, value3, _my_enum_size };
+ *            typedef basic<my_enum,_my_enum_size> mybasic;
+ * - operator|(Enum,Enum) shall not be declared!
+ * - std::numeric_limits<InternalType>::digits shall be the number of bits usable in InternalType
+*/
 template<
 	typename Enum,
 	Enum Size,
 	typename InternalType
 >
-class basic {
+class basic
+{
 	FCPPT_SAFE_BOOL(basic)
 private:
 	typedef InternalType internal_type;
+
+	BOOST_STATIC_ASSERT(
+		boost::is_unsigned<
+			internal_type
+		>::value
+	);
 
 	static size_type const element_bits = std::numeric_limits<internal_type>::digits;
 
@@ -54,7 +64,8 @@ private:
 
 	array_type array;
 
-	bool boolean_test() const;
+	bool
+	boolean_test() const;
 public:
 	typedef proxy<
 		array_type &,
@@ -83,51 +94,193 @@ public:
 		const_iterator
 	> const_reverse_iterator;
 
+	/// Uninitialized bitfield
 	basic();
 
 	// intentionally not explicit
-	basic(Enum e);
+	/// Initializes every bit to false except the argument's bit
+	basic(
+		Enum
+	);
 
-	basic &operator=(Enum e);
+	basic &
+	operator=(
+		Enum
+	);
 
-	iterator begin();
-	const_iterator begin() const;
-	iterator end();
-	const_iterator end() const;
-	reverse_iterator rbegin();
-	const_reverse_iterator rbegin() const;
-	reverse_iterator rend();
-	const_reverse_iterator rend() const;
+	iterator
+	begin();
 
-	size_type size() const;
+	const_iterator
+	begin() const;
 
-	const_reference operator[](Enum index) const;
-	reference operator[](Enum index);
+	iterator
+	end();
 
-	basic &operator|=(Enum e);
-	basic &operator|=(basic const &);
-	basic operator|(Enum r) const;
-	basic operator|(basic const &) const;
+	const_iterator
+	end() const;
 
-	basic &operator&=(basic const &r);
-	basic operator& (basic const &r) const;
-	value_type operator& (Enum where) const;
+	reverse_iterator
+	rbegin();
 
-	basic& operator^=(basic const &);
-	basic operator^(basic const &) const;
+	const_reverse_iterator
+	rbegin() const;
 
-	basic operator~() const;
+	reverse_iterator
+	rend();
 
-	void set(
+	const_reverse_iterator
+	rend() const;
+
+	size_type
+	size() const;
+
+	const_reference
+	operator[](
+		Enum
+	) const;
+
+	reference
+	operator[](
+		Enum
+	);
+
+	basic &
+	operator|=(
+		Enum
+	);
+
+	basic &
+	operator|=(
+		basic const &
+	);
+
+	basic &
+	operator&=(
+		basic const &
+	);
+
+	basic &
+	operator^=(
+		basic const &
+	);
+
+	void
+	set(
 		Enum where,
-		value_type value);
-	value_type get(Enum where) const;
+		value_type value
+	);
 
-	void clear();
+	value_type
+	get(
+		Enum
+	) const;
 
-	bool operator==(basic const &) const;
-	bool operator!=(basic const &) const;
+	void
+	clear();
+
+	static
+	basic const
+	null();
 };
+
+template<
+	typename Enum,
+	Enum Size,
+	typename InternalType
+>
+bool
+operator!(
+	basic<Enum, Size, InternalType> const &
+);
+
+template<
+	typename Enum,
+	Enum Size,
+	typename InternalType
+>
+basic<Enum, Size, InternalType> const
+operator|(
+	basic<Enum, Size, InternalType> const &,
+	Enum
+);
+
+template<
+	typename Enum,
+	Enum Size,
+	typename InternalType
+>
+basic<Enum, Size, InternalType> const
+operator|(
+	basic<Enum, Size, InternalType> const &,
+	basic<Enum, Size, InternalType> const &
+);
+
+template<
+	typename Enum,
+	Enum Size,
+	typename InternalType
+>
+basic<Enum, Size, InternalType> const
+operator&(
+	basic<Enum, Size, InternalType> const &,
+	basic<Enum, Size, InternalType> const &
+);
+
+template<
+	typename Enum,
+	Enum Size,
+	typename InternalType
+>
+value_type
+operator&(
+	basic<Enum, Size, InternalType> const &,
+	Enum
+);
+
+template<
+	typename Enum,
+	Enum Size,
+	typename InternalType
+>
+basic<Enum, Size, InternalType> const
+operator^(
+	basic<Enum, Size, InternalType> const &,
+	basic<Enum, Size, InternalType> const &
+);
+
+template<
+	typename Enum,
+	Enum Size,
+	typename InternalType
+>
+basic<Enum, Size, InternalType> const
+operator~(
+	basic<Enum, Size, InternalType>
+);
+
+
+template<
+	typename Enum,
+	Enum Size,
+	typename InternalType
+>
+bool
+operator==(
+	basic<Enum, Size, InternalType> const &,
+	basic<Enum, Size, InternalType> const &
+);
+
+template<
+	typename Enum,
+	Enum Size,
+	typename InternalType
+>
+bool
+operator!=(
+	basic<Enum, Size, InternalType> const &,
+	basic<Enum, Size, InternalType> const &
+);
 
 }
 }

@@ -18,12 +18,18 @@ template<
 >
 void
 append(
-	DestContainer &,
-	SourceContainer const &);
+	DestContainer &dest,
+	SourceContainer const &src
+)
+{
+	dest.insert(
+		dest.end(),
+		src.begin(),
+		src.end()
+	);
+}
 
 }
 }
-
-#include <fcppt/algorithm/detail/append_impl.hpp>
 
 #endif

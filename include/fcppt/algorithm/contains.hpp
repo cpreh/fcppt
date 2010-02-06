@@ -4,34 +4,37 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_ALGORITHM_DETAIL_FIND_EXN_IMPL_HPP_INCLUDED
-#define FCPPT_ALGORITHM_DETAIL_FIND_EXN_IMPL_HPP_INCLUDED
+#ifndef FCPPT_ALGORITHM_CONTAINS_HPP_INCLUDED
+#define FCPPT_ALGORITHM_CONTAINS_HPP_INCLUDED
 
-#include <fcppt/algorithm/element_not_found.hpp>
 #include <algorithm>
+
+namespace fcppt
+{
+namespace algorithm
+{
 
 template<
 	typename In,
 	typename T
 >
-In
-fcppt::algorithm::find_exn(
-	In const begin,
+bool
+contains(
+	In const beg,
 	In const end,
-	T const &t)
+	T const &value
+)
 {
-	In const ret(
+	return
 		std::find(
-			begin,
+			beg,
 			end,
-			t
+			value
 		)
-	);
+		!= end;
+}
 
-	if(ret == end)
-		throw element_not_found();
-
-	return ret;
+}
 }
 
 #endif

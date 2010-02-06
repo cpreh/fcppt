@@ -100,7 +100,7 @@ template<
 bool
 fcppt::container::tree::object<T>::has_parent() const
 {
-	return parent_;
+	return parent_ != 0;
 }
 
 template<

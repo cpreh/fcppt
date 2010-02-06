@@ -9,6 +9,14 @@
 
 #include <fcppt/math/matrix/static.hpp>
 #include <fcppt/math/vector/basic_fwd.hpp>
+#include <fcppt/math/matrix/basic_impl.hpp>
+#include <fcppt/math/matrix/arithmetic.hpp>
+#include <fcppt/math/matrix/translation.hpp>
+#include <fcppt/math/vector/basic_impl.hpp>
+#include <fcppt/math/vector/arithmetic.hpp>
+#include <fcppt/math/vector/cross.hpp>
+#include <fcppt/math/vector/normalize.hpp>
+#include <fcppt/math/vector/static.hpp>
 
 namespace fcppt
 {
@@ -39,12 +47,54 @@ look_at(
 		N,
 		S
 	> const &up
-);
+)
+{
+	typedef typename vector::static_<
+		T,
+		3
+	>::type vec3;
+
+	vec3 const
+		f(
+			normalize(
+				location - eye
+			)
+		),
+		s(
+			cross(
+				f,
+				normalize(
+					up
+				)
+			)
+		),
+		u(
+			cross(
+				s,
+				f
+			)
+		);
+
+	return typename static_<
+		T,
+		4,
+		4
+	>::type(
+		s.x(), u.x(), -f.x(), 0,
+		s.y(), u.y(), -f.y(), 0,
+		s.z(), u.z(), -f.z(), 0,
+		0, 0, 0, 1
+	)
+	* translation(
+		-eye.x(),
+		-eye.y(),
+		-eye.z()
+	);
+
+}
 
 }
 }
 }
-
-#include <fcppt/math/matrix/detail/look_at_impl.hpp>
 
 #endif

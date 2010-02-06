@@ -8,6 +8,10 @@
 #define FCPPT_MATH_MATRIX_SCALING_HPP_INCLUDED
 
 #include <fcppt/math/matrix/static.hpp>
+#include <fcppt/math/matrix/basic_impl.hpp>
+#include <fcppt/math/vector/basic_impl.hpp>
+#include <fcppt/math/vector/has_dim.hpp>
+#include <boost/utility/enable_if.hpp>
 
 namespace fcppt
 {
@@ -21,14 +25,54 @@ template<
 >
 typename static_<T, 4, 4>::type const
 scaling(
-	T x,
-	T y,
-	T z);
+	T const x,
+	T const y,
+	T const z
+)
+{
+	T const
+		zero = static_cast<T>(0),
+		one = static_cast<T>(1);
+	
+	return
+		typename static_<T, 4, 4>::type
+		(
+			   x,  zero, zero, zero,
+			zero,     y, zero, zero,
+			zero,  zero,    z, zero,
+			zero,  zero, zero,  one 
+		);
+
+}
+
+template<
+	typename Vector
+>
+typename boost::enable_if<
+	vector::has_dim<
+		Vector,
+		3
+	>,
+	typename static_<
+		typename Vector::value_type,
+		4,
+		4
+	>::type
+>::type const
+scaling(
+	Vector const &vec_
+)
+{
+	return
+		scaling(
+			vec_.x(),
+			vec_.y(),
+			vec_.z()
+		);
+}
 
 }
 }
 }
-
-#include <fcppt/math/matrix/detail/scaling_impl.hpp>
 
 #endif

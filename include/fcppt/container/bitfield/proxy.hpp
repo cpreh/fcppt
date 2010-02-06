@@ -10,6 +10,7 @@
 #include <fcppt/container/bitfield/proxy_fwd.hpp>
 #include <fcppt/container/bitfield/size_type.hpp>
 #include <fcppt/container/bitfield/value_type.hpp>
+#include <fcppt/nonassignable.hpp>
 
 namespace fcppt
 {
@@ -22,7 +23,10 @@ template<
 	typename StoredType,
 	size_type ElementBits
 >
-class proxy {
+class proxy
+{
+	FCPPT_NONASSIGNABLE(proxy)
+
 	proxy(
 		StoredType array,
 		size_type pos
@@ -39,15 +43,18 @@ class proxy {
 
 	static size_type
 	bit_offset(
-		size_type p);
+		size_type
+	);
 
 	static size_type
 	array_offset(
-		size_type p);
+		size_type
+	);
 public:
 	proxy &
 	operator=(
-		value_type);
+		value_type
+	);
 
 	operator value_type() const;
 };

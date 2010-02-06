@@ -6,11 +6,13 @@
 
 #include <fcppt/chrono/system_clock.hpp>
 #include <fcppt/chrono/time_point_impl.hpp>
+#include <fcppt/truncation_check_cast.hpp>
 #include <fcppt/config.h>
 #ifdef FCPPT_WINDOWS_PLATFORM
 #define WIN32_LEAN_AND_MEAN
 #include <windows.h>
 #elif FCPPT_POSIX_PLATFORM
+#include "unsigned_type.hpp"
 #include <fcppt/chrono/clock_failure.hpp>
 #include <fcppt/text.hpp>
 #include <sys/time.h>
@@ -33,7 +35,11 @@ fcppt::chrono::system_clock::now()
 
 	return time_point(
 		duration(
-			large_int.QuadPart
+			truncation_check_cast<
+				duration::rep
+			>(
+				large_int.QuadPart
+			)
 		)
 	);
 #elif FCPPT_POSIX_PLATFORM
@@ -52,7 +58,19 @@ fcppt::chrono::system_clock::now()
 
 	return time_point(
 		duration(
-			tv.tv_sec * period::den + tv.tv_usec
+			static_cast<
+				unsigned_type<
+					rep
+				>::type
+			>(
+				tv.tv_sec
+			)
+			* 1000000UL
+			+ static_cast<
+				unsigned long
+			>(
+				tv.tv_usec
+			)
 		)
 	);
 #endif
@@ -64,7 +82,13 @@ fcppt::chrono::system_clock::to_time_t(
 	time_point const &point_
 )
 {
-	return point_.time_since_epoch().count() / duration::period::den;
+	return
+		truncation_check_cast<
+			std::time_t
+		>(
+			point_.time_since_epoch().count()
+			/ duration::period::den
+		);
 }
 
 fcppt::chrono::system_clock::time_point
@@ -72,9 +96,14 @@ fcppt::chrono::system_clock::from_time_t(
 	std::time_t const tm_
 )
 {
-	return time_point(
-		duration(
-			tm_ * duration::period::den
-		)
-	);
+	return
+		time_point(
+			duration(
+				truncation_check_cast<
+					duration::rep
+				>(
+					tm_ * duration::period::den
+				)
+			)
+		);
 }

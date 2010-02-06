@@ -11,15 +11,34 @@ namespace fcppt
 {
 namespace algorithm
 {
+
 template<
 	typename Container,
-	typename Ptr>
-void ptr_container_erase(
-	Container &,
-	Ptr);
-}
+	typename Ptr
+>
+bool
+ptr_container_erase(
+	Container &c,
+	Ptr const s
+)
+{
+	for(
+		typename Container::iterator b = c.begin();
+		b != c.end();
+		++b
+	)
+	{
+		if (&(*b) == s)
+		{
+			c.erase(b);
+			return true;
+		}
+	}
+
+	return false;
 }
 
-#include "detail/ptr_container_erase_impl.hpp"
+}
+}
 
 #endif

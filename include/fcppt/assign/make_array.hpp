@@ -7,46 +7,27 @@
 #ifndef FCPPT_ASSIGN_MAKE_ARRAY_HPP_INCLUDED
 #define FCPPT_ASSIGN_MAKE_ARRAY_HPP_INCLUDED
 
-#include <fcppt/tr1/array.hpp>
-#include <cstddef>
+#include <fcppt/assign/detail/array_impl.hpp>
 
 namespace fcppt
 {
 namespace assign
 {
-namespace detail
-{
+
 template<
-	class T,
-	std::size_t N
+	typename T
 >
-class array
+detail::array<T,1>
+make_array(
+	T const &t
+)
 {
-public:
-	typedef std::tr1::array<T,N> container_type;
-
-	array(
-		T const &);
-
-	array(
-		array<T,N-1> const &,
-		T const &);
-
-	array<T,N+1> operator()(T const &);
-
-	operator container_type() const;
-private:
-	friend class array<T,N+1>;
-
-	container_type a;
-};
+	return detail::array<T,1>(
+		t
+	);
 }
 
-template<typename T>
-detail::array<T,1> make_array(T const &);
 }
 }
-
-#include <fcppt/assign/detail/make_array_impl.hpp>
 
 #endif

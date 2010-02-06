@@ -7,6 +7,8 @@
 #ifndef FCPPT_VARIANT_DETAIL_BINARY_APPLIER_HPP_INCLUDED
 #define FCPPT_VARIANT_DETAIL_BINARY_APPLIER_HPP_INCLUDED
 
+#include <fcppt/nonassignable.hpp>
+
 namespace fcppt
 {
 namespace variant
@@ -18,8 +20,10 @@ template<
 	typename Operation,
 	typename Type
 >
-struct binary_applier
+class binary_applier
 {
+	FCPPT_NONASSIGNABLE(binary_applier)
+public:
 	typedef typename Operation::result_type result_type;
 
 	binary_applier(

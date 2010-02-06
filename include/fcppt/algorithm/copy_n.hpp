@@ -7,6 +7,8 @@
 #ifndef FCPPT_ALGORITHM_COPY_N_HPP_INCLUDED
 #define FCPPT_ALGORITHM_COPY_N_HPP_INCLUDED
 
+#include <algorithm>
+
 namespace fcppt
 {
 namespace algorithm
@@ -19,13 +21,19 @@ template<
 >
 Out
 copy_n(
-	In beg,
-	Size sz,
-	Out out);
+	In const beg,
+	Size const sz,
+	Out const out
+)
+{
+	return std::copy(
+		beg,
+		beg + sz,
+		out
+	);
+}
 
 }
 }
-
-#include <fcppt/algorithm/detail/copy_n_impl.hpp>
 
 #endif

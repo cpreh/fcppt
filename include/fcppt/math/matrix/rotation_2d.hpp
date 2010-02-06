@@ -8,6 +8,8 @@
 #define FCPPT_MATH_MATRIX_ROTATION_2D_HPP_INCLUDED
 
 #include <fcppt/math/matrix/static.hpp>
+#include <fcppt/math/matrix/basic_impl.hpp>
+#include <cmath>
 
 namespace fcppt
 {
@@ -21,12 +23,22 @@ template<
 >
 typename static_<T, 2, 2>::type const
 rotation_2d(
-	T angle);
+	T angle
+)
+{
+	T const
+		sinx = std::sin(angle),
+        	cosx = std::cos(angle);
+
+	return
+		typename static_<T, 2, 2>::type(
+			cosx, -sinx,
+			sinx,  cosx
+		);
+}
 
 }
 }
 }
-
-#include <fcppt/math/matrix/detail/rotation_2d_impl.hpp>
 
 #endif
