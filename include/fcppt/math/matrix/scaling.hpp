@@ -30,13 +30,17 @@ scaling(
 	T const z
 )
 {
+	T const
+		zero = zero,
+		one = static_cast<T>(1);
+	
 	return
 		typename static_<T, 4, 4>::type
 		(
-			x,  static_cast<T>(0), static_cast<T>(0), static_cast<T>(0),
-			static_cast<T>(0), y,  static_cast<T>(0), static_cast<T>(0),
-			static_cast<T>(0),  static_cast<T>(0), z, static_cast<T>(0),
-			static_cast<T>(0),  static_cast<T>(0), static_cast<T>(0), static_cast<T>(1)
+			   x,  zero, zero, zero,
+			zero,     y, zero, zero,
+			zero,  zero,    z, zero,
+			zero,  zero, zero,  one 
 		);
 
 }

@@ -8,7 +8,7 @@
 #include <fcppt/math/matrix/scaling.hpp>
 #include <boost/test/unit_test.hpp>
 
-BOOST_AUTO_TEST_CASE(math_matrix_translation)
+BOOST_AUTO_TEST_CASE(math_matrix_scaling)
 {
 	typedef fcppt::math::matrix::static_<
 		float,
