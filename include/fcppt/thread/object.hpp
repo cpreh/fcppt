@@ -7,21 +7,22 @@
 #ifndef FCPPT_THREAD_OBJECT_HPP_INCLUDED
 #define FCPPT_THREAD_OBJECT_HPP_INCLUDED
 
+#include <fcppt/thread/task.hpp>
 #include <fcppt/symbol.hpp>
-#include <fcppt/function/object.hpp>
-#include <boost/thread.hpp>
+#include <fcppt/noncopyable.hpp>
+#include <boost/thread/thread.hpp>
 
 namespace fcppt
 {
 namespace thread
 {
+
 class object
 {
+	FCPPT_NONCOPYABLE(object)
 public:
-	typedef fcppt::function::object<void ()> task;
-
 	FCPPT_SYMBOL object(
-		task const &
+		thread::task const &
 	);
 
 	FCPPT_SYMBOL void
@@ -31,6 +32,7 @@ public:
 private:
 	boost::thread thread_;
 };
+
 }
 }
 
