@@ -13,7 +13,7 @@
 #define FCPPT_PP_DISABLE_VC_WARNING(number) \
 FCPPT_PP_PRAGMA(warning(disable:number))
 #else
-#define FCPPT_PP_DISABLE_VC_WARNING
+#define FCPPT_PP_DISABLE_VC_WARNING(number)
 #endif
 
 #endif
