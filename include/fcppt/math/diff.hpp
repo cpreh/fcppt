@@ -21,10 +21,17 @@ namespace math
 template<
 	typename T
 >
-inline typename boost::disable_if<boost::is_unsigned<T>, T>::type
+inline
+typename boost::disable_if<
+	boost::is_unsigned<
+		T
+	>,
+	T
+>::type
 diff(
 	T const &a,
-	T const &b)
+	T const &b
+)
 {
 	return std::abs(a - b);
 }
@@ -32,10 +39,17 @@ diff(
 template<
 	typename T
 >
-inline typename boost::enable_if<boost::is_unsigned<T>, T>::type
+inline
+typename boost::enable_if<
+	boost::is_unsigned<
+		T
+	>,
+	T
+>::type
 diff(
 	T const &a,
-	T const &b)
+	T const &b
+)
 {
 	return std::min(a - b, b - a);
 }
