@@ -432,7 +432,7 @@ template<
 	Enum Size,
 	typename InternalType
 >
-typename fcppt::container::bitfield::basic<Enum, Size, InternalType>::value_type
+fcppt::container::bitfield::value_type
 fcppt::container::bitfield::operator&(
 	basic<Enum, Size, InternalType> const &l,
 	Enum const where

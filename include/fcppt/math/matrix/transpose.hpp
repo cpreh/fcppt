@@ -25,7 +25,7 @@ template<
 >
 basic<T, M, N, S> const
 transpose(
-	basic<T, N, M, S> const &
+	basic<T, N, M, S> const &t
 )
 {
 	typedef basic<T, M, N, S> ret_type;

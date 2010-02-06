@@ -32,11 +32,52 @@ typedef fcppt::container::bitfield::basic<
 
 BOOST_AUTO_TEST_CASE(container_bitfield)
 {
-	bitfield field(
+	bitfield field1(
 		bitfield::null()
 	);
 	
 	BOOST_REQUIRE(
-		!field
+		!field1
 	);
+
+	field1[test_enum::test1] = true;
+
+	BOOST_REQUIRE(
+		field1
+	);
+
+	bitfield field2(
+		bitfield::null()
+	);
+
+	field2[test_enum::test3] = true;
+
+	{
+		bitfield const bf_or(
+			field1 | field2
+		);
+
+		BOOST_REQUIRE(
+			bf_or[test_enum::test1]
+			&& !bf_or[test_enum::test2]
+			&& bf_or[test_enum::test3]
+		);
+	}
+
+	BOOST_REQUIRE(
+		!(field1 & field2)
+	);
+
+	{
+
+		bitfield const bf_xor(
+			field1 ^ field2
+		);
+		
+		BOOST_REQUIRE(
+			bf_xor[test_enum::test1]
+			&& !bf_xor[test_enum::test2]
+			&& bf_xor[test_enum::test3]
+		);
+	}
 }
