@@ -55,14 +55,14 @@ typename boost::enable_if<
 	>::type
 >::type const
 translation(
-	Vector const &trans_
+	Vector const &vec_
 )
 {
 	return
 		translation(
-			trans_.x(),
-			trans_.y(),
-			trans_.z()
+			vec_.x(),
+			vec_.y(),
+			vec_.z()
 		);
 }
 
