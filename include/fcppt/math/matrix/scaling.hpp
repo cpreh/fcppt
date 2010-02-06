@@ -21,14 +21,24 @@ template<
 >
 typename static_<T, 4, 4>::type const
 scaling(
-	T x,
-	T y,
-	T z);
+	T const x,
+	T const y,
+	T const z
+)
+{
+	return
+		typename static_<T, 4, 4>::type
+		(
+			x,  static_cast<T>(0), static_cast<T>(0), static_cast<T>(0),
+			static_cast<T>(0), y,  static_cast<T>(0), static_cast<T>(0),
+			static_cast<T>(0),  static_cast<T>(0), z, static_cast<T>(0),
+			static_cast<T>(0),  static_cast<T>(0), static_cast<T>(0), static_cast<T>(1)
+		);
+
+}
 
 }
 }
 }
-
-#include <fcppt/math/matrix/detail/scaling_impl.hpp>
 
 #endif

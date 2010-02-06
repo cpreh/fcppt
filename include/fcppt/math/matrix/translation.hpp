@@ -10,6 +10,8 @@
 #include <fcppt/math/matrix/static.hpp>
 #include <fcppt/math/matrix/basic_impl.hpp>
 #include <fcppt/math/vector/basic_impl.hpp>
+#include <fcppt/math/vector/has_dim.hpp>
+#include <boost/utility/enable_if.hpp>
 
 namespace fcppt
 {
@@ -39,17 +41,21 @@ translation(
 }
 
 template<
-	typename T,
-	typename N,
-	typename S
+	typename Vector
 >
-typename static_<T, 4, 4>::type const
+typename boost::enable_if<
+	vector::has_dim<
+		Vector,
+		3
+	>,
+	typename static_<
+		typename Vector::value_type,
+		4,
+		4
+	>::type
+>::type const
 translation(
-	typename vector::basic<
-		T,
-		N,
-		S
-	>::type const &trans_
+	Vector const &trans_
 )
 {
 	return
