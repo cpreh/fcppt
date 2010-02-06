@@ -19,12 +19,27 @@ fcppt::container::bitfield::iterator<
 	StoredType,
 	Reference,
 	ElementBits
+>::iterator()
+:
+	array_(),
+	pos()
+{}
+
+template<
+	typename StoredType,
+	typename Reference,
+	fcppt::container::bitfield::size_type ElementBits
+>
+fcppt::container::bitfield::iterator<
+	StoredType,
+	Reference,
+	ElementBits
 >::iterator(
-	StoredType array,
+	StoredType array_,
 	size_type const pos
 )
 :
-	array(array),
+	array_(&array_),
 	pos(pos)
 {}
 
@@ -112,7 +127,7 @@ fcppt::container::bitfield::iterator<
 		StoredType,
 		ElementBits
 	>(
-		array,
+		*array_,
 		pos
 	);
 }
@@ -159,7 +174,7 @@ fcppt::container::bitfield::iterator<
 	> const &r
 )
 :
-	array(r.array),
+	array_(r.array_),
 	pos(r.pos)
 {}
 

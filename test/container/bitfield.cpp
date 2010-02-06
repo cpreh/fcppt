@@ -80,4 +80,16 @@ BOOST_AUTO_TEST_CASE(container_bitfield)
 			&& bf_xor[test_enum::test3]
 		);
 	}
+
+	bitfield::iterator it(
+		field1.begin()
+	);
+
+	bitfield::iterator it2;
+
+	it = it2;
+
+	BOOST_REQUIRE(
+		it == it2
+	);
 }

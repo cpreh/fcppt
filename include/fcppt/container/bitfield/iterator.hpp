@@ -13,6 +13,7 @@
 #include <fcppt/container/bitfield/difference_type.hpp>
 #include <fcppt/container/bitfield/value_type.hpp>
 #include <boost/iterator/iterator_facade.hpp>
+#include <boost/type_traits/remove_reference.hpp>
 
 namespace fcppt
 {
@@ -44,6 +45,8 @@ public:
 	typedef typename base::reference reference;
 	typedef typename base::difference_type difference_type;
 	typedef typename base::iterator_category iterator_category;
+
+	iterator();
 private:
 	template<
 		typename Enum,
@@ -52,11 +55,16 @@ private:
 	> friend class basic;
 
 	iterator(
-		StoredType array,
+		StoredType,
 		size_type pos
 	);
 
-	StoredType array;
+	typedef typename boost::remove_reference<
+		StoredType
+	>::type *ref_type;
+
+	ref_type array_;
+
 	size_type pos;
 
 	friend class boost::iterator_core_access;
@@ -101,7 +109,8 @@ private:
 			OtherStoredType,
 			OtherReference,
 			ElementBits
-		> const &r);
+		> const &r
+	);
 };
 
 }
