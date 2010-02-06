@@ -7,13 +7,12 @@
 #ifndef FCPPT_CHRONO_CLOCK_GETTIME_IMPL_HPP_INCLUDED
 #define FCPPT_CHRONO_CLOCK_GETTIME_IMPL_HPP_INCLUDED
 
+#include "unsigned_type.hpp"
 #include <fcppt/chrono/clock_failure.hpp>
 #include <fcppt/chrono/time_point_impl.hpp>
 #include <fcppt/chrono/duration_impl.hpp>
-#include <fcppt/chrono/common_type.hpp>
 #include <fcppt/chrono/rep.hpp>
 #include <fcppt/text.hpp>
-#include <boost/type_traits/make_unsigned.hpp>
 #include <time.h>
 
 namespace fcppt
@@ -43,17 +42,12 @@ clock_gettime_impl(
 
 	typedef typename TimePoint::duration duration_;
 
-	typedef common_type<
-		boost::make_unsigned<
-			time_t
-		>::type,
-		rep
-	>::type unsigned_type;
-
 	return TimePoint(
 		duration_(
 			static_cast<
-				unsigned_type
+				unsigned_type<
+					rep
+				>::type
 			>(
 				tp.tv_sec
 			)
