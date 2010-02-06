@@ -15,8 +15,13 @@ namespace fcppt
 namespace chrono
 {
 
+namespace
+{
+
 LARGE_INTEGER
 query_performance_frequency();
+
+}
 
 }
 }

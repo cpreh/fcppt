@@ -15,6 +15,9 @@
 #include <iterator>
 #include <string>
 
+namespace fcppt
+{
+
 namespace
 {
 
@@ -192,6 +195,8 @@ codecvt(
 	throw fcppt::exception(
 		FCPPT_TEXT("codecvt: ok return value unreached!")
 	);
+}
+
 }
 
 }
