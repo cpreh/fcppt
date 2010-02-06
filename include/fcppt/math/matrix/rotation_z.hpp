@@ -8,6 +8,8 @@
 #define FCPPT_MATH_MATRIX_ROTATION_Z_HPP_INCLUDED
 
 #include <fcppt/math/matrix/static.hpp>
+#include <fcppt/math/matrix/basic_impl.hpp>
+#include <cmath>
 
 namespace fcppt
 {
@@ -21,12 +23,27 @@ template<
 >
 typename static_<T, 4, 4>::type const
 rotation_z(
-	T angle);
+	T const angle
+)
+{
+	T const
+		sinx = std::sin(angle),
+		cosx = std::cos(angle),
+		one = static_cast<T>(1),
+		zero = static_cast<T>(0);
+
+	return
+		typename static_<T, 4, 4>::type(
+			cosx, -sinx, zero, zero,
+			sinx,  cosx, zero, zero,
+			zero,  zero,  one, zero,
+			zero,  zero, zero,  one 
+		);
+
+}
 
 }
 }
 }
-
-#include <fcppt/math/matrix/detail/rotation_z_impl.hpp>
 
 #endif
