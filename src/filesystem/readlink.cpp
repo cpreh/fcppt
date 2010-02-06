@@ -18,7 +18,11 @@
 
 fcppt::filesystem::path const
 fcppt::filesystem::readlink(
+#ifdef FCPPT_POSIX_PLATFORM
 	fcppt::filesystem::path const &link
+#else
+	fcppt::filesystem::path const &
+#endif
 )
 {
 #ifdef FCPPT_POSIX_PLATFORM
