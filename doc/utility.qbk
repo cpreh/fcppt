@@ -19,4 +19,13 @@ Note that the asserts are still macros, because they use the `__LINE__` and `__F
 
 Note also that it is currently impossible to deactivate assertions via a preprocessor directive and it is disputed if that will ever be possible.
 [endsect]
+
+[section Assign]
+
+This part of fcppt is similar to boost::assign, but fixes one issue: Why is there `list_of`, which has a Method `to_adapter`? Why not just a single templated `make_container` function? This is exactly what `fcppt::assign` consists of. It even works for associative containers (like `std::map` or `std::set`). It uses `fcppt::container::is_associative` to determine if a container is really an associative container and if so, uses `insert` instead of `push_back`. Here is an example:
+
+[import ../examples/assign.cpp]
+[assign]
+
+[endsect]
 [endsect]
