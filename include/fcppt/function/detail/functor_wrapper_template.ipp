@@ -11,6 +11,7 @@
 #ifndef FCPPT_FUNCTION_DETAIL_FUNCTOR_WRAPPER_TEMPLATE_HPP_INCLUDED
 #define FCPPT_FUNCTION_DETAIL_FUNCTOR_WRAPPER_TEMPLATE_HPP_INCLUDED
 
+#include <fcppt/nonassignable.hpp>
 #include <boost/preprocessor/punctuation/comma_if.hpp>
 #include <boost/preprocessor/repetition/enum_params.hpp>
 #include <boost/preprocessor/repetition/enum_binary_params.hpp>
@@ -43,6 +44,8 @@ namespace detail
 template< typename F, FCPPT_FUNCTION_OBJECT_PP_TEMPLATE_PARAMS >
 struct functor_wrapper< F, FCPPT_FUNCTION_OBJECT_PP_TEMPLATE_ARGS >
 {
+	FCPPT_NONASSIGNABLE(functor_wrapper)
+public:
 	functor_wrapper( F &f )
 		: f_( f )
 	{}

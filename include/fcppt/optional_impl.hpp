@@ -128,7 +128,7 @@ template<
 bool
 fcppt::optional<T>::boolean_test() const
 {
-	return data_;
+	return data_ != 0;
 }
 
 template<

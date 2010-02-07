@@ -7,6 +7,7 @@
 #ifndef FCPPT_VARIANT_DETAIL_OUTPUT_HPP_INCLUDED
 #define FCPPT_VARIANT_DETAIL_OUTPUT_HPP_INCLUDED
 
+#include <fcppt/nonassignable.hpp>
 #include <ostream>
 
 namespace fcppt
@@ -21,6 +22,7 @@ template<
 >
 class output
 {
+	FCPPT_NONASSIGNABLE(output)
 public:
 	typedef Stream &result_type;
 

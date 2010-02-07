@@ -8,7 +8,7 @@
 #define FCPPT_MATH_MATRIX_ORTHOGONAL_XY_HPP_INCLUDED
 
 #include <fcppt/math/matrix/static.hpp>
-#include <fcppt/math/vector/static.hpp>
+#include <fcppt/math/matrix/basic_impl.hpp>
 
 namespace fcppt
 {
@@ -21,12 +21,19 @@ template<
 	typename T
 >
 typename static_<T, 4, 4>::type const
-orthogonal_xy();
+orthogonal_xy()
+{
+	return
+		typename static_<T, 4, 4>::type(
+			static_cast<T>(1), static_cast<T>(0), static_cast<T>(0), static_cast<T>(0),
+			static_cast<T>(0), static_cast<T>(1), static_cast<T>(0), static_cast<T>(0),
+			static_cast<T>(0), static_cast<T>(0), static_cast<T>(0), static_cast<T>(0),
+			static_cast<T>(0), static_cast<T>(0), static_cast<T>(0), static_cast<T>(1)
+		);
+}
 
 }
 }
 }
-
-#include <fcppt/math/matrix/detail/orthogonal_xy_impl.hpp>
 
 #endif

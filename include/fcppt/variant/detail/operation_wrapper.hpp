@@ -8,6 +8,7 @@
 #define FCPPT_VARIANT_DETAIL_OPERATION_WRAPPER_HPP_INCLUDED
 
 #include <fcppt/variant/detail/unwrap_recursive.hpp>
+#include <fcppt/nonassignable.hpp>
 
 namespace fcppt
 {
@@ -21,6 +22,7 @@ template<
 >
 class operation_wrapper
 {
+	FCPPT_NONASSIGNABLE(operation_wrapper)
 public:
 	typedef typename Operation::result_type result_type;
 

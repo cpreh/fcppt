@@ -9,13 +9,16 @@
 
 #include <fcppt/log/detail/context_tree.hpp>
 #include <fcppt/string.hpp>
+#include <fcppt/nonassignable.hpp>
 
 namespace fcppt
 {
 namespace log
 {
 
-class inner_node_name {
+class inner_node_name
+{
+	FCPPT_NONASSIGNABLE(inner_node_name)
 public:
 	typedef bool result_type;
 

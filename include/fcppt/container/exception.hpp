@@ -10,16 +10,21 @@
 #include <fcppt/string.hpp>
 #include <fcppt/exception.hpp>
 #include <fcppt/symbol.hpp>
+#include <fcppt/class_symbol.hpp>
 
 namespace fcppt
 {
 namespace container
 {
 
-class FCPPT_CLASS_SYMBOL exception : public fcppt::exception {
+class FCPPT_CLASS_SYMBOL exception
+:
+	public fcppt::exception
+{
 public:
 	FCPPT_SYMBOL explicit exception(
-		fcppt::string const &);
+		fcppt::string const &
+	);
 };
 
 }

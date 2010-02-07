@@ -12,13 +12,16 @@
 #include <fcppt/log/format/object_ptr.hpp>
 #include <fcppt/io/ostream.hpp>
 #include <fcppt/symbol.hpp>
+#include <fcppt/nonassignable.hpp>
 
 namespace fcppt
 {
 namespace log
 {
 
-class level_stream {
+class level_stream
+{
+	FCPPT_NONASSIGNABLE(level_stream)
 public:
 	FCPPT_SYMBOL level_stream(
 		io::ostream &,

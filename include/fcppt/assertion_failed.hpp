@@ -41,7 +41,7 @@ public:
 	FCPPT_SYMBOL fcppt::string const &
 	message() const;
 
-	~assertion_failed() throw();
+	FCPPT_SYMBOL ~assertion_failed() throw();
 private:
 	fcppt::string file_;
 	int line_;

@@ -9,6 +9,7 @@
 
 #include <fcppt/variant/apply_unary.hpp>
 #include <fcppt/variant/detail/binary_applier.hpp>
+#include <fcppt/nonassignable.hpp>
 
 namespace fcppt
 {
@@ -21,8 +22,10 @@ template<
 	typename Operation,
 	typename Variant
 >
-struct binary_unwrap
+class binary_unwrap
 {
+	FCPPT_NONASSIGNABLE(binary_unwrap)
+public:
 	typedef typename Operation::result_type result_type;
 
 	binary_unwrap(

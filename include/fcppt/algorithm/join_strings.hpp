@@ -14,15 +14,28 @@ namespace fcppt
 {
 namespace algorithm
 {
-template<typename Range>
-string const join_strings(
+
+template<
+	typename Range
+>
+string const
+join_strings(
 	Range const &r,
-	string const &delim)
+	string const &delim
+)
 {
 	string s;
-	BOOST_FOREACH(string const &n,r)
-		s += n+delim;
-	s.erase(s.length()-delim.length());
+
+	BOOST_FOREACH(
+		string const &n,
+		r
+	)
+		s += n + delim;
+	
+	s.erase(
+		s.length() - delim.length()
+	);
+
 	return s;
 }
 }

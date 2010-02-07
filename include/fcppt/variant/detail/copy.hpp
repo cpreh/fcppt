@@ -8,6 +8,7 @@
 #define FCPPT_VARIANT_DETAIL_COPY_HPP_INCLUDED
 
 #include <fcppt/variant/raw_type.hpp>
+#include <fcppt/nonassignable.hpp>
 
 namespace fcppt
 {
@@ -16,8 +17,10 @@ namespace variant
 namespace detail
 {
 
-struct copy
+class copy
 {
+	FCPPT_NONASSIGNABLE(copy)
+public:
 	typedef void *result_type;
 
 	explicit copy(

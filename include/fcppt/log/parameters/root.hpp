@@ -14,6 +14,7 @@
 #include <fcppt/io/ostream.hpp>
 #include <fcppt/string.hpp>
 #include <fcppt/symbol.hpp>
+#include <fcppt/nonassignable.hpp>
 
 namespace fcppt
 {
@@ -31,6 +32,7 @@ namespace parameters
 */
 class root
 {
+	FCPPT_NONASSIGNABLE(root)
 public:
 	FCPPT_SYMBOL explicit root(
 		io::ostream &

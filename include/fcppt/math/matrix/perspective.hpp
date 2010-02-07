@@ -8,6 +8,11 @@
 #define FCPPT_MATH_MATRIX_PERSPECTIVE_HPP_INCLUDED
 
 #include <fcppt/math/matrix/static.hpp>
+#include <fcppt/math/compare.hpp>
+#include <fcppt/math/exception.hpp>
+#include <fcppt/math/almost_zero.hpp>
+#include <fcppt/text.hpp>
+#include <cmath>
 
 namespace fcppt
 {
@@ -21,14 +26,42 @@ template<
 >
 typename static_<T, 4, 4>::type const
 perspective(
-	T aspect,
-	T fov,
-	T near,
-	T far);
-}
-}
+	T const aspect,
+	T const fov,
+	T const near,
+	T const far
+)
+{
+	if(compare(far, near))
+		throw math::exception(
+			FCPPT_TEXT("matrix::perspective(): far may not be near!")
+		);
+
+	if(almost_zero(near))
+		throw math::exception(
+			FCPPT_TEXT("matrix::perspective(): near must not be 0!")
+		);
+
+	T const
+		h = static_cast<T>(1) / std::tan(fov / static_cast<T>(2)),
+		w = h / aspect,
+		q = (far + near) / (near - far),
+		p = static_cast<T>(2) * far * near / (near - far),
+		zero = static_cast<T>(0);
+
+	return
+		typename static_<T, 4, 4>::type
+		(
+			w, zero, zero, zero,
+			zero, h, zero, zero,
+			zero, zero, q, static_cast<T>(-1),
+			zero, zero, p, zero
+		);
+
 }
 
-#include <fcppt/math/matrix/detail/perspective_impl.hpp>
+}
+}
+}
 
 #endif

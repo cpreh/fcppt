@@ -4,9 +4,10 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_ASSIGN_DETAIL_MAKE_ARRAY_IMPL_HPP_INCLUDED
-#define FCPPT_ASSIGN_DETAIL_MAKE_ARRAY_IMPL_HPP_INCLUDED
+#ifndef FCPPT_ASSIGN_DETAIL_ARRAY_IMPL_HPP_INCLUDED
+#define FCPPT_ASSIGN_DETAIL_ARRAY_IMPL_HPP_INCLUDED
 
+#include <fcppt/assign/detail/array.hpp>
 #include <algorithm>
 
 template<
@@ -60,17 +61,6 @@ template<
 fcppt::assign::detail::array<T,N>::operator container_type() const
 {
 	return a;
-}
-
-template<typename T>
-fcppt::assign::detail::array<T,1>
-fcppt::assign::make_array(
-	T const &t
-)
-{
-	return detail::array<T,1>(
-		t
-	);
 }
 
 #endif

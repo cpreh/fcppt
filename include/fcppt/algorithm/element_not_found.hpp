@@ -9,13 +9,17 @@
 
 #include <fcppt/exception.hpp>
 #include <fcppt/symbol.hpp>
+#include <fcppt/class_symbol.hpp>
 
 namespace fcppt
 {
 namespace algorithm
 {
 
-class FCPPT_CLASS_SYMBOL element_not_found : public exception {
+class FCPPT_CLASS_SYMBOL element_not_found
+:
+	public exception
+{
 public:
 	FCPPT_SYMBOL element_not_found();
 };

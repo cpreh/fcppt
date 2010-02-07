@@ -12,5 +12,5 @@ fcppt::narrow(
 	std::wstring const &s
 )
 {
-	return ::codecvt<char>(s);
+	return fcppt::codecvt<char>(s);
 }

@@ -7,30 +7,74 @@
 #ifndef FCPPT_THREAD_OBJECT_HPP_INCLUDED
 #define FCPPT_THREAD_OBJECT_HPP_INCLUDED
 
+#include <fcppt/thread/task.hpp>
+#include <fcppt/thread/id.hpp>
+#include <fcppt/thread/native_handle.hpp>
 #include <fcppt/symbol.hpp>
-#include <fcppt/function/object.hpp>
-#include <boost/thread.hpp>
+#include <fcppt/noncopyable.hpp>
+#include <boost/thread/thread.hpp>
 
 namespace fcppt
 {
 namespace thread
 {
+
 class object
 {
+	FCPPT_NONCOPYABLE(object)
 public:
-	typedef fcppt::function::object<void ()> task;
-
 	FCPPT_SYMBOL object(
-		task const &
+		thread::task const &
 	);
+
+	FCPPT_SYMBOL void
+	swap(
+		object &
+	);
+
+	FCPPT_SYMBOL thread::id
+	id() const;
+
+	FCPPT_SYMBOL bool
+	joinable() const;
 
 	FCPPT_SYMBOL void
 	join();
 
+	//    bool timed_join(const system_time& wait_until);
+
+//    template<typename TimeDuration>
+//    bool timed_join(TimeDuration const& rel_time);
+
+ 	FCPPT_SYMBOL void
+	detach();
+
+	FCPPT_SYMBOL thread::native_handle
+	native_handle();
+
+ 	FCPPT_SYMBOL void
+	interrupt();
+
+	FCPPT_SYMBOL bool
+	interruption_requested() const;
+
+//static void sleep(const system_time& xt);
+
+	/// asserts that the thread has been joined
+	/** Will call std::terminate() if joinable() == true.
+	*/
 	FCPPT_SYMBOL ~object();
 private:
 	boost::thread thread_;
 };
+
+FCPPT_SYMBOL
+void
+swap(
+	object &,
+	object &
+);
+
 }
 }
 

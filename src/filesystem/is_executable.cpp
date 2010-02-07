@@ -16,7 +16,11 @@
 
 bool
 fcppt::filesystem::is_executable(
+#if defined(FCPPT_POSIX_PLATFORM)
 	path const &path_
+#else
+	path const &
+#endif
 )
 {
 #if defined(FCPPT_POSIX_PLATFORM)

@@ -19,6 +19,9 @@ namespace fcppt
 namespace chrono
 {
 
+namespace
+{
+
 template<
 	typename TimePoint
 >
@@ -66,6 +69,8 @@ performance_counter_time()
 				)
 			)
 		);
+}
+
 }
 
 }
