@@ -4,13 +4,13 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_MATH_NEARLY_EQUALS_HPP_INCLUDED
-#define FCPPT_MATH_NEARLY_EQUALS_HPP_INCLUDED
+#ifndef FCPPT_MATH_MOD_ASSIGN_HPP_INCLUDED
+#define FCPPT_MATH_MOD_ASSIGN_HPP_INCLUDED
 
-#include <fcppt/math/diff.hpp>
+#include <cmath>
 #include <boost/utility/enable_if.hpp>
+#include <boost/type_traits/is_unsigned.hpp>
 #include <boost/type_traits/is_floating_point.hpp>
-#include <limits>
 
 namespace fcppt
 {
@@ -20,19 +20,35 @@ namespace math
 template<
 	typename T
 >
-inline
 typename boost::enable_if<
 	boost::is_floating_point<
 		T
 	>,
-	bool
+	void
 >::type
-nearly_equals(
-	T const &a,
-	T const &b
+mod_assign(
+	T& l,
+	T const &r
 )
 {
-	return diff(a, b) < std::numeric_limits<T>::epsilon();
+	l = std::fmod(l, r);
+}
+
+template<
+	typename T
+>
+typename boost::enable_if<
+	boost::is_unsigned<
+		T
+	>,
+	void
+>::type
+mod_assign(
+	T& l,
+	T const &r
+)
+{
+	l %= r;
 }
 
 }
