@@ -24,7 +24,8 @@ template<
 	typename T
 >
 fcppt::optional<T>::optional(
-	const_reference ref)
+	const_reference ref
+)
 :
 	storage_(),
 	data_(
@@ -36,7 +37,8 @@ template<
 	typename T
 >
 fcppt::optional<T>::optional(
-	optional const &o)
+	optional const &o
+)
 :
 	storage_(),
 	data_(
@@ -49,7 +51,8 @@ template<
 >
 fcppt::optional<T> &
 fcppt::optional<T>::operator=(
-	optional const &o)
+	optional const &o
+)
 {
 	destroy();
 	data_ = construct(o);
@@ -61,7 +64,8 @@ template<
 >
 fcppt::optional<T> &
 fcppt::optional<T>::operator=(
-	const_reference r)
+	const_reference r
+)
 {
 	destroy();
 	data_ = construct(r);
@@ -136,7 +140,8 @@ template<
 >
 typename fcppt::optional<T>::pointer
 fcppt::optional<T>::construct(
-	const_reference r)
+	const_reference r
+)
 {
 	return data_ = new (storage_.data()) T(r);
 }
@@ -146,7 +151,8 @@ template<
 >
 typename fcppt::optional<T>::pointer
 fcppt::optional<T>::construct(
-	optional const &o)
+	optional const &o
+)
 {
 	return o.data_
 		? new (storage_.data()) T(*o)

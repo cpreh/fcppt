@@ -71,13 +71,16 @@ private:
 
 	pointer
 	construct(
-		const_reference);
+		const_reference
+	);
 
 	pointer
 	construct(
-		optional const &);
+		optional const &
+	);
 
-	void destroy();
+	void
+	destroy();
 
 	typedef typename alignment::array<
 		unsigned char,

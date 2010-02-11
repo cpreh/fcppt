@@ -44,7 +44,8 @@ typename boost::enable_if<
 >::type
 angle_between(
 	basic<T, N, S> const &from,
-	basic<T, N, S> const &to)
+	basic<T, N, S> const &to
+)
 {
 	return atan2(
 		structure_cast<
