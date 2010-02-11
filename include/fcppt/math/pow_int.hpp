@@ -27,7 +27,8 @@ typename boost::enable_if<
 >::type
 pow_int(
 	Base const base,
-	Exp const e)
+	Exp const e
+)
 {
 	if(e == 0)
 		return 1;

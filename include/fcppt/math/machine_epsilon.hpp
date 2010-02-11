@@ -13,7 +13,10 @@ namespace fcppt
 {
 namespace math
 {
-template<typename T>
+
+template<
+	typename T
+>
 struct machine_epsilon
 {
 	static T
@@ -22,6 +25,7 @@ struct machine_epsilon
 		return std::numeric_limits<T>::epsilon();
 	}
 };
+
 }
 }
 

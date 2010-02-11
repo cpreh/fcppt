@@ -12,10 +12,20 @@
 
 namespace fcppt
 {
+
 namespace math
 {
-template<typename T>
-typename boost::enable_if<boost::is_integral<T>, T>::type round_div_int(const T  l, const T r)
+template<
+	typename T
+>
+typename boost::enable_if<
+	boost::is_integral<T>,
+	T
+>::type
+round_div_int(
+	T const l,
+	T const r
+)
 {
 	return (r % 2)
 		? ((l * 2 / r) + 1) / 2 // for odd numbers up to half the types capacity

@@ -8,9 +8,9 @@
 #define FCPPT_MATH_NEARLY_EQUALS_HPP_INCLUDED
 
 #include <fcppt/math/diff.hpp>
+#include <fcppt/math/machine_epsilon.hpp>
 #include <boost/utility/enable_if.hpp>
 #include <boost/type_traits/is_floating_point.hpp>
-#include <limits>
 
 namespace fcppt
 {
@@ -32,7 +32,7 @@ nearly_equals(
 	T const &b
 )
 {
-	return diff(a, b) < std::numeric_limits<T>::epsilon();
+	return diff(a, b) < machine_epsilon<T>::value();
 }
 
 }
