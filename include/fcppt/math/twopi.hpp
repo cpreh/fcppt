@@ -17,7 +17,9 @@ namespace math
 template<
 	typename T
 >
-inline T twopi()
+inline
+T
+twopi()
 {
 	return static_cast<T>(2) * pi<T>();
 }

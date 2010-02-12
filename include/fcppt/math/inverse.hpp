@@ -22,10 +22,11 @@ boost::disable_if
 	T
 >::type
 inverse(
-	T const t)
+	T const t
+)
 {
 	return
-		static_cast<T>(1)/t;
+		static_cast<T>(1) / t;
 }
 }
 }

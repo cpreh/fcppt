@@ -19,7 +19,8 @@ template<
 >
 inline bool
 almost_zero(
-	T const &t)
+	T const &t
+)
 {
 	return compare(
 		t,

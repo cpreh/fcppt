@@ -31,12 +31,17 @@ typename boost::enable_if<
 	T
 >::type
 rel_angle_to_abs(
-	T const a)
+	T const a
+)
 {
 	if(!is_rel_angle(a))
 		throw exception(
-			(format(FCPPT_TEXT("math::rel_angle_to_abs: relative angle %1% out of range!"))
-			% a).str()
+			(
+				format(
+					FCPPT_TEXT("math::rel_angle_to_abs: relative angle %1% out of range!")
+				)
+				% a
+			).str()
 		);
 
 	if (almost_zero(a))

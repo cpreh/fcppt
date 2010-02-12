@@ -130,7 +130,7 @@ public:
 	data() const;
 
 	/// Returns the pointer to the end of the store.
-	/** Equals data() + size().
+	/** Equal to data() + size().
 	*/
 	pointer
 	data_end();

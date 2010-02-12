@@ -28,7 +28,8 @@ typename boost::disable_if<
 >::type
 compare(
 	T const &a,
-	T const &b)
+	T const &b
+)
 {
 	return a == b;
 }
@@ -45,7 +46,8 @@ typename boost::enable_if<
 >::type
 compare(
 	T const &a,
-	T const &b)
+	T const &b
+)
 {
 	return nearly_equals(a, b);
 }

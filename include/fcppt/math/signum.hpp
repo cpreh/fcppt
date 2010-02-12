@@ -18,9 +18,16 @@ namespace math
 template<
 	typename T
 >
-inline typename boost::disable_if<boost::is_unsigned<T>,T>::type
+inline
+typename boost::disable_if<
+	boost::is_unsigned<
+		T
+	>,
+	T
+>::type
 signum(
-	T const t)
+	T const t
+)
 {
 	if (t > static_cast<T>(0))
 		return static_cast<T>(1);
@@ -32,9 +39,16 @@ signum(
 template<
 	typename T
 >
-inline typename boost::enable_if<boost::is_unsigned<T>, T>::type
+inline
+typename boost::enable_if<
+	boost::is_unsigned<
+		T
+	>,
+	T
+>::type
 signum(
-	T const t)
+	T const t
+)
 {
 	return t != static_cast<T>(0)
 		? static_cast<T>(1)
