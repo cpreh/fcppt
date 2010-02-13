@@ -33,7 +33,7 @@ ptr_container_erase(
 	{
 		if (&(*b) == element)
 		{
-			c.erase(b);
+			container.erase(b);
 			return true;
 		}
 	}
