@@ -12,6 +12,7 @@ namespace fcppt
 namespace algorithm
 {
 
+/// Removes the element with address @a s from the ptr_container @a c
 template<
 	typename Container,
 	typename Ptr

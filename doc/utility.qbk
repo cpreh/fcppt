@@ -6,14 +6,8 @@ The C standard library function `assert` (defined in `<cassert>`) doesn't throw 
 
 To remedy this situation, there are `FCPPT_ASSERT` and `FCPPT_ASSERT_MESSAGE`. These macros will throw `fcppt::assertion_failed` instead of aborting the program abruply. Here's a small example:
 
-``
-#include <fcppt/assert.hpp>
-#include <fcppt/assert_message.hpp>
-
-float a = 1.0f, b = 1.0f;
-FCPPT_ASSERT(a == b);
-FCPPT_ASSERT_MESSAGE(a != b,FCPPT_TEXT('Your float implementation did something strange.'));
-``
+[import ../examples/assert.cpp]
+[assert]
 
 Note that the asserts are still macros, because they use the `__LINE__` and `__FILE__` constants internally.
 
@@ -24,8 +18,13 @@ Note also that it is currently impossible to deactivate assertions via a preproc
 
 This part of fcppt is similar to boost::assign, but fixes one issue: Why is there `list_of`, which has a Method `to_adapter`? Why not just a single templated `make_container` function? This is exactly what `fcppt::assign` consists of. It even works for associative containers (like `std::map` or `std::set`). It uses `fcppt::container::is_associative` to determine if a container is really an associative container and if so, uses `insert` instead of `push_back`. Here is an example:
 
-[import ../examples/assign.cpp]
-[assign]
+[import ../examples/make_container.cpp]
+[make_container]
+
+There's also `assign::make_array` which can be used to construct an `std::tr1::array`, whose size is determined by the how many elements you call `make_array` with. Here's an example which should explain everything:
+
+[import ../examples/make_array.cpp]
+[make_array]
 
 [endsect]
 [endsect]
