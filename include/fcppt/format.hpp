@@ -7,17 +7,15 @@
 #ifndef FCPPT_FORMAT_HPP_INCLUDED
 #define FCPPT_FORMAT_HPP_INCLUDED
 
-#include <fcppt/config.h>
+#include <fcppt/char_type.hpp>
 #include <boost/format.hpp>
 
 namespace fcppt
 {
 
-#ifdef FCPPT_NARROW_STRING
-typedef boost::format format;
-#else
-typedef boost::wformat format;
-#endif
+typedef boost::basic_format<
+	char_type
+> format;
 
 }
 

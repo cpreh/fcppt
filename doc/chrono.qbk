@@ -25,7 +25,7 @@ in more detail in the reference section.
 
 [section system_clock]
 
-fcppt::chrono::system_clock can be used
+fcppt::chrono::system_clock can be used to obtain the current system time.
 [import ../examples/chrono/system_clock.cpp]
 [chronosystemclock]
 

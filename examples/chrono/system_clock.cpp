@@ -19,10 +19,12 @@ int main()
 
 	typedef clock::duration duration;
 
+	// obtain the current time_point
 	time_point const time1(
 		clock::now()
 	);
 
+	// output the current time in its internal representation
 	fcppt::io::cout
 		<< FCPPT_TEXT("The time is ")
 		<< time1
@@ -32,6 +34,7 @@ int main()
 		clock::now()
 	);
 
+	// two time points can be substracted to obtain a duration
 	fcppt::io::cout
 		<< FCPPT_TEXT("The first output took ")
 		<< time2 - time1

@@ -8,8 +8,8 @@
 #define FCPPT_CHRONO_DAYS_HPP_INCLUDED
 
 #include <fcppt/chrono/duration_fwd.hpp>
-#include <fcppt/ratio/object.hpp>
 #include <fcppt/chrono/rep.hpp>
+#include <fcppt/ratio/object.hpp>
 
 namespace fcppt
 {
