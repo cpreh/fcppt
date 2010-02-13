@@ -17,6 +17,12 @@ namespace fcppt
 namespace chrono
 {
 
+/// A duration is a time span.
+/** The template parameter Rep dictates the type that the duration will use to represent the values.
+ * The template parameter Period dictates how this value has to be interpreted.
+ * @See fcppt::ratio.
+ * Durations can be obtained from a time_point using the time_point::time_since_epoch() function.
+*/
 template<
 	typename Rep,
 	typename Period
@@ -43,8 +49,12 @@ public:
 	typedef Rep rep;
 	typedef Period period;
 
+	/// Default constructs a duration with an undeterminate value
 	duration();
 
+	/// Constructs a duration from a compatible internal representation
+	/** For example seconds(10) will result in a duration representing 10 seconds
+	*/
 	template<
 		typename Rep2
 	>
@@ -52,6 +62,7 @@ public:
 		Rep2 const &
 	);
 
+	/// Constructs a duration from another compatible duration and converts if necessary.
 	template<
 		typename Rep2,
 		typename Period2
@@ -74,6 +85,7 @@ public:
 		duration const &
 	);
 
+	/// Returns the internal representation
 	rep
 	count() const;
 

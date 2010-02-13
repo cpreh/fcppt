@@ -7,6 +7,7 @@
 #ifndef FCPPT_ALIGNMENT_ALIGN_HPP_INCLUDED
 #define FCPPT_ALIGNMENT_ALIGN_HPP_INCLUDED
 
+/// Forces the specified alignment on a declaration in byes
 #ifdef _MSC_VER
 #define FCPPT_ALIGNMENT_ALIGN(x) __declspec(align(x))
 #elif __GNUC__

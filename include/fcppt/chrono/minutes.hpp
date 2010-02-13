@@ -8,6 +8,7 @@
 #define FCPPT_CHRONO_MINUTES_HPP_INCLUDED
 
 #include <fcppt/chrono/duration_fwd.hpp>
+#include <fcppt/chrono/rep.hpp>
 #include <fcppt/ratio/object.hpp>
 
 namespace fcppt
@@ -16,7 +17,7 @@ namespace chrono
 {
 
 typedef duration<
-	unsigned long,
+	rep,
 	ratio::object<
 		60
 	>

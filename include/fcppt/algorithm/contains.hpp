@@ -14,6 +14,9 @@ namespace fcppt
 namespace algorithm
 {
 
+/// Checks if a given @a value is inside the range [@a beg @end ]
+/** Equivalent to find(beg, end, value) != end
+*/
 template<
 	typename In,
 	typename T

@@ -12,9 +12,7 @@
 #include <fcppt/preprocessor/function.hpp>
 #include <fcppt/assertion_failed.hpp>
 
-/**
- * @brief Runtime assert macro that throws an assertion_failed with an additional message
-*/
+/// Runtime assert macro that throws an assertion_failed if the condition does not hold with an additional message
 #define FCPPT_ASSERT_MESSAGE(cond, message)\
 if (!(cond))\
 	throw fcppt::assertion_failed(\

@@ -16,6 +16,7 @@ namespace fcppt
 namespace chrono
 {
 
+/// The base exception class for all chrono::exceptions.
 class FCPPT_CLASS_SYMBOL exception
 :
 	public fcppt::exception

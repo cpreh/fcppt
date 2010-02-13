@@ -14,6 +14,9 @@ namespace fcppt
 namespace algorithm
 {
 
+/// Copies sz elements from beg to out
+/** Equivalent to copy(beg, beg + sz, out)
+*/
 template<
 	typename In,
 	typename Out,

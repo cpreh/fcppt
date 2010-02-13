@@ -12,6 +12,7 @@ namespace fcppt
 namespace algorithm
 {
 
+/// Appends the sequence @a src to @a dest
 template<
 	typename DestContainer,
 	typename SourceContainer

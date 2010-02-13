@@ -18,11 +18,16 @@ namespace fcppt
 namespace chrono
 {
 
+/// Calculates the common type of a binary expression
+/** This is actually an implementation detail but it is retained here
+ * because std::chrono also has it. A user should not need to use this.
+*/
 template<
 	typename T,
 	typename U
 >
-struct common_type {
+struct common_type
+{
 //private: silence gcc warning about everything being private
 	static T m_t();
 	static U m_u();
