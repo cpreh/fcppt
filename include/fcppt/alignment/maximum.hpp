@@ -7,6 +7,7 @@
 #ifndef FCPPT_ALIGNMENT_MAXIMUM_HPP_INCLUDED
 #define FCPPT_ALIGNMENT_MAXIMUM_HPP_INCLUDED
 
+/// The maximum alignment supported
 #ifdef _MSC_VER
 #define FCPPT_ALIGNMENT_MAXIMUM 128
 #elif __GNUC__
