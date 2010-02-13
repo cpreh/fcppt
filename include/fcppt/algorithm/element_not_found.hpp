@@ -16,6 +16,7 @@ namespace fcppt
 namespace algorithm
 {
 
+/// May be thrown by the _exn algorithms like find_exn()
 class FCPPT_CLASS_SYMBOL element_not_found
 :
 	public exception

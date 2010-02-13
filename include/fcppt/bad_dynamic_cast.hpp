@@ -15,6 +15,7 @@
 namespace fcppt
 {
 
+/// May be thrown by dynamic_cast_ if the cast fails
 class FCPPT_CLASS_SYMBOL bad_dynamic_cast
 :
 	public exception

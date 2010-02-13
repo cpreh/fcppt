@@ -15,6 +15,7 @@
 namespace fcppt
 {
 
+/// May be thrown by truncation_check_cast if the conversion truncates
 class FCPPT_CLASS_SYMBOL bad_truncation_check_cast
 :
 	public exception
