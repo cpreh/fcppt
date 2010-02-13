@@ -12,26 +12,28 @@ namespace fcppt
 namespace algorithm
 {
 
-/// Removes the element with address @a s from the ptr_container @a c
+/// Removes pointer element from the ptr_container container 
+/** @return true if the element was found/erased, false otherwise
+*/
 template<
 	typename Container,
 	typename Ptr
 >
 bool
 ptr_container_erase(
-	Container &c,
-	Ptr const s
+	Container &container,
+	Ptr const element
 )
 {
 	for(
-		typename Container::iterator b = c.begin();
-		b != c.end();
+		typename Container::iterator b = container.begin();
+		b != container.end();
 		++b
 	)
 	{
-		if (&(*b) == s)
+		if (&(*b) == element)
 		{
-			c.erase(b);
+			container.erase(b);
 			return true;
 		}
 	}

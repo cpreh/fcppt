@@ -16,26 +16,37 @@ namespace fcppt
 {
 namespace math
 {
-template<typename T>
-typename boost::enable_if<boost::is_floating_point<T>, void>::type mod_assign(T& l, const T& r)
-{
-	l = std::fmod(l, r);
-}
 
-template<typename T>
-typename boost::enable_if<boost::is_unsigned<T>, void>::type mod_assign(T& l, const T& r)
-{
-	l %= r;
-}
-
-template<typename T>
-typename boost::enable_if<boost::is_floating_point<T>, T>::type mod(const T& a, const T& b)
+template<
+	typename T
+>
+typename boost::enable_if<
+	boost::is_floating_point<
+		T
+	>,
+	T
+>::type
+mod(
+	T const &a,
+	T const &b
+)
 {
 	return std::fmod(a, b);
 }
 
-template<typename T>
-typename boost::enable_if<boost::is_unsigned<T>, T>::type mod(const T& a, const T& b)
+template<
+	typename T
+>
+typename boost::enable_if<
+	boost::is_unsigned<
+		T
+	>,
+	T
+>::type
+mod(
+	T const &a,
+	T const &b
+)
 {
 	return a % b;
 }

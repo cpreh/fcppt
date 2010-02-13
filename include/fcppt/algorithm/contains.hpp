@@ -14,7 +14,9 @@ namespace fcppt
 namespace algorithm
 {
 
-/// This is just a small wrapper around std::find to check if @a value is inside @a beg and @a end
+/// Checks if a given @a value is inside the range [@a beg @end ]
+/** Equivalent to find(beg, end, value) != end
+*/
 template<
 	typename In,
 	typename T

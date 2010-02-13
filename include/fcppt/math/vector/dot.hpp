@@ -26,7 +26,8 @@ template<
 typename basic<T, N, S>::value_type
 dot(
 	basic<T, N, S> const &l,
-	basic<T, N, S> const &r)
+	basic<T, N, S> const &r
+)
 {
 	if(l.size() != r.size())
 		throw exception(

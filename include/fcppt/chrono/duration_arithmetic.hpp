@@ -17,6 +17,7 @@ namespace fcppt
 namespace chrono
 {
 
+/// Adds two compatible durations
 template<
 	typename Rep1,
 	typename Period1,
@@ -60,6 +61,7 @@ operator +(
 		+= rhs;
 }
 
+/// Substracts two compatible durations
 template<
 	typename Rep1,
 	typename Period1,
@@ -103,6 +105,7 @@ operator -(
 		-= rhs;
 }
 
+/// Multiplies a duration by a scalar
 template<
 	typename Rep1,
 	typename Period,
@@ -136,6 +139,7 @@ operator *(
 		*= s;
 }
 
+/// Multiplies a scalar by a duration and returns a duration
 template<
 	typename Rep1,
 	typename Period,
@@ -159,6 +163,7 @@ operator *(
 	return d * s;
 }
 
+/// Divides a duration by a scalar
 template<
 	typename Rep1,
 	typename Period,
@@ -192,6 +197,7 @@ operator /(
 		/= s;
 }
 
+/// Divides two durations
 template<
 	typename Rep1,
 	typename Period1,
@@ -234,6 +240,7 @@ operator /(
 		).count();
 }
 
+/// Divides a duration by a scalar returning the remainder
 template<
 	typename Rep1,
 	typename Period,
@@ -275,6 +282,7 @@ operator %(
 		%= s;
 }
 
+/// Divides two durations returning the remainder
 template<
 	typename Rep1,
 	typename Period1,

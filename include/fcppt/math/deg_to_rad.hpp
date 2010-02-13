@@ -19,7 +19,8 @@ template<
 >
 inline T
 deg_to_rad(
-	T const deg)
+	T const deg
+)
 {
 	return deg * pi<T>() / static_cast<T>(180);
 }

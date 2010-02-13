@@ -17,7 +17,8 @@ template<
 >
 inline T
 quad(
-	T const &t)
+	T const &t
+)
 {
 	return t * t;
 }

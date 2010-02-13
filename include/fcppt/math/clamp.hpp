@@ -21,7 +21,8 @@ T
 clamp(
 	T const &value,
 	T const &vmin,
-	T const & vmax)
+	T const &vmax
+)
 {
 	return std::max(
 		std::min(

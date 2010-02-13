@@ -15,20 +15,26 @@ namespace fcppt
 namespace algorithm
 {
 
+/// Adds a range of strings delimited by delim
 template<
 	typename Range
 >
 string const
 join_strings(
-	Range const &r,
+	Range const &range,
 	string const &delim
 )
 {
 	string s;
 
+	if(
+		range.empty()
+	)
+		return s;
+	
 	BOOST_FOREACH(
 		string const &n,
-		r
+		range
 	)
 		s += n + delim;
 	

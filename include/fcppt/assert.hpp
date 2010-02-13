@@ -12,9 +12,7 @@
 #include <fcppt/preprocessor/function.hpp>
 #include <fcppt/assertion_failed.hpp>
 
-/**
- * @brief Runtime assert macro that throws fcppt::assertion_failed
-*/
+/// Runtime assert macro that throws fcppt::assertion_failed if the condition does not hold
 #define FCPPT_ASSERT(cond)\
 if (!(cond))\
 	throw fcppt::assertion_failed(\
@@ -22,6 +20,7 @@ if (!(cond))\
 		__LINE__,\
 		FCPPT_PP_FUNCTION,\
 		FCPPT_PP_STRINGIZE(cond),\
-		FCPPT_PP_STRINGIZE(""));
+		FCPPT_PP_STRINGIZE("")\
+	);
 
 #endif

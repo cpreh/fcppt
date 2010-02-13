@@ -13,11 +13,18 @@ namespace fcppt
 {
 namespace math
 {
-template<typename T>
-bool negative(T const &t)
+
+template<
+	typename T
+>
+bool
+negative(
+	T const &t
+)
 {
 	return t < null<T>();
 }
+
 }
 }
 

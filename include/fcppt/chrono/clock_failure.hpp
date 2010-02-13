@@ -16,6 +16,7 @@ namespace fcppt
 namespace chrono
 {
 
+/// May be thrown by a clock's now() function
 class FCPPT_CLASS_SYMBOL clock_failure
 :
 	public exception

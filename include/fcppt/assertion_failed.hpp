@@ -14,6 +14,8 @@
 
 namespace fcppt
 {
+
+/// May be thrown by FCPPT_ASSERT and FCPPT_ASSERT_MESSAGE
 class FCPPT_CLASS_SYMBOL assertion_failed
 :
 	public exception
@@ -24,7 +26,8 @@ public:
 		int line,
 		fcppt::string const &function,
 		fcppt::string const &condition,
-		fcppt::string const &message);
+		fcppt::string const &message
+	);
 	
 	FCPPT_SYMBOL fcppt::string const &
 	file() const;

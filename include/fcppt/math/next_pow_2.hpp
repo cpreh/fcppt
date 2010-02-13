@@ -27,7 +27,8 @@ typename boost::enable_if<
 	T
 >::type
 next_pow_2(
-	T const t)
+	T const t
+)
 {
 	T const two(
 		static_cast<T>(2)
@@ -58,7 +59,8 @@ typename boost::disable_if<
 	T
 >::type
 next_pow_2(
-	T const t)
+	T const t
+)
 {
 	return static_cast<T>(
 		std::pow(

@@ -15,7 +15,8 @@
 namespace fcppt
 {
 
-class bad_lexical_cast
+/// May be thrown by lexical_cast if the cast fails
+class FCPPT_CLASS_SYMBOL bad_lexical_cast
 :
 	public exception
 {
