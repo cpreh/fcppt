@@ -9,14 +9,16 @@
 
 #include <fcppt/chrono/duration_fwd.hpp>
 #include <fcppt/ratio/object.hpp>
+#include <fcppt/chrono/rep.hpp>
 
 namespace fcppt
 {
 namespace chrono
 {
 
+/// A duration that counts in days
 typedef duration<
-	unsigned long,
+	rep,
 	ratio::object<
 		86400
 	>

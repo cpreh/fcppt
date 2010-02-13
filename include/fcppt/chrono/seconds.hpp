@@ -15,6 +15,7 @@ namespace fcppt
 namespace chrono
 {
 
+/// A duration that counts in seconds
 typedef duration<
 	rep
 > seconds;
