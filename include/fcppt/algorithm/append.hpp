@@ -12,6 +12,7 @@ namespace fcppt
 namespace algorithm
 {
 
+/// Appends one container to another
 template<
 	typename DestContainer,
 	typename SourceContainer

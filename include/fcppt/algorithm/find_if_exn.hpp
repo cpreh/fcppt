@@ -15,6 +15,7 @@ namespace fcppt
 namespace algorithm
 {
 
+/// Like std::find_if but throws element_not_found on error
 template<
 	typename In,
 	typename Comp
