@@ -26,7 +26,8 @@ template<\
 basic<T, N, M, S> const \
 operator op(\
 	basic<T, N, M, S> const &a,\
-	basic<T, N, M, S> const &b)\
+	basic<T, N, M, S> const &b\
+)\
 {\
 	return basic<T, N, M, S>(a) op##= b;\
 }
@@ -46,7 +47,8 @@ template<
 basic<T, N, N, S> const
 operator *(
 	basic<T, M1, N, S> const &a,
-	basic<T, N, M2, S> const &b)
+	basic<T, N, M2, S> const &b
+)
 {
 	typedef basic<T, M1, M2, S> result_type;
 	result_type ret;

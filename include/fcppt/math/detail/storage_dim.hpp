@@ -21,7 +21,8 @@ template<
 >
 typename T::size_type
 storage_dim(
-	T const &t)
+	T const &t
+)
 {
 	return t.size();
 }
@@ -32,7 +33,8 @@ template<
 >
 std::size_t
 storage_dim(
-	T (&)[N])
+	T (&)[N]
+)
 {
 	return N;
 }
