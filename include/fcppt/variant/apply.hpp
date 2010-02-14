@@ -23,7 +23,8 @@ template<
 typename Operation::result_type
 apply(
 	Operation const &op,
-	Variant const &obj)
+	Variant const &obj
+)
 {
 	return apply_unary(
 		op,
@@ -40,7 +41,8 @@ typename Operation::result_type
 apply(
 	Operation const &op,
 	Variant1 const &obj1,
-	Variant2 const &obj2)
+	Variant2 const &obj2
+)
 {
 	return apply_binary(
 		op,
@@ -60,7 +62,8 @@ apply(
 	Operation const &op,
 	Variant1 const &obj1,
 	Variant2 const &obj2,
-	Variant3 const &obj3)
+	Variant3 const &obj3
+)
 {
 	return apply_binary(
 		op,
