@@ -64,6 +64,51 @@ operator *(
 
 }
 
+template<
+	typename T,
+	typename N,
+	typename M,
+	typename S
+>
+basic<T, N, M, S> const
+operator *(
+	basic<T, N, M, S> a,
+	T const &s
+)
+{
+	return a *= s;
+}
+
+template<
+	typename T,
+	typename N,
+	typename M,
+	typename S
+>
+basic<T, N, M, S> const
+operator *(
+	T const &s,
+	basic<T, N, M, S> const &a
+)
+{
+	return a * s;
+}
+
+template<
+	typename T,
+	typename N,
+	typename M,
+	typename S
+>
+basic<T, N, M, S> const
+operator /(
+	basic<T, N, M, S> a,
+	T const &s
+)
+{
+	return a /= s;
+}
+
 }
 }
 }
