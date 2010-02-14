@@ -127,6 +127,16 @@ FCPPT_MATH_DETAIL_MAKE_OP_DECL(basic, op)
 	FCPPT_MATH_MATRIX_BASIC_DECLARE_OPERATOR(-=)
 #undef FCPPT_MAT_MATRIX_BASIC_DECLARE_OPERATOR
 public:
+	basic &
+	operator*=(
+		value_type const &
+	);
+
+	basic &
+	operator/=(
+		value_type const &
+	);
+
 	reference
 	operator[](
 		size_type

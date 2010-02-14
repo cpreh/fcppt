@@ -8,16 +8,19 @@
 #include <fcppt/math/matrix/static.hpp>
 #include <boost/test/unit_test.hpp>
 
-#include <iostream>
+namespace
+{
+
+typedef fcppt::math::matrix::static_<
+	int,
+	2,
+	2
+>::type matrix_type;
+
+}
 
 BOOST_AUTO_TEST_CASE(math_matrix_operators_add)
 {
-	typedef fcppt::math::matrix::static_<
-		int,
-		2,
-		2
-	>::type matrix_type;
-
 	matrix_type const first(
 		1, 2,
 		3, 4
@@ -30,13 +33,29 @@ BOOST_AUTO_TEST_CASE(math_matrix_operators_add)
 
 	second += first;
 
-	std::cerr << second << '\n';
-
 	BOOST_REQUIRE(
 		second
 		== matrix_type(
 			3, 5,
 			7, 9
+		)
+	);
+}
+
+BOOST_AUTO_TEST_CASE(math_matrix_operators_scalar)
+{
+	matrix_type first(
+		1, 2,
+		3, 4
+	);
+
+	first *= 3;
+
+	BOOST_REQUIRE(
+		first
+		== matrix_type(
+			3, 6,
+			9, 12
 		)
 	);
 }

@@ -20,6 +20,7 @@
 #include <fcppt/math/detail/initial_size.hpp>
 #include <fcppt/math/detail/make_op_def.hpp>
 #include <fcppt/assert.hpp>
+#include <boost/foreach.hpp>
 #include <iterator>
 #include <algorithm>
 
@@ -126,6 +127,46 @@ FCPPT_MATH_MATRIX_BASIC_DEFINE_OPERATOR(-=)
 #undef FCPPT_MATH_DETAIL_DEF_PRE
 #undef FCPPT_MATH_DETAIL_TEMPLATE_PRE
 #undef FCPPT_MATH_MATRIX_BASIC_DEFINE_OPERATOR
+
+template<
+	typename T,
+	typename N,
+	typename M,
+	typename S
+>
+fcppt::math::matrix::basic<T, N, M, S> &
+fcppt::math::matrix::basic<T, N, M, S>::operator*=(
+	value_type const &v
+)
+{
+	BOOST_FOREACH(
+		value_type &i,
+		*this
+	)
+		i *= v;
+
+	return *this;
+}
+
+template<
+	typename T,
+	typename N,
+	typename M,
+	typename S
+>
+fcppt::math::matrix::basic<T, N, M, S> &
+fcppt::math::matrix::basic<T, N, M, S>::operator/=(
+	value_type const &v
+)
+{
+	BOOST_FOREACH(
+		value_type &i,
+		*this
+	)
+		i /= v;
+
+	return *this;
+}
 
 template<
 	typename T,
