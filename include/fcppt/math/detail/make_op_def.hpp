@@ -7,32 +7,29 @@
 #ifndef FCPPT_MATH_DETAIL_MAKE_OP_DEF_HPP_INCLUDED
 #define FCPPT_MATH_DETAIL_MAKE_OP_DEF_HPP_INCLUDED
 
-#include <fcppt/math/detail/storage_dim.hpp>
-
 #define FCPPT_MATH_DETAIL_MAKE_OP_DEF(name, op)\
 FCPPT_MATH_DETAIL_TEMPLATE_PRE \
-template< \
-	typename Expr \
-> \
 FCPPT_MATH_DETAIL_DEF_PRE \
  & \
 FCPPT_MATH_DETAIL_DEF_PRE \
 ::operator op ( \
-	Expr const &expr) \
+	FCPPT_MATH_DETAIL_DEF_PRE const &expr\
+) \
 { \
-	size_type const dim(\
-		static_cast<\
-			size_type\
-		>( \
-			::fcppt::math::detail::storage_dim(\
-				storage)));\
-	for( \
-		size_type i = 0; \
-		i < dim; \
-		++i \
-	) \
-		(*this)[i] op expr[i]; \
-	return *this; \
+	const_iterator right(\
+		expr.begin()\
+	);\
+\
+	for(\
+		iterator left(\
+			begin()\
+		);\
+		left != end();\
+		++left, ++right\
+	)\
+		*left op *right;\
+\
+	return *this;\
 }
 
 #endif

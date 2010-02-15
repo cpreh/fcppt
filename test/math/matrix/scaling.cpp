@@ -5,6 +5,7 @@
 
 
 #include <fcppt/math/matrix/matrix.hpp>
+#include <fcppt/math/matrix/static.hpp>
 #include <fcppt/math/matrix/scaling.hpp>
 #include <fcppt/math/vector/vector.hpp>
 #include <fcppt/math/vector/static.hpp>

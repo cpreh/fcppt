@@ -18,7 +18,7 @@ namespace container
 {
 
 /// A special vector class for pod types
-/** This class has the ability to use provide uninitialized (POD) memory.
+/** This class has the ability to provide uninitialized (POD) memory.
  * An example would be that you need a dynamically growing buffer of char
  * but you don't want to initialize them because this is done by a function
  * like basic_istream::read.

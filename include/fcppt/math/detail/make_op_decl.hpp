@@ -8,11 +8,9 @@
 #define FCPPT_MATH_DETAIL_MAKE_OP_DECL_HPP_INCLUDED
 
 #define FCPPT_MATH_DETAIL_MAKE_OP_DECL(name, op)\
-template< \
-	typename Expr \
-> \
 name & \
 operator op ( \
-	Expr const &);
+	name const &\
+);
 
 #endif
