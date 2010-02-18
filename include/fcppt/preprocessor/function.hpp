@@ -10,6 +10,9 @@
 #include <fcppt/text.hpp>
 #include <fcppt/config.h>
 
+/// Pretty printing macro for the current function
+/** May return an empty string if there is no support for function names
+*/
 #ifdef FCPPT_HAS_PRETTY_FUNCTION
 #ifdef FCPPT_NARROW_STRING
 #define FCPPT_PP_FUNCTION __PRETTY_FUNCTION__

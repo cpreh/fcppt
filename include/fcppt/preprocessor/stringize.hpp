@@ -15,6 +15,7 @@
 #include <boost/preprocessor/wstringize.hpp>
 #endif
 
+/// Stringizes a macro parameter used with BOOST_PP so that it is compatible with fcppt::string
 #ifdef FCPPT_NARROW_STRING
 #define FCPPT_PP_STRINGIZE(s) BOOST_PP_STRINGIZE(s)
 #else

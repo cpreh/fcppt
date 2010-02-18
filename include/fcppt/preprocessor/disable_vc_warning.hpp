@@ -9,6 +9,7 @@
 
 #include <fcppt/preprocessor/pragma.hpp>
 
+/// Disables a given VC++ warning (does nothing on other compilers)
 #if defined(_MSC_VER)
 #define FCPPT_PP_DISABLE_VC_WARNING(number) \
 FCPPT_PP_PRAGMA(warning(disable:number))

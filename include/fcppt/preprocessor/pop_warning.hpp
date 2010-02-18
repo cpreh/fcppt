@@ -9,6 +9,7 @@
 
 #include <fcppt/preprocessor/pragma.hpp>
 
+/// Pop the warning level (only supported on VC++ for now)
 #if defined(_MSC_VER)
 #define FCPPT_PP_POP_WARNING \
 FCPPT_PP_PRAGMA(warning(pop))
