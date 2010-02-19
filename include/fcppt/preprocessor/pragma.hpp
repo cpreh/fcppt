@@ -7,6 +7,9 @@
 #ifndef FCPPT_PREPROCESSOR_PRAGMA_HPP_INCLUDED
 #define FCPPT_PREPROCESSOR_PRAGMA_HPP_INCLUDED
 
+/// Pragma macro, the same as #pragma
+/** This can be used to wrap pragma inside other macros
+*/
 #if defined(_MSC_VER)
 #define FCPPT_PP_PRAGMA(x) __pragma(x)
 #elif defined(__GNUC__)

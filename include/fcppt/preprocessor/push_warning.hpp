@@ -9,6 +9,7 @@
 
 #include <fcppt/preprocessor/pragma.hpp>
 
+/// Push the warning level (only supported on VC++ for now)
 #if defined(_MSC_VER)
 #define FCPPT_PP_PUSH_WARNING \
 FCPPT_PP_PRAGMA(warning(push))

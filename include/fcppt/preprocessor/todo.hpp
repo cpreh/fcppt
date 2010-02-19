@@ -9,6 +9,7 @@
 
 #include <fcppt/preprocessor/message.hpp>
 
+/// Prints the compiler message "TODO: " @a x
 #define FCPPT_PP_TODO(x) FCPPT_PP_MESSAGE("TODO: " x)
 
 #endif

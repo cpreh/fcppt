@@ -10,6 +10,7 @@
 #include <fcppt/text.hpp>
 #include <fcppt/config.h>
 
+/// Procudes a string literal for the current file (__FILE__) that is compatible to fcppt::string
 #ifdef FCPPT_NARROW_STRING
 #define FCPPT_PP_FILE __FILE__
 #else

@@ -9,6 +9,7 @@
 
 #include <fcppt/preprocessor/message.hpp>
 
+/// Prints the compiler message "FIXME: " @a x
 #define FCPPT_PP_FIXME(x) FCPPT_PP_MESSAGE("FIXME: " x)
 
 #endif
