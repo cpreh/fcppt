@@ -8,8 +8,6 @@
 #define FCPPT_MATH_VECTOR_DOT_HPP_INCLUDED
 
 #include <fcppt/math/vector/basic_impl.hpp>
-#include <fcppt/exception.hpp>
-#include <fcppt/text.hpp>
 
 namespace fcppt
 {
@@ -29,10 +27,6 @@ dot(
 	basic<T, N, S> const &r
 )
 {
-	if(l.size() != r.size())
-		throw exception(
-			FCPPT_TEXT("Dimensions of vectors do not match in dot()!"));
-
 	T result(static_cast<T>(0));
 
 	for(typename basic<T, N, S>::size_type i = 0; i < l.size(); ++i)
