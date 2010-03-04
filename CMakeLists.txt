@@ -17,8 +17,8 @@ INCLUDE (FindPkgConfig)
 
 SET (CMAKE_VERBOSE_MAKEFILE ON)
 
-OPTION(ENABLE_SHARED "Build fcppt as a shared library" OFF)
-OPTION(ENABLE_STATIC "Build fcppt as a stati library" ON)
+OPTION(ENABLE_SHARED "Build fcppt as a shared library" ON)
+OPTION(ENABLE_STATIC "Build fcppt as a static library" OFF)
 
 IF (MSVC)
 	OPTION (ENABLE_NARROW_STRING "Build fcppt with std::string instead of std::wstring" OFF)

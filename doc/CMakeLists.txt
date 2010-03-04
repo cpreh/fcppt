@@ -6,7 +6,9 @@ SET(XSLT_COMMAND "xsltproc") # FIXME!
 
 SET(BOOSTBOOK_STYLESHEETS "/usr/share/boostbook-${Boost_LIB_VERSION}/xsl")
 
-SET(DOC_OUTPUT ${CMAKE_SOURCE_DIR}/doc_generated)
+SET(DOC_OUTPUT ${CMAKE_BINARY_DIR}/doc_generated)
+
+CONFIGURE_FILE(Doxyfile.in ${CMAKE_SOURCE_DIR}/Doxyfile @ONLY IMMEDIATE)
 
 ADD_CUSTOM_TARGET(
 	doc
