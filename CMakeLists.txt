@@ -21,10 +21,12 @@ OPTION(ENABLE_SHARED "Build fcppt as a shared library" OFF)
 OPTION(ENABLE_STATIC "Build fcppt as a stati library" ON)
 
 IF (MSVC)
-	OPTION (ENABLE_NARROW_STRING "Build fcppt with std::string instead of std::wstring" OFF)
+	SET (ENABLE_NARROW_STRING_DEFAULT OFF)
 ELSE ()
-	OPTION (ENABLE_NARROW_STRING "Build fcppt with std::string instead of std::wstring" ON)
+	SET (ENABLE_NARROW_STRING_DEFAULT ON)
 ENDIF ()
+
+OPTION (ENABLE_NARROW_STRING "Build fcppt with std::string instead of std::wstring" ${ENABLE_NARROW_STRING_DEFAULT})
 
 IF (ENABLE_NARROW_STRING)
        SET (FCPPT_NARROW_STRING true)
@@ -97,7 +99,9 @@ ELSEIF (MSVC)
 	ADD_DEFINITIONS ("/W4 /wd4996 /EHa /D_BIND_TO_CURRENT_VCLIBS_VERSION=1")
 	#4996 - unsafe standard C++ functions
 
-	ADD_DEFINITIONS (-DUNICODE=1 -D_UNICODE=1)
+	IF (NOT ENABLE_NARROW_STRING)
+		ADD_DEFINITIONS (-DUNICODE=1 -D_UNICODE=1)
+	ENDIF()
 ENDIF ()
 
 INCLUDE_DIRECTORIES (${CMAKE_SOURCE_DIR}/include)
@@ -105,8 +109,8 @@ INCLUDE_DIRECTORIES (${CMAKE_SOURCE_DIR}/include)
 SET (LIBRARY_OUTPUT_PATH ${CMAKE_BINARY_DIR}/bin)
 SET (EXECUTABLE_OUTPUT_PATH ${CMAKE_BINARY_DIR}/bin)
 
-# Create package file for relocateable package
 SET (pkgfile "${CMAKE_BINARY_DIR}/fcppt.pc")
+
 FILE(WRITE ${pkgfile}
 	"prefix=${CMAKE_INSTALL_PREFIX}\n"
 	"exec_prefix=\${prefix}\n"
@@ -122,20 +126,8 @@ FILE(WRITE ${pkgfile}
 #IF(FCPPT_HAVE_VARIADIC_TEMPLATES)
 #	FILE(APPEND ${pkgfile} " -std=c++0x")
 #ENDIF()
-INSTALL (FILES ${pkgfile} DESTINATION ${CMAKE_INSTALL_PREFIX}/lib/pkgconfig)
 
-CHECK_CXX_SOURCE_RUNS(
-	"
-	#include <unistd.h>
-	#include <cstdlib>
-	int main()
-	{
-		return _POSIX_VERSION >= 200100
-			? EXIT_SUCCESS
-			: EXIT_FAILURE;
-	}"
-	FCPPT_HAVE_POSIX
-)
+INSTALL (FILES ${pkgfile} DESTINATION ${CMAKE_INSTALL_PREFIX}/lib/pkgconfig)
 
 # NOTE: we can't use this right now because -std=c++0x is broken with proto
 #CHECK_CXX_SOURCE_COMPILES(
@@ -178,7 +170,7 @@ CHECK_CXX_SOURCE_COMPILES(
 CHECK_CXX_SOURCE_COMPILES(
 	"int main()
 	{
-		long long test = 1LL;	
+		long long test = 1LL;
 	}"
 	FCPPT_HAVE_LONG_LONG
 )
