@@ -1,8 +1,8 @@
 FIND_PACKAGE(Doxygen REQUIRED)
 
-SET(QUICKBOOK_COMMAND "quickbook-${Boost_LIB_VERSION}") # FIXME!
+FIND_PACKAGE(Xsltproc REQUIRED)
 
-SET(XSLT_COMMAND "xsltproc") # FIXME!
+SET(QUICKBOOK_COMMAND "quickbook-${Boost_LIB_VERSION}") # FIXME!
 
 SET(BOOSTBOOK_STYLESHEETS ${CMAKE_SOURCE_DIR}/doc/xsl)
 
@@ -18,14 +18,14 @@ ADD_CUSTOM_TARGET(
 
 ADD_CUSTOM_COMMAND(
 	TARGET doc
-	COMMAND ${XSLT_COMMAND}
+	COMMAND ${XSLTPROC_EXECUTABLE}
 	ARGS
 		--xinclude
 		-o ${DOC_OUTPUT}/doxygen.xml
 		--path ${DOC_OUTPUT}
 		${BOOSTBOOK_STYLESHEETS}/doxygen/collect.xsl
 		${DOC_OUTPUT}/xml/index.xml
-	COMMAND ${XSLT_COMMAND}
+	COMMAND ${XSLTPROC_EXECUTABLE}
 	ARGS
 		--xinclude
 		-o ${DOC_OUTPUT}/doxygen_boostbook.xml
@@ -36,13 +36,13 @@ ADD_CUSTOM_COMMAND(
 	ARGS
 		${CMAKE_SOURCE_DIR}/doc/main.qbk
 		--output-file ${DOC_OUTPUT}/main.xml
-	COMMAND ${XSLT_COMMAND}
+	COMMAND ${XSLTPROC_EXECUTABLE}
 		--xinclude
 		-o ${DOC_OUTPUT}/main_docbook.xml
 		--path ${DOC_OUTPUT}
 		${BOOSTBOOK_STYLESHEETS}/docbook.xsl
 		${DOC_OUTPUT}/main.xml
-	COMMAND ${XSLT_COMMAND}
+	COMMAND ${XSLTPROC_EXECUTABLE}
 	ARGS
 		--xinclude
 		-o ${DOC_OUTPUT}/"html/"
