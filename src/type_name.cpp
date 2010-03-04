@@ -5,7 +5,7 @@
 
 
 #include <fcppt/type_name.hpp>
-#include <fcppt/iconv.hpp>
+#include <fcppt/from_std_string.hpp>
 #ifdef FCPPT_HAS_GNU_DEMANGLE
 #include <cxxabi.h>
 #include <fcppt/scoped_ptr.hpp>
@@ -33,10 +33,10 @@ fcppt::type_name(
 
 	// demangling failed?
 	return status
-		? iconv(ti.get().name())
-		: iconv(name.get());
+		? from_std_string(ti.get().name())
+		: from_std_string(name.get());
 #else
-	return iconv(
+	return from_std_string(
 		ti.get().name()
 	);
 #endif

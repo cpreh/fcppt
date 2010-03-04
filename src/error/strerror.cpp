@@ -5,7 +5,7 @@
 
 
 #include <fcppt/error/strerror.hpp>
-#include <fcppt/iconv.hpp>
+#include <fcppt/from_std_string.hpp>
 #include <cstring>
 
 fcppt::string const
@@ -13,7 +13,7 @@ fcppt::error::strerror(
 	int const errnum
 )
 {
-	return iconv(
+	return from_std_string(
 		std::strerror(
 			errnum
 		)
