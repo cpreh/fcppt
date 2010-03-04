@@ -4,7 +4,7 @@ SET(QUICKBOOK_COMMAND "quickbook-${Boost_LIB_VERSION}") # FIXME!
 
 SET(XSLT_COMMAND "xsltproc") # FIXME!
 
-SET(BOOSTBOOK_STYLESHEETS "/usr/share/boostbook-${Boost_LIB_VERSION}/xsl")
+SET(BOOSTBOOK_STYLESHEETS ${CMAKE_SOURCE_DIR}/doc/xsl)
 
 SET(DOC_OUTPUT ${CMAKE_BINARY_DIR}/doc_generated)
 
@@ -51,3 +51,6 @@ ADD_CUSTOM_COMMAND(
 		${DOC_OUTPUT}/main_docbook.xml
 	WORKING_DIRECTORY ${DOC_OUTPUT}
 )
+
+FILE(GLOB html_files files/*)
+FILE(COPY ${html_files} DESTINATION ${DOC_OUTPUT}/html)
