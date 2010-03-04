@@ -34,7 +34,7 @@ ADD_CUSTOM_COMMAND(
 		--path ${DOC_OUTPUT}
 		${BOOSTBOOK_STYLESHEETS}/doxygen/doxygen2boostbook.xsl
 		${DOC_OUTPUT}/doxygen.xml
-	COMMAND ${QUICKBOOK_COMMAND}
+	COMMAND ${QUICKBOOK_EXECUTABLE}
 	ARGS
 		${CMAKE_SOURCE_DIR}/doc/main.qbk
 		--output-file ${DOC_OUTPUT}/main.xml
