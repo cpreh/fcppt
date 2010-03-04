@@ -1,5 +1,5 @@
 [section Doxygen]
 
-[xinclude ../doc_generated/doxygen_boostbook.xml]
+[xinclude doxygen_boostbook.xml]
 
 [endsect]

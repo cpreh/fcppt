@@ -22,12 +22,14 @@ ADD_CUSTOM_COMMAND(
 	ARGS
 		--xinclude
 		-o ${DOC_OUTPUT}/doxygen.xml
+		--path ${DOC_OUTPUT}
 		${BOOSTBOOK_STYLESHEETS}/doxygen/collect.xsl
 		${DOC_OUTPUT}/xml/index.xml
 	COMMAND ${XSLT_COMMAND}
 	ARGS
 		--xinclude
 		-o ${DOC_OUTPUT}/doxygen_boostbook.xml
+		--path ${DOC_OUTPUT}
 		${BOOSTBOOK_STYLESHEETS}/doxygen/doxygen2boostbook.xsl
 		${DOC_OUTPUT}/doxygen.xml
 	COMMAND ${QUICKBOOK_COMMAND}
@@ -37,12 +39,14 @@ ADD_CUSTOM_COMMAND(
 	COMMAND ${XSLT_COMMAND}
 		--xinclude
 		-o ${DOC_OUTPUT}/main_docbook.xml
+		--path ${DOC_OUTPUT}
 		${BOOSTBOOK_STYLESHEETS}/docbook.xsl
 		${DOC_OUTPUT}/main.xml
 	COMMAND ${XSLT_COMMAND}
 	ARGS
 		--xinclude
 		-o ${DOC_OUTPUT}/"html/"
+		--path ${DOC_OUTPUT}
 		${BOOSTBOOK_STYLESHEETS}/html.xsl
 		${DOC_OUTPUT}/main_docbook.xml
 	WORKING_DIRECTORY ${DOC_OUTPUT}
