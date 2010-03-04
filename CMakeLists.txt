@@ -4,6 +4,8 @@ SET (CMAKE_ALLOW_LOOSE_LOOP_CONSTRUCTS ON)
 
 PROJECT (fcppt)
 
+SET (FCPPT_SHARED_VERSION 1)
+
 IF(${CMAKE_BINARY_DIR} STREQUAL ${CMAKE_SOURCE_DIR})
 	message(FATAL_ERROR "In-source builds are not permitted. Make a separate folder for building:\nmkdir build; cd build; cmake ..\nBefore that, remove the files that cmake just created:\nrm -rf CMakeCache.txt CMakeFiles")
 ENDIF()
@@ -14,6 +16,9 @@ INCLUDE (CheckCXXSourceRuns)
 INCLUDE (FindPkgConfig)
 
 SET (CMAKE_VERBOSE_MAKEFILE ON)
+
+OPTION(ENABLE_SHARED "Build fcppt as a shared library" OFF)
+OPTION(ENABLE_STATIC "Build fcppt as a stati library" ON)
 
 IF (MSVC)
 	OPTION (ENABLE_NARROW_STRING "Build fcppt with std::string instead of std::wstring" OFF)
