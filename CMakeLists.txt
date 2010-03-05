@@ -16,6 +16,8 @@ ENDIF()
 INCLUDE (CheckCXXCompilerFlag)
 INCLUDE (CheckCXXSourceCompiles)
 INCLUDE (CheckCXXSourceRuns)
+INCLUDE (CheckFunctionExists)
+INCLUDE (CheckIncludeFile)
 INCLUDE (FindPkgConfig)
 
 SET (CMAKE_VERBOSE_MAKEFILE ON)
@@ -57,8 +59,7 @@ IF (CMAKE_COMPILER_IS_GNUCXX)
 	ADD_DEFINITIONS ("-pedantic-errors -Wall -Wextra -Wconversion"
 	"-Wfloat-equal -Wredundant-decls -Wstrict-null-sentinel -Winit-self"
 	"-Woverloaded-virtual -Wnon-virtual-dtor -Wctor-dtor-privacy"
-	"-Wsign-promo -Wstrict-aliasing=1 -Wmissing-declarations"
-	"-Wold-style-cast")
+	"-Wsign-promo -Wstrict-aliasing=1 -Wold-style-cast")
 
 	IF(ENABLE_DEBUG_WARNINGS)
 		SET (CMAKE_CXX_FLAGS_DEBUG ${CMAKE_CXX_FLAGS_DEBUG}" -Wpadded -Weffc++")
@@ -74,8 +75,13 @@ IF (CMAKE_COMPILER_IS_GNUCXX)
 	#	ADD_DEFINITIONS ("-std=c++0x")
 	#ELSE ()
 		# C++ 98 has no long long but boost insists on using it anyway
-		ADD_DEFINITIONS ("-Wno-long-long -ansi")
+		ADD_DEFINITIONS ("-Wno-long-long")
 	#ENDIF ()
+
+	IF(NOT APPLE)
+		# -ansi breaks tr1 on darwin
+		ADD_DEFINITIONS ("-ansi")
+	ENDIF()
 
 	CHECK_CXX_SOURCE_COMPILES(
 		"#include <cxxabi.h>
@@ -96,6 +102,12 @@ IF (CMAKE_COMPILER_IS_GNUCXX)
 		"
 		FCPPT_HAVE_GCC_PRAGMA_MESSAGE
 	)
+
+	CHECK_CXX_COMPILER_FLAG("-Wmissing-declarations" FCPPT_HAVE_MISSING_DECLARATIONS_FLAG)
+
+	IF(FCPPT_HAVE_MISSING_DECLARATIONS_FLAG)
+		ADD_DEFINITIONS ("-Wmissing-declarations")
+	ENDIF()
 
 	SET (CMAKE_REQUIRED_FLAGS "")
 ELSEIF (MSVC)
@@ -188,6 +200,16 @@ CHECK_CXX_SOURCE_RUNS(
 	         : EXIT_FAILURE;
 	}"
 	FCPPT_HAVE_POSIX
+)
+
+CHECK_INCLUDE_FILE(
+	mach/mach_time.h
+	FCPPT_HAVE_MACH_TIME
+)
+
+CHECK_FUNCTION_EXISTS(
+	clock_gettime,
+	FCPPT_HAVE_CLOCK_GETTIME
 )
 
 CONFIGURE_FILE(
