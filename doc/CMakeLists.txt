@@ -14,9 +14,14 @@ ADD_CUSTOM_TARGET(
 	doc
 )
 
-MACRO(make_fcppt_documentation path name)
-	SET(DOXYGEN_INPUT_PATH ${CMAKE_SOURCE_DIR}/include/fcppt/${path})
+MACRO(make_fcppt_documentation name)
+	#	SET(DOXYGEN_INPUT_PATH ${ARGN})
+	SET(DOXYGEN_INPUT_PATH)
 	SET(DOXYGEN_CURRENT_FILE ${DOC_OUTPUT}/${name}.doxyfile)
+
+	FOREACH(arg ${ARGN})
+		SET(DOXYGEN_INPUT_PATH "${DOXYGEN_INPUT_PATH} ${CMAKE_SOURCE_DIR}/include/fcppt/${arg}")
+	ENDFOREACH(arg)
 
 	CONFIGURE_FILE(Doxyfile.in ${DOXYGEN_CURRENT_FILE} @ONLY IMMEDIATE)
 
@@ -43,6 +48,9 @@ ENDMACRO(make_fcppt_documentation)
 
 make_fcppt_documentation(algorithm algorithm)
 make_fcppt_documentation(chrono chrono)
+make_fcppt_documentation(log log)
+make_fcppt_documentation(assert assert.hpp assert_message.hpp)
+make_fcppt_documentation(assign assign)
 
 ADD_CUSTOM_COMMAND(
 	TARGET doc

@@ -1,0 +1,5 @@
+[section Algorithm]
+
+[xinclude doxygen_algorithm.xml]
+
+[endsect]

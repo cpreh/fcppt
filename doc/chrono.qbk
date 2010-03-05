@@ -31,4 +31,6 @@ fcppt::chrono::system_clock can be used to obtain the current system time.
 
 [endsect]
 
+[xinclude doxygen_chrono.xml]
+
 [endsect]
