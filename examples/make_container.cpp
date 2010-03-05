@@ -4,7 +4,7 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-//[assign
+//[make_container
 #include <fcppt/assign/make_container.hpp>
 #include <vector>
 

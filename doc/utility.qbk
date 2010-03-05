@@ -2,7 +2,7 @@
 
 [section Assertions]
 
-The C standard library function `assert` (defined in `<cassert>`) doesn't throw an exception if the given condition isn't satisfied. Instead, `abort()` is called and all destructors are ignored. This can leave the system in a suboptimal state. Imagine a full screen renderer which doesn't change the videomode after a crash, leaving you with garbled video output.
+The C standard library macro `assert` (defined in `<cassert>`) doesn't throw an exception if the given condition isn't satisfied. Instead, `abort()` is called and all destructors are ignored. This can leave the system in a suboptimal state. Imagine a full screen renderer which doesn't change the videomode after a crash, leaving you with garbled video output.
 
 To remedy this situation, there are `FCPPT_ASSERT` and `FCPPT_ASSERT_MESSAGE`. These macros will throw `fcppt::assertion_failed` instead of aborting the program abruply. Here's a small example:
 

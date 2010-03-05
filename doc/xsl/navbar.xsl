@@ -32,14 +32,13 @@
          DocBook - display the navigation after the header
         *Spirit  - display "mini" navigation on the right
    -->
-   <xsl:param name = "nav.flow" select = "'Spirit'"/>
+   <xsl:param name = "nav.flow" select = "'DocBook'"/>
 
    <!-- location of the various Boost elements -->
 
    <xsl:param name = "boost.root"      select = "'.'"/>
    <xsl:param name = "boost.website"   select = "'http://redmine.supraverse.net/projects/fcppt'"/>
-   <xsl:param name = "boost.image.src" 
-              select = "concat($boost.root, '/logo.png')"/>
+   <xsl:param name = "boost.image.src" select = "concat($boost.root, '/logo.png')"/>
    <xsl:param name = "boost.image.alt" select = "'Friendly C++ Toolkit'"/>
    <xsl:param name = "boost.image.w" select = "'218'"/>
    <xsl:param name = "boost.image.h" select = "'87'"/>
