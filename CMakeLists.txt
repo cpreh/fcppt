@@ -57,8 +57,7 @@ IF (CMAKE_COMPILER_IS_GNUCXX)
 	ADD_DEFINITIONS ("-pedantic-errors -Wall -Wextra -Wconversion"
 	"-Wfloat-equal -Wredundant-decls -Wstrict-null-sentinel -Winit-self"
 	"-Woverloaded-virtual -Wnon-virtual-dtor -Wctor-dtor-privacy"
-	"-Wsign-promo -Wstrict-aliasing=1 -Wmissing-declarations"
-	"-Wold-style-cast")
+	"-Wsign-promo -Wstrict-aliasing=1 -Wold-style-cast")
 
 	IF(ENABLE_DEBUG_WARNINGS)
 		SET (CMAKE_CXX_FLAGS_DEBUG ${CMAKE_CXX_FLAGS_DEBUG}" -Wpadded -Weffc++")
@@ -96,6 +95,12 @@ IF (CMAKE_COMPILER_IS_GNUCXX)
 		"
 		FCPPT_HAVE_GCC_PRAGMA_MESSAGE
 	)
+
+	CHECK_CXX_COMPILER_FLAG("-Wmissing-declarations" FCPPT_HAVE_MISSING_DECLARATIONS_FLAG)
+
+	IF(FCPPT_HAVE_MISSING_DECLARATIONS_FLAG)
+		ADD_DEFINITIONS ("-Wmissing-declarations")
+	ENDIF()
 
 	SET (CMAKE_REQUIRED_FLAGS "")
 ELSEIF (MSVC)
