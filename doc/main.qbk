@@ -88,6 +88,8 @@ its types are implemented with an mpl sequence directly and it offers up to tern
 
 [include algorithm.qbk]
 
+[include alignment.qbk]
+
 [include chrono.qbk]
 
 [include log.qbk]

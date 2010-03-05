@@ -30,6 +30,7 @@ template<
 >
 struct array;
 
+/// \cond
 #define FCPPT_ALIGNMENT_GENERATE_ARRAY(r, state)\
 template<\
 	typename T,\
@@ -65,6 +66,7 @@ BOOST_PP_FOR(
 #undef FCPPT_ALIGNMENT_GENERATE_ARRAY_ADD
 #undef FCPPT_ALIGNMENT_GENERATE_ARRAY_END
 #undef FCPPT_ALIGNMENT_GENERATE_ARRAY
+/// \endcond
 
 }
 }
