@@ -4,35 +4,20 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/iconv.hpp>
+#include <fcppt/from_std_string.hpp>
+#include <fcppt/config.h>
 #ifndef FCPPT_NARROW_STRING
-#include <fcppt/narrow.hpp>
 #include <fcppt/widen.hpp>
+#endif
 
 fcppt::string const
-fcppt::iconv(
+fcppt::from_std_string(
 	std::string const &input
 )
 {
+#ifndef FCPPT_NARROW_STRING
 	return widen(input);
-}
-
-std::string const
-fcppt::iconv(
-	string const &input
-)
-{
-	return narrow(input);
-}
-
 #else
-
-fcppt::string const
-fcppt::iconv(
-	string const &s
-)
-{
-	return s;
-}
-
+	return input;
 #endif
+}

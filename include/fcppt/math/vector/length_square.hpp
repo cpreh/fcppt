@@ -4,13 +4,11 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_MATH_VECTOR_LENGTH_QUAD_HPP_INCLUDED
-#define FCPPT_MATH_VECTOR_LENGTH_QUAD_HPP_INCLUDED
+#ifndef FCPPT_MATH_VECTOR_LENGTH_SQUARE_HPP_INCLUDED
+#define FCPPT_MATH_VECTOR_LENGTH_SQUARE_HPP_INCLUDED
 
 #include <fcppt/math/vector/basic_impl.hpp>
-#include <boost/spirit/home/phoenix/operator/arithmetic.hpp>
-#include <boost/spirit/home/phoenix/core/argument.hpp>
-#include <numeric>
+#include <fcppt/math/vector/dot.hpp>
 
 namespace fcppt
 {
@@ -25,20 +23,11 @@ template<
 	typename S
 >
 typename basic<T, N, S>::value_type
-length_quad(
+length_square(
 	basic<T, N, S> const &v
 )
 {
-	using boost::phoenix::arg_names::arg1;
-	using boost::phoenix::arg_names::arg2;
-
-	return
-		std::accumulate(
-			v.begin(),
-			v.end(),
-			static_cast<T>(0),
-			arg1 + arg2 * arg2
-		);
+	return dot(v, v);
 }
 
 }

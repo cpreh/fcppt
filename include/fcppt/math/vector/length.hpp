@@ -8,7 +8,7 @@
 #define FCPPT_MATH_VECTOR_LENGTH_HPP_INCLUDED
 
 #include <fcppt/math/vector/basic_impl.hpp>
-#include <fcppt/math/vector/length_quad.hpp>
+#include <fcppt/math/vector/length_square.hpp>
 #include <boost/type_traits/is_floating_point.hpp>
 #include <boost/utility/enable_if.hpp>
 #include <cmath>
@@ -30,10 +30,11 @@ typename boost::enable_if<
 	typename basic<T, N, S>::value_type
 >::type
 length(
-	basic<T, N, S> const &v)
+	basic<T, N, S> const &v
+)
 {
 	return std::sqrt(
-		length_quad(
+		length_square(
 			v
 		)
 	);
@@ -50,11 +51,12 @@ typename boost::disable_if<
 	Dest
 >::type
 length(
-	basic<T, N, S> const &v)
+	basic<T, N, S> const &v
+)
 {
 	return std::sqrt(
 		static_cast<Dest>(
-			length_quad(
+			length_square(
 				v
 			)
 		)

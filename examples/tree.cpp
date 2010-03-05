@@ -26,42 +26,25 @@ try
 		FCPPT_TEXT("hello")
 	);
 
-	{
-		string_tree::auto_ptr child1(
-			fcppt::make_auto_ptr<
-				string_tree
-			>(
-				FCPPT_TEXT("blubb")
-			)
-		);
-
-		tree.push_back(
-			child1
-		);
-	}
-
-	{
-		string_tree::auto_ptr child2(
-			fcppt::make_auto_ptr<
-				string_tree
-			>(
-				FCPPT_TEXT("blah")
-			)
-		);
-
-		tree.push_back(
-			child2
-		);
-	}
+	tree.push_back(
+		FCPPT_TEXT("foo")
+	);
 
 	tree.push_back(
-		FCPPT_TEXT("foobar")
+		FCPPT_TEXT("bar")
+	);
+
+	tree.push_back(
+		FCPPT_TEXT("baz")
+	);
+
+	tree.front().push_back(
+		FCPPT_TEXT("qux")
 	);
 
 	typedef
-	fcppt::container::tree::in_order<
-		string_tree const
-	> traversal_type;
+	fcppt::container::tree::in_order<string_tree const> 
+	traversal_type;
 
 	traversal_type const trav(
 		tree

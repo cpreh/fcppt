@@ -1,0 +1,46 @@
+body
+{
+	background-color:white;
+	color:#0062a3;
+	text-decoration:none;
+}
+
+img
+{
+	border:0;
+}
+
+a:link
+{
+	text-decoration:underline;
+	color:blue;
+}
+
+a:visited
+{
+	text-decoration:underline;
+	color:blue;
+}
+
+a:hover
+{
+	text-decoration:underline;
+	color:rgb(255,152,59);
+}
+
+a:active
+{
+	text-decoration:underline;
+	color:rgb(255,152,59);
+}
+
+.keyword        { color: #0000AA; }
+.identifier     { color: #000000; }
+.special        { color: #707070; }
+.preprocessor   { color: #402080; }
+.char           { color: teal; }
+.comment        { color: #800000; }
+.string         { color: teal; }
+.number         { color: teal; }
+.white_bkd      { background-color: #FFFFFF; }
+.dk_grey_bkd    { background-color: #999999; }

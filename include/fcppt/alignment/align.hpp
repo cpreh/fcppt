@@ -7,13 +7,15 @@
 #ifndef FCPPT_ALIGNMENT_ALIGN_HPP_INCLUDED
 #define FCPPT_ALIGNMENT_ALIGN_HPP_INCLUDED
 
-/// Forces the specified alignment on a declaration in byes
 #ifdef _MSC_VER
-#define FCPPT_ALIGNMENT_ALIGN(x) __declspec(align(x))
+#define FCPPT_ALIGNMENT_ALIGN_IMPL(x) __declspec(align(x))
 #elif __GNUC__
-#define FCPPT_ALIGNMENT_ALIGN(x) __attribute__((__aligned__(x)))
+#define FCPPT_ALIGNMENT_ALIGN_IMPL(x) __attribute__((__aligned__(x)))
 #else
 #error "Don't know how to align types!"
 #endif
+
+/// Forces the specified alignment on a declaration in bytes
+#define FCPPT_ALIGNMENT_ALIGN(x) FCPPT_ALIGNMENT_ALIGN_IMPL(x)
 
 #endif

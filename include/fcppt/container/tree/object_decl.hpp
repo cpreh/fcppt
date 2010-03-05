@@ -11,6 +11,7 @@
 #include <fcppt/auto_ptr.hpp>
 #include <boost/ptr_container/ptr_list.hpp>
 
+//[tree
 namespace fcppt
 {
 namespace container
@@ -75,9 +76,6 @@ public:
 	parent(
 		object &
 	);
-
-	void
-	orphan();
 
 	auto_ptr
 	release(
@@ -224,5 +222,6 @@ operator!=(
 }
 }
 }
+//]
 
 #endif

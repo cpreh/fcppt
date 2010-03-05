@@ -11,7 +11,7 @@
 #ifdef FCPPT_POSIX_PLATFORM
 #include <fcppt/container/raw_vector_impl.hpp>
 #include <fcppt/error/strerrno.hpp>
-#include <fcppt/iconv.hpp>
+#include <fcppt/from_std_string.hpp>
 #include <unistd.h>
 #include <cerrno>
 #endif
@@ -67,7 +67,7 @@ fcppt::filesystem::readlink(
 		buf.push_back(0);
 
 		return path(
-			iconv(
+			from_std_string(
 				buf.data()
 			)
 		);

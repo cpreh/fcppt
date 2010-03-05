@@ -1,0 +1,5 @@
+[section Alignment]
+
+[xinclude doxygen_alignment.xml]
+
+[endsect]

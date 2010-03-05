@@ -4,10 +4,9 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_ICONV_HPP_INCLUDED
-#define FCPPT_ICONV_HPP_INCLUDED
+#ifndef FCPPT_FROM_STD_STRING_HPP_INCLUDED
+#define FCPPT_FROM_STD_STRING_HPP_INCLUDED
 
-#include <fcppt/config.h>
 #include <fcppt/string.hpp>
 #include <fcppt/symbol.hpp>
 #include <string>
@@ -15,25 +14,10 @@
 namespace fcppt
 {
 
-/**
- * @brief Converts from std::string to fcppt::string or vice versa
-*/
-#ifndef FCPPT_NARROW_STRING
 FCPPT_SYMBOL string const
-iconv(
-	std::string const &input
+from_std_string(
+	std::string const &
 );
-
-FCPPT_SYMBOL std::string const
-iconv(
-	string const &input
-);
-#else
-FCPPT_SYMBOL string const
-iconv(
-	string const &
-);
-#endif
 
 }
 
