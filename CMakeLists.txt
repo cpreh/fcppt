@@ -75,8 +75,13 @@ IF (CMAKE_COMPILER_IS_GNUCXX)
 	#	ADD_DEFINITIONS ("-std=c++0x")
 	#ELSE ()
 		# C++ 98 has no long long but boost insists on using it anyway
-		ADD_DEFINITIONS ("-Wno-long-long -ansi")
+		ADD_DEFINITIONS ("-Wno-long-long")
 	#ENDIF ()
+
+	IF(NOT APPLE)
+		# -ansi breaks tr1 on darwin
+		ADD_DEFINITIONS ("-ansi")
+	ENDIF()
 
 	CHECK_CXX_SOURCE_COMPILES(
 		"#include <cxxabi.h>

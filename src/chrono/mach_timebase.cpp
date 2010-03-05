@@ -5,7 +5,7 @@
 
 
 #include <fcppt/config.h>
-#ifndef FCPPT_HAVE_MACH_TIME
+#ifdef FCPPT_HAVE_MACH_TIME
 #include "mach_timebase.hpp"
 #include <fcppt/function_once.hpp>
 
@@ -25,7 +25,9 @@ init()
 	);
 }
 
-mach_timebase_info const
+}
+
+struct mach_timebase_info const
 fcppt::chrono::mach_timebase()
 {
 	init();
