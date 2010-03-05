@@ -7,7 +7,7 @@ PROJECT (fcppt)
 SET(CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/CMakeModules)
 
 SET (FCPPT_VERSION 1)
-SET (FCPPT_SHARED_VERSION FCPPT_VERSION)
+SET (FCPPT_SHARED_VERSION ${FCPPT_VERSION})
 
 IF(${CMAKE_BINARY_DIR} STREQUAL ${CMAKE_SOURCE_DIR})
 	message(FATAL_ERROR "In-source builds are not permitted. Make a separate folder for building:\nmkdir build; cd build; cmake ..\nBefore that, remove the files that cmake just created:\nrm -rf CMakeCache.txt CMakeFiles")
@@ -133,7 +133,7 @@ FILE(WRITE ${pkgfile}
 	"\n"
 	"Name: fcppt\n"
 	"Description: Freundlich's C++ Toolkit\n"
-	"Version: 0.1\n"
+	"Version: 0.${FCPPT_VERSION}\n"
 	"Requires:\n"
 	"Libs: -L\${libdir} -lfcppt\n"
 	"Cflags: -I\${includedir}/fcppt")
