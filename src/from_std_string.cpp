@@ -4,18 +4,20 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/error/strerror.hpp>
 #include <fcppt/from_std_string.hpp>
-#include <cstring>
+#include <fcppt/config.h>
+#ifndef FCPPT_NARROW_STRING
+#include <fcppt/widen.hpp>
+#endif
 
 fcppt::string const
-fcppt::error::strerror(
-	int const errnum
+fcppt::from_std_string(
+	std::string const &input
 )
 {
-	return from_std_string(
-		std::strerror(
-			errnum
-		)
-	);
+#ifndef FCPPT_NARROW_STRING
+	return widen(input);
+#else
+	return input;
+#endif
 }
