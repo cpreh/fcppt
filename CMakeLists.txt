@@ -16,7 +16,6 @@ ENDIF()
 INCLUDE (CheckCXXCompilerFlag)
 INCLUDE (CheckCXXSourceCompiles)
 INCLUDE (CheckCXXSourceRuns)
-INCLUDE (CheckFunctionExists)
 INCLUDE (CheckIncludeFile)
 INCLUDE (FindPkgConfig)
 
@@ -207,8 +206,12 @@ CHECK_INCLUDE_FILE(
 	FCPPT_HAVE_MACH_TIME
 )
 
-CHECK_FUNCTION_EXISTS(
-	clock_gettime,
+CHECK_CXX_SOURCE_COMPILES(
+	"#include <time.h>
+	int main()
+	{
+		int (*tmp)(clockid_t, struct timespec *) = clock_gettime;
+	}"
 	FCPPT_HAVE_CLOCK_GETTIME
 )
 
