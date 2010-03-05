@@ -8,7 +8,7 @@
 #include <fcppt/config.h>
 #ifdef FCPPT_WINDOWS_PLATFORM
 #include "performance_counter_time.hpp"
-#elif FCPPT_POSIX_PLATFORM
+#elif FCPPT_HAVE_CLOCK_GETTIME
 #include "clock_gettime_impl.hpp"
 #include <time.h>
 #else
@@ -22,7 +22,7 @@ fcppt::chrono::monotonic_clock::now()
 	return performance_counter_time<
 		time_point
 	>();
-#elif FCPPT_POSIX_PLATFORM
+#elif FCPPT_HAVE_CLOCK_GETTIME
 	return clock_gettime_impl<
 		time_point
 	>(

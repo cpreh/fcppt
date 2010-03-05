@@ -16,6 +16,8 @@ ENDIF()
 INCLUDE (CheckCXXCompilerFlag)
 INCLUDE (CheckCXXSourceCompiles)
 INCLUDE (CheckCXXSourceRuns)
+INCLUDE (CheckFunctionExists)
+INCLUDE (CheckIncludeFile)
 INCLUDE (FindPkgConfig)
 
 SET (CMAKE_VERBOSE_MAKEFILE ON)
@@ -193,6 +195,16 @@ CHECK_CXX_SOURCE_RUNS(
 	         : EXIT_FAILURE;
 	}"
 	FCPPT_HAVE_POSIX
+)
+
+CHECK_INCLUDE_FILE(
+	"mach/mach_time.h",
+	FCPPT_HAVE_MACH_ABSOLUTE_TIME
+)
+
+CHECK_FUNCTION_EXISTS(
+	"clock_gettime",
+	FCPPT_HAVE_CLOCK_GETTIME
 )
 
 CONFIGURE_FILE(
