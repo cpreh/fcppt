@@ -86,10 +86,10 @@ its types are implemented with an mpl sequence directly and it offers up to tern
 
 [endsect]
 
+[include algorithm.qbk]
+
+[include chrono.qbk]
+
 [include log.qbk]
 
 [include utility.qbk]
-
-[include doxygen.qbk]
-
-[include chrono.qbk]

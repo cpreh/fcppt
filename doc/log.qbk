@@ -38,4 +38,6 @@ This can be used to enable or disable loggers or log levels at runtime in an eas
 
 [endsect]
 
+[xinclude doxygen_log.xml]
+
 [endsect]
