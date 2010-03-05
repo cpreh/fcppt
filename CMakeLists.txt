@@ -198,12 +198,12 @@ CHECK_CXX_SOURCE_RUNS(
 )
 
 CHECK_INCLUDE_FILE(
-	"mach/mach_time.h",
-	FCPPT_HAVE_MACH_ABSOLUTE_TIME
+	mach/mach_time.h
+	FCPPT_HAVE_MACH_TIME
 )
 
 CHECK_FUNCTION_EXISTS(
-	"clock_gettime",
+	clock_gettime,
 	FCPPT_HAVE_CLOCK_GETTIME
 )
 

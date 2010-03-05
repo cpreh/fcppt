@@ -8,9 +8,11 @@
 #include <fcppt/config.h>
 #ifdef FCPPT_WINDOWS_PLATFORM
 #include "performance_counter_time.hpp"
-#elif FCPPT_HAVE_CLOCK_GETTIME
+#elif defined(FCPPT_HAVE_CLOCK_GETTIME)
 #include "clock_gettime_impl.hpp"
 #include <time.h>
+#elif defined(FCPPT_HAVE_MACH_TIME)
+#include "mach_time_impl.hpp"
 #else
 #error "high_resolution_clock implementation missing"
 #endif
@@ -22,11 +24,15 @@ fcppt::chrono::high_resolution_clock::now()
 	return performance_counter_time<
 		time_point
 	>();
-#elif FCPPT_HAVE_CLOCK_GETTIME
+#elif defined(FCPPT_HAVE_CLOCK_GETTIME)
 	return clock_gettime_impl<
 		time_point
 	>(
 		CLOCK_REALTIME
 	);
+#elif defined(FCPPT_HAVE_MACH_TIME)
+	return mach_time_impl<
+		time_point
+	>();
 #endif
 }

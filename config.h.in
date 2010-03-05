@@ -10,6 +10,7 @@
 #cmakedefine FCPPT_STRING_IS_UTF8
 #cmakedefine FCPPT_HAS_GNU_DEMANGLE
 #cmakedefine FCPPT_HAVE_CLOCK_GETTIME
+#cmakedefine FCPPT_HAVE_MACH_TIME
 
 #ifdef _WIN32
 #define FCPPT_WINDOWS_PLATFORM 1
