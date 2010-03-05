@@ -10,8 +10,6 @@
 #include "mach_timebase.hpp"
 #include <fcppt/chrono/time_point_impl.hpp>
 #include <fcppt/chrono/duration_impl.hpp>
-#include <fcppt/chrono/rep.hpp>
-#include <boost/rational.hpp>
 #include <mach/mach_time.h>
 
 namespace fcppt
@@ -28,13 +26,7 @@ template<
 TimePoint const
 mach_time_impl()
 {
-	typedef boost::rational<
-		rep
-	> rational;
-
 	typedef typename TimePoint::duration duration_;
-
-	typedef typename duration_::period period_;
 
 	struct mach_timebase_info const info(
 		mach_timebase()
@@ -42,27 +34,11 @@ mach_time_impl()
 
 	return TimePoint(
 		duration_(
-			boost::rational_cast<
-				rep
-			>(
-				static_cast<
-					rep
-				>(
-					mach_absolute_time()
-				)
-				*
-				rational(
-					info.numer,
-					info.denom
-				)
-				/
-				rational(
-					period_::num,
-					period_::den
-				)
-			)
+			mach_absolute_time()
+			* info.numer
+			/ info.denom
 		)
-	);	
+	);
 }
 
 }
