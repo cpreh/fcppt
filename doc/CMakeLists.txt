@@ -10,30 +10,50 @@ SET(BOOSTBOOK_STYLESHEETS ${CMAKE_SOURCE_DIR}/doc/xsl)
 
 SET(DOC_OUTPUT ${CMAKE_BINARY_DIR}/doc_generated)
 
-CONFIGURE_FILE(Doxyfile.in ${CMAKE_SOURCE_DIR}/Doxyfile @ONLY IMMEDIATE)
-
 ADD_CUSTOM_TARGET(
 	doc
-	COMMAND ${DOXYGEN_EXECUTABLE}
-	WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
 )
+
+MACRO(make_fcppt_documentation name)
+	#	SET(DOXYGEN_INPUT_PATH ${ARGN})
+	SET(DOXYGEN_INPUT_PATH)
+	SET(DOXYGEN_CURRENT_FILE ${DOC_OUTPUT}/${name}.doxyfile)
+
+	FOREACH(arg ${ARGN})
+		SET(DOXYGEN_INPUT_PATH "${DOXYGEN_INPUT_PATH} ${CMAKE_SOURCE_DIR}/include/fcppt/${arg}")
+	ENDFOREACH(arg)
+
+	CONFIGURE_FILE(Doxyfile.in ${DOXYGEN_CURRENT_FILE} @ONLY IMMEDIATE)
+
+	ADD_CUSTOM_COMMAND(
+		TARGET doc
+		COMMAND ${DOXYGEN_EXECUTABLE}
+		ARGS
+			${DOXYGEN_CURRENT_FILE}
+		COMMAND ${XSLTPROC_EXECUTABLE}
+		ARGS
+			--xinclude
+			-o ${DOC_OUTPUT}/doxygen.xml
+			--path ${DOC_OUTPUT}
+			${BOOSTBOOK_STYLESHEETS}/doxygen/collect.xsl
+			${DOC_OUTPUT}/xml/index.xml
+		COMMAND ${XSLTPROC_EXECUTABLE}
+		ARGS
+			--xinclude
+			-o ${DOC_OUTPUT}/doxygen_${name}.xml
+			--path ${DOC_OUTPUT}
+			${BOOSTBOOK_STYLESHEETS}/doxygen/doxygen2boostbook.xsl
+			${DOC_OUTPUT}/doxygen.xml)
+ENDMACRO(make_fcppt_documentation)
+
+make_fcppt_documentation(algorithm algorithm)
+make_fcppt_documentation(chrono chrono)
+make_fcppt_documentation(log log)
+make_fcppt_documentation(assert assert.hpp assert_message.hpp)
+make_fcppt_documentation(assign assign)
 
 ADD_CUSTOM_COMMAND(
 	TARGET doc
-	COMMAND ${XSLTPROC_EXECUTABLE}
-	ARGS
-		--xinclude
-		-o ${DOC_OUTPUT}/doxygen.xml
-		--path ${DOC_OUTPUT}
-		${BOOSTBOOK_STYLESHEETS}/doxygen/collect.xsl
-		${DOC_OUTPUT}/xml/index.xml
-	COMMAND ${XSLTPROC_EXECUTABLE}
-	ARGS
-		--xinclude
-		-o ${DOC_OUTPUT}/doxygen_boostbook.xml
-		--path ${DOC_OUTPUT}
-		${BOOSTBOOK_STYLESHEETS}/doxygen/doxygen2boostbook.xsl
-		${DOC_OUTPUT}/doxygen.xml
 	COMMAND ${QUICKBOOK_EXECUTABLE}
 	ARGS
 		${CMAKE_SOURCE_DIR}/doc/main.qbk
