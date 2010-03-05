@@ -3,6 +3,7 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
+//[algorithm
 #include <fcppt/algorithm/append.hpp>
 #include <fcppt/algorithm/contains.hpp>
 #include <fcppt/algorithm/copy_n.hpp>
@@ -82,3 +83,4 @@ int main()
 		ptrs,
 		ptr);
 }
+//]
