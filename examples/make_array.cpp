@@ -16,11 +16,8 @@ int main()
 {
 	std::tr1::array<int,3> a(
 		fcppt::assign::make_array<int>
-			(
-				3)
-			(
-				4)
-			(
-				5));
+			(3)
+			(4)
+			(5));
 }
 //]
