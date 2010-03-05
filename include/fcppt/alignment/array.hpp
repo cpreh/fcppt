@@ -40,7 +40,8 @@ struct array<\
 	T,\
 	Size,\
 	state\
-> {\
+>\
+{\
 	typedef FCPPT_ALIGNMENT_ALIGN(state) std::tr1::array<\
 		T,\
 		Size\

@@ -18,6 +18,4 @@
 /// The maximum alignment supported
 #define FCPPT_ALIGNMENT_MAXIMUM FCPPT_ALIGNMENT_MAXIMUM_IMPL
 
-#undef FCPPT_ALIGNMENT_MAXIMUM_IMPL
-
 #endif

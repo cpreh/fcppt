@@ -18,6 +18,4 @@
 /// Forces the specified alignment on a declaration in bytes
 #define FCPPT_ALIGNMENT_ALIGN(x) FCPPT_ALIGNMENT_ALIGN_IMPL(x)
 
-#undef FCPPT_ALIGNMENT_ALIGN_IMPL
-
 #endif
