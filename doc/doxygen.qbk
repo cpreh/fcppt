@@ -1,5 +1,9 @@
 [section Doxygen]
 
-[xinclude doxygen_boostbook.xml]
+[xinclude doxygen_algorithm.xml]
+
+ROFL
+
+[xinclude doxygen_chrono.xml]
 
 [endsect]
