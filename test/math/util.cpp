@@ -10,13 +10,13 @@
 
 BOOST_AUTO_TEST_CASE(math_almost_zero)
 {
-	BOOST_REQUIRE(
+	BOOST_CHECK(
 		fcppt::math::almost_zero(
 			0
 		)
 	);
 
-	BOOST_REQUIRE(
+	BOOST_CHECK(
 		fcppt::math::almost_zero(
 			0.0
 		)
@@ -25,19 +25,19 @@ BOOST_AUTO_TEST_CASE(math_almost_zero)
 
 BOOST_AUTO_TEST_CASE(math_is_power_of_2)
 {
-	BOOST_REQUIRE(
+	BOOST_CHECK(
 		fcppt::math::is_power_of_2(
 			1024u
 		)
 	);
 
-	BOOST_REQUIRE(
+	BOOST_CHECK(
 		!fcppt::math::is_power_of_2(
 			0u
 		)
 	);
 
-	BOOST_REQUIRE(
+	BOOST_CHECK(
 		!fcppt::math::is_power_of_2(
 			3u
 		)
