@@ -84,12 +84,6 @@ try
 		<< FCPPT_TEXT("First child's position in the parent's child list: ") 
 		<< std::distance(first_child.parent().begin(),first_child.child_position())
 		<< FCPPT_TEXT("\n");
-
-	first_child.orphan();
-
-	fcppt::io::cout << FCPPT_TEXT("First child has a parent: ") << first_child.has_parent() << FCPPT_TEXT("\n");
-	// It now has one child less
-	fcppt::io::cout << FCPPT_TEXT("Parent has ") << tree.size() << FCPPT_TEXT(" children.\n");
 }
 catch(
 	fcppt::exception const &e

@@ -77,9 +77,6 @@ public:
 		object &
 	);
 
-	void
-	orphan();
-
 	auto_ptr
 	release(
 		iterator

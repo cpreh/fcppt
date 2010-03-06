@@ -117,22 +117,6 @@ fcppt::container::tree::object<T>::parent(
 template<
 	typename T
 >
-void
-fcppt::container::tree::object<T>::orphan()
-{
-	if(!has_parent())
-		return;
-
-	parent_->release(
-		child_position()
-	);
-
-	parent_ = 0;
-}
-
-template<
-	typename T
->
 typename fcppt::container::tree::object<T>::auto_ptr
 fcppt::container::tree::object<T>::release(
 	iterator const it
