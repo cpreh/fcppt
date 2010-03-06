@@ -79,6 +79,27 @@ A small example shows how it's used:
 [import ../examples/bitfield.cpp]
 [bitfield]
 
+As you can see, you can treat a bitfield like an integral type -- it has the bitwise `operator&, operator|` and so on. But you can also treat it like a `std::map<Enum,bool>` and access elements like that. You could even iterate through the bitfield like a container (if you like).
+
+[endsect]
+
+[endsect]
+
+[section field]
+
+[section Synopsis]
+
+[import ../include/fcppt/container/field_decl.hpp]
+[field_decl]
+
+[endsect]
+
+[section Rationale]
+
+An `fcppt::container::field<ArrayType>` is just a wrapper around a one-dimensional array `ArrayType` to make it act as a two-dimensional array.
+
+[warning This class is a likely candidate for being rewritten in the future since it's only two-dimensinoal (not n-dimensional) and it's too monolithic. Use with caution.]
+
 [endsect]
 
 [endsect]
