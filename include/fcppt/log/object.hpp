@@ -9,10 +9,10 @@
 
 #include <fcppt/log/object_fwd.hpp>
 #include <fcppt/log/detail/auto_context.hpp>
+#include <fcppt/log/detail/temporary_output_fwd.hpp>
 #include <fcppt/log/parameters/all_fwd.hpp>
 #include <fcppt/log/level_stream_array.hpp>
 #include <fcppt/log/enabled_level_array.hpp>
-#include <fcppt/log/temporary_output_fwd.hpp>
 #include <fcppt/log/level.hpp>
 #include <fcppt/log/level_stream_fwd.hpp>
 #include <fcppt/log/context_location_fwd.hpp>
@@ -41,7 +41,7 @@ public:
 	FCPPT_SYMBOL void
 	log(
 		level::type,
-		temporary_output const &
+		detail::temporary_output const &
 	);
 
 	FCPPT_SYMBOL level_stream &

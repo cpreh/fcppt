@@ -6,6 +6,6 @@
 
 #include <fcppt/log/trampoline.hpp>
 
-fcppt::log::output_helper const
+fcppt::log::detail::output_helper const
 fcppt::log::_
-	= fcppt::log::output_helper();
+	= fcppt::log::detail::output_helper();

@@ -4,10 +4,11 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_LOG_HEADERS_HPP_INCLUDED
-#define FCPPT_LOG_HEADERS_HPP_INCLUDED
+#ifndef FCPPT_LOG_DETAIL_LEVEL_IF_ENABLED_HPP_INCLUDED
+#define FCPPT_LOG_DETAIL_LEVEL_IF_ENABLED_HPP_INCLUDED
 
-#include <fcppt/log/output.hpp>
-#include <fcppt/log/macros.hpp>
+#define FCPPT_LOG_DETAIL_LEVEL_IF_ENABLED(stream, l, x)\
+	if((stream).activated(l))\
+		(stream).log(l, x);
 
 #endif

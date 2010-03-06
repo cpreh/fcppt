@@ -52,7 +52,7 @@ fcppt::log::object::~object()
 void
 fcppt::log::object::log(
 	level::type const level_,
-	temporary_output const &helper
+	detail::temporary_output const &helper
 )
 {
 	if(

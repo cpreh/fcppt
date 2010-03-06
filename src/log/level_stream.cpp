@@ -5,7 +5,7 @@
 
 
 #include <fcppt/log/level_stream.hpp>
-#include <fcppt/log/temporary_output.hpp>
+#include <fcppt/log/detail/temporary_output.hpp>
 #include <fcppt/log/format/create_chain.hpp>
 #include <fcppt/log/format/object.hpp>
 
@@ -23,7 +23,7 @@ fcppt::log::level_stream::~level_stream()
 
 void
 fcppt::log::level_stream::log(
-	temporary_output const &output,
+	detail::temporary_output const &output,
 	format::const_object_ptr const additional_formatter
 )
 {
