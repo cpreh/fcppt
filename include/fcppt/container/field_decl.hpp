@@ -14,6 +14,7 @@
 #include <iterator>
 #include <iosfwd>
 
+//[field_decl
 namespace fcppt
 {
 namespace container
@@ -188,6 +189,7 @@ public:
 
 	dim const
 	dimension() const;
+//<-
 private:
 	void
 	range_check(
@@ -199,6 +201,7 @@ private:
 
 	dim dimension_;
 	array_type array;
+//->
 };
 
 
@@ -233,5 +236,6 @@ operator<<(
 
 }
 }
+//]
 
 #endif
