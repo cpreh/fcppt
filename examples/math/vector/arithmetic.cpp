@@ -27,4 +27,7 @@ int main()
 	vec2 += vec1;
 
 	std::cout << vec2 << '\n';
+
+	std::cout << (vec2 * 0.5f) << '\n';
 }
+//]
