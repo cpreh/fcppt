@@ -19,11 +19,14 @@ template<
 	typename T
 >
 inline typename boost::enable_if<
-	boost::is_unsigned<T>,
+	boost::is_unsigned<
+		T
+	>,
 	bool
 >::type
 is_power_of_2(
-	T const t)
+	T const t
+)
 {
 	return t && !(t & (t - 1));
 }
