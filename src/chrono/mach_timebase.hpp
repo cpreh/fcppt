@@ -4,18 +4,18 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_ALIGNMENT_SIZE_TYPE_HPP_INCLUDED
-#define FCPPT_ALIGNMENT_SIZE_TYPE_HPP_INCLUDED
+#ifndef FCPPT_CHRONO_MACH_TIMEBASE_HPP_INCLUDED
+#define FCPPT_CHRONO_MACH_TIMEBASE_HPP_INCLUDED
 
-#include <cstddef>
+#include <mach/mach_time.h>
 
 namespace fcppt
 {
-namespace alignment
+namespace chrono
 {
 
-/// The size_type used to specify alignments
-typedef std::size_t size_type;
+struct mach_timebase_info const
+mach_timebase();
 
 }
 }

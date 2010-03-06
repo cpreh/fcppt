@@ -47,6 +47,7 @@ MACRO(make_fcppt_documentation name)
 ENDMACRO(make_fcppt_documentation)
 
 make_fcppt_documentation(algorithm algorithm)
+make_fcppt_documentation(alignment alignment)
 make_fcppt_documentation(chrono chrono)
 make_fcppt_documentation(log log)
 make_fcppt_documentation(assert assert.hpp assert_message.hpp)
