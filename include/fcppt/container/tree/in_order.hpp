@@ -112,15 +112,21 @@ public:
 			{
 				while(
 					!positions.empty()
-					&& boost::next(
-						positions.top()
-					)
-					== positions.top()->parent().end()
-				)
+							)
 				{
 					it = positions.top();
+
 					current = it->parent_ptr();
+
 					positions.pop();
+
+					if(
+						boost::next(
+							it
+						)
+						!= it->parent().end()
+					)
+						break;
 				}
 				++it;
 			}
