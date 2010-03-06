@@ -32,7 +32,7 @@
          DocBook - display the navigation after the header
         *Spirit  - display "mini" navigation on the right
    -->
-   <xsl:param name = "nav.flow" select = "'DocBook'"/>
+   <xsl:param name = "nav.flow" select = "'Spirit'"/>
 
    <!-- location of the various Boost elements -->
 

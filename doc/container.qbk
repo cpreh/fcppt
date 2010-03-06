@@ -17,14 +17,14 @@
 int main() { return 0; }
 ``
 
-An `fcppt::container::tree::object<T>` is a container modeling an n-ary tree holding objects of type `T`. It has a /value/ of type `T` and /children/ of type `fcppt::container::tree::object<T>`. [note Because of the inherent recursive property of the tree, it has to store it's children in a boost::ptr_container which might make tree a bit heavy to include. Consider using forward declarations where possible: `#include <fcppt/container/tree/object_fwd.hpp>`]
+An `fcppt::container::tree::object<T>` is a container modeling an n-ary tree holding objects of type `T`. It has a /value/ of type `T` and /children/ of type `fcppt::container::tree::object<T>`. [note Because of the inherent recursive property of the tree, it has to store its children in a boost::ptr_container which might make tree a bit heavy to include. Consider using forward declarations where possible: `#include <fcppt/container/tree/object_fwd.hpp>`]
 
 It tries to mimic the sequence and set container from the standard library. Also, its implementation is minimal in the sense that everything but trivial operations are outsourced to external headers - the traversal iterators below are an example of this. Most of the operations are self-explanatory. Here is a small example of the tree:
 
 [import ../examples/tree_simple.cpp]
 [tree_simple]
 
-Note also that all operations which implicitly depend on a parent being present will fail if `has_parent()` returns false. The same goes for all operations which depend on at least one child being present and `empty()` returning true.
+Note also that all operations which implicitly depend on a parent being present are undefined if `has_parent()` returns false. The same goes for all operations which depend on at least one child being present and `empty()` returning true.
 	
 [endsect]
 
