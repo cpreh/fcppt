@@ -44,3 +44,9 @@ a:active
 .number         { color: teal; }
 .white_bkd      { background-color: #FFFFFF; }
 .dk_grey_bkd    { background-color: #999999; }
+
+pre.programlisting
+{
+	background-color: #eaedff;
+	margin:auto;
+}

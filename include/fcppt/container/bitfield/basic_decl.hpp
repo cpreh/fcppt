@@ -38,6 +38,7 @@ namespace bitfield
  * - operator|(Enum,Enum) shall not be declared!
  * - std::numeric_limits<InternalType>::digits shall be the number of bits usable in InternalType
 */
+//[bitfield_decl
 template<
 	typename Enum,
 	Enum Size,
@@ -45,6 +46,7 @@ template<
 >
 class basic
 {
+//<-
 	FCPPT_SAFE_BOOL(basic)
 private:
 	typedef InternalType internal_type;
@@ -66,6 +68,7 @@ private:
 
 	bool
 	boolean_test() const;
+//->
 public:
 	typedef proxy<
 		array_type &,
@@ -281,6 +284,7 @@ operator!=(
 	basic<Enum, Size, InternalType> const &,
 	basic<Enum, Size, InternalType> const &
 );
+//]
 
 }
 }

@@ -1,6 +1,6 @@
 [section Container]
 
-[section Tree]
+[section tree]
 
 [section Synopsis]
 
@@ -39,6 +39,45 @@ baz
 qux
 hello
 ``
+
+[endsect]
+
+[endsect]
+
+[section bitfield]
+
+[section Synopsis]
+
+[import ../include/fcppt/container/bitfield/basic_decl.hpp]
+[bitfield_decl]
+
+[endsect]
+
+[section Rationale]
+
+Sometimes you want an enumeration which can take multiple values at once -- for orthogonal options like "a person can be hungry and tired, not hungry and tired, hungry and not tired or not hungry and not tired". An obvious solution is using the bit representation of an enumeration:
+
+``
+enum person_status
+{
+	hungry = 1,
+	tired = 1 << 1,
+	// insert more options here
+};
+``
+
+This is tiresome (!) to write and also a little dangerous since the underlying type of an enumeration can only be an integral type. This means that you rely upon the fact that you have enough bits available on the target machine -- which might not always be true. Think about a bit field which has more than 64 bits.
+
+`fcppt::container::bitfield::basic<Enum,Size>` is a template which remedies the situation. It's based on an enumeration `Enum` which satisfies the following requirements:
+
+# Enum shall be an enumeration type that doesn't contain any enumerators with explicit values. Thus: `enum my_enum { value1, value2, value3 };` is perfectly valid while `enum my_enum { value = 100 };` is NOT valid.
+# Size shall be the number of enumerators defined in Enum. To achieve consistency you should define the enum's size within the enum itsself. Example: `enum my_enum { value1, value2, value3, _my_enum_size }; typedef bitfield::basic<my_enum,_my_enum_size> mybasic;`
+# `operator|(Enum,Enum)` shall not be declared!
+
+A small example shows how it's used:
+
+[import ../examples/bitfield.cpp]
+[bitfield]
 
 [endsect]
 
