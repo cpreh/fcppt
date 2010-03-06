@@ -14,6 +14,8 @@ namespace fcppt
 {
 namespace math
 {
+
+/// derives from boost::true_type if T is a boost::rational<U>
 template<
 	typename T
 >

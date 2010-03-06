@@ -24,6 +24,8 @@ of floats and other integral types.
 
 [section Linear Algebra Classes]
 
+[section Vector and Dim]
+
 fcppt has three classes for linear algebra:
 * vector
 * dim
@@ -44,6 +46,26 @@ and dim. Most of them are elementwise operations.
 [import ../examples/math/vector/arithmetic.cpp]
 
 [vectorarithmetic]
+
+All linear algebra classes support a set of conversion functions.
+
+* structue_cast can be used to do a static_cast on each element.
+* narrow_cast can be used to discard some elements on the back.
+* construct can be used to construct a class of higher dimension from a lower one.
+
+[import ../examples/math/vector/convert.cpp]
+
+[vectorconvert]
+
+[endsect]
+
+[section matrix]
+
+[endsect]
+
+[endsect]
+
+[section Utility Functions]
 
 [endsect]
 

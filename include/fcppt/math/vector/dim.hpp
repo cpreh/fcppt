@@ -27,7 +27,8 @@ template<\
 basic<T, N, S1> const \
 operator op(\
 	basic<T, N, S1> a,\
-	dim::basic<T, N, S2> const &b)\
+	dim::basic<T, N, S2> const &b\
+)\
 {\
 	for(typename N::value_type i = 0; i < a.size(); ++i)\
 		a[i] op##= b[i];\
