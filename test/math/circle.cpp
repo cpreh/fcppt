@@ -14,5 +14,22 @@ BOOST_AUTO_TEST_CASE(circle_intersects)
 		2
 	> circle_type;
 
-
+	BOOST_CHECK(
+		fcppt::math::circle::intersects(
+			circle_type(
+				circle_type::point_type(
+					0.f,
+					0.f
+				),
+				1.f
+			),
+			circle_type(
+				circle_type::point_type(
+					1.f,
+					0.f
+				),
+				1.f
+			)
+		)
+	);
 }
