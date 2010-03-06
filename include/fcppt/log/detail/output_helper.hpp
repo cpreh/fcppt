@@ -4,17 +4,20 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_LOG_OUTPUT_HELPER_HPP_INCLUDED
-#define FCPPT_LOG_OUTPUT_HELPER_HPP_INCLUDED
+#ifndef FCPPT_LOG_DETAIL_OUTPUT_HELPER_HPP_INCLUDED
+#define FCPPT_LOG_DETAIL_OUTPUT_HELPER_HPP_INCLUDED
 
 namespace fcppt
 {
 namespace log
 {
+namespace detail
+{
 
 class output_helper
 {};
 
+}
 }
 }
 

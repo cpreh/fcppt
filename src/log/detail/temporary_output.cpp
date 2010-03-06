@@ -4,10 +4,10 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/log/temporary_output.hpp>
+#include <fcppt/log/detail/temporary_output.hpp>
 #include <fcppt/make_shared_ptr.hpp>
 
-fcppt::log::temporary_output::temporary_output()
+fcppt::log::detail::temporary_output::temporary_output()
 :
 	os(
 		make_shared_ptr<
@@ -17,7 +17,7 @@ fcppt::log::temporary_output::temporary_output()
 {}
 
 fcppt::string const
-fcppt::log::temporary_output::result() const
+fcppt::log::detail::temporary_output::result() const
 {
 	return os->str();
 }

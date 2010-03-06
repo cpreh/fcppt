@@ -168,6 +168,9 @@ public:
 		basic const &
 	);
 
+	basic const
+	operator~() const;
+
 	void
 	set(
 		Enum where,

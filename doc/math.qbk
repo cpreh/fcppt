@@ -24,7 +24,7 @@ of floats and other integral types.
 
 [section Linear Algebra Classes]
 
-[import ../examples/math/vector.cpp]
+[import ../examples/math/vector/basic.cpp]
 
 [vectorbasic]
 

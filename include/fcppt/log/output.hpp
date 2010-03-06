@@ -4,17 +4,11 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_LOG_TEMPORARY_OUTPUT_FWD_HPP_INCLUDED
-#define FCPPT_LOG_TEMPORARY_OUTPUT_FWD_HPP_INCLUDED
+#ifndef FCPPT_LOG_OUTPUT_HPP_INCLUDED
+#define FCPPT_LOG_OUTPUT_HPP_INCLUDED
 
-namespace fcppt
-{
-namespace log
-{
-
-class temporary_output;
-
-}
-}
+#include <fcppt/log/detail/temporary_output.hpp>
+#include <fcppt/log/object.hpp>
+#include <fcppt/log/trampoline.hpp>
 
 #endif

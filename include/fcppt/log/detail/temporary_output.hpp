@@ -4,11 +4,11 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_LOG_TEMPORARY_OUTPUT_HPP_INCLUDED
-#define FCPPT_LOG_TEMPORARY_OUTPUT_HPP_INCLUDED
+#ifndef FCPPT_LOG_DETAIL_TEMPORARY_OUTPUT_HPP_INCLUDED
+#define FCPPT_LOG_DETAIL_TEMPORARY_OUTPUT_HPP_INCLUDED
 
-#include <fcppt/log/temporary_output_fwd.hpp>
-#include <fcppt/log/output_helper.hpp>
+#include <fcppt/log/detail/temporary_output_fwd.hpp>
+#include <fcppt/log/detail/output_helper.hpp>
 #include <fcppt/io/ostringstream.hpp>
 #include <fcppt/symbol.hpp>
 #include <fcppt/shared_ptr.hpp>
@@ -19,8 +19,11 @@ namespace fcppt
 {
 namespace log
 {
+namespace detail
+{
 
-class temporary_output {
+class temporary_output
+{
 public:
 	FCPPT_SYMBOL temporary_output();
 
@@ -67,6 +70,7 @@ operator<<(
 	return n;
 }
 
+}
 }
 }
 

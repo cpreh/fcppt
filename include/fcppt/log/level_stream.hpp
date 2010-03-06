@@ -8,7 +8,7 @@
 #define FCPPT_LOG_LEVEL_STREAM_HPP_INCLUDED
 
 #include <fcppt/log/level_stream_fwd.hpp>
-#include <fcppt/log/temporary_output_fwd.hpp>
+#include <fcppt/log/detail/temporary_output_fwd.hpp>
 #include <fcppt/log/format/object_ptr.hpp>
 #include <fcppt/io/ostream.hpp>
 #include <fcppt/symbol.hpp>
@@ -32,7 +32,7 @@ public:
 
 	FCPPT_SYMBOL void
 	log(
-		temporary_output const &,
+		detail::temporary_output const &,
 		format::const_object_ptr addtional_formatter
 	);
 
