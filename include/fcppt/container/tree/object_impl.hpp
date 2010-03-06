@@ -123,8 +123,8 @@ fcppt::container::tree::object<T>::orphan()
 	if(!has_parent())
 		return;
 
-	parent->release(
-		*this
+	parent_->release(
+		child_position()
 	);
 
 	parent_ = 0;
@@ -138,7 +138,7 @@ fcppt::container::tree::object<T>::release(
 	iterator const it
 )
 {
-	return children.release(
+	return children_.release(
 		it
 	);
 }

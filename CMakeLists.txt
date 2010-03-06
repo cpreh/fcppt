@@ -7,7 +7,7 @@ PROJECT (fcppt)
 SET(CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/CMakeModules)
 
 SET (FCPPT_VERSION 1)
-SET (FCPPT_SHARED_VERSION FCPPT_VERSION)
+SET (FCPPT_SHARED_VERSION ${FCPPT_VERSION})
 
 IF(${CMAKE_BINARY_DIR} STREQUAL ${CMAKE_SOURCE_DIR})
 	message(FATAL_ERROR "In-source builds are not permitted. Make a separate folder for building:\nmkdir build; cd build; cmake ..\nBefore that, remove the files that cmake just created:\nrm -rf CMakeCache.txt CMakeFiles")

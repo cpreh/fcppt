@@ -90,6 +90,8 @@ its types are implemented with an mpl sequence directly and it offers up to tern
 
 [include chrono.qbk]
 
+[include container.qbk]
+
 [include log.qbk]
 
 [include utility.qbk]
