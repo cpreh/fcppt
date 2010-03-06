@@ -291,6 +291,28 @@ template<
 	Enum Size,
 	typename InternalType
 >
+fcppt::container::bitfield::basic<Enum, Size, InternalType> const
+fcppt::container::bitfield::basic<Enum, Size, InternalType>::operator~() const
+{
+	basic ret;
+
+	namespace args = boost::phoenix::arg_names;
+
+	std::transform(
+		array.begin(),
+		array.end(),
+		ret.array.begin(),
+		~args::arg1
+	);
+
+	return ret;
+}
+
+template<
+	typename Enum,
+	Enum Size,
+	typename InternalType
+>
 void
 fcppt::container::bitfield::basic<Enum, Size, InternalType>::set(
 	Enum const where,
@@ -461,28 +483,6 @@ fcppt::container::bitfield::operator^(
 			l
 		)
 		^= r;
-}
-
-template<
-	typename Enum,
-	Enum Size,
-	typename InternalType
->
-fcppt::container::bitfield::basic<Enum, Size, InternalType> const
-fcppt::container::bitfield::operator~(
-	basic<Enum, Size, InternalType> l
-)
-{
-	namespace args = boost::phoenix::arg_names;
-
-	std::transform(
-		l.array.begin(),
-		l.array.end(),
-		l.array.begin(),
-		~args::arg1
-	);
-
-	return l;
 }
 
 template<
