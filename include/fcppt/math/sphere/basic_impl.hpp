@@ -4,17 +4,17 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_MATH_CIRCLE_BASIC_IMPL_HPP_INCLUDED
-#define FCPPT_MATH_CIRCLE_BASIC_IMPL_HPP_INCLUDED
+#ifndef FCPPT_MATH_SPHERE_BASIC_IMPL_HPP_INCLUDED
+#define FCPPT_MATH_SPHERE_BASIC_IMPL_HPP_INCLUDED
 
-#include <fcppt/math/circle/basic_decl.hpp>
+#include <fcppt/math/sphere/basic_decl.hpp>
 #include <fcppt/math/vector/basic_impl.hpp>
 
 template<
 	typename T,
 	fcppt::math::size_type N
 >
-fcppt::math::circle::basic<T, N>::basic(
+fcppt::math::sphere::basic<T, N>::basic(
 	point_type const &origin_,
 	const_reference radius_
 )
@@ -27,8 +27,8 @@ template<
 	typename T,
 	fcppt::math::size_type N
 >
-typename fcppt::math::circle::basic<T, N>::point_type &
-fcppt::math::circle::basic<T, N>::origin()
+typename fcppt::math::sphere::basic<T, N>::point_type &
+fcppt::math::sphere::basic<T, N>::origin()
 {
 	return origin_;
 }
@@ -37,8 +37,8 @@ template<
 	typename T,
 	fcppt::math::size_type N
 >
-typename fcppt::math::circle::basic<T, N>::point_type const &
-fcppt::math::circle::basic<T, N>::origin() const
+typename fcppt::math::sphere::basic<T, N>::point_type const &
+fcppt::math::sphere::basic<T, N>::origin() const
 {
 	return origin_;
 }
@@ -47,8 +47,8 @@ template<
 	typename T,
 	fcppt::math::size_type N
 >
-typename fcppt::math::circle::basic<T, N>::reference
-fcppt::math::circle::basic<T, N>::radius()
+typename fcppt::math::sphere::basic<T, N>::reference
+fcppt::math::sphere::basic<T, N>::radius()
 {
 	return radius_;
 }
@@ -57,8 +57,8 @@ template<
 	typename T,
 	fcppt::math::size_type N
 >
-typename fcppt::math::circle::basic<T, N>::const_reference
-fcppt::math::circle::basic<T, N>::radius() const
+typename fcppt::math::sphere::basic<T, N>::const_reference
+fcppt::math::sphere::basic<T, N>::radius() const
 {
 	return radius_;
 }

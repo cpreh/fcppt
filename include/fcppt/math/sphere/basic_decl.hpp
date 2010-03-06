@@ -4,10 +4,10 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_MATH_CIRCLE_BASIC_DECL_HPP_INCLUDED
-#define FCPPT_MATH_CIRCLE_BASIC_DECL_HPP_INCLUDED
+#ifndef FCPPT_MATH_SPHERE_BASIC_DECL_HPP_INCLUDED
+#define FCPPT_MATH_SPHERE_BASIC_DECL_HPP_INCLUDED
 
-#include <fcppt/math/circle/basic_fwd.hpp>
+#include <fcppt/math/sphere/basic_fwd.hpp>
 #include <fcppt/math/vector/static.hpp>
 #include <fcppt/math/vector/basic_decl.hpp>
 #include <fcppt/math/size_type.hpp>
@@ -16,7 +16,7 @@ namespace fcppt
 {
 namespace math
 {
-namespace circle
+namespace sphere
 {
 
 template<

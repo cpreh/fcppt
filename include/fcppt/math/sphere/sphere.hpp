@@ -4,11 +4,11 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_MATH_CIRCLE_CIRCLE_HPP_INCLUDED
-#define FCPPT_MATH_CIRCLE_CIRCLE_HPP_INCLUDED
+#ifndef FCPPT_MATH_SPHERE_SPHERE_HPP_INCLUDED
+#define FCPPT_MATH_SPHERE_SPHERE_HPP_INCLUDED
 
-#include <fcppt/math/circle/basic_decl.hpp>
-#include <fcppt/math/circle/basic_impl.hpp>
-#include <fcppt/math/circle/intersects.hpp>
+#include <fcppt/math/sphere/basic_decl.hpp>
+#include <fcppt/math/sphere/basic_impl.hpp>
+#include <fcppt/math/sphere/intersects.hpp>
 
 #endif

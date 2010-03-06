@@ -4,18 +4,18 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/math/circle/circle.hpp>
+#include <fcppt/math/sphere/sphere.hpp>
+#include <fcppt/math/sphere/circle.hpp>
 #include <boost/test/unit_test.hpp>
 
 BOOST_AUTO_TEST_CASE(circle_intersects)
 {
-	typedef fcppt::math::circle::basic<
-		float,
-		2
-	> circle_type;
+	typedef fcppt::math::sphere::circle<
+		float
+	>::type circle_type;
 
 	BOOST_CHECK(
-		fcppt::math::circle::intersects(
+		fcppt::math::sphere::intersects(
 			circle_type(
 				circle_type::point_type(
 					0.f,

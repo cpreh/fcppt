@@ -4,30 +4,30 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_MATH_BOX_RECT_HPP_INCLUDED
-#define FCPPT_MATH_BOX_RECT_HPP_INCLUDED
+#ifndef FCPPT_MATH_SPHERE_CIRCLE_HPP_INCLUDED
+#define FCPPT_MATH_SPHERE_CIRCLE_HPP_INCLUDED
 
-#include <fcppt/math/box/basic_fwd.hpp>
+#include <fcppt/math/sphere/basic_fwd.hpp>
 #include <fcppt/restrict_typedef_struct.hpp>
 
 namespace fcppt
 {
 namespace math
 {
-namespace box
+namespace sphere
 {
 
 template<
 	typename T
 >
-struct rect
+struct circle
 {
 	typedef basic<
 		T,
 		2
 	> type;
 
-	FCPPT_RESTRICT_TYPEDEF_STRUCT(rect)
+	FCPPT_RESTRICT_TYPEDEF_STRUCT(circle)
 };
 
 }
