@@ -43,8 +43,10 @@ public:
 	typedef typename child_list::reverse_iterator reverse_iterator;
 	typedef typename child_list::const_reverse_iterator const_reverse_iterator;
 
+	/// Constructs the tree using the default constructed value 
 	object();
 
+	/// Constructs the object using the given value
 	explicit object(
 		T const &
 	);
@@ -57,15 +59,19 @@ public:
 	child_list const &
 	children() const;
 
+	/// Returns a reference to the parent of this tree. If has_parent() is false, behaviour is undefined.
 	object &
 	parent();
 
+	/// Returns a reference to the parent of this tree. If has_parent() is false, behaviour is undefined.
 	object const &
 	parent() const;
 
+	/// Returns &(parent()) if has_parent() is true, else returns 0
 	object *
 	parent_ptr();
 
+	/// Returns &(parent()) if has_parent() is true, else returns 0
 	object const *
 	parent_ptr() const;
 
@@ -77,14 +83,17 @@ public:
 		object &
 	);
 
+	/// Detaches the given child from the parent and returns it.
 	auto_ptr
 	release(
 		iterator
 	);
 
+	/// Returns an iterator pointing to the position in the parent's child container where this object resides. Behaviour is undefined if has_parent() is false
 	iterator
 	child_position();
 
+	/// Returns an iterator pointing to the position in the parent's child container where this object resides. Behaviour is undefined if has_parent() is false
 	const_iterator
 	child_position() const;
 
@@ -128,15 +137,19 @@ public:
 	void
 	clear();
 
+	/// Returns a reference to the last child. Undefined if empty() is true.
 	reference
 	back();
 
+	/// Returns a reference to the last child. Undefined if empty() is true.
 	const_reference
 	back() const;
 
+	/// Returns a reference to the first child. Undefined if empty() is true.
 	reference
 	front();
 
+	/// Returns a reference to the first child. Undefined if empty() is true.
 	const_reference
 	front() const;
 
@@ -164,23 +177,27 @@ public:
 	const_reverse_iterator
 	rend() const;
 
+	/// Inserts an element before the given iterator
 	void
 	insert(
 		iterator,
 		auto_ptr
 	);
 
+	/// Inserts an element before the given iterator
 	void
 	insert(
 		iterator,
 		T const &
 	);
 
+	/// Erases a single element
 	void
 	erase(
 		iterator
 	);
 
+	/// Erases a range
 	void
 	erase(
 		iterator,
@@ -195,10 +212,12 @@ public:
 
 	bool
 	empty() const;
+//<-
 private:
 	T value_;
 	object *parent_;
 	child_list children_;
+//->
 };
 
 template<

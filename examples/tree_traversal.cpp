@@ -15,6 +15,7 @@
 #include <ostream>
 #include <cstdlib>
 
+//[tree_traversal
 int main()
 try
 {
@@ -69,3 +70,4 @@ catch(
 	
 	return EXIT_FAILURE;
 }
+//]
