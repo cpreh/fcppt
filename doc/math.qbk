@@ -5,10 +5,24 @@
 math provides a set of utility classes and functions.
 
 * vector, dim and matrix
-Those classes are very similar to each other.
+These classes are very similar to each other.
 Each of them can be statically or dynamically sized.
 They provide simple getter, setter, arithmetic operations
 and conversions.
+
+* sphere and box
+These classes offer wrappers around statically sized
+spheres and boxes.
+
+* free functions
+There are a lot of free utility functions like
+float comparison, pi, absolute difference, and so on.
+Most of these utility functions deal with abstractions
+of floats and other integral types.
+
+[endsect]
+
+[section Linear Algebra Classes]
 
 [endsect]
 
