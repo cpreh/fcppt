@@ -24,6 +24,10 @@ of floats and other integral types.
 
 [section Linear Algebra Classes]
 
+[import ../examples/math/vector.cpp]
+
+[vectorbasic]
+
 [endsect]
 
 [xinclude doxygen_math.xml]

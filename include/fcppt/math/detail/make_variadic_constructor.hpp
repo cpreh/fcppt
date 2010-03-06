@@ -77,7 +77,7 @@ FCPPT_MATH_DETAIL_DEF_PRE :: text(\
 	\
 	::fcppt::math::detail::initial_size(\
 		storage,\
-		n\
+		BOOST_PP_INC(n)\
 	); \
 	\
 	BOOST_PP_REPEAT(\
