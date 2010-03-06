@@ -7,8 +7,12 @@
 #ifndef FCPPT_LOG_DETAIL_LEVEL_IF_ENABLED_HPP_INCLUDED
 #define FCPPT_LOG_DETAIL_LEVEL_IF_ENABLED_HPP_INCLUDED
 
+#ifndef FCPPT_DISABLE_LOGGING
 #define FCPPT_LOG_DETAIL_LEVEL_IF_ENABLED(stream, l, x)\
 	if((stream).activated(l))\
 		(stream).log(l, x);
+#else
+#define FCPPT_LOG_DETAIL_LEVEL_IF_ENABLED(stream, l, x)
+#endif
 
 #endif
