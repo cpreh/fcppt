@@ -8,6 +8,10 @@
 #define FCPPT_MATH_CIRCLE_INTERSECTS_HPP_INCLUDED
 
 #include <fcppt/math/circle/basic_fwd.hpp>
+#include <fcppt/math/vector/arithmetic.hpp>
+#include <fcppt/math/vector/basic_impl.hpp>
+#include <fcppt/math/vector/length.hpp>
+#include <fcppt/math/size_type.hpp>
 
 namespace fcppt
 {
@@ -17,17 +21,22 @@ namespace circle
 {
 
 template<
-	typename T
+	typename T,
+	size_type N
 >
 bool
 intersects(
-	basic<T> const &,
-	basic<T> const &);
+	basic<T, N> const &a,
+	basic<T, N> const &b
+)
+{
+	return
+		length(a.origin() - b.origin())
+		< a.radius() + b.radius();
+}
 
 }
 }
 }
-
-#include <fcppt/math/circle/detail/intersects_impl.hpp>
 
 #endif

@@ -1,5 +1,17 @@
 [section Math]
 
+[section Overview]
+
+math provides a set of utility classes and functions.
+
+* vector, dim and matrix
+Those classes are very similar to each other.
+Each of them can be statically or dynamically sized.
+They provide simple getter, setter, arithmetic operations
+and conversions.
+
+[endsect]
+
 [xinclude doxygen_math.xml]
 
 [endsect]

@@ -7,6 +7,8 @@
 #ifndef FCPPT_MATH_CIRCLE_BASIC_FWD_HPP_INCLUDED
 #define FCPPT_MATH_CIRCLE_BASIC_FWD_HPP_INCLUDED
 
+#include <fcppt/math/size_type.hpp>
+
 namespace fcppt
 {
 namespace math
@@ -15,7 +17,8 @@ namespace circle
 {
 
 template<
-	typename T
+	typename T,
+	size_type N
 >
 class basic;
 

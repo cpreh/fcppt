@@ -11,9 +11,10 @@
 #include <fcppt/math/vector/basic_impl.hpp>
 
 template<
-	typename T
+	typename T,
+	fcppt::math::size_type N
 >
-fcppt::math::circle::basic<T>::basic(
+fcppt::math::circle::basic<T, N>::basic(
 	point_type const &origin_,
 	const_reference radius_
 )
@@ -23,37 +24,41 @@ fcppt::math::circle::basic<T>::basic(
 {}
 
 template<
-	typename T
+	typename T,
+	fcppt::math::size_type N
 >
-typename fcppt::math::circle::basic<T>::point_type &
-fcppt::math::circle::basic<T>::origin()
+typename fcppt::math::circle::basic<T, N>::point_type &
+fcppt::math::circle::basic<T, N>::origin()
 {
 	return origin_;
 }
 
 template<
-	typename T
+	typename T,
+	fcppt::math::size_type N
 >
-typename fcppt::math::circle::basic<T>::point_type const &
-fcppt::math::circle::basic<T>::origin() const
+typename fcppt::math::circle::basic<T, N>::point_type const &
+fcppt::math::circle::basic<T, N>::origin() const
 {
 	return origin_;
 }
 
 template<
-	typename T
+	typename T,
+	fcppt::math::size_type N
 >
-typename fcppt::math::circle::basic<T>::reference
-fcppt::math::circle::basic<T>::radius()
+typename fcppt::math::circle::basic<T, N>::reference
+fcppt::math::circle::basic<T, N>::radius()
 {
 	return radius_;
 }
 
 template<
-	typename T
+	typename T,
+	fcppt::math::size_type N
 >
-typename fcppt::math::circle::basic<T>::const_reference
-fcppt::math::circle::basic<T>::radius() const
+typename fcppt::math::circle::basic<T, N>::const_reference
+fcppt::math::circle::basic<T, N>::radius() const
 {
 	return radius_;
 }

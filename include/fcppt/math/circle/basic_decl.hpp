@@ -10,6 +10,7 @@
 #include <fcppt/math/circle/basic_fwd.hpp>
 #include <fcppt/math/vector/static.hpp>
 #include <fcppt/math/vector/basic_decl.hpp>
+#include <fcppt/math/size_type.hpp>
 
 namespace fcppt
 {
@@ -19,7 +20,8 @@ namespace circle
 {
 
 template<
-	typename T
+	typename T,
+	size_type N
 >
 class basic
 {
@@ -30,7 +32,7 @@ public:
 
 	typedef typename vector::static_<
 		value_type,
-		2
+		N
 	>::type point_type;
 
 	basic(
