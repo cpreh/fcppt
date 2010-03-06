@@ -19,6 +19,7 @@ namespace fcppt
 namespace math
 {
 
+/// Rotates a two dimensional point around another point
 template<
 	typename T,
 	typename N,

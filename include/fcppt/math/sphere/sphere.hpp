@@ -4,23 +4,11 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_MATH_CIRCLE_BASIC_FWD_HPP_INCLUDED
-#define FCPPT_MATH_CIRCLE_BASIC_FWD_HPP_INCLUDED
+#ifndef FCPPT_MATH_SPHERE_SPHERE_HPP_INCLUDED
+#define FCPPT_MATH_SPHERE_SPHERE_HPP_INCLUDED
 
-namespace fcppt
-{
-namespace math
-{
-namespace circle
-{
-
-template<
-	typename T
->
-class basic;
-
-}
-}
-}
+#include <fcppt/math/sphere/basic_decl.hpp>
+#include <fcppt/math/sphere/basic_impl.hpp>
+#include <fcppt/math/sphere/intersects.hpp>
 
 #endif

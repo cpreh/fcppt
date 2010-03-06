@@ -4,27 +4,25 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_MATH_NEGATIVE_HPP_INCLUDED
-#define FCPPT_MATH_NEGATIVE_HPP_INCLUDED
+#ifndef FCPPT_MATH_SPHERE_BASIC_FWD_HPP_INCLUDED
+#define FCPPT_MATH_SPHERE_BASIC_FWD_HPP_INCLUDED
 
-#include <fcppt/math/null.hpp>
+#include <fcppt/math/size_type.hpp>
 
 namespace fcppt
 {
 namespace math
 {
+namespace sphere
+{
 
 template<
-	typename T
+	typename T,
+	size_type N
 >
-bool
-negative(
-	T const &t
-)
-{
-	return t < null<T>();
-}
+class basic;
 
+}
 }
 }
 

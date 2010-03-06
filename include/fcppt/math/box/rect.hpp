@@ -20,7 +20,8 @@ namespace box
 template<
 	typename T
 >
-struct rect {
+struct rect
+{
 	typedef basic<
 		T,
 		2
