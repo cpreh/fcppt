@@ -5,11 +5,12 @@
 
 
 #include <fcppt/math/is_power_of_2.hpp>
+#include <fcppt/math/almost_zero.hpp>
 #include <boost/test/unit_test.hpp>
 
 BOOST_AUTO_TEST_CASE(math_almost_zero)
 {
-	BOOST_REQURE(
+	BOOST_REQUIRE(
 		fcppt::math::almost_zero(
 			0
 		)
