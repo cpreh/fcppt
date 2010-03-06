@@ -21,7 +21,8 @@ namespace circle
 template<
 	typename T
 >
-class basic {
+class basic
+{
 public:
 	typedef T value_type;
 	typedef T &reference;
@@ -34,12 +35,20 @@ public:
 
 	basic(
 		point_type const &origin,
-		const_reference radius);
+		const_reference radius
+	);
 
-	point_type &origin();
-	point_type const &origin() const;
-	reference radius();
-	const_reference radius() const;
+	point_type &
+	origin();
+
+	point_type const &
+	origin() const;
+
+	reference
+	radius();
+
+	const_reference
+	radius() const;
 private:
 	point_type origin_;
 	value_type radius_;

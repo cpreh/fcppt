@@ -15,7 +15,8 @@ template<
 >
 fcppt::math::circle::basic<T>::basic(
 	point_type const &origin_,
-	const_reference radius_)
+	const_reference radius_
+)
 :
 	origin_(origin_),
 	radius_(radius_)
