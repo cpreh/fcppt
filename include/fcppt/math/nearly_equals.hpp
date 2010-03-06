@@ -17,6 +17,9 @@ namespace fcppt
 namespace math
 {
 
+/// Checks if two floats are nearly the same
+/** Note that you should never compare floats with != or == directly
+*/
 template<
 	typename T
 >

@@ -1,0 +1,5 @@
+[section Math]
+
+[xinclude doxygen_math.xml]
+
+[endsect]

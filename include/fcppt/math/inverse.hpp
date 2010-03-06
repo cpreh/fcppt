@@ -14,7 +14,10 @@ namespace fcppt
 {
 namespace math
 {
-template<typename T>
+
+template<
+	typename T
+>
 typename
 boost::disable_if
 <
@@ -28,6 +31,7 @@ inverse(
 	return
 		static_cast<T>(1) / t;
 }
+
 }
 }
 
