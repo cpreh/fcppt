@@ -18,6 +18,7 @@ namespace math
 namespace vector
 {
 
+/// Calculates the cross product of two three-dimensional vectors
 template<
 	typename T,
 	typename N,
@@ -42,6 +43,7 @@ cross(
 	);
 }
 
+/// Calculates the cross product of two two-dimensional vectors
 template<
 	typename T,
 	typename N,

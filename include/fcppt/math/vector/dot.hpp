@@ -16,6 +16,7 @@ namespace math
 namespace vector
 {
 
+/// Calculates the dot product between two vectors
 template<
 	typename T,
 	typename N,

@@ -24,6 +24,13 @@ namespace math
 namespace vector
 {
 
+/// Calculates atan2(@a v.y(), @a v.x())
+/**
+ * @param T must be a floating point type
+ * @param N must be two (only two dimensional vectors are allowed)
+ * @return optional<T>: If @v is not null, the calculated atan2 will be returned,
+ *         otherwise the optional will be empty
+*/
 template<
 	typename T,
 	typename N,
@@ -39,14 +46,23 @@ inline typename boost::enable_if<
 			2
 		>
 	>,
-	optional<T>
+	optional<
+		T
+	>
 >::type
 atan2(
-	basic<T, N, S> const &v)
+	basic<T, N, S> const &v
+)
 {
-	return is_null(v)
-		? optional<T>()
-		: std::atan2(v.y(), v.x());
+	return
+		is_null(v)
+		?
+			optional<T>()
+		:
+			std::atan2(
+				v.y(),
+				v.x())
+			;
 }
 
 }

@@ -117,14 +117,29 @@ FCPPT_MATH_DETAIL_MAKE_OP_DECL(basic, op)
 	static basic const
 	null();
 
-	reference x();
-	const_reference x() const;
-	reference y();
-	const_reference y() const;
-	reference z();
-	const_reference z() const;
-	reference w();
-	const_reference w() const;
+	reference
+	x();
+
+	const_reference
+	x() const;
+
+	reference
+	y();
+
+	const_reference
+	y() const;
+
+	reference
+	z();
+
+	const_reference
+	z() const;
+
+	reference
+	w();
+
+	const_reference
+	w() const;
 
 	void
 	resize(
