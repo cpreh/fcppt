@@ -32,7 +32,8 @@ typename boost::enable_if<
 	typename T::reference
 >::type
 checked_access(
-	T &t)
+	T &t
+)
 {
 	return t[N];
 }
@@ -49,11 +50,14 @@ typename boost::disable_if<
 	typename T::reference
 >::type
 checked_access(
-	T &t)
+	T &t
+)
 {
 	typedef typename T::dim_wrapper dim_wrapper;
+
 	BOOST_STATIC_ASSERT(
-		N < dim_wrapper::value);
+		N < dim_wrapper::value
+	);
 
 	return t[N];
 }
@@ -70,7 +74,8 @@ typename boost::enable_if<
 	typename T::const_reference
 >::type
 checked_access(
-	T const &t)
+	T const &t
+)
 {
 	return t[N];
 }
@@ -87,11 +92,14 @@ typename boost::disable_if<
 	typename T::const_reference
 >::type
 checked_access(
-	T const &t)
+	T const &t
+)
 {
 	typedef typename T::dim_wrapper dim_wrapper;
+
 	BOOST_STATIC_ASSERT(
-		N < dim_wrapper::value);
+		N < dim_wrapper::value
+	);
 
 	return t[N];
 }

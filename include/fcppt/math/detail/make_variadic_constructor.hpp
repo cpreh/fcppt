@@ -23,7 +23,9 @@
 	template<\
 		typename... Args\
 	> \
-	FCPPT_MATH_DETAIL_DEF_PRE::name(Args... args) \
+	FCPPT_MATH_DETAIL_DEF_PRE::name(\
+		Args... args\
+	) \
 	{ \
 		::fcppt::math::detail::initial_size(\
 			storage,\
@@ -36,10 +38,12 @@
 		typename... Args,\
 		typename Arg\
 	> \
-	void FCPPT_MATH_DETAIL_DEF_PRE::set_impl( \
+	void \
+	FCPPT_MATH_DETAIL_DEF_PRE::set_impl( \
 		size_type const i, \
 		Arg const &arg, \
-		Args... args) \
+		Args... args\
+	) \
 	{ \
 		*(data() + i) = arg; \
 		set_impl(i + 1, args...); \
@@ -49,9 +53,11 @@
 	template<\
 		typename Arg\
 	>\
-	void FCPPT_MATH_DETAIL_DEF_PRE::set_impl( \
+	void \
+	FCPPT_MATH_DETAIL_DEF_PRE::set_impl( \
 		size_type const i, \
-		Arg const &arg) \
+		Arg const &arg\
+	) \
 	{ \
 		*(data() + i) = arg; \
 	}

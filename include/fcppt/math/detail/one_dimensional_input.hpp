@@ -24,7 +24,8 @@ template<
 std::basic_istream<Ch, Traits> &
 one_dimensional_input(
 	std::basic_istream<Ch, Traits> &s,
-	T &v)
+	T &v
+)
 {
 	Ch c;
 	s >> c;

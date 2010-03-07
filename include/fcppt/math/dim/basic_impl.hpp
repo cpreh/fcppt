@@ -38,7 +38,7 @@ template<
 >
 fcppt::math::dim::basic<T, N, S>::basic(
 	In const beg,
-		typename boost::enable_if<
+	typename boost::enable_if<
 		type_traits::is_iterator<
 			In
 		>,
@@ -153,7 +153,8 @@ typename fcppt::math::dim::basic<T, N, S>::pointer
 fcppt::math::dim::basic<T, N, S>::data()
 {
 	return math::detail::storage_data(
-		storage);
+		storage
+	);
 }
 
 template<
@@ -165,7 +166,8 @@ typename fcppt::math::dim::basic<T, N, S>::const_pointer
 fcppt::math::dim::basic<T, N, S>::data() const
 {
 	return math::detail::storage_data(
-		storage);
+		storage
+	);
 }
 
 template<

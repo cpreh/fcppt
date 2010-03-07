@@ -19,23 +19,29 @@
 	template<\
 		typename... Args\
 	> \
-	explicit name(Args... args); \
+	explicit name(\
+		Args... args\
+	); \
 private: \
 	template<\
 		typename... Args,\
 		typename Arg\
 	> \
-	void set_impl( \
+	void \
+	set_impl( \
 		size_type i, \
 		Arg const &arg, \
-		Args... args); \
+		Args... args\
+	); \
 \
 	template<\
 		typename Arg\
 	>\
-	void set_impl( \
+	void \
+	set_impl( \
 		size_type i, \
-		Arg const &arg);
+		Arg const &arg\
+	);
 #else
 
 #define FCPPT_MATH_DETAIL_MAKE_VARIADIC_CONSTRUCTOR_DECL_IMPL(\

@@ -20,9 +20,9 @@ namespace detail
 template<
 	typename T
 >
-class is_dynamic
+struct is_dynamic
 :
-public boost::is_same<
+boost::is_same<
 	T,
 	dynamic_size
 >
