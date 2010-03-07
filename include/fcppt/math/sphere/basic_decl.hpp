@@ -51,10 +51,45 @@ public:
 
 	const_reference
 	radius() const;
+
+	void
+	swap(
+		basic &
+	);
 private:
 	point_type origin_;
 	value_type radius_;
 };
+
+template<
+	typename T,
+	size_type N
+>
+bool
+operator==(
+	basic<T, N> const &,
+	basic<T, N> const &
+);
+
+template<
+	typename T,
+	size_type N
+>
+bool
+operator!=(
+	basic<T, N> const &,
+	basic<T, N> const &
+);
+
+template<
+	typename T,
+	size_type N
+>
+void
+swap(
+	basic<T, N> &,
+	basic<T, N> &
+);
 
 }
 }
