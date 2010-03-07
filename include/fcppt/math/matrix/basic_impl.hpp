@@ -335,4 +335,41 @@ fcppt::math::matrix::basic<T, N, M, S>::resize(
 	);
 }
 
+template<
+	typename T,
+	typename N,
+	typename M,
+	typename S
+>
+void
+fcppt::math::matrix::basic<T, N, M, S>::swap(
+	basic &other_
+)
+{
+	std::swap(
+		storage,
+		other_.storage
+	);
+
+	swap_base(
+		other_
+	);
+}
+
+template<
+	typename T,
+	typename N,
+	typename M,
+	typename S
+>
+void
+fcppt::math::matrix::swap(
+	basic<T, N, M, S> &a,
+	basic<T, N, M, S> &b
+)
+{
+	return a.swap(b);
+}
+
+
 #endif

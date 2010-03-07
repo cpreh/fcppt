@@ -280,4 +280,49 @@ fcppt::math::dim::basic<T, N, S>::null()
 	return ret;
 }
 
+template<
+	typename T,
+	typename N,
+	typename S
+>
+void
+fcppt::math::dim::basic<T, N, S>::resize(
+	size_type const sz
+)
+{
+	storage.resize(
+		sz
+	);
+}
+
+template<
+	typename T,
+	typename N,
+	typename S
+>
+void
+fcppt::math::dim::basic<T, N, S>::swap(
+	basic &other_
+)
+{
+	std::swap(
+		storage,
+		other_.storage
+	);
+}
+
+template<
+	typename T,
+	typename N,
+	typename S
+>
+void
+fcppt::math::dim::swap(
+	basic<T, N, S> &a,
+	basic<T, N, S> &b
+)
+{
+	return a.swap(b);
+}
+
 #endif

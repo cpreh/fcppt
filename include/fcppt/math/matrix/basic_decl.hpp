@@ -38,8 +38,11 @@ template<
 >
 class basic
 :
-public
-	detail::dim_storage<N, M>
+private
+	detail::dim_storage<
+		N,
+		M
+	>
 {
 	typedef detail::dim_storage<N, M> dim_base;
 public:
@@ -172,9 +175,26 @@ public:
 	resize(
 		dim const &
 	);
+
+	void
+	swap(
+		basic &
+	);
 private:
 	S storage;
 };
+
+template<
+	typename T,
+	typename N,
+	typename M,
+	typename S
+>
+void
+swap(
+	basic<T, N, M, S> &,
+	basic<T, N, M, S> &
+);
 
 }
 }

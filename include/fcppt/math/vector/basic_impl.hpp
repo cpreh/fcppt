@@ -164,20 +164,6 @@ template<
 	typename N,
 	typename S
 >
-void
-fcppt::math::vector::basic<T, N, S>::resize(
-	size_type const sz
-)
-{
-	storage.resize(
-		sz);
-}
-
-template<
-	typename T,
-	typename N,
-	typename S
->
 typename fcppt::math::vector::basic<T, N, S>::pointer
 fcppt::math::vector::basic<T, N, S>::data()
 {
@@ -321,6 +307,51 @@ typename fcppt::math::vector::basic<T, N, S>::const_reference
 fcppt::math::vector::basic<T, N, S>::w() const
 {
 	return math::detail::checked_access<3>(*this);
+}
+
+template<
+	typename T,
+	typename N,
+	typename S
+>
+void
+fcppt::math::vector::basic<T, N, S>::resize(
+	size_type const sz
+)
+{
+	storage.resize(
+		sz
+	);
+}
+
+template<
+	typename T,
+	typename N,
+	typename S
+>
+void
+fcppt::math::vector::basic<T, N, S>::swap(
+	basic &other_
+)
+{
+	std::swap(
+		storage,
+		other_.storage
+	);
+}
+
+template<
+	typename T,
+	typename N,
+	typename S
+>
+void
+fcppt::math::vector::swap(
+	basic<T, N, S> &a,
+	basic<T, N, S> &b
+)
+{
+	return a.swap(b);
 }
 
 #endif

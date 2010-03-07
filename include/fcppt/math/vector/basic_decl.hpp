@@ -130,9 +130,25 @@ FCPPT_MATH_DETAIL_MAKE_OP_DECL(basic, op)
 	resize(
 		size_type
 	);
+
+	void
+	swap(
+		basic &
+	);
 private:
 	S storage;
 };
+
+template<
+	typename T,
+	typename N,
+	typename S
+>
+void
+swap(
+	basic<T, N, S> &,
+	basic<T, N, S> &
+);
 
 }
 }
