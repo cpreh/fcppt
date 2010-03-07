@@ -159,20 +159,45 @@ public:
 		value_type
 	);
 
-	bool
-	operator==(
-		basic const &
-	) const;
-
-	bool
-	operator !=(
-		basic const &
-	) const;
+	void
+	swap(
+		basic &
+	);
 private:
 	vector pos_;
 
 	dim dimension_;
 };
+
+template<
+	typename T,
+	size_type N
+>
+bool
+operator==(
+	basic<T, N> const &,
+	basic<T, N> const &
+);
+
+template<
+	typename T,
+	size_type N
+>
+bool
+operator !=(
+	basic<T, N> const &,
+	basic<T, N> const &
+);
+
+template<
+	typename T,
+	size_type N
+>
+void
+swap(
+	basic<T, N> &,
+	basic<T, N> &
+);
 
 }
 }
