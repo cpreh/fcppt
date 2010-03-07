@@ -27,14 +27,25 @@ template<
 fcppt::math::vector::basic<T, M, S2>
 operator *(
 	basic<T, N, M, S1> const &m,
-	vector::basic<T, N, S2> const &v)
+	vector::basic<T, N, S2> const &v
+)
 {
 	typedef vector::basic<T, M, S2> result_type;
-	result_type ret(
-		result_type::null());
 
-	for(typename result_type::size_type i = 0; i < v.size(); ++i)
-		for(typename basic<T, N, M, S2>::size_type j = 0; j < N::value; ++j)
+	result_type ret(
+		result_type::null()
+	);
+
+	for(
+		typename result_type::size_type i = 0;
+		i < v.size();
+		++i
+	)
+		for(
+			typename basic<T, N, M, S2>::size_type j = 0;
+			j < N::value;
+			++j
+		)
 			ret[i] += v[j] * m[j][i];
 	return ret;
 }

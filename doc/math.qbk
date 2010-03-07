@@ -60,6 +60,32 @@ All linear algebra classes support a set of conversion functions.
 [endsect]
 
 [section matrix]
+matrix is a bit different from vector and dim because it is two-dimensional.
+
+A matrix is most useful to describe affine transformations.
+So, naturally, a vector can be multiplied by a matrix.
+
+[import ../examples/math/matrix.cpp]
+
+[matrixtransform]
+
+[endsect]
+
+[section Design rational]
+
+The linear algebra classes are designed in such a way that almost no
+extra code is needed to implement static and dynamic sized classes together.
+This is achieved by splitting every class into at least three template components:
+
+* The value type to hold,
+* The dimension type which can be either static or a placeholder for a dynamic type,
+* The storage type to hold the elements.
+
+Because the size and the storage type are orthogonal, it is possible to create view
+types (which matrix already uses internally).
+
+However, the static and dynamic typedefs as shown in ealier examples should be enough
+for the casual user.
 
 [endsect]
 
