@@ -7,48 +7,32 @@
 #ifndef FCPPT_MATH_MOD_ASSIGN_HPP_INCLUDED
 #define FCPPT_MATH_MOD_ASSIGN_HPP_INCLUDED
 
-#include <cmath>
-#include <boost/utility/enable_if.hpp>
-#include <boost/type_traits/is_unsigned.hpp>
-#include <boost/type_traits/is_floating_point.hpp>
+#include <fcppt/math/detail/mod_assign.hpp>
 
 namespace fcppt
 {
 namespace math
 {
 
+/// Assigns the result of @a l mod @a r to l
+/**
+ * It uses std::fmod for floating point types.
+ * Otherwise %= is used.
+ * The behaviour will, of course, be undefined if r is 0.
+*/
 template<
 	typename T
 >
-typename boost::enable_if<
-	boost::is_floating_point<
-		T
-	>,
-	void
->::type
+void
 mod_assign(
 	T& l,
 	T const &r
 )
 {
-	l = std::fmod(l, r);
-}
-
-template<
-	typename T
->
-typename boost::enable_if<
-	boost::is_unsigned<
-		T
-	>,
-	void
->::type
-mod_assign(
-	T& l,
-	T const &r
-)
-{
-	l %= r;
+	detail::mod_assign(
+		l,
+		r
+	);
 }
 
 }

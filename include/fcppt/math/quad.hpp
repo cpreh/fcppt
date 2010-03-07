@@ -12,6 +12,7 @@ namespace fcppt
 namespace math
 {
 
+/// Raises @a t to the power of 2
 template<
 	typename T
 >

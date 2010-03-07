@@ -4,39 +4,56 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_MATH_RAD_TO_DEG_HPP_INCLUDED
-#define FCPPT_MATH_RAD_TO_DEG_HPP_INCLUDED
+#ifndef FCPPT_MATH_DETAIL_MOD_ASSIGN_HPP_INCLUDED
+#define FCPPT_MATH_DETAIL_MOD_ASSIGN_HPP_INCLUDED
 
-#include <fcppt/math/pi.hpp>
+#include <cmath>
 #include <boost/utility/enable_if.hpp>
+#include <boost/type_traits/is_unsigned.hpp>
 #include <boost/type_traits/is_floating_point.hpp>
 
 namespace fcppt
 {
 namespace math
 {
+namespace detail
+{
 
-/// Transforms radians into degree
-/**
- * Equal to @a rad * 180 / PI
-*/
 template<
 	typename T
 >
-inline
 typename boost::enable_if<
 	boost::is_floating_point<
 		T
 	>,
-	T
+	void
 >::type
-rad_to_deg(
-	T const rad
+mod_assign(
+	T& l,
+	T const &r
 )
 {
-	return rad * static_cast<T>(180) / pi<T>();
+	l = std::fmod(l, r);
 }
 
+template<
+	typename T
+>
+typename boost::enable_if<
+	boost::is_unsigned<
+		T
+	>,
+	void
+>::type
+mod_assign(
+	T& l,
+	T const &r
+)
+{
+	l %= r;
+}
+
+}
 }
 }
 

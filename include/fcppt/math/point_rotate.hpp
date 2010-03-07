@@ -20,6 +20,9 @@ namespace math
 {
 
 /// Rotates a two dimensional point around another point
+/**
+ * Rotates @a point around @a around by the rotation @a rot
+*/
 template<
 	typename T,
 	typename N,

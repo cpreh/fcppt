@@ -15,13 +15,27 @@ namespace fcppt
 namespace math
 {
 
+/// Calculates \f$\log_2(x)\f$ for unsigned types (using a loop)
 /**
- * Calculates \f$\log_2(x)\f$ for unsigned types (using a loop)
- */
-template<typename T>
-inline typename boost::enable_if<boost::is_unsigned<T>, T>::type log2(const T x)
+ * @param T must be unsigned
+ * @return - If x is 0 the result is undefined
+*/
+template<
+	typename T
+>
+inline
+typename boost::enable_if<
+	boost::is_unsigned<
+		T
+	>,
+	T
+>::type
+log2(
+	T const x
+)
 {
-	T r(0);
+	T r(1);
+
 	while((x >> r) != 0)
 		++r;
 	return --r;

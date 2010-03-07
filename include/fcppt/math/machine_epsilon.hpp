@@ -14,11 +14,13 @@ namespace fcppt
 namespace math
 {
 
+/// An epsilon for floating point types
 template<
 	typename T
 >
 struct machine_epsilon
 {
+	/// Returns the epsilon value
 	static T
 	value()
 	{
