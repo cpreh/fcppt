@@ -11,6 +11,7 @@
 #include <fcppt/container/ptr_equal.hpp>
 #include <fcppt/make_auto_ptr.hpp>
 #include <fcppt/algorithm/find_if_exn.hpp>
+#include <algorithm>
 
 template<
 	typename T
@@ -383,6 +384,42 @@ fcppt::container::tree::object<T>::rend() const
 template<
 	typename T
 >
+typename fcppt::container::tree::object<T>::const_iterator
+fcppt::container::tree::object<T>::cbegin() const
+{
+	return begin();
+}
+
+template<
+	typename T
+>
+typename fcppt::container::tree::object<T>::const_iterator
+fcppt::container::tree::object<T>::cend() const
+{
+	return end();
+}
+
+template<
+	typename T
+>
+typename fcppt::container::tree::object<T>::const_reverse_iterator
+fcppt::container::tree::object<T>::crbegin() const
+{
+	return rbegin();
+}
+
+template<
+	typename T
+>
+typename fcppt::container::tree::object<T>::const_reverse_iterator
+fcppt::container::tree::object<T>::crend() const
+{
+	return rend();
+}
+
+template<
+	typename T
+>
 void
 fcppt::container::tree::object<T>::insert(
 	iterator const it,
@@ -477,6 +514,65 @@ bool
 fcppt::container::tree::object<T>::empty() const
 {
 	return children().empty();
+}
+
+template<
+	typename T
+>
+void
+fcppt::container::tree::object<T>::swap(
+	object &other_
+)
+{
+	std::swap(
+		value_,
+		other_.value_
+	);
+
+	std::swap(
+		parent_,
+		other_.parent_
+	);
+
+	children_.swap(
+		other_.children_
+	);
+}
+
+template<
+	typename T
+>
+bool
+fcppt::container::tree::operator==(
+	object<T> const &a,
+	object<T> const &b
+)
+{
+	return a.value() == b.value();
+}
+
+template<
+	typename T
+>
+bool
+fcppt::container::tree::operator!=(
+	object<T> const &a,
+	object<T> const &b
+)
+{
+	return !(a == b);
+}
+
+template<
+	typename T
+>
+void
+fcppt::container::tree::swap(
+	object<T> &a,
+	object<T> &b
+)
+{
+	return a.swap(b);
 }
 
 #endif
