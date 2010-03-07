@@ -8,7 +8,7 @@
 #define FCPPT_PREPROCESSOR_FILE_HPP_INCLUDED
 
 #include <fcppt/text.hpp>
-#include <fcppt/config.h>
+#include <fcppt/config.hpp>
 
 /// Procudes a string literal for the current file (__FILE__) that is compatible to fcppt::string
 #ifdef FCPPT_NARROW_STRING

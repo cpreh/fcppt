@@ -10,7 +10,7 @@
 #include <fcppt/math/detail/initial_size.hpp>
 #include <fcppt/math/detail/dim_matches.hpp>
 #include <boost/static_assert.hpp>
-#include <fcppt/config.h>
+#include <fcppt/config.hpp>
 #ifndef FCPPT_HAVE_VARIADIC_TEMPLATES
 #include <boost/preprocessor/arithmetic/inc.hpp>
 #include <boost/preprocessor/repetition/enum_params.hpp>

@@ -5,7 +5,7 @@
 
 
 #include <fcppt/endianness/host_format.hpp>
-#include <fcppt/config.h>
+#include <fcppt/config.hpp>
 
 #if defined(FCPPT_LITTLE_ENDIAN) && defined(FCPPT_BIG_ENDIAN)
 #error "FCPPT_LITTLE_ENDIAN and FCPPT_BIG_ENDIAN defined!"

@@ -15,7 +15,7 @@
 #if defined(_MSC_VER)
 #	define FCPPT_EXPORT_SYMBOL __declspec(dllexport)
 #elif defined(__GNUC__)
-#	include <fcppt/config.h>
+#	include <fcppt/config.hpp>
 #	if defined(FCPPT_HAVE_GCC_VISIBILITY)
 #		define FCPPT_EXPORT_SYMBOL __attribute__ ((visibility("default")))
 #	else

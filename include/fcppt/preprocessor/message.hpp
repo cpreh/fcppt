@@ -8,7 +8,7 @@
 #define FCPPT_PREPROCESSOR_MESSAGE_HPP_INCLUDED
 
 #include <fcppt/preprocessor/pragma.hpp>
-#include <fcppt/config.h>
+#include <fcppt/config.hpp>
 
 /// Prints a compiler message
 /** @see FCPPT_PP_TODO and @see FCPPT_PP_FIXME

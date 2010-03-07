@@ -7,7 +7,7 @@
 #ifndef FCPPT_NONASSIGNABLE_HPP_INCLUDED
 #define FCPPT_NONASSIGNABLE_HPP_INCLUDED
 
-#include <fcppt/config.h>
+#include <fcppt/config.hpp>
 
 #ifdef FCPPT_HAVE_DEFAULTED_AND_DELETED_FUNCTIONS
 

@@ -7,7 +7,7 @@
 #ifndef FCPPT_CHRONO_REP_HPP_INCLUDED
 #define FCPPT_CHRONO_REP_HPP_INCLUDED
 
-#include <fcppt/config.h>
+#include <fcppt/config.hpp>
 #ifdef FCPPT_HAVE_ATLEAST_UINT64
 #include <boost/cstdint.hpp>
 #else

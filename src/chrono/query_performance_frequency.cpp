@@ -4,7 +4,7 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/config.h>
+#include <fcppt/config.hpp>
 #ifdef FCPPT_WINDOWS_PLATFORM
 #include "query_performance_frequency.hpp"
 #define WIN32_LEAN_AND_MEAN

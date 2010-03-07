@@ -7,7 +7,7 @@
 #ifndef FCPPT_FILESYSTEM_DETAIL_PATH_TRAITS_HPP_INCLUDED
 #define FCPPT_FILESYSTEM_DETAIL_PATH_TRAITS_HPP_INCLUDED
 
-#include <fcppt/config.h>
+#include <fcppt/config.hpp>
 #include <boost/filesystem/path.hpp>
 
 namespace fcppt

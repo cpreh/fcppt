@@ -7,7 +7,7 @@
 #ifndef FCPPT_CHAR_TYPE_HPP_INCLUDED
 #define FCPPT_CHAR_TYPE_HPP_INCLUDED
 
-#include <fcppt/config.h>
+#include <fcppt/config.hpp>
 
 namespace fcppt
 {

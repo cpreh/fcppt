@@ -8,7 +8,7 @@
 #define FCPPT_PREPROCESSOR_FUNCTION_HPP_INCLUDED
 
 #include <fcppt/text.hpp>
-#include <fcppt/config.h>
+#include <fcppt/config.hpp>
 
 /// Pretty printing macro for the current function
 /** May return an empty string if there is no support for function names

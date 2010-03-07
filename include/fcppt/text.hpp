@@ -7,7 +7,7 @@
 #ifndef FCPPT_TEXT_HPP_INCLUDED
 #define FCPPT_TEXT_HPP_INCLUDED
 
-#include <fcppt/config.h>
+#include <fcppt/config.hpp>
 
 #ifndef FCPPT_NARROW_STRING
 #define FCPPT_TEXT(x) L ## x

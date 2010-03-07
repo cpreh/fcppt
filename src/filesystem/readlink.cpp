@@ -7,7 +7,7 @@
 #include <fcppt/filesystem/readlink.hpp>
 #include <fcppt/exception.hpp>
 #include <fcppt/text.hpp>
-#include <fcppt/config.h>
+#include <fcppt/config.hpp>
 #ifdef FCPPT_POSIX_PLATFORM
 #include <fcppt/container/raw_vector_impl.hpp>
 #include <fcppt/error/strerrno.hpp>

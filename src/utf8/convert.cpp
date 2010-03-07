@@ -4,7 +4,7 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/config.h>
+#include <fcppt/config.hpp>
 #include <fcppt/utf8/convert.hpp>
 #ifndef FCPPT_STRING_IS_UTF8
 #include <fcppt/utf8/facet.hpp>

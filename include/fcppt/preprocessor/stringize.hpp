@@ -7,7 +7,7 @@
 #ifndef FCPPT_PREPROCESSOR_STRINGIZE_HPP_INCLUDED
 #define FCPPT_PREPROCESSOR_STRINGIZE_HPP_INCLUDED
 
-#include <fcppt/config.h>
+#include <fcppt/config.hpp>
 
 #ifdef FCPPT_NARROW_STRING
 #include <boost/preprocessor/stringize.hpp>

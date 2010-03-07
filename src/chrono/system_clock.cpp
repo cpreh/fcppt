@@ -7,7 +7,7 @@
 #include <fcppt/chrono/system_clock.hpp>
 #include <fcppt/chrono/time_point_impl.hpp>
 #include <fcppt/truncation_check_cast.hpp>
-#include <fcppt/config.h>
+#include <fcppt/config.hpp>
 #ifdef FCPPT_WINDOWS_PLATFORM
 #define WIN32_LEAN_AND_MEAN
 #include <windows.h>
