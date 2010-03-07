@@ -7,49 +7,34 @@
 #ifndef FCPPT_MATH_COMPARE_HPP_INCLUDED
 #define FCPPT_MATH_COMPARE_HPP_INCLUDED
 
-#include <fcppt/math/nearly_equals.hpp>
-#include <boost/utility/enable_if.hpp>
-#include <boost/type_traits/is_floating_point.hpp>
+#include <fcppt/math/detail/compare.hpp>
 
 namespace fcppt
 {
 namespace math
 {
 
+/// Compares two values with a special case for floats
+/**
+ * For floats the function checks if they are almost the same
+ * because floating point comparison with != or == is unsafe.
+ * For all other types == will be used.
+*/
 template<
 	typename T
 >
 inline
-typename boost::disable_if<
-	boost::is_floating_point<
-		T
-	>,
-	bool
->::type
+bool
 compare(
 	T const &a,
 	T const &b
 )
 {
-	return a == b;
-}
-
-template<
-	typename T
->
-inline
-typename boost::enable_if<
-	boost::is_floating_point<
-		T
-	>,
-	bool
->::type
-compare(
-	T const &a,
-	T const &b
-)
-{
-	return nearly_equals(a, b);
+	return
+		detail::compare(
+			a,
+			b
+		);
 }
 
 }

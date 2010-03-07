@@ -4,10 +4,10 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_MATH_DEG_TO_RAD_HPP_INCLUDED
-#define FCPPT_MATH_DEG_TO_RAD_HPP_INCLUDED
+#ifndef FCPPT_MATH_DETAIL_COMPARE_HPP_INCLUDED
+#define FCPPT_MATH_DETAIL_COMPARE_HPP_INCLUDED
 
-#include <fcppt/math/pi.hpp>
+#include <fcppt/math/nearly_equals.hpp>
 #include <boost/utility/enable_if.hpp>
 #include <boost/type_traits/is_floating_point.hpp>
 
@@ -15,11 +15,27 @@ namespace fcppt
 {
 namespace math
 {
+namespace detail
+{
 
-/// Transforms degeree into radians
-/**
- * Equal to @a deg * PI / 180
-*/
+template<
+	typename T
+>
+inline
+typename boost::disable_if<
+	boost::is_floating_point<
+		T
+	>,
+	bool
+>::type
+compare(
+	T const &a,
+	T const &b
+)
+{
+	return a == b;
+}
+
 template<
 	typename T
 >
@@ -28,15 +44,17 @@ typename boost::enable_if<
 	boost::is_floating_point<
 		T
 	>,
-	T
+	bool
 >::type
-deg_to_rad(
-	T const deg
+compare(
+	T const &a,
+	T const &b
 )
 {
-	return deg * pi<T>() / static_cast<T>(180);
+	return nearly_equals(a, b);
 }
 
+}
 }
 }
 

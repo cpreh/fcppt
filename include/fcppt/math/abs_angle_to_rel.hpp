@@ -18,6 +18,10 @@ namespace fcppt
 namespace math
 {
 
+/// Transform an arbitrary angle into the range [-pi,pi]
+/**
+ * @param T The type must be a floating point type
+*/
 template<
 	typename T
 >

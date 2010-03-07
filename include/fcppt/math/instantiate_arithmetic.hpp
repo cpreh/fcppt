@@ -7,6 +7,7 @@
 #ifndef FCPPT_MATH_INSTANTIATE_ARITHMETIC_HPP_INCLUDED
 #define FCPPT_MATH_INSTANTIATE_ARITHMETIC_HPP_INCLUDED
 
+/// Call the unary macro @a marco with float and double
 #define FCPPT_MATH_INSTANTIATE_ARITHMETIC(macro)\
 macro(float)\
 macro(double)

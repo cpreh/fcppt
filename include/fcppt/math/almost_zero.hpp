@@ -15,7 +15,8 @@ namespace math
 {
 
 /// Compares the argument against 0
-/** For floats it will check if the value is almost zero.
+/**
+ * For floats it will check if the value is almost zero.
  * All other types will be checked with ==.
 */
 template<
