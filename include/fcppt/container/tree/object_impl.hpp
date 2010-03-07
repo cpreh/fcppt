@@ -548,7 +548,9 @@ fcppt::container::tree::operator==(
 	object<T> const &b
 )
 {
-	return a.value() == b.value();
+	return
+		a.value() == b.value()
+		&& a.children() == b.children();
 }
 
 template<

@@ -237,6 +237,9 @@ private:
 //->
 };
 
+/// Compares the values and the children
+/** equal to a.value() == b.value() && a.children() == b.children()
+*/
 template<
 	typename T
 >
