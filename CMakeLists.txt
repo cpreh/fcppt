@@ -251,5 +251,5 @@ ENDIF ()
 
 INSTALL (
 	DIRECTORY include/
-	DESTINATION include/
+	DESTINATION include
 )
