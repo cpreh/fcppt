@@ -7,20 +7,23 @@
 #include <fcppt/exception.hpp>
 
 fcppt::exception::exception(
-	fcppt::string const &s)
+	fcppt::string const &s
+)
 :
 	s(s)
 {}
 
 fcppt::exception::exception(
-	exception const &e)
+	exception const &e
+)
 :
 	s(e.s)
 {}
 
 fcppt::exception &
 fcppt::exception::operator=(
-	exception const &e)
+	exception const &e
+)
 {
 	s = e.s;
 	return *this;

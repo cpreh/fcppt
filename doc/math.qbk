@@ -63,7 +63,7 @@ All linear algebra classes support a set of conversion functions.
 matrix is a bit different from vector and dim because it is two-dimensional.
 
 A matrix is most useful to describe affine transformations.
-So, naturally, a vector can be multiplied by a matrix.
+So, naturally, a matrix can be multiplied by a vector.
 
 [import ../examples/math/matrix.cpp]
 
@@ -74,7 +74,7 @@ So, naturally, a vector can be multiplied by a matrix.
 [section Design rational]
 
 The linear algebra classes are designed in such a way that almost no
-extra code is needed to implement static and dynamic sized classes together.
+extra code is needed to implement statically and dynamically sized classes together.
 This is achieved by splitting every class into at least three template components:
 
 * The value type to hold,
@@ -91,7 +91,36 @@ for the casual user.
 
 [endsect]
 
+[section Geometric Classes]
+
+Currently fcppt provides two simple geometric classes:
+
+* sphere - An n-dimensional sphere
+* box - An n-dimensional box
+
+[import ../examples/math/box.cpp]
+
+[mathbox]
+
+[endsect]
+
 [section Utility Functions]
+
+The free utility functions all reside in the header as their name implies.
+For example fcppt::math::compare is in <fcppt/math/compare.hpp>.
+Some examples follow.
+
+[import ../examples/math/utility.cpp]
+
+[section compare]
+Compare can be used to compare floats and integral types alike.
+[mathcompare]
+[endsect]
+
+[section power of 2]
+is_power_of_2 checks if an unsigned integral type is a power of two.
+[mathpowerof2]
+[endsect]
 
 [endsect]
 
