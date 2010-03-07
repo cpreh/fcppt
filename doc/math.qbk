@@ -24,8 +24,6 @@ of floats and other integral types.
 
 [section Linear Algebra Classes]
 
-[section Vector and Dim]
-
 fcppt has three classes for linear algebra:
 * vector
 * dim
@@ -33,8 +31,11 @@ fcppt has three classes for linear algebra:
 
 All of them are very similar, however.
 
+[section Vector and Dim]
+
 The following example shows how to declare
-static and dynamic vectors.
+static and dynamic vectors. Note that dim
+works almost the same.
 
 [import ../examples/math/vector/basic.cpp]
 
@@ -49,7 +50,7 @@ and dim. Most of them are elementwise operations.
 
 All linear algebra classes support a set of conversion functions.
 
-* structue_cast can be used to do a static_cast on each element.
+* structure_cast can be used to do a static_cast on each element.
 * narrow_cast can be used to discard some elements on the back.
 * construct can be used to construct a class of higher dimension from a lower one.
 

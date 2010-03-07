@@ -69,7 +69,7 @@ next_pow_2(
 )
 {
 	FCPPT_ASSERT(
-		t > 0
+		t >= 0
 	);
 
 	return
