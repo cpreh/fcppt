@@ -214,6 +214,42 @@ fcppt::container::field<ArrayType>::rend() const
 template<
 	typename ArrayType
 >
+typename fcppt::container::field<ArrayType>::const_iterator
+fcppt::container::field<ArrayType>::cbegin() const
+{
+	return begin();
+}
+
+template<
+	typename ArrayType
+>
+typename fcppt::container::field<ArrayType>::const_iterator
+fcppt::container::field<ArrayType>::cend() const
+{
+	return end();
+}
+
+template<
+	typename ArrayType
+>
+typename fcppt::container::field<ArrayType>::const_reverse_iterator
+fcppt::container::field<ArrayType>::crbegin() const
+{
+	return rbegin();
+}
+
+template<
+	typename ArrayType
+>
+typename fcppt::container::field<ArrayType>::const_reverse_iterator
+fcppt::container::field<ArrayType>::crend() const
+{
+	return rend();
+}
+
+template<
+	typename ArrayType
+>
 typename fcppt::container::field<ArrayType>::vector const
 fcppt::container::field<ArrayType>::position(
 	const_iterator const it
@@ -440,6 +476,18 @@ void
 fcppt::container::field<ArrayType>::check_w() const
 {
 	FCPPT_ASSERT(dimension().w() != 0);
+}
+
+template<
+	typename ArrayType
+>
+void
+fcppt::container::swap(
+	field<ArrayType> &a,
+	field<ArrayType> &b
+)
+{
+	a.swap(b);
 }
 
 template<

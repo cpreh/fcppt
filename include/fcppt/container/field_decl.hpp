@@ -67,11 +67,6 @@ public:
 		allocator_type const & = allocator_type()
 	);
 
-	void
-	swap(
-		field &r
-	);
-
 	field &
 	operator=(
 		field const &
@@ -109,6 +104,18 @@ public:
 
 	const_reverse_iterator
 	rend() const;
+
+	const_iterator
+	cbegin() const;
+
+	const_iterator
+	cend() const;
+
+	const_reverse_iterator
+	crbegin() const;
+
+	const_reverse_iterator
+	crend() const;
 
 	vector const
 	position(
@@ -189,6 +196,11 @@ public:
 
 	dim const
 	dimension() const;
+
+	void
+	swap(
+		field &
+	);
 //<-
 private:
 	void
@@ -204,6 +216,15 @@ private:
 //->
 };
 
+
+template<
+	typename ArrayType
+>
+void
+swap(
+	field<ArrayType> &,
+	field<ArrayType> &
+);
 
 template<
 	typename ArrayType
