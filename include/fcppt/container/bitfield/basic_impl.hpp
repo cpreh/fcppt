@@ -10,9 +10,10 @@
 #include <fcppt/container/bitfield/basic_decl.hpp>
 #include <fcppt/container/bitfield/iterator_impl.hpp>
 #include <fcppt/container/bitfield/proxy_impl.hpp>
-#include <fcppt/algorithm/contains.hpp>
+#include <fcppt/algorithm/contains_if.hpp>
 #include <boost/spirit/home/phoenix/core/argument.hpp>
 #include <boost/spirit/home/phoenix/operator/bitwise.hpp>
+#include <boost/spirit/home/phoenix/operator/comparison.hpp>
 #include <algorithm>
 
 template<
@@ -24,10 +25,10 @@ bool
 fcppt::container::bitfield::basic<Enum, Size, InternalType>::boolean_test() const
 {
 	return
-		!algorithm::contains(
-			begin(),
-			end(),
-			false
+		algorithm::contains_if(
+			array.begin(),
+			array.end(),
+			boost::phoenix::arg_names::arg1 != 0
 		);
 }
 
@@ -162,6 +163,50 @@ typename fcppt::container::bitfield::basic<Enum, Size, InternalType>::const_reve
 fcppt::container::bitfield::basic<Enum, Size, InternalType>::rend() const
 {
 	return const_reverse_iterator(begin());
+}
+
+template<
+	typename Enum,
+	Enum Size,
+	typename InternalType
+>
+typename fcppt::container::bitfield::basic<Enum, Size, InternalType>::const_iterator
+fcppt::container::bitfield::basic<Enum, Size, InternalType>::cbegin() const
+{
+	return begin();
+}
+
+template<
+	typename Enum,
+	Enum Size,
+	typename InternalType
+>
+typename fcppt::container::bitfield::basic<Enum, Size, InternalType>::	const_iterator
+fcppt::container::bitfield::basic<Enum, Size, InternalType>::cend() const
+{
+	return end();
+}
+
+template<
+	typename Enum,
+	Enum Size,
+	typename InternalType
+>
+typename fcppt::container::bitfield::basic<Enum, Size, InternalType>::	const_reverse_iterator
+fcppt::container::bitfield::basic<Enum, Size, InternalType>::crbegin() const
+{
+	return rbegin();
+}
+
+template<
+	typename Enum,
+	Enum Size,
+	typename InternalType
+>
+typename fcppt::container::bitfield::basic<Enum, Size, InternalType>::	const_reverse_iterator
+fcppt::container::bitfield::basic<Enum, Size, InternalType>::crend() const
+{
+	return rend();
 }
 
 template<
@@ -313,6 +358,17 @@ template<
 	Enum Size,
 	typename InternalType
 >
+bool
+fcppt::container::bitfield::basic<Enum, Size, InternalType>::operator!() const
+{
+	return !boolean_test();
+}
+
+template<
+	typename Enum,
+	Enum Size,
+	typename InternalType
+>
 void
 fcppt::container::bitfield::basic<Enum, Size, InternalType>::set(
 	Enum const where,
@@ -351,6 +407,22 @@ template<
 	Enum Size,
 	typename InternalType
 >
+void
+fcppt::container::bitfield::basic<Enum, Size, InternalType>::swap(
+	basic &other_
+)
+{
+	std::swap(	
+		array,
+		other_.array
+	);
+}
+
+template<
+	typename Enum,
+	Enum Size,
+	typename InternalType
+>
 fcppt::container::bitfield::basic<Enum, Size, InternalType> const
 fcppt::container::bitfield::basic<Enum, Size, InternalType>::null()
 {
@@ -363,24 +435,6 @@ fcppt::container::bitfield::basic<Enum, Size, InternalType>::null()
 	ret.clear();
 
 	return ret;
-}
-
-template<
-	typename Enum,
-	Enum Size,
-	typename InternalType
->
-bool
-fcppt::container::bitfield::operator!(
-	basic<Enum, Size, InternalType> const &l
-)
-{
-	return
-		!algorithm::contains(
-			l.begin(),
-			l.end(),
-			true
-		);
 }
 
 template<
@@ -490,6 +544,20 @@ template<
 	Enum Size,
 	typename InternalType
 >
+void
+fcppt::container::bitfield::swap(
+	basic<Enum, Size, InternalType> &l,
+	basic<Enum, Size, InternalType> &r
+)
+{
+	return l.swap(r);
+}
+
+template<
+	typename Enum,
+	Enum Size,
+	typename InternalType
+>
 bool
 fcppt::container::bitfield::operator==(
 	basic<Enum, Size, InternalType> const &l,
@@ -517,5 +585,68 @@ fcppt::container::bitfield::operator!=(
 {
 	return !(l == r);
 }
+
+template<
+	typename Enum,
+	Enum Size,
+	typename InternalType
+>
+bool
+fcppt::container::bitfield::operator<(
+	basic<Enum, Size, InternalType> const &l,
+	basic<Enum, Size, InternalType> const &r
+)
+{
+	return
+		std::lexicographical_compare(
+			l.begin(),
+			l.end(),
+			r.begin(),
+			r.end()
+		);
+}
+
+template<
+	typename Enum,
+	Enum Size,
+	typename InternalType
+>
+bool
+fcppt::container::bitfield::operator<=(
+	basic<Enum, Size, InternalType> const &l,
+	basic<Enum, Size, InternalType> const &r
+)
+{
+	return !(l > r);	
+}
+
+template<
+	typename Enum,
+	Enum Size,
+	typename InternalType
+>
+bool
+fcppt::container::bitfield::operator>(
+	basic<Enum, Size, InternalType> const &l,
+	basic<Enum, Size, InternalType> const &r
+)
+{
+	return r < l;
+}
+
+template<
+	typename Enum,
+	Enum Size,
+	typename InternalType
+>
+bool
+fcppt::container::bitfield::operator>=(
+	basic<Enum, Size, InternalType> const &l,
+	basic<Enum, Size, InternalType> const &r
+)
+{
+	return !(l < r);
+}
+
 
 #endif

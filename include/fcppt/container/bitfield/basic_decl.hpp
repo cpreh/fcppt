@@ -135,6 +135,18 @@ public:
 	const_reverse_iterator
 	rend() const;
 
+	const_iterator
+	cbegin() const;
+
+	const_iterator
+	cend() const;
+
+	const_reverse_iterator
+	crbegin() const;
+
+	const_reverse_iterator
+	crend() const;
+
 	size_type
 	size() const;
 
@@ -171,6 +183,9 @@ public:
 	basic const
 	operator~() const;
 
+	bool
+	operator!() const;
+
 	void
 	set(
 		Enum where,
@@ -185,20 +200,15 @@ public:
 	void
 	clear();
 
+	void
+	swap(
+		basic &
+	);
+
 	static
 	basic const
 	null();
 };
-
-template<
-	typename Enum,
-	Enum Size,
-	typename InternalType
->
-bool
-operator!(
-	basic<Enum, Size, InternalType> const &
-);
 
 template<
 	typename Enum,
@@ -265,6 +275,16 @@ operator~(
 	basic<Enum, Size, InternalType>
 );
 
+template<
+	typename Enum,
+	Enum Size,
+	typename InternalType
+>
+void
+swap(
+	basic<Enum, Size, InternalType> &,
+	basic<Enum, Size, InternalType> &
+);
 
 template<
 	typename Enum,
@@ -287,6 +307,51 @@ operator!=(
 	basic<Enum, Size, InternalType> const &,
 	basic<Enum, Size, InternalType> const &
 );
+
+template<
+	typename Enum,
+	Enum Size,
+	typename InternalType
+>
+bool
+operator<(
+	basic<Enum, Size, InternalType> const &,
+	basic<Enum, Size, InternalType> const &
+);
+
+template<
+	typename Enum,
+	Enum Size,
+	typename InternalType
+>
+bool
+operator<=(
+	basic<Enum, Size, InternalType> const &,
+	basic<Enum, Size, InternalType> const &
+);
+
+template<
+	typename Enum,
+	Enum Size,
+	typename InternalType
+>
+bool
+operator>(
+	basic<Enum, Size, InternalType> const &,
+	basic<Enum, Size, InternalType> const &
+);
+
+template<
+	typename Enum,
+	Enum Size,
+	typename InternalType
+>
+bool
+operator>=(
+	basic<Enum, Size, InternalType> const &,
+	basic<Enum, Size, InternalType> const &
+);
+
 //]
 
 }
