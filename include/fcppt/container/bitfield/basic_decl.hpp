@@ -186,6 +186,16 @@ public:
 	bool
 	operator!() const;
 
+	bool
+	operator==(
+		basic const &
+	) const;
+
+	bool
+	operator<(
+		basic const &
+	) const;
+
 	void
 	set(
 		Enum where,

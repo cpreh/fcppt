@@ -359,6 +359,43 @@ template<
 	typename InternalType
 >
 bool
+fcppt::container::bitfield::basic<Enum, Size, InternalType>::operator==(
+	basic const &r
+) const
+{
+	return
+		std::equal(
+			array.begin(),
+			array.end(),
+			r.array.begin()
+		);
+}
+
+template<
+	typename Enum,
+	Enum Size,
+	typename InternalType
+>
+bool
+fcppt::container::bitfield::basic<Enum, Size, InternalType>::operator<(
+	basic const &r
+) const
+{
+	return
+		std::lexicographical_compare(
+			array.begin(),
+			array.end(),
+			r.array.begin(),
+			r.array.end()
+		);
+}
+
+template<
+	typename Enum,
+	Enum Size,
+	typename InternalType
+>
+bool
 fcppt::container::bitfield::basic<Enum, Size, InternalType>::operator!() const
 {
 	return !boolean_test();
@@ -559,51 +596,12 @@ template<
 	typename InternalType
 >
 bool
-fcppt::container::bitfield::operator==(
-	basic<Enum, Size, InternalType> const &l,
-	basic<Enum, Size, InternalType> const &r
-)
-{
-	return
-		std::equal(
-			l.begin(),
-			l.end(),
-			r.begin()
-		);
-}
-
-template<
-	typename Enum,
-	Enum Size,
-	typename InternalType
->
-bool
 fcppt::container::bitfield::operator!=(
 	basic<Enum, Size, InternalType> const &l,
 	basic<Enum, Size, InternalType> const &r
 )
 {
 	return !(l == r);
-}
-
-template<
-	typename Enum,
-	Enum Size,
-	typename InternalType
->
-bool
-fcppt::container::bitfield::operator<(
-	basic<Enum, Size, InternalType> const &l,
-	basic<Enum, Size, InternalType> const &r
-)
-{
-	return
-		std::lexicographical_compare(
-			l.begin(),
-			l.end(),
-			r.begin(),
-			r.end()
-		);
 }
 
 template<
