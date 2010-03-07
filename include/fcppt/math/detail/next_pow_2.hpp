@@ -8,9 +8,12 @@
 #define FCPPT_MATH_DETAIL_NEXT_POW_2_HPP_INCLUDED
 
 #include <fcppt/math/is_power_of_2.hpp>
+#include <fcppt/assert.hpp>
 #include <boost/utility/enable_if.hpp>
-#include <boost/type_traits/is_unsigned.hpp>
 #include <boost/type_traits/is_floating_point.hpp>
+#include <boost/type_traits/is_signed.hpp>
+#include <boost/type_traits/is_unsigned.hpp>
+#include <boost/type_traits/make_unsigned.hpp>
 #include <cmath>
 
 namespace fcppt
@@ -50,6 +53,39 @@ next_pow_2(
 		ret *= two;
 
 	return ret * two;
+}
+
+template<
+	typename T
+>
+typename boost::enable_if<
+	boost::is_signed<
+		T
+	>,
+	T
+>::type
+next_pow_2(
+	T const t
+)
+{
+	FCPPT_ASSERT(
+		t > 0
+	);
+
+	return
+		static_cast<
+			T
+		>(
+			next_pow_2(
+				static_cast<
+					typename boost::make_unsigned<
+						T
+					>::type
+				>(
+					t
+				)
+			)
+		);
 }
 
 template<
