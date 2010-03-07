@@ -220,8 +220,8 @@ CHECK_CXX_SOURCE_COMPILES(
 SET(CMAKE_REQUIRED_LIBRARIES)
 
 CONFIGURE_FILE(
-	${CMAKE_SOURCE_DIR}/config.h.in
-	${CMAKE_SOURCE_DIR}/include/fcppt/config.h
+	${CMAKE_SOURCE_DIR}/config.hpp.in
+	${CMAKE_SOURCE_DIR}/include/fcppt/config.hpp
 )
 
 CONFIGURE_FILE(
