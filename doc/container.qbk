@@ -106,7 +106,7 @@ An `fcppt::container::field<ArrayType>` is just a wrapper around a one-dimension
 
 [section linear_map/linear_set]
 
-The standard library offers the classes `std::map<T>` and `std::set<T>`. The elements in these containers are ordered and are internally stored as a tree (or some other data structure that guarantees logarithmic accesss times). This ensures high access times when enough elements are stored in the map. With a very small amount of elements, however, a linear solution outperforms the standard library containers [footnote Citation needed]. Because of this, there are `fcppt::container::linear_map<T>` and `fcppt::container::linear_set<T>` which expose the /same/ interface as the standard library containers, but with different guarantees, since they store the elements in a `std::list`.
+The standard library offers the classes `std::map<T>` and `std::set<T>`. The elements in these containers are ordered and are internally stored as a tree (or some other data structure that guarantees logarithmic access times). This ensures high access times when enough elements are stored in the map. With a very small amount of elements, however, a linear solution outperforms the standard library containers [footnote Citation needed]. Because of this, there are `fcppt::container::linear_map<T>` and `fcppt::container::linear_set<T>` which expose the /same/ interface as the standard library containers, but with different guarantees, since they store the elements in a `std::list`.
 
 [endsect]
 
