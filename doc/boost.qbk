@@ -1,0 +1,10 @@
+[section boost replacements]
+
+[section signals]
+[endsect]
+
+[section noncopyable]
+boost provides `boost::noncopyable`
+[endsect]
+
+[endsect]

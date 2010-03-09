@@ -53,7 +53,7 @@ make_fcppt_documentation(log log)
 make_fcppt_documentation(math math)
 make_fcppt_documentation(assert assert.hpp assert_message.hpp)
 make_fcppt_documentation(assign assign)
-make_fcppt_documentation(filesystem filesystem)
+make_fcppt_documentation(adapted filesystem error format.hpp io preprocessor/file.hpp text.hpp string.hpp )
 make_fcppt_documentation(endianness endianness)
 
 ADD_CUSTOM_COMMAND(

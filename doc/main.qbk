@@ -90,6 +90,10 @@ its types are implemented with an mpl sequence directly and it offers up to tern
 
 [include alignment.qbk]
 
+[include adapted.qbk]
+
+[include boost.qbk]
+
 [include chrono.qbk]
 
 [include container.qbk]

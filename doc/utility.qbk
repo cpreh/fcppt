@@ -41,12 +41,6 @@ There's also `assign::make_array` which can be used to construct an `std::tr1::a
 
 [endsect]
 
-[section filesystem]
-The filesystem part of fcppt is actually just a wrapper around the [@http://www.boost.org/doc/libs/release/libs/filesystem/index.html boost::filesystem] library. It offers some of the utility functions and typedefs which are specialized for fcppt::char_type.
-
-[xinclude doxygen_filesystem.xml]
-[endsect]
-
 [section endianness]
 fcppt has functions to deal with endianness. Here is an example:
 
