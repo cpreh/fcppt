@@ -3,6 +3,8 @@
 #include <fcppt/endianness/is_little_endian.hpp>
 #include <fcppt/endianness/to_little_endian.hpp>
 #include <fcppt/endianness/to_big_endian.hpp>
+#include <fcppt/endianness/from_little_endian.hpp>
+#include <fcppt/endianness/from_big_endian.hpp>
 #include <fcppt/endianness/host_format.hpp>
 #include <iostream>
 
@@ -15,7 +17,7 @@ int main()
 	int const iconverted = fcppt::endianness::to_little_endian(ivariable);
 
 	long const lvariable = 1337;
-	long const lswapped = fcppt::endianness::to_big_endian(lvariable);
+	long const lconverted = fcppt::endianness::to_big_endian(lvariable);
 
 	std::cout << "integer, before: " << ivariable << ", integer, after: " << iconverted << "\n";
 	std::cout << "long, before: " << lvariable << ", long, after: " << lconverted << "\n";
