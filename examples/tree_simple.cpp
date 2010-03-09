@@ -3,6 +3,7 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
+
 //[tree_simple
 #include <fcppt/container/tree/object.hpp>
 #include <fcppt/io/cout.hpp>
