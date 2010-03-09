@@ -50,3 +50,23 @@ pre.programlisting
 	background-color: #eaedff;
 	margin:auto;
 }
+
+.toc
+{
+	background-color: #c4cdff;
+	border-color:#747474;
+	border-width:1px;
+	border-style:solid;
+	padding:0.5em;
+	width:80%;
+}
+
+a.section:link
+{
+	text-decoration:none;
+}
+
+a.link:link
+{
+	text-decoration:none;
+}

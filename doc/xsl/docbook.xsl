@@ -19,7 +19,8 @@
   <xsl:param name="max-columns" select="78"/>
 
   <!-- The root of the Boost directory -->
-  <xsl:param name="boost.root" select="'file:///home/philipp/projects/fcppt/build/doc_generated/html'"/>
+<!--  <xsl:param name="boost.root" select="'file:///home/philipp/projects/fcppt/build/doc_generated/html'"/> -->
+  <xsl:param name="boost.root" select="''"/>
 
   <!-- A space-separated list of libraries to include in the
        output. If this list is empty, all libraries will be included. -->
