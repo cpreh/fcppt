@@ -20,6 +20,7 @@ namespace math
 namespace sphere
 {
 
+/// Checks if spheres @a a and @a b intersect
 template<
 	typename T,
 	size_type N
