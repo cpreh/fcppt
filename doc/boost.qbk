@@ -1,10 +1,32 @@
 [section boost replacements]
 
-[section signals]
+[section noncopyable]
+boost provides `boost::noncopyable` but it requires
+that you either derive from it or aggregate it as a member.
+Deriving can lead to conversion to `boost::noncopyable` by accident
+or it can generate spurious warnings if you derive more than once
+in a hierarchy.
+Aggregating it as a member is also a bad idea because the empty base class optimization
+cannot be used anymore and `boost::noncopyable` will take up at least one byte.
+fcppt instead provides the macro `FCPPT_NONCOPYABLE`.
+[note Because the macro has to make the copy constructor and the assignment operator
+inaccessible, it will leave a private: scope after its declaration.]
+
+[import ../examples/noncopyable.cpp]
+
+[noncopyable]
+
+There is also `FCPPT_NONASSIGNABLE` that just makes the assignment operator inaccessible.
+
 [endsect]
 
-[section noncopyable]
-boost provides `boost::noncopyable`
+[section Signals]
+[endsect]
+
+[section Optional]
+[endsect]
+
+[section Variant]
 [endsect]
 
 [endsect]
