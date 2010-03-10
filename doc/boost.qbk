@@ -18,15 +18,67 @@ inaccessible, it will leave a private: scope after its declaration.]
 
 There is also `FCPPT_NONASSIGNABLE` that just makes the assignment operator inaccessible.
 
+[xinclude doxygen_noncopyable.xml]
+
 [endsect]
 
 [section Signals]
 [endsect]
 
 [section Optional]
+`fcppt::optional` is a replacement for `boost::optional`.
+It simply doesn't use an undefined union trick. If boost stops doing that,
+we might consider to use `boost::optional` again.
+
+An optional, unlike a pointer, holds its optional object by value.
+This also means that an optional has an additional size overhead if the value
+is actually absent, but it doesn't require free store.
+
+[import ../examples/optional.cpp]
+
+[optional]
+
+[xinclude doxygen_optional.xml]
+
 [endsect]
 
 [section Variant]
+`fcppt::variant` is a replacement for `boost::variant`.
+Unlike `boost::variant` it also doesn't use an undefined union trick.
+There are, however, several other differences.
+
+* Proper seperation of the headers. Each functionality resides in its own header file.
+* `fcppt::variant::object` can be empty. It doesn't require its first type to be default constructible.
+* `fcppt::variant` reuses `boost::mpl sequences` to abstract the types that it can hold, so we have less code duplication.
+* A ternany visitation is supplied. The whole visitation algorithms could be refactored to be n-ary, but a ternany
+  visitation already has severe impact on compile time.
+
+[section A simple example]
+
+[import ../examples/variant.cpp]
+
+[variant]
+
+[endsect]
+
+[section A recursive variant]
+
+Like `boost::variant` fcppt provides a wrapper for a recursive variant.
+If a variant can (indirectly) hold itself again, a problem arises.
+The variant class has to know all of its members' sizes. But until the variant
+is completely declared, the sizes of itself cannot be known.
+To remedy this situation, you have to wrap a variant inside a struct,
+which in turn has to be wrapped inside `fcppt::variant::recursive`.
+Almost all algorithms on a variant will behave as if the `recursive` struct isn't there.
+
+[import ../examples/recursive_variant.cpp]
+
+[recursivevariant]
+
+[endsect]
+
+[xinclude doxygen_variant.xml]
+
 [endsect]
 
 [endsect]

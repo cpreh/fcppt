@@ -46,15 +46,18 @@ MACRO(make_fcppt_documentation name)
 			${DOC_OUTPUT}/doxygen.xml)
 ENDMACRO(make_fcppt_documentation)
 
+make_fcppt_documentation(adapted filesystem error format.hpp io preprocessor/file.hpp text.hpp string.hpp )
 make_fcppt_documentation(algorithm algorithm)
 make_fcppt_documentation(alignment alignment)
-make_fcppt_documentation(chrono chrono)
-make_fcppt_documentation(log log)
-make_fcppt_documentation(math math)
 make_fcppt_documentation(assert assert.hpp assert_message.hpp)
 make_fcppt_documentation(assign assign)
-make_fcppt_documentation(adapted filesystem error format.hpp io preprocessor/file.hpp text.hpp string.hpp )
+make_fcppt_documentation(chrono chrono)
 make_fcppt_documentation(endianness endianness)
+make_fcppt_documentation(math math)
+make_fcppt_documentation(noncopyable nonassignable.hpp noncopyable.hpp)
+make_fcppt_documentation(log log)
+make_fcppt_documentation(optional optional.hpp optional_decl.hpp optional_impl.hpp optional_fwd.hpp)
+make_fcppt_documentation(variant variant)
 
 ADD_CUSTOM_COMMAND(
 	TARGET doc
