@@ -17,6 +17,7 @@ namespace math
 namespace vector
 {
 
+/// Converts a vector into a different vector of the same dimension using static_cast
 template<
 	typename Dest,
 	typename T,

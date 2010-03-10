@@ -17,6 +17,7 @@ namespace math
 namespace matrix
 {
 
+/// Outputs a matrix to a basic_ostream
 template<
 	typename T,
 	typename N,

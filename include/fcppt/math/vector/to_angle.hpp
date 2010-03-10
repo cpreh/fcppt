@@ -24,6 +24,11 @@ namespace math
 namespace vector
 {
 
+/// Calculates the angle between @a to and vector(1, 0)
+/**
+ * @param N must be 2
+ * @return The angle if @a to is not the null vector, an empty optional otherwise
+*/
 template<
 	typename Dest,
 	typename T,
@@ -43,7 +48,8 @@ typename boost::enable_if<
 	optional<Dest>
 >::type
 to_angle(
-	basic<T, N, S> const &to)
+	basic<T, N, S> const &to
+)
 {
 	return atan2(
 		structure_cast<

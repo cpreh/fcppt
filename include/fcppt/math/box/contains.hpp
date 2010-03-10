@@ -16,6 +16,7 @@ namespace math
 namespace box
 {
 
+/// Tests if @a inner is inside @a outer
 template<
 	typename T,
 	size_type N

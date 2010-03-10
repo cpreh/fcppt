@@ -10,8 +10,11 @@
 #include <fcppt/math/dim/basic_decl.hpp>
 #include <fcppt/math/dim/basic_impl.hpp>
 #include <fcppt/math/dim/arithmetic.hpp>
+#include <fcppt/math/dim/construct.hpp>
 #include <fcppt/math/dim/input.hpp>
+#include <fcppt/math/dim/is_quadratic.hpp>
 #include <fcppt/math/dim/make.hpp>
+#include <fcppt/math/dim/narrow_cast.hpp>
 #include <fcppt/math/dim/output.hpp>
 #include <fcppt/math/dim/structure_cast.hpp>
 

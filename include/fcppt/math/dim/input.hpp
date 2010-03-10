@@ -20,6 +20,7 @@ namespace math
 namespace dim
 {
 
+/// Reads a dim from a basic_istream
 template<
 	typename T,
 	typename N,

@@ -19,6 +19,7 @@ namespace math
 namespace box
 {
 
+/// Converts a box into a different box of the same dimension using static_cast
 template<
 	typename Dest,
 	typename T,

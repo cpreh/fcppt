@@ -4,11 +4,11 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_MATH_VECTOR_CONSTRUCT_HPP_INCLUDED
-#define FCPPT_MATH_VECTOR_CONSTRUCT_HPP_INCLUDED
+#ifndef FCPPT_MATH_DIM_CONSTRUCT_HPP_INCLUDED
+#define FCPPT_MATH_DIM_CONSTRUCT_HPP_INCLUDED
 
-#include <fcppt/math/vector/basic_impl.hpp>
-#include <fcppt/math/vector/static.hpp>
+#include <fcppt/math/dim/basic_impl.hpp>
+#include <fcppt/math/dim/static.hpp>
 #include <fcppt/math/detail/construct.hpp>
 #include <fcppt/math/detail/is_static_size.hpp>
 
@@ -16,10 +16,10 @@ namespace fcppt
 {
 namespace math
 {
-namespace vector
+namespace dim
 {
 
-/// Constructs a vector with dimension @a N+1 from a vector with dimension @a N
+/// Constructs a dim with dimension @a N+1 from a dim with dimension @a N
 /**
  *  @param N must be a static dimension
 */

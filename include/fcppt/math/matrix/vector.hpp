@@ -17,6 +17,7 @@ namespace math
 namespace matrix
 {
 
+/// Multiplies a matrix by a vector
 template<
 	typename T,
 	typename N,

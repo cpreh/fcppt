@@ -16,6 +16,7 @@ namespace math
 namespace dim
 {
 
+// \cond
 #define FCPPT_MATH_MAKE_FREE_DIM_FUNCTION(op)\
 template<\
 	typename T,\
@@ -30,6 +31,7 @@ operator op(\
 {\
 	return basic<T, N, S>(a) op##= b;\
 }
+// \endcond
 
 FCPPT_MATH_MAKE_FREE_DIM_FUNCTION(+)
 FCPPT_MATH_MAKE_FREE_DIM_FUNCTION(-)

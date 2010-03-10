@@ -17,6 +17,7 @@ namespace math
 namespace vector
 {
 
+/// Normalizes a vector so that length(@a v) == 1
 template<
 	typename T,
 	typename N,
@@ -24,7 +25,8 @@ template<
 >
 basic<T, N, S> const
 normalize(
-	basic<T, N, S> const &v)
+	basic<T, N, S> const &v
+)
 {
 	return v / length(v);
 }

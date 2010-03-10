@@ -8,6 +8,7 @@
 #define FCPPT_MATH_MATRIX_BASIC_DECL_HPP_INCLUDED
 
 #include <fcppt/math/matrix/basic_fwd.hpp>
+#include <fcppt/math/matrix/max_ctor_params.hpp>
 #include <fcppt/math/matrix/detail/dim_storage.hpp>
 #include <fcppt/math/detail/view_storage.hpp>
 #include <fcppt/math/detail/make_op_decl.hpp>
@@ -18,10 +19,6 @@
 #include <boost/type_traits/is_same.hpp>
 #include <boost/static_assert.hpp>
 #include <iterator>
-
-#ifndef FCPPT_MATH_MATRIX_MAX_CTOR_PARAMS
-#define FCPPT_MATH_MATRIX_MAX_CTOR_PARAMS 16
-#endif
 
 namespace fcppt
 {

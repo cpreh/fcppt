@@ -18,6 +18,7 @@ namespace math
 namespace matrix
 {
 
+/// Calculates a rotation matrix around the x axis
 template<
 	typename T
 >

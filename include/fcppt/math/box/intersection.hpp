@@ -19,6 +19,10 @@ namespace math
 namespace box
 {
 
+/// Calculates the intersecting box of @a a and @a b
+/**
+ * @return If there is no intersection, null will be returned
+*/
 template<
 	typename T,
 	size_type N

@@ -17,6 +17,7 @@ namespace math
 namespace sphere
 {
 
+/// Typedefs a sphere with a dimension of 2 (a circle)
 template<
 	typename T
 >
