@@ -4,9 +4,9 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/container/exception.hpp>
+#include <fcppt/variant/exception.hpp>
 
-fcppt::container::exception::exception(
+fcppt::variant::exception::exception(
 	fcppt::string const &e
 )
 :

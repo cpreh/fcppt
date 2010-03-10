@@ -4,25 +4,27 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_VARIANT_INVALID_GET_HPP_INCLUDED
-#define FCPPT_VARIANT_INVALID_GET_HPP_INCLUDED
+#ifndef FCPPT_VARIANT_EXCEPTION_HPP_INCLUDED
+#define FCPPT_VARIANT_EXCEPTION_HPP_INCLUDED
 
-#include <fcppt/variant/exception.hpp>
-#include <fcppt/class_symbol.hpp>
+#include <fcppt/string.hpp>
+#include <fcppt/exception.hpp>
 #include <fcppt/symbol.hpp>
+#include <fcppt/class_symbol.hpp>
 
 namespace fcppt
 {
 namespace variant
 {
 
-/// Thrown if an invalid get<T> is called
-class FCPPT_CLASS_SYMBOL invalid_get
+class FCPPT_CLASS_SYMBOL exception
 :
-	public variant::exception
+	public fcppt::exception
 {
 public:
-	FCPPT_SYMBOL invalid_get();
+	FCPPT_SYMBOL explicit exception(
+		fcppt::string const &
+	);
 };
 
 }
