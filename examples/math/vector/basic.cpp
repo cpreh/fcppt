@@ -4,6 +4,7 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
+//[vectorbasic
 #include <fcppt/math/vector/vector.hpp> // includes almost everything related to vector
 #include <fcppt/math/vector/dynamic_impl.hpp>
 #include <fcppt/math/vector/static.hpp>

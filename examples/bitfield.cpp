@@ -4,6 +4,7 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
+//[bitfield
 #include <fcppt/container/bitfield/bitfield.hpp>
 #include <fcppt/io/cout.hpp>
 #include <fcppt/text.hpp>

@@ -4,6 +4,7 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
+//[mathbox
 #include <fcppt/math/box/box.hpp>
 #include <iostream>
 #include <ostream>
