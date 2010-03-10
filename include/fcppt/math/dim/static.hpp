@@ -20,6 +20,7 @@ namespace math
 namespace dim
 {
 
+// Typedefs a dim with static dimensions
 template<
 	typename T,
 	size_type N

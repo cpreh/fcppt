@@ -20,7 +20,7 @@ namespace math
 namespace vector
 {
 
-/// Reads a vector into a basic_istream
+/// Reads a vector from a basic_istream
 template<
 	typename T,
 	typename N,

@@ -16,12 +16,29 @@ namespace math
 {
 namespace dim
 {
-template<typename T,typename N,typename S>
-bool is_quadratic(
-	basic<T,N,S> const &r)
+
+/// Checks if all dimensions of @a r are the same
+template<
+	typename T,
+	typename N,
+	typename S
+>
+bool
+is_quadratic(
+	basic<T,N,S> const &r
+)
 {
-	for (typename basic<T,N,S>::const_iterator i = r.begin(); i != r.end(); ++i)
-		if (!math::compare(*i,r[0]))
+	for(
+		typename basic<T,N,S>::const_iterator i = r.begin();
+		i != r.end();
+		++i
+	)
+		if(
+			!math::compare(
+				*i,
+				r[0]
+			)
+		)
 			return false;
 	return true;
 }

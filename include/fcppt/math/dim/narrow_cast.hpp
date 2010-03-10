@@ -4,11 +4,11 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_MATH_DIM_STRUCTURE_CAST_HPP_INCLUDED
-#define FCPPT_MATH_DIM_STRUCTURE_CAST_HPP_INCLUDED
+#ifndef FCPPT_MATH_DIM_NARROW_CAST_HPP_INCLUDED
+#define FCPPT_MATH_DIM_NARROW_CAST_HPP_INCLUDED
 
 #include <fcppt/math/dim/basic_impl.hpp>
-#include <fcppt/math/detail/structure_cast.hpp>
+#include <fcppt/math/detail/narrow_cast.hpp>
 
 namespace fcppt
 {
@@ -17,7 +17,10 @@ namespace math
 namespace dim
 {
 
-/// Converts a dim into a different dim of the same dimension using static_cast
+/// Converts a dim into a dim with fewer elements
+/**
+ * @param Dest must be a dim type with fewer elements.
+*/
 template<
 	typename Dest,
 	typename T,
@@ -25,16 +28,15 @@ template<
 	typename S
 >
 Dest const
-structure_cast(
+narrow_cast(
 	basic<T, N, S> const &src
 )
 {
-	return math::detail::structure_cast<
+	return math::detail::narrow_cast<
 		Dest
 	>(
 		src
 	);
-
 }
 
 }
