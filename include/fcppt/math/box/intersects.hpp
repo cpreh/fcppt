@@ -17,6 +17,7 @@ namespace math
 namespace box
 {
 
+/// Tests if @a a and @a b intersect
 template<
 	typename T,
 	size_type N
@@ -34,8 +35,8 @@ intersects(
 		i < N;
 		++i
 	)
-		ret
-			|= a.pos(i) > b.max(i)
+		ret = ret
+			|| a.pos(i) > b.max(i)
 			|| a.max(i) < b.pos(i);
 
 	return !ret;

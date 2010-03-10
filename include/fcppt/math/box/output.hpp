@@ -20,6 +20,7 @@ namespace math
 namespace box
 {
 
+/// Outputs a box to a basic_ostream
 template<
 	typename T,
 	size_type N,

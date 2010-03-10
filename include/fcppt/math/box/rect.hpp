@@ -17,6 +17,7 @@ namespace math
 namespace box
 {
 
+/// Typedefs a two dimensional box (a rect)
 template<
 	typename T
 >

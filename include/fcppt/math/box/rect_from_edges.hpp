@@ -15,8 +15,11 @@ namespace math
 {
 namespace box
 {
+
 /// Constructs a rectangle from its four edges instead of a position and a dimension
-template<typename Scalar>
+template<
+	typename Scalar
+>
 fcppt::math::box::basic
 <
 	Scalar,
@@ -26,7 +29,8 @@ rect_from_edges(
 	Scalar const _left,
 	Scalar const _top,
 	Scalar const _right,
-	Scalar const _bottom)
+	Scalar const _bottom
+)
 {
 	typedef typename 
 	fcppt::math::box::basic
@@ -55,8 +59,11 @@ rect_from_edges(
 				_top),
 			dim(
 				_right - _left,
-				_bottom - _top));
+				_bottom - _top
+			)
+		);
 }
+
 }
 }
 }
