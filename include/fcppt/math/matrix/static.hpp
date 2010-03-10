@@ -20,6 +20,7 @@ namespace math
 namespace matrix
 {
 
+/// Typedefs a matrix with static dimensions
 template<
 	typename T,
 	size_type N,

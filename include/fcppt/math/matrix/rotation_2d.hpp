@@ -18,12 +18,16 @@ namespace math
 namespace matrix
 {
 
+/// Calculates a two dimensional rotation matrix
+/**
+ * This matrix will rotate around an imaginary z axis
+*/
 template<
 	typename T
 >
 typename static_<T, 2, 2>::type const
 rotation_2d(
-	T angle
+	T const angle
 )
 {
 	T const

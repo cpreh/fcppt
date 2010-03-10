@@ -21,6 +21,15 @@ namespace math
 namespace matrix
 {
 
+/// Calculates a perspective matrix
+/**
+ * @param aspect The screens aspect ratio. It should be (w > h) ? w / h : h / w
+ * @param fov The field of view as an angle.
+ * @param near The near clipping plane
+ * @param far The far clipping plane
+ *
+ * @remarks near and far should not be the same. near should not be zero.
+*/
 template<
 	typename T
 >

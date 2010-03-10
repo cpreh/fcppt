@@ -20,10 +20,12 @@ namespace math
 namespace matrix
 {
 
+/// Typedefs a dynamic matrix type
 template<
 	typename T
 >
-struct dynamic {
+struct dynamic
+{
 	typedef basic<
 		T,
 		math::detail::dynamic_size,

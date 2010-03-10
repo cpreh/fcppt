@@ -20,6 +20,7 @@ namespace math
 namespace matrix
 {
 
+/// Calculates a translation matrix from @a x, @a y and @a z
 template<
 	typename T
 >
@@ -40,6 +41,7 @@ translation(
 		);
 }
 
+/// Calculates a translation matrix from a three dimensional vector
 template<
 	typename Vector
 >
