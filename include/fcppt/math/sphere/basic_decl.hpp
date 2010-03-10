@@ -19,6 +19,11 @@ namespace math
 namespace sphere
 {
 
+/// The basic sphere class
+/**
+ * @param T The value type to hold
+ * @param N The static size of the sphere
+*/
 template<
 	typename T,
 	size_type N
@@ -35,6 +40,7 @@ public:
 		N
 	>::type point_type;
 
+	/// Constructs a sphere from @a origin and @a radius
 	basic(
 		point_type const &origin,
 		const_reference radius

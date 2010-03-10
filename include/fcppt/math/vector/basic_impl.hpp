@@ -72,6 +72,7 @@ fcppt::math::vector::basic<T, N, S>::basic(
 	);
 }
 
+// \cond
 #define FCPPT_MATH_DETAIL_MAKE_VARIADIC_CONSTRUCTOR_MAX_SIZE FCPPT_MATH_VECTOR_MAX_CTOR_PARAMS
 #define FCPPT_MATH_DETAIL_TEMPLATE_PRE\
 	template<\
@@ -81,6 +82,7 @@ fcppt::math::vector::basic<T, N, S>::basic(
 	>
 #define FCPPT_MATH_DETAIL_DEF_PRE\
 	fcppt::math::vector::basic<T, N, S>
+// \endcond
 
 FCPPT_MATH_DETAIL_ARRAY_ADAPTER_IMPL
 
@@ -90,8 +92,10 @@ FCPPT_MATH_DETAIL_MAKE_VARIADIC_CONSTRUCTOR(
 
 #undef FCPPT_MATH_DETAIL_MAKE_VARIADIC_CONSTRUCTOR_MAX_SIZE
 
+// \cond
 #define FCPPT_MATH_VECTOR_BASIC_DEFINE_OPERATOR(op)\
 FCPPT_MATH_DETAIL_MAKE_OP_DEF(fcppt::math::vector::basic, op)
+// \endcond
 
 FCPPT_MATH_VECTOR_BASIC_DEFINE_OPERATOR(+=)
 FCPPT_MATH_VECTOR_BASIC_DEFINE_OPERATOR(-=)
