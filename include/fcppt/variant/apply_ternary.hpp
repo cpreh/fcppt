@@ -15,6 +15,12 @@ namespace fcppt
 namespace variant
 {
 
+/// Does a ternary visitation with operation @a op
+/**
+ * This will call @a op::operator()(t1, t2, t3)
+ * where t1, t2 and t3 are the objects held by @a obj1, @a obj2 and @a obj3 respectively
+ * @return The result of @a op::operator().
+*/
 template<
 	typename Operation,
 	typename Variant1,

@@ -15,7 +15,11 @@ namespace fcppt
 namespace variant
 {
 
-class invalid_get : public exception {
+/// Thrown if an invalid get<T> is called
+class invalid_get
+:
+	public exception
+{
 public:
 	FCPPT_SYMBOL invalid_get();
 };

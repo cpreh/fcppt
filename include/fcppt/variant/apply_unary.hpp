@@ -15,6 +15,12 @@ namespace fcppt
 namespace variant
 {
 
+/// Does a unary visitation with operation @a op
+/**
+ * This will call @a op::operator()(t)
+ * where t is the object held by @a obj 
+ * @return The result of @a op::operator().
+*/
 template<
 	typename Operation,
 	typename Variant

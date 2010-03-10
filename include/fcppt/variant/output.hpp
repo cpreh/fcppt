@@ -17,6 +17,7 @@ namespace fcppt
 namespace variant
 {
 
+/// Outputs the object held by the variant to a basic_ostream
 template<
 	typename Types,
 	typename Ch,

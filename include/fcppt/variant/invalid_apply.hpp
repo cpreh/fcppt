@@ -16,6 +16,7 @@ namespace fcppt
 namespace variant
 {
 
+/// Thrown if apply is used on empty variants
 class FCPPT_CLASS_SYMBOL invalid_apply
 :
 	public exception

@@ -14,6 +14,7 @@ namespace fcppt
 namespace variant
 {
 
+/// A wrapper for a recursive variant
 template<
 	typename T
 >
