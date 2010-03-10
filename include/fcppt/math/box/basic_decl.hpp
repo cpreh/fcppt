@@ -21,6 +21,11 @@ namespace math
 namespace box
 {
 
+/// The basic box class
+/**
+ * @param T The value type to hold
+ * @param N The static size of the box
+*/
 template<
 	typename T,
 	size_type N
