@@ -1,8 +1,9 @@
 body
 {
 	background-color:white;
-	color:#0062a3;
+	color:#29303b;
 	text-decoration:none;
+	width:80%;
 }
 
 img
@@ -12,26 +13,26 @@ img
 
 a:link
 {
-	text-decoration:underline;
-	color:blue;
+	text-decoration:none;
+	color:#8a3207;
 }
 
 a:visited
 {
-	text-decoration:underline;
-	color:blue;
+	text-decoration:none;
+	color:#8a3207;
 }
 
 a:hover
 {
 	text-decoration:underline;
-	color:rgb(255,152,59);
+	color:#753206;
 }
 
 a:active
 {
 	text-decoration:underline;
-	color:rgb(255,152,59);
+	color:#753206;
 }
 
 .keyword        { color: #0000AA; }
@@ -47,20 +48,23 @@ a:active
 
 pre.programlisting
 {
-	background-color: #eaedff;
-	margin:auto;
+	background-color: #faf9f9;
+	border-color:#cccccc;
+	border-width:1px;
+	border-style:solid;
 }
 
 .toc
 {
-	background-color: #c4cdff;
-	border-color:#747474;
+	background-color: #fff8d5;
+	border-color:#cccccc;
 	border-width:1px;
 	border-style:solid;
 	padding:0.5em;
 	width:80%;
 }
 
+/*
 a.section:link
 {
 	text-decoration:none;
@@ -70,3 +74,4 @@ a.link:link
 {
 	text-decoration:none;
 }
+*/
