@@ -9,6 +9,7 @@
 
 #include <fcppt/math/dim/basic_impl.hpp>
 #include <fcppt/math/dim/static.hpp>
+#include <fcppt/math/detail/construct.hpp>
 #include <fcppt/math/detail/is_static_size.hpp>
 
 namespace fcppt
@@ -41,21 +42,16 @@ construct(
 	T const &t
 )
 {
-	typename static_<
-		T,
-		N::value + 1
-	>::type ret;
-
-	for(
-		typename basic<T, N, S>::size_type i = 0;
-		i < base.size();
-		++i
-	)
-		ret[i] = base[i];
-
-	ret[N::value] = t;
-
-	return ret;
+	return
+		math::detail::construct<
+			typename static_<
+				T,
+				N::value + 1
+			>::type
+		>(
+			base,
+			t
+		);
 }
 
 }
