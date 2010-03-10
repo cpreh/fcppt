@@ -20,6 +20,11 @@ namespace math
 namespace vector
 {
 
+/// Calculates the length of a vector
+/**
+ * @param T must be a floating point type
+ * @return The length as the same type as T
+*/
 template<
 	typename T,
 	typename N,
@@ -40,6 +45,12 @@ length(
 	);
 }
 
+/// Calculates the length of a vector
+/**
+ * @param Dest must be a floating point type
+ * @param T is not a floating point type
+ * @return The length converted to Dest
+*/
 template<
 	typename Dest,
 	typename T,

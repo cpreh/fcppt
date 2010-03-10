@@ -18,6 +18,7 @@ namespace math
 namespace vector
 {
 
+/// Outputs a vector to a basic_ostream
 template<
 	typename T,
 	typename N,
@@ -28,11 +29,13 @@ template<
 std::basic_ostream<Ch, Traits> &
 operator<< (
 	std::basic_ostream<Ch, Traits> &s,
-	basic<T, N, S> const &v)
+	basic<T, N, S> const &v
+)
 {
 	return math::detail::one_dimensional_output(
 		s,
-		v);
+		v
+	);
 }
 
 }

@@ -20,6 +20,7 @@ namespace math
 namespace vector
 {
 
+/// Typedefs a static vector type
 template<
 	typename T,
 	size_type N

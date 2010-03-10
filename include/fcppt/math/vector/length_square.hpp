@@ -17,6 +17,10 @@ namespace math
 namespace vector
 {
 
+/// Calculates the square of the vector's length
+/**
+ * Equivalent to dot(@a v, @a v).
+*/
 template<
 	typename T,
 	typename N,
