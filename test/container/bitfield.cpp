@@ -51,8 +51,17 @@ BOOST_AUTO_TEST_CASE(container_bitfield_arithmetic)
 		bitfield::null()
 	);
 
-	field2[test_enum::test3] = true;
+	BOOST_REQUIRE(
+		(field2 | test_enum::test2)
+		& test_enum::test2
+	);
 
+	BOOST_REQUIRE(
+		!field2
+	);
+
+	field2[test_enum::test3] = true;
+		
 	{
 		bitfield const bf_or(
 			field1 | field2

@@ -28,7 +28,8 @@ fcppt::container::bitfield::basic<Enum, Size, InternalType>::boolean_test() cons
 		algorithm::contains_if(
 			array.begin(),
 			array.end(),
-			boost::phoenix::arg_names::arg1 != 0
+			boost::phoenix::arg_names::arg1
+			!= static_cast<InternalType>(0)
 		);
 }
 
@@ -406,6 +407,19 @@ template<
 	Enum Size,
 	typename InternalType
 >
+fcppt::container::bitfield::value_type
+fcppt::container::bitfield::basic<Enum, Size, InternalType>::operator&(
+	Enum const where
+) const
+{
+	return get(where);
+}
+
+template<
+	typename Enum,
+	Enum Size,
+	typename InternalType
+>
 void
 fcppt::container::bitfield::basic<Enum, Size, InternalType>::set(
 	Enum const where,
@@ -538,20 +552,6 @@ fcppt::container::bitfield::operator&(
 			l
 		)
 		&= r;
-}
-
-template<
-	typename Enum,
-	Enum Size,
-	typename InternalType
->
-fcppt::container::bitfield::value_type
-fcppt::container::bitfield::operator&(
-	basic<Enum, Size, InternalType> const &l,
-	Enum const where
-) 
-{
-	return l.get(where);
 }
 
 template<

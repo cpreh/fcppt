@@ -186,6 +186,12 @@ public:
 	bool
 	operator!() const;
 
+	// for some reason VC++ can't find this operator if it is not a member
+	value_type
+	operator &(
+		Enum
+	) const;
+
 	bool
 	operator==(
 		basic const &
@@ -251,17 +257,6 @@ basic<Enum, Size, InternalType> const
 operator&(
 	basic<Enum, Size, InternalType> const &,
 	basic<Enum, Size, InternalType> const &
-);
-
-template<
-	typename Enum,
-	Enum Size,
-	typename InternalType
->
-value_type
-operator&(
-	basic<Enum, Size, InternalType> const &,
-	Enum
 );
 
 template<
