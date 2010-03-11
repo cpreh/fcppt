@@ -2,13 +2,6 @@
 
 [section tree]
 
-[section Synopsis]
-
-[import ../include/fcppt/container/tree/object_decl.hpp]
-[tree]
-
-[endsect]
-
 [section Rationale]
 
 An `fcppt::container::tree::object<T>` is a container modeling an n-ary tree holding objects of type `T`. It has a /value/ of type `T` and /children/ of type `fcppt::container::tree::object<T>`. [note Because of the inherent recursive property of the tree, it has to store its children in a boost::ptr_container which might make tree a bit heavy to include. Consider using forward declarations where possible: `#include <fcppt/container/tree/object_fwd.hpp>`]
@@ -42,16 +35,17 @@ hello
 
 [endsect]
 
+[section Synopsis]
+
+[import ../include/fcppt/container/tree/object_decl.hpp]
+[tree]
+
+[endsect]
+
+
 [endsect]
 
 [section bitfield]
-
-[section Synopsis]
-
-[import ../include/fcppt/container/bitfield/basic_decl.hpp]
-[bitfield_decl]
-
-[endsect]
 
 [section Rationale]
 
@@ -83,16 +77,16 @@ As you can see, you can treat a bitfield like an integral type -- it has the bit
 
 [endsect]
 
+[section Synopsis]
+
+[import ../include/fcppt/container/bitfield/basic_decl.hpp]
+[bitfield_decl]
+
+[endsect]
+
 [endsect]
 
 [section field]
-
-[section Synopsis]
-
-[import ../include/fcppt/container/field_decl.hpp]
-[field_decl]
-
-[endsect]
 
 [section Rationale]
 
@@ -101,6 +95,14 @@ An `fcppt::container::field<ArrayType>` is just a wrapper around a one-dimension
 [warning This class is a likely candidate for being rewritten in the future since it's only two-dimensinoal (not n-dimensional) and it's too monolithic. Use with caution.]
 
 [endsect]
+
+[section Synopsis]
+
+[import ../include/fcppt/container/field_decl.hpp]
+[field_decl]
+
+[endsect]
+
 
 [endsect]
 

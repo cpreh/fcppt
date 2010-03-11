@@ -58,6 +58,7 @@ make_fcppt_documentation(noncopyable nonassignable.hpp noncopyable.hpp)
 make_fcppt_documentation(log log)
 make_fcppt_documentation(optional optional.hpp optional_decl.hpp optional_impl.hpp optional_fwd.hpp)
 make_fcppt_documentation(variant variant)
+make_fcppt_documentation(signal signal)
 
 ADD_CUSTOM_COMMAND(
 	TARGET doc

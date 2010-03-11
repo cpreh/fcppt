@@ -19,15 +19,15 @@
   <xsl:param name="max-columns" select="78"/>
 
   <!-- The root of the Boost directory -->
-<!--  <xsl:param name="boost.root" select="'file:///home/philipp/projects/fcppt/build/doc_generated/html'"/> -->
-  <xsl:param name="boost.root" select="''"/>
+	<!-- NOTE: the working directory is set to build/doc_generated, so the fcppt root is two layers below that -->
+  <xsl:param name="boost.root" select="'../../'"/>
 
   <!-- A space-separated list of libraries to include in the
        output. If this list is empty, all libraries will be included. -->
   <xsl:param name="boost.include.libraries" select="''"/>
 
   <!-- Whether to rewrite relative URL's to point to the website -->
-  <xsl:param name="boost.url.prefix" select="'/'"/>
+  <xsl:param name="boost.url.prefix"/>
 
   <!-- A space-separated list of xml elements in the input file for which
        whitespace should be preserved -->
