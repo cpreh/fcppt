@@ -28,7 +28,8 @@ fcppt::container::bitfield::basic<Enum, Size, InternalType>::boolean_test() cons
 		algorithm::contains_if(
 			array.begin(),
 			array.end(),
-			boost::phoenix::arg_names::arg1 != 0
+			boost::phoenix::arg_names::arg1
+			!= static_cast<InternalType>(0)
 		);
 }
 
