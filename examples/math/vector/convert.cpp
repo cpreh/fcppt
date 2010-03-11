@@ -4,6 +4,7 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
+//[vectorconvert
 #include <fcppt/math/vector/vector.hpp>
 #include <fcppt/math/vector/static.hpp>
 #include <iostream>

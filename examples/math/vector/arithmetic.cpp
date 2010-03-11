@@ -4,6 +4,7 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
+//[vectorarithmetic
 #include <fcppt/math/vector/vector.hpp>
 #include <fcppt/math/vector/dim.hpp>
 #include <fcppt/math/vector/static.hpp>

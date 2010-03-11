@@ -13,6 +13,7 @@
 #include <fcppt/endianness/host_format.hpp>
 #include <iostream>
 
+//[endianness
 int main()
 {
 	std::cout << "This system is big endian: " << fcppt::endianness::is_big_endian() << "\n";
