@@ -19,13 +19,19 @@ namespace fcppt
 namespace mpl
 {
 
+/// Calculates a new Sequence out of @a Sequence with the partial sums
+/**
+ * @param Sequence An MPL sequence of integral wrapper types
+ * @return A new Sequence of the partial sums
+ * @remarks If @a Sequence consists of a_1, ..., a_n the result will be 0, a_1, a_1 + a_2, ...
+*/
 template<
-	typename Elements
+	typename Sequence
 >
 struct partial_sums
 :
 boost::mpl::fold<
-	Elements,
+	Sequence,
 	boost::mpl::vector_c<int, 0>, // mpl::plus<> converts its operands, so int is most conservative
 	boost::mpl::push_back<
 		boost::mpl::_1,

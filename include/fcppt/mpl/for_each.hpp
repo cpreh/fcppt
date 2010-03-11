@@ -17,6 +17,12 @@ namespace fcppt
 namespace mpl
 {
 
+/// Invoke a functor on each element of a sequence without constructing them
+/**
+ * @param Sequence The sequence
+ * @param f The functor to invoke
+ * @remarks Calls f<T>() for each type T in @a Sequence
+*/
 template<
 	typename Sequence,
 	typename Fun

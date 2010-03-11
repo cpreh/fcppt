@@ -22,8 +22,14 @@ namespace fcppt
 namespace mpl
 {
 
+/// Find the nth matching Element in a sequence
+/**
+ * @param Sequence The mpl sequence
+ * @param Element The element to find
+ * @param Number The number of matches to skip
+*/
 template<
-	typename Elements,
+	typename Sequence,
 	typename Element,
 	typename Number
 >
@@ -33,7 +39,7 @@ boost::mpl::deref<
 	typename boost::mpl::advance<
 		typename boost::mpl::begin<
 			typename boost::mpl::iter_fold<
-				Elements,
+				Sequence,
 				boost::mpl::vector0<>,
 				boost::mpl::if_<
 					boost::is_same<

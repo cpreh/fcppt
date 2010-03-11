@@ -102,6 +102,8 @@ its types are implemented with an mpl sequence directly and it offers up to tern
 
 [include math.qbk]
 
+[include mpl.qbk]
+
 [include utility.qbk]
 
 [include guidelines.qbk]

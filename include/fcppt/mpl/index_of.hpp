@@ -16,21 +16,28 @@ namespace fcppt
 namespace mpl
 {
 
+/// Return the index of @a Element in @a Sequence
+/**
+ * @param Sequence An MPL sequence
+ * @param Element The element to find
+ * @return The index of the element
+*/
 template<
-	typename Elements,
+	typename Sequence,
 	typename Element
 >
 struct index_of
 :
 boost::mpl::distance<
 	typename boost::mpl::begin<
-		Elements
+		Sequence
 	>::type,
 	typename boost::mpl::find<
-		Elements,
+		Sequence,
 		Element
 	>::type
-> {};
+>
+{};
 
 }
 }

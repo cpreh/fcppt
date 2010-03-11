@@ -1,0 +1,5 @@
+[section MPL]
+
+[xinclude doxygen_mpl.xml]
+
+[endsect]
