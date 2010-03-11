@@ -13,8 +13,8 @@
 #include <fcppt/text.hpp>
 #include <fcppt/exception.hpp>
 #include <ostream>
-#include <cstdlib>
 #include <iterator>
+#include <cstdlib>
 
 int main()
 try
@@ -29,10 +29,11 @@ try
 
 	// Immediately change the value
 	tree.value(
-		tree.value()+FCPPT_TEXT(" world"));
+		tree.value()+FCPPT_TEXT(" world")
+	);
 
 	// The tree is empty since it has no children
-	fcppt::io::cout << FCPPT_TEXT("Is the tree empty? ") << tree.empty() << FCPPT_TEXT("\n");
+	fcppt::io::cout << FCPPT_TEXT("Is the tree empty? ") << tree.empty() << FCPPT_TEXT('\n');
 
 	{
 		// Adding two items via an auto_ptr and passing ownership
@@ -67,24 +68,25 @@ try
 	);
 
 	// Now the tree isn't empty anymore
-	fcppt::io::cout << FCPPT_TEXT("Is the tree empty? ") << tree.empty() << FCPPT_TEXT("\n");
+	fcppt::io::cout << FCPPT_TEXT("Is the tree empty? ") << tree.empty() << FCPPT_TEXT('\n');
 	// Outputs 3
-	fcppt::io::cout << FCPPT_TEXT("How many children does the tree have: ") << tree.size() << FCPPT_TEXT("\n");
+	fcppt::io::cout << FCPPT_TEXT("How many children does the tree have: ") << tree.size() << FCPPT_TEXT('\n');
 	// Outputs: hello world
-	fcppt::io::cout << FCPPT_TEXT("The tree value is: ") << tree.value() << FCPPT_TEXT("\n");
+	fcppt::io::cout << FCPPT_TEXT("The tree value is: ") << tree.value() << FCPPT_TEXT('\n');
 
 	// Output the first level of the tree below the root.
 	// Note that iterator::value_type is string_tree.
 	for (string_tree::const_iterator i = tree.begin(); i != tree.end(); ++i)
-		fcppt::io::cout << i->value() << "\n";
+		fcppt::io::cout << i->value() << FCPPT_TEXT('\n');
 	
 	string_tree &first_child = tree.front();
 
-	fcppt::io::cout << FCPPT_TEXT("First child has a parent: ") << first_child.has_parent() << FCPPT_TEXT("\n");
+	fcppt::io::cout << FCPPT_TEXT("First child has a parent: ") << first_child.has_parent() << FCPPT_TEXT('\n');
+
 	fcppt::io::cout 
 		<< FCPPT_TEXT("First child's position in the parent's child list: ") 
 		<< std::distance(first_child.parent().begin(),first_child.child_position())
-		<< FCPPT_TEXT("\n");
+		<< FCPPT_TEXT('\n');
 }
 catch(
 	fcppt::exception const &e
