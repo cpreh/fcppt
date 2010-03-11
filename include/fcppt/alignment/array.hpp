@@ -20,8 +20,11 @@ namespace fcppt
 namespace alignment
 {
 
-/// Creates a nested typedef 'type' to an std::tr1::array<T, Size> with alignment Alignment
-/** This only supports alignments that are a power of 2, starting by 1 and up to FCPPT_ALIGNMENT_MAXIMUM
+/**
+ * @class array array.hpp "fcppt/alignment/array.hpp"
+ * @brief Creates a nested typedef 'type' to an std::tr1::array<T, Size> with alignment Alignment
+ *
+ * This only supports alignments that are a power of 2, starting by 1 and up to FCPPT_ALIGNMENT_MAXIMUM
 */
 template<
 	typename T,
