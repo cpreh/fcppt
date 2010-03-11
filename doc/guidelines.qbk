@@ -281,7 +281,7 @@ The use of the signed types is discouraged. Of course, sometimes you need to use
 
 [section struct vs. class]
 
-Basically, class is just syntactic sugar for struct (or vice versa), so which of those you use shoudln't really matter. However, Visual C++ checks if you use `struct` in a forward declaration and `class` in the "final" declaration. To circumvent this, we encourage everyone to just use `class` and not `struct`. This way, we can also add automatic forward declaration generators which alleviate tedious: `#ifndef FOO_BAR_BAZ_FWD namespace foobarbaz { class foo; } #endif` writing.
+Basically, class is just syntactic sugar for struct (or vice versa), so which of those you use shoudln't really matter. However, Visual C++ checks if you use `struct` in a forward declaration and `class` in the definition. To circumvent this, we encourage everyone to just use `class` and not `struct`. This way, we can also add automatic forward declaration generators which alleviate tedious: `#ifndef FOO_BAR_BAZ_FWD namespace foobarbaz { class foo; } #endif` writing.
 
 [endsect]
 

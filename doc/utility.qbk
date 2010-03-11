@@ -2,6 +2,25 @@
 
 [section safe_bool]
 
+Often you might want to add `operator !` to a class to test if it is not set.
+Examples are boost::shared_ptr, std::auto_ptr and so on. But you may also want
+to test the opposite and using `!!` for that isn't too appealing.
+
+[import ../examples/safe_bool.cpp]
+
+[safebool_usage]
+
+So how can this be done? The problem is that there is no operator that can
+be overloaded directly to provide this kind of behaviour. But it is possible
+to specify conversion operators that are considered when the expression should
+be converted to bool.
+`operator bool` could be used, but then the class can be converted into almost
+anything that can be converted from a bool, so we don't want that.
+fcppt implements a macro to safely implement the "bool conversion idiom".
+The class has to use the macro FCPPT_SAFE_BOOL and implement `bool boolean_test() const`.
+
+[safebool_example]
+
 [endsect]
 
 [section Assertions]
