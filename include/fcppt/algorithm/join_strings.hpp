@@ -16,16 +16,17 @@ namespace algorithm
 {
 
 /// Adds a range of strings delimited by delim
-template<
+template
+<
 	typename Range
 >
-string const
+typename Range::value_type const
 join_strings(
 	Range const &range,
-	string const &delim
+	typename Range::value_type const &delim
 )
 {
-	string s;
+	typename Range::value_type s;
 
 	if(
 		range.empty()
@@ -33,7 +34,7 @@ join_strings(
 		return s;
 	
 	BOOST_FOREACH(
-		string const &n,
+		typename Range::value_type const &n,
 		range
 	)
 		s += n + delim;
