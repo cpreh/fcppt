@@ -27,7 +27,7 @@
   <xsl:param name="boost.include.libraries" select="''"/>
 
   <!-- Whether to rewrite relative URL's to point to the website -->
-  <xsl:param name="boost.url.prefix" select="'file://@CMAKE_INSTALL_PREFIX@/include/fick/dich'"/>
+  <xsl:param name="boost.url.prefix" select="'file://@CMAKE_INSTALL_PREFIX@/include'"/>
 
   <!-- A space-separated list of xml elements in the input file for which
        whitespace should be preserved -->
@@ -39,7 +39,7 @@
       <xsl:value-of select="$boost.url.prefix"/>
       <xsl:text>/</xsl:text>
     </xsl:if>
-    <xsl:value-of select="$boost.root"/>
+<!--    <xsl:value-of select="$boost.root"/> -->
   </xsl:param>
 
   <!-- The prefix for 'boost:' links. -->
