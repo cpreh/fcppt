@@ -53,12 +53,14 @@ private:
 		boost::is_const<
 			Tree
 		>,
-		typename Tree::const_iterator,
-		typename Tree::iterator
+		typename Tree::const_reverse_iterator,
+		typename Tree::reverse_iterator
 	>::type tree_iterator;
 
+	typedef typename tree_iterator::pointer tree_pointer; 
+
 	typedef std::stack<
-		Tree *
+		tree_pointer	
 	> stack_type;
 
 	typedef typename Tree::child_list child_list;
@@ -76,7 +78,7 @@ public:
 	{
 	public:
 		explicit iterator(
-			Tree *const current
+			tree_pointer const current
 		)
 		:
 			current(current),
@@ -97,12 +99,16 @@ public:
 			if(!current->empty())
 			{
 				for(
-					tree_iterator it(
-						boost::next(
-							current->begin()
-						)
-					);
-					it != current->end();
+					tree_iterator
+						it(
+							current->rbegin()
+						),
+						end(
+							boost::prior(
+								current->rend()
+							)
+						);
+					it != end;
 					++it
 				)
 					positions.push(
@@ -138,7 +144,7 @@ public:
 			return current == s.current;
 		}
 
-		Tree *current;
+		tree_pointer current;
 
 		stack_type positions;
 	};

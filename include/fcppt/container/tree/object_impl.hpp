@@ -360,7 +360,7 @@ template<
 typename fcppt::container::tree::object<T>::reverse_iterator
 fcppt::container::tree::object<T>::rend()
 {
-	return children.rend();
+	return children().rend();
 }
 
 template<
