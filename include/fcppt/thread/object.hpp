@@ -7,9 +7,11 @@
 #ifndef FCPPT_THREAD_OBJECT_HPP_INCLUDED
 #define FCPPT_THREAD_OBJECT_HPP_INCLUDED
 
-#include <fcppt/thread/task.hpp>
 #include <fcppt/thread/id.hpp>
+#include <fcppt/thread/join_duration.hpp>
+#include <fcppt/thread/join_time_point.hpp>
 #include <fcppt/thread/native_handle.hpp>
+#include <fcppt/thread/task.hpp>
 #include <fcppt/symbol.hpp>
 #include <fcppt/noncopyable.hpp>
 #include <boost/thread/thread.hpp>
@@ -41,10 +43,11 @@ public:
 	FCPPT_SYMBOL void
 	join();
 
-	//    bool timed_join(const system_time& wait_until);
-
-//    template<typename TimeDuration>
-//    bool timed_join(TimeDuration const& rel_time);
+	FCPPT_SYMBOL
+	bool
+	try_join(
+		join_duration const &
+	);
 
  	FCPPT_SYMBOL void
 	detach();
@@ -57,8 +60,6 @@ public:
 
 	FCPPT_SYMBOL bool
 	interruption_requested() const;
-
-//static void sleep(const system_time& xt);
 
 	/// asserts that the thread has been joined
 	/** Will call std::terminate() if joinable() == true.

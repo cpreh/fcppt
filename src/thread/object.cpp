@@ -5,6 +5,7 @@
 
 
 #include <fcppt/thread/object.hpp>
+#include <fcppt/chrono/convert/to_boost_duration.hpp>
 #include <exception>
 
 fcppt::thread::object::object(
@@ -43,6 +44,19 @@ void
 fcppt::thread::object::join()
 {
 	thread_.join();
+}
+
+bool
+fcppt::thread::object::try_join(
+	join_duration const &duration_
+)
+{
+	return
+		thread_.timed_join(
+			chrono::convert::to_boost_duration(
+				duration_
+			)
+		);
 }
 
 void
