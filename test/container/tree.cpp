@@ -78,19 +78,27 @@ BOOST_AUTO_TEST_CASE(container_tree_swap)
 BOOST_AUTO_TEST_CASE(containter_tree_pre_order)
 {
 	ui_tree tree(
-		10
+		1
 	);
 
 	tree.push_back(
-		20
+		2
 	);
 
 	tree.front().push_back(
-		30
+		3
+	);
+
+	tree.front().push_back(
+		4
 	);
 
 	tree.push_back(
-		40
+		5
+	);
+
+	tree.push_back(
+		6
 	);
 
 	typedef fcppt::container::tree::pre_order<
@@ -106,25 +114,37 @@ BOOST_AUTO_TEST_CASE(containter_tree_pre_order)
 	);
 
 	BOOST_REQUIRE(
-		it->value() == 10
+		it->value() == 1
 	);
 
 	++it;
 
 	BOOST_REQUIRE(
-		it->value() == 20
+		it->value() == 2
 	);
 
 	++it;
 
 	BOOST_REQUIRE(
-		it->value() == 30
+		it->value() == 3
 	);
 
 	++it;
 
 	BOOST_REQUIRE(
-		it->value() == 40
+		it->value() == 4
+	);
+
+	++it;
+
+	BOOST_REQUIRE(
+		it->value() == 5
+	);
+
+	++it;
+
+	BOOST_REQUIRE(
+		it->value() == 6
 	);
 
 	++it;
