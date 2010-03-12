@@ -58,7 +58,7 @@ private:
 	>::type tree_iterator;
 
 	typedef std::stack<
-		tree_iterator
+		Tree *
 	> stack_type;
 
 	typedef typename Tree::child_list child_list;
@@ -75,12 +75,10 @@ public:
 		public iterator_base
 	{
 	public:
-		iterator(
-			tree_iterator const &it,
+		explicit iterator(
 			Tree *const current
 		)
 		:
-			it(it),
 			current(current),
 			positions()
 		{}
@@ -91,51 +89,45 @@ public:
 		typedef typename iterator_base::difference_type difference_type;
 		typedef typename iterator_base::iterator_category iterator_category;
 
-		tree_iterator const
-		internal() const
-		{
-			return it;
-		}
-
 		friend class boost::iterator_core_access;
 	private:
 		void
 		increment()
 		{
-			if(!it->empty())
+			if(!current->empty())
 			{
-				positions.push(it);
-				current = &*it;
-				it = it->begin();
+				for(
+					tree_iterator it(
+						boost::next(
+							current->begin()
+						)
+					);
+					it != current->end();
+					++it
+				)
+					positions.push(
+						&*it
+					);
+
+				current = &current->front();
 			}
+			else if(
+				positions.empty()
+			)
+				current = 0;
 			else
 			{
-				while(
-					!positions.empty()
-							)
-				{
-					it = positions.top();
 
-					current = it->parent_ptr();
+				current = positions.top();
 
-					positions.pop();
-
-					if(
-						boost::next(
-							it
-						)
-						!= it->parent().end()
-					)
-						break;
-				}
-				++it;
+				positions.pop();
 			}
 		}
 
 		reference
 		dereference() const
 		{
-			return *it;
+			return *current;
 		}
 
 		bool
@@ -143,13 +135,11 @@ public:
 			iterator const &s
 		) const
 		{
-			return
-				current == s.current
-				&& it == s.it;
+			return current == s.current;
 		}
 
-		tree_iterator it;
 		Tree *current;
+
 		stack_type positions;
 	};
 
@@ -157,7 +147,6 @@ public:
 	begin() const
 	{
 		return iterator(
-			tree_.begin(),
 			&tree_
 		);
 	}
@@ -165,8 +154,7 @@ public:
 	end() const
 	{
 		return iterator(
-			tree_.end(),
-			&tree_
+			0
 		);
 	}
 private:

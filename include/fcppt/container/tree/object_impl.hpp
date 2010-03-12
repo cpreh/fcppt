@@ -306,7 +306,7 @@ template<
 typename fcppt::container::tree::object<T>::const_reference
 fcppt::container::tree::object<T>::front() const
 {
-	return children.front();
+	return children().front();
 }
 
 template<
