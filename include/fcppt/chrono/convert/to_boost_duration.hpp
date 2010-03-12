@@ -18,6 +18,10 @@ namespace chrono
 namespace convert
 {
 
+/// Converts durations to boost::date_time
+/**
+ * @remark The duration to convert must have period::num==1!
+*/
 template<
 	typename Rep,
 	typename Period
