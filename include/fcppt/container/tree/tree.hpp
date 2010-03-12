@@ -7,8 +7,8 @@
 #ifndef FCPPT_CONTAINER_TREE_TREE_HPP_INCLUDED
 #define FCPPT_CONTAINER_TREE_TREE_HPP_INCLUDED
 
-#include <fcppt/container/tree/in_order.hpp>
 #include <fcppt/container/tree/object_decl.hpp>
 #include <fcppt/container/tree/object_impl.hpp>
+#include <fcppt/container/tree/pre_order.hpp>
 
 #endif

@@ -12,7 +12,7 @@
 #include <fcppt/log/location.hpp>
 #include <fcppt/log/no_such_location.hpp>
 #include <fcppt/container/tree/object_impl.hpp>
-#include <fcppt/container/tree/in_order.hpp>
+#include <fcppt/container/tree/pre_order.hpp>
 #include <fcppt/variant/object_impl.hpp>
 #include <fcppt/function/object.hpp>
 #include <fcppt/text.hpp>
@@ -197,7 +197,7 @@ fcppt::log::context::apply(
 		);
 
 	typedef
-	fcppt::container::tree::in_order<
+	fcppt::container::tree::pre_order<
 		detail::context_tree
 	> traversal_type;
 

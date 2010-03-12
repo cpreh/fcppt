@@ -5,7 +5,7 @@
 
 
 #include <fcppt/container/tree/object.hpp>
-#include <fcppt/container/tree/in_order.hpp>
+#include <fcppt/container/tree/pre_order.hpp>
 #include <fcppt/io/cout.hpp>
 #include <fcppt/io/cerr.hpp>
 #include <fcppt/make_auto_ptr.hpp>
@@ -44,7 +44,7 @@ try
 	);
 
 	typedef
-	fcppt::container::tree::in_order<string_tree const> 
+	fcppt::container::tree::pre_order<string_tree const> 
 	traversal_type;
 
 	traversal_type const trav(

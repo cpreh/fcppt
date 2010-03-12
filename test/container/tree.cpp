@@ -75,7 +75,7 @@ BOOST_AUTO_TEST_CASE(container_tree_swap)
 	);
 }
 
-BOOST_AUTO_TEST_CASE(containter_tree_in_order)
+BOOST_AUTO_TEST_CASE(containter_tree_pre_order)
 {
 	ui_tree tree(
 		10
@@ -93,7 +93,7 @@ BOOST_AUTO_TEST_CASE(containter_tree_in_order)
 		40
 	);
 
-	typedef fcppt::container::tree::in_order<
+	typedef fcppt::container::tree::pre_order<
 		ui_tree const
 	> traversal_type;
 

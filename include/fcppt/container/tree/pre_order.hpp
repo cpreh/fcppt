@@ -4,8 +4,8 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_CONTAINER_TREE_IN_ORDER_HPP_INCLUDED
-#define FCPPT_CONTAINER_TREE_IN_ORDER_HPP_INCLUDED
+#ifndef FCPPT_CONTAINER_TREE_PRE_ORDER_HPP_INCLUDED
+#define FCPPT_CONTAINER_TREE_PRE_ORDER_HPP_INCLUDED
 
 #include <fcppt/container/tree/is_object.hpp>
 #include <fcppt/assert.hpp>
@@ -28,7 +28,7 @@ namespace tree
 template<
 	typename Tree
 >
-class in_order
+class pre_order
 {
 	BOOST_STATIC_ASSERT(
 		is_object<
@@ -38,9 +38,9 @@ class in_order
 		>::value
 	);
 
-	FCPPT_NONCOPYABLE(in_order)
+	FCPPT_NONCOPYABLE(pre_order)
 public:
-	explicit in_order(
+	explicit pre_order(
 		Tree &tree_
 	)
 	:

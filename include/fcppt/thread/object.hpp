@@ -9,7 +9,6 @@
 
 #include <fcppt/thread/id.hpp>
 #include <fcppt/thread/join_duration.hpp>
-#include <fcppt/thread/join_time_point.hpp>
 #include <fcppt/thread/native_handle.hpp>
 #include <fcppt/thread/task.hpp>
 #include <fcppt/symbol.hpp>
