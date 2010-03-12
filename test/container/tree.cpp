@@ -106,6 +106,12 @@ BOOST_AUTO_TEST_CASE(containter_tree_pre_order)
 	);
 
 	BOOST_REQUIRE(
+		it->value() == 10
+	);
+
+	++it;
+
+	BOOST_REQUIRE(
 		it->value() == 20
 	);
 
