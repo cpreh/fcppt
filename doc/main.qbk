@@ -33,26 +33,40 @@ and even implements some replacements for a few boost components.
 
 So what is provided by fcppt?
 
-* algorithm
-Some general utility algorithms like append, copy_n, find_if_exn, and so on.
+[variablelist
 
-* alignment
+[[algorithm]
+[
+Some general utility algorithms like append, copy_n, find_if_exn, and so on.
+]]
+
+[[alignment]
+[
 Compiler specific alignment macros. Also has alignment::array that can be used
 to implement raw buffers for placement new.
+]]
 
-* assign
+[[assign]
+[
 Container assignment utilities that can be used to directly initialize a container.
+]]
 
-* char_type abstraction
+[[char_type abstraction]
+[
 fcppt's char_type depends on the platform. It is char for POSIX systems
 and wchar_t for VC++. This means that fcppt has its own functions and typedefs
 for anything that needs a char or a string.
+]]
 
-* chrono
+[[chrono]
+[
 fcppt provides a full implementation of C++0x's chrono.
+]]
 
-* container
+[[container]
+[
 Some additional containers.
+
  * bitfield - A wrapper around a bitfield using an enum.
  * field - A wrapper around a two dimensional container.
  * linear_set/linear_map - set and map for very small numbers of elements.
@@ -60,29 +74,47 @@ Some additional containers.
  * raw_vector - A container like std::vector, but only for PODs. It provides the option not to initialize its elements.
  * tree - A generic node class. nodes can be joined to form a tree.
 
-* logger
+]]
+
+[[logger]
+[
 Hierarchical logger clases with log levels, formatters and dynamic log manipulation.
+]]
 
-* mpl
+[[mpl]
+[
 Some mpl metafunctions like a better for_each, implication, partial_sums, and so on.
+]]
 
-* optional
+[[optional]
+[
 The optional class also doesn't use an undefined "union trick".
+]]
 
-* smart pointers
+[[smart pointers]
+[
 Wrapper around shared_ptr, scoped_ptr and weak_ptr that use a deleter as template argument.
+]]
 
-* random
+[[random]
+[
 Helper classes for tr1::random.
+]]
 
-* tr1
+[[tr1]
+[
 Include wrappers for tr1 headers (VC++ uses <header> but gcc uses <tr1/header>).
+]]
 
-* variant
+[[variant]
+[
 fcppt's variant class is similar to the variant provided by boost.
 The differences are that it doesn't use an undefined "union trick",
 it can be empty (which means that the first type doesn't have to be default construbtible),
 its types are implemented with an mpl sequence directly and it offers up to ternary visitation.
+]]
+
+]
 
 [endsect]
 
