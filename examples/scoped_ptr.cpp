@@ -12,22 +12,22 @@
 int main()
 {
 	typedef fcppt::scoped_ptr<
+		int
+	> int_ptr;
+
+	int_ptr p1(
+		new int(42)
+	);
+
+	typedef fcppt::scoped_ptr<
 		void,
 		fcppt::c_deleter
 	> void_c_ptr;
 
-	void_c_ptr p(
+	void_c_ptr p2(
 		std::malloc(
 			100
 		)
-	);
-
-	typedef fcppt::scoped_ptr<
-		int
-	> int_ptr;
-
-	int_ptr p2(
-		new int(42)
 	);
 }
 //]
