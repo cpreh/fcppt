@@ -36,4 +36,17 @@ but can be done with `static_cast`.
 
 [endsect]
 
+[section truncation_check_cast]
+
+`truncation_check_cast` checks if a narrowing cast
+truncates the value. It converts the casted value back
+to its original type and checks if they are still equal.
+If the cast fails, `bad_truncation_check_cast` is thrown.
+
+[import ../examples/truncation_check_cast.cpp]
+
+[truncation_check_cast]
+
+[endsect]
+
 [endsect]

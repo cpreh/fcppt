@@ -39,6 +39,7 @@ ADD_FCPPT_EXAMPLE(strongtypedef)
 ADD_FCPPT_EXAMPLE(stub)
 ADD_FCPPT_EXAMPLE(tree_traversal)
 ADD_FCPPT_EXAMPLE(tree_simple)
+ADD_FCPPT_EXAMPLE(truncation_check_cast)
 ADD_FCPPT_EXAMPLE(variant)
 ADD_FCPPT_EXAMPLE(weak_ptr)
 
