@@ -4,7 +4,7 @@
 
 Smart pointers are wrappers around pointers that handle ownership.
 They are well known in C++. Boost already provides a set of smart pointer
-classes like `boost::shared_ptr` and `boost::scoped_ptr`.
+classes like `boost::shared_ptr`, `boost::weak_ptr` and `boost::scoped_ptr`.
 fcppt does so as well.
 
 [endsect]
@@ -63,6 +63,20 @@ Like `boost::shared_ptr` fcppt provides cast wrappers for `shared_ptr`.
 [import ../examples/scoped_ptr.cpp]
 
 [scopedptr]
+
+[endsect]
+
+[section weak_ptr]
+
+`fcppt::weak_ptr` can be used to refer to an `fcppt::shared_ptr`
+without taking ownership. This can be used to know whether a
+`shared_ptr` is still alive or not.
+In order to be consistent with `fcppt::shared_ptr`,
+`fcppt::weak_ptr` uses a custom deleter as a template template parameter as well.
+
+[import ../examples/weak_ptr.cpp]
+
+[weakptr]
 
 [endsect]
 

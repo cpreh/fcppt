@@ -27,6 +27,11 @@ public:
 		T
 	> impl_type;
 
+	typedef fcppt::shared_ptr<
+		T,
+		Deleter
+	> shared_ptr;
+
 	typedef T element_type;
 
 	weak_ptr();
@@ -42,10 +47,10 @@ public:
 		typename Y
 	>
 	weak_ptr(
-		shared_ptr<Y, Deleter> const &
+		fcppt::shared_ptr<Y, Deleter> const &
 	);
 
-	shared_ptr<T, Deleter> const
+	shared_ptr const
 	lock() const;
 
 	long

@@ -46,7 +46,7 @@ template<
 	typename Y
 >
 fcppt::weak_ptr<T, Deleter>::weak_ptr(
-	shared_ptr<Y, Deleter> const &r
+	fcppt::shared_ptr<Y, Deleter> const &r
 )
 :
 	impl(r.boost_ptr())
@@ -58,10 +58,10 @@ template<
 		typename
 	> class Deleter
 >
-fcppt::shared_ptr<T, Deleter> const
+typename fcppt::weak_ptr<T, Deleter>::shared_ptr const
 fcppt::weak_ptr<T, Deleter>::lock() const
 {
-       	return shared_ptr<T, Deleter>(
+       	return shared_ptr(
 		impl.lock()
 	);
 }
