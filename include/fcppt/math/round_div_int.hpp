@@ -17,7 +17,7 @@ namespace math
 
 /// Rounds the division @a l / @a r
 /**
- * @param T must be unsigned
+ * @tparam T must be unsigned
 */
 template<
 	typename T

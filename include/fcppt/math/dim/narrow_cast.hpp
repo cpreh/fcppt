@@ -19,7 +19,7 @@ namespace dim
 
 /// Converts a dim into a dim with fewer elements
 /**
- * @param Dest must be a dim type with fewer elements.
+ * @tparam Dest must be a dim type with fewer elements.
 */
 template<
 	typename Dest,

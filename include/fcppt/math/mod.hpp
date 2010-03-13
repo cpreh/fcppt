@@ -14,7 +14,7 @@ namespace fcppt
 namespace math
 {
 
-/// Calculates @a mod @b
+/// Calculates @a a mod @a b
 /**
  * It uses std::fmod for floating point types.
  * Otherwise % is used.

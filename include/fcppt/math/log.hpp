@@ -17,7 +17,7 @@ namespace math
 
 /// Calculates \f$\log_2(x)\f$ for unsigned types (using a loop)
 /**
- * @param T must be unsigned
+ * @tparam T must be unsigned
  * @return - If x is 0 the result is undefined
 */
 template<

@@ -31,7 +31,7 @@ namespace mpl
 template<
 	typename Sequence,
 	typename Element,
-	typename Number
+	typename Number ///< BLABLABLA
 >
 struct find_nth
 :

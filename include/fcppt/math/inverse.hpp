@@ -17,7 +17,7 @@ namespace math
 
 /// Calculates the inverse to a multiplication
 /**
- * @param T must not be integral
+ * @tparam T must not be integral
  * Equal to 1 / @a t
 */
 template<
