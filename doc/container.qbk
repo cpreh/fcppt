@@ -113,7 +113,16 @@ The standard library offers the classes `std::map<T>` and `std::set<T>`. The ele
 
 [section raw_vector]
 
-TODO
+Unlike `std::vector`, `fcppt::container::raw_vector` can only be used with POD types and can leave its elements uninitialized.
+Consider the following: You want to read a number of bytes from an external source but you know that the
+function doesn't care if you have initialized them before reading.
+
+[import ../examples/raw_vector.cpp]
+
+[rawvector]
+
+Apart from the special constructor that leaves the elements uninitialized and a few special functions,
+`fcppt::container::raw_vector` is like `std::vector`.
 
 [endsect]
 
