@@ -62,6 +62,25 @@ make_fcppt_documentation(noncopyable nonassignable.hpp noncopyable.hpp)
 make_fcppt_documentation(log log)
 make_fcppt_documentation(optional optional.hpp optional_decl.hpp optional_impl.hpp optional_fwd.hpp)
 make_fcppt_documentation(signal signal)
+make_fcppt_documentation(
+	smartpointers
+	const_pointer_cast.hpp
+	dynamic_pointer_cast.hpp
+	make_auto_ptr.hpp
+	make_shared_ptr.hpp
+	polymorphic_pointer_cast.hpp
+	scoped_ptr_fwd.hpp
+	scoped_ptr_decl.hpp
+	scoped_ptr_impl.hpp
+	scoped_ptr.hpp
+	shared_ptr_fwd.hpp
+	shared_ptr_decl.hpp
+	shared_ptr_impl.hpp
+	shared_ptr.hpp
+	static_pointer_cast.hpp
+	weak_ptr_fwd.hpp
+	weak_ptr.hpp
+)
 make_fcppt_documentation(variant variant)
 
 ADD_CUSTOM_COMMAND(

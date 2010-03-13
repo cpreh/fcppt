@@ -25,12 +25,11 @@ The tree uses a `boost::ptr_list` to store its children, so the iterator guarant
 This will output 
 
 ``
-qux
+hello
 foo
+qux
 bar
 baz
-qux
-hello
 ``
 
 [endsect]

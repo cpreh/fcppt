@@ -11,6 +11,9 @@
 #include <fcppt/auto_ptr.hpp>
 #include <fcppt/noncopyable.hpp>
 #include <fcppt/safe_bool.hpp>
+#include <boost/mpl/if.hpp>
+#include <boost/type_traits/add_reference.hpp>
+#include <boost/type_traits/is_same.hpp>
 
 namespace fcppt
 {
@@ -25,8 +28,21 @@ class scoped_ptr
 {
 	FCPPT_NONCOPYABLE(scoped_ptr)
 	FCPPT_SAFE_BOOL(scoped_ptr)
+private:
+	struct no_ref
+	{};
 public:
-	typedef T &reference;
+	typedef typename boost::mpl::if_<
+		boost::is_same<
+			T,
+			void
+		>,
+		no_ref,
+		typename boost::add_reference<
+			T
+		>::type
+	>::type reference;
+
 	typedef T *pointer;
 
 	explicit scoped_ptr(

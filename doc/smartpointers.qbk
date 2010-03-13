@@ -1,0 +1,85 @@
+[section Smart Pointers]
+
+[section Introduction]
+
+Smart pointers are wrappers around pointers that handle ownership.
+They are well known in C++. Boost already provides a set of smart pointer
+classes like `boost::shared_ptr`, `boost::weak_ptr` and `boost::scoped_ptr`.
+fcppt does so as well.
+
+[endsect]
+
+[section shared_ptr]
+
+`fcppt::shared_ptr` is a wrapper around
+`boost::shared_ptr` that takes its deleter as a template template parameter.
+This can save you some typing and is less error prone than to pass the
+deleter in every constructor call. It also has drawbacks because the deleter
+has to be known at compile time.
+
+[section Example]
+
+Here is an example of a factory returning `shared_ptr`.
+
+[import ../examples/shared_ptr.cpp]
+
+[sharedptr_normal]
+
+[endsect]
+
+[section Deleter]
+
+`shared_ptr` can use a custom deleter.
+
+[sharedptr_deleter]
+
+[endsect]
+
+[section Avoiding Leaks]
+It is important not to create possible leaks, even with shared_ptr. 
+
+[sharedptr_wrong]
+
+The correct solution is to use another function that is evaluated first.
+
+[sharedptr_make]
+
+[endsect]
+
+[section Casts]
+
+Like `boost::shared_ptr` fcppt provides cast wrappers for `shared_ptr`.
+
+[sharedptr_cast]
+
+[endsect]
+
+[endsect]
+
+[section scoped_ptr]
+
+`fcppt::scoped_ptr` is a new class that takes its deleter as a template template parameter as well.
+
+[import ../examples/scoped_ptr.cpp]
+
+[scopedptr]
+
+[endsect]
+
+[section weak_ptr]
+
+`fcppt::weak_ptr` can be used to refer to an `fcppt::shared_ptr`
+without taking ownership. This can be used to know whether a
+`shared_ptr` is still alive or not.
+In order to be consistent with `fcppt::shared_ptr`,
+`fcppt::weak_ptr` uses a custom deleter as a template template parameter as well.
+
+[import ../examples/weak_ptr.cpp]
+
+[weakptr]
+
+[endsect]
+
+[xinclude doxygen_smartpointers.xml]
+
+[endsect]
