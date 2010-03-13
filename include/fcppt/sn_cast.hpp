@@ -18,6 +18,13 @@
 namespace fcppt
 {
 
+/// safe_numeric_cast is a safer static_cast that forbids some lossy conversions
+/**
+ * The size of the destination type must be at least as big as the source type's size.
+ * Conversions from integral types to floating point types are allowed.
+ * Conversions from floating point types to floating point types and
+ * conversions from integral types to integral types are also allowed.
+*/
 template<
 	typename T,
 	typename U
