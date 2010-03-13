@@ -33,7 +33,8 @@ int main()
 
 	// Connect function "callback" to signal
 	fcppt::signal::scoped_connection connection(
-		s.connect(&callback));
+		s.connect(&callback)
+	);
 	
 	// Call the signal, will output: "callback" called with 3
 	s(3);
@@ -45,7 +46,9 @@ int main()
 
 	fcppt::signal::scoped_connection connection2(
 		s2.connect(
-			&other_callback));
+			&other_callback
+		)
+	);
 	
 	foo f;
 	// Note the use of std::tr1::ref because the signal gets a non-const reference
