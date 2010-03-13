@@ -88,4 +88,17 @@ int main()
 
 [endsect]
 
+[section for_each_enumerator]
+
+Sometimes it is desired to do a loop over each enumerator of an enum.
+The ugly part is that you have to use an integral type
+and cast it back to an enumerator in each iteration.
+`FCPPT_FOREACH_ENUMERATOR` does just that but wraps the the loop inside a macro.
+
+[import ../examples/foreach_enumerator.cpp]
+
+[foreach_enumerator]
+
+[endsect]
+
 [endsect]

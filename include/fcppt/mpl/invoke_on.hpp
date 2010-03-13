@@ -20,7 +20,7 @@ namespace mpl
 
 /// Apply the function @a fun on the nth element @a index in @a Sequence
 /**
- * @param Sequence An MPL sequence
+ * @tparam Sequence An MPL sequence
  * @param index A runtime index of the element to invoke the functor on
  * @param fun The functor
  * @return The result of @a fun<T>() if T is the element of @a Sequence at @a index

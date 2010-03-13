@@ -9,6 +9,7 @@
 
 #include <fcppt/math/detail/array_adapter.hpp>
 #include <fcppt/tr1/functional.hpp>
+#include <fcppt/algorithm/compare_with.hpp>
 #include <fcppt/math/compare.hpp>
 #include <fcppt/assert.hpp>
 #include <boost/next_prior.hpp>
@@ -147,11 +148,9 @@ FCPPT_MATH_DETAIL_DEF_PRE ::operator==(\
 ) const\
 {\
 	return \
-		size() == other_.size() \
-		&& std::equal(\
-			begin(),\
-			end(),\
-			other_.begin(),\
+		algorithm::compare_with(\
+			*this,\
+			other_,\
 			std::tr1::bind(\
 				compare<\
 					value_type\

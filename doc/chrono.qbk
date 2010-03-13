@@ -2,30 +2,38 @@
 
 [section Introduction]
 
-Chrono is an implementation of future's std::chrono.
+Chrono is an implementation of future's `std::chrono`.
 It roughly provides three different families of classes/templates:
 
-* duration
-fcppt::chrono::duration is a template class that represents a span in time
+[variablelist
+[[duration]
+[
+`fcppt::chrono::duration` is a template class that represents a span in time
 between two time_points.
+]]
 
-* time_point
-fcppt::chrono::time_point is a template class that represents a given point time.
-For example two time_points can be substracted to yield a duration.
+[[time_point]
+[
+`fcppt::chrono::time_point` is a template class that represents a given point time.
+For example two time_points can be subtracted to yield a duration.
 Also a time_point has the time_since_epoch() function that returns a duration
 that represents a time span starting at the absolute offset.
+]]
 
-* clocks
-fcppt::chrono::system_clock, fcppt::chrono::monotonic_clock and fcppt::chrono::high_resolution_clock
+[[clocks]
+[
+`fcppt::chrono::system_clock`, `fcppt::chrono::monotonic_clock` and `fcppt::chrono::high_resolution_clock`
 are the three clock classes provided by fcppt. They all have a static function called now() that
 returns the current point in time. All of the three serve different purposes which are explained
 in more detail in the reference section.
+]]
+]
 
 [endsect]
 
 [section system_clock]
 
-fcppt::chrono::system_clock can be used to obtain the current system time.
+`fcppt::chrono::system_clock` can be used to obtain the current system time.
 [import ../examples/chrono/system_clock.cpp]
 [chronosystemclock]
 

@@ -34,7 +34,7 @@ int main()
 		clock::now()
 	);
 
-	// two time points can be substracted to obtain a duration
+	// two time points can be subtracted to obtain a duration
 	fcppt::io::cout
 		<< FCPPT_TEXT("The first output took ")
 		<< time2 - time1

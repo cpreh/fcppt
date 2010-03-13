@@ -20,7 +20,7 @@ namespace chrono
 /// A duration is a time span.
 /** The template parameter Rep dictates the type that the duration will use to represent the values.
  * The template parameter Period dictates how this value has to be interpreted.
- * @See fcppt::ratio.
+ * @see fcppt::ratio.
  * Durations can be obtained from a time_point using the time_point::time_since_epoch() function.
 */
 template<

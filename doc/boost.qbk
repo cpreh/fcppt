@@ -95,7 +95,7 @@ There are, however, several other differences.
 Like `boost::variant` fcppt provides a wrapper for a recursive variant.
 If a variant can (indirectly) hold itself again, a problem arises.
 The variant class has to know all of its members' sizes. But until the variant
-is completely declared, the sizes of itself cannot be known.
+is completely declared, the size of itself cannot be known.
 To remedy this situation, you have to wrap a variant inside a struct,
 which in turn has to be wrapped inside `fcppt::variant::recursive`.
 Almost all algorithms on a variant will behave as if the `recursive` struct isn't there.

@@ -26,9 +26,9 @@ namespace vector
 
 /// Calculates atan2(@a v.y(), @a v.x())
 /**
- * @param T must be a floating point type
- * @param N must be two (only two dimensional vectors are allowed)
- * @return optional<T>: If @v is not null, the calculated atan2 will be returned,
+ * @tparam T must be a floating point type
+ * @tparam N must be two (only two dimensional vectors are allowed)
+ * @return optional<T>: If @a v is not null, the calculated atan2 will be returned,
  *         otherwise the optional will be empty
 */
 template<

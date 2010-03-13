@@ -1,0 +1,52 @@
+[section Casts]
+
+fcppt provides a number of cast utility functions.
+
+[section dynamic_cast]
+
+`fcppt::dynamic_cast_` is a wrapper around `dynamic_cast`
+that throws an `fcppt::bad_dynamic_cast` on failure,
+which provides more type information for the failed cast.
+
+[import ../examples/dynamic_cast.cpp]
+
+[dynamiccast]
+
+[endsect]
+
+[section TRY_DYNAMIC_CAST]
+
+`FCPPT_TRY_DYNAMIC_CAST` is a macro that can be used
+instead of writing an explicit if block to test whether
+a `dynamic_cast` succeeds.
+
+[trydynamiccast]
+
+[endsect]
+
+[section sn_cast]
+
+`sn_cast` stands for 'safe numeric cast'.
+It tries to rule out a lot of conversions that are unsafe
+but can be done with `static_cast`.
+
+[import ../examples/sn_cast.cpp]
+
+[sncast]
+
+[endsect]
+
+[section truncation_check_cast]
+
+`truncation_check_cast` checks if a narrowing cast
+truncates the value. It converts the casted value back
+to its original type and checks if they are still equal.
+If the cast fails, `bad_truncation_check_cast` is thrown.
+
+[import ../examples/truncation_check_cast.cpp]
+
+[truncation_check_cast]
+
+[endsect]
+
+[endsect]

@@ -26,7 +26,7 @@ namespace vector
 
 /// Calculates the angle between @a to and vector(1, 0)
 /**
- * @param N must be 2
+ * @tparam N must be 2
  * @return The angle if @a to is not the null vector, an empty optional otherwise
 */
 template<

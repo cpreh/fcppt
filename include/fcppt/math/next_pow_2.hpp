@@ -16,7 +16,7 @@ namespace math
 
 /// Calculates the next power of 2 for @a t
 /**
- * @param T must either be an unsigned type or a floating point type
+ * @tparam T must either be an unsigned type or a floating point type
  * For unsigned types it will use multiplication.
  * For signed types it will use multiplication as well plus some additional checks.
  * For floating point types std::pow, std::ceil and std::log will be used.

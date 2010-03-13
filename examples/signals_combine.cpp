@@ -40,16 +40,22 @@ int main()
 	fcppt::signal::connection_manager c;
 	// Pass the combiner here - can also be changed later
 	fcppt::signal::object<function> s(
-		&combiner);
+		&combiner
+	);
 
 	c.connect(
-		s.connect(&first_callback));
+		s.connect(&first_callback)
+	);
+
 	c.connect(
-		s.connect(&second_callback));
+		s.connect(&second_callback)
+	);
+
 	c.connect(
-		s.connect(&third_callback));
+		s.connect(&third_callback)
+	);
 
 	// Outputs (4*8)*15=480
-	std::cout << s() << "\n";
+	std::cout << s() << '\n';
 }
 //]

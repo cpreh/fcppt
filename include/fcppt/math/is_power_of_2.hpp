@@ -17,7 +17,7 @@ namespace math
 
 /// Checks if @a t is a power of two
 /**
- * @param T must be an unsigned integral type
+ * @tparam T must be an unsigned integral type
  * If you need to check whether a signed integral type is a power of two,
  * convert it to its unsigned counterpart before checking.
 */

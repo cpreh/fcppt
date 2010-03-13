@@ -14,7 +14,7 @@ namespace fcppt
 namespace algorithm
 {
 
-/// Checks if a given value matches @a pred inside the range [@a beg @end ]
+/// Checks if a given value matches @a pred inside the range [@a beg @a end ]
 /** Equivalent to find_if(beg, end, pred) != end
 */
 template<

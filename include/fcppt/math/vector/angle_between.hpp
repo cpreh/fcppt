@@ -26,7 +26,7 @@ namespace vector
 
 /// Calculates the relative angle between two vectors
 /**
- * @param Dest must be a floating point type
+ * @tparam Dest must be a floating point type
 */
 template<
 	typename Dest,

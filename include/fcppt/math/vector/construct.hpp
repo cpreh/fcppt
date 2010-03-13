@@ -21,7 +21,7 @@ namespace vector
 
 /// Constructs a vector with dimension @a N+1 from a vector with dimension @a N
 /**
- *  @param N must be a static dimension
+ * @tparam N must be a static dimension
 */
 template<
 	typename T,
