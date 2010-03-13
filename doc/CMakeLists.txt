@@ -49,7 +49,7 @@ MACRO(make_fcppt_documentation name)
 			${DOC_OUTPUT}/doxygen.xml)
 ENDMACRO(make_fcppt_documentation)
 
-make_fcppt_documentation(adapted filesystem error format.hpp io preprocessor/file.hpp text.hpp string.hpp )
+make_fcppt_documentation(adapted filesystem error format.hpp io preprocessor/file.hpp text.hpp string.hpp widen.hpp narrow.hpp)
 make_fcppt_documentation(algorithm algorithm)
 make_fcppt_documentation(alignment alignment)
 make_fcppt_documentation(assert assert.hpp assert_message.hpp)

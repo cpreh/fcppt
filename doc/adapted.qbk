@@ -38,6 +38,8 @@ To convert from and to an `fcppt::string`, the functions `fcppt::from_std_string
 
 [import ../examples/string_conversion.cpp]
 [string_conversion]
+
+There are also utility functions `widen` and `narrow` which convert `std::string` to `std::wstring` and vice-versa (see the reference).
 [endsect]
 
 [xinclude doxygen_adapted.xml]
