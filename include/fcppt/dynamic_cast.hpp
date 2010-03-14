@@ -18,6 +18,7 @@
 namespace fcppt
 {
 
+/// dynamic_cast_ throws fcppt::bad_dynamic_cast on failure
 template<
 	typename Dest,
 	typename Src
