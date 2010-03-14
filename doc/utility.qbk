@@ -194,4 +194,30 @@ and `boost::phoenix` should be prefered over `boost::lambda`.
 
 [endsect]
 
+[section visibility macros]
+
+When building a library, several platforms have different notions
+of 'library visibility' that the library author has to consider.
+A symbol (like a function or global object)
+can be hidden in the library or it can be made public for other
+libraries or programs to use (for POSIX systems it is slightly more
+complex, but those two cases are the ones that really matter).
+Furthermore the library author has to specify whether a symbol
+is currently being exported or imported (because some platforms
+like Windows need this).
+
+[note Although every symbol can be made public under a POSIX system by default,
+this is still not recommended, because you have to specify the visibility for Windows
+anyway and libraries with only public symbol tend to have an unnecessary large interface.]
+
+fcppt provides some macros to ease the specification of visibility.
+
+[import ../examples/visibility.cpp]
+
+[visibility]
+
+[xinclude doxygen_visibility.xml]
+
+[endsect]
+
 [endsect]

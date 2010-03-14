@@ -113,6 +113,12 @@ make_fcppt_documentation(
 	weak_ptr.hpp
 )
 make_fcppt_documentation(variant variant)
+make_fcppt_documentation(
+	visibility
+	class_symbol.hpp
+	import_symbol.hpp
+	export_symbol.hpp
+)
 make_fcppt_documentation(type_traits type_traits)
 make_fcppt_documentation(type_name_info type_name.hpp type_info.hpp)
 

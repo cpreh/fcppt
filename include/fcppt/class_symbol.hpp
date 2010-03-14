@@ -7,6 +7,11 @@
 #ifndef FCPPT_CLASS_SYMBOL_HPP_INCLUDED
 #define FCPPT_CLASS_SYMBOL_HPP_INCLUDED
 
+/**
+ * @def FCPPT_CLASS_SYMBOL
+ * @brief Tells that a classes's vtable should be exported
+ * example: class FCPPT_CLASS_SYMBOL myclass {};
+*/
 #if defined(_MSC_VER)
 #	define FCPPT_CLASS_SYMBOL
 #elif defined(__GNUC__)
