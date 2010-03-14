@@ -137,3 +137,5 @@ its types are implemented with an mpl sequence directly and it offers up to tern
 [include guidelines.qbk]
 
 [include endianness.qbk]
+
+[include type_traits.qbk]

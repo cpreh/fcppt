@@ -1,0 +1,10 @@
+[section type_traits]
+
+The type_traits part of fcppt is just a small addition to the `boost::type_traits`. A small example shows its usage:
+
+[import ../examples/type_traits.cpp]
+[type_traits]
+
+[xinclude doxygen_alignment.xml]
+
+[endsect]
