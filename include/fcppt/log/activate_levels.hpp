@@ -17,7 +17,8 @@ namespace log
 {
 
 /// Activates all the log levels that are equal or higher.
-/** For example specifying log::level::warning will activate log::level::error and log::level::fatal as well.
+/**
+ * For example specifying log::level::warning will activate log::level::error and log::level::fatal as well.
 */
 FCPPT_SYMBOL void
 activate_levels(

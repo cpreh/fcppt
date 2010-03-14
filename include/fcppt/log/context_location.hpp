@@ -18,7 +18,13 @@ namespace fcppt
 namespace log
 {
 
-class context_location {
+/// Represents an optional location of a logger
+/**
+ * The supplied log::context can be 0
+ * The location can be the empty location
+*/
+class context_location
+{
 public:
 	FCPPT_SYMBOL context_location();
 

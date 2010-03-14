@@ -16,6 +16,10 @@ namespace fcppt
 namespace log
 {
 
+/// Constructs the default level streams
+/**
+ * They will get the default formatters that print a prefix for each level
+*/
 FCPPT_SYMBOL level_stream_array const
 default_level_streams(
 	io::ostream &

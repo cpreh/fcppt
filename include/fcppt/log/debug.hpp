@@ -10,6 +10,7 @@
 #include <fcppt/log/detail/level_if_enabled.hpp>
 #include <fcppt/log/level.hpp>
 
+/// Log to a stream if the debug level is enabled
 #define FCPPT_LOG_DEBUG(stream, x)\
 	FCPPT_LOG_DETAIL_LEVEL_IF_ENABLED(stream, fcppt::log::level::debug, x)
 
