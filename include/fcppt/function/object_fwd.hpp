@@ -14,14 +14,17 @@ namespace function
 {
 
 /**
+ * @class fcppt::function::object object.hpp "fcppt/function/object.hpp"
  * @brief a fully std tr1 compliant function object class
  *
- * This class was introduced beause the gcc implementation had problems
- * with boost::phoenix.
- * To encounter this, fcppt::function::object is a wrapper around std::tr1::function
- *
+ * This class was introduced beause the gcc implementation
+ * can't deal with function objects that overload operator & (like phoenix might do).
+ * To fix this, fcppt::function::object is a wrapper around std::tr1::function
+ * that takes special care for operator &.
  */
-template< typename Singature >
+template<
+	typename Singature
+>
 class object;
 
 } // end namespace function

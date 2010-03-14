@@ -1,6 +1,6 @@
 [section Log]
 
-[section Hello_World]
+[section Hello World]
 Let's first start with an hello world example.
 
 [import ../examples/log/helloworld.cpp]

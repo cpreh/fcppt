@@ -51,19 +51,22 @@ ENDMACRO(make_fcppt_documentation)
 
 make_fcppt_documentation(
 	adapted 
-	filesystem 
+	char_type.hpp
 	error 
+	filesystem 
 	format.hpp 
-	io
-	preprocessor/file.hpp 
-	text.hpp 
-	string.hpp 
-	widen.hpp 
-	narrow.hpp
 	from_std_wstring.hpp
 	from_std_string.hpp
+	io
+	narrow.hpp
+	preprocessor/file.hpp 
+	preprocessor/stringize.hpp
+	string.hpp 
+	text.hpp 
 	to_std_wstring.hpp
-	to_std_string.hpp)
+	to_std_string.hpp
+	widen.hpp 
+)
 make_fcppt_documentation(algorithm algorithm)
 make_fcppt_documentation(alignment alignment)
 make_fcppt_documentation(assert assert.hpp assert_message.hpp)
@@ -79,6 +82,7 @@ make_fcppt_documentation(
 )
 make_fcppt_documentation(chrono chrono)
 make_fcppt_documentation(endianness endianness)
+make_fcppt_documentation(function function)
 make_fcppt_documentation(math math)
 make_fcppt_documentation(mpl mpl)
 make_fcppt_documentation(noncopyable nonassignable.hpp noncopyable.hpp)

@@ -4,6 +4,7 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
+//[function
 #include <fcppt/function/object.hpp>
 #include <fcppt/io/cout.hpp>
 #include <fcppt/io/cerr.hpp>
@@ -14,12 +15,13 @@
 #include <boost/spirit/home/phoenix/core/reference.hpp>
 #include <boost/spirit/home/phoenix/operator/self.hpp>
 
-#include <cstdlib>
 #include <ostream>
+#include <cstdlib>
 
 namespace
 {
 
+// a normal function object without a return type
 struct functor1
 {
 	void operator() ()
@@ -28,6 +30,7 @@ struct functor1
 	}
 };
 
+// a function object that also overloads operator &
 struct functor2
 {
 	void operator() ()
@@ -43,6 +46,7 @@ struct functor2
 	}
 };
 
+// a function object with a return type
 struct functor3
 {
 	int operator() ()
@@ -54,6 +58,7 @@ struct functor3
 
 };
 
+// a function object with a return type and a parameter
 struct functor4
 {
 	 int operator() ( int )
@@ -65,6 +70,7 @@ struct functor4
 
 };
 
+// a free function
 void function1()
 {
 	fcppt::io::cout << FCPPT_TEXT("function1\n");
@@ -93,17 +99,14 @@ try
 	fcppt::io::cout << f_4() << std::endl;
 	fcppt::io::cout << f_5( 7 ) << std::endl;
 
-
-	//bool b = true; function<void ()>(phoenix::ref(b) = false)(); assert(b == false);
-
 	bool b = true;
 	
+	// test a phoenix functor
 	fcppt::function::object<void()>(
 		boost::phoenix::ref(b) = false
 	)();
 
 	FCPPT_ASSERT( b == false );
-	//bool b = true;  std::tr1::function<void()>( boost::phoenix::ref(b) = false )(); assert( b == false );
 }
 catch(
 	fcppt::exception const &e
@@ -115,3 +118,4 @@ catch(
 
 	return EXIT_FAILURE;
 }
+//]
