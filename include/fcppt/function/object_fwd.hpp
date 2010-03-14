@@ -14,7 +14,7 @@ namespace function
 {
 
 /**
- * @class fcppt::function::object object.hpp "fcppt/function/object.hpp"
+ * @class fcppt::function::object object_fwd.hpp "fcppt/function/object_fwd.hpp"
  * @brief a fully std tr1 compliant function object class
  *
  * This class was introduced beause the gcc implementation

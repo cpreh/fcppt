@@ -82,7 +82,11 @@ make_fcppt_documentation(
 )
 make_fcppt_documentation(chrono chrono)
 make_fcppt_documentation(endianness endianness)
-make_fcppt_documentation(function function)
+make_fcppt_documentation(
+	function
+	function/object_fwd.hpp
+	function/object.hpp
+)
 make_fcppt_documentation(math math)
 make_fcppt_documentation(mpl mpl)
 make_fcppt_documentation(noncopyable nonassignable.hpp noncopyable.hpp)

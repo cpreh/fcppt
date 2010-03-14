@@ -159,6 +159,8 @@ and `boost::phoenix` should be prefered over `boost::lambda`.
 
 [function]
 
+[xinclude doxygen_function.xml]
+
 [endsect]
 
 [endsect]

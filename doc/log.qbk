@@ -38,6 +38,16 @@ This can be used to enable or disable loggers or log levels at runtime in an eas
 
 [endsect]
 
+[section A complex example]
+
+Here is a complex example on how a library could use different loggers for different namespaces.
+
+[import ../examples/log/complex.cpp]
+
+[logcomplex]
+
+[endsect]
+
 [xinclude doxygen_log.xml]
 
 [endsect]
