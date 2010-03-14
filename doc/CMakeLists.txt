@@ -105,6 +105,7 @@ make_fcppt_documentation(
 	weak_ptr.hpp
 )
 make_fcppt_documentation(variant variant)
+make_fcppt_documentation(type_traits type_traits)
 
 ADD_CUSTOM_COMMAND(
 	TARGET doc
