@@ -17,6 +17,10 @@ namespace log
 namespace format
 {
 
+/// Factory for creating format::chain
+/**
+ * @see format::chain
+*/
 FCPPT_SYMBOL const_object_ptr const
 create_chain(
 	const_object_ptr parent,

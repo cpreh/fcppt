@@ -19,6 +19,10 @@ namespace log
 namespace format
 {
 
+/// A formatter chain that applies two formatters
+/**
+ * The parent formatter is used first, and the child formatter second
+*/
 class FCPPT_CLASS_SYMBOL chain
 :
 	public object

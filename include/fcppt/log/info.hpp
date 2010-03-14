@@ -10,6 +10,7 @@
 #include <fcppt/log/detail/level_if_enabled.hpp>
 #include <fcppt/log/level.hpp>
 
+/// Log to a stream if the info level is enabled
 #define FCPPT_LOG_INFO(stream, x)\
 	FCPPT_LOG_DETAIL_LEVEL_IF_ENABLED(stream, fcppt::log::level::info, x)
 

@@ -16,6 +16,7 @@ namespace fcppt
 namespace log
 {
 
+/// The exception base class for logger exceptions
 class FCPPT_CLASS_SYMBOL exception
 :
 	public fcppt::exception

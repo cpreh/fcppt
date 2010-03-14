@@ -15,6 +15,7 @@ namespace fcppt
 namespace log
 {
 
+/// The output helper object
 FCPPT_SYMBOL extern detail::output_helper const _;
 
 }

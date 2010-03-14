@@ -19,10 +19,16 @@ namespace fcppt
 namespace log
 {
 
+/// The stream for a logger level
+/**
+ * Every log::object has a level_stream for each of its logging levels.
+ * This class dictates which sink and formatters should be used.
+*/
 class level_stream
 {
 	FCPPT_NONASSIGNABLE(level_stream)
 public:
+	/// Constructs a level_stream with a sink and a formatter
 	FCPPT_SYMBOL level_stream(
 		io::ostream &,
 		format::const_object_ptr
