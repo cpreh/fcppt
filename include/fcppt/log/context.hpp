@@ -32,7 +32,8 @@ public:
 	FCPPT_SYMBOL ~context();
 
 	/// Adds a logger to a location
-	/** The logger will call this indirectly if you provide a context in its parameters class.
+	/**
+	 * The logger will call this indirectly if you provide a context in its parameters class.
 	*/
 	FCPPT_SYMBOL void
 	add(
@@ -41,7 +42,8 @@ public:
 	);
 
 	/// Removes the logger that is associated with a location.
-	/* Loggers with a location set will indirectly call this on destruction.
+	/**
+	 * Loggers with a location set will indirectly call this on destruction.
 	*/
 	FCPPT_SYMBOL void
 	remove(
@@ -49,7 +51,8 @@ public:
 	);
 
 	/// Finds a logger with a given location.
-	/** @return 0 if the logger was not found
+	/**
+	 * @return 0 if the logger was not found
 	*/
 	FCPPT_SYMBOL object *
 	find(
