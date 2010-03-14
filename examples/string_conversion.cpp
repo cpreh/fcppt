@@ -8,6 +8,7 @@
 #include <fcppt/string.hpp>
 #include <fcppt/from_std_string.hpp>
 #include <fcppt/to_std_string.hpp>
+#include <fcppt/to_std_wstring.hpp>
 #include <fcppt/text.hpp>
 #include <fcppt/io/cout.hpp>
 #include <iostream>
@@ -28,7 +29,10 @@ int main()
 	fcppt::io::cout
 		<< fcppt::from_std_string(converted)
 		<< FCPPT_TEXT("\n");
-	// FIXME: fcppt::string -> std::wstring?
+
+	std::wcout 
+		<< fcppt::to_std_wstring(s) 
+		<< L"\n";
 }
 
 //]

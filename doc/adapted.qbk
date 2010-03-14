@@ -34,7 +34,7 @@ For convenience, a lot of other typedefs and structures are defined. For example
 [endsect]
 
 [section Conversion from other strings]
-To convert from and to an `fcppt::string`, the functions `fcppt::from_std_string` and `fcppt::to_std_string` are provided. Example:
+To convert from and to an `fcppt::string`, the functions `fcppt::from_std_string`, `fcppt::to_std_string`,`fcppt::from_std_wstring`, `fcppt::to_std_wstring` are provided. Example:
 
 [import ../examples/string_conversion.cpp]
 [string_conversion]
