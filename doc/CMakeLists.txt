@@ -68,6 +68,15 @@ make_fcppt_documentation(algorithm algorithm)
 make_fcppt_documentation(alignment alignment)
 make_fcppt_documentation(assert assert.hpp assert_message.hpp)
 make_fcppt_documentation(assign assign)
+make_fcppt_documentation(
+	casts
+	bad_dynamic_cast.hpp
+	bad_truncation_check_cast.hpp
+	dynamic_cast.hpp
+	sn_cast.hpp
+	try_dynamic_cast.hpp
+	truncation_check_cast.hpp
+)
 make_fcppt_documentation(chrono chrono)
 make_fcppt_documentation(endianness endianness)
 make_fcppt_documentation(math math)

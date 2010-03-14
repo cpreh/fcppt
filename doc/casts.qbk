@@ -49,4 +49,6 @@ If the cast fails, `bad_truncation_check_cast` is thrown.
 
 [endsect]
 
+[xinclude doxygen_casts.xml]
+
 [endsect]

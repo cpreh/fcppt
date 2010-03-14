@@ -19,6 +19,15 @@ int main()
 
 	// floats can be converted to floats or greater size
 	fcppt::io::cout << fcppt::sn_cast<double>(3.5f) << FCPPT_TEXT('\n');
+
+	// the following is not allowed if double is greater than float
+	//fcppt::sn_cast<float>(4.0);
+
+	// the following is not allowed if long is greater than int
+	//fcppt::sn_cast<int>(4l);
+
+	// conversion from a floating point type to an integral type is not allowed
+	//fcppt::sn_cast<int>(4.0);
 }
 
 //]
