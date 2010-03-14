@@ -144,4 +144,36 @@ There is also a macro to ease the process of creating distinct types.
 
 [endsect]
 
+[section type_info/type_name]
+
+There are two utility functions regarding RAII worth mentioning:
+`fcppt::type_info` is a wrapper around the standard C++ class `std::type_info`.
+The problem with the standard class is that it isn't copyable and thus cannot
+be passed around easily. `fcppt::type_info` solves this problem. In its
+constructor you have to pass a `std::type_info`. You can access this
+`type_info` later via the `get()` function, but it probably won't be neccessary
+since the `fcppt` version has all the methods the standard version has.
+
+Now what about `fcppt::type_name`? Well, `std::type_info` has a `name` function
+returning a `char*`. Since that's not an `fcppt::string` (not even a
+`fcppt::char_type*`), a wrapper is neccessary. Yet we can do better than just
+convert the character array to the correct character type. If you've looked at
+the output of `std::type_info::name` you might have noticed that on most
+compilers, it returns the type name /mangled/, so
+`fcppt::type_name(fcppt::type_info const&)` becomes
+`_ZN5fcppt9type_nameERKNS_9type_infoE` Most compilers, however, have a builtin
+function to unmangle those names. That's exactly what `fcppt::type_name` is
+for. This function is used in `fcppt::type_info::name`. 
+
+[section Synopsis]
+
+[import ../include/fcppt/type_info.hpp]
+[type_info]
+
+[endsect]
+
+[xinclude doxygen_type_name_info.xml]
+
+[endsect]
+
 [endsect]
