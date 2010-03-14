@@ -58,19 +58,34 @@ There's also `assign::make_array` which can be used to construct an `std::tr1::a
 [import ../examples/make_array.cpp]
 [make_array]
 
+Note that there are cases where the constructs returned by `make_array` and `make_container` produce strange results, for instance:
+
+``
+int main()
+{
+	std::vector<int> v;
+	v.push_back(3);
+	v.push_back(2);
+	return v == fcppt::assign::make_container<std::vector<int> >(3)(2);
+}
+``
+
+Gives an error message because the compiler tries to compare a `std::vector<int>` with...well, whatever `make_container` returns (which, sadly, is not directly a `std::vector<int>`). In that case, just `static_cast` to the desired container, as such:
+
+``
+int main()
+{
+	std::vector<int> v;
+	v.push_back(3);
+	v.push_back(2);
+	return v == static_cast<std::vector<int> >(fcppt::assign::make_container<std::vector<int> >(3)(2));
+}
+``
+
 [endsect]
 
 [xinclude doxygen_assign.xml]
 
-[endsect]
-
-[section endianness]
-fcppt has functions to deal with endianness. Here is an example:
-
-[import ../examples/endianness.cpp]
-[endianness]
-
-[xinclude doxygen_endianness.xml]
 [endsect]
 
 [section for_each_enumerator]
