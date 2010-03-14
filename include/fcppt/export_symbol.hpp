@@ -8,9 +8,8 @@
 #define FCPPT_EXPORT_SYMBOL_HPP_INCLUDED
 
 /**
- * @brief Marks a symbol to be visible in dynamic libraries.
- *
- * FCPPT_EXPORT_SYMBOL may be used to override the default visibility.
+ * @def FCPPT_EXPORT_SYMBOL
+ * @brief Tells that a symbol should be exported from this library. 
 */
 #if defined(_MSC_VER)
 #	define FCPPT_EXPORT_SYMBOL __declspec(dllexport)

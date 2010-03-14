@@ -42,6 +42,7 @@ ADD_FCPPT_EXAMPLE(tree_simple)
 ADD_FCPPT_EXAMPLE(truncation_check_cast)
 ADD_FCPPT_EXAMPLE(type_traits)
 ADD_FCPPT_EXAMPLE(variant)
+ADD_FCPPT_EXAMPLE(visibility)
 ADD_FCPPT_EXAMPLE(weak_ptr)
 
 ADD_SUBDIRECTORY(chrono)
