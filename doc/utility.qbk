@@ -90,6 +90,22 @@ and cast it back to an enumerator in each iteration.
 
 A normal typedef is just a synonym.
 It is impossible to overload on typedef names nor is it possible to force their use.
+
+``
+  typedef int type1;
+  typedef int type2;
+
+  void f(type1);
+  void f(type2); // doesn't work!
+
+  void g(type1);
+
+  void h()
+  {
+    g(42); // no mention of type1
+  }
+``
+
 A strong typedef is a kind of typedef that imposes restrictions on the typedeffed type.
 You can't implicitly convert the wrapped type into the typedeffed type.
 This way strong typedefs can make function calls more explicit, provide
@@ -100,8 +116,8 @@ there is no way to create a new type just by using templates.
 A new type has to be created instead (which can be done by defining a new class, struct, enum or union).
 `fcppt::strong_typedef` is therefore a type that gets two template parameters:
 
- * The wrapped type
- * A unique type (just for typedef purposes)
+* The wrapped type
+* A unique type (just for typedef purposes)
 
 [import ../examples/strongtypedef.cpp]
 
