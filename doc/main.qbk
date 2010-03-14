@@ -65,15 +65,7 @@ fcppt provides a full implementation of C++0x's chrono.
 
 [[container]
 [
-Some additional containers.
-
- * bitfield - A wrapper around a bitfield using an enum.
- * field - A wrapper around a two dimensional container.
- * linear_set/linear_map - set and map for very small numbers of elements.
- * map - A wrapper around std::map that uses exceptions.
- * raw_vector - A container like std::vector, but only for PODs. It provides the option not to initialize its elements.
- * tree - A generic node class. nodes can be joined to form a tree.
-
+Some additional containers like `bitfield`, `raw_vector` and `tree`.
 ]]
 
 [[logger]

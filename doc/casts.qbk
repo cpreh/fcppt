@@ -14,7 +14,7 @@ which provides more type information for the failed cast.
 
 [endsect]
 
-[section TRY_DYNAMIC_CAST]
+[section try_dynamic_cast]
 
 `FCPPT_TRY_DYNAMIC_CAST` is a macro that can be used
 instead of writing an explicit if block to test whether

@@ -4,17 +4,53 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
+//[strongtypedef_simple
 #include <fcppt/io/cout.hpp>
-#include <fcppt/strong_typedef.hpp>
 #include <fcppt/text.hpp>
+#include <fcppt/strong_typedef.hpp>
 
-FCPPT_MAKE_STRONG_TYPEDEF(int, strong_int)
-
-int main()
+namespace
 {
-	strong_int i(42);
 
+struct distinct_type
+{};
+
+typedef fcppt::strong_typedef<
+	int,
+	distinct_type
+> strong_int;
+
+void
+f(
+	strong_int const i
+)
+{
 	fcppt::io::cout
 		<< i
 		<< FCPPT_TEXT('\n');
+}
+
+void
+g()
+{
+	f(
+		strong_int(42)
+	);
+
+	// f(42) won't work
+}
+
+}
+//]
+
+//[strongtypedef_macro
+FCPPT_MAKE_STRONG_TYPEDEF(
+	int,
+	strong_int2
+)
+//]
+
+int main()
+{
+	g();
 }
