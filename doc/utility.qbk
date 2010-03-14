@@ -101,4 +101,31 @@ and cast it back to an enumerator in each iteration.
 
 [endsect]
 
+[section strong_typedef]
+
+A normal typedef is just a synonym.
+It is impossible to overload on typedef names nor is it possible to force their use.
+A strong typedef is a kind of typedef that imposes restrictions on the typedeffed type.
+You can't implicitly convert the wrapped type into the typedeffed type.
+This way strong typedefs can make function calls more explicit, provide
+overloading on "the same" types or generally catch programming errors.
+
+Because a template meta function is a real mathematical function (which means it is right-unique),
+there is no way to create a new type just by using templates.
+A new type has to be created instead (which can be done by defining a new class, struct, enum or union).
+`fcppt::strong_typedef` is therefore a type that gets two template parameters:
+
+ * The wrapped type
+ * A unique type (just for typedef purposes)
+
+[import ../examples/strongtypedef.cpp]
+
+[strongtypedef_simple]
+
+There is also a macro to ease the process of creating distinct types.
+
+[strongtypedef_macro]
+
+[endsect]
+
 [endsect]
