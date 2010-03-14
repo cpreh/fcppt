@@ -18,7 +18,8 @@ namespace log
 {
 
 /// location of a logger in a context.
-/* A logger's location is the concatenation of its path in the context tree.
+/**
+ * A logger's location is the concatenation of its path in the context tree.
  * For example if a logger would inherit from another logger, it will be placed in a child node of the parent's location.
 */
 class location

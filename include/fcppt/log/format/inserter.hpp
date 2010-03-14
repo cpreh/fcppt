@@ -18,6 +18,7 @@ namespace log
 namespace format
 {
 
+/// A formatter that inserts text using fcppt::format
 class FCPPT_CLASS_SYMBOL inserter
 :
 	public object

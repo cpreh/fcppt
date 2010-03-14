@@ -16,6 +16,10 @@ namespace fcppt
 namespace log
 {
 
+/// Convert a string to a level
+/**
+ * Accepts all strings as parameters that are listed in level::type
+*/
 FCPPT_SYMBOL level::type
 level_from_string(
 	string const &

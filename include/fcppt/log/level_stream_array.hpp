@@ -16,6 +16,7 @@ namespace fcppt
 namespace log
 {
 
+/// An array of level streams with the size level::size
 typedef std::tr1::array<
 	level_stream_ptr,
 	level::size

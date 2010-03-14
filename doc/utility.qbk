@@ -173,6 +173,24 @@ for. This function is used in `fcppt::type_info::name`.
 [endsect]
 
 [xinclude doxygen_type_name_info.xml]
+[endsect]
+
+[section function objects]
+
+fcppt doesn't use boost::function because it still has aliasing issues.
+Instead `std::tr1::function` should be used.
+The gcc implementation, however, can't deal with function objects
+that overload operator & (like phoenix might do).
+`fcppt::function::object` is a wrapper around `std::tr1::function`
+that fixes this problem.
+Also note that `std::tr1::bind` should be prefered over `boost::bind`,
+and `boost::phoenix` should be prefered over `boost::lambda`.
+
+[import ../examples/function.cpp]
+
+[function]
+
+[xinclude doxygen_function.xml]
 
 [endsect]
 

@@ -25,38 +25,47 @@ namespace log
 namespace parameters
 {
 
-class all {
+/// The parameters class that can be used to specify all arguments
+class all
+{
 public:
+	/// Constructs the parameters class providing a sink
 	FCPPT_SYMBOL explicit all(
 		io::ostream &
 	);
 
+	/// Specifies the parent logger
 	FCPPT_SYMBOL all
 	parent(
 		object const &
 	);
 
+	/// Set the logger's context and location
 	FCPPT_SYMBOL all
 	context_location(
 		log::context *,
 		log::location const &
 	);
 
+	/// Sets the logger's enabled status
 	FCPPT_SYMBOL all
 	enabled(
 		bool
 	);
 
+	/// Sets the logger's level streams
 	FCPPT_SYMBOL all
 	level_streams(
 		level_stream_array const &
 	);
 
+	/// Sets the logger's enabled arrays
 	FCPPT_SYMBOL all
 	enabled_levels(
 		enabled_level_array const &
 	);
 
+	/// Sets the logger's formatter
 	FCPPT_SYMBOL all
 	formatter(
 		format::const_object_ptr

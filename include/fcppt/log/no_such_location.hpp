@@ -15,6 +15,7 @@ namespace fcppt
 namespace log
 {
 
+/// Thrown if a location is not found in a context
 class FCPPT_CLASS_SYMBOL no_such_location
 :
 	public exception

@@ -1,6 +1,6 @@
 [section Log]
 
-[section Hello_World]
+[section Hello World]
 Let's first start with an hello world example.
 
 [import ../examples/log/helloworld.cpp]
@@ -35,6 +35,16 @@ The logger context has an apply function to apply an action to loggers recursive
 starting with the specified location. The statement will activate all loggers
 starting from root::child and beneath.
 This can be used to enable or disable loggers or log levels at runtime in an easy way.
+
+[endsect]
+
+[section A complex example]
+
+Here is a complex example on how a library could use different loggers for different namespaces.
+
+[import ../examples/log/complex.cpp]
+
+[logcomplex]
 
 [endsect]
 

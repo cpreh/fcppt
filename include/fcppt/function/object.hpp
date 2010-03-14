@@ -52,6 +52,7 @@ void swap( object<Signature>& x, object<Signature>& y )
 
 } // end namespace fcppt
 
+// \cond
 #define FCPPT_FUNCTION_OBJECT_PP_NUM_PARAMS 0
 #include <fcppt/function/object_template.ipp>
 #undef FCPPT_FUNCTION_OBJECT_PP_NUM_PARAMS
@@ -167,6 +168,7 @@ void swap( object<Signature>& x, object<Signature>& y )
 #define FCPPT_FUNCTION_OBJECT_PP_NUM_PARAMS 28
 #include <fcppt/function/object_template.ipp>
 #undef FCPPT_FUNCTION_OBJECT_PP_NUM_PARAMS
+// \endcond
 
 /**
  * variadic template version ...
