@@ -88,6 +88,15 @@ make_fcppt_documentation(
 	function/object.hpp
 )
 make_fcppt_documentation(math math)
+make_fcppt_documentation(
+	minmax_pair
+	minmax_pair_fwd.hpp
+	minmax_pair_decl.hpp
+	minmax_pair_impl.hpp
+	minmax_pair.hpp
+	minmax_pair_output.hpp
+	invalid_minmax_pair.hpp
+)
 make_fcppt_documentation(mpl mpl)
 make_fcppt_documentation(noncopyable nonassignable.hpp noncopyable.hpp)
 make_fcppt_documentation(log log)

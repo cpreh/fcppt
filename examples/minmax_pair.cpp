@@ -4,6 +4,7 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
+//[minmax_pair
 #include <fcppt/minmax_pair.hpp>
 #include <fcppt/invalid_minmax_pair.hpp>
 #include <fcppt/io/cout.hpp>
@@ -41,3 +42,4 @@ int main()
 			<< FCPPT_TEXT('\n');
 	}
 }
+//]

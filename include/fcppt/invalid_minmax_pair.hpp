@@ -15,6 +15,7 @@
 namespace fcppt
 {
 
+/// Thrown if a minmax_pair is invalid
 class FCPPT_CLASS_SYMBOL invalid_minmax_pair
 :
 	public fcppt::exception
