@@ -4,11 +4,13 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_MINMAX_PAIR_HPP_INCLUDED
-#define FCPPT_MINMAX_PAIR_HPP_INCLUDED
+#include <fcppt/invalid_minmax_pair.hpp>
 
-#include <fcppt/minmax_pair_decl.hpp>
-#include <fcppt/minmax_pair_impl.hpp>
-#include <fcppt/minmax_pair_output.hpp>
-
-#endif
+fcppt::invalid_minmax_pair::invalid_minmax_pair(
+	fcppt::string const &what_
+)
+:
+	fcppt::exception(
+		what_
+	)
+{}

@@ -8,7 +8,7 @@
 #define FCPPT_MINMAX_PAIR_IMPL_HPP_INCLUDED
 
 #include <fcppt/minmax_pair_decl.hpp>
-#include <fcppt/exception.hpp>
+#include <fcppt/invalid_minmax_pair.hpp>
 #include <fcppt/format.hpp>
 #include <fcppt/text.hpp>
 
@@ -17,7 +17,8 @@ template<
 >
 fcppt::minmax_pair<T>::minmax_pair(
 	T const &min_,
-	T const &max_)
+	T const &max_
+)
 :
 	min_(min_),
 	max_(max_)
@@ -28,7 +29,8 @@ fcppt::minmax_pair<T>::minmax_pair(
 template<
 	typename T
 >
-T fcppt::minmax_pair<T>::min() const
+T
+fcppt::minmax_pair<T>::min() const
 {
 	return min_;
 }
@@ -36,7 +38,8 @@ T fcppt::minmax_pair<T>::min() const
 template<
 	typename T
 >
-T fcppt::minmax_pair<T>::max() const
+T
+fcppt::minmax_pair<T>::max() const
 {
 	return max_;
 }
@@ -44,8 +47,10 @@ T fcppt::minmax_pair<T>::max() const
 template<
 	typename T
 >
-void fcppt::minmax_pair<T>::min(
-	T const &nmin)
+void
+fcppt::minmax_pair<T>::min(
+	T const &nmin
+)
 {
 	min_ = nmin;
 	check();
@@ -54,8 +59,10 @@ void fcppt::minmax_pair<T>::min(
 template<
 	typename T
 >
-void fcppt::minmax_pair<T>::max(
-	T const &nmax)
+void
+fcppt::minmax_pair<T>::max(
+	T const &nmax
+)
 {
 	max_ = nmax;
 	check();
@@ -64,15 +71,19 @@ void fcppt::minmax_pair<T>::max(
 template<
 	typename T
 >
-void fcppt::minmax_pair<T>::check()
+void
+fcppt::minmax_pair<T>::check()
 {
 	if(min() > max())
-		throw exception(
-			(format(
-				FCPPT_TEXT("minmax_pair out of range: %1% > %2%"))
-			% min()
-			% max())
-				.str());
+		throw invalid_minmax_pair(
+			(
+				format(
+					FCPPT_TEXT("minmax_pair out of range: %1% > %2%")
+				)
+				% min()
+				% max()
+			).str()
+		);
 }
 
 #endif

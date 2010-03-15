@@ -220,4 +220,17 @@ fcppt provides some macros to ease the specification of visibility.
 
 [endsect]
 
+[section minmax_pair]
+
+`fcppt::minmax_pair` is a simple homogenous pair that
+always asserts that its first value is smaller or equal to its second value.
+
+[import ../examples/minmax_pair.cpp]
+
+[minmax_pair]
+
+[xinclude doxygen_minmax_pair.xml]
+
+[endsect]
+
 [endsect]

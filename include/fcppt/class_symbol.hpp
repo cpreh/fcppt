@@ -7,18 +7,21 @@
 #ifndef FCPPT_CLASS_SYMBOL_HPP_INCLUDED
 #define FCPPT_CLASS_SYMBOL_HPP_INCLUDED
 
-/**
- * @def FCPPT_CLASS_SYMBOL
- * @brief Tells that a classes's vtable should be exported
- * example: class FCPPT_CLASS_SYMBOL myclass {};
-*/
 #if defined(_MSC_VER)
-#	define FCPPT_CLASS_SYMBOL
+#	define FCPPT_CLASS_SYMBOL_IMPL
 #elif defined(__GNUC__)
 #	include <fcppt/export_symbol.hpp>
-#	define FCPPT_CLASS_SYMBOL FCPPT_EXPORT_SYMBOL
+#	define FCPPT_CLASS_SYMBOL_IMPL FCPPT_EXPORT_SYMBOL
 #else
 #	error "Don't know what FCPPT_CLASS_SYMBOL should be"
 #endif
+
+/// Tells that a classes's vtable should be exported
+/**
+ * example: class FCPPT_CLASS_SYMBOL myclass {};
+ * @remark This should be used when the vtable of a class is needed,
+ * such as: 1) The class is thrown as an exception, 2) The class has virtual methods
+*/
+#define FCPPT_CLASS_SYMBOL FCPPT_CLASS_SYMBOL_IMPL
 
 #endif
