@@ -29,7 +29,7 @@ class scoped_ptr
 	FCPPT_NONCOPYABLE(scoped_ptr)
 	FCPPT_SAFE_BOOL(scoped_ptr)
 private:
-	struct no_ref
+	struct dummy
 	{};
 public:
 	typedef typename boost::mpl::if_<
@@ -37,11 +37,22 @@ public:
 			T,
 			void
 		>,
-		no_ref,
+		dummy,
 		typename boost::add_reference<
 			T
 		>::type
 	>::type reference;
+
+	typedef typename boost::mpl::if_<
+		boost::is_same<
+			T,
+			void
+		>,
+		dummy,
+		std::auto_ptr<
+			T
+		>
+	>::type auto_ptr;
 
 	typedef T *pointer;
 
@@ -50,7 +61,7 @@ public:
 	);
 
 	explicit scoped_ptr(
-		auto_ptr<T>
+		auto_ptr
 	);
 
 	~scoped_ptr();
@@ -79,7 +90,7 @@ public:
 
 	void
 	take(
-		auto_ptr<T> p
+		auto_ptr p
 	);
 private:
 	bool
