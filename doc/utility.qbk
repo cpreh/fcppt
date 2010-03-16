@@ -177,7 +177,7 @@ like Windows need this).
 
 [note Although every symbol can be made public under a POSIX system by default,
 this is still not recommended, because you have to specify the visibility for Windows
-anyway and libraries with only public symbol tend to have an unnecessary large interface.]
+anyway and libraries with only public symbols tend to have an unnecessary large interface.]
 
 fcppt provides some macros to ease the specification of visibility.
 
