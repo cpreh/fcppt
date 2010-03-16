@@ -23,10 +23,6 @@ namespace time
 namespace detail
 {
 
-/// The internal sleep duration
-/**
- * It defines a duration that is most appropriate for a given platform.
-*/
 #if defined(FCPPT_WINDOWS_PLATFORM)
 typedef fcppt::chrono::milliseconds sleep_duration;
 #elif defined(FCPPT_POSIX_PLATFORM)
