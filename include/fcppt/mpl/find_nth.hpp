@@ -22,17 +22,16 @@ namespace fcppt
 namespace mpl
 {
 
+/// Find the nth matching Element in a sequence
 /**
- * Find the nth matching Element in a sequence
- *
- * \param Sequence The mpl sequence
- * \param Element The element to find
- * \param Number The number of matches to skip
+ * @tparam Sequence The mpl sequence
+ * @tparam Element The element to find
+ * @tparam Number The number of matches to skip
 */
 template<
 	typename Sequence,
 	typename Element,
-	typename Number ///< BLABLABLA
+	typename Number
 >
 struct find_nth
 :

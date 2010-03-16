@@ -21,7 +21,7 @@ namespace mpl
 
 /// Calculates a new Sequence out of @a Sequence with the partial sums
 /**
- * @param Sequence An MPL sequence of integral wrapper types
+ * @tparam Sequence An MPL sequence of integral wrapper types
  * @return A new Sequence of the partial sums
  * @remarks If @a Sequence consists of a_1, ..., a_n the result will be 0, a_1, a_1 + a_2, ...
 */

@@ -18,8 +18,8 @@ namespace mpl
 
 /// Calculates the maximum value in @a Sequence
 /**
- * @param Sequence An MPL sequence
- * @param Pred The predicate to use on each element. It has to return an integral wrapper type.
+ * @tparam Sequence An MPL sequence
+ * @tparam Pred The predicate to use on each element. It has to return an integral wrapper type.
  * @return The maximum element
 */
 template<
