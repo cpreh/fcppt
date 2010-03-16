@@ -101,6 +101,7 @@ make_fcppt_documentation(mpl mpl)
 make_fcppt_documentation(noncopyable nonassignable.hpp noncopyable.hpp)
 make_fcppt_documentation(log log)
 make_fcppt_documentation(optional optional.hpp optional_decl.hpp optional_impl.hpp optional_fwd.hpp)
+make_fcppt_documentation(random random)
 make_fcppt_documentation(signal signal)
 make_fcppt_documentation(
 	smartpointers

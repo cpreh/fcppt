@@ -14,6 +14,10 @@ namespace fcppt
 namespace random
 {
 
+/// The basic range class
+/**
+ * It simply consists of two values: first and last
+*/
 template<
 	typename T
 >
@@ -31,12 +35,14 @@ protected:
 public:
 	typedef T value_type;
 
-	T first() const
+	T
+	first() const
 	{
 		return first_;
 	}
 
-	T last() const
+	T
+	last() const
 	{
 		return last_;
 	}

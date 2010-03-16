@@ -20,6 +20,10 @@ namespace random
 namespace actor
 {
 
+/// A random element
+/**
+ * It consists of a relative probability and a callback to call
+*/
 class element
 {
 public:
