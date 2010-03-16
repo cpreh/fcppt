@@ -14,6 +14,7 @@ namespace fcppt
 namespace thread
 {
 
+/// The thread's internal native handle
 typedef boost::thread::native_handle_type native_handle;
 
 }

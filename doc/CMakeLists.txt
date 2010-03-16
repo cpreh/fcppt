@@ -121,6 +121,7 @@ make_fcppt_documentation(
 	weak_ptr_fwd.hpp
 	weak_ptr.hpp
 )
+make_fcppt_documentation(thread thread)
 make_fcppt_documentation(time time)
 #make_fcppt_documentation(tr1 tr1) not of any use now
 make_fcppt_documentation(variant variant)
