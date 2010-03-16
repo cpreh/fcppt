@@ -122,6 +122,7 @@ make_fcppt_documentation(
 	weak_ptr.hpp
 )
 make_fcppt_documentation(time time)
+#make_fcppt_documentation(tr1 tr1) not of any use now
 make_fcppt_documentation(variant variant)
 make_fcppt_documentation(
 	visibility

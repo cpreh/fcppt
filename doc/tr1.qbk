@@ -1,0 +1,21 @@
+[section TR1]
+
+The so called "Technical Report 1", or TR1 for short, is an addition to the C++ standard library.
+All modern compilers do implement this extension, and that's why fcppt makes use of it.
+However, it is not portable across compilers which headers the user must include to access
+the tr1 features.
+For gcc they reside in "<tr1/header>", but in "<header>" for VC++.
+Therefore fcppt provides wrappers around those headers that include the right one.
+All of them are located in 'fcppt/tr1' and have the 'hpp' suffix.
+
+[section Example]
+
+Here is a quick examples showing some tr1 features.
+
+[import ../examples/tr1.cpp]
+
+[tr1]
+
+[endsect]
+
+[endsect]
