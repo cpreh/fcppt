@@ -18,11 +18,13 @@ namespace utf8
 
 FCPPT_SYMBOL fcppt::string const
 convert(
-	utf8::string const &);
+	utf8::string const &
+);
 
 FCPPT_SYMBOL utf8::string const
 convert(
-	fcppt::string const &);
+	fcppt::string const &
+);
 
 }
 }

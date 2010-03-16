@@ -7,27 +7,18 @@
 #ifndef FCPPT_TIME_SLEEP_DURATION_HPP_INCLUDED
 #define FCPPT_TIME_SLEEP_DURATION_HPP_INCLUDED
 
-#include <fcppt/config.hpp>
-#if defined(FCPPT_WINDOWS_PLATFORM)
-#include <fcppt/chrono/milliseconds.hpp>
-#elif defined(FCPPT_POSIX_PLATFORM)
-#include <fcppt/chrono/nanoseconds.hpp>
-#else
-#error "Don't know what to include for the sleep_duration!"
-#endif
+#include <fcppt/time/detail/sleep_duration.hpp>
 
 namespace fcppt
 {
 namespace time
 {
 
-#if defined(FCPPT_WINDOWS_PLATFORM)
-typedef fcppt::chrono::milliseconds sleep_duration;
-#elif defined(FCPPT_POSIX_PLATFORM)
-typedef fcppt::chrono::nanoseconds sleep_duration;
-#else
-#error "Don't know what the sleep duration should be!"
-#endif
+/// The internal sleep duration
+/**
+ * It defines a duration that is most appropriate for a given platform.
+*/
+typedef fcppt::time::detail::sleep_duration sleep_duration;
 
 }
 }

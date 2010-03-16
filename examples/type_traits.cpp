@@ -1,3 +1,9 @@
+//          Copyright Carl Philipp Reh 2009 - 2010.
+// Distributed under the Boost Software License, Version 1.0.
+//    (See accompanying file LICENSE_1_0.txt or copy at
+//          http://www.boost.org/LICENSE_1_0.txt)
+
+
 //[type_traits
 #include <fcppt/type_traits/is_string.hpp>
 #include <fcppt/type_traits/is_iterator.hpp>

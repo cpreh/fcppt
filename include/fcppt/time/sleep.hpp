@@ -15,6 +15,10 @@ namespace fcppt
 namespace time
 {
 
+/// Sleep for at least a given time, unless interrupted
+/**
+ * @throws sleep_interrupted if the sleep didn't finish
+*/
 FCPPT_SYMBOL
 void
 sleep(
