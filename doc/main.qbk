@@ -132,6 +132,8 @@ its types are implemented with an mpl sequence directly and it offers up to tern
 
 [include mpl.qbk]
 
+[include preprocessor.qbk]
+
 [include random.qbk]
 
 [include smartpointers.qbk]

@@ -6,6 +6,7 @@
 
 #include <fcppt/assert.hpp>
 #include <fcppt/assert_message.hpp>
+#include <fcppt/text.hpp>
 #include <boost/test/unit_test.hpp>
 
 namespace

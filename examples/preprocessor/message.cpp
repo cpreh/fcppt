@@ -4,9 +4,11 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
+//[preprocessor_message
 #include <fcppt/preprocessor/todo.hpp>
 
 FCPPT_PP_TODO("This is just a test for the TODO macro!")
+//]
 
 int main()
 {}
