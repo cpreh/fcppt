@@ -7,15 +7,11 @@
 #ifndef FCPPT_PREPROCESSOR_FILE_HPP_INCLUDED
 #define FCPPT_PREPROCESSOR_FILE_HPP_INCLUDED
 
+#include <fcppt/preprocessor/detail/file.hpp>
 #include <fcppt/text.hpp>
 #include <fcppt/config.hpp>
 
 /// Procudes a string literal for the current file (__FILE__) that is compatible to fcppt::string
-#ifdef FCPPT_NARROW_STRING
-#define FCPPT_PP_FILE __FILE__
-#else
-#define FCPPT_PP_DETAIL_WIDEN(s) FCPPT_TEXT(s)
-#define FCPPT_PP_FILE FCPPT_PP_DETAIL_WIDEN(__FILE__)
-#endif
+#define FCPPT_PP_FILE FCPPT_PP_DETAIL_FILE
 
 #endif
