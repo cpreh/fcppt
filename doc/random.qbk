@@ -10,12 +10,12 @@ Random is a collection of classes to wrap 'tr1 random'.
 * generators
 * and the variate generator.
 
-A variate generator needs to take a distribution and and a generator.
+A variate generator needs to take a distribution and a generator.
 It can then be used to draw random numbers from the provided generator
 using the distribution.
 
 `fcppt::random::uniform` tries to make the process of creating a variate generator
-from a uniform distrubtion easier. It can be used like `std::tr1::variate_generator`
+from a uniform distribution easier. It can be used like `std::tr1::variate_generator`
 after construction.
 Internally, it will automatically use `std::tr1::uniform_int` or `std::tr1::uniform_real`.
 

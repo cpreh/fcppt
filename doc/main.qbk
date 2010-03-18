@@ -37,7 +37,7 @@ So what is provided by fcppt?
 
 [[algorithm]
 [
-Some general utility algorithms like append, copy_n, find_if_exn, and so on.
+Some general utility algorithms like `append`, `copy_n`, `find_if_exn`, and so on.
 ]]
 
 [[alignment]
@@ -53,8 +53,8 @@ Container assignment utilities that can be used to directly initialize a contain
 
 [[char_type abstraction]
 [
-fcppt's char_type depends on the platform. It is char for POSIX systems
-and wchar_t for VC++. This means that fcppt has its own functions and typedefs
+fcppt's char_type depends on the platform. It is `char` for POSIX systems
+and `wchar_t` for VC++. This means that fcppt has its own functions and typedefs
 for anything that needs a char or a string.
 ]]
 
@@ -70,39 +70,39 @@ Some additional containers like `bitfield`, `raw_vector` and `tree`.
 
 [[logger]
 [
-Hierarchical logger clases with log levels, formatters and dynamic log manipulation.
+Hierarchical logger classes with log levels, formatters and dynamic log manipulation.
 ]]
 
 [[mpl]
 [
-Some mpl metafunctions like a better for_each, implication, partial_sums, and so on.
+Some mpl metafunctions like a better `for_each`, `implication`, `partial_sums`, and so on.
 ]]
 
 [[optional]
 [
-The optional class also doesn't use an undefined "union trick".
+The `optional` class also doesn't use an undefined "union trick".
 ]]
 
 [[smart pointers]
 [
-Wrapper around shared_ptr, scoped_ptr and weak_ptr that use a deleter as template argument.
+Wrapper around `shared_ptr`, `scoped_ptr` and `weak_ptr` that use a deleter as template argument.
 ]]
 
 [[random]
 [
-Helper classes for tr1::random.
+Helper classes for `tr1::random`.
 ]]
 
 [[tr1]
 [
-Include wrappers for tr1 headers (VC++ uses <header> but gcc uses <tr1/header>).
+Include wrappers for tr1 headers (VC++ uses `<header>` but gcc uses `<tr1/header>`).
 ]]
 
 [[variant]
 [
 fcppt's variant class is similar to the variant provided by boost.
 The differences are that it doesn't use an undefined "union trick",
-it can be empty (which means that the first type doesn't have to be default construbtible),
+it can be empty (which means that the first type doesn't have to be default constructible),
 its types are implemented with an mpl sequence directly and it offers up to ternary visitation.
 ]]
 

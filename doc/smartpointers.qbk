@@ -36,7 +36,7 @@ Here is an example of a factory returning `shared_ptr`.
 [endsect]
 
 [section Avoiding Leaks]
-It is important not to create possible leaks, even with shared_ptr. 
+It is important not to create possible leaks, even with `shared_ptr`. 
 
 [sharedptr_wrong]
 

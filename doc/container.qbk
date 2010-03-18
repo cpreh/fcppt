@@ -64,7 +64,7 @@ This is tiresome (!) to write and also a little dangerous since the underlying t
 `fcppt::container::bitfield::basic<Enum,Size>` is a template which remedies the situation. It's based on an enumeration `Enum` which satisfies the following requirements:
 
 # Enum shall be an enumeration type that doesn't contain any enumerators with explicit values. Thus: `enum my_enum { value1, value2, value3 };` is perfectly valid while `enum my_enum { value = 100 };` is NOT valid.
-# Size shall be the number of enumerators defined in Enum. To achieve consistency you should define the enum's size within the enum itsself. Example: `enum my_enum { value1, value2, value3, _my_enum_size }; typedef bitfield::basic<my_enum,_my_enum_size> mybasic;`
+# Size shall be the number of enumerators defined in Enum. To achieve consistency you should define the enum's size within the enum itself. Example: `enum my_enum { value1, value2, value3, _my_enum_size }; typedef bitfield::basic<my_enum,_my_enum_size> mybasic;`
 # `operator|(Enum,Enum)` shall not be declared!
 
 A small example shows how it's used:
@@ -72,7 +72,10 @@ A small example shows how it's used:
 [import ../examples/bitfield.cpp]
 [bitfield]
 
-As you can see, you can treat a bitfield like an integral type -- it has the bitwise `operator&, operator|` and so on. But you can also treat it like a `std::map<Enum,bool>` and access elements like that. You could even iterate through the bitfield like a container (if you like).
+As you can see, you can treat a `bitfield` like an integral type -- it has the
+bitwise `operator&, operator|` and so on. But you can also treat it like a
+`std::map<Enum,bool>` and access elements like that. You could even iterate
+through the `bitfield` like a container (if you like).
 
 [endsect]
 
@@ -89,9 +92,12 @@ As you can see, you can treat a bitfield like an integral type -- it has the bit
 
 [section Rationale]
 
-An `fcppt::container::field<ArrayType>` is just a wrapper around a one-dimensional array `ArrayType` to make it act as a two-dimensional array.
+An `fcppt::container::field<ArrayType>` is just a wrapper around a
+one-dimensional array `ArrayType` to make it act as a two-dimensional array.
 
-[warning This class is a likely candidate for being rewritten in the future since it's only two-dimensinoal (not n-dimensional) and it's too monolithic. Use with caution.]
+[warning This class is a likely candidate for being rewritten in the future
+since it's only two-dimensinoal (not n-dimensional) and it's too monolithic.
+Use with caution.]
 
 [endsect]
 
@@ -107,22 +113,31 @@ An `fcppt::container::field<ArrayType>` is just a wrapper around a one-dimension
 
 [section linear_map/linear_set]
 
-The standard library offers the classes `std::map<T>` and `std::set<T>`. The elements in these containers are ordered and are internally stored as a tree (or some other data structure that guarantees logarithmic access times). This ensures high access times when enough elements are stored in the map. With a very small amount of elements, however, a linear solution outperforms the standard library containers [footnote Citation needed]. Because of this, there are `fcppt::container::linear_map<T>` and `fcppt::container::linear_set<T>` which expose the /same/ interface as the standard library containers, but with different guarantees, since they store the elements in a `std::list`.
+The standard library offers the classes `std::map<T>` and `std::set<T>`. The
+elements in these containers are ordered and are internally stored as a tree
+(or some other data structure that guarantees logarithmic access times). This
+ensures high access times when enough elements are stored in the map. With a
+very small amount of elements, however, a linear solution outperforms the
+standard library containers [footnote Citation needed]. Because of this, there
+are `fcppt::container::linear_map<T>` and `fcppt::container::linear_set<T>`
+which expose the /same/ interface as the standard library containers, but with
+different guarantees, since they store the elements in a `std::list`.
 
 [endsect]
 
 [section raw_vector]
 
-Unlike `std::vector`, `fcppt::container::raw_vector` can only be used with POD types and can leave its elements uninitialized.
-Consider the following: You want to read a number of bytes from an external source but you know that the
+Unlike `std::vector`, `fcppt::container::raw_vector` can only be used with POD
+types and can leave its elements uninitialized.  Consider the following: You
+want to read a number of bytes from an external source but you know that the
 function doesn't care if you have initialized them before reading.
 
 [import ../examples/raw_vector.cpp]
 
 [rawvector]
 
-Apart from the special constructor that leaves the elements uninitialized and a few special functions,
-`fcppt::container::raw_vector` is like `std::vector`.
+Apart from the special constructor that leaves the elements uninitialized and a
+few special functions, `fcppt::container::raw_vector` is like `std::vector`.
 
 [endsect]
 
