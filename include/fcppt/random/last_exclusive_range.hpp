@@ -24,6 +24,10 @@ template<
 >
 class last_exclusive_range;
 
+/// A range that is exlcudes its last value, thus forming (first, last]
+/**
+ * \tparam T must be integral
+*/
 template<
 	typename T
 >
@@ -41,12 +45,18 @@ class last_exclusive_range<
 	>
 {
 public:
+	/// Constructs a last_exclusive_range
+	/**
+	 * @throws exclusive_range_error if first == last
+	*/
 	last_exclusive_range(
 		T const &first,
 		T const &last
 	)
 	:
-		range<T>(
+		range<
+			T
+		>(
 			first,
 			last - static_cast<T>(1)
 		)
@@ -57,21 +67,6 @@ public:
 			);
 	}
 };
-
-template<
-	typename T
->
-last_exclusive_range<T> const
-make_last_exclusive_range(
-	T const &first,
-	T const &last
-)
-{
-	return last_exclusive_range<T>(
-		first,
-		last
-	);
-}
 
 }
 }

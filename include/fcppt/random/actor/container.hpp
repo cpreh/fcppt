@@ -17,6 +17,7 @@ namespace random
 namespace actor
 {
 
+/// The element vector
 typedef std::vector<
 	element
 > container;

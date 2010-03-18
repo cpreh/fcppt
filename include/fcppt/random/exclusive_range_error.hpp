@@ -16,6 +16,7 @@ namespace fcppt
 namespace random
 {
 
+/// Thrown if an exclusive_range is wrong
 class FCPPT_CLASS_SYMBOL exclusive_range_error
 :
 	public exception

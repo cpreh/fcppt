@@ -1,38 +1,51 @@
+//          Copyright Carl Philipp Reh 2009 - 2010.
+// Distributed under the Boost Software License, Version 1.0.
+//    (See accompanying file LICENSE_1_0.txt or copy at
+//          http://www.boost.org/LICENSE_1_0.txt)
+
+
 //[type_traits
 #include <fcppt/type_traits/is_string.hpp>
-#include <fcppt/type_traits/is_iterator.hpp>
 #include <fcppt/type_traits/is_float_or_double.hpp>
 #include <boost/utility/enable_if.hpp>
 #include <iostream>
 
 namespace
 {
+
 // A function which is only valid for something "derived from" std::basic_string
-template<typename T>
+template<
+	typename T
+>
 typename boost::enable_if
 <
 	fcppt::type_traits::is_string<T>,
 	T
 >::type
 edit_string(
-	T const &t)
+	T const &t
+)
 {
 	// We know operator+ is available with basic_string
 	return t + T();
 }
 
-template<typename T>
+template<
+	typename T
+>
 typename boost::enable_if
 <
 	fcppt::type_traits::is_float_or_double<T>,
 	T
 >::type
 divide_by_1000(
-	T const &t)
+	T const &t
+)
 {
 	// Might be unsafe with integral values.
 	return t * static_cast<T>(1) / static_cast<T>(1000);
 }
+
 }
 
 int main()

@@ -16,6 +16,7 @@ namespace random
 namespace actor
 {
 
+/// The actor callback
 typedef fcppt::function::object<
 	void ()
 > callback;

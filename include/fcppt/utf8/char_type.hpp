@@ -14,6 +14,7 @@ namespace fcppt
 namespace utf8
 {
 
+/// The char_type used for UTF-8
 typedef boost::uint8_t char_type;
 
 }

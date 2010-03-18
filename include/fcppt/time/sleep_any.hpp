@@ -10,12 +10,18 @@
 #include <fcppt/time/sleep.hpp>
 #include <fcppt/time/sleep_duration.hpp>
 #include <fcppt/chrono/duration_cast.hpp>
+#include <fcppt/chrono/duration_impl.hpp>
 
 namespace fcppt
 {
 namespace time
 {
 
+/// Sleep for a given duration
+/**
+ * \tparam Duration must be a chrono::duration
+ * \see sleep
+*/
 template<
 	typename Duration
 >

@@ -12,6 +12,7 @@ namespace fcppt
 namespace thread
 {
 
+/// The type used to count concurrent threads
 typedef unsigned hardware_concurrency_type;
 
 }

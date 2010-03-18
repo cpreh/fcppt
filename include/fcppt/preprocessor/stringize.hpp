@@ -7,19 +7,9 @@
 #ifndef FCPPT_PREPROCESSOR_STRINGIZE_HPP_INCLUDED
 #define FCPPT_PREPROCESSOR_STRINGIZE_HPP_INCLUDED
 
-#include <fcppt/config.hpp>
-
-#ifdef FCPPT_NARROW_STRING
-#include <boost/preprocessor/stringize.hpp>
-#else
-#include <boost/preprocessor/wstringize.hpp>
-#endif
+#include <fcppt/preprocessor/detail/stringize.hpp>
 
 /// Stringizes a macro parameter used with BOOST_PP so that it is compatible with fcppt::string
-#ifdef FCPPT_NARROW_STRING
-#define FCPPT_PP_STRINGIZE(s) BOOST_PP_STRINGIZE(s)
-#else
-#define FCPPT_PP_STRINGIZE(s) BOOST_PP_WSTRINGIZE(s)
-#endif
+#define FCPPT_PP_STRINGIZE(s) FCPPT_PP_DETAIL_STRINGIZE(s)
 
 #endif

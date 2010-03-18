@@ -8,7 +8,7 @@
 #define FCPPT_CHRONO_DURATION_CAST_HPP_INCLUDED
 
 #include <fcppt/chrono/common_type.hpp>
-#include <fcppt/chrono/duration_impl.hpp>
+#include <fcppt/chrono/duration_decl.hpp>
 #include <fcppt/ratio/divide.hpp>
 #include <boost/mpl/and.hpp>
 #include <boost/mpl/not.hpp>

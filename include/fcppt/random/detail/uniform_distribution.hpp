@@ -4,8 +4,8 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_RANDOM_UNIFORM_DISTRIBUTION_HPP_INCLUDED
-#define FCPPT_RANDOM_UNIFORM_DISTRIBUTION_HPP_INCLUDED
+#ifndef FCPPT_RANDOM_DETAIL_UNIFORM_DISTRIBUTION_HPP_INCLUDED
+#define FCPPT_RANDOM_DETAIL_UNIFORM_DISTRIBUTION_HPP_INCLUDED
 
 #include <fcppt/tr1/random.hpp>
 #include <boost/utility/enable_if.hpp>
@@ -15,6 +15,8 @@
 namespace fcppt
 {
 namespace random
+{
+namespace detail
 {
 
 template<
@@ -26,33 +28,34 @@ class uniform_distribution;
 template<
 	typename T
 >
-class uniform_distribution<
+struct uniform_distribution<
 	T,
 	typename boost::enable_if<
 		boost::is_floating_point<
 			T
 		>
 	>::type
-> {
-public:
+>
+{
 	typedef std::tr1::uniform_real<T> type;
 };
 
 template<
 	typename T
 >
-class uniform_distribution<
+struct uniform_distribution<
 	T,
 	typename boost::enable_if<
 		boost::is_integral<
 			T
 		>
 	>::type
-> {
-public:
+>
+{
 	typedef std::tr1::uniform_int<T> type;
 };
 
+}
 }
 }
 

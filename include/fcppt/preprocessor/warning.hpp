@@ -9,6 +9,7 @@
 
 #include <fcppt/preprocessor/message.hpp>
 
+/// Prints the compiler message "warning: " @a x
 #define FCPPT_PP_WARNING(x) FCPPT_PP_MESSAGE("warning: " x)
 
 #endif

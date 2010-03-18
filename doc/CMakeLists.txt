@@ -59,7 +59,6 @@ make_fcppt_documentation(
 	from_std_string.hpp
 	io
 	narrow.hpp
-	preprocessor/file.hpp 
 	preprocessor/stringize.hpp
 	string.hpp 
 	text.hpp 
@@ -101,6 +100,17 @@ make_fcppt_documentation(mpl mpl)
 make_fcppt_documentation(noncopyable nonassignable.hpp noncopyable.hpp)
 make_fcppt_documentation(log log)
 make_fcppt_documentation(optional optional.hpp optional_decl.hpp optional_impl.hpp optional_fwd.hpp)
+make_fcppt_documentation(
+	preprocessor
+	preprocessor/file.hpp 
+	preprocessor/fixme.hpp 
+	preprocessor/function.hpp 
+	preprocessor/message.hpp 
+	preprocessor/pragma.hpp 
+	preprocessor/todo.hpp
+	preprocessor/warning.hpp
+)
+make_fcppt_documentation(random random)
 make_fcppt_documentation(signal signal)
 make_fcppt_documentation(
 	smartpointers
@@ -121,6 +131,9 @@ make_fcppt_documentation(
 	weak_ptr_fwd.hpp
 	weak_ptr.hpp
 )
+make_fcppt_documentation(thread thread)
+make_fcppt_documentation(time time)
+#make_fcppt_documentation(tr1 tr1) not of any use now
 make_fcppt_documentation(variant variant)
 make_fcppt_documentation(
 	visibility

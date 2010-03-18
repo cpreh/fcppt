@@ -1,0 +1,7 @@
+MACRO (ADD_FCPPT_PREPROCESSOR_EXAMPLE name)
+	ADD_EXECUTABLE (fcpptpreprocessor${name} ${name}.cpp)
+	TARGET_LINK_LIBRARIES (fcpptpreprocessor${name} fcppt)
+ENDMACRO ()
+
+ADD_FCPPT_PREPROCESSOR_EXAMPLE(message)
+ADD_FCPPT_PREPROCESSOR_EXAMPLE(printing)

@@ -7,9 +7,9 @@
 #ifndef FCPPT_RANDOM_UNIFORM_HPP_INCLUDED
 #define FCPPT_RANDOM_UNIFORM_HPP_INCLUDED
 
+#include <fcppt/random/detail/uniform_distribution.hpp>
 #include <fcppt/random/default_generator.hpp>
 #include <fcppt/random/range_fwd.hpp>
-#include <fcppt/random/uniform_distribution.hpp>
 #include <fcppt/chrono/high_resolution_clock.hpp>
 #include <fcppt/chrono/time_point_impl.hpp>
 #include <fcppt/chrono/duration_impl.hpp>
@@ -21,6 +21,11 @@ namespace fcppt
 namespace random
 {
 
+/// A simple uniform distribution
+/**
+ * \tparam T the basic type that should be randomed
+ * \tparam Generator the tr1 generator used
+*/
 template<
 	typename T,
 	typename Generator = default_generator
@@ -29,12 +34,15 @@ class uniform
 {
 	FCPPT_NONASSIGNABLE(uniform)
 
-	typedef typename uniform_distribution<
+	typedef typename detail::uniform_distribution<
 		T
 	>::type range_type;
 public:
+	/// Constructs from a range
 	explicit uniform(
-		range<T> const &range
+		range<
+			T
+		> const &range
 	)
 	:
 		variate(
@@ -52,7 +60,8 @@ public:
 		)
 	{}
 
-	uniform(
+	/// Constructs from a range and a generator
+	explicit uniform(
 		range<T> const &range,
 		Generator const &gen
 	)
@@ -66,7 +75,9 @@ public:
 		)
 	{}
 
-	T operator()()
+	/// Draws a random number
+	T
+	operator()()
 	{
 		return variate();
 	}

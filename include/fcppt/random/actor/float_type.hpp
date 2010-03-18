@@ -14,7 +14,10 @@ namespace random
 namespace actor
 {
 
-// note: if we use double here, VC++ will generate only INF values
+/// The float type
+/**
+ * note: if we use double here, VC++ will generate only INF values
+*/
 typedef float float_type;
 
 }

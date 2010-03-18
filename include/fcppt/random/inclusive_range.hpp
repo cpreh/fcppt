@@ -14,12 +14,15 @@ namespace fcppt
 namespace random
 {
 
+/// An inclusive range
 template<
 	typename T
 >
 class inclusive_range
 :
-	public range<T>
+	public range<
+		T
+	>
 {
 public:
 	inclusive_range(
@@ -33,21 +36,6 @@ public:
 		)
 	{}
 };
-
-template<
-	typename T
->
-inclusive_range<T> const
-make_inclusive_range(
-	T const &first,
-	T const &last
-)
-{
-	return inclusive_range<T>(
-		first,
-		last
-	);
-}
 
 }
 }

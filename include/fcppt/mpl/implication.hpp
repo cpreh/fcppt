@@ -17,8 +17,8 @@ namespace mpl
 
 /// The Implication function: @a Left -> @a Right
 /**
- * @param Left A boolean expression
- * @param Right A boolean expression
+ * @tparam Left A boolean expression
+ * @tparam Right A boolean expression
  * @remarks Equal to (not @a Left) or @a Right
 */
 template<

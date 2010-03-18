@@ -1,0 +1,34 @@
+[section Preprocessor]
+
+There are some additional preprocessor macros included withing fcppt.
+Most of them deal with compiler messages or pretty printing.
+
+[section Messages]
+
+Sometimes it is desirable to print a compiler message.
+For example, you want to remember which things to fix.
+
+The basic macro is `FCPPT_PP_MESSAGE`.
+`FCPPT_PP_TODO`, `FCPPT_PP_WARNING` and `FCPPT_PP_FIXME` are wrappers that
+print "TODO: ", "warning: " or "FIXME: " in front respectively.
+
+[import ../examples/preprocessor/message.cpp]
+
+[preprocessor_message]
+
+[endsect]
+
+[section Printing]
+
+`FCPPT_PP_FILE` is a replacement for `__FILE__` that prints a stringized version.
+`FCPPT_PP_FUNCTION` tries to pretty print the current function.
+
+[import ../examples/preprocessor/printing.cpp]
+
+[preprocessor_printing]
+
+[endsect]
+
+[xinclude doxygen_preprocessor.xml]
+
+[endsect]

@@ -16,6 +16,7 @@ namespace fcppt
 namespace utf8
 {
 
+/// The utf-8 string type
 typedef std::basic_string<
 	char_type,
 	traits

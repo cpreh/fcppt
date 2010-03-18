@@ -15,6 +15,12 @@ namespace fcppt
 namespace thread
 {
 
+/// Let the current thread sleep
+/**
+ * This is different from 'time::sleep'.
+ * It is important to let threads sleep with this function.
+ * Equivalent to boost::thread::sleep
+*/
 FCPPT_SYMBOL
 void
 sleep(

@@ -7,16 +7,12 @@
 #ifndef FCPPT_PREPROCESSOR_MESSAGE_HPP_INCLUDED
 #define FCPPT_PREPROCESSOR_MESSAGE_HPP_INCLUDED
 
-#include <fcppt/preprocessor/pragma.hpp>
-#include <fcppt/config.hpp>
+#include <fcppt/preprocessor/detail/message.hpp>
 
 /// Prints a compiler message
-/** @see FCPPT_PP_TODO and @see FCPPT_PP_FIXME
+/**
+ * This macro might be unsupported on old platforms and will print nothing.
 */
-#if defined(_MSC_VER) || defined(FCPPT_HAVE_GCC_PRAGMA_MESSAGE)
-#define FCPPT_PP_MESSAGE(x) FCPPT_PP_PRAGMA(message (x))
-#else
-#define FCPPT_PP_MESSAGE(x)
-#endif
+#define FCPPT_PP_MESSAGE(x) FCPPT_PP_DETAIL_MESSAGE(x)
 
 #endif

@@ -20,6 +20,11 @@ namespace random
 namespace actor
 {
 
+/// The normalized actor
+/**
+ * It takes a container of elements and distributes
+ * evenly depending on how big each element's probability is.
+*/
 class normalized
 {
 	FCPPT_NONCOPYABLE(normalized)
@@ -30,6 +35,7 @@ public:
 
 	FCPPT_SYMBOL ~normalized();
 
+	/// invoke the random generator
 	FCPPT_SYMBOL void
 	operator()();
 private:

@@ -1,0 +1,20 @@
+[section Threads]
+
+fcppt provides a wrapper around 'boost::thread'.
+The new thread class asserts that it has been joined upon
+destruction.
+If the assertion is violated, `std::terminate` will be called.
+Most of the functions of the boost::thread class are wrapped,
+however, boost::this_thread and the future classes are not.
+
+[section Example]
+
+[import ../examples/thread.cpp]
+
+[thread]
+
+[endsect]
+
+[xinclude doxygen_thread.xml]
+
+[endsect]
