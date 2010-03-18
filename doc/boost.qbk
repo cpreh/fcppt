@@ -26,7 +26,7 @@ There is also `FCPPT_NONASSIGNABLE` that just makes the assignment operator inac
 
 [section Motivation]
 
-boost provides `boost::signal` for handling signals. The library has two problems, one minor and one major one. The minor one is: It doesn't live inside a namespace but in the "almost global" boost namespace. The major issue is: It's incredibly slow! [footnote Citation needed] Benchmarking a large library revealed that most of the performance goes into calling the boost signals. The same code with `fcppt::signal` had a significant performance advantage. So if you've been using boost::signal in performance critical code and your debugger indicates that the signal functions are indeed called often you might consider using `fcppt::signal` instead. A small example shows its usage:
+Boost provides `boost::signal` for handling signals. The library has two problems, one minor and one major one. The minor one is: It doesn't live inside a namespace but in the "almost global" boost namespace. The major issue is: It's incredibly slow! [footnote Citation needed] Benchmarking a large library revealed that most of the performance goes into calling the boost signals. The same code with `fcppt::signal` had a significant performance advantage. So if you've been using boost::signal in performance critical code and your debugger indicates that the signal functions are indeed called often you might consider using `fcppt::signal` instead. A small example shows its usage:
 
 [import ../examples/signals_simple.cpp]
 [signals_simple]
@@ -35,7 +35,7 @@ boost provides `boost::signal` for handling signals. The library has two problem
 
 [section Combiners]
 
-Signals can have return values. If you attach more than one callback to such a signal, one has to have a way of combining the return values of the callbacks to one single return value. This is archieved with what we call "combiners". A signal can have only one combiner. If you do not supply one, a default combiner is used. So what does a combiner do? Let's say the function of the signal has return type `T`. Then the combiner function has the signature: `T (T,T)`, so it gets two return values and returns another one. When invoking a signal with a return type, one of the following is returned:
+Signals can have return values. If you attach more than one callback to such a signal, one has to have a way of combining the return values of the callbacks into one single return value. This is archieved with what we call "combiners". A signal can have only one combiner. If you do not supply one, a default combiner is used. So what does a combiner do? Let's say the function of the signal has return type `T`. Then the combiner function has the signature: `T (T,T)`, so it gets two return values and returns another one. When invoking a signal with a return type, one of the following is returned:
 
 # If the signal doesn't have any callbacks registered, `T()` (the default-constructed return type) is returned.
 # If it has exactly one callback, let's call it `f`, attached, then the result of `f()` is returned.
@@ -95,10 +95,10 @@ There are, however, several other differences.
 Like `boost::variant` fcppt provides a wrapper for a recursive variant.
 If a variant can (indirectly) hold itself again, a problem arises.
 The variant class has to know all of its members' sizes. But until the variant
-is completely declared, the size of itself cannot be known.
+is completely declared, its own size cannot be known.
 To remedy this situation, you have to wrap a variant inside a struct,
 which in turn has to be wrapped inside `fcppt::variant::recursive`.
-Almost all algorithms on a variant will behave as if the `recursive` struct isn't there.
+Almost all algorithms on a variant will behave as if the `recursive` struct wasn't there.
 
 [import ../examples/recursive_variant.cpp]
 

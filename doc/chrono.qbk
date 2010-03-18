@@ -2,8 +2,8 @@
 
 [section Introduction]
 
-Chrono is an implementation of future's `std::chrono`.
-It roughly provides three different families of classes/templates:
+Chrono is an implementation of the upcoming C++ standard's `std::chrono`.
+It provides roughly three different families of classes/templates:
 
 [variablelist
 [[duration]
@@ -43,10 +43,10 @@ Each of the three clocks has a common set of functions and typedefs:
 [section system_clock]
 
 This clock can be used to measure system time.
-System time is the time usually displayed to the user when she
-watches the system clock or types commands as 'date'.
-[note Beware that the system time can change in expredictable ways.
-For example day light saving might come into effect or the user
+System time is the time usually displayed to the user when they
+watch the system clock or type commands such as 'date'.
+[note Beware that the system time can change in unpredictable ways.
+For example daylight-savings time might come into effect or the user
 or a date client might change it.
 It is therefore not recommended to use this clock to measure
 time differences (like it is needed for a timer).]

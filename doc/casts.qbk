@@ -39,7 +39,7 @@ but can be done with `static_cast`.
 [section truncation_check_cast]
 
 `truncation_check_cast` checks if a narrowing cast
-truncates the value. It converts the casted value back
+truncates the value. It converts the cast value back
 to its original type and checks if they are still equal.
 If the cast fails, `bad_truncation_check_cast` is thrown.
 

@@ -42,7 +42,7 @@ works almost the same.
 [vectorbasic]
 
 A lot of arithmetic operations are defined on vector
-and dim. Most of them are elementwise operations.
+and dim. Most of them are element-wise operations.
 
 [import ../examples/math/vector/arithmetic.cpp]
 
