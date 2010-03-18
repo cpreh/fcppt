@@ -17,7 +17,7 @@ int main()
 	// we can also convert an int into a float
 	fcppt::io::cout << fcppt::sn_cast<float>(42) << FCPPT_TEXT('\n');
 
-	// floats can be converted to floats or greater size
+	// floats can be converted into floats of greater size
 	fcppt::io::cout << fcppt::sn_cast<double>(3.5f) << FCPPT_TEXT('\n');
 
 	// the following is not allowed if double is greater than float
