@@ -11,9 +11,13 @@ with normal functions, which is a problem with the standard library's `assert`
 function for example. You're not the only one if you tried to write it as:
 `std::assert(0 < 1);`. Macros have no namespace scope.
 
-Note that identifiers containing `__` (two adjacent underscores), starting with
-an underscore followed by a capital letter and global identifiers starting with
-an underscore are reserved and thus shall not be used by any code.
+[caution A word of caution]
+
+Note that an identifier which meets the following requirements is /reserved/ and should not be used in user code:
+
+* Identifiers containing `__` (two adjacent underscores) /anywhere/
+* /Starting/ with an /underscore/ followed by a /capital letter/ (such as `_Foo`)
+* /Global identifiers/ starting with an /underscore/
 
 [endsect]
 
