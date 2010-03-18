@@ -19,8 +19,6 @@ int main()
 
 	typedef clock::time_point time_point;
 
-	typedef clock::duration duration;
-
 	// obtain the current time_point
 	time_point const time1(
 		clock::now()
@@ -39,7 +37,7 @@ int main()
 		)
 	);
 
-	// output the current time
+	// output the current time as string
 	fcppt::io::cout
 		<< fcppt::time::ctime(
 			c_time

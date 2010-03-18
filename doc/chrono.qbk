@@ -18,7 +18,7 @@ between two time_points.
 Its template parameters are its associated clock and a duration.
 Two time_points can be subtracted to yield a duration.
 Also a time_point has the time_since_epoch() function that returns a duration
-that represents a time span starting at the Clock's absolute offset.
+that represents a time span starting at the clock's absolute offset.
 ]]
 
 [[clocks]
@@ -33,9 +33,9 @@ returns the current point in time. All of the three serve different purposes.
 
 [section Clocks]
 
-Each of the three clocks has a common set or functions and typedefs:
+Each of the three clocks has a common set of functions and typedefs:
 [variablelist
-[[`time_point`][The `time_point` associated with this clock]]
+[[`time_point`][The `time_point` associated with the clock]]
 [[`now()`][Returns the current `time_point`]]
 [[`is_monotonic`][A boolean constant that tells if this clock is monotonic]]
 ]
@@ -62,7 +62,7 @@ time_point can be converted to and from `std::time_t`.
 A monotonic clock is guaranteed to only produce increasing time_points
 when time advances. This means two calls to its `now()` function:
 ``t1 = monotonic_clock::now(); t2 = monotonic_clock::now()`` will guarantee
-that `t2` is always greater than `t1`.
+that `t2` is always equal to or greater than `t1`.
 [note This cannot be true for time points far in the future, as a computer is a finite machine.
 But the time span is guaranteed to be large, like hundreds of years.]
 Monotonic clocks are the only sensible choice if you want to implement a timer.
