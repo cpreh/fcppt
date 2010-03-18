@@ -102,7 +102,7 @@ Include wrappers for tr1 headers (VC++ uses <header> but gcc uses <tr1/header>).
 [
 fcppt's variant class is similar to the variant provided by boost.
 The differences are that it doesn't use an undefined "union trick",
-it can be empty (which means that the first type doesn't have to be default construbtible),
+it can be empty (which means that the first type doesn't have to be default constructible),
 its types are implemented with an mpl sequence directly and it offers up to ternary visitation.
 ]]
 
