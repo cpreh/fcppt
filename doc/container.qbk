@@ -132,6 +132,9 @@ types and can leave its elements uninitialized.  Consider the following: You
 want to read a number of bytes from an external source but you know that the
 function doesn't care if you have initialized them before reading.
 
+[caution Reading access to uninitialized elements of `raw_vector` is undefined
+behaviour. You have to write the elements before reading them.]
+
 [import ../examples/raw_vector.cpp]
 
 [rawvector]
