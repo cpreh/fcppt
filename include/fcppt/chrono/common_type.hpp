@@ -19,7 +19,8 @@ namespace chrono
 {
 
 /// Calculates the common type of a binary expression
-/** This is actually an implementation detail but it is retained here
+/**
+ * This is actually an implementation detail but it is retained here
  * because std::chrono also has it. A user should not need to use this.
 */
 template<

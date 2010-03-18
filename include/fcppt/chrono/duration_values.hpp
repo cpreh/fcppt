@@ -14,16 +14,20 @@ namespace fcppt
 namespace chrono
 {
 
+/// A traits class for duration representations
 template<
 	typename Rep
 >
-struct duration_values {
+struct duration_values
+{
+	/// The zero value for a given represenation
 	static Rep
 	zero()
 	{
 		return Rep(0);
 	}
 
+	/// The minimum value for a given represenation
 	static Rep
 	min()
 	{
@@ -32,6 +36,7 @@ struct duration_values {
 		>::lowest();
 	}
 
+	/// The maximum value for a given represenation
 	static Rep
 	max()
 	{

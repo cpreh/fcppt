@@ -16,6 +16,7 @@ namespace fcppt
 namespace chrono
 {
 
+/// A duration that counts in microseconds
 typedef duration<
 	rep,
 	ratio::micro
