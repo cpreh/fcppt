@@ -9,7 +9,7 @@ It roughly provides three different families of classes/templates:
 [[duration]
 [
 `fcppt::chrono::duration` is a template class that represents a span in time
-between two time_points.
+between two `time_point`s.
 ]]
 
 [[time_point]
@@ -17,14 +17,14 @@ between two time_points.
 `fcppt::chrono::time_point` is a template class that represents a given point time.
 Its template parameters are its associated clock and a duration.
 Two time_points can be subtracted to yield a duration.
-Also a time_point has the time_since_epoch() function that returns a duration
+Also a time_point has the `time_since_epoch()` function that returns a duration
 that represents a time span starting at the clock's absolute offset.
 ]]
 
 [[clocks]
 [
 `fcppt::chrono::system_clock`, `fcppt::chrono::monotonic_clock` and `fcppt::chrono::high_resolution_clock`
-are the three clock classes provided by fcppt. They all have a static function called now() that
+are the three clock classes provided by fcppt. They all have a static function called `now()` that
 returns the current point in time. All of the three serve different purposes.
 ]]
 ]

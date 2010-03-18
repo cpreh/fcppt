@@ -35,6 +35,7 @@ int main()
 		)
 	);
 
+	// obtain the second time point
 	time_point const time2(
 		clock::now()
 	);
