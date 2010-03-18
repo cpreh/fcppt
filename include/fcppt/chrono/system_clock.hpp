@@ -21,7 +21,8 @@ namespace chrono
 {
 
 /// Provides the system clock.
-/** This clock can be used to display the current time.
+/**
+ * This clock can be used to display the current time.
  * It is not suitable for measuring time differences as the system clock
  * can change anytime without you noticing. For example the user changes
  * the systme clock or a date client updates it.
@@ -48,12 +49,14 @@ public:
 	time_point
 	now();
 
+	/// Convert a time_point into std::time_t
 	FCPPT_SYMBOL static
 	std::time_t
 	to_time_t(
 		time_point const &
 	);
 
+	/// Convert std::time_t into a time_point
 	FCPPT_SYMBOL
 	static time_point
 	from_time_t(
