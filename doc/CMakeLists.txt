@@ -142,6 +142,7 @@ make_fcppt_documentation(
 	export_symbol.hpp
 )
 make_fcppt_documentation(type_traits type_traits)
+make_fcppt_documentation(type_name_info type_name.hpp type_info.hpp)
 
 ADD_CUSTOM_COMMAND(
 	TARGET doc

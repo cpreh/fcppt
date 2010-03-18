@@ -35,7 +35,7 @@ Boost provides `boost::signal` for handling signals. The library has two problem
 
 [section Combiners]
 
-Signals can have return values. If you attach more than one callback to such a signal, one has to have a way of combining the return values of the callbacks into one single return value. This is archieved with what we call "combiners". A signal can have only one combiner. If you do not supply one, a default combiner is used. So what does a combiner do? Let's say the function of the signal has return type `T`. Then the combiner function has the signature: `T (T,T)`, so it gets two return values and returns another one. When invoking a signal with a return type, one of the following is returned:
+Signals can have return values. If you attach more than one callback to such a signal, one has to have a way of combining the return values of the callbacks to one single return value. This is achieved with what we call "combiners". A signal can have only one combiner. If you do not supply one, a default combiner is used. So what does a combiner do? Let's say the function of the signal has return type `T`. Then the combiner function has the signature: `T (T,T)`, so it gets two return values and returns another one. When invoking a signal with a return type, one of the following is returned:
 
 # If the signal doesn't have any callbacks registered, `T()` (the default-constructed return type) is returned.
 # If it has exactly one callback, let's call it `f`, attached, then the result of `f()` is returned.
@@ -76,10 +76,10 @@ is actually absent, but it doesn't require free store.
 Unlike `boost::variant` it also doesn't use an undefined union trick.
 There are, however, several other differences.
 
-* Proper seperation of the headers. Each functionality resides in its own header file.
+* Proper separation of the headers. Each functionality resides in its own header file.
 * `fcppt::variant::object` can be empty. It doesn't require its first type to be default constructible.
 * `fcppt::variant` reuses `boost::mpl sequences` to abstract the types that it can hold, so we have less code duplication.
-* A ternany visitation is supplied. The whole visitation algorithms could be refactored to be n-ary, but a ternany
+* A ternary visitation is supplied. The whole visitation algorithms could be refactored to be n-ary, but a ternary
   visitation already has severe impact on compile time.
 
 [section A simple example]

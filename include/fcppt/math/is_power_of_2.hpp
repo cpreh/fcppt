@@ -17,7 +17,9 @@ namespace math
 
 /// Checks if @a t is a power of two
 /**
- * @tparam T must be an unsigned integral type
+ * @tparam T must be an unsigned integral typefooobar
+ * @param x foobar
+ *
  * If you need to check whether a signed integral type is a power of two,
  * convert it to its unsigned counterpart before checking.
 */
@@ -32,10 +34,10 @@ typename boost::enable_if<
 	bool
 >::type
 is_power_of_2(
-	T const t
+	T const x
 )
 {
-	return t && !(t & (t - 1));
+	return x && !(x & (x - 1));
 }
 
 }
