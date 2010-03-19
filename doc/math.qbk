@@ -86,7 +86,7 @@ This is achieved by splitting every class into at least three template component
 Because the size and the storage type are orthogonal, it is possible to create view
 types (which matrix already uses internally).
 
-However, the static and dynamic typedefs as shown in ealier examples should be enough
+However, the static and dynamic typedefs as shown in earlier examples should be enough
 for the casual user.
 
 [endsect]
