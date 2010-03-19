@@ -1,3 +1,7 @@
+# - Find fcppt 
+# This module tries to find the fcppt include directories and libraries using
+# pkg_config and other heuristics
+
 pkg_check_modules(FCPPT fcppt)
 
 IF(NOT FCPPT_FOUND)
