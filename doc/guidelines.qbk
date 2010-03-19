@@ -237,7 +237,7 @@ Many people use ".h" for their C++ header files. We encourage using "hpp" becaus
 [endsect]
 
 [section Namespaces and directories]
-To avoid filename clashes we let the filesystem hieararchy follow the namespace
+To avoid filename clashes we let the filesystem hierarchy follow the namespace
 hierarchy. So a namespace creates a new directory - with nesting of directories
 of course.
 [endsect]
@@ -295,7 +295,7 @@ class text
 ``
 
 The corresponding include guard would be: `SGE_GUI_BUTTONS_TEXT_HPP_INCLUDED`.
-This way, sensible behaviour is guaranteed. This, of course, requires that
+This way, sensible behavior is guaranteed. This, of course, requires that
 header files are quite atomic (see "Atomic headers" above). If headers aren't
 really atomic, use the (converted) file name as the include guard.
 [endsect]
@@ -344,7 +344,7 @@ might have to write your own comparison function.
 The use of the signed types is discouraged. Of course, sometimes you need to
 use them to get negative numbers, but the signed types have a distinct
 disadvantage: Some operations are undefined or implementation defined. For
-example, the behaviour of the % operator is partially implementation defined.
+example, the behavior of the % operator is partially implementation defined.
 Also, the value of `INT_MAX+1` is undefined, so you cannot use ints to "wrap
 around" the borders. The unsigned types have such guarantees, so use them if
 you really do not need negative numbers.
