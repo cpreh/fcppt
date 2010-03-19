@@ -31,6 +31,69 @@ returns the current point in time. All of the three serve different purposes.
 
 [endsect]
 
+[section Durations]
+
+A duration is a template class that represents a span in time.
+It has two template parameters:
+
+* The underlying type the value is saved as,
+* A ratio that tells how the value is to be interpreted.
+
+[import ../examples/chrono/duration.cpp]
+
+Here is an example for a duration counting in milliseconds.
+
+[note This is just for exposition. `fcppt::chrono::milliseconds`
+already exists, and you don't have to typedef milliseconds
+yourself.]
+
+[chrono_duration_decl]
+
+Two durations can be converted using `duration_cast`.
+
+[chrono_duration_convert]
+
+A duration has a `count()` function that returns its internal
+represenatation. This is most useful if you have to do
+additional calculations on a duration.
+
+[chrono_duration_count]
+
+[endsect]
+
+[section Time Points]
+
+A time point is a template class that represents a point in time.
+It has two template parameters:
+
+* The clock the `time_point` belongs to.
+* An associated duration.
+
+Time points aren't very useful on their own, because they should
+be obtained from a clock and not constructed directly.
+Therefore the following examples use a hidden function `obtain_time_point`
+to illustrate their use.
+
+Time points can be subtracted to yield a duration.
+
+[import ../examples/chrono/time_point.cpp]
+
+[chrono_time_point_subtract]
+
+Time points can also be converted using `time_point_cast`,
+This is, however, seldomly needed.
+[note You have to cast to the destination duration, because you should
+not change the clock types of time points.]
+
+[chrono_time_point_convert]
+
+An absolute offset can be obtained using the `time_since_epoch()` function.
+This offset represents a duration from the start of the associated clock.
+
+[chrono_time_point_epoch]
+
+[endsect]
+
 [section Clocks]
 
 Each of the three clocks has a common set of functions and typedefs:
