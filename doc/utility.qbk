@@ -149,7 +149,7 @@ overloading on "the same" types or generally catch programming errors.
 Because a template meta function is a real mathematical function (which means
 it is right-unique), there is no way to create a new type just by using
 templates.  A new type has to be created instead (which can be done by defining
-a new class, `struct`,`enum` or `union`).  `fcppt::strong_typedef` is therefore
+a new `class`, `struct`,`enum` or `union`).  `fcppt::strong_typedef` is therefore
 a type that gets two template parameters:
 
 * The wrapped type
