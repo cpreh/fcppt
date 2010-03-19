@@ -13,7 +13,7 @@ fcppt does so as well.
 
 `fcppt::shared_ptr` is a wrapper around
 `boost::shared_ptr` that takes its deleter as a template template parameter.
-This can save you some typing and is less error prone than to pass the
+This can save you some typing and is less error prone than passing the
 deleter in every constructor call. It also has drawbacks because the deleter
 has to be known at compile time.
 

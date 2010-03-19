@@ -57,7 +57,7 @@ preprocessor directive and it is disputed if that will ever be possible.
 [section Description]
 
 This part of fcppt is similar to boost::assign, but fixes one issue: Why is
-there `list_of`, which has a Method `to_adapter`? Why not just a single
+there `list_of`, which has a method `to_adapter`? Why not just a single
 templated `make_container` function? This is exactly what `fcppt::assign`
 consists of. It even works for associative containers (like `std::map` or
 `std::set`). It uses `fcppt::container::is_associative` to determine if a
@@ -88,7 +88,7 @@ int main()
 ``
 
 Gives an error message because the compiler tries to compare a
-`std::vector<int>` with...well, whatever `make_container` returns (which,
+`std::vector<int>` with... well, whatever `make_container` returns (which,
 sadly, is not directly a `std::vector<int>`). In that case, just `static_cast`
 to the desired container, as such:
 
@@ -149,7 +149,7 @@ overloading on "the same" types or generally catch programming errors.
 Because a template meta function is a real mathematical function (which means
 it is right-unique), there is no way to create a new type just by using
 templates.  A new type has to be created instead (which can be done by defining
-a new class, `struct`,`enum` or `union`).  `fcppt::strong_typedef` is therefore
+a new `class`, `struct`,`enum` or `union`).  `fcppt::strong_typedef` is therefore
 a type that gets two template parameters:
 
 * The wrapped type
