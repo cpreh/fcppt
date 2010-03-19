@@ -25,6 +25,7 @@ of floats and other integral types.
 [section Linear Algebra Classes]
 
 fcppt has three classes for linear algebra:
+
 * vector
 * dim
 * matrix
