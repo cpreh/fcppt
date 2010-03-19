@@ -96,7 +96,7 @@ An `fcppt::container::field<ArrayType>` is just a wrapper around a
 one-dimensional array `ArrayType` to make it act as a two-dimensional array.
 
 [warning This class is a likely candidate for being rewritten in the future
-since it's only two-dimensinoal (not n-dimensional) and it's too monolithic.
+since it's only two-dimensional (not n-dimensional) and it's too monolithic.
 Use with caution.]
 
 [endsect]
@@ -133,7 +133,7 @@ want to read a number of bytes from an external source but you know that the
 function doesn't care if you have initialized them before reading.
 
 [caution Reading access to uninitialized elements of `raw_vector` is undefined
-behaviour. You have to write the elements before reading them.]
+behavior. You have to write the elements before reading them.]
 
 [import ../examples/raw_vector.cpp]
 
