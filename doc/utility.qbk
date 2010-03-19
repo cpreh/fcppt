@@ -167,7 +167,7 @@ There is also a macro to ease the process of creating distinct types.
 
 [section type_info/type_name]
 
-There are two utility functions regarding RAII worth mentioning:
+There are two utility functions regarding RTTI worth mentioning:
 `fcppt::type_info` is a wrapper around the standard C++ class `std::type_info`.
 The problem with the standard class is that it isn't copyable and thus cannot
 be passed around easily. `fcppt::type_info` solves this problem. In its
