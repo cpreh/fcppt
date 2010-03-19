@@ -54,7 +54,7 @@ Two durations can be converted using `duration_cast`.
 [chrono_duration_convert]
 
 A duration has a `count()` function that returns its internal
-represenatation. This is most useful if you have to do
+representation. This is most useful if you have to do
 additional calculations on a duration.
 
 [chrono_duration_count]
