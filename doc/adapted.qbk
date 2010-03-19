@@ -25,7 +25,7 @@ void do_something(std::basic_string<CharType,CharTraits> const &s)
 }
 ``
 
-Of course, it is impractical to templatize /every/ function which takes a string or returns one. So at some point, one has to decide to use `std::string`, `std::wstring` or even something completely different. fcppt defines `fcppt::char_type` and `fcppt::string`, which is a specialization of `std::basic_string`. The cmake directive `ENABLE_NARROW_STRING` controls if the character type is `char` oder `wchar_t`. Whenever you use literals with `fcppt::string` you have to enclose them with `FCPPT_TEXT`.
+Of course, it is impractical to templatize /every/ function which takes a string or returns one. So at some point, one has to decide on using either `std::string`, `std::wstring` or even something completely different. fcppt defines `fcppt::char_type` and `fcppt::string`, which is a specialization of `std::basic_string`. The cmake directive `ENABLE_NARROW_STRING` controls if the character type is `char` oder `wchar_t`. Whenever you use literals with `fcppt::string` you have to enclose them with `FCPPT_TEXT`.
 
 [note Admittedly, enclosing each literal in this long and ugly macro might seem really tedious. Prefixing macros with `FCPPT_`, however, is mandatory - so is writing macros in uppercase. So we don't really have a choice here. Besides, most short macros like `T`, `T_`, `_` are already taken by other libraries.]
 
