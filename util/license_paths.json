@@ -6,6 +6,10 @@
     { 
       "files" : ["include/fcppt/ratio/.*"],
       "license" : "util/license_template_ratio.hpp"
+    },
+    {
+      "files" : ["include/fcppt/function/.*"],
+      "license" : "util/license_template_function.hpp"
     }
   ],
   "nolicense" : ["src/utf8/facet.cpp", "build/.*", "doc/.*", "util/.*"]
