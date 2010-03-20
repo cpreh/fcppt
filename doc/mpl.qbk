@@ -1,12 +1,15 @@
 [section MPL]
 
-fcppt's mpl library consists of some meta functions considered
+fcppt's mpl library consists of some meta functions
+and runtime functions considered
 general enough, that they might be useful.
 
 [section for_each]
 
-The most important additional is `fcppt::mpl::for_each` that
+The most important addition to mpl is `fcppt::mpl::for_each` that
 doesn't construct the types it iterates over.
+This makes it possible to iterate over types that cannot be constructed,
+for example an abstract base class.
 
 [import ../examples/mpl/for_each.cpp]
 

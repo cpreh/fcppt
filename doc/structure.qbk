@@ -1,0 +1,34 @@
+[section Structure]
+
+The general structure of fcppt is explained here.
+
+[section Files]
+
+Every function, typedef or class resides in its own header file.
+So, for example, if you want to use `fcppt::to_std_string` (which is a function)
+you have to `#include <fcppt/to_std_string.hpp>`.
+
+All "normal" classes (not template classes) have an additional fwd header,
+which only provides a declaration of the class.
+For example `<fcppt/type_info_fwd.hpp>` provides the declaration of `fcppt::type_info`
+and `<fcppt/type_info.hpp>` provides the definition.
+
+Template classes are split in three files. First, the _fwd header is the same
+as for "normal" classes. Second, the _decl header provides the definition of the class.
+Third, the _impl header provides the template's definitions.
+
+[caution If you forget to include the _impl header where the implementation of a template is needed,
+you will get undefined references when linking.]
+
+For example, `<fcppt/strong_typedef_fwd.hpp>` provides the declaration of the class,
+`<fcppt/strong_typedef_decl.hpp>` provides the definition of the class
+and `<fcppt/strong_typedef_impl.hpp>` provides the definitions of the class's functions.
+
+Some sub libraries, like `fcppt::math::vector`, provide convenience headers that include
+almost everything that belongs to the sub library.
+For example, `<fcppt/math/vector/vector.hpp>` includes most of the headers
+found under `fcppt/math/vector/`.
+
+[endsect]
+
+[endsect]
