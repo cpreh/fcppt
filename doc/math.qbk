@@ -4,21 +4,31 @@
 
 math provides a set of utility classes and functions.
 
-* vector, dim and matrix
+[variablelist
+
+[[vector, dim and matrix]
+[
 These classes are very similar to each other.
 Each of them can be statically or dynamically sized.
 They provide simple getter, setter, arithmetic operations
 and conversions.
+]]
 
-* sphere and box
+[[sphere and box]
+[
 These classes offer wrappers around statically sized
 spheres and boxes.
+]]
 
-* free functions
+[[free functions]
+[
 There are a lot of free utility functions like
 float comparison, pi, absolute difference, and so on.
 Most of these utility functions deal with abstractions
 of floats and other integral types.
+]]
+
+]
 
 [endsect]
 
@@ -30,13 +40,19 @@ fcppt has three classes for linear algebra:
 * dim
 * matrix
 
-All of them are very similar, however.
+Each of them has a typedef struct for declaring
+a static or a dynamic class, called `static_`
+and `dynamic` respectively.
 
 [section Vector and Dim]
 
 The following example shows how to declare
 static and dynamic vectors. Note that dim
 works almost the same.
+
+[caution Because C++03 doesn't support 'template typedefs',
+`static_` and `dynamic` are structs that use a nested
+typedef called `type`.]
 
 [import ../examples/math/vector/basic.cpp]
 
