@@ -1,11 +1,12 @@
 {
+  "standard_match" : ".*\.?pp",
   "main_license" : "util/license_template.hpp",
   "exceptions" : 
   [
     { 
-      "files" : ["include/ratio/*", "include/ratio/detail/*"],
-      "license" : ["util/license_template_ratio.hpp"]
+      "files" : ["include/fcppt/ratio/.*"],
+      "license" : "util/license_template_ratio.hpp"
     }
   ],
-  "nolicense" : ["src/utf8/facet.cpp"]
+  "nolicense" : ["src/utf8/facet.cpp", "build/.*", "doc/.*", "util/.*"]
 }
