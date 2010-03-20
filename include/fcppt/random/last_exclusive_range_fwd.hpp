@@ -4,11 +4,20 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_RANDOM_RANGE_HPP_INCLUDED
-#define FCPPT_RANDOM_RANGE_HPP_INCLUDED
+#ifndef FCPPT_RANDOM_LAST_EXCLUSIVE_RANGE_FWD_HPP_INCLUDED
+#define FCPPT_RANDOM_LAST_EXCLUSIVE_RANGE_FWD_HPP_INCLUDED
 
-#include <fcppt/random/range_fwd.hpp>
-#include <fcppt/random/range_decl.hpp>
-#include <fcppt/random/range_impl.hpp>
+namespace fcppt
+{
+namespace random
+{
+
+template<
+	typename T
+>
+class last_exclusive_range;
+
+}
+}
 
 #endif
