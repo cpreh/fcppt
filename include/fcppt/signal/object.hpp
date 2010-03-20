@@ -7,6 +7,7 @@
 #ifndef FCPPT_SIGNAL_OBJECT_HPP_INCLUDED
 #define FCPPT_SIGNAL_OBJECT_HPP_INCLUDED
 
+#include <fcppt/signal/object_fwd.hpp>
 #include <fcppt/signal/detail/base.hpp>
 #include <fcppt/signal/detail/base_impl.hpp>
 #include <fcppt/signal/detail/operator_limit.hpp>
@@ -26,7 +27,7 @@ namespace signal
 
 template<
 	typename T,
-	typename Enable = void
+	typename Enable
 >
 class object
 :
