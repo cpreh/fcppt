@@ -7,7 +7,7 @@
 #ifndef FCPPT_RANDOM_LAST_EXCLUSIVE_RANGE_DECL_HPP_INCLUDED
 #define FCPPT_RANDOM_LAST_EXCLUSIVE_RANGE_DECL_HPP_INCLUDED
 
-#include <fcppt/last_exclusive_range_fwd.hpp>
+#include <fcppt/random/last_exclusive_range_fwd.hpp>
 #include <fcppt/random/range_decl.hpp>
 #include <boost/type_traits/is_integral.hpp>
 #include <boost/static_assert.hpp>

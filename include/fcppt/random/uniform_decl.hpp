@@ -13,6 +13,10 @@
 #include <fcppt/tr1/random.hpp>
 #include <fcppt/nonassignable.hpp>
 
+namespace fcppt
+{
+namespace random
+{
 
 template<
 	typename T,
@@ -56,5 +60,4 @@ private:
 }
 }
 
-#endif
 #endif

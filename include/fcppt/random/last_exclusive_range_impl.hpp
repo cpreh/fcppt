@@ -33,7 +33,4 @@ fcppt::random::last_exclusive_range<T>::last_exclusive_range(
 		);
 }
 
-}
-}
-
 #endif
