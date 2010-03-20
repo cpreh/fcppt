@@ -24,7 +24,7 @@ MACRO(make_fcppt_documentation name)
 
 	FOREACH(arg ${ARGN})
 		SET(DOXYGEN_INPUT_PATH "${DOXYGEN_INPUT_PATH} ${CMAKE_SOURCE_DIR}/include/fcppt/${arg}")
-	ENDFOREACH(arg)
+	ENDFOREACH()
 
 	CONFIGURE_FILE(Doxyfile.in ${DOXYGEN_CURRENT_FILE} @ONLY IMMEDIATE)
 
@@ -47,7 +47,7 @@ MACRO(make_fcppt_documentation name)
 			--path ${DOC_OUTPUT}
 			${BOOSTBOOK_STYLESHEETS}/doxygen/doxygen2boostbook.xsl
 			${DOC_OUTPUT}/doxygen.xml)
-ENDMACRO(make_fcppt_documentation)
+ENDMACRO()
 
 make_fcppt_documentation(
 	adapted 
