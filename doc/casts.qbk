@@ -7,6 +7,8 @@ fcppt provides a number of cast utility functions.
 `fcppt::dynamic_cast_` is a wrapper around `dynamic_cast`
 that throws an `fcppt::bad_dynamic_cast` on failure,
 which provides more type information for the failed cast.
+`fcppt::bad_dynamic_cast` has two functions 'source'
+and 'destination' that both return 'fcppt::type_info'.
 
 [import ../examples/dynamic_cast.cpp]
 

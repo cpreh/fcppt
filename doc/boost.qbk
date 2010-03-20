@@ -56,8 +56,8 @@ Note the use of `fcppt::signal::connection_manager`. This is a simple class to a
 
 [section Optional]
 `fcppt::optional` is a replacement for `boost::optional`.
-It simply doesn't use an undefined union trick. If boost stops doing that,
-we might consider to use `boost::optional` again.
+It simply doesn't use a union trick that leads to undefined behaviour.
+If boost stops doing that, we might consider to use `boost::optional` again.
 
 An optional, unlike a pointer, holds its optional object by value.
 This also means that an optional has an additional size overhead if the value
