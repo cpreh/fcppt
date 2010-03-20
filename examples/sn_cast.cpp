@@ -24,7 +24,7 @@ int main()
 	//fcppt::sn_cast<float>(4.0);
 
 	// the following is not allowed if long is greater than int
-	//fcppt::sn_cast<int>(4l);
+	//fcppt::sn_cast<int>(4L);
 
 	// conversion from a floating point type to an integral type is not allowed
 	//fcppt::sn_cast<int>(4.0);
