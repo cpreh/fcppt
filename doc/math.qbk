@@ -40,9 +40,14 @@ fcppt has three classes for linear algebra:
 * dim
 * matrix
 
-Each of them has a typedef struct for declaring
-a static or a dynamic class, called `static_`
-and `dynamic` respectively.
+They all have provide the following:
+
+* A typedef struct exists for declaring a static or a dynamic class, called `static_` and `dynamic` respectively.
+* Variadic constructors up to an implementation defined size.
+* Copy constructors and assignment operators.
+* Iterators, `begin`, `end`, and so on.
+* Access to elements via `operator[]` or `at()`.
+* Equality and inequality comparison.
 
 [section Vector and Dim]
 
@@ -74,6 +79,18 @@ All linear algebra classes support a set of conversion functions.
 [import ../examples/math/vector/convert.cpp]
 
 [vectorconvert]
+
+vector also provides named accessors.
+They are called x, y, z and w respectively.
+For dim, they are called w, h and d.
+
+[note If you try to access them out of bounds, you will get 
+a compiler error for static vectors or dims. But for dynamic
+vectors or dims, this is undefined.]
+
+[import ../examples/math/vector/access.cpp]
+
+[vectoraccess]
 
 [endsect]
 
@@ -115,6 +132,9 @@ Currently fcppt provides two simple geometric classes:
 
 * sphere - An n-dimensional sphere
 * box - An n-dimensional box
+
+An example for box follows.
+Note that sphere is very similar.
 
 [import ../examples/math/box.cpp]
 
