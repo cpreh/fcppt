@@ -12,6 +12,7 @@
 #include <fcppt/container/raw_vector_impl.hpp>
 #include <fcppt/error/strerrno.hpp>
 #include <fcppt/from_std_string.hpp>
+#include <fcppt/to_std_string.hpp>
 #include <unistd.h>
 #include <cerrno>
 #endif
@@ -38,7 +39,9 @@ fcppt::filesystem::readlink(
 	{
 		ssize_t const ret(
 			::readlink(
-				link.string().c_str(),
+				to_std_string(
+					link.string()
+				).c_str(),
 				buf.data(),
 				buf.capacity()
 			)
