@@ -96,7 +96,7 @@ public:
 std::locale const
 get_locale()
 {
-	static std::locale loc;
+	static std::locale loc("");
 	return loc;
 }
 
@@ -138,13 +138,15 @@ codecvt(
 	state_type state;
 
 	Out *to = buf.data();
+
 	for(
 		In const *from = s.data(), *from_next = 0;
-		from != from_next;
+		; // loop forever
 		from = from_next
 	)
 	{
 		Out *to_next;
+
 		std::codecvt_base::result const result(
 			call_traits<Out>::conv(
 				conv,
@@ -158,7 +160,8 @@ codecvt(
 			)
 		);
 
-		switch(result) {
+		switch(result)
+		{
 		case std::codecvt_base::noconv:
 			return return_type(
 				s.begin(),
@@ -180,22 +183,18 @@ codecvt(
 				buf.resize(buf.size() * 2);
 				to = buf.data() + diff;
 			}
-			break;
+			continue;
 		case std::codecvt_base::ok:
 			return return_type(
 				buf.data(),
 				to_next
 			);
-		default:
-			throw fcppt::exception(
-				FCPPT_TEXT("Unknown return value in codecvt!")
-			);
 		}
-	}
 
-	throw fcppt::exception(
-		FCPPT_TEXT("codecvt: ok return value unreached!")
-	);
+		throw fcppt::exception(
+			FCPPT_TEXT("Unknown return value in codecvt!")
+		);
+	}
 }
 
 }
