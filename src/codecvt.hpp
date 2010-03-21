@@ -131,8 +131,7 @@ codecvt(
 	);
 
 	buffer_type buf(
-		s.size(),
-		0
+		s.size()
 	);
 
 	state_type state;
