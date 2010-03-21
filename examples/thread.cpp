@@ -41,6 +41,6 @@ int main()
 		)
 	);
 	
-	task.join(); // important, if left out, taks's destructor will call std::terminate()!
+	task.join(); // important, if left out, task's destructor will call std::terminate()!
 }
 //]
