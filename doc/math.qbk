@@ -66,7 +66,7 @@ vector2 a = v + d;
 Errors like this happen, and they're prevented by strictly separating
 dimensions from vectors. Another approach would be even more strict: To
 separate points from direction vectors. Some libraries do that. We, however,
-though of this as too strict and drew the line. It's still a bit disputed,
+thought of this as too strict and drew the line. It's still a bit disputed,
 though. If there are strong arguments for further separation, we're open for
 it. 
 
