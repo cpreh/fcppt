@@ -138,7 +138,7 @@ now - simply because we didn't need those yet. If you're interested in extending
 
 [endsect]
 
-[section Design rational]
+[section Design rationale]
 
 The linear algebra classes are designed in such a way that almost no extra code
 is needed to implement statically and dynamically sized classes together.  This
