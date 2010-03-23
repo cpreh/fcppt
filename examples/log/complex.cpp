@@ -23,7 +23,7 @@
 #include <fcppt/text.hpp>
 #include <cstdlib>
 
-namespace mylib
+namespace engine
 {
 
 // define a global log context
@@ -35,7 +35,7 @@ fcppt::log::object root_logger_(
 		fcppt::io::cout
 	)
 	.prefix(
-		FCPPT_TEXT("mylib")
+		FCPPT_TEXT("engine")
 	)
 	.context(
 		log_context_
@@ -51,13 +51,13 @@ fcppt::log::object root_logger_(
 
 // define two subsystem loggers
 // they will be initially disabled because the root logger is disabled
-namespace subsystem1
+namespace renderer
 {
 
 fcppt::log::object logger_(
 	fcppt::log::parameters::inherited(
 		root_logger_,
-		FCPPT_TEXT("subsystem1")
+		FCPPT_TEXT("renderer")
 	)
 );
 
@@ -66,13 +66,13 @@ test();
 
 }
 
-namespace subsystem2
+namespace audio
 {
 
 fcppt::log::object logger_(
 	fcppt::log::parameters::inherited(
 		root_logger_,
-		FCPPT_TEXT("subsystem2")
+		FCPPT_TEXT("audio")
 	)
 );
 
@@ -84,7 +84,7 @@ test();
 }
 
 void
-mylib::subsystem1::test()
+engine::renderer::test()
 {
 	FCPPT_LOG_DEBUG(
 		logger_,
@@ -94,7 +94,7 @@ mylib::subsystem1::test()
 }
 
 void
-mylib::subsystem2::test()
+engine::audio::test()
 {
 	FCPPT_LOG_ERROR(
 		logger_,
@@ -110,16 +110,17 @@ main(
 )
 try
 {
-	// every parameter tells which loggers we want to activate
-	// for example: subsystem1 will activate the logger of subsystem1
+	// Each command line parameter specifies a logger to activate.
+	// Example: "./example renderer" will activate the renderer's logger so we can
+	// diagnose a problem there.
 	for(
 		int i = 1;
 		i < argc;
 		++i
 	)
-		mylib::log_context_.apply(
+		engine::log_context_.apply(
 			fcppt::log::location(
-				FCPPT_TEXT("mylib")
+				FCPPT_TEXT("engine")
 			)
 			+
 			fcppt::from_std_string(
@@ -132,9 +133,9 @@ try
 			)
 		);
 	
-	mylib::subsystem1::test();
+	engine::renderer::test();
 
-	mylib::subsystem2::test();
+	engine::audio::test();
 }
 catch(
 	fcppt::exception const &e

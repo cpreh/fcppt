@@ -30,6 +30,7 @@ int main()
 		.create()
 	);
 
+	// Outputs: mylogger: Hello World
 	FCPPT_LOG_DEBUG(
 		logger_,
 		fcppt::log::_
