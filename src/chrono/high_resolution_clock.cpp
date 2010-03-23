@@ -5,7 +5,7 @@
 
 
 #include <fcppt/chrono/high_resolution_clock.hpp>
-#include <fcppt/config.h>
+#include <fcppt/config.hpp>
 #ifdef FCPPT_WINDOWS_PLATFORM
 #include "performance_counter_time.hpp"
 #elif defined(FCPPT_HAVE_CLOCK_GETTIME)

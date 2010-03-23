@@ -8,6 +8,7 @@
 #define FCPPT_MATH_VECTOR_STATIC_HPP_INCLUDED
 
 #include <fcppt/math/vector/basic_fwd.hpp>
+#include <fcppt/math/detail/static_storage.hpp>
 #include <fcppt/math/size_type.hpp>
 #include <fcppt/restrict_typedef_struct.hpp>
 #include <boost/mpl/integral_c.hpp>
@@ -19,18 +20,23 @@ namespace math
 namespace vector
 {
 
+/// Typedefs a static vector type
 template<
 	typename T,
 	size_type N
 >
-struct static_ {
+struct static_
+{
 	typedef basic<
 		T,
 		boost::mpl::integral_c<
 			size_type,
 			N
 		>,
-		T[N]
+		typename math::detail::static_storage<
+			T,
+			N
+		>::type
 	> type;
 
 	FCPPT_RESTRICT_TYPEDEF_STRUCT(static_)

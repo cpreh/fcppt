@@ -12,9 +12,6 @@ namespace fcppt
 namespace variant
 {
 
-/**
- * @brief A class that can hold any object from a set of types
-*/
 template<
 	typename Types
 >

@@ -7,22 +7,20 @@
 #ifndef FCPPT_EXPORT_SYMBOL_HPP_INCLUDED
 #define FCPPT_EXPORT_SYMBOL_HPP_INCLUDED
 
-/**
- * @brief Marks a symbol to be visible in dynamic libraries.
- *
- * FCPPT_EXPORT_SYMBOL may be used to override the default visibility.
-*/
 #if defined(_MSC_VER)
-#	define FCPPT_EXPORT_SYMBOL __declspec(dllexport)
+#	define FCPPT_EXPORT_SYMBOL_IMPL __declspec(dllexport)
 #elif defined(__GNUC__)
-#	include <fcppt/config.h>
+#	include <fcppt/config.hpp>
 #	if defined(FCPPT_HAVE_GCC_VISIBILITY)
-#		define FCPPT_EXPORT_SYMBOL __attribute__ ((visibility("default")))
+#		define FCPPT_EXPORT_SYMBOL_IMPL __attribute__ ((visibility("default")))
 #	else
-#		define FCPPT_EXPORT_SYMBOL
+#		define FCPPT_EXPORT_SYMBOL_IMPL
 #	endif
 #else
 #	error "Don't know what FCPPT_EXPORT_SYMBOL should be"
 #endif
+
+/// Tells that a symbol should be exported from a library
+#define FCPPT_EXPORT_SYMBOL FCPPT_EXPORT_SYMBOL_IMPL
 
 #endif

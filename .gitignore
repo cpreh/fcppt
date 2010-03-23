@@ -1,4 +1,4 @@
 build
-include/fcppt/config.h
+include/fcppt/config.hpp
 include/fcppt/version.hpp
 Doxyfile

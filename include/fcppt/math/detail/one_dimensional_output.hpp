@@ -24,7 +24,8 @@ template<
 std::basic_ostream<Ch, Traits> &
 one_dimensional_output(
 	std::basic_ostream<Ch, Traits> &s,
-	T const &v)
+	T const &v
+)
 {
 	s << s.widen('(');
 	if(v.size() > 1)

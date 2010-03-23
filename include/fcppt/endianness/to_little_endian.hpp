@@ -23,3 +23,5 @@ T to_little_endian(T const &t)
 }
 }
 }
+
+#endif

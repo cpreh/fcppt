@@ -6,7 +6,7 @@
 
 #include <fcppt/random/actor/normalized.hpp>
 #include <fcppt/random/actor/element.hpp>
-#include <fcppt/random/inclusive_range.hpp>
+#include <fcppt/random/make_inclusive_range.hpp>
 #include <fcppt/tr1/functional.hpp>
 #include <fcppt/exception.hpp>
 #include <fcppt/text.hpp>

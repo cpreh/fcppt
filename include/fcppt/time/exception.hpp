@@ -17,6 +17,7 @@ namespace fcppt
 namespace time
 {
 
+/// The base exception class for time exceptions
 class FCPPT_CLASS_SYMBOL exception
 :
 	public fcppt::exception

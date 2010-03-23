@@ -7,7 +7,7 @@
 #ifndef FCPPT_CHRONO_REP_HPP_INCLUDED
 #define FCPPT_CHRONO_REP_HPP_INCLUDED
 
-#include <fcppt/config.h>
+#include <fcppt/config.hpp>
 #ifdef FCPPT_HAVE_ATLEAST_UINT64
 #include <boost/cstdint.hpp>
 #else
@@ -20,9 +20,9 @@ namespace chrono
 {
 
 #ifdef FCPPT_HAVE_ATLEAST_UINT64
-typedef boost::uint64_t rep;
+typedef boost::int64_t rep;
 #else
-typedef unsigned long rep;
+typedef long rep;
 FCPPT_PP_WARNING("This platform does not provide a 64 bit integer type. time_points may overflow too quickly.")
 #endif
 

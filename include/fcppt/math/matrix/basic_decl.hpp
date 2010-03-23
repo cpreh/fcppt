@@ -8,6 +8,7 @@
 #define FCPPT_MATH_MATRIX_BASIC_DECL_HPP_INCLUDED
 
 #include <fcppt/math/matrix/basic_fwd.hpp>
+#include <fcppt/math/matrix/max_ctor_params.hpp>
 #include <fcppt/math/matrix/detail/dim_storage.hpp>
 #include <fcppt/math/detail/view_storage.hpp>
 #include <fcppt/math/detail/make_op_decl.hpp>
@@ -18,10 +19,6 @@
 #include <boost/type_traits/is_same.hpp>
 #include <boost/static_assert.hpp>
 #include <iterator>
-
-#ifndef FCPPT_MATH_MATRIX_MAX_CTOR_PARAMS
-#define FCPPT_MATH_MATRIX_MAX_CTOR_PARAMS 16
-#endif
 
 namespace fcppt
 {
@@ -38,8 +35,11 @@ template<
 >
 class basic
 :
-public
-	detail::dim_storage<N, M>
+private
+	detail::dim_storage<
+		N,
+		M
+	>
 {
 	typedef detail::dim_storage<N, M> dim_base;
 public:
@@ -117,16 +117,21 @@ public:
 
 	FCPPT_MATH_DETAIL_ARRAY_ADAPTER(basic)
 
+// \cond
 #define FCPPT_MATH_DETAIL_MAKE_VARIADIC_CONSTRUCTOR_MAX_SIZE FCPPT_MATH_MATRIX_MAX_CTOR_PARAMS
 	FCPPT_MATH_DETAIL_MAKE_VARIADIC_CONSTRUCTOR_DECL(basic)
 #undef FCPPT_MATH_DETAIL_MAKE_VARIADIC_CONSTRUCTOR_MAX_SIZE
+// \endcond
+public:
 
+// \cond
 #define FCPPT_MATH_MATRIX_BASIC_DECLARE_OPERATOR(op)\
 FCPPT_MATH_DETAIL_MAKE_OP_DECL(basic, op)
 	FCPPT_MATH_MATRIX_BASIC_DECLARE_OPERATOR(+=)
 	FCPPT_MATH_MATRIX_BASIC_DECLARE_OPERATOR(-=)
 #undef FCPPT_MAT_MATRIX_BASIC_DECLARE_OPERATOR
-public:
+// \endcond
+
 	basic &
 	operator*=(
 		value_type const &
@@ -172,9 +177,26 @@ public:
 	resize(
 		dim const &
 	);
+
+	void
+	swap(
+		basic &
+	);
 private:
 	S storage;
 };
+
+template<
+	typename T,
+	typename N,
+	typename M,
+	typename S
+>
+void
+swap(
+	basic<T, N, M, S> &,
+	basic<T, N, M, S> &
+);
 
 }
 }

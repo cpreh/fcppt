@@ -1,0 +1,7 @@
+MACRO (ADD_FCPPT_RANDOM_EXARANDOME name)
+	ADD_EXECUTABLE (fcpptrandom${name} ${name}.cpp)
+	TARGET_LINK_LIBRARIES (fcpptrandom${name} fcppt)
+ENDMACRO ()
+
+ADD_FCPPT_RANDOM_EXARANDOME(actor)
+ADD_FCPPT_RANDOM_EXARANDOME(uniform)

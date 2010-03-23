@@ -15,6 +15,7 @@ namespace fcppt
 namespace log
 {
 
+/// An array of bool with the size level::size
 typedef std::tr1::array<
 	bool,
 	level::size

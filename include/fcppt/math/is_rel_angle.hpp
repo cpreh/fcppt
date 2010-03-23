@@ -16,6 +16,10 @@ namespace fcppt
 namespace math
 {
 
+/// Checks if @a a is in [-pi,pi]
+/**
+ * @tparam T must be a floating point type
+*/
 template<
 	typename T
 >

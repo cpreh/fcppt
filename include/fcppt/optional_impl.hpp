@@ -7,7 +7,7 @@
 #ifndef FCPPT_OPTIONAL_IMPL_HPP_INCLUDED
 #define FCPPT_OPTIONAL_IMPL_HPP_INCLUDED
 
-#include <fcppt/optional.hpp>
+#include <fcppt/optional_decl.hpp>
 #include <new>
 
 template<

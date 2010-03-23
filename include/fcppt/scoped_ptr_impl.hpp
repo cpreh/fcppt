@@ -29,7 +29,7 @@ template<
 		typename
 	> class Deleter
 >fcppt::scoped_ptr<T, Deleter>::scoped_ptr(
-	auto_ptr<T> p
+	auto_ptr p
 )
 :
 	ptr(p.release())
@@ -133,10 +133,11 @@ template<
 >
 void
 fcppt::scoped_ptr<T, Deleter>::take(
-	auto_ptr<T> p
+	auto_ptr p
 )
 {
 	reset();
+
 	ptr = p.release();
 }
 

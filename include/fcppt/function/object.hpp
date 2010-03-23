@@ -1,4 +1,5 @@
-//          Copyright Carl Philipp Reh 2009 - 2010.
+//  Copyright Thomas Heller 2009 - 2010.
+//  Copyright Carl Philipp Reh 2009 - 2010.
 // Distributed under the Boost Software License, Version 1.0.
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
@@ -52,6 +53,7 @@ void swap( object<Signature>& x, object<Signature>& y )
 
 } // end namespace fcppt
 
+// \cond
 #define FCPPT_FUNCTION_OBJECT_PP_NUM_PARAMS 0
 #include <fcppt/function/object_template.ipp>
 #undef FCPPT_FUNCTION_OBJECT_PP_NUM_PARAMS
@@ -167,6 +169,7 @@ void swap( object<Signature>& x, object<Signature>& y )
 #define FCPPT_FUNCTION_OBJECT_PP_NUM_PARAMS 28
 #include <fcppt/function/object_template.ipp>
 #undef FCPPT_FUNCTION_OBJECT_PP_NUM_PARAMS
+// \endcond
 
 /**
  * variadic template version ...

@@ -16,6 +16,7 @@ namespace fcppt
 namespace chrono
 {
 
+/// A duration that counts in nanoseconds
 typedef duration<
 	rep,
 	ratio::nano

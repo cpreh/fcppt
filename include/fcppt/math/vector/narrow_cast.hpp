@@ -17,6 +17,10 @@ namespace math
 namespace vector
 {
 
+/// Converts a vector into a vector with fewer elements
+/**
+ * @tparam Dest must be a vector type with fewer elements.
+*/
 template<
 	typename Dest,
 	typename T,

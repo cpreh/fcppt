@@ -7,49 +7,35 @@
 #ifndef FCPPT_MATH_MOD_HPP_INCLUDED
 #define FCPPT_MATH_MOD_HPP_INCLUDED
 
-#include <cmath>
-#include <boost/utility/enable_if.hpp>
-#include <boost/type_traits/is_unsigned.hpp>
-#include <boost/type_traits/is_floating_point.hpp>
+#include <fcppt/math/detail/mod.hpp>
 
 namespace fcppt
 {
 namespace math
 {
 
+/// Calculates @a a mod @a b
+/**
+ * It uses std::fmod for floating point types.
+ * Otherwise % is used.
+ * The behaviour will, of course, be undefined if r is 0.
+*/
 template<
 	typename T
 >
-typename boost::enable_if<
-	boost::is_floating_point<
-		T
-	>,
-	T
->::type
+T
 mod(
 	T const &a,
 	T const &b
 )
 {
-	return std::fmod(a, b);
+	return
+		detail::mod(
+			a,
+			b
+		);
 }
 
-template<
-	typename T
->
-typename boost::enable_if<
-	boost::is_unsigned<
-		T
-	>,
-	T
->::type
-mod(
-	T const &a,
-	T const &b
-)
-{
-	return a % b;
-}
 }
 }
 

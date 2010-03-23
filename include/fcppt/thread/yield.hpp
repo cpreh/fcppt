@@ -15,6 +15,7 @@ namespace fcppt
 namespace thread
 {
 
+/// Give other threads a chance to get CPU time
 FCPPT_SYMBOL
 void
 yield();

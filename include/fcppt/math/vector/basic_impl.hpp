@@ -72,6 +72,7 @@ fcppt::math::vector::basic<T, N, S>::basic(
 	);
 }
 
+// \cond
 #define FCPPT_MATH_DETAIL_MAKE_VARIADIC_CONSTRUCTOR_MAX_SIZE FCPPT_MATH_VECTOR_MAX_CTOR_PARAMS
 #define FCPPT_MATH_DETAIL_TEMPLATE_PRE\
 	template<\
@@ -81,6 +82,7 @@ fcppt::math::vector::basic<T, N, S>::basic(
 	>
 #define FCPPT_MATH_DETAIL_DEF_PRE\
 	fcppt::math::vector::basic<T, N, S>
+// \endcond
 
 FCPPT_MATH_DETAIL_ARRAY_ADAPTER_IMPL
 
@@ -90,8 +92,10 @@ FCPPT_MATH_DETAIL_MAKE_VARIADIC_CONSTRUCTOR(
 
 #undef FCPPT_MATH_DETAIL_MAKE_VARIADIC_CONSTRUCTOR_MAX_SIZE
 
+// \cond
 #define FCPPT_MATH_VECTOR_BASIC_DEFINE_OPERATOR(op)\
 FCPPT_MATH_DETAIL_MAKE_OP_DEF(fcppt::math::vector::basic, op)
+// \endcond
 
 FCPPT_MATH_VECTOR_BASIC_DEFINE_OPERATOR(+=)
 FCPPT_MATH_VECTOR_BASIC_DEFINE_OPERATOR(-=)
@@ -157,20 +161,6 @@ fcppt::math::vector::basic<T, N, S>::operator[](
 )
 {
 	return storage[index];
-}
-
-template<
-	typename T,
-	typename N,
-	typename S
->
-void
-fcppt::math::vector::basic<T, N, S>::resize(
-	size_type const sz
-)
-{
-	storage.resize(
-		sz);
 }
 
 template<
@@ -321,6 +311,51 @@ typename fcppt::math::vector::basic<T, N, S>::const_reference
 fcppt::math::vector::basic<T, N, S>::w() const
 {
 	return math::detail::checked_access<3>(*this);
+}
+
+template<
+	typename T,
+	typename N,
+	typename S
+>
+void
+fcppt::math::vector::basic<T, N, S>::resize(
+	size_type const sz
+)
+{
+	storage.resize(
+		sz
+	);
+}
+
+template<
+	typename T,
+	typename N,
+	typename S
+>
+void
+fcppt::math::vector::basic<T, N, S>::swap(
+	basic &other_
+)
+{
+	std::swap(
+		storage,
+		other_.storage
+	);
+}
+
+template<
+	typename T,
+	typename N,
+	typename S
+>
+void
+fcppt::math::vector::swap(
+	basic<T, N, S> &a,
+	basic<T, N, S> &b
+)
+{
+	return a.swap(b);
 }
 
 #endif

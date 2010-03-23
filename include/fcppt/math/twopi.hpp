@@ -14,6 +14,10 @@ namespace fcppt
 namespace math
 {
 
+/// Returns 2*pi for type T
+/**
+ * @tparam T must be a floating point type
+*/
 template<
 	typename T
 >

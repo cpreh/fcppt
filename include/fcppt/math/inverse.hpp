@@ -14,7 +14,15 @@ namespace fcppt
 {
 namespace math
 {
-template<typename T>
+
+/// Calculates the inverse to a multiplication
+/**
+ * @tparam T must not be integral
+ * Equal to 1 / @a t
+*/
+template<
+	typename T
+>
 typename
 boost::disable_if
 <
@@ -28,6 +36,7 @@ inverse(
 	return
 		static_cast<T>(1) / t;
 }
+
 }
 }
 

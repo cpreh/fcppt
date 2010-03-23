@@ -7,8 +7,6 @@
 #ifndef FCPPT_MATH_DETAIL_STORAGE_DIM_HPP_INCLUDED
 #define FCPPT_MATH_DETAIL_STORAGE_DIM_HPP_INCLUDED
 
-#include <cstddef>
-
 namespace fcppt
 {
 namespace math
@@ -25,18 +23,6 @@ storage_dim(
 )
 {
 	return t.size();
-}
-
-template<
-	std::size_t N,
-	typename T
->
-std::size_t
-storage_dim(
-	T (&)[N]
-)
-{
-	return N;
 }
 
 }

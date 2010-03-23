@@ -18,6 +18,10 @@ namespace fcppt
 namespace math
 {
 
+/// Transform an arbitrary angle into the range [-pi,pi]
+/**
+ * @tparam T The type must be a floating point type
+*/
 template<
 	typename T
 >
@@ -28,7 +32,8 @@ typename boost::enable_if<
 	T
 >::type
 abs_angle_to_rel(
-	T a)
+	T a
+)
 {
 	a = mod(a, twopi<T>());
 

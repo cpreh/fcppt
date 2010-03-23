@@ -18,7 +18,8 @@ template<
 	typename T,
 	typename N
 >
-class view_storage {
+class view_storage
+{
 public:
 	typedef typename N::value_type size_type;
 	typedef T &reference;
@@ -28,15 +29,19 @@ public:
 		pointer,
 		size_type index,
 		size_type stride,
-		size_type size);
+		size_type size
+	);
 
 	reference
 	operator[](
-		size_type) const;
+		size_type
+	) const;
 
-	size_type size() const;
+	size_type
+	size() const;
 private:
 	pointer rep;
+
 	size_type
 		index,
 		stride,

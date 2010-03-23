@@ -14,6 +14,7 @@ namespace fcppt
 namespace random
 {
 
+/// A convenience typedef for the default generator
 typedef std::tr1::minstd_rand default_generator;
 
 }

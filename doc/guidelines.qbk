@@ -1,0 +1,541 @@
+[section General coding style]
+
+[section Identifiers]
+
+We encourage to use the same naming scheme as the C++ standard library. So no
+camel case, but all lowercase letters and underscores as separators
+(`foo_bar_baz()` instead of `fooBarBaz()`). This way, code which is mixed with
+boost and the standard library looks much more consistent. We are, however, not
+evangelic about this. Macro names are `CAPTIALIZED` so they're not confused
+with normal functions, which is a problem with the standard library's `assert`
+function for example. You're not the only one if you tried to write it as:
+`std::assert(0 < 1);`. Macros have no namespace scope.
+
+[caution A word of caution]
+
+Note that an identifier which meets the following requirements is /reserved/ and should not be used in user code:
+
+* Identifiers containing `__` (two adjacent underscores) /anywhere/
+* /Starting/ with an /underscore/ followed by a /capital letter/ (such as `_Foo`)
+* /Global identifiers/ starting with an /underscore/
+
+[endsect]
+
+[section Indentation]
+
+[section Tabs]
+
+Most coding guidelines just dismiss the tab issue by stating that you should
+just use /n/ whitespaces for indentation. The problem with this is: What are
+sensible values for /n/? For example, vim's standard tab width is 8. But if you
+use a small terminal, you might run out of space if you, for example, nest 3
+`if` statements inside a function. So your code looks ugly on your specific
+machine.
+
+This is where tabs come in handy. They allow for a variable /n/, depending on
+what you specify in your text editor. So using tabs is encouraged. But there
+are pitfalls. For example, consider your tab width is 4:
+
+``
+int a = 3;
+    b = 4;
+``
+
+You (or your automatically refactoring editor) might be tempted to write this as:
+
+``
+int a = 3,
+\tb = 4;
+``
+
+Which -- with /n/=4 -- /looks/ the same. But the problem with this is obvious,
+if you set your tab width to 8, it looks like this:
+
+``
+int a = 3,
+        b = 4;
+``
+
+So it's broken. There are two ways to prevent his: You could use whitespaces in
+this situation, which would work /if/ you have a monospace font (which, of
+course, most people do use when programming). If you don't, the following
+happens:
+
+int a = 3,
+
+    b = 4;
+
+The second solution is to indent it like this:
+
+``
+int
+\ta=3,
+\tb=4;
+``
+
+Which is tab-safe and doesn't look too ugly.
+
+[endsect]
+
+[section When to indent]
+
+When to indent is pretty much left to the individual programmer. Specifying
+more than a few encouragements would be pretty harsh. A rule of thumb for us is
+"indent as much as possible", which can be best explained by an example:
+
+``
+template<
+    typename T,
+    typename U
+>
+T 
+cast_stuff(
+    U const &a,
+    U const &b)
+{
+    run_other_function
+    (
+        run_even_other_function
+        (
+            static_cast
+            <
+                T
+            >
+            (
+                a
+            );
+        )
+    );
+}
+``
+
+Which, at first glance, might look pretty odd to you, but it is something you
+might encounter when reading fcppt code (Freundlich's code in particular :P).
+This method of indentation is a bit extreme, but it is consistent. If you do
+not add a new line after every opening brace (curly brace, parentheses,
+whatever), what rule do you apply to newlines? Most coding guidelines just tell
+you "indent if the line is too long", but that's not portable for the same
+reason whitespaces aren't portable (see "Tabs" above).
+
+But as stated above, we're not evangelic about indentation, as long as it's
+readable and the lines aren't longer than, say, 100 characters.
+
+[endsect]
+
+[endsect]
+
+[endsect]
+
+[section C++-specific style]
+
+[section enums]
+
+[section bool and enums]
+
+We encourage to use bools very sparingly. To illustrate the problem with bools,
+consider the function:
+
+``
+void draw_text(string text,bool center_vertically,bool center_horizontally,int font_size);
+``
+
+A function call looks like this:
+
+``
+draw_text("Hello World",true,false,15);
+``
+
+Say you wrote this line and, weeks later, you open it again. Do you remember
+what the 'true' and 'false' are for? And if you remember that they are
+controlling text alignment, which of the bools controls the vertical alignment
+and which one controls the horizontal alignment? You cannot deduce that from
+looking at the code, you have to look at the declaration. There's another, more
+subtle, problem with this code. Say your memory is tainted and you think you
+have to specify the alignment stuff first, then the font size, so you write:
+
+``
+draw_text("Hello World",15,true,false);
+``
+
+This code compiles without a warning with gcc-4.5 and with all warnings
+enabled! So you have a hard time refactoring because the compiler is of no
+help. That's pretty much the reason bools are discouraged: You lose
+information. bool is, however, useful with functions which really just give
+"yes" or "no" as an answer such as:
+
+``
+class life
+{
+public:
+    bool has_meaning() const;
+};
+``
+
+[endsect]
+
+[section Using enums]
+
+Without thinking further, you might write your enums like this:
+
+``
+enum shape
+{
+    circle,
+    square,
+    fridge
+};
+``
+
+You could then write functions which take this enum and do something with it:
+
+``
+player_shape create(shape);
+``
+
+And you'd call this function with:
+
+``
+player_shape s = create(shape::circle);
+``
+
+Right? Wrong. enums do not open a new namespace! Which is a problem, since they
+pollute the namespace they're defined in. So we encourage a simple hack:
+
+``
+namespace shape
+{
+enum type
+{
+    circle,
+    square,
+    fridge,
+    size
+};
+}
+``
+
+Now the create function declaration and it's call look like:
+
+``
+player_shape create(shape::type);
+
+create(shape::circle);
+``
+
+Which is much better. Also note that we added a 'size' element at the end. This
+way, we can use the enumeration together with `fcppt::container::bitfield`, or
+we could manually iterate over it.
+
+[endsect]
+
+[endsect]
+
+[section Code partitioning]
+
+[section File extension]
+Many people use ".h" for their C++ header files. We encourage using "hpp" because that way your favorite editor can deduce that you're writing C++ code and change, for example, the syntax highlighting accordingly.
+[endsect]
+
+[section Namespaces and directories]
+To avoid filename clashes we let the filesystem hierarchy follow the namespace
+hierarchy. So a namespace creates a new directory - with nesting of directories
+of course.
+[endsect]
+
+[section Atomic headers]
+We encourage writing header files which contain only one "entity", so one
+typedef, one class, one constant only. This way, it's very easy to memorize
+which file you have to include to get a specific entity (for `foo::bar::baz`
+you need `foo/bar/baz.hpp`, see "Namespaces" above). Also, recompilation effort
+is minimized.
+[endsect]
+
+[section Minimal includes]
+A header should only include what it needs so it can be included without
+causing errors by itself. If code from the header is used, however, additional
+includes may be needed.
+
+In the following cases only a declaration is needed:
+
+# A type is returned by a function or taken as an argument
+# A typedef to a template is declared
+  ``
+  template
+  <
+    typename T
+  > struct vector;
+  
+  typedef vector<char> char_vector;
+  ``
+# A reference or a pointer to a type is used 
+
+[endsect]
+
+[section Include guards]
+It's extremely important for include guards to be unique. If they're not, you
+end up in a loooong debugging session to find missing declarations or even
+undefined references. So we devised a simple scheme for the names: We use the
+complete namespace hierarchy plus the suffix `_HPP_INCLUDED`, so consider this
+file:
+
+``
+namespace sge
+{
+namespace gui
+{
+namespace buttons
+{
+class text
+{
+    ...
+};
+}
+}
+}
+``
+
+The corresponding include guard would be: `SGE_GUI_BUTTONS_TEXT_HPP_INCLUDED`.
+This way, sensible behavior is guaranteed. This, of course, requires that
+header files are quite atomic (see "Atomic headers" above). If headers aren't
+really atomic, use the (converted) file name as the include guard.
+[endsect]
+
+[section Order of includes]
+The order in which you #include files in your code can improve the minimality
+of your includes. We therefore suggest the following order of includes:
+
+# First the files directly regarding the stuff you are working on
+# External libraries (boost, for example)
+# The C++ standard library
+# The C standard library
+
+This way, if you forgot to add, for example, `<cstdlib>` in your project's
+files you will get an error, because the C library stuff is included last.
+[endsect]
+
+[endsect]
+
+[section Numeric stuff]
+
+[section float/double/long double]
+
+The C++ standard states that basically all operations regarding floats are
+implementation defined. This might lead to a "fatal error" in the following
+code:
+
+``
+float f = 1.0f;
+if (f == 1.0f)
+  do_something_safe();
+else
+  cause_fatal_error();
+``
+
+Because float comparison is not only implementation defined, it's pretty
+"blurry" in most implementations. So you shouldn't use "strict" comparison.
+There's `fcppt::math::compare` and `fcppt::math::almost_zero` which use the
+machine epsilon for comparison. This /might/ be too small for your code, so you
+might have to write your own comparison function.
+
+[endsect]
+
+[section int types]
+
+The use of the signed types is discouraged. Of course, sometimes you need to
+use them to get negative numbers, but the signed types have a distinct
+disadvantage: Some operations are undefined or implementation defined. For
+example, the behavior of the % operator is partially implementation defined.
+Also, the value of `INT_MAX+1` is undefined, so you cannot use ints to "wrap
+around" the borders. The unsigned types have such guarantees, so use them if
+you really do not need negative numbers.
+
+[endsect]
+
+[endsect]
+
+[section Minor stuff]
+
+[section struct vs. class]
+
+Basically, class is just syntactic sugar for struct (or vice versa), so which
+of those you use shouldn't really matter. However, Visual C++ checks if you use
+`struct` in a forward declaration and `class` in the definition. To circumvent
+this, we encourage everyone to just use `class` and not `struct`. This way, we
+can also add automatic forward declaration generators which alleviate tedious:
+`#ifndef FOO_BAR_BAZ_FWD namespace foobarbaz { class foo; } #endif` writing.
+
+[endsect]
+
+[section Class members]
+We encourage to use some prefix for member variables in a class. Consider the class declaration:
+
+``
+class apple
+{
+public:
+    apple(unsigned number_of_worms) : number_of_worms(number_of_worms) {}
+    bool is_usable() const { return number_of_worms < 2; }
+private: 
+    unsigned number_of_worms;
+};
+``
+
+Say in the future you do not only want to know if the apple is usable but also
+how many worms are in there. You'd have to refactor some code, because you'd
+like the getter to be called `unsigned number_of_worms() const;`. So just use a
+pre or suffix in the first place:
+
+``
+class apple
+{
+public:
+    apple(unsigned number_of_worms_) : number_of_worms_(number_of_worms_) {}
+    bool is_usable() const { return number_of_worms_ < 2; }
+    unsigned number_of_worms() { return number_of_worms_; }
+private: 
+    unsigned number_of_worms_;
+};
+``
+
+There is a second, more subtle, issue in this code. Say that you remove the
+constructor's "number of worms" argument (the apple somehow manages its initial
+worm count on its own). You might forget something and write:
+
+``
+class apple
+{
+public:
+    apple() : number_of_worms_(number_of_worms_) {}
+    bool is_usable() const { return number_of_worms_ < 2; }
+    unsigned number_of_worms() { return number_of_worms_; }
+private: 
+    unsigned number_of_worms_;
+};
+``
+
+This code compiles without a single warning, although the content of the
+"number of worms" member variable is undefined (instead of 0). This is a
+problem, so it's encouraged to use a prefix or suffix for constructor arguments
+(or function arguments in general, consider a setter function where you have a
+similar naming problem), for example:
+
+``
+class apple
+{
+public:
+    apple(unsigned _number_of_worms) : number_of_worms_(_number_of_worms) {}
+    bool is_usable() const { return number_of_worms_ < 2; }
+    unsigned number_of_worms() { return number_of_worms_; }
+private: 
+    unsigned number_of_worms_;
+};
+``
+
+Note that the use of a leading underscore is permitted by the standard.
+
+[endsect]
+
+[section No set_ and get_ member functions]
+
+As you have seen in the previous section, we name our setter and getter
+functions like the variable's name (without set_ or get_). This however can
+introduce a subtle problem when types have the same name like the setter or
+getter.
+
+``
+namespace renderer
+{
+
+class light 
+{
+// ...
+};
+
+class device 
+{
+public:
+  void light(light const &);
+};
+
+}
+``
+
+This won't work because the introduction of the light member function changes
+the meaning of the entity (which has been a type previously). To prevent that
+you have to qualify the type a bit more to make it unique again:
+
+``
+class device 
+{
+public:
+  void light(renderer::light const &)
+};
+
+``
+
+[endsect]
+
+[section Uninitialized containers]
+
+It's a remarkable feature of C++ that fundamental types like `int` are almost
+always "uninitialized" when defining them, so in this code:
+
+``
+#include <iostream>
+
+int main()
+{
+	int i[1000];
+	std::cout << i[0];
+}
+``
+
+the value of the variable `i` is undefined and so is the output to `std::cout`.
+This has one giant advantage: Performance. You do not have to `memset` the
+whole array to, say, zero (like Java does). There are some data structures and
+containers in fcppt (like `fcppt::math::vector` or
+`fcppt::container::bitfield`) which also employ this pattern. Consider this
+code:
+
+``
+#include <fcppt/math/vector/vector.hpp>
+#include <iostream>
+
+int main()
+{
+	typedef 
+	fcppt::math::vector::static_<int,3>::type
+	vector;
+
+	vector v;
+	std::cout << v.x();
+}
+``
+
+Here the vector `v` acts just like a native array in that it's values for x, y
+and z are undefined. The output will be undefined, too. So what do you do if
+you /want/ the vector the be all zeroes? In that case, a `::null` function is
+provided as in:
+
+``
+#include <fcppt/math/vector/vector.hpp>
+#include <iostream>
+
+int main()
+{
+	typedef 
+	fcppt::math::vector::static_<int,3>::type
+	vector;
+
+	vector v = vector::null();
+	std::cout << v.x();
+}
+``
+
+In this case, the output is guaranteed to be "0".
+
+[endsect]
+
+[endsect]
+
+[endsect]

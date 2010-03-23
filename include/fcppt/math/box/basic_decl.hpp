@@ -21,6 +21,11 @@ namespace math
 namespace box
 {
 
+/// The basic box class
+/**
+ * @param T The value type to hold
+ * @param N The static size of the box
+*/
 template<
 	typename T,
 	size_type N
@@ -159,20 +164,45 @@ public:
 		value_type
 	);
 
-	bool
-	operator==(
-		basic const &
-	) const;
-
-	bool
-	operator !=(
-		basic const &
-	) const;
+	void
+	swap(
+		basic &
+	);
 private:
 	vector pos_;
 
 	dim dimension_;
 };
+
+template<
+	typename T,
+	size_type N
+>
+bool
+operator==(
+	basic<T, N> const &,
+	basic<T, N> const &
+);
+
+template<
+	typename T,
+	size_type N
+>
+bool
+operator !=(
+	basic<T, N> const &,
+	basic<T, N> const &
+);
+
+template<
+	typename T,
+	size_type N
+>
+void
+swap(
+	basic<T, N> &,
+	basic<T, N> &
+);
 
 }
 }

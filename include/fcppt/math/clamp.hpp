@@ -7,6 +7,7 @@
 #ifndef FCPPT_MATH_CLAMP_HPP_INCLUDED
 #define FCPPT_MATH_CLAMP_HPP_INCLUDED
 
+#include <fcppt/assert.hpp>
 #include <algorithm>
 
 namespace fcppt
@@ -14,6 +15,10 @@ namespace fcppt
 namespace math
 {
 
+/// Clamps @a value into the range [@a min, @a max]
+/**
+ * Requires vmin <= vmax
+*/
 template<
 	typename T
 >
@@ -24,6 +29,10 @@ clamp(
 	T const &vmax
 )
 {
+	FCPPT_ASSERT(
+		vmin <= vmax
+	);
+
 	return std::max(
 		std::min(
 			value,

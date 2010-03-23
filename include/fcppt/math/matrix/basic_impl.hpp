@@ -99,6 +99,7 @@ fcppt::math::matrix::basic<T, N, M, S>::basic(
 	);
 }
 
+// \cond
 #define FCPPT_MATH_DETAIL_MAKE_VARIADIC_CONSTRUCTOR_MAX_SIZE FCPPT_MATH_MATRIX_MAX_CTOR_PARAMS
 #define FCPPT_MATH_DETAIL_TEMPLATE_PRE\
 	template<\
@@ -109,6 +110,7 @@ fcppt::math::matrix::basic<T, N, M, S>::basic(
 	>
 #define FCPPT_MATH_DETAIL_DEF_PRE\
 	fcppt::math::matrix::basic<T, N, M, S>
+// \endcond
 
 FCPPT_MATH_DETAIL_ARRAY_ADAPTER_IMPL
 
@@ -118,8 +120,10 @@ FCPPT_MATH_DETAIL_MAKE_VARIADIC_CONSTRUCTOR(
 
 #undef FCPPT_MATH_DETAIL_MAKE_VARIADIC_CONSTRUCTOR_MAX_SIZE
 
+// \cond
 #define FCPPT_MATH_MATRIX_BASIC_DEFINE_OPERATOR(op)\
 FCPPT_MATH_DETAIL_MAKE_OP_DEF(fcppt::math::matrix::basic, op)
+// \endcond
 
 FCPPT_MATH_MATRIX_BASIC_DEFINE_OPERATOR(+=)
 FCPPT_MATH_MATRIX_BASIC_DEFINE_OPERATOR(-=)
@@ -334,5 +338,42 @@ fcppt::math::matrix::basic<T, N, M, S>::resize(
 		storage
 	);
 }
+
+template<
+	typename T,
+	typename N,
+	typename M,
+	typename S
+>
+void
+fcppt::math::matrix::basic<T, N, M, S>::swap(
+	basic &other_
+)
+{
+	std::swap(
+		storage,
+		other_.storage
+	);
+
+	swap_base(
+		other_
+	);
+}
+
+template<
+	typename T,
+	typename N,
+	typename M,
+	typename S
+>
+void
+fcppt::math::matrix::swap(
+	basic<T, N, M, S> &a,
+	basic<T, N, M, S> &b
+)
+{
+	return a.swap(b);
+}
+
 
 #endif

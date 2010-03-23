@@ -18,6 +18,7 @@ namespace log
 namespace format
 {
 
+/// Creates a formatter that will output @a prefix in front
 FCPPT_SYMBOL const_object_ptr const
 create_prefix(
 	string const &prefix

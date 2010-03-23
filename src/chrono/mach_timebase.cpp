@@ -4,7 +4,7 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/config.h>
+#include <fcppt/config.hpp>
 #ifdef FCPPT_HAVE_MACH_TIME
 #include "mach_timebase.hpp"
 #include <fcppt/function_once.hpp>

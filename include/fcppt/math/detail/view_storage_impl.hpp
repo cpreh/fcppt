@@ -17,7 +17,8 @@ fcppt::math::detail::view_storage<T, N>::view_storage(
 	pointer const rep,
 	size_type const index,
 	size_type const stride,
-	size_type const sz)
+	size_type const sz
+)
 :
 	rep(rep),
 	index(index),
@@ -31,7 +32,8 @@ template<
 >
 typename fcppt::math::detail::view_storage<T, N>::reference
 fcppt::math::detail::view_storage<T, N>::operator[](
-	size_type const i) const
+	size_type const i
+) const
 {
 	return rep[i * stride + index];
 }

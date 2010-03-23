@@ -17,6 +17,7 @@ namespace container
 namespace tree
 {
 
+/// A meta function testing if the given type is really a tree object
 template<
 	typename T
 >
@@ -25,6 +26,7 @@ struct is_object
 boost::false_type
 {};
 
+/// A meta function testing if the given type is really a tree object
 template<
 	typename T
 >

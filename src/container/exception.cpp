@@ -7,7 +7,10 @@
 #include <fcppt/container/exception.hpp>
 
 fcppt::container::exception::exception(
-	fcppt::string const &e)
+	fcppt::string const &e
+)
 :
-	fcppt::exception(e)
+	fcppt::exception(
+		e
+	)
 {}

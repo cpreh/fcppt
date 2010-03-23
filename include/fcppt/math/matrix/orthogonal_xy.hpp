@@ -17,6 +17,7 @@ namespace math
 namespace matrix
 {
 
+/// Calculates a matrix that does an orthogonal projection on the xy place
 template<
 	typename T
 >

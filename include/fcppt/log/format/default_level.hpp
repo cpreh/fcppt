@@ -18,6 +18,7 @@ namespace log
 namespace format
 {
 
+/// Creates the default formatter for the given log level
 FCPPT_SYMBOL const_object_ptr const
 default_level(
 	level::type

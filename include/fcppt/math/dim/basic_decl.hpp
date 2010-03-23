@@ -62,11 +62,14 @@ public:
 
 	FCPPT_MATH_DETAIL_ARRAY_ADAPTER(basic)
 
+// \cond
 #define FCPPT_MATH_DETAIL_MAKE_VARIADIC_CONSTRUCTOR_MAX_SIZE FCPPT_MATH_DIM_MAX_CTOR_PARAMS
 	FCPPT_MATH_DETAIL_MAKE_VARIADIC_CONSTRUCTOR_DECL(basic)
 #undef FCPPT_MATH_DETAIL_MAKE_VARIADIC_CONSTRUCTOR_MAX_SIZE
+// \endcond
 public:
 
+// \cond
 #define FCPPT_MATH_DIM_BASIC_DECLARE_OPERATOR(op)\
 FCPPT_MATH_DETAIL_MAKE_OP_DECL(basic, op)
 	FCPPT_MATH_DIM_BASIC_DECLARE_OPERATOR(+=)
@@ -75,27 +78,36 @@ FCPPT_MATH_DETAIL_MAKE_OP_DECL(basic, op)
 	FCPPT_MATH_DIM_BASIC_DECLARE_OPERATOR(/=)
 	FCPPT_MATH_DIM_BASIC_DECLARE_OPERATOR(%=)
 #undef FCPPT_MATH_DIM_BASIC_DECLARE_OPERATOR
+// \endcond
 
 	basic &
 	operator*=(
-		value_type const &);
+		value_type const &
+	);
 
 	basic &
 	operator/=(
-		value_type const &);
+		value_type const &
+	);
 
 	reference
 	operator[](
-		size_type);
+		size_type
+	);
 
 	const_reference
 	operator[](
-		size_type) const;
+		size_type
+	) const;
 
-	pointer data();
-	const_pointer data() const;
+	pointer
+	data();
 
-	size_type size() const;
+	const_pointer
+	data() const;
+
+	size_type
+	size() const;
 
 	reference w();
 	const_reference w() const;
@@ -104,16 +116,35 @@ FCPPT_MATH_DETAIL_MAKE_OP_DECL(basic, op)
 	reference d();
 	const_reference d() const;
 
-	size_type content() const;
+	size_type
+	content() const;
 
 	static basic const
 	null();
 
-	void resize(
-		size_type);
+	void
+	resize(
+		size_type
+	);
+
+	void
+	swap(
+		basic &
+	);
 private:
 	S storage;
 };
+
+template<
+	typename T,
+	typename N,
+	typename S
+>
+void
+swap(
+	basic<T, N, S> &,
+	basic<T, N, S> &
+);
 
 }
 }

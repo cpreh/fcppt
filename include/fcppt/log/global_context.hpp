@@ -15,6 +15,7 @@ namespace fcppt
 namespace log
 {
 
+/// Returns fcppt's global logger context
 FCPPT_SYMBOL context &
 global_context();
 

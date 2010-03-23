@@ -15,17 +15,29 @@ namespace fcppt
 namespace math
 {
 
+/// Checks if @a t is a power of two
+/**
+ * @tparam T must be an unsigned integral typefooobar
+ * @param x foobar
+ *
+ * If you need to check whether a signed integral type is a power of two,
+ * convert it to its unsigned counterpart before checking.
+*/
 template<
 	typename T
 >
-inline typename boost::enable_if<
-	boost::is_unsigned<T>,
+inline
+typename boost::enable_if<
+	boost::is_unsigned<
+		T
+	>,
 	bool
 >::type
 is_power_of_2(
-	T const t)
+	T const x
+)
 {
-	return t && !(t & (t - 1));
+	return x && !(x & (x - 1));
 }
 
 }

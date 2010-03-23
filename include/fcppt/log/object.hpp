@@ -9,10 +9,10 @@
 
 #include <fcppt/log/object_fwd.hpp>
 #include <fcppt/log/detail/auto_context.hpp>
+#include <fcppt/log/detail/temporary_output_fwd.hpp>
 #include <fcppt/log/parameters/all_fwd.hpp>
 #include <fcppt/log/level_stream_array.hpp>
 #include <fcppt/log/enabled_level_array.hpp>
-#include <fcppt/log/temporary_output_fwd.hpp>
 #include <fcppt/log/level.hpp>
 #include <fcppt/log/level_stream_fwd.hpp>
 #include <fcppt/log/context_location_fwd.hpp>
@@ -27,11 +27,15 @@ namespace log
 {
 
 /// The main logger class. If you need a new logger, you should create an object of it.
-class object {
+class object
+{
 	FCPPT_NONCOPYABLE(object)
 public:
-	//! Constructs a logger. 
-	/** See parameters::root and parameters::inherited. */
+	/// Constructs a logger. 
+	/**
+	 * @see parameters::root
+	 * @see parameters::inherited
+	*/
 	FCPPT_SYMBOL explicit object(
 		parameters::all const &
 	);
@@ -41,7 +45,7 @@ public:
 	FCPPT_SYMBOL void
 	log(
 		level::type,
-		temporary_output const &
+		detail::temporary_output const &
 	);
 
 	FCPPT_SYMBOL level_stream &

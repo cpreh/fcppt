@@ -7,7 +7,8 @@
 #ifndef FCPPT_MATH_DETAIL_INITIAL_SIZE_HPP_INCLUDED
 #define FCPPT_MATH_DETAIL_INITIAL_SIZE_HPP_INCLUDED
 
-#include <cstddef>
+#include <fcppt/math/detail/is_static_storage.hpp>
+#include <boost/utility/enable_if.hpp>
 
 namespace fcppt
 {
@@ -20,23 +21,34 @@ template<
 	typename T,
 	typename S
 >
-void
+typename boost::disable_if<
+	detail::is_static_storage<
+		T
+	>,
+	void
+>::type
 initial_size(
 	T &t,
 	S const size
 )
 {
-	t.resize(size);
+	t.resize(
+		size
+	);
 }
 
 template<
 	typename T,
-	typename S,
-	std::size_t N
+	typename S
 >
-void
+typename boost::enable_if<
+	detail::is_static_storage<
+		T
+	>,
+	void
+>::type
 initial_size(
-	T (&)[N],
+	T &,
 	S
 )
 {

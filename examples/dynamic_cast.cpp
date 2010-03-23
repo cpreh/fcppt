@@ -4,11 +4,15 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/io/cerr.hpp>
-#include <fcppt/io/cout.hpp>
+//[dynamiccast
+
+#include <fcppt/bad_dynamic_cast.hpp>
 #include <fcppt/dynamic_cast.hpp>
-#include <fcppt/try_dynamic_cast.hpp>
+#include <fcppt/io/cout.hpp>
 #include <fcppt/text.hpp>
+
+namespace
+{
 
 struct base
 {
@@ -28,8 +32,46 @@ struct derived2
 {
 };
 
-int main()
-try
+void
+f()
+{
+	derived1 d1;
+
+	try
+	{
+		// try to cast d1 into a d2, which will fail
+		derived2 &d2(
+			fcppt::dynamic_cast_<
+				derived2 &
+			>(
+				d1
+			)
+		);
+
+		fcppt::io::cout << &d2 << FCPPT_TEXT('\n');
+	}
+	catch(
+		fcppt::bad_dynamic_cast const &e
+	)
+	{
+		// shows a nice message with the types in it
+		fcppt::io::cout
+			<< e.string()
+			<< FCPPT_TEXT('\n');
+	}
+}
+
+}
+//]
+
+//[trydynamiccast
+#include <fcppt/try_dynamic_cast.hpp>
+
+namespace
+{
+
+void
+g()
 {
 	derived1 d1;
 
@@ -37,14 +79,8 @@ try
 		d1
 	);
 
-#if 0
-	fcppt::dynamic_cast_<
-		derived2 &
-	>(
-		b
-	);
-#endif
-
+	// try to donvert &b into a pointer to derived1 const
+	// and declare a new variable named ptr to hold the result
 	FCPPT_TRY_DYNAMIC_CAST(
 		derived1 const *,
 		ptr,
@@ -54,11 +90,13 @@ try
 			<< ptr
 			<< FCPPT_TEXT('\n');
 }
-catch(
-	fcppt::exception const &e
-)
+
+}
+//]
+
+int main()
 {
-	fcppt::io::cerr
-		<< e.string()
-		<< FCPPT_TEXT('\n');
+	f();
+
+	g();
 }

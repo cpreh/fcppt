@@ -13,14 +13,23 @@ namespace fcppt
 {
 namespace math
 {
-template<typename T>
+
+/// Checks if @a t is negative
+/**
+ * It uses fcppt::math::null<T>() to compare against zero.
+*/
+template<
+	typename T
+>
 bool
 is_negative(
-	T const &_t)
+	T const &t
+)
 {
 	return 
-		_t < fcppt::math::null<T>();
+		t < fcppt::math::null<T>();
 }
+
 }
 }
 

@@ -54,9 +54,29 @@ public:
 	operator< (
 		strong_typedef const &
 	) const;
+
+	bool
+	operator== (
+		strong_typedef const &
+	) const;
+
+	void
+	swap(
+		strong_typedef &
+	);
 private:
 	T t;
 };
+
+template<
+	typename T,
+	typename Tag
+>
+void
+swap(
+	strong_typedef<T, Tag> &,
+	strong_typedef<T, Tag> &
+);
 
 }
 

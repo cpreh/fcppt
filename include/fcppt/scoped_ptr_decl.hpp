@@ -11,6 +11,9 @@
 #include <fcppt/auto_ptr.hpp>
 #include <fcppt/noncopyable.hpp>
 #include <fcppt/safe_bool.hpp>
+#include <boost/mpl/if.hpp>
+#include <boost/type_traits/add_reference.hpp>
+#include <boost/type_traits/is_same.hpp>
 
 namespace fcppt
 {
@@ -25,8 +28,32 @@ class scoped_ptr
 {
 	FCPPT_NONCOPYABLE(scoped_ptr)
 	FCPPT_SAFE_BOOL(scoped_ptr)
+private:
+	struct dummy
+	{};
 public:
-	typedef T &reference;
+	typedef typename boost::mpl::if_<
+		boost::is_same<
+			T,
+			void
+		>,
+		dummy,
+		typename boost::add_reference<
+			T
+		>::type
+	>::type reference;
+
+	typedef typename boost::mpl::if_<
+		boost::is_same<
+			T,
+			void
+		>,
+		dummy,
+		std::auto_ptr<
+			T
+		>
+	>::type auto_ptr;
+
 	typedef T *pointer;
 
 	explicit scoped_ptr(
@@ -34,7 +61,7 @@ public:
 	);
 
 	explicit scoped_ptr(
-		auto_ptr<T>
+		auto_ptr
 	);
 
 	~scoped_ptr();
@@ -63,7 +90,7 @@ public:
 
 	void
 	take(
-		auto_ptr<T> p
+		auto_ptr p
 	);
 private:
 	bool

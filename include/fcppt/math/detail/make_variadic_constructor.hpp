@@ -10,7 +10,7 @@
 #include <fcppt/math/detail/initial_size.hpp>
 #include <fcppt/math/detail/dim_matches.hpp>
 #include <boost/static_assert.hpp>
-#include <fcppt/config.h>
+#include <fcppt/config.hpp>
 #ifndef FCPPT_HAVE_VARIADIC_TEMPLATES
 #include <boost/preprocessor/arithmetic/inc.hpp>
 #include <boost/preprocessor/repetition/enum_params.hpp>
@@ -23,7 +23,9 @@
 	template<\
 		typename... Args\
 	> \
-	FCPPT_MATH_DETAIL_DEF_PRE::name(Args... args) \
+	FCPPT_MATH_DETAIL_DEF_PRE::name(\
+		Args... args\
+	) \
 	{ \
 		::fcppt::math::detail::initial_size(\
 			storage,\
@@ -36,10 +38,12 @@
 		typename... Args,\
 		typename Arg\
 	> \
-	void FCPPT_MATH_DETAIL_DEF_PRE::set_impl( \
+	void \
+	FCPPT_MATH_DETAIL_DEF_PRE::set_impl( \
 		size_type const i, \
 		Arg const &arg, \
-		Args... args) \
+		Args... args\
+	) \
 	{ \
 		*(data() + i) = arg; \
 		set_impl(i + 1, args...); \
@@ -49,9 +53,11 @@
 	template<\
 		typename Arg\
 	>\
-	void FCPPT_MATH_DETAIL_DEF_PRE::set_impl( \
+	void \
+	FCPPT_MATH_DETAIL_DEF_PRE::set_impl( \
 		size_type const i, \
-		Arg const &arg) \
+		Arg const &arg\
+	) \
 	{ \
 		*(data() + i) = arg; \
 	}
@@ -77,7 +83,7 @@ FCPPT_MATH_DETAIL_DEF_PRE :: text(\
 	\
 	::fcppt::math::detail::initial_size(\
 		storage,\
-		n\
+		BOOST_PP_INC(n)\
 	); \
 	\
 	BOOST_PP_REPEAT(\

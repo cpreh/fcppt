@@ -8,6 +8,7 @@
 #define FCPPT_MATH_MATRIX_DETAIL_DIM_STORAGE_HPP_INCLUDED
 
 #include <fcppt/math/detail/dynamic_size.hpp>
+#include <algorithm>
 
 namespace fcppt
 {
@@ -22,18 +23,28 @@ template<
 	typename N,
 	typename M
 >
-class dim_storage {
+class dim_storage
+{
 public:
 	typedef typename N::value_type size_type;
 
-	size_type columns() const
+	size_type
+	columns() const
 	{
 		return N::value;
 	}
 
-	size_type rows() const
+	size_type
+	rows() const
 	{
 		return M::value;
+	}
+
+	void
+	swap_base(
+		dim_storage &
+	)
+	{
 	}
 };
 
@@ -41,32 +52,55 @@ template<>
 class dim_storage<
 	math::detail::dynamic_size,
 	math::detail::dynamic_size
-> {
+>
+{
 public:
 	typedef math::detail::dynamic_size::value_type size_type;
 
-	size_type columns() const
+	size_type
+	columns() const
 	{
 		return columns_;
 	}
 
-	size_type rows() const
+	size_type
+	rows() const
 	{
 		return rows_;
 	}
 
-	void columns(
-		size_type const ncolumns)
+	void
+	columns(
+		size_type const ncolumns
+	)
 	{
 		columns_ = ncolumns;
 	}
 
-	void rows(
-		size_type const nrows)
+	void
+	rows(
+		size_type const nrows
+	)
 	{
 		rows_ = nrows;
 	}
 
+	void
+	swap_base(
+		dim_storage &other_
+	)
+	{
+		std::swap(
+			columns_,
+			other_.columns_
+		);
+
+
+		std::swap(
+			rows_,
+			other_.rows_
+		);
+	}
 private:
 	size_type
 		columns_,

@@ -25,6 +25,12 @@ namespace math
 namespace matrix
 {
 
+/// Calculates a perspective matrix from three vectors
+/**
+ * @param eye The direction the viewer looks at
+ * @param location The location of the viewer
+ * @param up A vector orthogonal to the @a eye vector
+*/
 template<
 	typename T,
 	typename N,

@@ -15,6 +15,12 @@ namespace fcppt
 namespace variant
 {
 
+/// Does a binary visitation with operation @a op
+/**
+ * This will call @a op::operator()(t1, t2)
+ * where t1 and t2 are the objects held by @a obj1 and @a obj2 respectively
+ * @return The result of @a op::operator().
+*/
 template<
 	typename Operation,
 	typename Variant1,

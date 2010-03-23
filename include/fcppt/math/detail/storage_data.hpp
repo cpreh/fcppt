@@ -17,9 +17,10 @@ namespace detail
 template<
 	typename T
 >
-typename T::pointer
+typename T::value_type *
 storage_data(
-	T &t)
+	T &t
+)
 {
 	return t.data();
 }
@@ -27,31 +28,12 @@ storage_data(
 template<
 	typename T
 >
-typename T::const_pointer
+typename T::value_type const *
 storage_data(
-	T const &t)
+	T const &t
+)
 {
 	return t.data();
-}
-
-template<
-	typename T
->
-T *
-storage_data(
-	T *const t)
-{
-	return t;
-}
-
-template<
-	typename T
->
-T const *
-storage_data(
-	T const *const t)
-{
-	return t;
 }
 
 }

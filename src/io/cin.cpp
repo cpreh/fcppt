@@ -5,7 +5,7 @@
 
 
 #include <fcppt/io/cin.hpp>
-#include <fcppt/config.h>
+#include <fcppt/config.hpp>
 #include <iostream>
 
 fcppt::io::istream &

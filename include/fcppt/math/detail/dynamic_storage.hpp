@@ -8,6 +8,7 @@
 #define FCPPT_MATH_DETAIL_DYNAMIC_STORAGE_HPP_INCLUDED
 
 #include <fcppt/container/raw_vector_fwd.hpp>
+#include <fcppt/restrict_typedef_struct.hpp>
 
 namespace fcppt
 {
@@ -19,11 +20,13 @@ namespace detail
 template<
 	typename T
 >
-class dynamic_storage {
-public:
+struct dynamic_storage
+{
 	typedef container::raw_vector<
 		T
 	> type;
+
+	FCPPT_RESTRICT_TYPEDEF_STRUCT(dynamic_storage)
 };
 
 }

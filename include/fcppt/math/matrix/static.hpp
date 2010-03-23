@@ -8,6 +8,7 @@
 #define FCPPT_MATH_MATRIX_STATIC_HPP_INCLUDED
 
 #include <fcppt/math/matrix/basic_fwd.hpp>
+#include <fcppt/math/detail/static_storage.hpp>
 #include <fcppt/math/size_type.hpp>
 #include <fcppt/restrict_typedef_struct.hpp>
 #include <boost/mpl/integral_c.hpp>
@@ -19,12 +20,14 @@ namespace math
 namespace matrix
 {
 
+/// Typedefs a matrix with static dimensions
 template<
 	typename T,
 	size_type N,
 	size_type M
 >
-struct static_ {
+struct static_
+{
 	typedef basic<
 		T,
 		boost::mpl::integral_c<
@@ -35,7 +38,10 @@ struct static_ {
 			size_type,
 			M
 		>,
-		T[N * M]
+		typename math::detail::static_storage<
+			T,
+			N * M
+		>::type
 	> type;
 
 	FCPPT_RESTRICT_TYPEDEF_STRUCT(static_)

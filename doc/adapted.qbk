@@ -1,0 +1,46 @@
+[section string/adapted structures]
+
+[section Rationale] 
+
+Some functions regarding strings can be templatized. That is, instead of writing:
+
+``
+#include <string>
+
+void do_something(std::string const &s)
+{
+	// so something with s
+}
+``
+
+You can write:
+
+``
+#include <string>
+
+template<typename CharType,typename CharTraits>
+void do_something(std::basic_string<CharType,CharTraits> const &s)
+{
+	// again, so something with s
+}
+``
+
+Of course, it is impractical to templatize /every/ function which takes a string or returns one. So at some point, one has to decide on using either `std::string`, `std::wstring` or even something completely different. fcppt defines `fcppt::char_type` and `fcppt::string`, which is a specialization of `std::basic_string`. The cmake directive `ENABLE_NARROW_STRING` controls if the character type is `char` or `wchar_t`. Whenever you use literals with `fcppt::string` you have to enclose them with `FCPPT_TEXT`.
+
+[note Admittedly, enclosing each literal in this long and ugly macro might seem really tedious. Prefixing macros with `FCPPT_`, however, is mandatory - so is writing macros in uppercase. So we don't really have a choice here. Besides, most short macros like `T`, `T_`, `_` are already taken by other libraries.]
+
+For convenience, a lot of other typedefs and structures are defined. For example, the [@http://www.boost.org/doc/libs/release/libs/filesystem/index.html boost::filesystem] library is mostly wrapped in fcppt functions. The standard IO library is wrapped in `fcppt::io`.
+
+[endsect]
+
+[section Conversion from other strings]
+To convert from and to an `fcppt::string`, the functions `fcppt::from_std_string`, `fcppt::to_std_string`,`fcppt::from_std_wstring`, `fcppt::to_std_wstring` are provided. Example:
+
+[import ../examples/string_conversion.cpp]
+[string_conversion]
+
+There are also utility functions `widen` and `narrow` which convert `std::string` to `std::wstring` and vice-versa (see the reference).
+[endsect]
+
+[xinclude doxygen_adapted.xml]
+[endsect]

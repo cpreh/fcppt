@@ -116,4 +116,62 @@ fcppt::strong_typedef<
 	return t < other.t;
 }
 
+template<
+	typename T,
+	typename Tag
+>
+bool
+fcppt::strong_typedef<
+	T,
+	Tag
+>::operator == (
+	strong_typedef<
+		T,
+		Tag
+	> const &other
+) const
+{
+	return t == other.t;
+}
+
+template<
+	typename T,
+	typename Tag
+>
+void
+fcppt::strong_typedef<
+	T,
+	Tag
+>::swap(
+	strong_typedef<
+		T,
+		Tag
+	> &other_
+)
+{
+	std::swap(
+		t,
+		other_.t
+	);
+}
+
+template<
+	typename T,
+	typename Tag
+>
+void
+fcppt::swap(
+	strong_typedef<
+		T,
+		Tag
+	> &a,
+	strong_typedef<
+		T,
+		Tag
+	> &b
+)
+{
+	a.swap(b);
+}
+
 #endif

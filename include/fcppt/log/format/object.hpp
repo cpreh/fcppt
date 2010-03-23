@@ -19,6 +19,11 @@ namespace log
 namespace format
 {
 
+/// The base formatter class
+/**
+ * Every formatter has a function `string format(string)`
+ * that is used to format the given text.
+*/
 class FCPPT_CLASS_SYMBOL object
 {
 	FCPPT_NONCOPYABLE(object)

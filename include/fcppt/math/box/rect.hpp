@@ -17,10 +17,12 @@ namespace math
 namespace box
 {
 
+/// Typedefs a two dimensional box (a rect)
 template<
 	typename T
 >
-struct rect {
+struct rect
+{
 	typedef basic<
 		T,
 		2

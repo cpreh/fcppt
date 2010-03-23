@@ -12,6 +12,7 @@
 #include <fcppt/string.hpp>
 #include <typeinfo>
 
+//[type_info
 namespace fcppt
 {
 
@@ -32,8 +33,10 @@ public:
 
 	FCPPT_SYMBOL string const
 	name() const;
+//<-
 private:
 	std::type_info const *info_;
+//->
 };
 
 FCPPT_SYMBOL bool operator==(const type_info& lhs, const type_info& rhs);
@@ -49,5 +52,6 @@ FCPPT_SYMBOL bool operator<=(const type_info& lhs, const type_info& rhs);
 FCPPT_SYMBOL bool operator>=(const type_info& lhs, const type_info& rhs);
 
 }
+//]
 
 #endif

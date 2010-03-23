@@ -20,10 +20,15 @@ namespace math
 namespace vector
 {
 
+/// Typedef helper for dynamic vectors
+/**
+ * @return dynamic<T>::type
+*/
 template<
 	typename T
 >
-struct dynamic {
+struct dynamic
+{
 	typedef basic<
 		T,
 		math::detail::dynamic_size,

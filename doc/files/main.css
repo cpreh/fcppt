@@ -1,8 +1,9 @@
 body
 {
 	background-color:white;
-	color:#0062a3;
+	color:#29303b;
 	text-decoration:none;
+	width:80%;
 }
 
 img
@@ -12,24 +13,65 @@ img
 
 a:link
 {
-	text-decoration:underline;
-	color:blue;
+	text-decoration:none;
+	color:#8a3207;
 }
 
 a:visited
 {
-	text-decoration:underline;
-	color:blue;
+	text-decoration:none;
+	color:#8a3207;
 }
 
 a:hover
 {
 	text-decoration:underline;
-	color:rgb(255,152,59);
+	color:#753206;
 }
 
 a:active
 {
 	text-decoration:underline;
-	color:rgb(255,152,59);
+	color:#753206;
 }
+
+.keyword        { color: #0000AA; }
+.identifier     { color: #000000; }
+.special        { color: #707070; }
+.preprocessor   { color: #402080; }
+.char           { color: teal; }
+.comment        { color: #800000; }
+.string         { color: teal; }
+.number         { color: teal; }
+.white_bkd      { background-color: #FFFFFF; }
+.dk_grey_bkd    { background-color: #999999; }
+
+pre.programlisting
+{
+	background-color: #faf9f9;
+	border-color:#cccccc;
+	border-width:1px;
+	border-style:solid;
+}
+
+.toc
+{
+	background-color: #fff8d5;
+	border-color:#cccccc;
+	border-width:1px;
+	border-style:solid;
+	padding:0.5em;
+	width:80%;
+}
+
+/*
+a.section:link
+{
+	text-decoration:none;
+}
+
+a.link:link
+{
+	text-decoration:none;
+}
+*/

@@ -17,6 +17,7 @@ namespace fcppt
 namespace time
 {
 
+/// May be thrown if a sleep gets interrupted
 class FCPPT_CLASS_SYMBOL sleep_interrupted
 :
 	public time::exception

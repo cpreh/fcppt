@@ -24,6 +24,10 @@ namespace math
 namespace vector
 {
 
+/// Calculates the relative angle between two vectors
+/**
+ * @tparam Dest must be a floating point type
+*/
 template<
 	typename Dest,
 	typename T,

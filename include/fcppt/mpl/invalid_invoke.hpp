@@ -15,6 +15,7 @@ namespace fcppt
 namespace mpl
 {
 
+/// Thrown by an invalid invoke
 class FCPPT_CLASS_SYMBOL invalid_invoke
 :
 	public fcppt::exception

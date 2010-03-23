@@ -4,12 +4,12 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
+//[variant
 #include <fcppt/variant/object_impl.hpp>
-#include <fcppt/variant/recursive.hpp>
 #include <fcppt/variant/apply_binary.hpp>
-#include <fcppt/variant/output.hpp>
 #include <fcppt/io/cerr.hpp>
 #include <fcppt/io/cout.hpp>
+#include <fcppt/exception.hpp>
 #include <fcppt/string.hpp>
 #include <fcppt/text.hpp>
 #include <boost/mpl/vector/vector10.hpp>
@@ -19,8 +19,10 @@
 namespace
 {
 
+// create a binary visitor
 struct visitor
 {
+	// note: it is important to specify the result_type as a typedef
 	typedef void result_type;
 
 	template<
@@ -40,55 +42,12 @@ struct visitor
 			<< FCPPT_TEXT('\n');
 	}
 };
-
-struct wrapper;
-
-typedef fcppt::variant::object<
-	boost::mpl::vector2<
-		fcppt::variant::recursive<
-			wrapper
-		>,
-		int
-	>
-> recursive_variant;
-
-struct wrapper
-{
-	wrapper(
-		recursive_variant const &member
-	)
-	:
-		member(member)
-	{}
-
-	recursive_variant member;
-};
-
-template<
-	typename Ch,
-	typename Traits
->
-std::basic_ostream<
-	Ch,
-	Traits
-> &
-operator <<(
-	std::basic_ostream<
-		Ch,
-		Traits
-	> &stream_,
-	wrapper const &wrapper_
-)
-{
-	return
-		stream_ << wrapper_.member;
-}
-
 }
 
 int main()
 try
 {
+	// typedef a variant that can either hold an int or a string
 	typedef fcppt::variant::object<
 		boost::mpl::vector2<
 			int,
@@ -96,35 +55,24 @@ try
 		>
 	> variant;
 
+	// initialize v with a string
 	variant v(
 		fcppt::string(
 			FCPPT_TEXT("blabla")
 		)
 	);
 
+	// initialize u with an int
 	variant u(
 		42
 	);
 
+	// do a binary visitation on them
 	fcppt::variant::apply_binary(
 		visitor(),
 		v,
 		u
 	);
-
-	recursive_variant rv(
-		42
-	);
-
-	recursive_variant rrv((
-		wrapper(
-			rv
-		)
-	));
-
-	fcppt::io::cout
-		<< rrv
-		<< FCPPT_TEXT('\n');
 }
 catch(
 	fcppt::exception const &e
@@ -136,3 +84,4 @@ catch(
 	
 	return EXIT_FAILURE;
 }
+//]

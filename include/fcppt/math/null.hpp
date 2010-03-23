@@ -7,36 +7,21 @@
 #ifndef FCPPT_MATH_NULL_HPP_INCLUDED
 #define FCPPT_MATH_NULL_HPP_INCLUDED
 
-#include <fcppt/math/is_rational.hpp>
-#include <boost/utility/enable_if.hpp>
-
 namespace fcppt
 {
 namespace math
 {
-template<typename T>
-typename
-boost::disable_if
-<
-	fcppt::math::is_rational<T>,
-	T
->::type
+
+/// Returns the null value
+template<
+	typename T
+>
+T
 null()
 {
 	return static_cast<T>(0);
 }
 
-template<typename T>
-typename
-boost::enable_if
-<
-	fcppt::math::is_rational<T>,
-	T
->::type
-null()
-{
-	return T();
-}
 }
 }
 

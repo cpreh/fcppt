@@ -17,6 +17,7 @@ namespace math
 namespace dim
 {
 
+/// Converts a dim into a different dim of the same dimension using static_cast
 template<
 	typename Dest,
 	typename T,
@@ -25,7 +26,8 @@ template<
 >
 Dest const
 structure_cast(
-	basic<T, N, S> const &src)
+	basic<T, N, S> const &src
+)
 {
 	return math::detail::structure_cast<
 		Dest

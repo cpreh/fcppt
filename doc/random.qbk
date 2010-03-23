@@ -1,0 +1,45 @@
+[section Random]
+
+Random is a collection of classes to wrap 'tr1 random'.
+
+[section Uniform generator]
+
+'tr1 random' provides
+
+* distributions,
+* generators
+* and the variate generator.
+
+A variate generator needs to take a distribution and a generator.
+It can then be used to draw random numbers from the provided generator
+using the distribution.
+
+`fcppt::random::uniform` tries to make the process of creating a variate generator
+from a uniform distribution easier. It can be used like `std::tr1::variate_generator`
+after construction.
+Internally, it will automatically use `std::tr1::uniform_int` or `std::tr1::uniform_real`.
+
+[import ../examples/random/uniform.cpp]
+
+[randomuniform]
+
+[endsect]
+
+[section Actors]
+
+`fcppt::random::actor::normalized` is a helper class that
+calls a given function depending on the probability of it.
+It takes a vector of `fcppt::random::actor::element`,
+where each consists of a relative probability and a function to call.
+Note that all probabilities are relative, as shown in the next example.
+Otherwise it would be hard to assert that they all add up to '1'.
+
+[import ../examples/random/actor.cpp]
+
+[randomactor]
+
+[endsect]
+
+[xinclude doxygen_random.xml]
+
+[endsect]

@@ -7,7 +7,7 @@
 #ifndef FCPPT_VARIANT_INVALID_APPLY_HPP_INCLUDED
 #define FCPPT_VARIANT_INVALID_APPLY_HPP_INCLUDED
 
-#include <fcppt/exception.hpp>
+#include <fcppt/variant/exception.hpp>
 #include <fcppt/symbol.hpp>
 #include <fcppt/class_symbol.hpp>
 
@@ -16,9 +16,10 @@ namespace fcppt
 namespace variant
 {
 
+/// Thrown if apply is used on empty variants
 class FCPPT_CLASS_SYMBOL invalid_apply
 :
-	public exception
+	public variant::exception
 {
 public:
 	FCPPT_SYMBOL invalid_apply();

@@ -17,6 +17,7 @@ namespace math
 namespace matrix
 {
 
+/// Calculates a transposed matrix
 template<
 	typename T,
 	typename N,

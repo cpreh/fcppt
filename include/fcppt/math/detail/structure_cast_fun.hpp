@@ -17,15 +17,16 @@ namespace detail
 template<
 	typename T
 >
-class structure_cast_fun {
-public:
+struct structure_cast_fun
+{
 	typedef T result_type;
 
 	template<
 		typename U
 	>
 	T operator()(
-		U const &u) const
+		U const &u
+	) const
 	{
 		return static_cast<T>(u);
 	}

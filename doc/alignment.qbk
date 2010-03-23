@@ -1,0 +1,13 @@
+[section Alignment]
+
+Objects on the stack are always properly aligned,
+so are objects created by new.
+Although sometimes it is necessary to specify the alignment of an object,
+for instance if we want to create an array that is later to be used with placement new.
+
+[import ../examples/alignment.cpp]
+[alignment]
+
+[xinclude doxygen_alignment.xml]
+
+[endsect]

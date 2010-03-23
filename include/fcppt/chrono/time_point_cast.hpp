@@ -15,6 +15,10 @@ namespace fcppt
 namespace chrono
 {
 
+/// Converts a time_point into a different time_point
+/**
+ * Converts by using duration_cast internally
+*/
 template<
 	typename ToDuration,
 	typename Clock,

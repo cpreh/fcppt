@@ -8,16 +8,28 @@
 #define FCPPT_MATH_DEG_TO_RAD_HPP_INCLUDED
 
 #include <fcppt/math/pi.hpp>
+#include <boost/utility/enable_if.hpp>
+#include <boost/type_traits/is_floating_point.hpp>
 
 namespace fcppt
 {
 namespace math
 {
 
+/// Transforms degeree into radians
+/**
+ * Equal to @a deg * PI / 180
+*/
 template<
 	typename T
 >
-inline T
+inline
+typename boost::enable_if<
+	boost::is_floating_point<
+		T
+	>,
+	T
+>::type
 deg_to_rad(
 	T const deg
 )

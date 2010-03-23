@@ -7,51 +7,32 @@
 #ifndef FCPPT_MATH_DIFF_HPP_INCLUDED
 #define FCPPT_MATH_DIFF_HPP_INCLUDED
 
-#include <boost/utility/enable_if.hpp>
-#include <boost/type_traits/is_unsigned.hpp>
-#include <algorithm>
-#include <cmath>
-#include <cstdlib> // both are needed for alle overloads of std::abs
+#include <fcppt/math/detail/diff.hpp>
 
 namespace fcppt
 {
 namespace math
 {
 
+/// Calculates the absolute distance between @a a and @a b
+/**
+ * For unsigned types it returns min(@a a - @a b, @a b - @a a).
+ * Otherwise abs(@a a - @a b) is returned.
+*/
 template<
 	typename T
 >
-inline
-typename boost::disable_if<
-	boost::is_unsigned<
-		T
-	>,
-	T
->::type
+T
 diff(
 	T const &a,
 	T const &b
 )
 {
-	return std::abs(a - b);
-}
-
-template<
-	typename T
->
-inline
-typename boost::enable_if<
-	boost::is_unsigned<
-		T
-	>,
-	T
->::type
-diff(
-	T const &a,
-	T const &b
-)
-{
-	return std::min(a - b, b - a);
+	return
+		detail::diff(
+			a,
+			b
+		);
 }
 
 }

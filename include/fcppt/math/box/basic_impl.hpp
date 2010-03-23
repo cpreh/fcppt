@@ -11,6 +11,7 @@
 #include <fcppt/math/vector/basic_impl.hpp>
 #include <fcppt/math/vector/dim.hpp>
 #include <fcppt/math/dim/basic_impl.hpp>
+#include <algorithm>
 
 template<
 	typename T,
@@ -341,14 +342,20 @@ template<
 	typename T,
 	fcppt::math::size_type N
 >
-bool
-fcppt::math::box::basic<T, N>::operator==(
-	basic const &other_
-) const
+void
+fcppt::math::box::basic<T, N>::swap(
+	basic &other_
+)
 {
-	return
-		pos_ == other_.pos_
-		&& dimension_ == other_.dimension_;
+	std::swap(
+		pos_,
+		other_.pos_
+	);
+
+	std::swap(
+		dimension_,
+		other_.dimension_
+	);
 }
 
 template<
@@ -356,11 +363,40 @@ template<
 	fcppt::math::size_type N
 >
 bool
-fcppt::math::box::basic<T, N>::operator !=(
-	basic const &other_
-) const
+fcppt::math::box::operator==(
+	basic<T, N> const &a,
+	basic<T, N> const &b
+)
 {
-	return !(*this == other_);
+	return
+		a.pos() == b.pos()
+		&& a.dimension() == b.dimension();
+}
+
+template<
+	typename T,
+	fcppt::math::size_type N
+>
+bool
+fcppt::math::box::operator !=(
+	basic<T, N> const &a,
+	basic<T, N> const &b
+)
+{
+	return !(a == b);
+}
+
+template<
+	typename T,
+	fcppt::math::size_type N
+>
+void
+fcppt::math::box::swap(
+	basic<T, N> &a,
+	basic<T, N> &b
+)
+{
+	return a.swap(b);
 }
 
 #endif

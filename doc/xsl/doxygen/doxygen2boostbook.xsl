@@ -17,7 +17,7 @@
   <xsl:param name="boost.doxygen.headers" select="''"/>
 
   <!-- The common prefix to all headers -->
-  <xsl:param name="boost.doxygen.header.prefix" select="'boost'"/>
+  <xsl:param name="boost.doxygen.header.prefix" select="'fcppt'"/>
 
   <!-- The text that Doxygen places in overloaded functions. Damn them
        for forcing us to compare TEXT just to figure out what's overloaded

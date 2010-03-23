@@ -8,16 +8,29 @@
 #define FCPPT_MATH_PI_HPP_INCLUDED
 
 #include <fcppt/math/detail/pi.hpp>
+#include <boost/utility/enable_if.hpp>
+#include <boost/type_traits/is_floating_point.hpp>
 
 namespace fcppt
 {
 namespace math
 {
 
+/// Returns pi for type T
+/**
+ * @tparam T must be a floating point type
+*/
 template<
 	typename T
 >
-inline T pi()
+inline
+typename boost::enable_if<
+	boost::is_floating_point<
+		T
+	>,
+	T
+>::type
+pi()
 {
 	return detail::pi<
 		T

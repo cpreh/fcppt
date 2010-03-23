@@ -7,7 +7,7 @@
 #ifndef FCPPT_MATH_DETAIL_MAKE_VARIADIC_CONSTRUCTOR_DECL_HPP_INCLUDED
 #define FCPPT_MATH_DETAIL_MAKE_VARIADIC_CONSTRUCTOR_DECL_HPP_INCLUDED
 
-#include <fcppt/config.h>
+#include <fcppt/config.hpp>
 #ifndef FCPPT_HAVE_VARIADIC_TEMPLATES
 #include <boost/preprocessor/arithmetic/inc.hpp>
 #include <boost/preprocessor/repetition/enum_params.hpp>
@@ -19,23 +19,29 @@
 	template<\
 		typename... Args\
 	> \
-	explicit name(Args... args); \
+	explicit name(\
+		Args... args\
+	); \
 private: \
 	template<\
 		typename... Args,\
 		typename Arg\
 	> \
-	void set_impl( \
+	void \
+	set_impl( \
 		size_type i, \
 		Arg const &arg, \
-		Args... args); \
+		Args... args\
+	); \
 \
 	template<\
 		typename Arg\
 	>\
-	void set_impl( \
+	void \
+	set_impl( \
 		size_type i, \
-		Arg const &arg);
+		Arg const &arg\
+	);
 #else
 
 #define FCPPT_MATH_DETAIL_MAKE_VARIADIC_CONSTRUCTOR_DECL_IMPL(\

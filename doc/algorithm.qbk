@@ -1,5 +1,10 @@
 [section Algorithm]
 
+This example shows almost all of the algorithms in one file.
+
+[import ../examples/algorithm.cpp]
+[algorithm]
+
 [xinclude doxygen_algorithm.xml]
 
 [endsect]

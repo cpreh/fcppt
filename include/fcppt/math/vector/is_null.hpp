@@ -17,6 +17,7 @@ namespace math
 namespace vector
 {
 
+/// Checks if a vector is the null vector
 template<
 	typename T,
 	typename N,
@@ -24,12 +25,10 @@ template<
 >
 bool
 is_null(
-	basic<T, N, S> const &v)
+	basic<T, N, S> const &v
+)
 {
-	for(typename basic<T, N, S>::size_type i = 0; i < v.size(); ++i)
-		if(!compare(v[i], static_cast<T>(0)))
-			return false;
-	return true;
+	return v == basic<T, N, S>::null();
 }
 
 }

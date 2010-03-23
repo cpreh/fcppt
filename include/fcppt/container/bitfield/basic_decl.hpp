@@ -38,6 +38,7 @@ namespace bitfield
  * - operator|(Enum,Enum) shall not be declared!
  * - std::numeric_limits<InternalType>::digits shall be the number of bits usable in InternalType
 */
+//[bitfield_decl
 template<
 	typename Enum,
 	Enum Size,
@@ -45,6 +46,7 @@ template<
 >
 class basic
 {
+//<-
 	FCPPT_SAFE_BOOL(basic)
 private:
 	typedef InternalType internal_type;
@@ -66,6 +68,7 @@ private:
 
 	bool
 	boolean_test() const;
+//->
 public:
 	typedef proxy<
 		array_type &,
@@ -132,6 +135,18 @@ public:
 	const_reverse_iterator
 	rend() const;
 
+	const_iterator
+	cbegin() const;
+
+	const_iterator
+	cend() const;
+
+	const_reverse_iterator
+	crbegin() const;
+
+	const_reverse_iterator
+	crend() const;
+
 	size_type
 	size() const;
 
@@ -165,6 +180,28 @@ public:
 		basic const &
 	);
 
+	basic const
+	operator~() const;
+
+	bool
+	operator!() const;
+
+	// for some reason VC++ can't find this operator if it is not a member
+	value_type
+	operator &(
+		Enum
+	) const;
+
+	bool
+	operator==(
+		basic const &
+	) const;
+
+	bool
+	operator<(
+		basic const &
+	) const;
+
 	void
 	set(
 		Enum where,
@@ -179,6 +216,11 @@ public:
 	void
 	clear();
 
+	void
+	swap(
+		basic &
+	);
+
 	static
 	basic const
 	null();
@@ -189,16 +231,6 @@ template<
 	Enum Size,
 	typename InternalType
 >
-bool
-operator!(
-	basic<Enum, Size, InternalType> const &
-);
-
-template<
-	typename Enum,
-	Enum Size,
-	typename InternalType
->
 basic<Enum, Size, InternalType> const
 operator|(
 	basic<Enum, Size, InternalType> const &,
@@ -225,17 +257,6 @@ basic<Enum, Size, InternalType> const
 operator&(
 	basic<Enum, Size, InternalType> const &,
 	basic<Enum, Size, InternalType> const &
-);
-
-template<
-	typename Enum,
-	Enum Size,
-	typename InternalType
->
-value_type
-operator&(
-	basic<Enum, Size, InternalType> const &,
-	Enum
 );
 
 template<
@@ -259,6 +280,16 @@ operator~(
 	basic<Enum, Size, InternalType>
 );
 
+template<
+	typename Enum,
+	Enum Size,
+	typename InternalType
+>
+void
+swap(
+	basic<Enum, Size, InternalType> &,
+	basic<Enum, Size, InternalType> &
+);
 
 template<
 	typename Enum,
@@ -281,6 +312,52 @@ operator!=(
 	basic<Enum, Size, InternalType> const &,
 	basic<Enum, Size, InternalType> const &
 );
+
+template<
+	typename Enum,
+	Enum Size,
+	typename InternalType
+>
+bool
+operator<(
+	basic<Enum, Size, InternalType> const &,
+	basic<Enum, Size, InternalType> const &
+);
+
+template<
+	typename Enum,
+	Enum Size,
+	typename InternalType
+>
+bool
+operator<=(
+	basic<Enum, Size, InternalType> const &,
+	basic<Enum, Size, InternalType> const &
+);
+
+template<
+	typename Enum,
+	Enum Size,
+	typename InternalType
+>
+bool
+operator>(
+	basic<Enum, Size, InternalType> const &,
+	basic<Enum, Size, InternalType> const &
+);
+
+template<
+	typename Enum,
+	Enum Size,
+	typename InternalType
+>
+bool
+operator>=(
+	basic<Enum, Size, InternalType> const &,
+	basic<Enum, Size, InternalType> const &
+);
+
+//]
 
 }
 }

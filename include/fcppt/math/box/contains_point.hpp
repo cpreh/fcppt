@@ -19,6 +19,7 @@ namespace math
 namespace box
 {
 
+/// Tests if @a box_ contains @a point_
 template<
 	typename T,
 	size_type N
@@ -36,7 +37,7 @@ contains_point(
 		i < N;
 		++i
 	)
-		ret &=
+		ret = ret && 
 			point_[i] >= box_.pos(i)
 			&& point_[i] < box_.max(i);
 

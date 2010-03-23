@@ -1,40 +1,144 @@
 [section Log]
 
-[section Hello_World]
-Let's first start with an hello world example.
+[section Hello World]
+Let's first start with a hello world example.
 
 [import ../examples/log/helloworld.cpp]
 [loghelloworld]
 
-A logger object is constructed using the parameters::root class.
-This logger will be a root logger which means that it won't inherit another one's properties.
-fcppt::log::_ is an output helper object. FCPPT_LOG_DEBUG is a helper macro so you don't
-have to write
+Let's go through the example line by line:
+
+In the first line of `main`, a logger object is constructed using the
+`parameters::root` class.  This logger will be a "root logger" which means that
+it doesn't inherit another logger's properties (more on that later).
+
+Note also that we used `fcppt::io::cout` as the "sink" for our logger. You can
+insert any `fcppt::io::ostream` here, so you can log to a file or even to
+multiple sources or to a web server (you might take a look at
+[@http://www.boost.org/doc/libs/release/libs/iostreams/index.html boost::iostreams] 
+if you're interested in that).
+
+The "prefix" we give the logger is just that: A prefix which is prepended to
+every log line so you can easily identify the source of the log message. With
+hierarchical loggers, all of the prefixes in the tree up to the root are output.
+
+The next line, "enabled" is self-explanatory. A logger which is not enabled
+will not produce any output.
+
+We'll get to the `level` parameter in the next paragraph.
+
+Lastly, don't forget to call `create()` after that. This transforms the `root`
+object to something the `fcppt::log::object` gets in the constructor.
+
+Next, we output something to the `logger_` object. You might wonder if besides
+`FCPPT_LOG_DEBUG` there is also `FCPPT_LOG_WARNING` for example, and you are
+right - there is!  The available log levels are:
+
+# Debug
+# Info
+# Warning
+# Error
+# Fatal
+
+These levels are ordered in the following way: 
+
+The `level()` parameter which we gave the logger in the example above is the
+/highest/ log level which is active (or enabled). All log levels /below/ this
+level are also activated, so if you write: `.level(fcppt::log::level::debug)`,
+then /all/ log levels are activated. If you write
+`.level(fcppt::log::level::warning)` then the levels "warning", "error" and
+"fatal" are activated - and so on with the other levels.
+
+But why a macro to do the logging? Well, the second-smartest alternative is
+writing this each time:
+
 ``
 if(logger.activated(fcppt::log::level::debug))
   do_the_logging();
 ``
+
+Of course, this log syntax also is a bit awkward. Why not write something like:
+
+``
+logger_(fcppt::log::level::debug) << FCPPT_TEXT("Foobar");
+``
+
+And have the `operator()` return an object which does nothing if the `debug`
+log level is not activated? The reason for that is performance: With the
+method above, you have to evaluate the whole `operator<<` chain each time you
+get to that line of code. This might be cheap when you only have a single
+string to output, but if the information you want to transfer gets more
+complex, it will cost you some computing time (definitely less than an `if()`
+statement, anyway).
+
+The (also a bit awkwardly looking) `fcppt::log::_` object is an output helper
+object which basically forwards everything you give it via `operator<<` to the
+underlying `fcppt::io::ostream`. 
+
+Note that this type of object construction basically follows the
+[@http://www.parashift.com/c++-faq-lite/ctors.html#faq-10.18 named parameter idiom].
+
+Next, we'll look at hierarchical loggers.
 [endsect]
 
 [section Inheritance]
-A logger can inherit from another logger to form a hierarchy.
+A logger can inherit from another logger to build up a hierarchy.
 
 [import ../examples/log/inheritance.cpp]
 [loginheritance]
 
+Here we have two loggers, a parent and a child. The parent we know from the last
+example, nothing's changed. The child, however, gets the object which is
+returned by the `fcppt::log::parameters::inherited` function call (thus, no
+`create()` here). This returned object specifies that the logger shall inherit all the
+properties from its parent except for the prefix, which we set to "child" here.
+
+The next topic is "contexts".
+
 [endsect]
 
 [section Contexts]
+Let's say you want to disable a specific logger via a command line parameter
+while inside the `main()` function. Without further knowledge, the only
+thing that comes to mind is calling the logger's `fcppt::log::logger::enable`
+member function. But do to that, you need the logger object. It might be
+extremely cumbersome to pass the logger object on to the `main` function. That's
+why each logger has a "location" which is a sequence of strings defining the
+position of the logger in the logger hierarchy (the path down the logger tree,
+so to speak).
+
 A context is a class that can be given to a logger that has a location.
-parameters::all and parameters::inherited implicitly construct a location for a logger.
+`parameters::all` and `parameters::inherited` implicitly construct a location
+for a logger. Let's look at an example:
 
 [import ../examples/log/context.cpp]
 [logcontext]
 
-The logger context has an apply function to apply an action to loggers recursively
-starting with the specified location. The statement will activate all loggers
-starting from root::child and beneath.
-This can be used to enable or disable loggers or log levels at runtime in an easy way.
+The logger context has an `apply` function to apply an action to loggers,
+recursively starting at the specified location (note that the location is not
+merely a string, but an own data type with an overloaded `operator+`). The
+apply statement in the example will activate all loggers starting from
+"root+child" (or "root/child", whatever you like as a location separator) and
+beneath. This can be used to enable or disable loggers or log levels at runtime
+in an easy way.
+
+[endsect]
+
+[section A complex example]
+
+The idea of a logger hierarchy is very natural in a big project. Small projects
+might not need more than one or two independent loggers, but in a larger project
+you usually have many different subsystems. For example, in a game engine you
+would have a renderer subsystem, an input handler, a sound system and so on. All
+of those can have different loggers so if something doesn't work, you can turn
+them on incrementally and see where the error stems from.
+
+So, here is a complex example on how a library could use different loggers for
+different namespaces. Nothing more to explain here, just enjoy the code. :)
+
+[import ../examples/log/complex.cpp]
+
+[logcomplex]
 
 [endsect]
 

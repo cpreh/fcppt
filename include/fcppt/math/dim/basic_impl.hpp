@@ -38,7 +38,7 @@ template<
 >
 fcppt::math::dim::basic<T, N, S>::basic(
 	In const beg,
-		typename boost::enable_if<
+	typename boost::enable_if<
 		type_traits::is_iterator<
 			In
 		>,
@@ -61,6 +61,7 @@ fcppt::math::dim::basic<T, N, S>::basic(
 	);
 }
 
+// \cond
 #define FCPPT_MATH_DETAIL_MAKE_VARIADIC_CONSTRUCTOR_MAX_SIZE FCPPT_MATH_DIM_MAX_CTOR_PARAMS
 #define FCPPT_MATH_DETAIL_TEMPLATE_PRE\
 	template<\
@@ -70,6 +71,7 @@ fcppt::math::dim::basic<T, N, S>::basic(
 	>
 #define FCPPT_MATH_DETAIL_DEF_PRE\
 	fcppt::math::dim::basic<T, N, S>
+// \endcond
 
 FCPPT_MATH_DETAIL_ARRAY_ADAPTER_IMPL
 
@@ -79,8 +81,10 @@ FCPPT_MATH_DETAIL_MAKE_VARIADIC_CONSTRUCTOR(
 
 #undef FCPPT_MATH_DETAIL_MAKE_VARIADIC_CONSTRUCTOR_MAX_SIZE
 
+// \cond
 #define FCPPT_MATH_DIM_BASIC_DEFINE_OPERATOR(op)\
 FCPPT_MATH_DETAIL_MAKE_OP_DEF(fcppt::math::dim::basic, op)
+// \endcond
 
 FCPPT_MATH_DIM_BASIC_DEFINE_OPERATOR(+=)
 FCPPT_MATH_DIM_BASIC_DEFINE_OPERATOR(-=)
@@ -99,7 +103,8 @@ template<
 >
 fcppt::math::dim::basic<T, N, S> &
 fcppt::math::dim::basic<T, N, S>::operator*=(
-	value_type const &v)
+	value_type const &v
+)
 {
 	for(size_type i = 0; i < size(); ++i)
 		(*this)[i] *= v;
@@ -113,7 +118,8 @@ template<
 >
 fcppt::math::dim::basic<T, N, S> &
 fcppt::math::dim::basic<T, N, S>::operator/=(
-	value_type const &v)
+	value_type const &v
+)
 {
 	for(size_type i = 0; i < size(); ++i)
 		(*this)[i] /= v;
@@ -127,7 +133,8 @@ template<
 >
 typename fcppt::math::dim::basic<T, N, S>::reference
 fcppt::math::dim::basic<T, N, S>::operator[](
-	size_type const index)
+	size_type const index
+)
 {
 	return storage[index];
 }
@@ -139,7 +146,8 @@ template<
 >
 typename fcppt::math::dim::basic<T, N, S>::const_reference
 fcppt::math::dim::basic<T, N, S>::operator[](
-	size_type const index) const
+	size_type const index
+) const
 {
 	return storage[index];
 }
@@ -153,7 +161,8 @@ typename fcppt::math::dim::basic<T, N, S>::pointer
 fcppt::math::dim::basic<T, N, S>::data()
 {
 	return math::detail::storage_data(
-		storage);
+		storage
+	);
 }
 
 template<
@@ -165,7 +174,8 @@ typename fcppt::math::dim::basic<T, N, S>::const_pointer
 fcppt::math::dim::basic<T, N, S>::data() const
 {
 	return math::detail::storage_data(
-		storage);
+		storage
+	);
 }
 
 template<
@@ -180,7 +190,9 @@ fcppt::math::dim::basic<T, N, S>::size() const
 		size_type
 	>(
 		math::detail::storage_dim(
-			storage));
+			storage
+		)
+	);
 }
 
 template<
@@ -278,6 +290,51 @@ fcppt::math::dim::basic<T, N, S>::null()
 	for(size_type i = 0; i < N::value; ++i)
 		ret[i] = static_cast<value_type>(0);
 	return ret;
+}
+
+template<
+	typename T,
+	typename N,
+	typename S
+>
+void
+fcppt::math::dim::basic<T, N, S>::resize(
+	size_type const sz
+)
+{
+	storage.resize(
+		sz
+	);
+}
+
+template<
+	typename T,
+	typename N,
+	typename S
+>
+void
+fcppt::math::dim::basic<T, N, S>::swap(
+	basic &other_
+)
+{
+	std::swap(
+		storage,
+		other_.storage
+	);
+}
+
+template<
+	typename T,
+	typename N,
+	typename S
+>
+void
+fcppt::math::dim::swap(
+	basic<T, N, S> &a,
+	basic<T, N, S> &b
+)
+{
+	return a.swap(b);
 }
 
 #endif

@@ -17,6 +17,7 @@ namespace fcppt
 namespace math
 {
 
+/// The exception thrown by some math operations
 class FCPPT_CLASS_SYMBOL exception
 :
 	public fcppt::exception

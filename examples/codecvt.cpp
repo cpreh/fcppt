@@ -16,7 +16,7 @@ int main()
 try
 {
 	std::wstring const test(
-		L"localhost"
+		L"localhöst 東方"
 	);
 
 	std::string const narrow(

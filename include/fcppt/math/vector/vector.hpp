@@ -12,6 +12,7 @@
 #include <fcppt/math/vector/angle_between.hpp>
 #include <fcppt/math/vector/arithmetic.hpp>
 #include <fcppt/math/vector/atan2.hpp>
+#include <fcppt/math/vector/construct.hpp>
 #include <fcppt/math/vector/cross.hpp>
 #include <fcppt/math/vector/dot.hpp>
 #include <fcppt/math/vector/input.hpp>

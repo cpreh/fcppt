@@ -8,16 +8,16 @@
 #include <fcppt/chrono/system_clock.hpp>
 #include <fcppt/chrono/duration.hpp>
 #include <fcppt/chrono/time_point.hpp>
+#include <fcppt/time/ctime.hpp>
 #include <fcppt/io/cout.hpp>
 #include <fcppt/text.hpp>
+#include <ctime>
 
 int main()
 {
 	typedef fcppt::chrono::system_clock clock;
 
 	typedef clock::time_point time_point;
-
-	typedef clock::duration duration;
 
 	// obtain the current time_point
 	time_point const time1(
@@ -30,14 +30,18 @@ int main()
 		<< time1
 		<< FCPPT_TEXT('\n');
 	
-	time_point const time2(
-		clock::now()
+	// the time point can be converted to 'std::time_t'
+	std::time_t const c_time(
+		clock::to_time_t(
+			time1
+		)
 	);
 
-	// two time points can be substracted to obtain a duration
+	// output the current time as string
 	fcppt::io::cout
-		<< FCPPT_TEXT("The first output took ")
-		<< time2 - time1
+		<< fcppt::time::ctime(
+			c_time
+		)
 		<< FCPPT_TEXT('\n');
 }
 //]

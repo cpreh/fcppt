@@ -15,6 +15,12 @@ namespace fcppt
 namespace mpl
 {
 
+/// The Implication function: @a Left -> @a Right
+/**
+ * @tparam Left A boolean expression
+ * @tparam Right A boolean expression
+ * @remarks Equal to (not @a Left) or @a Right
+*/
 template<
 	typename Left,
 	typename Right

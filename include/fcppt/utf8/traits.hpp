@@ -14,7 +14,7 @@ namespace fcppt
 namespace utf8
 {
 
-// TODO:
+/// A new traits type, so that strings don't get accidentally converted into utf-8 strings
 class traits
 :
 public std::char_traits<

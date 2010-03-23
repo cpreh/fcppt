@@ -5,10 +5,11 @@
 
 
 #include <fcppt/filesystem/is_executable.hpp>
-#include <fcppt/config.h>
+#include <fcppt/config.hpp>
 #if defined(FCPPT_POSIX_PLATFORM)
 #include <fcppt/filesystem/exception.hpp>
 #include <fcppt/error/strerrno.hpp>
+#include <fcppt/to_std_string.hpp>
 #include <fcppt/text.hpp>
 #include <unistd.h>
 #include <cerrno>
@@ -26,7 +27,9 @@ fcppt::filesystem::is_executable(
 #if defined(FCPPT_POSIX_PLATFORM)
 	if(
 		::access(
-			path_.string().c_str(),
+			to_std_string(
+				path_.string()
+			).c_str(),
 			X_OK
 		) == 0
 	)

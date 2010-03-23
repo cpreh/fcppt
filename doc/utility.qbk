@@ -1,19 +1,50 @@
 [section Utility]
 
+[section safe_bool]
+
+Often you might want to add `operator !` to a class to test if it is not set.
+Examples are boost::shared_ptr, std::auto_ptr and so on. But you may also want
+to test the opposite and using `!!` for that isn't too appealing.
+
+[import ../examples/safe_bool.cpp]
+
+[safebool_usage]
+
+So how can this be done? The problem is that there is no operator that can
+be overloaded directly to provide this kind of behavior. But it is possible
+to specify conversion operators that are considered when the expression should
+be converted to bool.
+`operator bool` could be used, but then the class can be converted into almost
+anything that can be converted from a bool, so we don't want that.
+fcppt implements a macro to safely implement the "bool conversion idiom".
+The class has to use the macro FCPPT_SAFE_BOOL and implement `bool boolean_test() const`.
+
+[safebool_example]
+
+[endsect]
+
 [section Assertions]
 
 [section Description]
 
-The C standard library macro `assert` (defined in `<cassert>`) doesn't throw an exception if the given condition isn't satisfied. Instead, `abort()` is called and all destructors are ignored. This can leave the system in a suboptimal state. Imagine a full screen renderer which doesn't change the videomode after a crash, leaving you with garbled video output.
+The C standard library macro `assert` (defined in `<cassert>`) doesn't throw an
+exception if the given condition isn't satisfied. Instead, `abort()` is called
+and all destructors are ignored. This can leave the system in a suboptimal
+state. Imagine a full screen renderer which doesn't change the videomode after
+a crash, leaving you with garbled video output.
 
-To remedy this situation, there are `FCPPT_ASSERT` and `FCPPT_ASSERT_MESSAGE`. These macros will throw `fcppt::assertion_failed` instead of aborting the program abruply. Here's a small example:
+To remedy this situation, there are `FCPPT_ASSERT` and `FCPPT_ASSERT_MESSAGE`.
+These macros will throw `fcppt::assertion_failed` instead of aborting the
+program abruptly. Here's a small example:
 
 [import ../examples/assert.cpp]
 [assert]
 
-Note that the asserts are still macros, because they use the `__LINE__` and `__FILE__` constants internally.
+Note that the asserts are still macros, because they use the `__LINE__` and
+`__FILE__` constants internally.
 
-Note also that it is currently impossible to deactivate assertions via a preprocessor directive and it is disputed if that will ever be possible.
+Note also that it is currently impossible to deactivate assertions via a
+preprocessor directive and it is disputed if that will ever be possible.
 
 [endsect]
 
@@ -25,19 +56,202 @@ Note also that it is currently impossible to deactivate assertions via a preproc
 
 [section Description]
 
-This part of fcppt is similar to boost::assign, but fixes one issue: Why is there `list_of`, which has a Method `to_adapter`? Why not just a single templated `make_container` function? This is exactly what `fcppt::assign` consists of. It even works for associative containers (like `std::map` or `std::set`). It uses `fcppt::container::is_associative` to determine if a container is really an associative container and if so, uses `insert` instead of `push_back`. Here is an example:
+This part of fcppt is similar to boost::assign, but fixes one issue: Why is
+there `list_of`, which has a method `to_adapter`? Why not just a single
+templated `make_container` function? This is exactly what `fcppt::assign`
+consists of. It even works for associative containers (like `std::map` or
+`std::set`). It uses `fcppt::container::is_associative` to determine if a
+container is really an associative container and if so, uses `insert` instead
+of `push_back`. Here is an example:
 
 [import ../examples/make_container.cpp]
 [make_container]
 
-There's also `assign::make_array` which can be used to construct an `std::tr1::array`, whose size is determined by the how many elements you call `make_array` with. Here's an example which should explain everything:
+There's also `assign::make_array` which can be used to construct an
+`std::tr1::array`, whose size is determined by the how many elements you call
+`make_array` with. Here's an example which should explain everything:
 
 [import ../examples/make_array.cpp]
 [make_array]
+
+Note that there are cases where the constructs returned by `make_array` and
+`make_container` produce strange results, for instance:
+
+``
+int main()
+{
+	std::vector<int> v;
+	v.push_back(3);
+	v.push_back(2);
+	return v == fcppt::assign::make_container<std::vector<int> >(3)(2);
+}
+``
+
+Gives an error message because the compiler tries to compare a
+`std::vector<int>` with... well, whatever `make_container` returns (which,
+sadly, is not directly a `std::vector<int>`). In that case, just `static_cast`
+to the desired container, as such:
+
+``
+int main()
+{
+	std::vector<int> v;
+	v.push_back(3);
+	v.push_back(2);
+	return v == static_cast<std::vector<int> >(fcppt::assign::make_container<std::vector<int> >(3)(2));
+}
+``
 
 [endsect]
 
 [xinclude doxygen_assign.xml]
 
 [endsect]
+
+[section for_each_enumerator]
+
+Sometimes it is desired to do a loop over each enumerator of an enum.
+The ugly part is that you have to use an integral type
+and cast it back to an enumerator in each iteration.
+`FCPPT_FOREACH_ENUMERATOR` does just that but wraps the loop inside a macro.
+
+[import ../examples/foreach_enumerator.cpp]
+
+[foreach_enumerator]
+
+[endsect]
+
+[section strong_typedef]
+
+A normal typedef is just a synonym.
+It is impossible to overload on typedef names nor is it possible to force their use.
+
+``
+  typedef int type1;
+  typedef int type2;
+
+  void f(type1);
+  void f(type2); // doesn't work!
+
+  void g(type1);
+
+  void h()
+  {
+    g(42); // no mention of type1
+  }
+``
+
+A strong typedef is a kind of typedef that imposes restrictions on the typedeffed type.
+You can't implicitly convert the wrapped type into the typedeffed type.
+This way strong typedefs can make function calls more explicit, provide
+overloading on "the same" types or generally catch programming errors.
+
+Because a template meta function is a real mathematical function (which means
+it is right-unique), there is no way to create a new type just by using
+templates.  A new type has to be created instead (which can be done by defining
+a new `class`, `struct`,`enum` or `union`).  `fcppt::strong_typedef` is therefore
+a type that gets two template parameters:
+
+* The wrapped type
+* A unique type (just for typedef purposes)
+
+[import ../examples/strongtypedef.cpp]
+
+[strongtypedef_simple]
+
+There is also a macro to ease the process of creating distinct types.
+
+[strongtypedef_macro]
+
+[endsect]
+
+[section type_info/type_name]
+
+There are two utility functions regarding RTTI worth mentioning:
+`fcppt::type_info` is a wrapper around the standard C++ class `std::type_info`.
+The problem with the standard class is that it isn't copyable and thus cannot
+be passed around easily. `fcppt::type_info` solves this problem. In its
+constructor you have to pass a `std::type_info`. You can access this
+`type_info` later via the `get()` function, but it probably won't be necessary
+since the `fcppt` version has all the methods the standard version has.
+
+Now what about `fcppt::type_name`? Well, `std::type_info` has a `name` function
+returning a `char*`. Since that's not an `fcppt::string` (not even a
+`fcppt::char_type*`), a wrapper is necessary. Yet we can do better than just
+convert the character array to the correct character type. If you've looked at
+the output of `std::type_info::name` you might have noticed that on most
+compilers, it returns the type name /mangled/, so
+`fcppt::type_name(fcppt::type_info const&)` becomes
+`_ZN5fcppt9type_nameERKNS_9type_infoE` Most compilers, however, have a built-in
+function to unmangle those names. That's exactly what `fcppt::type_name` is
+for. This function is used in `fcppt::type_info::name`. 
+
+[section Synopsis]
+
+[import ../include/fcppt/type_info.hpp]
+[type_info]
+
+[endsect]
+
+[xinclude doxygen_type_name_info.xml]
+[endsect]
+
+[section function objects]
+
+fcppt doesn't use boost::function because it still has aliasing issues.
+Instead `std::tr1::function` should be used.
+The gcc implementation, however, can't deal with function objects
+that overload operator & (like phoenix might do).
+`fcppt::function::object` is a wrapper around `std::tr1::function`
+that fixes this problem.
+Also note that `std::tr1::bind` should be preferred over `boost::bind`,
+and `boost::phoenix` should be preferred over `boost::lambda`.
+
+[import ../examples/function.cpp]
+
+[function]
+
+[xinclude doxygen_function.xml]
+
+[endsect]
+
+[section visibility macros]
+
+When building a library, several platforms have different notions
+of 'library visibility' that the library author has to consider.
+A symbol (like a function or global object)
+can be hidden in the library or it can be made public for other
+libraries or programs to use (for POSIX systems it is slightly more
+complex, but those two cases are the ones that really matter).
+Furthermore the library author has to specify whether a symbol
+is currently being exported or imported (because some platforms
+like Windows need this).
+
+[note Although every symbol can be made public under a POSIX system by default,
+this is still not recommended, because you have to specify the visibility for Windows
+anyway and libraries with only public symbols tend to have an unnecessary large interface.]
+
+fcppt provides some macros to ease the specification of visibility.
+
+[import ../examples/visibility.cpp]
+
+[visibility]
+
+[xinclude doxygen_visibility.xml]
+
+[endsect]
+
+[section minmax_pair]
+
+`fcppt::minmax_pair` is a simple homogeneous pair that
+always asserts that its first value is smaller or equal to its second value.
+
+[import ../examples/minmax_pair.cpp]
+
+[minmax_pair]
+
+[xinclude doxygen_minmax_pair.xml]
+
+[endsect]
+
 [endsect]

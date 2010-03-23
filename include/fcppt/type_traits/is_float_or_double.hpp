@@ -18,10 +18,17 @@ namespace type_traits
 template<
 	typename T
 >
-class is_float_or_double :
-public boost::mpl::or_<
-	boost::is_same<T, float>,
-	boost::is_same<T, double>
+struct is_float_or_double
+:
+boost::mpl::or_<
+	boost::is_same<
+		T,
+		float
+	>,
+	boost::is_same<
+		T,
+		double
+	>
 >
 {};
 

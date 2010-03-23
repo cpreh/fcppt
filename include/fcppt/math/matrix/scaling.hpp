@@ -20,6 +20,7 @@ namespace math
 namespace matrix
 {
 
+/// Calculates a scaling matrix from @a x, @a y and @a z
 template<
 	typename T
 >
@@ -45,6 +46,7 @@ scaling(
 
 }
 
+/// Calculates a scaling matrix from a three dimensional vector
 template<
 	typename Vector
 >

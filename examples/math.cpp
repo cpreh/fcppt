@@ -12,6 +12,7 @@
 #include <fcppt/math/box/box.hpp>
 #include <fcppt/math/box/rect.hpp>	
 #include <fcppt/io/cout.hpp>
+#include <fcppt/text.hpp>
 #include <boost/assign/list_of.hpp>
 #include <istream>
 #include <ostream>

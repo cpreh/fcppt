@@ -1,0 +1,167 @@
+[section Math]
+
+[section Overview]
+
+math provides a set of utility classes and functions.
+
+[variablelist
+
+[[vector, dim and matrix]
+[
+These classes are very similar to each other.
+Each of them can be statically or dynamically sized.
+They provide simple getter, setter, arithmetic operations
+and conversions.
+]]
+
+[[sphere and box]
+[
+These classes offer wrappers around statically sized
+spheres and boxes.
+]]
+
+[[free functions]
+[
+There are a lot of free utility functions like
+float comparison, pi, absolute difference, and so on.
+Most of these utility functions deal with abstractions
+of floats and other integral types.
+]]
+
+]
+
+[endsect]
+
+[section Linear Algebra Classes]
+
+fcppt has three classes for linear algebra:
+
+* vector
+* dim
+* matrix
+
+They all have provide the following:
+
+* A typedef struct exists for declaring a static or a dynamic class, called `static_` and `dynamic` respectively.
+* Variadic constructors up to an implementation defined size.
+* Copy constructors and assignment operators.
+* Iterators, `begin`, `end`, and so on.
+* Access to elements via `operator[]` or `at()`.
+* Equality and inequality comparison.
+
+[section Vector and Dim]
+
+The following example shows how to declare
+static and dynamic vectors. Note that dim
+works almost the same.
+
+[caution Because C++03 doesn't support 'template typedefs',
+`static_` and `dynamic` are structs that use a nested
+typedef called `type`.]
+
+[import ../examples/math/vector/basic.cpp]
+
+[vectorbasic]
+
+A lot of arithmetic operations are defined on vector
+and dim. Most of them are element-wise operations.
+
+[import ../examples/math/vector/arithmetic.cpp]
+
+[vectorarithmetic]
+
+All linear algebra classes support a set of conversion functions.
+
+* structure_cast can be used to do a static_cast on each element.
+* narrow_cast can be used to discard some elements on the back.
+* construct can be used to construct a class of higher dimension from a lower one.
+
+[import ../examples/math/vector/convert.cpp]
+
+[vectorconvert]
+
+vector also provides named accessors.
+They are called x, y, z and w respectively.
+For dim, they are called w, h and d.
+
+[note If you try to access them out of bounds, you will get 
+a compiler error for static vectors or dims. But for dynamic
+vectors or dims, this is undefined.]
+
+[import ../examples/math/vector/access.cpp]
+
+[vectoraccess]
+
+[endsect]
+
+[section matrix]
+matrix is a bit different from vector and dim because it is two-dimensional.
+
+A matrix is most useful to describe affine transformations.
+So, naturally, a matrix can be multiplied by a vector.
+
+[import ../examples/math/matrix.cpp]
+
+[matrixtransform]
+
+[endsect]
+
+[section Design rational]
+
+The linear algebra classes are designed in such a way that almost no
+extra code is needed to implement statically and dynamically sized classes together.
+This is achieved by splitting every class into at least three template components:
+
+* The value type to hold,
+* The dimension type which can be either static or a placeholder for a dynamic type,
+* The storage type to hold the elements.
+
+Because the size and the storage type are orthogonal, it is possible to create view
+types (which matrix already uses internally).
+
+However, the static and dynamic typedefs as shown in earlier examples should be enough
+for the casual user.
+
+[endsect]
+
+[endsect]
+
+[section Geometric Classes]
+
+Currently fcppt provides two simple geometric classes:
+
+* sphere - An n-dimensional sphere
+* box - An n-dimensional box
+
+An example for box follows.
+Note that sphere is very similar.
+
+[import ../examples/math/box.cpp]
+
+[mathbox]
+
+[endsect]
+
+[section Utility Functions]
+
+The free utility functions all reside in the header as their name implies.
+For example fcppt::math::compare is in <fcppt/math/compare.hpp>.
+Some examples follow.
+
+[import ../examples/math/utility.cpp]
+
+[section compare]
+Compare can be used to compare floats and integral types alike.
+[mathcompare]
+[endsect]
+
+[section power of 2]
+is_power_of_2 checks if an unsigned integral type is a power of two.
+[mathpowerof2]
+[endsect]
+
+[endsect]
+
+[xinclude doxygen_math.xml]
+
+[endsect]

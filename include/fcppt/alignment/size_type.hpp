@@ -14,6 +14,7 @@ namespace fcppt
 namespace alignment
 {
 
+/// The size_type used to specify alignments
 typedef std::size_t size_type;
 
 }

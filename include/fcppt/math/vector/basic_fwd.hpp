@@ -14,6 +14,12 @@ namespace math
 namespace vector
 {
 
+/// The basic vector class
+/**
+ * @param T the type of the elements the vector will hold
+ * @param N the vectors size.
+ * @param S the vector's storage type
+*/
 template<
 	typename T,
 	typename N,

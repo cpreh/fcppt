@@ -19,6 +19,7 @@
 #include <fcppt/variant/detail/unwrap_recursive.hpp>
 #include <fcppt/variant/detail/apply_unary_internal.hpp>
 #include <boost/static_assert.hpp>
+#include <new>
 
 template<
 	typename Types

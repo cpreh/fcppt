@@ -12,6 +12,10 @@
 namespace fcppt
 {
 
+/// A homogenous pair that asserts that its first element is always less or equal to the second
+/**
+ * If the invariant is violated, fcppt::invalid_min_max_pair will be thrown.
+*/
 template<
 	typename T
 >
@@ -23,9 +27,11 @@ public:
 		T const &max
 	);
 
-	T min() const;
+	T 
+	min() const;
 
-	T max() const;
+	T
+	max() const;
 
 	void
 	min(
@@ -37,7 +43,8 @@ public:
 		T const &
 	);
 private:
-	void check();
+	void
+	check();
 
 	T
 		min_,

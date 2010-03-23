@@ -8,45 +8,7 @@
 #define FCPPT_RANDOM_RANGE_HPP_INCLUDED
 
 #include <fcppt/random/range_fwd.hpp>
-
-namespace fcppt
-{
-namespace random
-{
-
-template<
-	typename T
->
-class range
-{
-protected:
-	range(
-		T const &first_,
-		T const &last_
-	)
-	:
-		first_(first_),
-		last_(last_)
-	{}
-public:
-	typedef T value_type;
-
-	T first() const
-	{
-		return first_;
-	}
-
-	T last() const
-	{
-		return last_;
-	}
-private:
-	T
-		first_,
-		last_;
-};
-
-}
-}
+#include <fcppt/random/range_decl.hpp>
+#include <fcppt/random/range_impl.hpp>
 
 #endif

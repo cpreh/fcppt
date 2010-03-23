@@ -7,49 +7,8 @@
 #ifndef FCPPT_RANDOM_INCLUSIVE_RANGE_HPP_INCLUDED
 #define FCPPT_RANDOM_INCLUSIVE_RANGE_HPP_INCLUDED
 
-#include <fcppt/random/range.hpp>
-
-namespace fcppt
-{
-namespace random
-{
-
-template<
-	typename T
->
-class inclusive_range
-:
-	public range<T>
-{
-public:
-	inclusive_range(
-		T const &first_,
-		T const &last_
-	)
-	:
-		range<T>(
-			first_,
-			last_
-		)
-	{}
-};
-
-template<
-	typename T
->
-inclusive_range<T> const
-make_inclusive_range(
-	T const &first,
-	T const &last
-)
-{
-	return inclusive_range<T>(
-		first,
-		last
-	);
-}
-
-}
-}
+#include <fcppt/random/inclusive_range_fwd.hpp>
+#include <fcppt/random/inclusive_range_decl.hpp>
+#include <fcppt/random/inclusive_range_impl.hpp>
 
 #endif

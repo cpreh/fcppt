@@ -4,45 +4,77 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/container/raw_vector_impl.hpp>
-#include <fcppt/container/field_impl.hpp>
+//[rawvector
+#include <fcppt/container/raw_vector.hpp>
 #include <fcppt/io/cout.hpp>
 #include <fcppt/text.hpp>
-#include <vector>
+#include <algorithm>
+#include <cstddef>
+#include <ostream>
+
+namespace
+{
+
+// read at most count bytes in p,
+// return the number of bytes read
+std::size_t
+read(
+	unsigned char *p,
+	std::size_t count
+)
+{
+	// just for exposition,
+	// try to write 200 bytes
+	
+	std::size_t const max_(
+		std::min(
+			count,
+			static_cast<
+				std::size_t
+			>(
+				200
+			)
+		)
+	);
+
+	for(
+		std::size_t i = 0;
+		i < max_; 
+		++i
+	)
+		*p++ = 'a';
+
+	return max_;
+}
+
+}
 
 int main()
 {
-	typedef fcppt::container::field<
-		fcppt::container::raw_vector<
-			bool
-		>
-	> field_vector;
+	typedef fcppt::container::raw_vector<
+		unsigned char
+	> uc_raw_vector;
 
-	typedef std::vector<
-		field_vector
-	> vector_of_fields;
+	// make space for 100 elements, but don't initialize them
+	uc_raw_vector buffer(
+		100
+	);
 
-	vector_of_fields outer;
+	// resize the buffer to 150 elements, and also don't initialize them
+	buffer.resize_uninitialized(
+		150
+	);
 
-	for(
-		unsigned i = 0;
-		i < 100;
-		++i
-	)
-	{
-		field_vector test(
-			field_vector::dim(
-				4,
-				1
-			)
-		);
-
-		outer.push_back(
-			test	
-		);
-	}
+	std::size_t const read_count(
+		read(
+			buffer.data(),
+			buffer.size()
+		)
+	);
 
 	fcppt::io::cout
-		<< outer[42]
-		<< FCPPT_TEXT('\n');
+		<< read_count
+		<< FCPPT_TEXT(" bytes read.");
 }
+
+//]

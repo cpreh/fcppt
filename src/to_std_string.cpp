@@ -5,7 +5,7 @@
 
 
 #include <fcppt/to_std_string.hpp>
-#include <fcppt/config.h>
+#include <fcppt/config.hpp>
 #ifndef FCPPT_NARROW_STRING
 #include <fcppt/narrow.hpp>
 #endif

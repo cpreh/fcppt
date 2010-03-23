@@ -16,6 +16,7 @@ namespace fcppt
 namespace log
 {
 
+/// Convert a log level to its string representation
 FCPPT_SYMBOL string const
 level_to_string(
 	level::type

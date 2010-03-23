@@ -38,6 +38,7 @@ int main()
 		)
 	);
 
+	// Outputs: parent: child: Print from child.
 	FCPPT_LOG_DEBUG(
 		child_,
 		fcppt::log::_

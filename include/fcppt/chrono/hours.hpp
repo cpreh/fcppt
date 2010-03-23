@@ -16,6 +16,7 @@ namespace fcppt
 namespace chrono
 {
 
+/// A duration that counts in hours
 typedef duration<
 	rep,
 	ratio::object<

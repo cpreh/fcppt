@@ -23,6 +23,7 @@ namespace fcppt
 namespace variant
 {
 
+/// A class that can hold any object from a set of types
 template<
 	typename Types
 >
@@ -63,6 +64,7 @@ public:
 	bool
 	empty() const;
 
+	/// Returns the held object if its actual type is @a U
 	template<
 		typename U
 	>
@@ -75,6 +77,10 @@ public:
 	U &
 	get();
 
+	/// Returns the raw type if its actual type is @a U
+	/**
+	 * Note that the recursive type might be returned as well
+	*/
 	template<
 		typename U
 	>
@@ -87,9 +93,11 @@ public:
 	U &
 	get_raw();
 
+	/// Returns the type_info of the held object
 	std::type_info const &
 	type() const;
 
+	/// Returns the index of the held type in the type list
 	size_type
 	type_index() const;
 private:

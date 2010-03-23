@@ -16,6 +16,10 @@
 namespace fcppt
 {
 
+/// Does a static_cast but tries to detect narrowing conversions
+/**
+ * @throws If the new value cannot be cast back safely, fcppt::bad_truncation_check_cast will be thrown
+*/
 template<
 	typename Dest,
 	typename Source

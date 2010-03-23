@@ -20,10 +20,12 @@ namespace math
 namespace dim
 {
 
+// Typedefs a dim with dynamic dimension
 template<
 	typename T
 >
-struct dynamic {
+struct dynamic
+{
 	typedef basic<
 		T,
 		math::detail::dynamic_size,

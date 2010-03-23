@@ -7,7 +7,7 @@
 #ifndef FCPPT_LOG_TRAMPOLINE_HPP_INCLUDED
 #define FCPPT_LOG_TRAMPOLINE_HPP_INCLUDED
 
-#include <fcppt/log/output_helper.hpp>
+#include <fcppt/log/detail/output_helper.hpp>
 #include <fcppt/symbol.hpp>
 
 namespace fcppt
@@ -15,7 +15,8 @@ namespace fcppt
 namespace log
 {
 
-FCPPT_SYMBOL extern output_helper const _;
+/// The output helper object
+FCPPT_SYMBOL extern detail::output_helper const _;
 
 }
 }

@@ -7,9 +7,10 @@
 #ifndef FCPPT_THREAD_OBJECT_HPP_INCLUDED
 #define FCPPT_THREAD_OBJECT_HPP_INCLUDED
 
-#include <fcppt/thread/task.hpp>
 #include <fcppt/thread/id.hpp>
+#include <fcppt/thread/join_duration.hpp>
 #include <fcppt/thread/native_handle.hpp>
+#include <fcppt/thread/task.hpp>
 #include <fcppt/symbol.hpp>
 #include <fcppt/noncopyable.hpp>
 #include <boost/thread/thread.hpp>
@@ -19,10 +20,17 @@ namespace fcppt
 namespace thread
 {
 
+/// The main thread class
+/**
+ * It is mostly based on boost::thread.
+ * However, the destructor asserts that the thread has been joined.
+ * boost::thread detaches the thread instead.
+*/
 class object
 {
 	FCPPT_NONCOPYABLE(object)
 public:
+	/// Construct the thread and let it immediately run the task
 	FCPPT_SYMBOL object(
 		thread::task const &
 	);
@@ -35,17 +43,28 @@ public:
 	FCPPT_SYMBOL thread::id
 	id() const;
 
+	/// Tells if the thread needs to be joined
+	/**
+	 * @return true if the thread already has been joined, false otherwise
+	*/
 	FCPPT_SYMBOL bool
 	joinable() const;
 
 	FCPPT_SYMBOL void
 	join();
 
-	//    bool timed_join(const system_time& wait_until);
+	/// Try to join the thread and block at most for the given duration
+	FCPPT_SYMBOL
+	bool
+	try_join(
+		join_duration const &
+	);
 
-//    template<typename TimeDuration>
-//    bool timed_join(TimeDuration const& rel_time);
-
+	/// Detach the thread
+	/**
+	 * The thread won't be joinable anymore and can roam freely without
+	 * you ever getting control over it again. Use this with care.
+	*/
  	FCPPT_SYMBOL void
 	detach();
 
@@ -57,8 +76,6 @@ public:
 
 	FCPPT_SYMBOL bool
 	interruption_requested() const;
-
-//static void sleep(const system_time& xt);
 
 	/// asserts that the thread has been joined
 	/** Will call std::terminate() if joinable() == true.

@@ -16,6 +16,7 @@ namespace math
 namespace vector
 {
 
+/// Calculates the dot product between two vectors
 template<
 	typename T,
 	typename N,
@@ -29,7 +30,11 @@ dot(
 {
 	T result(static_cast<T>(0));
 
-	for(typename basic<T, N, S>::size_type i = 0; i < l.size(); ++i)
+	for(
+		typename basic<T, N, S>::size_type i = 0;
+		i < l.size();
+		++i
+	)
 		result += l[i] * r[i];
 
 	return result;

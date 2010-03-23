@@ -8,7 +8,6 @@
 #define FCPPT_TYPE_TRAITS_IS_ITERATOR_HPP_INCLUDED
 
 #include <boost/type_traits/integral_constant.hpp>
-#include <iterator>
 
 namespace boost
 {
@@ -31,23 +30,9 @@ namespace type_traits
 template<
 	typename  T
 >
-class is_iterator
+struct is_iterator
 :
-public boost::false_type
-{};
-
-template<
-	typename T,
-	typename U,
-	typename V,
-	typename W,
-	typename X
->
-class is_iterator<
-	std::iterator<T,U,V,W,X>
->
-:
-public boost::true_type
+boost::false_type
 {};
 
 template<
@@ -56,19 +41,26 @@ template<
 	typename R,
 	typename V
 >
-class is_iterator<
-	boost::transform_iterator<U, I, R, V>
+struct is_iterator<
+	boost::transform_iterator<
+		U,
+		I,
+		R,
+		V
+	>
 >
 :
-public boost::true_type
+boost::true_type
 {};
 
 template<
 	typename T
 >
-class is_iterator<T *>
+struct is_iterator<
+	T *
+>
 :
-public boost::true_type
+boost::true_type
 {};
 
 }

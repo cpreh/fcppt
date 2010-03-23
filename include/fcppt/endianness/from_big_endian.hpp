@@ -23,3 +23,5 @@ T from_big_endian(T const &t)
 }
 }
 }
+
+#endif

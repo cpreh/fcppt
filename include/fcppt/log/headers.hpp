@@ -7,10 +7,7 @@
 #ifndef FCPPT_LOG_HEADERS_HPP_INCLUDED
 #define FCPPT_LOG_HEADERS_HPP_INCLUDED
 
-#include <fcppt/log/object.hpp>
-#include <fcppt/log/output_helper.hpp>
-#include <fcppt/log/temporary_output.hpp>
-#include <fcppt/log/trampoline.hpp>
+#include <fcppt/log/output.hpp>
 #include <fcppt/log/macros.hpp>
 
 #endif

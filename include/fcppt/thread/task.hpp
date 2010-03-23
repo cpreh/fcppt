@@ -14,6 +14,7 @@ namespace fcppt
 namespace thread
 {
 
+/// The task type
 typedef fcppt::function::object<
 	void ()
 > task;

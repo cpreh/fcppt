@@ -6,6 +6,7 @@
 
 #include <fcppt/container/bitfield/bitfield.hpp>
 #include <boost/test/unit_test.hpp>
+#include <algorithm>
 
 namespace
 {
@@ -30,7 +31,7 @@ typedef fcppt::container::bitfield::basic<
 
 }
 
-BOOST_AUTO_TEST_CASE(container_bitfield)
+BOOST_AUTO_TEST_CASE(container_bitfield_arithmetic)
 {
 	bitfield field1(
 		bitfield::null()
@@ -50,8 +51,17 @@ BOOST_AUTO_TEST_CASE(container_bitfield)
 		bitfield::null()
 	);
 
-	field2[test_enum::test3] = true;
+	BOOST_REQUIRE(
+		(field2 | test_enum::test2)
+		& test_enum::test2
+	);
 
+	BOOST_REQUIRE(
+		!field2
+	);
+
+	field2[test_enum::test3] = true;
+		
 	{
 		bitfield const bf_or(
 			field1 | field2
@@ -91,5 +101,39 @@ BOOST_AUTO_TEST_CASE(container_bitfield)
 
 	BOOST_REQUIRE(
 		it == it2
+	);
+}
+
+BOOST_AUTO_TEST_CASE(container_bitfield_comparison)
+{
+	bitfield field1(
+		bitfield::null()
+	);
+
+	bitfield field2(
+		bitfield::null()
+	);
+
+	BOOST_REQUIRE(
+		field1 == field2
+	);
+
+	field2[test_enum::test2] = true;
+
+	BOOST_REQUIRE(
+		field1 != field2
+	);
+
+	BOOST_REQUIRE(
+		field1 < field2
+	);
+
+	std::swap(
+		field1,
+		field2
+	);
+
+	BOOST_REQUIRE(
+		field2 < field1
 	);
 }

@@ -1,0 +1,20 @@
+[section Time]
+
+The time namespace, for now, only offers a sleep function.
+It might be extended in the future.
+Anything that isn't associated with `fcppt::chrono` directly
+but deals with time, may go here.
+
+[section sleep]
+
+Here is a small example on how to sleep for 10 seconds.
+
+[import ../examples/sleep.cpp]
+
+[sleep]
+
+[endsect]
+
+[xinclude doxygen_time.xml]
+
+[endsect]

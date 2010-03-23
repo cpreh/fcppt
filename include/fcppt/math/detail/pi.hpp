@@ -24,7 +24,8 @@ struct pi<
 	long double
 >
 {
-	static long double get()
+	static long double
+	get()
 	{
 		return 3.1415926535897932384626433832795028841971693993751058L;
 	}
@@ -35,7 +36,8 @@ struct pi<
 	double
 >
 {
-	static double get()
+	static double
+	get()
 	{
 		return 3.1415926535897932384626433832795028841971693993751058;
 	}
@@ -46,7 +48,8 @@ struct pi<
 	float
 >
 {
-	static float get()
+	static float
+	get()
 	{
 		// TODO: add another constant for this!
 		return static_cast<float>(

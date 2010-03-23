@@ -8,18 +8,22 @@
 #define FCPPT_MATH_ROUND_DIV_INT_HPP_INCLUDED
 
 #include <boost/utility/enable_if.hpp>
-#include <boost/type_traits/is_integral.hpp>
+#include <boost/type_traits/is_unsigned.hpp>
 
 namespace fcppt
 {
-
 namespace math
 {
+
+/// Rounds the division @a l / @a r
+/**
+ * @tparam T must be unsigned
+*/
 template<
 	typename T
 >
 typename boost::enable_if<
-	boost::is_integral<T>,
+	boost::is_unsigned<T>,
 	T
 >::type
 round_div_int(
@@ -27,11 +31,11 @@ round_div_int(
 	T const r
 )
 {
-	return (r % 2)
-		? ((l * 2 / r) + 1) / 2 // for odd numbers up to half the types capacity
-		: (l + (r / 2)) / r;    // for even numbers at least up to half till up
-		                        // to 100% of the types capacity, depending on r
-		                        // greater r -> less max l
+	return (r % 2u)
+		? ((l * 2u / r) + 1u) / 2u // for odd numbers up to half the types capacity
+		: (l + (r / 2u)) / r;      // for even numbers at least up to half till up
+		                           // to 100% of the types capacity, depending on r
+		                           // greater r -> less max l
 }
 }
 }

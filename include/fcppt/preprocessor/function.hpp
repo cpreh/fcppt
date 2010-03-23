@@ -7,21 +7,13 @@
 #ifndef FCPPT_PREPROCESSOR_FUNCTION_HPP_INCLUDED
 #define FCPPT_PREPROCESSOR_FUNCTION_HPP_INCLUDED
 
-#include <fcppt/text.hpp>
-#include <fcppt/config.h>
+#include <fcppt/preprocessor/detail/function.hpp>
 
 /// Pretty printing macro for the current function
-/** May return an empty string if there is no support for function names
+/**
+ * Note that the return type might be a variable or a literal!
+ * @return May return an empty string if there is no support for function names
 */
-#ifdef FCPPT_HAS_PRETTY_FUNCTION
-#ifdef FCPPT_NARROW_STRING
-#define FCPPT_PP_FUNCTION __PRETTY_FUNCTION__
-#else
-#define FCPPT_PP_DETAIL_WIDEN(s) FCPPT_TEXT(s)
-#define FCPPT_PP_FILE FCPPT_PP_DETAIL_WIDEN(__PRETTY_FUNCTION__)
-#endif
-#else
-#define FCPPT_PP_FUNCTION FCPPT_TEXT("")
-#endif
+#define FCPPT_PP_FUNCTION FCPPT_PP_DETAIL_FUNCTION
 
 #endif

@@ -9,5 +9,6 @@
 
 #include <fcppt/minmax_pair_decl.hpp>
 #include <fcppt/minmax_pair_impl.hpp>
+#include <fcppt/minmax_pair_output.hpp>
 
 #endif

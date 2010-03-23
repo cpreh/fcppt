@@ -4,7 +4,7 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/config.h>
+#include <fcppt/config.hpp>
 #include <fcppt/utf8/convert.hpp>
 #ifndef FCPPT_STRING_IS_UTF8
 #include <fcppt/utf8/facet.hpp>
@@ -39,7 +39,8 @@ std::locale &utf8_locale()
 
 fcppt::string const
 fcppt::utf8::convert(
-	utf8::string const &s)
+	utf8::string const &s
+)
 {
 #if defined(FCPPT_STRING_IS_UTF8)
 	return fcppt::string(
@@ -83,7 +84,8 @@ fcppt::utf8::convert(
 
 fcppt::utf8::string const
 fcppt::utf8::convert(
-	fcppt::string const &s)
+	fcppt::string const &s
+)
 {
 #if defined(FCPPT_STRING_IS_UTF8)
 	return utf8::string(

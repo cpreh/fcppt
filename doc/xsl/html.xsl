@@ -36,22 +36,21 @@
   <xsl:param name="refentry.generate.title" select="1"/>
   <xsl:param name="make.year.ranges" select="1"/>
   <xsl:param name="generate.manifest" select="1"/>
-  <xsl:param name="generate.section.toc.level" select="3"/>
   <xsl:param name="doc.standalone">false</xsl:param>
   <xsl:param name="chunker.output.indent">yes</xsl:param>
   <xsl:param name="chunker.output.encoding">US-ASCII</xsl:param>
   <xsl:param name="chunk.quietly" select="not(number($boostbook.verbose))"/>
+
   <xsl:param name="toc.max.depth">2</xsl:param>
+  <xsl:param name="toc.section.depth">3</xsl:param>
+  <xsl:param name="chunk.section.depth">4</xsl:param>
+  <xsl:param name="chunk.first.sections">1</xsl:param>
+  <xsl:param name="generate.section.toc.level">4</xsl:param>
+
   <xsl:param name="callout.graphics.number.limit">15</xsl:param>
-	<!--
-  <xsl:param name = "admon.graphics.path"
-            select = "concat($boost.root, '')"/>
-  <xsl:param name = "navig.graphics.path"
-            select = "concat($boost.root, '')"/>-->
-  <xsl:param name = "admon.graphics.path" select = "concat($boost.root,'/')"/>
-  <xsl:param name = "navig.graphics.path" select = "concat($boost.root,'/')"/>
-  <xsl:param name = "callout.graphics.path"
-            select = "concat($boost.root, '/doc/src/images/callouts/')"/>
+  <xsl:param name="admon.graphics.path" select = "concat($boost.root,'/')"/>
+  <xsl:param name="navig.graphics.path" select = "concat($boost.root,'/')"/>
+  <xsl:param name = "callout.graphics.path" select = "concat($boost.root, '/doc/src/images/callouts/')"/>
 
 
   <xsl:param name="admon.style">

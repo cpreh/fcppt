@@ -24,6 +24,7 @@ namespace fcppt
 namespace utf8
 {
 
+/// The utf-8 codecvt facet imported from boost
 typedef ::boost::fcppt::utf8_codecvt_facet facet;
 
 }

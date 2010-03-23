@@ -12,6 +12,7 @@ namespace fcppt
 namespace mpl
 {
 
+/// value_type meta function, calculates T::value_type
 template<
 	typename T
 >

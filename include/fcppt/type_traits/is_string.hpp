@@ -18,23 +18,25 @@ namespace type_traits
 template<
 	typename T
 >
-class is_string
+struct is_string
 :
-public boost::false_type
+boost::false_type
 {};
 
 template<
 	typename Ch,
-	typename Traits
+	typename Traits,
+	typename Alloc
 >
-class is_string<
+struct is_string<
 	std::basic_string<
 		Ch,
-		Traits
+		Traits,
+		Alloc
 	>
 >
 :
-public boost::true_type
+boost::true_type
 {};
 
 }

@@ -17,28 +17,45 @@ fcppt::assertion_failed::assertion_failed(
 :
 	exception(
 		_file+
-		FCPPT_TEXT(":")+
+		FCPPT_TEXT(":")
+		+
 		lexical_cast<fcppt::string>(
-			_line)+
-		FCPPT_TEXT(": ")+
-		(_function.empty() 
+			_line
+		)
+		+
+		FCPPT_TEXT(": ")
+		+
+		(
+			_function.empty() 
 			? 
 				fcppt::string()
 			:
 				fcppt::string(
-					FCPPT_TEXT("In function \"")+
-					_function+
-					FCPPT_TEXT("\": ")))+
-		FCPPT_TEXT("Assertion \"")+
+					FCPPT_TEXT("In function \"")
+					+
+					_function
+					+
+					FCPPT_TEXT("\": ")
+				)
+		)
+		+
+		FCPPT_TEXT("Assertion \"")
+		+
 		_condition+
-		FCPPT_TEXT("\" failed")+
-		(_message.empty() 
-					? 
-						fcppt::string()
-					:
-						fcppt::string(
-							FCPPT_TEXT(": "))+
-						_message)),
+		FCPPT_TEXT("\" failed")
+		+
+		(
+			_message.empty() 
+			? 
+				fcppt::string()
+			:
+				fcppt::string(
+					FCPPT_TEXT(": ")
+				)
+				+
+				_message
+		)
+	),
 	file_(
 		_file),
 	line_(
