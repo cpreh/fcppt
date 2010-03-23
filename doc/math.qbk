@@ -9,9 +9,11 @@ math provides a set of utility classes and functions.
 [[vector, dim and matrix]
 [
 These classes are very similar to each other.
-Each of them can be statically or dynamically sized.
-They provide simple getter, setter, arithmetic operations
-and conversions.
+Each of them can be statically or dynamically sized, which means that you can
+either have a vector with a fixed amount of components (x, y and z, for
+example) or one with a dynamic amount of components.
+The classes provide simple constructors, getters, setters and arithmetic
+operations and conversions. They also make proper use of operator overloading.
 ]]
 
 [[sphere and box]
@@ -40,14 +42,37 @@ fcppt has three classes for linear algebra:
 * dim
 * matrix
 
-They all have provide the following:
+They all provide the following:
 
-* A typedef struct exists for declaring a static or a dynamic class, called `static_` and `dynamic` respectively.
+* A typedef struct exists for declaring a static or a dynamic class, called `static_` (note the underscore because `static` is already a keyword) and `dynamic` respectively.
 * Variadic constructors up to an implementation defined size.
 * Copy constructors and assignment operators.
 * Iterators, `begin`, `end`, and so on.
 * Access to elements via `operator[]` or `at()`.
 * Equality and inequality comparison.
+
+The templates vector and dim are actually /very/ similar and you might wonder
+why they even exist! We've talked about this topic a long time. What it came
+down to was: We don't want to accidentally type something like
+
+``
+vector2 v(x,y),m;
+dim2 d(w,h);
+
+// Here, m was meant instead of d
+vector2 a = v + d;
+``
+
+Errors like this happen, and they're prevented by strictly separating
+dimensions from vectors. Another approach would be even more strict: To
+separate points from direction vectors. Some libraries do that. We, however,
+though of this as too strict and drew the line. It's still a bit disputed,
+though. If there are strong arguments for further separation, we're open for
+it. 
+
+Keep in mind, though, that most arithmetic operations, like taking the dot
+product, are not available for dim. You have to convert to a vector using
+`structure_cast`.
 
 [section Vector and Dim]
 
@@ -57,14 +82,17 @@ works almost the same.
 
 [caution Because C++03 doesn't support 'template typedefs',
 `static_` and `dynamic` are structs that use a nested
-typedef called `type`.]
+typedef called `type`. If you get strange errors with some math code, be sure
+to look if you've omitted the `::type` at the end.]
 
 [import ../examples/math/vector/basic.cpp]
 
 [vectorbasic]
 
-A lot of arithmetic operations are defined on vector
-and dim. Most of them are element-wise operations.
+A lot of arithmetic operations are defined on vector and dim. Most of them are
+element-wise operations. Some operations are free functions where they
+theoretically could be member functions (like calculating the dot product).
+We've mostly decided to make them free functions to reduce dependencies.
 
 [import ../examples/math/vector/arithmetic.cpp]
 
@@ -72,21 +100,21 @@ and dim. Most of them are element-wise operations.
 
 All linear algebra classes support a set of conversion functions.
 
-* structure_cast can be used to do a static_cast on each element.
-* narrow_cast can be used to discard some elements on the back.
-* construct can be used to construct a class of higher dimension from a lower one.
+* `structure_cast` can be used to do a `static_cast` on each element.
+* `narrow_cast` can be used to cast a vector/dim to a vector/dim of a lower dimension. This is defined only for statically sized vectors.
+* `construct` is the dual of `narrow_cast`.
 
 [import ../examples/math/vector/convert.cpp]
 
 [vectorconvert]
 
-vector also provides named accessors.
-They are called x, y, z and w respectively.
-For dim, they are called w, h and d.
+vector also provides named accessors.  They are called x, y, z and w
+respectively.  For dim, they are called w, h and d. If you have vectors or dims
+with a higher dimension than 3 (4 for vectors, obviously), you have to use
+`at()` or `operator[]` to access the higher components.
 
-[note If you try to access them out of bounds, you will get 
-a compiler error for static vectors or dims. But for dynamic
-vectors or dims, this is undefined.]
+[note If you try to access them out of bounds, you will get a compiler error for
+static vectors or dims. But for dynamic vectors or dims, this is undefined.]
 
 [import ../examples/math/vector/access.cpp]
 
@@ -98,7 +126,11 @@ vectors or dims, this is undefined.]
 matrix is a bit different from vector and dim because it is two-dimensional.
 
 A matrix is most useful to describe affine transformations.
-So, naturally, a matrix can be multiplied by a vector.
+So, naturally, a matrix can be multiplied by a vector and a scalar.
+
+[note Advanced features such as lazy matrix operations are not implemented right
+now - simply because we didn't need those yet. If you're interested in extending
+`fcppt::math`, contact us.]
 
 [import ../examples/math/matrix.cpp]
 
@@ -108,19 +140,19 @@ So, naturally, a matrix can be multiplied by a vector.
 
 [section Design rational]
 
-The linear algebra classes are designed in such a way that almost no
-extra code is needed to implement statically and dynamically sized classes together.
-This is achieved by splitting every class into at least three template components:
+The linear algebra classes are designed in such a way that almost no extra code
+is needed to implement statically and dynamically sized classes together.  This
+is achieved by splitting every class into at least three template components:
 
 * The value type to hold,
 * The dimension type which can be either static or a placeholder for a dynamic type,
 * The storage type to hold the elements.
 
-Because the size and the storage type are orthogonal, it is possible to create view
-types (which matrix already uses internally).
+Because the size and the storage type are orthogonal, it is possible to create
+view types (which matrix already uses internally).
 
-However, the static and dynamic typedefs as shown in earlier examples should be enough
-for the casual user.
+However, the static and dynamic typedefs as shown in earlier examples should be
+enough for the casual user.
 
 [endsect]
 
@@ -133,8 +165,7 @@ Currently fcppt provides two simple geometric classes:
 * sphere - An n-dimensional sphere
 * box - An n-dimensional box
 
-An example for box follows.
-Note that sphere is very similar.
+An example for box follows. Note that sphere is very similar.
 
 [import ../examples/math/box.cpp]
 

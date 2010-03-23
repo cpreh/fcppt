@@ -55,6 +55,7 @@ int main()
 	// dims can be added to or subtracted from vectors
 	std::cout << (vec2 - dim_) << '\n';
 
+	// Computes the dot product of two vectors
 	float3_vec::value_type const dotp(
 		fcppt::math::vector::dot(
 			vec1,
