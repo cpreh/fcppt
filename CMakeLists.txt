@@ -138,7 +138,7 @@ FILE(WRITE ${pkgfile}
 	"Version: 0.${FCPPT_VERSION}\n"
 	"Requires:\n"
 	"Libs: -L\${libdir} -lfcppt\n"
-	"Cflags: -I\${includedir}/fcppt")
+	"Cflags: -I\${includedir}/")
 #IF(FCPPT_HAVE_VARIADIC_TEMPLATES)
 #	FILE(APPEND ${pkgfile} " -std=c++0x")
 #ENDIF()
