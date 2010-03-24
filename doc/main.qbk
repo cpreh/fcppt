@@ -31,6 +31,8 @@ and even implements some replacements for a few boost components.
 
 [include overview.qbk]
 
+[include requirements.qbk]
+
 [include structure.qbk]
 
 [include algorithm.qbk]
