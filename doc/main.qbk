@@ -31,11 +31,11 @@ and even implements some replacements for a few boost components.
 
 [include overview.qbk]
 
+[include contact.qbk]
+
 [include download.qbk]
 
 [include requirements.qbk]
-
-[include bugsfeatures.qbk]
 
 [include structure.qbk]
 
