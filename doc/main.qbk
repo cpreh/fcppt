@@ -33,9 +33,7 @@ and even implements some replacements for a few boost components.
 
 [include contact.qbk]
 
-[include download.qbk]
-
-[include requirements.qbk]
+[include requirements_download_installation.qbk]
 
 [include structure.qbk]
 
