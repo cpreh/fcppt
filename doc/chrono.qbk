@@ -14,7 +14,7 @@ between two `time_point`s.
 
 [[time_point]
 [
-`fcppt::chrono::time_point` is a template class that represents a given point time.
+`fcppt::chrono::time_point` is a template class that represents a given point in time.
 Its template parameters are its associated clock and a duration.
 Two time_points can be subtracted to yield a duration.
 Also a time_point has the `time_since_epoch()` function that returns a duration
