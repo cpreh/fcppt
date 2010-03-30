@@ -11,6 +11,8 @@
 #include <fcppt/container/insert_failed.hpp>
 #include <fcppt/container/not_found.hpp>
 #include <fcppt/text.hpp>
+#include <fcppt/type_name.hpp>
+#include <typeinfo>
 #include <utility>
 
 template<
@@ -82,7 +84,9 @@ void fcppt::container::map<
 		!impl_.insert(v).second
 	)
 		throw insert_failed(
-			FCPPT_TEXT("insert in map failed!")
+			format_error(
+				FCPPT_TEXT("insert")
+			)
 		);
 }
 
@@ -101,7 +105,9 @@ void fcppt::container::map<
 		)
 	)
 		throw not_found(
-			FCPPT_TEXT("erase from map failed!")
+			format_error(
+				FCPPT_TEXT("erase")
+			)
 		);
 }
 
@@ -169,7 +175,9 @@ fcppt::container::map<
 		it == impl_.end()
 	)
 		throw not_found(
-			FCPPT_TEXT("operator[] of map failed!")
+			format_error(
+				FCPPT_TEXT("operator[]")
+			)
 		);
 
 	return it->second;
@@ -287,6 +295,29 @@ fcppt::container::map<
 >::empty() const
 {
 	return begin() == end();
+}
+
+template<
+	typename MapType
+>
+fcppt::string const
+fcppt::container::map<
+	MapType
+>::format_error(
+	fcppt::string const &function_
+)
+{
+	return
+		type_name(
+			typeid(
+				map<
+					MapType
+				>
+			)
+		)
+		+ FCPPT_TEXT("::")
+		+ function_
+		+ FCPPT_TEXT(" failed!");
 }
 
 #endif
