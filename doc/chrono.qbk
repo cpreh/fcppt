@@ -130,7 +130,7 @@ that `t2` is always equal to or greater than `t1`.
 But the time span is guaranteed to be large, like hundreds of years.]
 Monotonic clocks are the only sensible choice if you want to implement a timer.
 [note Apart from implementing a timer, the time_points produced by a monotonic clock have
-no particular meaning. Usually an operation system will start the clock at 0 when it is started.
+no particular meaning. Usually an operating system will start the clock at 0 when it is started.
 ]
 
 [import ../examples/chrono/monotonic_clock.cpp]
