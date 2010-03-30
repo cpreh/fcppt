@@ -101,7 +101,7 @@ The next topic is "contexts".
 Let's say you want to disable a specific logger via a command line parameter
 while inside the `main()` function. Without further knowledge, the only
 thing that comes to mind is calling the logger's `fcppt::log::logger::enable`
-member function. But do to that, you need the logger object. It might be
+member function. But to do that, you need the logger object. It might be
 extremely cumbersome to pass the logger object on to the `main` function. That's
 why each logger has a "location" which is a sequence of strings defining the
 position of the logger in the logger hierarchy (the path down the logger tree,
