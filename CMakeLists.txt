@@ -162,7 +162,7 @@ IF(MSVC)
 ENDIF()
 
 FIND_PACKAGE(
-	Boost 1.41.0 REQUIRED COMPONENTS
+	Boost 1.40.0 REQUIRED COMPONENTS
 	filesystem
 	system
 	thread
