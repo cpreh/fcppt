@@ -34,6 +34,6 @@ int main()
 	std::cout << fcppt::endianness::from_big_endian(lconverted) << "\n";
 
 	// Should output 0 or 1, depending on your local endianness
-	std::cout << fcppt::endianness::host_format() << "\n";
+	std::cout << static_cast<unsigned>(fcppt::endianness::host_format()) << "\n";
 }
 //]

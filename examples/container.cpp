@@ -7,13 +7,17 @@
 #include <fcppt/container/map_impl.hpp>
 #include <fcppt/container/raw_vector_impl.hpp>
 #include <fcppt/io/cout.hpp>
+#include <fcppt/io/cerr.hpp>
 #include <fcppt/string.hpp>
 #include <fcppt/text.hpp>
 #include <fcppt/assert.hpp>
+#include <fcppt/exception.hpp>
 #include <boost/foreach.hpp>
 #include <map>
+#include <cstdlib>
 
 int main()
+try
 {
 	typedef fcppt::container::map<
 		std::map<
@@ -29,6 +33,10 @@ int main()
 		FCPPT_TEXT("peter")
 	);
 
+	m.insert(
+		42,
+		FCPPT_TEXT("peter")
+	);
 	BOOST_FOREACH(
 		map_type::const_reference r,
 		m
@@ -68,4 +76,14 @@ int main()
 	);
 
 	fcppt::io::cout << vec.size() << '\n';
+}
+catch(
+	fcppt::exception const &e
+)
+{
+	fcppt::io::cerr
+		<< e.string()
+		<< FCPPT_TEXT('\n');
+	
+	return EXIT_FAILURE;
 }
