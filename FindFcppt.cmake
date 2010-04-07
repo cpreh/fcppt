@@ -32,6 +32,7 @@ IF (FCPPT_LIBRARIES)
 ENDIF()
 
 IF ((NOT FCPPT_INCLUDE_DIRS) AND (NOT FCPPT_LIBRARIES))
+	INCLUDE (FindPkgConfig)
 	pkg_check_modules(FCPPT fcppt)
 ENDIF()
 
