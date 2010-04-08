@@ -8,6 +8,7 @@
 #define FCPPT_MINMAX_PAIR_IMPL_HPP_INCLUDED
 
 #include <fcppt/minmax_pair_decl.hpp>
+#include <fcppt/homogenous_pair_impl.hpp>
 #include <fcppt/invalid_minmax_pair.hpp>
 #include <fcppt/format.hpp>
 #include <fcppt/text.hpp>
@@ -20,8 +21,10 @@ fcppt::minmax_pair<T>::minmax_pair(
 	T const &max_
 )
 :
-	min_(min_),
-	max_(max_)
+	impl_(
+		min_,
+		max_
+	)
 {
 	check();
 }
@@ -32,7 +35,7 @@ template<
 T
 fcppt::minmax_pair<T>::min() const
 {
-	return min_;
+	return impl_.first;
 }
 
 template<
@@ -41,7 +44,16 @@ template<
 T
 fcppt::minmax_pair<T>::max() const
 {
-	return max_;
+	return impl_.second;
+}
+
+template<
+	typename T
+>
+typename fcppt::minmax_pair<T>::pair_type const
+fcppt::minmax_pair<T>::pair() const
+{
+	return impl_;
 }
 
 template<
@@ -52,7 +64,8 @@ fcppt::minmax_pair<T>::min(
 	T const &nmin
 )
 {
-	min_ = nmin;
+	impl_.first = nmin;
+
 	check();
 }
 
@@ -64,8 +77,33 @@ fcppt::minmax_pair<T>::max(
 	T const &nmax
 )
 {
-	max_ = nmax;
+	impl_.second = nmax;
+
 	check();
+}
+
+template<
+	typename T
+>
+void
+fcppt::minmax_pair<T>::pair(
+	pair_type const &pair_
+)
+{
+	impl_ = pair_;
+}
+
+template<
+	typename T
+>
+void
+fcppt::minmax_pair<T>::swap(
+	minmax_pair &other_
+)
+{
+	impl_.swap(
+		other_.impl_
+	);
 }
 
 template<
@@ -84,6 +122,21 @@ fcppt::minmax_pair<T>::check()
 				% max()
 			).str()
 		);
+}
+
+template
+<
+	typename T
+>
+void
+fcppt::swap(
+	minmax_pair<T> &a_,
+	minmax_pair<T> &b_
+)
+{
+	a_.swap(
+		b_
+	);
 }
 
 #endif

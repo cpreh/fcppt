@@ -4,11 +4,17 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_HOMOGENOUS_PAIR_HPP_INCLUDED
-#define FCPPT_HOMOGENOUS_PAIR_HPP_INCLUDED
+#ifndef FCPPT_HOMOGENOUS_PAIR_FWD_HPP_INCLUDED
+#define FCPPT_HOMOGENOUS_PAIR_FWD_HPP_INCLUDED
 
-#include <fcppt/homogenous_pair_fwd.hpp>
-#include <fcppt/homogenous_pair_decl.hpp>
-#include <fcppt/homogenous_pair_impl.hpp>
+namespace fcppt
+{
+template
+<
+	typename T
+>
+class homogenous_pair;
+
+}
 
 #endif
