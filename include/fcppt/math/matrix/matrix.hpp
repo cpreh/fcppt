@@ -12,5 +12,6 @@
 #include <fcppt/math/matrix/arithmetic.hpp>
 #include <fcppt/math/matrix/output.hpp>
 #include <fcppt/math/matrix/vector.hpp>
+#include <fcppt/math/matrix/static.hpp>
 
 #endif

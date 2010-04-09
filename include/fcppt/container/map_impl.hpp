@@ -300,6 +300,40 @@ fcppt::container::map<
 template<
 	typename MapType
 >
+typename 
+fcppt::container::map<
+	MapType
+>::iterator
+fcppt::container::map<
+	MapType
+>::lower_bound(
+	key_type const &k)
+{
+	return 
+		impl_.lower_bound(
+			k);
+}
+
+template<
+	typename MapType
+>
+typename 
+fcppt::container::map<
+	MapType
+>::const_iterator
+fcppt::container::map<
+	MapType
+>::lower_bound(
+	key_type const &k) const
+{
+	return 
+		impl_.lower_bound(
+			k);
+}
+
+template<
+	typename MapType
+>
 fcppt::string const
 fcppt::container::map<
 	MapType
