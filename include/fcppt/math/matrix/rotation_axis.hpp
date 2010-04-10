@@ -9,6 +9,7 @@
 #include <fcppt/math/matrix/static.hpp>
 #include <fcppt/math/matrix/basic_impl.hpp>
 #include <fcppt/math/vector/basic_impl.hpp>
+#include <fcppt/math/vector/static.hpp>
 #include <cmath>
 
 namespace fcppt
