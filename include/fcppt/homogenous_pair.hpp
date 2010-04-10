@@ -10,5 +10,6 @@
 #include <fcppt/homogenous_pair_fwd.hpp>
 #include <fcppt/homogenous_pair_decl.hpp>
 #include <fcppt/homogenous_pair_impl.hpp>
+#include <fcppt/homogenous_pair_output.hpp>
 
 #endif

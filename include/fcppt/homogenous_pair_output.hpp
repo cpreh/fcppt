@@ -4,11 +4,10 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_MINMAX_PAIR_OUTPUT_HPP_INCLUDED
-#define FCPPT_MINMAX_PAIR_OUTPUT_HPP_INCLUDED
+#ifndef FCPPT_HOMOGENOUS_PAIR_OUTPUT_HPP_INCLUDED
+#define FCPPT_HOMOGENOUS_PAIR_OUTPUT_HPP_INCLUDED
 
-#include <fcppt/minmax_pair_impl.hpp>
-#include <fcppt/homogenous_pair_output.hpp>
+#include <fcppt/homogenous_pair_impl.hpp>
 #include <ostream>
 #include <iosfwd>
 
@@ -29,13 +28,17 @@ operator << (
 		Ch,
 		Traits
 	> &stream_,
-	minmax_pair<
+	homogenous_pair<
 		T
 	> const &pair_
 )
 {
 	return stream_
-		<< pair_.pair();
+		<< stream_.widen('(')
+		<< pair_.first
+		<< stream_.widen(',')
+		<< pair_.second
+		<< stream_.widen(')');
 }
 
 }

@@ -240,6 +240,19 @@ fcppt provides some macros to ease the specification of visibility.
 [xinclude doxygen_visibility.xml]
 
 [endsect]
+ 
+[section homogenous_pair]
+
+`fcppt::homogenous_pair` is like `std::pair`, but
+both its members are of the same type.
+
+[import ../examples/homogenous_pair.cpp]
+
+[homogenous_pair]
+
+[xinclude doxygen_homogenous_pair.xml]
+
+[endsect]
 
 [section minmax_pair]
 

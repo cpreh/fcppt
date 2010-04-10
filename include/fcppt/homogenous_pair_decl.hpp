@@ -12,6 +12,7 @@
 namespace fcppt
 {
 
+/// Like `std::pair`, but both elements are of the same type
 template
 <
 	typename T
