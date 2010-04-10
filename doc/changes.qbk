@@ -8,5 +8,6 @@
 * Lowered the minimal required boost version to 1.40
 * Fixed a bug in the FindFcppt.cmake script
 * Fixed some spelling errors in the documentation
+* Corrected the git URL
 
 [endsect]
