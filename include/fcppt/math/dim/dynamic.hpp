@@ -10,7 +10,7 @@
 #include <fcppt/math/dim/basic_fwd.hpp>
 #include <fcppt/math/detail/dynamic_size.hpp>
 #include <fcppt/math/detail/dynamic_storage.hpp>
-#include <fcppt/container/raw_dim_decl.hpp>
+#include <fcppt/container/raw_vector_decl.hpp>
 #include <fcppt/restrict_typedef_struct.hpp>
 
 namespace fcppt
