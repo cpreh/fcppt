@@ -1,6 +1,10 @@
 #ifndef FCPPT_VERSION_HPP_INCLUDED
 #define FCPPT_VERSION_HPP_INCLUDED
 
-#define FCPPT_VERSION @FCPPT_VERSION@
+// The version consists of three digits for every version "part"
+// FCPPT_VERSION / 100000 is the major version,
+// FCPPT_VERSION / 100 % 1000 is the minor version
+// FCPPT_VERSION % 100 is the micro version
+#define FCPPT_VERSION @FCPPT_INT_VERSION@UL
 
 #endif

@@ -1,6 +1,6 @@
 [article fcppt 
 	[quickbook 1.5]
-	[version 0.1]
+	[version 0.1.1]
 	[authors [Reh, Carl Philipp]]
 	[copyright 2010 Carl Philipp Reh]
 	[purpose Freundlich's C++ Toolkit]
@@ -34,6 +34,8 @@ and even implements some replacements for a few boost components.
 [include contact.qbk]
 
 [include requirements_download_installation.qbk]
+
+[include changes.qbk]
 
 [include structure.qbk]
 

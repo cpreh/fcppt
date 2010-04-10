@@ -1,0 +1,12 @@
+[section Changes]
+
+[h2 Changes from 0.1 to 0.1.1]
+
+* Added `static.hpp` and `dynamic.hpp` to the linear algebra convenience headers (`vector/vector.hpp`, `dim/dim.hpp`, `matrix/matrix.hpp`)
+* Added `matrix::rotation_axis` - A function that calculates a matrix for rotation around an arbitrary axis
+* Added `homogenous_pair` - A class like `std::pair`, but its two elements are of the same type
+* Lowered the minimal required boost version to 1.40
+* Fixed a bug in the FindFcppt.cmake script
+* Fixed some spelling errors in the documentation
+
+[endsect]

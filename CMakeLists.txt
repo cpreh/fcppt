@@ -8,7 +8,11 @@ SET (CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/CMakeModules)
 
 PROJECT (fcppt)
 
-SET (FCPPT_VERSION 1)
+SET (FCPPT_MAJOR_VERSION 0)
+SET (FCPPT_MINOR_VERSION 1)
+SET (FCPPT_MICRO_VERSION 1)
+SET (FCPPT_VERSION "${FCPPT_MAJOR_VERSION}.${FCPPT_MINOR_VERSION}.${FCPPT_MICRO_VERSION}")
+SET (FCPPT_INT_VERSION 1001) # TODO generate this automatically!
 SET (FCPPT_SHARED_VERSION ${FCPPT_VERSION})
 
 IF(${CMAKE_BINARY_DIR} STREQUAL ${CMAKE_SOURCE_DIR})
@@ -135,7 +139,7 @@ FILE(WRITE ${pkgfile}
 	"\n"
 	"Name: fcppt\n"
 	"Description: Freundlich's C++ Toolkit\n"
-	"Version: 0.${FCPPT_VERSION}\n"
+	"Version: ${FCPPT_VERSION}\n"
 	"Requires:\n"
 	"Libs: -L\${libdir} -lfcppt\n"
 	"Cflags: -I\${includedir}/")
