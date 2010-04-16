@@ -34,9 +34,9 @@ rotation_y(
 		zero = static_cast<T>(0);
 
 	return typename static_<T, 4, 4>::type(
-		cosx, zero, -sinx, zero,
+		cosx, zero, sinx, zero,
 		zero,  one,  zero, zero,
-		sinx, zero,  cosx, zero,
+		-sinx, zero,  cosx, zero,
 		zero, zero,  zero,  one
 	);
 
