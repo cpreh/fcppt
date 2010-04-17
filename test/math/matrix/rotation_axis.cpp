@@ -14,7 +14,6 @@
 #include <fcppt/math/pi.hpp>
 #include <fcppt/math/null.hpp>
 #include <boost/test/unit_test.hpp>
-#include <iostream>
 
 BOOST_AUTO_TEST_CASE(math_matrix_rotation_axis)
 {
@@ -85,15 +84,6 @@ BOOST_AUTO_TEST_CASE(math_matrix_rotation_axis)
 		fcppt::math::matrix::rotation_x(
 			angle));
 	
-	std::cout << 
-		fcppt::math::matrix::rotation_axis(
-			angle,
-			vector_rotation_type(
-				0.0f,
-				1.0f,
-				0.0f)) << " vs " << fcppt::math::matrix::rotation_y(
-			angle) << "\n";
-
 	BOOST_CHECK(
 		fcppt::math::matrix::rotation_axis(
 			angle,
