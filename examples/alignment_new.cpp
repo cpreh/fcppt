@@ -4,7 +4,7 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-//[alignment_array
+//[alignment_new
 #include <fcppt/alignment/array.hpp>
 #include <boost/type_traits/alignment_of.hpp>
 #include <new>
@@ -34,7 +34,7 @@ int main()
 		unsigned char,
 		sizeof(mystruct),
 		boost::alignment_of<
-			mystruct	
+			mystruct
 		>::value
 	>::type raw_array;
 

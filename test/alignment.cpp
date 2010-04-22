@@ -6,10 +6,11 @@
 
 #include <fcppt/alignment/is_aligned.hpp>
 #include <fcppt/alignment/array.hpp>
+#include <fcppt/alignment/make_type.hpp>
 #include <fcppt/alignment/size_type.hpp>
 #include <boost/test/unit_test.hpp>
 
-BOOST_AUTO_TEST_CASE(alignment)
+BOOST_AUTO_TEST_CASE(alignment_array)
 {
 	fcppt::alignment::size_type const alignment = 16;
 
@@ -40,6 +41,33 @@ BOOST_AUTO_TEST_CASE(alignment)
 	BOOST_REQUIRE(
 		fcppt::alignment::is_aligned(
 			&array3,
+			alignment
+		)
+	);
+}
+
+BOOST_AUTO_TEST_CASE(alignment_normal)
+{
+	fcppt::alignment::size_type const alignment = 16;
+
+	typedef fcppt::alignment::make_type<
+		char,	
+		alignment
+	>::type char_type;
+
+	char_type test1;
+	char_type test2;
+
+	BOOST_REQUIRE(
+		fcppt::alignment::is_aligned(
+			&test1,
+			alignment
+		)
+	);
+
+	BOOST_REQUIRE(
+		fcppt::alignment::is_aligned(
+			&test2,
 			alignment
 		)
 	);
