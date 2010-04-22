@@ -7,8 +7,8 @@
 #ifndef FCPPT_ALIGNMENT_MAKE_TYPE_HPP_INCLUDED
 #define FCPPT_ALIGNMENT_MAKE_TYPE_HPP_INCLUDED
 
+#include <fcppt/alignment/detail/make_type.hpp>
 #include <fcppt/alignment/size_type.hpp>
-#include <fcppt/alignment/align.hpp>
 
 namespace fcppt
 {
@@ -20,9 +20,12 @@ template<
 	size_type Alignment
 >
 struct make_type
-{
-	typedef T FCPPT_ALIGNMENT_ALIGN(Alignment) type;
-};
+:
+fcppt::alignment::detail::make_type<
+    T,
+    Alignment
+>
+{};
 
 }
 }
