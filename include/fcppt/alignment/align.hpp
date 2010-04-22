@@ -10,7 +10,7 @@
 #ifdef _MSC_VER
 #define FCPPT_ALIGNMENT_ALIGN_IMPL(x) __declspec(align(x))
 #elif __GNUC__
-#define FCPPT_ALIGNMENT_ALIGN_IMPL(x) __attribute__((__aligned__(x)))
+#define FCPPT_ALIGNMENT_ALIGN_IMPL(x) __attribute__((__aligned__((x))))
 #else
 #error "Don't know how to align types!"
 #endif

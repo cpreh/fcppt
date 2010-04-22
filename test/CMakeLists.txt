@@ -30,6 +30,7 @@ MACRO(
 	ADD_TEST(NAME ${TESTNAME} COMMAND ${TESTNAME})
 ENDMACRO()
 
+ADD_FCPPT_TEST(alignment)
 ADD_FCPPT_TEST(assert)
 ADD_FCPPT_TEST(assign/make_container)
 ADD_FCPPT_TEST(chrono/duration)
