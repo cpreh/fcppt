@@ -5,6 +5,8 @@ ENDMACRO ()
 
 ADD_FCPPT_EXAMPLE(algorithm)
 ADD_FCPPT_EXAMPLE(alignment)
+ADD_FCPPT_EXAMPLE(alignment_new)
+ADD_FCPPT_EXAMPLE(alignment_simple)
 ADD_FCPPT_EXAMPLE(assert)
 ADD_FCPPT_EXAMPLE(array)
 ADD_FCPPT_EXAMPLE(bitfield)

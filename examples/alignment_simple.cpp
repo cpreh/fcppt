@@ -4,9 +4,8 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-//[alignment
-#include <fcppt/alignment/make_type.hpp>
-#include <fcppt/alignment/size_type.hpp>
+//[alignment_simple
+#include <fcppt/alignment/align.hpp>
 #include <fcppt/alignment/is_aligned.hpp>
 #include <fcppt/io/cout.hpp>
 #include <fcppt/text.hpp>
@@ -14,27 +13,13 @@
 
 int main()
 {
-	// create an integral constant that tells which alignment we want
-	fcppt::alignment::size_type const alignment(
-		16
-	);
-
-	// typedef an int with the given alignment of 16
-	typedef fcppt::alignment::make_type<
-		int,
-		alignment
-	>::type int_aligned_16;
-
-	// create an int that is aligned to 16 bytes
-	int_aligned_16 const test(
-		42
-	);
+	int FCPPT_ALIGNMENT_ALIGN(16) test = 0;
 
 	fcppt::io::cout
 		<< std::boolalpha
 		<< fcppt::alignment::is_aligned(
 			&test,
-			alignment
+			16
 		)
 		<< FCPPT_TEXT('\n');
 }

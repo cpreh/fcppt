@@ -12,8 +12,9 @@ namespace fcppt
 namespace algorithm
 {
 
-/// Removes pointer element from the ptr_container container 
-/** @return true if the element was found/erased, false otherwise
+/// Removes pointer @a element from the ptr_container @a container 
+/**
+ * @return true if the element was found/erased, false otherwise
 */
 template<
 	typename Container,

@@ -80,6 +80,7 @@ make_fcppt_documentation(
 	truncation_check_cast.hpp
 )
 make_fcppt_documentation(chrono chrono)
+make_fcppt_documentation(container container)
 make_fcppt_documentation(endianness endianness)
 make_fcppt_documentation(
 	function
