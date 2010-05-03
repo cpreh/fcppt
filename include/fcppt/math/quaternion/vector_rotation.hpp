@@ -46,9 +46,9 @@ vector_rotation(
 	
 	return 
 		vector(
-			result.R_component_1(),
 			result.R_component_2(),
-			result.R_component_3());
+			result.R_component_3(),
+			result.R_component_4());
 }
 }
 }
