@@ -8,6 +8,7 @@
 #define FCPPT_MINMAX_PAIR_OUTPUT_HPP_INCLUDED
 
 #include <fcppt/minmax_pair_impl.hpp>
+#include <fcppt/homogenous_pair_output.hpp>
 #include <ostream>
 #include <iosfwd>
 
@@ -34,11 +35,7 @@ operator << (
 )
 {
 	return stream_
-		<< stream_.widen('(')
-		<< pair_.min()
-		<< stream_.widen(',')
-		<< pair_.max()
-		<< stream_.widen(')');
+		<< pair_.pair();
 }
 
 }

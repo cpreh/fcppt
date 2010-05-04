@@ -1,12 +1,30 @@
 [section Alignment]
 
-Objects on the stack are always properly aligned,
-so are objects created by new.
-Although sometimes it is necessary to specify the alignment of an object,
-for instance if we want to create an array that is later to be used with placement new.
+Simple alignment can be specified with
+`FCPPT_ALIGNMENT_ALIGN`.
+
+[import ../examples/alignment_simple.cpp]
+
+[alignment_simple]
+
+There is also a typedef helper class called
+`alignment::make_type` that lets you typedef
+new aligned types using its nested `::type`.
 
 [import ../examples/alignment.cpp]
+
 [alignment]
+
+Objects on the stack are always properly aligned,
+so are objects created by new.
+Although, most of the time you don't have to care about alignment,
+it is necessary to ensure that the store you use for placement new is
+properly aligned for the object you want to place into it.
+fcppt provides a simple typedef helper to create an array with proper alignment.
+
+[import ../examples/alignment_new.cpp]
+
+[alignment_new]
 
 [xinclude doxygen_alignment.xml]
 

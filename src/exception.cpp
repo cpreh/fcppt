@@ -38,7 +38,7 @@ fcppt::exception::string() const
 char const *
 fcppt::exception::what() const throw()
 {
-	return "Do not catch fcppt::exception as std::exception, no what() can be supplied";
+	return "what cannot be supplied by an fcppt::exception, do not catch fcppt::exception as std::exception";
 }
 
 fcppt::exception::~exception() throw()

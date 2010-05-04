@@ -80,11 +80,20 @@ make_fcppt_documentation(
 	truncation_check_cast.hpp
 )
 make_fcppt_documentation(chrono chrono)
+make_fcppt_documentation(container container)
 make_fcppt_documentation(endianness endianness)
 make_fcppt_documentation(
 	function
 	function/object_fwd.hpp
 	function/object.hpp
+)
+make_fcppt_documentation(
+	homogenous_pair	
+	homogenous_pair_fwd.hpp
+	homogenous_pair_decl.hpp
+	homogenous_pair_impl.hpp
+	homogenous_pair.hpp
+	homogenous_pair_output.hpp
 )
 make_fcppt_documentation(math math)
 make_fcppt_documentation(

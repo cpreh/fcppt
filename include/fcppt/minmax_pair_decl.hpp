@@ -8,6 +8,7 @@
 #define FCPPT_MINMAX_PAIR_DECL_HPP_INCLUDED
 
 #include <fcppt/minmax_pair_fwd.hpp>
+#include <fcppt/homogenous_pair_decl.hpp>
 
 namespace fcppt
 {
@@ -22,6 +23,10 @@ template<
 class minmax_pair
 {
 public:
+	typedef homogenous_pair<
+		T
+	> pair_type;
+
 	minmax_pair(
 		T const &min,
 		T const &max
@@ -33,6 +38,9 @@ public:
 	T
 	max() const;
 
+	pair_type const
+	pair() const;
+
 	void
 	min(
 		T const &
@@ -42,14 +50,32 @@ public:
 	max(
 		T const &
 	);
+
+	void
+	pair(
+		pair_type const &
+	);
+
+	void
+	swap(
+		minmax_pair &
+	);
 private:
 	void
 	check();
 
-	T
-		min_,
-		max_;
+	pair_type impl_;
 };
+
+template
+<
+	typename T
+>
+void
+swap(
+	minmax_pair<T> &,
+	minmax_pair<T> &
+);
 
 }
 

@@ -1,6 +1,6 @@
 [article fcppt 
 	[quickbook 1.5]
-	[version 0.1]
+	[version 0.1.1]
 	[authors [Reh, Carl Philipp]]
 	[copyright 2010 Carl Philipp Reh]
 	[purpose Freundlich's C++ Toolkit]
@@ -31,44 +31,12 @@ and even implements some replacements for a few boost components.
 
 [include overview.qbk]
 
+[include contact.qbk]
+
+[include requirements_download_installation.qbk]
+
+[include changes.qbk]
+
 [include structure.qbk]
 
-[include algorithm.qbk]
-
-[include alignment.qbk]
-
-[include adapted.qbk]
-
-[include boost.qbk]
-
-[include casts.qbk]
-
-[include chrono.qbk]
-
-[include container.qbk]
-
-[include endianness.qbk]
-
-[include log.qbk]
-
-[include math.qbk]
-
-[include mpl.qbk]
-
-[include preprocessor.qbk]
-
-[include random.qbk]
-
-[include smartpointers.qbk]
-
-[include utility.qbk]
-
-[include thread.qbk]
-
-[include time.qbk]
-
-[include tr1.qbk]
-
-[include type_traits.qbk]
-
-[include guidelines.qbk]
+[include documentation.qbk]

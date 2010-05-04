@@ -144,4 +144,6 @@ few special functions, `fcppt::container::raw_vector` is like `std::vector`.
 
 [endsect]
 
+[xinclude doxygen_container.xml]
+
 [endsect]

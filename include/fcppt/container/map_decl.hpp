@@ -8,6 +8,7 @@
 #define FCPPT_CONTAINER_MAP_DECL_HPP_INCLUDED
 
 #include <fcppt/container/map_fwd.hpp>
+#include <fcppt/string.hpp>
 #include <utility>
 
 namespace fcppt
@@ -18,7 +19,8 @@ namespace container
 template<
 	typename MapType
 >
-class map {
+class map
+{
 public:
 	typedef MapType map_type;
 	typedef typename map_type::key_type key_type;
@@ -110,10 +112,23 @@ public:
 	const_iterator
 	end() const;
 
-	size_type size() const;
+	size_type
+	size() const;
 
-	bool empty() const;
+	bool
+	empty() const;
+
+	iterator 
+	lower_bound(key_type const &);
+
+	const_iterator 
+	lower_bound(key_type const &) const;
 private:
+	static fcppt::string const
+	format_error(
+		fcppt::string const &
+	);
+
 	map_type impl_;
 };
 

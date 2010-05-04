@@ -2,7 +2,7 @@
 
 The general structure of fcppt is explained here.
 
-[section Files]
+[section File separation]
 
 Every function, typedef or class resides in its own header file.
 So, for example, if you want to use `fcppt::to_std_string` (which is a function)
@@ -30,5 +30,7 @@ For example, `<fcppt/math/vector/vector.hpp>` includes most of the headers
 found under `fcppt/math/vector/`.
 
 [endsect]
+
+[include guidelines.qbk]
 
 [endsect]

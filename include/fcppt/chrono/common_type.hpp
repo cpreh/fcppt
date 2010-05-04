@@ -10,7 +10,9 @@
 #include <fcppt/chrono/time_point_fwd.hpp>
 #include <fcppt/chrono/duration_fwd.hpp>
 #include <fcppt/ratio/detail/gcd.hpp>
+//\cond
 #define BOOST_TYPEOF_SILENT
+//\endcond
 #include <boost/typeof/typeof.hpp>
 
 namespace fcppt

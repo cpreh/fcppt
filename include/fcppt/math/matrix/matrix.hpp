@@ -7,10 +7,12 @@
 #ifndef FCPPT_MATH_MATRIX_MATRIX_HPP_INCLUDED
 #define FCPPT_MATH_MATRIX_MATRIX_HPP_INCLUDED
 
-#include <fcppt/math/matrix/basic_decl.hpp>
-#include <fcppt/math/matrix/basic_impl.hpp>
 #include <fcppt/math/matrix/arithmetic.hpp>
+#include <fcppt/math/matrix/basic.hpp>
+#include <fcppt/math/matrix/dynamic.hpp>
+#include <fcppt/math/matrix/has_dim.hpp>
 #include <fcppt/math/matrix/output.hpp>
+#include <fcppt/math/matrix/static.hpp>
 #include <fcppt/math/matrix/vector.hpp>
 
 #endif

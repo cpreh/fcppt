@@ -5,42 +5,37 @@
 
 
 //[alignment
-#include <fcppt/alignment/array.hpp>
-#include <boost/type_traits/alignment_of.hpp>
-#include <new>
-
-namespace
-{
-
-// declare a test class
-struct mystruct
-{
-	int i;
-	float f;
-
-	mystruct()
-	:
-		i(42),
-		f(3.5f)
-	{}
-};
-
-}
+#include <fcppt/alignment/make_type.hpp>
+#include <fcppt/alignment/size_type.hpp>
+#include <fcppt/alignment/is_aligned.hpp>
+#include <fcppt/io/cout.hpp>
+#include <fcppt/text.hpp>
+#include <ostream>
 
 int main()
 {
-	// create an array with proper alignment for mystruct 
-	typedef fcppt::alignment::array<
-		unsigned char,
-		sizeof(mystruct),
-		boost::alignment_of<
-			mystruct	
-		>::value
-	>::type raw_array;
+	// create an integral constant that tells which alignment we want
+	fcppt::alignment::size_type const alignment(
+		16
+	);
 
-	raw_array array_;
+	// typedef an int with the given alignment of 16
+	typedef fcppt::alignment::make_type<
+		int,
+		alignment
+	>::type int_aligned_16;
 
-	// now placement new can be used
-	new (array_.data()) mystruct();
+	// create an int that is aligned to 16 bytes
+	int_aligned_16 const test(
+		42
+	);
+
+	fcppt::io::cout
+		<< std::boolalpha
+		<< fcppt::alignment::is_aligned(
+			&test,
+			alignment
+		)
+		<< FCPPT_TEXT('\n');
 }
 //]

@@ -1,5 +1,5 @@
 FIND_PACKAGE(
-	Boost 1.41.0 REQUIRED COMPONENTS
+	Boost 1.40.0 REQUIRED COMPONENTS
 	unit_test_framework
 )
 
@@ -30,6 +30,7 @@ MACRO(
 	ADD_TEST(NAME ${TESTNAME} COMMAND ${TESTNAME})
 ENDMACRO()
 
+ADD_FCPPT_TEST(alignment)
 ADD_FCPPT_TEST(assert)
 ADD_FCPPT_TEST(assign/make_container)
 ADD_FCPPT_TEST(chrono/duration)
@@ -41,9 +42,15 @@ ADD_FCPPT_TEST(endianness)
 ADD_FCPPT_TEST(math/circle)
 ADD_FCPPT_TEST(math/util)
 ADD_FCPPT_TEST(math/vector)
+ADD_FCPPT_TEST(math/quaternion/from_angle_and_axis)
+ADD_FCPPT_TEST(math/matrix/adjugate)
+ADD_FCPPT_TEST(math/matrix/delete_column_and_row)
+ADD_FCPPT_TEST(math/matrix/determinant)
+ADD_FCPPT_TEST(math/matrix/has_dim)
+ADD_FCPPT_TEST(math/matrix/inverse)
 ADD_FCPPT_TEST(math/matrix/operators)
+ADD_FCPPT_TEST(math/matrix/rotation_axis)
 ADD_FCPPT_TEST(math/matrix/rotation_x)
 ADD_FCPPT_TEST(math/matrix/scaling)
 ADD_FCPPT_TEST(math/matrix/translation)
 ADD_FCPPT_TEST(ratio/multiply)
-ADD_FCPPT_TEST(string)
