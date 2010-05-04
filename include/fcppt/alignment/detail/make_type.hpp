@@ -9,7 +9,8 @@
 
 #include <fcppt/alignment/align.hpp>
 #include <fcppt/alignment/size_type.hpp>
-#if defined(_MSC_VER)
+#include <fcppt/config.hpp>
+#if !defined(FCPPT_ALIGN_TEMPLATE_PARAMETERS)
 #include <boost/preprocessor/arithmetic/mul.hpp>
 #include <boost/preprocessor/comparison/less_equal.hpp>
 #include <boost/preprocessor/repetition/for.hpp>
@@ -22,7 +23,7 @@ namespace alignment
 namespace detail
 {
 
-#if defined (_MSC_VER)
+#if !defined(FCPPT_ALIGN_TEMPLATE_PARAMETERS)
 template<
 	typename T,
 	size_type Alignment
