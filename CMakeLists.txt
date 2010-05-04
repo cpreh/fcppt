@@ -176,7 +176,7 @@ INCLUDE_DIRECTORIES(SYSTEM ${Boost_INCLUDE_DIR})
 
 LINK_DIRECTORIES(${Boost_LIBRARY_DIRS})
 
-SET (CMAKE_REQUIRED_INCLUDES ${Boost_INCLUDE_DIR})
+SET (CMAKE_REQUIRED_INCLUDES ${CMAKE_SOURCE_DIR}/include ${Boost_INCLUDE_DIR})
 
 CHECK_CXX_SOURCE_COMPILES(
 	"#include <boost/cstdint.hpp>
@@ -205,6 +205,25 @@ CHECK_CXX_SOURCE_RUNS(
 	         : EXIT_FAILURE;
 	}"
 	FCPPT_HAVE_POSIX
+)
+
+CHECK_CXX_SOURCE_COMPILES(
+	"#include <fcppt/alignment/align.hpp>
+	#include <cstddef>
+	template<
+		std::size_t N
+	>
+	struct test
+	{
+		char FCPPT_ALIGNMENT_ALIGN(N) testmember;
+	};
+
+	int main()
+	{
+		test<8> tmp;
+	}
+	"
+	FCPPT_ALIGN_TEMPLATE_PARAMETER
 )
 
 CHECK_INCLUDE_FILE(
