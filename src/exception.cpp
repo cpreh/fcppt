@@ -17,6 +17,7 @@ fcppt::exception::exception(
 	exception const &e
 )
 :
+	std::exception(),
 	s(e.s)
 {}
 
