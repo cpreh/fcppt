@@ -20,7 +20,7 @@ IF (NOT FCPPT_ROOT)
 ENDIF ()
 
 FIND_PATH( FCPPT_INCLUDE_DIRS
-	NAMES fcppt/config.hpp
+	NAMES fcppt/version.hpp
 	HINTS ${FCPPT_ROOT}/include)
 
 FIND_LIBRARY( FCPPT_LIBRARIES
