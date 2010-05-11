@@ -25,7 +25,7 @@ INCLUDE (CheckCXXSourceRuns)
 INCLUDE (CheckIncludeFile)
 INCLUDE (FindPkgConfig)
 
-SET (CMAKE_VERBOSE_MAKEFILE ON)
+#SET (CMAKE_VERBOSE_MAKEFILE ON)
 
 OPTION(ENABLE_SHARED "Build fcppt as a shared library" ON)
 OPTION(ENABLE_STATIC "Build fcppt as a static library" OFF)
