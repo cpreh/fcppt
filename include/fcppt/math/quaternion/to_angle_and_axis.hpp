@@ -29,7 +29,7 @@ to_angle_and_axis(
 	axis.x() = q.R_component_2() / scale;
 	axis.y() = q.R_component_3() / scale;
 	axis.z() = q.R_component_4() / scale;
-	angle = std::acos(q.R_component_2()) * static_cast<T>(2.0);
+	angle = std::acos(q.R_component_1()) * static_cast<T>(2.0);
 }
 }
 }
