@@ -597,7 +597,7 @@ void f(T t);
 struct test
 {};
 
-void test()
+void h()
 {
   mylib::g(test());
 }
@@ -605,8 +605,9 @@ void test()
 }
 ``
 
-Now someone declared a function `test` inside another namespace called `other`,
-that also wants to call `mylib::g`. But because `mylib::g` calls `f` via ADL,
+Now someone declared a function `h` inside another namespace called `other`,
+that also wants to call `mylib::g`. But because `test` is declared
+inside `other`, and `mylib::g` calls `f` via ADL,
 the compiler will consider `f` declared inside namespace `other` as well,
 that just happened to be there by chance and has nothing to do with `mylib::f`.
 Therefore the call to `f` will be ambiguous.
