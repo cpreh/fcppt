@@ -5,14 +5,16 @@
 
 
 #include <fcppt/math/quaternion/from_angle_and_axis.hpp>
+#include <fcppt/math/quaternion/to_angle_and_axis.hpp>
 #include <fcppt/math/quaternion/vector_rotation.hpp>
 #include <fcppt/math/vector/basic_impl.hpp>
 #include <fcppt/math/vector/static.hpp>
+#include <fcppt/math/compare.hpp>
 #include <fcppt/math/pi.hpp>
 #include <boost/math/quaternion.hpp>
 #include <boost/test/unit_test.hpp>
 
-BOOST_AUTO_TEST_CASE(from_angle_and_axis)
+BOOST_AUTO_TEST_CASE(all_quaternion)
 {
 	typedef float element_type;
 
@@ -25,20 +27,34 @@ BOOST_AUTO_TEST_CASE(from_angle_and_axis)
 		3
 	>::type vector_type;
 
-	quaternion const rot(
-		fcppt::math::quaternion::from_angle_and_axis(
-			fcppt::math::pi<
-				element_type
-			>(),
-			vector_type(
+	element_type const original_angle = 
+		fcppt::math::pi<element_type>();
+	vector_type const original_axis = 
+		vector_type(
 				0,
 				1,
-				0
-			)
-		)
-	);
+				0);
 
-	BOOST_REQUIRE(
+	quaternion const rot(
+		fcppt::math::quaternion::from_angle_and_axis(
+			original_angle,
+			original_axis));
+
+	element_type angle;
+	vector_type axis;
+
+	fcppt::math::quaternion::to_angle_and_axis(
+		rot,
+		angle,
+		axis);
+	
+	BOOST_CHECK(
+		fcppt::math::compare(
+			angle,
+			original_angle) && 
+		axis == original_axis);
+
+	BOOST_CHECK(
 		fcppt::math::quaternion::vector_rotation(
 			vector_type(
 				1,
