@@ -538,4 +538,97 @@ In this case, the output is guaranteed to be "0".
 
 [endsect]
 
+[section Templates]
+
+[section Argument dependant lookup]
+
+C++ has the notion of argument dependant lookup which makes the
+well known 'Hello World' program work.
+
+``
+#include <iostream>
+#include <ostream>
+
+int main()
+{
+  std::cout << "Hello World\n";
+}
+``
+
+This might not be obvious, but where did `operator<<` come from?
+You might say: It's defined in namespace `std` of course, but
+why did it get chosen?
+The answer is: Because the type of one of its arguments (here `std::cout`)
+is declared in namespace `std` as well (namely `std::basic_ostream<char>`).
+
+For operator overloading this is all good. The compiler usually finds
+the functions we are looking for. But as overloaded operators are
+just functions, ADL applies to all functions.
+
+Consider someone wrote the following code:
+``
+namespace mylib
+{
+
+template<typename T>
+void f(T);
+
+template<typename T>
+void g(T t)
+{
+  f(t);
+}
+
+}
+``
+
+Now the coder really meant to call `mylib::f` inside `mylib::g`
+but this doesn't need to be true. It really depends on the type `T`
+that is used inside `g` which `f` will be called. This can lead
+to very subtile compiler errors or even runtime bugs!
+
+``
+namespace other
+{
+
+template<typename T>
+void f(T t);
+
+struct test
+{};
+
+void test()
+{
+  mylib::g(test());
+}
+
+}
+``
+
+Now someone declared a function `test` inside another namespace called `other`,
+that also wants to call `mylib::g`. But because `mylib::g` calls `f` via ADL,
+the compiler will consider `f` declared inside namespace `other` as well,
+that just happened to be there by chance and has nothing to do with `mylib::f`.
+Therefore the call to `f` will be ambiguous.
+
+The solution is to always qualify function names if you don't mean
+to use ADL (which you almost never will).
+
+``
+namespace mylib
+{
+
+template<typename T>
+void g(T t)
+{
+  mylib::f(t);
+}
+
+}
+``
+
+[endsect]
+
+[endsect]
+
 [endsect]
