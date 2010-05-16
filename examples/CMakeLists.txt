@@ -1,6 +1,12 @@
+ADD_DEFINITIONS(${FCPPT_CONFIG_LINK_MACROS})
+
+MACRO (MAKE_FCPPT_EXAMPLE subname name)
+	ADD_EXECUTABLE (fcppt${subname}${name} ${name}.cpp)
+	TARGET_LINK_LIBRARIES (fcppt${subname}${name} ${FCPPT_DEFAULT_LINK_TARGET})
+ENDMACRO ()
+
 MACRO (ADD_FCPPT_EXAMPLE name)
-	ADD_EXECUTABLE (fcppt${name} ${name}.cpp)
-	TARGET_LINK_LIBRARIES (fcppt${name} fcppt)
+	MAKE_FCPPT_EXAMPLE("" ${name})
 ENDMACRO ()
 
 ADD_FCPPT_EXAMPLE(algorithm)

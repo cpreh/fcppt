@@ -1,6 +1,5 @@
 MACRO (ADD_FCPPT_CHRONO_EXAMPLE name)
-	ADD_EXECUTABLE (fcpptchrono${name} ${name}.cpp)
-	TARGET_LINK_LIBRARIES (fcpptchrono${name} fcppt)
+	MAKE_FCPPT_EXAMPLE(chrono ${name})
 ENDMACRO ()
 
 ADD_FCPPT_CHRONO_EXAMPLE(duration)

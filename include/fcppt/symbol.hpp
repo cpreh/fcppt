@@ -11,11 +11,11 @@
 #	if defined(fcppt_EXPORTS)
 #		include <fcppt/export_symbol.hpp>
 #		define FCPPT_SYMBOL FCPPT_EXPORT_SYMBOL
-#	elif defined(FCPPT_NO_DLL_IMPORT)
-#		define FCPPT_SYMBOL
-#	else
+#	elif defined(FCPPT_DYN_LINK)
 #		include <fcppt/import_symbol.hpp>
 #		define FCPPT_SYMBOL FCPPT_IMPORT_SYMBOL
+#	else
+#		define FCPPT_SYMBOL
 #	endif
 #elif defined(__GNUC__)
 #	include <fcppt/export_symbol.hpp>
