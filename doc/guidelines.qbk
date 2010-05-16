@@ -540,9 +540,9 @@ In this case, the output is guaranteed to be "0".
 
 [section Templates]
 
-[section Argument dependant lookup]
+[section Argument dependent lookup]
 
-C++ has the notion of argument dependant lookup which makes the
+C++ has the notion of argument dependent lookup which makes the
 well known 'Hello World' program work.
 
 ``
@@ -561,9 +561,8 @@ why did it get chosen?
 The answer is: Because the type of one of its arguments (here `std::cout`)
 is declared in namespace `std` as well (namely `std::basic_ostream<char>`).
 
-For operator overloading this is all good. The compiler usually finds
-the functions we are looking for. But as overloaded operators are
-just functions, ADL applies to all functions.
+For operator overloading this is what we usually want, but ADL
+applies to 'normal' functions as well.
 
 Consider someone wrote the following code:
 ``
