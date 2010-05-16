@@ -42,7 +42,7 @@ OPTION(ENABLE_STATIC "Build fcppt as a static library" ${ENABLE_STATIC_DEFAULT})
 OPTION(ENABLE_NARROW_STRING "Build fcppt with std::string instead of std::wstring" ${ENABLE_NARROW_STRING_DEFAULT})
 
 IF(NOT ENABLE_SHARED AND NOT ENABLE_STATIC)
-	MESSAGE(FATAL "You disabled both STATIC and SHARED")
+	MESSAGE(FATAL_ERROR "You disabled both STATIC and SHARED")
 ENDIF()
 
 # choose a library to link the tests to
