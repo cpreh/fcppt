@@ -14,18 +14,20 @@
 #if !(defined(FCPPT_LITTLE_ENDIAN) || defined(FCPPT_BIG_ENDIAN))
 #include <fcppt/algorithm/copy_n.hpp>
 #include <fcppt/tr1/array.hpp>
-#include <fcppt/function_once.hpp>
 
 namespace
 {
 
-fcppt::endianness::format::type endianness_;
-
-void
-init()
+struct init
 {
-	FCPPT_FUNCTION_ONCE	
+	init();
 
+	fcppt::endianness::format::type endianness_;
+
+} instance;
+
+init::init()
+{
 	// if unsigned long and char are of the same size
 	// endianness doesn't matter
 
@@ -69,8 +71,6 @@ fcppt::endianness::host_format()
 #elif defined(FCPPT_BIG_ENDIAN)
 	return format::big;
 #else
-	init();
-
-	return endianness_;
+	return instance.endianness_;
 #endif
 }
