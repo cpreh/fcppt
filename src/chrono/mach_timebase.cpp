@@ -7,30 +7,16 @@
 #include <fcppt/config.hpp>
 #ifdef FCPPT_HAVE_MACH_TIME
 #include "mach_timebase.hpp"
-#include <fcppt/function_once.hpp>
 
-namespace
+struct mach_timebase_info const
+fcppt::chrono::mach_timebase()
 {
-
-struct mach_timebase_info ratio_;
-
-void
-init()
-{
-	FCPPT_FUNCTION_ONCE
+	struct mach_timebase_info ratio_;
 
 	// TODO: what can this return?
 	mach_timebase_info(
 		&ratio_
 	);
-}
-
-}
-
-struct mach_timebase_info const
-fcppt::chrono::mach_timebase()
-{
-	init();
 
 	return ratio_;
 }

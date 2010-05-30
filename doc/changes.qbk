@@ -1,5 +1,10 @@
 [section Changes]
 
+[h1 Changes from 0.1 to 0.2]
+
+* Made all exceptions inline, so header only parts can be used without linking
+* Building a static library and linking statically when using FindFcppt is now the default for VC++.
+
 [h2 Changes from 0.1 to 0.1.1]
 
 * Added `static.hpp` and `dynamic.hpp` to the linear algebra convenience headers (`vector/vector.hpp`, `dim/dim.hpp`, `matrix/matrix.hpp`)

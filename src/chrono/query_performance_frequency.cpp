@@ -10,18 +10,12 @@
 #define WIN32_LEAN_AND_MEAN
 #include <windows.h>
 #include <fcppt/chrono/clock_failure.hpp>
-#include <fcppt/function_once.hpp>
 #include <fcppt/text.hpp>
 
-namespace
+LARGE_INTEGER
+fcppt::chrono::query_performance_frequency()
 {
-
-LARGE_INTEGER frequency;
-
-void
-init()
-{
-	FCPPT_FUNCTION_ONCE;
+	LARGE_INTEGER frequency;
 
 	if(
 		QueryPerformanceFrequency(
@@ -32,15 +26,6 @@ init()
 		throw fcppt::chrono::clock_failure(
 			FCPPT_TEXT("QueryPerformanceFrequency() failed!")
 		);
-
-}
-
-}
-
-LARGE_INTEGER
-fcppt::chrono::query_performance_frequency()
-{
-	init();
 
 	return frequency;
 }
