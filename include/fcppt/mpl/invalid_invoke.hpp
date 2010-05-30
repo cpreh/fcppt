@@ -9,6 +9,7 @@
 
 #include <fcppt/exception.hpp>
 #include <fcppt/symbol.hpp>
+#include <fcppt/class_symbol.hpp>
 
 namespace fcppt
 {

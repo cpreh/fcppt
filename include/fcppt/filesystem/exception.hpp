@@ -10,6 +10,7 @@
 #include <fcppt/exception.hpp>
 #include <fcppt/string.hpp>
 #include <fcppt/symbol.hpp>
+#include <fcppt/class_symbol.hpp>
 
 namespace fcppt
 {
