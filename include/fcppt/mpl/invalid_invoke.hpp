@@ -7,9 +7,7 @@
 #ifndef FCPPT_MPL_INVALID_INVOKE_HPP_INCLUDED
 #define FCPPT_MPL_INVALID_INVOKE_HPP_INCLUDED
 
-#include <fcppt/exception.hpp>
-#include <fcppt/symbol.hpp>
-#include <fcppt/class_symbol.hpp>
+#include <fcppt/mpl/exception.hpp>
 
 namespace fcppt
 {
@@ -17,15 +15,17 @@ namespace mpl
 {
 
 /// Thrown by an invalid invoke
-class FCPPT_CLASS_SYMBOL invalid_invoke
+class invalid_invoke
 :
-	public fcppt::exception
+	public mpl::exception
 {
 public:
-	FCPPT_SYMBOL explicit invalid_invoke();
+	explicit invalid_invoke();
 };
 
 }
 }
+
+#include <fcppt/mpl/impl/invalid_invoke.hpp>
 
 #endif

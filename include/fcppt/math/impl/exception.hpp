@@ -4,11 +4,20 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/random/exclusive_range_error.hpp>
+#ifndef FCPPT_MATH_IMPL_EXCEPTION_HPP_INCLUDED
+#define FCPPT_MATH_IMPL_EXCEPTION_HPP_INCLUDED
 
-fcppt::random::exclusive_range_error::exclusive_range_error(
+#include <fcppt/text.hpp>
+
+inline
+fcppt::math::exception::exception(
 	fcppt::string const &s
 )
 :
-	exception(s)
+	fcppt::exception(
+		FCPPT_TEXT("math: ")
+		+ s
+	)
 {}
+
+#endif

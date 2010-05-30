@@ -4,12 +4,17 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/time/sleep_interrupted.hpp>
-#include <fcppt/text.hpp>
+#ifndef FCPPT_CHRONO_IMPL_CLOCK_FAILURE_HPP_INCLUDED
+#define FCPPT_CHRONO_IMPL_CLOCK_FAILURE_HPP_INCLUDED
 
-fcppt::time::sleep_interrupted::sleep_interrupted()
+inline
+fcppt::chrono::clock_failure::clock_failure(
+	fcppt::string const &e
+)
 :
-	time::exception(
-		FCPPT_TEXT("Sleep interrupted")
+	chrono::exception(
+		e
 	)
 {}
+
+#endif

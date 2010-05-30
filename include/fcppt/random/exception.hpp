@@ -4,23 +4,24 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_CONTAINER_INSERT_FAILED_HPP_INCLUDED
-#define FCPPT_CONTAINER_INSERT_FAILED_HPP_INCLUDED
+#ifndef FCPPT_RANDOM_EXCEPTION_HPP_INCLUDED
+#define FCPPT_RANDOM_EXCEPTION_HPP_INCLUDED
 
-#include <fcppt/container/exception.hpp>
+#include <fcppt/exception.hpp>
 #include <fcppt/string.hpp>
 
 namespace fcppt
 {
-namespace container
+namespace random
 {
 
-class insert_failed
+/// The exception thrown by some random:: operations
+class exception
 :
-	public container::exception
+	public fcppt::exception
 {
 public:
-	explicit insert_failed(
+	explicit exception(
 		fcppt::string const &
 	);
 };
@@ -28,6 +29,6 @@ public:
 }
 }
 
-#include <fcppt/container/impl/insert_failed.hpp>
+#include <fcppt/random/impl/exception.hpp>
 
 #endif

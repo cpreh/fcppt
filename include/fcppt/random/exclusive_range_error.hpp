@@ -7,9 +7,8 @@
 #ifndef FCPPT_RANDOM_EXCLUSIVE_RANGE_ERROR_HPP_INCLUDED
 #define FCPPT_RANDOM_EXCLUSIVE_RANGE_ERROR_HPP_INCLUDED
 
-#include <fcppt/exception.hpp>
-#include <fcppt/class_symbol.hpp>
-#include <fcppt/symbol.hpp>
+#include <fcppt/random/exception.hpp>
+#include <fcppt/string.hpp>
 
 namespace fcppt
 {
@@ -17,12 +16,12 @@ namespace random
 {
 
 /// Thrown if an exclusive_range is wrong
-class FCPPT_CLASS_SYMBOL exclusive_range_error
+class exclusive_range_error
 :
-	public exception
+	public random::exception
 {
 public:
-	FCPPT_SYMBOL explicit exclusive_range_error(
+	explicit exclusive_range_error(
 		fcppt::string const &
 	);
 };

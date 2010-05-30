@@ -4,13 +4,17 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/filesystem/exception.hpp>
+#ifndef FCPPT_CONTAINER_IMPL_INSERT_FAILED_HPP_INCLUDED
+#define FCPPT_CONTAINER_IMPL_INSERT_FAILED_HPP_INCLUDED
 
-fcppt::filesystem::exception::exception(
-	fcppt::string const &what
+inline
+fcppt::container::insert_failed::insert_failed(
+	fcppt::string const &e
 )
 :
-	fcppt::exception(
-		what
+	container::exception(
+		e
 	)
 {}
+
+#endif

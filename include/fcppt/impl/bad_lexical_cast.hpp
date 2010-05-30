@@ -4,34 +4,41 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/bad_dynamic_cast.hpp>
+#ifndef FCPPT_IMPL_BAD_LEXICAL_CAST_HPP_INCLUDED
+#define FCPPT_IMPL_BAD_LEXICAL_CAST_HPP_INCLUDED
+
 #include <fcppt/text.hpp>
 
-fcppt::bad_dynamic_cast::bad_dynamic_cast(
+inline
+fcppt::bad_lexical_cast::bad_lexical_cast(
 	fcppt::type_info const &_source,
 	fcppt::type_info const &_destination
 )
 :
 	exception(
-		FCPPT_TEXT("Invalid dynamic_cast from type \"")+
+		FCPPT_TEXT("Invalid lexical cast from type \"")+
 		_source.name()+
 		FCPPT_TEXT("\" to type \"")+
 		_destination.name()+
-		FCPPT_TEXT('"')
+		FCPPT_TEXT("\"")
 	),
 	source_(_source),
 	destination_(_destination)
 {
 }
 
+inline
 fcppt::type_info const &
-fcppt::bad_dynamic_cast::source() const
+fcppt::bad_lexical_cast::source() const
 {
 	return source_;
 }
 
+inline
 fcppt::type_info const &
-fcppt::bad_dynamic_cast::destination() const
+fcppt::bad_lexical_cast::destination() const
 {
 	return destination_;
 }
+
+#endif

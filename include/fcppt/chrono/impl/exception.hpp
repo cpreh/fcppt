@@ -4,12 +4,20 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/variant/invalid_get.hpp>
+#ifndef FCPPT_CHRONO_IMPL_EXCEPTION_HPP_INCLUDED
+#define FCPPT_CHRONO_IMPL_EXCEPTION_HPP_INCLUDED
+
 #include <fcppt/text.hpp>
 
-fcppt::variant::invalid_get::invalid_get()
+inline
+fcppt::chrono::exception::exception(
+	fcppt::string const &s
+)
 :
-	exception(
-		FCPPT_TEXT("Invalid get in variant!")
+	fcppt::exception(
+		FCPPT_TEXT("chrono: ")
+		+ s
 	)
 {}
+
+#endif

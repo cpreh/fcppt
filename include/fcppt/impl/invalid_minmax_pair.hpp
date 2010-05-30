@@ -4,15 +4,17 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/chrono/exception.hpp>
-#include <fcppt/text.hpp>
+#ifndef FCPPT_IMPL_INVALID_MINMAX_PAIR_HPP_INCLUDED
+#define FCPPT_IMPL_INVALID_MINMAX_PAIR_HPP_INCLUDED
 
-fcppt::chrono::exception::exception(
-	fcppt::string const &s
+inline
+fcppt::invalid_minmax_pair::invalid_minmax_pair(
+	fcppt::string const &what_
 )
 :
 	fcppt::exception(
-		FCPPT_TEXT("chrono: ")
-		+ s
+		what_
 	)
 {}
+
+#endif

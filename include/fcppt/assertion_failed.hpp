@@ -9,19 +9,17 @@
 
 #include <fcppt/exception.hpp>
 #include <fcppt/string.hpp>
-#include <fcppt/class_symbol.hpp>
-#include <fcppt/symbol.hpp>
 
 namespace fcppt
 {
 
 /// May be thrown by FCPPT_ASSERT and FCPPT_ASSERT_MESSAGE
-class FCPPT_CLASS_SYMBOL assertion_failed
+class assertion_failed
 :
 	public exception
 {
 public:
-	FCPPT_SYMBOL assertion_failed(
+	explicit assertion_failed(
 		fcppt::string const &file,
 		int line,
 		fcppt::string const &function,
@@ -29,22 +27,22 @@ public:
 		fcppt::string const &message
 	);
 	
-	FCPPT_SYMBOL fcppt::string const &
+	fcppt::string const &
 	file() const;
 
-	FCPPT_SYMBOL int	
+	int	
 	line() const;
 
-	FCPPT_SYMBOL fcppt::string const &
+	fcppt::string const &
 	function() const;
 
-	FCPPT_SYMBOL fcppt::string const &
+	fcppt::string const &
 	condition() const;
 
-	FCPPT_SYMBOL fcppt::string const &
+	fcppt::string const &
 	message() const;
 
-	FCPPT_SYMBOL ~assertion_failed() throw();
+	~assertion_failed() throw();
 private:
 	fcppt::string file_;
 	int line_;
@@ -52,6 +50,9 @@ private:
 	fcppt::string condition_;
 	fcppt::string message_;
 };
+
 }
+
+#include <fcppt/impl/assertion_failed.hpp>
 
 #endif

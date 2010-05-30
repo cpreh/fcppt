@@ -9,19 +9,17 @@
 
 #include <fcppt/exception.hpp>
 #include <fcppt/type_info.hpp>
-#include <fcppt/class_symbol.hpp>
-#include <fcppt/symbol.hpp>
 
 namespace fcppt
 {
 
 /// May be thrown by dynamic_cast_ if the cast fails
-class FCPPT_CLASS_SYMBOL bad_dynamic_cast
+class bad_dynamic_cast
 :
 	public exception
 {
 public:
-	FCPPT_SYMBOL bad_dynamic_cast(
+	explicit bad_dynamic_cast(
 		type_info const &source,
 		type_info const &dest
 	);
@@ -38,5 +36,7 @@ private:
 };
 
 }
+
+#include <fcppt/impl/bad_dynamic_cast.hpp>
 
 #endif

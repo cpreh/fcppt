@@ -4,12 +4,20 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/variant/invalid_apply.hpp>
+#ifndef FCPPT_RANDOM_IMPL_EXCEPTION_HPP_INCLUDED
+#define FCPPT_RANDOM_IMPL_EXCEPTION_HPP_INCLUDED
+
 #include <fcppt/text.hpp>
 
-fcppt::variant::invalid_apply::invalid_apply()
+inline
+fcppt::random::exception::exception(
+	fcppt::string const &s
+)
 :
-	exception(
-		FCPPT_TEXT("apply has been called on a variant that is empty!")
+	fcppt::exception(
+		FCPPT_TEXT("random: ")
+		+ s
 	)
 {}
+
+#endif

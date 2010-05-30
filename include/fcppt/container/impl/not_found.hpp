@@ -4,10 +4,17 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/container/not_found.hpp>
+#ifndef FCPPT_CONTAINER_IMPL_NOT_FOUND_HPP_INCLUDED
+#define FCPPT_CONTAINER_IMPL_NOT_FOUND_HPP_INCLUDED
 
+inline
 fcppt::container::not_found::not_found(
-	fcppt::string const &e)
+	fcppt::string const &e
+)
 :
-	exception(e)
+	container::exception(
+		e
+	)
 {}
+
+#endif

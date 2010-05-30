@@ -4,13 +4,20 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/variant/exception.hpp>
+#ifndef FCPPT_ALGORITHM_IMPL_EXCEPTION_HPP_INCLUDED
+#define FCPPT_ALGORITHM_IMPL_EXCEPTION_HPP_INCLUDED
 
-fcppt::variant::exception::exception(
-	fcppt::string const &e
+#include <fcppt/text.hpp>
+
+inline
+fcppt::algorithm::exception::exception(
+	fcppt::string const &s
 )
 :
 	fcppt::exception(
-		e
+		FCPPT_TEXT("algorithm: ")
+		+ s
 	)
 {}
+
+#endif

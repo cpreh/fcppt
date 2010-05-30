@@ -4,13 +4,20 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/container/exception.hpp>
+#ifndef FCPPT_MPL_IMPL_EXCEPTION_HPP_INCLUDED
+#define FCPPT_MPL_IMPL_EXCEPTION_HPP_INCLUDED
 
-fcppt::container::exception::exception(
-	fcppt::string const &e
+#include <fcppt/text.hpp>
+
+inline
+fcppt::mpl::exception::exception(
+	fcppt::string const &s
 )
 :
 	fcppt::exception(
-		e
+		FCPPT_TEXT("mpl: ")
+		+ s
 	)
 {}
+
+#endif

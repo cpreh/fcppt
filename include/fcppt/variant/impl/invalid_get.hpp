@@ -4,12 +4,17 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/algorithm/element_not_found.hpp>
+#ifndef FCPPT_VARIANT_IMPL_INVALID_GET_HPP_INCLUDED
+#define FCPPT_VARIANT_IMPL_INVALID_GET_HPP_INCLUDED
+
 #include <fcppt/text.hpp>
 
-fcppt::algorithm::element_not_found::element_not_found()
+inline
+fcppt::variant::invalid_get::invalid_get()
 :
 	exception(
-		FCPPT_TEXT("element not found")
+		FCPPT_TEXT("Invalid get in variant!")
 	)
 {}
+
+#endif

@@ -4,15 +4,17 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/time/exception.hpp>
+#ifndef FCPPT_TIME_IMPL_SLEEP_INTERRUPTED_HPP_INCLUDED
+#define FCPPT_TIME_IMPL_SLEEP_INTERRUPTED_HPP_INCLUDED
+
 #include <fcppt/text.hpp>
 
-fcppt::time::exception::exception(
-	fcppt::string const &s
-)
+inline
+fcppt::time::sleep_interrupted::sleep_interrupted()
 :
-	fcppt::exception(
-		FCPPT_TEXT("time: ")
-		+ s
+	time::exception(
+		FCPPT_TEXT("Sleep interrupted")
 	)
 {}
+
+#endif

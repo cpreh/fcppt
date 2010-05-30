@@ -9,25 +9,25 @@
 
 #include <fcppt/string.hpp>
 #include <fcppt/exception.hpp>
-#include <fcppt/symbol.hpp>
-#include <fcppt/class_symbol.hpp>
 
 namespace fcppt
 {
 namespace container
 {
 
-class FCPPT_CLASS_SYMBOL exception
+class exception
 :
 	public fcppt::exception
 {
 public:
-	FCPPT_SYMBOL explicit exception(
+	explicit exception(
 		fcppt::string const &
 	);
 };
 
 }
 }
+
+#include <fcppt/container/impl/exception.hpp>
 
 #endif

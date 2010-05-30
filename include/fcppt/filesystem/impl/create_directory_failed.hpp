@@ -4,16 +4,21 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/filesystem/create_directory_failed.hpp>
+#ifndef FCPPT_FILESYSTEM_IMPL_CREATE_DIRECTORY_FAILED_HPP_INCLUDED
+#define FCPPT_FILESYSTEM_IMPL_CREATE_DIRECTORY_FAILED_HPP_INCLUDED
+
 #include <fcppt/text.hpp>
 
+inline
 fcppt::filesystem::create_directory_failed::create_directory_failed(
 	path const &what
 )
 :
-	exception(
+	filesystem::exception(
 		FCPPT_TEXT("Failed to create directory \"")
 		+ what.string()
 		+ FCPPT_TEXT('"')
 	)
 {}
+
+#endif

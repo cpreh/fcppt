@@ -4,10 +4,14 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/assertion_failed.hpp>
+#ifndef FCPPT_IMPL_ASSERTION_FAILED_HPP_INCLUDED
+#define FCPPT_IMPL_ASSERTION_FAILED_HPP_INCLUDED
+
 #include <fcppt/lexical_cast.hpp>
 #include <fcppt/text.hpp>
+#include <fcppt/string.hpp>
 
+inline
 fcppt::assertion_failed::assertion_failed(
 	fcppt::string const &_file,
 	int const _line,
@@ -69,36 +73,44 @@ fcppt::assertion_failed::assertion_failed(
 {
 }
 
+inline
 fcppt::string const &
 fcppt::assertion_failed::file() const
 {
 	return file_;
 }
 
+inline
 int	
 fcppt::assertion_failed::line() const
 {
 	return line_;
 }
 
+inline
 fcppt::string const &
 fcppt::assertion_failed::function() const
 {
 	return function_;
 }
 
+inline
 fcppt::string const &
 fcppt::assertion_failed::condition() const
 {
 	return condition_;
 }
 
+inline
 fcppt::string const &
 fcppt::assertion_failed::message() const
 {
 	return message_;
 }
 
+inline
 fcppt::assertion_failed::~assertion_failed() throw()
 {
 }
+
+#endif

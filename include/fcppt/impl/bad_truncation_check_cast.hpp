@@ -4,9 +4,12 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/bad_truncation_check_cast.hpp>
+#ifndef FCPPT_IMPL_BAD_TRUNCATION_CHECK_CAST_HPP_INCLUDED
+#define FCPPT_IMPL_BAD_TRUNCATION_CHECK_CAST_HPP_INCLUDED
+
 #include <fcppt/text.hpp>
 
+inline
 fcppt::bad_truncation_check_cast::bad_truncation_check_cast(
 	fcppt::type_info const &_source,
 	fcppt::type_info const &_destination
@@ -24,14 +27,18 @@ fcppt::bad_truncation_check_cast::bad_truncation_check_cast(
 {
 }
 
+inline
 fcppt::type_info const &
 fcppt::bad_truncation_check_cast::source() const
 {
 	return source_;
 }
 
+inline
 fcppt::type_info const &
 fcppt::bad_truncation_check_cast::destination() const
 {
 	return destination_;
 }
+
+#endif

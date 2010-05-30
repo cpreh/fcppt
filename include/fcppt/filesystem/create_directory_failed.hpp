@@ -10,24 +10,25 @@
 #include <fcppt/filesystem/exception.hpp>
 #include <fcppt/filesystem/create_directory_failed.hpp>
 #include <fcppt/filesystem/path.hpp>
-#include <fcppt/symbol.hpp>
 
 namespace fcppt
 {
 namespace filesystem
 {
 
-class FCPPT_CLASS_SYMBOL create_directory_failed
+class create_directory_failed
 :
 	public exception
 {
 public:
-	FCPPT_SYMBOL explicit create_directory_failed(
+	explicit create_directory_failed(
 		path const &
 	);
 };
 
 }
 }
+
+#include <fcppt/filesystem/impl/create_directory_failed.hpp>
 
 #endif
