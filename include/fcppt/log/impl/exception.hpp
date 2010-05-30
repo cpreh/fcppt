@@ -4,9 +4,12 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/log/exception.hpp>
+#ifndef FCPPT_LOG_IMPL_EXCEPTION_HPP_INCLUDED
+#define FCPPT_LOG_IMPL_EXCEPTION_HPP_INCLUDED
+
 #include <fcppt/text.hpp>
 
+inline
 fcppt::log::exception::exception(
 	fcppt::string const &what_
 )
@@ -16,3 +19,5 @@ fcppt::log::exception::exception(
 		+ what_
 	)
 {}
+
+#endif

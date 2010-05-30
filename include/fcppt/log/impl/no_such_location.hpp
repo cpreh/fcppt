@@ -4,9 +4,12 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/log/no_such_location.hpp>
+#ifndef FCPPT_LOG_IMPL_NO_SUCH_LOCATION_HPP_INCLUDED
+#define FCPPT_LOG_IMPL_NO_SUCH_LOCATION_HPP_INCLUDED
+
 #include <fcppt/text.hpp>
 
+inline
 fcppt::log::no_such_location::no_such_location(
 	log::location const &nlocation_
 )
@@ -21,8 +24,11 @@ fcppt::log::no_such_location::no_such_location(
 	)
 {}
 
+inline
 fcppt::log::location const &
 fcppt::log::no_such_location::location() const
 {
 	return location_;
 }
+
+#endif
