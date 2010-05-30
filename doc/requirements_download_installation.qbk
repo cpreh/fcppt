@@ -65,4 +65,15 @@ LINK_DIRECTORIES(${FCPPT_LIBRARY_DIRS})
 Also, if you don't use cmake in your project, there is a pkgconfig file
 that will be installed into the `prefix/lib/pkgconfig/`.
 
+
+[h1 Static and shared builds]
+
+fcppt can be built as a static or shared library,
+which is controlled by ENABLE_STATIC and ENABLE_SHARED,
+respectively.
+The default is to build a static library for VC++,
+while a shared library is the default for anything else.
+If you intend to use a fcppt as a shared library within VC++,
+you need to define FCPPT_DYN_LINK in your project.
+
 [endsect]
