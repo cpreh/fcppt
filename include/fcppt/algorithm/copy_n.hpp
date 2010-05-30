@@ -29,11 +29,12 @@ copy_n(
 	Out const out
 )
 {
-	return std::copy(
-		beg,
-		beg + sz,
-		out
-	);
+	return
+		std::copy(
+			beg,
+			beg + sz,
+			out
+		);
 }
 
 }

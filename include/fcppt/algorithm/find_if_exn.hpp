@@ -36,7 +36,7 @@ find_if_exn(
 	);
 
 	if(ret == end)
-		throw element_not_found();
+		throw algorithm::element_not_found();
 
 	return ret;
 }

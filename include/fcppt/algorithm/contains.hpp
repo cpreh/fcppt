@@ -53,7 +53,7 @@ contains(
 )
 {
 	return
-		contains(
+		algorithm::contains(
 			container.begin(),
 			container.end(),
 			value
