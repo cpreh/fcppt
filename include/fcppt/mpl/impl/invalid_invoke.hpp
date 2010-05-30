@@ -4,12 +4,17 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/mpl/invalid_invoke.hpp>
+#ifndef FCPPT_MPL_IMPL_INVALID_INVOKE_HPP_INCLUDED
+#define FCPPT_MPL_IMPL_INVALID_INVOKE_HPP_INCLUDED
+
 #include <fcppt/text.hpp>
 
+inline
 fcppt::mpl::invalid_invoke::invalid_invoke()
 :
-	fcppt::exception(
+	mpl::exception(
 		FCPPT_TEXT("Invalid invoke!")
 	)
 {}
+
+#endif
