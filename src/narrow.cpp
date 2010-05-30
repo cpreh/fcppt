@@ -9,8 +9,15 @@
 
 std::string const
 fcppt::narrow(
-	std::wstring const &s
+	std::wstring const &s,
+	std::locale const &locale_
 )
 {
-	return fcppt::codecvt<char>(s);
+	return
+		fcppt::codecvt<
+			char
+		>(
+			s,
+			locale_
+		);
 }
