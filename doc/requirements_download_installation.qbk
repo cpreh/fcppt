@@ -16,8 +16,7 @@ To build the documentation the following packages are needed in addition:
 
 Tested compilers are:
 
-* gcc-4.4.3 (Gentoo Linux)
-* gcc-4.5_rc1 (Gentoo Linux)
+* gcc-4.5.0 (Gentoo Linux)
 * VC++ 2008 SP1 (Windows XP)
 
 
@@ -51,7 +50,10 @@ cmake module directory.
 Example usage:
 
 ``
-SET( CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/CMakeModules") #this is where FindFcppt.cmake is
+SET(
+	CMAKE_MODULE_PATH
+	"${CMAKE_SOURCE_DIR}/CMakeModules" #this is where FindFcppt.cmake is
+)
 
 FindPackage(
 	Fcppt
@@ -60,6 +62,10 @@ FindPackage(
 
 INCLUDE_DIRECTORIES(${FCPPT_INCLUDE_DIRS})
 LINK_DIRECTORIES(${FCPPT_LIBRARY_DIRS})
+ADD_DEFINITIONS(${FCPPT_DEFINITIONS})
+
+ADD_EXECUTABLE(myproject main.cpp)
+TARGET_LINK_LIBRARIES(myproject ${FCPPT_LIBRARIES})
 ``
 
 Also, if you don't use cmake in your project, there is a pkgconfig file
@@ -69,11 +75,12 @@ that will be installed into the `prefix/lib/pkgconfig/`.
 [h1 Static and shared builds]
 
 fcppt can be built as a static or shared library,
-which is controlled by ENABLE_STATIC and ENABLE_SHARED,
+which is controlled by `ENABLE_STATIC` and `ENABLE_SHARED`,
 respectively.
 The default is to build a static library for VC++,
 while a shared library is the default for anything else.
-If you intend to use a fcppt as a shared library within VC++,
-you need to define FCPPT_DYN_LINK in your project.
+If you intend to use fcppt as a shared library within VC++,
+you need to set `FCPPT_WANT_DYN_LINK=ON` before including FindFcppt.cmake,
+which will add `/D FCPPT_DYN_LINK` to `FCPPT_DEFINITIONS`.
 
 [endsect]

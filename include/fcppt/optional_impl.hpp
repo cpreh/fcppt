@@ -29,7 +29,9 @@ fcppt::optional<T>::optional(
 :
 	storage_(),
 	data_(
-		construct(ref)
+		optional::construct(
+			ref
+		)
 	)
 {}
 
@@ -42,7 +44,9 @@ fcppt::optional<T>::optional(
 :
 	storage_(),
 	data_(
-		construct(o)
+		optional::construct(
+			o
+		)
 	)
 {}
 
@@ -54,8 +58,8 @@ fcppt::optional<T>::operator=(
 	optional const &o
 )
 {
-	destroy();
-	data_ = construct(o);
+	optional::destroy();
+	data_ = optional::construct(o);
 	return *this;
 }
 
@@ -67,8 +71,8 @@ fcppt::optional<T>::operator=(
 	const_reference r
 )
 {
-	destroy();
-	data_ = construct(r);
+	optional::destroy();
+	data_ = optional::construct(r);
 	return *this;
 }
 
@@ -77,7 +81,7 @@ template<
 >
 fcppt::optional<T>::~optional()
 {
-	destroy();
+	optional::destroy();
 }
 
 template<

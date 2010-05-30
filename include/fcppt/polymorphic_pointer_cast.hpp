@@ -24,7 +24,7 @@ polymorphic_pointer_cast(
 	shared_ptr<U, Deleter> const &r
 )
 {
-	return shared_ptr<T, Deleter>(
+	return fcppt::shared_ptr<T, Deleter>(
 		r,
 		boost::detail::polymorphic_cast_tag()
 	);

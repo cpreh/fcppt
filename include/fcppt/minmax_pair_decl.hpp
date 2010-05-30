@@ -23,7 +23,7 @@ template<
 class minmax_pair
 {
 public:
-	typedef homogenous_pair<
+	typedef fcppt::homogenous_pair<
 		T
 	> pair_type;
 

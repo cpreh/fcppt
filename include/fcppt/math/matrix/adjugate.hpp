@@ -54,11 +54,13 @@ adjugate(
 			// matrix
 			ret[rows][cols] = 
 				coeff * 
-				determinant(
-					delete_column_and_row(
+				matrix::determinant(
+					matrix::delete_column_and_row(
 						t,
 						cols,
-						rows));
+						rows
+					)
+				);
 		}
 	}
 

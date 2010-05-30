@@ -20,6 +20,7 @@ if (!(cond))\
 		__LINE__,\
 		FCPPT_PP_FUNCTION,\
 		FCPPT_PP_STRINGIZE(cond),\
-		message);
+		message\
+	);
 
 #endif

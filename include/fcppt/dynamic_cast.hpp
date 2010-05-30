@@ -47,13 +47,13 @@ dynamic_cast_(
 	)
 	{
 		throw
-			bad_dynamic_cast(
-				type_info(
+			fcppt::bad_dynamic_cast(
+				fcppt::type_info(
 					typeid(
 						Src
 					)
 				),
-				type_info(
+				fcppt::type_info(
 					typeid(
 						Dest
 					)
@@ -77,7 +77,7 @@ dynamic_cast_(
 )
 {
 	return
-		dynamic_cast_<
+		fcppt::dynamic_cast_<
 			Dest
 		>(
 			const_cast<

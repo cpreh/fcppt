@@ -64,7 +64,7 @@ lexical_cast(
 	Dest result;
 
 	if (!(ss << s && ss >> result))
-		throw bad_lexical_cast(
+		throw fcppt::bad_lexical_cast(
 			typeid(Src),
 			typeid(Dest)
 		);
