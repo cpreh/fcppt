@@ -7,6 +7,7 @@
 #ifndef FCPPT_RANDOM_IMPL_EXCLUSIVE_RANGE_ERROR_HPP_INCLUDED
 #define FCPPT_RANDOM_IMPL_EXCLUSIVE_RANGE_ERROR_HPP_INCLUDED
 
+inline
 fcppt::random::exclusive_range_error::exclusive_range_error(
 	fcppt::string const &s
 )

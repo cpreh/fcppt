@@ -29,4 +29,6 @@ public:
 }
 }
 
+#include <fcppt/random/impl/exclusive_range_error.hpp>
+
 #endif
