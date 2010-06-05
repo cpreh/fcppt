@@ -53,6 +53,17 @@ public:
 	);
 
 	template<
+		typename OtherStorage
+	>
+	basic(
+		basic<
+			T,
+			N,
+			OtherStorage
+		> const &
+	);
+
+	template<
 		typename In
 	>
 	basic(
@@ -73,6 +84,17 @@ public:
 #undef FCPPT_MATH_DETAIL_MAKE_VARIADIC_CONSTRUCTOR_MAX_SIZE
 /// \endcond
 public:
+	template<
+		typename OtherStorage
+	>
+	basic &
+	operator=(
+		basic<
+			T,
+			N,
+			OtherStorage
+		> const &
+	);
 
 /// \cond
 #define FCPPT_MATH_VECTOR_BASIC_DECLARE_OPERATOR(op)\

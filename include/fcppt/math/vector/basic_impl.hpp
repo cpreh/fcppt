@@ -45,6 +45,29 @@ template<
 	typename S
 >
 template<
+	typename OtherStorage
+>
+fcppt::math::vector::basic<T, N, S>::basic(
+	basic<
+		T,
+		N,
+		OtherStorage
+	> const &other_
+)
+{
+	std::copy(
+		other_.begin(),
+		other_.end(),
+		data()
+	);
+}
+
+template<
+	typename T,
+	typename N,
+	typename S
+>
+template<
 	typename In
 >
 fcppt::math::vector::basic<T, N, S>::basic(
@@ -96,6 +119,34 @@ FCPPT_MATH_DETAIL_MAKE_VARIADIC_CONSTRUCTOR(
 #define FCPPT_MATH_VECTOR_BASIC_DEFINE_OPERATOR(op)\
 FCPPT_MATH_DETAIL_MAKE_OP_DEF(fcppt::math::vector::basic, op)
 // \endcond
+
+template<
+	typename T,
+	typename N,
+	typename S
+>
+template<
+	typename OtherStorage
+>
+fcppt::math::vector::basic<T, N, S> &
+fcppt::math::vector::basic<T, N, S>::operator=(
+	basic<
+		T,
+		N,
+		OtherStorage
+	> const &other
+)
+{
+	if(
+		this != &other
+	)
+		for(
+			size_type i = 0; i < size(); ++i
+		)
+			(*this)[i] = other[i];
+
+	return *this;
+}
 
 FCPPT_MATH_VECTOR_BASIC_DEFINE_OPERATOR(+=)
 FCPPT_MATH_VECTOR_BASIC_DEFINE_OPERATOR(-=)
