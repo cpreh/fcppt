@@ -61,16 +61,6 @@
 	front() const;\
 \
 	bool \
-	empty() const;\
-\
-	bool \
-	operator==(\
-		name const &\
-	) const;\
-\
-	bool \
-	operator!=(\
-		name const &\
-	) const;
+	empty() const;
 
 #endif

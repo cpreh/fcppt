@@ -8,9 +8,6 @@
 #define FCPPT_MATH_DETAIL_ARRAY_ADAPTER_IMPL_HPP_INCLUDED
 
 #include <fcppt/math/detail/array_adapter.hpp>
-#include <fcppt/tr1/functional.hpp>
-#include <fcppt/algorithm/compare_with.hpp>
-#include <fcppt/math/compare.hpp>
 #include <fcppt/assert.hpp>
 #include <boost/next_prior.hpp>
 #include <algorithm>
@@ -140,34 +137,5 @@ FCPPT_MATH_DETAIL_DEF_PRE ::empty() const\
 {\
 	return size() == 0u;\
 }\
-\
-FCPPT_MATH_DETAIL_TEMPLATE_PRE \
-bool \
-FCPPT_MATH_DETAIL_DEF_PRE ::operator==(\
-	FCPPT_MATH_DETAIL_DEF_PRE const &other_\
-) const\
-{\
-	return \
-		algorithm::compare_with(\
-			*this,\
-			other_,\
-			std::tr1::bind(\
-				compare<\
-					value_type\
-				>,\
-				std::tr1::placeholders::_1,\
-				std::tr1::placeholders::_2\
-			)\
-		);\
-}\
-\
-FCPPT_MATH_DETAIL_TEMPLATE_PRE \
-bool \
-FCPPT_MATH_DETAIL_DEF_PRE ::operator!=(\
-	FCPPT_MATH_DETAIL_DEF_PRE const &other_\
-) const\
-{\
-	return !(*this == other_);\
-}
 
 #endif
