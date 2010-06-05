@@ -42,6 +42,16 @@ template<
 	typename T,
 	typename N
 >
+typename fcppt::math::detail::view_storage<T, N>::pointer
+fcppt::math::detail::view_storage<T, N>::data() const
+{
+	return rep;
+}
+
+template<
+	typename T,
+	typename N
+>
 typename fcppt::math::detail::view_storage<T, N>::size_type
 fcppt::math::detail::view_storage<T, N>::size() const
 {

@@ -21,6 +21,7 @@ template<
 class view_storage
 {
 public:
+	typedef T value_type;
 	typedef typename N::value_type size_type;
 	typedef T &reference;
 	typedef T *pointer;
@@ -36,6 +37,9 @@ public:
 	operator[](
 		size_type
 	) const;
+
+	pointer
+	data() const;
 
 	size_type
 	size() const;
