@@ -58,7 +58,7 @@ fcppt::math::vector::basic<T, N, S>::basic(
 	std::copy(
 		other_.begin(),
 		other_.end(),
-		data()
+		begin()
 	);
 }
 
@@ -91,7 +91,7 @@ fcppt::math::vector::basic<T, N, S>::basic(
 	std::copy(
 		beg,
 		end,
-		data()
+		begin()
 	);
 }
 
@@ -126,10 +126,11 @@ fcppt::math::vector::basic<T, N, S>::operator=(
 	if(
 		this != &other
 	)
-		for(
-			size_type i = 0; i < size(); ++i
-		)
-			(*this)[i] = other[i];
+		std::copy(
+			other.begin(),
+			other.end(),
+			begin()
+		);
 
 	return *this;
 }
@@ -245,13 +246,14 @@ template<
 typename fcppt::math::vector::basic<T, N, S>::size_type
 fcppt::math::vector::basic<T, N, S>::size() const
 {
-	return static_cast<
-		size_type
-	>(
-		math::detail::storage_dim(
-			storage
-		)
-	);
+	return
+		static_cast<
+			size_type
+		>(
+			math::detail::storage_dim(
+				storage
+			)
+		);
 }
 
 template<
