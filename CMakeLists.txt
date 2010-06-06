@@ -66,11 +66,6 @@ ENDIF()
 ADD_DEFINITIONS(-D BOOST_FILESYSTEM_NO_DEPRECATED)
 
 IF (CMAKE_COMPILER_IS_GNUCXX)
-	#CHECK_CXX_COMPILER_FLAG(
-	#	"-std=c++0x"
-	#	FCPPT_HAVE_VARIADIC_TEMPLATES
-	#)
-
 	IF(UNIX)
 		SET (FCPPT_STRING_IS_UTF8 true)
 	ENDIF()
@@ -97,12 +92,8 @@ IF (CMAKE_COMPILER_IS_GNUCXX)
 		ADD_DEFINITIONS(-fvisibility=hidden)
 	ENDIF ()
 
-	#IF (FCPPT_HAVE_VARIADIC_TEMPLATES)
-	#	ADD_DEFINITIONS ("-std=c++0x")
-	#ELSE ()
-		# C++ 98 has no long long but boost insists on using it anyway
-		ADD_DEFINITIONS ("-Wno-long-long")
-	#ENDIF ()
+	# C++ 98 has no long long but boost insists on using it anyway
+	ADD_DEFINITIONS ("-Wno-long-long")
 
 	IF(NOT APPLE)
 		# -ansi breaks tr1 on darwin
@@ -163,10 +154,8 @@ FILE(WRITE ${pkgfile}
 	"Version: ${FCPPT_VERSION}\n"
 	"Requires:\n"
 	"Libs: -L\${libdir} -lfcppt\n"
-	"Cflags: -I\${includedir}/")
-#IF(FCPPT_HAVE_VARIADIC_TEMPLATES)
-#	FILE(APPEND ${pkgfile} " -std=c++0x")
-#ENDIF()
+	"Cflags: -I\${includedir}/"
+)
 
 INSTALL (FILES ${pkgfile} DESTINATION ${CMAKE_INSTALL_PREFIX}/lib/pkgconfig)
 

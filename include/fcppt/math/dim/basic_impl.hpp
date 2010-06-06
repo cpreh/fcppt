@@ -61,29 +61,28 @@ fcppt::math::dim::basic<T, N, S>::basic(
 	);
 }
 
-// \cond
-#define FCPPT_MATH_DETAIL_MAKE_VARIADIC_CONSTRUCTOR_MAX_SIZE FCPPT_MATH_DIM_MAX_CTOR_PARAMS
-#define FCPPT_MATH_DETAIL_TEMPLATE_PRE\
-	template<\
-		typename T,\
-		typename N,\
-		typename S\
-	>
-#define FCPPT_MATH_DETAIL_DEF_PRE\
-	fcppt::math::dim::basic<T, N, S>
-// \endcond
-
-FCPPT_MATH_DETAIL_ARRAY_ADAPTER_IMPL
-
-FCPPT_MATH_DETAIL_MAKE_VARIADIC_CONSTRUCTOR(
-	basic
+FCPPT_MATH_DETAIL_ARRAY_ADAPTER_IMPL(
+	3,
+	(template<typename T, typename N, typename S>),
+	(fcppt::math::dim::basic<T, N, S>)
 )
 
-#undef FCPPT_MATH_DETAIL_MAKE_VARIADIC_CONSTRUCTOR_MAX_SIZE
+FCPPT_MATH_DETAIL_MAKE_VARIADIC_CONSTRUCTOR(
+	FCPPT_MATH_DIM_MAX_CTOR_PARAMS,
+	(5, (template<typename T, typename N, typename S> fcppt::math::dim::basic<T, N, S>::basic))
+)
 
 // \cond
-#define FCPPT_MATH_DIM_BASIC_DEFINE_OPERATOR(op)\
-FCPPT_MATH_DETAIL_MAKE_OP_DEF(fcppt::math::dim::basic, op)
+#define FCPPT_MATH_DIM_BASIC_DEFINE_OPERATOR(\
+	op\
+)\
+FCPPT_MATH_DETAIL_MAKE_OP_DEF(\
+	3,\
+	(template<typename T, typename N, typename S> template<typename OtherStorage>),\
+	(fcppt::math::dim::basic<T, N, S>),\
+	(fcppt::math::dim::basic<T, N, OtherStorage>),\
+	op\
+)
 // \endcond
 
 FCPPT_MATH_DIM_BASIC_DEFINE_OPERATOR(+=)
@@ -92,8 +91,6 @@ FCPPT_MATH_DIM_BASIC_DEFINE_OPERATOR(*=)
 FCPPT_MATH_DIM_BASIC_DEFINE_OPERATOR(/=)
 FCPPT_MATH_DIM_BASIC_DEFINE_OPERATOR(%=)
 
-#undef FCPPT_MATH_DETAIL_DEF_PRE
-#undef FCPPT_MATH_DETAIL_TEMPLATE_PRE
 #undef FCPPT_MATH_DIM_BASIC_DEFINE_OPERATOR
 
 template<

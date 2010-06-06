@@ -7,42 +7,9 @@
 #ifndef FCPPT_MATH_DETAIL_MAKE_VARIADIC_CONSTRUCTOR_DECL_HPP_INCLUDED
 #define FCPPT_MATH_DETAIL_MAKE_VARIADIC_CONSTRUCTOR_DECL_HPP_INCLUDED
 
-#include <fcppt/config.hpp>
-#ifndef FCPPT_HAVE_VARIADIC_TEMPLATES
 #include <boost/preprocessor/arithmetic/inc.hpp>
 #include <boost/preprocessor/repetition/enum_params.hpp>
 #include <boost/preprocessor/repetition/repeat.hpp>
-#endif
-
-#ifdef FCPPT_HAVE_VARIADIC_TEMPLATES
-#define FCPPT_MATH_DETAIL_MAKE_VARIADIC_CONSTRUCTOR_DECL(name) \
-	template<\
-		typename... Args\
-	> \
-	explicit name(\
-		Args... args\
-	); \
-private: \
-	template<\
-		typename... Args,\
-		typename Arg\
-	> \
-	void \
-	set_impl( \
-		size_type i, \
-		Arg const &arg, \
-		Args... args\
-	); \
-\
-	template<\
-		typename Arg\
-	>\
-	void \
-	set_impl( \
-		size_type i, \
-		Arg const &arg\
-	);
-#else
 
 #define FCPPT_MATH_DETAIL_MAKE_VARIADIC_CONSTRUCTOR_DECL_IMPL(\
 	z,\
@@ -57,15 +24,13 @@ explicit text(\
 );
 
 #define FCPPT_MATH_DETAIL_MAKE_VARIADIC_CONSTRUCTOR_DECL(\
+	max_params,\
 	name\
 )\
 BOOST_PP_REPEAT(\
-	FCPPT_MATH_DETAIL_MAKE_VARIADIC_CONSTRUCTOR_MAX_SIZE,\
+	max_params,\
 	FCPPT_MATH_DETAIL_MAKE_VARIADIC_CONSTRUCTOR_DECL_IMPL,\
 	name\
 )
-
-#endif
-
 
 #endif

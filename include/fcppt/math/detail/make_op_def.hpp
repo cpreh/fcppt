@@ -7,28 +7,30 @@
 #ifndef FCPPT_MATH_DETAIL_MAKE_OP_DEF_HPP_INCLUDED
 #define FCPPT_MATH_DETAIL_MAKE_OP_DEF_HPP_INCLUDED
 
-#define FCPPT_MATH_DETAIL_MAKE_OP_DEF(name, op)\
-FCPPT_MATH_DETAIL_TEMPLATE_PRE \
-FCPPT_MATH_DETAIL_DEF_PRE \
- & \
-FCPPT_MATH_DETAIL_DEF_PRE \
-::operator op ( \
-	FCPPT_MATH_DETAIL_DEF_PRE const &expr\
+#include <boost/preprocessor/tuple/rem.hpp>
+
+#define FCPPT_MATH_DETAIL_MAKE_OP_DEF(\
+	class_arity,\
+	template_pre,\
+	def_pre,\
+	arg,\
+	op\
+)\
+BOOST_PP_TUPLE_REM(class_arity)template_pre \
+BOOST_PP_TUPLE_REM(class_arity)def_pre \
+& \
+BOOST_PP_TUPLE_REM(class_arity)def_pre \
+::operator op( \
+	BOOST_PP_TUPLE_REM(class_arity)arg const &expr\
 ) \
-{ \
-	const_iterator right(\
-		expr.begin()\
-	);\
-\
+{\
 	for(\
-		iterator left(\
-			begin()\
-		);\
-		left != end();\
-		++left, ++right\
+		size_type i = 0;\
+		i < size();\
+		++i\
 	)\
-		*left op *right;\
-\
+		*(data() + i) op *(expr.data() + i);\
+	\
 	return *this;\
 }
 
