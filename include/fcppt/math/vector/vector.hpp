@@ -27,5 +27,6 @@
 #include <fcppt/math/vector/static.hpp>
 #include <fcppt/math/vector/structure_cast.hpp>
 #include <fcppt/math/vector/to_angle.hpp>
+#include <fcppt/math/vector/unit_circle.hpp>
 
 #endif
