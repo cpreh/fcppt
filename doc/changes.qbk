@@ -4,6 +4,7 @@
 
 * Made all exceptions inline, so header only parts can be used without linking.
 * All string conversion functions now take an optional `std::locale` parameter (`from_std_string`, `to_std_string`, `narrow` and `widen`).
+* Moved the comparison functions (`operator==` and `operator!=`) into their own headers. For example vector needs `<fcppt/math/vector/comparison.hpp>`.
 * Fixed building and using fcppt statically with VC++.
 * Building a static library and linking statically when using FindFcppt is now the default for VC++.
 * Removed some lazy initializations to make functions reentrant (chrono's now() functions and endianness test functions).
@@ -16,6 +17,8 @@
 * Added `algorithm::set_intersection` that wraps `std::set_intersection`.
 * Added `is_subset_eq` for `container::bitfield`.
 * Added `filesystem::extension_without_dot`.
+* Added `math::vector::unit_circle` to construct a unit vector from an angle.
+* Refactored some `math` implementation macros so Doxygen gets less confused.
 
 [h2 Changes from 0.1 to 0.1.1]
 
