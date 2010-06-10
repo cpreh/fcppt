@@ -9,8 +9,10 @@
 
 #include <fcppt/math/box/basic_decl.hpp>
 #include <fcppt/math/vector/basic_impl.hpp>
+#include <fcppt/math/vector/comparison.hpp>
 #include <fcppt/math/vector/dim.hpp>
 #include <fcppt/math/dim/basic_impl.hpp>
+#include <fcppt/math/dim/comparison.hpp>
 #include <algorithm>
 
 template<
