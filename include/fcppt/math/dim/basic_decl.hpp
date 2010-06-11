@@ -85,7 +85,12 @@ public:
 		FCPPT_MATH_DIM_MAX_CTOR_PARAMS,
 		basic
 	)
-public:
+
+	basic &
+	operator=(
+		basic const &
+	);
+
 	template<
 		typename OtherStorage
 	>
@@ -97,6 +102,8 @@ public:
 			OtherStorage
 		> const &
 	);
+
+	~basic();
 
 // \cond
 #define FCPPT_MATH_DIM_BASIC_DECLARE_OPERATOR(op)\

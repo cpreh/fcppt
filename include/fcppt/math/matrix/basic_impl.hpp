@@ -19,6 +19,7 @@
 #include <fcppt/math/detail/make_variadic_constructor.hpp>
 #include <fcppt/math/detail/initial_size.hpp>
 #include <fcppt/math/detail/make_op_def.hpp>
+#include <fcppt/math/detail/assign.hpp>
 #include <fcppt/assert.hpp>
 #include <boost/foreach.hpp>
 #include <iterator>
@@ -98,7 +99,7 @@ fcppt::math::matrix::basic<T, N, M, S>::basic(
 	std::copy(
 		other_.begin(),
 		other_.end(),
-		data()
+		begin()
 	);
 }
 
@@ -124,7 +125,7 @@ fcppt::math::matrix::basic<T, N, M, S>::basic(
 	std::copy(
 		beg,
 		end,
-		data()
+		begin()
 	);
 }
 
@@ -159,7 +160,7 @@ fcppt::math::matrix::basic<T, N, M, S>::basic(
 	std::copy(
 		beg,
 		end,
-		data()
+		begin()
 	);
 }
 
@@ -207,6 +208,24 @@ template<
 	typename M,
 	typename S
 >
+fcppt::math::matrix::basic<T, N, M, S> &
+fcppt::math::matrix::basic<T, N, M, S>::operator=(
+	basic const &other_
+)
+{
+	return
+		math::detail::assign(
+			*this,
+			other_
+		);
+}
+
+template<
+	typename T,
+	typename N,
+	typename M,
+	typename S
+>
 template<
 	typename OtherStorage
 >
@@ -217,20 +236,24 @@ fcppt::math::matrix::basic<T, N, M, S>::operator=(
 		N,
 		M,
 		OtherStorage
-	> const &other
+	> const &other_
 )
 {
-	if(
-		this != &other
-	)
-		std::copy(
-			other.begin(),
-			other.end(),
-			begin()
+	return
+		math::detail::assign(
+			*this,
+			other_
 		);
-
-	return *this;
 }
+
+template<
+	typename T,
+	typename N,
+	typename M,
+	typename S
+>
+fcppt::math::matrix::basic<T, N, M, S>::~basic()
+{}
 
 // \cond
 #define FCPPT_MATH_MATRIX_BASIC_DEFINE_OPERATOR(\

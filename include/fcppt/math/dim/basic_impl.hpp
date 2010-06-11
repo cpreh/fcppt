@@ -16,6 +16,7 @@
 #include <fcppt/math/detail/storage_dim.hpp>
 #include <fcppt/math/detail/checked_access.hpp>
 #include <fcppt/math/detail/make_variadic_constructor.hpp>
+#include <fcppt/math/detail/assign.hpp>
 #include <numeric>
 #include <functional>
 #include <iterator>
@@ -110,7 +111,7 @@ fcppt::math::dim::basic<T, N, S>::basic(
 	std::copy(
 		beg,
 		end,
-		data()
+		begin()
 	);
 }
 
@@ -130,6 +131,23 @@ template<
 	typename N,
 	typename S
 >
+fcppt::math::dim::basic<T, N, S> &
+fcppt::math::dim::basic<T, N, S>::operator=(
+	basic const &other_
+)
+{
+	return
+		math::detail::assign(
+			*this,
+			other_
+		);
+}
+
+template<
+	typename T,
+	typename N,
+	typename S
+>
 template<
 	typename OtherStorage
 >
@@ -139,20 +157,23 @@ fcppt::math::dim::basic<T, N, S>::operator=(
 		T,
 		N,
 		OtherStorage
-	> const &other
+	> const &other_
 )
 {
-	if(
-		this != &other
-	)
-		std::copy(
-			other.begin(),
-			other.end(),
-			begin()
+	return
+		math::detail::assign(
+			*this,
+			other_
 		);
-
-	return *this;
 }
+
+template<
+	typename T,
+	typename N,
+	typename S
+>
+fcppt::math::dim::basic<T, N, S>::~basic()
+{}
 
 // \cond
 #define FCPPT_MATH_DIM_BASIC_DEFINE_OPERATOR(\

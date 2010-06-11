@@ -4,6 +4,8 @@
 
 * Made all exceptions inline, so header only parts can be used without linking.
 * All string conversion functions now take an optional `std::locale` parameter (`from_std_string`, `to_std_string`, `narrow` and `widen`).
+* Changed a lot of functions for `vector`, `dim` and `matrix` to be safe with different storage types.
+* The cctor, operator= and dtor of `vector`, `dim` and `matrix` are now defined in the corresponding `basic_impl.hpp` file.
 * Moved the comparison functions (`operator==` and `operator!=`) into their own headers. For example vector needs `<fcppt/math/vector/comparison.hpp>`.
 * Fixed building and using fcppt statically with VC++.
 * Building a static library and linking statically when using FindFcppt is now the default for VC++.

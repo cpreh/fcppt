@@ -88,7 +88,12 @@ public:
 		FCPPT_MATH_VECTOR_MAX_CTOR_PARAMS,
 		basic
 	)
-public:
+
+	basic &
+	operator=(
+		basic const &
+	);
+
 	template<
 		typename OtherStorage
 	>
@@ -101,6 +106,8 @@ public:
 		> const &
 	);
 
+	~basic();
+	
 /// \cond
 #define FCPPT_MATH_VECTOR_BASIC_DECLARE_OPERATOR(op)\
 FCPPT_MATH_DETAIL_MAKE_OP_DECL(\
