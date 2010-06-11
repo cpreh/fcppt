@@ -15,8 +15,10 @@
 #include <fcppt/math/detail/make_variadic_constructor_decl.hpp>
 #include <fcppt/math/vector/basic_decl.hpp>
 #include <fcppt/math/dim/static.hpp>
+#include <fcppt/type_traits/is_iterator.hpp>
 #include <boost/mpl/times.hpp>
 #include <boost/type_traits/is_same.hpp>
+#include <boost/utility/enable_if.hpp>
 #include <boost/static_assert.hpp>
 #include <iterator>
 
@@ -99,12 +101,47 @@ public:
 		dim const &
 	);
 
+	explicit basic(
+		storage_type const &
+	);
+
+	template<
+		typename OtherStorage
+	>
+	basic(
+		basic<
+			T,
+			N,
+			M,
+			OtherStorage
+		> const &
+	);
+
 	template<
 		typename In
 	>
 	basic(
 		In beg,
-		In end
+		typename boost::enable_if<
+			type_traits::is_iterator<
+				In
+			>,
+			In
+		>::type end
+	);
+
+	template<
+		typename In
+	>
+	basic(
+		dim const &,
+		In beg,
+		typename boost::enable_if<
+			type_traits::is_iterator<
+				In
+			>,
+			In
+		>::type end
 	);
 
 	template<
@@ -124,6 +161,18 @@ public:
 		basic
 	)
 public:
+	template<
+		typename OtherStorage
+	>
+	basic &
+	operator=(
+		basic<
+			T,
+			N,
+			M,
+			OtherStorage
+		> const &
+	);
 
 // \cond
 #define FCPPT_MATH_MATRIX_BASIC_DECLARE_OPERATOR(op)\

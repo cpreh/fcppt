@@ -52,12 +52,87 @@ template<
 	typename M,
 	typename S
 >
+fcppt::math::matrix::basic<T, N, M, S>::basic(
+	storage_type const &storage
+)
+:
+	storage(storage)
+{}
+
+template<
+	typename T,
+	typename N,
+	typename M,
+	typename S
+>
+template<
+	typename OtherStorage
+>
+fcppt::math::matrix::basic<T, N, M, S>::basic(
+	basic<
+		T,
+		N,
+		M,
+		OtherStorage
+	> const &other_
+)
+{
+	math::detail::initial_size(
+		storage,
+		other_.size()
+	);
+
+	std::copy(
+		other_.begin(),
+		other_.end(),
+		begin()
+	);
+}
+
+template<
+	typename T,
+	typename N,
+	typename M,
+	typename S
+>
 template<
 	typename In
 >
 fcppt::math::matrix::basic<T, N, M, S>::basic(
 	In const beg,
-	In const end
+	typename boost::enable_if<
+		type_traits::is_iterator<
+			In
+		>,
+		In
+	>::type const end
+)
+{
+	std::copy(
+		beg,
+		end,
+		data()
+	);
+}
+
+template<
+	typename T,
+	typename N,
+	typename M,
+	typename S
+>
+template<
+	typename In
+>
+fcppt::math::matrix::basic<T, N, M, S>::basic(
+	dim const &,
+	In const beg,
+	typename boost::enable_if<
+		type_traits::is_iterator<
+			In
+		>,
+		In
+	>::type const end
 )
 {
 	math::detail::initial_size(
@@ -74,29 +149,32 @@ fcppt::math::matrix::basic<T, N, M, S>::basic(
 		data()
 	);
 }
+
 template<
-	typename T,
-	typename N,
-	typename M,
-	typename S
+        typename T,
+        typename N,
+        typename M,
+        typename S
 >
 template<
-	typename Container
+        typename Container
 >
 fcppt::math::matrix::basic<T, N, M, S>::basic(
-	dim const &d,
-	Container const &c
+        dim const &d,
+        Container const &c
 )
 {
-	resize(d);
-
-	FCPPT_ASSERT(c.size() == size());
-
-	std::copy(
-		c.begin(),
-		c.end(),
-		storage.begin()
+        resize(
+		d
 	);
+
+        FCPPT_ASSERT(c.size() == size());
+
+        std::copy(
+                c.begin(),
+                c.end(),
+                storage.begin()
+        );
 }
 
 FCPPT_MATH_DETAIL_ARRAY_ADAPTER_IMPL(
@@ -109,6 +187,37 @@ FCPPT_MATH_DETAIL_MAKE_VARIADIC_CONSTRUCTOR(
 	FCPPT_MATH_MATRIX_MAX_CTOR_PARAMS,
 	(7, (template<typename T, typename N, typename M, typename S> fcppt::math::matrix::basic<T, N, M, S>::basic))
 )
+
+template<
+	typename T,
+	typename N,
+	typename M,
+	typename S
+>
+template<
+	typename OtherStorage
+>
+fcppt::math::matrix::basic<T, N, M, S> &
+fcppt::math::matrix::basic<T, N, M, S>::operator=(
+	basic<
+		T,
+		N,
+		M,
+		OtherStorage
+	> const &other
+)
+{
+	if(
+		this != &other
+	)
+		std::copy(
+			other.begin(),
+			other.end(),
+			begin()
+		);
+
+	return *this;
+}
 
 // \cond
 #define FCPPT_MATH_MATRIX_BASIC_DEFINE_OPERATOR(\

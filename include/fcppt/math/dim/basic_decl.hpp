@@ -47,6 +47,21 @@ public:
 
 	basic();
 
+	explicit basic(
+		storage_type const &
+	);
+
+	template<
+		typename OtherStorage
+	>
+	basic(
+		basic<
+			T,
+			N,
+			OtherStorage
+		> const &
+	);
+
 	template<
 		typename In
 	>
@@ -67,6 +82,17 @@ public:
 		basic
 	)
 public:
+	template<
+		typename OtherStorage
+	>
+	basic &
+	operator=(
+		basic<
+			T,
+			N,
+			OtherStorage
+		> const &
+	);
 
 // \cond
 #define FCPPT_MATH_DIM_BASIC_DECLARE_OPERATOR(op)\

@@ -33,6 +33,46 @@ template<
 	typename N,
 	typename S
 >
+fcppt::math::dim::basic<T, N, S>::basic(
+	storage_type const &storage
+)
+:
+	storage(storage)
+{}
+
+template<
+	typename T,
+	typename N,
+	typename S
+>
+template<
+	typename OtherStorage
+>
+fcppt::math::dim::basic<T, N, S>::basic(
+	basic<
+		T,
+		N,
+		OtherStorage
+	> const &other_
+)
+{
+	math::detail::initial_size(
+		storage,
+		other_.size()
+	);
+
+	std::copy(
+		other_.begin(),
+		other_.end(),
+		begin()
+	);
+}
+
+template<
+	typename T,
+	typename N,
+	typename S
+>
 template<
 	typename In
 >
@@ -71,6 +111,35 @@ FCPPT_MATH_DETAIL_MAKE_VARIADIC_CONSTRUCTOR(
 	FCPPT_MATH_DIM_MAX_CTOR_PARAMS,
 	(5, (template<typename T, typename N, typename S> fcppt::math::dim::basic<T, N, S>::basic))
 )
+
+template<
+	typename T,
+	typename N,
+	typename S
+>
+template<
+	typename OtherStorage
+>
+fcppt::math::dim::basic<T, N, S> &
+fcppt::math::dim::basic<T, N, S>::operator=(
+	basic<
+		T,
+		N,
+		OtherStorage
+	> const &other
+)
+{
+	if(
+		this != &other
+	)
+		std::copy(
+			other.begin(),
+			other.end(),
+			begin()
+		);
+
+	return *this;
+}
 
 // \cond
 #define FCPPT_MATH_DIM_BASIC_DEFINE_OPERATOR(\

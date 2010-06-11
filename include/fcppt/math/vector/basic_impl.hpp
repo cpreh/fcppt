@@ -56,6 +56,11 @@ fcppt::math::vector::basic<T, N, S>::basic(
 	> const &other_
 )
 {
+	math::detail::initial_size(
+		storage,
+		other_.size()
+	);
+
 	std::copy(
 		other_.begin(),
 		other_.end(),

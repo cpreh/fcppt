@@ -32,7 +32,7 @@ structure_cast(
 		typename T::value_type
 	> op_type;
 
-	op_type const op = op_type();
+	op_type const op = {};
 
 	BOOST_STATIC_ASSERT((
 		boost::is_same<
