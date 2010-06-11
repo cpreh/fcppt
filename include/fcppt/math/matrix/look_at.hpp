@@ -45,7 +45,7 @@ typename boost::enable_if<
 			S
 		>,
 		3
-	>
+	>,
 	typename static_<
 		T,
 		4,
