@@ -32,7 +32,8 @@ template<
 	typename Dest,
 	typename T,
 	typename N,
-	typename S
+	typename S1,
+	typename S2
 >
 typename boost::enable_if<
 	boost::mpl::and_<
@@ -47,8 +48,8 @@ typename boost::enable_if<
 	optional<Dest>
 >::type
 angle_between(
-	basic<T, N, S> const &from,
-	basic<T, N, S> const &to
+	basic<T, N, S1> const &from,
+	basic<T, N, S2> const &to
 )
 {
 	return atan2(

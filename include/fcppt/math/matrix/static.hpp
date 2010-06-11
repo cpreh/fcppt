@@ -8,7 +8,7 @@
 #define FCPPT_MATH_MATRIX_STATIC_HPP_INCLUDED
 
 #include <fcppt/math/matrix/basic_fwd.hpp>
-#include <fcppt/math/detail/static_storage.hpp>
+#include <fcppt/math/matrix/detail/static_storage.hpp>
 #include <fcppt/math/size_type.hpp>
 #include <fcppt/restrict_typedef_struct.hpp>
 #include <boost/mpl/integral_c.hpp>
@@ -38,9 +38,10 @@ struct static_
 			size_type,
 			M
 		>,
-		typename math::detail::static_storage<
+		typename matrix::detail::static_storage<
 			T,
-			N * M
+			N,
+			M
 		>::type
 	> type;
 

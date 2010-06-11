@@ -25,23 +25,27 @@ template<
 	typename M,
 	typename S
 >
-void resize(
+void
+resize(
 	Dim const &,
 	dim_storage<
 		N,
 		M
 	> &,
-	S const &)
+	S const &
+)
 {}
 
 template<
 	typename Dim,
 	typename S
 >
-void resize(
+void
+resize(
 	Dim const &d,
 	dynamic_dim &dim,
-	S &store)
+	S &store
+)
 {
 	dim.columns(d.w());
 	dim.rows(d.h());
