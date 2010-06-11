@@ -9,7 +9,9 @@
 
 #include <fcppt/math/matrix/determinant.hpp>
 #include <fcppt/math/matrix/adjugate.hpp>
+#include <fcppt/math/detail/is_static_size.hpp>
 #include <fcppt/math/inverse.hpp>
+#include <boost/utility/enable_if.hpp>
 
 namespace fcppt
 {
@@ -25,15 +27,25 @@ template
 	typename S
 >
 typename 
-static_<T,N::value,N::value>::type const
+boost::enable_if<
+	math::detail::is_static_size<
+		N
+	>,
+	typename static_<
+		T,
+		N::value,
+		N::value
+	>::type const
+>::type
 inverse(
-	basic<T,N,N,S> const &t)
+	basic<T,N,N,S> const &t
+)
 {
 	return 
 		fcppt::math::inverse(
-			determinant(
+			matrix::determinant(
 				t)) * 
-		adjugate(
+		matrix::adjugate(
 			t);
 }
 }

@@ -17,6 +17,7 @@
 #include <fcppt/math/vector/cross.hpp>
 #include <fcppt/math/vector/normalize.hpp>
 #include <fcppt/math/vector/static.hpp>
+#include <fcppt/math/vector/has_dim.hpp>
 
 namespace fcppt
 {
@@ -36,7 +37,21 @@ template<
 	typename N,
 	typename S
 >
-typename static_<T, 4, 4>::type const
+typename boost::enable_if<
+	math::vector::has_dim<
+		vector::basic<
+			T,
+			N,
+			S
+		>,
+		3
+	>
+	typename static_<
+		T,
+		4,
+		4
+	>::type const
+>::type
 look_at(
 	vector::basic<
 		T,
@@ -81,22 +96,22 @@ look_at(
 			)
 		);
 
-	return typename static_<
-		T,
-		4,
-		4
-	>::type(
-		s.x(), u.x(), -f.x(), 0,
-		s.y(), u.y(), -f.y(), 0,
-		s.z(), u.z(), -f.z(), 0,
-		0, 0, 0, 1
-	)
-	* translation(
-		-eye.x(),
-		-eye.y(),
-		-eye.z()
-	);
-
+	return
+		typename static_<
+			T,
+			4,
+			4
+		>::type(
+			s.x(), u.x(), -f.x(), 0,
+			s.y(), u.y(), -f.y(), 0,
+			s.z(), u.z(), -f.z(), 0,
+			0, 0, 0, 1
+		)
+		* translation(
+			-eye.x(),
+			-eye.y(),
+			-eye.z()
+		);
 }
 
 }
