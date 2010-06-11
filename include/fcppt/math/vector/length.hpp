@@ -38,11 +38,12 @@ length(
 	basic<T, N, S> const &v
 )
 {
-	return std::sqrt(
-		length_square(
-			v
-		)
-	);
+	return
+		std::sqrt(
+			length_square(
+				v
+			)
+		);
 }
 
 /// Calculates the length of a vector
@@ -65,13 +66,14 @@ length(
 	basic<T, N, S> const &v
 )
 {
-	return std::sqrt(
-		static_cast<Dest>(
-			length_square(
-				v
+	return
+		std::sqrt(
+			static_cast<Dest>(
+				length_square(
+					v
+				)
 			)
-		)
-	);
+		);
 }
 
 }

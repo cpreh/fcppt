@@ -39,7 +39,8 @@ boost::enable_if
 	T
 >::type
 determinant(
-	basic<T,N,N,S> const &t)
+	basic<T,N,N,S> const &t
+)
 {
 	return t[0][0];
 }
@@ -63,7 +64,8 @@ boost::disable_if
 	T
 >::type
 determinant(
-	basic<T,N,N,S> const &t)
+	basic<T,N,N,S> const &t
+)
 {
 	T sum = fcppt::math::null<T>();
 

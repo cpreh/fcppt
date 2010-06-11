@@ -21,6 +21,7 @@
 #include <fcppt/math/vector/length.hpp>
 #include <fcppt/math/vector/make.hpp>
 #include <fcppt/math/vector/narrow_cast.hpp>
+#include <fcppt/math/vector/normal_storage.hpp>
 #include <fcppt/math/vector/normalize.hpp>
 #include <fcppt/math/vector/output.hpp>
 #include <fcppt/math/vector/place.hpp>

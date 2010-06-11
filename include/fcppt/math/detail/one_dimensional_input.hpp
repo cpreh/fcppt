@@ -37,6 +37,10 @@ one_dimensional_input(
 
 	for(typename T::size_type i = 0; i < v.size() - 1; ++i)
 	{
+		v.resize(
+			v.size() + 1
+		);
+
 		s >> v[i];
 		s >> c;
 		if(c != s.widen(','))
@@ -45,6 +49,10 @@ one_dimensional_input(
 			return s;
 		}
 	}
+
+	v.resize(
+		v.size() + 1
+	);
 
 	s >> v.back();
 

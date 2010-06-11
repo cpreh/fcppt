@@ -9,6 +9,7 @@
 
 #include <fcppt/math/vector/basic_decl.hpp>
 #include <fcppt/math/vector/max_ctor_params.hpp>
+#include <fcppt/math/vector/normal_storage.hpp>
 #include <fcppt/math/detail/array_adapter_impl.hpp>
 #include <fcppt/math/detail/make_op_def.hpp>
 #include <fcppt/math/detail/storage_data.hpp>
@@ -264,7 +265,14 @@ template<
 fcppt::math::vector::basic<T, N, S> const
 fcppt::math::vector::basic<T, N, S>::null()
 {
-	basic ret;
+	basic<
+		T,
+		N,
+		typename normal_storage<
+			T,
+			N
+		>::type
+	> ret;
 
 	for(
 		size_type i = 0;

@@ -52,16 +52,17 @@ angle_between(
 	basic<T, N, S2> const &to
 )
 {
-	return atan2(
-		structure_cast<
-			typename static_<
-				Dest,
-				N::value
-			>::type
-		>(
-			to - from
-		)
-	);
+	return
+		atan2(
+			structure_cast<
+				typename static_<
+					Dest,
+					N::value
+				>::type
+			>(
+				to - from
+			)
+		);
 }
 
 }
