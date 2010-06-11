@@ -45,6 +45,18 @@ template<
 	typename N,
 	typename S
 >
+fcppt::math::vector::basic<T, N, S>::basic(
+	basic const &other_
+)
+:
+	storage(other_.storage)
+{}
+
+template<
+	typename T,
+	typename N,
+	typename S
+>
 template<
 	typename OtherStorage
 >

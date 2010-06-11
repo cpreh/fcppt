@@ -76,11 +76,11 @@ structure_cast(
 		T(
 			src.dimension(),
 			boost::make_transform_iterator(
-				u.begin(),
+				src.begin(),
 				op
 			),
 			boost::make_transform_iterator(
-				u.end(),
+				src.end(),
 				op
 			)
 		);

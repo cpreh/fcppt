@@ -52,6 +52,10 @@ public:
 		storage_type const &
 	);
 
+	basic(
+		basic const &
+	);
+
 	template<
 		typename OtherStorage
 	>

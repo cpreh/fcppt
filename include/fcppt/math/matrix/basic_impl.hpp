@@ -65,6 +65,19 @@ template<
 	typename M,
 	typename S
 >
+fcppt::math::matrix::basic<T, N, M, S>::basic(
+	basic const &other_
+)
+:
+	storage(other_.storage)
+{}
+
+template<
+	typename T,
+	typename N,
+	typename M,
+	typename S
+>
 template<
 	typename OtherStorage
 >
@@ -85,7 +98,7 @@ fcppt::math::matrix::basic<T, N, M, S>::basic(
 	std::copy(
 		other_.begin(),
 		other_.end(),
-		begin()
+		data()
 	);
 }
 
@@ -328,9 +341,10 @@ template<
 typename fcppt::math::matrix::basic<T, N, M, S>::pointer
 fcppt::math::matrix::basic<T, N, M, S>::data()
 {
-	return math::detail::storage_data(
-		storage
-	);
+	return
+		math::detail::storage_data(
+			storage
+		);
 }
 
 template<
