@@ -379,11 +379,12 @@ template<
 typename fcppt::math::matrix::basic<T, N, M, S>::const_pointer
 fcppt::math::matrix::basic<T, N, M, S>::data() const
 {
-	return const_cast<
-		basic &
-	>(
-		*this
-	).data();
+	return
+		const_cast<
+			basic &
+		>(
+			*this
+		).data();
 }
 
 template<
@@ -395,13 +396,14 @@ template<
 typename fcppt::math::matrix::basic<T, N, M, S>::size_type
 fcppt::math::matrix::basic<T, N, M, S>::size() const
 {
-	return static_cast<
-		size_type
-	>(
-		math::detail::storage_dim(
-			storage
-		)
-	);
+	return
+		static_cast<
+			size_type
+		>(
+			math::detail::storage_dim(
+				storage
+			)
+		);
 }
 template<
 	typename T,
@@ -516,6 +518,5 @@ fcppt::math::matrix::swap(
 {
 	return a.swap(b);
 }
-
 
 #endif

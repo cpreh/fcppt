@@ -6,6 +6,8 @@
 
 #include <fcppt/math/vector/vector.hpp>
 #include <fcppt/math/pi.hpp>
+#include <fcppt/math/size_type.hpp>
+#include <boost/mpl/integral_c.hpp>
 #include <boost/test/unit_test.hpp>
 #include <algorithm>
 
@@ -122,5 +124,80 @@ BOOST_AUTO_TEST_CASE(vector_arithmetic)
 
 	BOOST_REQUIRE(
 		vec == ui2_vec(1, 2)
+	);
+}
+
+namespace
+{
+
+template<
+	typename T
+>
+class view_storage
+{
+public:
+	typedef T value_type;
+	typedef fcppt::math::size_type size_type;
+	typedef value_type *pointer;
+
+	explicit view_storage(
+		pointer const data_,
+		size_type const size_
+	)
+	:
+		data_(data_),
+		size_(size_)
+	{}
+
+	pointer
+	data() const
+	{
+		return data_;
+	}
+
+	size_type
+	size() const
+	{
+		return size_;
+	}
+private:
+	pointer data_;
+	size_type size_;
+};
+
+}
+
+BOOST_AUTO_TEST_CASE(vector_construct)
+{
+	typedef view_storage<
+		unsigned
+	> unsigned_view_storage;
+
+	typedef fcppt::math::vector::basic<
+		unsigned,
+		boost::mpl::integral_c<
+			fcppt::math::size_type,
+			2
+		>,
+		view_storage<
+			unsigned
+		>
+	> view_vector;
+
+	unsigned data[] = { 1, 2 };
+
+	view_vector const view(
+		unsigned_view_storage(
+			data,
+			sizeof(data) / sizeof(unsigned)
+		)
+	);
+
+	ui2_vec const vec(
+		view
+	);
+
+	BOOST_REQUIRE(
+		vec == view
 	);
 }

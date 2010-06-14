@@ -259,9 +259,10 @@ template<
 typename fcppt::math::vector::basic<T, N, S>::pointer
 fcppt::math::vector::basic<T, N, S>::data()
 {
-	return math::detail::storage_data(
-		storage
-	);
+	return
+		math::detail::storage_data(
+			storage
+		);
 }
 
 template<
@@ -272,9 +273,10 @@ template<
 typename fcppt::math::vector::basic<T, N, S>::const_pointer
 fcppt::math::vector::basic<T, N, S>::data() const
 {
-	return math::detail::storage_data(
-		storage
-	);
+	return
+		math::detail::storage_data(
+			storage
+		);
 }
 
 template<
