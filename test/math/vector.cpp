@@ -9,13 +9,34 @@
 #include <boost/test/unit_test.hpp>
 #include <algorithm>
 
+namespace
+{
+
+typedef fcppt::math::vector::static_<
+	unsigned,
+	2
+>::type ui2_vec;
+
+}
+
+BOOST_AUTO_TEST_CASE(vector_compare)
+{
+	ui2_vec const
+		vec1(1, 2),
+		vec2(1, 2),
+		vec3(2, 2);
+	
+	BOOST_CHECK(
+		vec1 == vec2
+	);
+
+	BOOST_CHECK(
+		vec2 != vec3
+	);
+}
+
 BOOST_AUTO_TEST_CASE(vector_swap)
 {
-	typedef fcppt::math::vector::static_<
-		unsigned,
-		2
-	>::type ui2_vec;
-
 	ui2_vec vec1(
 		1u,
 		2u
@@ -70,5 +91,36 @@ BOOST_AUTO_TEST_CASE(vector_unit_circle)
 			-1.f,
 			0.f
 		)
+	);
+}
+
+BOOST_AUTO_TEST_CASE(vector_null)
+{
+	BOOST_REQUIRE(
+		ui2_vec::null()
+		== ui2_vec(0, 0)
+	);
+}
+
+BOOST_AUTO_TEST_CASE(vector_arithmetic)
+{
+	ui2_vec vec(0, 0);
+
+	vec += ui2_vec(1, 2);
+
+	BOOST_REQUIRE(
+		vec == ui2_vec(1, 2)
+	);
+
+	vec *= 2;
+
+	BOOST_REQUIRE(
+		vec == ui2_vec(2, 4)
+	);
+
+	vec /= 2;
+
+	BOOST_REQUIRE(
+		vec == ui2_vec(1, 2)
 	);
 }
