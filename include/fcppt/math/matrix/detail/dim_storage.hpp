@@ -27,17 +27,22 @@ template<
 >
 class dim_storage
 {
-public:
+protected:
 	typedef typename N::value_type size_type;
+
+	typedef math::matrix::dim_type dim_type;
 
 	explicit dim_storage();
 
+	explicit dim_storage(
+		dim_type const &
+	);
+public:
 	size_type
 	columns() const;
 
 	size_type
 	rows() const;
-
 protected:
 	void
 	swap(
@@ -51,7 +56,7 @@ class dim_storage<
 	math::detail::dynamic_size
 >
 {
-public:
+protected:
 	typedef math::matrix::dim_type dim_type;
 
 	typedef math::detail::dynamic_size::value_type size_type;
@@ -70,7 +75,7 @@ public:
 	);
 
 	~dim_storage();
-
+public:
 	size_type
 	columns() const;
 

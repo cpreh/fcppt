@@ -21,6 +21,15 @@ template<
 	typename N,
 	typename M
 >
+fcppt::math::matrix::detail::dim_storage<N, M>::dim_storage(
+	dim_type const &
+)
+{}
+
+template<
+	typename N,
+	typename M
+>
 typename fcppt::math::matrix::detail::dim_storage<N, M>::size_type
 fcppt::math::matrix::detail::dim_storage<N, M>::columns() const
 {
