@@ -9,12 +9,12 @@
 
 #include <fcppt/math/matrix/basic_fwd.hpp>
 #include <fcppt/math/matrix/max_ctor_params.hpp>
+#include <fcppt/math/matrix/dim_type.hpp>
 #include <fcppt/math/matrix/detail/dim_storage.hpp>
 #include <fcppt/math/detail/view_storage.hpp>
 #include <fcppt/math/detail/make_op_decl.hpp>
 #include <fcppt/math/detail/make_variadic_constructor_decl.hpp>
 #include <fcppt/math/vector/basic_decl.hpp>
-#include <fcppt/math/dim/static.hpp>
 #include <fcppt/type_traits/is_iterator.hpp>
 #include <boost/mpl/times.hpp>
 #include <boost/type_traits/is_same.hpp>
@@ -93,7 +93,7 @@ public:
 
 	typedef std::reverse_iterator<const_iterator> const_reverse_iterator;
 
-	typedef typename math::dim::static_<size_type, 2>::type dim;
+	typedef matrix::dim_type dim;
 
 	basic();
 
@@ -241,11 +241,6 @@ FCPPT_MATH_DETAIL_MAKE_OP_DECL(\
 
 	static basic const
 	identity();
-
-	void
-	resize(
-		dim const &
-	);
 
 	void
 	swap(

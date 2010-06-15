@@ -7,7 +7,7 @@
 #ifndef FCPPT_MATH_MATRIX_BASIC_IMPL_HPP_INCLUDED
 #define FCPPT_MATH_MATRIX_BASIC_IMPL_HPP_INCLUDED
 
-#include <fcppt/math/matrix/detail/resize.hpp>
+#include <fcppt/math/matrix/detail/dim_storage_impl.hpp>
 #include <fcppt/math/matrix/basic_decl.hpp>
 #include <fcppt/math/compare.hpp>
 #include <fcppt/math/vector/basic_impl.hpp>
@@ -32,6 +32,8 @@ template<
 	typename S
 >
 fcppt::math::matrix::basic<T, N, M, S>::basic()
+:
+	dim_base()
 {}
 
 template<
@@ -43,9 +45,11 @@ template<
 fcppt::math::matrix::basic<T, N, M, S>::basic(
 	dim const &dim_
 )
-{
-	resize(dim_);
-}
+:
+	dim_base(
+		dim_
+	)
+{}
 
 template<
 	typename T,
@@ -57,6 +61,7 @@ fcppt::math::matrix::basic<T, N, M, S>::basic(
 	storage_type const &storage
 )
 :
+	dim_base(),
 	storage(storage)
 {}
 
@@ -70,6 +75,9 @@ fcppt::math::matrix::basic<T, N, M, S>::basic(
 	basic const &other_
 )
 :
+	dim_base(
+		other_
+	),
 	storage(other_.storage)
 {}
 
@@ -90,6 +98,10 @@ fcppt::math::matrix::basic<T, N, M, S>::basic(
 		OtherStorage
 	> const &other_
 )
+:
+	dim_base(
+		other_
+	)
 {
 	math::detail::initial_size(
 		storage,
@@ -121,6 +133,8 @@ fcppt::math::matrix::basic<T, N, M, S>::basic(
 		In
 	>::type const end
 )
+:
+	dim_base()
 {
 	std::copy(
 		beg,
@@ -139,7 +153,7 @@ template<
 	typename In
 >
 fcppt::math::matrix::basic<T, N, M, S>::basic(
-	dim const &,
+	dim const &dim_,
 	In const beg,
 	typename boost::enable_if<
 		type_traits::is_iterator<
@@ -148,6 +162,10 @@ fcppt::math::matrix::basic<T, N, M, S>::basic(
 		In
 	>::type const end
 )
+:
+	dim_base(
+		dim_
+	)
 {
 	math::detail::initial_size(
 		storage,
@@ -174,20 +192,23 @@ template<
         typename Container
 >
 fcppt::math::matrix::basic<T, N, M, S>::basic(
-        dim const &d,
-        Container const &c
+        dim const &dim_,
+        Container const &container_
 )
+:
+	dim_base(
+		dim_
+	)
 {
-        resize(
-		d
+	math::detail::initial_size(
+		storage,
+		container_.size()
 	);
 
-        FCPPT_ASSERT(c.size() == size());
-
         std::copy(
-                c.begin(),
-                c.end(),
-                storage.begin()
+                container_.begin(),
+                container_.end(),
+		begin()
         );
 }
 
@@ -324,14 +345,15 @@ fcppt::math::matrix::basic<T, N, M, S>::operator[](
 	size_type const j
 )
 {
-	return reference(
-		typename reference::storage_type(
-			data(),
-			j,
-			columns(),
-			rows()
-		)
-	);
+	return
+		reference(
+			typename reference::storage_type(
+				data(),
+				j,
+				columns(),
+				rows()
+			)
+		);
 }
 
 template<
@@ -345,14 +367,15 @@ fcppt::math::matrix::basic<T, N, M, S>::operator[](
 	size_type const j
 ) const
 {
-	return const_reference(
-		typename const_reference::storage_type(
-			data(),
-			j,
-			columns(),
-			rows()
-		)
-	);
+	return
+		const_reference(
+			typename const_reference::storage_type(
+				data(),
+				j,
+				columns(),
+				rows()
+			)
+		);
 }
 
 template<
@@ -470,26 +493,6 @@ template<
 	typename S
 >
 void
-fcppt::math::matrix::basic<T, N, M, S>::resize(
-	dim const &d
-)
-{
-	detail::resize(
-		d,
-		static_cast<
-			dim_base &
-		>(*this),
-		storage
-	);
-}
-
-template<
-	typename T,
-	typename N,
-	typename M,
-	typename S
->
-void
 fcppt::math::matrix::basic<T, N, M, S>::swap(
 	basic &other_
 )
@@ -499,7 +502,7 @@ fcppt::math::matrix::basic<T, N, M, S>::swap(
 		other_.storage
 	);
 
-	swap_base(
+	dim_base::swap(
 		other_
 	);
 }
