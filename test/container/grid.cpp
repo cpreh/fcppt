@@ -5,6 +5,7 @@
 
 
 #include <fcppt/container/grid/object_impl.hpp>
+#include <fcppt/math/dim/comparison.hpp>
 #include <boost/test/unit_test.hpp>
 #include <boost/next_prior.hpp>
 #include <boost/foreach.hpp>
