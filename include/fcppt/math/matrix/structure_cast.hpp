@@ -8,7 +8,7 @@
 #define FCPPT_MATH_MATRIX_STRUCTURE_CAST_HPP_INCLUDED
 
 #include <fcppt/math/matrix/basic_impl.hpp>
-#include <fcppt/math/detail/structure_cast.hpp>
+#include <fcppt/math/matrix/detail/structure_cast.hpp>
 
 namespace fcppt
 {
@@ -30,12 +30,12 @@ structure_cast(
 	basic<T, N, M, S> const &src
 )
 {
-	return math::detail::structure_cast<
-		Dest
-	>(
-		src
-	);
-
+	return
+		matrix::detail::structure_cast<
+			Dest
+		>(
+			src
+		);
 }
 
 }

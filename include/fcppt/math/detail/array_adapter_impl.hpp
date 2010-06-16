@@ -8,17 +8,18 @@
 #define FCPPT_MATH_DETAIL_ARRAY_ADAPTER_IMPL_HPP_INCLUDED
 
 #include <fcppt/math/detail/array_adapter.hpp>
-#include <fcppt/tr1/functional.hpp>
-#include <fcppt/algorithm/compare_with.hpp>
-#include <fcppt/math/compare.hpp>
 #include <fcppt/assert.hpp>
 #include <boost/next_prior.hpp>
 #include <algorithm>
 
-#define FCPPT_MATH_DETAIL_ARRAY_ADAPTER_IMPL \
-FCPPT_MATH_DETAIL_TEMPLATE_PRE \
-typename FCPPT_MATH_DETAIL_DEF_PRE ::reference \
-FCPPT_MATH_DETAIL_DEF_PRE ::at(\
+#define FCPPT_MATH_DETAIL_ARRAY_ADAPTER_IMPL(\
+	class_arity,\
+	template_pre,\
+	def_pre\
+)\
+BOOST_PP_TUPLE_REM(class_arity)template_pre \
+typename BOOST_PP_TUPLE_REM(class_arity)def_pre ::reference \
+BOOST_PP_TUPLE_REM(class_arity)def_pre ::at(\
 	size_type const index\
 )\
 {\
@@ -26,9 +27,9 @@ FCPPT_MATH_DETAIL_DEF_PRE ::at(\
 	return (*this)[index];\
 }\
 \
-FCPPT_MATH_DETAIL_TEMPLATE_PRE \
-typename FCPPT_MATH_DETAIL_DEF_PRE ::const_reference \
-FCPPT_MATH_DETAIL_DEF_PRE ::at(\
+BOOST_PP_TUPLE_REM(class_arity)template_pre \
+typename BOOST_PP_TUPLE_REM(class_arity)def_pre ::const_reference \
+BOOST_PP_TUPLE_REM(class_arity)def_pre ::at(\
 	size_type const index\
 ) const\
 {\
@@ -36,138 +37,109 @@ FCPPT_MATH_DETAIL_DEF_PRE ::at(\
 	return (*this)[index];\
 }\
 \
-FCPPT_MATH_DETAIL_TEMPLATE_PRE \
-typename FCPPT_MATH_DETAIL_DEF_PRE ::pointer \
-FCPPT_MATH_DETAIL_DEF_PRE ::data_end() \
+BOOST_PP_TUPLE_REM(class_arity)template_pre \
+typename BOOST_PP_TUPLE_REM(class_arity)def_pre ::pointer \
+BOOST_PP_TUPLE_REM(class_arity)def_pre ::data_end() \
 {\
 	return data() + size();\
 }\
 \
-FCPPT_MATH_DETAIL_TEMPLATE_PRE \
-typename FCPPT_MATH_DETAIL_DEF_PRE ::const_pointer \
-FCPPT_MATH_DETAIL_DEF_PRE ::data_end() const\
+BOOST_PP_TUPLE_REM(class_arity)template_pre \
+typename BOOST_PP_TUPLE_REM(class_arity)def_pre ::const_pointer \
+BOOST_PP_TUPLE_REM(class_arity)def_pre ::data_end() const\
 {\
 	return data() + size();\
 }\
 \
-FCPPT_MATH_DETAIL_TEMPLATE_PRE \
-typename FCPPT_MATH_DETAIL_DEF_PRE ::iterator \
-FCPPT_MATH_DETAIL_DEF_PRE ::begin() \
+BOOST_PP_TUPLE_REM(class_arity)template_pre \
+typename BOOST_PP_TUPLE_REM(class_arity)def_pre ::iterator \
+BOOST_PP_TUPLE_REM(class_arity)def_pre ::begin() \
 {\
 	return static_cast<iterator>(data());\
 }\
 \
-FCPPT_MATH_DETAIL_TEMPLATE_PRE \
-typename FCPPT_MATH_DETAIL_DEF_PRE ::const_iterator \
-FCPPT_MATH_DETAIL_DEF_PRE ::begin() const\
+BOOST_PP_TUPLE_REM(class_arity)template_pre \
+typename BOOST_PP_TUPLE_REM(class_arity)def_pre ::const_iterator \
+BOOST_PP_TUPLE_REM(class_arity)def_pre ::begin() const\
 {\
 	return static_cast<const_iterator>(data());\
 }\
 \
-FCPPT_MATH_DETAIL_TEMPLATE_PRE \
-typename FCPPT_MATH_DETAIL_DEF_PRE ::iterator \
-FCPPT_MATH_DETAIL_DEF_PRE ::end()\
+BOOST_PP_TUPLE_REM(class_arity)template_pre \
+typename BOOST_PP_TUPLE_REM(class_arity)def_pre ::iterator \
+BOOST_PP_TUPLE_REM(class_arity)def_pre ::end()\
 {\
 	return static_cast<iterator>(data_end());\
 }\
 \
-FCPPT_MATH_DETAIL_TEMPLATE_PRE \
-typename FCPPT_MATH_DETAIL_DEF_PRE ::const_iterator \
-FCPPT_MATH_DETAIL_DEF_PRE ::end() const\
+BOOST_PP_TUPLE_REM(class_arity)template_pre \
+typename BOOST_PP_TUPLE_REM(class_arity)def_pre ::const_iterator \
+BOOST_PP_TUPLE_REM(class_arity)def_pre ::end() const\
 {\
 	return static_cast<const_iterator>(data_end());\
 }\
 \
-FCPPT_MATH_DETAIL_TEMPLATE_PRE \
-typename FCPPT_MATH_DETAIL_DEF_PRE ::reverse_iterator \
-FCPPT_MATH_DETAIL_DEF_PRE ::rbegin() \
+BOOST_PP_TUPLE_REM(class_arity)template_pre \
+typename BOOST_PP_TUPLE_REM(class_arity)def_pre ::reverse_iterator \
+BOOST_PP_TUPLE_REM(class_arity)def_pre ::rbegin() \
 {\
 	return reverse_iterator(end());\
 }\
 \
-FCPPT_MATH_DETAIL_TEMPLATE_PRE \
-typename FCPPT_MATH_DETAIL_DEF_PRE ::const_reverse_iterator \
-FCPPT_MATH_DETAIL_DEF_PRE ::rbegin() const\
+BOOST_PP_TUPLE_REM(class_arity)template_pre \
+typename BOOST_PP_TUPLE_REM(class_arity)def_pre ::const_reverse_iterator \
+BOOST_PP_TUPLE_REM(class_arity)def_pre ::rbegin() const\
 {\
 	return const_reverse_iterator(end());\
 }\
 \
-FCPPT_MATH_DETAIL_TEMPLATE_PRE \
-typename FCPPT_MATH_DETAIL_DEF_PRE ::reverse_iterator \
-FCPPT_MATH_DETAIL_DEF_PRE ::rend() \
+BOOST_PP_TUPLE_REM(class_arity)template_pre \
+typename BOOST_PP_TUPLE_REM(class_arity)def_pre ::reverse_iterator \
+BOOST_PP_TUPLE_REM(class_arity)def_pre ::rend() \
 {\
 	return reverse_iterator(begin());\
 }\
 \
-FCPPT_MATH_DETAIL_TEMPLATE_PRE \
-typename FCPPT_MATH_DETAIL_DEF_PRE ::const_reverse_iterator \
-FCPPT_MATH_DETAIL_DEF_PRE ::rend() const\
+BOOST_PP_TUPLE_REM(class_arity)template_pre \
+typename BOOST_PP_TUPLE_REM(class_arity)def_pre ::const_reverse_iterator \
+BOOST_PP_TUPLE_REM(class_arity)def_pre ::rend() const\
 {\
 	return const_reverse_iterator(begin());\
 }\
 \
-FCPPT_MATH_DETAIL_TEMPLATE_PRE \
-typename FCPPT_MATH_DETAIL_DEF_PRE ::reference \
-FCPPT_MATH_DETAIL_DEF_PRE ::back()\
+BOOST_PP_TUPLE_REM(class_arity)template_pre \
+typename BOOST_PP_TUPLE_REM(class_arity)def_pre ::reference \
+BOOST_PP_TUPLE_REM(class_arity)def_pre ::back()\
 {\
 	return *boost::prior(end());\
 }\
 \
-FCPPT_MATH_DETAIL_TEMPLATE_PRE \
-typename FCPPT_MATH_DETAIL_DEF_PRE ::const_reference \
-FCPPT_MATH_DETAIL_DEF_PRE ::back() const\
+BOOST_PP_TUPLE_REM(class_arity)template_pre \
+typename BOOST_PP_TUPLE_REM(class_arity)def_pre ::const_reference \
+BOOST_PP_TUPLE_REM(class_arity)def_pre ::back() const\
 {\
 	return *boost::prior(end());\
 }\
 \
-FCPPT_MATH_DETAIL_TEMPLATE_PRE \
-typename FCPPT_MATH_DETAIL_DEF_PRE ::reference \
-FCPPT_MATH_DETAIL_DEF_PRE ::front()\
+BOOST_PP_TUPLE_REM(class_arity)template_pre \
+typename BOOST_PP_TUPLE_REM(class_arity)def_pre ::reference \
+BOOST_PP_TUPLE_REM(class_arity)def_pre ::front()\
 {\
 	return *begin();\
 }\
 \
-FCPPT_MATH_DETAIL_TEMPLATE_PRE \
-typename FCPPT_MATH_DETAIL_DEF_PRE ::const_reference \
-FCPPT_MATH_DETAIL_DEF_PRE ::front() const\
+BOOST_PP_TUPLE_REM(class_arity)template_pre \
+typename BOOST_PP_TUPLE_REM(class_arity)def_pre ::const_reference \
+BOOST_PP_TUPLE_REM(class_arity)def_pre ::front() const\
 {\
 	return *begin();\
 }\
 \
-FCPPT_MATH_DETAIL_TEMPLATE_PRE \
+BOOST_PP_TUPLE_REM(class_arity)template_pre \
 bool \
-FCPPT_MATH_DETAIL_DEF_PRE ::empty() const\
+BOOST_PP_TUPLE_REM(class_arity)def_pre ::empty() const\
 {\
-	return size() == 0u;\
-}\
-\
-FCPPT_MATH_DETAIL_TEMPLATE_PRE \
-bool \
-FCPPT_MATH_DETAIL_DEF_PRE ::operator==(\
-	FCPPT_MATH_DETAIL_DEF_PRE const &other_\
-) const\
-{\
-	return \
-		algorithm::compare_with(\
-			*this,\
-			other_,\
-			std::tr1::bind(\
-				compare<\
-					value_type\
-				>,\
-				std::tr1::placeholders::_1,\
-				std::tr1::placeholders::_2\
-			)\
-		);\
-}\
-\
-FCPPT_MATH_DETAIL_TEMPLATE_PRE \
-bool \
-FCPPT_MATH_DETAIL_DEF_PRE ::operator!=(\
-	FCPPT_MATH_DETAIL_DEF_PRE const &other_\
-) const\
-{\
-	return !(*this == other_);\
+	return begin() == end();\
 }
 
 #endif

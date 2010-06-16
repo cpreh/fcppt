@@ -9,6 +9,7 @@
 
 #include <fcppt/math/sphere/basic_decl.hpp>
 #include <fcppt/math/vector/basic_impl.hpp>
+#include <fcppt/math/vector/comparison.hpp>
 #include <fcppt/math/compare.hpp>
 #include <algorithm>
 

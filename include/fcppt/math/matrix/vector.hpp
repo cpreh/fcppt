@@ -9,6 +9,7 @@
 
 #include <fcppt/math/matrix/basic_impl.hpp>
 #include <fcppt/math/vector/basic_impl.hpp>
+#include <fcppt/math/vector/normal_storage.hpp>
 
 namespace fcppt
 {
@@ -31,7 +32,14 @@ operator *(
 	vector::basic<T, N, S2> const &v
 )
 {
-	typedef vector::basic<T, M, S2> result_type;
+	typedef vector::basic<
+		T,
+		M,
+		typename vector::normal_storage<
+			T,
+			M
+		>::type
+	> result_type;
 
 	result_type ret(
 		result_type::null()

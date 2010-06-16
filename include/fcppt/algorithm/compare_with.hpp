@@ -16,13 +16,14 @@ namespace algorithm
 
 /// Compares two sequences element by element, using @a function
 template<
-	typename Container,
+	typename Container1,
+	typename Container2,
 	typename Function
 >
 bool
 compare_with(
-	Container const &a,
-	Container const &b,
+	Container1 const &a,
+	Container2 const &b,
 	Function const &function
 )
 {

@@ -32,11 +32,12 @@ narrow_cast(
 	basic<T, N, S> const &src
 )
 {
-	return math::detail::narrow_cast<
-		Dest
-	>(
-		src
-	);
+	return
+		math::detail::narrow_cast<
+			Dest
+		>(
+			src
+		);
 }
 
 }

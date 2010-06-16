@@ -9,6 +9,7 @@
 #include <fcppt/math/quaternion/vector_rotation.hpp>
 #include <fcppt/math/vector/basic_impl.hpp>
 #include <fcppt/math/vector/static.hpp>
+#include <fcppt/math/vector/comparison.hpp>
 #include <fcppt/math/compare.hpp>
 #include <fcppt/math/pi.hpp>
 #include <boost/math/quaternion.hpp>

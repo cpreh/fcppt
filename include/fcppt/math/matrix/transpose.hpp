@@ -32,10 +32,7 @@ transpose(
 	typedef basic<T, M, N, S> ret_type;
 
 	ret_type ret(
-		typename ret_type::dim(
-			t.rows(),
-			t.columns()
-		)
+		t.dimension()
 	);
 
 	typedef typename ret_type::size_type size_type;

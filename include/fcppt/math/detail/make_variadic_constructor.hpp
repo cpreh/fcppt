@@ -10,64 +10,19 @@
 #include <fcppt/math/detail/initial_size.hpp>
 #include <fcppt/math/detail/dim_matches.hpp>
 #include <boost/static_assert.hpp>
-#include <fcppt/config.hpp>
-#ifndef FCPPT_HAVE_VARIADIC_TEMPLATES
 #include <boost/preprocessor/arithmetic/inc.hpp>
 #include <boost/preprocessor/repetition/enum_params.hpp>
 #include <boost/preprocessor/repetition/repeat.hpp>
-#endif
 
-#ifdef FCPPT_HAVE_VARIADIC_TEMPLATES
-#define FCPPT_MATH_DETAIL_MAKE_VARIADIC_CONSTRUCTOR(name) \
-	FCPPT_MATH_DETAIL_TEMPLATE_PRE \
-	template<\
-		typename... Args\
-	> \
-	FCPPT_MATH_DETAIL_DEF_PRE::name(\
-		Args... args\
-	) \
-	{ \
-		::fcppt::math::detail::initial_size(\
-			storage,\
-			sizeof...(args)); \
-		set_impl(0, args...); \
-	} \
-\
-	FCPPT_MATH_DETAIL_TEMPLATE_PRE \
-	template<\
-		typename... Args,\
-		typename Arg\
-	> \
-	void \
-	FCPPT_MATH_DETAIL_DEF_PRE::set_impl( \
-		size_type const i, \
-		Arg const &arg, \
-		Args... args\
-	) \
-	{ \
-		*(data() + i) = arg; \
-		set_impl(i + 1, args...); \
-	} \
-\
-	FCPPT_MATH_DETAIL_TEMPLATE_PRE \
-	template<\
-		typename Arg\
-	>\
-	void \
-	FCPPT_MATH_DETAIL_DEF_PRE::set_impl( \
-		size_type const i, \
-		Arg const &arg\
-	) \
-	{ \
-		*(data() + i) = arg; \
-	}
-#else
 #define FCPPT_MATH_DETAIL_MAKE_VARIADIC_CONSTRUCTOR_ASSIGN(z, n, text)\
 *(data() + n) = text##n;
 
-#define FCPPT_MATH_DETAIL_MAKE_VARIADIC_CONSTRUCTOR_IMPL(z, n, text)\
-FCPPT_MATH_DETAIL_TEMPLATE_PRE \
-FCPPT_MATH_DETAIL_DEF_PRE :: text(\
+#define FCPPT_MATH_DETAIL_MAKE_VARIADIC_CONSTRUCTOR_IMPL(\
+	z,\
+	n,\
+	text\
+)\
+BOOST_PP_TUPLE_REM_CTOR(BOOST_PP_TUPLE_ELEM(2, 0, text),BOOST_PP_TUPLE_ELEM(2, 1, text)) (\
 	BOOST_PP_ENUM_PARAMS(\
 		BOOST_PP_INC(n),\
 		T const& param\
@@ -94,14 +49,13 @@ FCPPT_MATH_DETAIL_DEF_PRE :: text(\
 }
 
 #define FCPPT_MATH_DETAIL_MAKE_VARIADIC_CONSTRUCTOR(\
-	name\
+	max_params,\
+	template_pre\
 )\
 BOOST_PP_REPEAT(\
-	FCPPT_MATH_DETAIL_MAKE_VARIADIC_CONSTRUCTOR_MAX_SIZE,\
+	max_params,\
 	FCPPT_MATH_DETAIL_MAKE_VARIADIC_CONSTRUCTOR_IMPL,\
-	name\
+	template_pre\
 )
-
-#endif
 
 #endif
