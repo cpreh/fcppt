@@ -4,19 +4,25 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_CONTAINER_FIELD_FWD_HPP_INCLUDED
-#define FCPPT_CONTAINER_FIELD_FWD_HPP_INCLUDED
+#ifndef FCPPT_CONTAINER_GRID_OBJECT_FWD_HPP_INCLUDED
+#define FCPPT_CONTAINER_GRID_OBJECT_FWD_HPP_INCLUDED
+
+#include <fcppt/container/grid/size_type.hpp>
 
 namespace fcppt
 {
 namespace container
 {
+namespace grid
+{
 
 template<
-	typename ArrayType
+	typename ArrayType,
+	size_type N
 >
-class field;
+class object;
 
+}
 }
 }
 

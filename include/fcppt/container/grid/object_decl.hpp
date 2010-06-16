@@ -4,54 +4,59 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_CONTAINER_FIELD_DECL_HPP_INCLUDED
-#define FCPPT_CONTAINER_FIELD_DECL_HPP_INCLUDED
+#ifndef FCPPT_CONTAINER_GRID_OBJECT_DECL_HPP_INCLUDED
+#define FCPPT_CONTAINER_GRID_OBJECT_DECL_HPP_INCLUDED
 
-#include <fcppt/container/field_fwd.hpp>
+#include <fcppt/container/grid/object_fwd.hpp>
+#include <fcppt/container/grid/size_type.hpp>
 #include <fcppt/math/vector/static.hpp>
 #include <fcppt/math/dim/static.hpp>
 #include <fcppt/math/dim/basic_decl.hpp>
 #include <iterator>
 #include <iosfwd>
 
-//[field_decl
+//[grid_decl
 namespace fcppt
 {
 namespace container
 {
+namespace grid
+{
 
-template<
-	typename ArrayType
+template
+<
+	typename ArrayType,
+	size_type N
 >
-class field
+class object
 {
 public:
-	typedef ArrayType                             array_type;
+	typedef ArrayType array_type;
 
-	typedef typename ArrayType::value_type        value_type;
-	typedef typename ArrayType::allocator_type    allocator_type;
-	typedef typename ArrayType::reference         reference;
-	typedef typename ArrayType::const_reference   const_reference;
-	typedef typename array_type::iterator         iterator;
-	typedef typename array_type::const_iterator   const_iterator;
-	typedef typename array_type::size_type        size_type;
-	typedef typename array_type::difference_type  difference_type;
-	typedef std::reverse_iterator<iterator>       reverse_iterator;
+	typedef typename ArrayType::value_type value_type;
+	typedef typename ArrayType::allocator_type allocator_type;
+	typedef typename ArrayType::reference reference;
+	typedef typename ArrayType::const_reference const_reference;
+	typedef typename array_type::iterator iterator;
+	typedef typename array_type::const_iterator const_iterator;
+	typedef typename array_type::size_type size_type;
+	typedef typename array_type::difference_type difference_type;
+	typedef std::reverse_iterator<iterator> reverse_iterator;
 	typedef std::reverse_iterator<const_iterator> const_reverse_iterator;
 
 	typedef value_type scalar;
-	typedef typename math::vector::static_<size_type,2>::type      vector;
-	typedef typename math::dim::static_<size_type,2>::type         dim;
+	typedef typename math::vector::static_<size_type,N>::type vector;
+	typedef typename math::dim::static_<size_type,N>::type dim;
 
-	explicit field(
-		allocator_type const &alloc = allocator_type()
+	explicit 
+	object(
+		allocator_type const &alloc = allocator_type());
+
+	object(
+		object const &r
 	);
 
-	field(
-		field const &r
-	);
-
-	explicit field(
+	explicit object(
 		dim const &,
 		value_type const & = value_type(),
 		allocator_type const & = allocator_type()
@@ -60,16 +65,17 @@ public:
 	template<
 		typename Iterator
 	>
-	field(
+	explicit
+	object(
 		dim const &,
 		Iterator begin,
 		Iterator end,
 		allocator_type const & = allocator_type()
 	);
 
-	field &
+	object &
 	operator=(
-		field const &
+		object const &
 	);
 
 	size_type
@@ -117,26 +123,11 @@ public:
 	const_reverse_iterator
 	crend() const;
 
-	vector const
-	position(
-		const_iterator it
-	) const;
-
-	iterator
-	position_it(
-		vector const &
-	);
-
-	const_iterator
-	position_it(
-		vector const &
-	) const;
-
 	allocator_type
 	get_allocator() const;
 
 	void
-	resize_canvas(
+	resize_plain(
 		dim const &,
 		const_reference = value_type()
 	);
@@ -146,16 +137,6 @@ public:
 		dim const &,
 		const_reference = value_type()
 	);
-
-	value_type &
-	pos_mod(
-		vector const &
-	);
-
-	value_type const &
-	pos_mod(
-		vector const &
-	) const;
 
 	value_type &
 	pos(
@@ -179,82 +160,76 @@ public:
 	const_reference
 	back() const;
 
-	value_type
-	x(
-		const_iterator
-	) const;
-
-	value_type
-	y(
-		const_iterator
-	) const;
-
-	vector const
-	pos(
-		const_iterator p
-	) const;
-
-	dim const
+	dim const &
 	dimension() const;
 
 	void
 	swap(
-		field &
+		object &
 	);
 //<-
 private:
+	void
+	copy_layer(
+		object &,
+		const_iterator,
+		const_iterator,
+		iterator,
+		size_type);
+
 	void
 	range_check(
 		vector const &
 	) const;
 
-	void
-	check_w() const;
-
 	dim dimension_;
-	array_type array;
+	array_type array_;
 //->
 };
 
-
 template<
-	typename ArrayType
+	typename ArrayType,
+	size_type N
 >
 void
 swap(
-	field<ArrayType> &,
-	field<ArrayType> &
-);
-
-template<
-	typename ArrayType
->
-bool
-operator==(
-	field<ArrayType> const &,
-	field<ArrayType> const &
-);
-
-template<
-	typename ArrayType
->
-bool
-operator!=(
-	field<ArrayType> const &l,
-	field<ArrayType> const &r
+	object<ArrayType,N> &,
+	object<ArrayType,N> &
 );
 
 template<
 	typename ArrayType,
+	size_type N
+>
+bool
+operator==(
+	object<ArrayType,N> const &,
+	object<ArrayType,N> const &
+);
+
+template<
+	typename ArrayType,
+	size_type N
+>
+bool
+operator!=(
+	object<ArrayType,N> const &l,
+	object<ArrayType,N> const &r
+);
+
+template<
+	typename ArrayType,
+	size_type N,
 	typename Ch,
 	typename Traits
 >
 std::basic_ostream<Ch, Traits> &
 operator<<(
 	std::basic_ostream<Ch, Traits> &,
-	field<ArrayType> const &
+	object<ArrayType,N> const &
 );
 
+}
 }
 }
 //]

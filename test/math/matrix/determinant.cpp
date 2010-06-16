@@ -8,7 +8,7 @@
 #include <fcppt/math/matrix/output.hpp>
 #include <boost/test/unit_test.hpp>
 
-BOOST_AUTO_TEST_CASE(delete_row_and_column_test)
+BOOST_AUTO_TEST_CASE(determinant)
 {
 	typedef 
 	fcppt::math::matrix::static_<
@@ -38,4 +38,8 @@ BOOST_AUTO_TEST_CASE(delete_row_and_column_test)
 			small_matrix_type(
 				-3,-5,
 				-1,-2)) == 1));
+
+	BOOST_CHECK(
+		fcppt::math::matrix::determinant(
+			large_matrix_type::identity()) == 1);
 }
