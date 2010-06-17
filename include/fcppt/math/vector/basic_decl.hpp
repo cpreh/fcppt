@@ -184,11 +184,6 @@ FCPPT_MATH_DETAIL_MAKE_OP_DECL(\
 	w() const;
 
 	void
-	resize(
-		size_type
-	);
-
-	void
 	swap(
 		basic &
 	);

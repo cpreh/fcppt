@@ -167,11 +167,6 @@ FCPPT_MATH_DETAIL_MAKE_OP_DECL(\
 	null();
 
 	void
-	resize(
-		size_type
-	);
-
-	void
 	swap(
 		basic &
 	);

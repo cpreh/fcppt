@@ -135,11 +135,9 @@ fcppt::math::vector::basic<T, N, S>::operator=(
 	basic const &other_
 )
 {
-	return
-		math::detail::assign(
-			*this,
-			other_
-		);
+	storage = other_.storage;
+
+	return *this;
 }
 
 template<
@@ -159,6 +157,11 @@ fcppt::math::vector::basic<T, N, S>::operator=(
 	> const &other_
 )
 {
+	math::detail::initial_size(
+		storage,
+		other_.size()
+	);
+
 	return
 		math::detail::assign(
 			*this,
@@ -409,21 +412,6 @@ typename fcppt::math::vector::basic<T, N, S>::const_reference
 fcppt::math::vector::basic<T, N, S>::w() const
 {
 	return math::detail::checked_access<3>(*this);
-}
-
-template<
-	typename T,
-	typename N,
-	typename S
->
-void
-fcppt::math::vector::basic<T, N, S>::resize(
-	size_type const sz
-)
-{
-	storage.resize(
-		sz
-	);
 }
 
 template<
