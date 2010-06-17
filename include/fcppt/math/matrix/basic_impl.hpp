@@ -234,11 +234,9 @@ fcppt::math::matrix::basic<T, N, M, S>::operator=(
 	basic const &other_
 )
 {
-	return
-		math::detail::assign(
-			*this,
-			other_
-		);
+	storage = other_.storage;
+
+	return *this;
 }
 
 template<
@@ -260,6 +258,11 @@ fcppt::math::matrix::basic<T, N, M, S>::operator=(
 	> const &other_
 )
 {
+	math::detail::initial_size(
+		storage,
+		other_.size()
+	);
+
 	return
 		math::detail::assign(
 			*this,

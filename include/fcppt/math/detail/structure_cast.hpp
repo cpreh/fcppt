@@ -10,6 +10,7 @@
 #include <fcppt/math/detail/structure_cast_fun.hpp>
 #include <boost/iterator/transform_iterator.hpp>
 #include <boost/type_traits/is_same.hpp>
+#include <boost/utility/enable_if.hpp>
 #include <boost/static_assert.hpp>
 
 namespace fcppt
@@ -20,21 +21,34 @@ namespace detail
 {
 
 template<
-	typename T
+	typename T,
+	typename U
 >
-T const
+typename boost::enable_if<
+	boost::is_same<
+		T,
+		U
+	>,
+	T
+>::type const
 structure_cast(
-	T const &t
+	U const &u
 )
 {
-	return t;
+	return u;
 }
 
 template<
 	typename T,
 	typename U
 >
-T const
+typename boost::disable_if<
+	boost::is_same<
+		T,
+		U
+	>,
+	T
+>::type const
 structure_cast(
 	U const &u
 )

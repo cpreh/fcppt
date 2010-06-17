@@ -136,11 +136,9 @@ fcppt::math::dim::basic<T, N, S>::operator=(
 	basic const &other_
 )
 {
-	return
-		math::detail::assign(
-			*this,
-			other_
-		);
+	storage = other_.storage;
+
+	return *this;
 }
 
 template<
@@ -160,6 +158,11 @@ fcppt::math::dim::basic<T, N, S>::operator=(
 	> const &other_
 )
 {
+	math::detail::initial_size(
+		storage,
+		other_.size()
+	);
+
 	return
 		math::detail::assign(
 			*this,
