@@ -417,21 +417,6 @@ template<
 	typename S
 >
 void
-fcppt::math::vector::basic<T, N, S>::resize(
-	size_type const sz
-)
-{
-	storage.resize(
-		sz
-	);
-}
-
-template<
-	typename T,
-	typename N,
-	typename S
->
-void
 fcppt::math::vector::basic<T, N, S>::swap(
 	basic &other_
 )
