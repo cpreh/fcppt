@@ -72,9 +72,10 @@ fcppt::log::object::level_sink(
 	level::type const level_
 )
 {
-	return *level_streams_.at(
-		level_
-	);
+	return
+		*level_streams_[
+			level_
+		];
 }
 
 fcppt::log::level_stream const &
@@ -82,9 +83,10 @@ fcppt::log::object::level_sink(
 	level::type const level_
 ) const
 {
-	return *level_streams_.at(
-		level_
-	);
+	return
+		*level_streams_[
+			level_
+		];
 }
 
 void
