@@ -19,6 +19,13 @@ typedef fcppt::math::vector::static_<
 	2
 >::type ui2_vec;
 
+typedef float float_type;
+
+typedef fcppt::math::vector::static_<
+	float_type,
+	2
+>::type f2_vec;
+
 }
 
 BOOST_AUTO_TEST_CASE(vector_compare)
@@ -75,13 +82,6 @@ BOOST_AUTO_TEST_CASE(vector_swap)
 
 BOOST_AUTO_TEST_CASE(vector_unit_circle)
 {
-	typedef float float_type;
-
-	typedef fcppt::math::vector::static_<
-		float_type,
-		2
-	>::type vec_2f;
-
 	BOOST_REQUIRE(
 		fcppt::math::vector::unit_circle(
 			fcppt::math::pi<
@@ -89,7 +89,7 @@ BOOST_AUTO_TEST_CASE(vector_unit_circle)
 			>()
 		)
 		==
-		vec_2f(
+		f2_vec(
 			-1.f,
 			0.f
 		)
@@ -199,5 +199,25 @@ BOOST_AUTO_TEST_CASE(vector_construct)
 
 	BOOST_REQUIRE(
 		vec == view
+	);
+}
+
+BOOST_AUTO_TEST_CASE(vector_structure_cast)
+{
+	ui2_vec const vec(
+		1,
+		2
+	);
+
+	BOOST_REQUIRE(
+		fcppt::math::vector::structure_cast<
+			f2_vec
+		>(
+			vec
+		)
+		== f2_vec(
+			1.f,
+			2.f
+		)
 	);
 }

@@ -20,6 +20,17 @@ namespace detail
 {
 
 template<
+	typename T
+>
+T const
+structure_cast(
+	T const &t
+)
+{
+	return t;
+}
+
+template<
 	typename T,
 	typename U
 >
