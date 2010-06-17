@@ -201,13 +201,13 @@ class object< FCPPT_FUNCTION_OBJECT_PP_TEMPLATE_ARGS >
 		template< typename F >
 		F* target()
 		{
-			return function_.target<F>();
+			return function_. template target<F>();
 		}
 		
 		template< typename F >
 		const F* target() const
 		{
-			return function_.target<F>();
+			return function_. template target<F>();
 		}
 
 	private:
