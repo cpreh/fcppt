@@ -15,6 +15,8 @@
 #include <fcppt/math/detail/make_op_decl.hpp>
 #include <fcppt/math/detail/make_variadic_constructor_decl.hpp>
 #include <fcppt/math/vector/basic_decl.hpp>
+#include <fcppt/math/difference_type.hpp>
+#include <fcppt/math/size_type.hpp>
 #include <fcppt/type_traits/is_iterator.hpp>
 #include <boost/mpl/times.hpp>
 #include <boost/type_traits/is_same.hpp>
@@ -59,7 +61,8 @@ public:
 
 	typedef S storage_type;
 
-	typedef typename N::value_type size_type;
+	typedef math::size_type size_type;
+	typedef math::difference_type difference_type;
 
 	typedef T value_type;
 
