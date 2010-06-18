@@ -11,8 +11,11 @@
 #include <fcppt/math/matrix/static.hpp>
 #include <fcppt/math/matrix/delete_column_and_row.hpp>
 #include <fcppt/math/matrix/has_dim.hpp>
+#include <fcppt/math/detail/is_static_size.hpp>
 #include <fcppt/math/size_type.hpp>
 #include <fcppt/math/null.hpp>
+#include <boost/mpl/and.hpp>
+#include <boost/mpl/not.hpp>
 #include <boost/utility/enable_if.hpp>
 
 namespace fcppt
@@ -39,7 +42,8 @@ boost::enable_if
 	T
 >::type
 determinant(
-	basic<T,N,N,S> const &t)
+	basic<T,N,N,S> const &t
+)
 {
 	return t[0][0];
 }
@@ -52,18 +56,29 @@ template
 	typename S
 >
 typename
-boost::disable_if
+boost::enable_if
 <
-	has_dim
+	boost::mpl::and_
 	<
-		basic<T,N,N,S>,
-		1,
-		1
+		boost::mpl::not_
+		<
+			has_dim
+			<
+				basic<T,N,N,S>,
+				1,
+				1
+			>
+		>,
+		math::detail::is_static_size
+		<
+			N
+		>
 	>,
 	T
 >::type
 determinant(
-	basic<T,N,N,S> const &t)
+	basic<T,N,N,S> const &t
+)
 {
 	T sum = fcppt::math::null<T>();
 
@@ -85,7 +100,9 @@ determinant(
 				delete_column_and_row(
 					t,
 					i,
-					0));
+					0
+				)
+			);
 	}
 
 	return sum;

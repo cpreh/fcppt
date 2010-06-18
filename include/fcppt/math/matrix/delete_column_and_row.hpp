@@ -9,6 +9,7 @@
 
 #include <fcppt/math/matrix/basic_impl.hpp>
 #include <fcppt/math/matrix/static.hpp>
+#include <fcppt/math/matrix/detail/is_static_size.hpp>
 #include <fcppt/math/size_type.hpp>
 
 namespace fcppt
@@ -24,11 +25,22 @@ template<
 	typename M,
 	typename S
 >
-typename static_<T, N::value-1, M::value-1>::type const
+typename boost::enable_if<
+	matrix::detail::is_static_size<
+		N,
+		M
+	>,
+	typename static_<
+		T,
+		N::value-1,
+		M::value-1
+	>::type const
+>::type
 delete_column_and_row(
 	basic<T, N, M, S> const &t,
 	typename basic<T, N, M, S>::size_type const column,
-	typename basic<T, N, M, S>::size_type const row)
+	typename basic<T, N, M, S>::size_type const row
+)
 {
 	typedef typename
 	static_<T, N::value-1, M::value-1>::type
@@ -44,7 +56,8 @@ delete_column_and_row(
 		size_type i = 
 			static_cast<size_type>(0); 
 		i < t.rows(); 
-		++i)
+		++i
+	)
 	{
 		if (i == row)
 			continue;
@@ -59,7 +72,8 @@ delete_column_and_row(
 		for(
 			size_type j = static_cast<size_type>(0); 
 			j < t.columns(); 
-			++j)
+			++j
+		)
 		{
 			if (j == column)
 				continue;

@@ -4,14 +4,10 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-<<<<<<< HEAD:include/fcppt/container/linear_map_impl.hpp
-#include <fcppt/container/linear_map.hpp>
-=======
 #ifndef FCPPT_CONTAINER_LINEAR_MAP_IMPL_HPP_INCLUDED
 #define FCPPT_CONTAINER_LINEAR_MAP_IMPL_HPP_INCLUDED
 
-#include "linear_map.hpp"
->>>>>>> bc0f74e150fe8758b2118e1d35f7ba0e0db1075a:include/fcppt/container/linear_map_impl.hpp
+#include <fcppt/container/linear_map.hpp>
 // std::swap
 #include <algorithm>
 #include <utility>

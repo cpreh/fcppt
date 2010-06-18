@@ -7,20 +7,28 @@
 #ifndef FCPPT_SYMBOL_HPP_INCLUDED
 #define FCPPT_SYMBOL_HPP_INCLUDED
 
-#include <fcppt/export_symbol.hpp>
+#if defined(FCPPT_SYMBOL)
+#error "FCPPT_SYMBOL already defined"
+#endif
 
 #if defined(_MSC_VER)
-#	include <fcppt/import_symbol.hpp>
-#	ifdef fcppt_EXPORTS
+#	if defined(fcppt_EXPORTS) && defined(FCPPT_DYN_LINK)
+#		error "fcppt_EXPORTS and FCPPT_DYN_LINK defined"
+#	endif
+#	if defined(fcppt_EXPORTS)
+#		include <fcppt/export_symbol.hpp>
 #		define FCPPT_SYMBOL FCPPT_EXPORT_SYMBOL
-#	else
+#	elif defined(FCPPT_DYN_LINK)
+#		include <fcppt/import_symbol.hpp>
 #		define FCPPT_SYMBOL FCPPT_IMPORT_SYMBOL
+#	else
+#		define FCPPT_SYMBOL
 #	endif
 #elif defined(__GNUC__)
+#	include <fcppt/export_symbol.hpp>
 #	define FCPPT_SYMBOL FCPPT_EXPORT_SYMBOL
 #else
 #	error "Don't know what FCPPT_SYMBOL should be"
 #endif
-
 
 #endif

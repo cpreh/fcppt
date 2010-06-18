@@ -28,11 +28,12 @@ place(
 	T const &plane_angle
 )
 {
-	return typename static_<T, 3>::type(
-		radius * std::sin(high_angle) * std::cos(plane_angle),
-		radius * std::cos(high_angle),
-		radius * std::sin(high_angle) * std::sin(plane_angle)
-	);
+	return
+		typename static_<T, 3>::type(
+			radius * std::sin(high_angle) * std::cos(plane_angle),
+			radius * std::cos(high_angle),
+			radius * std::sin(high_angle) * std::sin(plane_angle)
+		);
 }
 
 }

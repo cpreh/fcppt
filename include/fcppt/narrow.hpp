@@ -9,14 +9,16 @@
 
 #include <fcppt/symbol.hpp>
 #include <string>
+#include <locale>
 
 namespace fcppt
 {
 
-/// convert an std::wstring to std::string using the default locale
+/// convert an std::wstring to std::string
 FCPPT_SYMBOL std::string const
 narrow(
-	std::wstring const &
+	std::wstring const &,
+	std::locale const & = std::locale()
 );
 
 }

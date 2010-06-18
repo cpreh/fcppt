@@ -9,19 +9,17 @@
 
 #include <fcppt/exception.hpp>
 #include <fcppt/type_info.hpp>
-#include <fcppt/class_symbol.hpp>
-#include <fcppt/symbol.hpp>
 
 namespace fcppt
 {
 
 /// May be thrown by truncation_check_cast if the conversion truncates
-class FCPPT_CLASS_SYMBOL bad_truncation_check_cast
+class bad_truncation_check_cast
 :
 	public exception
 {
 public:
-	FCPPT_SYMBOL bad_truncation_check_cast(
+	explicit bad_truncation_check_cast(
 		type_info const &source,
 		type_info const &dest
 	);
@@ -38,5 +36,7 @@ private:
 };
 
 }
+
+#include <fcppt/impl/bad_truncation_check_cast.hpp>
 
 #endif

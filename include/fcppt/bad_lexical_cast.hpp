@@ -9,19 +9,17 @@
 
 #include <fcppt/exception.hpp>
 #include <fcppt/type_info.hpp>
-#include <fcppt/class_symbol.hpp>
-#include <fcppt/symbol.hpp>
 
 namespace fcppt
 {
 
 /// May be thrown by lexical_cast if the cast fails
-class FCPPT_CLASS_SYMBOL bad_lexical_cast
+class bad_lexical_cast
 :
 	public exception
 {
 public:
-	FCPPT_SYMBOL bad_lexical_cast(
+	explicit bad_lexical_cast(
 		type_info const &source,
 		type_info const &dest
 	);
@@ -38,5 +36,7 @@ private:
 };
 
 }
+
+#include <fcppt/impl/bad_lexical_cast.hpp>
 
 #endif

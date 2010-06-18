@@ -52,6 +52,21 @@ public:
 		storage_type const &
 	);
 
+	basic(
+		basic const &
+	);
+
+	template<
+		typename OtherStorage
+	>
+	basic(
+		basic<
+			T,
+			N,
+			OtherStorage
+		> const &
+	);
+
 	template<
 		typename In
 	>
@@ -65,25 +80,52 @@ public:
 		>::type end
 	);
 
-	FCPPT_MATH_DETAIL_ARRAY_ADAPTER(basic)
+	FCPPT_MATH_DETAIL_ARRAY_ADAPTER(
+		basic
+	)
 
-/// \cond
-#define FCPPT_MATH_DETAIL_MAKE_VARIADIC_CONSTRUCTOR_MAX_SIZE FCPPT_MATH_VECTOR_MAX_CTOR_PARAMS
-	FCPPT_MATH_DETAIL_MAKE_VARIADIC_CONSTRUCTOR_DECL(basic)
-#undef FCPPT_MATH_DETAIL_MAKE_VARIADIC_CONSTRUCTOR_MAX_SIZE
-/// \endcond
-public:
+	FCPPT_MATH_DETAIL_MAKE_VARIADIC_CONSTRUCTOR_DECL(
+		FCPPT_MATH_VECTOR_MAX_CTOR_PARAMS,
+		basic
+	)
 
+	basic &
+	operator=(
+		basic const &
+	);
+
+	template<
+		typename OtherStorage
+	>
+	basic &
+	operator=(
+		basic<
+			T,
+			N,
+			OtherStorage
+		> const &
+	);
+
+	~basic();
+	
 /// \cond
 #define FCPPT_MATH_VECTOR_BASIC_DECLARE_OPERATOR(op)\
-FCPPT_MATH_DETAIL_MAKE_OP_DECL(basic, op)
+FCPPT_MATH_DETAIL_MAKE_OP_DECL(\
+	template<\
+		typename OtherStorage\
+	>, \
+	(basic<T, N, OtherStorage>),\
+	3,\
+	op \
+)
+/// \endcond
+
 	FCPPT_MATH_VECTOR_BASIC_DECLARE_OPERATOR(+=)
 	FCPPT_MATH_VECTOR_BASIC_DECLARE_OPERATOR(-=)
 	FCPPT_MATH_VECTOR_BASIC_DECLARE_OPERATOR(*=)
 	FCPPT_MATH_VECTOR_BASIC_DECLARE_OPERATOR(/=)
 	FCPPT_MATH_VECTOR_BASIC_DECLARE_OPERATOR(%=)
 #undef FCPPT_MATH_VECTOR_BASIC_DECLARE_OPERATOR
-/// \endcond
 
 	basic &
 	operator*=(
@@ -140,11 +182,6 @@ FCPPT_MATH_DETAIL_MAKE_OP_DECL(basic, op)
 
 	const_reference
 	w() const;
-
-	void
-	resize(
-		size_type
-	);
 
 	void
 	swap(

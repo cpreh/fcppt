@@ -1,13 +1,37 @@
 [section Changes]
 
+[h1 Changes from 0.1 to 0.2]
+
+* Made all exceptions inline, so header only parts can be used without linking.
+* All string conversion functions now take an optional `std::locale` parameter (`from_std_string`, `to_std_string`, `narrow` and `widen`).
+* Changed a lot of functions for `vector`, `dim` and `matrix` to be safe with different storage types.
+* The `cctor`, `operator=` and `dtor` of `vector`, `dim` and `matrix` are now defined in the corresponding `basic_impl.hpp` file.
+* Removed the `resize` functions from `vector`, `dim` and `matrix`. Resizing their dynamic versions should be done via assignment instead.F
+* Moved the comparison functions (`operator==` and `operator!=`) of `vector`, `dim` and `matrix` into their own headers. For example `vector` needs `<fcppt/math/vector/comparison.hpp>`.
+* Fixed building and using fcppt statically with VC++.
+* Building a static library and linking statically when using FindFcppt is now the default for VC++.
+* Removed some lazy initializations to make functions reentrant (chrono's now() functions and endianness test functions).
+* Added `math::matrix::has_dim` to statically check if a matrix has a given dimension.
+* Added `adjugate`, `determinant` and `inverse` for `math::matrix`.
+* Added `math::matrix::delete_column_and_row` to create a matrix that has one row and column less.
+* Fixed a bug in `math::matrix::rotation_y`.
+* Updated the alignment macros not to use `BOOST_PP` if this isn't required.
+* Added quaternion functions that can be used with `boost::math::quaternion`, see the documentation.
+* Added `algorithm::set_intersection` that wraps `std::set_intersection`.
+* Added `is_subset_eq` for `container::bitfield`.
+* Added `filesystem::extension_without_dot`.
+* Added `math::vector::unit_circle` to construct a unit vector from an angle.
+* Refactored some `math` implementation macros so Doxygen gets less confused.
+* Added more test cases.
+
 [h2 Changes from 0.1 to 0.1.1]
 
-* Added `static.hpp` and `dynamic.hpp` to the linear algebra convenience headers (`vector/vector.hpp`, `dim/dim.hpp`, `matrix/matrix.hpp`)
-* Added `matrix::rotation_axis` - A function that calculates a matrix for rotation around an arbitrary axis
-* Added `homogenous_pair` - A class like `std::pair`, but its two elements are of the same type
-* Lowered the minimal required boost version to 1.40
-* Fixed a bug in the FindFcppt.cmake script
-* Fixed some spelling errors in the documentation
-* Corrected the git URL
+* Added `static.hpp` and `dynamic.hpp` to the linear algebra convenience headers (`vector/vector.hpp`, `dim/dim.hpp`, `matrix/matrix.hpp`).
+* Added `matrix::rotation_axis` - A function that calculates a matrix for rotation around an arbitrary axis.
+* Added `homogenous_pair` - A class like `std::pair`, but its two elements are of the same type.
+* Lowered the minimal required boost version to 1.40.
+* Fixed a bug in the FindFcppt.cmake script.
+* Fixed some spelling errors in the documentation.
+* Corrected the git URL.
 
 [endsect]

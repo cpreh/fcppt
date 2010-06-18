@@ -9,7 +9,6 @@
 
 #include <fcppt/chrono/exception.hpp>
 #include <fcppt/string.hpp>
-#include <fcppt/symbol.hpp>
 
 namespace fcppt
 {
@@ -17,17 +16,19 @@ namespace chrono
 {
 
 /// May be thrown by a clock's now() function
-class FCPPT_CLASS_SYMBOL clock_failure
+class clock_failure
 :
 	public exception
 {
 public:
-	FCPPT_SYMBOL explicit clock_failure(
+	explicit clock_failure(
 		fcppt::string const &
 	);
 };
 
 }
 }
+
+#include <fcppt/chrono/impl/clock_failure.hpp>
 
 #endif

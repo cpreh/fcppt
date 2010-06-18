@@ -21,16 +21,22 @@ namespace
 typedef wchar_t ucs4; // TODO: is this right?
 //typedef boost::uint32_t ucs4;
 
+struct init
+{
+	init()
+	:
+		locale_(
+			std::locale(),
+			new fcppt::utf8::facet()
+		)
+	{}
+
+	std::locale locale_;
+} global;
+
 std::locale &utf8_locale()
 {
-	static std::locale global;
-
-	static std::locale ret(
-		global,
-		new fcppt::utf8::facet()
-	);
-
-	return ret;
+	return global.locale_;
 }
 
 #endif

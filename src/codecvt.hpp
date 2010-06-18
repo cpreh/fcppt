@@ -93,20 +93,14 @@ public:
 	}
 };
 
-std::locale const
-get_locale()
-{
-	static std::locale loc("");
-	return loc;
-}
-
 template<
 	typename Out,
 	typename In
 >
 std::basic_string<Out> const
 codecvt(
-	std::basic_string<In> const &s
+	std::basic_string<In> const &s,
+	std::locale const &locale_
 )
 {
 	typedef std::basic_string<
@@ -120,13 +114,9 @@ codecvt(
 	if(s.empty())
 		return return_type();
 
-	std::locale const &loc(
-		get_locale()
-	);
-
 	codecvt_t const &conv(
 		std::use_facet<codecvt_t>(
-			loc
+			locale_
 		)
 	);
 

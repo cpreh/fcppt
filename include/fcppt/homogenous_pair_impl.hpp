@@ -47,12 +47,12 @@ fcppt::homogenous_pair<T>::swap(
 	homogenous_pair &other_
 )
 {
-	std::swap(
+	swap(
 		first,
 		other_.first
 	);
 
-	std::swap(
+	swap(
 		second,
 		other_.second
 	);

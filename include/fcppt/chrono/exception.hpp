@@ -9,7 +9,6 @@
 
 #include <fcppt/exception.hpp>
 #include <fcppt/string.hpp>
-#include <fcppt/symbol.hpp>
 
 namespace fcppt
 {
@@ -17,17 +16,19 @@ namespace chrono
 {
 
 /// The base exception class for all chrono::exceptions.
-class FCPPT_CLASS_SYMBOL exception
+class exception
 :
 	public fcppt::exception
 {
 public:
-	FCPPT_SYMBOL explicit exception(
+	explicit exception(
 		fcppt::string const &
 	);
 };
 
 }
 }
+
+#include <fcppt/chrono/impl/exception.hpp>
 
 #endif

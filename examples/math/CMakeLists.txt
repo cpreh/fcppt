@@ -1,6 +1,5 @@
 MACRO (ADD_FCPPT_MATH_EXAMPLE name)
-	ADD_EXECUTABLE (fcpptmath${name} ${name}.cpp)
-	TARGET_LINK_LIBRARIES (fcpptmath${name} fcppt)
+	MAKE_FCPPT_EXAMPLE(math ${name})
 ENDMACRO ()
 
 ADD_SUBDIRECTORY(vector)

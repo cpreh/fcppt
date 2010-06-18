@@ -15,7 +15,8 @@ namespace algorithm
 {
 
 /// Checks if a given @a value is inside the range [@a beg @a end ]
-/** Equivalent to find(beg, end, value) != end
+/**
+ * Equivalent to find(beg, end, value) != end
 */
 template<
 	typename In,
@@ -35,6 +36,28 @@ contains(
 			value
 		)
 		!= end;
+}
+
+/// Checks if a given @a value is in the container @a container
+/**
+ * Equivalent to contains(container.begin(), container.end(), value)
+*/
+template<
+	typename Container,
+	typename T
+>
+bool
+contains(
+	Container const &container,
+	T const &value
+)
+{
+	return
+		algorithm::contains(
+			container.begin(),
+			container.end(),
+			value
+		);
 }
 
 }

@@ -7,9 +7,7 @@
 #ifndef FCPPT_ALGORITHM_ELEMENT_NOT_FOUND_HPP_INCLUDED
 #define FCPPT_ALGORITHM_ELEMENT_NOT_FOUND_HPP_INCLUDED
 
-#include <fcppt/exception.hpp>
-#include <fcppt/symbol.hpp>
-#include <fcppt/class_symbol.hpp>
+#include <fcppt/algorithm/exception.hpp>
 
 namespace fcppt
 {
@@ -17,15 +15,17 @@ namespace algorithm
 {
 
 /// May be thrown by the _exn algorithms like find_exn()
-class FCPPT_CLASS_SYMBOL element_not_found
+class element_not_found
 :
-	public exception
+	public algorithm::exception
 {
 public:
-	FCPPT_SYMBOL element_not_found();
+	element_not_found();
 };
 
 }
 }
+
+#include <fcppt/algorithm/impl/element_not_found.hpp>
 
 #endif

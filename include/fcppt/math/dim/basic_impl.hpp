@@ -9,12 +9,14 @@
 
 #include <fcppt/math/dim/basic_decl.hpp>
 #include <fcppt/math/dim/max_ctor_params.hpp>
+#include <fcppt/math/dim/normal_storage.hpp>
 #include <fcppt/math/detail/array_adapter_impl.hpp>
 #include <fcppt/math/detail/make_op_def.hpp>
 #include <fcppt/math/detail/storage_data.hpp>
 #include <fcppt/math/detail/storage_dim.hpp>
 #include <fcppt/math/detail/checked_access.hpp>
 #include <fcppt/math/detail/make_variadic_constructor.hpp>
+#include <fcppt/math/detail/assign.hpp>
 #include <numeric>
 #include <functional>
 #include <iterator>
@@ -27,6 +29,58 @@ template<
 >
 fcppt::math::dim::basic<T, N, S>::basic()
 {}
+
+template<
+	typename T,
+	typename N,
+	typename S
+>
+fcppt::math::dim::basic<T, N, S>::basic(
+	storage_type const &storage
+)
+:
+	storage(storage)
+{}
+
+template<
+	typename T,
+	typename N,
+	typename S
+>
+fcppt::math::dim::basic<T, N, S>::basic(
+	basic const &other_
+)
+:
+	storage(other_.storage)
+{}
+
+template<
+	typename T,
+	typename N,
+	typename S
+>
+template<
+	typename OtherStorage
+>
+fcppt::math::dim::basic<T, N, S>::basic(
+	basic<
+		T,
+		N,
+		OtherStorage
+	> const &other_
+)
+{
+	math::detail::initial_size(
+		storage,
+		other_.size()
+	);
+
+	std::copy(
+		other_.begin(),
+		other_.end(),
+		begin()
+	);
+}
 
 template<
 	typename T,
@@ -57,33 +111,84 @@ fcppt::math::dim::basic<T, N, S>::basic(
 	std::copy(
 		beg,
 		end,
-		data()
+		begin()
 	);
 }
 
-// \cond
-#define FCPPT_MATH_DETAIL_MAKE_VARIADIC_CONSTRUCTOR_MAX_SIZE FCPPT_MATH_DIM_MAX_CTOR_PARAMS
-#define FCPPT_MATH_DETAIL_TEMPLATE_PRE\
-	template<\
-		typename T,\
-		typename N,\
-		typename S\
-	>
-#define FCPPT_MATH_DETAIL_DEF_PRE\
-	fcppt::math::dim::basic<T, N, S>
-// \endcond
-
-FCPPT_MATH_DETAIL_ARRAY_ADAPTER_IMPL
-
-FCPPT_MATH_DETAIL_MAKE_VARIADIC_CONSTRUCTOR(
-	basic
+FCPPT_MATH_DETAIL_ARRAY_ADAPTER_IMPL(
+	3,
+	(template<typename T, typename N, typename S>),
+	(fcppt::math::dim::basic<T, N, S>)
 )
 
-#undef FCPPT_MATH_DETAIL_MAKE_VARIADIC_CONSTRUCTOR_MAX_SIZE
+FCPPT_MATH_DETAIL_MAKE_VARIADIC_CONSTRUCTOR(
+	FCPPT_MATH_DIM_MAX_CTOR_PARAMS,
+	(5, (template<typename T, typename N, typename S> fcppt::math::dim::basic<T, N, S>::basic))
+)
+
+template<
+	typename T,
+	typename N,
+	typename S
+>
+fcppt::math::dim::basic<T, N, S> &
+fcppt::math::dim::basic<T, N, S>::operator=(
+	basic const &other_
+)
+{
+	storage = other_.storage;
+
+	return *this;
+}
+
+template<
+	typename T,
+	typename N,
+	typename S
+>
+template<
+	typename OtherStorage
+>
+fcppt::math::dim::basic<T, N, S> &
+fcppt::math::dim::basic<T, N, S>::operator=(
+	basic<
+		T,
+		N,
+		OtherStorage
+	> const &other_
+)
+{
+	math::detail::initial_size(
+		storage,
+		other_.size()
+	);
+
+	return
+		math::detail::assign(
+			*this,
+			other_
+		);
+}
+
+template<
+	typename T,
+	typename N,
+	typename S
+>
+fcppt::math::dim::basic<T, N, S>::~basic()
+{}
 
 // \cond
-#define FCPPT_MATH_DIM_BASIC_DEFINE_OPERATOR(op)\
-FCPPT_MATH_DETAIL_MAKE_OP_DEF(fcppt::math::dim::basic, op)
+#define FCPPT_MATH_DIM_BASIC_DEFINE_OPERATOR(\
+	op\
+)\
+FCPPT_MATH_DETAIL_MAKE_OP_DEF(\
+	3,\
+	(template<typename T, typename N, typename S> template<typename OtherStorage>),\
+	(fcppt::math::dim::basic<T, N, S>),\
+	(fcppt::math::dim::basic<T, N, OtherStorage>),\
+	op\
+)
 // \endcond
 
 FCPPT_MATH_DIM_BASIC_DEFINE_OPERATOR(+=)
@@ -92,8 +197,6 @@ FCPPT_MATH_DIM_BASIC_DEFINE_OPERATOR(*=)
 FCPPT_MATH_DIM_BASIC_DEFINE_OPERATOR(/=)
 FCPPT_MATH_DIM_BASIC_DEFINE_OPERATOR(%=)
 
-#undef FCPPT_MATH_DETAIL_DEF_PRE
-#undef FCPPT_MATH_DETAIL_TEMPLATE_PRE
 #undef FCPPT_MATH_DIM_BASIC_DEFINE_OPERATOR
 
 template<
@@ -286,25 +389,22 @@ template<
 fcppt::math::dim::basic<T, N, S> const
 fcppt::math::dim::basic<T, N, S>::null()
 {
-	basic ret;
-	for(size_type i = 0; i < N::value; ++i)
+	basic<
+		T,
+		N,
+		typename normal_storage<
+			T,
+			N
+		>::type
+	> ret;
+
+	for(
+		size_type i = 0;
+		i < N::value;
+		++i
+	)
 		ret[i] = static_cast<value_type>(0);
 	return ret;
-}
-
-template<
-	typename T,
-	typename N,
-	typename S
->
-void
-fcppt::math::dim::basic<T, N, S>::resize(
-	size_type const sz
-)
-{
-	storage.resize(
-		sz
-	);
 }
 
 template<

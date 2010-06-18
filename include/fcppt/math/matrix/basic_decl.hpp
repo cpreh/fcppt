@@ -9,14 +9,16 @@
 
 #include <fcppt/math/matrix/basic_fwd.hpp>
 #include <fcppt/math/matrix/max_ctor_params.hpp>
+#include <fcppt/math/matrix/dim_type.hpp>
 #include <fcppt/math/matrix/detail/dim_storage.hpp>
 #include <fcppt/math/detail/view_storage.hpp>
 #include <fcppt/math/detail/make_op_decl.hpp>
 #include <fcppt/math/detail/make_variadic_constructor_decl.hpp>
 #include <fcppt/math/vector/basic_decl.hpp>
-#include <fcppt/math/dim/static.hpp>
+#include <fcppt/type_traits/is_iterator.hpp>
 #include <boost/mpl/times.hpp>
 #include <boost/type_traits/is_same.hpp>
+#include <boost/utility/enable_if.hpp>
 #include <boost/static_assert.hpp>
 #include <iterator>
 
@@ -91,7 +93,7 @@ public:
 
 	typedef std::reverse_iterator<const_iterator> const_reverse_iterator;
 
-	typedef typename math::dim::static_<size_type, 2>::type dim;
+	typedef matrix::dim_type dim;
 
 	basic();
 
@@ -99,12 +101,51 @@ public:
 		dim const &
 	);
 
+	explicit basic(
+		storage_type const &
+	);
+
+	basic(
+		basic const &
+	);
+
+	template<
+		typename OtherStorage
+	>
+	basic(
+		basic<
+			T,
+			N,
+			M,
+			OtherStorage
+		> const &
+	);
+
 	template<
 		typename In
 	>
 	basic(
 		In beg,
-		In end
+		typename boost::enable_if<
+			type_traits::is_iterator<
+				In
+			>,
+			In
+		>::type end
+	);
+
+	template<
+		typename In
+	>
+	basic(
+		dim const &,
+		In beg,
+		typename boost::enable_if<
+			type_traits::is_iterator<
+				In
+			>,
+			In
+		>::type end
 	);
 
 	template<
@@ -115,22 +156,50 @@ public:
 		Container const &
 	);
 
-	FCPPT_MATH_DETAIL_ARRAY_ADAPTER(basic)
+	FCPPT_MATH_DETAIL_ARRAY_ADAPTER(
+		basic
+	)
 
-// \cond
-#define FCPPT_MATH_DETAIL_MAKE_VARIADIC_CONSTRUCTOR_MAX_SIZE FCPPT_MATH_MATRIX_MAX_CTOR_PARAMS
-	FCPPT_MATH_DETAIL_MAKE_VARIADIC_CONSTRUCTOR_DECL(basic)
-#undef FCPPT_MATH_DETAIL_MAKE_VARIADIC_CONSTRUCTOR_MAX_SIZE
-// \endcond
-public:
+	FCPPT_MATH_DETAIL_MAKE_VARIADIC_CONSTRUCTOR_DECL(
+		FCPPT_MATH_MATRIX_MAX_CTOR_PARAMS,
+		basic
+	)
+
+	basic &
+	operator=(
+		basic const &
+	);
+
+	template<
+		typename OtherStorage
+	>
+	basic &
+	operator=(
+		basic<
+			T,
+			N,
+			M,
+			OtherStorage
+		> const &
+	);
+
+	~basic();
 
 // \cond
 #define FCPPT_MATH_MATRIX_BASIC_DECLARE_OPERATOR(op)\
-FCPPT_MATH_DETAIL_MAKE_OP_DECL(basic, op)
+FCPPT_MATH_DETAIL_MAKE_OP_DECL(\
+	template<\
+		typename OtherStorage\
+	>, \
+	(basic<T, N, M, OtherStorage>),\
+	4,\
+	op \
+)
+// \endcond
+
 	FCPPT_MATH_MATRIX_BASIC_DECLARE_OPERATOR(+=)
 	FCPPT_MATH_MATRIX_BASIC_DECLARE_OPERATOR(-=)
-#undef FCPPT_MAT_MATRIX_BASIC_DECLARE_OPERATOR
-// \endcond
+#undef FCPPT_MATH_MATRIX_BASIC_DECLARE_OPERATOR
 
 	basic &
 	operator*=(
@@ -172,11 +241,6 @@ FCPPT_MATH_DETAIL_MAKE_OP_DECL(basic, op)
 
 	static basic const
 	identity();
-
-	void
-	resize(
-		dim const &
-	);
 
 	void
 	swap(

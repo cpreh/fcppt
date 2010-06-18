@@ -10,9 +10,7 @@
 namespace fcppt
 {
 
-/**
- * @brief A wrapper class to make a type optionally empty
-*/
+/// A wrapper class to make a type optionally empty
 template<
 	typename T
 >

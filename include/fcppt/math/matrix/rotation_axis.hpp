@@ -27,7 +27,8 @@ template
 typename static_<T, 4, 4>::type const
 rotation_axis(
 	T const angle,
-	typename vector::static_<T,3>::type const &a)
+	typename vector::static_<T,3>::type const &a
+)
 {
 	T const
 		sinx = std::sin(angle),

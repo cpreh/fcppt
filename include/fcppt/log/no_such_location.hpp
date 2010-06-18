@@ -16,12 +16,12 @@ namespace log
 {
 
 /// Thrown if a location is not found in a context
-class FCPPT_CLASS_SYMBOL no_such_location
+class no_such_location
 :
 	public exception
 {
 public:
-	FCPPT_SYMBOL explicit no_such_location(
+	explicit no_such_location(
 		log::location const &
 	);
 
@@ -33,5 +33,7 @@ private:
 
 }
 }
+
+#include <fcppt/log/impl/no_such_location.hpp>
 
 #endif

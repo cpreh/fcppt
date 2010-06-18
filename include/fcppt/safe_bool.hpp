@@ -13,7 +13,7 @@ void safe_bool_reference_function() const {}\
 public: \
 operator bool_type() const\
 {\
-	return boolean_test()\
+	return x::boolean_test()\
 		? &x::safe_bool_reference_function \
 		: 0;\
 }

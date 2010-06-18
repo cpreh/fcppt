@@ -9,5 +9,6 @@
 
 #include <fcppt/container/bitfield/basic_decl.hpp>
 #include <fcppt/container/bitfield/basic_impl.hpp>
+#include <fcppt/container/bitfield/is_subset_eq.hpp>
 
 #endif

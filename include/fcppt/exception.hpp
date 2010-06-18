@@ -7,8 +7,6 @@
 #ifndef FCPPT_EXCEPTION_HPP_INCLUDED
 #define FCPPT_EXCEPTION_HPP_INCLUDED
 
-#include <fcppt/symbol.hpp>
-#include <fcppt/class_symbol.hpp>
 #include <fcppt/string.hpp>
 #include <exception>
 
@@ -24,35 +22,37 @@ namespace fcppt
  * to obtain the string. If you use what() nothing useful
  * will be given.
 */
-class FCPPT_CLASS_SYMBOL exception
+class exception
 :
 	public std::exception
 {
 public:
-	FCPPT_SYMBOL explicit exception(
+	explicit exception(
 		fcppt::string const &
 	);
 
-	FCPPT_SYMBOL exception(
+	exception(
 		exception const &
 	);
 
-	FCPPT_SYMBOL exception &
+	exception &
 	operator=(
 		exception const &
 	);
 
-	FCPPT_SYMBOL fcppt::string const &
+	fcppt::string const &
 	string() const;
 
-	FCPPT_SYMBOL char const *
+	char const *
 	what() const throw();
 
-	FCPPT_SYMBOL virtual ~exception() throw();
+	virtual ~exception() throw();
 private:
 	fcppt::string s;
 };
 
 }
+
+#include <fcppt/impl/exception.hpp>
 
 #endif

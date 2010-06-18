@@ -11,6 +11,7 @@
 #include <fcppt/math/vector/arithmetic.hpp>
 #include <fcppt/math/vector/atan2.hpp>
 #include <fcppt/math/vector/basic.hpp>
+#include <fcppt/math/vector/comparison.hpp>
 #include <fcppt/math/vector/construct.hpp>
 #include <fcppt/math/vector/cross.hpp>
 #include <fcppt/math/vector/dot.hpp>
@@ -20,11 +21,13 @@
 #include <fcppt/math/vector/length.hpp>
 #include <fcppt/math/vector/make.hpp>
 #include <fcppt/math/vector/narrow_cast.hpp>
+#include <fcppt/math/vector/normal_storage.hpp>
 #include <fcppt/math/vector/normalize.hpp>
 #include <fcppt/math/vector/output.hpp>
 #include <fcppt/math/vector/place.hpp>
 #include <fcppt/math/vector/static.hpp>
 #include <fcppt/math/vector/structure_cast.hpp>
 #include <fcppt/math/vector/to_angle.hpp>
+#include <fcppt/math/vector/unit_circle.hpp>
 
 #endif

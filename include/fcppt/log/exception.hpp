@@ -9,7 +9,6 @@
 
 #include <fcppt/exception.hpp>
 #include <fcppt/string.hpp>
-#include <fcppt/symbol.hpp>
 
 namespace fcppt
 {
@@ -17,17 +16,19 @@ namespace log
 {
 
 /// The exception base class for logger exceptions
-class FCPPT_CLASS_SYMBOL exception
+class exception
 :
 	public fcppt::exception
 {
 public:
-	FCPPT_SYMBOL explicit exception(
+	explicit exception(
 		fcppt::string const &
 	);
 };
 
 }
 }
+
+#include <fcppt/log/impl/exception.hpp>
 
 #endif

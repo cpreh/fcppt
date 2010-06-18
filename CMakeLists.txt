@@ -25,18 +25,39 @@ INCLUDE (CheckCXXSourceRuns)
 INCLUDE (CheckIncludeFile)
 INCLUDE (FindPkgConfig)
 
-SET (CMAKE_VERBOSE_MAKEFILE ON)
-
-OPTION(ENABLE_SHARED "Build fcppt as a shared library" ON)
-OPTION(ENABLE_STATIC "Build fcppt as a static library" OFF)
-
 IF (MSVC)
 	SET (ENABLE_NARROW_STRING_DEFAULT OFF)
+	SET (ENABLE_SHARED_DEFAULT OFF)
+	SET (ENABLE_STATIC_DEFAULT ON)
 ELSE ()
 	SET (ENABLE_NARROW_STRING_DEFAULT ON)
+	SET (ENABLE_SHARED_DEFAULT ON)
+	SET (ENABLE_STATIC_DEFAULT OFF)
 ENDIF ()
 
-OPTION (ENABLE_NARROW_STRING "Build fcppt with std::string instead of std::wstring" ${ENABLE_NARROW_STRING_DEFAULT})
+OPTION(ENABLE_SHARED "Build fcppt as a shared library" ${ENABLE_SHARED_DEFAULT})
+
+OPTION(ENABLE_STATIC "Build fcppt as a static library" ${ENABLE_STATIC_DEFAULT})
+
+OPTION(ENABLE_NARROW_STRING "Build fcppt with std::string instead of std::wstring" ${ENABLE_NARROW_STRING_DEFAULT})
+
+IF(NOT ENABLE_SHARED AND NOT ENABLE_STATIC)
+	MESSAGE(FATAL_ERROR "You disabled both STATIC and SHARED")
+ENDIF()
+
+# choose a library to link the tests to
+IF(ENABLE_SHARED)
+	SET(FCPPT_DEFAULT_LINK_TARGET fcppt)
+ENDIF()
+
+# static overrides shared
+IF(ENABLE_STATIC)
+	SET(FCPPT_DEFAULT_LINK_TARGET fcppt_static)
+ENDIF()
+
+IF(MSVC AND ${FCPPT_DEFAULT_LINK_TARGET} STREQUAL "fcppt")
+	SET (FCPPT_CONFIG_LINK_MACROS "-D FCPPT_DYN_LINK")
+ENDIF()
 
 IF (ENABLE_NARROW_STRING)
        SET (FCPPT_NARROW_STRING true)
@@ -45,11 +66,6 @@ ENDIF()
 ADD_DEFINITIONS(-D BOOST_FILESYSTEM_NO_DEPRECATED)
 
 IF (CMAKE_COMPILER_IS_GNUCXX)
-	#CHECK_CXX_COMPILER_FLAG(
-	#	"-std=c++0x"
-	#	FCPPT_HAVE_VARIADIC_TEMPLATES
-	#)
-
 	IF(UNIX)
 		SET (FCPPT_STRING_IS_UTF8 true)
 	ENDIF()
@@ -76,12 +92,8 @@ IF (CMAKE_COMPILER_IS_GNUCXX)
 		ADD_DEFINITIONS(-fvisibility=hidden)
 	ENDIF ()
 
-	#IF (FCPPT_HAVE_VARIADIC_TEMPLATES)
-	#	ADD_DEFINITIONS ("-std=c++0x")
-	#ELSE ()
-		# C++ 98 has no long long but boost insists on using it anyway
-		ADD_DEFINITIONS ("-Wno-long-long")
-	#ENDIF ()
+	# C++ 98 has no long long but boost insists on using it anyway
+	ADD_DEFINITIONS ("-Wno-long-long")
 
 	IF(NOT APPLE)
 		# -ansi breaks tr1 on darwin
@@ -142,10 +154,8 @@ FILE(WRITE ${pkgfile}
 	"Version: ${FCPPT_VERSION}\n"
 	"Requires:\n"
 	"Libs: -L\${libdir} -lfcppt\n"
-	"Cflags: -I\${includedir}/")
-#IF(FCPPT_HAVE_VARIADIC_TEMPLATES)
-#	FILE(APPEND ${pkgfile} " -std=c++0x")
-#ENDIF()
+	"Cflags: -I\${includedir}/"
+)
 
 INSTALL (FILES ${pkgfile} DESTINATION ${CMAKE_INSTALL_PREFIX}/lib/pkgconfig)
 
@@ -159,7 +169,7 @@ INSTALL (FILES ${pkgfile} DESTINATION ${CMAKE_INSTALL_PREFIX}/lib/pkgconfig)
 #	 {}"
 #	 FCPPT_HAVE_DEFAULTED_AND_DELETED_FUNCTIONS)
 
-SET (Boost_ADDITIONAL_VERSIONS "1.41" "1.41.0" "1.42" "1.42.0")
+SET (Boost_ADDITIONAL_VERSIONS "1.41" "1.41.0" "1.42" "1.42.0" "1.43" "1.43.0")
 
 IF(MSVC)
 	SET(Boost_USE_STATIC_LIBS ON)

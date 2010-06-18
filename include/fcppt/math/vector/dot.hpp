@@ -20,18 +20,19 @@ namespace vector
 template<
 	typename T,
 	typename N,
-	typename S
+	typename S1,
+	typename S2
 >
-typename basic<T, N, S>::value_type
+typename basic<T, N, S1>::value_type
 dot(
-	basic<T, N, S> const &l,
-	basic<T, N, S> const &r
+	basic<T, N, S1> const &l,
+	basic<T, N, S2> const &r
 )
 {
 	T result(static_cast<T>(0));
 
 	for(
-		typename basic<T, N, S>::size_type i = 0;
+		typename basic<T, N, S1>::size_type i = 0;
 		i < l.size();
 		++i
 	)

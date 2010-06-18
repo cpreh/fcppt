@@ -8,7 +8,8 @@
 
 fcppt::string const
 fcppt::filesystem::extension(
-	path const &p)
+	path const &p
+)
 {
 	return p.extension();
 }

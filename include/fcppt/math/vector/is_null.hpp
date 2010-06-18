@@ -8,7 +8,7 @@
 #define FCPPT_MATH_VECTOR_IS_NULL_HPP_INCLUDED
 
 #include <fcppt/math/vector/basic_impl.hpp>
-#include <fcppt/math/compare.hpp>
+#include <fcppt/math/vector/comparison.hpp>
 
 namespace fcppt
 {

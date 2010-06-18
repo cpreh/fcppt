@@ -137,3 +137,46 @@ BOOST_AUTO_TEST_CASE(container_bitfield_comparison)
 		field2 < field1
 	);
 }
+
+BOOST_AUTO_TEST_CASE(container_bitfield_is_subset_eq)
+{
+	bitfield field1(
+		bitfield::null()
+	);
+
+	bitfield field2(
+		bitfield::null()
+	);
+
+	BOOST_REQUIRE(
+		fcppt::container::bitfield::is_subset_eq(
+			field1,
+			field2
+		)
+	);
+
+	BOOST_REQUIRE(
+		fcppt::container::bitfield::is_subset_eq(
+			field2,
+			field1
+		)
+	);
+
+	field2[test_enum::test1] = true;
+
+	BOOST_REQUIRE(
+		fcppt::container::bitfield::is_subset_eq(
+			field1,
+			field2
+		)
+	);
+
+	field1[test_enum::test2] = true;
+
+	BOOST_REQUIRE(
+		!fcppt::container::bitfield::is_subset_eq(
+			field1,
+			field2
+		)
+	);
+}

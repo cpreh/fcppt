@@ -9,23 +9,23 @@
 
 #include <fcppt/exception.hpp>
 #include <fcppt/string.hpp>
-#include <fcppt/symbol.hpp>
-#include <fcppt/class_symbol.hpp>
 
 namespace fcppt
 {
 
 /// Thrown if a minmax_pair is invalid
-class FCPPT_CLASS_SYMBOL invalid_minmax_pair
+class invalid_minmax_pair
 :
 	public fcppt::exception
 {
 public:
-	FCPPT_SYMBOL explicit invalid_minmax_pair(
+	explicit invalid_minmax_pair(
 		fcppt::string const &
 	);
 };
 
 }
+
+#include <fcppt/impl/invalid_minmax_pair.hpp>
 
 #endif

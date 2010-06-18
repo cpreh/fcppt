@@ -9,8 +9,15 @@
 
 std::wstring const
 fcppt::widen(
-	std::string const &s
+	std::string const &s,
+	std::locale const &locale_
 )
 {
-	return fcppt::codecvt<wchar_t>(s);
+	return
+		fcppt::codecvt<
+			wchar_t
+		>(
+			s,
+			locale_
+		);
 }

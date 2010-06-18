@@ -8,6 +8,7 @@
 #define FCPPT_MATH_VECTOR_CROSS_HPP_INCLUDED
 
 #include <fcppt/math/vector/basic_impl.hpp>
+#include <fcppt/math/vector/normal_storage.hpp>
 #include <fcppt/math/detail/has_size.hpp>
 #include <boost/utility/enable_if.hpp>
 
@@ -22,32 +23,49 @@ namespace vector
 template<
 	typename T,
 	typename N,
-	typename S
+	typename S1,
+	typename S2
 >
 typename boost::enable_if<
 	math::detail::has_size<
 		N,
 		3
 	>,
-	basic<T, N, S> const
+	basic<
+		T,
+		N,
+		typename normal_storage<
+			T,
+			N
+		>::type
+	> const
 >::type
 cross(
-	basic<T, N, S> const &l,
-	basic<T, N, S> const &r
+	basic<T, N, S1> const &l,
+	basic<T, N, S2> const &r
 )
 {
-	return basic<T, N, S>(
-		l.y() * r.z() - l.z() * r.y(),
-		l.z() * r.x() - l.x() * r.z(),
-		l.x() * r.y() - l.y() * r.x()
-	);
+	return
+		basic<
+			T,
+			N,
+			typename normal_storage<
+				T,
+				N
+			>::type
+		>(
+			l.y() * r.z() - l.z() * r.y(),
+			l.z() * r.x() - l.x() * r.z(),
+			l.x() * r.y() - l.y() * r.x()
+		);
 }
 
 /// Calculates the cross product of two two-dimensional vectors
 template<
 	typename T,
 	typename N,
-	typename S
+	typename S1,
+	typename S2
 >
 typename boost::enable_if<
 	math::detail::has_size<
@@ -57,11 +75,12 @@ typename boost::enable_if<
 	T
 >::type
 cross(
-	basic<T, N, S> const &l,
-	basic<T, N, S> const &r
+	basic<T, N, S1> const &l,
+	basic<T, N, S2> const &r
 )
 {
-	return l.x() * r.y() - l.y() * r.x();
+	return
+		l.x() * r.y() - l.y() * r.x();
 }
 
 }

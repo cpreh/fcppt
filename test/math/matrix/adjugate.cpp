@@ -6,6 +6,9 @@
 
 #include <fcppt/math/matrix/output.hpp>
 #include <fcppt/math/matrix/adjugate.hpp>
+#include <fcppt/math/matrix/comparison.hpp>
+#include <fcppt/math/matrix/static.hpp>
+#include <fcppt/math/matrix/basic_impl.hpp>
 #include <boost/test/unit_test.hpp>
 
 BOOST_AUTO_TEST_CASE(adjugate)

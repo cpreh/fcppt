@@ -9,6 +9,7 @@
 
 #include <fcppt/math/vector/basic_decl.hpp>
 #include <fcppt/math/vector/max_ctor_params.hpp>
+#include <fcppt/math/vector/normal_storage.hpp>
 #include <fcppt/math/detail/array_adapter_impl.hpp>
 #include <fcppt/math/detail/make_op_def.hpp>
 #include <fcppt/math/detail/storage_data.hpp>
@@ -16,6 +17,7 @@
 #include <fcppt/math/detail/checked_access.hpp>
 #include <fcppt/math/detail/make_variadic_constructor.hpp>
 #include <fcppt/math/detail/initial_size.hpp>
+#include <fcppt/math/detail/assign.hpp>
 #include <iterator>
 #include <algorithm>
 
@@ -38,6 +40,46 @@ fcppt::math::vector::basic<T, N, S>::basic(
 :
 	storage(storage)
 {}
+
+template<
+	typename T,
+	typename N,
+	typename S
+>
+fcppt::math::vector::basic<T, N, S>::basic(
+	basic const &other_
+)
+:
+	storage(other_.storage)
+{}
+
+template<
+	typename T,
+	typename N,
+	typename S
+>
+template<
+	typename OtherStorage
+>
+fcppt::math::vector::basic<T, N, S>::basic(
+	basic<
+		T,
+		N,
+		OtherStorage
+	> const &other_
+)
+{
+	math::detail::initial_size(
+		storage,
+		other_.size()
+	);
+
+	std::copy(
+		other_.begin(),
+		other_.end(),
+		begin()
+	);
+}
 
 template<
 	typename T,
@@ -68,33 +110,84 @@ fcppt::math::vector::basic<T, N, S>::basic(
 	std::copy(
 		beg,
 		end,
-		data()
+		begin()
 	);
 }
 
-// \cond
-#define FCPPT_MATH_DETAIL_MAKE_VARIADIC_CONSTRUCTOR_MAX_SIZE FCPPT_MATH_VECTOR_MAX_CTOR_PARAMS
-#define FCPPT_MATH_DETAIL_TEMPLATE_PRE\
-	template<\
-		typename T,\
-		typename N,\
-		typename S\
-	>
-#define FCPPT_MATH_DETAIL_DEF_PRE\
-	fcppt::math::vector::basic<T, N, S>
-// \endcond
-
-FCPPT_MATH_DETAIL_ARRAY_ADAPTER_IMPL
-
-FCPPT_MATH_DETAIL_MAKE_VARIADIC_CONSTRUCTOR(
-	basic
+FCPPT_MATH_DETAIL_ARRAY_ADAPTER_IMPL(
+	3,
+	(template<typename T, typename N, typename S>),
+	(fcppt::math::vector::basic<T, N, S>)
 )
 
-#undef FCPPT_MATH_DETAIL_MAKE_VARIADIC_CONSTRUCTOR_MAX_SIZE
+FCPPT_MATH_DETAIL_MAKE_VARIADIC_CONSTRUCTOR(
+	FCPPT_MATH_VECTOR_MAX_CTOR_PARAMS,
+	(5, (template<typename T, typename N, typename S> fcppt::math::vector::basic<T, N, S>::basic))
+)
+
+template<
+	typename T,
+	typename N,
+	typename S
+>
+fcppt::math::vector::basic<T, N, S> &
+fcppt::math::vector::basic<T, N, S>::operator=(
+	basic const &other_
+)
+{
+	storage = other_.storage;
+
+	return *this;
+}
+
+template<
+	typename T,
+	typename N,
+	typename S
+>
+template<
+	typename OtherStorage
+>
+fcppt::math::vector::basic<T, N, S> &
+fcppt::math::vector::basic<T, N, S>::operator=(
+	basic<
+		T,
+		N,
+		OtherStorage
+	> const &other_
+)
+{
+	math::detail::initial_size(
+		storage,
+		other_.size()
+	);
+
+	return
+		math::detail::assign(
+			*this,
+			other_
+		);
+}
+
+template<
+	typename T,
+	typename N,
+	typename S
+>
+fcppt::math::vector::basic<T, N, S>::~basic()
+{}
 
 // \cond
-#define FCPPT_MATH_VECTOR_BASIC_DEFINE_OPERATOR(op)\
-FCPPT_MATH_DETAIL_MAKE_OP_DEF(fcppt::math::vector::basic, op)
+#define FCPPT_MATH_VECTOR_BASIC_DEFINE_OPERATOR(\
+	op\
+)\
+FCPPT_MATH_DETAIL_MAKE_OP_DEF(\
+	3,\
+	(template<typename T, typename N, typename S> template<typename OtherStorage>),\
+	(fcppt::math::vector::basic<T, N, S>),\
+	(fcppt::math::vector::basic<T, N, OtherStorage>),\
+	op\
+)
 // \endcond
 
 FCPPT_MATH_VECTOR_BASIC_DEFINE_OPERATOR(+=)
@@ -103,8 +196,6 @@ FCPPT_MATH_VECTOR_BASIC_DEFINE_OPERATOR(*=)
 FCPPT_MATH_VECTOR_BASIC_DEFINE_OPERATOR(/=)
 FCPPT_MATH_VECTOR_BASIC_DEFINE_OPERATOR(%=)
 
-#undef FCPPT_MATH_DETAIL_DEF_PRE
-#undef FCPPT_MATH_DETAIL_TEMPLATE_PRE
 #undef FCPPT_MATH_VECTOR_BASIC_DEFINE_OPERATOR
 
 template<
@@ -171,9 +262,10 @@ template<
 typename fcppt::math::vector::basic<T, N, S>::pointer
 fcppt::math::vector::basic<T, N, S>::data()
 {
-	return math::detail::storage_data(
-		storage
-	);
+	return
+		math::detail::storage_data(
+			storage
+		);
 }
 
 template<
@@ -184,9 +276,10 @@ template<
 typename fcppt::math::vector::basic<T, N, S>::const_pointer
 fcppt::math::vector::basic<T, N, S>::data() const
 {
-	return math::detail::storage_data(
-		storage
-	);
+	return
+		math::detail::storage_data(
+			storage
+		);
 }
 
 template<
@@ -197,13 +290,14 @@ template<
 typename fcppt::math::vector::basic<T, N, S>::size_type
 fcppt::math::vector::basic<T, N, S>::size() const
 {
-	return static_cast<
-		size_type
-	>(
-		math::detail::storage_dim(
-			storage
-		)
-	);
+	return
+		static_cast<
+			size_type
+		>(
+			math::detail::storage_dim(
+				storage
+			)
+		);
 }
 
 template<
@@ -214,7 +308,14 @@ template<
 fcppt::math::vector::basic<T, N, S> const
 fcppt::math::vector::basic<T, N, S>::null()
 {
-	basic ret;
+	basic<
+		T,
+		N,
+		typename normal_storage<
+			T,
+			N
+		>::type
+	> ret;
 
 	for(
 		size_type i = 0;
@@ -311,21 +412,6 @@ typename fcppt::math::vector::basic<T, N, S>::const_reference
 fcppt::math::vector::basic<T, N, S>::w() const
 {
 	return math::detail::checked_access<3>(*this);
-}
-
-template<
-	typename T,
-	typename N,
-	typename S
->
-void
-fcppt::math::vector::basic<T, N, S>::resize(
-	size_type const sz
-)
-{
-	storage.resize(
-		sz
-	);
 }
 
 template<

@@ -8,9 +8,6 @@
 #define FCPPT_TIME_SLEEP_INTERRUPTED_HPP_INCLUDED
 
 #include <fcppt/time/exception.hpp>
-#include <fcppt/string.hpp>
-#include <fcppt/symbol.hpp>
-#include <fcppt/class_symbol.hpp>
 
 namespace fcppt
 {
@@ -18,15 +15,17 @@ namespace time
 {
 
 /// May be thrown if a sleep gets interrupted
-class FCPPT_CLASS_SYMBOL sleep_interrupted
+class sleep_interrupted
 :
 	public time::exception
 {
 public:
-	FCPPT_SYMBOL sleep_interrupted();
+	sleep_interrupted();
 };
 
 }
 }
+
+#include <fcppt/time/impl/sleep_interrupted.hpp>
 
 #endif

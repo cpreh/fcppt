@@ -8,6 +8,7 @@
 #define FCPPT_MATH_VECTOR_DIM_HPP_INCLUDED
 
 #include <fcppt/math/vector/basic_impl.hpp>
+#include <fcppt/math/vector/normal_storage.hpp>
 #include <fcppt/math/dim/basic_impl.hpp>
 
 namespace fcppt
@@ -24,15 +25,33 @@ template<\
 	typename S1,\
 	typename S2\
 >\
-basic<T, N, S1> const \
+basic<\
+	T,\
+	N,\
+	typename normal_storage<\
+		T,\
+		N\
+	>::type\
+> const \
 operator op(\
-	basic<T, N, S1> a,\
+	basic<T, N, S1> const  &a,\
 	dim::basic<T, N, S2> const &b\
 )\
 {\
-	for(typename N::value_type i = 0; i < a.size(); ++i)\
-		a[i] op##= b[i];\
-	return a;\
+	basic<\
+		T,\
+		N,\
+		typename normal_storage<\
+			T,\
+			N\
+		>::type\
+	> ret(\
+		a\
+	);\
+\
+	for(typename N::value_type i = 0; i < ret.size(); ++i)\
+		ret[i] op##= b[i];\
+	return ret;\
 }
 
 FCPPT_MATH_MAKE_FREE_VECTOR_DIM_FUNCTION(+)

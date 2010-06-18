@@ -9,7 +9,9 @@
 
 #include <fcppt/container/field_decl.hpp>
 #include <fcppt/math/vector/basic_impl.hpp>
+#include <fcppt/math/vector/comparison.hpp>
 #include <fcppt/math/dim/basic_impl.hpp>
+#include <fcppt/math/dim/comparison.hpp>
 #include <fcppt/assert.hpp>
 #include <algorithm>
 #include <iterator>

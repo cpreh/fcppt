@@ -9,8 +9,6 @@
 
 #include <fcppt/exception.hpp>
 #include <fcppt/string.hpp>
-#include <fcppt/symbol.hpp>
-#include <fcppt/class_symbol.hpp>
 
 namespace fcppt
 {
@@ -18,17 +16,19 @@ namespace math
 {
 
 /// The exception thrown by some math operations
-class FCPPT_CLASS_SYMBOL exception
+class exception
 :
 	public fcppt::exception
 {
 public:
-	FCPPT_SYMBOL explicit exception(
+	explicit exception(
 		fcppt::string const &
 	);
 };
 
 }
 }
+
+#include <fcppt/math/impl/exception.hpp>
 
 #endif

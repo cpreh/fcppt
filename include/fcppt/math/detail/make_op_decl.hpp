@@ -7,10 +7,18 @@
 #ifndef FCPPT_MATH_DETAIL_MAKE_OP_DECL_HPP_INCLUDED
 #define FCPPT_MATH_DETAIL_MAKE_OP_DECL_HPP_INCLUDED
 
-#define FCPPT_MATH_DETAIL_MAKE_OP_DECL(name, op)\
-name & \
+#include <boost/preprocessor/tuple/rem.hpp>
+
+#define FCPPT_MATH_DETAIL_MAKE_OP_DECL(\
+	decl,\
+	param,\
+	arity,\
+	op\
+)\
+decl \
+basic & \
 operator op ( \
-	name const &\
+	BOOST_PP_TUPLE_REM(arity)param const &\
 );
 
 #endif

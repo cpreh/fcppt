@@ -7,6 +7,9 @@
 #include <fcppt/math/matrix/inverse.hpp>
 #include <fcppt/math/matrix/output.hpp>
 #include <fcppt/math/matrix/arithmetic.hpp>
+#include <fcppt/math/matrix/static.hpp>
+#include <fcppt/math/matrix/basic_impl.hpp>
+#include <fcppt/math/matrix/comparison.hpp>
 #include <boost/test/unit_test.hpp>
 
 BOOST_AUTO_TEST_CASE(delete_row_and_column_test)

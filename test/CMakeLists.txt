@@ -3,6 +3,8 @@ FIND_PACKAGE(
 	unit_test_framework
 )
 
+ADD_DEFINITIONS(${FCPPT_CONFIG_LINK_MACROS})
+
 MACRO(
 	ADD_FCPPT_TEST
 	PATHNAME
@@ -25,7 +27,7 @@ MACRO(
 		)
 	ENDIF()
 
-	TARGET_LINK_LIBRARIES (${TESTNAME} fcppt ${Boost_UNIT_TEST_FRAMEWORK_LIBRARY})
+	TARGET_LINK_LIBRARIES (${TESTNAME} ${FCPPT_DEFAULT_LINK_TARGET} ${Boost_UNIT_TEST_FRAMEWORK_LIBRARY})
 
 	ADD_TEST(NAME ${TESTNAME} COMMAND ${TESTNAME})
 ENDMACRO()
@@ -42,7 +44,7 @@ ADD_FCPPT_TEST(endianness)
 ADD_FCPPT_TEST(math/circle)
 ADD_FCPPT_TEST(math/util)
 ADD_FCPPT_TEST(math/vector)
-ADD_FCPPT_TEST(math/quaternion/from_angle_and_axis)
+ADD_FCPPT_TEST(math/quaternion/all_quaternion)
 ADD_FCPPT_TEST(math/matrix/adjugate)
 ADD_FCPPT_TEST(math/matrix/delete_column_and_row)
 ADD_FCPPT_TEST(math/matrix/determinant)
@@ -53,4 +55,6 @@ ADD_FCPPT_TEST(math/matrix/rotation_axis)
 ADD_FCPPT_TEST(math/matrix/rotation_x)
 ADD_FCPPT_TEST(math/matrix/scaling)
 ADD_FCPPT_TEST(math/matrix/translation)
+ADD_FCPPT_TEST(math/matrix/view)
 ADD_FCPPT_TEST(ratio/multiply)
+ADD_FCPPT_TEST(variant/get)
