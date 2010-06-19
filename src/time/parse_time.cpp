@@ -6,10 +6,10 @@
 
 #include "time_get_parse.hpp"
 #include "time_get.hpp"
-#include <fcppt/time/parse_date.hpp>
+#include <fcppt/time/parse_time.hpp>
 
 fcppt::io::istream &
-fcppt::time::parse_date(
+fcppt::time::parse_time(
 	io::istream &stream,
 	std::tm &result
 )
@@ -18,6 +18,6 @@ fcppt::time::parse_date(
 		time::time_get_parse(
 			stream,
 			result,
-			&time::time_get::get_date
+			&time::time_get::get_time
 		);
 }
