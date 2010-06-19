@@ -4,6 +4,7 @@
 
 * Made all exceptions inline, so header only parts can be used without linking.
 * All string conversion functions now take an optional `std::locale` parameter (`from_std_string`, `to_std_string`, `narrow` and `widen`).
+* Removed `container::field`. `boost::multi_array` should be used instead.
 * Changed a lot of functions for `vector`, `dim` and `matrix` to be safe with different storage types.
 * The `cctor`, `operator=` and `dtor` of `vector`, `dim` and `matrix` are now defined in the corresponding `basic_impl.hpp` file.
 * Removed the `resize` functions from `vector`, `dim` and `matrix`. Resizing their dynamic versions should be done via assignment instead.F

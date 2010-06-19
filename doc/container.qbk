@@ -88,29 +88,6 @@ through the `bitfield` like a container (if you like).
 
 [endsect]
 
-[section field]
-
-[section Rationale]
-
-An `fcppt::container::field<ArrayType>` is just a wrapper around a
-one-dimensional array `ArrayType` to make it act as a two-dimensional array.
-
-[warning This class is a likely candidate for being rewritten in the future
-since it's only two-dimensional (not n-dimensional) and it's too monolithic.
-Use with caution.]
-
-[endsect]
-
-[section Synopsis]
-
-[import ../include/fcppt/container/field_decl.hpp]
-[field_decl]
-
-[endsect]
-
-
-[endsect]
-
 [section linear_map/linear_set]
 
 The standard library offers the classes `std::map<T>` and `std::set<T>`. The
