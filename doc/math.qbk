@@ -132,9 +132,57 @@ So, naturally, a matrix can be multiplied by a vector and a scalar.
 now - simply because we didn't need those yet. If you're interested in extending
 `fcppt::math`, contact us.]
 
+For starters, here is a small example showing a few matrix features:
+
 [import ../examples/math/matrix.cpp]
 
 [matrixtransform]
+
+[section Indices]
+
+Matrices in fcppt have the `operator[]` defined so you can extract individual
+cells as well as columns (extracting rows is not supported right now). A note
+of caution, though: Matrix indices are of the form: (column, row), /not/
+(row,column) as you might be used to from, well, all of mathematics for
+example. Think of the indices as being coordinates in a grid. Here, you would
+write (x,y) instead of (y,x), wouldn't you? :)
+
+That being said, here is a very small example showing how to index a matrix:
+
+[import ../examples/math/matrix_indices.cpp]
+
+[matrixindices]
+
+[endsect]
+
+[section Matrix operations]
+
+As said above, matrices will often be used to represent affine transformations.
+Thus, most of the standard affine operations are included in
+fcppt::math::matrix, as well as the usual matrix operations, as such:
+
+[variablelist Transformations
+ [[Translation] [This, of course, takes a vector as its argument]]
+ [[Scaling] []]
+ [[Rotation] [There are functions available for each of the three axes as well as rotation around an arbitrary axis through the origin]]
+ [[Determinant] [This is not yet specialized for dimensions < 4, so it might be quite slow.]]
+ [[Inverse] [Is calculated using the determinant and the adjunct matrix, so it's quite slow, see determinant]]
+]
+
+Note that all of these operations are implemented as free functions in their own header file.
+
+[endsect]
+
+[endsect]
+
+[section Quaternion]
+
+The `fcppt::math::quaternion` part is actually just a small wrapper around
+`boost::math::quaternion` so you can construct quaternions from fcppt vectors
+and convert a quaternion to an fcppt matrix. Apart from that, there are a few
+utility functions like `normalize`, which normalizes a quaternion, and
+`vector_rotation` which rotates an (fcppt) vector using a quaternion. See the
+reference for more details.
 
 [endsect]
 
