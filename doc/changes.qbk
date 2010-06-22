@@ -18,6 +18,7 @@
 * Fixed a bug in `math::matrix::rotation_y`.
 * Updated the alignment macros not to use `BOOST_PP` if this isn't required.
 * Added quaternion functions that can be used with `boost::math::quaternion`, see the documentation.
+* Added `time::std_time()` to wrap `std::time()`. Also added `time::parse_time` and `time::parse_date` to ease the use of the locale parsing functions.
 * Added `algorithm::set_intersection` that wraps `std::set_intersection`.
 * Added `is_subset_eq` for `container::bitfield`.
 * Added `filesystem::extension_without_dot`.
