@@ -42,7 +42,7 @@ typedef fcppt::shared_ptr<
 > void_c_ptr;
 
 void
-f()
+test_c_deleter()
 {
 	void_c_ptr ptr(
 		std::malloc(
