@@ -9,7 +9,7 @@
 
 #include <fcppt/math/matrix/basic_impl.hpp>
 #include <fcppt/math/matrix/detail/determinant.hpp>
-#include <fcppt/math/detail/is_static_size.hpp>
+#include <fcppt/math/is_static_size.hpp>
 #include <boost/utility/enable_if.hpp>
 
 namespace fcppt
@@ -33,7 +33,7 @@ template
 typename
 boost::enable_if
 <
-	math::detail::is_static_size
+	math::is_static_size
 	<
 		N
 	>,

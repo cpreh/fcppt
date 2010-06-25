@@ -4,10 +4,10 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_MATH_MATRIX_DETAIL_IS_STATIC_SIZE_HPP_INCLUDED
-#define FCPPT_MATH_MATRIX_DETAIL_IS_STATIC_SIZE_HPP_INCLUDED
+#ifndef FCPPT_MATH_MATRIX_IS_STATIC_SIZE_HPP_INCLUDED
+#define FCPPT_MATH_MATRIX_IS_STATIC_SIZE_HPP_INCLUDED
 
-#include <fcppt/math/detail/is_static_size.hpp>
+#include <fcppt/math/is_static_size.hpp>
 #include <boost/mpl/and.hpp>
 
 namespace fcppt
@@ -16,9 +16,8 @@ namespace math
 {
 namespace matrix
 {
-namespace detail
-{
 
+/// Checks if both types specify a static size
 template<
 	typename N,
 	typename M
@@ -26,16 +25,15 @@ template<
 struct is_static_size
 :
 boost::mpl::and_<
-	math::detail::is_static_size<
+	math::is_static_size<
 		N
 	>,
-	math::detail::is_static_size<
+	math::is_static_size<
 		M
 	>
 >
 {};
 
-}
 }
 }
 }

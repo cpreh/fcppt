@@ -7,7 +7,7 @@
 #ifndef FCPPT_MATH_MATRIX_DETAIL_STRUCTURE_CAST_HPP_INCLUDED
 #define FCPPT_MATH_MATRIX_DETAIL_STRUCTURE_CAST_HPP_INCLUDED
 
-#include <fcppt/math/matrix/detail/is_static_size.hpp>
+#include <fcppt/math/matrix/is_static_size.hpp>
 #include <fcppt/math/detail/structure_cast_fun.hpp>
 #include <fcppt/math/detail/structure_cast.hpp>
 #include <boost/iterator/transform_iterator.hpp>
@@ -30,7 +30,7 @@ template<
 	typename S
 >
 typename boost::enable_if<
-	detail::is_static_size<
+	matrix::is_static_size<
 		N,
 		M
 	>,
@@ -56,7 +56,7 @@ template<
 	typename S
 >
 typename boost::disable_if<
-	detail::is_static_size<
+	matrix::is_static_size<
 		N,
 		M
 	>,

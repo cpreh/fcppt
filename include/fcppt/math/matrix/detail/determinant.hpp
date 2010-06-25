@@ -11,7 +11,7 @@
 #include <fcppt/math/matrix/static.hpp>
 #include <fcppt/math/matrix/delete_column_and_row.hpp>
 #include <fcppt/math/matrix/has_dim.hpp>
-#include <fcppt/math/detail/is_static_size.hpp>
+#include <fcppt/math/is_static_size.hpp>
 #include <fcppt/math/size_type.hpp>
 #include <fcppt/math/null.hpp>
 #include <boost/mpl/and.hpp>
@@ -72,7 +72,7 @@ boost::enable_if
 				1
 			>
 		>,
-		math::detail::is_static_size
+		math::is_static_size
 		<
 			N
 		>
