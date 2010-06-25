@@ -42,6 +42,8 @@ also some utility functions. None of them, however, need special documentation.
 If you're using boost::math::quaternion in your program and also fcppt, take a
 look at the reference to see if you can use anything from it.
 
+[endsect]
+
 [section Linear Algebra Classes]
 
 fcppt has three classes for linear algebra:
