@@ -9,7 +9,7 @@
 
 #include <fcppt/math/matrix/basic_impl.hpp>
 #include <fcppt/math/matrix/static.hpp>
-#include <fcppt/math/matrix/detail/is_static_size.hpp>
+#include <fcppt/math/matrix/is_static_size.hpp>
 #include <fcppt/math/size_type.hpp>
 
 namespace fcppt
@@ -18,7 +18,12 @@ namespace math
 {
 namespace matrix
 {
+
 /// Deletes a specific row and rolumn (a cross) from the matrix
+/**
+ * @param matrix_ must be statically sized matrix
+ * @return The result type will be of size (N - 1, M - 1)
+*/
 template<
 	typename T,
 	typename N,
@@ -26,18 +31,18 @@ template<
 	typename S
 >
 typename boost::enable_if<
-	matrix::detail::is_static_size<
+	matrix::is_static_size<
 		N,
 		M
 	>,
-	typename static_<
+	typename matrix::static_<
 		T,
 		N::value-1,
 		M::value-1
 	>::type const
 >::type
 delete_column_and_row(
-	basic<T, N, M, S> const &t,
+	basic<T, N, M, S> const &matrix_,
 	typename basic<T, N, M, S>::size_type const column,
 	typename basic<T, N, M, S>::size_type const row
 )
@@ -55,7 +60,7 @@ delete_column_and_row(
 	for(
 		size_type i = 
 			static_cast<size_type>(0); 
-		i < t.rows(); 
+		i < matrix_.rows(); 
 		++i
 	)
 	{
@@ -71,7 +76,7 @@ delete_column_and_row(
 
 		for(
 			size_type j = static_cast<size_type>(0); 
-			j < t.columns(); 
+			j < matrix_.columns(); 
 			++j
 		)
 		{
@@ -85,12 +90,13 @@ delete_column_and_row(
 				: 
 					j;
 
-			ret[realj][reali] = t[j][i];
+			ret[realj][reali] = matrix_[j][i];
 		}
 	}
 
 	return ret;
 }
+
 }
 }
 }

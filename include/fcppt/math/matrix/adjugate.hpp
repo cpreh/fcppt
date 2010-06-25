@@ -11,7 +11,7 @@
 #include <fcppt/math/matrix/static.hpp>
 #include <fcppt/math/matrix/determinant.hpp>
 #include <fcppt/math/matrix/delete_column_and_row.hpp>
-#include <fcppt/math/detail/is_static_size.hpp>
+#include <fcppt/math/is_static_size.hpp>
 #include <fcppt/math/size_type.hpp>
 
 namespace fcppt
@@ -20,7 +20,11 @@ namespace math
 {
 namespace matrix
 {
+
 /// Calculates the adjugate matrix
+/**
+ * @param matrix_ must be a statically sized matrix
+*/
 template
 <
 	typename T,
@@ -30,7 +34,7 @@ template
 typename 
 boost::enable_if
 <
-	math::detail::is_static_size
+	math::is_static_size
 	<
 		N
 	>,
@@ -42,7 +46,7 @@ boost::enable_if
 	>::type const
 >::type
 adjugate(
-	basic<T,N,N,S> const &t
+	basic<T,N,N,S> const &matrix_
 )
 {
 	typedef typename
@@ -72,7 +76,7 @@ adjugate(
 				coeff * 
 				matrix::determinant(
 					matrix::delete_column_and_row(
-						t,
+						matrix_,
 						cols,
 						rows
 					)
@@ -82,6 +86,7 @@ adjugate(
 
 	return ret;
 }
+
 }
 }
 }

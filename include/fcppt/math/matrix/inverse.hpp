@@ -9,7 +9,7 @@
 
 #include <fcppt/math/matrix/determinant.hpp>
 #include <fcppt/math/matrix/adjugate.hpp>
-#include <fcppt/math/detail/is_static_size.hpp>
+#include <fcppt/math/is_static_size.hpp>
 #include <fcppt/math/inverse.hpp>
 #include <fcppt/math/almost_zero.hpp>
 #include <fcppt/math/exception.hpp>
@@ -34,10 +34,10 @@ template
 >
 typename 
 boost::enable_if<
-	math::detail::is_static_size<
+	math::is_static_size<
 		N
 	>,
-	typename static_<
+	typename matrix::static_<
 		T,
 		N::value,
 		N::value

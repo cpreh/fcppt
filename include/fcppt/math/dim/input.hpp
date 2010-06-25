@@ -8,8 +8,8 @@
 #define FCPPT_MATH_DIM_INPUT_HPP_INCLUDED
 
 #include <fcppt/math/dim/basic_impl.hpp>
-#include <fcppt/math/detail/is_dynamic_size.hpp>
 #include <fcppt/math/detail/one_dimensional_input.hpp>
+#include <fcppt/math/is_dynamic_size.hpp>
 #include <boost/utility/enable_if.hpp>
 #include <iosfwd>
 
@@ -29,7 +29,7 @@ template<
 	typename Traits
 >
 typename boost::disable_if<
-	math::detail::is_dynamic_size<
+	math::is_dynamic_size<
 		N
 	>,
 	std::basic_istream<Ch, Traits> &
