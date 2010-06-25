@@ -34,6 +34,14 @@ of floats and other integral types.
 
 [endsect]
 
+[section Quaternion]
+
+`fcppt::quaternion` offers some "glue" functions that let you initialise a
+boost::math::quaternion object from a fcppt::math::vector object. There are
+also some utility functions. None of them, however, need special documentation.
+If you're using boost::math::quaternion in your program and also fcppt, take a
+look at the reference to see if you can use anything from it.
+
 [section Linear Algebra Classes]
 
 fcppt has three classes for linear algebra:

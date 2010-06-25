@@ -16,6 +16,7 @@ namespace math
 {
 namespace quaternion
 {
+/// Normalizes a quaternion q by dividing by dot(q,q)
 template<typename T>
 boost::math::quaternion<T> const
 normalize(

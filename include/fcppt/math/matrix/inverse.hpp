@@ -19,7 +19,7 @@ namespace math
 {
 namespace matrix
 {
-/// Calculates the adjugate matrix
+/// Calculates the inverse matrix
 template
 <
 	typename T,

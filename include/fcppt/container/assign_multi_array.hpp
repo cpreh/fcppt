@@ -15,6 +15,13 @@ namespace fcppt
 {
 namespace container
 {
+/**
+ * Implements a "proper" operator= for boost::multi_array
+ *
+ * The standard operator= for boost::multi_array throws an exception if the
+ * shapes of the lvalue and the rvalue do not agree. This function compensates
+ * by first resizing the array and then calling operator=
+ */
 template<typename T,std::size_t N>
 void assign_multi_array(
 	boost::multi_array<T,N> &left,

@@ -18,6 +18,7 @@ namespace math
 {
 namespace quaternion
 {
+/// Converts a quaternion to an angle and and axis
 template<typename T>
 void
 to_angle_and_axis(
