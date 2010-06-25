@@ -11,6 +11,8 @@
 #include <fcppt/math/matrix/adjugate.hpp>
 #include <fcppt/math/detail/is_static_size.hpp>
 #include <fcppt/math/inverse.hpp>
+#include <fcppt/math/almost_zero.hpp>
+#include <fcppt/math/exception.hpp>
 #include <boost/utility/enable_if.hpp>
 
 namespace fcppt
@@ -19,7 +21,11 @@ namespace math
 {
 namespace matrix
 {
-/// Calculates the inverse matrix
+/**
+ * Calculates the inverse matrix, uses fcppt::math::matrix::adjugate and fcppt::math::matrix::determinant. Throws fcppt::math::exception if fcppt::math::matrix::determinant(t) == 0
+ *
+ * @exception fcppt::math::exception If fcppt::math::matrix::determinant(t) == 0
+ */
 template
 <
 	typename T,
@@ -41,10 +47,14 @@ inverse(
 	basic<T,N,N,S> const &t
 )
 {
+	T const det = 
+		determinant(
+			t);
+	if (fcppt::math::almost_zero(det))
+		throw fcppt::math::exception(FCPPT_TEXT("tried to invert a matrix with determinant 0"));
 	return 
 		fcppt::math::inverse(
-			matrix::determinant(
-				t)) * 
+			det) * 
 		matrix::adjugate(
 			t);
 }
