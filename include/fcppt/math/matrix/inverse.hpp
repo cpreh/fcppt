@@ -13,6 +13,7 @@
 #include <fcppt/math/inverse.hpp>
 #include <fcppt/math/almost_zero.hpp>
 #include <fcppt/math/exception.hpp>
+#include <fcppt/text.hpp>
 #include <boost/utility/enable_if.hpp>
 
 namespace fcppt
@@ -48,7 +49,7 @@ inverse(
 )
 {
 	T const det = 
-		determinant(
+		fcppt::math::matrix::determinant(
 			t);
 	if (fcppt::math::almost_zero(det))
 		throw fcppt::math::exception(FCPPT_TEXT("tried to invert a matrix with determinant 0"));
