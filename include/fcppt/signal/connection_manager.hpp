@@ -27,16 +27,25 @@ public:
 	> container;
 
 	FCPPT_SYMBOL connection_manager();
+
 	FCPPT_SYMBOL connection_manager(
-		container const &);
+		container const &
+	);
 
-	FCPPT_SYMBOL void connect(
-		shared_connection const &);
+	FCPPT_SYMBOL
+	void
+	connect(
+		shared_connection const &
+	);
 
-	FCPPT_SYMBOL void connect(
-		auto_connection);
+	FCPPT_SYMBOL
+	void
+	connect(
+		auto_connection
+	);
 
-	FCPPT_SYMBOL void clear();
+	FCPPT_SYMBOL void
+	clear();
 private:
 	container connections;
 };

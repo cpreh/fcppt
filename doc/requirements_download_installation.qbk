@@ -17,7 +17,8 @@ To build the documentation the following packages are needed in addition:
 Tested compilers are:
 
 * gcc-4.5.0 (Gentoo Linux)
-* VC++ 2008 SP1 (Windows XP)
+* VC++ 2008 (Windows XP)
+* VC++ 2010 (Windows XP)
 
 
 [h1 Download]

@@ -7,7 +7,7 @@
 * Removed `container::field`. `boost::multi_array` should be used instead.
 * Changed a lot of functions for `vector`, `dim` and `matrix` to be safe with different storage types.
 * The `cctor`, `operator=` and `dtor` of `vector`, `dim` and `matrix` are now defined in the corresponding `basic_impl.hpp` file.
-* Removed the `resize` functions from `vector`, `dim` and `matrix`. Resizing their dynamic versions should be done via assignment instead.F
+* Removed the `resize` functions from `vector`, `dim` and `matrix`. Resizing their dynamic versions should be done via assignment instead.
 * Moved the comparison functions (`operator==` and `operator!=`) of `vector`, `dim` and `matrix` into their own headers. For example `vector` needs `<fcppt/math/vector/comparison.hpp>`.
 * Fixed building and using fcppt statically with VC++.
 * Building a static library and linking statically when using FindFcppt is now the default for VC++.
@@ -18,6 +18,7 @@
 * Fixed a bug in `math::matrix::rotation_y`.
 * Updated the alignment macros not to use `BOOST_PP` if this isn't required.
 * Added quaternion functions that can be used with `boost::math::quaternion`, see the documentation.
+* Added `time::std_time()` to wrap `std::time()`. Also added `time::parse_time` and `time::parse_date` to ease the use of the locale parsing functions.
 * Added `algorithm::set_intersection` that wraps `std::set_intersection`.
 * Added `is_subset_eq` for `container::bitfield`.
 * Added `filesystem::extension_without_dot`.
