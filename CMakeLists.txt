@@ -264,7 +264,152 @@ CONFIGURE_FILE(
 	${CMAKE_SOURCE_DIR}/include/fcppt/version.hpp
 )
 
-ADD_SUBDIRECTORY (src)
+MACRO(ADD_FCPPT_SOURCE_GROUP GROUPPATH PATTERN)
+	FILE(GLOB GROUPFILES ${GROUPPATH}/${PATTERN})
+
+	STRING(REPLACE "/" "\\" GROUPFOLDER ${GROUPPATH})
+
+	SOURCE_GROUP(${GROUPFOLDER} FILES ${GROUPFILES})
+
+	SET(FCPPTFILES ${FCPPTFILES} ${GROUPFILES})
+
+	MESSAGE(${GROUPFOLDER})
+ENDMACRO()
+
+MACRO(ADD_FCPPT_HEADER_GROUP GROUPPATH)
+	ADD_FCPPT_SOURCE_GROUP(${GROUPPATH} "*.?pp")
+ENDMACRO()
+
+ADD_FCPPT_HEADER_GROUP(include)
+ADD_FCPPT_HEADER_GROUP(include/fcppt)
+ADD_FCPPT_HEADER_GROUP(include/fcppt/algorithm)
+ADD_FCPPT_HEADER_GROUP(include/fcppt/algorithm/impl)
+ADD_FCPPT_HEADER_GROUP(include/fcppt/alignment)
+ADD_FCPPT_HEADER_GROUP(include/fcppt/alignment/detail)
+ADD_FCPPT_HEADER_GROUP(include/fcppt/assign)
+ADD_FCPPT_HEADER_GROUP(include/fcppt/assign/detail)
+ADD_FCPPT_HEADER_GROUP(include/fcppt/chrono)
+ADD_FCPPT_HEADER_GROUP(include/fcppt/chrono/convert)
+ADD_FCPPT_HEADER_GROUP(include/fcppt/chrono/detail)
+ADD_FCPPT_HEADER_GROUP(include/fcppt/chrono/impl)
+ADD_FCPPT_HEADER_GROUP(include/fcppt/container)
+ADD_FCPPT_HEADER_GROUP(include/fcppt/container/bitfield)
+ADD_FCPPT_HEADER_GROUP(include/fcppt/container/bitfield/detail)
+ADD_FCPPT_HEADER_GROUP(include/fcppt/container/impl)
+ADD_FCPPT_HEADER_GROUP(include/fcppt/container/tree)
+ADD_FCPPT_HEADER_GROUP(include/fcppt/detail)
+ADD_FCPPT_HEADER_GROUP(include/fcppt/endianness)
+ADD_FCPPT_HEADER_GROUP(include/fcppt/error)
+ADD_FCPPT_HEADER_GROUP(include/fcppt/filesystem)
+ADD_FCPPT_HEADER_GROUP(include/fcppt/filesystem/detail)
+ADD_FCPPT_HEADER_GROUP(include/fcppt/filesystem/impl)
+ADD_FCPPT_HEADER_GROUP(include/fcppt/function)
+ADD_FCPPT_HEADER_GROUP(include/fcppt/function/detail)
+ADD_FCPPT_HEADER_GROUP(include/fcppt/impl)
+ADD_FCPPT_HEADER_GROUP(include/fcppt/io)
+ADD_FCPPT_HEADER_GROUP(include/fcppt/log)
+ADD_FCPPT_HEADER_GROUP(include/fcppt/log/detail)
+ADD_FCPPT_HEADER_GROUP(include/fcppt/log/format)
+ADD_FCPPT_HEADER_GROUP(include/fcppt/log/impl)
+ADD_FCPPT_HEADER_GROUP(include/fcppt/log/parameters)
+ADD_FCPPT_HEADER_GROUP(include/fcppt/math)
+ADD_FCPPT_HEADER_GROUP(include/fcppt/math/box)
+ADD_FCPPT_HEADER_GROUP(include/fcppt/math/detail)
+ADD_FCPPT_HEADER_GROUP(include/fcppt/math/dim)
+ADD_FCPPT_HEADER_GROUP(include/fcppt/math/impl)
+ADD_FCPPT_HEADER_GROUP(include/fcppt/math/matrix)
+ADD_FCPPT_HEADER_GROUP(include/fcppt/math/matrix/detail)
+ADD_FCPPT_HEADER_GROUP(include/fcppt/math/quaternion)
+ADD_FCPPT_HEADER_GROUP(include/fcppt/math/sphere)
+ADD_FCPPT_HEADER_GROUP(include/fcppt/math/vector)
+ADD_FCPPT_HEADER_GROUP(include/fcppt/mpl)
+ADD_FCPPT_HEADER_GROUP(include/fcppt/mpl/detail)
+ADD_FCPPT_HEADER_GROUP(include/fcppt/mpl/impl)
+ADD_FCPPT_HEADER_GROUP(include/fcppt/preprocessor)
+ADD_FCPPT_HEADER_GROUP(include/fcppt/preprocessor/detail)
+ADD_FCPPT_HEADER_GROUP(include/fcppt/random)
+ADD_FCPPT_HEADER_GROUP(include/fcppt/random/actor)
+ADD_FCPPT_HEADER_GROUP(include/fcppt/random/detail)
+ADD_FCPPT_HEADER_GROUP(include/fcppt/random/impl)
+ADD_FCPPT_HEADER_GROUP(include/fcppt/ratio)
+ADD_FCPPT_HEADER_GROUP(include/fcppt/ratio/detail)
+ADD_FCPPT_HEADER_GROUP(include/fcppt/signal)
+ADD_FCPPT_HEADER_GROUP(include/fcppt/signal/detail)
+ADD_FCPPT_HEADER_GROUP(include/fcppt/thread)
+ADD_FCPPT_HEADER_GROUP(include/fcppt/thread/detail)
+ADD_FCPPT_HEADER_GROUP(include/fcppt/thread/impl)
+ADD_FCPPT_HEADER_GROUP(include/fcppt/time)
+ADD_FCPPT_HEADER_GROUP(include/fcppt/time/detail)
+ADD_FCPPT_HEADER_GROUP(include/fcppt/time/impl)
+ADD_FCPPT_HEADER_GROUP(include/fcppt/tr1)
+ADD_FCPPT_HEADER_GROUP(include/fcppt/tr1/detail)
+ADD_FCPPT_HEADER_GROUP(include/fcppt/type_traits)
+ADD_FCPPT_HEADER_GROUP(include/fcppt/utf8)
+ADD_FCPPT_HEADER_GROUP(include/fcppt/variant)
+ADD_FCPPT_HEADER_GROUP(include/fcppt/variant/detail)
+ADD_FCPPT_HEADER_GROUP(include/fcppt/variant/impl)
+
+MACRO(ADD_FCPPT_CPP_GROUP GROUPPATH)
+	ADD_FCPPT_SOURCE_GROUP(${GROUPPATH} "*.?pp")
+ENDMACRO()
+
+ADD_FCPPT_CPP_GROUP(src)
+ADD_FCPPT_CPP_GROUP(src/chrono)
+ADD_FCPPT_CPP_GROUP(src/endianness)
+ADD_FCPPT_CPP_GROUP(src/error)
+ADD_FCPPT_CPP_GROUP(src/filesystem)
+ADD_FCPPT_CPP_GROUP(src/io)
+ADD_FCPPT_CPP_GROUP(src/log)
+ADD_FCPPT_CPP_GROUP(src/log/detail)
+ADD_FCPPT_CPP_GROUP(src/log/format)
+ADD_FCPPT_CPP_GROUP(src/log/parameters)
+ADD_FCPPT_CPP_GROUP(src/random)
+ADD_FCPPT_CPP_GROUP(src/random/actor)
+ADD_FCPPT_CPP_GROUP(src/signal)
+ADD_FCPPT_CPP_GROUP(src/signal/detail)
+ADD_FCPPT_CPP_GROUP(src/thread)
+ADD_FCPPT_CPP_GROUP(src/time)
+ADD_FCPPT_CPP_GROUP(src/utf8)
+
+MACRO(MAKE_FCPPT_LIBRARY TARGETNAME VARIANT)
+	ADD_LIBRARY (${TARGETNAME} ${VARIANT} ${FCPPTFILES})
+
+	SET_TARGET_PROPERTIES(${TARGETNAME} PROPERTIES VERSION ${FCPPT_VERSION})
+
+	IF(${TARGETNAME} STREQUAL fcppt)
+		SET_TARGET_PROPERTIES(
+			${TARGETNAME} PROPERTIES SOVERSION ${FCPPT_SHARED_VERSION}
+		)
+	ENDIF()
+
+	#rename fcppt_static into fcppt for UNIX
+	IF(${TARGETNAME} STREQUAL fcppt_static AND UNIX)
+		SET_TARGET_PROPERTIES(
+			${TARGETNAME} PROPERTIES OUTPUT_NAME fcppt
+		)
+	ENDIF()
+
+	IF (NOT MSVC)
+		TARGET_LINK_LIBRARIES (
+			${TARGETNAME}
+			${Boost_LIBRARIES}
+		)
+	ENDIF ()
+
+	IF(FCPPT_HAVE_CLOCK_GETTIME)
+		TARGET_LINK_LIBRARIES(${TARGETNAME} rt)
+	ENDIF()
+
+	INSTALL (TARGETS ${TARGETNAME} DESTINATION ${CMAKE_INSTALL_PREFIX}/lib)
+ENDMACRO()
+
+IF (ENABLE_SHARED)
+	MAKE_FCPPT_LIBRARY(fcppt SHARED)
+ENDIF()
+
+IF (ENABLE_STATIC)
+	MAKE_FCPPT_LIBRARY(fcppt_static STATIC)
+ENDIF()
 
 OPTION(ENABLE_EXAMPLES "Build the examples" ON)
 
@@ -289,4 +434,5 @@ ENDIF ()
 INSTALL (
 	DIRECTORY include/
 	DESTINATION include
+	PATTERN dummy.hpp EXCLUDE
 )
