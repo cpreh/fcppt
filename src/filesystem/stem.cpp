@@ -8,7 +8,8 @@
 
 fcppt::string const
 fcppt::filesystem::stem(
-	path const &p)
+	path const &p
+)
 {
 	return p.stem();
 }

@@ -9,9 +9,11 @@
 
 bool
 fcppt::filesystem::remove(
-	path const &_p)
+	path const &_p
+)
 {
 	return 
 		boost::filesystem::remove(
-			_p);
+			_p
+		);
 }

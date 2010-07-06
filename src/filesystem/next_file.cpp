@@ -10,9 +10,13 @@
 
 fcppt::filesystem::directory_iterator const
 fcppt::filesystem::next_file(
-	directory_iterator it)
+	directory_iterator it
+)
 {
-	if(it != directory_iterator() && filesystem::is_regular(*it))
+	if(
+		it != directory_iterator()
+		&& filesystem::is_regular(*it)
+	)
 		++it;
 
 	return skip_directories(it);

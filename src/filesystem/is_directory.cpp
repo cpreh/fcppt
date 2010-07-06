@@ -7,8 +7,10 @@
 #include <fcppt/filesystem/is_directory.hpp>
 #include <boost/filesystem/operations.hpp>
 
-bool fcppt::filesystem::is_directory(
-	path const &p)
+bool
+fcppt::filesystem::is_directory(
+	path const &p
+)
 {
 	return boost::filesystem::is_directory(p);
 }

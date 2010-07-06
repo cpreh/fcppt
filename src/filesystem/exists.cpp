@@ -7,8 +7,10 @@
 #include <fcppt/filesystem/exists.hpp>
 #include <boost/filesystem/operations.hpp>
 
-bool fcppt::filesystem::exists(
-	path const &p)
+bool
+fcppt::filesystem::exists(
+	path const &p
+)
 {
 	return boost::filesystem::exists(p);
 }

@@ -9,8 +9,11 @@
 
 fcppt::filesystem::directory_iterator const
 fcppt::filesystem::first_file(
-	path const &p)
+	path const &p
+)
 {
-	return skip_directories(
-		directory_iterator(p));
+	return
+		skip_directories(
+			directory_iterator(p)
+		);
 }
