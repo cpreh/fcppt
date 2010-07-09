@@ -24,10 +24,11 @@ static_pointer_cast(
 	shared_ptr<U, Deleter> const &r
 )
 {
-	return shared_ptr<T, Deleter>(
-		r,
-		boost::detail::static_cast_tag()
-	);
+	return
+		shared_ptr<T, Deleter>(
+			r,
+			boost::detail::static_cast_tag()
+		);
 }
 
 }

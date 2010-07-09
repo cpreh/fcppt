@@ -24,10 +24,11 @@ dynamic_pointer_cast(
 	shared_ptr<U, Deleter> const &r
 )
 {
-	return fcppt::shared_ptr<T, Deleter>(
-		r,
-		boost::detail::dynamic_cast_tag()
-	);
+	return
+		fcppt::shared_ptr<T, Deleter>(
+			r,
+			boost::detail::dynamic_cast_tag()
+		);
 }
 
 }
