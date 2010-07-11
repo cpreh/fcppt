@@ -8,19 +8,10 @@
 #define FCPPT_TYPE_TRAITS_IS_ITERATOR_HPP_INCLUDED
 
 #include <boost/type_traits/integral_constant.hpp>
-
-namespace boost
-{
-
-template<
-	typename T,
-	typename I,
-	typename R,
-	typename V
->
-class transform_iterator;
-
-}
+#include <boost/type_traits/remove_pointer.hpp>
+#include <boost/type_traits/is_pointer.hpp>
+#include <boost/type_traits/is_same.hpp>
+#include <boost/mpl/not.hpp>
 
 namespace fcppt
 {
@@ -28,40 +19,63 @@ namespace type_traits
 {
 
 template<
-	typename  T
+	typename IterT,
+	bool IsPointer
+		= boost::is_pointer<
+			IterT
+		>::value
 >
 struct is_iterator
 :
-boost::false_type
-{};
-
-template<
-	typename U,
-	typename I,
-	typename R,
-	typename V
->
-struct is_iterator<
-	boost::transform_iterator<
-		U,
-		I,
-		R,
-		V
+boost::mpl::not_<
+	boost::is_same<
+		boost::remove_pointer<
+			IterT
+		>,
+		void
 	>
 >
-:
-boost::true_type
 {};
 
 template<
-	typename T
+	typename IterT
 >
 struct is_iterator<
-	T *
+	IterT,
+	false
 >
-:
-boost::true_type
-{};
+{
+//private: TODO: get rid of this warning
+	typedef char true_t;
+
+	struct false_t
+	{
+		true_t f[2];
+	};
+
+	static IterT *
+	make();
+
+	template<
+		typename T
+	>
+	static true_t
+	check(
+		T *,
+		typename T::iterator_category * = 0
+	);
+
+	static false_t
+	check(...);
+public:
+	static bool const value =
+		sizeof(
+			check(
+				make()
+			)
+		)
+		== sizeof(true_t);
+};
 
 }
 }

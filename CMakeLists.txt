@@ -77,10 +77,12 @@ IF (CMAKE_COMPILER_IS_GNUCXX)
 
 	OPTION (ENABLE_DEBUG_WARNINGS "Enable -Wpadded and -Weffc++" OFF)
 
-	ADD_DEFINITIONS ("-pedantic-errors -Wall -Wextra -Wconversion"
-	"-Wfloat-equal -Wredundant-decls -Wstrict-null-sentinel -Winit-self"
-	"-Woverloaded-virtual -Wnon-virtual-dtor -Wctor-dtor-privacy"
-	"-Wsign-promo -Wstrict-aliasing=1 -Wold-style-cast")
+	ADD_DEFINITIONS (
+		"-pedantic-errors -Wall -Wextra -Wconversion"
+		"-Wfloat-equal -Wredundant-decls -Wstrict-null-sentinel -Winit-self"
+		"-Woverloaded-virtual -Wnon-virtual-dtor -Wctor-dtor-privacy"
+		"-Wsign-promo -Wstrict-aliasing=1 -Wold-style-cast"
+	)
 
 	IF(ENABLE_DEBUG_WARNINGS)
 		SET (CMAKE_CXX_FLAGS_DEBUG ${CMAKE_CXX_FLAGS_DEBUG}" -Wpadded -Weffc++")
