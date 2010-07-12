@@ -9,6 +9,8 @@
 
 #include <boost/type_traits/integral_constant.hpp>
 #include <boost/type_traits/remove_pointer.hpp>
+#include <boost/type_traits/remove_cv.hpp>
+#include <boost/type_traits/remove_reference.hpp>
 #include <boost/type_traits/is_pointer.hpp>
 #include <boost/type_traits/is_same.hpp>
 #include <boost/mpl/not.hpp>
@@ -29,8 +31,12 @@ struct is_iterator
 :
 boost::mpl::not_<
 	boost::is_same<
-		boost::remove_pointer<
-			IterT
+		boost::remove_cv<
+			boost::remove_pointer<
+				boost::remove_reference<
+					IterT
+				>
+			>
 		>,
 		void
 	>
@@ -62,7 +68,10 @@ struct is_iterator<
 	static true_t
 	check(
 		T *,
-		typename T::iterator_category * = 0
+		typename T::iterator_category * = 0,
+		typename T::value_type * = 0,
+		typename T::difference_type * = 0,
+		typename T::pointer * = 0
 	);
 
 	static false_t
