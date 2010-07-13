@@ -4,8 +4,8 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_LOG_FORMAT_OBJECT_PTR_HPP_INCLUDED
-#define FCPPT_LOG_FORMAT_OBJECT_PTR_HPP_INCLUDED
+#ifndef FCPPT_LOG_FORMAT_CONST_OBJECT_PTR_HPP_INCLUDED
+#define FCPPT_LOG_FORMAT_CONST_OBJECT_PTR_HPP_INCLUDED
 
 #include <fcppt/log/format/object_fwd.hpp>
 #include <fcppt/shared_ptr.hpp>
@@ -18,8 +18,8 @@ namespace format
 {
 
 typedef shared_ptr<
-	object
-> object_ptr;
+	object const
+> const_object_ptr;
 
 }
 }

@@ -8,15 +8,22 @@
 #include <fcppt/format.hpp>
 
 fcppt::log::format::inserter::inserter(
-	string const &format_string)
+	string const &_format_string
+)
 :
-	format_string(format_string)
+	format_string(_format_string)
 {}
 
 fcppt::string const
 fcppt::log::format::inserter::format(
-	string const &dest) const
+	string const &dest
+) const
 {
-	return (fcppt::format(
-		format_string) % dest).str();
+	return
+		(
+			fcppt::format(
+				format_string
+			)
+			% dest
+		).str();
 }

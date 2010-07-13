@@ -9,7 +9,7 @@
 
 #include <fcppt/log/level_stream_fwd.hpp>
 #include <fcppt/log/detail/temporary_output_fwd.hpp>
-#include <fcppt/log/format/object_ptr.hpp>
+#include <fcppt/log/format/const_object_ptr.hpp>
 #include <fcppt/io/ostream.hpp>
 #include <fcppt/symbol.hpp>
 #include <fcppt/nonassignable.hpp>

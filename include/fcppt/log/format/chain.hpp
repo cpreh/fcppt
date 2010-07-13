@@ -8,7 +8,7 @@
 #define FCPPT_LOG_FORMAT_CHAIN_HPP_INCLUDED
 
 #include <fcppt/log/format/object.hpp>
-#include <fcppt/log/format/object_ptr.hpp>
+#include <fcppt/log/format/const_object_ptr.hpp>
 #include <fcppt/string.hpp>
 #include <fcppt/symbol.hpp>
 

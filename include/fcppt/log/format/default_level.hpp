@@ -7,7 +7,7 @@
 #ifndef FCPPT_LOG_FORMAT_DEFAULT_LEVEL_HPP_INCLUDED
 #define FCPPT_LOG_FORMAT_DEFAULT_LEVEL_HPP_INCLUDED
 
-#include <fcppt/log/format/object_ptr.hpp>
+#include <fcppt/log/format/const_object_ptr.hpp>
 #include <fcppt/log/level.hpp>
 #include <fcppt/symbol.hpp>
 

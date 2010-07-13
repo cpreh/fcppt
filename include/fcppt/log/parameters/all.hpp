@@ -14,7 +14,7 @@
 #include <fcppt/log/enabled_level_array.hpp>
 #include <fcppt/log/context_location.hpp>
 #include <fcppt/log/location_fwd.hpp>
-#include <fcppt/log/format/object_ptr.hpp>
+#include <fcppt/log/format/const_object_ptr.hpp>
 #include <fcppt/io/ostream.hpp>
 #include <fcppt/symbol.hpp>
 
