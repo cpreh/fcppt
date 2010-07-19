@@ -80,7 +80,7 @@ IF (CMAKE_COMPILER_IS_GNUCXX)
 	ADD_DEFINITIONS (
 		"-pedantic-errors -Wall -Wextra -Wconversion"
 		"-Wfloat-equal -Wredundant-decls -Wstrict-null-sentinel -Winit-self"
-		"-Woverloaded-virtual -Wnon-virtual-dtor -Wctor-dtor-privacy"
+		"-Woverloaded-virtual -Wnon-virtual-dtor"
 		"-Wsign-promo -Wstrict-aliasing=1 -Wold-style-cast"
 	)
 

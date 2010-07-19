@@ -51,7 +51,7 @@ struct is_iterator<
 	false
 >
 {
-//private: TODO: get rid of this warning
+private:
 	typedef char true_t;
 
 	struct false_t

@@ -31,7 +31,7 @@ template<
 >
 struct common_type
 {
-//private: silence gcc warning about everything being private
+private:
 	static T m_t();
 	static U m_u();
 public:
