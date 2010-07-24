@@ -250,6 +250,15 @@ fcppt::variant::object<Types>::type_index() const
 template<
 	typename Types
 >
+void
+fcppt::variant::object<Types>::reset()
+{
+	destroy();
+}
+
+template<
+	typename Types
+>
 template<
 	typename U
 >

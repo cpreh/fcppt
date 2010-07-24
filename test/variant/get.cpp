@@ -7,8 +7,6 @@
 #include <fcppt/variant/object.hpp>
 #include <boost/mpl/vector/vector10.hpp>
 #include <boost/test/unit_test.hpp>
-#include <iostream>
-#include <ostream>
 #include <string>
 
 BOOST_AUTO_TEST_CASE(variant_get)
@@ -21,16 +19,19 @@ BOOST_AUTO_TEST_CASE(variant_get)
 		>
 	> variant;
 
-	variant test(
-		std::string(
-			"hello world"
-		)
+	std::string const string(
+		"hello world"
 	);
 
-	std::cout
-		<<
+	variant test(
+		string
+	);
+
+	BOOST_REQUIRE(
 		test.get<
 			std::string
 		>()
-		<< '\n';
+		== 
+		string
+	);
 }

@@ -100,6 +100,10 @@ public:
 	/// Returns the index of the held type in the type list
 	size_type
 	type_index() const;
+
+	/// Destroys the held object, so that empty() will be true
+	void
+	reset();
 private:
 	template<
 		typename U
