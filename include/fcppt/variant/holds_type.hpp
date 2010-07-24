@@ -9,17 +9,30 @@
 
 #include <fcppt/variant/object_impl.hpp>
 #include <fcppt/mpl/index_of.hpp>
+#include <boost/mpl/contains.hpp>
+#include <boost/utility/enable_if.hpp>
 
 namespace fcppt
 {
 namespace variant
 {
 
+/// Checks if @tparam Type is held by @a _variant
+/**
+ * Requires that Type is an element of Types.
+ * Will return false if the variant is empty.
+*/
 template<
 	typename Type,
 	typename Types
 >
-bool
+typename boost::enable_if<
+	boost::mpl::contains<
+		Types,
+		Type
+	>,
+	bool
+>::type
 holds_type(
 	variant::object<
 		Types
