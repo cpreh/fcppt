@@ -4,6 +4,7 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
+
 #ifndef FCPPT_MATH_MATRIX_TRANSLATION_HPP_INCLUDED
 #define FCPPT_MATH_MATRIX_TRANSLATION_HPP_INCLUDED
 

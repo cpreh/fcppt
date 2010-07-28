@@ -61,10 +61,10 @@ perspective(
 	return
 		typename static_<T, 4, 4>::type
 		(
-			w, zero, zero, zero,
-			zero, h, zero, zero,
-			zero, zero, q, static_cast<T>(-1),
-			zero, zero, p, zero
+			w, zero, zero,                  zero,
+			zero, h, zero,                  zero,
+			zero, zero, q,                  p,
+			zero, zero, static_cast<T>(-1), zero
 		);
 
 }
