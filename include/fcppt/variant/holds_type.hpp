@@ -8,6 +8,7 @@
 #define FCPPT_VARIANT_HOLDS_TYPE_HPP_INCLUDED
 
 #include <fcppt/variant/object_impl.hpp>
+#include <fcppt/variant/size_type.hpp>
 #include <fcppt/mpl/index_of.hpp>
 #include <boost/mpl/contains.hpp>
 #include <boost/utility/enable_if.hpp>
@@ -42,10 +43,14 @@ holds_type(
 	return
 		_variant.type_index()
 		==
-		fcppt::mpl::index_of<
-			Types,
-			Type
-		>::value;
+		static_cast<
+			fcppt::variant::size_type
+		>(
+			fcppt::mpl::index_of<
+				Types,
+				Type
+			>::value
+		);
 }
 
 }
