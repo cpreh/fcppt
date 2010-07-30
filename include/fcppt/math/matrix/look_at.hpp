@@ -102,9 +102,9 @@ look_at(
 			4,
 			4
 		>::type(
-			s.x(), u.x(), -f.x(), 0,
-			s.y(), u.y(), -f.y(), 0,
-			s.z(), u.z(), -f.z(), 0,
+			s.x(),  s.y(),  s.z(),  0,
+			u.x(),  u.y(),  u.z(),  0,
+			-f.x(), -f.y(), -f.z(), 0,
 			0, 0, 0, 1
 		)
 		* translation(

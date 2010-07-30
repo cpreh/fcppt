@@ -24,12 +24,20 @@ template<
 typename static_<T, 4, 4>::type const
 orthogonal_xy()
 {
+	T const
+		one(
+			static_cast<T>(1)
+		),
+		zero(
+			static_cast<T>(0)
+		);
+
 	return
 		typename static_<T, 4, 4>::type(
-			static_cast<T>(1), static_cast<T>(0), static_cast<T>(0), static_cast<T>(0),
-			static_cast<T>(0), static_cast<T>(1), static_cast<T>(0), static_cast<T>(0),
-			static_cast<T>(0), static_cast<T>(0), static_cast<T>(0), static_cast<T>(0),
-			static_cast<T>(0), static_cast<T>(0), static_cast<T>(0), static_cast<T>(1)
+			one, zero, zero, zero,
+			zero, one, zero, zero,
+			zero, zero, zero, zero,
+			zero, zero, zero, on
 		);
 }
 
