@@ -32,13 +32,21 @@ translation(
 	T const z
 )
 {
+	T const 
+		zero(
+			static_cast<T>(0)
+		),
+		one(
+			static_cast<T>(1)
+		);
+
 	return
 		typename static_<T, 4, 4>::type
 		(
-			static_cast<T>(1), static_cast<T>(0), static_cast<T>(0), x,
-		        static_cast<T>(0), static_cast<T>(1), static_cast<T>(0), y,
-		        static_cast<T>(0), static_cast<T>(0), static_cast<T>(1), z,
-	        	static_cast<T>(0), static_cast<T>(0), static_cast<T>(0), static_cast<T>(1)
+			one, zero, zero, x,
+			zero, one, zero, y,
+			zero, zero, one, z,
+			zero, zero, zero, one
 		);
 }
 
