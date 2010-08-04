@@ -11,7 +11,7 @@
 #include <fcppt/math/matrix/max_ctor_params.hpp>
 #include <fcppt/math/matrix/dim_type.hpp>
 #include <fcppt/math/matrix/detail/dim_storage.hpp>
-#include <fcppt/math/detail/view_storage.hpp>
+#include <fcppt/math/matrix/detail/row_view.hpp>
 #include <fcppt/math/detail/make_op_decl.hpp>
 #include <fcppt/math/detail/make_variadic_constructor_decl.hpp>
 #include <fcppt/math/vector/basic_decl.hpp>
@@ -69,7 +69,7 @@ public:
 	typedef vector::basic<
 		T,
 		N,
-		math::detail::view_storage<
+		matrix::detail::row_view<
 			T,
 			N
 		>
@@ -78,7 +78,7 @@ public:
 	typedef vector::basic<
 		T,
 		N,
-		math::detail::view_storage<
+		matrix::detail::row_view<
 			T const,
 			N
 		>

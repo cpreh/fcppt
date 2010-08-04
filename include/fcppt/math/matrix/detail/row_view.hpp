@@ -4,12 +4,14 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_MATH_DETAIL_VIEW_STORAGE_HPP_INCLUDED
-#define FCPPT_MATH_DETAIL_VIEW_STORAGE_HPP_INCLUDED
+#ifndef FCPPT_MATH_MATRIX_DETAIL_ROW_VIEW_HPP_INCLUDED
+#define FCPPT_MATH_MATRIX_DETAIL_ROW_VIEW_HPP_INCLUDED
 
 namespace fcppt
 {
 namespace math
+{
+namespace matrix
 {
 namespace detail
 {
@@ -18,7 +20,7 @@ template<
 	typename T,
 	typename N
 >
-class view_storage
+class row_view
 {
 public:
 	typedef T value_type;
@@ -26,7 +28,7 @@ public:
 	typedef T &reference;
 	typedef T *pointer;
 
-	view_storage(
+	row_view(
 		pointer,
 		size_type index,
 		size_type stride,
@@ -44,14 +46,12 @@ public:
 	size_type
 	size() const;
 private:
-	pointer rep;
+	pointer rep_;
 
-	size_type
-		index,
-		stride,
-		sz;
+	size_type size_;
 };
 
+}
 }
 }
 }

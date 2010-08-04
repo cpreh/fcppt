@@ -8,6 +8,7 @@
 #define FCPPT_MATH_MATRIX_BASIC_IMPL_HPP_INCLUDED
 
 #include <fcppt/math/matrix/detail/dim_storage_impl.hpp>
+#include <fcppt/math/matrix/detail/row_view_impl.hpp>
 #include <fcppt/math/matrix/basic_decl.hpp>
 #include <fcppt/math/compare.hpp>
 #include <fcppt/math/vector/basic_impl.hpp>
@@ -15,7 +16,6 @@
 #include <fcppt/math/detail/array_adapter_impl.hpp>
 #include <fcppt/math/detail/storage_data.hpp>
 #include <fcppt/math/detail/storage_dim.hpp>
-#include <fcppt/math/detail/view_storage_impl.hpp>
 #include <fcppt/math/detail/make_variadic_constructor.hpp>
 #include <fcppt/math/detail/initial_size.hpp>
 #include <fcppt/math/detail/make_op_def.hpp>
