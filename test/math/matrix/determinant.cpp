@@ -5,7 +5,7 @@
 
 
 #include <fcppt/math/matrix/determinant.hpp>
-#include <fcppt/math/matrix/output.hpp>
+#include <fcppt/math/matrix/static.hpp>
 #include <boost/test/unit_test.hpp>
 
 BOOST_AUTO_TEST_CASE(determinant)
