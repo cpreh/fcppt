@@ -90,7 +90,7 @@ delete_column_and_row(
 				: 
 					j;
 
-			ret[realj][reali] = matrix_[j][i];
+			ret[reali][realj] = matrix_[i][j];
 		}
 	}
 
