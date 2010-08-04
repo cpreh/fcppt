@@ -4,8 +4,8 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_MATH_MATRIX_DELETE_COLUMN_AND_ROW_HPP_INCLUDED
-#define FCPPT_MATH_MATRIX_DELETE_COLUMN_AND_ROW_HPP_INCLUDED
+#ifndef FCPPT_MATH_MATRIX_DELETE_ROW_AND_COLUMN_HPP_INCLUDED
+#define FCPPT_MATH_MATRIX_DELETE_ROW_AND_COLUMN_HPP_INCLUDED
 
 #include <fcppt/math/matrix/basic_impl.hpp>
 #include <fcppt/math/matrix/static.hpp>
@@ -41,10 +41,10 @@ typename boost::enable_if<
 		M::value-1
 	>::type const
 >::type
-delete_column_and_row(
+delete_row_and_column(
 	basic<T, N, M, S> const &matrix_,
-	typename basic<T, N, M, S>::size_type const column,
-	typename basic<T, N, M, S>::size_type const row
+	typename basic<T, N, M, S>::size_type const row,
+	typename basic<T, N, M, S>::size_type const column
 )
 {
 	typedef typename

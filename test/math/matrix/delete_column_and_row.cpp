@@ -4,13 +4,13 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/math/matrix/delete_column_and_row.hpp>
+#include <fcppt/math/matrix/delete_row_and_column.hpp>
 #include <fcppt/math/matrix/comparison.hpp>
 #include <fcppt/math/matrix/static.hpp>
 #include <fcppt/math/matrix/basic_impl.hpp>
 #include <boost/test/unit_test.hpp>
 
-BOOST_AUTO_TEST_CASE(delete_column_and_row)
+BOOST_AUTO_TEST_CASE(delete_row_and_column)
 {
 	typedef 
 	fcppt::math::matrix::static_<
@@ -36,10 +36,10 @@ BOOST_AUTO_TEST_CASE(delete_column_and_row)
 
 	BOOST_CHECK(
 		(
-		fcppt::math::matrix::delete_column_and_row(
+		fcppt::math::matrix::delete_row_and_column(
 			t,
-			static_cast<large_matrix_type::size_type>(1),
-			static_cast<large_matrix_type::size_type>(2)) == 
+			static_cast<large_matrix_type::size_type>(2),
+			static_cast<large_matrix_type::size_type>(1)) == 
 		small_matrix_type(
 			1,3,
 			4,6,
@@ -47,7 +47,7 @@ BOOST_AUTO_TEST_CASE(delete_column_and_row)
 
 	BOOST_CHECK(
 		(
-		fcppt::math::matrix::delete_column_and_row(
+		fcppt::math::matrix::delete_row_and_column(
 			t,
 			static_cast<large_matrix_type::size_type>(0),
 			static_cast<large_matrix_type::size_type>(0)) == 
