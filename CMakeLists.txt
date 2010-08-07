@@ -438,5 +438,4 @@ ENDIF ()
 INSTALL (
 	DIRECTORY include/
 	DESTINATION include
-	PATTERN dummy.hpp EXCLUDE
 )
