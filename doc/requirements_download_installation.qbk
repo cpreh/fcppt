@@ -16,8 +16,7 @@ To build the documentation the following packages are needed in addition:
 
 Tested compilers are:
 
-* gcc-4.5.0 (Gentoo Linux)
-* VC++ 2008 (Windows XP)
+* gcc-4.5.1 (Gentoo Linux)
 * VC++ 2010 (Windows XP)
 
 
@@ -28,7 +27,7 @@ fcppt is available through our public Git Repository: `git://timeout.supraverse.
 The latest fcppt release is 0.3.
 Get it [@http://supraverse.net/freundlich/fcppt-0.3.tar.bz2 here].
 
-The Gentoo ebuilds are available [@http://supraverse.net/freundlich/fcppt-gentoo-ebuilds-3.tar.bz2 here].
+The Gentoo ebuilds are available [@http://supraverse.net/freundlich/fcppt-gentoo-ebuilds-4.tar.bz2 here].
 
 
 [h1 Installation]
