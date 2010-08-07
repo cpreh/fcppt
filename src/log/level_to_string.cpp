@@ -13,7 +13,7 @@ fcppt::log::level_to_string(
 )
 {
 	return
-		level_strings[
+		level_strings()[
 			static_cast<
 				level_string_array::size_type
 			>(
