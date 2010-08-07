@@ -7,7 +7,7 @@
 * Fixed the `is_iterator` template. Thanks to Dodheim from #boost.
 * Added `variant::holds_type` to check whether a `variant::object` currently holds an object of a given type, and `variant::object::reset` to clear the variant.
 * Fixed `matrix::perspective` and `matrix::look_at`.
-* Added `box::stretch` to stretch a box arounds its center, and `box::center`.
+* Added `box::stretch` to stretch a box around its center, and `box::center`.
 * Changed the meaning of `matrix[i][j]` to be `[row][column]` to avoid confusion. As a side effect, the associativety of `matrix * matrix` has been reversed.
 * `matrix::delete_column_and_row` has been renamed to `matrix::delete_row_and_column`.
 
