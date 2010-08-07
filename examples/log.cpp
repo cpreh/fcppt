@@ -6,7 +6,6 @@
 
 #include <fcppt/log/context.hpp>
 #include <fcppt/log/object.hpp>
-#include <fcppt/log/global_context.hpp>
 #include <fcppt/log/global.hpp>
 #include <fcppt/log/parameters/root.hpp>
 #include <fcppt/log/parameters/inherited.hpp>
@@ -101,24 +100,6 @@ try
 		*child_ref,
 		fcppt::log::_
 			<< FCPPT_TEXT("shouldn't be shown!")
-	);
-
-	fcppt::log::global();
-
-	fcppt::log::object *const global_ref(
-		fcppt::log::global_context().find(
-			fcppt::log::location(
-				FCPPT_TEXT("fcppt")
-			)
-		)
-	);
-
-	FCPPT_ASSERT(global_ref);
-
-	FCPPT_LOG_WARNING(
-		*global_ref,
-		fcppt::log::_
-			<< FCPPT_TEXT("Test global warning log!")
 	);
 }
 catch(
