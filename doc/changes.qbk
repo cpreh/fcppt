@@ -2,7 +2,7 @@
 
 [h1 Changes from 0.2 to 0.3]
 
-* Added source groups for VC++ to make the generated project file actually useable.
+* Added source groups for Visual Studio to make the generated project file actually useable. This will only work for Visual Studio 2010 if you use cmake-2.8.2 or later.
 * Removed the `FUNCTION_ONCE` macro. Static data members essentially make functions non reentrant, which is bad.
 * Fixed the `is_iterator` template. Thanks to Dodheim from #boost.
 * Added `variant::holds_type` to check whether a `variant::object` currently holds an object of a given type, and `variant::object::reset` to clear the variant.
