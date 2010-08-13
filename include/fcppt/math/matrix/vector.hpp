@@ -55,7 +55,7 @@ operator *(
 			j < N::value;
 			++j
 		)
-			ret[i] += v[j] * m[j][i];
+			ret[i] += v[j] * m[i][j];
 	return ret;
 }
 

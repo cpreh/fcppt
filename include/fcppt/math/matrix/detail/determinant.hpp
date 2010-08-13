@@ -9,7 +9,7 @@
 
 #include <fcppt/math/matrix/basic_impl.hpp>
 #include <fcppt/math/matrix/static.hpp>
-#include <fcppt/math/matrix/delete_column_and_row.hpp>
+#include <fcppt/math/matrix/delete_row_and_column.hpp>
 #include <fcppt/math/matrix/has_dim.hpp>
 #include <fcppt/math/is_static_size.hpp>
 #include <fcppt/math/size_type.hpp>
@@ -100,7 +100,7 @@ determinant(
 			coeff * 
 			t[i][0] * 
 			matrix::detail::determinant(
-				matrix::delete_column_and_row(
+				matrix::delete_row_and_column(
 					t,
 					i,
 					0

@@ -1,6 +1,6 @@
 [article fcppt 
 	[quickbook 1.5]
-	[version 0.2]
+	[version 0.3]
 	[authors [Reh, Carl Philipp]]
 	[copyright 2010 Carl Philipp Reh]
 	[purpose Freundlich's C++ Toolkit]
