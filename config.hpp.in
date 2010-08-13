@@ -27,7 +27,6 @@
 #endif
 #endif
 
-
 #ifdef __GNUC__
 #cmakedefine FCPPT_HAVE_GCC_VISIBILITY
 #define FCPPT_HAS_PRETTY_FUNCTION
