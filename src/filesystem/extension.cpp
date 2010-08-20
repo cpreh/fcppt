@@ -5,11 +5,16 @@
 
 
 #include <fcppt/filesystem/extension.hpp>
+#include <fcppt/filesystem/config.hpp>
 
 fcppt::string const
 fcppt::filesystem::extension(
-	path const &p
+	path const &_path
 )
 {
-	return p.extension();
+#ifndef FCPPT_USE_FILESYSTEM_V3
+	return _path.extension();
+#else
+	return _path.extension().string<fcppt::string>();
+#endif
 }

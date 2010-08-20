@@ -17,7 +17,8 @@ namespace filesystem
 
 FCPPT_SYMBOL bool
 exists(
-	path const &);
+	path const &
+);
 
 }
 }

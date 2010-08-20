@@ -7,7 +7,10 @@
 #ifndef FCPPT_FILESYSTEM_DIRECTORY_ITERATOR_HPP_INCLUDED
 #define FCPPT_FILESYSTEM_DIRECTORY_ITERATOR_HPP_INCLUDED
 
+#include <fcppt/filesystem/config.hpp>
+#ifndef FCPPT_USE_FILESYSTEM_V3
 #include <fcppt/filesystem/path.hpp>
+#endif
 #include <boost/filesystem/operations.hpp>
 
 namespace fcppt
@@ -15,9 +18,13 @@ namespace fcppt
 namespace filesystem
 {
 
+#ifndef FCPPT_USE_FILESYSTEM_V3
 typedef boost::filesystem::basic_directory_iterator<
 	path
 > directory_iterator;
+#else
+typedef boost::filesystem::directory_iterator directory_iterator;
+#endif
 
 }
 }

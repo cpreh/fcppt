@@ -4,16 +4,14 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/filesystem/stem.hpp>
+#ifndef FCPPT_FILESYSTEM_CONFIG_HPP_INCLUDED
+#define FCPPT_FILESYSTEM_CONFIG_HPP_INCLUDED
 
-fcppt::string const
-fcppt::filesystem::stem(
-	path const &_path
-)
-{
-#ifndef FCPPT_USE_FILESYSTEM_V3
-	return _path.stem();
-#else
-	return _path.stem().string<fcppt::string>();
+#include <boost/version.hpp>
+
+#if (BOOST_VERSION >= 104400)
+#define FCPPT_USE_FILESYSTEM_V3
+#define BOOST_FILESYSTEM_VERSION 3
 #endif
-}
+
+#endif
