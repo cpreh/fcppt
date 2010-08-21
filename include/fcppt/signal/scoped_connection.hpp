@@ -7,7 +7,7 @@
 #ifndef FCPPT_SIGNAL_SCOPED_CONNECTION_HPP_INCLUDED
 #define FCPPT_SIGNAL_SCOPED_CONNECTION_HPP_INCLUDED
 
-#include <fcppt/signal/detail/connection_fwd.hpp>
+#include <fcppt/signal/detail/connection.hpp>
 #include <fcppt/scoped_ptr.hpp>
 
 namespace fcppt
