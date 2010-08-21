@@ -66,7 +66,9 @@ typename boost::enable_if_c
 	>::value,
 	T
 >::type
-move(T& t)
+move(
+	T &t
+)
 {
 	return T(detail_unique_ptr::rv<T>(t));
 }
