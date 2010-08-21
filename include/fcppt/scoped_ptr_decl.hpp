@@ -8,12 +8,11 @@
 #define FCPPT_SCOPED_PTR_DECL_HPP_INCLUDED
 
 #include <fcppt/scoped_ptr_fwd.hpp>
+#include <fcppt/unique_ptr_fwd.hpp>
 #include <fcppt/auto_ptr.hpp>
 #include <fcppt/noncopyable.hpp>
 #include <fcppt/safe_bool.hpp>
-#include <boost/mpl/if.hpp>
 #include <boost/type_traits/add_reference.hpp>
-#include <boost/type_traits/is_same.hpp>
 
 namespace fcppt
 {
@@ -28,31 +27,10 @@ class scoped_ptr
 {
 	FCPPT_NONCOPYABLE(scoped_ptr)
 	FCPPT_SAFE_BOOL(scoped_ptr)
-private:
-	struct dummy
-	{};
 public:
-	typedef typename boost::mpl::if_<
-		boost::is_same<
-			T,
-			void
-		>,
-		dummy,
-		typename boost::add_reference<
-			T
-		>::type
+	typedef typename boost::add_reference<
+		T
 	>::type reference;
-
-	typedef typename boost::mpl::if_<
-		boost::is_same<
-			T,
-			void
-		>,
-		dummy,
-		std::auto_ptr<
-			T
-		>
-	>::type auto_ptr;
 
 	typedef T *pointer;
 
@@ -60,8 +38,18 @@ public:
 		pointer = 0
 	);
 
+	template<
+		typename Y
+	>
 	explicit scoped_ptr(
-		auto_ptr
+		auto_ptr<Y>
+	);
+
+	template<
+		typename Y
+	>
+	explicit scoped_ptr(
+		unique_ptr<Y, Deleter>
 	);
 
 	~scoped_ptr();
@@ -88,9 +76,20 @@ public:
 		scoped_ptr &
 	);
 
+	template<
+		typename Y
+	>
 	void
 	take(
-		auto_ptr p
+		auto_ptr<Y>
+	);
+
+	template<
+		typename Y
+	>
+	void
+	take(
+		unique_ptr<Y, Deleter>
 	);
 private:
 	bool

@@ -8,6 +8,7 @@
 #define FCPPT_SHARED_PTR_DECL_HPP_INCLUDED
 
 #include <fcppt/shared_ptr_fwd.hpp>
+#include <fcppt/unique_ptr_fwd.hpp>
 #include <fcppt/weak_ptr_fwd.hpp>
 #include <fcppt/auto_ptr.hpp>
 #include <boost/shared_ptr.hpp>
@@ -111,6 +112,13 @@ public:
 	template<
 		typename Y
 	>
+	explicit shared_ptr(
+		unique_ptr<Y, Deleter> r
+	);
+
+	template<
+		typename Y
+	>
 	shared_ptr &
 	operator=(
 		shared_ptr<Y> const &r
@@ -122,6 +130,14 @@ public:
 	shared_ptr &
 	operator=(
 		auto_ptr<Y> r
+	);
+
+	template<
+		typename Y
+	>
+	shared_ptr &
+	operator=(
+		unique_ptr<Y, Deleter> r
 	);
 
 	~shared_ptr();

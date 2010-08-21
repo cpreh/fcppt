@@ -8,6 +8,7 @@
 #define FCPPT_SHARED_PTR_IMPL_HPP_INCLUDED
 
 #include <fcppt/shared_ptr_decl.hpp>
+#include <fcppt/unique_ptr_impl.hpp>
 #include <algorithm>
 
 template<
@@ -202,6 +203,26 @@ template<
 template<
 	typename Y
 >
+fcppt::shared_ptr<T, Deleter>::shared_ptr(
+	unique_ptr<Y, Deleter> r
+)
+:
+	impl()
+{
+	impl.reset(
+		r.release()
+	);
+}
+
+template<
+	typename T,
+	template<
+		typename
+	> class Deleter
+>
+template<
+	typename Y
+>
 fcppt::shared_ptr<T, Deleter> &
 fcppt::shared_ptr<T, Deleter>::operator=(
 	shared_ptr<Y> const &r
@@ -226,6 +247,27 @@ fcppt::shared_ptr<T, Deleter>::operator=(
 )
 {
 	impl = r;
+	return *this;
+}
+
+template<
+	typename T,
+	template<
+		typename
+	> class Deleter
+>
+template<
+	typename Y
+>
+fcppt::shared_ptr<T, Deleter> &
+fcppt::shared_ptr<T, Deleter>::operator=(
+	unique_ptr<Y, Deleter> r
+)
+{
+	impl.reset(
+		r.release()
+	);
+
 	return *this;
 }
 
