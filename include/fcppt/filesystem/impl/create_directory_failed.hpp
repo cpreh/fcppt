@@ -8,15 +8,16 @@
 #define FCPPT_FILESYSTEM_IMPL_CREATE_DIRECTORY_FAILED_HPP_INCLUDED
 
 #include <fcppt/text.hpp>
+#include <fcppt/string.hpp>
 
 inline
 fcppt::filesystem::create_directory_failed::create_directory_failed(
-	path const &what
+	path const &_what
 )
 :
 	filesystem::exception(
 		FCPPT_TEXT("Failed to create directory \"")
-		+ what.string()
+		+ _what.string<fcppt::string>()
 		+ FCPPT_TEXT('"')
 	)
 {}
