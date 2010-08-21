@@ -17,6 +17,5 @@ template<
 class unique_ptr;
 
 }
-}
 
 #endif

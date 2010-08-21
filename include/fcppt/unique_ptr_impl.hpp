@@ -2,6 +2,11 @@
 #define FCPPT_UNIQUE_PTR_IMPL_HPP_INCLUDED
 
 #include <fcppt/unique_ptr_decl.hpp>
+#include <fcppt/forward.hpp>
+#include <fcppt/move.hpp>
+#include <boost/type_traits/is_pointer.hpp>
+#include <boost/type_traits/is_reference.hpp>
+#include <boost/static_assert.hpp>
 
 template<
 	typename T,
@@ -114,10 +119,12 @@ template<
 >
 fcppt::unique_ptr<T, Deleter>::unique_ptr(
 	pointer const p,
-	typename mpl::if_<
-		is_reference<D>,
-		volatile typename boost::remove_reference<D>::type &,
-		D
+	typename boost::mpl::if_<
+		boost::is_reference<deleter_type>,
+		volatile typename boost::remove_reference<
+			deleter_type
+		>::type &,
+		deleter_type
 	>::type const d
 )
 :
@@ -125,9 +132,13 @@ fcppt::unique_ptr<T, Deleter>::unique_ptr(
 		fcppt::move(
 			p
 		),
-		fcppt::forward<D>(
+		fcppt::forward<
+			deleter_type
+		>(
 			const_cast<
-				typename boost::add_reference<D>::type
+				typename boost::add_reference<
+					deleter_type
+				>::type
 			>(
 				d
 			)
@@ -142,43 +153,26 @@ template<
 	> class Deleter
 >
 template<
-	typename U,
-	typename E
+	typename U
 >
 fcppt::unique_ptr<T, Deleter>::unique_ptr(
-	unique_ptr<U, E> u,
-	typename enable_if_c<
+	unique_ptr<U, Deleter> u,
+	typename boost::enable_if_c<
                 !boost::is_array<U>::value
 		&&
 		detail_unique_ptr::is_convertible<
 			typename unique_ptr<U>::pointer,
 			pointer
 		>::value
-		&&
-		detail_unique_ptr::is_convertible<
-			E,
-			deleter_type
-		>::value
-		&&
-		(
-			!boost::is_reference<
-				deleter_type
-			>::value
-			||
-			boost::is_same<
-				deleter_type,
-				E
-			>::value
-		)
-	>::type* = 0
+	>::type *
 )
 :
 	ptr_(
 		u.release(),
-		fcppt::forward<D>(
-			fcppt::forward<E>(
-				u.get_deleter()
-			)
+		fcppt::forward<
+			deleter_type
+		>(
+			u.get_deleter()
 		)
 	)
 {}
@@ -217,12 +211,11 @@ template<
 	> class Deleter
 >
 template<
-	typename U,
-	typename E
+	typename U
 >
 fcppt::unique_ptr<T, Deleter> &
 fcppt::unique_ptr<T, Deleter>::operator=(
-	unique_ptr<U, E> u
+	unique_ptr<U, Deleter> u
 )
 {
 	reset(
@@ -317,7 +310,7 @@ template<
 >
 void
 fcppt::unique_ptr<T, Deleter>::reset(
-	pointer const p = pointer()
+	pointer const p
 )
 {
        	pointer const t = get();

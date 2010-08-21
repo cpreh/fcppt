@@ -11,7 +11,6 @@
 #include <boost/type_traits/add_reference.hpp>
 #include <boost/type_traits/is_array.hpp>
 #include <boost/type_traits/is_reference.hpp>
-#include <boost/type_traits/is_same.hpp>
 #include <boost/type_traits/remove_reference.hpp>
 #include <boost/utility/enable_if.hpp>
 
@@ -70,7 +69,7 @@ public:
 
 	unique_ptr(
 		detail_unique_ptr::rv<unique_ptr>
-	):
+	);
 
 	unique_ptr &
 	operator=(
@@ -86,18 +85,21 @@ public:
 	unique_ptr(
 		pointer,
 		typename boost::mpl::if_<
-			boost::is_reference<D>,
-			volatile typename boost::remove_reference<D>::type &,
-			D
+			boost::is_reference<
+				deleter_type
+			>,
+			volatile typename boost::remove_reference<
+				deleter_type
+			>::type &,
+			deleter_type	
 		>::type
 	);
 
 	template<
-		typename U,
-		typename E
+		typename U
 	>
 	unique_ptr(
-		unique_ptr<U, E> u,
+		unique_ptr<U, Deleter> u,
 		typename boost::enable_if_c<
 	                !boost::is_array<U>::value
 			&&
@@ -105,22 +107,6 @@ public:
 				typename unique_ptr<U>::pointer,
 				pointer
 			>::value
-			&&
-			detail_unique_ptr::is_convertible<
-				E,
-				deleter_type
-			>::value
-			&&
-			(
-				!boost::is_reference<
-					deleter_type
-				>::value
-				||
-				boost::is_same<
-					deleter_type,
-					E
-				>::value
-			)
 		>::type* = 0
 	);
 
@@ -132,19 +118,18 @@ public:
 	);
 
 	template<
-		typename U,
-		typename E
+		typename U
 	>
 	unique_ptr&
 	operator=(
-		unique_ptr<U, E>
+		unique_ptr<U, Deleter>
 	);
 
 	typename boost::add_reference<T>::type
 	operator*() const;
 
 	pointer
-	operator->() const:
+	operator->() const;
 
 	pointer
 	get() const;

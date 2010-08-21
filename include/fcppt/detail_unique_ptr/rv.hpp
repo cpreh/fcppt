@@ -1,9 +1,9 @@
-#ifndef FCPPT_UNIQUE_PTR_DETAIL_RV_HPP_INCLUDED
-#define FCPPT_UNIQUE_PTR_DETAIL_RV_HPP_INCLUDED
+#ifndef FCPPT_DETAIL_UNIQUE_PTR_RV_HPP_INCLUDED
+#define FCPPT_DETAIL_UNIQUE_PTR_RV_HPP_INCLUDED
 
 namespace fcppt
 {
-namespace unique_ptr_detail
+namespace detail_unique_ptr
 {
 
 template<

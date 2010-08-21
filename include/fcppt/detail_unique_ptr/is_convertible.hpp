@@ -1,17 +1,12 @@
 #ifndef FCPPT_UNIQUE_PTR_DETAIL_IS_CONVERTIBLE_HPP_INCLUDED
 #define FCPPT_UNIQUE_PTR_DETAIL_IS_CONVERTIBLE_HPP_INCLUDED
 
+#include <fcppt/detail_unique_ptr/one_two.hpp>
+
 namespace fcppt
 {
 namespace detail_unique_ptr
 {
-
-typedef char one;
-
-struct two
-{
-	one _[2];
-};
 
 // An is_convertible<From, To> that considers From an rvalue (consistent with C++0X).
 //   This is a simplified version neglecting the types function, array, void and abstract types

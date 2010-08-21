@@ -1,6 +1,9 @@
 #ifndef FCPPT_UNIQUE_PTR_DETAIL_POINTER_TYPE_HPP_INCLUDED
 #define FCPPT_UNIQUE_PTR_DETAIL_POINTER_TYPE_HPP_INCLUDED
 
+#include <fcppt/detail_unique_ptr/one_two.hpp>
+#include <boost/type_traits/remove_reference.hpp>
+
 namespace fcppt
 {
 namespace detail_unique_ptr
