@@ -10,6 +10,16 @@
     {
       "files" : ["include/fcppt/function/.*"],
       "license" : "util/license_template_function.hpp"
+    },
+    {
+      "files": [
+         "include/fcppt/unique_ptr_decl.hpp",
+         "include/fcppt/unique_ptr_impl.hpp",
+         "include/fcppt/detail_unique_ptr/.*",
+         "include/fcppt/forward.hpp",
+         "include/fcppt/move.hpp"
+      ],
+      "license" : "util/license_template_unique_ptr.hpp"
     }
   ],
   "nolicense" : ["src/utf8/facet.cpp", "build/.*", "doc/.*", "util/.*"]
