@@ -7,6 +7,8 @@
 #ifndef FCPPT_HEAP_DELETER_HPP_INCLUDED
 #define FCPPT_HEAP_DELETER_HPP_INCLUDED
 
+#include <fcppt/assert_complete.hpp>
+
 namespace fcppt
 {
 
@@ -18,10 +20,12 @@ struct heap_deleter
 {
 	void
 	operator()(
-		T *const t
+		T *const _ptr
 	) const
 	{
-		delete t;
+		FCPPT_ASSERT_COMPLETE(T)
+
+		delete _ptr;
 	}
 };
 
