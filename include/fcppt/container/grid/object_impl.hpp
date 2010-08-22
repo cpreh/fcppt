@@ -51,6 +51,28 @@ template<
 	fcppt::container::grid::size_type N,
 	typename A
 >
+template<
+	typename In
+>
+fcppt::container::grid::object<T, N, A>::object(
+	dim const &_dim,
+	In const _begin,
+	In const _end
+)
+:
+	container_(
+		_begin,
+		_end
+	),
+	dim_(_dim)
+{
+}
+
+template<
+	typename T,
+	fcppt::container::grid::size_type N,
+	typename A
+>
 fcppt::container::grid::object<T, N, A>::object(
 	object const &_other
 )

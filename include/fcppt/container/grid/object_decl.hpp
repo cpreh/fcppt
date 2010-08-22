@@ -84,6 +84,15 @@ public:
 		dim const &
 	);
 
+	template<
+		typename In
+	>
+	explicit object(
+		dim const &,
+		In begin,
+		In end
+	);
+
 	object(
 		object const &
 	);

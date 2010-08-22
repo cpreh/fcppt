@@ -8,7 +8,7 @@
 #define FCPPT_CONTAINER_GRID_DETAIL_AT_HPP_INCLUDED
 
 #include <fcppt/container/grid/detail/choose_reference.hpp>
-//#include <fcppt/container/grid/out_of_range.hpp>
+#include <fcppt/container/grid/out_of_range.hpp>
 
 namespace fcppt
 {
@@ -41,8 +41,7 @@ at(
 			_pos[i]
 			>= _dim[i]
 		)
-			throw int(42);
-			//throw grid::out_of_range();
+			throw grid::out_of_range();
 
 	return (*_container)[_pos];
 }
