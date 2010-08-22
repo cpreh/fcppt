@@ -9,6 +9,7 @@
 
 #include <fcppt/math/dim/arithmetic.hpp>
 #include <fcppt/math/dim/basic.hpp>
+#include <fcppt/math/dim/before.hpp>
 #include <fcppt/math/dim/comparison.hpp>
 #include <fcppt/math/dim/construct.hpp>
 #include <fcppt/math/dim/dynamic.hpp>

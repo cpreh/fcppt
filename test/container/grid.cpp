@@ -4,7 +4,7 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/container/grid/object.hpp>
+#include <fcppt/container/grid/grid.hpp>
 #include <boost/test/unit_test.hpp>
 
 namespace
