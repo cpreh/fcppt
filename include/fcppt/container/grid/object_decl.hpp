@@ -129,8 +129,11 @@ public:
 		dim const &
 	) const;
 	
-	dim const
+	dim const &
 	dimension() const;
+
+	size_type
+	size() const;
 
 	void
 	resize(
