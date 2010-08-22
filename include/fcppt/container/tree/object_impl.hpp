@@ -123,9 +123,13 @@ fcppt::container::tree::object<T>::release(
 	iterator const it
 )
 {
-	return children_.release(
-		it
+	auto_ptr ret(
+		children_.release(
+			it
+		).release()
 	);
+
+	return ret;
 }
 
 template<

@@ -17,6 +17,10 @@ typedef fcppt::container::tree::object<
 
 }
 
+template class fcppt::container::tree::object<
+	unsigned
+>;
+
 BOOST_AUTO_TEST_CASE(container_tree_equal)
 {
 	ui_tree tree1(
