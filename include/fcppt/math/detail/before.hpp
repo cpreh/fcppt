@@ -29,7 +29,8 @@ before(
 		std::lexicographical_compare(
 			_a.begin(),
 			_a.end(),
-			_b.begin()
+			_b.begin(),
+			_b.end()
 		);
 }
 

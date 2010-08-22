@@ -31,11 +31,11 @@ operator==(
 )
 {
 	return
-		_a.dim() == _b.dim()
+		_a.dimension() == _b.dimension()
 		&&
 		std::equal(
 			_a.begin(),
-			_a.ned(),
+			_a.end(),
 			_b.begin()
 		);
 }
@@ -65,17 +65,21 @@ operator<(
 	object<T, N, A> const &_b
 )
 {
-	return 
-		math::dim::before(
-			_a,
-			_b
-		)
-		||
-		std::lexicographical_compare(
-			_a.begin(),
-			_a.end(),
-			_b.begin()
-		);
+	return
+		_a.dimension()
+		!= _b.dimension()
+		?
+			math::dim::before(
+				_a.dimension(),
+				_b.dimension()
+			)
+		:
+			std::lexicographical_compare(
+				_a.begin(),
+				_a.end(),
+				_b.begin(),
+				_b.end()
+			);
 }
 
 template<
@@ -103,7 +107,7 @@ operator<=(
 	object<T, N, A> const &_b
 )
 {
-	return !(_b > _a);
+	return !(_a > _b);
 }
 
 template<
@@ -117,7 +121,7 @@ operator>=(
 	object<T, N, A> const &_b
 )
 {
-	return !(_b < _a);
+	return !(_a < _b);
 }
 
 }

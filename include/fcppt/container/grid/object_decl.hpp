@@ -84,6 +84,11 @@ public:
 		dim const &
 	);
 
+	explicit object(
+		dim const &,
+		const_reference
+	);
+
 	template<
 		typename In
 	>
