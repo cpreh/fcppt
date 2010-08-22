@@ -152,6 +152,25 @@ BOOST_AUTO_TEST_CASE(container_grid_index)
 			);
 }
 
+BOOST_AUTO_TEST_CASE(container_grid_const_data)
+{
+	int2_grid const test(
+		int2_grid::dim(
+			5,
+			2	
+		),
+		42
+	);
+
+	BOOST_REQUIRE(
+		std::count(
+			test.data(),
+			test.data_end(),
+			42
+		) == 10
+	);
+}
+
 namespace
 {
 

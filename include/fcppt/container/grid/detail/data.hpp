@@ -13,6 +13,7 @@
 #include <fcppt/container/is_std_vector.hpp>
 #include <fcppt/container/raw_vector_impl.hpp>
 #include <boost/utility/enable_if.hpp>
+#include <boost/type_traits/remove_const.hpp>
 #include <vector>
 
 namespace fcppt
@@ -29,7 +30,9 @@ template<
 >
 typename boost::enable_if<
 	container::is_std_vector<
-		Container
+		typename boost::remove_const<
+			Container
+		>::type
 	>,
 	typename detail::choose_pointer<
 		Container	
@@ -50,7 +53,9 @@ template<
 >
 typename boost::enable_if<
 	container::is_raw_vector<
-		Container
+		typename boost::remove_const<
+			Container
+		>::type
 	>,
 	typename detail::choose_pointer<
 		Container
