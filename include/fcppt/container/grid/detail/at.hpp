@@ -27,7 +27,7 @@ typename detail::choose_reference<
 	Container
 >::type
 at(
-	Container const *_container,
+	Container &_container,
 	Dim const &_dim,
 	Dim const &_pos
 )
@@ -43,7 +43,7 @@ at(
 		)
 			throw grid::out_of_range();
 
-	return (*_container)[_pos];
+	return _container[_pos];
 }
 
 }

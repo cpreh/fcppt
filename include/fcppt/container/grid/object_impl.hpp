@@ -182,7 +182,7 @@ fcppt::container::grid::object<T, N, A>::at(
 {
 	return
 		detail::at(
-			container_,
+			*this,
 			dim_,
 			_pos
 		);
@@ -200,7 +200,7 @@ fcppt::container::grid::object<T, N, A>::at(
 {
 	return
 		detail::at(
-			container_,
+			*this,
 			dim_,
 			_pos
 		);
