@@ -458,6 +458,17 @@ template<
 	fcppt::container::grid::size_type N,
 	typename A
 >
+typename fcppt::container::grid::object<T, N, A>::size_type
+fcppt::container::grid::object<T, N, A>::size() const
+{
+	return container_.size();
+}
+
+template<
+	typename T,
+	fcppt::container::grid::size_type N,
+	typename A
+>
 void
 fcppt::container::grid::swap(
 	object<T, N, A> &_a,
