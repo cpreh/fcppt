@@ -6,8 +6,8 @@
 // See http://www.boost.org/libs/foreach for documentation
 
 
-#ifndef FCPPT_UNIQUE_PTR_DETAIL_ONE_TWO_HPP_INCLUDED
-#define FCPPT_UNIQUE_PTR_DETAIL_ONE_TWO_HPP_INCLUDED
+#ifndef FCPPT_DETAIL_UNIQUE_PTR_ONE_TWO_HPP_INCLUDED
+#define FCPPT_DETAIL_UNIQUE_PTR_ONE_TWO_HPP_INCLUDED
 
 namespace fcppt
 {

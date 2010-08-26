@@ -6,8 +6,8 @@
 // See http://www.boost.org/libs/foreach for documentation
 
 
-#ifndef FCPPT_UNIQUE_PTR_DETAIL_IS_CONVERTIBLE_HPP_INCLUDED
-#define FCPPT_UNIQUE_PTR_DETAIL_IS_CONVERTIBLE_HPP_INCLUDED
+#ifndef FCPPT_DETAIL_UNIQUE_PTR_IS_CONVERTIBLE_HPP_INCLUDED
+#define FCPPT_DETAIL_UNIQUE_PTR_IS_CONVERTIBLE_HPP_INCLUDED
 
 #include <fcppt/detail_unique_ptr/one_two.hpp>
 
