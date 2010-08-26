@@ -31,6 +31,11 @@ typedef fcppt::container::bitfield::basic<
 
 }
 
+template class fcppt::container::bitfield::basic<
+	test_enum::type,
+	test_enum::size
+>;
+
 BOOST_AUTO_TEST_CASE(container_bitfield_arithmetic)
 {
 	bitfield field1(

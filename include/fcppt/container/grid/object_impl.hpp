@@ -182,7 +182,7 @@ fcppt::container::grid::object<T, N, A>::at(
 {
 	return
 		detail::at(
-			container_,
+			*this,
 			dim_,
 			_pos
 		);
@@ -200,7 +200,7 @@ fcppt::container::grid::object<T, N, A>::at(
 {
 	return
 		detail::at(
-			container_,
+			*this,
 			dim_,
 			_pos
 		);
@@ -211,10 +211,21 @@ template<
 	fcppt::container::grid::size_type N,
 	typename A
 >
-typename fcppt::container::grid::object<T, N, A>::dim const
+typename fcppt::container::grid::object<T, N, A>::dim const &
 fcppt::container::grid::object<T, N, A>::dimension() const
 {
 	return dim_;
+}
+
+template<
+	typename T,
+	fcppt::container::grid::size_type N,
+	typename A
+>
+typename fcppt::container::grid::object<T, N, A>::size_type
+fcppt::container::grid::object<T, N, A>::size() const
+{
+	return dim_.content();
 }
 
 template<

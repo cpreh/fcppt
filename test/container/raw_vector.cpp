@@ -16,6 +16,10 @@ typedef fcppt::container::raw_vector<
 
 }
 
+template class fcppt::container::raw_vector<
+	int
+>;
+
 BOOST_AUTO_TEST_CASE(container_raw_vector_shrink)
 {
 	container_type test;

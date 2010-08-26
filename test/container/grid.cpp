@@ -20,6 +20,11 @@ typedef fcppt::container::grid::object<
 
 }
 
+template class fcppt::container::grid::object<
+	int,
+	2
+>;
+
 BOOST_AUTO_TEST_CASE(container_grid_init)
 {
 	int2_grid const test(
@@ -168,6 +173,20 @@ BOOST_AUTO_TEST_CASE(container_grid_const_data)
 			test.data_end(),
 			42
 		) == 10
+	);
+}
+
+BOOST_AUTO_TEST_CASE(container_grid_size)
+{
+	int2_grid const test(
+		int2_grid::dim(
+			3,
+			2
+		)
+	);
+
+	BOOST_REQUIRE(
+		test.size() == 6u
 	);
 }
 
