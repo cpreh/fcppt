@@ -195,9 +195,6 @@ public:
 	swap(
 		object &
 	);
-
-	size_type
-	size() const;
 private:
 	container container_;
 
