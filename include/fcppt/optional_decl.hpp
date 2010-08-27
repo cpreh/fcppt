@@ -65,6 +65,9 @@ public:
 
 	void
 	reset();
+
+	bool
+	has_value() const;
 private:
 	bool
 	boolean_test() const;

@@ -134,6 +134,15 @@ template<
 	typename T
 >
 bool
+fcppt::optional<T>::has_value() const
+{
+	return boolean_test();
+}
+
+template<
+	typename T
+>
+bool
 fcppt::optional<T>::boolean_test() const
 {
 	return data_ != 0;
