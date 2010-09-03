@@ -127,7 +127,7 @@ public:
 	template<
 		typename U
 	>
-	unique_ptr&
+	unique_ptr &
 	operator=(
 		unique_ptr<U, Deleter>
 	);
