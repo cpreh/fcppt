@@ -25,7 +25,7 @@ typename boost::enable_if<
 	fcppt::type_traits::is_unique_ptr<
 		UniquePtr
 	>,
-	void
+	typename PtrContainer::iterator
 >::type
 insert_unique_ptr(
 	PtrContainer &_container,
@@ -33,10 +33,11 @@ insert_unique_ptr(
 	UniquePtr _ptr
 )
 {
-	_container.insert(
-		_iterator,
-		_ptr.release()
-	);
+	return
+		_container.insert(
+			_iterator,
+			_ptr.release()
+		);
 }
 
 }

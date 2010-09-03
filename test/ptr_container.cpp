@@ -34,14 +34,21 @@ BOOST_AUTO_TEST_CASE(
 		)
 	);
 
-	fcppt::container::ptr::insert_unique_ptr(
-		vector,
-		vector.begin(),
-		fcppt::make_unique_ptr<
-			std::string
-		>(
-			"test2"
+	string_ptr_vector::iterator const insert_pos(
+		fcppt::container::ptr::insert_unique_ptr(
+			vector,
+			vector.begin(),
+			fcppt::make_unique_ptr<
+				std::string
+			>(
+				"test2"
+			)
 		)
+	);
+
+	BOOST_REQUIRE(
+		insert_pos
+		== vector.begin()
 	);
 
 	BOOST_REQUIRE(
