@@ -90,6 +90,43 @@ to_shared_ptr(
 
 }
 
+//[unique_ptr_derived
+
+//<--
+namespace
+{
+//-->
+
+struct base
+{
+	virtual ~base()
+	{
+	}
+};
+
+struct dervied
+:
+	base
+{
+};
+
+void
+test2()
+{
+	typedef fcppt::unique_ptr<
+		base
+	> base_ptr;
+
+	base_ptr foo(
+		fcppt::make_unique_ptr<
+			dervied
+		>()
+	);
+}
+//]
+
+}
+
 int main()
 {
 }

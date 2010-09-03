@@ -8,6 +8,8 @@
 #define FCPPT_HEAP_DELETER_HPP_INCLUDED
 
 #include <fcppt/assert_complete.hpp>
+#include <boost/type_traits/is_convertible.hpp>
+#include <boost/utility/enable_if.hpp>
 
 namespace fcppt
 {
@@ -18,6 +20,25 @@ template<
 >
 struct heap_deleter
 {
+	heap_deleter()
+	{
+	}
+      
+	template<
+		typename U
+	>
+	heap_deleter(
+		heap_deleter<U> const &,
+		typename boost::enable_if<
+			boost::is_convertible<
+				U *,
+				T *
+			>
+		>::type * = 0
+	)
+	{
+	}
+
 	void
 	operator()(
 		T *const _ptr

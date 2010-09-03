@@ -20,10 +20,12 @@ struct c_deleter
 {
 	void
 	operator()(
-		T *const t
+		T *const _ptr
 	) const
 	{
-		std::free(t);
+		std::free(
+			_ptr
+		);
 	}
 };
 
