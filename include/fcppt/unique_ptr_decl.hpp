@@ -11,12 +11,11 @@
 
 #include <fcppt/detail_unique_ptr/pointer_type.hpp>
 #include <fcppt/detail_unique_ptr/rv.hpp>
-#include <fcppt/detail_unique_ptr/is_convertible.hpp>
 #include <fcppt/detail_unique_ptr/storage.hpp>
 #include <fcppt/unique_ptr_fwd.hpp>
 #include <boost/mpl/if.hpp>
 #include <boost/type_traits/add_reference.hpp>
-#include <boost/type_traits/is_array.hpp>
+#include <boost/type_traits/is_convertible.hpp>
 #include <boost/type_traits/is_reference.hpp>
 #include <boost/type_traits/remove_reference.hpp>
 #include <boost/utility/enable_if.hpp>
@@ -107,13 +106,11 @@ public:
 	>
 	unique_ptr(
 		unique_ptr<U, Deleter> u,
-		typename boost::enable_if_c<
-	                !boost::is_array<U>::value
-			&&
-			detail_unique_ptr::is_convertible<
+		typename boost::enable_if<
+			boost::is_convertible<
 				typename unique_ptr<U>::pointer,
 				pointer
-			>::value
+			>
 		>::type* = 0
 	);
 

@@ -9,8 +9,9 @@
 #ifndef FCPPT_MOVE_HPP_INCLUDED
 #define FCPPT_MOVE_HPP_INCLUDED
 
-#include <fcppt/detail_unique_ptr/is_convertible.hpp>
 #include <fcppt/detail_unique_ptr/rv.hpp>
+#include <boost/mpl/not.hpp>
+#include <boost/type_traits/is_convertible.hpp>
 #include <boost/utility/enable_if.hpp>
 
 namespace fcppt
@@ -20,12 +21,14 @@ template<
 	typename T
 >
 inline
-typename boost::enable_if_c
+typename boost::enable_if
 <
-	!detail_unique_ptr::is_convertible<
-		T,
-		detail_unique_ptr::rv<T>
-	>::value,
+	boost::mpl::not_<
+		boost::is_convertible<
+			T,
+			detail_unique_ptr::rv<T>
+		>
+	>,
 	T &
 >::type
 move(
@@ -39,12 +42,14 @@ template<
 	class T
 >
 inline
-typename boost::enable_if_c
+typename boost::enable_if
 <
-	!detail_unique_ptr::is_convertible<
-		T,
-		detail_unique_ptr::rv<T>
-	>::value,
+	boost::mpl::not_<
+		boost::is_convertible<
+			T,
+			detail_unique_ptr::rv<T>
+		>
+	>,
 	T const &
 >::type
 move(
@@ -58,12 +63,12 @@ template<
 	typename T
 >
 inline
-typename boost::enable_if_c
+typename boost::enable_if
 <
-	detail_unique_ptr::is_convertible<
+	boost::is_convertible<
 		T,
 		detail_unique_ptr::rv<T>
-	>::value,
+	>,
 	T
 >::type
 move(

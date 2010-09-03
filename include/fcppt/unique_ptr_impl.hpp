@@ -165,13 +165,11 @@ template<
 >
 fcppt::unique_ptr<T, Deleter>::unique_ptr(
 	unique_ptr<U, Deleter> u,
-	typename boost::enable_if_c<
-                !boost::is_array<U>::value
-		&&
-		detail_unique_ptr::is_convertible<
+	typename boost::enable_if<
+		boost::is_convertible<
 			typename unique_ptr<U>::pointer,
 			pointer
-		>::value
+		>
 	>::type *
 )
 :
