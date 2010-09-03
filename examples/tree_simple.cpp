@@ -8,10 +8,11 @@
 #include <fcppt/container/tree/object.hpp>
 #include <fcppt/io/cout.hpp>
 #include <fcppt/io/cerr.hpp>
-#include <fcppt/make_auto_ptr.hpp>
+#include <fcppt/make_unique_ptr.hpp>
 #include <fcppt/string.hpp>
 #include <fcppt/text.hpp>
 #include <fcppt/exception.hpp>
+#include <fcppt/move.hpp>
 #include <ostream>
 #include <iterator>
 #include <cstdlib>
@@ -33,12 +34,15 @@ try
 	);
 
 	// The tree is empty since it has no children
-	fcppt::io::cout << FCPPT_TEXT("Is the tree empty? ") << tree.empty() << FCPPT_TEXT('\n');
+	fcppt::io::cout
+		<< FCPPT_TEXT("Is the tree empty? ")
+		<< tree.empty()
+		<< FCPPT_TEXT('\n');
 
 	{
 		// Adding two items via an auto_ptr and passing ownership
 		string_tree::auto_ptr child1(
-			fcppt::make_auto_ptr<
+			fcppt::make_unique_ptr<
 				string_tree
 			>(
 				FCPPT_TEXT("blubb")
@@ -46,11 +50,13 @@ try
 		);
 
 		tree.push_back(
-			child1
+			move(
+				child1
+			)
 		);
 
 		string_tree::auto_ptr child2(
-			fcppt::make_auto_ptr<
+			fcppt::make_unique_ptr<
 				string_tree
 			>(
 				FCPPT_TEXT("blah")
@@ -58,7 +64,9 @@ try
 		);
 
 		tree.push_back(
-			child2
+			move(
+				child2
+			)
 		);
 	}
 

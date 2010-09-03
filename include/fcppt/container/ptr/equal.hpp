@@ -11,20 +11,22 @@ namespace fcppt
 {
 namespace container
 {
+namespace ptr
+{
 
 template<
 	typename Ptr
 >
-class ptr_equal
+class equal
 {
 public:
 	typedef bool result_type;
 
-	explicit ptr_equal(
-		Ptr const p
+	explicit equal(
+		Ptr const _ptr
 	)
 	:
-		p(p)
+		ptr_(_ptr)
 	{}
 
 	template<
@@ -32,26 +34,16 @@ public:
 	>
 	result_type
 	operator()(
-		Val const &val
+		Val const &_val
 	) const
 	{
-		return &val == p;
+		return &_val == ptr_;
 	}
 private:
-	Ptr p;
+	Ptr ptr_;
 };
 
-template<
-	typename Ptr
->
-ptr_equal<Ptr> const
-make_ptr_equal(
-	Ptr const p
-)
-{
-	return ptr_equal<Ptr>(p);
 }
-
 }
 }
 

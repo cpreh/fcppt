@@ -8,9 +8,11 @@
 #define FCPPT_CONTAINER_TREE_OBJECT_IMPL_HPP_INCLUDED
 
 #include <fcppt/container/tree/object_decl.hpp>
-#include <fcppt/container/ptr_equal.hpp>
-#include <fcppt/make_auto_ptr.hpp>
+#include <fcppt/container/ptr/insert_unique_ptr.hpp>
+#include <fcppt/container/ptr/make_equal.hpp>
 #include <fcppt/algorithm/find_if_exn.hpp>
+#include <fcppt/make_unique_ptr.hpp>
+#include <fcppt/move.hpp>
 #include <algorithm>
 
 template<
@@ -129,7 +131,10 @@ fcppt::container::tree::object<T>::release(
 		).release()
 	);
 
-	return ret;
+	return
+		fcppt::move(
+			ret
+		);
 }
 
 template<
@@ -138,13 +143,14 @@ template<
 typename fcppt::container::tree::object<T>::iterator
 fcppt::container::tree::object<T>::child_position()
 {
-	return algorithm::find_if_exn(
-		parent().begin(),
-		parent().end(),
-		make_ptr_equal(
-			this
-		)
-	);
+	return
+		algorithm::find_if_exn(
+			parent().begin(),
+			parent().end(),
+			ptr::make_equal(
+				this
+			)
+		);
 }
 
 template<
@@ -153,14 +159,15 @@ template<
 typename fcppt::container::tree::object<T>::const_iterator
 fcppt::container::tree::object<T>::child_position() const
 {
-	return const_iterator(
-		const_cast<
-			object<T> &
-		>(
-			*this
-		)
-		.child_position()
-	);
+	return
+		const_iterator(
+			const_cast<
+				object<T> &
+			>(
+				*this
+			)
+			.child_position()
+		);
 }
 
 template<
@@ -197,12 +204,14 @@ template<
 >
 void
 fcppt::container::tree::object<T>::push_back(
-	auto_ptr r
+	auto_ptr _ptr
 )
 {
 	insert(
 		end(),
-		r
+		fcppt::move(
+			_ptr
+		)
 	);
 }
 
@@ -234,12 +243,14 @@ template<
 >
 void
 fcppt::container::tree::object<T>::push_front(
-	auto_ptr r
+	auto_ptr _ptr
 )
 {
 	insert(
 		begin(),
-		r
+		fcppt::move(
+			_ptr
+		)
 	);
 }
 
@@ -426,15 +437,20 @@ template<
 >
 void
 fcppt::container::tree::object<T>::insert(
-	iterator const it,
-	auto_ptr r
+	iterator const _it,
+	auto_ptr _ptr
 )
 {
-	object<T> &ref(*r);
+	object<T> &ref(
+		*_ptr
+	);
 
-	children().insert(
-		it,
-		r
+	container::ptr::insert_unique_ptr(
+		children(),
+		_it,
+		fcppt::move(
+			_ptr
+		)
 	);
 
 	ref.parent(
@@ -447,21 +463,17 @@ template<
 >
 void
 fcppt::container::tree::object<T>::insert(
-	iterator const it,
-	T const &t
+	iterator const _it,
+	T const &_val
 )
 {
-	auto_ptr ptr(
-		make_auto_ptr<
+	insert(
+		_it,
+		fcppt::make_unique_ptr<
 			object<T>
 		>(
-			t
+			_val
 		)
-	);
-
-	insert(
-		it,
-		ptr
 	);
 }
 

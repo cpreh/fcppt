@@ -8,7 +8,7 @@
 #define FCPPT_CONTAINER_TREE_OBJECT_DECL_HPP_INCLUDED
 
 #include <fcppt/container/tree/object_fwd.hpp>
-#include <fcppt/auto_ptr.hpp>
+#include <fcppt/unique_ptr.hpp>
 #include <boost/ptr_container/ptr_list.hpp>
 
 //[tree
@@ -29,9 +29,11 @@ public:
 		object	
 	> child_list;
 
-	typedef fcppt::auto_ptr<
+	typedef fcppt::unique_ptr<
 		object	
-	> auto_ptr;
+	> unique_ptr;
+
+	typedef unique_ptr auto_ptr; // legacy typedef
 
 	typedef typename child_list::value_type value_type;
 	typedef typename child_list::size_type size_type;
