@@ -4,8 +4,8 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_CONTAINER_PTR_INSERT_UNIQUE_PTR_HPP_INCLUDED
-#define FCPPT_CONTAINER_PTR_INSERT_UNIQUE_PTR_HPP_INCLUDED
+#ifndef FCPPT_CONTAINER_PTR_INSERT_UNIQUE_PTR_MAP_HPP_INCLUDED
+#define FCPPT_CONTAINER_PTR_INSERT_UNIQUE_PTR_MAP_HPP_INCLUDED
 
 #include <fcppt/type_traits/is_unique_ptr.hpp>
 #include <boost/utility/enable_if.hpp>
@@ -25,17 +25,24 @@ typename boost::enable_if<
 	fcppt::type_traits::is_unique_ptr<
 		UniquePtr
 	>,
-	typename PtrContainer::iterator
+	std::pair<
+		typename PtrContainer::iterator,
+		bool
+	>
 >::type
-insert_unique_ptr(
+insert_unique_ptr_map(
 	PtrContainer &_container,
-	typename PtrContainer::iterator const _iterator,
+	typename PtrContainer::key_type const &_key,
 	UniquePtr _ptr
 )
 {
+	typename PtrContainer::key_type key(
+		_key
+	);
+
 	return
 		_container.insert(
-			_iterator,
+			key,
 			_ptr.release()
 		);
 }
