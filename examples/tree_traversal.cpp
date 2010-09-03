@@ -8,7 +8,6 @@
 #include <fcppt/container/tree/pre_order.hpp>
 #include <fcppt/io/cout.hpp>
 #include <fcppt/io/cerr.hpp>
-#include <fcppt/make_auto_ptr.hpp>
 #include <fcppt/string.hpp>
 #include <fcppt/text.hpp>
 #include <fcppt/exception.hpp>

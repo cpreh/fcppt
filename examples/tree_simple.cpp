@@ -40,8 +40,8 @@ try
 		<< FCPPT_TEXT('\n');
 
 	{
-		// Adding two items via an auto_ptr and passing ownership
-		string_tree::auto_ptr child1(
+		// Adding two items via an unique_ptr and passing ownership
+		string_tree::unique_ptr child1(
 			fcppt::make_unique_ptr<
 				string_tree
 			>(
@@ -55,7 +55,7 @@ try
 			)
 		);
 
-		string_tree::auto_ptr child2(
+		string_tree::unique_ptr child2(
 			fcppt::make_unique_ptr<
 				string_tree
 			>(

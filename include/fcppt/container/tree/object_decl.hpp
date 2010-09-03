@@ -86,7 +86,7 @@ public:
 	);
 
 	/// Detaches the given child from the parent and returns it.
-	auto_ptr
+	unique_ptr
 	release(
 		iterator
 	);
@@ -112,7 +112,7 @@ public:
 
 	void
 	push_back(
-		auto_ptr
+		unique_ptr
 	);
 
 	void
@@ -125,7 +125,7 @@ public:
 
 	void
 	push_front(
-		auto_ptr
+		unique_ptr
 	);
 
 	void
@@ -195,7 +195,7 @@ public:
 	void
 	insert(
 		iterator,
-		auto_ptr
+		unique_ptr
 	);
 
 	/// Inserts an element before the given iterator

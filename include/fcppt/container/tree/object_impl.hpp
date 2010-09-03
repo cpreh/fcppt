@@ -120,12 +120,12 @@ fcppt::container::tree::object<T>::parent(
 template<
 	typename T
 >
-typename fcppt::container::tree::object<T>::auto_ptr
+typename fcppt::container::tree::object<T>::unique_ptr
 fcppt::container::tree::object<T>::release(
 	iterator const it
 )
 {
-	auto_ptr ret(
+	unique_ptr ret(
 		children_.release(
 			it
 		).release()
@@ -204,7 +204,7 @@ template<
 >
 void
 fcppt::container::tree::object<T>::push_back(
-	auto_ptr _ptr
+	unique_ptr _ptr
 )
 {
 	insert(
@@ -243,7 +243,7 @@ template<
 >
 void
 fcppt::container::tree::object<T>::push_front(
-	auto_ptr _ptr
+	unique_ptr _ptr
 )
 {
 	insert(
@@ -438,7 +438,7 @@ template<
 void
 fcppt::container::tree::object<T>::insert(
 	iterator const _it,
-	auto_ptr _ptr
+	unique_ptr _ptr
 )
 {
 	object<T> &ref(
