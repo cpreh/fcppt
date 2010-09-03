@@ -186,24 +186,6 @@ template<
 	typename Y
 >
 fcppt::shared_ptr<T, Deleter>::shared_ptr(
-	auto_ptr<Y> r
-)
-:
-	impl()
-{
-	impl = r;
-}
-
-template<
-	typename T,
-	template<
-		typename
-	> class Deleter
->
-template<
-	typename Y
->
-fcppt::shared_ptr<T, Deleter>::shared_ptr(
 	unique_ptr<Y, Deleter> r
 )
 :
@@ -229,24 +211,6 @@ fcppt::shared_ptr<T, Deleter>::operator=(
 )
 {
 	impl = r.impl;
-	return *this;
-}
-
-template<
-	typename T,
-	template<
-		typename
-	> class Deleter
->
-template<
-	typename Y
->
-fcppt::shared_ptr<T, Deleter> &
-fcppt::shared_ptr<T, Deleter>::operator=(
-	auto_ptr<Y> r
-)
-{
-	impl = r;
 	return *this;
 }
 

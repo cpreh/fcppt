@@ -9,7 +9,6 @@
 
 #include <fcppt/scoped_ptr_fwd.hpp>
 #include <fcppt/unique_ptr_fwd.hpp>
-#include <fcppt/auto_ptr.hpp>
 #include <fcppt/noncopyable.hpp>
 #include <fcppt/safe_bool.hpp>
 #include <boost/type_traits/add_reference.hpp>
@@ -42,13 +41,6 @@ public:
 		typename Y
 	>
 	explicit scoped_ptr(
-		auto_ptr<Y>
-	);
-
-	template<
-		typename Y
-	>
-	explicit scoped_ptr(
 		unique_ptr<Y, Deleter>
 	);
 
@@ -74,14 +66,6 @@ public:
 	void
 	swap(
 		scoped_ptr &
-	);
-
-	template<
-		typename Y
-	>
-	void
-	take(
-		auto_ptr<Y>
 	);
 
 	template<

@@ -33,8 +33,6 @@ public:
 		object	
 	> unique_ptr;
 
-	typedef unique_ptr auto_ptr; // legacy typedef
-
 	typedef typename child_list::value_type value_type;
 	typedef typename child_list::size_type size_type;
 	typedef typename child_list::difference_type difference_type;

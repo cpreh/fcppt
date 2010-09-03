@@ -34,22 +34,6 @@ template<
 	typename Y
 >
 fcppt::scoped_ptr<T, Deleter>::scoped_ptr(
-	auto_ptr<Y> p
-)
-:
-	ptr(p.release())
-{}
-
-template<
-	typename T,
-	template<
-		typename
-	> class Deleter
->
-template<
-	typename Y
->
-fcppt::scoped_ptr<T, Deleter>::scoped_ptr(
 	unique_ptr<Y, Deleter> p
 )
 :
@@ -144,25 +128,6 @@ fcppt::scoped_ptr<T, Deleter>::swap(
 		ptr,
 		b.ptr
 	);
-}
-
-template<
-	typename T,
-	template<
-		typename
-	> class Deleter
->
-template<
-	typename Y
->
-void
-fcppt::scoped_ptr<T, Deleter>::take(
-	auto_ptr<Y> p
-)
-{
-	reset();
-
-	ptr = p.release();
 }
 
 template<
