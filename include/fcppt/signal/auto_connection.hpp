@@ -8,14 +8,14 @@
 #define FCPPT_SIGNAL_AUTO_CONNECTION_HPP_INCLUDED
 
 #include <fcppt/signal/detail/connection.hpp>
-#include <fcppt/auto_ptr.hpp>
+#include <fcppt/unique_ptr.hpp>
 
 namespace fcppt
 {
 namespace signal
 {
 
-typedef fcppt::auto_ptr<
+typedef fcppt::unique_ptr<
 	detail::connection
 > auto_connection;
 

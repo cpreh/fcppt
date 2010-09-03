@@ -5,6 +5,7 @@
 
 
 #include <fcppt/signal/connection_manager.hpp>
+#include <fcppt/move.hpp>
 
 fcppt::signal::connection_manager::connection_manager()
 :
@@ -30,9 +31,9 @@ fcppt::signal::connection_manager::connect(
 {
 	connections_.push_back(
 		shared_connection(
-			//move(
+			move(
 				_con
-			//)
+			)
 		)
 	);
 }
