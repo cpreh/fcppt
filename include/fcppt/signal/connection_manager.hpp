@@ -7,11 +7,11 @@
 #ifndef FCPPT_SIGNAL_CONNECTION_MANAGER_HPP_INCLUDED
 #define FCPPT_SIGNAL_CONNECTION_MANAGER_HPP_INCLUDED
 
-#include <fcppt/signal/shared_connection.hpp>
 #include <fcppt/signal/auto_connection.hpp>
+#include <fcppt/signal/shared_connection.hpp>
 #include <fcppt/symbol.hpp>
 #include <fcppt/noncopyable.hpp>
-#include <vector>
+#include <boost/ptr_container/ptr_vector.hpp>
 
 namespace fcppt
 {
@@ -28,15 +28,11 @@ public:
 
 	FCPPT_SYMBOL connection_manager();
 
-	FCPPT_SYMBOL connection_manager(
+	FCPPT_SYMBOL explicit connection_manager(
 		container const &
 	);
 
-	FCPPT_SYMBOL
-	void
-	connect(
-		shared_connection const &
-	);
+	FCPPT_SYMBOL ~connection_manager();
 
 	FCPPT_SYMBOL
 	void
@@ -47,7 +43,7 @@ public:
 	FCPPT_SYMBOL void
 	clear();
 private:
-	container connections;
+	container connections_;
 };
 
 }

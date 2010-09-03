@@ -8,31 +8,37 @@
 
 fcppt::signal::connection_manager::connection_manager()
 :
-	connections()
-{}
+	connections_()
+{
+}
 
 fcppt::signal::connection_manager::connection_manager(
-	container const &_connections)
+	container const &_connections
+)
 :
-	connections(_connections)
+	connections_(_connections)
 {}
 
-void fcppt::signal::connection_manager::connect(
-	shared_connection const &v)
+fcppt::signal::connection_manager::~connection_manager()
 {
-	connections.push_back(
-		v);
 }
 
-void fcppt::signal::connection_manager::connect(
-	auto_connection v)
+void
+fcppt::signal::connection_manager::connect(
+	auto_connection _con
+)
 {
-	connections.push_back(
+	connections_.push_back(
 		shared_connection(
-			v));
+			//move(
+				_con
+			//)
+		)
+	);
 }
 
-void fcppt::signal::connection_manager::clear()
+void
+fcppt::signal::connection_manager::clear()
 {
-	connections.clear();
+	connections_.clear();
 }

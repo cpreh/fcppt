@@ -14,7 +14,11 @@ namespace fcppt
 {
 namespace signal
 {
-typedef auto_ptr<detail::connection> auto_connection;
+
+typedef fcppt::auto_ptr<
+	detail::connection
+> auto_connection;
+
 }
 }
 
