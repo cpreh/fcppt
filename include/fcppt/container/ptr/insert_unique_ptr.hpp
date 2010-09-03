@@ -40,6 +40,27 @@ insert_unique_ptr(
 		);
 }
 
+template<
+	typename PtrContainer,
+	typename UniquePtr
+>
+typename boost::enable_if<
+	fcppt::type_traits::is_unique_ptr<
+		UniquePtr
+	>,
+	typename PtrContainer::iterator
+>::type
+insert_unique_ptr(
+	PtrContainer &_container,
+	UniquePtr _ptr
+)
+{
+	return
+		_container.insert(
+			_ptr.release()
+		);
+}
+
 }
 }
 }

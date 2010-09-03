@@ -9,6 +9,7 @@
 #include <fcppt/make_unique_ptr.hpp>
 #include <fcppt/unique_ptr.hpp>
 #include <boost/ptr_container/ptr_vector.hpp>
+#include <boost/ptr_container/ptr_set.hpp>
 #include <boost/test/unit_test.hpp>
 
 BOOST_AUTO_TEST_CASE(
@@ -61,5 +62,33 @@ BOOST_AUTO_TEST_CASE(
 
 	BOOST_REQUIRE(
 		vector[1] == "test1"
+	);
+}
+
+BOOST_AUTO_TEST_CASE(
+	ptr_container_multi_set
+)
+{
+	typedef boost::ptr_multiset<
+		std::string
+	> string_ptr_multiset;
+
+	string_ptr_multiset set;
+
+	fcppt::container::ptr::insert_unique_ptr(
+		set,
+		fcppt::make_unique_ptr<
+			std::string
+		>(
+			"test"
+		)
+	);
+
+	BOOST_REQUIRE(
+		!set.empty()
+	);
+
+	BOOST_REQUIRE(
+		*set.begin() == "test"
 	);
 }
