@@ -13,8 +13,9 @@
 #define FCPPT_PP_ENUM_PARAMS_FORWARD_Z(\
 	z,\
 	count,\
-	param\
+	param1,\
+	param2\
 )\
-	BOOST_PP_REPEAT_ ## z(count, FCPPT_PP_DETAIL_ENUM_PARAMS_FORWARD_M, param)
+	BOOST_PP_REPEAT_ ## z(count, FCPPT_PP_DETAIL_ENUM_PARAMS_FORWARD_M, (param1, param2))
 
 #endif

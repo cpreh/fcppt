@@ -8,7 +8,6 @@
 #define FCPPT_DETAIL_MAKE_PTR_BASE_HPP_INCLUDED
 
 #include <fcppt/preprocessor/enum_params_forward_z.hpp>
-#include <fcppt/forward.hpp>
 #include <boost/preprocessor/repetition/enum_params.hpp>
 #include <boost/preprocessor/repetition/enum_binary_params.hpp>
 #include <boost/preprocessor/repetition/repeat.hpp>
@@ -42,8 +41,6 @@
 		)\
 	)\
 	{\
-		using fcppt::forward; \
-		\
 		return \
 			ptr_type<\
 				Type\
@@ -52,6 +49,7 @@
 					FCPPT_PP_ENUM_PARAMS_FORWARD_Z(\
 						z,\
 						BOOST_PP_INC(n),\
+						T,\
 						param\
 					)\
 				)\
