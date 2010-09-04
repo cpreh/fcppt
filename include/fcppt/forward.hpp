@@ -11,6 +11,7 @@
 
 #include <fcppt/move.hpp>
 #include <boost/mpl/identity.hpp>
+#include <boost/mpl/not.hpp>
 #include <boost/type_traits/is_reference.hpp>
 #include <boost/utility/enable_if.hpp>
 
@@ -21,9 +22,9 @@ template <
 	typename T
 >
 inline
-typename boost::enable_if_c
+typename boost::enable_if
 <
-	boost::is_reference<T>::value,
+	boost::is_reference<T>,
 	T
 >::type
 forward(
@@ -37,9 +38,11 @@ template<
 	typename T
 >
 inline
-typename boost::enable_if_c
+typename boost::enable_if
 <
-	!boost::is_reference<T>::value,
+	boost::mpl::not_<
+		boost::is_reference<T>
+	>,
 	T
 >::type
 forward(
@@ -53,9 +56,11 @@ template<
 	typename T
 >
 inline
-typename boost::enable_if_c
+typename boost::enable_if
 <
-	!boost::is_reference<T>::value,
+	boost::mpl::not_<
+		boost::is_reference<T>
+	>,
 	T
 >::type
 forward(
@@ -63,6 +68,24 @@ forward(
 )
 {
 	return fcppt::move(const_cast<T &>(t));
+}
+
+template<
+	typename T
+>
+inline
+typename boost::enable_if
+<
+	boost::mpl::not_<
+		boost::is_reference<T>
+	>,
+	T const &
+>::type
+forward(
+	T const &t
+)
+{
+	return t;
 }
 
 }
