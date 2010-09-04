@@ -24,6 +24,12 @@ try
 	fcppt::container::tree::object<fcppt::string> 
 	string_tree;
 
+	fcppt::forward<
+		char const [5]
+	>(
+		"foo1"
+	);
+
 	string_tree tree(
 		FCPPT_TEXT("hello")
 	);

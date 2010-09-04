@@ -9,26 +9,26 @@
 #ifndef FCPPT_FORWARD_HPP_INCLUDED
 #define FCPPT_FORWARD_HPP_INCLUDED
 
+#include <fcppt/type_traits/is_movable.hpp>
 #include <fcppt/move.hpp>
 #include <boost/mpl/identity.hpp>
-#include <boost/mpl/not.hpp>
-#include <boost/type_traits/is_reference.hpp>
 #include <boost/utility/enable_if.hpp>
 
 namespace fcppt
 {
 
-template <
+template<
 	typename T
 >
 inline
-typename boost::enable_if
-<
-	boost::is_reference<T>,
-	T
+typename boost::disable_if<
+	fcppt::type_traits::is_movable<
+		T
+	>,
+	T const &
 >::type
 forward(
-	typename boost::mpl::identity<T>::type t
+	T const &t
 )
 {
 	return t;
@@ -38,10 +38,9 @@ template<
 	typename T
 >
 inline
-typename boost::enable_if
-<
-	boost::mpl::not_<
-		boost::is_reference<T>
+typename boost::enable_if<
+	fcppt::type_traits::is_movable<
+		T
 	>,
 	T
 >::type
@@ -56,10 +55,9 @@ template<
 	typename T
 >
 inline
-typename boost::enable_if
-<
-	boost::mpl::not_<
-		boost::is_reference<T>
+typename boost::enable_if<
+	fcppt::type_traits::is_movable<
+		T
 	>,
 	T
 >::type
@@ -68,24 +66,6 @@ forward(
 )
 {
 	return fcppt::move(const_cast<T &>(t));
-}
-
-template<
-	typename T
->
-inline
-typename boost::enable_if
-<
-	boost::mpl::not_<
-		boost::is_reference<T>
-	>,
-	T const &
->::type
-forward(
-	T const &t
-)
-{
-	return t;
 }
 
 }
