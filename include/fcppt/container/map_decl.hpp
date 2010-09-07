@@ -60,6 +60,12 @@ public:
 		mapped_type const &
 	);
 
+	iterator
+	insert(
+		iterator,
+		value_type const &
+	);
+
 	void
 	insert(
 		value_type const &

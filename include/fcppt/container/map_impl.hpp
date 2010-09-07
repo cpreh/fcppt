@@ -56,7 +56,8 @@ fcppt::container::map<
 template<
 	typename MapType
 >
-void fcppt::container::map<
+void
+fcppt::container::map<
 	MapType
 >::insert(
 	key_type const &k,
@@ -74,7 +75,44 @@ void fcppt::container::map<
 template<
 	typename MapType
 >
-void fcppt::container::map<
+typename fcppt::container::map<
+	MapType
+>::iterator
+fcppt::container::map<
+	MapType
+>::insert(
+	iterator const p,
+	value_type const &v
+)
+{
+	size_type const old_size(
+		size()
+	);
+
+	iterator const ret(
+		impl_.insert(
+			p,
+			v
+		)
+	);
+
+	if(
+		size() == old_size
+	)
+		throw insert_failed(
+			format_error(
+				FCPPT_TEXT("insert")
+			)
+		);
+	
+	return ret;
+}
+
+template<
+	typename MapType
+>
+void
+fcppt::container::map<
 	MapType
 >::insert(
 	value_type const &v
@@ -93,7 +131,8 @@ void fcppt::container::map<
 template<
 	typename MapType
 >
-void fcppt::container::map<
+void
+fcppt::container::map<
 	MapType
 >::erase(
 	key_type const &k
@@ -114,7 +153,8 @@ void fcppt::container::map<
 template<
 	typename MapType
 >
-void fcppt::container::map<
+void
+fcppt::container::map<
 	MapType
 >::erase(
 	iterator const it

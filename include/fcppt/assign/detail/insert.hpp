@@ -7,9 +7,6 @@
 #ifndef FCPPT_ASSIGN_DETAIL_INSERT_HPP_INCLUDED
 #define FCPPT_ASSIGN_DETAIL_INSERT_HPP_INCLUDED
 
-#include <fcppt/container/is_associative.hpp>
-#include <boost/utility/enable_if.hpp>
-
 namespace fcppt
 {
 namespace assign
@@ -20,42 +17,17 @@ namespace detail
 template<
 	typename Container
 >
-typename boost::enable_if<
-	container::is_associative<
-		Container
-	>,
-	void
->::type
+void
 insert(
-	Container &container_,
-	typename Container::value_type const &x
+	Container &_container,
+	typename Container::value_type const &_value
 )
 {
-	container_.insert(
-		x
+	_container.insert(
+		_container.end(),
+		_value
 	);
 }
-
-template<
-	typename Container
->
-typename boost::disable_if<
-	container::is_associative<
-		Container
-	>,
-	void
->::type
-insert(
-	Container &container_,
-	typename Container::value_type const &x
-)
-{
-	container_.push_back(
-		x
-	);
-}
-
-
 
 }
 }
