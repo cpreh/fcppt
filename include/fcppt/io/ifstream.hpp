@@ -7,6 +7,7 @@
 #ifndef FCPPT_IO_IFSTREAM_HPP_INCLUDED
 #define FCPPT_IO_IFSTREAM_HPP_INCLUDED
 
+#include <fcppt/filesystem/config.hpp>
 #include <fcppt/char_type.hpp>
 #include <boost/filesystem/fstream.hpp>
 

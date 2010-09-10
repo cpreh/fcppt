@@ -19,7 +19,8 @@ namespace filesystem
 FCPPT_SYMBOL path const
 replace_extension(
 	path const &,
-	string const &);
+	string const &
+);
 
 }
 }

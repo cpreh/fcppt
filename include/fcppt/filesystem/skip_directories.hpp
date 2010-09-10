@@ -17,7 +17,8 @@ namespace filesystem
 
 FCPPT_SYMBOL directory_iterator const
 skip_directories(
-	directory_iterator);
+	directory_iterator
+);
 
 }
 }

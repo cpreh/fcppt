@@ -17,7 +17,8 @@ namespace filesystem
 
 FCPPT_SYMBOL path const
 remove_filename(
-	path);
+	path
+);
 
 }
 }

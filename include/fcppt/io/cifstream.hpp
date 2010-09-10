@@ -7,6 +7,7 @@
 #ifndef FCPPT_IO_CIFSTREAM_HPP_INCLUDED
 #define FCPPT_IO_CIFSTREAM_HPP_INCLUDED
 
+#include <fcppt/filesystem/config.hpp>
 #include <boost/filesystem/fstream.hpp>
 
 namespace fcppt
