@@ -23,8 +23,8 @@ template<
 	> class Deleter
 >
 fcppt::unique_ptr<T, Deleter>::
-operator detail_unique_ptr::rv<
-	unique_ptr
+operator fcppt::detail_unique_ptr::rv<
+	fcppt::unique_ptr<T, Deleter>
 >()
 {
 	return
@@ -303,7 +303,7 @@ template<
 	> class Deleter
 >
 fcppt::unique_ptr<T, Deleter>::
-operator int nat::*() const
+operator int fcppt::unique_ptr<T, Deleter>::nat::*() const
 {
 	return get() ? &nat::for_bool_ : 0;
 }

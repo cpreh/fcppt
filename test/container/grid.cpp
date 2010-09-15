@@ -153,7 +153,12 @@ BOOST_AUTO_TEST_CASE(container_grid_index)
 						y	
 					)
 				]
-				== (x + y * 5)
+				==
+				static_cast<
+					int2_grid::value_type
+				>(
+					x + y * 5
+				)
 			);
 }
 

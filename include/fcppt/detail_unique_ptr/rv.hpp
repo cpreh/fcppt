@@ -9,6 +9,8 @@
 #ifndef FCPPT_DETAIL_UNIQUE_PTR_RV_HPP_INCLUDED
 #define FCPPT_DETAIL_UNIQUE_PTR_RV_HPP_INCLUDED
 
+#include <fcppt/nonassignable.hpp>
+
 namespace fcppt
 {
 namespace detail_unique_ptr
@@ -19,7 +21,7 @@ template<
 >
 class rv
 {
-	T &r_;
+	FCPPT_NONASSIGNABLE(rv)
 public:
 	explicit rv(
 		T &_r
@@ -39,6 +41,8 @@ public:
 	{
 		return r_;
 	}
+private:
+	T &r_;
 };
 
 }

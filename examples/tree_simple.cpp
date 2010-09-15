@@ -24,12 +24,6 @@ try
 	fcppt::container::tree::object<fcppt::string> 
 	string_tree;
 
-	fcppt::forward<
-		char const [5]
-	>(
-		"foo1"
-	);
-
 	string_tree tree(
 		FCPPT_TEXT("hello")
 	);
@@ -56,7 +50,7 @@ try
 		);
 
 		tree.push_back(
-			move(
+			fcppt::move(
 				child1
 			)
 		);
@@ -70,7 +64,7 @@ try
 		);
 
 		tree.push_back(
-			move(
+			fcppt::move(
 				child2
 			)
 		);

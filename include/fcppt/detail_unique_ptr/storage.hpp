@@ -64,7 +64,7 @@ public:
 		T1 t1
 	)
         :
-		t1_(move(t1)),
+		t1_(::fcppt::move(t1)),
 		t2_()
 	{}
 
@@ -73,8 +73,8 @@ public:
 		T2 t2
 	)
         :
-		t1_(move(t1)),
-		t2_(forward<T2>(t2))
+		t1_(::fcppt::move(t1)),
+		t2_(::fcppt::forward<T2>(t2))
 	{}
 
 	T1 &
@@ -140,7 +140,7 @@ public:
 		T1 t1
 	)
         :
-		t1_(move(t1))
+		t1_(::fcppt::move(t1))
 	{}
 
 	storage(
@@ -148,8 +148,8 @@ public:
 		T2 t2
 	)
         :
-		t2_(move(t2)),
-		t1_(move(t1))
+		t2_(::fcppt::move(t2)),
+		t1_(::fcppt::move(t1))
 	{}
 
 	T1 &
