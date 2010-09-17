@@ -7,6 +7,8 @@
 #ifndef FCPPT_VARIANT_DETAIL_CONSTRUCT_HPP_INCLUDED
 #define FCPPT_VARIANT_DETAIL_CONSTRUCT_HPP_INCLUDED
 
+#include <fcppt/nonassignable.hpp>
+
 namespace fcppt
 {
 namespace variant
@@ -17,15 +19,19 @@ namespace detail
 template<
 	typename Variant
 >
-struct construct
+class construct
 {
+	FCPPT_NONASSIGNABLE(
+		construct
+	)
+public:
 	typedef void result_type;
 
 	explicit construct(
-		Variant &obj
+		Variant &_obj
 	)
 	:
-		obj(obj)
+		obj_(_obj)
 	{}
 
 	template<
@@ -33,13 +39,13 @@ struct construct
 	>
 	result_type
 	operator()(
-		T const &t
+		T const &_value
 	) const
 	{
-		obj = t;
+		obj_ = _value;
 	}
 private:
-	Variant &obj;
+	Variant &obj_;
 };
 
 }
