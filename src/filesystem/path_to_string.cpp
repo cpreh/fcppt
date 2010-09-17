@@ -5,6 +5,7 @@
 
 
 #include <fcppt/filesystem/path_to_string.hpp>
+#include <fcppt/filesystem/config.hpp>
 
 fcppt::string const
 fcppt::filesystem::path_to_string(
@@ -12,7 +13,11 @@ fcppt::filesystem::path_to_string(
 )
 {
 	return
+#ifdef FCPPT_USE_FILESYSTEM_V3
 		_path.string<
 			fcppt::string
 		>();
+#else
+		_path.string();
+#endif
 }

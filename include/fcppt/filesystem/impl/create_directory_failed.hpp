@@ -7,9 +7,9 @@
 #ifndef FCPPT_FILESYSTEM_IMPL_CREATE_DIRECTORY_FAILED_HPP_INCLUDED
 #define FCPPT_FILESYSTEM_IMPL_CREATE_DIRECTORY_FAILED_HPP_INCLUDED
 
+#include <fcppt/filesystem/path_to_string.hpp>
 #include <fcppt/text.hpp>
 #include <fcppt/string.hpp>
-#include <fcppt/filesystem/config.hpp>
 
 inline
 fcppt::filesystem::create_directory_failed::create_directory_failed(
@@ -18,11 +18,10 @@ fcppt::filesystem::create_directory_failed::create_directory_failed(
 :
 	filesystem::exception(
 		FCPPT_TEXT("Failed to create directory \"")
-#ifdef FCPPT_USE_FILESYSTEM_V3
-		+ _what.string<fcppt::string>()
-#else
-		+ _what.string()
-#endif
+		+
+		filesystem::path_to_string(
+			_what
+		)
 		+ FCPPT_TEXT('"')
 	)
 {}
