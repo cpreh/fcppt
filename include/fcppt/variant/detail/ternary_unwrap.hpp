@@ -9,6 +9,7 @@
 
 #include <fcppt/variant/apply_unary.hpp>
 #include <fcppt/variant/detail/ternary_applier.hpp>
+#include <fcppt/nonassignable.hpp>
 
 namespace fcppt
 {
@@ -21,8 +22,12 @@ template<
 	typename Operation,
 	typename Variant
 >
-struct ternary_unwrap
+class ternary_unwrap
 {
+	FCPPT_NONASSIGNABLE(
+		ternary_unwrap
+	)
+public:
 	typedef typename Operation::result_type result_type;
 
 	ternary_unwrap(
