@@ -9,6 +9,7 @@
 
 #include <fcppt/variant/object_decl.hpp>
 #include <fcppt/variant/holds_type.hpp>
+#include <fcppt/nonassignable.hpp>
 
 namespace fcppt
 {
@@ -22,6 +23,7 @@ template<
 >
 class compare
 {
+	FCPPT_NONASSIGNABLE(compare)
 public:
 	typedef variant::object<
 		Types

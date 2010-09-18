@@ -7,6 +7,8 @@
 #ifndef FCPPT_VARIANT_DETAIL_TERNARY_APPLIER_HPP_INCLUDED
 #define FCPPT_VARIANT_DETAIL_TERNARY_APPLIER_HPP_INCLUDED
 
+#include <fcppt/nonassignable.hpp>
+
 namespace fcppt
 {
 namespace variant
@@ -19,8 +21,12 @@ template<
 	typename Type2,
 	typename Type3
 >
-struct ternary_applier
+class ternary_applier
 {
+	FCPPT_NONASSIGNABLE(
+		ternary_applier
+	)
+public:
 	typedef typename Operation::result_type result_type;
 
 	ternary_applier(
