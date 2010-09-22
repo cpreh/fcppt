@@ -9,62 +9,74 @@
 #define FCPPT_FUNCTION_DETAIL_HAS_ADDRESSOF_OVERLOAD_HPP_INCLUDED
 
 #include <boost/utility/enable_if.hpp>
+#include <boost/type_traits/integral_constant.hpp>
 #include <boost/type_traits/is_class.hpp>
 #include <boost/mpl/bool.hpp>
 
 namespace fcppt
 {
-
 namespace function
 {
-
 namespace detail
 {
+namespace has_addressof_overload_detail
+{
 
-template< typename func, typename U = void >
+typedef char one;
+typedef struct { char a[2]; } two;
+
+template< typename T >
+static one test( T* );
+
+template< typename T >
+static two test( ... );
+
+}
+
+template< typename Function, typename Enable = void >
 struct has_addressof_overload;
 
-template< typename func >
+template< typename Function >
 struct has_addressof_overload
 <
-   func,
-   typename boost::enable_if< boost::is_class<func> >::type
+	Function,
+	typename boost::enable_if< 
+		boost::is_class<
+			Function
+		>
+	>::type
 >
 {
-   //private:
-      typedef char one;
-      typedef struct { char a[2]; } two;
-
-      template< typename T >
-      static one test( T* );
-
-      template< typename T >
-      static two test( ... );
-
-      static func f;
-
-   //public:
-      enum
-      {
-         value = ( sizeof( test<func>( &f ) ) == sizeof( two ) )
-      };
-
-      typedef boost::mpl::bool_<value> type;
-
-      //enum { value = true };
+private:
+	static Function temp;
+public:
+	typedef boost::mpl::bool_<
+		sizeof(
+			::fcppt::function::detail::has_addressof_overload_detail::test<
+				Function
+			>(
+				&temp
+			)
+		)
+		== sizeof( has_addressof_overload_detail::two )
+	> type;
 };
 
-template< typename func >
+template<
+	typename Function
+>
 struct has_addressof_overload
 <
-   func,
-   typename boost::disable_if< boost::is_class<func> >::type
+	Function,
+	typename boost::disable_if<
+		boost::is_class<
+			Function
+		>
+	>::type
 >
-{
-   enum { value = false };
-
-   typedef boost::mpl::bool_<false> type;
-};
+:
+boost::false_type
+{};
 
 } // end namespace detail
 
