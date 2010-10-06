@@ -27,6 +27,8 @@ public:
 
 	log::location const &
 	location() const;
+
+	virtual ~no_such_location() throw();
 private:
 	log::location location_;
 };

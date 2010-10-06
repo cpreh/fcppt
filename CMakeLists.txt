@@ -67,11 +67,11 @@ ENDIF()
 
 ADD_DEFINITIONS(-D BOOST_FILESYSTEM_NO_DEPRECATED)
 
-IF (CMAKE_COMPILER_IS_GNUCXX)
-	IF(UNIX)
-		SET (FCPPT_STRING_IS_UTF8 true)
-	ENDIF()
+IF(UNIX)
+	SET (FCPPT_STRING_IS_UTF8 true)
+ENDIF()
 
+IF (CMAKE_COMPILER_IS_GNUCXX)
 	CHECK_CXX_COMPILER_FLAG(
 		"-fvisibility=hidden"
 		FCPPT_HAVE_GCC_VISIBILITY
@@ -147,7 +147,8 @@ SET (EXECUTABLE_OUTPUT_PATH ${CMAKE_BINARY_DIR}/bin)
 
 SET (pkgfile "${CMAKE_BINARY_DIR}/fcppt.pc")
 
-FILE(WRITE ${pkgfile}
+FILE(
+	WRITE ${pkgfile}
 	"prefix=${CMAKE_INSTALL_PREFIX}\n"
 	"exec_prefix=\${prefix}\n"
 	"libdir=\${prefix}/lib\n"
@@ -158,7 +159,6 @@ FILE(WRITE ${pkgfile}
 	"Version: ${FCPPT_VERSION}\n"
 	"Requires:\n"
 	"Libs: -L\${libdir} -lfcppt\n"
-	"Cflags: -I\${includedir}/"
 )
 
 INSTALL (FILES ${pkgfile} DESTINATION ${CMAKE_INSTALL_PREFIX}/lib/pkgconfig)

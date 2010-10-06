@@ -9,6 +9,8 @@
 
 #if defined(_MSC_VER)
 #	define FCPPT_TR1_DETAIL_MAKE_HEADER(name) <name>
+#elif defined(__clang__)
+#	define FCPPT_TR1_DETAIL_MAKE_HEADER(name) <boost/tr1/name.hpp>
 #elif defined(__GNUC__)
 #	define FCPPT_TR1_DETAIL_MAKE_HEADER(name) <tr1/name>
 #else

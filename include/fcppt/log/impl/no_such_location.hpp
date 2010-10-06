@@ -11,16 +11,16 @@
 
 inline
 fcppt::log::no_such_location::no_such_location(
-	log::location const &nlocation_
+	log::location const &_location
 )
 :
 	exception(
 		FCPPT_TEXT("no such location \"")
-		+ nlocation_.string()
+		+ _location.string()
 		+ FCPPT_TEXT('"')
 	),
 	location_(
-		nlocation_
+		_location
 	)
 {}
 
@@ -29,6 +29,11 @@ fcppt::log::location const &
 fcppt::log::no_such_location::location() const
 {
 	return location_;
+}
+
+inline
+fcppt::log::no_such_location::~no_such_location() throw()
+{
 }
 
 #endif
