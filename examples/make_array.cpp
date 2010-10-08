@@ -11,13 +11,28 @@
 
 //[make_array
 #include <fcppt/assign/make_array.hpp>
+#include <fcppt/io/cout.hpp>
+#include <fcppt/text.hpp>
+#include <boost/foreach.hpp>
 
 int main()
 {
-	std::tr1::array<int,3> a(
+	typedef std::tr1::array<int,3> array_int3;
+
+	array_int3 const array(
 		fcppt::assign::make_array<int>
 			(3)
 			(4)
-			(5));
+			(5)
+	);
+	
+	BOOST_FOREACH(
+		array_int3::const_reference ref,
+		array
+	)
+		fcppt::io::cout
+			<< ref
+			<< FCPPT_TEXT(' '
+		);
 }
 //]

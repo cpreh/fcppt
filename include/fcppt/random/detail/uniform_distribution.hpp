@@ -23,7 +23,7 @@ template<
 	typename T,
 	typename Enable = void
 >
-class uniform_distribution;
+struct uniform_distribution;
 
 template<
 	typename T

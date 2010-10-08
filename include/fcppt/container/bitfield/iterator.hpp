@@ -56,7 +56,7 @@ private:
 
 	iterator(
 		StoredType,
-		size_type pos
+		difference_type pos
 	);
 
 	typedef typename boost::remove_reference<
@@ -65,7 +65,7 @@ private:
 
 	ref_type array_;
 
-	size_type pos;
+	difference_type pos_;
 
 	friend class boost::iterator_core_access;
 
@@ -109,7 +109,7 @@ private:
 			OtherStoredType,
 			OtherReference,
 			ElementBits
-		> const &r
+		> const &
 	);
 };
 

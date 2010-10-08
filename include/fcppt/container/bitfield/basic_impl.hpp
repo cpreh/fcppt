@@ -108,7 +108,15 @@ template<
 typename fcppt::container::bitfield::basic<Enum, Size, InternalType>::iterator
 fcppt::container::bitfield::basic<Enum, Size, InternalType>::end()
 {
-	return iterator(array, size());
+	return
+		iterator(
+			array,
+			static_cast<
+				typename iterator::difference_type
+			>(
+				size()
+			)
+		);
 }
 
 template<
@@ -119,7 +127,15 @@ template<
 typename fcppt::container::bitfield::basic<Enum, Size, InternalType>::const_iterator
 fcppt::container::bitfield::basic<Enum, Size, InternalType>::end() const
 {
-	return const_iterator(array, size());
+	return
+		const_iterator(
+			array,
+			static_cast<
+				typename const_iterator::difference_type
+			>(
+				size()
+			)
+		);
 }
 
 template<

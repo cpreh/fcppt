@@ -38,11 +38,11 @@ fcppt::chrono::duration<
 	Rep,
 	Period
 >::duration(
-	Rep2 const &rep2_
+	Rep2 const &_rep2
 )
 :
 	rep_(
-		rep2_
+		_rep2
 	)
 {
 	BOOST_STATIC_ASSERT((

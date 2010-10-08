@@ -25,14 +25,14 @@ template<
 >
 TimePoint const
 clock_gettime_impl(
-	clockid_t const clock_
+	clockid_t const _clock
 )
 {
 	struct timespec tp;
 
 	if(
-		clock_gettime(
-			clock_,
+		::clock_gettime(
+			_clock,
 			&tp
 		) != 0
 	)
@@ -40,22 +40,26 @@ clock_gettime_impl(
 			FCPPT_TEXT("clock_gettime failed")
 		);
 
-	typedef typename TimePoint::duration duration_;
+	typedef typename TimePoint::duration duration;
 
 	return TimePoint(
-		duration_(
+		duration(
 			static_cast<
-				unsigned_type<
-					rep
-				>::type
+				typename duration::rep
 			>(
-				tp.tv_sec
-			)
-			* 1000000000UL
-			+ static_cast<
-				unsigned long
-			>(
-				tp.tv_nsec
+				static_cast<
+					chrono::unsigned_type<
+						rep
+					>::type
+				>(
+					tp.tv_sec
+				)
+				* 1000000000UL
+				+ static_cast<
+					unsigned long
+				>(
+					tp.tv_nsec
+				)
 			)
 		)
 	);

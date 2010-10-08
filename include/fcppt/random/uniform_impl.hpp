@@ -18,20 +18,20 @@ template<
 	typename Generator
 >
 fcppt::random::uniform<T, Generator>::uniform(
-	range_type const &range
+	range_type const &_range
 )
 :
 	variate(
 		Generator(
 			static_cast<
-				typename Generator::result_type
+				unsigned long
 			>(
 				fcppt::chrono::high_resolution_clock::now().time_since_epoch().count()
 			)
 		),
 		distribution(
-			range.first(),
-			range.last()
+			_range.first(),
+			_range.last()
 		)
 	)
 {}
@@ -41,15 +41,15 @@ template<
 	typename Generator
 >
 fcppt::random::uniform<T, Generator>::uniform(
-	range_type const &range,
-	Generator const &gen
+	range_type const &_range,
+	Generator const &_gen
 )
 :
 	variate(
-		gen,
+		_gen,
 		distribution(
-			range.first(),
-			range.last()
+			_range.first(),
+			_range.last()
 		)
 	)
 {}

@@ -431,7 +431,12 @@ template<
 typename fcppt::container::raw_vector<T, A>::size_type
 fcppt::container::raw_vector<T, A>::size() const
 {
-	return i.last - i.first;
+	return
+		static_cast<
+			size_type
+		>(
+			i.last - i.first
+		);
 }
 
 template<
@@ -461,7 +466,12 @@ template<
 typename fcppt::container::raw_vector<T, A>::size_type
 fcppt::container::raw_vector<T, A>::capacity() const
 {
-	return i.cap - i.first;
+	return
+		static_cast<
+			size_type
+		>(
+			i.cap - i.first
+		);
 }
 
 template<
@@ -640,7 +650,7 @@ fcppt::container::raw_vector<T, A>::insert(
 		std::distance(l, r)
 	);
 
-	size_type const new_size = size() + distance;
+	size_type const new_size = size() + static_cast<size_type>(distance);
 	if(new_size > capacity())
 	{
 		difference_type const insert_sz = position - begin();

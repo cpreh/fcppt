@@ -71,7 +71,21 @@ IF(UNIX)
 	SET (FCPPT_STRING_IS_UTF8 true)
 ENDIF()
 
-IF (CMAKE_COMPILER_IS_GNUCXX)
+CHECK_CXX_SOURCE_RUNS(
+	"#include <cstdlib>
+	int main()
+	{
+	#ifdef __clang__
+		return EXIT_SUCCESS;
+	#else
+		return EXIT_FAILURE;
+	#endif
+	}
+	"
+	COMPILER_IS_CLANGPP
+)
+
+IF (CMAKE_COMPILER_IS_GNUCXX OR COMPILER_IS_CLANGPP)
 	CHECK_CXX_COMPILER_FLAG(
 		"-fvisibility=hidden"
 		FCPPT_HAVE_GCC_VISIBILITY
@@ -81,7 +95,7 @@ IF (CMAKE_COMPILER_IS_GNUCXX)
 
 	ADD_DEFINITIONS (
 		"-pedantic-errors -Wall -Wextra -Wconversion"
-		"-Wfloat-equal -Wredundant-decls -Wstrict-null-sentinel -Winit-self"
+		"-Wfloat-equal -Wredundant-decls -Winit-self"
 		"-Woverloaded-virtual -Wnon-virtual-dtor"
 		"-Wsign-promo -Wstrict-aliasing=1 -Wold-style-cast"
 	)

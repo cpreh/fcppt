@@ -59,17 +59,21 @@ fcppt::chrono::system_clock::now()
 	return time_point(
 		duration(
 			static_cast<
-				unsigned_type<
-					rep
-				>::type
+				duration::rep
 			>(
-				tv.tv_sec
-			)
-			* 1000000UL
-			+ static_cast<
-				unsigned long
-			>(
-				tv.tv_usec
+				static_cast<
+					unsigned_type<
+						rep
+					>::type
+				>(
+					tv.tv_sec
+				)
+				* 1000000UL
+				+ static_cast<
+					unsigned long
+				>(
+					tv.tv_usec
+				)
 			)
 		)
 	);

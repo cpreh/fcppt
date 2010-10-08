@@ -38,7 +38,11 @@ BOOST_PP_TUPLE_REM_CTOR(BOOST_PP_TUPLE_ELEM(2, 0, text),BOOST_PP_TUPLE_ELEM(2, 1
 	\
 	::fcppt::math::detail::initial_size(\
 		storage,\
-		BOOST_PP_INC(n)\
+		static_cast<\
+			size_type\
+		>(\
+			BOOST_PP_INC(n)\
+		)\
 	); \
 	\
 	BOOST_PP_REPEAT(\
