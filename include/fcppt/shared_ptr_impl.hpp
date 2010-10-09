@@ -7,6 +7,7 @@
 #ifndef FCPPT_SHARED_PTR_IMPL_HPP_INCLUDED
 #define FCPPT_SHARED_PTR_IMPL_HPP_INCLUDED
 
+#include <fcppt/tr1/detail/use_boost_tr1.hpp> // workaround for boost's get_pointer
 #include <fcppt/shared_ptr_decl.hpp>
 #include <fcppt/unique_ptr_impl.hpp>
 #include <algorithm>
@@ -520,5 +521,25 @@ fcppt::operator<< (
 	os << p.get();
 	return os;
 }
+
+#ifdef FCPPT_TR1_DETAIL_USE_BOOST_TR1
+template<
+	typename T,
+	template<
+		typename
+	> class Deleter
+>
+T *
+fcppt::get_pointer(
+	fcppt::shared_ptr<
+		T,
+		Deleter
+	> const _ptr
+)
+{
+	return _ptr.get();
+}
+
+#endif
 
 #endif

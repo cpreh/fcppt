@@ -7,10 +7,13 @@
 #ifndef FCPPT_TR1_DETAIL_MAKE_HEADER_HPP_INCLUDED
 #define FCPPT_TR1_DETAIL_MAKE_HEADER_HPP_INCLUDED
 
-#if defined(_MSC_VER)
-#	define FCPPT_TR1_DETAIL_MAKE_HEADER(name) <name>
-#elif defined(__clang__)
+#include <fcppt/tr1/detail/use_boost_tr1.hpp>
+
+// needs to come first!
+#if defined(FCPPT_TR1_DETAIL_USE_BOOST_TR1)
 #	define FCPPT_TR1_DETAIL_MAKE_HEADER(name) <boost/tr1/name.hpp>
+#elif defined(_MSC_VER)
+#	define FCPPT_TR1_DETAIL_MAKE_HEADER(name) <name>
 #elif defined(__GNUC__)
 #	define FCPPT_TR1_DETAIL_MAKE_HEADER(name) <tr1/name>
 #else
