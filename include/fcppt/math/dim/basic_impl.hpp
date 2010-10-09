@@ -376,7 +376,11 @@ fcppt::math::dim::basic<T, N, S>::content() const
 		std::accumulate(
 			this->begin(),
 			this->end(),
-			1,
+			static_cast<
+				size_type
+			>(
+				1
+			),
 			std::multiplies<size_type>()
 		);
 }
