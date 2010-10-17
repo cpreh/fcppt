@@ -45,6 +45,7 @@ ENDMACRO()
 
 ADD_FCPPT_TEST(alignment)
 ADD_FCPPT_TEST(assert)
+ADD_FCPPT_TEST(type_traits)
 ADD_FCPPT_TEST(assign/make_container)
 ADD_FCPPT_TEST(chrono/duration)
 ADD_FCPPT_TEST(chrono/monotonic)
