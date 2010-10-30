@@ -44,6 +44,7 @@ MACRO(
 ENDMACRO()
 
 ADD_FCPPT_TEST(alignment)
+ADD_FCPPT_TEST(algorithm)
 ADD_FCPPT_TEST(assert)
 ADD_FCPPT_TEST(type_traits)
 ADD_FCPPT_TEST(assign/make_container)
