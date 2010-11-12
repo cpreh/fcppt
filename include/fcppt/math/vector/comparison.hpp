@@ -8,6 +8,7 @@
 #define FCPPT_MATH_VECTOR_COMPARISON_HPP_INCLUDED
 
 #include <fcppt/math/detail/array_compare.hpp>
+#include <fcppt/math/detail/array_less.hpp>
 #include <fcppt/math/vector/basic_impl.hpp>
 
 namespace fcppt
@@ -50,6 +51,73 @@ operator!=(
 {
 	return
 		!(v1 == v2);
+}
+
+template<
+	typename T,
+	typename N,
+	typename S1,
+	typename S2
+>
+bool
+operator<(
+	basic<T, N, S1> const &v1,
+	basic<T, N, S2> const &v2
+)
+{
+	return
+		fcppt::math::detail::array_less(
+			v1,
+			v2
+		);
+}
+
+template<
+	typename T,
+	typename N,
+	typename S1,
+	typename S2
+>
+bool
+operator>(
+	basic<T, N, S1> const &v1,
+	basic<T, N, S2> const &v2
+)
+{
+	return
+		v2 < v1;
+}
+
+template<
+	typename T,
+	typename N,
+	typename S1,
+	typename S2
+>
+bool
+operator<=(
+	basic<T, N, S1> const &v1,
+	basic<T, N, S2> const &v2
+)
+{
+	return
+		!(v2 < v1);
+}
+
+template<
+	typename T,
+	typename N,
+	typename S1,
+	typename S2
+>
+bool
+operator>=(
+	basic<T, N, S1> const &v1,
+	basic<T, N, S2> const &v2
+)
+{
+	return
+		!(v1 < v2);
 }
 
 }
