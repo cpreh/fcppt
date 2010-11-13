@@ -30,7 +30,7 @@ copy_n(
 )
 {
 	return
-		std::copy(
+		::std::copy(
 			beg,
 			beg + sz,
 			out

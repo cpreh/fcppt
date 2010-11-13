@@ -30,7 +30,7 @@ contains(
 )
 {
 	return
-		std::find(
+		::std::find(
 			beg,
 			end,
 			value

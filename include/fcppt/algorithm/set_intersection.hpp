@@ -32,12 +32,12 @@ set_intersection(
 {
 	Set result;
 
-	std::set_intersection(
+	::std::set_intersection(
 		a.begin(),
 		a.end(),
 		b.begin(),
 		b.end(),
-		std::inserter(
+		::std::inserter(
 			result,
 			result.begin()
 		)

@@ -29,7 +29,7 @@ compare_with(
 {
 	return
 		a.size() == b.size()
-		&& std::equal(
+		&& ::std::equal(
 			a.begin(),
 			a.end(),
 			b.begin(),

@@ -28,7 +28,7 @@ find_if_exn(
 )
 {
 	In const ret(
-		std::find_if(
+		::std::find_if(
 			begin,
 			end,
 			comp

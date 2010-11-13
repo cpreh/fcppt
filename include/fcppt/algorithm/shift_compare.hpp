@@ -20,18 +20,18 @@ shift_compare(
 	// Has to be an iterator so the mutating algorithm below works
 	typename Container2::iterator 
 		first_in_second = 
-			std::find_if(
+			::std::find_if(
 				b.begin(),
 				b.end(),
-				std::tr1::bind(
+				::std::tr1::bind(
 					is_equal,
 					*a.begin(),
-					std::tr1::placeholders::_1));
+					::std::tr1::placeholders::_1));
 
 	if (first_in_second == b.end())
 		return false;
 
-	std::rotate(
+	::std::rotate(
 		b.begin(),
 		first_in_second,
 		b.end());
@@ -41,7 +41,7 @@ shift_compare(
 			a,
 			b,
 			true,
-			std::logical_and<bool>(),
+			::std::logical_and<bool>(),
 			is_equal);
 }
 }

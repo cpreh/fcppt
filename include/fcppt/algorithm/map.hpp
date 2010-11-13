@@ -25,10 +25,10 @@ map(
 	Functor const &f)
 {
 	TargetContainer t;
-	std::transform(
+	::std::transform(
 		s.begin(),
 		s.end(),
-		std::inserter<TargetContainer>(
+		::std::inserter<TargetContainer>(
 			t,
 			t.end()),
 		f);

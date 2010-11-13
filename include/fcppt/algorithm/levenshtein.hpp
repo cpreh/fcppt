@@ -97,7 +97,7 @@ levenshtein(
 				left = matrix[dim(i,j-1)],
 				diag = matrix[dim(i-1,j-1)];
 			result_type
-				cell = std::min(above + 1,std::min(left + 1, diag + cost));
+				cell = ::std::min(above + 1,::std::min(left + 1, diag + cost));
 
       // Step 6A: Cover transposition, in addition to deletion,
       // insertion and substitution. This step is taken from:

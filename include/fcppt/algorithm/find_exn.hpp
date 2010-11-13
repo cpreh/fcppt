@@ -28,7 +28,7 @@ find_exn(
 )
 {
 	In const ret(
-		std::find(
+		::std::find(
 			begin,
 			end,
 			t
