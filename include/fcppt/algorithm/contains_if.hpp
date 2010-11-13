@@ -29,7 +29,7 @@ contains_if(
 )
 {
 	return
-		std::find_if(
+		::std::find_if(
 			beg,
 			end,
 			pred

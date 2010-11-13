@@ -6,9 +6,12 @@
 
 #include <fcppt/algorithm/inner_product.hpp>
 #include <fcppt/algorithm/shift_compare.hpp>
+#include <fcppt/algorithm/levenshtein.hpp>
+#include <fcppt/algorithm/shortest_levenshtein.hpp>
 #include <fcppt/math/vector/vector.hpp>
 #include <boost/test/unit_test.hpp>
 #include <functional>
+#include <iostream>
 
 namespace
 {
@@ -43,4 +46,63 @@ BOOST_AUTO_TEST_CASE(shift_compare)
 			first,
 			third,
 			std::equal_to<int>()));
+}
+
+namespace
+{
+void
+test_single_levenshtein(
+	std::string const &a,
+	std::string const &b,
+	std::string::size_type const expected)
+{
+	std::cout 
+		<< "Expecting levenshtein distance (\"" 
+		<< a 
+		<< "\",\"" 
+		<< b << "\") to be " 
+		<< expected
+		<< ", got " 
+		<< 
+			fcppt::algorithm::levenshtein(
+				a,
+				b) 
+		<< "...\n";
+
+	BOOST_CHECK(
+		fcppt::algorithm::levenshtein(
+			a,b) == expected);
+}
+}
+
+BOOST_AUTO_TEST_CASE(leven)
+{
+	std::cout << "Checking levenshtein distance functions...\n";
+
+	std::vector<std::string> strings;
+	strings.push_back("foo");
+	strings.push_back("barz");
+	strings.push_back("baz");
+
+	std::string const ref = "ba";
+
+	test_single_levenshtein(
+		ref,
+		strings[0],
+		3);
+
+	test_single_levenshtein(
+		ref,
+		strings[1],
+		2);
+
+	test_single_levenshtein(
+		ref,
+		strings[2],
+		1);
+
+	BOOST_CHECK(
+		fcppt::algorithm::shortest_levenshtein(
+			strings,
+			ref) == strings[2]);
 }
