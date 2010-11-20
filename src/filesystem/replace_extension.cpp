@@ -9,12 +9,14 @@
 
 fcppt::filesystem::path const
 fcppt::filesystem::replace_extension(
-	path const &p,
-	string const &ext
+	filesystem::path const &_path,
+	fcppt::string const &_ext
 )
 {
 	return
-		path(p).replace_extension(
-			ext
+		filesystem::path(
+			_path
+		).replace_extension(
+			FCPPT_TEXT(".") + _ext
 		);
 }
