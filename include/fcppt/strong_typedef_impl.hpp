@@ -77,6 +77,32 @@ template<
 	typename T,
 	typename Tag
 >
+T &
+fcppt::strong_typedef<
+	T,
+	Tag
+>::get()
+{
+	return t;
+}
+
+template<
+	typename T,
+	typename Tag
+>
+T const &
+fcppt::strong_typedef<
+	T,
+	Tag
+>::get() const
+{
+	return t;
+}
+
+template<
+	typename T,
+	typename Tag
+>
 fcppt::strong_typedef<
 	T,
 	Tag

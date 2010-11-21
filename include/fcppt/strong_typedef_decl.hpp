@@ -46,6 +46,12 @@ public:
 		U const &
 	);
 
+	T &
+	get();
+
+	T const &
+	get() const;
+
 	operator T &();
 
 	operator T const &() const;

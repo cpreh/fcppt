@@ -50,6 +50,11 @@ FCPPT_MAKE_STRONG_TYPEDEF(
 )
 //]
 
+template class fcppt::strong_typedef<
+	int,
+	distinct_type
+>;
+
 int main()
 {
 	g();
