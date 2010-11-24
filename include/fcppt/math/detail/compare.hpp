@@ -51,7 +51,7 @@ compare(
 	T const &b
 )
 {
-	return nearly_equals(a, b);
+	return math::nearly_equals(a, b);
 }
 
 }
