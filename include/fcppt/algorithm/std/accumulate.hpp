@@ -1,7 +1,7 @@
 #ifndef FCPPT_ALGORITHM_STD_ACCUMULATE_HPP_INCLUDED
 #define FCPPT_ALGORITHM_STD_ACCUMULATE_HPP_INCLUDED
 
-#include <algorithm>
+#include <numeric>
 
 namespace fcppt
 {
