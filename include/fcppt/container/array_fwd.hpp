@@ -4,17 +4,22 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_TYPE_TRAITS_HAS_ITERATOR_HPP_INCLUDED
-#define FCPPT_TYPE_TRAITS_HAS_ITERATOR_HPP_INCLUDED
+#ifndef FCPPT_CONTAINER_ARRAY_FWD_HPP_INCLUDED
+#define FCPPT_CONTAINER_ARRAY_FWD_HPP_INCLUDED
 
-#include <fcppt/type_traits/generate_has_type.hpp>
+#include <cstddef>
 
 namespace fcppt
 {
-namespace type_traits
+namespace container
 {
-FCPPT_TYPE_TRAITS_GENERATE_HAS_TYPE(
-	iterator);
+
+template<
+	typename T,
+	std::size_t N
+>
+struct array;
+
 }
 }
 

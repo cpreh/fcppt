@@ -8,6 +8,7 @@
 #define FCPPT_CONTAINER_RAW_VECTOR_IMPL_HPP_INCLUDED
 
 #include <fcppt/container/raw_vector_decl.hpp>
+#include <fcppt/container/out_of_range.hpp>
 #include <fcppt/assert.hpp>
 #include <boost/next_prior.hpp>
 #include <iterator>
@@ -748,7 +749,10 @@ fcppt::container::raw_vector<T, A>::range_check(
 	size_type const n
 ) const
 {
-	FCPPT_ASSERT(n < size());
+	if(
+		n >= size()
+	)
+		throw container::out_of_range();
 }
 
 template<
