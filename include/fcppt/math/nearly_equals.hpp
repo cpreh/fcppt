@@ -35,7 +35,7 @@ nearly_equals(
 	T const &b
 )
 {
-	return diff(a, b) < machine_epsilon<T>::value();
+	return math::diff(a, b) < math::machine_epsilon<T>::value();
 }
 
 }
