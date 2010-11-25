@@ -5,7 +5,7 @@
 #include <boost/spirit/home/phoenix/core/argument.hpp>
 #include <boost/spirit/home/phoenix/operator/arithmetic.hpp>
 #include <boost/spirit/home/phoenix/bind/bind_function.hpp>
-#include <algorithm>
+#include <numeric>
 
 namespace fcppt
 {
@@ -25,7 +25,7 @@ orthogonalize(
 	Container result;
 	for (typename Container::const_iterator i = input.begin(); i != input.end(); ++i)
 		result.push_back(
-			std::accumulate(
+			::std::accumulate(
 				result.begin(),
 				result.end(),
 				*i,
