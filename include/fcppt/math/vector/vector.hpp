@@ -8,6 +8,7 @@
 #define FCPPT_MATH_VECTOR_VECTOR_HPP_INCLUDED
 
 #include <fcppt/math/vector/angle_between.hpp>
+#include <fcppt/math/vector/angle_between_cast.hpp>
 #include <fcppt/math/vector/arithmetic.hpp>
 #include <fcppt/math/vector/atan2.hpp>
 #include <fcppt/math/vector/basic.hpp>
