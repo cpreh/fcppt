@@ -4,16 +4,13 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_MATH_VECTOR_TO_ANGLE_HPP_INCLUDED
-#define FCPPT_MATH_VECTOR_TO_ANGLE_HPP_INCLUDED
+#ifndef FCPPT_MATH_VECTOR_SIGNED_ANGLE_CAST_HPP_INCLUDED
+#define FCPPT_MATH_VECTOR_SIGNED_ANGLE_CAST_HPP_INCLUDED
 
 #include <fcppt/math/vector/basic_impl.hpp>
-#include <fcppt/math/vector/arithmetic.hpp>
-#include <fcppt/math/vector/atan2.hpp>
+#include <fcppt/math/vector/signed_angle.hpp>
 #include <fcppt/math/vector/static.hpp>
-#include <fcppt/math/vector/structure_cast.hpp>
 #include <fcppt/math/detail/has_size.hpp>
-#include <fcppt/optional_impl.hpp>
 #include <boost/utility/enable_if.hpp>
 #include <boost/type_traits/is_floating_point.hpp>
 #include <boost/mpl/and.hpp>
@@ -25,16 +22,18 @@ namespace math
 namespace vector
 {
 
-/// Calculates the angle between @a to and vector(1, 0)
+/// Calculates the signed angle between two vectors
+/// and structure_casts the parameters to the destination type
 /**
- * @tparam N must be 2
- * @return The angle if @a to is not the null vector, an empty optional otherwise
+ * @tparam Dest must be a floating point type
+ * The behaviour is undefined if is_null(_from - _to)
 */
 template<
 	typename Dest,
 	typename T,
 	typename N,
-	typename S
+	typename S1,
+	typename S2
 >
 typename boost::enable_if<
 	boost::mpl::and_<
@@ -46,21 +45,27 @@ typename boost::enable_if<
 			2
 		>
 	>,
-	fcppt::optional<
-		Dest
-	>
+	Dest
 >::type
-to_angle(
-	basic<T, N, S> const &_to
+signed_angle_cast(
+	basic<T, N, S1> const &_from,
+	basic<T, N, S2> const &_to
 )
 {
+	typedef typename fcppt::math::vector::static_<
+		Dest,
+		N::value
+	>::type intermediate_type;
+
 	return
-		vector::atan2(
+		vector::signed_angle(
 			vector::structure_cast<
-				typename vector::static_<
-					Dest,
-					N::value
-				>::type
+				intermediate_type
+			>(
+				_from
+			),
+			vector::structure_cast<
+				intermediate_type
 			>(
 				_to
 			)

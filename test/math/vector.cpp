@@ -81,6 +81,41 @@ BOOST_AUTO_TEST_CASE(vector_angle_between_cast)
 	);
 }
 
+BOOST_AUTO_TEST_CASE(vector_signed_angle)
+{
+	f2_vec const
+		vec1(2.f, 1.f),
+		vec2(2.f, 2.f);
+	
+	BOOST_CHECK(
+		fcppt::math::compare(
+			fcppt::math::vector::signed_angle(
+				vec1,
+				vec2
+			),
+			fcppt::math::pi<float_type>() / 2.f
+		)
+	);
+}
+
+BOOST_AUTO_TEST_CASE(vector_signed_angle_cast)
+{
+	ui2_vec const
+		vec1(2, 1),
+		vec2(2, 2);
+	
+	BOOST_CHECK(
+		fcppt::math::compare(
+			fcppt::math::vector::signed_angle_cast<
+				float_type
+			>(
+				vec1,
+				vec2
+			),
+			fcppt::math::pi<float_type>() / 2.f
+		)
+	);
+}
 
 BOOST_AUTO_TEST_CASE(vector_swap)
 {
