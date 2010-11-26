@@ -5,6 +5,7 @@
 
 
 #include <fcppt/math/vector/vector.hpp>
+#include <fcppt/math/compare.hpp>
 #include <fcppt/math/pi.hpp>
 #include <fcppt/math/size_type.hpp>
 #include <boost/mpl/integral_c.hpp>
@@ -41,6 +42,23 @@ BOOST_AUTO_TEST_CASE(vector_compare)
 
 	BOOST_CHECK(
 		vec2 != vec3
+	);
+}
+
+BOOST_AUTO_TEST_CASE(vector_angle_between)
+{
+	f2_vec const
+		vec1(1.f, 0.f),
+		vec2(0.f, 1.f);
+	
+	BOOST_CHECK(
+		fcppt::math::compare(
+			fcppt::math::vector::angle_between(
+				vec1,
+				vec2
+			),
+			fcppt::math::pi<float_type>() / 2.f
+		)
 	);
 }
 

@@ -26,10 +26,6 @@ int main()
 		1,
 		2);
 
-	fcppt::math::vector::angle_between<float>(
-		vec,
-		vec);
-
 	typedef fcppt::math::vector::static_<
 		float,
 		2

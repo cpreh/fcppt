@@ -7,15 +7,13 @@
 #ifndef FCPPT_MATH_VECTOR_ANGLE_BETWEEN_HPP_INCLUDED
 #define FCPPT_MATH_VECTOR_ANGLE_BETWEEN_HPP_INCLUDED
 
-#include <fcppt/math/vector/basic_impl.hpp>
 #include <fcppt/math/vector/arithmetic.hpp>
-#include <fcppt/math/vector/atan2.hpp>
-#include <fcppt/math/vector/static.hpp>
-#include <fcppt/math/vector/structure_cast.hpp>
-#include <fcppt/math/detail/has_size.hpp>
+#include <fcppt/math/vector/basic_impl.hpp>
+#include <fcppt/math/vector/dot.hpp>
+#include <fcppt/math/vector/length.hpp>
 #include <boost/utility/enable_if.hpp>
 #include <boost/type_traits/is_floating_point.hpp>
-#include <boost/mpl/and.hpp>
+#include <cmath>
 
 namespace fcppt
 {
@@ -26,41 +24,36 @@ namespace vector
 
 /// Calculates the relative angle between two vectors
 /**
- * @tparam Dest must be a floating point type
+ * @tparam T must be a floating point type
+ * The behaviour is undefined if length(_from - _to) == 0
 */
 template<
-	typename Dest,
 	typename T,
 	typename N,
 	typename S1,
 	typename S2
 >
 typename boost::enable_if<
-	boost::mpl::and_<
-		boost::is_floating_point<
-			Dest
-		>,
-		math::detail::has_size<
-			N,
-			2
-		>
+	boost::is_floating_point<
+		T
 	>,
-	optional<Dest>
+	T
 >::type
 angle_between(
-	basic<T, N, S1> const &from,
-	basic<T, N, S2> const &to
+	basic<T, N, S1> const &_from,
+	basic<T, N, S2> const &_to
 )
 {
 	return
-		atan2(
-			structure_cast<
-				typename static_<
-					Dest,
-					N::value
-				>::type
-			>(
-				to - from
+		std::acos(
+			vector::dot(
+				_from,
+				_to
+			)
+			/
+			vector::length(
+				_from
+				- _to
 			)
 		);
 }
