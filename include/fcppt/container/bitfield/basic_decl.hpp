@@ -12,7 +12,7 @@
 #include <fcppt/container/bitfield/proxy_fwd.hpp>
 #include <fcppt/container/bitfield/size_type.hpp>
 #include <fcppt/container/bitfield/value_type.hpp>
-#include <fcppt/tr1/array.hpp>
+#include <fcppt/container/array_decl.hpp>
 #include <fcppt/safe_bool.hpp>
 #include <boost/type_traits/is_unsigned.hpp>
 #include <boost/static_assert.hpp>
@@ -59,7 +59,7 @@ private:
 
 	static size_type const element_bits = std::numeric_limits<internal_type>::digits;
 
-	typedef std::tr1::array<
+	typedef fcppt::container::array<
 		internal_type,
 		Size / element_bits + (Size % element_bits ? 1 : 0)
 	> array_type;

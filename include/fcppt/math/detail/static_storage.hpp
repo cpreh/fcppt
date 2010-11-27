@@ -8,7 +8,7 @@
 #define FCPPT_MATH_DETAIL_STATIC_STORAGE_HPP_INCLUDED
 
 #include <fcppt/math/size_type.hpp>
-#include <fcppt/tr1/array.hpp>
+#include <fcppt/container/array.hpp>
 #include <fcppt/restrict_typedef_struct.hpp>
 
 namespace fcppt
@@ -24,7 +24,7 @@ template<
 >
 struct static_storage
 {
-	typedef std::tr1::array<
+	typedef fcppt::container::array<
 		T,
 		N
 	> type;

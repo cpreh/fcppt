@@ -126,6 +126,19 @@ struct array
 
 	const_reference
 	back() const;
+
+	// Additional functions to std::array
+	pointer
+	data();
+
+	const_pointer
+	data() const;
+
+	pointer
+	data_end();
+
+	const_pointer
+	data_end() const;
 };
 
 }

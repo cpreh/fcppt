@@ -7,7 +7,7 @@
 #ifndef FCPPT_MATH_DETAIL_IS_STATIC_STORAGE_HPP_INCLUDED
 #define FCPPT_MATH_DETAIL_IS_STATIC_STORAGE_HPP_INCLUDED
 
-#include <fcppt/tr1/array.hpp>
+#include <fcppt/container/array_fwd.hpp>
 #include <boost/type_traits/integral_constant.hpp>
 #include <cstddef>
 
@@ -31,7 +31,7 @@ template<
 	std::size_t N
 >
 struct is_static_storage<
-	std::tr1::array<
+	fcppt::container::array<
 		T,
 		N
 	>

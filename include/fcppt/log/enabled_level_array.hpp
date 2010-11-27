@@ -8,7 +8,7 @@
 #define FCPPT_LOG_ENABLED_LEVEL_ARRAY_HPP_INCLUDED
 
 #include <fcppt/log/level.hpp>
-#include <fcppt/tr1/array.hpp>
+#include <fcppt/container/array_fwd.hpp>
 
 namespace fcppt
 {
@@ -16,7 +16,7 @@ namespace log
 {
 
 /// An array of bool with the size level::size
-typedef std::tr1::array<
+typedef fcppt::container::array<
 	bool,
 	level::size
 > enabled_level_array;

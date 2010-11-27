@@ -9,7 +9,7 @@
 
 #include <fcppt/log/level_stream_ptr.hpp>
 #include <fcppt/log/level.hpp>
-#include <fcppt/tr1/array.hpp>
+#include <fcppt/container/array_fwd.hpp>
 
 namespace fcppt
 {
@@ -17,7 +17,7 @@ namespace log
 {
 
 /// An array of level streams with the size level::size
-typedef std::tr1::array<
+typedef fcppt::container::array<
 	level_stream_ptr,
 	level::size
 > level_stream_array;

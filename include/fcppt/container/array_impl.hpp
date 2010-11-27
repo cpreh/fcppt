@@ -294,4 +294,44 @@ fcppt::container::array<T, N>::back() const
 	return *boost::prior(end());
 }
 
+template<
+	typename T,
+	std::size_t N
+>
+typename fcppt::container::array<T, N>::pointer
+fcppt::container::array<T, N>::data()
+{
+	return elem_;
+}
+
+template<
+	typename T,
+	std::size_t N
+>
+typename fcppt::container::array<T, N>::const_pointer
+fcppt::container::array<T, N>::data() const
+{
+	return elem_;
+}
+
+template<
+	typename T,
+	std::size_t N
+>
+typename fcppt::container::array<T, N>::pointer
+fcppt::container::array<T, N>::data_end()
+{
+	return elem_ + N;
+}
+
+template<
+	typename T,
+	std::size_t N
+>
+typename fcppt::container::array<T, N>::const_pointer
+fcppt::container::array<T, N>::data_end() const
+{
+	return elem_ + N;
+}
+
 #endif

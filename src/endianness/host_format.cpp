@@ -13,7 +13,7 @@
 
 #if !(defined(FCPPT_LITTLE_ENDIAN) || defined(FCPPT_BIG_ENDIAN))
 #include <fcppt/algorithm/copy_n.hpp>
-#include <fcppt/tr1/array.hpp>
+#include <fcppt/container/array.hpp>
 
 namespace
 {
@@ -35,7 +35,7 @@ init::init()
 
 	int_type const t = 1u;
 
-	typedef std::tr1::array<
+	typedef fcppt::container::array<
 		unsigned char,
 		sizeof(int_type)
 	> array_type;

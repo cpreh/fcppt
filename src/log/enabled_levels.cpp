@@ -5,11 +5,12 @@
 
 
 #include <fcppt/log/enabled_levels.hpp>
+#include <fcppt/container/array_impl.hpp>
 #include <fcppt/foreach_enumerator.hpp>
 
 fcppt::log::enabled_level_array const
 fcppt::log::enabled_levels(
-	level::type const level_
+	level::type const _level
 )
 {
 	enabled_level_array ret;
@@ -20,7 +21,7 @@ fcppt::log::enabled_levels(
 	)
 		ret[
 			i
-		] = level_ <= i;
+		] = _level <= i;
 
 	return ret;
 }

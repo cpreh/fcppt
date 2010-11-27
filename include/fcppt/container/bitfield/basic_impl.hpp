@@ -10,6 +10,7 @@
 #include <fcppt/container/bitfield/basic_decl.hpp>
 #include <fcppt/container/bitfield/iterator_impl.hpp>
 #include <fcppt/container/bitfield/proxy_impl.hpp>
+#include <fcppt/container/array_impl.hpp>
 #include <fcppt/algorithm/contains_if.hpp>
 #include <boost/spirit/home/phoenix/core/argument.hpp>
 #include <boost/spirit/home/phoenix/operator/bitwise.hpp>
@@ -466,7 +467,9 @@ template<
 void
 fcppt::container::bitfield::basic<Enum, Size, InternalType>::clear()
 {
-	array.assign(0);
+	array.fill(
+		0
+	);
 }
 
 template<
