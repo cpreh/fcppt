@@ -4,7 +4,6 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/algorithm/inner_product.hpp>
 #include <fcppt/algorithm/shift_compare.hpp>
 #include <fcppt/algorithm/levenshtein.hpp>
 #include <fcppt/algorithm/shortest_levenshtein.hpp>
@@ -18,19 +17,6 @@ namespace
 typedef
 fcppt::math::vector::static_<int,3>::type
 vector;
-}
-
-BOOST_AUTO_TEST_CASE(inner_prod)
-{
-	vector const first(1,2,3),second(4,5,6);
-	
-	BOOST_CHECK(
-		fcppt::algorithm::inner_product(
-			first,
-			second,
-			0,
-			std::plus<vector::value_type>(),
-			std::multiplies<vector::value_type>()) == 32);
 }
 
 BOOST_AUTO_TEST_CASE(shift_compare)

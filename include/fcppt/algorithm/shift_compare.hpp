@@ -8,7 +8,7 @@
 #define FCPPT_ALGORITHM_SHIFT_COMPARE_HPP_INCLUDED
 
 #include <fcppt/tr1/functional.hpp>
-#include <fcppt/algorithm/inner_product.hpp>
+#include <boost/range/numeric.hpp>
 #include <algorithm>
 #include <functional>
 
@@ -43,7 +43,7 @@ shift_compare(
 		b.end());
 
 	return 
-		fcppt::algorithm::inner_product(
+		boost::inner_product(
 			a,
 			b,
 			true,
