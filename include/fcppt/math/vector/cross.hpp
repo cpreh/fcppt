@@ -60,29 +60,6 @@ cross(
 		);
 }
 
-/// Calculates the cross product of two two-dimensional vectors
-template<
-	typename T,
-	typename N,
-	typename S1,
-	typename S2
->
-typename boost::enable_if<
-	math::detail::has_size<
-		N,
-		2
-	>,
-	T
->::type
-cross(
-	basic<T, N, S1> const &l,
-	basic<T, N, S2> const &r
-)
-{
-	return
-		l.x() * r.y() - l.y() * r.x();
-}
-
 }
 }
 }
