@@ -274,12 +274,16 @@ SET(CMAKE_REQUIRED_LIBRARIES)
 
 CONFIGURE_FILE(
 	${CMAKE_SOURCE_DIR}/config.hpp.in
-	${CMAKE_SOURCE_DIR}/include/fcppt/config.hpp
+	${CMAKE_BINARY_DIR}/include/fcppt/config.hpp
 )
 
 CONFIGURE_FILE(
 	${CMAKE_SOURCE_DIR}/version.hpp.in
-	${CMAKE_SOURCE_DIR}/include/fcppt/version.hpp
+	${CMAKE_BINARY_DIR}/include/fcppt/version.hpp
+)
+
+INCLUDE_DIRECTORIES(
+	${CMAKE_BINARY_DIR}/include
 )
 
 MACRO(ADD_FCPPT_SOURCE_GROUP GROUPPATH PATTERN)
@@ -450,5 +454,10 @@ ENDIF ()
 
 INSTALL (
 	DIRECTORY include/
+	DESTINATION include
+)
+
+INSTALL(
+	DIRECTORY ${CMAKE_BINARY_DIR}/include
 	DESTINATION include
 )
