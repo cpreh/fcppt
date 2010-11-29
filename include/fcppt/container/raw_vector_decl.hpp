@@ -320,15 +320,15 @@ private:
 			size_type
 		);
 
-		A a;
+		A alloc_;
 
 		pointer
-			first,
-	        	last,
-			cap;
+			first_,
+	        	last_,
+			cap_;
 	};
 
-	impl i;
+	impl impl_;
 };
 
 template<
