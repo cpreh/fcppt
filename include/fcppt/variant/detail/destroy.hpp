@@ -29,10 +29,10 @@ FCPPT_PP_DISABLE_VC_WARNING(4100)
 	>
 	result_type
 	operator()(
-		T const &t
+		T const &_t
 	) const
 	{
-		t.~T();
+		_t.~T();
 	}
 FCPPT_PP_POP_WARNING
 };

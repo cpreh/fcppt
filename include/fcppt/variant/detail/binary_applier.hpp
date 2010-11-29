@@ -27,12 +27,12 @@ public:
 	typedef typename Operation::result_type result_type;
 
 	binary_applier(
-		Operation const &op,
-		Type const &t2
+		Operation const &_op,
+		Type const &_t2
 	)
 	:
-		op(op),
-		t2(t2)
+		op_(_op),
+		t2_(_t2)
 	{}
 
 	template<
@@ -40,17 +40,19 @@ public:
 	>
 	result_type
 	operator()(
-		T const &t1
+		T const &_t1
 	) const
 	{
-		return op(
-			t1,
-			t2
-		);
+		return
+			op_(
+				_t1,
+				t2_
+			);
 	}
 private:
-	Operation const &op;
-	Type const &t2;
+	Operation const &op_;
+
+	Type const &t2_;
 };
 
 }

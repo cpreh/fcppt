@@ -42,41 +42,42 @@ private:
 }
 
 fcppt::log::inner_node_name::inner_node_name(
-	string const &name_
+	string const &_name
 )
 :
-	name_(name_)
+	name_(_name)
 {}
 
 fcppt::log::inner_node_name::result_type
 fcppt::log::inner_node_name::operator()(
-	detail::context_tree const &tree_
+	detail::context_tree const &_tree
 ) const
 {
-	return variant::apply_unary(
-		compare(
-			name_
-		),
-		tree_.value()
-	);
+	return
+		variant::apply_unary(
+			::compare(
+				name_
+			),
+			_tree.value()
+		);
 }
 
 namespace
 {
 
 compare::compare(
-	fcppt::string const &name_
+	fcppt::string const &_name
 )
 :
-	name_(name_)
+	name_(_name)
 {}
 
 compare::result_type
 compare::operator()(
-	fcppt::log::detail::inner_context_node const &inner_node_
+	fcppt::log::detail::inner_context_node const &_inner_node
 ) const
 {
-	return inner_node_.name() == name_;
+	return _inner_node.name() == name_;
 }
 
 compare::result_type

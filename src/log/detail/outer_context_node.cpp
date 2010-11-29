@@ -7,10 +7,10 @@
 #include <fcppt/log/detail/outer_context_node.hpp>
 
 fcppt::log::detail::outer_context_node::outer_context_node(
-	log::object &object_
+	log::object &_object
 )
 :
-	object_(object_)
+	object_(_object)
 {}
 
 fcppt::log::object &

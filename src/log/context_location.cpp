@@ -14,12 +14,12 @@ fcppt::log::context_location::context_location()
 {}
 
 fcppt::log::context_location::context_location(
-	log::context *const context_,
-	log::location const &location_
+	log::context *const _context,
+	log::location const &_location
 )
 :
-	context_(context_),
-	location_(location_)
+	context_(_context),
+	location_(_location)
 {}
 
 fcppt::log::context *

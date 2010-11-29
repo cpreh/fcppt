@@ -8,18 +8,18 @@
 #include <fcppt/log/context.hpp>
 
 fcppt::log::detail::auto_context::auto_context(
-	context_location const &location_,
-	object &object_
+	context_location const &_location,
+	object &_object
 )
 :
-	location_(location_)
+	location_(_location)
 {
 	if(
 		location_.context()
 	)
 		location_.context()->add(
 			location_.location(),
-			object_
+			_object
 		);
 }
 

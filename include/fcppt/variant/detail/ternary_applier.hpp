@@ -30,14 +30,14 @@ public:
 	typedef typename Operation::result_type result_type;
 
 	ternary_applier(
-		Operation const &op,
-		Type2 const &t2,
-		Type3 const &t3
+		Operation const &_op,
+		Type2 const &_t2,
+		Type3 const &_t3
 	)
 	:
-		op(op),
-		t2(t2),
-		t3(t3)
+		op_(_op),
+		t2_(_t2),
+		t3_(_t3)
 	{}
 
 	template<
@@ -45,19 +45,22 @@ public:
 	>
 	result_type
 	operator()(
-		T1 const &t1
+		T1 const &_t1
 	) const
 	{
-		return op(
-			t1,
-			t2,
-			t3
-		);
+		return
+			op(
+				_t1,
+				t2_,
+				t3_
+			);
 	}
 private:
-	Operation const &op;
-	Type2 const &t2;
-	Type3 const &t3;
+	Operation const &op_;
+
+	Type2 const &t2_;
+
+	Type3 const &t3_;
 };
 
 }

@@ -24,10 +24,10 @@ public:
 	typedef void *result_type;
 
 	explicit copy(
-		raw_type *const store
+		raw_type *const _store
 	)
 	:
-		store(store)
+		store_(_store)
 	{}
 
 	template<
@@ -35,13 +35,13 @@ public:
 	>
 	result_type
 	operator()(
-		T const &t
+		T const &_t
 	) const
 	{
-		return new (store) T(t);
+		return new (store_) T(_t);
 	}
 private:
-	raw_type *const store;
+	raw_type *const store_;
 };
 
 }

@@ -7,10 +7,10 @@
 #include <fcppt/log/detail/inner_context_node.hpp>
 
 fcppt::log::detail::inner_context_node::inner_context_node(
-	string const &name_
+	string const &_name
 )
 :
-	name_(name_)
+	name_(_name)
 {}
 
 fcppt::string const &

@@ -27,8 +27,8 @@ template<
 >
 typename Operation::result_type
 apply_unary_internal(
-	Operation const &op,
-	Variant const &obj
+	Operation const &_op,
+	Variant const &_obj
 )
 {
 	typedef typename Variant::types types;
@@ -49,8 +49,8 @@ apply_unary_internal(
 			types
 		>::type
 	>(
-		op,
-		obj
+		_op,
+		_obj
 	);
 }
 

@@ -28,10 +28,10 @@ template<
 	typename T
 >
 fcppt::container::tree::object<T>::object(
-	T const &value_
+	T const &_value
 )
 :
-	value_(value_),
+	value_(_value),
 	parent_(0)
 {}
 
@@ -111,10 +111,10 @@ template<
 >
 void
 fcppt::container::tree::object<T>::parent(
-	object &t
+	object &_other
 )
 {
-	parent_ = &t;
+	parent_ = &_other;
 }
 
 template<
@@ -122,12 +122,12 @@ template<
 >
 typename fcppt::container::tree::object<T>::unique_ptr
 fcppt::container::tree::object<T>::release(
-	iterator const it
+	iterator const _it
 )
 {
 	unique_ptr ret(
 		children_.release(
-			it
+			_it
 		).release()
 	);
 
@@ -175,10 +175,10 @@ template<
 >
 void
 fcppt::container::tree::object<T>::value(
-	T const &v
+	T const &_value
 )
 {
-	value_ = v;
+	value_ = _value;
 }
 
 template<
@@ -220,12 +220,12 @@ template<
 >
 void
 fcppt::container::tree::object<T>::push_back(
-	T const &t
+	T const &_value
 )
 {
 	insert(
 		end(),
-		t
+		_value
 	);
 }
 
@@ -259,12 +259,12 @@ template<
 >
 void
 fcppt::container::tree::object<T>::push_front(
-	T const &t
+	T const &_value
 )
 {
 	insert(
 		begin(),
-		t
+		_value
 	);
 }
 
@@ -482,11 +482,11 @@ template<
 >
 void
 fcppt::container::tree::object<T>::erase(
-	iterator const it
+	iterator const _it
 )
 {
 	children().erase(
-		it
+		_it
 	);
 }
 
@@ -495,13 +495,13 @@ template<
 >
 void
 fcppt::container::tree::object<T>::erase(
-	iterator const beg,
-	iterator const end
+	iterator const _begin,
+	iterator const _end
 )
 {
 	children().erase(
-		beg,
-		end
+		_begin,
+		_end
 	);
 }
 
@@ -537,21 +537,21 @@ template<
 >
 void
 fcppt::container::tree::object<T>::swap(
-	object &other_
+	object &_other
 )
 {
 	std::swap(
 		value_,
-		other_.value_
+		_other.value_
 	);
 
 	std::swap(
 		parent_,
-		other_.parent_
+		_other.parent_
 	);
 
 	children_.swap(
-		other_.children_
+		_other.children_
 	);
 }
 
@@ -560,13 +560,13 @@ template<
 >
 bool
 fcppt::container::tree::operator==(
-	object<T> const &a,
-	object<T> const &b
+	object<T> const &_a,
+	object<T> const &_b
 )
 {
 	return
-		a.value() == b.value()
-		&& a.children() == b.children();
+		_a.value() == _b.value()
+		&& _a.children() == _b.children();
 }
 
 template<
@@ -574,11 +574,11 @@ template<
 >
 bool
 fcppt::container::tree::operator!=(
-	object<T> const &a,
-	object<T> const &b
+	object<T> const &_a,
+	object<T> const &_b
 )
 {
-	return !(a == b);
+	return !(_a == _b);
 }
 
 template<
@@ -586,11 +586,13 @@ template<
 >
 void
 fcppt::container::tree::swap(
-	object<T> &a,
-	object<T> &b
+	object<T> &_a,
+	object<T> &_b
 )
 {
-	return a.swap(b);
+	_a.swap(
+		_b
+	);
 }
 
 #endif

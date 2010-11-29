@@ -41,10 +41,10 @@ class pre_order
 	FCPPT_NONCOPYABLE(pre_order)
 public:
 	explicit pre_order(
-		Tree &tree_
+		Tree &_tree
 	)
 	:
-		tree_(tree_)
+		tree_(_tree)
 	{}
 
 	class iterator;
@@ -78,11 +78,11 @@ public:
 	{
 	public:
 		explicit iterator(
-			tree_pointer const current
+			tree_pointer const _current
 		)
 		:
-			current(current),
-			positions()
+			current_(_current),
+			positions_()
 		{}
 
 		typedef typename iterator_base::value_type value_type;
@@ -96,57 +96,57 @@ public:
 		void
 		increment()
 		{
-			if(!current->empty())
+			if(!current_->empty())
 			{
 				for(
 					tree_iterator
 						it(
-							current->rbegin()
+							current_->rbegin()
 						),
 						end(
 							boost::prior(
-								current->rend()
+								current_->rend()
 							)
 						);
 					it != end;
 					++it
 				)
-					positions.push(
+					positions_.push(
 						&*it
 					);
 
-				current = &current->front();
+				current_ = &current_->front();
 			}
 			else if(
-				positions.empty()
+				positions_.empty()
 			)
-				current = 0;
+				current_ = 0;
 			else
 			{
 
-				current = positions.top();
+				current_ = positions_.top();
 
-				positions.pop();
+				positions_.pop();
 			}
 		}
 
 		reference
 		dereference() const
 		{
-			return *current;
+			return *current_;
 		}
 
 		bool
 		equal(
-			iterator const &s
+			iterator const &_other
 		) const
 		{
-			return current == s.current;
+			return current_ == _other.current_;
 		}
 
-		tree_pointer current;
+		tree_pointer current_;
 
-		stack_type positions;
+		stack_type positions_;
 	};
 
 	iterator const
