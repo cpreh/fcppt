@@ -25,7 +25,7 @@
 BOOST_PP_TUPLE_REM_CTOR(BOOST_PP_TUPLE_ELEM(2, 0, text),BOOST_PP_TUPLE_ELEM(2, 1, text)) (\
 	BOOST_PP_ENUM_PARAMS(\
 		BOOST_PP_INC(n),\
-		T const& param\
+		T const &_param\
 	)\
 )\
 {\
@@ -37,7 +37,7 @@ BOOST_PP_TUPLE_REM_CTOR(BOOST_PP_TUPLE_ELEM(2, 0, text),BOOST_PP_TUPLE_ELEM(2, 1
 	));\
 	\
 	::fcppt::math::detail::initial_size(\
-		storage,\
+		storage_,\
 		static_cast<\
 			size_type\
 		>(\
@@ -48,7 +48,7 @@ BOOST_PP_TUPLE_REM_CTOR(BOOST_PP_TUPLE_ELEM(2, 0, text),BOOST_PP_TUPLE_ELEM(2, 1
 	BOOST_PP_REPEAT(\
 		BOOST_PP_INC(n),\
 		FCPPT_MATH_DETAIL_MAKE_VARIADIC_CONSTRUCTOR_ASSIGN,\
-		param\
+		_param\
 	)\
 }
 

@@ -35,10 +35,10 @@ template<
 	typename S
 >
 fcppt::math::vector::basic<T, N, S>::basic(
-	storage_type const &storage
+	storage_type const &_storage
 )
 :
-	storage(storage)
+	storage_(_storage)
 {}
 
 template<
@@ -47,10 +47,10 @@ template<
 	typename S
 >
 fcppt::math::vector::basic<T, N, S>::basic(
-	basic const &other_
+	basic const &_other
 )
 :
-	storage(other_.storage)
+	storage_(_other.storage_)
 {}
 
 template<
@@ -66,17 +66,17 @@ fcppt::math::vector::basic<T, N, S>::basic(
 		T,
 		N,
 		OtherStorage
-	> const &other_
+	> const &_other
 )
 {
 	math::detail::initial_size(
-		storage,
-		other_.size()
+		storage_,
+		_other.size()
 	);
 
 	std::copy(
-		other_.begin(),
-		other_.end(),
+		_other.begin(),
+		_other.end(),
 		begin()
 	);
 }
@@ -90,26 +90,26 @@ template<
 	typename In
 >
 fcppt::math::vector::basic<T, N, S>::basic(
-	In const beg,
+	In const _begin,
 	typename boost::enable_if<
 		type_traits::is_iterator<
 			In
 		>,
 		In
-	>::type const end
+	>::type const _end
 )
 {
 	math::detail::initial_size(
-		storage,
+		storage_,
 		std::distance(
-			beg,
-			end
+			_begin,
+			_end
 		)
 	);
 
 	std::copy(
-		beg,
-		end,
+		_begin,
+		_end,
 		begin()
 	);
 }
@@ -132,10 +132,10 @@ template<
 >
 fcppt::math::vector::basic<T, N, S> &
 fcppt::math::vector::basic<T, N, S>::operator=(
-	basic const &other_
+	basic const &_other
 )
 {
-	storage = other_.storage;
+	storage_ = _other.storage_;
 
 	return *this;
 }
@@ -154,18 +154,18 @@ fcppt::math::vector::basic<T, N, S>::operator=(
 		T,
 		N,
 		OtherStorage
-	> const &other_
+	> const &_other
 )
 {
 	math::detail::initial_size(
-		storage,
-		other_.size()
+		storage_,
+		_other.size()
 	);
 
 	return
 		math::detail::assign(
 			*this,
-			other_
+			_other
 		);
 }
 
@@ -205,11 +205,11 @@ template<
 >
 fcppt::math::vector::basic<T, N, S> &
 fcppt::math::vector::basic<T, N, S>::operator*=(
-	value_type const &v
+	value_type const &_value
 )
 {
 	for(size_type i = 0; i < size(); ++i)
-		(*this)[i] *= v;
+		(*this)[i] *= _value;
 	return *this;
 }
 
@@ -220,11 +220,11 @@ template<
 >
 fcppt::math::vector::basic<T, N, S> &
 fcppt::math::vector::basic<T, N, S>::operator/=(
-	value_type const &v
+	value_type const &_value
 )
 {
 	for(size_type i = 0; i < size(); ++i)
-		(*this)[i] /= v;
+		(*this)[i] /= _value;
 	return *this;
 }
 
@@ -235,10 +235,10 @@ template<
 >
 typename fcppt::math::vector::basic<T, N, S>::const_reference
 fcppt::math::vector::basic<T, N, S>::operator[](
-	size_type const index
+	size_type const _index
 ) const
 {
-	return storage[index];
+	return storage_[_index];
 }
 
 template<
@@ -248,10 +248,10 @@ template<
 >
 typename fcppt::math::vector::basic<T, N, S>::reference
 fcppt::math::vector::basic<T, N, S>::operator[](
-	size_type const index
+	size_type const _index
 )
 {
-	return storage[index];
+	return storage_[_index];
 }
 
 template<
@@ -264,7 +264,7 @@ fcppt::math::vector::basic<T, N, S>::data()
 {
 	return
 		math::detail::storage_data(
-			storage
+			storage_
 		);
 }
 
@@ -278,7 +278,7 @@ fcppt::math::vector::basic<T, N, S>::data() const
 {
 	return
 		math::detail::storage_data(
-			storage
+			storage_
 		);
 }
 
@@ -295,7 +295,7 @@ fcppt::math::vector::basic<T, N, S>::size() const
 			size_type
 		>(
 			math::detail::storage_dim(
-				storage
+				storage_
 			)
 		);
 }
@@ -421,12 +421,12 @@ template<
 >
 void
 fcppt::math::vector::basic<T, N, S>::swap(
-	basic &other_
+	basic &_other
 )
 {
 	std::swap(
-		storage,
-		other_.storage
+		storage_,
+		_other.storage_
 	);
 }
 
@@ -437,11 +437,13 @@ template<
 >
 void
 fcppt::math::vector::swap(
-	basic<T, N, S> &a,
-	basic<T, N, S> &b
+	basic<T, N, S> &_a,
+	basic<T, N, S> &_b
 )
 {
-	return a.swap(b);
+	_a.swap(
+		_b
+	);
 }
 
 #endif

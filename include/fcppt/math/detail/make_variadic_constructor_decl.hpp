@@ -19,7 +19,7 @@
 explicit text(\
 	BOOST_PP_ENUM_PARAMS(\
 		BOOST_PP_INC(n),\
-		T const& param\
+		T const &_param\
 	)\
 );
 

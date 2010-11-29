@@ -174,7 +174,7 @@ FCPPT_MATH_DETAIL_MAKE_OP_DECL(\
 		basic &
 	);
 private:
-	S storage;
+	S storage_;
 };
 
 template<

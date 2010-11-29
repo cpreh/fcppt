@@ -62,10 +62,10 @@ fcppt::math::matrix::detail::dim_storage<
 	fcppt::math::detail::dynamic_size,
 	fcppt::math::detail::dynamic_size
 >::dim_storage(
-	dim_type const &dim_
+	dim_type const &_dim
 )
 :
-	dim_(dim_)
+	dim_(_dim)
 {}
 
 inline
@@ -73,10 +73,10 @@ fcppt::math::matrix::detail::dim_storage<
 	fcppt::math::detail::dynamic_size,
 	fcppt::math::detail::dynamic_size
 >::dim_storage(
-	dim_storage const &other_
+	dim_storage const &_other
 )
 :
-	dim_(other_.dim_)
+	dim_(_other.dim_)
 {}
 
 inline
@@ -88,11 +88,11 @@ fcppt::math::matrix::detail::dim_storage<
 	fcppt::math::detail::dynamic_size,
 	fcppt::math::detail::dynamic_size
 >::operator=(
-	dim_storage const &other_
+	dim_storage const &_other
 )
 {
 	// dim can already be self assigned
-	dim_ = other_.dim_;
+	dim_ = _other.dim_;
 
 	return *this;
 }
@@ -110,10 +110,10 @@ fcppt::math::matrix::detail::dim_storage<
 	fcppt::math::detail::dynamic_size,
 	fcppt::math::detail::dynamic_size
 >::resize(
-	dim_type const &ndim_
+	dim_type const &_dim
 )
 {
-	dim_ = ndim_;
+	dim_ = _dim;
 }
 
 inline
@@ -148,11 +148,11 @@ fcppt::math::matrix::detail::dim_storage<
 	fcppt::math::detail::dynamic_size,
 	fcppt::math::detail::dynamic_size
 >::swap(
-	dim_storage &other_
+	dim_storage &_other
 )
 {
 	dim_.swap(
-		other_.dim_
+		_other.dim_
 	);
 }
 
