@@ -30,12 +30,12 @@ template<
 	fcppt::math::size_type N
 >
 fcppt::math::box::basic<T, N>::basic(
-	vector const &pos_,
-	dim const &dimension_
+	vector const &_pos,
+	dim const &_dimension
 )
 :
-	pos_(pos_),
-	dimension_(dimension_)
+	pos_(_pos),
+	dimension_(_dimension)
 {}
 
 template<
@@ -128,10 +128,10 @@ template<
 >
 typename fcppt::math::box::basic<T, N>::value_type
 fcppt::math::box::basic<T, N>::pos(
-	size_type const index_
+	size_type const _index
 ) const
 {
-	return pos_[index_];
+	return pos_[_index];
 }
 
 template<
@@ -140,10 +140,10 @@ template<
 >
 typename fcppt::math::box::basic<T, N>::value_type
 fcppt::math::box::basic<T, N>::max(
-	size_type const index_
+	size_type const _index
 ) const
 {
-	return pos_[index_] + dimension_[index_];
+	return pos_[_index] + dimension_[_index];
 }
 
 template<
@@ -152,10 +152,10 @@ template<
 >
 typename fcppt::math::box::basic<T, N>::value_type
 fcppt::math::box::basic<T, N>::dimension(
-	size_type const index_
+	size_type const _index
 ) const
 {
-	return dimension_[index_];
+	return dimension_[_index];
 }
 
 template<
@@ -224,10 +224,10 @@ template<
 >
 void
 fcppt::math::box::basic<T, N>::w(
-	value_type const w_
+	value_type const _w
 )
 {
-	dimension_.w() = w_;
+	dimension_.w() = _w;
 }
 
 template<
@@ -236,10 +236,10 @@ template<
 >
 void
 fcppt::math::box::basic<T, N>::h(
-	value_type const h_
+	value_type const _h
 )
 {
-	dimension_.h() = h_;
+	dimension_.h() = _h;
 }
 
 template<
@@ -248,10 +248,10 @@ template<
 >
 void
 fcppt::math::box::basic<T, N>::d(
-	value_type const d_
+	value_type const _d
 )
 {
-	dimension_.d() = d_;
+	dimension_.d() = _d;
 }
 
 template<
@@ -260,10 +260,10 @@ template<
 >
 void
 fcppt::math::box::basic<T, N>::pos(
-	vector const &npos_
+	vector const &_pos
 )
 {
-	pos_ = npos_;
+	pos_ = _pos;
 }
 
 template<
@@ -272,10 +272,10 @@ template<
 >
 void
 fcppt::math::box::basic<T, N>::dimension(
-	dim const &ndimension_
+	dim const &_dimension
 )
 {
-	dimension_ = ndimension_;
+	dimension_ = _dimension;
 }
 
 template<
@@ -284,11 +284,11 @@ template<
 >
 void
 fcppt::math::box::basic<T, N>::pos(
-	size_type const index_,
-	value_type const value_
+	size_type const _index,
+	value_type const _value
 )
 {
-	pos_[index_] = value_;
+	pos_[_index] = _value;
 }
 
 template<
@@ -297,11 +297,11 @@ template<
 >
 void
 fcppt::math::box::basic<T, N>::dimension(
-	size_type const index_,
-	value_type const value_
+	size_type const _index,
+	value_type const _value
 )
 {
-	dimension_[index_] = value_;
+	dimension_[_index] = _value;
 }
 
 template<
@@ -310,10 +310,10 @@ template<
 >
 void
 fcppt::math::box::basic<T, N>::left(
-	value_type const value_
+	value_type const _value
 )
 {
-	pos_.x() = value_;
+	pos_.x() = _value;
 }
 
 template<
@@ -322,10 +322,10 @@ template<
 >
 void
 fcppt::math::box::basic<T, N>::top(
-	value_type const value_
+	value_type const _value
 )
 {
-	pos_.y() = value_;
+	pos_.y() = _value;
 }
 
 template<
@@ -334,10 +334,10 @@ template<
 >
 void
 fcppt::math::box::basic<T, N>::front(
-	value_type const value_
+	value_type const _value
 )
 {
-	pos_.z() = value_;
+	pos_.z() = _value;
 }
 
 template<
@@ -346,17 +346,17 @@ template<
 >
 void
 fcppt::math::box::basic<T, N>::swap(
-	basic &other_
+	basic &_other
 )
 {
 	std::swap(
 		pos_,
-		other_.pos_
+		_other.pos_
 	);
 
 	std::swap(
 		dimension_,
-		other_.dimension_
+		_other.dimension_
 	);
 }
 
@@ -366,13 +366,13 @@ template<
 >
 bool
 fcppt::math::box::operator==(
-	basic<T, N> const &a,
-	basic<T, N> const &b
+	basic<T, N> const &_a,
+	basic<T, N> const &_b
 )
 {
 	return
-		a.pos() == b.pos()
-		&& a.dimension() == b.dimension();
+		_a.pos() == _b.pos()
+		&& _a.dimension() == _b.dimension();
 }
 
 template<
@@ -381,11 +381,11 @@ template<
 >
 bool
 fcppt::math::box::operator !=(
-	basic<T, N> const &a,
-	basic<T, N> const &b
+	basic<T, N> const &_a,
+	basic<T, N> const &_b
 )
 {
-	return !(a == b);
+	return !(_a == _b);
 }
 
 template<
@@ -394,11 +394,13 @@ template<
 >
 void
 fcppt::math::box::swap(
-	basic<T, N> &a,
-	basic<T, N> &b
+	basic<T, N> &_a,
+	basic<T, N> &_b
 )
 {
-	return a.swap(b);
+	_a.swap(
+		_b
+	);
 }
 
 #endif
