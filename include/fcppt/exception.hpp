@@ -48,7 +48,7 @@ public:
 
 	virtual ~exception() throw();
 private:
-	fcppt::string s;
+	fcppt::string string_;
 };
 
 }
