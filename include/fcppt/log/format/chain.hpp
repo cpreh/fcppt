@@ -41,8 +41,8 @@ public:
 	) const;
 private:
 	const_object_ptr const
-		parent,
-		child;
+		parent_,
+		child_;
 };
 
 }

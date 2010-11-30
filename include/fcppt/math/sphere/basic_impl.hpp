@@ -18,12 +18,12 @@ template<
 	fcppt::math::size_type N
 >
 fcppt::math::sphere::basic<T, N>::basic(
-	point_type const &origin_,
-	const_reference radius_
+	point_type const &_origin,
+	const_reference _radius
 )
 :
-	origin_(origin_),
-	radius_(radius_)
+	origin_(_origin),
+	radius_(_radius)
 {}
 
 template<
@@ -72,17 +72,17 @@ template<
 >
 void
 fcppt::math::sphere::basic<T, N>::swap(
-	basic &other_
+	basic &_other
 )
 {
 	std::swap(
 		origin_,
-		other_.origin_
+		_other.origin_
 	);
 
 	std::swap(
 		radius_,
-		other_.radius_
+		_other.radius_
 	);
 }
 
@@ -92,15 +92,15 @@ template<
 >
 bool
 fcppt::math::sphere::operator==(
-	basic<T, N> const &a,
-	basic<T, N> const &b
+	basic<T, N> const &_a,
+	basic<T, N> const &_b
 )
 {
 	return
-		a.origin() == b.origin()
+		_a.origin() == _b.origin()
 		&& math::compare(
-			a.radius(),
-			b.radius()
+			_a.radius(),
+			_b.radius()
 		);
 }
 
@@ -110,11 +110,11 @@ template<
 >
 bool
 fcppt::math::sphere::operator!=(
-	basic<T, N> const &a,
-	basic<T, N> const &b
+	basic<T, N> const &_a,
+	basic<T, N> const &_b
 )
 {
-	return !(a == b);
+	return !(_a == _b);
 }
 
 template<
@@ -123,11 +123,13 @@ template<
 >
 void
 fcppt::math::sphere::swap(
-	basic<T, N> &a,
-	basic<T, N> &b
+	basic<T, N> &_a,
+	basic<T, N> &_b
 )
 {
-	a.swap(b);
+	_a.swap(
+		_b
+	);
 }
 
 #endif

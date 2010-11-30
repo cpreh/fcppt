@@ -64,6 +64,7 @@ public:
 	);
 private:
 	point_type origin_;
+
 	value_type radius_;
 };
 

@@ -25,8 +25,8 @@ class range
 {
 protected:
 	explicit range(
-		T const &first_,
-		T const &last_
+		T const &first,
+		T const &last
 	);
 public:
 	typedef T value_type;

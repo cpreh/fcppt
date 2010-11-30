@@ -33,7 +33,7 @@ public:
 		string const &
 	) const;
 private:
-	string const format_string;
+	string const format_string_;
 };
 
 }

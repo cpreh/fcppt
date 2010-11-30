@@ -11,19 +11,19 @@ fcppt::log::format::inserter::inserter(
 	string const &_format_string
 )
 :
-	format_string(_format_string)
+	format_string_(_format_string)
 {}
 
 fcppt::string const
 fcppt::log::format::inserter::format(
-	string const &dest
+	string const &_dest
 ) const
 {
 	return
 		(
 			fcppt::format(
-				format_string
+				format_string_
 			)
-			% dest
+			% _dest
 		).str();
 }

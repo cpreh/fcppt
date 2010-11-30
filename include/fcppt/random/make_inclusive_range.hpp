@@ -20,14 +20,15 @@ template<
 >
 inclusive_range<T> const
 make_inclusive_range(
-	T const &first,
-	T const &last
+	T const &_first,
+	T const &_last
 )
 {
-	return inclusive_range<T>(
-		first,
-		last
-	);
+	return
+		random::inclusive_range<T>(
+			_first,
+			_last
+		);
 }
 
 }

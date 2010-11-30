@@ -14,15 +14,15 @@ template<
 	typename T
 >
 fcppt::random::inclusive_range<T>::inclusive_range(
-	T const &first_,
-	T const &last_
+	T const &_first,
+	T const &_last
 )
 :
 	range<
 		T
 	>(
-		first_,
-		last_
+		_first,
+		_last
 	)
 {}
 

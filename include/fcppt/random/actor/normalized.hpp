@@ -43,9 +43,9 @@ private:
 		float_type
 	> rng_type;
 
-	container const elements;
+	container const elements_;
 
-	rng_type rng;
+	rng_type rng_;
 };
 
 }

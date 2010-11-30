@@ -27,8 +27,8 @@ class inclusive_range
 {
 public:
 	explicit inclusive_range(
-		T const &first_,
-		T const &last_
+		T const &first,
+		T const &last
 	);
 };
 

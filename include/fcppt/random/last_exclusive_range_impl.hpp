@@ -16,19 +16,19 @@ template<
 	typename T
 >
 fcppt::random::last_exclusive_range<T>::last_exclusive_range(
-	T const &first,
-	T const &last
+	T const &_first,
+	T const &_last
 )
 :
 	range<
 		T
 	>(
-		first,
-		last - static_cast<T>(1)
+		_first,
+		_last - static_cast<T>(1)
 	)
 {
-	if(first == last)
-		throw exclusive_range_error(
+	if(_first == _last)
+		throw random::exclusive_range_error(
 			FCPPT_TEXT("last_exclusive_range empty!")
 		);
 }

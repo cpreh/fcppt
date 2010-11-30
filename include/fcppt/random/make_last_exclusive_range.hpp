@@ -20,14 +20,15 @@ template<
 >
 last_exclusive_range<T> const
 make_last_exclusive_range(
-	T const &first,
-	T const &last
+	T const &_first,
+	T const &_last
 )
 {
-	return last_exclusive_range<T>(
-		first,
-		last
-	);
+	return
+		random::last_exclusive_range<T>(
+			_first,
+			_last
+		);
 }
 
 }

@@ -13,12 +13,12 @@ template<
 	typename T
 >
 fcppt::random::range<T>::range(
-	T const &first_,
-	T const &last_
+	T const &_first,
+	T const &_last
 )
 :
-	first_(first_),
-	last_(last_)
+	first_(_first),
+	last_(_last)
 {}
 
 template<

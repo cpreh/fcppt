@@ -19,17 +19,17 @@ private:
 	bool
 	boolean_test() const
 	{
-		return isset;
+		return isset_;
 	}
 public:
 	explicit my_class(
-		bool const isset
+		bool const _isset
 	)
 	:
-		isset(isset)
+		isset_(_isset)
 	{}
 private:
-	bool isset;
+	bool isset_;
 };
 //]
 

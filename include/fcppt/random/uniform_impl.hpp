@@ -21,7 +21,7 @@ fcppt::random::uniform<T, Generator>::uniform(
 	range_type const &_range
 )
 :
-	variate(
+	variate_(
 		Generator(
 			static_cast<
 				unsigned long
@@ -45,7 +45,7 @@ fcppt::random::uniform<T, Generator>::uniform(
 	Generator const &_gen
 )
 :
-	variate(
+	variate_(
 		_gen,
 		distribution(
 			_range.first(),
@@ -61,7 +61,7 @@ template<
 T
 fcppt::random::uniform<T, Generator>::operator()()
 {
-	return variate();
+	return variate_();
 }
 
 #endif

@@ -54,7 +54,7 @@ private:
 		distribution	
 	> variate_type;
 
-	variate_type variate;
+	variate_type variate_;
 };
 
 }

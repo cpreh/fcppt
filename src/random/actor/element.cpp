@@ -7,12 +7,12 @@
 #include <fcppt/random/actor/element.hpp>
 
 fcppt::random::actor::element::element(
-	float_type const prob_,
-	actor::callback const &callback_
+	float_type const _prob,
+	actor::callback const &_callback
 )
 :
-	prob_(prob_),
-	callback_(callback_)
+	prob_(_prob),
+	callback_(_callback)
 {}
 
 fcppt::random::actor::float_type const &
