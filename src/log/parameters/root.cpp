@@ -11,10 +11,10 @@
 #include <fcppt/log/enabled_levels.hpp>
 
 fcppt::log::parameters::root::root(
-	io::ostream &sink_
+	io::ostream &_sink
 )
 :
-	sink_(sink_),
+	sink_(_sink),
 	prefix_(),
 	enabled_(false),
 	level_(log::level::warning),
@@ -23,40 +23,40 @@ fcppt::log::parameters::root::root(
 
 fcppt::log::parameters::root
 fcppt::log::parameters::root::prefix(
-	string const &nprefix_
+	string const &_prefix
 )
 {
-	prefix_ = nprefix_;
+	prefix_ = _prefix;
 
 	return *this;
 }
 
 fcppt::log::parameters::root
 fcppt::log::parameters::root::enabled(
-	bool const nenabled_
+	bool const _enabled
 )
 {
-	enabled_ = nenabled_;
+	enabled_ = _enabled;
 
 	return *this;
 }
 
 fcppt::log::parameters::root
 fcppt::log::parameters::root::level(
-	log::level::type const nlevel_
+	log::level::type const _level
 )
 {
-	level_ = nlevel_;
+	level_ = _level;
 
 	return *this;
 }
 
 fcppt::log::parameters::root
 fcppt::log::parameters::root::context(
-	log::context &ncontext_
+	log::context &_context
 )
 {
-	context_ = &ncontext_;
+	context_ = &_context;
 
 	return *this;
 }
