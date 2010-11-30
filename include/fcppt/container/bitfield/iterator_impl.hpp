@@ -12,13 +12,11 @@
 
 template<
 	typename StoredType,
-	typename Reference,
-	fcppt::container::bitfield::size_type ElementBits
+	typename Reference
 >
 fcppt::container::bitfield::iterator<
 	StoredType,
-	Reference,
-	ElementBits
+	Reference
 >::iterator()
 :
 	array_(),
@@ -27,13 +25,11 @@ fcppt::container::bitfield::iterator<
 
 template<
 	typename StoredType,
-	typename Reference,
-	fcppt::container::bitfield::size_type ElementBits
+	typename Reference
 >
 fcppt::container::bitfield::iterator<
 	StoredType,
-	Reference,
-	ElementBits
+	Reference
 >::iterator(
 	StoredType _array,
 	difference_type const _pos
@@ -45,14 +41,12 @@ fcppt::container::bitfield::iterator<
 
 template<
 	typename StoredType,
-	typename Reference,
-	fcppt::container::bitfield::size_type ElementBits
+	typename Reference
 >
 void
 fcppt::container::bitfield::iterator<
 	StoredType,
-	Reference,
-	ElementBits
+	Reference
 >::advance(
 	difference_type const _diff
 )
@@ -62,14 +56,12 @@ fcppt::container::bitfield::iterator<
 
 template<
 	typename StoredType,
-	typename Reference,
-	fcppt::container::bitfield::size_type ElementBits
+	typename Reference
 >
 void
 fcppt::container::bitfield::iterator<
 	StoredType,
-	Reference,
-	ElementBits
+	Reference
 >::increment()
 {
 	++pos_;
@@ -77,14 +69,12 @@ fcppt::container::bitfield::iterator<
 
 template<
 	typename StoredType,
-	typename Reference,
-	fcppt::container::bitfield::size_type ElementBits
+	typename Reference
 >
 void
 fcppt::container::bitfield::iterator<
 	StoredType,
-	Reference,
-	ElementBits
+	Reference
 >::decrement()
 {
 	--pos_;
@@ -92,19 +82,16 @@ fcppt::container::bitfield::iterator<
 
 template<
 	typename StoredType,
-	typename Reference,
-	fcppt::container::bitfield::size_type ElementBits
+	typename Reference
 >
 bool
 fcppt::container::bitfield::iterator<
 	StoredType,
-	Reference,
-	ElementBits
+	Reference
 >::equal(
 	iterator<
 		StoredType,
-		Reference,
-		ElementBits
+		Reference
 	> const &_other
 ) const
 {
@@ -113,20 +100,17 @@ fcppt::container::bitfield::iterator<
 
 template<
 	typename StoredType,
-	typename Reference,
-	fcppt::container::bitfield::size_type ElementBits
+	typename Reference
 >
 Reference
 fcppt::container::bitfield::iterator<
 	StoredType,
-	Reference,
-	ElementBits
+	Reference
 >::dereference() const
 {
 	return
 		proxy<
-			StoredType,
-			ElementBits
+			StoredType
 		>(
 			*array_,
 			static_cast<
@@ -139,29 +123,25 @@ fcppt::container::bitfield::iterator<
 
 template<
 	typename StoredType,
-	typename Reference,
-	fcppt::container::bitfield::size_type ElementBits
+	typename Reference
 >
 typename fcppt::container::bitfield::iterator<
 	StoredType,
-	Reference,
-	ElementBits
+	Reference
 >::difference_type
 fcppt::container::bitfield::iterator<
 	StoredType,
-	Reference,
-	ElementBits
+	Reference
 >::distance_to(
 	iterator const &_other
 ) const
 {
-	return _other.pos - pos_;
+	return _other.pos_ - pos_;
 }
 
 template<
 	typename StoredType,
-	typename Reference,
-	fcppt::container::bitfield::size_type ElementBits
+	typename Reference
 >
 template<
 	typename OtherStoredType,
@@ -169,13 +149,11 @@ template<
 >
 fcppt::container::bitfield::iterator<
 	StoredType,
-	Reference,
-	ElementBits
+	Reference
 >::iterator(
 	iterator<
 		OtherStoredType,
-		OtherReference,
-		ElementBits
+		OtherReference
 	> const &_other
 )
 :

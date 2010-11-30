@@ -36,6 +36,29 @@ template class fcppt::container::bitfield::basic<
 	test_enum::size
 >;
 
+template class fcppt::container::bitfield::proxy<
+	fcppt::container::bitfield::array<
+		test_enum::type,
+		test_enum::size,
+		bitfield::internal_type
+	>::type &
+>;
+
+template class fcppt::container::bitfield::iterator<
+	fcppt::container::bitfield::array<
+		test_enum::type,
+		test_enum::size,
+		bitfield::internal_type
+	>::type &,
+	fcppt::container::bitfield::proxy<
+		fcppt::container::bitfield::array<
+			test_enum::type,
+			test_enum::size,
+			bitfield::internal_type
+		>::type &
+	>
+>;
+
 BOOST_AUTO_TEST_CASE(container_bitfield_arithmetic)
 {
 	bitfield field1(

@@ -9,7 +9,6 @@
 
 #include <fcppt/container/bitfield/detail/iterator_type.hpp>
 #include <fcppt/container/bitfield/iterator_fwd.hpp>
-#include <fcppt/container/bitfield/size_type.hpp>
 #include <fcppt/container/bitfield/difference_type.hpp>
 #include <fcppt/container/bitfield/value_type.hpp>
 #include <boost/iterator/iterator_facade.hpp>
@@ -24,21 +23,18 @@ namespace bitfield
 
 template<
 	typename StoredType,
-	typename Reference,
-	size_type ElementBits
+	typename Reference
 >
 class iterator
 :
 	public detail::iterator_type<
 		StoredType,
-		Reference,
-		ElementBits
+		Reference
 	>::type
 {
 	typedef typename detail::iterator_type<
 		StoredType,
-		Reference,
-		ElementBits
+		Reference
 	>::type base;
 public:
 	typedef typename base::value_type value_type;
@@ -95,8 +91,7 @@ private:
 
 	template<
 		typename OtherStoredType,
-		typename OtherReference,
-		size_type OtherElementBits
+		typename OtherReference
 	>
 	friend class iterator;
 private:
@@ -107,8 +102,7 @@ private:
 	iterator(
 		iterator<
 			OtherStoredType,
-			OtherReference,
-			ElementBits
+			OtherReference
 		> const &
 	);
 };

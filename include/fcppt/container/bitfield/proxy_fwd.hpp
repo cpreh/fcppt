@@ -7,8 +7,6 @@
 #ifndef FCPPT_CONTAINER_BITFIELD_PROXY_FWD_HPP_INCLUDED
 #define FCPPT_CONTAINER_BITFIELD_PROXY_FWD_HPP_INCLUDED
 
-#include <fcppt/container/bitfield/size_type.hpp>
-
 namespace fcppt
 {
 namespace container
@@ -17,8 +15,7 @@ namespace bitfield
 {
 
 template<
-	typename StoredType,
-	size_type ElementBits
+	typename StoredType
 >
 class proxy;
 

@@ -25,20 +25,19 @@ namespace detail
 
 template<
 	typename StoredType,
-	typename Reference,
-	size_type ElementBits
+	typename Reference
 >
-struct iterator_type {
+struct iterator_type
+{
 	typedef boost::iterator_facade<
-		iterator<
+		bitfield::iterator<
 			StoredType,
-			Reference,
-			ElementBits
+			Reference
 		>,
-		value_type,
+		bitfield::value_type,
 		std::random_access_iterator_tag,
 		Reference,
-		difference_type
+		bitfield::difference_type
 	> type;
 };
 
