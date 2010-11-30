@@ -43,4 +43,13 @@ fcppt::assign::make_container<Container>::operator Container() const
 	return c_;
 }
 
+template<
+	typename Container
+>
+Container const &
+fcppt::assign::make_container<Container>::container() const
+{
+	return c_;
+}
+
 #endif

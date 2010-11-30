@@ -31,6 +31,9 @@ public:
 	);
 
 	operator Container() const;
+
+	container_type const &
+	container() const;
 private:
 	container_type c_;
 };
