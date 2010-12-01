@@ -18,11 +18,21 @@ typedef fcppt::container::grid::object<
 	2
 > int2_grid;
 
+typedef fcppt::container::grid::object<
+	int,
+	3
+> int3_grid;
+
 }
 
 template class fcppt::container::grid::object<
 	int,
 	2
+>;
+
+template class fcppt::container::grid::object<
+	int,
+	3
 >;
 
 BOOST_AUTO_TEST_CASE(container_grid_init)
@@ -116,7 +126,7 @@ BOOST_AUTO_TEST_CASE(container_grid_compare)
 	);
 }
 
-BOOST_AUTO_TEST_CASE(container_grid_index)
+BOOST_AUTO_TEST_CASE(container_grid_index_2d)
 {
 	int2_grid test(
 		int2_grid::dim(
@@ -150,7 +160,7 @@ BOOST_AUTO_TEST_CASE(container_grid_index)
 				test[
 					int2_grid::dim(
 						x,
-						y	
+						y
 					)
 				]
 				==
@@ -160,6 +170,59 @@ BOOST_AUTO_TEST_CASE(container_grid_index)
 					x + y * 5
 				)
 			);
+}
+
+BOOST_AUTO_TEST_CASE(container_grid_index_3d)
+{
+	int3_grid test(
+		int3_grid::dim(
+			5,
+			10,
+			8
+		)
+	);
+
+	{
+		int entry = 0;
+
+		for(
+			int3_grid::pointer ptr = test.data();
+			ptr != test.data_end();
+			++ptr
+		)
+			*ptr = entry++;
+	}
+
+	for(
+		int3_grid::dim::size_type z = 0;
+		z < test.dimension()[2];
+		++z
+	)
+		for(
+			int3_grid::dim::size_type y = 0;
+			y < test.dimension()[1];
+			++y
+		)
+			for(
+				int3_grid::dim::size_type x = 0;
+				x < test.dimension()[0];
+				++x
+			)
+				BOOST_REQUIRE(
+					test[
+						int3_grid::dim(
+							x,
+							y,
+							z
+						)
+					]
+					==
+					static_cast<
+						int3_grid::value_type
+					>(
+						x + y * 5 + z * 5 * 10
+					)
+				);
 }
 
 BOOST_AUTO_TEST_CASE(container_grid_const_data)

@@ -35,7 +35,7 @@ access_member(
 
 	size_type index = _pos[0];
 
-	size_type add = 0;
+	size_type mul = 1;
 
 	for(
 		typename Dim::size_type i = 1;
@@ -43,9 +43,9 @@ access_member(
 		++i
 	)
 	{
-		add += _dim[i - 1];
+		mul *= _dim[i - 1];
 
-		index += add * _pos[i];
+		index += mul * _pos[i];
 	}
 
 	return _container[index];
