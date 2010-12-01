@@ -458,6 +458,8 @@ INSTALL (
 )
 
 INSTALL(
-	DIRECTORY ${CMAKE_BINARY_DIR}/include
-	DESTINATION include
+	FILES
+	${CMAKE_BINARY_DIR}/include/fcppt/config.hpp
+	${CMAKE_BINARY_DIR}/include/fcppt/version.hpp
+	DESTINATION include/fcppt
 )
