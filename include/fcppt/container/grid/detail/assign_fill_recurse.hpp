@@ -4,12 +4,11 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_CONTAINER_GRID_DETAIL_ASSIGN_RECURSE_HPP_INCLUDED
-#define FCPPT_CONTAINER_GRID_DETAIL_ASSIGN_RECURSE_HPP_INCLUDED
+#ifndef FCPPT_CONTAINER_GRID_DETAIL_ASSIGN_FILL_RECURSE_HPP_INCLUDED
+#define FCPPT_CONTAINER_GRID_DETAIL_ASSIGN_FILL_RECURSE_HPP_INCLUDED
 
 #include <fcppt/container/grid/size_type.hpp>
 #include <boost/utility/enable_if.hpp>
-#include <algorithm>
 
 namespace fcppt
 {
@@ -28,13 +27,20 @@ typename boost::enable_if_c<
 	Level == 0,
 	void
 >::type
-assign_recurse(
+assign_fill_recurse(
 	Object &_result,
 	Object const &_source,
-	typename Object::dim const _pos
+	typename Object::const_reference _value,
+	typename Object::dim const _pos,
+	bool const _is_contained
 )
 {
-	_result[_pos] = _source[_pos];
+	_result[_pos] =
+		_is_contained
+		?
+			_source[_pos]	
+		:
+			_value;
 }
 
 template<
@@ -45,37 +51,35 @@ typename boost::enable_if_c<
 	Level != 0,
 	void
 >::type
-assign_recurse(
+assign_fill_recurse(
 	Object &_result,
 	Object const &_source,
-	typename Object::dim _pos
+	typename Object::const_reference _value,
+	typename Object::dim _pos,
+	bool const _is_contained
 )
 {
 	size_type const index(
 		Level - 1u
 	);
 
-	typename Object::dim::value_type sz(
-		std::min(
-			_result.dimension()[index],
-			_source.dimension()[index]
-		)
-	);
-
 	for(
-		typename Object::dim::size_type i = 0;
-		i < sz;
+		typename Object::dim::value_type i = 0;
+		i < _result.dimension()[index];
 		++i
 	)
 	{
 		_pos[index] = i;
 
-		detail::assign_recurse<
+		detail::assign_fill_recurse<
 			Level - 1u
 		>(
 			_result,
 			_source,
-			_pos
+			_value,
+			_pos,
+			_is_contained
+			&& i < _source.dimension()[index]
 		);
 	}
 }

@@ -4,10 +4,10 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_CONTAINER_GRID_RESIZE_PRESERVE_HPP_INCLUDED
-#define FCPPT_CONTAINER_GRID_RESIZE_PRESERVE_HPP_INCLUDED
+#ifndef FCPPT_CONTAINER_GRID_RESIZE_PRESERVE_INIT_HPP_INCLUDED
+#define FCPPT_CONTAINER_GRID_RESIZE_PRESERVE_INIT_HPP_INCLUDED
 
-#include <fcppt/container/grid/detail/assign_recurse.hpp>
+#include <fcppt/container/grid/detail/assign_fill_recurse.hpp>
 #include <fcppt/container/grid/object_impl.hpp>
 #include <fcppt/container/grid/size_type.hpp>
 
@@ -18,10 +18,10 @@ namespace container
 namespace grid
 {
 
-/// Resizes @param _result to @_newsize and preserves all elements possible
+/// Like @ref resize_preserve but also initializes new elements
 /**
- * For every p where every component of p is
- * less than every component of _new_size, _result[p] will be preserved
+ * For every p where every component of p is greater or equal to _new_size
+ * _result[p] will be assigned from @param _value
 */
 template<
 	typename T,
@@ -29,9 +29,10 @@ template<
 	typename A
 >
 void
-resize_preserve(
+resize_preserve_init(
 	grid::object<T, N, A> &_result,
-	typename grid::object<T, N, A>::dim const &_new_size
+	typename grid::object<T, N, A>::dim const &_new_size,
+	typename grid::object<T, N, A>::const_reference _value
 )
 {
 	typedef grid::object<T, N, A> object;
@@ -44,12 +45,14 @@ resize_preserve(
 		_new_size
 	);
 
-	detail::assign_recurse<
+	detail::assign_fill_recurse<
 		N
 	>(
 		_result,
 		temp,
-		typename object::dim()
+		_value,
+		typename object::dim(),
+		true
 	);
 }
 

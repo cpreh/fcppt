@@ -25,6 +25,31 @@ typedef fcppt::container::grid::object<
 	3
 > int3_grid;
 
+struct nonpod
+{
+	nonpod()
+	:
+		member_(
+			42
+		)
+	{}
+
+	int member_;
+};
+
+typedef fcppt::container::grid::object<
+	nonpod,
+	2
+> grid2_nonpod;
+
+typedef fcppt::container::grid::object<
+	std::pair<
+		fcppt::container::grid::size_type,
+		fcppt::container::grid::size_type
+	>,
+	2
+> sz_pair_grid;
+
 }
 
 template class fcppt::container::grid::object<
@@ -35,6 +60,19 @@ template class fcppt::container::grid::object<
 template class fcppt::container::grid::object<
 	int,
 	3
+>;
+
+template class fcppt::container::grid::object<
+	nonpod,
+	2
+>;
+
+template class fcppt::container::grid::object<
+	std::pair<
+		fcppt::container::grid::size_type,
+		fcppt::container::grid::size_type
+	>,
+	2
 >;
 
 BOOST_AUTO_TEST_CASE(container_grid_init)
@@ -260,32 +298,10 @@ BOOST_AUTO_TEST_CASE(container_grid_size)
 	);
 }
 
-namespace
-{
-
-struct nonpod
-{
-	nonpod()
-	:
-		member_(
-			42
-		)
-	{}
-
-	int member_;
-};
-
-}
-
 BOOST_AUTO_TEST_CASE(container_grid_non_pod)
 {
-	typedef fcppt::container::grid::object<
-		nonpod,
-		2
-	> grid2;
-
-	grid2 const test(
-		grid2::dim(
+	grid2_nonpod const test(
+		grid2_nonpod::dim(
 			5,
 			3
 		),
@@ -293,7 +309,7 @@ BOOST_AUTO_TEST_CASE(container_grid_non_pod)
 	);
 
 	BOOST_FOREACH(
-		grid2::const_reference elem,
+		grid2_nonpod::const_reference elem,
 		test
 	)
 		BOOST_REQUIRE(
@@ -341,14 +357,6 @@ BOOST_AUTO_TEST_CASE(container_grid_resize)
 
 BOOST_AUTO_TEST_CASE(container_grid_resize_preverse)
 {
-	typedef fcppt::container::grid::object<
-		std::pair<
-			fcppt::container::grid::size_type,
-			fcppt::container::grid::size_type
-		>,
-		2
-	> sz_pair_grid;
-
 	sz_pair_grid test(
 		sz_pair_grid::dim(
 			5,
@@ -417,5 +425,99 @@ BOOST_AUTO_TEST_CASE(container_grid_resize_preverse)
 					y
 				)
 			);
+		}
+}
+
+BOOST_AUTO_TEST_CASE(container_grid_resize_preverse_init)
+{
+	sz_pair_grid test(
+		sz_pair_grid::dim(
+			5,
+			10
+		)
+	);
+
+	for(
+		sz_pair_grid::dim::size_type y = 0;
+		y < test.dimension()[1];
+		++y
+	)
+		for(
+			sz_pair_grid::dim::size_type x = 0;
+			x < test.dimension()[0];
+			++x
+		)
+			test[
+				sz_pair_grid::dim(
+					x,
+					y
+				)
+			]
+				= std::make_pair(
+					x,
+					y
+				);
+
+	fcppt::container::grid::resize_preserve_init(
+		test,
+		sz_pair_grid::dim(
+			10,
+			15
+		),
+		sz_pair_grid::value_type(
+			10u,
+			20u
+		)
+	);
+
+	BOOST_REQUIRE(
+		test.dimension()
+		==
+		sz_pair_grid::dim(
+			10,
+			15
+		)
+	);
+
+	for(
+		sz_pair_grid::dim::size_type y = 0;
+		y < test.dimension()[1];
+		++y
+	)
+		for(
+			sz_pair_grid::dim::size_type x = 0;
+			x < test.dimension()[0];
+			++x
+		)
+		{
+			if(
+				x < 5 && y < 10
+			)
+				BOOST_REQUIRE(
+					test[
+						sz_pair_grid::dim(
+							x,
+							y
+						)
+					]
+					== std::make_pair(
+						x,
+						y
+					)
+				);
+			else
+				BOOST_REQUIRE(
+					test[
+						sz_pair_grid::dim(
+							x,
+							y
+						)
+					]
+					==
+					sz_pair_grid::value_type(
+						10u,
+						20u
+					)
+				);
 		}
 }
