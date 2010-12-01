@@ -8,7 +8,9 @@
 #include <boost/test/unit_test.hpp>
 #include <boost/foreach.hpp>
 #include <algorithm>
+#include <iterator>
 #include <vector>
+#include <utility>
 
 namespace
 {
@@ -297,4 +299,123 @@ BOOST_AUTO_TEST_CASE(container_grid_non_pod)
 		BOOST_REQUIRE(
 			elem.member_ == 42
 		);
+}
+
+BOOST_AUTO_TEST_CASE(container_grid_resize)
+{
+	int2_grid test(
+		int2_grid::dim(
+			10,
+			5
+		)
+	);
+
+	test.resize(
+		int2_grid::dim(
+			5,
+			3
+		)
+	);
+
+	BOOST_REQUIRE(
+		test.dimension()
+		==
+		int2_grid::dim(
+			5,
+			3
+		)
+	);
+
+	BOOST_REQUIRE(
+		std::distance(
+			test.data(),
+			test.data_end()
+		)
+		== static_cast<
+			int2_grid::difference_type
+		>(
+			test.dimension().content()
+		)
+	);
+}
+
+BOOST_AUTO_TEST_CASE(container_grid_resize_preverse)
+{
+	typedef fcppt::container::grid::object<
+		std::pair<
+			fcppt::container::grid::size_type,
+			fcppt::container::grid::size_type
+		>,
+		2
+	> sz_pair_grid;
+
+	sz_pair_grid test(
+		sz_pair_grid::dim(
+			5,
+			10
+		)
+	);
+
+	for(
+		sz_pair_grid::dim::size_type y = 0;
+		y < test.dimension()[1];
+		++y
+	)
+		for(
+			sz_pair_grid::dim::size_type x = 0;
+			x < test.dimension()[0];
+			++x
+		)
+			test[
+				sz_pair_grid::dim(
+					x,
+					y
+				)
+			]
+				= std::make_pair(
+					x,
+					y
+				);
+
+	fcppt::container::grid::resize_preserve(
+		test,
+		sz_pair_grid::dim(
+			3,
+			5
+		)
+	);
+
+	BOOST_REQUIRE(
+		test.dimension()
+		==
+		sz_pair_grid::dim(
+			3,
+			5
+		)
+	);
+
+	for(
+		sz_pair_grid::dim::size_type y = 0;
+		y < test.dimension()[1];
+		++y
+	)
+		for(
+			sz_pair_grid::dim::size_type x = 0;
+			x < test.dimension()[0];
+			++x
+		)
+		{
+			BOOST_REQUIRE(
+				test[
+					sz_pair_grid::dim(
+						x,
+						y
+					)
+				]
+				== std::make_pair(
+					x,
+					y
+				)
+			);
+		}
 }

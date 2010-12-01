@@ -242,6 +242,8 @@ fcppt::container::grid::object<T, N, A>::resize(
 		container_,
 		_dim
 	);
+
+	dim_ = _dim;
 }
 
 template<

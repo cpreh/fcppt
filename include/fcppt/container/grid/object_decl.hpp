@@ -24,6 +24,7 @@ namespace container
 namespace grid
 {
 
+/// A simple n dimensional array
 template<
 	typename T,
 	fcppt::container::grid::size_type N,
@@ -78,12 +79,15 @@ public:
 		N
 	>::type dim;
 
-	object();	
+	/// An empty grid.
+	object();
 
+	/// The grid will have an initial size but the elements might not be initialized
 	explicit object(
 		dim const &
 	);
 
+	/// Initialize the grid to a size and fill every cell with the same value
 	explicit object(
 		dim const &,
 		const_reference
@@ -135,6 +139,7 @@ public:
 	size_type
 	size() const;
 
+	/// Resizes the grid leaving its internal elements in an unspecific state
 	void
 	resize(
 		dim const &

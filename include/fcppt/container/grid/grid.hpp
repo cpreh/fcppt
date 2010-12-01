@@ -9,5 +9,6 @@
 
 #include <fcppt/container/grid/comparison.hpp>
 #include <fcppt/container/grid/object.hpp>
+#include <fcppt/container/grid/resize_preserve.hpp>
 
 #endif
