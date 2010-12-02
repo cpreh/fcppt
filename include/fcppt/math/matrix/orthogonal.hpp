@@ -16,7 +16,7 @@ template<
 	typename T
 >
 typename static_<T, 4, 4>::type const
-orthogonal_xy(
+orthogonal(
 	T const left,
 	T const right,
 	T const bottom,
@@ -36,9 +36,9 @@ orthogonal_xy(
 		typename static_<T, 4, 4>::type(
 			static_cast<T>(2)/(right-left), zero, zero, -(right + left)/(right-left),
 			zero, static_cast<T>(2)/(top-bottom), zero, -(top + bottom)/(top-bottom),
-			zero, zero, static_cast<T>(-2)/(far-near), -(far + near)/(far-near)),
+			zero, zero, static_cast<T>(-2)/(far-near), -(far + near)/(far-near),
 			zero, zero, zero, one
-		);
+	);
 }
 }
 }
