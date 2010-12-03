@@ -11,11 +11,11 @@
 
 inline
 fcppt::filesystem::exception::exception(
-	fcppt::string const &what
+	fcppt::string const &_what
 )
 :
 	fcppt::exception(
-		what
+		_what
 	)
 {}
 
