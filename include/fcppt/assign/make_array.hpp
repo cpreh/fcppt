@@ -14,7 +14,7 @@ namespace fcppt
 namespace assign
 {
 
-/// This returns an implementation defined type which has operator() defined and which is convertible to std::tr1::array
+/// This returns an implementation defined type which has operator() defined and which is convertible to fcppt::container::array
 template<
 	typename T
 >
