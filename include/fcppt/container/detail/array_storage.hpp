@@ -7,6 +7,7 @@
 #ifndef FCPPT_CONTAINER_DETAIL_ARRAY_STORAGE_HPP_INCLUDED
 #define FCPPT_CONTAINER_DETAIL_ARRAY_STORAGE_HPP_INCLUDED
 
+#include <fcppt/container/detail/null_array_storage.hpp>
 #include <cstddef>
 
 namespace fcppt
@@ -33,7 +34,7 @@ struct array_storage<
 	0
 >
 {
-	typedef T *type;
+	typedef detail::null_array_storage<T> type;
 };
 
 }

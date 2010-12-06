@@ -80,4 +80,14 @@ BOOST_AUTO_TEST_CASE(
 	BOOST_REQUIRE(
 		array.empty()
 	);
+
+	BOOST_REQUIRE(
+		array.begin()
+		== array.end()
+	);
+
+	BOOST_REQUIRE(
+		array.data()
+		== array.data_end()
+	);
 }
