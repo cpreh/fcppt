@@ -8,12 +8,12 @@
 #include <fcppt/time/sleep_any.hpp>
 #include <boost/test/unit_test.hpp>
 
-BOOST_AUTO_TEST_CASE(chrono_monotonic)
+BOOST_AUTO_TEST_CASE(chrono_steady)
 {
-	typedef fcppt::chrono::monotonic_clock::time_point time_point;
+	typedef fcppt::chrono::steady_clock::time_point time_point;
 
 	time_point old_time(
-		fcppt::chrono::monotonic_clock::now()
+		fcppt::chrono::steady_clock::now()
 	);
 
 	for(
@@ -23,7 +23,7 @@ BOOST_AUTO_TEST_CASE(chrono_monotonic)
 	)
 	{
 		time_point const new_time(
-			fcppt::chrono::monotonic_clock::now()
+			fcppt::chrono::steady_clock::now()
 		);
 
 		BOOST_REQUIRE(

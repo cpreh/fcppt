@@ -4,10 +4,10 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_CHRONO_MONOTONIC_CLOCK_HPP_INCLUDED
-#define FCPPT_CHRONO_MONOTONIC_CLOCK_HPP_INCLUDED
+#ifndef FCPPT_CHRONO_STEADY_CLOCK_HPP_INCLUDED
+#define FCPPT_CHRONO_STEADY_CLOCK_HPP_INCLUDED
 
-#include <fcppt/chrono/monotonic_clock_fwd.hpp>
+#include <fcppt/chrono/steady_clock_fwd.hpp>
 #include <fcppt/chrono/duration_fwd.hpp>
 #include <fcppt/chrono/time_point_fwd.hpp>
 #include <fcppt/chrono/rep.hpp>
@@ -19,12 +19,13 @@ namespace fcppt
 namespace chrono
 {
 
-/// Provides a monotonic clock.
+/// Provides a steady clock.
 /**
  * For two calls to now() in sequence, t1 = now(); t2 = now();,
- * t2 will always be greater than t1.
+ * t2 will always be greater than t1. Also, the intervals of
+ * time will always be the same and cannot be adjusted.
 */
-class monotonic_clock
+class steady_clock
 {
 public:
 	typedef chrono::rep rep;
@@ -37,10 +38,10 @@ public:
 	> duration;
 
 	typedef chrono::time_point<
-		monotonic_clock
+		steady_clock
 	> time_point;
 
-	static bool const is_monotonic = true;
+	static bool const is_steady = true;
 
 	FCPPT_SYMBOL
 	static time_point

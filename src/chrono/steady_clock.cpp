@@ -4,7 +4,7 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/chrono/monotonic_clock.hpp>
+#include <fcppt/chrono/steady_clock.hpp>
 #include <fcppt/config.hpp>
 #ifdef FCPPT_WINDOWS_PLATFORM
 #include "performance_counter_time.hpp"
@@ -14,25 +14,28 @@
 #elif defined(FCPPT_HAVE_MACH_TIME)
 #include "mach_time_impl.hpp"
 #else
-#error "monotonic_clock implementation missing"
+#error "steady_clock implementation missing"
 #endif
 
-fcppt::chrono::monotonic_clock::time_point
-fcppt::chrono::monotonic_clock::now()
+fcppt::chrono::steady_clock::time_point
+fcppt::chrono::steady_clock::now()
 {
 #ifdef FCPPT_WINDOWS_PLATFORM
-	return performance_counter_time<
-		time_point
-	>();
+	return
+		chrono::performance_counter_time<
+			time_point
+		>();
 #elif defined(FCPPT_HAVE_CLOCK_GETTIME)
-	return clock_gettime_impl<
-		time_point
-	>(
-		CLOCK_MONOTONIC
-	);
+	return
+		chrono::clock_gettime_impl<
+			time_point
+		>(
+			CLOCK_MONOTONIC
+		);
 #elif defined(FCPPT_HAVE_MACH_TIME)
-	return mach_time_impl<
-		time_point
-	>();
+	return
+		chrono::mach_time_impl<
+			time_point
+		>();
 #endif
 }

@@ -4,15 +4,15 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_CHRONO_MONOTONIC_CLOCK_FWD_HPP_INCLUDED
-#define FCPPT_CHRONO_MONOTONIC_CLOCK_FWD_HPP_INCLUDED
+#ifndef FCPPT_CHRONO_STEADY_CLOCK_FWD_HPP_INCLUDED
+#define FCPPT_CHRONO_STEADY_CLOCK_FWD_HPP_INCLUDED
 
 namespace fcppt
 {
 namespace chrono
 {
 
-class monotonic_clock;
+class steady_clock;
 
 }
 }

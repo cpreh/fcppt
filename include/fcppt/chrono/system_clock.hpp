@@ -43,7 +43,7 @@ public:
 		system_clock
 	> time_point;
 
-	static bool const is_monotonic = false;
+	static bool const is_steady = false;
 
 	FCPPT_SYMBOL static
 	time_point

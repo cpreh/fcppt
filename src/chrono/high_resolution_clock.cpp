@@ -21,18 +21,21 @@ fcppt::chrono::high_resolution_clock::time_point
 fcppt::chrono::high_resolution_clock::now()
 {
 #ifdef FCPPT_WINDOWS_PLATFORM
-	return performance_counter_time<
-		time_point
-	>();
+	return
+		chrono::performance_counter_time<
+			time_point
+		>();
 #elif defined(FCPPT_HAVE_CLOCK_GETTIME)
-	return clock_gettime_impl<
-		time_point
-	>(
-		CLOCK_REALTIME
-	);
+	return
+		chrono::clock_gettime_impl<
+			time_point
+		>(
+			CLOCK_REALTIME
+		);
 #elif defined(FCPPT_HAVE_MACH_TIME)
-	return mach_time_impl<
-		time_point
-	>();
+	return
+		chrono::mach_time_impl<
+			time_point
+		>();
 #endif
 }

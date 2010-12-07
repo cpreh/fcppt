@@ -4,8 +4,8 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-//[chronomonotonicclock
-#include <fcppt/chrono/monotonic_clock.hpp>
+//[chronosteadyclock
+#include <fcppt/chrono/steady_clock.hpp>
 #include <fcppt/chrono/time_point.hpp>
 #include <fcppt/chrono/duration.hpp>
 #include <fcppt/chrono/duration_cast.hpp>
@@ -17,7 +17,7 @@
 
 int main()
 {
-	typedef fcppt::chrono::monotonic_clock clock;
+	typedef fcppt::chrono::steady_clock clock;
 
 	typedef clock::time_point time_point;
 

@@ -12,7 +12,7 @@
 #include <fcppt/chrono/duration.hpp>
 #include <fcppt/chrono/duration_cast.hpp>
 #include <fcppt/chrono/system_clock.hpp>
-#include <fcppt/chrono/monotonic_clock.hpp>
+#include <fcppt/chrono/steady_clock.hpp>
 #include <fcppt/chrono/high_resolution_clock.hpp>
 #include <fcppt/chrono/nanoseconds.hpp>
 #include <fcppt/chrono/microseconds.hpp>
