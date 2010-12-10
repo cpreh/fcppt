@@ -26,9 +26,9 @@ template<
 >
 typename static_<T, 4, 4>::type const
 translation(
-	T const x,
-	T const y,
-	T const z
+	T const _x,
+	T const _y,
+	T const _z
 )
 {
 	T const 
@@ -42,9 +42,9 @@ translation(
 	return
 		typename static_<T, 4, 4>::type
 		(
-			one, zero, zero, x,
-			zero, one, zero, y,
-			zero, zero, one, z,
+			one, zero, zero, _x,
+			zero, one, zero, _y,
+			zero, zero, one, _z,
 			zero, zero, zero, one
 		);
 }
@@ -65,14 +65,14 @@ typename boost::enable_if<
 	>::type
 >::type const
 translation(
-	Vector const &vec_
+	Vector const &_vec
 )
 {
 	return
-		translation(
-			vec_.x(),
-			vec_.y(),
-			vec_.z()
+		matrix::translation(
+			_vec.x(),
+			_vec.y(),
+			_vec.z()
 		);
 }
 

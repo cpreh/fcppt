@@ -26,9 +26,9 @@ template<
 >
 typename static_<T, 4, 4>::type const
 scaling(
-	T const x,
-	T const y,
-	T const z
+	T const _x,
+	T const _y,
+	T const _z
 )
 {
 	T const
@@ -38,9 +38,9 @@ scaling(
 	return
 		typename static_<T, 4, 4>::type
 		(
-			   x,  zero, zero, zero,
-			zero,     y, zero, zero,
-			zero,  zero,    z, zero,
+			   _x, zero, zero, zero,
+			zero,     _y,zero, zero,
+			zero,  zero,   _z, zero,
 			zero,  zero, zero,  one 
 		);
 
@@ -62,14 +62,14 @@ typename boost::enable_if<
 	>::type
 >::type const
 scaling(
-	Vector const &vec_
+	Vector const &_vec
 )
 {
 	return
-		scaling(
-			vec_.x(),
-			vec_.y(),
-			vec_.z()
+		matrix::scaling(
+			_vec.x(),
+			_vec.y(),
+			_vec.z()
 		);
 }
 
