@@ -8,6 +8,7 @@
 #define FCPPT_CONTAINER_BITFIELD_DETAIL_ELEMENT_BITS_HPP_INCLUDED
 
 #include <fcppt/container/bitfield/size_type.hpp>
+#include <boost/mpl/integral_c.hpp>
 #include <limits>
 
 namespace fcppt
@@ -23,11 +24,14 @@ template<
 	typename T
 >
 struct element_bits
+:
+boost::mpl::integral_c<
+	bitfield::size_type,
+	std::numeric_limits<
+		T
+	>::digits
+>
 {
-	static bitfield::size_type const value =
-		std::numeric_limits<
-			T
-		>::digits;
 };
 
 }

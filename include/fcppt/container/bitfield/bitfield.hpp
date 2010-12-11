@@ -7,8 +7,8 @@
 #ifndef FCPPT_CONTAINER_BITFIELD_BITFIELD_HPP_INCLUDED
 #define FCPPT_CONTAINER_BITFIELD_BITFIELD_HPP_INCLUDED
 
-#include <fcppt/container/bitfield/basic_decl.hpp>
-#include <fcppt/container/bitfield/basic_impl.hpp>
+#include <fcppt/container/bitfield/basic.hpp>
+#include <fcppt/container/bitfield/default_internal_type.hpp>
 #include <fcppt/container/bitfield/is_subset_eq.hpp>
 
 #endif

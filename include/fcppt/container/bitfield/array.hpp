@@ -26,18 +26,14 @@ template<
 >
 struct array
 {
-private:
-	static bitfield::size_type const element_bits =
-		bitfield::detail::element_bits<
-			InternalType
-		>::value;
-public:
 	typedef fcppt::container::array<
 		InternalType,
 		fcppt::mpl::ceil_div<
 			std::size_t,
 			Size,
-			element_bits
+			bitfield::detail::element_bits<
+				InternalType
+			>::value
 		>::value
 	> type;
 };

@@ -31,8 +31,8 @@ boost::mpl::integral_c<
 	Divisor
 	+
 	(
-		Divisor %
-		Dividend
+		Dividend %
+		Divisor
 		?
 			1u
 		:

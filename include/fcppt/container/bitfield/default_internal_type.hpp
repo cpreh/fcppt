@@ -4,10 +4,8 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_CONTAINER_BITFIELD_BASIC_FWD_HPP_INCLUDED
-#define FCPPT_CONTAINER_BITFIELD_BASIC_FWD_HPP_INCLUDED
-
-#include <fcppt/container/bitfield/default_internal_type.hpp>
+#ifndef FCPPT_CONTAINER_BITFIELD_DEFAULT_INTERNAL_TYPE_HPP_INCLUDED
+#define FCPPT_CONTAINER_BITFIELD_DEFAULT_INTERNAL_TYPE_HPP_INCLUDED
 
 namespace fcppt
 {
@@ -16,13 +14,7 @@ namespace container
 namespace bitfield
 {
 
-template<
-	typename Enum,
-	Enum Size,
-	typename InternalType =
-		bitfield::default_internal_type
->
-class basic;
+typedef unsigned default_internal_type;
 
 }
 }
