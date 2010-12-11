@@ -9,6 +9,8 @@
 
 #include <fcppt/container/bitfield/detail/element_bits.hpp>
 #include <fcppt/container/array_fwd.hpp>
+#include <fcppt/mpl/ceil_div.hpp>
+#include <cstddef>
 
 namespace fcppt
 {
@@ -32,7 +34,11 @@ private:
 public:
 	typedef fcppt::container::array<
 		InternalType,
-		Size / element_bits + (Size % element_bits ? 1 : 0)
+		fcppt::mpl::ceil_div<
+			std::size_t,
+			Size,
+			element_bits
+		>::value
 	> type;
 };
 
