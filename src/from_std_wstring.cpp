@@ -12,12 +12,15 @@
 
 fcppt::string const
 fcppt::from_std_wstring(
-	std::wstring const &input
+	std::wstring const &_input
 )
 {
 #ifdef FCPPT_NARROW_STRING
-	return narrow(input);
+	return
+		fcppt::narrow(
+			_input
+		);
 #else
-	return input;
+	return _input;
 #endif
 }

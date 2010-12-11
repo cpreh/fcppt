@@ -12,20 +12,20 @@
 
 std::string const
 fcppt::to_std_string(
-	string const &input,
+	string const &_input,
 	std::locale const &
 #ifndef FCPPT_NARROW_STRING
-		locale_
+		_locale
 #endif
 )
 {
 #ifndef FCPPT_NARROW_STRING
 	return
-		narrow(
-			input,
-			locale_
+		fcppt::narrow(
+			_input,
+			_locale
 		);
 #else
-	return input;
+	return _input;
 #endif
 }
