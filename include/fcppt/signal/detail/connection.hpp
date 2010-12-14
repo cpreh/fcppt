@@ -7,6 +7,7 @@
 #ifndef FCPPT_SIGNAL_DETAIL_CONNECTION_HPP_INCLUDED
 #define FCPPT_SIGNAL_DETAIL_CONNECTION_HPP_INCLUDED
 
+#include <fcppt/class_symbol.hpp>
 #include <fcppt/noncopyable.hpp>
 #include <fcppt/symbol.hpp>
 #include <boost/intrusive/list_hook.hpp>
@@ -27,11 +28,19 @@ typedef boost::intrusive::list_base_hook<
 > object_base_hook;
 
 // this class is intentionally left blank
-class connection : public object_base_hook
+class FCPPT_CLASS_SYMBOL connection
+:
+	public object_base_hook
 {
-	FCPPT_NONCOPYABLE(connection)
+	FCPPT_NONCOPYABLE(
+		connection
+	)
 public:
-	FCPPT_SYMBOL connection();
+	FCPPT_SYMBOL
+	connection();
+
+	FCPPT_SYMBOL 
+	virtual ~connection();
 };
 
 }

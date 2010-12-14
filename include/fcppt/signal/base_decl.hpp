@@ -4,11 +4,12 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_SIGNAL_DETAIL_BASE_HPP_INCLUDED
-#define FCPPT_SIGNAL_DETAIL_BASE_HPP_INCLUDED
+#ifndef FCPPT_SIGNAL_BASE_DECL_HPP_INCLUDED
+#define FCPPT_SIGNAL_BASE_DECL_HPP_INCLUDED
 
-#include <fcppt/signal/detail/concrete_connection.hpp>
+#include <fcppt/signal/base_fwd.hpp>
 #include <fcppt/signal/auto_connection.hpp>
+#include <fcppt/signal/detail/concrete_connection.hpp>
 #include <fcppt/noncopyable.hpp>
 #include <fcppt/function/object.hpp>
 #include <boost/intrusive/list.hpp>
@@ -17,20 +18,28 @@ namespace fcppt
 {
 namespace signal
 {
-namespace detail
-{
-template<typename T>
+
+template<
+	typename T
+>
 class base
 {
 	FCPPT_NONCOPYABLE(base)
 public:
 	typedef T function_signature;
-	typedef fcppt::function::object<T> function_type;
-	typedef detail::concrete_connection<
-			function_signature
-		> concrete_connection;
 
-	auto_connection connect(function_type const &f);
+	typedef fcppt::function::object<
+		T
+	> function_type;
+
+	typedef detail::concrete_connection<
+		function_signature
+	> concrete_connection;
+
+	signal::auto_connection
+	connect(
+		function_type const &
+	);
 protected:
 	typedef boost::intrusive::list<
 		concrete_connection,
@@ -40,11 +49,13 @@ protected:
 	> connection_list;
 
 	base();
-	connection_list &connections() const;
+
+	connection_list &
+	connections() const;
 private:
 	mutable connection_list connections_;
 };
-}
+
 }
 }
 

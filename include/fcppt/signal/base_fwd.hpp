@@ -4,10 +4,20 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/signal/detail/connection.hpp>
+#ifndef FCPPT_SIGNAL_BASE_FWD_HPP_INCLUDED
+#define FCPPT_SIGNAL_BASE_FWD_HPP_INCLUDED
 
-fcppt::signal::detail::connection::connection()
-{}
+namespace fcppt
+{
+namespace signal
+{
 
-fcppt::signal::detail::connection::~connection()
-{}
+template<
+	typename T
+>
+class base;
+
+}
+}
+
+#endif

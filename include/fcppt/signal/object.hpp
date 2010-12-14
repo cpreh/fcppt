@@ -8,8 +8,7 @@
 #define FCPPT_SIGNAL_OBJECT_HPP_INCLUDED
 
 #include <fcppt/signal/object_fwd.hpp>
-#include <fcppt/signal/detail/base.hpp>
-#include <fcppt/signal/detail/base_impl.hpp>
+#include <fcppt/signal/base_impl.hpp>
 #include <fcppt/signal/detail/operator_limit.hpp>
 #include <fcppt/signal/detail/define_operator.hpp>
 #include <fcppt/signal/detail/define_void_operator.hpp>
@@ -27,17 +26,28 @@ namespace signal
 
 template<
 	typename T,
+	typename Base,
 	typename Enable
 >
 class object
 :
-	public detail::base<T>
+	public Base
 {
 public:
-	typedef detail::base<T> base;
+	typedef Base base;
+
 	typedef typename base::connection_list connection_list;
-	typedef typename boost::function_traits<T>::result_type result_type;
-	typedef fcppt::function::object<result_type (result_type,result_type)> combiner_type;
+
+	typedef typename boost::function_traits<
+		T
+	>::result_type result_type;
+
+	typedef fcppt::function::object<
+		result_type (
+			result_type,
+			result_type
+		)
+	> combiner_type;
 
 	explicit object(
 		combiner_type const &_combiner = boost::phoenix::arg_names::arg1
@@ -66,21 +76,26 @@ private:
 };
 
 template<
-	typename T
+	typename T,
+	typename Base
 >
 class object<
 	T,
+	Base,
 	typename boost::enable_if<
 		boost::is_void<
-			typename boost::function_traits<T>::result_type
+			typename boost::function_traits<
+				T
+			>::result_type
 		>
 	>::type
 >
 :
-	public detail::base<T>
+	public Base
 {
 public:
-	typedef detail::base<T> base;
+	typedef Base base;
+
 	typedef typename base::connection_list connection_list;
 
 	FCPPT_SIGNAL_DETAIL_DEFINE_EMPTY_VOID_OPERATOR

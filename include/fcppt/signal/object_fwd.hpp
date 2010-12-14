@@ -7,6 +7,8 @@
 #ifndef FCPPT_SIGNAL_OBJECT_FWD_HPP_INCLUDED
 #define FCPPT_SIGNAL_OBJECT_FWD_HPP_INCLUDED
 
+#include <fcppt/signal/base_fwd.hpp>
+
 namespace fcppt
 {
 namespace signal
@@ -14,6 +16,7 @@ namespace signal
 
 template<
 	typename T,
+	typename Base = signal::base<T>,
 	typename Enable = void
 >
 class object;

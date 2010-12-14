@@ -4,22 +4,26 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_SIGNAL_DETAIL_BASE_IMPL_HPP_INCLUDED
-#define FCPPT_SIGNAL_DETAIL_BASE_IMPL_HPP_INCLUDED
+#ifndef FCPPT_SIGNAL_BASE_IMPL_HPP_INCLUDED
+#define FCPPT_SIGNAL_BASE_IMPL_HPP_INCLUDED
 
+#include <fcppt/signal/base_decl.hpp>
 #include <fcppt/signal/detail/concrete_connection_impl.hpp>
+#include <fcppt/make_unique_ptr.hpp>
 #include <fcppt/move.hpp>
 
 template<
 	typename T
 >
 fcppt::signal::auto_connection
-fcppt::signal::detail::base<T>::connect(
+fcppt::signal::base<T>::connect(
 	function_type const &_function
 )
 {
 	auto_connection con(
-		new concrete_connection(
+		fcppt::make_unique_ptr<
+			concrete_connection
+		>(
 			_function
 		)
 	);
@@ -41,14 +45,14 @@ fcppt::signal::detail::base<T>::connect(
 template<
 	typename T
 >
-fcppt::signal::detail::base<T>::base()
+fcppt::signal::base<T>::base()
 {}
 
 template<
 	typename T
 >
-typename fcppt::signal::detail::base<T>::connection_list &
-fcppt::signal::detail::base<T>::connections() const
+typename fcppt::signal::base<T>::connection_list &
+fcppt::signal::base<T>::connections() const
 {
 	return connections_;
 }

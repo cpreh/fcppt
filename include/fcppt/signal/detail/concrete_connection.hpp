@@ -16,20 +16,29 @@ namespace signal
 {
 namespace detail
 {
-template<typename T>
-class concrete_connection : public connection
+
+template<
+	typename T
+>
+class concrete_connection
+:
+	public detail::connection
 {
 public:
 	typedef T function_signature;
+
 	typedef fcppt::function::object<T> function_type;
 
-	concrete_connection(
-		function_type const &);
+	explicit concrete_connection(
+		function_type const &
+	);
 
-	function_type &function();
+	function_type &
+	function();
 private:
 	function_type function_;
 };
+
 }
 }
 }
