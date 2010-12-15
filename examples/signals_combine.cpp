@@ -40,7 +40,8 @@ int main()
 	fcppt::signal::connection_manager c;
 	// Pass the combiner here - can also be changed later
 	fcppt::signal::object<function> s(
-		&combiner
+		&combiner,
+		0
 	);
 
 	c.connect(

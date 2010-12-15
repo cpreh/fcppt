@@ -10,40 +10,72 @@
 #include <boost/preprocessor/arithmetic/inc.hpp>
 #include <boost/preprocessor/repetition/enum_params.hpp>
 #include <boost/preprocessor/repetition/enum_binary_params.hpp>
-#include <boost/next_prior.hpp>
 
 #define FCPPT_SIGNAL_DETAIL_DEFINE_EMPTY_OPERATOR\
 	result_type operator()() const\
 	{\
-		if (base::connections().empty()) \
-			return result_type(); \
-		result_type t = base::connections().begin()->function()();\
-		for (typename connection_list::iterator i = boost::next(base::connections().begin());\
-		     i != base::connections().end();\
-				 ++i)\
-			t = combiner_(i->function()(),t);\
-		return t;\
 	}
 
-#define FCPPT_SIGNAL_DETAIL_DEFINE_OPERATOR(z,n,_)\
+#define FCPPT_SIGNAL_DETAIL_DEFINE_OPERATOR(\
+	z,\
+	n,\
+	_\
+)\
+template<\
+	typename T,\
 	template<\
-	BOOST_PP_ENUM_PARAMS_Z(z,BOOST_PP_INC(n),typename T)\
-	>\
-	result_type operator()(\
-		BOOST_PP_ENUM_BINARY_PARAMS(BOOST_PP_INC(n),T, const &param)) const\
-	{\
-		if (base::connections().empty()) \
-			return result_type(); \
-		result_type t = base::connections().begin()->function()(\
-			BOOST_PP_ENUM_PARAMS_Z(z,BOOST_PP_INC(n),param));\
-		for (typename connection_list::iterator i = base::connections().begin();\
-		     i != base::connections().end();\
-				 ++i)\
-			t = combiner_(\
-				t,\
-				i->function()(\
-					BOOST_PP_ENUM_PARAMS_Z(z,BOOST_PP_INC(n),param)));\
-		return t;\
-	}
+		typename\
+	> class Base,\
+	typename Enable\
+>\
+template<\
+	BOOST_PP_ENUM_PARAMS_Z(\
+		z,\
+		BOOST_PP_INC(n),\
+		typename T\
+	)\
+>\
+typename fcppt::signal::object<\
+	T,\
+	Base,\
+	Enable\
+>::result_type \
+fcppt::signal::object<\
+	T,\
+	Base,\
+	Enable\
+>::operator()(\
+	BOOST_PP_ENUM_BINARY_PARAMS_Z(\
+		z,\
+		BOOST_PP_INC(n),\
+		T,\
+		const &param\
+	)\
+) const\
+{\
+	result_type result(\
+		this->initial_result_\
+	);\
+\
+	for (\
+		typename base::connection_list::iterator it(\
+			base::connections().begin()\
+		);\
+		it != base::connections().end();\
+		++it\
+	)\
+		result = \
+			this->combiner_(\
+				result,\
+				it->function()(\
+					BOOST_PP_ENUM_PARAMS_Z(\
+						z,\
+						BOOST_PP_INC(n),\
+						param\
+					)\
+				)\
+			);\
+	return result;\
+}
 
 #endif

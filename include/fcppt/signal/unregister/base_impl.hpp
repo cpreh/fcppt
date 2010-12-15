@@ -4,8 +4,8 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_SIGNAL_BASE_IMPL_HPP_INCLUDED
-#define FCPPT_SIGNAL_BASE_IMPL_HPP_INCLUDED
+#ifndef FCPPT_SIGNAL_UNREGISTER_BASE_IMPL_HPP_INCLUDED
+#define FCPPT_SIGNAL_UNREGISTER_BASE_IMPL_HPP_INCLUDED
 
 #include <fcppt/signal/unregister/base_decl.hpp>
 #include <fcppt/signal/unregister/detail/concrete_connection_impl.hpp>
