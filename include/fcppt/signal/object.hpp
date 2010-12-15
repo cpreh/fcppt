@@ -26,15 +26,17 @@ namespace signal
 
 template<
 	typename T,
-	typename Base,
+	template<
+		typename
+	> class Base,
 	typename Enable
 >
 class object
 :
-	public Base
+	public Base<T>
 {
 public:
-	typedef Base base;
+	typedef Base<T> base;
 
 	typedef typename base::connection_list connection_list;
 
@@ -77,7 +79,9 @@ private:
 
 template<
 	typename T,
-	typename Base
+	template<
+		typename
+	> class Base
 >
 class object<
 	T,
@@ -91,10 +95,10 @@ class object<
 	>::type
 >
 :
-	public Base
+	public Base<T>
 {
 public:
-	typedef Base base;
+	typedef Base<T> base;
 
 	typedef typename base::connection_list connection_list;
 

@@ -4,25 +4,23 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_SIGNAL_OBJECT_FWD_HPP_INCLUDED
-#define FCPPT_SIGNAL_OBJECT_FWD_HPP_INCLUDED
+#ifndef FCPPT_SIGNAL_UNREGISTER_FUNCTION_HPP_INCLUDED
+#define FCPPT_SIGNAL_UNREGISTER_FUNCTION_HPP_INCLUDED
 
-#include <fcppt/signal/base_fwd.hpp>
+#include <fcppt/function/object_fwd.hpp>
 
 namespace fcppt
 {
 namespace signal
 {
+namespace unregister
+{
 
-template<
-	typename T,
-	template<
-		typename
-	> class Base = signal::base,
-	typename Enable = void
->
-class object;
+typedef fcppt::function::object<
+	void ()
+> function;
 
+}
 }
 }
 
