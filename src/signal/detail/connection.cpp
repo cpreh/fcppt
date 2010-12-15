@@ -8,3 +8,6 @@
 
 fcppt::signal::detail::connection::connection()
 {}
+
+fcppt::signal::detail::connection::~connection()
+{}
