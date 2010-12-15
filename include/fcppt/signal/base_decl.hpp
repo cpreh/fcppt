@@ -32,15 +32,15 @@ public:
 		T
 	> function_type;
 
-	typedef detail::concrete_connection<
-		function_signature
-	> concrete_connection;
-
 	signal::auto_connection
 	connect(
 		function_type const &
 	);
 protected:
+	typedef detail::concrete_connection<
+		function_signature
+	> concrete_connection;
+
 	typedef boost::intrusive::list<
 		concrete_connection,
 		boost::intrusive::constant_time_size<
@@ -49,6 +49,8 @@ protected:
 	> connection_list;
 
 	base();
+
+	~base();
 
 	connection_list &
 	connections() const;

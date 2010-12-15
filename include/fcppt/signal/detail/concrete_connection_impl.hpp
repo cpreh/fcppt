@@ -23,6 +23,13 @@ fcppt::signal::detail::concrete_connection<T>::concrete_connection(
 template<
 	typename T
 >
+fcppt::signal::detail::concrete_connection<T>::~concrete_connection()
+{
+}
+
+template<
+	typename T
+>
 typename fcppt::signal::detail::concrete_connection<T>::function_type &
 fcppt::signal::detail::concrete_connection<T>::function()
 {

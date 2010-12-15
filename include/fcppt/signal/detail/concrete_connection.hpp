@@ -33,6 +33,8 @@ public:
 		function_type const &
 	);
 
+	~concrete_connection();
+
 	function_type &
 	function();
 private:

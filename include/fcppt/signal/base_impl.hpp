@@ -51,6 +51,12 @@ fcppt::signal::base<T>::base()
 template<
 	typename T
 >
+fcppt::signal::base<T>::~base()
+{}
+
+template<
+	typename T
+>
 typename fcppt::signal::base<T>::connection_list &
 fcppt::signal::base<T>::connections() const
 {
