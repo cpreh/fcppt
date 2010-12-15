@@ -11,6 +11,7 @@
 #include <boost/preprocessor/arithmetic/inc.hpp>
 #include <boost/preprocessor/repetition/enum_params.hpp>
 #include <boost/preprocessor/repetition/enum_binary_params.hpp>
+#include <boost/foreach.hpp>
 
 #define FCPPT_SIGNAL_DETAIL_DEFINE_VOID_OPERATOR(\
 	z,\
@@ -52,14 +53,11 @@ fcppt::signal::object<\
 	)\
 ) const\
 {\
-	for(\
-		typename base::connection_list::iterator it(\
-			base::connections().begin()\
-		);\
-		it != base::connections().end();\
-		++it\
+	BOOST_FOREACH(\
+		typename base::connection_list::reference ref,\
+		base::connections()\
 	)\
-		it->function()(\
+		ref.function()(\
 			BOOST_PP_ENUM_PARAMS_Z(\
 				z,\
 				BOOST_PP_INC(n),\

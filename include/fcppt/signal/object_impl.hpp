@@ -14,6 +14,7 @@
 #include <fcppt/signal/detail/enable_if_void.hpp>
 #include <fcppt/signal/detail/operator_limit.hpp>
 #include <boost/preprocessor/repetition/repeat.hpp>
+#include <boost/foreach.hpp>
 
 template<
 	typename T,
@@ -86,16 +87,13 @@ fcppt::signal::object<T, Base, Enable>::operator()() const
 		initial_result_
 	);
 
-	for (
-		typename base::connection_list::iterator it(
-			base::connections().begin()
-		);
-		it != base::connections().end();
-		++it
+	BOOST_FOREACH(
+		typename base::connection_list::reference ref,
+		base::connections()
 	)
 		result =
 			combiner_(
-				it->function()(),
+				ref.function()(),
 				result
 			);
 
@@ -161,14 +159,11 @@ fcppt::signal::object<
 	>::type
 >::operator()() const
 {
-	for(
-		typename base::connection_list::iterator it(
-			base::connections().begin()
-		);
-		it != base::connections().end();
-		++it
+	BOOST_FOREACH(
+		typename base::connection_list::reference ref,
+		base::connections()
 	)
-			it->function()();
+		ref.function()();
 }
 
 BOOST_PP_REPEAT(
