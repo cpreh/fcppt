@@ -9,6 +9,7 @@
 
 #include <fcppt/signal/detail/connection.hpp>
 #include <fcppt/function/object.hpp>
+#include <fcppt/noncopyable.hpp>
 
 namespace fcppt
 {
@@ -24,6 +25,9 @@ class concrete_connection
 :
 	public detail::connection
 {
+	FCPPT_NONCOPYABLE(
+		concrete_connection
+	)
 public:
 	typedef T function_signature;
 
