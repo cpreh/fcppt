@@ -8,6 +8,7 @@
 #define FCPPT_OPTIONAL_DECL_HPP_INCLUDED
 
 #include <fcppt/optional_fwd.hpp>
+#include <fcppt/empty_optional_tag_fwd.hpp>
 #include <fcppt/safe_bool.hpp>
 #include <fcppt/alignment/array.hpp>
 #include <boost/type_traits/alignment_of.hpp>
@@ -29,6 +30,11 @@ public:
 	typedef T const *const_pointer;
 
 	optional();
+
+	// intentionally not explicit
+	optional(
+		empty_optional_tag const &
+	);
 
 	// intentionally not explicit
 	optional(

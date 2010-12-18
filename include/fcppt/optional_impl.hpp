@@ -19,6 +19,16 @@ fcppt::optional<T>::optional()
 	data_(0)
 {}
 
+template<
+	typename T
+>
+fcppt::optional<T>::optional(
+	empty_optional_tag const &
+)
+:
+	storage_(),
+	data_(0)
+{}
 
 template<
 	typename T
