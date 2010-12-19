@@ -32,3 +32,19 @@ BOOST_AUTO_TEST_CASE(dim_quad)
 		&& quad_dim.h() == 256
 	);
 }
+
+BOOST_AUTO_TEST_CASE(dim_fill)
+{
+	ui2_dim const dim(
+		fcppt::math::dim::fill<
+			2
+		>(
+			42u
+		)
+	);
+
+	BOOST_REQUIRE(
+		dim.w() == 42
+		&& dim.h() == 42
+	);
+}
