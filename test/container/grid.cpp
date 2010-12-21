@@ -22,6 +22,11 @@ typedef fcppt::container::grid::object<
 
 typedef fcppt::container::grid::object<
 	int,
+	2
+> uint2_grid;
+
+typedef fcppt::container::grid::object<
+	int,
 	3
 > int3_grid;
 
@@ -54,6 +59,11 @@ typedef fcppt::container::grid::object<
 
 template class fcppt::container::grid::object<
 	int,
+	2
+>;
+
+template class fcppt::container::grid::object<
+	unsigned,
 	2
 >;
 

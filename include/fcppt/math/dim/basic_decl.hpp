@@ -163,7 +163,7 @@ FCPPT_MATH_DETAIL_MAKE_OP_DECL(\
 	reference d();
 	const_reference d() const;
 
-	size_type
+	value_type
 	content() const;
 
 	static basic const

@@ -372,7 +372,7 @@ template<
 	typename N,
 	typename S
 >
-typename fcppt::math::dim::basic<T, N, S>::size_type
+typename fcppt::math::dim::basic<T, N, S>::value_type
 fcppt::math::dim::basic<T, N, S>::content() const
 {
 	return
@@ -380,11 +380,13 @@ fcppt::math::dim::basic<T, N, S>::content() const
 			begin(),
 			end(),
 			static_cast<
-				size_type
+				value_type
 			>(
 				1
 			),
-			std::multiplies<size_type>()
+			std::multiplies<
+				value_type
+			>()
 		);
 }
 
