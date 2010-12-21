@@ -27,6 +27,8 @@ template<
 >
 fcppt::signal::unregister::detail::concrete_connection<T>::~concrete_connection()
 {
+	this->signal::detail::connection_base::unlink();
+
 	unregister_();
 }
 

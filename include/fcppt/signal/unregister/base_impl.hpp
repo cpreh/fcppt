@@ -47,6 +47,15 @@ fcppt::signal::unregister::base<T>::connect(
 template<
 	typename T
 >
+bool
+fcppt::signal::unregister::base<T>::empty() const
+{
+	return connections().empty();
+}
+	
+template<
+	typename T
+>
 fcppt::signal::unregister::base<T>::base()
 {}
 

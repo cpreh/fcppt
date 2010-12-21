@@ -40,6 +40,9 @@ public:
 		function_type const &,
 		unregister::function const &
 	);
+
+	bool
+	empty() const;
 protected:
 	typedef unregister::detail::concrete_connection<
 		function_signature
