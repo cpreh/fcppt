@@ -31,6 +31,12 @@ static one test( T* );
 template< typename T >
 static two test( ... );
 
+template< typename T >
+struct temp
+{
+	static T value;
+};
+
 }
 
 template< typename Function, typename Enable = void >
@@ -46,20 +52,18 @@ struct has_addressof_overload
 		>
 	>::type
 >
-{
-private:
-	static Function temp;
-public:
-	typedef boost::mpl::bool_<
-		sizeof(
-			::fcppt::function::detail::has_addressof_overload_detail::test<
-				Function
-			>(
-				&temp
-			)
+:
+boost::mpl::bool_<
+	sizeof(
+		::fcppt::function::detail::has_addressof_overload_detail::test<
+			Function
+		>(
+			&has_addressof_overload_detail::temp<Function>::value
 		)
-		== sizeof( has_addressof_overload_detail::two )
-	> type;
+	)
+	== sizeof( has_addressof_overload_detail::two )
+>
+{
 };
 
 template<
