@@ -8,7 +8,7 @@
 
 [h3 Algorithm]
 * Added `shift_compare` to test if two sequences are equal in a sense that one can be shifted to match the other.
-* Added `inner_product` and `map` that operate on ranges.
+* Added `map` that operate on ranges.
 
 [h3 Chrono]
 * Renamed `monotonic_clock` into `steady_clock` to follow the latest draft.
