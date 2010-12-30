@@ -121,7 +121,7 @@ few special functions, `fcppt::container::raw_vector` is like `std::vector`.
 
 [endsect]
 
-[section Grid]
+[section grid]
 
 `fcppt::container::grid` is a simple multi dimensional array similar to `boost::multi_array`.
 Let's first take a look at how to use a simple three dimensional grid of ints.
@@ -145,6 +145,43 @@ after the resize: `resize_preserve` and `resize_preserve_init`.
 [grid_resize]
 
 Grid also offers a `data` function to access the underlying data by pointer.
+
+[endsect]
+
+[section array]
+
+`fcppt::container::array` is a class like the upcoming `std::array`.
+It is important to note that `array` is a POD which means that it especially
+has no constructors or private data members.
+
+[import ../examples/container/array.cpp]
+
+[array]
+
+In addition to the new 'C++0x' functionality, `fcppt::container::array` also
+has a `data()` function to access the array directly via a pointer.
+
+[endsect]
+
+[section ptr_container helpers]
+
+'boost.ptr_container' is a library that provides containers like
+the stdlib does but they instead hold pointers to elements and take ownership
+over the objects pointed to. This library is very useful for all sorts
+of cases where a normal container from the stdlib cannot work.
+The container requirements say that a type that should be stored inside a container
+must fullfil the CopyConstructible and
+Assignable concepts which means that a copy constructor must be accessible,
+`&value` must yield the address of `value`, and an assignment operator must also be accessible.
+This obviously limits the use of types that can be used with stdlib containers.
+
+`fcppt::containter::ptr` has some helper functions that make working especially
+with `fcppt::unique_ptr` and 'boost.ptr_container' easier.
+Here is a quick example on how to insert a `unique_ptr` into a `ptr_map`.
+
+[import ../examples/container/ptr.cpp]
+
+[container_ptr]
 
 [endsect]
 

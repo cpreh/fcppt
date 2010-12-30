@@ -17,6 +17,10 @@ namespace container
 namespace ptr
 {
 
+/// Tries to push_back @a _ptr into @a _container
+/**
+ * Transfers ownership of @a _ptr to @a _container
+*/
 template<
 	typename PtrContainer,
 	typename UniquePtr
@@ -40,6 +44,5 @@ push_back_unique_ptr(
 }
 }
 }
-
 
 #endif

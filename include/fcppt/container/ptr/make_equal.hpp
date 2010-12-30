@@ -16,6 +16,7 @@ namespace container
 namespace ptr
 {
 
+/// Creates a functor that will compare the address of elements in a ptr_container to @a _ptr
 template<
 	typename Ptr
 >

@@ -4,7 +4,7 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/assign/make_array.hpp>
+//[array
 #include <fcppt/container/array.hpp>
 #include <fcppt/io/cout.hpp>
 #include <fcppt/text.hpp>
@@ -12,11 +12,26 @@
 
 int main()
 {
-	fcppt::container::array<int,3> const a =
-		fcppt::assign::make_array<int>(3)(4)(5);
+	typedef fcppt::container::array<
+		int,
+		5	
+	> int5array;
 
-	BOOST_FOREACH(int x,a)
-	{
-		fcppt::io::cout << x << FCPPT_TEXT('\n');
-	}
+	// array is a POD so it can be initialized like this
+	int5array const array =
+	{{
+		1, 2, 3, 4, 5
+	}};
+
+	BOOST_FOREACH(
+		int5array::const_reference element,
+		array
+	)
+		fcppt::io::cout
+			<< element
+			<< FCPPT_TEXT(' ');
+	
+	fcppt::io::cout
+		<< FCPPT_TEXT('\n');
 }
+//]

@@ -17,6 +17,11 @@ namespace container
 namespace ptr
 {
 
+/// Tries to insert @a _ptr into @a _container at @a _iterator
+/**
+ * Transfers ownership of @a _ptr to @a _container
+ * @return An iterator to the newly inserted position
+*/
 template<
 	typename PtrContainer,
 	typename UniquePtr

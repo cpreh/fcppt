@@ -7,6 +7,7 @@
 #include <fcppt/container/ptr/push_back_unique_ptr.hpp>
 #include <fcppt/container/ptr/insert_unique_ptr.hpp>
 #include <fcppt/container/ptr/insert_unique_ptr_set.hpp>
+#include <fcppt/container/ptr/insert_unique_ptr_multiset.hpp>
 #include <fcppt/container/ptr/insert_unique_ptr_map.hpp>
 #include <fcppt/make_unique_ptr.hpp>
 #include <fcppt/unique_ptr.hpp>
@@ -69,7 +70,37 @@ BOOST_AUTO_TEST_CASE(
 }
 
 BOOST_AUTO_TEST_CASE(
-	ptr_container_multi_set
+	ptr_container_set
+)
+{
+	typedef boost::ptr_set<
+		std::string
+	> string_ptr_set;
+
+	string_ptr_set set;
+
+	BOOST_REQUIRE(
+		fcppt::container::ptr::insert_unique_ptr_set(
+			set,
+			fcppt::make_unique_ptr<
+				std::string
+			>(
+			"test"
+			)
+		).second
+	);
+
+	BOOST_REQUIRE(
+		!set.empty()
+	);
+
+	BOOST_REQUIRE(
+		*set.begin() == "test"
+	);
+}
+
+BOOST_AUTO_TEST_CASE(
+	ptr_container_multiset
 )
 {
 	typedef boost::ptr_multiset<
@@ -78,13 +109,16 @@ BOOST_AUTO_TEST_CASE(
 
 	string_ptr_multiset set;
 
-	fcppt::container::ptr::insert_unique_ptr_set(
-		set,
-		fcppt::make_unique_ptr<
-			std::string
-		>(
-			"test"
+	BOOST_REQUIRE(
+		fcppt::container::ptr::insert_unique_ptr_multiset(
+			set,
+			fcppt::make_unique_ptr<
+				std::string
+			>(
+				"test"
+			)
 		)
+		!= set.end()
 	);
 
 	BOOST_REQUIRE(
@@ -107,14 +141,16 @@ BOOST_AUTO_TEST_CASE(
 
 	int_string_ptr_map map;
 
-	fcppt::container::ptr::insert_unique_ptr_map(
-		map,
-		42,
-		fcppt::make_unique_ptr<
-			std::string
-		>(
-			"test"
-		)
+	BOOST_REQUIRE(
+		fcppt::container::ptr::insert_unique_ptr_map(
+			map,
+			42,
+			fcppt::make_unique_ptr<
+				std::string
+			>(
+				"test"
+			)
+		).second
 	);
 
 	BOOST_REQUIRE(
