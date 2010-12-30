@@ -9,6 +9,7 @@
 #include <fcppt/container/ptr/insert_unique_ptr_set.hpp>
 #include <fcppt/container/ptr/insert_unique_ptr_multiset.hpp>
 #include <fcppt/container/ptr/insert_unique_ptr_map.hpp>
+#include <fcppt/container/ptr/insert_unique_ptr_multimap.hpp>
 #include <fcppt/make_unique_ptr.hpp>
 #include <fcppt/unique_ptr.hpp>
 #include <boost/ptr_container/ptr_vector.hpp>
@@ -151,6 +152,40 @@ BOOST_AUTO_TEST_CASE(
 				"test"
 			)
 		).second
+	);
+
+	BOOST_REQUIRE(
+		!map.empty()
+	);
+
+	BOOST_REQUIRE(
+		map.begin()->first == 42
+		&& *map.begin()->second == "test"
+	);
+}
+
+BOOST_AUTO_TEST_CASE(
+	ptr_container_multimap
+)
+{
+	typedef boost::ptr_multimap<
+		int,
+		std::string
+	> int_string_ptr_multimap;
+
+	int_string_ptr_multimap map;
+
+	BOOST_REQUIRE(
+		fcppt::container::ptr::insert_unique_ptr_multimap(
+			map,
+			42,
+			fcppt::make_unique_ptr<
+				std::string
+			>(
+				"test"
+			)
+		)
+		!= map.end()
 	);
 
 	BOOST_REQUIRE(
