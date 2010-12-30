@@ -25,7 +25,7 @@ fcppt::signal::connection_manager::~connection_manager()
 }
 
 void
-fcppt::signal::connection_manager::connect(
+fcppt::signal::connection_manager::add(
 	auto_connection _con
 )
 {

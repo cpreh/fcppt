@@ -36,7 +36,7 @@ public:
 
 	FCPPT_SYMBOL
 	void
-	connect(
+	add(
 		auto_connection
 	);
 

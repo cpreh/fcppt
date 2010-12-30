@@ -26,6 +26,8 @@
 
 [include random.qbk]
 
+[include signal.qbk]
+
 [include smartpointers.qbk]
 
 [include utility.qbk]

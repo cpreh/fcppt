@@ -82,7 +82,7 @@ In order to be consistent with `fcppt::shared_ptr`,
 
 [section unique_ptr]
 
-`fcppt::unique_ptr` is a `C++03` emulation of the upcoming `std::unique_ptr`.
+`fcppt::unique_ptr` is a C++03 emulation of the upcoming `std::unique_ptr`.
 In a sense `unique_ptr` is similar to `auto_ptr` that only one instance can actually have ownership,
 unlike `shared_ptr` which can have multiple. However, `auto_ptr` isn't movable but `unique_ptr` is.
 What this means is that you can transfer ownership from one `unique_ptr` to another by moving it,

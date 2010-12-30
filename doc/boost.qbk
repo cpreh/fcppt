@@ -22,38 +22,6 @@ There is also `FCPPT_NONASSIGNABLE` that just makes the assignment operator inac
 
 [endsect]
 
-[section Signals]
-
-[section Motivation]
-
-Boost provides `boost::signal` for handling signals. The library has two problems, one minor and one major one. The minor one is: It doesn't live inside a namespace but in the "almost global" boost namespace. The major issue is: It's incredibly slow! [footnote Citation needed] Benchmarking a large library revealed that most of the performance goes into calling the boost signals. The same code with `fcppt::signal` had a significant performance advantage. So if you've been using boost::signal in performance critical code and your debugger indicates that the signal functions are indeed called often you might consider using `fcppt::signal` instead. A small example shows its usage:
-
-[import ../examples/signals_simple.cpp]
-[signals_simple]
-
-[endsect]
-
-[section Combiners]
-
-Signals can have return values. If you attach more than one callback to such a signal, one has to have a way of combining the return values of the callbacks to one single return value. This is achieved with what we call "combiners". A signal can have only one combiner. If you do not supply one, a default combiner is used. So what does a combiner do? Let's say the function of the signal has return type `T`. Then the combiner function has the signature: `T (T,T)`, so it gets two return values and returns another one. When invoking a signal with a return type, one of the following is returned:
-
-# If the signal doesn't have any callbacks registered, `T()` (the default-constructed return type) is returned.
-# If it has exactly one callback, let's call it `f`, attached, then the result of `f()` is returned.
-# Otherwise, the return value of the first callback is combined with the result of the second callback. The result of this computation is stored: `T temp = combiner(first_callback(),second_callback());`. This variable `temp` is then combined with the return value of the next callback: `T temp2 = combiner(temp,next_callback())` and so on. This is what functional languages call /folding/ (see [@http://en.wikipedia.org/wiki/Fold_(higher-order_function) this Wikipedia entry] for more information).
-
-Here is an example:
-
-[import ../examples/signals_combine.cpp]
-[signals_combine]
-
-Note the use of `fcppt::signal::connection_manager`. This is a simple class to aggregate connections so you don't have to declare `scoped_connection connection1,connection2,connection3,...;`
-
-[endsect]
-
-[xinclude doxygen_signal.xml]
-
-[endsect]
-
 [section Optional]
 `fcppt::optional` is a replacement for `boost::optional`.
 It simply doesn't use a union trick that leads to undefined behaviour.
