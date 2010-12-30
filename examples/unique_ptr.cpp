@@ -10,11 +10,10 @@
 #include <fcppt/io/cout.hpp>
 #include <fcppt/text.hpp>
 
-//<--
+//<-
 namespace
 {
-//-->
-
+//->
 typedef fcppt::unique_ptr<
 	int
 > unique_int_ptr;
@@ -54,18 +53,39 @@ test()
 }
 //]
 
+
+//[unique_ptr_move
+
+#include <fcppt/move.hpp>
+
+unique_int_ptr
+test2()
+{
+	unique_int_ptr ptr(
+		fcppt::make_unique_ptr<
+			int
+		>(
+			42
+		)
+	);
+
+	return
+		move(
+			ptr
+		);
+}
+
+//]
 }
 
 //[unique_ptr_shared_ptr
 
 #include <fcppt/shared_ptr.hpp>
-#include <fcppt/move.hpp>
 
 //<--
 namespace
 {
 //-->
-
 typedef fcppt::shared_ptr<
 	int
 > shared_int_ptr;
@@ -92,10 +112,10 @@ to_shared_ptr(
 
 //[unique_ptr_derived
 
-//<--
+//<-
 namespace
 {
-//-->
+//->
 
 struct base
 {
@@ -111,7 +131,7 @@ struct dervied
 };
 
 void
-test2()
+test3()
 {
 	typedef fcppt::unique_ptr<
 		base
@@ -130,3 +150,4 @@ test2()
 int main()
 {
 }
+

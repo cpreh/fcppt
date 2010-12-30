@@ -8,7 +8,7 @@ An `fcppt::container::tree::object<T>` is a container modeling an n-ary tree hol
 
 It tries to mimic the sequence and set container from the standard library. Also, its implementation is minimal in the sense that everything but trivial operations are outsourced to external headers - the traversal iterators below are an example of this. Most of the operations are self-explanatory. Here is a small example of the tree:
 
-[import ../examples/tree_simple.cpp]
+[import ../examples/container/tree_simple.cpp]
 [tree_simple]
 
 Note also that all operations which implicitly depend on a parent being present are undefined if `has_parent()` returns false. The same goes for all operations which depend on at least one child being present and `empty()` returning true.
@@ -19,7 +19,7 @@ Note also that all operations which implicitly depend on a parent being present 
 
 The tree uses a `boost::ptr_list` to store its children, so the iterator guarantees are the same as with this container (see [@http://www.boost.org/doc/libs/release/libs/ptr_container/doc/ptr_list.html here]). Apart from using the traditional iteration methods -- using `begin(), end(), rbegin(), rend()` -- there are external traversal classes. Those are best explained using a little example:
 
-[import ../examples/tree_traversal.cpp]
+[import ../examples/container/tree_traversal.cpp]
 [tree_traversal]
 
 This will output 
@@ -69,7 +69,7 @@ This is tiresome (!) to write and also a little dangerous since the underlying t
 
 A small example shows how it's used:
 
-[import ../examples/bitfield.cpp]
+[import ../examples/container/bitfield.cpp]
 [bitfield]
 
 As you can see, you can treat a `bitfield` like an integral type -- it has the
@@ -112,12 +112,39 @@ function doesn't care if you have initialized them before reading.
 [caution Reading access to uninitialized elements of `raw_vector` is undefined
 behavior. You have to write the elements before reading them.]
 
-[import ../examples/raw_vector.cpp]
+[import ../examples/container/raw_vector.cpp]
 
 [rawvector]
 
 Apart from the special constructor that leaves the elements uninitialized and a
 few special functions, `fcppt::container::raw_vector` is like `std::vector`.
+
+[endsect]
+
+[section Grid]
+
+`fcppt::container::grid` is a simple multi dimensional array similar to `boost::multi_array`.
+Let's first take a look at how to use a simple three dimensional grid of ints.
+
+[import ../examples/container/grid.cpp]
+
+[grid_simple]
+
+Grid uses `fcppt::math::dim` to specify its size and to obtain an element.
+
+[caution Grid tries to be as efficient as possible and won't necessarily initialize its elements.]
+
+To resize a grid there are a couple of options.
+`grid::object::resize` will resize the underlying container but leave
+the elements of the grid in an unspecific state.
+There are two functions to preserve the current elements that will still fit into the grid
+after the resize: `resize_preserve` and `resize_preserve_init`.
+`resize_preserve` only preserves the elements that still fit but doesn't initialize new elements.
+`resize_preserve_init` is like `resize_preserve` but will give all new elements a default value.
+
+[grid_resize]
+
+Grid also offers a `data` function to access the underlying data by pointer.
 
 [endsect]
 

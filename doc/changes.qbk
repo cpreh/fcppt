@@ -37,7 +37,7 @@
 * Added `dim::fill` to fill a dim with the same values.
 * Added `lerp` function.
 
-[h3 Mmpl]
+[h3 mpl]
 * Added a static `ceil_div`.
 
 [h3 Optional]
