@@ -20,10 +20,10 @@
 
 [h3 Filesystem]
 * Support boost filesystem v3. This will be the default if your boost version is new enough.
-* `path_to_string` has been added which has be used instead of `path::string`.
+* `path_to_string` has been added which has to be used instead of `path::string`.
 
 [h3 Math]
-* Added `extend_bounding_box` to resize a box
+* Added `extend_bounding_box` to resize a box.
 * Added `vector::slerp`.
 * Added `dim::quad`.
 * Added all relational operators for `vector` and `dim` (`<`, `>`, `<=`, `>=`).
@@ -57,7 +57,7 @@
 * Added `is_iterable` that checks if `iterator` and `const_iterator` typedefs are there.
 
 [h3 unique_ptr]
-* A `unique_ptr` class based on Howard Hinannt's unique_ptr implementation has been added.
+* A `unique_ptr` class based on Howard Hinannt's `unique_ptr` implementation has been added.
 
 [h3 Variant]
 * Added `operator==` and `operator!=`
