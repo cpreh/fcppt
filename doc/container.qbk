@@ -175,7 +175,7 @@ Assignable concepts which means that a copy constructor must be accessible,
 `&value` must yield the address of `value`, and an assignment operator must also be accessible.
 This obviously limits the use of types that can be used with stdlib containers.
 
-`fcppt::containter::ptr` has some helper functions that make working especially
+`fcppt::container::ptr` has some helper functions that make working especially
 with `fcppt::unique_ptr` and boost.ptr_container easier.
 Here is a quick example on how to insert a `unique_ptr` into a `ptr_map`.
 

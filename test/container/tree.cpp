@@ -79,7 +79,7 @@ BOOST_AUTO_TEST_CASE(container_tree_swap)
 	);
 }
 
-BOOST_AUTO_TEST_CASE(containter_tree_pre_order)
+BOOST_AUTO_TEST_CASE(container_tree_pre_order)
 {
 	ui_tree tree(
 		1

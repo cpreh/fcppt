@@ -82,10 +82,10 @@ test2()
 
 #include <fcppt/shared_ptr.hpp>
 
-//<--
+//<-
 namespace
 {
-//-->
+//->
 typedef fcppt::shared_ptr<
 	int
 > shared_int_ptr;
@@ -149,5 +149,13 @@ test3()
 
 int main()
 {
-}
+	::test();
 
+	::test2();
+
+	::to_shared_ptr(
+		::int_ptr_factory()
+	);
+
+	::test3();
+}

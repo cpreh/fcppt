@@ -2,7 +2,7 @@
 
 [section Motivation]
 
-Boost provides `boost::signal` for handling signals.
+Boost provides `boost::signals` for handling signals.
 The biggest problem of `boost::signals` is that it is incredibly slow.
 Benchmarking a large library revealed that most of the performance goes into calling the boost signals.
 The same code with `fcppt::signal` had a significant performance advantage,

@@ -10,6 +10,9 @@
 * Added `shift_compare` to test if two sequences are equal in a sense that one can be shifted to match the other.
 * Added `map` function which is a copying transform.
 
+[h3 Assign]
+* Added `container` member function to `make_container`.
+
 [h3 Chrono]
 * Renamed `monotonic_clock` into `steady_clock` to follow the latest C++0x draft.
 
