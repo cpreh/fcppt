@@ -2,7 +2,7 @@
 
 [h1 Requirements]
 
-fcppts needs the following at build time:
+fcppt needs the following at build time:
 
 * [@http://www.cmake.org >=cmake-2.6]
 * [@http://www.boost.org >=boost-1.40]
@@ -20,7 +20,6 @@ Tested compilers are:
 * clang-2.8 (Gentoo Linux)
 * VC++ 2010 (Windows XP)
 
-
 [h1 Download]
 
 fcppt is available through our public Git Repository: `git://timeout.supraverse.net/fcppt.git`
@@ -29,7 +28,6 @@ The latest fcppt release is 0.4.
 Get it [@http://supraverse.net/freundlich/fcppt-0.4.tar.bz2 here].
 
 The Gentoo ebuilds are available [@http://supraverse.net/freundlich/fcppt-gentoo-ebuilds-5.tar.bz2 here].
-
 
 [h1 Installation]
 
@@ -42,7 +40,6 @@ your build directory is directly below the source directory.
 To install fcppt, you have to pass an installation prefix via `cmake -D CMAKE_INSTALL_PREFIX=/home/me/local ..`
 
 You can, of course, also use `ccmake` to configure your installation.
-
 
 [h1 Using fcppt in your project]
 
