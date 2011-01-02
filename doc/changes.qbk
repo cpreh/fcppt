@@ -23,19 +23,20 @@
 * `path_to_string` has been added which has to be used instead of `path::string`.
 
 [h3 Math]
-* Added `extend_bounding_box` to resize a box.
-* Added `vector::slerp`.
+* Added `extend_bounding_box` which resizes a box to include the given point.
+* Added `vector::slerp` which does spherical linear interpolation.
 * Added `dim::quad`.
 * Added all relational operators for `vector` and `dim` (`<`, `>`, `<=`, `>=`).
 * Added `range_compare` to compare two ranges with an epsilon.
-* Added `vector::orthogonalize` and `vector::project`.
+* Added `vector::orthogonalize` which implements a (numerically stable) Gram-Schmidt orthonormalization.
+* Added `vector::project`.
 * Generalized `vector::angle_between`. It now has a different meaning and uses the dot product.
 * Added `vector::angle_between_cast` which can be used on integral vectors.
 * Added `vector::signed_angle` that computes the angle of a vector relative to `(1, 0)`.
-* Added `matrix::orthogonal`.
+* Added `matrix::orthogonal` which specifies a general orthogonal projection matrix (it imitates glOrtho)
 * Added `ceil_div` to round a division towards infinity.
 * Added `dim::fill` to fill a dim with the same values.
-* Added `lerp` function.
+* Added `lerp` function which does linear interpolation.
 
 [h3 mpl]
 * Added a static `ceil_div`.
