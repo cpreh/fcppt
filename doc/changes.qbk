@@ -8,10 +8,10 @@
 
 [h3 Algorithm]
 * Added `shift_compare` to test if two sequences are equal in a sense that one can be shifted to match the other.
-* Added `map` that operate on ranges.
+* Added `map` function which is a copying transform.
 
 [h3 Chrono]
-* Renamed `monotonic_clock` into `steady_clock` to follow the latest draft.
+* Renamed `monotonic_clock` into `steady_clock` to follow the latest C++0x draft.
 
 [h3 Container]
 * Added a new container called `grid::object`. It is a very simple multi dimensional array.
