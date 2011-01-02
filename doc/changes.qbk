@@ -33,7 +33,7 @@
 * Generalized `vector::angle_between`. It now has a different meaning and uses the dot product.
 * Added `vector::angle_between_cast` which can be used on integral vectors.
 * Added `vector::signed_angle` that computes the angle of a vector relative to `(1, 0)`.
-* Added `matrix::orthogonal` which specifies a general orthogonal projection matrix (it imitates glOrtho)
+* Added `matrix::orthogonal` which specifies a general orthogonal projection matrix (it imitates glOrtho).
 * Added `ceil_div` to round a division towards infinity.
 * Added `dim::fill` to fill a dim with the same values.
 * Added `lerp` function which does linear interpolation.
