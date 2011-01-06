@@ -39,6 +39,14 @@ fcppt::signal::connection_manager::add(
 }
 
 void
+fcppt::signal::connection_manager::assign(
+	container const &_connections
+)
+{
+	connections_ = _connections;
+}
+
+void
 fcppt::signal::connection_manager::clear()
 {
 	connections_.clear();

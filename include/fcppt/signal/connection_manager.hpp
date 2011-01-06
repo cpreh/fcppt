@@ -40,6 +40,12 @@ public:
 		auto_connection
 	);
 
+	FCPPT_SYMBOL
+	void
+	assign(
+		container const &
+	);
+
 	FCPPT_SYMBOL void
 	clear();
 private:
