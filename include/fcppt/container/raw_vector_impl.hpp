@@ -9,7 +9,9 @@
 
 #include <fcppt/container/raw_vector_decl.hpp>
 #include <fcppt/container/out_of_range.hpp>
+#include <fcppt/type_traits/is_input_iterator.hpp>
 #include <fcppt/assert.hpp>
+#include <boost/utility/enable_if.hpp>
 #include <boost/next_prior.hpp>
 #include <iterator>
 #include <algorithm>
@@ -822,6 +824,137 @@ fcppt::container::raw_vector<T, A>::insert(
 	In const _right
 )
 {
+	insert_impl(
+		_position,
+		_left,
+		_right
+	);
+}
+
+template<
+	typename T,
+	typename A
+>
+typename fcppt::container::raw_vector<T, A>::iterator
+fcppt::container::raw_vector<T, A>::erase(
+	iterator const _position
+)
+{
+	std::uninitialized_copy(
+		_position + 1u,
+		end(),
+		_position
+	);
+
+	--impl_.last_;
+
+	return _position;
+}
+
+template<
+	typename T,
+	typename A
+>
+typename fcppt::container::raw_vector<T, A>::iterator
+fcppt::container::raw_vector<T, A>::erase(
+	iterator const _left,
+	iterator const _right
+)
+{
+	if(
+		_left != _right
+	)
+	{
+		std::uninitialized_copy(
+			_right, end(),
+			_left
+		);
+
+		impl_.last_ -= _right - _left;
+	}
+
+	return _right;
+}
+
+template<
+	typename T,
+	typename A
+>
+void
+fcppt::container::raw_vector<T, A>::shrink_to_fit()
+{
+	reallocate(
+		size()
+	);
+}
+
+template<
+	typename T,
+	typename A
+>
+void
+fcppt::container::raw_vector<T, A>::free_memory()
+{
+	deallocate();
+
+	set_pointers(
+		0,
+		0,
+		0
+	);
+}
+
+template<
+	typename T,
+	typename A
+>
+template<
+	typename In
+>
+typename boost::enable_if<
+	fcppt::type_traits::is_input_iterator<
+		In
+	>,
+	void
+>::type
+fcppt::container::raw_vector<T, A>::insert_impl(	
+	iterator _position,
+	In const _left,
+	In _right
+)
+{
+	for(
+		;
+		_left != _right;
+		++_left
+	)
+		_position =
+			this->insert(
+				_position,
+				*_left
+			)
+			+ 1;
+}
+
+template<
+	typename T,
+	typename A
+>
+template<
+	typename In
+>
+typename boost::disable_if<
+	fcppt::type_traits::is_input_iterator<
+		In
+	>,
+	void
+>::type
+fcppt::container::raw_vector<T, A>::insert_impl(
+	iterator const _position,
+	In const _left,
+	In const _right
+)
+{
 	difference_type const distance(
 		std::distance(
 			_left,
@@ -906,78 +1039,6 @@ fcppt::container::raw_vector<T, A>::insert(
 	}
 }
 
-template<
-	typename T,
-	typename A
->
-typename fcppt::container::raw_vector<T, A>::iterator
-fcppt::container::raw_vector<T, A>::erase(
-	iterator const _position
-)
-{
-	std::uninitialized_copy(
-		_position + 1u,
-		end(),
-		_position
-	);
-
-	--impl_.last_;
-
-	return _position;
-}
-
-template<
-	typename T,
-	typename A
->
-typename fcppt::container::raw_vector<T, A>::iterator
-fcppt::container::raw_vector<T, A>::erase(
-	iterator const _left,
-	iterator const _right
-)
-{
-	if(
-		_left != _right
-	)
-	{
-		std::uninitialized_copy(
-			_right, end(),
-			_left
-		);
-
-		impl_.last_ -= _right - _left;
-	}
-
-	return _right;
-}
-
-template<
-	typename T,
-	typename A
->
-void
-fcppt::container::raw_vector<T, A>::shrink_to_fit()
-{
-	reallocate(
-		size()
-	);
-}
-
-template<
-	typename T,
-	typename A
->
-void
-fcppt::container::raw_vector<T, A>::free_memory()
-{
-	deallocate();
-
-	set_pointers(
-		0,
-		0,
-		0
-	);
-}
 
 template<
 	typename T,

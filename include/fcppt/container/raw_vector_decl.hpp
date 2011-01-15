@@ -8,8 +8,10 @@
 #define FCPPT_CONTAINER_RAW_VECTOR_DECL_HPP_INCLUDED
 
 #include <fcppt/container/raw_vector_fwd.hpp>
+#include <fcppt/type_traits/is_input_iterator.hpp>
 #include <boost/static_assert.hpp>
 #include <boost/type_traits/is_pod.hpp>
+#include <boost/utility/enable_if.hpp>
 #include <iterator>
 
 namespace fcppt
@@ -284,6 +286,36 @@ public:
 	void
 	free_memory();
 private:
+	template<
+		typename In
+	>
+	typename boost::enable_if<
+		fcppt::type_traits::is_input_iterator<
+			In
+		>,
+		void
+	>::type
+	insert_impl(	
+		iterator position,
+		In begin,
+		In end
+	);
+
+	template<
+		typename In
+	>
+	typename boost::disable_if<
+		fcppt::type_traits::is_input_iterator<
+			In
+		>,
+		void
+	>::type
+	insert_impl(	
+		iterator position,
+		In begin,
+		In end
+	);
+
 	void
 	range_check(
 		size_type n

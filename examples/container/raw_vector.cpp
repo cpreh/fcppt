@@ -74,7 +74,7 @@ int main()
 
 	fcppt::io::cout
 		<< read_count
-		<< FCPPT_TEXT(" bytes read.");
+		<< FCPPT_TEXT(" bytes read.\n");
 }
 
 //]

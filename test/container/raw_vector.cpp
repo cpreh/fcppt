@@ -5,7 +5,10 @@
 
 
 #include <fcppt/container/raw_vector.hpp>
+#include <fcppt/container/array.hpp>
 #include <boost/test/unit_test.hpp>
+#include <iterator>
+#include <sstream>
 
 namespace
 {
@@ -83,6 +86,69 @@ BOOST_AUTO_TEST_CASE(container_raw_vector_insert)
 		&& test[2] == 40
 		&& test[3] == 40
 		&& test[4] == 20
+	);
+}
+
+BOOST_AUTO_TEST_CASE(container_raw_vector_insert_iterator)
+{
+	container_type test;
+
+	typedef fcppt::container::array<
+		int,
+		5
+	> int_array;
+
+	int_array const array = {{
+		0, 1, 2, 3, 4
+	}};
+
+	test.insert(
+		test.begin(),
+		array.begin(),
+		array.end()
+	);
+
+	BOOST_REQUIRE(
+		test.size() == 5u
+		&& test[0] == 0
+		&& test[1] == 1
+		&& test[2] == 2
+		&& test[3] == 3
+		&& test[4] == 4
+	);
+
+	std::stringstream stream;
+
+	stream
+		<< 10 << ' '
+		<< 20 << ' '
+		<< 30 << ' '
+		<< 40 << ' '
+		<< 50;
+
+	test.insert(
+		test.end(),
+		std::istream_iterator<
+			int
+		>(
+			stream
+		),
+		std::istream_iterator<
+			int
+		>()
+	);
+
+	BOOST_REQUIRE(
+		stream.eof()
+	);
+
+	BOOST_REQUIRE(
+		test.size() == 10
+		&& test[5] == 10
+		&& test[6] == 20
+		&& test[7] == 30
+		&& test[8] == 40
+		&& test[9] == 50
 	);
 }
 
