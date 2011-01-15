@@ -2,6 +2,10 @@ CMAKE_MINIMUM_REQUIRED(VERSION 2.6)
 
 SET (CMAKE_ALLOW_LOOSE_LOOP_CONSTRUCTS ON)
 
+IF(${CMAKE_BINARY_DIR} STREQUAL ${CMAKE_SOURCE_DIR})
+	message(FATAL_ERROR "In-source builds are not permitted. Make a separate folder for building:\nmkdir build; cd build; cmake ..\nBefore that, remove the files that cmake just created:\nrm -rf CMakeCache.txt CMakeFiles")
+ENDIF()
+
 OPTION(EXTRA_CMAKE_MODULE_PATH "Extra paths to search for cmake modules" "")
 
 SET (CMAKE_MODULE_PATH "${EXTRA_CMAKE_MODULE_PATH};${CMAKE_SOURCE_DIR}/CMakeModules")
@@ -18,10 +22,6 @@ MATH (
 	"${FCPPT_MAJOR_VERSION} * 1000000 + ${FCPPT_MINOR_VERSION} * 1000 + ${FCPPT_MICRO_VERSION}"
 )
 SET (FCPPT_SHARED_VERSION ${FCPPT_VERSION})
-
-IF(${CMAKE_BINARY_DIR} STREQUAL ${CMAKE_SOURCE_DIR})
-	message(FATAL_ERROR "In-source builds are not permitted. Make a separate folder for building:\nmkdir build; cd build; cmake ..\nBefore that, remove the files that cmake just created:\nrm -rf CMakeCache.txt CMakeFiles")
-ENDIF()
 
 INCLUDE (CheckCXXCompilerFlag)
 INCLUDE (CheckCXXSourceCompiles)
