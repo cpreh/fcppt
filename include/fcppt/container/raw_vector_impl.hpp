@@ -919,8 +919,8 @@ typename boost::enable_if<
 >::type
 fcppt::container::raw_vector<T, A>::insert_impl(	
 	iterator _position,
-	In const _left,
-	In _right
+	In _left,
+	In const _right
 )
 {
 	for(
