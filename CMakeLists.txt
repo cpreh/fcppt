@@ -2,7 +2,9 @@ CMAKE_MINIMUM_REQUIRED(VERSION 2.6)
 
 SET (CMAKE_ALLOW_LOOSE_LOOP_CONSTRUCTS ON)
 
-SET (CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/CMakeModules)
+OPTION(EXTRA_CMAKE_MODULE_PATH "Extra paths to search for cmake modules" "")
+
+SET (CMAKE_MODULE_PATH "${EXTRA_CMAKE_MODULE_PATH};${CMAKE_SOURCE_DIR}/CMakeModules")
 
 PROJECT (fcppt)
 
@@ -469,4 +471,10 @@ INSTALL(
 	${CMAKE_BINARY_DIR}/include/fcppt/config.hpp
 	${CMAKE_BINARY_DIR}/include/fcppt/version.hpp
 	DESTINATION include/fcppt
+)
+
+INSTALL(
+	FILES
+	${CMAKE_SOURCE_DIR}/FindFcppt.cmake
+	DESTINATION share/cmake/Modules
 )

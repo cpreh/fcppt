@@ -15,7 +15,7 @@ namespace algorithm
 {
 
 /// Copies sz elements from beg to out
-/** Equivalent to copy(beg, beg + sz, out)
+/** Equivalent to std::copy(_beg, _beg + _sz, _out)
 */
 template<
 	typename In,
@@ -24,16 +24,16 @@ template<
 >
 Out
 copy_n(
-	In const beg,
-	Size const sz,
-	Out const out
+	In const _beg,
+	Size const _sz,
+	Out const _out
 )
 {
 	return
 		::std::copy(
-			beg,
-			beg + sz,
-			out
+			_beg,
+			_beg + _sz,
+			_out
 		);
 }
 
