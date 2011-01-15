@@ -2,15 +2,12 @@ CMAKE_MINIMUM_REQUIRED(VERSION 2.6)
 
 SET (CMAKE_ALLOW_LOOSE_LOOP_CONSTRUCTS ON)
 
-<<<<<<< HEAD
 SET(EXTRA_CMAKE_MODULE_PATH "" CACHE PATH "Extra paths to search for cmake modules")
-=======
+
 IF(${CMAKE_BINARY_DIR} STREQUAL ${CMAKE_SOURCE_DIR})
 	message(FATAL_ERROR "In-source builds are not permitted. Make a separate folder for building:\nmkdir build; cd build; cmake ..\nBefore that, remove the files that cmake just created:\nrm -rf CMakeCache.txt CMakeFiles")
 ENDIF()
 
-OPTION(EXTRA_CMAKE_MODULE_PATH "Extra paths to search for cmake modules" "")
->>>>>>> 5efaacdf586f64b7e9170ad08a65999517fdcc85
 
 SET (CMAKE_MODULE_PATH "${EXTRA_CMAKE_MODULE_PATH};${CMAKE_SOURCE_DIR}/CMakeModules")
 
