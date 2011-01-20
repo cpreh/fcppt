@@ -1,4 +1,4 @@
-//          Copyright Carl Philipp Reh 2009 - 2010.
+//          Copyright Carl Philipp Reh 2009 - 2011.
 // Distributed under the Boost Software License, Version 1.0.
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
@@ -29,12 +29,12 @@ public:
 	typedef typename Operation::result_type result_type;
 
 	binary_unwrap(
-		Operation const &op,
-		Variant const &obj
+		Operation const &_op,
+		Variant const &_obj
 	)
 	:
-		op(op),
-		obj(obj)
+		op_(_op),
+		obj_(_obj)
 	{}
 
 	template<
@@ -42,23 +42,25 @@ public:
 	>
 	result_type
 	operator()(
-		T2 const &t2
+		T2 const &_t2
 	) const
 	{
-		return apply_unary(
-			binary_applier<
-				Operation,
-				T2
-			>(
-				op,
-				t2
-			),
-			obj
-		);
+		return
+			variant::apply_unary(
+				detail::binary_applier<
+					Operation,
+					T2
+				>(
+					op_,
+					_t2
+				),
+				obj_
+			);
 	}
 private:
-	Operation const &op;
-	Variant const &obj;
+	Operation const &op_;
+
+	Variant const &obj_;
 };
 
 }

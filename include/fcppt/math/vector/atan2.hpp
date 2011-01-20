@@ -1,4 +1,4 @@
-//          Copyright Carl Philipp Reh 2009 - 2010.
+//          Copyright Carl Philipp Reh 2009 - 2011.
 // Distributed under the Boost Software License, Version 1.0.
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
@@ -8,10 +8,7 @@
 #define FCPPT_MATH_VECTOR_ATAN2_HPP_INCLUDED
 
 #include <fcppt/math/vector/basic_impl.hpp>
-#include <fcppt/math/vector/static.hpp>
-#include <fcppt/math/vector/is_null.hpp>
 #include <fcppt/math/detail/has_size.hpp>
-#include <fcppt/optional_impl.hpp>
 #include <boost/utility/enable_if.hpp>
 #include <boost/type_traits/is_floating_point.hpp>
 #include <boost/mpl/and.hpp>
@@ -28,8 +25,6 @@ namespace vector
 /**
  * @tparam T must be a floating point type
  * @tparam N must be two (only two dimensional vectors are allowed)
- * @return optional<T>: If @a v is not null, the calculated atan2 will be returned,
- *         otherwise the optional will be empty
 */
 template<
 	typename T,
@@ -47,23 +42,17 @@ typename boost::enable_if<
 			2
 		>
 	>,
-	optional<
-		T
-	>
+	T
 >::type
 atan2(
-	basic<T, N, S> const &v
+	basic<T, N, S> const &_vector
 )
 {
 	return
-		is_null(v)
-		?
-			optional<T>()
-		:
-			std::atan2(
-				v.y(),
-				v.x())
-			;
+		std::atan2(
+			_vector.y(),
+			_vector.x()
+		);
 }
 
 }

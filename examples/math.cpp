@@ -1,4 +1,4 @@
-//          Copyright Carl Philipp Reh 2009 - 2010.
+//          Copyright Carl Philipp Reh 2009 - 2011.
 // Distributed under the Boost Software License, Version 1.0.
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
@@ -25,10 +25,6 @@ int main()
 	>::type vec(
 		1,
 		2);
-
-	fcppt::math::vector::angle_between<float>(
-		vec,
-		vec);
 
 	typedef fcppt::math::vector::static_<
 		float,
@@ -97,22 +93,8 @@ int main()
 		normalize(b);
 		normalize(c);
 
-		fcppt::io::cout << cross(a, b) << FCPPT_TEXT(' ') << c << FCPPT_TEXT('\n');
+		fcppt::io::cout << fcppt::math::vector::cross(a, b) << FCPPT_TEXT(' ') << c << FCPPT_TEXT('\n');
 	}
-
-	vec2f const converted(
-		fcppt::math::vector::narrow_cast<
-			vec2f
-		>(
-			vec3d(
-				1.0,
-				2.0,
-				3.0
-			)
-		)
-	);
-
-	fcppt::io::cout << cross(converted, converted) << FCPPT_TEXT('\n');
 
 	fcppt::io::cout
 		<< fcppt::math::vector::make(

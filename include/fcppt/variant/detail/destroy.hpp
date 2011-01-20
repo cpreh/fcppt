@@ -1,4 +1,4 @@
-//          Copyright Carl Philipp Reh 2009 - 2010.
+//          Copyright Carl Philipp Reh 2009 - 2011.
 // Distributed under the Boost Software License, Version 1.0.
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
@@ -29,10 +29,10 @@ FCPPT_PP_DISABLE_VC_WARNING(4100)
 	>
 	result_type
 	operator()(
-		T const &t
+		T const &_t
 	) const
 	{
-		t.~T();
+		_t.~T();
 	}
 FCPPT_PP_POP_WARNING
 };

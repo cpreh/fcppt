@@ -1,4 +1,4 @@
-//          Copyright Carl Philipp Reh 2009 - 2010.
+//          Copyright Carl Philipp Reh 2009 - 2011.
 // Distributed under the Boost Software License, Version 1.0.
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
@@ -8,18 +8,18 @@
 #include <fcppt/log/context.hpp>
 
 fcppt::log::detail::auto_context::auto_context(
-	context_location const &location_,
-	object &object_
+	context_location const &_location,
+	object &_object
 )
 :
-	location_(location_)
+	location_(_location)
 {
 	if(
 		location_.context()
 	)
 		location_.context()->add(
 			location_.location(),
-			object_
+			_object
 		);
 }
 

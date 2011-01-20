@@ -1,4 +1,4 @@
-//          Copyright Carl Philipp Reh 2009 - 2010.
+//          Copyright Carl Philipp Reh 2009 - 2011.
 // Distributed under the Boost Software License, Version 1.0.
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
@@ -12,6 +12,8 @@
 #include <fcppt/math/detail/make_op_decl.hpp>
 #include <fcppt/math/detail/make_variadic_constructor_decl.hpp>
 #include <fcppt/math/detail/array_adapter.hpp>
+#include <fcppt/math/difference_type.hpp>
+#include <fcppt/math/size_type.hpp>
 #include <fcppt/type_traits/is_iterator.hpp>
 #include <boost/utility/enable_if.hpp>
 #include <iterator>
@@ -34,7 +36,8 @@ public:
 	typedef N dim_wrapper;
 	typedef S storage_type;
 
-	typedef typename N::value_type size_type;
+	typedef math::size_type size_type;
+	typedef math::difference_type difference_type;
 	typedef T value_type;
 	typedef value_type &reference;
 	typedef value_type const &const_reference;
@@ -160,7 +163,7 @@ FCPPT_MATH_DETAIL_MAKE_OP_DECL(\
 	reference d();
 	const_reference d() const;
 
-	size_type
+	value_type
 	content() const;
 
 	static basic const
@@ -171,7 +174,7 @@ FCPPT_MATH_DETAIL_MAKE_OP_DECL(\
 		basic &
 	);
 private:
-	S storage;
+	S storage_;
 };
 
 template<

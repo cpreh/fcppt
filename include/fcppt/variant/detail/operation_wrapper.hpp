@@ -1,4 +1,4 @@
-//          Copyright Carl Philipp Reh 2009 - 2010.
+//          Copyright Carl Philipp Reh 2009 - 2011.
 // Distributed under the Boost Software License, Version 1.0.
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
@@ -27,10 +27,10 @@ public:
 	typedef typename Operation::result_type result_type;
 
 	explicit operation_wrapper(
-		Operation const &op_
+		Operation const &_op
 	)
 	:
-		op_(op_)
+		op_(_op)
 	{}
 
 	template<
@@ -38,13 +38,13 @@ public:
 	>
 	result_type
 	operator()(
-		T const &t
+		T const &_t
 	) const
 	{
 		return
 			op_(
 				detail::unwrap_recursive(
-					t
+					_t
 				)
 			);
 	}

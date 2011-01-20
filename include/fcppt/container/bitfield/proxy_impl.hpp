@@ -1,4 +1,4 @@
-//          Copyright Carl Philipp Reh 2009 - 2010.
+//          Copyright Carl Philipp Reh 2009 - 2011.
 // Distributed under the Boost Software License, Version 1.0.
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
@@ -10,78 +10,77 @@
 #include <fcppt/container/bitfield/proxy.hpp>
 
 template<
-	typename StoredType,
-	fcppt::container::bitfield::size_type ElementBits
+	typename StoredType
 >
-fcppt::container::bitfield::proxy<StoredType, ElementBits>::proxy(
-	StoredType array,
-	size_type const pos
+fcppt::container::bitfield::proxy<StoredType>::proxy(
+	StoredType _array,
+	size_type const _pos
 )
 :
-	array(array),
-	pos(pos)
+	array_(_array),
+	pos_(_pos)
 {}
 
 template<
-	typename StoredType,
-	fcppt::container::bitfield::size_type ElementBits
+	typename StoredType
 >
 fcppt::container::bitfield::size_type
-fcppt::container::bitfield::proxy<StoredType, ElementBits>::bit_offset(
-	size_type const p
+fcppt::container::bitfield::proxy<StoredType>::bit_offset(
+	size_type const _pos
 )
 {
-	return p % ElementBits;
+	return _pos % element_bits;
 }
 
 template<
-	typename StoredType,
-	fcppt::container::bitfield::size_type ElementBits
+	typename StoredType
 >
 fcppt::container::bitfield::size_type
-fcppt::container::bitfield::proxy<StoredType, ElementBits>::array_offset(
-	size_type const p
+fcppt::container::bitfield::proxy<StoredType>::array_offset(
+	size_type const _pos
 )
 {
-	return p / ElementBits;
+	return _pos / element_bits;
 }
 
 template<
-	typename StoredType,
-	fcppt::container::bitfield::size_type ElementBits
+	typename StoredType
 >
-fcppt::container::bitfield::proxy<StoredType, ElementBits> &
-fcppt::container::bitfield::proxy<StoredType, ElementBits>::operator=(
-	value_type const b
+fcppt::container::bitfield::proxy<StoredType> &
+fcppt::container::bitfield::proxy<StoredType>::operator=(
+	value_type const _value
 )
 {
 	size_type const
 		index(
-			array_offset(pos)
+			array_offset(
+				pos_
+			)
 		),
 		bit(
-			bit_offset(pos)
+			bit_offset(
+				pos_
+			)
 		);
 
-	if(b)
-		array[index] |= (1 << bit);
+	if(_value)
+		array_[index] |= (1 << bit);
         else
-		array[index] &= ~(1 << bit);
+		array_[index] &= ~(1 << bit);
 
 	return *this;
 }
 
 template<
-	typename StoredType,
-	fcppt::container::bitfield::size_type ElementBits
+	typename StoredType
 >
-fcppt::container::bitfield::proxy<StoredType, ElementBits>::operator
+fcppt::container::bitfield::proxy<StoredType>::operator
 fcppt::container::bitfield::value_type() const
 {
 	return
 		(
-			array[array_offset(pos)]
-			& (1 << (bit_offset(pos)))
+			array_[array_offset(pos_)]
+			& (1 << (bit_offset(pos_)))
 		)
 		!= 0;
 }

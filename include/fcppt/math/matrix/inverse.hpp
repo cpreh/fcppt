@@ -1,4 +1,4 @@
-//          Copyright Carl Philipp Reh 2009 - 2010.
+//          Copyright Carl Philipp Reh 2009 - 2011.
 // Distributed under the Boost Software License, Version 1.0.
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
@@ -9,8 +9,11 @@
 
 #include <fcppt/math/matrix/determinant.hpp>
 #include <fcppt/math/matrix/adjugate.hpp>
-#include <fcppt/math/detail/is_static_size.hpp>
+#include <fcppt/math/is_static_size.hpp>
 #include <fcppt/math/inverse.hpp>
+#include <fcppt/math/almost_zero.hpp>
+#include <fcppt/math/exception.hpp>
+#include <fcppt/text.hpp>
 #include <boost/utility/enable_if.hpp>
 
 namespace fcppt
@@ -19,7 +22,11 @@ namespace math
 {
 namespace matrix
 {
-/// Calculates the adjugate matrix
+/**
+ * Calculates the inverse matrix, uses fcppt::math::matrix::adjugate and fcppt::math::matrix::determinant. Throws fcppt::math::exception if fcppt::math::matrix::determinant(t) == 0
+ *
+ * @exception fcppt::math::exception If fcppt::math::matrix::determinant(t) == 0
+ */
 template
 <
 	typename T,
@@ -28,10 +35,10 @@ template
 >
 typename 
 boost::enable_if<
-	math::detail::is_static_size<
+	math::is_static_size<
 		N
 	>,
-	typename static_<
+	typename matrix::static_<
 		T,
 		N::value,
 		N::value
@@ -41,10 +48,14 @@ inverse(
 	basic<T,N,N,S> const &t
 )
 {
+	T const det = 
+		fcppt::math::matrix::determinant(
+			t);
+	if (fcppt::math::almost_zero(det))
+		throw fcppt::math::exception(FCPPT_TEXT("tried to invert a matrix with determinant 0"));
 	return 
 		fcppt::math::inverse(
-			matrix::determinant(
-				t)) * 
+			det) * 
 		matrix::adjugate(
 			t);
 }

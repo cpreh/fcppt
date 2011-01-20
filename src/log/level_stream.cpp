@@ -1,4 +1,4 @@
-//          Copyright Carl Philipp Reh 2009 - 2010.
+//          Copyright Carl Philipp Reh 2009 - 2011.
 // Distributed under the Boost Software License, Version 1.0.
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
@@ -10,12 +10,12 @@
 #include <fcppt/log/format/object.hpp>
 
 fcppt::log::level_stream::level_stream(
-	io::ostream &dest_,
-	format::const_object_ptr const formatter_
+	io::ostream &_dest,
+	format::const_object_ptr const _formatter
 )
 :
-	dest_(dest_),
-	formatter_(formatter_)
+	dest_(_dest),
+	formatter_(_formatter)
 {}
 
 fcppt::log::level_stream::~level_stream()
@@ -23,16 +23,16 @@ fcppt::log::level_stream::~level_stream()
 
 void
 fcppt::log::level_stream::log(
-	detail::temporary_output const &output,
-	format::const_object_ptr const additional_formatter
+	detail::temporary_output const &_output,
+	format::const_object_ptr const _additional_formatter
 )
 {
 	dest_
 		<< format::create_chain(
-			additional_formatter,
+			_additional_formatter,
 			formatter()
 		)->format(
-			output.result()
+			_output.result()
 		);
 
 	dest_.flush();
@@ -40,10 +40,10 @@ fcppt::log::level_stream::log(
 
 void
 fcppt::log::level_stream::formatter(
-	format::const_object_ptr const new_formatter
+	format::const_object_ptr const _formatter
 )
 {
-	formatter_ = new_formatter;
+	formatter_ = _formatter;
 }
 
 fcppt::log::format::const_object_ptr const

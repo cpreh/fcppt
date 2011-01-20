@@ -1,4 +1,4 @@
-//          Copyright Carl Philipp Reh 2009 - 2010.
+//          Copyright Carl Philipp Reh 2009 - 2011.
 // Distributed under the Boost Software License, Version 1.0.
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
@@ -38,11 +38,11 @@ fcppt::chrono::duration<
 	Rep,
 	Period
 >::duration(
-	Rep2 const &rep2_
+	Rep2 const &_rep2
 )
 :
 	rep_(
-		rep2_
+		_rep2
 	)
 {
 	BOOST_STATIC_ASSERT((

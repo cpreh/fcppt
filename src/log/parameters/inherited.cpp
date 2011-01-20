@@ -1,4 +1,4 @@
-//          Copyright Carl Philipp Reh 2009 - 2010.
+//          Copyright Carl Philipp Reh 2009 - 2011.
 // Distributed under the Boost Software License, Version 1.0.
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
@@ -13,36 +13,36 @@
 
 fcppt::log::parameters::all const
 fcppt::log::parameters::inherited(
-	object &parent,
-	string const &sub_location
+	object &_parent,
+	string const &_sub_location
 )
 {
 	return
 		all(
-			parent.sink()
+			_parent.sink()
 		)
 		.parent(
-			parent
+			_parent
 		)
 		.context_location(
-			parent.context_location().context(),
-			parent.context_location().location()
-			+ sub_location
+			_parent.context_location().context(),
+			_parent.context_location().location()
+			+ _sub_location
 		)
 		.enabled(
-			parent.enabled()
+			_parent.enabled()
 		)
 		.level_streams(
-			parent.level_streams()
+			_parent.level_streams()
 		)
 		.enabled_levels(
-			parent.enabled_levels()
+			_parent.enabled_levels()
 		)
 		.formatter(
 			format::create_chain(
-				parent.formatter(),
+				_parent.formatter(),
 				format::create_prefix(
-					sub_location
+					_sub_location
 				)
 			)
 		);

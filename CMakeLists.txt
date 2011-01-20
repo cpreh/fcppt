@@ -2,22 +2,27 @@ CMAKE_MINIMUM_REQUIRED(VERSION 2.6)
 
 SET (CMAKE_ALLOW_LOOSE_LOOP_CONSTRUCTS ON)
 
-SET (CMAKE_USER_MAKE_RULES_OVERRIDE_CXX ${CMAKE_CURRENT_SOURCE_DIR}/cxx_flag_overrides.cmake)
-
-SET (CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/CMakeModules)
-
-PROJECT (fcppt)
-
-SET (FCPPT_MAJOR_VERSION 0)
-SET (FCPPT_MINOR_VERSION 1)
-SET (FCPPT_MICRO_VERSION 1)
-SET (FCPPT_VERSION "${FCPPT_MAJOR_VERSION}.${FCPPT_MINOR_VERSION}.${FCPPT_MICRO_VERSION}")
-SET (FCPPT_INT_VERSION 1001) # TODO generate this automatically!
-SET (FCPPT_SHARED_VERSION ${FCPPT_VERSION})
+SET(EXTRA_CMAKE_MODULE_PATH "" CACHE PATH "Extra paths to search for cmake modules")
 
 IF(${CMAKE_BINARY_DIR} STREQUAL ${CMAKE_SOURCE_DIR})
 	message(FATAL_ERROR "In-source builds are not permitted. Make a separate folder for building:\nmkdir build; cd build; cmake ..\nBefore that, remove the files that cmake just created:\nrm -rf CMakeCache.txt CMakeFiles")
 ENDIF()
+
+
+SET (CMAKE_MODULE_PATH "${EXTRA_CMAKE_MODULE_PATH};${CMAKE_SOURCE_DIR}/CMakeModules")
+
+PROJECT (fcppt)
+
+SET (FCPPT_MAJOR_VERSION 0)
+SET (FCPPT_MINOR_VERSION 3)
+SET (FCPPT_MICRO_VERSION 0)
+SET (FCPPT_VERSION "${FCPPT_MAJOR_VERSION}.${FCPPT_MINOR_VERSION}.${FCPPT_MICRO_VERSION}")
+MATH (
+	EXPR
+	FCPPT_INT_VERSION
+	"${FCPPT_MAJOR_VERSION} * 1000000 + ${FCPPT_MINOR_VERSION} * 1000 + ${FCPPT_MICRO_VERSION}"
+)
+SET (FCPPT_SHARED_VERSION ${FCPPT_VERSION})
 
 INCLUDE (CheckCXXCompilerFlag)
 INCLUDE (CheckCXXSourceCompiles)
@@ -65,11 +70,25 @@ ENDIF()
 
 ADD_DEFINITIONS(-D BOOST_FILESYSTEM_NO_DEPRECATED)
 
-IF (CMAKE_COMPILER_IS_GNUCXX)
-	IF(UNIX)
-		SET (FCPPT_STRING_IS_UTF8 true)
-	ENDIF()
+IF(UNIX)
+	SET (FCPPT_STRING_IS_UTF8 true)
+ENDIF()
 
+CHECK_CXX_SOURCE_RUNS(
+	"#include <cstdlib>
+	int main()
+	{
+	#ifdef __clang__
+		return EXIT_SUCCESS;
+	#else
+		return EXIT_FAILURE;
+	#endif
+	}
+	"
+	COMPILER_IS_CLANGPP
+)
+
+IF (CMAKE_COMPILER_IS_GNUCXX OR COMPILER_IS_CLANGPP)
 	CHECK_CXX_COMPILER_FLAG(
 		"-fvisibility=hidden"
 		FCPPT_HAVE_GCC_VISIBILITY
@@ -77,10 +96,12 @@ IF (CMAKE_COMPILER_IS_GNUCXX)
 
 	OPTION (ENABLE_DEBUG_WARNINGS "Enable -Wpadded and -Weffc++" OFF)
 
-	ADD_DEFINITIONS ("-pedantic-errors -Wall -Wextra -Wconversion"
-	"-Wfloat-equal -Wredundant-decls -Wstrict-null-sentinel -Winit-self"
-	"-Woverloaded-virtual -Wnon-virtual-dtor -Wctor-dtor-privacy"
-	"-Wsign-promo -Wstrict-aliasing=1 -Wold-style-cast")
+	ADD_DEFINITIONS (
+		"-pedantic-errors -Wall -Wextra -Wconversion"
+		"-Wfloat-equal -Wredundant-decls -Winit-self"
+		"-Woverloaded-virtual -Wnon-virtual-dtor -Wshadow"
+		"-Wsign-promo -Wstrict-aliasing=1 -Wold-style-cast"
+	)
 
 	IF(ENABLE_DEBUG_WARNINGS)
 		SET (CMAKE_CXX_FLAGS_DEBUG ${CMAKE_CXX_FLAGS_DEBUG}" -Wpadded -Weffc++")
@@ -143,7 +164,8 @@ SET (EXECUTABLE_OUTPUT_PATH ${CMAKE_BINARY_DIR}/bin)
 
 SET (pkgfile "${CMAKE_BINARY_DIR}/fcppt.pc")
 
-FILE(WRITE ${pkgfile}
+FILE(
+	WRITE ${pkgfile}
 	"prefix=${CMAKE_INSTALL_PREFIX}\n"
 	"exec_prefix=\${prefix}\n"
 	"libdir=\${prefix}/lib\n"
@@ -154,7 +176,6 @@ FILE(WRITE ${pkgfile}
 	"Version: ${FCPPT_VERSION}\n"
 	"Requires:\n"
 	"Libs: -L\${libdir} -lfcppt\n"
-	"Cflags: -I\${includedir}/"
 )
 
 INSTALL (FILES ${pkgfile} DESTINATION ${CMAKE_INSTALL_PREFIX}/lib/pkgconfig)
@@ -169,7 +190,7 @@ INSTALL (FILES ${pkgfile} DESTINATION ${CMAKE_INSTALL_PREFIX}/lib/pkgconfig)
 #	 {}"
 #	 FCPPT_HAVE_DEFAULTED_AND_DELETED_FUNCTIONS)
 
-SET (Boost_ADDITIONAL_VERSIONS "1.41" "1.41.0" "1.42" "1.42.0" "1.43" "1.43.0")
+SET (Boost_ADDITIONAL_VERSIONS "1.41" "1.41.0" "1.42" "1.42.0" "1.43" "1.43.0" "1.44" "1.44.0" "1.45" "1.45.0")
 
 IF(MSVC)
 	SET(Boost_USE_STATIC_LIBS ON)
@@ -241,7 +262,12 @@ CHECK_INCLUDE_FILE(
 	FCPPT_HAVE_MACH_TIME
 )
 
-SET(CMAKE_REQUIRED_LIBRARIES rt)
+FIND_LIBRARY(
+	RT_LIBRARY
+	rt
+)
+
+SET(CMAKE_REQUIRED_LIBRARIES ${RT_LIBRARY})
 
 CHECK_CXX_SOURCE_COMPILES(
 	"#include <time.h>
@@ -256,15 +282,165 @@ SET(CMAKE_REQUIRED_LIBRARIES)
 
 CONFIGURE_FILE(
 	${CMAKE_SOURCE_DIR}/config.hpp.in
-	${CMAKE_SOURCE_DIR}/include/fcppt/config.hpp
+	${CMAKE_BINARY_DIR}/include/fcppt/config.hpp
 )
 
 CONFIGURE_FILE(
 	${CMAKE_SOURCE_DIR}/version.hpp.in
-	${CMAKE_SOURCE_DIR}/include/fcppt/version.hpp
+	${CMAKE_BINARY_DIR}/include/fcppt/version.hpp
 )
 
-ADD_SUBDIRECTORY (src)
+INCLUDE_DIRECTORIES(
+	${CMAKE_BINARY_DIR}/include
+)
+
+MACRO(ADD_FCPPT_SOURCE_GROUP GROUPPATH PATTERN)
+	FILE(GLOB GROUPFILES ${GROUPPATH}/${PATTERN})
+
+	STRING(REPLACE "/" "\\" GROUPFOLDER ${GROUPPATH})
+
+	SOURCE_GROUP(${GROUPFOLDER} FILES ${GROUPFILES})
+
+	SET(FCPPTFILES ${FCPPTFILES} ${GROUPFILES})
+ENDMACRO()
+
+MACRO(ADD_FCPPT_HEADER_GROUP GROUPPATH)
+	ADD_FCPPT_SOURCE_GROUP(${GROUPPATH} "*.?pp")
+ENDMACRO()
+
+ADD_FCPPT_HEADER_GROUP(include)
+ADD_FCPPT_HEADER_GROUP(include/fcppt)
+ADD_FCPPT_HEADER_GROUP(include/fcppt/algorithm)
+ADD_FCPPT_HEADER_GROUP(include/fcppt/algorithm/impl)
+ADD_FCPPT_HEADER_GROUP(include/fcppt/alignment)
+ADD_FCPPT_HEADER_GROUP(include/fcppt/alignment/detail)
+ADD_FCPPT_HEADER_GROUP(include/fcppt/assign)
+ADD_FCPPT_HEADER_GROUP(include/fcppt/assign/detail)
+ADD_FCPPT_HEADER_GROUP(include/fcppt/chrono)
+ADD_FCPPT_HEADER_GROUP(include/fcppt/chrono/convert)
+ADD_FCPPT_HEADER_GROUP(include/fcppt/chrono/detail)
+ADD_FCPPT_HEADER_GROUP(include/fcppt/chrono/impl)
+ADD_FCPPT_HEADER_GROUP(include/fcppt/container)
+ADD_FCPPT_HEADER_GROUP(include/fcppt/container/bitfield)
+ADD_FCPPT_HEADER_GROUP(include/fcppt/container/bitfield/detail)
+ADD_FCPPT_HEADER_GROUP(include/fcppt/container/detail)
+ADD_FCPPT_HEADER_GROUP(include/fcppt/container/impl)
+ADD_FCPPT_HEADER_GROUP(include/fcppt/container/tree)
+ADD_FCPPT_HEADER_GROUP(include/fcppt/detail)
+ADD_FCPPT_HEADER_GROUP(include/fcppt/endianness)
+ADD_FCPPT_HEADER_GROUP(include/fcppt/error)
+ADD_FCPPT_HEADER_GROUP(include/fcppt/filesystem)
+ADD_FCPPT_HEADER_GROUP(include/fcppt/filesystem/detail)
+ADD_FCPPT_HEADER_GROUP(include/fcppt/filesystem/impl)
+ADD_FCPPT_HEADER_GROUP(include/fcppt/function)
+ADD_FCPPT_HEADER_GROUP(include/fcppt/function/detail)
+ADD_FCPPT_HEADER_GROUP(include/fcppt/impl)
+ADD_FCPPT_HEADER_GROUP(include/fcppt/io)
+ADD_FCPPT_HEADER_GROUP(include/fcppt/log)
+ADD_FCPPT_HEADER_GROUP(include/fcppt/log/detail)
+ADD_FCPPT_HEADER_GROUP(include/fcppt/log/format)
+ADD_FCPPT_HEADER_GROUP(include/fcppt/log/impl)
+ADD_FCPPT_HEADER_GROUP(include/fcppt/log/parameters)
+ADD_FCPPT_HEADER_GROUP(include/fcppt/math)
+ADD_FCPPT_HEADER_GROUP(include/fcppt/math/box)
+ADD_FCPPT_HEADER_GROUP(include/fcppt/math/detail)
+ADD_FCPPT_HEADER_GROUP(include/fcppt/math/dim)
+ADD_FCPPT_HEADER_GROUP(include/fcppt/math/impl)
+ADD_FCPPT_HEADER_GROUP(include/fcppt/math/matrix)
+ADD_FCPPT_HEADER_GROUP(include/fcppt/math/matrix/detail)
+ADD_FCPPT_HEADER_GROUP(include/fcppt/math/quaternion)
+ADD_FCPPT_HEADER_GROUP(include/fcppt/math/sphere)
+ADD_FCPPT_HEADER_GROUP(include/fcppt/math/vector)
+ADD_FCPPT_HEADER_GROUP(include/fcppt/mpl)
+ADD_FCPPT_HEADER_GROUP(include/fcppt/mpl/detail)
+ADD_FCPPT_HEADER_GROUP(include/fcppt/mpl/impl)
+ADD_FCPPT_HEADER_GROUP(include/fcppt/preprocessor)
+ADD_FCPPT_HEADER_GROUP(include/fcppt/preprocessor/detail)
+ADD_FCPPT_HEADER_GROUP(include/fcppt/random)
+ADD_FCPPT_HEADER_GROUP(include/fcppt/random/actor)
+ADD_FCPPT_HEADER_GROUP(include/fcppt/random/detail)
+ADD_FCPPT_HEADER_GROUP(include/fcppt/random/impl)
+ADD_FCPPT_HEADER_GROUP(include/fcppt/ratio)
+ADD_FCPPT_HEADER_GROUP(include/fcppt/ratio/detail)
+ADD_FCPPT_HEADER_GROUP(include/fcppt/signal)
+ADD_FCPPT_HEADER_GROUP(include/fcppt/signal/detail)
+ADD_FCPPT_HEADER_GROUP(include/fcppt/signal/unregister)
+ADD_FCPPT_HEADER_GROUP(include/fcppt/signal/unregister/detail)
+ADD_FCPPT_HEADER_GROUP(include/fcppt/thread)
+ADD_FCPPT_HEADER_GROUP(include/fcppt/thread/detail)
+ADD_FCPPT_HEADER_GROUP(include/fcppt/thread/impl)
+ADD_FCPPT_HEADER_GROUP(include/fcppt/time)
+ADD_FCPPT_HEADER_GROUP(include/fcppt/time/detail)
+ADD_FCPPT_HEADER_GROUP(include/fcppt/time/impl)
+ADD_FCPPT_HEADER_GROUP(include/fcppt/tr1)
+ADD_FCPPT_HEADER_GROUP(include/fcppt/tr1/detail)
+ADD_FCPPT_HEADER_GROUP(include/fcppt/type_traits)
+ADD_FCPPT_HEADER_GROUP(include/fcppt/utf8)
+ADD_FCPPT_HEADER_GROUP(include/fcppt/variant)
+ADD_FCPPT_HEADER_GROUP(include/fcppt/variant/detail)
+ADD_FCPPT_HEADER_GROUP(include/fcppt/variant/impl)
+
+MACRO(ADD_FCPPT_CPP_GROUP GROUPPATH)
+	ADD_FCPPT_SOURCE_GROUP(${GROUPPATH} "*.?pp")
+ENDMACRO()
+
+ADD_FCPPT_CPP_GROUP(src)
+ADD_FCPPT_CPP_GROUP(src/chrono)
+ADD_FCPPT_CPP_GROUP(src/endianness)
+ADD_FCPPT_CPP_GROUP(src/error)
+ADD_FCPPT_CPP_GROUP(src/filesystem)
+ADD_FCPPT_CPP_GROUP(src/io)
+ADD_FCPPT_CPP_GROUP(src/log)
+ADD_FCPPT_CPP_GROUP(src/log/detail)
+ADD_FCPPT_CPP_GROUP(src/log/format)
+ADD_FCPPT_CPP_GROUP(src/log/parameters)
+ADD_FCPPT_CPP_GROUP(src/random)
+ADD_FCPPT_CPP_GROUP(src/random/actor)
+ADD_FCPPT_CPP_GROUP(src/signal)
+ADD_FCPPT_CPP_GROUP(src/signal/detail)
+ADD_FCPPT_CPP_GROUP(src/thread)
+ADD_FCPPT_CPP_GROUP(src/time)
+ADD_FCPPT_CPP_GROUP(src/utf8)
+
+MACRO(MAKE_FCPPT_LIBRARY TARGETNAME VARIANT)
+	ADD_LIBRARY (${TARGETNAME} ${VARIANT} ${FCPPTFILES})
+
+	SET_TARGET_PROPERTIES(${TARGETNAME} PROPERTIES VERSION ${FCPPT_VERSION})
+
+	IF(${TARGETNAME} STREQUAL fcppt)
+		SET_TARGET_PROPERTIES(
+			${TARGETNAME} PROPERTIES SOVERSION ${FCPPT_SHARED_VERSION}
+		)
+	ENDIF()
+
+	#rename fcppt_static into fcppt for UNIX
+	IF(${TARGETNAME} STREQUAL fcppt_static AND UNIX)
+		SET_TARGET_PROPERTIES(
+			${TARGETNAME} PROPERTIES OUTPUT_NAME fcppt
+		)
+	ENDIF()
+
+	IF (NOT MSVC)
+		TARGET_LINK_LIBRARIES (
+			${TARGETNAME}
+			${Boost_LIBRARIES}
+		)
+	ENDIF ()
+
+	IF(FCPPT_HAVE_CLOCK_GETTIME)
+		TARGET_LINK_LIBRARIES(${TARGETNAME} ${RT_LIBRARY})
+	ENDIF()
+
+	INSTALL (TARGETS ${TARGETNAME} DESTINATION ${CMAKE_INSTALL_PREFIX}/lib)
+ENDMACRO()
+
+IF (ENABLE_SHARED)
+	MAKE_FCPPT_LIBRARY(fcppt SHARED)
+ENDIF()
+
+IF (ENABLE_STATIC)
+	MAKE_FCPPT_LIBRARY(fcppt_static STATIC)
+ENDIF()
 
 OPTION(ENABLE_EXAMPLES "Build the examples" ON)
 
@@ -278,6 +454,8 @@ IF (ENABLE_DOC)
 	ADD_SUBDIRECTORY (doc)
 ENDIF ()
 
+OPTION(ENABLE_TEST "Build the tests" ON)
+
 IF (ENABLE_TEST)
 	ENABLE_TESTING()
 
@@ -287,4 +465,17 @@ ENDIF ()
 INSTALL (
 	DIRECTORY include/
 	DESTINATION include
+)
+
+INSTALL(
+	FILES
+	${CMAKE_BINARY_DIR}/include/fcppt/config.hpp
+	${CMAKE_BINARY_DIR}/include/fcppt/version.hpp
+	DESTINATION include/fcppt
+)
+
+INSTALL(
+	FILES
+	${CMAKE_SOURCE_DIR}/FindFcppt.cmake
+	DESTINATION share/cmake/Modules
 )

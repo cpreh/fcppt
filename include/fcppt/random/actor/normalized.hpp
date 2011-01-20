@@ -1,4 +1,4 @@
-//          Copyright Carl Philipp Reh 2009 - 2010.
+//          Copyright Carl Philipp Reh 2009 - 2011.
 // Distributed under the Boost Software License, Version 1.0.
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
@@ -43,9 +43,9 @@ private:
 		float_type
 	> rng_type;
 
-	container const elements;
+	container const elements_;
 
-	rng_type rng;
+	rng_type rng_;
 };
 
 }

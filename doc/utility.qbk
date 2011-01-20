@@ -46,6 +46,13 @@ Note that the asserts are still macros, because they use the `__LINE__` and
 Note also that it is currently impossible to deactivate assertions via a
 preprocessor directive and it is disputed if that will ever be possible.
 
+Not that it's not safe to use `FCPPT_ASSERT` in an if block or for loop containing no braces:
+
+``
+for (int i = 0; i < 10; ++i)
+	FCPPT_ASSERT(i); // NOT SAFE!
+``
+
 [endsect]
 
 [xinclude doxygen_assert.xml]
@@ -60,9 +67,8 @@ This part of fcppt is similar to boost::assign, but fixes one issue: Why is
 there `list_of`, which has a method `to_adapter`? Why not just a single
 templated `make_container` function? This is exactly what `fcppt::assign`
 consists of. It even works for associative containers (like `std::map` or
-`std::set`). It uses `fcppt::container::is_associative` to determine if a
-container is really an associative container and if so, uses `insert` instead
-of `push_back`. Here is an example:
+`std::set`), because it uses the generic insert function that takes
+an iterator. Here is an example:
 
 [import ../examples/make_container.cpp]
 [make_container]

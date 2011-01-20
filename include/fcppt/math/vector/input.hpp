@@ -1,4 +1,4 @@
-//          Copyright Carl Philipp Reh 2009 - 2010.
+//          Copyright Carl Philipp Reh 2009 - 2011.
 // Distributed under the Boost Software License, Version 1.0.
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
@@ -8,7 +8,7 @@
 #define FCPPT_MATH_VECTOR_INPUT_HPP_INCLUDED
 
 #include <fcppt/math/vector/basic_impl.hpp>
-#include <fcppt/math/detail/is_dynamic_size.hpp>
+#include <fcppt/math/is_dynamic_size.hpp>
 #include <fcppt/math/detail/one_dimensional_input.hpp>
 #include <boost/utility/enable_if.hpp>
 #include <iosfwd>
@@ -29,7 +29,7 @@ template<
 	typename Traits
 >
 typename boost::disable_if<
-	math::detail::is_dynamic_size<
+	math::is_dynamic_size<
 		N
 	>,
 	std::basic_istream<Ch, Traits> &

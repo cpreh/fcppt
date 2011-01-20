@@ -1,4 +1,4 @@
-//          Copyright Carl Philipp Reh 2009 - 2010.
+//          Copyright Carl Philipp Reh 2009 - 2011.
 // Distributed under the Boost Software License, Version 1.0.
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
@@ -21,10 +21,10 @@ template<
 >
 Type &
 unwrap_recursive(
-	Type &t
+	Type &_t
 )
 {
-	return t;
+	return _t;
 }
 
 template<
@@ -32,10 +32,10 @@ template<
 >
 Type const &
 unwrap_recursive(
-	Type const &t
+	Type const &_t
 )
 {
-	return t;
+	return _t;
 }
 
 template<
@@ -45,10 +45,10 @@ Type &
 unwrap_recursive(
 	recursive<
 		Type
-	> &t
+	> &_t
 )
 {
-	return t.get();
+	return _t.get();
 }
 
 template<
@@ -58,10 +58,10 @@ Type const &
 unwrap_recursive(
 	recursive<
 		Type
-	> const &t
+	> const &_t
 )
 {
-	return t.get();
+	return _t.get();
 }
 
 }

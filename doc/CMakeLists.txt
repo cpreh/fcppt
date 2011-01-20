@@ -125,8 +125,11 @@ make_fcppt_documentation(
 	smartpointers
 	const_pointer_cast.hpp
 	dynamic_pointer_cast.hpp
+	forward.hpp
 	make_auto_ptr.hpp
 	make_shared_ptr.hpp
+	make_unique_ptr.hpp
+	move.hpp
 	polymorphic_pointer_cast.hpp
 	scoped_ptr_fwd.hpp
 	scoped_ptr_decl.hpp
@@ -137,8 +140,14 @@ make_fcppt_documentation(
 	shared_ptr_impl.hpp
 	shared_ptr.hpp
 	static_pointer_cast.hpp
-	weak_ptr_fwd.hpp
+	unique_ptr.hpp
+	unique_ptr_fwd.hpp
+	unique_ptr_decl.hpp
+	unique_ptr_impl.hpp
 	weak_ptr.hpp
+	weak_ptr_fwd.hpp
+	weak_ptr_decl.hpp
+	weak_ptr_impl.hpp
 )
 make_fcppt_documentation(thread thread)
 make_fcppt_documentation(time time)

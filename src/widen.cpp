@@ -1,4 +1,4 @@
-//          Copyright Carl Philipp Reh 2009 - 2010.
+//          Copyright Carl Philipp Reh 2009 - 2011.
 // Distributed under the Boost Software License, Version 1.0.
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
@@ -9,15 +9,15 @@
 
 std::wstring const
 fcppt::widen(
-	std::string const &s,
-	std::locale const &locale_
+	std::string const &_string,
+	std::locale const &_locale
 )
 {
 	return
 		fcppt::codecvt<
 			wchar_t
 		>(
-			s,
-			locale_
+			_string,
+			_locale
 		);
 }

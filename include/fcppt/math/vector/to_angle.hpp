@@ -1,4 +1,4 @@
-//          Copyright Carl Philipp Reh 2009 - 2010.
+//          Copyright Carl Philipp Reh 2009 - 2011.
 // Distributed under the Boost Software License, Version 1.0.
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
@@ -13,6 +13,7 @@
 #include <fcppt/math/vector/static.hpp>
 #include <fcppt/math/vector/structure_cast.hpp>
 #include <fcppt/math/detail/has_size.hpp>
+#include <fcppt/optional_impl.hpp>
 #include <boost/utility/enable_if.hpp>
 #include <boost/type_traits/is_floating_point.hpp>
 #include <boost/mpl/and.hpp>
@@ -45,22 +46,25 @@ typename boost::enable_if<
 			2
 		>
 	>,
-	optional<Dest>
+	fcppt::optional<
+		Dest
+	>
 >::type
 to_angle(
-	basic<T, N, S> const &to
+	basic<T, N, S> const &_to
 )
 {
-	return atan2(
-		structure_cast<
-			typename static_<
-				Dest,
-				N::value
-			>::type
-		>(
-			to
-		)
-	);
+	return
+		vector::atan2(
+			vector::structure_cast<
+				typename vector::static_<
+					Dest,
+					N::value
+				>::type
+			>(
+				_to
+			)
+		);
 }
 
 }

@@ -1,10 +1,11 @@
-//          Copyright Carl Philipp Reh 2009 - 2010.
+//          Copyright Carl Philipp Reh 2009 - 2011.
 // Distributed under the Boost Software License, Version 1.0.
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
 #include <fcppt/math/vector/vector.hpp>
+#include <fcppt/math/compare.hpp>
 #include <fcppt/math/pi.hpp>
 #include <fcppt/math/size_type.hpp>
 #include <boost/mpl/integral_c.hpp>
@@ -41,6 +42,78 @@ BOOST_AUTO_TEST_CASE(vector_compare)
 
 	BOOST_CHECK(
 		vec2 != vec3
+	);
+}
+
+BOOST_AUTO_TEST_CASE(vector_angle_between)
+{
+	f2_vec const
+		vec1(1.f, 0.f),
+		vec2(0.f, 1.f);
+	
+	BOOST_CHECK(
+		fcppt::math::compare(
+			fcppt::math::vector::angle_between(
+				vec1,
+				vec2
+			),
+			fcppt::math::pi<float_type>() / 2.f
+		)
+	);
+}
+
+BOOST_AUTO_TEST_CASE(vector_angle_between_cast)
+{
+	ui2_vec const
+		vec1(1, 0),
+		vec2(0, 1);
+	
+	BOOST_CHECK(
+		fcppt::math::compare(
+			fcppt::math::vector::angle_between_cast<
+				float_type
+			>(
+				vec1,
+				vec2
+			),
+			fcppt::math::pi<float_type>() / 2.f
+		)
+	);
+}
+
+BOOST_AUTO_TEST_CASE(vector_signed_angle)
+{
+	f2_vec const
+		vec1(2.f, 1.f),
+		vec2(2.f, 2.f);
+	
+	BOOST_CHECK(
+		fcppt::math::compare(
+			fcppt::math::vector::signed_angle(
+				vec1,
+				vec2
+			),
+			fcppt::math::pi<float_type>() / 2.f
+		)
+	);
+}
+
+BOOST_AUTO_TEST_CASE(vector_signed_angle_cast)
+{
+	ui2_vec const
+		vec1(2, 1),
+		vec2(2, 2);
+	
+	BOOST_CHECK(
+		fcppt::math::compare(
+			fcppt::math::vector::signed_angle_cast<
+				float_type
+			>(
+				vec1,
+				vec2
+			),
+			fcppt::math::pi<float_type>() / 2.f
+		)
 	);
 }
 
@@ -141,12 +214,12 @@ public:
 	typedef value_type *pointer;
 
 	explicit view_storage(
-		pointer const data_,
-		size_type const size_
+		pointer const _data,
+		size_type const _size
 	)
 	:
-		data_(data_),
-		size_(size_)
+		data_(_data),
+		size_(_size)
 	{}
 
 	pointer
@@ -162,6 +235,7 @@ public:
 	}
 private:
 	pointer data_;
+
 	size_type size_;
 };
 

@@ -1,4 +1,4 @@
-//          Copyright Carl Philipp Reh 2009 - 2010.
+//          Copyright Carl Philipp Reh 2009 - 2011.
 // Distributed under the Boost Software License, Version 1.0.
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
@@ -37,13 +37,13 @@ typedef fcppt::variant::object<
 struct wrapper
 {
 	wrapper(
-		recursive_variant const &member
+		recursive_variant const &_member
 	)
 	:
-		member(member)
+		member_(_member)
 	{}
 
-	recursive_variant member;
+	recursive_variant member_;
 };
 
 // declare an output operator for wrapper (just for our test case)
@@ -60,11 +60,11 @@ operator <<(
 		Ch,
 		Traits
 	> &stream_,
-	wrapper const &wrapper_
+	wrapper const &_wrapper
 )
 {
 	return
-		stream_ << wrapper_.member;
+		stream_ << _wrapper.member_;
 }
 
 }
@@ -79,7 +79,7 @@ try
 
 	// or it can hold a wrapper struct, holding a variant of the same type in return
 	recursive_variant rrv((
-		wrapper(
+		::wrapper(
 			rv
 		)
 	));
@@ -91,11 +91,11 @@ try
 
 }
 catch(
-	fcppt::exception const &e
+	fcppt::exception const &_error
 )
 {
 	fcppt::io::cerr
-		<< e.string()
+		<< _error.string()
 		<< FCPPT_TEXT('\n');
 	
 	return EXIT_FAILURE;

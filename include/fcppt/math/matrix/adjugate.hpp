@@ -1,4 +1,4 @@
-//          Copyright Carl Philipp Reh 2009 - 2010.
+//          Copyright Carl Philipp Reh 2009 - 2011.
 // Distributed under the Boost Software License, Version 1.0.
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
@@ -10,8 +10,8 @@
 #include <fcppt/math/matrix/basic_impl.hpp>
 #include <fcppt/math/matrix/static.hpp>
 #include <fcppt/math/matrix/determinant.hpp>
-#include <fcppt/math/matrix/delete_column_and_row.hpp>
-#include <fcppt/math/detail/is_static_size.hpp>
+#include <fcppt/math/matrix/delete_row_and_column.hpp>
+#include <fcppt/math/is_static_size.hpp>
 #include <fcppt/math/size_type.hpp>
 
 namespace fcppt
@@ -20,7 +20,11 @@ namespace math
 {
 namespace matrix
 {
+
 /// Calculates the adjugate matrix
+/**
+ * @param matrix_ must be a statically sized matrix
+*/
 template
 <
 	typename T,
@@ -30,7 +34,7 @@ template
 typename 
 boost::enable_if
 <
-	math::detail::is_static_size
+	math::is_static_size
 	<
 		N
 	>,
@@ -42,7 +46,7 @@ boost::enable_if
 	>::type const
 >::type
 adjugate(
-	basic<T,N,N,S> const &t
+	basic<T,N,N,S> const &matrix_
 )
 {
 	typedef typename
@@ -68,13 +72,13 @@ adjugate(
 
 			// Note: We transpose here because we want the adjugate, not the cofactor
 			// matrix
-			ret[rows][cols] = 
+			ret[cols][rows] = 
 				coeff * 
 				matrix::determinant(
-					matrix::delete_column_and_row(
-						t,
-						cols,
-						rows
+					matrix::delete_row_and_column(
+						matrix_,
+						rows,
+						cols
 					)
 				);
 		}
@@ -82,6 +86,7 @@ adjugate(
 
 	return ret;
 }
+
 }
 }
 }

@@ -7,6 +7,7 @@ So what is provided by fcppt?
 [[algorithm]
 [
 Some general utility algorithms like `append`, `copy_n`, `find_if_exn`, and so on.
+Also some additional algorithms that operate on ranges, like `map` and `contains`.
 ]]
 
 [[alignment]
@@ -34,7 +35,7 @@ fcppt provides a full implementation of C++0x's chrono.
 
 [[container]
 [
-Some additional containers like `bitfield`, `raw_vector` and `tree`.
+Some additional containers like `array`, `bitfield`, `grid`, `raw_vector` and `tree`.
 ]]
 
 [[logger]
@@ -58,9 +59,14 @@ Some mpl metafunctions like a better `for_each`, `implication`, `partial_sums`, 
 The `optional` class also doesn't use an undefined "union trick".
 ]]
 
+[[signals]
+[
+Signals with improved speed, combiner and unregister support.
+]]
+
 [[smart pointers]
 [
-Wrapper around `shared_ptr`, `scoped_ptr` and `weak_ptr` that use a deleter as template argument.
+Wrapper around `shared_ptr`, `scoped_ptr`, `unique_ptr` and `weak_ptr` that use a deleter as template argument.
 ]]
 
 [[random]

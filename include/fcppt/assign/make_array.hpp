@@ -1,4 +1,4 @@
-//          Copyright Carl Philipp Reh 2009 - 2010.
+//          Copyright Carl Philipp Reh 2009 - 2011.
 // Distributed under the Boost Software License, Version 1.0.
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
@@ -14,7 +14,7 @@ namespace fcppt
 namespace assign
 {
 
-/// This returns an implementation defined type which has operator() defined and which is convertible to std::tr1::array
+/// This returns an implementation defined type which has operator() defined and which is convertible to fcppt::container::array
 template<
 	typename T
 >

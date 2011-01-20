@@ -1,4 +1,4 @@
-//          Copyright Carl Philipp Reh 2009 - 2010.
+//          Copyright Carl Philipp Reh 2009 - 2011.
 // Distributed under the Boost Software License, Version 1.0.
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
@@ -8,7 +8,7 @@
 #define FCPPT_CONTAINER_TREE_OBJECT_DECL_HPP_INCLUDED
 
 #include <fcppt/container/tree/object_fwd.hpp>
-#include <fcppt/auto_ptr.hpp>
+#include <fcppt/unique_ptr.hpp>
 #include <boost/ptr_container/ptr_list.hpp>
 
 //[tree
@@ -29,9 +29,9 @@ public:
 		object	
 	> child_list;
 
-	typedef fcppt::auto_ptr<
+	typedef fcppt::unique_ptr<
 		object	
-	> auto_ptr;
+	> unique_ptr;
 
 	typedef typename child_list::value_type value_type;
 	typedef typename child_list::size_type size_type;
@@ -84,7 +84,7 @@ public:
 	);
 
 	/// Detaches the given child from the parent and returns it.
-	auto_ptr
+	unique_ptr
 	release(
 		iterator
 	);
@@ -110,7 +110,7 @@ public:
 
 	void
 	push_back(
-		auto_ptr
+		unique_ptr
 	);
 
 	void
@@ -123,7 +123,7 @@ public:
 
 	void
 	push_front(
-		auto_ptr
+		unique_ptr
 	);
 
 	void
@@ -193,7 +193,7 @@ public:
 	void
 	insert(
 		iterator,
-		auto_ptr
+		unique_ptr
 	);
 
 	/// Inserts an element before the given iterator

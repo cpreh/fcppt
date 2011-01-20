@@ -1,4 +1,4 @@
-//          Copyright Carl Philipp Reh 2009 - 2010.
+//          Copyright Carl Philipp Reh 2009 - 2011.
 // Distributed under the Boost Software License, Version 1.0.
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
@@ -25,7 +25,8 @@ fcppt::chrono::system_clock::now()
 {
 #ifdef FCPPT_WINDOWS_PLATFORM
 	FILETIME ret;
-	GetSystemTimeAsFileTime(
+
+	::GetSystemTimeAsFileTime(
 		&ret
 	);
 
@@ -35,7 +36,7 @@ fcppt::chrono::system_clock::now()
 
 	return time_point(
 		duration(
-			truncation_check_cast<
+			fcppt::truncation_check_cast<
 				duration::rep
 			>(
 				large_int.QuadPart
@@ -47,29 +48,33 @@ fcppt::chrono::system_clock::now()
 	struct timezone tz;
 
 	if(
-		gettimeofday(
+		::gettimeofday(
 			&tv,
 			&tz
 		) != 0
 	)
-		throw clock_failure(
+		throw chrono::clock_failure(
 			FCPPT_TEXT("gettimeofday() failed")
 		);
 
 	return time_point(
 		duration(
 			static_cast<
-				unsigned_type<
-					rep
-				>::type
+				duration::rep
 			>(
-				tv.tv_sec
-			)
-			* 1000000UL
-			+ static_cast<
-				unsigned long
-			>(
-				tv.tv_usec
+				static_cast<
+					chrono::unsigned_type<
+						rep
+					>::type
+				>(
+					tv.tv_sec
+				)
+				* 1000000UL
+				+ static_cast<
+					unsigned long
+				>(
+					tv.tv_usec
+				)
 			)
 		)
 	);
@@ -79,21 +84,21 @@ fcppt::chrono::system_clock::now()
 
 std::time_t
 fcppt::chrono::system_clock::to_time_t(
-	time_point const &point_
+	time_point const &_point
 )
 {
 	return
 		truncation_check_cast<
 			std::time_t
 		>(
-			point_.time_since_epoch().count()
+			_point.time_since_epoch().count()
 			/ duration::period::den
 		);
 }
 
 fcppt::chrono::system_clock::time_point
 fcppt::chrono::system_clock::from_time_t(
-	std::time_t const tm_
+	std::time_t const _tm
 )
 {
 	return
@@ -102,7 +107,7 @@ fcppt::chrono::system_clock::from_time_t(
 				truncation_check_cast<
 					duration::rep
 				>(
-					tm_ * duration::period::den
+					_tm * duration::period::den
 				)
 			)
 		);

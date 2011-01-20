@@ -1,4 +1,4 @@
-//          Copyright Carl Philipp Reh 2009 - 2010.
+//          Copyright Carl Philipp Reh 2009 - 2011.
 // Distributed under the Boost Software License, Version 1.0.
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
@@ -19,17 +19,17 @@ private:
 	bool
 	boolean_test() const
 	{
-		return isset;
+		return isset_;
 	}
 public:
 	explicit my_class(
-		bool const isset
+		bool const _isset
 	)
 	:
-		isset(isset)
+		isset_(_isset)
 	{}
 private:
-	bool isset;
+	bool isset_;
 };
 //]
 

@@ -1,38 +1,53 @@
-//          Copyright Carl Philipp Reh 2009 - 2010.
+//          Copyright Carl Philipp Reh 2009 - 2011.
 // Distributed under the Boost Software License, Version 1.0.
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
 #include <fcppt/signal/connection_manager.hpp>
+#include <fcppt/move.hpp>
 
 fcppt::signal::connection_manager::connection_manager()
 :
-	connections()
-{}
+	connections_()
+{
+}
 
 fcppt::signal::connection_manager::connection_manager(
-	container const &_connections)
+	container const &_connections
+)
 :
-	connections(_connections)
+	connections_(_connections)
 {}
 
-void fcppt::signal::connection_manager::connect(
-	shared_connection const &v)
+fcppt::signal::connection_manager::~connection_manager()
 {
-	connections.push_back(
-		v);
 }
 
-void fcppt::signal::connection_manager::connect(
-	auto_connection v)
+void
+fcppt::signal::connection_manager::add(
+	auto_connection _con
+)
 {
-	connections.push_back(
+	connections_.push_back(
 		shared_connection(
-			v));
+			move(
+				_con
+			)
+		)
+	);
 }
 
-void fcppt::signal::connection_manager::clear()
+void
+fcppt::signal::connection_manager::assign(
+	container const &_connections
+)
 {
-	connections.clear();
+	connections_ = _connections;
+}
+
+void
+fcppt::signal::connection_manager::clear()
+{
+	connections_.clear();
 }

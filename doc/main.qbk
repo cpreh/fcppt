@@ -1,8 +1,8 @@
 [article fcppt 
 	[quickbook 1.5]
-	[version 0.1.1]
+	[version 0.4]
 	[authors [Reh, Carl Philipp]]
-	[copyright 2010 Carl Philipp Reh]
+	[copyright 2009-2011 Carl Philipp Reh]
 	[purpose Freundlich's C++ Toolkit]
 	[license Boost Software License]
 ]

@@ -1,4 +1,4 @@
-//          Copyright Carl Philipp Reh 2009 - 2010.
+//          Copyright Carl Philipp Reh 2009 - 2011.
 // Distributed under the Boost Software License, Version 1.0.
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
@@ -8,9 +8,11 @@
 #define FCPPT_MATH_VECTOR_VECTOR_HPP_INCLUDED
 
 #include <fcppt/math/vector/angle_between.hpp>
+#include <fcppt/math/vector/angle_between_cast.hpp>
 #include <fcppt/math/vector/arithmetic.hpp>
 #include <fcppt/math/vector/atan2.hpp>
 #include <fcppt/math/vector/basic.hpp>
+#include <fcppt/math/vector/before.hpp>
 #include <fcppt/math/vector/comparison.hpp>
 #include <fcppt/math/vector/construct.hpp>
 #include <fcppt/math/vector/cross.hpp>
@@ -25,6 +27,8 @@
 #include <fcppt/math/vector/normalize.hpp>
 #include <fcppt/math/vector/output.hpp>
 #include <fcppt/math/vector/place.hpp>
+#include <fcppt/math/vector/signed_angle.hpp>
+#include <fcppt/math/vector/signed_angle_cast.hpp>
 #include <fcppt/math/vector/static.hpp>
 #include <fcppt/math/vector/structure_cast.hpp>
 #include <fcppt/math/vector/to_angle.hpp>

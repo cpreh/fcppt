@@ -1,4 +1,4 @@
-//          Copyright Carl Philipp Reh 2009 - 2010.
+//          Copyright Carl Philipp Reh 2009 - 2011.
 // Distributed under the Boost Software License, Version 1.0.
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
@@ -58,29 +58,6 @@ cross(
 			l.z() * r.x() - l.x() * r.z(),
 			l.x() * r.y() - l.y() * r.x()
 		);
-}
-
-/// Calculates the cross product of two two-dimensional vectors
-template<
-	typename T,
-	typename N,
-	typename S1,
-	typename S2
->
-typename boost::enable_if<
-	math::detail::has_size<
-		N,
-		2
-	>,
-	T
->::type
-cross(
-	basic<T, N, S1> const &l,
-	basic<T, N, S2> const &r
-)
-{
-	return
-		l.x() * r.y() - l.y() * r.x();
 }
 
 }

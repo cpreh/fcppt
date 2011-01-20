@@ -1,10 +1,14 @@
-//          Copyright Carl Philipp Reh 2009 - 2010.
+//          Copyright Carl Philipp Reh 2009 - 2011.
 // Distributed under the Boost Software License, Version 1.0.
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
 #include <fcppt/filesystem/readlink.hpp>
+#include <fcppt/filesystem/config.hpp>
+#ifdef FCPPT_USE_FILESYSTEM_V3
+#include <boost/filesystem/operations.hpp>
+#else
 #include <fcppt/exception.hpp>
 #include <fcppt/text.hpp>
 #include <fcppt/config.hpp>
@@ -16,16 +20,23 @@
 #include <unistd.h>
 #include <cerrno>
 #endif
+#endif
 
 fcppt::filesystem::path const
 fcppt::filesystem::readlink(
-#ifdef FCPPT_POSIX_PLATFORM
+#if defined(FCPPT_POSIX_PLATFORM) || defined(FCPPT_USE_FILESYSTEM_V3)
 	fcppt::filesystem::path const &link
 #else
 	fcppt::filesystem::path const &
 #endif
 )
 {
+#ifdef FCPPT_USE_FILESYSTEM_V3
+	return
+		boost::filesystem::read_symlink(
+			link
+		);
+#else
 #ifdef FCPPT_POSIX_PLATFORM
 	container::raw_vector<
 		char
@@ -49,18 +60,23 @@ fcppt::filesystem::readlink(
 
 		if(ret == -1)
 		{
-			if(errno == ENAMETOOLONG)
+			switch(
+				errno
+			)
 			{
+			case EINVAL:
+				return path();
+			case ENAMETOOLONG:
 				buf.reserve(
 					buf.capacity() * 2
 				);
 				continue;
+			default:
+				throw exception(
+					FCPPT_TEXT("readlink failed: ")
+					+ error::strerrno()
+				);
 			}
-
-			throw exception(
-				FCPPT_TEXT("readlink failed: ")
-				+ error::strerrno()
-			);
 		}
 
 		buf.resize_uninitialized(
@@ -79,5 +95,6 @@ fcppt::filesystem::readlink(
 	throw exception(
 		FCPPT_TEXT("readlink not supported!")
 	);
+#endif
 #endif
 }

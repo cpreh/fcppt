@@ -1,4 +1,4 @@
-//          Copyright Carl Philipp Reh 2009 - 2010.
+//          Copyright Carl Philipp Reh 2009 - 2011.
 // Distributed under the Boost Software License, Version 1.0.
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
@@ -7,10 +7,13 @@
 #ifndef FCPPT_CONTAINER_BITFIELD_PROXY_HPP_INCLUDED
 #define FCPPT_CONTAINER_BITFIELD_PROXY_HPP_INCLUDED
 
+#include <fcppt/container/bitfield/detail/element_bits.hpp>
 #include <fcppt/container/bitfield/proxy_fwd.hpp>
 #include <fcppt/container/bitfield/size_type.hpp>
 #include <fcppt/container/bitfield/value_type.hpp>
 #include <fcppt/nonassignable.hpp>
+#include <boost/type_traits/remove_const.hpp>
+#include <boost/type_traits/remove_reference.hpp>
 
 namespace fcppt
 {
@@ -20,8 +23,7 @@ namespace bitfield
 {
 
 template<
-	typename StoredType,
-	size_type ElementBits
+	typename StoredType
 >
 class proxy
 {
@@ -32,13 +34,22 @@ class proxy
 		size_type pos
 	);
 
-	StoredType array;
-	size_type const pos;
+	static size_type const element_bits =
+		bitfield::detail::element_bits<
+			typename boost::remove_const<
+				typename boost::remove_reference<
+					StoredType
+				>::type
+			>::type::value_type
+		>::value;
+
+	StoredType array_;
+
+	size_type const pos_;
 
 	template<
 		typename,
-		typename,
-		size_type
+		typename
 	> friend class iterator;
 
 	static size_type

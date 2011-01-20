@@ -1,4 +1,4 @@
-//          Copyright Carl Philipp Reh 2009 - 2010.
+//          Copyright Carl Philipp Reh 2009 - 2011.
 // Distributed under the Boost Software License, Version 1.0.
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
@@ -61,10 +61,10 @@ perspective(
 	return
 		typename static_<T, 4, 4>::type
 		(
-			w, zero, zero, zero,
-			zero, h, zero, zero,
-			zero, zero, q, static_cast<T>(-1),
-			zero, zero, p, zero
+			w, zero, zero,                  zero,
+			zero, h, zero,                  zero,
+			zero, zero, q,                  p,
+			zero, zero, static_cast<T>(-1), zero
 		);
 
 }

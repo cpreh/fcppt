@@ -1,4 +1,4 @@
-//          Copyright Carl Philipp Reh 2009 - 2010.
+//          Copyright Carl Philipp Reh 2009 - 2011.
 // Distributed under the Boost Software License, Version 1.0.
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
@@ -31,7 +31,7 @@ template<
 >
 struct common_type
 {
-//private: silence gcc warning about everything being private
+private:
 	static T m_t();
 	static U m_u();
 public:

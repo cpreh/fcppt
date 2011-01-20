@@ -1,4 +1,4 @@
-//          Copyright Carl Philipp Reh 2009 - 2010.
+//          Copyright Carl Philipp Reh 2009 - 2011.
 // Distributed under the Boost Software License, Version 1.0.
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
@@ -6,7 +6,7 @@
 
 //[tr1
 #include <fcppt/tr1/functional.hpp>
-#include <fcppt/tr1/array.hpp>
+#include <fcppt/container/array.hpp>
 #include <fcppt/function/object.hpp>
 #include <boost/foreach.hpp>
 #include <ostream>
@@ -21,19 +21,18 @@ f(
 	std::ostream &stream_
 )
 {
-	// use std::tr1::array
-	typedef std::tr1::array<
+	typedef fcppt::container::array<
 		int,
 		5
 	> i5_array;
 
-	i5_array const array_ = {{
+	i5_array const array = {{
 		0, 1, 2, 3, 4
 	}};
 
 	BOOST_FOREACH(
 		i5_array::const_reference ref,
-		array_
+		array
 	)
 		stream_
 			<< ref
@@ -51,7 +50,7 @@ int main()
 	> void_function;
 
 	// use std::tr1::bind and std::tr1::ref
-	void_function function_(
+	void_function function(
 		std::tr1::bind(
 			f,
 			std::tr1::ref(
@@ -60,6 +59,6 @@ int main()
 		)
 	);
 
-	function_();
+	function();
 }
 //]

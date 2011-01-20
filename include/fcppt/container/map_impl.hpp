@@ -1,4 +1,4 @@
-//          Copyright Carl Philipp Reh 2009 - 2010.
+//          Copyright Carl Philipp Reh 2009 - 2011.
 // Distributed under the Boost Software License, Version 1.0.
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
@@ -29,10 +29,10 @@ template<
 fcppt::container::map<
 	MapType
 >::map(
-	map_type const &impl_
+	map_type const &_impl
 )
 :
-	impl_(impl_)
+	impl_(_impl)
 {}
 
 template<
@@ -44,29 +44,31 @@ template<
 fcppt::container::map<
 	MapType
 >::map(
-	In const beg,
-	In const end
+	In const _begin,
+	In const _end
 )
 :
 	impl_(
-		beg,
-		end)
+		_begin,
+		_end
+	)
 {}
 
 template<
 	typename MapType
 >
-void fcppt::container::map<
+void
+fcppt::container::map<
 	MapType
 >::insert(
-	key_type const &k,
-	mapped_type const &m
+	key_type const &_key,
+	mapped_type const &_mapped
 )
 {
 	insert(
 		std::make_pair(
-			k,
-			m
+			_key,
+			_mapped
 		)
 	);
 }
@@ -74,16 +76,53 @@ void fcppt::container::map<
 template<
 	typename MapType
 >
-void fcppt::container::map<
+typename fcppt::container::map<
+	MapType
+>::iterator
+fcppt::container::map<
 	MapType
 >::insert(
-	value_type const &v
+	iterator const _position,
+	value_type const &_value
+)
+{
+	size_type const old_size(
+		size()
+	);
+
+	iterator const ret(
+		impl_.insert(
+			_position,
+			_value
+		)
+	);
+
+	if(
+		size() == old_size
+	)
+		throw container::insert_failed(
+			format_error(
+				FCPPT_TEXT("insert")
+			)
+		);
+	
+	return ret;
+}
+
+template<
+	typename MapType
+>
+void
+fcppt::container::map<
+	MapType
+>::insert(
+	value_type const &_value
 )
 {
 	if(
-		!impl_.insert(v).second
+		!impl_.insert(_value).second
 	)
-		throw insert_failed(
+		throw container::insert_failed(
 			format_error(
 				FCPPT_TEXT("insert")
 			)
@@ -93,18 +132,19 @@ void fcppt::container::map<
 template<
 	typename MapType
 >
-void fcppt::container::map<
+void
+fcppt::container::map<
 	MapType
 >::erase(
-	key_type const &k
+	key_type const &_key
 )
 {
 	if(
 		!impl_.erase(
-			k
+			_key
 		)
 	)
-		throw not_found(
+		throw container::not_found(
 			format_error(
 				FCPPT_TEXT("erase")
 			)
@@ -114,14 +154,15 @@ void fcppt::container::map<
 template<
 	typename MapType
 >
-void fcppt::container::map<
+void
+fcppt::container::map<
 	MapType
 >::erase(
-	iterator const it
+	iterator const _position
 )
 {
 	impl_.erase(
-		it
+		_position
 	);
 }
 
@@ -134,10 +175,10 @@ typename fcppt::container::map<
 fcppt::container::map<
 	MapType
 >::find(
-	key_type const &k
+	key_type const &_key
 )
 {
-	return impl_.find(k);
+	return impl_.find(_key);
 }
 
 template<
@@ -149,10 +190,10 @@ typename fcppt::container::map<
 fcppt::container::map<
 	MapType
 >::find(
-	key_type const &k
+	key_type const &_key
 ) const
 {
-	return impl_.find(k);
+	return impl_.find(_key);
 }
 
 template<
@@ -164,17 +205,19 @@ typename fcppt::container::map<
 fcppt::container::map<
 	MapType
 >::operator[](
-	key_type const &k
+	key_type const &_key
 ) const
 {
 	typename map_type::const_iterator const it(
-		impl_.find(k)
+		impl_.find(
+			_key
+		)
 	);
 
 	if(
 		it == impl_.end()
 	)
-		throw not_found(
+		throw container::not_found(
 			format_error(
 				FCPPT_TEXT("operator[]")
 			)
@@ -192,20 +235,21 @@ typename fcppt::container::map<
 fcppt::container::map<
 	MapType
 >::operator[](
-	key_type const &k
+	key_type const &_key
 )
 {
-	return const_cast<
-		mapped_type &
-	>(
+	return
 		const_cast<
-			map const &
+			mapped_type &
 		>(
-			*this
-		)[
-			k
-		]
-	);
+			const_cast<
+				map const &
+			>(
+				*this
+			)[
+				_key
+			]
+		);
 }
 
 template<
@@ -215,10 +259,10 @@ bool
 fcppt::container::map<
 	MapType
 >::contains(
-	key_type const &key
+	key_type const &_key
 ) const
 {
-	return impl_.find(key) != impl_.end();
+	return impl_.find(_key) != impl_.end();
 }
 
 template<
@@ -307,11 +351,13 @@ fcppt::container::map<
 fcppt::container::map<
 	MapType
 >::lower_bound(
-	key_type const &k)
+	key_type const &_key
+)
 {
 	return 
 		impl_.lower_bound(
-			k);
+			_key
+		);
 }
 
 template<
@@ -324,11 +370,13 @@ fcppt::container::map<
 fcppt::container::map<
 	MapType
 >::lower_bound(
-	key_type const &k) const
+	key_type const &_key
+) const
 {
 	return 
 		impl_.lower_bound(
-			k);
+			_key
+		);
 }
 
 template<
@@ -338,11 +386,11 @@ fcppt::string const
 fcppt::container::map<
 	MapType
 >::format_error(
-	fcppt::string const &function_
+	fcppt::string const &_function
 )
 {
 	return
-		type_name(
+		fcppt::type_name(
 			typeid(
 				map<
 					MapType
@@ -350,7 +398,7 @@ fcppt::container::map<
 			)
 		)
 		+ FCPPT_TEXT("::")
-		+ function_
+		+ _function
 		+ FCPPT_TEXT(" failed!");
 }
 

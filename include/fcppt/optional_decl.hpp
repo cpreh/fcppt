@@ -1,4 +1,4 @@
-//          Copyright Carl Philipp Reh 2009 - 2010.
+//          Copyright Carl Philipp Reh 2009 - 2011.
 // Distributed under the Boost Software License, Version 1.0.
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
@@ -8,6 +8,7 @@
 #define FCPPT_OPTIONAL_DECL_HPP_INCLUDED
 
 #include <fcppt/optional_fwd.hpp>
+#include <fcppt/empty_optional_tag_fwd.hpp>
 #include <fcppt/safe_bool.hpp>
 #include <fcppt/alignment/array.hpp>
 #include <boost/type_traits/alignment_of.hpp>
@@ -29,6 +30,11 @@ public:
 	typedef T const *const_pointer;
 
 	optional();
+
+	// intentionally not explicit
+	optional(
+		empty_optional_tag const &
+	);
 
 	// intentionally not explicit
 	optional(
@@ -65,6 +71,9 @@ public:
 
 	void
 	reset();
+
+	bool
+	has_value() const;
 private:
 	bool
 	boolean_test() const;

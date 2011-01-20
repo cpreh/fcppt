@@ -23,7 +23,7 @@ that represents a time span starting at the clock's absolute offset.
 
 [[clocks]
 [
-`fcppt::chrono::system_clock`, `fcppt::chrono::monotonic_clock` and `fcppt::chrono::high_resolution_clock`
+`fcppt::chrono::system_clock`, `fcppt::chrono::steady_clock` and `fcppt::chrono::high_resolution_clock`
 are the three clock classes provided by fcppt. They all have a static function called `now()` that
 returns the current point in time. All of the three serve different purposes.
 ]]
@@ -100,7 +100,7 @@ Each of the three clocks has a common set of functions and typedefs:
 [variablelist
 [[`time_point`][The `time_point` associated with the clock]]
 [[`now()`][Returns the current `time_point`]]
-[[`is_monotonic`][A boolean constant that tells if this clock is monotonic]]
+[[`is_steady`][A boolean constant that tells if this clock is steady]]
 ]
 
 [section system_clock]
@@ -121,27 +121,30 @@ time_point can be converted to and from `std::time_t`.
 
 [endsect]
 
-[section monotonic_clock]
-A monotonic clock is guaranteed to only produce increasing time_points
+[section steady_clock]
+A steady clock is guaranteed to only produce increasing time_points
 when time advances. This means two calls to its `now()` function:
-``t1 = monotonic_clock::now(); t2 = monotonic_clock::now()`` will guarantee
+``t1 = steady_clock::now(); t2 = steady_clock::now()`` will guarantee
 that `t2` is always equal to or greater than `t1`.
 [note This cannot be true for time points far in the future, as a computer is a finite machine.
 But the time span is guaranteed to be large, like hundreds of years.]
-Monotonic clocks are the only sensible choice if you want to implement a timer.
-[note Apart from implementing a timer, the time_points produced by a monotonic clock have
+This clock was previously called `monotonic_clock`. It got its new name `steady_clock`
+with the additional semantic that it may not be adjusted which means that time between
+clock ticks is constant.
+Steady clocks are the only sensible choice if you want to implement a timer.
+[note Apart from implementing a timer, the time_points produced by a steady clock have
 no particular meaning. Usually an operating system will start the clock at 0 when it is started.
 ]
 
-[import ../examples/chrono/monotonic_clock.cpp]
-[chronomonotonicclock]
+[import ../examples/chrono/steady_clock.cpp]
+[chronosteadyclock]
 
 [endsect]
 
 [section high_resolution_clock]
 `high_resolution_clock` is the third of the three clocks. Its purpose is to provide
-the clock with the highest resolution possible, but it is not guaranteed to be monotonic.
-If you want to use this clock as a timer instead, check if `high_resolution_clock::is_monotonic` is true.
+the clock with the highest resolution possible, but it is not guaranteed to be steady.
+If you want to use this clock as a timer instead, check if `high_resolution_clock::is_steady` is true.
 
 [endsect]
 

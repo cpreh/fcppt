@@ -1,4 +1,4 @@
-//          Copyright Carl Philipp Reh 2009 - 2010.
+//          Copyright Carl Philipp Reh 2009 - 2011.
 // Distributed under the Boost Software License, Version 1.0.
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
@@ -21,7 +21,7 @@ namespace chrono
 
 /// Provides a clock with the highest possible resolution.
 /**
- * Beware that this clock usually isn't guaranteed to be monotonic,
+ * Beware that this clock usually isn't guaranteed to be steady,
  * so it can, for example, wrap around after not too much time.
 */
 class high_resolution_clock
@@ -41,7 +41,7 @@ public:
 	> time_point;
 
 	// may be true for windows but can only be detected at runtime
-	static bool const is_monotonic = false;
+	static bool const is_steady = false;
 
 	FCPPT_SYMBOL
 	static time_point

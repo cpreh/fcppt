@@ -1,4 +1,4 @@
-//          Copyright Carl Philipp Reh 2009 - 2010.
+//          Copyright Carl Philipp Reh 2009 - 2011.
 // Distributed under the Boost Software License, Version 1.0.
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
@@ -29,9 +29,70 @@ typedef fcppt::container::bitfield::basic<
 	test_enum::size
 > bitfield;
 
+namespace empty_enum
+{
+
+enum type
+{
+	size
+};
+
 }
 
-BOOST_AUTO_TEST_CASE(container_bitfield_arithmetic)
+}
+
+typedef fcppt::container::bitfield::basic<
+	empty_enum::type,
+	empty_enum::size
+> empty_bitfield;
+
+#define FCPPT_INSTANTIATE_BITFIELD(\
+	enum_,\
+	internal_\
+)\
+template class fcppt::container::bitfield::basic< \
+	enum_::type, \
+	enum_::size \
+>; \
+\
+template class fcppt::container::bitfield::proxy< \
+	fcppt::container::bitfield::array< \
+		enum_::type, \
+		enum_::size, \
+		internal_\
+	>::type & \
+>; \
+\
+template class fcppt::container::bitfield::iterator< \
+	fcppt::container::bitfield::array< \
+		enum_::type, \
+		enum_::size, \
+		internal_ \
+	>::type &, \
+	fcppt::container::bitfield::proxy< \
+		fcppt::container::bitfield::array< \
+			enum_::type, \
+			enum_::size, \
+			internal_ \
+		>::type & \
+	> \
+>;
+
+FCPPT_INSTANTIATE_BITFIELD(
+	test_enum,
+	fcppt::container::bitfield::default_internal_type
+)
+
+FCPPT_INSTANTIATE_BITFIELD(
+	empty_enum,
+	fcppt::container::bitfield::default_internal_type
+)
+
+#undef FCPPT_INSTANTIATE_BITFIELD
+
+BOOST_AUTO_TEST_CASE(
+	container_bitfield_arithmetic
+)
 {
 	bitfield field1(
 		bitfield::null()
@@ -104,7 +165,9 @@ BOOST_AUTO_TEST_CASE(container_bitfield_arithmetic)
 	);
 }
 
-BOOST_AUTO_TEST_CASE(container_bitfield_comparison)
+BOOST_AUTO_TEST_CASE(
+	container_bitfield_comparison
+)
 {
 	bitfield field1(
 		bitfield::null()
@@ -138,7 +201,9 @@ BOOST_AUTO_TEST_CASE(container_bitfield_comparison)
 	);
 }
 
-BOOST_AUTO_TEST_CASE(container_bitfield_is_subset_eq)
+BOOST_AUTO_TEST_CASE(
+	container_bitfield_is_subset_eq
+)
 {
 	bitfield field1(
 		bitfield::null()
@@ -178,5 +243,21 @@ BOOST_AUTO_TEST_CASE(container_bitfield_is_subset_eq)
 			field1,
 			field2
 		)
+	);
+}
+
+BOOST_AUTO_TEST_CASE(
+	container_bitfield_empty
+)
+{
+	empty_bitfield field;
+
+	BOOST_REQUIRE(
+		field.size() == 0u
+	);
+
+	BOOST_REQUIRE(
+		field.begin()
+		== field.end()
 	);
 }

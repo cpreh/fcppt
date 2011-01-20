@@ -1,4 +1,4 @@
-//          Copyright Carl Philipp Reh 2009 - 2010.
+//          Copyright Carl Philipp Reh 2009 - 2011.
 // Distributed under the Boost Software License, Version 1.0.
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
@@ -9,6 +9,7 @@
 
 #include <fcppt/variant/apply_unary.hpp>
 #include <fcppt/variant/detail/ternary_applier.hpp>
+#include <fcppt/nonassignable.hpp>
 
 namespace fcppt
 {
@@ -21,17 +22,21 @@ template<
 	typename Operation,
 	typename Variant
 >
-struct ternary_unwrap
+class ternary_unwrap
 {
+	FCPPT_NONASSIGNABLE(
+		ternary_unwrap
+	)
+public:
 	typedef typename Operation::result_type result_type;
 
 	ternary_unwrap(
-		Operation const &op,
-		Variant const &obj
+		Operation const &_op,
+		Variant const &_obj
 	)
 	:
-		op(op),
-		obj(obj)
+		op_(_op),
+		obj_(_obj)
 	{}
 
 	template<
@@ -40,26 +45,28 @@ struct ternary_unwrap
 	>
 	result_type
 	operator()(
-		T2 const &t2,
-		T3 const &t3
+		T2 const &_t2,
+		T3 const &_t3
 	) const
 	{
-		return apply_unary(
-			ternary_applier<
-				Operation,
-				T2,
-				T3
-			>(
-				op,
-				t2,
-				t3
-			),
-			obj
-		);
+		return
+			variant::apply_unary(
+				detail::ternary_applier<
+					Operation,
+					T2,
+					T3
+				>(
+					op_,
+					_t2,
+					_t3
+				),
+				obj_
+			);
 	}
 private:
-	Operation const &op;
-	Variant const &obj;
+	Operation const &op_;
+
+	Variant const &obj_;
 };
 
 }

@@ -1,4 +1,4 @@
-//          Copyright Carl Philipp Reh 2009 - 2010.
+//          Copyright Carl Philipp Reh 2009 - 2011.
 // Distributed under the Boost Software License, Version 1.0.
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
@@ -9,7 +9,6 @@
 
 #include <fcppt/container/bitfield/detail/iterator_type.hpp>
 #include <fcppt/container/bitfield/iterator_fwd.hpp>
-#include <fcppt/container/bitfield/size_type.hpp>
 #include <fcppt/container/bitfield/difference_type.hpp>
 #include <fcppt/container/bitfield/value_type.hpp>
 #include <boost/iterator/iterator_facade.hpp>
@@ -24,21 +23,18 @@ namespace bitfield
 
 template<
 	typename StoredType,
-	typename Reference,
-	size_type ElementBits
+	typename Reference
 >
 class iterator
 :
 	public detail::iterator_type<
 		StoredType,
-		Reference,
-		ElementBits
+		Reference
 	>::type
 {
 	typedef typename detail::iterator_type<
 		StoredType,
-		Reference,
-		ElementBits
+		Reference
 	>::type base;
 public:
 	typedef typename base::value_type value_type;
@@ -56,7 +52,7 @@ private:
 
 	iterator(
 		StoredType,
-		size_type pos
+		difference_type pos
 	);
 
 	typedef typename boost::remove_reference<
@@ -65,7 +61,7 @@ private:
 
 	ref_type array_;
 
-	size_type pos;
+	difference_type pos_;
 
 	friend class boost::iterator_core_access;
 
@@ -95,8 +91,7 @@ private:
 
 	template<
 		typename OtherStoredType,
-		typename OtherReference,
-		size_type OtherElementBits
+		typename OtherReference
 	>
 	friend class iterator;
 private:
@@ -107,9 +102,8 @@ private:
 	iterator(
 		iterator<
 			OtherStoredType,
-			OtherReference,
-			ElementBits
-		> const &r
+			OtherReference
+		> const &
 	);
 };
 

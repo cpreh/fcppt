@@ -1,4 +1,4 @@
-//          Copyright Carl Philipp Reh 2009 - 2010.
+//          Copyright Carl Philipp Reh 2009 - 2011.
 // Distributed under the Boost Software License, Version 1.0.
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
@@ -7,8 +7,8 @@
 #include <fcppt/random/actor/normalized.hpp>
 #include <fcppt/random/actor/element.hpp>
 #include <fcppt/random/make_inclusive_range.hpp>
+#include <fcppt/random/exception.hpp>
 #include <fcppt/tr1/functional.hpp>
-#include <fcppt/exception.hpp>
 #include <fcppt/text.hpp>
 #include <fcppt/format.hpp>
 #include <boost/foreach.hpp>
@@ -16,16 +16,16 @@
 #include <functional>
 
 fcppt::random::actor::normalized::normalized(
-	container const &elements
+	container const &_elements
 )
 :
-	elements(elements),
-	rng(
+	elements_(_elements),
+	rng_(
 		random::make_inclusive_range(
 			static_cast<float_type>(0),
 			std::accumulate(
-				elements.begin(),
-				elements.end(),
+				elements_.begin(),
+				elements_.end(),
 				static_cast<float_type>(0),
 				std::tr1::bind(
 					std::plus<
@@ -41,8 +41,10 @@ fcppt::random::actor::normalized::normalized(
 		)
 	)
 {
-	if(elements.empty())
-		throw exception(
+	if(
+		elements_.empty()
+	)
+		throw random::exception(
 			FCPPT_TEXT("actor::normalized: elements may not be empty!")
 		);
 }
@@ -54,7 +56,7 @@ void
 fcppt::random::actor::normalized::operator()()
 {
 	float_type const val(
-		rng()
+		rng_()
 	);
 
 	float_type cur(
@@ -63,7 +65,7 @@ fcppt::random::actor::normalized::operator()()
 
 	BOOST_FOREACH(
 		container::const_reference ref,
-		elements
+		elements_
 	)
 	{
 		if(cur <= ref.prob())
@@ -74,9 +76,14 @@ fcppt::random::actor::normalized::operator()()
 		cur -= ref.prob();
 	}
 
-	throw exception(
-		(fcppt::format(
-			FCPPT_TEXT("random::actor::normalized: nothing matched! Return value was %1% and is now %2%!")
-		) % val % cur).str()
-	);
+	throw
+		random::exception(
+			(
+				fcppt::format(
+					FCPPT_TEXT("random::actor::normalized: nothing matched! Return value was %1% and is now %2%!")
+				)
+				% val
+				% cur
+			).str()
+		);
 }

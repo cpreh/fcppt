@@ -1,4 +1,4 @@
-//          Copyright Carl Philipp Reh 2009 - 2010.
+//          Copyright Carl Philipp Reh 2009 - 2011.
 // Distributed under the Boost Software License, Version 1.0.
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
@@ -20,14 +20,15 @@ template<
 >
 inclusive_range<T> const
 make_inclusive_range(
-	T const &first,
-	T const &last
+	T const &_first,
+	T const &_last
 )
 {
-	return inclusive_range<T>(
-		first,
-		last
-	);
+	return
+		random::inclusive_range<T>(
+			_first,
+			_last
+		);
 }
 
 }

@@ -1,4 +1,4 @@
-//          Copyright Carl Philipp Reh 2009 - 2010.
+//          Copyright Carl Philipp Reh 2009 - 2011.
 // Distributed under the Boost Software License, Version 1.0.
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
@@ -9,28 +9,30 @@
 
 inline 
 fcppt::exception::exception(
-	fcppt::string const &s
+	fcppt::string const &_string
 )
 :
-	s(s)
+	string_(_string)
 {}
 
 inline 
 fcppt::exception::exception(
-	exception const &e
+	exception const &_exception
 )
 :
 	std::exception(),
-	s(e.s)
+	string_(
+		_exception.string_
+	)
 {}
 
 inline 
 fcppt::exception &
 fcppt::exception::operator=(
-	exception const &e
+	exception const &_exception
 )
 {
-	s = e.s;
+	string_ = _exception.string_;
 	return *this;
 }
 
@@ -38,7 +40,7 @@ inline
 fcppt::string const &
 fcppt::exception::string() const
 {
-	return s;
+	return string_;
 }
 
 inline 

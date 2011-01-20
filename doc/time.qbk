@@ -1,17 +1,39 @@
 [section Time]
 
-The time namespace, for now, only offers a sleep function.
-It might be extended in the future.
+The time namespace offers some functions related to
+string parsing of times and dates, and a sleep function.
 Anything that isn't associated with `fcppt::chrono` directly
 but deals with time, may go here.
 
-[section sleep]
+[section Sleep]
 
 Here is a small example on how to sleep for 10 seconds.
 
 [import ../examples/sleep.cpp]
 
 [sleep]
+
+[endsect]
+
+[section Parsing]
+
+The `locale` facility of C++ has the `time_get` facet
+that can be used to extract time and date values from strings.
+However they are very low level and not easy to use.
+fcppt implements two wrapper functions `parse_time` and
+`parse_date` that can be used to extract certain values from a
+stream and store them into an `std::tm` struct.
+
+[note Both of these functions take an `std::tm` by reference.
+They will only modify a portion of its members if the parsing is
+successful.]
+
+[note Also, those functions do parsing depending on the locale
+that has been set for the stream.]
+
+[import ../examples/time_parse.cpp]
+
+[time_parse]
 
 [endsect]
 

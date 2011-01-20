@@ -11,50 +11,84 @@ MACRO(
 )
 	STRING(REGEX REPLACE "\\/" "_" TESTNAME ${PATHNAME})
 
-	ADD_EXECUTABLE (${TESTNAME} ${PATHNAME}.cpp)
+	SET(FCPPT_TEST_NAME fcppt${TESTNAME}test)
+
+	ADD_EXECUTABLE (${FCPPT_TEST_NAME} ${PATHNAME}.cpp)
 
 	IF(MSVC)
 		SET_PROPERTY(
-			TARGET ${TESTNAME}
+			TARGET ${FCPPT_TEST_NAME}
 			PROPERTY COMPILE_FLAGS
 			"-DBOOST_TEST_NO_LIB -DBOOST_TEST_MODULE=${TESTNAME}"
 		)
 	ELSE()
 		SET_PROPERTY(
-			TARGET ${TESTNAME}
+			TARGET ${FCPPT_TEST_NAME}
 			PROPERTY COMPILE_FLAGS
 			"-DBOOST_TEST_DYN_LINK -DBOOST_TEST_MODULE=${TESTNAME}"
 		)
 	ENDIF()
 
-	TARGET_LINK_LIBRARIES (${TESTNAME} ${FCPPT_DEFAULT_LINK_TARGET} ${Boost_UNIT_TEST_FRAMEWORK_LIBRARY})
+	TARGET_LINK_LIBRARIES (
+		${FCPPT_TEST_NAME}
+		${FCPPT_DEFAULT_LINK_TARGET}
+		${Boost_UNIT_TEST_FRAMEWORK_LIBRARY}
+	)
 
-	ADD_TEST(NAME ${TESTNAME} COMMAND ${TESTNAME})
+	ADD_TEST(
+		NAME
+		${FCPPT_TEST_NAME}
+		COMMAND
+		${FCPPT_TEST_NAME}
+	)
 ENDMACRO()
 
 ADD_FCPPT_TEST(alignment)
+ADD_FCPPT_TEST(algorithm)
 ADD_FCPPT_TEST(assert)
+ADD_FCPPT_TEST(type_traits)
 ADD_FCPPT_TEST(assign/make_container)
 ADD_FCPPT_TEST(chrono/duration)
-ADD_FCPPT_TEST(chrono/monotonic)
+ADD_FCPPT_TEST(chrono/steady)
+ADD_FCPPT_TEST(container/array)
 ADD_FCPPT_TEST(container/bitfield)
+ADD_FCPPT_TEST(container/grid)
+ADD_FCPPT_TEST(container/map)
 ADD_FCPPT_TEST(container/raw_vector)
 ADD_FCPPT_TEST(container/tree)
 ADD_FCPPT_TEST(endianness)
+ADD_FCPPT_TEST(function/has_addressof_overload)
+ADD_FCPPT_TEST(is_iterator)
+ADD_FCPPT_TEST(math/ceil_div)
 ADD_FCPPT_TEST(math/circle)
-ADD_FCPPT_TEST(math/util)
+ADD_FCPPT_TEST(math/dim)
+ADD_FCPPT_TEST(math/is_power_of_2)
 ADD_FCPPT_TEST(math/vector)
-ADD_FCPPT_TEST(math/quaternion/all_quaternion)
+ADD_FCPPT_TEST(math/util)
+ADD_FCPPT_TEST(math/box/center)
+ADD_FCPPT_TEST(math/box/extend)
+ADD_FCPPT_TEST(math/box/stretch)
 ADD_FCPPT_TEST(math/matrix/adjugate)
 ADD_FCPPT_TEST(math/matrix/delete_column_and_row)
 ADD_FCPPT_TEST(math/matrix/determinant)
 ADD_FCPPT_TEST(math/matrix/has_dim)
 ADD_FCPPT_TEST(math/matrix/inverse)
+ADD_FCPPT_TEST(math/matrix/multiply)
 ADD_FCPPT_TEST(math/matrix/operators)
 ADD_FCPPT_TEST(math/matrix/rotation_axis)
 ADD_FCPPT_TEST(math/matrix/rotation_x)
 ADD_FCPPT_TEST(math/matrix/scaling)
 ADD_FCPPT_TEST(math/matrix/translation)
 ADD_FCPPT_TEST(math/matrix/view)
+ADD_FCPPT_TEST(math/quaternion/all_quaternion)
+ADD_FCPPT_TEST(mpl/ceil_div)
+ADD_FCPPT_TEST(optional)
+ADD_FCPPT_TEST(ptr_container)
 ADD_FCPPT_TEST(ratio/multiply)
+ADD_FCPPT_TEST(shared_ptr/dynamic_pointer_cast)
+ADD_FCPPT_TEST(signal/simple)
+ADD_FCPPT_TEST(signal/unregister)
+ADD_FCPPT_TEST(unique_ptr)
+ADD_FCPPT_TEST(variant/equal)
 ADD_FCPPT_TEST(variant/get)
+ADD_FCPPT_TEST(variant/holds_type)

@@ -1,4 +1,4 @@
-//          Copyright Carl Philipp Reh 2009 - 2010.
+//          Copyright Carl Philipp Reh 2009 - 2011.
 // Distributed under the Boost Software License, Version 1.0.
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
@@ -8,15 +8,22 @@
 #include <fcppt/format.hpp>
 
 fcppt::log::format::inserter::inserter(
-	string const &format_string)
+	string const &_format_string
+)
 :
-	format_string(format_string)
+	format_string_(_format_string)
 {}
 
 fcppt::string const
 fcppt::log::format::inserter::format(
-	string const &dest) const
+	string const &_dest
+) const
 {
-	return (fcppt::format(
-		format_string) % dest).str();
+	return
+		(
+			fcppt::format(
+				format_string_
+			)
+			% _dest
+		).str();
 }

@@ -52,7 +52,16 @@ std::codecvt_base::result utf8_codecvt_facet::do_in(
     while (from != from_end && to != to_end) {
 
         // Error checking   on the first octet
-        if (invalid_leading_octet(*from)){
+        if (
+		invalid_leading_octet(
+			static_cast<
+				unsigned char
+			>(
+				*from
+			)
+		)
+	)
+	{
             from_next = from;
             to_next = to;
             return std::codecvt_base::error;
@@ -60,7 +69,7 @@ std::codecvt_base::result utf8_codecvt_facet::do_in(
 
         // The first octet is   adjusted by a value dependent upon
         // the number   of "continuing octets" encoding the character
-        const   int cont_octet_count = get_cont_octet_count(*from);
+        const   int cont_octet_count = static_cast<int>(get_cont_octet_count(static_cast<unsigned char>(*from)));
         const   wchar_t octet1_modifier_table[] =   {
             0x00, 0xc0, 0xe0, 0xf0, 0xf8, 0xfc
         };
@@ -78,7 +87,7 @@ std::codecvt_base::result utf8_codecvt_facet::do_in(
         while(i != cont_octet_count && from != from_end) {
 
             // Error checking on continuing characters
-            if (invalid_continuing_octet(*from)) {
+            if (invalid_continuing_octet(static_cast<unsigned char>(*from))) {
                 from_next   = from;
                 to_next =   to;
                 return std::codecvt_base::error;
@@ -134,14 +143,14 @@ std::codecvt_base::result utf8_codecvt_facet::do_out(
             return std::codecvt_base::error;
         }
 
-        int cont_octet_count = get_cont_octet_out_count(*from);
+        int cont_octet_count = static_cast<int>(get_cont_octet_out_count(*from)); // TODO: why is this an int?
 
         // RG  - comment this formula better
         int shift_exponent = (cont_octet_count) *   6;
 
         // Process the first character
         *to++ = static_cast<char>(octet1_modifier_table[cont_octet_count] +
-            static_cast<unsigned char>(*from / (1 << shift_exponent)));
+            static_cast<unsigned char>(*from / static_cast<wchar_t>(1 << shift_exponent)));
 
         // Process the continuation characters
         // Invariants: At   the start of the loop:
@@ -151,7 +160,7 @@ std::codecvt_base::result utf8_codecvt_facet::do_out(
         int i   = 0;
         while   (i != cont_octet_count && to != to_end) {
             shift_exponent -= 6;
-            *to++ = static_cast<char>(0x80 + ((*from / (1 << shift_exponent)) % (1 << 6)));
+            *to++ = static_cast<char>(0x80 + ((*from / static_cast<wchar_t>(1 << shift_exponent)) % (1 << 6)));
             ++i;
         }
         // If   we filled up the out buffer before encoding the character
@@ -197,7 +206,7 @@ int utf8_codecvt_facet::do_length(
     // Use "<" because the buffer may represent incomplete characters
     while (from_next+last_octet_count <= from_end && char_count <= max_limit) {
         from_next += last_octet_count;
-        last_octet_count = (get_octet_count(*from_next));
+        last_octet_count = static_cast<int>((get_octet_count(static_cast<unsigned char>(*from_next))));
         ++char_count;
     }
     return static_cast<int>(from_next-from_end);

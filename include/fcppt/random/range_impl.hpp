@@ -1,4 +1,4 @@
-//          Copyright Carl Philipp Reh 2009 - 2010.
+//          Copyright Carl Philipp Reh 2009 - 2011.
 // Distributed under the Boost Software License, Version 1.0.
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
@@ -13,12 +13,12 @@ template<
 	typename T
 >
 fcppt::random::range<T>::range(
-	T const &first_,
-	T const &last_
+	T const &_first,
+	T const &_last
 )
 :
-	first_(first_),
-	last_(last_)
+	first_(_first),
+	last_(_last)
 {}
 
 template<

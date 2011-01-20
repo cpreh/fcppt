@@ -1,4 +1,4 @@
-//          Copyright Carl Philipp Reh 2009 - 2010.
+//          Copyright Carl Philipp Reh 2009 - 2011.
 // Distributed under the Boost Software License, Version 1.0.
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
@@ -18,20 +18,20 @@ template<
 	typename Generator
 >
 fcppt::random::uniform<T, Generator>::uniform(
-	range_type const &range
+	range_type const &_range
 )
 :
-	variate(
+	variate_(
 		Generator(
 			static_cast<
-				typename Generator::result_type
+				unsigned long
 			>(
 				fcppt::chrono::high_resolution_clock::now().time_since_epoch().count()
 			)
 		),
 		distribution(
-			range.first(),
-			range.last()
+			_range.first(),
+			_range.last()
 		)
 	)
 {}
@@ -41,15 +41,15 @@ template<
 	typename Generator
 >
 fcppt::random::uniform<T, Generator>::uniform(
-	range_type const &range,
-	Generator const &gen
+	range_type const &_range,
+	Generator const &_gen
 )
 :
-	variate(
-		gen,
+	variate_(
+		_gen,
 		distribution(
-			range.first(),
-			range.last()
+			_range.first(),
+			_range.last()
 		)
 	)
 {}
@@ -61,7 +61,7 @@ template<
 T
 fcppt::random::uniform<T, Generator>::operator()()
 {
-	return variate();
+	return variate_();
 }
 
 #endif

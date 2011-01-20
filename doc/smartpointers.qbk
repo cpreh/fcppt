@@ -80,6 +80,45 @@ In order to be consistent with `fcppt::shared_ptr`,
 
 [endsect]
 
+[section unique_ptr]
+
+`fcppt::unique_ptr` is a C++03 emulation of the upcoming `std::unique_ptr`.
+In a sense `unique_ptr` is similar to `auto_ptr` that only one instance can actually have ownership,
+unlike `shared_ptr` which can have multiple. However, `auto_ptr` isn't movable but `unique_ptr` is.
+What this means is that you can transfer ownership from one `unique_ptr` to another by moving it,
+and not relying on some hacks that `auto_ptr` implements for that.
+(Well, in C++03 a `unique_ptr` implementation is basically a hack as well but it can be done to behave
+almost exactly as its C++0x counterpart.)
+
+[note
+`unique_ptr` also has the ability to use a custom deleter. This also implies that the
+type it deletes has to be complete. `std::auto_ptr` doesn't require this at compile time and
+produces undefined behaviour instead, which can be very hard to find.]
+
+`unique_ptr` distinguishes two different cases where a move can happen, namely from an rvalue and
+from an lvalue.
+First, let's see how to return a `unique_ptr` from a function.
+
+[import ../examples/unique_ptr.cpp]
+
+[unique_ptr_factory]
+
+A `unique_ptr` can be directly returned if it is an rvalue like in `int_ptr_factory`.
+Notice the use of `make_unique_ptr` that is similar to `make_shared_ptr`.
+
+If you already have an lvalue of a `unique_ptr` you have to call move to turn the
+lvalue into an rvalue, like it is shown in the next example.
+
+[unique_ptr_move]
+
+`fcppt::shared_ptr` and `fcppt::scoped_ptr` both have the ability to take
+the ownership from a `unique_ptr`.
+The next example focuses on converting a `unique_ptr` to a `shared_ptr`.
+
+[unique_ptr_shared_ptr]
+
+[endsect]
+
 [xinclude doxygen_smartpointers.xml]
 
 [endsect]

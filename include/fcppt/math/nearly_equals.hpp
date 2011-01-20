@@ -1,4 +1,4 @@
-//          Copyright Carl Philipp Reh 2009 - 2010.
+//          Copyright Carl Philipp Reh 2009 - 2011.
 // Distributed under the Boost Software License, Version 1.0.
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
@@ -35,7 +35,7 @@ nearly_equals(
 	T const &b
 )
 {
-	return diff(a, b) < machine_epsilon<T>::value();
+	return math::diff(a, b) < math::machine_epsilon<T>::value();
 }
 
 }

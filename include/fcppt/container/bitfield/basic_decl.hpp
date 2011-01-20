@@ -1,4 +1,4 @@
-//          Copyright Carl Philipp Reh 2009 - 2010.
+//          Copyright Carl Philipp Reh 2009 - 2011.
 // Distributed under the Boost Software License, Version 1.0.
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
@@ -12,7 +12,8 @@
 #include <fcppt/container/bitfield/proxy_fwd.hpp>
 #include <fcppt/container/bitfield/size_type.hpp>
 #include <fcppt/container/bitfield/value_type.hpp>
-#include <fcppt/tr1/array.hpp>
+#include <fcppt/container/bitfield/array.hpp>
+#include <fcppt/container/array_decl.hpp>
 #include <fcppt/safe_bool.hpp>
 #include <boost/type_traits/is_unsigned.hpp>
 #include <boost/static_assert.hpp>
@@ -49,44 +50,40 @@ class basic
 //<-
 	FCPPT_SAFE_BOOL(basic)
 private:
-	typedef InternalType internal_type;
-
 	BOOST_STATIC_ASSERT(
 		boost::is_unsigned<
-			internal_type
+			InternalType	
 		>::value
 	);
 
-	static size_type const element_bits = std::numeric_limits<internal_type>::digits;
+	typedef typename bitfield::array<
+		Enum,
+		Size,
+		InternalType
+	>::type array_type;
 
-	typedef std::tr1::array<
-		internal_type,
-		Size / element_bits + (Size % element_bits ? 1 : 0)
-	> array_type;
-
-	array_type array;
+	array_type array_;
 
 	bool
 	boolean_test() const;
 //->
 public:
-	typedef proxy<
-		array_type &,
-		element_bits
+	typedef InternalType internal_type;
+
+	typedef bitfield::proxy<
+		array_type &
 	> reference;
 
 	typedef value_type const_reference;
 
 	typedef bitfield::iterator<
 		array_type &,
-		reference,
-		element_bits
+		reference
 	> iterator;
 
 	typedef bitfield::iterator<
 		array_type const &,
-		const_reference,
-		element_bits
+		const_reference
 	> const_iterator;
 
 	typedef std::reverse_iterator<

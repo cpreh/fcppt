@@ -1,4 +1,4 @@
-//          Copyright Carl Philipp Reh 2009 - 2010.
+//          Copyright Carl Philipp Reh 2009 - 2011.
 // Distributed under the Boost Software License, Version 1.0.
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
@@ -27,8 +27,8 @@ template<
 >
 typename Operation::result_type
 apply_unary_internal(
-	Operation const &op,
-	Variant const &obj
+	Operation const &_op,
+	Variant const &_obj
 )
 {
 	typedef typename Variant::types types;
@@ -49,8 +49,8 @@ apply_unary_internal(
 			types
 		>::type
 	>(
-		op,
-		obj
+		_op,
+		_obj
 	);
 }
 

@@ -1,4 +1,4 @@
-//          Copyright Carl Philipp Reh 2009 - 2010.
+//          Copyright Carl Philipp Reh 2009 - 2011.
 // Distributed under the Boost Software License, Version 1.0.
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
@@ -27,10 +27,10 @@ public:
 	typedef Stream &result_type;
 
 	explicit output(
-		Stream &stream_
+		Stream &_stream
 	)
 	:
-		stream_(stream_)
+		stream_(_stream)
 	{}
 
 	template<
@@ -38,11 +38,11 @@ public:
 	>
 	result_type
 	operator()(
-		T const &t
+		T const &_t
 	) const
 	{
 		return
-			stream_ << t;
+			stream_ << _t;
 	}
 private:
 	Stream &stream_;

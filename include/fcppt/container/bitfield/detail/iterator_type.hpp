@@ -1,4 +1,4 @@
-//          Copyright Carl Philipp Reh 2009 - 2010.
+//          Copyright Carl Philipp Reh 2009 - 2011.
 // Distributed under the Boost Software License, Version 1.0.
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
@@ -25,20 +25,19 @@ namespace detail
 
 template<
 	typename StoredType,
-	typename Reference,
-	size_type ElementBits
+	typename Reference
 >
-struct iterator_type {
+struct iterator_type
+{
 	typedef boost::iterator_facade<
-		iterator<
+		bitfield::iterator<
 			StoredType,
-			Reference,
-			ElementBits
+			Reference
 		>,
-		value_type,
+		bitfield::value_type,
 		std::random_access_iterator_tag,
 		Reference,
-		difference_type
+		bitfield::difference_type
 	> type;
 };
 

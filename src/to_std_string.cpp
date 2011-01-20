@@ -1,4 +1,4 @@
-//          Copyright Carl Philipp Reh 2009 - 2010.
+//          Copyright Carl Philipp Reh 2009 - 2011.
 // Distributed under the Boost Software License, Version 1.0.
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
@@ -12,20 +12,20 @@
 
 std::string const
 fcppt::to_std_string(
-	string const &input,
+	string const &_input,
 	std::locale const &
 #ifndef FCPPT_NARROW_STRING
-		locale_
+		_locale
 #endif
 )
 {
 #ifndef FCPPT_NARROW_STRING
 	return
-		narrow(
-			input,
-			locale_
+		fcppt::narrow(
+			_input,
+			_locale
 		);
 #else
-	return input;
+	return _input;
 #endif
 }

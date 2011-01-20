@@ -1,4 +1,4 @@
-//          Copyright Carl Philipp Reh 2009 - 2010.
+//          Copyright Carl Philipp Reh 2009 - 2011.
 // Distributed under the Boost Software License, Version 1.0.
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
@@ -8,6 +8,7 @@
 #define FCPPT_MATH_DIM_COMPARISON_HPP_INCLUDED
 
 #include <fcppt/math/detail/array_compare.hpp>
+#include <fcppt/math/detail/array_less.hpp>
 #include <fcppt/math/dim/basic_impl.hpp>
 
 namespace fcppt
@@ -50,6 +51,73 @@ operator!=(
 {
 	return
 		!(v1 == v2);
+}
+
+template<
+	typename T,
+	typename N,
+	typename S1,
+	typename S2
+>
+bool
+operator<(
+	basic<T, N, S1> const &v1,
+	basic<T, N, S2> const &v2
+)
+{
+	return
+		fcppt::math::detail::array_less(
+			v1,
+			v2
+		);
+}
+
+template<
+	typename T,
+	typename N,
+	typename S1,
+	typename S2
+>
+bool
+operator>(
+	basic<T, N, S1> const &v1,
+	basic<T, N, S2> const &v2
+)
+{
+	return
+		v2 < v1;
+}
+
+template<
+	typename T,
+	typename N,
+	typename S1,
+	typename S2
+>
+bool
+operator<=(
+	basic<T, N, S1> const &v1,
+	basic<T, N, S2> const &v2
+)
+{
+	return
+		!(v2 < v1);
+}
+
+template<
+	typename T,
+	typename N,
+	typename S1,
+	typename S2
+>
+bool
+operator>=(
+	basic<T, N, S1> const &v1,
+	basic<T, N, S2> const &v2
+)
+{
+	return
+		!(v1 < v2);
 }
 
 }

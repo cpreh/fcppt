@@ -1,4 +1,4 @@
-//          Copyright Carl Philipp Reh 2009 - 2010.
+//          Copyright Carl Philipp Reh 2009 - 2011.
 // Distributed under the Boost Software License, Version 1.0.
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
@@ -8,6 +8,7 @@
 #define FCPPT_SCOPED_PTR_IMPL_HPP_INCLUDED
 
 #include <fcppt/scoped_ptr_decl.hpp>
+#include <fcppt/unique_ptr_impl.hpp>
 #include <algorithm>
 
 template<
@@ -28,8 +29,12 @@ template<
 	template<
 		typename
 	> class Deleter
->fcppt::scoped_ptr<T, Deleter>::scoped_ptr(
-	auto_ptr p
+>
+template<
+	typename Y
+>
+fcppt::scoped_ptr<T, Deleter>::scoped_ptr(
+	unique_ptr<Y, Deleter> p
 )
 :
 	ptr(p.release())
@@ -131,9 +136,12 @@ template<
 		typename
 	> class Deleter
 >
+template<
+	typename Y
+>
 void
 fcppt::scoped_ptr<T, Deleter>::take(
-	auto_ptr p
+	unique_ptr<Y, Deleter> p
 )
 {
 	reset();

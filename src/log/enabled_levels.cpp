@@ -1,15 +1,16 @@
-//          Copyright Carl Philipp Reh 2009 - 2010.
+//          Copyright Carl Philipp Reh 2009 - 2011.
 // Distributed under the Boost Software License, Version 1.0.
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
 #include <fcppt/log/enabled_levels.hpp>
+#include <fcppt/container/array_impl.hpp>
 #include <fcppt/foreach_enumerator.hpp>
 
 fcppt::log::enabled_level_array const
 fcppt::log::enabled_levels(
-	level::type const level_
+	level::type const _level
 )
 {
 	enabled_level_array ret;
@@ -20,7 +21,7 @@ fcppt::log::enabled_levels(
 	)
 		ret[
 			i
-		] = level_ <= i;
+		] = _level <= i;
 
 	return ret;
 }

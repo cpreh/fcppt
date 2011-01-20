@@ -1,4 +1,4 @@
-//          Copyright Carl Philipp Reh 2009 - 2010.
+//          Copyright Carl Philipp Reh 2009 - 2011.
 // Distributed under the Boost Software License, Version 1.0.
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
@@ -8,6 +8,7 @@
 #define FCPPT_MATH_MATRIX_BASIC_IMPL_HPP_INCLUDED
 
 #include <fcppt/math/matrix/detail/dim_storage_impl.hpp>
+#include <fcppt/math/matrix/detail/row_view_impl.hpp>
 #include <fcppt/math/matrix/basic_decl.hpp>
 #include <fcppt/math/compare.hpp>
 #include <fcppt/math/vector/basic_impl.hpp>
@@ -15,7 +16,6 @@
 #include <fcppt/math/detail/array_adapter_impl.hpp>
 #include <fcppt/math/detail/storage_data.hpp>
 #include <fcppt/math/detail/storage_dim.hpp>
-#include <fcppt/math/detail/view_storage_impl.hpp>
 #include <fcppt/math/detail/make_variadic_constructor.hpp>
 #include <fcppt/math/detail/initial_size.hpp>
 #include <fcppt/math/detail/make_op_def.hpp>
@@ -43,11 +43,11 @@ template<
 	typename S
 >
 fcppt::math::matrix::basic<T, N, M, S>::basic(
-	dim const &dim_
+	dim const &_dim
 )
 :
 	dim_base(
-		dim_
+		_dim
 	)
 {}
 
@@ -58,11 +58,11 @@ template<
 	typename S
 >
 fcppt::math::matrix::basic<T, N, M, S>::basic(
-	storage_type const &storage
+	storage_type const &_storage
 )
 :
 	dim_base(),
-	storage(storage)
+	storage_(_storage)
 {}
 
 template<
@@ -72,13 +72,15 @@ template<
 	typename S
 >
 fcppt::math::matrix::basic<T, N, M, S>::basic(
-	basic const &other_
+	basic const &_other
 )
 :
 	dim_base(
-		other_
+		_other
 	),
-	storage(other_.storage)
+	storage_(
+		_other.storage_
+	)
 {}
 
 template<
@@ -96,21 +98,21 @@ fcppt::math::matrix::basic<T, N, M, S>::basic(
 		N,
 		M,
 		OtherStorage
-	> const &other_
+	> const &_other
 )
 :
 	dim_base(
-		other_
+		_other
 	)
 {
 	math::detail::initial_size(
-		storage,
-		other_.size()
+		storage_,
+		_other.size()
 	);
 
 	std::copy(
-		other_.begin(),
-		other_.end(),
+		_other.begin(),
+		_other.end(),
 		begin()
 	);
 }
@@ -125,20 +127,20 @@ template<
 	typename In
 >
 fcppt::math::matrix::basic<T, N, M, S>::basic(
-	In const beg,
+	In const _begin,
 	typename boost::enable_if<
 		type_traits::is_iterator<
 			In
 		>,
 		In
-	>::type const end
+	>::type const _end
 )
 :
 	dim_base()
 {
 	std::copy(
-		beg,
-		end,
+		_begin,
+		_end,
 		begin()
 	);
 }
@@ -153,31 +155,31 @@ template<
 	typename In
 >
 fcppt::math::matrix::basic<T, N, M, S>::basic(
-	dim const &dim_,
-	In const beg,
+	dim const &_dim,
+	In const _begin,
 	typename boost::enable_if<
 		type_traits::is_iterator<
 			In
 		>,
 		In
-	>::type const end
+	>::type const _end
 )
 :
 	dim_base(
-		dim_
+		_dim
 	)
 {
 	math::detail::initial_size(
-		storage,
+		storage_,
 		std::distance(
-			beg,
-			end
+			_begin,
+			_end
 		)
 	);
 
 	std::copy(
-		beg,
-		end,
+		_begin,
+		_end,
 		begin()
 	);
 }
@@ -192,22 +194,22 @@ template<
         typename Container
 >
 fcppt::math::matrix::basic<T, N, M, S>::basic(
-        dim const &dim_,
-        Container const &container_
+        dim const &_dim,
+        Container const &_container
 )
 :
 	dim_base(
-		dim_
+		_dim
 	)
 {
 	math::detail::initial_size(
-		storage,
-		container_.size()
+		storage_,
+		_container.size()
 	);
 
         std::copy(
-                container_.begin(),
-                container_.end(),
+                _container.begin(),
+                _container.end(),
 		begin()
         );
 }
@@ -231,10 +233,10 @@ template<
 >
 fcppt::math::matrix::basic<T, N, M, S> &
 fcppt::math::matrix::basic<T, N, M, S>::operator=(
-	basic const &other_
+	basic const &_other
 )
 {
-	storage = other_.storage;
+	storage_ = _other.storage_;
 
 	return *this;
 }
@@ -255,18 +257,18 @@ fcppt::math::matrix::basic<T, N, M, S>::operator=(
 		N,
 		M,
 		OtherStorage
-	> const &other_
+	> const &_other
 )
 {
 	math::detail::initial_size(
-		storage,
-		other_.size()
+		storage_,
+		_other.size()
 	);
 
 	return
 		math::detail::assign(
 			*this,
-			other_
+			_other
 		);
 }
 
@@ -305,14 +307,14 @@ template<
 >
 fcppt::math::matrix::basic<T, N, M, S> &
 fcppt::math::matrix::basic<T, N, M, S>::operator*=(
-	value_type const &v
+	value_type const &_value
 )
 {
 	BOOST_FOREACH(
 		value_type &i,
 		*this
 	)
-		i *= v;
+		i *= _value;
 
 	return *this;
 }
@@ -325,14 +327,14 @@ template<
 >
 fcppt::math::matrix::basic<T, N, M, S> &
 fcppt::math::matrix::basic<T, N, M, S>::operator/=(
-	value_type const &v
+	value_type const &_value
 )
 {
 	BOOST_FOREACH(
 		value_type &i,
 		*this
 	)
-		i /= v;
+		i /= _value;
 
 	return *this;
 }
@@ -345,14 +347,14 @@ template<
 >
 typename fcppt::math::matrix::basic<T, N, M, S>::reference
 fcppt::math::matrix::basic<T, N, M, S>::operator[](
-	size_type const j
+	size_type const _j
 )
 {
 	return
 		reference(
 			typename reference::storage_type(
 				data(),
-				j,
+				_j,
 				columns(),
 				rows()
 			)
@@ -367,14 +369,14 @@ template<
 >
 typename fcppt::math::matrix::basic<T, N, M, S>::const_reference const
 fcppt::math::matrix::basic<T, N, M, S>::operator[](
-	size_type const j
+	size_type const _j
 ) const
 {
 	return
 		const_reference(
 			typename const_reference::storage_type(
 				data(),
-				j,
+				_j,
 				columns(),
 				rows()
 			)
@@ -392,7 +394,7 @@ fcppt::math::matrix::basic<T, N, M, S>::data()
 {
 	return
 		math::detail::storage_data(
-			storage
+			storage_
 		);
 }
 
@@ -427,7 +429,7 @@ fcppt::math::matrix::basic<T, N, M, S>::size() const
 			size_type
 		>(
 			math::detail::storage_dim(
-				storage
+				storage_
 			)
 		);
 }
@@ -464,10 +466,11 @@ template<
 typename fcppt::math::matrix::basic<T, N, M, S>::dim const
 fcppt::math::matrix::basic<T, N, M, S>::dimension() const
 {
-	return dim(
-		columns(),
-		rows()
-	);
+	return
+		dim(
+			columns(),
+			rows()
+		);
 }
 
 template<
@@ -497,16 +500,16 @@ template<
 >
 void
 fcppt::math::matrix::basic<T, N, M, S>::swap(
-	basic &other_
+	basic &_other
 )
 {
 	std::swap(
-		storage,
-		other_.storage
+		storage_,
+		_other.storage_
 	);
 
 	dim_base::swap(
-		other_
+		_other
 	);
 }
 
@@ -518,11 +521,13 @@ template<
 >
 void
 fcppt::math::matrix::swap(
-	basic<T, N, M, S> &a,
-	basic<T, N, M, S> &b
+	basic<T, N, M, S> &_a,
+	basic<T, N, M, S> &_b
 )
 {
-	return a.swap(b);
+	_a.swap(
+		_b
+	);
 }
 
 #endif

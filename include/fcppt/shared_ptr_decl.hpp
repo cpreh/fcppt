@@ -1,4 +1,4 @@
-//          Copyright Carl Philipp Reh 2009 - 2010.
+//          Copyright Carl Philipp Reh 2009 - 2011.
 // Distributed under the Boost Software License, Version 1.0.
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
@@ -7,9 +7,10 @@
 #ifndef FCPPT_SHARED_PTR_DECL_HPP_INCLUDED
 #define FCPPT_SHARED_PTR_DECL_HPP_INCLUDED
 
+#include <fcppt/tr1/detail/use_boost_tr1.hpp> // workaround for boost's get_pointer
 #include <fcppt/shared_ptr_fwd.hpp>
+#include <fcppt/unique_ptr_fwd.hpp>
 #include <fcppt/weak_ptr_fwd.hpp>
-#include <fcppt/auto_ptr.hpp>
 #include <boost/shared_ptr.hpp>
 #include <iosfwd>
 
@@ -105,7 +106,7 @@ public:
 		typename Y
 	>
 	explicit shared_ptr(
-		auto_ptr<Y> r
+		unique_ptr<Y, Deleter> r
 	);
 
 	template<
@@ -121,7 +122,7 @@ public:
 	>
 	shared_ptr &
 	operator=(
-		auto_ptr<Y> r
+		unique_ptr<Y, Deleter> r
 	);
 
 	~shared_ptr();
@@ -264,9 +265,25 @@ template<
 >
 std::basic_ostream<Ch, Traits> &
 operator<< (
-	std::basic_ostream<Ch, Traits> &os,
-	shared_ptr<T, Deleter> const & p
+	std::basic_ostream<Ch, Traits> &,
+	shared_ptr<T, Deleter> const &
 );
+
+#ifdef FCPPT_TR1_DETAIL_USE_BOOST_TR1
+template<
+	typename T,
+	template<
+		typename
+	> class Deleter
+>
+T *
+get_pointer(
+	fcppt::shared_ptr<
+		T,
+		Deleter
+	>
+);
+#endif
 
 }
 

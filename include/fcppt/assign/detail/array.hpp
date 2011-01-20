@@ -1,4 +1,4 @@
-//          Copyright Carl Philipp Reh 2009 - 2010.
+//          Copyright Carl Philipp Reh 2009 - 2011.
 // Distributed under the Boost Software License, Version 1.0.
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
@@ -7,7 +7,7 @@
 #ifndef FCPPT_ASSIGN_DETAIL_ARRAY_HPP_INCLUDED
 #define FCPPT_ASSIGN_DETAIL_ARRAY_HPP_INCLUDED
 
-#include <fcppt/tr1/array.hpp>
+#include <fcppt/container/array.hpp>
 #include <cstddef>
 
 namespace fcppt
@@ -24,7 +24,7 @@ template<
 class array
 {
 public:
-	typedef std::tr1::array<T,N> container_type;
+	typedef fcppt::container::array<T,N> container_type;
 
 	array(
 		T const &
