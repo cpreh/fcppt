@@ -96,7 +96,7 @@ BOOST_AUTO_TEST_CASE(leven)
 			ref) == strings[2]);
 }
 
-BOOST_AUTO_TEST_CASE(remove)
+BOOST_AUTO_TEST_CASE(algorithm_remove)
 {
 	typedef std::vector<
 		int
