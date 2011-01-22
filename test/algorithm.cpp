@@ -4,13 +4,16 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/algorithm/shift_compare.hpp>
 #include <fcppt/algorithm/levenshtein.hpp>
+#include <fcppt/algorithm/remove.hpp>
+#include <fcppt/algorithm/shift_compare.hpp>
 #include <fcppt/algorithm/shortest_levenshtein.hpp>
 #include <fcppt/math/vector/vector.hpp>
 #include <boost/test/unit_test.hpp>
 #include <functional>
 #include <iostream>
+#include <ostream>
+#include <vector>
 
 namespace
 {
@@ -91,4 +94,30 @@ BOOST_AUTO_TEST_CASE(leven)
 		fcppt::algorithm::shortest_levenshtein(
 			strings,
 			ref) == strings[2]);
+}
+
+BOOST_AUTO_TEST_CASE(remove)
+{
+	typedef std::vector<
+		int
+	> int_vector;
+
+	int_vector vec;
+
+	vec.push_back(1);
+	vec.push_back(2);
+	vec.push_back(3);
+
+	BOOST_REQUIRE(
+		fcppt::algorithm::remove(
+			vec,
+			2
+		)
+	);
+
+	BOOST_REQUIRE(
+		vec.size() == 2u
+		&& vec[0] == 1
+		&& vec[1] == 3
+	);
 }
