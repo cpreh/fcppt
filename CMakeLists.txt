@@ -8,7 +8,6 @@ IF(${CMAKE_BINARY_DIR} STREQUAL ${CMAKE_SOURCE_DIR})
 	message(FATAL_ERROR "In-source builds are not permitted. Make a separate folder for building:\nmkdir build; cd build; cmake ..\nBefore that, remove the files that cmake just created:\nrm -rf CMakeCache.txt CMakeFiles")
 ENDIF()
 
-
 SET (CMAKE_MODULE_PATH "${EXTRA_CMAKE_MODULE_PATH};${CMAKE_SOURCE_DIR}/CMakeModules")
 
 PROJECT (fcppt)
@@ -191,10 +190,6 @@ INSTALL (FILES ${pkgfile} DESTINATION ${CMAKE_INSTALL_PREFIX}/lib/pkgconfig)
 #	 FCPPT_HAVE_DEFAULTED_AND_DELETED_FUNCTIONS)
 
 SET (Boost_ADDITIONAL_VERSIONS "1.41" "1.41.0" "1.42" "1.42.0" "1.43" "1.43.0" "1.44" "1.44.0" "1.45" "1.45.0")
-
-IF(MSVC)
-	SET(Boost_USE_STATIC_LIBS ON)
-ENDIF()
 
 FIND_PACKAGE(
 	Boost 1.40.0 REQUIRED COMPONENTS
