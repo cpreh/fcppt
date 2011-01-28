@@ -648,6 +648,7 @@ SET(
 	include/fcppt/math/box/contains.hpp
 	include/fcppt/math/box/contains_point.hpp
 	include/fcppt/math/box/extend_bounding_box.hpp
+	include/fcppt/math/box/has_dim.hpp
 	include/fcppt/math/box/intersection.hpp
 	include/fcppt/math/box/intersects.hpp
 	include/fcppt/math/box/output.hpp

@@ -4,6 +4,6 @@ update_cmake \
 	FCPPT_FILES \
 	include \
 	src \
-	|| exit
+	|| exit -1
 
 mv CMakeLists.txt.new CMakeLists.txt
