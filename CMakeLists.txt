@@ -306,7 +306,9 @@ SET(
 	include/fcppt/algorithm/levenshtein.hpp
 	include/fcppt/algorithm/map.hpp
 	include/fcppt/algorithm/ptr_container_erase.hpp
+	include/fcppt/algorithm/ptr_container_erase_if.hpp
 	include/fcppt/algorithm/remove.hpp
+	include/fcppt/algorithm/remove_if.hpp
 	include/fcppt/algorithm/set_intersection.hpp
 	include/fcppt/algorithm/shift_compare.hpp
 	include/fcppt/algorithm/shortest_levenshtein.hpp
