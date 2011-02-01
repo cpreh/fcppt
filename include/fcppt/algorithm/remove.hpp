@@ -7,7 +7,9 @@
 #ifndef FCPPT_ALGORITHM_REMOVE_HPP_INCLUDED
 #define FCPPT_ALGORITHM_REMOVE_HPP_INCLUDED
 
-#include <algorithm>
+#include <fcppt/algorithm/remove_if.hpp>
+#include <boost/spirit/home/phoenix/core/argument.hpp>
+#include <boost/spirit/home/phoenix/operator/comparison.hpp>
 
 namespace fcppt
 {
@@ -27,25 +29,12 @@ remove(
 	typename Container::const_reference _element
 )
 {
-	typename Container::iterator const position(
-		std::remove(
-			_container.begin(),
-			_container.end(),
-			_element
-		)
-	);
-
-	if(
-		position == _container.end()
-	)
-		return false;
-	
-	_container.erase(
-		position,
-		_container.end()
-	);
-
-	return true;
+	return
+		fcppt::algorithm::remove_if(
+			_container,
+			boost::phoenix::arg_names::arg1
+			== _element
+		);
 }
 
 }

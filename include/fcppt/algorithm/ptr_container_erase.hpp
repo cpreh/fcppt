@@ -7,6 +7,11 @@
 #ifndef FCPPT_ALGORITHM_PTR_CONTAINER_ERASE_HPP_INCLUDED
 #define FCPPT_ALGORITHM_PTR_CONTAINER_ERASE_HPP_INCLUDED
 
+#include <fcppt/algorithm/ptr_container_erase_if.hpp>
+#include <boost/spirit/home/phoenix/core/argument.hpp>
+#include <boost/spirit/home/phoenix/operator/comparison.hpp>
+#include <boost/spirit/home/phoenix/operator/self.hpp>
+
 namespace fcppt
 {
 namespace algorithm
@@ -22,24 +27,16 @@ template<
 >
 bool
 ptr_container_erase(
-	Container &container,
-	Ptr const element
+	Container &_container,
+	Ptr const _element
 )
 {
-	for(
-		typename Container::iterator b = container.begin();
-		b != container.end();
-		++b
-	)
-	{
-		if (&(*b) == element)
-		{
-			container.erase(b);
-			return true;
-		}
-	}
-
-	return false;
+	return
+		fcppt::algorithm::ptr_container_erase_if(
+			_container,
+			&boost::phoenix::arg_names::arg1
+			== _element
+		);
 }
 
 }
