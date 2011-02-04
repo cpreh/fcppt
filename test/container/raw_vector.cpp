@@ -254,3 +254,14 @@ BOOST_AUTO_TEST_CASE(container_raw_vector_copy)
 		test == test3
 	);
 }
+
+BOOST_AUTO_TEST_CASE(container_raw_vector_empy_copy)
+{
+	container_type test;
+
+	container_type test2(test);
+
+	BOOST_REQUIRE(
+		test2.empty()
+	);
+}
