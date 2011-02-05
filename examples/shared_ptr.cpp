@@ -160,4 +160,14 @@ cast()
 //]
 
 int main()
-{}
+{
+	factory();
+
+	test_c_deleter();
+
+	wrong();
+
+	right();
+
+	cast();
+}
