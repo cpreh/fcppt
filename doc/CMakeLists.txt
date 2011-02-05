@@ -80,7 +80,59 @@ make_fcppt_documentation(
 	truncation_check_cast.hpp
 )
 make_fcppt_documentation(chrono chrono)
-make_fcppt_documentation(container container)
+
+make_fcppt_documentation(
+	container
+	container/data.hpp
+	container/data_end.hpp
+	container/is_std_vector.hpp
+)
+
+make_fcppt_documentation(
+	container_array
+	container/array.hpp
+	container/array_decl.hpp
+	container/array_fwd.hpp
+	container/array_impl.hpp
+)
+
+make_fcppt_documentation(
+	container_linear
+	container/linear_map.hpp
+	container/linear_map_impl.hpp
+	container/linear_set.hpp
+	container/linear_set_impl.hpp
+)
+
+make_fcppt_documentation(
+	container_raw_vector
+	container/is_raw_vector.hpp
+	container/raw_vector.hpp
+	container/raw_vector_decl.hpp
+	container/raw_vector_fwd.hpp
+	container/raw_vector_impl.hpp
+)
+
+make_fcppt_documentation(
+	container_bitfield
+	container/bitfield
+)
+
+make_fcppt_documentation(
+	container_grid
+	container/grid
+)
+
+make_fcppt_documentation(
+	container_ptr
+	container/ptr
+)
+
+make_fcppt_documentation(
+	container_tree
+	container/tree
+)
+
 make_fcppt_documentation(endianness endianness)
 make_fcppt_documentation(
 	function
@@ -108,14 +160,26 @@ make_fcppt_documentation(
 make_fcppt_documentation(mpl mpl)
 make_fcppt_documentation(noncopyable nonassignable.hpp noncopyable.hpp)
 make_fcppt_documentation(log log)
-make_fcppt_documentation(optional optional.hpp optional_decl.hpp optional_impl.hpp optional_fwd.hpp)
+
+make_fcppt_documentation(
+	optional
+	optional.hpp
+	optional_decl.hpp
+	optional_impl.hpp
+	optional_fwd.hpp
+)
+
 make_fcppt_documentation(
 	preprocessor
+	preprocessor/disable_gcc_warning.hpp
+	preprocessor/disable_vc_warning.hpp
 	preprocessor/file.hpp 
 	preprocessor/fixme.hpp 
 	preprocessor/function.hpp 
 	preprocessor/message.hpp 
+	preprocessor/ppop_warning.hpp
 	preprocessor/pragma.hpp 
+	preprocessor/push_warning.hpp
 	preprocessor/todo.hpp
 	preprocessor/warning.hpp
 )

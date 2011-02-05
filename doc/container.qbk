@@ -34,13 +34,7 @@ baz
 
 [endsect]
 
-[section Synopsis]
-
-[import ../include/fcppt/container/tree/object_decl.hpp]
-[tree]
-
-[endsect]
-
+[xinclude doxygen_container_tree.xml]
 
 [endsect]
 
@@ -48,7 +42,10 @@ baz
 
 [section Rationale]
 
-Sometimes you want an enumeration which can take multiple values at once -- for orthogonal options like "a person can be hungry and tired, not hungry and tired, hungry and not tired or not hungry and not tired". An obvious solution is using the bit representation of an enumeration:
+Sometimes you want an enumeration which can take multiple values at once -
+for orthogonal options like "a person can be hungry and tired,
+not hungry and tired, hungry and not tired or not hungry and not tired".
+An obvious solution is using the bit representation of an enumeration:
 
 ``
 enum person_status
@@ -79,12 +76,7 @@ through the `bitfield` like a container (if you like).
 
 [endsect]
 
-[section Synopsis]
-
-[import ../include/fcppt/container/bitfield/basic_decl.hpp]
-[bitfield_decl]
-
-[endsect]
+[xinclude doxygen_container_bitfield.xml]
 
 [endsect]
 
@@ -99,6 +91,8 @@ standard library containers [footnote Citation needed]. Because of this, there
 are `fcppt::container::linear_map<T>` and `fcppt::container::linear_set<T>`
 which expose the /same/ interface as the standard library containers, but with
 different guarantees, since they store the elements in a `std::list`.
+
+[xinclude doxygen_container_linear.xml]
 
 [endsect]
 
@@ -118,6 +112,8 @@ behavior. You have to write the elements before reading them.]
 
 Apart from the special constructor that leaves the elements uninitialized and a
 few special functions, `fcppt::container::raw_vector` is like `std::vector`.
+
+[xinclude doxygen_container_raw_vector.xml]
 
 [endsect]
 
@@ -146,6 +142,8 @@ after the resize: `resize_preserve` and `resize_preserve_init`.
 
 Grid also offers a `data` function to access the underlying data by pointer.
 
+[xinclude doxygen_container_grid.xml]
+
 [endsect]
 
 [section array]
@@ -161,11 +159,13 @@ has no constructors or private data members.
 In addition to the new C++0x functionality, `fcppt::container::array` also
 has a `data()` function to access the array directly via a pointer.
 
+[xinclude doxygen_container_array.xml]
+
 [endsect]
 
 [section ptr_container helpers]
 
-boost.ptr_container is a library that provides containers like
+`boost.ptr_container` is a library that provides containers like
 the stdlib does but they instead hold pointers to elements and take ownership
 over the objects pointed to. This library is very useful for all sorts
 of cases where a normal container from the stdlib cannot work.
@@ -182,6 +182,8 @@ Here is a quick example on how to insert a `unique_ptr` into a `ptr_map`.
 [import ../examples/container/ptr.cpp]
 
 [container_ptr]
+
+[xinclude doxygen_container_ptr.xml]
 
 [endsect]
 
