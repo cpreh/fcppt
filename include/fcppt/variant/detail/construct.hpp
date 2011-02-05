@@ -23,7 +23,7 @@ class construct
 {
 	FCPPT_NONASSIGNABLE(
 		construct
-	)
+	);
 public:
 	typedef void result_type;
 

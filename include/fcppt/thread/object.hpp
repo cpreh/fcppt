@@ -28,7 +28,9 @@ namespace thread
 */
 class object
 {
-	FCPPT_NONCOPYABLE(object)
+	FCPPT_NONCOPYABLE(
+		object
+	);
 public:
 	/// Construct the thread and let it immediately run the task
 	FCPPT_SYMBOL object(

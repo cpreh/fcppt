@@ -19,7 +19,9 @@ namespace detail
 
 class outer_context_node
 {
-	FCPPT_NONASSIGNABLE(outer_context_node)
+	FCPPT_NONASSIGNABLE(
+		outer_context_node
+	);
 public:
 	explicit outer_context_node(
 		log::object &

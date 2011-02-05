@@ -20,7 +20,9 @@ namespace signal
 
 class connection_manager
 {
-	FCPPT_NONCOPYABLE(connection_manager)
+	FCPPT_NONCOPYABLE(
+		connection_manager
+	);
 public:
 	typedef std::vector<
 		shared_connection

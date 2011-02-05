@@ -34,7 +34,7 @@ class object
 {
 	FCPPT_NONCOPYABLE(
 		object
-	)
+	);
 public:
 	typedef Base<T> base;
 
@@ -98,7 +98,7 @@ class object<
 {
 	FCPPT_NONCOPYABLE(
 		object
-	)
+	);
 public:
 	typedef Base<T> base;
 

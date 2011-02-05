@@ -19,8 +19,11 @@ namespace log
 namespace detail
 {
 
-class auto_context {
-	FCPPT_NONCOPYABLE(auto_context)
+class auto_context
+{
+	FCPPT_NONCOPYABLE(
+		auto_context
+	);
 public:
 	auto_context(
 		context_location const &,

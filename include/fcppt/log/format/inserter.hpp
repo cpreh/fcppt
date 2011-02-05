@@ -8,6 +8,7 @@
 #define FCPPT_LOG_FORMAT_INSERTER_HPP_INCLUDED
 
 #include <fcppt/log/format/object.hpp>
+#include <fcppt/noncopyable.hpp>
 #include <fcppt/string.hpp>
 #include <fcppt/symbol.hpp>
 
@@ -21,8 +22,11 @@ namespace format
 /// A formatter that inserts text using fcppt::format
 class FCPPT_CLASS_SYMBOL inserter
 :
-	public object
+	public format::object
 {
+	FCPPT_NONCOPYABLE(
+		inserter
+	);
 public:
 	FCPPT_SYMBOL explicit inserter(
 		string const &format_string

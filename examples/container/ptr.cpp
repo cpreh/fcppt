@@ -19,7 +19,7 @@ struct noncopyable
 {
 	FCPPT_NONCOPYABLE(
 		noncopyable
-	)
+	);
 public:
 	noncopyable()
 	{

@@ -22,7 +22,9 @@ template<
 >
 class operation_wrapper
 {
-	FCPPT_NONASSIGNABLE(operation_wrapper)
+	FCPPT_NONASSIGNABLE(
+		operation_wrapper
+	);
 public:
 	typedef typename Operation::result_type result_type;
 

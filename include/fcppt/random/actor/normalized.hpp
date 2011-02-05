@@ -27,7 +27,9 @@ namespace actor
 */
 class normalized
 {
-	FCPPT_NONCOPYABLE(normalized)
+	FCPPT_NONCOPYABLE(
+		normalized
+	);
 public:
 	FCPPT_SYMBOL explicit normalized(
 		container const &

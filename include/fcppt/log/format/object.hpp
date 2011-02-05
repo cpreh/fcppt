@@ -26,7 +26,9 @@ namespace format
 */
 class FCPPT_CLASS_SYMBOL object
 {
-	FCPPT_NONCOPYABLE(object)
+	FCPPT_NONCOPYABLE(
+		object
+	);
 protected:
 	FCPPT_SYMBOL object();
 public:
