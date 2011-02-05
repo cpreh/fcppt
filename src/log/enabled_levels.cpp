@@ -13,11 +13,11 @@ fcppt::log::enabled_levels(
 	level::type const _level
 )
 {
-	enabled_level_array ret;
+	enabled_level_array ret = {{ false }};
 
 	FCPPT_FOREACH_ENUMERATOR(
 		index,
-		level
+		log::level
 	)
 		ret[
 			index
