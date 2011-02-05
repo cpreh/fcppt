@@ -1,8 +1,34 @@
 [section Changes]
 
-[h1 Changes from 0.3 to 0.4]
+[section Changes from 0.4 to 0.5]
 
-[h2 New functionality]
+[section New functionality]
+
+* Added `signal::connection_manager:assign`.
+* `FindFcppt.cmake` is now installed into `${CMAKE_INSTALL_PREFIX}/share/cmake/Modules`.
+* Added `type_traits::is_input_iterator`.
+* Added `EXTRA_CMAKE_MODULE_PATH` variable to extend the module path for fcppt.
+* Added `algorithm::remove` and `algorithm::remove_if` to wrap `std::remove_if` and `std::remove_if`.
+* Added `algorithm::ptr_container_erase_if`.
+* Added `math::box::has_dim` metafunction.
+* Added support for gcc-4.6's `pragma GCC diagnostic`.
+
+[endsect]
+
+[section Bugfixes]
+
+* Removed hard coded `Boost_USE_STATIC_LIBS` from the CMakeLists.
+* Fixed `container::raw_vector::insert` with Input Iterators.
+* Fixed `container::raw_vector::insert` for empty ranges.
+* Don't use GLOBS in the CMakeLists anymore.
+
+[endsect]
+
+[endsect]
+
+[section Changes from 0.3 to 0.4]
+
+[section New functionality]
 
 * Support clang.
 
@@ -69,14 +95,20 @@
 [h3 Other]
 * Added `scoped_state_machine`.
 
-[h2 Removed functionality]
+[endsect]
+
+[section Removed functionality]
+
 * Removed `log::global_context` as it was not needed by anything.
 * `auto_ptr` is no longer supported. `unique_ptr` should be used instead.
 * Removed `vector::cross` for 2D vectors.
 * Removed `assign::multi_array`.
 * Removed `<fcppt/tr1/array.hpp>`.
 
-[h2 Bugfixes]
+[endsect]
+
+[section Bugfixes]
+
 * Made more functions reentrant for the logger.
 * Ensure that a type deleted by `heap_deleter` is complete.
 * Fixed `container::tree::object::release()`.
@@ -87,7 +119,11 @@
 * Fixed `math::dim::content` to properly return a `value_type` and not a `size_type`.
 * `fcppt::signal::object<T>` (with `T!=void`) now properly folds the values returned by the callbacks and needs an initial result.
 
-[h1 Changes from 0.2 to 0.3]
+[endsect]
+
+[endsect]
+
+[section Changes from 0.2 to 0.3]
 
 * Added source groups for Visual Studio to make the generated project file actually useable. This will only work for Visual Studio 2010 if you use cmake-2.8.2 or later.
 * Removed the `FUNCTION_ONCE` macro. Static data members essentially make functions non reentrant, which is bad.
@@ -98,7 +134,9 @@
 * Changed the meaning of `matrix[i][j]` to be `[row][column]` to avoid confusion. As a side effect, the associativety of `matrix * matrix` has been reversed.
 * `matrix::delete_column_and_row` has been renamed to `matrix::delete_row_and_column`.
 
-[h1 Changes from 0.1 to 0.2]
+[endsect]
+
+[section Changes from 0.1 to 0.2]
 
 * Made all exceptions inline, so header only parts can be used without linking.
 * All string conversion functions now take an optional `std::locale` parameter (`from_std_string`, `to_std_string`, `narrow` and `widen`).
@@ -124,7 +162,9 @@
 * Refactored some `math` implementation macros so Doxygen gets less confused.
 * Added more test cases.
 
-[h2 Changes from 0.1 to 0.1.1]
+[endsect]
+
+[section Changes from 0.1 to 0.1.1]
 
 * Added `static.hpp` and `dynamic.hpp` to the linear algebra convenience headers (`vector/vector.hpp`, `dim/dim.hpp`, `matrix/matrix.hpp`).
 * Added `matrix::rotation_axis` - A function that calculates a matrix for rotation around an arbitrary axis.
@@ -133,5 +173,7 @@
 * Fixed a bug in the FindFcppt.cmake script.
 * Fixed some spelling errors in the documentation.
 * Corrected the git URL.
+
+[endsect]
 
 [endsect]
