@@ -177,7 +177,7 @@ make_fcppt_documentation(
 	preprocessor/fixme.hpp 
 	preprocessor/function.hpp 
 	preprocessor/message.hpp 
-	preprocessor/ppop_warning.hpp
+	preprocessor/pop_warning.hpp
 	preprocessor/pragma.hpp 
 	preprocessor/push_warning.hpp
 	preprocessor/todo.hpp
