@@ -43,15 +43,10 @@ You can, of course, also use `ccmake` to configure your installation.
 
 [h1 Using fcppt in your project]
 
-You can copy fcppt's FindFcppt.cmake, which resides directly in fcppt's source directory, into your
-cmake module directory.
-Example usage:
-
+Fcppt will also install FindFcppt.cmake into '${CMAKE_INSTALL_PREFIX}/share/cmake/Modules'.
+You can change your CMAKE_MODULE_PATH inside your project to point there, if it doesn't already.
+The find script can be used as follows.
 ``
-SET(
-	CMAKE_MODULE_PATH
-	"${CMAKE_SOURCE_DIR}/CMakeModules" #this is where FindFcppt.cmake is
-)
 
 FindPackage(
 	Fcppt
@@ -59,7 +54,6 @@ FindPackage(
 )
 
 INCLUDE_DIRECTORIES(${FCPPT_INCLUDE_DIRS})
-LINK_DIRECTORIES(${FCPPT_LIBRARY_DIRS})
 ADD_DEFINITIONS(${FCPPT_DEFINITIONS})
 
 ADD_EXECUTABLE(myproject main.cpp)
@@ -67,7 +61,7 @@ TARGET_LINK_LIBRARIES(myproject ${FCPPT_LIBRARIES})
 ``
 
 Also, if you don't use cmake in your project, there is a pkgconfig file
-that will be installed into the `prefix/lib/pkgconfig/`.
+that will be installed into the `${CMAKE_INSTALL_PREFIX}/lib/pkgconfig`.
 
 
 [h1 Static and shared builds]
@@ -80,5 +74,7 @@ while a shared library is the default for anything else.
 If you intend to use fcppt as a shared library within VC++,
 you need to set `FCPPT_WANT_DYN_LINK=ON` before including FindFcppt.cmake,
 which will add `/D FCPPT_DYN_LINK` to `FCPPT_DEFINITIONS`.
+
+If you want to link fcppt to Boost statically, you can set Boost_USE_STATIC_LIBS=ON.
 
 [endsect]

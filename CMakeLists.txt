@@ -889,6 +889,7 @@ SET(
 	include/fcppt/preprocessor/detail/function.hpp
 	include/fcppt/preprocessor/detail/message.hpp
 	include/fcppt/preprocessor/detail/stringize.hpp
+	include/fcppt/preprocessor/disable_gcc_warning.hpp
 	include/fcppt/preprocessor/disable_vc_warning.hpp
 	include/fcppt/preprocessor/enum_params_forward_z.hpp
 	include/fcppt/preprocessor/file.hpp
