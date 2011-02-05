@@ -9,15 +9,15 @@
 
 fcppt::string const
 fcppt::log::level_to_string(
-	level::type const level_
+	level::type const _level
 )
 {
 	return
-		level_strings()[
+		log::level_strings()[
 			static_cast<
 				level_string_array::size_type
 			>(
-				level_
+				_level
 			)
 		];
 }

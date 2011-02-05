@@ -16,30 +16,30 @@ FCPPT_PP_PUSH_WARNING
 FCPPT_PP_DISABLE_VC_WARNING(4355)
 
 fcppt::log::object::object(
-	parameters::all const &param_
+	parameters::all const &_param
 )
 :
 	parent_(
-		param_.parent()
+		_param.parent()
 	),
 	sink_(
-		param_.sink()
+		_param.sink()
 	),
 	auto_context_(
-		param_.context_location(),
+		_param.context_location(),
 		*this
 	),
 	formatter_(
-		param_.formatter()
+		_param.formatter()
 	),
 	enabled_(
-		param_.enabled()
+		_param.enabled()
 	),
 	level_streams_(
-		param_.level_streams()
+		_param.level_streams()
 	),
 	enabled_levels_(
-		param_.enabled_levels()
+		_param.enabled_levels()
 	)
 {
 }
@@ -47,85 +47,88 @@ fcppt::log::object::object(
 FCPPT_PP_POP_WARNING
 
 fcppt::log::object::~object()
-{}
+{
+}
 
 void
 fcppt::log::object::log(
-	level::type const level_,
-	detail::temporary_output const &helper
+	level::type const _level,
+	detail::temporary_output const &_helper
 )
 {
 	if(
-		!enabled()
-		|| !activated(level_)
+		!this->enabled()
+		|| !this->activated(_level)
 	)
 		return;
 
-	level_sink(level_).log(
-		helper,
-		formatter()
+	this->level_sink(
+		_level
+	).log(
+		_helper,
+		this->formatter()
 	);
 }
 
 fcppt::log::level_stream &
 fcppt::log::object::level_sink(
-	level::type const level_
+	level::type const _level
 )
 {
 	return
 		*level_streams_[
-			level_
+			_level
 		];
 }
 
 fcppt::log::level_stream const &
 fcppt::log::object::level_sink(
-	level::type const level_
+	level::type const _level
 ) const
 {
 	return
 		*level_streams_[
-			level_
+			_level
 		];
 }
 
 void
 fcppt::log::object::activate(
-	level::type const level_
+	level::type const _level
 )
 {
 	enabled_levels_[
-		level_
+		_level
 	] = true;
 }
 
 void
 fcppt::log::object::deactivate(
-	level::type const level_
+	level::type const _level
 )
 {
 	enabled_levels_[
-		level_
+		_level
 	] = false;
 }
 
 bool
 fcppt::log::object::activated(
-	level::type const level_
+	level::type const _level
 ) const
 {
 	return
 		enabled_levels_[
-			level_
+			_level
 		];
 }
 
 void
 fcppt::log::object::enable(
-	bool const b
+	bool const _enabled
 )
 {
-	enabled_ = b;
+	enabled_ = _enabled;
 }
 
 bool

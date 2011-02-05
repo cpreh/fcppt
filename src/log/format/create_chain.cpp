@@ -10,21 +10,21 @@
 
 fcppt::log::format::const_object_ptr const
 fcppt::log::format::create_chain(
-	const_object_ptr const parent,
-	const_object_ptr const child
+	const_object_ptr const _parent,
+	const_object_ptr const _child
 )
 {
-	if(!parent)
-		return child;
+	if(!_parent)
+		return _child;
 
-	if(!child)
-		return parent;
+	if(!_child)
+		return _parent;
 
 	return
-		make_shared_ptr<
-			chain
+		fcppt::make_shared_ptr<
+			format::chain
 		>(
-			parent,
-			child
+			_parent,
+			_child
 		);
 }

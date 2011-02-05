@@ -16,7 +16,9 @@ fcppt::log::format::chain::chain(
 	parent_(_parent),
 	child_(_child)
 {
-	if(!parent_ || !child_)
+	if(
+		!parent_ || !child_
+	)
 		throw fcppt::log::exception(
 			FCPPT_TEXT("format::chain(): one of the objects is zero!")
 		);

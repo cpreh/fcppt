@@ -15,8 +15,8 @@
 
 fcppt::log::location const
 fcppt::log::make_location(
-	string const &name,
-	char_type const delim
+	string const &_name,
+	char_type const _delim
 )
 {
 	typedef std::vector<
@@ -27,11 +27,11 @@ fcppt::log::make_location(
 
 	boost::algorithm::split(
 		elements,
-		name,
+		_name,
 		boost::is_any_of(
-			string(
+			fcppt::string(
 				1u,
-				delim
+				_delim
 			)
 		)
 	);
@@ -41,7 +41,7 @@ fcppt::log::make_location(
 	)
 		throw fcppt::log::exception(
 			FCPPT_TEXT("Invalid log location \"")
-			+ name
+			+ _name
 			+ FCPPT_TEXT("\". It has no elements after split.")
 		);
 	

@@ -32,7 +32,7 @@ public:
 private:
 	shared_ptr<
 		io::ostringstream
-	> os;
+	> stream_;
 
 	template<
 		typename T
@@ -50,10 +50,10 @@ template<
 temporary_output const
 operator<<(
 	output_helper const &,
-	T const &t
+	T const &_arg
 )
 {
-	return temporary_output() << t;
+	return detail::temporary_output() << _arg;
 }
 
 template<
@@ -61,13 +61,17 @@ template<
 >
 temporary_output const
 operator<<(
-	temporary_output const &s,
-	T const &t
+	temporary_output const &_temp,
+	T const &_arg
 )
 {
-	temporary_output n(s);
-	*n.os << t;
-	return n;
+	temporary_output new_temp(
+		_temp
+	);
+
+	*new_temp.stream_ << _arg;
+
+	return new_temp;
 }
 
 }

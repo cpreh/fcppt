@@ -13,15 +13,15 @@
 
 fcppt::log::detail::context_tree::iterator
 fcppt::log::find_logger_node(
-	detail::context_tree &tree_
+	detail::context_tree &_tree
 )
 {
 	return
 		std::find_if(
-			tree_.begin(),
-			tree_.end(),
+			_tree.begin(),
+			_tree.end(),
 			std::tr1::bind(
-				is_outer_node,
+				log::is_outer_node,
 				std::tr1::placeholders::_1
 			)
 		);

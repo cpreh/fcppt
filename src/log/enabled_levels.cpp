@@ -16,12 +16,13 @@ fcppt::log::enabled_levels(
 	enabled_level_array ret;
 
 	FCPPT_FOREACH_ENUMERATOR(
-		i,
+		index,
 		level
 	)
 		ret[
-			i
-		] = _level <= i;
+			index
+		] =
+			_level <= index;
 
 	return ret;
 }

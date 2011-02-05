@@ -9,8 +9,8 @@
 
 fcppt::log::detail::temporary_output::temporary_output()
 :
-	os(
-		make_shared_ptr<
+	stream_(
+		fcppt::make_shared_ptr<
 			io::ostringstream
 		>()
 	)
@@ -19,5 +19,5 @@ fcppt::log::detail::temporary_output::temporary_output()
 fcppt::string const
 fcppt::log::detail::temporary_output::result() const
 {
-	return os->str();
+	return stream_->str();
 }

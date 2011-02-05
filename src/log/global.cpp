@@ -14,7 +14,7 @@
 namespace
 {
 
-fcppt::log::object global_(
+fcppt::log::object global_log(
 	fcppt::log::parameters::root(
 		fcppt::io::cout
 	)
@@ -35,5 +35,5 @@ fcppt::log::object global_(
 fcppt::log::object &
 fcppt::log::global()
 {
-	return global_;
+	return global_log;
 }

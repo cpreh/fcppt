@@ -6,15 +6,15 @@
 
 #include "level_strings.hpp"
 #include "level_string_array.hpp"
+#include <fcppt/log/exception.hpp>
 #include <fcppt/log/level_from_string.hpp>
 #include <fcppt/text.hpp>
-#include <fcppt/exception.hpp>
 #include <algorithm>
 #include <iterator>
 
 fcppt::log::level::type
 fcppt::log::level_from_string(
-	string const &str
+	string const &_str
 )
 {
 	level_string_array const level_strings(
@@ -25,16 +25,16 @@ fcppt::log::level_from_string(
 		std::find(
 			level_strings.begin(),
 			level_strings.end(),
-			str
+			_str
 		)
 	);
 
 	if(
 		it == level_strings.end()
 	)
-		throw exception(
+		throw log::exception(
 			FCPPT_TEXT("level_from_string(): \"")
-			+ str
+			+ _str
 			+ FCPPT_TEXT("\" not found!")
 		);
 

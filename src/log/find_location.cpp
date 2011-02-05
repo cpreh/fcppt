@@ -12,24 +12,24 @@
 
 fcppt::log::detail::context_tree *
 fcppt::log::find_location(
-	detail::context_tree &tree_,
-	location const &location_
+	detail::context_tree &_tree,
+	log::location const &_location
 )
 {
 	detail::context_tree *cur(
-		&tree_
+		&_tree
 	);
 
 	for(
 		location::const_iterator item(
-			location_.begin()
+			_location.begin()
 		);
-		item != location_.end();
+		item != _location.end();
 		++item
 	)
 	{
 		detail::context_tree::iterator const item_it(
-			find_inner_node(
+			log::find_inner_node(
 				*cur,
 				*item
 			)

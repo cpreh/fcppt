@@ -10,13 +10,13 @@
 
 void
 fcppt::log::activate_levels(
-	object &object_,
-	level::type const level_
+	log::object &_object,
+	level::type const _level
 )
 {
-	set_levels(
-		object_,
-		level_,
+	log::set_levels(
+		_object,
+		_level,
 		&object::activate
 	);
 }
