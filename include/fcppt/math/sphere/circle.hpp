@@ -28,7 +28,9 @@ struct circle
 		2
 	> type;
 
-	FCPPT_RESTRICT_TYPEDEF_STRUCT(circle)
+	FCPPT_RESTRICT_TYPEDEF_STRUCT(
+		circle
+	);
 };
 
 }

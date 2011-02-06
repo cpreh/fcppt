@@ -28,7 +28,9 @@ struct rect
 		2
 	> type;
 
-	FCPPT_RESTRICT_TYPEDEF_STRUCT(rect)
+	FCPPT_RESTRICT_TYPEDEF_STRUCT(
+		rect
+	);
 };
 
 }

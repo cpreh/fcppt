@@ -29,7 +29,9 @@ struct static_storage
 		N
 	> type;
 
-	FCPPT_RESTRICT_TYPEDEF_STRUCT(static_storage)
+	FCPPT_RESTRICT_TYPEDEF_STRUCT(
+		static_storage
+	);
 };
 
 }
