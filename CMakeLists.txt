@@ -995,6 +995,9 @@ SET(
 	include/fcppt/scoped_ptr_fwd.hpp
 	include/fcppt/scoped_ptr_impl.hpp
 	include/fcppt/scoped_state_machine.hpp
+	include/fcppt/scoped_state_machine_decl.hpp
+	include/fcppt/scoped_state_machine_fwd.hpp
+	include/fcppt/scoped_state_machine_impl.hpp
 	include/fcppt/shared_ptr.hpp
 	include/fcppt/shared_ptr_decl.hpp
 	include/fcppt/shared_ptr_fwd.hpp
