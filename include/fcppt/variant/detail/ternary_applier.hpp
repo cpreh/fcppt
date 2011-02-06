@@ -49,7 +49,7 @@ public:
 	) const
 	{
 		return
-			op(
+			op_(
 				_t1,
 				t2_,
 				t3_

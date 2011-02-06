@@ -15,11 +15,11 @@ namespace fcppt
 namespace variant
 {
 
-/// Does a unary visitation with operation @a op
+/// Does a unary visitation with operation @a _op
 /**
- * This will call @a op::operator()(t)
- * where t is the object held by @a obj 
- * @return The result of @a op::operator().
+ * This will call @a _op::operator()(t)
+ * where t is the object held by @a _obj 
+ * @return The result of @a _op::operator().
 */
 template<
 	typename Operation,
@@ -27,8 +27,8 @@ template<
 >
 typename Operation::result_type
 apply_unary(
-	Operation const &op,
-	Variant const &obj
+	Operation const &_op,
+	Variant const &_obj
 )
 {
 	return
@@ -36,9 +36,9 @@ apply_unary(
 			detail::operation_wrapper<
 				Operation
 			>(
-				op
+				_op
 			),
-			obj
+			_obj
 		);
 }
 
