@@ -477,6 +477,8 @@ SET(
 	include/fcppt/container/tree/tree.hpp
 	include/fcppt/detail/char_type.hpp
 	include/fcppt/detail/make_ptr_base.hpp
+	include/fcppt/detail/make_shared_wrapper.hpp
+	include/fcppt/detail/make_shared_wrapper_fwd.hpp
 	include/fcppt/detail/process_assert.hpp
 	include/fcppt/detail/strong_typedef_cast.hpp
 	include/fcppt/detail_unique_ptr/one_two.hpp

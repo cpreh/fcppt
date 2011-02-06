@@ -4,21 +4,20 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_MAKE_UNIQUE_PTR_HPP_INCLUDED
-#define FCPPT_MAKE_UNIQUE_PTR_HPP_INCLUDED
-
-#include <fcppt/unique_ptr.hpp>
-#include <fcppt/detail/make_ptr_base.hpp>
+#ifndef FCPPT_DETAIL_MAKE_SHARED_WRAPPER_FWD_HPP_INCLUDED
+#define FCPPT_DETAIL_MAKE_SHARED_WRAPPER_FWD_HPP_INCLUDED
 
 namespace fcppt
 {
+namespace detail
+{
 
-FCPPT_DETAIL_MAKE_PTR_BASE(
-	unique_ptr,
-	unique_ptr,
-	new Type
-)
+template<
+	typename T
+>
+class make_shared_wrapper;
 
+}
 }
 
 #endif

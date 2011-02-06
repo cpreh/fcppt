@@ -44,6 +44,9 @@ The correct solution is to use another function that is evaluated first.
 
 [sharedptr_make]
 
+[note This is also an opportunity for optimzation. The allocated object
+and the counter of the `shared_ptr` can be put into the same memory block.]
+
 [endsect]
 
 [section Casts]
