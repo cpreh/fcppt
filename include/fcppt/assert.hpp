@@ -21,6 +21,6 @@ if (!(cond))\
 		FCPPT_PP_FUNCTION,\
 		FCPPT_PP_STRINGIZE(cond),\
 		FCPPT_PP_STRINGIZE("")\
-	);
+	)
 
 #endif
