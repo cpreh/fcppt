@@ -25,7 +25,7 @@ namespace vector
 /// Calculates the relative angle between two vectors
 /**
  * @tparam T must be a floating point type
- * The behaviour is undefined if length(_from - _to) == 0
+ * The behaviour is undefined if _from or _to are very close to zero
 */
 template<
 	typename T,
