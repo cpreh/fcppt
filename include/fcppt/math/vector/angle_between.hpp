@@ -51,9 +51,11 @@ angle_between(
 				_to
 			)
 			/
+			(
 			vector::length(
-				_from
-				- _to
+				_from) * 
+			vector::length(
+				_to)
 			)
 		);
 }

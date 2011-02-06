@@ -25,7 +25,7 @@ class ternary_applier
 {
 	FCPPT_NONASSIGNABLE(
 		ternary_applier
-	)
+	);
 public:
 	typedef typename Operation::result_type result_type;
 
