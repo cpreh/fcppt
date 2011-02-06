@@ -26,7 +26,7 @@ class ternary_unwrap
 {
 	FCPPT_NONASSIGNABLE(
 		ternary_unwrap
-	)
+	);
 public:
 	typedef typename Operation::result_type result_type;
 
