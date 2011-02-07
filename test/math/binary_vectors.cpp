@@ -7,9 +7,13 @@
 #include <fcppt/math/generate_binary_vectors.hpp>
 #include <fcppt/math/vector/comparison.hpp>
 #include <fcppt/math/vector/output.hpp>
+#include <fcppt/math/vector/basic_impl.hpp>
+#include <fcppt/math/vector/static.hpp>
 #include <boost/test/unit_test.hpp>
 #include <boost/foreach.hpp>
 #include <iostream>
+#include <iterator>
+#include <vector>
 
 BOOST_AUTO_TEST_CASE(
 	binary_vectors)
@@ -23,11 +27,19 @@ BOOST_AUTO_TEST_CASE(
 	vector3;
 
 	typedef
-	std::vector<vector2>
+	fcppt::container::array
+	<
+		vector2,
+		4
+	>
 	vector2_container;
 
 	typedef
-	std::vector<vector3>
+	fcppt::container::array
+	<
+		vector3,
+		8
+	>
 	vector3_container;
 
 	std::cout << "Generating 2D binary vectors...\n";
@@ -43,8 +55,6 @@ BOOST_AUTO_TEST_CASE(
 
 	std::cout << "Now checking...\n";
 
-	BOOST_CHECK(
-		result2.size() == static_cast<vector2_container::size_type>(4));
 	BOOST_CHECK(
 		result2[0] == vector2(0,0));
 	BOOST_CHECK(

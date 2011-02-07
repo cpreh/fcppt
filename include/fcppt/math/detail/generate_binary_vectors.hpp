@@ -11,7 +11,7 @@ namespace math
 {
 namespace detail
 {
-template<fcppt::math::size_type N,typename ResultVector>
+template<fcppt::math::size_type N,typename ForwardIterator,typename Vector>
 typename
 boost::enable_if_c
 <
@@ -19,22 +19,22 @@ boost::enable_if_c
 	void
 >::type
 generate_binary_vectors(
-	ResultVector &vs,
-	typename ResultVector::value_type v)
+	ForwardIterator &it,
+	Vector v)
 {
-	v[N] = 
-		static_cast<typename ResultVector::value_type::value_type>(
+	v[static_cast<std::size_t>(N)] = 
+		static_cast<typename Vector::value_type>(
 			0);
-	vs.push_back(
-		v);
-	v[N] = 
-		static_cast<typename ResultVector::value_type::value_type>(
+	*it++ = 
+		v;
+	v[static_cast<std::size_t>(N)] = 
+		static_cast<typename Vector::value_type>(
 			1);
-	vs.push_back(
-		v);
+	*it++ = 
+		v;
 }
 
-template<fcppt::math::size_type N,typename ResultVector>
+template<fcppt::math::size_type N,typename ForwardIterator,typename Vector>
 typename
 boost::enable_if_c
 <
@@ -42,16 +42,20 @@ boost::enable_if_c
 	void
 >::type
 generate_binary_vectors(
-	ResultVector &vs,
-	typename ResultVector::value_type v)
+	ForwardIterator &it,
+	Vector v)
 {
-	v[N] = 0;
-	fcppt::math::detail::generate_binary_vectors<static_cast<fcppt::math::size_type>(N-1)>(
-		vs,
+	v[static_cast<std::size_t>(N)] = 
+		static_cast<typename Vector::value_type>(
+			0);
+	fcppt::math::detail::generate_binary_vectors<static_cast<fcppt::math::size_type>(N-1),ForwardIterator,Vector>(
+		it,
 		v);
-	v[N] = 1;
-	fcppt::math::detail::generate_binary_vectors<static_cast<fcppt::math::size_type>(N-1)>(
-		vs,
+	v[static_cast<std::size_t>(N)] = 
+		static_cast<typename Vector::value_type>(
+			1);
+	fcppt::math::detail::generate_binary_vectors<static_cast<fcppt::math::size_type>(N-1),ForwardIterator,Vector>(
+		it,
 		v);
 }
 }
