@@ -35,7 +35,9 @@ struct dynamic
 		>::type
 	> type;
 
-	FCPPT_RESTRICT_TYPEDEF_STRUCT(dynamic)
+	FCPPT_RESTRICT_TYPEDEF_STRUCT(
+		dynamic
+	);
 };
 
 }
