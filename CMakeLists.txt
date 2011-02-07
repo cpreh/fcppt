@@ -657,6 +657,7 @@ SET(
 	include/fcppt/math/box/center.hpp
 	include/fcppt/math/box/contains.hpp
 	include/fcppt/math/box/contains_point.hpp
+	include/fcppt/math/box/corner_points.hpp
 	include/fcppt/math/box/extend_bounding_box.hpp
 	include/fcppt/math/box/has_dim.hpp
 	include/fcppt/math/box/intersection.hpp
@@ -684,6 +685,7 @@ SET(
 	include/fcppt/math/detail/dynamic_size.hpp
 	include/fcppt/math/detail/dynamic_storage.hpp
 	include/fcppt/math/detail/fill.hpp
+	include/fcppt/math/detail/generate_binary_vectors.hpp
 	include/fcppt/math/detail/has_size.hpp
 	include/fcppt/math/detail/initial_size.hpp
 	include/fcppt/math/detail/is_static_storage.hpp
@@ -735,6 +737,7 @@ SET(
 	include/fcppt/math/dim/static.hpp
 	include/fcppt/math/dim/structure_cast.hpp
 	include/fcppt/math/exception.hpp
+	include/fcppt/math/generate_binary_vectors.hpp
 	include/fcppt/math/impl/exception.hpp
 	include/fcppt/math/instantiate_arithmetic.hpp
 	include/fcppt/math/inverse.hpp
