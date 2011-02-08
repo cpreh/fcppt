@@ -9,6 +9,7 @@
 
 #include <fcppt/math/detail/static_storage.hpp>
 #include <fcppt/math/size_type.hpp>
+#include <fcppt/restrict_typedef_struct.hpp>
 
 namespace fcppt
 {
@@ -30,7 +31,11 @@ math::detail::static_storage<
 	T,
 	N * M
 >
-{};
+{
+	FCPPT_RESTRICT_TYPEDEF_STRUCT(
+		static_storage
+	);
+};
 
 }
 }
