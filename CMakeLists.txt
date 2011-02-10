@@ -443,6 +443,10 @@ SET(
 	include/fcppt/container/impl/insert_failed.hpp
 	include/fcppt/container/impl/not_found.hpp
 	include/fcppt/container/impl/out_of_range.hpp
+	include/fcppt/container/index_map.hpp
+	include/fcppt/container/index_map_decl.hpp
+	include/fcppt/container/index_map_fwd.hpp
+	include/fcppt/container/index_map_impl.hpp
 	include/fcppt/container/insert_failed.hpp
 	include/fcppt/container/is_raw_vector.hpp
 	include/fcppt/container/is_std_vector.hpp
