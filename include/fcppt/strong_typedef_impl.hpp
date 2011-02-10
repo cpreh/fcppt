@@ -164,6 +164,26 @@ template<
 	typename T,
 	typename Tag
 >
+bool
+fcppt::operator!=(
+	strong_typedef<
+		T,
+		Tag
+	> const &_left,
+	strong_typedef<
+		T,
+		Tag
+	> const &_right
+)
+{
+	return
+		!(_left == _right);
+}
+
+template<
+	typename T,
+	typename Tag
+>
 void
 fcppt::strong_typedef<
 	T,

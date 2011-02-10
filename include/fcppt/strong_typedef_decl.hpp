@@ -78,6 +78,16 @@ template<
 	typename T,
 	typename Tag
 >
+bool
+operator!=(
+	strong_typedef<T, Tag> const &,
+	strong_typedef<T, Tag> const &
+);
+
+template<
+	typename T,
+	typename Tag
+>
 void
 swap(
 	strong_typedef<T, Tag> &,
