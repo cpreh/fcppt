@@ -19,8 +19,9 @@ fcppt::strong_typedef<
 	Tag
 >::strong_typedef()
 :
-	t()
-{}
+	value_()
+{
+}
 
 template<
 	typename T,
@@ -33,17 +34,18 @@ fcppt::strong_typedef<
 	T,
 	Tag
 >::strong_typedef(
-	U const &u
+	U const &_other
 )
 :
-	t(
+	value_(
 		detail::strong_typedef_cast<
 			T
 		>(
-			u
+			_other
 		)
 	)
-{}
+{
+}
 
 template<
 	typename T,
@@ -60,14 +62,14 @@ fcppt::strong_typedef<
 	T,
 	Tag
 >::operator=(
-	U const &u
+	U const &_other
 )
 {
-	t =
+	value_ =
 		detail::strong_typedef_cast<
 			T
 		>(
-			u
+			_other
 		);
 
 	return *this;
@@ -83,7 +85,7 @@ fcppt::strong_typedef<
 	Tag
 >::get()
 {
-	return t;
+	return value_;
 }
 
 template<
@@ -96,68 +98,7 @@ fcppt::strong_typedef<
 	Tag
 >::get() const
 {
-	return t;
-}
-
-template<
-	typename T,
-	typename Tag
->
-fcppt::strong_typedef<
-	T,
-	Tag
->::operator T &()
-{
-	return t;
-}
-
-template<
-	typename T,
-	typename Tag
->
-fcppt::strong_typedef<
-	T,
-	Tag
->::operator T const &() const
-{
-	return t;
-}
-
-
-template<
-	typename T,
-	typename Tag
->
-bool
-fcppt::strong_typedef<
-	T,
-	Tag
->::operator < (
-	strong_typedef<
-		T,
-		Tag
-	> const &other
-) const
-{
-	return t < other.t;
-}
-
-template<
-	typename T,
-	typename Tag
->
-bool
-fcppt::strong_typedef<
-	T,
-	Tag
->::operator == (
-	strong_typedef<
-		T,
-		Tag
-	> const &other
-) const
-{
-	return t == other.t;
+	return value_;
 }
 
 template<
@@ -172,13 +113,73 @@ fcppt::strong_typedef<
 	strong_typedef<
 		T,
 		Tag
-	> &other_
+	> &_other
 )
 {
 	std::swap(
-		t,
-		other_.t
+		value_,
+		_other.value_
 	);
+}
+
+template<
+	typename T,
+	typename Tag
+>
+bool
+fcppt::operator<(
+	strong_typedef<
+		T,
+		Tag
+	> const &_a,
+	strong_typedef<
+		T,
+		Tag
+	> const &_b
+)
+{
+	return
+		_a.get() < _b.get();
+}
+
+template<
+	typename T,
+	typename Tag
+>
+bool
+fcppt::operator==(
+	strong_typedef<
+		T,
+		Tag
+	> const &_a,
+	strong_typedef<
+		T,
+		Tag
+	> const &_b
+)
+{
+	return
+		_a.get() == _b.get();
+}
+
+template<
+	typename T,
+	typename Tag
+>
+bool
+fcppt::operator!=(
+	strong_typedef<
+		T,
+		Tag
+	> const &_a,
+	strong_typedef<
+		T,
+		Tag
+	> const &_b
+)
+{
+	return
+		!(_a == _b);
 }
 
 template<
@@ -190,14 +191,16 @@ fcppt::swap(
 	strong_typedef<
 		T,
 		Tag
-	> &a,
+	> &_a,
 	strong_typedef<
 		T,
 		Tag
-	> &b
+	> &_b
 )
 {
-	a.swap(b);
+	_a.swap(
+		_b
+	);
 }
 
 #endif

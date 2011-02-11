@@ -151,7 +151,7 @@ controlling text alignment, which of the bools controls the vertical alignment
 and which one controls the horizontal alignment? You cannot deduce that from
 looking at the code, you have to look at the declaration. There's another, more
 subtle, problem with this code. Say your memory is tainted and you think you
-have to specify the alignment stuff first, then the font size, so you write:
+have to specify the font size first, then the alignment stuff, so you write:
 
 ``
 draw_text("Hello World",15,true,false);
@@ -214,7 +214,7 @@ enum type
 }
 ``
 
-Now the create function declaration and it's call look like:
+Now the create function declaration and its call look like:
 
 ``
 player_shape create(shape::type);
@@ -439,7 +439,7 @@ Note that the use of a leading underscore is permitted by the standard.
 
 As you have seen in the previous section, we name our setter and getter
 functions like the variable's name (without set_ or get_). This however can
-introduce a subtle problem when types have the same name like the setter or
+introduce a subtle problem when types have the same name as the setter or
 getter.
 
 ``

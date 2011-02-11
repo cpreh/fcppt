@@ -4,18 +4,23 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_STRONG_TYPEDEF_FWD_HPP_INCLUDED
-#define FCPPT_STRONG_TYPEDEF_FWD_HPP_INCLUDED
+#ifndef FCPPT_CONTAINER_INDEX_MAP_FWD_HPP_INCLUDED
+#define FCPPT_CONTAINER_INDEX_MAP_FWD_HPP_INCLUDED
+
+#include <memory>
 
 namespace fcppt
+{
+namespace container
 {
 
 template<
 	typename T,
-	typename Tag
+	typename A = std::allocator<T>
 >
-class strong_typedef;
+class index_map;
 
+}
 }
 
 #endif

@@ -13,9 +13,11 @@ SET (CMAKE_MODULE_PATH "${EXTRA_CMAKE_MODULE_PATH};${CMAKE_SOURCE_DIR}/CMakeModu
 PROJECT (fcppt)
 
 SET (FCPPT_MAJOR_VERSION 0)
-SET (FCPPT_MINOR_VERSION 5)
+SET (FCPPT_MINOR_VERSION 6)
 SET (FCPPT_MICRO_VERSION 0)
+
 SET (FCPPT_VERSION "${FCPPT_MAJOR_VERSION}.${FCPPT_MINOR_VERSION}.${FCPPT_MICRO_VERSION}")
+
 MATH (
 	EXPR
 	FCPPT_INT_VERSION
@@ -443,6 +445,10 @@ SET(
 	include/fcppt/container/impl/insert_failed.hpp
 	include/fcppt/container/impl/not_found.hpp
 	include/fcppt/container/impl/out_of_range.hpp
+	include/fcppt/container/index_map.hpp
+	include/fcppt/container/index_map_decl.hpp
+	include/fcppt/container/index_map_fwd.hpp
+	include/fcppt/container/index_map_impl.hpp
 	include/fcppt/container/insert_failed.hpp
 	include/fcppt/container/is_raw_vector.hpp
 	include/fcppt/container/is_std_vector.hpp
@@ -475,6 +481,7 @@ SET(
 	include/fcppt/container/tree/object_impl.hpp
 	include/fcppt/container/tree/pre_order.hpp
 	include/fcppt/container/tree/tree.hpp
+	include/fcppt/detail/assert_impl.hpp
 	include/fcppt/detail/char_type.hpp
 	include/fcppt/detail/make_ptr_base.hpp
 	include/fcppt/detail/make_shared_wrapper.hpp
@@ -887,6 +894,7 @@ SET(
 	include/fcppt/nonassignable.hpp
 	include/fcppt/noncopyable.hpp
 	include/fcppt/optional.hpp
+	include/fcppt/optional_comparison.hpp
 	include/fcppt/optional_decl.hpp
 	include/fcppt/optional_fwd.hpp
 	include/fcppt/optional_impl.hpp

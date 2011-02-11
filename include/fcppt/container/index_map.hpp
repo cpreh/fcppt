@@ -4,11 +4,11 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_ASSERT_COMPLETE_HPP_INCLUDED
-#define FCPPT_ASSERT_COMPLETE_HPP_INCLUDED
+#ifndef FCPPT_CONTAINER_INDEX_MAP_HPP_INCLUDED
+#define FCPPT_CONTAINER_INDEX_MAP_HPP_INCLUDED
 
-/// Assert at compile time that a type is complete
-#define FCPPT_ASSERT_COMPLETE(type)\
-static_cast<void>(sizeof(type))
+#include <fcppt/container/index_map_fwd.hpp>
+#include <fcppt/container/index_map_decl.hpp>
+#include <fcppt/container/index_map_impl.hpp>
 
 #endif
