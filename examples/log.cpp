@@ -57,7 +57,9 @@ try
 		)
 	);
 
-	FCPPT_ASSERT(ref);
+	FCPPT_ASSERT(
+		ref != 0
+	);
 
 	FCPPT_LOG_INFO(
 		*ref,
@@ -74,7 +76,9 @@ try
 		)
 	);
 
-	FCPPT_ASSERT(child_ref);
+	FCPPT_ASSERT(
+		child_ref != 0
+	);
 
 	fcppt::io::cout
 		<< FCPPT_TEXT("location of child: ")

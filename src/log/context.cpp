@@ -106,7 +106,7 @@ fcppt::log::context::remove(
 	);
 
 	FCPPT_ASSERT(
-		node
+		node != 0
 	);
 
 	detail::context_tree::iterator const logger_node(

@@ -8,6 +8,7 @@
 #define FCPPT_ASSERT_HPP_INCLUDED
 
 #include <fcppt/assert_message.hpp>
+#include <fcppt/text.hpp>
 
 /// Runtime assert macro that throws fcppt::assertion_failed if the condition does not hold
 #define FCPPT_ASSERT(\
@@ -15,7 +16,7 @@
 )\
 FCPPT_ASSERT_MESSAGE(\
 	condition,\
-	""\
+	FCPPT_TEXT("")\
 )
 
 #endif

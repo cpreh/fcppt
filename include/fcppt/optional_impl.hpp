@@ -8,6 +8,9 @@
 #define FCPPT_OPTIONAL_IMPL_HPP_INCLUDED
 
 #include <fcppt/optional_decl.hpp>
+#include <fcppt/preprocessor/disable_vc_warning.hpp>
+#include <fcppt/preprocessor/pop_warning.hpp>
+#include <fcppt/preprocessor/push_warning.hpp>
 #include <new>
 
 template<
@@ -31,6 +34,9 @@ fcppt::optional<T>::optional(
 	data_(0)
 {
 }
+
+FCPPT_PP_PUSH_WARNING
+FCPPT_PP_DISABLE_VC_WARNING(4355)
 
 template<
 	typename T
@@ -63,6 +69,8 @@ fcppt::optional<T>::optional(
 	)
 {
 }
+
+FCPPT_PP_POP_WARNING
 
 template<
 	typename T
@@ -182,13 +190,12 @@ fcppt::optional<T>::construct(
 )
 {
 	return
-		data_ =
-			new (
-				storage_.data()
-			)
-			T(
-				_other
-			);
+		new (
+			storage_.data()
+		)
+		T(
+			_other
+		);
 }
 
 template<
