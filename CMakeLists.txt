@@ -481,7 +481,6 @@ SET(
 	include/fcppt/container/tree/object_impl.hpp
 	include/fcppt/container/tree/pre_order.hpp
 	include/fcppt/container/tree/tree.hpp
-	include/fcppt/detail/assert_impl.hpp
 	include/fcppt/detail/char_type.hpp
 	include/fcppt/detail/make_ptr_base.hpp
 	include/fcppt/detail/make_shared_wrapper.hpp

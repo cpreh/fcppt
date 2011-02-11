@@ -30,7 +30,6 @@
 
 [section Bugfixes]
 
-* `FCPPT_ASSERT` and `FCPPT_ASSERT_MESSAGE` don't hide an if block anymore.
 * `fcppt::make_shared_ptr` is now a wrapper around `boost::make_shared` which improves performance.
 * Fixed `variant::apply_ternary` which was previously broken.
 * Fixed `math::vector::angle_between`. It now ...
