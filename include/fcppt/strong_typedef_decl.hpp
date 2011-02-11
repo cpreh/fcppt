@@ -35,7 +35,7 @@ public:
 		typename U
 	>
 	explicit strong_typedef(
-		U const &t
+		U const &
 	);
 
 	template<
@@ -52,27 +52,33 @@ public:
 	T const &
 	get() const;
 
-	operator T &();
-
-	operator T const &() const;
-
-	bool
-	operator< (
-		strong_typedef const &
-	) const;
-
-	bool
-	operator== (
-		strong_typedef const &
-	) const;
-
 	void
 	swap(
 		strong_typedef &
 	);
 private:
-	T t;
+	T value_;
 };
+
+template<
+	typename T,
+	typename Tag
+>
+bool
+operator<(
+	strong_typedef<T, Tag> const &,
+	strong_typedef<T, Tag> const &
+);
+
+template<
+	typename T,
+	typename Tag
+>
+bool
+operator==(
+	strong_typedef<T, Tag> const &,
+	strong_typedef<T, Tag> const &
+);
 
 template<
 	typename T,

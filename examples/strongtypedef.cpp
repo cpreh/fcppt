@@ -47,7 +47,7 @@ g()
 FCPPT_MAKE_STRONG_TYPEDEF(
 	int,
 	strong_int2
-)
+);
 //]
 
 template class fcppt::strong_typedef<
