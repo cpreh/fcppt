@@ -797,6 +797,7 @@ SET(
 	include/fcppt/math/matrix/structure_cast.hpp
 	include/fcppt/math/matrix/translation.hpp
 	include/fcppt/math/matrix/transpose.hpp
+	include/fcppt/math/matrix/unproject.hpp
 	include/fcppt/math/matrix/vector.hpp
 	include/fcppt/math/mod.hpp
 	include/fcppt/math/mod_assign.hpp
