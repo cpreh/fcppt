@@ -7,7 +7,14 @@
 #include <fcppt/optional.hpp>
 #include <boost/test/unit_test.hpp>
 
-BOOST_AUTO_TEST_CASE(optional)
+template class
+fcppt::optional<
+	int
+>;
+
+BOOST_AUTO_TEST_CASE(
+	optional
+)
 {
 	typedef fcppt::optional<
 		int
@@ -41,5 +48,48 @@ BOOST_AUTO_TEST_CASE(optional)
 
 	BOOST_REQUIRE(
 		!test
+	);
+}
+
+BOOST_AUTO_TEST_CASE(
+	optional_comparison
+)
+{
+	typedef fcppt::optional<
+		int
+	> optional_int;
+
+	optional_int const test1(
+		1
+	);
+
+	optional_int const test2(
+		2
+	);
+
+	optional_int const test3;
+
+	BOOST_CHECK(
+		test1 != test2
+	);
+
+	BOOST_CHECK(
+		test2 != test1
+	);
+
+	BOOST_CHECK(
+		test1 == test1
+	);
+
+	BOOST_CHECK(
+		test1 != test3
+	);
+
+	BOOST_CHECK(
+		test3 != test1
+	);
+
+	BOOST_CHECK(
+		test3 == test3
 	);
 }

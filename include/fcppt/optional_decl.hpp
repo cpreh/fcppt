@@ -21,12 +21,18 @@ template<
 >
 class optional
 {
-	FCPPT_SAFE_BOOL(optional)
+	FCPPT_SAFE_BOOL(
+		optional
+	)
 public:
 	typedef T value_type;
+
 	typedef T &reference;
+
 	typedef T const &const_reference;
+
 	typedef T *pointer;
+
 	typedef T const *const_pointer;
 
 	optional();
@@ -100,6 +106,7 @@ private:
 	>::type storage_type;
 
 	storage_type storage_;
+
 	pointer data_;
 };
 

@@ -17,7 +17,8 @@ fcppt::optional<T>::optional()
 :
 	storage_(),
 	data_(0)
-{}
+{
+}
 
 template<
 	typename T
@@ -28,48 +29,56 @@ fcppt::optional<T>::optional(
 :
 	storage_(),
 	data_(0)
-{}
+{
+}
 
 template<
 	typename T
 >
 fcppt::optional<T>::optional(
-	const_reference ref
+	const_reference _other
 )
 :
 	storage_(),
 	data_(
-		optional::construct(
-			ref
+		this->construct(
+			_other
 		)
 	)
-{}
+{
+}
 
 template<
 	typename T
 >
 fcppt::optional<T>::optional(
-	optional const &o
+	optional const &_other
 )
 :
 	storage_(),
 	data_(
-		optional::construct(
-			o
+		this->construct(
+			_other
 		)
 	)
-{}
+{
+}
 
 template<
 	typename T
 >
 fcppt::optional<T> &
 fcppt::optional<T>::operator=(
-	optional const &o
+	optional const &_other
 )
 {
-	optional::destroy();
-	data_ = optional::construct(o);
+	this->destroy();
+
+	data_ =
+		this->construct(
+			_other
+		);
+
 	return *this;
 }
 
@@ -78,11 +87,16 @@ template<
 >
 fcppt::optional<T> &
 fcppt::optional<T>::operator=(
-	const_reference r
+	const_reference _other
 )
 {
-	optional::destroy();
-	data_ = optional::construct(r);
+	this->destroy();
+
+	data_ =
+		this->construct(
+			_other
+		);
+
 	return *this;
 }
 
@@ -91,7 +105,7 @@ template<
 >
 fcppt::optional<T>::~optional()
 {
-	optional::destroy();
+	this->destroy();
 }
 
 template<
@@ -136,7 +150,8 @@ template<
 void
 fcppt::optional<T>::reset()
 {
-	destroy();
+	this->destroy();
+
 	data_ = 0;
 }
 
@@ -146,7 +161,7 @@ template<
 bool
 fcppt::optional<T>::has_value() const
 {
-	return boolean_test();
+	return this->boolean_test();
 }
 
 template<
@@ -163,10 +178,17 @@ template<
 >
 typename fcppt::optional<T>::pointer
 fcppt::optional<T>::construct(
-	const_reference r
+	const_reference _other
 )
 {
-	return data_ = new (storage_.data()) T(r);
+	return
+		data_ =
+			new (
+				storage_.data()
+			)
+			T(
+				_other
+			);
 }
 
 template<
@@ -174,12 +196,24 @@ template<
 >
 typename fcppt::optional<T>::pointer
 fcppt::optional<T>::construct(
-	optional const &o
+	optional const &_other
 )
 {
-	return o.data_
-		? new (storage_.data()) T(*o)
-		: static_cast<pointer>(0);
+	return
+		_other.data_
+		?
+			new (
+				storage_.data()
+			)
+			T(
+				*_other
+			)
+		:
+			static_cast<
+				pointer
+			>(
+				0
+			);
 }
 
 template<
@@ -188,7 +222,9 @@ template<
 void
 fcppt::optional<T>::destroy()
 {
-	if(data_)
+	if(
+		data_
+	)
 		data_->~T();
 }
 
