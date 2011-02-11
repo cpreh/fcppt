@@ -22,13 +22,12 @@ namespace algorithm
  * @return true if the element was found/erased, false otherwise
 */
 template<
-	typename Container,
-	typename Ptr
+	typename Container
 >
 bool
 ptr_container_erase(
 	Container &_container,
-	Ptr const _element
+	typename Container::value_type const _element
 )
 {
 	return

@@ -1,5 +1,45 @@
 [section Changes]
 
+[section Changes from 0.5 to 0.6]
+
+[section Added functionality]
+
+* Added `operator==` and `operator!=` for `fcppt::optional`.
+* Added `operator!=` for `strong_typedef`.
+* Added `math::generate_binary_vectors`, which ...
+* Added `math::box::corner_points`, which ...
+
+[endsect]
+
+[section Changed functionality]
+
+* `FCPPT_PP_FUNCTION` now returns a literal instead of a string.
+* Some macros now require a `;` after them, namely
+  * `FCPPT_NONCOPYABLE`
+  * `FCPPT_NONASSIGNABLE`
+  * `FCPPT_ASSERT_COMPLETE`
+  * `FCPPT_MAKE_STRONG_TYPEDEF`
+  * `FCPPT_ASSERT`
+  * `FCPPT_ASSERT_MESSAGE`
+  * `FCPPT_RESTRICT_TYPEDEF_STRUCT`
+* `FCPPT_RESTRICT_TYPEDEF_STRUCT` now makes the constructor, destructor, copy constructor and assignment operator private.
+* `strong_typedef` no longer automatically converts into its underlying type.
+
+[endsect]
+
+[section Bugfixes]
+
+* `FCPPT_ASSERT` and `FCPPT_ASSERT_MESSAGE` don't hide an if block anymore.
+* `fcppt::make_shared_ptr` is now a wrapper around `boost::make_shared` which improves performance.
+* Fixed `variant::apply_ternary` which was previously broken.
+* Fixed `math::vector::angle_between`. It now ...
+
+[endsect]
+
+[endsect]
+
+[section Older changes]
+
 [section Changes from 0.4 to 0.5]
 
 [section New functionality]
@@ -173,6 +213,8 @@
 * Fixed a bug in the FindFcppt.cmake script.
 * Fixed some spelling errors in the documentation.
 * Corrected the git URL.
+
+[endsect]
 
 [endsect]
 

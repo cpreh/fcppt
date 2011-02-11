@@ -48,13 +48,6 @@ Note that the asserts are still macros, because they use the `__LINE__` and
 Note also that it is currently impossible to deactivate assertions via a
 preprocessor directive and it is disputed if that will ever be possible.
 
-Not that it's not safe to use `FCPPT_ASSERT` in an if block or for loop containing no braces:
-
-``
-for (int i = 0; i < 10; ++i)
-	FCPPT_ASSERT(i); // NOT SAFE!
-``
-
 [endsect]
 
 [xinclude doxygen_assert.xml]
@@ -65,8 +58,8 @@ for (int i = 0; i < 10; ++i)
 
 [section Description]
 
-This part of fcppt is similar to boost::assign, but fixes one issue: Why is
-there `list_of`, which has a method `to_adapter`? Why not just a single
+This part of fcppt is similar to `boost::assign`, but fixes one issue: Why is
+there `list_of`, which has a method `to_container`? Why not just a single
 templated `make_container` function? This is exactly what `fcppt::assign`
 consists of. It even works for associative containers (like `std::map` or
 `std::set`), because it uses the generic insert function that takes
@@ -76,39 +69,11 @@ an iterator. Here is an example:
 [make_container]
 
 There's also `assign::make_array` which can be used to construct an
-`std::tr1::array`, whose size is determined by the how many elements you call
+`fcppt::container::array`, whose size is determined by the how many elements you call
 `make_array` with. Here's an example which should explain everything:
 
 [import ../examples/make_array.cpp]
 [make_array]
-
-Note that there are cases where the constructs returned by `make_array` and
-`make_container` produce strange results, for instance:
-
-``
-int main()
-{
-	std::vector<int> v;
-	v.push_back(3);
-	v.push_back(2);
-	return v == fcppt::assign::make_container<std::vector<int> >(3)(2);
-}
-``
-
-Gives an error message because the compiler tries to compare a
-`std::vector<int>` with... well, whatever `make_container` returns (which,
-sadly, is not directly a `std::vector<int>`). In that case, just `static_cast`
-to the desired container, as such:
-
-``
-int main()
-{
-	std::vector<int> v;
-	v.push_back(3);
-	v.push_back(2);
-	return v == static_cast<std::vector<int> >(fcppt::assign::make_container<std::vector<int> >(3)(2));
-}
-``
 
 [endsect]
 
@@ -164,6 +129,9 @@ a type that gets two template parameters:
 * A unique type (just for typedef purposes)
 
 [import ../examples/strongtypedef.cpp]
+
+Note that an `fcppt::strong_typedef` also doesn't convert to its underlying
+type implictly. You have to use the `get` member function for that.
 
 [strongtypedef_simple]
 
