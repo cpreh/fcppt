@@ -6,8 +6,9 @@
 
 * Added `operator==` and `operator!=` for `fcppt::optional`.
 * Added `operator!=` for `strong_typedef`.
-* Added `math::generate_binary_vectors`, which ...
-* Added `math::box::corner_points`, which ...
+* Added `math::generate_binary_vectors`, which, given a dimension, returns an array of all the vectors with components in {0,1}.
+* Added `math::box::corner_points`, which returns the box' vertices.
+* Fixed `math::vector::angle_between`.
 * `algorithm::ptr_container_erase` works with pointers to const T as well.
 
 [endsect]
