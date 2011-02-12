@@ -8,7 +8,6 @@
 * Added `operator!=` for `strong_typedef`.
 * Added `math::generate_binary_vectors`, which, given a dimension, returns an array of all the vectors with components in {0,1}.
 * Added `math::box::corner_points`, which returns the box' vertices.
-* Fixed `math::vector::angle_between`.
 * `algorithm::ptr_container_erase` works with pointers to const T as well.
 
 [endsect]
@@ -33,7 +32,7 @@
 
 * `fcppt::make_shared_ptr` is now a wrapper around `boost::make_shared` which improves performance.
 * Fixed `variant::apply_ternary` which was previously broken.
-* Fixed `math::vector::angle_between`. It now ...
+* Fixed `math::vector::angle_between`.
 
 [endsect]
 
