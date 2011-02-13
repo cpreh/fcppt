@@ -9,6 +9,7 @@
 
 #include <fcppt/make_strong_typedef.hpp>
 #include <fcppt/strong_typedef_impl.hpp>
+#include <fcppt/strong_typedef_input.hpp>
 #include <fcppt/strong_typedef_output.hpp>
 
 #endif
