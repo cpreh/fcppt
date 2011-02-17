@@ -481,7 +481,12 @@ SET(
 	include/fcppt/container/tree/object_impl.hpp
 	include/fcppt/container/tree/pre_order.hpp
 	include/fcppt/container/tree/tree.hpp
+	include/fcppt/cyclic_iterator.hpp
+	include/fcppt/cyclic_iterator_decl.hpp
+	include/fcppt/cyclic_iterator_fwd.hpp
+	include/fcppt/cyclic_iterator_impl.hpp
 	include/fcppt/detail/char_type.hpp
+	include/fcppt/detail/cyclic_iterator_base.hpp
 	include/fcppt/detail/make_ptr_base.hpp
 	include/fcppt/detail/make_shared_wrapper.hpp
 	include/fcppt/detail/make_shared_wrapper_fwd.hpp
@@ -1049,6 +1054,7 @@ SET(
 	include/fcppt/strong_typedef_decl.hpp
 	include/fcppt/strong_typedef_fwd.hpp
 	include/fcppt/strong_typedef_impl.hpp
+	include/fcppt/strong_typedef_input.hpp
 	include/fcppt/strong_typedef_output.hpp
 	include/fcppt/stub_function.hpp
 	include/fcppt/symbol.hpp
