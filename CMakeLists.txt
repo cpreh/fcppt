@@ -831,6 +831,7 @@ SET(
 	include/fcppt/math/sphere/circle.hpp
 	include/fcppt/math/sphere/intersects.hpp
 	include/fcppt/math/sphere/sphere.hpp
+	include/fcppt/math/trig_lerp.hpp
 	include/fcppt/math/twopi.hpp
 	include/fcppt/math/vector/angle_between.hpp
 	include/fcppt/math/vector/angle_between_cast.hpp
