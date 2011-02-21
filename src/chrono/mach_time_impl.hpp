@@ -26,19 +26,25 @@ template<
 TimePoint const
 mach_time_impl()
 {
-	typedef typename TimePoint::duration duration_;
+	typedef typename TimePoint::duration duration_type;
 
 	struct mach_timebase_info const info(
-		mach_timebase()
+		chrono::mach_timebase()
 	);
 
-	return TimePoint(
-		duration_(
-			mach_absolute_time()
-			* info.numer
-			/ info.denom
-		)
-	);
+	return
+		TimePoint(
+			duration_type(
+				static_cast<
+					typename duration_type::rep
+				>(
+		
+					::mach_absolute_time()
+					* info.numer
+					/ info.denom
+				)
+			)
+		);
 }
 
 }

@@ -9,7 +9,7 @@
 #ifdef FCPPT_USE_FILESYSTEM_V3
 #include <boost/filesystem/operations.hpp>
 #else
-#include <fcppt/exception.hpp>
+#include <fcppt/filesystem/exception.hpp>
 #include <fcppt/text.hpp>
 #include <fcppt/config.hpp>
 #ifdef FCPPT_POSIX_PLATFORM
@@ -38,9 +38,12 @@ fcppt::filesystem::readlink(
 		);
 #else
 #ifdef FCPPT_POSIX_PLATFORM
+	typedef
 	container::raw_vector<
 		char
-	> buf;
+	> buffer_type;
+
+	buffer_type buf;
 
 	buf.reserve(
 		512
@@ -72,7 +75,7 @@ fcppt::filesystem::readlink(
 				);
 				continue;
 			default:
-				throw exception(
+				throw fcppt::filesystem::exception(
 					FCPPT_TEXT("readlink failed: ")
 					+ error::strerrno()
 				);
@@ -80,19 +83,24 @@ fcppt::filesystem::readlink(
 		}
 
 		buf.resize_uninitialized(
-			ret
+			static_cast<
+				buffer_type::size_type
+			>(	
+				ret
+			)
 		);
 
 		buf.push_back(0);
 
-		return path(
-			from_std_string(
-				buf.data()
-			)
-		);
+		return
+			fcppt::filesystem::path(
+				fcppt::from_std_string(
+					buf.data()
+				)
+			);
 	}
 #else
-	throw exception(
+	throw fcppt::filesystem::exception(
 		FCPPT_TEXT("readlink not supported!")
 	);
 #endif
