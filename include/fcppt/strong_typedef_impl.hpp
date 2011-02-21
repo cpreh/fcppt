@@ -9,6 +9,7 @@
 
 #include <fcppt/strong_typedef_decl.hpp>
 #include <fcppt/detail/strong_typedef_cast.hpp>
+#include <algorithm>
 
 template<
 	typename T,
@@ -116,7 +117,9 @@ fcppt::strong_typedef<
 	> &_other
 )
 {
-	std::swap(
+	using std::swap;
+
+	swap(
 		value_,
 		_other.value_
 	);
