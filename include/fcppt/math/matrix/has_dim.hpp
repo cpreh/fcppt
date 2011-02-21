@@ -21,7 +21,7 @@ namespace matrix
 {
 
 template<
-	typename Vector,
+	typename Matrix,
 	size_type N,
 	size_type M
 >

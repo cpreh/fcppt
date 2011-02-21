@@ -24,7 +24,10 @@ template<
 >
 class scoped_ptr
 {
-	FCPPT_NONCOPYABLE(scoped_ptr)
+	FCPPT_NONCOPYABLE(
+		scoped_ptr
+	);
+
 	FCPPT_SAFE_BOOL(scoped_ptr)
 public:
 	typedef typename boost::add_reference<

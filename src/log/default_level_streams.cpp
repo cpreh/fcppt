@@ -20,19 +20,21 @@ fcppt::log::default_level_streams(
 	level_stream_array ret;
 
 	FCPPT_FOREACH_ENUMERATOR(
-		i,
+		index,
 		level
 	)
 	{
-		ret[i] =
-			make_shared_ptr<
+		ret[
+			index
+		] =
+			fcppt::make_shared_ptr<
 				level_stream
 			>(
 				std::tr1::ref(
 					_sink
 				),
 				format::default_level(
-					i
+					index
 				)
 			);
 	}

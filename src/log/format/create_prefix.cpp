@@ -11,13 +11,14 @@
 
 fcppt::log::format::const_object_ptr const
 fcppt::log::format::create_prefix(
-	string const &prefix
+	string const &_prefix
 )
 {
 	return
-		make_shared_ptr<
-			inserter
+		fcppt::make_shared_ptr<
+			format::inserter
 		>(
-			prefix + FCPPT_TEXT(": %1%")
+			_prefix
+			+ FCPPT_TEXT(": %1%")
 		);
 }

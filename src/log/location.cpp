@@ -11,22 +11,22 @@
 #include <numeric>
 
 fcppt::log::location::location(
-	fcppt::string const &initial_
+	fcppt::string const &_initial
 )
 :
 	entries_(
-		1,
-		initial_
+		1u,
+		_initial
 	)
 {}
 
 fcppt::log::location &
 fcppt::log::location::operator +=(
-	fcppt::string const &nstring_
+	fcppt::string const &_string
 )
 {
 	entries_.push_back(
-		nstring_
+		_string
 	);
 
 	return *this;
@@ -62,9 +62,10 @@ fcppt::log::location::string() const
 
 fcppt::log::location const
 fcppt::log::operator +(
-	location location_,
-	string const &nstring_
+	log::location _location,
+	string const &_string
 )
 {
-	return location_ += nstring_;
+	return
+		_location += _string;
 }

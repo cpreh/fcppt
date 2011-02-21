@@ -18,7 +18,9 @@ namespace log
 
 class inner_node_name
 {
-	FCPPT_NONASSIGNABLE(inner_node_name)
+	FCPPT_NONASSIGNABLE(
+		inner_node_name
+	);
 public:
 	typedef bool result_type;
 

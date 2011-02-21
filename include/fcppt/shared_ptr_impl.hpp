@@ -8,8 +8,12 @@
 #define FCPPT_SHARED_PTR_IMPL_HPP_INCLUDED
 
 #include <fcppt/tr1/detail/use_boost_tr1.hpp> // workaround for boost's get_pointer
+#include <fcppt/detail/make_shared_wrapper.hpp>
+#include <fcppt/heap_deleter.hpp>
 #include <fcppt/shared_ptr_decl.hpp>
 #include <fcppt/unique_ptr_impl.hpp>
+#include <boost/type_traits/is_same.hpp>
+#include <boost/static_assert.hpp>
 #include <algorithm>
 
 template<
@@ -20,8 +24,9 @@ template<
 >
 fcppt::shared_ptr<T, Deleter>::shared_ptr()
 :
-	impl()
-{}
+	impl_()
+{
+}
 
 template<
 	typename T,
@@ -33,14 +38,15 @@ template<
 	typename Y
 >
 fcppt::shared_ptr<T, Deleter>::shared_ptr(
-	Y *const p
+	Y *const _ptr
 )
 :
-	impl(
-		p,
+	impl_(
+		_ptr,
 		deleter()
 	)
-{}
+{
+}
 
 template<
 	typename T,
@@ -54,16 +60,17 @@ template<
 	typename A
 >
 fcppt::shared_ptr<T, Deleter>::shared_ptr(
-	Y *const p,
-	A const &a
+	Y *const _ptr,
+	A const &_alloc
 )
 :
-	impl(
-		p,
+	impl_(
+		_ptr,
 		deleter(),
-		a
+		_alloc
 	)
-{}
+{
+}
 
 template<
 	typename T,
@@ -75,11 +82,14 @@ template<
 	typename Y
 >
 fcppt::shared_ptr<T, Deleter>::shared_ptr(
-	weak_ptr<Y, Deleter> const &r
+	weak_ptr<Y, Deleter> const &_other
 )
 :
-	impl(r)
-{}
+	impl_(
+		_other
+	)
+{
+}
 
 template<
 	typename T,
@@ -91,11 +101,14 @@ template<
 	typename Y
 >
 fcppt::shared_ptr<T, Deleter>::shared_ptr(
-	shared_ptr<Y> const &r
+	shared_ptr<Y> const &_other
 )
 :
-	impl(r.boost_ptr())
-{}
+	impl_(
+		_other.boost_ptr()
+	)
+{
+}
 
 template<
 	typename T,
@@ -107,15 +120,16 @@ template<
 	typename Y
 >
 fcppt::shared_ptr<T, Deleter>::shared_ptr(
-	shared_ptr<Y> const & r,
+	shared_ptr<Y> const & _other,
 	boost::detail::static_cast_tag
 )
 :
-	impl(
-		r.boost_ptr(),
+	impl_(
+		_other.boost_ptr(),
 		boost::detail::static_cast_tag()
 	)
-{}
+{
+}
 
 template<
 	typename T,
@@ -127,15 +141,16 @@ template<
 	typename Y
 >
 fcppt::shared_ptr<T, Deleter>::shared_ptr(
-	shared_ptr<Y> const &r,
+	shared_ptr<Y> const &_other,
 	boost::detail::const_cast_tag
 )
 :
-	impl(
-		r.boost_ptr(),
+	impl_(
+		_other.boost_ptr(),
 		boost::detail::const_cast_tag()
 	)
-{}
+{
+}
 
 template<
 	typename T,
@@ -147,15 +162,16 @@ template<
 	typename Y
 >
 fcppt::shared_ptr<T, Deleter>::shared_ptr(
-	shared_ptr<Y> const &r,
+	shared_ptr<Y> const &_other,
 	boost::detail::dynamic_cast_tag
 )
 :
-	impl(
-		r.boost_ptr(),
+	impl_(
+		_other.boost_ptr(),
 		boost::detail::dynamic_cast_tag()
 	)
-{}
+{
+}
 
 template<
 	typename T,
@@ -167,15 +183,16 @@ template<
 	typename Y
 >
 fcppt::shared_ptr<T, Deleter>::shared_ptr(
-	shared_ptr<Y> const &r,
+	shared_ptr<Y> const &_other,
 	boost::detail::polymorphic_cast_tag
 )
 :
-	impl(
-		r.boost_ptr(),
+	impl_(
+		_other.boost_ptr(),
 		boost::detail::polymorphic_cast_tag()
 	)
-{}
+{
+}
 
 template<
 	typename T,
@@ -187,13 +204,13 @@ template<
 	typename Y
 >
 fcppt::shared_ptr<T, Deleter>::shared_ptr(
-	unique_ptr<Y, Deleter> r
+	unique_ptr<Y, Deleter> _other
 )
 :
-	impl()
+	impl_()
 {
-	impl.reset(
-		r.release()
+	impl_.reset(
+		_other.release()
 	);
 }
 
@@ -208,10 +225,11 @@ template<
 >
 fcppt::shared_ptr<T, Deleter> &
 fcppt::shared_ptr<T, Deleter>::operator=(
-	shared_ptr<Y> const &r
+	shared_ptr<Y> const &_other
 )
 {
-	impl = r.impl;
+	impl_ = _other.impl;
+
 	return *this;
 }
 
@@ -226,11 +244,11 @@ template<
 >
 fcppt::shared_ptr<T, Deleter> &
 fcppt::shared_ptr<T, Deleter>::operator=(
-	unique_ptr<Y, Deleter> r
+	unique_ptr<Y, Deleter> _other
 )
 {
-	impl.reset(
-		r.release()
+	impl_.reset(
+		_other.release()
 	);
 
 	return *this;
@@ -243,7 +261,8 @@ template<
 	> class Deleter
 >
 fcppt::shared_ptr<T, Deleter>::~shared_ptr()
-{}
+{
+}
 
 template<
 	typename T,
@@ -254,7 +273,7 @@ template<
 void
 fcppt::shared_ptr<T, Deleter>::reset()
 {
-	impl.reset();
+	impl_.reset();
 }
 
 template<
@@ -268,11 +287,11 @@ template<
 >
 void
 fcppt::shared_ptr<T, Deleter>::reset(
-	Y *const p
+	Y *const _ptr
 )
 {
-       	impl.reset(
-		p,
+       	impl_.reset(
+		_ptr,
 		deleter()
 	);
 }
@@ -289,14 +308,14 @@ template<
 >
 void
 fcppt::shared_ptr<T, Deleter>::reset(
-	Y *const p,
-	A const &a
+	Y *const _ptr,
+	A const &_alloc
 )
 {
-	impl.reset(
-		p,
+	impl_.reset(
+		_ptr,
 		deleter(),
-		a
+		_alloc
 	);
 }
 
@@ -309,7 +328,7 @@ template<
 typename fcppt::shared_ptr<T, Deleter>::reference
 fcppt::shared_ptr<T, Deleter>::operator* () const
 {
-	return *impl;
+	return *impl_;
 }
 
 template<
@@ -321,7 +340,7 @@ template<
 typename fcppt::shared_ptr<T, Deleter>::pointer
 fcppt::shared_ptr<T, Deleter>::operator-> () const
 {
-	return impl.operator->();
+	return impl_.operator->();
 }
 
 template<
@@ -333,7 +352,7 @@ template<
 typename fcppt::shared_ptr<T, Deleter>::pointer
 fcppt::shared_ptr<T, Deleter>::get() const
 {
-       	return impl.get();
+       	return impl_.get();
 }
 
 template<
@@ -345,7 +364,7 @@ template<
 fcppt::shared_ptr<T, Deleter>::operator
 typename fcppt::shared_ptr<T, Deleter>::unspecified_bool_type() const
 {
-	return impl;
+	return impl_;
 }
 
 template<
@@ -357,7 +376,7 @@ template<
 bool
 fcppt::shared_ptr<T, Deleter>::operator! () const
 {
-	return !impl;
+	return !impl_;
 }
 
 template<
@@ -369,7 +388,7 @@ template<
 bool
 fcppt::shared_ptr<T, Deleter>::unique() const
 {
-	return impl.unique();
+	return impl_.unique();
 }
 
 template<
@@ -381,7 +400,7 @@ template<
 long
 fcppt::shared_ptr<T, Deleter>::use_count() const
 {
-	return impl.use_count();
+	return impl_.use_count();
 }
 
 template<
@@ -392,12 +411,12 @@ template<
 >
 void
 fcppt::shared_ptr<T, Deleter>::swap(
-	shared_ptr<T> &other
+	shared_ptr<T> &_other
 )
 {
 	std::swap(
-		impl,
-		other.impl
+		impl_,
+		_other.impl_
 	);
  }
 
@@ -410,7 +429,51 @@ template<
 typename fcppt::shared_ptr<T, Deleter>::impl_type const
 fcppt::shared_ptr<T, Deleter>::boost_ptr() const
 {
-	return impl;
+	return impl_;
+}
+
+template<
+	typename T,
+	template<
+		typename
+	> class Deleter
+>
+template<
+	typename U
+>
+fcppt::shared_ptr<T, Deleter>::shared_ptr(
+	fcppt::detail::make_shared_wrapper<U> const _other
+)
+:
+	impl_(
+		_other.get()
+	)
+{
+	BOOST_STATIC_ASSERT((
+		boost::is_same<
+			Deleter<T>,
+			fcppt::heap_deleter<T>
+		>::value
+	));
+}
+
+template<
+	typename T,
+	template<
+		typename
+	> class Deleter
+>
+template<
+	typename U
+>
+fcppt::shared_ptr<T, Deleter>::shared_ptr(
+	boost::shared_ptr<U> const _other
+)
+:
+	impl_(
+		_other
+	)
+{
 }
 
 template<
@@ -427,22 +490,6 @@ fcppt::shared_ptr<T, Deleter>::deleter()
 
 template<
 	typename T,
-	template<
-		typename
-	> class Deleter
->
-template<
-	typename U
->
-fcppt::shared_ptr<T, Deleter>::shared_ptr(
-	boost::shared_ptr<U> const &p
-)
-:
-	impl(p)
-{}
-
-template<
-	typename T,
 	typename U,
 	template<
 		typename
@@ -450,11 +497,12 @@ template<
 >
 bool
 fcppt::operator==(
-	shared_ptr<T, Deleter> const &a,
-	shared_ptr<U, Deleter> const &b
+	shared_ptr<T, Deleter> const &_a,
+	shared_ptr<U, Deleter> const &_b
 )
 {
-	return a.boost_ptr() == b.boost_ptr();
+	return
+		_a.boost_ptr() == _b.boost_ptr();
 }
 
 template<
@@ -466,11 +514,12 @@ template<
 >
 bool
 fcppt::operator!=(
-	shared_ptr<T, Deleter> const &a,
-	shared_ptr<U, Deleter> const &b
+	shared_ptr<T, Deleter> const &_a,
+	shared_ptr<U, Deleter> const &_b
 )
 {
-	return !(a==b);
+	return
+		!(_a == _b);
 }
 
 template<
@@ -482,11 +531,12 @@ template<
 >
 bool
 fcppt::operator<(
-	shared_ptr<T, Deleter> const &a,
-	shared_ptr<U, Deleter> const &b
+	shared_ptr<T, Deleter> const &_a,
+	shared_ptr<U, Deleter> const &_b
 )
 {
-	return a.boost_ptr() < b.boost_ptr();
+	return
+		_a.boost_ptr() < _b.boost_ptr();
 }
 
 template<
@@ -498,10 +548,12 @@ template<
 >
 void
 fcppt::swap(
-	shared_ptr<T, Deleter> &a,
-	shared_ptr<T, Deleter> &b)
+	shared_ptr<T, Deleter> &_a,
+	shared_ptr<T, Deleter> &_b)
 {
-	a.swap(b);
+	_a.swap(
+		_b
+	);
 }
 
 template<
@@ -514,12 +566,12 @@ template<
 >
 std::basic_ostream<Ch, Traits> &
 fcppt::operator<< (
-	std::basic_ostream<Ch, Traits> &os,
-	shared_ptr<T, Deleter> const & p
+	std::basic_ostream<Ch, Traits> &_os,
+	shared_ptr<T, Deleter> const &_ptr
 )
 {
-	os << p.get();
-	return os;
+	return 
+		_os << _ptr.get();
 }
 
 #ifdef FCPPT_TR1_DETAIL_USE_BOOST_TR1

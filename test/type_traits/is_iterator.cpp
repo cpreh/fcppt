@@ -17,7 +17,7 @@ struct not_iterator
 }
 
 BOOST_AUTO_TEST_CASE(
-	is_iterator
+	type_traits_is_iterator
 )
 {
 	BOOST_CHECK(

@@ -3,21 +3,22 @@
 [section safe_bool]
 
 Often you might want to add `operator !` to a class to test if it is not set.
-Examples are boost::shared_ptr, std::auto_ptr and so on. But you may also want
+Examples are `boost::shared_ptr`, `std::auto_ptr` and so on. But you may also want
 to test the opposite and using `!!` for that isn't too appealing.
+So we want to make the following code work:
 
 [import ../examples/safe_bool.cpp]
 
 [safebool_usage]
 
-So how can this be done? The problem is that there is no operator that can
+How can this be done? The problem is that there is no operator that can
 be overloaded directly to provide this kind of behavior. But it is possible
 to specify conversion operators that are considered when the expression should
 be converted to bool.
 `operator bool` could be used, but then the class can be converted into almost
 anything that can be converted from a bool, so we don't want that.
 fcppt implements a macro to safely implement the "bool conversion idiom".
-The class has to use the macro FCPPT_SAFE_BOOL and implement `bool boolean_test() const`.
+The class has to use the macro `FCPPT_SAFE_BOOL` and implement `bool boolean_test() const`.
 
 [safebool_example]
 
@@ -35,7 +36,8 @@ a crash, leaving you with garbled video output.
 
 To remedy this situation, there are `FCPPT_ASSERT` and `FCPPT_ASSERT_MESSAGE`.
 These macros will throw `fcppt::assertion_failed` instead of aborting the
-program abruptly. Here's a small example:
+program abruptly.
+Here's a small example:
 
 [import ../examples/assert.cpp]
 [assert]
@@ -45,13 +47,6 @@ Note that the asserts are still macros, because they use the `__LINE__` and
 
 Note also that it is currently impossible to deactivate assertions via a
 preprocessor directive and it is disputed if that will ever be possible.
-
-Not that it's not safe to use `FCPPT_ASSERT` in an if block or for loop containing no braces:
-
-``
-for (int i = 0; i < 10; ++i)
-	FCPPT_ASSERT(i); // NOT SAFE!
-``
 
 [endsect]
 
@@ -63,8 +58,8 @@ for (int i = 0; i < 10; ++i)
 
 [section Description]
 
-This part of fcppt is similar to boost::assign, but fixes one issue: Why is
-there `list_of`, which has a method `to_adapter`? Why not just a single
+This part of fcppt is similar to `boost::assign`, but fixes one issue: Why is
+there `list_of`, which has a method `to_container`? Why not just a single
 templated `make_container` function? This is exactly what `fcppt::assign`
 consists of. It even works for associative containers (like `std::map` or
 `std::set`), because it uses the generic insert function that takes
@@ -74,39 +69,11 @@ an iterator. Here is an example:
 [make_container]
 
 There's also `assign::make_array` which can be used to construct an
-`std::tr1::array`, whose size is determined by the how many elements you call
+`fcppt::container::array`, whose size is determined by the how many elements you call
 `make_array` with. Here's an example which should explain everything:
 
 [import ../examples/make_array.cpp]
 [make_array]
-
-Note that there are cases where the constructs returned by `make_array` and
-`make_container` produce strange results, for instance:
-
-``
-int main()
-{
-	std::vector<int> v;
-	v.push_back(3);
-	v.push_back(2);
-	return v == fcppt::assign::make_container<std::vector<int> >(3)(2);
-}
-``
-
-Gives an error message because the compiler tries to compare a
-`std::vector<int>` with... well, whatever `make_container` returns (which,
-sadly, is not directly a `std::vector<int>`). In that case, just `static_cast`
-to the desired container, as such:
-
-``
-int main()
-{
-	std::vector<int> v;
-	v.push_back(3);
-	v.push_back(2);
-	return v == static_cast<std::vector<int> >(fcppt::assign::make_container<std::vector<int> >(3)(2));
-}
-``
 
 [endsect]
 
@@ -162,6 +129,9 @@ a type that gets two template parameters:
 * A unique type (just for typedef purposes)
 
 [import ../examples/strongtypedef.cpp]
+
+Note that an `fcppt::strong_typedef` also doesn't convert to its underlying
+type implictly. You have to use the `get` member function for that.
 
 [strongtypedef_simple]
 

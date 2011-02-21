@@ -9,6 +9,6 @@
 
 /// Assert at compile time that a type is complete
 #define FCPPT_ASSERT_COMPLETE(type)\
-static_cast<void>(sizeof(type));
+static_cast<void>(sizeof(type))
 
 #endif

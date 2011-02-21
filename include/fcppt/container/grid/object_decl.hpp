@@ -32,10 +32,11 @@ template<
 >
 class object
 {
+// \cond
 	BOOST_STATIC_ASSERT(
 		N >= 1u
 	);
-
+// \endcond
 	typedef typename boost::mpl::if_<
 		boost::is_pod<
 			T

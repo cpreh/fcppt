@@ -20,7 +20,7 @@ namespace log
 detail::context_tree::iterator
 find_inner_node(
 	detail::context_tree &,
-	string const &name_
+	string const &name
 );
 
 }

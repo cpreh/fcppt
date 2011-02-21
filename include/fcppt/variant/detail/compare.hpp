@@ -23,7 +23,9 @@ template<
 >
 class compare
 {
-	FCPPT_NONASSIGNABLE(compare)
+	FCPPT_NONASSIGNABLE(
+		compare
+	);
 public:
 	typedef variant::object<
 		Types

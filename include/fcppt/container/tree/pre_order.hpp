@@ -38,7 +38,9 @@ class pre_order
 		>::value
 	);
 
-	FCPPT_NONCOPYABLE(pre_order)
+	FCPPT_NONCOPYABLE(
+		pre_order
+	);
 public:
 	explicit pre_order(
 		Tree &_tree

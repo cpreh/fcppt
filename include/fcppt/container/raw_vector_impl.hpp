@@ -824,6 +824,11 @@ fcppt::container::raw_vector<T, A>::insert(
 	In const _right
 )
 {
+	if(
+		_left == _right
+	)
+		return;
+
 	insert_impl(
 		_position,
 		_left,

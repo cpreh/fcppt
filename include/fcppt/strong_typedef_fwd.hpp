@@ -12,7 +12,7 @@ namespace fcppt
 
 template<
 	typename T,
-	typename Tag = void
+	typename Tag
 >
 class strong_typedef;
 

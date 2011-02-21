@@ -22,7 +22,9 @@ template<
 >
 class binary_applier
 {
-	FCPPT_NONASSIGNABLE(binary_applier)
+	FCPPT_NONASSIGNABLE(
+		binary_applier
+	);
 public:
 	typedef typename Operation::result_type result_type;
 

@@ -13,14 +13,21 @@
 #include <fcppt/assertion_failed.hpp>
 
 /// Runtime assert macro that throws an assertion_failed if the condition does not hold with an additional message
-#define FCPPT_ASSERT_MESSAGE(cond, message)\
-if (!(cond))\
+#define FCPPT_ASSERT_MESSAGE(\
+	cond,\
+	message\
+)\
+if(\
+	!(cond)\
+)\
 	throw fcppt::assertion_failed(\
 		FCPPT_PP_FILE,\
 		__LINE__,\
 		FCPPT_PP_FUNCTION,\
-		FCPPT_PP_STRINGIZE(cond),\
+		FCPPT_PP_STRINGIZE(\
+			cond\
+		),\
 		message\
-	);
+	)
 
 #endif

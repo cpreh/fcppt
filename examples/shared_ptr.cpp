@@ -4,6 +4,9 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
+#include <fcppt/preprocessor/disable_vc_warning.hpp>
+FCPPT_PP_DISABLE_VC_WARNING(4702)
+
 //[sharedptr_normal
 #include <fcppt/shared_ptr_impl.hpp>
 
@@ -160,4 +163,14 @@ cast()
 //]
 
 int main()
-{}
+{
+	factory();
+
+	test_c_deleter();
+
+	wrong();
+
+	right();
+
+	cast();
+}

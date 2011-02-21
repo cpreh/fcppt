@@ -39,7 +39,9 @@ struct static_
 		>::type
 	> type;
 
-	FCPPT_RESTRICT_TYPEDEF_STRUCT(static_)
+	FCPPT_RESTRICT_TYPEDEF_STRUCT(
+		static_
+	);
 };
 
 }

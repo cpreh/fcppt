@@ -7,9 +7,16 @@
 #ifndef FCPPT_RESTRICT_TYPEDEF_STRUCT_HPP_INCLUDED
 #define FCPPT_RESTRICT_TYPEDEF_STRUCT_HPP_INCLUDED
 
-#define FCPPT_RESTRICT_TYPEDEF_STRUCT(classname) \
+#include <fcppt/noncopyable.hpp>
+
+#define FCPPT_RESTRICT_TYPEDEF_STRUCT(\
+	classname\
+) \
 private: \
-classname();
-// TODO: what can we add here?
+classname(); \
+~classname(); \
+FCPPT_NONCOPYABLE(\
+	classname\
+)
 
 #endif

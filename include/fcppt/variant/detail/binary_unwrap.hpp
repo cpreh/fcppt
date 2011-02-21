@@ -24,7 +24,9 @@ template<
 >
 class binary_unwrap
 {
-	FCPPT_NONASSIGNABLE(binary_unwrap)
+	FCPPT_NONASSIGNABLE(
+		binary_unwrap
+	);
 public:
 	typedef typename Operation::result_type result_type;
 

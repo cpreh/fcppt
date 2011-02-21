@@ -24,7 +24,9 @@ template<
 >
 class base
 {
-	FCPPT_NONCOPYABLE(base)
+	FCPPT_NONCOPYABLE(
+		base
+	);
 public:
 	typedef T function_signature;
 

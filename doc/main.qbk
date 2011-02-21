@@ -1,6 +1,6 @@
 [article fcppt 
 	[quickbook 1.5]
-	[version 0.4]
+	[version 0.6]
 	[authors [Reh, Carl Philipp]]
 	[copyright 2009-2011 Carl Philipp Reh]
 	[purpose Freundlich's C++ Toolkit]
@@ -18,7 +18,7 @@
 [section Introduction]
 
 Boost already is a very useful general purpose library.
-If you use C++ without boost the need for something that
+If you use C++ without boost, the need for something that
 is already provided by it will soon arise.
 However, boost is not perfect (and Freundlich's C++ toolkit isn't either).
 The need for something that isn't provided by boost might arise, too,

@@ -12,16 +12,16 @@
 
 fcppt::log::detail::context_tree::iterator
 fcppt::log::find_inner_node(
-	detail::context_tree &tree_,
-	string const &name_
+	detail::context_tree &_tree,
+	string const &_name
 )
 {
 	return
 		std::find_if(
-			tree_.begin(),
-			tree_.end(),
-			inner_node_name(
-				name_
+			_tree.begin(),
+			_tree.end(),
+			log::inner_node_name(
+				_name
 			)
 		);
 }

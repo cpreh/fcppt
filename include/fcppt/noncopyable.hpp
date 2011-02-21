@@ -13,14 +13,14 @@
 
 #define FCPPT_NONCOPYABLE(classname) \
 classname(classname const &) = delete; \
-classname &operator=(classname const &) = delete;
+classname &operator=(classname const &) = delete
 
 #else
 
 #define FCPPT_NONCOPYABLE(classname) \
 private: \
 classname(classname const &); \
-classname &operator=(classname const &);
+classname &operator=(classname const &)
 
 #endif
 

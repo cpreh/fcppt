@@ -30,7 +30,7 @@ class concrete_connection
 {
 	FCPPT_NONCOPYABLE(
 		concrete_connection
-	)
+	);
 public:
 	typedef T function_signature;
 

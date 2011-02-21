@@ -14,17 +14,18 @@
 
 fcppt::string const
 fcppt::type_name(
-	fcppt::type_info const &ti)
+	fcppt::type_info const &_info
+)
 {
 #ifdef FCPPT_HAS_GNU_DEMANGLE
 	int status;
 
-	scoped_ptr<
+	fcppt::scoped_ptr<
 		char,
-		c_deleter
+		fcppt::c_deleter
 	> name(
 		abi::__cxa_demangle(
-			ti.get().name(),
+			_info.get().name(),
 			0,
 			0,
 			&status
@@ -32,12 +33,20 @@ fcppt::type_name(
 	);
 
 	// demangling failed?
-	return status
-		? from_std_string(ti.get().name())
-		: from_std_string(name.get());
+	return
+		status
+		?
+			fcppt::from_std_string(
+				_info.get().name()
+			)
+		:
+			fcppt::from_std_string(
+				name.get()
+			);
 #else
-	return from_std_string(
-		ti.get().name()
-	);
+	return
+		fcppt::from_std_string(
+			_info.get().name()
+		);
 #endif
 }

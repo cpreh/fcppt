@@ -25,7 +25,9 @@ namespace log
 /// The logger context class is used for finding loggers at runtime.
 class context
 {
-	FCPPT_NONCOPYABLE(context)
+	FCPPT_NONCOPYABLE(
+		context
+	);
 public:
 	FCPPT_SYMBOL context();
 

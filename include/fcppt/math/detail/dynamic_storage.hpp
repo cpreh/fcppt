@@ -26,7 +26,9 @@ struct dynamic_storage
 		T
 	> type;
 
-	FCPPT_RESTRICT_TYPEDEF_STRUCT(dynamic_storage)
+	FCPPT_RESTRICT_TYPEDEF_STRUCT(
+		dynamic_storage
+	);
 };
 
 }

@@ -32,7 +32,9 @@ namespace parameters
 */
 class root
 {
-	FCPPT_NONASSIGNABLE(root)
+	FCPPT_NONASSIGNABLE(
+		root
+	);
 public:
 	FCPPT_SYMBOL explicit root(
 		io::ostream &

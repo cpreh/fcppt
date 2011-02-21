@@ -9,7 +9,9 @@
 
 class test
 {
-	FCPPT_NONCOPYABLE(test)
+	FCPPT_NONCOPYABLE(
+		test
+	);
 public:
 	void
 	some_function()

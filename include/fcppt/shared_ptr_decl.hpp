@@ -8,6 +8,7 @@
 #define FCPPT_SHARED_PTR_DECL_HPP_INCLUDED
 
 #include <fcppt/tr1/detail/use_boost_tr1.hpp> // workaround for boost's get_pointer
+#include <fcppt/detail/make_shared_wrapper_fwd.hpp>
 #include <fcppt/shared_ptr_fwd.hpp>
 #include <fcppt/unique_ptr_fwd.hpp>
 #include <fcppt/weak_ptr_fwd.hpp>
@@ -43,7 +44,7 @@ public:
 		typename Y
 	>
 	explicit shared_ptr(
-		Y *p
+		Y *
 	);
 
 	template<
@@ -52,29 +53,29 @@ public:
 		typename A
 	>
 	shared_ptr(
-		Y *p,
-		A const &a
+		Y *,
+		A const &
 	);
 
 	template<
 		typename Y
 	>
 	explicit shared_ptr(
-		weak_ptr<Y, Deleter> const &r
+		weak_ptr<Y, Deleter> const &
 	);
 
 	template<
 		typename Y
 	>
 	shared_ptr(
-		shared_ptr<Y> const &r
+		shared_ptr<Y> const &
 	);
 
 	template<
 		typename Y
 	>
 	shared_ptr(
-		shared_ptr<Y> const &r,
+		shared_ptr<Y> const &,
 		boost::detail::static_cast_tag
 	);
 
@@ -82,7 +83,7 @@ public:
 		typename Y
 	>
 	shared_ptr(
-		shared_ptr<Y> const &r,
+		shared_ptr<Y> const &,
 		boost::detail::const_cast_tag
 	);
 
@@ -90,7 +91,7 @@ public:
 		typename Y
 	>
 	shared_ptr(
-		shared_ptr<Y> const &r,
+		shared_ptr<Y> const &,
 		boost::detail::dynamic_cast_tag
 	);
 
@@ -98,7 +99,7 @@ public:
 		typename Y
 	>
 	shared_ptr(
-		shared_ptr<Y> const &r,
+		shared_ptr<Y> const &,
 		boost::detail::polymorphic_cast_tag
 	);
 
@@ -106,7 +107,7 @@ public:
 		typename Y
 	>
 	explicit shared_ptr(
-		unique_ptr<Y, Deleter> r
+		unique_ptr<Y, Deleter>
 	);
 
 	template<
@@ -114,7 +115,7 @@ public:
 	>
 	shared_ptr &
 	operator=(
-		shared_ptr<Y> const &r
+		shared_ptr<Y> const &
 	);
 
 	template<
@@ -122,7 +123,7 @@ public:
 	>
 	shared_ptr &
 	operator=(
-		unique_ptr<Y, Deleter> r
+		unique_ptr<Y, Deleter>
 	);
 
 	~shared_ptr();
@@ -135,7 +136,7 @@ public:
 	>
 	void
 	reset(
-		Y *p
+		Y *
 	);
 
 	template<
@@ -144,8 +145,8 @@ public:
 	>
 	void
 	reset(
-		Y *p,
-		A const &a
+		Y *,
+		A const &
 	);
 
 	reference
@@ -172,25 +173,31 @@ public:
 
 	void
 	swap(
-		shared_ptr<T> &other
+		shared_ptr<T> &
 	);
 
 	impl_type const
 	boost_ptr() const;
+
+	template<
+		typename U
+	>
+	shared_ptr(
+		detail::make_shared_wrapper<U>
+	);
 private:
-	impl_type impl;
+	impl_type impl_;
 
-	static Deleter<T> const
-	deleter();
-
-	// this is used to create a shared_ptr
-	// from a weak_ptr
+	// This is used to create a shared_ptr from a weak_ptr
 	template<
 		typename U
 	>
 	explicit shared_ptr(
-		boost::shared_ptr<U> const &p
+		boost::shared_ptr<U>
 	);
+
+	static Deleter<T> const
+	deleter();
 
 	template<
 		typename Other,
@@ -212,8 +219,8 @@ template<
 >
 bool
 operator==(
-	shared_ptr<T, Deleter> const &a,
-	shared_ptr<U, Deleter> const &b
+	shared_ptr<T, Deleter> const &,
+	shared_ptr<U, Deleter> const &
 );
 
 template<
@@ -225,8 +232,8 @@ template<
 >
 bool
 operator!=(
-	shared_ptr<T, Deleter> const &a,
-	shared_ptr<U, Deleter> const &b
+	shared_ptr<T, Deleter> const &,
+	shared_ptr<U, Deleter> const &
 );
 
 template<
@@ -238,8 +245,8 @@ template<
 >
 bool
 operator<(
-	shared_ptr<T, Deleter> const &a,
-	shared_ptr<U, Deleter> const &b
+	shared_ptr<T, Deleter> const &,
+	shared_ptr<U, Deleter> const &
 );
 
 template<
@@ -251,8 +258,8 @@ template<
 >
 void
 swap(
-	shared_ptr<T, Deleter> &a,
-	shared_ptr<T, Deleter> &b
+	shared_ptr<T, Deleter> &,
+	shared_ptr<T, Deleter> &
 );
 
 template<

@@ -27,14 +27,15 @@ operator<<(
 	std::basic_ostream<
 		Ch,
 		Traits
-	> &s,
+	> &_stream,
 	strong_typedef<
 		T,
 		Tag
-	> const &t
+	> const &_value
 )
 {
-	return s << t .operator T const &();
+	return
+		_stream << _value.get();
 }
 
 }

@@ -9,11 +9,18 @@
 
 #include <fcppt/detail/make_ptr_base.hpp>
 #include <fcppt/shared_ptr.hpp>
+#include <boost/smart_ptr/make_shared.hpp>
 
 namespace fcppt
 {
 
-FCPPT_DETAIL_MAKE_PTR_BASE(shared_ptr)
+FCPPT_DETAIL_MAKE_PTR_BASE(
+	shared_ptr,
+	detail::make_shared_wrapper,
+	boost::make_shared<
+		Type
+	>
+)
 
 }
 

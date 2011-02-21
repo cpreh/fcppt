@@ -44,7 +44,9 @@ struct heap_deleter
 		T *const _ptr
 	) const
 	{
-		FCPPT_ASSERT_COMPLETE(T)
+		FCPPT_ASSERT_COMPLETE(
+			T
+		);
 
 		delete _ptr;
 	}

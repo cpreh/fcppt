@@ -24,7 +24,9 @@ template<
 >
 class uniform
 {
-	FCPPT_NONASSIGNABLE(uniform)
+	FCPPT_NONASSIGNABLE(
+		uniform
+	);
 
 	typedef typename detail::uniform_distribution<
 		T

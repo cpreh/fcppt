@@ -29,7 +29,9 @@ namespace log
 /// The main logger class. If you need a new logger, you should create an object of it.
 class object
 {
-	FCPPT_NONCOPYABLE(object)
+	FCPPT_NONCOPYABLE(
+		object
+	);
 public:
 	/// Constructs a logger. 
 	/**

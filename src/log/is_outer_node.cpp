@@ -11,8 +11,10 @@
 
 bool
 fcppt::log::is_outer_node(
-	detail::context_tree const &node_
+	detail::context_tree const &_node
 )
 {
-	return node_.value().type() == typeid(detail::outer_context_node);
+	return
+		_node.value().type()
+		== typeid(detail::outer_context_node);
 }

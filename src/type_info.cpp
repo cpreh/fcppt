@@ -10,24 +10,28 @@
 #include <fcppt/workarounds.hpp>
 
 fcppt::type_info::type_info(
-	std::type_info const &ti
+	std::type_info const &_ti
 )
 :
-	info_(&ti)
+	info_(&_ti)
 {
-	FCPPT_ASSERT(info_);
+	FCPPT_ASSERT(
+		info_ != 0
+	);
 }
 
 bool
 fcppt::type_info::before(
-	type_info const &rhs
+	type_info const &_rhs
 ) const
 {
-	FCPPT_ASSERT(info_);
+	FCPPT_ASSERT(
+		info_ != 0
+	);
 
 	return
 		info_->before(
-			*rhs.info_
+			*_rhs.info_
 		)
 #ifdef FCPPT_MSVC_WRONG_TYPE_INFO_BEFORE_BUG
 		!= 0
@@ -38,7 +42,9 @@ fcppt::type_info::before(
 std::type_info const &
 fcppt::type_info::get() const
 {
-	FCPPT_ASSERT(info_);
+	FCPPT_ASSERT(
+		info_ != 0
+	);
 
 	return *info_;
 }
@@ -46,61 +52,74 @@ fcppt::type_info::get() const
 fcppt::string const
 fcppt::type_info::name() const
 {
-	FCPPT_ASSERT(info_);
+	FCPPT_ASSERT(
+		info_ != 0
+	);
 
-	return type_name(*this);
+	return
+		fcppt::type_name(
+			*this
+		);
 }
 
 bool
 fcppt::operator==(
-	type_info const &lhs,
-	type_info const &rhs
+	type_info const &_lhs,
+	type_info const &_rhs
 )
 {
-	return lhs.get() == rhs.get();
+	return
+		_lhs.get() == _rhs.get();
 }
 
 bool
 fcppt::operator<(
-	type_info const &lhs,
-	type_info const &rhs
+	type_info const &_lhs,
+	type_info const &_rhs
 )
 {
-	return lhs.before(rhs);
+	return
+		_lhs.before(
+			_rhs
+		);
 }
 
 bool
 fcppt::operator!=(
-	type_info const &lhs,
-	type_info const &rhs
+	type_info const &_lhs,
+	type_info const &_rhs
 )
 {
-	return !(lhs == rhs);
+	return
+		!(_lhs == _rhs);
 }
 
 bool
 fcppt::operator>(
-	type_info const &lhs,
-	type_info const &rhs
+	type_info const &_lhs,
+	type_info const &_rhs
 )
 {
-	return rhs < lhs;
+	return
+		_rhs < _lhs;
 }
 
 bool
 fcppt::operator<=(
-	type_info const &lhs,
-	type_info const &rhs
+	type_info const &_lhs,
+	type_info const &_rhs
 )
 {
-	return !(lhs > rhs);
+	return
+		!(_lhs > _rhs);
 }
 
 bool
 fcppt::operator>=(
-	type_info const &lhs,
-	type_info const &rhs
+	type_info const &_lhs,
+	type_info const &_rhs
 )
 {
-	return !(lhs < rhs);
+	return
+		!(_lhs < _rhs);
 }

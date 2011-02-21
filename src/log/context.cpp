@@ -30,7 +30,9 @@ fcppt::log::context::context()
 
 fcppt::log::context::~context()
 {
-	if(!std::uncaught_exception())
+	if(
+		!std::uncaught_exception()
+	)
 		FCPPT_ASSERT(
 			tree_.empty()
 		);
@@ -38,8 +40,8 @@ fcppt::log::context::~context()
 
 void
 fcppt::log::context::add(
-	location const &location_,
-	object &object_
+	log::location const &_location,
+	log::object &_object
 )
 {
 	detail::context_tree *cur(
@@ -48,14 +50,14 @@ fcppt::log::context::add(
 
 	for(
 		location::const_iterator item(
-			location_.begin()
+			_location.begin()
 		);
-		item != location_.end();
+		item != _location.end();
 		++item
 	)
 	{
 		detail::context_tree::iterator const item_it(
-			find_inner_node(
+			log::find_inner_node(
 				*cur,
 				*item
 			)
@@ -78,7 +80,7 @@ fcppt::log::context::add(
 	}
 
 	FCPPT_ASSERT(
-		find_logger_node(
+		log::find_logger_node(
 			*cur
 		)
 		== cur->end()
@@ -86,90 +88,93 @@ fcppt::log::context::add(
 
 	cur->push_back(
 		detail::outer_context_node(
-			object_
+			_object
 		)
 	);
 }
 
 void
 fcppt::log::context::remove(
-	location const &location_
+	log::location const &_location
 )
 {
-	detail::context_tree *node_(
-		find_location(
+	detail::context_tree *node(
+		log::find_location(
 			tree_,
-			location_
+			_location
 		)
 	);
 
 	FCPPT_ASSERT(
-		node_
+		node != 0
 	);
 
-	detail::context_tree::iterator const logger_node_(
-		find_logger_node(
-			*node_
+	detail::context_tree::iterator const logger_node(
+		log::find_logger_node(
+			*node
 		)
 	);
 
 	FCPPT_ASSERT(
-		logger_node_ != node_->end()
+		logger_node != node->end()
 	);
 
-	node_->erase(
-		logger_node_->child_position()
+	node->erase(
+		logger_node->child_position()
 	);
 
 	while(
-		node_->has_parent()
-		&& node_->empty()
+		node->has_parent()
+		&& node->empty()
 	)
 	{
-		detail::context_tree *const parent_(
-			&node_->parent()
+		detail::context_tree *const parent(
+			&node->parent()
 		);
 
-		parent_->erase(
-			node_->child_position()
+		parent->erase(
+			node->child_position()
 		);
 
-		node_ = parent_;
+		node = parent;
 	}
 }
 
 fcppt::log::object *
 fcppt::log::context::find(
-	location const &location_
+	log::location const &_location
 ) const
 {
-	detail::context_tree const *const tree_location_(
-		find_location(
+	detail::context_tree const *const tree_location(
+		log::find_location(
 			const_cast<
 				detail::context_tree &
 			>(
 				tree_
 			),
-			location_
+			_location
 		)
 	);
 
-	if(!tree_location_)
+	if(
+		!tree_location
+	)
 		return 0;
 
-	detail::context_tree::const_iterator const logger_node_(
-		find_logger_node(
+	detail::context_tree::const_iterator const logger_node(
+		log::find_logger_node(
 			const_cast<
 				detail::context_tree &
 			>(
-				*tree_location_
+				*tree_location
 			)
 		)
 	);
 
-	return logger_node_ != tree_location_->end()
+	return
+		logger_node != tree_location->end()
 		?
-			&logger_node_->value().get<
+			&logger_node->value().get<
 				detail::outer_context_node
 			>().object()
 		:
@@ -178,22 +183,22 @@ fcppt::log::context::find(
 
 void
 fcppt::log::context::apply(
-	location const &location_,
-	tree_function const &function_
+	log::location const &_location,
+	log::tree_function const &_function
 )
 {
-	detail::context_tree *const tree_location_(
-		find_location(
+	detail::context_tree *const tree_location(
+		log::find_location(
 			tree_,
-			location_
+			_location
 		)
 	);
 
 	if(
-		!tree_location_
+		!tree_location
 	)
-		throw no_such_location(
-			location_
+		throw log::no_such_location(
+			_location
 		);
 
 	typedef
@@ -201,24 +206,24 @@ fcppt::log::context::apply(
 		detail::context_tree
 	> traversal_type;
 
-	traversal_type traversal_(
-		*tree_location_
+	traversal_type traversal(
+		*tree_location
 	);
 
 	for(
 		traversal_type::iterator it(
-			traversal_.begin()
+			traversal.begin()
 		);
-		it != traversal_.end();
+		it != traversal.end();
 		++it
 	)
 	{
 		if(
-			is_outer_node(
+			log::is_outer_node(
 				*it
 			)
 		)
-			function_(
+			_function(
 				it->value().get<
 					detail::outer_context_node
 				>().object()

@@ -7,6 +7,7 @@
 #ifndef FCPPT_MATH_MATRIX_INVERSE_HPP_INCLUDED
 #define FCPPT_MATH_MATRIX_INVERSE_HPP_INCLUDED
 
+#include <fcppt/math/matrix/arithmetic.hpp>
 #include <fcppt/math/matrix/determinant.hpp>
 #include <fcppt/math/matrix/adjugate.hpp>
 #include <fcppt/math/is_static_size.hpp>

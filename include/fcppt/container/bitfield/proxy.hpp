@@ -27,7 +27,9 @@ template<
 >
 class proxy
 {
-	FCPPT_NONASSIGNABLE(proxy)
+	FCPPT_NONASSIGNABLE(
+		proxy
+	);
 
 	proxy(
 		StoredType array,

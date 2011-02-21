@@ -12,13 +12,16 @@
 
 fcppt::log::format::const_object_ptr const
 fcppt::log::format::default_level(
-	level::type const level_
+	level::type const _level
 )
 {
-	return make_shared_ptr<
-		inserter
-	>(
-		level_to_string(level_)
-		+ FCPPT_TEXT(": %1%\n")
-	);
+	return
+		fcppt::make_shared_ptr<
+			format::inserter
+		>(
+			log::level_to_string(
+				_level
+			)
+			+ FCPPT_TEXT(": %1%\n")
+		);
 }

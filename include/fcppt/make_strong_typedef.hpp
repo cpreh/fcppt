@@ -21,6 +21,6 @@ struct fcppt_strong_typedef_##name##_tag\
 typedef fcppt::strong_typedef<\
 	type,\
 	fcppt_strong_typedef_##name##_tag\
-> name;
+> name
 
 #endif

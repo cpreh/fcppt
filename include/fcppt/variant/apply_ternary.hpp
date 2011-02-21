@@ -15,11 +15,11 @@ namespace fcppt
 namespace variant
 {
 
-/// Does a ternary visitation with operation @a op
+/// Does a ternary visitation with operation @a _op
 /**
- * This will call @a op::operator()(t1, t2, t3)
- * where t1, t2 and t3 are the objects held by @a obj1, @a obj2 and @a obj3 respectively
- * @return The result of @a op::operator().
+ * This will call @a _op::operator()(t1, t2, t3)
+ * where t1, t2 and t3 are the objects held by @a _obj1, @a _obj2 and @a _obj3 respectively
+ * @return The result of @a _op::operator().
 */
 template<
 	typename Operation,
@@ -29,23 +29,24 @@ template<
 >
 typename Operation::result_type
 apply_ternary(
-	Operation const &op,
-	Variant1 const &obj1,
-	Variant2 const &obj2,
-	Variant3 const &obj3
+	Operation const &_op,
+	Variant1 const &_obj1,
+	Variant2 const &_obj2,
+	Variant3 const &_obj3
 )
 {
-	return apply_binary(
-		detail::ternary_unwrap<
-			Operation,
-			Variant1
-		>(
-			op,
-			obj1
-		),
-		obj2,
-		obj3
-	);
+	return
+		variant::apply_binary(
+			detail::ternary_unwrap<
+				Operation,
+				Variant1
+			>(
+				_op,
+				_obj1
+			),
+			_obj2,
+			_obj3
+		);
 }
 
 }

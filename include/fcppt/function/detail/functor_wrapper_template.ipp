@@ -45,7 +45,9 @@ namespace detail
 template< typename F, FCPPT_FUNCTION_OBJECT_PP_TEMPLATE_PARAMS >
 struct functor_wrapper< F, FCPPT_FUNCTION_OBJECT_PP_TEMPLATE_ARGS >
 {
-	FCPPT_NONASSIGNABLE(functor_wrapper)
+	FCPPT_NONASSIGNABLE(
+		functor_wrapper
+	);
 public:
 	functor_wrapper( F &f )
 		: f_( f )

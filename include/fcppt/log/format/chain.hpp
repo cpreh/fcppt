@@ -9,6 +9,7 @@
 
 #include <fcppt/log/format/object.hpp>
 #include <fcppt/log/format/const_object_ptr.hpp>
+#include <fcppt/noncopyable.hpp>
 #include <fcppt/string.hpp>
 #include <fcppt/symbol.hpp>
 
@@ -25,8 +26,11 @@ namespace format
 */
 class FCPPT_CLASS_SYMBOL chain
 :
-	public object
+	public format::object
 {
+	FCPPT_NONCOPYABLE(
+		chain
+	);
 public:
 	FCPPT_SYMBOL chain(
 		const_object_ptr parent,

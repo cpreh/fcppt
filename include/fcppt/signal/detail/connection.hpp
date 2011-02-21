@@ -26,7 +26,7 @@ class FCPPT_CLASS_SYMBOL connection
 {
 	FCPPT_NONCOPYABLE(
 		connection
-	)
+	);
 public:
 	FCPPT_SYMBOL
 	connection();

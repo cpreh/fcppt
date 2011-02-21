@@ -21,7 +21,9 @@ template<
 >
 class rv
 {
-	FCPPT_NONASSIGNABLE(rv)
+	FCPPT_NONASSIGNABLE(
+		rv
+	);
 public:
 	explicit rv(
 		T &_r

@@ -19,7 +19,9 @@ namespace detail
 
 class copy
 {
-	FCPPT_NONASSIGNABLE(copy)
+	FCPPT_NONASSIGNABLE(
+		copy
+	);
 public:
 	typedef void *result_type;
 

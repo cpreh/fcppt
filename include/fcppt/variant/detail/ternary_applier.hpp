@@ -25,7 +25,7 @@ class ternary_applier
 {
 	FCPPT_NONASSIGNABLE(
 		ternary_applier
-	)
+	);
 public:
 	typedef typename Operation::result_type result_type;
 
@@ -49,7 +49,7 @@ public:
 	) const
 	{
 		return
-			op(
+			op_(
 				_t1,
 				t2_,
 				t3_

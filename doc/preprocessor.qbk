@@ -29,6 +29,28 @@ print "TODO: ", "warning: " or "FIXME: " in front respectively.
 
 [endsect]
 
+[section Controlling Warnings]
+
+In general it is good pratice to enable as much compiler warnings as possible.
+However, sometimes a warning cannot be avoided or is simply wrong.
+fcppt provides two macros to push or pop the current warning settings,
+which are `FCPPT_PP_PUSH_WARNING` and `FCPPT_PP_POP_WARNING`.
+The main advantage of saving the current warning settings is that you
+don't have to remember which settings were in effect.
+
+Different compilers use different means to set warnings.
+fcppt provides two macros: `FCPPT_PP_DISABLE_VC_WARNING` and
+`FCPPT_PP_DISABLE_GCC_WARNING`. Their usage is quite different because
+you have to pass an integral number to the former which denotes the
+warning, but you have to pass the whole warning option to the latter.
+
+Here is an example of how to use these macros.
+[import ../examples/preprocessor/warning.cpp]
+
+[ppwarning]
+
+[endsect]
+
 [xinclude doxygen_preprocessor.xml]
 
 [endsect]

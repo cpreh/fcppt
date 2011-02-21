@@ -4,35 +4,13 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/algorithm/shift_compare.hpp>
 #include <fcppt/algorithm/levenshtein.hpp>
 #include <fcppt/algorithm/shortest_levenshtein.hpp>
-#include <fcppt/math/vector/vector.hpp>
 #include <boost/test/unit_test.hpp>
-#include <functional>
 #include <iostream>
-
-namespace
-{
-typedef
-fcppt::math::vector::static_<int,3>::type
-vector;
-}
-
-BOOST_AUTO_TEST_CASE(shift_compare)
-{
-	vector const first(1,2,3),second(3,1,2),third(3,2,1);
-
-	BOOST_CHECK(
-		fcppt::algorithm::shift_compare(
-			first,
-			second,
-			std::equal_to<int>()) &&
-		!fcppt::algorithm::shift_compare(
-			first,
-			third,
-			std::equal_to<int>()));
-}
+#include <ostream>
+#include <string>
+#include <vector>
 
 namespace
 {
@@ -61,7 +39,9 @@ test_single_levenshtein(
 }
 }
 
-BOOST_AUTO_TEST_CASE(leven)
+BOOST_AUTO_TEST_CASE(
+	algorithm_levenshtein
+)
 {
 	std::cout << "Checking levenshtein distance functions...\n";
 
@@ -92,3 +72,5 @@ BOOST_AUTO_TEST_CASE(leven)
 			strings,
 			ref) == strings[2]);
 }
+
+

@@ -22,7 +22,9 @@ template<
 >
 class output
 {
-	FCPPT_NONASSIGNABLE(output)
+	FCPPT_NONASSIGNABLE(
+		output
+	);
 public:
 	typedef Stream &result_type;
 

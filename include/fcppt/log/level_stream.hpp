@@ -26,7 +26,9 @@ namespace log
 */
 class level_stream
 {
-	FCPPT_NONASSIGNABLE(level_stream)
+	FCPPT_NONASSIGNABLE(
+		level_stream
+	);
 public:
 	/// Constructs a level_stream with a sink and a formatter
 	FCPPT_SYMBOL level_stream(
@@ -51,6 +53,7 @@ public:
 	formatter() const;
 private:
 	io::ostream &dest_;
+
 	format::const_object_ptr formatter_;
 };
 

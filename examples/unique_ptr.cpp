@@ -22,7 +22,7 @@ typedef fcppt::unique_ptr<
 unique_int_ptr
 int_ptr_factory()
 {
-	// make_unique_ptr is a factory function to make unique_ptr
+	// make_unique_ptr is a factory function to make a unique_ptr
 	// note: an rvalue is returned here
 	return 
 		fcppt::make_unique_ptr<
@@ -32,7 +32,7 @@ int_ptr_factory()
 		);
 }
 
-// make a function that
+// make a function that takes a unique_ptr
 void
 int_ptr_arg(
 	unique_int_ptr ptr
@@ -97,7 +97,7 @@ to_shared_ptr(
 {
 	// fcppt::shared_ptr can take a unique_ptr,
 	// but because ptr is an lvalue, we have to move it
-	// note: that move is found via ADL
+	// note: move is found via ADL
 	return
 		shared_int_ptr(
 			move(

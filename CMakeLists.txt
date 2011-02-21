@@ -8,15 +8,16 @@ IF(${CMAKE_BINARY_DIR} STREQUAL ${CMAKE_SOURCE_DIR})
 	message(FATAL_ERROR "In-source builds are not permitted. Make a separate folder for building:\nmkdir build; cd build; cmake ..\nBefore that, remove the files that cmake just created:\nrm -rf CMakeCache.txt CMakeFiles")
 ENDIF()
 
-
 SET (CMAKE_MODULE_PATH "${EXTRA_CMAKE_MODULE_PATH};${CMAKE_SOURCE_DIR}/CMakeModules")
 
 PROJECT (fcppt)
 
 SET (FCPPT_MAJOR_VERSION 0)
-SET (FCPPT_MINOR_VERSION 3)
+SET (FCPPT_MINOR_VERSION 6)
 SET (FCPPT_MICRO_VERSION 0)
+
 SET (FCPPT_VERSION "${FCPPT_MAJOR_VERSION}.${FCPPT_MINOR_VERSION}.${FCPPT_MICRO_VERSION}")
+
 MATH (
 	EXPR
 	FCPPT_INT_VERSION
@@ -141,6 +142,12 @@ IF (CMAKE_COMPILER_IS_GNUCXX OR COMPILER_IS_CLANGPP)
 		FCPPT_HAVE_GCC_PRAGMA_MESSAGE
 	)
 
+	CHECK_CXX_SOURCE_COMPILES(
+		"#pragma GCC diagnostic push
+		int main() {}"
+		FCPPT_HAVE_GCC_DIAGNOSTIC
+	)
+
 	CHECK_CXX_COMPILER_FLAG("-Wmissing-declarations" FCPPT_HAVE_MISSING_DECLARATIONS_FLAG)
 
 	IF(FCPPT_HAVE_MISSING_DECLARATIONS_FLAG)
@@ -190,11 +197,7 @@ INSTALL (FILES ${pkgfile} DESTINATION ${CMAKE_INSTALL_PREFIX}/lib/pkgconfig)
 #	 {}"
 #	 FCPPT_HAVE_DEFAULTED_AND_DELETED_FUNCTIONS)
 
-SET (Boost_ADDITIONAL_VERSIONS "1.41" "1.41.0" "1.42" "1.42.0" "1.43" "1.43.0" "1.44" "1.44.0" "1.45" "1.45.0")
-
-IF(MSVC)
-	SET(Boost_USE_STATIC_LIBS ON)
-ENDIF()
+SET (Boost_ADDITIONAL_VERSIONS "1.41" "1.41.0" "1.42" "1.42.0" "1.43" "1.43.0" "1.44" "1.44.0" "1.45" "1.45.0" "1.46" "1.46.0")
 
 FIND_PACKAGE(
 	Boost 1.40.0 REQUIRED COMPONENTS
@@ -294,116 +297,1002 @@ INCLUDE_DIRECTORIES(
 	${CMAKE_BINARY_DIR}/include
 )
 
-MACRO(ADD_FCPPT_SOURCE_GROUP GROUPPATH PATTERN)
-	FILE(GLOB GROUPFILES ${GROUPPATH}/${PATTERN})
+SET(
+	FCPPT_FILES
+	include/fcppt/algorithm/append.hpp
+	include/fcppt/algorithm/compare_with.hpp
+	include/fcppt/algorithm/contains.hpp
+	include/fcppt/algorithm/contains_if.hpp
+	include/fcppt/algorithm/copy_n.hpp
+	include/fcppt/algorithm/element_not_found.hpp
+	include/fcppt/algorithm/exception.hpp
+	include/fcppt/algorithm/find_exn.hpp
+	include/fcppt/algorithm/find_if_exn.hpp
+	include/fcppt/algorithm/impl/element_not_found.hpp
+	include/fcppt/algorithm/impl/exception.hpp
+	include/fcppt/algorithm/join_strings.hpp
+	include/fcppt/algorithm/levenshtein.hpp
+	include/fcppt/algorithm/map.hpp
+	include/fcppt/algorithm/ptr_container_erase.hpp
+	include/fcppt/algorithm/ptr_container_erase_if.hpp
+	include/fcppt/algorithm/remove.hpp
+	include/fcppt/algorithm/remove_if.hpp
+	include/fcppt/algorithm/set_intersection.hpp
+	include/fcppt/algorithm/shift_compare.hpp
+	include/fcppt/algorithm/shortest_levenshtein.hpp
+	include/fcppt/alignment/align.hpp
+	include/fcppt/alignment/array.hpp
+	include/fcppt/alignment/detail/make_type.hpp
+	include/fcppt/alignment/is_aligned.hpp
+	include/fcppt/alignment/make_type.hpp
+	include/fcppt/alignment/size_type.hpp
+	include/fcppt/assert.hpp
+	include/fcppt/assert_complete.hpp
+	include/fcppt/assert_message.hpp
+	include/fcppt/assertion_failed.hpp
+	include/fcppt/assign/detail/array.hpp
+	include/fcppt/assign/detail/array_impl.hpp
+	include/fcppt/assign/detail/insert.hpp
+	include/fcppt/assign/detail/make_container_impl.hpp
+	include/fcppt/assign/make_array.hpp
+	include/fcppt/assign/make_container.hpp
+	include/fcppt/auto_ptr.hpp
+	include/fcppt/bad_dynamic_cast.hpp
+	include/fcppt/bad_lexical_cast.hpp
+	include/fcppt/bad_truncation_check_cast.hpp
+	include/fcppt/c_deleter.hpp
+	include/fcppt/char_type.hpp
+	include/fcppt/chrono/chrono.hpp
+	include/fcppt/chrono/clock_failure.hpp
+	include/fcppt/chrono/common_type.hpp
+	include/fcppt/chrono/convert/to_boost_duration.hpp
+	include/fcppt/chrono/days.hpp
+	include/fcppt/chrono/detail/duration_cast.hpp
+	include/fcppt/chrono/duration.hpp
+	include/fcppt/chrono/duration_arithmetic.hpp
+	include/fcppt/chrono/duration_cast.hpp
+	include/fcppt/chrono/duration_comparison.hpp
+	include/fcppt/chrono/duration_decl.hpp
+	include/fcppt/chrono/duration_fwd.hpp
+	include/fcppt/chrono/duration_impl.hpp
+	include/fcppt/chrono/duration_output.hpp
+	include/fcppt/chrono/duration_values.hpp
+	include/fcppt/chrono/exception.hpp
+	include/fcppt/chrono/high_resolution_clock.hpp
+	include/fcppt/chrono/high_resolution_clock_fwd.hpp
+	include/fcppt/chrono/hours.hpp
+	include/fcppt/chrono/impl/clock_failure.hpp
+	include/fcppt/chrono/impl/exception.hpp
+	include/fcppt/chrono/is_duration.hpp
+	include/fcppt/chrono/microseconds.hpp
+	include/fcppt/chrono/milliseconds.hpp
+	include/fcppt/chrono/minutes.hpp
+	include/fcppt/chrono/nanoseconds.hpp
+	include/fcppt/chrono/rep.hpp
+	include/fcppt/chrono/seconds.hpp
+	include/fcppt/chrono/steady_clock.hpp
+	include/fcppt/chrono/steady_clock_fwd.hpp
+	include/fcppt/chrono/system_clock.hpp
+	include/fcppt/chrono/system_clock_fwd.hpp
+	include/fcppt/chrono/time_point.hpp
+	include/fcppt/chrono/time_point_arithmetic.hpp
+	include/fcppt/chrono/time_point_cast.hpp
+	include/fcppt/chrono/time_point_comparison.hpp
+	include/fcppt/chrono/time_point_decl.hpp
+	include/fcppt/chrono/time_point_fwd.hpp
+	include/fcppt/chrono/time_point_impl.hpp
+	include/fcppt/chrono/time_point_output.hpp
+	include/fcppt/chrono/treat_as_floating_point.hpp
+	include/fcppt/class_symbol.hpp
+	include/fcppt/com_deleter.hpp
+	include/fcppt/const_pointer_cast.hpp
+	include/fcppt/container/array.hpp
+	include/fcppt/container/array_decl.hpp
+	include/fcppt/container/array_fwd.hpp
+	include/fcppt/container/array_impl.hpp
+	include/fcppt/container/bitfield/array.hpp
+	include/fcppt/container/bitfield/basic.hpp
+	include/fcppt/container/bitfield/basic_decl.hpp
+	include/fcppt/container/bitfield/basic_fwd.hpp
+	include/fcppt/container/bitfield/basic_impl.hpp
+	include/fcppt/container/bitfield/bitfield.hpp
+	include/fcppt/container/bitfield/default_internal_type.hpp
+	include/fcppt/container/bitfield/detail/element_bits.hpp
+	include/fcppt/container/bitfield/detail/iterator_type.hpp
+	include/fcppt/container/bitfield/difference_type.hpp
+	include/fcppt/container/bitfield/is_subset_eq.hpp
+	include/fcppt/container/bitfield/iterator.hpp
+	include/fcppt/container/bitfield/iterator_fwd.hpp
+	include/fcppt/container/bitfield/iterator_impl.hpp
+	include/fcppt/container/bitfield/proxy.hpp
+	include/fcppt/container/bitfield/proxy_fwd.hpp
+	include/fcppt/container/bitfield/proxy_impl.hpp
+	include/fcppt/container/bitfield/size_type.hpp
+	include/fcppt/container/bitfield/value_type.hpp
+	include/fcppt/container/data.hpp
+	include/fcppt/container/data_end.hpp
+	include/fcppt/container/detail/array_range_check.hpp
+	include/fcppt/container/detail/array_storage.hpp
+	include/fcppt/container/detail/array_swap.hpp
+	include/fcppt/container/detail/null_array_storage.hpp
+	include/fcppt/container/exception.hpp
+	include/fcppt/container/grid/comparison.hpp
+	include/fcppt/container/grid/detail/access_member.hpp
+	include/fcppt/container/grid/detail/assign_fill_recurse.hpp
+	include/fcppt/container/grid/detail/assign_recurse.hpp
+	include/fcppt/container/grid/detail/at.hpp
+	include/fcppt/container/grid/detail/choose_pointer.hpp
+	include/fcppt/container/grid/detail/choose_reference.hpp
+	include/fcppt/container/grid/detail/data.hpp
+	include/fcppt/container/grid/detail/data_end.hpp
+	include/fcppt/container/grid/detail/print_recurse.hpp
+	include/fcppt/container/grid/detail/resize.hpp
+	include/fcppt/container/grid/detail/shrink_to_fit.hpp
+	include/fcppt/container/grid/exception.hpp
+	include/fcppt/container/grid/grid.hpp
+	include/fcppt/container/grid/impl/exception.hpp
+	include/fcppt/container/grid/impl/out_of_range.hpp
+	include/fcppt/container/grid/object.hpp
+	include/fcppt/container/grid/object_decl.hpp
+	include/fcppt/container/grid/object_fwd.hpp
+	include/fcppt/container/grid/object_impl.hpp
+	include/fcppt/container/grid/out_of_range.hpp
+	include/fcppt/container/grid/output.hpp
+	include/fcppt/container/grid/resize_preserve.hpp
+	include/fcppt/container/grid/resize_preserve_init.hpp
+	include/fcppt/container/grid/size_type.hpp
+	include/fcppt/container/impl/exception.hpp
+	include/fcppt/container/impl/insert_failed.hpp
+	include/fcppt/container/impl/not_found.hpp
+	include/fcppt/container/impl/out_of_range.hpp
+	include/fcppt/container/index_map.hpp
+	include/fcppt/container/index_map_decl.hpp
+	include/fcppt/container/index_map_fwd.hpp
+	include/fcppt/container/index_map_impl.hpp
+	include/fcppt/container/insert_failed.hpp
+	include/fcppt/container/is_raw_vector.hpp
+	include/fcppt/container/is_std_vector.hpp
+	include/fcppt/container/linear_map.hpp
+	include/fcppt/container/linear_map_impl.hpp
+	include/fcppt/container/linear_set.hpp
+	include/fcppt/container/linear_set_impl.hpp
+	include/fcppt/container/map.hpp
+	include/fcppt/container/map_decl.hpp
+	include/fcppt/container/map_fwd.hpp
+	include/fcppt/container/map_impl.hpp
+	include/fcppt/container/not_found.hpp
+	include/fcppt/container/out_of_range.hpp
+	include/fcppt/container/ptr/equal.hpp
+	include/fcppt/container/ptr/insert_unique_ptr.hpp
+	include/fcppt/container/ptr/insert_unique_ptr_map.hpp
+	include/fcppt/container/ptr/insert_unique_ptr_multimap.hpp
+	include/fcppt/container/ptr/insert_unique_ptr_multiset.hpp
+	include/fcppt/container/ptr/insert_unique_ptr_set.hpp
+	include/fcppt/container/ptr/make_equal.hpp
+	include/fcppt/container/ptr/push_back_unique_ptr.hpp
+	include/fcppt/container/raw_vector.hpp
+	include/fcppt/container/raw_vector_decl.hpp
+	include/fcppt/container/raw_vector_fwd.hpp
+	include/fcppt/container/raw_vector_impl.hpp
+	include/fcppt/container/tree/is_object.hpp
+	include/fcppt/container/tree/object.hpp
+	include/fcppt/container/tree/object_decl.hpp
+	include/fcppt/container/tree/object_fwd.hpp
+	include/fcppt/container/tree/object_impl.hpp
+	include/fcppt/container/tree/pre_order.hpp
+	include/fcppt/container/tree/tree.hpp
+	include/fcppt/cyclic_iterator.hpp
+	include/fcppt/cyclic_iterator_decl.hpp
+	include/fcppt/cyclic_iterator_fwd.hpp
+	include/fcppt/cyclic_iterator_impl.hpp
+	include/fcppt/detail/char_type.hpp
+	include/fcppt/detail/cyclic_iterator_base.hpp
+	include/fcppt/detail/make_ptr_base.hpp
+	include/fcppt/detail/make_shared_wrapper.hpp
+	include/fcppt/detail/make_shared_wrapper_fwd.hpp
+	include/fcppt/detail/process_assert.hpp
+	include/fcppt/detail/strong_typedef_cast.hpp
+	include/fcppt/detail_unique_ptr/one_two.hpp
+	include/fcppt/detail_unique_ptr/pointer_type.hpp
+	include/fcppt/detail_unique_ptr/rv.hpp
+	include/fcppt/detail_unique_ptr/storage.hpp
+	include/fcppt/dynamic_cast.hpp
+	include/fcppt/dynamic_pointer_cast.hpp
+	include/fcppt/empty_optional.hpp
+	include/fcppt/empty_optional_tag.hpp
+	include/fcppt/empty_optional_tag_fwd.hpp
+	include/fcppt/endianness/copy_n_from_host.hpp
+	include/fcppt/endianness/copy_n_swapped.hpp
+	include/fcppt/endianness/copy_n_to_host.hpp
+	include/fcppt/endianness/copy_swapped.hpp
+	include/fcppt/endianness/format.hpp
+	include/fcppt/endianness/from_big_endian.hpp
+	include/fcppt/endianness/from_host.hpp
+	include/fcppt/endianness/from_little_endian.hpp
+	include/fcppt/endianness/host_format.hpp
+	include/fcppt/endianness/is_big_endian.hpp
+	include/fcppt/endianness/is_little_endian.hpp
+	include/fcppt/endianness/reverse_mem.hpp
+	include/fcppt/endianness/swap.hpp
+	include/fcppt/endianness/to_big_endian.hpp
+	include/fcppt/endianness/to_host.hpp
+	include/fcppt/endianness/to_little_endian.hpp
+	include/fcppt/error/strerrno.hpp
+	include/fcppt/error/strerror.hpp
+	include/fcppt/exception.hpp
+	include/fcppt/export_symbol.hpp
+	include/fcppt/filesystem/config.hpp
+	include/fcppt/filesystem/create_directories_recursive.hpp
+	include/fcppt/filesystem/create_directory.hpp
+	include/fcppt/filesystem/create_directory_failed.hpp
+	include/fcppt/filesystem/current_path.hpp
+	include/fcppt/filesystem/detail/path_traits.hpp
+	include/fcppt/filesystem/directory_iterator.hpp
+	include/fcppt/filesystem/exception.hpp
+	include/fcppt/filesystem/exists.hpp
+	include/fcppt/filesystem/extension.hpp
+	include/fcppt/filesystem/extension_without_dot.hpp
+	include/fcppt/filesystem/first_file.hpp
+	include/fcppt/filesystem/impl/create_directory_failed.hpp
+	include/fcppt/filesystem/impl/exception.hpp
+	include/fcppt/filesystem/is_directory.hpp
+	include/fcppt/filesystem/is_executable.hpp
+	include/fcppt/filesystem/is_regular.hpp
+	include/fcppt/filesystem/next_file.hpp
+	include/fcppt/filesystem/path.hpp
+	include/fcppt/filesystem/path_to_string.hpp
+	include/fcppt/filesystem/readlink.hpp
+	include/fcppt/filesystem/recursive_directory_iterator.hpp
+	include/fcppt/filesystem/remove.hpp
+	include/fcppt/filesystem/remove_filename.hpp
+	include/fcppt/filesystem/replace_extension.hpp
+	include/fcppt/filesystem/skip_directories.hpp
+	include/fcppt/filesystem/stem.hpp
+	include/fcppt/foreach_enumerator.hpp
+	include/fcppt/foreach_enumerator_start.hpp
+	include/fcppt/format.hpp
+	include/fcppt/forward.hpp
+	include/fcppt/from_std_string.hpp
+	include/fcppt/from_std_wstring.hpp
+	include/fcppt/function/detail/clear_type.hpp
+	include/fcppt/function/detail/functor_wrapper.hpp
+	include/fcppt/function/detail/functor_wrapper_fwd.hpp
+	include/fcppt/function/detail/functor_wrapper_template.ipp
+	include/fcppt/function/detail/has_addressof_overload.hpp
+	include/fcppt/function/object.hpp
+	include/fcppt/function/object_fwd.hpp
+	include/fcppt/function/object_template.ipp
+	include/fcppt/heap_deleter.hpp
+	include/fcppt/homogenous_pair.hpp
+	include/fcppt/homogenous_pair_decl.hpp
+	include/fcppt/homogenous_pair_fwd.hpp
+	include/fcppt/homogenous_pair_impl.hpp
+	include/fcppt/homogenous_pair_output.hpp
+	include/fcppt/impl/assertion_failed.hpp
+	include/fcppt/impl/bad_dynamic_cast.hpp
+	include/fcppt/impl/bad_lexical_cast.hpp
+	include/fcppt/impl/bad_truncation_check_cast.hpp
+	include/fcppt/impl/exception.hpp
+	include/fcppt/impl/invalid_minmax_pair.hpp
+	include/fcppt/import_symbol.hpp
+	include/fcppt/invalid_minmax_pair.hpp
+	include/fcppt/io/cerr.hpp
+	include/fcppt/io/cfstream.hpp
+	include/fcppt/io/cifstream.hpp
+	include/fcppt/io/cin.hpp
+	include/fcppt/io/clog.hpp
+	include/fcppt/io/cofstream.hpp
+	include/fcppt/io/cout.hpp
+	include/fcppt/io/fstream.hpp
+	include/fcppt/io/ifstream.hpp
+	include/fcppt/io/istream.hpp
+	include/fcppt/io/istringstream.hpp
+	include/fcppt/io/ofstream.hpp
+	include/fcppt/io/ostream.hpp
+	include/fcppt/io/ostringstream.hpp
+	include/fcppt/io/read.hpp
+	include/fcppt/io/stringstream.hpp
+	include/fcppt/io/write.hpp
+	include/fcppt/lexical_cast.hpp
+	include/fcppt/log/activate_levels.hpp
+	include/fcppt/log/context.hpp
+	include/fcppt/log/context_fwd.hpp
+	include/fcppt/log/context_location.hpp
+	include/fcppt/log/context_location_fwd.hpp
+	include/fcppt/log/deactivate_levels.hpp
+	include/fcppt/log/debug.hpp
+	include/fcppt/log/default_level_streams.hpp
+	include/fcppt/log/detail/auto_context.hpp
+	include/fcppt/log/detail/context_tree.hpp
+	include/fcppt/log/detail/context_tree_node.hpp
+	include/fcppt/log/detail/inner_context_node.hpp
+	include/fcppt/log/detail/level_if_enabled.hpp
+	include/fcppt/log/detail/location_vector.hpp
+	include/fcppt/log/detail/outer_context_node.hpp
+	include/fcppt/log/detail/output_helper.hpp
+	include/fcppt/log/detail/temporary_output.hpp
+	include/fcppt/log/detail/temporary_output_fwd.hpp
+	include/fcppt/log/enabled_level_array.hpp
+	include/fcppt/log/enabled_levels.hpp
+	include/fcppt/log/error.hpp
+	include/fcppt/log/exception.hpp
+	include/fcppt/log/fatal.hpp
+	include/fcppt/log/format/chain.hpp
+	include/fcppt/log/format/const_object_ptr.hpp
+	include/fcppt/log/format/create_chain.hpp
+	include/fcppt/log/format/create_prefix.hpp
+	include/fcppt/log/format/default_level.hpp
+	include/fcppt/log/format/inserter.hpp
+	include/fcppt/log/format/object.hpp
+	include/fcppt/log/format/object_fwd.hpp
+	include/fcppt/log/format/object_ptr.hpp
+	include/fcppt/log/global.hpp
+	include/fcppt/log/headers.hpp
+	include/fcppt/log/impl/exception.hpp
+	include/fcppt/log/impl/no_such_location.hpp
+	include/fcppt/log/info.hpp
+	include/fcppt/log/level.hpp
+	include/fcppt/log/level_from_string.hpp
+	include/fcppt/log/level_stream.hpp
+	include/fcppt/log/level_stream_array.hpp
+	include/fcppt/log/level_stream_fwd.hpp
+	include/fcppt/log/level_stream_ptr.hpp
+	include/fcppt/log/level_to_string.hpp
+	include/fcppt/log/location.hpp
+	include/fcppt/log/location_fwd.hpp
+	include/fcppt/log/macros.hpp
+	include/fcppt/log/make_location.hpp
+	include/fcppt/log/no_such_location.hpp
+	include/fcppt/log/object.hpp
+	include/fcppt/log/object_fwd.hpp
+	include/fcppt/log/output.hpp
+	include/fcppt/log/parameters/all.hpp
+	include/fcppt/log/parameters/all_fwd.hpp
+	include/fcppt/log/parameters/inherited.hpp
+	include/fcppt/log/parameters/root.hpp
+	include/fcppt/log/parameters/root_fwd.hpp
+	include/fcppt/log/trampoline.hpp
+	include/fcppt/log/tree_function.hpp
+	include/fcppt/log/warning.hpp
+	include/fcppt/major_version.hpp
+	include/fcppt/make_auto_ptr.hpp
+	include/fcppt/make_shared_ptr.hpp
+	include/fcppt/make_strong_typedef.hpp
+	include/fcppt/make_unique_ptr.hpp
+	include/fcppt/math/abs_angle_to_rel.hpp
+	include/fcppt/math/almost_zero.hpp
+	include/fcppt/math/box/basic_decl.hpp
+	include/fcppt/math/box/basic_fwd.hpp
+	include/fcppt/math/box/basic_impl.hpp
+	include/fcppt/math/box/box.hpp
+	include/fcppt/math/box/center.hpp
+	include/fcppt/math/box/contains.hpp
+	include/fcppt/math/box/contains_point.hpp
+	include/fcppt/math/box/corner_points.hpp
+	include/fcppt/math/box/extend_bounding_box.hpp
+	include/fcppt/math/box/has_dim.hpp
+	include/fcppt/math/box/intersection.hpp
+	include/fcppt/math/box/intersects.hpp
+	include/fcppt/math/box/output.hpp
+	include/fcppt/math/box/rect.hpp
+	include/fcppt/math/box/rect_from_edges.hpp
+	include/fcppt/math/box/stretch.hpp
+	include/fcppt/math/box/structure_cast.hpp
+	include/fcppt/math/ceil_div.hpp
+	include/fcppt/math/clamp.hpp
+	include/fcppt/math/compare.hpp
+	include/fcppt/math/deg_to_rad.hpp
+	include/fcppt/math/detail/array_adapter.hpp
+	include/fcppt/math/detail/array_adapter_impl.hpp
+	include/fcppt/math/detail/array_compare.hpp
+	include/fcppt/math/detail/array_less.hpp
+	include/fcppt/math/detail/assign.hpp
+	include/fcppt/math/detail/before.hpp
+	include/fcppt/math/detail/checked_access.hpp
+	include/fcppt/math/detail/compare.hpp
+	include/fcppt/math/detail/construct.hpp
+	include/fcppt/math/detail/diff.hpp
+	include/fcppt/math/detail/dim_matches.hpp
+	include/fcppt/math/detail/dynamic_size.hpp
+	include/fcppt/math/detail/dynamic_storage.hpp
+	include/fcppt/math/detail/fill.hpp
+	include/fcppt/math/detail/generate_binary_vectors.hpp
+	include/fcppt/math/detail/has_size.hpp
+	include/fcppt/math/detail/initial_size.hpp
+	include/fcppt/math/detail/is_static_storage.hpp
+	include/fcppt/math/detail/make_impl.hpp
+	include/fcppt/math/detail/make_op_decl.hpp
+	include/fcppt/math/detail/make_op_def.hpp
+	include/fcppt/math/detail/make_simple_free_function.hpp
+	include/fcppt/math/detail/make_simple_scalar_div.hpp
+	include/fcppt/math/detail/make_simple_scalar_mul.hpp
+	include/fcppt/math/detail/make_simple_unary_minus.hpp
+	include/fcppt/math/detail/make_variadic_constructor.hpp
+	include/fcppt/math/detail/make_variadic_constructor_decl.hpp
+	include/fcppt/math/detail/mod.hpp
+	include/fcppt/math/detail/mod_assign.hpp
+	include/fcppt/math/detail/narrow_cast.hpp
+	include/fcppt/math/detail/next_pow_2.hpp
+	include/fcppt/math/detail/one_dimensional_input.hpp
+	include/fcppt/math/detail/one_dimensional_output.hpp
+	include/fcppt/math/detail/pi.hpp
+	include/fcppt/math/detail/signum.hpp
+	include/fcppt/math/detail/simple_normal_storage.hpp
+	include/fcppt/math/detail/static_storage.hpp
+	include/fcppt/math/detail/storage_data.hpp
+	include/fcppt/math/detail/storage_dim.hpp
+	include/fcppt/math/detail/structure_cast.hpp
+	include/fcppt/math/detail/structure_cast_fun.hpp
+	include/fcppt/math/diff.hpp
+	include/fcppt/math/difference_type.hpp
+	include/fcppt/math/dim/arithmetic.hpp
+	include/fcppt/math/dim/basic.hpp
+	include/fcppt/math/dim/basic_decl.hpp
+	include/fcppt/math/dim/basic_fwd.hpp
+	include/fcppt/math/dim/basic_impl.hpp
+	include/fcppt/math/dim/before.hpp
+	include/fcppt/math/dim/comparison.hpp
+	include/fcppt/math/dim/construct.hpp
+	include/fcppt/math/dim/dim.hpp
+	include/fcppt/math/dim/dynamic.hpp
+	include/fcppt/math/dim/fill.hpp
+	include/fcppt/math/dim/has_dim.hpp
+	include/fcppt/math/dim/input.hpp
+	include/fcppt/math/dim/is_quadratic.hpp
+	include/fcppt/math/dim/make.hpp
+	include/fcppt/math/dim/max_ctor_params.hpp
+	include/fcppt/math/dim/narrow_cast.hpp
+	include/fcppt/math/dim/normal_storage.hpp
+	include/fcppt/math/dim/output.hpp
+	include/fcppt/math/dim/quad.hpp
+	include/fcppt/math/dim/static.hpp
+	include/fcppt/math/dim/structure_cast.hpp
+	include/fcppt/math/exception.hpp
+	include/fcppt/math/generate_binary_vectors.hpp
+	include/fcppt/math/impl/exception.hpp
+	include/fcppt/math/instantiate_arithmetic.hpp
+	include/fcppt/math/inverse.hpp
+	include/fcppt/math/is_dynamic_size.hpp
+	include/fcppt/math/is_negative.hpp
+	include/fcppt/math/is_power_of_2.hpp
+	include/fcppt/math/is_rational.hpp
+	include/fcppt/math/is_rel_angle.hpp
+	include/fcppt/math/is_static_size.hpp
+	include/fcppt/math/lerp.hpp
+	include/fcppt/math/log.hpp
+	include/fcppt/math/machine_epsilon.hpp
+	include/fcppt/math/matrix/adjugate.hpp
+	include/fcppt/math/matrix/arithmetic.hpp
+	include/fcppt/math/matrix/basic.hpp
+	include/fcppt/math/matrix/basic_decl.hpp
+	include/fcppt/math/matrix/basic_fwd.hpp
+	include/fcppt/math/matrix/basic_impl.hpp
+	include/fcppt/math/matrix/comparison.hpp
+	include/fcppt/math/matrix/delete_row_and_column.hpp
+	include/fcppt/math/matrix/detail/determinant.hpp
+	include/fcppt/math/matrix/detail/dim_storage.hpp
+	include/fcppt/math/matrix/detail/dim_storage_impl.hpp
+	include/fcppt/math/matrix/detail/dynamic_dim.hpp
+	include/fcppt/math/matrix/detail/row_view.hpp
+	include/fcppt/math/matrix/detail/row_view_impl.hpp
+	include/fcppt/math/matrix/detail/static_storage.hpp
+	include/fcppt/math/matrix/detail/structure_cast.hpp
+	include/fcppt/math/matrix/determinant.hpp
+	include/fcppt/math/matrix/dim_type.hpp
+	include/fcppt/math/matrix/dynamic.hpp
+	include/fcppt/math/matrix/dynamic_impl.hpp
+	include/fcppt/math/matrix/has_dim.hpp
+	include/fcppt/math/matrix/inverse.hpp
+	include/fcppt/math/matrix/is_static_size.hpp
+	include/fcppt/math/matrix/look_at.hpp
+	include/fcppt/math/matrix/matrix.hpp
+	include/fcppt/math/matrix/max_ctor_params.hpp
+	include/fcppt/math/matrix/normal_storage.hpp
+	include/fcppt/math/matrix/orthogonal.hpp
+	include/fcppt/math/matrix/orthogonal_xy.hpp
+	include/fcppt/math/matrix/output.hpp
+	include/fcppt/math/matrix/perspective.hpp
+	include/fcppt/math/matrix/rotation_2d.hpp
+	include/fcppt/math/matrix/rotation_axis.hpp
+	include/fcppt/math/matrix/rotation_x.hpp
+	include/fcppt/math/matrix/rotation_y.hpp
+	include/fcppt/math/matrix/rotation_z.hpp
+	include/fcppt/math/matrix/scaling.hpp
+	include/fcppt/math/matrix/static.hpp
+	include/fcppt/math/matrix/structure_cast.hpp
+	include/fcppt/math/matrix/translation.hpp
+	include/fcppt/math/matrix/transpose.hpp
+	include/fcppt/math/matrix/unproject.hpp
+	include/fcppt/math/matrix/vector.hpp
+	include/fcppt/math/mod.hpp
+	include/fcppt/math/mod_assign.hpp
+	include/fcppt/math/nearly_equals.hpp
+	include/fcppt/math/next_pow_2.hpp
+	include/fcppt/math/null.hpp
+	include/fcppt/math/pi.hpp
+	include/fcppt/math/point_rotate.hpp
+	include/fcppt/math/quad.hpp
+	include/fcppt/math/quaternion/dot.hpp
+	include/fcppt/math/quaternion/from_angle_and_axis.hpp
+	include/fcppt/math/quaternion/from_scalar_and_vector.hpp
+	include/fcppt/math/quaternion/is_normalized.hpp
+	include/fcppt/math/quaternion/normalize.hpp
+	include/fcppt/math/quaternion/to_angle_and_axis.hpp
+	include/fcppt/math/quaternion/to_matrix.hpp
+	include/fcppt/math/quaternion/vector_rotation.hpp
+	include/fcppt/math/rad_to_deg.hpp
+	include/fcppt/math/range_compare.hpp
+	include/fcppt/math/round_div_int.hpp
+	include/fcppt/math/signum.hpp
+	include/fcppt/math/size_type.hpp
+	include/fcppt/math/sphere/basic_decl.hpp
+	include/fcppt/math/sphere/basic_fwd.hpp
+	include/fcppt/math/sphere/basic_impl.hpp
+	include/fcppt/math/sphere/circle.hpp
+	include/fcppt/math/sphere/intersects.hpp
+	include/fcppt/math/sphere/sphere.hpp
+	include/fcppt/math/trig_lerp.hpp
+	include/fcppt/math/twopi.hpp
+	include/fcppt/math/vector/angle_between.hpp
+	include/fcppt/math/vector/angle_between_cast.hpp
+	include/fcppt/math/vector/arithmetic.hpp
+	include/fcppt/math/vector/atan2.hpp
+	include/fcppt/math/vector/basic.hpp
+	include/fcppt/math/vector/basic_decl.hpp
+	include/fcppt/math/vector/basic_fwd.hpp
+	include/fcppt/math/vector/basic_impl.hpp
+	include/fcppt/math/vector/before.hpp
+	include/fcppt/math/vector/comparison.hpp
+	include/fcppt/math/vector/construct.hpp
+	include/fcppt/math/vector/cross.hpp
+	include/fcppt/math/vector/dim.hpp
+	include/fcppt/math/vector/dot.hpp
+	include/fcppt/math/vector/dynamic.hpp
+	include/fcppt/math/vector/dynamic_impl.hpp
+	include/fcppt/math/vector/has_dim.hpp
+	include/fcppt/math/vector/input.hpp
+	include/fcppt/math/vector/is_null.hpp
+	include/fcppt/math/vector/length.hpp
+	include/fcppt/math/vector/length_square.hpp
+	include/fcppt/math/vector/make.hpp
+	include/fcppt/math/vector/max_ctor_params.hpp
+	include/fcppt/math/vector/narrow_cast.hpp
+	include/fcppt/math/vector/normal_storage.hpp
+	include/fcppt/math/vector/normalize.hpp
+	include/fcppt/math/vector/orthogonalize.hpp
+	include/fcppt/math/vector/output.hpp
+	include/fcppt/math/vector/place.hpp
+	include/fcppt/math/vector/project.hpp
+	include/fcppt/math/vector/signed_angle.hpp
+	include/fcppt/math/vector/signed_angle_cast.hpp
+	include/fcppt/math/vector/slerp.hpp
+	include/fcppt/math/vector/static.hpp
+	include/fcppt/math/vector/structure_cast.hpp
+	include/fcppt/math/vector/to_angle.hpp
+	include/fcppt/math/vector/unit_circle.hpp
+	include/fcppt/math/vector/vector.hpp
+	include/fcppt/micro_version.hpp
+	include/fcppt/minmax_pair.hpp
+	include/fcppt/minmax_pair_decl.hpp
+	include/fcppt/minmax_pair_fwd.hpp
+	include/fcppt/minmax_pair_impl.hpp
+	include/fcppt/minmax_pair_output.hpp
+	include/fcppt/minor_version.hpp
+	include/fcppt/move.hpp
+	include/fcppt/mpl/ceil_div.hpp
+	include/fcppt/mpl/detail/for_each.hpp
+	include/fcppt/mpl/detail/invoke_on.hpp
+	include/fcppt/mpl/exception.hpp
+	include/fcppt/mpl/find_nth.hpp
+	include/fcppt/mpl/for_each.hpp
+	include/fcppt/mpl/impl/exception.hpp
+	include/fcppt/mpl/impl/invalid_invoke.hpp
+	include/fcppt/mpl/implication.hpp
+	include/fcppt/mpl/index_of.hpp
+	include/fcppt/mpl/inner.hpp
+	include/fcppt/mpl/invalid_invoke.hpp
+	include/fcppt/mpl/invoke_on.hpp
+	include/fcppt/mpl/max_value.hpp
+	include/fcppt/mpl/partial_sums.hpp
+	include/fcppt/mpl/value_type.hpp
+	include/fcppt/narrow.hpp
+	include/fcppt/nonassignable.hpp
+	include/fcppt/noncopyable.hpp
+	include/fcppt/optional.hpp
+	include/fcppt/optional_comparison.hpp
+	include/fcppt/optional_decl.hpp
+	include/fcppt/optional_fwd.hpp
+	include/fcppt/optional_impl.hpp
+	include/fcppt/polymorphic_pointer_cast.hpp
+	include/fcppt/preprocessor/detail/enum_params_forward_m.hpp
+	include/fcppt/preprocessor/detail/function.hpp
+	include/fcppt/preprocessor/detail/message.hpp
+	include/fcppt/preprocessor/detail/stringize.hpp
+	include/fcppt/preprocessor/disable_gcc_warning.hpp
+	include/fcppt/preprocessor/disable_vc_warning.hpp
+	include/fcppt/preprocessor/enum_params_forward_z.hpp
+	include/fcppt/preprocessor/file.hpp
+	include/fcppt/preprocessor/fixme.hpp
+	include/fcppt/preprocessor/function.hpp
+	include/fcppt/preprocessor/message.hpp
+	include/fcppt/preprocessor/pop_warning.hpp
+	include/fcppt/preprocessor/pragma.hpp
+	include/fcppt/preprocessor/push_warning.hpp
+	include/fcppt/preprocessor/stringize.hpp
+	include/fcppt/preprocessor/todo.hpp
+	include/fcppt/preprocessor/warning.hpp
+	include/fcppt/random/actor/callback.hpp
+	include/fcppt/random/actor/container.hpp
+	include/fcppt/random/actor/element.hpp
+	include/fcppt/random/actor/element_fwd.hpp
+	include/fcppt/random/actor/float_type.hpp
+	include/fcppt/random/actor/normalized.hpp
+	include/fcppt/random/default_generator.hpp
+	include/fcppt/random/detail/uniform_distribution.hpp
+	include/fcppt/random/exception.hpp
+	include/fcppt/random/exclusive_range_error.hpp
+	include/fcppt/random/impl/exception.hpp
+	include/fcppt/random/impl/exclusive_range_error.hpp
+	include/fcppt/random/inclusive_range.hpp
+	include/fcppt/random/inclusive_range_decl.hpp
+	include/fcppt/random/inclusive_range_fwd.hpp
+	include/fcppt/random/inclusive_range_impl.hpp
+	include/fcppt/random/last_exclusive_range.hpp
+	include/fcppt/random/last_exclusive_range_decl.hpp
+	include/fcppt/random/last_exclusive_range_fwd.hpp
+	include/fcppt/random/last_exclusive_range_impl.hpp
+	include/fcppt/random/make_inclusive_range.hpp
+	include/fcppt/random/make_last_exclusive_range.hpp
+	include/fcppt/random/range.hpp
+	include/fcppt/random/range_decl.hpp
+	include/fcppt/random/range_fwd.hpp
+	include/fcppt/random/range_impl.hpp
+	include/fcppt/random/uniform.hpp
+	include/fcppt/random/uniform_decl.hpp
+	include/fcppt/random/uniform_fwd.hpp
+	include/fcppt/random/uniform_impl.hpp
+	include/fcppt/ratio/add.hpp
+	include/fcppt/ratio/add_fwd.hpp
+	include/fcppt/ratio/atto.hpp
+	include/fcppt/ratio/centi.hpp
+	include/fcppt/ratio/deca.hpp
+	include/fcppt/ratio/deci.hpp
+	include/fcppt/ratio/detail/gcd.hpp
+	include/fcppt/ratio/detail/less.hpp
+	include/fcppt/ratio/detail/less1.hpp
+	include/fcppt/ratio/detail/less2.hpp
+	include/fcppt/ratio/detail/less3.hpp
+	include/fcppt/ratio/detail/ll_add.hpp
+	include/fcppt/ratio/detail/ll_mul.hpp
+	include/fcppt/ratio/detail/ll_sub.hpp
+	include/fcppt/ratio/detail/min_c.hpp
+	include/fcppt/ratio/detail/static_abs.hpp
+	include/fcppt/ratio/detail/static_gcd.hpp
+	include/fcppt/ratio/detail/static_lcm.hpp
+	include/fcppt/ratio/detail/static_sign.hpp
+	include/fcppt/ratio/divide.hpp
+	include/fcppt/ratio/divide_fwd.hpp
+	include/fcppt/ratio/equal.hpp
+	include/fcppt/ratio/equal_fwd.hpp
+	include/fcppt/ratio/exa.hpp
+	include/fcppt/ratio/femto.hpp
+	include/fcppt/ratio/giga.hpp
+	include/fcppt/ratio/greater.hpp
+	include/fcppt/ratio/greater_equal.hpp
+	include/fcppt/ratio/greater_equal_fwd.hpp
+	include/fcppt/ratio/greater_fwd.hpp
+	include/fcppt/ratio/hecto.hpp
+	include/fcppt/ratio/int_type.hpp
+	include/fcppt/ratio/is_object.hpp
+	include/fcppt/ratio/kilo.hpp
+	include/fcppt/ratio/less.hpp
+	include/fcppt/ratio/less_equal.hpp
+	include/fcppt/ratio/less_equal_fwd.hpp
+	include/fcppt/ratio/less_fwd.hpp
+	include/fcppt/ratio/mega.hpp
+	include/fcppt/ratio/micro.hpp
+	include/fcppt/ratio/milli.hpp
+	include/fcppt/ratio/multiply.hpp
+	include/fcppt/ratio/multiply_fwd.hpp
+	include/fcppt/ratio/nano.hpp
+	include/fcppt/ratio/not_equal.hpp
+	include/fcppt/ratio/not_equal_fwd.hpp
+	include/fcppt/ratio/object.hpp
+	include/fcppt/ratio/object_fwd.hpp
+	include/fcppt/ratio/peta.hpp
+	include/fcppt/ratio/pico.hpp
+	include/fcppt/ratio/ratio.hpp
+	include/fcppt/ratio/substract.hpp
+	include/fcppt/ratio/substract_fwd.hpp
+	include/fcppt/ratio/tera.hpp
+	include/fcppt/restrict_typedef_struct.hpp
+	include/fcppt/safe_bool.hpp
+	include/fcppt/scoped_ptr.hpp
+	include/fcppt/scoped_ptr_decl.hpp
+	include/fcppt/scoped_ptr_fwd.hpp
+	include/fcppt/scoped_ptr_impl.hpp
+	include/fcppt/scoped_state_machine.hpp
+	include/fcppt/scoped_state_machine_decl.hpp
+	include/fcppt/scoped_state_machine_fwd.hpp
+	include/fcppt/scoped_state_machine_impl.hpp
+	include/fcppt/shared_ptr.hpp
+	include/fcppt/shared_ptr_decl.hpp
+	include/fcppt/shared_ptr_fwd.hpp
+	include/fcppt/shared_ptr_impl.hpp
+	include/fcppt/signal/auto_connection.hpp
+	include/fcppt/signal/base.hpp
+	include/fcppt/signal/base_decl.hpp
+	include/fcppt/signal/base_fwd.hpp
+	include/fcppt/signal/base_impl.hpp
+	include/fcppt/signal/connection_manager.hpp
+	include/fcppt/signal/detail/concrete_connection.hpp
+	include/fcppt/signal/detail/concrete_connection_impl.hpp
+	include/fcppt/signal/detail/connection.hpp
+	include/fcppt/signal/detail/connection_base.hpp
+	include/fcppt/signal/detail/connection_fwd.hpp
+	include/fcppt/signal/detail/declare_operator.hpp
+	include/fcppt/signal/detail/define_operator.hpp
+	include/fcppt/signal/detail/define_void_operator.hpp
+	include/fcppt/signal/detail/enable_if_void.hpp
+	include/fcppt/signal/detail/operator_limit.hpp
+	include/fcppt/signal/object.hpp
+	include/fcppt/signal/object_decl.hpp
+	include/fcppt/signal/object_fwd.hpp
+	include/fcppt/signal/object_impl.hpp
+	include/fcppt/signal/scoped_connection.hpp
+	include/fcppt/signal/shared_connection.hpp
+	include/fcppt/signal/unregister/base.hpp
+	include/fcppt/signal/unregister/base_decl.hpp
+	include/fcppt/signal/unregister/base_fwd.hpp
+	include/fcppt/signal/unregister/base_impl.hpp
+	include/fcppt/signal/unregister/detail/concrete_connection.hpp
+	include/fcppt/signal/unregister/detail/concrete_connection_impl.hpp
+	include/fcppt/signal/unregister/function.hpp
+	include/fcppt/sn_cast.hpp
+	include/fcppt/static_pointer_cast.hpp
+	include/fcppt/string.hpp
+	include/fcppt/strong_typedef.hpp
+	include/fcppt/strong_typedef_decl.hpp
+	include/fcppt/strong_typedef_fwd.hpp
+	include/fcppt/strong_typedef_impl.hpp
+	include/fcppt/strong_typedef_input.hpp
+	include/fcppt/strong_typedef_output.hpp
+	include/fcppt/stub_function.hpp
+	include/fcppt/symbol.hpp
+	include/fcppt/text.hpp
+	include/fcppt/thread/hardware_concurrency.hpp
+	include/fcppt/thread/hardware_concurrency_type.hpp
+	include/fcppt/thread/id.hpp
+	include/fcppt/thread/join_duration.hpp
+	include/fcppt/thread/native_handle.hpp
+	include/fcppt/thread/object.hpp
+	include/fcppt/thread/sleep.hpp
+	include/fcppt/thread/sleep_duration.hpp
+	include/fcppt/thread/task.hpp
+	include/fcppt/thread/yield.hpp
+	include/fcppt/time/ctime.hpp
+	include/fcppt/time/detail/sleep_duration.hpp
+	include/fcppt/time/exception.hpp
+	include/fcppt/time/impl/exception.hpp
+	include/fcppt/time/impl/sleep_interrupted.hpp
+	include/fcppt/time/parse_date.hpp
+	include/fcppt/time/parse_time.hpp
+	include/fcppt/time/sleep.hpp
+	include/fcppt/time/sleep_any.hpp
+	include/fcppt/time/sleep_duration.hpp
+	include/fcppt/time/sleep_interrupted.hpp
+	include/fcppt/time/std_time.hpp
+	include/fcppt/to_std_string.hpp
+	include/fcppt/to_std_wstring.hpp
+	include/fcppt/tr1/detail/make_header.hpp
+	include/fcppt/tr1/detail/use_boost_tr1.hpp
+	include/fcppt/tr1/functional.hpp
+	include/fcppt/tr1/random.hpp
+	include/fcppt/truncation_check_cast.hpp
+	include/fcppt/try_dynamic_cast.hpp
+	include/fcppt/type_info.hpp
+	include/fcppt/type_info_fwd.hpp
+	include/fcppt/type_name.hpp
+	include/fcppt/type_traits/generate_has_member_function.hpp
+	include/fcppt/type_traits/generate_has_type.hpp
+	include/fcppt/type_traits/has_const_iterator.hpp
+	include/fcppt/type_traits/has_iterator.hpp
+	include/fcppt/type_traits/is_float_or_double.hpp
+	include/fcppt/type_traits/is_input_iterator.hpp
+	include/fcppt/type_traits/is_iterable.hpp
+	include/fcppt/type_traits/is_iterator.hpp
+	include/fcppt/type_traits/is_movable.hpp
+	include/fcppt/type_traits/is_string.hpp
+	include/fcppt/type_traits/is_unique_ptr.hpp
+	include/fcppt/unique_ptr.hpp
+	include/fcppt/unique_ptr_decl.hpp
+	include/fcppt/unique_ptr_fwd.hpp
+	include/fcppt/unique_ptr_impl.hpp
+	include/fcppt/utf8/char_type.hpp
+	include/fcppt/utf8/convert.hpp
+	include/fcppt/utf8/facet.hpp
+	include/fcppt/utf8/string.hpp
+	include/fcppt/utf8/traits.hpp
+	include/fcppt/variant/apply.hpp
+	include/fcppt/variant/apply_binary.hpp
+	include/fcppt/variant/apply_ternary.hpp
+	include/fcppt/variant/apply_unary.hpp
+	include/fcppt/variant/detail/apply.hpp
+	include/fcppt/variant/detail/apply_unary_internal.hpp
+	include/fcppt/variant/detail/binary_applier.hpp
+	include/fcppt/variant/detail/binary_unwrap.hpp
+	include/fcppt/variant/detail/compare.hpp
+	include/fcppt/variant/detail/construct.hpp
+	include/fcppt/variant/detail/copy.hpp
+	include/fcppt/variant/detail/destroy.hpp
+	include/fcppt/variant/detail/index_of.hpp
+	include/fcppt/variant/detail/operation_wrapper.hpp
+	include/fcppt/variant/detail/output.hpp
+	include/fcppt/variant/detail/real_type.hpp
+	include/fcppt/variant/detail/ternary_applier.hpp
+	include/fcppt/variant/detail/ternary_unwrap.hpp
+	include/fcppt/variant/detail/type_info.hpp
+	include/fcppt/variant/detail/unwrap_recursive.hpp
+	include/fcppt/variant/equal.hpp
+	include/fcppt/variant/exception.hpp
+	include/fcppt/variant/holds_type.hpp
+	include/fcppt/variant/impl/exception.hpp
+	include/fcppt/variant/impl/invalid_apply.hpp
+	include/fcppt/variant/impl/invalid_get.hpp
+	include/fcppt/variant/invalid_apply.hpp
+	include/fcppt/variant/invalid_get.hpp
+	include/fcppt/variant/not_equal.hpp
+	include/fcppt/variant/object.hpp
+	include/fcppt/variant/object_decl.hpp
+	include/fcppt/variant/object_fwd.hpp
+	include/fcppt/variant/object_impl.hpp
+	include/fcppt/variant/output.hpp
+	include/fcppt/variant/raw_type.hpp
+	include/fcppt/variant/recursive.hpp
+	include/fcppt/variant/recursive_decl.hpp
+	include/fcppt/variant/recursive_fwd.hpp
+	include/fcppt/variant/recursive_impl.hpp
+	include/fcppt/variant/size_type.hpp
+	include/fcppt/version_int.hpp
+	include/fcppt/version_string.hpp
+	include/fcppt/warn_unused_result.hpp
+	include/fcppt/weak_ptr.hpp
+	include/fcppt/weak_ptr_decl.hpp
+	include/fcppt/weak_ptr_fwd.hpp
+	include/fcppt/weak_ptr_impl.hpp
+	include/fcppt/widen.hpp
+	include/fcppt/workarounds.hpp
+	src/chrono/clock_gettime_impl.hpp
+	src/chrono/high_resolution_clock.cpp
+	src/chrono/mach_time_impl.hpp
+	src/chrono/mach_timebase.cpp
+	src/chrono/mach_timebase.hpp
+	src/chrono/performance_counter_time.hpp
+	src/chrono/query_performance_frequency.cpp
+	src/chrono/query_performance_frequency.hpp
+	src/chrono/steady_clock.cpp
+	src/chrono/system_clock.cpp
+	src/chrono/unsigned_type.hpp
+	src/codecvt.hpp
+	src/endianness/host_format.cpp
+	src/endianness/is_big_endian.cpp
+	src/endianness/is_little_endian.cpp
+	src/endianness/reverse_mem.cpp
+	src/error/strerrno.cpp
+	src/error/strerror.cpp
+	src/filesystem/create_directories_recursive.cpp
+	src/filesystem/create_directory.cpp
+	src/filesystem/current_path.cpp
+	src/filesystem/exists.cpp
+	src/filesystem/extension.cpp
+	src/filesystem/extension_without_dot.cpp
+	src/filesystem/first_file.cpp
+	src/filesystem/is_directory.cpp
+	src/filesystem/is_executable.cpp
+	src/filesystem/is_regular.cpp
+	src/filesystem/next_file.cpp
+	src/filesystem/path_to_string.cpp
+	src/filesystem/readlink.cpp
+	src/filesystem/remove.cpp
+	src/filesystem/remove_filename.cpp
+	src/filesystem/replace_extension.cpp
+	src/filesystem/skip_directories.cpp
+	src/filesystem/stem.cpp
+	src/from_std_string.cpp
+	src/from_std_wstring.cpp
+	src/io/cerr.cpp
+	src/io/cin.cpp
+	src/io/clog.cpp
+	src/io/cout.cpp
+	src/log/activate_levels.cpp
+	src/log/context.cpp
+	src/log/context_location.cpp
+	src/log/deactivate_levels.cpp
+	src/log/default_level_streams.cpp
+	src/log/detail/auto_context.cpp
+	src/log/detail/inner_context_node.cpp
+	src/log/detail/outer_context_node.cpp
+	src/log/detail/temporary_output.cpp
+	src/log/enabled_levels.cpp
+	src/log/find_inner_node.cpp
+	src/log/find_inner_node.hpp
+	src/log/find_location.cpp
+	src/log/find_location.hpp
+	src/log/find_logger_node.cpp
+	src/log/find_logger_node.hpp
+	src/log/format/chain.cpp
+	src/log/format/create_chain.cpp
+	src/log/format/create_prefix.cpp
+	src/log/format/default_level.cpp
+	src/log/format/inserter.cpp
+	src/log/format/object.cpp
+	src/log/global.cpp
+	src/log/inner_node_name.cpp
+	src/log/inner_node_name.hpp
+	src/log/is_outer_node.cpp
+	src/log/is_outer_node.hpp
+	src/log/level_from_string.cpp
+	src/log/level_stream.cpp
+	src/log/level_string_array.hpp
+	src/log/level_strings.cpp
+	src/log/level_strings.hpp
+	src/log/level_to_string.cpp
+	src/log/location.cpp
+	src/log/make_location.cpp
+	src/log/object.cpp
+	src/log/parameters/all.cpp
+	src/log/parameters/inherited.cpp
+	src/log/parameters/root.cpp
+	src/log/set_levels.cpp
+	src/log/set_levels.hpp
+	src/log/trampoline.cpp
+	src/narrow.cpp
+	src/random/actor/element.cpp
+	src/random/actor/normalized.cpp
+	src/signal/connection_manager.cpp
+	src/signal/detail/connection.cpp
+	src/thread/hardware_concurrency.cpp
+	src/thread/object.cpp
+	src/thread/sleep.cpp
+	src/thread/yield.cpp
+	src/time/ctime.cpp
+	src/time/parse_date.cpp
+	src/time/parse_time.cpp
+	src/time/sleep.cpp
+	src/time/std_time.cpp
+	src/time/time_get.hpp
+	src/time/time_get_parse.hpp
+	src/to_std_string.cpp
+	src/to_std_wstring.cpp
+	src/type_info.cpp
+	src/type_name.cpp
+	src/utf8/convert.cpp
+	src/utf8/facet.cpp
+	src/version_string.cpp
+	src/widen.cpp
+)
 
-	STRING(REPLACE "/" "\\" GROUPFOLDER ${GROUPPATH})
+FOREACH(
+	CURFILE
+	${FCPPT_FILES}
+)
+	GET_FILENAME_COMPONENT(
+		REL_PATH
+		${CURFILE}
+		PATH
+	)
 
-	SOURCE_GROUP(${GROUPFOLDER} FILES ${GROUPFILES})
+	STRING(REPLACE "/" "\\" GROUPFOLDER ${REL_PATH})
 
-	SET(FCPPTFILES ${FCPPTFILES} ${GROUPFILES})
-ENDMACRO()
-
-MACRO(ADD_FCPPT_HEADER_GROUP GROUPPATH)
-	ADD_FCPPT_SOURCE_GROUP(${GROUPPATH} "*.?pp")
-ENDMACRO()
-
-ADD_FCPPT_HEADER_GROUP(include)
-ADD_FCPPT_HEADER_GROUP(include/fcppt)
-ADD_FCPPT_HEADER_GROUP(include/fcppt/algorithm)
-ADD_FCPPT_HEADER_GROUP(include/fcppt/algorithm/impl)
-ADD_FCPPT_HEADER_GROUP(include/fcppt/alignment)
-ADD_FCPPT_HEADER_GROUP(include/fcppt/alignment/detail)
-ADD_FCPPT_HEADER_GROUP(include/fcppt/assign)
-ADD_FCPPT_HEADER_GROUP(include/fcppt/assign/detail)
-ADD_FCPPT_HEADER_GROUP(include/fcppt/chrono)
-ADD_FCPPT_HEADER_GROUP(include/fcppt/chrono/convert)
-ADD_FCPPT_HEADER_GROUP(include/fcppt/chrono/detail)
-ADD_FCPPT_HEADER_GROUP(include/fcppt/chrono/impl)
-ADD_FCPPT_HEADER_GROUP(include/fcppt/container)
-ADD_FCPPT_HEADER_GROUP(include/fcppt/container/bitfield)
-ADD_FCPPT_HEADER_GROUP(include/fcppt/container/bitfield/detail)
-ADD_FCPPT_HEADER_GROUP(include/fcppt/container/detail)
-ADD_FCPPT_HEADER_GROUP(include/fcppt/container/impl)
-ADD_FCPPT_HEADER_GROUP(include/fcppt/container/tree)
-ADD_FCPPT_HEADER_GROUP(include/fcppt/detail)
-ADD_FCPPT_HEADER_GROUP(include/fcppt/endianness)
-ADD_FCPPT_HEADER_GROUP(include/fcppt/error)
-ADD_FCPPT_HEADER_GROUP(include/fcppt/filesystem)
-ADD_FCPPT_HEADER_GROUP(include/fcppt/filesystem/detail)
-ADD_FCPPT_HEADER_GROUP(include/fcppt/filesystem/impl)
-ADD_FCPPT_HEADER_GROUP(include/fcppt/function)
-ADD_FCPPT_HEADER_GROUP(include/fcppt/function/detail)
-ADD_FCPPT_HEADER_GROUP(include/fcppt/impl)
-ADD_FCPPT_HEADER_GROUP(include/fcppt/io)
-ADD_FCPPT_HEADER_GROUP(include/fcppt/log)
-ADD_FCPPT_HEADER_GROUP(include/fcppt/log/detail)
-ADD_FCPPT_HEADER_GROUP(include/fcppt/log/format)
-ADD_FCPPT_HEADER_GROUP(include/fcppt/log/impl)
-ADD_FCPPT_HEADER_GROUP(include/fcppt/log/parameters)
-ADD_FCPPT_HEADER_GROUP(include/fcppt/math)
-ADD_FCPPT_HEADER_GROUP(include/fcppt/math/box)
-ADD_FCPPT_HEADER_GROUP(include/fcppt/math/detail)
-ADD_FCPPT_HEADER_GROUP(include/fcppt/math/dim)
-ADD_FCPPT_HEADER_GROUP(include/fcppt/math/impl)
-ADD_FCPPT_HEADER_GROUP(include/fcppt/math/matrix)
-ADD_FCPPT_HEADER_GROUP(include/fcppt/math/matrix/detail)
-ADD_FCPPT_HEADER_GROUP(include/fcppt/math/quaternion)
-ADD_FCPPT_HEADER_GROUP(include/fcppt/math/sphere)
-ADD_FCPPT_HEADER_GROUP(include/fcppt/math/vector)
-ADD_FCPPT_HEADER_GROUP(include/fcppt/mpl)
-ADD_FCPPT_HEADER_GROUP(include/fcppt/mpl/detail)
-ADD_FCPPT_HEADER_GROUP(include/fcppt/mpl/impl)
-ADD_FCPPT_HEADER_GROUP(include/fcppt/preprocessor)
-ADD_FCPPT_HEADER_GROUP(include/fcppt/preprocessor/detail)
-ADD_FCPPT_HEADER_GROUP(include/fcppt/random)
-ADD_FCPPT_HEADER_GROUP(include/fcppt/random/actor)
-ADD_FCPPT_HEADER_GROUP(include/fcppt/random/detail)
-ADD_FCPPT_HEADER_GROUP(include/fcppt/random/impl)
-ADD_FCPPT_HEADER_GROUP(include/fcppt/ratio)
-ADD_FCPPT_HEADER_GROUP(include/fcppt/ratio/detail)
-ADD_FCPPT_HEADER_GROUP(include/fcppt/signal)
-ADD_FCPPT_HEADER_GROUP(include/fcppt/signal/detail)
-ADD_FCPPT_HEADER_GROUP(include/fcppt/signal/unregister)
-ADD_FCPPT_HEADER_GROUP(include/fcppt/signal/unregister/detail)
-ADD_FCPPT_HEADER_GROUP(include/fcppt/thread)
-ADD_FCPPT_HEADER_GROUP(include/fcppt/thread/detail)
-ADD_FCPPT_HEADER_GROUP(include/fcppt/thread/impl)
-ADD_FCPPT_HEADER_GROUP(include/fcppt/time)
-ADD_FCPPT_HEADER_GROUP(include/fcppt/time/detail)
-ADD_FCPPT_HEADER_GROUP(include/fcppt/time/impl)
-ADD_FCPPT_HEADER_GROUP(include/fcppt/tr1)
-ADD_FCPPT_HEADER_GROUP(include/fcppt/tr1/detail)
-ADD_FCPPT_HEADER_GROUP(include/fcppt/type_traits)
-ADD_FCPPT_HEADER_GROUP(include/fcppt/utf8)
-ADD_FCPPT_HEADER_GROUP(include/fcppt/variant)
-ADD_FCPPT_HEADER_GROUP(include/fcppt/variant/detail)
-ADD_FCPPT_HEADER_GROUP(include/fcppt/variant/impl)
-
-MACRO(ADD_FCPPT_CPP_GROUP GROUPPATH)
-	ADD_FCPPT_SOURCE_GROUP(${GROUPPATH} "*.?pp")
-ENDMACRO()
-
-ADD_FCPPT_CPP_GROUP(src)
-ADD_FCPPT_CPP_GROUP(src/chrono)
-ADD_FCPPT_CPP_GROUP(src/endianness)
-ADD_FCPPT_CPP_GROUP(src/error)
-ADD_FCPPT_CPP_GROUP(src/filesystem)
-ADD_FCPPT_CPP_GROUP(src/io)
-ADD_FCPPT_CPP_GROUP(src/log)
-ADD_FCPPT_CPP_GROUP(src/log/detail)
-ADD_FCPPT_CPP_GROUP(src/log/format)
-ADD_FCPPT_CPP_GROUP(src/log/parameters)
-ADD_FCPPT_CPP_GROUP(src/random)
-ADD_FCPPT_CPP_GROUP(src/random/actor)
-ADD_FCPPT_CPP_GROUP(src/signal)
-ADD_FCPPT_CPP_GROUP(src/signal/detail)
-ADD_FCPPT_CPP_GROUP(src/thread)
-ADD_FCPPT_CPP_GROUP(src/time)
-ADD_FCPPT_CPP_GROUP(src/utf8)
+	SOURCE_GROUP(
+		${GROUPFOLDER}
+		FILES
+		${CURFILE}
+	)
+ENDFOREACH()
 
 MACRO(MAKE_FCPPT_LIBRARY TARGETNAME VARIANT)
-	ADD_LIBRARY (${TARGETNAME} ${VARIANT} ${FCPPTFILES})
+	ADD_LIBRARY (${TARGETNAME} ${VARIANT} ${FCPPT_FILES})
 
 	SET_TARGET_PROPERTIES(${TARGETNAME} PROPERTIES VERSION ${FCPPT_VERSION})
 

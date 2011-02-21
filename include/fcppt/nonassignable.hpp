@@ -12,13 +12,13 @@
 #ifdef FCPPT_HAVE_DEFAULTED_AND_DELETED_FUNCTIONS
 
 #define FCPPT_NONASSIGNABLE(classname) \
-classname &operator=(classname const &) = delete;
+classname &operator=(classname const &) = delete
 
 #else
 
 #define FCPPT_NONASSIGNABLE(classname) \
 private: \
-classname &operator=(classname const &);
+classname &operator=(classname const &)
 
 #endif
 

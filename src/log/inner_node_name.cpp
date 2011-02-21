@@ -18,7 +18,9 @@ namespace
 
 class compare
 {
-	FCPPT_NONASSIGNABLE(compare)
+	FCPPT_NONASSIGNABLE(
+		compare
+	);
 public:
 	typedef bool result_type;
 

@@ -13,7 +13,11 @@
 namespace fcppt
 {
 
-FCPPT_DETAIL_MAKE_PTR_BASE(auto_ptr)
+FCPPT_DETAIL_MAKE_PTR_BASE(
+	auto_ptr,
+	auto_ptr,
+	new Type
+)
 
 }
 
