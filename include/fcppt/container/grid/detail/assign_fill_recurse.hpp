@@ -65,7 +65,7 @@ assign_fill_recurse(
 
 	for(
 		typename Object::dim::value_type i = 0;
-		i < _result.dimension()[index];
+		i < _result.size()[index];
 		++i
 	)
 	{
@@ -79,7 +79,7 @@ assign_fill_recurse(
 			_value,
 			_pos,
 			_is_contained
-			&& i < _source.dimension()[index]
+			&& i < _source.size()[index]
 		);
 	}
 }

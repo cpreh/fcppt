@@ -32,16 +32,17 @@ std::basic_ostream<
 	Traits
 > &
 operator<<(
-	std::basic_ostream<Ch, Traits> &stream_,
-	basic<T, N> const &box_
+	std::basic_ostream<Ch, Traits> &_stream,
+	basic<T, N> const &_box
 )
 {
-	return stream_
-		<< stream_.widen('(')
-		<< box_.pos()
-		<< stream_.widen(',')
-		<< box_.dimension()
-		<< stream_.widen(')');
+	return
+		_stream
+		<< _stream.widen('(')
+		<< _box.pos()
+		<< _stream.widen(',')
+		<< _box.size()
+		<< _stream.widen(')');
 }
 
 }

@@ -64,7 +64,7 @@ print_recurse(
 		<< _stream.widen('(');
 
 	typename Object::dim::value_type sz(
-		_object.dimension()[index]
+		_object.size()[index]
 	);
 
 	for(

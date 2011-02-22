@@ -32,9 +32,9 @@ extend_bounding_box(
 	{
 		if (p[i] < b.pos()[i])
 		{
-			b.dimension(
+			b.size(
 				i,
-				b.dimension()[i] + (b.pos()[i] - p[i]));
+				b.size()[i] + (b.pos()[i] - p[i]));
 
 			b.pos(
 				i,
@@ -45,12 +45,12 @@ extend_bounding_box(
 
 		T const end = 
 			static_cast<T>(
-				b.pos()[i] + b.dimension()[i]);
+				b.pos()[i] + b.size()[i]);
 		
 		if (p[i] > end)
-			b.dimension(
+			b.size(
 				i,
-				b.dimension()[i] + (p[i] - end));
+				b.size()[i] + (p[i] - end));
 	}
 
 	return b;

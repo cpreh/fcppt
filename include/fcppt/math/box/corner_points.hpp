@@ -52,7 +52,7 @@ corner_points(
 		vector_type &v,
 		result)
 		v = 
-			p.pos() + v * fcppt::math::dim::structure_cast<vector_type>(p.dimension());
+			p.pos() + v * fcppt::math::dim::structure_cast<vector_type>(p.size());
 		
 	return result;
 }

@@ -67,9 +67,9 @@ unproject(
 		inverse_mvp * 
 		vector4(
 			static_cast<T>(
-				static_cast<T>(2) * (window_coordinates.x() - viewport.pos().x()) / viewport.dimension().w() - static_cast<T>(1)),
+				static_cast<T>(2) * (window_coordinates.x() - viewport.pos().x()) / viewport.size().w() - static_cast<T>(1)),
 			static_cast<T>(
-				static_cast<T>(2) * (window_coordinates.y() - viewport.pos().y()) / viewport.dimension().h() - static_cast<T>(1)),
+				static_cast<T>(2) * (window_coordinates.y() - viewport.pos().y()) / viewport.size().h() - static_cast<T>(1)),
 			static_cast<T>(
 				static_cast<T>(2) * window_coordinates.z()),
 			static_cast<T>(

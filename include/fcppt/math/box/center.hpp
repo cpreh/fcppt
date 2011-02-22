@@ -27,7 +27,7 @@ center(
 	return 
 		b.pos() + 
 		fcppt::math::dim::structure_cast<typename basic<T,N>::vector>(
-			b.dimension())/
+			b.size())/
 		static_cast<T>(2);
 }
 }

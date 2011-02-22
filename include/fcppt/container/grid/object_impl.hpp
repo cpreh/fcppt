@@ -25,24 +25,9 @@ template<
 fcppt::container::grid::object<T, N, A>::object()
 :
 	container_(),
-	dim_(
+	size_(
 		dim::null()
 	)
-{}
-
-template<
-	typename T,
-	fcppt::container::grid::size_type N,
-	typename A
->
-fcppt::container::grid::object<T, N, A>::object(
-	dim const &_dim
-)
-:
-	container_(
-		_dim.content()
-	),
-	dim_(_dim)
 {
 }
 
@@ -52,15 +37,31 @@ template<
 	typename A
 >
 fcppt::container::grid::object<T, N, A>::object(
-	dim const &_dim,
+	dim const &_size
+)
+:
+	container_(
+		_size.content()
+	),
+	size_(_size)
+{
+}
+
+template<
+	typename T,
+	fcppt::container::grid::size_type N,
+	typename A
+>
+fcppt::container::grid::object<T, N, A>::object(
+	dim const &_size,
 	const_reference _value
 )
 :
 	container_(
-		_dim.content(),
+		_size.content(),
 		_value
 	),
-	dim_(_dim)
+	size_(_size)
 {
 }
 
@@ -73,7 +74,7 @@ template<
 	typename In
 >
 fcppt::container::grid::object<T, N, A>::object(
-	dim const &_dim,
+	dim const &_size,
 	In const _begin,
 	In const _end
 )
@@ -82,7 +83,7 @@ fcppt::container::grid::object<T, N, A>::object(
 		_begin,
 		_end
 	),
-	dim_(_dim)
+	size_(_size)
 {
 }
 
@@ -98,8 +99,8 @@ fcppt::container::grid::object<T, N, A>::object(
 	container_(
 		_other.container_
 	),
-	dim_(
-		_other.dim_
+	size_(
+		_other.size_
 	)
 {}
 
@@ -120,7 +121,7 @@ fcppt::container::grid::object<T, N, A>::operator=(
 
 	container_ = _other.container_;
 
-	dim_ = _other.dim_;
+	size_ = _other.size_;
 
 	return *this;
 }
@@ -147,7 +148,7 @@ fcppt::container::grid::object<T, N, A>::operator[](
 	return
 		detail::access_member(
 			container_,
-			dim_,
+			size_,
 			_pos
 		);
 }
@@ -165,7 +166,7 @@ fcppt::container::grid::object<T, N, A>::operator[](
 	return
 		detail::access_member(
 			container_,
-			dim_,
+			size_,
 			_pos
 		);
 }
@@ -183,7 +184,7 @@ fcppt::container::grid::object<T, N, A>::at(
 	return
 		detail::at(
 			*this,
-			dim_,
+			size_,
 			_pos
 		);
 }
@@ -201,7 +202,7 @@ fcppt::container::grid::object<T, N, A>::at(
 	return
 		detail::at(
 			*this,
-			dim_,
+			size_,
 			_pos
 		);
 }
@@ -212,9 +213,9 @@ template<
 	typename A
 >
 typename fcppt::container::grid::object<T, N, A>::dim const &
-fcppt::container::grid::object<T, N, A>::dimension() const
+fcppt::container::grid::object<T, N, A>::size() const
 {
-	return dim_;
+	return size_;
 }
 
 template<
@@ -223,9 +224,9 @@ template<
 	typename A
 >
 typename fcppt::container::grid::object<T, N, A>::size_type
-fcppt::container::grid::object<T, N, A>::size() const
+fcppt::container::grid::object<T, N, A>::content() const
 {
-	return dim_.content();
+	return size_.content();
 }
 
 template<
@@ -235,15 +236,15 @@ template<
 >
 void
 fcppt::container::grid::object<T, N, A>::resize(
-	dim const &_dim
+	dim const &_size
 )
 {
 	detail::resize(
 		container_,
-		_dim
+		_size
 	);
 
-	dim_ = _dim;
+	size_ = _size;
 }
 
 template<
@@ -461,8 +462,8 @@ fcppt::container::grid::object<T, N, A>::swap(
 		_other.container_
 	);
 
-	dim_.swap(
-		_other.dim_
+	size_.swap(
+		_other.size_
 	);
 }
 

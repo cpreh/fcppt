@@ -57,8 +57,8 @@ assign_recurse(
 
 	typename Object::dim::value_type sz(
 		std::min(
-			_result.dimension()[index],
-			_source.dimension()[index]
+			_result.size()[index],
+			_source.size()[index]
 		)
 	);
 

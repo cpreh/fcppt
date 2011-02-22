@@ -13,7 +13,6 @@
 #include <fcppt/math/vector/dim.hpp>
 #include <fcppt/math/dim/basic_impl.hpp>
 #include <fcppt/math/dim/comparison.hpp>
-#include <algorithm>
 
 template<
 	typename T,
@@ -22,8 +21,9 @@ template<
 fcppt::math::box::basic<T, N>::basic()
 :
 	pos_(),
-	dimension_()
-{}
+	size_()
+{
+}
 
 template<
 	typename T,
@@ -31,12 +31,13 @@ template<
 >
 fcppt::math::box::basic<T, N>::basic(
 	vector const &_pos,
-	dim const &_dimension
+	dim const &_size
 )
 :
 	pos_(_pos),
-	dimension_(_dimension)
-{}
+	size_(_size)
+{
+}
 
 template<
 	typename T,
@@ -57,9 +58,9 @@ template<
 	fcppt::math::size_type N
 >
 typename fcppt::math::box::basic<T, N>::value_type
-fcppt::math::box::basic<T, N>::area() const
+fcppt::math::box::basic<T, N>::content() const
 {
-	return dimension_.content();
+	return size_.content();
 }
 
 template<
@@ -69,7 +70,7 @@ template<
 typename fcppt::math::box::basic<T, N>::value_type
 fcppt::math::box::basic<T, N>::w() const
 {
-	return dimension_.w();
+	return size_.w();
 }
 
 template<
@@ -79,7 +80,7 @@ template<
 typename fcppt::math::box::basic<T, N>::value_type
 fcppt::math::box::basic<T, N>::h() const
 {
-	return dimension_.h();
+	return size_.h();
 }
 
 template<
@@ -89,7 +90,7 @@ template<
 typename fcppt::math::box::basic<T, N>::value_type
 fcppt::math::box::basic<T, N>::d() const
 {
-	return dimension_.d();
+	return size_.d();
 }
 
 template<
@@ -109,7 +110,7 @@ template<
 typename fcppt::math::box::basic<T, N>::vector const
 fcppt::math::box::basic<T, N>::max() const
 {
-	return pos_ + dimension_;
+	return pos_ + size_;
 }
 
 template<
@@ -117,9 +118,9 @@ template<
 	fcppt::math::size_type N
 >
 typename fcppt::math::box::basic<T, N>::dim const
-fcppt::math::box::basic<T, N>::dimension() const
+fcppt::math::box::basic<T, N>::size() const
 {
-	return dimension_;
+	return size_;
 }
 
 template<
@@ -143,7 +144,7 @@ fcppt::math::box::basic<T, N>::max(
 	size_type const _index
 ) const
 {
-	return pos_[_index] + dimension_[_index];
+	return pos_[_index] + size_[_index];
 }
 
 template<
@@ -151,11 +152,11 @@ template<
 	fcppt::math::size_type N
 >
 typename fcppt::math::box::basic<T, N>::value_type
-fcppt::math::box::basic<T, N>::dimension(
+fcppt::math::box::basic<T, N>::size(
 	size_type const _index
 ) const
 {
-	return dimension_[_index];
+	return size_[_index];
 }
 
 template<
@@ -195,7 +196,7 @@ template<
 typename fcppt::math::box::basic<T, N>::value_type
 fcppt::math::box::basic<T, N>::right() const
 {
-	return pos_.x() + dimension_.w();
+	return pos_.x() + size_.w();
 }
 
 template<
@@ -205,7 +206,7 @@ template<
 typename fcppt::math::box::basic<T, N>::value_type
 fcppt::math::box::basic<T, N>::bottom() const
 {
-	return pos_.y() + dimension_.h();
+	return pos_.y() + size_.h();
 }
 
 template<
@@ -215,7 +216,7 @@ template<
 typename fcppt::math::box::basic<T, N>::value_type
 fcppt::math::box::basic<T, N>::back() const
 {
-	return pos_.z() + dimension_.d();
+	return pos_.z() + size_.d();
 }
 
 template<
@@ -227,7 +228,7 @@ fcppt::math::box::basic<T, N>::w(
 	value_type const _w
 )
 {
-	dimension_.w() = _w;
+	size_.w() = _w;
 }
 
 template<
@@ -239,7 +240,7 @@ fcppt::math::box::basic<T, N>::h(
 	value_type const _h
 )
 {
-	dimension_.h() = _h;
+	size_.h() = _h;
 }
 
 template<
@@ -251,7 +252,7 @@ fcppt::math::box::basic<T, N>::d(
 	value_type const _d
 )
 {
-	dimension_.d() = _d;
+	size_.d() = _d;
 }
 
 template<
@@ -271,11 +272,11 @@ template<
 	fcppt::math::size_type N
 >
 void
-fcppt::math::box::basic<T, N>::dimension(
-	dim const &_dimension
+fcppt::math::box::basic<T, N>::size(
+	dim const &_size
 )
 {
-	dimension_ = _dimension;
+	size_ = _size;
 }
 
 template<
@@ -296,12 +297,12 @@ template<
 	fcppt::math::size_type N
 >
 void
-fcppt::math::box::basic<T, N>::dimension(
+fcppt::math::box::basic<T, N>::size(
 	size_type const _index,
 	value_type const _value
 )
 {
-	dimension_[_index] = _value;
+	size_[_index] = _value;
 }
 
 template<
@@ -349,14 +350,12 @@ fcppt::math::box::basic<T, N>::swap(
 	basic &_other
 )
 {
-	std::swap(
-		pos_,
+	pos_.swap(
 		_other.pos_
 	);
 
-	std::swap(
-		dimension_,
-		_other.dimension_
+	size_.swap(
+		_other.size_
 	);
 }
 
@@ -372,7 +371,7 @@ fcppt::math::box::operator==(
 {
 	return
 		_a.pos() == _b.pos()
-		&& _a.dimension() == _b.dimension();
+		&& _a.size() == _b.size();
 }
 
 template<

@@ -19,7 +19,7 @@ namespace math
 namespace box
 {
 
-/// Calculates the intersecting box of @a a and @a b
+/// Calculates the intersecting box of @a _a and @a _b
 /**
  * @return If there is no intersection, null will be returned
 */
@@ -29,14 +29,14 @@ template<
 >
 basic<T, N> const
 intersection(
-	basic<T, N> const &a,
-	basic<T, N> const &b
+	basic<T, N> const &_a,
+	basic<T, N> const &_b
 )
 {
 	if(
-		!intersects(
-			a,
-			b
+		!box::intersects(
+			_a,
+			_b
 		)
 	)
 		return basic<T, N>::null();
@@ -52,16 +52,16 @@ intersection(
 		ret.pos(
 			i,
 			std::max(
-				a.pos(i),
-				b.pos(i)
+				_a.pos(i),
+				_b.pos(i)
 			)
 		);
 
-		ret.dimension(
+		ret.size(
 			i,
 			std::min(
-				a.max(i),
-				b.max(i)
+				_a.max(i),
+				_b.max(i)
 			)
 			- ret.pos(i)
 		);

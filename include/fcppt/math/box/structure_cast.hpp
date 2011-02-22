@@ -40,7 +40,7 @@ structure_cast(
 			fcppt::math::dim::structure_cast<
 				typename Dest::dim
 			>(
-				src.dimension()
+				src.size()
 			)
 		);
 }

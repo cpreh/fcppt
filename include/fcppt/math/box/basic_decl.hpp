@@ -34,6 +34,7 @@ class basic
 {
 public:
 	typedef T value_type;
+
 	typedef value_type scalar;
 
 	typedef math::size_type size_type;
@@ -59,7 +60,7 @@ public:
 	null();
 
 	value_type
-	area() const;
+	content() const;
 
 	value_type
 	w() const;
@@ -77,7 +78,7 @@ public:
 	max() const;
 
 	dim const
-	dimension() const;
+	size() const;
 
 	value_type
 	pos(
@@ -90,7 +91,7 @@ public:
 	) const;
 
 	value_type
-	dimension(
+	size(
 		size_type
 	) const;
 
@@ -133,7 +134,7 @@ public:
 	);
 
 	void
-	dimension(
+	size(
 		dim const &
 	);
 
@@ -144,7 +145,7 @@ public:
 	);
 
 	void
-	dimension(
+	size(
 		size_type index,
 		value_type
 	);
@@ -171,7 +172,7 @@ public:
 private:
 	vector pos_;
 
-	dim dimension_;
+	dim size_;
 };
 
 template<

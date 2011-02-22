@@ -31,7 +31,7 @@ operator==(
 )
 {
 	return
-		_a.dimension() == _b.dimension()
+		_a.size() == _b.size()
 		&&
 		std::equal(
 			_a.begin(),
@@ -66,12 +66,12 @@ operator<(
 )
 {
 	return
-		_a.dimension()
-		!= _b.dimension()
+		_a.size()
+		!= _b.size()
 		?
 			math::dim::before(
-				_a.dimension(),
-				_b.dimension()
+				_a.size(),
+				_b.size()
 			)
 		:
 			std::lexicographical_compare(

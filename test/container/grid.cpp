@@ -198,12 +198,12 @@ BOOST_AUTO_TEST_CASE(container_grid_index_2d)
 
 	for(
 		int2_grid::dim::size_type y = 0;
-		y < test.dimension()[1];
+		y < test.size()[1];
 		++y
 	)
 		for(
 			int2_grid::dim::size_type x = 0;
-			x < test.dimension()[0];
+			x < test.size()[0];
 			++x
 		)
 			BOOST_REQUIRE(
@@ -245,17 +245,17 @@ BOOST_AUTO_TEST_CASE(container_grid_index_3d)
 
 	for(
 		int3_grid::dim::size_type z = 0;
-		z < test.dimension()[2];
+		z < test.size()[2];
 		++z
 	)
 		for(
 			int3_grid::dim::size_type y = 0;
-			y < test.dimension()[1];
+			y < test.size()[1];
 			++y
 		)
 			for(
 				int3_grid::dim::size_type x = 0;
-				x < test.dimension()[0];
+				x < test.size()[0];
 				++x
 			)
 				BOOST_REQUIRE(
@@ -304,7 +304,7 @@ BOOST_AUTO_TEST_CASE(container_grid_size)
 	);
 
 	BOOST_REQUIRE(
-		test.size() == 6u
+		test.content() == 6u
 	);
 }
 
@@ -344,7 +344,7 @@ BOOST_AUTO_TEST_CASE(container_grid_resize)
 	);
 
 	BOOST_REQUIRE(
-		test.dimension()
+		test.size()
 		==
 		int2_grid::dim(
 			5,
@@ -360,7 +360,7 @@ BOOST_AUTO_TEST_CASE(container_grid_resize)
 		== static_cast<
 			int2_grid::difference_type
 		>(
-			test.dimension().content()
+			test.size().content()
 		)
 	);
 }
@@ -376,12 +376,12 @@ BOOST_AUTO_TEST_CASE(container_grid_resize_preverse)
 
 	for(
 		sz_pair_grid::dim::size_type y = 0;
-		y < test.dimension()[1];
+		y < test.size()[1];
 		++y
 	)
 		for(
 			sz_pair_grid::dim::size_type x = 0;
-			x < test.dimension()[0];
+			x < test.size()[0];
 			++x
 		)
 			test[
@@ -404,7 +404,7 @@ BOOST_AUTO_TEST_CASE(container_grid_resize_preverse)
 	);
 
 	BOOST_REQUIRE(
-		test.dimension()
+		test.size()
 		==
 		sz_pair_grid::dim(
 			3,
@@ -414,12 +414,12 @@ BOOST_AUTO_TEST_CASE(container_grid_resize_preverse)
 
 	for(
 		sz_pair_grid::dim::size_type y = 0;
-		y < test.dimension()[1];
+		y < test.size()[1];
 		++y
 	)
 		for(
 			sz_pair_grid::dim::size_type x = 0;
-			x < test.dimension()[0];
+			x < test.size()[0];
 			++x
 		)
 		{
@@ -449,12 +449,12 @@ BOOST_AUTO_TEST_CASE(container_grid_resize_preverse_init)
 
 	for(
 		sz_pair_grid::dim::size_type y = 0;
-		y < test.dimension()[1];
+		y < test.size()[1];
 		++y
 	)
 		for(
 			sz_pair_grid::dim::size_type x = 0;
-			x < test.dimension()[0];
+			x < test.size()[0];
 			++x
 		)
 			test[
@@ -481,7 +481,7 @@ BOOST_AUTO_TEST_CASE(container_grid_resize_preverse_init)
 	);
 
 	BOOST_REQUIRE(
-		test.dimension()
+		test.size()
 		==
 		sz_pair_grid::dim(
 			10,
@@ -491,12 +491,12 @@ BOOST_AUTO_TEST_CASE(container_grid_resize_preverse_init)
 
 	for(
 		sz_pair_grid::dim::size_type y = 0;
-		y < test.dimension()[1];
+		y < test.size()[1];
 		++y
 	)
 		for(
 			sz_pair_grid::dim::size_type x = 0;
-			x < test.dimension()[0];
+			x < test.size()[0];
 			++x
 		)
 		{

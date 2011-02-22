@@ -26,7 +26,7 @@ stretch(
 	T const factor)
 {
 	typename basic<T,N>::dim const d = 
-		b.dimension() * factor;
+		b.size() * factor;
 	return 
 		basic<T,N>(
 			center(

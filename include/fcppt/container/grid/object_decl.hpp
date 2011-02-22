@@ -135,10 +135,10 @@ public:
 	) const;
 	
 	dim const &
-	dimension() const;
+	size() const;
 
 	size_type
-	size() const;
+	content() const;
 
 	/// Resizes the grid leaving its internal elements in an unspecific state
 	void
@@ -204,7 +204,7 @@ public:
 private:
 	container container_;
 
-	dim dim_;
+	dim size_;
 };
 
 template<
