@@ -3,9 +3,8 @@
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
 
-
-#ifndef FCPPT_MATH_LERP_HPP_INCLUDED
-#define FCPPT_MATH_LERP_HPP_INCLUDED
+#ifndef FCPPT_MATH_INTERPOLATION_LINEAR_HPP_INCLUDED
+#define FCPPT_MATH_INTERPOLATION_LINEAR_HPP_INCLUDED
 
 #include <boost/type_traits/is_floating_point.hpp>
 #include <boost/utility/enable_if.hpp>
@@ -13,6 +12,8 @@
 namespace fcppt
 {
 namespace math
+{
+namespace interpolation
 {
 /// Interpolates between a and b (works only with a floating point
 /// parameter)
@@ -23,12 +24,13 @@ boost::enable_if_c
 	boost::is_floating_point<Float>::value,
 	Value const
 >::type
-lerp(
+linear(
 	Float const &f,
 	Value const &v1,
 	Value const &v2)
 {
-	return f * v1 + (static_cast<Float>(1) - f) * v2;
+	return (static_cast<Float>(1) - f) * v1 + f * v2;
+}
 }
 }
 }

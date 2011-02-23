@@ -385,6 +385,7 @@ SET(
 	include/fcppt/chrono/treat_as_floating_point.hpp
 	include/fcppt/class_symbol.hpp
 	include/fcppt/com_deleter.hpp
+	include/fcppt/config.hpp
 	include/fcppt/const_pointer_cast.hpp
 	include/fcppt/container/array.hpp
 	include/fcppt/container/array_decl.hpp
@@ -751,6 +752,8 @@ SET(
 	include/fcppt/math/generate_binary_vectors.hpp
 	include/fcppt/math/impl/exception.hpp
 	include/fcppt/math/instantiate_arithmetic.hpp
+	include/fcppt/math/interpolation/linear.hpp
+	include/fcppt/math/interpolation/trigonometric.hpp
 	include/fcppt/math/inverse.hpp
 	include/fcppt/math/is_dynamic_size.hpp
 	include/fcppt/math/is_negative.hpp
@@ -758,7 +761,6 @@ SET(
 	include/fcppt/math/is_rational.hpp
 	include/fcppt/math/is_rel_angle.hpp
 	include/fcppt/math/is_static_size.hpp
-	include/fcppt/math/lerp.hpp
 	include/fcppt/math/log.hpp
 	include/fcppt/math/machine_epsilon.hpp
 	include/fcppt/math/matrix/adjugate.hpp
@@ -831,7 +833,6 @@ SET(
 	include/fcppt/math/sphere/circle.hpp
 	include/fcppt/math/sphere/intersects.hpp
 	include/fcppt/math/sphere/sphere.hpp
-	include/fcppt/math/trig_lerp.hpp
 	include/fcppt/math/twopi.hpp
 	include/fcppt/math/vector/angle_between.hpp
 	include/fcppt/math/vector/angle_between_cast.hpp
@@ -1153,6 +1154,7 @@ SET(
 	include/fcppt/variant/recursive_fwd.hpp
 	include/fcppt/variant/recursive_impl.hpp
 	include/fcppt/variant/size_type.hpp
+	include/fcppt/version.hpp
 	include/fcppt/version_int.hpp
 	include/fcppt/version_string.hpp
 	include/fcppt/warn_unused_result.hpp
