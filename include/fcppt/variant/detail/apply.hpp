@@ -46,7 +46,7 @@ struct apply<
 		Variant const &
 	)
 	{
-		throw invalid_apply();
+		throw variant::invalid_apply();
 	}
 };
 
@@ -83,25 +83,28 @@ struct apply<
 			Counter
 		>::type type;
 
-		return Counter::value == _obj.type_index()
-			? _op(
-				_obj. template get_raw<type>()
-			)
-			: detail::apply<
-				typename boost::mpl::next<
-					Counter
-				>::type,
-				boost::is_same<
+		return
+			Counter::value == _obj.type_index()
+			?
+				_op(
+					_obj. template get_raw<type>()
+				)
+			:
+				detail::apply<
+					typename boost::mpl::next<
+						Counter
+					>::type,
+					boost::is_same<
+						iter,
+						LastIterator
+					>::value
+				>:: template execute<
 					iter,
 					LastIterator
-				>::value
-			>:: template execute<
-				iter,
-				LastIterator
-			>(
-				_op,
-				_obj
-			);
+				>(
+					_op,
+					_obj
+				);
 	}
 };
 

@@ -27,14 +27,14 @@ template<
 >
 void
 sleep_any(
-	Duration const &duration_
+	Duration const &_duration
 )
 {
-	sleep(
+	time::sleep(
 		chrono::duration_cast<
-			sleep_duration
+			time::sleep_duration
 		>(
-			duration_
+			_duration
 		)
 	);
 }

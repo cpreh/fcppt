@@ -12,24 +12,24 @@
 
 fcppt::string const
 fcppt::time::ctime(
-	std::time_t const time_
+	std::time_t const _time
 )
 {
 	char const *const ret(
 		std::ctime(
-			&time_
+			&_time
 		)
 	);
 
 	if(
 		ret == 0
 	)
-		throw exception(
+		throw fcppt::time::exception(
 			FCPPT_TEXT("std::ctime() failed!")
 		);
 	
 	return
-		from_std_string(
+		fcppt::from_std_string(
 			ret
 		);
 }
