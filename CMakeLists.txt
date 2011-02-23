@@ -385,7 +385,6 @@ SET(
 	include/fcppt/chrono/treat_as_floating_point.hpp
 	include/fcppt/class_symbol.hpp
 	include/fcppt/com_deleter.hpp
-	include/fcppt/config.hpp
 	include/fcppt/const_pointer_cast.hpp
 	include/fcppt/container/array.hpp
 	include/fcppt/container/array_decl.hpp
@@ -1154,7 +1153,6 @@ SET(
 	include/fcppt/variant/recursive_fwd.hpp
 	include/fcppt/variant/recursive_impl.hpp
 	include/fcppt/variant/size_type.hpp
-	include/fcppt/version.hpp
 	include/fcppt/version_int.hpp
 	include/fcppt/version_string.hpp
 	include/fcppt/warn_unused_result.hpp
