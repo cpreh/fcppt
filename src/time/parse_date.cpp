@@ -10,14 +10,14 @@
 
 fcppt::io::istream &
 fcppt::time::parse_date(
-	io::istream &stream,
-	std::tm &result
+	io::istream &_stream,
+	std::tm &_result
 )
 {
 	return
 		time::time_get_parse(
-			stream,
-			result,
+			_stream,
+			_result,
 			&time::time_get::get_date
 		);
 }

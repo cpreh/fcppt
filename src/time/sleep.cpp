@@ -21,47 +21,47 @@
 
 void
 fcppt::time::sleep(
-	sleep_duration const &duration_
+	time::sleep_duration const &_duration
 )
 {
 #if defined(FCPPT_WINDOWS_PLATFORM)
 	if(
-		SleepEx(
+		::SleepEx(
 			truncation_check_cast<
 				DWORD
 			>(
-				duration_.count()
+				_duration_.count()
 			),
 			TRUE
 		)
 		!= 0
 	)
-		throw sleep_interrupted();
+		throw time::sleep_interrupted();
 #elif defined(FCPPT_POSIX_PLATFORM)
 	timespec const req =
 	{
 		truncation_check_cast<
 			std::time_t
 		>(
-			duration_.count() / sleep_duration::period::den
+			_duration.count() / sleep_duration::period::den
 		),
 		truncation_check_cast<
 			long
 		>(
-			duration_.count() % sleep_duration::period::den
+			_duration.count() % sleep_duration::period::den
 		)
 	};
 
 	timespec rem;
 	
 	if(
-		nanosleep(
+		::nanosleep(
 			&req,
 			&rem
 		)
 		!= 0
 	)
-		throw sleep_interrupted();
+		throw time::sleep_interrupted();
 #else
 #error "Don't know which sleep to call!"
 #endif

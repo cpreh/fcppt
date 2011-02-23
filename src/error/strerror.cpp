@@ -10,12 +10,13 @@
 
 fcppt::string const
 fcppt::error::strerror(
-	int const errnum
+	int const _errnum
 )
 {
-	return from_std_string(
-		std::strerror(
-			errnum
-		)
-	);
+	return
+		fcppt::from_std_string(
+			std::strerror(
+				_errnum
+			)
+		);
 }

@@ -9,8 +9,11 @@
 
 bool
 fcppt::filesystem::exists(
-	path const &p
+	path const &_path
 )
 {
-	return boost::filesystem::exists(p);
+	return
+		boost::filesystem::exists(
+			_path
+		);
 }

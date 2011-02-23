@@ -36,34 +36,35 @@ clock_gettime_impl(
 			&tp
 		) != 0
 	)
-		throw clock_failure(
+		throw chrono::clock_failure(
 			FCPPT_TEXT("clock_gettime failed")
 		);
 
 	typedef typename TimePoint::duration duration;
 
-	return TimePoint(
-		duration(
-			static_cast<
-				typename duration::rep
-			>(
+	return
+		TimePoint(
+			duration(
 				static_cast<
-					chrono::unsigned_type<
-						rep
-					>::type
+					typename duration::rep
 				>(
-					tp.tv_sec
-				)
-				* 1000000000UL
-				+ static_cast<
-					unsigned long
-				>(
-					tp.tv_nsec
+					static_cast<
+						chrono::unsigned_type<
+							rep
+						>::type
+					>(
+						tp.tv_sec
+					)
+					* 1000000000UL
+					+ static_cast<
+						unsigned long
+					>(
+						tp.tv_nsec
+					)
 				)
 			)
-		)
-	);
-}
+		);
+	}
 
 }
 }

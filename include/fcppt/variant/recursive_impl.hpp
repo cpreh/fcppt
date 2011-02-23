@@ -14,12 +14,12 @@ template<
 	typename T
 >
 fcppt::variant::recursive<T>::recursive(
-	T const &other
+	T const &_other
 )
 :
 	rep_(
-		copy(
-			other
+		recursive::copy(
+			_other
 		)
 	)
 {
@@ -29,12 +29,12 @@ template<
 	typename T
 >
 fcppt::variant::recursive<T>::recursive(
-	recursive const &other
+	recursive const &_other
 )
 :
 	rep_(
-		copy(
-			other.get()
+		recursive::copy(
+			_other.get()
 		)
 	)
 {
@@ -45,10 +45,10 @@ template<
 >
 fcppt::variant::recursive<T> &
 fcppt::variant::recursive<T>::operator =(
-	T const &other
+	T const &_other
 )
 {
-	*rep_ = other;
+	*rep_ = _other;
 
 	return *this;
 }
@@ -58,10 +58,10 @@ template<
 >
 fcppt::variant::recursive<T> &
 fcppt::variant::recursive<T>::operator =(
-	recursive const &other
+	recursive const &_other
 )
 {
-	*rep_ = other.get();
+	*rep_ = _other.get();
 
 	return *this;
 }
@@ -79,12 +79,12 @@ template<
 >
 void
 fcppt::variant::recursive<T>::swap(
-	recursive &other
+	recursive &_other
 )
 {
 	std::swap(
 		rep_,
-		other.rep_
+		_other.rep_
 	);
 }
 
@@ -102,10 +102,10 @@ template<
 >
 T *
 fcppt::variant::recursive<T>::copy(
-	T const &other
+	T const &_other
 )
 {
-	return new T(other);
+	return new T(_other);
 }
 
 template<
@@ -113,12 +113,12 @@ template<
 >
 void
 fcppt::variant::swap(
-	recursive<T> &a,
-	recursive<T> &b
+	recursive<T> &_a,
+	recursive<T> &_b
 )
 {
-	a.swap(
-		b
+	_a.swap(
+		_b
 	);
 }
 

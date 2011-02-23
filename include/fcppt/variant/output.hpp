@@ -31,23 +31,23 @@ operator<<(
 	std::basic_ostream<
 		Ch,
 		Traits
-	> &stream_,
-	object<
+	> &_stream,
+	variant::object<
 		Types
-	> const &object_
+	> const &_object
 )
 {
 	return
-		apply_unary(
+		variant::apply_unary(
 			detail::output<
 				std::basic_ostream<
 					Ch,
 					Traits
 				>
 			>(
-				stream_
+				_stream
 			),
-			object_
+			_object
 		);
 }
 

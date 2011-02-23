@@ -29,7 +29,8 @@ fcppt::variant::object<Types>::object()
 	storage_(),
 	index_(elements),
 	data_(0)
-{}
+{
+}
 
 template<
 	typename Types
@@ -38,15 +39,15 @@ template<
 	typename U
 >
 fcppt::variant::object<Types>::object(
-	U const &u
+	U const &_other
 )
 :
 	storage_(),
 	index_(),
 	data_()
 {
-	construct(
-		u
+	this->construct(
+		_other
 	);
 }
 
@@ -54,22 +55,25 @@ template<
 	typename Types
 >
 fcppt::variant::object<Types>::object(
-	object const &o
+	object const &_other
 )
 :
 	storage_(),
-	index_(o.index_),
+	index_(_other.index_),
 	data_(0)
 {
-	if(o.empty())
+	if(
+		_other.empty()
+	)
 		return;
 
-	data_ = detail::apply_unary_internal(
-		detail::copy(
-			storage_.data()
-		),
-		o
-	);
+	data_ =
+		detail::apply_unary_internal(
+			detail::copy(
+				storage_.data()
+			),
+			_other
+		);
 }
 
 template<
@@ -80,13 +84,13 @@ template<
 >
 fcppt::variant::object<Types> &
 fcppt::variant::object<Types>::operator=(
-	U const &u
+	U const &_other
 )
 {
-	destroy();
+	this->destroy();
 
-	construct(
-		u
+	this->construct(
+		_other
 	);
 
 	return *this;
@@ -97,12 +101,15 @@ template<
 >
 fcppt::variant::object<Types> &
 fcppt::variant::object<Types>::operator=(
-	object const &o
+	object const &_other
 )
 {
-	if(o.empty())
+	if(
+		_other.empty()
+	)
 	{
-		destroy();
+		this->destroy();
+
 		return *this;
 	}
 
@@ -114,7 +121,7 @@ fcppt::variant::object<Types>::operator=(
 		>(
 			*this
 		),
-		o
+		_other
 	);
 
 	return *this;
@@ -125,7 +132,7 @@ template<
 >
 fcppt::variant::object<Types>::~object()
 {
-	destroy();
+	this->destroy();
 }
 
 template<
@@ -156,11 +163,11 @@ fcppt::variant::object<Types>::get() const
 			>::value
 		)
 	)
-		throw invalid_get();
+		throw variant::invalid_get();
 
 	return
 		detail::unwrap_recursive(
-			get_raw<
+			this->get_raw<
 				typename detail::real_type<
 					Types,
 					U
@@ -232,10 +239,11 @@ template<
 std::type_info const &
 fcppt::variant::object<Types>::type() const
 {
-	return apply_unary(
-		detail::type_info(),
-		*this
-	);
+	return
+		variant::apply_unary(
+			detail::type_info(),
+			*this
+		);
 }
 
 template<
@@ -253,7 +261,7 @@ template<
 void
 fcppt::variant::object<Types>::reset()
 {
-	destroy();
+	this->destroy();
 }
 
 template<
@@ -264,7 +272,7 @@ template<
 >
 void
 fcppt::variant::object<Types>::construct(
-	U const &u
+	U const &_other
 )
 {
 	data_ =
@@ -275,7 +283,7 @@ fcppt::variant::object<Types>::construct(
 			Types,
 			U
 		>::type(
-			u
+			_other
 		);
 
 	size_type const new_index(
@@ -298,7 +306,9 @@ template<
 void
 fcppt::variant::object<Types>::destroy()
 {
-	if(empty())
+	if(
+		this->empty()
+	)
 		return;
 
 	detail::apply_unary_internal(
@@ -307,6 +317,7 @@ fcppt::variant::object<Types>::destroy()
 	);
 
 	index_ = elements;
+
 	data_ = 0;
 }
 

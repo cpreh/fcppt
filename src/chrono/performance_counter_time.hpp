@@ -31,12 +31,12 @@ performance_counter_time()
 	LARGE_INTEGER ret;
 
 	if(
-		QueryPerformanceCounter(
+		::QueryPerformanceCounter(
 			&ret
 		)
 		== 0
 	)
-		throw clock_failure(
+		throw chrono::clock_failure(
 			FCPPT_TEXT("QueryPerformanceCounter() failed!")
 		);
 

@@ -9,10 +9,11 @@
 
 bool
 fcppt::filesystem::is_regular(
-	path const &path_
+	path const &_path
 )
 {
-	return boost::filesystem::is_regular_file(
-		path_
-	);
+	return
+		boost::filesystem::is_regular_file(
+			_path
+		);
 }

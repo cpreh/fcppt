@@ -33,25 +33,26 @@ apply_unary_internal(
 {
 	typedef typename Variant::types types;
 
-	return detail::apply<
-		boost::mpl::integral_c<
-			size_type,
-			0
-		>,
-		boost::mpl::empty<
-			types
-		>::value
-	>:: template execute<
-		typename boost::mpl::begin<
-			types
-		>::type,
-		typename boost::mpl::end<
-			types
-		>::type
-	>(
-		_op,
-		_obj
-	);
+	return
+		detail::apply<
+			boost::mpl::integral_c<
+				size_type,
+				0
+			>,
+			boost::mpl::empty<
+				types
+			>::value
+		>:: template execute<
+			typename boost::mpl::begin<
+				types
+			>::type,
+			typename boost::mpl::end<
+				types
+			>::type
+		>(
+			_op,
+			_obj
+		);
 }
 
 }

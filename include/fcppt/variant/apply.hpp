@@ -23,14 +23,15 @@ template<
 >
 typename Operation::result_type
 apply(
-	Operation const &op,
-	Variant const &obj
+	Operation const &_op,
+	Variant const &_obj
 )
 {
-	return apply_unary(
-		op,
-		obj
-	);
+	return
+		variant::apply_unary(
+			_op,
+			_obj
+		);
 }
 
 /// Forwards to apply_binary
@@ -41,16 +42,17 @@ template<
 >
 typename Operation::result_type
 apply(
-	Operation const &op,
-	Variant1 const &obj1,
-	Variant2 const &obj2
+	Operation const &_op,
+	Variant1 const &_obj1,
+	Variant2 const &_obj2
 )
 {
-	return apply_binary(
-		op,
-		obj1,
-		obj2
-	);
+	return
+		variant::apply_binary(
+			_op,
+			_obj1,
+			_obj2
+		);
 }
 
 /// Forwards to apply_ternary
@@ -62,18 +64,19 @@ template<
 >
 typename Operation::result_type
 apply(
-	Operation const &op,
-	Variant1 const &obj1,
-	Variant2 const &obj2,
-	Variant3 const &obj3
+	Operation const &_op,
+	Variant1 const &_obj1,
+	Variant2 const &_obj2,
+	Variant3 const &_obj3
 )
 {
-	return apply_binary(
-		op,
-		obj1,
-		obj2,
-		obj3
-	);
+	return
+		variant::apply_binary(
+			_op,
+			_obj1,
+			_obj2,
+			_obj3
+		);
 }
 
 }
