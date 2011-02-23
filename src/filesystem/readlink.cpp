@@ -25,7 +25,7 @@
 fcppt::filesystem::path const
 fcppt::filesystem::readlink(
 #if defined(FCPPT_POSIX_PLATFORM) || defined(FCPPT_USE_FILESYSTEM_V3)
-	fcppt::filesystem::path const &link
+	fcppt::filesystem::path const &_link
 #else
 	fcppt::filesystem::path const &
 #endif
@@ -34,7 +34,7 @@ fcppt::filesystem::readlink(
 #ifdef FCPPT_USE_FILESYSTEM_V3
 	return
 		boost::filesystem::read_symlink(
-			link
+			_link
 		);
 #else
 #ifdef FCPPT_POSIX_PLATFORM
@@ -53,8 +53,8 @@ fcppt::filesystem::readlink(
 	{
 		ssize_t const ret(
 			::readlink(
-				to_std_string(
-					link.string()
+				fcppt::to_std_string(
+					_link.string()
 				).c_str(),
 				buf.data(),
 				buf.capacity()

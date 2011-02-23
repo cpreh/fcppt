@@ -18,7 +18,7 @@ fcppt::chrono::query_performance_frequency()
 	LARGE_INTEGER frequency;
 
 	if(
-		QueryPerformanceFrequency(
+		::QueryPerformanceFrequency(
 			&frequency
 		)
 		== 0

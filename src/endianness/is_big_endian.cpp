@@ -7,7 +7,9 @@
 #include <fcppt/endianness/is_big_endian.hpp>
 #include <fcppt/endianness/is_little_endian.hpp>
 
-bool fcppt::endianness::is_big_endian()
+bool
+fcppt::endianness::is_big_endian()
 {
-	return !is_little_endian();
+	return
+		!endianness::is_little_endian();
 }

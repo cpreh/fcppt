@@ -9,17 +9,17 @@
 
 void
 fcppt::endianness::reverse_mem(
-	unsigned char *const t,
-	std::size_t const len
+	unsigned char *const _data,
+	std::size_t const _len
 )
 {
 	for(
 		std::size_t i = 0;
-		i < len / 2;
+		i < _len / 2;
 		++i
 	)
 		std::swap(
-			t[i],
-			t[len-i-1]
+			_data[i],
+			_data[_len - i - 1]
 		);
 }

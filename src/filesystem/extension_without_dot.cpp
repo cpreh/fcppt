@@ -11,12 +11,12 @@
 
 fcppt::string const
 fcppt::filesystem::extension_without_dot(
-	path const &path_
+	path const &_path
 )
 {
 	fcppt::string ret(
 		filesystem::extension(
-			path_
+			_path
 		)
 	);
 

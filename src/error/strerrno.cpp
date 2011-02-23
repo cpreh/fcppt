@@ -11,7 +11,8 @@
 fcppt::string const
 fcppt::error::strerrno()
 {
-	return strerror(
-		errno
-	);
+	return
+		error::strerror(
+			errno
+		);
 }

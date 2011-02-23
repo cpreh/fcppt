@@ -34,15 +34,16 @@ fcppt::chrono::system_clock::now()
 	large_int.u.LowPart = ret.dwLowDateTime;
 	large_int.u.HighPart = ret.dwHighDateTime;
 
-	return time_point(
-		duration(
-			fcppt::truncation_check_cast<
-				duration::rep
-			>(
-				large_int.QuadPart
+	return
+		time_point(
+			duration(
+				fcppt::truncation_check_cast<
+					duration::rep
+				>(
+					large_int.QuadPart
+				)
 			)
-		)
-	);
+		);
 #elif FCPPT_POSIX_PLATFORM
 	struct timeval tv;
 	struct timezone tz;
@@ -57,27 +58,28 @@ fcppt::chrono::system_clock::now()
 			FCPPT_TEXT("gettimeofday() failed")
 		);
 
-	return time_point(
-		duration(
-			static_cast<
-				duration::rep
-			>(
+	return
+		time_point(
+			duration(
 				static_cast<
-					chrono::unsigned_type<
-						rep
-					>::type
+					duration::rep
 				>(
-					tv.tv_sec
-				)
-				* 1000000UL
-				+ static_cast<
-					unsigned long
-				>(
-					tv.tv_usec
+					static_cast<
+						chrono::unsigned_type<
+							rep
+						>::type
+					>(
+						tv.tv_sec
+					)
+					* 1000000UL
+					+ static_cast<
+						unsigned long
+					>(
+						tv.tv_usec
+					)
 				)
 			)
-		)
-	);
+		);
 #endif
 }
 
@@ -88,7 +90,7 @@ fcppt::chrono::system_clock::to_time_t(
 )
 {
 	return
-		truncation_check_cast<
+		fcppt::truncation_check_cast<
 			std::time_t
 		>(
 			_point.time_since_epoch().count()
@@ -104,7 +106,7 @@ fcppt::chrono::system_clock::from_time_t(
 	return
 		time_point(
 			duration(
-				truncation_check_cast<
+				fcppt::truncation_check_cast<
 					duration::rep
 				>(
 					_tm * duration::period::den

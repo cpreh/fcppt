@@ -43,25 +43,26 @@ struct call_traits<
 public:
 	static std::codecvt_base::result
 	conv(
-		codecvt_t const &cvt,
-		state_type &state,
-		wchar_t const *const from,
-		wchar_t const *const from_end,
-		wchar_t const *&from_next,
-		char *const to,
-		char *const to_limit,
-		char *&to_next
+		codecvt_t const &_cvt,
+		state_type &_state,
+		wchar_t const *const _from,
+		wchar_t const *const _from_end,
+		wchar_t const *&_from_next,
+		char *const _to,
+		char *const _to_limit,
+		char *&_to_next
 	)
 	{
-		return cvt.out(
-			state,
-			from,
-			from_end,
-			from_next,
-			to,
-			to_limit,
-			to_next
-		);
+		return
+			_cvt.out(
+				_state,
+				_from,
+				_from_end,
+				_from_next,
+				_to,
+				_to_limit,
+				_to_next
+			);
 	}
 };
 
@@ -73,23 +74,26 @@ struct call_traits<
 public:
 	static std::codecvt_base::result
 	conv(
-		codecvt_t const &cvt,
-		state_type &state,
-		char const *const from,
-	        char const *const from_end,
-	        char const *&from_next,
-	        wchar_t *const to,
-	        wchar_t *const to_limit,
-	        wchar_t *&to_next)
+		codecvt_t const &_cvt,
+		state_type &_state,
+		char const *const _from,
+	        char const *const _from_end,
+	        char const *&_from_next,
+	        wchar_t *const _to,
+	        wchar_t *const _to_limit,
+	        wchar_t *&_to_next
+	)
 	{
-		return cvt.in(
-			state,
-			from,
-			from_end,
-			from_next,
-			to,
-			to_limit,
-			to_next);
+		return
+			_cvt.in(
+				_state,
+				_from,
+				_from_end,
+				_from_next,
+				_to,
+				_to_limit,
+				_to_next
+			);
 	}
 };
 
@@ -99,8 +103,8 @@ template<
 >
 std::basic_string<Out> const
 codecvt(
-	std::basic_string<In> const &s,
-	std::locale const &locale_
+	std::basic_string<In> const &_string,
+	std::locale const &_locale
 )
 {
 	typedef std::basic_string<
@@ -111,17 +115,19 @@ codecvt(
 		Out
 	> buffer_type;
 
-	if(s.empty())
+	if(
+		_string.empty()
+	)
 		return return_type();
 
 	codecvt_t const &conv(
 		std::use_facet<codecvt_t>(
-			locale_
+			_locale
 		)
 	);
 
 	buffer_type buf(
-		s.size()
+		_string.size()
 	);
 
 	state_type state;
@@ -129,7 +135,7 @@ codecvt(
 	Out *to = buf.data();
 
 	for(
-		In const *from = s.data(), *from_next = 0;
+		In const *from = _string.data(), *from_next = 0;
 		; // loop forever
 		from = from_next
 	)
@@ -141,7 +147,9 @@ codecvt(
 				conv,
 				state,
 				from,
-				fcppt::container::data_end(s),
+				fcppt::container::data_end(
+					_string
+				),
 				from_next,
 				to,
 				buf.data_end(),
@@ -149,13 +157,16 @@ codecvt(
 			)
 		);
 
-		switch(result)
+		switch(
+			result
+		)
 		{
 		case std::codecvt_base::noconv:
-			return return_type(
-				s.begin(),
-				s.end()
-			);
+			return
+				return_type(
+					_string.begin(),
+					_string.end()
+				);
 		case std::codecvt_base::error:
 			throw fcppt::exception(
 				FCPPT_TEXT("codecvt: error!")
@@ -170,14 +181,16 @@ codecvt(
 				);
 
 				buf.resize(buf.size() * 2);
+
 				to = buf.data() + diff;
 			}
 			continue;
 		case std::codecvt_base::ok:
-			return return_type(
-				buf.data(),
-				to_next
-			);
+			return
+				return_type(
+					buf.data(),
+					to_next
+				);
 		}
 
 		throw fcppt::exception(

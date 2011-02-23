@@ -8,10 +8,10 @@
 
 fcppt::filesystem::path const
 fcppt::filesystem::remove_filename(
-	path p
+	path _path
 )
 {
-	p.remove_filename();
+	_path.remove_filename();
 
-	return p;
+	return _path;
 }

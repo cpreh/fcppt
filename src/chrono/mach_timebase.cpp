@@ -11,14 +11,14 @@
 struct mach_timebase_info const
 fcppt::chrono::mach_timebase()
 {
-	struct mach_timebase_info ratio_;
+	struct mach_timebase_info info;
 
 	// TODO: what can this return?
-	mach_timebase_info(
-		&ratio_
+	::mach_timebase_info(
+		&info
 	);
 
-	return ratio_;
+	return info;
 }
 
 #endif

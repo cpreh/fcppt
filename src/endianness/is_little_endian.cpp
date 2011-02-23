@@ -7,7 +7,9 @@
 #include <fcppt/endianness/is_little_endian.hpp>
 #include <fcppt/endianness/host_format.hpp>
 
-bool fcppt::endianness::is_little_endian()
+bool
+fcppt::endianness::is_little_endian()
 {
-	return host_format() == format::little;
+	return
+		endianness::host_format() == format::little;
 }

@@ -9,8 +9,11 @@
 
 bool
 fcppt::filesystem::is_directory(
-	path const &p
+	path const &_path
 )
 {
-	return boost::filesystem::is_directory(p);
+	return
+		boost::filesystem::is_directory(
+			_path
+		);
 }

@@ -10,15 +10,15 @@
 
 void
 fcppt::filesystem::create_directories_recursive(
-	path const &p
+	path const &_path
 )
 {
 	if(
 		!boost::filesystem::create_directories(
-			p
+			_path
 		)
 	)
-		throw create_directory_failed(
-			p
+		throw filesystem::create_directory_failed(
+			_path
 		);
 }

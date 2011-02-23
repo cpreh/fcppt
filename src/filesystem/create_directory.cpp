@@ -10,15 +10,15 @@
 
 void
 fcppt::filesystem::create_directory(
-	path const &p
+	path const &_path
 )
 {
 	if(
 		!boost::filesystem::create_directory(
-			p
+			_path
 		)
 	)
-		throw create_directory_failed(
-			p
+		throw filesystem::create_directory_failed(
+			_path
 		);
 }
