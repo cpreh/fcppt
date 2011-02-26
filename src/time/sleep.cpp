@@ -27,10 +27,10 @@ fcppt::time::sleep(
 #if defined(FCPPT_WINDOWS_PLATFORM)
 	if(
 		::SleepEx(
-			truncation_check_cast<
+			fcppt::truncation_check_cast<
 				DWORD
 			>(
-				_duration_.count()
+				_duration.count()
 			),
 			TRUE
 		)
@@ -40,12 +40,12 @@ fcppt::time::sleep(
 #elif defined(FCPPT_POSIX_PLATFORM)
 	timespec const req =
 	{
-		truncation_check_cast<
+		fcppt::truncation_check_cast<
 			std::time_t
 		>(
 			_duration.count() / sleep_duration::period::den
 		),
-		truncation_check_cast<
+		fcppt::truncation_check_cast<
 			long
 		>(
 			_duration.count() % sleep_duration::period::den
