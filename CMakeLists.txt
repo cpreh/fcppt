@@ -1205,7 +1205,6 @@ SET(
 	src/io/cin.cpp
 	src/io/clog.cpp
 	src/io/cout.cpp
-	src/io/raw_container_source.cpp
 	src/log/activate_levels.cpp
 	src/log/context.cpp
 	src/log/context_location.cpp
