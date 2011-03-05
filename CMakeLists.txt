@@ -658,6 +658,7 @@ SET(
 	include/fcppt/log/parameters/root_fwd.hpp
 	include/fcppt/log/trampoline.hpp
 	include/fcppt/log/tree_function.hpp
+	include/fcppt/log/verbose.hpp
 	include/fcppt/log/warning.hpp
 	include/fcppt/major_version.hpp
 	include/fcppt/make_auto_ptr.hpp

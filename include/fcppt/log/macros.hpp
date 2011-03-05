@@ -7,6 +7,7 @@
 #ifndef FCPPT_LOG_MACROS_HPP_INCLUDED
 #define FCPPT_LOG_MACROS_HPP_INCLUDED
 
+#include <fcppt/log/verbose.hpp>
 #include <fcppt/log/debug.hpp>
 #include <fcppt/log/info.hpp>
 #include <fcppt/log/warning.hpp>
