@@ -14,7 +14,9 @@ namespace log
 
 namespace level
 {
-enum type {
+enum type
+{
+	verbose,
 	debug,
 	info,
 	warning,
