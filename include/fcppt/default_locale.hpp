@@ -4,23 +4,19 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_WIDEN_HPP_INCLUDED
-#define FCPPT_WIDEN_HPP_INCLUDED
+#ifndef FCPPT_DEFAULT_LOCALE_HPP_INCLUDED
+#define FCPPT_DEFAULT_LOCALE_HPP_INCLUDED
 
-#include <fcppt/default_locale.hpp>
 #include <fcppt/symbol.hpp>
-#include <string>
 #include <locale>
 
 namespace fcppt
 {
 
-/// convert an std::string to std::wstring
-FCPPT_SYMBOL std::wstring const
-widen(
-	std::string const &,
-	std::locale const & = fcppt::default_locale()
-);
+/// Returns the default locale set on the system instead of the C locale
+FCPPT_SYMBOL
+std::locale const
+default_locale();
 
 }
 
