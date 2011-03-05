@@ -7,8 +7,10 @@
 #ifndef FCPPT_FROM_STD_WSTRING_HPP_INCLUDED
 #define FCPPT_FROM_STD_WSTRING_HPP_INCLUDED
 
+#include <fcppt/default_locale.hpp>
 #include <fcppt/string.hpp>
 #include <fcppt/symbol.hpp>
+#include <locale>
 #include <string>
 
 namespace fcppt
@@ -16,7 +18,8 @@ namespace fcppt
 
 FCPPT_SYMBOL string const
 from_std_wstring(
-	std::wstring const &
+	std::wstring const &,
+	std::locale const & = fcppt::default_locale()
 );
 
 }

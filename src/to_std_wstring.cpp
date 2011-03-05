@@ -12,13 +12,19 @@
 
 std::wstring const
 fcppt::to_std_wstring(
-	string const &_input
+	string const &_input,
+#ifdef FCPPT_NARROW_STRING
+	std::locale const &_locale
+#else
+	std::locale const &
+#endif
 )
 {
 #ifdef FCPPT_NARROW_STRING
 	return
 		fcppt::widen(
-			_input
+			_input,
+			_locale
 		);
 #else
 	return _input;

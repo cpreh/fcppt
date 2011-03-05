@@ -485,6 +485,7 @@ SET(
 	include/fcppt/cyclic_iterator_decl.hpp
 	include/fcppt/cyclic_iterator_fwd.hpp
 	include/fcppt/cyclic_iterator_impl.hpp
+	include/fcppt/default_locale.hpp
 	include/fcppt/detail/char_type.hpp
 	include/fcppt/detail/cyclic_iterator_base.hpp
 	include/fcppt/detail/make_ptr_base.hpp
@@ -1175,6 +1176,7 @@ SET(
 	src/chrono/system_clock.cpp
 	src/chrono/unsigned_type.hpp
 	src/codecvt.hpp
+	src/default_locale.cpp
 	src/endianness/host_format.cpp
 	src/endianness/is_big_endian.cpp
 	src/endianness/is_little_endian.cpp

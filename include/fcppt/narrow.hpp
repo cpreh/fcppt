@@ -7,6 +7,7 @@
 #ifndef FCPPT_NARROW_HPP_INCLUDED
 #define FCPPT_NARROW_HPP_INCLUDED
 
+#include <fcppt/default_locale.hpp>
 #include <fcppt/symbol.hpp>
 #include <string>
 #include <locale>
@@ -18,7 +19,7 @@ namespace fcppt
 FCPPT_SYMBOL std::string const
 narrow(
 	std::wstring const &,
-	std::locale const & = std::locale()
+	std::locale const & = fcppt::default_locale()
 );
 
 }
