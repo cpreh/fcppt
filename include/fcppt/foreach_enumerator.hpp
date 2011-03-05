@@ -9,7 +9,14 @@
 
 #include <fcppt/foreach_enumerator_start.hpp>
 
-#define FCPPT_FOREACH_ENUMERATOR(name, enum_)\
-	FCPPT_FOREACH_ENUMERATOR_START(name, enum_, static_cast<enum_::type>(0))
+#define FCPPT_FOREACH_ENUMERATOR(\
+	name,\
+	enum_\
+)\
+	FCPPT_FOREACH_ENUMERATOR_START(\
+		name,\
+		enum_, \
+		static_cast<enum_::type>(0)\
+	)
 
 #endif
