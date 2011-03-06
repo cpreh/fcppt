@@ -10,6 +10,7 @@
 #include <fcppt/math/box/basic_fwd.hpp>
 #include <fcppt/math/detail/dim_matches.hpp>
 #include <fcppt/math/size_type.hpp>
+#include <boost/type_traits/integral_constant.hpp>
 
 namespace fcppt
 {
