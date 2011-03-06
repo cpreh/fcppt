@@ -18,10 +18,13 @@ struct com_deleter
 {
 	void
 	operator()(
-		T* const t
+		T* const _arg
 	) const
 	{
-		t->Release();
+		if(
+			_arg
+		)
+			_arg->Release();
 	}
 };
 
