@@ -583,6 +583,11 @@ SET(
 	include/fcppt/io/cin.hpp
 	include/fcppt/io/clog.hpp
 	include/fcppt/io/cofstream.hpp
+	include/fcppt/io/color/attribute.hpp
+	include/fcppt/io/color/background.hpp
+	include/fcppt/io/color/foreground.hpp
+	include/fcppt/io/color/reset.hpp
+	include/fcppt/io/color/set.hpp
 	include/fcppt/io/cout.hpp
 	include/fcppt/io/fstream.hpp
 	include/fcppt/io/ifstream.hpp
@@ -1210,6 +1215,8 @@ SET(
 	src/io/cerr.cpp
 	src/io/cin.cpp
 	src/io/clog.cpp
+	src/io/color/reset.cpp
+	src/io/color/set.cpp
 	src/io/cout.cpp
 	src/log/activate_levels.cpp
 	src/log/context.cpp
