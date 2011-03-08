@@ -132,7 +132,7 @@ int
 enum_impl;
 
 std::ostream &
-operator<<(
+fcppt::io::color::operator<<(
 	std::ostream &s,
 	fcppt::io::color::set const &c)
 {
@@ -146,7 +146,7 @@ operator<<(
 }
 
 std::wostream &
-operator<<(
+fcppt::io::color::operator<<(
 	std::wostream &s,
 	fcppt::io::color::set const &c)
 {

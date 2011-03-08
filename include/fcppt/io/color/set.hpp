@@ -40,9 +40,6 @@ private:
 	fcppt::io::color::background::type background_;
 	fcppt::io::color::attribute::type attribute_;
 };
-}
-}
-}
 
 FCPPT_SYMBOL
 std::ostream &
@@ -55,5 +52,9 @@ std::wostream &
 operator<<(
 	std::wostream &,
 	fcppt::io::color::set const &);
+
+}
+}
+}
 
 #endif
