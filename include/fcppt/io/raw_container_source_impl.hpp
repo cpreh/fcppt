@@ -34,9 +34,16 @@ fcppt::io::raw_container_source<Container>::read(
 	char *target,
 	std::streamsize const n)
 {
-	std::streamsize const result = 
+	typedef typename std::iterator_traits<
+		const_iterator
+	>::difference_type difference_type;
+
+	difference_type const result = 
 		std::min(
-			n, 
+			static_cast<
+				difference_type
+			>(
+				n),
 			std::distance(
 				pos_,
 				chars_->cend()));
@@ -87,10 +94,13 @@ fcppt::io::raw_container_source<Container>::seek(
 			break;
 		default: break;
 	}
-	return 
-		std::distance(
-			chars_->cbegin(),
-			pos_);
+	return
+		static_cast<
+			std::streampos
+		>(
+			std::distance(
+				chars_->cbegin(),
+				pos_));
 }
 
 #endif
