@@ -17,7 +17,7 @@
 
 [section Changed functionality]
 
-* Put libfcppt.so into ${CMAKE_BINARY_DIR}/lib.
+* Put fcppt's libraries into ${CMAKE_BINARY_DIR}/lib.
 * Changed `dimension()` to `size()` in `math::box` and `container::grid`.
 
 [endsect]
