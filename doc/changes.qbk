@@ -5,11 +5,11 @@
 [section Added functionality]
 
 * Added `fcppt::log::level::verbose` and `FCPPT_LOG_VERBOSE`.
-* Added `io::raw_container_source` which TODO.
+* Added `io::raw_container_source` which is like `boost::iostreams::array_source` but owns the container instead.
 * Added `default_locale` function that does something sane on POSIX systems.
 * All string conversion functions now take `default_locale` as their locale parameter by default.
 * Added missing locale parameters to `from_std_wstring` and `to_std_wstring`.
-* Added interpolation functions which TODO.
+* Added `math::interpolation::linear` and `math::interpolation::trigonometric`.
 * Added `cyclic_iterator`.
 * Added `operator>>` for `strong_typedef`.
 

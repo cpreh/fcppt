@@ -243,4 +243,17 @@ always asserts that its first value is smaller or equal to its second value.
 
 [endsect]
 
+[section cyclic_iterator]
+
+`fcppt::cyclic_iterator` is a simple iterator adaptor. that takes a range and an
+initial iterator position, and wraps around both ends of the range.
+It is currently only usable with bidirectional iterators and random access iterators.
+In all cases, `cyclic_iterator` is a bidirectional iterator itself.
+
+[import ../examples/cyclic_iterator.cpp]
+
+[cyclic_iterator]
+
+[endsect]
+
 [endsect]
