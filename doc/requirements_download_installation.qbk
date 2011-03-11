@@ -17,17 +17,17 @@ To build the documentation the following packages are needed in addition:
 Tested compilers are:
 
 * gcc-4.5.2 (Gentoo Linux)
-* clang-2.8 (Gentoo Linux)
-* VC++ 2010 (Windows XP)
+* clang-2.8 (Gentoo Linux and MacOS)
+* VC++ 2010 (Windows XP 32 Bit and Windows 7 64 Bit)
 
 [h1 Download]
 
 fcppt is available through our public Git Repository: `git://github.com/freundlich/fcppt.git`.
 
-The latest fcppt release is 0.6.
-Get it [@http://supraverse.net/freundlich/fcppt-0.6.tar.bz2 here].
+The latest fcppt release is 0.7.
+Get it [@http://supraverse.net/freundlich/fcppt-0.7.tar.bz2 here].
 
-The Gentoo ebuilds are available [@http://supraverse.net/freundlich/fcppt-gentoo-ebuilds-7.tar.bz2 here].
+The Gentoo ebuilds are available [@http://supraverse.net/freundlich/fcppt-gentoo-ebuilds-8.tar.bz2 here].
 
 [h1 Installation]
 

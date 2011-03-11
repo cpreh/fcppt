@@ -255,7 +255,7 @@ BOOST_AUTO_TEST_CASE(container_raw_vector_copy)
 	);
 }
 
-BOOST_AUTO_TEST_CASE(container_raw_vector_empy_copy)
+BOOST_AUTO_TEST_CASE(container_raw_vector_empty_copy)
 {
 	container_type test;
 

@@ -1,3 +1,9 @@
+//          Copyright Carl Philipp Reh 2009 - 2011.
+// Distributed under the Boost Software License, Version 1.0.
+//    (See accompanying file LICENSE_1_0.txt or copy at
+//          http://www.boost.org/LICENSE_1_0.txt)
+
+
 #ifndef FCPPT_IO_RAW_CONTAINER_SOURCE_IMPL_HPP_INCLUDED
 #define FCPPT_IO_RAW_CONTAINER_SOURCE_IMPL_HPP_INCLUDED
 
@@ -28,9 +34,16 @@ fcppt::io::raw_container_source<Container>::read(
 	char *target,
 	std::streamsize const n)
 {
-	std::streamsize const result = 
+	typedef typename std::iterator_traits<
+		const_iterator
+	>::difference_type difference_type;
+
+	difference_type const result = 
 		std::min(
-			n, 
+			static_cast<
+				difference_type
+			>(
+				n),
 			std::distance(
 				pos_,
 				chars_->cend()));
@@ -81,10 +94,13 @@ fcppt::io::raw_container_source<Container>::seek(
 			break;
 		default: break;
 	}
-	return 
-		std::distance(
-			chars_->cbegin(),
-			pos_);
+	return
+		static_cast<
+			std::streampos
+		>(
+			std::distance(
+				chars_->cbegin(),
+				pos_));
 }
 
 #endif
