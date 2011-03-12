@@ -10,6 +10,12 @@
 #include <boost/spirit/home/phoenix/operator/arithmetic.hpp>
 #include <numeric>
 
+fcppt::log::location::location()
+:
+	entries_()
+{
+}
+
 fcppt::log::location::location(
 	fcppt::string const &_initial
 )

@@ -25,6 +25,8 @@ namespace log
 class location
 {
 public:
+	FCPPT_SYMBOL location();
+
 	FCPPT_SYMBOL explicit location(
 		fcppt::string const &
 	);
