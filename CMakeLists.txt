@@ -1098,10 +1098,20 @@ SET(
 	include/fcppt/time/std_time.hpp
 	include/fcppt/to_std_string.hpp
 	include/fcppt/to_std_wstring.hpp
+	include/fcppt/tr1/array.hpp
+	include/fcppt/tr1/cmath.hpp
+	include/fcppt/tr1/complex.hpp
 	include/fcppt/tr1/detail/make_header.hpp
 	include/fcppt/tr1/detail/use_boost_tr1.hpp
 	include/fcppt/tr1/functional.hpp
+	include/fcppt/tr1/memory.hpp
 	include/fcppt/tr1/random.hpp
+	include/fcppt/tr1/regex.hpp
+	include/fcppt/tr1/tuple.hpp
+	include/fcppt/tr1/type_traits.hpp
+	include/fcppt/tr1/unordered_map.hpp
+	include/fcppt/tr1/unordered_set.hpp
+	include/fcppt/tr1/utility.hpp
 	include/fcppt/truncation_check_cast.hpp
 	include/fcppt/try_dynamic_cast.hpp
 	include/fcppt/type_info.hpp
