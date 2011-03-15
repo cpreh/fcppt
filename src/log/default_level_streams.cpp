@@ -10,7 +10,7 @@
 #include <fcppt/container/array_impl.hpp>
 #include <fcppt/foreach_enumerator.hpp>
 #include <fcppt/make_shared_ptr.hpp>
-#include <fcppt/tr1/functional.hpp>
+#include <fcppt/ref.hpp>
 
 fcppt::log::level_stream_array const
 fcppt::log::default_level_streams(
@@ -30,7 +30,7 @@ fcppt::log::default_level_streams(
 			fcppt::make_shared_ptr<
 				level_stream
 			>(
-				std::tr1::ref(
+				fcppt::ref(
 					_sink
 				),
 				format::default_level(

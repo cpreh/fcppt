@@ -8,6 +8,7 @@
 #include <fcppt/tr1/functional.hpp>
 #include <fcppt/container/array.hpp>
 #include <fcppt/function/object.hpp>
+#include <fcppt/ref.hpp>
 #include <boost/foreach.hpp>
 #include <ostream>
 #include <iostream>
@@ -18,7 +19,7 @@ namespace
 
 void
 f(
-	std::ostream &stream_
+	std::ostream &_stream
 )
 {
 	typedef fcppt::container::array<
@@ -34,11 +35,11 @@ f(
 		i5_array::const_reference ref,
 		array
 	)
-		stream_
+		_stream
 			<< ref
 			<< ' ';
 	
-	stream_ << '\n';
+	_stream << '\n';
 }
 
 }
@@ -49,11 +50,11 @@ int main()
 		void ()
 	> void_function;
 
-	// use std::tr1::bind and std::tr1::ref
+	// use std::tr1::bind
 	void_function function(
 		std::tr1::bind(
 			f,
-			std::tr1::ref(
+			fcppt::ref(
 				std::cout
 			)
 		)

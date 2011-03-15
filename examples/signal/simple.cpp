@@ -9,6 +9,7 @@
 #include <fcppt/signal/scoped_connection.hpp>
 #include <fcppt/io/cout.hpp>
 #include <fcppt/tr1/functional.hpp>
+#include <fcppt/ref.hpp>
 #include <fcppt/text.hpp>
 
 namespace
@@ -67,10 +68,10 @@ int main()
 	);
 	
 	foo my_foo;
-	// Note the use of std::tr1::ref because the signal gets a non-const reference
+	// Note the use of fcppt::ref because the signal gets a non-const reference
 	// Outputs: "other_callback" called
 	signal2(
-		std::tr1::ref(
+		fcppt::ref(
 			my_foo
 		)
 	);
