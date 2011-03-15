@@ -861,6 +861,7 @@ SET(
 	include/fcppt/math/vector/dynamic.hpp
 	include/fcppt/math/vector/dynamic_impl.hpp
 	include/fcppt/math/vector/has_dim.hpp
+	include/fcppt/math/vector/hypersphere_to_cartesian.hpp
 	include/fcppt/math/vector/input.hpp
 	include/fcppt/math/vector/is_null.hpp
 	include/fcppt/math/vector/length.hpp
@@ -1016,6 +1017,8 @@ SET(
 	include/fcppt/ratio/substract.hpp
 	include/fcppt/ratio/substract_fwd.hpp
 	include/fcppt/ratio/tera.hpp
+	include/fcppt/ref.hpp
+	include/fcppt/reference_wrapper.hpp
 	include/fcppt/restrict_typedef_struct.hpp
 	include/fcppt/safe_bool.hpp
 	include/fcppt/scoped_ptr.hpp

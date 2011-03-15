@@ -7,6 +7,7 @@
 #ifndef FCPPT_REF_HPP_INCLUDED
 #define FCPPT_REF_HPP_INCLUDED
 
+#include <fcppt/reference_wrapper.hpp>
 #include <boost/ref.hpp>
 
 namespace fcppt
@@ -21,7 +22,7 @@ namespace fcppt
 template<
 	typename T
 >
-boost::reference_wrapper<
+fcppt::reference_wrapper<
 	T
 > const
 ref(
