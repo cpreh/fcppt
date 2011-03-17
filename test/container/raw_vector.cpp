@@ -23,7 +23,9 @@ template class fcppt::container::raw_vector<
 	int
 >;
 
-BOOST_AUTO_TEST_CASE(container_raw_vector_shrink)
+BOOST_AUTO_TEST_CASE(
+	container_raw_vector_shrink_to_fit
+)
 {
 	container_type test;
 
@@ -50,7 +52,33 @@ BOOST_AUTO_TEST_CASE(container_raw_vector_shrink)
 	);
 }
 
-BOOST_AUTO_TEST_CASE(container_raw_vector_insert)
+BOOST_AUTO_TEST_CASE(
+	container_raw_vector_shrink
+)
+{
+	container_type test;
+
+	test.assign(
+		10u,
+		42
+	);
+
+	BOOST_REQUIRE(
+		test.size() == 10u
+	);
+
+	test.resize_uninitialized(
+		5u
+	);
+
+	BOOST_REQUIRE(
+		test.size() == 5u
+	);
+}
+	
+BOOST_AUTO_TEST_CASE(
+	container_raw_vector_insert
+)
 {
 	container_type test;
 
@@ -89,7 +117,9 @@ BOOST_AUTO_TEST_CASE(container_raw_vector_insert)
 	);
 }
 
-BOOST_AUTO_TEST_CASE(container_raw_vector_insert_iterator)
+BOOST_AUTO_TEST_CASE(
+	container_raw_vector_insert_iterator
+)
 {
 	container_type test;
 
@@ -152,7 +182,9 @@ BOOST_AUTO_TEST_CASE(container_raw_vector_insert_iterator)
 	);
 }
 
-BOOST_AUTO_TEST_CASE(container_raw_vector_push_back)
+BOOST_AUTO_TEST_CASE(
+	container_raw_vector_push_back
+)
 {
 	container_type test;
 
@@ -180,7 +212,9 @@ BOOST_AUTO_TEST_CASE(container_raw_vector_push_back)
 		);
 }
 
-BOOST_AUTO_TEST_CASE(container_raw_vector_erase)
+BOOST_AUTO_TEST_CASE(
+	container_raw_vector_erase
+)
 {
 	container_type test;
 
@@ -225,7 +259,9 @@ BOOST_AUTO_TEST_CASE(container_raw_vector_erase)
 	);
 }
 
-BOOST_AUTO_TEST_CASE(container_raw_vector_copy)
+BOOST_AUTO_TEST_CASE(
+	container_raw_vector_copy
+)
 {
 	container_type test;
 
@@ -255,7 +291,9 @@ BOOST_AUTO_TEST_CASE(container_raw_vector_copy)
 	);
 }
 
-BOOST_AUTO_TEST_CASE(container_raw_vector_empty_copy)
+BOOST_AUTO_TEST_CASE(
+	container_raw_vector_empty_copy
+)
 {
 	container_type test;
 
