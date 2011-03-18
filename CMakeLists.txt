@@ -493,6 +493,7 @@ SET(
 	include/fcppt/detail/make_shared_wrapper_fwd.hpp
 	include/fcppt/detail/process_assert.hpp
 	include/fcppt/detail/strong_typedef_cast.hpp
+	include/fcppt/detail/use_boost_reference.hpp
 	include/fcppt/detail_unique_ptr/one_two.hpp
 	include/fcppt/detail_unique_ptr/pointer_type.hpp
 	include/fcppt/detail_unique_ptr/rv.hpp
