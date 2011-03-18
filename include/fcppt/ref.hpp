@@ -7,13 +7,8 @@
 #ifndef FCPPT_REF_HPP_INCLUDED
 #define FCPPT_REF_HPP_INCLUDED
 
-#include <fcppt/detail/use_boost_reference.hpp>
 #include <fcppt/reference_wrapper.hpp>
-#ifdef FCPPT_DETAIL_USE_BOOST_REFERENCE
 #include <boost/ref.hpp>
-#else
-#include <fcppt/tr1/functional.hpp>
-#endif
 
 namespace fcppt
 {
@@ -35,11 +30,7 @@ ref(
 )
 {
 	return
-#ifdef FCPPT_DETAIL_USE_BOOST_REFERENCE
 		boost::ref(
-#else
-		std::tr1::ref(
-#endif
 			_ref
 		);
 }

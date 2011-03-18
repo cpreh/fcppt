@@ -1,14 +1,5 @@
 [section Changes]
 
-[section Changes from 0.7 to 0.7.1]
-
-* Added `math::vector::hypersphere_to_cartesian`.
-* Added empty `log::location` constructor.
-* Added support for boost-1.46.1.
-* Added `fcppt::ref` to wrap `boost::ref` which fixes issues with VC++ 2010 SP1.
-
-[endsect]
-
 [section Changes from 0.6 to 0.7]
 
 [section Added functionality]
