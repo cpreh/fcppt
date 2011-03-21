@@ -15,6 +15,7 @@
 #include <locale>
 #include <iterator>
 #include <string>
+#include <cstring>
 
 namespace fcppt
 {
@@ -132,6 +133,12 @@ codecvt(
 
 	state_type state;
 
+	std::memset(
+		&state,
+		0,
+		sizeof(state_type)
+	);
+
 	Out *to = buf.data();
 
 	for(
@@ -180,7 +187,9 @@ codecvt(
 					)
 				);
 
-				buf.resize(buf.size() * 2);
+				buf.resize(
+					buf.size() * 2
+				);
 
 				to = buf.data() + diff;
 			}
