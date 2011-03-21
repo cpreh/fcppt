@@ -32,17 +32,28 @@ typename boost::enable_if<
 	T
 >::type
 abs_angle_to_rel(
-	T a
+	T _angle
 )
 {
-	a = mod(a, twopi<T>());
+	_angle =
+		math::mod(
+			_angle,
+			math::twopi<T>()
+		);
 
-	if (is_rel_angle(a))
-		return a;
+	if(
+		math::is_rel_angle(
+			_angle
+		)
+	)
+		return _angle;
 
-	return a > 0
-		? a - twopi<T>()
-		: a + twopi<T>();
+	return
+		_angle > 0
+		?
+			_angle - math::twopi<T>()
+		:
+			_angle + math::twopi<T>();
 }
 
 }

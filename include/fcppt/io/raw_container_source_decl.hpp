@@ -12,7 +12,6 @@
 #include <fcppt/nonassignable.hpp>
 #include <boost/iostreams/concepts.hpp>
 #include <ios>
-#include <streambuf>
 
 namespace fcppt
 {

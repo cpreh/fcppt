@@ -30,12 +30,12 @@ typename boost::enable_if<
 	bool
 >::type
 is_rel_angle(
-	T const a
+	T const _angle
 )
 {
 	return
-		a >= -pi<T>()
-		&& a <= pi<T>();
+		_angle >= -math::pi<T>()
+		&& _angle <= math::pi<T>();
 }
 
 }
