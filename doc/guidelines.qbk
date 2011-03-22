@@ -542,24 +542,30 @@ In this case, the output is guaranteed to be "0".
 
 [section Argument dependent lookup]
 
-C++ has the notion of argument dependent lookup which makes the
-well known 'Hello World' program work.
+C++ has the notion of argument dependent lookup which makes a
+(somewhat different than usual) 'Hello World' program work.
 
 ``
 #include <iostream>
 #include <ostream>
+#include <string>
 
 int main()
 {
-  std::cout << "Hello World\n";
+  std::cout << std::string("Hello World\n");
 }
 ``
 
 This might not be obvious, but where did `operator<<` come from?
 You might say: It's defined in namespace `std` of course, but
 why did it get chosen?
-The answer is: Because the type of one of its arguments (here `std::cout`)
-is declared in namespace `std` as well (namely `std::basic_ostream<char>`).
+The answer is: Because the type of one of its arguments
+(here both `std::cout` which is `std::basic_ostream<char>` and
+std::string which is `std::basic_string<char>`)
+are declared in namespace `std`
+(note, that we had to use `std::string` on the right hand side
+because `operator<<(char const *)` is a member of
+`std::basic_ostream`).
 
 For operator overloading this is what we usually want, but ADL
 applies to 'normal' functions as well.

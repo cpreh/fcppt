@@ -1,5 +1,15 @@
 [section Changes]
 
+[section Changes from 0.7 to 0.7.1]
+
+* Added `math::vector::hypersphere_to_cartesian`.
+* Added empty `log::location` constructor which was previously missing.
+* Added `fcppt::ref` which wraps `boost::ref` and `fcppt::reference_wrapper` which wraps `boost::reference_wrapper`, because `std::tr1::ref` has issues on VC++ 2010 SP1.
+* Added missing tr1 headers to `fcppt/tr1` (namely `array`, `cmath`, `complex`, `memory`, `regex`, `tuple`, `type_traits`, `unordered_map`, `unordered_set` and `utility`).
+* Fixed a bug in `src/codecvt.hpp`. This hopefully fixes `fcppt::widen`, `fcppt::narrow` and all the other functions that make use of them.
+
+[endsect]
+
 [section Changes from 0.6 to 0.7]
 
 [section Added functionality]
