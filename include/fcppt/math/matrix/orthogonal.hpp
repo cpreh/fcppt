@@ -9,6 +9,7 @@
 
 #include <fcppt/math/matrix/static.hpp>
 #include <fcppt/math/matrix/basic_impl.hpp>
+#include <fcppt/math/box/basic_fwd.hpp>
 
 namespace fcppt
 {
@@ -28,7 +29,8 @@ orthogonal(
 	T const bottom,
 	T const top,
 	T const near,
-	T const far)
+	T const far
+)
 {
 	T const
 		one(
@@ -44,8 +46,33 @@ orthogonal(
 			zero, static_cast<T>(2)/(top-bottom), zero, -(top + bottom)/(top-bottom),
 			zero, zero, static_cast<T>(-2)/(far-near), -(far + near)/(far-near),
 			zero, zero, zero, one
-	);
+		);
 }
+
+template<
+	typename T
+>
+typename static_<T, 4, 4>::type const
+orthogonal(
+	math::box::basic<
+		T,
+		2
+	> const &_box,
+	T const _near,
+	T const _far
+)
+{
+	return
+		matrix::orthogonal(
+			_box.left(),
+			_box.right(),
+			_box.bottom(),
+			_box.top(),
+			_near,
+			_far
+		);
+}
+
 }
 }
 }
