@@ -670,7 +670,6 @@ SET(
 	include/fcppt/make_shared_ptr.hpp
 	include/fcppt/make_strong_typedef.hpp
 	include/fcppt/make_unique_ptr.hpp
-	include/fcppt/math/abs_angle_to_rel.hpp
 	include/fcppt/math/almost_zero.hpp
 	include/fcppt/math/box/basic_decl.hpp
 	include/fcppt/math/box/basic_fwd.hpp
@@ -769,7 +768,6 @@ SET(
 	include/fcppt/math/is_negative.hpp
 	include/fcppt/math/is_power_of_2.hpp
 	include/fcppt/math/is_rational.hpp
-	include/fcppt/math/is_rel_angle.hpp
 	include/fcppt/math/is_static_size.hpp
 	include/fcppt/math/log.hpp
 	include/fcppt/math/machine_epsilon.hpp

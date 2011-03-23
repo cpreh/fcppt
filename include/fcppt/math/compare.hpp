@@ -26,14 +26,14 @@ template<
 inline
 bool
 compare(
-	T const &a,
-	T const &b
+	T const &_a,
+	T const &_b
 )
 {
 	return
 		detail::compare(
-			a,
-			b
+			_a,
+			_b
 		);
 }
 

@@ -24,14 +24,14 @@ template<
 >
 T
 diff(
-	T const &a,
-	T const &b
+	T const &_a,
+	T const &_b
 )
 {
 	return
 		detail::diff(
-			a,
-			b
+			_a,
+			_b
 		);
 }
 

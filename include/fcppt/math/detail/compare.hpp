@@ -29,11 +29,11 @@ typename boost::disable_if<
 	bool
 >::type
 compare(
-	T const &a,
-	T const &b
+	T const &_a,
+	T const &_b
 )
 {
-	return a == b;
+	return _a == _b;
 }
 
 template<
@@ -47,11 +47,15 @@ typename boost::enable_if<
 	bool
 >::type
 compare(
-	T const &a,
-	T const &b
+	T const &_a,
+	T const &_b
 )
 {
-	return math::nearly_equals(a, b);
+	return
+		math::nearly_equals(
+			_a,
+			_b
+		);
 }
 
 }
