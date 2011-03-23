@@ -104,6 +104,10 @@ IF (CMAKE_COMPILER_IS_GNUCXX OR COMPILER_IS_CLANGPP)
 		"-Wsign-promo -Wstrict-aliasing=1 -Wold-style-cast"
 	)
 
+	IF (CMAKE_COMPILER_IS_GNUCXX)
+		ADD_DEFINITIONS ("-Wsign-conversion")
+	ENDIF()
+
 	IF(ENABLE_DEBUG_WARNINGS)
 		SET (CMAKE_CXX_FLAGS_DEBUG ${CMAKE_CXX_FLAGS_DEBUG}" -Wpadded -Weffc++")
 	ENDIF()
