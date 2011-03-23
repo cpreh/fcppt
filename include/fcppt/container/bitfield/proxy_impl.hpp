@@ -64,9 +64,9 @@ fcppt::container::bitfield::proxy<StoredType>::operator=(
 		);
 
 	if(_value)
-		array_[index] |= (1 << bit);
+		array_[index] |= (1u << bit);
         else
-		array_[index] &= ~(1 << bit);
+		array_[index] &= ~(1u << bit);
 
 	return *this;
 }
@@ -80,9 +80,9 @@ fcppt::container::bitfield::value_type() const
 	return
 		(
 			array_[array_offset(pos_)]
-			& (1 << (bit_offset(pos_)))
+			& (1u << (bit_offset(pos_)))
 		)
-		!= 0;
+		!= 0u;
 }
 
 #endif
