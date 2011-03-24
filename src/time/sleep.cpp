@@ -8,7 +8,7 @@
 #include <fcppt/time/sleep_interrupted.hpp>
 #include <fcppt/chrono/duration_impl.hpp>
 #include <fcppt/truncation_check_cast.hpp>
-#include <fcppt/config.hpp>
+#include <fcppt/platform.hpp>
 #if defined(FCPPT_WINDOWS_PLATFORM)
 #define WIN32_LEAN_AND_MEAN
 #include <windows.h>

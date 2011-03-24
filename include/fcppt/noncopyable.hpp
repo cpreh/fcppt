@@ -7,21 +7,11 @@
 #ifndef FCPPT_NONCOPYABLE_HPP_INCLUDED
 #define FCPPT_NONCOPYABLE_HPP_INCLUDED
 
-#include <fcppt/config.hpp>
-
-#ifdef FCPPT_HAVE_DEFAULTED_AND_DELETED_FUNCTIONS
-
-#define FCPPT_NONCOPYABLE(classname) \
-classname(classname const &) = delete; \
-classname &operator=(classname const &) = delete
-
-#else
-
-#define FCPPT_NONCOPYABLE(classname) \
+#define FCPPT_NONCOPYABLE(\
+	classname\
+) \
 private: \
 classname(classname const &); \
 classname &operator=(classname const &)
-
-#endif
 
 #endif

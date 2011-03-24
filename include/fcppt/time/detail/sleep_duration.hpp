@@ -7,7 +7,7 @@
 #ifndef FCPPT_TIME_DETAIL_SLEEP_DURATION_HPP_INCLUDED
 #define FCPPT_TIME_DETAIL_SLEEP_DURATION_HPP_INCLUDED
 
-#include <fcppt/config.hpp>
+#include <fcppt/platform.hpp>
 #if defined(FCPPT_WINDOWS_PLATFORM)
 #include <fcppt/chrono/milliseconds.hpp>
 #elif defined(FCPPT_POSIX_PLATFORM)

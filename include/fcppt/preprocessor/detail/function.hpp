@@ -10,7 +10,7 @@
 #include <fcppt/config.hpp>
 #include <fcppt/text.hpp>
 
-#ifdef FCPPT_HAS_PRETTY_FUNCTION
+#ifdef FCPPT_HAVE_GCC_PRETTY_FUNCTION
 #define FCPPT_PP_DETAIL_FUNCTION FCPPT_TEXT(__PRETTY_FUNCTION__)
 #else
 #define FCPPT_PP_DETAIL_FUNCTION FCPPT_TEXT("")

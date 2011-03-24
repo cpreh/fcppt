@@ -6,7 +6,7 @@
 
 #include <fcppt/filesystem/is_executable.hpp>
 #include <fcppt/filesystem/config.hpp>
-#include <fcppt/config.hpp>
+#include <fcppt/platform.hpp>
 #if defined(FCPPT_POSIX_PLATFORM)
 #include <fcppt/filesystem/exception.hpp>
 #include <fcppt/error/strerrno.hpp>

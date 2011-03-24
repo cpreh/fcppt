@@ -11,7 +11,7 @@
 #else
 #include <fcppt/filesystem/exception.hpp>
 #include <fcppt/text.hpp>
-#include <fcppt/config.hpp>
+#include <fcppt/platform.hpp>
 #ifdef FCPPT_POSIX_PLATFORM
 #include <fcppt/container/raw_vector_impl.hpp>
 #include <fcppt/error/strerrno.hpp>

@@ -6,7 +6,8 @@
 
 #include <fcppt/type_name.hpp>
 #include <fcppt/from_std_string.hpp>
-#ifdef FCPPT_HAS_GNU_DEMANGLE
+#include <fcppt/config.hpp>
+#ifdef FCPPT_HAVE_GCC_DEMANGLE
 #include <cxxabi.h>
 #include <fcppt/scoped_ptr.hpp>
 #include <fcppt/c_deleter.hpp>
@@ -17,7 +18,7 @@ fcppt::type_name(
 	fcppt::type_info const &_info
 )
 {
-#ifdef FCPPT_HAS_GNU_DEMANGLE
+#ifdef FCPPT_HAVE_GCC_DEMANGLE
 	int status;
 
 	fcppt::scoped_ptr<

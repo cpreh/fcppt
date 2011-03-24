@@ -7,19 +7,10 @@
 #ifndef FCPPT_NONASSIGNABLE_HPP_INCLUDED
 #define FCPPT_NONASSIGNABLE_HPP_INCLUDED
 
-#include <fcppt/config.hpp>
-
-#ifdef FCPPT_HAVE_DEFAULTED_AND_DELETED_FUNCTIONS
-
-#define FCPPT_NONASSIGNABLE(classname) \
-classname &operator=(classname const &) = delete
-
-#else
-
-#define FCPPT_NONASSIGNABLE(classname) \
+#define FCPPT_NONASSIGNABLE(\
+	classname\
+) \
 private: \
 classname &operator=(classname const &)
-
-#endif
 
 #endif
