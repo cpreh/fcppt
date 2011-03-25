@@ -4,11 +4,10 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_TR1_UNORDERED_SET_HPP_INCLUDED
-#define FCPPT_TR1_UNORDERED_SET_HPP_INCLUDED
+#ifndef FCPPT_ASSIGN_ASSIGN_HPP_INCLUDED
+#define FCPPT_ASSIGN_ASSIGN_HPP_INCLUDED
 
-#include <fcppt/tr1/detail/make_header.hpp>
-
-#include FCPPT_TR1_DETAIL_MAKE_HEADER(unordered_set)
+#include <fcppt/assign/make_array.hpp>
+#include <fcppt/assign/make_container.hpp>
 
 #endif
