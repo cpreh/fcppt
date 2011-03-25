@@ -469,6 +469,7 @@ SET(
 	include/fcppt/filesystem/readlink.hpp
 	include/fcppt/filesystem/recursive_directory_iterator.hpp
 	include/fcppt/filesystem/remove.hpp
+	include/fcppt/filesystem/remove_extension.hpp
 	include/fcppt/filesystem/remove_filename.hpp
 	include/fcppt/filesystem/replace_extension.hpp
 	include/fcppt/filesystem/skip_directories.hpp
@@ -837,6 +838,7 @@ SET(
 	include/fcppt/optional_decl.hpp
 	include/fcppt/optional_fwd.hpp
 	include/fcppt/optional_impl.hpp
+	include/fcppt/platform.hpp
 	include/fcppt/polymorphic_pointer_cast.hpp
 	include/fcppt/preprocessor/detail/enum_params_forward_m.hpp
 	include/fcppt/preprocessor/detail/function.hpp
@@ -1141,6 +1143,7 @@ SET(
 	src/filesystem/path_to_string.cpp
 	src/filesystem/readlink.cpp
 	src/filesystem/remove.cpp
+	src/filesystem/remove_extension.cpp
 	src/filesystem/remove_filename.cpp
 	src/filesystem/replace_extension.cpp
 	src/filesystem/skip_directories.cpp
