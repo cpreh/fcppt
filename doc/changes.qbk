@@ -1,5 +1,40 @@
 [section Changes]
 
+[section Changes from 0.7.1 to 0.8]
+
+[section Added functionality]
+
+* Added `math::matrix::orthogonal` with a `math::box` parameter.
+* Added `FcpptCMakeUtils.cmake` that helps implement some of our other projects as well.
+* Added `filesystem::remove_extension`.
+* Added convenience headers for every subdirectory, e.g. `<fcppt/math/math.hpp>'.
+
+[endsect]
+
+[section Changed functionality]
+
+* Removed `EXTRA_CMAKE_MODULE_PATH`. Set `CMAKE_MODULE_PATH` directly instead.
+* Moved the platform macros out of `<fcppt/config.hpp>` into `<fcppt/platform.hpp>`.
+
+[endsect]
+
+[section Removed functionality]
+
+* Removed `math::abs_angle_to_rel` because it was broken and not really useful.
+* Removed `math::is_rel_angle` as well.
+
+[endsect]
+
+[section Bugfixes]
+
+* Fixed some warnings from `-Wsign-conversion`.
+
+[endsect]
+
+[endsect]
+
+[section Older changes]
+
 [section Changes from 0.7 to 0.7.1]
 
 * Added `math::vector::hypersphere_to_cartesian`.
@@ -44,8 +79,6 @@
 [endsect]
 
 [endsect]
-
-[section Older changes]
 
 [section Changes from 0.5 to 0.6]
 

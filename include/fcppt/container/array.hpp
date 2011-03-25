@@ -8,6 +8,7 @@
 #define FCPPT_CONTAINER_ARRAY_HPP_INCLUDED
 
 #include <fcppt/container/array_fwd.hpp>
+#include <fcppt/container/array_comparison.hpp>
 #include <fcppt/container/array_decl.hpp>
 #include <fcppt/container/array_impl.hpp>
 

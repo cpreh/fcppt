@@ -91,3 +91,52 @@ BOOST_AUTO_TEST_CASE(
 		== array.data_end()
 	);
 }
+
+BOOST_AUTO_TEST_CASE(
+	array_compare
+)
+{
+	typedef fcppt::container::array<
+		int,
+		3
+	> int3_array;
+
+	int3_array const array1 =
+	{{
+		1, 2, 3
+	}};
+
+	int3_array const array2 =
+	{{
+		1, 2, 3
+	}};
+
+	int3_array const array3 =
+	{{
+		2, 3, 4
+	}};
+
+	BOOST_CHECK(
+		array1 == array2
+	);
+
+	BOOST_CHECK(
+		array1 != array3
+	);
+
+	BOOST_CHECK(
+		array1 < array3
+	);
+
+	BOOST_CHECK(
+		array3 > array1
+	);
+
+	BOOST_CHECK(
+		array1 <= array2
+	);
+
+	BOOST_CHECK(
+		array1 >= array2
+	);
+}

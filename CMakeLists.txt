@@ -313,6 +313,7 @@ SET(
 	include/fcppt/com_deleter.hpp
 	include/fcppt/const_pointer_cast.hpp
 	include/fcppt/container/array.hpp
+	include/fcppt/container/array_comparison.hpp
 	include/fcppt/container/array_decl.hpp
 	include/fcppt/container/array_fwd.hpp
 	include/fcppt/container/array_impl.hpp
