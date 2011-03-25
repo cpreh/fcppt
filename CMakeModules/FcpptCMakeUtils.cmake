@@ -105,7 +105,7 @@ MACRO(
 	)
 		GET_FILENAME_COMPONENT(
 			REL_PATH
-			${CURFILE}
+			"${CURFILE}"
 			PATH
 		)
 
