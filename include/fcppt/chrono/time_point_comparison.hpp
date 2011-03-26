@@ -8,6 +8,7 @@
 #define FCPPT_CHRONO_TIME_POINT_COMPARISON_HPP_INCLUDED
 
 #include <fcppt/chrono/time_point_impl.hpp>
+#include <fcppt/chrono/duration_comparison.hpp>
 
 namespace fcppt
 {
@@ -24,16 +25,16 @@ operator ==(
 	time_point<
 		Clock,
 		Duration1
-	> const &lhs,
+	> const &_lhs,
 	time_point<
 		Clock,
 		Duration2
-	> const &rhs
+	> const &_rhs
 )
 {
 	return
-		lhs.time_since_epoch()
-		== rhs.time_since_epoch();
+		_lhs.time_since_epoch()
+		== _rhs.time_since_epoch();
 }
 
 template<
@@ -46,15 +47,15 @@ operator !=(
 	time_point<
 		Clock,
 		Duration1
-	> const &lhs,
+	> const &_lhs,
 	time_point<
 		Clock,
 		Duration2
-	> const &rhs
+	> const &_rhs
 )
 {
 	return
-		!(lhs == rhs);
+		!(_lhs == _rhs);
 }
 
 template<
@@ -67,16 +68,16 @@ operator <(
 	time_point<
 		Clock,
 		Duration1
-	> const &lhs,
+	> const &_lhs,
 	time_point<
 		Clock,
 		Duration2
-	> const &rhs
+	> const &_rhs
 )
 {
 	return
-		lhs.time_since_epoch()
-		< rhs.time_since_epoch();
+		_lhs.time_since_epoch()
+		< _rhs.time_since_epoch();
 }
 
 template<
@@ -89,15 +90,15 @@ operator <=(
 	time_point<
 		Clock,
 		Duration1
-	> const &lhs,
+	> const &_lhs,
 	time_point<
 		Clock,
 		Duration2
-	> const &rhs
+	> const &_rhs
 )
 {
 	return
-		!(rhs < lhs);
+		!(_rhs < _lhs);
 }
 
 template<
@@ -110,15 +111,15 @@ operator >(
 	time_point<
 		Clock,
 		Duration1
-	> const &lhs,
+	> const &_lhs,
 	time_point<
 		Clock,
 		Duration2
-	> const &rhs
+	> const &_rhs
 )
 {
 	return
-		rhs < lhs;
+		_rhs < _lhs;
 }
 
 template<
@@ -131,15 +132,15 @@ operator >=(
 	time_point<
 		Clock,
 		Duration1
-	> const &lhs,
+	> const &_lhs,
 	time_point<
 		Clock,
 		Duration2
-	> const &rhs
+	> const &_rhs
 )
 {
 	return
-		!(lhs < rhs);
+		!(_lhs < _rhs);
 }
 
 }

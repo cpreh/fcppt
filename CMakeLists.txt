@@ -267,6 +267,14 @@ SET(
 	include/fcppt/bad_truncation_check_cast.hpp
 	include/fcppt/c_deleter.hpp
 	include/fcppt/char_type.hpp
+	include/fcppt/chrono/asio/clock.hpp
+	include/fcppt/chrono/asio/convert_duration.hpp
+	include/fcppt/chrono/asio/convert_time_point.hpp
+	include/fcppt/chrono/asio/deadline_timer.hpp
+	include/fcppt/chrono/asio/duration.hpp
+	include/fcppt/chrono/asio/tag.hpp
+	include/fcppt/chrono/asio/time_point.hpp
+	include/fcppt/chrono/asio/time_traits.hpp
 	include/fcppt/chrono/chrono.hpp
 	include/fcppt/chrono/clock_failure.hpp
 	include/fcppt/chrono/common_type.hpp
@@ -1140,6 +1148,7 @@ SET(
 	include/fcppt/weak_ptr_impl.hpp
 	include/fcppt/widen.hpp
 	include/fcppt/workarounds.hpp
+	src/chrono/asio/time_traits.cpp
 	src/chrono/clock_gettime_impl.hpp
 	src/chrono/high_resolution_clock.cpp
 	src/chrono/mach_time_impl.hpp

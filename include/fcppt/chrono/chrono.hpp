@@ -7,6 +7,7 @@
 #ifndef FCPPT_CHRONO_CHRONO_HPP_INCLUDED
 #define FCPPT_CHRONO_CHRONO_HPP_INCLUDED
 
+#include <fcppt/chrono/asio/asio.hpp>
 #include <fcppt/chrono/clock_failure.hpp>
 #include <fcppt/chrono/common_type.hpp>
 #include <fcppt/chrono/convert/convert.hpp>
