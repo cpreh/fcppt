@@ -9,6 +9,7 @@
 
 #include <fcppt/chrono/asio/clock.hpp>
 #include <fcppt/chrono/asio/tag.hpp>
+#include <fcppt/symbol.hpp>
 #include <boost/asio/time_traits.hpp>
 #include <boost/date_time/posix_time/posix_time_duration.hpp>
 
@@ -28,27 +29,32 @@ struct time_traits<
 	
 	typedef clock::duration duration_type;
 
+	FCPPT_SYMBOL
 	static time_type const
 	now();
 
+	FCPPT_SYMBOL
 	static time_type const
 	add(
 		time_type const &,
 		duration_type const &
 	);
 
+	FCPPT_SYMBOL
 	static duration_type const
 	subtract(
 		time_type const &,
 		time_type const &
 	);
 
+	FCPPT_SYMBOL
 	static bool
 	less_than(
 		time_type const &,
 		time_type const &
 	);
 
+	FCPPT_SYMBOL
 	static boost::posix_time::time_duration const
 	to_posix_duration(
 		duration_type const &
