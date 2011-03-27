@@ -38,6 +38,9 @@ public:
 	array<T,N+1> operator()(T const &);
 
 	operator container_type() const;
+
+	container_type const &
+	container() const;
 private:
 	friend class array<T,N+1>;
 

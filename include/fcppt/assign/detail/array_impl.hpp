@@ -63,4 +63,15 @@ fcppt::assign::detail::array<T,N>::operator container_type() const
 	return a;
 }
 
+template<
+	class T,
+	std::size_t N
+>
+typename
+fcppt::assign::detail::array<T,N>::container_type const &
+fcppt::assign::detail::array<T,N>::container() const
+{
+	return a;
+}
+
 #endif
