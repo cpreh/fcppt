@@ -56,39 +56,15 @@ public:
 	swap(
 		strong_typedef &
 	);
+
+	strong_typedef &
+	operator++();
+
+	strong_typedef &
+	operator--();
 private:
 	T value_;
 };
-
-template<
-	typename T,
-	typename Tag
->
-bool
-operator<(
-	strong_typedef<T, Tag> const &,
-	strong_typedef<T, Tag> const &
-);
-
-template<
-	typename T,
-	typename Tag
->
-bool
-operator==(
-	strong_typedef<T, Tag> const &,
-	strong_typedef<T, Tag> const &
-);
-
-template<
-	typename T,
-	typename Tag
->
-bool
-operator!=(
-	strong_typedef<T, Tag> const &,
-	strong_typedef<T, Tag> const &
-);
 
 template<
 	typename T,

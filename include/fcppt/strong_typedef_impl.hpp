@@ -129,60 +129,36 @@ template<
 	typename T,
 	typename Tag
 >
-bool
-fcppt::operator<(
-	strong_typedef<
-		T,
-		Tag
-	> const &_a,
-	strong_typedef<
-		T,
-		Tag
-	> const &_b
-)
+fcppt::strong_typedef<
+	T,
+	Tag
+> &
+fcppt::strong_typedef<
+	T,
+	Tag
+>::operator++()
 {
-	return
-		_a.get() < _b.get();
+	++value_;
+
+	return *this;
 }
 
 template<
 	typename T,
 	typename Tag
 >
-bool
-fcppt::operator==(
-	strong_typedef<
-		T,
-		Tag
-	> const &_a,
-	strong_typedef<
-		T,
-		Tag
-	> const &_b
-)
+fcppt::strong_typedef<
+	T,
+	Tag
+> &
+fcppt::strong_typedef<
+	T,
+	Tag
+>::operator--()
 {
-	return
-		_a.get() == _b.get();
-}
+	--value_;
 
-template<
-	typename T,
-	typename Tag
->
-bool
-fcppt::operator!=(
-	strong_typedef<
-		T,
-		Tag
-	> const &_a,
-	strong_typedef<
-		T,
-		Tag
-	> const &_b
-)
-{
-	return
-		!(_a == _b);
+	return *this;
 }
 
 template<
