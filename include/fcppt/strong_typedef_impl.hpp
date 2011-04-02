@@ -165,6 +165,54 @@ template<
 	typename T,
 	typename Tag
 >
+fcppt::strong_typedef<
+	T,
+	Tag
+>
+fcppt::strong_typedef<
+	T,
+	Tag
+>::operator++(
+	int
+)
+{
+	strong_typedef const temp(
+		*this
+	);
+
+	++value_;
+
+	return temp;
+}
+
+template<
+	typename T,
+	typename Tag
+>
+fcppt::strong_typedef<
+	T,
+	Tag
+>
+fcppt::strong_typedef<
+	T,
+	Tag
+>::operator--(
+	int
+)
+{
+	strong_typedef const temp(
+		*this
+	);
+
+	--value_;
+
+	return temp;
+}
+
+template<
+	typename T,
+	typename Tag
+>
 void
 fcppt::swap(
 	strong_typedef<

@@ -62,6 +62,12 @@ public:
 
 	strong_typedef &
 	operator--();
+
+	strong_typedef
+	operator++(int);
+
+	strong_typedef
+	operator--(int);
 private:
 	T value_;
 };
