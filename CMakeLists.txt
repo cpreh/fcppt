@@ -267,11 +267,14 @@ SET(
 	include/fcppt/bad_truncation_check_cast.hpp
 	include/fcppt/c_deleter.hpp
 	include/fcppt/char_type.hpp
+	include/fcppt/chrono/asio/asio.hpp
 	include/fcppt/chrono/asio/clock.hpp
 	include/fcppt/chrono/asio/convert_duration.hpp
 	include/fcppt/chrono/asio/convert_time_point.hpp
 	include/fcppt/chrono/asio/deadline_timer.hpp
 	include/fcppt/chrono/asio/duration.hpp
+	include/fcppt/chrono/asio/expires_at_any.hpp
+	include/fcppt/chrono/asio/expires_from_now_any.hpp
 	include/fcppt/chrono/asio/tag.hpp
 	include/fcppt/chrono/asio/time_point.hpp
 	include/fcppt/chrono/asio/time_traits.hpp
@@ -473,6 +476,8 @@ SET(
 	include/fcppt/filesystem/exists.hpp
 	include/fcppt/filesystem/extension.hpp
 	include/fcppt/filesystem/extension_without_dot.hpp
+	include/fcppt/filesystem/file_size.hpp
+	include/fcppt/filesystem/file_to_string.hpp
 	include/fcppt/filesystem/filesystem.hpp
 	include/fcppt/filesystem/first_file.hpp
 	include/fcppt/filesystem/impl/create_directory_failed.hpp
@@ -1022,6 +1027,7 @@ SET(
 	include/fcppt/static_pointer_cast.hpp
 	include/fcppt/string.hpp
 	include/fcppt/strong_typedef.hpp
+	include/fcppt/strong_typedef_comparison.hpp
 	include/fcppt/strong_typedef_decl.hpp
 	include/fcppt/strong_typedef_fwd.hpp
 	include/fcppt/strong_typedef_impl.hpp
@@ -1174,6 +1180,8 @@ SET(
 	src/filesystem/exists.cpp
 	src/filesystem/extension.cpp
 	src/filesystem/extension_without_dot.cpp
+	src/filesystem/file_size.cpp
+	src/filesystem/file_to_string.cpp
 	src/filesystem/first_file.cpp
 	src/filesystem/is_directory.cpp
 	src/filesystem/is_executable.cpp

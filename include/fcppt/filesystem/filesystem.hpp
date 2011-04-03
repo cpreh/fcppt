@@ -17,6 +17,8 @@
 #include <fcppt/filesystem/exists.hpp>
 #include <fcppt/filesystem/extension.hpp>
 #include <fcppt/filesystem/extension_without_dot.hpp>
+#include <fcppt/filesystem/file_size.hpp>
+#include <fcppt/filesystem/file_to_string.hpp>
 #include <fcppt/filesystem/first_file.hpp>
 #include <fcppt/filesystem/is_directory.hpp>
 #include <fcppt/filesystem/is_executable.hpp>
