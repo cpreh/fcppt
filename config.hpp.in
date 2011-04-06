@@ -27,7 +27,8 @@
 // gcc capabilities
 #cmakedefine FCPPT_HAVE_GCC_DEMANGLE
 #cmakedefine FCPPT_HAVE_GCC_DIAGNOSTIC
-#cmakedefine FCPPT_HAVE_GCC_VISIBILITY
+#cmakedefine FCPPT_HAVE_GCC_PRAGMA_MESSAGE
 #cmakedefine FCPPT_HAVE_GCC_PRETTY_FUNCTION
+#cmakedefine FCPPT_HAVE_GCC_VISIBILITY
 
 #endif
