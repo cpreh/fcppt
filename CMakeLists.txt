@@ -1027,6 +1027,7 @@ SET(
 	include/fcppt/static_pointer_cast.hpp
 	include/fcppt/string.hpp
 	include/fcppt/strong_typedef.hpp
+	include/fcppt/strong_typedef_arithmetic.hpp
 	include/fcppt/strong_typedef_comparison.hpp
 	include/fcppt/strong_typedef_decl.hpp
 	include/fcppt/strong_typedef_fwd.hpp
