@@ -20,6 +20,35 @@ strong_typedef<
 	T,
 	Tag
 >
+operator-(
+	strong_typedef<
+		T,
+		Tag
+	> const &_a,
+	strong_typedef<
+		T,
+		Tag
+	> const &_b
+)
+{
+	return
+		fcppt::strong_typedef<
+			T,
+			Tag
+		>(
+			_a.get()
+			- _b.get()
+		);
+}
+
+template<
+	typename T,
+	typename Tag
+>
+strong_typedef<
+	T,
+	Tag
+>
 operator/(
 	strong_typedef<
 		T,
