@@ -120,13 +120,19 @@ void
 fcppt::cyclic_iterator<ContainerIterator>::decrement()
 {
 	if(
-		begin_ != end_
-		&& it_ == begin_
+		begin_ == end_
+	)
+		return;
+
+	if(
+		it_ == begin_
 	)
 		it_ =
 			boost::prior(
 				end_
 			);
+	else
+		--it_;
 }
 
 template<

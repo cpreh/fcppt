@@ -7,6 +7,7 @@
 #include <fcppt/cyclic_iterator.hpp>
 #include <fcppt/container/array.hpp>
 #include <boost/test/unit_test.hpp>
+#include <boost/next_prior.hpp>
 #include <vector>
 
 BOOST_AUTO_TEST_CASE(
@@ -61,6 +62,25 @@ BOOST_AUTO_TEST_CASE(
 	BOOST_REQUIRE(
 		test.get()
 		== array.begin()
+	);
+
+	--test;
+
+	BOOST_REQUIRE(
+		*test == 3
+	);
+
+	BOOST_REQUIRE(
+		test.get()
+		== boost::prior(
+			array.end()
+		)
+	);
+
+	--test;
+
+	BOOST_REQUIRE(
+		*test == 2
 	);
 }
 

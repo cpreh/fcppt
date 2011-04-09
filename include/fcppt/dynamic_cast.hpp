@@ -67,32 +67,6 @@ template<
 	typename Src
 >
 typename boost::enable_if<
-	boost::is_reference<
-		Dest
-	>,
-	Dest
->::type
-dynamic_cast_(
-	Src const &src
-)
-{
-	return
-		fcppt::dynamic_cast_<
-			Dest
-		>(
-			const_cast<
-				Src &
-			>(
-				src
-			)
-		);
-}
-
-template<
-	typename Dest,
-	typename Src
->
-typename boost::enable_if<
 	boost::is_pointer<
 		Dest
 	>,
