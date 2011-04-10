@@ -128,6 +128,10 @@ a type that gets two template parameters:
 * The wrapped type
 * A unique type (just for typedef purposes)
 
+`fcppt::strong_typedef` overloads almost all operators except
+the logical, member access, pointer, function call and subscript operators.
+Wrapping these is not straightforward, or even dangerous in case of `&&` and `||`.
+
 [import ../examples/strongtypedef.cpp]
 
 Note that an `fcppt::strong_typedef` also doesn't convert to its underlying

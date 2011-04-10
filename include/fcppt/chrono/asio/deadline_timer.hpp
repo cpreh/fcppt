@@ -9,6 +9,8 @@
 
 #include <fcppt/chrono/asio/tag.hpp>
 #include <fcppt/chrono/asio/time_traits.hpp>
+#include <fcppt/chrono/duration_impl.hpp>
+#include <fcppt/chrono/time_point_impl.hpp>
 #include <boost/asio/basic_deadline_timer.hpp>
 
 namespace fcppt
