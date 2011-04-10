@@ -15,8 +15,14 @@ namespace fcppt
 /// Used to create strong typedefs.
 /* The first template parameter is the type to be wrapped.
  * The second template parameter should be a unique tag type.
- * strong_typedef behaves like the wrapped type excpect that
- * its constructor is explicit.
+ * strong_typedef has an explicit construct and 
+ * explicit get member functions.
+ * Almost all operators are overloaded and found in their
+ * respective header.
+ * Currently \em not overloaded are:
+ * - The logical operators, that include bool operator!, operator && and operator ||
+ * - The member and pointer operators: operator[], operator*, operator&, operator-> and operator->*
+ * - operator(), operator, (sequence),  operator new, operator new[], operator delete and operator delete[]
 */
 template<
 	typename T,
@@ -56,18 +62,6 @@ public:
 	swap(
 		strong_typedef &
 	);
-
-	strong_typedef &
-	operator++();
-
-	strong_typedef &
-	operator--();
-
-	strong_typedef
-	operator++(int);
-
-	strong_typedef
-	operator--(int);
 private:
 	T value_;
 };

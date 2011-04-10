@@ -432,7 +432,11 @@ SET(
 	include/fcppt/detail/make_shared_wrapper.hpp
 	include/fcppt/detail/make_shared_wrapper_fwd.hpp
 	include/fcppt/detail/process_assert.hpp
+	include/fcppt/detail/strong_typedef_assignment_operator.hpp
+	include/fcppt/detail/strong_typedef_binary_operator.hpp
 	include/fcppt/detail/strong_typedef_cast.hpp
+	include/fcppt/detail/strong_typedef_comparison_operator.hpp
+	include/fcppt/detail/strong_typedef_unary_operator.hpp
 	include/fcppt/detail_unique_ptr/detail_unique_ptr.hpp
 	include/fcppt/detail_unique_ptr/one_two.hpp
 	include/fcppt/detail_unique_ptr/pointer_type.hpp
@@ -1028,6 +1032,8 @@ SET(
 	include/fcppt/string.hpp
 	include/fcppt/strong_typedef.hpp
 	include/fcppt/strong_typedef_arithmetic.hpp
+	include/fcppt/strong_typedef_assignment.hpp
+	include/fcppt/strong_typedef_bitwise.hpp
 	include/fcppt/strong_typedef_comparison.hpp
 	include/fcppt/strong_typedef_decl.hpp
 	include/fcppt/strong_typedef_fwd.hpp

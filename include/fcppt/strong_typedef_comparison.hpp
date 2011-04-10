@@ -7,130 +7,18 @@
 #ifndef FCPPT_STRONG_TYPEDEF_COMPARISON_HPP_INCLUDED
 #define FCPPT_STRONG_TYPEDEF_COMPARISON_HPP_INCLUDED
 
+#include <fcppt/detail/strong_typedef_comparison_operator.hpp>
 #include <fcppt/strong_typedef_impl.hpp>
 
 namespace fcppt
 {
 
-template<
-	typename T,
-	typename Tag
->
-bool
-operator<(
-	strong_typedef<
-		T,
-		Tag
-	> const &_a,
-	strong_typedef<
-		T,
-		Tag
-	> const &_b
-)
-{
-	return
-		_a.get() < _b.get();
-}
-
-template<
-	typename T,
-	typename Tag
->
-bool
-operator<=(
-	strong_typedef<
-		T,
-		Tag
-	> const &_a,
-	strong_typedef<
-		T,
-		Tag
-	> const &_b
-)
-{
-	return
-		_a.get() <= _b.get();
-}
-
-template<
-	typename T,
-	typename Tag
->
-bool
-operator>(
-	strong_typedef<
-		T,
-		Tag
-	> const &_a,
-	strong_typedef<
-		T,
-		Tag
-	> const &_b
-)
-{
-	return
-		_a.get() > _b.get();
-}
-
-template<
-	typename T,
-	typename Tag
->
-bool
-operator>=(
-	strong_typedef<
-		T,
-		Tag
-	> const &_a,
-	strong_typedef<
-		T,
-		Tag
-	> const &_b
-)
-{
-	return
-		_a.get() >= _b.get();
-}
-
-template<
-	typename T,
-	typename Tag
->
-bool
-operator==(
-	strong_typedef<
-		T,
-		Tag
-	> const &_a,
-	strong_typedef<
-		T,
-		Tag
-	> const &_b
-)
-{
-	return
-		_a.get() == _b.get();
-}
-
-template<
-	typename T,
-	typename Tag
->
-bool
-operator!=(
-	strong_typedef<
-		T,
-		Tag
-	> const &_a,
-	strong_typedef<
-		T,
-		Tag
-	> const &_b
-)
-{
-	return
-		_a.get() != _b.get();
-}
+FCPPT_DETAIL_STRONG_TYPEDEF_COMPARISON_OPERATOR(<)
+FCPPT_DETAIL_STRONG_TYPEDEF_COMPARISON_OPERATOR(<=)
+FCPPT_DETAIL_STRONG_TYPEDEF_COMPARISON_OPERATOR(>)
+FCPPT_DETAIL_STRONG_TYPEDEF_COMPARISON_OPERATOR(>=)
+FCPPT_DETAIL_STRONG_TYPEDEF_COMPARISON_OPERATOR(==)
+FCPPT_DETAIL_STRONG_TYPEDEF_COMPARISON_OPERATOR(!=)
 
 }
 

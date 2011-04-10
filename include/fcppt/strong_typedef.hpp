@@ -9,6 +9,8 @@
 
 #include <fcppt/make_strong_typedef.hpp>
 #include <fcppt/strong_typedef_arithmetic.hpp>
+#include <fcppt/strong_typedef_assignment.hpp>
+#include <fcppt/strong_typedef_bitwise.hpp>
 #include <fcppt/strong_typedef_comparison.hpp>
 #include <fcppt/strong_typedef_impl.hpp>
 #include <fcppt/strong_typedef_input.hpp>
