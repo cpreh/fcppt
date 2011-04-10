@@ -150,7 +150,7 @@ If you want to use this clock as a timer instead, check if `high_resolution_cloc
 
 [endsect]
 
-[section asio support]
+[section Asio Support]
 
 `boost::asio` needs various timing functionalities and by default it uses `boost.date_time`.
 Fortunately, asio uses a template called `boost::asio::time_traits` that can be specialized
@@ -161,6 +161,8 @@ Furthermore, fcppt provides a typedef `fcppt::chrono::asio::deadline_timer` and 
 helper functions to call its member functions with arbitrary durations or time_points.
 
 [import ../examples/chrono/asio.cpp]
+
+[chronoasio]
 
 [endsect]
 
