@@ -20,9 +20,11 @@ template
 class homogenous_pair
 {
 public:
-	typedef 
-	T 
-	value_type;
+	typedef T value_type;
+
+	typedef T first_type;
+
+	typedef T second_type;
 
 	value_type first;
 	value_type second;
