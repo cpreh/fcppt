@@ -8,6 +8,12 @@
 * Added `FcpptCMakeUtils.cmake` that helps implement some of our other projects as well.
 * Added `filesystem::remove_extension`.
 * Added convenience headers for every subdirectory, e.g. `<fcppt/math/math.hpp>'.
+* Added comparison operators for `container::array`.
+* Added `chrono::asio::deadline_timer` and helper functions to work with chrono and `boost::asio::deadline_timer` directly.
+* Added `container()` function to `container::make_array` in addition to the implicit conversion.
+* Added a lot of operators to `strong_typedef`.
+* Added `filesystem::file_size` and `filesystem::file_to_string`.
+* Added `first_type` and `second_type` typedefs to `homogenous_pair` so it behaves more like `std::pair`.
 
 [endsect]
 
@@ -28,6 +34,9 @@
 [section Bugfixes]
 
 * Fixed some warnings from `-Wsign-conversion`.
+* Fixed support for gcc's `pragma message`.
+* Removed useless overload of `fcppt::dynamic_cast_`.
+* Fixed `operator--` of `cyclic_iterator`.
 
 [endsect]
 
