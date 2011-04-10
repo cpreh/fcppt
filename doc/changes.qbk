@@ -7,7 +7,7 @@
 * Added `math::matrix::orthogonal` with a `math::box` parameter.
 * Added `FcpptCMakeUtils.cmake` that helps implement some of our other projects as well.
 * Added `filesystem::remove_extension`.
-* Added convenience headers for every subdirectory, e.g. `<fcppt/math/math.hpp>'.
+* Added convenience headers for every subdirectory, e.g. `<fcppt/math/math.hpp>`.
 * Added comparison operators for `container::array`.
 * Added `chrono::asio::deadline_timer` and helper functions to work with chrono and `boost::asio::deadline_timer` directly.
 * Added `container()` function to `container::make_array` in addition to the implicit conversion.
