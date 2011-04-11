@@ -97,14 +97,6 @@ make_fcppt_documentation(
 )
 
 make_fcppt_documentation(
-	container_linear
-	container/linear_map.hpp
-	container/linear_map_impl.hpp
-	container/linear_set.hpp
-	container/linear_set_impl.hpp
-)
-
-make_fcppt_documentation(
 	container_raw_vector
 	container/is_raw_vector.hpp
 	container/raw_vector.hpp
