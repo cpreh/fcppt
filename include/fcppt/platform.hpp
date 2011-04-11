@@ -10,9 +10,13 @@
 #if defined(_WIN32)
 #define FCPPT_WINDOWS_PLATFORM
 #elif defined(__unix__)
-#define FCPPT_POSIX_PLATFORM
+#define FCPPT_UNIX_PLATFORM
 #elif defined(__APPLE__)
 #define FCPPT_DARWIN_PLATFORM
+#endif
+
+#if defined(FCPPT_UNIX_PLATFORM) || defined(FCPPT_DARWIN_PLATFORM)
+#define FCPPT_POSIX_PLATFORM
 #endif
 
 #endif

@@ -79,7 +79,8 @@ ENDIF()
 
 # Reject libraries with undefined symbols
 # VC++ does this by default
-IF(UNIX)
+
+IF(UNIX AND NOT APPLE)
 	SET(CMAKE_SHARED_LINKER_FLAGS -Wl,--no-undefined)
 ENDIF()
 

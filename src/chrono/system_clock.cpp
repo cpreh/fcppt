@@ -80,6 +80,8 @@ fcppt::chrono::system_clock::now()
 				)
 			)
 		);
+#else
+#error "Implement me!"
 #endif
 }
 
