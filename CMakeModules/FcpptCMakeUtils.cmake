@@ -56,19 +56,23 @@ IF(
 	# activate common warning options
 	# use -Wno-long-long because too much stuff uses it
 	ADD_DEFINITIONS (
-		"-pedantic-errors -Wall -Wextra -Wconversion"
+		"-ansi -pedantic-errors -Wall -Wextra -Wconversion"
 		"-Wfloat-equal -Wredundant-decls -Winit-self"
 		"-Woverloaded-virtual -Wnon-virtual-dtor -Wshadow"
 		"-Wsign-promo -Wstrict-aliasing=1 -Wold-style-cast"
-		"-Wno-long-long -ansi"
+		"-Wno-long-long"
 	)
 
-	IF(FCPPT_HAVE_MISSING_DECLARATIONS_FLAG)
+	IF(FCPPT_UTILS_HAVE_MISSING_DECLARATIONS_FLAG)
 		ADD_DEFINITIONS ("-Wmissing-declarations")
 	ENDIF()
 
 	IF(FCPPT_UTILS_HAVE_SIGN_CONVERSION_FLAG)
 		ADD_DEFINITIONS ("-Wsign-conversion")
+	ENDIF()
+
+	IF(FCPPT_UTILS_HAVE_GCC_VISIBILITY)
+		ADD_DEFINITIONS ("-fvisibility=hidden")
 	ENDIF()
 ELSEIF(
 	MSVC
