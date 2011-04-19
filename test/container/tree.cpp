@@ -7,6 +7,7 @@
 #include <fcppt/container/tree/tree.hpp>
 #include <fcppt/make_unique_ptr.hpp>
 #include <fcppt/noncopyable.hpp>
+#include <fcppt/unique_ptr.hpp>
 #include <boost/test/unit_test.hpp>
 #include <algorithm>
 
@@ -234,5 +235,21 @@ BOOST_AUTO_TEST_CASE(
 
 	BOOST_REQUIRE(
 		tree.value().value() == 42
+	);
+
+	fcppt::unique_ptr<
+		noncopyable
+	> released(
+		fcppt::container::tree::release(
+			tree
+		)
+	);
+
+	BOOST_REQUIRE(
+		!tree.holder()
+	);
+
+	BOOST_REQUIRE(
+		released->value() == 42
 	);
 }

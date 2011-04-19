@@ -78,6 +78,9 @@ public:
 	take(
 		unique_ptr<Y, Deleter>
 	);
+
+	unique_ptr<T, Deleter>
+	release();
 private:
 	bool
 	boolean_test() const;

@@ -8,6 +8,7 @@
 #define FCPPT_SCOPED_PTR_IMPL_HPP_INCLUDED
 
 #include <fcppt/scoped_ptr_decl.hpp>
+#include <fcppt/move.hpp>
 #include <fcppt/unique_ptr_impl.hpp>
 #include <algorithm>
 
@@ -159,6 +160,30 @@ fcppt::scoped_ptr<T, Deleter>::take(
 	reset();
 
 	ptr_ = _ptr.release();
+}
+
+template<
+	typename T,
+	template<
+		typename
+	> class Deleter
+>
+fcppt::unique_ptr<T, Deleter>
+fcppt::scoped_ptr<T, Deleter>::release()
+{
+	fcppt::unique_ptr<
+		T,
+		Deleter
+	> ret(
+		ptr_
+	);
+
+	ptr_ = 0;
+
+	return
+		fcppt::move(
+			ret
+		);
 }
 
 template<

@@ -226,6 +226,15 @@ fcppt::container::tree::object<T>::value() const
 template<
 	typename T
 >
+typename fcppt::container::tree::object<T>::holder_type &
+fcppt::container::tree::object<T>::holder()
+{
+	return value_;
+}
+
+template<
+	typename T
+>
 void
 fcppt::container::tree::object<T>::push_back(
 	unique_ptr _ptr

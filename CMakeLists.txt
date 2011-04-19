@@ -418,6 +418,7 @@ SET(
 	include/fcppt/container/tree/object_impl.hpp
 	include/fcppt/container/tree/pre_order.hpp
 	include/fcppt/container/tree/ptr_value.hpp
+	include/fcppt/container/tree/release.hpp
 	include/fcppt/container/tree/tree.hpp
 	include/fcppt/cyclic_iterator.hpp
 	include/fcppt/cyclic_iterator_decl.hpp

@@ -15,5 +15,6 @@
 #include <fcppt/container/tree/object_impl.hpp>
 #include <fcppt/container/tree/pre_order.hpp>
 #include <fcppt/container/tree/ptr_value.hpp>
+#include <fcppt/container/tree/release.hpp>
 
 #endif

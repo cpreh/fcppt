@@ -90,6 +90,15 @@ public:
 		arg_base_type const &
 	>::type arg_type;
 
+	/// The type that holds the stored type (either T or scoped_ptr<T>)
+	typedef typename boost::mpl::if_<
+		is_ptr_tree,
+		fcppt::scoped_ptr<
+			stored_type
+		>,
+		stored_type
+	>::type holder_type;
+
 	/// Constructs the tree using the default constructed value 
 	object();
 
@@ -154,6 +163,10 @@ public:
 
 	stored_type const &
 	value() const;
+
+	/// Can be used to release the scoped_ptr
+	holder_type &
+	holder();
 
 	void
 	push_back(
@@ -278,15 +291,7 @@ public:
 	);
 //<-
 private:
-	typedef typename boost::mpl::if_<
-		is_ptr_tree,
-		fcppt::scoped_ptr<
-			stored_type
-		>,
-		stored_type
-	>::type internal_type;
-
-	internal_type value_;
+	holder_type value_;
 
 	object *parent_;
 
