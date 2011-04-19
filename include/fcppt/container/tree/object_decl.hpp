@@ -8,7 +8,13 @@
 #define FCPPT_CONTAINER_TREE_OBJECT_DECL_HPP_INCLUDED
 
 #include <fcppt/container/tree/object_fwd.hpp>
+#include <fcppt/container/tree/is_ptr_value.hpp>
+#include <fcppt/mpl/inner.hpp>
+#include <fcppt/scoped_ptr.hpp>
 #include <fcppt/unique_ptr.hpp>
+#include <boost/mpl/eval_if.hpp>
+#include <boost/mpl/identity.hpp>
+#include <boost/mpl/if.hpp>
 #include <boost/ptr_container/ptr_list.hpp>
 
 //[tree
@@ -34,21 +40,62 @@ public:
 	> unique_ptr;
 
 	typedef typename child_list::value_type value_type;
+
 	typedef typename child_list::size_type size_type;
+
 	typedef typename child_list::difference_type difference_type;
+
 	typedef typename child_list::reference reference;
+
 	typedef typename child_list::const_reference const_reference;
+
 	typedef typename child_list::iterator iterator;
+
 	typedef typename child_list::const_iterator const_iterator;
+
 	typedef typename child_list::reverse_iterator reverse_iterator;
+
 	typedef typename child_list::const_reverse_iterator const_reverse_iterator;
+
+	// support for ptr_tree
+	
+	typedef tree::is_ptr_value<
+		T
+	> is_ptr_tree;
+
+	/// The type to store, possibly extracted from ptr_value<T>
+	typedef typename boost::mpl::eval_if<
+		is_ptr_tree,
+		fcppt::mpl::inner<
+			T
+		>,
+		boost::mpl::identity<
+			T
+		>
+	>::type stored_type;
+
+	/// The type forward to other functions (either T or unique_ptr<T>)
+	typedef typename boost::mpl::if_<
+		is_ptr_tree,
+		fcppt::unique_ptr<
+			stored_type
+		>,
+		stored_type
+	>::type arg_base_type;
+
+	/// The type to pass to other functions (either T const & or unique_ptr<T>)
+	typedef typename boost::mpl::if_<
+		is_ptr_tree,
+		arg_base_type,
+		arg_base_type const &
+	>::type arg_type;
 
 	/// Constructs the tree using the default constructed value 
 	object();
 
 	/// Constructs the object using the given value
 	explicit object(
-		T const &
+		arg_type
 	);
 
 	~object();
@@ -99,13 +146,13 @@ public:
 
 	void
 	value(
-		T const &
+		arg_type
 	);
 
-	T &
+	stored_type &
 	value();
 
-	T const &
+	stored_type const &
 	value() const;
 
 	void
@@ -115,7 +162,7 @@ public:
 
 	void
 	push_back(
-		T const &
+		arg_type
 	);
 
 	void
@@ -128,7 +175,7 @@ public:
 
 	void
 	push_front(
-		T const &
+		arg_type
 	);
 
 	void
@@ -200,7 +247,7 @@ public:
 	void
 	insert(
 		iterator,
-		T const &
+		arg_type
 	);
 
 	/// Erases a single element
@@ -231,14 +278,25 @@ public:
 	);
 //<-
 private:
-	T value_;
+	typedef typename boost::mpl::if_<
+		is_ptr_tree,
+		fcppt::scoped_ptr<
+			stored_type
+		>,
+		stored_type
+	>::type internal_type;
+
+	internal_type value_;
+
 	object *parent_;
+
 	child_list children_;
 //->
 };
 
 /// Compares the values and the children
-/** equal to a.value() == b.value() && a.children() == b.children()
+/**
+ * equal to a.value() == b.value() && a.children() == b.children()
 */
 template<
 	typename T

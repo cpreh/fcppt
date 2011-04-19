@@ -15,6 +15,7 @@ SET(
 INCLUDE(CMakeDetermineCXXCompiler)
 INCLUDE(CheckCXXCompilerFlag)
 
+# cmake-2.8.3 is required for this to work
 IF(
 	"${CMAKE_CXX_COMPILER_ID}" STREQUAL "Clang"
 )
@@ -31,7 +32,7 @@ IF(
 		"-O3 -fomit-frame-pointer -DNDEBUG"
 	)
 
-	# cmake tries to grep for warning messages which will fails in a lot of cases
+	# cmake tries to grep for warning messages which will fail in a lot of cases
 	SET(
 		CMAKE_REQUIRED_FLAGS "-Wall -Werror -pedantic"
 	)

@@ -24,10 +24,6 @@
 #include <fcppt/container/insert_failed.hpp>
 #include <fcppt/container/is_raw_vector.hpp>
 #include <fcppt/container/is_std_vector.hpp>
-#include <fcppt/container/linear_map.hpp>
-#include <fcppt/container/linear_map_impl.hpp>
-#include <fcppt/container/linear_set.hpp>
-#include <fcppt/container/linear_set_impl.hpp>
 #include <fcppt/container/map.hpp>
 #include <fcppt/container/map_decl.hpp>
 #include <fcppt/container/map_fwd.hpp>

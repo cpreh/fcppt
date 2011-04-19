@@ -32,10 +32,10 @@ typename boost::enable_if
 	T &
 >::type
 move(
-	T &t
+	T &_value
 )
 {
-	return t;
+	return _value;
 }
 
 template<
@@ -53,10 +53,10 @@ typename boost::enable_if
 	T const &
 >::type
 move(
-	T const &t
+	T const &_value
 )
 {
-	return t;
+	return _value;
 }
 
 template<
@@ -72,10 +72,17 @@ typename boost::enable_if
 	T
 >::type
 move(
-	T &t
+	T &_value
 )
 {
-	return T(detail_unique_ptr::rv<T>(t));
+	return
+		T(
+			detail_unique_ptr::rv<
+				T
+			>(
+				_value
+			)
+		);
 }
 
 }

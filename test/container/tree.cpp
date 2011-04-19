@@ -5,6 +5,8 @@
 
 
 #include <fcppt/container/tree/tree.hpp>
+#include <fcppt/make_unique_ptr.hpp>
+#include <fcppt/noncopyable.hpp>
 #include <boost/test/unit_test.hpp>
 #include <algorithm>
 
@@ -21,7 +23,9 @@ template class fcppt::container::tree::object<
 	unsigned
 >;
 
-BOOST_AUTO_TEST_CASE(container_tree_equal)
+BOOST_AUTO_TEST_CASE(
+	container_tree_equal
+)
 {
 	ui_tree tree1(
 		42
@@ -52,7 +56,9 @@ BOOST_AUTO_TEST_CASE(container_tree_equal)
 	);
 }
 
-BOOST_AUTO_TEST_CASE(container_tree_swap)
+BOOST_AUTO_TEST_CASE(
+	container_tree_swap
+)
 {
 	ui_tree tree1(
 		10
@@ -79,7 +85,9 @@ BOOST_AUTO_TEST_CASE(container_tree_swap)
 	);
 }
 
-BOOST_AUTO_TEST_CASE(container_tree_pre_order)
+BOOST_AUTO_TEST_CASE(
+	container_tree_pre_order
+)
 {
 	ui_tree tree(
 		1
@@ -155,5 +163,76 @@ BOOST_AUTO_TEST_CASE(container_tree_pre_order)
 
 	BOOST_REQUIRE(
 		it == trav.end()
+	);
+}
+
+namespace
+{
+
+struct noncopyable
+{
+	FCPPT_NONCOPYABLE(
+		noncopyable
+	);
+public:
+	explicit noncopyable(
+		int	
+	);
+
+	~noncopyable();
+
+	int
+	value() const;
+private:
+	int const value_;
+};
+
+noncopyable::noncopyable(
+	int const _value
+)
+:
+	value_(_value)
+{
+}
+
+noncopyable::~noncopyable()
+{
+}
+
+int
+noncopyable::value() const
+{
+	return value_;
+}
+
+typedef fcppt::container::tree::object<
+	fcppt::container::tree::ptr_value<
+		noncopyable
+	>
+> nc_tree;
+
+}
+
+template class
+fcppt::container::tree::object<
+	fcppt::container::tree::ptr_value<
+		noncopyable
+	>
+>;
+
+BOOST_AUTO_TEST_CASE(
+	container_ptr_tree
+)
+{
+	nc_tree tree(	
+		fcppt::make_unique_ptr<
+			noncopyable
+		>(
+			42
+		)
+	);
+
+	BOOST_REQUIRE(
+		tree.value().value() == 42
 	);
 }

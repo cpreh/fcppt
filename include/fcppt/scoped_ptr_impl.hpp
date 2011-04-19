@@ -18,11 +18,14 @@ template<
 	> class Deleter
 >
 fcppt::scoped_ptr<T, Deleter>::scoped_ptr(
-	pointer const p
+	pointer const _ptr
 )
 :
-	ptr(p)
-{}
+	ptr_(
+		_ptr
+	)
+{
+}
 
 template<
 	typename T,
@@ -34,11 +37,14 @@ template<
 	typename Y
 >
 fcppt::scoped_ptr<T, Deleter>::scoped_ptr(
-	unique_ptr<Y, Deleter> p
+	unique_ptr<Y, Deleter> _ptr
 )
 :
-	ptr(p.release())
-{}
+	ptr_(
+		_ptr.release()
+	)
+{
+}
 
 template<
 	typename T,
@@ -48,7 +54,9 @@ template<
 >
 fcppt::scoped_ptr<T, Deleter>::~scoped_ptr()
 {
-	Deleter<T>()(ptr);
+	Deleter<T>()(
+		ptr_
+	);
 }
 
 template<
@@ -59,10 +67,14 @@ template<
 >
 void
 fcppt::scoped_ptr<T, Deleter>::reset(
-	pointer const p
+	pointer const _ptr
 )
 {
-	scoped_ptr(p).swap(*this);
+	scoped_ptr(
+		_ptr
+	).swap(
+		*this
+	);
 }
 
 template<
@@ -74,7 +86,7 @@ template<
 typename fcppt::scoped_ptr<T, Deleter>::reference
 fcppt::scoped_ptr<T, Deleter>::operator*() const
 {
-	return *ptr;
+	return *ptr_;
 }
 
 template<
@@ -86,7 +98,7 @@ template<
 typename fcppt::scoped_ptr<T, Deleter>::pointer
 fcppt::scoped_ptr<T, Deleter>::operator->() const
 {
-	return ptr;
+	return ptr_;
 }
 
 template<
@@ -98,7 +110,7 @@ template<
 typename fcppt::scoped_ptr<T, Deleter>::pointer
 fcppt::scoped_ptr<T, Deleter>::get() const
 {
-	return ptr;
+	return ptr_;
 }
 
 template<
@@ -110,7 +122,7 @@ template<
 bool
 fcppt::scoped_ptr<T, Deleter>::operator! () const
 {
-	return !ptr;
+	return !ptr_;
 }
 
 template<
@@ -121,12 +133,12 @@ template<
 >
 void
 fcppt::scoped_ptr<T, Deleter>::swap(
-	scoped_ptr &b
+	scoped_ptr &_other
 )
 {
 	std::swap(
-		ptr,
-		b.ptr
+		ptr_,
+		_other.ptr_
 	);
 }
 
@@ -141,12 +153,12 @@ template<
 >
 void
 fcppt::scoped_ptr<T, Deleter>::take(
-	unique_ptr<Y, Deleter> p
+	unique_ptr<Y, Deleter> _ptr
 )
 {
 	reset();
 
-	ptr = p.release();
+	ptr_ = _ptr.release();
 }
 
 template<
@@ -158,7 +170,7 @@ template<
 bool
 fcppt::scoped_ptr<T, Deleter>::boolean_test() const
 {
-	return ptr != 0;
+	return ptr_ != 0;
 }
 
 template<
@@ -169,11 +181,13 @@ template<
 >
 void
 fcppt::swap(
-	scoped_ptr<T, Deleter> &a,
-	scoped_ptr<T, Deleter> &b
+	scoped_ptr<T, Deleter> &_a,
+	scoped_ptr<T, Deleter> &_b
 )
 {
-	a.swap(b);
+	_a.swap(
+		_b
+	);
 }
 
 #endif

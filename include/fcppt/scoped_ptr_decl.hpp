@@ -82,7 +82,7 @@ private:
 	bool
 	boolean_test() const;
 
-	pointer ptr;
+	pointer ptr_;
 };
 
 template<

@@ -8,10 +8,13 @@
 #define FCPPT_CONTAINER_TREE_OBJECT_IMPL_HPP_INCLUDED
 
 #include <fcppt/container/tree/object_decl.hpp>
+#include <fcppt/container/tree/detail/assign_value.hpp>
+#include <fcppt/container/tree/detail/extract_value.hpp>
 #include <fcppt/container/ptr/insert_unique_ptr.hpp>
 #include <fcppt/container/ptr/make_equal.hpp>
 #include <fcppt/algorithm/find_if_exn.hpp>
 #include <fcppt/make_unique_ptr.hpp>
+#include <fcppt/forward.hpp>
 #include <fcppt/move.hpp>
 #include <algorithm>
 
@@ -22,18 +25,26 @@ fcppt::container::tree::object<T>::object()
 :
 	value_(),
 	parent_(0)
-{}
+{
+}
 
 template<
 	typename T
 >
 fcppt::container::tree::object<T>::object(
-	T const &_value
+	arg_type _value
 )
 :
-	value_(_value),
+	value_(
+		fcppt::forward<
+			arg_base_type	
+		>(
+			_value
+		)
+	),
 	parent_(0)
-{}
+{
+}
 
 template<
 	typename T
@@ -175,28 +186,41 @@ template<
 >
 void
 fcppt::container::tree::object<T>::value(
-	T const &_value
+	arg_type _value
 )
 {
-	value_ = _value;
+	tree::detail::assign_value(
+		value_,
+		fcppt::forward<
+			arg_base_type	
+		>(
+			_value
+		)
+	);
 }
 
 template<
 	typename T
 >
-T &
+typename fcppt::container::tree::object<T>::stored_type &
 fcppt::container::tree::object<T>::value()
 {
-	return value_;
+	return
+		tree::detail::extract_value(
+			value_
+		);
 }
 
 template<
 	typename T
 >
-T const &
+typename fcppt::container::tree::object<T>::stored_type const &
 fcppt::container::tree::object<T>::value() const
 {
-	return value_;
+	return
+		tree::detail::extract_value(
+			value_
+		);
 }
 
 template<
@@ -220,12 +244,16 @@ template<
 >
 void
 fcppt::container::tree::object<T>::push_back(
-	T const &_value
+	arg_type _value
 )
 {
 	insert(
 		end(),
-		_value
+		fcppt::forward<
+			arg_base_type	
+		>(
+			_value
+		)
 	);
 }
 
@@ -259,12 +287,16 @@ template<
 >
 void
 fcppt::container::tree::object<T>::push_front(
-	T const &_value
+	arg_type _value
 )
 {
 	insert(
 		begin(),
-		_value
+		fcppt::forward<
+			arg_base_type	
+		>(
+			_value
+		)
 	);
 }
 
@@ -464,7 +496,7 @@ template<
 void
 fcppt::container::tree::object<T>::insert(
 	iterator const _it,
-	T const &_val
+	arg_type _value
 )
 {
 	insert(
@@ -472,7 +504,11 @@ fcppt::container::tree::object<T>::insert(
 		fcppt::make_unique_ptr<
 			object<T>
 		>(
-			_val
+			fcppt::forward<
+				arg_base_type	
+			>(
+				_value
+			)
 		)
 	);
 }
@@ -540,7 +576,9 @@ fcppt::container::tree::object<T>::swap(
 	object &_other
 )
 {
-	std::swap(
+	using std::swap;
+
+	swap(
 		value_,
 		_other.value_
 	);

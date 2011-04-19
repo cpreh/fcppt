@@ -28,10 +28,10 @@ typename boost::disable_if<
 	T const &
 >::type
 forward(
-	T const &t
+	T const &_value
 )
 {
-	return t;
+	return _value;
 }
 
 template<
@@ -45,10 +45,13 @@ typename boost::enable_if<
 	T
 >::type
 forward(
-	typename boost::mpl::identity<T>::type &t
+	typename boost::mpl::identity<T>::type &_value
 )
 {
-	return fcppt::move(t);
+	return
+		move(
+			_value
+		);
 }
 
 template<
@@ -62,10 +65,17 @@ typename boost::enable_if<
 	T
 >::type
 forward(
-	typename boost::mpl::identity<T>::type const &t
+	typename boost::mpl::identity<T>::type const &_value
 )
 {
-	return fcppt::move(const_cast<T &>(t));
+	return
+		move(
+			const_cast<
+				T &
+			>(
+				_value
+			)
+		);
 }
 
 }
