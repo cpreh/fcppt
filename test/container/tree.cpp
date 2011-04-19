@@ -170,7 +170,7 @@ BOOST_AUTO_TEST_CASE(
 namespace
 {
 
-struct noncopyable
+class noncopyable
 {
 	FCPPT_NONCOPYABLE(
 		noncopyable

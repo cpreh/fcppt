@@ -7,9 +7,13 @@
 #include <fcppt/unique_ptr_impl.hpp>
 #include <fcppt/make_unique_ptr.hpp>
 #include <fcppt/move.hpp>
+#include <fcppt/noncopyable.hpp>
 #include <boost/test/unit_test.hpp>
+#include <string>
 
-BOOST_AUTO_TEST_CASE(unique_ptr)
+BOOST_AUTO_TEST_CASE(
+	unique_ptr_int
+)
 {
 	typedef fcppt::unique_ptr<
 		int
@@ -41,5 +45,86 @@ BOOST_AUTO_TEST_CASE(unique_ptr)
 
 	BOOST_REQUIRE(
 		*test1 == 43
+	);
+}
+
+namespace
+{
+
+typedef fcppt::unique_ptr<
+	std::string
+> string_unique_ptr;
+
+class noncopyable
+{
+	FCPPT_NONCOPYABLE(
+		noncopyable
+	);
+public:
+	explicit noncopyable(
+		string_unique_ptr
+	);
+
+	~noncopyable();
+
+	std::string const &
+	value() const;
+private:
+	string_unique_ptr value_;
+};
+
+noncopyable::noncopyable(
+	string_unique_ptr _ptr
+)
+:
+	value_(
+		fcppt::move(
+			_ptr
+		)
+	)
+{
+}
+
+noncopyable::~noncopyable()
+{
+}
+
+std::string const &
+noncopyable::value() const
+{
+	return *value_;
+}
+
+typedef fcppt::unique_ptr<
+	noncopyable
+> noncopyable_unique_ptr;
+
+noncopyable_unique_ptr
+noncopyable_factory()
+{
+	return
+		fcppt::make_unique_ptr<
+			noncopyable
+		>(
+			fcppt::make_unique_ptr<
+				std::string
+			>(
+				"foo"
+			)
+		);
+}
+
+}
+
+BOOST_AUTO_TEST_CASE(
+	unique_ptr_nested
+)
+{
+	noncopyable_unique_ptr ptr(
+		noncopyable_factory()
+	);
+
+	BOOST_REQUIRE(
+		ptr->value() == "foo"
 	);
 }
