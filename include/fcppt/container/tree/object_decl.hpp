@@ -74,7 +74,7 @@ public:
 		>
 	>::type stored_type;
 
-	/// The type forward to other functions (either T or unique_ptr<T>)
+	/// The type to forward to other functions (either T or unique_ptr<T>)
 	typedef typename boost::mpl::if_<
 		is_ptr_tree,
 		fcppt::unique_ptr<

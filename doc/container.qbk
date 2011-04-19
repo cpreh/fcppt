@@ -4,20 +4,31 @@
 
 [section Rationale]
 
-An `fcppt::container::tree::object<T>` is a container modeling an n-ary tree holding objects of type `T`. It has a /value/ of type `T` and /children/ of type `fcppt::container::tree::object<T>`. [note Because of the inherent recursive property of the tree, it has to store its children in a boost::ptr_container which might make tree a bit heavy to include. Consider using forward declarations where possible: `#include <fcppt/container/tree/object_fwd.hpp>`]
+An `fcppt::container::tree::object<T>` is a container modeling an n-ary tree holding objects of type `T`.
+It has a /value/ of type `T` and /children/ of type `fcppt::container::tree::object<T>`.
+[note Because of the inherent recursive property of the tree, it has to store its children in a `boost::ptr_list` which might make tree a bit heavy to include.
+Consider using forward declarations where possible: `#include <fcppt/container/tree/object_fwd.hpp>`]
 
-It tries to mimic the sequence and set container from the standard library. Also, its implementation is minimal in the sense that everything but trivial operations are outsourced to external headers - the traversal iterators below are an example of this. Most of the operations are self-explanatory. Here is a small example of the tree:
+It tries to mimic the sequence containers from the standard library.
+Also, its implementation is minimal in the sense that everything but trivial operations are outsourced to external headers -
+the pre order traversal below is an example of this.
+Most of the operations are self-explanatory. Here is a small example of the tree:
 
 [import ../examples/container/tree_simple.cpp]
 [tree_simple]
 
-Note also that all operations which implicitly depend on a parent being present are undefined if `has_parent()` returns false. The same goes for all operations which depend on at least one child being present and `empty()` returning true.
+Note also that all operations which implicitly depend on a parent being present are undefined if `has_parent()` returns false.
+The same goes for all operations which depend on at least one child being present and `empty()` returning true.
 
 [endsect]
 
 [section Iterators/Traversals]
 
-The tree uses a `boost::ptr_list` to store its children, so the iterator guarantees are the same as with this container (see [@http://www.boost.org/doc/libs/release/libs/ptr_container/doc/ptr_list.html here]). Apart from using the traditional iteration methods -- using `begin(), end(), rbegin(), rend()` -- there are external traversal classes. Those are best explained using a little example:
+The tree uses a `boost::ptr_list` to store its children, so the iterator guarantees are the same as for this container
+(see [@http://www.boost.org/doc/libs/release/libs/ptr_container/doc/ptr_list.html here]).
+Apart from using the traditional iteration methods -- using `begin(), end(), rbegin(), rend()` --
+there are external traversal classes.
+Those are best explained using a little example:
 
 [import ../examples/container/tree_traversal.cpp]
 [tree_traversal]
@@ -31,6 +42,29 @@ qux
 bar
 baz
 ``
+
+[endsect]
+
+[section Noncopyable Semantics]
+
+We already mentioned `boost::ptr_list` which is designed to store
+values by pointer and to have ownership at the same time.
+This is useful for values that are not copyable, for example.
+`fcppt::container::tree::object` also supports this.
+Instead of writing `fcppt::container::tree::object<T>` you can say 
+`fcppt::container::tree::object<fcppt::container::tree::ptr_value<T> >`
+which turns the tree into a ptr_container.
+A `tree::object<ptr_value<T> > ` will have the following changes from a normal tree:
+
+* All arguments of values it expects are `fcppt::unique_ptr<T>`.
+* The internal type is an `fcppt::scoped_ptr<T>`.
+
+It is also possible to release the held `scoped_ptr`
+with `fcppt::container::tree::release`.
+
+[import ../examples/container/tree_ptr.cpp]
+
+[tree_ptr]
 
 [endsect]
 

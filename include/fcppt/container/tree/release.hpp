@@ -19,6 +19,7 @@ namespace container
 namespace tree
 {
 
+/// Releases the held value of a tree node and returns it as a unique_ptr
 template<
 	typename T
 >

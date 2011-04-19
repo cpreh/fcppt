@@ -21,7 +21,9 @@ int main()
 try
 {
 	typedef 
-	fcppt::container::tree::object<fcppt::string> 
+	fcppt::container::tree::object<
+		fcppt::string
+	>
 	string_tree;
 
 	string_tree tree(
@@ -76,32 +78,59 @@ try
 	);
 
 	// Now the tree isn't empty anymore
-	fcppt::io::cout << FCPPT_TEXT("Is the tree empty? ") << tree.empty() << FCPPT_TEXT('\n');
+	fcppt::io::cout
+		<< FCPPT_TEXT("Is the tree empty? ")
+		<< tree.empty()
+		<< FCPPT_TEXT('\n');
+
 	// Outputs 3
-	fcppt::io::cout << FCPPT_TEXT("How many children does the tree have: ") << tree.size() << FCPPT_TEXT('\n');
+	fcppt::io::cout
+		<< FCPPT_TEXT("How many children does the tree have: ")
+		<< tree.size()
+		<< FCPPT_TEXT('\n');
+
 	// Outputs: hello world
-	fcppt::io::cout << FCPPT_TEXT("The tree value is: ") << tree.value() << FCPPT_TEXT('\n');
+	fcppt::io::cout
+		<< FCPPT_TEXT("The tree value is: ")
+		<< tree.value()
+		<< FCPPT_TEXT('\n');
 
 	// Output the first level of the tree below the root.
 	// Note that iterator::value_type is string_tree.
-	for (string_tree::const_iterator i = tree.begin(); i != tree.end(); ++i)
-		fcppt::io::cout << i->value() << FCPPT_TEXT('\n');
+	for(
+		string_tree::const_iterator it(
+			tree.begin()
+		);
+		it != tree.end();
+		++it
+	)
+		fcppt::io::cout
+			<< it->value()
+			<< FCPPT_TEXT('\n');
 	
-	string_tree &first_child = tree.front();
+	string_tree &first_child(
+		tree.front()
+	);
 
-	fcppt::io::cout << FCPPT_TEXT("First child has a parent: ") << first_child.has_parent() << FCPPT_TEXT('\n');
+	fcppt::io::cout
+		<< FCPPT_TEXT("First child has a parent: ")
+		<< first_child.has_parent()
+		<< FCPPT_TEXT('\n');
 
 	fcppt::io::cout 
 		<< FCPPT_TEXT("First child's position in the parent's child list: ") 
-		<< std::distance(first_child.parent().begin(),first_child.child_position())
+		<< std::distance(
+			first_child.parent().begin(),
+			first_child.child_position()
+		)
 		<< FCPPT_TEXT('\n');
 }
 catch(
-	fcppt::exception const &e
+	fcppt::exception const &_error
 )
 {
 	fcppt::io::cerr
-		<< e.string()
+		<< _error.string()
 		<< FCPPT_TEXT('\n');
 	
 	return EXIT_FAILURE;
