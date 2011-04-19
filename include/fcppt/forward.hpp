@@ -49,7 +49,7 @@ forward(
 )
 {
 	return
-		move(
+		fcppt::move(
 			_value
 		);
 }
@@ -68,8 +68,9 @@ forward(
 	typename boost::mpl::identity<T>::type const &_value
 )
 {
+	// VC++ is buggy and we have to use type_traits::is_movable anyway
 	return
-		move(
+		fcppt::move(
 			const_cast<
 				T &
 			>(
