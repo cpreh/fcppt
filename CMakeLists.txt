@@ -410,6 +410,7 @@ SET(
 	include/fcppt/container/raw_vector_impl.hpp
 	include/fcppt/container/tree/detail/assign_value.hpp
 	include/fcppt/container/tree/detail/extract_value.hpp
+	include/fcppt/container/tree/detail/has_value.hpp
 	include/fcppt/container/tree/is_object.hpp
 	include/fcppt/container/tree/is_ptr_value.hpp
 	include/fcppt/container/tree/object.hpp
@@ -417,6 +418,7 @@ SET(
 	include/fcppt/container/tree/object_fwd.hpp
 	include/fcppt/container/tree/object_impl.hpp
 	include/fcppt/container/tree/pre_order.hpp
+	include/fcppt/container/tree/print.hpp
 	include/fcppt/container/tree/ptr_value.hpp
 	include/fcppt/container/tree/release.hpp
 	include/fcppt/container/tree/tree.hpp

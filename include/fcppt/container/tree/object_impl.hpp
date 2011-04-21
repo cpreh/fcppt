@@ -10,6 +10,7 @@
 #include <fcppt/container/tree/object_decl.hpp>
 #include <fcppt/container/tree/detail/assign_value.hpp>
 #include <fcppt/container/tree/detail/extract_value.hpp>
+#include <fcppt/container/tree/detail/has_value.hpp>
 #include <fcppt/container/ptr/insert_unique_ptr.hpp>
 #include <fcppt/container/ptr/make_equal.hpp>
 #include <fcppt/algorithm/find_if_exn.hpp>
@@ -219,6 +220,18 @@ fcppt::container::tree::object<T>::value() const
 {
 	return
 		tree::detail::extract_value(
+			value_
+		);
+}
+
+template<
+	typename T
+>
+bool
+fcppt::container::tree::object<T>::has_value() const
+{
+	return
+		tree::detail::has_value(
 			value_
 		);
 }

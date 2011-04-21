@@ -88,9 +88,13 @@ public:
 		{}
 
 		typedef typename iterator_base::value_type value_type;
+
 		typedef typename iterator_base::reference reference;
+
 		typedef typename iterator_base::pointer pointer;
+
 		typedef typename iterator_base::difference_type difference_type;
+
 		typedef typename iterator_base::iterator_category iterator_category;
 
 		friend class boost::iterator_core_access;
@@ -98,7 +102,9 @@ public:
 		void
 		increment()
 		{
-			if(!current_->empty())
+			if(
+				!current_->empty()
+			)
 			{
 				for(
 					tree_iterator
@@ -154,16 +160,18 @@ public:
 	iterator const
 	begin() const
 	{
-		return iterator(
-			&tree_
-		);
+		return
+			iterator(
+				&tree_
+			);
 	}
 	iterator const
 	end() const
 	{
-		return iterator(
-			0
-		);
+		return
+			iterator(
+				0
+			);
 	}
 private:
 	Tree &tree_;

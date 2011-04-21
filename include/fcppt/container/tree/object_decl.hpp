@@ -164,6 +164,14 @@ public:
 	stored_type const &
 	value() const;
 
+	/// Returns if this node holds a value
+	/**
+	 * Will always be true for normal trees.
+	 * If the tree holds a ptr_value it depends on whether it has been initialized
+	*/
+	bool
+	has_value() const;
+
 	/// Can be used to release the scoped_ptr
 	holder_type &
 	holder();
