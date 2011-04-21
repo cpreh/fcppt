@@ -10,6 +10,7 @@
 #include <fcppt/container/tree/object_fwd.hpp>
 #include <fcppt/container/tree/is_ptr_value.hpp>
 #include <fcppt/mpl/inner.hpp>
+#include <fcppt/noncopyable.hpp>
 #include <fcppt/scoped_ptr.hpp>
 #include <fcppt/unique_ptr.hpp>
 #include <boost/mpl/eval_if.hpp>
@@ -30,6 +31,9 @@ template<
 >
 class object
 {
+	FCPPT_NONCOPYABLE(
+		object
+	);
 public:
 	typedef boost::ptr_list<
 		object	

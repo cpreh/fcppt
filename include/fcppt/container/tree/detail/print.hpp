@@ -8,7 +8,6 @@
 #define FCPPT_CONTAINER_TREE_DETAIL_PRINT_HPP_INCLUDED
 
 #include <fcppt/container/tree/object_impl.hpp>
-#include <boost/foreach.hpp>
 #include <ostream>
 
 namespace fcppt
@@ -52,15 +51,18 @@ print(
 			<< _tree.value()
 			<< _stream.widen('\n');
 
-	BOOST_FOREACH(
+	for(
 		typename tree::object<
 			Value
-		>::const_reference ref,
-		_tree
+		>::const_iterator it(
+			_tree.begin()
+		);
+		it != _tree.end();
+		++it
 	)
 		tree::detail::print(
 			_stream,
-			ref,
+			*it,
 			_indent + 1u
 		);
 }

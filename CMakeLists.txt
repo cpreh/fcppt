@@ -411,6 +411,7 @@ SET(
 	include/fcppt/container/tree/detail/assign_value.hpp
 	include/fcppt/container/tree/detail/extract_value.hpp
 	include/fcppt/container/tree/detail/has_value.hpp
+	include/fcppt/container/tree/detail/print.hpp
 	include/fcppt/container/tree/is_object.hpp
 	include/fcppt/container/tree/is_ptr_value.hpp
 	include/fcppt/container/tree/object.hpp

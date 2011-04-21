@@ -73,7 +73,7 @@ BOOST_AUTO_TEST_CASE(
 		30
 	);
 
-	std::swap(
+	swap(
 		tree1,
 		tree2
 	);

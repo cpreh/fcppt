@@ -25,7 +25,8 @@ template<
 fcppt::container::tree::object<T>::object()
 :
 	value_(),
-	parent_(0)
+	parent_(0),
+	children_()
 {
 }
 
@@ -43,7 +44,8 @@ fcppt::container::tree::object<T>::object(
 			_value
 		)
 	),
-	parent_(0)
+	parent_(0),
+	children_()
 {
 }
 
