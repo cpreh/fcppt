@@ -43,7 +43,8 @@ MACRO(
 	)
 ENDMACRO()
 
-ADD_FCPPT_TEST(alignment)
+ADD_FCPPT_TEST(alignment/array)
+ADD_FCPPT_TEST(alignment/char)
 ADD_FCPPT_TEST(algorithm/levenshtein)
 ADD_FCPPT_TEST(algorithm/ptr_container_erase)
 ADD_FCPPT_TEST(algorithm/remove)
