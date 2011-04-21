@@ -168,6 +168,9 @@ public:
 	holder_type &
 	holder();
 
+	holder_type const &
+	holder() const;
+
 	void
 	push_back(
 		unique_ptr
