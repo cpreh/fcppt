@@ -841,6 +841,7 @@ SET(
 	include/fcppt/math/vector/static.hpp
 	include/fcppt/math/vector/structure_cast.hpp
 	include/fcppt/math/vector/to_angle.hpp
+	include/fcppt/math/vector/unit.hpp
 	include/fcppt/math/vector/unit_circle.hpp
 	include/fcppt/math/vector/vector.hpp
 	include/fcppt/micro_version.hpp
