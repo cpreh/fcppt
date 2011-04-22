@@ -20,9 +20,10 @@ BOOST_AUTO_TEST_CASE(
 
 	int3_vector const vec(
 		fcppt::math::vector::unit<
-			int3_vector,
+			int3_vector
+		>(
 			2
-		>()
+		)
 	);
 
 	BOOST_REQUIRE(

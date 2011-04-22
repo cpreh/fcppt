@@ -7,9 +7,6 @@
 #ifndef FCPPT_MATH_VECTOR_UNIT_HPP_INCLUDED
 #define FCPPT_MATH_VECTOR_UNIT_HPP_INCLUDED
 
-#include <fcppt/math/size_type.hpp>
-#include <boost/utility/enable_if.hpp>
-
 namespace fcppt
 {
 namespace math
@@ -17,20 +14,14 @@ namespace math
 namespace vector
 {
 
-/// Creates a vector of type \tparam Vec with all components set to 0 expect for component \tparam N which is set to 1
+/// Creates a vector of type \tparam Vec with all components set to 0 expect for component \param _axis which is set to 1
 template<
-	typename Vec,
-	fcppt::math::size_type N
+	typename Vec
 >
-typename boost::enable_if_c<
-	(
-		Vec::dim_wrapper::value
-		>
-		N
-	),
-	Vec
->::type const
-unit()
+Vec const
+unit(
+	typename Vec::size_type const _axis
+)
 {
 	Vec ret;
 
@@ -45,7 +36,7 @@ unit()
 			static_cast<
 				typename Vec::value_type
 			>(
-				index == N
+				index == _axis
 				?
 					1
 				:
