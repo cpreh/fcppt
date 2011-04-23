@@ -5,9 +5,11 @@
 
 
 #include <fcppt/container/grid/grid.hpp>
+#include <fcppt/container/grid/fill.hpp>
 #include <boost/test/unit_test.hpp>
 #include <boost/foreach.hpp>
 #include <algorithm>
+#include <numeric>
 #include <iterator>
 #include <vector>
 #include <utility>
@@ -530,4 +532,40 @@ BOOST_AUTO_TEST_CASE(container_grid_resize_preverse_init)
 					)
 				);
 		}
+}
+
+namespace
+{
+int
+fill_functor(
+	int2_grid::dim const &v)
+{
+	return 
+		std::accumulate(
+			v.begin(),
+			v.end(),
+			0);
+}
+}
+
+BOOST_AUTO_TEST_CASE(container_grid_fill)
+{
+	int2_grid test(
+		(
+		int2_grid::dim(
+			2,
+			2
+		))
+	);
+
+	fcppt::container::grid::fill(
+		test,
+		&fill_functor);
+
+	BOOST_REQUIRE(
+		test[int2_grid::dim(0,0)] == 0 &&
+		test[int2_grid::dim(1,0)] == 1 &&
+		test[int2_grid::dim(0,1)] == 1 &&
+		test[int2_grid::dim(1,1)] == 2 
+	);
 }
