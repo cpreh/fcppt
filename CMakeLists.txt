@@ -362,10 +362,12 @@ SET(
 	include/fcppt/container/grid/detail/choose_reference.hpp
 	include/fcppt/container/grid/detail/data.hpp
 	include/fcppt/container/grid/detail/data_end.hpp
+	include/fcppt/container/grid/detail/fill.hpp
 	include/fcppt/container/grid/detail/print_recurse.hpp
 	include/fcppt/container/grid/detail/resize.hpp
 	include/fcppt/container/grid/detail/shrink_to_fit.hpp
 	include/fcppt/container/grid/exception.hpp
+	include/fcppt/container/grid/fill.hpp
 	include/fcppt/container/grid/grid.hpp
 	include/fcppt/container/grid/impl/exception.hpp
 	include/fcppt/container/grid/impl/out_of_range.hpp
