@@ -23,6 +23,8 @@ template<
 class minmax_pair
 {
 public:
+	typedef T value_type;
+
 	typedef fcppt::homogenous_pair<
 		T
 	> pair_type;
