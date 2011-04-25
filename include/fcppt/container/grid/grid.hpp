@@ -9,6 +9,7 @@
 
 #include <fcppt/container/grid/comparison.hpp>
 #include <fcppt/container/grid/exception.hpp>
+#include <fcppt/container/grid/fill.hpp>
 #include <fcppt/container/grid/object.hpp>
 #include <fcppt/container/grid/object_decl.hpp>
 #include <fcppt/container/grid/object_fwd.hpp>
