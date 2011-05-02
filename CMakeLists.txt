@@ -406,6 +406,7 @@ SET(
 	include/fcppt/container/ptr/make_equal.hpp
 	include/fcppt/container/ptr/ptr.hpp
 	include/fcppt/container/ptr/push_back_unique_ptr.hpp
+	include/fcppt/container/ptr/replace_unique_ptr.hpp
 	include/fcppt/container/raw_vector.hpp
 	include/fcppt/container/raw_vector_decl.hpp
 	include/fcppt/container/raw_vector_fwd.hpp
