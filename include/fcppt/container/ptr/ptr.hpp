@@ -15,5 +15,6 @@
 #include <fcppt/container/ptr/insert_unique_ptr_set.hpp>
 #include <fcppt/container/ptr/make_equal.hpp>
 #include <fcppt/container/ptr/push_back_unique_ptr.hpp>
+#include <fcppt/container/ptr/replace_unique_ptr.hpp>
 
 #endif
