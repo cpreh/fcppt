@@ -29,7 +29,7 @@ boost::enable_if
 >::type
 replace_unique_ptr(
 	PtrContainer &_container,
-	std::size_t const _index,
+	typename PtrContainer::size_type const _index,
 	UniquePtr _ptr)
 {
 	_container.replace(
