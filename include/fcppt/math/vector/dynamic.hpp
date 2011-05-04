@@ -11,7 +11,6 @@
 #include <fcppt/math/detail/dynamic_size.hpp>
 #include <fcppt/math/detail/dynamic_storage.hpp>
 #include <fcppt/container/raw_vector_decl.hpp>
-#include <fcppt/restrict_typedef_struct.hpp>
 
 namespace fcppt
 {
@@ -36,10 +35,6 @@ struct dynamic
 			T
 		>::type
 	> type;
-
-	FCPPT_RESTRICT_TYPEDEF_STRUCT(
-		dynamic
-	);
 };
 
 }

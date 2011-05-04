@@ -8,7 +8,6 @@
 #define FCPPT_MATH_DIM_NORMAL_STORAGE_HPP_INCLUDED
 
 #include <fcppt/math/detail/simple_normal_storage.hpp>
-#include <fcppt/restrict_typedef_struct.hpp>
 
 namespace fcppt
 {
@@ -28,9 +27,6 @@ math::detail::simple_normal_storage<
 	N
 >
 {
-	FCPPT_RESTRICT_TYPEDEF_STRUCT(
-		normal_storage
-	);
 };
 
 }

@@ -8,7 +8,6 @@
 #define FCPPT_MATH_BOX_RECT_HPP_INCLUDED
 
 #include <fcppt/math/box/basic_fwd.hpp>
-#include <fcppt/restrict_typedef_struct.hpp>
 
 namespace fcppt
 {
@@ -27,10 +26,6 @@ struct rect
 		T,
 		2
 	> type;
-
-	FCPPT_RESTRICT_TYPEDEF_STRUCT(
-		rect
-	);
 };
 
 }

@@ -10,7 +10,6 @@
 #include <fcppt/math/matrix/detail/static_storage.hpp>
 #include <fcppt/math/detail/dynamic_storage.hpp>
 #include <fcppt/math/detail/dynamic_size.hpp>
-#include <fcppt/restrict_typedef_struct.hpp>
 
 namespace fcppt
 {
@@ -32,9 +31,6 @@ matrix::detail::static_storage<
 	M::value
 >
 {
-	FCPPT_RESTRICT_TYPEDEF_STRUCT(
-		normal_storage
-	);
 };
 
 template<
@@ -50,9 +46,6 @@ math::detail::dynamic_storage<
 	T
 >
 {
-	FCPPT_RESTRICT_TYPEDEF_STRUCT(
-		normal_storage
-	);
 };
 
 }

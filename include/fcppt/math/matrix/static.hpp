@@ -10,7 +10,6 @@
 #include <fcppt/math/matrix/basic_fwd.hpp>
 #include <fcppt/math/matrix/detail/static_storage.hpp>
 #include <fcppt/math/size_type.hpp>
-#include <fcppt/restrict_typedef_struct.hpp>
 #include <boost/mpl/integral_c.hpp>
 
 namespace fcppt
@@ -44,10 +43,6 @@ struct static_
 			M
 		>::type
 	> type;
-
-	FCPPT_RESTRICT_TYPEDEF_STRUCT(
-		static_
-	);
 };
 
 }

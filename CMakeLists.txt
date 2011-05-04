@@ -988,7 +988,6 @@ SET(
 	include/fcppt/ratio/tera.hpp
 	include/fcppt/ref.hpp
 	include/fcppt/reference_wrapper.hpp
-	include/fcppt/restrict_typedef_struct.hpp
 	include/fcppt/safe_bool.hpp
 	include/fcppt/scoped_ptr.hpp
 	include/fcppt/scoped_ptr_decl.hpp

@@ -9,7 +9,6 @@
 
 #include <fcppt/math/size_type.hpp>
 #include <fcppt/container/array.hpp>
-#include <fcppt/restrict_typedef_struct.hpp>
 
 namespace fcppt
 {
@@ -28,10 +27,6 @@ struct static_storage
 		T,
 		N
 	> type;
-
-	FCPPT_RESTRICT_TYPEDEF_STRUCT(
-		static_storage
-	);
 };
 
 }
