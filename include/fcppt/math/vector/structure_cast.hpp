@@ -26,15 +26,15 @@ template<
 >
 Dest const
 structure_cast(
-	basic<T, N, S> const &src
+	basic<T, N, S> const &_src
 )
 {
-	return math::detail::structure_cast<
-		Dest
-	>(
-		src
-	);
-
+	return
+		math::detail::structure_cast<
+			Dest
+		>(
+			_src
+		);
 }
 
 }
