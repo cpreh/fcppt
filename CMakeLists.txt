@@ -426,6 +426,7 @@ SET(
 	include/fcppt/container/tree/ptr_value.hpp
 	include/fcppt/container/tree/release.hpp
 	include/fcppt/container/tree/tree.hpp
+	include/fcppt/cref.hpp
 	include/fcppt/cyclic_iterator.hpp
 	include/fcppt/cyclic_iterator_decl.hpp
 	include/fcppt/cyclic_iterator_fwd.hpp
