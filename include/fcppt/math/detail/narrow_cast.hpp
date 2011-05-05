@@ -25,10 +25,10 @@ template<
 >
 T const
 narrow_cast(
-	U const &u
+	U const &_other
 )
 {
-	typedef structure_cast_fun<
+	typedef detail::structure_cast_fun<
 		typename T::value_type
 	> op_type;
 
@@ -41,16 +41,17 @@ narrow_cast(
 		>::value
 	));
 
-	return T(
-		boost::make_transform_iterator(
-			u.begin(),
-			op
-		),
-		boost::make_transform_iterator(
-			u.begin() + T::dim_wrapper::value,
-			op
-		)
-	);
+	return
+		T(
+			boost::make_transform_iterator(
+				_other.begin(),
+				op
+			),
+			boost::make_transform_iterator(
+				_other.begin() + T::dim_wrapper::value,
+				op
+			)
+		);
 }
 
 }

@@ -695,6 +695,7 @@ SET(
 	include/fcppt/math/detail/storage_dim.hpp
 	include/fcppt/math/detail/structure_cast.hpp
 	include/fcppt/math/detail/structure_cast_fun.hpp
+	include/fcppt/math/detail/transform.hpp
 	include/fcppt/math/diff.hpp
 	include/fcppt/math/difference_type.hpp
 	include/fcppt/math/dim/arithmetic.hpp
@@ -844,6 +845,7 @@ SET(
 	include/fcppt/math/vector/static.hpp
 	include/fcppt/math/vector/structure_cast.hpp
 	include/fcppt/math/vector/to_angle.hpp
+	include/fcppt/math/vector/transform.hpp
 	include/fcppt/math/vector/unit.hpp
 	include/fcppt/math/vector/unit_circle.hpp
 	include/fcppt/math/vector/vector.hpp
