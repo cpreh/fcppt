@@ -8,6 +8,7 @@
 #define FCPPT_ALGORITHM_ALGORITHM_HPP_INCLUDED
 
 #include <fcppt/algorithm/append.hpp>
+#include <fcppt/algorithm/array_map.hpp>
 #include <fcppt/algorithm/compare_with.hpp>
 #include <fcppt/algorithm/contains.hpp>
 #include <fcppt/algorithm/contains_if.hpp>

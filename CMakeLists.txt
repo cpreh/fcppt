@@ -221,6 +221,7 @@ SET(
 	FCPPT_FILES
 	include/fcppt/algorithm/algorithm.hpp
 	include/fcppt/algorithm/append.hpp
+	include/fcppt/algorithm/array_map.hpp
 	include/fcppt/algorithm/compare_with.hpp
 	include/fcppt/algorithm/contains.hpp
 	include/fcppt/algorithm/contains_if.hpp
