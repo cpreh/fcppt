@@ -11,6 +11,7 @@
 #include <boost/spirit/home/phoenix/core/argument.hpp>
 #include <boost/spirit/home/phoenix/operator/arithmetic.hpp>
 #include <boost/spirit/home/phoenix/bind/bind_function.hpp>
+#include <iterator>
 #include <numeric>
 
 namespace fcppt
@@ -19,28 +20,29 @@ namespace math
 {
 namespace vector
 {
-template<typename Container>
-Container const
+template<typename Iterator,typename EndIterator>
+void
 orthogonalize(
-	Container const &input)
+	Iterator const begin,
+	EndIterator const end)
 {
 	typedef typename
-	Container::value_type
+	std::iterator_traits<Iterator>::value_type
 	vector;
-	
-	Container result;
-	for (typename Container::const_iterator i = input.begin(); i != input.end(); ++i)
-		result.push_back(
+
+	for(Iterator it = begin; it != end; ++it)
+	{
+		(*it) = 
 			::std::accumulate(
-				result.begin(),
-				result.end(),
-				*i,
+				begin,
+				it,
+				*it,
 				boost::phoenix::arg_names::arg1 - 
 				boost::phoenix::bind(
 					&fcppt::math::vector::project<vector>,
 					boost::phoenix::arg_names::arg2,
-					boost::phoenix::arg_names::arg1)));
-	return result;
+					boost::phoenix::arg_names::arg1));
+	}
 }
 }
 }
