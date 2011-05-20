@@ -43,10 +43,10 @@ extend_bounding_box(
 			continue;
 		}
 
-		T const end = 
+		T const end =
 			static_cast<T>(
 				b.pos()[i] + b.size()[i]);
-		
+
 		if (p[i] > end)
 			b.size(
 				i,

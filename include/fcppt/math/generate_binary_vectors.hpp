@@ -49,10 +49,10 @@ fcppt::container::array
 > const
 generate_binary_vectors()
 {
-	typedef typename 
+	typedef typename
 	fcppt::math::vector::static_<T,N>::type
 	vector_type;
-	
+
 	typedef
 	fcppt::container::array
 	<

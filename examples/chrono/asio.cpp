@@ -25,7 +25,7 @@ int main()
 		timer,
 		fcppt::chrono::seconds(1)
 	);
-	
+
 	io_service.run();
 }
 //]

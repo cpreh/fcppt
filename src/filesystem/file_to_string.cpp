@@ -95,7 +95,7 @@ fcppt::filesystem::file_to_string(
 				_path
 			)
 		);
-	
+
 	boost::uintmax_t const size(
 		fcppt::filesystem::file_size(
 			_path
@@ -115,7 +115,7 @@ fcppt::filesystem::file_to_string(
 			)
 			+ FCPPT_TEXT(" is too large for a string to store!")
 		);
-	
+
 	fcppt::string ret;
 
 	ret.reserve(

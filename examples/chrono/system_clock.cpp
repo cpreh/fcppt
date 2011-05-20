@@ -29,7 +29,7 @@ int main()
 		<< FCPPT_TEXT("The time is ")
 		<< time1
 		<< FCPPT_TEXT('\n');
-	
+
 	// the time point can be converted to 'std::time_t'
 	std::time_t const c_time(
 		clock::to_time_t(

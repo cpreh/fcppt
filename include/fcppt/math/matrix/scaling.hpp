@@ -34,14 +34,14 @@ scaling(
 	T const
 		zero = static_cast<T>(0),
 		one = static_cast<T>(1);
-	
+
 	return
 		typename static_<T, 4, 4>::type
 		(
 			   _x, zero, zero, zero,
 			zero,     _y,zero, zero,
 			zero,  zero,   _z, zero,
-			zero,  zero, zero,  one 
+			zero,  zero, zero,  one
 		);
 
 }

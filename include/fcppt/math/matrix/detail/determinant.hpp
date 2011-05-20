@@ -87,7 +87,7 @@ determinant(
 
 	for (size_type i = 0; i < t.columns(); ++i)
 	{
-		T const coeff = 
+		T const coeff =
 			i % static_cast<size_type>(2) == static_cast<size_type>(0)
 			?
 				static_cast<T>(
@@ -96,9 +96,9 @@ determinant(
 				static_cast<T>(
 					-1);
 
-		sum += 
-			coeff * 
-			t[i][0] * 
+		sum +=
+			coeff *
+			t[i][0] *
 			matrix::detail::determinant(
 				matrix::delete_row_and_column(
 					t,

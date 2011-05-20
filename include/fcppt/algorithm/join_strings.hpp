@@ -32,13 +32,13 @@ join_strings(
 		range.empty()
 	)
 		return s;
-	
+
 	BOOST_FOREACH(
 		typename Range::value_type const &n,
 		range
 	)
 		s += n + delim;
-	
+
 	s.erase(
 		s.length() - delim.length()
 	);

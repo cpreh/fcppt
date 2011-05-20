@@ -23,7 +23,7 @@ struct heap_deleter
 	heap_deleter()
 	{
 	}
-      
+
 	template<
 		typename U
 	>

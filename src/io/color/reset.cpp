@@ -9,7 +9,7 @@
 fcppt::io::color::set const
 fcppt::io::color::reset()
 {
-	return 
+	return
 		set(
 			foreground::off,
 			background::off,

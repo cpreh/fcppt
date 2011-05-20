@@ -16,7 +16,7 @@ namespace math
 
 /// Returns the sign of @a t.
 /**
- * @return -1 indicates a negative sign, 
+ * @return -1 indicates a negative sign,
  *          0 indicates no sign,
  *          1 indicates a positive sign
 */

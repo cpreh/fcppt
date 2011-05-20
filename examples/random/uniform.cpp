@@ -47,7 +47,7 @@ int main()
 				0,
 				10
 			)
-		);	
+		);
 
 		print_values(
 			rng

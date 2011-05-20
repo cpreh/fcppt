@@ -41,7 +41,7 @@ int main()
 			<< FCPPT_TEXT(", year = ")
 			<< tm_.tm_year
 			<< FCPPT_TEXT('\n');
-	
+
 	stream.clear();
 
 	stream.str(

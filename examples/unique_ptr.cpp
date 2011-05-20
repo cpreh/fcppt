@@ -24,7 +24,7 @@ int_ptr_factory()
 {
 	// make_unique_ptr is a factory function to make a unique_ptr
 	// note: an rvalue is returned here
-	return 
+	return
 		fcppt::make_unique_ptr<
 			int
 		>(

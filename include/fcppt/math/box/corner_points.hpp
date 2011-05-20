@@ -45,15 +45,15 @@ corner_points(
 	>
 	result_type;
 
-	result_type result = 
+	result_type result =
 		fcppt::math::generate_binary_vectors<T,N>();
 
 	BOOST_FOREACH(
 		vector_type &v,
 		result)
-		v = 
+		v =
 			p.pos() + v * fcppt::math::dim::structure_cast<vector_type>(p.size());
-		
+
 	return result;
 }
 }

@@ -35,7 +35,7 @@
 #define FCPPT_FUNCTION_OBJECT_PP_FUNCTION_ARGS \
 	BOOST_PP_ENUM_PARAMS( FCPPT_FUNCTION_OBJECT_PP_NUM_PARAMS, t )
 
-namespace fcppt 
+namespace fcppt
 {
 namespace function
 {
@@ -57,7 +57,7 @@ public:
 	{
 		return static_cast<R>( f_( FCPPT_FUNCTION_OBJECT_PP_FUNCTION_ARGS ) );
 	}
-	
+
 	FCPPT_FUNCTION_OBJECT_PP_FUNCTION_OPERATOR const
 	{
 		return static_cast<R>( f_( FCPPT_FUNCTION_OBJECT_PP_FUNCTION_ARGS ) );
@@ -71,7 +71,7 @@ public:
 
 } // end namespace function
 
-} // end namespace fcppt 
+} // end namespace fcppt
 
 #undef FCPPT_FUNCTION_OBJECT_PP_TEMPLATE_PARAMS
 #undef FCPPT_FUNCTION_OBJECT_PP_TEMPLATE_ARGS

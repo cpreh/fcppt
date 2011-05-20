@@ -23,7 +23,7 @@ BOOST_AUTO_TEST_CASE(
 	typedef fcppt::math::matrix::static_<
 		value_type,
 		4,
-		4	
+		4
 	>::type mat4;
 
 	typedef fcppt::math::box::basic<
@@ -66,7 +66,7 @@ BOOST_AUTO_TEST_CASE(
 	fcppt::io::cout
 		<< proj1
 		<< FCPPT_TEXT('\n');
-	
+
 	BOOST_CHECK(
 		fcppt::math::compare(
 			proj1[0][0],

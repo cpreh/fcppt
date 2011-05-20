@@ -34,7 +34,7 @@ public:
 		T const &max
 	);
 
-	T 
+	T
 	min() const;
 
 	T

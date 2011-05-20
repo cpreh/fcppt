@@ -16,7 +16,7 @@ int main()
 			(3)
 			(4)
 			(5));
-	
+
 	std::set<int> s(
 		fcppt::assign::make_container< std::set<int> >
 			(3)

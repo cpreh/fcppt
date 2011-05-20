@@ -51,7 +51,7 @@ assign_value(
 	Arg _arg
 )
 {
-	_result = _arg;	
+	_result = _arg;
 }
 
 }

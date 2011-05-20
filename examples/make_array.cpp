@@ -21,7 +21,7 @@ int main()
 			(4)
 			(5)
 	);
-	
+
 	BOOST_FOREACH(
 		array_int3::const_reference ref,
 		array

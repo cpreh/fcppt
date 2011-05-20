@@ -59,12 +59,12 @@ unproject(
 			N::value+1)
 	>::type
 	vector4;
-	
+
 	// Copied from
-	// http://www.opengl.org/wiki/GluProject_and_gluUnProject_code 
+	// http://www.opengl.org/wiki/GluProject_and_gluUnProject_code
 	// and adapted to the ugly static_cast fcppt style
-	vector4 result = 
-		inverse_mvp * 
+	vector4 result =
+		inverse_mvp *
 		vector4(
 			static_cast<T>(
 				static_cast<T>(2) * (window_coordinates.x() - viewport.pos().x()) / viewport.size().w() - static_cast<T>(1)),
@@ -74,10 +74,10 @@ unproject(
 				static_cast<T>(2) * window_coordinates.z()),
 			static_cast<T>(
 				static_cast<T>(1)));
-	
+
 	result[3] = static_cast<T>(1)/result[3];
 
-	return 
+	return
 		vector::basic<T,N,S1>(
 			static_cast<T>(result[3] * result[0]),
 			static_cast<T>(result[3] * result[1]),

@@ -77,7 +77,7 @@ basic<
 		T,
 		M1,
 		M2
-	>::type 
+	>::type
 > const
 operator *(
 	basic<T, M1, N, S1> const &a,

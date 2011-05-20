@@ -30,8 +30,8 @@ fcppt::assertion_failed::assertion_failed(
 		FCPPT_TEXT(": ")
 		+
 		(
-			_function.empty() 
-			? 
+			_function.empty()
+			?
 				fcppt::string()
 			:
 				fcppt::string(
@@ -49,8 +49,8 @@ fcppt::assertion_failed::assertion_failed(
 		FCPPT_TEXT("\" failed")
 		+
 		(
-			_message.empty() 
-			? 
+			_message.empty()
+			?
 				fcppt::string()
 			:
 				fcppt::string(
@@ -81,7 +81,7 @@ fcppt::assertion_failed::file() const
 }
 
 inline
-int	
+int
 fcppt::assertion_failed::line() const
 {
 	return line_;

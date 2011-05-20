@@ -59,10 +59,10 @@ private:
 		typename Tree::reverse_iterator
 	>::type tree_iterator;
 
-	typedef typename tree_iterator::pointer tree_pointer; 
+	typedef typename tree_iterator::pointer tree_pointer;
 
 	typedef std::stack<
-		tree_pointer	
+		tree_pointer
 	> stack_type;
 
 	typedef typename Tree::child_list child_list;

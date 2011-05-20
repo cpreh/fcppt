@@ -31,7 +31,7 @@ public:
 	FCPPT_SYMBOL
 	connection();
 
-	FCPPT_SYMBOL 
+	FCPPT_SYMBOL
 	virtual ~connection();
 };
 

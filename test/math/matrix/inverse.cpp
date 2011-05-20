@@ -14,12 +14,12 @@
 
 BOOST_AUTO_TEST_CASE(delete_row_and_column_test)
 {
-	typedef 
+	typedef
 	fcppt::math::matrix::static_<
 		double,
 		3,
 		3
-	>::type 
+	>::type
 	large_matrix_type;
 
 	BOOST_CHECK((
@@ -27,7 +27,7 @@ BOOST_AUTO_TEST_CASE(delete_row_and_column_test)
 			large_matrix_type(
 				0.,1.,2.,
 				1.,0.,3.,
-				4.,-3.,8.)) == 
+				4.,-3.,8.)) ==
 		large_matrix_type(
 			-9./2.,7.,-3./2.,
 			-2.,4.,-1.,

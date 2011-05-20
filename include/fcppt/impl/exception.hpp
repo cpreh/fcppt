@@ -7,7 +7,7 @@
 #ifndef FCPPT_IMPL_EXCEPTION_HPP_INCLUDED
 #define FCPPT_IMPL_EXCEPTION_HPP_INCLUDED
 
-inline 
+inline
 fcppt::exception::exception(
 	fcppt::string const &_string
 )
@@ -15,7 +15,7 @@ fcppt::exception::exception(
 	string_(_string)
 {}
 
-inline 
+inline
 fcppt::exception::exception(
 	exception const &_exception
 )
@@ -26,7 +26,7 @@ fcppt::exception::exception(
 	)
 {}
 
-inline 
+inline
 fcppt::exception &
 fcppt::exception::operator=(
 	exception const &_exception
@@ -36,21 +36,21 @@ fcppt::exception::operator=(
 	return *this;
 }
 
-inline 
+inline
 fcppt::string const &
 fcppt::exception::string() const
 {
 	return string_;
 }
 
-inline 
+inline
 char const *
 fcppt::exception::what() const throw()
 {
 	return "what cannot be supplied by an fcppt::exception, do not catch fcppt::exception as std::exception";
 }
 
-inline 
+inline
 fcppt::exception::~exception() throw()
 {}
 

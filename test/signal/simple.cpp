@@ -17,7 +17,7 @@ int global = 0;
 
 void
 add(
-	int const _value 
+	int const _value
 )
 {
 	global += _value;
@@ -48,7 +48,7 @@ BOOST_AUTO_TEST_CASE(
 		BOOST_REQUIRE(
 			global == 0
 		);
-	
+
 		sig();
 
 		BOOST_REQUIRE(

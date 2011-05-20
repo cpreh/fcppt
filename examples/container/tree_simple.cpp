@@ -20,7 +20,7 @@
 int main()
 try
 {
-	typedef 
+	typedef
 	fcppt::container::tree::object<
 		fcppt::string
 	>
@@ -107,7 +107,7 @@ try
 		fcppt::io::cout
 			<< it->value()
 			<< FCPPT_TEXT('\n');
-	
+
 	string_tree &first_child(
 		tree.front()
 	);
@@ -117,8 +117,8 @@ try
 		<< first_child.has_parent()
 		<< FCPPT_TEXT('\n');
 
-	fcppt::io::cout 
-		<< FCPPT_TEXT("First child's position in the parent's child list: ") 
+	fcppt::io::cout
+		<< FCPPT_TEXT("First child's position in the parent's child list: ")
 		<< std::distance(
 			first_child.parent().begin(),
 			first_child.child_position()
@@ -132,7 +132,7 @@ catch(
 	fcppt::io::cerr
 		<< _error.string()
 		<< FCPPT_TEXT('\n');
-	
+
 	return EXIT_FAILURE;
 }
 //]

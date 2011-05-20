@@ -40,7 +40,7 @@ remove_if(
 		position == _container.end()
 	)
 		return false;
-	
+
 	_container.erase(
 		position,
 		_container.end()

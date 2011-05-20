@@ -12,20 +12,20 @@
 
 BOOST_AUTO_TEST_CASE(delete_row_and_column)
 {
-	typedef 
+	typedef
 	fcppt::math::matrix::static_<
 		float,
 		3,
 		4
-	>::type 
+	>::type
 	large_matrix_type;
 
-	typedef 
+	typedef
 	fcppt::math::matrix::static_<
 		float,
 		2,
 		3
-	>::type 
+	>::type
 	small_matrix_type;
 
 	large_matrix_type const t(
@@ -39,7 +39,7 @@ BOOST_AUTO_TEST_CASE(delete_row_and_column)
 		fcppt::math::matrix::delete_row_and_column(
 			t,
 			static_cast<large_matrix_type::size_type>(2),
-			static_cast<large_matrix_type::size_type>(1)) == 
+			static_cast<large_matrix_type::size_type>(1)) ==
 		small_matrix_type(
 			1,3,
 			4,6,
@@ -50,7 +50,7 @@ BOOST_AUTO_TEST_CASE(delete_row_and_column)
 		fcppt::math::matrix::delete_row_and_column(
 			t,
 			static_cast<large_matrix_type::size_type>(0),
-			static_cast<large_matrix_type::size_type>(0)) == 
+			static_cast<large_matrix_type::size_type>(0)) ==
 		small_matrix_type(
 			5, 6,
 			8, 9,

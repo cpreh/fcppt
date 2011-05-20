@@ -12,7 +12,7 @@ fcppt::filesystem::remove(
 	path const &_path
 )
 {
-	return 
+	return
 		boost::filesystem::remove(
 			_path
 		);

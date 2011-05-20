@@ -23,28 +23,28 @@ vector_rotation(
 	typename fcppt::math::vector::static_<T,3>::type const &v,
 	boost::math::quaternion<T> const &q)
 {
-	typedef typename 
+	typedef typename
 	fcppt::math::vector::static_<T,3>::type
 	vector;
 
-	typedef 
-	boost::math::quaternion<T> 
+	typedef
+	boost::math::quaternion<T>
 	quaternion;
-	
+
 	quaternion const p(
 		static_cast<T>(
 			0),
 		v[0],
 		v[1],
 		v[2]);
-	
-	quaternion const result = 
-		q * 
-		p * 
+
+	quaternion const result =
+		q *
+		p *
 		boost::math::conj(
 			q);
-	
-	return 
+
+	return
 		vector(
 			result.R_component_2(),
 			result.R_component_3(),

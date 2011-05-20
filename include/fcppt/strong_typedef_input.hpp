@@ -40,7 +40,7 @@ operator>>(
 		_stream >> in
 	)
 		_value = in;
-	
+
 	return _stream;
 }
 

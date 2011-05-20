@@ -26,7 +26,7 @@ struct time_traits<
 	typedef fcppt::chrono::asio::clock clock;
 
 	typedef clock::time_point time_type;
-	
+
 	typedef clock::duration duration_type;
 
 	FCPPT_SYMBOL

@@ -21,7 +21,7 @@ namespace dim
 
 template<
 	typename Dim,
-	size_type Size 
+	size_type Size
 >
 struct has_dim
 :

@@ -10,7 +10,7 @@
 fcppt::log::level_string_array const
 fcppt::log::level_strings()
 {
-	level_string_array const ret = {{	
+	level_string_array const ret = {{
 		FCPPT_TEXT("verbose"),
 		FCPPT_TEXT("debug"),
 		FCPPT_TEXT("info"),

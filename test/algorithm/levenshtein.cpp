@@ -20,17 +20,17 @@ test_single_levenshtein(
 	std::string const &b,
 	std::string::size_type const expected)
 {
-	std::cout 
-		<< "Expecting levenshtein distance (\"" 
-		<< a 
-		<< "\",\"" 
-		<< b << "\") to be " 
+	std::cout
+		<< "Expecting levenshtein distance (\""
+		<< a
+		<< "\",\""
+		<< b << "\") to be "
 		<< expected
-		<< ", got " 
-		<< 
+		<< ", got "
+		<<
 			fcppt::algorithm::levenshtein(
 				a,
-				b) 
+				b)
 		<< "...\n";
 
 	BOOST_CHECK(

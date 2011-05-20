@@ -25,8 +25,8 @@ shift_compare(
 	Equality const &is_equal)
 {
 	// Has to be an iterator so the mutating algorithm below works
-	typename Container2::iterator 
-		first_in_second = 
+	typename Container2::iterator
+		first_in_second =
 			::std::find_if(
 				b.begin(),
 				b.end(),
@@ -43,7 +43,7 @@ shift_compare(
 		first_in_second,
 		b.end());
 
-	return 
+	return
 		boost::inner_product(
 			a,
 			b,

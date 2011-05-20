@@ -22,6 +22,6 @@ fcppt::time::std_time()
 		throw time::exception(
 			FCPPT_TEXT("std_time() failed!")
 		);
-	
+
 	return ret;
 }

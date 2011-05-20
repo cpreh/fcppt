@@ -28,15 +28,15 @@ generate_binary_vectors(
 	ForwardIterator &it,
 	Vector v)
 {
-	v[static_cast<std::size_t>(N)] = 
+	v[static_cast<std::size_t>(N)] =
 		static_cast<typename Vector::value_type>(
 			0);
-	*it++ = 
+	*it++ =
 		v;
-	v[static_cast<std::size_t>(N)] = 
+	v[static_cast<std::size_t>(N)] =
 		static_cast<typename Vector::value_type>(
 			1);
-	*it++ = 
+	*it++ =
 		v;
 }
 
@@ -51,13 +51,13 @@ generate_binary_vectors(
 	ForwardIterator &it,
 	Vector v)
 {
-	v[static_cast<std::size_t>(N)] = 
+	v[static_cast<std::size_t>(N)] =
 		static_cast<typename Vector::value_type>(
 			0);
 	fcppt::math::detail::generate_binary_vectors<static_cast<fcppt::math::size_type>(N-1),ForwardIterator,Vector>(
 		it,
 		v);
-	v[static_cast<std::size_t>(N)] = 
+	v[static_cast<std::size_t>(N)] =
 		static_cast<typename Vector::value_type>(
 			1);
 	fcppt::math::detail::generate_binary_vectors<static_cast<fcppt::math::size_type>(N-1),ForwardIterator,Vector>(

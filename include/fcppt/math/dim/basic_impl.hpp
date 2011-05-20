@@ -104,7 +104,7 @@ fcppt::math::dim::basic<T, N, S>::basic(
 		storage_,
 		std::distance(
 			_begin,
-			_end	
+			_end
 		)
 	);
 

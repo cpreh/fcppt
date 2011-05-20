@@ -27,6 +27,6 @@ fcppt::filesystem::extension_without_dot(
 		ret.erase(
 			ret.begin()
 		);
-	
+
 	return ret;
 }

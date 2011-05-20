@@ -53,7 +53,7 @@ fcppt::time::sleep(
 	};
 
 	timespec rem;
-	
+
 	if(
 		::nanosleep(
 			&req,

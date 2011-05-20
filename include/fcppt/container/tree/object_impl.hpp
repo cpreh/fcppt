@@ -39,7 +39,7 @@ fcppt::container::tree::object<T>::object(
 :
 	value_(
 		fcppt::forward<
-			arg_base_type	
+			arg_base_type
 		>(
 			_value
 		)
@@ -195,7 +195,7 @@ fcppt::container::tree::object<T>::value(
 	tree::detail::assign_value(
 		value_,
 		fcppt::forward<
-			arg_base_type	
+			arg_base_type
 		>(
 			_value
 		)
@@ -283,7 +283,7 @@ fcppt::container::tree::object<T>::push_back(
 	insert(
 		end(),
 		fcppt::forward<
-			arg_base_type	
+			arg_base_type
 		>(
 			_value
 		)
@@ -326,7 +326,7 @@ fcppt::container::tree::object<T>::push_front(
 	insert(
 		begin(),
 		fcppt::forward<
-			arg_base_type	
+			arg_base_type
 		>(
 			_value
 		)
@@ -538,7 +538,7 @@ fcppt::container::tree::object<T>::insert(
 			object<T>
 		>(
 			fcppt::forward<
-				arg_base_type	
+				arg_base_type
 			>(
 				_value
 			)

@@ -38,7 +38,7 @@ assign_fill_recurse(
 	_result[_pos] =
 		_is_contained
 		?
-			_source[_pos]	
+			_source[_pos]
 		:
 			_value;
 }

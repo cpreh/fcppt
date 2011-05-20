@@ -31,7 +31,7 @@ template
 	typename N,
 	typename S
 >
-typename 
+typename
 boost::enable_if
 <
 	math::is_static_size
@@ -59,7 +59,7 @@ adjugate(
 	{
 		for (size_type cols = 0; cols < N::value; ++cols)
 		{
-			T const coeff = 
+			T const coeff =
 				(rows+cols) % static_cast<size_type>(2) == static_cast<size_type>(0)
 				?
 					static_cast<T>(
@@ -72,8 +72,8 @@ adjugate(
 
 			// Note: We transpose here because we want the adjugate, not the cofactor
 			// matrix
-			ret[cols][rows] = 
-				coeff * 
+			ret[cols][rows] =
+				coeff *
 				matrix::determinant(
 					matrix::delete_row_and_column(
 						matrix_,

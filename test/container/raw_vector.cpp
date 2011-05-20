@@ -75,7 +75,7 @@ BOOST_AUTO_TEST_CASE(
 		test.size() == 5u
 	);
 }
-	
+
 BOOST_AUTO_TEST_CASE(
 	container_raw_vector_insert
 )
@@ -198,7 +198,7 @@ BOOST_AUTO_TEST_CASE(
 				container_type::value_type
 			>(i)
 		);
-	
+
 	for(
 		container_type::size_type i(0);
 		i < test.size();
@@ -228,7 +228,7 @@ BOOST_AUTO_TEST_CASE(
 				container_type::value_type
 			>(i)
 		);
-	
+
 	test.erase(
 		test.begin() + 3
 	);
@@ -275,7 +275,7 @@ BOOST_AUTO_TEST_CASE(
 				container_type::value_type
 			>(i)
 		);
-	
+
 	container_type test2(test);
 
 	BOOST_REQUIRE(

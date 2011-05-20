@@ -27,7 +27,7 @@ BOOST_AUTO_TEST_CASE(math_matrix_rotation_axis)
 		float,
 		3
 	>::type vector_rotation_type;
-	
+
 	matrix_type const trans_(
 		fcppt::math::matrix::rotation_axis(
 			fcppt::math::pi<float>(),
@@ -68,10 +68,10 @@ BOOST_AUTO_TEST_CASE(math_matrix_rotation_axis)
 			vector_rotation_type(
 				0.f,
 				0.f,
-				0.f)) == 
+				0.f)) ==
 		matrix_type::identity());
-	
-	float const angle = 
+
+	float const angle =
 		fcppt::math::pi<float>()/2.0f;
 
 	BOOST_CHECK(
@@ -80,17 +80,17 @@ BOOST_AUTO_TEST_CASE(math_matrix_rotation_axis)
 			vector_rotation_type(
 				1.0f,
 				0.0f,
-				0.0f)) == 
+				0.0f)) ==
 		fcppt::math::matrix::rotation_x(
 			angle));
-	
+
 	BOOST_CHECK(
 		fcppt::math::matrix::rotation_axis(
 			angle,
 			vector_rotation_type(
 				0.0f,
 				1.0f,
-				0.0f)) == 
+				0.0f)) ==
 		fcppt::math::matrix::rotation_y(
 			angle));
 
@@ -100,7 +100,7 @@ BOOST_AUTO_TEST_CASE(math_matrix_rotation_axis)
 			vector_rotation_type(
 				0.0f,
 				0.0f,
-				1.0f)) == 
+				1.0f)) ==
 		fcppt::math::matrix::rotation_z(
 			angle));
 }

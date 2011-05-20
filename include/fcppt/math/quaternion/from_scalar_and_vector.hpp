@@ -28,7 +28,7 @@ from_scalar_and_vector(
 	T const &s,
 	typename fcppt::math::vector::static_<T,3>::type const &v)
 {
-	return 
+	return
 		boost::math::quaternion<T>(
 			s,
 			v[0],

@@ -32,8 +32,8 @@ to_matrix(
 		x = q.R_component_2(),
 		y = q.R_component_3(),
 		z = q.R_component_4();
-		
-	return 
+
+	return
 		// NOTE: more ugly static_casts here?
 		// NOTE: Maybe transpose this?
 		typename fcppt::math::matrix::static_<T,4,4>::type(

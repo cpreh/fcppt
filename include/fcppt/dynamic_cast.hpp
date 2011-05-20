@@ -58,7 +58,7 @@ dynamic_cast_(
 						Dest
 					)
 				)
-			);	
+			);
 	}
 }
 

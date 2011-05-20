@@ -18,12 +18,12 @@ BOOST_AUTO_TEST_CASE(math_matrix_view)
 
 	std::size_t const size = 3;
 
-	typedef 
+	typedef
 	fcppt::math::matrix::static_<
 		value_type,
 		size,
-		size	
-	>::type 
+		size
+	>::type
 	matrix_type;
 
 	typedef

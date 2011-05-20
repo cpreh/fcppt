@@ -50,21 +50,21 @@ MACRO(make_fcppt_documentation name)
 ENDMACRO()
 
 make_fcppt_documentation(
-	adapted 
+	adapted
 	char_type.hpp
-	error 
-	filesystem 
-	format.hpp 
+	error
+	filesystem
+	format.hpp
 	from_std_wstring.hpp
 	from_std_string.hpp
 	io
 	narrow.hpp
 	preprocessor/stringize.hpp
-	string.hpp 
-	text.hpp 
+	string.hpp
+	text.hpp
 	to_std_wstring.hpp
 	to_std_string.hpp
-	widen.hpp 
+	widen.hpp
 )
 make_fcppt_documentation(algorithm algorithm)
 make_fcppt_documentation(alignment alignment)
@@ -132,7 +132,7 @@ make_fcppt_documentation(
 	function/object.hpp
 )
 make_fcppt_documentation(
-	homogenous_pair	
+	homogenous_pair
 	homogenous_pair_fwd.hpp
 	homogenous_pair_decl.hpp
 	homogenous_pair_impl.hpp
@@ -165,12 +165,12 @@ make_fcppt_documentation(
 	preprocessor
 	preprocessor/disable_gcc_warning.hpp
 	preprocessor/disable_vc_warning.hpp
-	preprocessor/file.hpp 
-	preprocessor/fixme.hpp 
-	preprocessor/function.hpp 
-	preprocessor/message.hpp 
+	preprocessor/file.hpp
+	preprocessor/fixme.hpp
+	preprocessor/function.hpp
+	preprocessor/message.hpp
 	preprocessor/pop_warning.hpp
-	preprocessor/pragma.hpp 
+	preprocessor/pragma.hpp
 	preprocessor/push_warning.hpp
 	preprocessor/todo.hpp
 	preprocessor/warning.hpp

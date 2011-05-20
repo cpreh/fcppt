@@ -44,7 +44,7 @@ BOOST_AUTO_TEST_CASE(
 
 	std::cout << "Generating 2D binary vectors...\n";
 
-	vector2_container result2 = 
+	vector2_container result2 =
 		fcppt::math::generate_binary_vectors<int,2>();
 
 	std::cout << "Result: \n";
@@ -66,7 +66,7 @@ BOOST_AUTO_TEST_CASE(
 
 	std::cout << "Generating 3D binary vectors...\n";
 
-	vector3_container result3 = 
+	vector3_container result3 =
 		fcppt::math::generate_binary_vectors<int,3>();
 
 	std::cout << "Result: \n";

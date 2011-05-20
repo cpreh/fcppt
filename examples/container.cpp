@@ -84,6 +84,6 @@ catch(
 	fcppt::io::cerr
 		<< e.string()
 		<< FCPPT_TEXT('\n');
-	
+
 	return EXIT_FAILURE;
 }

@@ -19,12 +19,12 @@ int main()
 	}
 	catch (fcppt::assertion_failed const &e)
 	{
-		fcppt::io::cerr 
-			<< FCPPT_TEXT("Assertion caught: ") 
+		fcppt::io::cerr
+			<< FCPPT_TEXT("Assertion caught: ")
 			<< e.string()
 			<< FCPPT_TEXT("\n");
 	}
-	
+
 	try
 	{
 		FCPPT_ASSERT_MESSAGE(
@@ -33,8 +33,8 @@ int main()
 	}
 	catch (fcppt::assertion_failed const &e)
 	{
-		fcppt::io::cerr 
-			<< FCPPT_TEXT("Assertion caught: ") 
+		fcppt::io::cerr
+			<< FCPPT_TEXT("Assertion caught: ")
 			<< e.string()
 			<< FCPPT_TEXT("\n");
 	}

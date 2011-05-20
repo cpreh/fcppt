@@ -404,7 +404,7 @@ fcppt::container::raw_vector<T, A>::operator=(
 		&_other == this
 	)
 		return *this;
-	
+
 	this->assign(
 		_other.begin(),
 		_other.end()
@@ -945,7 +945,7 @@ typename boost::enable_if<
 	>,
 	void
 >::type
-fcppt::container::raw_vector<T, A>::insert_impl(	
+fcppt::container::raw_vector<T, A>::insert_impl(
 	iterator _position,
 	In _left,
 	In const _right

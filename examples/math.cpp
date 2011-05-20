@@ -10,7 +10,7 @@
 #include <fcppt/math/dim/dim.hpp>
 #include <fcppt/math/point_rotate.hpp>
 #include <fcppt/math/box/box.hpp>
-#include <fcppt/math/box/rect.hpp>	
+#include <fcppt/math/box/rect.hpp>
 #include <fcppt/io/cout.hpp>
 #include <fcppt/text.hpp>
 #include <boost/assign/list_of.hpp>
@@ -103,7 +103,7 @@ int main()
 			44
 		)
 		<< FCPPT_TEXT('\n');
-	
+
 	typedef fcppt::math::box::rect<
 		int
 	>::type int_rect;

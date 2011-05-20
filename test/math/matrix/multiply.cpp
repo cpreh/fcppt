@@ -38,7 +38,7 @@ BOOST_AUTO_TEST_CASE(multiply)
 	fcppt::io::cout
 		<< result
 		<< FCPPT_TEXT('\n');
-	
+
 	BOOST_REQUIRE(
 		result
 		==

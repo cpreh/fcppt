@@ -19,7 +19,7 @@ namespace vector
 {
 /// Calculate the n dimensional polar coordinates, also called "hyperspherical coordinates"
 /**
-	Formula taken from: 
+	Formula taken from:
 	http://en.wikipedia.org/wiki/Hypersphere#Hyperspherical_coordinates
 
 	Given an (n-1)-dimensional angle vector this returns an
@@ -36,7 +36,7 @@ hypersphere_to_cartesian(
 	basic<T,N,S> const &angles)
 {
 	typedef typename
-	static_<T,N::value+1>::type 
+	static_<T,N::value+1>::type
 	result_type;
 
 	typedef typename
@@ -51,15 +51,15 @@ hypersphere_to_cartesian(
 	for(size_type i = 0; i < result.size(); ++i)
 	{
 		// Hehe..."sins"
-		value_type sins = 
+		value_type sins =
 			static_cast<value_type>(
 				1);
 		for(size_type j = 0; j < i; ++j)
-			sins *= 
+			sins *=
 				std::sin(
 					angles[j]);
-		result[i] = 
-			sins * 
+		result[i] =
+			sins *
 			(
 			i >= angles.size()
 			?

@@ -26,7 +26,7 @@ is_negative(
 	T const &t
 )
 {
-	return 
+	return
 		t < fcppt::math::null<T>();
 }
 

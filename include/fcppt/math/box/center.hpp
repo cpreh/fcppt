@@ -24,8 +24,8 @@ typename basic<T,N>::vector const
 center(
 	basic<T,N> const &b)
 {
-	return 
-		b.pos() + 
+	return
+		b.pos() +
 		fcppt::math::dim::structure_cast<typename basic<T,N>::vector>(
 			b.size())/
 		static_cast<T>(2);

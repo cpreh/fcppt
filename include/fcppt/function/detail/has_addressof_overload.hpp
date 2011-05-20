@@ -46,7 +46,7 @@ template< typename Function >
 struct has_addressof_overload
 <
 	Function,
-	typename boost::enable_if< 
+	typename boost::enable_if<
 		boost::is_class<
 			Function
 		>

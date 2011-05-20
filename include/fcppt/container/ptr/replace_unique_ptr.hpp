@@ -21,7 +21,7 @@ template
 	typename PtrContainer,
 	typename UniquePtr
 >
-typename 
+typename
 boost::enable_if
 <
 	fcppt::type_traits::is_unique_ptr<UniquePtr>,

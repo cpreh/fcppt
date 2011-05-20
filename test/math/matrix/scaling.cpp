@@ -18,7 +18,7 @@ BOOST_AUTO_TEST_CASE(math_matrix_scaling)
 		4,
 		4
 	>::type matrix_type;
-	
+
 	matrix_type const trans_(
 		fcppt::math::matrix::scaling(
 			5.f,

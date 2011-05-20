@@ -59,7 +59,7 @@ struct array
 	iterator
 	end();
 
-	const_iterator 
+	const_iterator
 	end() const;
 
 	reverse_iterator
@@ -88,13 +88,13 @@ struct array
 
 	size_type
 	size() const;
-	
+
 	size_type
 	max_size() const;
 
 	bool
 	empty() const;
-	
+
 	reference
 	operator[](
 		size_type
@@ -120,7 +120,7 @@ struct array
 
 	const_reference
 	front() const;
-	
+
 	reference
 	back();
 

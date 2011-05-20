@@ -53,7 +53,7 @@ public:
 private:
 	typedef typename std::tr1::variate_generator<
 		Generator,
-		distribution	
+		distribution
 	> variate_type;
 
 	variate_type variate_;

@@ -24,8 +24,8 @@ BOOST_AUTO_TEST_CASE(main_test)
 	boost::iostreams::stream<raw_source>
 	stream_type;
 
-	typedef 
-	std::vector<char> 
+	typedef
+	std::vector<char>
 	other_container;
 
 	other_container other;
@@ -41,7 +41,7 @@ BOOST_AUTO_TEST_CASE(main_test)
 	stream.read(
 		bytes,
 		std::ios_base::binary);
-	
+
 	BOOST_CHECK(
 		bytes[0] == 'a');
 	BOOST_CHECK(
@@ -63,7 +63,7 @@ BOOST_AUTO_TEST_CASE(main_test)
 	stream.read(
 		bytes,
 		std::ios_base::binary);
-	
+
 	BOOST_CHECK(
 		bytes[0] == 'a');
 	BOOST_CHECK(

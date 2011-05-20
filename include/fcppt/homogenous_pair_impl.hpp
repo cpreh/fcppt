@@ -14,10 +14,10 @@ template
 <
 	typename T
 >
-fcppt::homogenous_pair<T>::homogenous_pair() 
-: 
+fcppt::homogenous_pair<T>::homogenous_pair()
+:
 	first(),
-	second() 
+	second()
 {}
 
 template
@@ -62,7 +62,7 @@ template
 <
 	typename T
 >
-bool 
+bool
 fcppt::operator<(
 	homogenous_pair<T> const &_a,
 	homogenous_pair<T> const &_b
@@ -79,13 +79,13 @@ template
 <
 	typename T
 >
-bool 
+bool
 fcppt::operator==(
 	homogenous_pair<T> const &_a,
 	homogenous_pair<T> const &_b
 )
 {
-	return 
+	return
 		_a.first == _b.first
 		&& _a.second == _b.second;
 }
@@ -94,7 +94,7 @@ template
 <
 	typename T
 >
-bool 
+bool
 fcppt::operator!=(
 	homogenous_pair<T> const &_a,
 	homogenous_pair<T> const &_b

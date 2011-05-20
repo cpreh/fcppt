@@ -53,7 +53,7 @@ angle_between(
 			/
 			(
 			vector::length(
-				_from) * 
+				_from) *
 			vector::length(
 				_to)
 			)

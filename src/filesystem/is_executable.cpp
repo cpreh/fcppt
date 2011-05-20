@@ -43,12 +43,12 @@ fcppt::filesystem::is_executable(
 		) == 0
 	)
 		return true;
-	
+
 	if(
 		errno == EACCES
 	)
 		return false;
-	
+
 	throw filesystem::exception(
 		FCPPT_TEXT("Can't read permissions on \"")
 #ifndef FCPPT_USE_FILESYSTEM_V3

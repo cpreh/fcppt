@@ -32,12 +32,12 @@ orthogonalize(
 
 	for(Iterator it = begin; it != end; ++it)
 	{
-		(*it) = 
+		(*it) =
 			::std::accumulate(
 				begin,
 				it,
 				*it,
-				boost::phoenix::arg_names::arg1 - 
+				boost::phoenix::arg_names::arg1 -
 				boost::phoenix::bind(
 					&fcppt::math::vector::project<vector>,
 					boost::phoenix::arg_names::arg2,

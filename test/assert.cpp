@@ -15,7 +15,7 @@ bool
 contains_false(
 	fcppt::assertion_failed const &_e)
 {
-	return 
+	return
 		_e.string().find(
 			FCPPT_TEXT("false")) != fcppt::string::npos;
 }
@@ -24,7 +24,7 @@ bool
 contains_false_and_contains_1337(
 	fcppt::assertion_failed const &_e)
 {
-	return 
+	return
 		contains_false(
 			_e) &&
 		_e.string().find(
@@ -39,7 +39,7 @@ BOOST_AUTO_TEST_CASE(assert)
 			false),
 		fcppt::assertion_failed,
 		contains_false);
-		
+
 	BOOST_REQUIRE_EXCEPTION(
 		FCPPT_ASSERT_MESSAGE(
 			false,

@@ -29,7 +29,7 @@ BOOST_AUTO_TEST_CASE(
 		test2(
 			4
 		);
-	
+
 	BOOST_REQUIRE(
 		test1 + test2
 		== strong_int(6)
@@ -133,7 +133,7 @@ BOOST_AUTO_TEST_CASE(
 		test3(
 			2
 		);
-	
+
 	BOOST_REQUIRE(
 		test1 == test2
 	);

@@ -97,7 +97,7 @@ public:
 			volatile typename boost::remove_reference<
 				deleter_type
 			>::type &,
-			deleter_type	
+			deleter_type
 		>::type
 	);
 
@@ -137,7 +137,7 @@ public:
 
 	pointer
 	get() const;
-	
+
 	deleter_reference
 	get_deleter();
 
@@ -239,7 +239,7 @@ operator>(
 
 template<
 	typename T1,
-	typename T2, 
+	typename T2,
 	template<
 		typename
 	> class D

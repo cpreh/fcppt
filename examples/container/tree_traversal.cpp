@@ -43,7 +43,7 @@ try
 	);
 
 	typedef
-	fcppt::container::tree::pre_order<string_tree const> 
+	fcppt::container::tree::pre_order<string_tree const>
 	traversal_type;
 
 	traversal_type const trav(
@@ -66,7 +66,7 @@ catch(
 	fcppt::io::cerr
 		<< e.string()
 		<< FCPPT_TEXT('\n');
-	
+
 	return EXIT_FAILURE;
 }
 //]

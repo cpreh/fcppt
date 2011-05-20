@@ -21,7 +21,7 @@ BOOST_AUTO_TEST_CASE(box_stretch)
 		box_type::dim(24,26,4));
 
 	BOOST_CHECK(
-		fcppt::math::box::stretch(b,2.0f) == 
+		fcppt::math::box::stretch(b,2.0f) ==
 		box_type(
 			box_type::vector(-2,-1,12),
 			box_type::dim(48,52,8)));

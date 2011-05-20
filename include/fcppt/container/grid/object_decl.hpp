@@ -133,7 +133,7 @@ public:
 	at(
 		dim const &
 	) const;
-	
+
 	dim const &
 	size() const;
 
@@ -190,7 +190,7 @@ public:
 
 	reverse_iterator
 	rend();
-	
+
 	const_reverse_iterator
 	rend() const;
 

@@ -124,10 +124,10 @@ public:
 	bool
 	empty() const;
 
-	iterator 
+	iterator
 	lower_bound(key_type const &);
 
-	const_iterator 
+	const_iterator
 	lower_bound(key_type const &) const;
 private:
 	static fcppt::string const

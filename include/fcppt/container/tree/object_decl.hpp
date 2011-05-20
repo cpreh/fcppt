@@ -36,11 +36,11 @@ class object
 	);
 public:
 	typedef boost::ptr_list<
-		object	
+		object
 	> child_list;
 
 	typedef fcppt::unique_ptr<
-		object	
+		object
 	> unique_ptr;
 
 	typedef typename child_list::value_type value_type;
@@ -62,7 +62,7 @@ public:
 	typedef typename child_list::const_reverse_iterator const_reverse_iterator;
 
 	// support for ptr_tree
-	
+
 	typedef tree::is_ptr_value<
 		T
 	> is_ptr_tree;
@@ -103,7 +103,7 @@ public:
 		stored_type
 	>::type holder_type;
 
-	/// Constructs the tree using the default constructed value 
+	/// Constructs the tree using the default constructed value
 	object();
 
 	/// Constructs the object using the given value

@@ -59,7 +59,7 @@ truncation_check_cast(
 			typeid(Source),
 			typeid(Dest)
 		);
-	
+
 	return dest;
 }
 

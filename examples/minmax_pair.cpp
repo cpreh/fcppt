@@ -25,7 +25,7 @@ int main()
 	fcppt::io::cout
 		<< test1
 		<< FCPPT_TEXT('\n');
-	
+
 	try
 	{
 		int_pair test2(

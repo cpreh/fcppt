@@ -18,12 +18,12 @@
 
 namespace
 {
-typedef 
-float 
+typedef
+float
 real;
 
-typedef 
-fcppt::math::vector::static_<unsigned,2>::type 
+typedef
+fcppt::math::vector::static_<unsigned,2>::type
 uivector2;
 
 typedef
@@ -38,7 +38,7 @@ typedef
 fcppt::math::vector::static_<real,3>::type
 fvector3;
 
-real const epsilon = 
+real const epsilon =
 	static_cast<real>(
 		0.001);
 }
@@ -49,7 +49,7 @@ BOOST_AUTO_TEST_CASE(vector_compare)
 		vec1(1, 2),
 		vec2(1, 2),
 		vec3(2, 2);
-	
+
 	BOOST_CHECK(
 		vec1 == vec2
 	);
@@ -64,7 +64,7 @@ BOOST_AUTO_TEST_CASE(vector_angle_between)
 	fvector2 const
 		vec1(1.f, 0.f),
 		vec2(0.f, 1.f);
-	
+
 	BOOST_CHECK(
 		fcppt::math::compare(
 			fcppt::math::vector::angle_between(
@@ -81,7 +81,7 @@ BOOST_AUTO_TEST_CASE(vector_angle_between_cast)
 	uivector2 const
 		vec1(1, 0),
 		vec2(0, 1);
-	
+
 	BOOST_CHECK(
 		fcppt::math::compare(
 			fcppt::math::vector::angle_between_cast<
@@ -100,7 +100,7 @@ BOOST_AUTO_TEST_CASE(vector_signed_angle)
 	fvector2 const
 		vec1(2.f, 1.f),
 		vec2(2.f, 2.f);
-	
+
 	BOOST_CHECK(
 		fcppt::math::compare(
 			fcppt::math::vector::signed_angle(
@@ -117,7 +117,7 @@ BOOST_AUTO_TEST_CASE(vector_signed_angle_cast)
 	uivector2 const
 		vec1(2, 1),
 		vec2(2, 2);
-	
+
 	BOOST_CHECK(
 		fcppt::math::compare(
 			fcppt::math::vector::signed_angle_cast<
@@ -312,34 +312,34 @@ BOOST_AUTO_TEST_CASE(vector_structure_cast)
 
 BOOST_AUTO_TEST_CASE(vector_hypersphere_to_cartesian)
 {
-	real const 
-		phi1 = 
+	real const
+		phi1 =
 			static_cast<real>(1.5),
-		phi2 = 
+		phi2 =
 			static_cast<real>(0.5);
-	
-	fvector2 const result2 = 
+
+	fvector2 const result2 =
 		fcppt::math::vector::hypersphere_to_cartesian(
 			fvector1(
 				phi1));
 
-	fvector3 const result3 = 
+	fvector3 const result3 =
 		fcppt::math::vector::hypersphere_to_cartesian(
 			fvector2(
 				phi1,
 				phi2));
 
-	std::cout 
+	std::cout
 		<< "Testing the result of 2D hypersphere_to_cartesian.\n"
 		<< "The result should be:\n"
-		<< 
+		<<
 			fvector2(
 				std::cos(
 					phi1),
 				std::sin(
 					phi1))
-		<< "\n and it is:\n" 
-		<< result2 
+		<< "\n and it is:\n"
+		<< result2
 		<< "\n";
 
 	BOOST_CHECK(
@@ -352,22 +352,22 @@ BOOST_AUTO_TEST_CASE(vector_hypersphere_to_cartesian)
 					phi1)),
 			epsilon));
 
-	std::cout 
+	std::cout
 		<< "Testing the result of 3D hypersphere_to_cartesian.\n"
 		<< "The result should be:\n"
-		<< 
+		<<
 			fvector3(
 				std::cos(
 					phi1),
 				std::sin(
-					phi1) * 
+					phi1) *
 				std::cos(
 					phi2),
 				std::sin(
 					phi1) *
 				std::sin(
 					phi2))
-		<< "\n and it is:\n" 
+		<< "\n and it is:\n"
 		<< result3
 		<< "\n";
 
@@ -378,7 +378,7 @@ BOOST_AUTO_TEST_CASE(vector_hypersphere_to_cartesian)
 				std::cos(
 					phi1),
 				std::sin(
-					phi1) * 
+					phi1) *
 				std::cos(
 					phi2),
 				std::sin(

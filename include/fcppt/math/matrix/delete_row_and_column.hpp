@@ -52,42 +52,42 @@ delete_row_and_column(
 	ret_type;
 
 	typedef typename
-	ret_type::size_type 
+	ret_type::size_type
 	size_type;
 
 	ret_type ret;
 
 	for(
-		size_type i = 
-			static_cast<size_type>(0); 
-		i < matrix_.rows(); 
+		size_type i =
+			static_cast<size_type>(0);
+		i < matrix_.rows();
 		++i
 	)
 	{
 		if (i == row)
 			continue;
 
-		size_type const reali = 
-			i > row 
-			? 
+		size_type const reali =
+			i > row
+			?
 				static_cast<size_type>(
-					i-1) 
+					i-1)
 			: i;
 
 		for(
-			size_type j = static_cast<size_type>(0); 
-			j < matrix_.columns(); 
+			size_type j = static_cast<size_type>(0);
+			j < matrix_.columns();
 			++j
 		)
 		{
 			if (j == column)
 				continue;
 
-			size_type const realj = 
+			size_type const realj =
 				j > column
-				? 
-					static_cast<size_type>(j-1) 
-				: 
+				?
+					static_cast<size_type>(j-1)
+				:
 					j;
 
 			ret[reali][realj] = matrix_[i][j];

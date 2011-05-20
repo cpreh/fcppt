@@ -282,7 +282,7 @@ BOOST_AUTO_TEST_CASE(container_grid_const_data)
 	int2_grid const test(
 		int2_grid::dim(
 			5,
-			2	
+			2
 		),
 		42
 	);
@@ -540,7 +540,7 @@ int
 fill_functor(
 	int2_grid::dim const &v)
 {
-	return 
+	return
 		std::accumulate(
 			v.begin(),
 			v.end(),
@@ -566,6 +566,6 @@ BOOST_AUTO_TEST_CASE(container_grid_fill)
 		test[int2_grid::dim(0,0)] == 0 &&
 		test[int2_grid::dim(1,0)] == 1 &&
 		test[int2_grid::dim(0,1)] == 1 &&
-		test[int2_grid::dim(1,1)] == 2 
+		test[int2_grid::dim(1,1)] == 2
 	);
 }

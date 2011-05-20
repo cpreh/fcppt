@@ -14,9 +14,9 @@ BOOST_AUTO_TEST_CASE(assign_make_container)
 {
 	{
 	typedef
-	std::vector<int> 
+	std::vector<int>
 	sequence;
-	
+
 	sequence c(
 		fcppt::assign::make_container<sequence>
 			(
@@ -25,19 +25,19 @@ BOOST_AUTO_TEST_CASE(assign_make_container)
 				4)
 			(
 				5));
-	
+
 	BOOST_REQUIRE(
 		c.size() == static_cast<sequence::size_type>(3) &&
-		c[0] == 3 && 
+		c[0] == 3 &&
 		c[1] == 4 &&
 		c[2] == 5);
 	}
-	
+
 	{
 	typedef
 	std::set<int>
 	set;
-	
+
 	set c(
 		fcppt::assign::make_container<set>
 			(
@@ -46,19 +46,19 @@ BOOST_AUTO_TEST_CASE(assign_make_container)
 				4)
 			(
 				5));
-	
+
 	BOOST_REQUIRE(
 		c.size() == static_cast<set::size_type>(3) &&
-		c.find(3) != c.end() && 
-		c.find(4) != c.end() && 
+		c.find(3) != c.end() &&
+		c.find(4) != c.end() &&
 		c.find(5) != c.end());
 	}
-		
+
 	{
 	typedef
 	std::map<int,int>
 	map;
-	
+
 	map m(
 		fcppt::assign::make_container<map>
 			(std::make_pair(
@@ -67,11 +67,11 @@ BOOST_AUTO_TEST_CASE(assign_make_container)
 			(std::make_pair(
 				4,
 				5)));
-	
+
 	BOOST_REQUIRE(
 		m.size() == static_cast<map::size_type>(2) &&
 		m.find(3) != m.end() &&
-		m.find(3)->second == 2 && 
+		m.find(3)->second == 2 &&
 		m.find(4) != m.end() &&
 		m.find(4)->second == 5);
 	}

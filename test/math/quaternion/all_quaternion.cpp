@@ -28,9 +28,9 @@ BOOST_AUTO_TEST_CASE(all_quaternion)
 		3
 	>::type vector_type;
 
-	element_type const original_angle = 
+	element_type const original_angle =
 		fcppt::math::pi<element_type>();
-	vector_type const original_axis = 
+	vector_type const original_axis =
 		vector_type(
 				0,
 				1,
@@ -48,11 +48,11 @@ BOOST_AUTO_TEST_CASE(all_quaternion)
 		rot,
 		angle,
 		axis);
-	
+
 	BOOST_CHECK(
 		fcppt::math::compare(
 			angle,
-			original_angle) && 
+			original_angle) &&
 		axis == original_axis);
 
 	BOOST_CHECK(

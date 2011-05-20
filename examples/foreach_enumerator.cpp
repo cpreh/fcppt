@@ -44,7 +44,7 @@ int main()
 		my_enum
 	)
 		do_something(i);
-	
+
 	fcppt::io::cout << FCPPT_TEXT('\n');
 
 	// it is also possible to dictate the start value

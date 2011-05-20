@@ -31,7 +31,7 @@ private:
 		gcd_n1_n2 = detail::static_gcd<R1::num, R2::num>::value,
 		gcd_d1_d2 = detail::static_gcd<R1::den, R2::den>::value;
 public:
-	typedef object< 
+	typedef object<
 		detail::ll_mul<R1::num / gcd_n1_n2, R2::den / gcd_d1_d2>::value,
 		detail::ll_mul<R2::num / gcd_n1_n2, R1::den / gcd_d1_d2>::value
 	> type;

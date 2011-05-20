@@ -18,7 +18,7 @@ namespace variant
 /// Does a unary visitation with operation @a _op
 /**
  * This will call @a _op::operator()(t)
- * where t is the object held by @a _obj 
+ * where t is the object held by @a _obj
  * @return The result of @a _op::operator().
 */
 template<

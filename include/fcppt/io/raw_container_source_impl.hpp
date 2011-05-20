@@ -38,7 +38,7 @@ fcppt::io::raw_container_source<Container>::read(
 		const_iterator
 	>::difference_type difference_type;
 
-	difference_type const result = 
+	difference_type const result =
 		std::min(
 			static_cast<
 				difference_type
@@ -49,10 +49,10 @@ fcppt::io::raw_container_source<Container>::read(
 				chars_->cend()));
 
 	// EOF
-	if (result == 0u) 
+	if (result == 0u)
 		return -1;
 
-	const_iterator const new_pos = 
+	const_iterator const new_pos =
 		boost::next(
 			pos_,
 			result);
@@ -67,7 +67,7 @@ fcppt::io::raw_container_source<Container>::read(
 }
 
 template<typename Container>
-std::streampos 
+std::streampos
 fcppt::io::raw_container_source<Container>::seek(
 	boost::iostreams::stream_offset const off,
 	std::ios_base::seekdir const way)
@@ -75,13 +75,13 @@ fcppt::io::raw_container_source<Container>::seek(
 	switch (way)
 	{
 		case std::ios_base::beg:
-			pos_ = 
+			pos_ =
 				boost::next(
 					chars_->cbegin(),
 					off);
 			break;
 		case std::ios_base::cur:
-			pos_ = 
+			pos_ =
 				boost::next(
 					pos_,
 					off);

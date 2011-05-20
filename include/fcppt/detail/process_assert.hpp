@@ -20,7 +20,7 @@ process_assert(
 	string const &file,
 	string const &line,
 	string const &condition,
-	string const &message 
+	string const &message
 );
 
 }

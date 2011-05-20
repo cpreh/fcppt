@@ -12,7 +12,7 @@
 /// Generates an if block with a dynamic_cast_ in its condition
 /**
  * @param dest_type The type to cast to (must be a pointer)
- * @param name The name of the new variable 
+ * @param name The name of the new variable
  * @param expression The expression to cast from
 */
 #define FCPPT_TRY_DYNAMIC_CAST(\

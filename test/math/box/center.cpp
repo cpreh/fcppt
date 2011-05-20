@@ -20,6 +20,6 @@ BOOST_AUTO_TEST_CASE(box_center)
 		box_type::dim(24,26,4));
 
 	BOOST_CHECK(
-		fcppt::math::box::center(b) == 
+		fcppt::math::box::center(b) ==
 			box_type::vector(22,25,16));
 }

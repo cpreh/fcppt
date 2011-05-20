@@ -75,8 +75,8 @@ BOOST_AUTO_TEST_CASE(
 				box1,
 				box4
 			)
-		);	
-	
+		);
+
 	BOOST_CHECK(
 		intersection1
 		== box1

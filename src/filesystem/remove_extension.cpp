@@ -36,7 +36,7 @@ fcppt::filesystem::remove_extension(
 		pos == fcppt::string::npos
 	)
 		return _path;
-	
+
 	filename.erase(
 		pos,
 		fcppt::string::npos

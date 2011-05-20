@@ -31,7 +31,7 @@ BOOST_AUTO_TEST_CASE(variant_get)
 		test.get<
 			std::string
 		>()
-		== 
+		==
 		string
 	);
 }

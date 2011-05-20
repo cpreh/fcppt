@@ -494,7 +494,7 @@ fcppt::container::bitfield::basic<Enum, Size, InternalType>::swap(
 	basic &_other
 )
 {
-	std::swap(	
+	std::swap(
 		array_,
 		_other.array_
 	);
@@ -530,7 +530,7 @@ fcppt::container::bitfield::operator|(
 	Enum const _index
 )
 {
-	return 
+	return
 		basic<
 			Enum,
 			Size,
@@ -572,7 +572,7 @@ fcppt::container::bitfield::basic<Enum, Size, InternalType> const
 fcppt::container::bitfield::operator&(
 	basic<Enum, Size, InternalType> const &_left,
 	basic<Enum, Size, InternalType> const &_right
-) 
+)
 {
 	return
 		basic<

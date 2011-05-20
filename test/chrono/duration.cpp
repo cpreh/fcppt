@@ -42,7 +42,7 @@ BOOST_AUTO_TEST_CASE(chrono_duration)
 		fcppt::chrono::nanoseconds(
 			1000u * 1000u * 1000u
 		);
-	
+
 	BOOST_REQUIRE(
 		convert_back.count()
 		== 1000u * 1000u * 1000u * 3u

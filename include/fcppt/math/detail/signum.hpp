@@ -36,10 +36,10 @@ signum(
 		math::null<T>()
 	);
 
-	if (t > null_) 
+	if (t > null_)
 		return static_cast<T>(1);
-	
-	if (t < null_) 
+
+	if (t < null_)
 		return static_cast<T>(-1);
 
 	return null_;

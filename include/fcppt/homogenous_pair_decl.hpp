@@ -48,7 +48,7 @@ template
 <
 	typename T
 >
-bool 
+bool
 operator<(
 	homogenous_pair<T> const &,
 	homogenous_pair<T> const &

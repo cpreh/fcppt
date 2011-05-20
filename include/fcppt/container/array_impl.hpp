@@ -78,7 +78,7 @@ template<
 	typename T,
 	std::size_t N
 >
-typename fcppt::container::array<T, N>::const_iterator 
+typename fcppt::container::array<T, N>::const_iterator
 fcppt::container::array<T, N>::end() const
 {
 	return elem_ + N;
@@ -173,7 +173,7 @@ fcppt::container::array<T, N>::size() const
 {
 	return N;
 }
-	
+
 template<
 	typename T,
 	std::size_t N
@@ -193,7 +193,7 @@ fcppt::container::array<T, N>::empty() const
 {
 	return N == 0;
 }
-	
+
 template<
 	typename T,
 	std::size_t N
@@ -273,7 +273,7 @@ fcppt::container::array<T, N>::front() const
 {
 	return *begin();
 }
-	
+
 template<
 	typename T,
 	std::size_t N

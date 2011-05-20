@@ -20,9 +20,9 @@ struct instance
 		has_color_output_(
 			false)
 	{
-		char const * const term = 
+		char const * const term =
 			std::getenv("TERM");
-	
+
 		// TERM isn't even set? Could be the case on Windows. We have to fix that later
 		if (!term)
 		{
@@ -30,7 +30,7 @@ struct instance
 			return;
 		}
 
-		char const *term_names[] = 
+		char const *term_names[] =
 		{
 			"Eterm",
 			"ansi",
@@ -115,19 +115,19 @@ fcppt::io::color::set::set(
 {
 }
 
-fcppt::io::color::foreground::type 
+fcppt::io::color::foreground::type
 fcppt::io::color::set::foreground() const
 {
 	return foreground_;
 }
 
-fcppt::io::color::background::type 
+fcppt::io::color::background::type
 fcppt::io::color::set::background() const
 {
 	return background_;
 }
 
-fcppt::io::color::attribute::type 
+fcppt::io::color::attribute::type
 fcppt::io::color::set::attribute() const
 {
 	return attribute_;
@@ -144,7 +144,7 @@ fcppt::io::color::operator<<(
 {
 	if(!impl.has_color_output())
 		return s;
-	return s 
+	return s
 		<< "\033["
 		<< static_cast<enum_impl>(c.attribute()) << ";"
 		<< static_cast<enum_impl>(c.foreground()) << ";"
@@ -158,7 +158,7 @@ fcppt::io::color::operator<<(
 {
 	if(!impl.has_color_output())
 		return s;
-	return s 
+	return s
 		<< L"\033["
 		<< static_cast<enum_impl>(c.attribute()) << L";"
 		<< static_cast<enum_impl>(c.foreground()) << L";"

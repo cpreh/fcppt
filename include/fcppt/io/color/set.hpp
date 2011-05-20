@@ -30,15 +30,15 @@ public:
 		fcppt::io::color::attribute::type);
 
 	FCPPT_SYMBOL
-	fcppt::io::color::foreground::type 
+	fcppt::io::color::foreground::type
 	foreground() const;
 
 	FCPPT_SYMBOL
-	fcppt::io::color::background::type 
+	fcppt::io::color::background::type
 	background() const;
 
 	FCPPT_SYMBOL
-	fcppt::io::color::attribute::type 
+	fcppt::io::color::attribute::type
 	attribute() const;
 
 private:

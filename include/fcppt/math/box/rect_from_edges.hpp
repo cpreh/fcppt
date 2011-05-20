@@ -32,7 +32,7 @@ rect_from_edges(
 	Scalar const _bottom
 )
 {
-	typedef typename 
+	typedef typename
 	fcppt::math::box::basic
 	<
 		Scalar,
@@ -40,7 +40,7 @@ rect_from_edges(
 	>::vector
 	vector;
 
-	typedef typename 
+	typedef typename
 	fcppt::math::box::basic
 	<
 		Scalar,

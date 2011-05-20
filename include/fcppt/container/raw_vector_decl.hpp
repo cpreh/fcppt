@@ -295,7 +295,7 @@ private:
 		>,
 		void
 	>::type
-	insert_impl(	
+	insert_impl(
 		iterator position,
 		In begin,
 		In end
@@ -310,7 +310,7 @@ private:
 		>,
 		void
 	>::type
-	insert_impl(	
+	insert_impl(
 		iterator position,
 		In begin,
 		In end

@@ -18,7 +18,7 @@ namespace algorithm
 /// Calculates the Levenshtein distance (see
 /// http://en.wikipedia.org/wiki/Levenshtein_distance) between two
 /// arbitrary containers of the same type "Container".
-/// Requirements are: 
+/// Requirements are:
 /// - Container::size_type and Container::value_type exist
 /// - bool empty() const exists
 /// - size_type size() const exists
@@ -26,25 +26,25 @@ namespace algorithm
 /// - value_type has to have operator==
 ///
 /// Note that the code is taken quite literally from:
-/// 
+///
 /// http://www.merriampark.com/ldcpp.htm
 template<typename Container>
-typename 
-Container::size_type 
+typename
+Container::size_type
 levenshtein(
-	Container const &source, 
-	Container const &target) 
+	Container const &source,
+	Container const &target)
 {
 	typedef typename
-	Container::size_type 
+	Container::size_type
 	result_type;
 
 	// This doesn't have to be a char_type, it's just called that way :>
 	typedef typename
-	Container::value_type 
+	Container::value_type
 	char_type;
 
-	result_type const 
+	result_type const
 		n = source.size(),
 		m = target.size();
 
@@ -80,20 +80,20 @@ levenshtein(
   for (result_type j = 0; j <= m; j++)
     matrix[dim(0,j)] = j;
 
-  for (result_type i = 1; i <= n; i++) 
+  for (result_type i = 1; i <= n; i++)
 	{
-    char_type const &s_i = 
+    char_type const &s_i =
 			source[i-1];
 
-    for (result_type j = 1; j <= m; j++) 
+    for (result_type j = 1; j <= m; j++)
 		{
-      char_type const &t_j = 
+      char_type const &t_j =
 				target[j-1];
 
       result_type cost;
-      if (s_i == t_j) 
+      if (s_i == t_j)
         cost = 0;
-      else 
+      else
         cost = 1;
 
       // Step 6
@@ -107,10 +107,10 @@ levenshtein(
 
       // Step 6A: Cover transposition, in addition to deletion,
       // insertion and substitution. This step is taken from:
-      // Berghel, Hal ; Roach, David : "An Extension of Ukkonen's 
+      // Berghel, Hal ; Roach, David : "An Extension of Ukkonen's
       // Enhanced Dynamic Programming ASM Algorithm"
       // (http://www.acm.org/~hlb/publications/asm/asm.html)
-      if (i>static_cast<result_type>(2) && j>static_cast<result_type>(2)) 
+      if (i>static_cast<result_type>(2) && j>static_cast<result_type>(2))
 			{
         result_type trans = matrix[dim(i-2,j-2)]+1;
         if (source[i-2]!=t_j) trans++;

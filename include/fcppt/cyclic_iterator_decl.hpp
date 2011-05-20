@@ -54,7 +54,7 @@ public:
 		container_iterator_type const &begin,
 		container_iterator_type const &end
 	);
-		
+
 	template<
 		typename OtherIterator
 	>

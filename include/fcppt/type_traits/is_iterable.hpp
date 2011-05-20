@@ -20,7 +20,7 @@ template<typename T>
 struct is_iterable
 {
 public:
-	static bool const value = 
+	static bool const value =
 		boost::mpl::if_
 		<
 			boost::is_const<T>,

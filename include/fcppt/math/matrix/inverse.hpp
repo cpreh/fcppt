@@ -34,7 +34,7 @@ template
 	typename N,
 	typename S
 >
-typename 
+typename
 boost::enable_if<
 	math::is_static_size<
 		N
@@ -49,14 +49,14 @@ inverse(
 	basic<T,N,N,S> const &t
 )
 {
-	T const det = 
+	T const det =
 		fcppt::math::matrix::determinant(
 			t);
 	if (fcppt::math::almost_zero(det))
 		throw fcppt::math::exception(FCPPT_TEXT("tried to invert a matrix with determinant 0"));
-	return 
+	return
 		fcppt::math::inverse(
-			det) * 
+			det) *
 		matrix::adjugate(
 			t);
 }

@@ -33,7 +33,7 @@ class object
 		object
 	);
 public:
-	/// Constructs a logger. 
+	/// Constructs a logger.
 	/**
 	 * @see parameters::root
 	 * @see parameters::inherited

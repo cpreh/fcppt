@@ -27,10 +27,10 @@ to_angle_and_axis(
 	typename fcppt::math::vector::static_<T,3>::type &axis)
 {
 	// NOTE: Can we express this with quaternion functions instead of the manual sqrt?
-	T const scale = 
+	T const scale =
 		std::sqrt(
-			q.R_component_2() * q.R_component_2() + 
-			q.R_component_3() * q.R_component_3() + 
+			q.R_component_2() * q.R_component_2() +
+			q.R_component_3() * q.R_component_3() +
 			q.R_component_4() * q.R_component_4());
 
 	axis.x() = q.R_component_2() / scale;

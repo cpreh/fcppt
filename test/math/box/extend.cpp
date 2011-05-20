@@ -13,7 +13,7 @@
 
 BOOST_AUTO_TEST_CASE(box_extend_bounding_box)
 {
-	typedef 
+	typedef
 	fcppt::math::box::basic<
 		int,
 		2
@@ -25,7 +25,7 @@ BOOST_AUTO_TEST_CASE(box_extend_bounding_box)
 
 	fcppt::io::cerr << FCPPT_TEXT("Original box: ") << b << FCPPT_TEXT("\n");
 
-	b = 
+	b =
 		fcppt::math::box::extend_bounding_box(
 			b,
 			box_type::vector(
@@ -34,12 +34,12 @@ BOOST_AUTO_TEST_CASE(box_extend_bounding_box)
 	fcppt::io::cerr << FCPPT_TEXT("Added (3,4), now: ") << b << FCPPT_TEXT("\n");
 
 	BOOST_CHECK(
-		b == 
+		b ==
 		box_type(
 			box_type::vector(1,1),
 			box_type::dim(2,3)));
 
-	b = 
+	b =
 		fcppt::math::box::extend_bounding_box(
 			b,
 			box_type::vector(
@@ -49,13 +49,13 @@ BOOST_AUTO_TEST_CASE(box_extend_bounding_box)
 
 	// The tests are incremental, so require is...required here
 	BOOST_REQUIRE(
-		b == 
+		b ==
 		box_type(
 			box_type::vector(0,0),
 			box_type::dim(3,4)));
 
 	// This point is inside the bounding box -> nothing should change
-	b = 
+	b =
 		fcppt::math::box::extend_bounding_box(
 			b,
 			box_type::vector(
@@ -64,7 +64,7 @@ BOOST_AUTO_TEST_CASE(box_extend_bounding_box)
 	fcppt::io::cerr << FCPPT_TEXT("Added (1,1), now: ") << b << FCPPT_TEXT("\n");
 
 	BOOST_REQUIRE(
-		b == 
+		b ==
 		box_type(
 			box_type::vector(0,0),
 			box_type::dim(3,4)));

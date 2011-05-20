@@ -16,29 +16,29 @@ namespace algorithm
 {
 /// Returns the array element with the shortest levenshtein distance
 /// to the "ref" element. Undefined if c.empty().
-/// 
+///
 /// FIXME: Have a nonconst version for this? Base this on iterators?
 template<typename Container>
-typename 
+typename
 Container::const_reference
 shortest_levenshtein(
 	Container const &c,
 	typename Container::const_reference ref)
 {
-	typedef typename 
+	typedef typename
 	Container::value_type
 	string_type;
 
-	typedef typename 
+	typedef typename
 	string_type::size_type
 	size_type;
 
-	size_type shortest_dist = 
+	size_type shortest_dist =
 		::fcppt::algorithm::levenshtein(
 			*c.begin(),
 			ref);
 
-	string_type const *shortest = 
+	string_type const *shortest =
 		&(*c.begin());
 
 	BOOST_FOREACH(

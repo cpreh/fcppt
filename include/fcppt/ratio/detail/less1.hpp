@@ -34,7 +34,7 @@ struct less1  // N1 < D1 == N2 < D2
 };
 
 template<
-	typename R1, 
+	typename R1,
 	typename R2
 >
 struct less1<R1, R2, false>  // N1 < D1 != N2 < D2

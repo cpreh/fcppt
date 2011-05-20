@@ -52,7 +52,7 @@ int main()
 			&callback
 		)
 	);
-	
+
 	// Call the signal, will output: "callback" called with 3
 	signal(3);
 
@@ -66,7 +66,7 @@ int main()
 			&other_callback
 		)
 	);
-	
+
 	foo my_foo;
 	// Note the use of fcppt::ref because the signal gets a non-const reference
 	// Outputs: "other_callback" called

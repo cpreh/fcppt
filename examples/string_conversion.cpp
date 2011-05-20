@@ -30,8 +30,8 @@ int main()
 		<< fcppt::from_std_string(converted)
 		<< FCPPT_TEXT("\n");
 
-	std::wcout 
-		<< fcppt::to_std_wstring(s) 
+	std::wcout
+		<< fcppt::to_std_wstring(s)
 		<< L"\n";
 }
 

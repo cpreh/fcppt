@@ -425,7 +425,7 @@ fcppt::container::grid::object<T, N, A>::rend()
 {
 	return container_.rend();
 }
-	
+
 template<
 	typename T,
 	fcppt::container::grid::size_type N,

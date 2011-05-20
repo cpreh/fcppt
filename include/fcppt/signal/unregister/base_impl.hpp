@@ -52,7 +52,7 @@ fcppt::signal::unregister::base<T>::empty() const
 {
 	return connections().empty();
 }
-	
+
 template<
 	typename T
 >

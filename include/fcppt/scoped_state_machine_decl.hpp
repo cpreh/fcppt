@@ -23,7 +23,7 @@ class scoped_state_machine
 		scoped_state_machine
 	);
 public:
-	explicit 
+	explicit
 	scoped_state_machine(
 		Machine &
 	);

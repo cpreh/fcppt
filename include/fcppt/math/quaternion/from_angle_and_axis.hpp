@@ -25,22 +25,22 @@ namespace quaternion
  * Initializes a quaternion from an axis and an angle. See also: from_scalar_and_vector.
  */
 template<typename T>
-boost::math::quaternion<T> const 
+boost::math::quaternion<T> const
 from_angle_and_axis(
 	T const &angle,
 	typename fcppt::math::vector::static_<T,3>::type const &axis)
 {
-	T const 
-		half_angle = 
+	T const
+		half_angle =
 			angle/static_cast<T>(2),
-		sin_angle = 
+		sin_angle =
 			std::sin(
 				half_angle),
-		cos_angle = 
+		cos_angle =
 			std::cos(
 				half_angle);
 
-	return 
+	return
 		from_scalar_and_vector<T>(
 			cos_angle,
 			sin_angle * axis);

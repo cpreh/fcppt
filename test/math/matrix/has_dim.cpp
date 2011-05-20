@@ -53,7 +53,7 @@ is_1x1(
 
 BOOST_AUTO_TEST_CASE(math_matrix_has_dim)
 {
-	
+
 	typedef fcppt::math::matrix::static_<
 		float,
 		1,
@@ -65,7 +65,7 @@ BOOST_AUTO_TEST_CASE(math_matrix_has_dim)
 	typedef fcppt::math::matrix::static_<
 		float,
 		2,
-		2	
+		2
 	>::type f2x2;
 
 	f2x2 const m2x2;
@@ -75,7 +75,7 @@ BOOST_AUTO_TEST_CASE(math_matrix_has_dim)
 			m1x1
 		)
 	);
-			
+
 
 	BOOST_REQUIRE(
 		!is_1x1(

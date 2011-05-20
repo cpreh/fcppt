@@ -15,7 +15,7 @@ namespace fcppt
 /// Used to create strong typedefs.
 /* The first template parameter is the type to be wrapped.
  * The second template parameter should be a unique tag type.
- * strong_typedef has an explicit construct and 
+ * strong_typedef has an explicit construct and
  * explicit get member functions.
  * Almost all operators are overloaded and found in their
  * respective header.

@@ -23,7 +23,7 @@ bool
 is_normalized(
 	boost::math::quaternion<T> const &r)
 {
-	return 
+	return
 		fcppt::math::compare(
 			dot(
 				r,

@@ -16,7 +16,7 @@ BOOST_AUTO_TEST_CASE(
 	fcppt::alignment::size_type const alignment = 16;
 
 	typedef fcppt::alignment::make_type<
-		char,	
+		char,
 		alignment
 	>::type char_type;
 

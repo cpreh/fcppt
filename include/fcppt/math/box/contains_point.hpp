@@ -37,7 +37,7 @@ contains_point(
 		i < N;
 		++i
 	)
-		ret = ret && 
+		ret = ret &&
 			point_[i] >= box_.pos(i)
 			&& point_[i] < box_.max(i);
 

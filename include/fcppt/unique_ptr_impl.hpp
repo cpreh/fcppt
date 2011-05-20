@@ -463,7 +463,7 @@ fcppt::operator>(
 
 template<
 	typename T1,
-	typename T2, 
+	typename T2,
 	template<
 		typename
 	> class D

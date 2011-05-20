@@ -14,7 +14,7 @@ int main()
 {
 	typedef fcppt::math::vector::static_<
 		float,
-		2	
+		2
 	>::type float2_vec;
 
 	float2_vec const vecf2(
@@ -24,7 +24,7 @@ int main()
 
 	typedef fcppt::math::vector::static_<
 		unsigned,
-		2	
+		2
 	>::type unsigned2_vec;
 
 	// cast all the elements from float to unsigned int
@@ -62,7 +62,7 @@ int main()
 		)
 	);
 
-	std::cout << vecui2n << '\n';	
+	std::cout << vecui2n << '\n';
 }
 
 //]

@@ -16,10 +16,10 @@ namespace color
 namespace foreground
 {
 enum type
-{	
+{
 	off = 0,
 	black = 30,
-	red = 31, 
+	red = 31,
 	green = 32,
 	yellow = 33,
 	blue = 34,

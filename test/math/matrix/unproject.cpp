@@ -22,33 +22,33 @@
 
 BOOST_AUTO_TEST_CASE(unproject_test)
 {
-	double const epsilon = 
+	double const epsilon =
 		0.001;
 
-	typedef 
+	typedef
 	fcppt::math::matrix::static_<
 		double,
 		4,
 		4
-	>::type 
+	>::type
 	matrix_type;
 
-	typedef 
+	typedef
 	fcppt::math::box::basic<
 		double,
 		2
-	> 
+	>
 	box_type;
 
-	typedef 
+	typedef
 	fcppt::math::vector::static_<
 		double,
 		3
-	>::type 
+	>::type
 	vector3_type;
 
-	matrix_type const 
-		orthomatrix = 
+	matrix_type const
+		orthomatrix =
 			fcppt::math::matrix::inverse(
 				fcppt::math::matrix::orthogonal(
 					0.0,
@@ -65,9 +65,9 @@ BOOST_AUTO_TEST_CASE(unproject_test)
 		box_type::dim(
 			1024.0,
 			768.0));
-	
+
 	// The center of the screen. Should be projected to 0.5, 0.5
-	vector3_type const 
+	vector3_type const
 		window_coordinates(
 			512.0,
 			384.0,
@@ -77,9 +77,9 @@ BOOST_AUTO_TEST_CASE(unproject_test)
 			0.5,
 			-5.0);
 
-	std::cout 
-		<< "Unprojecting the point " 
-		<< window_coordinates 
+	std::cout
+		<< "Unprojecting the point "
+		<< window_coordinates
 		<< " using an orthomatrix with the rect ((0,0),(1,1)) with a viewport "
 		<< viewport
 		<< "\nExpected output is: "
@@ -93,7 +93,7 @@ BOOST_AUTO_TEST_CASE(unproject_test)
 			viewport);
 
 	std::cout << "Result: " << result << "\n";
-	
+
 	BOOST_CHECK(
 		fcppt::math::vector::length(
 			result - expected_output) < epsilon);

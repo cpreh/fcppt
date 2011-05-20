@@ -22,7 +22,7 @@ boost::math::quaternion<T> const
 normalize(
 	boost::math::quaternion<T> const &q)
 {
-	T const norm = 
+	T const norm =
 		dot(q,q);
 	return
 		q / norm;

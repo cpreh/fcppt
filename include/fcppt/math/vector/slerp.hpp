@@ -22,7 +22,7 @@ namespace vector
 {
 /// See http://en.wikipedia.org/wiki/Slerp
 template<typename T,typename N,typename S>
-basic<T,N,S> const 
+basic<T,N,S> const
 slerp(
 	basic<T,N,S> const &start,
 	basic<T,N,S> const &end,
@@ -30,20 +30,20 @@ slerp(
 {
 	// acos of the angle between start and end. We need a function for
 	// this, too!
-	T const 
-		omega = 
+	T const
+		omega =
 			std::acos(
 				fcppt::math::vector::dot(start,end)/
 				(fcppt::math::vector::length(start)*fcppt::math::vector::length(end))),
-		sinomega = 
+		sinomega =
 			std::sin(omega);
 
 	// We divide by sin(omega) below, so watch out
 	if (fcppt::math::almost_zero(sinomega))
 		return start;
 
-	return 
-		std::sin((static_cast<T>(1)-t) * omega) / sinomega * start + 
+	return
+		std::sin((static_cast<T>(1)-t) * omega) / sinomega * start +
 		std::sin(t * omega) / sinomega * end;
 }
 }

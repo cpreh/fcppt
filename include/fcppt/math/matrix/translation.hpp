@@ -31,7 +31,7 @@ translation(
 	T const _z
 )
 {
-	T const 
+	T const
 		zero(
 			static_cast<T>(0)
 		),

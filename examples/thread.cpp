@@ -26,7 +26,7 @@ f(
 		std::cout
 			<< i
 			<< ' ';
-	
+
 	std::cout << '\n';
 }
 
@@ -40,7 +40,7 @@ int main()
 			10
 		)
 	);
-	
+
 	task.join(); // important, if left out, task's destructor will call std::terminate()!
 }
 //]

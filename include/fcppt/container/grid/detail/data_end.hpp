@@ -35,7 +35,7 @@ typename boost::enable_if<
 		>::type
 	>,
 	typename detail::choose_pointer<
-		Container	
+		Container
 	>::type
 >::type
 data_end(

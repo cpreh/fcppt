@@ -13,7 +13,7 @@ From there additional files can be included by the [include file] directive.
 
 Code can be embedded with the [import sourcefile] directive and
 an additional directive for every codesnippet [codesnippetname].
-The code inside the sourcefile has to be embraced by //[codesnippetname 
+The code inside the sourcefile has to be embraced by //[codesnippetname
 and //]. Every code snippet that is used in the documentation should go to
 examples/.
 

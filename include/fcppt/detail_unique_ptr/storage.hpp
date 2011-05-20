@@ -27,7 +27,7 @@ template <
 	typename T2,
 	bool = boost::is_empty<T2>::value
 >
-class storage 
+class storage
 {
 	T1 t1_;
 	T2 t2_;
@@ -157,7 +157,7 @@ public:
 	{
 		return t1_;
 	}
-	
+
 	T1 const &
 	first() const
 	{

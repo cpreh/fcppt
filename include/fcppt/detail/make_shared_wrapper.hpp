@@ -39,7 +39,7 @@ public:
 		return ptr_;
 	}
 private:
-	ptr_type ptr_;	
+	ptr_type ptr_;
 };
 
 }

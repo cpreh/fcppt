@@ -97,7 +97,7 @@ BOOST_AUTO_TEST_CASE(
 	bitfield field1(
 		bitfield::null()
 	);
-	
+
 	BOOST_REQUIRE(
 		!field1
 	);
@@ -122,7 +122,7 @@ BOOST_AUTO_TEST_CASE(
 	);
 
 	field2[test_enum::test3] = true;
-		
+
 	{
 		bitfield const bf_or(
 			field1 | field2
@@ -144,7 +144,7 @@ BOOST_AUTO_TEST_CASE(
 		bitfield const bf_xor(
 			field1 ^ field2
 		);
-		
+
 		BOOST_REQUIRE(
 			bf_xor[test_enum::test1]
 			&& !bf_xor[test_enum::test2]

@@ -17,7 +17,7 @@ BOOST_AUTO_TEST_CASE(math_matrix_translation)
 		4,
 		4
 	>::type matrix_type;
-	
+
 	matrix_type const trans_(
 		fcppt::math::matrix::rotation_x(
 			fcppt::math::pi<float>()

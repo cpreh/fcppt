@@ -29,7 +29,7 @@ struct mystruct
 
 int main()
 {
-	// create an array with proper alignment for mystruct 
+	// create an array with proper alignment for mystruct
 	typedef fcppt::alignment::array<
 		unsigned char,
 		sizeof(mystruct),

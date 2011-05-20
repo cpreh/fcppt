@@ -39,7 +39,7 @@ fill(
 	Fn const &f,
 	typename object<T,N,A>::dim position)
 {
-	g[position] = 
+	g[position] =
 		f(
 			position);
 }

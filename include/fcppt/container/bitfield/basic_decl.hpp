@@ -52,7 +52,7 @@ class basic
 private:
 	BOOST_STATIC_ASSERT(
 		boost::is_unsigned<
-			InternalType	
+			InternalType
 		>::value
 	);
 

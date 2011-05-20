@@ -570,7 +570,7 @@ fcppt::operator<< (
 	shared_ptr<T, Deleter> const &_ptr
 )
 {
-	return 
+	return
 		_os << _ptr.get();
 }
 

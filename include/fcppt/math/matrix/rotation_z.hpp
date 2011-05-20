@@ -38,7 +38,7 @@ rotation_z(
 			cosx, -sinx, zero, zero,
 			sinx,  cosx, zero, zero,
 			zero,  zero,  one, zero,
-			zero,  zero, zero,  one 
+			zero,  zero, zero,  one
 		);
 
 }

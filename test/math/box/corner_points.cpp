@@ -17,12 +17,12 @@
 
 BOOST_AUTO_TEST_CASE(test_corner_points)
 {
-	typedef 
+	typedef
 	fcppt::math::box::basic
 	<
 		int,
 		2
-	> 
+	>
 	box_type;
 
 	box_type b(
@@ -31,7 +31,7 @@ BOOST_AUTO_TEST_CASE(test_corner_points)
 
 	std::cout << "Checking border points of box: " << b << "\n";
 
-	fcppt::container::array<box_type::vector,4> const vertices = 
+	fcppt::container::array<box_type::vector,4> const vertices =
 		fcppt::math::box::corner_points(
 			b);
 

@@ -24,7 +24,7 @@ fcppt::container::index_map<T, A>::operator[](
 		impl_.resize(
 			_index + 1u
 		);
-	
+
 	return
 		impl_[
 			_index

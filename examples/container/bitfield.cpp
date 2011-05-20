@@ -32,7 +32,7 @@ output(
 	bitfield const &b
 )
 {
-	fcppt::io::cout 
+	fcppt::io::cout
 		<< FCPPT_TEXT("Person status: hungry: ") << (b & person_status::hungry)
 		<< FCPPT_TEXT('\n')
 		<< FCPPT_TEXT("Person status: tired: ") << (b & person_status::tired)

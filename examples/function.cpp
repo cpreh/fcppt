@@ -100,7 +100,7 @@ try
 	fcppt::io::cout << f_5( 7 ) << std::endl;
 
 	bool b = true;
-	
+
 	// test a phoenix functor
 	fcppt::function::object<void()>(
 		boost::phoenix::ref(b) = false

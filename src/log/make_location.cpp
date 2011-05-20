@@ -44,7 +44,7 @@ fcppt::log::make_location(
 			+ _name
 			+ FCPPT_TEXT("\". It has no elements after split.")
 		);
-	
+
 	location ret(
 		elements[0]
 	);
@@ -59,6 +59,6 @@ fcppt::log::make_location(
 		++it
 	)
 		ret += *it;
-	
+
 	return ret;
 }

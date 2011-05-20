@@ -38,7 +38,7 @@ mach_time_impl()
 				static_cast<
 					typename duration_type::rep
 				>(
-		
+
 					::mach_absolute_time()
 					* info.numer
 					/ info.denom

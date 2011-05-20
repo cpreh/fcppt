@@ -14,7 +14,7 @@ int main()
 {
 	typedef fcppt::container::array<
 		int,
-		5	
+		5
 	> int5array;
 
 	// array is a POD so it can be initialized like this
@@ -30,7 +30,7 @@ int main()
 		fcppt::io::cout
 			<< element
 			<< FCPPT_TEXT(' ');
-	
+
 	fcppt::io::cout
 		<< FCPPT_TEXT('\n');
 }

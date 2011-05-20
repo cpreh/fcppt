@@ -80,7 +80,7 @@ class object< FCPPT_FUNCTION_OBJECT_PP_TEMPLATE_ARGS >
 		object( const object& other )
 			: function_( other.function_ )
 		{}
-		
+
 		// constructor for functors without operator& overload, and regular functions
 		template< typename F >
 		object
@@ -128,7 +128,7 @@ class object< FCPPT_FUNCTION_OBJECT_PP_TEMPLATE_ARGS >
 
 			return *this;
 		}
-		
+
 		// assignment operator for functors without operator& overload, and regular functions
 		template< typename F >
 		typename boost::enable_if
@@ -187,7 +187,7 @@ class object< FCPPT_FUNCTION_OBJECT_PP_TEMPLATE_ARGS >
 		{
 			return function_( FCPPT_FUNCTION_OBJECT_PP_FUNCTION_ARGS );
 		}
-		
+
 		FCPPT_FUNCTION_OBJECT_PP_FUNCTION_OPERATOR const
 		{
 			return function_( FCPPT_FUNCTION_OBJECT_PP_FUNCTION_ARGS );
@@ -203,7 +203,7 @@ class object< FCPPT_FUNCTION_OBJECT_PP_TEMPLATE_ARGS >
 		{
 			return function_. template target<F>();
 		}
-		
+
 		template< typename F >
 		const F* target() const
 		{
@@ -214,7 +214,7 @@ class object< FCPPT_FUNCTION_OBJECT_PP_TEMPLATE_ARGS >
 
 		template< typename F >
 		void operator==( const object<F>& ) const;
-		
+
 		template< typename F >
 		void operator!=( const object<F>& ) const;
 

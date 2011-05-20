@@ -51,7 +51,7 @@ public:
 	T &
 	get() const;
 private:
-	static T * 
+	static T *
 	copy(
 		T const &
 	);

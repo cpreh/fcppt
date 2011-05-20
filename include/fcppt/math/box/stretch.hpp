@@ -20,17 +20,17 @@ namespace math
 namespace box
 {
 template<typename T,size_type N>
-basic<T,N> const 
+basic<T,N> const
 stretch(
 	basic<T,N> const &b,
 	T const factor)
 {
-	typename basic<T,N>::dim const d = 
+	typename basic<T,N>::dim const d =
 		b.size() * factor;
-	return 
+	return
 		basic<T,N>(
 			center(
-				b) - 
+				b) -
 			fcppt::math::dim::structure_cast<typename basic<T,N>::vector>(
 				d)/
 			static_cast<T>(

@@ -105,7 +105,7 @@ fcppt::container::map<
 				FCPPT_TEXT("insert")
 			)
 		);
-	
+
 	return ret;
 }
 
@@ -344,7 +344,7 @@ fcppt::container::map<
 template<
 	typename MapType
 >
-typename 
+typename
 fcppt::container::map<
 	MapType
 >::iterator
@@ -354,7 +354,7 @@ fcppt::container::map<
 	key_type const &_key
 )
 {
-	return 
+	return
 		impl_.lower_bound(
 			_key
 		);
@@ -363,7 +363,7 @@ fcppt::container::map<
 template<
 	typename MapType
 >
-typename 
+typename
 fcppt::container::map<
 	MapType
 >::const_iterator
@@ -373,7 +373,7 @@ fcppt::container::map<
 	key_type const &_key
 ) const
 {
-	return 
+	return
 		impl_.lower_bound(
 			_key
 		);

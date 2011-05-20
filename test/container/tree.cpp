@@ -177,7 +177,7 @@ class noncopyable
 	);
 public:
 	explicit noncopyable(
-		int	
+		int
 	);
 
 	~noncopyable();
@@ -225,7 +225,7 @@ BOOST_AUTO_TEST_CASE(
 	container_ptr_tree
 )
 {
-	nc_tree tree(	
+	nc_tree tree(
 		fcppt::make_unique_ptr<
 			noncopyable
 		>(

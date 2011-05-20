@@ -31,7 +31,7 @@ template<
 	typename N,
 	typename S
 >
-inline 
+inline
 typename boost::enable_if<
 	boost::mpl::and_<
 		boost::is_floating_point<

@@ -43,7 +43,7 @@ FCPPT_PP_DISABLE_VC_WARNING(4355)
 	}
 FCPPT_PP_POP_WARNING
 
-	inner inner_;	
+	inner inner_;
 };
 
 float

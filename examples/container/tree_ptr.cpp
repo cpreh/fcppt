@@ -46,12 +46,12 @@ private:
 int main()
 {
 	// typedef the tree object to use ptr_container semantics
-	typedef 
+	typedef
 	fcppt::container::tree::object<
 		fcppt::container::tree::ptr_value<
 			noncopyable
 		>
-	> 
+	>
 	noncopyable_tree;
 
 	// the constructor argument now expects a unique_ptr

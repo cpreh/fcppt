@@ -28,7 +28,7 @@ int main()
 		1,2,3,
 		5,6,7,
 		8,9,10);
-	
+
 	// Will output 7 (third column, second row), _not_ 9!
 	std::cout << m[2][1] << '\n';
 

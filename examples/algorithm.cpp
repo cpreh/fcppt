@@ -20,8 +20,8 @@
 
 int main()
 {
-	typedef 
-	fcppt::container::raw_vector<unsigned char> 
+	typedef
+	fcppt::container::raw_vector<unsigned char>
 	vector_type;
 
 	std::string const str("test");
@@ -30,8 +30,8 @@ int main()
 
 	// copy_n
 	fcppt::algorithm::copy_n(
-		str.data(), 
-		str.size(), 
+		str.data(),
+		str.size(),
 		a.data()
 	);
 

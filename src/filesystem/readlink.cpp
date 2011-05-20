@@ -85,7 +85,7 @@ fcppt::filesystem::readlink(
 		buf.resize_uninitialized(
 			static_cast<
 				buffer_type::size_type
-			>(	
+			>(
 				ret
 			)
 		);

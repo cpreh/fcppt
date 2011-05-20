@@ -38,7 +38,7 @@ f(
 		_stream
 			<< ref
 			<< ' ';
-	
+
 	_stream << '\n';
 }
 

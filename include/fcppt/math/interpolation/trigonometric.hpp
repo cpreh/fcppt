@@ -33,15 +33,15 @@ trigonometric(
 	Value const &v2)
 {
 	Float const t =
-		static_cast<Float>(0.5) * 
+		static_cast<Float>(0.5) *
 			(
 			static_cast<Float>(1) -
-				std::cos( 
-					fcppt::math::pi<Float>() * 
+				std::cos(
+					fcppt::math::pi<Float>() *
 					f
 				)
 			);
-	return 
+	return
 		(static_cast<Float>(1) - t) * v1 + t * v2;
 }
 }

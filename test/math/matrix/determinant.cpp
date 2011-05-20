@@ -10,20 +10,20 @@
 
 BOOST_AUTO_TEST_CASE(determinant)
 {
-	typedef 
+	typedef
 	fcppt::math::matrix::static_<
 		int,
 		3,
 		3
-	>::type 
+	>::type
 	large_matrix_type;
 
-	typedef 
+	typedef
 	fcppt::math::matrix::static_<
 		int,
 		2,
 		2
-	>::type 
+	>::type
 	small_matrix_type;
 
 	BOOST_CHECK((

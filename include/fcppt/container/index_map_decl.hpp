@@ -43,7 +43,7 @@ public:
 	size_type
 	size() const;
 private:
-	internal_type impl_;	
+	internal_type impl_;
 };
 
 }

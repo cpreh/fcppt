@@ -26,11 +26,11 @@ public:
 		fcppt::string const &condition,
 		fcppt::string const &message
 	);
-	
+
 	fcppt::string const &
 	file() const;
 
-	int	
+	int
 	line() const;
 
 	fcppt::string const &

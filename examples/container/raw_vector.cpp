@@ -25,7 +25,7 @@ read(
 {
 	// just for exposition,
 	// try to write 200 bytes
-	
+
 	std::size_t const max_(
 		std::min(
 			count,
@@ -39,7 +39,7 @@ read(
 
 	for(
 		std::size_t i = 0;
-		i < max_; 
+		i < max_;
 		++i
 	)
 		*p++ = 'a';

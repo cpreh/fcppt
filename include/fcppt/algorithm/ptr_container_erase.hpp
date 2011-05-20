@@ -23,7 +23,7 @@ namespace fcppt
 namespace algorithm
 {
 
-/// Removes pointer @a _element from the ptr_container @a _container 
+/// Removes pointer @a _element from the ptr_container @a _container
 /**
  * @type Ptr may be @type Container::value_type or a const version of it
  * @return true if the element was found/erased, false otherwise

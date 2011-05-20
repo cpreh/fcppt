@@ -23,9 +23,9 @@ dot(
 	boost::math::quaternion<T> const &q)
 {
 	return
-		p.R_component_1()*q.R_component_1() + 
-		p.R_component_2()*q.R_component_2() + 
-		p.R_component_3()*q.R_component_3() + 
+		p.R_component_1()*q.R_component_1() +
+		p.R_component_2()*q.R_component_2() +
+		p.R_component_3()*q.R_component_3() +
 		p.R_component_4()*q.R_component_4();
 }
 }

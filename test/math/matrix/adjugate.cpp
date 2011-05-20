@@ -13,23 +13,23 @@
 
 BOOST_AUTO_TEST_CASE(adjugate)
 {
-	typedef 
+	typedef
 	fcppt::math::matrix::static_<
 		int,
 		3,
 		3
-	>::type 
+	>::type
 	matrix_type;
 
 	matrix_type const t(
 		-3, 2, -5,
 		-1, 0, -2,
 		3, -4, 1);
-	
+
 	BOOST_CHECK(
 		(
 		fcppt::math::matrix::adjugate(
-			t) == 
+			t) ==
 		matrix_type(
 			-8,18,-4,
 			-5,12,-1,
