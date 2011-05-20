@@ -33,7 +33,7 @@ Those are best explained using a little example:
 [import ../examples/container/tree_traversal.cpp]
 [tree_traversal]
 
-This will output 
+This will output
 
 ``
 hello
@@ -51,7 +51,7 @@ We already mentioned `boost::ptr_list` which is designed to store
 values by pointer and to have ownership at the same time.
 This is useful for values that are not copyable, for example.
 `fcppt::container::tree::object` also supports this.
-Instead of writing `fcppt::container::tree::object<T>` you can say 
+Instead of writing `fcppt::container::tree::object<T>` you can say
 `fcppt::container::tree::object<fcppt::container::tree::ptr_value<T> >`
 which turns the tree into a ptr_container.
 A `tree::object<ptr_value<T> > ` will have the following changes from a normal tree:

@@ -164,7 +164,7 @@ compilers, it returns the type name /mangled/, so
 `fcppt::type_name(fcppt::type_info const&)` becomes
 `_ZN5fcppt9type_nameERKNS_9type_infoE` Most compilers, however, have a built-in
 function to unmangle those names. That's exactly what `fcppt::type_name` is
-for. This function is used in `fcppt::type_info::name`. 
+for. This function is used in `fcppt::type_info::name`.
 
 [section Synopsis]
 
@@ -220,7 +220,7 @@ fcppt provides some macros to ease the specification of visibility.
 [xinclude doxygen_visibility.xml]
 
 [endsect]
- 
+
 [section homogenous_pair]
 
 `fcppt::homogenous_pair` is like `std::pair`, but

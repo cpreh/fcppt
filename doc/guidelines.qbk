@@ -88,7 +88,7 @@ template<
     typename T,
     typename U
 >
-T 
+T
 cast_stuff(
     U const &a,
     U const &b)
@@ -264,10 +264,10 @@ In the following cases only a declaration is needed:
   <
     typename T
   > struct vector;
-  
+
   typedef vector<char> char_vector;
   ``
-# A reference or a pointer to a type is used 
+# A reference or a pointer to a type is used
 
 [endsect]
 
@@ -375,7 +375,7 @@ class apple
 public:
     apple(unsigned number_of_worms) : number_of_worms(number_of_worms) {}
     bool is_usable() const { return number_of_worms < 2; }
-private: 
+private:
     unsigned number_of_worms;
 };
 ``
@@ -392,7 +392,7 @@ public:
     apple(unsigned number_of_worms_) : number_of_worms_(number_of_worms_) {}
     bool is_usable() const { return number_of_worms_ < 2; }
     unsigned number_of_worms() { return number_of_worms_; }
-private: 
+private:
     unsigned number_of_worms_;
 };
 ``
@@ -408,7 +408,7 @@ public:
     apple() : number_of_worms_(number_of_worms_) {}
     bool is_usable() const { return number_of_worms_ < 2; }
     unsigned number_of_worms() { return number_of_worms_; }
-private: 
+private:
     unsigned number_of_worms_;
 };
 ``
@@ -426,7 +426,7 @@ public:
     apple(unsigned _number_of_worms) : number_of_worms_(_number_of_worms) {}
     bool is_usable() const { return number_of_worms_ < 2; }
     unsigned number_of_worms() { return number_of_worms_; }
-private: 
+private:
     unsigned number_of_worms_;
 };
 ``
@@ -446,12 +446,12 @@ getter.
 namespace renderer
 {
 
-class light 
+class light
 {
 // ...
 };
 
-class device 
+class device
 {
 public:
   void light(light const &);
@@ -465,7 +465,7 @@ the meaning of the entity (which has been a type previously). To prevent that
 you have to qualify the type a bit more to make it unique again:
 
 ``
-class device 
+class device
 {
 public:
   void light(renderer::light const &)
@@ -503,7 +503,7 @@ code:
 
 int main()
 {
-	typedef 
+	typedef
 	fcppt::math::vector::static_<int,3>::type
 	vector;
 
@@ -523,7 +523,7 @@ provided as in:
 
 int main()
 {
-	typedef 
+	typedef
 	fcppt::math::vector::static_<int,3>::type
 	vector;
 

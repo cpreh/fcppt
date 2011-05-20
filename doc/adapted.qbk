@@ -1,6 +1,6 @@
 [section string/adapted structures]
 
-[section Rationale] 
+[section Rationale]
 
 Some functions regarding strings can be templatized. That is, instead of writing:
 

@@ -15,7 +15,7 @@ it doesn't inherit another logger's properties (more on that later).
 Note also that we used `fcppt::io::cout` as the "sink" for our logger. You can
 insert any `fcppt::io::ostream` here, so you can log to a file or even to
 multiple sources or to a web server (you might take a look at
-[@http://www.boost.org/doc/libs/release/libs/iostreams/index.html boost::iostreams] 
+[@http://www.boost.org/doc/libs/release/libs/iostreams/index.html boost::iostreams]
 if you're interested in that).
 
 The "prefix" we give the logger is just that: A prefix which is prepended to
@@ -40,7 +40,7 @@ right - there is!  The available log levels are:
 # Error
 # Fatal
 
-These levels are ordered in the following way: 
+These levels are ordered in the following way:
 
 The `level()` parameter which we gave the logger in the example above is the
 /highest/ log level which is active (or enabled). All log levels /below/ this
@@ -73,7 +73,7 @@ statement, anyway).
 
 The (also a bit awkwardly looking) `fcppt::log::_` object is an output helper
 object which basically forwards everything you give it via `operator<<` to the
-underlying `fcppt::io::ostream`. 
+underlying `fcppt::io::ostream`.
 
 Note that this type of object construction basically follows the
 [@http://www.parashift.com/c++-faq-lite/ctors.html#faq-10.18 named parameter idiom].
