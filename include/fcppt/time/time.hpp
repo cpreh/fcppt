@@ -9,6 +9,9 @@
 
 #include <fcppt/time/ctime.hpp>
 #include <fcppt/time/exception.hpp>
+#include <fcppt/time/gmtime.hpp>
+#include <fcppt/time/localtime.hpp>
+#include <fcppt/time/output_tm.hpp>
 #include <fcppt/time/parse_date.hpp>
 #include <fcppt/time/parse_time.hpp>
 #include <fcppt/time/sleep.hpp>

@@ -14,7 +14,8 @@
 #include <fcppt/text.hpp>
 #include <ctime>
 
-int main()
+int
+main()
 {
 	fcppt::io::istringstream stream(
 		fcppt::string(
@@ -22,12 +23,12 @@ int main()
 		)
 	);
 
-	std::tm tm_;
+	std::tm cur_tm;
 
 	if(
 		!fcppt::time::parse_date(
 			stream,
-			tm_
+			cur_tm
 		)
 	)
 		fcppt::io::cerr
@@ -35,11 +36,11 @@ int main()
 	else
 		fcppt::io::cout
 			<< FCPPT_TEXT("Date parsed is: day = ")
-			<< tm_.tm_mday
+			<< cur_tm.tm_mday
 			<< FCPPT_TEXT(", month = ")
-			<< tm_.tm_mon
+			<< cur_tm.tm_mon
 			<< FCPPT_TEXT(", year = ")
-			<< tm_.tm_year
+			<< cur_tm.tm_year
 			<< FCPPT_TEXT('\n');
 
 	stream.clear();
@@ -53,7 +54,7 @@ int main()
 	if(
 		!fcppt::time::parse_time(
 			stream,
-			tm_
+			cur_tm
 		)
 	)
 		fcppt::io::cerr
@@ -61,11 +62,11 @@ int main()
 	else
 		fcppt::io::cout
 			<< FCPPT_TEXT("Time parsed is: hour = ")
-			<< tm_.tm_hour
+			<< cur_tm.tm_hour
 			<< FCPPT_TEXT(", minute = ")
-			<< tm_.tm_min
+			<< cur_tm.tm_min
 			<< FCPPT_TEXT(", second = ")
-			<< tm_.tm_sec
+			<< cur_tm.tm_sec
 			<< FCPPT_TEXT('\n');
 }
 

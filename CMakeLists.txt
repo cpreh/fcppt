@@ -1066,8 +1066,11 @@ SET(
 	include/fcppt/time/ctime.hpp
 	include/fcppt/time/detail/sleep_duration.hpp
 	include/fcppt/time/exception.hpp
+	include/fcppt/time/gmtime.hpp
 	include/fcppt/time/impl/exception.hpp
 	include/fcppt/time/impl/sleep_interrupted.hpp
+	include/fcppt/time/localtime.hpp
+	include/fcppt/time/output_tm.hpp
 	include/fcppt/time/parse_date.hpp
 	include/fcppt/time/parse_time.hpp
 	include/fcppt/time/sleep.hpp
@@ -1271,6 +1274,9 @@ SET(
 	src/thread/sleep.cpp
 	src/thread/yield.cpp
 	src/time/ctime.cpp
+	src/time/gmtime.cpp
+	src/time/localtime.cpp
+	src/time/output_tm.cpp
 	src/time/parse_date.cpp
 	src/time/parse_time.cpp
 	src/time/sleep.cpp

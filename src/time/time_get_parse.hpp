@@ -24,40 +24,44 @@ template<
 >
 fcppt::io::istream &
 time_get_parse(
-	io::istream &stream,
-	std::tm &result,
-	Function const &function
+	io::istream &_stream,
+	std::tm &_result,
+	Function const &_function
 )
 {
 	io::istream::sentry cerberos(
-		stream
+		_stream
 	);
 
-	if (!cerberos)
-		return stream;
+	if(
+		!cerberos
+	)
+		return _stream;
 
-	std::ios_base::iostate err = std::ios_base::goodbit;
+	std::ios_base::iostate err(
+		std::ios_base::goodbit
+	);
 
 	(
 		std::use_facet<
 			time::time_get
 		>(
-			stream.getloc()
+			_stream.getloc()
 		)
-		.*function
+		.*_function
 	)(
-		stream,
+		_stream,
 		0,
-		stream,
+		_stream,
 		err,
-		&result
+		&_result
 	);
 
-	stream.setstate(
+	_stream.setstate(
 		err
 	);
 
-	return stream;
+	return _stream;
 }
 
 }
