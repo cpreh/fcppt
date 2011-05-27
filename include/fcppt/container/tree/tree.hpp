@@ -7,6 +7,7 @@
 #ifndef FCPPT_CONTAINER_TREE_TREE_HPP_INCLUDED
 #define FCPPT_CONTAINER_TREE_TREE_HPP_INCLUDED
 
+#include <fcppt/container/tree/copy_tree_value.hpp>
 #include <fcppt/container/tree/is_object.hpp>
 #include <fcppt/container/tree/is_ptr_value.hpp>
 #include <fcppt/container/tree/object.hpp>

@@ -8,9 +8,12 @@
 #define FCPPT_CONTAINER_TREE_OBJECT_IMPL_HPP_INCLUDED
 
 #include <fcppt/container/tree/object_decl.hpp>
+#include <fcppt/container/tree/detail/assign_parents.hpp>
 #include <fcppt/container/tree/detail/assign_value.hpp>
+#include <fcppt/container/tree/detail/copy_value.hpp>
 #include <fcppt/container/tree/detail/extract_value.hpp>
 #include <fcppt/container/tree/detail/has_value.hpp>
+#include <fcppt/container/tree/detail/init_value.hpp>
 #include <fcppt/container/ptr/insert_unique_ptr.hpp>
 #include <fcppt/container/ptr/make_equal.hpp>
 #include <fcppt/algorithm/find_if_exn.hpp>
@@ -47,6 +50,57 @@ fcppt::container::tree::object<T>::object(
 	parent_(0),
 	children_()
 {
+}
+
+template<
+	typename T
+>
+fcppt::container::tree::object<T>::object(
+	object const &_other
+)
+:
+	value_(
+		detail::init_value(
+			_other.holder()
+		)
+	),
+	parent_(),
+	children_(
+		_other.children()
+	)
+{
+	detail::assign_parents(
+		*this,
+		children_
+	);
+}
+
+template<
+	typename T
+>
+fcppt::container::tree::object<T> &
+fcppt::container::tree::object<T>::operator=(
+	object const &_other
+)
+{
+	if(
+		this == &_other
+	)
+		return *this;
+
+	detail::copy_value(
+		value_,
+		_other.holder()
+	);
+
+	children_ = _other.children();
+
+	detail::assign_parents(
+		*this,
+		children_
+	);
+
+	return *this;
 }
 
 template<

@@ -10,7 +10,6 @@
 #include <fcppt/container/tree/object_fwd.hpp>
 #include <fcppt/container/tree/is_ptr_value.hpp>
 #include <fcppt/mpl/inner.hpp>
-#include <fcppt/noncopyable.hpp>
 #include <fcppt/scoped_ptr.hpp>
 #include <fcppt/unique_ptr.hpp>
 #include <boost/mpl/eval_if.hpp>
@@ -31,9 +30,6 @@ template<
 >
 class object
 {
-	FCPPT_NONCOPYABLE(
-		object
-	);
 public:
 	typedef boost::ptr_list<
 		object
@@ -109,6 +105,23 @@ public:
 	/// Constructs the object using the given value
 	explicit object(
 		arg_type
+	);
+
+	/// Deeply copies a tree
+	/**
+	 * @see copy_tree_value
+	*/
+	object(
+		object const &
+	);
+
+	/// Deeply assigns a tree
+	/**
+	 * @see copy_tree_value
+	*/
+	object &
+	operator=(
+		object const &
 	);
 
 	~object();
