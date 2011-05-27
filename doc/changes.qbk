@@ -1,5 +1,48 @@
 [section Changes]
 
+[section Changes from 0.8 to 0.9]
+
+[section Added functionality]
+
+* Added optional `ptr_container` semantics to `container::tree`, including release support.
+* Added `container::tree::print` to easily print a tree with indentation.
+* Added `math::vector::unit` which returns the unit vector for a given axis.
+* Added `container::grid::fill` to fill a grid with a specific value.
+* Added `value_type` typedef to `minmax_pair`.
+* Added `container::ptr::replace_unique_ptr` to replace a value by a new unique_ptr.
+* Added `fcppt::cref` in complement to `fcppt::ref`.
+* Added `algorithm::array_map` which is like `algorithm::map` but can be used for static containers.
+* Added `time::output_tm` to print an `std::tm` via a locale.
+* Added `time::gmtime` and `time::localtime` to wrap the std variants.
+* Added proper deep copying semantics to `container::tree`.
+
+[endsect]
+
+[section Changed functionality]
+
+* `math::vector::orthogonalize` now takes iterators.
+
+[endsect]
+
+[section Removed functionality]
+
+* Removed `linear_map` and `linear_set`.
+* Removed macros from `workarounds.hpp` that are no longer needed.
+* Removed `RESTRICT_TYPEDEF_STRUCT` as it prevents inlining under VC++.
+
+[endsect]
+
+[section Bugfixes]
+
+* Fixed `-fvisbility=hidden`.
+* Fixed copying and assigning of `container::tree`.
+
+[endsect]
+
+[endsect]
+
+[section Older changes]
+
 [section Changes from 0.7.1 to 0.8]
 
 [section Added functionality]
@@ -41,8 +84,6 @@
 [endsect]
 
 [endsect]
-
-[section Older changes]
 
 [section Changes from 0.7 to 0.7.1]
 
