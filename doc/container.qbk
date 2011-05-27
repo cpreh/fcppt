@@ -68,6 +68,23 @@ with `fcppt::container::tree::release`.
 
 [endsect]
 
+[section Copying]
+
+Every tree can be deeply copied by invoking its
+copy constructor or assignment operator.
+However, for a tree with noncopyable semantics,
+the situation isn't as easy. To still provide deep copying
+in this case, there is a function called `copy_tree_value`
+which the tree will invoke via argument dependant lookup.
+For a `tree::object<tree::ptr_value<T> > ` the signature must be
+``
+fcppt::unique_ptr<T> copy_tree_value(T const &);
+``
+The default behaviour is to invoke the copy constructor of
+`T` which will only work if `T` is copyable itself.
+
+[endsect]
+
 [xinclude doxygen_container_tree.xml]
 
 [endsect]
