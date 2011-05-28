@@ -113,14 +113,14 @@ ENDIF ()
 
 INCLUDE_DIRECTORIES (${CMAKE_SOURCE_DIR}/include)
 
-SET (pkgfile "${CMAKE_BINARY_DIR}/fcppt.pc")
+SET(PKG_CONFIG_FILE "${CMAKE_BINARY_DIR}/fcppt.pc")
 
 FILE(
-	WRITE ${pkgfile}
+	WRITE ${PKG_CONFIG_FILE}
 	"prefix=${CMAKE_INSTALL_PREFIX}\n"
 	"exec_prefix=\${prefix}\n"
-	"libdir=\${prefix}/lib\n"
-	"includedir=\${prefix}/include\n"
+	"libdir=\${INSTALL_LIBRARY_DIR}\n"
+	"includedir=\${INSTALL_INCLUDE_DIR}\n"
 	"\n"
 	"Name: fcppt\n"
 	"Description: Freundlich's C++ Toolkit\n"
@@ -129,7 +129,12 @@ FILE(
 	"Libs: -L\${libdir} -lfcppt\n"
 )
 
-INSTALL (FILES ${pkgfile} DESTINATION ${CMAKE_INSTALL_PREFIX}/lib/pkgconfig)
+INSTALL(
+	FILES
+	${PKG_CONFIG_FILE}
+	DESTINATION
+	${INSTALL_PKGCONFIG_DIR}
+)
 
 FIND_PACKAGE(
 	Boost 1.40.0 REQUIRED COMPONENTS
@@ -1330,7 +1335,12 @@ MACRO(MAKE_FCPPT_LIBRARY TARGETNAME VARIANT)
 		TARGET_LINK_LIBRARIES(${TARGETNAME} ${RT_LIBRARY})
 	ENDIF()
 
-	INSTALL (TARGETS ${TARGETNAME} DESTINATION ${CMAKE_INSTALL_PREFIX}/lib)
+	INSTALL(
+		TARGETS
+		${TARGETNAME}
+		DESTINATION
+		${INSTALL_LIBRARY_DIR}
+	)
 ENDMACRO()
 
 IF (ENABLE_SHARED)
@@ -1361,21 +1371,25 @@ IF (ENABLE_TEST)
 	ADD_SUBDIRECTORY (test)
 ENDIF ()
 
-INSTALL (
-	DIRECTORY include/
-	DESTINATION include
+INSTALL(
+	DIRECTORY
+	include/
+	DESTINATION
+	${INSTALL_INCLUDE_DIR}
 )
 
 INSTALL(
 	FILES
 	${CMAKE_BINARY_DIR}/include/fcppt/config.hpp
 	${CMAKE_BINARY_DIR}/include/fcppt/version.hpp
-	DESTINATION include/fcppt
+	DESTINATION
+	${INSTALL_INCLUDE_DIR}/fcppt
 )
 
 INSTALL(
 	FILES
 	${CMAKE_SOURCE_DIR}/CMakeModules/FindFcppt.cmake
 	${CMAKE_SOURCE_DIR}/CMakeModules/FcpptCMakeUtils.cmake
-	DESTINATION share/cmake/Modules
+	DESTINATION
+	${INSTALL_CMAKEMODULES_DIR}
 )

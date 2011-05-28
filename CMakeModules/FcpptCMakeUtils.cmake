@@ -15,6 +15,73 @@ SET(
 INCLUDE(CMakeDetermineCXXCompiler)
 INCLUDE(CheckCXXCompilerFlag)
 
+# Define locations for installations
+# These don't have an FCPPT_ prefix because they have to be set by the user
+
+SET(
+	INSTALL_DATA_DIR_BASE
+	"${CMAKE_INSTALL_PREFIX}/share"
+	CACHE
+	STRING
+	"Custom data installation directory without suffixes"
+)
+
+SET(
+	INSTALL_DATA_DIR
+	"${INSTALL_DATA_DIR_BASE}/${CMAKE_PROJECT_NAME}"
+	CACHE
+	STRING
+	"Custom data installation directory"
+)
+
+SET(
+	INSTALL_BINARY_DIR
+	"${CMAKE_INSTALL_PREFIX}/bin"
+	CACHE
+	STRING
+	"Custom binary installation directory"
+)
+
+SET(
+	INSTALL_LIBRARY_DIR
+	"${CMAKE_INSTALL_PREFIX}/lib"
+	CACHE
+	STRING
+	"Custom library installation directory"
+)
+
+SET(
+	INSTALL_INCLUDE_DIR
+	"${CMAKE_INSTALL_PREFIX}/include"
+	CACHE
+	STRING
+	"Custom include installation directory"
+)
+
+SET(
+	INSTALL_DOC_DIR
+	"${INSTALL_DATA_DIR_BASE}/doc/${CMAKE_PROJECT_NAME}"
+	CACHE
+	STRING
+	"Custom doc installation directory"
+)
+
+SET(
+	INSTALL_PKGCONFIG_DIR
+	"${INSTALL_LIBRARY_DIR}/pkgconfig"
+	CACHE
+	STRING
+	"Custom pkgconfig installation directory"
+)
+
+SET(
+	INSTALL_CMAKEMODULES_DIR
+	"${INSTALL_DATA_DIR_BASE}/cmake/Modules"
+	CACHE
+	STRING
+	"Custom cmake module installation directory"
+)
+
 # cmake-2.8.3 is required for this to work
 IF(
 	"${CMAKE_CXX_COMPILER_ID}" STREQUAL "Clang"
