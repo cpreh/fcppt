@@ -19,22 +19,6 @@ INCLUDE(CheckCXXCompilerFlag)
 # These don't have an FCPPT_ prefix because they have to be set by the user
 
 SET(
-	INSTALL_DATA_DIR_BASE
-	"${CMAKE_INSTALL_PREFIX}/share"
-	CACHE
-	STRING
-	"Custom data installation directory without suffixes"
-)
-
-SET(
-	INSTALL_DATA_DIR
-	"${INSTALL_DATA_DIR_BASE}/${CMAKE_PROJECT_NAME}"
-	CACHE
-	STRING
-	"Custom data installation directory"
-)
-
-SET(
 	INSTALL_BINARY_DIR
 	"${CMAKE_INSTALL_PREFIX}/bin"
 	CACHE
@@ -59,8 +43,32 @@ SET(
 )
 
 SET(
+	INSTALL_DATA_DIR_BASE
+	"${CMAKE_INSTALL_PREFIX}/share"
+	CACHE
+	STRING
+	"Custom data installation directory without suffixes"
+)
+
+SET(
+	INSTALL_DATA_DIR
+	"${INSTALL_DATA_DIR_BASE}/${CMAKE_PROJECT_NAME}"
+	CACHE
+	STRING
+	"Custom data installation directory"
+)
+
+SET(
+	INSTALL_DOC_DIR_BASE
+	"${INSTALL_DATA_DIR_BASE}/doc"
+	CACHE
+	STRING
+	"Custom doc installation directory without suffixes"
+)
+
+SET(
 	INSTALL_DOC_DIR
-	"${INSTALL_DATA_DIR_BASE}/doc/${CMAKE_PROJECT_NAME}"
+	"${INSTALL_DOC_DIR_BASE}/${CMAKE_PROJECT_NAME}"
 	CACHE
 	STRING
 	"Custom doc installation directory"
@@ -80,6 +88,14 @@ SET(
 	CACHE
 	STRING
 	"Custom cmake module installation directory"
+)
+
+SET(
+	INSTALL_SYSCONFIG_DIR_BASE
+	"${CMAKE_INSTALL_PREFIX}/etc"
+	CACHE
+	STRING
+	"Custom config installation directory"
 )
 
 # cmake-2.8.3 is required for this to work
