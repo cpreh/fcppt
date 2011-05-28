@@ -21,6 +21,7 @@
 [section Changed functionality]
 
 * `math::vector::orthogonalize` now takes iterators.
+* 'container::tree::object<T>::value_type` is now `T`.
 
 [endsect]
 

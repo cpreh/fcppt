@@ -39,7 +39,8 @@ public:
 		object
 	> unique_ptr;
 
-	typedef typename child_list::value_type value_type;
+	// This is not child_list::value_type so T is easily accessible
+	typedef T value_type;
 
 	typedef typename child_list::size_type size_type;
 
