@@ -8,6 +8,7 @@
 #define FCPPT_CONTAINER_GRID_GRID_HPP_INCLUDED
 
 #include <fcppt/container/grid/comparison.hpp>
+#include <fcppt/container/grid/dim.hpp>
 #include <fcppt/container/grid/exception.hpp>
 #include <fcppt/container/grid/fill.hpp>
 #include <fcppt/container/grid/in_range.hpp>

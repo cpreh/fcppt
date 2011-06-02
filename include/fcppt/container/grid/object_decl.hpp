@@ -8,10 +8,10 @@
 #define FCPPT_CONTAINER_GRID_OBJECT_DECL_HPP_INCLUDED
 
 #include <fcppt/container/grid/object_fwd.hpp>
+#include <fcppt/container/grid/dim.hpp>
 #include <fcppt/container/grid/size_type.hpp>
 #include <fcppt/container/raw_vector_decl.hpp>
 #include <fcppt/math/dim/basic_decl.hpp>
-#include <fcppt/math/dim/static.hpp>
 #include <boost/mpl/if.hpp>
 #include <boost/type_traits/is_pod.hpp>
 #include <boost/static_assert.hpp>
@@ -75,7 +75,7 @@ public:
 
 	typedef typename container::const_reverse_iterator const_reverse_iterator;
 
-	typedef typename fcppt::math::dim::static_<
+	typedef typename grid::dim<
 		size_type,
 		N
 	>::type dim;
