@@ -15,6 +15,11 @@
 * Added `time::output_tm` to print an `std::tm` via a locale.
 * Added `time::gmtime` and `time::localtime` to wrap the std variants.
 * Added proper deep copying semantics to `container::tree`.
+* Added `math::vector::transform` and `math::dim::transform` which apply a function on every element.
+* Added `container::grid::in_range` to check if a given point is inside the grid's dimensions.
+* Added `container::grid::object::empty`.
+* Added `container::grid::dim` to factor out the dim typedef.
+* Added custom installation directories for includes, libraries, documentation, pkgconfig files and cmake modules.
 
 [endsect]
 
@@ -37,6 +42,8 @@
 
 * Fixed `-fvisbility=hidden`.
 * Fixed copying and assigning of `container::tree`.
+* Removed `BOOST_FOREACH` because it has issues with gcc-4.6 in boost-1.46.1.
+* Made the converting constructor of `container::bitfield::iterator` public.
 
 [endsect]
 

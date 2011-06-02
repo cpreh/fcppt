@@ -37,6 +37,14 @@ your build directory is directly below the source directory.
 
 To install fcppt, you have to pass an installation prefix via `cmake -D CMAKE_INSTALL_PREFIX=/home/me/local ..`
 
+There are other customizable paths that you can use to fine tune the installation of different components:
+
+* INSTALL_INCLUDE_DIR: Path where the fcppt include directory is installed
+* INSTALL_LIBRARY_DIR: Path where the libraries are installed
+* INSTALL_DOC_DIR: Path where the documentation is installed
+* INSTALL_PKGCONFIG_DIR: Path where the pkgconfig file is installed
+* INSTALL_CMAKEMODULES_DIR: Path where the cmake modules are installed
+
 You can, of course, also use `ccmake` to configure your installation.
 
 [h1 Using fcppt in your project]
