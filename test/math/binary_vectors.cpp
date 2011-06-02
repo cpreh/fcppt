@@ -10,7 +10,6 @@
 #include <fcppt/math/vector/basic_impl.hpp>
 #include <fcppt/math/vector/static.hpp>
 #include <boost/test/unit_test.hpp>
-#include <boost/foreach.hpp>
 #include <iostream>
 #include <iterator>
 #include <vector>
@@ -48,10 +47,14 @@ BOOST_AUTO_TEST_CASE(
 		fcppt::math::generate_binary_vectors<int,2>();
 
 	std::cout << "Result: \n";
-	BOOST_FOREACH(
-		vector2 const &v,
-		result2)
-		std::cout << v << "\n";
+	for(
+		vector2_container::const_iterator it(
+			result2.begin()
+		);
+		it != result2.end();
+		++it
+	)
+		std::cout << *it << '\n';
 
 	std::cout << "Now checking...\n";
 
@@ -70,10 +73,14 @@ BOOST_AUTO_TEST_CASE(
 		fcppt::math::generate_binary_vectors<int,3>();
 
 	std::cout << "Result: \n";
-	BOOST_FOREACH(
-		vector3 const &v,
-		result3)
-		std::cout << v << "\n";
+	for(
+		vector2_container::const_iterator it(
+			result2.begin()
+		);
+		it != result2.end();
+		++it
+	)
+		std::cout << *it << '\n';
 
 	std::cout << "Now checking...\n";
 

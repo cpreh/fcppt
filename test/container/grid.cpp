@@ -6,7 +6,6 @@
 
 #include <fcppt/container/grid/grid.hpp>
 #include <boost/test/unit_test.hpp>
-#include <boost/foreach.hpp>
 #include <algorithm>
 #include <numeric>
 #include <iterator>
@@ -319,12 +318,15 @@ BOOST_AUTO_TEST_CASE(container_grid_non_pod)
 		nonpod()
 	);
 
-	BOOST_FOREACH(
-		grid2_nonpod::const_reference elem,
-		test
+	for(
+		grid2_nonpod::const_iterator it(
+			test.begin()
+		);
+		it != test.end();
+		++it
 	)
 		BOOST_REQUIRE(
-			elem.member_ == 42
+			it->member_ == 42
 		);
 }
 

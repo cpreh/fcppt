@@ -11,7 +11,6 @@
 #include <fcppt/tr1/functional.hpp>
 #include <fcppt/text.hpp>
 #include <fcppt/format.hpp>
-#include <boost/foreach.hpp>
 #include <numeric>
 #include <functional>
 
@@ -63,17 +62,24 @@ fcppt::random::actor::normalized::operator()()
 		val
 	);
 
-	BOOST_FOREACH(
-		container::const_reference ref,
-		elements_
+	for(
+		container::const_iterator it(
+			elements_.begin()
+		);
+		it != elements_.end();
+		++it
 	)
 	{
-		if(cur <= ref.prob())
+		if(
+			cur <= it->prob()
+		)
 		{
-			ref.callback()();
+			it->callback()();
+
 			return;
 		}
-		cur -= ref.prob();
+
+		cur -= it->prob();
 	}
 
 	throw

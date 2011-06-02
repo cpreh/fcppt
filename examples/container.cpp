@@ -12,7 +12,6 @@
 #include <fcppt/text.hpp>
 #include <fcppt/assert.hpp>
 #include <fcppt/exception.hpp>
-#include <boost/foreach.hpp>
 #include <map>
 #include <cstdlib>
 
@@ -26,25 +25,29 @@ try
 		>
 	> map_type;
 
-	map_type m;
+	map_type map;
 
-	m.insert(
+	map.insert(
 		42,
 		FCPPT_TEXT("peter")
 	);
 
-	m.insert(
+	map.insert(
 		42,
 		FCPPT_TEXT("peter")
 	);
-	BOOST_FOREACH(
-		map_type::const_reference r,
-		m
+
+	for(
+		map_type::const_iterator it(
+			map.begin()
+		);
+		it != map.end();
+		++it
 	)
 		fcppt::io::cout
-			<< r.first
+			<< it->first
 			<< FCPPT_TEXT(": ")
-			<< r.second
+			<< it->second
 			<< '\n';
 
 	typedef fcppt::container::raw_vector<
@@ -78,11 +81,11 @@ try
 	fcppt::io::cout << vec.size() << '\n';
 }
 catch(
-	fcppt::exception const &e
+	fcppt::exception const &_error
 )
 {
 	fcppt::io::cerr
-		<< e.string()
+		<< _error.string()
 		<< FCPPT_TEXT('\n');
 
 	return EXIT_FAILURE;

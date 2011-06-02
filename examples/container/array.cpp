@@ -8,7 +8,6 @@
 #include <fcppt/container/array.hpp>
 #include <fcppt/io/cout.hpp>
 #include <fcppt/text.hpp>
-#include <boost/foreach.hpp>
 
 int main()
 {
@@ -23,12 +22,15 @@ int main()
 		1, 2, 3, 4, 5
 	}};
 
-	BOOST_FOREACH(
-		int5array::const_reference element,
-		array
+	for(
+		int5array::const_iterator it(
+			array.begin()
+		);
+		it != array.end();
+		++it
 	)
 		fcppt::io::cout
-			<< element
+			<< *it 
 			<< FCPPT_TEXT(' ');
 
 	fcppt::io::cout

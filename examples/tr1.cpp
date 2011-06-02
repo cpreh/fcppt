@@ -9,7 +9,6 @@
 #include <fcppt/container/array.hpp>
 #include <fcppt/function/object.hpp>
 #include <fcppt/ref.hpp>
-#include <boost/foreach.hpp>
 #include <ostream>
 #include <iostream>
 #include <iosfwd>
@@ -31,12 +30,15 @@ f(
 		0, 1, 2, 3, 4
 	}};
 
-	BOOST_FOREACH(
-		i5_array::const_reference ref,
-		array
+	for(
+		i5_array::const_iterator it(
+			array.begin()
+		);
+		it != array.end();
+		++it
 	)
 		_stream
-			<< ref
+			<< *it 
 			<< ' ';
 
 	_stream << '\n';
