@@ -5,7 +5,6 @@
 
 
 #include <fcppt/container/grid/grid.hpp>
-#include <fcppt/container/grid/fill.hpp>
 #include <boost/test/unit_test.hpp>
 #include <boost/foreach.hpp>
 #include <algorithm>
@@ -567,5 +566,47 @@ BOOST_AUTO_TEST_CASE(container_grid_fill)
 		test[int2_grid::dim(1,0)] == 1 &&
 		test[int2_grid::dim(0,1)] == 1 &&
 		test[int2_grid::dim(1,1)] == 2
+	);
+}
+
+BOOST_AUTO_TEST_CASE(
+	container_grid_in_range
+)
+{
+	int2_grid const test(
+		int2_grid::dim(
+			3,
+			4
+		)
+	);
+
+	BOOST_CHECK(
+		fcppt::container::grid::in_range(
+			test,
+			int2_grid::dim(
+				2,
+				2
+			)
+		)
+	);
+
+	BOOST_CHECK(
+		!fcppt::container::grid::in_range(
+			test,
+			int2_grid::dim(
+				3,
+				2
+			)
+		)
+	);
+
+	BOOST_CHECK(
+		!fcppt::container::grid::in_range(
+			test,
+			int2_grid::dim(
+				2,
+				4
+			)
+		)
 	);
 }

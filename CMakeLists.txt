@@ -377,6 +377,7 @@ SET(
 	include/fcppt/container/grid/grid.hpp
 	include/fcppt/container/grid/impl/exception.hpp
 	include/fcppt/container/grid/impl/out_of_range.hpp
+	include/fcppt/container/grid/in_range.hpp
 	include/fcppt/container/grid/object.hpp
 	include/fcppt/container/grid/object_decl.hpp
 	include/fcppt/container/grid/object_fwd.hpp

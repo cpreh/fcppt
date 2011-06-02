@@ -28,5 +28,6 @@
 #include <fcppt/math/dim/quad.hpp>
 #include <fcppt/math/dim/static.hpp>
 #include <fcppt/math/dim/structure_cast.hpp>
+#include <fcppt/math/dim/transform.hpp>
 
 #endif
