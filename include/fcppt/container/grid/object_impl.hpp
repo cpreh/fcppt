@@ -234,6 +234,17 @@ template<
 	fcppt::container::grid::size_type N,
 	typename A
 >
+bool
+fcppt::container::grid::object<T, N, A>::empty() const
+{
+	return size_.empty();
+}
+
+template<
+	typename T,
+	fcppt::container::grid::size_type N,
+	typename A
+>
 void
 fcppt::container::grid::object<T, N, A>::resize(
 	dim const &_size

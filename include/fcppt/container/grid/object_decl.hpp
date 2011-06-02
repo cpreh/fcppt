@@ -140,6 +140,9 @@ public:
 	size_type
 	content() const;
 
+	bool
+	empty() const;
+
 	/// Resizes the grid leaving its internal elements in an unspecific state
 	void
 	resize(
