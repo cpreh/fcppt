@@ -94,7 +94,7 @@ private:
 		typename OtherReference
 	>
 	friend class iterator;
-private:
+public:
 	template<
 		typename OtherStoredType,
 		typename OtherReference
