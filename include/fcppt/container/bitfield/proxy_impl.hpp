@@ -7,7 +7,7 @@
 #ifndef FCPPT_CONTAINER_BITFIELD_PROXY_IMPL_HPP_INCLUDED
 #define FCPPT_CONTAINER_BITFIELD_PROXY_IMPL_HPP_INCLUDED
 
-#include <fcppt/container/bitfield/proxy.hpp>
+#include <fcppt/container/bitfield/proxy_decl.hpp>
 
 template<
 	typename StoredType

@@ -16,9 +16,11 @@
 #include <fcppt/container/bitfield/difference_type.hpp>
 #include <fcppt/container/bitfield/is_subset_eq.hpp>
 #include <fcppt/container/bitfield/iterator.hpp>
+#include <fcppt/container/bitfield/iterator_decl.hpp>
 #include <fcppt/container/bitfield/iterator_fwd.hpp>
 #include <fcppt/container/bitfield/iterator_impl.hpp>
 #include <fcppt/container/bitfield/proxy.hpp>
+#include <fcppt/container/bitfield/proxy_decl.hpp>
 #include <fcppt/container/bitfield/proxy_fwd.hpp>
 #include <fcppt/container/bitfield/proxy_impl.hpp>
 #include <fcppt/container/bitfield/size_type.hpp>
