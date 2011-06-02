@@ -10,7 +10,6 @@
 #include <boost/preprocessor/arithmetic/inc.hpp>
 #include <boost/preprocessor/repetition/enum_params.hpp>
 #include <boost/preprocessor/repetition/enum_binary_params.hpp>
-#include <boost/foreach.hpp>
 
 #define FCPPT_SIGNAL_DETAIL_DEFINE_EMPTY_OPERATOR\
 	result_type operator()() const\
@@ -58,14 +57,21 @@ fcppt::signal::object<\
 		this->initial_result_\
 	);\
 \
-	BOOST_FOREACH(\
-		typename base::connection_list::reference ref,\
+	typename base::connection_list &cur_list(\
 		base::connections()\
-	)\
+	);\
+\
+	for(\
+		typename base::connection_list::iterator it(\
+			cur_list.begin()\
+		); \
+		it != cur_list.end();\
+		++it\
+	) \
 		result = \
 			this->combiner_(\
 				result,\
-				ref.function()(\
+				it->function()(\
 					BOOST_PP_ENUM_PARAMS_Z(\
 						z,\
 						BOOST_PP_INC(n),\

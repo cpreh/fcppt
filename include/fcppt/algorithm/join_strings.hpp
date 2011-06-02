@@ -7,8 +7,7 @@
 #ifndef FCPPT_ALGORITHM_JOIN_STRINGS_HPP_INCLUDED
 #define FCPPT_ALGORITHM_JOIN_STRINGS_HPP_INCLUDED
 
-#include <fcppt/string.hpp>
-#include <boost/foreach.hpp>
+#include <boost/next_prior.hpp>
 
 namespace fcppt
 {
@@ -22,28 +21,32 @@ template
 >
 typename Range::value_type const
 join_strings(
-	Range const &range,
-	typename Range::value_type const &delim
+	Range const &_range,
+	typename Range::value_type const &_delim
 )
 {
-	typename Range::value_type s;
+	typename Range::value_type result;
 
-	if(
-		range.empty()
+	for(
+		typename Range::const_iterator it(
+			_range.begin()
+		);
+		it != _range.end();
+		++it
 	)
-		return s;
+	{
+		result += *it;
 
-	BOOST_FOREACH(
-		typename Range::value_type const &n,
-		range
-	)
-		s += n + delim;
+		if(
+			boost::next(
+				it
+			)
+			!= _range.end()
+		)
+			result += _delim;
+	}
 
-	s.erase(
-		s.length() - delim.length()
-	);
-
-	return s;
+	return result;
 }
 }
 }

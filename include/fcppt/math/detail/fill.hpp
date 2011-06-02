@@ -7,8 +7,6 @@
 #ifndef FCPPT_MATH_DETAIL_FILL_HPP_INCLUDED
 #define FCPPT_MATH_DETAIL_FILL_HPP_INCLUDED
 
-#include <boost/foreach.hpp>
-
 namespace fcppt
 {
 namespace math
@@ -26,11 +24,14 @@ fill(
 {
 	Ret ret;
 
-	BOOST_FOREACH(
-		typename Ret::reference ref,
-		ret
+	for(
+		typename Ret::iterator it(
+			ret.begin()
+		);
+		it != ret.end();
+		++it
 	)
-		ref = _value;
+		*it = _value;
 
 	return ret;
 }

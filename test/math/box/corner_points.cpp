@@ -25,21 +25,28 @@ BOOST_AUTO_TEST_CASE(test_corner_points)
 	>
 	box_type;
 
-	box_type b(
+	box_type box(
 		box_type::vector(10,12),
 		box_type::dim(24,26));
 
-	std::cout << "Checking border points of box: " << b << "\n";
+	std::cout << "Checking border points of box: " << box << '\n';
 
-	fcppt::container::array<box_type::vector,4> const vertices =
+	typedef fcppt::container::array<box_type::vector,4> vertex_array;
+	
+	vertex_array const vertices(
 		fcppt::math::box::corner_points(
-			b);
+			box));
 
 	std::cout << "Result: \n";
-	BOOST_FOREACH(
-		box_type::vector const &v,
-		vertices)
-		std::cout << v << "\n";
+
+	for(
+		vertex_array::const_iterator it(
+			vertices.begin()
+		);
+		it != vertices.end();
+		++it
+	)
+		std::cout << *it << '\n';
 
 	std::cout << "Running checks now...\n";
 

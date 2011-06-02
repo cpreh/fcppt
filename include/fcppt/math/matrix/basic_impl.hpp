@@ -21,7 +21,6 @@
 #include <fcppt/math/detail/make_op_def.hpp>
 #include <fcppt/math/detail/assign.hpp>
 #include <fcppt/assert.hpp>
-#include <boost/foreach.hpp>
 #include <iterator>
 #include <algorithm>
 
@@ -310,11 +309,14 @@ fcppt::math::matrix::basic<T, N, M, S>::operator*=(
 	value_type const &_value
 )
 {
-	BOOST_FOREACH(
-		value_type &i,
-		*this
+	for(
+		iterator it(
+			this->begin()
+		);
+		it != this->end();
+		++it
 	)
-		i *= _value;
+		*it *= _value;
 
 	return *this;
 }
@@ -330,11 +332,14 @@ fcppt::math::matrix::basic<T, N, M, S>::operator/=(
 	value_type const &_value
 )
 {
-	BOOST_FOREACH(
-		value_type &i,
-		*this
+	for(
+		iterator it(
+			this->begin()
+		);
+		it != this->end();
+		++it
 	)
-		i /= _value;
+		*it /= _value;
 
 	return *this;
 }
