@@ -2,54 +2,103 @@
 #
 # This module defines the following variables
 #
-#	FCPPT_FOUND        - True when fcppt was found
-#	FCPPT_INCLUDE_DIRS - The path to the FCPPT header files
-#	FCPPT_LIBRARIES    - The fcppt libraries
-#	FCPPT_DEFINITIONS  - Additional compiler flags required
+#	Fcppt_FOUND        - True when fcppt was found
+#	Fcppt_INCLUDE_DIRS - All includes required for fcppt to work
+#	Fcppt_LIBRARIES    - All libraries required for fcppt to work
+#	Fcppt_DEFINITIONS  - Additional compiler flags required
 #
 # This modules accepts the following variables
 #
-#	FCPPT_WANT_DYN_LINK - prefer a dynamic link over a static one when using VC++.
-#		This will not be useful for any other system.
+#	Fcppt_WANT_DYN_LINK - prefer a dynamic link over a static one when using VC++.
+#	                      This will not be useful for any other system.
+#	FCPPT_INCLUDEDIR    - Hint where the fcppt includes might be.
+#	FCPPT_LIBRARYDIR    - Hint where the fcppt libraries might be.
 
-FIND_PATH(
-	FCPPT_INCLUDE_DIRS
-	NAMES fcppt/version.hpp
+include(
+	FindPkgConfig
 )
 
-MACRO(FIND_FCPPT_LIBRARY name)
-	FIND_LIBRARY(
-		FCPPT_LIBRARIES
+pkg_check_modules(
+	PC_FCPPT
+	QUIET
+	fcppt
+)
+
+set(
+	Fcppt_DEFINITIONS
+	${PC_FCPPT_CFLAGS}
+)
+
+find_package(
+	Boost
+	${Fcppt_FIND_REQUIRED}
+)
+
+find_path(
+	Fcppt_INCLUDE_DIR
+	NAMES fcppt/version.hpp
+	HINTS ${FCPPT_INCLUDEDIR} ${PC_FCPPT_INCLUDE_DIRS}
+)
+
+macro(
+	FIND_FCPPT_LIBRARY name
+)
+	find_library(
+		Fcppt_LIBRARY
 		NAMES ${name}
+		HINTS ${FCPPT_LIBRARYDIR} ${PC_FCPPT_LIBRARY_DIRS}
 	)
-ENDMACRO()
+endmacro()
 
-IF(MSVC)
-	IF(NOT FCPPT_WANT_DYN_LINK)
-		FIND_FCPPT_LIBRARY(fcppt_static)
-	ENDIF()
+if(
+	MSVC
+)
+	if(
+		NOT Fcppt_WANT_DYN_LINK
+	)
+		FIND_FCPPT_LIBRARY(
+			fcppt_static
+		)
+	endif()
 
-	IF(NOT FCPPT_LIBRARIES)
+	if(
+		NOT FCPPT_LIBRARY
+	)
 		FIND_FCPPT_LIBRARY(fcppt)
 
-		SET (FCPPT_DEFINITIONS "/D FCPPT_DYN_LINK")
-	ENDIF()
-ELSE()
-	FIND_FCPPT_LIBRARY(fcppt)
-ENDIF()
+		set(
+			Fcppt_DEFINITIONS
+			"${Fcppt_DEFINITIONS} /D FCPPT_DYN_LINK"
+		)
+	endif()
+else()
+	FIND_FCPPT_LIBRARY(
+		fcppt
+	)
+endif()
 
-IF ((NOT FCPPT_INCLUDE_DIRS) AND (NOT FCPPT_LIBRARIES))
-	INCLUDE (FindPkgConfig)
-	pkg_check_modules(FCPPT fcppt)
-ENDIF()
-
-INCLUDE(FindPackageHandleStandardArgs)
-
-FIND_PACKAGE_HANDLE_STANDARD_ARGS(
-	FCPPT
-	DEFAULT_MSG
-	FCPPT_LIBRARIES
-	FCPPT_INCLUDE_DIRS
+set(
+	Fcppt_LIBRARIES
+	${Fcppt_LIBRARY}
 )
 
-MARK_AS_ADVANCED(FCPPT_LIBRARIES FCPPT_INCLUDE_DIRS)
+set(
+	Fcppt_INCLUDE_DIRS
+	"${Boost_INCLUDE_DIRS};${Fcppt_INCLUDE_DIR}"
+)
+
+include(
+	FindPackageHandleStandardArgs
+)
+
+find_package_handle_standard_args(
+	FCPPT
+	DEFAULT_MSG
+	Fcppt_LIBRARY
+	Fcppt_INCLUDE_DIR
+)
+
+mark_as_advanced(
+	Fcppt_LIBRARY
+	Fcppt_INCLUDE_DIR
+)

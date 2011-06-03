@@ -39,35 +39,63 @@ To install fcppt, you have to pass an installation prefix via `cmake -D CMAKE_IN
 
 There are other customizable paths that you can use to fine tune the installation of different components:
 
-* INSTALL_INCLUDE_DIR: Path where the fcppt include directory is installed
-* INSTALL_LIBRARY_DIR: Path where the libraries are installed
-* INSTALL_DOC_DIR: Path where the documentation is installed
-* INSTALL_PKGCONFIG_DIR: Path where the pkgconfig file is installed
-* INSTALL_CMAKEMODULES_DIR: Path where the cmake modules are installed
+* `INSTALL_INCLUDE_DIR`: Path where the fcppt include directory is installed
+* `INSTALL_LIBRARY_DIR`: Path where the libraries are installed
+* `INSTALL_DOC_DIR`: Path where the documentation is installed
+* `INSTALL_PKGCONFIG_DIR`: Path where the pkgconfig file is installed
+* `INSTALL_CMAKEMODULES_DIR`: Path where the cmake modules are installed
 
 You can, of course, also use `ccmake` to configure your installation.
 
 [h1 Using fcppt in your project]
 
-Fcppt will also install FindFcppt.cmake into '${CMAKE_INSTALL_PREFIX}/share/cmake/Modules'.
-You can change your CMAKE_MODULE_PATH inside your project to point there, if it doesn't already.
-The find script can be used as follows.
+Fcppt will also install FindFcppt.cmake into `INSTALL_CMAKEMODULES_DIR`.
+You can change your `CMAKE_MODULE_PATH` inside your project to point there, if it doesn't already.
+The find script can be used as follows (note that case is important for variable names).
 ``
 
-FindPackage(
+find_package(
 	Fcppt
 	REQUIRED
 )
 
-INCLUDE_DIRECTORIES(${FCPPT_INCLUDE_DIRS})
-ADD_DEFINITIONS(${FCPPT_DEFINITIONS})
+include_directories(
+	${Fcppt_INCLUDE_DIRS}
+)
 
-ADD_EXECUTABLE(myproject main.cpp)
-TARGET_LINK_LIBRARIES(myproject ${FCPPT_LIBRARIES})
+add_definitions(
+	${Fcppt_DEFINITIONS}
+)
+
+add_executable(
+	myproject
+	main.cpp
+)
+
+target_link_libraries(
+	myproject
+	${Fcppt_LIBRARIES}
+)
 ``
 
 Also, if you don't use cmake in your project, there is a pkgconfig file
-that will be installed into the `${CMAKE_INSTALL_PREFIX}/lib/pkgconfig`.
+that will be installed into the `INSTALL_PKGCONFIG_DIR`.
+
+
+[h2 Explanation of the find module's variables]
+
+For includes and libraries, there are three different variables each
+that all serve a different purpose.
+For example, for include there are:
+
+* `FCPPT_INCLUDEDIR` - Hint where to search for `fcppt/version.hpp`, if cmake can't figure this out on its own.
+* `Fcppt_INCLUDE_DIR` - If fcppt has been found, then this will point to fcppt's include directory only.
+* `Fcppt_INCLUDE_DIRS` - If fcppt has been found, this will contain every include that is needed for an application using fcppt.
+
+You may set `FCPPT_INCLUDEDIR` yourself (note the upper case) if the module has trouble finding an installed fcppt,
+for example, `-D FCPPT_INCLUDEDIR='/path/where/fcppt/is/installed/include'`.
+If you didn't install fcppt, you have to point `Fcppt_INCLUDE_DIR` to both the build directory's include
+and the source include, for example:  `-D Fcppt_INCLUDE_DIR='/fcppt/source/path/include;/fcppt/build/path/include'`
 
 
 [h1 Static and shared builds]
@@ -78,8 +106,8 @@ respectively.
 The default is to build a static library for VC++,
 while a shared library is the default for anything else.
 If you intend to use fcppt as a shared library within VC++,
-you need to set `FCPPT_WANT_DYN_LINK=ON` before including FindFcppt.cmake,
-which will add `/D FCPPT_DYN_LINK` to `FCPPT_DEFINITIONS`.
+you need to set `Fcppt_WANT_DYN_LINK=ON` before including FindFcppt.cmake,
+which will add `/D FCPPT_DYN_LINK` to `Fcppt_DEFINITIONS`.
 
 If you want to link fcppt to Boost statically, you can set `Boost_USE_STATIC_LIBS=ON`.
 

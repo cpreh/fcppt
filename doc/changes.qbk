@@ -27,6 +27,7 @@
 
 * `math::vector::orthogonalize` now takes iterators.
 * 'container::tree::object<T>::value_type` is now `T`.
+* FindFcppt.cmake's variable names have changed to conform to cmake find modules.
 
 [endsect]
 
@@ -44,6 +45,7 @@
 * Fixed copying and assigning of `container::tree`.
 * Removed `BOOST_FOREACH` because it has issues with gcc-4.6 in boost-1.46.1.
 * Made the converting constructor of `container::bitfield::iterator` public.
+* Made `FindFcppt.cmake` more conformant to cmake find modules.
 
 [endsect]
 
