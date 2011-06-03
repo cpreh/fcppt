@@ -4,13 +4,17 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/chrono/asio/time_traits.hpp>
+#ifndef FCPPT_CHRONO_ASIO_TIME_TRAITS_IMPL_HPP_INCLUDED
+#define FCPPT_CHRONO_ASIO_TIME_TRAITS_IMPL_HPP_INCLUDED
+
+#include <fcppt/chrono/asio/time_traits_decl.hpp>
 #include <fcppt/chrono/duration_impl.hpp>
 #include <fcppt/chrono/time_point_arithmetic.hpp>
 #include <fcppt/chrono/time_point_comparison.hpp>
 #include <fcppt/chrono/time_point_impl.hpp>
 #include <boost/date_time/posix_time/posix_time_duration.hpp>
 
+inline
 boost::asio::time_traits<
 	fcppt::chrono::asio::tag
 >::time_type const
@@ -22,6 +26,7 @@ boost::asio::time_traits<
 		clock::now();
 }
 
+inline
 boost::asio::time_traits<
 	fcppt::chrono::asio::tag
 >::time_type const
@@ -36,6 +41,7 @@ boost::asio::time_traits<
 		_time + _duration;
 }
 
+inline
 boost::asio::time_traits<
 	fcppt::chrono::asio::tag
 >::duration_type const
@@ -50,6 +56,7 @@ boost::asio::time_traits<
 		_left - _right;
 }
 
+inline
 bool
 boost::asio::time_traits<
 	fcppt::chrono::asio::tag
@@ -62,6 +69,7 @@ boost::asio::time_traits<
 		_left < _right;
 }
 
+inline
 boost::posix_time::time_duration const
 boost::asio::time_traits<
 	fcppt::chrono::asio::tag
@@ -79,3 +87,5 @@ boost::asio::time_traits<
 			_duration.count()
 		);
 }
+
+#endif

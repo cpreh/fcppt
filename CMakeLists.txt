@@ -282,6 +282,8 @@ SET(
 	include/fcppt/chrono/asio/tag.hpp
 	include/fcppt/chrono/asio/time_point.hpp
 	include/fcppt/chrono/asio/time_traits.hpp
+	include/fcppt/chrono/asio/time_traits_decl.hpp
+	include/fcppt/chrono/asio/time_traits_impl.hpp
 	include/fcppt/chrono/chrono.hpp
 	include/fcppt/chrono/clock_failure.hpp
 	include/fcppt/chrono/common_type.hpp
@@ -1184,7 +1186,6 @@ SET(
 	include/fcppt/weak_ptr_impl.hpp
 	include/fcppt/widen.hpp
 	include/fcppt/workarounds.hpp
-	src/chrono/asio/time_traits.cpp
 	src/chrono/clock_gettime_impl.hpp
 	src/chrono/high_resolution_clock.cpp
 	src/chrono/mach_time_impl.hpp
