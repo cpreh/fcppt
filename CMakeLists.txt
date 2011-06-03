@@ -346,9 +346,11 @@ SET(
 	include/fcppt/container/bitfield/difference_type.hpp
 	include/fcppt/container/bitfield/is_subset_eq.hpp
 	include/fcppt/container/bitfield/iterator.hpp
+	include/fcppt/container/bitfield/iterator_decl.hpp
 	include/fcppt/container/bitfield/iterator_fwd.hpp
 	include/fcppt/container/bitfield/iterator_impl.hpp
 	include/fcppt/container/bitfield/proxy.hpp
+	include/fcppt/container/bitfield/proxy_decl.hpp
 	include/fcppt/container/bitfield/proxy_fwd.hpp
 	include/fcppt/container/bitfield/proxy_impl.hpp
 	include/fcppt/container/bitfield/size_type.hpp
@@ -374,6 +376,7 @@ SET(
 	include/fcppt/container/grid/detail/print_recurse.hpp
 	include/fcppt/container/grid/detail/resize.hpp
 	include/fcppt/container/grid/detail/shrink_to_fit.hpp
+	include/fcppt/container/grid/dim.hpp
 	include/fcppt/container/grid/exception.hpp
 	include/fcppt/container/grid/fill.hpp
 	include/fcppt/container/grid/grid.hpp
