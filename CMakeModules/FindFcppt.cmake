@@ -2,7 +2,7 @@
 #
 # This module defines the following variables
 #
-#	Fcppt_FOUND        - True when fcppt was found
+#	FCPPT_FOUND        - True when fcppt was found
 #	Fcppt_INCLUDE_DIRS - All includes required for fcppt to work
 #	Fcppt_LIBRARIES    - All libraries required for fcppt to work
 #	Fcppt_DEFINITIONS  - Additional compiler flags required
@@ -92,7 +92,7 @@ include(
 )
 
 find_package_handle_standard_args(
-	FCPPT
+	Fcppt
 	DEFAULT_MSG
 	Fcppt_LIBRARY
 	Fcppt_INCLUDE_DIR
