@@ -776,6 +776,7 @@ SET(
 	include/fcppt/math/matrix/dynamic_impl.hpp
 	include/fcppt/math/matrix/has_dim.hpp
 	include/fcppt/math/matrix/inverse.hpp
+	include/fcppt/math/matrix/is_matrix.hpp
 	include/fcppt/math/matrix/is_static_size.hpp
 	include/fcppt/math/matrix/look_at.hpp
 	include/fcppt/math/matrix/matrix.hpp
