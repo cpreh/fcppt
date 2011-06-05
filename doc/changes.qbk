@@ -26,8 +26,9 @@
 [section Changed functionality]
 
 * `math::vector::orthogonalize` now takes iterators.
-* 'container::tree::object<T>::value_type` is now `T`.
+* `container::tree::object<T>::value_type` is now `T`.
 * FindFcppt.cmake's variable names have changed to conform to cmake find modules.
+* `make_unique_ptr` and `make_shared_ptr` now take everything by value. Use `ref` or `cref` when needed.
 
 [endsect]
 
