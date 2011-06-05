@@ -44,7 +44,7 @@
 				count\
 			),\
 			T,\
-			const &param\
+			param\
 		)\
 	)\
 	{\

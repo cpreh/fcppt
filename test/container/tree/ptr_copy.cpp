@@ -66,6 +66,13 @@ copy_tree_value(
 
 }
 
+template class
+fcppt::container::tree::object<
+	fcppt::container::tree::ptr_value<
+		noncopyable
+	>
+>;
+
 BOOST_AUTO_TEST_CASE(
 	container_tree_ptr_copy
 )
