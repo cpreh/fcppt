@@ -17,5 +17,7 @@
 #include <fcppt/chrono/asio/tag.hpp>
 #include <fcppt/chrono/asio/time_point.hpp>
 #include <fcppt/chrono/asio/time_traits.hpp>
+#include <fcppt/chrono/asio/time_traits_decl.hpp>
+#include <fcppt/chrono/asio/time_traits_impl.hpp>
 
 #endif
