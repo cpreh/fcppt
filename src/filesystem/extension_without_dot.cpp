@@ -11,7 +11,7 @@
 
 fcppt::string const
 fcppt::filesystem::extension_without_dot(
-	path const &_path
+	filesystem::path const &_path
 )
 {
 	fcppt::string ret(

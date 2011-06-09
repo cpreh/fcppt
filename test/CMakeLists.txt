@@ -1,5 +1,5 @@
 FIND_PACKAGE(
-	Boost 1.40.0 REQUIRED COMPONENTS
+	Boost 1.44.0 REQUIRED COMPONENTS
 	unit_test_framework
 )
 

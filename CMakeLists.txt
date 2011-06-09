@@ -137,7 +137,7 @@ INSTALL(
 )
 
 FIND_PACKAGE(
-	Boost 1.40.0 REQUIRED COMPONENTS
+	Boost 1.44.0 REQUIRED COMPONENTS
 	filesystem
 	system
 	thread
@@ -498,7 +498,6 @@ SET(
 	include/fcppt/filesystem/create_directory_exn.hpp
 	include/fcppt/filesystem/create_directory_failed.hpp
 	include/fcppt/filesystem/current_path.hpp
-	include/fcppt/filesystem/detail/path_traits.hpp
 	include/fcppt/filesystem/directory_iterator.hpp
 	include/fcppt/filesystem/exception.hpp
 	include/fcppt/filesystem/exists.hpp

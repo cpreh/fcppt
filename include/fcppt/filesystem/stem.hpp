@@ -16,9 +16,10 @@ namespace fcppt
 namespace filesystem
 {
 
-FCPPT_SYMBOL string const
+FCPPT_SYMBOL
+fcppt::string const
 stem(
-	path const &
+	filesystem::path const &
 );
 
 }

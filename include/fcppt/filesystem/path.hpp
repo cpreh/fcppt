@@ -7,11 +7,8 @@
 #ifndef FCPPT_FILESYSTEM_PATH_HPP_INCLUDED
 #define FCPPT_FILESYSTEM_PATH_HPP_INCLUDED
 
+// include config.hpp here, so it will force filesystem::v3 for everything
 #include <fcppt/filesystem/config.hpp>
-#ifndef FCPPT_USE_FILESYSTEM_V3
-#include <fcppt/filesystem/detail/path_traits.hpp>
-#include <fcppt/string.hpp>
-#endif
 #include <boost/filesystem/path.hpp>
 
 namespace fcppt
@@ -19,14 +16,7 @@ namespace fcppt
 namespace filesystem
 {
 
-#ifndef FCPPT_USE_FILESYSTEM_V3
-typedef boost::filesystem::basic_path<
-	string,
-	detail::path_traits
-> path;
-#else
 typedef boost::filesystem::path path;
-#endif
 
 }
 }

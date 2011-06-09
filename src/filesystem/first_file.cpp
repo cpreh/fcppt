@@ -9,7 +9,7 @@
 
 fcppt::filesystem::directory_iterator const
 fcppt::filesystem::first_file(
-	path const &_path
+	filesystem::path const &_path
 )
 {
 	return

@@ -9,7 +9,7 @@
 
 bool
 fcppt::filesystem::remove(
-	path const &_path
+	filesystem::path const &_path
 )
 {
 	return

@@ -21,13 +21,13 @@ namespace filesystem
  * @return If a file has the form a.b, b will be returned.
  *         Otherwise the empty string will be returned.
 */
-FCPPT_SYMBOL string const
+FCPPT_SYMBOL
+fcppt::string const
 extension_without_dot(
-	path const &
+	filesystem::path const &
 );
 
 }
 }
-
 
 #endif

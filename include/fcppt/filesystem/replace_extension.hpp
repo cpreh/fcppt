@@ -16,10 +16,11 @@ namespace fcppt
 namespace filesystem
 {
 
-FCPPT_SYMBOL path const
+FCPPT_SYMBOL
+filesystem::path const
 replace_extension(
-	path const &,
-	string const &
+	filesystem::path const &,
+	fcppt::string const &
 );
 
 }

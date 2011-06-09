@@ -15,9 +15,11 @@ namespace fcppt
 namespace filesystem
 {
 
-FCPPT_SYMBOL bool
+FCPPT_SYMBOL
+bool
 is_directory(
-	path const &);
+	filesystem::path const &
+);
 
 }
 }

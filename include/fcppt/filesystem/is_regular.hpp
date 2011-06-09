@@ -15,9 +15,10 @@ namespace fcppt
 namespace filesystem
 {
 
-FCPPT_SYMBOL bool
+FCPPT_SYMBOL
+bool
 is_regular(
-	path const &
+	filesystem::path const &
 );
 
 }

@@ -16,9 +16,11 @@ namespace fcppt
 namespace filesystem
 {
 
-FCPPT_SYMBOL directory_iterator const
+FCPPT_SYMBOL
+filesystem::directory_iterator const
 first_file(
-	path const &);
+	filesystem::path const &
+);
 
 }
 }

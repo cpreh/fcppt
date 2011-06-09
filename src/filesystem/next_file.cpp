@@ -10,7 +10,7 @@
 
 fcppt::filesystem::directory_iterator const
 fcppt::filesystem::next_file(
-	directory_iterator _it
+	filesystem::directory_iterator _it
 )
 {
 	if(

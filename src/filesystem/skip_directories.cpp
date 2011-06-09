@@ -9,7 +9,7 @@
 
 fcppt::filesystem::directory_iterator const
 fcppt::filesystem::skip_directories(
-	directory_iterator _it
+	filesystem::directory_iterator _it
 )
 {
 	while(

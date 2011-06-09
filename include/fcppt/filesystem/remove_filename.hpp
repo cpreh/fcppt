@@ -15,9 +15,10 @@ namespace fcppt
 namespace filesystem
 {
 
-FCPPT_SYMBOL path const
+FCPPT_SYMBOL
+filesystem::path const
 remove_filename(
-	path
+	filesystem::path
 );
 
 }

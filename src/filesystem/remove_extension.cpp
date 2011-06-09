@@ -12,7 +12,7 @@
 
 fcppt::filesystem::path const
 fcppt::filesystem::remove_extension(
-	path const &_path
+	filesystem::path const &_path
 )
 {
 	if(

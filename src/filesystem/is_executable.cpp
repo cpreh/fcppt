@@ -5,10 +5,10 @@
 
 
 #include <fcppt/filesystem/is_executable.hpp>
-#include <fcppt/filesystem/config.hpp>
 #include <fcppt/platform.hpp>
 #if defined(FCPPT_POSIX_PLATFORM)
 #include <fcppt/filesystem/exception.hpp>
+#include <fcppt/filesystem/path_to_string.hpp>
 #include <fcppt/error/strerrno.hpp>
 #include <fcppt/to_std_string.hpp>
 #include <fcppt/text.hpp>
@@ -20,24 +20,18 @@
 bool
 fcppt::filesystem::is_executable(
 #if defined(FCPPT_POSIX_PLATFORM)
-	path const &_path
+	filesystem::path const &_path
 #else
-	path const &
+	filesystem::path const &
 #endif
 )
 {
 #if defined(FCPPT_POSIX_PLATFORM)
 	if(
 		::access(
-#ifndef FCPPT_USE_FILESYSTEM_V3
-			fcppt::to_std_string(
-				_path.string()
-			).c_str()
-#else
 			_path.string<
 				std::string
 			>().c_str()
-#endif
 			,
 			X_OK
 		) == 0
@@ -51,11 +45,10 @@ fcppt::filesystem::is_executable(
 
 	throw filesystem::exception(
 		FCPPT_TEXT("Can't read permissions on \"")
-#ifndef FCPPT_USE_FILESYSTEM_V3
-		+ _path.string()
-#else
-		+ _path.string<fcppt::string>()
-#endif
+		+
+		fcppt::filesystem::path_to_string(
+			_path
+		)
 		+ FCPPT_TEXT("\" because \"")
 		+ error::strerrno()
 		+ FCPPT_TEXT('"')

@@ -5,7 +5,7 @@
 fcppt needs the following at build time:
 
 * [@http://www.cmake.org >=cmake-2.6]
-* [@http://www.boost.org >=boost-1.40]
+* [@http://www.boost.org >=boost-1.44]
 * A compiler that implements [@http://open-std.org/JTC1/SC22/WG21/docs/papers/2005/n1836.pdf tr1]
 
 To build the documentation the following packages are needed in addition:

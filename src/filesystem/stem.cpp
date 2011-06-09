@@ -5,15 +5,15 @@
 
 
 #include <fcppt/filesystem/stem.hpp>
+#include <fcppt/string.hpp>
 
 fcppt::string const
 fcppt::filesystem::stem(
-	path const &_path
+	filesystem::path const &_path
 )
 {
-#ifndef FCPPT_USE_FILESYSTEM_V3
-	return _path.stem();
-#else
-	return _path.stem().string<fcppt::string>();
-#endif
+	return
+		_path.stem().string<
+			fcppt::string
+		>();
 }
