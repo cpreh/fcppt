@@ -4,12 +4,11 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_FILESYSTEM_CURRENT_PATH_HPP_INCLUDED
-#define FCPPT_FILESYSTEM_CURRENT_PATH_HPP_INCLUDED
+#ifndef FCPPT_FILESYSTEM_CREATE_DIRECTORY_EXN_HPP_INCLUDED
+#define FCPPT_FILESYSTEM_CREATE_DIRECTORY_EXN_HPP_INCLUDED
 
-#include <fcppt/filesystem/path.hpp>
-#include <fcppt/string.hpp>
 #include <fcppt/symbol.hpp>
+#include <fcppt/filesystem/path.hpp>
 
 namespace fcppt
 {
@@ -17,8 +16,10 @@ namespace filesystem
 {
 
 FCPPT_SYMBOL
-filesystem::path const
-current_path();
+void
+create_directory_exn(
+	filesystem::path const &
+);
 
 }
 }

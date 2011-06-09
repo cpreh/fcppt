@@ -4,16 +4,21 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
+#include <fcppt/filesystem/create_directory_exn.hpp>
 #include <fcppt/filesystem/create_directory.hpp>
-#include <boost/filesystem/operations.hpp>
+#include <fcppt/filesystem/create_directory_failed.hpp>
 
-bool
-fcppt::filesystem::create_directory(
+void
+fcppt::filesystem::create_directory_exn(
 	filesystem::path const &_path
 )
 {
-	return
-		boost::filesystem::create_directory(
+	if(
+		!fcppt::filesystem::create_directory(
+			_path
+		)
+	)
+		throw filesystem::create_directory_failed(
 			_path
 		);
 }

@@ -4,16 +4,21 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
+#include <fcppt/filesystem/create_directories_recursive_exn.hpp>
 #include <fcppt/filesystem/create_directories_recursive.hpp>
-#include <boost/filesystem/convenience.hpp>
+#include <fcppt/filesystem/create_directory_failed.hpp>
 
-bool
-fcppt::filesystem::create_directories_recursive(
+void
+fcppt::filesystem::create_directories_recursive_exn(
 	filesystem::path const &_path
 )
 {
-	return
-		boost::filesystem::create_directories(
+	if(
+		!fcppt::filesystem::create_directories_recursive(
+			_path
+		)
+	)
+		throw filesystem::create_directory_failed(
 			_path
 		);
 }

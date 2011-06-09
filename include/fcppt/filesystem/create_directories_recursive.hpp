@@ -15,9 +15,10 @@ namespace fcppt
 namespace filesystem
 {
 
-FCPPT_SYMBOL void
+FCPPT_SYMBOL
+bool
 create_directories_recursive(
-	path const &
+	filesystem::path const &
 );
 
 }

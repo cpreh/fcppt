@@ -493,7 +493,9 @@ SET(
 	include/fcppt/export_symbol.hpp
 	include/fcppt/filesystem/config.hpp
 	include/fcppt/filesystem/create_directories_recursive.hpp
+	include/fcppt/filesystem/create_directories_recursive_exn.hpp
 	include/fcppt/filesystem/create_directory.hpp
+	include/fcppt/filesystem/create_directory_exn.hpp
 	include/fcppt/filesystem/create_directory_failed.hpp
 	include/fcppt/filesystem/current_path.hpp
 	include/fcppt/filesystem/detail/path_traits.hpp
@@ -577,6 +579,7 @@ SET(
 	include/fcppt/io/raw_container_source_fwd.hpp
 	include/fcppt/io/raw_container_source_impl.hpp
 	include/fcppt/io/read.hpp
+	include/fcppt/io/stream_to_string.hpp
 	include/fcppt/io/stringstream.hpp
 	include/fcppt/io/write.hpp
 	include/fcppt/lexical_cast.hpp
@@ -1210,7 +1213,9 @@ SET(
 	src/error/strerrno.cpp
 	src/error/strerror.cpp
 	src/filesystem/create_directories_recursive.cpp
+	src/filesystem/create_directories_recursive_exn.cpp
 	src/filesystem/create_directory.cpp
+	src/filesystem/create_directory_exn.cpp
 	src/filesystem/current_path.cpp
 	src/filesystem/exists.cpp
 	src/filesystem/extension.cpp

@@ -18,11 +18,11 @@ namespace filesystem
 
 class create_directory_failed
 :
-	public exception
+	public filesystem::exception
 {
 public:
 	explicit create_directory_failed(
-		path const &
+		filesystem::path const &
 	);
 };
 

@@ -20,7 +20,7 @@ namespace filesystem
 
 #ifndef FCPPT_USE_FILESYSTEM_V3
 typedef boost::filesystem::basic_directory_iterator<
-	path
+	filesystem::path
 > directory_iterator;
 #else
 typedef boost::filesystem::directory_iterator directory_iterator;

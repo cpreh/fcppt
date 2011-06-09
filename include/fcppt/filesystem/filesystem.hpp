@@ -9,7 +9,9 @@
 
 #include <fcppt/filesystem/config.hpp>
 #include <fcppt/filesystem/create_directories_recursive.hpp>
+#include <fcppt/filesystem/create_directories_recursive_exn.hpp>
 #include <fcppt/filesystem/create_directory.hpp>
+#include <fcppt/filesystem/create_directory_exn.hpp>
 #include <fcppt/filesystem/create_directory_failed.hpp>
 #include <fcppt/filesystem/current_path.hpp>
 #include <fcppt/filesystem/directory_iterator.hpp>
