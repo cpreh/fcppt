@@ -9,7 +9,7 @@
 #
 # This modules accepts the following variables
 #
-#	Fcppt_WANT_DYN_LINK - prefer a dynamic link over a static one when using VC++.
+#	Fcppt_WANT_DYN_LINK - Use dynamic linking with VC++.
 #	                      This will not be useful for any other system.
 #	FCPPT_INCLUDEDIR    - Hint where the fcppt includes might be.
 #	FCPPT_LIBRARYDIR    - Hint where the fcppt libraries might be.
@@ -54,21 +54,19 @@ if(
 	MSVC
 )
 	if(
-		NOT Fcppt_WANT_DYN_LINK
+		Fcppt_WANT_DYN_LINK
 	)
 		FIND_FCPPT_LIBRARY(
-			fcppt_static
+			fcppt
 		)
-	endif()
-
-	if(
-		NOT FCPPT_LIBRARY
-	)
-		FIND_FCPPT_LIBRARY(fcppt)
 
 		set(
 			Fcppt_DEFINITIONS
 			"${Fcppt_DEFINITIONS} /D FCPPT_DYN_LINK"
+		)
+	else()
+		FIND_FCPPT_LIBRARY(
+			fcppt_static
 		)
 	endif()
 else()
