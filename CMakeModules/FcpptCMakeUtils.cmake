@@ -168,8 +168,18 @@ ENDIF()
 # Reject libraries with undefined symbols
 # VC++ does this by default
 
-IF(UNIX AND NOT APPLE)
-	SET(CMAKE_SHARED_LINKER_FLAGS -Wl,--no-undefined)
+IF(
+	UNIX AND NOT APPLE
+)
+	SET(
+		CMAKE_SHARED_LINKER_FLAGS
+		"-Wl,--no-undefined -Wl,--no-copy-dt-needed-entries"
+	)
+
+	SET(
+		CMAKE_EXE_LINKER_FLAGS
+		"-Wl,--no-copy-dt-needed-entries"
+	)
 ENDIF()
 
 # configure standard CMake build paths
