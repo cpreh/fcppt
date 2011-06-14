@@ -30,15 +30,12 @@ set(
 )
 
 find_package(
-	Boost
-	${Fcppt_FIND_REQUIRED}
-	COMPONENTS
+	Boost 1.44.0 COMPONENTS
 	filesystem thread system
 )
 
 find_package(
 	FcpptThreads
-	${Fcppt_FIND_REQUIRED}
 )
 
 find_path(
@@ -84,12 +81,12 @@ endif()
 
 set(
 	Fcppt_DEFINITIONS
-	"${Fcppt_DEFINITIONS} ${Fcppt_THREAD_DEFINITIONS}"
+	"${Fcppt_DEFINITIONS} ${FcpptThreads_DEFINITIONS}"
 )
 
 set(
 	Fcppt_LIBRARIES
-	"${Boost_LIBRARIES};${Fcppt_LIBRARY};${Fcppt_THREAD_LIBRARIES}"
+	"${Boost_LIBRARIES};${Fcppt_LIBRARY};${FcpptThreads_LIBRARIES}"
 )
 
 set(
