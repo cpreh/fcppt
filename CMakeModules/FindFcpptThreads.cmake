@@ -10,6 +10,13 @@ include(
 	FindPkgConfig
 )
 
+# No extra libraries needed for windows
+if(
+	WIN32
+)
+	return()
+endif()
+
 find_package(
 	Threads
 	${FcpptThreads_FIND_REQUIRED}
