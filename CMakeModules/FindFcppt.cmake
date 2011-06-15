@@ -24,14 +24,39 @@ pkg_check_modules(
 	fcppt
 )
 
+if(
+	Fcppt_FIND_QUIETLY
+)
+	set(
+		FCPPT_FIND_OPTIONS
+		"QUIET"
+	)
+endif()
+
+if(
+	Fcppt_FIND_REQUIRED
+)
+	set(
+		FCPPT_FIND_OPTIONS
+		"REQUIRED"
+	)
+endif()
+
 set(
 	Fcppt_DEFINITIONS
 	${PC_FCPPT_CFLAGS}
 )
 
 find_package(
-	Boost 1.44.0 COMPONENTS
+	Boost
+	1.44.0
+	${FCPPT_FIND_OPTIONS}
+	COMPONENTS
 	filesystem thread system
+)
+
+unset(
+	FCPPT_FIND_OPTIONS
 )
 
 find_package(
