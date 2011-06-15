@@ -1410,6 +1410,7 @@ INSTALL(
 INSTALL(
 	FILES
 	${CMAKE_SOURCE_DIR}/CMakeModules/FindFcppt.cmake
+	${CMAKE_SOURCE_DIR}/CMakeModules/FindFcpptThreads.cmake
 	${CMAKE_SOURCE_DIR}/CMakeModules/FcpptCMakeUtils.cmake
 	DESTINATION
 	${INSTALL_CMAKEMODULES_DIR}
