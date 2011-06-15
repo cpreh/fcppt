@@ -173,12 +173,12 @@ IF(
 )
 	SET(
 		CMAKE_SHARED_LINKER_FLAGS
-		"-Wl,--no-undefined -Wl,--no-copy-dt-needed-entries"
+		"-Wl,--as-needed -Wl,--no-undefined -Wl,--no-copy-dt-needed-entries ${CMAKE_SHARED_LINKER_FLAGS}"
 	)
 
 	SET(
 		CMAKE_EXE_LINKER_FLAGS
-		"-Wl,--no-copy-dt-needed-entries"
+		"-Wl,--as-needed -Wl,--no-copy-dt-needed-entries ${CMAKE_EXE_LINKER_FLAGS}"
 	)
 ENDIF()
 
