@@ -17,9 +17,31 @@ if(
 	return()
 endif()
 
+if(
+	FcpptThreads_FIND_QUIETLY
+)
+	set(
+		FCPPTTHREADS_FIND_OPTIONS
+		"QUIET"
+	)
+endif()
+
+if(
+	FcpptThreads_FIND_REQUIRED
+)
+	set(
+		FCPPTTHREADS_FIND_OPTIONS
+		"REQUIRED"
+	)
+endif()
+
 find_package(
 	Threads
-	${FcpptThreads_FIND_REQUIRED}
+	${FCPPTTHREADS_FIND_OPTIONS}
+)
+
+unset(
+	FCPPTTHREADS_FIND_OPTIONS
 )
 
 if(
