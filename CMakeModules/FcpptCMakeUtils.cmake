@@ -84,7 +84,7 @@ SET(
 
 SET(
 	INSTALL_CMAKEMODULES_DIR
-	"${CMAKE_ROOT}/Modules"
+	"${INSTALL_DATA_DIR_BASE}/cmake/Modules"
 	CACHE
 	STRING
 	"Custom cmake module installation directory"
