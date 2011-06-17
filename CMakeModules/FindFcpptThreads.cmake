@@ -44,18 +44,53 @@ unset(
 	FCPPTTHREADS_FIND_OPTIONS
 )
 
+# If FindThreads.cmake thinks we should use -lpthread,
+# we are obviously on a pthread supporting system.
+# However, the manpages for pthreads say that
+# we should use -pthread both as compiler and linker flag.
+# So we will check here if that is supported and use that instead.
 if(
 	"${CMAKE_THREAD_LIBS_INIT}" STREQUAL "-lpthread"
 )
+	# Hopefully we have something that understands these flags.
 	set(
-		FcpptThreads_DEFINITIONS
+		CMAKE_REQUIRED_FLAGS "-Wall -Werror -pedantic"
+	)
+
+	check_cxx_compiler_flag(
 		"-pthread"
+		FCPPTTHREADS_HAVE_PTHREAD_COMPILER_FLAG
 	)
 
 	set(
-		FcpptThreads_LIBRARIES
-		"-pthread"
+		CMAKE_REQUIRED_FLAGS
+		"${CMAKE_REQUIRED_FLAGS} -pthread"
 	)
+
+	check_cxx_compiler_flag(
+		""
+		FCPPTTHREADS_HAVE_PTHREAD_LINKER_FLAG
+	)
+
+	unset(
+		CMAKE_REQUIRED_FLAGS
+	)
+
+	if(
+		FCPPTTHREADS_HAVE_PTHREAD_COMPILER_FLAG
+		AND
+		FCPPTTHREADS_HAVE_PTHREAD_LINKER_FLAG
+	)
+		set(
+			FcpptThreads_DEFINITIONS
+			"-pthread"
+		)
+
+		set(
+			FcpptThreads_LIBRARIES
+			"-pthread"
+		)
+	endif()
 else()
 	set(
 		FcpptThreads_LIBRARIES
