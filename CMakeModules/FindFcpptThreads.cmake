@@ -52,6 +52,10 @@ unset(
 if(
 	"${CMAKE_THREAD_LIBS_INIT}" STREQUAL "-lpthread"
 )
+	include(
+		CheckCXXCompilerFlag
+	)
+
 	# Hopefully we have something that understands these flags.
 	set(
 		CMAKE_REQUIRED_FLAGS "-Wall -Werror -pedantic"
