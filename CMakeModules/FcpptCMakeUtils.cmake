@@ -117,7 +117,11 @@ IF(
 
 	# cmake tries to grep for warning messages which will fail in a lot of cases
 	SET(
-		CMAKE_REQUIRED_FLAGS "-Wall -Werror -pedantic"
+		CMAKE_REQUIRED_FLAGS_BASE "-Wall -Werror -pedantic"
+	)
+
+	SET(
+		CMAKE_REQUIRED_FLAGS ${CMAKE_REQUIRED_FLAGS_BASE}
 	)
 
 	CHECK_CXX_COMPILER_FLAG(
@@ -133,6 +137,38 @@ IF(
 	CHECK_CXX_COMPILER_FLAG(
 		"-Wsign-conversion"
 		FCPPT_UTILS_HAVE_SIGN_CONVERSION_FLAG
+	)
+
+	# To check for linker flags, CMAKE_REQUIRED_FLAGS has to be expanded
+	FUNCTION(
+		FCPPT_CHECK_GCC_LINKER_FLAG
+		FLAG
+		VARIABLE
+	)
+		SET(
+			CMAKE_REQUIRED_FLAGS
+			"${CMAKE_REQUIRED_FLAGS_BASE} ${FLAG}"
+		)
+
+		CHECK_CXX_COMPILER_FLAG(
+			""
+			${VARIABLE}
+		)
+	ENDFUNCTION()
+
+	FCPPT_CHECK_GCC_LINKER_FLAG(
+		"-Wl,--as-needed"
+		FCPPT_UTILS_HAVE_AS_NEEDED_LINKER_FLAG
+	)
+
+	FCPPT_CHECK_GCC_LINKER_FLAG(
+		"-Wl,--no-undefined"
+		FCPPT_UTILS_HAVE_NO_UNDEFINED_LINKER_FLAG
+	)
+
+	FCPPT_CHECK_GCC_LINKER_FLAG(
+		"-Wl,--no-copy-dt-needed-entries"
+		FCPPT_UTILS_HAVE_NO_COPY_DT_NEEDED_ENTRIES_LINKER_FLAG
 	)
 
 	UNSET(CMAKE_REQUIRED_FLAGS)
@@ -158,28 +194,36 @@ IF(
 	IF(FCPPT_UTILS_HAVE_GCC_VISIBILITY)
 		ADD_DEFINITIONS ("-fvisibility=hidden")
 	ENDIF()
+
+	IF(FCPPT_UTILS_HAVE_AS_NEEDED_LINKER_FLAG)
+		SET(
+			CMAKE_SHARED_LINKER_FLAGS
+			"-Wl,--as-needed ${CMAKE_SHARED_LINKER_FLAGS}"
+		)
+	ENDIF()
+
+	IF(FCPPT_UTILS_HAVE_NO_UNDEFINED_LINKER_FLAG)
+		SET(
+			CMAKE_SHARED_LINKER_FLAGS
+			"-Wl,--no-undefined ${CMAKE_SHARED_LINKER_FLAGS}"
+		)
+	ENDIF()
+
+	IF(FCPPT_UTILS_HAVE_NO_COPY_DT_NEEDED_ENTRIES_LINKER_FLAG)
+		SET(
+			CMAKE_SHARED_LINKER_FLAGS
+			"-Wl,--no-copy-dt-needed-entries ${CMAKE_SHARED_LINKER_FLAGS}"
+		)
+		SET(
+			CMAKE_EXE_LINKER_FLAGS
+			"-Wl,--no-copy-dt-needed-entries ${CMAKE_EXE_LINKER_FLAGS}"
+		)
+	ENDIF()
 ELSEIF(
 	MSVC
 )
 	ADD_DEFINITIONS ("/W4 /wd4996 /EHa /D_BIND_TO_CURRENT_VCLIBS_VERSION=1")
 	#4996 - unsafe standard C++ functions
-ENDIF()
-
-# Reject libraries with undefined symbols
-# VC++ does this by default
-
-IF(
-	UNIX AND NOT APPLE
-)
-	SET(
-		CMAKE_SHARED_LINKER_FLAGS
-		"-Wl,--as-needed -Wl,--no-undefined -Wl,--no-copy-dt-needed-entries ${CMAKE_SHARED_LINKER_FLAGS}"
-	)
-
-	SET(
-		CMAKE_EXE_LINKER_FLAGS
-		"-Wl,--as-needed -Wl,--no-copy-dt-needed-entries ${CMAKE_EXE_LINKER_FLAGS}"
-	)
 ENDIF()
 
 # configure standard CMake build paths
