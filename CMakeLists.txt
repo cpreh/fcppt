@@ -215,6 +215,17 @@ CHECK_CXX_SOURCE_COMPILES(
 	FCPPT_HAVE_CLOCK_GETTIME
 )
 
+CHECK_CXX_SOURCE_COMPILES(
+	"#include <execinfo.h>
+	int main()
+	{
+		int (*tmp)(void**,int) throw() = ::backtrace;
+    char **(*tmp2)(void* const *,int) throw() = ::backtrace_symbols;
+    void(*tmp3)(void* const*,int,int) throw() = ::backtrace_symbols_fd;
+	}"
+	FCPPT_HAVE_BACKTRACE
+)
+
 UNSET(CMAKE_REQUIRED_LIBRARIES)
 
 CONFIGURE_FILE(
@@ -275,6 +286,10 @@ SET(
 	include/fcppt/assign/make_array.hpp
 	include/fcppt/assign/make_container.hpp
 	include/fcppt/auto_ptr.hpp
+	include/fcppt/backtrace/current_stack_frame.hpp
+	include/fcppt/backtrace/print_current_stack_frame.hpp
+	include/fcppt/backtrace/stack_frame.hpp
+	include/fcppt/backtrace/stack_limit.hpp
 	include/fcppt/bad_dynamic_cast.hpp
 	include/fcppt/bad_lexical_cast.hpp
 	include/fcppt/bad_truncation_check_cast.hpp
@@ -1201,6 +1216,8 @@ SET(
 	include/fcppt/weak_ptr_impl.hpp
 	include/fcppt/widen.hpp
 	include/fcppt/workarounds.hpp
+	src/backtrace/current_stack_frame.cpp
+	src/backtrace/print_current_stack_frame.cpp
 	src/chrono/clock_gettime_impl.hpp
 	src/chrono/high_resolution_clock.cpp
 	src/chrono/mach_time_impl.hpp

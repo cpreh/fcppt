@@ -31,4 +31,7 @@
 #cmakedefine FCPPT_HAVE_GCC_PRETTY_FUNCTION
 #cmakedefine FCPPT_HAVE_GCC_VISIBILITY
 
+// gnu
+#cmakedefine FCPPT_HAVE_BACKTRACE
+
 #endif
