@@ -5,19 +5,21 @@
 
 
 #include <fcppt/backtrace/print_current_stack_frame.hpp>
-#include <fcppt/container/array.hpp>
 #include <fcppt/config.hpp>
-#include <cstddef>
 
 #if defined(FCPPT_HAVE_BACKTRACE)
+#include <fcppt/container/array.hpp>
+#include <cstddef>
 #include <execinfo.h>
 #include <unistd.h>
 #endif
 
+#if defined(FCPPT_HAVE_BACKTRACE)
 namespace
 {
 std::size_t const max_stacktrace_size = 128;
 }
+#endif
 
 void
 fcppt::backtrace::print_current_stack_frame()
@@ -39,6 +41,5 @@ fcppt::backtrace::print_current_stack_frame()
 		resulting_symbols.data(),
 		number_of_symbols,
 		STDERR_FILENO);
-#else
 #endif
 }

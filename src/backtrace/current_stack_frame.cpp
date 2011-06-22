@@ -9,10 +9,10 @@
 #include <fcppt/backtrace/stack_limit.hpp>
 #include <fcppt/config.hpp>
 #if defined(FCPPT_HAVE_BACKTRACE)
-#include <fcppt/scoped_ptr.hpp>
-#include <fcppt/from_std_string.hpp>
+#include <fcppt/container/raw_vector.hpp>
 #include <fcppt/c_deleter.hpp>
-#include <vector>
+#include <fcppt/from_std_string.hpp>
+#include <fcppt/scoped_ptr.hpp>
 #include <execinfo.h>
 #endif
 
@@ -26,7 +26,7 @@ fcppt::backtrace::current_stack_frame(
 {
 #if defined(FCPPT_HAVE_BACKTRACE)
 	typedef
-	std::vector<void*>
+	fcppt::container::raw_vector<void *>
 	symbol_sequence;
 
 	symbol_sequence resulting_symbols(
@@ -35,7 +35,7 @@ fcppt::backtrace::current_stack_frame(
 
 	int const number_of_symbols = 
 		::backtrace(
-			&resulting_symbols[0],
+			resulting_symbols.data(),
 			static_cast<int>(
 				max.get()));
 
@@ -45,8 +45,8 @@ fcppt::backtrace::current_stack_frame(
 			number_of_symbols));
 
 	fcppt::scoped_ptr<char*,fcppt::c_deleter> raw_symbols(
-		backtrace_symbols(
-			&resulting_symbols[0],
+		::backtrace_symbols(
+			resulting_symbols.data(),
 			number_of_symbols));
 
 	for(int i = 0; i < number_of_symbols; ++i)
