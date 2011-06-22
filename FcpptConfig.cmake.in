@@ -1,0 +1,60 @@
+get_filename_component(
+	_currentDir
+	"${CMAKE_CURRENT_LIST_FILE}"
+	PATH
+)
+
+include(
+	"${_currentDir}/FcpptTargets.cmake"
+)
+
+if(
+	MSVC
+)
+	if(
+		Fcppt_WANT_DYN_LINK
+	)
+		set(
+			Fcppt_LIBRARY
+			fcppt
+		)
+
+		set(
+			FCPPT_CONFIG_DEFINITIONS
+			"/D FCPPT_DYN_LINK"
+		)
+	else(
+		Fcppt_WANT_DYN_LINK
+	)
+		set(
+			Fcppt_LIBRARY
+			fcppt_static
+		)
+	endif(
+		Fcppt_WANT_DYN_LINK
+	)
+else(
+	MSVC
+)
+	set(
+		Fcppt_LIBRARY
+		fcppt
+	)
+endif(
+	MSVC
+)
+
+set(
+	Fcppt_DEFINITIONS
+	"${FCPPT_CONFIG_DEFINITIONS} @FcpptThreads_DEFINITIONS@"
+)
+
+set(
+	Fcppt_LIBRARIES
+	"@Boost_LIBRARIES@;${Fcppt_LIBRARY};@FcpptThreads_LIBRARIES@"
+)
+
+set(
+	Fcppt_INCLUDE_DIRS
+	"@Boost_INCLUDE_DIRS@;@Fcppt_INCLUDE_DIR@"
+)

@@ -91,6 +91,22 @@ SET(
 )
 
 SET(
+	INSTALL_CMAKECONFIG_DIR_BASE
+	"${INSTALL_LIBRARY_DIR}/cmake"
+	CACHE
+	STRING
+	"Custom cmake config installation directory without suffixes"
+)
+
+SET(
+	INSTALL_CMAKECONFIG_DIR
+	"${INSTALL_CMAKECONFIG_DIR_BASE}/${CMAKE_PROJECT_NAME}"
+	CACHE
+	STRING
+	"Custom cmake module installation directory"
+)
+
+SET(
 	INSTALL_SYSCONFIG_DIR_BASE
 	"${CMAKE_INSTALL_PREFIX}/etc"
 	CACHE
