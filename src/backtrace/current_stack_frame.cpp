@@ -8,19 +8,21 @@
 #include <fcppt/backtrace/stack_frame.hpp>
 #include <fcppt/backtrace/stack_limit.hpp>
 #include <fcppt/config.hpp>
+#if defined(FCPPT_HAVE_BACKTRACE)
 #include <fcppt/scoped_ptr.hpp>
 #include <fcppt/from_std_string.hpp>
 #include <fcppt/c_deleter.hpp>
-
-#if defined(FCPPT_HAVE_BACKTRACE)
+#include <vector>
 #include <execinfo.h>
 #endif
 
-#include <vector>
-
 fcppt::backtrace::stack_frame const
 fcppt::backtrace::current_stack_frame(
-	backtrace::stack_limit const &max)
+	backtrace::stack_limit const &
+#if defined(FCPPT_HAVE_BACKTRACE)
+	max
+#endif
+)
 {
 #if defined(FCPPT_HAVE_BACKTRACE)
 	typedef
