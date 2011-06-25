@@ -20,7 +20,7 @@ template struct fcppt::container::array<
 >;
 
 BOOST_AUTO_TEST_CASE(
-	array_fundamental
+	container_array_fundamental
 )
 {
 	fcppt::container::array<

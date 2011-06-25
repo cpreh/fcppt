@@ -24,16 +24,32 @@ template<
 struct array
 {
 	typedef T &reference;
+
 	typedef T const &const_reference;
+
 	typedef T *iterator;
+
 	typedef T const *const_iterator;
+
 	typedef std::size_t size_type;
+
 	typedef std::ptrdiff_t difference_type;
+
 	typedef T value_type;
+
 	typedef T *pointer;
+
 	typedef T const *const_pointer;
+
 	typedef std::reverse_iterator<iterator> reverse_iterator;
+
 	typedef std::reverse_iterator<const_iterator> const_reverse_iterator;
+
+	// for boost::array compatibility
+	enum
+	{
+		static_size = N
+	};
 
 	typename detail::array_storage<
 		T,

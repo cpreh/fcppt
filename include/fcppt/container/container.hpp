@@ -10,6 +10,7 @@
 #include <fcppt/container/array.hpp>
 #include <fcppt/container/array_comparison.hpp>
 #include <fcppt/container/array_decl.hpp>
+#include <fcppt/container/array_fusion.hpp>
 #include <fcppt/container/array_fwd.hpp>
 #include <fcppt/container/array_impl.hpp>
 #include <fcppt/container/bitfield/bitfield.hpp>
