@@ -286,6 +286,7 @@ SET(
 	include/fcppt/assign/make_array.hpp
 	include/fcppt/assign/make_container.hpp
 	include/fcppt/auto_ptr.hpp
+	include/fcppt/backtrace/backtrace.hpp
 	include/fcppt/backtrace/current_stack_frame.hpp
 	include/fcppt/backtrace/print_current_stack_frame.hpp
 	include/fcppt/backtrace/stack_frame.hpp
@@ -1172,6 +1173,7 @@ SET(
 	include/fcppt/variant/apply_unary.hpp
 	include/fcppt/variant/detail/apply.hpp
 	include/fcppt/variant/detail/apply_unary_internal.hpp
+	include/fcppt/variant/detail/assert_type.hpp
 	include/fcppt/variant/detail/binary_applier.hpp
 	include/fcppt/variant/detail/binary_unwrap.hpp
 	include/fcppt/variant/detail/compare.hpp

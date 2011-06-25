@@ -25,7 +25,7 @@ struct index_of
 :
 fcppt::mpl::index_of<
 	Types,
-	typename real_type<
+	typename detail::real_type<
 		Types,
 		Element
 	>::type

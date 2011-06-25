@@ -10,6 +10,7 @@
 #include <fcppt/variant/object_decl.hpp>
 #include <fcppt/variant/apply_unary.hpp>
 #include <fcppt/variant/invalid_get.hpp>
+#include <fcppt/variant/detail/assert_type.hpp>
 #include <fcppt/variant/detail/copy.hpp>
 #include <fcppt/variant/detail/destroy.hpp>
 #include <fcppt/variant/detail/construct.hpp>
@@ -153,6 +154,12 @@ template<
 U const &
 fcppt::variant::object<Types>::get() const
 {
+	FCPPT_VARIANT_DETAIL_ASSERT_TYPE(
+		Types,
+		U,
+		elements
+	);
+
 	if(
 		index_ != static_cast<
 			size_type
@@ -208,6 +215,12 @@ template<
 U &
 fcppt::variant::object<Types>::get_raw()
 {
+	FCPPT_VARIANT_DETAIL_ASSERT_TYPE(
+		Types,
+		U,
+		elements
+	);
+
 	return
 		*static_cast<
 			U *
@@ -225,6 +238,12 @@ template<
 U const &
 fcppt::variant::object<Types>::get_raw() const
 {
+	FCPPT_VARIANT_DETAIL_ASSERT_TYPE(
+		Types,
+		U,
+		elements
+	);
+
 	return
 		*static_cast<
 			U const *
@@ -286,18 +305,17 @@ fcppt::variant::object<Types>::construct(
 			_other
 		);
 
-	size_type const new_index(
+	FCPPT_VARIANT_DETAIL_ASSERT_TYPE(
+		Types,
+		U,
+		elements
+	);
+
+	index_ =
 		detail::index_of<
 			Types,
 			U
-		>::value
-	);
-
-	BOOST_STATIC_ASSERT(
-		new_index < elements
-	);
-
-	index_ = new_index;
+		>::value;
 }
 
 template<
