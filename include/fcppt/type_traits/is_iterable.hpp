@@ -16,18 +16,21 @@ namespace fcppt
 {
 namespace type_traits
 {
-template<typename T>
+
+template<
+	typename T
+>
 struct is_iterable
+:
+boost::mpl::if_
+<
+	boost::is_const<T>,
+	has_const_iterator<T>,
+	has_iterator<T>
+>::type
 {
-public:
-	static bool const value =
-		boost::mpl::if_
-		<
-			boost::is_const<T>,
-			has_const_iterator<T>,
-			has_iterator<T>
-		>::type::value;
 };
+
 }
 }
 
