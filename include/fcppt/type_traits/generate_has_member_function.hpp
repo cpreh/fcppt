@@ -7,21 +7,32 @@
 #ifndef FCPPT_TYPE_TRAITS_GENERATE_HAS_MEMBER_FUNCTION_HPP_INCLUDED
 #define FCPPT_TYPE_TRAITS_GENERATE_HAS_MEMBER_FUNCTION_HPP_INCLUDED
 
-namespace fcppt
-{
-namespace type_traits
-{
+#include <boost/mpl/bool.hpp>
+
 /// See http://stackoverflow.com/questions/257288/possible-for-c-template-to-check-for-a-functions-existence/264088#264088
-#define FCPPT_TYPE_TRAITS_GENERATE_HAS_MEMBER_FUNCTION(func)\
+#define FCPPT_TYPE_TRAITS_GENERATE_HAS_MEMBER_FUNCTION(\
+	func\
+)\
 	template<typename T, typename Sign>\
-	struct has_ ## func\
+	class has_ ## func_impl\
 	{\
 		template<typename U, U> struct type_check;\
 		template<typename _1> static char (& chk(type_check<Sign, &_1::func> *))[1];\
 		template<typename   > static char (& chk(...))[2];\
-		static bool const value = sizeof(chk<T>(0)) == 1;\
+	public:\
+		typedef boost::mpl::bool_<\
+			sizeof(chk<T>(0)) == 1\
+		> type;\
+	};\
+\
+	template<typename T, typename Sign>\
+	struct has_ ## func\
+	:\
+		has_ ## func_impl<\
+			T,\
+			Sign\
+		>::type\
+	{\
 	}
-}
-}
 
 #endif
