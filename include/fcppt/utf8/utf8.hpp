@@ -10,6 +10,7 @@
 #include <fcppt/utf8/char_type.hpp>
 #include <fcppt/utf8/convert.hpp>
 #include <fcppt/utf8/facet.hpp>
+#include <fcppt/utf8/from_std_string.hpp>
 #include <fcppt/utf8/string.hpp>
 #include <fcppt/utf8/traits.hpp>
 
