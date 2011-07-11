@@ -1165,6 +1165,7 @@ SET(
 	include/fcppt/utf8/char_type.hpp
 	include/fcppt/utf8/convert.hpp
 	include/fcppt/utf8/facet.hpp
+	include/fcppt/utf8/from_std_string.hpp
 	include/fcppt/utf8/string.hpp
 	include/fcppt/utf8/traits.hpp
 	include/fcppt/utf8/utf8.hpp
@@ -1338,6 +1339,7 @@ SET(
 	src/type_name.cpp
 	src/utf8/convert.cpp
 	src/utf8/facet.cpp
+	src/utf8/from_std_string.cpp
 	src/version_string.cpp
 	src/widen.cpp
 )
