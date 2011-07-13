@@ -1163,10 +1163,11 @@ SET(
 	include/fcppt/unique_ptr_fwd.hpp
 	include/fcppt/unique_ptr_impl.hpp
 	include/fcppt/utf8/char_type.hpp
-	include/fcppt/utf8/convert.hpp
 	include/fcppt/utf8/facet.hpp
+	include/fcppt/utf8/from_fcppt_string.hpp
 	include/fcppt/utf8/from_std_string.hpp
 	include/fcppt/utf8/string.hpp
+	include/fcppt/utf8/to_fcppt_string.hpp
 	include/fcppt/utf8/traits.hpp
 	include/fcppt/utf8/utf8.hpp
 	include/fcppt/variant/apply.hpp
@@ -1337,9 +1338,13 @@ SET(
 	src/to_std_wstring.cpp
 	src/type_info.cpp
 	src/type_name.cpp
-	src/utf8/convert.cpp
 	src/utf8/facet.cpp
+	src/utf8/from_fcppt_string.cpp
 	src/utf8/from_std_string.cpp
+	src/utf8/locale.cpp
+	src/utf8/locale.hpp
+	src/utf8/to_fcppt_string.cpp
+	src/utf8/ucs4.hpp
 	src/version_string.cpp
 	src/widen.cpp
 )

@@ -5,22 +5,33 @@
 
 
 #include <fcppt/utf8/from_std_string.hpp>
+#include <fcppt/config.hpp>
+#if defined(FCPPT_STRING_IS_UTF8) && defined(FCPPT_NARROW_STRING)
+#define FCPPT_STRING_TO_UTF8_DIRECT
+#endif
 #include <fcppt/utf8/string.hpp>
 #include <string>
+#if defined(FCPPT_STRING_TO_UTF8_DIRECT)
+#include <fcppt/utf8/from_fcppt_string.hpp>
+#include <fcppt/from_std_string.hpp>
+#endif
 
 fcppt::utf8::string const
 fcppt::utf8::from_std_string(
-	std::string const &input)
+	std::string const &_input
+)
 {
-	fcppt::utf8::string result;
-	result.resize(
-		static_cast<fcppt::utf8::string::size_type>(
-			input.size()));
-	for(std::string::size_type i = 0; i < input.size(); ++i)
-		result[
-			static_cast<fcppt::utf8::string::size_type>(
-				i)] = 
-			static_cast<fcppt::utf8::string::value_type>(
-				input[i]);
-	return result;
+	return
+#if defined(FCPPT_STRING_IS_UTF8) && defined(FCPPT_NARROW_STRING)
+		fcppt::utf8::string(
+			_input.begin(),
+			_input.end()
+		);
+#else
+		fcppt::utf8::from_fcppt_string(
+			fcppt::from_std_string(
+				_input
+			)
+		);
+#endif
 }

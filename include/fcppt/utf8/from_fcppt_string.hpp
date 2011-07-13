@@ -4,8 +4,8 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_UTF8_CONVERT_HPP_INCLUDED
-#define FCPPT_UTF8_CONVERT_HPP_INCLUDED
+#ifndef FCPPT_UTF8_FROM_FCPPT_STRING_HPP_INCLUDED
+#define FCPPT_UTF8_FROM_FCPPT_STRING_HPP_INCLUDED
 
 #include <fcppt/utf8/string.hpp>
 #include <fcppt/string.hpp>
@@ -16,13 +16,9 @@ namespace fcppt
 namespace utf8
 {
 
-FCPPT_SYMBOL fcppt::string const
-convert(
-	utf8::string const &
-);
-
-FCPPT_SYMBOL utf8::string const
-convert(
+FCPPT_SYMBOL
+utf8::string const
+from_fcppt_string(
 	fcppt::string const &
 );
 
