@@ -1,6 +1,6 @@
 [section Requirements, Download and Installation]
 
-[h1 Requirements]
+[section Requirements]
 
 fcppt needs the following at build time:
 
@@ -14,20 +14,28 @@ To build the documentation the following packages are needed in addition:
 * xsltproc from [@http://xmlsoft.org/XSLT/ libxslt]
 * [@http://www.boost.org/doc/tools/quickbook/index.html quickbook] (part of boost)
 
-Tested compilers are:
+[endsect]
 
-* gcc-4.6.0 (Gentoo Linux)
+[section Supported Platforms]
+
+* gcc-4.6.1 (Gentoo Linux)
 * clang-2.9 (MacOS)
 * VC++ 2010 SP1 (Windows XP 32 Bit and Windows 7 64 Bit)
 
-[h1 Download]
+[endsect]
+
+[section Download]
 
 fcppt is available through our public Git Repository: `git://github.com/freundlich/fcppt.git`.
 
-The latest fcppt release is 0.9.
-Get it [@http://supraverse.net/freundlich/fcppt-0.9.tar.bz2 here].
+The latest fcppt release is 0.10.
+Get it [@http://supraverse.net/freundlich/fcppt-0.10.tar.bz2 here].
 
-[h1 Installation]
+Gentoo ebuilds are available in Freundlich's overlay at `git://github.com/freundlich/freundlich-gentoo.git`.
+
+[endsect]
+
+[section Building and Installation]
 
 First, you have to create a build directory, for example `mkdir build` inside the fcppt directory.
 The build directory cannot be the same as the source directory.
@@ -35,7 +43,7 @@ The build directory cannot be the same as the source directory.
 Next, you have to call cmake and pass it fcppt's source directory, for example `cmake ..` if
 your build directory is directly below the source directory.
 
-To install fcppt, you have to pass an installation prefix via `cmake -D CMAKE_INSTALL_PREFIX=/home/me/local ..`
+To install fcppt, you have to pass an installation prefix, for example `cmake -D CMAKE_INSTALL_PREFIX=/home/me/local ..`
 
 There are other customizable paths that you can use to fine tune the installation of different components:
 
@@ -44,14 +52,54 @@ There are other customizable paths that you can use to fine tune the installatio
 * `INSTALL_DOC_DIR`: Path where the documentation is installed
 * `INSTALL_PKGCONFIG_DIR`: Path where the pkgconfig file is installed
 * `INSTALL_CMAKEMODULES_DIR`: Path where the cmake modules are installed
+* `INSTALL_CMAKECONFIG_DIR`: Path where the cmake config files are installed
 
 You can, of course, also use `ccmake` to configure your installation.
 
-[h1 Using fcppt in your project]
+[endsect]
 
-Fcppt will also install FindFcppt.cmake into `INSTALL_CMAKEMODULES_DIR`.
-You can change your `CMAKE_MODULE_PATH` inside your project to point there, if it doesn't already.
-The find script can be used as follows (note that case is important for variable names).
+[section Using fcppt in your project]
+
+[section Use fcppt from the build directory]
+
+If you don't install fcppt, you should add the CMakeModules directory of fcppt
+to your `CMAKE_MODULE_PATH`, so cmake will be able to make sense of `find_package(Fcppt)`.
+Additionally, you most likely have to configure fcppt's include directories and library paths yourself.
+Also note that fcppt puts part of its includes (which are generated during build time) into
+`${CMAKE_BINARY_DIR}/include`.
+For the next example, suppose your fcppt source is in `${fcppt_source}` and your build directory
+is `${fcppt_build}`.
+
+``
+cmake \
+	-D CMAKE_MODULE_PATH:FILEPATH="${fcppt_source}/CMakeModules" \
+	-D Fcppt_INCLUDE_DIR:FILEPATH="${fcppt_source}/include;${fcppt_build}/include" \
+	-D FCPPT_LIBRARYDIR:FILEPATH="${fcppt_build}/lib" \
+``
+
+If you are running Visual Studio that puts the libraries into Debug and Release,
+you can specify `Fcppt_LIBRARY` instead of `FCPPT_LIBRARYDIR` directly:
+``
+cmake \
+	-D Fcppt_LIBRARY:FILEPATH="optimized;${fcppt_build}/lib/Release/fcppt.lib;debug;${fcppt_build}/lib/Debug/fcppt.lib"
+``
+
+[endsect]
+
+[section Use fcppt from an installation]
+
+If fcppt is installed instead, it will put an FcpptConfig.cmake into `INSTALL_CMAKECONFIG_DIR`
+(which is usually `/usr/lib/cmake`),
+where cmake should be able to find it when `find_package(Fcppt)` is used.
+If `INSTALL_CMAKECONFIG_DIR` is not available for cmake, you should add the path
+to `CMAKE_MODULE_PATH` as well.
+
+[endsect]
+
+[section Modify your CMakeLists]
+
+The following code is needed to use fcppt in your project,
+named myproject here just for exposition.
 ``
 
 find_package(
@@ -81,8 +129,9 @@ target_link_libraries(
 Also, if you don't use cmake in your project, there is a pkgconfig file
 that will be installed into the `INSTALL_PKGCONFIG_DIR`.
 
+[endsect]
 
-[h2 Explanation of the find module's variables]
+[section Explanation of the find module's variables]
 
 For includes and libraries, there are three different variables each
 that all serve a different purpose.
@@ -94,11 +143,17 @@ For example, for include there are:
 
 You may set `FCPPT_INCLUDEDIR` yourself (note the upper case) if the module has trouble finding an installed fcppt,
 for example, `-D FCPPT_INCLUDEDIR='/path/where/fcppt/is/installed/include'`.
-If you didn't install fcppt, you have to point `Fcppt_INCLUDE_DIR` to both the build directory's include
-and the source include, for example:  `-D Fcppt_INCLUDE_DIR='/fcppt/source/path/include;/fcppt/build/path/include'`
+Also, you can set `Fcppt_INCLUDE_DIR` yourself and let it point directly to fcppt's include dir(s).
+However, you should never set `Fcppt_INCLUDE_DIRS` yourself, unless you known what you are doing.
 
+The variables for fcppt's library are `FCPPT_LIBRARYDIR`, `Fcppt_LIBRARY` and `FCPPT_LIBRARIES` that have
+an analogous meaning to the include variables.
 
-[h1 Static and shared builds]
+[endsect]
+
+[endsect]
+
+[section Static and shared builds]
 
 fcppt can be built as a static or shared library,
 which is controlled by `ENABLE_STATIC` and `ENABLE_SHARED`,
@@ -106,9 +161,12 @@ respectively.
 The default is to build a static library for VC++,
 while a shared library is the default for anything else.
 If you intend to use fcppt as a shared library within VC++,
-you need to set `Fcppt_WANT_DYN_LINK=ON` before including FindFcppt.cmake,
+you need to set `Fcppt_WANT_DYN_LINK=ON` before you call
+`find_package(Fcppt)`,
 which will add `/D FCPPT_DYN_LINK` to `Fcppt_DEFINITIONS`.
 
 If you want to link fcppt to Boost statically, you can set `Boost_USE_STATIC_LIBS=ON`.
+
+[endsect]
 
 [endsect]
