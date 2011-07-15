@@ -196,6 +196,9 @@ has a `data()` function to access the array directly via a pointer.
 
 [xinclude doxygen_container_array.xml]
 
+Array is also compatible with `boost::fusion`. The required glue code
+resides in `fcppt/container/array_fusion.hpp`.
+
 [endsect]
 
 [section ptr_container helpers]
