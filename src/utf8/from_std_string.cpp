@@ -11,7 +11,7 @@
 #endif
 #include <fcppt/utf8/string.hpp>
 #include <string>
-#if defined(FCPPT_STRING_TO_UTF8_DIRECT)
+#if !defined(FCPPT_STRING_TO_UTF8_DIRECT)
 #include <fcppt/utf8/from_fcppt_string.hpp>
 #include <fcppt/from_std_string.hpp>
 #endif
@@ -22,7 +22,7 @@ fcppt::utf8::from_std_string(
 )
 {
 	return
-#if defined(FCPPT_STRING_IS_UTF8) && defined(FCPPT_NARROW_STRING)
+#if defined(FCPPT_STRING_TO_UTF8_DIRECT)
 		fcppt::utf8::string(
 			_input.begin(),
 			_input.end()
