@@ -30,7 +30,7 @@ struct init
 }
 
 std::locale &
-utf8_locale()
+fcppt::utf8::locale()
 {
 	return global.locale_;
 }
