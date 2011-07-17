@@ -810,10 +810,7 @@ SET(
 	include/fcppt/math/matrix/matrix.hpp
 	include/fcppt/math/matrix/max_ctor_params.hpp
 	include/fcppt/math/matrix/normal_storage.hpp
-	include/fcppt/math/matrix/orthogonal.hpp
-	include/fcppt/math/matrix/orthogonal_xy.hpp
 	include/fcppt/math/matrix/output.hpp
-	include/fcppt/math/matrix/perspective.hpp
 	include/fcppt/math/matrix/rotation_2d.hpp
 	include/fcppt/math/matrix/rotation_axis.hpp
 	include/fcppt/math/matrix/rotation_x.hpp
@@ -824,7 +821,6 @@ SET(
 	include/fcppt/math/matrix/structure_cast.hpp
 	include/fcppt/math/matrix/translation.hpp
 	include/fcppt/math/matrix/transpose.hpp
-	include/fcppt/math/matrix/unproject.hpp
 	include/fcppt/math/matrix/vector.hpp
 	include/fcppt/math/mod.hpp
 	include/fcppt/math/mod_assign.hpp
