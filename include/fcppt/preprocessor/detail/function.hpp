@@ -11,8 +11,10 @@
 #include <fcppt/from_std_string.hpp>
 #include <fcppt/text.hpp>
 
-#ifdef FCPPT_HAVE_GCC_PRETTY_FUNCTION
+#if defined(FCPPT_HAVE_GCC_PRETTY_FUNCTION)
 #define FCPPT_PP_DETAIL_FUNCTION fcppt::from_std_string(__PRETTY_FUNCTION__)
+#elif defined(_MSC_VER)
+#define FCPPT_PP_DETAIL_FUNCTION fcppt::from_std_string(__FUNCSIG__)
 #else
 #define FCPPT_PP_DETAIL_FUNCTION FCPPT_TEXT("")
 #endif
