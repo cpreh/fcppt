@@ -11,6 +11,7 @@
 * Install a new `FcpptConfig.cmake` file so cmake can find an installed fcppt without `FindFcppt.cmake`.
 * Added fusion adaptors for `container::array`.
 * Added `utf8::from_std_string`.
+* Implemented `FCPPT_PP_FUNCTION` for VC++.
 
 [endsect]
 
@@ -24,6 +25,7 @@
 [section Removed functionality]
 
 * Removed boost filesystem v2 support. Boost 1.44 or later is now needed.
+* Removed `math::matrix::perspective`, `math::matrix::orthogonal` and `math::matrix::orthogonal_xy`. Every projection function is only meaningful if you know which canonical view volume you are using.
 
 [endsect]
 
