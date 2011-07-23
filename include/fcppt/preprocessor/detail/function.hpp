@@ -7,12 +7,12 @@
 #ifndef FCPPT_PREPROCESSOR_DETAIL_FUNCTION_HPP_INCLUDED
 #define FCPPT_PREPROCESSOR_DETAIL_FUNCTION_HPP_INCLUDED
 
-#include <fcppt/preprocessor/stringize.hpp>
 #include <fcppt/config.hpp>
+#include <fcppt/from_std_string.hpp>
 #include <fcppt/text.hpp>
 
 #ifdef FCPPT_HAVE_GCC_PRETTY_FUNCTION
-#define FCPPT_PP_DETAIL_FUNCTION FCPPT_PP_STRINGIZE(__PRETTY_FUNCTION__)
+#define FCPPT_PP_DETAIL_FUNCTION fcppt::from_std_string(__PRETTY_FUNCTION__)
 #else
 #define FCPPT_PP_DETAIL_FUNCTION FCPPT_TEXT("")
 #endif
