@@ -18,11 +18,29 @@ fcppt::container::index_map<T, A>::operator[](
 	size_type const _index
 )
 {
+	return
+		(*this).get_default(
+			_index,
+			T()
+		);
+}
+
+template<
+	typename T,
+	typename A
+>
+typename fcppt::container::index_map<T, A>::reference
+fcppt::container::index_map<T, A>::get_default(
+	size_type const _index,
+	const_reference _ref
+)
+{
 	if(
 		_index >= size()
 	)
 		impl_.resize(
-			_index + 1u
+			_index + 1u,
+			_ref
 		);
 
 	return

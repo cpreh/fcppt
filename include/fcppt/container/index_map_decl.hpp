@@ -35,9 +35,17 @@ public:
 
 	typedef typename internal_type::reference reference;
 
+	typedef typename internal_type::const_reference const_reference;
+
 	reference
 	operator[](
 		size_type
+	);
+
+	reference
+	get_default(
+		size_type,
+		const_reference
 	);
 
 	size_type
