@@ -8,6 +8,7 @@
 #define FCPPT_ASSIGN_DETAIL_ARRAY_HPP_INCLUDED
 
 #include <fcppt/container/array.hpp>
+#include <boost/array.hpp>
 #include <cstddef>
 
 namespace fcppt
@@ -26,7 +27,9 @@ class array
 public:
 	typedef fcppt::container::array<T,N> container_type;
 
-	array(
+	typedef boost::array<T, N> boost_array;
+
+	explicit array(
 		T const &
 	);
 
@@ -35,16 +38,21 @@ public:
 		T const &
 	);
 
-	array<T,N+1> operator()(T const &);
+	array<T,N+1>
+	operator()(
+		T const &
+	);
 
 	operator container_type() const;
+
+	operator boost_array() const;
 
 	container_type const &
 	container() const;
 private:
 	friend class array<T,N+1>;
 
-	container_type a;
+	container_type array_;
 };
 
 }

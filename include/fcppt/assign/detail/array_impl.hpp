@@ -15,10 +15,10 @@ template<
 	std::size_t N
 >
 fcppt::assign::detail::array<T,N>::array(
-	T const &t
+	T const &_value
 )
 {
-	a[0] = t;
+	array_[0] = _value;
 }
 
 template<
@@ -26,17 +26,17 @@ template<
 	std::size_t N
 >
 fcppt::assign::detail::array<T,N>::array(
-	array<T,N-1> const &that,
-	T const &t
+	array<T,N-1> const &_that,
+	T const &_value
 )
 {
 	std::copy(
-		that.a.begin(),
-		that.a.end(),
-		a.begin()
+		_that.array_.begin(),
+		_that.array_.end(),
+		array_.begin()
 	);
 
-	a.back() = t;
+	array_.back() = _value;
 }
 
 template<
@@ -45,13 +45,14 @@ template<
 >
 fcppt::assign::detail::array<T,N+1>
 fcppt::assign::detail::array<T,N>::operator()(
-	T const &t
+	T const &_value
 )
 {
-	return array<T,N+1>(
-		*this,
-		t
-	);
+	return
+		array<T,N+1>(
+			*this,
+			_value	
+		);
 }
 
 template<
@@ -60,7 +61,24 @@ template<
 >
 fcppt::assign::detail::array<T,N>::operator container_type() const
 {
-	return a;
+	return array_;
+}
+
+template<
+	class T,
+	std::size_t N
+>
+fcppt::assign::detail::array<T,N>::operator boost_array() const
+{
+	boost_array ret;
+
+	std::copy(
+		array_.begin(),
+		array_.end(),
+		ret.begin()
+	);
+
+	return ret;
 }
 
 template<
@@ -71,7 +89,7 @@ typename
 fcppt::assign::detail::array<T,N>::container_type const &
 fcppt::assign::detail::array<T,N>::container() const
 {
-	return a;
+	return array_;
 }
 
 #endif

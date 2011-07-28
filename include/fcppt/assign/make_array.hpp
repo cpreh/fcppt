@@ -20,12 +20,13 @@ template<
 >
 detail::array<T,1>
 make_array(
-	T const &t
+	T const &_value
 )
 {
-	return detail::array<T,1>(
-		t
-	);
+	return
+		detail::array<T,1>(
+			_value	
+		);
 }
 
 }
