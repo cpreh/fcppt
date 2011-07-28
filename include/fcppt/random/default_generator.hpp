@@ -15,7 +15,7 @@ namespace random
 {
 
 /// A convenience typedef for the default generator
-typedef boost::random::minstd_rand default_generator;
+typedef boost::minstd_rand default_generator;
 
 }
 }
