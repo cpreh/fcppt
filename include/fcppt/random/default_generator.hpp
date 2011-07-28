@@ -7,7 +7,7 @@
 #ifndef FCPPT_RANDOM_DEFAULT_GENERATOR_HPP_INCLUDED
 #define FCPPT_RANDOM_DEFAULT_GENERATOR_HPP_INCLUDED
 
-#include <fcppt/tr1/random.hpp>
+#include <boost/random/linear_congruential.hpp>
 
 namespace fcppt
 {
@@ -15,7 +15,7 @@ namespace random
 {
 
 /// A convenience typedef for the default generator
-typedef std::tr1::minstd_rand default_generator;
+typedef boost::random::minstd_rand default_generator;
 
 }
 }

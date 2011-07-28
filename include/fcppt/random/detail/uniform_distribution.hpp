@@ -7,7 +7,8 @@
 #ifndef FCPPT_RANDOM_DETAIL_UNIFORM_DISTRIBUTION_HPP_INCLUDED
 #define FCPPT_RANDOM_DETAIL_UNIFORM_DISTRIBUTION_HPP_INCLUDED
 
-#include <fcppt/tr1/random.hpp>
+#include <boost/random/uniform_real.hpp>
+#include <boost/random/uniform_int.hpp>
 #include <boost/utility/enable_if.hpp>
 #include <boost/type_traits/is_floating_point.hpp>
 #include <boost/type_traits/is_integral.hpp>
@@ -37,7 +38,7 @@ struct uniform_distribution<
 	>::type
 >
 {
-	typedef std::tr1::uniform_real<T> type;
+	typedef boost::uniform_real<T> type;
 };
 
 template<
@@ -52,7 +53,7 @@ struct uniform_distribution<
 	>::type
 >
 {
-	typedef std::tr1::uniform_int<T> type;
+	typedef boost::uniform_int<T> type;
 };
 
 }

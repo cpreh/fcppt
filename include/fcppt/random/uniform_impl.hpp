@@ -12,6 +12,7 @@
 #include <fcppt/chrono/high_resolution_clock.hpp>
 #include <fcppt/chrono/time_point_impl.hpp>
 #include <fcppt/chrono/duration_impl.hpp>
+#include <boost/type_traits/remove_reference.hpp>
 
 template<
 	typename T,
@@ -22,9 +23,9 @@ fcppt::random::uniform<T, Generator>::uniform(
 )
 :
 	variate_(
-		Generator(
+		typename boost::remove_reference<Generator>::type(
 			static_cast<
-				unsigned long
+				typename boost::remove_reference<Generator>::type::result_type	
 			>(
 				fcppt::chrono::high_resolution_clock::now().time_since_epoch().count()
 			)
@@ -42,7 +43,7 @@ template<
 >
 fcppt::random::uniform<T, Generator>::uniform(
 	range_type const &_range,
-	Generator const &_gen
+	Generator _gen
 )
 :
 	variate_(

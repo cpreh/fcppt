@@ -10,7 +10,7 @@
 #include <fcppt/random/uniform_fwd.hpp>
 #include <fcppt/random/detail/uniform_distribution.hpp>
 #include <fcppt/random/range_fwd.hpp>
-#include <fcppt/tr1/random.hpp>
+#include <boost/random/variate_generator.hpp>
 #include <fcppt/nonassignable.hpp>
 
 namespace fcppt
@@ -44,14 +44,14 @@ public:
 	/// Constructs from a range and a generator
 	explicit uniform(
 		range_type const &,
-		Generator const &
+		Generator
 	);
 
 	/// Draws a random number
 	T
 	operator()();
 private:
-	typedef typename std::tr1::variate_generator<
+	typedef boost::random::variate_generator<
 		Generator,
 		distribution
 	> variate_type;
