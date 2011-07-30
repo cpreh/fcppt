@@ -23,41 +23,41 @@ template<
 	typename Rep2,
 	typename Period2
 >
-typename common_type<
-	duration<
+typename chrono::common_type<
+	chrono::duration<
 		Rep1,
 		Period1
 	>,
-	duration<
+	chrono::duration<
 		Rep2,
 		Period2
 	>
 >::type
 operator +(
-	duration<
+	chrono::duration<
 		Rep1,
 		Period1
-	> const &lhs,
-	duration<
+	> const &_lhs,
+	chrono::duration<
 		Rep2,
 		Period2
-	> const &rhs
+	> const &_rhs
 )
 {
 	return
-		typename common_type<
-			duration<
+		typename chrono::common_type<
+			chrono::duration<
 				Rep1,
 				Period1
 			>,
-			duration<
+			chrono::duration<
 				Rep2,
 				Period2
 			>
 		>::type(
-			lhs
+			_lhs
 		)
-		+= rhs;
+		+= _rhs;
 }
 
 template<
@@ -66,41 +66,41 @@ template<
 	typename Rep2,
 	typename Period2
 >
-typename common_type<
-	duration<
+typename chrono::common_type<
+	chrono::duration<
 		Rep1,
 		Period1
 	>,
-	duration<
+	chrono::duration<
 		Rep2,
 		Period2
 	>
 >::type
 operator -(
-	duration<
+	chrono::duration<
 		Rep1,
 		Period1
-	> const &lhs,
-	duration<
+	> const &_lhs,
+	chrono::duration<
 		Rep2,
 		Period2
-	> const &rhs
+	> const &_rhs
 )
 {
 	return
-		typename common_type<
-			duration<
+		typename chrono::common_type<
+			chrono::duration<
 				Rep1,
 				Period1
 			>,
-			duration<
+			chrono::duration<
 				Rep2,
 				Period2
 			>
 		>::type(
-			lhs
+			_lhs
 		)
-		-= rhs;
+		-= _rhs;
 }
 
 template<
@@ -108,32 +108,32 @@ template<
 	typename Period,
 	typename Rep2
 >
-duration<
-	typename common_type<
+chrono::duration<
+	typename chrono::common_type<
 		Rep1,
 		Rep2
 	>::type,
 	Period
 >
 operator *(
-	duration<
+	chrono::duration<
 		Rep1,
 		Period
-	> const &d,
-	Rep2 const &s
+	> const &_duration,
+	Rep2 const &_scalar
 )
 {
 	return
-		duration<
-			typename common_type<
+		chrono::duration<
+			typename chrono::common_type<
 				Rep1,
 				Rep2
 			>::type,
 			Period
 		>(
-			d
+			_duration
 		)
-		*= s;
+		*= _scalar;
 }
 
 template<
@@ -141,22 +141,23 @@ template<
 	typename Period,
 	typename Rep2
 >
-duration<
-	typename common_type<
+chrono::duration<
+	typename chrono::common_type<
 		Rep1,
 		Rep2
 	>::type,
 	Period
 >
 operator *(
-	Rep1 const &s,
-	duration<
+	Rep1 const &_scalar,
+	chrono::duration<
 		Rep2,
 		Period
-	> const &d
+	> const &_duration
 )
 {
-	return d * s;
+	return
+		_duration * _scalar;
 }
 
 template<
@@ -164,32 +165,36 @@ template<
 	typename Period,
 	typename Rep2
 >
-duration<
-	typename common_type<
+chrono::duration<
+	typename chrono::common_type<
 		Rep1,
 		Rep2
 	>::type,
 	Period
 >
 operator /(
-	duration<
+	chrono::duration<
 		Rep1,
 		Period
-	> const &d,
-	Rep2 const &s
+	> const &_duration,
+	Rep2 const &_scalar
 )
 {
+	BOOST_STATIC_ASSERT(
+		sizeof(Rep1) == 0
+	);
+
 	return
-		duration<
-			typename common_type<
+		chrono::duration<
+			typename chrono::common_type<
 				Rep1,
 				Rep2
 			>::type,
 			Period
 		>(
-			d
+			_duration
 		)
-		/= s;
+		/= _scalar;
 }
 
 template<
@@ -198,27 +203,27 @@ template<
 	typename Rep2,
 	typename Period2
 >
-typename common_type<
+typename chrono::common_type<
 	Rep1,
 	Rep2
 >::type
 operator /(
-	duration<
+	chrono::duration<
 		Rep1,
 		Period1
-	> const &lhs,
-	duration<
+	> const &_lhs,
+	chrono::duration<
 		Rep2,
 		Period2
-	> const &rhs
+	> const &_rhs
 )
 {
-	typedef typename common_type<
-		duration<
+	typedef typename chrono::common_type<
+		chrono::duration<
 			Rep1,
 			Period1
 		>,
-		duration<
+		chrono::duration<
 			Rep2,
 			Period2
 		>
@@ -226,11 +231,11 @@ operator /(
 
 	return
 		ct(
-			lhs
+			_lhs
 		).count()
 		/
 		ct(
-			rhs
+			_rhs
 		).count();
 }
 
@@ -239,40 +244,40 @@ template<
 	typename Period,
 	typename Rep2
 >
-duration<
-	typename common_type<
+chrono::duration<
+	typename chrono::common_type<
 		Rep1,
 		Rep2
 	>::type,
 	Period
 >
 operator %(
-	duration<
+	chrono::duration<
 		Rep1,
 		Period
-	> const &d,
-	Rep2 const &s
+	> const &_duration,
+	Rep2 const &_scalar
 )
 {
-	typedef typename common_type<
+	typedef typename chrono::common_type<
 		Rep1,
 		Rep2
 	>::type ct;
 
 	BOOST_STATIC_ASSERT(
-		!is_duration<
+		!chrono::is_duration<
 			Rep2
 		>::value
 	);
 
 	return
-		duration<
+		chrono::duration<
 			ct,
 			Period
 		>(
-			d
+			_duration	
 		)
-		%= s;
+		%= _scalar;
 }
 
 template<
@@ -282,40 +287,40 @@ template<
 	typename Period2
 >
 typename common_type<
-	duration<
+	chrono::duration<
 		Rep1,
 		Period1
 	>,
-	duration<
+	chrono::duration<
 		Rep2,
 		Period2
 	>
 >::type
 operator %(
-	duration<
+	chrono::duration<
 		Rep1,
 		Period1
-	> const &lhs,
-	duration<
+	> const &_lhs,
+	chrono::duration<
 		Rep2,
 		Period2
-	> const &rhs
+	> const &_rhs
 )
 {
 	return
-		typename common_type<
-			duration<
+		typename chrono::common_type<
+			chrono::duration<
 				Rep1,
 				Period1
 			>,
-			duration<
+			chrono::duration<
 				Rep2,
 				Period2
 			>
 		>::type(
-			lhs
+			_lhs
 		)
-		%= rhs;
+		%= _rhs;
 }
 
 }

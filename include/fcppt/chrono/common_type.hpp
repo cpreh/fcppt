@@ -7,13 +7,10 @@
 #ifndef FCPPT_CHRONO_COMMON_TYPE_HPP_INCLUDED
 #define FCPPT_CHRONO_COMMON_TYPE_HPP_INCLUDED
 
-#include <fcppt/chrono/time_point_fwd.hpp>
+#include <fcppt/chrono/detail/common_type_arithmetic.hpp>
 #include <fcppt/chrono/duration_fwd.hpp>
+#include <fcppt/chrono/time_point_fwd.hpp>
 #include <fcppt/ratio/detail/gcd.hpp>
-//\cond
-#define BOOST_TYPEOF_SILENT
-//\endcond
-#include <boost/typeof/typeof.hpp>
 
 namespace fcppt
 {
@@ -30,12 +27,12 @@ template<
 	typename U
 >
 struct common_type
+:
+detail::common_type_arithmetic<
+	T,
+	U
+>
 {
-private:
-	static T m_t();
-	static U m_u();
-public:
-	typedef BOOST_TYPEOF_TPL(true ? m_t() : m_u()) type;
 };
 
 template<

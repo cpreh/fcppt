@@ -315,6 +315,7 @@ SET(
 	include/fcppt/chrono/convert/convert.hpp
 	include/fcppt/chrono/convert/to_boost_duration.hpp
 	include/fcppt/chrono/days.hpp
+	include/fcppt/chrono/detail/common_type_arithmetic.hpp
 	include/fcppt/chrono/detail/duration_cast.hpp
 	include/fcppt/chrono/duration.hpp
 	include/fcppt/chrono/duration_arithmetic.hpp
@@ -444,6 +445,7 @@ SET(
 	include/fcppt/container/ptr/make_equal.hpp
 	include/fcppt/container/ptr/ptr.hpp
 	include/fcppt/container/ptr/push_back_unique_ptr.hpp
+	include/fcppt/container/ptr/push_front_unique_ptr.hpp
 	include/fcppt/container/ptr/replace_unique_ptr.hpp
 	include/fcppt/container/raw_vector.hpp
 	include/fcppt/container/raw_vector_decl.hpp

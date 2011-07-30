@@ -7,7 +7,9 @@
 #include <fcppt/chrono/chrono.hpp>
 #include <boost/test/unit_test.hpp>
 
-BOOST_AUTO_TEST_CASE(chrono_duration)
+BOOST_AUTO_TEST_CASE(
+	chrono_duration_convert
+)
 {
 	fcppt::chrono::nanoseconds const nano(
 		1000u * 1000u * 1000u * 4u
