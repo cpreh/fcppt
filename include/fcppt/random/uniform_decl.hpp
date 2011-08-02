@@ -51,7 +51,7 @@ public:
 	T
 	operator()();
 private:
-	typedef boost::random::variate_generator<
+	typedef boost::variate_generator<
 		Generator,
 		distribution
 	> variate_type;
