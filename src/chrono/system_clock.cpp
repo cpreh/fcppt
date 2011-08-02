@@ -12,7 +12,6 @@
 #define WIN32_LEAN_AND_MEAN
 #include <windows.h>
 #elif defined(FCPPT_POSIX_PLATFORM)
-#include "unsigned_type.hpp"
 #include <fcppt/chrono/clock_failure.hpp>
 #include <fcppt/text.hpp>
 #include <sys/time.h>
@@ -61,23 +60,10 @@ fcppt::chrono::system_clock::now()
 	return
 		time_point(
 			duration(
-				static_cast<
-					duration::rep
-				>(
-					static_cast<
-						chrono::unsigned_type<
-							rep
-						>::type
-					>(
-						tv.tv_sec
-					)
-					* 1000000UL
-					+ static_cast<
-						unsigned long
-					>(
-						tv.tv_usec
-					)
-				)
+				tv.tv_sec
+				* 1000000L
+				+
+				tv.tv_usec
 			)
 		);
 #else

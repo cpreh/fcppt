@@ -7,11 +7,9 @@
 #ifndef FCPPT_CHRONO_CLOCK_GETTIME_IMPL_HPP_INCLUDED
 #define FCPPT_CHRONO_CLOCK_GETTIME_IMPL_HPP_INCLUDED
 
-#include "unsigned_type.hpp"
 #include <fcppt/chrono/clock_failure.hpp>
-#include <fcppt/chrono/time_point_impl.hpp>
 #include <fcppt/chrono/duration_impl.hpp>
-#include <fcppt/chrono/rep.hpp>
+#include <fcppt/chrono/time_point_impl.hpp>
 #include <fcppt/text.hpp>
 #include <time.h>
 
@@ -45,23 +43,11 @@ clock_gettime_impl(
 	return
 		TimePoint(
 			duration(
-				static_cast<
-					typename duration::rep
-				>(
-					static_cast<
-						chrono::unsigned_type<
-							rep
-						>::type
-					>(
-						tp.tv_sec
-					)
-					* 1000000000UL
-					+ static_cast<
-						unsigned long
-					>(
-						tp.tv_nsec
-					)
-				)
+				tp.tv_sec
+				*
+				1000000000L
+				+
+				tp.tv_nsec
 			)
 		);
 	}

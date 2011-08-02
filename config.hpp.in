@@ -8,7 +8,6 @@
 #define FCPPT_CONFIG_HPP_INCLUDED
 
 // general C++
-#cmakedefine FCPPT_HAVE_ATLEAST_UINT64
 #cmakedefine FCPPT_HAVE_LONG_LONG
 
 // string config

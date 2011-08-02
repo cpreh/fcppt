@@ -162,10 +162,19 @@ CHECK_CXX_SOURCE_COMPILES(
 	"#include <boost/cstdint.hpp>
 	int main()
 	{
-	   boost::uint_least64_t test;
+	   boost::int_least64_t test;
 	}"
-	FCPPT_HAVE_ATLEAST_UINT64
+	FCPPT_HAVE_ATLEAST_INT64
 )
+
+IF(
+	NOT FCPPT_HAVE_ATLEAST_INT64
+)
+	MESSAGE(
+		FATAL_ERROR
+		"fcppt::chrono needs at least a 64 bit type to work properly!"
+	)
+ENDIF()
 
 CHECK_CXX_SOURCE_COMPILES(
 	"int main()
@@ -1231,7 +1240,6 @@ SET(
 	src/chrono/query_performance_frequency.hpp
 	src/chrono/steady_clock.cpp
 	src/chrono/system_clock.cpp
-	src/chrono/unsigned_type.hpp
 	src/codecvt.hpp
 	src/default_locale.cpp
 	src/endianness/host_format.cpp
