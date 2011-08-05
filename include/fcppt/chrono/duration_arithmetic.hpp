@@ -180,10 +180,6 @@ operator /(
 	Rep2 const &_scalar
 )
 {
-	BOOST_STATIC_ASSERT(
-		sizeof(Rep1) == 0
-	);
-
 	return
 		chrono::duration<
 			typename chrono::common_type<
