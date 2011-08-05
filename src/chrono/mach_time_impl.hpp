@@ -35,9 +35,13 @@ mach_time_impl()
 	return
 		TimePoint(
 			duration_type(
-				::mach_absolute_time()
-				* info.numer
-				/ info.denom
+				static_cast<
+					typename duration_type::rep
+				>(
+					::mach_absolute_time()
+					* info.numer
+					/ info.denom
+				)
 			)
 		);
 }
