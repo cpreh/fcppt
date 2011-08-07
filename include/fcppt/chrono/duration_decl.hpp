@@ -50,7 +50,7 @@ public:
 	typedef Rep rep;
 	typedef Period period;
 
-	/// Default constructs a duration with an undeterminate value
+	/// Default constructs a duration
 	duration();
 
 	/// Constructs a duration from a compatible internal representation

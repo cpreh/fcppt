@@ -123,7 +123,8 @@ public:
 	back() const;
 
 	/// Returns the pointer to the store.
-	/** May return 0 if the vector is empty.
+	/**
+	 * May return 0 if the vector is empty.
 	*/
 	pointer
 	data();
@@ -132,7 +133,8 @@ public:
 	data() const;
 
 	/// Returns the pointer to the end of the store.
-	/** Equal to data() + size().
+	/**
+	 * Equal to data() + size().
 	*/
 	pointer
 	data_end();
@@ -145,7 +147,8 @@ public:
 	);
 
 	/// constructs an uninitialized vector
-	/** All of the elements will have undeterminate value
+	/**
+	 * All of the elements will have indeterminate values
 	 * and must be written before begin read.
 	*/
 	explicit raw_vector(
@@ -281,7 +284,8 @@ public:
 	shrink_to_fit();
 
 	/// Destroy this vector completely, it will then have empty storage
-	/** Equivalent to resize(0); shrink_to_fit()
+	/**
+	 * Equivalent to resize(0); shrink_to_fit()
 	*/
 	void
 	free_memory();
