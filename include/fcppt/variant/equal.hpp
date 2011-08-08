@@ -25,20 +25,20 @@ operator==(
 	object<Types> const &_b
 )
 {
-	if(
-		_a.empty() || _b.empty()
-	)
-		return _a.empty() == _b.empty();
-
 	return
-		variant::apply_unary(
-			detail::compare<
-				Types
-			>(
-				_a
-			),
-			_b
-		);
+		_a.empty() || _b.empty()
+		?
+			_a.empty() == _b.empty()
+		:
+			variant::apply_unary(
+				detail::compare<
+					Types
+				>(
+					_a
+				),
+				_b
+			)
+		;
 }
 
 }

@@ -49,18 +49,16 @@ public:
 	) const
 	{
 		return
-			!variant::holds_type<
+			variant::holds_type<
 				OtherType
 			>(
 				left_
 			)
-			?
-				false
-			:
-				left_. template get<
-					OtherType
-				>()
-				== _right;
+			&&
+			left_. template get<
+				OtherType
+			>()
+			== _right;
 	}
 private:
 	variant_type const &left_;
