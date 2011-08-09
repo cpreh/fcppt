@@ -441,7 +441,10 @@ fcppt::container::bitfield::basic<Enum, Size, InternalType>::operator&(
 	Enum const _index
 ) const
 {
-	return get(_index);
+	return
+		this->get(
+			_index
+		);
 }
 
 template<
@@ -508,11 +511,7 @@ template<
 fcppt::container::bitfield::basic<Enum, Size, InternalType> const
 fcppt::container::bitfield::basic<Enum, Size, InternalType>::null()
 {
-	basic<
-		Enum,
-		Size,
-		InternalType
-	> ret;
+	basic ret;
 
 	ret.clear();
 
