@@ -271,7 +271,7 @@ operator %(
 			ct,
 			Period
 		>(
-			_duration	
+			_duration
 		)
 		%= _scalar;
 }

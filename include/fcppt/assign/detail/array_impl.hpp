@@ -51,7 +51,7 @@ fcppt::assign::detail::array<T,N>::operator()(
 	return
 		array<T,N+1>(
 			*this,
-			_value	
+			_value
 		);
 }
 

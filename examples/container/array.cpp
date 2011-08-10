@@ -30,7 +30,7 @@ int main()
 		++it
 	)
 		fcppt::io::cout
-			<< *it 
+			<< *it
 			<< FCPPT_TEXT(' ');
 
 	fcppt::io::cout

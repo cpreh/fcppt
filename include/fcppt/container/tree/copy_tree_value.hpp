@@ -53,7 +53,7 @@ copy_tree_value(
 	T const &_value
 )
 {
-	return	
+	return
 		fcppt::make_unique_ptr<
 			T
 		>(

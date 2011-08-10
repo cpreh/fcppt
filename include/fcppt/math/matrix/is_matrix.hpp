@@ -35,7 +35,7 @@ template
 >
 struct is_matrix
 <
-	matrix::basic<T,N,M,S> 
+	matrix::basic<T,N,M,S>
 >
 :
 	boost::mpl::true_

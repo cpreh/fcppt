@@ -31,7 +31,7 @@ fcppt::backtrace::print_current_stack_frame()
 
 	symbol_sequence resulting_symbols;
 
-	int const number_of_symbols = 
+	int const number_of_symbols =
 		::backtrace(
 			resulting_symbols.data(),
 			static_cast<int>(

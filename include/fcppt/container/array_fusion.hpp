@@ -15,7 +15,7 @@
 
 namespace boost
 {
-namespace fusion 
+namespace fusion
 {
 
 struct boost_array_tag;

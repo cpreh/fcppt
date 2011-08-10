@@ -25,7 +25,7 @@ fcppt::random::uniform<T, Generator>::uniform(
 	variate_(
 		typename boost::remove_reference<Generator>::type(
 			static_cast<
-				typename boost::remove_reference<Generator>::type::result_type	
+				typename boost::remove_reference<Generator>::type::result_type
 			>(
 				fcppt::chrono::high_resolution_clock::now().time_since_epoch().count()
 			)

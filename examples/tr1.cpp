@@ -38,7 +38,7 @@ f(
 		++it
 	)
 		_stream
-			<< *it 
+			<< *it
 			<< ' ';
 
 	_stream << '\n';

@@ -18,21 +18,21 @@ void
 print_trace(
 	unsigned const levels)
 {
-	fcppt::io::cout 
-		<< FCPPT_TEXT("Descended ") 
-		<< levels 
+	fcppt::io::cout
+		<< FCPPT_TEXT("Descended ")
+		<< levels
 		<< FCPPT_TEXT(" levels, printing stack trace (manually) now...\n\n");
 
-	fcppt::backtrace::stack_frame const sf = 
+	fcppt::backtrace::stack_frame const sf =
 		fcppt::backtrace::current_stack_frame(
 			fcppt::backtrace::stack_limit(
 				levels * 2u));
 
 	fcppt::io::cout << FCPPT_TEXT("Stacktrace begin...\n");
 	for(
-		fcppt::backtrace::stack_frame::const_iterator current_symbol = 
-			sf.begin(); 
-		current_symbol != sf.end(); 
+		fcppt::backtrace::stack_frame::const_iterator current_symbol =
+			sf.begin();
+		current_symbol != sf.end();
 		++current_symbol)
 		fcppt::io::cout << (*current_symbol) << FCPPT_TEXT("\n");
 	fcppt::io::cout << FCPPT_TEXT("Stacktrace end.\n");
@@ -75,7 +75,7 @@ recursive_function_1(
 }
 }
 
-int 
+int
 main()
 {
 	fcppt::io::cout << FCPPT_TEXT("Printing the current stack frame to stderr now...\n");

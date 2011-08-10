@@ -25,7 +25,7 @@ make_array(
 {
 	return
 		detail::array<T,1>(
-			_value	
+			_value
 		);
 }
 

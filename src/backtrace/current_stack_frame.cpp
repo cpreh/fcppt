@@ -33,7 +33,7 @@ fcppt::backtrace::current_stack_frame(
 		static_cast<symbol_sequence::size_type>(
 			max.get()));
 
-	int const number_of_symbols = 
+	int const number_of_symbols =
 		::backtrace(
 			resulting_symbols.data(),
 			static_cast<int>(
@@ -56,7 +56,7 @@ fcppt::backtrace::current_stack_frame(
 
 	return result;
 #else
-	return 
+	return
 		fcppt::backtrace::stack_frame();
 #endif
 }
