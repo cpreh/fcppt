@@ -7,6 +7,7 @@
 #ifndef FCPPT_MPL_MPL_HPP_INCLUDED
 #define FCPPT_MPL_MPL_HPP_INCLUDED
 
+#include <fcppt/mpl/append.hpp>
 #include <fcppt/mpl/ceil_div.hpp>
 #include <fcppt/mpl/exception.hpp>
 #include <fcppt/mpl/find_nth.hpp>

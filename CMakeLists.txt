@@ -911,6 +911,7 @@ SET(
 	include/fcppt/minmax_pair_output.hpp
 	include/fcppt/minor_version.hpp
 	include/fcppt/move.hpp
+	include/fcppt/mpl/append.hpp
 	include/fcppt/mpl/ceil_div.hpp
 	include/fcppt/mpl/detail/for_each.hpp
 	include/fcppt/mpl/detail/invoke_on.hpp
