@@ -12,6 +12,10 @@
 * Added fusion adaptors for `container::array`.
 * Added `utf8::from_std_string`.
 * Implemented `FCPPT_PP_FUNCTION` for VC++.
+* Added support for `boost::array` to `assign::array`.
+* Added `container::ptr::push_front_unique_ptr`.
+* `-fvibisibility=hidden` is now optional, but still on by default (use `FCPPT_ENABLE_VISIBILITY_HIDDEN`).
+* Added `mpl::append`.
 
 [endsect]
 
@@ -19,6 +23,8 @@
 
 * Changed the default cmake module installation path to ${CMAKE_ROOT}/Modules if ${CMAKE_INSTALL_PREFIX} is a prefix of ${CMAKE_ROOT}.
 * Replaced `utf8::convert` by `utf8::from_fcppt_string` and `utf8::to_fcppt_string`.
+* `random` now uses `boost::random` instead of `tr1::random`.
+* A 64 bit type is now required for `chrono`.
 
 [endsect]
 
@@ -37,6 +43,7 @@
 * Use -pthread for POSIX systems because we use boost.thread and asio.
 * Assert that a type requested via `variant::object::get` or `::get_raw` is actually among its possible types.
 * `type_traits::is_iterable`, `TYPE_TRAITS_GENERATE_HAS_MEMBER_FUNCTION` and `TYPE_TRAITS_GENERATE_HAS_TYPE` now properly expose an `mpl::bool`.
+* The default case of `chrono::common_type` has been restricted to fundamental types to avoid compiler errors with certain overloaded operators.
 
 [endsect]
 
