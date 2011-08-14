@@ -4,8 +4,7 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/assert.hpp>
-#include <fcppt/assert_message.hpp>
+#include <fcppt/assert/assert.hpp>
 #include <fcppt/text.hpp>
 #include <boost/test/unit_test.hpp>
 
@@ -13,7 +12,7 @@ namespace
 {
 bool
 contains_false(
-	fcppt::assertion_failed const &_e)
+	fcppt::assert_::exception const &_e)
 {
 	return
 		_e.string().find(
@@ -22,7 +21,7 @@ contains_false(
 
 bool
 contains_false_and_contains_1337(
-	fcppt::assertion_failed const &_e)
+	fcppt::assert_::exception const &_e)
 {
 	return
 		contains_false(
@@ -32,18 +31,27 @@ contains_false_and_contains_1337(
 }
 }
 
-BOOST_AUTO_TEST_CASE(assert)
+BOOST_AUTO_TEST_CASE(
+	assert
+)
 {
 	BOOST_REQUIRE_EXCEPTION(
-		FCPPT_ASSERT(
-			false),
-		fcppt::assertion_failed,
-		contains_false);
+		FCPPT_ASSERT_THROW_MESSAGE(
+			false,
+			fcppt::assert_::exception,
+			FCPPT_TEXT("test")
+		),
+		fcppt::assert_::exception,
+		contains_false
+	);
 
 	BOOST_REQUIRE_EXCEPTION(
-		FCPPT_ASSERT_MESSAGE(
+		FCPPT_ASSERT_THROW_MESSAGE(
 			false,
-			FCPPT_TEXT("1337")),
-		fcppt::assertion_failed,
-		contains_false_and_contains_1337);
+			fcppt::assert_::exception,
+			FCPPT_TEXT("1337")
+		),
+		fcppt::assert_::exception,
+		contains_false_and_contains_1337
+	);
 }

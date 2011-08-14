@@ -14,6 +14,7 @@
 #include <fcppt/assert/file.hpp>
 #include <fcppt/assert/function.hpp>
 #include <fcppt/assert/gather_information.hpp>
+#include <fcppt/assert/information.hpp>
 #include <fcppt/assert/line.hpp>
 #include <fcppt/assert/make_message.hpp>
 #include <fcppt/assert/message.hpp>

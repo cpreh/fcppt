@@ -11,11 +11,13 @@
 
 #define FCPPT_ASSERT_POST_MESSAGE(\
 	condition,\
-	message\
+	message, \
+	exception \
 )\
 FCPPT_ASSERT_THROW_MESSAGE(\
 	condition,\
-	message\
+	message, \
+	exception \
 )
 
 #endif

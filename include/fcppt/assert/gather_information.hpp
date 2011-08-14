@@ -10,6 +10,7 @@
 #include <fcppt/assert/condition.hpp>
 #include <fcppt/assert/file.hpp>
 #include <fcppt/assert/function.hpp>
+#include <fcppt/assert/information.hpp>
 #include <fcppt/assert/line.hpp>
 #include <fcppt/assert/message.hpp>
 #include <fcppt/preprocessor/file.hpp>
@@ -20,22 +21,24 @@
 	condition_arg,\
 	message_arg\
 )\
-fcppt::assert_::file(\
-	FCPPT_PP_FILE\
-),\
-fcppt::assert_::line(\
-	__LINE__\
-),\
-fcppt::assert_::function(\
-	FCPPT_PP_FUNCTION\
-),\
-fcppt::assert_::condition(\
-	FCPPT_PP_STRINGIZE(\
-		condition_arg\
-	)\
-),\
-fcppt::assert_::message(\
-	message_arg\
+fcppt::assert_::information(\
+	fcppt::assert_::file(\
+		FCPPT_PP_FILE\
+	),\
+	fcppt::assert_::line(\
+		__LINE__\
+	),\
+	fcppt::assert_::function(\
+		FCPPT_PP_FUNCTION\
+	),\
+	fcppt::assert_::condition(\
+		FCPPT_PP_STRINGIZE(\
+			condition_arg\
+		)\
+	),\
+	fcppt::assert_::message(\
+		message_arg\
+	) \
 )
 
 #endif
