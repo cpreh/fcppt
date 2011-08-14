@@ -6,7 +6,6 @@
 
 #include <fcppt/type_info.hpp>
 #include <fcppt/type_name.hpp>
-#include <fcppt/assert.hpp>
 #include <fcppt/workarounds.hpp>
 
 fcppt::type_info::type_info(
@@ -15,9 +14,6 @@ fcppt::type_info::type_info(
 :
 	info_(&_ti)
 {
-	FCPPT_ASSERT(
-		info_ != 0
-	);
 }
 
 bool
@@ -25,10 +21,6 @@ fcppt::type_info::before(
 	type_info const &_rhs
 ) const
 {
-	FCPPT_ASSERT(
-		info_ != 0
-	);
-
 	return
 		info_->before(
 			*_rhs.info_
@@ -42,20 +34,12 @@ fcppt::type_info::before(
 std::type_info const &
 fcppt::type_info::get() const
 {
-	FCPPT_ASSERT(
-		info_ != 0
-	);
-
 	return *info_;
 }
 
 fcppt::string const
 fcppt::type_info::name() const
 {
-	FCPPT_ASSERT(
-		info_ != 0
-	);
-
 	return
 		fcppt::type_name(
 			*this

@@ -8,7 +8,8 @@
 #define FCPPT_MATH_DETAIL_ARRAY_ADAPTER_IMPL_HPP_INCLUDED
 
 #include <fcppt/math/detail/array_adapter.hpp>
-#include <fcppt/assert.hpp>
+#include <fcppt/assert/exception.hpp>
+#include <fcppt/assert/throw.hpp>
 #include <boost/next_prior.hpp>
 #include <algorithm>
 
@@ -23,7 +24,11 @@ BOOST_PP_TUPLE_REM(class_arity)def_pre ::at(\
 	size_type const index\
 )\
 {\
-	FCPPT_ASSERT(index < size());\
+	FCPPT_ASSERT_THROW(\
+		index < size(),\
+		fcppt::assert_::exception\
+	); \
+\
 	return (*this)[index];\
 }\
 \
@@ -33,7 +38,11 @@ BOOST_PP_TUPLE_REM(class_arity)def_pre ::at(\
 	size_type const index\
 ) const\
 {\
-	FCPPT_ASSERT(index < size());\
+	FCPPT_ASSERT_THROW(\
+		index < size(),\
+		fcppt::assert_::exception\
+	); \
+\
 	return (*this)[index];\
 }\
 \

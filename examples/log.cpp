@@ -4,20 +4,21 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
+#include <fcppt/assert/error.hpp>
+#include <fcppt/function/object.hpp>
+#include <fcppt/io/cerr.hpp>
+#include <fcppt/io/cout.hpp>
 #include <fcppt/log/context.hpp>
-#include <fcppt/log/object.hpp>
+#include <fcppt/log/info.hpp>
 #include <fcppt/log/global.hpp>
+#include <fcppt/log/object.hpp>
+#include <fcppt/log/output.hpp>
 #include <fcppt/log/parameters/root.hpp>
 #include <fcppt/log/parameters/inherited.hpp>
-#include <fcppt/log/headers.hpp>
-#include <fcppt/function/object.hpp>
-#include <fcppt/io/cout.hpp>
-#include <fcppt/io/cerr.hpp>
 #include <fcppt/tr1/functional.hpp>
 #include <fcppt/optional_impl.hpp>
 #include <fcppt/exception.hpp>
 #include <fcppt/text.hpp>
-#include <fcppt/assert.hpp>
 #include <cstdlib>
 
 int main()
@@ -57,7 +58,7 @@ try
 		)
 	);
 
-	FCPPT_ASSERT(
+	FCPPT_ASSERT_ERROR(
 		ref != 0
 	);
 
@@ -76,7 +77,7 @@ try
 		)
 	);
 
-	FCPPT_ASSERT(
+	FCPPT_ASSERT_ERROR(
 		child_ref != 0
 	);
 

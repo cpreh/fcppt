@@ -5,7 +5,7 @@
 
 
 #include <fcppt/log/context_location.hpp>
-#include <fcppt/assert.hpp>
+#include <fcppt/assert/pre.hpp>
 
 fcppt::log::context_location::context_location()
 :
@@ -31,7 +31,7 @@ fcppt::log::context_location::context() const
 fcppt::log::location const &
 fcppt::log::context_location::location() const
 {
-	FCPPT_ASSERT(
+	FCPPT_ASSERT_PRE(
 		location_
 	);
 

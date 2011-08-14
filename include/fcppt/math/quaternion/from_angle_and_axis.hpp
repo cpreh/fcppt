@@ -11,7 +11,6 @@
 #include <fcppt/math/quaternion/is_normalized.hpp>
 #include <fcppt/math/vector/static.hpp>
 #include <fcppt/math/vector/arithmetic.hpp>
-#include <fcppt/assert.hpp>
 #include <boost/math/quaternion.hpp>
 #include <cmath>
 

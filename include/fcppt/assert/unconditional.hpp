@@ -8,13 +8,14 @@
 #define FCPPT_ASSERT_UNCONDITIONAL_HPP_INCLUDED
 
 #include <fcppt/assert/print_message.hpp>
+#include <boost/preprocessor/empty.hpp>
 
 #define FCPPT_ASSERT_UNCONDITONAL(\
 	message,\
 	action\
 ) \
-FCPPT_ASSERT_UNCONDITIONAL(\
-	unconditional,\
+FCPPT_ASSERT_PRINT_MESSAGE(\
+	BOOST_PP_EMPTY,\
 	message\
 ); \
 action ; \

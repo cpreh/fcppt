@@ -7,7 +7,7 @@
 #ifndef FCPPT_MATH_CLAMP_HPP_INCLUDED
 #define FCPPT_MATH_CLAMP_HPP_INCLUDED
 
-#include <fcppt/assert.hpp>
+#include <fcppt/assert/pre.hpp>
 #include <algorithm>
 
 namespace fcppt
@@ -24,22 +24,23 @@ template<
 >
 T
 clamp(
-	T const &value,
-	T const &vmin,
-	T const &vmax
+	T const &_value,
+	T const &_vmin,
+	T const &_vmax
 )
 {
-	FCPPT_ASSERT(
+	FCPPT_ASSERT_PRE(
 		vmin <= vmax
 	);
 
-	return std::max(
-		std::min(
-			value,
-			vmax
-		),
-		vmin
-	);
+	return
+		std::max(
+			std::min(
+				_value,
+				_vmax
+			),
+			_vmin
+		);
 }
 
 }

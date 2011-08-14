@@ -8,8 +8,9 @@
 #include <fcppt/filesystem/exception.hpp>
 #include <fcppt/filesystem/file_size.hpp>
 #include <fcppt/filesystem/path_to_string.hpp>
+#include <fcppt/assert/exception.hpp>
+#include <fcppt/assert/post.hpp>
 #include <fcppt/io/ifstream.hpp>
-#include <fcppt/assert.hpp>
 #include <fcppt/char_type.hpp>
 #include <fcppt/string.hpp>
 #include <fcppt/text.hpp>
@@ -137,8 +138,9 @@ fcppt::filesystem::file_to_string(
 		>()
 	);
 
-	FCPPT_ASSERT(
-		stream.eof()
+	FCPPT_ASSERT_POST(
+		stream.eof(),
+		fcppt::assert_::exception
 	);
 
 	return ret;

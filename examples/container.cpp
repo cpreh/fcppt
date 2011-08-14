@@ -4,13 +4,13 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
+#include <fcppt/assert/error.hpp>
 #include <fcppt/container/map_impl.hpp>
 #include <fcppt/container/raw_vector_impl.hpp>
 #include <fcppt/io/cout.hpp>
 #include <fcppt/io/cerr.hpp>
 #include <fcppt/string.hpp>
 #include <fcppt/text.hpp>
-#include <fcppt/assert.hpp>
 #include <fcppt/exception.hpp>
 #include <map>
 #include <cstdlib>
@@ -68,7 +68,7 @@ try
 		test_string.end()
 	);
 
-	FCPPT_ASSERT(
+	FCPPT_ASSERT_ERROR(
 		vec.size() == test_string.size()
 	);
 

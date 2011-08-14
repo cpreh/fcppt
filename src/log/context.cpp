@@ -8,15 +8,15 @@
 #include "find_location.hpp"
 #include "find_inner_node.hpp"
 #include "is_outer_node.hpp"
+#include <fcppt/assert/pre.hpp>
+#include <fcppt/container/tree/object_impl.hpp>
+#include <fcppt/container/tree/pre_order.hpp>
+#include <fcppt/function/object.hpp>
 #include <fcppt/log/context.hpp>
 #include <fcppt/log/location.hpp>
 #include <fcppt/log/no_such_location.hpp>
-#include <fcppt/container/tree/object_impl.hpp>
-#include <fcppt/container/tree/pre_order.hpp>
 #include <fcppt/variant/object_impl.hpp>
-#include <fcppt/function/object.hpp>
 #include <fcppt/text.hpp>
-#include <fcppt/assert.hpp>
 #include <exception>
 
 fcppt::log::context::context()
@@ -33,7 +33,7 @@ fcppt::log::context::~context()
 	if(
 		!std::uncaught_exception()
 	)
-		FCPPT_ASSERT(
+		FCPPT_ASSERT_PRE(
 			tree_.empty()
 		);
 }
@@ -79,7 +79,7 @@ fcppt::log::context::add(
 			cur = &*item_it;
 	}
 
-	FCPPT_ASSERT(
+	FCPPT_ASSERT_PRE(
 		log::find_logger_node(
 			*cur
 		)
@@ -105,7 +105,7 @@ fcppt::log::context::remove(
 		)
 	);
 
-	FCPPT_ASSERT(
+	FCPPT_ASSERT_PRE(
 		node != 0
 	);
 
@@ -115,7 +115,7 @@ fcppt::log::context::remove(
 		)
 	);
 
-	FCPPT_ASSERT(
+	FCPPT_ASSERT_PRE(
 		logger_node != node->end()
 	);
 

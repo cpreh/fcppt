@@ -5,10 +5,10 @@
 
 
 //[function
+#include <fcppt/assert/error.hpp>
 #include <fcppt/function/object.hpp>
 #include <fcppt/io/cout.hpp>
 #include <fcppt/io/cerr.hpp>
-#include <fcppt/assert.hpp>
 #include <fcppt/exception.hpp>
 #include <fcppt/text.hpp>
 
@@ -106,7 +106,7 @@ try
 		boost::phoenix::ref(b) = false
 	)();
 
-	FCPPT_ASSERT( b == false );
+	FCPPT_ASSERT_ERROR( b == false );
 }
 catch(
 	fcppt::exception const &e

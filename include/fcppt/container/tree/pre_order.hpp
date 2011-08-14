@@ -8,7 +8,6 @@
 #define FCPPT_CONTAINER_TREE_PRE_ORDER_HPP_INCLUDED
 
 #include <fcppt/container/tree/is_object.hpp>
-#include <fcppt/assert.hpp>
 #include <fcppt/noncopyable.hpp>
 #include <boost/iterator/iterator_facade.hpp>
 #include <boost/mpl/if.hpp>

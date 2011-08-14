@@ -8,7 +8,6 @@
 #define FCPPT_MATH_DETAIL_NEXT_POW_2_HPP_INCLUDED
 
 #include <fcppt/math/is_power_of_2.hpp>
-#include <fcppt/assert.hpp>
 #include <boost/utility/enable_if.hpp>
 #include <boost/type_traits/is_floating_point.hpp>
 #include <boost/type_traits/is_signed.hpp>

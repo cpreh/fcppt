@@ -9,8 +9,8 @@
 
 #include <fcppt/container/raw_vector_decl.hpp>
 #include <fcppt/container/out_of_range.hpp>
+#include <fcppt/assert/pre.hpp>
 #include <fcppt/type_traits/is_input_iterator.hpp>
-#include <fcppt/assert.hpp>
 #include <boost/utility/enable_if.hpp>
 #include <boost/next_prior.hpp>
 #include <iterator>
@@ -1108,7 +1108,7 @@ fcppt::container::raw_vector<T, A>::reallocate(
 	size_type const _new_cap
 )
 {
-	FCPPT_ASSERT(
+	FCPPT_ASSERT_PRE(
 		_new_cap >= this->size()
 	);
 

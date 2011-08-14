@@ -11,7 +11,6 @@
 // learn how this file should be used.
 
 #include <fcppt/utf8/facet.hpp>
-//#include <fcppt/assert.hpp>
 //#include <boost/detail/utf8_codecvt_facet.hpp>
 
 #include <cstdlib> // for multi-byte converson routines
