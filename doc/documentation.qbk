@@ -1,10 +1,12 @@
 [section Documentation]
 
+[include adapted.qbk]
+
 [include algorithm.qbk]
 
 [include alignment.qbk]
 
-[include adapted.qbk]
+[include assert.qbk]
 
 [include boost.qbk]
 

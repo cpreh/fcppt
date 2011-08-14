@@ -68,7 +68,7 @@ make_fcppt_documentation(
 )
 make_fcppt_documentation(algorithm algorithm)
 make_fcppt_documentation(alignment alignment)
-make_fcppt_documentation(assert assert.hpp assert_message.hpp)
+make_fcppt_documentation(assert assert)
 make_fcppt_documentation(assign assign)
 make_fcppt_documentation(
 	casts

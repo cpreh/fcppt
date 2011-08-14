@@ -5,38 +5,53 @@
 
 
 //[assert
-#include <fcppt/assert.hpp>
-#include <fcppt/assert_message.hpp>
-#include <fcppt/io/cerr.hpp>
+#include <fcppt/assert/exception.hpp>
+#include <fcppt/assert/pre.hpp>
+#include <fcppt/assert/post_message.hpp>
 #include <fcppt/text.hpp>
+
+//->
+namespace
+{
+//<-
+
+bool
+other_function();
+
+//<-
+bool
+other_function()
+{
+	return false;
+}
+//->
+
+void
+library_function(
+	int const _parameter
+)
+{
+	// assert a precondition without a message
+	FCPPT_ASSERT_PRE(
+		_parameter < 10
+	)
+
+	// assert a postcondition with a message
+	FCPPT_ASSERT_POST_MESSAGE(
+		other_function(),
+		fcppt::assert_::exception,
+		FCPPT_TEXT("other_function failed")
+	)
+}
+
+//->
+}
 
 int main()
 {
-	try
-	{
-		FCPPT_ASSERT(
-			false);
-	}
-	catch (fcppt::assertion_failed const &e)
-	{
-		fcppt::io::cerr
-			<< FCPPT_TEXT("Assertion caught: ")
-			<< e.string()
-			<< FCPPT_TEXT("\n");
-	}
-
-	try
-	{
-		FCPPT_ASSERT_MESSAGE(
-			false,
-			FCPPT_TEXT("Hello World"));
-	}
-	catch (fcppt::assertion_failed const &e)
-	{
-		fcppt::io::cerr
-			<< FCPPT_TEXT("Assertion caught: ")
-			<< e.string()
-			<< FCPPT_TEXT("\n");
-	}
+	library_function(
+		5
+	);
 }
+//<-
 //]

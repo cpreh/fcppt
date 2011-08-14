@@ -1,4 +1,4 @@
-[section type_traits]
+[section Type Traits]
 
 The type_traits part of fcppt is just a small addition to the `boost::type_traits`. A small example shows its usage:
 
