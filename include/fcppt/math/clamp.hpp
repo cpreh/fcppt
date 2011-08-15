@@ -30,7 +30,7 @@ clamp(
 )
 {
 	FCPPT_ASSERT_PRE(
-		vmin <= vmax
+		_vmin <= _vmax
 	);
 
 	return
