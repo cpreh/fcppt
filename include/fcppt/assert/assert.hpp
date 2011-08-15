@@ -33,5 +33,6 @@
 #include <fcppt/assert/unconditional.hpp>
 #include <fcppt/assert/unimplemented_message.hpp>
 #include <fcppt/assert/unreachable.hpp>
+#include <fcppt/assert/unreachable_message.hpp>
 
 #endif

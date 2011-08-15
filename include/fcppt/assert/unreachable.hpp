@@ -8,13 +8,11 @@
 #define FCPPT_ASSERT_UNREACHABLE_HPP_INCLUDED
 
 #include <fcppt/assert/default_message.hpp>
-#include <fcppt/assert/unconditional.hpp>
-#include <exception>
+#include <fcppt/assert/unreachable_message.hpp>
 
 #define FCPPT_ASSERT_UNREACHABLE \
-FCPPT_ASSERT_UNCONDITONAL(\
-	FCPPT_ASSERT_DEFAULT_MESSAGE,\
-	std::terminate()\
+FCPPT_ASSERT_UNREACHABLE_MESSAGE(\
+	FCPPT_ASSERT_DEFAULT_MESSAGE \
 )
 
 #endif

@@ -312,6 +312,7 @@ SET(
 	include/fcppt/assert/unconditional.hpp
 	include/fcppt/assert/unimplemented_message.hpp
 	include/fcppt/assert/unreachable.hpp
+	include/fcppt/assert/unreachable_message.hpp
 	include/fcppt/assert_complete.hpp
 	include/fcppt/assign/assign.hpp
 	include/fcppt/assign/detail/array.hpp
