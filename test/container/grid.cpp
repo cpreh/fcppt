@@ -131,6 +131,39 @@ BOOST_AUTO_TEST_CASE(container_grid_iterator)
 	);
 }
 
+BOOST_AUTO_TEST_CASE(container_grid_iterator_position)
+{
+	int2_grid const grid(
+		int2_grid::dim(2,2));
+
+	int2_grid::const_iterator it =
+		grid.begin();
+
+	BOOST_CHECK(
+		fcppt::container::grid::iterator_position(
+			grid,
+			it++) ==
+		int2_grid::dim(0,0));
+
+	BOOST_CHECK(
+		fcppt::container::grid::iterator_position(
+			grid,
+			it++) ==
+		int2_grid::dim(1,0));
+
+	BOOST_CHECK(
+		fcppt::container::grid::iterator_position(
+			grid,
+			it++) ==
+		int2_grid::dim(0,1));
+
+	BOOST_CHECK(
+		fcppt::container::grid::iterator_position(
+			grid,
+			it++) ==
+		int2_grid::dim(1,1));
+}
+
 BOOST_AUTO_TEST_CASE(container_grid_compare)
 {
 	int2_grid const test1(
