@@ -645,3 +645,22 @@ BOOST_AUTO_TEST_CASE(
 		)
 	);
 }
+
+BOOST_AUTO_TEST_CASE(
+	container_is_square
+)
+{
+	BOOST_CHECK(
+		fcppt::container::grid::is_square(
+			int2_grid(
+				int2_grid::dim(
+					5,
+					5))));
+
+	BOOST_CHECK(
+		!fcppt::container::grid::is_square(
+			int2_grid(
+				int2_grid::dim(
+					4,
+					5))));
+}

@@ -12,6 +12,7 @@
 #include <fcppt/container/grid/exception.hpp>
 #include <fcppt/container/grid/fill.hpp>
 #include <fcppt/container/grid/in_range.hpp>
+#include <fcppt/container/grid/is_square.hpp>
 #include <fcppt/container/grid/iterator_position.hpp>
 #include <fcppt/container/grid/object.hpp>
 #include <fcppt/container/grid/object_decl.hpp>
