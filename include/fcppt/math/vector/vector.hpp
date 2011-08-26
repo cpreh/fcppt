@@ -31,6 +31,7 @@
 #include <fcppt/math/vector/length_square.hpp>
 #include <fcppt/math/vector/make.hpp>
 #include <fcppt/math/vector/max_ctor_params.hpp>
+#include <fcppt/math/vector/mod.hpp>
 #include <fcppt/math/vector/narrow_cast.hpp>
 #include <fcppt/math/vector/normal_storage.hpp>
 #include <fcppt/math/vector/normalize.hpp>

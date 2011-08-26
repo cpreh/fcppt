@@ -446,6 +446,7 @@ SET(
 	include/fcppt/container/grid/impl/exception.hpp
 	include/fcppt/container/grid/impl/out_of_range.hpp
 	include/fcppt/container/grid/in_range.hpp
+	include/fcppt/container/grid/interpolate.hpp
 	include/fcppt/container/grid/is_square.hpp
 	include/fcppt/container/grid/iterator_position.hpp
 	include/fcppt/container/grid/object.hpp
@@ -811,7 +812,9 @@ SET(
 	include/fcppt/math/instantiate_arithmetic.hpp
 	include/fcppt/math/interpolation/interpolation.hpp
 	include/fcppt/math/interpolation/linear.hpp
+	include/fcppt/math/interpolation/linear_functor.hpp
 	include/fcppt/math/interpolation/trigonometric.hpp
+	include/fcppt/math/interpolation/trigonometric_functor.hpp
 	include/fcppt/math/inverse.hpp
 	include/fcppt/math/is_dynamic_size.hpp
 	include/fcppt/math/is_negative.hpp
@@ -914,6 +917,7 @@ SET(
 	include/fcppt/math/vector/length_square.hpp
 	include/fcppt/math/vector/make.hpp
 	include/fcppt/math/vector/max_ctor_params.hpp
+	include/fcppt/math/vector/mod.hpp
 	include/fcppt/math/vector/narrow_cast.hpp
 	include/fcppt/math/vector/normal_storage.hpp
 	include/fcppt/math/vector/normalize.hpp
