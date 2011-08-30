@@ -12,7 +12,9 @@
 #include <fcppt/math/vector/dot.hpp>
 #include <fcppt/math/vector/length.hpp>
 #include <fcppt/math/almost_zero.hpp>
+#include <fcppt/config/external_begin.hpp>
 #include <cmath>
+#include <fcppt/config/external_end.hpp>
 
 namespace fcppt
 {

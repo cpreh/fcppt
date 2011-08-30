@@ -9,7 +9,9 @@
 
 #include <fcppt/math/dim/basic_impl.hpp>
 #include <fcppt/math/dim/has_dim.hpp>
+#include <fcppt/config/external_begin.hpp>
 #include <boost/utility/enable_if.hpp>
+#include <fcppt/config/external_end.hpp>
 
 namespace fcppt
 {

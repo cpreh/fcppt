@@ -9,8 +9,10 @@
 
 #include <fcppt/chrono/asio/clock.hpp>
 #include <fcppt/chrono/asio/tag.hpp>
+#include <fcppt/config/external_begin.hpp>
 #include <boost/asio/time_traits.hpp>
 #include <boost/date_time/posix_time/posix_time_duration.hpp>
+#include <fcppt/config/external_end.hpp>
 
 namespace boost
 {

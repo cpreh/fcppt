@@ -17,7 +17,9 @@
 #include <fcppt/log/no_such_location.hpp>
 #include <fcppt/variant/object_impl.hpp>
 #include <fcppt/text.hpp>
+#include <fcppt/config/external_begin.hpp>
 #include <exception>
+#include <fcppt/config/external_end.hpp>
 
 fcppt::log::context::context()
 :

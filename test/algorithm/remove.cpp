@@ -5,8 +5,10 @@
 
 
 #include <fcppt/algorithm/remove.hpp>
+#include <fcppt/config/external_begin.hpp>
 #include <boost/test/unit_test.hpp>
 #include <vector>
+#include <fcppt/config/external_end.hpp>
 
 BOOST_AUTO_TEST_CASE(algorithm_remove)
 {

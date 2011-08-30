@@ -12,10 +12,12 @@
 #include <fcppt/container/raw_vector_impl.hpp>
 #include <fcppt/exception.hpp>
 #include <fcppt/text.hpp>
+#include <fcppt/config/external_begin.hpp>
 #include <locale>
 #include <iterator>
 #include <string>
 #include <cstring>
+#include <fcppt/config/external_end.hpp>
 
 namespace fcppt
 {

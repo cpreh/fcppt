@@ -19,7 +19,7 @@ namespace utf8
 FCPPT_SYMBOL
 fcppt::string const
 to_fcppt_string(
-	utf8::string const&
+	utf8::string const &
 );
 
 }

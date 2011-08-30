@@ -9,8 +9,10 @@
 
 #include <fcppt/container/array_decl.hpp>
 #include <fcppt/container/out_of_range.hpp>
+#include <fcppt/config/external_begin.hpp>
 #include <boost/utility/enable_if.hpp>
 #include <cstddef>
+#include <fcppt/config/external_end.hpp>
 
 namespace fcppt
 {

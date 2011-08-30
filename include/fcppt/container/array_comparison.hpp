@@ -8,8 +8,10 @@
 #define FCPPT_CONTAINER_ARRAY_COMPARISON_HPP_INCLUDED
 
 #include <fcppt/container/array_impl.hpp>
+#include <fcppt/config/external_begin.hpp>
 #include <algorithm>
 #include <cstddef>
+#include <fcppt/config/external_end.hpp>
 
 namespace fcppt
 {

@@ -8,9 +8,11 @@
 #define FCPPT_DETAIL_STRONG_TYPEDEF_CAST_HPP_INCLUDED
 
 #include <fcppt/sn_cast.hpp>
+#include <fcppt/config/external_begin.hpp>
 #include <boost/mpl/and.hpp>
 #include <boost/type_traits/is_fundamental.hpp>
 #include <boost/utility/enable_if.hpp>
+#include <fcppt/config/external_end.hpp>
 
 namespace fcppt
 {

@@ -8,7 +8,9 @@
 #include <fcppt/from_std_string.hpp>
 #include <fcppt/config.hpp>
 #ifdef FCPPT_HAVE_GCC_DEMANGLE
+#include <fcppt/config/external_begin.hpp>
 #include <cxxabi.h>
+#include <fcppt/config/external_end.hpp>
 #include <fcppt/scoped_ptr.hpp>
 #include <fcppt/c_deleter.hpp>
 #endif

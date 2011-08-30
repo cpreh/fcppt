@@ -9,6 +9,7 @@
 
 #include <fcppt/container/tree/is_object.hpp>
 #include <fcppt/noncopyable.hpp>
+#include <fcppt/config/external_begin.hpp>
 #include <boost/iterator/iterator_facade.hpp>
 #include <boost/mpl/if.hpp>
 #include <boost/type_traits/is_const.hpp>
@@ -16,6 +17,7 @@
 #include <boost/next_prior.hpp>
 #include <boost/static_assert.hpp>
 #include <stack>
+#include <fcppt/config/external_end.hpp>
 
 namespace fcppt
 {

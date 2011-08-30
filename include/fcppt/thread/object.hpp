@@ -13,7 +13,9 @@
 #include <fcppt/thread/task.hpp>
 #include <fcppt/symbol.hpp>
 #include <fcppt/noncopyable.hpp>
+#include <fcppt/config/external_begin.hpp>
 #include <boost/thread/thread.hpp>
+#include <fcppt/config/external_end.hpp>
 
 namespace fcppt
 {

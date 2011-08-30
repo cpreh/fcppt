@@ -7,9 +7,11 @@
 #ifndef FCPPT_MPL_MAX_VALUE_HPP_INCLUDED
 #define FCPPT_MPL_MAX_VALUE_HPP_INCLUDED
 
+#include <fcppt/config/external_begin.hpp>
 #include <boost/mpl/deref.hpp>
 #include <boost/mpl/max_element.hpp>
 #include <boost/mpl/transform.hpp>
+#include <fcppt/config/external_end.hpp>
 
 namespace fcppt
 {

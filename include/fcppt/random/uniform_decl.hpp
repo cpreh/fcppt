@@ -10,8 +10,10 @@
 #include <fcppt/random/uniform_fwd.hpp>
 #include <fcppt/random/detail/uniform_distribution.hpp>
 #include <fcppt/random/range_fwd.hpp>
-#include <boost/random/variate_generator.hpp>
 #include <fcppt/nonassignable.hpp>
+#include <fcppt/config/external_begin.hpp>
+#include <boost/random/variate_generator.hpp>
+#include <fcppt/config/external_end.hpp>
 
 namespace fcppt
 {

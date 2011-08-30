@@ -7,8 +7,10 @@
 #ifndef FCPPT_MATH_IS_POWER_OF_2_HPP_INCLUDED
 #define FCPPT_MATH_IS_POWER_OF_2_HPP_INCLUDED
 
+#include <fcppt/config/external_begin.hpp>
 #include <boost/type_traits/is_unsigned.hpp>
 #include <boost/utility/enable_if.hpp>
+#include <fcppt/config/external_end.hpp>
 
 namespace fcppt
 {

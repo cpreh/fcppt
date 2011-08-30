@@ -10,8 +10,10 @@
 #include <fcppt/io/raw_container_source_fwd.hpp>
 #include <fcppt/shared_ptr.hpp>
 #include <fcppt/nonassignable.hpp>
+#include <fcppt/config/external_begin.hpp>
 #include <boost/iostreams/concepts.hpp>
 #include <ios>
+#include <fcppt/config/external_end.hpp>
 
 namespace fcppt
 {

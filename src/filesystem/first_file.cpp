@@ -6,6 +6,7 @@
 
 #include <fcppt/filesystem/first_file.hpp>
 #include <fcppt/filesystem/skip_directories.hpp>
+#include <fcppt/filesystem/directory_iterator.hpp>
 
 fcppt::filesystem::directory_iterator const
 fcppt::filesystem::first_file(

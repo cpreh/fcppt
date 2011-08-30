@@ -8,10 +8,12 @@
 #define FCPPT_TRUNCATION_CHECK_CAST_HPP_INCLUDED
 
 #include <fcppt/bad_truncation_check_cast.hpp>
+#include <fcppt/config/external_begin.hpp>
 #include <boost/mpl/and.hpp>
 #include <boost/type_traits/is_fundamental.hpp>
 #include <boost/utility/enable_if.hpp>
 #include <typeinfo>
+#include <fcppt/config/external_end.hpp>
 
 namespace fcppt
 {

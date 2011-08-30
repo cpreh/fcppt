@@ -6,9 +6,11 @@
 
 //[cyclic_iterator
 #include <fcppt/cyclic_iterator.hpp>
+#include <fcppt/config/external_begin.hpp>
 #include <iostream>
 #include <ostream>
 #include <vector>
+#include <fcppt/config/external_end.hpp>
 
 int main()
 {

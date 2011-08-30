@@ -18,6 +18,8 @@
 // this include leads to a cpp fail ...
 //#include <fcppt/function/detail/functor_wrapper.hpp>
 
+#include <fcppt/config/external_begin.hpp>
+
 #include <boost/mpl/and.hpp>
 #include <boost/mpl/not.hpp>
 #include <boost/utility/enable_if.hpp>
@@ -26,6 +28,8 @@
 #include <boost/preprocessor/punctuation/comma_if.hpp>
 #include <boost/preprocessor/repetition/enum_params.hpp>
 #include <boost/preprocessor/repetition/enum_binary_params.hpp>
+
+#include <fcppt/config/external_end.hpp>
 
 #endif
 

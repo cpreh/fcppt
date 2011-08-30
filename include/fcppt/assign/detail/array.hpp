@@ -8,8 +8,10 @@
 #define FCPPT_ASSIGN_DETAIL_ARRAY_HPP_INCLUDED
 
 #include <fcppt/container/array.hpp>
+#include <fcppt/config/external_begin.hpp>
 #include <boost/array.hpp>
 #include <cstddef>
+#include <fcppt/config/external_end.hpp>
 
 namespace fcppt
 {

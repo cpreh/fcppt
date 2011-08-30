@@ -9,7 +9,9 @@
 
 #include <fcppt/container/map_fwd.hpp>
 #include <fcppt/string.hpp>
+#include <fcppt/config/external_begin.hpp>
 #include <utility>
+#include <fcppt/config/external_end.hpp>
 
 namespace fcppt
 {

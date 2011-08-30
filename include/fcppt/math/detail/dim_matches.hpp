@@ -8,7 +8,9 @@
 #define FCPPT_MATH_DETAIL_DIM_MATCHES_HPP_INCLUDED
 
 #include <fcppt/math/size_type.hpp>
+#include <fcppt/config/external_begin.hpp>
 #include <boost/mpl/bool.hpp>
+#include <fcppt/config/external_end.hpp>
 
 namespace fcppt
 {

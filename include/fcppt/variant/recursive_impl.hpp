@@ -8,7 +8,9 @@
 #define FCPPT_VARIANT_RECURSIVE_IMPL_HPP_INCLUDED
 
 #include <fcppt/variant/recursive_decl.hpp>
+#include <fcppt/config/external_begin.hpp>
 #include <algorithm>
+#include <fcppt/config/external_end.hpp>
 
 template<
 	typename T

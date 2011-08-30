@@ -8,11 +8,13 @@
 #define FCPPT_MATH_VECTOR_ORTHOGONALIZE_HPP_INCLUDED
 
 #include "project.hpp"
+#include <fcppt/config/external_begin.hpp>
 #include <boost/spirit/home/phoenix/core/argument.hpp>
 #include <boost/spirit/home/phoenix/operator/arithmetic.hpp>
 #include <boost/spirit/home/phoenix/bind/bind_function.hpp>
 #include <iterator>
 #include <numeric>
+#include <fcppt/config/external_end.hpp>
 
 namespace fcppt
 {

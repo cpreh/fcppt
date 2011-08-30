@@ -12,7 +12,9 @@
 #include <fcppt/math/vector/basic_impl.hpp>
 #include <fcppt/math/size_type.hpp>
 #include <fcppt/container/array.hpp>
+#include <fcppt/config/external_begin.hpp>
 #include <cstddef>
+#include <fcppt/config/external_end.hpp>
 
 namespace fcppt
 {

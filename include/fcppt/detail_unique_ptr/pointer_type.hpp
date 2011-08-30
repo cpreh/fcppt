@@ -10,7 +10,9 @@
 #define FCPPT_DETAIL_UNIQUE_PTR_POINTER_TYPE_HPP_INCLUDED
 
 #include <fcppt/detail_unique_ptr/one_two.hpp>
+#include <fcppt/config/external_begin.hpp>
 #include <boost/type_traits/remove_reference.hpp>
+#include <fcppt/config/external_end.hpp>
 
 namespace fcppt
 {

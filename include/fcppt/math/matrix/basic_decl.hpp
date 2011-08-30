@@ -18,11 +18,13 @@
 #include <fcppt/math/difference_type.hpp>
 #include <fcppt/math/size_type.hpp>
 #include <fcppt/type_traits/is_iterator.hpp>
+#include <fcppt/config/external_begin.hpp>
 #include <boost/mpl/times.hpp>
 #include <boost/type_traits/is_same.hpp>
 #include <boost/utility/enable_if.hpp>
 #include <boost/static_assert.hpp>
 #include <iterator>
+#include <fcppt/config/external_end.hpp>
 
 namespace fcppt
 {

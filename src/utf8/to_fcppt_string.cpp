@@ -9,9 +9,11 @@
 #if !defined(FCPPT_STRING_IS_UTF8)
 #include "locale.hpp"
 #include "ucs4.hpp"
+#include <fcppt/config/external_begin.hpp>
 #include <algorithm>
 #include <iterator>
 #include <sstream>
+#include <fcppt/config/external_end.hpp>
 #endif
 
 fcppt::string const

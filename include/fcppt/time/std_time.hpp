@@ -8,7 +8,9 @@
 #define FCPPT_TIME_STD_TIME_HPP_INCLUDED
 
 #include <fcppt/symbol.hpp>
+#include <fcppt/config/external_begin.hpp>
 #include <ctime>
+#include <fcppt/config/external_end.hpp>
 
 namespace fcppt
 {

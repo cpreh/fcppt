@@ -8,7 +8,9 @@
 #define FCPPT_CONTAINER_GRID_DETAIL_RESIZE_HPP_INCLUDED
 
 #include <fcppt/container/raw_vector_impl.hpp>
+#include <fcppt/config/external_begin.hpp>
 #include <vector>
+#include <fcppt/config/external_end.hpp>
 
 namespace fcppt
 {

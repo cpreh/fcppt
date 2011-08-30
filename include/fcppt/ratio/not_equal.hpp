@@ -11,7 +11,9 @@
 
 #include <fcppt/ratio/not_equal.hpp>
 #include <fcppt/ratio/equal.hpp>
+#include <fcppt/config/external_begin.hpp>
 #include <boost/mpl/not.hpp>
+#include <fcppt/config/external_end.hpp>
 
 namespace fcppt
 {

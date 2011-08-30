@@ -8,7 +8,9 @@
 #define FCPPT_IO_COFSTREAM_HPP_INCLUDED
 
 #include <fcppt/filesystem/config.hpp>
+#include <fcppt/config/external_begin.hpp>
 #include <boost/filesystem/fstream.hpp>
+#include <fcppt/config/external_end.hpp>
 
 namespace fcppt
 {

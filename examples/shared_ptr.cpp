@@ -33,8 +33,10 @@ factory()
 //[sharedptr_deleter
 
 #include <fcppt/c_deleter.hpp>
+#include <fcppt/config/external_begin.hpp>
 #include <stdexcept>
 #include <cstdlib>
+#include <fcppt/config/external_end.hpp>
 
 namespace
 {

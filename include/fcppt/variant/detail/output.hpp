@@ -8,7 +8,9 @@
 #define FCPPT_VARIANT_DETAIL_OUTPUT_HPP_INCLUDED
 
 #include <fcppt/nonassignable.hpp>
+#include <fcppt/config/external_begin.hpp>
 #include <ostream>
+#include <fcppt/config/external_end.hpp>
 
 namespace fcppt
 {

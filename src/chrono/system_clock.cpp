@@ -9,12 +9,16 @@
 #include <fcppt/truncation_check_cast.hpp>
 #include <fcppt/platform.hpp>
 #if defined(FCPPT_WINDOWS_PLATFORM)
+#include <fcppt/config/external_begin.hpp>
 #define WIN32_LEAN_AND_MEAN
 #include <windows.h>
+#include <fcppt/config/external_end.hpp>
 #elif defined(FCPPT_POSIX_PLATFORM)
 #include <fcppt/chrono/clock_failure.hpp>
 #include <fcppt/text.hpp>
+#include <fcppt/config/external_begin.hpp>
 #include <sys/time.h>
+#include <fcppt/config/external_end.hpp>
 #else
 #error "system_clock implementation missing"
 #endif

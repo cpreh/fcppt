@@ -7,6 +7,11 @@
 #ifndef FCPPT_VARIANT_DETAIL_ASSERT_TYPE_HPP_INCLUDED
 #define FCPPT_VARIANT_DETAIL_ASSERT_TYPE_HPP_INCLUDED
 
+#include <fcppt/variant/detail/index_of.hpp>
+#include <fcppt/config/external_begin.hpp>
+#include <boost/static_assert.hpp>
+#include <fcppt/config/external_end.hpp>
+
 #define FCPPT_VARIANT_DETAIL_ASSERT_TYPE(\
 	types,\
 	other,\

@@ -20,8 +20,10 @@
 #include <fcppt/math/detail/initial_size.hpp>
 #include <fcppt/math/detail/make_op_def.hpp>
 #include <fcppt/math/detail/assign.hpp>
+#include <fcppt/config/external_begin.hpp>
 #include <iterator>
 #include <algorithm>
+#include <fcppt/config/external_end.hpp>
 
 template<
 	typename T,

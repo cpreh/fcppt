@@ -6,8 +6,10 @@
 
 #include <fcppt/math/vector/vector.hpp>
 #include <fcppt/algorithm/shift_compare.hpp>
+#include <fcppt/config/external_begin.hpp>
 #include <boost/test/unit_test.hpp>
 #include <functional>
+#include <fcppt/config/external_end.hpp>
 
 namespace
 {

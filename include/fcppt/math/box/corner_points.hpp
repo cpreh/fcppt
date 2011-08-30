@@ -14,7 +14,9 @@
 #include <fcppt/math/vector/basic_impl.hpp>
 #include <fcppt/math/vector/arithmetic.hpp>
 #include <fcppt/math/dim/structure_cast.hpp>
+#include <fcppt/config/external_begin.hpp>
 #include <cstddef>
+#include <fcppt/config/external_end.hpp>
 
 namespace fcppt
 {
@@ -31,7 +33,7 @@ template<
 fcppt::container::array
 <
 	typename fcppt::math::vector::static_<T,N>::type,
-	static_cast<std::size_t>(1u << N)
+	static_cast<std::size_t>(1u) << N
 > const
 corner_points(
 	box::basic<T,N> const &_box

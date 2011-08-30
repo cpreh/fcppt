@@ -13,8 +13,10 @@
 #include <fcppt/signal/detail/declare_operator.hpp>
 #include <fcppt/signal/detail/operator_limit.hpp>
 #include <fcppt/noncopyable.hpp>
+#include <fcppt/config/external_begin.hpp>
 #include <boost/preprocessor/repetition/repeat.hpp>
 #include <boost/type_traits/function_traits.hpp>
+#include <fcppt/config/external_end.hpp>
 
 namespace fcppt
 {

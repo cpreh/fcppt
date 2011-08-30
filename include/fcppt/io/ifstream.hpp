@@ -9,7 +9,9 @@
 
 #include <fcppt/filesystem/config.hpp>
 #include <fcppt/char_type.hpp>
+#include <fcppt/config/external_begin.hpp>
 #include <boost/filesystem/fstream.hpp>
+#include <fcppt/config/external_end.hpp>
 
 namespace fcppt
 {

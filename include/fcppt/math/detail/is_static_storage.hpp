@@ -8,8 +8,10 @@
 #define FCPPT_MATH_DETAIL_IS_STATIC_STORAGE_HPP_INCLUDED
 
 #include <fcppt/container/array_fwd.hpp>
+#include <fcppt/config/external_begin.hpp>
 #include <boost/type_traits/integral_constant.hpp>
 #include <cstddef>
+#include <fcppt/config/external_end.hpp>
 
 namespace fcppt
 {

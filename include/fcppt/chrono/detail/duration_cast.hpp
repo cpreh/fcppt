@@ -10,11 +10,13 @@
 #include <fcppt/chrono/common_type.hpp>
 #include <fcppt/chrono/duration_decl.hpp>
 #include <fcppt/ratio/divide.hpp>
+#include <fcppt/config/external_begin.hpp>
 #include <boost/mpl/and.hpp>
 #include <boost/mpl/not.hpp>
 #include <boost/mpl/bool.hpp>
 #include <boost/type_traits/is_same.hpp>
 #include <boost/utility/enable_if.hpp>
+#include <fcppt/config/external_end.hpp>
 
 namespace fcppt
 {

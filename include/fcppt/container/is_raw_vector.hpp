@@ -8,7 +8,9 @@
 #define FCPPT_CONTAINER_IS_RAW_VECTOR_HPP_INCLUDED
 
 #include <fcppt/container/raw_vector_fwd.hpp>
+#include <fcppt/config/external_begin.hpp>
 #include <boost/type_traits/integral_constant.hpp>
+#include <fcppt/config/external_end.hpp>
 
 namespace fcppt
 {

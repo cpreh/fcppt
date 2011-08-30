@@ -11,8 +11,9 @@
 #include <fcppt/string.hpp>
 #include <fcppt/text.hpp>
 #include <fcppt/exception.hpp>
-#include <ostream>
+#include <fcppt/config/external_begin.hpp>
 #include <cstdlib>
+#include <fcppt/config/external_end.hpp>
 
 //[tree_traversal
 int main()

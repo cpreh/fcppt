@@ -8,8 +8,10 @@
 #include <fcppt/math/vector/vector.hpp>
 #include <fcppt/math/matrix/matrix.hpp>
 #include <fcppt/math/matrix/translation.hpp>
+#include <fcppt/config/external_begin.hpp>
 #include <iostream>
 #include <ostream>
+#include <fcppt/config/external_end.hpp>
 
 int main()
 {

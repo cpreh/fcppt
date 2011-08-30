@@ -6,7 +6,9 @@
 
 #include <fcppt/error/strerrno.hpp>
 #include <fcppt/error/strerror.hpp>
+#include <fcppt/config/external_begin.hpp>
 #include <cerrno>
+#include <fcppt/config/external_end.hpp>
 
 fcppt::string const
 fcppt::error::strerrno()

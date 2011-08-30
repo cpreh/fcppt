@@ -9,11 +9,11 @@
 
 inline
 fcppt::invalid_minmax_pair::invalid_minmax_pair(
-	fcppt::string const &what_
+	fcppt::string const &_what
 )
 :
 	fcppt::exception(
-		what_
+		_what
 	)
 {}
 

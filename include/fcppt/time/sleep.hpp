@@ -8,7 +8,9 @@
 #define FCPPT_TIME_SLEEP_HPP_INCLUDED
 
 #include <fcppt/time/sleep_duration.hpp>
+#include <fcppt/config/external_begin.hpp>
 #include <fcppt/symbol.hpp>
+#include <fcppt/config/external_end.hpp>
 
 namespace fcppt
 {

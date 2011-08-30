@@ -6,9 +6,11 @@
 
 #include <fcppt/math/compare.hpp>
 #include <fcppt/math/is_power_of_2.hpp>
+#include <fcppt/config/external_begin.hpp>
 #include <iostream>
 #include <ostream>
 #include <iosfwd>
+#include <fcppt/config/external_end.hpp>
 
 int main()
 {

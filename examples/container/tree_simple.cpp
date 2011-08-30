@@ -13,9 +13,10 @@
 #include <fcppt/text.hpp>
 #include <fcppt/exception.hpp>
 #include <fcppt/move.hpp>
-#include <ostream>
+#include <fcppt/config/external_begin.hpp>
 #include <iterator>
 #include <cstdlib>
+#include <fcppt/config/external_end.hpp>
 
 int main()
 try

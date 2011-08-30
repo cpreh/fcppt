@@ -9,10 +9,12 @@
 
 #include <fcppt/container/raw_vector_fwd.hpp>
 #include <fcppt/type_traits/is_input_iterator.hpp>
+#include <fcppt/config/external_begin.hpp>
 #include <boost/static_assert.hpp>
 #include <boost/type_traits/is_pod.hpp>
 #include <boost/utility/enable_if.hpp>
 #include <iterator>
+#include <fcppt/config/external_end.hpp>
 
 namespace fcppt
 {

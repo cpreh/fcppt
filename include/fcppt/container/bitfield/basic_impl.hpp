@@ -12,10 +12,12 @@
 #include <fcppt/container/bitfield/proxy_impl.hpp>
 #include <fcppt/container/array_impl.hpp>
 #include <fcppt/algorithm/contains_if.hpp>
+#include <fcppt/config/external_begin.hpp>
 #include <boost/spirit/home/phoenix/core/argument.hpp>
 #include <boost/spirit/home/phoenix/operator/bitwise.hpp>
 #include <boost/spirit/home/phoenix/operator/comparison.hpp>
 #include <algorithm>
+#include <fcppt/config/external_end.hpp>
 
 template<
 	typename Enum,

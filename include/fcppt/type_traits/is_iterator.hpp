@@ -7,6 +7,7 @@
 #ifndef FCPPT_TYPE_TRAITS_IS_ITERATOR_HPP_INCLUDED
 #define FCPPT_TYPE_TRAITS_IS_ITERATOR_HPP_INCLUDED
 
+#include <fcppt/config/external_begin.hpp>
 #include <boost/type_traits/integral_constant.hpp>
 #include <boost/type_traits/remove_pointer.hpp>
 #include <boost/type_traits/remove_cv.hpp>
@@ -14,6 +15,7 @@
 #include <boost/type_traits/is_pointer.hpp>
 #include <boost/type_traits/is_same.hpp>
 #include <boost/mpl/not.hpp>
+#include <fcppt/config/external_end.hpp>
 
 namespace fcppt
 {

@@ -10,7 +10,6 @@
 #include <fcppt/alignment/is_aligned.hpp>
 #include <fcppt/io/cout.hpp>
 #include <fcppt/text.hpp>
-#include <ostream>
 
 int main()
 {

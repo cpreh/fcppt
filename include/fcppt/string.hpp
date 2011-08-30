@@ -8,7 +8,9 @@
 #define FCPPT_STRING_HPP_INCLUDED
 
 #include <fcppt/char_type.hpp>
+#include <fcppt/config/external_begin.hpp>
 #include <string>
+#include <fcppt/config/external_end.hpp>
 
 namespace fcppt
 {

@@ -12,7 +12,9 @@
 #include <fcppt/signal/detail/concrete_connection.hpp>
 #include <fcppt/noncopyable.hpp>
 #include <fcppt/function/object.hpp>
+#include <fcppt/config/external_begin.hpp>
 #include <boost/intrusive/list.hpp>
+#include <fcppt/config/external_end.hpp>
 
 namespace fcppt
 {

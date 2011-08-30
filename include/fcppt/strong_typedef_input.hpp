@@ -8,7 +8,9 @@
 #define FCPPT_STRONG_TYPEDEF_INPUT_HPP_INCLUDED
 
 #include <fcppt/strong_typedef_fwd.hpp>
+#include <fcppt/config/external_begin.hpp>
 #include <iosfwd>
+#include <fcppt/config/external_end.hpp>
 
 namespace fcppt
 {

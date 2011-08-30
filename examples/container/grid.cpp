@@ -59,9 +59,11 @@ use_grid()
 //[grid_resize
 #include <fcppt/container/grid/output.hpp>
 #include <fcppt/container/grid/resize_preserve_init.hpp>
+#include <fcppt/config/external_begin.hpp>
 #include <boost/spirit/home/phoenix/core/reference.hpp>
 #include <boost/spirit/home/phoenix/operator/arithmetic.hpp>
 #include <algorithm>
+#include <fcppt/config/external_end.hpp>
 
 //<-
 namespace

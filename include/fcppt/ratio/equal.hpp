@@ -10,7 +10,9 @@
 #define FCPPT_RATIO_EQUAL_HPP_INCLUDED
 
 #include <fcppt/ratio/equal_fwd.hpp>
+#include <fcppt/config/external_begin.hpp>
 #include <boost/type_traits/integral_constant.hpp>
+#include <fcppt/config/external_end.hpp>
 
 namespace fcppt
 {

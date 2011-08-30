@@ -14,12 +14,14 @@
 #include <fcppt/char_type.hpp>
 #include <fcppt/string.hpp>
 #include <fcppt/text.hpp>
+#include <fcppt/config/external_begin.hpp>
 #include <boost/mpl/greater_equal.hpp>
 #include <boost/mpl/less.hpp>
 #include <boost/mpl/sizeof.hpp>
 #include <boost/utility/enable_if.hpp>
 #include <boost/cstdint.hpp>
 #include <iterator>
+#include <fcppt/config/external_end.hpp>
 
 namespace
 {

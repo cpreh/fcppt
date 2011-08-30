@@ -11,7 +11,10 @@
 #include <fcppt/endianness/from_little_endian.hpp>
 #include <fcppt/endianness/from_big_endian.hpp>
 #include <fcppt/endianness/host_format.hpp>
+#include <fcppt/config/external_begin.hpp>
 #include <iostream>
+#include <ostream>
+#include <fcppt/config/external_end.hpp>
 
 //[endianness
 int main()

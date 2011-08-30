@@ -390,6 +390,8 @@ SET(
 	include/fcppt/chrono/treat_as_floating_point.hpp
 	include/fcppt/class_symbol.hpp
 	include/fcppt/com_deleter.hpp
+	include/fcppt/config/external_begin.hpp
+	include/fcppt/config/external_end.hpp
 	include/fcppt/const_pointer_cast.hpp
 	include/fcppt/container/array.hpp
 	include/fcppt/container/array_comparison.hpp

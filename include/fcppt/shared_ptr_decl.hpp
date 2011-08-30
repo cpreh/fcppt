@@ -12,8 +12,10 @@
 #include <fcppt/shared_ptr_fwd.hpp>
 #include <fcppt/unique_ptr_fwd.hpp>
 #include <fcppt/weak_ptr_fwd.hpp>
-#include <boost/shared_ptr.hpp>
+#include <fcppt/config/external_begin.hpp>
+#include <boost/smart_ptr/shared_ptr.hpp>
 #include <iosfwd>
+#include <fcppt/config/external_end.hpp>
 
 namespace fcppt
 {

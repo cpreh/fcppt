@@ -6,7 +6,9 @@
 
 #include <fcppt/thread/object.hpp>
 #include <fcppt/chrono/convert/to_boost_duration.hpp>
+#include <fcppt/config/external_begin.hpp>
 #include <exception>
+#include <fcppt/config/external_end.hpp>
 
 fcppt::thread::object::object(
 	task const &_task

@@ -11,7 +11,9 @@
 
 #include <fcppt/ratio/greater_equal_fwd.hpp>
 #include <fcppt/ratio/less.hpp>
+#include <fcppt/config/external_begin.hpp>
 #include <boost/type_traits/integral_constant.hpp>
+#include <fcppt/config/external_end.hpp>
 
 namespace fcppt
 {

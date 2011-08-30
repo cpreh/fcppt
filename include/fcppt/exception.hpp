@@ -8,7 +8,9 @@
 #define FCPPT_EXCEPTION_HPP_INCLUDED
 
 #include <fcppt/string.hpp>
+#include <fcppt/config/external_begin.hpp>
 #include <exception>
+#include <fcppt/config/external_end.hpp>
 
 namespace fcppt
 {

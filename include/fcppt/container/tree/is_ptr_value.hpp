@@ -8,7 +8,9 @@
 #define FCPPT_CONTAINER_TREE_IS_PTR_VALUE_HPP_INCLUDED
 
 #include <fcppt/container/tree/ptr_value.hpp>
+#include <fcppt/config/external_begin.hpp>
 #include <boost/type_traits/integral_constant.hpp>
+#include <fcppt/config/external_end.hpp>
 
 namespace fcppt
 {

@@ -11,8 +11,10 @@
 #include <fcppt/tr1/functional.hpp>
 #include <fcppt/text.hpp>
 #include <fcppt/format.hpp>
+#include <fcppt/config/external_begin.hpp>
 #include <numeric>
 #include <functional>
+#include <fcppt/config/external_end.hpp>
 
 fcppt::random::actor::normalized::normalized(
 	container const &_elements

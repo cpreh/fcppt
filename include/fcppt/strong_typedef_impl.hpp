@@ -9,7 +9,9 @@
 
 #include <fcppt/strong_typedef_decl.hpp>
 #include <fcppt/detail/strong_typedef_cast.hpp>
+#include <fcppt/config/external_begin.hpp>
 #include <algorithm>
+#include <fcppt/config/external_end.hpp>
 
 template<
 	typename T,

@@ -7,7 +7,9 @@
 #ifndef FCPPT_MATH_DETAIL_MAKE_OP_DEF_HPP_INCLUDED
 #define FCPPT_MATH_DETAIL_MAKE_OP_DEF_HPP_INCLUDED
 
+#include <fcppt/config/external_begin.hpp>
 #include <boost/preprocessor/tuple/rem.hpp>
+#include <fcppt/config/external_end.hpp>
 
 #define FCPPT_MATH_DETAIL_MAKE_OP_DEF(\
 	class_arity,\

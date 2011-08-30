@@ -8,7 +8,9 @@
 #define FCPPT_MATH_CLAMP_HPP_INCLUDED
 
 #include <fcppt/assert/pre.hpp>
+#include <fcppt/config/external_begin.hpp>
 #include <algorithm>
+#include <fcppt/config/external_end.hpp>
 
 namespace fcppt
 {

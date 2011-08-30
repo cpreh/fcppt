@@ -8,7 +8,9 @@
 #define FCPPT_ASSERT_UNCONDITIONAL_HPP_INCLUDED
 
 #include <fcppt/assert/print_message.hpp>
+#include <fcppt/config/external_begin.hpp>
 #include <boost/preprocessor/empty.hpp>
+#include <fcppt/config/external_end.hpp>
 
 #define FCPPT_ASSERT_UNCONDITONAL(\
 	message,\

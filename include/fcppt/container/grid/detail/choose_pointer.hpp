@@ -7,7 +7,10 @@
 #ifndef FCPPT_CONTAINER_GRID_DETAIL_CHOOSE_POINTER_HPP_INCLUDED
 #define FCPPT_CONTAINER_GRID_DETAIL_CHOOSE_POINTER_HPP_INCLUDED
 
+#include <fcppt/config/external_begin.hpp>
 #include <boost/mpl/if.hpp>
+#include <boost/type_traits/is_const.hpp>
+#include <fcppt/config/external_end.hpp>
 
 namespace fcppt
 {

@@ -9,7 +9,9 @@
 
 #include <fcppt/filesystem/path.hpp>
 #include <fcppt/symbol.hpp>
+#include <fcppt/config/external_begin.hpp>
 #include <boost/cstdint.hpp>
+#include <fcppt/config/external_end.hpp>
 
 namespace fcppt
 {

@@ -13,7 +13,9 @@
 #include <fcppt/symbol.hpp>
 #include <fcppt/shared_ptr.hpp>
 #include <fcppt/string.hpp>
+#include <fcppt/config/external_begin.hpp>
 #include <ostream>
+#include <fcppt/config/external_end.hpp>
 
 namespace fcppt
 {

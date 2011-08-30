@@ -8,7 +8,9 @@
 #define FCPPT_MATH_QUATERNION_VECTOR_ROTATION_HPP_INCLUDED
 
 #include <fcppt/math/vector/static.hpp>
+#include <fcppt/config/external_begin.hpp>
 #include <boost/math/quaternion.hpp>
+#include <fcppt/config/external_end.hpp>
 
 namespace fcppt
 {

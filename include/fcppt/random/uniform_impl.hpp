@@ -12,7 +12,9 @@
 #include <fcppt/chrono/high_resolution_clock.hpp>
 #include <fcppt/chrono/time_point_impl.hpp>
 #include <fcppt/chrono/duration_impl.hpp>
+#include <fcppt/config/external_begin.hpp>
 #include <boost/type_traits/remove_reference.hpp>
+#include <fcppt/config/external_end.hpp>
 
 template<
 	typename T,

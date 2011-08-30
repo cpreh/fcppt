@@ -9,7 +9,9 @@
 
 #include <fcppt/chrono/detail/duration_cast.hpp>
 #include <fcppt/chrono/is_duration.hpp>
+#include <fcppt/config/external_begin.hpp>
 #include <boost/static_assert.hpp>
+#include <fcppt/config/external_end.hpp>
 
 namespace fcppt
 {

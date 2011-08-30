@@ -9,11 +9,13 @@
 
 #include <fcppt/type_info.hpp>
 #include <fcppt/bad_dynamic_cast.hpp>
+#include <fcppt/config/external_begin.hpp>
 #include <boost/type_traits/is_reference.hpp>
 #include <boost/type_traits/is_pointer.hpp>
 #include <boost/utility/enable_if.hpp>
 #include <typeinfo>
 #include <stdexcept>
+#include <fcppt/config/external_end.hpp>
 
 namespace fcppt
 {

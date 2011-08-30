@@ -10,8 +10,10 @@
 #include <fcppt/math/vector/basic_impl.hpp>
 #include <fcppt/math/vector/length_square.hpp>
 #include <boost/type_traits/is_floating_point.hpp>
+#include <fcppt/config/external_begin.hpp>
 #include <boost/utility/enable_if.hpp>
 #include <cmath>
+#include <fcppt/config/external_end.hpp>
 
 namespace fcppt
 {

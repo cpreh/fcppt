@@ -11,9 +11,11 @@
 #include <fcppt/alignment/size_type.hpp>
 #include <fcppt/config.hpp>
 #if !defined(FCPPT_ALIGN_TEMPLATE_PARAMETERS)
+#include <fcppt/config/external_begin.hpp>
 #include <boost/preprocessor/arithmetic/mul.hpp>
 #include <boost/preprocessor/comparison/less_equal.hpp>
 #include <boost/preprocessor/repetition/for.hpp>
+#include <fcppt/config/external_end.hpp>
 #endif
 
 namespace fcppt

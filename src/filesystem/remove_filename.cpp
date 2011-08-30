@@ -5,6 +5,7 @@
 
 
 #include <fcppt/filesystem/remove_filename.hpp>
+#include <fcppt/filesystem/path.hpp>
 
 fcppt::filesystem::path const
 fcppt::filesystem::remove_filename(

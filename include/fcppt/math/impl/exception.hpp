@@ -11,12 +11,12 @@
 
 inline
 fcppt::math::exception::exception(
-	fcppt::string const &s
+	fcppt::string const &_string
 )
 :
 	fcppt::exception(
 		FCPPT_TEXT("math: ")
-		+ s
+		+ _string
 	)
 {}
 

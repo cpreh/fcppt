@@ -5,7 +5,9 @@
 
 
 #include <fcppt/filesystem/readlink.hpp>
+#include <fcppt/config/external_begin.hpp>
 #include <boost/filesystem/operations.hpp>
+#include <fcppt/config/external_end.hpp>
 
 fcppt::filesystem::path const
 fcppt::filesystem::readlink(

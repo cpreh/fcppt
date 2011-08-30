@@ -9,7 +9,9 @@
 
 #include <fcppt/container/tree/detail/print.hpp>
 #include <fcppt/container/tree/object_fwd.hpp>
+#include <fcppt/config/external_begin.hpp>
 #include <ostream>
+#include <fcppt/config/external_end.hpp>
 
 namespace fcppt
 {

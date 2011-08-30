@@ -17,10 +17,16 @@ template<
 >
 typename Container::pointer
 data(
-	Container &c
+	Container &_container
 )
 {
-	return c.empty() ? 0 : &c[0];
+	return
+		_container.empty()
+		?
+			0
+		:
+			&_container[0]
+		;
 }
 
 template<
@@ -28,10 +34,16 @@ template<
 >
 typename Container::const_pointer
 data(
-	Container const &c
+	Container const &_container
 )
 {
-	return c.empty() ? 0 : &c[0];
+	return
+		_container.empty()
+		?
+			0
+		:
+			&_container[0]
+		;
 }
 
 }

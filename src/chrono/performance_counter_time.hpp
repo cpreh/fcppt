@@ -11,8 +11,10 @@
 #include <fcppt/chrono/time_point_impl.hpp>
 #include <fcppt/text.hpp>
 #include "query_performance_frequency.hpp"
+#include <fcppt/config/external_begin.hpp>
 #define WIN32_LEAN_AND_MEAN
 #include <windows.h>
+#include <fcppt/config/external_end.hpp>
 
 namespace fcppt
 {

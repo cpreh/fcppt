@@ -8,7 +8,9 @@
 #define FCPPT_RANDOM_ACTOR_CONTAINER_HPP_INCLUDED
 
 #include <fcppt/random/actor/element_fwd.hpp>
+#include <fcppt/config/external_begin.hpp>
 #include <vector>
+#include <fcppt/config/external_end.hpp>
 
 namespace fcppt
 {

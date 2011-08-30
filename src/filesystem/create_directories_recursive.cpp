@@ -5,7 +5,9 @@
 
 
 #include <fcppt/filesystem/create_directories_recursive.hpp>
+#include <fcppt/config/external_begin.hpp>
 #include <boost/filesystem/convenience.hpp>
+#include <fcppt/config/external_end.hpp>
 
 bool
 fcppt::filesystem::create_directories_recursive(

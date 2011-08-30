@@ -7,9 +7,11 @@
 #ifndef FCPPT_IO_STREAM_TO_STRING_HPP_INCLUDED
 #define FCPPT_IO_STREAM_TO_STRING_HPP_INCLUDED
 
+#include <fcppt/config/external_begin.hpp>
 #include <istream>
 #include <sstream>
 #include <string>
+#include <fcppt/config/external_end.hpp>
 
 namespace fcppt
 {

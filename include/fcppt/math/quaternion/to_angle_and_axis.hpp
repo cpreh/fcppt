@@ -7,10 +7,12 @@
 #ifndef FCPPT_MATH_QUATERNION_TO_ANGLE_AND_AXIS_HPP_INCLUDED
 #define FCPPT_MATH_QUATERNION_TO_ANGLE_AND_AXIS_HPP_INCLUDED
 
-#include <boost/math/quaternion.hpp>
 #include <fcppt/math/vector/static.hpp>
 #include <fcppt/math/vector/basic_impl.hpp>
+#include <fcppt/config/external_begin.hpp>
+#include <boost/math/quaternion.hpp>
 #include <cmath>
+#include <fcppt/config/external_end.hpp>
 
 namespace fcppt
 {

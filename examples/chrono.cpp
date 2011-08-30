@@ -5,9 +5,11 @@
 
 
 #include <fcppt/chrono/chrono.hpp>
+#include <fcppt/config/external_begin.hpp>
 #include <iostream>
 #include <ostream>
 #include <cmath>
+#include <fcppt/config/external_end.hpp>
 
 int main()
 {

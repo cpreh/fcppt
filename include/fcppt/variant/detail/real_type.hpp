@@ -8,9 +8,11 @@
 #define FCPPT_VARIANT_DETAIL_REAL_TYPE_HPP_INCLUDED
 
 #include <fcppt/variant/recursive_fwd.hpp>
+#include <fcppt/config/external_begin.hpp>
 #include <boost/mpl/contains.hpp>
 #include <boost/mpl/if.hpp>
 #include <boost/type_traits/is_same.hpp>
+#include <fcppt/config/external_end.hpp>
 
 namespace fcppt
 {

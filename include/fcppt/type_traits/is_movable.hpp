@@ -8,7 +8,9 @@
 #define FCPPT_TYPE_TRAITS_IS_MOVABLE_HPP_INCLUDED
 
 #include <fcppt/unique_ptr_fwd.hpp>
+#include <fcppt/config/external_begin.hpp>
 #include <boost/type_traits/integral_constant.hpp>
+#include <fcppt/config/external_end.hpp>
 
 namespace fcppt
 {

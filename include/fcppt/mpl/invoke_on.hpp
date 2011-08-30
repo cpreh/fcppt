@@ -8,10 +8,12 @@
 #define FCPPT_MPL_INVOKE_ON_HPP_INCLUDED
 
 #include <fcppt/mpl/detail/invoke_on.hpp>
+#include <fcppt/config/external_begin.hpp>
 #include <boost/mpl/integral_c.hpp>
 #include <boost/mpl/begin.hpp>
 #include <boost/mpl/end.hpp>
 #include <boost/mpl/empty.hpp>
+#include <fcppt/config/external_end.hpp>
 
 namespace fcppt
 {

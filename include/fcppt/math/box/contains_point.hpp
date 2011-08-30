@@ -19,15 +19,15 @@ namespace math
 namespace box
 {
 
-/// Tests if @a box_ contains @a point_
+/// Tests if @a _box contains @a _point
 template<
 	typename T,
 	size_type N
 >
 bool
 contains_point(
-	basic<T, N> const &box_,
-	typename vector::static_<T, N>::type const &point_
+	basic<T, N> const &_box,
+	typename vector::static_<T, N>::type const &_point
 )
 {
 	bool ret = true;
@@ -38,8 +38,8 @@ contains_point(
 		++i
 	)
 		ret = ret &&
-			point_[i] >= box_.pos(i)
-			&& point_[i] < box_.max(i);
+			_point[i] >= _box.pos(i)
+			&& _point[i] < _box.max(i);
 
 	return ret;
 }

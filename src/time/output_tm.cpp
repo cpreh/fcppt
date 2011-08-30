@@ -6,10 +6,12 @@
 
 #include <fcppt/time/output_tm.hpp>
 #include <fcppt/io/ostream.hpp>
+#include <fcppt/config/external_begin.hpp>
 #include <iterator>
 #include <locale>
 #include <ostream>
 #include <ctime>
+#include <fcppt/config/external_end.hpp>
 
 FCPPT_SYMBOL
 fcppt::io::ostream &

@@ -11,7 +11,9 @@
 #include <fcppt/unique_ptr_fwd.hpp>
 #include <fcppt/noncopyable.hpp>
 #include <fcppt/safe_bool.hpp>
+#include <fcppt/config/external_begin.hpp>
 #include <boost/type_traits/add_reference.hpp>
+#include <fcppt/config/external_end.hpp>
 
 namespace fcppt
 {

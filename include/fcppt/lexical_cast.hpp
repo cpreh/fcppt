@@ -10,13 +10,15 @@
 #include <fcppt/bad_lexical_cast.hpp>
 #include <fcppt/type_traits/is_string.hpp>
 #include <fcppt/mpl/value_type.hpp>
-#include <boost/mpl/or.hpp>
+#include <fcppt/config/external_begin.hpp>
 #include <boost/mpl/eval_if.hpp>
+#include <boost/mpl/or.hpp>
 #include <boost/utility/enable_if.hpp>
 #include <boost/type_traits/is_same.hpp>
 #include <boost/static_assert.hpp>
 #include <typeinfo>
 #include <sstream>
+#include <fcppt/config/external_end.hpp>
 
 namespace fcppt
 {

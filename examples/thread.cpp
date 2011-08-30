@@ -7,8 +7,10 @@
 //[thread
 #include <fcppt/thread/object.hpp>
 #include <fcppt/tr1/functional.hpp>
+#include <fcppt/config/external_begin.hpp>
 #include <iostream>
 #include <ostream>
+#include <fcppt/config/external_end.hpp>
 
 namespace
 {

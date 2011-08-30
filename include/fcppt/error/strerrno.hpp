@@ -15,7 +15,8 @@ namespace fcppt
 namespace error
 {
 
-FCPPT_SYMBOL string const
+FCPPT_SYMBOL
+fcppt::string const
 strerrno();
 
 }

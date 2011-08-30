@@ -8,7 +8,9 @@
 #define FCPPT_REF_HPP_INCLUDED
 
 #include <fcppt/reference_wrapper.hpp>
+#include <fcppt/config/external_begin.hpp>
 #include <boost/ref.hpp>
+#include <fcppt/config/external_end.hpp>
 
 namespace fcppt
 {

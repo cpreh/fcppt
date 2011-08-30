@@ -11,7 +11,9 @@
 #include <fcppt/empty_optional_tag_fwd.hpp>
 #include <fcppt/safe_bool.hpp>
 #include <fcppt/alignment/array.hpp>
+#include <fcppt/config/external_begin.hpp>
 #include <boost/type_traits/alignment_of.hpp>
+#include <fcppt/config/external_end.hpp>
 
 namespace fcppt
 {

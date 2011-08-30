@@ -7,9 +7,11 @@
 #ifndef FCPPT_MPL_INDEX_OF_HPP_INCLUDED
 #define FCPPT_MPL_INDEX_OF_HPP_INCLUDED
 
+#include <fcppt/config/external_begin.hpp>
 #include <boost/mpl/begin.hpp>
 #include <boost/mpl/distance.hpp>
 #include <boost/mpl/find.hpp>
+#include <fcppt/config/external_end.hpp>
 
 namespace fcppt
 {

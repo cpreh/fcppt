@@ -9,7 +9,9 @@
 
 #include <fcppt/math/vector/basic_impl.hpp>
 #include <fcppt/math/detail/one_dimensional_output.hpp>
+#include <fcppt/config/external_begin.hpp>
 #include <iosfwd>
+#include <fcppt/config/external_end.hpp>
 
 namespace fcppt
 {

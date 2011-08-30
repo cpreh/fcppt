@@ -11,7 +11,9 @@
 #include <fcppt/math/vector/output.hpp>
 #include <fcppt/math/dim/output.hpp>
 #include <fcppt/math/size_type.hpp>
+#include <fcppt/config/external_begin.hpp>
 #include <ostream>
+#include <fcppt/config/external_end.hpp>
 
 namespace fcppt
 {

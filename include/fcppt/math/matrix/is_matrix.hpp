@@ -8,7 +8,9 @@
 #define FCPPT_MATH_MATRIX_IS_MATRIX_HPP_INCLUDED
 
 #include <fcppt/math/matrix/basic_decl.hpp>
+#include <fcppt/config/external_begin.hpp>
 #include <boost/mpl/bool.hpp>
+#include <fcppt/config/external_end.hpp>
 
 namespace fcppt
 {

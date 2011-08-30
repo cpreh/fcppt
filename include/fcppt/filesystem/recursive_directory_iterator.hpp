@@ -7,7 +7,10 @@
 #ifndef FCPPT_FILESYSTEM_RECURSIVE_DIRECTORY_ITERATOR_HPP_INCLUDED
 #define FCPPT_FILESYSTEM_RECURSIVE_DIRECTORY_ITERATOR_HPP_INCLUDED
 
+#include <fcppt/filesystem/config.hpp>
+#include <fcppt/config/external_begin.hpp>
 #include <boost/filesystem/convenience.hpp>
+#include <fcppt/config/external_end.hpp>
 
 namespace fcppt
 {

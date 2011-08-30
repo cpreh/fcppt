@@ -8,8 +8,10 @@
 #define FCPPT_MATH_DETAIL_HAS_SIZE_HPP_INCLUDED
 
 #include <fcppt/math/size_type.hpp>
+#include <fcppt/config/external_begin.hpp>
 #include <boost/mpl/integral_c.hpp>
 #include <boost/type_traits/is_same.hpp>
+#include <fcppt/config/external_end.hpp>
 
 namespace fcppt
 {

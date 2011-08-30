@@ -10,7 +10,9 @@
 #include <fcppt/scoped_ptr_decl.hpp>
 #include <fcppt/move.hpp>
 #include <fcppt/unique_ptr_impl.hpp>
+#include <fcppt/config/external_begin.hpp>
 #include <algorithm>
+#include <fcppt/config/external_end.hpp>
 
 template<
 	typename T,

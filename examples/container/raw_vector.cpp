@@ -8,9 +8,10 @@
 #include <fcppt/container/raw_vector.hpp>
 #include <fcppt/io/cout.hpp>
 #include <fcppt/text.hpp>
+#include <fcppt/config/external_begin.hpp>
 #include <algorithm>
 #include <cstddef>
-#include <ostream>
+#include <fcppt/config/external_end.hpp>
 
 namespace
 {

@@ -9,9 +9,11 @@
 
 #include <fcppt/io/raw_container_source_decl.hpp>
 #include <fcppt/make_shared_ptr.hpp>
+#include <fcppt/config/external_begin.hpp>
 #include <boost/next_prior.hpp>
 #include <algorithm>
 #include <iterator>
+#include <fcppt/config/external_end.hpp>
 
 template<typename Container>
 template<typename Iterator>

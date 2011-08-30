@@ -7,7 +7,9 @@
 #ifndef FCPPT_ALGORITHM_REMOVE_IF_HPP_INCLUDED
 #define FCPPT_ALGORITHM_REMOVE_IF_HPP_INCLUDED
 
+#include <fcppt/config/external_begin.hpp>
 #include <algorithm>
+#include <fcppt/config/external_end.hpp>
 
 namespace fcppt
 {

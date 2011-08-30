@@ -9,7 +9,9 @@
 
 #include <fcppt/chrono/time_point_impl.hpp>
 #include <fcppt/chrono/duration_output.hpp>
+#include <fcppt/config/external_begin.hpp>
 #include <ostream>
+#include <fcppt/config/external_end.hpp>
 
 namespace fcppt
 {

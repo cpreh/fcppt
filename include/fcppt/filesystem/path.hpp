@@ -7,9 +7,10 @@
 #ifndef FCPPT_FILESYSTEM_PATH_HPP_INCLUDED
 #define FCPPT_FILESYSTEM_PATH_HPP_INCLUDED
 
-// include config.hpp here, so it will force filesystem::v3 for everything
 #include <fcppt/filesystem/config.hpp>
+#include <fcppt/config/external_begin.hpp>
 #include <boost/filesystem/path.hpp>
+#include <fcppt/config/external_end.hpp>
 
 namespace fcppt
 {

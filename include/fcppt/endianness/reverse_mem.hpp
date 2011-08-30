@@ -8,7 +8,9 @@
 #define FCPPT_ENDIANNESS_REVERSE_MEM_HPP_INCLUDED
 
 #include <fcppt/symbol.hpp>
+#include <fcppt/config/external_begin.hpp>
 #include <cstddef>
+#include <fcppt/config/external_end.hpp>
 
 namespace fcppt
 {

@@ -322,8 +322,21 @@ IF(
 ELSEIF(
 	MSVC
 )
-	ADD_DEFINITIONS ("/W4 /wd4996 /EHa /D_BIND_TO_CURRENT_VCLIBS_VERSION=1")
+	ADD_DEFINITIONS(
+		"/W4 /Wall /EHa /D_BIND_TO_CURRENT_VCLIBS_VERSION=1"
+		" /wd4996 /wd4350 /wd4371 /wd4514 /wd4710 /wd4711 /wd4820"
+	)
+
+	# /W4 warnings
 	#4996 - unsafe standard C++ functions
+
+	# /Wall warnings
+	#4350 - behaviour change due to implicit conversions (needed for unique_ptr)
+	#4371 - layout of class may have changed from previous compiler version
+	#4514 - unreferenced inline function removed
+	#4710 - function not inlined
+	#4711 - function selected for automatic inline expansion
+	#4820 - byte padding after data members
 ENDIF()
 
 # configure standard CMake build paths

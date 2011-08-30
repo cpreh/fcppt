@@ -7,6 +7,7 @@
 #ifndef FCPPT_CHRONO_DETAIL_COMMON_TYPE_ARITHMETIC_HPP_INCLUDED
 #define FCPPT_CHRONO_DETAIL_COMMON_TYPE_ARITHMETIC_HPP_INCLUDED
 
+#include <fcppt/config/external_begin.hpp>
 #include <boost/mpl/and.hpp>
 #include <boost/utility/enable_if.hpp>
 #include <boost/type_traits/is_arithmetic.hpp>
@@ -14,6 +15,7 @@
 #define BOOST_TYPEOF_SILENT
 //\endcond
 #include <boost/typeof/typeof.hpp>
+#include <fcppt/config/external_end.hpp>
 
 namespace fcppt
 {

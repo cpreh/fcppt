@@ -5,8 +5,10 @@
 
 
 #include <fcppt/default_locale.hpp>
+#include <fcppt/config/external_begin.hpp>
 #include <locale>
 #include <cstdlib>
+#include <fcppt/config/external_end.hpp>
 
 namespace
 {

@@ -8,7 +8,9 @@
 #define FCPPT_ASSERT_UNIMPLEMENTED_MESSAGE_HPP_INCLUDED
 
 #include <fcppt/assert/unconditional.hpp>
+#include <fcppt/config/external_begin.hpp>
 #include <exception>
+#include <fcppt/config/external_end.hpp>
 
 #define FCPPT_ASSERT_UNIMPLEMENTED_MESSAGE(\
 	message\

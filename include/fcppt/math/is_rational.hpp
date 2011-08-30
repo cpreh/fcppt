@@ -7,8 +7,10 @@
 #ifndef FCPPT_MATH_IS_RATIONAL_HPP_INCLUDED
 #define FCPPT_MATH_IS_RATIONAL_HPP_INCLUDED
 
+#include <fcppt/config/external_begin.hpp>
 #include <boost/type_traits/integral_constant.hpp>
 #include <boost/rational.hpp>
+#include <fcppt/config/external_end.hpp>
 
 namespace fcppt
 {

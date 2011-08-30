@@ -7,7 +7,9 @@
 #ifndef FCPPT_MATH_RANGE_COMPARE_HPP_INCLUDED
 #define FCPPT_MATH_RANGE_COMPARE_HPP_INCLUDED
 
+#include <fcppt/config/external_begin.hpp>
 #include <cmath>
+#include <fcppt/config/external_end.hpp>
 
 namespace fcppt
 {
@@ -29,7 +31,7 @@ range_compare(
 	typename Range2::const_iterator i2 = r2.begin();
 
 	for(; i1 != r1.end(); ++i1,++i2)
-		if (std::abs(*i1 - *i2) > epsilon)
+		if (std::abs(*i1 - *i2) > epsilon) // FIXME: use math::diff!
 			return false;
 
 	return true;

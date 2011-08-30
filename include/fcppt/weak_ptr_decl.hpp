@@ -9,7 +9,9 @@
 
 #include <fcppt/weak_ptr_fwd.hpp>
 #include <fcppt/shared_ptr_fwd.hpp>
+#include <fcppt/config/external_begin.hpp>
 #include <boost/weak_ptr.hpp>
+#include <fcppt/config/external_end.hpp>
 
 namespace fcppt
 {

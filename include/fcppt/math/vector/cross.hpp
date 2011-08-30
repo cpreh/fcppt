@@ -10,7 +10,9 @@
 #include <fcppt/math/vector/basic_impl.hpp>
 #include <fcppt/math/vector/normal_storage.hpp>
 #include <fcppt/math/detail/has_size.hpp>
+#include <fcppt/config/external_begin.hpp>
 #include <boost/utility/enable_if.hpp>
+#include <fcppt/config/external_end.hpp>
 
 namespace fcppt
 {

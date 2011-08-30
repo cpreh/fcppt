@@ -8,7 +8,9 @@
 #define FCPPT_BACKTRACE_STACK_FRAME_HPP_INCLUDED
 
 #include <fcppt/string.hpp>
+#include <fcppt/config/external_begin.hpp>
 #include <vector>
+#include <fcppt/config/external_end.hpp>
 
 namespace fcppt
 {

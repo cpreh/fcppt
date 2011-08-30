@@ -7,7 +7,9 @@
 #include <fcppt/time/std_time.hpp>
 #include <fcppt/time/exception.hpp>
 #include <fcppt/text.hpp>
+#include <fcppt/config/external_begin.hpp>
 #include <ctime>
+#include <fcppt/config/external_end.hpp>
 
 std::time_t
 fcppt::time::std_time()

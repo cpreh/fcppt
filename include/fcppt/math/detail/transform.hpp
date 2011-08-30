@@ -7,7 +7,9 @@
 #ifndef FCPPT_MATH_DETAIL_TRANSFORM_HPP_INCLUDED
 #define FCPPT_MATH_DETAIL_TRANSFORM_HPP_INCLUDED
 
+#include <fcppt/config/external_begin.hpp>
 #include <boost/iterator/transform_iterator.hpp>
+#include <fcppt/config/external_end.hpp>
 
 namespace fcppt
 {

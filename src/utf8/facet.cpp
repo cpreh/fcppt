@@ -13,10 +13,14 @@
 #include <fcppt/utf8/facet.hpp>
 //#include <boost/detail/utf8_codecvt_facet.hpp>
 
+#include <fcppt/config/external_begin.hpp>
+
 #include <cstdlib> // for multi-byte converson routines
 
 #include <boost/limits.hpp>
 #include <boost/config.hpp>
+
+#include <fcppt/config/external_end.hpp>
 
 // If we don't have wstring, then Unicode support
 // is not available anyway, so we don't need to even
@@ -76,7 +80,9 @@ std::codecvt_base::result utf8_codecvt_facet::do_in(
         // The unsigned char conversion is necessary in case char is
         // signed   (I learned this the hard way)
         wchar_t ucs_result =
-            static_cast<unsigned char>(*from++) - octet1_modifier_table[cont_octet_count];
+			static_cast<wchar_t>(
+				static_cast<unsigned char>(*from++) - octet1_modifier_table[cont_octet_count]
+			);
 
         // Invariants   :
         //   1) At the start of the loop,   'i' continuing characters have been

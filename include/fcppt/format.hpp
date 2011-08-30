@@ -8,7 +8,9 @@
 #define FCPPT_FORMAT_HPP_INCLUDED
 
 #include <fcppt/char_type.hpp>
+#include <fcppt/config/external_begin.hpp>
 #include <boost/format.hpp>
+#include <fcppt/config/external_end.hpp>
 
 namespace fcppt
 {

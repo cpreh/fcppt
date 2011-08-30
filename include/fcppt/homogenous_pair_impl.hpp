@@ -8,7 +8,9 @@
 #define FCPPT_HOMOGENOUS_PAIR_IMPL_HPP_INCLUDED
 
 #include <fcppt/homogenous_pair_decl.hpp>
+#include <fcppt/config/external_begin.hpp>
 #include <algorithm>
+#include <fcppt/config/external_end.hpp>
 
 template
 <

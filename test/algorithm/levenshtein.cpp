@@ -6,11 +6,13 @@
 
 #include <fcppt/algorithm/levenshtein.hpp>
 #include <fcppt/algorithm/shortest_levenshtein.hpp>
+#include <fcppt/config/external_begin.hpp>
 #include <boost/test/unit_test.hpp>
 #include <iostream>
 #include <ostream>
 #include <string>
 #include <vector>
+#include <fcppt/config/external_end.hpp>
 
 namespace
 {

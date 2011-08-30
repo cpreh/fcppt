@@ -8,8 +8,10 @@
 #define FCPPT_ALGORITHM_REMOVE_HPP_INCLUDED
 
 #include <fcppt/algorithm/remove_if.hpp>
+#include <fcppt/config/external_begin.hpp>
 #include <boost/spirit/home/phoenix/core/argument.hpp>
 #include <boost/spirit/home/phoenix/operator/comparison.hpp>
+#include <fcppt/config/external_end.hpp>
 
 namespace fcppt
 {

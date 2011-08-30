@@ -11,7 +11,9 @@
 #include <fcppt/signal/shared_connection.hpp>
 #include <fcppt/symbol.hpp>
 #include <fcppt/noncopyable.hpp>
+#include <fcppt/config/external_begin.hpp>
 #include <boost/ptr_container/ptr_vector.hpp>
+#include <fcppt/config/external_end.hpp>
 
 namespace fcppt
 {

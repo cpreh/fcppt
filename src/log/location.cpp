@@ -6,9 +6,11 @@
 
 #include <fcppt/log/location.hpp>
 #include <fcppt/text.hpp>
+#include <fcppt/config/external_begin.hpp>
 #include <boost/spirit/home/phoenix/core/argument.hpp>
 #include <boost/spirit/home/phoenix/operator/arithmetic.hpp>
 #include <numeric>
+#include <fcppt/config/external_end.hpp>
 
 fcppt::log::location::location()
 :

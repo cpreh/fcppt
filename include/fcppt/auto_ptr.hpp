@@ -7,7 +7,9 @@
 #ifndef FCPPT_AUTO_PTR_HPP_INCLUDED
 #define FCPPT_AUTO_PTR_HPP_INCLUDED
 
+#include <fcppt/config/external_begin.hpp>
 #include <memory>
+#include <fcppt/config/external_begin.hpp>
 
 namespace fcppt
 {

@@ -8,8 +8,10 @@
 #define FCPPT_CONTAINER_BITFIELD_DETAIL_ELEMENT_BITS_HPP_INCLUDED
 
 #include <fcppt/container/bitfield/size_type.hpp>
+#include <fcppt/config/external_begin.hpp>
 #include <boost/mpl/integral_c.hpp>
 #include <limits>
+#include <fcppt/config/external_end.hpp>
 
 namespace fcppt
 {

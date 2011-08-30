@@ -14,7 +14,9 @@
 #include <fcppt/ratio/detail/static_gcd.hpp>
 #include <fcppt/ratio/object_fwd.hpp>
 #include <fcppt/ratio/int_type.hpp>
+#include <fcppt/config/external_begin.hpp>
 #include <boost/static_assert.hpp>
+#include <fcppt/config/external_end.hpp>
 
 namespace fcppt
 {

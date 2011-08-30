@@ -11,7 +11,9 @@
 #include "performance_counter_time.hpp"
 #elif defined(FCPPT_HAVE_CLOCK_GETTIME)
 #include "clock_gettime_impl.hpp"
+#include <fcppt/config/external_begin.hpp>
 #include <time.h>
+#include <fcppt/config/external_end.hpp>
 #elif defined(FCPPT_HAVE_MACH_TIME)
 #include "mach_time_impl.hpp"
 #else

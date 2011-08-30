@@ -10,7 +10,9 @@
 #include <fcppt/type_info_fwd.hpp>
 #include <fcppt/symbol.hpp>
 #include <fcppt/string.hpp>
+#include <fcppt/config/external_begin.hpp>
 #include <typeinfo>
+#include <fcppt/config/external_end.hpp>
 
 //[type_info
 namespace fcppt

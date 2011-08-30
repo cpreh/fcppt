@@ -9,7 +9,9 @@
 
 #include <fcppt/io/istream.hpp>
 #include <fcppt/symbol.hpp>
+#include <fcppt/config/external_begin.hpp>
 #include <ctime>
+#include <fcppt/config/external_end.hpp>
 
 namespace fcppt
 {

@@ -9,10 +9,12 @@
 
 #include <fcppt/math/detail/initial_size.hpp>
 #include <fcppt/math/detail/dim_matches.hpp>
+#include <fcppt/config/external_begin.hpp>
 #include <boost/static_assert.hpp>
 #include <boost/preprocessor/arithmetic/inc.hpp>
 #include <boost/preprocessor/repetition/enum_params.hpp>
 #include <boost/preprocessor/repetition/repeat.hpp>
+#include <fcppt/config/external_end.hpp>
 
 #define FCPPT_MATH_DETAIL_MAKE_VARIADIC_CONSTRUCTOR_ASSIGN(z, n, text)\
 *(data() + n) = text##n;

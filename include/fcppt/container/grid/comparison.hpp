@@ -10,7 +10,9 @@
 #include <fcppt/container/grid/object_impl.hpp>
 #include <fcppt/math/dim/before.hpp>
 #include <fcppt/math/dim/comparison.hpp>
+#include <fcppt/config/external_begin.hpp>
 #include <algorithm>
+#include <fcppt/config/external_end.hpp>
 
 namespace fcppt
 {

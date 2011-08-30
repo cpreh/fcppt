@@ -9,6 +9,7 @@
 #include <fcppt/chrono/duration_impl.hpp>
 #include <fcppt/truncation_check_cast.hpp>
 #include <fcppt/platform.hpp>
+#include <fcppt/config/external_begin.hpp>
 #if defined(FCPPT_WINDOWS_PLATFORM)
 #define WIN32_LEAN_AND_MEAN
 #include <windows.h>
@@ -18,6 +19,7 @@
 #else
 #error "Don't know what to include for sleep!"
 #endif
+#include <fcppt/config/external_end.hpp>
 
 void
 fcppt::time::sleep(

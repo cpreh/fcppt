@@ -8,7 +8,9 @@
 #define FCPPT_ASSERT_TERMINATE_MESSAGE_HPP_INCLUDED
 
 #include <fcppt/assert/conditional.hpp>
+#include <fcppt/config/external_begin.hpp>
 #include <exception>
+#include <fcppt/config/external_end.hpp>
 
 #define FCPPT_ASSERT_TERMINATE_MESSAGE(\
 	condition,\

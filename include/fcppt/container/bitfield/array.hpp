@@ -10,7 +10,9 @@
 #include <fcppt/container/bitfield/detail/element_bits.hpp>
 #include <fcppt/container/array_fwd.hpp>
 #include <fcppt/mpl/ceil_div.hpp>
+#include <fcppt/config/external_begin.hpp>
 #include <cstddef>
+#include <fcppt/config/external_end.hpp>
 
 namespace fcppt
 {

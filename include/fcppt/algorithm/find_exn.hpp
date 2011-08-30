@@ -8,7 +8,9 @@
 #define FCPPT_ALGORITHM_FIND_EXN_HPP_INCLUDED
 
 #include <fcppt/algorithm/element_not_found.hpp>
+#include <fcppt/config/external_begin.hpp>
 #include <algorithm>
+#include <fcppt/config/external_end.hpp>
 
 namespace fcppt
 {

@@ -9,6 +9,8 @@
 
 #include <fcppt/tr1/detail/make_header.hpp>
 
+#include <fcppt/config/external_begin.hpp>
 #include FCPPT_TR1_DETAIL_MAKE_HEADER(type_traits)
+#include <fcppt/config/external_end.hpp>
 
 #endif

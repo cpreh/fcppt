@@ -15,8 +15,10 @@
 #include <fcppt/math/difference_type.hpp>
 #include <fcppt/math/size_type.hpp>
 #include <fcppt/type_traits/is_iterator.hpp>
+#include <fcppt/config/external_begin.hpp>
 #include <boost/utility/enable_if.hpp>
 #include <iterator>
+#include <fcppt/config/external_end.hpp>
 
 namespace fcppt
 {

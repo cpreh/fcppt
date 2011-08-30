@@ -5,7 +5,9 @@
 
 
 #include <fcppt/time/localtime.hpp>
+#include <fcppt/config/external_begin.hpp>
 #include <ctime>
+#include <fcppt/config/external_end.hpp>
 
 std::tm const
 fcppt::time::localtime(

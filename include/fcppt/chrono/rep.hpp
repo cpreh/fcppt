@@ -7,7 +7,9 @@
 #ifndef FCPPT_CHRONO_REP_HPP_INCLUDED
 #define FCPPT_CHRONO_REP_HPP_INCLUDED
 
+#include <fcppt/config/external_begin.hpp>
 #include <boost/cstdint.hpp>
+#include <fcppt/config/external_end.hpp>
 
 namespace fcppt
 {

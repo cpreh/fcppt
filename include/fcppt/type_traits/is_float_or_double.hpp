@@ -7,8 +7,10 @@
 #ifndef FCPPT_TYPE_TRAITS_IS_FLOAT_OR_DOUBLE_HPP_INCLUDED
 #define FCPPT_TYPE_TRAITS_IS_FLOAT_OR_DOUBLE_HPP_INCLUDED
 
+#include <fcppt/config/external_begin.hpp>
 #include <boost/mpl/or.hpp>
 #include <boost/type_traits/is_same.hpp>
+#include <fcppt/config/external_end.hpp>
 
 namespace fcppt
 {

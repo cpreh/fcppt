@@ -8,7 +8,9 @@
 #define FCPPT_CONTAINER_DETAIL_ARRAY_STORAGE_HPP_INCLUDED
 
 #include <fcppt/container/detail/null_array_storage.hpp>
+#include <fcppt/config/external_begin.hpp>
 #include <cstddef>
+#include <fcppt/config/external_end.hpp>
 
 namespace fcppt
 {

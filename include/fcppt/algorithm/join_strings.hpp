@@ -7,7 +7,9 @@
 #ifndef FCPPT_ALGORITHM_JOIN_STRINGS_HPP_INCLUDED
 #define FCPPT_ALGORITHM_JOIN_STRINGS_HPP_INCLUDED
 
+#include <fcppt/config/external_begin.hpp>
 #include <boost/next_prior.hpp>
+#include <fcppt/config/external_end.hpp>
 
 namespace fcppt
 {

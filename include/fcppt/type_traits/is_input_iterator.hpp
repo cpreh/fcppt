@@ -7,8 +7,10 @@
 #ifndef FCPPT_TYPE_TRAITS_IS_INPUT_ITERATOR_HPP_INCLUDED
 #define FCPPT_TYPE_TRAITS_IS_INPUT_ITERATOR_HPP_INCLUDED
 
+#include <fcppt/config/external_begin.hpp>
 #include <boost/type_traits/is_same.hpp>
 #include <iterator>
+#include <fcppt/config/external_end.hpp>
 
 namespace fcppt
 {

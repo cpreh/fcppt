@@ -10,7 +10,9 @@
 #include <fcppt/log/detail/inner_context_node.hpp>
 #include <fcppt/log/detail/outer_context_node.hpp>
 #include <fcppt/variant/object_fwd.hpp>
+#include <fcppt/config/external_begin.hpp>
 #include <boost/mpl/vector/vector10.hpp>
+#include <fcppt/config/external_end.hpp>
 
 namespace fcppt
 {

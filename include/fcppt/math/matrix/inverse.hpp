@@ -15,7 +15,9 @@
 #include <fcppt/math/almost_zero.hpp>
 #include <fcppt/math/exception.hpp>
 #include <fcppt/text.hpp>
+#include <fcppt/config/external_begin.hpp>
 #include <boost/utility/enable_if.hpp>
+#include <fcppt/config/external_end.hpp>
 
 namespace fcppt
 {

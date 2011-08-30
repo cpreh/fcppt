@@ -8,7 +8,9 @@
 #define FCPPT_DEFAULT_LOCALE_HPP_INCLUDED
 
 #include <fcppt/symbol.hpp>
+#include <fcppt/config/external_begin.hpp>
 #include <locale>
+#include <fcppt/config/external_end.hpp>
 
 namespace fcppt
 {

@@ -5,7 +5,9 @@
 
 
 #include <fcppt/filesystem/exists.hpp>
+#include <fcppt/config/external_begin.hpp>
 #include <boost/filesystem/operations.hpp>
+#include <fcppt/config/external_end.hpp>
 
 bool
 fcppt::filesystem::exists(

@@ -8,9 +8,11 @@
 #define FCPPT_CONTAINER_DETAIL_ARRAY_SWAP_HPP_INCLUDED
 
 #include <fcppt/container/array_decl.hpp>
+#include <fcppt/config/external_begin.hpp>
 #include <boost/utility/enable_if.hpp>
 #include <algorithm>
 #include <cstddef>
+#include <fcppt/config/external_end.hpp>
 
 namespace fcppt
 {

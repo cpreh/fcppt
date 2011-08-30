@@ -5,7 +5,9 @@
 
 
 #include <fcppt/thread/hardware_concurrency.hpp>
+#include <fcppt/config/external_begin.hpp>
 #include <boost/thread/thread.hpp>
+#include <fcppt/config/external_end.hpp>
 
 fcppt::thread::hardware_concurrency_type
 fcppt::thread::hardware_concurrency()

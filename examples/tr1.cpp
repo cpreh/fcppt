@@ -9,9 +9,11 @@
 #include <fcppt/container/array.hpp>
 #include <fcppt/function/object.hpp>
 #include <fcppt/ref.hpp>
+#include <fcppt/config/external_begin.hpp>
 #include <ostream>
 #include <iostream>
 #include <iosfwd>
+#include <fcppt/config/external_end.hpp>
 
 namespace
 {

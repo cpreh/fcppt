@@ -11,8 +11,10 @@
 #include <fcppt/container/bitfield/size_type.hpp>
 #include <fcppt/container/bitfield/value_type.hpp>
 #include <fcppt/container/bitfield/iterator_fwd.hpp>
+#include <fcppt/config/external_begin.hpp>
 #include <boost/iterator/iterator_facade.hpp>
 #include <iterator>
+#include <fcppt/config/external_end.hpp>
 
 namespace fcppt
 {

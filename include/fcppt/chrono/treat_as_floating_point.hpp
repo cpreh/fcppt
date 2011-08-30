@@ -7,7 +7,9 @@
 #ifndef FCPPT_CHRONO_TREAT_AS_FLOATING_POINT_HPP_INCLUDED
 #define FCPPT_CHRONO_TREAT_AS_FLOATING_POINT_HPP_INCLUDED
 
+#include <fcppt/config/external_begin.hpp>
 #include <boost/type_traits/is_floating_point.hpp>
+#include <fcppt/config/external_end.hpp>
 
 namespace fcppt
 {

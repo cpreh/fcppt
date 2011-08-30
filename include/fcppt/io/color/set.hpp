@@ -11,7 +11,9 @@
 #include <fcppt/io/color/background.hpp>
 #include <fcppt/io/color/attribute.hpp>
 #include <fcppt/symbol.hpp>
+#include <fcppt/config/external_begin.hpp>
 #include <ostream>
+#include <fcppt/config/external_end.hpp>
 
 namespace fcppt
 {

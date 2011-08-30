@@ -10,7 +10,9 @@
 #include <fcppt/math/matrix/dim_type.hpp>
 #include <fcppt/math/detail/dynamic_size.hpp>
 #include <fcppt/math/dim/basic_decl.hpp>
+#include <fcppt/config/external_begin.hpp>
 #include <algorithm>
+#include <fcppt/config/external_end.hpp>
 
 namespace fcppt
 {

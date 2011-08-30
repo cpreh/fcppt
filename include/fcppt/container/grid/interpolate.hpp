@@ -15,10 +15,12 @@
 #include <fcppt/math/dim/basic_impl.hpp>
 #include <fcppt/container/array.hpp>
 #include <fcppt/math/generate_binary_vectors.hpp>
+#include <fcppt/config/external_begin.hpp>
 #include <boost/type_traits/is_floating_point.hpp>
 #include <boost/utility/enable_if.hpp>
 #include <boost/mpl/identity.hpp>
 #include <cstddef>
+#include <fcppt/config/external_end.hpp>
 
 namespace fcppt
 {

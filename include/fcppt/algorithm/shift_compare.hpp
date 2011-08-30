@@ -8,10 +8,11 @@
 #define FCPPT_ALGORITHM_SHIFT_COMPARE_HPP_INCLUDED
 
 #include <fcppt/tr1/functional.hpp>
-#include <boost/range/distance.hpp> // workaround for Boost-1.43
+#include <fcppt/config/external_begin.hpp>
 #include <boost/range/numeric.hpp>
 #include <algorithm>
 #include <functional>
+#include <fcppt/config/external_end.hpp>
 
 namespace fcppt
 {

@@ -8,8 +8,10 @@
 #define FCPPT_CYCLIC_ITERATOR_IMPL_HPP_INCLUDED
 
 #include <fcppt/cyclic_iterator_decl.hpp>
+#include <fcppt/config/external_begin.hpp>
 #include <boost/next_prior.hpp>
 #include <iterator>
+#include <fcppt/config/external_end.hpp>
 
 template<
 	typename ContainerIterator

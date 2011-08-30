@@ -13,7 +13,9 @@
 #include <fcppt/signal/detail/define_void_operator.hpp>
 #include <fcppt/signal/detail/enable_if_void.hpp>
 #include <fcppt/signal/detail/operator_limit.hpp>
+#include <fcppt/config/external_begin.hpp>
 #include <boost/preprocessor/repetition/repeat.hpp>
+#include <fcppt/config/external_end.hpp>
 
 template<
 	typename T,

@@ -5,6 +5,7 @@
 
 
 #include <fcppt/filesystem/stem.hpp>
+#include <fcppt/filesystem/path_to_string.hpp>
 #include <fcppt/string.hpp>
 
 fcppt::string const
@@ -13,7 +14,7 @@ fcppt::filesystem::stem(
 )
 {
 	return
-		_path.stem().string<
-			fcppt::string
-		>();
+		fcppt::filesystem::path_to_string(
+			_path.stem()
+		);
 }

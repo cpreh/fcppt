@@ -21,7 +21,9 @@
 #include <fcppt/exception.hpp>
 #include <fcppt/from_std_string.hpp>
 #include <fcppt/text.hpp>
+#include <fcppt/config/external_begin.hpp>
 #include <cstdlib>
+#include <fcppt/config/external_end.hpp>
 
 namespace engine
 {

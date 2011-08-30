@@ -7,7 +7,9 @@
 #ifndef FCPPT_THREAD_NATIVE_HANDLE_HPP_INCLUDED
 #define FCPPT_THREAD_NATIVE_HANDLE_HPP_INCLUDED
 
+#include <fcppt/config/external_begin.hpp>
 #include <boost/thread/thread.hpp>
+#include <fcppt/config/external_end.hpp>
 
 namespace fcppt
 {

@@ -10,9 +10,11 @@
 #define FCPPT_MOVE_HPP_INCLUDED
 
 #include <fcppt/detail_unique_ptr/rv.hpp>
+#include <fcppt/config/external_begin.hpp>
 #include <boost/mpl/not.hpp>
 #include <boost/type_traits/is_convertible.hpp>
 #include <boost/utility/enable_if.hpp>
+#include <fcppt/config/external_end.hpp>
 
 namespace fcppt
 {

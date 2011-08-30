@@ -10,7 +10,9 @@
 #include <fcppt/variant/detail/output.hpp>
 #include <fcppt/variant/apply_unary.hpp>
 #include <fcppt/variant/object_fwd.hpp>
+#include <fcppt/config/external_begin.hpp>
 #include <iosfwd>
+#include <fcppt/config/external_end.hpp>
 
 namespace fcppt
 {

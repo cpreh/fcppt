@@ -5,7 +5,9 @@
 
 
 #include <fcppt/thread/yield.hpp>
+#include <fcppt/config/external_begin.hpp>
 #include <boost/thread/thread.hpp>
+#include <fcppt/config/external_end.hpp>
 
 void
 fcppt::thread::yield()

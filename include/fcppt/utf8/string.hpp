@@ -9,7 +9,9 @@
 
 #include <fcppt/utf8/char_type.hpp>
 #include <fcppt/utf8/traits.hpp>
+#include <fcppt/config/external_begin.hpp>
 #include <string>
+#include <fcppt/config/external_end.hpp>
 
 namespace fcppt
 {

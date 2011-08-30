@@ -8,7 +8,9 @@
 #define FCPPT_MATH_DETAIL_INITIAL_SIZE_HPP_INCLUDED
 
 #include <fcppt/math/detail/is_static_storage.hpp>
+#include <fcppt/config/external_begin.hpp>
 #include <boost/utility/enable_if.hpp>
+#include <fcppt/config/external_end.hpp>
 
 namespace fcppt
 {

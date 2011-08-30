@@ -10,7 +10,9 @@
 #define FCPPT_STRING_TO_UTF8_DIRECT
 #endif
 #include <fcppt/utf8/string.hpp>
+#include <fcppt/config/external_begin.hpp>
 #include <string>
+#include <fcppt/config/external_end.hpp>
 #if !defined(FCPPT_STRING_TO_UTF8_DIRECT)
 #include <fcppt/utf8/from_fcppt_string.hpp>
 #include <fcppt/from_std_string.hpp>

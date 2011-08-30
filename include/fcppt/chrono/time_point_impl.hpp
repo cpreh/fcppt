@@ -9,8 +9,10 @@
 
 #include <fcppt/chrono/time_point_decl.hpp>
 #include <fcppt/chrono/duration_impl.hpp>
+#include <fcppt/config/external_begin.hpp>
 #include <boost/type_traits/is_convertible.hpp>
 #include <boost/static_assert.hpp>
+#include <fcppt/config/external_end.hpp>
 
 template<
 	typename Clock,

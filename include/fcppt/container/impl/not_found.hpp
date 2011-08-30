@@ -9,11 +9,11 @@
 
 inline
 fcppt::container::not_found::not_found(
-	fcppt::string const &e
+	fcppt::string const &_error
 )
 :
 	container::exception(
-		e
+		_error
 	)
 {}
 

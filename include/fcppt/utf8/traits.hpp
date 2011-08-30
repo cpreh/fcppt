@@ -7,7 +7,9 @@
 #ifndef FCPPT_UTF8_TRAITS_HPP_INCLUDED
 #define FCPPT_UTF8_TRAITS_HPP_INCLUDED
 
+#include <fcppt/config/external_begin.hpp>
 #include <string>
+#include <fcppt/config/external_end.hpp>
 
 namespace fcppt
 {

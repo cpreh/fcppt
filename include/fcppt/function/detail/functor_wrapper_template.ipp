@@ -13,9 +13,11 @@
 #define FCPPT_FUNCTION_DETAIL_FUNCTOR_WRAPPER_TEMPLATE_HPP_INCLUDED
 
 #include <fcppt/nonassignable.hpp>
+#include <fcppt/config/external_begin.hpp>
 #include <boost/preprocessor/punctuation/comma_if.hpp>
 #include <boost/preprocessor/repetition/enum_params.hpp>
 #include <boost/preprocessor/repetition/enum_binary_params.hpp>
+#include <fcppt/config/external_end.hpp>
 
 #endif
 

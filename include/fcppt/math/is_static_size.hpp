@@ -8,7 +8,9 @@
 #define FCPPT_MATH_IS_STATIC_SIZE_HPP_INCLUDED
 
 #include <fcppt/math/is_dynamic_size.hpp>
+#include <fcppt/config/external_begin.hpp>
 #include <boost/mpl/not.hpp>
+#include <fcppt/config/external_end.hpp>
 
 namespace fcppt
 {

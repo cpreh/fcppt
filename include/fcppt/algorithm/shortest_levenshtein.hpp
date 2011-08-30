@@ -8,7 +8,9 @@
 #define FCPPT_ALGORITHM_SHORTEST_LEVENSHTEIN_HPP_INCLUDED
 
 #include <fcppt/algorithm/levenshtein.hpp>
+#include <fcppt/config/external_begin.hpp>
 #include <boost/next_prior.hpp>
+#include <fcppt/config/external_end.hpp>
 
 namespace fcppt
 {

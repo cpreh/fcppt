@@ -10,8 +10,10 @@
 #include <fcppt/container/array_decl.hpp>
 #include <fcppt/container/detail/array_swap.hpp>
 #include <fcppt/container/detail/array_range_check.hpp>
+#include <fcppt/config/external_begin.hpp>
 #include <boost/next_prior.hpp>
 #include <algorithm>
+#include <fcppt/config/external_end.hpp>
 
 template<
 	typename T,

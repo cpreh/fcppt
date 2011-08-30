@@ -8,8 +8,10 @@
 #define FCPPT_MATH_DETAIL_GENERATE_BINARY_VECTORS_HPP_INCLUDED
 
 #include <fcppt/math/size_type.hpp>
+#include <fcppt/config/external_begin.hpp>
 #include <boost/utility/enable_if.hpp>
 #include <cstddef>
+#include <fcppt/config/external_end.hpp>
 
 namespace fcppt
 {

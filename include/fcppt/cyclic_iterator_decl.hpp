@@ -9,7 +9,9 @@
 
 #include <fcppt/cyclic_iterator_fwd.hpp>
 #include <fcppt/detail/cyclic_iterator_base.hpp>
+#include <fcppt/config/external_begin.hpp>
 #include <boost/iterator/iterator_facade.hpp>
+#include <fcppt/config/external_end.hpp>
 
 namespace fcppt
 {

@@ -9,11 +9,11 @@
 
 inline
 fcppt::variant::exception::exception(
-	fcppt::string const &e
+	fcppt::string const &_string
 )
 :
 	fcppt::exception(
-		e
+		_string
 	)
 {}
 

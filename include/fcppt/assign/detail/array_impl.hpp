@@ -8,7 +8,9 @@
 #define FCPPT_ASSIGN_DETAIL_ARRAY_IMPL_HPP_INCLUDED
 
 #include <fcppt/assign/detail/array.hpp>
+#include <fcppt/config/external_begin.hpp>
 #include <algorithm>
+#include <fcppt/config/external_end.hpp>
 
 template<
 	class T,

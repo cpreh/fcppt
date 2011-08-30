@@ -8,7 +8,9 @@
 #define FCPPT_CHRONO_DURATION_OUTPUT_HPP_INCLUDED
 
 #include <fcppt/chrono/duration_impl.hpp>
+#include <fcppt/config/external_begin.hpp>
 #include <ostream>
+#include <fcppt/config/external_end.hpp>
 
 namespace fcppt
 {

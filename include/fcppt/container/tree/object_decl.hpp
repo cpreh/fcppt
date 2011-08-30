@@ -12,10 +12,12 @@
 #include <fcppt/mpl/inner.hpp>
 #include <fcppt/scoped_ptr.hpp>
 #include <fcppt/unique_ptr.hpp>
+#include <fcppt/config/external_begin.hpp>
 #include <boost/mpl/eval_if.hpp>
 #include <boost/mpl/identity.hpp>
 #include <boost/mpl/if.hpp>
 #include <boost/ptr_container/ptr_list.hpp>
+#include <fcppt/config/external_end.hpp>
 
 //[tree
 namespace fcppt

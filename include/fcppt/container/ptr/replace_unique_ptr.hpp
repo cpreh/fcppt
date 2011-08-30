@@ -8,7 +8,9 @@
 #define FCPPT_CONTAINER_PTR_REPLACE_UNIQUE_PTR_HPP_INCLUDED
 
 #include <fcppt/type_traits/is_unique_ptr.hpp>
+#include <fcppt/config/external_begin.hpp>
 #include <boost/utility/enable_if.hpp>
+#include <fcppt/config/external_end.hpp>
 
 namespace fcppt
 {

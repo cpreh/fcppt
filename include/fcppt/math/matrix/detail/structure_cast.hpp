@@ -10,8 +10,10 @@
 #include <fcppt/math/matrix/is_static_size.hpp>
 #include <fcppt/math/detail/structure_cast_fun.hpp>
 #include <fcppt/math/detail/structure_cast.hpp>
+#include <fcppt/config/external_begin.hpp>
 #include <boost/iterator/transform_iterator.hpp>
 #include <boost/utility/enable_if.hpp>
+#include <fcppt/config/external_end.hpp>
 
 namespace fcppt
 {

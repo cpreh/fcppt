@@ -7,8 +7,10 @@
 #ifndef FCPPT_TYPE_TRAITS_IS_STRING_HPP_INCLUDED
 #define FCPPT_TYPE_TRAITS_IS_STRING_HPP_INCLUDED
 
+#include <fcppt/config/external_begin.hpp>
 #include <boost/type_traits/integral_constant.hpp>
 #include <string>
+#include <fcppt/config/external_end.hpp>
 
 namespace fcppt
 {

@@ -6,8 +6,10 @@
 
 //[alignment_new
 #include <fcppt/alignment/array.hpp>
+#include <fcppt/config/external_begin.hpp>
 #include <boost/type_traits/alignment_of.hpp>
 #include <new>
+#include <fcppt/config/external_end.hpp>
 
 namespace
 {

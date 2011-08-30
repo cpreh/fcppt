@@ -7,6 +7,7 @@
 #ifndef FCPPT_MPL_FIND_NTH_HPP_INCLUDED
 #define FCPPT_MPL_FIND_NTH_HPP_INCLUDED
 
+#include <fcppt/config/external_begin.hpp>
 #include <boost/mpl/advance.hpp>
 #include <boost/mpl/begin.hpp>
 #include <boost/mpl/iter_fold.hpp>
@@ -16,6 +17,7 @@
 #include <boost/mpl/placeholders.hpp>
 #include <boost/mpl/vector/vector10.hpp>
 #include <boost/type_traits/is_same.hpp>
+#include <fcppt/config/external_end.hpp>
 
 namespace fcppt
 {

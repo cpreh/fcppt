@@ -7,7 +7,9 @@
 #ifndef FCPPT_CONTAINER_ARRAY_FWD_HPP_INCLUDED
 #define FCPPT_CONTAINER_ARRAY_FWD_HPP_INCLUDED
 
+#include <fcppt/config/external_begin.hpp>
 #include <cstddef>
+#include <fcppt/config/external_end.hpp>
 
 namespace fcppt
 {

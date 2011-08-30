@@ -11,7 +11,9 @@
 
 #include <fcppt/ratio/less_fwd.hpp>
 #include <fcppt/ratio/detail/less.hpp>
+#include <fcppt/config/external_begin.hpp>
 #include <boost/mpl/bool.hpp>
+#include <fcppt/config/external_end.hpp>
 
 namespace fcppt
 {

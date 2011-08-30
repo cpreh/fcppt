@@ -12,7 +12,9 @@
 #include <fcppt/ratio/detail/static_sign.hpp>
 #include <fcppt/ratio/detail/min_c.hpp>
 #include <fcppt/ratio/int_type.hpp>
+#include <fcppt/config/external_begin.hpp>
 #include <boost/static_assert.hpp>
+#include <fcppt/config/external_end.hpp>
 
 namespace fcppt
 {

@@ -12,10 +12,12 @@
 #include <fcppt/container/grid/size_type.hpp>
 #include <fcppt/container/raw_vector_decl.hpp>
 #include <fcppt/math/dim/basic_decl.hpp>
+#include <fcppt/config/external_begin.hpp>
 #include <boost/mpl/if.hpp>
 #include <boost/type_traits/is_pod.hpp>
 #include <boost/static_assert.hpp>
 #include <vector>
+#include <fcppt/config/external_end.hpp>
 
 namespace fcppt
 {

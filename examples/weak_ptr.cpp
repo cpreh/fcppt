@@ -9,7 +9,6 @@
 #include <fcppt/weak_ptr.hpp>
 #include <fcppt/io/cout.hpp>
 #include <fcppt/text.hpp>
-#include <ostream>
 
 int main()
 {

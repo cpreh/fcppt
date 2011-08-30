@@ -8,8 +8,10 @@
 #define FCPPT_HOMOGENOUS_PAIR_OUTPUT_HPP_INCLUDED
 
 #include <fcppt/homogenous_pair_impl.hpp>
-#include <ostream>
+#include <fcppt/config/external_begin.hpp>
 #include <iosfwd>
+#include <ostream>
+#include <fcppt/config/external_end.hpp>
 
 namespace fcppt
 {

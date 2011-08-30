@@ -8,7 +8,9 @@
 #define FCPPT_PREPROCESSOR_ENUM_PARAMS_FORWARD_Z_HPP_INCLUDED
 
 #include <fcppt/preprocessor/detail/enum_params_forward_m.hpp>
+#include <fcppt/config/external_begin.hpp>
 #include <boost/preprocessor/repetition/repeat.hpp>
+#include <fcppt/config/external_end.hpp>
 
 #define FCPPT_PP_ENUM_PARAMS_FORWARD_Z(\
 	z,\

@@ -10,7 +10,9 @@
 #include <fcppt/container/tree/is_ptr_value.hpp>
 #include <fcppt/container/tree/object_impl.hpp>
 #include <fcppt/unique_ptr.hpp>
+#include <fcppt/config/external_begin.hpp>
 #include <boost/utility/enable_if.hpp>
+#include <fcppt/config/external_end.hpp>
 
 namespace fcppt
 {

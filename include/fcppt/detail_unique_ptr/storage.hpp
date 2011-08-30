@@ -12,9 +12,11 @@
 #include <fcppt/detail_unique_ptr/rv.hpp>
 #include <fcppt/forward.hpp>
 #include <fcppt/move.hpp>
+#include <fcppt/config/external_begin.hpp>
 #include <boost/type_traits/add_reference.hpp>
 #include <boost/type_traits/is_empty.hpp>
 #include <algorithm>
+#include <fcppt/config/external_end.hpp>
 
 namespace fcppt
 {

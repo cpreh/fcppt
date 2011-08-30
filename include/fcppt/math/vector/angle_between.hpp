@@ -11,9 +11,11 @@
 #include <fcppt/math/vector/basic_impl.hpp>
 #include <fcppt/math/vector/dot.hpp>
 #include <fcppt/math/vector/length.hpp>
+#include <fcppt/config/external_begin.hpp>
 #include <boost/utility/enable_if.hpp>
 #include <boost/type_traits/is_floating_point.hpp>
 #include <cmath>
+#include <fcppt/config/external_end.hpp>
 
 namespace fcppt
 {

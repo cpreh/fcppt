@@ -11,7 +11,9 @@
 
 #include <fcppt/ratio/object.hpp>
 #include <fcppt/ratio/int_type.hpp>
+#include <fcppt/config/external_begin.hpp>
 #include <boost/type_traits/integral_constant.hpp>
+#include <fcppt/config/external_end.hpp>
 
 namespace fcppt
 {

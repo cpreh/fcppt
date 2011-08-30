@@ -9,9 +9,11 @@
 
 #include <fcppt/endianness/from_host.hpp>
 #include <fcppt/endianness/format.hpp>
+#include <fcppt/config/external_begin.hpp>
 #include <boost/utility/enable_if.hpp>
 #include <boost/type_traits/is_fundamental.hpp>
 #include <ostream>
+#include <fcppt/config/external_end.hpp>
 
 namespace fcppt
 {
@@ -28,22 +30,24 @@ typename boost::enable_if<
 	void
 >::type
 write(
-	std::ostream &s,
-	T const &t,
-	endianness::format::type const fmt
+	std::ostream &_stream,
+	T const &_value,
+	endianness::format::type const _format
 )
 {
 	T const tmp(
 		endianness::from_host(
-			t,
-			fmt
+			_value,
+			_format
 		)
 	);
 
-	s.write(
+	_stream.write(
 		reinterpret_cast<
 			char const *
-		>(&tmp),
+		>(
+			&tmp
+		),
 		sizeof(T)
 	);
 }

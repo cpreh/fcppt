@@ -5,7 +5,9 @@
 
 
 #include <fcppt/endianness/reverse_mem.hpp>
+#include <fcppt/config/external_begin.hpp>
 #include <algorithm>
+#include <fcppt/config/external_end.hpp>
 
 void
 fcppt::endianness::reverse_mem(

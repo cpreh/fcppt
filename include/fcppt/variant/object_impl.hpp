@@ -19,8 +19,10 @@
 #include <fcppt/variant/detail/real_type.hpp>
 #include <fcppt/variant/detail/unwrap_recursive.hpp>
 #include <fcppt/variant/detail/apply_unary_internal.hpp>
+#include <fcppt/config/external_begin.hpp>
 #include <boost/static_assert.hpp>
 #include <new>
+#include <fcppt/config/external_end.hpp>
 
 template<
 	typename Types

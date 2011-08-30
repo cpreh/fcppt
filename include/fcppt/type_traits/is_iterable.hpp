@@ -9,8 +9,10 @@
 
 #include <fcppt/type_traits/has_iterator.hpp>
 #include <fcppt/type_traits/has_const_iterator.hpp>
+#include <fcppt/config/external_begin.hpp>
 #include <boost/type_traits/is_const.hpp>
 #include <boost/mpl/if.hpp>
+#include <fcppt/config/external_end.hpp>
 
 namespace fcppt
 {

@@ -8,7 +8,9 @@
 #include "inner_node_name.hpp"
 #include <fcppt/container/tree/object_impl.hpp>
 #include <fcppt/variant/object_impl.hpp>
+#include <fcppt/config/external_begin.hpp>
 #include <algorithm>
+#include <fcppt/config/external_end.hpp>
 
 fcppt::log::detail::context_tree::iterator
 fcppt::log::find_inner_node(

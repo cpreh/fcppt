@@ -7,7 +7,9 @@
 #ifndef FCPPT_MATH_DETAIL_BEFORE_HPP_INCLUDED
 #define FCPPT_MATH_DETAIL_BEFORE_HPP_INCLUDED
 
+#include <fcppt/config/external_begin.hpp>
 #include <algorithm>
+#include <fcppt/config/external_end.hpp>
 
 namespace fcppt
 {

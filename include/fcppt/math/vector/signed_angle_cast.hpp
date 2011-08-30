@@ -12,9 +12,11 @@
 #include <fcppt/math/vector/static.hpp>
 #include <fcppt/math/vector/structure_cast.hpp>
 #include <fcppt/math/detail/has_size.hpp>
+#include <fcppt/config/external_begin.hpp>
 #include <boost/utility/enable_if.hpp>
 #include <boost/type_traits/is_floating_point.hpp>
 #include <boost/mpl/and.hpp>
+#include <fcppt/config/external_end.hpp>
 
 namespace fcppt
 {

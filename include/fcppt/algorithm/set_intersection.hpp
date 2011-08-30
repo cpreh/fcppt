@@ -7,8 +7,10 @@
 #ifndef FCPPT_ALGORITHM_SET_INTERSECTION_HPP_INCLUDED
 #define FCPPT_ALGORITHM_SET_INTERSECTION_HPP_INCLUDED
 
+#include <fcppt/config/external_begin.hpp>
 #include <algorithm>
 #include <iterator>
+#include <fcppt/config/external_end.hpp>
 
 namespace fcppt
 {

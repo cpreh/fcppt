@@ -17,7 +17,9 @@ namespace fcppt {
 
 #define BOOST_UTF8_DECL FCPPT_CLASS_SYMBOL
 
+#include <fcppt/config/external_begin.hpp>
 #include <boost/detail/utf8_codecvt_facet.hpp>
+#include <fcppt/config/external_end.hpp>
 
 namespace fcppt
 {

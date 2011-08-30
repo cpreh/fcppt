@@ -31,7 +31,7 @@ fcppt::signal::connection_manager::add(
 {
 	connections_.push_back(
 		shared_connection(
-			move(
+			fcppt::move(
 				_con
 			)
 		)

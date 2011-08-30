@@ -9,9 +9,11 @@
 
 #include <fcppt/endianness/to_host.hpp>
 #include <fcppt/endianness/format.hpp>
+#include <fcppt/config/external_begin.hpp>
 #include <boost/utility/enable_if.hpp>
 #include <boost/type_traits/is_fundamental.hpp>
 #include <istream>
+#include <fcppt/config/external_end.hpp>
 
 namespace fcppt
 {

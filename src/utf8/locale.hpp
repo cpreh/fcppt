@@ -9,7 +9,9 @@
 
 #include <fcppt/config.hpp>
 #ifndef FCPPT_STRING_IS_UTF8
+#include <fcppt/config/external_begin.hpp>
 #include <locale>
+#include <fcppt/config/external_end.hpp>
 
 namespace fcppt
 {

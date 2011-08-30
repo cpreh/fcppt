@@ -12,9 +12,11 @@
 #include <fcppt/container/is_raw_vector.hpp>
 #include <fcppt/container/is_std_vector.hpp>
 #include <fcppt/container/raw_vector_impl.hpp>
+#include <fcppt/config/external_begin.hpp>
 #include <boost/utility/enable_if.hpp>
 #include <boost/type_traits/remove_const.hpp>
 #include <vector>
+#include <fcppt/config/external_end.hpp>
 
 namespace fcppt
 {

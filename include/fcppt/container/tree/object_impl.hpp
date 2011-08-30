@@ -20,7 +20,9 @@
 #include <fcppt/make_unique_ptr.hpp>
 #include <fcppt/forward.hpp>
 #include <fcppt/move.hpp>
+#include <fcppt/config/external_begin.hpp>
 #include <algorithm>
+#include <fcppt/config/external_end.hpp>
 
 template<
 	typename T

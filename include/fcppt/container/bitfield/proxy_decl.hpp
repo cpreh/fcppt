@@ -12,8 +12,10 @@
 #include <fcppt/container/bitfield/size_type.hpp>
 #include <fcppt/container/bitfield/value_type.hpp>
 #include <fcppt/nonassignable.hpp>
+#include <fcppt/config/external_begin.hpp>
 #include <boost/type_traits/remove_const.hpp>
 #include <boost/type_traits/remove_reference.hpp>
+#include <fcppt/config/external_end.hpp>
 
 namespace fcppt
 {

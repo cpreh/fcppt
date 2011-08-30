@@ -5,7 +5,9 @@
 
 
 #include <fcppt/filesystem/is_regular.hpp>
+#include <fcppt/config/external_begin.hpp>
 #include <boost/filesystem/operations.hpp>
+#include <fcppt/config/external_end.hpp>
 
 bool
 fcppt::filesystem::is_regular(

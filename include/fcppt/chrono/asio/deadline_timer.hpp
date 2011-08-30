@@ -11,7 +11,9 @@
 #include <fcppt/chrono/asio/time_traits.hpp>
 #include <fcppt/chrono/duration_impl.hpp>
 #include <fcppt/chrono/time_point_impl.hpp>
+#include <fcppt/config/external_begin.hpp>
 #include <boost/asio/basic_deadline_timer.hpp>
+#include <fcppt/config/external_end.hpp>
 
 namespace fcppt
 {

@@ -7,7 +7,9 @@
 #ifndef FCPPT_CONTAINER_RAW_VECTOR_FWD_HPP_INCLUDED
 #define FCPPT_CONTAINER_RAW_VECTOR_FWD_HPP_INCLUDED
 
+#include <fcppt/config/external_begin.hpp>
 #include <memory>
+#include <fcppt/config/external_end.hpp>
 
 namespace fcppt
 {

@@ -11,12 +11,12 @@
 
 inline
 fcppt::mpl::exception::exception(
-	fcppt::string const &s
+	fcppt::string const &_string
 )
 :
 	fcppt::exception(
 		FCPPT_TEXT("mpl: ")
-		+ s
+		+ _string
 	)
 {}
 

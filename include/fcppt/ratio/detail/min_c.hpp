@@ -10,7 +10,9 @@
 #define FCPPT_RATIO_DETAIL_MIN_C_HPP_INCLUDED
 
 #include <fcppt/ratio/int_type.hpp>
+#include <fcppt/config/external_begin.hpp>
 #include <climits>
+#include <fcppt/config/external_end.hpp>
 
 namespace fcppt
 {

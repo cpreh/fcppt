@@ -8,8 +8,10 @@
 #define FCPPT_DETAIL_CYCLIC_ITERATOR_BASE_HPP_INCLUDED
 
 #include <fcppt/cyclic_iterator_fwd.hpp>
+#include <fcppt/config/external_begin.hpp>
 #include <boost/iterator/iterator_facade.hpp>
 #include <iterator>
+#include <fcppt/config/external_end.hpp>
 
 namespace fcppt
 {

@@ -8,9 +8,11 @@
 #define FCPPT_MPL_DETAIL_FOR_EACH_HPP_INCLUDED
 
 #include <fcppt/workarounds.hpp>
+#include <fcppt/config/external_begin.hpp>
 #include <boost/mpl/deref.hpp>
 #include <boost/mpl/next.hpp>
 #include <boost/type_traits/is_same.hpp>
+#include <fcppt/config/external_end.hpp>
 
 namespace fcppt
 {

@@ -8,9 +8,11 @@
 #define FCPPT_MATH_DETAIL_NARROW_CAST_HPP_INCLUDED
 
 #include <fcppt/math/detail/structure_cast_fun.hpp>
+#include <fcppt/config/external_begin.hpp>
 #include <boost/iterator/transform_iterator.hpp>
 #include <boost/mpl/less.hpp>
 #include <boost/static_assert.hpp>
+#include <fcppt/config/external_end.hpp>
 
 namespace fcppt
 {

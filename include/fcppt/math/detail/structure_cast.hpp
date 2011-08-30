@@ -8,10 +8,12 @@
 #define FCPPT_MATH_DETAIL_STRUCTURE_CAST_HPP_INCLUDED
 
 #include <fcppt/math/detail/structure_cast_fun.hpp>
+#include <fcppt/config/external_begin.hpp>
 #include <boost/iterator/transform_iterator.hpp>
 #include <boost/type_traits/is_same.hpp>
 #include <boost/utility/enable_if.hpp>
 #include <boost/static_assert.hpp>
+#include <fcppt/config/external_end.hpp>
 
 namespace fcppt
 {

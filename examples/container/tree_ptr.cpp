@@ -12,7 +12,6 @@
 #include <fcppt/make_unique_ptr.hpp>
 #include <fcppt/noncopyable.hpp>
 #include <fcppt/text.hpp>
-#include <ostream>
 
 namespace
 {

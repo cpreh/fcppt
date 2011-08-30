@@ -15,10 +15,12 @@
 #include <fcppt/container/bitfield/array.hpp>
 #include <fcppt/container/array_decl.hpp>
 #include <fcppt/safe_bool.hpp>
+#include <fcppt/config/external_begin.hpp>
 #include <boost/type_traits/is_unsigned.hpp>
 #include <boost/static_assert.hpp>
 #include <iterator>
 #include <limits>
+#include <fcppt/config/external_end.hpp>
 
 namespace fcppt
 {

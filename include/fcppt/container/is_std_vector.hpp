@@ -7,8 +7,10 @@
 #ifndef FCPPT_CONTAINER_IS_STD_VECTOR_HPP_INCLUDED
 #define FCPPT_CONTAINER_IS_STD_VECTOR_HPP_INCLUDED
 
+#include <fcppt/config/external_begin.hpp>
 #include <boost/type_traits/integral_constant.hpp>
 #include <vector>
+#include <fcppt/config/external_end.hpp>
 
 namespace fcppt
 {

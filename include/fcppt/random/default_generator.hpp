@@ -7,7 +7,9 @@
 #ifndef FCPPT_RANDOM_DEFAULT_GENERATOR_HPP_INCLUDED
 #define FCPPT_RANDOM_DEFAULT_GENERATOR_HPP_INCLUDED
 
+#include <fcppt/config/external_begin.hpp>
 #include <boost/random/linear_congruential.hpp>
+#include <fcppt/config/external_end.hpp>
 
 namespace fcppt
 {

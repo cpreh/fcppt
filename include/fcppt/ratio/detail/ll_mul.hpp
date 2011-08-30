@@ -11,7 +11,9 @@
 
 #include <fcppt/ratio/detail/static_abs.hpp>
 #include <fcppt/ratio/detail/min_c.hpp>
+#include <fcppt/config/external_begin.hpp>
 #include <boost/static_assert.hpp>
+#include <fcppt/config/external_end.hpp>
 
 namespace fcppt
 {

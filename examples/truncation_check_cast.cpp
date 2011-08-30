@@ -9,7 +9,9 @@
 #include <fcppt/bad_truncation_check_cast.hpp>
 #include <fcppt/io/cout.hpp>
 #include <fcppt/text.hpp>
+#include <fcppt/config/external_begin.hpp>
 #include <limits>
+#include <fcppt/config/external_end.hpp>
 
 int main()
 try

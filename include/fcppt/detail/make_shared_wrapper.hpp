@@ -8,7 +8,9 @@
 #define FCPPT_DETAIL_MAKE_SHARED_WRAPPER_HPP_INCLUDED
 
 #include <fcppt/detail/make_shared_wrapper_fwd.hpp>
+#include <fcppt/config/external_begin.hpp>
 #include <boost/smart_ptr/shared_ptr.hpp>
+#include <fcppt/config/external_end.hpp>
 
 namespace fcppt
 {

@@ -17,10 +17,12 @@
 #include <fcppt/math/detail/checked_access.hpp>
 #include <fcppt/math/detail/make_variadic_constructor.hpp>
 #include <fcppt/math/detail/assign.hpp>
+#include <fcppt/config/external_begin.hpp>
 #include <numeric>
 #include <functional>
 #include <iterator>
 #include <algorithm>
+#include <fcppt/config/external_end.hpp>
 
 template<
 	typename T,

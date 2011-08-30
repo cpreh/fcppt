@@ -6,7 +6,9 @@
 
 #include <fcppt/error/strerror.hpp>
 #include <fcppt/from_std_string.hpp>
+#include <fcppt/config/external_begin.hpp>
 #include <cstring>
+#include <fcppt/config/external_end.hpp>
 
 fcppt::string const
 fcppt::error::strerror(

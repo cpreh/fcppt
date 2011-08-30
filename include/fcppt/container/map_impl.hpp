@@ -12,8 +12,10 @@
 #include <fcppt/container/not_found.hpp>
 #include <fcppt/text.hpp>
 #include <fcppt/type_name.hpp>
+#include <fcppt/config/external_begin.hpp>
 #include <typeinfo>
 #include <utility>
+#include <fcppt/config/external_end.hpp>
 
 template<
 	typename MapType

@@ -8,7 +8,9 @@
 #define FCPPT_CONTAINER_GRID_OBJECT_FWD_HPP_INCLUDED
 
 #include <fcppt/container/grid/size_type.hpp>
+#include <fcppt/config/external_begin.hpp>
 #include <memory>
+#include <fcppt/config/external_end.hpp>
 
 namespace fcppt
 {

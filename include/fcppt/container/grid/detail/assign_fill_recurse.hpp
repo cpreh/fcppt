@@ -8,7 +8,9 @@
 #define FCPPT_CONTAINER_GRID_DETAIL_ASSIGN_FILL_RECURSE_HPP_INCLUDED
 
 #include <fcppt/container/grid/size_type.hpp>
+#include <fcppt/config/external_begin.hpp>
 #include <boost/utility/enable_if.hpp>
+#include <fcppt/config/external_end.hpp>
 
 namespace fcppt
 {

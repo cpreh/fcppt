@@ -8,6 +8,9 @@
 #define FCPPT_POLYMORPHIC_POINTER_CAST_HPP_INCLUDED
 
 #include <fcppt/shared_ptr_impl.hpp>
+#include <fcppt/config/external_begin.hpp>
+#include <boost/smart_ptr/shared_ptr.hpp>
+#include <fcppt/config/external_end.hpp>
 
 namespace fcppt
 {
@@ -21,12 +24,12 @@ template<
 >
 shared_ptr<T, Deleter> const
 polymorphic_pointer_cast(
-	shared_ptr<U, Deleter> const &r
+	shared_ptr<U, Deleter> const &_ptr
 )
 {
 	return
 		fcppt::shared_ptr<T, Deleter>(
-			r,
+			_ptr,
 			boost::detail::polymorphic_cast_tag()
 		);
 }

@@ -7,8 +7,11 @@
 //[type_traits
 #include <fcppt/type_traits/is_string.hpp>
 #include <fcppt/type_traits/is_float_or_double.hpp>
+#include <fcppt/config/external_begin.hpp>
 #include <boost/utility/enable_if.hpp>
 #include <iostream>
+#include <ostream>
+#include <fcppt/config/external_end.hpp>
 
 namespace
 {
@@ -50,12 +53,12 @@ divide_by_1000(
 
 int main()
 {
-	std::cout << divide_by_1000(10.0) << "\n";
+	std::cout << divide_by_1000(10.0) << '\n';
 	// Would give a compiler error
-	//std::cout << divide_by_1000(10) << "\n";
+	//std::cout << divide_by_1000(10) << '\n';
 	std::string s("foobar");
-	std::cout << edit_string(s) << "\n";
+	std::cout << edit_string(s) << '\n';
 	// Would give a compiler error, although operator+ is defined
-	//std::cout << edit_string(10) << "\n";
+	//std::cout << edit_string(10) << '\n';
 }
 //]

@@ -11,10 +11,12 @@
 #include <fcppt/container/out_of_range.hpp>
 #include <fcppt/assert/pre.hpp>
 #include <fcppt/type_traits/is_input_iterator.hpp>
+#include <fcppt/config/external_begin.hpp>
 #include <boost/utility/enable_if.hpp>
 #include <boost/next_prior.hpp>
 #include <iterator>
 #include <algorithm>
+#include <fcppt/config/external_end.hpp>
 
 template<
 	typename T,

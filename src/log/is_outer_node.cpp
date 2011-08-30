@@ -7,7 +7,9 @@
 #include "is_outer_node.hpp"
 #include <fcppt/container/tree/object_impl.hpp>
 #include <fcppt/variant/object_impl.hpp>
+#include <fcppt/config/external_begin.hpp>
 #include <typeinfo>
+#include <fcppt/config/external_end.hpp>
 
 bool
 fcppt::log::is_outer_node(

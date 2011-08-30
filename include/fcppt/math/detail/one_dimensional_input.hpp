@@ -8,8 +8,10 @@
 #define FCPPT_MATH_DETAIL_ONE_DIMENSIONAL_INPUT_HPP_INCLUDED
 
 #include <fcppt/math/is_static_size.hpp>
+#include <fcppt/config/external_begin.hpp>
 #include <boost/utility/enable_if.hpp>
 #include <istream>
+#include <fcppt/config/external_end.hpp>
 
 namespace fcppt
 {

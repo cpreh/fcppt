@@ -8,7 +8,9 @@
 #define FCPPT_CONTAINER_TREE_DETAIL_PRINT_HPP_INCLUDED
 
 #include <fcppt/container/tree/object_impl.hpp>
+#include <fcppt/config/external_begin.hpp>
 #include <ostream>
+#include <fcppt/config/external_end.hpp>
 
 namespace fcppt
 {

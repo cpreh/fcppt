@@ -10,13 +10,15 @@
 #include <fcppt/default_locale.hpp>
 #include <fcppt/string.hpp>
 #include <fcppt/symbol.hpp>
+#include <fcppt/config/external_begin.hpp>
 #include <locale>
 #include <string>
+#include <fcppt/config/external_end.hpp>
 
 namespace fcppt
 {
 
-FCPPT_SYMBOL string const
+FCPPT_SYMBOL fcppt::string const
 from_std_wstring(
 	std::wstring const &,
 	std::locale const & = fcppt::default_locale()

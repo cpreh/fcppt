@@ -9,7 +9,9 @@
 
 #include <fcppt/math/compare.hpp>
 #include <fcppt/math/quaternion/dot.hpp>
+#include <fcppt/config/external_begin.hpp>
 #include <boost/math/quaternion.hpp>
+#include <fcppt/config/external_end.hpp>
 
 namespace fcppt
 {

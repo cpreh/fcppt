@@ -8,7 +8,9 @@
 #define FCPPT_IO_ISTRINGSTREAM_HPP_INCLUDED
 
 #include <fcppt/char_type.hpp>
+#include <fcppt/config/external_begin.hpp>
 #include <sstream>
+#include <fcppt/config/external_end.hpp>
 
 namespace fcppt
 {

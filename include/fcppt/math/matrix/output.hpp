@@ -8,7 +8,9 @@
 #define FCPPT_MATH_MATRIX_OUTPUT_HPP_INCLUDED
 
 #include <fcppt/math/matrix/basic_impl.hpp>
+#include <fcppt/config/external_begin.hpp>
 #include <ostream>
+#include <fcppt/config/external_end.hpp>
 
 namespace fcppt
 {

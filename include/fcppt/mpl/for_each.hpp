@@ -8,9 +8,11 @@
 #define FCPPT_MPL_FOR_EACH_HPP_INCLUDED
 
 #include <fcppt/mpl/detail/for_each.hpp>
+#include <fcppt/config/external_begin.hpp>
 #include <boost/mpl/begin.hpp>
 #include <boost/mpl/end.hpp>
 #include <boost/mpl/empty.hpp>
+#include <fcppt/config/external_end.hpp>
 
 namespace fcppt
 {

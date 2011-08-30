@@ -12,9 +12,11 @@
 #include <fcppt/error/strerrno.hpp>
 #include <fcppt/to_std_string.hpp>
 #include <fcppt/text.hpp>
+#include <fcppt/config/external_begin.hpp>
 #include <string>
 #include <unistd.h>
 #include <cerrno>
+#include <fcppt/config/external_end.hpp>
 #endif
 
 bool

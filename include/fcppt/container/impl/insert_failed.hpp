@@ -9,11 +9,11 @@
 
 inline
 fcppt::container::insert_failed::insert_failed(
-	fcppt::string const &e
+	fcppt::string const &_error
 )
 :
 	container::exception(
-		e
+		_error
 	)
 {}
 

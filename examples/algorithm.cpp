@@ -12,11 +12,13 @@
 #include <fcppt/algorithm/join_strings.hpp>
 #include <fcppt/algorithm/ptr_container_erase.hpp>
 #include <fcppt/container/raw_vector_impl.hpp>
+#include <fcppt/config/external_begin.hpp>
 #include <boost/ptr_container/ptr_vector.hpp>
 #include <string>
 #include <vector>
 #include <ostream>
 #include <iostream>
+#include <fcppt/config/external_end.hpp>
 
 int main()
 {

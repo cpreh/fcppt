@@ -12,8 +12,10 @@
 #include <fcppt/chrono/duration_values.hpp>
 #include <fcppt/chrono/treat_as_floating_point.hpp>
 #include <fcppt/ratio/divide.hpp>
+#include <fcppt/config/external_begin.hpp>
 #include <boost/type_traits/is_convertible.hpp>
 #include <boost/static_assert.hpp>
+#include <fcppt/config/external_end.hpp>
 
 template<
 	typename Rep,
