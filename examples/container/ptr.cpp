@@ -10,7 +10,13 @@
 #include <fcppt/make_unique_ptr.hpp>
 #include <fcppt/noncopyable.hpp>
 #include <fcppt/text.hpp>
+#include <fcppt/preprocessor/push_warning.hpp>
+#include <fcppt/preprocessor/pop_warning.hpp>
+#include <fcppt/preprocessor/disable_vc_warning.hpp>
+FCPPT_PP_PUSH_WARNING
+FCPPT_PP_DISABLE_VC_WARNING(4512)
 #include <boost/ptr_container/ptr_map.hpp>
+FCPPT_PP_POP_WARNING
 
 namespace
 {
