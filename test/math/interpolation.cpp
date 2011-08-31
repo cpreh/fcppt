@@ -10,8 +10,10 @@
 #include <fcppt/math/vector/length.hpp>
 #include <fcppt/math/vector/basic_impl.hpp>
 #include <fcppt/math/vector/arithmetic.hpp>
+#include <fcppt/config/external_begin.hpp>
 #include <boost/test/unit_test.hpp>
 #include <cmath>
+#include <fcppt/config/external_end.hpp>
 
 namespace
 {

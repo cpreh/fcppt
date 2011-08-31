@@ -5,8 +5,10 @@
 
 
 #include <fcppt/container/map.hpp>
+#include <fcppt/config/external_begin.hpp>
 #include <boost/test/unit_test.hpp>
 #include <map>
+#include <fcppt/config/external_end.hpp>
 
 namespace
 {

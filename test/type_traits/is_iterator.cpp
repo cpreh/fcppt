@@ -5,8 +5,10 @@
 
 
 #include <fcppt/type_traits/is_iterator.hpp>
+#include <fcppt/config/external_begin.hpp>
 #include <boost/test/unit_test.hpp>
 #include <string>
+#include <fcppt/config/external_end.hpp>
 
 namespace
 {

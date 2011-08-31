@@ -9,10 +9,13 @@
 #include <fcppt/math/vector/output.hpp>
 #include <fcppt/math/vector/basic_impl.hpp>
 #include <fcppt/math/vector/static.hpp>
+#include <fcppt/config/external_begin.hpp>
 #include <boost/test/unit_test.hpp>
 #include <iostream>
+#include <ostream>
 #include <iterator>
 #include <vector>
+#include <fcppt/config/external_end.hpp>
 
 BOOST_AUTO_TEST_CASE(
 	binary_vectors)

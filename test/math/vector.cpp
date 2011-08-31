@@ -11,10 +11,13 @@
 #include <fcppt/math/range_compare.hpp>
 #include <fcppt/math/vector/hypersphere_to_cartesian.hpp>
 #include <fcppt/math/vector/output.hpp>
+#include <fcppt/config/external_begin.hpp>
 #include <boost/mpl/integral_c.hpp>
 #include <boost/test/unit_test.hpp>
 #include <algorithm>
 #include <iostream>
+#include <ostream>
+#include <fcppt/config/external_end.hpp>
 
 namespace
 {

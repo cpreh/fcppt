@@ -11,10 +11,11 @@
 #error "Missing #include <fcppt/config/external_end.hpp>"
 #endif
 
-#if defined(_MSC_VER)
 #include <fcppt/preprocessor/push_warning.hpp>
-#include <fcppt/preprocessor/disable_vc_warning.hpp>
 FCPPT_PP_PUSH_WARNING
+
+#if defined(_MSC_VER)
+#include <fcppt/preprocessor/disable_vc_warning.hpp>
 FCPPT_PP_DISABLE_VC_WARNING(4061) // enum not handled in switch
 FCPPT_PP_DISABLE_VC_WARNING(4347) // behaviour change
 FCPPT_PP_DISABLE_VC_WARNING(4365) // signed/unsigned mismatch
@@ -25,6 +26,16 @@ FCPPT_PP_DISABLE_VC_WARNING(4626) // assignment operator could not be generated 
 FCPPT_PP_DISABLE_VC_WARNING(4640) // local static object
 FCPPT_PP_DISABLE_VC_WARNING(4668) // #if with an undefined macro
 FCPPT_PP_DISABLE_VC_WARNING(4986) // unmatching exception specification
+#elif defined(__GNUC__)
+#include <fcppt/preprocessor/disable_gcc_warning.hpp>
+FCPPT_PP_DISABLE_GCC_WARNING(-Wconversion)
+FCPPT_PP_DISABLE_GCC_WARNING(-Wignored-qualifiers)
+FCPPT_PP_DISABLE_GCC_WARNING(-Wmissing-declarations)
+FCPPT_PP_DISABLE_GCC_WARNING(-Wold-style-cast)
+FCPPT_PP_DISABLE_GCC_WARNING(-Woverloaded-virtual)
+FCPPT_PP_DISABLE_GCC_WARNING(-Wredundant-decls)
+FCPPT_PP_DISABLE_GCC_WARNING(-Wsign-conversion)
+FCPPT_PP_DISABLE_GCC_WARNING(-Wshadow)
 #endif
 
 #define FCPPT_CONFIG_INSIDE_EXTERNAL

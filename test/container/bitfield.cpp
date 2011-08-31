@@ -5,8 +5,10 @@
 
 
 #include <fcppt/container/bitfield/bitfield.hpp>
+#include <fcppt/config/external_begin.hpp>
 #include <boost/test/unit_test.hpp>
 #include <algorithm>
+#include <fcppt/config/external_end.hpp>
 
 namespace
 {

@@ -6,7 +6,9 @@
 
 #include <fcppt/math/matrix/matrix.hpp>
 #include <fcppt/math/matrix/static.hpp>
+#include <fcppt/config/external_begin.hpp>
 #include <boost/test/unit_test.hpp>
+#include <fcppt/config/external_end.hpp>
 
 namespace
 {

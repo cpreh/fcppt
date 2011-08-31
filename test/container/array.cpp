@@ -5,9 +5,11 @@
 
 
 #include <fcppt/container/array.hpp>
+#include <fcppt/config/external_begin.hpp>
 #include <boost/test/unit_test.hpp>
 #include <algorithm>
 #include <string>
+#include <fcppt/config/external_end.hpp>
 
 template struct fcppt::container::array<
 	int,

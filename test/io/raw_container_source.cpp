@@ -6,15 +6,11 @@
 
 #include <fcppt/io/raw_container_source.hpp>
 #include <fcppt/container/raw_vector.hpp>
-#include <fcppt/preprocessor/push_warning.hpp>
-#include <fcppt/preprocessor/pop_warning.hpp>
-#include <fcppt/preprocessor/disable_vc_warning.hpp>
-FCPPT_PP_PUSH_WARNING
-FCPPT_PP_DISABLE_VC_WARNING(4702)
+#include <fcppt/config/external_begin.hpp>
 #include <boost/iostreams/stream.hpp>
-FCPPT_PP_POP_WARNING
 #include <boost/test/unit_test.hpp>
 #include <vector>
+#include <fcppt/config/external_end.hpp>
 
 BOOST_AUTO_TEST_CASE(main_test)
 {

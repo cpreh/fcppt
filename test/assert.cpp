@@ -6,7 +6,9 @@
 
 #include <fcppt/assert/assert.hpp>
 #include <fcppt/text.hpp>
+#include <fcppt/config/external_begin.hpp>
 #include <boost/test/unit_test.hpp>
+#include <fcppt/config/external_end.hpp>
 
 namespace
 {

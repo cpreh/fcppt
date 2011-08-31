@@ -6,7 +6,9 @@
 
 #include <fcppt/math/sphere/sphere.hpp>
 #include <fcppt/math/sphere/circle.hpp>
+#include <fcppt/config/external_begin.hpp>
 #include <boost/test/unit_test.hpp>
+#include <fcppt/config/external_end.hpp>
 
 BOOST_AUTO_TEST_CASE(circle_intersects)
 {

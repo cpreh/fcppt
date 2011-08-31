@@ -13,10 +13,8 @@
 
 #undef FCPPT_CONFIG_INSIDE_EXTERNAL
 
-#if defined(_MSC_VER)
 #include <fcppt/preprocessor/pop_warning.hpp>
 FCPPT_PP_POP_WARNING
-#endif
 
 #endif
 

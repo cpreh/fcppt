@@ -8,7 +8,9 @@
 #include <fcppt/math/matrix/comparison.hpp>
 #include <fcppt/math/matrix/static.hpp>
 #include <fcppt/math/matrix/basic_impl.hpp>
+#include <fcppt/config/external_begin.hpp>
 #include <boost/test/unit_test.hpp>
+#include <fcppt/config/external_end.hpp>
 
 BOOST_AUTO_TEST_CASE(delete_row_and_column)
 {

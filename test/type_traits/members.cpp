@@ -7,8 +7,10 @@
 #include <fcppt/type_traits/generate_has_member_function.hpp>
 #include <fcppt/type_traits/generate_has_type.hpp>
 #include <fcppt/type_traits/is_iterable.hpp>
+#include <fcppt/config/external_begin.hpp>
 #include <boost/test/unit_test.hpp>
 #include <vector>
+#include <fcppt/config/external_end.hpp>
 
 namespace
 {

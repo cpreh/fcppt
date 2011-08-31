@@ -5,10 +5,12 @@
 
 
 #include <fcppt/mpl/append.hpp>
+#include <fcppt/config/external_begin.hpp>
 #include <boost/mpl/at.hpp>
 #include <boost/mpl/vector/vector10.hpp>
 #include <boost/type_traits/is_same.hpp>
 #include <boost/test/unit_test.hpp>
+#include <fcppt/config/external_end.hpp>
 
 BOOST_AUTO_TEST_CASE(
 	mpl_append

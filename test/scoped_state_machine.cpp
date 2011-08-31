@@ -5,9 +5,11 @@
 
 
 #include <fcppt/scoped_state_machine.hpp>
+#include <fcppt/config/external_begin.hpp>
 #include <boost/statechart/simple_state.hpp>
 #include <boost/statechart/state_machine.hpp>
 #include <boost/test/unit_test.hpp>
+#include <fcppt/config/external_end.hpp>
 
 namespace
 {

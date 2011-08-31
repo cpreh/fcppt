@@ -7,7 +7,9 @@
 #include <fcppt/filesystem/path.hpp>
 #include <fcppt/filesystem/remove_extension.hpp>
 #include <fcppt/text.hpp>
+#include <fcppt/config/external_begin.hpp>
 #include <boost/test/unit_test.hpp>
+#include <fcppt/config/external_end.hpp>
 
 BOOST_AUTO_TEST_CASE(
 	filesystem_remove_extension

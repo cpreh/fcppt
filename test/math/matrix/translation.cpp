@@ -8,7 +8,9 @@
 #include <fcppt/math/matrix/translation.hpp>
 #include <fcppt/math/vector/vector.hpp>
 #include <fcppt/math/vector/static.hpp>
+#include <fcppt/config/external_begin.hpp>
 #include <boost/test/unit_test.hpp>
+#include <fcppt/config/external_end.hpp>
 
 BOOST_AUTO_TEST_CASE(math_matrix_translation)
 {

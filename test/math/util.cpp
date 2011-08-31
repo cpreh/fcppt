@@ -8,7 +8,9 @@
 #include <fcppt/math/diff.hpp>
 #include <fcppt/math/is_negative.hpp>
 #include <fcppt/math/is_power_of_2.hpp>
+#include <fcppt/config/external_begin.hpp>
 #include <boost/test/unit_test.hpp>
+#include <fcppt/config/external_end.hpp>
 
 BOOST_AUTO_TEST_CASE(math_almost_zero)
 {

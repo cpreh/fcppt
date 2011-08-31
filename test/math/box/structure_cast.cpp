@@ -6,7 +6,9 @@
 
 #include <fcppt/math/box/basic_impl.hpp>
 #include <fcppt/math/box/structure_cast.hpp>
+#include <fcppt/config/external_begin.hpp>
 #include <boost/test/unit_test.hpp>
+#include <fcppt/config/external_end.hpp>
 
 BOOST_AUTO_TEST_CASE(
 	math_box_structure_cast

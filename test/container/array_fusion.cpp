@@ -6,8 +6,10 @@
 
 #include <fcppt/container/array.hpp>
 #include <fcppt/container/array_fusion.hpp>
+#include <fcppt/config/external_begin.hpp>
 #include <boost/fusion/algorithm/iteration/for_each.hpp>
 #include <boost/test/unit_test.hpp>
+#include <fcppt/config/external_end.hpp>
 
 namespace
 {

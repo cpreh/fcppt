@@ -12,7 +12,9 @@
 #include <fcppt/endianness/from_little_endian.hpp>
 #include <fcppt/endianness/swap.hpp>
 #include <fcppt/endianness/host_format.hpp>
+#include <fcppt/config/external_begin.hpp>
 #include <boost/test/unit_test.hpp>
+#include <fcppt/config/external_end.hpp>
 
 BOOST_AUTO_TEST_CASE(endianness)
 {

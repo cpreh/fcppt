@@ -6,9 +6,11 @@
 
 #include <fcppt/cyclic_iterator.hpp>
 #include <fcppt/container/array.hpp>
+#include <fcppt/config/external_begin.hpp>
 #include <boost/test/unit_test.hpp>
 #include <boost/next_prior.hpp>
 #include <vector>
+#include <fcppt/config/external_end.hpp>
 
 BOOST_AUTO_TEST_CASE(
 	cyclic_iterator_array
