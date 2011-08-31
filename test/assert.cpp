@@ -6,6 +6,9 @@
 
 #include <fcppt/assert/assert.hpp>
 #include <fcppt/text.hpp>
+#include <fcppt/preprocessor/disable_vc_warning.hpp>
+#include <fcppt/preprocessor/pop_warning.hpp>
+#include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/test/unit_test.hpp>
 #include <fcppt/config/external_end.hpp>
@@ -37,6 +40,9 @@ BOOST_AUTO_TEST_CASE(
 	assert
 )
 {
+FCPPT_PP_PUSH_WARNING
+FCPPT_PP_DISABLE_VC_WARNING(4127)
+
 	BOOST_REQUIRE_EXCEPTION(
 		FCPPT_ASSERT_THROW_MESSAGE(
 			false,
@@ -56,4 +62,6 @@ BOOST_AUTO_TEST_CASE(
 		fcppt::assert_::exception,
 		contains_false_and_contains_1337
 	);
+
+FCPPT_PP_POP_WARNING
 }

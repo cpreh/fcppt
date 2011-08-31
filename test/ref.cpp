@@ -35,6 +35,14 @@ class derived
 :
 	public base
 {
+	FCPPT_NONCOPYABLE(
+		derived
+	);
+public:
+	derived()
+	{
+	}
+private:
 	int
 	foo()
 	{

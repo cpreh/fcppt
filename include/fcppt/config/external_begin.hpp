@@ -17,8 +17,12 @@ FCPPT_PP_PUSH_WARNING
 #if defined(_MSC_VER)
 #include <fcppt/preprocessor/disable_vc_warning.hpp>
 FCPPT_PP_DISABLE_VC_WARNING(4061) // enum not handled in switch
+FCPPT_PP_DISABLE_VC_WARNING(4127) // conditional expression is constant
+FCPPT_PP_DISABLE_VC_WARNING(4242) // loss of data
+FCPPT_PP_DISABLE_VC_WARNING(4265) // destructor not virtual
 FCPPT_PP_DISABLE_VC_WARNING(4347) // behaviour change
 FCPPT_PP_DISABLE_VC_WARNING(4365) // signed/unsigned mismatch
+FCPPT_PP_DISABLE_VC_WARNING(4512) // assignment operator could not be generated
 FCPPT_PP_DISABLE_VC_WARNING(4548) // expression before comma has no effect
 FCPPT_PP_DISABLE_VC_WARNING(4619) // invalid pragma warning
 FCPPT_PP_DISABLE_VC_WARNING(4625) // copy constructor could not be generated because of a base class

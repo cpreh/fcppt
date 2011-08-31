@@ -12,8 +12,10 @@
 #include <fcppt/math/vector/comparison.hpp>
 #include <fcppt/math/compare.hpp>
 #include <fcppt/math/pi.hpp>
+#include <fcppt/config/external_begin.hpp>
 #include <boost/math/quaternion.hpp>
 #include <boost/test/unit_test.hpp>
+#include <fcppt/config/external_end.hpp>
 
 BOOST_AUTO_TEST_CASE(all_quaternion)
 {
