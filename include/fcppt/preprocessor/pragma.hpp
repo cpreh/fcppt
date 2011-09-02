@@ -7,13 +7,18 @@
 #ifndef FCPPT_PREPROCESSOR_PRAGMA_HPP_INCLUDED
 #define FCPPT_PREPROCESSOR_PRAGMA_HPP_INCLUDED
 
+#include <fcppt/config/compiler.hpp>
+
 /// Pragma macro, the same as #pragma
-/** This can be used to wrap pragma inside other macros
+/**
+ * This can be used to wrap pragma inside other macros
 */
-#if defined(_MSC_VER)
+#if defined(FCPPT_CONFIG_MSVC_COMPILER)
 #define FCPPT_PP_PRAGMA(x) __pragma(x)
-#elif defined(__GNUC__)
+#elif defined(FCPPT_CONFIG_GCC_COMPILER)
 #define FCPPT_PP_PRAGMA(x) _Pragma(#x)
+#else
+#error "Don't know what pragma should be!"
 #endif
 
 #endif

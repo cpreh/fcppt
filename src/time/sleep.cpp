@@ -8,25 +8,24 @@
 #include <fcppt/time/sleep_interrupted.hpp>
 #include <fcppt/chrono/duration_impl.hpp>
 #include <fcppt/truncation_check_cast.hpp>
-#include <fcppt/platform.hpp>
+#include <fcppt/config/platform.hpp>
+#if defined(FCPPT_CONFIG_WINDOWS_PLATFORM)
+#include <fcppt/config/include_windows.hpp>
+#elif defined(FCPPT_CONFIG_POSIX_PLATFORM)
 #include <fcppt/config/external_begin.hpp>
-#if defined(FCPPT_WINDOWS_PLATFORM)
-#define WIN32_LEAN_AND_MEAN
-#include <windows.h>
-#elif defined(FCPPT_POSIX_PLATFORM)
-#include <ctime>
 #include <time.h>
+#include <ctime>
+#include <fcppt/config/external_end.hpp>
 #else
 #error "Don't know what to include for sleep!"
 #endif
-#include <fcppt/config/external_end.hpp>
 
 void
 fcppt::time::sleep(
 	time::sleep_duration const &_duration
 )
 {
-#if defined(FCPPT_WINDOWS_PLATFORM)
+#if defined(FCPPT_CONFIG_WINDOWS_PLATFORM)
 	if(
 		::SleepEx(
 			fcppt::truncation_check_cast<
@@ -39,7 +38,7 @@ fcppt::time::sleep(
 		!= 0
 	)
 		throw time::sleep_interrupted();
-#elif defined(FCPPT_POSIX_PLATFORM)
+#elif defined(FCPPT_CONFIG_POSIX_PLATFORM)
 	timespec const req =
 	{
 		fcppt::truncation_check_cast<

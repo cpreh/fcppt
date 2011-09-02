@@ -6,14 +6,11 @@
 
 #include <fcppt/chrono/system_clock.hpp>
 #include <fcppt/chrono/time_point_impl.hpp>
+#include <fcppt/config/platform.hpp>
 #include <fcppt/truncation_check_cast.hpp>
-#include <fcppt/platform.hpp>
-#if defined(FCPPT_WINDOWS_PLATFORM)
-#include <fcppt/config/external_begin.hpp>
-#define WIN32_LEAN_AND_MEAN
-#include <windows.h>
-#include <fcppt/config/external_end.hpp>
-#elif defined(FCPPT_POSIX_PLATFORM)
+#if defined(FCPPT_CONFIG_WINDOWS_PLATFORM)
+#include <fcppt/config/include_windows.hpp>
+#elif defined(FCPPT_CONFIG_POSIX_PLATFORM)
 #include <fcppt/chrono/clock_failure.hpp>
 #include <fcppt/text.hpp>
 #include <fcppt/config/external_begin.hpp>
@@ -26,7 +23,7 @@
 fcppt::chrono::system_clock::time_point
 fcppt::chrono::system_clock::now()
 {
-#if defined(FCPPT_WINDOWS_PLATFORM)
+#if defined(FCPPT_CONFIG_WINDOWS_PLATFORM)
 	FILETIME ret;
 
 	::GetSystemTimeAsFileTime(
@@ -47,7 +44,7 @@ fcppt::chrono::system_clock::now()
 				)
 			)
 		);
-#elif defined(FCPPT_POSIX_PLATFORM)
+#elif defined(FCPPT_CONFIG_POSIX_PLATFORM)
 	struct timeval tv;
 	struct timezone tz;
 

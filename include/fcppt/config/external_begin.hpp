@@ -11,10 +11,11 @@
 #error "Missing #include <fcppt/config/external_end.hpp>"
 #endif
 
+#include <fcppt/config/compiler.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
 FCPPT_PP_PUSH_WARNING
 
-#if defined(_MSC_VER)
+#if defined(FCPPT_CONFIG_MSVC_COMPILER)
 #include <fcppt/preprocessor/disable_vc_warning.hpp>
 FCPPT_PP_DISABLE_VC_WARNING(4061) // enum not handled in switch
 FCPPT_PP_DISABLE_VC_WARNING(4127) // conditional expression is constant
@@ -30,7 +31,7 @@ FCPPT_PP_DISABLE_VC_WARNING(4626) // assignment operator could not be generated 
 FCPPT_PP_DISABLE_VC_WARNING(4640) // local static object
 FCPPT_PP_DISABLE_VC_WARNING(4668) // #if with an undefined macro
 FCPPT_PP_DISABLE_VC_WARNING(4986) // unmatching exception specification
-#elif defined(__GNUC__)
+#elif defined(FCPPT_CONFIG_GCC_COMPILER)
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 FCPPT_PP_DISABLE_GCC_WARNING(-Wconversion)
 FCPPT_PP_DISABLE_GCC_WARNING(-Wignored-qualifiers)

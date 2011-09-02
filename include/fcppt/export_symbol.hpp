@@ -7,9 +7,11 @@
 #ifndef FCPPT_EXPORT_SYMBOL_HPP_INCLUDED
 #define FCPPT_EXPORT_SYMBOL_HPP_INCLUDED
 
-#if defined(_MSC_VER)
+#include <fcppt/config/compiler.hpp>
+
+#if defined(FCPPT_CONFIG_MSVC_COMPILER)
 #	define FCPPT_EXPORT_SYMBOL_IMPL __declspec(dllexport)
-#elif defined(__GNUC__)
+#elif defined(FCPPT_CONFIG_GCC_COMPILER)
 #	include <fcppt/config.hpp>
 #	if defined(FCPPT_HAVE_GCC_VISIBILITY)
 #		define FCPPT_EXPORT_SYMBOL_IMPL __attribute__ ((visibility("default")))

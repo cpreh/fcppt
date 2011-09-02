@@ -7,16 +7,31 @@
 #ifndef FCPPT_PREPROCESSOR_DETAIL_FUNCTION_HPP_INCLUDED
 #define FCPPT_PREPROCESSOR_DETAIL_FUNCTION_HPP_INCLUDED
 
-#include <fcppt/config.hpp>
-#include <fcppt/from_std_string.hpp>
-#include <fcppt/text.hpp>
+#include <fcppt/config/compiler.hpp>
 
-#if defined(FCPPT_HAVE_GCC_PRETTY_FUNCTION)
-#define FCPPT_PP_DETAIL_FUNCTION fcppt::from_std_string(__PRETTY_FUNCTION__)
-#elif defined(_MSC_VER)
-#define FCPPT_PP_DETAIL_FUNCTION fcppt::from_std_string(__FUNCSIG__)
+#if defined(FCPPT_CONFIG_GCC_COMPILER)
+#	include <fcppt/config.hpp>
+#	if defined(FCPPT_HAVE_GCC_PRETTY_FUNCTION)
+#		include <fcppt/from_std_string.hpp>
+#		define FCPPT_PP_DETAIL_FUNCTION \
+		fcppt::from_std_string( \
+			__PRETTY_FUNCTION__ \
+		)
+#	else
+#		define FCPPT_PP_DETAIL_FUNCTION \
+#		include <fcppt/text.hpp>
+		FCPPT_TEXT("")
+#	endif
+#elif defined(FCPPT_CONFIG_MSVC_COMPILER)
+#	include <fcppt/from_std_string.hpp>
+#	define FCPPT_PP_DETAIL_FUNCTION \
+	fcppt::from_std_string(\
+		__FUNCSIG__\
+	)
 #else
-#define FCPPT_PP_DETAIL_FUNCTION FCPPT_TEXT("")
+#	include <fcppt/text.hpp>
+#	define FCPPT_PP_DETAIL_FUNCTION \
+	FCPPT_TEXT("")
 #endif
 
 #endif

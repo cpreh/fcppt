@@ -10,14 +10,14 @@
 #include <fcppt/config.hpp>
 
 #include <fcppt/config/external_begin.hpp>
-#ifdef FCPPT_NARROW_STRING
+#if defined(FCPPT_NARROW_STRING)
 #include <boost/preprocessor/stringize.hpp>
 #else
 #include <boost/preprocessor/wstringize.hpp>
 #endif
 #include <fcppt/config/external_end.hpp>
 
-#ifdef FCPPT_NARROW_STRING
+#if defined(FCPPT_NARROW_STRING)
 #define FCPPT_PP_DETAIL_STRINGIZE(s) BOOST_PP_STRINGIZE(s)
 #else
 #define FCPPT_PP_DETAIL_STRINGIZE(s) BOOST_PP_WSTRINGIZE(s)

@@ -5,8 +5,8 @@
 
 
 #include <fcppt/filesystem/is_executable.hpp>
-#include <fcppt/platform.hpp>
-#if defined(FCPPT_POSIX_PLATFORM)
+#include <fcppt/config/platform.hpp>
+#if defined(FCPPT_CONFIG_POSIX_PLATFORM)
 #include <fcppt/filesystem/exception.hpp>
 #include <fcppt/filesystem/path_to_string.hpp>
 #include <fcppt/error/strerrno.hpp>
@@ -21,14 +21,14 @@
 
 bool
 fcppt::filesystem::is_executable(
-#if defined(FCPPT_POSIX_PLATFORM)
+#if defined(FCPPT_CONFIG_POSIX_PLATFORM)
 	filesystem::path const &_path
 #else
 	filesystem::path const &
 #endif
 )
 {
-#if defined(FCPPT_POSIX_PLATFORM)
+#if defined(FCPPT_CONFIG_POSIX_PLATFORM)
 	if(
 		::access(
 			_path.string<
@@ -56,7 +56,7 @@ fcppt::filesystem::is_executable(
 		+ FCPPT_TEXT('"')
 	);
 
-#elif defined(FCPPT_WINDOWS_PLATFORM)
+#elif defined(FCPPT_CONFIG_WINDOWS_PLATFORM)
 	return true;
 #else
 #error "Don't know if a file is executable."

@@ -6,8 +6,8 @@
 
 #include <fcppt/chrono/high_resolution_clock.hpp>
 #include <fcppt/config.hpp>
-#include <fcppt/platform.hpp>
-#if defined(FCPPT_WINDOWS_PLATFORM)
+#include <fcppt/config/platform.hpp>
+#if defined(FCPPT_CONFIG_WINDOWS_PLATFORM)
 #include "performance_counter_time.hpp"
 #elif defined(FCPPT_HAVE_CLOCK_GETTIME)
 #include "clock_gettime_impl.hpp"
@@ -23,7 +23,7 @@
 fcppt::chrono::high_resolution_clock::time_point
 fcppt::chrono::high_resolution_clock::now()
 {
-#if defined(FCPPT_WINDOWS_PLATFORM)
+#if defined(FCPPT_CONFIG_WINDOWS_PLATFORM)
 	return
 		chrono::performance_counter_time<
 			time_point

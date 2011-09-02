@@ -4,14 +4,13 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_WARN_UNUSED_RESULT_HPP_INCLUDED
-#define FCPPT_WARN_UNUSED_RESULT_HPP_INCLUDED
+#ifndef FCPPT_CONFIG_COMPILER_HPP_INCLUDED
+#define FCPPT_CONFIG_COMPILER_HPP_INCLUDED
 
-// TODO
-#if defined(__GNUC__)
-#define FCPPT_WARN_UNUSED_RESULT __attribute__ ((warn_unused_result))
-#else
-#define FCPPT_WARN_UNUSED_RESULT
+#if defined(_MSC_VER)
+#define FCPPT_CONFIG_MSVC_COMPILER
+#elif defined(__GNUC__)
+#define FCPPT_CONFIG_GCC_COMPILER
 #endif
 
 #endif

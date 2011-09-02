@@ -7,9 +7,11 @@
 #ifndef FCPPT_ALIGNMENT_ALIGN_HPP_INCLUDED
 #define FCPPT_ALIGNMENT_ALIGN_HPP_INCLUDED
 
-#ifdef _MSC_VER
+#include <fcppt/config/compiler.hpp>
+
+#if defined(FCPPT_CONFIG_MSVC_COMPILER)
 #define FCPPT_ALIGNMENT_ALIGN_IMPL(x) __declspec(align(x))
-#elif __GNUC__
+#elif defined(FCPPT_CONFIG_GCC_COMPILER)
 #define FCPPT_ALIGNMENT_ALIGN_IMPL(x) __attribute__((__aligned__((x))))
 #else
 #error "Don't know how to align types!"

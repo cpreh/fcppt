@@ -7,9 +7,11 @@
 #ifndef FCPPT_IMPORT_SYMBOL_HPP_INCLUDED
 #define FCPPT_IMPORT_SYMBOL_HPP_INCLUDED
 
-#if defined(_MSC_VER)
+#include <fcppt/config/compiler.hpp>
+
+#if defined(FCPPT_CONFIG_MSVC_COMPILER)
 #	define FCPPT_IMPORT_SYMBOL_IMPL __declspec(dllimport)
-#elif defined(__GNUC__)
+#elif defined(FCPPT_CONFIG_GCC_COMPILER)
 #	define FCPPT_IMPORT_SYMBOL_IMPL
 #else
 #	error "Don't know what FCPPT_IMPORT_SYMBOL should be"

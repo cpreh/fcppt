@@ -390,8 +390,11 @@ SET(
 	include/fcppt/chrono/treat_as_floating_point.hpp
 	include/fcppt/class_symbol.hpp
 	include/fcppt/com_deleter.hpp
+	include/fcppt/config/compiler.hpp
 	include/fcppt/config/external_begin.hpp
 	include/fcppt/config/external_end.hpp
+	include/fcppt/config/include_windows.hpp
+	include/fcppt/config/platform.hpp
 	include/fcppt/const_pointer_cast.hpp
 	include/fcppt/container/array.hpp
 	include/fcppt/container/array_comparison.hpp
@@ -971,7 +974,6 @@ SET(
 	include/fcppt/optional_decl.hpp
 	include/fcppt/optional_fwd.hpp
 	include/fcppt/optional_impl.hpp
-	include/fcppt/platform.hpp
 	include/fcppt/polymorphic_pointer_cast.hpp
 	include/fcppt/preprocessor/detail/enum_params_forward_m.hpp
 	include/fcppt/preprocessor/detail/function.hpp
@@ -1256,7 +1258,6 @@ SET(
 	include/fcppt/variant/variant.hpp
 	include/fcppt/version_int.hpp
 	include/fcppt/version_string.hpp
-	include/fcppt/warn_unused_result.hpp
 	include/fcppt/weak_ptr.hpp
 	include/fcppt/weak_ptr_decl.hpp
 	include/fcppt/weak_ptr_fwd.hpp

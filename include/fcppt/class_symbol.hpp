@@ -7,9 +7,11 @@
 #ifndef FCPPT_CLASS_SYMBOL_HPP_INCLUDED
 #define FCPPT_CLASS_SYMBOL_HPP_INCLUDED
 
-#if defined(_MSC_VER)
+#include <fcppt/config/compiler.hpp>
+
+#if defined(FCPPT_CONFIG_MSVC_COMPILER)
 #	define FCPPT_CLASS_SYMBOL_IMPL
-#elif defined(__GNUC__)
+#elif defined(FCPPT_CONFIG_GCC_COMPILER)
 #	include <fcppt/export_symbol.hpp>
 #	define FCPPT_CLASS_SYMBOL_IMPL FCPPT_EXPORT_SYMBOL
 #else

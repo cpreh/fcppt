@@ -7,10 +7,7 @@
 #ifndef FCPPT_CHRONO_QUERY_PERFORMANCE_FREQUENCY_HPP_INCLUDED
 #define FCPPT_CHRONO_QUERY_PERFORMANCE_FREQUENCY_HPP_INCLUDED
 
-#include <fcppt/config/external_begin.hpp>
-#define WIN32_LEAN_AND_MEAN
-#include <windows.h>
-#include <fcppt/config/external_end.hpp>
+#include <fcppt/config/include_windows.hpp>
 
 namespace fcppt
 {
