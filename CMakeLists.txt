@@ -321,7 +321,6 @@ SET(
 	include/fcppt/assign/detail/make_container_impl.hpp
 	include/fcppt/assign/make_array.hpp
 	include/fcppt/assign/make_container.hpp
-	include/fcppt/auto_ptr.hpp
 	include/fcppt/backtrace/backtrace.hpp
 	include/fcppt/backtrace/current_stack_frame.hpp
 	include/fcppt/backtrace/print_current_stack_frame.hpp
