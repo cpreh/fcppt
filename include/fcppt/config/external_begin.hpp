@@ -34,13 +34,20 @@ FCPPT_PP_DISABLE_VC_WARNING(4986) // unmatching exception specification
 #elif defined(FCPPT_CONFIG_GCC_COMPILER)
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 FCPPT_PP_DISABLE_GCC_WARNING(-Wconversion)
+FCPPT_PP_DISABLE_GCC_WARNING(-Wdouble-promotion)
+FCPPT_PP_DISABLE_GCC_WARNING(-Wfloat-equal)
 FCPPT_PP_DISABLE_GCC_WARNING(-Wignored-qualifiers)
+FCPPT_PP_DISABLE_GCC_WARNING(-Wlogical-op)
 FCPPT_PP_DISABLE_GCC_WARNING(-Wmissing-declarations)
+FCPPT_PP_DISABLE_GCC_WARNING(-Wnon-virtual-dtor)
 FCPPT_PP_DISABLE_GCC_WARNING(-Wold-style-cast)
 FCPPT_PP_DISABLE_GCC_WARNING(-Woverloaded-virtual)
 FCPPT_PP_DISABLE_GCC_WARNING(-Wredundant-decls)
 FCPPT_PP_DISABLE_GCC_WARNING(-Wsign-conversion)
 FCPPT_PP_DISABLE_GCC_WARNING(-Wshadow)
+FCPPT_PP_DISABLE_GCC_WARNING(-Wstrict-aliasing)
+//FCPPT_PP_DISABLE_GCC_WARNING(-Wundef)
+FCPPT_PP_DISABLE_GCC_WARNING(-Wunused-parameter)
 #endif
 
 #define FCPPT_CONFIG_INSIDE_EXTERNAL

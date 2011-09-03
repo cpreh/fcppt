@@ -89,7 +89,7 @@ SET(
 
 SET(
 	FCPPT_UTILS_INSTALL_PREFIX_IS_PREFIX_OF_CMAKE_ROOT
-	FALSE	
+	FALSE
 )
 
 SET(
@@ -125,7 +125,7 @@ WHILE(
 	)
 		BREAK()
 	ENDIF()
-	
+
 	SET(
 		FCPPT_UTILS_CURRENT_DIRECTORY
 		"${FCPPT_UTILS_NEW_CURRENT_DIRECTORY}"
@@ -157,7 +157,7 @@ ELSE()
 		"${INSTALL_DATA_DIR_BASE}/cmake/Modules"
 	)
 ENDIF()
-		
+
 SET(
 	INSTALL_CMAKEMODULES_DIR
 	"${FCPPT_UTILS_CMAKE_MODULE_DIR}"
@@ -269,10 +269,12 @@ IF(
 	# use -Wno-long-long because too much stuff uses it
 	ADD_DEFINITIONS (
 		"-ansi -pedantic-errors -Wall -Wextra -Wconversion"
-		"-Wfloat-equal -Wredundant-decls -Winit-self"
+		"-Wfloat-equal -Wredundant-decls -Wuninitialized -Winit-self"
 		"-Woverloaded-virtual -Wnon-virtual-dtor -Wshadow"
 		"-Wsign-promo -Wstrict-aliasing=1 -Wold-style-cast"
-		"-Wno-long-long"
+		"-Wcast-qual -Wcast-align -Wlogical-op"
+		"-Wdouble-promotion -Wno-long-long"
+		#currently, -Wundef cannot be disabled via a pragma
 	)
 
 	IF(FCPPT_UTILS_HAVE_MISSING_DECLARATIONS_FLAG)
