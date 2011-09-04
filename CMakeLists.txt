@@ -959,6 +959,7 @@ SET(
 	include/fcppt/mpl/implication.hpp
 	include/fcppt/mpl/index_of.hpp
 	include/fcppt/mpl/inner.hpp
+	include/fcppt/mpl/integral_c.hpp
 	include/fcppt/mpl/invalid_invoke.hpp
 	include/fcppt/mpl/invoke_on.hpp
 	include/fcppt/mpl/max_value.hpp
@@ -1256,6 +1257,7 @@ SET(
 	include/fcppt/variant/size_type.hpp
 	include/fcppt/variant/variant.hpp
 	include/fcppt/version_int.hpp
+	include/fcppt/version_integral_c.hpp
 	include/fcppt/version_string.hpp
 	include/fcppt/weak_ptr.hpp
 	include/fcppt/weak_ptr_decl.hpp

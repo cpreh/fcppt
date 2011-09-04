@@ -7,15 +7,15 @@
 #ifndef FCPPT_MINOR_VERSION_HPP_INCLUDED
 #define FCPPT_MINOR_VERSION_HPP_INCLUDED
 
-#include <fcppt/version_int.hpp>
+#include <fcppt/version_integral_c.hpp>
 #include <fcppt/version.hpp>
 
 namespace fcppt
 {
 
-version_int const minor_version(
+typedef fcppt::version_integral_c<
 	(FCPPT_VERSION / 1000) % 1000
-);
+> minor_version;
 
 }
 

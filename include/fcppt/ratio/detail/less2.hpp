@@ -26,7 +26,7 @@ template <
 >
 struct less2  // N1 < D1 == N2 < D2
 {
-	static int_type const max = -min_c;
+	static int_type const max = -min_c::value;
 
 	static bool const
 		ok1 = R1::num <= max / R2::den,

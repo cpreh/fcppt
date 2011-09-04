@@ -30,7 +30,7 @@ struct ll_mul
 {
 private:
 	static int_type const
-		min = min_c,
+		min = min_c::value,
 		nan = min - 1,
 		max = -min,
 		a_x = static_abs<X>::value,

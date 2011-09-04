@@ -17,18 +17,18 @@ fcppt::version_string()
 		fcppt::lexical_cast<
 			fcppt::string
 		>(
-			fcppt::major_version
+			fcppt::major_version::value
 		)
 		+ FCPPT_TEXT('.')
 		+ fcppt::lexical_cast<
 			fcppt::string
 		>(
-			fcppt::minor_version
+			fcppt::minor_version::value
 		)
 		+ FCPPT_TEXT('.')
 		+ fcppt::lexical_cast<
 			fcppt::string
 		>(
-			fcppt::micro_version
+			fcppt::micro_version::value
 		);
 }
