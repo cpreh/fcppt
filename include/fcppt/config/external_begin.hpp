@@ -20,7 +20,7 @@ FCPPT_PP_PUSH_WARNING
 FCPPT_PP_DISABLE_VC_WARNING(4061) // enum not handled in switch
 FCPPT_PP_DISABLE_VC_WARNING(4100) // unreferenced formal parameter
 FCPPT_PP_DISABLE_VC_WARNING(4127) // conditional expression is constant
-FCPPT_PP_DISABLE_VC_WARNING(4191) // unsafe type cast 
+FCPPT_PP_DISABLE_VC_WARNING(4191) // unsafe type cast
 FCPPT_PP_DISABLE_VC_WARNING(4242) // loss of data
 FCPPT_PP_DISABLE_VC_WARNING(4245) // signed/unsigned mismatch in initialization
 FCPPT_PP_DISABLE_VC_WARNING(4263) // member function does not override any base class virtual member function
