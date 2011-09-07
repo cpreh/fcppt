@@ -8,12 +8,9 @@
 #define FCPPT_OPTIONAL_DECL_HPP_INCLUDED
 
 #include <fcppt/optional_fwd.hpp>
+#include <fcppt/detail/optional_base_decl.hpp>
 #include <fcppt/empty_optional_tag_fwd.hpp>
 #include <fcppt/safe_bool.hpp>
-#include <fcppt/alignment/array.hpp>
-#include <fcppt/config/external_begin.hpp>
-#include <boost/type_traits/alignment_of.hpp>
-#include <fcppt/config/external_end.hpp>
 
 namespace fcppt
 {
@@ -22,20 +19,28 @@ template<
 	typename T
 >
 class optional
+:
+	detail::optional_base<
+		T
+	>
 {
 	FCPPT_SAFE_BOOL(
 		optional
 	)
+
+	typedef detail::optional_base<
+		T
+	> base;
 public:
 	typedef T value_type;
 
-	typedef T &reference;
+	typedef typename base::reference reference;
 
-	typedef T const &const_reference;
+	typedef typename base::const_reference const_reference;
 
-	typedef T *pointer;
+	typedef typename base::pointer pointer;
 
-	typedef T const *const_pointer;
+	typedef typename base::const_pointer const_pointer;
 
 	optional();
 
@@ -85,31 +90,6 @@ public:
 private:
 	bool
 	boolean_test() const;
-
-	pointer
-	construct(
-		const_reference
-	);
-
-	pointer
-	construct(
-		optional const &
-	);
-
-	void
-	destroy();
-
-	typedef typename alignment::array<
-		unsigned char,
-		sizeof(T),
-		boost::alignment_of<
-			T
-		>::value
-	>::type storage_type;
-
-	storage_type storage_;
-
-	pointer data_;
 };
 
 }

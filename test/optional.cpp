@@ -112,3 +112,81 @@ BOOST_AUTO_TEST_CASE(
 		!test.has_value()
 	);
 }
+
+BOOST_AUTO_TEST_CASE(
+	optional_ref
+)
+{
+	typedef fcppt::optional<
+		int &
+	> optional_int_ref;
+
+	optional_int_ref test;
+
+	BOOST_CHECK(
+		!test.has_value()
+	);
+
+	int val = 42;
+
+	test = val;
+
+	BOOST_CHECK(
+		test.has_value()
+	);
+
+	BOOST_CHECK(
+		*test == 42
+	);
+
+	test.reset();
+
+	BOOST_CHECK(
+		!test.has_value()
+	);
+}
+
+BOOST_AUTO_TEST_CASE(
+	optional_ref_const
+)
+{
+	typedef fcppt::optional<
+		int const &
+	> optional_int_ref_const;
+
+	optional_int_ref_const test;
+
+	BOOST_CHECK(
+		!test.has_value()
+	);
+
+	int const val1 = 42;
+
+	test = val1;
+
+	BOOST_CHECK(
+		test.has_value()
+	);
+
+	BOOST_CHECK(
+		*test == 42
+	);
+
+	int val2 = 50;
+
+	test = val2;
+
+	BOOST_CHECK(
+		test.has_value()
+	);
+
+	BOOST_CHECK(
+		*test == 50
+	);
+
+	test.reset();
+
+	BOOST_CHECK(
+		!test.has_value()
+	);
+}

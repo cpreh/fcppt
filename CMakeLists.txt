@@ -524,6 +524,8 @@ SET(
 	include/fcppt/detail/make_ptr_base.hpp
 	include/fcppt/detail/make_shared_wrapper.hpp
 	include/fcppt/detail/make_shared_wrapper_fwd.hpp
+	include/fcppt/detail/optional_base_decl.hpp
+	include/fcppt/detail/optional_base_impl.hpp
 	include/fcppt/detail/process_assert.hpp
 	include/fcppt/detail/strong_typedef_assignment_operator.hpp
 	include/fcppt/detail/strong_typedef_binary_operator.hpp
