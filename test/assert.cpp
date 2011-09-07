@@ -15,25 +15,32 @@
 
 namespace
 {
+
 bool
 contains_false(
-	fcppt::assert_::exception const &_e)
+	fcppt::assert_::exception const &_e
+)
 {
 	return
 		_e.string().find(
-			FCPPT_TEXT("false")) != fcppt::string::npos;
+			FCPPT_TEXT("false")
+		) != fcppt::string::npos;
 }
 
 bool
 contains_false_and_contains_1337(
-	fcppt::assert_::exception const &_e)
+	fcppt::assert_::exception const &_e
+)
 {
 	return
 		contains_false(
-			_e) &&
+			_e
+		) &&
 		_e.string().find(
-			FCPPT_TEXT("1337")) != fcppt::string::npos;
+			FCPPT_TEXT("1337")
+		) != fcppt::string::npos;
 }
+
 }
 
 BOOST_AUTO_TEST_CASE(
@@ -62,6 +69,5 @@ FCPPT_PP_DISABLE_VC_WARNING(4127)
 		fcppt::assert_::exception,
 		contains_false_and_contains_1337
 	);
-
 FCPPT_PP_POP_WARNING
 }

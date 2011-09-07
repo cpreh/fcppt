@@ -15,7 +15,8 @@
 #define FCPPT_ASSERT_UNREACHABLE_MESSAGE(\
 	message\
 )\
-FCPPT_ASSERT_UNCONDITONAL(\
+FCPPT_ASSERT_UNCONDITIONAL(\
+	unreachable code,\
 	message,\
 	std::terminate()\
 )

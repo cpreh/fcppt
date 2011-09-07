@@ -8,6 +8,8 @@
 #include <fcppt/assert/exception.hpp>
 #include <fcppt/assert/pre.hpp>
 #include <fcppt/assert/post_message.hpp>
+#include <fcppt/io/cerr.hpp>
+#include <fcppt/exception.hpp>
 #include <fcppt/text.hpp>
 
 //->
@@ -48,10 +50,19 @@ library_function(
 }
 
 int main()
+try
 {
 	library_function(
 		5
 	);
+}
+catch(
+	fcppt::exception const &_error
+)
+{
+	fcppt::io::cerr
+		<< _error.string()
+		<< FCPPT_TEXT('\n');
 }
 //<-
 //]
