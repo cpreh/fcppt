@@ -15,7 +15,8 @@
 #define FCPPT_ASSERT_UNIMPLEMENTED_MESSAGE(\
 	message\
 )\
-FCPPT_ASSERT_UNCONDITONAL(\
+FCPPT_ASSERT_UNCONDITIONAL(\
+	unimplemented,\
 	message,\
 	std::terminate()\
 )
