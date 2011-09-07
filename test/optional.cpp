@@ -95,3 +95,20 @@ BOOST_AUTO_TEST_CASE(
 		test3 == test3
 	);
 }
+
+BOOST_AUTO_TEST_CASE(
+	empty_optional
+)
+{
+	typedef fcppt::optional<
+		int
+	> optional_int;
+
+	optional_int const test(
+		fcppt::empty_optional()
+	);
+
+	BOOST_REQUIRE(
+		!test.has_value()
+	);
+}

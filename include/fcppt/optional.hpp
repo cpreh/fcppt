@@ -7,6 +7,7 @@
 #ifndef FCPPT_OPTIONAL_HPP_INCLUDED
 #define FCPPT_OPTIONAL_HPP_INCLUDED
 
+#include <fcppt/empty_optional.hpp>
 #include <fcppt/optional_fwd.hpp>
 #include <fcppt/optional_comparison.hpp>
 #include <fcppt/optional_decl.hpp>

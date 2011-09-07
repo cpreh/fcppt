@@ -12,8 +12,12 @@
 namespace fcppt
 {
 
-empty_optional_tag const
-empty_optional = {};
+inline
+fcppt::empty_optional_tag const
+empty_optional()
+{
+	return fcppt::empty_optional_tag();
+}
 
 }
 
