@@ -5,34 +5,35 @@
 
 
 //[loghelloworld
-#include <fcppt/log/object.hpp>
-#include <fcppt/log/headers.hpp>
-#include <fcppt/log/parameters/root.hpp>
+#include <fcppt/log/debug.hpp>
+#include <fcppt/log/parameters/all.hpp>
 #include <fcppt/log/level.hpp>
+#include <fcppt/log/object.hpp>
+#include <fcppt/log/output.hpp>
 #include <fcppt/io/cout.hpp>
 #include <fcppt/text.hpp>
 
-int main()
+int
+main()
 {
-	fcppt::log::object logger_(
-		fcppt::log::parameters::root(
+	// Create a logger that logs to cout,
+	// has level debug and "below" enabled
+	// and is enabled itself.
+	fcppt::log::object logger(
+		fcppt::log::parameters::all(
 			fcppt::io::cout
 		)
-		.prefix(
-			FCPPT_TEXT("mylogger")
+		.level_defaults(
+			fcppt::log::level::debug
 		)
 		.enabled(
 			true
 		)
-		.level(
-			fcppt::log::level::debug
-		)
-		.create()
 	);
 
 	// Outputs: mylogger: Hello World
 	FCPPT_LOG_DEBUG(
-		logger_,
+		logger,
 		fcppt::log::_
 			<< FCPPT_TEXT("Hello World")
 	);

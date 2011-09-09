@@ -5,46 +5,62 @@
 
 
 //[logcontext
-#include <fcppt/log/object.hpp>
-#include <fcppt/log/headers.hpp>
-#include <fcppt/log/parameters/root.hpp>
-#include <fcppt/log/parameters/inherited.hpp>
+#include <fcppt/log/parameters/all.hpp>
+#include <fcppt/log/parameters/with_context.hpp>
 #include <fcppt/log/context.hpp>
 #include <fcppt/log/level.hpp>
+#include <fcppt/log/object.hpp>
+#include <fcppt/log/output.hpp>
+#include <fcppt/log/warning.hpp>
 #include <fcppt/io/cout.hpp>
 #include <fcppt/function/object.hpp>
 #include <fcppt/tr1/functional.hpp>
 #include <fcppt/text.hpp>
 
-int main()
+int
+main()
 {
-	fcppt::log::context context_;
+	// Create a logger context
+	fcppt::log::context context;
 
-	fcppt::log::object parent_(
-		fcppt::log::parameters::root(
-			fcppt::io::cout
+	// Create the root logger.
+	// It will have the location "::root" in the tree.
+	// Note that all loggers are initially disabled until told otherwise.
+	fcppt::log::object root(
+		fcppt::log::parameters::with_context(
+			context,
+			fcppt::io::cout,
+			fcppt::log::location(
+				FCPPT_TEXT("root")
+			)
 		)
-		.prefix(
-			FCPPT_TEXT("root")
+		.level_defaults(
+			fcppt::log::level::warning
 		)
-		.context(
-			context_
-		)
-		.create()
 	);
 
-	fcppt::log::object child_(
-		fcppt::log::parameters::inherited(
-			parent_,
+	// Creat the child logger.
+	// It will have the location "::root::child" in the tree.
+	fcppt::log::object child(
+		fcppt::log::parameters::with_context(
+			context,
+			fcppt::io::cout,
+			fcppt::log::location(
+				FCPPT_TEXT("root")
+			)
+			/
 			FCPPT_TEXT("child")
 		)
+		.level_defaults(
+			fcppt::log::level::warning
+		)
 	);
 
-	context_.apply(
+	// Enable all loggers starting from root.
+	context.apply(
 		fcppt::log::location(
 			FCPPT_TEXT("root")
-		)
-		+ FCPPT_TEXT("child"),
+		),
 		std::tr1::bind(
 			&fcppt::log::object::enable,
 			std::tr1::placeholders::_1,
@@ -53,7 +69,13 @@ int main()
 	);
 
 	FCPPT_LOG_WARNING(
-		child_,
+		root,
+		fcppt::log::_
+			<< FCPPT_TEXT("Print from root.")
+	);
+
+	FCPPT_LOG_WARNING(
+		child,
 		fcppt::log::_
 			<< FCPPT_TEXT("Print from child.")
 	);

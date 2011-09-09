@@ -15,6 +15,7 @@
 #include <fcppt/log/context.hpp>
 #include <fcppt/log/location.hpp>
 #include <fcppt/log/no_such_location.hpp>
+#include <fcppt/log/optional_object.hpp>
 #include <fcppt/variant/object_impl.hpp>
 #include <fcppt/text.hpp>
 #include <fcppt/config/external_begin.hpp>
@@ -28,7 +29,8 @@ fcppt::log::context::context()
 			FCPPT_TEXT("")
 		)
 	)
-{}
+{
+}
 
 fcppt::log::context::~context()
 {
@@ -142,8 +144,8 @@ fcppt::log::context::remove(
 	}
 }
 
-fcppt::log::object *
-fcppt::log::context::find(
+fcppt::log::detail::context_tree const *
+fcppt::log::context::find_node(
 	log::location const &_location
 ) const
 {
@@ -176,11 +178,35 @@ fcppt::log::context::find(
 	return
 		logger_node != tree_location->end()
 		?
-			&logger_node->value().get<
-				detail::outer_context_node
-			>().object()
+			&*logger_node
 		:
-			0;
+			0
+		;
+}
+
+
+fcppt::log::optional_object const
+fcppt::log::context::find(
+	log::location const &_location
+) const
+{
+	detail::context_tree const *const node(
+		this->find_node(
+			_location
+		)
+	);
+
+	return
+		node
+		?
+			log::optional_object(
+				node->value().get<
+					detail::outer_context_node
+				>().object()
+			)
+		:
+			log::optional_object()
+		;
 }
 
 void

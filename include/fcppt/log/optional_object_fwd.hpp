@@ -4,20 +4,20 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_LOG_TRAMPOLINE_HPP_INCLUDED
-#define FCPPT_LOG_TRAMPOLINE_HPP_INCLUDED
+#ifndef FCPPT_LOG_OPTIONAL_OBJECT_FWD_HPP_INCLUDED
+#define FCPPT_LOG_OPTIONAL_OBJECT_FWD_HPP_INCLUDED
 
-#include <fcppt/log/detail/output_helper.hpp>
-#include <fcppt/symbol.hpp>
+#include <fcppt/log/object_fwd.hpp>
+#include <fcppt/optional_fwd.hpp>
 
 namespace fcppt
 {
 namespace log
 {
 
-/// The output helper object
-FCPPT_SYMBOL extern
-detail::output_helper const _;
+typedef fcppt::optional<
+	log::object &
+> optional_object;
 
 }
 }

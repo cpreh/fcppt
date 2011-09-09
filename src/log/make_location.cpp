@@ -60,7 +60,7 @@ fcppt::log::make_location(
 		it != elements.end();
 		++it
 	)
-		ret += *it;
+		ret /= *it;
 
 	return ret;
 }

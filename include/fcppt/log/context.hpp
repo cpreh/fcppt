@@ -8,8 +8,9 @@
 #define FCPPT_LOG_CONTEXT_HPP_INCLUDED
 
 #include <fcppt/log/context_fwd.hpp>
-#include <fcppt/log/object_fwd.hpp>
 #include <fcppt/log/location_fwd.hpp>
+#include <fcppt/log/object_fwd.hpp>
+#include <fcppt/log/optional_object_fwd.hpp>
 #include <fcppt/log/tree_function.hpp>
 #include <fcppt/log/detail/context_tree.hpp>
 #include <fcppt/container/tree/object_decl.hpp>
@@ -29,43 +30,56 @@ class context
 		context
 	);
 public:
-	FCPPT_SYMBOL context();
+	FCPPT_SYMBOL
+	context();
 
-	FCPPT_SYMBOL ~context();
+	FCPPT_SYMBOL
+	~context();
 
 	/// Adds a logger to a location
 	/**
 	 * The logger will call this indirectly if you provide a context in its parameters class.
 	*/
-	FCPPT_SYMBOL void
+	void
 	add(
-		location const &,
-		object &
+		log::location const &,
+		log::object &
 	);
 
 	/// Removes the logger that is associated with a location.
 	/**
 	 * Loggers with a location set will indirectly call this on destruction.
 	*/
-	FCPPT_SYMBOL void
+	void
 	remove(
-		location const &
+		log::location const &
 	);
 
-	/// Finds a logger with a given location.
+	/// Finds a logger node with a given location
 	/**
-	 * @return 0 if the logger was not found
+	 * @return 0 if the logger node was not found
 	*/
-	FCPPT_SYMBOL object *
-	find(
-		location const &
+	log::detail::context_tree const *
+	find_node(
+		log::location const &
 	) const;
 
-	/// apply a function to a location recursively
-	FCPPT_SYMBOL void
+	/// Finds a logger with a given location.
+	FCPPT_SYMBOL
+	log::optional_object const
+	find(
+		log::location const &
+	) const;
+
+	/// Apply a function to a location recursively
+	/**
+	 * @throws log::no_such_location if the location doesn't exist
+	*/
+	FCPPT_SYMBOL
+	void
 	apply(
-		location const &,
-		tree_function const &
+		log::location const &,
+		log::tree_function const &
 	);
 private:
 	detail::context_tree tree_;

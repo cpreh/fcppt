@@ -9,8 +9,6 @@
 
 #include <fcppt/log/parameters/all.hpp>
 #include <fcppt/log/parameters/all_fwd.hpp>
-#include <fcppt/log/parameters/inherited.hpp>
-#include <fcppt/log/parameters/root.hpp>
-#include <fcppt/log/parameters/root_fwd.hpp>
+#include <fcppt/log/parameters/with_context.hpp>
 
 #endif

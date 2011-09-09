@@ -8,9 +8,9 @@
 #define FCPPT_LOG_CONTEXT_LOCATION_HPP_INCLUDED
 
 #include <fcppt/log/context_location_fwd.hpp>
-#include <fcppt/log/location.hpp>
 #include <fcppt/log/context_fwd.hpp>
-#include <fcppt/optional_impl.hpp>
+#include <fcppt/log/location.hpp>
+#include <fcppt/reference_wrapper.hpp>
 #include <fcppt/symbol.hpp>
 
 namespace fcppt
@@ -18,34 +18,31 @@ namespace fcppt
 namespace log
 {
 
-/// Represents an optional location of a logger
-/**
- * The supplied log::context can be 0
- * The location can be the empty location
-*/
+/// Represents a location of a logger
 class context_location
 {
 public:
-	FCPPT_SYMBOL context_location();
-
-	FCPPT_SYMBOL context_location(
-		log::context *,
+	FCPPT_SYMBOL
+	context_location(
+		log::context &,
 		log::location const &
 	);
 
-	FCPPT_SYMBOL log::context *
+	FCPPT_SYMBOL
+	log::context &
 	context() const;
 
-	FCPPT_SYMBOL log::location const &
+	FCPPT_SYMBOL
+	log::location const &
 	location() const;
 private:
-	typedef optional<
-		log::location
-	> optional_location;
+	typedef fcppt::reference_wrapper<
+		log::context
+	> context_reference;
 
-	log::context *context_;
+	context_reference context_;
 
-	optional_location location_;
+	log::location location_;
 };
 
 }

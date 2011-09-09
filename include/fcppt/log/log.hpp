@@ -15,6 +15,7 @@
 #include <fcppt/log/deactivate_levels.hpp>
 #include <fcppt/log/debug.hpp>
 #include <fcppt/log/default_level_streams.hpp>
+#include <fcppt/log/define_context.hpp>
 #include <fcppt/log/enabled_level_array.hpp>
 #include <fcppt/log/enabled_levels.hpp>
 #include <fcppt/log/error.hpp>
@@ -38,6 +39,10 @@
 #include <fcppt/log/no_such_location.hpp>
 #include <fcppt/log/object.hpp>
 #include <fcppt/log/object_fwd.hpp>
+#include <fcppt/log/optional_context_location.hpp>
+#include <fcppt/log/optional_context_location_fwd.hpp>
+#include <fcppt/log/optional_object.hpp>
+#include <fcppt/log/optional_object_fwd.hpp>
 #include <fcppt/log/output.hpp>
 #include <fcppt/log/parameters/parameters.hpp>
 #include <fcppt/log/trampoline.hpp>

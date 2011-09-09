@@ -7,8 +7,7 @@
 #ifndef FCPPT_LOG_DETAIL_AUTO_CONTEXT_HPP_INCLUDED
 #define FCPPT_LOG_DETAIL_AUTO_CONTEXT_HPP_INCLUDED
 
-#include <fcppt/log/context_location.hpp>
-#include <fcppt/log/context_fwd.hpp>
+#include <fcppt/log/optional_context_location.hpp>
 #include <fcppt/log/object_fwd.hpp>
 #include <fcppt/noncopyable.hpp>
 
@@ -26,16 +25,16 @@ class auto_context
 	);
 public:
 	auto_context(
-		context_location const &,
-		object &
+		log::optional_context_location const &,
+		log::object &
 	);
 
 	~auto_context();
 
-	context_location const
-	location() const;
+	log::optional_context_location const &
+	context_location() const;
 private:
-	context_location const location_;
+	log::optional_context_location const context_location_;
 };
 
 }

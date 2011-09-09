@@ -8,14 +8,17 @@
 #define FCPPT_LOG_PARAMETERS_ALL_HPP_INCLUDED
 
 #include <fcppt/log/parameters/all_fwd.hpp>
-#include <fcppt/log/object_fwd.hpp>
 #include <fcppt/log/context_fwd.hpp>
-#include <fcppt/log/level_stream_array.hpp>
-#include <fcppt/log/enabled_level_array.hpp>
 #include <fcppt/log/context_location.hpp>
+#include <fcppt/log/enabled_level_array.hpp>
+#include <fcppt/log/level.hpp>
+#include <fcppt/log/level_stream_array.hpp>
 #include <fcppt/log/location_fwd.hpp>
+#include <fcppt/log/object_fwd.hpp>
+#include <fcppt/log/optional_context_location.hpp>
 #include <fcppt/log/format/const_object_ptr.hpp>
 #include <fcppt/io/ostream.hpp>
+#include <fcppt/nonassignable.hpp>
 #include <fcppt/symbol.hpp>
 
 namespace fcppt
@@ -28,83 +31,92 @@ namespace parameters
 /// The parameters class that can be used to specify all arguments
 class all
 {
+	FCPPT_NONASSIGNABLE(
+		all
+	);
 public:
 	/// Constructs the parameters class providing a sink
-	FCPPT_SYMBOL explicit all(
+	FCPPT_SYMBOL
+	explicit all(
 		io::ostream &
 	);
 
-	/// Specifies the parent logger
-	FCPPT_SYMBOL all
-	parent(
-		object const &
-	);
-
-	/// Set the logger's context and location
-	FCPPT_SYMBOL all
+	/// Specifies the context and location
+	FCPPT_SYMBOL
+	parameters::all &
 	context_location(
-		log::context *,
-		log::location const &
+		log::context_location const &
 	);
 
 	/// Sets the logger's enabled status
-	FCPPT_SYMBOL all
+	FCPPT_SYMBOL
+	parameters::all &
 	enabled(
 		bool
 	);
 
 	/// Sets the logger's level streams
-	FCPPT_SYMBOL all
+	FCPPT_SYMBOL
+	parameters::all &
 	level_streams(
-		level_stream_array const &
+		log::level_stream_array const &
 	);
 
 	/// Sets the logger's enabled arrays
-	FCPPT_SYMBOL all
+	FCPPT_SYMBOL
+	parameters::all &
 	enabled_levels(
-		enabled_level_array const &
+		log::enabled_level_array const &
 	);
 
 	/// Sets the logger's formatter
-	FCPPT_SYMBOL all
+	FCPPT_SYMBOL
+	parameters::all &
 	formatter(
-		format::const_object_ptr
+		log::format::const_object_ptr
 	);
 
-	FCPPT_SYMBOL io::ostream &
+	FCPPT_SYMBOL
+	parameters::all &
+	level_defaults(
+		log::level::type
+	);
+
+	FCPPT_SYMBOL
+	io::ostream &
 	sink() const;
 
-	FCPPT_SYMBOL object const *
-	parent() const;
-
-	FCPPT_SYMBOL log::context_location const &
+	FCPPT_SYMBOL
+	log::optional_context_location const &
 	context_location() const;
 
-	FCPPT_SYMBOL bool
+	FCPPT_SYMBOL
+	bool
 	enabled() const;
 
-	FCPPT_SYMBOL level_stream_array const &
+	FCPPT_SYMBOL
+	log::level_stream_array const &
 	level_streams() const;
 
-	FCPPT_SYMBOL enabled_level_array const &
+	FCPPT_SYMBOL
+	log::enabled_level_array const &
 	enabled_levels() const;
 
-	FCPPT_SYMBOL format::const_object_ptr const
+	FCPPT_SYMBOL
+	log::format::const_object_ptr const
 	formatter() const;
 private:
-	io::ostream *sink_;
-
-	object const *parent_;
+	io::ostream &sink_;
 
 	bool enabled_;
 
-	level_stream_array level_streams_;
+	log::level_stream_array level_streams_;
 
-	enabled_level_array enabled_levels_;
+	log::enabled_level_array enabled_levels_;
 
-	format::const_object_ptr formatter_;
+	log::format::const_object_ptr formatter_;
 
-	log::context_location context_location_;
+	log::optional_context_location context_location_;
 };
 
 }

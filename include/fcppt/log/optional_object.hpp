@@ -4,20 +4,10 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_LOG_PARAMETERS_ROOT_FWD_HPP_INCLUDED
-#define FCPPT_LOG_PARAMETERS_ROOT_FWD_HPP_INCLUDED
+#ifndef FCPPT_LOG_OPTIONAL_OBJECT_HPP_INCLUDED
+#define FCPPT_LOG_OPTIONAL_OBJECT_HPP_INCLUDED
 
-namespace fcppt
-{
-namespace log
-{
-namespace parameters
-{
-
-class root;
-
-}
-}
-}
+#include <fcppt/log/optional_object_fwd.hpp>
+#include <fcppt/optional_impl.hpp>
 
 #endif

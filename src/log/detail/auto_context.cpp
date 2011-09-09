@@ -5,20 +5,22 @@
 
 
 #include <fcppt/log/detail/auto_context.hpp>
+#include <fcppt/log/optional_context_location.hpp>
 #include <fcppt/log/context.hpp>
+#include <fcppt/log/object_fwd.hpp>
 
 fcppt::log::detail::auto_context::auto_context(
-	context_location const &_location,
-	object &_object
+	log::optional_context_location const &_context_location,
+	log::object &_object
 )
 :
-	location_(_location)
+	context_location_(_context_location)
 {
 	if(
-		location_.context()
+		context_location_
 	)
-		location_.context()->add(
-			location_.location(),
+		context_location_->context().add(
+			context_location_->location(),
 			_object
 		);
 }
@@ -26,15 +28,15 @@ fcppt::log::detail::auto_context::auto_context(
 fcppt::log::detail::auto_context::~auto_context()
 {
 	if(
-		location_.context()
+		context_location_
 	)
-		location_.context()->remove(
-			location_.location()
+		context_location_->context().remove(
+			context_location_->location()
 		);
 }
 
-fcppt::log::context_location const
-fcppt::log::detail::auto_context::location() const
+fcppt::log::optional_context_location const &
+fcppt::log::detail::auto_context::context_location() const
 {
-	return location_;
+	return context_location_;
 }

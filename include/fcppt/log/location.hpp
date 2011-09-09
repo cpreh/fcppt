@@ -25,36 +25,45 @@ namespace log
 class location
 {
 public:
-	FCPPT_SYMBOL location();
+	FCPPT_SYMBOL
+	location();
 
-	FCPPT_SYMBOL explicit location(
+	FCPPT_SYMBOL explicit
+	location(
 		fcppt::string const &
 	);
+
+	typedef detail::location_vector::const_reference const_reference;
 
 	typedef detail::location_vector::const_iterator const_iterator;
 
-	FCPPT_SYMBOL location &
-	operator +=(
+	FCPPT_SYMBOL
+	log::location &
+	operator /=(
 		fcppt::string const &
 	);
 
-	FCPPT_SYMBOL const_iterator
+	FCPPT_SYMBOL
+	const_iterator
 	begin() const;
 
-	FCPPT_SYMBOL const_iterator
+	FCPPT_SYMBOL
+	const_iterator
 	end() const;
 
 	/// Creates a string represenation of the location using :: as delimiter.
-	FCPPT_SYMBOL fcppt::string const
+	FCPPT_SYMBOL
+	fcppt::string const
 	string() const;
 private:
 	detail::location_vector entries_;
 };
 
-FCPPT_SYMBOL location const
-operator +(
-	location,
-	string const &
+FCPPT_SYMBOL
+log::location const
+operator /(
+	log::location,
+	fcppt::string const &
 );
 
 }

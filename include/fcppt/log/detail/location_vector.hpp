@@ -20,7 +20,7 @@ namespace detail
 {
 
 typedef std::vector<
-	string
+	fcppt::string
 > location_vector;
 
 }

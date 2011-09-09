@@ -16,16 +16,17 @@ namespace log
 namespace detail
 {
 
-class inner_context_node {
+class inner_context_node
+{
 public:
 	explicit inner_context_node(
-		string const &name
+		fcppt::string const &name
 	);
 
-	string const &
+	fcppt::string const &
 	name() const;
 private:
-	string name_;
+	fcppt::string name_;
 };
 
 }

@@ -18,7 +18,7 @@ namespace detail
 {
 
 typedef fcppt::container::tree::object<
-	context_tree_node
+	detail::context_tree_node
 > context_tree;
 
 }

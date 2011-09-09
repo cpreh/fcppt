@@ -6,8 +6,9 @@
 
 #include <fcppt/log/global.hpp>
 #include <fcppt/log/object.hpp>
-#include <fcppt/log/parameters/root.hpp>
+#include <fcppt/log/level.hpp>
 #include <fcppt/log/parameters/all.hpp>
+#include <fcppt/log/format/create_prefix.hpp>
 #include <fcppt/io/cout.hpp>
 #include <fcppt/text.hpp>
 
@@ -15,19 +16,20 @@ namespace
 {
 
 fcppt::log::object global_log(
-	fcppt::log::parameters::root(
+	fcppt::log::parameters::all(
 		fcppt::io::cout
 	)
-	.prefix(
-		FCPPT_TEXT("fcppt")
+	.level_defaults(
+		fcppt::log::level::debug
+	)
+	.formatter(
+		fcppt::log::format::create_prefix(
+			FCPPT_TEXT("fcppt")
+		)
 	)
 	.enabled(
 		true
 	)
-	.level(
-		fcppt::log::level::warning
-	)
-	.create()
 );
 
 }

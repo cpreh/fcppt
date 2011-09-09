@@ -5,6 +5,7 @@
 
 
 #include <fcppt/log/location.hpp>
+#include <fcppt/string.hpp>
 #include <fcppt/text.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/spirit/home/phoenix/core/argument.hpp>
@@ -26,10 +27,11 @@ fcppt::log::location::location(
 		1u,
 		_initial
 	)
-{}
+{
+}
 
 fcppt::log::location &
-fcppt::log::location::operator +=(
+fcppt::log::location::operator /=(
 	fcppt::string const &_string
 )
 {
@@ -69,11 +71,11 @@ fcppt::log::location::string() const
 }
 
 fcppt::log::location const
-fcppt::log::operator +(
+fcppt::log::operator /(
 	log::location _location,
-	string const &_string
+	fcppt::string const &_string
 )
 {
 	return
-		_location += _string;
+		_location /= _string;
 }

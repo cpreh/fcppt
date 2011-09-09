@@ -31,25 +31,30 @@ class level_stream
 	);
 public:
 	/// Constructs a level_stream with a sink and a formatter
-	FCPPT_SYMBOL level_stream(
+	FCPPT_SYMBOL
+	level_stream(
 		io::ostream &,
 		format::const_object_ptr
 	);
 
-	FCPPT_SYMBOL ~level_stream();
+	FCPPT_SYMBOL
+	~level_stream();
 
-	FCPPT_SYMBOL void
+	FCPPT_SYMBOL
+	void
 	log(
 		detail::temporary_output const &,
 		format::const_object_ptr addtional_formatter
 	);
 
-	FCPPT_SYMBOL void
+	FCPPT_SYMBOL
+	void
 	formatter(
 		format::const_object_ptr
 	);
 
-	FCPPT_SYMBOL format::const_object_ptr const
+	FCPPT_SYMBOL
+	format::const_object_ptr const
 	formatter() const;
 private:
 	io::ostream &dest_;

@@ -38,82 +38,91 @@ public:
 	 * @see parameters::root
 	 * @see parameters::inherited
 	*/
-	FCPPT_SYMBOL explicit object(
+	FCPPT_SYMBOL
+	explicit object(
 		parameters::all const &
 	);
 
-	FCPPT_SYMBOL ~object();
+	FCPPT_SYMBOL
+	~object();
 
 	FCPPT_SYMBOL void
 	log(
-		level::type,
-		detail::temporary_output const &
+		log::level::type,
+		log::detail::temporary_output const &
 	);
 
-	FCPPT_SYMBOL level_stream &
+	FCPPT_SYMBOL
+	log::level_stream &
 	level_sink(
-		level::type
+		log::level::type
 	);
 
-	FCPPT_SYMBOL level_stream const &
+	FCPPT_SYMBOL
+	log::level_stream const &
 	level_sink(
-		level::type
+		log::level::type
 	) const;
 
-	FCPPT_SYMBOL void
+	FCPPT_SYMBOL
+	void
 	activate(
-		level::type
+		log::level::type
 	);
 
-	FCPPT_SYMBOL void
+	FCPPT_SYMBOL
+	void
 	deactivate(
-		level::type
+		log::level::type
 	);
 
-	FCPPT_SYMBOL bool
+	FCPPT_SYMBOL
+	bool
 	activated(
-		level::type
+		log::level::type
 	) const;
 
-	FCPPT_SYMBOL void
+	FCPPT_SYMBOL
+	void
 	enable(
 		bool
 	);
 
-	FCPPT_SYMBOL bool
+	FCPPT_SYMBOL
+	bool
 	enabled() const;
 
-	FCPPT_SYMBOL io::ostream &
+	FCPPT_SYMBOL
+	fcppt::io::ostream &
 	sink() const;
 
-	FCPPT_SYMBOL format::const_object_ptr const
+	FCPPT_SYMBOL
+	log::format::const_object_ptr const
 	formatter() const;
 
 	FCPPT_SYMBOL
-	log::context_location const
+	log::optional_context_location const
 	context_location() const;
 
 	FCPPT_SYMBOL
-	level_stream_array const &
+	log::level_stream_array const &
 	level_streams() const;
 
 	FCPPT_SYMBOL
-	enabled_level_array const &
+	log::enabled_level_array const &
 	enabled_levels() const;
 private:
-	object const *const parent_;
+	fcppt::io::ostream &sink_;
 
-	io::ostream &sink_;
+	log::detail::auto_context auto_context_;
 
-	detail::auto_context auto_context_;
-
-	format::const_object_ptr const formatter_;
+	log::format::const_object_ptr const formatter_;
 
 	bool enabled_;
 
-	level_stream_array level_streams_;
+	log::level_stream_array level_streams_;
 
-	enabled_level_array enabled_levels_;
+	log::enabled_level_array enabled_levels_;
 };
 
 }

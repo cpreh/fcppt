@@ -17,7 +17,8 @@ namespace log
 {
 
 /// Creates an enabled_level_array which has every entry set to true that is greater or equal to the parameter
-FCPPT_SYMBOL enabled_level_array const
+FCPPT_SYMBOL
+log::enabled_level_array const
 enabled_levels(
 	level::type
 );

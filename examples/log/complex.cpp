@@ -10,13 +10,13 @@
 #include <fcppt/io/cout.hpp>
 #include <fcppt/log/context.hpp>
 #include <fcppt/log/debug.hpp>
+#include <fcppt/log/define_context.hpp>
 #include <fcppt/log/error.hpp>
 #include <fcppt/log/level.hpp>
 #include <fcppt/log/location.hpp>
 #include <fcppt/log/object.hpp>
-#include <fcppt/log/output.hpp> // needed for the log::_ << syntax
-#include <fcppt/log/parameters/inherited.hpp>
-#include <fcppt/log/parameters/root.hpp>
+#include <fcppt/log/output.hpp>
+#include <fcppt/log/parameters/with_context.hpp>
 #include <fcppt/tr1/functional.hpp>
 #include <fcppt/exception.hpp>
 #include <fcppt/from_std_string.hpp>
@@ -28,81 +28,135 @@
 namespace engine
 {
 
-// define a global log context
-fcppt::log::context log_context_;
+// Function to retrieve the global log context
+fcppt::log::context &
+log_context();
 
-// define our root logger
-fcppt::log::object root_logger_(
-	fcppt::log::parameters::root(
-		fcppt::io::cout
-	)
-	.prefix(
-		FCPPT_TEXT("engine")
-	)
-	.context(
-		log_context_
-	)
-	.level(
-		fcppt::log::level::debug
-	)
-	.enabled(
-		false
-	)
-	.create()
-);
+// Helper function to create our logger parameters
+inline
+fcppt::log::parameters::all const
+create_logger(
+	fcppt::log::location const &_location
+)
+{
+	return
+		fcppt::log::parameters::with_context(
+			engine::log_context(),
+			fcppt::io::cout,
+			_location
+		)
+		.level_defaults(
+			fcppt::log::level::debug
+		);
+}
 
-// define two subsystem loggers
-// they will be initially disabled because the root logger is disabled
+// Helper function to return the engine's log location
+inline
+fcppt::log::location const
+logger_location()
+{
+	return
+		fcppt::log::location(
+			FCPPT_TEXT("engine")
+		);
+}
+
+// The engine's root logger
+fcppt::log::object &
+root_logger();
+
+// Define two subsystem loggers.
 namespace renderer
 {
 
-fcppt::log::object logger_(
-	fcppt::log::parameters::inherited(
-		root_logger_,
-		FCPPT_TEXT("renderer")
-	)
-);
-
-void
-test();
+fcppt::log::object &
+logger();
 
 }
 
 namespace audio
 {
 
-fcppt::log::object logger_(
-	fcppt::log::parameters::inherited(
-		root_logger_,
+fcppt::log::object &
+logger();
+
+}
+
+}
+
+//
+// Translation unit for the global log context
+//
+
+FCPPT_LOG_DEFINE_CONTEXT(
+	engine::log_context
+)
+
+//
+// Translation unit for the root logger
+//
+
+namespace
+{
+
+fcppt::log::object root_logger_obj(
+	engine::create_logger(
+		engine::logger_location()
+	)
+);
+
+}
+
+fcppt::log::object &
+engine::root_logger()
+{
+	return root_logger_obj;
+}
+
+//
+// Translation unit for the renderer logger
+//
+
+namespace
+{
+
+fcppt::log::object renderer_logger_obj(
+	engine::create_logger(
+		engine::logger_location()
+		/
+		FCPPT_TEXT("renderer")
+	)
+);
+
+}
+
+fcppt::log::object &
+engine::renderer::logger()
+{
+	return renderer_logger_obj;
+}
+
+//
+// Translation unit for the audio logger
+//
+
+namespace
+{
+
+fcppt::log::object audio_logger_obj(
+	engine::create_logger(
+		engine::logger_location()
+		/
 		FCPPT_TEXT("audio")
 	)
 );
 
-void
-test();
-
 }
 
-}
-
-void
-engine::renderer::test()
+fcppt::log::object &
+engine::audio::logger()
 {
-	FCPPT_LOG_DEBUG(
-		logger_,
-		fcppt::log::_
-			<< FCPPT_TEXT("test!")
-	);
-}
-
-void
-engine::audio::test()
-{
-	FCPPT_LOG_ERROR(
-		logger_,
-		fcppt::log::_
-			<< FCPPT_TEXT("test!")
-	);
+	return audio_logger_obj;
 }
 
 int
@@ -120,11 +174,11 @@ try
 		i < argc;
 		++i
 	)
-		engine::log_context_.apply(
+		engine::log_context().apply(
 			fcppt::log::location(
 				FCPPT_TEXT("engine")
 			)
-			+
+			/
 			fcppt::from_std_string(
 				argv[i]
 			),
@@ -135,16 +189,24 @@ try
 			)
 		);
 
-	engine::renderer::test();
+	FCPPT_LOG_DEBUG(
+		engine::renderer::logger(),
+		fcppt::log::_
+			<< FCPPT_TEXT("test")
+	)
 
-	engine::audio::test();
+	FCPPT_LOG_DEBUG(
+		engine::audio::logger(),
+		fcppt::log::_
+			<< FCPPT_TEXT("test")
+	)
 }
 catch(
-	fcppt::exception const &e
+	fcppt::exception const &_error
 )
 {
 	fcppt::io::cerr
-		<< e.string()
+		<< _error.string()
 		<< FCPPT_TEXT('\n');
 
 	return EXIT_FAILURE;

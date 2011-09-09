@@ -16,14 +16,14 @@
 
 fcppt::log::level::type
 fcppt::log::level_from_string(
-	string const &_str
+	fcppt::string const &_str
 )
 {
-	level_string_array const level_strings(
+	log::level_string_array const level_strings(
 		log::level_strings()
 	);
 
-	level_string_array::const_iterator const it(
+	log::level_string_array::const_iterator const it(
 		std::find(
 			level_strings.begin(),
 			level_strings.end(),
@@ -46,7 +46,7 @@ fcppt::log::level_from_string(
 		>(
 			std::distance(
 				static_cast<
-					level_string_array const &
+					log::level_string_array const &
 				>(
 					level_strings
 				).begin(),

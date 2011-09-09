@@ -5,48 +5,42 @@
 
 
 #include <fcppt/log/parameters/all.hpp>
+#include <fcppt/log/context_location.hpp>
+#include <fcppt/log/default_level_streams.hpp>
+#include <fcppt/log/enabled_levels.hpp>
+#include <fcppt/log/enabled_level_array.hpp>
+#include <fcppt/log/level.hpp>
+#include <fcppt/log/level_stream_array.hpp>
+#include <fcppt/log/optional_context_location.hpp>
+#include <fcppt/log/format/const_object_ptr.hpp>
+#include <fcppt/io/ostream.hpp>
 
 fcppt::log::parameters::all::all(
 	io::ostream &_sink
 )
 :
-	sink_(&_sink),
-	parent_(0),
+	sink_(_sink),
 	enabled_(false),
 	level_streams_(),
 	enabled_levels_(),
 	formatter_(),
 	context_location_()
-{}
-
-fcppt::log::parameters::all
-fcppt::log::parameters::all::parent(
-	object const &_parent
-)
 {
-	parent_ = &_parent;
-
-	return *this;
 }
 
-fcppt::log::parameters::all
+fcppt::log::parameters::all &
 fcppt::log::parameters::all::context_location(
-	log::context *const _context,
-	log::location const &_location
+	log::context_location const &_context_location
 )
 {
-	context_location_
-		= log::context_location(
-			_context,
-			_location
-		);
+	context_location_ = _context_location;
 
 	return *this;
 }
 
-fcppt::log::parameters::all
+fcppt::log::parameters::all &
 fcppt::log::parameters::all::enabled(
-	bool _enabled
+	bool const _enabled
 )
 {
 	enabled_ = _enabled;
@@ -54,9 +48,9 @@ fcppt::log::parameters::all::enabled(
 	return *this;
 }
 
-fcppt::log::parameters::all
+fcppt::log::parameters::all &
 fcppt::log::parameters::all::level_streams(
-	level_stream_array const &_level_streams
+	log::level_stream_array const &_level_streams
 )
 {
 	level_streams_ = _level_streams;
@@ -64,9 +58,9 @@ fcppt::log::parameters::all::level_streams(
 	return *this;
 }
 
-fcppt::log::parameters::all
+fcppt::log::parameters::all &
 fcppt::log::parameters::all::enabled_levels(
-	enabled_level_array const &_enabled_levels
+	log::enabled_level_array const &_enabled_levels
 )
 {
 	enabled_levels_ = _enabled_levels;
@@ -74,9 +68,9 @@ fcppt::log::parameters::all::enabled_levels(
 	return *this;
 }
 
-fcppt::log::parameters::all
+fcppt::log::parameters::all &
 fcppt::log::parameters::all::formatter(
-	format::const_object_ptr const _formatter
+	log::format::const_object_ptr const _formatter
 )
 {
 	formatter_ = _formatter;
@@ -84,19 +78,33 @@ fcppt::log::parameters::all::formatter(
 	return *this;
 }
 
+fcppt::log::parameters::all &
+fcppt::log::parameters::all::level_defaults(
+	log::level::type const _level
+)
+{
+	this->enabled_levels(
+		log::enabled_levels(
+			_level
+		)
+	);
+
+	this->level_streams(
+		log::default_level_streams(
+			sink_
+		)
+	);
+
+	return *this;
+}
+
 fcppt::io::ostream &
 fcppt::log::parameters::all::sink() const
 {
-	return *sink_;
+	return sink_;
 }
 
-fcppt::log::object const *
-fcppt::log::parameters::all::parent() const
-{
-	return parent_;
-}
-
-fcppt::log::context_location const &
+fcppt::log::optional_context_location const &
 fcppt::log::parameters::all::context_location() const
 {
 	return context_location_;

@@ -23,8 +23,8 @@ namespace detail
 
 typedef variant::object<
 	boost::mpl::vector2<
-		inner_context_node,
-		outer_context_node
+		detail::inner_context_node,
+		detail::outer_context_node
 	>
 > context_tree_node;
 

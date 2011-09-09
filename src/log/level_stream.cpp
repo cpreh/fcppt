@@ -16,10 +16,12 @@ fcppt::log::level_stream::level_stream(
 :
 	dest_(_dest),
 	formatter_(_formatter)
-{}
+{
+}
 
 fcppt::log::level_stream::~level_stream()
-{}
+{
+}
 
 void
 fcppt::log::level_stream::log(

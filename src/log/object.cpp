@@ -4,10 +4,18 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
+#include "tree_formatter.hpp"
+#include <fcppt/io/ostream.hpp>
 #include <fcppt/log/object.hpp>
 #include <fcppt/log/parameters/all.hpp>
 #include <fcppt/log/context.hpp>
+#include <fcppt/log/enabled_level_array.hpp>
+#include <fcppt/log/level.hpp>
 #include <fcppt/log/level_stream.hpp>
+#include <fcppt/log/level_stream_array.hpp>
+#include <fcppt/log/optional_context_location.hpp>
+#include <fcppt/log/detail/temporary_output_fwd.hpp>
+#include <fcppt/log/format/const_object_ptr.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/disable_vc_warning.hpp>
@@ -19,9 +27,6 @@ fcppt::log::object::object(
 	parameters::all const &_param
 )
 :
-	parent_(
-		_param.parent()
-	),
 	sink_(
 		_param.sink()
 	),
@@ -58,7 +63,10 @@ fcppt::log::object::log(
 {
 	if(
 		!this->enabled()
-		|| !this->activated(_level)
+		||
+		!this->activated(
+			_level
+		)
 	)
 		return;
 
@@ -66,7 +74,14 @@ fcppt::log::object::log(
 		_level
 	).log(
 		_helper,
-		this->formatter()
+		auto_context_.context_location()
+		?
+			log::tree_formatter(
+				*auto_context_.context_location(),
+				this->formatter()
+			)
+		:
+			this->formatter()
 	);
 }
 
@@ -149,10 +164,10 @@ fcppt::log::object::formatter() const
 	return formatter_;
 }
 
-fcppt::log::context_location const
+fcppt::log::optional_context_location const
 fcppt::log::object::context_location() const
 {
-	return auto_context_.location();
+	return auto_context_.context_location();
 }
 
 fcppt::log::level_stream_array const &

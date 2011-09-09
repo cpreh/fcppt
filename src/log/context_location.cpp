@@ -5,35 +5,27 @@
 
 
 #include <fcppt/log/context_location.hpp>
-#include <fcppt/assert/pre.hpp>
-
-fcppt::log::context_location::context_location()
-:
-	context_(),
-	location_()
-{}
+#include <fcppt/log/context_fwd.hpp>
+#include <fcppt/log/location_fwd.hpp>
 
 fcppt::log::context_location::context_location(
-	log::context *const _context,
+	log::context &_context,
 	log::location const &_location
 )
 :
 	context_(_context),
 	location_(_location)
-{}
+{
+}
 
-fcppt::log::context *
+fcppt::log::context &
 fcppt::log::context_location::context() const
 {
-	return context_;
+	return context_.get();
 }
 
 fcppt::log::location const &
 fcppt::log::context_location::location() const
 {
-	FCPPT_ASSERT_PRE(
-		location_
-	);
-
-	return *location_;
+	return location_;
 }

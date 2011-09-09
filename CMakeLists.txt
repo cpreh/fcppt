@@ -707,13 +707,15 @@ SET(
 	include/fcppt/log/no_such_location.hpp
 	include/fcppt/log/object.hpp
 	include/fcppt/log/object_fwd.hpp
+	include/fcppt/log/optional_context_location.hpp
+	include/fcppt/log/optional_context_location_fwd.hpp
+	include/fcppt/log/optional_object.hpp
+	include/fcppt/log/optional_object_fwd.hpp
 	include/fcppt/log/output.hpp
 	include/fcppt/log/parameters/all.hpp
 	include/fcppt/log/parameters/all_fwd.hpp
-	include/fcppt/log/parameters/inherited.hpp
 	include/fcppt/log/parameters/parameters.hpp
-	include/fcppt/log/parameters/root.hpp
-	include/fcppt/log/parameters/root_fwd.hpp
+	include/fcppt/log/parameters/with_context.hpp
 	include/fcppt/log/trampoline.hpp
 	include/fcppt/log/tree_function.hpp
 	include/fcppt/log/verbose.hpp
@@ -1355,11 +1357,12 @@ SET(
 	src/log/make_location.cpp
 	src/log/object.cpp
 	src/log/parameters/all.cpp
-	src/log/parameters/inherited.cpp
-	src/log/parameters/root.cpp
+	src/log/parameters/with_context.cpp
 	src/log/set_levels.cpp
 	src/log/set_levels.hpp
 	src/log/trampoline.cpp
+	src/log/tree_formatter.cpp
+	src/log/tree_formatter.hpp
 	src/narrow.cpp
 	src/random/actor/element.cpp
 	src/random/actor/normalized.cpp
