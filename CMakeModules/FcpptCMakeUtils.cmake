@@ -222,6 +222,16 @@ IF(
 	)
 
 	CHECK_CXX_COMPILER_FLAG(
+		"-Wdouble-promotion"
+		FCPPT_UTILS_HAVE_DOUBLE_PROMOTION_FLAG
+	)
+
+	CHECK_CXX_COMPILER_FLAG(
+		"-Wlogical-op"
+		FCPPT_UTILS_HAVE_LOGICAL_OP_FLAG
+	)
+
+	CHECK_CXX_COMPILER_FLAG(
 		"-Wmissing-declarations"
 		FCPPT_UTILS_HAVE_MISSING_DECLARATIONS_FLAG
 	)
@@ -272,10 +282,17 @@ IF(
 		"-Wfloat-equal -Wredundant-decls -Wuninitialized -Winit-self"
 		"-Woverloaded-virtual -Wnon-virtual-dtor -Wshadow"
 		"-Wsign-promo -Wstrict-aliasing=1 -Wold-style-cast"
-		"-Wcast-qual -Wcast-align -Wlogical-op"
-		"-Wdouble-promotion -Wno-long-long"
+		"-Wcast-qual -Wcast-align -Wno-long-long"
 		#currently, -Wundef cannot be disabled via a pragma
 	)
+
+	IF(FCPPT_UTILS_HAVE_DOUBLE_PROMOTION_FLAG)
+		ADD_DEFINITIONS ("-Wdouble-promotion")
+	ENDIF()
+
+	IF(FCPPT_UTILS_HAVE_LOGICAL_OP_FLAG)
+		ADD_DEFINITIONS ("-Wlogical-op")
+	ENDIF()
 
 	IF(FCPPT_UTILS_HAVE_MISSING_DECLARATIONS_FLAG)
 		ADD_DEFINITIONS ("-Wmissing-declarations")

@@ -13,4 +13,9 @@
 #define FCPPT_CONFIG_GCC_COMPILER
 #endif
 
+// clang emulates gcc, so FCPPT_CONFIG_GCC_COMPILER will also be defined
+#if defined(__clang__)
+#define FCPPT_CONFIG_CLANG_COMPILER
+#endif
+
 #endif
