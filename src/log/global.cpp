@@ -9,7 +9,7 @@
 #include <fcppt/log/level.hpp>
 #include <fcppt/log/parameters/all.hpp>
 #include <fcppt/log/format/create_prefix.hpp>
-#include <fcppt/io/cout.hpp>
+#include <fcppt/io/clog.hpp>
 #include <fcppt/text.hpp>
 
 namespace
@@ -17,7 +17,7 @@ namespace
 
 fcppt::log::object global_log(
 	fcppt::log::parameters::all(
-		fcppt::io::cout
+		fcppt::io::clog
 	)
 	.level_defaults(
 		fcppt::log::level::debug
