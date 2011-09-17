@@ -19,12 +19,14 @@ namespace format
 
 /// Factory for creating format::chain
 /**
+ * At least one of parent and child must not be zero
  * @see format::chain
 */
-FCPPT_SYMBOL const_object_ptr const
+FCPPT_SYMBOL
+format::const_object_ptr const
 create_chain(
-	const_object_ptr parent,
-	const_object_ptr child
+	format::const_object_ptr parent,
+	format::const_object_ptr child
 );
 
 }

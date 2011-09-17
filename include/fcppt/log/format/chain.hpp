@@ -32,19 +32,22 @@ class FCPPT_CLASS_SYMBOL chain
 		chain
 	);
 public:
-	FCPPT_SYMBOL chain(
-		const_object_ptr parent,
-		const_object_ptr child
+	FCPPT_SYMBOL
+	chain(
+		format::const_object_ptr parent,
+		format::const_object_ptr child
 	);
 
-	FCPPT_SYMBOL ~chain();
+	FCPPT_SYMBOL
+	~chain();
 
-	FCPPT_SYMBOL string const
+	FCPPT_SYMBOL
+	fcppt::string const
 	format(
-		string const &
+		fcppt::string const &
 	) const;
 private:
-	const_object_ptr const
+	format::const_object_ptr const
 		parent_,
 		child_;
 };

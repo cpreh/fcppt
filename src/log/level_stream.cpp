@@ -32,7 +32,7 @@ fcppt::log::level_stream::log(
 	dest_
 		<< format::create_chain(
 			_additional_formatter,
-			formatter()
+			this->formatter()
 		)->format(
 			_output.result()
 		);
