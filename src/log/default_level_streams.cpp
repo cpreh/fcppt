@@ -17,7 +17,7 @@ fcppt::log::default_level_streams(
 	io::ostream &_sink
 )
 {
-	level_stream_array ret;
+	log::level_stream_array ret;
 
 	FCPPT_FOREACH_ENUMERATOR(
 		index,
@@ -28,7 +28,7 @@ fcppt::log::default_level_streams(
 			index
 		] =
 			fcppt::make_shared_ptr<
-				level_stream
+				log::level_stream
 			>(
 				fcppt::ref(
 					_sink

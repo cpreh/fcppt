@@ -57,5 +57,9 @@ fcppt::log::tree_formatter(
 				ret
 			);
 
+	FCPPT_ASSERT_ERROR(
+		ret
+	);
+
 	return ret;
 }

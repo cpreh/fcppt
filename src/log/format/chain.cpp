@@ -19,7 +19,7 @@ fcppt::log::format::chain::chain(
 	child_(_child)
 {
 	FCPPT_ASSERT_PRE_MESSAGE(
-		!parent_ || !child_,
+		parent_ && child_,
 		FCPPT_TEXT("format::chain(): one of the objects is zero!")
 	);
 }
