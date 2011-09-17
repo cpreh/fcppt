@@ -39,7 +39,7 @@ main()
 		)
 	);
 
-	// Creat the child logger.
+	// Create the child logger.
 	// It will have the location "::root::child" in the tree.
 	fcppt::log::object child(
 		fcppt::log::parameters::with_context(

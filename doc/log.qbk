@@ -36,7 +36,7 @@ then /all/ log levels except `verbose` are activated. If you write
 `.level_defaults(fcppt::log::level::warning)` then the levels "warning", "error" and
 "fatal" are activated - and so on with the other levels.
 
-`default_levels` is a shorthand to initialize all of the logger's sinks accordingly.
+`level_defaults` is a shorthand to initialize all of the logger's sinks accordingly.
 For simple use cases you do not have to know how different sinks behave.
 
 Why do we use a macro for logging?
@@ -117,7 +117,7 @@ logger objects. That's also why the loggers don't get their "parents" in the
 hierarchy as objects, they merely get a path.
 
 [note In C++ the order in which global objects in different translation
-units are initialized is unpsecified.]
+units are initialized is unspecified.]
 
 To mitigate that problem, the loggers don't know each other. That also
 leads to the very verbose initialization of each logger (you basically
