@@ -32,7 +32,7 @@ class normalized
 	);
 public:
 	FCPPT_SYMBOL explicit normalized(
-		container const &
+		actor::container const &
 	);
 
 	FCPPT_SYMBOL ~normalized();
@@ -45,7 +45,7 @@ private:
 		float_type
 	> rng_type;
 
-	container const elements_;
+	actor::container const elements_;
 
 	rng_type rng_;
 };
