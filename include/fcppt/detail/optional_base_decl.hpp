@@ -99,7 +99,7 @@ protected:
 
 	typedef T *pointer;
 
-	typedef T const *const_pointer;
+	typedef T *const_pointer;
 
 	optional_base();
 
