@@ -662,6 +662,7 @@ SET(
 	include/fcppt/log/deactivate_levels.hpp
 	include/fcppt/log/debug.hpp
 	include/fcppt/log/default_level_streams.hpp
+	include/fcppt/log/define_context.hpp
 	include/fcppt/log/detail/auto_context.hpp
 	include/fcppt/log/detail/context_tree.hpp
 	include/fcppt/log/detail/context_tree_node.hpp
@@ -1104,6 +1105,7 @@ SET(
 	include/fcppt/signal/base_fwd.hpp
 	include/fcppt/signal/base_impl.hpp
 	include/fcppt/signal/connection_manager.hpp
+	include/fcppt/signal/connection_manager_fwd.hpp
 	include/fcppt/signal/detail/concrete_connection.hpp
 	include/fcppt/signal/detail/concrete_connection_impl.hpp
 	include/fcppt/signal/detail/connection.hpp

@@ -13,6 +13,7 @@
 #include <fcppt/signal/base_fwd.hpp>
 #include <fcppt/signal/base_impl.hpp>
 #include <fcppt/signal/connection_manager.hpp>
+#include <fcppt/signal/connection_manager_fwd.hpp>
 #include <fcppt/signal/object.hpp>
 #include <fcppt/signal/object_decl.hpp>
 #include <fcppt/signal/object_fwd.hpp>

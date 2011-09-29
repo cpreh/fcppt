@@ -7,6 +7,7 @@
 #ifndef FCPPT_SIGNAL_CONNECTION_MANAGER_HPP_INCLUDED
 #define FCPPT_SIGNAL_CONNECTION_MANAGER_HPP_INCLUDED
 
+#include <fcppt/signal/connection_manager_fwd.hpp>
 #include <fcppt/signal/auto_connection.hpp>
 #include <fcppt/signal/shared_connection.hpp>
 #include <fcppt/symbol.hpp>
