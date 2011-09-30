@@ -42,7 +42,7 @@ use_grid()
 		)
 	] = 42;
 
-	fcppt::io::cout
+	fcppt::io::cout()
 		<< grid[
 			int3d_grid::dim(
 				1u,
@@ -100,7 +100,7 @@ resize_grid()
 		);
 	}
 
-	fcppt::io::cout
+	fcppt::io::cout()
 		<< grid
 		<< FCPPT_TEXT('\n');
 
@@ -114,7 +114,7 @@ resize_grid()
 		42
 	);
 
-	fcppt::io::cout
+	fcppt::io::cout()
 		<< grid
 		<< FCPPT_TEXT('\n');
 }

@@ -10,7 +10,7 @@
 
 int main()
 {
-	fcppt::io::cout
+	fcppt::io::cout()
 		<< FCPPT_TEXT("Current version is ")
 		<< fcppt::version_string()
 		<< FCPPT_TEXT('\n');

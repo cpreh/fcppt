@@ -12,13 +12,19 @@
 int main()
 {
 	// we can convert an int into a long
-	fcppt::io::cout << fcppt::sn_cast<long>(42) << FCPPT_TEXT('\n');
+	fcppt::io::cout()
+		<< fcppt::sn_cast<long>(42)
+		<< FCPPT_TEXT('\n');
 
 	// we can also convert an int into a float
-	fcppt::io::cout << fcppt::sn_cast<float>(42) << FCPPT_TEXT('\n');
+	fcppt::io::cout()
+		<< fcppt::sn_cast<float>(42)
+		<< FCPPT_TEXT('\n');
 
 	// floats can be converted into floats of greater size
-	fcppt::io::cout << fcppt::sn_cast<double>(3.5f) << FCPPT_TEXT('\n');
+	fcppt::io::cout()
+		<< fcppt::sn_cast<double>(3.5f)
+		<< FCPPT_TEXT('\n');
 
 	// the following is not allowed if double is greater than float
 	//fcppt::sn_cast<float>(4.0);

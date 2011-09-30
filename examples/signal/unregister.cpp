@@ -25,7 +25,7 @@ on_unregister(
 	int const _value
 )
 {
-	fcppt::io::cout
+	fcppt::io::cout()
 		<< FCPPT_TEXT("Connection destroyed ")
 		<< _value
 		<< FCPPT_TEXT(".\n");
@@ -60,7 +60,7 @@ int main()
 		// The destructor of connection will cause on_unregister(42) to be called
 	}
 
-	fcppt::io::cout
+	fcppt::io::cout()
 		<< FCPPT_TEXT("After destruction.\n");
 }
 //]

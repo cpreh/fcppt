@@ -66,7 +66,7 @@ int main()
 	);
 
 	// Outputs ((1*4)*8)*15=480
-	fcppt::io::cout
+	fcppt::io::cout()
 		<< signal()
 		<< FCPPT_TEXT('\n');
 }

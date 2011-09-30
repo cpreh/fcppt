@@ -23,7 +23,7 @@ int main()
 
 	test1.first = 42;
 
-	fcppt::io::cout
+	fcppt::io::cout()
 		<< test1
 		<< FCPPT_TEXT('\n');
 }

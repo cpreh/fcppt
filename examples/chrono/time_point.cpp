@@ -56,7 +56,7 @@ f()
 		t2 - t1
 	);
 
-	fcppt::io::cout
+	fcppt::io::cout()
 		<< difference
 		<< FCPPT_TEXT('\n');
 }
@@ -93,7 +93,7 @@ g()
 		)
 	);
 
-	fcppt::io::cout
+	fcppt::io::cout()
 		<< point2
 		<< FCPPT_TEXT('\n');
 }
@@ -118,7 +118,7 @@ h()
 		point.time_since_epoch()
 	);
 
-	fcppt::io::cout
+	fcppt::io::cout()
 		<< absolute_duration
 		<< FCPPT_TEXT('\n');
 }

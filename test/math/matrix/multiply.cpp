@@ -37,7 +37,7 @@ BOOST_AUTO_TEST_CASE(multiply)
 			left * right
 		);
 
-	fcppt::io::cout
+	fcppt::io::cout()
 		<< result
 		<< FCPPT_TEXT('\n');
 

@@ -42,7 +42,7 @@ create_logger(
 	return
 		fcppt::log::parameters::with_context(
 			engine::log_context(),
-			fcppt::io::cout,
+			fcppt::io::cout(),
 			_location
 		)
 		.level_defaults(
@@ -205,7 +205,7 @@ catch(
 	fcppt::exception const &_error
 )
 {
-	fcppt::io::cerr
+	fcppt::io::cerr()
 		<< _error.string()
 		<< FCPPT_TEXT('\n');
 

@@ -36,7 +36,7 @@ struct visitor
 		T2 const &t2
 	) const
 	{
-		fcppt::io::cout
+		fcppt::io::cout()
 			<< t1
 			<< FCPPT_TEXT(' ')
 			<< t2
@@ -79,7 +79,7 @@ catch(
 	fcppt::exception const &e
 )
 {
-	fcppt::io::cerr
+	fcppt::io::cerr()
 		<< e.string()
 		<< FCPPT_TEXT('\n');
 

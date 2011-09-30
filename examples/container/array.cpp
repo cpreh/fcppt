@@ -29,11 +29,11 @@ int main()
 		it != array.end();
 		++it
 	)
-		fcppt::io::cout
+		fcppt::io::cout()
 			<< *it
 			<< FCPPT_TEXT(' ');
 
-	fcppt::io::cout
+	fcppt::io::cout()
 		<< FCPPT_TEXT('\n');
 }
 //]

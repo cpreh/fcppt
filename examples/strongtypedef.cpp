@@ -25,7 +25,7 @@ f(
 	strong_int const i
 )
 {
-	fcppt::io::cout
+	fcppt::io::cout()
 		<< i
 		<< FCPPT_TEXT('\n');
 }

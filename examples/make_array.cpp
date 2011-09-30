@@ -28,7 +28,7 @@ int main()
 		it != array.end();
 		++it
 	)
-		fcppt::io::cout
+		fcppt::io::cout()
 			<< *it
 			<< FCPPT_TEXT(' '
 		);

@@ -73,7 +73,7 @@ int main()
 		)
 	);
 
-	fcppt::io::cout
+	fcppt::io::cout()
 		<< read_count
 		<< FCPPT_TEXT(" bytes read.\n");
 }

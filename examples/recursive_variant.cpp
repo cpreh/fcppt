@@ -87,7 +87,7 @@ try
 	));
 
 	// rrv will be correctly dispatched to our wrapper struct, which will output the int
-	fcppt::io::cout
+	fcppt::io::cout()
 		<< rrv
 		<< FCPPT_TEXT('\n');
 
@@ -96,7 +96,7 @@ catch(
 	fcppt::exception const &_error
 )
 {
-	fcppt::io::cerr
+	fcppt::io::cerr()
 		<< _error.string()
 		<< FCPPT_TEXT('\n');
 

@@ -18,7 +18,7 @@ void
 print_trace(
 	unsigned const levels)
 {
-	fcppt::io::cout
+	fcppt::io::cout()
 		<< FCPPT_TEXT("Descended ")
 		<< levels
 		<< FCPPT_TEXT(" levels, printing stack trace (manually) now...\n\n");
@@ -28,16 +28,21 @@ print_trace(
 			fcppt::backtrace::stack_limit(
 				levels * 2u));
 
-	fcppt::io::cout << FCPPT_TEXT("Stacktrace begin...\n");
+	fcppt::io::cout()
+		<< FCPPT_TEXT("Stacktrace begin...\n");
 	for(
 		fcppt::backtrace::stack_frame::const_iterator current_symbol =
 			sf.begin();
 		current_symbol != sf.end();
 		++current_symbol)
-		fcppt::io::cout << (*current_symbol) << FCPPT_TEXT("\n");
-	fcppt::io::cout << FCPPT_TEXT("Stacktrace end.\n");
+		fcppt::io::cout()
+			<< (*current_symbol)
+			<< FCPPT_TEXT("\n");
+	fcppt::io::cout()
+		<< FCPPT_TEXT("Stacktrace end.\n");
 
-	fcppt::io::cout << FCPPT_TEXT("And the same, non-manually: \n\n");
+	fcppt::io::cout()
+		<< FCPPT_TEXT("And the same, non-manually: \n\n");
 	fcppt::backtrace::print_current_stack_frame();
 }
 
@@ -78,9 +83,13 @@ recursive_function_1(
 int
 main()
 {
-	fcppt::io::cout << FCPPT_TEXT("Printing the current stack frame to stderr now...\n");
+	fcppt::io::cout()
+		<< FCPPT_TEXT("Printing the current stack frame to stderr now...\n");
+
 	fcppt::backtrace::print_current_stack_frame();
-	fcppt::io::cout << FCPPT_TEXT("Ok, done, descending into a recursive function...\n");
+
+	fcppt::io::cout()
+		<< FCPPT_TEXT("Ok, done, descending into a recursive function...\n");
 
 	fcppt::random::uniform<unsigned> random_depth(
 		fcppt::random::make_last_exclusive_range(

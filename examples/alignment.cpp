@@ -29,7 +29,7 @@ int main()
 		42
 	);
 
-	fcppt::io::cout
+	fcppt::io::cout()
 		<< std::boolalpha
 		<< fcppt::alignment::is_aligned(
 			&test,

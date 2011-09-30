@@ -14,7 +14,7 @@ int main()
 {
 	int FCPPT_ALIGNMENT_ALIGN(16) test = 0;
 
-	fcppt::io::cout
+	fcppt::io::cout()
 		<< std::boolalpha
 		<< fcppt::alignment::is_aligned(
 			&test,

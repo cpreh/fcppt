@@ -17,7 +17,7 @@ namespace
 
 fcppt::log::object global_log(
 	fcppt::log::parameters::all(
-		fcppt::io::clog
+		fcppt::io::clog()
 	)
 	.level_defaults(
 		fcppt::log::level::debug

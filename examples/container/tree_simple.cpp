@@ -37,7 +37,7 @@ try
 	);
 
 	// The tree is empty since it has no children
-	fcppt::io::cout
+	fcppt::io::cout()
 		<< FCPPT_TEXT("Is the tree empty? ")
 		<< tree.empty()
 		<< FCPPT_TEXT('\n');
@@ -79,19 +79,19 @@ try
 	);
 
 	// Now the tree isn't empty anymore
-	fcppt::io::cout
+	fcppt::io::cout()
 		<< FCPPT_TEXT("Is the tree empty? ")
 		<< tree.empty()
 		<< FCPPT_TEXT('\n');
 
 	// Outputs 3
-	fcppt::io::cout
+	fcppt::io::cout()
 		<< FCPPT_TEXT("How many children does the tree have: ")
 		<< tree.size()
 		<< FCPPT_TEXT('\n');
 
 	// Outputs: hello world
-	fcppt::io::cout
+	fcppt::io::cout()
 		<< FCPPT_TEXT("The tree value is: ")
 		<< tree.value()
 		<< FCPPT_TEXT('\n');
@@ -105,7 +105,7 @@ try
 		it != tree.end();
 		++it
 	)
-		fcppt::io::cout
+		fcppt::io::cout()
 			<< it->value()
 			<< FCPPT_TEXT('\n');
 
@@ -113,12 +113,12 @@ try
 		tree.front()
 	);
 
-	fcppt::io::cout
+	fcppt::io::cout()
 		<< FCPPT_TEXT("First child has a parent: ")
 		<< first_child.has_parent()
 		<< FCPPT_TEXT('\n');
 
-	fcppt::io::cout
+	fcppt::io::cout()
 		<< FCPPT_TEXT("First child's position in the parent's child list: ")
 		<< std::distance(
 			first_child.parent().begin(),
@@ -130,7 +130,7 @@ catch(
 	fcppt::exception const &_error
 )
 {
-	fcppt::io::cerr
+	fcppt::io::cerr()
 		<< _error.string()
 		<< FCPPT_TEXT('\n');
 

@@ -27,7 +27,7 @@ int main()
 		opt1
 	);
 
-	fcppt::io::cout
+	fcppt::io::cout()
 		<< *opt1
 		<< FCPPT_TEXT('\n')
 		<< *opt2
@@ -38,19 +38,21 @@ int main()
 	// assign opt1 by value
 	opt1 = opt2;
 
-	fcppt::io::cout
+	fcppt::io::cout()
 		<< *opt1
 		<< FCPPT_TEXT('\n')
 		<< *opt2
 		<< FCPPT_TEXT('\n');
 
 	if(opt1)
-		fcppt::io::cout << FCPPT_TEXT("opt1 is set\n");
+		fcppt::io::cout()
+			<< FCPPT_TEXT("opt1 is set\n");
 
 	// destroy opt1's value
 	opt1.reset();
 
 	if(!opt1)
-		fcppt::io::cout << FCPPT_TEXT("opt1 is not set\n");
+		fcppt::io::cout()
+			<< FCPPT_TEXT("opt1 is not set\n");
 }
 //]

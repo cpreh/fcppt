@@ -16,7 +16,7 @@ namespace
 void
 some_function()
 {
-	fcppt::io::cout
+	fcppt::io::cout()
 		<< FCPPT_PP_FILE
 		<< FCPPT_TEXT(": ")
 		<< FCPPT_PP_FUNCTION

@@ -28,7 +28,7 @@ int main()
 
 	std::cout << converted << "\n";
 
-	fcppt::io::cout
+	fcppt::io::cout()
 		<< fcppt::from_std_string(converted)
 		<< FCPPT_TEXT("\n");
 

@@ -29,7 +29,7 @@ main()
 	fcppt::log::object root(
 		fcppt::log::parameters::with_context(
 			context,
-			fcppt::io::cout,
+			fcppt::io::cout(),
 			fcppt::log::location(
 				FCPPT_TEXT("root")
 			)
@@ -44,7 +44,7 @@ main()
 	fcppt::log::object child(
 		fcppt::log::parameters::with_context(
 			context,
-			fcppt::io::cout,
+			fcppt::io::cout(),
 			fcppt::log::location(
 				FCPPT_TEXT("root")
 			)

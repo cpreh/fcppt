@@ -28,11 +28,11 @@ print_values(
 		i < 20;
 		++i
 	)
-		fcppt::io::cout
+		fcppt::io::cout()
 			<< rng()
 			<< FCPPT_TEXT(' ');
 
-	fcppt::io::cout
+	fcppt::io::cout()
 		<< FCPPT_TEXT('\n');
 }
 

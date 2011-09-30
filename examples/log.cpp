@@ -30,7 +30,7 @@ try
 	fcppt::log::context context;
 
 	fcppt::io::ostream &output_stream(
-		fcppt::io::cout
+		fcppt::io::cout()
 	);
 
 	fcppt::log::level::type const level(
@@ -99,7 +99,7 @@ try
 		child_ref.has_value()
 	);
 
-	fcppt::io::cout
+	fcppt::io::cout()
 		<< FCPPT_TEXT("location of child: ")
 		<< child_ref->context_location()->location().string()
 		<< FCPPT_TEXT('\n');
@@ -129,7 +129,7 @@ catch(
 	fcppt::exception const &_error
 )
 {
-	fcppt::io::cerr
+	fcppt::io::cerr()
 		<< _error.string()
 		<< FCPPT_TEXT('\n');
 

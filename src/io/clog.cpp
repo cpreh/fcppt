@@ -9,10 +9,13 @@
 #include <iostream>
 
 fcppt::io::ostream &
-fcppt::io::clog(
+fcppt::io::clog()
+{
+	return
 #ifndef FCPPT_NARROW_STRING
-	std::wclog
+		std::wclog
 #else
-	std::clog
+		std::clog
 #endif
-);
+	;
+}

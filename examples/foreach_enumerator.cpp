@@ -29,7 +29,7 @@ do_something(
 	my_enum::type const val
 )
 {
-	fcppt::io::cout
+	fcppt::io::cout()
 		<< static_cast<unsigned long>(val) // necessary to silence a warning about promotions
 		<< FCPPT_TEXT(' ');
 }
@@ -45,7 +45,8 @@ int main()
 	)
 		do_something(i);
 
-	fcppt::io::cout << FCPPT_TEXT('\n');
+	fcppt::io::cout()
+		<< FCPPT_TEXT('\n');
 
 	// it is also possible to dictate the start value
 	// prints 1, 2
@@ -56,6 +57,7 @@ int main()
 	)
 		do_something(i);
 
-	fcppt::io::cout << FCPPT_TEXT('\n');
+	fcppt::io::cout()
+		<< FCPPT_TEXT('\n');
 }
 //]

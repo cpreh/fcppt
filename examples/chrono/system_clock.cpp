@@ -27,7 +27,7 @@ int main()
 	);
 
 	// output the current time in its internal representation
-	fcppt::io::cout
+	fcppt::io::cout()
 		<< FCPPT_TEXT("The time is ")
 		<< time1
 		<< FCPPT_TEXT('\n');
@@ -40,7 +40,7 @@ int main()
 	);
 
 	// output the current time as string
-	fcppt::io::cout
+	fcppt::io::cout()
 		<< fcppt::time::ctime(
 			c_time
 		)

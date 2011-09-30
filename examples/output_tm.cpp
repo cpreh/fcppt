@@ -15,12 +15,12 @@
 int
 main()
 {
-	fcppt::io::cout.imbue(
+	fcppt::io::cout().imbue(
 		fcppt::default_locale()
 	);
 
 	fcppt::time::output_tm(
-		fcppt::io::cout,
+		fcppt::io::cout(),
 		fcppt::time::gmtime(
 			fcppt::time::std_time()
 		)

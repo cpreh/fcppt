@@ -9,10 +9,13 @@
 #include <iostream>
 
 fcppt::io::ostream &
-fcppt::io::cerr(
+fcppt::io::cerr()
+{
+	return
 #ifndef FCPPT_NARROW_STRING
-	std::wcerr
+		std::wcerr
 #else
-	std::cerr
+		std::cerr
 #endif
-);
+	;
+}

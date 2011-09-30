@@ -33,17 +33,21 @@ try
 		)
 	);
 
-	if(back != test)
-		fcppt::io::cerr << FCPPT_TEXT("Strings are not equal!\n");
+	if(
+		back != test
+	)
+		fcppt::io::cerr()
+			<< FCPPT_TEXT("Strings are not equal!\n");
 	else
-		fcppt::io::cerr << FCPPT_TEXT("Strings are equal!\n");
+		fcppt::io::cerr()
+			<< FCPPT_TEXT("Strings are equal!\n");
 }
 catch(
-	fcppt::exception const &e
+	fcppt::exception const &_error
 )
 {
-	fcppt::io::cerr
-		<< e.string()
+	fcppt::io::cerr()
+		<< _error.string()
 		<< FCPPT_TEXT('\n');
 
 	return EXIT_FAILURE;

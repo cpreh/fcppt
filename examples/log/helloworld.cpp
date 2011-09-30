@@ -21,7 +21,7 @@ main()
 	// and is enabled itself.
 	fcppt::log::object logger(
 		fcppt::log::parameters::all(
-			fcppt::io::cout
+			fcppt::io::cout()
 		)
 		.level_defaults(
 			fcppt::log::level::debug

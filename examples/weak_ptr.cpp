@@ -32,7 +32,7 @@ int main()
 		shared_int_ptr x = weak_p.lock();
 
 		// x will be != 0
-		fcppt::io::cout
+		fcppt::io::cout()
 			<< x
 			<< FCPPT_TEXT('\n');
 	}
@@ -44,7 +44,7 @@ int main()
 		shared_int_ptr x = weak_p.lock();
 
 		// x will be 0
-		fcppt::io::cout
+		fcppt::io::cout()
 			<< x
 			<< FCPPT_TEXT('\n');
 	}

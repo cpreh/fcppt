@@ -16,7 +16,7 @@
 	condition_arg,\
 	message_arg\
 ) \
-fcppt::io::cerr \
+fcppt::io::cerr() \
 	<< \
 	fcppt::assert_::make_message(\
 		FCPPT_ASSERT_GATHER_INFORMATION(\

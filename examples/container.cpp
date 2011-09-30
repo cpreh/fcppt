@@ -46,11 +46,11 @@ try
 		it != map.end();
 		++it
 	)
-		fcppt::io::cout
+		fcppt::io::cout()
 			<< it->first
 			<< FCPPT_TEXT(": ")
 			<< it->second
-			<< '\n';
+			<< FCPPT_TEXT('\n');
 
 	typedef fcppt::container::raw_vector<
 		char
@@ -80,13 +80,15 @@ try
 		test_string.end()
 	);
 
-	fcppt::io::cout << vec.size() << '\n';
+	fcppt::io::cout()
+		<< vec.size()
+		<< FCPPT_TEXT('\n');
 }
 catch(
 	fcppt::exception const &_error
 )
 {
-	fcppt::io::cerr
+	fcppt::io::cerr()
 		<< _error.string()
 		<< FCPPT_TEXT('\n');
 

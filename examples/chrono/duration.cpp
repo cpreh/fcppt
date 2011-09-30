@@ -31,7 +31,7 @@ f()
 		500
 	);
 
-	fcppt::io::cout
+	fcppt::io::cout()
 		<< test
 		<< FCPPT_TEXT('\n');
 }
@@ -64,7 +64,7 @@ g()
 	);
 
 	// prints 3600000
-	fcppt::io::cout
+	fcppt::io::cout()
 		<< millis
 		<< FCPPT_TEXT('\n');
 }
@@ -93,7 +93,7 @@ h()
 	);
 
 	// prints 100
-	fcppt::io::cout
+	fcppt::io::cout()
 		<< internal_value
 		<< FCPPT_TEXT('\n');
 }

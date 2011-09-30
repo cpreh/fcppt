@@ -38,7 +38,7 @@ int_ptr_arg(
 	unique_int_ptr ptr
 )
 {
-	fcppt::io::cout
+	fcppt::io::cout()
 		<< *ptr
 		<< FCPPT_TEXT('\n');
 }

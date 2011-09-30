@@ -30,7 +30,8 @@ struct functor1
 {
 	void operator() ()
 	{
-		fcppt::io::cout << FCPPT_TEXT("functor1\n");
+		fcppt::io::cout()
+			<< FCPPT_TEXT("functor1\n");
 	}
 };
 
@@ -39,7 +40,8 @@ struct functor2
 {
 	void operator() ()
 	{
-		fcppt::io::cout << FCPPT_TEXT("functor2\n");
+		fcppt::io::cout()
+			<< FCPPT_TEXT("functor2\n");
 	}
 
 	float operator&()
@@ -55,7 +57,8 @@ struct functor3
 {
 	int operator() ()
 	{
-		fcppt::io::cout << FCPPT_TEXT("functor3\n");
+		fcppt::io::cout()
+			<< FCPPT_TEXT("functor3\n");
 
 		return 5;
 	}
@@ -67,7 +70,8 @@ struct functor4
 {
 	 int operator() ( int )
 	 {
-		fcppt::io::cout << FCPPT_TEXT("functor4\n");
+		fcppt::io::cout()
+			<< FCPPT_TEXT("functor4\n");
 
 		return 7;
 	 }
@@ -77,7 +81,8 @@ struct functor4
 // a free function
 void function1()
 {
-	fcppt::io::cout << FCPPT_TEXT("function1\n");
+	fcppt::io::cout()
+		<< FCPPT_TEXT("function1\n");
 }
 
 }
@@ -100,8 +105,13 @@ try
 	f_2();
 	f_3();
 
-	fcppt::io::cout << f_4() << std::endl;
-	fcppt::io::cout << f_5( 7 ) << std::endl;
+	fcppt::io::cout()
+		<< f_4()
+		<< std::endl;
+
+	fcppt::io::cout()
+		<< f_5( 7 )
+		<< std::endl;
 
 	bool b = true;
 
@@ -113,11 +123,11 @@ try
 	FCPPT_ASSERT_ERROR( b == false );
 }
 catch(
-	fcppt::exception const &e
+	fcppt::exception const &_error
 )
 {
-	fcppt::io::cerr
-		<< e.string()
+	fcppt::io::cerr()
+		<< _error.string()
 		<< FCPPT_TEXT('\n');
 
 	return EXIT_FAILURE;

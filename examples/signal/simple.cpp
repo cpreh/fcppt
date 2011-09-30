@@ -23,7 +23,7 @@ callback(
 	int const i
 )
 {
-	fcppt::io::cout
+	fcppt::io::cout()
 		<< FCPPT_TEXT("\"callback\" called with ")
 		<< i
 		<< FCPPT_TEXT("!\n");
@@ -34,7 +34,7 @@ other_callback(
 	foo &
 )
 {
-	fcppt::io::cout
+	fcppt::io::cout()
 		<< FCPPT_TEXT("\"other_callback\" called\n");
 }
 

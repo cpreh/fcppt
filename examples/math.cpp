@@ -63,7 +63,7 @@ int main()
 
 	normalize(vecf);
 
-	fcppt::io::cout
+	fcppt::io::cout()
 		<< vec << FCPPT_TEXT('\n')
 		<< fcppt::math::vector::length<float>(vec) << FCPPT_TEXT('\n')
 		<< length(vecf) << FCPPT_TEXT('\n');
@@ -95,10 +95,14 @@ int main()
 		normalize(b);
 		normalize(c);
 
-		fcppt::io::cout << fcppt::math::vector::cross(a, b) << FCPPT_TEXT(' ') << c << FCPPT_TEXT('\n');
+		fcppt::io::cout()
+			<< fcppt::math::vector::cross(a, b)
+			<< FCPPT_TEXT(' ')
+			<< c
+			<< FCPPT_TEXT('\n');
 	}
 
-	fcppt::io::cout
+	fcppt::io::cout()
 		<< fcppt::math::vector::make(
 			42,
 			43,
@@ -115,7 +119,7 @@ int main()
 		int_rect::dim(3, 2)
 	);
 
-	fcppt::io::cout
+	fcppt::io::cout()
 		<< test_rect
 		<< FCPPT_TEXT('\n');
 }

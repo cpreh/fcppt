@@ -64,7 +64,7 @@ int main()
 
 	// tree::object::value still returns a reference
 	// prints 42
-	fcppt::io::cout
+	fcppt::io::cout()
 		<< node.value().int_value()
 		<< FCPPT_TEXT('\n');
 
@@ -81,14 +81,14 @@ int main()
 
 	// check that the internal scoped_ptr is now empty
 	// prints false
-	fcppt::io::cout
+	fcppt::io::cout()
 		<< std::boolalpha
 		<< node.holder()
 		<< FCPPT_TEXT('\n');
 
 	// output the obtained unique_ptr
 	// prints 42
-	fcppt::io::cout
+	fcppt::io::cout()
 		<< released->int_value()
 		<< FCPPT_TEXT('\n');
 }

@@ -18,7 +18,9 @@ namespace fcppt
 namespace io
 {
 
-FCPPT_SYMBOL extern ostream &cout;
+FCPPT_SYMBOL
+io::ostream &
+cout();
 
 }
 }

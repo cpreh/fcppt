@@ -39,7 +39,7 @@ struct visitor
 	{
 		// use fcppt::type_name to print the type
 
-		fcppt::io::cout
+		fcppt::io::cout()
 			<< fcppt::type_name(
 				typeid(
 					Type

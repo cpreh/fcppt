@@ -56,7 +56,7 @@ try
 		it != trav.end();
 		++it
 	)
-		fcppt::io::cout
+		fcppt::io::cout()
 			<< (*it).value()
 			<< std::endl;
 }
@@ -64,7 +64,7 @@ catch(
 	fcppt::exception const &e
 )
 {
-	fcppt::io::cerr
+	fcppt::io::cerr()
 		<< e.string()
 		<< FCPPT_TEXT('\n');
 

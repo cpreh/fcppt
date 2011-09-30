@@ -55,7 +55,7 @@ int main()
 	);
 
 	// print the address of the newly inserted element
-	fcppt::io::cout
+	fcppt::io::cout()
 		<< &map[42]
 		<< FCPPT_TEXT('\n');
 }

@@ -48,15 +48,17 @@ f()
 			)
 		);
 
-		fcppt::io::cout << &d2 << FCPPT_TEXT('\n');
+		fcppt::io::cout()
+			<< &d2
+			<< FCPPT_TEXT('\n');
 	}
 	catch(
-		fcppt::bad_dynamic_cast const &e
+		fcppt::bad_dynamic_cast const &_error
 	)
 	{
 		// shows a nice message with the types in it
-		fcppt::io::cout
-			<< e.string()
+		fcppt::io::cout()
+			<< _error.string()
 			<< FCPPT_TEXT('\n');
 	}
 }
@@ -86,7 +88,7 @@ g()
 		ptr,
 		&b
 	)
-		fcppt::io::cout
+		fcppt::io::cout()
 			<< ptr
 			<< FCPPT_TEXT('\n');
 }

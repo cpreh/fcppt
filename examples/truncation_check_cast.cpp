@@ -28,7 +28,7 @@ try
 		)
 	);
 
-	fcppt::io::cout
+	fcppt::io::cout()
 		<< FCPPT_TEXT("The casted value is ")
 		<< result
 		<< FCPPT_TEXT('\n');
@@ -37,7 +37,7 @@ catch(
 	fcppt::bad_truncation_check_cast const &e
 )
 {
-	fcppt::io::cout
+	fcppt::io::cout()
 		<< e.string()
 		<< FCPPT_TEXT('\n');
 }

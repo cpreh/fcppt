@@ -9,10 +9,13 @@
 #include <iostream>
 
 fcppt::io::istream &
-fcppt::io::cin(
+fcppt::io::cin()
+{
+	return
 #ifndef FCPPT_NARROW_STRING
-	std::wcin
+		std::wcin
 #else
-	std::cin
+		std::cin
 #endif
-);
+	;
+}

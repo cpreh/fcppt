@@ -33,10 +33,10 @@ main()
 			cur_tm
 		)
 	)
-		fcppt::io::cerr
+		fcppt::io::cerr()
 			<< FCPPT_TEXT("Parsing of date failed.\n");
 	else
-		fcppt::io::cout
+		fcppt::io::cout()
 			<< FCPPT_TEXT("Date parsed is: day = ")
 			<< cur_tm.tm_mday
 			<< FCPPT_TEXT(", month = ")
@@ -59,10 +59,10 @@ main()
 			cur_tm
 		)
 	)
-		fcppt::io::cerr
+		fcppt::io::cerr()
 			<< FCPPT_TEXT("Parsing of time failed.\n");
 	else
-		fcppt::io::cout
+		fcppt::io::cout()
 			<< FCPPT_TEXT("Time parsed is: hour = ")
 			<< cur_tm.tm_hour
 			<< FCPPT_TEXT(", minute = ")

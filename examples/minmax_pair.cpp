@@ -22,7 +22,7 @@ int main()
 		10
 	);
 
-	fcppt::io::cout
+	fcppt::io::cout()
 		<< test1
 		<< FCPPT_TEXT('\n');
 
@@ -37,7 +37,7 @@ int main()
 		fcppt::invalid_minmax_pair const &e
 	)
 	{
-		fcppt::io::cout
+		fcppt::io::cout()
 			<< e.string()
 			<< FCPPT_TEXT('\n');
 	}

@@ -18,14 +18,14 @@ namespace
 void
 test1()
 {
-	fcppt::io::cout
+	fcppt::io::cout()
 		<< FCPPT_TEXT("test1\n");
 }
 
 void
 test2()
 {
-	fcppt::io::cout
+	fcppt::io::cout()
 		<< FCPPT_TEXT("test2\n");
 }
 

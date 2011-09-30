@@ -55,7 +55,7 @@ int main()
 	);
 
 	// output the elapsed time in milliseconds
-	fcppt::io::cout
+	fcppt::io::cout()
 		<< FCPPT_TEXT("Elapsed time in milliseconds: ")
 		<< millis.count()
 		<< FCPPT_TEXT('\n');

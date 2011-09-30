@@ -34,7 +34,7 @@ output(
 	bitfield const &_field
 )
 {
-	fcppt::io::cout
+	fcppt::io::cout()
 		<< FCPPT_TEXT("Person status: hungry: ")
 		<< (_field & person_status::hungry)
 		<< FCPPT_TEXT('\n')
@@ -62,7 +62,7 @@ int main()
 	field &= ~bitfield(person_status::hungry);
 
 	// You can access a single flag via operator[]
-	fcppt::io::cout
+	fcppt::io::cout()
 		<< FCPPT_TEXT("person is hungry: ")
 		<< field[person_status::hungry]
 		<< FCPPT_TEXT('\n');
@@ -70,7 +70,7 @@ int main()
 	// You can also set a flag this way:
 	field[person_status::hungry] = false;
 
-	fcppt::io::cout
+	fcppt::io::cout()
 		<< FCPPT_TEXT("person is hungry: ")
 		<< field[person_status::hungry]
 		<< FCPPT_TEXT('\n');
@@ -83,7 +83,7 @@ int main()
 		it != field.end();
 		++it
 	)
-		fcppt::io::cout
+		fcppt::io::cout()
 			<< *it
 			<< FCPPT_TEXT('\n');
 }
