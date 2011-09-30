@@ -207,6 +207,13 @@ IF(
 		"-O3 -fomit-frame-pointer -DNDEBUG"
 	)
 
+	# we need -fPIC for libraries on AMD64
+	IF("${CMAKE_SYSTEM_PROCESSOR}" STREQUAL "x86_64")
+		ADD_DEFINITIONS(
+			"-fPIC"
+		)
+	ENDIF()
+
 	# cmake tries to grep for warning messages which will fail in a lot of cases
 	SET(
 		CMAKE_REQUIRED_FLAGS_BASE "-Wall -Werror -pedantic"
