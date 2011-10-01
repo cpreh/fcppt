@@ -1,77 +1,109 @@
-CMAKE_MINIMUM_REQUIRED(VERSION 2.6)
+cmake_minimum_required(
+	VERSION 2.6
+)
 
-SET (CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/CMakeModules;${CMAKE_MODULE_PATH}")
+set(
+	CMAKE_MODULE_PATH
+	"${CMAKE_SOURCE_DIR}/CMakeModules;${CMAKE_MODULE_PATH}"
+)
 
-PROJECT (fcppt)
+project(fcppt)
 
-INCLUDE(FcpptCMakeUtils)
+include(FcpptCMakeUtils)
 
-SET (FCPPT_MAJOR_VERSION 0)
-SET (FCPPT_MINOR_VERSION 11)
-SET (FCPPT_MICRO_VERSION 0)
+set(FCPPT_MAJOR_VERSION 0)
+set(FCPPT_MINOR_VERSION 11)
+set(FCPPT_MICRO_VERSION 0)
 
-SET (FCPPT_VERSION "${FCPPT_MAJOR_VERSION}.${FCPPT_MINOR_VERSION}.${FCPPT_MICRO_VERSION}")
+set(
+	FCPPT_VERSION
+	"${FCPPT_MAJOR_VERSION}.${FCPPT_MINOR_VERSION}.${FCPPT_MICRO_VERSION}"
+)
 
-MATH (
+math(
 	EXPR
 	FCPPT_INT_VERSION
 	"${FCPPT_MAJOR_VERSION} * 1000000 + ${FCPPT_MINOR_VERSION} * 1000 + ${FCPPT_MICRO_VERSION}"
 )
-SET (FCPPT_SHARED_VERSION ${FCPPT_VERSION})
 
-INCLUDE (CheckCXXSourceCompiles)
-INCLUDE (CheckCXXSourceRuns)
-INCLUDE (CheckIncludeFile)
-INCLUDE (FindPkgConfig)
+set(
+	FCPPT_SHARED_VERSION
+	${FCPPT_VERSION}
+)
 
-IF (MSVC)
-	SET (ENABLE_NARROW_STRING_DEFAULT OFF)
-	SET (ENABLE_SHARED_DEFAULT OFF)
-	SET (ENABLE_STATIC_DEFAULT ON)
-ELSE ()
-	SET (ENABLE_NARROW_STRING_DEFAULT ON)
-	SET (ENABLE_SHARED_DEFAULT ON)
-	SET (ENABLE_STATIC_DEFAULT OFF)
-ENDIF ()
+include(CheckCXXSourceCompiles)
+include(CheckCXXSourceRuns)
+include(CheckIncludeFile)
+include(FindPkgConfig)
 
-OPTION(ENABLE_SHARED "Build fcppt as a shared library" ${ENABLE_SHARED_DEFAULT})
+if(MSVC)
+	set(ENABLE_NARROW_STRING_DEFAULT OFF)
+	set(ENABLE_SHARED_DEFAULT OFF)
+	set(ENABLE_STATIC_DEFAULT ON)
+else()
+	set(ENABLE_NARROW_STRING_DEFAULT ON)
+	set(ENABLE_SHARED_DEFAULT ON)
+	set(ENABLE_STATIC_DEFAULT OFF)
+endif()
 
-OPTION(ENABLE_STATIC "Build fcppt as a static library" ${ENABLE_STATIC_DEFAULT})
+option(
+	ENABLE_SHARED
+	"Build fcppt as a shared library"
+	${ENABLE_SHARED_DEFAULT}
+)
 
-OPTION(ENABLE_NARROW_STRING "Build fcppt with std::string instead of std::wstring" ${ENABLE_NARROW_STRING_DEFAULT})
+option(
+	ENABLE_STATIC
+	"Build fcppt as a static library"
+	${ENABLE_STATIC_DEFAULT}
+)
 
-IF(NOT ENABLE_SHARED AND NOT ENABLE_STATIC)
-	MESSAGE(FATAL_ERROR "You disabled both STATIC and SHARED")
-ENDIF()
+option(
+	ENABLE_NARROW_STRING
+	"Build fcppt with std::string instead of std::wstring"
+	${ENABLE_NARROW_STRING_DEFAULT}
+)
+
+if(
+	NOT ENABLE_SHARED AND NOT ENABLE_STATIC
+)
+	message(
+		FATAL_ERROR
+		"You disabled both STATIC and SHARED"
+	)
+endif()
 
 # choose a library to link the tests to
-IF(ENABLE_SHARED)
-	SET(FCPPT_DEFAULT_LINK_TARGET fcppt)
-ENDIF()
+if(ENABLE_SHARED)
+	set(FCPPT_DEFAULT_LINK_TARGET fcppt)
+endif()
 
 # static overrides shared
-IF(ENABLE_STATIC)
-	SET(FCPPT_DEFAULT_LINK_TARGET fcppt_static)
-ENDIF()
+if(ENABLE_STATIC)
+	set(FCPPT_DEFAULT_LINK_TARGET fcppt_static)
+endif()
 
-IF(MSVC AND ${FCPPT_DEFAULT_LINK_TARGET} STREQUAL "fcppt")
-	SET (FCPPT_CONFIG_LINK_MACROS "-D FCPPT_DYN_LINK")
-ENDIF()
+if(MSVC AND ${FCPPT_DEFAULT_LINK_TARGET} STREQUAL "fcppt")
+	set(FCPPT_CONFIG_LINK_MACROS "-D FCPPT_DYN_LINK")
+endif()
 
-IF (ENABLE_NARROW_STRING)
-       SET (FCPPT_NARROW_STRING true)
-ENDIF()
+if(ENABLE_NARROW_STRING)
+	set(FCPPT_NARROW_STRING true)
+endif()
 
-ADD_DEFINITIONS(-D BOOST_FILESYSTEM_NO_DEPRECATED)
+add_definitions(-D BOOST_FILESYSTEM_NO_DEPRECATED)
 
-IF(UNIX)
-	SET (FCPPT_STRING_IS_UTF8 true)
-ENDIF()
+if(UNIX)
+	set(FCPPT_STRING_IS_UTF8 true)
+endif()
 
-IF(
+if(
 	CMAKE_COMPILER_IS_GNUCXX OR FCPPT_UTILS_COMPILER_IS_CLANGPP
 )
-	SET(FCPPT_HAVE_GCC_VISIBILITY ${FCPPT_UTILS_HAVE_GCC_VISIBILITY})
+	set(
+		FCPPT_HAVE_GCC_VISIBILITY
+		${FCPPT_UTILS_HAVE_GCC_VISIBILITY}
+	)
 
 	CHECK_CXX_SOURCE_COMPILES(
 		"#include <cxxabi.h>
@@ -90,7 +122,10 @@ IF(
 	)
 
 
-	SET (CMAKE_REQUIRED_FLAGS "-Wall -Werror -pedantic")
+	set(
+		CMAKE_REQUIRED_FLAGS
+		"-Wall -Werror -pedantic"
+	)
 
 	CHECK_CXX_SOURCE_COMPILES(
 		"
@@ -108,14 +143,14 @@ IF(
 		FCPPT_HAVE_GCC_DIAGNOSTIC
 	)
 
-	UNSET(CMAKE_REQUIRED_FLAGS)
-ENDIF ()
+	unset(CMAKE_REQUIRED_FLAGS)
+endif()
 
-INCLUDE_DIRECTORIES (${CMAKE_SOURCE_DIR}/include)
+include_directories(${CMAKE_SOURCE_DIR}/include)
 
-SET(PKG_CONFIG_FILE "${CMAKE_BINARY_DIR}/fcppt.pc")
+set(PKG_CONFIG_FILE "${CMAKE_BINARY_DIR}/fcppt.pc")
 
-FILE(
+file(
 	WRITE ${PKG_CONFIG_FILE}
 	"prefix=${CMAKE_INSTALL_PREFIX}\n"
 	"exec_prefix=\${prefix}\n"
@@ -129,34 +164,38 @@ FILE(
 	"Libs: -L\${libdir} -lfcppt\n"
 )
 
-INSTALL(
+install(
 	FILES
 	${PKG_CONFIG_FILE}
 	DESTINATION
 	${INSTALL_PKGCONFIG_DIR}
 )
 
-FIND_PACKAGE(
+find_package(
 	Boost 1.44.0 REQUIRED COMPONENTS
 	filesystem
 	system
 	thread
 )
 
-INCLUDE_DIRECTORIES(${Boost_INCLUDE_DIRS})
+include_directories(${Boost_INCLUDE_DIRS})
 
-LINK_DIRECTORIES(${Boost_LIBRARY_DIRS})
+link_directories(${Boost_LIBRARY_DIRS})
 
-FIND_PACKAGE(
+find_package(
 	FcpptThreads
 	REQUIRED
 )
 
-ADD_DEFINITIONS(
+add_definitions(
 	"${FcpptThreads_DEFINITIONS}"
 )
 
-SET (CMAKE_REQUIRED_INCLUDES ${CMAKE_SOURCE_DIR}/include ${Boost_INCLUDE_DIRS})
+set(
+	CMAKE_REQUIRED_INCLUDES
+	${CMAKE_SOURCE_DIR}/include
+	${Boost_INCLUDE_DIRS}
+)
 
 CHECK_CXX_SOURCE_COMPILES(
 	"#include <boost/cstdint.hpp>
@@ -167,14 +206,14 @@ CHECK_CXX_SOURCE_COMPILES(
 	FCPPT_HAVE_ATLEAST_INT64
 )
 
-IF(
+if(
 	NOT FCPPT_HAVE_ATLEAST_INT64
 )
-	MESSAGE(
+	message(
 		FATAL_ERROR
 		"fcppt::chrono needs at least a 64 bit type to work properly!"
 	)
-ENDIF()
+endif()
 
 CHECK_CXX_SOURCE_COMPILES(
 	"int main()
@@ -208,12 +247,15 @@ CHECK_INCLUDE_FILE(
 	FCPPT_HAVE_MACH_TIME
 )
 
-FIND_LIBRARY(
+find_library(
 	RT_LIBRARY
 	rt
 )
 
-SET(CMAKE_REQUIRED_LIBRARIES ${RT_LIBRARY})
+set(
+	CMAKE_REQUIRED_LIBRARIES
+	${RT_LIBRARY}
+)
 
 CHECK_CXX_SOURCE_COMPILES(
 	"#include <time.h>
@@ -224,34 +266,34 @@ CHECK_CXX_SOURCE_COMPILES(
 	FCPPT_HAVE_CLOCK_GETTIME
 )
 
+unset(CMAKE_REQUIRED_LIBRARIES)
+
 CHECK_CXX_SOURCE_COMPILES(
 	"#include <execinfo.h>
 	int main()
 	{
 		int (*tmp)(void**,int) throw() = ::backtrace;
-    char **(*tmp2)(void* const *,int) throw() = ::backtrace_symbols;
-    void(*tmp3)(void* const*,int,int) throw() = ::backtrace_symbols_fd;
+		char **(*tmp2)(void* const *,int) throw() = ::backtrace_symbols;
+		void(*tmp3)(void* const*,int,int) throw() = ::backtrace_symbols_fd;
 	}"
 	FCPPT_HAVE_BACKTRACE
 )
 
-UNSET(CMAKE_REQUIRED_LIBRARIES)
-
-CONFIGURE_FILE(
+configure_file(
 	${CMAKE_SOURCE_DIR}/config.hpp.in
 	${CMAKE_BINARY_DIR}/include/fcppt/config.hpp
 )
 
-CONFIGURE_FILE(
+configure_file(
 	${CMAKE_SOURCE_DIR}/version.hpp.in
 	${CMAKE_BINARY_DIR}/include/fcppt/version.hpp
 )
 
-INCLUDE_DIRECTORIES(
+include_directories(
 	${CMAKE_BINARY_DIR}/include
 )
 
-SET(
+set(
 	FCPPT_FILES
 	include/fcppt/algorithm/algorithm.hpp
 	include/fcppt/algorithm/append.hpp
@@ -1403,37 +1445,48 @@ FCPPT_UTILS_ADD_SOURCE_GROUPS(
 	"${FCPPT_FILES}"
 )
 
-MACRO(MAKE_FCPPT_LIBRARY TARGETNAME VARIANT)
-	ADD_LIBRARY (${TARGETNAME} ${VARIANT} ${FCPPT_FILES})
+macro(
+	make_fcppt_library
+	TARGETNAME
+	VARIANT
+)
+	add_library (${TARGETNAME} ${VARIANT} ${FCPPT_FILES})
 
-	SET_TARGET_PROPERTIES(${TARGETNAME} PROPERTIES VERSION ${FCPPT_VERSION})
+	set_target_properties(
+		${TARGETNAME}
+		PROPERTIES
+		VERSION
+		${FCPPT_VERSION}
+	)
 
-	IF(${TARGETNAME} STREQUAL fcppt)
-		SET_TARGET_PROPERTIES(
+	if(
+		${TARGETNAME} STREQUAL fcppt
+	)
+		set_target_properties(
 			${TARGETNAME} PROPERTIES SOVERSION ${FCPPT_SHARED_VERSION}
 		)
-	ENDIF()
+	endif()
 
 	#rename fcppt_static into fcppt for UNIX
-	IF(${TARGETNAME} STREQUAL fcppt_static AND UNIX)
-		SET_TARGET_PROPERTIES(
+	if(${TARGETNAME} STREQUAL fcppt_static AND UNIX)
+		set_target_properties(
 			${TARGETNAME} PROPERTIES OUTPUT_NAME fcppt
 		)
-	ENDIF()
+	endif()
 
-	IF (NOT MSVC)
-		TARGET_LINK_LIBRARIES (
+	if(NOT MSVC)
+		target_link_libraries(
 			${TARGETNAME}
 			${Boost_LIBRARIES}
 			${FcpptThreads_LIBRARIES}
 		)
-	ENDIF ()
+	endif()
 
-	IF(FCPPT_HAVE_CLOCK_GETTIME)
-		TARGET_LINK_LIBRARIES(${TARGETNAME} ${RT_LIBRARY})
-	ENDIF()
+	if(FCPPT_HAVE_CLOCK_GETTIME)
+		target_link_libraries(${TARGETNAME} ${RT_LIBRARY})
+	endif()
 
-	INSTALL(
+	install(
 		TARGETS
 		${TARGETNAME}
 		DESTINATION
@@ -1441,62 +1494,62 @@ MACRO(MAKE_FCPPT_LIBRARY TARGETNAME VARIANT)
 		EXPORT
 		FcpptTargets
 	)
-ENDMACRO()
+endmacro()
 
-IF (ENABLE_SHARED)
-	MAKE_FCPPT_LIBRARY(fcppt SHARED)
-ENDIF()
+if(ENABLE_SHARED)
+	make_fcppt_library(fcppt SHARED)
+endif()
 
-IF (ENABLE_STATIC)
-	MAKE_FCPPT_LIBRARY(fcppt_static STATIC)
-ENDIF()
+if(ENABLE_STATIC)
+	make_fcppt_library(fcppt_static STATIC)
+endif()
 
-OPTION(ENABLE_EXAMPLES "Build the examples" ON)
+option(ENABLE_EXAMPLES "Build the examples" ON)
 
-IF (ENABLE_EXAMPLES)
-	ADD_SUBDIRECTORY (examples)
-ENDIF ()
+if(ENABLE_EXAMPLES)
+	add_subdirectory(examples)
+endif()
 
-OPTION(ENABLE_DOC "Build the documentation" OFF)
+option(ENABLE_DOC "Build the documentation" OFF)
 
-IF (ENABLE_DOC)
-	ADD_SUBDIRECTORY (doc)
-ENDIF ()
+if(ENABLE_DOC)
+	add_subdirectory(doc)
+endif()
 
-OPTION(ENABLE_TEST "Build the tests" ON)
+option(ENABLE_TEST "Build the tests" ON)
 
-IF (ENABLE_TEST)
-	ENABLE_TESTING()
+if(ENABLE_TEST)
+	enable_testing()
 
-	ADD_SUBDIRECTORY (test)
-ENDIF ()
+	add_subdirectory(test)
+endif()
 
-SET(
+set(
 	Fcppt_INCLUDE_DIR
 	${INSTALL_INCLUDE_DIR}
 )
 
-CONFIGURE_FILE(
+configure_file(
 	${CMAKE_SOURCE_DIR}/FcpptConfig.cmake.in
 	${CMAKE_BINARY_DIR}/FcpptConfig.cmake
 	@ONLY
 )
 
-INSTALL(
+install(
 	FILES
 	${CMAKE_BINARY_DIR}/FcpptConfig.cmake
 	DESTINATION
 	${INSTALL_CMAKECONFIG_DIR}
 )
 
-INSTALL(
+install(
 	DIRECTORY
 	include/
 	DESTINATION
 	${INSTALL_INCLUDE_DIR}
 )
 
-INSTALL(
+install(
 	FILES
 	${CMAKE_BINARY_DIR}/include/fcppt/config.hpp
 	${CMAKE_BINARY_DIR}/include/fcppt/version.hpp
@@ -1504,7 +1557,7 @@ INSTALL(
 	${INSTALL_INCLUDE_DIR}/fcppt
 )
 
-INSTALL(
+install(
 	FILES
 	${CMAKE_SOURCE_DIR}/CMakeModules/FindFcppt.cmake
 	${CMAKE_SOURCE_DIR}/CMakeModules/FindFcpptThreads.cmake
@@ -1513,7 +1566,7 @@ INSTALL(
 	${INSTALL_CMAKEMODULES_DIR}
 )
 
-INSTALL(
+install(
 	EXPORT
 	FcpptTargets
 	DESTINATION
