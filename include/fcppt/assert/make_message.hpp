@@ -8,7 +8,7 @@
 #define FCPPT_ASSERT_MAKE_MESSAGE_HPP_INCLUDED
 
 #include <fcppt/assert/information.hpp>
-#include <fcppt/lexical_cast.hpp>
+#include <fcppt/insert_to_fcppt_string.hpp>
 #include <fcppt/string.hpp>
 #include <fcppt/text.hpp>
 
@@ -28,9 +28,7 @@ make_message(
 		+
 		FCPPT_TEXT(':')
 		+
-		fcppt::lexical_cast<
-			fcppt::string
-		>(
+		fcppt::insert_to_fcppt_string(
 			_info.line().get()
 		)
 		+
