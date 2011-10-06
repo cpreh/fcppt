@@ -369,7 +369,6 @@ set(
 	include/fcppt/backtrace/stack_frame.hpp
 	include/fcppt/backtrace/stack_limit.hpp
 	include/fcppt/bad_dynamic_cast.hpp
-	include/fcppt/bad_lexical_cast.hpp
 	include/fcppt/bad_truncation_check_cast.hpp
 	include/fcppt/c_deleter.hpp
 	include/fcppt/char_type.hpp
@@ -663,7 +662,6 @@ set(
 	include/fcppt/homogenous_pair_impl.hpp
 	include/fcppt/homogenous_pair_output.hpp
 	include/fcppt/impl/bad_dynamic_cast.hpp
-	include/fcppt/impl/bad_lexical_cast.hpp
 	include/fcppt/impl/bad_truncation_check_cast.hpp
 	include/fcppt/impl/exception.hpp
 	include/fcppt/impl/extract_from_string_error.hpp
@@ -703,7 +701,6 @@ set(
 	include/fcppt/io/stream_to_string.hpp
 	include/fcppt/io/stringstream.hpp
 	include/fcppt/io/write.hpp
-	include/fcppt/lexical_cast.hpp
 	include/fcppt/log/activate_levels.hpp
 	include/fcppt/log/context.hpp
 	include/fcppt/log/context_fwd.hpp
