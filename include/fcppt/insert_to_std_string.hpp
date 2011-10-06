@@ -4,26 +4,37 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_FROM_STD_STRING_HPP_INCLUDED
-#define FCPPT_FROM_STD_STRING_HPP_INCLUDED
+#ifndef FCPPT_INSERT_TO_STD_STRING_HPP_INCLUDED
+#define FCPPT_INSERT_TO_STD_STRING_HPP_INCLUDED
 
 #include <fcppt/default_locale.hpp>
-#include <fcppt/string.hpp>
-#include <fcppt/symbol.hpp>
+#include <fcppt/insert_to_string.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <string>
 #include <locale>
+#include <string>
 #include <fcppt/config/external_end.hpp>
 
 namespace fcppt
 {
 
-FCPPT_SYMBOL
-fcppt::string const
-from_std_string(
-	std::string const &,
-	std::locale const & = fcppt::default_locale()
-);
+template<
+	typename Source
+>
+std::string const
+insert_to_std_string(
+	Source const &_source,
+	std::locale const &_locale
+		= fcppt::default_locale()
+)
+{
+	return
+		fcppt::insert_to_string<
+			std::string
+		>(
+			_source,
+			_locale
+		);
+}
 
 }
 

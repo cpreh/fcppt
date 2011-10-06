@@ -606,6 +606,9 @@ set(
 	include/fcppt/error/strerror.hpp
 	include/fcppt/exception.hpp
 	include/fcppt/export_symbol.hpp
+	include/fcppt/extract_from_string.hpp
+	include/fcppt/extract_from_string_error.hpp
+	include/fcppt/extract_from_string_exn.hpp
 	include/fcppt/filesystem/config.hpp
 	include/fcppt/filesystem/create_directories_recursive.hpp
 	include/fcppt/filesystem/create_directories_recursive_exn.hpp
@@ -663,8 +666,13 @@ set(
 	include/fcppt/impl/bad_lexical_cast.hpp
 	include/fcppt/impl/bad_truncation_check_cast.hpp
 	include/fcppt/impl/exception.hpp
+	include/fcppt/impl/extract_from_string_error.hpp
 	include/fcppt/impl/invalid_minmax_pair.hpp
 	include/fcppt/import_symbol.hpp
+	include/fcppt/insert_to_fcppt_string.hpp
+	include/fcppt/insert_to_std_string.hpp
+	include/fcppt/insert_to_std_wstring.hpp
+	include/fcppt/insert_to_string.hpp
 	include/fcppt/invalid_minmax_pair.hpp
 	include/fcppt/io/cerr.hpp
 	include/fcppt/io/cfstream.hpp

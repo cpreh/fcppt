@@ -18,7 +18,8 @@
 namespace fcppt
 {
 
-FCPPT_SYMBOL std::string const
+FCPPT_SYMBOL
+std::string const
 to_std_string(
 	fcppt::string const &,
 	std::locale const & = fcppt::default_locale()
