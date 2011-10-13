@@ -15,6 +15,9 @@ namespace
 
 std::locale global;
 
+char const *
+probe_locale();
+
 struct init
 {
 	init();
@@ -31,20 +34,48 @@ fcppt::default_locale()
 namespace
 {
 
+char const *
+probe_locale()
+{
+	if(
+		char const *const lc_all =
+			std::getenv(
+				"LC_ALL"
+			)
+	)
+		return lc_all;
+
+	if(
+		char const *const lc_ctype =
+			std::getenv(
+				"LC_CTYPE"
+			)
+	)
+		return lc_ctype;
+
+	if(
+		char const *const lang =
+			std::getenv(
+				"LANG"
+			)
+	)
+		return lang;
+
+	return 0;
+}
+
 init::init()
 {
-	char const *const env(
-		std::getenv(
-			"LC_ALL"
-		)
+	char const *const locale_name(
+		probe_locale()
 	);
 
 	if(
-		env
+		locale_name
 	)
 		global =
 			std::locale(
-				env
+				locale_name
 			);
 }
 
