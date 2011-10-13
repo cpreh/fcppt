@@ -7,7 +7,6 @@
 #ifndef FCPPT_INSERT_TO_STRING_HPP_INCLUDED
 #define FCPPT_INSERT_TO_STRING_HPP_INCLUDED
 
-#include <fcppt/default_locale.hpp>
 #include <fcppt/type_traits/is_string.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/utility/enable_if.hpp>
@@ -32,7 +31,7 @@ typename boost::enable_if<
 insert_to_string(
 	Source const &_source,
 	std::locale const &_locale
-		= fcppt::default_locale()
+		= std::locale()
 )
 {
 	typedef std::basic_ostringstream<

@@ -7,8 +7,8 @@
 #ifndef FCPPT_TO_STD_STRING_HPP_INCLUDED
 #define FCPPT_TO_STD_STRING_HPP_INCLUDED
 
-#include <fcppt/default_locale.hpp>
 #include <fcppt/string.hpp>
+#include <fcppt/string_conv_locale.hpp>
 #include <fcppt/symbol.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <string>
@@ -22,7 +22,8 @@ FCPPT_SYMBOL
 std::string const
 to_std_string(
 	fcppt::string const &,
-	std::locale const & = fcppt::default_locale()
+	std::locale const &
+		= fcppt::string_conv_locale()
 );
 
 }

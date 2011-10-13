@@ -9,14 +9,14 @@
 #include <fcppt/time/output_tm.hpp>
 #include <fcppt/time/std_time.hpp>
 #include <fcppt/io/cout.hpp>
-#include <fcppt/default_locale.hpp>
+#include <fcppt/string_conv_locale.hpp>
 #include <fcppt/text.hpp>
 
 int
 main()
 {
 	fcppt::io::cout().imbue(
-		fcppt::default_locale()
+		fcppt::string_conv_locale()
 	);
 
 	fcppt::time::output_tm(

@@ -4,8 +4,8 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_DEFAULT_LOCALE_HPP_INCLUDED
-#define FCPPT_DEFAULT_LOCALE_HPP_INCLUDED
+#ifndef FCPPT_STRING_CONV_LOCALE_HPP_INCLUDED
+#define FCPPT_STRING_CONV_LOCALE_HPP_INCLUDED
 
 #include <fcppt/symbol.hpp>
 #include <fcppt/config/external_begin.hpp>
@@ -15,10 +15,10 @@
 namespace fcppt
 {
 
-/// Returns the default locale set on the system instead of the C locale
+/// Returns the default locale to use when converting strings
 FCPPT_SYMBOL
 std::locale const
-default_locale();
+string_conv_locale();
 
 }
 

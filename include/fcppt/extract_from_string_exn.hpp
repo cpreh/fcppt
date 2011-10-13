@@ -7,7 +7,6 @@
 #ifndef FCPPT_EXTRACT_FROM_STRING_EXN_HPP_INCLUDED
 #define FCPPT_EXTRACT_FROM_STRING_EXN_HPP_INCLUDED
 
-#include <fcppt/default_locale.hpp>
 #include <fcppt/extract_from_string.hpp>
 #include <fcppt/extract_from_string_error.hpp>
 #include <fcppt/optional_impl.hpp>
@@ -35,7 +34,7 @@ typename boost::enable_if<
 extract_from_string_exn(
 	Source const &_source,
 	std::locale const &_locale
-		= fcppt::default_locale()
+		= std::locale()
 )
 {
 	typedef fcppt::optional<

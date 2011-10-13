@@ -559,7 +559,6 @@ set(
 	include/fcppt/cyclic_iterator_decl.hpp
 	include/fcppt/cyclic_iterator_fwd.hpp
 	include/fcppt/cyclic_iterator_impl.hpp
-	include/fcppt/default_locale.hpp
 	include/fcppt/detail/char_type.hpp
 	include/fcppt/detail/cyclic_iterator_base.hpp
 	include/fcppt/detail/make_ptr_base.hpp
@@ -1181,6 +1180,7 @@ set(
 	include/fcppt/sn_cast.hpp
 	include/fcppt/static_pointer_cast.hpp
 	include/fcppt/string.hpp
+	include/fcppt/string_conv_locale.hpp
 	include/fcppt/strong_typedef.hpp
 	include/fcppt/strong_typedef_arithmetic.hpp
 	include/fcppt/strong_typedef_assignment.hpp
@@ -1331,7 +1331,6 @@ set(
 	src/chrono/steady_clock.cpp
 	src/chrono/system_clock.cpp
 	src/codecvt.hpp
-	src/default_locale.cpp
 	src/endianness/host_format.cpp
 	src/endianness/is_big_endian.cpp
 	src/endianness/is_little_endian.cpp
@@ -1417,6 +1416,7 @@ set(
 	src/random/actor/normalized.cpp
 	src/signal/connection_manager.cpp
 	src/signal/detail/connection.cpp
+	src/string_conv_locale.cpp
 	src/thread/hardware_concurrency.cpp
 	src/thread/object.cpp
 	src/thread/sleep.cpp

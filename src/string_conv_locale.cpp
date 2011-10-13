@@ -4,7 +4,7 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/default_locale.hpp>
+#include <fcppt/string_conv_locale.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <locale>
 #include <cstdlib>
@@ -26,7 +26,7 @@ struct init
 }
 
 std::locale const
-fcppt::default_locale()
+fcppt::string_conv_locale()
 {
 	return global;
 }

@@ -7,7 +7,6 @@
 #ifndef FCPPT_INSERT_TO_STD_WSTRING_HPP_INCLUDED
 #define FCPPT_INSERT_TO_STD_WSTRING_HPP_INCLUDED
 
-#include <fcppt/default_locale.hpp>
 #include <fcppt/insert_to_string.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <locale>
@@ -24,7 +23,7 @@ std::wstring const
 insert_to_std_wstring(
 	Source const &_source,
 	std::locale const &_locale
-		= fcppt::default_locale()
+		= std::locale()
 )
 {
 	return

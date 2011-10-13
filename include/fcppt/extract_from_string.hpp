@@ -7,7 +7,6 @@
 #ifndef FCPPT_EXTRACT_FROM_STRING_HPP_INCLUDED
 #define FCPPT_EXTRACT_FROM_STRING_HPP_INCLUDED
 
-#include <fcppt/default_locale.hpp>
 #include <fcppt/optional_impl.hpp>
 #include <fcppt/type_traits/is_string.hpp>
 #include <fcppt/config/external_begin.hpp>
@@ -35,7 +34,7 @@ typename boost::enable_if<
 extract_from_string(
 	Source const &_source,
 	std::locale const &_locale
-		= fcppt::default_locale()
+		= std::locale()
 )
 {
 	typedef std::basic_istringstream<

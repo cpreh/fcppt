@@ -7,7 +7,6 @@
 #ifndef FCPPT_INSERT_TO_FCPPT_STRING_HPP_INCLUDED
 #define FCPPT_INSERT_TO_FCPPT_STRING_HPP_INCLUDED
 
-#include <fcppt/default_locale.hpp>
 #include <fcppt/insert_to_string.hpp>
 #include <fcppt/string.hpp>
 #include <fcppt/config/external_begin.hpp>
@@ -25,7 +24,7 @@ fcppt::string const
 insert_to_fcppt_string(
 	Source const &_source,
 	std::locale const &_locale
-		= fcppt::default_locale()
+		= std::locale()
 )
 {
 	return

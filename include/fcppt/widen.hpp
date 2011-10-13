@@ -7,7 +7,7 @@
 #ifndef FCPPT_WIDEN_HPP_INCLUDED
 #define FCPPT_WIDEN_HPP_INCLUDED
 
-#include <fcppt/default_locale.hpp>
+#include <fcppt/string_conv_locale.hpp>
 #include <fcppt/symbol.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <string>
@@ -18,10 +18,12 @@ namespace fcppt
 {
 
 /// convert an std::string to std::wstring
-FCPPT_SYMBOL std::wstring const
+FCPPT_SYMBOL
+std::wstring const
 widen(
 	std::string const &,
-	std::locale const & = fcppt::default_locale()
+	std::locale const &
+		= fcppt::string_conv_locale()
 );
 
 }
