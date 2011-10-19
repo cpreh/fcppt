@@ -7,17 +7,9 @@
 #ifndef FCPPT_ASSERT_UNCONDITIONAL_HPP_INCLUDED
 #define FCPPT_ASSERT_UNCONDITIONAL_HPP_INCLUDED
 
-#include <fcppt/assert/print_message.hpp>
-
 #define FCPPT_ASSERT_UNCONDITIONAL(\
-	condition_message,\
-	message,\
 	action\
 ) \
-FCPPT_ASSERT_PRINT_MESSAGE(\
-	condition_message,\
-	message\
-); \
-action ; \
+action \
 
 #endif

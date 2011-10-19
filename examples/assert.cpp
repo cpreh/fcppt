@@ -36,14 +36,14 @@ library_function(
 	// assert a precondition without a message
 	FCPPT_ASSERT_PRE(
 		_parameter < 10
-	)
+	);
 
 	// assert a postcondition with a message
 	FCPPT_ASSERT_POST_MESSAGE(
 		other_function(),
 		fcppt::assert_::exception,
 		FCPPT_TEXT("other_function failed")
-	)
+	);
 }
 
 //->

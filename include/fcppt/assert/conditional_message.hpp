@@ -4,19 +4,22 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_ASSERT_CONDITIONAL_HPP_INCLUDED
-#define FCPPT_ASSERT_CONDITIONAL_HPP_INCLUDED
+#ifndef FCPPT_ASSERT_CONDITIONAL_MESSAGE_HPP_INCLUDED
+#define FCPPT_ASSERT_CONDITIONAL_MESSAGE_HPP_INCLUDED
 
-#include <fcppt/assert/unconditional.hpp>
+#include <fcppt/assert/unconditional_message.hpp>
 
-#define FCPPT_ASSERT_CONDITIONAL(\
+#define FCPPT_ASSERT_CONDITIONAL_MESSAGE(\
 	condition,\
+	message, \
 	action\
 ) \
 if( \
 	!(condition)\
 )\
-	FCPPT_ASSERT_UNCONDITIONAL(\
+	FCPPT_ASSERT_UNCONDITIONAL_MESSAGE(\
+		condition, \
+		message, \
 		action \
 	)
 

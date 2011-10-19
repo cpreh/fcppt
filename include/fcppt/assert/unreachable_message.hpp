@@ -7,7 +7,7 @@
 #ifndef FCPPT_ASSERT_UNREACHABLE_MESSAGE_HPP_INCLUDED
 #define FCPPT_ASSERT_UNREACHABLE_MESSAGE_HPP_INCLUDED
 
-#include <fcppt/assert/unconditional.hpp>
+#include <fcppt/assert/terminate_message.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <exception>
 #include <fcppt/config/external_end.hpp>
@@ -15,10 +15,9 @@
 #define FCPPT_ASSERT_UNREACHABLE_MESSAGE(\
 	message\
 )\
-FCPPT_ASSERT_UNCONDITIONAL(\
+FCPPT_ASSERT_TERMINATE_MESSAGE(\
 	unreachable code,\
-	message,\
-	std::terminate()\
+	message\
 )
 
 #endif

@@ -16,14 +16,18 @@
 	condition_arg,\
 	message_arg\
 ) \
-fcppt::io::cerr() \
-	<< \
-	fcppt::assert_::make_message(\
-		FCPPT_ASSERT_GATHER_INFORMATION(\
-			condition_arg,\
-			message_arg\
+static_cast<\
+	void \
+>( \
+	fcppt::io::cerr() \
+		<< \
+		fcppt::assert_::make_message(\
+			FCPPT_ASSERT_GATHER_INFORMATION(\
+				condition_arg,\
+				message_arg\
+			) \
 		) \
-	) \
-	<< FCPPT_TEXT('\n');
+		<< FCPPT_TEXT('\n') \
+)
 
 #endif

@@ -8,20 +8,21 @@
 #define FCPPT_ASSERT_THROW_MESSAGE_HPP_INCLUDED
 
 #include <fcppt/assert/gather_information.hpp>
+#include <fcppt/assert/conditional.hpp>
 
 #define FCPPT_ASSERT_THROW_MESSAGE(\
 	condition,\
 	exception,\
 	message\
 ) \
-if( \
-	!(condition)\
-)\
+FCPPT_ASSERT_CONDITIONAL(\
+	condition,\
 	throw exception(\
 		FCPPT_ASSERT_GATHER_INFORMATION(\
 			condition,\
 			message\
 		)\
-	);
+	) \
+)
 
 #endif

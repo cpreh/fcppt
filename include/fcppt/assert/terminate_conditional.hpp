@@ -4,16 +4,16 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_ASSERT_TERMINATE_HPP_INCLUDED
-#define FCPPT_ASSERT_TERMINATE_HPP_INCLUDED
+#ifndef FCPPT_ASSERT_TERMINATE_CONDITIONAL_HPP_INCLUDED
+#define FCPPT_ASSERT_TERMINATE_CONDITIONAL_HPP_INCLUDED
 
 #include <fcppt/assert/default_message.hpp>
-#include <fcppt/assert/terminate_message.hpp>
+#include <fcppt/assert/terminate_message_conditional.hpp>
 
-#define FCPPT_ASSERT_TERMINATE(\
+#define FCPPT_ASSERT_TERMINATE_CONDITIONAL(\
 	condition\
 ) \
-FCPPT_ASSERT_TERMINATE_MESSAGE(\
+FCPPT_ASSERT_TERMINATE_MESSAGE_CONDITIONAL(\
 	condition,\
 	FCPPT_ASSERT_DEFAULT_MESSAGE\
 )
