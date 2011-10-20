@@ -7,13 +7,13 @@
 #ifndef FCPPT_ASSERT_ERROR_MESSAGE_HPP_INCLUDED
 #define FCPPT_ASSERT_ERROR_MESSAGE_HPP_INCLUDED
 
-#include <fcppt/assert/terminate_message.hpp>
+#include <fcppt/assert/terminate_message_conditional.hpp>
 
 #define FCPPT_ASSERT_ERROR_MESSAGE(\
 	condition,\
 	message\
 )\
-FCPPT_ASSERT_TERMINATE_MESSAGE(\
+FCPPT_ASSERT_TERMINATE_MESSAGE_CONDITIONAL(\
 	condition,\
 	message\
 )
