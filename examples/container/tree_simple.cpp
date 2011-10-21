@@ -5,18 +5,19 @@
 
 
 //[tree_simple
-#include <fcppt/container/tree/object.hpp>
-#include <fcppt/io/cout.hpp>
-#include <fcppt/io/cerr.hpp>
+#include <fcppt/exception.hpp>
 #include <fcppt/make_unique_ptr.hpp>
+#include <fcppt/move.hpp>
 #include <fcppt/string.hpp>
 #include <fcppt/text.hpp>
-#include <fcppt/exception.hpp>
-#include <fcppt/move.hpp>
+#include <fcppt/container/tree/object.hpp>
+#include <fcppt/io/cerr.hpp>
+#include <fcppt/io/cout.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <iterator>
 #include <cstdlib>
+#include <iterator>
 #include <fcppt/config/external_end.hpp>
+
 
 int main()
 try

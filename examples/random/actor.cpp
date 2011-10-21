@@ -5,12 +5,13 @@
 
 
 //[randomactor
-#include <fcppt/random/actor/normalized.hpp>
-#include <fcppt/random/actor/container.hpp>
-#include <fcppt/random/actor/element.hpp>
+#include <fcppt/text.hpp>
 #include <fcppt/assign/make_container.hpp>
 #include <fcppt/io/cout.hpp>
-#include <fcppt/text.hpp>
+#include <fcppt/random/actor/container.hpp>
+#include <fcppt/random/actor/element.hpp>
+#include <fcppt/random/actor/normalized.hpp>
+
 
 namespace
 {

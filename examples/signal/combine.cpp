@@ -5,10 +5,11 @@
 
 
 //[signal_combine
+#include <fcppt/text.hpp>
+#include <fcppt/io/cout.hpp>
 #include <fcppt/signal/object.hpp>
 #include <fcppt/signal/scoped_connection.hpp>
-#include <fcppt/io/cout.hpp>
-#include <fcppt/text.hpp>
+
 
 namespace
 {

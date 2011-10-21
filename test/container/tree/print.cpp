@@ -9,9 +9,10 @@
 #include <boost/test/unit_test.hpp>
 #include <iostream>
 #include <ostream>
-#include <string>
 #include <sstream>
+#include <string>
 #include <fcppt/config/external_end.hpp>
+
 
 BOOST_AUTO_TEST_CASE(
 	container_tree_print

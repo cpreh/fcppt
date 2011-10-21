@@ -5,13 +5,14 @@
 
 
 //[type_traits
-#include <fcppt/type_traits/is_string.hpp>
 #include <fcppt/type_traits/is_float_or_double.hpp>
+#include <fcppt/type_traits/is_string.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/utility/enable_if.hpp>
 #include <iostream>
 #include <ostream>
 #include <fcppt/config/external_end.hpp>
+
 
 namespace
 {

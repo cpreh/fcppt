@@ -5,9 +5,10 @@
 
 
 //[visibility
-#include <fcppt/import_symbol.hpp>
-#include <fcppt/export_symbol.hpp>
 #include <fcppt/class_symbol.hpp>
+#include <fcppt/export_symbol.hpp>
+#include <fcppt/import_symbol.hpp>
+
 
 // MYLIB_EXPORTS should be defined by the build system
 // when the library is built.

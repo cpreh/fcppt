@@ -7,9 +7,10 @@
 //[make_container
 #include <fcppt/assign/make_container.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <vector>
 #include <set>
+#include <vector>
 #include <fcppt/config/external_end.hpp>
+
 
 int main()
 {

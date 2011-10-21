@@ -5,17 +5,18 @@
 
 
 //[logcontext
-#include <fcppt/log/parameters/all.hpp>
-#include <fcppt/log/parameters/with_context.hpp>
+#include <fcppt/text.hpp>
+#include <fcppt/function/object.hpp>
+#include <fcppt/io/cout.hpp>
 #include <fcppt/log/context.hpp>
 #include <fcppt/log/level.hpp>
 #include <fcppt/log/object.hpp>
 #include <fcppt/log/output.hpp>
 #include <fcppt/log/warning.hpp>
-#include <fcppt/io/cout.hpp>
-#include <fcppt/function/object.hpp>
+#include <fcppt/log/parameters/all.hpp>
+#include <fcppt/log/parameters/with_context.hpp>
 #include <fcppt/tr1/functional.hpp>
-#include <fcppt/text.hpp>
+
 
 int
 main()

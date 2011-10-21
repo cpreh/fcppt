@@ -5,13 +5,14 @@
 
 
 //[vectorbasic
-#include <fcppt/math/vector/vector.hpp> // includes almost everything related to vector
 #include <fcppt/math/vector/dynamic_impl.hpp>
 #include <fcppt/math/vector/static.hpp>
+#include <fcppt/math/vector/vector.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <iostream>
 #include <ostream>
 #include <fcppt/config/external_end.hpp>
+
 
 int main()
 {

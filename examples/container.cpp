@@ -4,18 +4,19 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
+#include <fcppt/exception.hpp>
+#include <fcppt/string.hpp>
+#include <fcppt/text.hpp>
 #include <fcppt/assert/error.hpp>
 #include <fcppt/container/map_impl.hpp>
 #include <fcppt/container/raw_vector_impl.hpp>
-#include <fcppt/io/cout.hpp>
 #include <fcppt/io/cerr.hpp>
-#include <fcppt/string.hpp>
-#include <fcppt/text.hpp>
-#include <fcppt/exception.hpp>
+#include <fcppt/io/cout.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <map>
 #include <cstdlib>
+#include <map>
 #include <fcppt/config/external_end.hpp>
+
 
 int main()
 try

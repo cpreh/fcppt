@@ -5,9 +5,10 @@
 
 
 //[bitfield
+#include <fcppt/text.hpp>
 #include <fcppt/container/bitfield/bitfield.hpp>
 #include <fcppt/io/cout.hpp>
-#include <fcppt/text.hpp>
+
 
 namespace
 {

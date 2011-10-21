@@ -5,8 +5,9 @@
 
 
 //[sleep
-#include <fcppt/time/sleep_any.hpp>
 #include <fcppt/chrono/seconds.hpp>
+#include <fcppt/time/sleep_any.hpp>
+
 
 int main()
 {

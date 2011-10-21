@@ -6,11 +6,12 @@
 
 #include <fcppt/assign/make_container.hpp>
 #include <fcppt/config/external_begin.hpp>
+#include <boost/test/unit_test.hpp>
+#include <map>
 #include <set>
 #include <vector>
-#include <map>
-#include <boost/test/unit_test.hpp>
 #include <fcppt/config/external_end.hpp>
+
 
 BOOST_AUTO_TEST_CASE(assign_make_container)
 {

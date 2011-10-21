@@ -8,9 +8,10 @@
 #include <fcppt/io/stream_to_string.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/test/unit_test.hpp>
-#include <string>
 #include <sstream>
+#include <string>
 #include <fcppt/config/external_end.hpp>
+
 
 BOOST_AUTO_TEST_CASE(
 	io_stream_to_string

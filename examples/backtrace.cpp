@@ -4,13 +4,14 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/backtrace/print_current_stack_frame.hpp>
-#include <fcppt/backtrace/current_stack_frame.hpp>
-#include <fcppt/backtrace/stack_limit.hpp>
-#include <fcppt/random/uniform.hpp>
-#include <fcppt/random/make_last_exclusive_range.hpp>
 #include <fcppt/text.hpp>
+#include <fcppt/backtrace/current_stack_frame.hpp>
+#include <fcppt/backtrace/print_current_stack_frame.hpp>
+#include <fcppt/backtrace/stack_limit.hpp>
 #include <fcppt/io/cout.hpp>
+#include <fcppt/random/make_last_exclusive_range.hpp>
+#include <fcppt/random/uniform.hpp>
+
 
 namespace
 {

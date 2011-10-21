@@ -5,10 +5,11 @@
 
 
 //[minmax_pair
-#include <fcppt/minmax_pair.hpp>
 #include <fcppt/invalid_minmax_pair.hpp>
-#include <fcppt/io/cout.hpp>
+#include <fcppt/minmax_pair.hpp>
 #include <fcppt/text.hpp>
+#include <fcppt/io/cout.hpp>
+
 
 int main()
 {

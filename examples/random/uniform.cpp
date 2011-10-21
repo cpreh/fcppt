@@ -5,11 +5,12 @@
 
 
 //[randomuniform
+#include <fcppt/text.hpp>
+#include <fcppt/io/cout.hpp>
 #include <fcppt/random/make_inclusive_range.hpp>
 #include <fcppt/random/make_last_exclusive_range.hpp>
 #include <fcppt/random/uniform.hpp>
-#include <fcppt/io/cout.hpp>
-#include <fcppt/text.hpp>
+
 
 namespace
 {

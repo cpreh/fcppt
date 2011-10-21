@@ -5,15 +5,16 @@
 
 
 //[tr1
-#include <fcppt/tr1/functional.hpp>
+#include <fcppt/ref.hpp>
 #include <fcppt/container/array.hpp>
 #include <fcppt/function/object.hpp>
-#include <fcppt/ref.hpp>
+#include <fcppt/tr1/functional.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <ostream>
-#include <iostream>
 #include <iosfwd>
+#include <iostream>
+#include <ostream>
 #include <fcppt/config/external_end.hpp>
+
 
 namespace
 {

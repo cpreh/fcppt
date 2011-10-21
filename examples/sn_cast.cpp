@@ -6,8 +6,9 @@
 
 //[sncast
 #include <fcppt/sn_cast.hpp>
-#include <fcppt/io/cout.hpp>
 #include <fcppt/text.hpp>
+#include <fcppt/io/cout.hpp>
+
 
 int main()
 {

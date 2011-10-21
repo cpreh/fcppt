@@ -5,12 +5,13 @@
 
 
 //[signal_simple
-#include <fcppt/signal/object.hpp>
-#include <fcppt/signal/scoped_connection.hpp>
-#include <fcppt/io/cout.hpp>
-#include <fcppt/tr1/functional.hpp>
 #include <fcppt/ref.hpp>
 #include <fcppt/text.hpp>
+#include <fcppt/io/cout.hpp>
+#include <fcppt/signal/object.hpp>
+#include <fcppt/signal/scoped_connection.hpp>
+#include <fcppt/tr1/functional.hpp>
+
 
 namespace
 {

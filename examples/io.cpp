@@ -4,11 +4,12 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/io/write.hpp>
 #include <fcppt/endianness/format.hpp>
+#include <fcppt/io/write.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <sstream>
 #include <fcppt/config/external_end.hpp>
+
 
 int main()
 {

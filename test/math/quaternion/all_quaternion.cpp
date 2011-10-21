@@ -4,18 +4,19 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
+#include <fcppt/math/compare.hpp>
+#include <fcppt/math/pi.hpp>
 #include <fcppt/math/quaternion/from_angle_and_axis.hpp>
 #include <fcppt/math/quaternion/to_angle_and_axis.hpp>
 #include <fcppt/math/quaternion/vector_rotation.hpp>
 #include <fcppt/math/vector/basic_impl.hpp>
-#include <fcppt/math/vector/static.hpp>
 #include <fcppt/math/vector/comparison.hpp>
-#include <fcppt/math/compare.hpp>
-#include <fcppt/math/pi.hpp>
+#include <fcppt/math/vector/static.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/math/quaternion.hpp>
 #include <boost/test/unit_test.hpp>
 #include <fcppt/config/external_end.hpp>
+
 
 BOOST_AUTO_TEST_CASE(all_quaternion)
 {

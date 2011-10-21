@@ -6,8 +6,9 @@
 
 //[homogenous_pair
 #include <fcppt/homogenous_pair.hpp>
-#include <fcppt/io/cout.hpp>
 #include <fcppt/text.hpp>
+#include <fcppt/io/cout.hpp>
+
 
 int main()
 {

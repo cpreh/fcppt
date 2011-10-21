@@ -5,12 +5,13 @@
 
 
 //[assert
-#include <fcppt/assert/exception.hpp>
-#include <fcppt/assert/pre.hpp>
-#include <fcppt/assert/post_message.hpp>
-#include <fcppt/io/cerr.hpp>
 #include <fcppt/exception.hpp>
 #include <fcppt/text.hpp>
+#include <fcppt/assert/exception.hpp>
+#include <fcppt/assert/post_message.hpp>
+#include <fcppt/assert/pre.hpp>
+#include <fcppt/io/cerr.hpp>
+
 
 //->
 namespace

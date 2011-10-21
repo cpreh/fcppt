@@ -4,6 +4,9 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
+#include <fcppt/exception.hpp>
+#include <fcppt/optional_impl.hpp>
+#include <fcppt/text.hpp>
 #include <fcppt/assert/error.hpp>
 #include <fcppt/function/object.hpp>
 #include <fcppt/io/cerr.hpp>
@@ -17,12 +20,10 @@
 #include <fcppt/log/parameters/all.hpp>
 #include <fcppt/log/parameters/with_context.hpp>
 #include <fcppt/tr1/functional.hpp>
-#include <fcppt/optional_impl.hpp>
-#include <fcppt/exception.hpp>
-#include <fcppt/text.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <cstdlib>
 #include <fcppt/config/external_end.hpp>
+
 
 int main()
 try

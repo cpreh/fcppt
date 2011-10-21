@@ -4,13 +4,14 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/io/raw_container_source.hpp>
 #include <fcppt/container/raw_vector.hpp>
+#include <fcppt/io/raw_container_source.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/iostreams/stream.hpp>
 #include <boost/test/unit_test.hpp>
 #include <vector>
 #include <fcppt/config/external_end.hpp>
+
 
 BOOST_AUTO_TEST_CASE(main_test)
 {

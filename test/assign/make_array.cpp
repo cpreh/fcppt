@@ -7,10 +7,11 @@
 #include <fcppt/assign/make_array.hpp>
 #include <fcppt/container/array.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/test/unit_test.hpp>
 #include <boost/array.hpp>
+#include <boost/test/unit_test.hpp>
 #include <algorithm>
 #include <fcppt/config/external_end.hpp>
+
 
 BOOST_AUTO_TEST_CASE(
 	assign_make_array

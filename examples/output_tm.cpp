@@ -5,12 +5,13 @@
 
 
 //[output_tm
+#include <fcppt/string_conv_locale.hpp>
+#include <fcppt/text.hpp>
+#include <fcppt/io/cout.hpp>
 #include <fcppt/time/gmtime.hpp>
 #include <fcppt/time/output_tm.hpp>
 #include <fcppt/time/std_time.hpp>
-#include <fcppt/io/cout.hpp>
-#include <fcppt/string_conv_locale.hpp>
-#include <fcppt/text.hpp>
+
 
 int
 main()

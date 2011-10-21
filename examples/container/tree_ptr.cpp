@@ -5,13 +5,14 @@
 
 
 //[tree_ptr
+#include <fcppt/make_unique_ptr.hpp>
+#include <fcppt/noncopyable.hpp>
+#include <fcppt/text.hpp>
 #include <fcppt/container/tree/object.hpp>
 #include <fcppt/container/tree/ptr_value.hpp>
 #include <fcppt/container/tree/release.hpp>
 #include <fcppt/io/cout.hpp>
-#include <fcppt/make_unique_ptr.hpp>
-#include <fcppt/noncopyable.hpp>
-#include <fcppt/text.hpp>
+
 
 namespace
 {

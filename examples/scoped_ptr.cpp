@@ -5,11 +5,12 @@
 
 
 //[scopedptr
-#include <fcppt/scoped_ptr.hpp>
 #include <fcppt/c_deleter.hpp>
+#include <fcppt/scoped_ptr.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <cstdlib>
 #include <fcppt/config/external_end.hpp>
+
 
 int main()
 {

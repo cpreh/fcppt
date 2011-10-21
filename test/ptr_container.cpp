@@ -4,20 +4,21 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/container/ptr/push_back_unique_ptr.hpp>
-#include <fcppt/container/ptr/insert_unique_ptr.hpp>
-#include <fcppt/container/ptr/insert_unique_ptr_set.hpp>
-#include <fcppt/container/ptr/insert_unique_ptr_multiset.hpp>
-#include <fcppt/container/ptr/insert_unique_ptr_map.hpp>
-#include <fcppt/container/ptr/insert_unique_ptr_multimap.hpp>
 #include <fcppt/make_unique_ptr.hpp>
 #include <fcppt/unique_ptr.hpp>
+#include <fcppt/container/ptr/insert_unique_ptr.hpp>
+#include <fcppt/container/ptr/insert_unique_ptr_map.hpp>
+#include <fcppt/container/ptr/insert_unique_ptr_multimap.hpp>
+#include <fcppt/container/ptr/insert_unique_ptr_multiset.hpp>
+#include <fcppt/container/ptr/insert_unique_ptr_set.hpp>
+#include <fcppt/container/ptr/push_back_unique_ptr.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/ptr_container/ptr_vector.hpp>
-#include <boost/ptr_container/ptr_set.hpp>
 #include <boost/ptr_container/ptr_map.hpp>
+#include <boost/ptr_container/ptr_set.hpp>
+#include <boost/ptr_container/ptr_vector.hpp>
 #include <boost/test/unit_test.hpp>
 #include <fcppt/config/external_end.hpp>
+
 
 BOOST_AUTO_TEST_CASE(
 	ptr_container

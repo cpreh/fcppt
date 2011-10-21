@@ -5,9 +5,10 @@
 
 
 //[strongtypedef_simple
-#include <fcppt/io/cout.hpp>
-#include <fcppt/text.hpp>
 #include <fcppt/strong_typedef.hpp>
+#include <fcppt/text.hpp>
+#include <fcppt/io/cout.hpp>
+
 
 namespace
 {

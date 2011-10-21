@@ -6,9 +6,10 @@
 
 #include <fcppt/safe_bool.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <ostream>
 #include <iostream>
+#include <ostream>
 #include <fcppt/config/external_end.hpp>
+
 
 namespace
 {

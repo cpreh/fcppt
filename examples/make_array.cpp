@@ -5,10 +5,11 @@
 
 
 //[make_array
+#include <fcppt/text.hpp>
 #include <fcppt/assign/make_array.hpp>
 #include <fcppt/container/array.hpp>
 #include <fcppt/io/cout.hpp>
-#include <fcppt/text.hpp>
+
 
 int main()
 {

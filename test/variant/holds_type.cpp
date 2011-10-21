@@ -4,13 +4,14 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/variant/object.hpp>
 #include <fcppt/variant/holds_type.hpp>
+#include <fcppt/variant/object.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/test/unit_test.hpp>
 #include <boost/mpl/vector/vector10.hpp>
+#include <boost/test/unit_test.hpp>
 #include <string>
 #include <fcppt/config/external_end.hpp>
+
 
 BOOST_AUTO_TEST_CASE(
 	variant_holds_type

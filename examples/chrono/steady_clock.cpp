@@ -5,15 +5,16 @@
 
 
 //[chronosteadyclock
-#include <fcppt/chrono/steady_clock.hpp>
-#include <fcppt/chrono/time_point.hpp>
+#include <fcppt/text.hpp>
 #include <fcppt/chrono/duration.hpp>
 #include <fcppt/chrono/duration_cast.hpp>
 #include <fcppt/chrono/milliseconds.hpp>
 #include <fcppt/chrono/seconds.hpp>
-#include <fcppt/time/sleep_any.hpp>
+#include <fcppt/chrono/steady_clock.hpp>
+#include <fcppt/chrono/time_point.hpp>
 #include <fcppt/io/cout.hpp>
-#include <fcppt/text.hpp>
+#include <fcppt/time/sleep_any.hpp>
+
 
 int main()
 {

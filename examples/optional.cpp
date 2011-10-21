@@ -5,10 +5,11 @@
 
 
 //[optional
-#include <fcppt/io/cout.hpp>
 #include <fcppt/optional_impl.hpp>
 #include <fcppt/string.hpp>
 #include <fcppt/text.hpp>
+#include <fcppt/io/cout.hpp>
+
 
 int main()
 {

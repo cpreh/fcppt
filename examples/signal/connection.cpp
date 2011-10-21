@@ -5,12 +5,14 @@
 
 
 //[signal_connection
+#include <fcppt/assign/make_container.hpp>
 #include <fcppt/signal/auto_connection.hpp>
 #include <fcppt/signal/connection_manager.hpp>
 #include <fcppt/signal/object.hpp>
 #include <fcppt/signal/scoped_connection.hpp>
 #include <fcppt/signal/shared_connection.hpp>
-#include <fcppt/assign/make_container.hpp>
+
+
 //<-
 namespace
 {

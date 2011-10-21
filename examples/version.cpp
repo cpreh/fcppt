@@ -4,9 +4,10 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/io/cout.hpp>
-#include <fcppt/version_string.hpp>
 #include <fcppt/text.hpp>
+#include <fcppt/version_string.hpp>
+#include <fcppt/io/cout.hpp>
+
 
 int main()
 {

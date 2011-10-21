@@ -7,8 +7,9 @@
 //[foreach_enumerator
 #include <fcppt/foreach_enumerator.hpp>
 #include <fcppt/foreach_enumerator_start.hpp>
-#include <fcppt/io/cout.hpp>
 #include <fcppt/text.hpp>
+#include <fcppt/io/cout.hpp>
+
 
 namespace
 {

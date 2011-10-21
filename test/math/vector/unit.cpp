@@ -4,12 +4,13 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/math/vector/unit.hpp>
 #include <fcppt/math/vector/basic.hpp>
 #include <fcppt/math/vector/static.hpp>
+#include <fcppt/math/vector/unit.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/test/unit_test.hpp>
 #include <fcppt/config/external_end.hpp>
+
 
 BOOST_AUTO_TEST_CASE(
 	vector_unit

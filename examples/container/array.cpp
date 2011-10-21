@@ -5,9 +5,10 @@
 
 
 //[array
+#include <fcppt/text.hpp>
 #include <fcppt/container/array.hpp>
 #include <fcppt/io/cout.hpp>
-#include <fcppt/text.hpp>
+
 
 int main()
 {

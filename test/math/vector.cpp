@@ -4,13 +4,13 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/math/vector/vector.hpp>
 #include <fcppt/math/compare.hpp>
 #include <fcppt/math/pi.hpp>
-#include <fcppt/math/size_type.hpp>
 #include <fcppt/math/range_compare.hpp>
+#include <fcppt/math/size_type.hpp>
 #include <fcppt/math/vector/hypersphere_to_cartesian.hpp>
 #include <fcppt/math/vector/output.hpp>
+#include <fcppt/math/vector/vector.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/mpl/integral_c.hpp>
 #include <boost/test/unit_test.hpp>
@@ -18,6 +18,7 @@
 #include <iostream>
 #include <ostream>
 #include <fcppt/config/external_end.hpp>
+
 
 namespace
 {

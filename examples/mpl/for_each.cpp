@@ -5,14 +5,15 @@
 
 
 //[mplforeach
-#include <fcppt/mpl/for_each.hpp>
-#include <fcppt/io/cout.hpp>
 #include <fcppt/text.hpp>
 #include <fcppt/type_name.hpp>
+#include <fcppt/io/cout.hpp>
+#include <fcppt/mpl/for_each.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/mpl/vector/vector10.hpp>
 #include <typeinfo>
 #include <fcppt/config/external_end.hpp>
+
 
 namespace
 {

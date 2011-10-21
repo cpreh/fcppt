@@ -5,11 +5,12 @@
 
 
 #include <fcppt/chrono/chrono.hpp>
-#include <fcppt/ratio/milli.hpp>
 #include <fcppt/math/compare.hpp>
+#include <fcppt/ratio/milli.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/test/unit_test.hpp>
 #include <fcppt/config/external_end.hpp>
+
 
 BOOST_AUTO_TEST_CASE(
 	chrono_duration_arithmetic

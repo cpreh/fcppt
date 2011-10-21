@@ -4,20 +4,21 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/math/vector/vector.hpp>
-#include <fcppt/math/matrix/matrix.hpp>
-#include <fcppt/math/matrix/dynamic_impl.hpp>
-#include <fcppt/math/dim/dim.hpp>
+#include <fcppt/text.hpp>
+#include <fcppt/io/cout.hpp>
 #include <fcppt/math/point_rotate.hpp>
 #include <fcppt/math/box/box.hpp>
 #include <fcppt/math/box/rect.hpp>
-#include <fcppt/io/cout.hpp>
-#include <fcppt/text.hpp>
+#include <fcppt/math/dim/dim.hpp>
+#include <fcppt/math/matrix/dynamic_impl.hpp>
+#include <fcppt/math/matrix/matrix.hpp>
+#include <fcppt/math/vector/vector.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/assign/list_of.hpp>
 #include <istream>
 #include <ostream>
 #include <fcppt/config/external_end.hpp>
+
 
 int main()
 {

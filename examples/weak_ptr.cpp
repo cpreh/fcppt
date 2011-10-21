@@ -6,9 +6,10 @@
 
 //[weakptr
 #include <fcppt/shared_ptr.hpp>
+#include <fcppt/text.hpp>
 #include <fcppt/weak_ptr.hpp>
 #include <fcppt/io/cout.hpp>
-#include <fcppt/text.hpp>
+
 
 int main()
 {

@@ -5,12 +5,13 @@
 
 
 //[signal_unregister
+#include <fcppt/text.hpp>
+#include <fcppt/io/cout.hpp>
 #include <fcppt/signal/object.hpp>
 #include <fcppt/signal/scoped_connection.hpp>
 #include <fcppt/signal/unregister/base.hpp>
-#include <fcppt/io/cout.hpp>
 #include <fcppt/tr1/functional.hpp>
-#include <fcppt/text.hpp>
+
 
 namespace
 {

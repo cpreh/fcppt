@@ -5,18 +5,19 @@
 
 
 //[recursivevariant
-#include <fcppt/variant/object_impl.hpp>
-#include <fcppt/variant/recursive.hpp>
-#include <fcppt/variant/output.hpp>
-#include <fcppt/io/cerr.hpp>
-#include <fcppt/io/cout.hpp>
 #include <fcppt/exception.hpp>
 #include <fcppt/text.hpp>
+#include <fcppt/io/cerr.hpp>
+#include <fcppt/io/cout.hpp>
+#include <fcppt/variant/object_impl.hpp>
+#include <fcppt/variant/output.hpp>
+#include <fcppt/variant/recursive.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/mpl/vector/vector10.hpp>
-#include <ostream>
 #include <cstdlib>
+#include <ostream>
 #include <fcppt/config/external_end.hpp>
+
 
 namespace
 {

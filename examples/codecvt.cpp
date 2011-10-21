@@ -4,15 +4,16 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/io/cerr.hpp>
-#include <fcppt/narrow.hpp>
-#include <fcppt/widen.hpp>
-#include <fcppt/text.hpp>
 #include <fcppt/exception.hpp>
+#include <fcppt/narrow.hpp>
+#include <fcppt/text.hpp>
+#include <fcppt/widen.hpp>
+#include <fcppt/io/cerr.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <string>
 #include <cstdlib>
+#include <string>
 #include <fcppt/config/external_end.hpp>
+
 
 int main()
 try

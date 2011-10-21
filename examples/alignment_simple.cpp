@@ -5,10 +5,11 @@
 
 
 //[alignment_simple
+#include <fcppt/text.hpp>
 #include <fcppt/alignment/align.hpp>
 #include <fcppt/alignment/is_aligned.hpp>
 #include <fcppt/io/cout.hpp>
-#include <fcppt/text.hpp>
+
 
 int main()
 {

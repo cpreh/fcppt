@@ -5,22 +5,19 @@
 
 
 //[function
-#include <fcppt/assert/error.hpp>
-#include <fcppt/function/object.hpp>
-#include <fcppt/io/cout.hpp>
-#include <fcppt/io/cerr.hpp>
 #include <fcppt/exception.hpp>
 #include <fcppt/text.hpp>
-
+#include <fcppt/assert/error.hpp>
+#include <fcppt/function/object.hpp>
+#include <fcppt/io/cerr.hpp>
+#include <fcppt/io/cout.hpp>
 #include <fcppt/config/external_begin.hpp>
-
 #include <boost/spirit/home/phoenix/core/reference.hpp>
 #include <boost/spirit/home/phoenix/operator/self.hpp>
-
-#include <ostream>
 #include <cstdlib>
-
+#include <ostream>
 #include <fcppt/config/external_end.hpp>
+
 
 namespace
 {

@@ -5,11 +5,12 @@
 
 
 #include <fcppt/math/box/basic_impl.hpp>
-#include <fcppt/math/box/stretch.hpp>
 #include <fcppt/math/box/output.hpp>
+#include <fcppt/math/box/stretch.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/test/unit_test.hpp>
 #include <fcppt/config/external_end.hpp>
+
 
 BOOST_AUTO_TEST_CASE(box_stretch)
 {

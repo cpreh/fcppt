@@ -5,13 +5,14 @@
 
 
 //[loghelloworld
+#include <fcppt/text.hpp>
+#include <fcppt/io/cout.hpp>
 #include <fcppt/log/debug.hpp>
-#include <fcppt/log/parameters/all.hpp>
 #include <fcppt/log/level.hpp>
 #include <fcppt/log/object.hpp>
 #include <fcppt/log/output.hpp>
-#include <fcppt/io/cout.hpp>
-#include <fcppt/text.hpp>
+#include <fcppt/log/parameters/all.hpp>
+
 
 int
 main()

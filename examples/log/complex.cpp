@@ -5,6 +5,9 @@
 
 
 //[logcomplex
+#include <fcppt/exception.hpp>
+#include <fcppt/from_std_string.hpp>
+#include <fcppt/text.hpp>
 #include <fcppt/function/object.hpp>
 #include <fcppt/io/cerr.hpp>
 #include <fcppt/io/cout.hpp>
@@ -18,12 +21,10 @@
 #include <fcppt/log/output.hpp>
 #include <fcppt/log/parameters/with_context.hpp>
 #include <fcppt/tr1/functional.hpp>
-#include <fcppt/exception.hpp>
-#include <fcppt/from_std_string.hpp>
-#include <fcppt/text.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <cstdlib>
 #include <fcppt/config/external_end.hpp>
+
 
 namespace engine
 {

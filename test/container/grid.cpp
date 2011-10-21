@@ -8,11 +8,12 @@
 #include <fcppt/config/external_begin.hpp>
 #include <boost/test/unit_test.hpp>
 #include <algorithm>
-#include <numeric>
 #include <iterator>
-#include <vector>
+#include <numeric>
 #include <utility>
+#include <vector>
 #include <fcppt/config/external_end.hpp>
+
 
 namespace
 {

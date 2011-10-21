@@ -5,10 +5,11 @@
 
 
 //[preprocessor_printing
-#include <fcppt/preprocessor/function.hpp>
-#include <fcppt/preprocessor/file.hpp>
-#include <fcppt/io/cout.hpp>
 #include <fcppt/text.hpp>
+#include <fcppt/io/cout.hpp>
+#include <fcppt/preprocessor/file.hpp>
+#include <fcppt/preprocessor/function.hpp>
+
 
 namespace
 {
