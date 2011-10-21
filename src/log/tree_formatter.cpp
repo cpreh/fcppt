@@ -5,16 +5,17 @@
 
 
 #include "tree_formatter.hpp"
-#include <fcppt/log/context_location.hpp>
+#include <fcppt/assert/error.hpp>
+#include <fcppt/container/tree/object_impl.hpp>
 #include <fcppt/log/context.hpp>
+#include <fcppt/log/context_location.hpp>
 #include <fcppt/log/detail/context_tree.hpp>
 #include <fcppt/log/detail/inner_context_node.hpp>
 #include <fcppt/log/format/const_object_ptr.hpp>
 #include <fcppt/log/format/create_chain.hpp>
 #include <fcppt/log/format/create_prefix.hpp>
-#include <fcppt/assert/error.hpp>
-#include <fcppt/container/tree/object_impl.hpp>
 #include <fcppt/variant/object_impl.hpp>
+
 
 fcppt::log::format::const_object_ptr const
 fcppt::log::tree_formatter(

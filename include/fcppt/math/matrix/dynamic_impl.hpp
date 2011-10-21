@@ -7,7 +7,8 @@
 #ifndef FCPPT_MATH_MATRIX_DYNAMIC_IMPL_HPP_INCLUDED
 #define FCPPT_MATH_MATRIX_DYNAMIC_IMPL_HPP_INCLUDED
 
-#include <fcppt/math/matrix/dynamic.hpp>
 #include <fcppt/container/raw_vector_impl.hpp>
+#include <fcppt/math/matrix/dynamic.hpp>
+
 
 #endif

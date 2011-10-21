@@ -7,12 +7,13 @@
 #ifndef FCPPT_MATH_DIM_STATIC_HPP_INCLUDED
 #define FCPPT_MATH_DIM_STATIC_HPP_INCLUDED
 
-#include <fcppt/math/dim/basic_fwd.hpp>
-#include <fcppt/math/detail/static_storage.hpp>
 #include <fcppt/math/size_type.hpp>
+#include <fcppt/math/detail/static_storage.hpp>
+#include <fcppt/math/dim/basic_fwd.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/mpl/integral_c.hpp>
 #include <fcppt/config/external_end.hpp>
+
 
 namespace fcppt
 {

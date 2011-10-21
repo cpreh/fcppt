@@ -10,9 +10,10 @@
 #include <fcppt/string_conv_locale.hpp>
 #include <fcppt/symbol.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <string>
 #include <locale>
+#include <string>
 #include <fcppt/config/external_end.hpp>
+
 
 namespace fcppt
 {

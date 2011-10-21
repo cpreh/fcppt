@@ -7,9 +7,10 @@
 #ifndef FCPPT_SIGNAL_DETAIL_CONCRETE_CONNECTION_HPP_INCLUDED
 #define FCPPT_SIGNAL_DETAIL_CONCRETE_CONNECTION_HPP_INCLUDED
 
-#include <fcppt/signal/detail/connection.hpp>
-#include <fcppt/function/object.hpp>
 #include <fcppt/noncopyable.hpp>
+#include <fcppt/function/object.hpp>
+#include <fcppt/signal/detail/connection.hpp>
+
 
 namespace fcppt
 {

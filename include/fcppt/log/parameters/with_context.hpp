@@ -7,11 +7,12 @@
 #ifndef FCPPT_LOG_PARAMETERS_WITH_CONTEXT_HPP_INCLUDED
 #define FCPPT_LOG_PARAMETERS_WITH_CONTEXT_HPP_INCLUDED
 
-#include <fcppt/log/parameters/all.hpp>
+#include <fcppt/symbol.hpp>
+#include <fcppt/io/ostream.hpp>
 #include <fcppt/log/context_fwd.hpp>
 #include <fcppt/log/location_fwd.hpp>
-#include <fcppt/io/ostream.hpp>
-#include <fcppt/symbol.hpp>
+#include <fcppt/log/parameters/all.hpp>
+
 
 namespace fcppt
 {

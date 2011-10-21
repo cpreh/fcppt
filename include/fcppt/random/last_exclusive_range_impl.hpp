@@ -7,10 +7,11 @@
 #ifndef FCPPT_RANDOM_LAST_EXCLUSIVE_RANGE_IMPL_HPP_INCLUDED
 #define FCPPT_RANDOM_LAST_EXCLUSIVE_RANGE_IMPL_HPP_INCLUDED
 
+#include <fcppt/text.hpp>
+#include <fcppt/random/exclusive_range_error.hpp>
 #include <fcppt/random/last_exclusive_range_decl.hpp>
 #include <fcppt/random/range_impl.hpp>
-#include <fcppt/random/exclusive_range_error.hpp>
-#include <fcppt/text.hpp>
+
 
 template<
 	typename T

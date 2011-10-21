@@ -21,7 +21,6 @@
 #include <fcppt/log/error.hpp>
 #include <fcppt/log/exception.hpp>
 #include <fcppt/log/fatal.hpp>
-#include <fcppt/log/format/format.hpp>
 #include <fcppt/log/global.hpp>
 #include <fcppt/log/headers.hpp>
 #include <fcppt/log/info.hpp>
@@ -44,10 +43,12 @@
 #include <fcppt/log/optional_object.hpp>
 #include <fcppt/log/optional_object_fwd.hpp>
 #include <fcppt/log/output.hpp>
-#include <fcppt/log/parameters/parameters.hpp>
 #include <fcppt/log/trampoline.hpp>
 #include <fcppt/log/tree_function.hpp>
 #include <fcppt/log/verbose.hpp>
 #include <fcppt/log/warning.hpp>
+#include <fcppt/log/format/format.hpp>
+#include <fcppt/log/parameters/parameters.hpp>
+
 
 #endif

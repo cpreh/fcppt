@@ -7,8 +7,9 @@
 #ifndef FCPPT_VARIANT_DETAIL_COPY_HPP_INCLUDED
 #define FCPPT_VARIANT_DETAIL_COPY_HPP_INCLUDED
 
-#include <fcppt/variant/raw_type.hpp>
 #include <fcppt/nonassignable.hpp>
+#include <fcppt/variant/raw_type.hpp>
+
 
 namespace fcppt
 {

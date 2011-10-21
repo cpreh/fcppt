@@ -7,10 +7,11 @@
 #ifndef FCPPT_MATH_VECTOR_DYNAMIC_HPP_INCLUDED
 #define FCPPT_MATH_VECTOR_DYNAMIC_HPP_INCLUDED
 
-#include <fcppt/math/vector/basic_fwd.hpp>
+#include <fcppt/container/raw_vector_decl.hpp>
 #include <fcppt/math/detail/dynamic_size.hpp>
 #include <fcppt/math/detail/dynamic_storage.hpp>
-#include <fcppt/container/raw_vector_decl.hpp>
+#include <fcppt/math/vector/basic_fwd.hpp>
+
 
 namespace fcppt
 {

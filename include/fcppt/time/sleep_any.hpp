@@ -7,10 +7,11 @@
 #ifndef FCPPT_TIME_SLEEP_ANY_HPP_INCLUDED
 #define FCPPT_TIME_SLEEP_ANY_HPP_INCLUDED
 
-#include <fcppt/time/sleep.hpp>
-#include <fcppt/time/sleep_duration.hpp>
 #include <fcppt/chrono/duration_cast.hpp>
 #include <fcppt/chrono/duration_impl.hpp>
+#include <fcppt/time/sleep.hpp>
+#include <fcppt/time/sleep_duration.hpp>
+
 
 namespace fcppt
 {

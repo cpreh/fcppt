@@ -7,18 +7,19 @@
 #ifndef FCPPT_MATH_VECTOR_BASIC_DECL_HPP_INCLUDED
 #define FCPPT_MATH_VECTOR_BASIC_DECL_HPP_INCLUDED
 
-#include <fcppt/math/vector/basic_fwd.hpp>
-#include <fcppt/math/vector/max_ctor_params.hpp>
-#include <fcppt/math/detail/make_op_decl.hpp>
-#include <fcppt/math/detail/make_variadic_constructor_decl.hpp>
-#include <fcppt/math/detail/array_adapter.hpp>
 #include <fcppt/math/difference_type.hpp>
 #include <fcppt/math/size_type.hpp>
+#include <fcppt/math/detail/array_adapter.hpp>
+#include <fcppt/math/detail/make_op_decl.hpp>
+#include <fcppt/math/detail/make_variadic_constructor_decl.hpp>
+#include <fcppt/math/vector/basic_fwd.hpp>
+#include <fcppt/math/vector/max_ctor_params.hpp>
 #include <fcppt/type_traits/is_iterator.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/utility/enable_if.hpp>
 #include <iterator>
 #include <fcppt/config/external_end.hpp>
+
 
 namespace fcppt
 {

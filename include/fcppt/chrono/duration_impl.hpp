@@ -7,15 +7,16 @@
 #ifndef FCPPT_CHRONO_DURATION_IMPL_HPP_INCLUDED
 #define FCPPT_CHRONO_DURATION_IMPL_HPP_INCLUDED
 
-#include <fcppt/chrono/duration_decl.hpp>
 #include <fcppt/chrono/duration_cast.hpp>
+#include <fcppt/chrono/duration_decl.hpp>
 #include <fcppt/chrono/duration_values.hpp>
 #include <fcppt/chrono/treat_as_floating_point.hpp>
 #include <fcppt/ratio/divide.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/type_traits/is_convertible.hpp>
 #include <boost/static_assert.hpp>
+#include <boost/type_traits/is_convertible.hpp>
 #include <fcppt/config/external_end.hpp>
+
 
 template<
 	typename Rep,

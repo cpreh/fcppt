@@ -4,14 +4,15 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/time/output_tm.hpp>
 #include <fcppt/io/ostream.hpp>
+#include <fcppt/time/output_tm.hpp>
 #include <fcppt/config/external_begin.hpp>
+#include <ctime>
 #include <iterator>
 #include <locale>
 #include <ostream>
-#include <ctime>
 #include <fcppt/config/external_end.hpp>
+
 
 FCPPT_SYMBOL
 fcppt::io::ostream &

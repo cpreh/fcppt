@@ -7,11 +7,12 @@
 #ifndef FCPPT_IO_CERR_HPP_INCLUDED
 #define FCPPT_IO_CERR_HPP_INCLUDED
 
-#include <fcppt/io/ostream.hpp>
 #include <fcppt/symbol.hpp>
+#include <fcppt/io/ostream.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <ostream>
 #include <fcppt/config/external_end.hpp>
+
 
 namespace fcppt
 {

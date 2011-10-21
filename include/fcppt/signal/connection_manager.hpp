@@ -7,14 +7,15 @@
 #ifndef FCPPT_SIGNAL_CONNECTION_MANAGER_HPP_INCLUDED
 #define FCPPT_SIGNAL_CONNECTION_MANAGER_HPP_INCLUDED
 
-#include <fcppt/signal/connection_manager_fwd.hpp>
-#include <fcppt/signal/auto_connection.hpp>
-#include <fcppt/signal/shared_connection.hpp>
-#include <fcppt/symbol.hpp>
 #include <fcppt/noncopyable.hpp>
+#include <fcppt/symbol.hpp>
+#include <fcppt/signal/auto_connection.hpp>
+#include <fcppt/signal/connection_manager_fwd.hpp>
+#include <fcppt/signal/shared_connection.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/ptr_container/ptr_vector.hpp>
 #include <fcppt/config/external_end.hpp>
+
 
 namespace fcppt
 {

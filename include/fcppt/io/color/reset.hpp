@@ -7,8 +7,9 @@
 #ifndef FCPPT_IO_COLOR_RESET_HPP_INCLUDED
 #define FCPPT_IO_COLOR_RESET_HPP_INCLUDED
 
-#include <fcppt/io/color/set.hpp>
 #include <fcppt/symbol.hpp>
+#include <fcppt/io/color/set.hpp>
+
 
 namespace fcppt
 {

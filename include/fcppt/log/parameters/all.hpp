@@ -7,7 +7,9 @@
 #ifndef FCPPT_LOG_PARAMETERS_ALL_HPP_INCLUDED
 #define FCPPT_LOG_PARAMETERS_ALL_HPP_INCLUDED
 
-#include <fcppt/log/parameters/all_fwd.hpp>
+#include <fcppt/nonassignable.hpp>
+#include <fcppt/symbol.hpp>
+#include <fcppt/io/ostream.hpp>
 #include <fcppt/log/context_fwd.hpp>
 #include <fcppt/log/context_location.hpp>
 #include <fcppt/log/enabled_level_array.hpp>
@@ -17,9 +19,8 @@
 #include <fcppt/log/object_fwd.hpp>
 #include <fcppt/log/optional_context_location.hpp>
 #include <fcppt/log/format/const_object_ptr.hpp>
-#include <fcppt/io/ostream.hpp>
-#include <fcppt/nonassignable.hpp>
-#include <fcppt/symbol.hpp>
+#include <fcppt/log/parameters/all_fwd.hpp>
+
 
 namespace fcppt
 {

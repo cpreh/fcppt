@@ -7,22 +7,23 @@
 #ifndef FCPPT_VARIANT_OBJECT_IMPL_HPP_INCLUDED
 #define FCPPT_VARIANT_OBJECT_IMPL_HPP_INCLUDED
 
-#include <fcppt/variant/object_decl.hpp>
 #include <fcppt/variant/apply_unary.hpp>
 #include <fcppt/variant/invalid_get.hpp>
+#include <fcppt/variant/object_decl.hpp>
+#include <fcppt/variant/detail/apply_unary_internal.hpp>
 #include <fcppt/variant/detail/assert_type.hpp>
+#include <fcppt/variant/detail/construct.hpp>
 #include <fcppt/variant/detail/copy.hpp>
 #include <fcppt/variant/detail/destroy.hpp>
-#include <fcppt/variant/detail/construct.hpp>
-#include <fcppt/variant/detail/type_info.hpp>
 #include <fcppt/variant/detail/index_of.hpp>
 #include <fcppt/variant/detail/real_type.hpp>
+#include <fcppt/variant/detail/type_info.hpp>
 #include <fcppt/variant/detail/unwrap_recursive.hpp>
-#include <fcppt/variant/detail/apply_unary_internal.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/static_assert.hpp>
 #include <new>
 #include <fcppt/config/external_end.hpp>
+
 
 template<
 	typename Types

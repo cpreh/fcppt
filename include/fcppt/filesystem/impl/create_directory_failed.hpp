@@ -7,9 +7,10 @@
 #ifndef FCPPT_FILESYSTEM_IMPL_CREATE_DIRECTORY_FAILED_HPP_INCLUDED
 #define FCPPT_FILESYSTEM_IMPL_CREATE_DIRECTORY_FAILED_HPP_INCLUDED
 
-#include <fcppt/filesystem/path_to_string.hpp>
-#include <fcppt/text.hpp>
 #include <fcppt/string.hpp>
+#include <fcppt/text.hpp>
+#include <fcppt/filesystem/path_to_string.hpp>
+
 
 inline
 fcppt::filesystem::create_directory_failed::create_directory_failed(

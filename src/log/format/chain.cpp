@@ -4,11 +4,12 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/log/format/chain.hpp>
-#include <fcppt/log/format/const_object_ptr.hpp>
-#include <fcppt/assert/pre_message.hpp>
 #include <fcppt/string.hpp>
 #include <fcppt/text.hpp>
+#include <fcppt/assert/pre_message.hpp>
+#include <fcppt/log/format/chain.hpp>
+#include <fcppt/log/format/const_object_ptr.hpp>
+
 
 fcppt::log::format::chain::chain(
 	format::const_object_ptr const _parent,

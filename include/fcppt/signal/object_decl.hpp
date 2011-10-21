@@ -7,16 +7,17 @@
 #ifndef FCPPT_SIGNAL_OBJECT_DECL_HPP_INCLUDED
 #define FCPPT_SIGNAL_OBJECT_DECL_HPP_INCLUDED
 
-#include <fcppt/signal/object_fwd.hpp>
-#include <fcppt/signal/base_decl.hpp>
-#include <fcppt/signal/detail/enable_if_void.hpp>
-#include <fcppt/signal/detail/declare_operator.hpp>
-#include <fcppt/signal/detail/operator_limit.hpp>
 #include <fcppt/noncopyable.hpp>
+#include <fcppt/signal/base_decl.hpp>
+#include <fcppt/signal/object_fwd.hpp>
+#include <fcppt/signal/detail/declare_operator.hpp>
+#include <fcppt/signal/detail/enable_if_void.hpp>
+#include <fcppt/signal/detail/operator_limit.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/preprocessor/repetition/repeat.hpp>
 #include <boost/type_traits/function_traits.hpp>
 #include <fcppt/config/external_end.hpp>
+
 
 namespace fcppt
 {

@@ -7,10 +7,11 @@
 #ifndef FCPPT_MATH_BOX_CONTAINS_POINT_HPP_INCLUDED
 #define FCPPT_MATH_BOX_CONTAINS_POINT_HPP_INCLUDED
 
+#include <fcppt/math/size_type.hpp>
 #include <fcppt/math/box/basic_impl.hpp>
 #include <fcppt/math/vector/basic_impl.hpp>
 #include <fcppt/math/vector/static.hpp>
-#include <fcppt/math/size_type.hpp>
+
 
 namespace fcppt
 {

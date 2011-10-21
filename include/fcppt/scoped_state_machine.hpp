@@ -7,8 +7,9 @@
 #ifndef FCPPT_SCOPED_STATE_MACHINE_HPP_INCLUDED
 #define FCPPT_SCOPED_STATE_MACHINE_HPP_INCLUDED
 
-#include <fcppt/scoped_state_machine_fwd.hpp>
 #include <fcppt/scoped_state_machine_decl.hpp>
+#include <fcppt/scoped_state_machine_fwd.hpp>
 #include <fcppt/scoped_state_machine_impl.hpp>
+
 
 #endif

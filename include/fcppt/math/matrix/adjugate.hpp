@@ -7,12 +7,13 @@
 #ifndef FCPPT_MATH_MATRIX_ADJUGATE_HPP_INCLUDED
 #define FCPPT_MATH_MATRIX_ADJUGATE_HPP_INCLUDED
 
-#include <fcppt/math/matrix/basic_impl.hpp>
-#include <fcppt/math/matrix/static.hpp>
-#include <fcppt/math/matrix/determinant.hpp>
-#include <fcppt/math/matrix/delete_row_and_column.hpp>
 #include <fcppt/math/is_static_size.hpp>
 #include <fcppt/math/size_type.hpp>
+#include <fcppt/math/matrix/basic_impl.hpp>
+#include <fcppt/math/matrix/delete_row_and_column.hpp>
+#include <fcppt/math/matrix/determinant.hpp>
+#include <fcppt/math/matrix/static.hpp>
+
 
 namespace fcppt
 {

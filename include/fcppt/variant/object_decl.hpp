@@ -7,18 +7,19 @@
 #ifndef FCPPT_VARIANT_OBJECT_DECL_HPP_INCLUDED
 #define FCPPT_VARIANT_OBJECT_DECL_HPP_INCLUDED
 
+#include <fcppt/alignment/array.hpp>
+#include <fcppt/mpl/max_value.hpp>
 #include <fcppt/variant/object_fwd.hpp>
 #include <fcppt/variant/raw_type.hpp>
 #include <fcppt/variant/size_type.hpp>
-#include <fcppt/mpl/max_value.hpp>
-#include <fcppt/alignment/array.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/mpl/size.hpp>
 #include <boost/mpl/placeholders.hpp>
+#include <boost/mpl/size.hpp>
 #include <boost/mpl/sizeof.hpp>
 #include <boost/type_traits/alignment_of.hpp>
 #include <typeinfo>
 #include <fcppt/config/external_end.hpp>
+
 
 namespace fcppt
 {

@@ -9,10 +9,13 @@
 
 #include <fcppt/math/quaternion/from_scalar_and_vector.hpp>
 #include <fcppt/math/quaternion/is_normalized.hpp>
-#include <fcppt/math/vector/static.hpp>
 #include <fcppt/math/vector/arithmetic.hpp>
+#include <fcppt/math/vector/static.hpp>
+#include <fcppt/config/external_begin.hpp>
 #include <boost/math/quaternion.hpp>
 #include <cmath>
+#include <fcppt/config/external_end.hpp>
+
 
 namespace fcppt
 {

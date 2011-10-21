@@ -7,10 +7,11 @@
 #ifndef FCPPT_OPTIONAL_DECL_HPP_INCLUDED
 #define FCPPT_OPTIONAL_DECL_HPP_INCLUDED
 
-#include <fcppt/optional_fwd.hpp>
-#include <fcppt/detail/optional_base_decl.hpp>
 #include <fcppt/empty_optional_tag_fwd.hpp>
+#include <fcppt/optional_fwd.hpp>
 #include <fcppt/safe_bool.hpp>
+#include <fcppt/detail/optional_base_decl.hpp>
+
 
 namespace fcppt
 {

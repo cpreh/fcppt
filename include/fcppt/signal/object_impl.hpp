@@ -7,8 +7,8 @@
 #ifndef FCPPT_SIGNAL_OBJECT_IMPL_HPP_INCLUDED
 #define FCPPT_SIGNAL_OBJECT_IMPL_HPP_INCLUDED
 
-#include <fcppt/signal/object_decl.hpp>
 #include <fcppt/signal/base_impl.hpp>
+#include <fcppt/signal/object_decl.hpp>
 #include <fcppt/signal/detail/define_operator.hpp>
 #include <fcppt/signal/detail/define_void_operator.hpp>
 #include <fcppt/signal/detail/enable_if_void.hpp>
@@ -16,6 +16,7 @@
 #include <fcppt/config/external_begin.hpp>
 #include <boost/preprocessor/repetition/repeat.hpp>
 #include <fcppt/config/external_end.hpp>
+
 
 template<
 	typename T,

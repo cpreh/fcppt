@@ -7,12 +7,13 @@
 #ifndef FCPPT_CONTAINER_GRID_OUTPUT_HPP_INCLUDED
 #define FCPPT_CONTAINER_GRID_OUTPUT_HPP_INCLUDED
 
-#include <fcppt/container/grid/detail/print_recurse.hpp>
 #include <fcppt/container/grid/object_impl.hpp>
 #include <fcppt/container/grid/size_type.hpp>
+#include <fcppt/container/grid/detail/print_recurse.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <iosfwd>
 #include <fcppt/config/external_end.hpp>
+
 
 namespace fcppt
 {

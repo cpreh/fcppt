@@ -4,8 +4,9 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/filesystem/replace_extension.hpp>
 #include <fcppt/text.hpp>
+#include <fcppt/filesystem/replace_extension.hpp>
+
 
 fcppt::filesystem::path const
 fcppt::filesystem::replace_extension(

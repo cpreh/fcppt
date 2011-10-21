@@ -7,8 +7,9 @@
 #ifndef FCPPT_MAJOR_VERSION_HPP_INCLUDED
 #define FCPPT_MAJOR_VERSION_HPP_INCLUDED
 
-#include <fcppt/version_integral_c.hpp>
 #include <fcppt/version.hpp>
+#include <fcppt/version_integral_c.hpp>
+
 
 namespace fcppt
 {

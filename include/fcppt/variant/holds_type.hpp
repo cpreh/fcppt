@@ -7,13 +7,14 @@
 #ifndef FCPPT_VARIANT_HOLDS_TYPE_HPP_INCLUDED
 #define FCPPT_VARIANT_HOLDS_TYPE_HPP_INCLUDED
 
+#include <fcppt/mpl/index_of.hpp>
 #include <fcppt/variant/object_impl.hpp>
 #include <fcppt/variant/size_type.hpp>
-#include <fcppt/mpl/index_of.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/mpl/contains.hpp>
 #include <boost/utility/enable_if.hpp>
 #include <fcppt/config/external_end.hpp>
+
 
 namespace fcppt
 {

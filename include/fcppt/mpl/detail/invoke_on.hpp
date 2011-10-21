@@ -7,13 +7,14 @@
 #ifndef FCPPT_MPL_DETAIL_INVOKE_ON_HPP_INCLUDED
 #define FCPPT_MPL_DETAIL_INVOKE_ON_HPP_INCLUDED
 
-#include <fcppt/mpl/invalid_invoke.hpp>
 #include <fcppt/workarounds.hpp>
+#include <fcppt/mpl/invalid_invoke.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/mpl/deref.hpp>
 #include <boost/mpl/next.hpp>
 #include <boost/type_traits/is_same.hpp>
 #include <fcppt/config/external_end.hpp>
+
 
 namespace fcppt
 {

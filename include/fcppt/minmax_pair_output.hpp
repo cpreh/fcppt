@@ -7,12 +7,13 @@
 #ifndef FCPPT_MINMAX_PAIR_OUTPUT_HPP_INCLUDED
 #define FCPPT_MINMAX_PAIR_OUTPUT_HPP_INCLUDED
 
-#include <fcppt/minmax_pair_impl.hpp>
 #include <fcppt/homogenous_pair_output.hpp>
+#include <fcppt/minmax_pair_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <ostream>
 #include <iosfwd>
+#include <ostream>
 #include <fcppt/config/external_end.hpp>
+
 
 namespace fcppt
 {

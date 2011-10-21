@@ -7,13 +7,14 @@
 #ifndef FCPPT_MATH_MATRIX_HAS_DIM_HPP_INCLUDED
 #define FCPPT_MATH_MATRIX_HAS_DIM_HPP_INCLUDED
 
-#include <fcppt/math/matrix/basic_fwd.hpp>
-#include <fcppt/math/detail/dim_matches.hpp>
 #include <fcppt/math/size_type.hpp>
+#include <fcppt/math/detail/dim_matches.hpp>
+#include <fcppt/math/matrix/basic_fwd.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/type_traits/integral_constant.hpp>
 #include <boost/mpl/and.hpp>
+#include <boost/type_traits/integral_constant.hpp>
 #include <fcppt/config/external_end.hpp>
+
 
 namespace fcppt
 {

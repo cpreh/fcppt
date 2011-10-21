@@ -7,8 +7,9 @@
 #ifndef FCPPT_VARIANT_NOT_EQUAL_HPP_INCLUDED
 #define FCPPT_VARIANT_NOT_EQUAL_HPP_INCLUDED
 
-#include <fcppt/variant/object_fwd.hpp>
 #include <fcppt/variant/equal.hpp>
+#include <fcppt/variant/object_fwd.hpp>
+
 
 namespace fcppt
 {

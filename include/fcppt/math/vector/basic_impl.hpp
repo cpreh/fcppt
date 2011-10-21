@@ -7,21 +7,22 @@
 #ifndef FCPPT_MATH_VECTOR_BASIC_IMPL_HPP_INCLUDED
 #define FCPPT_MATH_VECTOR_BASIC_IMPL_HPP_INCLUDED
 
+#include <fcppt/math/detail/array_adapter_impl.hpp>
+#include <fcppt/math/detail/assign.hpp>
+#include <fcppt/math/detail/checked_access.hpp>
+#include <fcppt/math/detail/initial_size.hpp>
+#include <fcppt/math/detail/make_op_def.hpp>
+#include <fcppt/math/detail/make_variadic_constructor.hpp>
+#include <fcppt/math/detail/storage_data.hpp>
+#include <fcppt/math/detail/storage_dim.hpp>
 #include <fcppt/math/vector/basic_decl.hpp>
 #include <fcppt/math/vector/max_ctor_params.hpp>
 #include <fcppt/math/vector/normal_storage.hpp>
-#include <fcppt/math/detail/array_adapter_impl.hpp>
-#include <fcppt/math/detail/make_op_def.hpp>
-#include <fcppt/math/detail/storage_data.hpp>
-#include <fcppt/math/detail/storage_dim.hpp>
-#include <fcppt/math/detail/checked_access.hpp>
-#include <fcppt/math/detail/make_variadic_constructor.hpp>
-#include <fcppt/math/detail/initial_size.hpp>
-#include <fcppt/math/detail/assign.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <iterator>
 #include <algorithm>
+#include <iterator>
 #include <fcppt/config/external_end.hpp>
+
 
 template<
 	typename T,

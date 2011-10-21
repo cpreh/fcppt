@@ -8,7 +8,10 @@
 #define FCPPT_MAKE_AUTO_PTR_HPP_INCLUDED
 
 #include <fcppt/detail/make_ptr_base.hpp>
+#include <fcppt/config/external_begin.hpp>
 #include <memory>
+#include <fcppt/config/external_end.hpp>
+
 
 namespace fcppt
 {

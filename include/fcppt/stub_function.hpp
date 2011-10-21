@@ -7,14 +7,15 @@
 #ifndef FCPPT_STUB_FUNCTION_HPP_INCLUDED
 #define FCPPT_STUB_FUNCTION_HPP_INCLUDED
 
-#include <fcppt/log/headers.hpp>
+#include <fcppt/text.hpp>
 #include <fcppt/log/global.hpp>
+#include <fcppt/log/headers.hpp>
 #include <fcppt/preprocessor/file.hpp>
 #include <fcppt/preprocessor/stringize.hpp>
-#include <fcppt/text.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <ostream>
 #include <fcppt/config/external_end.hpp>
+
 
 #define FCPPT_STUB_FUNCTION \
 FCPPT_LOG_WARNING(\

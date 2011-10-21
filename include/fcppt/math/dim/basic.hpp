@@ -7,8 +7,9 @@
 #ifndef FCPPT_MATH_DIM_BASIC_HPP_INCLUDED
 #define FCPPT_MATH_DIM_BASIC_HPP_INCLUDED
 
-#include <fcppt/math/dim/basic_fwd.hpp>
 #include <fcppt/math/dim/basic_decl.hpp>
+#include <fcppt/math/dim/basic_fwd.hpp>
 #include <fcppt/math/dim/basic_impl.hpp>
+
 
 #endif

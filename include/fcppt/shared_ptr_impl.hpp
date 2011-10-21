@@ -7,16 +7,17 @@
 #ifndef FCPPT_SHARED_PTR_IMPL_HPP_INCLUDED
 #define FCPPT_SHARED_PTR_IMPL_HPP_INCLUDED
 
-#include <fcppt/tr1/detail/use_boost_tr1.hpp> // workaround for boost's get_pointer
-#include <fcppt/detail/make_shared_wrapper.hpp>
 #include <fcppt/heap_deleter.hpp>
 #include <fcppt/shared_ptr_decl.hpp>
 #include <fcppt/unique_ptr_impl.hpp>
+#include <fcppt/detail/make_shared_wrapper.hpp>
+#include <fcppt/tr1/detail/use_boost_tr1.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/type_traits/is_same.hpp>
 #include <boost/static_assert.hpp>
+#include <boost/type_traits/is_same.hpp>
 #include <algorithm>
 #include <fcppt/config/external_end.hpp>
+
 
 template<
 	typename T,

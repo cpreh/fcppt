@@ -6,9 +6,10 @@
 
 #include <fcppt/string_conv_locale.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <locale>
 #include <cstdlib>
+#include <locale>
 #include <fcppt/config/external_end.hpp>
+
 
 namespace
 {

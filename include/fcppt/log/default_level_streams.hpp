@@ -7,9 +7,10 @@
 #ifndef FCPPT_LOG_DEFAULT_LEVEL_STREAMS_HPP_INCLUDED
 #define FCPPT_LOG_DEFAULT_LEVEL_STREAMS_HPP_INCLUDED
 
-#include <fcppt/log/level_stream_array.hpp>
-#include <fcppt/io/ostream.hpp>
 #include <fcppt/symbol.hpp>
+#include <fcppt/io/ostream.hpp>
+#include <fcppt/log/level_stream_array.hpp>
+
 
 namespace fcppt
 {

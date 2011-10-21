@@ -9,10 +9,11 @@
 #ifndef FCPPT_RATIO_DETAIL_LESS_HPP_INCLUDED
 #define FCPPT_RATIO_DETAIL_LESS_HPP_INCLUDED
 
-#include <fcppt/ratio/detail/static_sign.hpp>
-#include <fcppt/ratio/detail/less1.hpp>
 #include <fcppt/ratio/int_type.hpp>
 #include <fcppt/ratio/object.hpp>
+#include <fcppt/ratio/detail/less1.hpp>
+#include <fcppt/ratio/detail/static_sign.hpp>
+
 
 namespace fcppt
 {

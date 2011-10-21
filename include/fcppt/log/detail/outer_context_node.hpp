@@ -7,8 +7,9 @@
 #ifndef FCPPT_LOG_DETAIL_OUTER_CONTEXT_NODE_HPP_INCLUDED
 #define FCPPT_LOG_DETAIL_OUTER_CONTEXT_NODE_HPP_INCLUDED
 
-#include <fcppt/log/object_fwd.hpp>
 #include <fcppt/nonassignable.hpp>
+#include <fcppt/log/object_fwd.hpp>
+
 
 namespace fcppt
 {

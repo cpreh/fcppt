@@ -7,8 +7,9 @@
 #ifndef FCPPT_CONTAINER_TREE_DETAIL_COPY_VALUE_HPP_INCLUDED
 #define FCPPT_CONTAINER_TREE_DETAIL_COPY_VALUE_HPP_INCLUDED
 
-#include <fcppt/container/tree/copy_tree_value.hpp>
 #include <fcppt/scoped_ptr.hpp>
+#include <fcppt/container/tree/copy_tree_value.hpp>
+
 
 namespace fcppt
 {

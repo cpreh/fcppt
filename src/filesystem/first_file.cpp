@@ -4,9 +4,10 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
+#include <fcppt/filesystem/directory_iterator.hpp>
 #include <fcppt/filesystem/first_file.hpp>
 #include <fcppt/filesystem/skip_directories.hpp>
-#include <fcppt/filesystem/directory_iterator.hpp>
+
 
 fcppt::filesystem::directory_iterator const
 fcppt::filesystem::first_file(

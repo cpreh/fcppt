@@ -7,11 +7,12 @@
 #ifndef FCPPT_MAKE_SHARED_PTR_HPP_INCLUDED
 #define FCPPT_MAKE_SHARED_PTR_HPP_INCLUDED
 
-#include <fcppt/detail/make_ptr_base.hpp>
 #include <fcppt/shared_ptr.hpp>
+#include <fcppt/detail/make_ptr_base.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/smart_ptr/make_shared.hpp>
 #include <fcppt/config/external_end.hpp>
+
 
 namespace fcppt
 {

@@ -4,8 +4,9 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/log/detail/temporary_output.hpp>
 #include <fcppt/make_shared_ptr.hpp>
+#include <fcppt/log/detail/temporary_output.hpp>
+
 
 fcppt::log::detail::temporary_output::temporary_output()
 :

@@ -11,16 +11,13 @@
 // learn how this file should be used.
 
 #include <fcppt/utf8/facet.hpp>
-//#include <boost/detail/utf8_codecvt_facet.hpp>
-
 #include <fcppt/config/external_begin.hpp>
-
-#include <cstdlib> // for multi-byte converson routines
-
-#include <boost/limits.hpp>
 #include <boost/config.hpp>
-
+#include <boost/limits.hpp>
+#include <boost/detail/utf8_codecvt_facet.hpp>
+#include <cstdlib>
 #include <fcppt/config/external_end.hpp>
+
 
 // If we don't have wstring, then Unicode support
 // is not available anyway, so we don't need to even

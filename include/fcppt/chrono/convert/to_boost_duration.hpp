@@ -9,9 +9,10 @@
 
 #include <fcppt/chrono/duration_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/date_time/posix_time/posix_time_config.hpp>
 #include <boost/static_assert.hpp>
+#include <boost/date_time/posix_time/posix_time_config.hpp>
 #include <fcppt/config/external_end.hpp>
+
 
 namespace fcppt
 {

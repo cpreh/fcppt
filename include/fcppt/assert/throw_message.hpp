@@ -7,8 +7,9 @@
 #ifndef FCPPT_ASSERT_THROW_MESSAGE_HPP_INCLUDED
 #define FCPPT_ASSERT_THROW_MESSAGE_HPP_INCLUDED
 
-#include <fcppt/assert/gather_information.hpp>
 #include <fcppt/assert/conditional.hpp>
+#include <fcppt/assert/gather_information.hpp>
+
 
 #define FCPPT_ASSERT_THROW_MESSAGE(\
 	condition,\

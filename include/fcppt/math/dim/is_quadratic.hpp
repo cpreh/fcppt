@@ -7,8 +7,9 @@
 #ifndef FCPPT_MATH_DIM_IS_QUADRATIC_HPP_INCLUDED
 #define FCPPT_MATH_DIM_IS_QUADRATIC_HPP_INCLUDED
 
-#include <fcppt/math/dim/basic_impl.hpp>
 #include <fcppt/math/compare.hpp>
+#include <fcppt/math/dim/basic_impl.hpp>
+
 
 namespace fcppt
 {

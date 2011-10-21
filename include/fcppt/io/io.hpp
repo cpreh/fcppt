@@ -13,7 +13,6 @@
 #include <fcppt/io/cin.hpp>
 #include <fcppt/io/clog.hpp>
 #include <fcppt/io/cofstream.hpp>
-#include <fcppt/io/color/color.hpp>
 #include <fcppt/io/cout.hpp>
 #include <fcppt/io/fstream.hpp>
 #include <fcppt/io/ifstream.hpp>
@@ -30,5 +29,7 @@
 #include <fcppt/io/stream_to_string.hpp>
 #include <fcppt/io/stringstream.hpp>
 #include <fcppt/io/write.hpp>
+#include <fcppt/io/color/color.hpp>
+
 
 #endif

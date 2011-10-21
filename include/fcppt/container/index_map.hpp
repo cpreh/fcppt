@@ -7,8 +7,9 @@
 #ifndef FCPPT_CONTAINER_INDEX_MAP_HPP_INCLUDED
 #define FCPPT_CONTAINER_INDEX_MAP_HPP_INCLUDED
 
-#include <fcppt/container/index_map_fwd.hpp>
 #include <fcppt/container/index_map_decl.hpp>
+#include <fcppt/container/index_map_fwd.hpp>
 #include <fcppt/container/index_map_impl.hpp>
+
 
 #endif

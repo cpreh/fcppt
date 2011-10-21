@@ -4,16 +4,17 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/log/make_location.hpp>
-#include <fcppt/log/exception.hpp>
 #include <fcppt/string.hpp>
 #include <fcppt/text.hpp>
+#include <fcppt/log/exception.hpp>
+#include <fcppt/log/make_location.hpp>
 #include <fcppt/config/external_begin.hpp>
+#include <boost/next_prior.hpp>
 #include <boost/algorithm/string/classification.hpp>
 #include <boost/algorithm/string/split.hpp>
-#include <boost/next_prior.hpp>
 #include <vector>
 #include <fcppt/config/external_end.hpp>
+
 
 fcppt::log::location const
 fcppt::log::make_location(

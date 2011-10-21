@@ -7,16 +7,17 @@
 #ifndef FCPPT_CONTAINER_RAW_VECTOR_IMPL_HPP_INCLUDED
 #define FCPPT_CONTAINER_RAW_VECTOR_IMPL_HPP_INCLUDED
 
-#include <fcppt/container/raw_vector_decl.hpp>
-#include <fcppt/container/out_of_range.hpp>
 #include <fcppt/assert/pre.hpp>
+#include <fcppt/container/out_of_range.hpp>
+#include <fcppt/container/raw_vector_decl.hpp>
 #include <fcppt/type_traits/is_input_iterator.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/utility/enable_if.hpp>
 #include <boost/next_prior.hpp>
-#include <iterator>
+#include <boost/utility/enable_if.hpp>
 #include <algorithm>
+#include <iterator>
 #include <fcppt/config/external_end.hpp>
+
 
 template<
 	typename T,

@@ -4,8 +4,9 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/filesystem/remove_filename.hpp>
 #include <fcppt/filesystem/path.hpp>
+#include <fcppt/filesystem/remove_filename.hpp>
+
 
 fcppt::filesystem::path const
 fcppt::filesystem::remove_filename(

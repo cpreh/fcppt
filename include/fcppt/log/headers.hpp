@@ -7,7 +7,8 @@
 #ifndef FCPPT_LOG_HEADERS_HPP_INCLUDED
 #define FCPPT_LOG_HEADERS_HPP_INCLUDED
 
-#include <fcppt/log/output.hpp>
 #include <fcppt/log/macros.hpp>
+#include <fcppt/log/output.hpp>
+
 
 #endif

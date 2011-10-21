@@ -4,16 +4,17 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/log/parameters/all.hpp>
+#include <fcppt/io/ostream.hpp>
 #include <fcppt/log/context_location.hpp>
 #include <fcppt/log/default_level_streams.hpp>
-#include <fcppt/log/enabled_levels.hpp>
 #include <fcppt/log/enabled_level_array.hpp>
+#include <fcppt/log/enabled_levels.hpp>
 #include <fcppt/log/level.hpp>
 #include <fcppt/log/level_stream_array.hpp>
 #include <fcppt/log/optional_context_location.hpp>
 #include <fcppt/log/format/const_object_ptr.hpp>
-#include <fcppt/io/ostream.hpp>
+#include <fcppt/log/parameters/all.hpp>
+
 
 fcppt::log::parameters::all::all(
 	io::ostream &_sink

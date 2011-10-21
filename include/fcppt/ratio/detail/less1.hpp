@@ -9,8 +9,9 @@
 #ifndef FCPPT_RATIO_DETAIL_LESS1_HPP_INCLUDED
 #define FCPPT_RATIO_DETAIL_LESS1_HPP_INCLUDED
 
-#include <fcppt/ratio/detail/less2.hpp>
 #include <fcppt/ratio/object.hpp>
+#include <fcppt/ratio/detail/less2.hpp>
+
 
 namespace fcppt
 {

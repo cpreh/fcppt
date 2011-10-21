@@ -7,8 +7,9 @@
 #ifndef FCPPT_FILESYSTEM_SKIP_DIRECTORIES_HPP_INCLUDED
 #define FCPPT_FILESYSTEM_SKIP_DIRECTORIES_HPP_INCLUDED
 
-#include <fcppt/filesystem/directory_iterator.hpp>
 #include <fcppt/symbol.hpp>
+#include <fcppt/filesystem/directory_iterator.hpp>
+
 
 namespace fcppt
 {

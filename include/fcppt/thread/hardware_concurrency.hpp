@@ -7,8 +7,9 @@
 #ifndef FCPPT_THREAD_HARDWARE_CONCURRENCY_HPP_INCLUDED
 #define FCPPT_THREAD_HARDWARE_CONCURRENCY_HPP_INCLUDED
 
-#include <fcppt/thread/hardware_concurrency_type.hpp>
 #include <fcppt/symbol.hpp>
+#include <fcppt/thread/hardware_concurrency_type.hpp>
+
 
 namespace fcppt
 {

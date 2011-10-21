@@ -4,11 +4,14 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/io/color/set.hpp>
 #include <fcppt/sn_cast.hpp>
-#include <cstring>
+#include <fcppt/io/color/set.hpp>
+#include <fcppt/config/external_begin.hpp>
 #include <cstdlib>
+#include <cstring>
 #include <iostream>
+#include <fcppt/config/external_end.hpp>
+
 
 namespace
 {

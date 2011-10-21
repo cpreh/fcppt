@@ -9,13 +9,14 @@
 
 #include <fcppt/config/external_begin.hpp>
 #include <boost/mpl/and.hpp>
+#include <boost/mpl/greater_equal.hpp>
 #include <boost/mpl/or.hpp>
 #include <boost/mpl/sizeof.hpp>
-#include <boost/mpl/greater_equal.hpp>
-#include <boost/type_traits/is_integral.hpp>
 #include <boost/type_traits/is_floating_point.hpp>
+#include <boost/type_traits/is_integral.hpp>
 #include <boost/utility/enable_if.hpp>
 #include <fcppt/config/external_end.hpp>
+
 
 namespace fcppt
 {

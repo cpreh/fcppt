@@ -7,10 +7,11 @@
 #ifndef FCPPT_ASSERT_MAKE_MESSAGE_HPP_INCLUDED
 #define FCPPT_ASSERT_MAKE_MESSAGE_HPP_INCLUDED
 
-#include <fcppt/assert/information.hpp>
 #include <fcppt/insert_to_fcppt_string.hpp>
 #include <fcppt/string.hpp>
 #include <fcppt/text.hpp>
+#include <fcppt/assert/information.hpp>
+
 
 namespace fcppt
 {

@@ -7,8 +7,9 @@
 #ifndef FCPPT_LOG_OUTPUT_HPP_INCLUDED
 #define FCPPT_LOG_OUTPUT_HPP_INCLUDED
 
-#include <fcppt/log/detail/temporary_output.hpp>
 #include <fcppt/log/object.hpp>
 #include <fcppt/log/trampoline.hpp>
+#include <fcppt/log/detail/temporary_output.hpp>
+
 
 #endif

@@ -7,15 +7,16 @@
 #ifndef FCPPT_CHRONO_SYSTEM_CLOCK_HPP_INCLUDED
 #define FCPPT_CHRONO_SYSTEM_CLOCK_HPP_INCLUDED
 
-#include <fcppt/chrono/system_clock_fwd.hpp>
-#include <fcppt/chrono/duration_fwd.hpp>
-#include <fcppt/chrono/time_point_fwd.hpp>
-#include <fcppt/chrono/rep.hpp>
-#include <fcppt/ratio/micro.hpp>
 #include <fcppt/symbol.hpp>
+#include <fcppt/chrono/duration_fwd.hpp>
+#include <fcppt/chrono/rep.hpp>
+#include <fcppt/chrono/system_clock_fwd.hpp>
+#include <fcppt/chrono/time_point_fwd.hpp>
+#include <fcppt/ratio/micro.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <ctime>
 #include <fcppt/config/external_end.hpp>
+
 
 namespace fcppt
 {

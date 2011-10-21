@@ -4,10 +4,11 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/filesystem/extension_without_dot.hpp>
-#include <fcppt/filesystem/extension.hpp>
 #include <fcppt/string.hpp>
 #include <fcppt/text.hpp>
+#include <fcppt/filesystem/extension.hpp>
+#include <fcppt/filesystem/extension_without_dot.hpp>
+
 
 fcppt::string const
 fcppt::filesystem::extension_without_dot(

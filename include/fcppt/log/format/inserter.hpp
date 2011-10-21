@@ -7,10 +7,11 @@
 #ifndef FCPPT_LOG_FORMAT_INSERTER_HPP_INCLUDED
 #define FCPPT_LOG_FORMAT_INSERTER_HPP_INCLUDED
 
-#include <fcppt/log/format/object.hpp>
 #include <fcppt/noncopyable.hpp>
 #include <fcppt/string.hpp>
 #include <fcppt/symbol.hpp>
+#include <fcppt/log/format/object.hpp>
+
 
 namespace fcppt
 {

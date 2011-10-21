@@ -7,20 +7,21 @@
 #ifndef FCPPT_CONTAINER_GRID_INTERPOLATE_HPP_INCLUDED
 #define FCPPT_CONTAINER_GRID_INTERPOLATE_HPP_INCLUDED
 
-#include <fcppt/container/grid/object_impl.hpp>
-#include <fcppt/math/vector/basic_impl.hpp>
-#include <fcppt/math/vector/structure_cast.hpp>
-#include <fcppt/math/vector/mod.hpp>
-#include <fcppt/math/dim/structure_cast.hpp>
-#include <fcppt/math/dim/basic_impl.hpp>
 #include <fcppt/container/array.hpp>
+#include <fcppt/container/grid/object_impl.hpp>
 #include <fcppt/math/generate_binary_vectors.hpp>
+#include <fcppt/math/dim/basic_impl.hpp>
+#include <fcppt/math/dim/structure_cast.hpp>
+#include <fcppt/math/vector/basic_impl.hpp>
+#include <fcppt/math/vector/mod.hpp>
+#include <fcppt/math/vector/structure_cast.hpp>
 #include <fcppt/config/external_begin.hpp>
+#include <boost/mpl/identity.hpp>
 #include <boost/type_traits/is_floating_point.hpp>
 #include <boost/utility/enable_if.hpp>
-#include <boost/mpl/identity.hpp>
 #include <cstddef>
 #include <fcppt/config/external_end.hpp>
+
 
 namespace fcppt
 {

@@ -7,14 +7,15 @@
 #ifndef FCPPT_MATH_VECTOR_SLERP_HPP_INCLUDED
 #define FCPPT_MATH_VECTOR_SLERP_HPP_INCLUDED
 
-#include <fcppt/math/vector/basic.hpp>
+#include <fcppt/math/almost_zero.hpp>
 #include <fcppt/math/vector/arithmetic.hpp>
+#include <fcppt/math/vector/basic.hpp>
 #include <fcppt/math/vector/dot.hpp>
 #include <fcppt/math/vector/length.hpp>
-#include <fcppt/math/almost_zero.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <cmath>
 #include <fcppt/config/external_end.hpp>
+
 
 namespace fcppt
 {

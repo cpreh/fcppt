@@ -4,9 +4,10 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
+#include <fcppt/filesystem/is_regular.hpp>
 #include <fcppt/filesystem/next_file.hpp>
 #include <fcppt/filesystem/skip_directories.hpp>
-#include <fcppt/filesystem/is_regular.hpp>
+
 
 fcppt::filesystem::directory_iterator const
 fcppt::filesystem::next_file(

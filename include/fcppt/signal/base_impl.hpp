@@ -7,10 +7,11 @@
 #ifndef FCPPT_SIGNAL_BASE_IMPL_HPP_INCLUDED
 #define FCPPT_SIGNAL_BASE_IMPL_HPP_INCLUDED
 
-#include <fcppt/signal/base_decl.hpp>
-#include <fcppt/signal/detail/concrete_connection_impl.hpp>
 #include <fcppt/make_unique_ptr.hpp>
 #include <fcppt/move.hpp>
+#include <fcppt/signal/base_decl.hpp>
+#include <fcppt/signal/detail/concrete_connection_impl.hpp>
+
 
 template<
 	typename T

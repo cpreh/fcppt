@@ -7,12 +7,13 @@
 #ifndef FCPPT_CHRONO_DURATION_ARITHMETIC_HPP_INCLUDED
 #define FCPPT_CHRONO_DURATION_ARITHMETIC_HPP_INCLUDED
 
-#include <fcppt/chrono/duration_impl.hpp>
 #include <fcppt/chrono/common_type.hpp>
+#include <fcppt/chrono/duration_impl.hpp>
 #include <fcppt/chrono/is_duration.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/static_assert.hpp>
 #include <fcppt/config/external_end.hpp>
+
 
 namespace fcppt
 {

@@ -7,12 +7,13 @@
 #ifndef FCPPT_MATH_MATRIX_STATIC_HPP_INCLUDED
 #define FCPPT_MATH_MATRIX_STATIC_HPP_INCLUDED
 
+#include <fcppt/math/size_type.hpp>
 #include <fcppt/math/matrix/basic_fwd.hpp>
 #include <fcppt/math/matrix/detail/static_storage.hpp>
-#include <fcppt/math/size_type.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/mpl/integral_c.hpp>
 #include <fcppt/config/external_end.hpp>
+
 
 namespace fcppt
 {

@@ -7,17 +7,18 @@
 #ifndef FCPPT_CONTAINER_GRID_OBJECT_DECL_HPP_INCLUDED
 #define FCPPT_CONTAINER_GRID_OBJECT_DECL_HPP_INCLUDED
 
-#include <fcppt/container/grid/object_fwd.hpp>
-#include <fcppt/container/grid/dim.hpp>
-#include <fcppt/container/grid/size_type.hpp>
 #include <fcppt/container/raw_vector_decl.hpp>
+#include <fcppt/container/grid/dim.hpp>
+#include <fcppt/container/grid/object_fwd.hpp>
+#include <fcppt/container/grid/size_type.hpp>
 #include <fcppt/math/dim/basic_decl.hpp>
 #include <fcppt/config/external_begin.hpp>
+#include <boost/static_assert.hpp>
 #include <boost/mpl/if.hpp>
 #include <boost/type_traits/is_pod.hpp>
-#include <boost/static_assert.hpp>
 #include <vector>
 #include <fcppt/config/external_end.hpp>
+
 
 namespace fcppt
 {

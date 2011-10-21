@@ -7,11 +7,12 @@
 #ifndef FCPPT_RANDOM_ACTOR_NORMALIZED_HPP_INCLUDED
 #define FCPPT_RANDOM_ACTOR_NORMALIZED_HPP_INCLUDED
 
-#include <fcppt/random/actor/float_type.hpp>
-#include <fcppt/random/actor/container.hpp>
-#include <fcppt/random/uniform.hpp>
-#include <fcppt/symbol.hpp>
 #include <fcppt/noncopyable.hpp>
+#include <fcppt/symbol.hpp>
+#include <fcppt/random/uniform.hpp>
+#include <fcppt/random/actor/container.hpp>
+#include <fcppt/random/actor/float_type.hpp>
+
 
 namespace fcppt
 {

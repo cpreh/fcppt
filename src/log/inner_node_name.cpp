@@ -5,13 +5,14 @@
 
 
 #include "inner_node_name.hpp"
+#include <fcppt/nonassignable.hpp>
+#include <fcppt/string.hpp>
+#include <fcppt/container/tree/object_impl.hpp>
 #include <fcppt/log/detail/inner_context_node.hpp>
 #include <fcppt/log/detail/outer_context_node.hpp>
 #include <fcppt/variant/apply_unary.hpp>
 #include <fcppt/variant/object_impl.hpp>
-#include <fcppt/container/tree/object_impl.hpp>
-#include <fcppt/string.hpp>
-#include <fcppt/nonassignable.hpp>
+
 
 namespace
 {

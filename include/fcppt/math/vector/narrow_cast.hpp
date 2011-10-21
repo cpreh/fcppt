@@ -7,8 +7,9 @@
 #ifndef FCPPT_MATH_VECTOR_NARROW_CAST_HPP_INCLUDED
 #define FCPPT_MATH_VECTOR_NARROW_CAST_HPP_INCLUDED
 
-#include <fcppt/math/vector/basic_impl.hpp>
 #include <fcppt/math/detail/narrow_cast.hpp>
+#include <fcppt/math/vector/basic_impl.hpp>
+
 
 namespace fcppt
 {

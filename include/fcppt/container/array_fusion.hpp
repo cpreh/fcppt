@@ -9,11 +9,12 @@
 
 #include <fcppt/container/array_fwd.hpp>
 #include <fcppt/config/external_begin.hpp>
+#include <boost/fusion/adapted/boost_array.hpp>
 #include <boost/fusion/support/tag_of_fwd.hpp>
 #include <boost/mpl/sequence_tag_fwd.hpp>
-#include <boost/fusion/adapted/boost_array.hpp>
 #include <cstddef>
 #include <fcppt/config/external_end.hpp>
+
 
 namespace boost
 {

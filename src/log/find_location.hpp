@@ -7,8 +7,9 @@
 #ifndef FCPPT_LOG_FIND_LOCATION_HPP_INCLUDED
 #define FCPPT_LOG_FIND_LOCATION_HPP_INCLUDED
 
-#include <fcppt/log/detail/context_tree.hpp>
 #include <fcppt/log/location_fwd.hpp>
+#include <fcppt/log/detail/context_tree.hpp>
+
 
 namespace fcppt
 {

@@ -7,9 +7,10 @@
 #ifndef FCPPT_CHRONO_ASIO_EXPIRES_FROM_NOW_ANY_HPP_INCLUDED
 #define FCPPT_CHRONO_ASIO_EXPIRES_FROM_NOW_ANY_HPP_INCLUDED
 
-#include <fcppt/chrono/asio/deadline_timer.hpp>
-#include <fcppt/chrono/asio/convert_duration.hpp>
 #include <fcppt/chrono/duration_fwd.hpp>
+#include <fcppt/chrono/asio/convert_duration.hpp>
+#include <fcppt/chrono/asio/deadline_timer.hpp>
+
 
 namespace fcppt
 {

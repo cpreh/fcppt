@@ -7,12 +7,13 @@
 #ifndef FCPPT_MATH_POINT_ROTATE_HPP_INCLUDED
 #define FCPPT_MATH_POINT_ROTATE_HPP_INCLUDED
 
-#include <fcppt/math/vector/basic_decl.hpp>
 #include <fcppt/math/matrix/basic_impl.hpp>
 #include <fcppt/math/matrix/rotation_2d.hpp>
 #include <fcppt/math/matrix/vector.hpp>
 #include <fcppt/math/vector/arithmetic.hpp>
+#include <fcppt/math/vector/basic_decl.hpp>
 #include <fcppt/math/vector/basic_impl.hpp>
+
 
 namespace fcppt
 {

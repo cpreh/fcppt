@@ -7,8 +7,9 @@
 #ifndef FCPPT_THREAD_SLEEP_HPP_INCLUDED
 #define FCPPT_THREAD_SLEEP_HPP_INCLUDED
 
-#include <fcppt/thread/sleep_duration.hpp>
 #include <fcppt/symbol.hpp>
+#include <fcppt/thread/sleep_duration.hpp>
+
 
 namespace fcppt
 {

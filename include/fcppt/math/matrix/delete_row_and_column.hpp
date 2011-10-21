@@ -7,10 +7,11 @@
 #ifndef FCPPT_MATH_MATRIX_DELETE_ROW_AND_COLUMN_HPP_INCLUDED
 #define FCPPT_MATH_MATRIX_DELETE_ROW_AND_COLUMN_HPP_INCLUDED
 
-#include <fcppt/math/matrix/basic_impl.hpp>
-#include <fcppt/math/matrix/static.hpp>
-#include <fcppt/math/matrix/is_static_size.hpp>
 #include <fcppt/math/size_type.hpp>
+#include <fcppt/math/matrix/basic_impl.hpp>
+#include <fcppt/math/matrix/is_static_size.hpp>
+#include <fcppt/math/matrix/static.hpp>
+
 
 namespace fcppt
 {

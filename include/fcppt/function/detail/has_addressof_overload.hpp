@@ -9,11 +9,12 @@
 #define FCPPT_FUNCTION_DETAIL_HAS_ADDRESSOF_OVERLOAD_HPP_INCLUDED
 
 #include <fcppt/config/external_begin.hpp>
-#include <boost/utility/enable_if.hpp>
+#include <boost/mpl/bool.hpp>
 #include <boost/type_traits/integral_constant.hpp>
 #include <boost/type_traits/is_class.hpp>
-#include <boost/mpl/bool.hpp>
+#include <boost/utility/enable_if.hpp>
 #include <fcppt/config/external_end.hpp>
+
 
 namespace fcppt
 {

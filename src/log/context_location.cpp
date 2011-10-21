@@ -4,9 +4,10 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/log/context_location.hpp>
 #include <fcppt/log/context_fwd.hpp>
+#include <fcppt/log/context_location.hpp>
 #include <fcppt/log/location_fwd.hpp>
+
 
 fcppt::log::context_location::context_location(
 	log::context &_context,

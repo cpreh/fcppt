@@ -7,8 +7,9 @@
 #ifndef FCPPT_MATH_MATRIX_DETAIL_STATIC_STORAGE_HPP_INCLUDED
 #define FCPPT_MATH_MATRIX_DETAIL_STATIC_STORAGE_HPP_INCLUDED
 
-#include <fcppt/math/detail/static_storage.hpp>
 #include <fcppt/math/size_type.hpp>
+#include <fcppt/math/detail/static_storage.hpp>
+
 
 namespace fcppt
 {

@@ -7,9 +7,10 @@
 #ifndef FCPPT_CHRONO_ASIO_CONVERT_DURATION_HPP_INCLUDED
 #define FCPPT_CHRONO_ASIO_CONVERT_DURATION_HPP_INCLUDED
 
-#include <fcppt/chrono/asio/duration.hpp>
 #include <fcppt/chrono/duration_cast.hpp>
 #include <fcppt/chrono/duration_impl.hpp>
+#include <fcppt/chrono/asio/duration.hpp>
+
 
 namespace fcppt
 {

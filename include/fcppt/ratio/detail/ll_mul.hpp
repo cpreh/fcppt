@@ -9,11 +9,12 @@
 #ifndef FCPPT_RATIO_DETAIL_LL_MUL_HPP_INCLUDED
 #define FCPPT_RATIO_DETAIL_LL_MUL_HPP_INCLUDED
 
-#include <fcppt/ratio/detail/static_abs.hpp>
 #include <fcppt/ratio/detail/min_c.hpp>
+#include <fcppt/ratio/detail/static_abs.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/static_assert.hpp>
 #include <fcppt/config/external_end.hpp>
+
 
 namespace fcppt
 {

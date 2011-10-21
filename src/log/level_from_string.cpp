@@ -6,13 +6,14 @@
 
 #include "level_strings.hpp"
 #include "level_string_array.hpp"
+#include <fcppt/text.hpp>
 #include <fcppt/log/exception.hpp>
 #include <fcppt/log/level_from_string.hpp>
-#include <fcppt/text.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <algorithm>
 #include <iterator>
 #include <fcppt/config/external_end.hpp>
+
 
 fcppt::log::level::type
 fcppt::log::level_from_string(

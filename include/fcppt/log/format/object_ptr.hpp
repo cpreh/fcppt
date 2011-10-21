@@ -7,8 +7,9 @@
 #ifndef FCPPT_LOG_FORMAT_OBJECT_PTR_HPP_INCLUDED
 #define FCPPT_LOG_FORMAT_OBJECT_PTR_HPP_INCLUDED
 
-#include <fcppt/log/format/object_fwd.hpp>
 #include <fcppt/shared_ptr.hpp>
+#include <fcppt/log/format/object_fwd.hpp>
+
 
 namespace fcppt
 {

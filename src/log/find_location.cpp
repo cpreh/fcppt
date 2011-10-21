@@ -6,9 +6,10 @@
 
 #include "find_location.hpp"
 #include "find_inner_node.hpp"
-#include <fcppt/log/location.hpp>
 #include <fcppt/container/tree/object_impl.hpp>
+#include <fcppt/log/location.hpp>
 #include <fcppt/variant/object_impl.hpp>
+
 
 fcppt::log::detail::context_tree *
 fcppt::log::find_location(

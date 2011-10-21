@@ -10,14 +10,15 @@
 #include <fcppt/config/external_begin.hpp>
 #include <boost/mpl/advance.hpp>
 #include <boost/mpl/begin.hpp>
-#include <boost/mpl/iter_fold.hpp>
-#include <boost/mpl/push_back.hpp>
 #include <boost/mpl/deref.hpp>
 #include <boost/mpl/if.hpp>
+#include <boost/mpl/iter_fold.hpp>
 #include <boost/mpl/placeholders.hpp>
+#include <boost/mpl/push_back.hpp>
 #include <boost/mpl/vector/vector10.hpp>
 #include <boost/type_traits/is_same.hpp>
 #include <fcppt/config/external_end.hpp>
+
 
 namespace fcppt
 {

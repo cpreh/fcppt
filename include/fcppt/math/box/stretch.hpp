@@ -7,11 +7,12 @@
 #ifndef FCPPT_MATH_BOX_STRETCH_HPP_INCLUDED
 #define FCPPT_MATH_BOX_STRETCH_HPP_INCLUDED
 
+#include <fcppt/math/box/center.hpp>
 #include <fcppt/math/dim/arithmetic.hpp>
 #include <fcppt/math/dim/structure_cast.hpp>
-#include <fcppt/math/vector/basic_impl.hpp>
 #include <fcppt/math/vector/arithmetic.hpp>
-#include <fcppt/math/box/center.hpp>
+#include <fcppt/math/vector/basic_impl.hpp>
+
 
 namespace fcppt
 {

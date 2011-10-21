@@ -9,10 +9,10 @@
 #ifndef FCPPT_UNIQUE_PTR_DECL_HPP_INCLUDED
 #define FCPPT_UNIQUE_PTR_DECL_HPP_INCLUDED
 
+#include <fcppt/unique_ptr_fwd.hpp>
 #include <fcppt/detail_unique_ptr/pointer_type.hpp>
 #include <fcppt/detail_unique_ptr/rv.hpp>
 #include <fcppt/detail_unique_ptr/storage.hpp>
-#include <fcppt/unique_ptr_fwd.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/mpl/if.hpp>
 #include <boost/type_traits/add_reference.hpp>
@@ -21,6 +21,7 @@
 #include <boost/type_traits/remove_reference.hpp>
 #include <boost/utility/enable_if.hpp>
 #include <fcppt/config/external_end.hpp>
+
 
 namespace fcppt
 {

@@ -4,17 +4,18 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/random/actor/normalized.hpp>
-#include <fcppt/random/actor/element.hpp>
-#include <fcppt/random/make_inclusive_range.hpp>
-#include <fcppt/random/exception.hpp>
-#include <fcppt/tr1/functional.hpp>
-#include <fcppt/text.hpp>
 #include <fcppt/format.hpp>
+#include <fcppt/text.hpp>
+#include <fcppt/random/exception.hpp>
+#include <fcppt/random/make_inclusive_range.hpp>
+#include <fcppt/random/actor/element.hpp>
+#include <fcppt/random/actor/normalized.hpp>
+#include <fcppt/tr1/functional.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <numeric>
 #include <functional>
+#include <numeric>
 #include <fcppt/config/external_end.hpp>
+
 
 fcppt::random::actor::normalized::normalized(
 	container const &_elements

@@ -7,9 +7,10 @@
 #ifndef FCPPT_LOG_FORMAT_CREATE_PREFIX_HPP_INCLUDED
 #define FCPPT_LOG_FORMAT_CREATE_PREFIX_HPP_INCLUDED
 
-#include <fcppt/log/format/const_object_ptr.hpp>
 #include <fcppt/string.hpp>
 #include <fcppt/symbol.hpp>
+#include <fcppt/log/format/const_object_ptr.hpp>
+
 
 namespace fcppt
 {

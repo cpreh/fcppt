@@ -7,8 +7,9 @@
 #ifndef FCPPT_CONTAINER_GRID_DETAIL_AT_HPP_INCLUDED
 #define FCPPT_CONTAINER_GRID_DETAIL_AT_HPP_INCLUDED
 
-#include <fcppt/container/grid/detail/choose_reference.hpp>
 #include <fcppt/container/grid/out_of_range.hpp>
+#include <fcppt/container/grid/detail/choose_reference.hpp>
+
 
 namespace fcppt
 {

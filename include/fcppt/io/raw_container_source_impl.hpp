@@ -7,13 +7,14 @@
 #ifndef FCPPT_IO_RAW_CONTAINER_SOURCE_IMPL_HPP_INCLUDED
 #define FCPPT_IO_RAW_CONTAINER_SOURCE_IMPL_HPP_INCLUDED
 
-#include <fcppt/io/raw_container_source_decl.hpp>
 #include <fcppt/make_shared_ptr.hpp>
+#include <fcppt/io/raw_container_source_decl.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/next_prior.hpp>
 #include <algorithm>
 #include <iterator>
 #include <fcppt/config/external_end.hpp>
+
 
 template<typename Container>
 template<typename Iterator>

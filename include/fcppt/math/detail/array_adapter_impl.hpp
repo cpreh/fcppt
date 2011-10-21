@@ -7,11 +7,14 @@
 #ifndef FCPPT_MATH_DETAIL_ARRAY_ADAPTER_IMPL_HPP_INCLUDED
 #define FCPPT_MATH_DETAIL_ARRAY_ADAPTER_IMPL_HPP_INCLUDED
 
-#include <fcppt/math/detail/array_adapter.hpp>
 #include <fcppt/assert/exception.hpp>
 #include <fcppt/assert/throw.hpp>
+#include <fcppt/math/detail/array_adapter.hpp>
+#include <fcppt/config/external_begin.hpp>
 #include <boost/next_prior.hpp>
 #include <algorithm>
+#include <fcppt/config/external_end.hpp>
+
 
 #define FCPPT_MATH_DETAIL_ARRAY_ADAPTER_IMPL(\
 	class_arity,\

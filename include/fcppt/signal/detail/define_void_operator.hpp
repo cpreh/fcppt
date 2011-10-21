@@ -10,9 +10,10 @@
 #include <fcppt/signal/detail/enable_if_void.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/preprocessor/arithmetic/inc.hpp>
-#include <boost/preprocessor/repetition/enum_params.hpp>
 #include <boost/preprocessor/repetition/enum_binary_params.hpp>
+#include <boost/preprocessor/repetition/enum_params.hpp>
 #include <fcppt/config/external_end.hpp>
+
 
 #define FCPPT_SIGNAL_DETAIL_DEFINE_VOID_OPERATOR(\
 	z,\

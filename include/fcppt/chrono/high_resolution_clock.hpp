@@ -7,12 +7,13 @@
 #ifndef FCPPT_CHRONO_HIGH_RESOLUTION_CLOCK_HPP_INCLUDED
 #define FCPPT_CHRONO_HIGH_RESOLUTION_CLOCK_HPP_INCLUDED
 
-#include <fcppt/chrono/high_resolution_clock_fwd.hpp>
-#include <fcppt/chrono/duration_fwd.hpp>
-#include <fcppt/chrono/time_point_fwd.hpp>
-#include <fcppt/chrono/rep.hpp>
-#include <fcppt/ratio/nano.hpp>
 #include <fcppt/symbol.hpp>
+#include <fcppt/chrono/duration_fwd.hpp>
+#include <fcppt/chrono/high_resolution_clock_fwd.hpp>
+#include <fcppt/chrono/rep.hpp>
+#include <fcppt/chrono/time_point_fwd.hpp>
+#include <fcppt/ratio/nano.hpp>
+
 
 namespace fcppt
 {

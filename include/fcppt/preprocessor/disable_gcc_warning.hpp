@@ -7,8 +7,9 @@
 #ifndef FCPPT_PREPROCESSOR_DISABLE_GCC_WARNING_HPP_INCLUDED
 #define FCPPT_PREPROCESSOR_DISABLE_GCC_WARNING_HPP_INCLUDED
 
-#include <fcppt/preprocessor/pragma.hpp>
 #include <fcppt/config.hpp>
+#include <fcppt/preprocessor/pragma.hpp>
+
 
 /// Disables a given gcc warning (does nothing on other compilers)
 #if defined(FCPPT_HAVE_GCC_DIAGNOSTIC)

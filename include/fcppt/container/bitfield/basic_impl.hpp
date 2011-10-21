@@ -7,17 +7,18 @@
 #ifndef FCPPT_CONTAINER_BITFIELD_BASIC_IMPL_HPP_INCLUDED
 #define FCPPT_CONTAINER_BITFIELD_BASIC_IMPL_HPP_INCLUDED
 
+#include <fcppt/algorithm/contains_if.hpp>
+#include <fcppt/container/array_impl.hpp>
 #include <fcppt/container/bitfield/basic_decl.hpp>
 #include <fcppt/container/bitfield/iterator_impl.hpp>
 #include <fcppt/container/bitfield/proxy_impl.hpp>
-#include <fcppt/container/array_impl.hpp>
-#include <fcppt/algorithm/contains_if.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/spirit/home/phoenix/core/argument.hpp>
 #include <boost/spirit/home/phoenix/operator/bitwise.hpp>
 #include <boost/spirit/home/phoenix/operator/comparison.hpp>
 #include <algorithm>
 #include <fcppt/config/external_end.hpp>
+
 
 template<
 	typename Enum,

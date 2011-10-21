@@ -7,15 +7,16 @@
 #ifndef FCPPT_CONTAINER_BITFIELD_PROXY_DECL_HPP_INCLUDED
 #define FCPPT_CONTAINER_BITFIELD_PROXY_DECL_HPP_INCLUDED
 
-#include <fcppt/container/bitfield/detail/element_bits.hpp>
+#include <fcppt/nonassignable.hpp>
 #include <fcppt/container/bitfield/proxy_fwd.hpp>
 #include <fcppt/container/bitfield/size_type.hpp>
 #include <fcppt/container/bitfield/value_type.hpp>
-#include <fcppt/nonassignable.hpp>
+#include <fcppt/container/bitfield/detail/element_bits.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/type_traits/remove_const.hpp>
 #include <boost/type_traits/remove_reference.hpp>
 #include <fcppt/config/external_end.hpp>
+
 
 namespace fcppt
 {

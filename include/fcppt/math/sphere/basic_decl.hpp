@@ -7,10 +7,11 @@
 #ifndef FCPPT_MATH_SPHERE_BASIC_DECL_HPP_INCLUDED
 #define FCPPT_MATH_SPHERE_BASIC_DECL_HPP_INCLUDED
 
-#include <fcppt/math/sphere/basic_fwd.hpp>
-#include <fcppt/math/vector/static.hpp>
-#include <fcppt/math/vector/basic_decl.hpp>
 #include <fcppt/math/size_type.hpp>
+#include <fcppt/math/sphere/basic_fwd.hpp>
+#include <fcppt/math/vector/basic_decl.hpp>
+#include <fcppt/math/vector/static.hpp>
+
 
 namespace fcppt
 {

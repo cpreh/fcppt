@@ -7,8 +7,9 @@
 #ifndef FCPPT_WEAK_PTR_HPP_INCLUDED
 #define FCPPT_WEAK_PTR_HPP_INCLUDED
 
-#include <fcppt/weak_ptr_fwd.hpp>
 #include <fcppt/weak_ptr_decl.hpp>
+#include <fcppt/weak_ptr_fwd.hpp>
 #include <fcppt/weak_ptr_impl.hpp>
+
 
 #endif

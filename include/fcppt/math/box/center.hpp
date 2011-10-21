@@ -8,9 +8,10 @@
 #define FCPPT_MATH_BOX_CENTER_HPP_INCLUDED
 
 #include <fcppt/math/box/basic_impl.hpp>
-#include <fcppt/math/vector/basic_impl.hpp>
 #include <fcppt/math/dim/structure_cast.hpp>
 #include <fcppt/math/vector/arithmetic.hpp>
+#include <fcppt/math/vector/basic_impl.hpp>
+
 
 namespace fcppt
 {

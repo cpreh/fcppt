@@ -7,15 +7,16 @@
 #ifndef FCPPT_SHARED_PTR_DECL_HPP_INCLUDED
 #define FCPPT_SHARED_PTR_DECL_HPP_INCLUDED
 
-#include <fcppt/tr1/detail/use_boost_tr1.hpp> // workaround for boost's get_pointer
-#include <fcppt/detail/make_shared_wrapper_fwd.hpp>
 #include <fcppt/shared_ptr_fwd.hpp>
 #include <fcppt/unique_ptr_fwd.hpp>
 #include <fcppt/weak_ptr_fwd.hpp>
+#include <fcppt/detail/make_shared_wrapper_fwd.hpp>
+#include <fcppt/tr1/detail/use_boost_tr1.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/smart_ptr/shared_ptr.hpp>
 #include <iosfwd>
 #include <fcppt/config/external_end.hpp>
+
 
 namespace fcppt
 {

@@ -7,9 +7,10 @@
 #ifndef FCPPT_LOG_ENABLED_LEVELS_HPP_INCLUDED
 #define FCPPT_LOG_ENABLED_LEVELS_HPP_INCLUDED
 
+#include <fcppt/symbol.hpp>
 #include <fcppt/log/enabled_level_array.hpp>
 #include <fcppt/log/level.hpp>
-#include <fcppt/symbol.hpp>
+
 
 namespace fcppt
 {

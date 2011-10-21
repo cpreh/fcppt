@@ -10,11 +10,12 @@
 #include <fcppt/variant/size_type.hpp>
 #include <fcppt/variant/detail/apply.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/mpl/integral_c.hpp>
 #include <boost/mpl/begin.hpp>
-#include <boost/mpl/end.hpp>
 #include <boost/mpl/empty.hpp>
+#include <boost/mpl/end.hpp>
+#include <boost/mpl/integral_c.hpp>
 #include <fcppt/config/external_end.hpp>
+
 
 namespace fcppt
 {

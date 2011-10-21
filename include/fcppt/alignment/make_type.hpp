@@ -7,8 +7,9 @@
 #ifndef FCPPT_ALIGNMENT_MAKE_TYPE_HPP_INCLUDED
 #define FCPPT_ALIGNMENT_MAKE_TYPE_HPP_INCLUDED
 
-#include <fcppt/alignment/detail/make_type.hpp>
 #include <fcppt/alignment/size_type.hpp>
+#include <fcppt/alignment/detail/make_type.hpp>
+
 
 namespace fcppt
 {

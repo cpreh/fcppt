@@ -7,14 +7,15 @@
 #ifndef FCPPT_SIGNAL_BASE_DECL_HPP_INCLUDED
 #define FCPPT_SIGNAL_BASE_DECL_HPP_INCLUDED
 
-#include <fcppt/signal/base_fwd.hpp>
-#include <fcppt/signal/auto_connection.hpp>
-#include <fcppt/signal/detail/concrete_connection.hpp>
 #include <fcppt/noncopyable.hpp>
 #include <fcppt/function/object.hpp>
+#include <fcppt/signal/auto_connection.hpp>
+#include <fcppt/signal/base_fwd.hpp>
+#include <fcppt/signal/detail/concrete_connection.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/intrusive/list.hpp>
 #include <fcppt/config/external_end.hpp>
+
 
 namespace fcppt
 {

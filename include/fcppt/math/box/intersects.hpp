@@ -7,8 +7,9 @@
 #ifndef FCPPT_MATH_BOX_INTERSECTS_HPP_INCLUDED
 #define FCPPT_MATH_BOX_INTERSECTS_HPP_INCLUDED
 
-#include <fcppt/math/box/basic_impl.hpp>
 #include <fcppt/math/size_type.hpp>
+#include <fcppt/math/box/basic_impl.hpp>
+
 
 namespace fcppt
 {

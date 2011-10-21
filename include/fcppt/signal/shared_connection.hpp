@@ -7,8 +7,9 @@
 #ifndef FCPPT_SIGNAL_SHARED_CONNECTION_HPP_INCLUDED
 #define FCPPT_SIGNAL_SHARED_CONNECTION_HPP_INCLUDED
 
-#include <fcppt/signal/detail/connection_fwd.hpp>
 #include <fcppt/shared_ptr.hpp>
+#include <fcppt/signal/detail/connection_fwd.hpp>
+
 
 namespace fcppt
 {

@@ -7,13 +7,14 @@
 #ifndef FCPPT_MATH_BOX_OUTPUT_HPP_INCLUDED
 #define FCPPT_MATH_BOX_OUTPUT_HPP_INCLUDED
 
-#include <fcppt/math/box/basic_impl.hpp>
-#include <fcppt/math/vector/output.hpp>
-#include <fcppt/math/dim/output.hpp>
 #include <fcppt/math/size_type.hpp>
+#include <fcppt/math/box/basic_impl.hpp>
+#include <fcppt/math/dim/output.hpp>
+#include <fcppt/math/vector/output.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <ostream>
 #include <fcppt/config/external_end.hpp>
+
 
 namespace fcppt
 {

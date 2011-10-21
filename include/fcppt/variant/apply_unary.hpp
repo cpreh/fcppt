@@ -7,8 +7,9 @@
 #ifndef FCPPT_VARIANT_APPLY_UNARY_HPP_INCLUDED
 #define FCPPT_VARIANT_APPLY_UNARY_HPP_INCLUDED
 
-#include <fcppt/variant/detail/operation_wrapper.hpp>
 #include <fcppt/variant/detail/apply_unary_internal.hpp>
+#include <fcppt/variant/detail/operation_wrapper.hpp>
+
 
 namespace fcppt
 {

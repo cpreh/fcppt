@@ -7,20 +7,21 @@
 #ifndef FCPPT_CONTAINER_BITFIELD_BASIC_DECL_HPP_INCLUDED
 #define FCPPT_CONTAINER_BITFIELD_BASIC_DECL_HPP_INCLUDED
 
+#include <fcppt/safe_bool.hpp>
+#include <fcppt/container/array_decl.hpp>
+#include <fcppt/container/bitfield/array.hpp>
 #include <fcppt/container/bitfield/basic_fwd.hpp>
 #include <fcppt/container/bitfield/iterator_fwd.hpp>
 #include <fcppt/container/bitfield/proxy_fwd.hpp>
 #include <fcppt/container/bitfield/size_type.hpp>
 #include <fcppt/container/bitfield/value_type.hpp>
-#include <fcppt/container/bitfield/array.hpp>
-#include <fcppt/container/array_decl.hpp>
-#include <fcppt/safe_bool.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/type_traits/is_unsigned.hpp>
 #include <boost/static_assert.hpp>
+#include <boost/type_traits/is_unsigned.hpp>
 #include <iterator>
 #include <limits>
 #include <fcppt/config/external_end.hpp>
+
 
 namespace fcppt
 {

@@ -7,13 +7,14 @@
 #ifndef FCPPT_MATH_DIM_INPUT_HPP_INCLUDED
 #define FCPPT_MATH_DIM_INPUT_HPP_INCLUDED
 
-#include <fcppt/math/dim/basic_impl.hpp>
-#include <fcppt/math/detail/one_dimensional_input.hpp>
 #include <fcppt/math/is_dynamic_size.hpp>
+#include <fcppt/math/detail/one_dimensional_input.hpp>
+#include <fcppt/math/dim/basic_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/utility/enable_if.hpp>
 #include <iosfwd>
 #include <fcppt/config/external_end.hpp>
+
 
 namespace fcppt
 {

@@ -4,11 +4,12 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/filesystem/remove_extension.hpp>
-#include <fcppt/filesystem/path_to_string.hpp>
-#include <fcppt/filesystem/remove_filename.hpp>
 #include <fcppt/string.hpp>
 #include <fcppt/text.hpp>
+#include <fcppt/filesystem/path_to_string.hpp>
+#include <fcppt/filesystem/remove_extension.hpp>
+#include <fcppt/filesystem/remove_filename.hpp>
+
 
 fcppt::filesystem::path const
 fcppt::filesystem::remove_extension(

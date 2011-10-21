@@ -7,12 +7,13 @@
 #ifndef FCPPT_CONTAINER_ARRAY_DECL_HPP_INCLUDED
 #define FCPPT_CONTAINER_ARRAY_DECL_HPP_INCLUDED
 
-#include <fcppt/container/detail/array_storage.hpp>
 #include <fcppt/container/array_fwd.hpp>
+#include <fcppt/container/detail/array_storage.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <iterator>
 #include <cstddef>
+#include <iterator>
 #include <fcppt/config/external_end.hpp>
+
 
 namespace fcppt
 {

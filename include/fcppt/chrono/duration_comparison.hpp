@@ -7,8 +7,9 @@
 #ifndef FCPPT_CHRONO_DURATION_COMPARISON_HPP_INCLUDED
 #define FCPPT_CHRONO_DURATION_COMPARISON_HPP_INCLUDED
 
-#include <fcppt/chrono/duration_impl.hpp>
 #include <fcppt/chrono/common_type.hpp>
+#include <fcppt/chrono/duration_impl.hpp>
+
 
 namespace fcppt
 {

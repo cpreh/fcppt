@@ -8,9 +8,12 @@
 #define FCPPT_CHRONO_MACH_TIME_IMPL_HPP_INCLUDED
 
 #include "mach_timebase.hpp"
-#include <fcppt/chrono/time_point_impl.hpp>
 #include <fcppt/chrono/duration_impl.hpp>
+#include <fcppt/chrono/time_point_impl.hpp>
+#include <fcppt/config/external_begin.hpp>
 #include <mach/mach_time.h>
+#include <fcppt/config/external_end.hpp>
+
 
 namespace fcppt
 {

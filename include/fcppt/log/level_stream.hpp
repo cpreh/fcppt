@@ -7,12 +7,13 @@
 #ifndef FCPPT_LOG_LEVEL_STREAM_HPP_INCLUDED
 #define FCPPT_LOG_LEVEL_STREAM_HPP_INCLUDED
 
+#include <fcppt/nonassignable.hpp>
+#include <fcppt/symbol.hpp>
+#include <fcppt/io/ostream.hpp>
 #include <fcppt/log/level_stream_fwd.hpp>
 #include <fcppt/log/detail/temporary_output_fwd.hpp>
 #include <fcppt/log/format/const_object_ptr.hpp>
-#include <fcppt/io/ostream.hpp>
-#include <fcppt/symbol.hpp>
-#include <fcppt/nonassignable.hpp>
+
 
 namespace fcppt
 {

@@ -7,13 +7,14 @@
 #ifndef FCPPT_IO_WRITE_HPP_INCLUDED
 #define FCPPT_IO_WRITE_HPP_INCLUDED
 
-#include <fcppt/endianness/from_host.hpp>
 #include <fcppt/endianness/format.hpp>
+#include <fcppt/endianness/from_host.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/utility/enable_if.hpp>
 #include <boost/type_traits/is_fundamental.hpp>
+#include <boost/utility/enable_if.hpp>
 #include <ostream>
 #include <fcppt/config/external_end.hpp>
+
 
 namespace fcppt
 {

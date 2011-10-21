@@ -7,12 +7,13 @@
 #ifndef FCPPT_MATH_MATRIX_DETAIL_DIM_STORAGE_HPP_INCLUDED
 #define FCPPT_MATH_MATRIX_DETAIL_DIM_STORAGE_HPP_INCLUDED
 
-#include <fcppt/math/matrix/dim_type.hpp>
 #include <fcppt/math/detail/dynamic_size.hpp>
 #include <fcppt/math/dim/basic_decl.hpp>
+#include <fcppt/math/matrix/dim_type.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <algorithm>
 #include <fcppt/config/external_end.hpp>
+
 
 namespace fcppt
 {

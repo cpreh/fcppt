@@ -7,10 +7,11 @@
 #ifndef FCPPT_MATH_BOX_STRUCTURE_CAST_HPP_INCLUDED
 #define FCPPT_MATH_BOX_STRUCTURE_CAST_HPP_INCLUDED
 
-#include <fcppt/math/box/basic_impl.hpp>
-#include <fcppt/math/vector/structure_cast.hpp>
-#include <fcppt/math/dim/structure_cast.hpp>
 #include <fcppt/math/size_type.hpp>
+#include <fcppt/math/box/basic_impl.hpp>
+#include <fcppt/math/dim/structure_cast.hpp>
+#include <fcppt/math/vector/structure_cast.hpp>
+
 
 namespace fcppt
 {

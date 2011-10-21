@@ -4,9 +4,10 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/filesystem/stem.hpp>
-#include <fcppt/filesystem/path_to_string.hpp>
 #include <fcppt/string.hpp>
+#include <fcppt/filesystem/path_to_string.hpp>
+#include <fcppt/filesystem/stem.hpp>
+
 
 fcppt::string const
 fcppt::filesystem::stem(

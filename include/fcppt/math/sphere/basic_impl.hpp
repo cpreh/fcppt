@@ -7,13 +7,14 @@
 #ifndef FCPPT_MATH_SPHERE_BASIC_IMPL_HPP_INCLUDED
 #define FCPPT_MATH_SPHERE_BASIC_IMPL_HPP_INCLUDED
 
+#include <fcppt/math/compare.hpp>
 #include <fcppt/math/sphere/basic_decl.hpp>
 #include <fcppt/math/vector/basic_impl.hpp>
 #include <fcppt/math/vector/comparison.hpp>
-#include <fcppt/math/compare.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <algorithm>
 #include <fcppt/config/external_end.hpp>
+
 
 template<
 	typename T,

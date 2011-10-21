@@ -9,11 +9,12 @@
 #ifndef FCPPT_RATIO_IS_OBJECT_HPP_INCLUDED
 #define FCPPT_RATIO_IS_OBJECT_HPP_INCLUDED
 
-#include <fcppt/ratio/object.hpp>
 #include <fcppt/ratio/int_type.hpp>
+#include <fcppt/ratio/object.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/type_traits/integral_constant.hpp>
 #include <fcppt/config/external_end.hpp>
+
 
 namespace fcppt
 {

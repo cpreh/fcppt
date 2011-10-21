@@ -7,11 +7,12 @@
 #ifndef FCPPT_LOG_CONTEXT_LOCATION_HPP_INCLUDED
 #define FCPPT_LOG_CONTEXT_LOCATION_HPP_INCLUDED
 
-#include <fcppt/log/context_location_fwd.hpp>
-#include <fcppt/log/context_fwd.hpp>
-#include <fcppt/log/location.hpp>
 #include <fcppt/reference_wrapper.hpp>
 #include <fcppt/symbol.hpp>
+#include <fcppt/log/context_fwd.hpp>
+#include <fcppt/log/context_location_fwd.hpp>
+#include <fcppt/log/location.hpp>
+
 
 namespace fcppt
 {

@@ -7,17 +7,18 @@
 #ifndef FCPPT_CONTAINER_TREE_OBJECT_DECL_HPP_INCLUDED
 #define FCPPT_CONTAINER_TREE_OBJECT_DECL_HPP_INCLUDED
 
-#include <fcppt/container/tree/object_fwd.hpp>
-#include <fcppt/container/tree/is_ptr_value.hpp>
-#include <fcppt/mpl/inner.hpp>
 #include <fcppt/scoped_ptr.hpp>
 #include <fcppt/unique_ptr.hpp>
+#include <fcppt/container/tree/is_ptr_value.hpp>
+#include <fcppt/container/tree/object_fwd.hpp>
+#include <fcppt/mpl/inner.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/mpl/eval_if.hpp>
 #include <boost/mpl/identity.hpp>
 #include <boost/mpl/if.hpp>
 #include <boost/ptr_container/ptr_list.hpp>
 #include <fcppt/config/external_end.hpp>
+
 
 //[tree
 namespace fcppt

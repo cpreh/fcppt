@@ -7,9 +7,10 @@
 #ifndef FCPPT_UTF8_FROM_FCPPT_STRING_HPP_INCLUDED
 #define FCPPT_UTF8_FROM_FCPPT_STRING_HPP_INCLUDED
 
-#include <fcppt/utf8/string.hpp>
 #include <fcppt/string.hpp>
 #include <fcppt/symbol.hpp>
+#include <fcppt/utf8/string.hpp>
+
 
 namespace fcppt
 {

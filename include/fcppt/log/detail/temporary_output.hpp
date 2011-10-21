@@ -7,15 +7,16 @@
 #ifndef FCPPT_LOG_DETAIL_TEMPORARY_OUTPUT_HPP_INCLUDED
 #define FCPPT_LOG_DETAIL_TEMPORARY_OUTPUT_HPP_INCLUDED
 
-#include <fcppt/log/detail/temporary_output_fwd.hpp>
-#include <fcppt/log/detail/output_helper.hpp>
-#include <fcppt/io/ostringstream.hpp>
-#include <fcppt/symbol.hpp>
 #include <fcppt/shared_ptr.hpp>
 #include <fcppt/string.hpp>
+#include <fcppt/symbol.hpp>
+#include <fcppt/io/ostringstream.hpp>
+#include <fcppt/log/detail/output_helper.hpp>
+#include <fcppt/log/detail/temporary_output_fwd.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <ostream>
 #include <fcppt/config/external_end.hpp>
+
 
 namespace fcppt
 {

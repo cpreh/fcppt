@@ -7,9 +7,10 @@
 #ifndef FCPPT_CHRONO_TIME_POINT_HPP_INCLUDED
 #define FCPPT_CHRONO_TIME_POINT_HPP_INCLUDED
 
-#include <fcppt/chrono/time_point_impl.hpp>
 #include <fcppt/chrono/time_point_arithmetic.hpp>
 #include <fcppt/chrono/time_point_comparison.hpp>
+#include <fcppt/chrono/time_point_impl.hpp>
 #include <fcppt/chrono/time_point_output.hpp>
+
 
 #endif

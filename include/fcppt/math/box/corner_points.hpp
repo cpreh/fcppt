@@ -9,14 +9,15 @@
 
 #include <fcppt/container/array.hpp>
 #include <fcppt/math/generate_binary_vectors.hpp>
-#include <fcppt/math/box/basic_impl.hpp>
 #include <fcppt/math/size_type.hpp>
-#include <fcppt/math/vector/basic_impl.hpp>
-#include <fcppt/math/vector/arithmetic.hpp>
+#include <fcppt/math/box/basic_impl.hpp>
 #include <fcppt/math/dim/structure_cast.hpp>
+#include <fcppt/math/vector/arithmetic.hpp>
+#include <fcppt/math/vector/basic_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <cstddef>
 #include <fcppt/config/external_end.hpp>
+
 
 namespace fcppt
 {

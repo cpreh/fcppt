@@ -4,9 +4,12 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/io/cin.hpp>
 #include <fcppt/config.hpp>
+#include <fcppt/io/cin.hpp>
+#include <fcppt/config/external_begin.hpp>
 #include <iostream>
+#include <fcppt/config/external_end.hpp>
+
 
 fcppt::io::istream &
 fcppt::io::cin()

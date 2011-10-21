@@ -7,7 +7,8 @@
 #ifndef FCPPT_LOG_OPTIONAL_OBJECT_HPP_INCLUDED
 #define FCPPT_LOG_OPTIONAL_OBJECT_HPP_INCLUDED
 
-#include <fcppt/log/optional_object_fwd.hpp>
 #include <fcppt/optional_impl.hpp>
+#include <fcppt/log/optional_object_fwd.hpp>
+
 
 #endif

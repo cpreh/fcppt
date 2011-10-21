@@ -10,11 +10,12 @@
 #include "time_get.hpp"
 #include <fcppt/io/istream.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <locale>
-#include <istream>
-#include <iosfwd>
 #include <ctime>
+#include <iosfwd>
+#include <istream>
+#include <locale>
 #include <fcppt/config/external_end.hpp>
+
 
 namespace fcppt
 {

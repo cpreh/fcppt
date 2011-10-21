@@ -7,8 +7,9 @@
 #ifndef FCPPT_CYCLIC_ITERATOR_HPP_INCLUDED
 #define FCPPT_CYCLIC_ITERATOR_HPP_INCLUDED
 
-#include <fcppt/cyclic_iterator_fwd.hpp>
 #include <fcppt/cyclic_iterator_decl.hpp>
+#include <fcppt/cyclic_iterator_fwd.hpp>
 #include <fcppt/cyclic_iterator_impl.hpp>
+
 
 #endif

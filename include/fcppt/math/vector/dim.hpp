@@ -7,9 +7,10 @@
 #ifndef FCPPT_MATH_VECTOR_DIM_HPP_INCLUDED
 #define FCPPT_MATH_VECTOR_DIM_HPP_INCLUDED
 
+#include <fcppt/math/dim/basic_impl.hpp>
 #include <fcppt/math/vector/basic_impl.hpp>
 #include <fcppt/math/vector/normal_storage.hpp>
-#include <fcppt/math/dim/basic_impl.hpp>
+
 
 namespace fcppt
 {

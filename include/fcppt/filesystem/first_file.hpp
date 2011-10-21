@@ -7,9 +7,10 @@
 #ifndef FCPPT_FILESYSTEM_FIRST_FILE_HPP_INCLUDED
 #define FCPPT_FILESYSTEM_FIRST_FILE_HPP_INCLUDED
 
+#include <fcppt/symbol.hpp>
 #include <fcppt/filesystem/directory_iterator.hpp>
 #include <fcppt/filesystem/path.hpp>
-#include <fcppt/symbol.hpp>
+
 
 namespace fcppt
 {

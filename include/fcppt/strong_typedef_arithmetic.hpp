@@ -7,9 +7,10 @@
 #ifndef FCPPT_STRONG_TYPEDEF_ARITHMETIC_HPP_INCLUDED
 #define FCPPT_STRONG_TYPEDEF_ARITHMETIC_HPP_INCLUDED
 
+#include <fcppt/strong_typedef_impl.hpp>
 #include <fcppt/detail/strong_typedef_binary_operator.hpp>
 #include <fcppt/detail/strong_typedef_unary_operator.hpp>
-#include <fcppt/strong_typedef_impl.hpp>
+
 
 namespace fcppt
 {

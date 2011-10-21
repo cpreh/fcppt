@@ -7,14 +7,15 @@
 #ifndef FCPPT_CONTAINER_BITFIELD_ITERATOR_DECL_HPP_INCLUDED
 #define FCPPT_CONTAINER_BITFIELD_ITERATOR_DECL_HPP_INCLUDED
 
-#include <fcppt/container/bitfield/detail/iterator_type.hpp>
-#include <fcppt/container/bitfield/iterator_fwd.hpp>
 #include <fcppt/container/bitfield/difference_type.hpp>
+#include <fcppt/container/bitfield/iterator_fwd.hpp>
 #include <fcppt/container/bitfield/value_type.hpp>
+#include <fcppt/container/bitfield/detail/iterator_type.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/iterator/iterator_facade.hpp>
 #include <boost/type_traits/remove_reference.hpp>
 #include <fcppt/config/external_end.hpp>
+
 
 namespace fcppt
 {

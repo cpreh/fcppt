@@ -10,11 +10,12 @@
 #define FCPPT_RATIO_ADD_HPP_INCLUDED
 
 #include <fcppt/ratio/add_fwd.hpp>
-#include <fcppt/ratio/detail/static_gcd.hpp>
-#include <fcppt/ratio/detail/ll_mul.hpp>
-#include <fcppt/ratio/detail/ll_add.hpp>
-#include <fcppt/ratio/object.hpp>
 #include <fcppt/ratio/multiply.hpp>
+#include <fcppt/ratio/object.hpp>
+#include <fcppt/ratio/detail/ll_add.hpp>
+#include <fcppt/ratio/detail/ll_mul.hpp>
+#include <fcppt/ratio/detail/static_gcd.hpp>
+
 
 namespace fcppt
 {

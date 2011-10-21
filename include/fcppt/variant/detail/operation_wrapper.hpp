@@ -7,8 +7,9 @@
 #ifndef FCPPT_VARIANT_DETAIL_OPERATION_WRAPPER_HPP_INCLUDED
 #define FCPPT_VARIANT_DETAIL_OPERATION_WRAPPER_HPP_INCLUDED
 
-#include <fcppt/variant/detail/unwrap_recursive.hpp>
 #include <fcppt/nonassignable.hpp>
+#include <fcppt/variant/detail/unwrap_recursive.hpp>
+
 
 namespace fcppt
 {

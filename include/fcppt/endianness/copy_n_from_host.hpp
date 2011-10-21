@@ -7,10 +7,11 @@
 #ifndef FCPPT_ENDIANNESS_COPY_N_FROM_HOST_HPP_INCLUDED
 #define FCPPT_ENDIANNESS_COPY_N_FROM_HOST_HPP_INCLUDED
 
-#include <fcppt/endianness/copy_n_swapped.hpp>
-#include <fcppt/endianness/host_format.hpp>
-#include <fcppt/endianness/format.hpp>
 #include <fcppt/algorithm/copy_n.hpp>
+#include <fcppt/endianness/copy_n_swapped.hpp>
+#include <fcppt/endianness/format.hpp>
+#include <fcppt/endianness/host_format.hpp>
+
 
 namespace fcppt
 {

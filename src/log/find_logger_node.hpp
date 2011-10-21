@@ -7,9 +7,10 @@
 #ifndef FCPPT_LOG_FIND_LOGGER_NODE_HPP_INCLUDED
 #define FCPPT_LOG_FIND_LOGGER_NODE_HPP_INCLUDED
 
-#include <fcppt/log/detail/context_tree.hpp>
 #include <fcppt/container/tree/object_decl.hpp>
+#include <fcppt/log/detail/context_tree.hpp>
 #include <fcppt/variant/object_decl.hpp>
+
 
 namespace fcppt
 {

@@ -7,8 +7,9 @@
 #ifndef FCPPT_RANDOM_INCLUSIVE_RANGE_HPP_INCLUDED
 #define FCPPT_RANDOM_INCLUSIVE_RANGE_HPP_INCLUDED
 
-#include <fcppt/random/inclusive_range_fwd.hpp>
 #include <fcppt/random/inclusive_range_decl.hpp>
+#include <fcppt/random/inclusive_range_fwd.hpp>
 #include <fcppt/random/inclusive_range_impl.hpp>
+
 
 #endif

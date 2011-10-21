@@ -7,8 +7,9 @@
 #ifndef FCPPT_VERSION_STRING_HPP_INCLUDED
 #define FCPPT_VERSION_STRING_HPP_INCLUDED
 
-#include <fcppt/symbol.hpp>
 #include <fcppt/string.hpp>
+#include <fcppt/symbol.hpp>
+
 
 namespace fcppt
 {

@@ -9,14 +9,15 @@
 #ifndef FCPPT_UNIQUE_PTR_IMPL_HPP_INCLUDED
 #define FCPPT_UNIQUE_PTR_IMPL_HPP_INCLUDED
 
-#include <fcppt/unique_ptr_decl.hpp>
 #include <fcppt/forward.hpp>
 #include <fcppt/move.hpp>
+#include <fcppt/unique_ptr_decl.hpp>
 #include <fcppt/config/external_begin.hpp>
+#include <boost/static_assert.hpp>
 #include <boost/type_traits/is_pointer.hpp>
 #include <boost/type_traits/is_reference.hpp>
-#include <boost/static_assert.hpp>
 #include <fcppt/config/external_end.hpp>
+
 
 template<
 	typename T,

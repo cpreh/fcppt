@@ -7,6 +7,12 @@
 #ifndef FCPPT_CONTAINER_TREE_OBJECT_IMPL_HPP_INCLUDED
 #define FCPPT_CONTAINER_TREE_OBJECT_IMPL_HPP_INCLUDED
 
+#include <fcppt/forward.hpp>
+#include <fcppt/make_unique_ptr.hpp>
+#include <fcppt/move.hpp>
+#include <fcppt/algorithm/find_if_exn.hpp>
+#include <fcppt/container/ptr/insert_unique_ptr.hpp>
+#include <fcppt/container/ptr/make_equal.hpp>
 #include <fcppt/container/tree/object_decl.hpp>
 #include <fcppt/container/tree/detail/assign_parents.hpp>
 #include <fcppt/container/tree/detail/assign_value.hpp>
@@ -14,15 +20,10 @@
 #include <fcppt/container/tree/detail/extract_value.hpp>
 #include <fcppt/container/tree/detail/has_value.hpp>
 #include <fcppt/container/tree/detail/init_value.hpp>
-#include <fcppt/container/ptr/insert_unique_ptr.hpp>
-#include <fcppt/container/ptr/make_equal.hpp>
-#include <fcppt/algorithm/find_if_exn.hpp>
-#include <fcppt/make_unique_ptr.hpp>
-#include <fcppt/forward.hpp>
-#include <fcppt/move.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <algorithm>
 #include <fcppt/config/external_end.hpp>
+
 
 template<
 	typename T

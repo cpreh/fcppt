@@ -7,15 +7,16 @@
 #ifndef FCPPT_THREAD_OBJECT_HPP_INCLUDED
 #define FCPPT_THREAD_OBJECT_HPP_INCLUDED
 
+#include <fcppt/noncopyable.hpp>
+#include <fcppt/symbol.hpp>
 #include <fcppt/thread/id.hpp>
 #include <fcppt/thread/join_duration.hpp>
 #include <fcppt/thread/native_handle.hpp>
 #include <fcppt/thread/task.hpp>
-#include <fcppt/symbol.hpp>
-#include <fcppt/noncopyable.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/thread/thread.hpp>
 #include <fcppt/config/external_end.hpp>
+
 
 namespace fcppt
 {

@@ -9,13 +9,14 @@
 
 #include <fcppt/preprocessor/enum_params_forward_z.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/preprocessor/arithmetic/inc.hpp>
-#include <boost/preprocessor/tuple/elem.hpp>
-#include <boost/preprocessor/repetition/enum_params.hpp>
-#include <boost/preprocessor/repetition/enum_binary_params.hpp>
-#include <boost/preprocessor/repetition/repeat.hpp>
 #include <boost/preprocessor/cat.hpp>
+#include <boost/preprocessor/arithmetic/inc.hpp>
+#include <boost/preprocessor/repetition/enum_binary_params.hpp>
+#include <boost/preprocessor/repetition/enum_params.hpp>
+#include <boost/preprocessor/repetition/repeat.hpp>
+#include <boost/preprocessor/tuple/elem.hpp>
 #include <fcppt/config/external_end.hpp>
+
 
 #ifndef FCPPT_MAKE_PTR_BASE_MAX_SIZE
 #define FCPPT_MAKE_PTR_BASE_MAX_SIZE 20

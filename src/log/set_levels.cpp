@@ -5,8 +5,9 @@
 
 
 #include "set_levels.hpp"
-#include <fcppt/log/object.hpp>
 #include <fcppt/foreach_enumerator_start.hpp>
+#include <fcppt/log/object.hpp>
+
 
 void
 fcppt::log::set_levels(

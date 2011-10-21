@@ -7,8 +7,9 @@
 #ifndef FCPPT_DETAIL_PROCESS_ASSERT_HPP_INCLUDED
 #define FCPPT_DETAIL_PROCESS_ASSERT_HPP_INCLUDED
 
-#include <fcppt/symbol.hpp>
 #include <fcppt/string.hpp>
+#include <fcppt/symbol.hpp>
+
 
 namespace fcppt
 {

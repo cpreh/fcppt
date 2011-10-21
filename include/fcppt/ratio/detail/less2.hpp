@@ -9,8 +9,9 @@
 #ifndef FCPPT_RATIO_DETAIL_LESS2_HPP_INCLUDED
 #define FCPPT_RATIO_DETAIL_LESS2_HPP_INCLUDED
 
-#include <fcppt/ratio/detail/min_c.hpp>
 #include <fcppt/ratio/detail/less3.hpp>
+#include <fcppt/ratio/detail/min_c.hpp>
+
 
 namespace fcppt
 {

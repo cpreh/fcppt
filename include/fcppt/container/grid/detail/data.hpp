@@ -7,16 +7,17 @@
 #ifndef FCPPT_CONTAINER_GRID_DETAIL_DATA_HPP_INCLUDED
 #define FCPPT_CONTAINER_GRID_DETAIL_DATA_HPP_INCLUDED
 
-#include <fcppt/container/grid/detail/choose_pointer.hpp>
 #include <fcppt/container/data.hpp>
 #include <fcppt/container/is_raw_vector.hpp>
 #include <fcppt/container/is_std_vector.hpp>
 #include <fcppt/container/raw_vector_impl.hpp>
+#include <fcppt/container/grid/detail/choose_pointer.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/utility/enable_if.hpp>
 #include <boost/type_traits/remove_const.hpp>
+#include <boost/utility/enable_if.hpp>
 #include <vector>
 #include <fcppt/config/external_end.hpp>
+
 
 namespace fcppt
 {

@@ -7,9 +7,10 @@
 #ifndef FCPPT_FILESYSTEM_EXTENSION_HPP_INCLUDED
 #define FCPPT_FILESYSTEM_EXTENSION_HPP_INCLUDED
 
-#include <fcppt/filesystem/path.hpp>
 #include <fcppt/string.hpp>
 #include <fcppt/symbol.hpp>
+#include <fcppt/filesystem/path.hpp>
+
 
 namespace fcppt
 {

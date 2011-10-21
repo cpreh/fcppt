@@ -7,12 +7,13 @@
 #ifndef FCPPT_MATH_MATRIX_DETERMINANT_HPP_INCLUDED
 #define FCPPT_MATH_MATRIX_DETERMINANT_HPP_INCLUDED
 
+#include <fcppt/math/is_static_size.hpp>
 #include <fcppt/math/matrix/basic_impl.hpp>
 #include <fcppt/math/matrix/detail/determinant.hpp>
-#include <fcppt/math/is_static_size.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/utility/enable_if.hpp>
 #include <fcppt/config/external_end.hpp>
+
 
 namespace fcppt
 {

@@ -7,15 +7,16 @@
 #ifndef FCPPT_CONTAINER_MAP_IMPL_HPP_INCLUDED
 #define FCPPT_CONTAINER_MAP_IMPL_HPP_INCLUDED
 
-#include <fcppt/container/map_decl.hpp>
-#include <fcppt/container/insert_failed.hpp>
-#include <fcppt/container/not_found.hpp>
 #include <fcppt/text.hpp>
 #include <fcppt/type_name.hpp>
+#include <fcppt/container/insert_failed.hpp>
+#include <fcppt/container/map_decl.hpp>
+#include <fcppt/container/not_found.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <typeinfo>
 #include <utility>
 #include <fcppt/config/external_end.hpp>
+
 
 template<
 	typename MapType

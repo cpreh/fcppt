@@ -7,8 +7,9 @@
 #ifndef FCPPT_SIGNAL_BASE_HPP_INCLUDED
 #define FCPPT_SIGNAL_BASE_HPP_INCLUDED
 
-#include <fcppt/signal/base_fwd.hpp>
 #include <fcppt/signal/base_decl.hpp>
+#include <fcppt/signal/base_fwd.hpp>
 #include <fcppt/signal/base_impl.hpp>
+
 
 #endif

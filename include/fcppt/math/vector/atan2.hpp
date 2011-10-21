@@ -7,14 +7,15 @@
 #ifndef FCPPT_MATH_VECTOR_ATAN2_HPP_INCLUDED
 #define FCPPT_MATH_VECTOR_ATAN2_HPP_INCLUDED
 
-#include <fcppt/math/vector/basic_impl.hpp>
 #include <fcppt/math/detail/has_size.hpp>
+#include <fcppt/math/vector/basic_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/utility/enable_if.hpp>
-#include <boost/type_traits/is_floating_point.hpp>
 #include <boost/mpl/and.hpp>
+#include <boost/type_traits/is_floating_point.hpp>
+#include <boost/utility/enable_if.hpp>
 #include <cmath>
 #include <fcppt/config/external_end.hpp>
+
 
 namespace fcppt
 {

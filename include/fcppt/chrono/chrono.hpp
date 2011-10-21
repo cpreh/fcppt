@@ -7,10 +7,8 @@
 #ifndef FCPPT_CHRONO_CHRONO_HPP_INCLUDED
 #define FCPPT_CHRONO_CHRONO_HPP_INCLUDED
 
-#include <fcppt/chrono/asio/asio.hpp>
 #include <fcppt/chrono/clock_failure.hpp>
 #include <fcppt/chrono/common_type.hpp>
-#include <fcppt/chrono/convert/convert.hpp>
 #include <fcppt/chrono/days.hpp>
 #include <fcppt/chrono/duration.hpp>
 #include <fcppt/chrono/duration_arithmetic.hpp>
@@ -45,5 +43,8 @@
 #include <fcppt/chrono/time_point_impl.hpp>
 #include <fcppt/chrono/time_point_output.hpp>
 #include <fcppt/chrono/treat_as_floating_point.hpp>
+#include <fcppt/chrono/asio/asio.hpp>
+#include <fcppt/chrono/convert/convert.hpp>
+
 
 #endif

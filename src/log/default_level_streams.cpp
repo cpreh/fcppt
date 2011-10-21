@@ -4,13 +4,14 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/log/default_level_streams.hpp>
-#include <fcppt/log/format/default_level.hpp>
-#include <fcppt/log/level_stream.hpp>
-#include <fcppt/container/array_impl.hpp>
 #include <fcppt/foreach_enumerator.hpp>
 #include <fcppt/make_shared_ptr.hpp>
 #include <fcppt/ref.hpp>
+#include <fcppt/container/array_impl.hpp>
+#include <fcppt/log/default_level_streams.hpp>
+#include <fcppt/log/level_stream.hpp>
+#include <fcppt/log/format/default_level.hpp>
+
 
 fcppt::log::level_stream_array const
 fcppt::log::default_level_streams(

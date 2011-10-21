@@ -7,9 +7,10 @@
 #ifndef FCPPT_LOG_INNER_NODE_NAME_HPP_INCLUDED
 #define FCPPT_LOG_INNER_NODE_NAME_HPP_INCLUDED
 
-#include <fcppt/log/detail/context_tree.hpp>
-#include <fcppt/string.hpp>
 #include <fcppt/nonassignable.hpp>
+#include <fcppt/string.hpp>
+#include <fcppt/log/detail/context_tree.hpp>
+
 
 namespace fcppt
 {

@@ -7,11 +7,12 @@
 #ifndef FCPPT_CHRONO_ASIO_CONVERT_TIME_POINT_HPP_INCLUDED
 #define FCPPT_CHRONO_ASIO_CONVERT_TIME_POINT_HPP_INCLUDED
 
+#include <fcppt/chrono/time_point_cast.hpp>
+#include <fcppt/chrono/time_point_impl.hpp>
 #include <fcppt/chrono/asio/clock.hpp>
 #include <fcppt/chrono/asio/duration.hpp>
 #include <fcppt/chrono/asio/time_point.hpp>
-#include <fcppt/chrono/time_point_cast.hpp>
-#include <fcppt/chrono/time_point_impl.hpp>
+
 
 namespace fcppt
 {

@@ -8,13 +8,14 @@
 #define FCPPT_MPL_PARTIAL_SUMS_HPP_INCLUDED
 
 #include <fcppt/config/external_begin.hpp>
-#include <boost/mpl/vector_c.hpp>
-#include <boost/mpl/fold.hpp>
-#include <boost/mpl/push_back.hpp>
 #include <boost/mpl/back.hpp>
-#include <boost/mpl/plus.hpp>
+#include <boost/mpl/fold.hpp>
 #include <boost/mpl/placeholders.hpp>
+#include <boost/mpl/plus.hpp>
+#include <boost/mpl/push_back.hpp>
+#include <boost/mpl/vector_c.hpp>
 #include <fcppt/config/external_end.hpp>
+
 
 namespace fcppt
 {

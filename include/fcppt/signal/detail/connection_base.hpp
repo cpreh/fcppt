@@ -8,9 +8,10 @@
 #define FCPPT_SIGNAL_DETAIL_CONNECTION_BASE_HPP_INCLUDED
 
 #include <fcppt/config/external_begin.hpp>
-#include <boost/intrusive/list_hook.hpp>
 #include <boost/intrusive/link_mode.hpp>
+#include <boost/intrusive/list_hook.hpp>
 #include <fcppt/config/external_end.hpp>
+
 
 namespace fcppt
 {

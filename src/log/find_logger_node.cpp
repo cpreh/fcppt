@@ -7,11 +7,12 @@
 #include "find_logger_node.hpp"
 #include "is_outer_node.hpp"
 #include <fcppt/container/tree/object_impl.hpp>
-#include <fcppt/variant/object_impl.hpp>
 #include <fcppt/tr1/functional.hpp>
+#include <fcppt/variant/object_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <algorithm>
 #include <fcppt/config/external_end.hpp>
+
 
 fcppt::log::detail::context_tree::iterator
 fcppt::log::find_logger_node(

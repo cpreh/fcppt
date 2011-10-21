@@ -8,6 +8,7 @@
 #include "find_location.hpp"
 #include "find_inner_node.hpp"
 #include "is_outer_node.hpp"
+#include <fcppt/text.hpp>
 #include <fcppt/assert/pre.hpp>
 #include <fcppt/container/tree/object_impl.hpp>
 #include <fcppt/container/tree/pre_order.hpp>
@@ -17,10 +18,10 @@
 #include <fcppt/log/no_such_location.hpp>
 #include <fcppt/log/optional_object.hpp>
 #include <fcppt/variant/object_impl.hpp>
-#include <fcppt/text.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <exception>
 #include <fcppt/config/external_end.hpp>
+
 
 fcppt::log::context::context()
 :

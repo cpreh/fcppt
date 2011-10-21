@@ -7,8 +7,9 @@
 #ifndef FCPPT_CONTAINER_BITFIELD_BASIC_HPP_INCLUDED
 #define FCPPT_CONTAINER_BITFIELD_BASIC_HPP_INCLUDED
 
-#include <fcppt/container/bitfield/basic_fwd.hpp>
 #include <fcppt/container/bitfield/basic_decl.hpp>
+#include <fcppt/container/bitfield/basic_fwd.hpp>
 #include <fcppt/container/bitfield/basic_impl.hpp>
+
 
 #endif

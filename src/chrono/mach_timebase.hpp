@@ -7,7 +7,10 @@
 #ifndef FCPPT_CHRONO_MACH_TIMEBASE_HPP_INCLUDED
 #define FCPPT_CHRONO_MACH_TIMEBASE_HPP_INCLUDED
 
+#include <fcppt/config/external_begin.hpp>
 #include <mach/mach_time.h>
+#include <fcppt/config/external_end.hpp>
+
 
 namespace fcppt
 {

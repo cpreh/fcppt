@@ -7,12 +7,13 @@
 #ifndef FCPPT_PREPROCESSOR_DETAIL_ENUM_PARAMS_FORWARD_M_HPP_INCLUDED
 #define FCPPT_PREPROCESSOR_DETAIL_ENUM_PARAMS_FORWARD_M_HPP_INCLUDED
 
+#include <fcppt/forward.hpp>
 #include <fcppt/config/external_begin.hpp>
+#include <boost/preprocessor/cat.hpp>
 #include <boost/preprocessor/punctuation/comma_if.hpp>
 #include <boost/preprocessor/tuple/elem.hpp>
-#include <boost/preprocessor/cat.hpp>
 #include <fcppt/config/external_end.hpp>
-#include <fcppt/forward.hpp>
+
 
 #define FCPPT_PP_DETAIL_ENUM_PARAMS_FORWARD_M_II(\
 	z,\

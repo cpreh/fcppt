@@ -7,9 +7,10 @@
 #ifndef FCPPT_CHRONO_TIME_POINT_ARITHMETIC_HPP_INCLUDED
 #define FCPPT_CHRONO_TIME_POINT_ARITHMETIC_HPP_INCLUDED
 
-#include <fcppt/chrono/time_point_impl.hpp>
-#include <fcppt/chrono/duration_arithmetic.hpp>
 #include <fcppt/chrono/common_type.hpp>
+#include <fcppt/chrono/duration_arithmetic.hpp>
+#include <fcppt/chrono/time_point_impl.hpp>
+
 
 namespace fcppt
 {

@@ -4,12 +4,13 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/log/parameters/with_context.hpp>
-#include <fcppt/log/parameters/all.hpp>
+#include <fcppt/io/ostream.hpp>
 #include <fcppt/log/context_fwd.hpp>
 #include <fcppt/log/context_location.hpp>
 #include <fcppt/log/location_fwd.hpp>
-#include <fcppt/io/ostream.hpp>
+#include <fcppt/log/parameters/all.hpp>
+#include <fcppt/log/parameters/with_context.hpp>
+
 
 fcppt::log::parameters::all
 fcppt::log::parameters::with_context(

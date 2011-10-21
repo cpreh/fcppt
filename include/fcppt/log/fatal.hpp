@@ -7,8 +7,9 @@
 #ifndef FCPPT_LOG_FATAL_HPP_INCLUDED
 #define FCPPT_LOG_FATAL_HPP_INCLUDED
 
-#include <fcppt/log/detail/level_if_enabled.hpp>
 #include <fcppt/log/level.hpp>
+#include <fcppt/log/detail/level_if_enabled.hpp>
+
 
 /// Log to a stream if the fatal level is enabled
 #define FCPPT_LOG_FATAL(stream, x)\

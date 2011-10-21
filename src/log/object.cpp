@@ -6,19 +6,20 @@
 
 #include "tree_formatter.hpp"
 #include <fcppt/io/ostream.hpp>
-#include <fcppt/log/object.hpp>
-#include <fcppt/log/parameters/all.hpp>
 #include <fcppt/log/context.hpp>
 #include <fcppt/log/enabled_level_array.hpp>
 #include <fcppt/log/level.hpp>
 #include <fcppt/log/level_stream.hpp>
 #include <fcppt/log/level_stream_array.hpp>
+#include <fcppt/log/object.hpp>
 #include <fcppt/log/optional_context_location.hpp>
 #include <fcppt/log/detail/temporary_output_fwd.hpp>
 #include <fcppt/log/format/const_object_ptr.hpp>
-#include <fcppt/preprocessor/push_warning.hpp>
-#include <fcppt/preprocessor/pop_warning.hpp>
+#include <fcppt/log/parameters/all.hpp>
 #include <fcppt/preprocessor/disable_vc_warning.hpp>
+#include <fcppt/preprocessor/pop_warning.hpp>
+#include <fcppt/preprocessor/push_warning.hpp>
+
 
 FCPPT_PP_PUSH_WARNING
 FCPPT_PP_DISABLE_VC_WARNING(4355)

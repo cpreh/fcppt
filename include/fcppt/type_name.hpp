@@ -8,8 +8,9 @@
 #define FCPPT_TYPE_NAME_HPP_INCLUDED
 
 #include <fcppt/string.hpp>
-#include <fcppt/type_info.hpp>
 #include <fcppt/symbol.hpp>
+#include <fcppt/type_info.hpp>
+
 
 namespace fcppt
 {

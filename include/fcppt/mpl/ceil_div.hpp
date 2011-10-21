@@ -8,10 +8,11 @@
 #define FCPPT_MPL_CEIL_DIV_HPP_INCLUDED
 
 #include <fcppt/config/external_begin.hpp>
+#include <boost/static_assert.hpp>
 #include <boost/mpl/integral_c.hpp>
 #include <boost/type_traits/is_unsigned.hpp>
-#include <boost/static_assert.hpp>
 #include <fcppt/config/external_end.hpp>
+
 
 namespace fcppt
 {

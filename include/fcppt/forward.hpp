@@ -9,12 +9,13 @@
 #ifndef FCPPT_FORWARD_HPP_INCLUDED
 #define FCPPT_FORWARD_HPP_INCLUDED
 
-#include <fcppt/type_traits/is_movable.hpp>
 #include <fcppt/move.hpp>
+#include <fcppt/type_traits/is_movable.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/mpl/identity.hpp>
 #include <boost/utility/enable_if.hpp>
 #include <fcppt/config/external_end.hpp>
+
 
 namespace fcppt
 {

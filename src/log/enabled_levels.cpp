@@ -4,9 +4,10 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/log/enabled_levels.hpp>
-#include <fcppt/container/array_impl.hpp>
 #include <fcppt/foreach_enumerator.hpp>
+#include <fcppt/container/array_impl.hpp>
+#include <fcppt/log/enabled_levels.hpp>
+
 
 fcppt::log::enabled_level_array const
 fcppt::log::enabled_levels(

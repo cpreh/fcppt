@@ -7,11 +7,14 @@
 #ifndef FCPPT_CHRONO_CLOCK_GETTIME_IMPL_HPP_INCLUDED
 #define FCPPT_CHRONO_CLOCK_GETTIME_IMPL_HPP_INCLUDED
 
+#include <fcppt/text.hpp>
 #include <fcppt/chrono/clock_failure.hpp>
 #include <fcppt/chrono/duration_impl.hpp>
 #include <fcppt/chrono/time_point_impl.hpp>
-#include <fcppt/text.hpp>
+#include <fcppt/config/external_begin.hpp>
 #include <time.h>
+#include <fcppt/config/external_end.hpp>
+
 
 namespace fcppt
 {

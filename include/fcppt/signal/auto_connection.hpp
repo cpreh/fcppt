@@ -7,8 +7,9 @@
 #ifndef FCPPT_SIGNAL_AUTO_CONNECTION_HPP_INCLUDED
 #define FCPPT_SIGNAL_AUTO_CONNECTION_HPP_INCLUDED
 
-#include <fcppt/signal/detail/connection.hpp>
 #include <fcppt/unique_ptr.hpp>
+#include <fcppt/signal/detail/connection.hpp>
+
 
 namespace fcppt
 {

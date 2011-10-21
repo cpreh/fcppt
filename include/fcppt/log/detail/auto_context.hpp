@@ -7,9 +7,10 @@
 #ifndef FCPPT_LOG_DETAIL_AUTO_CONTEXT_HPP_INCLUDED
 #define FCPPT_LOG_DETAIL_AUTO_CONTEXT_HPP_INCLUDED
 
-#include <fcppt/log/optional_context_location.hpp>
-#include <fcppt/log/object_fwd.hpp>
 #include <fcppt/noncopyable.hpp>
+#include <fcppt/log/object_fwd.hpp>
+#include <fcppt/log/optional_context_location.hpp>
+
 
 namespace fcppt
 {

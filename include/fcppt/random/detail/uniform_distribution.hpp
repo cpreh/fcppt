@@ -8,12 +8,13 @@
 #define FCPPT_RANDOM_DETAIL_UNIFORM_DISTRIBUTION_HPP_INCLUDED
 
 #include <fcppt/config/external_begin.hpp>
-#include <boost/random/uniform_real.hpp>
 #include <boost/random/uniform_int.hpp>
-#include <boost/utility/enable_if.hpp>
+#include <boost/random/uniform_real.hpp>
 #include <boost/type_traits/is_floating_point.hpp>
 #include <boost/type_traits/is_integral.hpp>
+#include <boost/utility/enable_if.hpp>
 #include <fcppt/config/external_end.hpp>
+
 
 namespace fcppt
 {

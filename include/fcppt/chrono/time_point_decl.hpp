@@ -7,8 +7,9 @@
 #ifndef FCPPT_CHRONO_TIME_POINT_DECL_HPP_INCLUDED
 #define FCPPT_CHRONO_TIME_POINT_DECL_HPP_INCLUDED
 
-#include <fcppt/chrono/time_point_fwd.hpp>
 #include <fcppt/chrono/duration_decl.hpp>
+#include <fcppt/chrono/time_point_fwd.hpp>
+
 
 namespace fcppt
 {

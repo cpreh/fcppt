@@ -7,7 +7,6 @@
 #ifndef FCPPT_RANDOM_RANDOM_HPP_INCLUDED
 #define FCPPT_RANDOM_RANDOM_HPP_INCLUDED
 
-#include <fcppt/random/actor/actor.hpp>
 #include <fcppt/random/default_generator.hpp>
 #include <fcppt/random/exception.hpp>
 #include <fcppt/random/exclusive_range_error.hpp>
@@ -29,5 +28,7 @@
 #include <fcppt/random/uniform_decl.hpp>
 #include <fcppt/random/uniform_fwd.hpp>
 #include <fcppt/random/uniform_impl.hpp>
+#include <fcppt/random/actor/actor.hpp>
+
 
 #endif

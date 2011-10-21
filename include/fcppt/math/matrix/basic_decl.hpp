@@ -7,24 +7,25 @@
 #ifndef FCPPT_MATH_MATRIX_BASIC_DECL_HPP_INCLUDED
 #define FCPPT_MATH_MATRIX_BASIC_DECL_HPP_INCLUDED
 
-#include <fcppt/math/matrix/basic_fwd.hpp>
-#include <fcppt/math/matrix/max_ctor_params.hpp>
-#include <fcppt/math/matrix/dim_type.hpp>
-#include <fcppt/math/matrix/detail/dim_storage.hpp>
-#include <fcppt/math/matrix/detail/row_view.hpp>
-#include <fcppt/math/detail/make_op_decl.hpp>
-#include <fcppt/math/detail/make_variadic_constructor_decl.hpp>
-#include <fcppt/math/vector/basic_decl.hpp>
 #include <fcppt/math/difference_type.hpp>
 #include <fcppt/math/size_type.hpp>
+#include <fcppt/math/detail/make_op_decl.hpp>
+#include <fcppt/math/detail/make_variadic_constructor_decl.hpp>
+#include <fcppt/math/matrix/basic_fwd.hpp>
+#include <fcppt/math/matrix/dim_type.hpp>
+#include <fcppt/math/matrix/max_ctor_params.hpp>
+#include <fcppt/math/matrix/detail/dim_storage.hpp>
+#include <fcppt/math/matrix/detail/row_view.hpp>
+#include <fcppt/math/vector/basic_decl.hpp>
 #include <fcppt/type_traits/is_iterator.hpp>
 #include <fcppt/config/external_begin.hpp>
+#include <boost/static_assert.hpp>
 #include <boost/mpl/times.hpp>
 #include <boost/type_traits/is_same.hpp>
 #include <boost/utility/enable_if.hpp>
-#include <boost/static_assert.hpp>
 #include <iterator>
 #include <fcppt/config/external_end.hpp>
+
 
 namespace fcppt
 {

@@ -7,9 +7,10 @@
 #ifndef FCPPT_VARIANT_DETAIL_DESTROY_HPP_INCLUDED
 #define FCPPT_VARIANT_DETAIL_DESTROY_HPP_INCLUDED
 
-#include <fcppt/preprocessor/push_warning.hpp>
-#include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/disable_vc_warning.hpp>
+#include <fcppt/preprocessor/pop_warning.hpp>
+#include <fcppt/preprocessor/push_warning.hpp>
+
 
 namespace fcppt
 {

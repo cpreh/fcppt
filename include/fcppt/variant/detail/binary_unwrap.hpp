@@ -7,9 +7,10 @@
 #ifndef FCPPT_VARIANT_DETAIL_BINARY_UNWRAP_HPP_INCLUDED
 #define FCPPT_VARIANT_DETAIL_BINARY_UNWRAP_HPP_INCLUDED
 
+#include <fcppt/nonassignable.hpp>
 #include <fcppt/variant/apply_unary.hpp>
 #include <fcppt/variant/detail/binary_applier.hpp>
-#include <fcppt/nonassignable.hpp>
+
 
 namespace fcppt
 {

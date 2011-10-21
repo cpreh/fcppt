@@ -4,24 +4,25 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/filesystem/file_to_string.hpp>
-#include <fcppt/filesystem/exception.hpp>
-#include <fcppt/filesystem/file_size.hpp>
-#include <fcppt/filesystem/path_to_string.hpp>
-#include <fcppt/assert/exception.hpp>
-#include <fcppt/assert/post.hpp>
-#include <fcppt/io/ifstream.hpp>
 #include <fcppt/char_type.hpp>
 #include <fcppt/string.hpp>
 #include <fcppt/text.hpp>
+#include <fcppt/assert/exception.hpp>
+#include <fcppt/assert/post.hpp>
+#include <fcppt/filesystem/exception.hpp>
+#include <fcppt/filesystem/file_size.hpp>
+#include <fcppt/filesystem/file_to_string.hpp>
+#include <fcppt/filesystem/path_to_string.hpp>
+#include <fcppt/io/ifstream.hpp>
 #include <fcppt/config/external_begin.hpp>
+#include <boost/cstdint.hpp>
 #include <boost/mpl/greater_equal.hpp>
 #include <boost/mpl/less.hpp>
 #include <boost/mpl/sizeof.hpp>
 #include <boost/utility/enable_if.hpp>
-#include <boost/cstdint.hpp>
 #include <iterator>
 #include <fcppt/config/external_end.hpp>
+
 
 namespace
 {

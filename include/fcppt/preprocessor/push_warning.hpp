@@ -7,8 +7,9 @@
 #ifndef FCPPT_PREPROCESSOR_PUSH_WARNING_HPP_INCLUDED
 #define FCPPT_PREPROCESSOR_PUSH_WARNING_HPP_INCLUDED
 
-#include <fcppt/config/compiler.hpp>
 #include <fcppt/config.hpp>
+#include <fcppt/config/compiler.hpp>
+
 
 /// Push the warning level (only supported on VC++ for now)
 #if defined(FCPPT_CONFIG_MSVC_COMPILER)

@@ -4,8 +4,9 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/log/format/inserter.hpp>
 #include <fcppt/format.hpp>
+#include <fcppt/log/format/inserter.hpp>
+
 
 fcppt::log::format::inserter::inserter(
 	string const &_format_string

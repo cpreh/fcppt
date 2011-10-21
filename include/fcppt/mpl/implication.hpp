@@ -8,9 +8,10 @@
 #define FCPPT_MPL_IMPLICATION_HPP_INCLUDED
 
 #include <fcppt/config/external_begin.hpp>
-#include <boost/mpl/or.hpp>
 #include <boost/mpl/not.hpp>
+#include <boost/mpl/or.hpp>
 #include <fcppt/config/external_end.hpp>
+
 
 namespace fcppt
 {

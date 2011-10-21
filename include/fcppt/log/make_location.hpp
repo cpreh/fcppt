@@ -7,10 +7,11 @@
 #ifndef FCPPT_LOG_MAKE_LOCATION_HPP_INCLUDED
 #define FCPPT_LOG_MAKE_LOCATION_HPP_INCLUDED
 
-#include <fcppt/log/location.hpp>
-#include <fcppt/symbol.hpp>
-#include <fcppt/string.hpp>
 #include <fcppt/char_type.hpp>
+#include <fcppt/string.hpp>
+#include <fcppt/symbol.hpp>
+#include <fcppt/log/location.hpp>
+
 
 namespace fcppt
 {

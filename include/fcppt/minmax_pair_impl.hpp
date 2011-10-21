@@ -7,11 +7,12 @@
 #ifndef FCPPT_MINMAX_PAIR_IMPL_HPP_INCLUDED
 #define FCPPT_MINMAX_PAIR_IMPL_HPP_INCLUDED
 
-#include <fcppt/minmax_pair_decl.hpp>
+#include <fcppt/format.hpp>
 #include <fcppt/homogenous_pair_impl.hpp>
 #include <fcppt/invalid_minmax_pair.hpp>
-#include <fcppt/format.hpp>
+#include <fcppt/minmax_pair_decl.hpp>
 #include <fcppt/text.hpp>
+
 
 template<
 	typename T

@@ -9,9 +9,10 @@
 #ifndef FCPPT_RATIO_DETAIL_GCD_HPP_INCLUDED
 #define FCPPT_RATIO_DETAIL_GCD_HPP_INCLUDED
 
+#include <fcppt/ratio/object.hpp>
 #include <fcppt/ratio/detail/static_gcd.hpp>
 #include <fcppt/ratio/detail/static_lcm.hpp>
-#include <fcppt/ratio/object.hpp>
+
 
 namespace fcppt
 {

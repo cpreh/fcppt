@@ -7,9 +7,10 @@
 #ifndef FCPPT_ALIGNMENT_ARRAY_HPP_INCLUDED
 #define FCPPT_ALIGNMENT_ARRAY_HPP_INCLUDED
 
-#include <fcppt/alignment/size_type.hpp>
 #include <fcppt/alignment/make_type.hpp>
+#include <fcppt/alignment/size_type.hpp>
 #include <fcppt/container/array.hpp>
+
 
 namespace fcppt
 {

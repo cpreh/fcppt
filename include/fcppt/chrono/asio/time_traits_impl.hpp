@@ -7,14 +7,15 @@
 #ifndef FCPPT_CHRONO_ASIO_TIME_TRAITS_IMPL_HPP_INCLUDED
 #define FCPPT_CHRONO_ASIO_TIME_TRAITS_IMPL_HPP_INCLUDED
 
-#include <fcppt/chrono/asio/time_traits_decl.hpp>
 #include <fcppt/chrono/duration_impl.hpp>
 #include <fcppt/chrono/time_point_arithmetic.hpp>
 #include <fcppt/chrono/time_point_comparison.hpp>
 #include <fcppt/chrono/time_point_impl.hpp>
+#include <fcppt/chrono/asio/time_traits_decl.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/date_time/posix_time/posix_time_duration.hpp>
 #include <fcppt/config/external_end.hpp>
+
 
 inline
 boost::asio::time_traits<

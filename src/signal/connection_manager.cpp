@@ -4,8 +4,9 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/signal/connection_manager.hpp>
 #include <fcppt/move.hpp>
+#include <fcppt/signal/connection_manager.hpp>
+
 
 fcppt::signal::connection_manager::connection_manager()
 :

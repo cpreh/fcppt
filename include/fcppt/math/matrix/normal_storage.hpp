@@ -7,9 +7,10 @@
 #ifndef FCPPT_MATH_MATRIX_NORMAL_STORAGE_HPP_INCLUDED
 #define FCPPT_MATH_MATRIX_NORMAL_STORAGE_HPP_INCLUDED
 
-#include <fcppt/math/matrix/detail/static_storage.hpp>
-#include <fcppt/math/detail/dynamic_storage.hpp>
 #include <fcppt/math/detail/dynamic_size.hpp>
+#include <fcppt/math/detail/dynamic_storage.hpp>
+#include <fcppt/math/matrix/detail/static_storage.hpp>
+
 
 namespace fcppt
 {

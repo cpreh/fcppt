@@ -7,10 +7,11 @@
 #ifndef FCPPT_MATH_DIM_MAKE_HPP_INCLUDED
 #define FCPPT_MATH_DIM_MAKE_HPP_INCLUDED
 
-#include <fcppt/math/dim/max_ctor_params.hpp>
-#include <fcppt/math/dim/basic_impl.hpp>
-#include <fcppt/math/dim/static.hpp>
 #include <fcppt/math/detail/make_impl.hpp>
+#include <fcppt/math/dim/basic_impl.hpp>
+#include <fcppt/math/dim/max_ctor_params.hpp>
+#include <fcppt/math/dim/static.hpp>
+
 
 namespace fcppt
 {

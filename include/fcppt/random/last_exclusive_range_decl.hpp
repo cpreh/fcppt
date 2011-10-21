@@ -10,9 +10,10 @@
 #include <fcppt/random/last_exclusive_range_fwd.hpp>
 #include <fcppt/random/range_decl.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/type_traits/is_integral.hpp>
 #include <boost/static_assert.hpp>
+#include <boost/type_traits/is_integral.hpp>
 #include <fcppt/config/external_end.hpp>
+
 
 namespace fcppt
 {

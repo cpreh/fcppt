@@ -7,9 +7,10 @@
 #ifndef FCPPT_MATH_DETAIL_SIMPLE_NORMAL_STORAGE_HPP_INCLUDED
 #define FCPPT_MATH_DETAIL_SIMPLE_NORMAL_STORAGE_HPP_INCLUDED
 
-#include <fcppt/math/detail/static_storage.hpp>
-#include <fcppt/math/detail/dynamic_storage.hpp>
 #include <fcppt/math/detail/dynamic_size.hpp>
+#include <fcppt/math/detail/dynamic_storage.hpp>
+#include <fcppt/math/detail/static_storage.hpp>
+
 
 namespace fcppt
 {

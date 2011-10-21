@@ -7,9 +7,10 @@
 #ifndef FCPPT_VARIANT_DETAIL_COMPARE_HPP_INCLUDED
 #define FCPPT_VARIANT_DETAIL_COMPARE_HPP_INCLUDED
 
-#include <fcppt/variant/object_decl.hpp>
-#include <fcppt/variant/holds_type.hpp>
 #include <fcppt/nonassignable.hpp>
+#include <fcppt/variant/holds_type.hpp>
+#include <fcppt/variant/object_decl.hpp>
+
 
 namespace fcppt
 {

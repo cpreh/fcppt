@@ -4,13 +4,14 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/log/global.hpp>
-#include <fcppt/log/object.hpp>
-#include <fcppt/log/level.hpp>
-#include <fcppt/log/parameters/all.hpp>
-#include <fcppt/log/format/create_prefix.hpp>
-#include <fcppt/io/clog.hpp>
 #include <fcppt/text.hpp>
+#include <fcppt/io/clog.hpp>
+#include <fcppt/log/global.hpp>
+#include <fcppt/log/level.hpp>
+#include <fcppt/log/object.hpp>
+#include <fcppt/log/format/create_prefix.hpp>
+#include <fcppt/log/parameters/all.hpp>
+
 
 namespace
 {

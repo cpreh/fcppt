@@ -9,11 +9,12 @@
 #ifndef FCPPT_RATIO_DETAIL_MIN_C_HPP_INCLUDED
 #define FCPPT_RATIO_DETAIL_MIN_C_HPP_INCLUDED
 
-#include <fcppt/ratio/int_type.hpp>
 #include <fcppt/mpl/integral_c.hpp>
+#include <fcppt/ratio/int_type.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/integer_traits.hpp>
 #include <fcppt/config/external_end.hpp>
+
 
 namespace fcppt
 {

@@ -10,9 +10,10 @@
 #include <fcppt/mpl/detail/for_each.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/mpl/begin.hpp>
-#include <boost/mpl/end.hpp>
 #include <boost/mpl/empty.hpp>
+#include <boost/mpl/end.hpp>
 #include <fcppt/config/external_end.hpp>
+
 
 namespace fcppt
 {

@@ -7,8 +7,9 @@
 #ifndef FCPPT_SIGNAL_OBJECT_HPP_INCLUDED
 #define FCPPT_SIGNAL_OBJECT_HPP_INCLUDED
 
-#include <fcppt/signal/object_fwd.hpp>
 #include <fcppt/signal/object_decl.hpp>
+#include <fcppt/signal/object_fwd.hpp>
 #include <fcppt/signal/object_impl.hpp>
+
 
 #endif

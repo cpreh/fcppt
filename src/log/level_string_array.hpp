@@ -7,9 +7,10 @@
 #ifndef FCPPT_LOG_LEVEL_STRING_ARRAY_HPP_INCLUDED
 #define FCPPT_LOG_LEVEL_STRING_ARRAY_HPP_INCLUDED
 
-#include <fcppt/log/level.hpp>
-#include <fcppt/container/array.hpp>
 #include <fcppt/string.hpp>
+#include <fcppt/container/array.hpp>
+#include <fcppt/log/level.hpp>
+
 
 namespace fcppt
 {

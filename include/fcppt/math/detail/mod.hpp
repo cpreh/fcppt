@@ -8,11 +8,12 @@
 #define FCPPT_MATH_DETAIL_MOD_HPP_INCLUDED
 
 #include <fcppt/config/external_begin.hpp>
-#include <cmath>
-#include <boost/utility/enable_if.hpp>
-#include <boost/type_traits/is_unsigned.hpp>
 #include <boost/type_traits/is_floating_point.hpp>
+#include <boost/type_traits/is_unsigned.hpp>
+#include <boost/utility/enable_if.hpp>
+#include <cmath>
 #include <fcppt/config/external_end.hpp>
+
 
 namespace fcppt
 {

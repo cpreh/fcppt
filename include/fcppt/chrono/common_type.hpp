@@ -7,10 +7,11 @@
 #ifndef FCPPT_CHRONO_COMMON_TYPE_HPP_INCLUDED
 #define FCPPT_CHRONO_COMMON_TYPE_HPP_INCLUDED
 
-#include <fcppt/chrono/detail/common_type_arithmetic.hpp>
 #include <fcppt/chrono/duration_fwd.hpp>
 #include <fcppt/chrono/time_point_fwd.hpp>
+#include <fcppt/chrono/detail/common_type_arithmetic.hpp>
 #include <fcppt/ratio/detail/gcd.hpp>
+
 
 namespace fcppt
 {

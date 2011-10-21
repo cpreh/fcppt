@@ -7,17 +7,18 @@
 #ifndef FCPPT_CODECVT_HPP_INCLUDED
 #define FCPPT_CODECVT_HPP_INCLUDED
 
+#include <fcppt/exception.hpp>
+#include <fcppt/text.hpp>
 #include <fcppt/container/data.hpp>
 #include <fcppt/container/data_end.hpp>
 #include <fcppt/container/raw_vector_impl.hpp>
-#include <fcppt/exception.hpp>
-#include <fcppt/text.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <locale>
-#include <iterator>
-#include <string>
 #include <cstring>
+#include <iterator>
+#include <locale>
+#include <string>
 #include <fcppt/config/external_end.hpp>
+
 
 namespace fcppt
 {

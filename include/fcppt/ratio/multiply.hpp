@@ -9,11 +9,12 @@
 #ifndef FCPPT_RATIO_MULTIPLY_HPP_INCLUDED
 #define FCPPT_RATIO_MULTIPLY_HPP_INCLUDED
 
-#include <fcppt/ratio/multiply_fwd.hpp>
-#include <fcppt/ratio/detail/static_gcd.hpp>
-#include <fcppt/ratio/detail/ll_mul.hpp>
 #include <fcppt/ratio/int_type.hpp>
+#include <fcppt/ratio/multiply_fwd.hpp>
 #include <fcppt/ratio/object.hpp>
+#include <fcppt/ratio/detail/ll_mul.hpp>
+#include <fcppt/ratio/detail/static_gcd.hpp>
+
 
 namespace fcppt
 {

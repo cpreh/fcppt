@@ -7,8 +7,9 @@
 #ifndef FCPPT_LOG_OPTIONAL_OBJECT_FWD_HPP_INCLUDED
 #define FCPPT_LOG_OPTIONAL_OBJECT_FWD_HPP_INCLUDED
 
-#include <fcppt/log/object_fwd.hpp>
 #include <fcppt/optional_fwd.hpp>
+#include <fcppt/log/object_fwd.hpp>
+
 
 namespace fcppt
 {

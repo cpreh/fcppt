@@ -7,8 +7,9 @@
 #ifndef FCPPT_VARIANT_DETAIL_INDEX_OF_HPP_INCLUDED
 #define FCPPT_VARIANT_DETAIL_INDEX_OF_HPP_INCLUDED
 
-#include <fcppt/variant/detail/real_type.hpp>
 #include <fcppt/mpl/index_of.hpp>
+#include <fcppt/variant/detail/real_type.hpp>
+
 
 namespace fcppt
 {

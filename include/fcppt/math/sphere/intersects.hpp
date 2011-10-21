@@ -7,11 +7,12 @@
 #ifndef FCPPT_MATH_SPHERE_INTERSECTS_HPP_INCLUDED
 #define FCPPT_MATH_SPHERE_INTERSECTS_HPP_INCLUDED
 
+#include <fcppt/math/size_type.hpp>
 #include <fcppt/math/sphere/basic_fwd.hpp>
 #include <fcppt/math/vector/arithmetic.hpp>
 #include <fcppt/math/vector/basic_impl.hpp>
 #include <fcppt/math/vector/length.hpp>
-#include <fcppt/math/size_type.hpp>
+
 
 namespace fcppt
 {

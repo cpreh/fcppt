@@ -7,8 +7,9 @@
 #ifndef FCPPT_LOG_OPTIONAL_CONTEXT_LOCATION_HPP_INCLUDED
 #define FCPPT_LOG_OPTIONAL_CONTEXT_LOCATION_HPP_INCLUDED
 
-#include <fcppt/log/optional_context_location_fwd.hpp>
-#include <fcppt/log/context_location.hpp>
 #include <fcppt/optional_impl.hpp>
+#include <fcppt/log/context_location.hpp>
+#include <fcppt/log/optional_context_location_fwd.hpp>
+
 
 #endif

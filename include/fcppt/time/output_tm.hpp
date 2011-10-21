@@ -7,11 +7,12 @@
 #ifndef FCPPT_TIME_OUTPUT_TM_HPP_INCLUDED
 #define FCPPT_TIME_OUTPUT_TM_HPP_INCLUDED
 
-#include <fcppt/io/ostream.hpp>
 #include <fcppt/symbol.hpp>
+#include <fcppt/io/ostream.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <ctime>
 #include <fcppt/config/external_end.hpp>
+
 
 namespace fcppt
 {

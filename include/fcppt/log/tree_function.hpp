@@ -7,8 +7,9 @@
 #ifndef FCPPT_LOG_TREE_FUNCTION_HPP_INCLUDED
 #define FCPPT_LOG_TREE_FUNCTION_HPP_INCLUDED
 
-#include <fcppt/log/object_fwd.hpp>
 #include <fcppt/function/object_fwd.hpp>
+#include <fcppt/log/object_fwd.hpp>
+
 
 namespace fcppt
 {

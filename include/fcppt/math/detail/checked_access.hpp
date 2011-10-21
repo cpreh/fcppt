@@ -7,13 +7,14 @@
 #ifndef FCPPT_MATH_DETAIL_CHECKED_ACCESS_HPP_INCLUDED
 #define FCPPT_MATH_DETAIL_CHECKED_ACCESS_HPP_INCLUDED
 
-#include <fcppt/math/detail/dynamic_size.hpp>
 #include <fcppt/math/size_type.hpp>
+#include <fcppt/math/detail/dynamic_size.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/utility/enable_if.hpp>
-#include <boost/type_traits/is_same.hpp>
 #include <boost/static_assert.hpp>
+#include <boost/type_traits/is_same.hpp>
+#include <boost/utility/enable_if.hpp>
 #include <fcppt/config/external_end.hpp>
+
 
 namespace fcppt
 {

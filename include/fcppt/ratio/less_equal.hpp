@@ -9,11 +9,12 @@
 #ifndef FCPPT_RATIO_LESS_EQUAL_HPP_INCLUDED
 #define FCPPT_RATIO_LESS_EQUAL_HPP_INCLUDED
 
-#include <fcppt/ratio/less_equal_fwd.hpp>
 #include <fcppt/ratio/less.hpp>
+#include <fcppt/ratio/less_equal_fwd.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/type_traits/integral_constant.hpp>
 #include <fcppt/config/external_end.hpp>
+
 
 namespace fcppt
 {

@@ -7,9 +7,10 @@
 #ifndef FCPPT_CHRONO_DURATION_HPP_INCLUDED
 #define FCPPT_CHRONO_DURATION_HPP_INCLUDED
 
-#include <fcppt/chrono/duration_impl.hpp>
 #include <fcppt/chrono/duration_arithmetic.hpp>
 #include <fcppt/chrono/duration_comparison.hpp>
-#include <fcppt/chrono/duration_output.hpp> // non standard
+#include <fcppt/chrono/duration_impl.hpp>
+#include <fcppt/chrono/duration_output.hpp>
+
 
 #endif

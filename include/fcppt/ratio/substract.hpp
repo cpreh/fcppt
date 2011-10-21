@@ -9,12 +9,13 @@
 #ifndef FCPPT_RATIO_SUBSTRACT_HPP_INCLUDED
 #define FCPPT_RATIO_SUBSTRACT_HPP_INCLUDED
 
-#include <fcppt/ratio/substract_fwd.hpp>
-#include <fcppt/ratio/detail/static_gcd.hpp>
-#include <fcppt/ratio/detail/ll_sub.hpp>
-#include <fcppt/ratio/detail/ll_mul.hpp>
-#include <fcppt/ratio/object.hpp>
 #include <fcppt/ratio/multiply.hpp>
+#include <fcppt/ratio/object.hpp>
+#include <fcppt/ratio/substract_fwd.hpp>
+#include <fcppt/ratio/detail/ll_mul.hpp>
+#include <fcppt/ratio/detail/ll_sub.hpp>
+#include <fcppt/ratio/detail/static_gcd.hpp>
+
 
 namespace fcppt
 {

@@ -7,8 +7,9 @@
 #ifndef FCPPT_MINMAX_PAIR_DECL_HPP_INCLUDED
 #define FCPPT_MINMAX_PAIR_DECL_HPP_INCLUDED
 
-#include <fcppt/minmax_pair_fwd.hpp>
 #include <fcppt/homogenous_pair_decl.hpp>
+#include <fcppt/minmax_pair_fwd.hpp>
+
 
 namespace fcppt
 {

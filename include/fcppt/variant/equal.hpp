@@ -7,9 +7,10 @@
 #ifndef FCPPT_VARIANT_EQUAL_HPP_INCLUDED
 #define FCPPT_VARIANT_EQUAL_HPP_INCLUDED
 
-#include <fcppt/variant/detail/compare.hpp>
-#include <fcppt/variant/object_fwd.hpp>
 #include <fcppt/variant/apply_unary.hpp>
+#include <fcppt/variant/object_fwd.hpp>
+#include <fcppt/variant/detail/compare.hpp>
+
 
 namespace fcppt
 {

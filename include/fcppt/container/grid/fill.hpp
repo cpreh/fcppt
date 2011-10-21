@@ -7,10 +7,11 @@
 #ifndef FCPPT_CONTAINER_GRID_FILL_HPP_INCLUDED
 #define FCPPT_CONTAINER_GRID_FILL_HPP_INCLUDED
 
-#include <fcppt/container/grid/detail/fill.hpp>
-#include <fcppt/container/grid/size_type.hpp>
 #include <fcppt/container/grid/object_impl.hpp>
+#include <fcppt/container/grid/size_type.hpp>
+#include <fcppt/container/grid/detail/fill.hpp>
 #include <fcppt/math/dim/basic_impl.hpp>
+
 
 namespace fcppt
 {

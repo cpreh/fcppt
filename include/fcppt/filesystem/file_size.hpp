@@ -7,11 +7,12 @@
 #ifndef FCPPT_FILESYSTEM_FILE_SIZE_HPP_INCLUDED
 #define FCPPT_FILESYSTEM_FILE_SIZE_HPP_INCLUDED
 
-#include <fcppt/filesystem/path.hpp>
 #include <fcppt/symbol.hpp>
+#include <fcppt/filesystem/path.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/cstdint.hpp>
 #include <fcppt/config/external_end.hpp>
+
 
 namespace fcppt
 {
