@@ -18,6 +18,16 @@ FCPPT_MAKE_STRONG_TYPEDEF(
 	strong_int
 );
 
+FCPPT_MAKE_STRONG_TYPEDEF(
+	int &,
+	strong_int_ref
+);
+
+FCPPT_MAKE_STRONG_TYPEDEF(
+	int const &,
+	strong_int_const_ref
+);
+
 }
 
 BOOST_AUTO_TEST_CASE(
@@ -183,3 +193,51 @@ BOOST_AUTO_TEST_CASE(
 		test == result
 	);
 }
+
+BOOST_AUTO_TEST_CASE(
+	strong_typedef_const_reference
+)
+{
+	int const test(
+		42
+	);
+
+	strong_int_const_ref const int_ref(
+		test
+	);
+
+	BOOST_REQUIRE(
+		&int_ref.get()
+		== &test
+	);
+
+	BOOST_REQUIRE(
+		int_ref.get()
+		== test
+	);
+}
+
+/*
+BOOST_AUTO_TEST_CASE(
+	strong_typedef_reference
+)
+{
+	int test(
+		42
+	);
+
+	strong_int_ref const int_ref(
+		test
+	);
+
+	BOOST_REQUIRE(
+		&int_ref.get()
+		== &test
+	);
+
+	BOOST_REQUIRE(
+		int_ref.get()
+		== test
+	);
+}
+*/

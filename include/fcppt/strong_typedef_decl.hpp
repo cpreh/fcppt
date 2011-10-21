@@ -7,6 +7,7 @@
 #ifndef FCPPT_STRONG_TYPEDEF_DECL_HPP_INCLUDED
 #define FCPPT_STRONG_TYPEDEF_DECL_HPP_INCLUDED
 
+#include <fcppt/nonassignable.hpp>
 #include <fcppt/strong_typedef_fwd.hpp>
 
 namespace fcppt
@@ -65,6 +66,36 @@ public:
 private:
 	T value_;
 };
+
+template<
+	typename T,
+	typename Tag
+>
+class strong_typedef<
+	T &,
+	Tag
+>
+{
+	FCPPT_NONASSIGNABLE(
+		strong_typedef
+	);
+public:
+	typedef T value_type;
+
+	typedef T &reference;
+
+	typedef Tag tag_type;
+
+	explicit strong_typedef(
+		reference
+	);
+
+	reference
+	get() const;
+private:
+	reference ref_;
+};
+
 
 template<
 	typename T,

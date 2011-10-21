@@ -127,6 +127,40 @@ fcppt::strong_typedef<
 	);
 }
 
+
+template<
+	typename T,
+	typename Tag
+>
+fcppt::strong_typedef<
+	T &,
+	Tag
+>::strong_typedef(
+	reference _ref
+)
+:
+	ref_(
+		_ref
+	)
+{
+}
+
+template<
+	typename T,
+	typename Tag
+>
+typename fcppt::strong_typedef<
+	T &,
+	Tag
+>::reference
+fcppt::strong_typedef<
+	T &,
+	Tag
+>::get() const
+{
+	return ref_;
+}
+
 template<
 	typename T,
 	typename Tag
