@@ -9,6 +9,7 @@
 
 #include <fcppt/math/detail/structure_cast.hpp>
 #include <fcppt/math/detail/structure_cast_fun.hpp>
+#include <fcppt/math/matrix/basic_impl.hpp>
 #include <fcppt/math/matrix/is_static_size.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/iterator/transform_iterator.hpp>

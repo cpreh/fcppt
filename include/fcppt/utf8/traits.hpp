@@ -7,6 +7,7 @@
 #ifndef FCPPT_UTF8_TRAITS_HPP_INCLUDED
 #define FCPPT_UTF8_TRAITS_HPP_INCLUDED
 
+#include <fcppt/utf8/char_type.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <string>
 #include <fcppt/config/external_end.hpp>
@@ -20,7 +21,7 @@ namespace utf8
 class traits
 :
 public std::char_traits<
-	char_type
+	utf8::char_type
 >
 {};
 

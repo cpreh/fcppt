@@ -364,7 +364,7 @@ set(
 	include/fcppt/assign/detail/array.hpp
 	include/fcppt/assign/detail/array_impl.hpp
 	include/fcppt/assign/detail/insert.hpp
-	include/fcppt/assign/detail/make_container_impl.hpp
+	include/fcppt/assign/impl/make_container.hpp
 	include/fcppt/assign/make_array.hpp
 	include/fcppt/assign/make_container.hpp
 	include/fcppt/backtrace/backtrace.hpp
@@ -652,12 +652,12 @@ set(
 	include/fcppt/function/detail/clear_type.hpp
 	include/fcppt/function/detail/functor_wrapper.hpp
 	include/fcppt/function/detail/functor_wrapper_fwd.hpp
-	include/fcppt/function/detail/functor_wrapper_template.ipp
 	include/fcppt/function/detail/has_addressof_overload.hpp
+	include/fcppt/function/detail/impl/functor_wrapper_template.hpp
 	include/fcppt/function/function.hpp
+	include/fcppt/function/impl/object_template.hpp
 	include/fcppt/function/object.hpp
 	include/fcppt/function/object_fwd.hpp
-	include/fcppt/function/object_template.ipp
 	include/fcppt/heap_deleter.hpp
 	include/fcppt/homogenous_pair.hpp
 	include/fcppt/homogenous_pair_decl.hpp

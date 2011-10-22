@@ -9,8 +9,8 @@
 #error "This file is not a standalone header. #include <fcppt/function/detail/functor_wrapper.hpp> instead."
 #endif
 
-#ifndef FCPPT_FUNCTION_DETAIL_FUNCTOR_WRAPPER_TEMPLATE_HPP_INCLUDED
-#define FCPPT_FUNCTION_DETAIL_FUNCTOR_WRAPPER_TEMPLATE_HPP_INCLUDED
+#ifndef FCPPT_FUNCTION_DETAIL_IMPL_FUNCTOR_WRAPPER_TEMPLATE_HPP_INCLUDED
+#define FCPPT_FUNCTION_DETAIL_IMPL_FUNCTOR_WRAPPER_TEMPLATE_HPP_INCLUDED
 
 #include <fcppt/nonassignable.hpp>
 #include <fcppt/config/external_begin.hpp>

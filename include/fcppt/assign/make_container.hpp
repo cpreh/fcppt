@@ -41,6 +41,6 @@ private:
 }
 }
 
-#include <fcppt/assign/detail/make_container_impl.hpp>
+#include <fcppt/assign/impl/make_container.hpp>
 
 #endif

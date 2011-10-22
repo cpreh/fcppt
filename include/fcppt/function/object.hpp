@@ -55,119 +55,119 @@ void swap( object<Signature>& x, object<Signature>& y )
 
 // \cond
 #define FCPPT_FUNCTION_OBJECT_PP_NUM_PARAMS 0
-#include <fcppt/function/object_template.ipp>
+#include <fcppt/function/impl/object_template.hpp>
 #undef FCPPT_FUNCTION_OBJECT_PP_NUM_PARAMS
 
 #define FCPPT_FUNCTION_OBJECT_PP_NUM_PARAMS 1
-#include <fcppt/function/object_template.ipp>
+#include <fcppt/function/impl/object_template.hpp>
 #undef FCPPT_FUNCTION_OBJECT_PP_NUM_PARAMS
 
 #define FCPPT_FUNCTION_OBJECT_PP_NUM_PARAMS 2
-#include <fcppt/function/object_template.ipp>
+#include <fcppt/function/impl/object_template.hpp>
 #undef FCPPT_FUNCTION_OBJECT_PP_NUM_PARAMS
 
 #define FCPPT_FUNCTION_OBJECT_PP_NUM_PARAMS 3
-#include <fcppt/function/object_template.ipp>
+#include <fcppt/function/impl/object_template.hpp>
 #undef FCPPT_FUNCTION_OBJECT_PP_NUM_PARAMS
 
 #define FCPPT_FUNCTION_OBJECT_PP_NUM_PARAMS 4
-#include <fcppt/function/object_template.ipp>
+#include <fcppt/function/impl/object_template.hpp>
 #undef FCPPT_FUNCTION_OBJECT_PP_NUM_PARAMS
 
 #define FCPPT_FUNCTION_OBJECT_PP_NUM_PARAMS 5
-#include <fcppt/function/object_template.ipp>
+#include <fcppt/function/impl/object_template.hpp>
 #undef FCPPT_FUNCTION_OBJECT_PP_NUM_PARAMS
 
 #define FCPPT_FUNCTION_OBJECT_PP_NUM_PARAMS 6
-#include <fcppt/function/object_template.ipp>
+#include <fcppt/function/impl/object_template.hpp>
 #undef FCPPT_FUNCTION_OBJECT_PP_NUM_PARAMS
 
 #define FCPPT_FUNCTION_OBJECT_PP_NUM_PARAMS 7
-#include <fcppt/function/object_template.ipp>
+#include <fcppt/function/impl/object_template.hpp>
 #undef FCPPT_FUNCTION_OBJECT_PP_NUM_PARAMS
 
 #define FCPPT_FUNCTION_OBJECT_PP_NUM_PARAMS 8
-#include <fcppt/function/object_template.ipp>
+#include <fcppt/function/impl/object_template.hpp>
 #undef FCPPT_FUNCTION_OBJECT_PP_NUM_PARAMS
 
 #define FCPPT_FUNCTION_OBJECT_PP_NUM_PARAMS 9
-#include <fcppt/function/object_template.ipp>
+#include <fcppt/function/impl/object_template.hpp>
 #undef FCPPT_FUNCTION_OBJECT_PP_NUM_PARAMS
 
 #define FCPPT_FUNCTION_OBJECT_PP_NUM_PARAMS 10
-#include <fcppt/function/object_template.ipp>
+#include <fcppt/function/impl/object_template.hpp>
 #undef FCPPT_FUNCTION_OBJECT_PP_NUM_PARAMS
 
 #define FCPPT_FUNCTION_OBJECT_PP_NUM_PARAMS 11
-#include <fcppt/function/object_template.ipp>
+#include <fcppt/function/impl/object_template.hpp>
 #undef FCPPT_FUNCTION_OBJECT_PP_NUM_PARAMS
 
 #define FCPPT_FUNCTION_OBJECT_PP_NUM_PARAMS 12
-#include <fcppt/function/object_template.ipp>
+#include <fcppt/function/impl/object_template.hpp>
 #undef FCPPT_FUNCTION_OBJECT_PP_NUM_PARAMS
 
 #define FCPPT_FUNCTION_OBJECT_PP_NUM_PARAMS 13
-#include <fcppt/function/object_template.ipp>
+#include <fcppt/function/impl/object_template.hpp>
 #undef FCPPT_FUNCTION_OBJECT_PP_NUM_PARAMS
 
 #define FCPPT_FUNCTION_OBJECT_PP_NUM_PARAMS 14
-#include <fcppt/function/object_template.ipp>
+#include <fcppt/function/impl/object_template.hpp>
 #undef FCPPT_FUNCTION_OBJECT_PP_NUM_PARAMS
 
 #define FCPPT_FUNCTION_OBJECT_PP_NUM_PARAMS 15
-#include <fcppt/function/object_template.ipp>
+#include <fcppt/function/impl/object_template.hpp>
 #undef FCPPT_FUNCTION_OBJECT_PP_NUM_PARAMS
 
 #define FCPPT_FUNCTION_OBJECT_PP_NUM_PARAMS 16
-#include <fcppt/function/object_template.ipp>
+#include <fcppt/function/impl/object_template.hpp>
 #undef FCPPT_FUNCTION_OBJECT_PP_NUM_PARAMS
 
 #define FCPPT_FUNCTION_OBJECT_PP_NUM_PARAMS 17
-#include <fcppt/function/object_template.ipp>
+#include <fcppt/function/impl/object_template.hpp>
 #undef FCPPT_FUNCTION_OBJECT_PP_NUM_PARAMS
 
 #define FCPPT_FUNCTION_OBJECT_PP_NUM_PARAMS 18
-#include <fcppt/function/object_template.ipp>
+#include <fcppt/function/impl/object_template.hpp>
 #undef FCPPT_FUNCTION_OBJECT_PP_NUM_PARAMS
 
 #define FCPPT_FUNCTION_OBJECT_PP_NUM_PARAMS 19
-#include <fcppt/function/object_template.ipp>
+#include <fcppt/function/impl/object_template.hpp>
 #undef FCPPT_FUNCTION_OBJECT_PP_NUM_PARAMS
 
 #define FCPPT_FUNCTION_OBJECT_PP_NUM_PARAMS 20
-#include <fcppt/function/object_template.ipp>
+#include <fcppt/function/impl/object_template.hpp>
 #undef FCPPT_FUNCTION_OBJECT_PP_NUM_PARAMS
 
 #define FCPPT_FUNCTION_OBJECT_PP_NUM_PARAMS 21
-#include <fcppt/function/object_template.ipp>
+#include <fcppt/function/impl/object_template.hpp>
 #undef FCPPT_FUNCTION_OBJECT_PP_NUM_PARAMS
 
 #define FCPPT_FUNCTION_OBJECT_PP_NUM_PARAMS 22
-#include <fcppt/function/object_template.ipp>
+#include <fcppt/function/impl/object_template.hpp>
 #undef FCPPT_FUNCTION_OBJECT_PP_NUM_PARAMS
 
 #define FCPPT_FUNCTION_OBJECT_PP_NUM_PARAMS 23
-#include <fcppt/function/object_template.ipp>
+#include <fcppt/function/impl/object_template.hpp>
 #undef FCPPT_FUNCTION_OBJECT_PP_NUM_PARAMS
 
 #define FCPPT_FUNCTION_OBJECT_PP_NUM_PARAMS 24
-#include <fcppt/function/object_template.ipp>
+#include <fcppt/function/impl/object_template.hpp>
 #undef FCPPT_FUNCTION_OBJECT_PP_NUM_PARAMS
 
 #define FCPPT_FUNCTION_OBJECT_PP_NUM_PARAMS 25
-#include <fcppt/function/object_template.ipp>
+#include <fcppt/function/impl/object_template.hpp>
 #undef FCPPT_FUNCTION_OBJECT_PP_NUM_PARAMS
 
 #define FCPPT_FUNCTION_OBJECT_PP_NUM_PARAMS 26
-#include <fcppt/function/object_template.ipp>
+#include <fcppt/function/impl/object_template.hpp>
 #undef FCPPT_FUNCTION_OBJECT_PP_NUM_PARAMS
 
 #define FCPPT_FUNCTION_OBJECT_PP_NUM_PARAMS 27
-#include <fcppt/function/object_template.ipp>
+#include <fcppt/function/impl/object_template.hpp>
 #undef FCPPT_FUNCTION_OBJECT_PP_NUM_PARAMS
 
 #define FCPPT_FUNCTION_OBJECT_PP_NUM_PARAMS 28
-#include <fcppt/function/object_template.ipp>
+#include <fcppt/function/impl/object_template.hpp>
 #undef FCPPT_FUNCTION_OBJECT_PP_NUM_PARAMS
 // \endcond
 

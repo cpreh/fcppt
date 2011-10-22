@@ -9,8 +9,8 @@
 #error "This file is not a standalone header. #include <fcppt/function/object.hpp> instead."
 #endif
 
-#ifndef FCPPT_FUNCTION_OBJECT_TEMPLATE_HPP_INCLUDED
-#define FCPPT_FUNCTION_OBJECT_TEMPLATE_HPP_INCLUDED
+#ifndef FCPPT_FUNCTION_IMPL_OBJECT_TEMPLATE_HPP_INCLUDED
+#define FCPPT_FUNCTION_IMPL_OBJECT_TEMPLATE_HPP_INCLUDED
 
 #include <fcppt/function/detail/has_addressof_overload.hpp>
 #include <fcppt/function/detail/clear_type.hpp>

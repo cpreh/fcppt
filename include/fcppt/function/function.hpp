@@ -10,6 +10,5 @@
 
 #include <fcppt/function/object.hpp>
 #include <fcppt/function/object_fwd.hpp>
-#include <fcppt/function/object_template.ipp>
 
 #endif

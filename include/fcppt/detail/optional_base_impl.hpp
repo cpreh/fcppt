@@ -7,6 +7,7 @@
 #ifndef FCPPT_DETAIL_OPTIONAL_BASE_IMPL_HPP_INCLUDED
 #define FCPPT_DETAIL_OPTIONAL_BASE_IMPL_HPP_INCLUDED
 
+#include <fcppt/detail/optional_base_decl.hpp>
 #include <fcppt/preprocessor/disable_vc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
