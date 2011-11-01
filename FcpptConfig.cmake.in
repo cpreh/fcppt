@@ -51,7 +51,7 @@ set(
 
 set(
 	Fcppt_LIBRARIES
-	"@Boost_LIBRARIES@;${Fcppt_LIBRARY};@FcpptThreads_LIBRARIES@"
+	"@Boost_FILESYSTEM_LIBRARY@;@Boost_THREAD_LIBRARY@;@Boost_SYSTEM_LIBRARY@;${Fcppt_LIBRARY};@FcpptThreads_LIBRARIES@"
 )
 
 set(

@@ -171,11 +171,27 @@ install(
 	${INSTALL_PKGCONFIG_DIR}
 )
 
+set(
+	NEEDED_BOOST_LIBS
+	"filesystem;system;thread"
+)
+
+if(
+	ENABLE_TEST
+)
+	set(
+		NEEDED_BOOST_LIBS
+		"${NEEDED_BOOST_LIBS};unit_test_framework"
+	)
+endif()
+
 find_package(
 	Boost 1.44.0 REQUIRED COMPONENTS
-	filesystem
-	system
-	thread
+	"${NEEDED_BOOST_LIBS}"
+)
+
+unset(
+	NEEDED_BOOST_LIBS
 )
 
 include_directories(${Boost_INCLUDE_DIRS})
@@ -1486,8 +1502,10 @@ macro(
 	if(NOT MSVC)
 		target_link_libraries(
 			${TARGETNAME}
-			${Boost_LIBRARIES}
 			${FcpptThreads_LIBRARIES}
+			${Boost_FILESYSTEM_LIBRARY}
+			${Boost_THREAD_LIBRARY}
+			${Boost_SYSTEM_LIBRARY}
 		)
 	endif()
 

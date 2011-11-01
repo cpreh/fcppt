@@ -1,9 +1,22 @@
-FIND_PACKAGE(Doxygen REQUIRED)
-FIND_PACKAGE(Xsltproc REQUIRED)
+find_package(
+	Doxygen
+	REQUIRED
+)
 
-SET(QUICKBOOK_VERSION ${Boost_LIB_VERSION})
+find_package(
+	Xsltproc
+	REQUIRED
+)
 
-FIND_PACKAGE(Quickbook REQUIRED)
+set(
+	QUICKBOOK_VERSION
+	${Boost_LIB_VERSION}
+)
+
+find_package(
+	Quickbook
+	REQUIRED
+)
 
 SET(DOC_OUTPUT ${CMAKE_BINARY_DIR}/doc_generated)
 
