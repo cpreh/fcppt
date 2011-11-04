@@ -176,6 +176,8 @@ set(
 	"filesystem;system;thread"
 )
 
+option(ENABLE_TEST "Build the tests" ON)
+
 if(
 	ENABLE_TEST
 )
@@ -1542,8 +1544,6 @@ option(ENABLE_DOC "Build the documentation" OFF)
 if(ENABLE_DOC)
 	add_subdirectory(doc)
 endif()
-
-option(ENABLE_TEST "Build the tests" ON)
 
 if(ENABLE_TEST)
 	enable_testing()
