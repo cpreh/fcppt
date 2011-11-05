@@ -58,14 +58,18 @@ to_angle(
 )
 {
 	return
-		vector::atan2(
-			vector::structure_cast<
-				typename vector::static_<
-					Dest,
-					N::value
-				>::type
-			>(
-				_to
+		fcppt::optional<
+			Dest
+		>(
+			vector::atan2(
+				vector::structure_cast<
+					typename vector::static_<
+						Dest,
+						N::value
+					>::type
+				>(
+					_to
+				)
 			)
 		);
 }
