@@ -100,9 +100,8 @@ public:
 	/// Uninitialized bitfield
 	basic();
 
-	// intentionally not explicit
 	/// Initializes every bit to false except the argument's bit
-	basic(
+	explicit basic(
 		Enum
 	);
 

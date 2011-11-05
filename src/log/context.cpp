@@ -17,6 +17,9 @@
 #include <fcppt/log/location.hpp>
 #include <fcppt/log/no_such_location.hpp>
 #include <fcppt/log/optional_object.hpp>
+#include <fcppt/log/detail/context_tree_node.hpp>
+#include <fcppt/log/detail/inner_context_node.hpp>
+#include <fcppt/log/detail/outer_context_node.hpp>
 #include <fcppt/variant/object_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <exception>
@@ -26,8 +29,10 @@
 fcppt::log::context::context()
 :
 	tree_(
-		detail::inner_context_node(
-			FCPPT_TEXT("")
+		detail::context_tree_node(
+			detail::inner_context_node(
+				FCPPT_TEXT("")
+			)
 		)
 	)
 {
@@ -73,8 +78,10 @@ fcppt::log::context::add(
 		)
 		{
 			cur->push_back(
-				detail::inner_context_node(
-					*item
+				detail::context_tree_node(
+					detail::inner_context_node(
+						*item
+					)
 				)
 			);
 
@@ -92,8 +99,10 @@ fcppt::log::context::add(
 	);
 
 	cur->push_back(
-		detail::outer_context_node(
-			_object
+		detail::context_tree_node(
+			detail::outer_context_node(
+				_object
+			)
 		)
 	);
 }
