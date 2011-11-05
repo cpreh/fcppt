@@ -50,8 +50,7 @@ public:
 		empty_optional_tag const &
 	);
 
-	// intentionally not explicit
-	optional(
+	explicit optional(
 		const_reference
 	);
 
