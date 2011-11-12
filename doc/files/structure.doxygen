@@ -1,0 +1,462 @@
+/**
+\page structure Structure
+
+<table id="toc">
+<tr>
+<td>
+
+
+<ol>
+<li>
+	<ol>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+	</ol>
+</li>
+<li></li>
+<li></li>
+<li></li>
+</ol>
+
+
+</td>
+</tr>
+</table>
+
+\section file_separation File separation
+
+Every function, typedef or class resides in its own header file. So, for
+example, if you want to use fcppt::to_std_string (which is a function) you have
+to <code>#include <fcppt/to_std_string.hpp></code>.
+
+All "normal" classes (not template classes) have an additional fwd header,
+which only provides a declaration of the class. For example
+<code><fcppt/type_info_fwd.hpp></code> provides the declaration of
+fcppt::type_info and <code><fcppt/type_info.hpp></code> provides the
+definition.
+
+Template classes are split into three files. First, the <code>_fwd</code>
+header is the same as for "normal" classes. Second, the <code>_decl</code>
+header provides the definition of the class. Third, the <code>_impl</code>
+header provides the template's definitions.
+
+\attention
+If you forget to include the <code>_impl</code> header where the implementation
+of a template is needed, you will get undefined references when linking.
+
+For example, <code><fcppt/strong_typedef_fwd.hpp></code> provides the
+declaration of the class, <code><fcppt/strong_typedef_decl.hpp></code> provides
+the definition of the class and <code><fcppt/strong_typedef_impl.hpp></code>
+provides the definitions of the class's functions.
+
+Some sublibraries, like fcppt::math::vector, provide convenience headers that
+include almost everything that belongs to the sub library. For example,
+<code><fcppt/math/vector/vector.hpp></code> includes most of the headers found
+under <code>fcppt/math/vector/</code>.
+
+\section coding_style Coding style
+
+\subsection identifiers Identifiers
+
+We encourage to use the same naming scheme as the C++ standard library. This
+means no camel case, but all lowercase letters and underscores as separators
+(<code>foo_bar_baz()</code> instead of <code>fooBarBaz()</code>). This way,
+code which is mixed with boost and the standard library looks much more
+consistent. We are, however, not evangelic about this. Macro names are
+<code>CAPTIALIZED</code> so they're not confused with normal functions, which
+is a problem with the standard library's <code>assert</code> function for
+example. You're not the only one if you tried to write it as:
+<code>std::assert(0 < 1);</code>. Macros have no namespace scope.
+
+\subsection identation Indentation
+
+\subsubsection tabs Tabs
+
+Most coding guidelines just dismiss the tab issue by stating that you should
+just use 'n' whitespaces for indentation. The problem with this is: What are
+sensible values for 'n'? For example, vim's standard tab width is 8. But if you
+use a small terminal, you might run out of space if you, for example, nest 3 if
+statements inside a function. So your code looks ugly on your specific machine.
+
+This is where tabs come in handy. They allow for a variable 'n', depending on
+what you specify in your text editor. So using tabs is encouraged. But there
+are pitfalls. For example, consider your tab width is 4:
+
+\code
+int a = 3,
+    b = 4;
+\endcode
+
+You (or your automatically refactoring editor) might be tempted to write this
+as:
+
+\code
+int a = 3,
+\tb = 4;
+\endcode
+
+Which — with <em>n</em>=4 — <em>looks</em> the same. But the problem with this
+is obvious, if you set your tab width to 8, it looks like this:
+
+\code
+int a = 3,
+        b = 4;
+\endcode
+
+So it's broken. There are two ways to prevent his: You could use whitespaces in
+this situation, which would work <code>if</code> you have a monospace font
+(which, of course, most people do use when programming). If you don't, the
+following happens:
+
+int a = 3,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;b = 4;
+
+The second solution is to indent it like this
+
+\code
+int
+\ta=3,
+\tb=4;
+\endcode
+
+Which is tab-safe and doesn't look too ugly.
+
+\subsubsection when_to_indent When to indent
+
+When to indent is pretty much left to the individual programmer. Specifying
+more than a few encouragements would be pretty harsh. A rule of thumb for us is
+"indent as much as possible", which can be best explained by an example:
+
+\code
+template<
+    typename T,
+    typename U
+>
+T
+cast_stuff(
+    U const &a,
+    U const &b)
+{
+    run_other_function
+    (
+        run_yet_another_function
+        (
+            static_cast
+            <
+                T
+            >
+            (
+                a
+            );
+        )
+    );
+}
+\endcode
+
+Which, at first glance, might look pretty odd to you, but it is something you
+might encounter when reading fcppt code (Freundlich's code in particular :P).
+This method of indentation is a bit extreme, but it is consistent. If you do
+not add a new line after every opening brace (curly brace, parentheses,
+whatever), what rule do you apply to newlines? Most coding guidelines just tell
+you "indent if the line is too long", but that's not portable for the same
+reason whitespaces aren't portable (see "Tabs" above).
+
+But as stated above, we're not evangelic about indentation, as long as it's
+readable and the lines aren't longer than, say, 100 characters.
+
+\subsection enums Enums
+
+\subsubsection bool_and_enums bool and enums
+
+We encourage to use bools very sparingly. To illustrate the problem with bools,
+consider the function:
+
+\code
+void draw_text(string text,bool center_vertically,bool center_horizontally,int font_size);
+\endcode
+
+A function call looks like this
+
+\code
+draw_text("Hello World",true,false,15);
+\endcode
+
+Say you wrote this line and, weeks later, you open it again. Do you remember
+what the 'true' and 'false' are for? And if you remember that they are
+controlling text alignment, which of the bools controls the vertical alignment
+and which one controls the horizontal alignment? You cannot deduce that from
+looking at the code, you have to look at the declaration. There's another, more
+subtle, problem with this code. Say your memory is tainted and you think you
+have to specify the font size first, then the alignment stuff, so you write:
+
+\code
+draw_text("Hello World",15,true,false);
+\endcode
+
+This code compiles without a warning with recent gcc and with all warnings
+enabled! So you have a hard time refactoring because the compiler is of no
+help. That's pretty much the reason bools are discouraged: You lose
+information. bool is, however, useful with functions which really just give
+"yes" or "no" as an answer such as:
+
+\code
+class life
+{
+public:
+    bool has_meaning() const;
+};
+\endcode
+
+\subsubsection using_enums Using enums
+
+Without thinking further, you might write your enums like this:
+
+\code
+enum shape
+{
+    circle,
+    square,
+    fridge
+};
+\endcode
+
+You could then write functions which take this enum and do something with it:
+
+\code
+player_shape create(shape);
+\endcode
+
+And you'd call this function with:
+
+\code
+player_shape s = create(shape::circle);
+\endcode
+
+Right? Wrong. enums do not open a new namespace! Which is a problem, since they
+pollute the namespace they're defined in. So we encourage a simple hack:
+
+\code
+namespace shape
+{
+enum type
+{
+    circle,
+    square,
+    fridge,
+    size
+};
+}
+\endcode
+
+Now the create function declaration and its call look like:
+
+\code
+player_shape create(shape::type);
+
+create(shape::circle);
+\endcode
+
+Which is much better. Also note that we added a 'size' element at the end. This
+way, we can use the enumeration together with
+fcppt::container::bitfield::basic, or we could manually iterate over it.
+
+\subsection code_partitioning Code partitioning
+
+\subsubsection file_extension File extension
+
+Many people use ".h" for their C++ header files. We encourage using "hpp"
+because that way your favorite editor can deduce that you're writing C++ code
+and change, for example, the syntax highlighting accordingly.
+
+\subsubsection namespaces_and_directories Namespaces and directories
+
+To avoid filename clashes we let the filesystem hierarchy follow the namespace
+hierarchy. So a namespace creates a new directory - with nesting of directories
+of course.
+
+\subsubsection atomic_headers Atomic headers
+
+We encourage writing header files which contain only one "entity", so one
+typedef, one class, one constant only. This way, it's very easy to memorize
+which file you have to include to get a specific entity (for
+<code>foo::bar::baz</code> you need <code>foo/bar/baz.hpp</code>, see
+"Namespaces" above). Also, recompilation effort is minimized.
+
+\subsubsection minimal_includes Minimal includes
+
+A header should only include what it needs so it can be included without
+causing errors by itself. If code from the header is used, however, additional
+includes may be needed.
+
+In the following cases only a declaration is needed:
+
+<ol>
+	<li>A type is returned by a function or taken as an argument</li>
+	<li>
+	A typedef to a template is declared
+	\code
+template
+<
+  typename T
+> struct vector;
+
+typedef vector<char> char_vector;
+	\endcode
+	</li>
+</ol>
+
+\subsubsection include_guards Include guards
+
+It's extremely important for include guards to be unique. If they're not, you
+end up in a loooong debugging session to find missing declarations or even
+undefined references. So we devised a simple scheme for the names: We use the
+complete namespace hierarchy plus the suffix <code>_HPP_INCLUDED</code>, so
+consider this file:
+
+\code
+namespace sge
+{
+namespace gui
+{
+namespace buttons
+{
+class text
+{
+    ...
+};
+}
+}
+}
+\endcode
+
+The corresponding include guard would be:
+<code>SGE_GUI_BUTTONS_TEXT_HPP_INCLUDED</code>.  This way, sensible behavior is
+guaranteed. This, of course, requires that header files are quite atomic (see
+\ref atomic_headers above). If headers aren't really atomic, use the
+(converted) file name as the include guard.
+
+\subsection numerical_considerations Numerical considerations
+
+\subsubsection float_double_long_double float/double/long double
+
+The C++ standard states that basically all operations regarding floats are
+implementation defined. This might lead to a "fatal error" in the following
+code:
+
+\code
+float f = 1.0f;
+if (f == 1.0f)
+  do_something_safe();
+else
+  cause_fatal_error();
+\endcode
+
+Because float comparison is not only implementation defined, it's pretty
+"blurry" in most implementations. So you shouldn't use "strict" comparison.
+There's fcppt::math::compare and fcppt::math::almost_zero which use the machine
+epsilon for comparison. This might be too small for your code, so you might
+have to write your own comparison function.
+
+\subsubsection integral_types Integral types
+
+The use of the signed types is discouraged. Of course, sometimes you need to
+use them to get negative numbers, but the signed types have a distinct
+disadvantage: Some operations are undefined or implementation defined. For
+example, the behavior of the % operator is partially implementation defined.
+Also, the value of <code>INT_MAX+1</code> is undefined, so you cannot use ints
+to "wrap around" the borders. The unsigned types have such guarantees, so use
+them if you really do not need negative numbers.
+
+\subsection miscellaneous Miscellaneous
+
+\subsubsection struct_vs_class struct vs. class
+
+Basically, class is just syntactic sugar for struct (or vice versa), so which
+of those you use shouldn't really matter. However, Visual C++ checks if you use
+struct in a forward declaration and class in the definition. To circumvent
+this, we encourage everyone to just use class and not struct. This way, we can
+also add automatic forward declaration generators which alleviate tedious hand-coding
+of header files such as:
+
+\code
+#ifndef FOO_BAR_BAZ_FWD
+namespace foobarbaz
+{
+class foo;
+}
+#endif
+\endcode
+
+\subsubsection class_members Class members
+
+We encourage to use some prefix for member variables in a class. Consider the
+class declaration:
+
+\code
+class apple
+{
+public:
+    apple(unsigned number_of_worms) : number_of_worms(number_of_worms) {}
+    bool is_usable() const { return number_of_worms < 2; }
+private:
+    unsigned number_of_worms;
+};
+\endcode
+
+Say in the future you do not only want to know if the apple is usable but also
+how many worms are in there. You'd have to refactor some code, because you'd
+like the getter to be called <code>unsigned number_of_worms() const;</code>. So
+just use a pre or suffix in the first place:
+
+\code
+class apple
+{
+public:
+    apple(unsigned number_of_worms_) : number_of_worms_(number_of_worms_) {}
+    bool is_usable() const { return number_of_worms_ < 2; }
+    unsigned number_of_worms() { return number_of_worms_; }
+private:
+    unsigned number_of_worms_;
+};
+\endcode
+
+There is a second, more subtle, issue in this code. Say that you remove the
+constructor's "number of worms" argument (the apple somehow manages its initial
+worm count on its own). You might forget something and write:
+
+\code
+class apple
+{
+public:
+    apple() : number_of_worms_(number_of_worms_) {}
+    bool is_usable() const { return number_of_worms_ < 2; }
+    unsigned number_of_worms() { return number_of_worms_; }
+private:
+    unsigned number_of_worms_;
+};
+\endcode
+
+This code compiles without a single warning, although the content of the
+"number of worms" member variable is undefined (instead of 0). This is a
+problem, so it's encouraged to use a prefix or suffix for constructor arguments
+(or function arguments in general, consider a setter function where you have a
+similar naming problem), for example:
+
+\code
+class apple
+{
+public:
+    apple(unsigned _number_of_worms) : number_of_worms_(_number_of_worms) {}
+    bool is_usable() const { return number_of_worms_ < 2; }
+    unsigned number_of_worms() { return number_of_worms_; }
+private:
+    unsigned number_of_worms_;
+};
+\endcode
+
+Note that the use of a leading underscore is permitted by the standard.
+*/

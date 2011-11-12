@@ -1,5 +1,0 @@
-[section Doxygen]
-
-[xinclude doxygen_append.xml]
-
-[endsect]

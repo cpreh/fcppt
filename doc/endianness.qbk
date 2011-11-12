@@ -1,8 +1,0 @@
-[section endianness]
-fcppt has functions to deal with endianness. Here is an example:
-
-[import ../examples/endianness.cpp]
-[endianness]
-
-[xinclude doxygen_endianness.xml]
-[endsect]

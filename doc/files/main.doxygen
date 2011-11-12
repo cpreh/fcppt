@@ -1,0 +1,68 @@
+/**
+\mainpage Overview
+
+<table id="toc">
+<tr>
+<td>
+
+<ol>
+	<li>\ref introduction</li>
+	<li>\ref sitemap</li>
+	<li>\ref contact</li>
+</ol>
+
+</td>
+</tr>
+</table>
+
+\section introduction Introduction
+
+<a href="http://boost.org">Boost</a> already is a very useful general purpose
+library. If you use C++ without boost, the need for something that is already
+provided by it will soon arise.  However, boost is not perfect (and fcppt isn't
+either). The need for something that isn't provided by boost might arise, too,
+and there are even some things I consider not done "well" in boost.
+Freundlich's C++ toolkit (from now on shortened to fcppt) tries to fill in some
+gaps left by boost and even implements some replacements for a few boost
+components.
+
+\section sitemap Site map
+
+The documentation is split into the following parts:
+
+<table id="toc">
+<tr>
+<td>
+
+<ol>
+<li>
+	\subpage requirements_download_installation
+	<ol>
+		<li>\ref requirements</li>
+		<li>\ref supported_platforms</li>
+		<li>\ref download</li>
+		<li>\ref building_and_installation</li>
+		<li>\ref using_fcppt</li>
+		<li>\ref static_and_shared_builds</li>
+	</ol>
+</li>
+<li>\subpage changes</li>
+<li>\subpage structure</li>
+<li>\subpage documentation</li>
+</ol>
+
+</td>
+</tr>
+</table>
+
+\section contact Contact
+
+You can contact us via our IRC channel
+
+<code>#sge-sanguis</code>
+
+at
+
+<code>irc.freenode.net</code>
+
+*/
