@@ -1,9 +1,9 @@
 /**
 \page changes Changes
 
-\section changes_to_010 Changes from 0.9 to 0.10
+\section changes_changes_to_010 Changes from 0.9 to 0.10
 
-\subsection added_functionality_to_010 Added functionality
+\subsection changes_added_functionality_to_010 Added functionality
 
 <ul>
 	<li>Added <code>math::matrix::is_matrix</code> trait.</li>
@@ -20,7 +20,7 @@
 	<li>Added <code>mpl::append</code>.</li>
 </ul>
 
-\subsection changed_functionality_to_010 Changed functionality
+\subsection changes_changed_functionality_to_010 Changed functionality
 
 <ul>
 	<li>Changed the default cmake module installation path to
@@ -33,7 +33,7 @@
 	<li>A 64 bit type is now required for chrono.</li>
 </ul>
 
-\subsection removed_functionality_to_010 Removed functionality
+\subsection changes_removed_functionality_to_010 Removed functionality
 
 <ul>
 	<li>Removed boost filesystem v2 support. Boost 1.44 or later is now needed.</li>
@@ -43,7 +43,7 @@
 	meaningful if you know which canonical view volume you are using.<li>
 </ul>
 
-\subsection bugfixes_to_010 Bugfixes
+\subsection changes_bugfixes_to_010 Bugfixes
 
 <ul>
 	<li>Fixed <code>FCPPT_DYN_LINK</code> behaviour in
@@ -65,20 +65,20 @@
 	overloaded operators.</li>
 </ul>
 
-\section older_changes
+\section changes_older_changes Older changes
 
-\subsection changes_to_09 Changes from 0.8 to 0.9
+\subsection changes_changes_to_09 Changes from 0.8 to 0.9
 
-\subsubsection added_functionality_to_09 Added functionality
-
-TODO
-\subsubsection changed_functionality_to_09 Changed functionality
+\subsubsection changes_added_functionality_to_09 Added functionality
 
 TODO
-\subsubsection removed_functionality_to_09 Removed functionality
+\subsubsection changes_changed_functionality_to_09 Changed functionality
 
 TODO
-\subsubsection bugfixes_to_09 Bugfixes
+\subsubsection changes_removed_functionality_to_09 Removed functionality
+
+TODO
+\subsubsection changes_bugfixes_to_09 Bugfixes
 
 TODO
 */

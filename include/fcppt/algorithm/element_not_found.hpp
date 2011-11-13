@@ -14,7 +14,10 @@ namespace fcppt
 namespace algorithm
 {
 
-/// May be thrown by the _exn algorithms like find_exn()
+/**
+ * \brief May be thrown by the _exn algorithms like find_exn()
+ * \ingroup fcpptalgorithm
+*/
 class element_not_found
 :
 	public algorithm::exception

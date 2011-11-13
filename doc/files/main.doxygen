@@ -6,16 +6,16 @@
 <td>
 
 <ol>
-	<li>\ref introduction</li>
-	<li>\ref sitemap</li>
-	<li>\ref contact</li>
+	<li>\ref main_introduction</li>
+	<li>\ref main_sitemap</li>
+	<li>\ref main_contact</li>
 </ol>
 
 </td>
 </tr>
 </table>
 
-\section introduction Introduction
+\section main_introduction Introduction
 
 <a href="http://boost.org">Boost</a> already is a very useful general purpose
 library. If you use C++ without boost, the need for something that is already
@@ -26,7 +26,7 @@ Freundlich's C++ toolkit (from now on shortened to fcppt) tries to fill in some
 gaps left by boost and even implements some replacements for a few boost
 components.
 
-\section sitemap Site map
+\section main_sitemap Site map
 
 The documentation is split into the following parts:
 
@@ -35,27 +35,45 @@ The documentation is split into the following parts:
 <td>
 
 <ol>
-<li>
-	\subpage requirements_download_installation
-	<ol>
-		<li>\ref requirements</li>
-		<li>\ref supported_platforms</li>
-		<li>\ref download</li>
-		<li>\ref building_and_installation</li>
-		<li>\ref using_fcppt</li>
-		<li>\ref static_and_shared_builds</li>
-	</ol>
-</li>
-<li>\subpage changes</li>
-<li>\subpage structure</li>
-<li>\subpage documentation</li>
+	<li>
+		\subpage requirements_download_installation
+		<ol>
+			<li>\ref requirements_download_installation_requirements</li>
+			<li>\ref requirements_download_installation_supported_platforms</li>
+			<li>\ref requirements_download_installation_download</li>
+			<li>\ref requirements_download_installation_building_and_installation</li>
+			<li>\ref requirements_download_installation_using_fcppt</li>
+			<li>\ref requirements_download_installation_static_and_shared_builds</li>
+		</ol>
+	</li>
+	<li>
+		\subpage changes
+		<ol>
+			<li>\ref changes_changes_to_010</li>
+			<li>\ref changes_older_changes</li>
+		</ol>
+	</li>
+	<li>
+		\subpage structure
+		<ol>
+			<li>\ref structure_file_separation</li>
+			<li>\ref structure_coding_style</li>
+		</ol>
+	</li>
+	<li>
+		Documentation
+		<ol>
+			<li>\ref fcpptalgorithm "fcppt::algorithm"</li>
+			<li>\ref fcpptalignment "fcppt::alignment"</li>
+		</ol>
+	</li>
 </ol>
 
 </td>
 </tr>
 </table>
 
-\section contact Contact
+\section main_contact Contact
 
 You can contact us via our IRC channel
 

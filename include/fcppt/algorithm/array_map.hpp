@@ -15,6 +15,26 @@ namespace fcppt
 {
 namespace algorithm
 {
+/** 
+ * \brief Applies a functor to an array and returns a new array containing the results.
+ * \ingroup fcpptalgorithm
+ * \tparam TargetArray Must be default-constructible
+ *
+ * Example:
+ * \code
+ * typdedef
+ * fcppt::container::array<int,3>
+ * three_ints;
+ *
+ * three_ints const a = {{ 1,2,3 }};
+ * three_ints const b(
+ * 	fcppt::algorithm::array_map<three_ints>(
+ * 		a,
+ * 		boost::phoenix::placeholders::arg1 * 3));
+ *
+ * // b now contains: 3, 6, 9
+ * \endcode
+ **/
 template
 <
 	typename TargetArray,

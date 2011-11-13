@@ -16,8 +16,11 @@ namespace fcppt
 namespace algorithm
 {
 
-/// Checks if a given value matches @a pred inside the range [@a beg @a end ]
-/** Equivalent to find_if(beg, end, pred) != end
+/**
+ * \brief Checks if a given value matches @a pred inside the range [@a beg @a end ]
+ * \ingroup fcpptalgorithm
+ * \details
+ * Equivalent to find_if(beg, end, pred) != end
 */
 template<
 	typename In,

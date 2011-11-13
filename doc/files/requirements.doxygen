@@ -1,34 +1,34 @@
 /**
 \page requirements_download_installation Requirements, Download and Installation
 
-\section Contents
+\section requirements_download_installation_contents Contents
 
 <table id="toc">
 <tr>
 <td>
 
 <ol>
-	<li>\ref requirements</li>
-	<li>\ref supported_platforms</li>
-	<li>\ref download</li>
-	<li>\ref building_and_installation</li>
+	<li>\ref requirements_download_installation_requirements</li>
+	<li>\ref requirements_download_installation_supported_platforms</li>
+	<li>\ref requirements_download_installation_download</li>
+	<li>\ref requirements_download_installation_building_and_installation</li>
 	<li>
-	\ref using_fcppt
+	\ref requirements_download_installation_using_fcppt
 		<ol>
-			<li>\ref using_from_build_directory</li>
-			<li>\ref using_from_installation</li>
-			<li>\ref modify_cmakelists</li>
-			<li>\ref explanation_find_variables</li>
+			<li>\ref requirements_download_installation_using_from_build_directory</li>
+			<li>\ref requirements_download_installation_using_from_installation</li>
+			<li>\ref requirements_download_installation_modify_cmakelists</li>
+			<li>\ref requirements_download_installation_explanation_find_variables</li>
 		</ol>
 	</li>
-	<li>\ref static_and_shared_builds</li>
+	<li>\ref requirements_download_installation_static_and_shared_builds</li>
 </ol>
 
 </td>
 </tr>
 </table>
 
-\section requirements Requirements
+\section requirements_download_installation_requirements Requirements
 
 fcppt needs the following at build time:
 <ul>
@@ -41,7 +41,7 @@ fcppt needs the following at build time:
 To build the documentation, you also need <a href="http://www.doxygen.org/">>=
 doxygen-1.7.5</a>.
 
-\section supported_platforms Supported Platforms
+\section requirements_download_installation_supported_platforms Supported Platforms
 
 The following platforms are supported:
 
@@ -53,7 +53,7 @@ The following platforms are supported:
 	<li>VC++ 2010 SP1 (Windows XP 32 Bit and Windows 7 64 Bit) </li>
 </ul>
 
-\section download Download
+\section requirements_download_installation_download Download
 
 fcppt is available through our public Git Repository:
 
@@ -67,7 +67,7 @@ Gentoo ebuilds are available in Freundlich's overlay at
 
 git://github.com/freundlich/freundlich-gentoo.git
 
-\section building_and_installation Building and Installation
+\section requirements_download_installation_building_and_installation Building and Installation
 
 First, you have to create a build directory. For example,
 
@@ -109,9 +109,9 @@ to change them later, you can do that as well.
 
 You can, of course, also use <code>ccmake</code> to configure your installation.
 
-\section using_fcppt Using fcppt
+\section requirements_download_installation_using_fcppt Using fcppt
 
-\subsection using_from_build_directory Using fcppt from the build directory
+\subsection requirements_download_installation_using_from_build_directory Using fcppt from the build directory
 
 If you don't install fcppt, you should add fcppt's <code>CMakeModules</code>
 directory to your <code>CMAKE_MODULE_PATH</code>, so cmake will be able to make
@@ -138,7 +138,7 @@ cmake \
 	-D Fcppt_LIBRARY:FILEPATH="optimized;${fcppt_build}/lib/Release/fcppt.lib;debug;${fcppt_build}/lib/Debug/fcppt.lib"
 </pre>
 
-\subsection using_from_installation Using fcppt from an installation
+\subsection requirements_download_installation_using_from_installation Using fcppt from an installation
 
 If fcppt is installed instead, it will put an <code>FcpptConfig.cmake</code>
 into <code>INSTALL_CMAKECONFIG_DIR</code> (which is usually
@@ -147,7 +147,7 @@ into <code>INSTALL_CMAKECONFIG_DIR</code> (which is usually
 <code>INSTALL_CMAKECONFIG_DIR</code> is not available for cmake, you should add
 the path to <code>CMAKE_MODULE_PATH</code> as well.
 
-\subsection modify_cmakelists Modify your CMakeLists.txt
+\subsection requirements_download_installation_modify_cmakelists Modify your CMakeLists.txt
 
 The following code is needed to use fcppt in your project, named myproject here
 just for exposition.
@@ -180,7 +180,7 @@ target_link_libraries(
 Also, if you don't use cmake in your project, there is a pkgconfig file that
 will be installed into the <code>INSTALL_PKGCONFIG_DIR</code>.
 
-\subsection explanation_find_variables Next Explanation of the find module's variables
+\subsection requirements_download_installation_explanation_find_variables Next Explanation of the find module's variables
 
 For includes and libraries, there are three different variables each that all
 serve a different purpose. For example, for include there are:
@@ -191,7 +191,7 @@ serve a different purpose. For example, for include there are:
 	<li><strong>Fcppt_INCLUDE_DIRS</strong>: If fcppt has been found, this will contain every include that is needed for an application using fcppt.</li>
 </ul>
 
-\section static_and_shared_builds Static and shared builds
+\section requirements_download_installation_static_and_shared_builds Static and shared builds
 
 fcppt can be built as a static or shared library, which is controlled by
 <code>ENABLE_STATIC</code> and <code>ENABLE_SHARED</code>, respectively. The

@@ -18,6 +18,7 @@
 #endif
 
 /// Forces the specified alignment on a declaration in bytes
+/** \ingroup fcpptalignment */
 #define FCPPT_ALIGNMENT_ALIGN(x) FCPPT_ALIGNMENT_ALIGN_IMPL(x)
 
 #endif

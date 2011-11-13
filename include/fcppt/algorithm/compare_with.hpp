@@ -16,7 +16,10 @@ namespace fcppt
 namespace algorithm
 {
 
-/// Compares two sequences element by element, using @a function
+/**
+ * \brief Compares two sequences element by element, using @a function
+ * \ingroup fcpptalgorithm
+ **/
 template<
 	typename Container1,
 	typename Container2,

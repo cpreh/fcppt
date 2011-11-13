@@ -15,7 +15,9 @@ namespace fcppt
 namespace algorithm
 {
 
-/// The exception thrown by some algorithm operations
+/**
+ * \brief The exception thrown by some algorithm operations
+ */
 class exception
 :
 	public fcppt::exception

@@ -16,7 +16,9 @@ namespace fcppt
 namespace algorithm
 {
 
-/// Adds a range of strings delimited by delim
+/**
+ * \brief Joins a range of strings delimited by delim
+ */
 template
 <
 	typename Range

@@ -16,10 +16,12 @@ namespace fcppt
 namespace algorithm
 {
 
-/// Checks if a given @a value is inside the range [@a beg @a end ]
 /**
- * Equivalent to find(beg, end, value) != end
-*/
+ * \brief Checks if a given @a value is inside the range [@a beg @a end ]
+ * \ingroup fcpptalgorithm
+ * \details
+ * This is equivalent to <code>find(beg, end, value) != end</code>.
+ **/
 template<
 	typename In,
 	typename T
