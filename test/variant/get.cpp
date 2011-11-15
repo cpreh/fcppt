@@ -4,6 +4,7 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
+#include <fcppt/variant/get.hpp>
 #include <fcppt/variant/object.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/mpl/vector/vector10.hpp>
@@ -33,6 +34,16 @@ BOOST_AUTO_TEST_CASE(variant_get)
 		test.get<
 			std::string
 		>()
+		==
+		string
+	);
+
+	BOOST_REQUIRE(
+		fcppt::variant::get<
+			std::string
+		>(
+			test
+		)
 		==
 		string
 	);
