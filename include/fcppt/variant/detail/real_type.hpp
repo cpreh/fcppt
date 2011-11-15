@@ -28,7 +28,7 @@ template<
 struct real_type
 {
 private:
-	typedef recursive<
+	typedef variant::recursive<
 		Element
 	> recursive_type;
 public:
