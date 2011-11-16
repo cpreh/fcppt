@@ -586,6 +586,7 @@ set(
 	include/fcppt/detail/make_ptr_base.hpp
 	include/fcppt/detail/make_shared_wrapper.hpp
 	include/fcppt/detail/make_shared_wrapper_fwd.hpp
+	include/fcppt/detail/nullptr_t.hpp
 	include/fcppt/detail/optional_base_decl.hpp
 	include/fcppt/detail/optional_base_impl.hpp
 	include/fcppt/detail/optional_to_pointer.hpp
@@ -1043,6 +1044,7 @@ set(
 	include/fcppt/narrow.hpp
 	include/fcppt/nonassignable.hpp
 	include/fcppt/noncopyable.hpp
+	include/fcppt/null_ptr.hpp
 	include/fcppt/optional.hpp
 	include/fcppt/optional_comparison.hpp
 	include/fcppt/optional_decl.hpp
@@ -1436,6 +1438,7 @@ set(
 	src/log/tree_formatter.cpp
 	src/log/tree_formatter.hpp
 	src/narrow.cpp
+	src/null_ptr.cpp
 	src/random/actor/element.cpp
 	src/random/actor/normalized.cpp
 	src/signal/connection_manager.cpp
