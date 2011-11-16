@@ -10,6 +10,7 @@
 #include <fcppt/empty_optional_tag_fwd.hpp>
 #include <fcppt/optional_decl.hpp>
 #include <fcppt/detail/optional_base_impl.hpp>
+#include <fcppt/detail/optional_to_pointer.hpp>
 
 
 template<
@@ -48,6 +49,26 @@ fcppt::optional<T>::optional(
 template<
 	typename T
 >
+template<
+	typename Other
+>
+fcppt::optional<T>::optional(
+	optional<
+		Other
+	> const &_other
+)
+:
+	base(
+		detail::optional_to_pointer(
+			_other
+		)
+	)
+{
+}
+
+template<
+	typename T
+>
 fcppt::optional<T>::optional(
 	optional const &_other
 )
@@ -68,6 +89,28 @@ fcppt::optional<T>::operator=(
 {
 	base::operator=(
 		_other
+	);
+
+	return *this;
+}
+
+template<
+	typename T
+>
+template<
+	typename Other
+>
+fcppt::optional<T> &
+fcppt::optional<T>::operator=(
+	optional<
+		Other
+	> const &_other
+)
+{
+	base::operator=(
+		detail::optional_to_pointer(
+			_other
+		)
 	);
 
 	return *this;

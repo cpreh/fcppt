@@ -210,6 +210,22 @@ fcppt::detail::optional_base<T &>::optional_base(
 template<
 	typename T
 >
+template<
+	typename Other
+>
+fcppt::detail::optional_base<T &>::optional_base(
+	Other *const _other
+)
+:
+	data_(
+		_other
+	)
+{
+}
+
+template<
+	typename T
+>
 fcppt::detail::optional_base<T &>::optional_base(
 	optional_base const &_other
 )
@@ -229,6 +245,22 @@ fcppt::detail::optional_base<T &>::operator=(
 )
 {
 	data_ = _other.data_;
+
+	return *this;
+}
+
+template<
+	typename T
+>
+template<
+	typename Other
+>
+fcppt::detail::optional_base<T &> &
+fcppt::detail::optional_base<T &>::operator=(
+	Other *const _other
+)
+{
+	data_ = _other;
 
 	return *this;
 }
