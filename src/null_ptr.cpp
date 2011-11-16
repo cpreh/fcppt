@@ -7,4 +7,5 @@
 #include <fcppt/null_ptr.hpp>
 
 fcppt::detail::nullptr_t const
-fcppt::null_ptr;
+fcppt::null_ptr =
+	fcppt::detail::nullptr_t();
