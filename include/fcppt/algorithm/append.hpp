@@ -13,28 +13,14 @@ namespace algorithm
 {
 
 /**
- * \brief Appends the sequence @a src to @a dest.
+ * \brief Appends the sequence \p src to \p dest.
  * \ingroup fcpptalgorithm
  * \tparam DestContainer Must have an insert function taking three integers (like the std containers all do).
  * \tparam SourceContainer Must have a <code>begin</code> and <code>end</code> member function.
  *
  * Example:
  *
- * \code
- * std::vector<int> v;
- * v.push_back(1);
- * v.push_back(2);
- * v.push_back(3);
- * std::vector<int> w;
- * w.push_back(4);
- * w.push_back(5);
- *
- * fcppt::algorithm::append(
- * 	v,
- * 	w);
- *
- * // Now v contains: 1,2,3,4,5
- * \endcode
+ * \snippet doc/algorithm.cpp append
  **/
 template<
 	typename DestContainer,

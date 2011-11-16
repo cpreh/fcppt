@@ -17,10 +17,14 @@ namespace algorithm
 {
 
 /**
- * \brief Checks if a given @a value is inside the range [@a beg @a end ]
+ * \brief Checks if a given \p value is inside the range [\p beg,\p end]
  * \ingroup fcpptalgorithm
  * \details
- * This is equivalent to <code>find(beg, end, value) != end</code>.
+ * This is equivalent to
+ *
+ * <pre>
+ * std::find(beg, end, value) != end
+ * </pre>.
  **/
 template<
 	typename In,

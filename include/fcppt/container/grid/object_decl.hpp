@@ -24,10 +24,51 @@ namespace fcppt
 {
 namespace container
 {
+/// Contains fcppt::container:grid::object and helper types/functions for it.
 namespace grid
 {
 
-/// A simple n dimensional array
+/**
+ * \defgroup fcpptcontainergrid fcppt::container::grid
+ * \ingroup fcpptcontainer
+ */
+
+/**
+\brief A simple n dimensional array
+\ingroup fcpptcontainergrid
+
+\section grid_introduction Introduction
+
+fcppt::container::grid::object is a simple multi dimensional array similar to
+<a href="http://www.boost.org/doc/libs/1_48_0/libs/multi_array/doc/index.html">boost::multi_array</a>.
+Let's first take a look at how to use a simple three dimensional grid of ints.
+
+\snippet container/grid.cpp grid_simple
+
+Grid uses fcppt::math::dim::basic to specify its size and to obtain an element.
+
+\warning
+Grid tries to be as efficient as possible and won't necessarily initialize its elements.
+
+\section grid_resizing Resizing
+
+To resize a grid there are a couple of options. \link
+fcppt::container::grid::object::resize resize \endlink will resize the
+underlying container but leave the elements of the grid in an unspecific state.
+
+There are two functions to preserve the current elements that will still fit
+into the grid after the resize: \link fcppt::container::grid::resize_preserve
+resize_preserve \endlink and \link fcppt::container::grid::resize_preserve_init
+resize_preserve_init \endlink.
+
+<code>resize_preserve</code> only preserves the elements that still fit but
+doesn't initialize new elements.  <code>resize_preserve_init</code> is like
+<code>resize_preserve</code> but will give all new elements a default value.
+
+Here's an example:
+
+\snippet container/grid.cpp grid_resize
+*/
 template<
 	typename T,
 	fcppt::container::grid::size_type N,

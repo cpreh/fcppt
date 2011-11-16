@@ -65,6 +65,8 @@ The documentation is split into the following parts:
 		<ol>
 			<li>\ref fcpptalgorithm "fcppt::algorithm"</li>
 			<li>\ref fcpptalignment "fcppt::alignment"</li>
+			<li>\ref fcpptassign "fcppt::assign"</li>
+			<li>\ref fcpptcontainer "fcppt::container"</li>
 		</ol>
 	</li>
 </ol>

@@ -20,6 +20,10 @@ namespace fcppt
 namespace container
 {
 
+/**
+ * \brief An implementation of <code>std::array</code>
+ * \ingroup fcpptcontainer
+ */
 template<
 	typename T,
 	std::size_t N

@@ -21,15 +21,23 @@ namespace fcppt
 namespace container
 {
 
-/// A special vector class for pod types
-/** This class has the ability to provide uninitialized (POD) memory.
- * An example would be that you need a dynamically growing buffer of char
- * but you don't want to initialize them because this is done by a function
- * like basic_istream::read.
- * The class is restricted to POD types an doesn't call constructors or
- * destructors at its own discretion.
- * Most of the functions are the same as std::vector's functions
- * unless pointed out otherwise.
+/**
+ * \brief A special vector class for pod types
+ * \ingroup fcpptcontainer
+ * \details
+ * This class has the ability to provide uninitialized (POD) memory.
+ *
+ * An example would be that you need a dynamically growing buffer of
+ * <code>char</code> but you don't want to initialize them because this is done
+ * afte construction by a function like std::basic_istream::read.
+ *
+ * The class is restricted to POD types and doesn't call constructors or
+ * destructors at its own discretion. Most of the functions are the same as
+ * std::vector's functions unless pointed out otherwise.
+ *
+ * Example:
+ *
+ * \snippet doc/container.cpp raw_vector
 */
 template<
 	typename T,

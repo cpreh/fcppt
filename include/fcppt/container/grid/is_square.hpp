@@ -17,6 +17,11 @@ namespace container
 {
 namespace grid
 {
+/**
+\ingroup fcpptcontainergrid
+\brief Checks if a grid is a square or a rectangle
+\returns <code>true</code> of the grid is square, <code>false</code> otherwise
+*/
 template<typename T,grid::size_type N>
 bool
 is_square(

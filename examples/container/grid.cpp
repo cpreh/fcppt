@@ -4,16 +4,16 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-//[grid_simple
+//! [grid_simple]
 
 #include <fcppt/container/grid/object.hpp>
+#include <fcppt/container/grid/interpolate.hpp>
+#include <fcppt/math/interpolation/linear_functor.hpp>
 #include <fcppt/io/cout.hpp>
 #include <fcppt/text.hpp>
 
-//<-
 namespace
 {
-//->
 // typedef a three dimensional grid of ints
 typedef fcppt::container::grid::object<
 	int,
@@ -52,11 +52,11 @@ use_grid()
 		]
 		<< FCPPT_TEXT('\n');
 }
-//]
 
 }
+//! [grid_simple]
 
-//[grid_resize
+//! [grid_resize]
 #include <fcppt/container/grid/output.hpp>
 #include <fcppt/container/grid/resize_preserve_init.hpp>
 #include <fcppt/config/external_begin.hpp>
@@ -65,10 +65,8 @@ use_grid()
 #include <algorithm>
 #include <fcppt/config/external_end.hpp>
 
-//<-
 namespace
 {
-//->
 
 typedef fcppt::container::grid::object<
 	int,
@@ -118,9 +116,44 @@ resize_grid()
 		<< grid
 		<< FCPPT_TEXT('\n');
 }
-//]
 
 }
+//! [grid_resize]
+
+//! [grid_interpolate]
+typedef fcppt::container::grid::object<
+	float,
+	2
+> float2d_grid;
+
+typedef fcppt::math::vector::static_<float,2>::type float2d_vector;
+
+void
+interpolate_grid()
+{
+	float2d_grid grid(
+		float2d_grid::dim(
+			2u,
+			2u
+		)
+	);
+
+	grid[float2d_grid::dim( 0u, 0u)] = 0.0f;
+	grid[float2d_grid::dim( 0u, 1u)] = 1.0f;
+	grid[float2d_grid::dim( 1u, 0u)] = 2.0f;
+	grid[float2d_grid::dim( 1u, 1u)] = 3.0f;
+
+	float const result =
+		fcppt::container::grid::interpolate(
+			grid,
+			float2d_vector(0.5f,0.5f),
+			fcppt::math::interpolation::linear_functor());
+
+	// Will bilinearly interpolate ALL the grid points and return something
+	// inbetween (too lazy to calculate)
+	std::cout << result;
+}
+//! [grid_interpolate]
 
 int main()
 {

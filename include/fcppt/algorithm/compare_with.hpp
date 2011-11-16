@@ -17,8 +17,12 @@ namespace algorithm
 {
 
 /**
- * \brief Compares two sequences element by element, using @a function
+ * \brief Compares two sequences element by element, using \p function
  * \ingroup fcpptalgorithm
+ * \tparam Function A binary functor
+ *
+ * If <code>a.size() != b.size()</code>, the function returns
+ * <code>false</code>
  **/
 template<
 	typename Container1,

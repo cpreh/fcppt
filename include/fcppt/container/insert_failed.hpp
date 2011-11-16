@@ -15,6 +15,10 @@ namespace fcppt
 namespace container
 {
 
+/**
+ * FIXME
+ * \ingroup fcpptcontainer
+ */
 class insert_failed
 :
 	public container::exception

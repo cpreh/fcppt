@@ -115,6 +115,43 @@ interpolate(
 }
 }
 
+/**
+\ingroup fcpptcontainergrid
+\brief Interpolates a value inside the grid cells
+
+With \link fcppt::container::grid::object grid::object \endlink alone, you can
+only access values at discrete points (since the \link
+fcppt::container::grid::object::dim object::dim \endlink type used to specify
+positions has an integral <code>value_type</code>).
+
+Sometimes, however, you want to take a value in between the grid nodes. Think
+about a magnifying filter for textures, or drawing a line from one plot point
+to the next (in a one-dimensional grid). This is called <em>interpolation</em>,
+and it works in all dimensions.
+
+To interpolate, you specify the \p grid, the \p floating_point_position and an
+\p interpolator. The latter will determine what kind of interpolation is used
+(linear, trigonometric, ...). You can choose one of the classes in
+fcppt::math::interpolation (the ones ending in <code>_functor</code>) or you
+can write your own interpolator class. It just needs an <code>operator()</code>
+looking like this:
+
+\code
+Grid::value_type
+operator()(
+	Vector::value_type,
+	Grid::value_type,
+	Grid::value_type) const
+{
+	// ...
+}
+\endcode
+
+The <code>Vector</code> template parameter determines which floating point type
+is used for calculations. Here's an example:
+
+\snippet container/grid.cpp grid_interpolate
+*/
 template
 <
 	typename Grid,

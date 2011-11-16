@@ -12,6 +12,10 @@ namespace fcppt
 namespace container
 {
 
+/** 
+ * FIXME 
+ * \ingroup fcpptcontainer
+ */
 template<
 	typename Container
 >
@@ -29,6 +33,10 @@ data(
 		;
 }
 
+/**
+ * FIXME
+ * \ingroup fcpptcontainer
+ */
 template<
 	typename Container
 >

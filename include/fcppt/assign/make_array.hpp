@@ -14,7 +14,14 @@ namespace fcppt
 namespace assign
 {
 
-/// This returns an implementation defined type which has operator() defined and which is convertible to fcppt::container::array
+/**
+ * \brief This returns an implementation defined type which has <code>operator()</code> defined and which is convertible to <code>fcppt::container::array</code>
+ * \ingroup fcpptassign
+ * \details
+ * Example:
+ *
+ * \snippet doc/assign.cpp make_array
+ */
 template<
 	typename T
 >

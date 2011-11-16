@@ -12,6 +12,10 @@ namespace fcppt
 namespace container
 {
 
+/** 
+ * FIXME 
+ * \ingroup fcpptcontainer
+ */
 template<
 	typename Container
 >
@@ -23,6 +27,10 @@ data_end(
 	return c.empty() ? 0 : &c[0] + c.size();
 }
 
+/** 
+ * FIXME 
+ * \ingroup fcpptcontainer
+ */
 template<
 	typename Container
 >

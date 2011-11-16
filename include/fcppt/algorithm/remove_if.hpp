@@ -16,9 +16,10 @@ namespace fcppt
 namespace algorithm
 {
 
-/// Tries to remove all elements from @a _container matching @a _predicate
 /**
- * @return true if something has been removed, false otherwise
+ * \brief Tries to remove all elements from \p _container matching \p _predicate
+ * \ingroup fcpptalgorithm
+ * \return <code>true</code> if something has been removed, <code>false</code> otherwise
 */
 template<
 	typename Container,

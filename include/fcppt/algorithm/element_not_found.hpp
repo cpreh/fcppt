@@ -15,7 +15,7 @@ namespace algorithm
 {
 
 /**
- * \brief May be thrown by the _exn algorithms like find_exn()
+ * \brief May be thrown by the <code>_exn</code> algorithms like fcppt::algorithm::find_exn()
  * \ingroup fcpptalgorithm
 */
 class element_not_found

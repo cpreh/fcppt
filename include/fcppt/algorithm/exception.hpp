@@ -17,6 +17,7 @@ namespace algorithm
 
 /**
  * \brief The exception thrown by some algorithm operations
+ * \ingroup fcpptalgorithm
  */
 class exception
 :
