@@ -13,6 +13,7 @@
 #include <fcppt/variant/apply_unary.hpp>
 #include <fcppt/variant/equal.hpp>
 #include <fcppt/variant/exception.hpp>
+#include <fcppt/variant/get.hpp>
 #include <fcppt/variant/holds_type.hpp>
 #include <fcppt/variant/invalid_apply.hpp>
 #include <fcppt/variant/invalid_get.hpp>

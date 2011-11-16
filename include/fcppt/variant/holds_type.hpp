@@ -7,9 +7,10 @@
 #ifndef FCPPT_VARIANT_HOLDS_TYPE_HPP_INCLUDED
 #define FCPPT_VARIANT_HOLDS_TYPE_HPP_INCLUDED
 
-#include <fcppt/mpl/index_of.hpp>
 #include <fcppt/variant/object_impl.hpp>
 #include <fcppt/variant/size_type.hpp>
+#include <fcppt/variant/detail/index_of.hpp>
+#include <fcppt/variant/detail/real_type.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/mpl/contains.hpp>
 #include <boost/utility/enable_if.hpp>
@@ -33,7 +34,10 @@ template<
 typename boost::enable_if<
 	boost::mpl::contains<
 		Types,
-		Type
+		typename fcppt::variant::detail::real_type<
+			Types,
+			Type
+		>::type
 	>,
 	bool
 >::type
@@ -49,7 +53,7 @@ holds_type(
 		static_cast<
 			fcppt::variant::size_type
 		>(
-			fcppt::mpl::index_of<
+			fcppt::variant::detail::index_of<
 				Types,
 				Type
 			>::value
