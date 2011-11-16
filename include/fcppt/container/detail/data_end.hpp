@@ -4,35 +4,39 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_DETAIL_OPTIONAL_TO_POINTER_HPP_INCLUDED
-#define FCPPT_DETAIL_OPTIONAL_TO_POINTER_HPP_INCLUDED
+#ifndef FCPPT_CONTAINER_DETAIL_DATA_END_HPP_INCLUDED
+#define FCPPT_CONTAINER_DETAIL_DATA_END_HPP_INCLUDED
 
 #include <fcppt/null_ptr.hpp>
-#include <fcppt/optional_fwd.hpp>
 
 
 namespace fcppt
+{
+namespace container
 {
 namespace detail
 {
 
 template<
-	typename T
+	typename Pointer,
+	typename Container
 >
-typename fcppt::optional<T>::pointer
-optional_to_pointer(
-	fcppt::optional<T> const &_opt
+Pointer
+data_end(
+	Container &_container
 )
 {
 	return
-		_opt.has_value()
+		_container.empty()
 		?
-			&*_opt
-		:
 			fcppt::null_ptr
+		:
+			&_container[0]
+			+ _container.size()
 		;
 }
 
+}
 }
 }
 

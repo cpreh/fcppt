@@ -8,6 +8,7 @@
 #define FCPPT_OPTIONAL_IMPL_HPP_INCLUDED
 
 #include <fcppt/empty_optional_tag_fwd.hpp>
+#include <fcppt/null_ptr.hpp>
 #include <fcppt/optional_decl.hpp>
 #include <fcppt/detail/optional_base_impl.hpp>
 #include <fcppt/detail/optional_to_pointer.hpp>
@@ -198,7 +199,7 @@ template<
 bool
 fcppt::optional<T>::boolean_test() const
 {
-	return this->data() != 0;
+	return this->data() != fcppt::null_ptr;
 }
 
 #endif

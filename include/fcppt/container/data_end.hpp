@@ -7,6 +7,9 @@
 #ifndef FCPPT_CONTAINER_DATA_END_HPP_INCLUDED
 #define FCPPT_CONTAINER_DATA_END_HPP_INCLUDED
 
+#include <fcppt/container/detail/data_end.hpp>
+
+
 namespace fcppt
 {
 namespace container
@@ -17,10 +20,15 @@ template<
 >
 typename Container::pointer
 data_end(
-	Container &c
+	Container &_container
 )
 {
-	return c.empty() ? 0 : &c[0] + c.size();
+	return
+		container::detail::data_end<
+			typename Container::pointer
+		>(
+			_container
+		);
 }
 
 template<
@@ -28,10 +36,15 @@ template<
 >
 typename Container::const_pointer
 data_end(
-	Container const &c
+	Container const &_container
 )
 {
-	return c.empty() ? 0 : &c[0] + c.size();
+	return
+		container::detail::data_end<
+			typename Container::const_pointer
+		>(
+			_container
+		);
 }
 
 }

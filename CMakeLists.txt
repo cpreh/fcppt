@@ -491,6 +491,8 @@ set(
 	include/fcppt/container/detail/array_range_check.hpp
 	include/fcppt/container/detail/array_storage.hpp
 	include/fcppt/container/detail/array_swap.hpp
+	include/fcppt/container/detail/data.hpp
+	include/fcppt/container/detail/data_end.hpp
 	include/fcppt/container/detail/null_array_storage.hpp
 	include/fcppt/container/exception.hpp
 	include/fcppt/container/grid/comparison.hpp

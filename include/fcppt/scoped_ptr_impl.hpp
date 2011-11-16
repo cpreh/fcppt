@@ -8,6 +8,7 @@
 #define FCPPT_SCOPED_PTR_IMPL_HPP_INCLUDED
 
 #include <fcppt/move.hpp>
+#include <fcppt/null_ptr.hpp>
 #include <fcppt/scoped_ptr_decl.hpp>
 #include <fcppt/unique_ptr_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
@@ -181,7 +182,7 @@ fcppt::scoped_ptr<T, Deleter>::release()
 		ptr_
 	);
 
-	ptr_ = 0;
+	ptr_ = fcppt::null_ptr;
 
 	return
 		fcppt::move(
@@ -198,7 +199,7 @@ template<
 bool
 fcppt::scoped_ptr<T, Deleter>::boolean_test() const
 {
-	return ptr_ != 0;
+	return ptr_ != fcppt::null_ptr;
 }
 
 template<

@@ -7,6 +7,7 @@
 #ifndef FCPPT_DETAIL_OPTIONAL_BASE_IMPL_HPP_INCLUDED
 #define FCPPT_DETAIL_OPTIONAL_BASE_IMPL_HPP_INCLUDED
 
+#include <fcppt/null_ptr.hpp>
 #include <fcppt/detail/optional_base_decl.hpp>
 #include <fcppt/preprocessor/disable_vc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
@@ -22,7 +23,7 @@ fcppt::detail::optional_base<T>::optional_base()
 :
 	storage_(),
 	data_(
-		0
+		fcppt::null_ptr
 	)
 {
 }
@@ -125,7 +126,7 @@ fcppt::detail::optional_base<T>::do_reset()
 {
 	this->destroy();
 
-	data_ = 0;
+	data_ = fcppt::null_ptr;
 }
 
 template<
@@ -166,7 +167,7 @@ fcppt::detail::optional_base<T>::construct(
 			static_cast<
 				pointer
 			>(
-				0
+				fcppt::null_ptr
 			);
 }
 
@@ -189,7 +190,7 @@ template<
 fcppt::detail::optional_base<T &>::optional_base()
 :
 	data_(
-		0
+		fcppt::null_ptr
 	)
 {
 }
@@ -300,7 +301,7 @@ template<
 void
 fcppt::detail::optional_base<T &>::do_reset()
 {
-	data_ = 0;
+	data_ = fcppt::null_ptr;
 }
 
 #endif
