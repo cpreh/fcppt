@@ -14,6 +14,9 @@ namespace algorithm
 
 /// Removes pointer from the ptr_container @a _container if @a _predicate matches
 /**
+ * This is different from the erase_if member functions because it returns
+ * if something has been erased.
+ *
  * @return true if the element was found/erased, false otherwise
 */
 template<

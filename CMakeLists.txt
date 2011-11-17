@@ -320,6 +320,7 @@ set(
 	include/fcppt/algorithm/contains.hpp
 	include/fcppt/algorithm/contains_if.hpp
 	include/fcppt/algorithm/copy_n.hpp
+	include/fcppt/algorithm/detail/ptr_container_erase_pred.hpp
 	include/fcppt/algorithm/element_not_found.hpp
 	include/fcppt/algorithm/exception.hpp
 	include/fcppt/algorithm/find_exn.hpp

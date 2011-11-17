@@ -8,11 +8,8 @@
 #define FCPPT_ALGORITHM_PTR_CONTAINER_ERASE_HPP_INCLUDED
 
 #include <fcppt/algorithm/ptr_container_erase_if.hpp>
+#include <fcppt/algorithm/detail/ptr_container_erase_pred.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/spirit/home/phoenix/core/argument.hpp>
-#include <boost/spirit/home/phoenix/object/static_cast.hpp>
-#include <boost/spirit/home/phoenix/operator/comparison.hpp>
-#include <boost/spirit/home/phoenix/operator/self.hpp>
 #include <boost/type_traits/add_pointer.hpp>
 #include <boost/type_traits/is_same.hpp>
 #include <boost/type_traits/remove_const.hpp>
@@ -55,12 +52,11 @@ ptr_container_erase(
 	return
 		fcppt::algorithm::ptr_container_erase_if(
 			_container,
-			boost::phoenix::static_cast_<
+			fcppt::algorithm::detail::ptr_container_erase_pred<
 				Ptr
 			>(
-				&boost::phoenix::arg_names::arg1
+				_element
 			)
-			== _element
 		);
 }
 
