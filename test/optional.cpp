@@ -190,3 +190,40 @@ BOOST_AUTO_TEST_CASE(
 		!test.has_value()
 	);
 }
+
+BOOST_AUTO_TEST_CASE(
+	optional_ref_to_const_ref
+)
+{
+	typedef fcppt::optional<
+		int &
+	> optional_int_ref;
+
+	optional_int_ref opt_ref;
+
+	typedef fcppt::optional<
+		int const &
+	> optional_int_ref_const;
+
+	optional_int_ref_const const_opt_ref(
+		opt_ref
+	);
+
+	BOOST_CHECK(
+		!const_opt_ref
+	);
+
+	int val(42);
+
+	opt_ref = val;
+
+	const_opt_ref = opt_ref;
+
+	BOOST_CHECK(
+		const_opt_ref.has_value()
+	);
+
+	BOOST_CHECK(
+		&*const_opt_ref == &val
+	);
+}

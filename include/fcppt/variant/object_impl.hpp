@@ -7,6 +7,7 @@
 #ifndef FCPPT_VARIANT_OBJECT_IMPL_HPP_INCLUDED
 #define FCPPT_VARIANT_OBJECT_IMPL_HPP_INCLUDED
 
+#include <fcppt/null_ptr.hpp>
 #include <fcppt/variant/apply_unary.hpp>
 #include <fcppt/variant/invalid_get.hpp>
 #include <fcppt/variant/object_decl.hpp>
@@ -31,8 +32,12 @@ template<
 fcppt::variant::object<Types>::object()
 :
 	storage_(),
-	index_(elements),
-	data_(0)
+	index_(
+		elements
+	),
+	data_(
+		fcppt::null_ptr
+	)
 {
 }
 
@@ -63,8 +68,12 @@ fcppt::variant::object<Types>::object(
 )
 :
 	storage_(),
-	index_(_other.index_),
-	data_(0)
+	index_(
+		_other.index_
+	),
+	data_(
+		fcppt::null_ptr
+	)
 {
 	if(
 		_other.empty()
@@ -339,7 +348,7 @@ fcppt::variant::object<Types>::destroy()
 
 	index_ = elements;
 
-	data_ = 0;
+	data_ = fcppt::null_ptr;
 }
 
 #endif

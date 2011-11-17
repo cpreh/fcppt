@@ -8,6 +8,7 @@
 #define FCPPT_CONTAINER_TREE_PRE_ORDER_HPP_INCLUDED
 
 #include <fcppt/noncopyable.hpp>
+#include <fcppt/null_ptr.hpp>
 #include <fcppt/container/tree/is_object.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/next_prior.hpp>
@@ -130,7 +131,7 @@ public:
 			else if(
 				positions_.empty()
 			)
-				current_ = 0;
+				current_ = fcppt::null_ptr;
 			else
 			{
 
@@ -172,7 +173,7 @@ public:
 	{
 		return
 			iterator(
-				0
+				fcppt::null_ptr
 			);
 	}
 private:

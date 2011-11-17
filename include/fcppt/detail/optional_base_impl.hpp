@@ -7,6 +7,7 @@
 #ifndef FCPPT_DETAIL_OPTIONAL_BASE_IMPL_HPP_INCLUDED
 #define FCPPT_DETAIL_OPTIONAL_BASE_IMPL_HPP_INCLUDED
 
+#include <fcppt/null_ptr.hpp>
 #include <fcppt/detail/optional_base_decl.hpp>
 #include <fcppt/preprocessor/disable_vc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
@@ -22,7 +23,7 @@ fcppt::detail::optional_base<T>::optional_base()
 :
 	storage_(),
 	data_(
-		0
+		fcppt::null_ptr
 	)
 {
 }
@@ -125,7 +126,7 @@ fcppt::detail::optional_base<T>::do_reset()
 {
 	this->destroy();
 
-	data_ = 0;
+	data_ = fcppt::null_ptr;
 }
 
 template<
@@ -166,7 +167,7 @@ fcppt::detail::optional_base<T>::construct(
 			static_cast<
 				pointer
 			>(
-				0
+				fcppt::null_ptr
 			);
 }
 
@@ -189,7 +190,7 @@ template<
 fcppt::detail::optional_base<T &>::optional_base()
 :
 	data_(
-		0
+		fcppt::null_ptr
 	)
 {
 }
@@ -203,6 +204,22 @@ fcppt::detail::optional_base<T &>::optional_base(
 :
 	data_(
 		&_ref
+	)
+{
+}
+
+template<
+	typename T
+>
+template<
+	typename Other
+>
+fcppt::detail::optional_base<T &>::optional_base(
+	Other *const _other
+)
+:
+	data_(
+		_other
 	)
 {
 }
@@ -229,6 +246,22 @@ fcppt::detail::optional_base<T &>::operator=(
 )
 {
 	data_ = _other.data_;
+
+	return *this;
+}
+
+template<
+	typename T
+>
+template<
+	typename Other
+>
+fcppt::detail::optional_base<T &> &
+fcppt::detail::optional_base<T &>::operator=(
+	Other *const _other
+)
+{
+	data_ = _other;
 
 	return *this;
 }
@@ -268,7 +301,7 @@ template<
 void
 fcppt::detail::optional_base<T &>::do_reset()
 {
-	data_ = 0;
+	data_ = fcppt::null_ptr;
 }
 
 #endif

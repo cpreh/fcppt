@@ -327,6 +327,7 @@ set(
 	include/fcppt/algorithm/impl/element_not_found.hpp
 	include/fcppt/algorithm/impl/exception.hpp
 	include/fcppt/algorithm/join_strings.hpp
+	include/fcppt/algorithm/key_set.hpp
 	include/fcppt/algorithm/levenshtein.hpp
 	include/fcppt/algorithm/map.hpp
 	include/fcppt/algorithm/ptr_container_erase.hpp
@@ -334,6 +335,7 @@ set(
 	include/fcppt/algorithm/remove.hpp
 	include/fcppt/algorithm/remove_if.hpp
 	include/fcppt/algorithm/set_intersection.hpp
+	include/fcppt/algorithm/set_union.hpp
 	include/fcppt/algorithm/shift_compare.hpp
 	include/fcppt/algorithm/shortest_levenshtein.hpp
 	include/fcppt/alignment/align.hpp
@@ -491,6 +493,8 @@ set(
 	include/fcppt/container/detail/array_range_check.hpp
 	include/fcppt/container/detail/array_storage.hpp
 	include/fcppt/container/detail/array_swap.hpp
+	include/fcppt/container/detail/data.hpp
+	include/fcppt/container/detail/data_end.hpp
 	include/fcppt/container/detail/null_array_storage.hpp
 	include/fcppt/container/exception.hpp
 	include/fcppt/container/grid/comparison.hpp
@@ -586,8 +590,10 @@ set(
 	include/fcppt/detail/make_ptr_base.hpp
 	include/fcppt/detail/make_shared_wrapper.hpp
 	include/fcppt/detail/make_shared_wrapper_fwd.hpp
+	include/fcppt/detail/nullptr_t.hpp
 	include/fcppt/detail/optional_base_decl.hpp
 	include/fcppt/detail/optional_base_impl.hpp
+	include/fcppt/detail/optional_to_pointer.hpp
 	include/fcppt/detail/process_assert.hpp
 	include/fcppt/detail/strong_typedef_assignment_operator.hpp
 	include/fcppt/detail/strong_typedef_binary_operator.hpp
@@ -1042,6 +1048,7 @@ set(
 	include/fcppt/narrow.hpp
 	include/fcppt/nonassignable.hpp
 	include/fcppt/noncopyable.hpp
+	include/fcppt/null_ptr.hpp
 	include/fcppt/optional.hpp
 	include/fcppt/optional_comparison.hpp
 	include/fcppt/optional_decl.hpp
@@ -1435,6 +1442,7 @@ set(
 	src/log/tree_formatter.cpp
 	src/log/tree_formatter.hpp
 	src/narrow.cpp
+	src/null_ptr.cpp
 	src/random/actor/element.cpp
 	src/random/actor/normalized.cpp
 	src/signal/connection_manager.cpp

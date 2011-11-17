@@ -7,6 +7,9 @@
 #ifndef FCPPT_CONTAINER_DATA_HPP_INCLUDED
 #define FCPPT_CONTAINER_DATA_HPP_INCLUDED
 
+#include <fcppt/container/detail/data.hpp>
+
+
 namespace fcppt
 {
 namespace container
@@ -25,12 +28,11 @@ data(
 )
 {
 	return
-		_container.empty()
-		?
-			0
-		:
-			&_container[0]
-		;
+		container::detail::data<
+			typename Container::pointer
+		>(
+			_container
+		);
 }
 
 /**
@@ -46,12 +48,11 @@ data(
 )
 {
 	return
-		_container.empty()
-		?
-			0
-		:
-			&_container[0]
-		;
+		container::detail::data<
+			typename Container::const_pointer
+		>(
+			_container
+		);
 }
 
 }

@@ -18,6 +18,7 @@
 #include <fcppt/algorithm/find_exn.hpp>
 #include <fcppt/algorithm/find_if_exn.hpp>
 #include <fcppt/algorithm/join_strings.hpp>
+#include <fcppt/algorithm/key_set.hpp>
 #include <fcppt/algorithm/levenshtein.hpp>
 #include <fcppt/algorithm/map.hpp>
 #include <fcppt/algorithm/ptr_container_erase.hpp>
@@ -25,6 +26,7 @@
 #include <fcppt/algorithm/remove.hpp>
 #include <fcppt/algorithm/remove_if.hpp>
 #include <fcppt/algorithm/set_intersection.hpp>
+#include <fcppt/algorithm/set_union.hpp>
 #include <fcppt/algorithm/shift_compare.hpp>
 #include <fcppt/algorithm/shortest_levenshtein.hpp>
 

@@ -11,6 +11,7 @@
 
 #include <fcppt/forward.hpp>
 #include <fcppt/move.hpp>
+#include <fcppt/null_ptr.hpp>
 #include <fcppt/unique_ptr_decl.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/static_assert.hpp>
@@ -45,18 +46,19 @@ template<
 	> class Deleter
 >
 fcppt::unique_ptr<T, Deleter>::unique_ptr(
-	detail_unique_ptr::rv<unique_ptr> r
+	detail_unique_ptr::rv<unique_ptr> _other
 )
 :
 	ptr_(
-		r->release(),
+		_other->release(),
 		fcppt::forward<
 			deleter_type
 		>(
-			r->get_deleter()
+			_other->get_deleter()
 		)
 	)
-{}
+{
+}
 
 template<
 	typename T,
@@ -66,12 +68,17 @@ template<
 >
 fcppt::unique_ptr<T, Deleter> &
 fcppt::unique_ptr<T, Deleter>::operator=(
-	detail_unique_ptr::rv<unique_ptr> r
+	detail_unique_ptr::rv<unique_ptr> _other
 )
 {
-       	reset(r->release());
+	this->reset(
+		_other->release()
+	);
 
-        ptr_.second() = fcppt::move(r->get_deleter());
+	ptr_.second() =
+		fcppt::move(
+			_other->get_deleter()
+		);
 
         return *this;
 }
@@ -104,10 +111,12 @@ template<
 	> class Deleter
 >
 fcppt::unique_ptr<T, Deleter>::unique_ptr(
-	pointer const p
+	pointer const _ptr
 )
 :
-	ptr_(p)
+	ptr_(
+		_ptr
+	)
 {
 	BOOST_STATIC_ASSERT(
 		!boost::is_reference<
@@ -129,19 +138,19 @@ template<
 	> class Deleter
 >
 fcppt::unique_ptr<T, Deleter>::unique_ptr(
-	pointer const p,
+	pointer const _ptr,
 	typename boost::mpl::if_<
 		boost::is_reference<deleter_type>,
 		volatile typename boost::remove_reference<
 			deleter_type
 		>::type &,
 		deleter_type
-	>::type const d
+	>::type const _deleter
 )
 :
 	ptr_(
 		fcppt::move(
-			p
+			_ptr
 		),
 		fcppt::forward<
 			deleter_type
@@ -151,11 +160,12 @@ fcppt::unique_ptr<T, Deleter>::unique_ptr(
 					deleter_type
 				>::type
 			>(
-				d
+				_deleter
 			)
 		)
 	)
-{}
+{
+}
 
 template<
 	typename T,
@@ -167,7 +177,7 @@ template<
 	typename U
 >
 fcppt::unique_ptr<T, Deleter>::unique_ptr(
-	unique_ptr<U, Deleter> u,
+	unique_ptr<U, Deleter> _other,
 	typename boost::enable_if<
 		boost::is_convertible<
 			typename unique_ptr<U>::pointer,
@@ -177,14 +187,15 @@ fcppt::unique_ptr<T, Deleter>::unique_ptr(
 )
 :
 	ptr_(
-		u.release(),
+		_other.release(),
 		fcppt::forward<
 			deleter_type
 		>(
-			u.get_deleter()
+			_other.get_deleter()
 		)
 	)
-{}
+{
+}
 
 template<
 	typename T,
@@ -194,7 +205,7 @@ template<
 >
 fcppt::unique_ptr<T, Deleter>::~unique_ptr()
 {
-	reset();
+	this->reset();
 }
 
 template<
@@ -208,7 +219,7 @@ fcppt::unique_ptr<T, Deleter>::operator=(
 	int nat::*
 )
 {
-	reset();
+	this->reset();
 
 	return *this;
 }
@@ -224,16 +235,16 @@ template<
 >
 fcppt::unique_ptr<T, Deleter> &
 fcppt::unique_ptr<T, Deleter>::operator=(
-	unique_ptr<U, Deleter> u
+	unique_ptr<U, Deleter> _other
 )
 {
-	reset(
-		u.release()
+	this->reset(
+		_other.release()
 	);
 
 	ptr_.second() =
 		fcppt::move(
-			u.get_deleter()
+			_other.get_deleter()
 		);
 
 	return *this;
@@ -248,7 +259,7 @@ template<
 typename boost::add_reference<T>::type
 fcppt::unique_ptr<T, Deleter>::operator*() const
 {
-	return *get();
+	return *this->get();
 }
 
 template<
@@ -260,7 +271,7 @@ template<
 typename fcppt::unique_ptr<T, Deleter>::pointer
 fcppt::unique_ptr<T, Deleter>::operator->() const
 {
-	return get();
+	return this->get();
 }
 
 template<
@@ -308,7 +319,13 @@ template<
 fcppt::unique_ptr<T, Deleter>::
 operator int fcppt::unique_ptr<T, Deleter>::nat::*() const
 {
-	return get() ? &nat::for_bool_ : 0;
+	return
+		this->get()
+		?
+			&nat::for_bool_
+		:
+			0
+		;
 }
 
 template<
@@ -319,15 +336,21 @@ template<
 >
 void
 fcppt::unique_ptr<T, Deleter>::reset(
-	pointer const p
+	pointer const _ptr
 )
 {
-       	pointer const t = get();
+       	pointer const this_ptr(
+		this->get()
+	);
 
-	if (t != pointer())
-		get_deleter()(t);
+	if(
+		this_ptr != fcppt::null_ptr
+	)
+		this->get_deleter()(
+			this_ptr
+		);
 
-	ptr_.first() = p;
+	ptr_.first() = _ptr;
 }
 
 template<
@@ -339,11 +362,13 @@ template<
 typename fcppt::unique_ptr<T, Deleter>::pointer
 fcppt::unique_ptr<T, Deleter>::release()
 {
-	pointer const tmp = get();
+	pointer const this_ptr(
+		this->get()
+	);
 
-	ptr_.first() = pointer();
+	ptr_.first() = fcppt::null_ptr;
 
-	return tmp;
+	return this_ptr;
 }
 
 template<
@@ -354,12 +379,12 @@ template<
 >
 void
 fcppt::unique_ptr<T, Deleter>::swap(
-	unique_ptr &u
+	unique_ptr &_other
 )
 {
 	detail_unique_ptr::swap(
 		ptr_,
-		u.ptr_
+		_other.ptr_
 	);
 }
 
@@ -372,11 +397,13 @@ template<
 inline
 void
 fcppt::swap(
-	unique_ptr<T, D> &x,
-	unique_ptr<T, D> &y
+	unique_ptr<T, D> &_left,
+	unique_ptr<T, D> &_right
 )
 {
-	x.swap(y);
+	_left.swap(
+		_right
+	);
 }
 
 template<
@@ -389,11 +416,14 @@ template<
 inline
 bool
 fcppt::operator==(
-	unique_ptr<T1, D> const &x,
-	unique_ptr<T2, D> const &y
+	unique_ptr<T1, D> const &_left,
+	unique_ptr<T2, D> const &_right
 )
 {
-	return x.get() == y.get();
+	return
+		_left.get()
+		==
+		_right.get();
 }
 
 template<
@@ -406,11 +436,16 @@ template<
 inline
 bool
 fcppt::operator!=(
-	unique_ptr<T1, D> const &x,
-	unique_ptr<T2, D> const &y
+	unique_ptr<T1, D> const &_left,
+	unique_ptr<T2, D> const &_right
 )
 {
-	return !(x == y);
+	return
+		!(
+			_left
+			==
+			_right
+		);
 }
 
 template<
@@ -423,11 +458,14 @@ template<
 inline
 bool
 fcppt::operator<(
-	unique_ptr<T1, D> const &x,
-	unique_ptr<T2, D> const &y
+	unique_ptr<T1, D> const &_left,
+	unique_ptr<T2, D> const &_right
 )
 {
-	return x.get() < y.get();
+	return
+		_left.get()
+		<
+		_right.get();
 }
 
 template<
@@ -440,11 +478,16 @@ template<
 inline
 bool
 fcppt::operator<=(
-	unique_ptr<T1, D> const &x,
-	unique_ptr<T2, D> const &y
+	unique_ptr<T1, D> const &_left,
+	unique_ptr<T2, D> const &_right
 )
 {
-	return !(y < x);
+	return
+		!(
+			_right
+			<
+			_left
+		);
 }
 
 template<
@@ -457,11 +500,14 @@ template<
 inline
 bool
 fcppt::operator>(
-	unique_ptr<T1, D> const &x,
-	unique_ptr<T2, D> const &y
+	unique_ptr<T1, D> const &_left,
+	unique_ptr<T2, D> const &_right
 )
 {
-	return y < x;
+	return
+		_right
+		<
+		_left;
 }
 
 template<
@@ -474,11 +520,16 @@ template<
 inline
 bool
 fcppt::operator>=(
-	unique_ptr<T1, D> const &x,
-	unique_ptr<T2, D> const &y
+	unique_ptr<T1, D> const &_left,
+	unique_ptr<T2, D> const &_right
 )
 {
-	return !(x < y);
+	return
+		!(
+			_left
+			<
+			_right
+		);
 }
 
 #endif

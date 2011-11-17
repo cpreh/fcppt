@@ -107,6 +107,13 @@ protected:
 		const_reference
 	);
 
+	template<
+		typename Other
+	>
+	explicit optional_base(
+		Other *
+	);
+
 	optional_base(
 		optional_base const &
 	);
@@ -114,6 +121,14 @@ protected:
 	optional_base &
 	operator=(
 		optional_base const &
+	);
+
+	template<
+		typename Other
+	>
+	optional_base &
+	operator=(
+		Other *
 	);
 
 	optional_base &

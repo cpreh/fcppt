@@ -54,6 +54,15 @@ public:
 		const_reference
 	);
 
+	template<
+		typename Other
+	>
+	optional(
+		optional<
+			Other
+		> const &
+	);
+
 	optional(
 		optional const &
 	);
@@ -61,6 +70,16 @@ public:
 	optional &
 	operator=(
 		optional const &
+	);
+
+	template<
+		typename Other
+	>
+	optional &
+	operator=(
+		optional<
+			Other
+		> const &
 	);
 
 	optional &
