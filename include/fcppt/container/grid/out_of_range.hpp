@@ -17,6 +17,7 @@ namespace container
 namespace grid
 {
 
+/// Thrown by the grid's \link fcppt::container::grid::object::at at \endlink function.
 class out_of_range
 :
 	public fcppt::container::grid::exception

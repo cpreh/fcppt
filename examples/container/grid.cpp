@@ -11,6 +11,7 @@
 #include <fcppt/math/interpolation/linear_functor.hpp>
 #include <fcppt/io/cout.hpp>
 #include <fcppt/text.hpp>
+#include <iostream>
 
 namespace
 {
@@ -120,6 +121,8 @@ resize_grid()
 }
 //! [grid_resize]
 
+namespace
+{
 //! [grid_interpolate]
 typedef fcppt::container::grid::object<
 	float,
@@ -154,6 +157,7 @@ interpolate_grid()
 	std::cout << result;
 }
 //! [grid_interpolate]
+}
 
 int main()
 {

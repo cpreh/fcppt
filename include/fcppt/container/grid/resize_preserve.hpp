@@ -19,10 +19,10 @@ namespace container
 namespace grid
 {
 
-/// Resizes @param _result to @_newsize and preserves all elements possible
 /**
- * For every p where every component of p is
- * less than every component of _new_size, _result[p] will be preserved
+\brief Resizes \p _result to \p _newsize and preserves all elements possible
+For every p where every component of p is less than every component of
+_new_size, _result[p] will be preserved
 */
 template<
 	typename T,
