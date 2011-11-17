@@ -7,15 +7,18 @@
 #ifndef FCPPT_NULL_PTR_HPP_INCLUDED
 #define FCPPT_NULL_PTR_HPP_INCLUDED
 
-#include <fcppt/symbol.hpp>
 #include <fcppt/detail/nullptr_t.hpp>
+
 
 namespace fcppt
 {
 
-FCPPT_SYMBOL
-extern detail::nullptr_t const
-null_ptr;
+inline
+detail::nullptr_t const
+null_ptr()
+{
+	return detail::nullptr_t();
+}
 
 }
 

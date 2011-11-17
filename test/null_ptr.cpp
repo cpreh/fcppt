@@ -15,7 +15,7 @@ BOOST_AUTO_TEST_CASE(
 )
 {
 	int *const ptr(
-		fcppt::null_ptr
+		fcppt::null_ptr()
 	);
 
 	BOOST_REQUIRE(

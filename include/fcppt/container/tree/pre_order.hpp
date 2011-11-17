@@ -131,7 +131,7 @@ public:
 			else if(
 				positions_.empty()
 			)
-				current_ = fcppt::null_ptr;
+				current_ = fcppt::null_ptr();
 			else
 			{
 
@@ -173,7 +173,7 @@ public:
 	{
 		return
 			iterator(
-				fcppt::null_ptr
+				fcppt::null_ptr()
 			);
 	}
 private:

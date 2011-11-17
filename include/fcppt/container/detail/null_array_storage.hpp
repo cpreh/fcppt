@@ -29,13 +29,13 @@ struct null_array_storage
 	T *
 	get()
 	{
-		return fcppt::null_ptr;
+		return fcppt::null_ptr();
 	}
 
 	T const *
 	get() const
 	{
-		return fcppt::null_ptr;
+		return fcppt::null_ptr();
 	}
 
 	operator T *()

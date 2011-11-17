@@ -930,7 +930,7 @@ fcppt::container::raw_vector<T, A>::free_memory()
 	this->deallocate();
 
 	this->set_pointers(
-		fcppt::null_ptr,
+		fcppt::null_ptr(),
 		0u,
 		0u
 	);
@@ -1190,13 +1190,13 @@ fcppt::container::raw_vector<T,A>::impl::impl(
 		_alloc
 	),
 	first_(
-		fcppt::null_ptr
+		fcppt::null_ptr()
 	),
 	last_(
-		fcppt::null_ptr
+		fcppt::null_ptr()
 	),
 	cap_(
-		fcppt::null_ptr
+		fcppt::null_ptr()
 	)
 {
 }
@@ -1216,7 +1216,7 @@ fcppt::container::raw_vector<T,A>::impl::impl(
 	first_(
 		_size == 0u
 		?
-			fcppt::null_ptr
+			fcppt::null_ptr()
 		:
 			alloc_.allocate(
 				_size

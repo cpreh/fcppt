@@ -29,7 +29,7 @@ optional_to_pointer(
 		?
 			&*_opt
 		:
-			fcppt::null_ptr
+			fcppt::null_ptr()
 		;
 }
 

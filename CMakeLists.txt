@@ -1446,7 +1446,6 @@ set(
 	src/log/tree_formatter.cpp
 	src/log/tree_formatter.hpp
 	src/narrow.cpp
-	src/null_ptr.cpp
 	src/random/actor/element.cpp
 	src/random/actor/normalized.cpp
 	src/signal/connection_manager.cpp
