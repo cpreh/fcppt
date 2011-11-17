@@ -41,10 +41,17 @@ public:
 	>
 	bool
 	operator()(
-		Ref _other
+		Ref &_other
 	) const
 	{
-		return pointer_ == &_other;
+		return
+			pointer_ 
+			==
+			static_cast<
+				Pointer
+			>(
+				&_other
+			);
 	}
 private:
 	Pointer const pointer_;
