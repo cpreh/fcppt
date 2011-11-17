@@ -199,7 +199,7 @@ template<
 bool
 fcppt::optional<T>::boolean_test() const
 {
-	return this->data() != fcppt::null_ptr;
+	return this->data() != fcppt::null_ptr();
 }
 
 #endif

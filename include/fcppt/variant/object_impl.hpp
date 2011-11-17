@@ -36,7 +36,7 @@ fcppt::variant::object<Types>::object()
 		elements
 	),
 	data_(
-		fcppt::null_ptr
+		fcppt::null_ptr()
 	)
 {
 }
@@ -72,7 +72,7 @@ fcppt::variant::object<Types>::object(
 		_other.index_
 	),
 	data_(
-		fcppt::null_ptr
+		fcppt::null_ptr()
 	)
 {
 	if(
@@ -348,7 +348,7 @@ fcppt::variant::object<Types>::destroy()
 
 	index_ = elements;
 
-	data_ = fcppt::null_ptr;
+	data_ = fcppt::null_ptr();
 }
 
 #endif

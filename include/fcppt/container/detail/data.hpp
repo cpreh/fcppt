@@ -29,7 +29,7 @@ data(
 	return
 		_container.empty()
 		?
-			fcppt::null_ptr
+			fcppt::null_ptr()
 		:
 			&_container[0]
 		;

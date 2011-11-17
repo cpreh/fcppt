@@ -344,7 +344,7 @@ fcppt::unique_ptr<T, Deleter>::reset(
 	);
 
 	if(
-		this_ptr != fcppt::null_ptr
+		this_ptr != fcppt::null_ptr()
 	)
 		this->get_deleter()(
 			this_ptr
@@ -366,7 +366,7 @@ fcppt::unique_ptr<T, Deleter>::release()
 		this->get()
 	);
 
-	ptr_.first() = fcppt::null_ptr;
+	ptr_.first() = fcppt::null_ptr();
 
 	return this_ptr;
 }

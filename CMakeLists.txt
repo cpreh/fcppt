@@ -320,6 +320,7 @@ set(
 	include/fcppt/algorithm/contains.hpp
 	include/fcppt/algorithm/contains_if.hpp
 	include/fcppt/algorithm/copy_n.hpp
+	include/fcppt/algorithm/detail/ptr_container_erase_pred.hpp
 	include/fcppt/algorithm/element_not_found.hpp
 	include/fcppt/algorithm/exception.hpp
 	include/fcppt/algorithm/find_exn.hpp
@@ -1207,6 +1208,9 @@ set(
 	include/fcppt/signal/unregister/function.hpp
 	include/fcppt/signal/unregister/unregister.hpp
 	include/fcppt/sn_cast.hpp
+	include/fcppt/spirit_traits/optional_basic.hpp
+	include/fcppt/spirit_traits/spirit_traits.hpp
+	include/fcppt/spirit_traits/variant_basic.hpp
 	include/fcppt/static_pointer_cast.hpp
 	include/fcppt/string.hpp
 	include/fcppt/string_conv_locale.hpp
@@ -1442,7 +1446,6 @@ set(
 	src/log/tree_formatter.cpp
 	src/log/tree_formatter.hpp
 	src/narrow.cpp
-	src/null_ptr.cpp
 	src/random/actor/element.cpp
 	src/random/actor/normalized.cpp
 	src/signal/connection_manager.cpp

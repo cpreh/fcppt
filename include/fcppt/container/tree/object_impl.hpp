@@ -33,7 +33,7 @@ fcppt::container::tree::object<T>::object()
 :
 	value_(),
 	parent_(
-		fcppt::null_ptr
+		fcppt::null_ptr()
 	),
 	children_()
 {
@@ -54,7 +54,7 @@ fcppt::container::tree::object<T>::object(
 		)
 	),
 	parent_(
-		fcppt::null_ptr
+		fcppt::null_ptr()
 	),
 	children_()
 {
@@ -179,7 +179,7 @@ template<
 bool
 fcppt::container::tree::object<T>::has_parent() const
 {
-	return parent_ != fcppt::null_ptr;
+	return parent_ != fcppt::null_ptr();
 }
 
 template<

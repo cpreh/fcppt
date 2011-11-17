@@ -182,7 +182,7 @@ fcppt::scoped_ptr<T, Deleter>::release()
 		ptr_
 	);
 
-	ptr_ = fcppt::null_ptr;
+	ptr_ = fcppt::null_ptr();
 
 	return
 		fcppt::move(
@@ -199,7 +199,7 @@ template<
 bool
 fcppt::scoped_ptr<T, Deleter>::boolean_test() const
 {
-	return ptr_ != fcppt::null_ptr;
+	return ptr_ != fcppt::null_ptr();
 }
 
 template<

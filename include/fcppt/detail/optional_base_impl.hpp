@@ -23,7 +23,7 @@ fcppt::detail::optional_base<T>::optional_base()
 :
 	storage_(),
 	data_(
-		fcppt::null_ptr
+		fcppt::null_ptr()
 	)
 {
 }
@@ -126,7 +126,7 @@ fcppt::detail::optional_base<T>::do_reset()
 {
 	this->destroy();
 
-	data_ = fcppt::null_ptr;
+	data_ = fcppt::null_ptr();
 }
 
 template<
@@ -167,7 +167,7 @@ fcppt::detail::optional_base<T>::construct(
 			static_cast<
 				pointer
 			>(
-				fcppt::null_ptr
+				fcppt::null_ptr()
 			);
 }
 
@@ -190,7 +190,7 @@ template<
 fcppt::detail::optional_base<T &>::optional_base()
 :
 	data_(
-		fcppt::null_ptr
+		fcppt::null_ptr()
 	)
 {
 }
@@ -301,7 +301,7 @@ template<
 void
 fcppt::detail::optional_base<T &>::do_reset()
 {
-	data_ = fcppt::null_ptr;
+	data_ = fcppt::null_ptr();
 }
 
 #endif
