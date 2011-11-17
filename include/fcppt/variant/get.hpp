@@ -4,8 +4,8 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_VARIANT_OBJECT_GET_HPP_INCLUDED
-#define FCPPT_VARIANT_OBJECT_GET_HPP_INCLUDED
+#ifndef FCPPT_VARIANT_GET_HPP_INCLUDED
+#define FCPPT_VARIANT_GET_HPP_INCLUDED
 
 #include <fcppt/variant/object_impl.hpp>
 

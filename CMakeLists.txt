@@ -1207,6 +1207,9 @@ set(
 	include/fcppt/signal/unregister/function.hpp
 	include/fcppt/signal/unregister/unregister.hpp
 	include/fcppt/sn_cast.hpp
+	include/fcppt/spirit_traits/optional_basic.hpp
+	include/fcppt/spirit_traits/spirit_traits.hpp
+	include/fcppt/spirit_traits/variant_basic.hpp
 	include/fcppt/static_pointer_cast.hpp
 	include/fcppt/string.hpp
 	include/fcppt/string_conv_locale.hpp
