@@ -28,6 +28,17 @@ namespace container
 namespace tree
 {
 
+/**
+\brief Wraps a tree to make it iterable in a pre-order fashion.
+\ingroup fcpptcontainertree
+
+Internally, this class manages a stack, losely imitating the runtime stack in a
+recursive implementation.
+
+<strong>Example:</strong>
+
+\snippet container/tree_traversal.cpp main
+*/
 template<
 	typename Tree
 >
@@ -45,6 +56,9 @@ class pre_order
 		pre_order
 	);
 public:
+	/**
+	\brief Construct a pre-order traversal from a tree (which can be const or nonconst)
+	*/
 	explicit pre_order(
 		Tree &_tree
 	)
@@ -160,6 +174,9 @@ public:
 		stack_type positions_;
 	};
 
+	/**
+	\brief Return an iterator to the first tree in the traversal
+	*/
 	iterator const
 	begin() const
 	{
@@ -168,6 +185,10 @@ public:
 				&tree_
 			);
 	}
+
+	/**
+	\brief Return a dummy iterator to stop the traversal
+	*/
 	iterator const
 	end() const
 	{
