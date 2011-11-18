@@ -22,9 +22,9 @@ namespace mpl
 
 /// Return the index of @a Element in @a Sequence
 /**
- * @tparam Sequence An MPL sequence
- * @tparam Element The element to find
- * @return The index of the element
+\tparam Sequence An MPL sequence
+\tparam Element The element to find
+\return The index of the element
 */
 template<
 	typename Sequence,

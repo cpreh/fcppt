@@ -57,7 +57,7 @@
 
 Every function, typedef or class resides in its own header file. So, for
 example, if you want to use fcppt::to_std_string (which is a function) you have
-to <code>#include <fcppt/to_std_string.hpp></code>.
+to <code>\verbatim #include <fcppt/to_std_string.hpp>\endverbatim</code>.
 
 All classes have an additional fwd header, which only provides a declaration of
 the class. For example <code><fcppt/type_info_fwd.hpp></code> provides the

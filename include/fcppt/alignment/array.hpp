@@ -18,10 +18,10 @@ namespace alignment
 {
 
 /**
- * \brief Creates a nested typedef <code>type</code> to an <code>fcppt::container::array<T, Size></code> with alignment \p Alignment
- * \ingroup fcpptalignment
- * \tparam Alignment TODO
- * \see fcppt::alignment::make_type
+\brief Creates a nested typedef <code>type</code> to an <code>fcppt::container::array<T, Size></code> with alignment \p Alignment
+\ingroup fcpptalignment
+\tparam Alignment TODO
+\see fcppt::alignment::make_type
 */
 template<
 	typename T,

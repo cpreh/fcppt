@@ -16,13 +16,13 @@ namespace fcppt
 namespace alignment
 {
 
-/// Creates a nested typedef 'type' of type @tparam T with alignment @tparam Alignment
 /**
- * \ingroup fcpptalignment
- * \details
- * Which alignments are supported is unspecified.
- * In most cases you can only use alignments that are a power 2.
- * Also, every compiler implements a limit depending on the platform.
+\brief Creates a nested typedef 'type' of type <code>T</code> with alignment <code>Alignment</code>
+\ingroup fcpptalignment
+\details
+Which alignments are supported is unspecified.  In most cases you can only use
+alignments that are a power 2.  Also, every compiler implements a limit
+depending on the platform.
 */
 template<
 	typename T,

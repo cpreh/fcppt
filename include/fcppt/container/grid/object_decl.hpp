@@ -37,6 +37,19 @@ namespace grid
 \brief A simple n dimensional array
 \ingroup fcpptcontainergrid
 
+<table id="toc">
+<tr>
+<td>
+
+<ol>
+	<li>\ref grid_introduction</li>
+	<li>\ref grid_resizing</li>
+</ol>
+
+</td>
+</tr>
+</table>
+
 \section grid_introduction Introduction
 
 fcppt::container::grid::object is a simple multi dimensional array similar to
@@ -76,7 +89,7 @@ template<
 >
 class object
 {
-// \cond
+// \cond  FCPPT_DOXYGEN_DEBUG
 	BOOST_STATIC_ASSERT(
 		N >= 1u
 	);

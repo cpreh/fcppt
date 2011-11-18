@@ -17,7 +17,7 @@ namespace math
 {
 /// Since the machine epsilon most often is _not_ the correct way to
 /// handle floating point comparisons, this function takes two ranges
-/// (two types having ::const_iterator as well as begin/end to be
+/// (two types having <code>::%const_iterator</code> as well as begin/end to be
 /// exact) and compares them pointwise. Can be applied to dim/vector
 /// and other types.
 template<typename Range1,typename Range2,typename T>

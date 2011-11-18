@@ -69,6 +69,8 @@ fcppt::math::matrix::detail::dim_storage<
 	dim_(_dim)
 {}
 
+// Doxygen says: warning: no uniquely matching class member found for ...
+/// \cond FCPPT_DOXYGEN_DEBUG
 inline
 fcppt::math::matrix::detail::dim_storage<
 	fcppt::math::detail::dynamic_size,
@@ -79,7 +81,10 @@ fcppt::math::matrix::detail::dim_storage<
 :
 	dim_(_other.dim_)
 {}
+/// \endcond
 
+// Doxygen says: warning: no uniquely matching class member found for ...
+/// \cond FCPPT_DOXYGEN_DEBUG
 inline
 fcppt::math::matrix::detail::dim_storage<
 	fcppt::math::detail::dynamic_size,
@@ -97,14 +102,20 @@ fcppt::math::matrix::detail::dim_storage<
 
 	return *this;
 }
+/// \endcond
 
+// Doxygen says: warning: no matching class member found for ...
+/// \cond FCPPT_DOXYGEN_DEBUG
 inline
 fcppt::math::matrix::detail::dim_storage<
 	fcppt::math::detail::dynamic_size,
 	fcppt::math::detail::dynamic_size
 >::~dim_storage()
 {}
+/// \endcond
 
+// Doxygen says: warning: no uniquely matching class member found for ...
+/// \cond FCPPT_DOXYGEN_DEBUG
 inline
 void
 fcppt::math::matrix::detail::dim_storage<
@@ -116,7 +127,10 @@ fcppt::math::matrix::detail::dim_storage<
 {
 	dim_ = _dim;
 }
+/// \endcond
 
+// Doxygen says: warning: no uniquely matching class member found for ...
+/// \cond FCPPT_DOXYGEN_DEBUG
 inline
 fcppt::math::matrix::detail::dim_storage<
 	fcppt::math::detail::dynamic_size,
@@ -129,6 +143,7 @@ fcppt::math::matrix::detail::dim_storage<
 {
 	return dim_.w();
 }
+/// \endcond
 
 inline
 fcppt::math::matrix::detail::dim_storage<

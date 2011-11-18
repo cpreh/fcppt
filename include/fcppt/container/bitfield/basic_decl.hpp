@@ -27,7 +27,7 @@ namespace fcppt
 {
 namespace container
 {
-/// Contains fcppt::container::bitfield::basic and helper types for it.
+/// Contains fcppt::container::bitfield::basic and helper types/functions for it.
 namespace bitfield
 {
 

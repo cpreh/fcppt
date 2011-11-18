@@ -79,7 +79,7 @@ The documentation is split into the following parts:
 
 You can contact us via our IRC channel
 
-<code>#sge-sanguis</code>
+<code>\verbatim #sge-sanguis \endverbatim</code>
 
 at
 

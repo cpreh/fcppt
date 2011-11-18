@@ -53,7 +53,7 @@ void swap( object<Signature>& x, object<Signature>& y )
 
 } // end namespace fcppt
 
-// \cond
+// \cond FCPPT_DOXYGEN_DEBUG
 #define FCPPT_FUNCTION_OBJECT_PP_NUM_PARAMS 0
 #include <fcppt/function/impl/object_template.hpp>
 #undef FCPPT_FUNCTION_OBJECT_PP_NUM_PARAMS

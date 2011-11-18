@@ -282,7 +282,7 @@ template<
 fcppt::math::matrix::basic<T, N, M, S>::~basic()
 {}
 
-// \cond
+// \cond FCPPT_DOXYGEN_DEBUG
 #define FCPPT_MATH_MATRIX_BASIC_DEFINE_OPERATOR(\
 	op\
 )\

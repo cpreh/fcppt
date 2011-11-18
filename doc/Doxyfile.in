@@ -99,8 +99,9 @@ FILE_PATTERNS          = *.hpp *.doxygen
 RECURSIVE              = YES
 EXCLUDE                =
 EXCLUDE_SYMLINKS       = NO
-EXCLUDE_PATTERNS       = */detail/* */impl/*
-EXCLUDE_SYMBOLS        =
+#EXCLUDE_PATTERNS       = */detail/* */impl/*
+EXCLUDE_PATTERNS       = */impl/*
+EXCLUDE_SYMBOLS        = detail fcppt::detail_unique_ptr boost
 EXAMPLE_PATH           = @CMAKE_SOURCE_DIR@/examples
 EXAMPLE_PATTERNS       = *.cpp
 EXAMPLE_RECURSIVE      = YES
@@ -241,7 +242,9 @@ PREDEFINED             = "FCPPT_SYMBOL="\
 			 "FCPPT_CLASS_SYMBOL="\
 			  "FCPPT_NONCOPYABLE(a)="\
 			  "FCPPT_NONASSIGNABLE(a)="\
-			  "FCPPT_MAKE_STRONG_TYPEDEF(a,b)=typedef a b;"
+			  "FCPPT_MAKE_STRONG_TYPEDEF(a,b)=typedef a b;"\
+			  "FCPPT_SAFE_BOOL(a)="\
+			  "BOOST_PP_REPEAT(a,b,c)="
 SKIP_FUNCTION_MACROS   = YES
 #---------------------------------------------------------------------------
 # Configuration::additions related to external references

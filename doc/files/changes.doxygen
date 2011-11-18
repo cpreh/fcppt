@@ -55,7 +55,7 @@
 	<li>Use <code>-pthread</code> for POSIX systems because we use
 	boost.thread and asio.</li>
 	<li>Assert that a type requested via <code>variant::object::get</code>
-	or <code>::get_raw</code> is actually among its possible types.</li>
+	or <code>\verbatim ::get_raw \endverbatim</code> is actually among its possible types.</li>
 	<li><code>type_traits::is_iterable</code>,
 	<code>TYPE_TRAITS_GENERATE_HAS_MEMBER_FUNCTION</code> and
 	<code>TYPE_TRAITS_GENERATE_HAS_TYPE</code> now properly expose an
