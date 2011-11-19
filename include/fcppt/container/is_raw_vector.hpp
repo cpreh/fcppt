@@ -18,9 +18,9 @@ namespace container
 {
 
 /**
- * \brief Metafunction to test if a container is a fcppt::container::raw_vector
- * \ingroup fcpptcontainer
- */
+\brief Metafunction to test if a container is a fcppt::container::raw_vector
+\ingroup fcpptcontainer
+*/
 template<
 	typename T
 >
@@ -29,10 +29,8 @@ struct is_raw_vector
 boost::false_type
 {};
 
-/**
- * \brief Metafunction to test if a container is a fcppt::container::raw_vector
- * \ingroup fcpptcontainer
- */
+// Without this, doxygen generates another raw_vector type (wtf?)
+/// \cond FCPPT_DOXYGEN_DEBUG
 template<
 	typename T,
 	typename A
@@ -46,6 +44,7 @@ struct is_raw_vector<
 :
 boost::true_type
 {};
+/// \endcond
 
 }
 }

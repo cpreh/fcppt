@@ -10,12 +10,6 @@ main()
 {
 {
 //! [raw_vector]
-std::vector<int> chars(
-	1024);
-
-// Will output "0"
-std::cout << chars[0];
-
 fcppt::container::raw_vector<int> raw_chars(
 	1024);
 

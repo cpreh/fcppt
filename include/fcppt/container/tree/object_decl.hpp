@@ -30,6 +30,7 @@ namespace tree
 /**
 \defgroup fcpptcontainertree fcppt::container::tree
 \ingroup fcpptcontainer
+\brief See the documentation of fcppt::container::tree::object to know more.
 */
 
 /**
