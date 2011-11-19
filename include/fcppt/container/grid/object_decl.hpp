@@ -93,7 +93,7 @@ back (z=1) of the cube, and so on.
 
 Here is an example of each iteration method:
 
-\snippet container/grid.cpp grid_iteration
+\snippet container/grid_iteration.cpp grid_iteration
 
 To get the position of an iterator, use fcppt::container::grid::iterator_position.
 
