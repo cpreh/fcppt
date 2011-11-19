@@ -154,7 +154,7 @@ interpolate_grid()
 
 	// Will bilinearly interpolate ALL the grid points and return something
 	// inbetween (too lazy to calculate)
-	std::cout << result;
+	std::cout << result << '\n';
 }
 //! [grid_interpolate]
 }
@@ -164,4 +164,6 @@ int main()
 	use_grid();
 
 	resize_grid();
+
+	interpolate_grid();
 }
