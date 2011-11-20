@@ -292,7 +292,7 @@ public:
 	has_parent() const;
 
 	/**
-	TODO: What does this do? Re-set the parent? What about ownership?
+	\brief Sets a new parent
 	*/
 	void
 	parent(
@@ -355,23 +355,23 @@ public:
 	has_value() const;
 
 	/**
-	\brief Can be used to release the scoped_ptr
-	TODO: Too short. What does this mean? Example?
+	\brief Returns a reference to the holder type
+
+	This can be used to release the the scoped_ptr if the tree has noncopyable semantics.
+
+	\see fcppt::container::tree::release
 	*/
 	holder_type &
 	holder();
 
 	/**
-	\brief Can be used to release the scoped_ptr
-	TODO: Too short. What does this mean? Example?
+	\brief Returns a const reference to the holder type
 	*/
 	holder_type const &
 	holder() const;
 
 	/**
 	\brief Inserts a new child at the end of the child list
-	TODO: What's the meaning of this is if the tree doesn't have
-	noncopyable semantics?
 	*/
 	void
 	push_back(
@@ -562,7 +562,7 @@ public:
 	/**
 	\brief Returns the number of children
 
-	TODO: Add a note about this being in O(n)?
+	The complexity of this is O(n)
 	*/
 	size_type
 	size() const;
