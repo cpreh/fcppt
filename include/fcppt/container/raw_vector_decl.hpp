@@ -286,6 +286,8 @@ public:
 	\brief Returns the pointer to the store.
 
 	May return 0 if the vector is empty.
+	\note
+	This function is not found in (C++03's) <code>std::vector</code>
 	*/
 	pointer
 	data();
@@ -294,6 +296,8 @@ public:
 	\brief Returns the pointer to the store.
 
 	May return 0 if the vector is empty.
+	\note
+	This function is not found in (C++03's) <code>std::vector</code>
 	*/
 	const_pointer
 	data() const;
@@ -302,6 +306,8 @@ public:
 	\brief Returns the pointer to the end of the store.
 
 	Equal to <code>data() + size()</code>.
+	\note
+	This function is not found in (C++03's) <code>std::vector</code>
 	*/
 	pointer
 	data_end();
@@ -310,6 +316,8 @@ public:
 	\brief Returns the pointer to the end of the store.
 
 	Equal to <code>data() + size()</code>.
+	\note
+	This function is not found in (C++03's) <code>std::vector</code>
 	*/
 	const_pointer
 	data_end() const;
@@ -348,7 +356,7 @@ public:
 
 	/**
 	\brief Constructs a vector from an iterator range
-	\tparam A forward iterator type
+	\tparam In A forward iterator type
 	\param beg The begining of the iterator range
 	\param end One past the end of the iterator range
 	\param a The allocator
@@ -375,7 +383,7 @@ public:
 
 	/**
 	\brief Erases a vector and copies the specified elements to the empty vector.
-	\tparam A forward iterator type
+	\tparam In A forward iterator type
 	\param beg The begining of the iterator range
 	\param end One past the end of the iterator range
 	*/

@@ -22,7 +22,7 @@ std::ifstream file("test_file");
 file.read(
 	reinterpret_cast<char *>(
 		raw_chars.data()),
-	1024);
+	1024 * sizeof(int));
 //! [raw_vector]
 }
 }
