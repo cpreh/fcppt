@@ -19,9 +19,13 @@ namespace container
 namespace ptr
 {
 
-/// Tries to push_back @a _ptr into @a _container
 /**
- * Transfers ownership of @a _ptr to @a _container
+\brief Tries to insert \p _ptr into \p _container at \p _key
+\ingroup fcpptcontainerptr
+\tparam PtrContainer A pointer container with a <code>push_back</code> function
+\tparam UniquePtr A (compatible) fcppt::unique_ptr
+
+Transfers ownership of \p _ptr to \p _container
 */
 template<
 	typename PtrContainer,

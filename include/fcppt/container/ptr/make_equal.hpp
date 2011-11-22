@@ -16,7 +16,11 @@ namespace container
 namespace ptr
 {
 
-/// Creates a functor that will compare the address of elements in a ptr_container to @a _ptr
+/**
+\brief Creates a functor that will compare the address of elements in a ptr_container to \p _ptr
+\ingroup fcpptcontainerptr
+\param _ptr A pointer type
+*/
 template<
 	typename Ptr
 >

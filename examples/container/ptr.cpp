@@ -4,7 +4,7 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-//[container_ptr
+//! [main]
 #include <fcppt/make_unique_ptr.hpp>
 #include <fcppt/noncopyable.hpp>
 #include <fcppt/text.hpp>
@@ -60,4 +60,4 @@ int main()
 		<< &map[42]
 		<< FCPPT_TEXT('\n');
 }
-//]
+//! [main]

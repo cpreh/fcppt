@@ -19,10 +19,14 @@ namespace container
 namespace ptr
 {
 
-/// Tries to insert @a _ptr into @a _container at @a _iterator
 /**
- * Transfers ownership of @a _ptr to @a _container
- * @return An iterator to the newly inserted position
+\brief Tries to insert \p _ptr into \p _container at \p _iterator
+\ingroup fcpptcontainerptr
+\tparam PtrContainer A pointer container
+\tparam UniquePtr A (compatible) fcppt::unique_ptr
+\return An iterator to the newly inserted position
+
+Transfers ownership of \p _ptr to \p _container
 */
 template<
 	typename PtrContainer,
