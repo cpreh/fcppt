@@ -12,7 +12,7 @@
 namespace fcppt
 {
 
-class extract_from_string_error 
+class extract_from_string_error
 :
 	public fcppt::exception
 {

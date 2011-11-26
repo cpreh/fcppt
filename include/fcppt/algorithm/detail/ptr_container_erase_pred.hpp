@@ -45,7 +45,7 @@ public:
 	) const
 	{
 		return
-			pointer_ 
+			pointer_
 			==
 			static_cast<
 				Pointer
