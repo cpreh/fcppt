@@ -7,9 +7,10 @@
 #ifndef FCPPT_MATH_DETAIL_ARRAY_COMPARE_HPP_INCLUDED
 #define FCPPT_MATH_DETAIL_ARRAY_COMPARE_HPP_INCLUDED
 
-#include <fcppt/algorithm/compare_with.hpp>
-#include <fcppt/math/compare.hpp>
-#include <fcppt/tr1/functional.hpp>
+#include <fcppt/config/external_begin.hpp>
+#include <algorithm>
+#include <fcppt/config/external_end.hpp>
+
 
 namespace fcppt
 {
@@ -29,17 +30,10 @@ array_compare(
 )
 {
 	return
-		algorithm::compare_with(
-			v1,
-			v2,
-			std::tr1::bind(
-				math::compare<
-					typename T1::value_type
-				>,
-				std::tr1::placeholders::_1,
-				std::tr1::placeholders::_2
-			)
-		);
+		std::equal(
+			v1.begin(),
+			v1.end(),
+			v2.begin());
 }
 
 }

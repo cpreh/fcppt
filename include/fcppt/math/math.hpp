@@ -7,10 +7,8 @@
 #ifndef FCPPT_MATH_MATH_HPP_INCLUDED
 #define FCPPT_MATH_MATH_HPP_INCLUDED
 
-#include <fcppt/math/almost_zero.hpp>
 #include <fcppt/math/ceil_div.hpp>
 #include <fcppt/math/clamp.hpp>
-#include <fcppt/math/compare.hpp>
 #include <fcppt/math/deg_to_rad.hpp>
 #include <fcppt/math/diff.hpp>
 #include <fcppt/math/difference_type.hpp>
@@ -24,10 +22,8 @@
 #include <fcppt/math/is_rational.hpp>
 #include <fcppt/math/is_static_size.hpp>
 #include <fcppt/math/log.hpp>
-#include <fcppt/math/machine_epsilon.hpp>
 #include <fcppt/math/mod.hpp>
 #include <fcppt/math/mod_assign.hpp>
-#include <fcppt/math/nearly_equals.hpp>
 #include <fcppt/math/next_pow_2.hpp>
 #include <fcppt/math/null.hpp>
 #include <fcppt/math/pi.hpp>

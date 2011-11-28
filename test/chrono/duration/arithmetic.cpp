@@ -5,10 +5,10 @@
 
 
 #include <fcppt/chrono/chrono.hpp>
-#include <fcppt/math/compare.hpp>
 #include <fcppt/ratio/milli.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/test/unit_test.hpp>
+#include <limits>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -22,10 +22,5 @@ BOOST_AUTO_TEST_CASE(
 	> float_millis;
 
 	BOOST_REQUIRE(
-		fcppt::math::compare(
-			float_millis(2.f)
-			/ float_millis(1.f),
-			2.f/1.f
-		)
-	);
+		float_millis(2.f) / float_millis(1.f) - 2.f/1.f < std::numeric_limits<float>::epsilon());
 }

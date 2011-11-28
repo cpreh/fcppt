@@ -1,14 +1,23 @@
+//          Copyright Carl Philipp Reh 2009 - 2011.
+// Distributed under the Boost Software License, Version 1.0.
+//    (See accompanying file LICENSE_1_0.txt or copy at
+//          http://www.boost.org/LICENSE_1_0.txt)
+
+
 #include <fcppt/algorithm/append.hpp>
-#include <fcppt/container/array.hpp>
 #include <fcppt/algorithm/array_map.hpp>
 #include <fcppt/algorithm/levenshtein.hpp>
 #include <fcppt/algorithm/shift_compare.hpp>
+#include <fcppt/container/array.hpp>
+#include <fcppt/config/external_begin.hpp>
 #include <boost/phoenix/core.hpp>
-#include <vector>
-#include <string>
-#include <iostream>
 #include <functional>
+#include <iostream>
 #include <ostream>
+#include <string>
+#include <vector>
+#include <fcppt/config/external_end.hpp>
+
 
 int
 main()

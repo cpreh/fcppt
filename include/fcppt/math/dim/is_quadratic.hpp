@@ -7,9 +7,7 @@
 #ifndef FCPPT_MATH_DIM_IS_QUADRATIC_HPP_INCLUDED
 #define FCPPT_MATH_DIM_IS_QUADRATIC_HPP_INCLUDED
 
-#include <fcppt/math/compare.hpp>
 #include <fcppt/math/dim/basic_impl.hpp>
-
 
 namespace fcppt
 {
@@ -26,20 +24,15 @@ template<
 >
 bool
 is_quadratic(
-	basic<T,N,S> const &r
+	dim::basic<T,N,S> const &r
 )
 {
 	for(
-		typename basic<T,N,S>::const_iterator i = r.begin();
+		typename dim::basic<T,N,S>::const_iterator i = r.begin();
 		i != r.end();
 		++i
 	)
-		if(
-			!math::compare(
-				*i,
-				r[0]
-			)
-		)
+		if(*i != r[0])
 			return false;
 	return true;
 }

@@ -5,13 +5,13 @@
 
 
 #include <fcppt/math/pi.hpp>
+#include <fcppt/math/range_compare.hpp>
 #include <fcppt/math/matrix/matrix.hpp>
 #include <fcppt/math/matrix/rotation_x.hpp>
 #include <fcppt/math/vector/vector.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/test/unit_test.hpp>
 #include <fcppt/config/external_end.hpp>
-
 
 BOOST_AUTO_TEST_CASE(math_matrix_translation)
 {
@@ -39,14 +39,16 @@ BOOST_AUTO_TEST_CASE(math_matrix_translation)
 		1.f
 	);
 
-	BOOST_REQUIRE(
-		trans_ * vec_
-		==
-		vector_type(
-			0.f,
-			-1.f,
-			0.f,
-			1.f
-		)
-	);
+	float const epsilon = 0.001f;
+
+	BOOST_REQUIRE((
+		fcppt::math::range_compare(
+			trans_ * vec_,
+			vector_type(
+				0.f,
+				-1.f,
+				0.f,
+				1.f
+			),
+			epsilon)));
 }

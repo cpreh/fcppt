@@ -7,11 +7,13 @@
 #ifndef FCPPT_MATH_QUATERNION_IS_NORMALIZED_HPP_INCLUDED
 #define FCPPT_MATH_QUATERNION_IS_NORMALIZED_HPP_INCLUDED
 
-#include <fcppt/math/compare.hpp>
 #include <fcppt/math/quaternion/dot.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/math/quaternion.hpp>
+#include <boost/type_traits/is_floating_point.hpp>
+#include <boost/utility/enable_if.hpp>
 #include <fcppt/config/external_end.hpp>
+
 
 namespace fcppt
 {
@@ -21,16 +23,20 @@ namespace quaternion
 {
 /// Tests if the quaternion has norm 1
 template<typename T>
-bool
+typename
+boost::enable_if
+<
+	boost::is_floating_point<T>,
+	bool
+>::type
 is_normalized(
-	boost::math::quaternion<T> const &r)
+	boost::math::quaternion<T> const &r,
+	T const epsilon)
 {
 	return
-		fcppt::math::compare(
-			dot(
-				r,
-				r),
-			static_cast<T>(1));
+		dot(
+			r,
+			r) - static_cast<T>(1) < epsilon;
 }
 }
 }

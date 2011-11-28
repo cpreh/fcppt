@@ -105,7 +105,7 @@ template<typename T,std::size_t N>
 class vector
 {
 public:
-	// We need to access the the individual components
+	// We need to access the individual components
 	T &operator[](std::size_t const i)
 	{
 		return storage_[i];
@@ -228,7 +228,7 @@ is a number.
 
 This looks more complicated, but it turns out that this is advantageous in
 another way: with some modifications, we can now define a vector type that
-doesn't actually hold it's data in its own array, but is just pointing to a
+doesn't actually hold its data in its own array, but is just pointing to a
 location in memory (think about setting <code>Storage = float*</code>). This is
 what's typically called a <em>view</em> and it's very powerful. The matrix
 class, for example, holds its contents in a two-dimensional array. Taking a
@@ -259,7 +259,7 @@ vector2f;
 \endcode
 
 As you can see, this is error-prone and verbose. If you want to change the
-vector's data type or dimension, you have change it in two places.
+vector's data type or dimension, you have to change it in two places.
 
 Luckily, there is a better way to do it:
 
@@ -365,9 +365,10 @@ limit, look inside:
 
 \section fcpptmathvector_type_safety_and_dimension_conversion Type safety and dimension conversion
 
-In some areas, fcppt::math::vector::basic behaves like numeric type it
+In some areas, fcppt::math::vector::basic behaves like the numeric type it
 encapsulates. It has most of the numeric operators, can be freely copied and so
-on. Conversion between vectors, however, are always explicit. The following code will compile just fine:
+on. Conversion between vectors, however, are always explicit. The following
+code will compile just fine:
 
 \code
 int main()
@@ -517,15 +518,15 @@ various headers, too. Here's an exhaustive list:
 </tr>
 <tr>
 <td><code>basic_fwd.hpp</code></td>
-<td>Contains \link fcppt::math::vector::basic basic's \endlink forward declaration. Include this if you pass a vector by reference, for example.</td>
+<td>Contains \link fcppt::math::vector::basic basic's \endlink declaration. Include this if you pass a vector by reference, for example.</td>
 </tr>
 <tr>
 <td><code>basic_decl.hpp</code></td>
-<td>Contains \link fcppt::math::vector::basic basic's \endlink declaration.</td>
+<td>Contains \link fcppt::math::vector::basic basic's \endlink definition.</td>
 </tr>
 <tr>
 <td><code>basic_impl.hpp</code></td>
-<td>Contains \link fcppt::math::vector::basic basic's \endlink implementation.</td>
+<td>Contains the definition of \link fcppt::math::vector::basic basic's \endlink member functions.</td>
 </tr>
 <tr>
 <td><code>basic.hpp</code></td>

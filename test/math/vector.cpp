@@ -4,7 +4,6 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/math/compare.hpp>
 #include <fcppt/math/pi.hpp>
 #include <fcppt/math/range_compare.hpp>
 #include <fcppt/math/size_type.hpp>
@@ -45,6 +44,15 @@ fvector3;
 real const epsilon =
 	static_cast<real>(
 		0.001);
+
+template<typename T>
+bool
+compare(
+	T const &t1,
+	T const &t2)
+{
+	return std::abs(t1 - t2) < epsilon;
+}
 }
 
 BOOST_AUTO_TEST_CASE(vector_compare)
@@ -70,7 +78,7 @@ BOOST_AUTO_TEST_CASE(vector_angle_between)
 		vec2(0.f, 1.f);
 
 	BOOST_CHECK(
-		fcppt::math::compare(
+		::compare(
 			fcppt::math::vector::angle_between(
 				vec1,
 				vec2
@@ -87,7 +95,7 @@ BOOST_AUTO_TEST_CASE(vector_angle_between_cast)
 		vec2(0, 1);
 
 	BOOST_CHECK(
-		fcppt::math::compare(
+		::compare(
 			fcppt::math::vector::angle_between_cast<
 				real
 			>(
@@ -106,7 +114,7 @@ BOOST_AUTO_TEST_CASE(vector_signed_angle)
 		vec2(2.f, 2.f);
 
 	BOOST_CHECK(
-		fcppt::math::compare(
+		::compare(
 			fcppt::math::vector::signed_angle(
 				vec1,
 				vec2
@@ -123,7 +131,7 @@ BOOST_AUTO_TEST_CASE(vector_signed_angle_cast)
 		vec2(2, 2);
 
 	BOOST_CHECK(
-		fcppt::math::compare(
+		::compare(
 			fcppt::math::vector::signed_angle_cast<
 				real
 			>(
@@ -174,15 +182,17 @@ BOOST_AUTO_TEST_CASE(vector_swap)
 BOOST_AUTO_TEST_CASE(vector_unit_circle)
 {
 	BOOST_REQUIRE(
-		fcppt::math::vector::unit_circle(
-			fcppt::math::pi<
-				real
-			>()
-		)
-		==
-		fvector2(
-			-1.f,
-			0.f
+		fcppt::math::range_compare(
+			fcppt::math::vector::unit_circle(
+				fcppt::math::pi<
+					real
+				>()
+			),
+			fvector2(
+				-1.f,
+				0.f
+			),
+			epsilon
 		)
 	);
 }

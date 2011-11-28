@@ -8,8 +8,6 @@
 #define FCPPT_MATH_MATRIX_INVERSE_HPP_INCLUDED
 
 #include <fcppt/text.hpp>
-#include <fcppt/math/almost_zero.hpp>
-#include <fcppt/math/exception.hpp>
 #include <fcppt/math/inverse.hpp>
 #include <fcppt/math/is_static_size.hpp>
 #include <fcppt/math/matrix/adjugate.hpp>
@@ -27,9 +25,7 @@ namespace math
 namespace matrix
 {
 /**
- * Calculates the inverse matrix, uses fcppt::math::matrix::adjugate and fcppt::math::matrix::determinant. Throws fcppt::math::exception if fcppt::math::matrix::determinant(t) == 0
- *
- * @exception fcppt::math::exception If fcppt::math::matrix::determinant(t) == 0
+ * Calculates the inverse matrix, uses fcppt::math::matrix::adjugate and fcppt::math::matrix::determinant.
  */
 template
 <
@@ -55,8 +51,6 @@ inverse(
 	T const det =
 		fcppt::math::matrix::determinant(
 			t);
-	if (fcppt::math::almost_zero(det))
-		throw fcppt::math::exception(FCPPT_TEXT("tried to invert a matrix with determinant 0"));
 	return
 		fcppt::math::inverse(
 			det) *

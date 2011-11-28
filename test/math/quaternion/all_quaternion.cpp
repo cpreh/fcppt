@@ -4,8 +4,8 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/math/compare.hpp>
 #include <fcppt/math/pi.hpp>
+#include <fcppt/math/range_compare.hpp>
 #include <fcppt/math/quaternion/from_angle_and_axis.hpp>
 #include <fcppt/math/quaternion/to_angle_and_axis.hpp>
 #include <fcppt/math/quaternion/vector_rotation.hpp>
@@ -15,6 +15,7 @@
 #include <fcppt/config/external_begin.hpp>
 #include <boost/math/quaternion.hpp>
 #include <boost/test/unit_test.hpp>
+#include <cmath>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -52,25 +53,23 @@ BOOST_AUTO_TEST_CASE(all_quaternion)
 		angle,
 		axis);
 
-	BOOST_CHECK(
-		fcppt::math::compare(
-			angle,
-			original_angle) &&
-		axis == original_axis);
+	element_type const epsilon = 0.001f;
 
 	BOOST_CHECK(
-		fcppt::math::quaternion::vector_rotation(
-			vector_type(
-				1,
-				0,
-				0
-			),
-			rot
-		)
-		== vector_type(
+		std::abs(angle - original_angle) < epsilon &&
+		axis == original_axis);
+
+	BOOST_CHECK((
+		fcppt::math::range_compare(
+			fcppt::math::quaternion::vector_rotation(
+				vector_type(
+					1,
+					0,
+					0),
+				rot),
+		vector_type(
 			-1,
 			0,
-			0
-		)
-	);
+			0),
+		epsilon)));
 }

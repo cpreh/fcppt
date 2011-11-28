@@ -7,7 +7,6 @@
 #ifndef FCPPT_MATH_VECTOR_SLERP_HPP_INCLUDED
 #define FCPPT_MATH_VECTOR_SLERP_HPP_INCLUDED
 
-#include <fcppt/math/almost_zero.hpp>
 #include <fcppt/math/vector/arithmetic.hpp>
 #include <fcppt/math/vector/basic.hpp>
 #include <fcppt/math/vector/dot.hpp>
@@ -40,10 +39,6 @@ slerp(
 				(fcppt::math::vector::length(start)*fcppt::math::vector::length(end))),
 		sinomega =
 			std::sin(omega);
-
-	// We divide by sin(omega) below, so watch out
-	if (fcppt::math::almost_zero(sinomega))
-		return start;
 
 	return
 		std::sin((static_cast<T>(1)-t) * omega) / sinomega * start +

@@ -7,7 +7,6 @@
 #ifndef FCPPT_MATH_SPHERE_BASIC_IMPL_HPP_INCLUDED
 #define FCPPT_MATH_SPHERE_BASIC_IMPL_HPP_INCLUDED
 
-#include <fcppt/math/compare.hpp>
 #include <fcppt/math/sphere/basic_decl.hpp>
 #include <fcppt/math/vector/basic_impl.hpp>
 #include <fcppt/math/vector/comparison.hpp>
@@ -100,11 +99,8 @@ fcppt::math::sphere::operator==(
 )
 {
 	return
-		_a.origin() == _b.origin()
-		&& math::compare(
-			_a.radius(),
-			_b.radius()
-		);
+		_a.origin() == _b.origin() &&
+		_a.radius() == _b.radius();
 }
 
 template<

@@ -7,7 +7,10 @@
 #ifndef FCPPT_MATH_RANGE_COMPARE_HPP_INCLUDED
 #define FCPPT_MATH_RANGE_COMPARE_HPP_INCLUDED
 
+#include <fcppt/math/diff.hpp>
 #include <fcppt/config/external_begin.hpp>
+#include <boost/type_traits/is_floating_point.hpp>
+#include <boost/utility/enable_if.hpp>
 #include <cmath>
 #include <fcppt/config/external_end.hpp>
 
@@ -20,18 +23,27 @@ namespace math
 /// (two types having <code>::%const_iterator</code> as well as begin/end to be
 /// exact) and compares them pointwise. Can be applied to dim/vector
 /// and other types.
-template<typename Range1,typename Range2,typename T>
-bool
+template<typename Range,typename T>
+typename
+boost::enable_if
+<
+	boost::is_floating_point<typename Range::value_type>,
+	bool
+>::type
 range_compare(
-	Range1 const &r1,
-	Range2 const &r2,
+	Range const &r1,
+	Range const &r2,
 	T const &epsilon)
 {
-	typename Range1::const_iterator i1 = r1.begin();
-	typename Range2::const_iterator i2 = r2.begin();
-
-	for(; i1 != r1.end(); ++i1,++i2)
-		if (std::abs(*i1 - *i2) > epsilon) // FIXME: use math::diff!
+	for(
+		typename Range::const_iterator
+			i1 =
+				r1.begin(),
+			i2 =
+				r2.begin();
+		i1 != r1.end();
+		++i1,++i2)
+		if (fcppt::math::diff(*i1,*i2) > epsilon)
 			return false;
 
 	return true;

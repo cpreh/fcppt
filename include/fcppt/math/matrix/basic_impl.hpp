@@ -7,7 +7,6 @@
 #ifndef FCPPT_MATH_MATRIX_BASIC_IMPL_HPP_INCLUDED
 #define FCPPT_MATH_MATRIX_BASIC_IMPL_HPP_INCLUDED
 
-#include <fcppt/math/compare.hpp>
 #include <fcppt/math/detail/array_adapter_impl.hpp>
 #include <fcppt/math/detail/assign.hpp>
 #include <fcppt/math/detail/initial_size.hpp>
