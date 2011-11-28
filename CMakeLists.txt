@@ -801,7 +801,6 @@ set(
 	include/fcppt/make_shared_ptr.hpp
 	include/fcppt/make_strong_typedef.hpp
 	include/fcppt/make_unique_ptr.hpp
-	include/fcppt/math/almost_zero.hpp
 	include/fcppt/math/box/basic_decl.hpp
 	include/fcppt/math/box/basic_fwd.hpp
 	include/fcppt/math/box/basic_impl.hpp
@@ -821,7 +820,6 @@ set(
 	include/fcppt/math/box/structure_cast.hpp
 	include/fcppt/math/ceil_div.hpp
 	include/fcppt/math/clamp.hpp
-	include/fcppt/math/compare.hpp
 	include/fcppt/math/deg_to_rad.hpp
 	include/fcppt/math/detail/array_adapter.hpp
 	include/fcppt/math/detail/array_adapter_impl.hpp
@@ -830,7 +828,6 @@ set(
 	include/fcppt/math/detail/assign.hpp
 	include/fcppt/math/detail/before.hpp
 	include/fcppt/math/detail/checked_access.hpp
-	include/fcppt/math/detail/compare.hpp
 	include/fcppt/math/detail/construct.hpp
 	include/fcppt/math/detail/diff.hpp
 	include/fcppt/math/detail/dim_matches.hpp
@@ -906,7 +903,6 @@ set(
 	include/fcppt/math/is_rational.hpp
 	include/fcppt/math/is_static_size.hpp
 	include/fcppt/math/log.hpp
-	include/fcppt/math/machine_epsilon.hpp
 	include/fcppt/math/math.hpp
 	include/fcppt/math/matrix/adjugate.hpp
 	include/fcppt/math/matrix/arithmetic.hpp
@@ -950,7 +946,6 @@ set(
 	include/fcppt/math/matrix/vector.hpp
 	include/fcppt/math/mod.hpp
 	include/fcppt/math/mod_assign.hpp
-	include/fcppt/math/nearly_equals.hpp
 	include/fcppt/math/next_pow_2.hpp
 	include/fcppt/math/null.hpp
 	include/fcppt/math/pi.hpp

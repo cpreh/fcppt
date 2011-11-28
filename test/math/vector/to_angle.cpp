@@ -4,12 +4,12 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/math/compare.hpp>
 #include <fcppt/math/vector/basic.hpp>
 #include <fcppt/math/vector/static.hpp>
 #include <fcppt/math/vector/to_angle.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/test/unit_test.hpp>
+#include <cmath>
 #include <fcppt/config/external_end.hpp>
 
 BOOST_AUTO_TEST_CASE(
@@ -42,10 +42,8 @@ BOOST_AUTO_TEST_CASE(
 		dest
 	);
 
+	float const epsilon = 0.0001f;
+
 	BOOST_REQUIRE(
-		fcppt::math::compare(
-			*dest,
-			0.f
-		)
-	);
+		std::abs(*dest) < epsilon);
 }
