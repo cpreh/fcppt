@@ -588,13 +588,12 @@ set(
 	include/fcppt/cyclic_iterator_impl.hpp
 	include/fcppt/detail/char_type.hpp
 	include/fcppt/detail/cyclic_iterator_base.hpp
+	include/fcppt/detail/enable_optional_ref_conv.hpp
+	include/fcppt/detail/enable_optional_value_conv.hpp
 	include/fcppt/detail/make_ptr_base.hpp
 	include/fcppt/detail/make_shared_wrapper.hpp
 	include/fcppt/detail/make_shared_wrapper_fwd.hpp
 	include/fcppt/detail/nullptr_t.hpp
-	include/fcppt/detail/optional_base_decl.hpp
-	include/fcppt/detail/optional_base_impl.hpp
-	include/fcppt/detail/optional_to_pointer.hpp
 	include/fcppt/detail/process_assert.hpp
 	include/fcppt/detail/strong_typedef_assignment_operator.hpp
 	include/fcppt/detail/strong_typedef_binary_operator.hpp
@@ -608,9 +607,6 @@ set(
 	include/fcppt/detail_unique_ptr/storage.hpp
 	include/fcppt/dynamic_cast.hpp
 	include/fcppt/dynamic_pointer_cast.hpp
-	include/fcppt/empty_optional.hpp
-	include/fcppt/empty_optional_tag.hpp
-	include/fcppt/empty_optional_tag_fwd.hpp
 	include/fcppt/endianness/copy_n_from_host.hpp
 	include/fcppt/endianness/copy_n_swapped.hpp
 	include/fcppt/endianness/copy_n_to_host.hpp
