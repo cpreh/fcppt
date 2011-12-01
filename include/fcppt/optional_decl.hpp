@@ -47,7 +47,7 @@ none.
 There are several ways that are often used to make this work:
 <ul>
 <li>Using a <em>special value</em> which indicates no value, for example
-<code>static_Cast<unsigned>(-1)</code></li>
+<code>static_cast<unsigned>(-1)</code></li>
 <li>Using a pointer to a value and set the pointer to NULL to indicate no
 value</li>
 <li>Setting an additional bool flag</li>
@@ -69,7 +69,7 @@ Here is a small example.
 typedef fcppt::optional<
 	unsigned
 > optional_uint;
-.
+
 void
 test_function(
 	optional_uint opt
@@ -126,14 +126,15 @@ in contrast to optional references:
 <ul>
 <li>They can be assigned from an expression of type T const &.</li>
 <li>They can be constructed from an fcppt::optional<T &> or an
-fcppt::optional<T const &>. This has the same semantics like constructing a T
+fcppt::optional<T const &>. This has the same semantics as constructing a T
 from a T & or T const & with the addition that has_value will be preserved.</li>
 <li>They can also be assigned from an fcppt::optional<T &> or an
 fcppt::optional<T const &> with the same semantics.</li>
 <li>An optional value can be reset, using fcppt::optional<T>::reset. The
 optional will have no value after that.</li>
-<li>Their own constness determines if they can be modified which means
-both the stored value and if the optional is empty.</li>
+<li>Their own constness determines if they can be modified which means if the
+stored value is const and if the optional can be reset or assigned a new
+value.</li>
 </ul>
 
 For optional references, see \ref optional_reference
@@ -187,7 +188,7 @@ public:
 	/**
 	\brief Constructs an empty optional
 
-	\post has_value() will be true.
+	\post has_value() will be false.
 	*/
 	optional();
 
@@ -198,7 +199,7 @@ public:
 
 	\param ref The value to initialize the optional with
 
-	\post has_value() will be false.
+	\post has_value() will be true.
 	*/
 	explicit
 	optional(
@@ -426,12 +427,12 @@ CopyConstructible, Assignable or even complete.
 \section optional_reference Optional references
 
 Optional references are somewhat similar to pointers. However, pointers are a
-much broader concept: In addition of making references optional (by using the
+much broader concept: In addition to making references optional (by using the
 null pointer), they can be used to manage dynamically allocated memory using
-new and delete or other allocation and dealocation functions, or they can be
+new and delete or other allocation and deallocation functions, or they can be
 used to address static or dynamic arrays using pointer arithmetic. Therefore,
-pointers are a too broad concept. fcppt::optional<T &> only focuses on one
-thing: Making a reference optional. As a benefit, it also default initializes
+pointers are too broad a concept. fcppt::optional<T &> only focuses on one
+thing: Making a reference optional. As a benefit, it also default-initializes
 to the empty optional, where an uninitialized pointer would be undefined.
 
 See \ref optional_motivation for a general explanation of optionals and \ref
