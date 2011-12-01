@@ -20,9 +20,11 @@ namespace math
 namespace vector
 {
 
-/// Typedef helper for dynamic vectors
 /**
- * @return dynamic<T>::type
+\brief Typedef helper for dynamic vectors
+
+See the introduction to fcppt::math::vector::basic for more information on
+dynamic vectors (and on this class).
 */
 template<
 	typename T

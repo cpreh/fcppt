@@ -11,6 +11,7 @@
 #include <iostream>
 #include <fcppt/config/external_end.hpp>
 
+//! [grid_iteration]
 
 namespace
 {

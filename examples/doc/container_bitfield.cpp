@@ -8,6 +8,7 @@
 #include <fcppt/container/bitfield/bitfield.hpp>
 #include <fcppt/io/cout.hpp>
 
+//! [bitfield]
 
 namespace
 {

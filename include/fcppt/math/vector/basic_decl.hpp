@@ -548,6 +548,10 @@ various headers, too. Here's an exhaustive list:
 <td><code>output.hpp</code></td>
 <td>Contains an <code>operator<<</code> for the standard input streams (wide and narrow) which outputs vectors in the format: <code>(v1,v2,v3,...)</code></td>
 </tr>
+<tr>
+<td><code>dim.hpp</code></td>
+<td>Contains arithmetic operators to interoperate with the fcppt::math::dim::basic class (see this class for more information)</td>
+</tr>
 </table>
 */
 template<
