@@ -17,9 +17,21 @@ namespace math
 namespace vector
 {
 
-/// Calculates the square of the vector's length
 /**
- * Equivalent to dot(@a v, @a v).
+\brief Calculate the square of the vector's length
+\ingroup fcpptmathvector
+\tparam T The vector's <code>value_type</code>
+\tparam N The vector's dimension type
+\tparam S The vector's storage type
+\param v The vector to calculate the length for.
+
+This is equivalent to <code>dot(v,v)</code>.
+
+\note
+If you just want the length, use fcppt::math::vector::length
+
+\see
+fcppt::math::vector::length
 */
 template<
 	typename T,

@@ -17,6 +17,9 @@ namespace math
 {
 namespace vector
 {
+/**
+\brief Calculate vector modulo a scalar
+*/
 template<typename T,typename N,typename S>
 vector::basic<T,N,S> const
 mod(
