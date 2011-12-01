@@ -69,6 +69,15 @@ float vi_length =
 std::cout << (std::abs(vf_length - vi_length) < 0.001f);
 \endcode
 */
+/**
+\brief Calculates the length of a vector
+\ingroup fcpptmathvector
+\tparam T The vector's <code>value_type</code>. Must be a floating point type.
+\tparam N The vector's dimension type
+\tparam S The vector's storage type
+
+
+*/
 template<
 	typename T,
 	typename N,
