@@ -21,7 +21,7 @@ namespace fcppt
 {
 
 /**
-\brief A class that makes values or references optional
+\brief A class that makes values optional
 \tparam T The type to make optional, which must be CopyConstructible,
 Assignable and complete.
 
@@ -57,9 +57,8 @@ All of these have several shortcomings:
 <ul>
 <li>Special values might not be available, and on top of that they are very
 error prone.</li>
-<li>Pointers to temporaries that might vanish and cannot be
-passed around.  For example a function returning a value cannot do so by a
-pointer.</li>
+<li>Pointers to temporaries that might vanish cannot be passed around. For
+example a function returning a value cannot do so by a pointer.</li>
 <li>Additional bool flags are cumbersome to handle and are error
 prone as well.</li>
 </ul>
@@ -123,7 +122,7 @@ assert(
 \endcode
 
 Optional values, denoted by fcppt::optional<T>, have some special semantics,
-in contrash to optional references:
+in contrast to optional references:
 <ul>
 <li>They can be assigned from an expression of type T const &.</li>
 <li>They can be constructed from an fcppt::optional<T &> or an
@@ -232,9 +231,9 @@ public:
 	);
 
 	/**
-	\brief Copies constructs an optional
+	\brief Copy constructs an optional
 
-	Constructs an optionalby copying from \a other if
+	Constructs an optional by copying from \a other if
 	<code>other.has_value()</code> is true. Otherwise, the new optional
 	will have no value.
 
@@ -345,7 +344,10 @@ public:
 	operator->() const;
 
 	/**
-	\brief Resets the optional and destroys the value
+	\brief Resets the optional and destroys its value, if any
+
+	If <code>has_value()</code> is true, then the current value will be
+	destroyed.
 
 	\post <code>has_value() will be false</code>
 	*/
@@ -425,9 +427,9 @@ CopyConstructible, Assignable or even complete.
 
 Optional references are somewhat similar to pointers. However, pointers are a
 much broader concept: In addition of making references optional (by using the
-null pointer), They can be used to manage dynamically allocated memory, using
+null pointer), they can be used to manage dynamically allocated memory using
 new and delete or other allocation and dealocation functions, or they can be
-used to address static or dynamic arrays, using pointer arithmetic. Therefore,
+used to address static or dynamic arrays using pointer arithmetic. Therefore,
 pointers are a too broad concept. fcppt::optional<T &> only focuses on one
 thing: Making a reference optional. As a benefit, it also default initializes
 to the empty optional, where an uninitialized pointer would be undefined.
