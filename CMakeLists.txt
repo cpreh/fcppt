@@ -987,7 +987,6 @@ set(
 	include/fcppt/math/vector/has_dim.hpp
 	include/fcppt/math/vector/hypersphere_to_cartesian.hpp
 	include/fcppt/math/vector/input.hpp
-	include/fcppt/math/vector/is_null.hpp
 	include/fcppt/math/vector/length.hpp
 	include/fcppt/math/vector/length_square.hpp
 	include/fcppt/math/vector/make.hpp
