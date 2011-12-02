@@ -175,14 +175,29 @@ class optional
 		optional
 	)
 public:
+	/**
+	\brief The value type
+	*/
 	typedef T value_type;
 
+	/**
+	\brief The non const reference type to <code>value_type</code>
+	*/
 	typedef T &reference;
 
+	/**
+	\brief The const reference type to <code>value_type</code>
+	*/
 	typedef T const &const_reference;
 
+	/**
+	\brief The non const pointer type to <code>value_type</code>
+	*/
 	typedef T *pointer;
 
+	/**
+	\brief The const pointer type to <code>value_type</code>
+	*/
 	typedef T const *const_pointer;
 
 	/**
@@ -483,8 +498,21 @@ class optional<
 		optional
 	)
 public:
+	/**
+	\brief The reference type
+
+	The reference type the optional reference holds. If this is a const
+	reference or not depends on the template parameter
+	*/
 	typedef T &reference;
 
+	/**
+	\brief The pointer type
+
+	The pointer type corresponding to the reference type the optional
+	reference holds. If this is const or not depends on the template
+	parameter.
+	*/
 	typedef T *pointer;
 
 	/**
@@ -511,7 +539,14 @@ public:
 	/**
 	\brief Constructs an fcppt::optional<T const &> from an
 	fcppt::optional<T &>
-	TODO
+
+	Constructs an optional reference by taking the reference from \a other
+	if <code>other.has_value()</code> is true. Otherwise, the new optional
+	will have no value. This is a special constructor to allow conversion
+	between an <code>fcppt::optional<T &></code> to <code>fcppt::optional<T
+	const &></code>
+
+	\param other The optional to copy from
 	*/
 	template<
 		typename Other
@@ -519,36 +554,56 @@ public:
 	explicit optional(
 		optional<
 			Other &
-		> const &,
+		> const &other,
 		typename detail::enable_optional_ref_conv<
 			T,
 			Other
 		>::type * = 0
 	);
 
-	/// TODO
+	/**
+	\brief Copy constructs an optional reference
+
+	Constructs an optional by taking the reference from \a other if
+	<code>other.has_value()</code> is true. Otherwise, the new optional
+	will have no value.
+	*/
 	optional(
-		optional const &
+		optional const &other
 	);
 
-	/// TODO
+	/**
+	\brief Assigns from an optional reference
+
+	Assigns the reference from \a other if <code>other.has_value()</code>
+	is true. Otherwise, the optional reference will have no value.
+	*/
 	optional &
 	operator=(
 		optional const &
 	);
 
-	/// TODO
 	~optional();
 
-	/// TODO
+	/**
+	\brief Returns the current reference
+
+	\warning The behaviour is undefined if <code>has_value()</code> is false
+	*/
 	reference
 	operator*() const;
 
-	/// TODO
+	/**
+	\brief Returns the current reference by pointer
+
+	\warning The behaviour is undefined if <code>has_value()</code> is false
+	*/
 	pointer
 	operator->() const;
 
-	/// TODO
+	/**
+	\brief Returns whether the optional holds a reference
+	*/
 	bool
 	has_value() const;
 private:
