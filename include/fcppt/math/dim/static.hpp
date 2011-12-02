@@ -22,7 +22,12 @@ namespace math
 namespace dim
 {
 
-// Typedefs a dim with static dimensions
+/**
+\brief Typedef helper for static dims
+\ingroup fcpptmathdim
+See the introduction to fcppt::math::vector::basic for more information on
+static dims (and on this class).
+*/
 template<
 	typename T,
 	size_type N

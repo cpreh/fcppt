@@ -22,6 +22,9 @@ namespace math
 namespace dim
 {
 
+/**
+\brief Metafunction to check the dimension of a static dim
+*/
 template<
 	typename Dim,
 	size_type Size
@@ -31,6 +34,7 @@ struct has_dim
 boost::false_type
 {};
 
+/// \cond FCPPT_DOXYGEN_DEBUG
 template<
 	typename T,
 	typename N,
@@ -51,6 +55,7 @@ detail::dim_matches<
 	N::value
 >
 {};
+/// \endcond
 
 }
 }

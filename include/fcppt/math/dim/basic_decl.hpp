@@ -35,6 +35,20 @@ namespace dim
 \tparam S The dim's storage type
 \ingroup fcpptmathdim
 
+<table id="toc">
+<tr>
+<td>
+
+<ol>
+	<li>\ref fcpptmathdimbasic_motivation</li>
+	<li>\ref fcpptmathdimbasic_converting_from_and_to_vectors</li>
+	<li>\ref fcpptmathdimbasic_headers</li>
+</ol>
+
+</td>
+</tr>
+</table>
+
 \section fcpptmathdimbasic_motivation Motivation
 
 When writing code that deals with geometry, you need a type to denote the
@@ -57,7 +71,91 @@ parameters), but not the same member and free functions.
 
 \section fcpptmathdimbasic_converting_from_and_to_vectors Converting from and to vectors
 
+To convert a dimension to a vector, use fcppt::math::dim::structure_cast:
 
+\code
+typedef
+fcppt::math::dim::static_<int,3>::type
+dim3;
+
+typedef
+fcppt::math::vector::static_<int,3>::type
+vector3;
+
+dim3 d(1,2,3);
+
+vector3 v = fcppt::math::dim::structure_cast<vector3>(d);
+\endcode
+
+Conversely, use fcppt::math::vector::structure_cast to convert a vector to a dim:
+
+\code
+typedef
+fcppt::math::dim::static_<int,3>::type
+dim3;
+
+typedef
+fcppt::math::vector::static_<int,3>::type
+vector3;
+
+vector3 d(1,2,3);
+
+dim3 v = fcppt::math::vector::structure_cast<dim3>(d);
+\endcode
+
+If you include the fcppt/math/vector/dim.hpp header, you get the operators
+<code>+-*%/</code> which all have the signature
+
+<pre>
+vector::basic<T,N,S> operator(vector::basic<T,N,S> left,dim::basic<T,N,S>)
+</pre>
+
+This way, you can add a dimension to a vector, for example.
+
+\section fcpptmathdimbasic_headers Header files
+
+fcppt::math::dim is spread out across various header files. There's one
+header per free function. fcppt::math::dim::basic itself is split into
+various headers, too. Here's an exhaustive list:
+
+<table>
+<tr>
+<th>Header file</th>
+<th>Description</th>
+</tr>
+<tr>
+<td><code>basic_fwd.hpp</code></td>
+<td>Contains \link fcppt::math::dim::basic basic's \endlink declaration. Include this if you pass a dim by reference, for example.</td>
+</tr>
+<tr>
+<td><code>basic_decl.hpp</code></td>
+<td>Contains \link fcppt::math::dim::basic basic's \endlink definition.</td>
+</tr>
+<tr>
+<td><code>basic_impl.hpp</code></td>
+<td>Contains the definition of \link fcppt::math::dim::basic basic's \endlink member functions.</td>
+</tr>
+<tr>
+<td><code>basic.hpp</code></td>
+<td>Includes <code>basic_fwd.hpp</code>, <code>basic_decl.hpp</code> and <code>basic_impl.hpp</code></td>
+</tr>
+<tr>
+<td><code>arithmetic.hpp</code></td>
+<td>Contains \link fcppt::math::dim::basic basic's \endlink arithmetic operators.</td>
+</tr>
+<tr>
+<td><code>comparison.hpp</code></td>
+<td>Contains \link fcppt::math::dim::basic basic's \endlink comparison operators.</td>
+</tr>
+<tr>
+<td><code>input.hpp</code></td>
+<td>Contains an <code>operator>></code> for the standard input streams (wide and narrow) which expects dims to be input in the format: <code>(v1,v2,v3,...)</code></td>
+</tr>
+<tr>
+<td><code>output.hpp</code></td>
+<td>Contains an <code>operator<<</code> for the standard input streams (wide and narrow) which outputs dims in the format: <code>(v1,v2,v3,...)</code></td>
+</tr>
+</table>
 */
 template<
 	typename T,

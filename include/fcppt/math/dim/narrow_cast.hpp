@@ -18,9 +18,38 @@ namespace math
 namespace dim
 {
 
-/// Converts a dim into a dim with fewer elements
 /**
- * @tparam Dest must be a dim type with fewer elements.
+\brief Shortens a dim to a smaller dimension
+\ingroup fcpptmathdim
+\tparam Dest Must be a dim with a smaller dimension
+\tparam N The dim's dimension
+\tparam T The dim's <code>value_type</code>
+\tparam S The dim's storage type
+\param src The dim to shorten (narrow)
+
+The inverse operation is fcppt::math::dim::construct.
+
+\see fcppt::math::dim::construct
+
+Example:
+
+\code
+typedef
+fcppt::math::dim::static_<int,2>::type
+int2;
+
+typedef
+fcppt::math::dim::static_<int,3>::type
+int3;
+
+int3 wide_dim(1,2,3);
+int2 narrow_dim =
+	fcppt::math::dim::narrow_cast<int2>(
+		wide_dim);
+
+// Outputs: 1,2
+std::cout << narrow_dim;
+\endcode
 */
 template<
 	typename Dest,

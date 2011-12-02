@@ -20,7 +20,13 @@ namespace math
 namespace dim
 {
 
-/// Creates a dim of Dimension @tparam N with all components set to @param _value
+/**
+\brief Constructs a static dim with all components set to a given value
+\ingroup fcpptmathdim
+\tparam N Must be a static dimension
+\tparam T The dim's <code>value_type</code>
+\param _value The value to fill the dim with
+*/
 template<
 	math::size_type N,
 	typename T

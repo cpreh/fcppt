@@ -8,7 +8,13 @@
 #define FCPPT_MATH_DIM_MAX_CTOR_PARAMS_HPP_INCLUDED
 
 #ifndef FCPPT_MATH_DIM_MAX_CTOR_PARAMS
-/// The maximum count of constructor parameters for a dim
+/**
+\brief The maximum count of constructor parameters for a dim
+\ingroup fcpptmathdim
+\details
+Increasing this will increase compile time but will allow for
+higher-dimensional variadic constructors.
+*/
 #define FCPPT_MATH_DIM_MAX_CTOR_PARAMS 4
 #endif
 

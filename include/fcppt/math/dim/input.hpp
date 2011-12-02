@@ -23,7 +23,14 @@ namespace math
 namespace dim
 {
 
-/// Reads a dim from a basic_istream
+/**
+\brief Reads a dim from \p s, expecting it in the format
+
+<pre>(a_1,a_2,...)</pre>
+
+where <code>a_i</code> are the components
+\ingroup fcpptmathdim
+*/
 template<
 	typename T,
 	typename N,

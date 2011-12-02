@@ -879,10 +879,8 @@ set(
 	include/fcppt/math/dim/narrow_cast.hpp
 	include/fcppt/math/dim/normal_storage.hpp
 	include/fcppt/math/dim/output.hpp
-	include/fcppt/math/dim/quad.hpp
 	include/fcppt/math/dim/static.hpp
 	include/fcppt/math/dim/structure_cast.hpp
-	include/fcppt/math/dim/transform.hpp
 	include/fcppt/math/exception.hpp
 	include/fcppt/math/generate_binary_vectors.hpp
 	include/fcppt/math/impl/exception.hpp

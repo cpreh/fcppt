@@ -18,7 +18,18 @@ namespace math
 namespace dim
 {
 
-/// Converts a dim into a different dim of the same dimension using static_cast
+/**
+\brief Converts a dim into a different dim of the same dimension using <code>static_cast</code>
+\ingroup fcpptmathdim
+\tparam Dest The destination dim type (not its value type!)
+\tparam N The source dim's dimension
+\tparam T The source dim's <code>value_type</code>
+\tparam S The source dim's storage type
+\param _src The dim to cast
+
+See the introduction to fcppt::math::vector::basic for more information on this
+function (and dim/vector in general).
+*/
 template<
 	typename Dest,
 	typename T,
@@ -27,13 +38,13 @@ template<
 >
 Dest const
 structure_cast(
-	basic<T, N, S> const &src
+	basic<T, N, S> const &_src
 )
 {
 	return math::detail::structure_cast<
 		Dest
 	>(
-		src
+		_src
 	);
 
 }
