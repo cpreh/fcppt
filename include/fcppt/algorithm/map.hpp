@@ -17,9 +17,17 @@ namespace fcppt
 namespace algorithm
 {
 /**
-	Takes a source container (or a source "range", if you will),
-	applies a functor to each element and inserts it at the end of the
-	newly created target container
+ * \brief Transforms a container using a functor to another container
+ * \tparam TargetContainer Must be default-constructible
+ * \ingroup fcpptalgorithm
+ * \details
+ * This is equivalent to:
+ *
+ * <pre>
+ * std::transform(source.begin(),source.end(),inserter,f)
+ * </pre>
+ *
+ * with an appropriate <code>inserter</code>.
  */
 template
 <

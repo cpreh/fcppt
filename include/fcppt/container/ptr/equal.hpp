@@ -14,6 +14,10 @@ namespace container
 namespace ptr
 {
 
+/**
+\brief FIXME
+\ingroup fcpptcontainerptr
+*/
 template<
 	typename Ptr
 >

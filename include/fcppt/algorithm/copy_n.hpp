@@ -16,8 +16,15 @@ namespace fcppt
 namespace algorithm
 {
 
-/// Copies sz elements from beg to out
-/** Equivalent to std::copy(_beg, _beg + _sz, _out)
+/**
+ * \brief Copies sz elements from \p _beg to \p _out
+ * \ingroup fcpptalgorithm
+ * \details
+ * Equivalent to
+ *
+ * <pre>
+ * std::copy(_beg, _beg + _sz, _out)
+ * </pre>
 */
 template<
 	typename In,

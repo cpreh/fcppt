@@ -16,7 +16,15 @@ namespace fcppt
 namespace algorithm
 {
 
-/// Adds a range of strings delimited by delim
+/**
+ * \brief Joins a range of items delimited by \p delim
+ * \param _range A forward-iterable range. The range's value_type must have an <code>operator+=</code>
+ * \param _delim The delimiting value
+ * \ingroup fcpptalgorithm
+ * \details Example:
+ *
+ * \snippet doc/algorithm.cpp join_strings
+ */
 template
 <
 	typename Range

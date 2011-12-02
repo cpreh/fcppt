@@ -14,6 +14,10 @@ namespace fcppt
 namespace alignment
 {
 
+/**
+ * FIXME
+ * \ingroup fcpptalignment
+ */
 template<
 	typename T
 >

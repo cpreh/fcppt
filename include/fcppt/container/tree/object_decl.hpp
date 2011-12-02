@@ -20,14 +20,131 @@
 #include <fcppt/config/external_end.hpp>
 
 
-//[tree
 namespace fcppt
 {
 namespace container
 {
+/// Contains fcppt::container::tree::object and helper types/functions for it.
 namespace tree
 {
+/**
+\defgroup fcpptcontainertree fcppt::container::tree
+\ingroup fcpptcontainer
+\brief See the documentation of fcppt::container::tree::object to know more.
+*/
 
+/**
+\brief A tree data structure
+\ingroup fcpptcontainertree
+
+<table id="toc">
+<tr>
+<td>
+
+<ol>
+	<li>\ref tree_introduction</li>
+	<li>\ref tree_traversals</li>
+	<li>\ref tree_noncopyable</li>
+	<li>\ref tree_copying</li>
+</ol>
+
+</td>
+</tr>
+</table>
+
+\section tree_introduction Introduction
+An fcppt::container::tree::object<T> is a container modeling an n-ary tree
+holding objects of type <code>T</code>. It has a value of type
+<code>T</code> and children of type fcppt::container::tree::object<T>.
+
+\note
+Because of the inherent recursive property of the tree, it has to store its
+children in a <a
+href="http://www.boost.org/doc/libs/1_48_0/libs/ptr_container/doc/ptr_list.html">boost::ptr_list</a>
+which might make tree a bit heavy to include.  Consider using forward
+declarations where possible.
+
+The tree tries to mimic the sequence containers from the standard library. Also,
+its implementation is "minimal" in the sense that everything but trivial
+operations are outsourced to external headers - the pre order traversal
+is an example of this. Most of the operations are self-explanatory.
+Here is a small example of the tree:
+
+\snippet container/tree_simple.cpp main
+
+Note also that all operations which implicitly depend on a parent being
+present are undefined if \link fcppt::container::tree::object::has_parent
+has_parent \endlink returns false. The same goes for all operations which
+depend on at least one child being present and \link
+fcppt::container::tree::object::empty empty \endlink returning true.
+
+\section tree_traversals Iterators/Traversals
+
+The tree uses a <a
+href="http://www.boost.org/doc/libs/1_48_0/libs/ptr_container/doc/ptr_list.html">boost::ptr_list</a>
+to store its children, so the iterator guarantees are the same as for this
+container. Apart from using the traditional iteration methods &ndash; using
+\link fcppt::container::tree::object::begin begin \endlink, \link
+fcppt::container::tree::object::end end \endlink, \link
+fcppt::container::tree::object::rbegin rbegin \endlink, \link
+fcppt::container::tree::object::rend rend \endlink
+&ndash; there are external traversal classes. Those are best explained using
+a little example:
+
+\snippet container/tree_traversal.cpp main
+
+Aside from \link fcppt::container::tree::pre_order pre_order \endlink, no
+other traversals are implemented as of yet.
+
+\section tree_noncopyable Non-copyable semantics
+
+We already mentioned <a
+href="http://www.boost.org/doc/libs/1_48_0/libs/ptr_container/doc/ptr_list.html">boost::ptr_list</a>,
+which is designed to store values by pointer and to have ownership at the
+same time.
+
+This is useful for values that cannot be copied, for example.
+<code>fcppt::container::tree::object</code> also supports storing non-copyable values
+(and taking ownership of them). Instead of writing
+
+\code
+fcppt::container::tree::object<T>
+\endcode
+
+you can say
+
+\code
+fcppt::container::tree::object
+<
+	fcppt::container::tree::ptr_value<T>
+>
+\endcode
+
+which turns the tree into a ptr_container. A <code>tree::object<ptr_value<T>
+></code> will have the following changes from a normal tree:
+
+<ul>
+	<li>All arguments of values it expects are <code>fcppt::unique_ptr<T></code> (see \ref insert_link_to_unique_ptr_introduction_here)</li>
+	<li>The internal type is an <code>fcppt::scoped_ptr<T></code> (see \ref insert_link_to_scoped_ptr_here)</li>
+</ul>
+
+It is also possible to release the held <code>scoped_ptr</code> with fcppt::container::tree::release.
+
+\section tree_copying Copying
+
+Every tree can be deeply copied by invoking its copy constructor or assignment
+operator. However, for a tree with noncopyable semantics, the situation isn't as easy. To still provide deep copying in this
+case, there is a function called \link fcppt::container::tree::copy_tree_value
+copy_tree_value \endlink which the tree will invoke via argument dependant
+lookup. For a <code>tree::%object<tree::ptr_value<T>></code> the signature must be
+
+\code
+fcppt::unique_ptr<T> copy_tree_value(T const &);
+\endcode
+
+The default behaviour is to invoke the copy constructor of <code>T</code> which will only
+work if <code>T</code> is copyable itself.
+*/
 template<
 	typename T
 >
@@ -67,7 +184,7 @@ public:
 		T
 	> is_ptr_tree;
 
-	/// The type to store, possibly extracted from ptr_value<T>
+	/// The type to store, possibly extracted from <code>ptr_value<T></code>
 	typedef typename boost::mpl::eval_if<
 		is_ptr_tree,
 		fcppt::mpl::inner<
@@ -78,7 +195,7 @@ public:
 		>
 	>::type stored_type;
 
-	/// The type to forward to other functions (either T or unique_ptr<T>)
+	/// The type to forward to other functions (either <code>T</code> or <code>unique_ptr<T></code>)
 	typedef typename boost::mpl::if_<
 		is_ptr_tree,
 		fcppt::unique_ptr<
@@ -87,14 +204,14 @@ public:
 		stored_type
 	>::type arg_base_type;
 
-	/// The type to pass to other functions (either T const & or unique_ptr<T>)
+	/// The type to pass to other functions (either <code>T const &</code> or <code>unique_ptr<T></code>)
 	typedef typename boost::mpl::if_<
 		is_ptr_tree,
 		arg_base_type,
 		arg_base_type const &
 	>::type arg_type;
 
-	/// The type that holds the stored type (either T or scoped_ptr<T>)
+	/// The type that holds the stored type (either <code>T</code> or <code>scoped_ptr<T></code>)
 	typedef typename boost::mpl::if_<
 		is_ptr_tree,
 		fcppt::scoped_ptr<
@@ -111,17 +228,17 @@ public:
 		arg_type
 	);
 
-	/// Deeply copies a tree
 	/**
-	 * @see copy_tree_value
+	\brief Deeply copies a tree
+	\see tree_copying
 	*/
 	object(
 		object const &
 	);
 
-	/// Deeply assigns a tree
 	/**
-	 * @see copy_tree_value
+	\brief Deeply assigns a tree
+	\see tree_copying
 	*/
 	object &
 	operator=(
@@ -136,204 +253,351 @@ public:
 	child_list const &
 	children() const;
 
-	/// Returns a reference to the parent of this tree. If has_parent() is false, behaviour is undefined.
+	/**
+	\brief Returns a reference to the parent of this tree.
+
+	If \link fcppt::container::tree::object::has_parent has_parent \endlink is false, behaviour is undefined.
+	*/
 	object &
 	parent();
 
-	/// Returns a reference to the parent of this tree. If has_parent() is false, behaviour is undefined.
+	/**
+	\brief Returns a reference to the parent of this tree.
+
+	If \link fcppt::container::tree::object::has_parent has_parent \endlink is false, behaviour is undefined.
+	*/
 	object const &
 	parent() const;
 
-	/// Returns &(parent()) if has_parent() is true, else returns 0
+	/**
+	\brief Returns a pointer to the parent of this tree.
+
+	If there is no parent, it returns 0.
+	*/
 	object *
 	parent_ptr();
 
-	/// Returns &(parent()) if has_parent() is true, else returns 0
+	/**
+	\brief Returns a pointer to the parent of this tree.
+
+	If there is no parent, it returns 0.
+	*/
 	object const *
 	parent_ptr() const;
 
+	/**
+	\brief Returns if this tree has a parent.
+	*/
 	bool
 	has_parent() const;
 
+	/**
+	\brief Sets a new parent
+	*/
 	void
 	parent(
 		object &
 	);
 
-	/// Detaches the given child from the parent and returns it.
+	/**
+	\brief Detaches the given child from the parent and returns it.
+	*/
 	unique_ptr
 	release(
 		iterator
 	);
 
-	/// Returns an iterator pointing to the position in the parent's child container where this object resides. Behaviour is undefined if has_parent() is false
+	/**
+	\brief Returns an iterator pointing to the position in the parent's child container where this object resides.
+
+	Behaviour is undefined if \link fcppt::container::tree::object::has_parent has_parent \endlink is false
+	*/
 	iterator
 	child_position();
 
-	/// Returns an iterator pointing to the position in the parent's child container where this object resides. Behaviour is undefined if has_parent() is false
+	/**
+	\brief Returns an iterator pointing to the position in the parent's child container where this object resides.
+
+	Behaviour is undefined if \link fcppt::container::tree::object::has_parent has_parent \endlink is false
+	*/
 	const_iterator
 	child_position() const;
 
+	/**
+	\brief Sets a new value
+
+	Depending on whether or not the tree has noncopyable semantics, this
+	will either get a unique_ptr or <code>T</code> by value.
+	*/
 	void
 	value(
 		arg_type
 	);
 
+	/**
+	\brief Retrieves the tree's value
+	*/
 	stored_type &
 	value();
 
+	/**
+	\brief Retrieves the tree's value
+	*/
 	stored_type const &
 	value() const;
 
-	/// Returns if this node holds a value
 	/**
-	 * Will always be true for normal trees.
-	 * If the tree holds a ptr_value it depends on whether it has been initialized
+	\brief Returns if this node holds a value
+	Will always be true for normal trees.
+	If the tree holds a ptr_value it depends on whether it has been initialized
 	*/
 	bool
 	has_value() const;
 
-	/// Can be used to release the scoped_ptr
+	/**
+	\brief Returns a reference to the holder type
+
+	This can be used to release the the scoped_ptr if the tree has noncopyable semantics.
+
+	\see fcppt::container::tree::release
+	*/
 	holder_type &
 	holder();
 
+	/**
+	\brief Returns a const reference to the holder type
+	*/
 	holder_type const &
 	holder() const;
 
+	/**
+	\brief Inserts a new child at the end of the child list
+	*/
 	void
 	push_back(
 		unique_ptr
 	);
 
+	/**
+	\brief Inserts a new child at the end of the child list
+	*/
 	void
 	push_back(
 		arg_type
 	);
 
+	/**
+	\brief Removes a child from the end of the child list
+	*/
 	void
 	pop_back();
 
+	/**
+	\brief Adds a child in front of the child list
+	*/
 	void
 	push_front(
 		unique_ptr
 	);
 
+	/**
+	\brief Adds a child in front of the child list
+	*/
 	void
 	push_front(
 		arg_type
 	);
 
+	/**
+	\brief Removes a child from the front of the child list
+	*/
 	void
 	pop_front();
 
+	/**
+	\brief Removes all children
+	*/
 	void
 	clear();
 
-	/// Returns a reference to the last child. Undefined if empty() is true.
+	/**
+	\brief Returns a reference to the last child.
+
+	Behaviour is undefined if \link fcppt::container::tree::object::empty empty \endlink is true.
+	*/
 	reference
 	back();
 
-	/// Returns a reference to the last child. Undefined if empty() is true.
+	/**
+	\brief Returns a reference to the last child.
+
+	Behaviour is undefined if \link fcppt::container::tree::object::empty empty \endlink is true.
+	*/
 	const_reference
 	back() const;
 
-	/// Returns a reference to the first child. Undefined if empty() is true.
+	/**
+	\brief Returns a reference to the first child.
+
+	Behaviour is undefined if \link fcppt::container::tree::object::empty empty \endlink is true.
+	*/
 	reference
 	front();
 
-	/// Returns a reference to the first child. Undefined if empty() is true.
+	/**
+	\brief Returns a reference to the first child.
+
+	Behaviour is undefined if \link fcppt::container::tree::object::empty empty \endlink is true.
+	*/
 	const_reference
 	front() const;
 
+	/**
+	\brief Returns an iterator to the first child (if present)
+	*/
 	iterator
 	begin();
 
+	/**
+	\brief Returns an iterator to "one past the last child", if present, otherwise returns \link fcppt::container::tree::object::begin begin \endlink
+	*/
 	iterator
 	end();
 
+	/**
+	\brief Returns an iterator to the first child (if present)
+	*/
 	const_iterator
 	begin() const;
 
+	/**
+	\brief Returns an iterator to "one past the last child", if present, otherwise returns \link fcppt::container::tree::object::begin begin \endlink
+	*/
 	const_iterator
 	end() const;
 
+	/**
+	\brief Returns a reverse_iterator to the last element (if present)
+	*/
 	reverse_iterator
 	rbegin();
 
+	/**
+	\brief Returns a reverse_iterator to the first element (if present)
+	*/
 	reverse_iterator
 	rend();
 
+	/**
+	\brief Returns a const_reverse_iterator to the last element (if present)
+	*/
 	const_reverse_iterator
 	rbegin() const;
 
+	/**
+	\brief Returns a const_reverse_iterator to the first element (if present)
+	*/
 	const_reverse_iterator
 	rend() const;
 
+	/**
+	\brief Returns a const_iterator to the first child (if present)
+	*/
 	const_iterator
 	cbegin() const;
 
+	/**
+	\brief Returns a const_iterator to the first child (if present)
+	*/
 	const_iterator
 	cend() const;
 
+	/**
+	\brief Returns a const_reverse_iterator to the last element (if present)
+	*/
 	const_reverse_iterator
 	crbegin() const;
 
+	/**
+	\brief Returns a const_reverse_iterator to the first element (if present)
+	*/
 	const_reverse_iterator
 	crend() const;
 
-	/// Inserts an element before the given iterator
+	/**
+	\brief Inserts an element before the given iterator
+	*/
 	void
 	insert(
 		iterator,
 		unique_ptr
 	);
 
-	/// Inserts an element before the given iterator
+	/**
+	\brief Inserts an element before the given iterator
+	*/
 	void
 	insert(
 		iterator,
 		arg_type
 	);
 
-	/// Erases a single element
+	/**
+	\brief Erases a single element
+	*/
 	void
 	erase(
 		iterator
 	);
 
-	/// Erases a range
+	/**
+	\brief Erases a range
+	*/
 	void
 	erase(
 		iterator,
 		iterator
 	);
 
+	/**
+	\brief Returns the number of children
+
+	The complexity of this is O(n)
+	*/
 	size_type
 	size() const;
 
+	/**
+	\brief Returns the ptr_list's max_size
+	*/
 	size_type
 	max_size() const;
 
+	/**
+	\brief Returns if the container is empty
+	*/
 	bool
 	empty() const;
 
+	/**
+	\brief Swaps with another tree
+	*/
 	void
 	swap(
 		object &
 	);
-//<-
 private:
 	holder_type value_;
 
 	object *parent_;
 
 	child_list children_;
-//->
 };
 
-/// Compares the values and the children
 /**
- * equal to a.value() == b.value() && a.children() == b.children()
+\brief Compares the values and the children
+
+This is equal to <code>a.value() == b.value() && a.children() == b.children()</code>
 */
 template<
 	typename T
@@ -344,6 +608,11 @@ operator==(
 	object<T> const &
 );
 
+/**
+\brief Compares the values and the children
+
+This is equal to <code>a.value() != b.value() || a.children() != b.children()</code>
+*/
 template<
 	typename T
 >
@@ -353,6 +622,9 @@ operator!=(
 	object<T> const &
 );
 
+/**
+\brief Swaps two trees
+*/
 template<
 	typename T
 >
@@ -365,6 +637,5 @@ swap(
 }
 }
 }
-//]
 
 #endif

@@ -70,6 +70,7 @@ int main()
 		<< FCPPT_TEXT('\n');
 
 	// we can also release the held value
+//! [tree_ptr_release]
 	typedef fcppt::unique_ptr<
 		noncopyable
 	> noncopyable_unique_ptr;
@@ -80,6 +81,7 @@ int main()
 		)
 	);
 
+//! [tree_ptr_release]
 	// check that the internal scoped_ptr is now empty
 	// prints false
 	fcppt::io::cout()

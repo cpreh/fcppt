@@ -18,6 +18,13 @@ namespace container
 {
 namespace ptr
 {
+/**
+\brief Tries to replace element number \p _index by \p _ptr in \p _container
+\tparam PtrContainer A <code>ptr_array</code>
+\tparam UniquePtr A (compatible) fcppt::unique_ptr
+
+Transfers ownership of \p _ptr to \p _container
+*/
 template
 <
 	typename PtrContainer,

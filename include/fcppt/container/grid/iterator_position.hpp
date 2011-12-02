@@ -19,6 +19,12 @@ namespace container
 {
 namespace grid
 {
+/**
+\brief Returns the position of an iterator
+\ingroup fcpptcontainergrid
+\warning
+Behavior is undefined if the iterator doesn't belong to the given grid.
+*/
 template<typename Grid,typename Iterator>
 typename Grid::dim const
 iterator_position(

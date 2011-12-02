@@ -11,7 +11,7 @@
 #include <boost/mpl/and.hpp>
 #include <boost/utility/enable_if.hpp>
 #include <boost/type_traits/is_arithmetic.hpp>
-//\cond
+//\cond  FCPPT_DOXYGEN_DEBUG
 #define BOOST_TYPEOF_SILENT
 //\endcond
 #include <boost/typeof/typeof.hpp>

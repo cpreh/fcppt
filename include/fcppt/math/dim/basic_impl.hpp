@@ -129,6 +129,8 @@ FCPPT_MATH_DETAIL_MAKE_VARIADIC_CONSTRUCTOR(
 	(5, (template<typename T, typename N, typename S> fcppt::math::dim::basic<T, N, S>::basic))
 )
 
+// Doxygen says: warning: no uniquely matching class member found for ...
+/// \cond FCPPT_DOXYGEN_DEBUG 
 template<
 	typename T,
 	typename N,
@@ -143,6 +145,7 @@ fcppt::math::dim::basic<T, N, S>::operator=(
 
 	return *this;
 }
+/// \endcond
 
 template<
 	typename T,
@@ -181,7 +184,7 @@ template<
 fcppt::math::dim::basic<T, N, S>::~basic()
 {}
 
-// \cond
+// \cond FCPPT_DOXYGEN_DEBUG
 #define FCPPT_MATH_DIM_BASIC_DEFINE_OPERATOR(\
 	op\
 )\

@@ -22,8 +22,10 @@ namespace math
 {
 namespace vector
 {
-
-/// Reads a vector from a basic_istream
+/**
+\brief Reads a vector from \p s, expecting it in the format <code>'(a_1,a_2,...)'</code> where a_i are the components
+\ingroup fcpptmathvector
+*/
 template<
 	typename T,
 	typename N,

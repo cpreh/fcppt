@@ -19,8 +19,11 @@ namespace container
 {
 namespace grid
 {
-/// Fills a grid using a functor which has to have the signature:
-/// grid::value_type(grid::dim)
+/**
+ * \brief Fills a grid using a functor
+ * \ingroup fcpptcontainergrid
+ * \tparam Fn A functor with the signature: <code>grid::value_type(grid::dim)</code>
+ */
 template
 <
 	typename T,

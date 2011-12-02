@@ -71,6 +71,8 @@ fcppt::container::bitfield::proxy<StoredType>::operator=(
 	return *this;
 }
 
+// Doxygen says: warning: member `operator fcppt::container::bitfield::value_type' of class `proxy' cannot be found
+/// \cond  FCPPT_DOXYGEN_DEBUG
 template<
 	typename StoredType
 >
@@ -84,5 +86,6 @@ fcppt::container::bitfield::value_type() const
 		)
 		!= 0u;
 }
+/// \endcond
 
 #endif

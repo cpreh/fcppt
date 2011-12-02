@@ -20,6 +20,8 @@
 #include <fcppt/config/external_end.hpp>
 
 
+// doxygen says: warning: member `operator fcppt::detail_rv' of class `unique_ptr' cannot be found
+/// \cond FCPPT_DOXYGEN_DEBUG
 template<
 	typename T,
 	template<
@@ -38,6 +40,7 @@ operator fcppt::detail_unique_ptr::rv<
 			*this
 		);
 }
+/// \endcond
 
 template<
 	typename T,
@@ -310,6 +313,8 @@ fcppt::unique_ptr<T, Deleter>::get_deleter() const
 	return ptr_.second();
 }
 
+// Doxygen says: warning: member `operator int fcppt::unique_ptr' of class `unique_ptr' cannot be found
+/// \cond FCPPT_DOXYGEN_DEBUG
 template<
 	typename T,
 	template<
@@ -327,6 +332,7 @@ operator int fcppt::unique_ptr<T, Deleter>::nat::*() const
 			0
 		;
 }
+/// \endcond
 
 template<
 	typename T,
@@ -339,7 +345,7 @@ fcppt::unique_ptr<T, Deleter>::reset(
 	pointer const _ptr
 )
 {
-       	pointer const this_ptr(
+	pointer const this_ptr(
 		this->get()
 	);
 

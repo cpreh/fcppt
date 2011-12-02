@@ -22,7 +22,18 @@ namespace math
 namespace vector
 {
 
-/// Calculates the cross product of two three-dimensional vectors
+/**
+\brief Calculates the cross product of two three-dimensional vectors
+\ingroup fcpptmathvector
+\tparam T The vector's <code>value_type</code>
+\tparam N The vector's dimension type (must be three-dimensional if it's a static vector).
+\tparam S1 The first vector's storage type
+\tparam S2 The first vector's storage type
+
+The cross product is defined here:
+
+http://en.wikipedia.org/wiki/Cross_product
+*/
 template<
 	typename T,
 	typename N,

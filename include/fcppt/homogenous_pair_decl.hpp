@@ -12,7 +12,7 @@
 namespace fcppt
 {
 
-/// Like `std::pair`, but both elements are of the same type
+/// Like <code>%std::pair</code>, but both elements are of the same type
 template
 <
 	typename T

@@ -355,9 +355,11 @@ template<
 typename fcppt::shared_ptr<T, Deleter>::pointer
 fcppt::shared_ptr<T, Deleter>::get() const
 {
-       	return impl_.get();
+	return impl_.get();
 }
 
+// Doxygen says: warning: member `operator typename fcppt::shared_ptr' of class `shared_ptr' cannot be found
+/// \cond FCPPT_DOXYGEN_DEBUG
 template<
 	typename T,
 	template<
@@ -369,6 +371,7 @@ typename fcppt::shared_ptr<T, Deleter>::unspecified_bool_type() const
 {
 	return impl_;
 }
+/// \endcond
 
 template<
 	typename T,

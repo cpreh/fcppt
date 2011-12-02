@@ -20,9 +20,39 @@ namespace math
 namespace vector
 {
 
-/// Constructs a vector with dimension @a N+1 from a vector with dimension @a N
 /**
- * @tparam N must be a static dimension
+\brief Constructs a vector with dimension \p N+1 from a vector with dimension \p N
+\ingroup fcpptmathvector
+\tparam N Must be a static dimension
+\tparam T The vector's <code>value_type</code>
+\tparam S The vector's storage type
+\param _base The "narrow" vector
+\param _t The element to insert to "widen" \p _base
+
+The inverse operation is fcppt::math::vector::narrow_cast.
+
+\see fcppt::math::vector::narrow_cast
+
+Example:
+
+\code
+typedef
+fcppt::math::vector::static_<int,2>::type
+int2;
+
+typedef
+fcppt::math::vector::static_<int,3>::type
+int3;
+
+int2 narrow_vector(1,2);
+int3 wide_vector =
+	fcppt::math::vector::construct(
+		narrow_vector,
+		3);
+
+// Outputs: 1,2,3
+std::cout << wide_vector;
+\endcode
 */
 template<
 	typename T,
@@ -39,8 +69,8 @@ typename boost::enable_if<
 	>::type
 >::type const
 construct(
-	basic<T, N, S> const &base,
-	T const &t
+	basic<T, N, S> const &_base,
+	T const &_t
 )
 {
 	return
@@ -50,8 +80,8 @@ construct(
 				N::value + 1
 			>::type
 		>(
-			base,
-			t
+			_base,
+			_t
 		);
 }
 

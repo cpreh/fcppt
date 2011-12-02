@@ -9,7 +9,6 @@
 
 #include <fcppt/math/dim/basic_impl.hpp>
 
-
 namespace fcppt
 {
 namespace math

@@ -17,11 +17,13 @@ namespace fcppt
 namespace algorithm
 {
 
-/// Calculates the intersection of two sets
 /**
- * Equivalent to
- * std::set_intersection(a.begin(), a.end(), b.begin(), b.end(), std::back_inserter(result, result.begin()));
- * return result;
+ * \brief Calculates the intersection of two sets
+ * \ingroup fcpptalgorithm
+ * \tparam Set Must be default-constructible
+ * \details
+ * This just calls <code>std::set_intersection</code> writes the result to a new container.
+ * </pre
 */
 template<
 	typename Set

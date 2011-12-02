@@ -16,6 +16,8 @@
 #include <fcppt/preprocessor/push_warning.hpp>
 
 
+/// \cond FCPPT_DOXYGEN_DEBUG
+
 template<
 	typename T
 >
@@ -462,5 +464,7 @@ fcppt::optional<T &>::boolean_test() const
 	return
 		data_ != fcppt::null_ptr();
 }
+
+/// \endcond FCPPT_DOXYGEN_DEBUG
 
 #endif

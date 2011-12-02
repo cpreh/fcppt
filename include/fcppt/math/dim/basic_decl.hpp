@@ -111,7 +111,7 @@ public:
 
 	~basic();
 
-// \cond
+// \cond FCPPT_DOXYGEN_DEBUG
 #define FCPPT_MATH_DIM_BASIC_DECLARE_OPERATOR(op)\
 FCPPT_MATH_DETAIL_MAKE_OP_DECL(\
 	template<\
