@@ -377,7 +377,7 @@ template<
 fcppt::optional<T &>::optional(
 	optional<
 		Other &
-	>_other,
+	> const &_other,
 	typename detail::enable_optional_ref_conv<
 		T,
 		Other
