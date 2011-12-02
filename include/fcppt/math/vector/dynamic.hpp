@@ -22,7 +22,7 @@ namespace vector
 
 /**
 \brief Typedef helper for dynamic vectors
-
+\ingroup fcpptmathvector
 See the introduction to fcppt::math::vector::basic for more information on
 dynamic vectors (and on this class).
 */

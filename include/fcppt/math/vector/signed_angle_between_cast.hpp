@@ -4,12 +4,12 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_MATH_VECTOR_SIGNED_ANGLE_CAST_HPP_INCLUDED
-#define FCPPT_MATH_VECTOR_SIGNED_ANGLE_CAST_HPP_INCLUDED
+#ifndef FCPPT_MATH_VECTOR_SIGNED_ANGLE_BETWEEN_CAST_HPP_INCLUDED
+#define FCPPT_MATH_VECTOR_SIGNED_ANGLE_BETWEEN_CAST_HPP_INCLUDED
 
 #include <fcppt/math/detail/has_size.hpp>
 #include <fcppt/math/vector/basic_impl.hpp>
-#include <fcppt/math/vector/signed_angle.hpp>
+#include <fcppt/math/vector/signed_angle_between.hpp>
 #include <fcppt/math/vector/static.hpp>
 #include <fcppt/math/vector/structure_cast.hpp>
 #include <fcppt/config/external_begin.hpp>
@@ -26,11 +26,23 @@ namespace math
 namespace vector
 {
 
-/// Calculates the signed angle between two vectors
-/// and structure_casts the parameters to the destination type
 /**
- * @tparam Dest must be a floating point type
- * The behaviour is undefined if is_null(_from - _to)
+\brief Calculates the signed angle between two arbitrary 2D vector types
+\ingroup fcpptmathvector
+\tparam Dest The angle type. Must be a floating point type.
+\tparam T The vector's <code>value_type</code>
+\tparam N The vector's dimension type
+\tparam S1 The first vector's storage type
+\tparam S2 The first vector's storage type
+
+This function is a generalization of fcppt::math::vector::signed_angle_between in that
+it calculates the angle between two arbitrary vectors, instead of two floating
+point vectors.
+
+\see fcppt::math::vector::signed_angle_between
+
+\warning
+The behaviour is undefined if \p _from or \p _to are nearly identical.
 */
 template<
 	typename Dest,
@@ -51,7 +63,7 @@ typename boost::enable_if<
 	>,
 	Dest
 >::type
-signed_angle_cast(
+signed_angle_between_cast(
 	basic<T, N, S1> const &_from,
 	basic<T, N, S2> const &_to
 )
@@ -62,7 +74,7 @@ signed_angle_cast(
 	>::type intermediate_type;
 
 	return
-		vector::signed_angle(
+		vector::signed_angle_between(
 			vector::structure_cast<
 				intermediate_type
 			>(

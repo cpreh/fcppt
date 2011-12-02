@@ -16,8 +16,17 @@ namespace math
 {
 namespace vector
 {
+/**
+\brief Normalizes a vector and returns a copy.
+\ingroup fcpptmathvector
+\tparam N The vector's dimension
+\tparam T The vector's <code>value_type</code>
+\tparam S The vector's storage type
+\param v The vector to normalize
 
-/// Normalizes a vector so that length(@a v) == 1
+\warning
+Behaviour is undefined if <code>length(v)</code> is close to zero.
+*/
 template<
 	typename T,
 	typename N,

@@ -18,7 +18,18 @@ namespace math
 namespace vector
 {
 
-/// Converts a vector into a different vector of the same dimension using static_cast
+/**
+\brief Converts a vector into a different vector of the same dimension using <code>static_cast</code>
+\ingroup fcpptmathvector
+\tparam Dest The destination vector type (not its value type!)
+\tparam N The source vector's dimension
+\tparam T The source vector's <code>value_type</code>
+\tparam S The source vector's storage type
+\param _src The vector to cast
+
+See the introduction to fcppt::math::vector::basic for more information on this
+function (and vector in general).
+*/
 template<
 	typename Dest,
 	typename T,

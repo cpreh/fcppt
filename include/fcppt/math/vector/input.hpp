@@ -23,7 +23,11 @@ namespace math
 namespace vector
 {
 /**
-\brief Reads a vector from \p s, expecting it in the format <code>'(a_1,a_2,...)'</code> where a_i are the components
+\brief Reads a vector from \p s, expecting it in the format
+
+<pre>(a_1,a_2,...)</pre>
+
+where <code>a_i</code> are the components
 \ingroup fcpptmathvector
 */
 template<

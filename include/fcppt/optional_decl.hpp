@@ -25,6 +25,7 @@ namespace fcppt
 
 /**
 \brief A class that makes values optional
+\ingroup fcpptmain
 \tparam T The type to make optional, which must be CopyConstructible,
 Assignable and complete. It therefore must also not be const.
 

@@ -23,6 +23,57 @@ namespace math
 {
 namespace vector
 {
+/**
+\brief Orthogonalizes a sequence of vectors
+\ingroup fcpptmathvector
+\tparam Iterator A non-const forward-iterator pointing to a fcppt::math::vector::basic
+\tparam Iterator A non-const forward-iterator pointing to a fcppt::math::vector::basic
+\param begin The beginning of the sequence to orthogonalize
+\param end One past the end of the sequence to orthogonalize
+
+This uses the modified Gram-Schmidt (MGS) orthogonalization instead of the
+classical Gram-Schmidt for numerical stability. See
+
+http://en.wikipedia.org/wiki/Gram_schmidt#Numerical_stability
+
+For more information on the process.
+
+\note
+The sequence is modified in-place.
+
+\note
+No normalization takes place. Use fcppt::math::vector::normalize for
+that.
+
+Example:
+
+\code
+typedef
+fcppt::math::vector::static_<float,2>::type
+vec2f;
+
+typedef
+std::vector<vec2f>
+vector_sequence;
+
+vector_sequence vectors;
+// Point to the right
+vectors.push_back(
+	vec2f(1.0f,0.0f));
+// Point a little upward
+vectors.push_back(
+	vec2f(1.0f,0.5f));
+
+fcppt::math::vector::orthogonalize(
+	vectors.begin(),
+	vectors.end());
+
+std::cout << vectors[0] << "\n";
+std::cout << vectors[1] << "\n";
+\endcode
+
+\see fcppt::math::vector::project
+*/
 template<typename Iterator,typename EndIterator>
 void
 orthogonalize(

@@ -34,7 +34,7 @@ namespace vector
 \tparam S2 The first vector's storage type
 
 This function is a generalization of fcppt::math::vector::angle_between in that
-it compares the angles between two arbitrary vectors, instead of two floating
+it calculates the angle between two arbitrary vectors, instead of two floating
 point vectors.
 
 \see fcppt::math::vector::angle_between

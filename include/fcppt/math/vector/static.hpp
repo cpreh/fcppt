@@ -22,7 +22,12 @@ namespace math
 namespace vector
 {
 
-/// Typedefs a static vector type
+/**
+\brief Typedef helper for static vectors
+\ingroup fcpptmathvector
+See the introduction to fcppt::math::vector::basic for more information on
+static vectors (and on this class).
+*/
 template<
 	typename T,
 	size_type N

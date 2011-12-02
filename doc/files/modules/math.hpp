@@ -1,5 +1,6 @@
 /**
 \defgroup fcpptmath fcppt::math
+\ingroup fcpptmain
 \brief Everything math-related goes in here
 */
 
@@ -10,7 +11,7 @@ namespace math
 {
 
 /**
-\defgroup fcpptmathvector fcppt::math::vector::basic
+\defgroup fcpptmathvector fcppt::math::vector
 \ingroup fcpptmath
 \brief See the documentation for fcppt::math::vector::basic for more information
 */
@@ -21,7 +22,7 @@ namespace vector
 }
 
 /**
-\defgroup fcpptmathdim fcppt::math::dim::basic
+\defgroup fcpptmathdim fcppt::math::dim
 \ingroup fcpptmath
 \brief See the documentation for fcppt::math::dim::basic for more information
 */
@@ -32,7 +33,7 @@ namespace dim
 }
 
 /**
-\defgroup fcpptmathbox fcppt::math::box::basic
+\defgroup fcpptmathbox fcppt::math::box
 \ingroup fcpptmath
 \brief See the documentation for fcppt::math::box::basic for more information
 */
@@ -43,7 +44,7 @@ namespace box
 }
 
 /**
-\defgroup fcpptmathmatrix fcppt::math::matrix::basic
+\defgroup fcpptmathmatrix fcppt::math::matrix
 \ingroup fcpptmath
 \brief See the documentation for fcppt::math::matrix::basic for more information
 */
@@ -80,7 +81,7 @@ namespace quaternion
 }
 
 /**
-\defgroup fcpptmathsphere fcppt::math::sphere::basic
+\defgroup fcpptmathsphere fcppt::math::sphere
 \ingroup fcpptmath
 \brief See the documentation for fcppt::math::sphere::basic for more information
 */

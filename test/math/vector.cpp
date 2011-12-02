@@ -9,7 +9,14 @@
 #include <fcppt/math/size_type.hpp>
 #include <fcppt/math/vector/hypersphere_to_cartesian.hpp>
 #include <fcppt/math/vector/output.hpp>
-#include <fcppt/math/vector/vector.hpp>
+#include <fcppt/math/vector/comparison.hpp>
+#include <fcppt/math/vector/angle_between.hpp>
+#include <fcppt/math/vector/angle_between_cast.hpp>
+#include <fcppt/math/vector/arithmetic.hpp>
+#include <fcppt/math/vector/construct.hpp>
+#include <fcppt/math/vector/structure_cast.hpp>
+#include <fcppt/math/vector/signed_angle_between.hpp>
+#include <fcppt/math/vector/signed_angle_between_cast.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/mpl/integral_c.hpp>
 #include <boost/test/unit_test.hpp>
@@ -107,7 +114,7 @@ BOOST_AUTO_TEST_CASE(vector_angle_between_cast)
 	);
 }
 
-BOOST_AUTO_TEST_CASE(vector_signed_angle)
+BOOST_AUTO_TEST_CASE(vector_signed_angle_between)
 {
 	fvector2 const
 		vec1(2.f, 1.f),
@@ -115,7 +122,7 @@ BOOST_AUTO_TEST_CASE(vector_signed_angle)
 
 	BOOST_CHECK(
 		::compare(
-			fcppt::math::vector::signed_angle(
+			fcppt::math::vector::signed_angle_between(
 				vec1,
 				vec2
 			),
@@ -124,7 +131,7 @@ BOOST_AUTO_TEST_CASE(vector_signed_angle)
 	);
 }
 
-BOOST_AUTO_TEST_CASE(vector_signed_angle_cast)
+BOOST_AUTO_TEST_CASE(vector_signed_angle_between_cast)
 {
 	uivector2 const
 		vec1(2, 1),
@@ -132,7 +139,7 @@ BOOST_AUTO_TEST_CASE(vector_signed_angle_cast)
 
 	BOOST_CHECK(
 		::compare(
-			fcppt::math::vector::signed_angle_cast<
+			fcppt::math::vector::signed_angle_between_cast<
 				real
 			>(
 				vec1,
@@ -175,24 +182,6 @@ BOOST_AUTO_TEST_CASE(vector_swap)
 		uivector2(
 			1u,
 			2u
-		)
-	);
-}
-
-BOOST_AUTO_TEST_CASE(vector_unit_circle)
-{
-	BOOST_REQUIRE(
-		fcppt::math::range_compare(
-			fcppt::math::vector::unit_circle(
-				fcppt::math::pi<
-					real
-				>()
-			),
-			fvector2(
-				-1.f,
-				0.f
-			),
-			epsilon
 		)
 	);
 }
