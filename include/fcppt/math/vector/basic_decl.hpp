@@ -562,11 +562,23 @@ template<
 class basic
 {
 public:
+	/**
+	\brief A typedef for the \p N parameter
+	*/
 	typedef N dim_wrapper;
 
+	/**
+	\brief A typedef for the \p S parameter
+	*/
 	typedef S storage_type;
 
+	/**
+	\brief A type that counts the number of elements in a vector.
+	*/
 	typedef math::size_type size_type;
+	/**
+	\brief A type that provides the difference between the addresses of two elements in a vector.
+	*/
 	typedef math::difference_type difference_type;
 	/**
 	\brief A type that represents the data type stored in a vector.
@@ -719,7 +731,7 @@ FCPPT_MATH_DETAIL_MAKE_OP_DECL(\
 #undef FCPPT_MATH_VECTOR_BASIC_DECLARE_OPERATOR
 
 	/**
-	\brief Multiply a vector by another vector component-wise
+	\brief Multiply a vector by a scalar
 	*/
 	basic &
 	operator*=(
@@ -727,7 +739,7 @@ FCPPT_MATH_DETAIL_MAKE_OP_DECL(\
 	);
 
 	/**
-	\brief Divide a vector by another vector component-wise
+	\brief Divide a vector by a scalar
 	*/
 	basic &
 	operator/=(
