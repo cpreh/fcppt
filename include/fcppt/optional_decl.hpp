@@ -194,7 +194,7 @@ public:
 	explicit optional(
 		optional<
 			Other &
-		>,
+		> const &,
 		typename detail::enable_optional_ref_conv<
 			T,
 			Other
