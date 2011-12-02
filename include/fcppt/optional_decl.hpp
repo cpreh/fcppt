@@ -13,7 +13,10 @@
 #include <fcppt/detail/enable_optional_ref_conv.hpp>
 #include <fcppt/detail/enable_optional_value_conv.hpp>
 #include <fcppt/config/external_begin.hpp>
+#include <boost/static_assert.hpp>
 #include <boost/type_traits/alignment_of.hpp>
+#include <boost/type_traits/is_const.hpp>
+#include <boost/type_traits/remove_const.hpp>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -23,7 +26,7 @@ namespace fcppt
 /**
 \brief A class that makes values optional
 \tparam T The type to make optional, which must be CopyConstructible,
-Assignable and complete.
+Assignable and complete. It therefore must also not be const.
 
 <table id="toc">
 <tr>
@@ -175,6 +178,12 @@ class optional
 		optional
 	)
 public:
+	BOOST_STATIC_ASSERT(
+		!boost::is_const<
+			T
+		>::value
+	);
+
 	/**
 	\brief The value type
 	*/
@@ -498,6 +507,15 @@ class optional<
 		optional
 	)
 public:
+	/**
+	\brief The value type of the optional reference
+
+	The value type of the optional reference is always non const.
+	*/
+	typedef typename boost::remove_const<
+		T
+	>::type value_type;
+
 	/**
 	\brief The reference type
 

@@ -7,6 +7,7 @@
 #include <fcppt/optional.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/test/unit_test.hpp>
+#include <boost/type_traits/is_same.hpp>
 #include <fcppt/config/external_end.hpp>
 
 template class
@@ -241,4 +242,70 @@ BOOST_AUTO_TEST_CASE(
 	BOOST_CHECK(
 		*opt4 == 42
 	);
+}
+
+BOOST_AUTO_TEST_CASE(
+	optional_types
+)
+{
+	typedef fcppt::optional<
+		int
+	> optional_int;
+
+	BOOST_CHECK((
+		boost::is_same<
+			optional_int::value_type,
+			int
+		>::value
+	));
+
+	BOOST_CHECK((
+		boost::is_same<
+			optional_int::reference,
+			int &
+		>::value
+	));
+
+	BOOST_CHECK((
+		boost::is_same<
+			optional_int::const_reference,
+			int const &
+		>::value
+	));
+
+	typedef fcppt::optional<
+		int &
+	> optional_int_ref;
+
+	BOOST_CHECK((
+		boost::is_same<
+			optional_int_ref::value_type,
+			int
+		>::value
+	));
+
+	BOOST_CHECK((
+		boost::is_same<
+			optional_int_ref::reference,
+			int &
+		>::value
+	));
+
+	typedef fcppt::optional<
+		int const &
+	> optional_const_int_ref;
+
+	BOOST_CHECK((
+		boost::is_same<
+			optional_const_int_ref::value_type,
+			int
+		>::value
+	));
+
+	BOOST_CHECK((
+		boost::is_same<
+			optional_const_int_ref::reference,
+			int const &
+		>::value
+	));
 }
