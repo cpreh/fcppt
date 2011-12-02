@@ -13,7 +13,10 @@
 #include <fcppt/detail/enable_optional_ref_conv.hpp>
 #include <fcppt/detail/enable_optional_value_conv.hpp>
 #include <fcppt/config/external_begin.hpp>
+#include <boost/static_assert.hpp>
 #include <boost/type_traits/alignment_of.hpp>
+#include <boost/type_traits/is_const.hpp>
+#include <boost/type_traits/remove_const.hpp>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -29,6 +32,12 @@ class optional
 		optional
 	)
 public:
+	BOOST_STATIC_ASSERT(
+		!boost::is_const<
+			T
+		>::value
+	);
+
 	typedef T value_type;
 
 	typedef T &reference;
@@ -177,6 +186,10 @@ class optional<
 		optional
 	)
 public:
+	typedef typename boost::remove_const<
+		T
+	>::type value_type;
+
 	typedef T &reference;
 
 	typedef T *pointer;
