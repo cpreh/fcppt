@@ -656,6 +656,9 @@ private:
 /// \endcond
 };
 
+/**
+\brief Tests two vectors for component-wise equality
+*/
 template<
 	typename T,
 	typename A
@@ -666,6 +669,9 @@ operator==(
 	raw_vector<T, A> const &
 );
 
+/**
+\brief Compares two vectors component-wise
+*/
 template<
 	typename T,
 	typename A
@@ -676,6 +682,9 @@ operator<(
 	raw_vector<T, A> const &
 );
 
+/**
+\brief Tests two vectors for component-wise inequality
+*/
 template<
 	typename T,
 	typename A
@@ -686,6 +695,9 @@ operator!=(
 	raw_vector<T, A> const &
 );
 
+/**
+\brief Compares two vectors component-wise
+*/
 template<
 	typename T,
 	typename A
@@ -696,6 +708,9 @@ operator>(
 	raw_vector<T, A> const &
 );
 
+/**
+\brief Compares two vectors component-wise
+*/
 template<
 	typename T,
 	typename A
@@ -706,6 +721,9 @@ operator>=(
 	raw_vector<T, A> const &
 );
 
+/**
+\brief Compares two vectors component-wise
+*/
 template<
 	typename T,
 	typename A
@@ -716,6 +734,9 @@ operator<=(
 	raw_vector<T, A> const &
 );
 
+/**
+\brief Exchanges the elements of two vectors.
+*/
 template<
 	typename T,
 	typename A

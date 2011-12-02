@@ -32,7 +32,7 @@ namespace vector
 \tparam S The vector's storage type
 \param start The first vector
 \param end The second vector
-\param The interpolation value. Must be inside [0,1].
+\param t The interpolation value. Must be inside [0,1].
 
 Does spherical interpolation between two vectors. See
 
