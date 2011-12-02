@@ -31,7 +31,7 @@ template<
 typename Operation::result_type
 apply_unary_internal(
 	Operation const &_op,
-	Variant const &_obj
+	Variant &_obj
 )
 {
 	typedef typename Variant::types types;

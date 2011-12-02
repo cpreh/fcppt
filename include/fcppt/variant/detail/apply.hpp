@@ -7,7 +7,7 @@
 #ifndef FCPPT_VARIANT_DETAIL_APPLY_HPP_INCLUDED
 #define FCPPT_VARIANT_DETAIL_APPLY_HPP_INCLUDED
 
-#include <fcppt/variant/invalid_apply.hpp>
+#include <fcppt/assert/unreachable.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/mpl/at.hpp>
 #include <boost/mpl/deref.hpp>
@@ -46,10 +46,10 @@ struct apply<
 	static typename Operation::result_type
 	execute(
 		Operation const &,
-		Variant const &
+		Variant &
 	)
 	{
-		throw variant::invalid_apply();
+		FCPPT_ASSERT_UNREACHABLE;
 	}
 };
 
@@ -70,7 +70,7 @@ struct apply<
 	static typename Operation::result_type
 	execute(
 		Operation const &_op,
-		Variant const &_obj
+		Variant &_obj
 	)
 	{
 		typedef typename boost::mpl::deref<

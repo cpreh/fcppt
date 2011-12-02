@@ -4,11 +4,10 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_VARIANT_DETAIL_COPY_HPP_INCLUDED
-#define FCPPT_VARIANT_DETAIL_COPY_HPP_INCLUDED
+#ifndef FCPPT_VARIANT_DETAIL_ASSIGN_OBJECT_HPP_INCLUDED
+#define FCPPT_VARIANT_DETAIL_ASSIGN_OBJECT_HPP_INCLUDED
 
 #include <fcppt/nonassignable.hpp>
-#include <fcppt/variant/raw_type.hpp>
 
 
 namespace fcppt
@@ -18,34 +17,40 @@ namespace variant
 namespace detail
 {
 
-class copy
+template<
+	typename Variant
+>
+class assign_object
 {
 	FCPPT_NONASSIGNABLE(
-		copy
+		assign_object
 	);
 public:
-	typedef void *result_type;
-
-	explicit copy(
-		variant::raw_type *const _store
+	explicit assign_object(
+		Variant &_left
 	)
 	:
-		store_(_store)
+		left_(_left)
 	{
 	}
+
+	typedef void result_type;
 
 	template<
 		typename T
 	>
 	result_type
 	operator()(
-		T const &_t
+		T const &_other
 	) const
 	{
-		return new (store_) T(_t);
+		left_. template get_raw<
+			T
+		>() =
+			_other;
 	}
 private:
-	variant::raw_type *const store_;
+	Variant &left_;
 };
 
 }

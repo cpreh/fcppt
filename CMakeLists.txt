@@ -1297,12 +1297,15 @@ set(
 	include/fcppt/variant/detail/apply.hpp
 	include/fcppt/variant/detail/apply_unary_internal.hpp
 	include/fcppt/variant/detail/assert_type.hpp
+	include/fcppt/variant/detail/assign_object.hpp
+	include/fcppt/variant/detail/assign_value.hpp
 	include/fcppt/variant/detail/binary_applier.hpp
 	include/fcppt/variant/detail/binary_unwrap.hpp
 	include/fcppt/variant/detail/compare.hpp
 	include/fcppt/variant/detail/construct.hpp
 	include/fcppt/variant/detail/copy.hpp
 	include/fcppt/variant/detail/destroy.hpp
+	include/fcppt/variant/detail/get_impl.hpp
 	include/fcppt/variant/detail/index_of.hpp
 	include/fcppt/variant/detail/operation_wrapper.hpp
 	include/fcppt/variant/detail/output.hpp
@@ -1318,7 +1321,6 @@ set(
 	include/fcppt/variant/impl/exception.hpp
 	include/fcppt/variant/impl/invalid_apply.hpp
 	include/fcppt/variant/impl/invalid_get.hpp
-	include/fcppt/variant/invalid_apply.hpp
 	include/fcppt/variant/invalid_get.hpp
 	include/fcppt/variant/not_equal.hpp
 	include/fcppt/variant/object.hpp

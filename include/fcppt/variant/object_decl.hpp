@@ -35,8 +35,6 @@ class object
 public:
 	typedef Types types;
 
-	object();
-
 	// intentionally not explicit
 	template<
 		typename U
@@ -63,9 +61,6 @@ public:
 	);
 
 	~object();
-
-	bool
-	empty() const;
 
 	/// Returns the held object if its actual type is @a U
 	template<
@@ -103,10 +98,6 @@ public:
 	/// Returns the index of the held type in the type list
 	size_type
 	type_index() const;
-
-	/// Destroys the held object, so that empty() will be true
-	void
-	reset();
 private:
 	template<
 		typename U
@@ -126,7 +117,7 @@ private:
 	;
 
 	typedef typename alignment::array<
-		raw_type,
+		variant::raw_type,
 		mpl::max_value<
 			Types,
 			boost::mpl::sizeof_<
@@ -142,7 +133,9 @@ private:
 	>::type storage_type;
 
 	storage_type storage_;
+
 	size_type index_;
+
 	void *data_;
 };
 

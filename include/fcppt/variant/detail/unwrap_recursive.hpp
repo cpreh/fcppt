@@ -21,21 +21,10 @@ template<
 >
 Type &
 unwrap_recursive(
-	Type &_t
+	Type &_value
 )
 {
-	return _t;
-}
-
-template<
-	typename Type
->
-Type const &
-unwrap_recursive(
-	Type const &_t
-)
-{
-	return _t;
+	return _value;
 }
 
 template<
@@ -43,25 +32,27 @@ template<
 >
 Type &
 unwrap_recursive(
-	recursive<
+	variant::recursive<
 		Type
-	> &_t
+	> &_value
 )
 {
-	return _t.get();
+	return
+		_value.get();
 }
 
 template<
 	typename Type
 >
-Type const &
+Type &
 unwrap_recursive(
-	recursive<
+	variant::recursive<
 		Type
-	> const &_t
+	> const &_value
 )
 {
-	return _t.get();
+	return
+		_value.get();
 }
 
 }

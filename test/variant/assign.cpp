@@ -15,7 +15,7 @@
 
 
 BOOST_AUTO_TEST_CASE(
-	variant_holds_type
+	variant_assign
 )
 {
 	typedef fcppt::variant::object<
@@ -25,48 +25,48 @@ BOOST_AUTO_TEST_CASE(
 		>
 	> variant;
 
-	std::string const string(
-		"hello world"
+	variant test1(
+		0
 	);
 
-	variant test(
-		string
+	variant test2(
+		std::string(
+			"test"
+		)
 	);
+
+	test1 = test2;
 
 	BOOST_REQUIRE(
 		fcppt::variant::holds_type<
 			std::string
 		>(
-			test
+			test1
 		)
 	);
 
 	BOOST_REQUIRE(
-		!fcppt::variant::holds_type<
-			int
-		>(
-			test
-		)
-	);
-
-	variant const test2(
-		42
-	);
-
-	BOOST_REQUIRE(
-		!fcppt::variant::holds_type<
+		test1.get<
 			std::string
-		>(
-			test2
-		)
+		>()
+		== "test"
 	);
+
+	test1 = 42;
 
 	BOOST_REQUIRE(
 		fcppt::variant::holds_type<
 			int
 		>(
-			test2
+			test1
 		)
+	);
+
+	BOOST_REQUIRE(
+		test1.get<
+			int
+		>()
+		== 42
 	);
 }
 
@@ -102,22 +102,69 @@ struct foo
 }
 
 BOOST_AUTO_TEST_CASE(
-	variant_holds_type_recursive
+	variant_recursive_assign
 )
 {
-	rec_variant const test((
+	rec_variant test1(
+		10
+	);
+
+	test1 =
 		foo(
 			rec_variant(
 				42
 			)
-		)
-	));
+		);
 
 	BOOST_REQUIRE(
 		fcppt::variant::holds_type<
 			foo
 		>(
-			test
+			test1
 		)
+	);
+
+	BOOST_REQUIRE(
+		test1.get<
+			foo
+		>().variant_.get<
+			int
+		>()
+		== 42
+	);
+
+	test1 =
+		rec_variant(
+			foo(
+				rec_variant(
+					50
+				)
+			)
+		);
+
+	BOOST_REQUIRE(
+		test1.get<
+			foo
+		>().variant_.get<
+			int
+		>()
+		== 50
+	);
+
+	test1 = 100;
+
+	BOOST_REQUIRE(
+		fcppt::variant::holds_type<
+			int
+		>(
+			test1
+		)
+	);
+
+	BOOST_REQUIRE(
+		test1.get<
+			int
+		>()
+		== 100
 	);
 }

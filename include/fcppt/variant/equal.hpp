@@ -27,19 +27,14 @@ operator==(
 )
 {
 	return
-		_a.empty() || _b.empty()
-		?
-			_a.empty() == _b.empty()
-		:
-			variant::apply_unary(
-				detail::compare<
-					Types
-				>(
-					_a
-				),
-				_b
-			)
-		;
+		variant::apply_unary(
+			detail::compare<
+				Types
+			>(
+				_a
+			),
+			_b
+		);
 }
 
 }

@@ -34,24 +34,8 @@ BOOST_AUTO_TEST_CASE(variant_equal)
 		string
 	);
 
-	variant const empty1;
-
-	variant const empty2;
-
 	BOOST_REQUIRE(
 		v1 == v2
-	);
-
-	BOOST_REQUIRE(
-		empty1 == empty2
-	);
-
-	BOOST_REQUIRE(
-		empty1 != v1
-	);
-
-	BOOST_REQUIRE(
-		v1 != empty1
 	);
 
 	variant const v3(
