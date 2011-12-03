@@ -12,6 +12,8 @@
 #include <fcppt/math/vector/dot.hpp>
 #include <fcppt/math/vector/length.hpp>
 #include <fcppt/config/external_begin.hpp>
+#include <boost/type_traits/is_floating_point.hpp>
+#include <boost/utility/enable_if.hpp>
 #include <cmath>
 #include <fcppt/config/external_end.hpp>
 
@@ -22,9 +24,32 @@ namespace math
 {
 namespace vector
 {
-/// See http://en.wikipedia.org/wiki/Slerp
+/**
+\brief Calculates the angle between two arbitrary vector types
+\ingroup fcpptmathvector
+\tparam T The vector's <code>value_type</code>. Must be a floating point type.
+\tparam N The vector's dimension type
+\tparam S The vector's storage type
+\param start The first vector
+\param end The second vector
+\param t The interpolation value. Must be inside [0,1].
+
+Does spherical interpolation between two vectors. See
+
+http://en.wikipedia.org/wiki/Slerp
+
+for more information.
+
+\warning
+The behaviour is undefined if \p start or \p end are nearly identical.
+*/
 template<typename T,typename N,typename S>
-basic<T,N,S> const
+typename
+boost::enable_if
+<
+	boost::is_floating_point<T>,
+	basic<T,N,S> const
+>::type
 slerp(
 	basic<T,N,S> const &start,
 	basic<T,N,S> const &end,

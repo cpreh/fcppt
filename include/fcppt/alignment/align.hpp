@@ -17,7 +17,10 @@
 #error "Don't know how to align types!"
 #endif
 
-/// Forces the specified alignment on a declaration in bytes
+/** 
+ * \brief Forces the specified alignment on a declaration in bytes
+ * \ingroup fcpptalignment
+ * */
 #define FCPPT_ALIGNMENT_ALIGN(x) FCPPT_ALIGNMENT_ALIGN_IMPL(x)
 
 #endif

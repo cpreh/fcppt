@@ -20,7 +20,12 @@ namespace math
 namespace dim
 {
 
-/// Typedefs a dim with dynamic dimension
+/**
+\brief Typedef helper for dynamic dimensions
+\ingroup fcpptmathdim
+See the introduction to fcppt::math::vector::basic for more information on
+dynamic vectors (and dimensions) and this class.
+*/
 template<
 	typename T
 >

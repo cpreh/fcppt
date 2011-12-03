@@ -17,6 +17,10 @@ namespace fcppt
 namespace container
 {
 
+/**
+\brief Metafunction to test if a container is a <code>std::%vector</code>
+\ingroup fcpptcontainer
+*/
 template<
 	typename T
 >
@@ -25,6 +29,8 @@ struct is_std_vector
 boost::false_type
 {};
 
+// Without this, doxygen generates another raw_vector type (wtf?)
+/// \cond FCPPT_DOXYGEN_DEBUG
 template<
 	typename T,
 	typename A
@@ -38,6 +44,7 @@ struct is_std_vector<
 :
 boost::true_type
 {};
+/// \endcond
 
 }
 }

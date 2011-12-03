@@ -18,7 +18,22 @@ namespace fcppt
 {
 namespace algorithm
 {
-template<typename Container1,typename Container2,typename Equality>
+/**
+ * \brief Tests if \p a is equal \p b up to rotation
+ * \ingroup fcpptalgorithm
+ * \pre <code>Container1::value_type</code> and <code>Container2::value_type</code> have to be equality-comparable.
+ * \details
+ *
+ * Example:
+ *
+ * \snippet doc/algorithm.cpp shift_compare
+ */
+template
+<
+	typename Container1,
+	typename Container2,
+	typename Equality
+>
 bool
 shift_compare(
 	Container1 const &a,

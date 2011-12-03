@@ -12,7 +12,13 @@ namespace fcppt
 namespace assign
 {
 
-/// Creates a container using operator() syntax
+/**
+ * \brief Creates a container using <code>operator()</code> syntax
+ * \ingroup fcpptassign
+ * \details
+ * Example:
+ * \snippet doc/assign.cpp make_container
+ */
 template<
 	typename Container
 >

@@ -14,7 +14,10 @@ namespace fcppt
 {
 namespace container
 {
-
+/**
+ * \brief An exception thrown by some container functions
+ * \ingroup fcpptcontainer
+ */
 class exception
 :
 	public fcppt::exception

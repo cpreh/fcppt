@@ -879,10 +879,8 @@ set(
 	include/fcppt/math/dim/narrow_cast.hpp
 	include/fcppt/math/dim/normal_storage.hpp
 	include/fcppt/math/dim/output.hpp
-	include/fcppt/math/dim/quad.hpp
 	include/fcppt/math/dim/static.hpp
 	include/fcppt/math/dim/structure_cast.hpp
-	include/fcppt/math/dim/transform.hpp
 	include/fcppt/math/exception.hpp
 	include/fcppt/math/generate_binary_vectors.hpp
 	include/fcppt/math/impl/exception.hpp
@@ -997,17 +995,13 @@ set(
 	include/fcppt/math/vector/normalize.hpp
 	include/fcppt/math/vector/orthogonalize.hpp
 	include/fcppt/math/vector/output.hpp
-	include/fcppt/math/vector/place.hpp
 	include/fcppt/math/vector/project.hpp
-	include/fcppt/math/vector/signed_angle.hpp
-	include/fcppt/math/vector/signed_angle_cast.hpp
+	include/fcppt/math/vector/signed_angle_between.hpp
+	include/fcppt/math/vector/signed_angle_between_cast.hpp
 	include/fcppt/math/vector/slerp.hpp
 	include/fcppt/math/vector/static.hpp
 	include/fcppt/math/vector/structure_cast.hpp
-	include/fcppt/math/vector/to_angle.hpp
-	include/fcppt/math/vector/transform.hpp
 	include/fcppt/math/vector/unit.hpp
-	include/fcppt/math/vector/unit_circle.hpp
 	include/fcppt/math/vector/vector.hpp
 	include/fcppt/micro_version.hpp
 	include/fcppt/minmax_pair.hpp

@@ -18,9 +18,38 @@ namespace math
 namespace vector
 {
 
-/// Converts a vector into a vector with fewer elements
 /**
- * @tparam Dest must be a vector type with fewer elements.
+\brief Shortens a vector to a smaller dimension
+\ingroup fcpptmathvector
+\tparam Dest Must be a vector with a smaller dimension
+\tparam N The vector's dimension
+\tparam T The vector's <code>value_type</code>
+\tparam S The vector's storage type
+\param src The vector to shorten (narrow)
+
+The inverse operation is fcppt::math::vector::construct.
+
+\see fcppt::math::vector::construct
+
+Example:
+
+\code
+typedef
+fcppt::math::vector::static_<int,2>::type
+int2;
+
+typedef
+fcppt::math::vector::static_<int,3>::type
+int3;
+
+int3 wide_vector(1,2,3);
+int2 narrow_vector =
+	fcppt::math::vector::narrow_cast<int2>(
+		wide_vector);
+
+// Outputs: 1,2
+std::cout << narrow_vector;
+\endcode
 */
 template<
 	typename Dest,

@@ -17,19 +17,24 @@ namespace fcppt
 {
 namespace algorithm
 {
-/// Calculates the Levenshtein distance (see
-/// http://en.wikipedia.org/wiki/Levenshtein_distance) between two
-/// arbitrary containers of the same type "Container".
-/// Requirements are:
-/// - Container::size_type and Container::value_type exist
-/// - bool empty() const exists
-/// - size_type size() const exists
-/// - operator[] exists
-/// - value_type has to have operator==
-///
-/// Note that the code is taken quite literally from:
-///
-/// http://www.merriampark.com/ldcpp.htm
+/**
+ * \brief Calculates the Levenshtein distance
+ * \ingroup fcpptalgorithm
+ * \details
+ * See http://en.wikipedia.org/wiki/Levenshtein_distance for an explanation of the algorithm.
+ * \pre
+ * <ol>
+ * <li><code>Container::size_type</code> and <code>Container::value_type</code> exist</li>
+ * <li><code>bool Container::empty() const</code> exists</li>
+ * <li><code>size_type Container::size() const</code> exists</li>
+ * <li><code>Container::operator[]</code> exists</li>
+ * <li><code>Container::value_type</code> has to have an <code>operator==</code></li>
+ * </ol>
+ *
+ * \note
+ * The code is taken quite literally from:
+ * http://www.merriampark.com/ldcpp.htm
+ */
 template<typename Container>
 typename
 Container::size_type
@@ -74,57 +79,57 @@ levenshtein(
 			static_cast<result_type>(
 				m+1)));
 
-  // Step 2
+	// Step 2
 
-  for (result_type i = 0; i <= n; i++)
-    matrix[dim(i,0)] = i;
+	for (result_type i = 0; i <= n; i++)
+		matrix[dim(i,0)] = i;
 
-  for (result_type j = 0; j <= m; j++)
-    matrix[dim(0,j)] = j;
+	for (result_type j = 0; j <= m; j++)
+		matrix[dim(0,j)] = j;
 
-  for (result_type i = 1; i <= n; i++)
+	for (result_type i = 1; i <= n; i++)
 	{
-    char_type const &s_i =
+		char_type const &s_i =
 			source[i-1];
 
-    for (result_type j = 1; j <= m; j++)
+		for (result_type j = 1; j <= m; j++)
 		{
-      char_type const &t_j =
+			char_type const &t_j =
 				target[j-1];
 
-      result_type cost;
-      if (s_i == t_j)
-        cost = 0;
-      else
-        cost = 1;
+			result_type cost;
+			if (s_i == t_j)
+				cost = 0;
+			else
+				cost = 1;
 
-      // Step 6
+			// Step 6
 
-      result_type const
+			result_type const
 				above = matrix[dim(i-1,j)],
 				left = matrix[dim(i,j-1)],
 				diag = matrix[dim(i-1,j-1)];
 			result_type
 				cell = ::std::min(above + 1,::std::min(left + 1, diag + cost));
 
-      // Step 6A: Cover transposition, in addition to deletion,
-      // insertion and substitution. This step is taken from:
-      // Berghel, Hal ; Roach, David : "An Extension of Ukkonen's
-      // Enhanced Dynamic Programming ASM Algorithm"
-      // (http://www.acm.org/~hlb/publications/asm/asm.html)
-      if (i>static_cast<result_type>(2) && j>static_cast<result_type>(2))
+			// Step 6A: Cover transposition, in addition to deletion,
+			// insertion and substitution. This step is taken from:
+			// Berghel, Hal ; Roach, David : "An Extension of Ukkonen's
+			// Enhanced Dynamic Programming ASM Algorithm"
+			// (http://www.acm.org/~hlb/publications/asm/asm.html)
+			if (i>static_cast<result_type>(2) && j>static_cast<result_type>(2))
 			{
-        result_type trans = matrix[dim(i-2,j-2)]+1;
-        if (source[i-2]!=t_j) trans++;
-        if (s_i!=target[j-2]) trans++;
-        if (cell>trans) cell = trans;
-      }
+				result_type trans = matrix[dim(i-2,j-2)]+1;
+				if (source[i-2]!=t_j) trans++;
+				if (s_i!=target[j-2]) trans++;
+				if (cell>trans) cell = trans;
+			}
 
-      matrix[dim(i,j)] = cell;
-    }
-  }
+			matrix[dim(i,j)] = cell;
+		}
+	}
 
-  return matrix[dim(n,m)];
+	return matrix[dim(n,m)];
 }
 }
 }

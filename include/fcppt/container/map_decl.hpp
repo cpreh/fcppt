@@ -19,6 +19,10 @@ namespace fcppt
 namespace container
 {
 
+/**
+\brief FIXME
+\ingroup fcpptcontainer
+*/
 template<
 	typename MapType
 >

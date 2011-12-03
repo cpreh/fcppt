@@ -14,6 +14,7 @@
 #include <boost/utility/enable_if.hpp>
 #include <fcppt/config/external_end.hpp>
 
+
 namespace fcppt
 {
 namespace math

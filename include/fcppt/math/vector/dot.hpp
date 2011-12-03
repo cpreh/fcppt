@@ -16,7 +16,18 @@ namespace math
 namespace vector
 {
 
-/// Calculates the dot product between two vectors
+/**
+\brief Calculates the dot product of two vectors
+\ingroup fcpptmathvector
+\tparam T The vector's <code>value_type</code>
+\tparam N The vector's dimension type
+\tparam S1 The first vector's storage type
+\tparam S2 The first vector's storage type
+
+The dot product is defined here:
+
+http://en.wikipedia.org/wiki/Dot_product
+*/
 template<
 	typename T,
 	typename N,

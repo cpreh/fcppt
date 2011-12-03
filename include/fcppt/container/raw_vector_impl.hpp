@@ -936,6 +936,8 @@ fcppt::container::raw_vector<T, A>::free_memory()
 	);
 }
 
+// I've commented out the private section, so I have to do it here, too
+/// \cond
 template<
 	typename T,
 	typename A
@@ -1230,6 +1232,7 @@ fcppt::container::raw_vector<T,A>::impl::impl(
 	)
 {
 }
+/// \endcond
 
 template<
 	typename T,

@@ -19,6 +19,10 @@ namespace container
 namespace tree
 {
 
+/**
+\brief A meta function testing if the tree's value_type has noncopyable semantics
+\ingroup fcpptcontainertree
+*/
 template<
 	typename T
 >
@@ -28,6 +32,10 @@ boost::false_type
 {
 };
 
+/**
+\brief A meta function testing if the tree's value_type has noncopyable semantics
+\ingroup fcpptcontainertree
+*/
 template<
 	typename T
 >

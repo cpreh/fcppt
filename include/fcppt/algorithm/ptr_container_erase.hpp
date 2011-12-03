@@ -22,10 +22,11 @@ namespace fcppt
 namespace algorithm
 {
 
-/// Removes pointer @a _element from the ptr_container @a _container
 /**
- * @type Ptr may be @type Container::value_type or a const version of it
- * @return true if the element was found/erased, false otherwise
+ * \brief Removes pointer \p _element from the ptr_container \p _container
+ * \ingroup fcpptalgorithm
+ * \tparam Ptr May be <code>Container::value_type</code> or a const version of it
+ * \return <code>true</code> if the element was found/erased, <code>false</code> otherwise
 */
 template<
 	typename Container,

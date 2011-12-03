@@ -17,9 +17,11 @@ namespace fcppt
 namespace alignment
 {
 
-/// Creates a nested typedef 'type' to an fcppt::container::array<@tparam T, @tparam Size> with alignment @tparam Alignment
 /**
- * @see make_type
+\brief Creates a nested typedef <code>type</code> to an <code>fcppt::container::array<T, Size></code> with alignment \p Alignment
+\ingroup fcpptalignment
+\tparam Alignment TODO
+\see fcppt::alignment::make_type
 */
 template<
 	typename T,
@@ -28,7 +30,7 @@ template<
 >
 struct array
 :
-make_type<
+fcppt::alignment::make_type<
 	fcppt::container::array<
 		T,
 		Size

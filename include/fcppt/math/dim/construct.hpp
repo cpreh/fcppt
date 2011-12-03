@@ -20,9 +20,39 @@ namespace math
 namespace dim
 {
 
-/// Constructs a dim with dimension @a N+1 from a dim with dimension @a N
 /**
- *  @tparam N must be a static dimension
+\brief Constructs a dim with dimension \p N+1 from a dim with dimension \p N
+\ingroup fcpptmathdim
+\tparam N Must be a static dimension
+\tparam T The dim's <code>value_type</code>
+\tparam S The dim's storage type
+\param base The "narrow" dim
+\param t The element to insert to "widen" \p _base
+
+The inverse operation is fcppt::math::dim::narrow_cast.
+
+\see fcppt::math::dim::narrow_cast
+
+Example:
+
+\code
+typedef
+fcppt::math::dim::static_<int,2>::type
+int2;
+
+typedef
+fcppt::math::dim::static_<int,3>::type
+int3;
+
+int2 narrow_dim(1,2);
+int3 wide_dim =
+	fcppt::math::dim::construct(
+		narrow_dim,
+		3);
+
+// Outputs: 1,2,3
+std::cout << wide_dim;
+\endcode
 */
 template<
 	typename T,

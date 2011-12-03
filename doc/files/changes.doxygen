@@ -1,0 +1,84 @@
+/**
+\page changes Changes
+
+\section changes_changes_to_010 Changes from 0.9 to 0.10
+
+\subsection changes_added_functionality_to_010 Added functionality
+
+<ul>
+	<li>Added <code>math::matrix::is_matrix</code> trait.</li>
+	<li>Added <code>io::stream_to_string</code> that reads the whole content of a stream into a string.</li>
+	<li>Added <code>filesystem::create_directory_exn</code> and <code>filesystem::create_directories_recursive_exn</code>.</li>
+	<li>Added <code>backtrace</code> which can print a stack trace for gcc compiled binaries.</li>
+	<li>Install a new <code>FcpptConfig.cmake</code> file so cmake can find an installed fcppt without <code>FindFcppt.cmake</code>.</li>
+	<li>Added fusion adaptors for <code>container::array</code>.</li>
+	<li>Added <code>utf8::from_std_string</code>.</li>
+	<li>Implemented <code>FCPPT_PP_FUNCTION</code> for VC++.</li>
+	<li>Added support for <code>boost::array</code> to <code>assign::array</code>.</li>
+	<li>Added <code>container::ptr::push_front_unique_ptr</code>.</li>
+	<li><code>-fvibisibility=hidden</code> is now optional, but still on by default (use <code>FCPPT_ENABLE_VISIBILITY_HIDDEN</code>).</li>
+	<li>Added <code>mpl::append</code>.</li>
+</ul>
+
+\subsection changes_changed_functionality_to_010 Changed functionality
+
+<ul>
+	<li>Changed the default cmake module installation path to
+	<code>${CMAKE_ROOT}/Modules</code> if <code>${CMAKE_INSTALL_PREFIX}</code> is a
+	prefix of <code>${CMAKE_ROOT}</code>.</li>
+	<li>Replaced <code>utf8::convert</code> by <code>utf8::from_fcppt_string</code>
+	and <code>utf8::to_fcppt_string</code>.</li>
+	<li>random now uses <code>boost::random</code> instead of
+	<code>tr1::random</code>.</li>
+	<li>A 64 bit type is now required for chrono.</li>
+</ul>
+
+\subsection changes_removed_functionality_to_010 Removed functionality
+
+<ul>
+	<li>Removed boost filesystem v2 support. Boost 1.44 or later is now needed.</li>
+	<li>Removed <code>math::matrix::perspective</code>,
+	<code>math::matrix::orthogonal</code> and
+	<code>math::matrix::orthogonal_xy</code>. Every projection function is only
+	meaningful if you know which canonical view volume you are using.<li>
+</ul>
+
+\subsection changes_bugfixes_to_010 Bugfixes
+
+<ul>
+	<li>Fixed <code>FCPPT_DYN_LINK</code> behaviour in
+	<code>FindFcppt.cmake</code>.</li>
+	<li>Properly pass <code>QUIETLY</code> and <code>REQUIRED</code> in
+	<code>FindFcppt.cmake</code>.</li>
+	<li>Include <code>Boost_INCLUDE_DIRS</code> rather than
+	<code>Boost_INCLUDE_DIR</code>.</li>
+	<li>Use <code>-pthread</code> for POSIX systems because we use
+	boost.thread and asio.</li>
+	<li>Assert that a type requested via <code>variant::object::get</code>
+	or <code>\verbatim ::get_raw \endverbatim</code> is actually among its possible types.</li>
+	<li><code>type_traits::is_iterable</code>,
+	<code>TYPE_TRAITS_GENERATE_HAS_MEMBER_FUNCTION</code> and
+	<code>TYPE_TRAITS_GENERATE_HAS_TYPE</code> now properly expose an
+	<code>mpl::bool</code>.</li>
+	<li>The default case of <code>chrono::common_type</code> has been
+	restricted to fundamental types to avoid compiler errors with certain
+	overloaded operators.</li>
+</ul>
+
+\section changes_older_changes Older changes
+
+\subsection changes_changes_to_09 Changes from 0.8 to 0.9
+
+\subsubsection changes_added_functionality_to_09 Added functionality
+
+TODO
+\subsubsection changes_changed_functionality_to_09 Changed functionality
+
+TODO
+\subsubsection changes_removed_functionality_to_09 Removed functionality
+
+TODO
+\subsubsection changes_bugfixes_to_09 Bugfixes
+
+TODO
+*/

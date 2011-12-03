@@ -1,0 +1,89 @@
+/**
+\mainpage Overview
+
+<table id="toc">
+<tr>
+<td>
+
+<ol>
+	<li>\ref main_introduction</li>
+	<li>\ref main_sitemap</li>
+	<li>\ref main_contact</li>
+</ol>
+
+</td>
+</tr>
+</table>
+
+\section main_introduction Introduction
+
+<a href="http://boost.org">Boost</a> already is a very useful general purpose
+library. If you use C++ without boost, the need for something that is already
+provided by it will soon arise.  However, boost is not perfect (and fcppt isn't
+either). The need for something that isn't provided by boost might arise, too,
+and there are even some things I consider not done "well" in boost.
+Freundlich's C++ toolkit (from now on shortened to fcppt) tries to fill in some
+gaps left by boost and even implements some replacements for a few boost
+components.
+
+\section main_sitemap Site map
+
+The documentation is split into the following parts:
+
+<table id="toc">
+<tr>
+<td>
+
+<ol>
+	<li>
+		\subpage requirements_download_installation
+		<ol>
+			<li>\ref requirements_download_installation_requirements</li>
+			<li>\ref requirements_download_installation_supported_platforms</li>
+			<li>\ref requirements_download_installation_download</li>
+			<li>\ref requirements_download_installation_building_and_installation</li>
+			<li>\ref requirements_download_installation_using_fcppt</li>
+			<li>\ref requirements_download_installation_static_and_shared_builds</li>
+		</ol>
+	</li>
+	<li>
+		\subpage changes
+		<ol>
+			<li>\ref changes_changes_to_010</li>
+			<li>\ref changes_older_changes</li>
+		</ol>
+	</li>
+	<li>
+		\subpage structure
+		<ol>
+			<li>\ref structure_file_separation</li>
+			<li>\ref structure_coding_style</li>
+		</ol>
+	</li>
+	<li>
+		Documentation
+		<ol>
+			<li>\ref fcpptalgorithm "fcppt::algorithm"</li>
+			<li>\ref fcpptalignment "fcppt::alignment"</li>
+			<li>\ref fcpptassign "fcppt::assign"</li>
+			<li>\ref fcpptcontainer "fcppt::container"</li>
+			<li>\ref fcpptmath "fcppt::math"</li>
+		</ol>
+	</li>
+</ol>
+
+</td>
+</tr>
+</table>
+
+\section main_contact Contact
+
+You can contact us via our IRC channel
+
+<code>\verbatim #sge-sanguis \endverbatim</code>
+
+at
+
+<code>irc.freenode.net</code>
+
+*/

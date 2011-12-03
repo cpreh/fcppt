@@ -22,7 +22,16 @@ namespace container
 namespace tree
 {
 
-/// Releases the held value of a tree node and returns it as a unique_ptr
+/**
+\brief Releases the held value of a tree node and returns it as a <code>unique_ptr</code>
+
+\note This only works for noncopyable trees
+
+Example:
+\snippet container/tree_ptr.cpp tree_ptr_release
+
+\ingroup fcpptcontainertree
+*/
 template<
 	typename T
 >

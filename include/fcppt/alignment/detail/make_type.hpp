@@ -25,14 +25,16 @@ namespace alignment
 namespace detail
 {
 
+/// \cond FCPPT_DOXYGEN_DEBUG
 #if !defined(FCPPT_ALIGN_TEMPLATE_PARAMETERS)
+/// \endcond
 template<
 	typename T,
 	size_type Alignment
 >
 struct make_type;
 
-/// \cond
+/// \cond FCPPT_DOXYGEN_DEBUG
 #define FCPPT_ALIGNMENT_DETAIL_GENERATE(r, state)\
 template<\
 	typename T\
@@ -67,7 +69,6 @@ BOOST_PP_FOR(
 #undef FCPPT_ALIGNMENT_DETAIL_GENERATE_END
 #undef FCPPT_ALIGNMENT_DETAIL_MAXIMUM
 #undef FCPPT_ALIGNMENT_DETAIL_GENERATE
-/// \endcond
 #else
 template<
 	typename T,
@@ -78,6 +79,7 @@ struct make_type
 	typedef T FCPPT_ALIGNMENT_ALIGN(Alignment) type;
 };
 #endif
+/// \endcond
 
 }
 }

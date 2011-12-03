@@ -9,7 +9,6 @@
 
 #include <fcppt/math/dim/basic_impl.hpp>
 
-
 namespace fcppt
 {
 namespace math
@@ -17,7 +16,14 @@ namespace math
 namespace dim
 {
 
-/// Checks if all dimensions of @a r are the same
+/**
+\brief Checks if all elements of the dim are the same
+\ingroup fcpptmathdim
+\tparam N The dim's dimension
+\tparam T The dim's <code>value_type</code>
+\tparam S The dim's storage type
+\param r The dimension to check
+*/
 template<
 	typename T,
 	typename N,

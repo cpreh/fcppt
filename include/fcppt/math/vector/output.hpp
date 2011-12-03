@@ -21,7 +21,14 @@ namespace math
 namespace vector
 {
 
-/// Outputs a vector to a basic_ostream
+/**
+\brief Outputs a vector to \p s, in the format
+
+<pre>(a_1,a_2,...)</pre>
+
+where <code>a_i</code> are the vector's components.
+\ingroup fcpptmathvector
+*/
 template<
 	typename T,
 	typename N,

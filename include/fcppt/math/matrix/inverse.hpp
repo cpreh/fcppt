@@ -8,7 +8,6 @@
 #define FCPPT_MATH_MATRIX_INVERSE_HPP_INCLUDED
 
 #include <fcppt/text.hpp>
-#include <fcppt/math/exception.hpp>
 #include <fcppt/math/inverse.hpp>
 #include <fcppt/math/is_static_size.hpp>
 #include <fcppt/math/matrix/adjugate.hpp>

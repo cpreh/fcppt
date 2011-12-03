@@ -12,7 +12,7 @@ namespace fcppt
 namespace mpl
 {
 
-/// Applies ::type on @tparam Type
+/// Applies <code>::%type</code> on \p Type
 template<
 	typename Type
 >

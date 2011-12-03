@@ -21,7 +21,14 @@ namespace math
 namespace dim
 {
 
-/// Outputs a dim to a basic_ostream
+/**
+\brief Outputs a dim to \p s, in the format
+
+<pre>(a_1,a_2,...)</pre>
+
+where <code>a_i</code> are the dim's components.
+\ingroup fcpptmathdim
+*/
 template<
 	typename T,
 	typename N,

@@ -17,6 +17,10 @@ namespace fcppt
 namespace container
 {
 
+/**
+ * FIXME
+ * \ingroup fcpptcontainer
+ */
 template<
 	typename T,
 	typename A

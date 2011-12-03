@@ -15,8 +15,23 @@ namespace math
 {
 namespace vector
 {
-// Taken from http://en.wikipedia.org/wiki/Gram_schmidt
-// We need this for the Gram Schmidt algorithm
+/**
+\brief Project a vector orthogonally onto another vector
+\ingroup fcpptmathvector
+\tparam Vector A fcppt::math::vector::basic type.
+\param u The vector to project to
+\param v The vector to project from
+
+This is expressed as \f[ \textrm{project}(u,v) = \frac{\langle u,v \rangle}{\langle u,u \rangle} u \f]
+
+See:
+
+http://en.wikipedia.org/wiki/Gram_schmidt#The_Gram.E2.80.93Schmidt_process
+
+for an explanation.
+
+\see fcppt::math::vector::orthogonalize
+*/
 template<typename Vector>
 Vector const
 project(

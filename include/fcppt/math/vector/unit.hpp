@@ -14,7 +14,18 @@ namespace math
 namespace vector
 {
 
-/// Creates a vector of type \tparam Vec with all components set to 0 expect for component \param _axis which is set to 1
+/**
+\brief Returns the n-th basis vector of the canonical basis.
+\ingroup fcpptmathvector
+\tparam Vec The destination vector type.
+\param _axis The basis axis
+
+Creates a vector of type \p Vec with all components set to 0 expect for component \p _axis which is set to 1:
+
+\f[
+e_i = (0,\ldots,0,1,0,\ldots,0)
+\f]
+*/
 template<
 	typename Vec
 >

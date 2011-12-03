@@ -19,18 +19,45 @@ namespace math
 {
 namespace vector
 {
-/// Calculate the n dimensional polar coordinates, also called "hyperspherical coordinates"
 /**
-	Formula taken from:
-	http://en.wikipedia.org/wiki/Hypersphere#Hyperspherical_coordinates
+\brief Calculate the n dimensional polar coordinates, also called "hyperspherical coordinates"
+\ingroup fcpptmathvector
+\tparam T The vector's <code>value_type</code>
+\tparam N The vector's dimension type
+\tparam S The vector's storage type
+\param angles An \p N-1 dimensional vector containing the angles in each dimension
 
-	Given an (n-1)-dimensional angle vector this returns an
-	n-dimensional unit vector in n-dimensional cartesian coordinates. If
-	you want a scaled version of the result, do it yourself using
-	operator*(T,vector).
+The formula is taken from:
 
-	@param angles The n-1 dimensional angle vector
- */
+http://en.wikipedia.org/wiki/Hypersphere#Hyperspherical_coordinates
+
+Given an (n-1)-dimensional angle vector this returns an n-dimensional unit
+vector in n-dimensional cartesian coordinates. If you want a scaled version of
+the result, do it yourself using <code>operator*(T,vector)</code>.
+
+Example:
+
+\code
+// This code calculates a three-dimensional point from two angles (...of the 3D
+// sphere), typically called azimuth an elevation
+
+// The point type
+typedef
+fcppt::math::vector::static_<float,3>::type
+vector3f;
+
+// The angles type
+typedef
+fcppt::math::vector::static_<float,2>::type
+vector2f;
+
+vector3f point =
+	fcppt::math::vector::hypersphere_to_cartesian(
+		vector2f(
+			fcppt::math::pi<float>(),
+			0.0f));
+\endcode
+*/
 template<typename T,typename N,typename S>
 typename
 static_<T,N::value+1>::type const

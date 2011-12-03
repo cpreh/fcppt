@@ -20,10 +20,12 @@ namespace math
 namespace matrix
 {
 
-/// Deletes a specific row and rolumn (a cross) from the matrix
 /**
- * @param matrix_ must be statically sized matrix
- * @return The result type will be of size (N - 1, M - 1)
+\brief Deletes a specific row and rolumn (a cross) from the matrix
+\param matrix_ must be statically sized matrix
+\param row The row index to the row
+\param column The column index to the column
+\return The result type will be of size (N - 1, M - 1)
 */
 template<
 	typename T,

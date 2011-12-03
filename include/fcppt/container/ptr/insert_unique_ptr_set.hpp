@@ -20,11 +20,16 @@ namespace container
 namespace ptr
 {
 
-/// Tries to insert @a _ptr into @a _container
 /**
- * Transfers ownership of @a _ptr to @a _container
- * @return A pair<iterator, bool> where the bool is true if the insertion succeeded.
- * @return The iterator is the position of the newly inserted element, if successful.
+\brief Tries to insert \p _ptr into \p _container
+\ingroup fcpptcontainerptr
+\tparam PtrContainer A boost::ptr_set
+\tparam UniquePtr A (compatible) fcppt::unique_ptr
+\return
+A <code>std::%pair<iterator, bool></code> where the bool is true if the insertion succeeded.
+The iterator is the position of the newly inserted element, if successful.
+
+Transfers ownership of \p _ptr to \p _container
 */
 template<
 	typename PtrContainer,

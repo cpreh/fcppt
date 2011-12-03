@@ -180,7 +180,7 @@ template<
 fcppt::math::vector::basic<T, N, S>::~basic()
 {}
 
-// \cond
+// \cond FCPPT_DOXYGEN_DEBUG
 #define FCPPT_MATH_VECTOR_BASIC_DEFINE_OPERATOR(\
 	op\
 )\

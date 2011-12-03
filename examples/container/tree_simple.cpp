@@ -4,7 +4,6 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-//[tree_simple
 #include <fcppt/exception.hpp>
 #include <fcppt/make_unique_ptr.hpp>
 #include <fcppt/move.hpp>
@@ -22,6 +21,7 @@
 int main()
 try
 {
+//! [main]
 	typedef
 	fcppt::container::tree::object<
 		fcppt::string
@@ -126,6 +126,7 @@ try
 			first_child.child_position()
 		)
 		<< FCPPT_TEXT('\n');
+//! [main]
 }
 catch(
 	fcppt::exception const &_error
@@ -137,4 +138,3 @@ catch(
 
 	return EXIT_FAILURE;
 }
-//]

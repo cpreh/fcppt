@@ -12,12 +12,13 @@ namespace fcppt
 namespace algorithm
 {
 
-/// Removes pointer from the ptr_container @a _container if @a _predicate matches
 /**
+ * \brief Removes pointer from the ptr_container \p _container if \p _predicate matches
+ * \ingroup fcpptalgorithm
+ * \return <code>true</code> if the element was found/erased, <code>false</code> otherwise
+ *
  * This is different from the erase_if member functions because it returns
  * if something has been erased.
- *
- * @return true if the element was found/erased, false otherwise
 */
 template<
 	typename Container,

@@ -25,10 +25,26 @@ namespace math
 namespace vector
 {
 
-/// Calculates the relative angle between two vectors
 /**
- * @tparam T must be a floating point type
- * The behaviour is undefined if _from or _to are very close to zero
+\brief Calculates the angle between two floating point vectors
+\ingroup fcpptmathvector
+\tparam T The vector's <code>value_type</code>. Must be a floating point type.
+\tparam N The vector's dimension type
+\tparam S1 The first vector's storage type
+\tparam S2 The second vector's storage type
+
+If you want to calculate the angle between two vectors whose value type is not
+a floating point type, see fcppt::math::vector::angle_between_cast.
+
+If you want to calculate the signed angle between two 2D vectors, use
+fcppt::math::vector::signed_angle_between or fcppt::math::vector::signed_angle_between_cast.
+
+\see fcppt::math::vector::angle_between_cast
+\see fcppt::math::vector::signed_angle_between
+\see fcppt::math::vector::signed_angle_between_cast
+
+\warning
+The behaviour is undefined if \p _from or \p _to are very close to zero.
 */
 template<
 	typename T,

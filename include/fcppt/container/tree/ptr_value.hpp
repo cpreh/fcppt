@@ -14,6 +14,10 @@ namespace container
 namespace tree
 {
 
+/**
+\ingroup fcpptcontainertree
+\brief A wrapper class to implement noncopyable semantics to the tree
+*/
 template<
 	typename T
 >

@@ -15,6 +15,10 @@ namespace fcppt
 namespace container
 {
 
+/**
+\brief FIXME
+\ingroup fcpptcontainer
+*/
 class not_found
 :
 	public container::exception

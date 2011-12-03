@@ -4,7 +4,9 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/math/dim/dim.hpp>
+#include <fcppt/math/dim/static.hpp>
+#include <fcppt/math/dim/basic_impl.hpp>
+#include <fcppt/math/dim/fill.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/test/unit_test.hpp>
 #include <fcppt/config/external_end.hpp>
@@ -17,22 +19,6 @@ typedef fcppt::math::dim::static_<
 	2
 >::type ui2_dim;
 
-}
-
-BOOST_AUTO_TEST_CASE(dim_quad)
-{
-	ui2_dim const quad_dim(
-		fcppt::math::dim::quad<
-			ui2_dim
-		>(
-			256
-		)
-	);
-
-	BOOST_REQUIRE(
-		quad_dim.w() == 256
-		&& quad_dim.h() == 256
-	);
 }
 
 BOOST_AUTO_TEST_CASE(dim_fill)
