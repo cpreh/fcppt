@@ -16,6 +16,16 @@ namespace fcppt
 namespace variant
 {
 
+/**
+\brief Compares two variants for inequality
+
+Compares \a _a and \a _b for inequality. Equal to <code>!(_a == _b)</code>.
+This function requires all possible types of the variant to be equality
+comparable.
+
+\param _a The first variant
+\param _b The second variant
+*/
 template<
 	typename Types
 >

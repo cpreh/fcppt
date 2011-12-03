@@ -21,7 +21,7 @@ namespace variant
 \brief Does a unary visitation
 
 Visits \a _obj with the visitor \a _op. <code>_op.operator()(T)</code> will be
-called where <code>T</code> is the type held by the variant.
+called where <code>T</code> is the type held \a _obj.
 
 \tparam Operation The visitor type
 \tparam Types The types of the variant
@@ -30,7 +30,6 @@ called where <code>T</code> is the type held by the variant.
 \param _obj The variant to visit
 
 \return The result of <code>_op.operator()(T)</code>
-
 */
 template<
 	typename Operation,

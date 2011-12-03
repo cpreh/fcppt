@@ -80,7 +80,7 @@ int_or_float var;
 // Undefined behaviour because the union doesn't store anything
 std::cout << var.i << '\n';
 
-// Ok, but doesn't track that the type is var
+// Ok, but doesn't track that the type is int
 var.i = 42;
 
 // Undefined behaviour because the union stores an int

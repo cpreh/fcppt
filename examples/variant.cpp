@@ -50,28 +50,27 @@ struct visitor
 int main()
 try
 {
-//! [variant_binary_visitation]
-	// typedef a variant that can either hold an int or a string
+	// typedef a variant that can either hold a string or an int
 	typedef fcppt::variant::object<
 		boost::mpl::vector2<
 			std::string,
 			int
 		>
-	> variant;
+	> string_or_int;
 
-	// initialize v with a string
-	variant v(
+//! [variant_binary_visitation]
+	string_or_int v(
 		std::string(
 			"Hello World"
 		)
 	);
 
-	// initialize u with an int
-	variant u(
+	string_or_int u(
 		42
 	);
 
-	// do a binary visitation on them
+	// Does a binary visitation with visitor(),
+	// prints "Hello World" 42
 	fcppt::variant::apply_binary(
 		visitor(),
 		v,

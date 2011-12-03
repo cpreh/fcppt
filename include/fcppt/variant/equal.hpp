@@ -17,6 +17,16 @@ namespace fcppt
 namespace variant
 {
 
+/**
+\brief Compares two variants for equality
+
+Compares \a _a and \a _b for equality. The two variants will be equal if they
+hold the same type and the values compare equal. This function requires all
+possible types of the variant to be equality comparable.
+
+\param _a The first variant
+\param _b The second variant
+*/
 template<
 	typename Types
 >

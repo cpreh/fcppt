@@ -17,11 +17,22 @@ namespace fcppt
 namespace variant
 {
 
-/// Does a binary visitation with operation @a _op
 /**
- * This will call @a _op::operator()(t1, t2)
- * where t1 and t2 are the objects held by @a _obj1 and @a _obj2 respectively
- * @return The result of @a _op::operator().
+\brief Does a binary visitation
+
+Visits \a _obj1 and \a _obj2 with the visitor \a _op. <code>_op.operator()(T,
+U)</code> will be called where <code>T</code> is the type held by \a _obj1 and
+<code>U</code> is the type held by \a _obj2.
+
+\tparam Operation The visitor type
+\tparam Types1 The types of the first variant
+\tparam Types2 The types of the second variant
+
+\param _op The visitor to execute
+\param _obj1 The first variant to visit
+\param _obj2 The second variant to visit
+
+\return The result of <code>_op.operator()(T, U)</code>
 */
 template<
 	typename Operation,

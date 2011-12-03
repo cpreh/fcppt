@@ -23,10 +23,10 @@ namespace
 {
 
 //! [variant_recursive_declaration]
-// Forward declare a wrapper struct that holds the to be declared variant
+// Forward declare a wrapper struct that holds the variant to be declared
 struct wrapper;
 
-// Typedef a variant that can either hold an int or a struct wrapper.
+// Typedef a variant that can either hold an int or a wrapper (struct).
 // Note, that wrapper has be made recursive.
 typedef fcppt::variant::object<
 	boost::mpl::vector2<
