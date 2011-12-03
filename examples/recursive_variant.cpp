@@ -92,13 +92,7 @@ try
 
 	// We can extract wrapper from the variant as if the recursive wasn't there
 	std::cout
-		<<
-		rrv.get<
-			::wrapper
-		>()
-		.member_.get<
-			int
-		>()
+		<< rrv.get< ::wrapper>().member_.get<int>()
 		<< '\n';
 //! [variant_recursive_construction]
 
