@@ -1284,7 +1284,6 @@ set(
 	include/fcppt/utf8/to_fcppt_string.hpp
 	include/fcppt/utf8/traits.hpp
 	include/fcppt/utf8/utf8.hpp
-	include/fcppt/variant/apply.hpp
 	include/fcppt/variant/apply_binary.hpp
 	include/fcppt/variant/apply_ternary.hpp
 	include/fcppt/variant/apply_unary.hpp

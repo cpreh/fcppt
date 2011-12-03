@@ -8,7 +8,9 @@
 #define FCPPT_VARIANT_APPLY_TERNARY_HPP_INCLUDED
 
 #include <fcppt/variant/apply_binary.hpp>
+#include <fcppt/variant/object_fwd.hpp>
 #include <fcppt/variant/detail/ternary_unwrap.hpp>
+
 
 namespace fcppt
 {
@@ -23,23 +25,31 @@ namespace variant
 */
 template<
 	typename Operation,
-	typename Variant1,
-	typename Variant2,
-	typename Variant3
+	typename Types1,
+	typename Types2,
+	typename Types3
 >
 typename Operation::result_type
 apply_ternary(
 	Operation const &_op,
-	Variant1 const &_obj1,
-	Variant2 const &_obj2,
-	Variant3 const &_obj3
+	fcppt::variant::object<
+		Types1
+	> const &_obj1,
+	fcppt::variant::object<
+		Types2
+	> const &_obj2,
+	fcppt::variant::object<
+		Types3
+	> const &_obj3
 )
 {
 	return
 		variant::apply_binary(
 			detail::ternary_unwrap<
 				Operation,
-				Variant1
+				fcppt::variant::object<
+					Types1
+				>
 			>(
 				_op,
 				_obj1

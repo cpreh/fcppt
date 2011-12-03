@@ -8,7 +8,9 @@
 #define FCPPT_VARIANT_APPLY_BINARY_HPP_INCLUDED
 
 #include <fcppt/variant/apply_unary.hpp>
+#include <fcppt/variant/object_fwd.hpp>
 #include <fcppt/variant/detail/binary_unwrap.hpp>
+
 
 namespace fcppt
 {
@@ -23,21 +25,27 @@ namespace variant
 */
 template<
 	typename Operation,
-	typename Variant1,
-	typename Variant2
+	typename Types1,
+	typename Types2
 >
 typename Operation::result_type
 apply_binary(
 	Operation const &_op,
-	Variant1 const &_obj1,
-	Variant2 const &_obj2
+	fcppt::variant::object<
+		Types1
+	> const &_obj1,
+	fcppt::variant::object<
+		Types2
+	> const &_obj2
 )
 {
 	return
 		variant::apply_unary(
 			detail::binary_unwrap<
 				Operation,
-				Variant1
+				fcppt::variant::object<
+					Types1
+				>
 			>(
 				_op,
 				_obj1

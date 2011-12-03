@@ -7,7 +7,6 @@
 #ifndef FCPPT_VARIANT_VARIANT_HPP_INCLUDED
 #define FCPPT_VARIANT_VARIANT_HPP_INCLUDED
 
-#include <fcppt/variant/apply.hpp>
 #include <fcppt/variant/apply_binary.hpp>
 #include <fcppt/variant/apply_ternary.hpp>
 #include <fcppt/variant/apply_unary.hpp>

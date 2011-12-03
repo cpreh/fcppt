@@ -77,7 +77,7 @@ union int_or_float
 
 int_or_float var;
 
-// Undefined behaviour because the union doens't store anything
+// Undefined behaviour because the union doesn't store anything
 std::cout << var.i << '\n';
 
 // Ok, but doesn't track that the type is var
@@ -216,8 +216,8 @@ all sorts of C++ template mechanisms to make this easier.
 
 To define a visitor, it must have function call operators so that for all types
 in the set exactly one of them matches. The function call operators must also
-be const. The visitor must have a typedef <code>result_type</code> which must
-be the result type of every function call operator it provides.
+be <code>const</code>. The visitor must have a typedef <code>result_type</code>
+which must be the result type of every function call operator it provides.
 
 \code
 struct print_visitor
@@ -295,8 +295,8 @@ Here is a small example for defining a binary visitor:
 
 \section variant_recursive Recursive data structures
 
-A problem arises when a variant can hold a data structure that holds the to be
-defined variant itself. To break the cycle, such a data structure, called
+A problem arises when a variant can hold a data structure that holds the yet to
+be defined variant itself. To break the cycle, such a data structure, called
 <code>wrapper</code> here, must be forward declared and passed as a
 <code>fcppt::variant::recursive<wrapper></code> to the variant. This is
 necessary because the variant can only use complete types and
@@ -343,10 +343,6 @@ The variant can hold <code>wrapper</code> which contains a variant itself.
 <tr>
 <td><code>apply_ternary.hpp</code></td>
 <td>Contains fcppt::variant::apply_ternary for ternary visitation</td>
-</tr>
-<tr>
-<td><code>apply.hpp</code></td>
-<td>Contains fcppt::variant::apply for unary, binary or ternary visitation</td>
 </tr>
 <tr>
 <td><code>equal.hpp</code></td>
