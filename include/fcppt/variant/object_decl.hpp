@@ -29,7 +29,7 @@ namespace variant
 /**
 \brief A class that can hold any object from a fixed set of types
 
-\ingroup fcppt
+\ingroup fcpptvariant
 
 \tparam Types An MPL sequence of types that must be CopyConstructible,
 Assignable and complete.
