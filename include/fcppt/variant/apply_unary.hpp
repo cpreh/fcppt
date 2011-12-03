@@ -7,6 +7,7 @@
 #ifndef FCPPT_VARIANT_APPLY_UNARY_HPP_INCLUDED
 #define FCPPT_VARIANT_APPLY_UNARY_HPP_INCLUDED
 
+#include <fcppt/variant/object_fwd.hpp>
 #include <fcppt/variant/detail/apply_unary_internal.hpp>
 #include <fcppt/variant/detail/operation_wrapper.hpp>
 
@@ -16,20 +17,31 @@ namespace fcppt
 namespace variant
 {
 
-/// Does a unary visitation with operation @a _op
 /**
- * This will call @a _op::operator()(t)
- * where t is the object held by @a _obj
- * @return The result of @a _op::operator().
+\brief Does a unary visitation
+
+Visits \a _obj with the visitor \a _op. <code>_op.operator()(T)</code> will be
+called where <code>T</code> is the type held by the variant.
+
+\tparam Operation The visitor type
+\tparam Types The types of the variant
+
+\param _op The visitor to execute
+\param _obj The variant to visit
+
+\return The result of <code>_op.operator()(T)</code>
+
 */
 template<
 	typename Operation,
-	typename Variant
+	typename Types
 >
 typename Operation::result_type
 apply_unary(
 	Operation const &_op,
-	Variant const &_obj
+	fcppt::variant::object<
+		Types
+	> const &_obj
 )
 {
 	return

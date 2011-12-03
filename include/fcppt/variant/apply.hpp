@@ -17,7 +17,9 @@ namespace fcppt
 namespace variant
 {
 
-/// Forwards to apply_unary
+/**
+\brief Forwards to fcppt::variant::apply_unary
+*/
 template<
 	typename Operation,
 	typename Variant
@@ -35,7 +37,9 @@ apply(
 		);
 }
 
-/// Forwards to apply_binary
+/**
+\brief Forwards to fcppt::variant::apply_binary
+*/
 template<
 	typename Operation,
 	typename Variant1,
@@ -56,7 +60,9 @@ apply(
 		);
 }
 
-/// Forwards to apply_ternary
+/**
+\brief Forwards to fcppt::variant::apply_ternary
+*/
 template<
 	typename Operation,
 	typename Variant1,

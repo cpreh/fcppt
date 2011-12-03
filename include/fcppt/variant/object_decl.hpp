@@ -29,7 +29,7 @@ namespace variant
 /**
 \brief A class that can hold any object from a fixed set of types
 
-\ingroup fcpptvariant
+\ingroup fcppt
 
 \tparam Types An MPL sequence of types that must be CopyConstructible,
 Assignable and complete.
@@ -165,7 +165,7 @@ The above example can be rewritten as follows:
 
 \code
 // Note that an MPL sequence is used here to describe which types the variant
-// can old
+// can hold
 typedef fcppt::variant::object<
 	boost::mpl::vector2<
 		std::string,
@@ -392,51 +392,138 @@ template<
 class object
 {
 public:
+	/**
+	\brief An mpl sequence of the possible types
+	*/
 	typedef Types types;
 
-	// intentionally not explicit
+	/**
+	\brief Constructs the variant from a value
+
+	Constructs the variant from \a value. This constructor is intentionally
+	not explicit.
+
+	\tparam U Must be a type or a type contained in an
+	fcppt::variant::recursive among <code>types</code>
+
+	\param value The value to construct the variant from
+
+	\post <code>fcppt::variant::holds_type<U>(*this)</code> is true
+	*/
 	template<
 		typename U
 	>
 	object(
-		U const &
+		U const &value
 	);
 
+	/**
+	\brief Copy constructs a variant
+
+	Copy constructs the value held by \a other into the variant.
+
+	\param other The variant to copy from
+
+	\post <code>this->type_index() == other.type_index()</code>
+	*/
 	object(
-		object const &
+		object const &other
 	);
 
+	/**
+	\brief Assigns a new value to the variant
+
+	Assigns \a value to the variant. Calls the assignment operator of the
+	held type when possible.
+
+	\tparam U Must be a type or a type contained in an
+	fcppt::variant::recursive among <code>types</code>
+
+	\param value The value to assign the variant from
+
+	\post <code>fcppt::variant::holds_type<U>(*this)</code> is true
+	*/
 	template<
 		typename U
 	>
 	object &
 	operator=(
-		U const &
+		U const &value
 	);
 
+	/**
+	\brief Assigns a variant
+
+	Assigns the value from \a other to the variant. Calls the assignment
+	operator of the held type when possible.
+
+	\param other The variant to assign from
+
+	\post <code>this->type_index() == other.type_index()</code>
+	*/
 	object &
 	operator=(
-		object const &
+		object const &other
 	);
 
+	/**
+	\brief Destroys the variant
+
+	Calls the destructor of the held value.
+	*/
 	~object();
 
-	/// Returns the held object if its actual type is @a U
+	/**
+	\brief Returns a const reference to the held type
+
+	If <code>fcppt::variant::holds_type<U>(*this)</code> is true, then a
+	const reference to currently held value is be returned.
+
+	\tparam U Must be a type or a type contained in an
+	fcppt::variant::recursive among <code>types</code>
+
+	\throw fcppt::variant::invalid_get if
+	<code>fcppt::variant::holds_type<U>(*this)</code> is false
+	*/
 	template<
 		typename U
 	>
 	U const &
 	get() const;
 
+	/**
+	\brief Returns a reference to the held type
+
+	If <code>fcppt::variant::holds_type<U>(*this)</code> is true, then a
+	reference to currently held value is be returned.
+
+	\tparam U Must be a type or a type contained in an
+	fcppt::variant::recursive among <code>types</code>
+
+	\throw fcppt::variant::invalid_get if
+	<code>fcppt::variant::holds_type<U>(*this)</code> is false
+	*/
 	template<
 		typename U
 	>
 	U &
 	get();
 
-	/// Returns the raw type if its actual type is @a U
 	/**
-	 * Note that the recursive type might be returned as well
+	\brief Returns a const reference to the held type without any checks
+
+	If <code>fcppt::mpl::index_of<types, U>::value ==
+	this->type_index()</code> is true, a const reference to currently held
+	value is be returned.
+
+	Note that this function does not transform recursive types, they will
+	be returned as is.
+
+	\tparam U Must be a type among <code>types</code>
+
+	\warning The behaviour is undefined if
+	<code>fcppt::mpl::index_of<types, U>::value ==
+	this->type_index()</code> is false.
 	*/
 	template<
 		typename U
@@ -444,17 +531,39 @@ public:
 	U const &
 	get_raw() const;
 
+	/**
+	\brief Returns a reference to the held type without any checks
+
+	If <code>fcppt::mpl::index_of<types, U>::value ==
+	this->type_index()</code> is true, a reference to currently held value
+	is be returned.
+
+	Note that this function does not transform recursive types, they will
+	be returned as is.
+
+	\tparam U Must be a type among <code>types</code>
+
+	\warning The behaviour is undefined if
+	<code>fcppt::mpl::index_of<types, U>::value ==
+	this->type_index()</code> is false.
+	*/
 	template<
 		typename U
 	>
 	U &
 	get_raw();
 
-	/// Returns the type_info of the held object
+	/**
+	\brief Returns an <code>std::%type_info</code> of the held type
+	*/
 	std::type_info const &
 	type() const;
 
-	/// Returns the index of the held type in the type list
+	/**
+	\brief Returns the index of the held type
+
+	\return A runtime index into <code>types</code> of the held type.
+	*/
 	variant::size_type
 	type_index() const;
 private:
