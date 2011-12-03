@@ -15,16 +15,16 @@
 #include <fcppt/config/external_begin.hpp>
 #include <boost/mpl/vector/vector10.hpp>
 #include <cstdlib>
+#include <iostream>
+#include <ostream>
 #include <fcppt/config/external_end.hpp>
 
 
 namespace
 {
-
-// create a binary visitor
+//! [variant_binary_visitor]
 struct visitor
 {
-	// note: it is important to specify the result_type as a typedef
 	typedef void result_type;
 
 	template<
@@ -37,30 +37,32 @@ struct visitor
 		T2 const &t2
 	) const
 	{
-		fcppt::io::cout()
+		std::cout
 			<< t1
-			<< FCPPT_TEXT(' ')
+			<< ' '
 			<< t2
-			<< FCPPT_TEXT('\n');
+			<< '\n';
 	}
 };
+//! [variant_binary_visitor]
 }
 
 int main()
 try
 {
+//! [variant_binary_visitation]
 	// typedef a variant that can either hold an int or a string
 	typedef fcppt::variant::object<
 		boost::mpl::vector2<
-			int,
-			fcppt::string
+			std::string,
+			int
 		>
 	> variant;
 
 	// initialize v with a string
 	variant v(
-		fcppt::string(
-			FCPPT_TEXT("blabla")
+		std::string(
+			"Hello World"
 		)
 	);
 
@@ -75,6 +77,7 @@ try
 		v,
 		u
 	);
+//! [variant_binary_visitation]
 }
 catch(
 	fcppt::exception const &e

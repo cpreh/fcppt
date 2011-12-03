@@ -4,7 +4,6 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-//[recursivevariant
 #include <fcppt/exception.hpp>
 #include <fcppt/text.hpp>
 #include <fcppt/io/cerr.hpp>
@@ -15,6 +14,7 @@
 #include <fcppt/config/external_begin.hpp>
 #include <boost/mpl/vector/vector10.hpp>
 #include <cstdlib>
+#include <iostream>
 #include <ostream>
 #include <fcppt/config/external_end.hpp>
 
@@ -22,11 +22,12 @@
 namespace
 {
 
-// forward declare a wrapper struct that can hold the to be declared variant again
+//! [variant_recursive_declaration]
+// Forward declare a wrapper struct that holds the to be declared variant
 struct wrapper;
 
-// typedef a variant that can either hold an int or a struct wrapper
-// note, that wrapper has be made recursive
+// Typedef a variant that can either hold an int or a struct wrapper.
+// Note, that wrapper has be made recursive.
 typedef fcppt::variant::object<
 	boost::mpl::vector2<
 		fcppt::variant::recursive<
@@ -36,7 +37,7 @@ typedef fcppt::variant::object<
 	>
 > recursive_variant;
 
-// wrapper can hold the variant again!
+// Wrapper holds the variant again!
 struct wrapper
 {
 	wrapper(
@@ -48,6 +49,7 @@ struct wrapper
 
 	recursive_variant member_;
 };
+//! [variant_recursive_declaration]
 
 // declare an output operator for wrapper (just for our test case)
 template<
@@ -75,22 +77,35 @@ operator <<(
 int main()
 try
 {
-	// the variant can hold an int
+//! [variant_recursive_construction]
+	// The variant can hold an int
 	recursive_variant rv(
 		42
 	);
 
-	// or it can hold a wrapper struct, holding a variant of the same type in return
+	// Or it can hold a wrapper struct, holding a variant of the same type in return
 	recursive_variant rrv((
 		::wrapper(
 			rv
 		)
 	));
 
+	// We can extract wrapper from the variant as if the recursive wasn't there
+	std::cout
+		<<
+		rrv.get<
+			::wrapper
+		>()
+		.member_.get<
+			int
+		>()
+		<< '\n';
+//! [variant_recursive_construction]
+
 	// rrv will be correctly dispatched to our wrapper struct, which will output the int
-	fcppt::io::cout()
+	std::cout
 		<< rrv
-		<< FCPPT_TEXT('\n');
+		<< '\n';
 
 }
 catch(
@@ -103,4 +118,3 @@ catch(
 
 	return EXIT_FAILURE;
 }
-//]
