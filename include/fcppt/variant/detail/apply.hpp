@@ -7,12 +7,12 @@
 #ifndef FCPPT_VARIANT_DETAIL_APPLY_HPP_INCLUDED
 #define FCPPT_VARIANT_DETAIL_APPLY_HPP_INCLUDED
 
-#include <fcppt/assert/unreachable.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/mpl/at.hpp>
 #include <boost/mpl/deref.hpp>
 #include <boost/mpl/next.hpp>
 #include <boost/type_traits/is_same.hpp>
+#include <exception>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -49,7 +49,8 @@ struct apply<
 		Variant &
 	)
 	{
-		FCPPT_ASSERT_UNREACHABLE;
+		// this code is unreachable
+		std::terminate();
 	}
 };
 
