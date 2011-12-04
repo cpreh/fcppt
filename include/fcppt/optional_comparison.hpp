@@ -12,6 +12,18 @@
 namespace fcppt
 {
 
+/**
+\brief Compares two optionals for equality
+
+\ingroup fcpptmain
+
+Compares \a _a and \a _b for equality. Two optionals are equal if they are
+either both empty or if they are both not empty and their elements compare
+equal. This function requires \a T to be equality comparable.
+
+\param _a The first optional
+\param _b The second optional
+*/
 template<
 	typename T
 >
@@ -29,6 +41,17 @@ operator==(
 			_a.has_value() == _b.has_value();
 }
 
+/**
+\brief Compares two optionals for inequality
+
+\ingroup fcpptmain
+
+Compares \a _a and \a _b for inequality. Equal to <code>!(_a == _b)</code>.
+This function requires \a T to be equality comparable.
+
+\param _a The first optional
+\param _b The second optional
+*/
 template<
 	typename T
 >

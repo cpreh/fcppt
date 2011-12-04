@@ -25,7 +25,9 @@ namespace fcppt
 
 /**
 \brief A class that makes values optional
+
 \ingroup fcpptmain
+
 \tparam T The type to make optional, which must be CopyConstructible,
 Assignable and complete. It therefore must also not be const.
 
@@ -37,6 +39,7 @@ Assignable and complete. It therefore must also not be const.
 	<li>\ref optional_motivation</li>
 	<li>\ref optional_value</li>
 	<li>\ref optional_reference</li>
+	<li>\ref optional_design</li>
 	<li>\ref optional_headers</li>
 </ol>
 
@@ -142,6 +145,21 @@ value.</li>
 </ul>
 
 For optional references, see \ref optional_reference
+
+\section optional_design Design
+
+There is already <code>%boost::optional</code> so you might wonder why
+fcppt provides its own optional type. It is actually quite similar to
+<code>%boost::optional</code> in the sense that it stores optional values
+by value and not by means of dynamically allocated memmory. This means
+that an optional value is at least as big as its type it holds.
+The key differences to <code>%boost::optional</code> are
+<ul>
+<li>fcppt::optional<T> uses alignment support from the compiler instead of
+relying on the hacky <code>%boost::detail::aligned_storage</code></li>
+<li>fcppt::optional doesn't have an implicit constructor.</li>
+<li>fcppt::optional<T &> doesn't allow implicit conversions for assignment</li>
+</ul>
 
 \section optional_headers Header files
 
@@ -445,6 +463,8 @@ private:
 
 /**
 \brief A specialization for optional references
+
+\ingroup fcpptmain
 
 \tparam T The reference type to make optional, which doesn't have to be
 CopyConstructible, Assignable or even complete.

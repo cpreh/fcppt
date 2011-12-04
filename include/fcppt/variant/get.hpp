@@ -20,7 +20,7 @@ namespace variant
 
 \ingroup fcpptvariant
 
-Equal to <code>%_object.get<Type>()</code>
+Equal to <code>%_object.get&lt;Type&gt;()</code>
 
 \see fcppt::variant::object::get()
 */
@@ -46,7 +46,7 @@ get(
 
 \ingroup fcpptvariant
 
-Equal to <code>%_object.get<Type>()</code>
+Equal to <code>%_object.get&lt;Type&gt;()</code>
 
 \see fcppt::variant::object::get() const
 */
