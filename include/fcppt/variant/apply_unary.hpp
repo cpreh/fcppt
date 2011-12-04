@@ -7,7 +7,6 @@
 #ifndef FCPPT_VARIANT_APPLY_UNARY_HPP_INCLUDED
 #define FCPPT_VARIANT_APPLY_UNARY_HPP_INCLUDED
 
-#include <fcppt/variant/object_fwd.hpp>
 #include <fcppt/variant/detail/apply_unary_internal.hpp>
 #include <fcppt/variant/detail/operation_wrapper.hpp>
 
@@ -26,7 +25,7 @@ Visits \a _obj with the visitor \a _op. <code>_op.operator()(T)</code> will be
 called where <code>T</code> is the type held \a _obj.
 
 \tparam Operation The visitor type
-\tparam Types The types of the variant
+\tparam Variant The variant type
 
 \param _op The visitor to execute
 \param _obj The variant to visit
@@ -35,14 +34,12 @@ called where <code>T</code> is the type held \a _obj.
 */
 template<
 	typename Operation,
-	typename Types
+	typename Variant
 >
 typename Operation::result_type
 apply_unary(
 	Operation const &_op,
-	fcppt::variant::object<
-		Types
-	> const &_obj
+	Variant const &_obj
 )
 {
 	return

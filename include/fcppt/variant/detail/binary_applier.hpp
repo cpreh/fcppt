@@ -30,7 +30,7 @@ public:
 
 	binary_applier(
 		Operation const &_op,
-		Type const &_t2
+		Type &_t2
 	)
 	:
 		op_(_op),
@@ -42,7 +42,7 @@ public:
 	>
 	result_type
 	operator()(
-		T const &_t1
+		T &_t1
 	) const
 	{
 		return
@@ -54,7 +54,7 @@ public:
 private:
 	Operation const &op_;
 
-	Type const &t2_;
+	Type &t2_;
 };
 
 }

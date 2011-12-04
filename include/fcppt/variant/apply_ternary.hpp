@@ -8,7 +8,6 @@
 #define FCPPT_VARIANT_APPLY_TERNARY_HPP_INCLUDED
 
 #include <fcppt/variant/apply_binary.hpp>
-#include <fcppt/variant/object_fwd.hpp>
 #include <fcppt/variant/detail/ternary_unwrap.hpp>
 
 
@@ -28,9 +27,9 @@ type held by \a _obj1, <code>U</code> is the type held by \a _obj2 and
 <code>V</code> is the type held by \a _obj3.
 
 \tparam Operation The visitor type
-\tparam Types1 The types of the first variant
-\tparam Types2 The types of the second variant
-\tparam Types3 The types of the third variant
+\tparam Variant1 The first variant
+\tparam Variant2 The the second variant
+\tparam Variant3 The third variant
 
 \param _op The visitor to execute
 \param _obj1 The first variant to visit
@@ -41,31 +40,23 @@ type held by \a _obj1, <code>U</code> is the type held by \a _obj2 and
 */
 template<
 	typename Operation,
-	typename Types1,
-	typename Types2,
-	typename Types3
+	typename Variant1,
+	typename Variant2,
+	typename Variant3
 >
 typename Operation::result_type
 apply_ternary(
 	Operation const &_op,
-	fcppt::variant::object<
-		Types1
-	> const &_obj1,
-	fcppt::variant::object<
-		Types2
-	> const &_obj2,
-	fcppt::variant::object<
-		Types3
-	> const &_obj3
+	Variant1 const &_obj1,
+	Variant2 const &_obj2,
+	Variant3 const &_obj3
 )
 {
 	return
 		variant::apply_binary(
 			detail::ternary_unwrap<
 				Operation,
-				fcppt::variant::object<
-					Types1
-				>
+				Variant1
 			>(
 				_op,
 				_obj1

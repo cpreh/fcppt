@@ -4,51 +4,41 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-//[variant
-#include <fcppt/exception.hpp>
-#include <fcppt/string.hpp>
-#include <fcppt/text.hpp>
-#include <fcppt/io/cerr.hpp>
-#include <fcppt/io/cout.hpp>
-#include <fcppt/variant/apply_binary.hpp>
+#include <fcppt/ref.hpp>
+#include <fcppt/variant/apply_unary.hpp>
 #include <fcppt/variant/object_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/mpl/vector/vector10.hpp>
-#include <cstdlib>
 #include <iostream>
 #include <ostream>
+#include <string>
 #include <fcppt/config/external_end.hpp>
 
 
 namespace
 {
-//! [variant_binary_visitor]
+//! [variant_nonconst_visitor]
 struct visitor
 {
 	typedef void result_type;
 
+	// operator() takes T as non const ref
 	template<
-		typename T1,
-		typename T2
+		typename T
 	>
 	result_type
 	operator()(
-		T1 const &t1,
-		T2 const &t2
+		T &_val
 	) const
 	{
-		std::cout
-			<< t1
-			<< ' '
-			<< t2
-			<< '\n';
+		// reset _val to the default value
+		_val = T();
 	}
 };
-//! [variant_binary_visitor]
+//! [variant_nonconst_visitor]
 }
 
 int main()
-try
 {
 	// typedef a variant that can either hold a string or an int
 	typedef fcppt::variant::object<
@@ -58,34 +48,21 @@ try
 		>
 	> string_or_int;
 
-//! [variant_binary_visitation]
+//! [variant_nonconst_visitation]
 	string_or_int v(
 		std::string(
 			"Hello World"
 		)
 	);
 
-	string_or_int u(
-		42
-	);
-
-	// Does a binary visitation with visitor(),
-	// prints "Hello World" 42
-	fcppt::variant::apply_binary(
+	fcppt::variant::apply_unary(
 		visitor(),
-		v,
-		u
+		fcppt::ref(
+			v
+		)
 	);
-//! [variant_binary_visitation]
-}
-catch(
-	fcppt::exception const &e
-)
-{
-	fcppt::io::cerr()
-		<< e.string()
-		<< FCPPT_TEXT('\n');
 
-	return EXIT_FAILURE;
+	// only prints a newline because the string contains nothing anymore
+	std::cout << v.get<std::string>() << '\n';
+//! [variant_nonconst_visitation]
 }
-//]

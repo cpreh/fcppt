@@ -34,20 +34,21 @@ public:
 	)
 	:
 		op_(_op)
-	{}
+	{
+	}
 
 	template<
 		typename T
 	>
 	result_type
 	operator()(
-		T const &_t
+		T &_value
 	) const
 	{
 		return
 			op_(
 				detail::unwrap_recursive(
-					_t
+					_value
 				)
 			);
 	}

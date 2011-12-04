@@ -291,8 +291,15 @@ In this case, the operator() takes two or three arguments, respectively.
 
 Here is a small example for defining a binary visitor:
 
-\snippet variant.cpp variant_binary_visitor
-\snippet variant.cpp variant_binary_visitation
+\snippet variant/binary_visitation.cpp variant_binary_visitor
+\snippet variant/binary_visitation.cpp variant_binary_visitation
+
+Non const visitation, which means that the visited variant can be modified, is
+also supported. You have to use fcppt::ref on each variant that should be
+passed nonconst to the visitor.
+
+\snippet variant/nonconst_visitation.cpp variant_nonconst_visitor
+\snippet variant/nonconst_visitation.cpp variant_nonconst_visitation
 
 \section variant_design Design
 
@@ -323,8 +330,9 @@ is.</li>
 <li>fcppt::variant::object doesn't allow any implicit conversions for possible
 types. You should explicitly convert instead.</li>
 
-<li>fcppt::variant currently doesn't allow non const visitation (this should be
-fixed)</li>
+<li>fcppt::variant allows non const visitation through fcppt::ref which makes
+it possible for rvalues to be visited. <code>%boost::variant</code> only
+supports visitation of lvalues.</li>
 
 </ul>
 
@@ -344,11 +352,11 @@ See \link fcppt::variant::holds_type \endlink
 
 The following example shows how to declare such a recursive variant:
 
-\snippet recursive_variant.cpp variant_recursive_declaration
+\snippet variant/recursive.cpp variant_recursive_declaration
 
 The variant can hold <code>wrapper</code> which contains a variant itself.
 
-\snippet recursive_variant.cpp variant_recursive_construction
+\snippet variant/recursive.cpp variant_recursive_construction
 
 \section variant_headers Header files
 <table>

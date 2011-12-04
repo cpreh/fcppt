@@ -38,14 +38,15 @@ public:
 	:
 		op_(_op),
 		obj_(_obj)
-	{}
+	{
+	}
 
 	template<
 		typename T2
 	>
 	result_type
 	operator()(
-		T2 const &_t2
+		T2 &_t2
 	) const
 	{
 		return

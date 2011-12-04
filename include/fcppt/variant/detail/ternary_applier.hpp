@@ -31,8 +31,8 @@ public:
 
 	ternary_applier(
 		Operation const &_op,
-		Type2 const &_t2,
-		Type3 const &_t3
+		Type2 &_t2,
+		Type3 &_t3
 	)
 	:
 		op_(_op),
@@ -45,7 +45,7 @@ public:
 	>
 	result_type
 	operator()(
-		T1 const &_t1
+		T1 &_t1
 	) const
 	{
 		return
@@ -58,9 +58,9 @@ public:
 private:
 	Operation const &op_;
 
-	Type2 const &t2_;
+	Type2 &t2_;
 
-	Type3 const &t3_;
+	Type3 &t3_;
 };
 
 }

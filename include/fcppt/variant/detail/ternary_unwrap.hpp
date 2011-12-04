@@ -46,8 +46,8 @@ public:
 	>
 	result_type
 	operator()(
-		T2 const &_t2,
-		T3 const &_t3
+		T2 &_t2,
+		T3 &_t3
 	) const
 	{
 		return

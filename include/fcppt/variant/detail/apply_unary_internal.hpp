@@ -7,6 +7,7 @@
 #ifndef FCPPT_VARIANT_DETAIL_APPLY_UNARY_INTERNAL_HPP_INCLUDED
 #define FCPPT_VARIANT_DETAIL_APPLY_UNARY_INTERNAL_HPP_INCLUDED
 
+#include <fcppt/reference_wrapper.hpp>
 #include <fcppt/variant/size_type.hpp>
 #include <fcppt/variant/detail/apply.hpp>
 #include <fcppt/config/external_begin.hpp>
@@ -55,6 +56,25 @@ apply_unary_internal(
 		>(
 			_op,
 			_obj
+		);
+}
+
+template<
+	typename Operation,
+	typename Variant
+>
+typename Operation::result_type
+apply_unary_internal(
+	Operation const &_op,
+	fcppt::reference_wrapper<
+		Variant
+	> const &_obj
+)
+{
+	return
+		detail::apply_unary_internal(
+			_op,
+			_obj.get()
 		);
 }
 
