@@ -8,7 +8,7 @@
 #define FCPPT_VARIANT_DETAIL_COPY_HPP_INCLUDED
 
 #include <fcppt/nonassignable.hpp>
-#include <fcppt/variant/raw_type.hpp>
+#include <fcppt/variant/detail/raw_type.hpp>
 
 
 namespace fcppt
@@ -27,7 +27,7 @@ public:
 	typedef void *result_type;
 
 	explicit copy(
-		variant::raw_type *const _store
+		variant::detail::raw_type *const _store
 	)
 	:
 		store_(_store)
@@ -45,7 +45,7 @@ public:
 		return new (store_) T(_t);
 	}
 private:
-	variant::raw_type *const store_;
+	variant::detail::raw_type *const store_;
 };
 
 }

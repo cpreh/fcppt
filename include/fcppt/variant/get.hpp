@@ -15,6 +15,15 @@ namespace fcppt
 namespace variant
 {
 
+/**
+\brief Free get function
+
+\ingroup fcpptvariant
+
+Equal to <code>%_object.get<Type>()</code>
+
+\see fcppt::variant::object::get()
+*/
 template<
 	typename Type,
 	typename Elements
@@ -32,6 +41,15 @@ get(
 		>();
 }
 
+/**
+\brief Free get function
+
+\ingroup fcpptvariant
+
+Equal to <code>%_object.get<Type>()</code>
+
+\see fcppt::variant::object::get() const
+*/
 template<
 	typename Type,
 	typename Elements

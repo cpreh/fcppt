@@ -22,20 +22,37 @@ namespace fcppt
 namespace variant
 {
 
-/// Checks if @tparam Type is held by @a _variant
 /**
- * Requires that Type is an element of Types.
- * Will return false if the variant is empty.
+\brief Checks if a type is held by a variant
+
+\ingroup fcpptvariant
+
+The <em>currently held</em> type of a variant is the type passed to its
+constructor or assignment operator. A type T <em>can be held</em> by a
+<code>variant<Set></code> if T is a member of Set or if
+<code>recursive<T></code> is a member of Set. Such a type is also said to be
+possible for <code>variant<Set></code>.
+
+This function checks if \a Type is held by \a _variant.
+
+\tparam Type The type to check for which must be a possible type for the
+variant
+
+\tparam Elements The types of the variant
+
+\param _variant The variant to check
+
+\return If the type is held by the variant
 */
 template<
 	typename Type,
-	typename Types
+	typename Elements
 >
 typename boost::enable_if<
 	boost::mpl::contains<
-		Types,
+		Elements,
 		typename fcppt::variant::detail::real_type<
-			Types,
+			Elements,
 			Type
 		>::type
 	>,
@@ -43,7 +60,7 @@ typename boost::enable_if<
 >::type
 holds_type(
 	variant::object<
-		Types
+		Elements
 	> const &_variant
 )
 {
@@ -54,7 +71,7 @@ holds_type(
 			fcppt::variant::size_type
 		>(
 			fcppt::variant::detail::index_of<
-				Types,
+				Elements,
 				Type
 			>::value
 		);

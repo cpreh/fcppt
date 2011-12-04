@@ -14,7 +14,21 @@ namespace fcppt
 namespace variant
 {
 
-/// A wrapper for a recursive variant
+/**
+\brief A wrapper for a recursive variant
+
+\ingroup fcpptvariant
+
+This class wraps a type \a T so that it can be forward declared. It is then
+possible that \a T can recursively contain the yet to be defined variant. See
+\ref variant_recursive This class is basically an internal class
+which you don't have to use directly except when declaring which types a
+variant can hold. \a T is added to the possible types of the variant
+instead of <code>recursive<T></code>.
+\see fcppt::variant::holds_type
+
+\tparam T The type to wrap which doesn't need to be complete
+*/
 template<
 	typename T
 >

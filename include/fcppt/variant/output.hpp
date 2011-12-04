@@ -20,7 +20,20 @@ namespace fcppt
 namespace variant
 {
 
-/// Outputs the object held by the variant to a basic_ostream
+/**
+\brief Outputs the value held by the variant to a basic_ostream
+
+\ingroup fcpptvariant
+
+Outputs the value held by \a _object to \a _stream. This function requires all
+possibles types to be printable.
+
+\param _stream The stream to output to
+
+\param _object The variant to output
+
+\return \a _stream
+*/
 template<
 	typename Types,
 	typename Ch,

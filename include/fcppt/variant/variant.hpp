@@ -21,7 +21,6 @@
 #include <fcppt/variant/object_fwd.hpp>
 #include <fcppt/variant/object_impl.hpp>
 #include <fcppt/variant/output.hpp>
-#include <fcppt/variant/raw_type.hpp>
 #include <fcppt/variant/recursive.hpp>
 #include <fcppt/variant/recursive_decl.hpp>
 #include <fcppt/variant/recursive_fwd.hpp>

@@ -20,6 +20,8 @@ namespace variant
 /**
 \brief Does a unary visitation
 
+\ingroup fcpptvariant
+
 Visits \a _obj with the visitor \a _op. <code>_op.operator()(T)</code> will be
 called where <code>T</code> is the type held \a _obj.
 

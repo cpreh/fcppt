@@ -20,6 +20,8 @@ namespace variant
 /**
 \brief Does a binary visitation
 
+\ingroup fcpptvariant
+
 Visits \a _obj1 and \a _obj2 with the visitor \a _op. <code>_op.operator()(T,
 U)</code> will be called where <code>T</code> is the type held by \a _obj1 and
 <code>U</code> is the type held by \a _obj2.

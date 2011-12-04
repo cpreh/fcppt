@@ -20,8 +20,10 @@ namespace variant
 /**
 \brief Does a ternary visitation
 
+\ingroup fcpptvariant
+
 Visits \a _obj1, \a _obj2 and \a _obj3 with the visitor \a _op.
-<code>_op.operator()(T, U, W)</code> will be called where <code>T</code> is the
+<code>_op.operator()(T, U, V)</code> will be called where <code>T</code> is the
 type held by \a _obj1, <code>U</code> is the type held by \a _obj2 and
 <code>V</code> is the type held by \a _obj3.
 

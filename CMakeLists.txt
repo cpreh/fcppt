@@ -1302,6 +1302,7 @@ set(
 	include/fcppt/variant/detail/index_of.hpp
 	include/fcppt/variant/detail/operation_wrapper.hpp
 	include/fcppt/variant/detail/output.hpp
+	include/fcppt/variant/detail/raw_type.hpp
 	include/fcppt/variant/detail/real_type.hpp
 	include/fcppt/variant/detail/ternary_applier.hpp
 	include/fcppt/variant/detail/ternary_unwrap.hpp
@@ -1321,7 +1322,6 @@ set(
 	include/fcppt/variant/object_fwd.hpp
 	include/fcppt/variant/object_impl.hpp
 	include/fcppt/variant/output.hpp
-	include/fcppt/variant/raw_type.hpp
 	include/fcppt/variant/recursive.hpp
 	include/fcppt/variant/recursive_decl.hpp
 	include/fcppt/variant/recursive_fwd.hpp

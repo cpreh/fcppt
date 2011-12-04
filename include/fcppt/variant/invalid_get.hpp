@@ -14,7 +14,11 @@ namespace fcppt
 namespace variant
 {
 
-/// Thrown if an invalid get<T> is called
+/**
+\brief Thrown if an invalid get<T> is called
+
+\ingroup fcpptvariant
+*/
 class invalid_get
 :
 	public variant::exception

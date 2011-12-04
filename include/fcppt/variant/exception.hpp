@@ -17,6 +17,8 @@ namespace variant
 
 /**
 \brief The base exception class for variant exceptions
+
+\ingroup fcpptvariant
 */
 class exception
 :

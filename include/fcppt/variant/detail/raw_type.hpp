@@ -4,16 +4,19 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_VARIANT_RAW_TYPE_HPP_INCLUDED
-#define FCPPT_VARIANT_RAW_TYPE_HPP_INCLUDED
+#ifndef FCPPT_VARIANT_DETAIL_RAW_TYPE_HPP_INCLUDED
+#define FCPPT_VARIANT_DETAIL_RAW_TYPE_HPP_INCLUDED
 
 namespace fcppt
 {
 namespace variant
 {
+namespace detail
+{
 
 typedef unsigned char raw_type;
 
+}
 }
 }
 

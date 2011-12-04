@@ -10,8 +10,8 @@
 #include <fcppt/alignment/array.hpp>
 #include <fcppt/mpl/max_value.hpp>
 #include <fcppt/variant/object_fwd.hpp>
-#include <fcppt/variant/raw_type.hpp>
 #include <fcppt/variant/size_type.hpp>
+#include <fcppt/variant/detail/raw_type.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/mpl/placeholders.hpp>
 #include <boost/mpl/size.hpp>
@@ -305,6 +305,7 @@ the recursive wrapper isn't there, which means that the type used with
 fcppt::variant::object::get as well as the argument type passed for a
 visitation will be <code>wrapper</code> and not
 <code>fcppt::variant::recursive<wrapper></code>.
+See \link fcppt::variant::holds_type \endlink
 
 The following example shows how to declare such a recursive variant:
 
@@ -581,7 +582,7 @@ private:
 	;
 
 	typedef typename alignment::array<
-		variant::raw_type,
+		variant::detail::raw_type,
 		mpl::max_value<
 			Types,
 			boost::mpl::sizeof_<

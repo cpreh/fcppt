@@ -19,6 +19,8 @@ namespace variant
 /**
 \brief Compares two variants for inequality
 
+\ingroup fcpptvariant
+
 Compares \a _a and \a _b for inequality. Equal to <code>!(_a == _b)</code>.
 This function requires all possible types of the variant to be equality
 comparable.

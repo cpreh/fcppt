@@ -12,6 +12,13 @@ namespace fcppt
 namespace variant
 {
 
+/**
+\brief An integer type used to describe a type index
+
+\ingroup fcpptvariant
+
+\see fcppt::variant::object::type_index
+*/
 typedef unsigned size_type;
 
 }
