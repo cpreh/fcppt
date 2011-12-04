@@ -27,7 +27,7 @@ namespace
 struct wrapper;
 
 // Typedef a variant that can either hold an int or a wrapper (struct).
-// Note, that wrapper has be made recursive.
+// Note, that wrapper has to be made recursive.
 typedef fcppt::variant::object<
 	boost::mpl::vector2<
 		fcppt::variant::recursive<
@@ -40,6 +40,7 @@ typedef fcppt::variant::object<
 // Wrapper holds the variant again!
 struct wrapper
 {
+	explicit
 	wrapper(
 		recursive_variant const &_member
 	)

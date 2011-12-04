@@ -397,10 +397,6 @@ The variant can hold <code>wrapper</code> which contains a variant itself.
 <td>Contains fcppt::variant::exception, the base class for every variant exception</td>
 </tr>
 <tr>
-<td><code>exception.hpp</code></td>
-<td>Contains fcppt::variant::exception, the base class for every variant exception</td>
-</tr>
-<tr>
 <td><code>get.hpp</code></td>
 <td>Contains a free get function which does the same thing as the get member function</td>
 </tr>
