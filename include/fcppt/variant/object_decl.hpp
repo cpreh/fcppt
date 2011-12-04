@@ -41,6 +41,7 @@ Assignable and complete.
 <ol>
 	<li>\ref variant_motivation</li>
 	<li>\ref variant_visitation</li>
+	<li>\ref variant_design</li>
 	<li>\ref variant_recursive</li>
 	<li>\ref variant_headers</li>
 </ol>
@@ -292,6 +293,40 @@ Here is a small example for defining a binary visitor:
 
 \snippet variant.cpp variant_binary_visitor
 \snippet variant.cpp variant_binary_visitation
+
+\section variant_design Design
+
+There is already <code>%boost::variant</code> so you might wonder why fcppt
+provides its own variant type. Like <code>%boost::variant</code>
+fcppt::variant::object holds its values by value and not by means of
+dynamically allocated memory. This means that the size of the variant is the
+maximum of the sizes of all its possible types.
+The key differences to <code>%boost::variant</code> are
+<ul>
+
+<li>fcppt::variant::object uses alignment support from the compiler instead of
+relying on the hacky <code>%boost::detail::aligned_storage</code></li>
+
+<li>fcppt::variant::object doesn't provide a default constructor.
+<code>%boost::variant</code> default contructs the first type of all possible
+types instead, which doesn't make any sense.</li>
+
+<li>fcppt::variant has properly separated headers and resides in its own
+namespace.</li>
+
+<li>fcppt::variant provides ternary visitation</li>
+
+<li>fcppt::variant reuses MPL instead of generating the template over and over
+for every number of possible types. It is therefore as extensible as MPL
+is.</li>
+
+<li>fcppt::variant::object doesn't allow any implicit conversions for possible
+types. You should explicitly convert instead.</li>
+
+<li>fcppt::variant currently doesn't allow non const visitation (this should be
+fixed)</li>
+
+</ul>
 
 \section variant_recursive Recursive data structures
 
