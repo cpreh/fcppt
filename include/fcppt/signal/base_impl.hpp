@@ -47,13 +47,17 @@ template<
 	typename T
 >
 fcppt::signal::base<T>::base()
-{}
+:
+	connections_()
+{
+}
 
 template<
 	typename T
 >
 fcppt::signal::base<T>::~base()
-{}
+{
+}
 
 template<
 	typename T

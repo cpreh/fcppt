@@ -41,7 +41,7 @@ public:
 	container_type const &
 	container() const;
 private:
-	container_type c_;
+	container_type container_;
 };
 
 }

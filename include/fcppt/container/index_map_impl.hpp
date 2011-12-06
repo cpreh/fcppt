@@ -13,6 +13,16 @@ template<
 	typename T,
 	typename A
 >
+fcppt::container::index_map<T, A>::index_map()
+:
+	impl_()
+{
+}
+
+template<
+	typename T,
+	typename A
+>
 typename fcppt::container::index_map<T, A>::reference
 fcppt::container::index_map<T, A>::operator[](
 	size_type const _index

@@ -43,6 +43,8 @@ public:
 
 	typedef typename internal_type::const_reference const_reference;
 
+	index_map();
+
 	reference
 	operator[](
 		size_type

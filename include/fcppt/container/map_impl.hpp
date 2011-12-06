@@ -24,6 +24,8 @@ template<
 fcppt::container::map<
 	MapType
 >::map()
+:
+	impl_()
 {}
 
 template<

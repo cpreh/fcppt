@@ -58,13 +58,17 @@ template<
 	typename T
 >
 fcppt::signal::unregister::base<T>::base()
-{}
+:
+	connections_()
+{
+}
 
 template<
 	typename T
 >
 fcppt::signal::unregister::base<T>::~base()
-{}
+{
+}
 
 template<
 	typename T

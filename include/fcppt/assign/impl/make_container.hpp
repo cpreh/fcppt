@@ -13,10 +13,14 @@ template<
 	typename Container
 >
 fcppt::assign::make_container<Container>::make_container(
-	typename container_type::const_reference r
+	typename container_type::const_reference _other
 )
+:
+	container_()
 {
-	(*this)(r);
+	(*this)(
+		_other
+	);
 }
 
 template<
@@ -24,12 +28,12 @@ template<
 >
 fcppt::assign::make_container<Container> &
 fcppt::assign::make_container<Container>::operator()(
-	typename container_type::const_reference r
+	typename container_type::const_reference _other
 )
 {
 	detail::insert(
-		c_,
-		r
+		container_,
+		_other
 	);
 
 	return *this;
@@ -40,7 +44,7 @@ template<
 >
 fcppt::assign::make_container<Container>::operator Container() const
 {
-	return c_;
+	return this->container();
 }
 
 template<
@@ -49,7 +53,7 @@ template<
 Container const &
 fcppt::assign::make_container<Container>::container() const
 {
-	return c_;
+	return container_;
 }
 
 #endif

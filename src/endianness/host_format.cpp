@@ -5,6 +5,7 @@
 
 
 #include <fcppt/endianness/host_format.hpp>
+#include <fcppt/noncopyable.hpp>
 #include <fcppt/config.hpp>
 
 #if defined(FCPPT_LITTLE_ENDIAN) && defined(FCPPT_BIG_ENDIAN)
@@ -18,22 +19,14 @@
 namespace
 {
 
-struct init
+fcppt::endianness::format::type
+compute_endianness()
 {
-	init();
-
-	fcppt::endianness::format::type endianness_;
-
-} instance;
-
-init::init()
-{
-	// if unsigned long and char are of the same size
-	// endianness doesn't matter
-
 	typedef unsigned long int_type;
 
-	int_type const t = 1u;
+	int_type const int_value(
+		1u
+	);
 
 	typedef fcppt::container::array<
 		unsigned char,
@@ -46,20 +39,45 @@ init::init()
 		reinterpret_cast<
 			unsigned char const *
 		>(
-			&t
+			&int_value
 		),
 		sizeof(int_type),
 		array.data()
 	);
 
-	endianness_ =
-		array[0] == t
+	return
+		array[0] == int_value
 		?
 			fcppt::endianness::format::little
 		:
 			fcppt::endianness::format::big;
 }
 
+struct init
+{
+	FCPPT_NONCOPYABLE(
+		init
+	);
+public:
+	init();
+
+	~init();
+
+	fcppt::endianness::format::type const endianness_;
+} instance;
+
+init::init()
+:
+	endianness_(
+		compute_endianness()
+	)
+{
+}
+
+}
+
+init::~init()
+{
 }
 #endif
 
