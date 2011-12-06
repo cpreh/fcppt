@@ -8,6 +8,7 @@
 #define FCPPT_CONTAINER_GRID_COMPARISON_HPP_INCLUDED
 
 #include <fcppt/container/grid/object_impl.hpp>
+#include <fcppt/detail/equal.hpp>
 #include <fcppt/math/dim/before.hpp>
 #include <fcppt/math/dim/comparison.hpp>
 #include <fcppt/config/external_begin.hpp>
@@ -35,7 +36,7 @@ operator==(
 	return
 		_a.size() == _b.size()
 		&&
-		std::equal(
+		fcppt::detail::equal(
 			_a.begin(),
 			_a.end(),
 			_b.begin()

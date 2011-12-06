@@ -9,6 +9,7 @@
 
 #include <fcppt/null_ptr.hpp>
 #include <fcppt/assert/pre.hpp>
+#include <fcppt/detail/equal.hpp>
 #include <fcppt/container/out_of_range.hpp>
 #include <fcppt/container/raw_vector_decl.hpp>
 #include <fcppt/type_traits/is_input_iterator.hpp>
@@ -1246,7 +1247,7 @@ fcppt::container::operator==(
 {
 	return
 		_left.size() == _right.size()
-		&& std::equal(
+		&& fcppt::detail::equal(
 			_left.begin(),
 			_left.end(),
 			_right.begin()

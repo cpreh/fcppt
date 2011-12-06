@@ -7,9 +7,7 @@
 #ifndef FCPPT_MATH_DETAIL_ARRAY_COMPARE_HPP_INCLUDED
 #define FCPPT_MATH_DETAIL_ARRAY_COMPARE_HPP_INCLUDED
 
-#include <fcppt/config/external_begin.hpp>
-#include <algorithm>
-#include <fcppt/config/external_end.hpp>
+#include <fcppt/detail/equal.hpp>
 
 
 namespace fcppt
@@ -25,15 +23,18 @@ template<
 >
 bool
 array_compare(
-	T1 const &v1,
-	T2 const &v2
+	T1 const &_v1,
+	T2 const &_v2
 )
 {
 	return
-		std::equal(
-			v1.begin(),
-			v1.end(),
-			v2.begin());
+		_v1.size() == _v2.size()
+		&&
+		fcppt::detail::equal(
+			_v1.begin(),
+			_v1.end(),
+			_v2.begin()
+		);
 }
 
 }

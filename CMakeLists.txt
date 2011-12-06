@@ -316,7 +316,6 @@ set(
 	include/fcppt/algorithm/algorithm.hpp
 	include/fcppt/algorithm/append.hpp
 	include/fcppt/algorithm/array_map.hpp
-	include/fcppt/algorithm/compare_with.hpp
 	include/fcppt/algorithm/contains.hpp
 	include/fcppt/algorithm/contains_if.hpp
 	include/fcppt/algorithm/copy_n.hpp
@@ -590,6 +589,8 @@ set(
 	include/fcppt/detail/cyclic_iterator_base.hpp
 	include/fcppt/detail/enable_optional_ref_conv.hpp
 	include/fcppt/detail/enable_optional_value_conv.hpp
+	include/fcppt/detail/equal.hpp
+	include/fcppt/detail/equal_functor.hpp
 	include/fcppt/detail/make_ptr_base.hpp
 	include/fcppt/detail/make_shared_wrapper.hpp
 	include/fcppt/detail/make_shared_wrapper_fwd.hpp
