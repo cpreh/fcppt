@@ -20,9 +20,15 @@ namespace fcppt
 namespace math
 {
 
-/// Rotates a two dimensional point around another point
 /**
- * Rotates @a point around @a around by the rotation @a rot
+\brief Rotates a two dimensional point around another point
+\ingroup fcpptmath
+\tparam T The vector's <code>value_type</code>
+\tparam N The vector's dimension type. The vector must be two-dimensional.
+\tparam S The vector's storage type
+\param point The point to rotate
+\param around The point to rotate around
+\param rot The rotation angle
 */
 template<
 	typename T,

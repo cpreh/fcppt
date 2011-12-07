@@ -14,11 +14,12 @@ namespace fcppt
 namespace math
 {
 
-/// Returns the sign of @a t.
 /**
- * @return -1 indicates a negative sign,
- *          0 indicates no sign,
- *          1 indicates a positive sign
+\brief Returns the sign of the given type.
+\ingroup fcpptmath
+\tparam A numeric type
+
+Returns -1 for negative numbers, 0 for 0 and 1 for positive numbers.
 */
 template<
 	typename T

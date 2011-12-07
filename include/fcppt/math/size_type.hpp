@@ -12,7 +12,10 @@ namespace fcppt
 namespace math
 {
 
-/// The size type used for structure sizes
+/**
+\brief The size type used for structure sizes
+\ingroup fcpptmath
+*/
 typedef unsigned size_type;
 
 }

@@ -18,11 +18,15 @@ namespace fcppt
 {
 namespace math
 {
-/// Since the machine epsilon most often is _not_ the correct way to
-/// handle floating point comparisons, this function takes two ranges
-/// (two types having <code>::%const_iterator</code> as well as begin/end to be
-/// exact) and compares them pointwise. Can be applied to dim/vector
-/// and other types.
+/**
+\brief Compares two ranges using an epsilon
+\ingroup fcpptmath
+\tparam Range A forward-iterable range
+\tparam T A numeric type. Can be non-floating-point.
+
+This function returns true if all components of \p r1 are equal to the
+corresponding components in \p r2 up to the given epsilon.
+*/
 template<typename Range,typename T>
 typename
 boost::enable_if

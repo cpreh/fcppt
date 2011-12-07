@@ -14,10 +14,18 @@ namespace fcppt
 namespace math
 {
 
-/// Calculates the absolute distance between @a a and @a b
 /**
- * For unsigned types it returns min(@a a - @a b, @a b - @a a).
- * Otherwise abs(@a a - @a b) is returned.
+\brief Calculates the absolute distance between \p a and \p b
+\ingroup fcpptmath
+\tparam T A numeric type
+
+For unsigned types, this returns:
+
+\f[
+\min(a - b, b - a)
+\f]
+
+For other types, <code>abs(a-b)</code> is returned.
 */
 template<
 	typename T

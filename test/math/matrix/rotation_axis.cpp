@@ -4,7 +4,6 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/math/null.hpp>
 #include <fcppt/math/pi.hpp>
 #include <fcppt/math/range_compare.hpp>
 #include <fcppt/math/matrix/matrix.hpp>
@@ -93,7 +92,7 @@ BOOST_AUTO_TEST_CASE(math_matrix_rotation_axis)
 	BOOST_CHECK((
 		::compare_matrices(
 			fcppt::math::matrix::rotation_axis(
-				fcppt::math::null<float>(),
+				0.0f,
 				vector_rotation_type(
 					0.f,
 					0.f,

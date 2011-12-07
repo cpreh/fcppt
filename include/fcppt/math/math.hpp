@@ -18,14 +18,12 @@
 #include <fcppt/math/is_power_of_2.hpp>
 #include <fcppt/math/is_rational.hpp>
 #include <fcppt/math/is_static_size.hpp>
-#include <fcppt/math/log.hpp>
+#include <fcppt/math/log2.hpp>
 #include <fcppt/math/mod.hpp>
 #include <fcppt/math/mod_assign.hpp>
 #include <fcppt/math/next_pow_2.hpp>
-#include <fcppt/math/null.hpp>
 #include <fcppt/math/pi.hpp>
 #include <fcppt/math/point_rotate.hpp>
-#include <fcppt/math/quad.hpp>
 #include <fcppt/math/rad_to_deg.hpp>
 #include <fcppt/math/range_compare.hpp>
 #include <fcppt/math/round_div_int.hpp>

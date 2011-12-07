@@ -17,7 +17,10 @@ namespace fcppt
 namespace math
 {
 
-/// A metafunction that checks if T specifies a static size
+/**
+\brief A metafunction that checks if T specifies a static size
+\ingroup fcpptmath
+*/
 template<
 	typename T
 >

@@ -894,7 +894,7 @@ set(
 	include/fcppt/math/is_power_of_2.hpp
 	include/fcppt/math/is_rational.hpp
 	include/fcppt/math/is_static_size.hpp
-	include/fcppt/math/log.hpp
+	include/fcppt/math/log2.hpp
 	include/fcppt/math/math.hpp
 	include/fcppt/math/matrix/adjugate.hpp
 	include/fcppt/math/matrix/arithmetic.hpp
@@ -939,10 +939,8 @@ set(
 	include/fcppt/math/mod.hpp
 	include/fcppt/math/mod_assign.hpp
 	include/fcppt/math/next_pow_2.hpp
-	include/fcppt/math/null.hpp
 	include/fcppt/math/pi.hpp
 	include/fcppt/math/point_rotate.hpp
-	include/fcppt/math/quad.hpp
 	include/fcppt/math/quaternion/dot.hpp
 	include/fcppt/math/quaternion/from_angle_and_axis.hpp
 	include/fcppt/math/quaternion/from_scalar_and_vector.hpp

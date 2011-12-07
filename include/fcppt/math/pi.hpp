@@ -19,9 +19,10 @@ namespace fcppt
 namespace math
 {
 
-/// Returns pi for type T
 /**
- * @tparam T must be a floating point type
+\brief Returns Pi for type T
+\ingroup fcpptmath
+\tparam T Must be a floating point type
 */
 template<
 	typename T

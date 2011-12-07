@@ -14,12 +14,14 @@ namespace fcppt
 namespace math
 {
 
-/// Calculates the next power of 2 for @a t
 /**
- * @tparam T must either be an unsigned type or a floating point type
- * For unsigned types it will use multiplication.
- * For signed types it will use multiplication as well plus some additional checks.
- * For floating point types std::pow, std::ceil and std::log will be used.
+\brief Calculates the next power of 2 for a given value
+\ingroup fcpptmath
+\tparam T Either an integral type or a floating point type
+
+For unsigned types it will use multiplication.
+For signed types it will use multiplication as well plus some additional checks.
+For floating point types std::pow, std::ceil and std::log will be used.
 */
 template<
 	typename T

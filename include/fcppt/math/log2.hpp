@@ -4,8 +4,8 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_MATH_LOG_HPP_INCLUDED
-#define FCPPT_MATH_LOG_HPP_INCLUDED
+#ifndef FCPPT_MATH_LOG2_HPP_INCLUDED
+#define FCPPT_MATH_LOG2_HPP_INCLUDED
 
 #include <fcppt/config/external_begin.hpp>
 #include <boost/type_traits/is_unsigned.hpp>
@@ -18,10 +18,12 @@ namespace fcppt
 namespace math
 {
 
-/// Calculates \f$\log_2(x)\f$ for unsigned types (using a loop)
 /**
- * @tparam T must be unsigned
- * @return - If x is 0 the result is undefined
+\brief Calculates \f$\log_2(x)\f$ for unsigned types (using a loop)
+\ingroup fcpptmath
+\tparam T Must be an unsigned integral type
+\warning
+Behaviour is undefined if \p x is 0.
 */
 template<
 	typename T

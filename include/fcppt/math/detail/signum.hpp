@@ -36,7 +36,7 @@ signum(
 )
 {
 	T const null_(
-		math::null<T>()
+		static_cast<T>(0)
 	);
 
 	if (t > null_)
@@ -63,7 +63,7 @@ signum(
 )
 {
 	T const null_(
-		math::null<T>()
+		static_cast<T>(0)
 	);
 
 	return

@@ -14,11 +14,13 @@ namespace fcppt
 namespace math
 {
 
-/// Calculates @a a mod @a b
 /**
- * It uses std::fmod for floating point types.
- * Otherwise % is used.
- * The behaviour will, of course, be undefined if r is 0.
+\brief Wraps the integral modulo operator and the floating point modulo functions
+\ingroup fcpptmath
+\tparam T Any numeric type
+
+It uses std::%fmod for floating point types. Otherwise % is used.
+The behaviour will, of course, be undefined if r is 0.
 */
 template<
 	typename T

@@ -8,7 +8,6 @@
 #define FCPPT_MATH_MATRIX_DETAIL_DETERMINANT_HPP_INCLUDED
 
 #include <fcppt/math/is_static_size.hpp>
-#include <fcppt/math/null.hpp>
 #include <fcppt/math/size_type.hpp>
 #include <fcppt/math/matrix/basic_impl.hpp>
 #include <fcppt/math/matrix/delete_row_and_column.hpp>
@@ -86,7 +85,7 @@ determinant(
 	basic<T,N,N,S> const &t
 )
 {
-	T sum = fcppt::math::null<T>();
+	T sum = static_cast<T>(0);
 
 	for (size_type i = 0; i < t.columns(); ++i)
 	{
