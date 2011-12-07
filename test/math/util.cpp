@@ -5,7 +5,6 @@
 
 
 #include <fcppt/math/diff.hpp>
-#include <fcppt/math/is_negative.hpp>
 #include <fcppt/math/is_power_of_2.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/test/unit_test.hpp>
@@ -27,21 +26,6 @@ BOOST_AUTO_TEST_CASE(math_diff)
 			1
 		)
 		== 2
-	);
-}
-
-BOOST_AUTO_TEST_CASE(math_is_negative)
-{
-	BOOST_CHECK(
-		fcppt::math::is_negative(
-			-10
-		)
-	);
-
-	BOOST_CHECK(
-		!fcppt::math::is_negative(
-			10.f
-		)
 	);
 }
 

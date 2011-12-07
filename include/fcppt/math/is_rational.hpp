@@ -18,7 +18,10 @@ namespace fcppt
 namespace math
 {
 
-/// derives from boost::true_type if T is a boost::rational<U>
+/**
+\brief Metafunction to test if a type is a <code>boost::rational<U></code>
+\ingroup fcpptmath
+*/
 template<
 	typename T
 >
@@ -27,6 +30,7 @@ struct is_rational
 boost::false_type
 {};
 
+/// \cond FCPPT_DOXYGEN_DEBUG
 template<
 	typename T
 >
@@ -37,6 +41,7 @@ struct is_rational
 :
 boost::true_type
 {};
+/// \endcond
 
 }
 }

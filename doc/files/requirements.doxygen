@@ -138,6 +138,9 @@ cmake \
 	-D Fcppt_LIBRARY:FILEPATH="optimized;${fcppt_build}/lib/Release/fcppt.lib;debug;${fcppt_build}/lib/Debug/fcppt.lib"
 </pre>
 
+\note
+The variable name prefixes are not typos. Some variables <em>do</em> begin with <code>FCPPT_</code> while others begin with <code>Fcppt_</code>. It's cmake convention. See: http://FIXME
+
 \subsection requirements_download_installation_using_from_installation Using fcppt from an installation
 
 If fcppt is installed instead, it will put an <code>FcpptConfig.cmake</code>

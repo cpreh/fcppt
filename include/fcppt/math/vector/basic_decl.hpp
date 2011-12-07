@@ -45,6 +45,7 @@ namespace vector
 	<li>\ref fcpptmathvector_podness_and_variadic_constructors</li>
 	<li>\ref fcpptmathvector_type_safety_and_dimension_conversion</li>
 	<li>\ref fcpptmathvector_null_vectors_and_comparisons</li>
+	<li>\ref fcpptmathvector_operators</li>
 	<li>\ref fcpptmathvector_headers</li>
 </ol>
 
@@ -504,6 +505,83 @@ int main()
 	std::cout << fcppt::math::range_compare(x,y,epsilon) << "\n";
 }
 \endcode
+
+\section fcpptmathvector_operators Operators
+
+Including <strong><code>fcppt/math/vector/basic_decl.hpp</code></strong> you
+will get the following operators (<code>S2</code> defines some other storage
+type):
+
+<ul>
+	<li><code>operator+=(vector::basic<T,N,S2>)</code></li>
+	<li><code>operator-=(vector::basic<T,N,S2>)</code></li>
+	<li><code>operator*=(vector::basic<T,N,S2>)</code></li>
+	<li><code>operator/=(vector::basic<T,N,S2>)</code></li>
+	<li><code>operator%=(vector::basic<T,N,S2>)</code></li>
+	<li><code>operator*=(T)</code> (multiply by a scalar)</li>
+	<li><code>operator/=(T)</code> (divide by a scalar)</li>
+	<li><code>operator=(dim::basic const &)</code> (copy constructor)</li>
+	<li><code>operator=(dim::basic<T,N,S2> const &)</code></li>
+	<li><code>operator[](size_type)</code></li>
+</ul>
+
+The arithmetic operators all work component-wise.
+
+Including <strong><code>fcppt/math/vector/comparison.hpp</code></strong> you get all the comparison operators:
+
+<ul>
+	<li><code>operator==</code></li>
+	<li><code>operator!=</code></li>
+	<li><code>operator<=</code></li>
+	<li><code>operator<</code></li>
+	<li><code>operator>=</code></li>
+	<li><code>operator></code></li>
+</ul>
+
+All of these work component-wise and forward to the <code>value_type</code>'s
+operators. The ordering is lexicographic. This means that you can use a vector
+with associative containers like <code>std::%set,std::%map,...</code>. Keep in
+mind that the equality comparison operators do <em>not</em> use an epsilon so
+you <em>will</em> get exact floating point comparisons (be sure that you really
+want that!).
+
+Including <strong><code>fcppt/math/vector/arithmetic.hpp</code></strong> gives
+you the following operators:
+
+<ul>
+	<li><code>operator+(vector::basic<T,N,S>,vector::basic<T,N,S>)</code></li>
+	<li><code>operator-(vector::basic<T,N,S>,vector::basic<T,N,S>)</code></li>
+	<li><code>operator*(vector::basic<T,N,S>,vector::basic<T,N,S>)</code></li>
+	<li><code>operator/(vector::basic<T,N,S>,vector::basic<T,N,S>)</code></li>
+	<li><code>operator%(vector::basic<T,N,S>,vector::basic<T,N,S>)</code></li>
+	<li><code>operator*(T,vector::basic<T,N,S>)</code> (scalar multiplication)</li>
+	<li><code>operator/(T,vector::basic<T,N,S>)</code> (scalar division)</li>
+	<li>Unary minus for vectors</li>
+</ul>
+
+The arithmetic operators all work component-wise. Note that
+<code>operator*</code> does not denote the dot or cross product, but the
+component-wise product. See fcppt::math::vector::dot and
+fcppt::math::vector::cross.
+
+Including <strong><code>fcppt/math/vector/input.hpp</code></strong> gives
+you an <code>operator>></code> for reading input from standard streams.
+Conversely, including
+<strong><code>fcppt/math/vector/output.hpp</code></strong> gives you an inverse
+<code>operator<<</code>.
+
+Including <strong><code>fcppt/math/vector/dim.hpp</code></strong> gives you the
+following operators:
+
+<ul>
+	<li><code>operator+(vector::basic<T,N,S1>,dim::basic<T,N,S2>)</code></li>
+	<li><code>operator-(vector::basic<T,N,S1>,dim::basic<T,N,S2>)</code></li>
+	<li><code>operator*(vector::basic<T,N,S1>,dim::basic<T,N,S2>)</code></li>
+	<li><code>operator/(vector::basic<T,N,S1>,dim::basic<T,N,S2>)</code></li>
+	<li><code>operator%(vector::basic<T,N,S1>,dim::basic<T,N,S2>)</code></li>
+</ul>
+
+Again, these work component-wise.
 
 \section fcpptmathvector_headers Header files
 

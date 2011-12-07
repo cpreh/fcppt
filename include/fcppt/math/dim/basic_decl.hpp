@@ -42,6 +42,7 @@ namespace dim
 <ol>
 	<li>\ref fcpptmathdimbasic_motivation</li>
 	<li>\ref fcpptmathdimbasic_converting_from_and_to_vectors</li>
+	<li>\ref fcpptmathdimbasic_operators</li>
 	<li>\ref fcpptmathdimbasic_headers</li>
 </ol>
 
@@ -111,6 +112,67 @@ vector::basic<T,N,S> operator(vector::basic<T,N,S> left,dim::basic<T,N,S>)
 </pre>
 
 This way, you can add a dimension to a vector, for example.
+
+\section fcpptmathdimbasic_operators Operators
+
+Including <strong><code>fcppt/math/dim/basic_decl.hpp</code></strong> you
+will get the following operators (<code>S2</code> defines some other storage
+type):
+
+<ul>
+	<li><code>operator+=(dim::basic<T,N,S2>)</code></li>
+	<li><code>operator-=(dim::basic<T,N,S2>)</code></li>
+	<li><code>operator*=(dim::basic<T,N,S2>)</code></li>
+	<li><code>operator/=(dim::basic<T,N,S2>)</code></li>
+	<li><code>operator%=(dim::basic<T,N,S2>)</code></li>
+	<li><code>operator*=(T)</code> (multiply by a scalar)</li>
+	<li><code>operator/=(T)</code> (divide by a scalar)</li>
+	<li><code>operator=(dim::basic const &)</code> (copy constructor)</li>
+	<li><code>operator=(dim::basic<T,N,S2> const &)</code></li>
+	<li><code>operator[](size_type>)</code></li>
+</ul>
+
+The arithmetic operators all work component-wise.
+
+Including <strong><code>fcppt/math/dim/comparison.hpp</code></strong> you get all the comparison operators:
+
+<ul>
+	<li><code>operator==</code></li>
+	<li><code>operator!=</code></li>
+	<li><code>operator<=</code></li>
+	<li><code>operator<</code></li>
+	<li><code>operator>=</code></li>
+	<li><code>operator></code></li>
+</ul>
+
+All of these work component-wise and forward to the <code>value_type</code>'s
+operators. The ordering is lexicographic. This means that you can use a dim
+with associative containers like <code>std::%set,std::%map,...</code>. Keep in
+mind that the equality comparison operators do <em>not</em> use an epsilon so
+you <em>will</em> get exact floating point comparisons (be sure that you really
+want that!).
+
+Including <strong><code>fcppt/math/dim/arithmetic.hpp</code></strong> gives
+you the following operators:
+
+<ul>
+	<li><code>operator+(dim::basic<T,N,S>,dim::basic<T,N,S>)</code></li>
+	<li><code>operator-(dim::basic<T,N,S>,dim::basic<T,N,S>)</code></li>
+	<li><code>operator*(dim::basic<T,N,S>,dim::basic<T,N,S>)</code></li>
+	<li><code>operator/(dim::basic<T,N,S>,dim::basic<T,N,S>)</code></li>
+	<li><code>operator%(dim::basic<T,N,S>,dim::basic<T,N,S>)</code></li>
+	<li><code>operator*(T,dim::basic<T,N,S>)</code> (scalar multiplication)</li>
+	<li><code>operator/(T,dim::basic<T,N,S>)</code> (scalar division)</li>
+	<li>Unary minus for dims</li>
+</ul>
+
+The arithmetic operators all work component-wise.
+
+Including <strong><code>fcppt/math/dim/input.hpp</code></strong> gives
+you an <code>operator>></code> for reading input from standard streams.
+Conversely, including
+<strong><code>fcppt/math/dim/output.hpp</code></strong> gives you an inverse
+<code>operator<<</code>.
 
 \section fcpptmathdimbasic_headers Header files
 

@@ -17,9 +17,11 @@ namespace fcppt
 namespace math
 {
 
-/// Clamps @a value into the range [@a min, @a max]
 /**
- * Requires vmin <= vmax
+\brief Clamps \a _value into the range [\p _vmin, \p _vmax]
+\ingroup fcpptmath
+\tparam T A type that is <code>LessThanComparable</code> and <code>CopyConstructible</code>
+\pre \p _vmin <= \p _vmax
 */
 template<
 	typename T

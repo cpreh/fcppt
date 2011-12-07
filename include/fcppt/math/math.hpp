@@ -14,10 +14,7 @@
 #include <fcppt/math/difference_type.hpp>
 #include <fcppt/math/exception.hpp>
 #include <fcppt/math/generate_binary_vectors.hpp>
-#include <fcppt/math/instantiate_arithmetic.hpp>
-#include <fcppt/math/inverse.hpp>
 #include <fcppt/math/is_dynamic_size.hpp>
-#include <fcppt/math/is_negative.hpp>
 #include <fcppt/math/is_power_of_2.hpp>
 #include <fcppt/math/is_rational.hpp>
 #include <fcppt/math/is_static_size.hpp>

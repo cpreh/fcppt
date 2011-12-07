@@ -15,7 +15,10 @@ namespace fcppt
 namespace math
 {
 
-/// The exception thrown by some math operations
+/**
+\brief The exception thrown by some math operations
+\ingroup fcpptmath
+*/
 class exception
 :
 	public fcppt::exception

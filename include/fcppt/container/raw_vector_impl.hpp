@@ -9,9 +9,9 @@
 
 #include <fcppt/null_ptr.hpp>
 #include <fcppt/assert/pre.hpp>
-#include <fcppt/detail/equal.hpp>
 #include <fcppt/container/out_of_range.hpp>
 #include <fcppt/container/raw_vector_decl.hpp>
+#include <fcppt/detail/equal.hpp>
 #include <fcppt/type_traits/is_input_iterator.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/next_prior.hpp>

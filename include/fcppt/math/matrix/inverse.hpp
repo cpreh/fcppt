@@ -8,7 +8,6 @@
 #define FCPPT_MATH_MATRIX_INVERSE_HPP_INCLUDED
 
 #include <fcppt/text.hpp>
-#include <fcppt/math/inverse.hpp>
 #include <fcppt/math/is_static_size.hpp>
 #include <fcppt/math/matrix/adjugate.hpp>
 #include <fcppt/math/matrix/arithmetic.hpp>
@@ -25,8 +24,8 @@ namespace math
 namespace matrix
 {
 /**
- * Calculates the inverse matrix, uses fcppt::math::matrix::adjugate and fcppt::math::matrix::determinant.
- */
+\brief Calculates the inverse matrix, uses fcppt::math::matrix::adjugate and fcppt::math::matrix::determinant.
+*/
 template
 <
 	typename T,
@@ -52,8 +51,7 @@ inverse(
 		fcppt::math::matrix::determinant(
 			t);
 	return
-		fcppt::math::inverse(
-			det) *
+		(static_cast<T>(1)/static_cast<T>(det)) *
 		matrix::adjugate(
 			t);
 }

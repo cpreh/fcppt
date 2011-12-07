@@ -17,7 +17,10 @@ namespace fcppt
 namespace math
 {
 
-/// The difference type used for structure sizes
+/**
+\brief The difference type used for structure sizes
+\ingroup fcpptmath
+*/
 typedef boost::make_signed<
 	math::size_type
 >::type difference_type;

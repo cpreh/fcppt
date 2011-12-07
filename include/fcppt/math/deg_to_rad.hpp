@@ -19,9 +19,10 @@ namespace fcppt
 namespace math
 {
 
-/// Transforms degeree into radians
 /**
- * Equal to @a deg * PI / 180
+\brief Transforms degrees into radians
+\ingroup fcpptmath
+\tparam T A floating point type
 */
 template<
 	typename T
@@ -37,7 +38,7 @@ deg_to_rad(
 	T const deg
 )
 {
-	return deg * pi<T>() / static_cast<T>(180);
+	return deg * math::pi<T>() / static_cast<T>(180);
 }
 
 }

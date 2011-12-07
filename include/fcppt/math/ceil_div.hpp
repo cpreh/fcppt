@@ -18,7 +18,13 @@ namespace fcppt
 namespace math
 {
 
-/// Calculates dividend / divisor rounded towards infinity
+/**
+\brief Calculates dividend / divisor rounded towards infinity
+\tparam T An unsigned type
+\ingroup fcpptmath
+\param _dividend The dividend
+\param _divisor The divisor
+*/
 template<
 	typename T
 >
