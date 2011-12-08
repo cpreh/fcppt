@@ -297,14 +297,46 @@ CHECK_CXX_SOURCE_COMPILES(
 	FCPPT_HAVE_BACKTRACE
 )
 
-configure_file(
-	${CMAKE_SOURCE_DIR}/config.hpp.in
-	${CMAKE_BINARY_DIR}/include/fcppt/config.hpp
+function(
+	configure_fcppt_file
+	FILE_RELPATH
+)
+	configure_file(
+		${CMAKE_SOURCE_DIR}/src/${FILE_RELPATH}.in
+		${CMAKE_BINARY_DIR}/include/fcppt/${FILE_RELPATH}
+	)
+endfunction()
+
+configure_fcppt_file(
+	config.hpp
 )
 
-configure_file(
-	${CMAKE_SOURCE_DIR}/version.hpp.in
-	${CMAKE_BINARY_DIR}/include/fcppt/version.hpp
+configure_fcppt_file(
+	version.hpp
+)
+
+set(
+	FCPPT_CONFIG_HAVE_DOUBLE_PROMOTION_WARNING
+	${FCPPT_UTILS_HAVE_DOUBLE_PROMOTION_FLAG}
+)
+
+set(
+	FCPPT_CONFIG_HAVE_LOGICAL_OP_WARNING
+	${FCPPT_UTILS_HAVE_LOGICAL_OP_FLAG}
+)
+
+set(
+	FCPPT_CONFIG_HAVE_MISSING_DECLARATIONS_WARNING
+	${FCPPT_UTILS_HAVE_MISSING_DECLARATIONS_FLAG}
+)
+
+set(
+	FCPPT_CONFIG_HAVE_SIGN_CONVERSION_WARNING
+	${FCPPT_UTILS_HAVE_SIGN_CONVERSION_FLAG}
+)
+
+configure_fcppt_file(
+	config/warnings.hpp
 )
 
 include_directories(

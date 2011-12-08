@@ -12,6 +12,7 @@
 #endif
 
 #include <fcppt/config/compiler.hpp>
+#include <fcppt/config/warnings.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
 FCPPT_PP_PUSH_WARNING
 
@@ -46,12 +47,21 @@ FCPPT_PP_DISABLE_VC_WARNING(4986) // unmatching exception specification
 FCPPT_PP_DISABLE_VC_WARNING(4987) // non standard throw(...)
 #elif defined(FCPPT_CONFIG_GCC_COMPILER)
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
-// This should be replaced with a version check later
 #if defined(FCPPT_CONFIG_CLANG_COMPILER)
+FCPPT_PP_DISABLE_GCC_WARNING(-Wdelete-non-virtual-dtor)
 FCPPT_PP_DISABLE_GCC_WARNING(-Wnewline-eof)
-#else
-FCPPT_PP_DISABLE_GCC_WARNING(-Wdouble-promotion)
-FCPPT_PP_DISABLE_GCC_WARNING(-Wlogical-op)
+#endif
+#if defined(FCPPT_CONFIG_HAVE_DOUBLE_PROMOTION_WARNING)
+	FCPPT_PP_DISABLE_GCC_WARNING(-Wdouble-promotion)
+#endif
+#if defined(FCPPT_CONFIG_HAVE_LOGICAL_OP_WARNING)
+	FCPPT_PP_DISABLE_GCC_WARNING(-Wlogical-op)
+#endif
+#if defined(FCPPT_CONFIG_HAVE_MISSING_DECLARATIONS_WARNING)
+	FCPPT_PP_DISABLE_GCC_WARNING(-Wmissing-declarations)
+#endif
+#if defined(FCPPT_CONFIG_HAVE_SIGN_CONVERSION_WARNING)
+	FCPPT_PP_DISABLE_GCC_WARNING(-Wsign-conversion)
 #endif
 FCPPT_PP_DISABLE_GCC_WARNING(-Wattributes)
 FCPPT_PP_DISABLE_GCC_WARNING(-Wcast-align)
@@ -60,12 +70,10 @@ FCPPT_PP_DISABLE_GCC_WARNING(-Wconversion)
 FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
 FCPPT_PP_DISABLE_GCC_WARNING(-Wfloat-equal)
 FCPPT_PP_DISABLE_GCC_WARNING(-Wignored-qualifiers)
-FCPPT_PP_DISABLE_GCC_WARNING(-Wmissing-declarations)
 FCPPT_PP_DISABLE_GCC_WARNING(-Wnon-virtual-dtor)
 FCPPT_PP_DISABLE_GCC_WARNING(-Wold-style-cast)
 FCPPT_PP_DISABLE_GCC_WARNING(-Woverloaded-virtual)
 FCPPT_PP_DISABLE_GCC_WARNING(-Wredundant-decls)
-FCPPT_PP_DISABLE_GCC_WARNING(-Wsign-conversion)
 FCPPT_PP_DISABLE_GCC_WARNING(-Wshadow)
 FCPPT_PP_DISABLE_GCC_WARNING(-Wstrict-aliasing)
 // This currently doesn't silence -Wundef warnings

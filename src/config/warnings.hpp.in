@@ -1,0 +1,16 @@
+//          Copyright Carl Philipp Reh 2009 - 2010.
+// Distributed under the Boost Software License, Version 1.0.
+//    (See accompanying file LICENSE_1_0.txt or copy at
+//          http://www.boost.org/LICENSE_1_0.txt)
+
+
+#ifndef FCPPT_CONFIG_WARNINGS_HPP_INCLUDED
+#define FCPPT_CONFIG_WARNINGS_HPP_INCLUDED
+
+// gcc warnings
+#cmakedefine FCPPT_CONFIG_HAVE_DOUBLE_PROMOTION_WARNING
+#cmakedefine FCPPT_CONFIG_HAVE_LOGICAL_OP_WARNING
+#cmakedefine FCPPT_CONFIG_HAVE_MISSING_DECLARATIONS_WARNING
+#cmakedefine FCPPT_CONFIG_HAVE_SIGN_CONVERSION_WARNING
+
+#endif
