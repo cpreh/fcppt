@@ -1605,11 +1605,10 @@ install(
 )
 
 install(
-	FILES
-	${CMAKE_BINARY_DIR}/include/fcppt/config.hpp
-	${CMAKE_BINARY_DIR}/include/fcppt/version.hpp
+	DIRECTORY
+	${CMAKE_BINARY_DIR}/include/
 	DESTINATION
-	${INSTALL_INCLUDE_DIR}/fcppt
+	${INSTALL_INCLUDE_DIR}
 )
 
 install(
