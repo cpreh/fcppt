@@ -11,6 +11,7 @@
 #include <fcppt/math/vector/vector.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/test/unit_test.hpp>
+#include <limits>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -22,7 +23,13 @@ BOOST_AUTO_TEST_CASE(math_matrix_scaling)
 		4
 	>::type matrix_type;
 
-	matrix_type const trans_(
+	float const epsilon(
+		std::numeric_limits<
+			float
+		>::epsilon()
+	);
+
+	matrix_type const trans(
 		fcppt::math::matrix::scaling(
 			5.f,
 			3.f,
@@ -31,13 +38,15 @@ BOOST_AUTO_TEST_CASE(math_matrix_scaling)
 	);
 
 	BOOST_REQUIRE(
-		trans_
-		==
-		matrix_type(
-			5.f, 0.f, 0.f, 0.f,
-			0.f, 3.f, 0.f, 0.f,
-			0.f, 0.f, 4.f, 0.f,
-			0.f, 0.f, 0.f, 1.f
+		fcppt::math::matrix::componentwise_equal(
+			trans,
+			matrix_type(
+				5.f, 0.f, 0.f, 0.f,
+				0.f, 3.f, 0.f, 0.f,
+				0.f, 0.f, 4.f, 0.f,
+				0.f, 0.f, 0.f, 1.f
+			),
+			epsilon
 		)
 	);
 
@@ -46,7 +55,7 @@ BOOST_AUTO_TEST_CASE(math_matrix_scaling)
 		4
 	>::type vector_type;
 
-	vector_type const vec_(
+	vector_type const vec(
 		1.f,
 		2.f,
 		3.f,
@@ -54,13 +63,15 @@ BOOST_AUTO_TEST_CASE(math_matrix_scaling)
 	);
 
 	BOOST_REQUIRE(
-		trans_ * vec_
-		==
-		vector_type(
-			5.f,
-			6.f,
-			12.f,
-			1.f
+		fcppt::math::vector::componentwise_equal(
+			trans * vec,
+			vector_type(
+				5.f,
+				6.f,
+				12.f,
+				1.f
+			),
+			epsilon
 		)
 	);
 

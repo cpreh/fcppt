@@ -10,7 +10,7 @@
 #include <fcppt/math/quaternion/to_angle_and_axis.hpp>
 #include <fcppt/math/quaternion/vector_rotation.hpp>
 #include <fcppt/math/vector/basic_impl.hpp>
-#include <fcppt/math/vector/comparison.hpp>
+#include <fcppt/math/vector/componentwise_equal.hpp>
 #include <fcppt/math/vector/static.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/math/quaternion.hpp>
@@ -56,8 +56,16 @@ BOOST_AUTO_TEST_CASE(all_quaternion)
 	element_type const epsilon = 0.001f;
 
 	BOOST_CHECK(
-		std::abs(angle - original_angle) < epsilon &&
-		axis == original_axis);
+		std::abs(angle - original_angle) < epsilon
+	);
+
+	BOOST_CHECK(
+		fcppt::math::vector::componentwise_equal(
+			axis,
+			original_axis,
+			epsilon
+		)
+	);
 
 	BOOST_CHECK((
 		fcppt::math::range_compare(

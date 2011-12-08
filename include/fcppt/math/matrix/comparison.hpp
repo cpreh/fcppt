@@ -7,7 +7,7 @@
 #ifndef FCPPT_MATH_MATRIX_COMPARISON_HPP_INCLUDED
 #define FCPPT_MATH_MATRIX_COMPARISON_HPP_INCLUDED
 
-#include <fcppt/math/detail/array_compare.hpp>
+#include <fcppt/math/detail/array_equal.hpp>
 #include <fcppt/math/matrix/basic_impl.hpp>
 
 namespace fcppt
@@ -31,7 +31,7 @@ operator==(
 )
 {
 	return
-		fcppt::math::detail::array_compare(
+		fcppt::math::detail::array_equal(
 			v1,
 			v2
 		);

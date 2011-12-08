@@ -803,6 +803,7 @@ set(
 	include/fcppt/math/box/basic_impl.hpp
 	include/fcppt/math/box/box.hpp
 	include/fcppt/math/box/center.hpp
+	include/fcppt/math/box/componentwise_equal.hpp
 	include/fcppt/math/box/contains.hpp
 	include/fcppt/math/box/contains_point.hpp
 	include/fcppt/math/box/corner_points.hpp
@@ -820,7 +821,8 @@ set(
 	include/fcppt/math/deg_to_rad.hpp
 	include/fcppt/math/detail/array_adapter.hpp
 	include/fcppt/math/detail/array_adapter_impl.hpp
-	include/fcppt/math/detail/array_compare.hpp
+	include/fcppt/math/detail/array_componentwise_equal.hpp
+	include/fcppt/math/detail/array_equal.hpp
 	include/fcppt/math/detail/array_less.hpp
 	include/fcppt/math/detail/assign.hpp
 	include/fcppt/math/detail/before.hpp
@@ -868,6 +870,7 @@ set(
 	include/fcppt/math/dim/basic_impl.hpp
 	include/fcppt/math/dim/before.hpp
 	include/fcppt/math/dim/comparison.hpp
+	include/fcppt/math/dim/componentwise_equal.hpp
 	include/fcppt/math/dim/construct.hpp
 	include/fcppt/math/dim/dim.hpp
 	include/fcppt/math/dim/dynamic.hpp
@@ -903,6 +906,7 @@ set(
 	include/fcppt/math/matrix/basic_fwd.hpp
 	include/fcppt/math/matrix/basic_impl.hpp
 	include/fcppt/math/matrix/comparison.hpp
+	include/fcppt/math/matrix/componentwise_equal.hpp
 	include/fcppt/math/matrix/delete_row_and_column.hpp
 	include/fcppt/math/matrix/detail/determinant.hpp
 	include/fcppt/math/matrix/detail/dim_storage.hpp
@@ -971,6 +975,7 @@ set(
 	include/fcppt/math/vector/basic_impl.hpp
 	include/fcppt/math/vector/before.hpp
 	include/fcppt/math/vector/comparison.hpp
+	include/fcppt/math/vector/componentwise_equal.hpp
 	include/fcppt/math/vector/construct.hpp
 	include/fcppt/math/vector/cross.hpp
 	include/fcppt/math/vector/dim.hpp

@@ -6,12 +6,13 @@
 
 #include <fcppt/math/matrix/arithmetic.hpp>
 #include <fcppt/math/matrix/basic_impl.hpp>
-#include <fcppt/math/matrix/comparison.hpp>
+#include <fcppt/math/matrix/componentwise_equal.hpp>
 #include <fcppt/math/matrix/inverse.hpp>
 #include <fcppt/math/matrix/output.hpp>
 #include <fcppt/math/matrix/static.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/test/unit_test.hpp>
+#include <limits>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -26,13 +27,22 @@ BOOST_AUTO_TEST_CASE(delete_row_and_column_test)
 	large_matrix_type;
 
 	BOOST_CHECK((
-		fcppt::math::matrix::inverse(
+		fcppt::math::matrix::componentwise_equal(
+			fcppt::math::matrix::inverse(
+				large_matrix_type(
+					0.,1.,2.,
+					1.,0.,3.,
+					4.,-3.,8.
+				)
+			),
 			large_matrix_type(
-				0.,1.,2.,
-				1.,0.,3.,
-				4.,-3.,8.)) ==
-		large_matrix_type(
-			-9./2.,7.,-3./2.,
-			-2.,4.,-1.,
-			3./2.,-2.,1./2.)));
+				-9./2.,7.,-3./2.,
+				-2.,4.,-1.,
+				3./2.,-2.,1./2.
+			),
+			std::numeric_limits<
+				double
+			>::epsilon()
+		)
+	));
 }

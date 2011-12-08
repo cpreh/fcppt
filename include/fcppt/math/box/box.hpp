@@ -11,6 +11,7 @@
 #include <fcppt/math/box/basic_fwd.hpp>
 #include <fcppt/math/box/basic_impl.hpp>
 #include <fcppt/math/box/center.hpp>
+#include <fcppt/math/box/componentwise_equal.hpp>
 #include <fcppt/math/box/contains.hpp>
 #include <fcppt/math/box/contains_point.hpp>
 #include <fcppt/math/box/corner_points.hpp>

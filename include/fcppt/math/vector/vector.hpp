@@ -17,6 +17,7 @@
 #include <fcppt/math/vector/basic_impl.hpp>
 #include <fcppt/math/vector/before.hpp>
 #include <fcppt/math/vector/comparison.hpp>
+#include <fcppt/math/vector/componentwise_equal.hpp>
 #include <fcppt/math/vector/construct.hpp>
 #include <fcppt/math/vector/cross.hpp>
 #include <fcppt/math/vector/dim.hpp>

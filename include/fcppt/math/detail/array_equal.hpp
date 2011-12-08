@@ -4,8 +4,8 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_MATH_DETAIL_ARRAY_COMPARE_HPP_INCLUDED
-#define FCPPT_MATH_DETAIL_ARRAY_COMPARE_HPP_INCLUDED
+#ifndef FCPPT_MATH_DETAIL_ARRAY_EQUAL_HPP_INCLUDED
+#define FCPPT_MATH_DETAIL_ARRAY_EQUAL_HPP_INCLUDED
 
 #include <fcppt/detail/equal.hpp>
 
@@ -22,7 +22,7 @@ template<
 	typename T2
 >
 bool
-array_compare(
+array_equal(
 	T1 const &_v1,
 	T2 const &_v2
 )

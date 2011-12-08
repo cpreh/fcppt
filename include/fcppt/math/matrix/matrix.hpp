@@ -14,6 +14,7 @@
 #include <fcppt/math/matrix/basic_fwd.hpp>
 #include <fcppt/math/matrix/basic_impl.hpp>
 #include <fcppt/math/matrix/comparison.hpp>
+#include <fcppt/math/matrix/componentwise_equal.hpp>
 #include <fcppt/math/matrix/delete_row_and_column.hpp>
 #include <fcppt/math/matrix/determinant.hpp>
 #include <fcppt/math/matrix/dim_type.hpp>

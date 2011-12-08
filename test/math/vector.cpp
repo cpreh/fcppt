@@ -4,13 +4,14 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
+#include <fcppt/math/diff.hpp>
 #include <fcppt/math/pi.hpp>
-#include <fcppt/math/range_compare.hpp>
 #include <fcppt/math/size_type.hpp>
 #include <fcppt/math/vector/angle_between.hpp>
 #include <fcppt/math/vector/angle_between_cast.hpp>
 #include <fcppt/math/vector/arithmetic.hpp>
 #include <fcppt/math/vector/comparison.hpp>
+#include <fcppt/math/vector/componentwise_equal.hpp>
 #include <fcppt/math/vector/construct.hpp>
 #include <fcppt/math/vector/hypersphere_to_cartesian.hpp>
 #include <fcppt/math/vector/output.hpp>
@@ -22,6 +23,7 @@
 #include <boost/test/unit_test.hpp>
 #include <algorithm>
 #include <iostream>
+#include <limits>
 #include <ostream>
 #include <fcppt/config/external_end.hpp>
 
@@ -31,6 +33,13 @@ namespace
 typedef
 float
 real;
+
+real const
+epsilon(
+	std::numeric_limits<
+		real
+	>::epsilon()
+);
 
 typedef
 fcppt::math::vector::static_<unsigned,2>::type
@@ -48,17 +57,13 @@ typedef
 fcppt::math::vector::static_<real,3>::type
 fvector3;
 
-real const epsilon =
-	static_cast<real>(
-		0.001);
-
 template<typename T>
 bool
 compare(
 	T const &t1,
 	T const &t2)
 {
-	return std::abs(t1 - t2) < epsilon;
+	return fcppt::math::diff(t1, t2) < epsilon;
 }
 }
 
@@ -70,11 +75,15 @@ BOOST_AUTO_TEST_CASE(vector_compare)
 		vec3(2, 2);
 
 	BOOST_CHECK(
-		vec1 == vec2
+		vec1
+		==
+		vec2
 	);
 
 	BOOST_CHECK(
-		vec2 != vec3
+		vec2
+		!=
+		vec3
 	);
 }
 
@@ -301,14 +310,17 @@ BOOST_AUTO_TEST_CASE(vector_structure_cast)
 	);
 
 	BOOST_REQUIRE(
-		fcppt::math::vector::structure_cast<
-			fvector2
-		>(
-			vec
-		)
-		== fvector2(
-			1.f,
-			2.f
+		fcppt::math::vector::componentwise_equal(
+			fcppt::math::vector::structure_cast<
+				fvector2
+			>(
+				vec
+			),
+			fvector2(
+				1.f,
+				2.f
+			),
+			epsilon
 		)
 	);
 }
@@ -346,7 +358,7 @@ BOOST_AUTO_TEST_CASE(vector_hypersphere_to_cartesian)
 		<< "\n";
 
 	BOOST_CHECK(
-		fcppt::math::range_compare(
+		fcppt::math::vector::componentwise_equal(
 			result2,
 			fvector2(
 				std::cos(
@@ -375,7 +387,7 @@ BOOST_AUTO_TEST_CASE(vector_hypersphere_to_cartesian)
 		<< "\n";
 
 	BOOST_CHECK(
-		fcppt::math::range_compare(
+		fcppt::math::vector::componentwise_equal(
 			result3,
 			fvector3(
 				std::cos(

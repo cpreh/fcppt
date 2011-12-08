@@ -29,7 +29,7 @@ namespace box
 */
 template<
 	typename T,
-	size_type N
+	math::size_type N
 >
 class basic
 {

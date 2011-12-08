@@ -14,6 +14,7 @@
 #include <fcppt/math/dim/basic_impl.hpp>
 #include <fcppt/math/dim/before.hpp>
 #include <fcppt/math/dim/comparison.hpp>
+#include <fcppt/math/dim/componentwise_equal.hpp>
 #include <fcppt/math/dim/construct.hpp>
 #include <fcppt/math/dim/dynamic.hpp>
 #include <fcppt/math/dim/fill.hpp>
