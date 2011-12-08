@@ -11,7 +11,6 @@
 #include <fcppt/unique_ptr_fwd.hpp>
 #include <fcppt/weak_ptr_fwd.hpp>
 #include <fcppt/detail/make_shared_wrapper_fwd.hpp>
-#include <fcppt/tr1/detail/use_boost_tr1.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/smart_ptr/shared_ptr.hpp>
 #include <iosfwd>
@@ -278,22 +277,6 @@ operator<< (
 	std::basic_ostream<Ch, Traits> &,
 	shared_ptr<T, Deleter> const &
 );
-
-#ifdef FCPPT_TR1_DETAIL_USE_BOOST_TR1
-template<
-	typename T,
-	template<
-		typename
-	> class Deleter
->
-T *
-get_pointer(
-	fcppt::shared_ptr<
-		T,
-		Deleter
-	>
-);
-#endif
 
 }
 

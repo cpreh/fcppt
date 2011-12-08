@@ -1244,7 +1244,6 @@ set(
 	include/fcppt/tr1/cmath.hpp
 	include/fcppt/tr1/complex.hpp
 	include/fcppt/tr1/detail/make_header.hpp
-	include/fcppt/tr1/detail/use_boost_tr1.hpp
 	include/fcppt/tr1/functional.hpp
 	include/fcppt/tr1/memory.hpp
 	include/fcppt/tr1/random.hpp

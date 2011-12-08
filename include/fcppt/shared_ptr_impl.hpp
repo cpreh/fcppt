@@ -11,7 +11,6 @@
 #include <fcppt/shared_ptr_decl.hpp>
 #include <fcppt/unique_ptr_impl.hpp>
 #include <fcppt/detail/make_shared_wrapper.hpp>
-#include <fcppt/tr1/detail/use_boost_tr1.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/static_assert.hpp>
 #include <boost/type_traits/is_same.hpp>
@@ -579,25 +578,5 @@ fcppt::operator<< (
 	return
 		_os << _ptr.get();
 }
-
-#ifdef FCPPT_TR1_DETAIL_USE_BOOST_TR1
-template<
-	typename T,
-	template<
-		typename
-	> class Deleter
->
-T *
-fcppt::get_pointer(
-	fcppt::shared_ptr<
-		T,
-		Deleter
-	> const _ptr
-)
-{
-	return _ptr.get();
-}
-
-#endif
 
 #endif
