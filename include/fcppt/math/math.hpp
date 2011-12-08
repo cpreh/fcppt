@@ -26,7 +26,6 @@
 #include <fcppt/math/point_rotate.hpp>
 #include <fcppt/math/rad_to_deg.hpp>
 #include <fcppt/math/range_compare.hpp>
-#include <fcppt/math/round_div_int.hpp>
 #include <fcppt/math/signum.hpp>
 #include <fcppt/math/size_type.hpp>
 #include <fcppt/math/twopi.hpp>
