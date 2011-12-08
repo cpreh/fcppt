@@ -47,7 +47,9 @@ FCPPT_PP_DISABLE_VC_WARNING(4987) // non standard throw(...)
 #elif defined(FCPPT_CONFIG_GCC_COMPILER)
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 // This should be replaced with a version check later
-#if !defined(FCPPT_CONFIG_CLANG_COMPILER)
+#if defined(FCPPT_CONFIG_CLANG_COMPILER)
+FCPPT_PP_DISABLE_GCC_WARNING(-Wnewline-eof)
+#else
 FCPPT_PP_DISABLE_GCC_WARNING(-Wdouble-promotion)
 FCPPT_PP_DISABLE_GCC_WARNING(-Wlogical-op)
 #endif
