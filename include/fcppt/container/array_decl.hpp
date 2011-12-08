@@ -10,6 +10,7 @@
 #include <fcppt/container/array_fwd.hpp>
 #include <fcppt/container/detail/array_storage.hpp>
 #include <fcppt/config/external_begin.hpp>
+#include <boost/mpl/integral_c.hpp>
 #include <cstddef>
 #include <iterator>
 #include <fcppt/config/external_end.hpp>
@@ -135,11 +136,18 @@ struct array
 	*/
 	typedef std::reverse_iterator<const_iterator> const_reverse_iterator;
 
-	// for boost::array compatibility
-	enum
-	{
-		static_size = N
-	};
+	/**
+	\brief This is for boost::array compatibility
+	*/
+	static size_type const static_size = N;
+
+	/**
+	\brief The static size as an mpl::integral_c
+	*/
+	typedef boost::mpl::integral_c<
+		size_type,
+		N
+	> dim_wrapper;
 
 	/// \cond
 	typename detail::array_storage<
