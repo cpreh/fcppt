@@ -18,7 +18,7 @@ namespace math
 {
 
 /**
-\brief Clamps \a _value into the range [\p _vmin, \p _vmax]
+\brief Clamps a value into a range
 \ingroup fcpptmath
 \tparam T A type that is <code>LessThanComparable</code> and <code>CopyConstructible</code>
 \pre \p _vmin <= \p _vmax

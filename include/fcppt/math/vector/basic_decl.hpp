@@ -520,7 +520,7 @@ type):
 	<li><code>operator%=(vector::basic<T,N,S2>)</code></li>
 	<li><code>operator*=(T)</code> (multiply by a scalar)</li>
 	<li><code>operator/=(T)</code> (divide by a scalar)</li>
-	<li><code>operator=(dim::basic const &)</code> (copy constructor)</li>
+	<li><code>operator=(dim::basic const &)</code> (regular assignment operator)</li>
 	<li><code>operator=(dim::basic<T,N,S2> const &)</code></li>
 	<li><code>operator[](size_type)</code></li>
 </ul>
