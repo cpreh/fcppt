@@ -11,7 +11,6 @@ SET(
 	"${Boost_ADDITIONAL_VERSIONS}" "1.41" "1.41.0" "1.42" "1.42.0" "1.43" "1.43.0" "1.44" "1.44.0" "1.45" "1.45.0" "1.46" "1.46.0" "1.46.1" "1.47" "1.47.0" "1.48" "1.48.0"
 )
 
-# Setup default compiler flags
 INCLUDE(CMakeDetermineCXXCompiler)
 INCLUDE(CheckCXXCompilerFlag)
 
@@ -190,6 +189,12 @@ SET(
 	"Custom config installation directory"
 )
 
+OPTION(
+	FCPPT_ENABLE_CPP11
+	"Enable C++11 support."
+	FALSE
+)
+
 # cmake-2.8.3 is required for this to work
 IF(
 	"${CMAKE_CXX_COMPILER_ID}" STREQUAL "Clang"
@@ -199,6 +204,7 @@ IF(
 	)
 ENDIF()
 
+# Setup default compiler flags
 IF(
 	CMAKE_COMPILER_IS_GNUCXX OR FCPPT_UTILS_COMPILER_IS_CLANGPP
 )
@@ -282,16 +288,30 @@ IF(
 
 	UNSET(CMAKE_REQUIRED_FLAGS)
 
-	# activate common warning options
-	# use -Wno-long-long because too much stuff uses it
+	IF(
+		FCPPT_ENABLE_CPP11
+	)
+		ADD_DEFINITIONS("-std=c++0x")
+	ELSE()
+		ADD_DEFINITIONS("-ansi")
+	ENDIF()
+
+	# Activate common warning options
 	ADD_DEFINITIONS (
-		"-ansi -pedantic-errors -Wall -Wextra -Wconversion"
+		"-pedantic-errors -Wall -Wextra -Wconversion"
 		"-Wfloat-equal -Wredundant-decls -Wuninitialized -Winit-self"
 		"-Woverloaded-virtual -Wnon-virtual-dtor -Wshadow"
 		"-Wsign-promo -Wstrict-aliasing=1 -Wold-style-cast"
-		"-Wcast-qual -Wcast-align -Wno-long-long"
+		"-Wcast-qual -Wcast-align"
 		#currently, -Wundef cannot be disabled via a pragma
 	)
+
+	# Disable warnings about long long because too much stuff uses it
+	IF(
+		NOT FCPPT_ENABLE_CPP11
+	)
+		ADD_DEFINITIONS("-Wno-long-long")
+	ENDIF()
 
 	IF(FCPPT_UTILS_HAVE_DOUBLE_PROMOTION_FLAG)
 		ADD_DEFINITIONS ("-Wdouble-promotion")
