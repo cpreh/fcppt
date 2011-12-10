@@ -22,6 +22,7 @@ namespace vector
 
 /**
 \brief Typedef helper for dynamic vectors
+\tparam The vector's <code>value_type</code>
 \ingroup fcpptmathvector
 See the introduction to fcppt::math::vector::basic for more information on
 dynamic vectors (and on this class).

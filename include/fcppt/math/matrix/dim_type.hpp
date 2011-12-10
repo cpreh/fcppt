@@ -18,6 +18,10 @@ namespace math
 namespace matrix
 {
 
+/**
+\brief The two-dimensional dim type used everywhere
+\ingroup fcpptmathmatrix
+*/
 typedef math::dim::static_<
 	math::size_type,
 	2

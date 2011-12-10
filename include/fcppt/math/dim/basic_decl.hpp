@@ -348,7 +348,6 @@ public:
 
 	/**
 	\brief Copy the values from a different dim
-	\tparam OtherStorage The other dim's storage type
 	*/
 	basic &
 	operator=(
@@ -357,6 +356,7 @@ public:
 
 	/**
 	\brief Copy the values from a different dim
+	\tparam OtherStorage The other dim's storage type
 	*/
 	template<
 		typename OtherStorage
@@ -370,9 +370,6 @@ public:
 		> const &
 	);
 
-	/**
-	\brief Destroy the dim
-	*/
 	~basic();
 
 #define FCPPT_MATH_DIM_BASIC_DECLARE_OPERATOR(op)\
@@ -410,6 +407,9 @@ FCPPT_MATH_DETAIL_MAKE_OP_DECL(\
 
 	/**
 	\brief Returns a reference to the dim element at a specified position.
+
+	\warning
+	Behaviour is undefined if the index is out of range.
 	*/
 	reference
 	operator[](
@@ -418,6 +418,9 @@ FCPPT_MATH_DETAIL_MAKE_OP_DECL(\
 
 	/**
 	\brief Returns a reference to the dim element at a specified position.
+
+	\warning
+	Behaviour is undefined if the index is out of range.
 	*/
 	const_reference
 	operator[](

@@ -36,6 +36,7 @@ namespace matrix
 
 /**
 \brief A class representing dynamic or static matrices
+\ingroup fcpptmathmatrix
 \tparam T The matrix's <code>value_type</code>
 \tparam N The matrix's row type (this is not necessarily a number!)
 \tparam M The matrix's column type (this is not necessarily a number!)
@@ -50,6 +51,8 @@ namespace matrix
 	<li>\ref fcpptmathmatrixbasic_motivation</li>
 	<li>\ref fcpptmathmatrixbasic_operators</li>
 	<li>\ref fcpptmathmatrixbasic_accessing_elements</li>
+	<li>\ref fcpptmathmatrixbasic_identity_and_null</li>
+	<li>\ref fcpptmathmatrixbasic_iteration</li>
 </ol>
 
 </td>
@@ -245,6 +248,42 @@ int_matrix_3x3;
 
 int_matrix_3x3 m = int_matrix_3x3::null();
 \endcode
+
+\section fcpptmathmatrixbasic_iteration Iteration
+
+To iterate over all elements in the matrix, use an iterator together with begin/end:
+
+\code
+typedef
+fcppt::math::matrix::static_<int,3,3>::type
+int_matrix_3x3;
+
+int_matrix_3x3 m = int_matrix_3x3::identity();
+
+// Will output: 1,0,0,0,1,0,0,0,1,
+for(int_matrix_3x3::const_iterator it = m.begin(); it != m.end(); ++it)
+	std::cout << *it << ",";
+\endcode
+
+This code might puzzle you. Didn't I just say that matrix's
+<code>operator[]</code> returns a proxy vector representing one row of the
+matrix? Indeed, I did.
+
+When it comes to iteration, however, we do <em>not</em> use proxy vectors, but
+regular pointers to the individual matrix cells. If you want to iterate over
+all rows, use a loop using an index instead of an iterator:
+
+\code
+typedef
+fcppt::math::matrix::static_<int,3,3>::type
+int_matrix_3x3;
+
+int_matrix_3x3 m = int_matrix_3x3::identity();
+
+// Will output: (1,0,0),(0,1,0),(0,0,1),
+for(int_matrix_3x3::size_type row = 0; row < m.rows(); ++it)
+	std::cout << m[row] << ",";
+\endcode
 */
 template<
 	typename T,
@@ -253,12 +292,14 @@ template<
 	typename S
 >
 class basic
+/// \cond
 :
 private
 	detail::dim_storage<
 		N,
 		M
 	>
+/// \endcond
 {
 	typedef detail::dim_storage<N, M> dim_base;
 public:
@@ -269,18 +310,40 @@ public:
 		>::value
 	));
 
+	/**
+	\brief A typedef for the \p M and \p N parameters
+	*/
 	typedef typename boost::mpl::times<
 		N,
 		M
 	>::type dim_wrapper;
 
+	/**
+	\brief A typedef for the \p S parameter
+	*/
 	typedef S storage_type;
 
+	/**
+	\brief A type that counts the number of elements in a matrix.
+	*/
 	typedef math::size_type size_type;
+	/**
+	\brief A type that provides the difference between the addresses of two elements in a matrix.
+	*/
 	typedef math::difference_type difference_type;
 
+	/**
+	\brief A type that represents the data type stored in a matrix.
+	*/
 	typedef T value_type;
 
+	/**
+	\brief A type that provides a reference to an element stored in a matrix.
+
+	This is one of the few non-trivial implementations of the reference
+	typedef, as it's really a vector that models a row-view over the
+	matrix, see the explanation above.
+	*/
 	typedef vector::basic<
 		T,
 		N,
@@ -290,6 +353,15 @@ public:
 		>
 	> reference;
 
+	/**
+	\brief
+	A type that provides a reference to a <code>const</code> element stored
+	in a vector for reading and performing <code>const</code> operations.
+
+	This is one of the few non-trivial implementations of the reference
+	typedef, as it's really a vector that models a row-view over the
+	matrix, see the explanation above.
+	*/
 	typedef vector::basic<
 		T,
 		N,
@@ -299,34 +371,85 @@ public:
 		>
 	> const_reference;
 
+	/**
+	\brief A type that provides a pointer to an element in a matrix.
+	*/
 	typedef T *pointer;
 
+	/**
+	\brief A type that provides a pointer to a <code>const</code> element in a matrix.
+	*/
 	typedef T const *const_pointer;
 
+	/**
+	\brief A type that provides a random-access iterator that can read or modify any element in a matrix.
+
+	\warning
+	An "element" in this case is <em>not</em> a row, but a single cell. See the iteration section above.
+	*/
 	typedef pointer iterator;
 
+	/**
+	\brief A type that provides a random-access iterator that can read or modify any element in a matrix.
+
+	\warning
+	An "element" in this case is <em>not</em> a row, but a single cell. See the iteration section above.
+	*/
 	typedef const_pointer const_iterator;
 
+	/**
+	\brief A type that provides a random-access iterator that can read or modify any element in a reversed matrix.
+	*/
 	typedef std::reverse_iterator<iterator> reverse_iterator;
 
+	/**
+	\brief A type that provides a random-access iterator that can read any <code>const</code> element in the matrix.
+	*/
 	typedef std::reverse_iterator<const_iterator> const_reverse_iterator;
 
+	/**
+	\brief The dim type corresponding to this matrix type.
+	*/
 	typedef matrix::dim_type dim;
 
+	/**
+	\brief Construct an uninitialized matrix
+
+	\warning
+	The content of the vector will be undefined (not null) after
+	initialization
+	*/
 	basic();
 
+	/**
+	\brief Construct an uninitialized dynamic matrix
+
+	\warning
+	This operation makes no sense on a static matrix.
+	*/
 	explicit basic(
 		dim const &
 	);
 
+	/**
+	\brief Construct a vector from a storage source
+	\param s The storage source to copy from
+	*/
 	explicit basic(
-		storage_type const &
+		storage_type const &s
 	);
 
+	/**
+	\brief Copy-construct the matrix from another matrix
+	*/
 	basic(
 		basic const &
 	);
 
+	/**
+	\brief Create a matrix from a matrix with the same dimension and value type but different storage type
+	\tparam OtherStorage The other matrix's storage type
+	*/
 	template<
 		typename OtherStorage
 	>
@@ -339,6 +462,12 @@ public:
 		> const &
 	);
 
+	/**
+	\brief Create a matrix and fill it with the contents of the given range
+	\tparam In A forward iterator pointing to elements of type <code>T</code>
+	\param beg The beginning of the range
+	\param end One past the end of the range
+	*/
 	template<
 		typename In
 	>
@@ -352,11 +481,21 @@ public:
 		>::type end
 	);
 
+	/**
+	\brief Create a dynamic matrix and fill it with the contents of the given range
+	\tparam In A forward iterator pointing to elements of type <code>T</code>
+	\param _dim The two-dimensional dimension corresponding to the one-dimensional range
+	\param beg The beginning of the range
+	\param end One past the end of the range
+
+	\warning
+	This operation makes no sense on a static matrix.
+	*/
 	template<
 		typename In
 	>
 	basic(
-		dim const &,
+		dim const &_dim,
 		In beg,
 		typename boost::enable_if<
 			type_traits::is_iterator<
@@ -366,6 +505,13 @@ public:
 		>::type end
 	);
 
+	/**
+	\brief Create a dynamic matrix and fill it with the contents of a range
+	\tparam Container A sequence container containing elements of type <code>T</code>
+
+	\warning
+	This operation makes no sense on a static matrix.
+	*/
 	template<
 		typename Container
 	>
@@ -383,11 +529,18 @@ public:
 		basic
 	)
 
+	/**
+	\brief Copy the values from a different matrix
+	*/
 	basic &
 	operator=(
 		basic const &
 	);
 
+	/**
+	\brief Copy the values from a different matrix of the same size but different storage type
+	\tparam OtherStorage The other matrix's storage type
+	*/
 	template<
 		typename OtherStorage
 	>
@@ -419,47 +572,89 @@ FCPPT_MATH_DETAIL_MAKE_OP_DECL(\
 	FCPPT_MATH_MATRIX_BASIC_DECLARE_OPERATOR(-=)
 #undef FCPPT_MATH_MATRIX_BASIC_DECLARE_OPERATOR
 
+	/**
+	\brief Multiply a matrix by a scalar
+	*/
 	basic &
 	operator*=(
 		value_type const &
 	);
 
+	/**
+	\brief Divide a matrix by a scalar
+	*/
 	basic &
 	operator/=(
 		value_type const &
 	);
 
+	/**
+	\brief Returns a reference to a row in the matrix
+
+	\warning
+	Behaviour is undefined if the index is out of range.
+	*/
 	reference
 	operator[](
 		size_type
 	);
 
+	/**
+	\brief Returns a reference to a (constant) row in the matrix
+
+	\warning
+	Behaviour is undefined if the index is out of range.
+	*/
 	const_reference const
 	operator[](
 		size_type
 	) const;
 
+	/**
+	\brief Returns the pointer to the store.
+	*/
 	pointer
 	data();
 
+	/**
+	\brief Returns the pointer to the store.
+	*/
 	const_pointer
 	data() const;
 
+	/**
+	\brief Returns the number of elements in the matrix.
+	*/
 	size_type
 	size() const;
 
+	/**
+	\brief Returns the number of rows in the matrix.
+	*/
 	size_type
 	rows() const;
 
+	/**
+	\brief Returns the number of columns in the matrix.
+	*/
 	size_type
 	columns() const;
 
+	/**
+	\brief Returns the matrix's dimensions.
+	*/
 	dim const
 	dimension() const;
 
+	/**
+	\brief Returns the identity matrix;
+	*/
 	static basic const
 	identity();
 
+	/**
+	\brief Exchanges the elements of two matrices.
+	*/
 	void
 	swap(
 		basic &
@@ -468,6 +663,9 @@ private:
 	S storage_;
 };
 
+/**
+\brief Exchanges the elements of two matrices.
+*/
 template<
 	typename T,
 	typename N,

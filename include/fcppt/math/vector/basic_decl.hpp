@@ -736,7 +736,7 @@ public:
 
 	/**
 	\brief Create a vector and fill it with the contents of the given range
-	\tparam In a forward iterator pointing to elements of type <code>T</code>
+	\tparam In A forward iterator pointing to elements of type <code>T</code>
 	\param beg The beginning of the range
 	\param end One past the end of the range
 	*/
@@ -764,7 +764,6 @@ public:
 
 	/**
 	\brief Copy the values from a different vector
-	\tparam OtherStorage The other vector's storage type
 	*/
 	basic &
 	operator=(
@@ -773,6 +772,7 @@ public:
 
 	/**
 	\brief Copy the values from a different vector
+	\tparam OtherStorage The other vector's storage type
 	*/
 	template<
 		typename OtherStorage
@@ -786,9 +786,6 @@ public:
 		> const &
 	);
 
-	/**
-	\brief Destroy the vector
-	*/
 	~basic();
 
 #define FCPPT_MATH_VECTOR_BASIC_DECLARE_OPERATOR(op)\
@@ -826,6 +823,9 @@ FCPPT_MATH_DETAIL_MAKE_OP_DECL(\
 
 	/**
 	\brief Returns a reference to the vector element at a specified position.
+
+	\warning
+	Behaviour is undefined if the index is out of range.
 	*/
 	const_reference
 	operator[](
@@ -834,6 +834,9 @@ FCPPT_MATH_DETAIL_MAKE_OP_DECL(\
 
 	/**
 	\brief Returns a reference to the vector element at a specified position.
+
+	\warning
+	Behaviour is undefined if the index is out of range.
 	*/
 	reference
 	operator[](

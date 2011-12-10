@@ -22,9 +22,16 @@ namespace math
 namespace matrix
 {
 
-/// Calculates the adjugate matrix
 /**
- * @param matrix_ must be a statically sized matrix
+\brief Calculates the adjugate matrix
+\ingroup fcpptmathmatrix
+\tparam T The matrix's <code>value_type</code>
+\tparam N The matrix's row (and column!) dimension type
+\tparam S The matrix's storage type
+\param matrix_ Must be a statically sized matrix
+
+\warning
+You should consider this a slow operation.
 */
 template
 <

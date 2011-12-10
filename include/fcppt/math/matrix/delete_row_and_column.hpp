@@ -22,10 +22,15 @@ namespace matrix
 
 /**
 \brief Deletes a specific row and rolumn (a cross) from the matrix
-\param matrix_ must be statically sized matrix
-\param row The row index to the row
-\param column The column index to the column
-\return The result type will be of size (N - 1, M - 1)
+\ingroup fcpptmathmatrix
+\tparam T The matrix's <code>value_type</code>
+\tparam M The matrix's row dimension type
+\tparam N The matrix's column dimension type
+\tparam S The matrix's storage type
+\param matrix_ The matrix (must be a static matrix)
+\param row The row to delete
+\param column The column to delete
+\return The result type will be <code>(N - 1, M - 1)</code>
 */
 template<
 	typename T,

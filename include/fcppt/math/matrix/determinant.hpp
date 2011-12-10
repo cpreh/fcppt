@@ -22,10 +22,17 @@ namespace math
 namespace matrix
 {
 
-/// Calculates the matrix determinant
 /**
- * Uses the Laplace extension and delete_column_and_row.
- * @param matrix_ must be a statically sized matrix
+\brief Calculates the determinant of a matrix
+\ingroup fcpptmathmatrix
+\tparam T The matrix's <code>value_type</code>
+\tparam N The matrix's row (and column!) dimension type
+\tparam S The matrix's storage type
+\param matrix_ The matrix
+
+This function uses the Laplace extension. Consider it slow (very slow!).
+
+\see fcppt::math::matrix::delete_row_and_column.
 */
 template
 <

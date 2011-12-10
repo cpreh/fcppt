@@ -18,6 +18,18 @@ namespace math
 namespace matrix
 {
 
+/**
+\brief Compares two floating point matrices componentwise using an epsilon
+\ingroup fcpptmathmatrix
+\tparam T The matrix's <code>value_type</code> (must be a floating point type)
+\tparam M The matrix's row dimension type
+\tparam N The matrix's column dimension type
+\tparam S1 The first matrix's storage type
+\tparam S2 The second matrix's storage type
+\param _v1 The first matrix
+\param _v2 The second matrix
+\param _epsilon The epsilon to compare with
+*/
 template<
 	typename T,
 	typename N,

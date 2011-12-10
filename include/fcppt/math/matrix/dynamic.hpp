@@ -20,7 +20,13 @@ namespace math
 namespace matrix
 {
 
-/// Typedefs a dynamic matrix type
+/**
+\brief Typedef helper for dynamic matrices
+\tparam The matrix's <code>value_type</code>
+\ingroup fcpptmathmatrix
+See the introduction to fcppt::math::vector::basic for more information on
+dynamic types (and on this class).
+*/
 template<
 	typename T
 >
