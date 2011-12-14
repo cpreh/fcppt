@@ -885,7 +885,6 @@ set(
 	include/fcppt/math/detail/one_dimensional_input.hpp
 	include/fcppt/math/detail/one_dimensional_output.hpp
 	include/fcppt/math/detail/pi.hpp
-	include/fcppt/math/detail/signum.hpp
 	include/fcppt/math/detail/simple_normal_storage.hpp
 	include/fcppt/math/detail/static_storage.hpp
 	include/fcppt/math/detail/storage_data.hpp
@@ -988,7 +987,6 @@ set(
 	include/fcppt/math/quaternion/vector_rotation.hpp
 	include/fcppt/math/rad_to_deg.hpp
 	include/fcppt/math/range_compare.hpp
-	include/fcppt/math/signum.hpp
 	include/fcppt/math/size_type.hpp
 	include/fcppt/math/sphere/basic_decl.hpp
 	include/fcppt/math/sphere/basic_fwd.hpp
