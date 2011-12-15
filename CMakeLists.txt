@@ -639,6 +639,7 @@ set(
 	include/fcppt/detail_unique_ptr/rv.hpp
 	include/fcppt/detail_unique_ptr/storage.hpp
 	include/fcppt/dynamic_cast.hpp
+	include/fcppt/dynamic_optional_cast.hpp
 	include/fcppt/dynamic_pointer_cast.hpp
 	include/fcppt/endianness/copy_n_from_host.hpp
 	include/fcppt/endianness/copy_n_swapped.hpp

@@ -309,3 +309,71 @@ BOOST_AUTO_TEST_CASE(
 		>::value
 	));
 }
+
+namespace
+{
+
+struct base
+{
+	virtual ~base()
+	{
+	}
+};
+
+struct derived
+:
+	base
+{
+};
+
+}
+
+BOOST_AUTO_TEST_CASE(
+	optional_dynamic_cast
+)
+{
+	typedef fcppt::optional<
+		base &
+	> optional_base_ref;
+
+	typedef fcppt::optional<
+		derived &
+	> optional_derived_ref;
+
+	optional_base_ref empty_base;
+
+	optional_derived_ref empty_derived(
+		fcppt::dynamic_optional_cast<
+			derived
+		>(
+			empty_base
+		)
+	);
+
+	BOOST_CHECK(
+		!empty_derived.has_value()
+	);
+
+	derived derived_object;
+
+	optional_base_ref base_ref(
+		derived_object
+	);
+
+	optional_derived_ref derived_ref(
+		fcppt::dynamic_optional_cast<
+			derived
+		>(
+			base_ref
+		)
+	);
+
+	BOOST_CHECK(
+		derived_ref.has_value()
+	);
+
+	BOOST_CHECK(
+		&*derived_ref
+		== &derived_object
+	);
+}
