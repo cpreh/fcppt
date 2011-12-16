@@ -13,8 +13,6 @@
 #include <windows.h>
 #undef WIN32_LEAN_AND_MEAN
 #undef NOMINMAX
-#undef near
-#undef far
 #include <fcppt/config/external_end.hpp>
 
 #endif
