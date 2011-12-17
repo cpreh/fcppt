@@ -18,6 +18,11 @@ namespace math
 {
 namespace matrix
 {
+/**
+\brief Metafunction to test if a type is a matrix type
+\ingroup fcpptmathmatrix
+\tparam T The type to test against
+*/
 template
 <
 	typename T
@@ -28,6 +33,7 @@ struct is_matrix
 {
 };
 
+/// \cond FCPPT_DOXYGEN_DEBUG
 template
 <
 	typename T,
@@ -43,6 +49,7 @@ struct is_matrix
 	boost::mpl::true_
 {
 };
+/// \endcond
 }
 }
 }

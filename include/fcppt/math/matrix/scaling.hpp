@@ -23,7 +23,16 @@ namespace math
 namespace matrix
 {
 
-/// Calculates a scaling matrix from @a x, @a y and @a z
+/**
+\brief Calculates a 4x4 scaling matrix
+\ingroup fcpptmathmatrix
+\tparam T The matrix's <code>value_type</code>
+\param _x Scaling in x direction
+\param _y Scaling in y direction
+\param _z Scaling in z direction
+
+The resulting matrix will be static.
+*/
 template<
 	typename T
 >

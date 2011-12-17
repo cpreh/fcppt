@@ -24,7 +24,6 @@
 #include <fcppt/math/matrix/inverse.hpp>
 #include <fcppt/math/matrix/is_matrix.hpp>
 #include <fcppt/math/matrix/is_static_size.hpp>
-#include <fcppt/math/matrix/look_at.hpp>
 #include <fcppt/math/matrix/max_ctor_params.hpp>
 #include <fcppt/math/matrix/normal_storage.hpp>
 #include <fcppt/math/matrix/output.hpp>

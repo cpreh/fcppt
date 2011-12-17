@@ -17,7 +17,15 @@ namespace math
 namespace matrix
 {
 
-/// Calculates a transposed matrix
+/**
+\brief Calculates a transposed matrix
+\ingroup fcpptmathmatrix
+\tparam T The matrix's <code>value_type</code>
+\tparam M The matrix's row dimension type
+\tparam N The matrix's column dimension type
+\tparam S The matrix's storage type
+\param t The matrix
+*/
 template<
 	typename T,
 	typename N,

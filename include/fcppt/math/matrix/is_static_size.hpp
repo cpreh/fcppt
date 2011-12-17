@@ -19,7 +19,12 @@ namespace math
 namespace matrix
 {
 
-/// Checks if both types specify a static size
+/**
+\brief Metafunction to test if a matrix's dimension types are static
+\ingroup fcpptmathmatrix
+\tparam N The row dimension type
+\tparam M The column dimension type
+*/
 template<
 	typename N,
 	typename M

@@ -22,7 +22,13 @@ namespace math
 namespace matrix
 {
 
-/// Typedefs a matrix with static dimensions
+/**
+\brief Typedef helper for static matrices
+\ingroup fcpptmathmatrix
+\tparam The matrix's <code>value_type</code>
+See the introduction to fcppt::math::vector::basic for more information on
+static matrices (and on this class).
+*/
 template<
 	typename T,
 	size_type N,

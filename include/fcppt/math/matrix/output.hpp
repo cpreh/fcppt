@@ -19,7 +19,25 @@ namespace math
 namespace matrix
 {
 
-/// Outputs a matrix to a basic_ostream
+/**
+\brief Outputs the matrix to a <code>basic_ostream</code>
+\ingroup fcpptmathmatrix
+\tparam T The matrix's <code>value_type</code>
+\tparam M The matrix's row dimension type
+\tparam N The matrix's column dimension type
+\tparam S The matrix's storage type
+\tparam Ch The stream's character type
+\tparam Traits The stream's character traits type
+
+The format will contain no new-lines and will be of the form:
+
+<pre>
+((a,b,c,...),(d,e,f,...),...,...)
+</pre>
+
+So it'll be the same as if you output the column vectors using the according
+<code>operator<<</code>.
+*/
 template<
 	typename T,
 	typename N,

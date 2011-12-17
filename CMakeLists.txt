@@ -956,7 +956,6 @@ set(
 	include/fcppt/math/matrix/inverse.hpp
 	include/fcppt/math/matrix/is_matrix.hpp
 	include/fcppt/math/matrix/is_static_size.hpp
-	include/fcppt/math/matrix/look_at.hpp
 	include/fcppt/math/matrix/matrix.hpp
 	include/fcppt/math/matrix/max_ctor_params.hpp
 	include/fcppt/math/matrix/normal_storage.hpp
@@ -1026,6 +1025,7 @@ set(
 	include/fcppt/math/vector/normalize.hpp
 	include/fcppt/math/vector/orthogonalize.hpp
 	include/fcppt/math/vector/output.hpp
+	include/fcppt/math/vector/p_norm.hpp
 	include/fcppt/math/vector/project.hpp
 	include/fcppt/math/vector/signed_angle_between.hpp
 	include/fcppt/math/vector/signed_angle_between_cast.hpp

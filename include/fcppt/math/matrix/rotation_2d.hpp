@@ -21,9 +21,13 @@ namespace math
 namespace matrix
 {
 
-/// Calculates a two dimensional rotation matrix
 /**
- * This matrix will rotate around an imaginary z axis
+\brief Calculates a two dimensional rotation matrix
+\ingroup fcpptmathmatrix
+\tparam T The matrix's <code>value_type</code>
+\param angle The angle to rotate about
+
+The resulting matrix will be a static one.
 */
 template<
 	typename T
@@ -34,8 +38,12 @@ rotation_2d(
 )
 {
 	T const
-		sinx = std::sin(angle),
-        	cosx = std::cos(angle);
+		sinx =
+			std::sin(
+				angle),
+		cosx =
+			std::cos(
+				angle);
 
 	return
 		typename static_<T, 2, 2>::type(
@@ -43,7 +51,6 @@ rotation_2d(
 			sinx,  cosx
 		);
 }
-
 }
 }
 }

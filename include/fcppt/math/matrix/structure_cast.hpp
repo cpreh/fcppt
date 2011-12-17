@@ -17,7 +17,16 @@ namespace math
 namespace matrix
 {
 
-/// Converts a matrix into a different matrix of the same dimension using static_cast
+/**
+\brief Converts a matrix into a different matrix of the same dimension using static_cast
+\ingroup fcpptmathmatrix
+\tparam Dest The destination matrix's <code>value_type</code>
+\tparam T The matrix's <code>value_type</code>
+\tparam N The matrix's row dimension type
+\tparam M The matrix's column dimension type
+\tparam S The matrix's storage type
+\param src The source matrix
+*/
 template<
 	typename Dest,
 	typename T,

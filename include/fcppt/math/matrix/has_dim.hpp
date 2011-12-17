@@ -23,6 +23,15 @@ namespace math
 namespace matrix
 {
 
+/**
+\brief Metafunction to check if a static matrix has the specified dimensions
+\ingroup fcpptmathmatrix
+\tparam Matrix A fcppt::math::matrix::basic type
+\tparam N The static row count
+\tparam N The static column count
+
+This will return <code>false</code> for dynamic matrices.
+*/
 template<
 	typename Matrix,
 	size_type N,
@@ -33,6 +42,7 @@ struct has_dim
 boost::false_type
 {};
 
+/// \cond FCPPT_DOXYGEN_DEBUG
 template<
 	typename T,
 	typename N,
@@ -63,6 +73,7 @@ boost::mpl::and_<
 	>
 >
 {};
+/// \endcond
 
 }
 }

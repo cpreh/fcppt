@@ -23,7 +23,16 @@ namespace math
 namespace matrix
 {
 
-/// Calculates a translation matrix from @a x, @a y and @a z
+/**
+\brief Calculates a 4x4 translation matrix from three coordinates
+\ingroup fcpptmathmatrix
+\tparam T The matrix's <code>value_type</code>
+\param _x The x translation
+\param _y The y translation
+\param _z The z translation
+
+The resulting matrix will be static.
+*/
 template<
 	typename T
 >
@@ -52,7 +61,14 @@ translation(
 		);
 }
 
-/// Calculates a translation matrix from a three dimensional vector
+/**
+\brief Calculates a 4x4 translation matrix from a three-dimensional vector
+\ingroup fcpptmathmatrix
+\tparam T The matrix's <code>value_type</code>
+\param _vec A three-dimensional vector (static or dynamic)
+
+The resulting matrix will be static.
+*/
 template<
 	typename Vector
 >

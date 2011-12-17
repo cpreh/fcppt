@@ -22,7 +22,27 @@ namespace math
 {
 namespace matrix
 {
-/// Calculates a rotation matrix around an arbitrary axis given as a unit vector
+/**
+\brief Calculates a 4x4 rotation matrix around an arbitrary axis given as a unit vector
+\ingroup fcpptmathmatrix
+\tparam T The matrix's <code>value_type</code>
+\param angle The angle to rotate about
+\param a The axis to rotate around
+
+The resulting matrix will be static.
+
+\see
+fcppt::math::matrix::rotation_x
+
+\see
+fcppt::math::matrix::rotation_y
+
+\see
+fcppt::math::matrix::rotation_z
+
+\see
+fcppt::math::matrix::rotation_axis
+*/
 template
 <
 	typename T

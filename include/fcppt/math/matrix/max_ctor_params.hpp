@@ -8,7 +8,7 @@
 #define FCPPT_MATH_MATRIX_MAX_CTOR_PARAMS_HPP_INCLUDED
 
 #ifndef FCPPT_MATH_MATRIX_MAX_CTOR_PARAMS
-/// The maximum count of constructor parameters for a vector
+/// The maximum count of constructor parameters for a matrix
 #define FCPPT_MATH_MATRIX_MAX_CTOR_PARAMS 16
 #endif
 
