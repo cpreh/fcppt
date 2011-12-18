@@ -3,6 +3,15 @@ namespace fcppt
 namespace container
 {
 /**
+\brief Helper functions and classes for <a href="http://www.boost.org/doc/libs/1_48_0/libs/ptr_container/doc/ptr_container.html">boost.ptr_container</a>.
+*/
+namespace ptr
+{
+}
+}
+}
+
+/**
 \defgroup fcpptcontainerptr fcppt::container::ptr
 \ingroup fcpptcontainer
 \brief Helper functions and classes for <a href="http://www.boost.org/doc/libs/1_48_0/libs/ptr_container/doc/ptr_container.html">boost.ptr_container</a>.
@@ -29,8 +38,3 @@ example using a ptr_map:
 
 \snippet container/ptr.cpp main
 */
-namespace ptr
-{
-}
-}
-}

@@ -23,65 +23,11 @@ namespace container
 
 /**
 \brief A special vector class for pod types
-\ingroup fcpptcontainer
+\ingroup fcpptcontainerraw_vector
 \tparam T Container's <code>value_type</code>. Has to be a POD type; see <a href="http://www.boost.org/doc/libs/1_40_0/libs/type_traits/doc/html/boost_typetraits/reference/is_pod.html">here</a> for what this means.
 \tparam A The allocator.
-\details
 
-Ordinary arrays in C++ are not default-initialized. The following code is undefined:
-
-\code
-int main()
-{
-	int numbers[1024];
-
-	std::cout << numbers[0];
-}
-\endcode
-
-This is mostly for performance reasons. The array could be huge, and
-initializing it would take time. Moreover, it might be unnecessary! Consider:
-
-\code
-int main()
-{
-	int numbers[1024];
-
-	for(std::size_t i = 0; i < 1024; ++i)
-		numbers[i] = 1;
-
-	std::cout << numbers[0];
-}
-\endcode
-
-Default-initializing the <code>numbers</code> array to zero is pointless, since
-after its construction, the array is filled with a different value anyway.
-
-If you want an array with the ability to grow and shrink dynamically, you could
-use a <code>std::%vector</code>:
-
-\code
-int main()
-{
-	std::vector<int> numbers(1024);
-
-	for(std::size_t i = 0; i < 1024; ++i)
-		numbers[i] = 1;
-
-	std::cout << numbers[0];
-}
-\endcode
-
-However, <code>std::%vector</code> default-initialized its values! So this code
-won't exhibit maximum performance.
-
-To get the non-initializing behavior back, you can use
-fcppt::container::raw_vector. It's an almost exact copy of
-<code>std::vector</code>, but doesn't initialize its values.
-
-Here's a small example:
-
-\snippet doc/container.cpp raw_vector
+See the \link fcpptcontainerraw_vector module documentation \endlink for more information.
 */
 template<
 	typename T,
