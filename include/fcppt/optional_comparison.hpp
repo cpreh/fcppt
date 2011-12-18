@@ -15,7 +15,7 @@ namespace fcppt
 /**
 \brief Compares two optionals for equality
 
-\ingroup fcpptmain
+\ingroup fcpptoptional
 
 Compares \a _a and \a _b for equality. Two optionals are equal if they are
 either both empty or if they are both not empty and their elements compare
@@ -44,7 +44,7 @@ operator==(
 /**
 \brief Compares two optionals for inequality
 
-\ingroup fcpptmain
+\ingroup fcpptoptional
 
 Compares \a _a and \a _b for inequality. Equal to <code>!(_a == _b)</code>.
 This function requires \a T to be equality comparable.

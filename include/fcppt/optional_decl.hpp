@@ -307,7 +307,7 @@ private:
 /**
 \brief A specialization for optional references
 
-\ingroup fcpptmain
+\ingroup fcpptoptional
 
 \tparam T The reference type to make optional, which doesn't have to be
 CopyConstructible, Assignable or even complete.
