@@ -1025,7 +1025,6 @@ set(
 	include/fcppt/math/vector/normalize.hpp
 	include/fcppt/math/vector/orthogonalize.hpp
 	include/fcppt/math/vector/output.hpp
-	include/fcppt/math/vector/p_norm.hpp
 	include/fcppt/math/vector/project.hpp
 	include/fcppt/math/vector/signed_angle_between.hpp
 	include/fcppt/math/vector/signed_angle_between_cast.hpp
