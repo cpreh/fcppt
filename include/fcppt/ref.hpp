@@ -15,11 +15,17 @@
 namespace fcppt
 {
 
-/// Wrapper around boost::ref for now
 /**
- * std::tr1::ref under VC++ has issues,
- * in order to provide a single refactoring point,
- * fcppt::ref wraps boost::ref currently
+\brief Creates a reference wrapper
+
+\ingroup fcpptref
+
+Creates a \link fcppt::reference_wrapper \endlink to <code>T</code> from \a
+_ref
+
+\tparam T Can be any type and might be incomplete
+
+\param _ref The reference to wrap
 */
 template<
 	typename T

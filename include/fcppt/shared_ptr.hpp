@@ -9,7 +9,6 @@
 
 #include <fcppt/const_pointer_cast.hpp>
 #include <fcppt/dynamic_pointer_cast.hpp>
-#include <fcppt/polymorphic_pointer_cast.hpp>
 #include <fcppt/shared_ptr_impl.hpp>
 #include <fcppt/static_pointer_cast.hpp>
 

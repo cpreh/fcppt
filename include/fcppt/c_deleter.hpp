@@ -14,12 +14,25 @@
 namespace fcppt
 {
 
-/// Uses std::free(object) to destroy an object.
+/**
+\brief A deleter that uses <code>std::free</code> to destroy an object.
+
+\ingroup fcpptsmartptr
+
+\tparam T Can be any type where <code>T *</code> can be converted to <code>void %*</code>
+*/
 template<
 	typename T
 >
 struct c_deleter
 {
+	/**
+	\brief Deletes a pointer using <code>std::free</code>
+
+	Calls <code>std::free(_ptr)</code>
+
+	\param _ptr The pointer to delete
+	*/
 	void
 	operator()(
 		T *const _ptr

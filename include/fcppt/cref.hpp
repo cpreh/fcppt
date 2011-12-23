@@ -15,11 +15,17 @@
 namespace fcppt
 {
 
-/// Wrapper around boost::cref for now
 /**
- * std::tr1::cref under VC++ has issues,
- * in order to provide a single refactoring point,
- * fcppt::cref wraps boost::cref currently
+\brief Creates a const reference wrapper
+
+\ingroup fcpptref
+
+Creates a \link fcppt::reference_wrapper \endlink to <code>T const</code> from
+\a _ref
+
+\tparam T Can be any type and might be incomplete
+
+\param _ref The reference to wrap
 */
 template<
 	typename T

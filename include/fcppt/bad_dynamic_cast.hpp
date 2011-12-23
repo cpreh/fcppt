@@ -13,24 +13,47 @@
 namespace fcppt
 {
 
-/// May be thrown by dynamic_cast_ if the cast fails
+/**
+\brief May be thrown by \link fcppt::dynamic_cast_ \endlink if the cast fails
+
+\ingroup fcpptcasts
+
+This class provides more type information than <code>std::bad_cast</code> does.
+It stores an \link fcppt::type_info \endlink for the source and the destination
+type.
+
+\see fcppt::dynamic_cast_
+*/
 class bad_dynamic_cast
 :
-	public exception
+	public fcppt::exception
 {
 public:
-	explicit bad_dynamic_cast(
-		type_info const &source,
-		type_info const &dest
+	/**
+	\brief Constructs a bad_dynamic_cast exception
+
+	\param source The source type information
+
+	\param dest The destination type information
+	*/
+	bad_dynamic_cast(
+		fcppt::type_info const &source,
+		fcppt::type_info const &dest
 	);
 
-	type_info const &
+	/**
+	\brief Returns the source type information
+	*/
+	fcppt::type_info const &
 	source() const;
 
-	type_info const &
+	/**
+	\brief Returns the destination type information
+	*/
+	fcppt::type_info const &
 	destination() const;
 private:
-	type_info
+	fcppt::type_info
 		source_,
 		destination_;
 };

@@ -1069,7 +1069,6 @@ set(
 	include/fcppt/optional_decl.hpp
 	include/fcppt/optional_fwd.hpp
 	include/fcppt/optional_impl.hpp
-	include/fcppt/polymorphic_pointer_cast.hpp
 	include/fcppt/preprocessor/detail/enum_params_forward_m.hpp
 	include/fcppt/preprocessor/detail/function.hpp
 	include/fcppt/preprocessor/detail/message.hpp

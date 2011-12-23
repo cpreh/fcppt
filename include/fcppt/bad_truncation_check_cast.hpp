@@ -13,24 +13,47 @@
 namespace fcppt
 {
 
-/// May be thrown by truncation_check_cast if the conversion truncates
+/**
+\brief May be thrown by \link fcppt::truncation_check_cast \endlink if the
+conversion truncates
+
+\ingroup fcpptcasts
+
+This class provides type information about the source and the destination
+types, stored as \link fcppt::type_info \endlink.
+
+\see fcppt::truncation_check_cast
+*/
 class bad_truncation_check_cast
 :
-	public exception
+	public fcppt::exception
 {
 public:
-	explicit bad_truncation_check_cast(
-		type_info const &source,
-		type_info const &dest
+	/**
+	\brief Constructs a bad_truncation_check_cast exception
+
+	\param source The source type information
+
+	\param dest The destination type information
+	*/
+	bad_truncation_check_cast(
+		fcppt::type_info const &source,
+		fcppt::type_info const &dest
 	);
 
-	type_info const &
+	/**
+	\brief Returns the source type information
+	*/
+	fcppt::type_info const &
 	source() const;
 
-	type_info const &
+	/**
+	\brief Returns the destination type information
+	*/
+	fcppt::type_info const &
 	destination() const;
 private:
-	type_info
+	fcppt::type_info
 		source_,
 		destination_;
 };

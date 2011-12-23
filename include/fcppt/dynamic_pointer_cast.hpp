@@ -15,6 +15,25 @@
 namespace fcppt
 {
 
+/**
+\brief Casts an \link fcppt::shared_ptr \endlink using
+<code>dynamic_cast</code>
+
+\ingroup fcpptsmartptr
+
+Casts the pointer stored in \a _ptr to type <code>U *</code> using
+<code>dynamic_cast</code>. This means that T * and U * be members of the same
+class hierarchy. If the cast succeeds, the resulting shared_ptr will share
+ownership with the source.
+
+\tparam T The type of the source shared_ptr
+\tparam U The type of the destination shared_ptr
+
+\param _ptr The source shared_ptr
+
+\return The converted shared_ptr or an empty shared_ptr if the
+<code>dynamic_cast</code> fails
+*/
 template<
 	typename T,
 	typename U,

@@ -18,11 +18,37 @@
 #	error "Don't know what FCPPT_CLASS_SYMBOL should be"
 #endif
 
-/// Tells that a classes's vtable should be exported
 /**
- * example: class FCPPT_CLASS_SYMBOL myclass {};
- * @remark This should be used when the vtable of a class is needed,
- * such as: 1) The class is thrown as an exception, 2) The class has virtual methods
+\brief Tells that a classes's vtable should be exported
+
+\ingroup fcpptexport
+
+This macro marks a classes's vtable to be exported, so it can be shared across
+dynamic libraries. There are several cases in which this is necessary:
+<ol>
+
+<li>The class is thrown as an exception and caugth by another library.</li>
+
+<li>The class has virtual methods that will be called directly from another
+library.</li>
+
+</ol>
+
+It is not necessary to specify whether the class is currently exported or
+imported.
+
+\code
+class FCPPT_CLASS_SYMBOL my_exception
+{
+};
+
+class FCPPT_CLASS_SYMBOL my_base
+{
+	virtual
+	void
+	do_something() = 0;
+};
+\endcode
 */
 #define FCPPT_CLASS_SYMBOL FCPPT_CLASS_SYMBOL_IMPL
 
