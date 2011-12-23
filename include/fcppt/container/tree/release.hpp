@@ -7,7 +7,7 @@
 #ifndef FCPPT_CONTAINER_TREE_RELEASE_HPP_INCLUDED
 #define FCPPT_CONTAINER_TREE_RELEASE_HPP_INCLUDED
 
-#include <fcppt/unique_ptr.hpp>
+#include <fcppt/unique_ptr_impl.hpp>
 #include <fcppt/container/tree/is_ptr_value.hpp>
 #include <fcppt/container/tree/object_impl.hpp>
 #include <fcppt/config/external_begin.hpp>

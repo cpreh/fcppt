@@ -12,7 +12,7 @@
 #include <fcppt/container/raw_vector.hpp>
 #include <fcppt/c_deleter.hpp>
 #include <fcppt/from_std_string.hpp>
-#include <fcppt/scoped_ptr.hpp>
+#include <fcppt/scoped_ptr_impl.hpp>
 #include <execinfo.h>
 #endif
 

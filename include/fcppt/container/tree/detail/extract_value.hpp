@@ -7,7 +7,7 @@
 #ifndef FCPPT_CONTAINER_TREE_DETAIL_EXTRACT_VALUE_HPP_INCLUDED
 #define FCPPT_CONTAINER_TREE_DETAIL_EXTRACT_VALUE_HPP_INCLUDED
 
-#include <fcppt/scoped_ptr.hpp>
+#include <fcppt/scoped_ptr_impl.hpp>
 
 namespace fcppt
 {

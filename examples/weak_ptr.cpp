@@ -5,7 +5,7 @@
 
 
 //[weakptr
-#include <fcppt/shared_ptr.hpp>
+#include <fcppt/shared_ptr_impl.hpp>
 #include <fcppt/text.hpp>
 #include <fcppt/weak_ptr.hpp>
 #include <fcppt/io/cout.hpp>

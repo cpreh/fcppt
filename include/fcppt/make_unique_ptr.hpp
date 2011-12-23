@@ -7,7 +7,7 @@
 #ifndef FCPPT_MAKE_UNIQUE_PTR_HPP_INCLUDED
 #define FCPPT_MAKE_UNIQUE_PTR_HPP_INCLUDED
 
-#include <fcppt/unique_ptr.hpp>
+#include <fcppt/unique_ptr_impl.hpp>
 #include <fcppt/detail/make_ptr_base.hpp>
 
 namespace fcppt

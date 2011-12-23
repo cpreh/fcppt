@@ -7,7 +7,7 @@
 #ifndef FCPPT_LOG_DETAIL_TEMPORARY_OUTPUT_HPP_INCLUDED
 #define FCPPT_LOG_DETAIL_TEMPORARY_OUTPUT_HPP_INCLUDED
 
-#include <fcppt/shared_ptr.hpp>
+#include <fcppt/shared_ptr_impl.hpp>
 #include <fcppt/string.hpp>
 #include <fcppt/symbol.hpp>
 #include <fcppt/io/ostringstream.hpp>

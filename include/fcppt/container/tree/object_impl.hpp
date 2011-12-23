@@ -11,6 +11,8 @@
 #include <fcppt/make_unique_ptr.hpp>
 #include <fcppt/move.hpp>
 #include <fcppt/null_ptr.hpp>
+#include <fcppt/scoped_ptr_impl.hpp>
+#include <fcppt/unique_ptr_impl.hpp>
 #include <fcppt/algorithm/find_if_exn.hpp>
 #include <fcppt/container/ptr/insert_unique_ptr.hpp>
 #include <fcppt/container/ptr/make_equal.hpp>

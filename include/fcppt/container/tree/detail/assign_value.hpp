@@ -8,8 +8,8 @@
 #define FCPPT_CONTAINER_TREE_DETAIL_ASSIGN_VALUE_HPP_INCLUDED
 
 #include <fcppt/move.hpp>
-#include <fcppt/scoped_ptr.hpp>
-#include <fcppt/unique_ptr.hpp>
+#include <fcppt/scoped_ptr_impl.hpp>
+#include <fcppt/unique_ptr_impl.hpp>
 
 namespace fcppt
 {

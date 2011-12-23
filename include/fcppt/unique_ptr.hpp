@@ -7,6 +7,7 @@
 #ifndef FCPPT_UNIQUE_PTR_HPP_INCLUDED
 #define FCPPT_UNIQUE_PTR_HPP_INCLUDED
 
+#include <fcppt/make_unique_ptr.hpp>
 #include <fcppt/unique_ptr_decl.hpp>
 #include <fcppt/unique_ptr_fwd.hpp>
 #include <fcppt/unique_ptr_impl.hpp>

@@ -27,7 +27,7 @@ This macro marks a classes's vtable to be exported, so it can be shared across
 dynamic libraries. There are several cases in which this is necessary:
 <ol>
 
-<li>The class is thrown as an exception and caugth by another library.</li>
+<li>The class is thrown as an exception and caught by another library.</li>
 
 <li>The class has virtual methods that will be called directly from another
 library.</li>

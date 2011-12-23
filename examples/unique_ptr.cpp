@@ -80,7 +80,7 @@ test2()
 
 //[unique_ptr_shared_ptr
 
-#include <fcppt/shared_ptr.hpp>
+#include <fcppt/shared_ptr_impl.hpp>
 
 //<-
 namespace

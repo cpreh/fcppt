@@ -7,7 +7,7 @@
 #ifndef FCPPT_LOG_FORMAT_OBJECT_PTR_HPP_INCLUDED
 #define FCPPT_LOG_FORMAT_OBJECT_PTR_HPP_INCLUDED
 
-#include <fcppt/shared_ptr.hpp>
+#include <fcppt/shared_ptr_impl.hpp>
 #include <fcppt/log/format/object_fwd.hpp>
 
 
@@ -18,8 +18,8 @@ namespace log
 namespace format
 {
 
-typedef shared_ptr<
-	object
+typedef fcppt::shared_ptr<
+	fcppt::log::format::object
 > object_ptr;
 
 }

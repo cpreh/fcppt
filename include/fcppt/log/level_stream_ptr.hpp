@@ -7,7 +7,7 @@
 #ifndef FCPPT_LOG_LEVEL_STREAM_PTR_HPP_INCLUDED
 #define FCPPT_LOG_LEVEL_STREAM_PTR_HPP_INCLUDED
 
-#include <fcppt/shared_ptr.hpp>
+#include <fcppt/shared_ptr_impl.hpp>
 #include <fcppt/log/level_stream_fwd.hpp>
 
 
@@ -17,7 +17,7 @@ namespace log
 {
 
 typedef fcppt::shared_ptr<
-	level_stream
+	fcppt::log::level_stream
 > level_stream_ptr;
 
 }

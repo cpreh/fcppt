@@ -7,8 +7,8 @@
 #ifndef FCPPT_CONTAINER_TREE_OBJECT_DECL_HPP_INCLUDED
 #define FCPPT_CONTAINER_TREE_OBJECT_DECL_HPP_INCLUDED
 
-#include <fcppt/scoped_ptr.hpp>
-#include <fcppt/unique_ptr.hpp>
+#include <fcppt/scoped_ptr_decl.hpp>
+#include <fcppt/unique_ptr_decl.hpp>
 #include <fcppt/container/tree/is_ptr_value.hpp>
 #include <fcppt/container/tree/object_fwd.hpp>
 #include <fcppt/mpl/inner.hpp>

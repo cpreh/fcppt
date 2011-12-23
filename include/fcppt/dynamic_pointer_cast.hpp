@@ -22,9 +22,9 @@ namespace fcppt
 \ingroup fcpptsmartptr
 
 Casts the pointer stored in \a _ptr to type <code>U *</code> using
-<code>dynamic_cast</code>. This means that T * and U * be members of the same
-class hierarchy. If the cast succeeds, the resulting shared_ptr will share
-ownership with the source.
+<code>dynamic_cast</code>. This means that <code>T *</code> and <code>U
+*</code> be members of the same class hierarchy. If the cast succeeds, the
+resulting shared_ptr will share ownership with the source.
 
 \tparam T The type of the source shared_ptr
 \tparam U The type of the destination shared_ptr

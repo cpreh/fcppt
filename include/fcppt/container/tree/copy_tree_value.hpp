@@ -8,7 +8,7 @@
 #define FCPPT_CONTAINER_TREE_COPY_TREE_VALUE_HPP_INCLUDED
 
 #include <fcppt/make_unique_ptr.hpp>
-#include <fcppt/unique_ptr.hpp>
+#include <fcppt/unique_ptr_impl.hpp>
 
 namespace fcppt
 {

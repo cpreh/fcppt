@@ -16,11 +16,11 @@ an object.
 
 \ingroup fcpptsmartptr
 
-COM objects have a reference counting mechanism where calling Release on them
-decrements the reference counter. This mechanism is enabled by deriving from
-IUnknown
+COM objects have a reference counting mechanism where calling
+<code>Release</code> on them decrements the reference counter. This mechanism
+is enabled by deriving from <code>IUnknown</code>
 
-\tparam T Must derive from IUnknown
+\tparam T Must derive from <code>IUnknown</code>
 */
 template<
 	typename T
