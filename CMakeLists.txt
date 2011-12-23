@@ -1238,7 +1238,6 @@ set(
 	include/fcppt/strong_typedef_impl.hpp
 	include/fcppt/strong_typedef_input.hpp
 	include/fcppt/strong_typedef_output.hpp
-	include/fcppt/stub_function.hpp
 	include/fcppt/symbol.hpp
 	include/fcppt/text.hpp
 	include/fcppt/thread/hardware_concurrency.hpp
