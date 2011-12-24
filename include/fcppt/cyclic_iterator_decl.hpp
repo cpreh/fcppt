@@ -34,7 +34,7 @@ access is not supported. The iterator category will be at most bidirectional.
 It inherits all capabilities from <code>boost::iterator_facade</code> which
 means that it will have the usual iterator operations with their semantics.
 
-Here is a short example demonstrating the its use.
+Here is a short example demonstrating its use.
 
 \snippet cyclic_iterator.cpp cyclic_iterator
 */

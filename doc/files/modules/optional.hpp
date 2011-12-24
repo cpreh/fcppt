@@ -159,8 +159,20 @@ fcppt::optional is spread out across various header files.
 <td>Contains operator== and operator!=</td>
 </tr>
 <tr>
+<td><code>const_optional_cast.hpp</code></td>
+<td>Contains \link fcppt::const_optional_cast \endlink.</td>
+</tr>
+<tr>
 <td><code>dynamic_optional_cast.hpp</code></td>
 <td>Contains \link fcppt::dynamic_optional_cast \endlink.</td>
+</tr>
+<tr>
+<td><code>static_optional_cast.hpp</code></td>
+<td>Contains \link fcppt::static_optional_cast \endlink.</td>
+</tr>
+<tr>
+<td><code>optional.hpp</code></td>
+<td>Includes all of the headers above.</td>
 </tr>
 </table>
 */

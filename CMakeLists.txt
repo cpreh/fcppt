@@ -491,6 +491,7 @@ set(
 	include/fcppt/config/external_end.hpp
 	include/fcppt/config/include_windows.hpp
 	include/fcppt/config/platform.hpp
+	include/fcppt/const_optional_cast.hpp
 	include/fcppt/const_pointer_cast.hpp
 	include/fcppt/container/array.hpp
 	include/fcppt/container/array_comparison.hpp
@@ -628,6 +629,7 @@ set(
 	include/fcppt/detail/make_shared_wrapper.hpp
 	include/fcppt/detail/make_shared_wrapper_fwd.hpp
 	include/fcppt/detail/nullptr_t.hpp
+	include/fcppt/detail/optional_cast.hpp
 	include/fcppt/detail/process_assert.hpp
 	include/fcppt/detail/strong_typedef_assignment_operator.hpp
 	include/fcppt/detail/strong_typedef_binary_operator.hpp
@@ -1225,6 +1227,7 @@ set(
 	include/fcppt/spirit_traits/optional_basic.hpp
 	include/fcppt/spirit_traits/spirit_traits.hpp
 	include/fcppt/spirit_traits/variant_basic.hpp
+	include/fcppt/static_optional_cast.hpp
 	include/fcppt/static_pointer_cast.hpp
 	include/fcppt/string.hpp
 	include/fcppt/string_conv_locale.hpp
