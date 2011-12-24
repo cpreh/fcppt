@@ -4,7 +4,6 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-//[cyclic_iterator
 #include <fcppt/cyclic_iterator.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <iostream>
@@ -14,6 +13,7 @@
 
 int main()
 {
+//! [cyclic_iterator]
 	typedef std::vector<
 		int
 	> int_vector;
@@ -39,11 +39,11 @@ int main()
 		i < 6;
 		++i
 	)
-		// printfs 1, 2, 1, 2, 1, 2,
+		// prints 1, 2, 1, 2, 1, 2,
 		std::cout
 			<< *it++
 			<< ", ";
 
 	std::cout << '\n';
+//! [cyclic_iterator]
 }
-//]

@@ -619,6 +619,7 @@ set(
 	include/fcppt/cyclic_iterator_impl.hpp
 	include/fcppt/detail/char_type.hpp
 	include/fcppt/detail/cyclic_iterator_base.hpp
+	include/fcppt/detail/cyclic_iterator_category.hpp
 	include/fcppt/detail/enable_optional_ref_conv.hpp
 	include/fcppt/detail/enable_optional_value_conv.hpp
 	include/fcppt/detail/equal.hpp

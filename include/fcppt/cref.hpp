@@ -20,8 +20,7 @@ namespace fcppt
 
 \ingroup fcpptref
 
-Creates a \link fcppt::reference_wrapper \endlink to <code>T const</code> from
-\a _ref
+Creates a reference wrapper to <code>T const</code> from \a _ref
 
 \tparam T Can be any type and might be incomplete
 
