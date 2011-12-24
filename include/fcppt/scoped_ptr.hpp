@@ -7,8 +7,9 @@
 #ifndef FCPPT_SCOPED_PTR_HPP_INCLUDED
 #define FCPPT_SCOPED_PTR_HPP_INCLUDED
 
-#include <fcppt/scoped_ptr_fwd.hpp>
 #include <fcppt/scoped_ptr_decl.hpp>
+#include <fcppt/scoped_ptr_fwd.hpp>
 #include <fcppt/scoped_ptr_impl.hpp>
+
 
 #endif

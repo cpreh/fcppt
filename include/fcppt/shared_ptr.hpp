@@ -10,8 +10,8 @@
 #include <fcppt/const_pointer_cast.hpp>
 #include <fcppt/dynamic_pointer_cast.hpp>
 #include <fcppt/make_shared_ptr.hpp>
-#include <fcppt/shared_ptr_fwd.hpp>
 #include <fcppt/shared_ptr_decl.hpp>
+#include <fcppt/shared_ptr_fwd.hpp>
 #include <fcppt/shared_ptr_impl.hpp>
 #include <fcppt/static_pointer_cast.hpp>
 
