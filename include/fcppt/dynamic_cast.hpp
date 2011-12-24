@@ -21,7 +21,28 @@
 namespace fcppt
 {
 
-/// dynamic_cast_ throws fcppt::bad_dynamic_cast on failure
+/**
+\brief Converts between references using <code>dynamic_cast</code> and provides
+additional error information
+
+\ingroup fcpptcasts
+
+Tries to cast \a _src to \a Dest using <code>dynamic_cast</code>. Both
+<code>Dest</code> and the type of \a _src are reference types. If the
+<code>dynamic_cast</code> fails, an \link fcppt::bad_dynamic_cast \endlink will
+be thrown that includes additional type information about the types involved.
+
+The following example shows how this function can be used:
+
+\snippet dynamic_cast.cpp dynamic_cast_
+
+\param _src The source reference to cast from
+
+\return The casted result as if in <code>dynamic_cast<Dest>(_src)</code> if the
+casts succeeds.
+
+\throws fcppt::bad_dynamic_cast on failure
+*/
 template<
 	typename Dest,
 	typename Src
@@ -33,7 +54,7 @@ typename boost::enable_if<
 	Dest
 >::type
 dynamic_cast_(
-	Src &src
+	Src &_src
 )
 {
 	try
@@ -42,7 +63,7 @@ dynamic_cast_(
 			dynamic_cast<
 				Dest
 			>(
-				src
+				_src
 			);
 	}
 	catch(
@@ -53,7 +74,7 @@ dynamic_cast_(
 			fcppt::bad_dynamic_cast(
 				fcppt::type_info(
 					typeid(
-						Src
+						_src
 					)
 				),
 				fcppt::type_info(
@@ -65,6 +86,20 @@ dynamic_cast_(
 	}
 }
 
+/**
+\brief Converts between pointers using <code>dynamic_cast</code>
+
+\ingroup fcpptcasts
+
+This function is the complement to the version of
+<code>fcppt::dynamic_cast_</code> taking references. It doesn't do anything
+special, which is to convert \a _src to \a Dest using <code>dynamic_cast</code>.
+Both \a Dest and the type of \a _src are pointer types.
+
+\param _src The source pointer to cast from
+
+\return <code>dynamic_cast<Dest>(_src)</code>
+*/
 template<
 	typename Dest,
 	typename Src
@@ -76,14 +111,14 @@ typename boost::enable_if<
 	Dest
 >::type
 dynamic_cast_(
-	Src const src
+	Src *const _src
 )
 {
 	return
 		dynamic_cast<
 			Dest
 		>(
-			src
+			_src
 		);
 }
 

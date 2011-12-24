@@ -4,7 +4,7 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-//[dynamiccast
+//! [dynamic_cast_]
 
 #include <fcppt/bad_dynamic_cast.hpp>
 #include <fcppt/dynamic_cast.hpp>
@@ -64,7 +64,7 @@ f()
 }
 
 }
-//]
+//! [dynamic_cast_]
 
 //[trydynamiccast
 #include <fcppt/try_dynamic_cast.hpp>

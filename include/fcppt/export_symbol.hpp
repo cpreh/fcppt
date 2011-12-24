@@ -22,7 +22,16 @@
 #	error "Don't know what FCPPT_EXPORT_SYMBOL should be"
 #endif
 
-/// Tells that a symbol should be exported from a library
+/**
+\brief Tells that a symbol should be exported
+
+\ingroup fcpptexport
+
+This macro marks a symbol to be exported, so it can be used by other libraries
+or programs.
+
+\see \ref exports_library
+*/
 #define FCPPT_EXPORT_SYMBOL FCPPT_EXPORT_SYMBOL_IMPL
 
 #endif

@@ -17,7 +17,16 @@
 #	error "Don't know what FCPPT_IMPORT_SYMBOL should be"
 #endif
 
-/// Tells that a symbol should be imported from a library
+/**
+\brief Tells that a symbol should be imported
+
+\ingroup fcpptexport
+
+This macro marks a symbol to be imported, so it can be used from another
+library.
+
+\see \ref exports_library
+*/
 #define FCPPT_IMPORT_SYMBOL FCPPT_IMPORT_SYMBOL_IMPL
 
 #endif

@@ -95,6 +95,8 @@ public:
 
 	Copy constructs from another cyclic iterator \a other. This only works
 	if the underlying iterators are convertible.
+
+	\param other The iterator to copy construct from
 	*/
 	template<
 		typename OtherIterator
@@ -129,13 +131,17 @@ public:
 
 	Assigns from another cyclic iterator \a other. This only works if the
 	underlying iterators are convertible.
+
+	\param other The iterator to assign from
+
+	\return <code>*this</code>
 	*/
 	template<
 		typename OtherIterator
 	>
 	cyclic_iterator<ContainerIterator> &
 	operator=(
-		cyclic_iterator<OtherIterator> const &
+		cyclic_iterator<OtherIterator> const &other
 	);
 
 	/**

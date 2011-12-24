@@ -49,6 +49,8 @@ class FCPPT_CLASS_SYMBOL my_base
 	do_something() = 0;
 };
 \endcode
+
+\see \ref exports_vtable
 */
 #define FCPPT_CLASS_SYMBOL FCPPT_CLASS_SYMBOL_IMPL
 
