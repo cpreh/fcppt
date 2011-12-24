@@ -114,8 +114,8 @@ mylib::template_function(
 }
 
 // Explicitly instantiate the template with int and export it
-FCPPT_EXPORT_SYMBOL
 template
+FCPPT_EXPORT_SYMBOL
 void
 mylib::template_function<
 	int

@@ -39,13 +39,13 @@ unnecessarly large interface.
 
 \section exports_library Defining library interfaces
 
-Several macros are provided to make a symbol public. Because it is necessary
-to specify whether a symbol is currently imported or exported, some additional
+Several macros are provided to make a symbol public. Because it is necessary to
+specify whether a symbol is currently imported or exported, some additional
 work needs to be done by the library author and the build system to ensure that
-this is always correctly specified. The common way to do this is to define
-some kind of macro when a library is being built, which means the symbols are
+this is always correctly specified. The common way to do this is to define some
+kind of macro when the library is being built, which means the symbols are
 currently exported. This macro will not be defined in all other cases, which
-means that the symbol is currently imported.
+means the symbols are currently imported.
 
 In the following example the macro <code>MYLIB_EXPORTS</code> is defined
 by the build system if the library is currently begin built. This macro
@@ -81,7 +81,7 @@ This includes:
 <ul>
 
 <li>Functions (free or in a class), constructors and destructors which are
-defined inside the library, need a conditional symbol like
+defined inside the library need a conditional symbol like
 <code>MYLIB_SYMBOL</code> at their declaration, and nothing special at their
 definition.</li>
 
@@ -102,7 +102,8 @@ because a normal function would also need it.
 \snippet visibility.cpp visibility_export_template
 
 The explicit instantiation needs an additional \link FCPPT_EXPORT_SYMBOL
-\endlink.
+\endlink. It is important that this comes after the <code>template</code>
+keyword but before the rest of the explicit instantiation.
 
 \snippet visibility.cpp visibility_define_template
 </li>
@@ -112,7 +113,7 @@ The explicit instantiation needs an additional \link FCPPT_EXPORT_SYMBOL
 
 Library visibility is only useful if a shared library is being built and if the
 symbols of the shared library are hidden by default. Here is some advice
-how to use different build system:
+how to use different build systems:
 <ul>
 
 <li>For gcc and clang, you should use the option
