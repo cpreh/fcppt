@@ -8,8 +8,8 @@
 #define FCPPT_FILESYSTEM_EXTENSION_WITHOUT_DOT_HPP_INCLUDED
 
 #include <fcppt/string.hpp>
-#include <fcppt/symbol.hpp>
 #include <fcppt/filesystem/path.hpp>
+#include <fcppt/filesystem/symbol.hpp>
 
 
 namespace fcppt
@@ -22,7 +22,7 @@ namespace filesystem
  * @return If a file has the form a.b, b will be returned.
  *         Otherwise the empty string will be returned.
 */
-FCPPT_SYMBOL
+FCPPT_FILESYSTEM_SYMBOL
 fcppt::string const
 extension_without_dot(
 	filesystem::path const &

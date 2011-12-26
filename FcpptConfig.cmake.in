@@ -9,49 +9,62 @@ include(
 )
 
 if(
-	MSVC
-)
-	if(
-		Fcppt_WANT_DYN_LINK
-	)
-		set(
-			Fcppt_LIBRARY
-			fcppt
-		)
-
-		set(
-			FCPPT_CONFIG_DEFINITIONS
-			"/D FCPPT_DYN_LINK"
-		)
-	else(
-		Fcppt_WANT_DYN_LINK
-	)
-		set(
-			Fcppt_LIBRARY
-			fcppt_static
-		)
-	endif(
-		Fcppt_WANT_DYN_LINK
-	)
-else(
-	MSVC
+	Fcppt_USE_STATIC_LIBS
 )
 	set(
-		Fcppt_LIBRARY
-		fcppt
+		Fcppt_core_LIBRARY
+		fcppt_core_static
 	)
-endif(
-	MSVC
-)
+
+	set(
+		Fcppt_filesystem_LIBRARY
+		fcppt_filesystem_static
+	)
+
+	set(
+		Fcppt_thread_LIBRARY
+		fcppt_thread_static
+	)
+
+	set(
+		FCPPT_CONFIG_DEFINITIONS
+		"-D FCPPT_STATIC_LINK"
+	)
+else()
+	set(
+		Fcppt_core_LIBRARY
+		fcppt_core
+	)
+
+	set(
+		Fcppt_filesystem_LIBRARY
+		fcppt_filesystem
+	)
+
+	set(
+		Fcppt_thread_LIBRARY
+		fcppt_thread
+	)
+endif()
 
 set(
 	Fcppt_DEFINITIONS
-	"${FCPPT_CONFIG_DEFINITIONS} @FcpptThreads_DEFINITIONS@"
+	"${FCPPT_CONFIG_DEFINITIONS}"
 )
 
 set(
-	Fcppt_LIBRARIES
-	"@Boost_FILESYSTEM_LIBRARY@;@Boost_THREAD_LIBRARY@;@Boost_SYSTEM_LIBRARY@;${Fcppt_LIBRARY};@FcpptThreads_LIBRARIES@"
+	Fcppt_core_LIBRARIES
+	"${Fcppt_core_LIBRARY}"
+)
+
+set(
+	Fcppt_filesystem_LIBRARIES
+	"@Boost_FILESYSTEM_LIBRARY@;@Boost_SYSTEM_LIBRARY@;${Fcppt_core_LIBRARY};${Fcppt_filesystem_LIBRARY}"
+)
+
+set(
+	Fcppt_thread_LIBRARIES
+	"@FcpptThreads_LIBRARIES@;@Boost_THREAD_LIBRARY@;${Fcppt_thread_LIBRARY}"
 )
 
 set(

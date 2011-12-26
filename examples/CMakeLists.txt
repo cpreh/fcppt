@@ -1,68 +1,96 @@
-ADD_DEFINITIONS(${FCPPT_CONFIG_LINK_MACROS})
+add_definitions(
+	${FCPPT_CONFIG_LINK_MACROS}
+)
 
-MACRO (MAKE_FCPPT_EXAMPLE subname name)
-	SET (FCPPT_EXAMPLE_NAME fcppt${subname}${name}example)
-	ADD_EXECUTABLE (${FCPPT_EXAMPLE_NAME} ${name}.cpp)
-	TARGET_LINK_LIBRARIES(
-		${FCPPT_EXAMPLE_NAME}
-		${FCPPT_DEFAULT_LINK_TARGET}
-		${FcpptThreads_LIBRARIES}
+function(
+	make_fcppt_example
+	SUBNAME
+	MAINNAME
+	ADDITIONAL_DEPS
+)
+	set(
+		FCPPT_EXAMPLE_NAME
+		fcppt${SUBNAME}${MAINNAME}example
 	)
-ENDMACRO ()
 
-MACRO (ADD_FCPPT_EXAMPLE name)
-	MAKE_FCPPT_EXAMPLE("" ${name})
-ENDMACRO ()
+	add_executable(
+		${FCPPT_EXAMPLE_NAME}
+		${MAINNAME}.cpp
+	)
 
-ADD_FCPPT_EXAMPLE(algorithm)
-ADD_FCPPT_EXAMPLE(alignment)
-ADD_FCPPT_EXAMPLE(alignment_new)
-ADD_FCPPT_EXAMPLE(alignment_simple)
-ADD_FCPPT_EXAMPLE(assert)
-ADD_FCPPT_EXAMPLE(assert_complete)
-ADD_FCPPT_EXAMPLE(backtrace)
-ADD_FCPPT_EXAMPLE(chrono)
-ADD_FCPPT_EXAMPLE(codecvt)
-ADD_FCPPT_EXAMPLE(container)
-ADD_FCPPT_EXAMPLE(cyclic_iterator)
-ADD_FCPPT_EXAMPLE(dynamic_cast)
-ADD_FCPPT_EXAMPLE(endianness)
-ADD_FCPPT_EXAMPLE(foreach_enumerator)
-ADD_FCPPT_EXAMPLE(function)
-ADD_FCPPT_EXAMPLE(homogenous_pair)
-ADD_FCPPT_EXAMPLE(io)
-ADD_FCPPT_EXAMPLE(log)
-ADD_FCPPT_EXAMPLE(make_array)
-ADD_FCPPT_EXAMPLE(make_container)
-ADD_FCPPT_EXAMPLE(math)
-ADD_FCPPT_EXAMPLE(minmax_pair)
-ADD_FCPPT_EXAMPLE(noncopyable)
-ADD_FCPPT_EXAMPLE(optional)
-ADD_FCPPT_EXAMPLE(optional_dynamic_cast)
-ADD_FCPPT_EXAMPLE(output_tm)
-ADD_FCPPT_EXAMPLE(safe_bool)
-ADD_FCPPT_EXAMPLE(scoped_ptr)
-ADD_FCPPT_EXAMPLE(shared_ptr)
-ADD_FCPPT_EXAMPLE(sleep)
-ADD_FCPPT_EXAMPLE(sn_cast)
-ADD_FCPPT_EXAMPLE(string_conversion)
-ADD_FCPPT_EXAMPLE(strongtypedef)
-ADD_FCPPT_EXAMPLE(thread)
-ADD_FCPPT_EXAMPLE(time_parse)
-ADD_FCPPT_EXAMPLE(tr1)
-ADD_FCPPT_EXAMPLE(truncation_check_cast)
-ADD_FCPPT_EXAMPLE(type_traits)
-ADD_FCPPT_EXAMPLE(unique_ptr)
-ADD_FCPPT_EXAMPLE(version)
-ADD_FCPPT_EXAMPLE(visibility)
-ADD_FCPPT_EXAMPLE(weak_ptr)
+	fcppt_link_target(
+		fcppt_core
+	)
 
-ADD_SUBDIRECTORY(chrono)
-ADD_SUBDIRECTORY(container)
-ADD_SUBDIRECTORY(log)
-ADD_SUBDIRECTORY(math)
-ADD_SUBDIRECTORY(mpl)
-ADD_SUBDIRECTORY(preprocessor)
-ADD_SUBDIRECTORY(random)
-ADD_SUBDIRECTORY(signal)
-ADD_SUBDIRECTORY(variant)
+	target_link_libraries(
+		${FCPPT_EXAMPLE_NAME}
+		${fcppt_core_TARGET}
+		${FCPPT_DEFAULT_LINK_TARGET}
+		${ADDITIONAL_DEPS}
+	)
+endfunction()
+
+function(
+	add_fcppt_example
+	MAINNAME
+	ADDITIONAL_DEPS
+)
+	make_fcppt_example(
+		""
+		${MAINNAME}
+		"${ADDITIONAL_DEPS}"
+	)
+endfunction()
+
+add_fcppt_example(algorithm "")
+add_fcppt_example(alignment "")
+add_fcppt_example(alignment_new "")
+add_fcppt_example(alignment_simple "")
+add_fcppt_example(assert "")
+add_fcppt_example(assert_complete "")
+add_fcppt_example(backtrace "")
+add_fcppt_example(chrono "")
+add_fcppt_example(codecvt "")
+add_fcppt_example(container "")
+add_fcppt_example(cyclic_iterator "")
+add_fcppt_example(dynamic_cast "")
+add_fcppt_example(endianness "")
+add_fcppt_example(foreach_enumerator "")
+add_fcppt_example(function "")
+add_fcppt_example(homogenous_pair "")
+add_fcppt_example(io "")
+add_fcppt_example(log "")
+add_fcppt_example(make_array "")
+add_fcppt_example(make_container "")
+add_fcppt_example(math "")
+add_fcppt_example(minmax_pair "")
+add_fcppt_example(noncopyable "")
+add_fcppt_example(optional "")
+add_fcppt_example(optional_dynamic_cast "")
+add_fcppt_example(output_tm "")
+add_fcppt_example(safe_bool "")
+add_fcppt_example(scoped_ptr "")
+add_fcppt_example(shared_ptr "")
+add_fcppt_example(sleep "")
+add_fcppt_example(sn_cast "")
+add_fcppt_example(string_conversion "")
+add_fcppt_example(strongtypedef "")
+add_fcppt_example(time_parse "")
+add_fcppt_example(tr1 "")
+add_fcppt_example(truncation_check_cast "")
+add_fcppt_example(type_traits "")
+add_fcppt_example(unique_ptr "")
+add_fcppt_example(version "")
+add_fcppt_example(visibility "")
+add_fcppt_example(weak_ptr "")
+
+add_subdirectory(chrono)
+add_subdirectory(container)
+add_subdirectory(log)
+add_subdirectory(math)
+add_subdirectory(mpl)
+add_subdirectory(preprocessor)
+add_subdirectory(random)
+add_subdirectory(signal)
+add_subdirectory(thread)
+add_subdirectory(variant)

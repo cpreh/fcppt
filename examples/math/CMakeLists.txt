@@ -1,9 +1,19 @@
-MACRO (ADD_FCPPT_MATH_EXAMPLE name)
-	MAKE_FCPPT_EXAMPLE(math ${name})
-ENDMACRO ()
+function(
+	add_fcppt_math_example
+	MAINNAME
+	ADDITIONAL_DEPS
+)
+	make_fcppt_example(
+		math
+		${MAINNAME}
+		"${ADDITIONAL_DEPS}"
+	)
+endfunction()
 
-ADD_SUBDIRECTORY(vector)
+add_subdirectory(
+	vector
+)
 
-ADD_FCPPT_MATH_EXAMPLE(box)
-ADD_FCPPT_MATH_EXAMPLE(matrix)
-ADD_FCPPT_MATH_EXAMPLE(utility)
+add_fcppt_math_example(box "")
+add_fcppt_math_example(matrix "")
+add_fcppt_math_example(utility "")

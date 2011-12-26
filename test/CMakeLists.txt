@@ -1,127 +1,155 @@
-ADD_DEFINITIONS(${FCPPT_CONFIG_LINK_MACROS})
-
-MACRO(
-	ADD_FCPPT_TEST
-	PATHNAME
+add_definitions(
+	${FCPPT_CONFIG_LINK_MACROS}
 )
-	STRING(REGEX REPLACE "\\/" "_" TESTNAME ${PATHNAME})
 
-	SET(FCPPT_TEST_NAME test_${TESTNAME})
+function(
+	add_fcppt_test
+	PATHNAME
+	ADDITIONAL_DEPS
+)
+	string(
+		REPLACE
+		"/"
+		"_"
+		TESTNAME
+		${PATHNAME}
+	)
 
-	ADD_EXECUTABLE (${FCPPT_TEST_NAME} ${PATHNAME}.cpp)
+	set(
+		FCPPT_TEST_NAME
+		test_${TESTNAME}
+	)
 
-	IF(MSVC)
-		SET_PROPERTY(
-			TARGET ${FCPPT_TEST_NAME}
+	add_executable(
+		${FCPPT_TEST_NAME}
+		${PATHNAME}.cpp
+	)
+
+	if(
+		MSVC
+	)
+		set_property(
+			TARGET
+			${FCPPT_TEST_NAME}
 			PROPERTY COMPILE_FLAGS
 			"-DBOOST_TEST_NO_LIB -DBOOST_TEST_MODULE=${TESTNAME}"
 		)
-	ELSE()
-		SET_PROPERTY(
-			TARGET ${FCPPT_TEST_NAME}
+	else()
+		set_property(
+			TARGET
+			${FCPPT_TEST_NAME}
 			PROPERTY COMPILE_FLAGS
 			"-DBOOST_TEST_DYN_LINK -DBOOST_TEST_MODULE=${TESTNAME}"
 		)
-	ENDIF()
+	endif()
 
-	TARGET_LINK_LIBRARIES (
-		${FCPPT_TEST_NAME}
-		${FCPPT_DEFAULT_LINK_TARGET}
-		${FcpptThreads_LIBRARIES}
-		${Boost_UNIT_TEST_FRAMEWORK_LIBRARY}
+	fcppt_link_target(
+		fcppt_core
 	)
 
-	ADD_TEST(
+	target_link_libraries(
+		${FCPPT_TEST_NAME}
+		${FCPPT_DEFAULT_LINK_TARGET}
+		${fcppt_core_TARGET}
+		${Boost_UNIT_TEST_FRAMEWORK_LIBRARY}
+		${ADDITIONAL_DEPS}
+	)
+
+	add_test(
 		NAME
 		${FCPPT_TEST_NAME}
 		COMMAND
 		${FCPPT_TEST_NAME}
 	)
-ENDMACRO()
+endfunction()
 
-ADD_FCPPT_TEST(alignment/array)
-ADD_FCPPT_TEST(alignment/char)
-ADD_FCPPT_TEST(algorithm/levenshtein)
-ADD_FCPPT_TEST(algorithm/ptr_container_erase)
-ADD_FCPPT_TEST(algorithm/remove)
-ADD_FCPPT_TEST(algorithm/shift_compare)
-ADD_FCPPT_TEST(assert)
-ADD_FCPPT_TEST(assign/make_array)
-ADD_FCPPT_TEST(assign/make_container)
-ADD_FCPPT_TEST(chrono/duration/arithmetic)
-ADD_FCPPT_TEST(chrono/duration/convert)
-ADD_FCPPT_TEST(chrono/steady)
-ADD_FCPPT_TEST(chrono/asio/deadline_timer)
-ADD_FCPPT_TEST(codecvt)
-ADD_FCPPT_TEST(container/array)
-ADD_FCPPT_TEST(container/array_fusion)
-ADD_FCPPT_TEST(container/bitfield)
-ADD_FCPPT_TEST(container/grid)
-ADD_FCPPT_TEST(container/index_map)
-ADD_FCPPT_TEST(container/map)
-ADD_FCPPT_TEST(container/raw_vector)
-ADD_FCPPT_TEST(container/tree/copy)
-ADD_FCPPT_TEST(container/tree/equal)
-ADD_FCPPT_TEST(container/tree/pre_order)
-ADD_FCPPT_TEST(container/tree/print)
-ADD_FCPPT_TEST(container/tree/ptr_copy)
-ADD_FCPPT_TEST(container/tree/ptr_release)
-ADD_FCPPT_TEST(container/tree/swap)
-ADD_FCPPT_TEST(cyclic_iterator)
-ADD_FCPPT_TEST(endianness)
-ADD_FCPPT_TEST(extract_from_string)
-ADD_FCPPT_TEST(filesystem/remove_extension)
-ADD_FCPPT_TEST(function/has_addressof_overload)
-ADD_FCPPT_TEST(insert_to_string)
-ADD_FCPPT_TEST(io/stream_to_string)
-ADD_FCPPT_TEST(io/raw_container_source)
-ADD_FCPPT_TEST(math/ceil_div)
-ADD_FCPPT_TEST(math/circle)
-ADD_FCPPT_TEST(math/dim)
-ADD_FCPPT_TEST(math/binary_vectors)
-ADD_FCPPT_TEST(math/interpolation)
-ADD_FCPPT_TEST(math/is_power_of_2)
-ADD_FCPPT_TEST(math/vector)
-ADD_FCPPT_TEST(math/util)
-ADD_FCPPT_TEST(math/box/center)
-ADD_FCPPT_TEST(math/box/corner_points)
-ADD_FCPPT_TEST(math/box/extend)
-ADD_FCPPT_TEST(math/box/intersection)
-ADD_FCPPT_TEST(math/box/stretch)
-ADD_FCPPT_TEST(math/box/structure_cast)
-ADD_FCPPT_TEST(math/matrix/adjugate)
-ADD_FCPPT_TEST(math/matrix/delete_column_and_row)
-ADD_FCPPT_TEST(math/matrix/determinant)
-ADD_FCPPT_TEST(math/matrix/has_dim)
-ADD_FCPPT_TEST(math/matrix/inverse)
-ADD_FCPPT_TEST(math/matrix/is_matrix)
-ADD_FCPPT_TEST(math/matrix/multiply)
-ADD_FCPPT_TEST(math/matrix/operators)
-ADD_FCPPT_TEST(math/matrix/rotation_axis)
-ADD_FCPPT_TEST(math/matrix/rotation_x)
-ADD_FCPPT_TEST(math/matrix/scaling)
-ADD_FCPPT_TEST(math/matrix/translation)
-ADD_FCPPT_TEST(math/matrix/view)
-ADD_FCPPT_TEST(math/quaternion/all_quaternion)
-ADD_FCPPT_TEST(math/vector/unit)
-ADD_FCPPT_TEST(mpl/append)
-ADD_FCPPT_TEST(mpl/ceil_div)
-ADD_FCPPT_TEST(null_ptr)
-ADD_FCPPT_TEST(optional)
-ADD_FCPPT_TEST(ptr_container)
-ADD_FCPPT_TEST(ratio/multiply)
-ADD_FCPPT_TEST(ref)
-ADD_FCPPT_TEST(scoped_state_machine)
-ADD_FCPPT_TEST(shared_ptr/dynamic_pointer_cast)
-ADD_FCPPT_TEST(signal/simple)
-ADD_FCPPT_TEST(signal/unregister)
-ADD_FCPPT_TEST(strong_typedef)
-ADD_FCPPT_TEST(type_traits/is_iterator)
-ADD_FCPPT_TEST(type_traits/members)
-ADD_FCPPT_TEST(unique_ptr)
-ADD_FCPPT_TEST(variant/apply_nonconst)
-ADD_FCPPT_TEST(variant/apply_ternary)
-ADD_FCPPT_TEST(variant/assign)
-ADD_FCPPT_TEST(variant/equal)
-ADD_FCPPT_TEST(variant/get)
-ADD_FCPPT_TEST(variant/holds_type)
+fcppt_link_target(
+	fcppt_filesystem
+)
+
+add_fcppt_test(alignment/array "")
+add_fcppt_test(alignment/char "")
+add_fcppt_test(algorithm/levenshtein "")
+add_fcppt_test(algorithm/ptr_container_erase "")
+add_fcppt_test(algorithm/remove "")
+add_fcppt_test(algorithm/shift_compare "")
+add_fcppt_test(assert "")
+add_fcppt_test(assign/make_array "")
+add_fcppt_test(assign/make_container "")
+add_fcppt_test(chrono/duration/arithmetic "")
+add_fcppt_test(chrono/duration/convert "")
+add_fcppt_test(chrono/steady "")
+add_fcppt_test(chrono/asio/deadline_timer "${Boost_SYSTEM_LIBRARY}")
+add_fcppt_test(codecvt "")
+add_fcppt_test(container/array "")
+add_fcppt_test(container/array_fusion "")
+add_fcppt_test(container/bitfield "")
+add_fcppt_test(container/grid "")
+add_fcppt_test(container/index_map "")
+add_fcppt_test(container/map "")
+add_fcppt_test(container/raw_vector "")
+add_fcppt_test(container/tree/copy "")
+add_fcppt_test(container/tree/equal "")
+add_fcppt_test(container/tree/pre_order "")
+add_fcppt_test(container/tree/print "")
+add_fcppt_test(container/tree/ptr_copy "")
+add_fcppt_test(container/tree/ptr_release "")
+add_fcppt_test(container/tree/swap "")
+add_fcppt_test(cyclic_iterator "")
+add_fcppt_test(endianness "")
+add_fcppt_test(extract_from_string "")
+add_fcppt_test(filesystem/remove_extension "${fcppt_filesystem_TARGET}")
+add_fcppt_test(function/has_addressof_overload "")
+add_fcppt_test(insert_to_string "")
+add_fcppt_test(io/stream_to_string "")
+add_fcppt_test(io/raw_container_source "")
+add_fcppt_test(math/ceil_div "")
+add_fcppt_test(math/circle "")
+add_fcppt_test(math/dim "")
+add_fcppt_test(math/binary_vectors "")
+add_fcppt_test(math/interpolation "")
+add_fcppt_test(math/is_power_of_2 "")
+add_fcppt_test(math/vector "")
+add_fcppt_test(math/util "")
+add_fcppt_test(math/box/center "")
+add_fcppt_test(math/box/corner_points "")
+add_fcppt_test(math/box/extend "")
+add_fcppt_test(math/box/intersection "")
+add_fcppt_test(math/box/stretch "")
+add_fcppt_test(math/box/structure_cast "")
+add_fcppt_test(math/matrix/adjugate "")
+add_fcppt_test(math/matrix/delete_column_and_row "")
+add_fcppt_test(math/matrix/determinant "")
+add_fcppt_test(math/matrix/has_dim "")
+add_fcppt_test(math/matrix/inverse "")
+add_fcppt_test(math/matrix/is_matrix "")
+add_fcppt_test(math/matrix/multiply "")
+add_fcppt_test(math/matrix/operators "")
+add_fcppt_test(math/matrix/rotation_axis "")
+add_fcppt_test(math/matrix/rotation_x "")
+add_fcppt_test(math/matrix/scaling "")
+add_fcppt_test(math/matrix/translation "")
+add_fcppt_test(math/matrix/view "")
+add_fcppt_test(math/quaternion/all_quaternion "")
+add_fcppt_test(math/vector/unit "")
+add_fcppt_test(mpl/append "")
+add_fcppt_test(mpl/ceil_div "")
+add_fcppt_test(null_ptr "")
+add_fcppt_test(optional "")
+add_fcppt_test(ptr_container "")
+add_fcppt_test(ratio/multiply "")
+add_fcppt_test(ref "")
+add_fcppt_test(scoped_state_machine "")
+add_fcppt_test(shared_ptr/dynamic_pointer_cast "")
+add_fcppt_test(signal/simple "")
+add_fcppt_test(signal/unregister "")
+add_fcppt_test(strong_typedef "")
+add_fcppt_test(type_traits/is_iterator "")
+add_fcppt_test(type_traits/members "")
+add_fcppt_test(unique_ptr "")
+add_fcppt_test(variant/apply_nonconst "")
+add_fcppt_test(variant/apply_ternary "")
+add_fcppt_test(variant/assign "")
+add_fcppt_test(variant/equal "")
+add_fcppt_test(variant/get "")
+add_fcppt_test(variant/holds_type "")

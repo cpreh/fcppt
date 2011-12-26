@@ -12,6 +12,7 @@
 #include <boost/filesystem/convenience.hpp>
 #include <fcppt/config/external_end.hpp>
 
+
 namespace fcppt
 {
 namespace filesystem

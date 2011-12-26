@@ -15,7 +15,7 @@ namespace thread
 {
 
 /// The duration used for join
-typedef sleep_duration join_duration;
+typedef fcppt::thread::sleep_duration join_duration;
 
 }
 }

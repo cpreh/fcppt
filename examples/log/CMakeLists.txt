@@ -1,7 +1,15 @@
-MACRO (ADD_FCPPT_LOG_EXAMPLE name)
-	MAKE_FCPPT_EXAMPLE(log ${name})
-ENDMACRO ()
+function(
+	add_fcppt_log_example
+	MAINNAME
+	ADDITIONAL_DEPS
+)
+	make_fcppt_example(
+		log
+		${MAINNAME}
+		"${ADDITIONAL_DEPS}"
+	)
+endfunction()
 
-ADD_FCPPT_LOG_EXAMPLE(complex)
-ADD_FCPPT_LOG_EXAMPLE(context)
-ADD_FCPPT_LOG_EXAMPLE(helloworld)
+add_fcppt_log_example(complex "")
+add_fcppt_log_example(context "")
+add_fcppt_log_example(helloworld "")

@@ -1,7 +1,15 @@
-MACRO (ADD_FCPPT_PREPROCESSOR_EXAMPLE name)
-	MAKE_FCPPT_EXAMPLE(preprocessor ${name})
-ENDMACRO ()
+function(
+	add_fcppt_preprocessor_example
+	MAINNAME
+	ADDITIONAL_DEPS
+)
+	make_fcppt_example(
+		preprocessor
+		${MAINNAME}
+		"${ADDITIONAL_DEPS}"
+	)
+endfunction()
 
-ADD_FCPPT_PREPROCESSOR_EXAMPLE(message)
-ADD_FCPPT_PREPROCESSOR_EXAMPLE(printing)
-ADD_FCPPT_PREPROCESSOR_EXAMPLE(warning)
+add_fcppt_preprocessor_example(message "")
+add_fcppt_preprocessor_example(printing "")
+add_fcppt_preprocessor_example(warning "")

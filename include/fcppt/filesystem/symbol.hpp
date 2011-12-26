@@ -4,17 +4,17 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_SYMBOL_HPP_INCLUDED
-#define FCPPT_SYMBOL_HPP_INCLUDED
+#ifndef FCPPT_FILESYSTEM_SYMBOL_HPP_INCLUDED
+#define FCPPT_FILESYSTEM_SYMBOL_HPP_INCLUDED
 
 #if defined(FCPPT_STATIC_LINK)
-#	define FCPPT_SYMBOL
-#elif defined(fcppt_core_EXPORTS)
+#	define FCPPT_FILESYSTEM_SYMBOL
+#elif defined(fcppt_filesystem_EXPORTS)
 #	include <fcppt/export_symbol.hpp>
-#	define FCPPT_SYMBOL FCPPT_EXPORT_SYMBOL
+#	define FCPPT_FILESYSTEM_SYMBOL FCPPT_EXPORT_SYMBOL
 #else
 #	include <fcppt/import_symbol.hpp>
-#	define FCPPT_SYMBOL FCPPT_IMPORT_SYMBOL
+#	define FCPPT_FILESYSTEM_SYMBOL FCPPT_IMPORT_SYMBOL
 #endif
 
 #endif

@@ -4,7 +4,9 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/chrono/chrono.hpp>
+#include <fcppt/chrono/seconds.hpp>
+#include <fcppt/chrono/steady_clock.hpp>
+#include <fcppt/chrono/time_point.hpp>
 #include <fcppt/time/sleep_any.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/test/unit_test.hpp>

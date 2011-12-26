@@ -1,5 +1,13 @@
-MACRO (ADD_FCPPT_MPL_EXAMPLE name)
-	MAKE_FCPPT_EXAMPLE(mpl ${name})
-ENDMACRO ()
+function(
+	add_fcppt_mpl_example
+	MAINNAME
+	ADDITIONAL_DEPS
+)
+	make_fcppt_example(
+		mpl
+		${MAINNAME}
+		"${ADDITIONAL_DEPS}"
+	)
+endfunction()
 
-ADD_FCPPT_MPL_EXAMPLE(for_each)
+add_fcppt_mpl_example(for_each "")

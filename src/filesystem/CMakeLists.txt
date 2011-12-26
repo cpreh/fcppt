@@ -1,0 +1,74 @@
+set(
+	FCPPT_FILESYSTEM_FILES
+	include/fcppt/filesystem/config.hpp
+	include/fcppt/filesystem/create_directories_recursive.hpp
+	include/fcppt/filesystem/create_directories_recursive_exn.hpp
+	include/fcppt/filesystem/create_directory.hpp
+	include/fcppt/filesystem/create_directory_exn.hpp
+	include/fcppt/filesystem/create_directory_failed.hpp
+	include/fcppt/filesystem/current_path.hpp
+	include/fcppt/filesystem/directory_iterator.hpp
+	include/fcppt/filesystem/exception.hpp
+	include/fcppt/filesystem/exists.hpp
+	include/fcppt/filesystem/extension.hpp
+	include/fcppt/filesystem/extension_without_dot.hpp
+	include/fcppt/filesystem/file_size.hpp
+	include/fcppt/filesystem/file_to_string.hpp
+	include/fcppt/filesystem/filesystem.hpp
+	include/fcppt/filesystem/first_file.hpp
+	include/fcppt/filesystem/impl/create_directory_failed.hpp
+	include/fcppt/filesystem/impl/exception.hpp
+	include/fcppt/filesystem/is_directory.hpp
+	include/fcppt/filesystem/is_executable.hpp
+	include/fcppt/filesystem/is_regular.hpp
+	include/fcppt/filesystem/next_file.hpp
+	include/fcppt/filesystem/path.hpp
+	include/fcppt/filesystem/path_to_string.hpp
+	include/fcppt/filesystem/readlink.hpp
+	include/fcppt/filesystem/recursive_directory_iterator.hpp
+	include/fcppt/filesystem/remove.hpp
+	include/fcppt/filesystem/remove_extension.hpp
+	include/fcppt/filesystem/remove_filename.hpp
+	include/fcppt/filesystem/replace_extension.hpp
+	include/fcppt/filesystem/skip_directories.hpp
+	include/fcppt/filesystem/stem.hpp
+	src/filesystem/create_directories_recursive.cpp
+	src/filesystem/create_directories_recursive_exn.cpp
+	src/filesystem/create_directory.cpp
+	src/filesystem/create_directory_exn.cpp
+	src/filesystem/current_path.cpp
+	src/filesystem/exists.cpp
+	src/filesystem/extension.cpp
+	src/filesystem/extension_without_dot.cpp
+	src/filesystem/file_size.cpp
+	src/filesystem/file_to_string.cpp
+	src/filesystem/first_file.cpp
+	src/filesystem/is_directory.cpp
+	src/filesystem/is_executable.cpp
+	src/filesystem/is_regular.cpp
+	src/filesystem/next_file.cpp
+	src/filesystem/path_to_string.cpp
+	src/filesystem/readlink.cpp
+	src/filesystem/remove.cpp
+	src/filesystem/remove_extension.cpp
+	src/filesystem/remove_filename.cpp
+	src/filesystem/replace_extension.cpp
+	src/filesystem/skip_directories.cpp
+	src/filesystem/stem.cpp
+)
+
+add_definitions(
+	-D BOOST_FILESYSTEM_NO_DEPRECATED
+)
+
+make_fcppt_library(
+	fcppt_filesystem
+	"${FCPPT_FILESYSTEM_FILES}"
+	"${Boost_FILESYSTEM_LIBRARY};${Boost_SYSTEM_LIBRARY}"
+	"fcppt_core"
+	""
+)
+
+FCPPT_UTILS_ADD_SOURCE_GROUPS(
+	"${FCPPT_FILESYSTEM_FILES}"
+)

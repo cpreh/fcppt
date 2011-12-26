@@ -1,6 +1,14 @@
-MACRO (ADD_FCPPT_RANDOM_EXARANDOME name)
-	MAKE_FCPPT_EXAMPLE(random ${name})
-ENDMACRO ()
+function(
+	add_fcppt_random_example
+	MAINNAME
+	ADDITIONAL_DEPS
+)
+	make_fcppt_example(
+		random
+		${MAINNAME}
+		"${ADDITIONAL_DEPS}"
+	)
+endfunction()
 
-ADD_FCPPT_RANDOM_EXARANDOME(actor)
-ADD_FCPPT_RANDOM_EXARANDOME(uniform)
+add_fcppt_random_example(actor "")
+add_fcppt_random_example(uniform "")

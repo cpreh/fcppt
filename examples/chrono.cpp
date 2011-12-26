@@ -4,7 +4,13 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/chrono/chrono.hpp>
+#include <fcppt/chrono/days.hpp>
+#include <fcppt/chrono/duration_cast.hpp>
+#include <fcppt/chrono/high_resolution_clock.hpp>
+#include <fcppt/chrono/seconds.hpp>
+#include <fcppt/chrono/system_clock.hpp>
+#include <fcppt/chrono/time_point.hpp>
+#include <fcppt/chrono/time_point_cast.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <cmath>
 #include <iostream>

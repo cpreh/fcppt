@@ -1,27 +1,22 @@
 # - Try to find the fcppt library
 #
-# This module defines the following variables
+# This module defines the following general variables
 #
-#	FCPPT_FOUND        - True when fcppt was found
-#	Fcppt_INCLUDE_DIRS - All includes required for fcppt to work
-#	Fcppt_LIBRARIES    - All libraries required for fcppt to work
-#	Fcppt_DEFINITIONS  - Additional compiler flags required
+#	FCPPT_FOUND                - True when fcppt was found
+#	Fcppt_INCLUDE_DIRS         - All includes required for fcppt to work
+#	Fcppt_DEFINITIONS          - Additional compiler flags required
+#	Fcppt_core_LIBRARIES       - All libraries required for fcppt_core to work
+#	Fcppt_filesystem_LIBRARIES - All libraries required for fcppt_filesystem to work
+#	Fcppt_thread_LIBRARIES     - All libraries required for fcppt_thread to work
 #
 # This modules accepts the following variables
 #
-#	Fcppt_WANT_DYN_LINK - Use dynamic linking with VC++.
-#	                      This will not be useful for any other system.
-#	FCPPT_INCLUDEDIR    - Hint where the fcppt includes might be.
-#	FCPPT_LIBRARYDIR    - Hint where the fcppt libraries might be.
+#	Fcppt_USE_STATIC_LIBS  - Use static linking.
+#	FCPPT_INCLUDEDIR       - Hint where the fcppt includes might be.
+#	FCPPT_LIBRARYDIR       - Hint where the fcppt libraries might be.
 
 include(
 	FindPkgConfig
-)
-
-pkg_check_modules(
-	PC_FCPPT
-	QUIET
-	fcppt
 )
 
 if(
@@ -42,11 +37,6 @@ if(
 	)
 endif()
 
-set(
-	Fcppt_DEFINITIONS
-	${PC_FCPPT_CFLAGS}
-)
-
 find_package(
 	Boost
 	1.44.0
@@ -59,59 +49,72 @@ unset(
 	FCPPT_FIND_OPTIONS
 )
 
-find_package(
-	FcpptThreads
-)
-
 find_path(
 	Fcppt_INCLUDE_DIR
 	NAMES fcppt/version.hpp
-	HINTS ${FCPPT_INCLUDEDIR} ${PC_FCPPT_INCLUDE_DIRS}
+	HINTS ${FCPPT_INCLUDEDIR}
 )
 
 macro(
-	FIND_FCPPT_LIBRARY name
+	find_fcppt_library
+	LIBNAME
 )
 	find_library(
-		Fcppt_LIBRARY
-		NAMES ${name}
-		HINTS ${FCPPT_LIBRARYDIR} ${PC_FCPPT_LIBRARY_DIRS}
+		Fcppt_${LIBNAME}_LIBRARY
+		NAMES fcppt_${LIBNAME}
+		HINTS ${FCPPT_LIBRARYDIR}
 	)
 endmacro()
 
-if(
-	MSVC
+set(
+	FCPPT_COMPONENTS
+	"core;filesystem;thread"
+)
+
+foreach(
+	COMPONENT
+	${FCPPT_COMPONENTS}
 )
 	if(
-		Fcppt_WANT_DYN_LINK
+		Fcppt_USE_STATIC_LIBS
 	)
-		FIND_FCPPT_LIBRARY(
-			fcppt
-		)
-
-		set(
-			Fcppt_DEFINITIONS
-			"${Fcppt_DEFINITIONS} /D FCPPT_DYN_LINK"
+		find_fcppt_library(
+			${COMPONENT}_static
 		)
 	else()
-		FIND_FCPPT_LIBRARY(
-			fcppt_static
+		find_fcppt_library(
+			${COMPONENT}
 		)
+
 	endif()
-else()
-	FIND_FCPPT_LIBRARY(
-		fcppt
+endforeach()
+
+unset(
+	FCPPT_COMPONENTS
+)
+
+if(
+	NOT Fcppt_USE_STATIC_LIBS
+)
+	set(
+		Fcppt_DEFINITIONS
+		"-D FCPPT_STATIC_LINK"
 	)
 endif()
 
 set(
-	Fcppt_DEFINITIONS
-	"${Fcppt_DEFINITIONS} ${FcpptThreads_DEFINITIONS}"
+	Fcppt_core_LIBRARIES
+	"${Fcppt_core_LIBRARY}"
 )
 
 set(
-	Fcppt_LIBRARIES
-	"${Boost_LIBRARIES};${Fcppt_LIBRARY};${FcpptThreads_LIBRARIES}"
+	Fcppt_filesystem_LIBRARIES
+	"${Boost_FILESYSTEM_LIBRARY};${Boost_SYSTEM_LIBRARY};${Fcppt_core_LIBRARIES};${Fcppt_filesystem_LIBRARY}"
+)
+
+set(
+	Fcppt_thread_LIBRARIES
+	"${Boost_THREAD_LIBRARY};${FcpptThreads_LIBRARIES};${Fcppt_thread_LIBRARY}"
 )
 
 set(
@@ -126,11 +129,15 @@ include(
 find_package_handle_standard_args(
 	Fcppt
 	DEFAULT_MSG
-	Fcppt_LIBRARY
+	Fcppt_core_LIBRARY
+	Fcppt_filesystem_LIBRARY
+	Fcppt_thread_LIBRARY
 	Fcppt_INCLUDE_DIR
 )
 
 mark_as_advanced(
-	Fcppt_LIBRARY
+	Fcppt_core_LIBRARY
+	Fcppt_filesystem_LIBRARY
+	Fcppt_thread_LIBRARY
 	Fcppt_INCLUDE_DIR
 )

@@ -15,7 +15,7 @@ namespace thread
 {
 
 /// The duration used for sleep
-typedef time::sleep_duration sleep_duration;
+typedef fcppt::time::sleep_duration sleep_duration;
 
 }
 }

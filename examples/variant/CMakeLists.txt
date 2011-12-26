@@ -1,7 +1,15 @@
-MACRO (ADD_FCPPT_VARIANT_EXAMPLE name)
-	MAKE_FCPPT_EXAMPLE(variant ${name})
-ENDMACRO ()
+function(
+	add_fcppt_variant_example
+	MAINNAME
+	ADDITIONAL_DEPS
+)
+	make_fcppt_example(
+		variant
+		${MAINNAME}
+		"${ADDITIONAL_DEPS}"
+	)
+endfunction()
 
-ADD_FCPPT_VARIANT_EXAMPLE(binary_visitation)
-ADD_FCPPT_VARIANT_EXAMPLE(nonconst_visitation)
-ADD_FCPPT_VARIANT_EXAMPLE(recursive)
+add_fcppt_variant_example(binary_visitation "")
+add_fcppt_variant_example(nonconst_visitation "")
+add_fcppt_variant_example(recursive "")

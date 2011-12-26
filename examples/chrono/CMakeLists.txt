@@ -1,9 +1,17 @@
-MACRO (ADD_FCPPT_CHRONO_EXAMPLE name)
-	MAKE_FCPPT_EXAMPLE(chrono ${name})
-ENDMACRO ()
+function(
+	add_fcppt_chrono_example
+	MAINNAME
+	ADDITIONAL_DEPS
+)
+	make_fcppt_example(
+		chrono
+		${MAINNAME}
+		"${ADDITIONAL_DEPS}"
+	)
+endfunction()
 
-ADD_FCPPT_CHRONO_EXAMPLE(asio)
-ADD_FCPPT_CHRONO_EXAMPLE(duration)
-ADD_FCPPT_CHRONO_EXAMPLE(steady_clock)
-ADD_FCPPT_CHRONO_EXAMPLE(system_clock)
-ADD_FCPPT_CHRONO_EXAMPLE(time_point)
+add_fcppt_chrono_example(asio "${Boost_SYSTEM_LIBRARY}")
+add_fcppt_chrono_example(duration "")
+add_fcppt_chrono_example(steady_clock "")
+add_fcppt_chrono_example(system_clock "")
+add_fcppt_chrono_example(time_point "")

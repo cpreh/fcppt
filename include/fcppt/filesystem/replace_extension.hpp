@@ -8,8 +8,8 @@
 #define FCPPT_FILESYSTEM_REPLACE_EXTENSION_HPP_INCLUDED
 
 #include <fcppt/string.hpp>
-#include <fcppt/symbol.hpp>
 #include <fcppt/filesystem/path.hpp>
+#include <fcppt/filesystem/symbol.hpp>
 
 
 namespace fcppt
@@ -17,7 +17,7 @@ namespace fcppt
 namespace filesystem
 {
 
-FCPPT_SYMBOL
+FCPPT_FILESYSTEM_SYMBOL
 filesystem::path const
 replace_extension(
 	filesystem::path const &,

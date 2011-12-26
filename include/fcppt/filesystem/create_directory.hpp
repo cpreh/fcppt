@@ -7,15 +7,16 @@
 #ifndef FCPPT_FILESYSTEM_CREATE_DIRECTORY_HPP_INCLUDED
 #define FCPPT_FILESYSTEM_CREATE_DIRECTORY_HPP_INCLUDED
 
-#include <fcppt/symbol.hpp>
 #include <fcppt/filesystem/path.hpp>
+#include <fcppt/filesystem/symbol.hpp>
+
 
 namespace fcppt
 {
 namespace filesystem
 {
 
-FCPPT_SYMBOL
+FCPPT_FILESYSTEM_SYMBOL
 bool
 create_directory(
 	filesystem::path const &

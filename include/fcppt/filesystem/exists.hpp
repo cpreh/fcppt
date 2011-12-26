@@ -7,8 +7,8 @@
 #ifndef FCPPT_FILESYSTEM_EXISTS_HPP_INCLUDED
 #define FCPPT_FILESYSTEM_EXISTS_HPP_INCLUDED
 
-#include <fcppt/symbol.hpp>
 #include <fcppt/filesystem/path.hpp>
+#include <fcppt/filesystem/symbol.hpp>
 
 
 namespace fcppt
@@ -16,7 +16,7 @@ namespace fcppt
 namespace filesystem
 {
 
-FCPPT_SYMBOL
+FCPPT_FILESYSTEM_SYMBOL
 bool
 exists(
 	filesystem::path const &

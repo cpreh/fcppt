@@ -1,8 +1,16 @@
-MACRO (ADD_FCPPT_MATH_VECTOR_EXAMPLE name)
-	MAKE_FCPPT_EXAMPLE(mathvector ${name})
-ENDMACRO ()
+function(
+	add_fcppt_math_vector_example
+	MAINNAME
+	ADDITIONAL_DEPS
+)
+	make_fcppt_example(
+		mathvector
+		${MAINNAME}
+		"${ADDITIONAL_DEPS}"
+	)
+endfunction()
 
-ADD_FCPPT_MATH_VECTOR_EXAMPLE(access)
-ADD_FCPPT_MATH_VECTOR_EXAMPLE(arithmetic)
-ADD_FCPPT_MATH_VECTOR_EXAMPLE(basic)
-ADD_FCPPT_MATH_VECTOR_EXAMPLE(convert)
+add_fcppt_math_vector_example(access "")
+add_fcppt_math_vector_example(arithmetic "")
+add_fcppt_math_vector_example(basic "")
+add_fcppt_math_vector_example(convert "")

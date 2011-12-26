@@ -7,8 +7,8 @@
 #ifndef FCPPT_THREAD_SLEEP_HPP_INCLUDED
 #define FCPPT_THREAD_SLEEP_HPP_INCLUDED
 
-#include <fcppt/symbol.hpp>
 #include <fcppt/thread/sleep_duration.hpp>
+#include <fcppt/thread/symbol.hpp>
 
 
 namespace fcppt
@@ -22,10 +22,10 @@ namespace thread
  * It is important to let threads sleep with this function.
  * Equivalent to boost::thread::sleep
 */
-FCPPT_SYMBOL
+FCPPT_THREAD_SYMBOL
 void
 sleep(
-	sleep_duration const &
+	fcppt::thread::sleep_duration const &
 );
 
 }

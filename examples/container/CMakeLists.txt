@@ -1,13 +1,21 @@
-MACRO (ADD_FCPPT_CONTAINER_EXAMPLE name)
-	MAKE_FCPPT_EXAMPLE(container ${name})
-ENDMACRO ()
+function(
+	add_fcppt_container_example
+	MAINNAME
+	ADDITIONAL_DEPS
+)
+	make_fcppt_example(
+		container
+		${MAINNAME}
+		"${ADDITIONAL_DEPS}"
+	)
+endfunction()
 
-ADD_FCPPT_CONTAINER_EXAMPLE(array)
-ADD_FCPPT_CONTAINER_EXAMPLE(bitfield)
-ADD_FCPPT_CONTAINER_EXAMPLE(grid)
-ADD_FCPPT_CONTAINER_EXAMPLE(grid_iteration)
-ADD_FCPPT_CONTAINER_EXAMPLE(ptr)
-ADD_FCPPT_CONTAINER_EXAMPLE(tree_ptr)
-ADD_FCPPT_CONTAINER_EXAMPLE(tree_simple)
-ADD_FCPPT_CONTAINER_EXAMPLE(tree_traversal)
-ADD_FCPPT_CONTAINER_EXAMPLE(raw_vector)
+add_fcppt_container_example(array "")
+add_fcppt_container_example(bitfield "")
+add_fcppt_container_example(grid "")
+add_fcppt_container_example(grid_iteration "")
+add_fcppt_container_example(ptr "")
+add_fcppt_container_example(tree_ptr "")
+add_fcppt_container_example(tree_simple "")
+add_fcppt_container_example(tree_traversal "")
+add_fcppt_container_example(raw_vector "")

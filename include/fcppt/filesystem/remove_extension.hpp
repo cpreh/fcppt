@@ -7,8 +7,8 @@
 #ifndef FCPPT_FILESYSTEM_REMOVE_EXTENSION_HPP_INCLUDED
 #define FCPPT_FILESYSTEM_REMOVE_EXTENSION_HPP_INCLUDED
 
-#include <fcppt/symbol.hpp>
 #include <fcppt/filesystem/path.hpp>
+#include <fcppt/filesystem/symbol.hpp>
 
 
 namespace fcppt
@@ -17,7 +17,7 @@ namespace filesystem
 {
 
 /// Removes the complete extension including the dot, if the path has any
-FCPPT_SYMBOL
+FCPPT_FILESYSTEM_SYMBOL
 filesystem::path const
 remove_extension(
 	filesystem::path const &

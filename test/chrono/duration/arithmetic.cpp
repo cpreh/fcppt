@@ -4,7 +4,7 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/chrono/chrono.hpp>
+#include <fcppt/chrono/duration.hpp>
 #include <fcppt/ratio/milli.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/test/unit_test.hpp>

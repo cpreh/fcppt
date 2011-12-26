@@ -4,7 +4,10 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/chrono/chrono.hpp>
+#include <fcppt/chrono/duration.hpp>
+#include <fcppt/chrono/duration_cast.hpp>
+#include <fcppt/chrono/nanoseconds.hpp>
+#include <fcppt/chrono/seconds.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/test/unit_test.hpp>
 #include <fcppt/config/external_end.hpp>
