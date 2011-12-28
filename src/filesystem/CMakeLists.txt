@@ -32,6 +32,7 @@ set(
 	include/fcppt/filesystem/replace_extension.hpp
 	include/fcppt/filesystem/skip_directories.hpp
 	include/fcppt/filesystem/stem.hpp
+	include/fcppt/filesystem/symbol.hpp
 	src/filesystem/create_directories_recursive.cpp
 	src/filesystem/create_directories_recursive_exn.cpp
 	src/filesystem/create_directory.cpp
@@ -67,8 +68,4 @@ make_fcppt_library(
 	"${Boost_FILESYSTEM_LIBRARY};${Boost_SYSTEM_LIBRARY}"
 	"fcppt_core"
 	""
-)
-
-FCPPT_UTILS_ADD_SOURCE_GROUPS(
-	"${FCPPT_FILESYSTEM_FILES}"
 )

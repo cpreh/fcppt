@@ -14,7 +14,6 @@
 #include <fcppt/config/external_end.hpp>
 
 
-FCPPT_SYMBOL
 fcppt::io::ostream &
 fcppt::time::output_tm(
 	io::ostream &_stream,

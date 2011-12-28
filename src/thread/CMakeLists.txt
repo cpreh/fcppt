@@ -8,6 +8,7 @@ set(
 	include/fcppt/thread/object.hpp
 	include/fcppt/thread/sleep.hpp
 	include/fcppt/thread/sleep_duration.hpp
+	include/fcppt/thread/symbol.hpp
 	include/fcppt/thread/task.hpp
 	include/fcppt/thread/thread.hpp
 	include/fcppt/thread/yield.hpp
@@ -27,8 +28,4 @@ make_fcppt_library(
 	"${Boost_THREAD_LIBRARY}"
 	""
 	"${FcpptThreads_LIBRARIES}"
-)
-
-FCPPT_UTILS_ADD_SOURCE_GROUPS(
-	"${FCPPT_THREAD_FILES}"
 )

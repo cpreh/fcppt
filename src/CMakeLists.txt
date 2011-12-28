@@ -967,7 +967,3 @@ make_fcppt_library(
 	""
 	""
 )
-
-FCPPT_UTILS_ADD_SOURCE_GROUPS(
-	"${FCPPT_FILES}"
-)

@@ -378,20 +378,15 @@ function(
 	FCPPT_DEPS
 	OTHER_DEPS
 )
-	foreach(
-		FILE_ENTRY
-		${CUR_FILES}
+	FCPPT_UTILS_APPEND_SOURCE_DIR_AND_MAKE_GROUPS(
+		"${CUR_FILES}"
+		FCPPT_${TARGETNAME}_FILES
 	)
-		set(
-			ABSOLUTE_FILES
-			"${ABSOLUTE_FILES};${CMAKE_SOURCE_DIR}/${FILE_ENTRY}"
-		)
-	endforeach()
-
+	
 	add_library(
 		${TARGETNAME}
 		${VARIANT}
-		${ABSOLUTE_FILES}
+		${FCPPT_${TARGETNAME}_FILES}
 	)
 
 	set_target_properties(
