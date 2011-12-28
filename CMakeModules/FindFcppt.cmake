@@ -94,7 +94,7 @@ unset(
 )
 
 if(
-	NOT Fcppt_USE_STATIC_LIBS
+	Fcppt_USE_STATIC_LIBS
 )
 	set(
 		Fcppt_DEFINITIONS
