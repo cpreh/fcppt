@@ -57,10 +57,11 @@ find_path(
 
 macro(
 	find_fcppt_library
+	VARNAME
 	LIBNAME
 )
 	find_library(
-		Fcppt_${LIBNAME}_LIBRARY
+		Fcppt_${VARNAME}_LIBRARY
 		NAMES fcppt_${LIBNAME}
 		HINTS ${FCPPT_LIBRARYDIR}
 	)
@@ -79,10 +80,12 @@ foreach(
 		Fcppt_USE_STATIC_LIBS
 	)
 		find_fcppt_library(
+			${COMPONENT}
 			${COMPONENT}_static
 		)
 	else()
 		find_fcppt_library(
+			${COMPONENT}
 			${COMPONENT}
 		)
 
