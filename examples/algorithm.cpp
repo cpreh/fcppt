@@ -8,14 +8,19 @@
 #include <fcppt/algorithm/append.hpp>
 #include <fcppt/algorithm/contains.hpp>
 #include <fcppt/algorithm/copy_n.hpp>
+#include <fcppt/algorithm/copy_if.hpp>
 #include <fcppt/algorithm/find_exn.hpp>
 #include <fcppt/algorithm/join_strings.hpp>
 #include <fcppt/algorithm/ptr_container_erase.hpp>
 #include <fcppt/container/raw_vector_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/ptr_container/ptr_vector.hpp>
+#include <boost/spirit/home/phoenix/bind.hpp>
+#include <boost/spirit/home/phoenix/core.hpp>
+#include <boost/spirit/home/phoenix/operator.hpp>
 #include <iostream>
 #include <ostream>
+#include <iterator>
 #include <string>
 #include <vector>
 #include <fcppt/config/external_end.hpp>
@@ -66,8 +71,8 @@ int main()
 
 	string_vector strings;
 	strings.push_back("foo");
-	strings.push_back("bar");
-	strings.push_back("baz");
+	strings.push_back("ba");
+	strings.push_back("bu");
 
 	// join_strings, outputs "foo|bar|baz"
 	std::cout << fcppt::algorithm::join_strings(strings,"|") << "\n";
@@ -86,5 +91,16 @@ int main()
 	fcppt::algorithm::ptr_container_erase(
 		ptrs,
 		ptr);
+
+	string_vector new_strings;
+
+	fcppt::algorithm::copy_if(
+		strings.begin(),
+		strings.end(),
+		std::back_inserter<string_vector>(
+			new_strings),
+		boost::phoenix::bind(
+			&std::string::size,
+			boost::phoenix::arg_names::arg1) == 2u);
 }
 //]
