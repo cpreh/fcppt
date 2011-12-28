@@ -15,7 +15,7 @@ update_cmake_file \
 	src/CMakeLists.txt \
 	FCPPT_CORE_FILES \
 	-n \
-	include \
+	include/fcppt \
 	-r \
 	include/fcppt/algorithm \
 	include/fcppt/alignment \

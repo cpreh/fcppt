@@ -97,6 +97,15 @@ if(
 	)
 endif()
 
+if(
+	FCPPT_DEFAULT_LINK_STATIC
+)
+	set(
+		FCPPT_CONFIG_LINK_MACROS
+		"-D FCPPT_STATIC_LINK"
+	)
+endif()
+
 macro(
 	fcppt_link_target
 	LIBNAME
@@ -115,15 +124,6 @@ macro(
 		)
 	endif()
 endmacro()
-
-if(
-	FCPPT_DEFAULT_LINK_STATIC
-)
-	set(
-		FCPPT_CONFIG_LINK_MACROS
-		"-D FCPPT_STATIC_LIBS"
-	)
-endif()
 
 if(
 	ENABLE_NARROW_STRING
@@ -404,6 +404,13 @@ function(
 			PROPERTIES
 			SOVERSION
 			${FCPPT_SHARED_VERSION}
+		)
+	else()
+		set_target_properties(
+			${TARGETNAME}
+			PROPERTIES
+			COMPILE_DEFINITIONS
+			"FCPPT_STATIC_LINK"
 		)
 	endif()
 
