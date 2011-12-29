@@ -112,12 +112,12 @@ set(
 
 set(
 	Fcppt_filesystem_LIBRARIES
-	"${Boost_FILESYSTEM_LIBRARY};${Boost_SYSTEM_LIBRARY};${Fcppt_core_LIBRARIES};${Fcppt_filesystem_LIBRARY}"
+	"${Fcppt_filesystem_LIBRARY};${Fcppt_core_LIBRARIES};${Boost_FILESYSTEM_LIBRARY};${Boost_SYSTEM_LIBRARY}"
 )
 
 set(
 	Fcppt_thread_LIBRARIES
-	"${Boost_THREAD_LIBRARY};${FcpptThreads_LIBRARIES};${Fcppt_thread_LIBRARY}"
+	"${FcpptThreads_LIBRARIES};${Fcppt_thread_LIBRARY};${Boost_THREAD_LIBRARY}"
 )
 
 set(
