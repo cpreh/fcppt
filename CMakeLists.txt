@@ -40,26 +40,22 @@ include(CheckCXXSourceRuns)
 include(CheckIncludeFile)
 include(FindPkgConfig)
 
-if(MSVC)
+if(WIN32)
 	set(ENABLE_NARROW_STRING_DEFAULT OFF)
-	set(ENABLE_SHARED_DEFAULT OFF)
-	set(ENABLE_STATIC_DEFAULT ON)
 else()
 	set(ENABLE_NARROW_STRING_DEFAULT ON)
-	set(ENABLE_SHARED_DEFAULT ON)
-	set(ENABLE_STATIC_DEFAULT OFF)
 endif()
 
 option(
 	ENABLE_SHARED
-	"Build fcppt as a shared library"
-	${ENABLE_SHARED_DEFAULT}
+	"Build fcppt as shared libraries"
+	TRUE
 )
 
 option(
 	ENABLE_STATIC
-	"Build fcppt as a static library"
-	${ENABLE_STATIC_DEFAULT}
+	"Build fcppt as static libraries"
+	FALSE
 )
 
 option(
