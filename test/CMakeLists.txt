@@ -26,7 +26,7 @@ function(
 	)
 
 	if(
-		MSVC
+		Boost_USE_STATIC_LIBS
 	)
 		set_property(
 			TARGET
