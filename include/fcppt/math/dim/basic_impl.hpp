@@ -130,7 +130,7 @@ FCPPT_MATH_DETAIL_MAKE_VARIADIC_CONSTRUCTOR(
 )
 
 // Doxygen says: warning: no uniquely matching class member found for ...
-/// \cond FCPPT_DOXYGEN_DEBUG 
+/// \cond FCPPT_DOXYGEN_DEBUG
 template<
 	typename T,
 	typename N,

@@ -15,8 +15,8 @@ namespace fcppt
 namespace container
 {
 
-/** 
- * FIXME 
+/**
+ * FIXME
  * \ingroup fcpptcontainer
  */
 template<
@@ -35,8 +35,8 @@ data_end(
 		);
 }
 
-/** 
- * FIXME 
+/**
+ * FIXME
  * \ingroup fcpptcontainer
  */
 template<

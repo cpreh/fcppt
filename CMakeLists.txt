@@ -378,7 +378,7 @@ function(
 		"${CUR_FILES}"
 		FCPPT_${TARGETNAME}_FILES
 	)
-	
+
 	add_library(
 		${TARGETNAME}
 		${VARIANT}

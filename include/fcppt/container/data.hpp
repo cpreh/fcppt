@@ -15,8 +15,8 @@ namespace fcppt
 namespace container
 {
 
-/** 
- * FIXME 
+/**
+ * FIXME
  * \ingroup fcpptcontainer
  */
 template<

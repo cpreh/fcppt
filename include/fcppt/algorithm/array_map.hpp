@@ -15,7 +15,7 @@ namespace fcppt
 {
 namespace algorithm
 {
-/** 
+/**
  * \brief Applies a functor to an array and returns a new array containing the results.
  * \ingroup fcpptalgorithm
  * \tparam TargetArray Must be default-constructible

@@ -17,7 +17,7 @@
 #error "Don't know how to align types!"
 #endif
 
-/** 
+/**
  * \brief Forces the specified alignment on a declaration in bytes
  * \ingroup fcpptalignment
  * */
