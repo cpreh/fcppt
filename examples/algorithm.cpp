@@ -1,4 +1,4 @@
-//          Copyright Carl Philipp Reh 2009 - 2011.
+//          Copyright Carl Philipp Reh 2009 - 2012.
 // Distributed under the Boost Software License, Version 1.0.
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
@@ -7,8 +7,8 @@
 //[algorithm
 #include <fcppt/algorithm/append.hpp>
 #include <fcppt/algorithm/contains.hpp>
-#include <fcppt/algorithm/copy_n.hpp>
 #include <fcppt/algorithm/copy_if.hpp>
+#include <fcppt/algorithm/copy_n.hpp>
 #include <fcppt/algorithm/find_exn.hpp>
 #include <fcppt/algorithm/join_strings.hpp>
 #include <fcppt/algorithm/ptr_container_erase.hpp>
@@ -19,8 +19,8 @@
 #include <boost/spirit/home/phoenix/core.hpp>
 #include <boost/spirit/home/phoenix/operator.hpp>
 #include <iostream>
-#include <ostream>
 #include <iterator>
+#include <ostream>
 #include <string>
 #include <vector>
 #include <fcppt/config/external_end.hpp>

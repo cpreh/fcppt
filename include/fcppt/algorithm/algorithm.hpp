@@ -1,4 +1,4 @@
-//          Copyright Carl Philipp Reh 2009 - 2011.
+//          Copyright Carl Philipp Reh 2009 - 2012.
 // Distributed under the Boost Software License, Version 1.0.
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
@@ -11,6 +11,7 @@
 #include <fcppt/algorithm/array_map.hpp>
 #include <fcppt/algorithm/contains.hpp>
 #include <fcppt/algorithm/contains_if.hpp>
+#include <fcppt/algorithm/copy_if.hpp>
 #include <fcppt/algorithm/copy_n.hpp>
 #include <fcppt/algorithm/element_not_found.hpp>
 #include <fcppt/algorithm/exception.hpp>

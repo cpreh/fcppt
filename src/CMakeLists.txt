@@ -5,6 +5,7 @@ set(
 	include/fcppt/algorithm/array_map.hpp
 	include/fcppt/algorithm/contains.hpp
 	include/fcppt/algorithm/contains_if.hpp
+	include/fcppt/algorithm/copy_if.hpp
 	include/fcppt/algorithm/copy_n.hpp
 	include/fcppt/algorithm/detail/ptr_container_erase_pred.hpp
 	include/fcppt/algorithm/element_not_found.hpp
