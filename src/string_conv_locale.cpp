@@ -54,6 +54,7 @@ probe_locale()
 	)
 		return lc_ctype;
 
+	/* This doesn't work on (non-english) Windows
 	if(
 		char const *const lang =
 			std::getenv(
@@ -61,6 +62,7 @@ probe_locale()
 			)
 	)
 		return lang;
+		*/
 
 	return 0;
 }
