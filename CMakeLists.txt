@@ -425,9 +425,21 @@ function(
 		${OTHER_DEPS}
 	)
 
-	if(FCPPT_HAVE_CLOCK_GETTIME)
-		target_link_libraries(${TARGETNAME} ${RT_LIBRARY})
+	if(
+		FCPPT_HAVE_CLOCK_GETTIME
+	)
+		target_link_libraries(
+			${TARGETNAME}
+			${RT_LIBRARY}
+		)
 	endif()
+
+	set_target_properties(
+		${TARGETNAME}
+		PROPERTIES
+		LINK_INTERFACE_LIBRARIES
+		""
+	)
 
 	install(
 		TARGETS
