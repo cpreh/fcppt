@@ -65,7 +65,7 @@ add_definitions(
 make_fcppt_library(
 	fcppt_filesystem
 	"${FCPPT_FILESYSTEM_FILES}"
-	"${Boost_FILESYSTEM_LIBRARY};${Boost_SYSTEM_LIBRARY}"
 	"fcppt_core"
-	""
+	"${Boost_FILESYSTEM_LIBRARY};${Boost_SYSTEM_LIBRARY}"
+	"${Boost_FILESYSTEM_LIBRARY};${Boost_SYSTEM_LIBRARY}"
 )

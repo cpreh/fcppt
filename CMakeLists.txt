@@ -370,9 +370,9 @@ function(
 	TARGETNAME
 	VARIANT
 	CUR_FILES
-	BOOST_DEPS
 	FCPPT_DEPS
 	OTHER_DEPS
+	TRANSITIVE_DEPS
 )
 	FCPPT_UTILS_APPEND_SOURCE_DIR_AND_MAKE_GROUPS(
 		"${CUR_FILES}"
@@ -410,15 +410,6 @@ function(
 		)
 	endif()
 
-	if(
-		NOT MSVC
-	)
-		target_link_libraries(
-			${TARGETNAME}
-			${BOOST_DEPS}
-		)
-	endif()
-
 	target_link_libraries(
 		${TARGETNAME}
 		${FCPPT_DEPS}
@@ -441,6 +432,12 @@ function(
 		""
 	)
 
+	target_link_libraries(
+		${TARGETNAME}
+		LINK_INTERFACE_LIBRARIES
+		${TRANSITIVE_DEPS}
+	)
+
 	install(
 		TARGETS
 		${TARGETNAME}
@@ -455,9 +452,9 @@ function(
 	make_fcppt_library
 	LIBNAME
 	CUR_FILES
-	BOOST_DEPS
 	FCPPT_DEPS
 	OTHER_DEPS
+	TRANSITIVE_DEPS
 )
 	if(
 		ENABLE_SHARED
@@ -466,9 +463,9 @@ function(
 			"${LIBNAME}"
 			"SHARED"
 			"${CUR_FILES}"
-			"${BOOST_DEPS}"
 			"${FCPPT_DEPS}"
 			"${OTHER_DEPS}"
+			"${TRANSITIVE_DEPS}"
 		)
 	endif()
 
@@ -489,9 +486,9 @@ function(
 			"${LIBNAME}_static"
 			"STATIC"
 			"${CUR_FILES}"
-			"${BOOST_DEPS}"
 			"${REAL_FCPPT_DEPS}"
 			"${OTHER_DEPS}"
+			"${TRANSITIVE_DEPS}"
 		)
 	endif()
 endfunction()
