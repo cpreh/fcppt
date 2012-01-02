@@ -7,6 +7,7 @@ function(
 	SUBNAME
 	MAINNAME
 	ADDITIONAL_DEPS
+	ADDITIONAL_DEFINES
 )
 	set(
 		FCPPT_EXAMPLE_NAME
@@ -16,6 +17,13 @@ function(
 	add_executable(
 		${FCPPT_EXAMPLE_NAME}
 		${MAINNAME}.cpp
+	)
+
+	set_target_properties(
+		${FCPPT_EXAMPLE_NAME}
+		PROPERTIES
+		COMPILE_FLAGS
+		"${ADDITIONAL_DEFINES}"
 	)
 
 	fcppt_link_target(
@@ -34,55 +42,57 @@ function(
 	add_fcppt_example
 	MAINNAME
 	ADDITIONAL_DEPS
+	ADDITIONAL_DEFINES
 )
 	make_fcppt_example(
 		""
 		${MAINNAME}
 		"${ADDITIONAL_DEPS}"
+		"${ADDITIONAL_DEFINES}"
 	)
 endfunction()
 
-add_fcppt_example(algorithm "")
-add_fcppt_example(alignment "")
-add_fcppt_example(alignment_new "")
-add_fcppt_example(alignment_simple "")
-add_fcppt_example(assert "")
-add_fcppt_example(assert_complete "")
-add_fcppt_example(backtrace "")
-add_fcppt_example(chrono "")
-add_fcppt_example(codecvt "")
-add_fcppt_example(container "")
-add_fcppt_example(cyclic_iterator "")
-add_fcppt_example(dynamic_cast "")
-add_fcppt_example(endianness "")
-add_fcppt_example(foreach_enumerator "")
-add_fcppt_example(function "")
-add_fcppt_example(homogenous_pair "")
-add_fcppt_example(io "")
-add_fcppt_example(log "")
-add_fcppt_example(make_array "")
-add_fcppt_example(make_container "")
-add_fcppt_example(math "")
-add_fcppt_example(minmax_pair "")
-add_fcppt_example(noncopyable "")
-add_fcppt_example(optional "")
-add_fcppt_example(optional_dynamic_cast "")
-add_fcppt_example(output_tm "")
-add_fcppt_example(safe_bool "")
-add_fcppt_example(scoped_ptr "")
-add_fcppt_example(shared_ptr "")
-add_fcppt_example(sleep "")
-add_fcppt_example(sn_cast "")
-add_fcppt_example(string_conversion "")
-add_fcppt_example(strongtypedef "")
-add_fcppt_example(time_parse "")
-add_fcppt_example(tr1 "")
-add_fcppt_example(truncation_check_cast "")
-add_fcppt_example(type_traits "")
-add_fcppt_example(unique_ptr "")
-add_fcppt_example(version "")
-add_fcppt_example(visibility "")
-add_fcppt_example(weak_ptr "")
+add_fcppt_example(algorithm "" "")
+add_fcppt_example(alignment "" "")
+add_fcppt_example(alignment_new "" "")
+add_fcppt_example(alignment_simple "" "")
+add_fcppt_example(assert "" "")
+add_fcppt_example(assert_complete "" "")
+add_fcppt_example(backtrace "" "")
+add_fcppt_example(chrono "" "")
+add_fcppt_example(codecvt "" "")
+add_fcppt_example(container "" "")
+add_fcppt_example(cyclic_iterator "" "")
+add_fcppt_example(dynamic_cast "" "")
+add_fcppt_example(endianness "" "")
+add_fcppt_example(foreach_enumerator "" "")
+add_fcppt_example(function "" "")
+add_fcppt_example(homogenous_pair "" "")
+add_fcppt_example(io "" "")
+add_fcppt_example(log "" "")
+add_fcppt_example(make_array "" "")
+add_fcppt_example(make_container "" "")
+add_fcppt_example(math "" "")
+add_fcppt_example(minmax_pair "" "")
+add_fcppt_example(noncopyable "" "")
+add_fcppt_example(optional "" "")
+add_fcppt_example(optional_dynamic_cast "" "")
+add_fcppt_example(output_tm "" "")
+add_fcppt_example(safe_bool "" "")
+add_fcppt_example(scoped_ptr "" "")
+add_fcppt_example(shared_ptr "" "")
+add_fcppt_example(sleep "" "")
+add_fcppt_example(sn_cast "" "")
+add_fcppt_example(string_conversion "" "")
+add_fcppt_example(strongtypedef "" "")
+add_fcppt_example(time_parse "" "")
+add_fcppt_example(tr1 "" "")
+add_fcppt_example(truncation_check_cast "" "")
+add_fcppt_example(type_traits "" "")
+add_fcppt_example(unique_ptr "" "")
+add_fcppt_example(version "" "")
+add_fcppt_example(visibility "" "")
+add_fcppt_example(weak_ptr "" "")
 
 add_subdirectory(chrono)
 add_subdirectory(container)
