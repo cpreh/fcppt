@@ -5,8 +5,8 @@
 
 
 #include <fcppt/narrow.hpp>
-#include "codecvt.hpp"
-#include "codecvt_type.hpp"
+#include <fcppt/src/codecvt.hpp>
+#include <fcppt/src/codecvt_type.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <locale>
 #include <string>

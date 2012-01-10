@@ -22,19 +22,24 @@ namespace fcppt
 class type_info
 {
 public:
-	FCPPT_SYMBOL type_info(
+	FCPPT_SYMBOL
+	explicit
+	type_info(
 		std::type_info const &
 	);
 
-	FCPPT_SYMBOL std::type_info const &
+	FCPPT_SYMBOL
+	std::type_info const &
 	get() const;
 
-	FCPPT_SYMBOL bool
+	FCPPT_SYMBOL
+	bool
 	before(
-		type_info const &rhs
+		fcppt::type_info const &rhs
 	) const;
 
-	FCPPT_SYMBOL string const
+	FCPPT_SYMBOL
+	fcppt::string const
 	name() const;
 //<-
 private:
@@ -42,17 +47,47 @@ private:
 //->
 };
 
-FCPPT_SYMBOL bool operator==(const type_info& lhs, const type_info& rhs);
+FCPPT_SYMBOL
+bool
+operator==(
+	fcppt::type_info const &,
+	fcppt::type_info const &
+);
 
-FCPPT_SYMBOL bool operator<(const type_info& lhs, const type_info& rhs);
+FCPPT_SYMBOL
+bool
+operator<(
+	fcppt::type_info const &,
+	fcppt::type_info const &
+);
 
-FCPPT_SYMBOL bool operator!=(const type_info& lhs, const type_info& rhs);
+FCPPT_SYMBOL
+bool
+operator!=(
+	fcppt::type_info const &,
+	fcppt::type_info const &
+);
 
-FCPPT_SYMBOL bool operator>(const type_info& lhs, const type_info& rhs);
+FCPPT_SYMBOL
+bool
+operator>(
+	fcppt::type_info const &,
+	fcppt::type_info const &
+);
 
-FCPPT_SYMBOL bool operator<=(const type_info& lhs, const type_info& rhs);
+FCPPT_SYMBOL
+bool
+operator<=(
+	fcppt::type_info const &,
+	fcppt::type_info const &
+);
 
-FCPPT_SYMBOL bool operator>=(const type_info& lhs, const type_info& rhs);
+FCPPT_SYMBOL
+bool
+operator>=(
+	fcppt::type_info const &,
+	fcppt::type_info const &
+);
 
 }
 //]

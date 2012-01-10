@@ -5,21 +5,27 @@
 
 
 #include <fcppt/from_std_string.hpp>
+#include <fcppt/string.hpp>
 #include <fcppt/config.hpp>
-#ifndef FCPPT_NARROW_STRING
+#if !defined(FCPPT_NARROW_STRING)
 #include <fcppt/widen.hpp>
 #endif
+#include <fcppt/config/external_begin.hpp>
+#include <locale>
+#include <string>
+#include <fcppt/config/external_end.hpp>
+
 
 fcppt::string const
 fcppt::from_std_string(
 	std::string const &_input,
 	std::locale const &
-#ifndef FCPPT_NARROW_STRING
+#if !defined(FCPPT_NARROW_STRING)
 		_locale
 #endif
 )
 {
-#ifndef FCPPT_NARROW_STRING
+#if !defined(FCPPT_NARROW_STRING)
 	return
 		fcppt::widen(
 			_input,

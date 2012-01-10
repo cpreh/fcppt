@@ -4,8 +4,8 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_LOG_LEVEL_STRING_ARRAY_HPP_INCLUDED
-#define FCPPT_LOG_LEVEL_STRING_ARRAY_HPP_INCLUDED
+#ifndef FCPPT_SRC_LOG_LEVEL_STRING_ARRAY_HPP_INCLUDED
+#define FCPPT_SRC_LOG_LEVEL_STRING_ARRAY_HPP_INCLUDED
 
 #include <fcppt/string.hpp>
 #include <fcppt/container/array.hpp>

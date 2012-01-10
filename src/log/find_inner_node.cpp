@@ -4,9 +4,9 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include "find_inner_node.hpp"
-#include "inner_node_name.hpp"
 #include <fcppt/container/tree/object_impl.hpp>
+#include <fcppt/src/log/find_inner_node.hpp>
+#include <fcppt/src/log/inner_node_name.hpp>
 #include <fcppt/variant/object_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <algorithm>

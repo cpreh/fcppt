@@ -4,10 +4,6 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include "find_logger_node.hpp"
-#include "find_location.hpp"
-#include "find_inner_node.hpp"
-#include "is_outer_node.hpp"
 #include <fcppt/text.hpp>
 #include <fcppt/assert/pre.hpp>
 #include <fcppt/container/tree/object_impl.hpp>
@@ -20,6 +16,10 @@
 #include <fcppt/log/detail/context_tree_node.hpp>
 #include <fcppt/log/detail/inner_context_node.hpp>
 #include <fcppt/log/detail/outer_context_node.hpp>
+#include <fcppt/src/log/find_inner_node.hpp>
+#include <fcppt/src/log/find_location.hpp>
+#include <fcppt/src/log/find_logger_node.hpp>
+#include <fcppt/src/log/is_outer_node.hpp>
 #include <fcppt/variant/object_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <exception>

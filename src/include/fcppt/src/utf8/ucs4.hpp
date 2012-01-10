@@ -4,8 +4,8 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_UTF8_UCS4_HPP_INCLUDED
-#define FCPPT_UTF8_UCS4_HPP_INCLUDED
+#ifndef FCPPT_SRC_UTF8_UCS4_HPP_INCLUDED
+#define FCPPT_SRC_UTF8_UCS4_HPP_INCLUDED
 
 namespace fcppt
 {

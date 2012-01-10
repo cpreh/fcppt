@@ -4,12 +4,12 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include "inner_node_name.hpp"
 #include <fcppt/nonassignable.hpp>
 #include <fcppt/string.hpp>
 #include <fcppt/container/tree/object_impl.hpp>
 #include <fcppt/log/detail/inner_context_node.hpp>
 #include <fcppt/log/detail/outer_context_node.hpp>
+#include <fcppt/src/log/inner_node_name.hpp>
 #include <fcppt/variant/apply_unary.hpp>
 #include <fcppt/variant/object_impl.hpp>
 

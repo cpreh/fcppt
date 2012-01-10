@@ -4,15 +4,16 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include "set_levels.hpp"
 #include <fcppt/foreach_enumerator_start.hpp>
+#include <fcppt/log/level.hpp>
 #include <fcppt/log/object.hpp>
+#include <fcppt/src/log/set_levels.hpp>
 
 
 void
 fcppt::log::set_levels(
-	object &_object,
-	level::type const _level,
+	fcppt::log::object &_object,
+	fcppt::log::level::type const _level,
 	void (object::*_fun)(level::type)
 )
 {

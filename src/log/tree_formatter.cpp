@@ -4,7 +4,6 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include "tree_formatter.hpp"
 #include <fcppt/assert/error.hpp>
 #include <fcppt/container/tree/object_impl.hpp>
 #include <fcppt/log/context.hpp>
@@ -14,6 +13,7 @@
 #include <fcppt/log/format/const_object_ptr.hpp>
 #include <fcppt/log/format/create_chain.hpp>
 #include <fcppt/log/format/create_prefix.hpp>
+#include <fcppt/src/log/tree_formatter.hpp>
 #include <fcppt/variant/object_impl.hpp>
 
 

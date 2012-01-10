@@ -4,17 +4,15 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_CHRONO_PERFORMANCE_COUNTER_TIME_HPP_INCLUDED
-#define FCPPT_CHRONO_PERFORMANCE_COUNTER_TIME_HPP_INCLUDED
+#ifndef FCPPT_SRC_CHRONO_PERFORMANCE_COUNTER_TIME_HPP_INCLUDED
+#define FCPPT_SRC_CHRONO_PERFORMANCE_COUNTER_TIME_HPP_INCLUDED
 
+#include <fcppt/text.hpp>
 #include <fcppt/chrono/clock_failure.hpp>
 #include <fcppt/chrono/time_point_impl.hpp>
-#include <fcppt/text.hpp>
-#include "query_performance_frequency.hpp"
-#include <fcppt/config/external_begin.hpp>
-#define WIN32_LEAN_AND_MEAN
-#include <windows.h>
-#include <fcppt/config/external_end.hpp>
+#include <fcppt/config/include_windows.hpp>
+#include <fcppt/src/chrono/query_performance_frequency.hpp>
+
 
 namespace fcppt
 {

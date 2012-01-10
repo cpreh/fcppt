@@ -4,9 +4,14 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include "time_get_parse.hpp"
-#include "time_get.hpp"
+#include <fcppt/io/istream.hpp>
+#include <fcppt/src/time/time_get.hpp>
+#include <fcppt/src/time/time_get_parse.hpp>
 #include <fcppt/time/parse_time.hpp>
+#include <fcppt/config/external_begin.hpp>
+#include <ctime>
+#include <fcppt/config/external_end.hpp>
+
 
 fcppt::io::istream &
 fcppt::time::parse_time(

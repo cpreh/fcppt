@@ -4,7 +4,6 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include "tree_formatter.hpp"
 #include <fcppt/io/ostream.hpp>
 #include <fcppt/log/context.hpp>
 #include <fcppt/log/enabled_level_array.hpp>
@@ -19,6 +18,7 @@
 #include <fcppt/preprocessor/disable_vc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
+#include <fcppt/src/log/tree_formatter.hpp>
 
 
 FCPPT_PP_PUSH_WARNING

@@ -4,21 +4,22 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_CHRONO_MACH_TIMEBASE_HPP_INCLUDED
-#define FCPPT_CHRONO_MACH_TIMEBASE_HPP_INCLUDED
+#ifndef FCPPT_SRC_TIME_TIME_GET_HPP_INCLUDED
+#define FCPPT_SRC_TIME_TIME_GET_HPP_INCLUDED
 
+#include <fcppt/char_type.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <mach/mach_time.h>
+#include <locale>
 #include <fcppt/config/external_end.hpp>
-
 
 namespace fcppt
 {
-namespace chrono
+namespace time
 {
 
-struct mach_timebase_info const
-mach_timebase();
+typedef std::time_get<
+	fcppt::char_type
+> time_get;
 
 }
 }

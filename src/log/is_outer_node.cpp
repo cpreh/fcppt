@@ -4,12 +4,11 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include "is_outer_node.hpp"
 #include <fcppt/container/tree/object_impl.hpp>
+#include <fcppt/log/detail/outer_context_node.hpp>
+#include <fcppt/src/log/is_outer_node.hpp>
+#include <fcppt/variant/holds_type.hpp>
 #include <fcppt/variant/object_impl.hpp>
-#include <fcppt/config/external_begin.hpp>
-#include <typeinfo>
-#include <fcppt/config/external_end.hpp>
 
 bool
 fcppt::log::is_outer_node(
@@ -17,6 +16,9 @@ fcppt::log::is_outer_node(
 )
 {
 	return
-		_node.value().type()
-		== typeid(detail::outer_context_node);
+		fcppt::variant::holds_type<
+			fcppt::log::detail::outer_context_node
+		>(
+			_node.value()
+		);
 }

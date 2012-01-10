@@ -977,18 +977,11 @@ set(
 	include/fcppt/workarounds.hpp
 	src/backtrace/current_stack_frame.cpp
 	src/backtrace/print_current_stack_frame.cpp
-	src/chrono/clock_gettime_impl.hpp
 	src/chrono/high_resolution_clock.cpp
-	src/chrono/mach_time_impl.hpp
 	src/chrono/mach_timebase.cpp
-	src/chrono/mach_timebase.hpp
-	src/chrono/performance_counter_time.hpp
 	src/chrono/query_performance_frequency.cpp
-	src/chrono/query_performance_frequency.hpp
 	src/chrono/steady_clock.cpp
 	src/chrono/system_clock.cpp
-	src/codecvt.hpp
-	src/codecvt_type.hpp
 	src/endianness/host_format.cpp
 	src/endianness/is_big_endian.cpp
 	src/endianness/is_little_endian.cpp
@@ -997,6 +990,26 @@ set(
 	src/error/strerror.cpp
 	src/from_std_string.cpp
 	src/from_std_wstring.cpp
+	src/include/fcppt/src/chrono/clock_gettime_impl.hpp
+	src/include/fcppt/src/chrono/mach_time_impl.hpp
+	src/include/fcppt/src/chrono/mach_timebase.hpp
+	src/include/fcppt/src/chrono/performance_counter_time.hpp
+	src/include/fcppt/src/chrono/query_performance_frequency.hpp
+	src/include/fcppt/src/codecvt.hpp
+	src/include/fcppt/src/codecvt_type.hpp
+	src/include/fcppt/src/log/find_inner_node.hpp
+	src/include/fcppt/src/log/find_location.hpp
+	src/include/fcppt/src/log/find_logger_node.hpp
+	src/include/fcppt/src/log/inner_node_name.hpp
+	src/include/fcppt/src/log/is_outer_node.hpp
+	src/include/fcppt/src/log/level_string_array.hpp
+	src/include/fcppt/src/log/level_strings.hpp
+	src/include/fcppt/src/log/set_levels.hpp
+	src/include/fcppt/src/log/tree_formatter.hpp
+	src/include/fcppt/src/time/time_get.hpp
+	src/include/fcppt/src/time/time_get_parse.hpp
+	src/include/fcppt/src/utf8/locale.hpp
+	src/include/fcppt/src/utf8/ucs4.hpp
 	src/io/cerr.cpp
 	src/io/cin.cpp
 	src/io/clog.cpp
@@ -1014,11 +1027,8 @@ set(
 	src/log/detail/temporary_output.cpp
 	src/log/enabled_levels.cpp
 	src/log/find_inner_node.cpp
-	src/log/find_inner_node.hpp
 	src/log/find_location.cpp
-	src/log/find_location.hpp
 	src/log/find_logger_node.cpp
-	src/log/find_logger_node.hpp
 	src/log/format/chain.cpp
 	src/log/format/create_chain.cpp
 	src/log/format/create_prefix.cpp
@@ -1027,14 +1037,10 @@ set(
 	src/log/format/object.cpp
 	src/log/global.cpp
 	src/log/inner_node_name.cpp
-	src/log/inner_node_name.hpp
 	src/log/is_outer_node.cpp
-	src/log/is_outer_node.hpp
 	src/log/level_from_string.cpp
 	src/log/level_stream.cpp
-	src/log/level_string_array.hpp
 	src/log/level_strings.cpp
-	src/log/level_strings.hpp
 	src/log/level_to_string.cpp
 	src/log/location.cpp
 	src/log/make_location.cpp
@@ -1042,10 +1048,8 @@ set(
 	src/log/parameters/all.cpp
 	src/log/parameters/with_context.cpp
 	src/log/set_levels.cpp
-	src/log/set_levels.hpp
 	src/log/trampoline.cpp
 	src/log/tree_formatter.cpp
-	src/log/tree_formatter.hpp
 	src/narrow.cpp
 	src/random/actor/element.cpp
 	src/random/actor/normalized.cpp
@@ -1060,8 +1064,6 @@ set(
 	src/time/parse_time.cpp
 	src/time/sleep.cpp
 	src/time/std_time.cpp
-	src/time/time_get.hpp
-	src/time/time_get_parse.hpp
 	src/to_std_string.cpp
 	src/to_std_wstring.cpp
 	src/type_info.cpp
@@ -1070,11 +1072,13 @@ set(
 	src/utf8/from_fcppt_string.cpp
 	src/utf8/from_std_string.cpp
 	src/utf8/locale.cpp
-	src/utf8/locale.hpp
 	src/utf8/to_fcppt_string.cpp
-	src/utf8/ucs4.hpp
 	src/version_string.cpp
 	src/widen.cpp
+)
+
+include_directories(
+	"${CMAKE_CURRENT_SOURCE_DIR}/include"
 )
 
 make_fcppt_library(

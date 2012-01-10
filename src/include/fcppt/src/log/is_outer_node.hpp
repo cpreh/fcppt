@@ -4,8 +4,8 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_LOG_IS_OUTER_NODE_HPP_INCLUDED
-#define FCPPT_LOG_IS_OUTER_NODE_HPP_INCLUDED
+#ifndef FCPPT_SRC_LOG_IS_OUTER_NODE_HPP_INCLUDED
+#define FCPPT_SRC_LOG_IS_OUTER_NODE_HPP_INCLUDED
 
 #include <fcppt/log/detail/context_tree.hpp>
 

@@ -4,8 +4,8 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_LOG_SET_LEVELS_HPP_INCLUDED
-#define FCPPT_LOG_SET_LEVELS_HPP_INCLUDED
+#ifndef FCPPT_SRC_LOG_SET_LEVELS_HPP_INCLUDED
+#define FCPPT_SRC_LOG_SET_LEVELS_HPP_INCLUDED
 
 #include <fcppt/log/level.hpp>
 #include <fcppt/log/object_fwd.hpp>

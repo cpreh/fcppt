@@ -4,11 +4,11 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_TIME_TIME_GET_PARSE_HPP_INCLUDED
-#define FCPPT_TIME_TIME_GET_PARSE_HPP_INCLUDED
+#ifndef FCPPT_SRC_TIME_TIME_GET_PARSE_HPP_INCLUDED
+#define FCPPT_SRC_TIME_TIME_GET_PARSE_HPP_INCLUDED
 
-#include "time_get.hpp"
 #include <fcppt/io/istream.hpp>
+#include <fcppt/src/time/time_get.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <ctime>
 #include <iosfwd>

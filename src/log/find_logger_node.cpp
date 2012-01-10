@@ -4,9 +4,9 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include "find_logger_node.hpp"
-#include "is_outer_node.hpp"
 #include <fcppt/container/tree/object_impl.hpp>
+#include <fcppt/src/log/find_logger_node.hpp>
+#include <fcppt/src/log/is_outer_node.hpp>
 #include <fcppt/tr1/functional.hpp>
 #include <fcppt/variant/object_impl.hpp>
 #include <fcppt/config/external_begin.hpp>

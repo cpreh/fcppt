@@ -4,8 +4,10 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include "level_strings.hpp"
 #include <fcppt/text.hpp>
+#include <fcppt/src/log/level_string_array.hpp>
+#include <fcppt/src/log/level_strings.hpp>
+
 
 fcppt::log::level_string_array const
 fcppt::log::level_strings()

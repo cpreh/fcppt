@@ -52,6 +52,7 @@ update_cmake_file \
 	src/config \
 	src/endianness \
 	src/error \
+	src/include \
 	src/io \
 	src/log \
 	src/random \

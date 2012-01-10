@@ -8,12 +8,12 @@
 #include <fcppt/config/platform.hpp>
 #include <fcppt/config.hpp>
 #if defined(FCPPT_CONFIG_WINDOWS_PLATFORM)
-#include "performance_counter_time.hpp"
+#include <fcppt/src/chrono/performance_counter_time.hpp>
 #elif defined(FCPPT_HAVE_CLOCK_GETTIME)
-#include "clock_gettime_impl.hpp"
+#include <fcppt/src/chrono/clock_gettime_impl.hpp>
 #include <time.h>
 #elif defined(FCPPT_HAVE_MACH_TIME)
-#include "mach_time_impl.hpp"
+#include <fcppt/src/chrono/mach_time_impl.hpp>
 #else
 #error "steady_clock implementation missing"
 #endif

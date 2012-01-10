@@ -4,11 +4,12 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_LOG_FIND_LOCATION_HPP_INCLUDED
-#define FCPPT_LOG_FIND_LOCATION_HPP_INCLUDED
+#ifndef FCPPT_SRC_LOG_FIND_LOGGER_NODE_HPP_INCLUDED
+#define FCPPT_SRC_LOG_FIND_LOGGER_NODE_HPP_INCLUDED
 
-#include <fcppt/log/location_fwd.hpp>
+#include <fcppt/container/tree/object_decl.hpp>
 #include <fcppt/log/detail/context_tree.hpp>
+#include <fcppt/variant/object_decl.hpp>
 
 
 namespace fcppt
@@ -16,10 +17,9 @@ namespace fcppt
 namespace log
 {
 
-detail::context_tree *
-find_location(
-	detail::context_tree &,
-	location const &
+detail::context_tree::iterator
+find_logger_node(
+	detail::context_tree &
 );
 
 }

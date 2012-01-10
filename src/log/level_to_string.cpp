@@ -4,18 +4,21 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include "level_strings.hpp"
+#include <fcppt/string.hpp>
+#include <fcppt/log/level.hpp>
 #include <fcppt/log/level_to_string.hpp>
+#include <fcppt/src/log/level_strings.hpp>
+
 
 fcppt::string const
 fcppt::log::level_to_string(
-	level::type const _level
+	fcppt::log::level::type const _level
 )
 {
 	return
-		log::level_strings()[
+		fcppt::log::level_strings()[
 			static_cast<
-				level_string_array::size_type
+				fcppt::log::level_string_array::size_type
 			>(
 				_level
 			)

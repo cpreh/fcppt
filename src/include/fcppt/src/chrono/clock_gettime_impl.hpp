@@ -4,14 +4,15 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_CHRONO_MACH_TIME_IMPL_HPP_INCLUDED
-#define FCPPT_CHRONO_MACH_TIME_IMPL_HPP_INCLUDED
+#ifndef FCPPT_SRC_CHRONO_CLOCK_GETTIME_IMPL_HPP_INCLUDED
+#define FCPPT_SRC_CHRONO_CLOCK_GETTIME_IMPL_HPP_INCLUDED
 
-#include "mach_timebase.hpp"
+#include <fcppt/text.hpp>
+#include <fcppt/chrono/clock_failure.hpp>
 #include <fcppt/chrono/duration_impl.hpp>
 #include <fcppt/chrono/time_point_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <mach/mach_time.h>
+#include <time.h>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -20,36 +21,39 @@ namespace fcppt
 namespace chrono
 {
 
-namespace
-{
-
 template<
 	typename TimePoint
 >
 TimePoint const
-mach_time_impl()
+clock_gettime_impl(
+	clockid_t const _clock
+)
 {
-	typedef typename TimePoint::duration duration_type;
+	struct timespec tp;
 
-	struct mach_timebase_info const info(
-		chrono::mach_timebase()
-	);
+	if(
+		::clock_gettime(
+			_clock,
+			&tp
+		) != 0
+	)
+		throw chrono::clock_failure(
+			FCPPT_TEXT("clock_gettime failed")
+		);
+
+	typedef typename TimePoint::duration duration;
 
 	return
 		TimePoint(
-			duration_type(
-				static_cast<
-					typename duration_type::rep
-				>(
-					::mach_absolute_time()
-					* info.numer
-					/ info.denom
-				)
+			duration(
+				tp.tv_sec
+				*
+				1000000000L
+				+
+				tp.tv_nsec
 			)
 		);
-}
-
-}
+	}
 
 }
 }

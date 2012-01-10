@@ -5,8 +5,9 @@
 
 
 #include <fcppt/log/deactivate_levels.hpp>
+#include <fcppt/log/level.hpp>
 #include <fcppt/log/object.hpp>
-#include "set_levels.hpp"
+#include <fcppt/src/log/set_levels.hpp>
 
 void
 fcppt::log::deactivate_levels(

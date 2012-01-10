@@ -4,23 +4,25 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_CODECVT_TYPE_HPP_INCLUDED
-#define FCPPT_CODECVT_TYPE_HPP_INCLUDED
+#ifndef FCPPT_SRC_UTF8_LOCALE_HPP_INCLUDED
+#define FCPPT_SRC_UTF8_LOCALE_HPP_INCLUDED
 
+#include <fcppt/config.hpp>
+#if defined(FCPPT_STRING_IS_UTF8)
 #include <fcppt/config/external_begin.hpp>
 #include <locale>
 #include <fcppt/config/external_end.hpp>
 
 namespace fcppt
 {
+namespace utf8
+{
 
-typedef std::codecvt<
-	wchar_t,
-	char,
-	std::mbstate_t
-> codecvt_type;
+std::locale &
+locale();
 
 }
-
+}
+#endif
 
 #endif

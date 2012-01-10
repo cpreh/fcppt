@@ -8,6 +8,7 @@
 #define FCPPT_TRUNCATION_CHECK_CAST_HPP_INCLUDED
 
 #include <fcppt/bad_truncation_check_cast.hpp>
+#include <fcppt/type_info.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/mpl/and.hpp>
 #include <boost/type_traits/is_fundamental.hpp>
@@ -58,8 +59,12 @@ truncation_check_cast(
 		!= source
 	)
 		throw bad_truncation_check_cast(
-			typeid(Source),
-			typeid(Dest)
+			fcppt::type_info(
+				typeid(Source)
+			),
+			fcppt::type_info(
+				typeid(Dest)
+			)
 		);
 
 	return dest;

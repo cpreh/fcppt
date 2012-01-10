@@ -4,9 +4,14 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
+#include <fcppt/string.hpp>
 #include <fcppt/type_info.hpp>
 #include <fcppt/type_name.hpp>
 #include <fcppt/workarounds.hpp>
+#include <fcppt/config/external_begin.hpp>
+#include <typeinfo>
+#include <fcppt/config/external_end.hpp>
+
 
 fcppt::type_info::type_info(
 	std::type_info const &_ti
@@ -25,7 +30,7 @@ fcppt::type_info::before(
 		info_->before(
 			*_rhs.info_
 		)
-#ifdef FCPPT_MSVC_WRONG_TYPE_INFO_BEFORE_BUG
+#if defined(FCPPT_MSVC_WRONG_TYPE_INFO_BEFORE_BUG)
 		!= 0
 #endif
 		;
@@ -42,14 +47,14 @@ fcppt::type_info::name() const
 {
 	return
 		fcppt::type_name(
-			*this
+			*info_
 		);
 }
 
 bool
 fcppt::operator==(
-	type_info const &_lhs,
-	type_info const &_rhs
+	fcppt::type_info const &_lhs,
+	fcppt::type_info const &_rhs
 )
 {
 	return
@@ -58,8 +63,8 @@ fcppt::operator==(
 
 bool
 fcppt::operator<(
-	type_info const &_lhs,
-	type_info const &_rhs
+	fcppt::type_info const &_lhs,
+	fcppt::type_info const &_rhs
 )
 {
 	return
@@ -70,8 +75,8 @@ fcppt::operator<(
 
 bool
 fcppt::operator!=(
-	type_info const &_lhs,
-	type_info const &_rhs
+	fcppt::type_info const &_lhs,
+	fcppt::type_info const &_rhs
 )
 {
 	return
@@ -80,8 +85,8 @@ fcppt::operator!=(
 
 bool
 fcppt::operator>(
-	type_info const &_lhs,
-	type_info const &_rhs
+	fcppt::type_info const &_lhs,
+	fcppt::type_info const &_rhs
 )
 {
 	return
@@ -90,8 +95,8 @@ fcppt::operator>(
 
 bool
 fcppt::operator<=(
-	type_info const &_lhs,
-	type_info const &_rhs
+	fcppt::type_info const &_lhs,
+	fcppt::type_info const &_rhs
 )
 {
 	return
@@ -100,8 +105,8 @@ fcppt::operator<=(
 
 bool
 fcppt::operator>=(
-	type_info const &_lhs,
-	type_info const &_rhs
+	fcppt::type_info const &_lhs,
+	fcppt::type_info const &_rhs
 )
 {
 	return

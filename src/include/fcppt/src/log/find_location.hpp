@@ -4,18 +4,23 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_LOG_LEVEL_STRINGS_HPP_INCLUDED
-#define FCPPT_LOG_LEVEL_STRINGS_HPP_INCLUDED
+#ifndef FCPPT_SRC_LOG_FIND_LOCATION_HPP_INCLUDED
+#define FCPPT_SRC_LOG_FIND_LOCATION_HPP_INCLUDED
 
-#include "level_string_array.hpp"
+#include <fcppt/log/location_fwd.hpp>
+#include <fcppt/log/detail/context_tree.hpp>
+
 
 namespace fcppt
 {
 namespace log
 {
 
-level_string_array const
-level_strings();
+detail::context_tree *
+find_location(
+	detail::context_tree &,
+	location const &
+);
 
 }
 }

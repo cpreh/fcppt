@@ -4,9 +4,9 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include "locale.hpp"
+#include <fcppt/src/utf8/locale.hpp>
 #include <fcppt/config.hpp>
-#ifndef FCPPT_STRING_IS_UTF8
+#if !defined(FCPPT_STRING_IS_UTF8)
 #include <fcppt/utf8/facet.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <locale>

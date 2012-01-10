@@ -4,8 +4,8 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_LOG_FIND_INNER_NODE_HPP_INCLUDED
-#define FCPPT_LOG_FIND_INNER_NODE_HPP_INCLUDED
+#ifndef FCPPT_SRC_LOG_FIND_INNER_NODE_HPP_INCLUDED
+#define FCPPT_SRC_LOG_FIND_INNER_NODE_HPP_INCLUDED
 
 #include <fcppt/string.hpp>
 #include <fcppt/container/tree/object_decl.hpp>
@@ -21,7 +21,7 @@ namespace log
 detail::context_tree::iterator
 find_inner_node(
 	detail::context_tree &,
-	string const &name
+	fcppt::string const &name
 );
 
 }

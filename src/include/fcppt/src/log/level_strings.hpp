@@ -4,18 +4,19 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_CHRONO_QUERY_PERFORMANCE_FREQUENCY_HPP_INCLUDED
-#define FCPPT_CHRONO_QUERY_PERFORMANCE_FREQUENCY_HPP_INCLUDED
+#ifndef FCPPT_SRC_LOG_LEVEL_STRINGS_HPP_INCLUDED
+#define FCPPT_SRC_LOG_LEVEL_STRINGS_HPP_INCLUDED
 
-#include <fcppt/config/include_windows.hpp>
+#include <fcppt/src/log/level_string_array.hpp>
+
 
 namespace fcppt
 {
-namespace chrono
+namespace log
 {
 
-LARGE_INTEGER
-query_performance_frequency();
+fcppt::log::level_string_array const
+level_strings();
 
 }
 }

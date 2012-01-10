@@ -9,15 +9,19 @@
 
 #include <fcppt/string.hpp>
 #include <fcppt/symbol.hpp>
-#include <fcppt/type_info.hpp>
+#include <fcppt/config/external_begin.hpp>
+#include <typeinfo>
+#include <fcppt/config/external_end.hpp>
 
 
 namespace fcppt
 {
 
-FCPPT_SYMBOL string const
+FCPPT_SYMBOL
+fcppt::string const
 type_name(
-	type_info const &);
+	std::type_info const &
+);
 
 }
 

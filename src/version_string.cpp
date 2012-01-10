@@ -8,6 +8,7 @@
 #include <fcppt/major_version.hpp>
 #include <fcppt/micro_version.hpp>
 #include <fcppt/minor_version.hpp>
+#include <fcppt/string.hpp>
 #include <fcppt/text.hpp>
 #include <fcppt/version_string.hpp>
 

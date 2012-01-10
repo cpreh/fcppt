@@ -4,14 +4,14 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_CODECVT_HPP_INCLUDED
-#define FCPPT_CODECVT_HPP_INCLUDED
+#ifndef FCPPT_SRC_CODECVT_HPP_INCLUDED
+#define FCPPT_SRC_CODECVT_HPP_INCLUDED
 
-#include "codecvt_type.hpp"
 #include <fcppt/exception.hpp>
 #include <fcppt/text.hpp>
 #include <fcppt/container/data_end.hpp>
 #include <fcppt/container/raw_vector_impl.hpp>
+#include <fcppt/src/codecvt_type.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <cstring>
 #include <iterator>

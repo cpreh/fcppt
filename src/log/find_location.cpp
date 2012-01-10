@@ -4,10 +4,10 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include "find_location.hpp"
-#include "find_inner_node.hpp"
 #include <fcppt/container/tree/object_impl.hpp>
 #include <fcppt/log/location.hpp>
+#include <fcppt/src/log/find_inner_node.hpp>
+#include <fcppt/src/log/find_location.hpp>
 #include <fcppt/variant/object_impl.hpp>
 
 
