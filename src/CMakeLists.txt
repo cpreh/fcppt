@@ -988,6 +988,7 @@ set(
 	src/chrono/steady_clock.cpp
 	src/chrono/system_clock.cpp
 	src/codecvt.hpp
+	src/codecvt_type.hpp
 	src/endianness/host_format.cpp
 	src/endianness/is_big_endian.cpp
 	src/endianness/is_little_endian.cpp

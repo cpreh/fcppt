@@ -4,27 +4,23 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/narrow.hpp>
-#include "codecvt.hpp"
-#include "codecvt_type.hpp"
+#ifndef FCPPT_CODECVT_TYPE_HPP_INCLUDED
+#define FCPPT_CODECVT_TYPE_HPP_INCLUDED
+
 #include <fcppt/config/external_begin.hpp>
 #include <locale>
-#include <string>
 #include <fcppt/config/external_end.hpp>
 
-
-std::string const
-fcppt::narrow(
-	std::wstring const &_string,
-	std::locale const &_locale
-)
+namespace fcppt
 {
-	return
-		fcppt::codecvt<
-			char
-		>(
-			_string,
-			_locale,
-			&fcppt::codecvt_type::out
-		);
+
+typedef std::codecvt<
+	wchar_t,
+	char,
+	std::mbstate_t
+> codecvt_type;
+
 }
+
+
+#endif

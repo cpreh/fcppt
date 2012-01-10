@@ -7,9 +7,9 @@
 #ifndef FCPPT_CODECVT_HPP_INCLUDED
 #define FCPPT_CODECVT_HPP_INCLUDED
 
+#include "codecvt_type.hpp"
 #include <fcppt/exception.hpp>
 #include <fcppt/text.hpp>
-#include <fcppt/container/data.hpp>
 #include <fcppt/container/data_end.hpp>
 #include <fcppt/container/raw_vector_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
@@ -23,92 +23,16 @@
 namespace fcppt
 {
 
-namespace
-{
-
-typedef std::mbstate_t state_type;
-
-typedef std::codecvt<
-	wchar_t,
-	char,
-	state_type
-> codecvt_t;
-
-template<
-	typename OutCh
->
-struct call_traits;
-
-template<>
-struct call_traits<
-	char
->
-{
-public:
-	static std::codecvt_base::result
-	conv(
-		codecvt_t const &_cvt,
-		state_type &_state,
-		wchar_t const *const _from,
-		wchar_t const *const _from_end,
-		wchar_t const *&_from_next,
-		char *const _to,
-		char *const _to_limit,
-		char *&_to_next
-	)
-	{
-		return
-			_cvt.out(
-				_state,
-				_from,
-				_from_end,
-				_from_next,
-				_to,
-				_to_limit,
-				_to_next
-			);
-	}
-};
-
-template<>
-struct call_traits<
-	wchar_t
->
-{
-public:
-	static std::codecvt_base::result
-	conv(
-		codecvt_t const &_cvt,
-		state_type &_state,
-		char const *const _from,
-	        char const *const _from_end,
-	        char const *&_from_next,
-	        wchar_t *const _to,
-	        wchar_t *const _to_limit,
-	        wchar_t *&_to_next
-	)
-	{
-		return
-			_cvt.in(
-				_state,
-				_from,
-				_from_end,
-				_from_next,
-				_to,
-				_to_limit,
-				_to_next
-			);
-	}
-};
-
 template<
 	typename Out,
-	typename In
+	typename In,
+	typename Function
 >
 std::basic_string<Out> const
 codecvt(
 	std::basic_string<In> const &_string,
-	std::locale const &_locale
+	std::locale const &_locale,
+	Function const &_function
 )
 {
 	typedef std::basic_string<
@@ -124,8 +48,10 @@ codecvt(
 	)
 		return return_type();
 
-	codecvt_t const &conv(
-		std::use_facet<codecvt_t>(
+	fcppt::codecvt_type const &conv(
+		std::use_facet<
+			fcppt::codecvt_type
+		>(
 			_locale
 		)
 	);
@@ -133,6 +59,8 @@ codecvt(
 	buffer_type buf(
 		_string.size()
 	);
+
+	typedef fcppt::codecvt_type::state_type state_type;
 
 	state_type state;
 
@@ -153,8 +81,9 @@ codecvt(
 		Out *to_next;
 
 		std::codecvt_base::result const result(
-			call_traits<Out>::conv(
-				conv,
+			(
+				conv.*_function
+			)(
 				state,
 				from,
 				fcppt::container::data_end(
@@ -209,8 +138,6 @@ codecvt(
 			FCPPT_TEXT("Unknown return value in codecvt!")
 		);
 	}
-}
-
 }
 
 }

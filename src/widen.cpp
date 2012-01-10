@@ -6,6 +6,12 @@
 
 #include <fcppt/widen.hpp>
 #include "codecvt.hpp"
+#include "codecvt_type.hpp"
+#include <fcppt/config/external_begin.hpp>
+#include <locale>
+#include <string>
+#include <fcppt/config/external_end.hpp>
+
 
 std::wstring const
 fcppt::widen(
@@ -18,6 +24,7 @@ fcppt::widen(
 			wchar_t
 		>(
 			_string,
-			_locale
+			_locale,
+			&fcppt::codecvt_type::in
 		);
 }
