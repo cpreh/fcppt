@@ -4,9 +4,16 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
+#include <fcppt/type_traits/is_bidirectional_iterator.hpp>
+#include <fcppt/type_traits/is_forward_iterator.hpp>
+#include <fcppt/type_traits/is_input_iterator.hpp>
 #include <fcppt/type_traits/is_iterator.hpp>
+#include <fcppt/type_traits/is_output_iterator.hpp>
+#include <fcppt/type_traits/is_random_access_iterator.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/test/unit_test.hpp>
+#include <iterator>
+#include <list>
 #include <string>
 #include <fcppt/config/external_end.hpp>
 
@@ -57,5 +64,47 @@ BOOST_AUTO_TEST_CASE(
 			not_iterator
 		>::value
 	);
+}
 
+BOOST_AUTO_TEST_CASE(
+	type_traits_iterator_category
+)
+{
+	BOOST_CHECK(
+		fcppt::type_traits::is_input_iterator<
+			int *
+		>::value
+	);
+
+	BOOST_CHECK(
+		fcppt::type_traits::is_random_access_iterator<
+			int *
+		>::value
+	);
+
+	BOOST_CHECK(
+		!fcppt::type_traits::is_random_access_iterator<
+			std::list<int>::const_iterator
+		>::value
+	);
+
+	BOOST_CHECK(
+		fcppt::type_traits::is_bidirectional_iterator<
+			std::list<int>::const_iterator
+		>::value
+	);
+
+	BOOST_CHECK(
+		fcppt::type_traits::is_forward_iterator<
+			std::list<int>::const_iterator
+		>::value
+	);
+
+	BOOST_CHECK(
+		fcppt::type_traits::is_output_iterator<
+			std::ostream_iterator<
+				int
+			>
+		>::value
+	);
 }

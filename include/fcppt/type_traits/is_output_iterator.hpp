@@ -4,8 +4,8 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_TYPE_TRAITS_IS_INPUT_ITERATOR_HPP_INCLUDED
-#define FCPPT_TYPE_TRAITS_IS_INPUT_ITERATOR_HPP_INCLUDED
+#ifndef FCPPT_TYPE_TRAITS_IS_OUTPUT_ITERATOR_HPP_INCLUDED
+#define FCPPT_TYPE_TRAITS_IS_OUTPUT_ITERATOR_HPP_INCLUDED
 
 #include <fcppt/type_traits/is_iterator_of_category.hpp>
 #include <fcppt/config/external_begin.hpp>
@@ -20,11 +20,11 @@ namespace type_traits
 template<
 	typename T
 >
-struct is_input_iterator
+struct is_output_iterator
 :
 fcppt::type_traits::is_iterator_of_category<
 	T,
-	std::input_iterator_tag
+	std::output_iterator_tag
 >
 {
 };
