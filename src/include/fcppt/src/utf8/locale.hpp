@@ -8,7 +8,7 @@
 #define FCPPT_SRC_UTF8_LOCALE_HPP_INCLUDED
 
 #include <fcppt/config.hpp>
-#if defined(FCPPT_STRING_IS_UTF8)
+#if ! defined(FCPPT_STRING_IS_UTF8)
 #include <fcppt/config/external_begin.hpp>
 #include <locale>
 #include <fcppt/config/external_end.hpp>

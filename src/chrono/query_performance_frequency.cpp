@@ -6,7 +6,7 @@
 
 #include <fcppt/config/platform.hpp>
 #if defined(FCPPT_CONFIG_WINDOWS_PLATFORM)
-#include "query_performance_frequency.hpp"
+#include <fcppt/src/chrono/query_performance_frequency.hpp>
 #include <fcppt/config/include_windows.hpp>
 #include <fcppt/chrono/clock_failure.hpp>
 #include <fcppt/text.hpp>

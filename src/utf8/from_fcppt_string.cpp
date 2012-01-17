@@ -7,8 +7,8 @@
 #include <fcppt/utf8/from_fcppt_string.hpp>
 #include <fcppt/config.hpp>
 #if !defined(FCPPT_STRING_IS_UTF8)
-#include "locale.hpp"
-#include "ucs4.hpp"
+#include <fcppt/src/utf8/locale.hpp>
+#include <fcppt/src/utf8/ucs4.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <algorithm>
 #include <iterator>
