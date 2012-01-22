@@ -7,11 +7,18 @@
 #ifndef FCPPT_FOREACH_ENUMERATOR_START_HPP_INCLUDED
 #define FCPPT_FOREACH_ENUMERATOR_START_HPP_INCLUDED
 
-#define FCPPT_FOREACH_ENUMERATOR_START(name, enum_, start)\
-for(\
-	enum_::type name = start;\
-	name < enum_::size;\
-	name = static_cast<enum_::type>(name + 1)\
-)
+#include <fcppt/foreach_enumerator_start_end.hpp>
+
+#define FCPPT_FOREACH_ENUMERATOR_START(\
+	name,\
+	enum_,\
+	start\
+)\
+	FCPPT_FOREACH_ENUMERATOR_START_END(\
+		name,\
+		enum_,\
+		start,\
+		enum_::size\
+	)
 
 #endif
