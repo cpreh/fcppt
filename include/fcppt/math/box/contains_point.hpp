@@ -33,7 +33,7 @@ template<
 	typename T,
 	typename S,
 	size_type NBox,
-	typename NPoint,
+	typename NPoint
 >
 bool
 contains_point(
