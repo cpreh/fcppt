@@ -21,6 +21,9 @@ namespace math
 {
 namespace box
 {
+/**
+\brief Metafunction to check the dimension of a box
+*/
 template
 <
 	typename Box,
@@ -31,6 +34,7 @@ struct has_dim
 boost::false_type
 {};
 
+/// \cond FCPPT_DOXYGEN_DEBUG
 template<
 	typename T,
 	size_type N,
@@ -49,6 +53,7 @@ detail::dim_matches<
 	N
 >
 {};
+/// \endcond
 }
 }
 }

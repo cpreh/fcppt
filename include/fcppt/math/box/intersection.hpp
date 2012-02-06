@@ -22,9 +22,13 @@ namespace math
 namespace box
 {
 
-/// Calculates the intersecting box of @a _a and @a _b
 /**
- * @return If there is no intersection, null will be returned
+\brief Calculates the intersection of two boxes (which is, again, a box)
+\ingroup fcpptmathbox
+\tparam N The box's dimension
+\tparam T The box's <code>value_type</code>
+
+If there is no intersection, the null box will be returned.
 */
 template<
 	typename T,

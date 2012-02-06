@@ -21,7 +21,7 @@ namespace vector
 {
 /**
 \brief Calculate the n dimensional polar coordinates, also called "hyperspherical coordinates"
-\ingroup fcpptmathvector
+\ingroup fcpptmathbox
 \tparam T The vector's <code>value_type</code>
 \tparam N The vector's dimension type
 \tparam S The vector's storage type

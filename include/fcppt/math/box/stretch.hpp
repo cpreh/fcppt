@@ -20,6 +20,12 @@ namespace math
 {
 namespace box
 {
+/**
+\brief Stretch a box around its center by a given factor
+\ingroup fcpptmathbox
+\tparam T The box's <code>value_type</code>
+\tparam N The box's dimension
+*/
 template<typename T,size_type N>
 basic<T,N> const
 stretch(

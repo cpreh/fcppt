@@ -19,7 +19,15 @@ namespace math
 {
 namespace box
 {
-/// Returns the center of the box
+/**
+\brief Returns the center of the box
+\ingroup fcpptmathbox
+\tparam N The box's dimension
+\tparam T The box's <code>value_type</code>
+
+Note that this might not calculate the box's "real" center, since the
+calculation is performed using <code>T</code>, which might be integral.
+*/
 template<typename T,size_type N>
 typename basic<T,N>::vector const
 center(

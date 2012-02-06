@@ -18,7 +18,12 @@ namespace math
 namespace box
 {
 
-/// Tests if @a a and @a b intersect
+/**
+\brief Tests if two boxes intersect
+\ingroup fcpptmathbox
+\tparam N The box's dimension
+\tparam T The box's <code>value_type</code>
+*/
 template<
 	typename T,
 	size_type N

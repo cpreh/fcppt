@@ -20,6 +20,17 @@ namespace math
 namespace box
 {
 
+/**
+\brief Compare two boxes component-wise using an epsilon
+\ingroup fcpptmathbox
+\tparam N The box's dimension
+\tparam T The box's <code>value_type</code>
+
+Componentwise in this context means: Compare the positions and the sizes
+component-wise. For each component of the position and the size, check if the
+components differ by more than the specified epsilon. If so, return
+<code>false</code>.
+*/
 template<
 	typename T,
 	math::size_type N

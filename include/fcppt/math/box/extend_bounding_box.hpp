@@ -18,6 +18,15 @@ namespace math
 {
 namespace box
 {
+/**
+\brief Extend a box to fit a point in it
+\ingroup fcpptmathbox
+\tparam N The box's dimension
+\tparam T The box's <code>value_type</code>
+
+The result will either be the same box (if the point is contained in the box)
+or a box that's just big enough to hold the given point.
+*/
 template<typename T,size_type N>
 basic<T,N> const
 extend_bounding_box(

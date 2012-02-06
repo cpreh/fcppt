@@ -20,7 +20,13 @@ namespace math
 namespace box
 {
 
-/// Converts a box into a different box of the same dimension using static_cast
+/**
+\brief Converts a box into a different box of the same dimension using static_cast
+\ingroup fcpptmathbox
+\tparam T The original box's <code>value_type</code>
+\tparam Dest The destination box's <code>value_type</code>
+\tparam N The box's dimension
+*/
 template<
 	typename Dest,
 	typename T,

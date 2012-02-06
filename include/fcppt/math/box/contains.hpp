@@ -16,7 +16,14 @@ namespace math
 namespace box
 {
 
-/// Tests if @a inner is inside @a outer
+/**
+\brief Test if one box is completely inside another box
+\ingroup fcpptmathbox
+\tparam N The box's dimension
+\tparam T The box's <code>value_type</code>
+\param outer The outer (larger) box
+\param inner The inner (smaller) box
+*/
 template<
 	typename T,
 	size_type N

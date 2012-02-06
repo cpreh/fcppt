@@ -26,7 +26,12 @@ namespace math
 namespace box
 {
 
-/// Returns the 2^N corner points of the given box.
+/**
+\brief Returns the 2^N corner points (vertices) of the given box.
+\ingroup fcpptmathbox
+\tparam N The box's dimension
+\tparam T The box's <code>value_type</code>
+*/
 template<
 	typename T,
 	fcppt::math::size_type N

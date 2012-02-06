@@ -16,7 +16,11 @@ namespace math
 namespace box
 {
 
-/// Constructs a rectangle from its four edges instead of a position and a dimension
+/**
+\brief Constructs a rectangle from its four edges instead of a position and a dimension
+\ingroup fcpptmathbox
+\tparam Scalar The box's <code>value_type</code>
+*/
 template<
 	typename Scalar
 >

@@ -16,7 +16,11 @@ namespace math
 namespace box
 {
 
-/// Typedefs a two dimensional box (a rect)
+/**
+\brief Typedefs a two dimensional box (a rect)
+\ingroup fcpptmathbox
+\tparam T The box's <code>value_type</code>
+*/
 template<
 	typename T
 >

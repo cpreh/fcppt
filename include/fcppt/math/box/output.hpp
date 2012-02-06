@@ -23,7 +23,18 @@ namespace math
 namespace box
 {
 
-/// Outputs a box to a basic_ostream
+/**
+\brief Outputs a box to a basic_ostream
+\ingroup fcpptmathbox
+\tparam N The box's dimension
+\tparam T The box's <code>value_type</code>
+
+The format will be
+
+<pre>
+(position,size)
+</pre>
+*/
 template<
 	typename T,
 	size_type N,
