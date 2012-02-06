@@ -27,7 +27,12 @@ namespace quaternion
 \tparam N The vector's dimension type (dynamic vectors are allowed)
 \tparam S The vector's storage type (dynamic vectors are allowed)
 */
-template<typename T>
+template
+<
+	typename T,
+	typename N,
+	typename S
+>
 void
 to_angle_and_axis(
 	boost::math::quaternion<T> const &q,

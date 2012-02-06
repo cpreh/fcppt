@@ -30,7 +30,7 @@ namespace quaternion
 \note
 The vector is <em>not</em> an axis, see fcppt::math::quaternion::from_angle_and_axis for that!
 */
-template<typename T>
+template<typename T,typename N,typename S>
 boost::math::quaternion<T> const
 from_scalar_and_vector(
 	T const &s,
