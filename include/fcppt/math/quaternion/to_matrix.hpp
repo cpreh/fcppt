@@ -21,7 +21,11 @@ namespace math
 {
 namespace quaternion
 {
-/// Converts a quaternion to a rotation matrix
+/**
+\brief Converts a quaternion to a static 4x4 rotation matrix
+\ingroup fcpptmathquaternion
+\tparam T The quaternion's value type (has to be a floating point type)
+*/
 template
 <
 	typename T

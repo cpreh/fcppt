@@ -17,7 +17,11 @@ namespace math
 {
 namespace quaternion
 {
-/// Calculates the dot product of the two quaternions
+/**
+\brief Calculates the dot product of the two quaternions
+\ingroup fcpptmathquaternion
+\tparam T The quaternion's value type
+*/
 template<typename T>
 T const
 dot(

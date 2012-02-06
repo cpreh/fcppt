@@ -21,15 +21,20 @@ namespace math
 namespace quaternion
 {
 /**
- * Initializes a quaternion from a scalar and a vector.
- *
- * The vector is _not_ an axis, see from_angle_and_axis for that!
- */
+\brief Initializes a quaternion from a scalar and a vector.
+\ingroup fcpptmathquaternion
+\tparam T The quaternion's value type
+\tparam N The vector's dimension type (dynamic vectors are allowed)
+\tparam S The vector's storage type (dynamic vectors are allowed)
+\see fcppt::math::quaternion::from_angle_and_axis.
+\note
+The vector is <em>not</em> an axis, see fcppt::math::quaternion::from_angle_and_axis for that!
+*/
 template<typename T>
 boost::math::quaternion<T> const
 from_scalar_and_vector(
 	T const &s,
-	typename fcppt::math::vector::static_<T,3>::type const &v)
+	fcppt::math::vector::basic<T,N,S> const &v)
 {
 	return
 		boost::math::quaternion<T>(

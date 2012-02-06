@@ -21,7 +21,11 @@ namespace math
 {
 namespace quaternion
 {
-/// Tests if the quaternion has norm 1
+/**
+\brief Tests if the quaternion has norm 1 (up to an epsilon)
+\ingroup fcpptmathquaternion
+\tparam T The quaternion's value type (has to be a floating point type)
+*/
 template<typename T>
 typename
 boost::enable_if

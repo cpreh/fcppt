@@ -10,7 +10,6 @@
 #include <fcppt/math/quaternion/from_scalar_and_vector.hpp>
 #include <fcppt/math/quaternion/is_normalized.hpp>
 #include <fcppt/math/vector/arithmetic.hpp>
-#include <fcppt/math/vector/static.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/math/quaternion.hpp>
 #include <cmath>
@@ -24,13 +23,18 @@ namespace math
 namespace quaternion
 {
 /**
- * Initializes a quaternion from an axis and an angle. See also: from_scalar_and_vector.
- */
-template<typename T>
+\brief Initializes a quaternion from an axis and an angle.
+\ingroup fcpptmathquaternion
+\tparam T The quaternion's value type
+\tparam N The vector's dimension type (dynamic vectors are allowed)
+\tparam S The vector's storage type (dynamic vectors are allowed)
+\see fcppt::math::quaternion::from_scalar_and_vector.
+*/
+template<typename T,typename N,typename S>
 boost::math::quaternion<T> const
 from_angle_and_axis(
 	T const &angle,
-	typename fcppt::math::vector::static_<T,3>::type const &axis)
+	fcppt::math::vector::basic<T,N,S> const &axis)
 {
 	T const
 		half_angle =
@@ -43,7 +47,7 @@ from_angle_and_axis(
 				half_angle);
 
 	return
-		from_scalar_and_vector<T>(
+		fcppt::math::quaternion::from_scalar_and_vector<T>(
 			cos_angle,
 			sin_angle * axis);
 }

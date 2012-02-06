@@ -18,7 +18,13 @@ namespace math
 {
 namespace quaternion
 {
-/// Normalizes a quaternion q by dividing by dot(q,q)
+/**
+\brief Normalizes a quaternion <code>q</code> by dividing by <code>dot(q,q)</code>
+\ingroup fcpptmathquaternion
+\tparam T The quaternion's value type (has to be a floating point type)
+\note
+Behavior is undefined for quaternions with norm zero.
+*/
 template<typename T>
 boost::math::quaternion<T> const
 normalize(

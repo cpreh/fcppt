@@ -18,7 +18,11 @@ namespace math
 {
 namespace quaternion
 {
-/// Rotates a vector using a quaternion
+/**
+\brief Rotates a static vector using a quaternion
+\ingroup fcpptmathquaternion
+\tparam T The quaternion's value type (has to be a floating point type)
+*/
 template<typename T>
 typename fcppt::math::vector::static_<T,3>::type const
 vector_rotation(

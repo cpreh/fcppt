@@ -8,7 +8,6 @@
 #define FCPPT_MATH_QUATERNION_TO_ANGLE_AND_AXIS_HPP_INCLUDED
 
 #include <fcppt/math/vector/basic_impl.hpp>
-#include <fcppt/math/vector/static.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/math/quaternion.hpp>
 #include <cmath>
@@ -21,13 +20,19 @@ namespace math
 {
 namespace quaternion
 {
-/// Converts a quaternion to an angle and and axis
+/**
+\brief Converts a quaternion to an angle and and axis
+\ingroup fcpptmathquaternion
+\tparam T The quaternion's value type (has to be a floating point type)
+\tparam N The vector's dimension type (dynamic vectors are allowed)
+\tparam S The vector's storage type (dynamic vectors are allowed)
+*/
 template<typename T>
 void
 to_angle_and_axis(
 	boost::math::quaternion<T> const &q,
 	T &angle,
-	typename fcppt::math::vector::static_<T,3>::type &axis)
+	fcppt::math::vector::basic<T,N,S> &axis)
 {
 	// NOTE: Can we express this with quaternion functions instead of the manual sqrt?
 	T const scale =
