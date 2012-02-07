@@ -8,30 +8,27 @@
 #include <fcppt/to_std_string.hpp>
 #include <fcppt/config.hpp>
 #if !defined(FCPPT_NARROW_STRING)
-#include <fcppt/narrow.hpp>
+#include <fcppt/string_conv_locale.hpp>
+#include <fcppt/to_std_string_locale.hpp>
 #endif
 #include <fcppt/config/external_begin.hpp>
-#include <locale>
 #include <string>
 #include <fcppt/config/external_end.hpp>
 
 
 std::string const
 fcppt::to_std_string(
-	fcppt::string const &_input,
-	std::locale const &
-#if !defined(FCPPT_NARROW_STRING)
-		_locale
-#endif
+	fcppt::string const &_input
 )
 {
-#if !defined(FCPPT_NARROW_STRING)
 	return
-		fcppt::narrow(
+#if !defined(FCPPT_NARROW_STRING)
+		fcppt::to_std_string_locale(
 			_input,
-			_locale
-		);
+			fcppt::string_conv_locale()
+		)
 #else
-	return _input;
+		_input
 #endif
+		;
 }

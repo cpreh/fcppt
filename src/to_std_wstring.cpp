@@ -8,31 +8,27 @@
 #include <fcppt/to_std_wstring.hpp>
 #include <fcppt/config.hpp>
 #if defined(FCPPT_NARROW_STRING)
-#include <fcppt/widen.hpp>
+#include <fcppt/string_conv_locale.hpp>
+#include <fcppt/to_std_wstring_locale.hpp>
 #endif
 #include <fcppt/config/external_begin.hpp>
-#include <locale>
 #include <string>
 #include <fcppt/config/external_end.hpp>
 
 
 std::wstring const
 fcppt::to_std_wstring(
-	fcppt::string const &_input,
-#if defined(FCPPT_NARROW_STRING)
-	std::locale const &_locale
-#else
-	std::locale const &
-#endif
+	fcppt::string const &_input
 )
 {
-#if defined(FCPPT_NARROW_STRING)
 	return
-		fcppt::widen(
+#if defined(FCPPT_NARROW_STRING)
+		fcppt::to_std_wstring_locale(
 			_input,
-			_locale
-		);
+			fcppt::string_conv_locale()
+		)
 #else
-	return _input;
+		_input
 #endif
+		;
 }

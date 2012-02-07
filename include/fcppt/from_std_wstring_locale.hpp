@@ -4,12 +4,13 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_FROM_STD_WSTRING_HPP_INCLUDED
-#define FCPPT_FROM_STD_WSTRING_HPP_INCLUDED
+#ifndef FCPPT_FROM_STD_WSTRING_LOCALE_HPP_INCLUDED
+#define FCPPT_FROM_STD_WSTRING_LOCALE_HPP_INCLUDED
 
 #include <fcppt/string.hpp>
 #include <fcppt/symbol.hpp>
 #include <fcppt/config/external_begin.hpp>
+#include <locale>
 #include <string>
 #include <fcppt/config/external_end.hpp>
 
@@ -18,8 +19,9 @@ namespace fcppt
 
 FCPPT_SYMBOL
 fcppt::string const
-from_std_wstring(
-	std::wstring const &
+from_std_wstring_locale(
+	std::wstring const &,
+	std::locale const &
 );
 
 }

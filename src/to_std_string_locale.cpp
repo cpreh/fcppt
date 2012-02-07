@@ -4,31 +4,34 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/from_std_wstring.hpp>
 #include <fcppt/string.hpp>
+#include <fcppt/to_std_string_locale.hpp>
 #include <fcppt/config.hpp>
-#if defined(FCPPT_NARROW_STRING)
-#include <fcppt/from_std_wstring_locale.hpp>
-#include <fcppt/string_conv_locale.hpp>
+#if !defined(FCPPT_NARROW_STRING)
+#include <fcppt/narrow.hpp>
 #endif
 #include <fcppt/config/external_begin.hpp>
+#include <locale>
 #include <string>
 #include <fcppt/config/external_end.hpp>
 
 
-fcppt::string const
-fcppt::from_std_wstring(
-	std::wstring const &_input
+std::string const
+fcppt::to_std_string_locale(
+	fcppt::string const &_input,
+	std::locale const &
+#if !defined(FCPPT_NARROW_STRING)
+		_locale
+#endif
 )
 {
+#if !defined(FCPPT_NARROW_STRING)
 	return
-#if defined(FCPPT_NARROW_STRING)
-		fcppt::from_std_wstring_locale(
+		fcppt::narrow(
 			_input,
-			fcppt::string_conv_locale()
-		)
+			_locale
+		);
 #else
-		_input
+	return _input;
 #endif
-		;
 }

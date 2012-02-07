@@ -324,7 +324,9 @@ set(
 	include/fcppt/format.hpp
 	include/fcppt/forward.hpp
 	include/fcppt/from_std_string.hpp
+	include/fcppt/from_std_string_locale.hpp
 	include/fcppt/from_std_wstring.hpp
+	include/fcppt/from_std_wstring_locale.hpp
 	include/fcppt/function/detail/clear_type.hpp
 	include/fcppt/function/detail/functor_wrapper.hpp
 	include/fcppt/function/detail/functor_wrapper_fwd.hpp
@@ -880,7 +882,9 @@ set(
 	include/fcppt/time/std_time.hpp
 	include/fcppt/time/time.hpp
 	include/fcppt/to_std_string.hpp
+	include/fcppt/to_std_string_locale.hpp
 	include/fcppt/to_std_wstring.hpp
+	include/fcppt/to_std_wstring_locale.hpp
 	include/fcppt/tr1/array.hpp
 	include/fcppt/tr1/cmath.hpp
 	include/fcppt/tr1/complex.hpp
@@ -996,7 +1000,9 @@ set(
 	src/error/strerrno.cpp
 	src/error/strerror.cpp
 	src/from_std_string.cpp
+	src/from_std_string_locale.cpp
 	src/from_std_wstring.cpp
+	src/from_std_wstring_locale.cpp
 	src/include/fcppt/src/chrono/clock_gettime_impl.hpp
 	src/include/fcppt/src/chrono/mach_time_impl.hpp
 	src/include/fcppt/src/chrono/mach_timebase.hpp
@@ -1072,7 +1078,9 @@ set(
 	src/time/sleep.cpp
 	src/time/std_time.cpp
 	src/to_std_string.cpp
+	src/to_std_string_locale.cpp
 	src/to_std_wstring.cpp
+	src/to_std_wstring_locale.cpp
 	src/type_info.cpp
 	src/type_name.cpp
 	src/utf8/facet.cpp
