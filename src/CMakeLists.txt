@@ -346,13 +346,11 @@ set(
 	include/fcppt/impl/bad_truncation_check_cast.hpp
 	include/fcppt/impl/exception.hpp
 	include/fcppt/impl/extract_from_string_error.hpp
-	include/fcppt/impl/invalid_minmax_pair.hpp
 	include/fcppt/import_symbol.hpp
 	include/fcppt/insert_to_fcppt_string.hpp
 	include/fcppt/insert_to_std_string.hpp
 	include/fcppt/insert_to_std_wstring.hpp
 	include/fcppt/insert_to_string.hpp
-	include/fcppt/invalid_minmax_pair.hpp
 	include/fcppt/io/cerr.hpp
 	include/fcppt/io/cfstream.hpp
 	include/fcppt/io/cifstream.hpp
@@ -657,11 +655,6 @@ set(
 	include/fcppt/math/vector/unit.hpp
 	include/fcppt/math/vector/vector.hpp
 	include/fcppt/micro_version.hpp
-	include/fcppt/minmax_pair.hpp
-	include/fcppt/minmax_pair_decl.hpp
-	include/fcppt/minmax_pair_fwd.hpp
-	include/fcppt/minmax_pair_impl.hpp
-	include/fcppt/minmax_pair_output.hpp
 	include/fcppt/minor_version.hpp
 	include/fcppt/move.hpp
 	include/fcppt/mpl/append.hpp
