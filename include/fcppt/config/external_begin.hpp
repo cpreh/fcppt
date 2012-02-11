@@ -80,6 +80,7 @@ FCPPT_PP_DISABLE_GCC_WARNING(-Woverloaded-virtual)
 FCPPT_PP_DISABLE_GCC_WARNING(-Wredundant-decls)
 FCPPT_PP_DISABLE_GCC_WARNING(-Wshadow)
 FCPPT_PP_DISABLE_GCC_WARNING(-Wstrict-aliasing)
+FCPPT_PP_DISABLE_GCC_WARNING(-Wtype-limits)
 // This currently doesn't silence -Wundef warnings
 //FCPPT_PP_DISABLE_GCC_WARNING(-Wundef)
 FCPPT_PP_DISABLE_GCC_WARNING(-Wuninitialized)
