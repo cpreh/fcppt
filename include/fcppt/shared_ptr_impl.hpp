@@ -58,7 +58,6 @@ template<
 >
 template<
 	typename Y,
-	typename D,
 	typename A
 >
 fcppt::shared_ptr<T, Deleter>::shared_ptr(

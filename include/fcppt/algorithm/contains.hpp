@@ -17,15 +17,16 @@ namespace algorithm
 {
 
 /**
- * \brief Checks if a given \p value is inside the range [\p beg,\p end]
- * \ingroup fcpptalgorithm
- * \details
- * This is equivalent to
- *
- * <pre>
- * std::find(beg, end, value) != end
- * </pre>.
- **/
+\brief Checks if a given \p value is inside the range [\p beg,\p end]
+\ingroup fcpptalgorithm
+\tparam In A forward iterator
+\tparam T A type compatible with the iterator's value type
+
+This is equivalent to
+\code
+std::find(beg, end, value) != end
+\endcode
+*/
 template<
 	typename In,
 	typename T
@@ -46,9 +47,16 @@ contains(
 		!= end;
 }
 
-/// Checks if a given @a value is in the container @a container
 /**
- * Equivalent to contains(container.begin(), container.end(), value)
+\brief Checks if a given \p value is inside a range
+\ingroup fcpptalgorithm
+\tparam In A container type having <code>begin</code> and <code>end</code> member functions
+\tparam T The container's value type
+
+This is equivalent to
+\code
+contains(container.begin(), container.end(), value)
+\endcode
 */
 template<
 	typename Container,

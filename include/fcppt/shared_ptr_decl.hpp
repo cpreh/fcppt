@@ -51,7 +51,6 @@ public:
 
 	template<
 		typename Y,
-		typename D,
 		typename A
 	>
 	shared_ptr(

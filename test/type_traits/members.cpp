@@ -23,7 +23,9 @@ FCPPT_TYPE_TRAITS_GENERATE_HAS_TYPE(
 struct apple
 {
 public:
-	void worm();
+	void worm()
+	{
+	}
 };
 
 struct orange
