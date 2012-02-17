@@ -204,9 +204,17 @@ IF(
 	)
 ENDIF()
 
+IF(
+	"${CMAKE_CXX_COMPILER_ID}" STREQUAL "Intel"
+)
+	SET(
+		FCPPT_UTILS_COMPILER_IS_INTELCPP ON
+	)
+ENDIF()
+
 # Setup default compiler flags
 IF(
-	CMAKE_COMPILER_IS_GNUCXX OR FCPPT_UTILS_COMPILER_IS_CLANGPP
+	CMAKE_COMPILER_IS_GNUCXX OR FCPPT_UTILS_COMPILER_IS_CLANGPP OR FCPPT_UTILS_COMPILER_IS_INTELCPP
 )
 	SET(
 		CMAKE_CXX_FLAGS_RELEASE
@@ -302,14 +310,23 @@ IF(
 	ENDIF()
 
 	# Activate common warning options
-	ADD_DEFINITIONS (
-		"-pedantic-errors -Wall -Wextra -Wconversion"
-		"-Wfloat-equal -Wredundant-decls -Wuninitialized -Winit-self"
+	add_definitions (
+		"-Wall -Wextra -Wconversion"
+		"-Wuninitialized "
 		"-Woverloaded-virtual -Wnon-virtual-dtor -Wshadow"
-		"-Wsign-promo -Wstrict-aliasing=1 -Wold-style-cast"
-		"-Wcast-qual -Wcast-align"
+		"-Wstrict-aliasing=1"
+		"-Wcast-qual"
 		#currently, -Wundef cannot be disabled via a pragma
 	)
+
+	if(
+		NOT FCPPT_UTILS_COMPILER_IS_INTELCPP
+	)
+		add_definitions(
+			"-pedantic-errors -Wfloat-equal -Wredundant-decls"
+			"-Winit-self -Wsign-promo -Wcast-align -Wold-style-cast"
+		)
+	endif()
 
 	# Disable warnings about long long because too much stuff uses it
 	IF(
