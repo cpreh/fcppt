@@ -356,10 +356,11 @@ elseif(
 
 	# 304: No explicit public/private used for inheritance
 	# 383: rvalue bound to const reference
+	# 444: destructor of base class not virtual
 	# 981: Arguments are evaluated in unspecified order
 	# 1418: Function definition without declaration (even emitted for inline functions and templates)
 	add_definitions(
-		"-wd304 -wd383 -wd981 -wd1418"
+		"-wd304 -wd383 -wd444 -wd981 -wd1418"
 	)
 endif()
 

@@ -17,7 +17,6 @@ namespace
 {
 struct instance
 {
-	explicit
 	instance()
 	:
 		has_color_output_(

@@ -11,8 +11,8 @@
 #include <fcppt/config/compiler.hpp>
 
 
-/// Push the warning level (only supported on VC++ for now)
-#if defined(FCPPT_CONFIG_MSVC_COMPILER)
+/// Push the warning level
+#if defined(FCPPT_CONFIG_MSVC_COMPILER) || defined(FCPPT_CONFIG_ICC_COMPILER)
 #	include <fcppt/preprocessor/pragma.hpp>
 #	define FCPPT_PP_PUSH_WARNING \
 	FCPPT_PP_PRAGMA(warning(push))

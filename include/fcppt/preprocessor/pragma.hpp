@@ -13,7 +13,7 @@
 /**
  * This can be used to wrap pragma inside other macros
 */
-#if defined(FCPPT_CONFIG_MSVC_COMPILER)
+#if defined(FCPPT_CONFIG_MSVC_COMPILER) || defined(FCPPT_CONFIG_ICC_COMPILER)
 #define FCPPT_PP_PRAGMA(x) __pragma(x)
 #elif defined(FCPPT_CONFIG_GCC_COMPILER)
 #define FCPPT_PP_PRAGMA(x) _Pragma(#x)

@@ -26,7 +26,6 @@ class set
 {
 public:
 	FCPPT_SYMBOL
-	explicit
 	set(
 		fcppt::io::color::foreground::type,
 		fcppt::io::color::background::type,

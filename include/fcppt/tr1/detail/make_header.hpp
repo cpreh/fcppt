@@ -11,7 +11,7 @@
 
 #if defined(FCPPT_CONFIG_MSVC_COMPILER)
 #	define FCPPT_TR1_DETAIL_MAKE_HEADER(name) <name>
-#elif defined(FCPPT_CONFIG_GCC_COMPILER)
+#elif defined(FCPPT_CONFIG_GCC_COMPILER) || defined(FCPPT_CONFIG_ICC_COMPILER)
 #	define FCPPT_TR1_DETAIL_MAKE_HEADER(name) <tr1/name>
 #else
 #	error "Don't know where the tr1 headers are"

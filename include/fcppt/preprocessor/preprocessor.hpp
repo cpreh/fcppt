@@ -8,6 +8,7 @@
 #define FCPPT_PREPROCESSOR_PREPROCESSOR_HPP_INCLUDED
 
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
+#include <fcppt/preprocessor/disable_icc_warning.hpp>
 #include <fcppt/preprocessor/disable_vc_warning.hpp>
 #include <fcppt/preprocessor/enum_params_forward_z.hpp>
 #include <fcppt/preprocessor/file.hpp>

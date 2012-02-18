@@ -17,6 +17,7 @@
 FCPPT_PP_PUSH_WARNING
 
 #if defined(FCPPT_CONFIG_MSVC_COMPILER)
+
 #include <fcppt/preprocessor/disable_vc_warning.hpp>
 FCPPT_PP_DISABLE_VC_WARNING(4061) // enum not handled in switch
 FCPPT_PP_DISABLE_VC_WARNING(4100) // unreferenced formal parameter
@@ -48,7 +49,9 @@ FCPPT_PP_DISABLE_VC_WARNING(4668) // #if with an undefined macro
 FCPPT_PP_DISABLE_VC_WARNING(4702) // unreachable code
 FCPPT_PP_DISABLE_VC_WARNING(4986) // unmatching exception specification
 FCPPT_PP_DISABLE_VC_WARNING(4987) // non standard throw(...)
+
 #elif defined(FCPPT_CONFIG_GCC_COMPILER)
+
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 #if defined(FCPPT_CONFIG_CLANG_COMPILER)
 FCPPT_PP_DISABLE_GCC_WARNING(-Wnewline-eof)
@@ -87,6 +90,16 @@ FCPPT_PP_DISABLE_GCC_WARNING(-Wtype-limits)
 FCPPT_PP_DISABLE_GCC_WARNING(-Wuninitialized)
 FCPPT_PP_DISABLE_GCC_WARNING(-Wunused-parameter)
 FCPPT_PP_DISABLE_GCC_WARNING(-Wunused-variable)
+
+#elif defined(FCPPT_CONFIG_ICC_COMPILER)
+
+#include <fcppt/preprocessor/disable_icc_warning.hpp>
+FCPPT_PP_DISABLE_ICC_WARNING(193) // zero used for undefined preprocessor identifier
+FCPPT_PP_DISABLE_ICC_WARNING(279) // controlling expression is constant
+FCPPT_PP_DISABLE_ICC_WARNING(593) // variable set but never used
+FCPPT_PP_DISABLE_ICC_WARNING(2304) // non-explicit constructor with single argument
+FCPPT_PP_DISABLE_ICC_WARNING(2415) // unused variable with static storage
+
 #endif
 
 #define FCPPT_CONFIG_INSIDE_EXTERNAL

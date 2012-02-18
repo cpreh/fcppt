@@ -13,6 +13,9 @@
 #include <fcppt/detail_unique_ptr/pointer_type.hpp>
 #include <fcppt/detail_unique_ptr/rv.hpp>
 #include <fcppt/detail_unique_ptr/storage.hpp>
+#include <fcppt/preprocessor/disable_icc_warning.hpp>
+#include <fcppt/preprocessor/pop_warning.hpp>
+#include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/mpl/if.hpp>
 #include <boost/type_traits/add_reference.hpp>
@@ -26,6 +29,9 @@
 namespace fcppt
 {
 
+FCPPT_PP_PUSH_WARNING
+FCPPT_PP_DISABLE_ICC_WARNING(2289)
+FCPPT_PP_DISABLE_ICC_WARNING(2304)
 template<
 	typename T,
 	template<
@@ -162,6 +168,7 @@ public:
 		unique_ptr &
 	);
 };
+FCPPT_PP_POP_WARNING
 
 template<
 	typename T,
