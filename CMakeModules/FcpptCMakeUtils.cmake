@@ -212,28 +212,31 @@ IF(
 	)
 ENDIF()
 
+set(
+	FCPPT_UTILS_GCC_ICC_CLANG_COMMON_OPTIONS
+	"-Wall -Wextra -Wconversion"
+	"-Wuninitialized "
+	"-Woverloaded-virtual -Wnon-virtual-dtor -Wshadow"
+	"-Wstrict-aliasing=1"
+	"-Wcast-qual"
+	#currently, -Wundef cannot be disabled via a pragma
+)
+
 # Setup default compiler flags
 IF(
-	CMAKE_COMPILER_IS_GNUCXX OR FCPPT_UTILS_COMPILER_IS_CLANGPP OR FCPPT_UTILS_COMPILER_IS_INTELCPP
+	CMAKE_COMPILER_IS_GNUCXX OR FCPPT_UTILS_COMPILER_IS_CLANGPP
 )
-	SET(
+	set(
 		CMAKE_CXX_FLAGS_RELEASE
 		"-O3 -fomit-frame-pointer -DNDEBUG"
 	)
 
-	# we need -fPIC for libraries on AMD64
-	IF("${CMAKE_SYSTEM_PROCESSOR}" STREQUAL "x86_64")
-		ADD_DEFINITIONS(
-			"-fPIC"
-		)
-	ENDIF()
-
 	# cmake tries to grep for warning messages which will fail in a lot of cases
-	SET(
+	set(
 		CMAKE_REQUIRED_FLAGS_BASE "-Wall -Werror -pedantic"
 	)
 
-	SET(
+	set(
 		CMAKE_REQUIRED_FLAGS ${CMAKE_REQUIRED_FLAGS_BASE}
 	)
 
@@ -267,134 +270,66 @@ IF(
 		FCPPT_UTILS_HAVE_SIGN_CONVERSION_FLAG
 	)
 
-	# To check for linker flags, CMAKE_REQUIRED_FLAGS has to be expanded
-	FUNCTION(
-		FCPPT_CHECK_GCC_LINKER_FLAG
-		FLAG
-		VARIABLE
-	)
-		SET(
-			CMAKE_REQUIRED_FLAGS
-			"${CMAKE_REQUIRED_FLAGS_BASE} ${FLAG}"
-		)
-
-		CHECK_CXX_COMPILER_FLAG(
-			""
-			${VARIABLE}
-		)
-	ENDFUNCTION()
-
-	FCPPT_CHECK_GCC_LINKER_FLAG(
-		"-Wl,--as-needed"
-		FCPPT_UTILS_HAVE_AS_NEEDED_LINKER_FLAG
-	)
-
-	FCPPT_CHECK_GCC_LINKER_FLAG(
-		"-Wl,--no-undefined"
-		FCPPT_UTILS_HAVE_NO_UNDEFINED_LINKER_FLAG
-	)
-
-	FCPPT_CHECK_GCC_LINKER_FLAG(
-		"-Wl,--no-copy-dt-needed-entries"
-		FCPPT_UTILS_HAVE_NO_COPY_DT_NEEDED_ENTRIES_LINKER_FLAG
-	)
-
-	UNSET(CMAKE_REQUIRED_FLAGS)
-
-	IF(
+	if(
 		FCPPT_ENABLE_CPP11
 	)
-		ADD_DEFINITIONS("-std=c++0x")
-	ELSE()
-		ADD_DEFINITIONS("-ansi")
-	ENDIF()
-
-	# Activate common warning options
-	add_definitions (
-		"-Wall -Wextra -Wconversion"
-		"-Wuninitialized "
-		"-Woverloaded-virtual -Wnon-virtual-dtor -Wshadow"
-		"-Wstrict-aliasing=1"
-		"-Wcast-qual"
-		#currently, -Wundef cannot be disabled via a pragma
-	)
-
-	if(
-		NOT FCPPT_UTILS_COMPILER_IS_INTELCPP
-	)
-		add_definitions(
-			"-pedantic-errors -Wfloat-equal -Wredundant-decls"
-			"-Winit-self -Wsign-promo -Wcast-align -Wold-style-cast"
-		)
+		add_definitions("-std=c++0x")
+	else()
+		add_definitions("-ansi")
 	endif()
 
+	add_definitions(
+		${FCPPT_UTILS_GCC_ICC_CLANG_COMMON_OPTIONS}
+	)
+
+	add_definitions(
+		"-pedantic-errors -Wfloat-equal -Wredundant-decls"
+		"-Winit-self -Wsign-promo -Wcast-align -Wold-style-cast"
+	)
+
 	# Disable warnings about long long because too much stuff uses it
-	IF(
+	if(
 		NOT FCPPT_ENABLE_CPP11
 	)
-		ADD_DEFINITIONS("-Wno-long-long")
+		add_definitions("-Wno-long-long")
+	endif()
+
+	if(FCPPT_UTILS_HAVE_DELETE_NON_VIRTUAL_DTOR_FLAG)
+		add_definitions("-Wdelete-non-virtual-dtor")
+	endif()
+
+	if(FCPPT_UTILS_HAVE_DOUBLE_PROMOTION_FLAG)
+		add_definitions("-Wdouble-promotion")
+	endif()
+
+	if(FCPPT_UTILS_HAVE_LOGICAL_OP_FLAG)
+		add_definitions("-Wlogical-op")
+	endif()
+
+	if(FCPPT_UTILS_HAVE_MISSING_DECLARATIONS_FLAG)
+		add_definitions("-Wmissing-declarations")
 	ENDIF()
 
-	IF(FCPPT_UTILS_HAVE_DELETE_NON_VIRTUAL_DTOR_FLAG)
-		ADD_DEFINITIONS ("-Wdelete-non-virtual-dtor")
-	ENDIF()
+	if(FCPPT_UTILS_HAVE_SIGN_CONVERSION_FLAG)
+		add_definitions("-Wsign-conversion")
+	endif()
 
-	IF(FCPPT_UTILS_HAVE_DOUBLE_PROMOTION_FLAG)
-		ADD_DEFINITIONS ("-Wdouble-promotion")
-	ENDIF()
-
-	IF(FCPPT_UTILS_HAVE_LOGICAL_OP_FLAG)
-		ADD_DEFINITIONS ("-Wlogical-op")
-	ENDIF()
-
-	IF(FCPPT_UTILS_HAVE_MISSING_DECLARATIONS_FLAG)
-		ADD_DEFINITIONS ("-Wmissing-declarations")
-	ENDIF()
-
-	IF(FCPPT_UTILS_HAVE_SIGN_CONVERSION_FLAG)
-		ADD_DEFINITIONS ("-Wsign-conversion")
-	ENDIF()
-
-	IF(FCPPT_UTILS_HAVE_GCC_VISIBILITY)
-		OPTION(
+	if(FCPPT_UTILS_HAVE_GCC_VISIBILITY)
+		option(
 			FCPPT_ENABLE_VISIBILITY_HIDDEN
 			"Enable -fvisbility=hidden"
 			TRUE
 		)
 
-		IF(FCPPT_ENABLE_VISIBILITY_HIDDEN)
-			ADD_DEFINITIONS ("-fvisibility=hidden")
-		ENDIF()
-	ENDIF()
+		if(FCPPT_ENABLE_VISIBILITY_HIDDEN)
+			add_definitions("-fvisibility=hidden")
+		endif()
+	endif()
 
-	IF(FCPPT_UTILS_HAVE_AS_NEEDED_LINKER_FLAG)
-		SET(
-			CMAKE_SHARED_LINKER_FLAGS
-			"-Wl,--as-needed ${CMAKE_SHARED_LINKER_FLAGS}"
-		)
-	ENDIF()
-
-	IF(FCPPT_UTILS_HAVE_NO_UNDEFINED_LINKER_FLAG)
-		SET(
-			CMAKE_SHARED_LINKER_FLAGS
-			"-Wl,--no-undefined ${CMAKE_SHARED_LINKER_FLAGS}"
-		)
-	ENDIF()
-
-	IF(FCPPT_UTILS_HAVE_NO_COPY_DT_NEEDED_ENTRIES_LINKER_FLAG)
-		SET(
-			CMAKE_SHARED_LINKER_FLAGS
-			"-Wl,--no-copy-dt-needed-entries ${CMAKE_SHARED_LINKER_FLAGS}"
-		)
-		SET(
-			CMAKE_EXE_LINKER_FLAGS
-			"-Wl,--no-copy-dt-needed-entries ${CMAKE_EXE_LINKER_FLAGS}"
-		)
-	ENDIF()
-ELSEIF(
+elseif(
 	MSVC
 )
-	ADD_DEFINITIONS(
+	add_definitions(
 		"/W4 /Wall /EHa /D_BIND_TO_CURRENT_VCLIBS_VERSION=1"
 		" /wd4996 /wd4061 /wd4350 /wd4371 /wd4503 /wd4514 /wd4710 /wd4711 /wd4738 /wd4820"
 	)
@@ -412,7 +347,94 @@ ELSEIF(
 	#4711 - function selected for automatic inline expansion
 	#4738 - storing 32-bit float result in memory
 	#4820 - byte padding after data members
-ENDIF()
+elseif(
+	FCPPT_UTILS_COMPILER_IS_INTELCPP
+)
+	add_definitions(
+		${FCPPT_UTILS_GCC_ICC_CLANG_COMMON_OPTIONS}
+	)
+
+	# 304: No explicit public/private used for inheritance
+	# 383: rvalue bound to const reference
+	# 981: Arguments are evaluated in unspecified order
+	# 1418: Function definition without declaration (even emitted for inline functions and templates)
+	add_definitions(
+		"-wd304 -wd383 -wd981 -wd1418"
+	)
+endif()
+
+# setup platform specific flags
+if(
+	UNIX
+)
+	# we need -fPIC for libraries on AMD64
+	if("${CMAKE_SYSTEM_PROCESSOR}" STREQUAL "x86_64")
+		add_definitions(
+			"-fPIC"
+		)
+	endif()
+
+	# To check for linker flags, CMAKE_REQUIRED_FLAGS has to be expanded
+	function(
+		fcppt_check_gcc_linker_flag
+		FLAG
+		VARIABLE
+	)
+		set(
+			CMAKE_REQUIRED_FLAGS
+			"${CMAKE_REQUIRED_FLAGS_BASE} ${FLAG}"
+		)
+
+		CHECK_CXX_COMPILER_FLAG(
+			""
+			${VARIABLE}
+		)
+	endfunction()
+
+	fcppt_check_gcc_linker_flag(
+		"-Wl,--as-needed"
+		FCPPT_UTILS_HAVE_AS_NEEDED_LINKER_FLAG
+	)
+
+	fcppt_check_gcc_linker_flag(
+		"-Wl,--no-undefined"
+		FCPPT_UTILS_HAVE_NO_UNDEFINED_LINKER_FLAG
+	)
+
+	fcppt_check_gcc_linker_flag(
+		"-Wl,--no-copy-dt-needed-entries"
+		FCPPT_UTILS_HAVE_NO_COPY_DT_NEEDED_ENTRIES_LINKER_FLAG
+	)
+
+	unset(
+		CMAKE_REQUIRED_FLAGS
+	)
+
+	if(FCPPT_UTILS_HAVE_AS_NEEDED_LINKER_FLAG)
+		set(
+			CMAKE_SHARED_LINKER_FLAGS
+			"-Wl,--as-needed ${CMAKE_SHARED_LINKER_FLAGS}"
+		)
+	endif()
+
+	if(FCPPT_UTILS_HAVE_NO_UNDEFINED_LINKER_FLAG)
+		set(
+			CMAKE_SHARED_LINKER_FLAGS
+			"-Wl,--no-undefined ${CMAKE_SHARED_LINKER_FLAGS}"
+		)
+	endif()
+
+	if(FCPPT_UTILS_HAVE_NO_COPY_DT_NEEDED_ENTRIES_LINKER_FLAG)
+		set(
+			CMAKE_SHARED_LINKER_FLAGS
+			"-Wl,--no-copy-dt-needed-entries ${CMAKE_SHARED_LINKER_FLAGS}"
+		)
+		set(
+			CMAKE_EXE_LINKER_FLAGS
+			"-Wl,--no-copy-dt-needed-entries ${CMAKE_EXE_LINKER_FLAGS}"
+		)
+	endif()
+endif()
 
 # configure standard CMake build paths
 SET(
