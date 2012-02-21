@@ -26,6 +26,7 @@
 #include <fcppt/config/external_end.hpp>
 
 
+//! [context_declaration]
 namespace engine
 {
 
@@ -33,10 +34,17 @@ namespace engine
 fcppt::log::context &
 log_context();
 
+}
+//! [context_declaration]
+
+//! [logger_parameters]
+namespace engine
+{
+
 // Helper function to create our logger parameters
 inline
 fcppt::log::parameters::all const
-create_logger(
+logger_parameters(
 	fcppt::log::location const &_location
 )
 {
@@ -51,6 +59,13 @@ create_logger(
 		);
 }
 
+}
+//! [logger_parameters]
+
+//! [engine_location]
+namespace engine
+{
+
 // Helper function to return the engine's log location
 inline
 fcppt::log::location const
@@ -62,11 +77,24 @@ logger_location()
 		);
 }
 
+}
+//! [engine_location]
+
+//! [declare_engine_root_logger]
+namespace engine
+{
+
 // The engine's root logger
 fcppt::log::object &
 root_logger();
 
+}
+//! [declare_engine_root_logger]
+
+//! [declare_subsystem_loggers]
 // Define two subsystem loggers.
+namespace engine
+{
 namespace renderer
 {
 
@@ -82,9 +110,10 @@ fcppt::log::object &
 logger();
 
 }
-
 }
+//! [declare_subsystem_loggers]
 
+//! [context_definition]
 //
 // Translation unit for the global log context
 //
@@ -92,7 +121,9 @@ logger();
 FCPPT_LOG_DEFINE_CONTEXT(
 	engine::log_context
 )
+//! [context_definition]
 
+//! [define_engine_root_logger]
 //
 // Translation unit for the root logger
 //
@@ -101,7 +132,7 @@ namespace
 {
 
 fcppt::log::object root_logger_obj(
-	engine::create_logger(
+	engine::logger_parameters(
 		engine::logger_location()
 	)
 );
@@ -113,16 +144,17 @@ engine::root_logger()
 {
 	return root_logger_obj;
 }
+//! [define_engine_root_logger]
 
+//! [define_subsystem_loggers]
 //
 // Translation unit for the renderer logger
 //
-
 namespace
 {
 
 fcppt::log::object renderer_logger_obj(
-	engine::create_logger(
+	engine::logger_parameters(
 		engine::logger_location()
 		/
 		FCPPT_TEXT("renderer")
@@ -145,7 +177,7 @@ namespace
 {
 
 fcppt::log::object audio_logger_obj(
-	engine::create_logger(
+	engine::logger_parameters(
 		engine::logger_location()
 		/
 		FCPPT_TEXT("audio")
@@ -159,6 +191,7 @@ engine::audio::logger()
 {
 	return audio_logger_obj;
 }
+//! [define_subsystem_loggers]
 
 int
 main(
@@ -167,6 +200,7 @@ main(
 )
 try
 {
+//! [main]
 	// Each command line parameter specifies a logger to activate.
 	// Example: "./example renderer" will activate the renderer's logger so we can
 	// diagnose a problem there.
@@ -189,7 +223,7 @@ try
 				true
 			)
 		);
-
+//! [main]
 	FCPPT_LOG_DEBUG(
 		engine::renderer::logger(),
 		fcppt::log::_

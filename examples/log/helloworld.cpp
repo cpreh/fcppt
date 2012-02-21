@@ -4,7 +4,6 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-//[loghelloworld
 #include <fcppt/text.hpp>
 #include <fcppt/io/cout.hpp>
 #include <fcppt/log/debug.hpp>
@@ -17,9 +16,9 @@
 int
 main()
 {
-	// Create a logger that logs to cout,
-	// has level debug and "below" enabled
-	// and is enabled itself.
+//! [helloworld]
+	// Create a logger that logs to cout, has level debug and "below"
+	// enabled and is enabled itself.
 	fcppt::log::object logger(
 		fcppt::log::parameters::all(
 			fcppt::io::cout()
@@ -38,5 +37,5 @@ main()
 		fcppt::log::_
 			<< FCPPT_TEXT("Hello World")
 	);
+//! [helloworld]
 }
-//]

@@ -1,0 +1,216 @@
+/**
+\defgroup fcpptlog Log
+\ingroup fcpptmain
+\brief Logging classes and functions
+
+<table id="toc">
+<tr>
+<td>
+
+<ol>
+	<li>\ref log_introduction</li>
+		<ol>
+			<li>\ref log_simple_example</li>
+		</ol>
+	<li>\ref log_controlling</li>
+		<ol>
+			<li>\ref log_context_example</li>
+			<li>\ref log_context_complex</li>
+		</ol>
+	<li>\ref log_headers</li>
+</ol>
+
+</td>
+</tr>
+</table>
+
+\section log_introduction Introduction
+
+Logging in general means that information describing aspects of a program's
+execution is written, for example to a file, that can be examined later.  Such
+log messages usually contain information about what went wrong, what might
+possibly have lead to that, or even general information about which functions
+were executed. There are usually several aspects to consider:
+
+<dl>
+<dt>Where the output is written to</dt>
+
+<dd>This can include the standard output streams
+(<code>std::cout</code>,<code>std::cerr</code> and so on), a file, a console,
+etc.</dd>
+
+<dt>Which messages get written</dt>
+
+<dd>This is usually controlled through so called <em>log levels</em>, for
+example: debug, info, warning, error. Also, you might want to enable output
+from certain subsystems while you disable output from others. Therefore, there
+must exist a mechanism that allows for easy enabling and disabling of loggers
+at runtime.</dd>
+
+<dt>How messages are formatted</dt>
+
+<dd>There should be a way of describing where the log message originated from,
+which means which class or function emitted it. Also, the logging level should
+be printed.</dd>
+
+</dl>
+
+\subsection log_simple_example A simple example
+
+In fcppt, the central class for logging is a so called logger object. It
+stores where it logs to, which log levels are active, and if it is itself
+enabled. It also controls how log messages are formatted.
+
+The following example illustrates the construction of a simple logger object
+with some defaults and logs to it.
+
+\snippet log/helloworld.cpp helloworld
+
+The macro <code>FCPPT_LOG_DEBUG</code> is a short hand for logging only if the
+debug log level is enabled. This is important because the construction of the
+log message is avoided altogether when debug is not enabled.
+
+\link fcppt::log::_ \endlink is a trampoline object that constructs something
+that can be written to like an <code>std::basic_ostream</code>. This is used to
+create a whole message in a threadsafe manner. If you log in multiple pieces
+instead, the log message might end up interleaved with other messages.
+
+<code>level_defaults(debug)</code> tells the logger that it should enable all
+log levels for debug and above and use default formatting for each of them.
+
+\section log_controlling Controlling loggers
+
+Controlling at runtime which messages are logged is very important. Under
+normal circumstances, you probably want to only log serious problems, while in
+a debugging scenario a lot more should be logged. Which messages are logged
+can be controlled for every individual logger object. The major problem is how
+to <em>access</em> them at runtime.
+
+\link fcppt::log::context \endlink is a class that refers to logger objects in
+a hierarchy. This hierarchy is formed by \link fcppt::log::location \endlink
+objects, which simply wrap a vector of strings which we use as a path along the
+tree.
+
+\subsection log_context_example An example using contexts
+
+First, we are going to see how logger objects, contexts and locations can be
+used together.
+
+A logger context is a class that can be passed to other loggers, while also
+giving them a corresponding location in the context. Until the logger object is
+destroyed, it will be part of the context.
+
+\snippet log/context.cpp declare_context
+
+The root logger gets the location <code>"::root"</code>
+
+\snippet log/context.cpp declare_root_logger
+
+The child logger gets the location <code>"::root::child"</code>
+
+\snippet log/context.cpp declare_child_logger
+
+We can now manipulate the loggers through the context using their locations.
+The \link fcppt::log::context::apply \endlink function can be used to
+recursively manipulate loggers starting at a given location. If we parse the
+location <code>"::root"</code> then the root and the child logger will both be
+manipulated. It is also possible to manipulate a single logger, though this is
+rarely needed.
+
+\snippet log/context.cpp enable_loggers
+
+The log location given to a logger implicitly changes how its output is
+formatted.
+
+\snippet log/context.cpp print
+
+The first statement will print <code>root: warning: Print from root.</code> and
+the second statement will print <code>root: child: warning: Print from
+child.</code>
+
+It is also possible to give each logger and even each log level a custom
+formatting function, but this tutorial will not cover this for now.
+
+\subsection log_context_complex A real world approach
+
+Usually, loggers are declared globally (in a namespace), so that they
+are local to a subsystem or even a translation unit.
+
+The reason why the context stores logger objects only through locations is
+C++'s weak guarantees of global initialization. If loggers would refer to each
+other instead, then we would have a problem, because the order in which global
+objects are constructed is unspecified. The context, however, is the only thing
+the logger objects refer to during their construction. Therefore, it must be
+treated with special care. Using a context and global loggers generally works
+as follows:
+
+<ul>
+<li>Construct a global function with a static context in it, which returns the
+context. In this example, this function is called
+<code>log_context()</code></li>
+
+<li>Globally declare all loggers which only refer to <code>log_context()</code>
+and a location in their constructors, thereby adding themselves to the
+context.</li>
+
+<li>Manipulate the desired log object(s) using <code>log_context()</code> and a
+location.</li>
+</ul>
+
+In the following example, our engine should get several loggers for its
+subsystems.
+
+First, we are going to declare the logger context function.
+
+\snippet log/complex.cpp context_declaration
+
+Using a macro provided by fcppt, we can define the logger context function as
+described above.
+
+\snippet log/complex.cpp context_definition
+
+The next thing we are going to do is to make a helper function that constructs
+logger parameters given a logger location. This is only to avoid duplicated
+code and could be omitted.
+
+\snippet log/complex.cpp logger_parameters
+
+We are also going to abstract the log location of the main namespace using a
+function, again to avoid code duplication. Note, that this cannot be a constant
+with external linkage, because this would again create the global
+initialization order problem we are trying to avoid.
+
+\snippet log/complex.cpp engine_location
+
+The engine's root logger should be accessible through a function.
+
+\snippet log/complex.cpp declare_engine_root_logger
+
+The definition should be done in a separate translation unit.
+
+\snippet log/complex.cpp define_engine_root_logger
+
+We are also going to create two more loggers, one for the renderer subsystem
+and one for the audio subsystem.
+
+\snippet log/complex.cpp declare_subsystem_loggers
+
+Finally, we also define the subsystem loggers.
+
+\snippet log/complex.cpp define_subsystem_loggers
+
+The following program illustrates how the different loggers can be manipulated
+at runtime by only using the log context. The program activates every subsystem
+whose name is passed in <code>argv</code>.
+
+\snippet log/complex.cpp main
+
+\section log_headers Header files
+<table>
+<tr>
+<th>Header file</th>
+<th>Description</th>
+</tr>
+</table>
+
+*/

@@ -21,9 +21,12 @@
 int
 main()
 {
+//! [declare_context]
 	// Create a logger context
 	fcppt::log::context context;
+//! [declare_context]
 
+//! [declare_root_logger]
 	// Create the root logger.
 	// It will have the location "::root" in the tree.
 	// Note that all loggers are initially disabled until told otherwise.
@@ -39,7 +42,9 @@ main()
 			fcppt::log::level::warning
 		)
 	);
+//! [declare_root_logger]
 
+//! [declare_child_logger]
 	// Create the child logger.
 	// It will have the location "::root::child" in the tree.
 	fcppt::log::object child(
@@ -56,7 +61,9 @@ main()
 			fcppt::log::level::warning
 		)
 	);
+//! [declare_child_logger]
 
+//! [enable_loggers]
 	// Enable all loggers starting from root.
 	context.apply(
 		fcppt::log::location(
@@ -68,7 +75,9 @@ main()
 			true
 		)
 	);
+//! [enable_loggers]
 
+//! [print]
 	FCPPT_LOG_WARNING(
 		root,
 		fcppt::log::_
@@ -80,5 +89,6 @@ main()
 		fcppt::log::_
 			<< FCPPT_TEXT("Print from child.")
 	);
+//! [print]
 }
 //]
