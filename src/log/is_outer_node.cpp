@@ -5,20 +5,23 @@
 
 
 #include <fcppt/container/tree/object_impl.hpp>
+#include <fcppt/log/detail/context_tree.hpp>
+#include <fcppt/log/detail/context_tree_node.hpp>
 #include <fcppt/log/detail/outer_context_node.hpp>
 #include <fcppt/src/log/is_outer_node.hpp>
 #include <fcppt/variant/holds_type.hpp>
 #include <fcppt/variant/object_impl.hpp>
 
+
 bool
 fcppt::log::is_outer_node(
-	detail::context_tree const &_node
+	fcppt::log::detail::context_tree const &_node
 )
 {
 	return
 		fcppt::variant::holds_type<
 			fcppt::log::detail::outer_context_node
 		>(
-			_node.value()
+			_node.value().get()
 		);
 }

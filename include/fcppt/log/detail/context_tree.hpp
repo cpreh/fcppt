@@ -8,7 +8,7 @@
 #define FCPPT_LOG_DETAIL_CONTEXT_TREE_HPP_INCLUDED
 
 #include <fcppt/container/tree/object_fwd.hpp>
-#include <fcppt/log/detail/context_tree_node.hpp>
+#include <fcppt/log/detail/context_tree_node_fwd.hpp>
 
 
 namespace fcppt
@@ -19,7 +19,7 @@ namespace detail
 {
 
 typedef fcppt::container::tree::object<
-	detail::context_tree_node
+	fcppt::log::detail::context_tree_node
 > context_tree;
 
 }

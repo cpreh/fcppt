@@ -6,9 +6,8 @@
 
 #include <fcppt/assert/error.hpp>
 #include <fcppt/container/tree/object_impl.hpp>
-#include <fcppt/log/context.hpp>
-#include <fcppt/log/context_location.hpp>
 #include <fcppt/log/detail/context_tree.hpp>
+#include <fcppt/log/detail/context_tree_node.hpp>
 #include <fcppt/log/detail/inner_context_node.hpp>
 #include <fcppt/log/format/const_object_ptr.hpp>
 #include <fcppt/log/format/create_chain.hpp>
@@ -19,39 +18,33 @@
 
 fcppt::log::format::const_object_ptr const
 fcppt::log::tree_formatter(
-	log::context_location const &_context_location,
-	log::format::const_object_ptr const _formatter
+	fcppt::log::detail::context_tree const *_node,
+	fcppt::log::format::const_object_ptr const _formatter
 )
 {
-	log::detail::context_tree const *node(
-		_context_location.context().find_node(
-			_context_location.location()
-		)
+	FCPPT_ASSERT_ERROR(
+		_node
 	);
 
 	FCPPT_ASSERT_ERROR(
-		node != 0
+		_node->has_parent()
 	);
 
-	FCPPT_ASSERT_ERROR(
-		node->has_parent()
-	);
+	_node = &_node->parent();
 
-	node = &node->parent();
-
-	log::format::const_object_ptr ret(
+	fcppt::log::format::const_object_ptr ret(
 		_formatter
 	);
 
 	for(
 		;
-		node->has_parent();
-		node = &node->parent()
+		_node->has_parent();
+		_node = &_node->parent()
 	)
 		ret =
 			log::format::create_chain(
 				log::format::create_prefix(
-					node->value().get<
+					_node->value().get().get<
 						log::detail::inner_context_node
 					>().name()
 				),

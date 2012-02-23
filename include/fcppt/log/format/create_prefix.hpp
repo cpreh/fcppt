@@ -20,9 +20,10 @@ namespace format
 {
 
 /// Creates a formatter that will output @a prefix in front
-FCPPT_SYMBOL const_object_ptr const
+FCPPT_SYMBOL
+fcppt::log::format::const_object_ptr const
 create_prefix(
-	string const &prefix
+	fcppt::string const &prefix
 );
 
 }

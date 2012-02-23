@@ -19,6 +19,7 @@
 #include <fcppt/log/location.hpp>
 #include <fcppt/log/object.hpp>
 #include <fcppt/log/output.hpp>
+#include <fcppt/log/parameters/object.hpp>
 #include <fcppt/log/parameters/with_context.hpp>
 #include <fcppt/tr1/functional.hpp>
 #include <fcppt/config/external_begin.hpp>
@@ -43,7 +44,7 @@ namespace engine
 
 // Helper function to create our logger parameters
 inline
-fcppt::log::parameters::all const
+fcppt::log::parameters::object const
 logger_parameters(
 	fcppt::log::location const &_location
 )

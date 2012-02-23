@@ -27,7 +27,7 @@ namespace format
 */
 class FCPPT_CLASS_SYMBOL chain
 :
-	public format::object
+	public fcppt::log::format::object
 {
 	FCPPT_NONCOPYABLE(
 		chain
@@ -35,8 +35,8 @@ class FCPPT_CLASS_SYMBOL chain
 public:
 	FCPPT_SYMBOL
 	chain(
-		format::const_object_ptr parent,
-		format::const_object_ptr child
+		fcppt::log::format::const_object_ptr parent,
+		fcppt::log::format::const_object_ptr child
 	);
 
 	FCPPT_SYMBOL
@@ -48,7 +48,7 @@ public:
 		fcppt::string const &
 	) const;
 private:
-	format::const_object_ptr const
+	fcppt::log::format::const_object_ptr const
 		parent_,
 		child_;
 };

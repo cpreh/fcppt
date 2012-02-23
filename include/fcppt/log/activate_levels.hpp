@@ -17,14 +17,22 @@ namespace fcppt
 namespace log
 {
 
-/// Activates all the log levels that are equal or higher.
 /**
- * For example specifying log::level::warning will activate log::level::error and log::level::fatal as well.
+\brief Activates all the log levels that are equal or higher.
+
+Actives all log levels for \a logger starting at and including \a level.
+
+For example, specifying log::level::warning will activate log::level::error and
+log::level::fatal as well.
+
+\param logger The logger to activate the levels for
+\param level The lower bound of the levels to activate
 */
-FCPPT_SYMBOL void
+FCPPT_SYMBOL
+void
 activate_levels(
-	object &,
-	level::type
+	fcppt::log::object &logger,
+	fcppt::log::level::type level
 );
 
 }

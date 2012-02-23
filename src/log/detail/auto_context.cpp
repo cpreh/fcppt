@@ -4,6 +4,7 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
+#include <fcppt/null_ptr.hpp>
 #include <fcppt/log/context.hpp>
 #include <fcppt/log/object_fwd.hpp>
 #include <fcppt/log/optional_context_location.hpp>
@@ -11,33 +12,42 @@
 
 
 fcppt::log::detail::auto_context::auto_context(
-	log::optional_context_location const &_context_location,
-	log::object &_object
+	fcppt::log::optional_context_location const &_context_location,
+	fcppt::log::object &_object
 )
 :
-	context_location_(_context_location)
-{
-	if(
-		context_location_
+	context_(
+		_context_location
+		?
+			&_context_location->context()
+		:
+			fcppt::null_ptr()
+	),
+	node_(
+		_context_location
+		?
+			&context_->add(
+				_context_location->location(),
+				_object
+			)
+		:
+			fcppt::null_ptr()
 	)
-		context_location_->context().add(
-			context_location_->location(),
-			_object
-		);
+{
 }
 
 fcppt::log::detail::auto_context::~auto_context()
 {
 	if(
-		context_location_
+		node_
 	)
-		context_location_->context().remove(
-			context_location_->location()
+		context_->remove(
+			*node_
 		);
 }
 
-fcppt::log::optional_context_location const &
-fcppt::log::detail::auto_context::context_location() const
+fcppt::log::detail::context_tree const *
+fcppt::log::detail::auto_context::node() const
 {
-	return context_location_;
+	return node_;
 }

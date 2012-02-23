@@ -7,6 +7,8 @@
 #include <fcppt/nonassignable.hpp>
 #include <fcppt/string.hpp>
 #include <fcppt/container/tree/object_impl.hpp>
+#include <fcppt/log/detail/context_tree.hpp>
+#include <fcppt/log/detail/context_tree_node.hpp>
 #include <fcppt/log/detail/inner_context_node.hpp>
 #include <fcppt/log/detail/outer_context_node.hpp>
 #include <fcppt/src/log/inner_node_name.hpp>
@@ -25,7 +27,8 @@ class compare
 public:
 	typedef bool result_type;
 
-	explicit compare(
+	explicit
+	compare(
 		fcppt::string const &
 	);
 
@@ -45,11 +48,14 @@ private:
 }
 
 fcppt::log::inner_node_name::inner_node_name(
-	string const &_name
+	fcppt::string const &_name
 )
 :
-	name_(_name)
-{}
+	name_(
+		_name
+	)
+{
+}
 
 fcppt::log::inner_node_name::result_type
 fcppt::log::inner_node_name::operator()(
@@ -57,11 +63,11 @@ fcppt::log::inner_node_name::operator()(
 ) const
 {
 	return
-		variant::apply_unary(
+		fcppt::variant::apply_unary(
 			::compare(
 				name_
 			),
-			_tree.value()
+			_tree.value().get()
 		);
 }
 
@@ -72,7 +78,9 @@ compare::compare(
 	fcppt::string const &_name
 )
 :
-	name_(_name)
+	name_(
+		_name
+	)
 {}
 
 compare::result_type

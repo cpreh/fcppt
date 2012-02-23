@@ -27,8 +27,8 @@
 \section log_introduction Introduction
 
 Logging in general means that information describing aspects of a program's
-execution is written, for example to a file, that can be examined later.  Such
-log messages usually contain information about what went wrong, what might
+execution is printed out, for example to a file that can be examined later.
+Such log messages usually contain information about what went wrong, what might
 possibly have lead to that, or even general information about which functions
 were executed. There are usually several aspects to consider:
 
@@ -66,9 +66,11 @@ with some defaults and logs to it.
 
 \snippet log/helloworld.cpp helloworld
 
-The macro <code>FCPPT_LOG_DEBUG</code> is a short hand for logging only if the
-debug log level is enabled. This is important because the construction of the
-log message is avoided altogether when debug is not enabled.
+Logging is done via the \link fcppt::log::object::log \endlink element
+function. The macro <code>FCPPT_LOG_DEBUG</code> is a short hand for logging
+only if the debug log level is enabled. This is important because the
+construction of the log message is avoided altogether when debug is not
+enabled.
 
 \link fcppt::log::_ \endlink is a trampoline object that constructs something
 that can be written to like an <code>std::basic_ostream</code>. This is used to
@@ -77,6 +79,25 @@ instead, the log message might end up interleaved with other messages.
 
 <code>level_defaults(debug)</code> tells the logger that it should enable all
 log levels for debug and above and use default formatting for each of them.
+
+\subsection log_design General design
+
+Here is a more detailed explanation of fcppt::log's design.
+<ul>
+<li>
+Each logger object contains a sink for every log level. Such a sink controls
+where output is written to and how it is formatted.
+</li>
+<li>
+Each sink uses an <code>std::basic_ostream</code> as its log destination.
+Where output actually ends up is decided by its streambuf.
+</li>
+<li>
+The following log levels, declared in \link fcppt::log::level \endlink are
+provided in ascending order: <code>verbose, debug, info, warning, error,
+fatal</code>. The lower the level, the less serious the message.
+</li>
+</ul>
 
 \section log_controlling Controlling loggers
 
@@ -160,12 +181,13 @@ location.</li>
 In the following example, our engine should get several loggers for its
 subsystems.
 
-First, we are going to declare the logger context function.
+First, we declare the logger context function.
 
 \snippet log/complex.cpp context_declaration
 
-Using a macro provided by fcppt, we can define the logger context function as
-described above.
+Using a macro provided by fcppt, we can define the logger context function
+declared above. This macro creates a function embedding a static logger
+context.
 
 \snippet log/complex.cpp context_definition
 
@@ -176,7 +198,7 @@ code and could be omitted.
 \snippet log/complex.cpp logger_parameters
 
 We are also going to abstract the log location of the main namespace using a
-function, again to avoid code duplication. Note, that this cannot be a constant
+function, again to avoid code duplication. Note that this cannot be a constant
 with external linkage, because this would again create the global
 initialization order problem we are trying to avoid.
 

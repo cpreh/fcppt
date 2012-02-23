@@ -14,7 +14,7 @@
 #include <fcppt/log/optional_context_location.hpp>
 #include <fcppt/log/detail/temporary_output_fwd.hpp>
 #include <fcppt/log/format/const_object_ptr.hpp>
-#include <fcppt/log/parameters/all.hpp>
+#include <fcppt/log/parameters/object.hpp>
 #include <fcppt/preprocessor/disable_vc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
@@ -25,7 +25,7 @@ FCPPT_PP_PUSH_WARNING
 FCPPT_PP_DISABLE_VC_WARNING(4355)
 
 fcppt::log::object::object(
-	parameters::all const &_param
+	fcppt::log::parameters::object const &_param
 )
 :
 	sink_(
@@ -36,16 +36,23 @@ fcppt::log::object::object(
 		*this
 	),
 	formatter_(
-		_param.formatter()
-	),
-	enabled_(
-		_param.enabled()
+		auto_context_.node()
+		?
+			fcppt::log::tree_formatter(
+				auto_context_.node(),
+				_param.formatter()
+			)
+		:
+			_param.formatter()
 	),
 	level_streams_(
 		_param.level_streams()
 	),
 	enabled_levels_(
 		_param.enabled_levels()
+	),
+	enabled_(
+		_param.enabled()
 	)
 {
 }
@@ -58,8 +65,8 @@ fcppt::log::object::~object()
 
 void
 fcppt::log::object::log(
-	level::type const _level,
-	detail::temporary_output const &_helper
+	fcppt::log::level::type const _level,
+	fcppt::log::detail::temporary_output const &_helper
 )
 {
 	if(
@@ -75,14 +82,7 @@ fcppt::log::object::log(
 		_level
 	).log(
 		_helper,
-		auto_context_.context_location()
-		?
-			log::tree_formatter(
-				*auto_context_.context_location(),
-				this->formatter()
-			)
-		:
-			this->formatter()
+		formatter_
 	);
 }
 
@@ -163,12 +163,6 @@ fcppt::log::format::const_object_ptr const
 fcppt::log::object::formatter() const
 {
 	return formatter_;
-}
-
-fcppt::log::optional_context_location const
-fcppt::log::object::context_location() const
-{
-	return auto_context_.context_location();
 }
 
 fcppt::log::level_stream_array const &

@@ -5,19 +5,27 @@
 
 
 #include <fcppt/format.hpp>
+#include <fcppt/string.hpp>
 #include <fcppt/log/format/inserter.hpp>
 
 
 fcppt::log::format::inserter::inserter(
-	string const &_format_string
+	fcppt::string const &_format_string
 )
 :
-	format_string_(_format_string)
-{}
+	format_string_(
+		_format_string
+	)
+{
+}
+
+fcppt::log::format::inserter::~inserter()
+{
+}
 
 fcppt::string const
 fcppt::log::format::inserter::format(
-	string const &_dest
+	fcppt::string const &_dest
 ) const
 {
 	return

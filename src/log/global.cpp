@@ -10,14 +10,14 @@
 #include <fcppt/log/level.hpp>
 #include <fcppt/log/object.hpp>
 #include <fcppt/log/format/create_prefix.hpp>
-#include <fcppt/log/parameters/all.hpp>
+#include <fcppt/log/parameters/object.hpp>
 
 
 namespace
 {
 
 fcppt::log::object global_log(
-	fcppt::log::parameters::all(
+	fcppt::log::parameters::object(
 		fcppt::io::clog()
 	)
 	.level_defaults(

@@ -23,22 +23,28 @@ namespace format
 /// A formatter that inserts text using fcppt::format
 class FCPPT_CLASS_SYMBOL inserter
 :
-	public format::object
+	public fcppt::log::format::object
 {
 	FCPPT_NONCOPYABLE(
 		inserter
 	);
 public:
-	FCPPT_SYMBOL explicit inserter(
-		string const &format_string
+	FCPPT_SYMBOL
+	explicit
+	inserter(
+		fcppt::string const &format_string
 	);
 
-	FCPPT_SYMBOL string const
+	FCPPT_SYMBOL
+	~inserter();
+
+	FCPPT_SYMBOL
+	fcppt::string const
 	format(
-		string const &
+		fcppt::string const &
 	) const;
 private:
-	string const format_string_;
+	fcppt::string const format_string_;
 };
 
 }

@@ -11,7 +11,7 @@
 #include <fcppt/io/ostream.hpp>
 #include <fcppt/log/context_fwd.hpp>
 #include <fcppt/log/location_fwd.hpp>
-#include <fcppt/log/parameters/all.hpp>
+#include <fcppt/log/parameters/object.hpp>
 
 
 namespace fcppt
@@ -22,11 +22,11 @@ namespace parameters
 {
 
 FCPPT_SYMBOL
-parameters::all
+fcppt::log::parameters::object
 with_context(
-	log::context &,
-	io::ostream &,
-	log::location const &
+	fcppt::log::context &,
+	fcppt::io::ostream &,
+	fcppt::log::location const &
 );
 
 }

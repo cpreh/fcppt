@@ -7,12 +7,10 @@
 #ifndef FCPPT_LOG_DETAIL_CONTEXT_TREE_NODE_HPP_INCLUDED
 #define FCPPT_LOG_DETAIL_CONTEXT_TREE_NODE_HPP_INCLUDED
 
-#include <fcppt/log/detail/inner_context_node.hpp>
-#include <fcppt/log/detail/outer_context_node.hpp>
-#include <fcppt/variant/object_fwd.hpp>
-#include <fcppt/config/external_begin.hpp>
-#include <boost/mpl/vector/vector10.hpp>
-#include <fcppt/config/external_end.hpp>
+#include <fcppt/log/detail/context_tree_node_fwd.hpp>
+#include <fcppt/log/detail/context_tree_node_variant.hpp>
+#include <fcppt/variant/object_decl.hpp>
+
 
 namespace fcppt
 {
@@ -21,12 +19,19 @@ namespace log
 namespace detail
 {
 
-typedef variant::object<
-	boost::mpl::vector2<
-		detail::inner_context_node,
-		detail::outer_context_node
-	>
-> context_tree_node;
+class context_tree_node
+{
+public:
+	explicit
+	context_tree_node(
+		fcppt::log::detail::context_tree_node_variant const &
+	);
+
+	fcppt::log::detail::context_tree_node_variant const &
+	get() const;
+private:
+	fcppt::log::detail::context_tree_node_variant variant_;
+};
 
 }
 }

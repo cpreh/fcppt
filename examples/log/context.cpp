@@ -13,7 +13,6 @@
 #include <fcppt/log/object.hpp>
 #include <fcppt/log/output.hpp>
 #include <fcppt/log/warning.hpp>
-#include <fcppt/log/parameters/all.hpp>
 #include <fcppt/log/parameters/with_context.hpp>
 #include <fcppt/tr1/functional.hpp>
 

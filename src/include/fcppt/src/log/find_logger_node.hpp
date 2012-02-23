@@ -9,6 +9,7 @@
 
 #include <fcppt/container/tree/object_decl.hpp>
 #include <fcppt/log/detail/context_tree.hpp>
+#include <fcppt/log/detail/context_tree_node.hpp>
 #include <fcppt/variant/object_decl.hpp>
 
 
@@ -17,9 +18,9 @@ namespace fcppt
 namespace log
 {
 
-detail::context_tree::iterator
+fcppt::log::detail::context_tree::iterator
 find_logger_node(
-	detail::context_tree &
+	fcppt::log::detail::context_tree &
 );
 
 }

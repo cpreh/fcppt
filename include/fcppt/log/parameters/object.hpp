@@ -4,8 +4,8 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_LOG_PARAMETERS_ALL_HPP_INCLUDED
-#define FCPPT_LOG_PARAMETERS_ALL_HPP_INCLUDED
+#ifndef FCPPT_LOG_PARAMETERS_OBJECT_HPP_INCLUDED
+#define FCPPT_LOG_PARAMETERS_OBJECT_HPP_INCLUDED
 
 #include <fcppt/nonassignable.hpp>
 #include <fcppt/symbol.hpp>
@@ -19,7 +19,7 @@
 #include <fcppt/log/object_fwd.hpp>
 #include <fcppt/log/optional_context_location.hpp>
 #include <fcppt/log/format/const_object_ptr.hpp>
-#include <fcppt/log/parameters/all_fwd.hpp>
+#include <fcppt/log/parameters/object_fwd.hpp>
 
 
 namespace fcppt
@@ -30,55 +30,56 @@ namespace parameters
 {
 
 /// The parameters class that can be used to specify all arguments
-class all
+class object
 {
 	FCPPT_NONASSIGNABLE(
-		all
+		object
 	);
 public:
 	/// Constructs the parameters class providing a sink
 	FCPPT_SYMBOL
-	explicit all(
-		io::ostream &
+	explicit
+	object(
+		fcppt::io::ostream &
 	);
 
 	/// Specifies the context and location
 	FCPPT_SYMBOL
-	parameters::all &
+	fcppt::log::parameters::object &
 	context_location(
 		log::context_location const &
 	);
 
 	/// Sets the logger's enabled status
 	FCPPT_SYMBOL
-	parameters::all &
+	fcppt::log::parameters::object &
 	enabled(
 		bool
 	);
 
 	/// Sets the logger's level streams
 	FCPPT_SYMBOL
-	parameters::all &
+	fcppt::log::parameters::object &
 	level_streams(
 		log::level_stream_array const &
 	);
 
 	/// Sets the logger's enabled arrays
 	FCPPT_SYMBOL
-	parameters::all &
+	fcppt::log::parameters::object &
 	enabled_levels(
 		log::enabled_level_array const &
 	);
 
 	/// Sets the logger's formatter
 	FCPPT_SYMBOL
-	parameters::all &
+	fcppt::log::parameters::object &
 	formatter(
 		log::format::const_object_ptr
 	);
 
 	FCPPT_SYMBOL
-	parameters::all &
+	fcppt::log::parameters::object &
 	level_defaults(
 		log::level::type
 	);

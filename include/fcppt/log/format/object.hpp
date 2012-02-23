@@ -31,14 +31,18 @@ class FCPPT_CLASS_SYMBOL object
 		object
 	);
 protected:
-	FCPPT_SYMBOL object();
+	FCPPT_SYMBOL
+	object();
 public:
-	virtual string const
+	virtual
+	fcppt::string const
 	format(
-		string const &
+		fcppt::string const &
 	) const = 0;
 
-	FCPPT_SYMBOL virtual ~object();
+	FCPPT_SYMBOL
+	virtual
+	~object() = 0;
 };
 
 }

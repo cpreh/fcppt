@@ -8,23 +8,23 @@
 #include <fcppt/log/context_fwd.hpp>
 #include <fcppt/log/context_location.hpp>
 #include <fcppt/log/location_fwd.hpp>
-#include <fcppt/log/parameters/all.hpp>
+#include <fcppt/log/parameters/object.hpp>
 #include <fcppt/log/parameters/with_context.hpp>
 
 
-fcppt::log::parameters::all
+fcppt::log::parameters::object
 fcppt::log::parameters::with_context(
-	log::context &_context,
-	io::ostream &_stream,
-	log::location const &_location
+	fcppt::log::context &_context,
+	fcppt::io::ostream &_stream,
+	fcppt::log::location const &_location
 )
 {
 	return
-		log::parameters::all(
+		fcppt::log::parameters::object(
 			_stream
 		)
 		.context_location(
-			log::context_location(
+			fcppt::log::context_location(
 				_context,
 				_location
 			)

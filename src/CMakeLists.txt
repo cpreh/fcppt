@@ -390,8 +390,11 @@ set(
 	include/fcppt/log/default_level_streams.hpp
 	include/fcppt/log/define_context.hpp
 	include/fcppt/log/detail/auto_context.hpp
+	include/fcppt/log/detail/auto_context_fwd.hpp
 	include/fcppt/log/detail/context_tree.hpp
 	include/fcppt/log/detail/context_tree_node.hpp
+	include/fcppt/log/detail/context_tree_node_fwd.hpp
+	include/fcppt/log/detail/context_tree_node_variant.hpp
 	include/fcppt/log/detail/inner_context_node.hpp
 	include/fcppt/log/detail/level_if_enabled.hpp
 	include/fcppt/log/detail/location_vector.hpp
@@ -439,8 +442,8 @@ set(
 	include/fcppt/log/optional_object.hpp
 	include/fcppt/log/optional_object_fwd.hpp
 	include/fcppt/log/output.hpp
-	include/fcppt/log/parameters/all.hpp
-	include/fcppt/log/parameters/all_fwd.hpp
+	include/fcppt/log/parameters/object.hpp
+	include/fcppt/log/parameters/object_fwd.hpp
 	include/fcppt/log/parameters/parameters.hpp
 	include/fcppt/log/parameters/with_context.hpp
 	include/fcppt/log/trampoline.hpp
@@ -692,6 +695,7 @@ set(
 	include/fcppt/preprocessor/detail/message.hpp
 	include/fcppt/preprocessor/detail/stringize.hpp
 	include/fcppt/preprocessor/disable_gcc_warning.hpp
+	include/fcppt/preprocessor/disable_icc_warning.hpp
 	include/fcppt/preprocessor/disable_vc_warning.hpp
 	include/fcppt/preprocessor/enum_params_forward_z.hpp
 	include/fcppt/preprocessor/file.hpp
@@ -1028,6 +1032,7 @@ set(
 	src/log/deactivate_levels.cpp
 	src/log/default_level_streams.cpp
 	src/log/detail/auto_context.cpp
+	src/log/detail/context_tree_node.cpp
 	src/log/detail/inner_context_node.cpp
 	src/log/detail/outer_context_node.cpp
 	src/log/detail/temporary_output.cpp
@@ -1051,7 +1056,7 @@ set(
 	src/log/location.cpp
 	src/log/make_location.cpp
 	src/log/object.cpp
-	src/log/parameters/all.cpp
+	src/log/parameters/object.cpp
 	src/log/parameters/with_context.cpp
 	src/log/set_levels.cpp
 	src/log/trampoline.cpp

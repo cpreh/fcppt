@@ -17,7 +17,6 @@
 #include <fcppt/log/object.hpp>
 #include <fcppt/log/optional_object.hpp>
 #include <fcppt/log/output.hpp>
-#include <fcppt/log/parameters/all.hpp>
 #include <fcppt/log/parameters/with_context.hpp>
 #include <fcppt/tr1/functional.hpp>
 #include <fcppt/config/external_begin.hpp>
@@ -25,7 +24,8 @@
 #include <fcppt/config/external_end.hpp>
 
 
-int main()
+int
+main()
 try
 {
 	fcppt::log::context context;
@@ -76,7 +76,7 @@ try
 
 	fcppt::log::optional_object const ref(
 		context.find(
-			logger.context_location()->location()
+			root_location
 		)
 	);
 
@@ -100,11 +100,6 @@ try
 		child_ref.has_value()
 	);
 
-	fcppt::io::cout()
-		<< FCPPT_TEXT("location of child: ")
-		<< child_ref->context_location()->location().string()
-		<< FCPPT_TEXT('\n');
-
 	FCPPT_LOG_INFO(
 		*child_ref,
 		fcppt::log::_
@@ -112,7 +107,7 @@ try
 	);
 
 	context.apply(
-		logger.context_location()->location(),
+		root_location,
 		std::tr1::bind(
 			&fcppt::log::object::enable,
 			std::tr1::placeholders::_1,

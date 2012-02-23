@@ -25,25 +25,25 @@ class context_location
 public:
 	FCPPT_SYMBOL
 	context_location(
-		log::context &,
-		log::location const &
+		fcppt::log::context &,
+		fcppt::log::location const &
 	);
 
 	FCPPT_SYMBOL
-	log::context &
+	fcppt::log::context &
 	context() const;
 
 	FCPPT_SYMBOL
-	log::location const &
+	fcppt::log::location const &
 	location() const;
 private:
 	typedef fcppt::reference_wrapper<
-		log::context
+		fcppt::log::context
 	> context_reference;
 
 	context_reference context_;
 
-	log::location location_;
+	fcppt::log::location location_;
 };
 
 }

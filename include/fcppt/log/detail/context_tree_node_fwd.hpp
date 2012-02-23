@@ -4,17 +4,18 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_LOG_PARAMETERS_ALL_FWD_HPP_INCLUDED
-#define FCPPT_LOG_PARAMETERS_ALL_FWD_HPP_INCLUDED
+#ifndef FCPPT_LOG_DETAIL_CONTEXT_TREE_NODE_FWD_HPP_INCLUDED
+#define FCPPT_LOG_DETAIL_CONTEXT_TREE_NODE_FWD_HPP_INCLUDED
+
 
 namespace fcppt
 {
 namespace log
 {
-namespace parameters
+namespace detail
 {
 
-class all;
+class context_tree_node;
 
 }
 }
