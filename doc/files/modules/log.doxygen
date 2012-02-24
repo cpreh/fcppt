@@ -82,9 +82,10 @@ that can be written to like an <code>std::basic_ostream</code>. This is used to
 create a whole message in a threadsafe manner. If you log in multiple pieces
 instead, the log message might end up interleaved with other messages.
 
-level_defaults is a convennience function that tells the logger to enable all
-log levels for a given log level and above. It also gets a stream that all
-levels will log to, using default formatting.
+\link fcppt::log::parameters::object::level_defaults \endlink is a convenience
+function that tells the logger to enable all log levels for a given log level
+and above. It also gets a stream that all levels will log to, using default
+formatting.
 
 \section log_formatting_and_sinks Formatting and sinks
 
@@ -103,7 +104,7 @@ Each sink uses an <code>std::basic_ostream</code> as its log destination.
 Where output actually ends up is decided by its streambuf.
 </li>
 <li>
-The following log levels, declared in \link fcppt::log::level \endlink are
+The following log levels, declared in \link fcppt::log::level \endlink, are
 provided in ascending order: <code>verbose, debug, info, warning, error,
 fatal</code>. The lower the level, the less serious the message.
 </li>
@@ -175,7 +176,7 @@ The child logger gets the location <code>"::root::child"</code>
 
 We can now manipulate the loggers through the context using their locations.
 The \link fcppt::log::context::apply \endlink function can be used to
-recursively manipulate loggers starting at a given location. If we parse the
+recursively manipulate loggers starting at a given location. If we pass the
 location <code>"::root"</code> then the root and the child logger will both be
 manipulated. It is also possible to manipulate a single logger, though this is
 rarely needed.
@@ -190,9 +191,6 @@ formatted.
 The first statement will print <code>root: warning: Print from root.</code> and
 the second statement will print <code>root: child: warning: Print from
 child.</code>
-
-It is also possible to give each logger and even each log level a custom
-formatting function, but this tutorial will not cover this for now.
 
 \subsection log_context_complex A real world approach
 
