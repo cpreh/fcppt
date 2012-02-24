@@ -12,7 +12,7 @@
 #include <fcppt/io/ostream.hpp>
 #include <fcppt/log/level_stream_fwd.hpp>
 #include <fcppt/log/detail/temporary_output_fwd.hpp>
-#include <fcppt/log/format/const_object_ptr.hpp>
+#include <fcppt/log/format/function.hpp>
 
 
 namespace fcppt
@@ -34,8 +34,8 @@ public:
 	/// Constructs a level_stream with a sink and a formatter
 	FCPPT_SYMBOL
 	level_stream(
-		io::ostream &,
-		format::const_object_ptr
+		fcppt::io::ostream &,
+		fcppt::log::format::function const &
 	);
 
 	FCPPT_SYMBOL
@@ -44,23 +44,23 @@ public:
 	FCPPT_SYMBOL
 	void
 	log(
-		detail::temporary_output const &,
-		format::const_object_ptr addtional_formatter
+		fcppt::log::detail::temporary_output const &,
+		fcppt::log::format::function const &addtional_formatter
 	);
 
 	FCPPT_SYMBOL
 	void
 	formatter(
-		format::const_object_ptr
+		fcppt::log::format::function const &
 	);
 
 	FCPPT_SYMBOL
-	format::const_object_ptr const
+	fcppt::log::format::function const &
 	formatter() const;
 private:
-	io::ostream &dest_;
+	fcppt::io::ostream &dest_;
 
-	format::const_object_ptr formatter_;
+	fcppt::log::format::function formatter_;
 };
 
 }

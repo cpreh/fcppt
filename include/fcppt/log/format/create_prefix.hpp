@@ -9,7 +9,7 @@
 
 #include <fcppt/string.hpp>
 #include <fcppt/symbol.hpp>
-#include <fcppt/log/format/const_object_ptr.hpp>
+#include <fcppt/log/format/function.hpp>
 
 
 namespace fcppt
@@ -21,7 +21,7 @@ namespace format
 
 /// Creates a formatter that will output @a prefix in front
 FCPPT_SYMBOL
-fcppt::log::format::const_object_ptr const
+fcppt::log::format::function const
 create_prefix(
 	fcppt::string const &prefix
 );

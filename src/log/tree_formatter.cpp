@@ -9,17 +9,17 @@
 #include <fcppt/log/detail/context_tree.hpp>
 #include <fcppt/log/detail/context_tree_node.hpp>
 #include <fcppt/log/detail/inner_context_node.hpp>
-#include <fcppt/log/format/const_object_ptr.hpp>
 #include <fcppt/log/format/create_chain.hpp>
 #include <fcppt/log/format/create_prefix.hpp>
+#include <fcppt/log/format/function.hpp>
 #include <fcppt/src/log/tree_formatter.hpp>
 #include <fcppt/variant/object_impl.hpp>
 
 
-fcppt::log::format::const_object_ptr const
+fcppt::log::format::function const
 fcppt::log::tree_formatter(
 	fcppt::log::detail::context_tree const *_node,
-	fcppt::log::format::const_object_ptr const _formatter
+	fcppt::log::format::function const &_formatter
 )
 {
 	FCPPT_ASSERT_ERROR(
@@ -32,7 +32,7 @@ fcppt::log::tree_formatter(
 
 	_node = &_node->parent();
 
-	fcppt::log::format::const_object_ptr ret(
+	fcppt::log::format::function ret(
 		_formatter
 	);
 
@@ -42,10 +42,10 @@ fcppt::log::tree_formatter(
 		_node = &_node->parent()
 	)
 		ret =
-			log::format::create_chain(
-				log::format::create_prefix(
+			fcppt::log::format::create_chain(
+				fcppt::log::format::create_prefix(
 					_node->value().get().get<
-						log::detail::inner_context_node
+						fcppt::log::detail::inner_context_node
 					>().name()
 				),
 				ret

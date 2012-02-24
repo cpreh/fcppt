@@ -7,11 +7,9 @@
 #ifndef FCPPT_LOG_FORMAT_CHAIN_HPP_INCLUDED
 #define FCPPT_LOG_FORMAT_CHAIN_HPP_INCLUDED
 
-#include <fcppt/noncopyable.hpp>
 #include <fcppt/string.hpp>
 #include <fcppt/symbol.hpp>
-#include <fcppt/log/format/const_object_ptr.hpp>
-#include <fcppt/log/format/object.hpp>
+#include <fcppt/log/format/function_fwd.hpp>
 
 
 namespace fcppt
@@ -21,37 +19,13 @@ namespace log
 namespace format
 {
 
-/// A formatter chain that applies two formatters
-/**
- * The parent formatter is used first, and the child formatter second
-*/
-class FCPPT_CLASS_SYMBOL chain
-:
-	public fcppt::log::format::object
-{
-	FCPPT_NONCOPYABLE(
-		chain
-	);
-public:
-	FCPPT_SYMBOL
-	chain(
-		fcppt::log::format::const_object_ptr parent,
-		fcppt::log::format::const_object_ptr child
-	);
-
-	FCPPT_SYMBOL
-	~chain();
-
-	FCPPT_SYMBOL
-	fcppt::string const
-	format(
-		fcppt::string const &
-	) const;
-private:
-	fcppt::log::format::const_object_ptr const
-		parent_,
-		child_;
-};
+FCPPT_SYMBOL
+fcppt::string const
+chain(
+	fcppt::log::format::function const &parent,
+	fcppt::log::format::function const &child,
+	fcppt::string const &
+);
 
 }
 }

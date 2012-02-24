@@ -4,21 +4,20 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/make_shared_ptr.hpp>
+#include <fcppt/string.hpp>
 #include <fcppt/text.hpp>
+#include <fcppt/log/format/create_inserter.hpp>
 #include <fcppt/log/format/create_prefix.hpp>
-#include <fcppt/log/format/inserter.hpp>
+#include <fcppt/log/format/function.hpp>
 
 
-fcppt::log::format::const_object_ptr const
+fcppt::log::format::function const
 fcppt::log::format::create_prefix(
-	string const &_prefix
+	fcppt::string const &_prefix
 )
 {
 	return
-		fcppt::make_shared_ptr<
-			format::inserter
-		>(
+		fcppt::log::format::create_inserter(
 			_prefix
 			+ FCPPT_TEXT(": %1%")
 		);

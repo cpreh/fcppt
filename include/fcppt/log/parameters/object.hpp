@@ -18,7 +18,7 @@
 #include <fcppt/log/location_fwd.hpp>
 #include <fcppt/log/object_fwd.hpp>
 #include <fcppt/log/optional_context_location.hpp>
-#include <fcppt/log/format/const_object_ptr.hpp>
+#include <fcppt/log/format/function.hpp>
 #include <fcppt/log/parameters/object_fwd.hpp>
 
 
@@ -47,7 +47,7 @@ public:
 	FCPPT_SYMBOL
 	fcppt::log::parameters::object &
 	context_location(
-		log::context_location const &
+		fcppt::log::context_location const &
 	);
 
 	/// Sets the logger's enabled status
@@ -61,35 +61,35 @@ public:
 	FCPPT_SYMBOL
 	fcppt::log::parameters::object &
 	level_streams(
-		log::level_stream_array const &
+		fcppt::log::level_stream_array const &
 	);
 
 	/// Sets the logger's enabled arrays
 	FCPPT_SYMBOL
 	fcppt::log::parameters::object &
 	enabled_levels(
-		log::enabled_level_array const &
+		fcppt::log::enabled_level_array const &
 	);
 
 	/// Sets the logger's formatter
 	FCPPT_SYMBOL
 	fcppt::log::parameters::object &
 	formatter(
-		log::format::const_object_ptr
+		fcppt::log::format::function const &
 	);
 
 	FCPPT_SYMBOL
 	fcppt::log::parameters::object &
 	level_defaults(
-		log::level::type
+		fcppt::log::level::type
 	);
 
 	FCPPT_SYMBOL
-	io::ostream &
+	fcppt::io::ostream &
 	sink() const;
 
 	FCPPT_SYMBOL
-	log::optional_context_location const &
+	fcppt::log::optional_context_location const &
 	context_location() const;
 
 	FCPPT_SYMBOL
@@ -97,28 +97,28 @@ public:
 	enabled() const;
 
 	FCPPT_SYMBOL
-	log::level_stream_array const &
+	fcppt::log::level_stream_array const &
 	level_streams() const;
 
 	FCPPT_SYMBOL
-	log::enabled_level_array const &
+	fcppt::log::enabled_level_array const &
 	enabled_levels() const;
 
 	FCPPT_SYMBOL
-	log::format::const_object_ptr const
+	fcppt::log::format::function const &
 	formatter() const;
 private:
-	io::ostream &sink_;
+	fcppt::io::ostream &sink_;
 
 	bool enabled_;
 
-	log::level_stream_array level_streams_;
+	fcppt::log::level_stream_array level_streams_;
 
-	log::enabled_level_array enabled_levels_;
+	fcppt::log::enabled_level_array enabled_levels_;
 
-	log::format::const_object_ptr formatter_;
+	fcppt::log::format::function formatter_;
 
-	log::optional_context_location context_location_;
+	fcppt::log::optional_context_location context_location_;
 };
 
 }

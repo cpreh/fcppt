@@ -12,7 +12,6 @@
 #include <fcppt/log/optional_context_location.hpp>
 #include <fcppt/log/detail/auto_context_fwd.hpp>
 #include <fcppt/log/detail/context_tree.hpp>
-#include <fcppt/log/format/const_object_ptr.hpp>
 
 
 namespace fcppt

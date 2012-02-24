@@ -4,11 +4,11 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_LOG_FORMAT_DEFAULT_LEVEL_HPP_INCLUDED
-#define FCPPT_LOG_FORMAT_DEFAULT_LEVEL_HPP_INCLUDED
+#ifndef FCPPT_LOG_FORMAT_CREATE_INSERTER_HPP_INCLUDED
+#define FCPPT_LOG_FORMAT_CREATE_INSERTER_HPP_INCLUDED
 
+#include <fcppt/string.hpp>
 #include <fcppt/symbol.hpp>
-#include <fcppt/log/level.hpp>
 #include <fcppt/log/format/function.hpp>
 
 
@@ -19,11 +19,11 @@ namespace log
 namespace format
 {
 
-/// Creates the default formatter for the given log level
+/// Creates a formatter that will output @a inserter in front
 FCPPT_SYMBOL
 fcppt::log::format::function const
-default_level(
-	fcppt::log::level::type
+create_inserter(
+	fcppt::string const &format
 );
 
 }

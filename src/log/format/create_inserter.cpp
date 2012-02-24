@@ -4,41 +4,23 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/assert/pre.hpp>
-#include <fcppt/log/format/chain.hpp>
-#include <fcppt/log/format/create_chain.hpp>
+#include <fcppt/string.hpp>
+#include <fcppt/log/format/create_inserter.hpp>
 #include <fcppt/log/format/function.hpp>
+#include <fcppt/log/format/inserter.hpp>
 #include <fcppt/tr1/functional.hpp>
 
 
 fcppt::log::format::function const
-fcppt::log::format::create_chain(
-	fcppt::log::format::function const &_parent,
-	fcppt::log::format::function const &_child
+fcppt::log::format::create_inserter(
+	fcppt::string const &_format
 )
 {
-	FCPPT_ASSERT_PRE(
-		_parent
-		||
-		_child
-	);
-
-	if(
-		!_parent
-	)
-		return _child;
-
-	if(
-		!_child
-	)
-		return _parent;
-
 	return
 		fcppt::log::format::function(
 			std::tr1::bind(
-				fcppt::log::format::chain,
-				_parent,
-				_child,
+				fcppt::log::format::inserter,
+				_format,
 				std::tr1::placeholders::_1
 			)
 		);

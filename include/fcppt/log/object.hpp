@@ -17,7 +17,7 @@
 #include <fcppt/log/object_fwd.hpp>
 #include <fcppt/log/detail/auto_context.hpp>
 #include <fcppt/log/detail/temporary_output_fwd.hpp>
-#include <fcppt/log/format/const_object_ptr.hpp>
+#include <fcppt/log/format/function.hpp>
 #include <fcppt/log/parameters/object_fwd.hpp>
 
 
@@ -94,7 +94,7 @@ public:
 	sink() const;
 
 	FCPPT_SYMBOL
-	fcppt::log::format::const_object_ptr const
+	fcppt::log::format::function const &
 	formatter() const;
 
 	FCPPT_SYMBOL
@@ -109,7 +109,7 @@ private:
 
 	fcppt::log::detail::auto_context auto_context_;
 
-	fcppt::log::format::const_object_ptr const formatter_;
+	fcppt::log::format::function const formatter_;
 
 	fcppt::log::level_stream_array level_streams_;
 

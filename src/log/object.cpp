@@ -13,7 +13,7 @@
 #include <fcppt/log/object.hpp>
 #include <fcppt/log/optional_context_location.hpp>
 #include <fcppt/log/detail/temporary_output_fwd.hpp>
-#include <fcppt/log/format/const_object_ptr.hpp>
+#include <fcppt/log/format/function.hpp>
 #include <fcppt/log/parameters/object.hpp>
 #include <fcppt/preprocessor/disable_vc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
@@ -159,7 +159,7 @@ fcppt::log::object::sink() const
 	return sink_;
 }
 
-fcppt::log::format::const_object_ptr const
+fcppt::log::format::function const &
 fcppt::log::object::formatter() const
 {
 	return formatter_;

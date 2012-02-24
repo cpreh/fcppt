@@ -5,39 +5,21 @@
 
 
 #include <fcppt/string.hpp>
-#include <fcppt/text.hpp>
-#include <fcppt/assert/pre_message.hpp>
 #include <fcppt/log/format/chain.hpp>
-#include <fcppt/log/format/const_object_ptr.hpp>
+#include <fcppt/log/format/function.hpp>
 
-
-fcppt::log::format::chain::chain(
-	format::const_object_ptr const _parent,
-	format::const_object_ptr const _child
-)
-:
-	parent_(_parent),
-	child_(_child)
-{
-	FCPPT_ASSERT_PRE_MESSAGE(
-		parent_ && child_,
-		FCPPT_TEXT("format::chain(): one of the objects is zero!")
-	);
-}
-
-fcppt::log::format::chain::~chain()
-{
-}
 
 fcppt::string const
-fcppt::log::format::chain::format(
-	fcppt::string const &_str
-) const
+fcppt::log::format::chain(
+	fcppt::log::format::function const &_parent,
+	fcppt::log::format::function const &_child,
+	fcppt::string const &_string
+)
 {
 	return
-		parent_->format(
-			child_->format(
-				_str
+		_parent(
+			_child(
+				_string
 			)
 		);
 }

@@ -9,30 +9,17 @@
 #include <fcppt/log/format/inserter.hpp>
 
 
-fcppt::log::format::inserter::inserter(
-	fcppt::string const &_format_string
-)
-:
-	format_string_(
-		_format_string
-	)
-{
-}
-
-fcppt::log::format::inserter::~inserter()
-{
-}
-
 fcppt::string const
-fcppt::log::format::inserter::format(
-	fcppt::string const &_dest
-) const
+fcppt::log::format::inserter(
+	fcppt::string const &_format_string,
+	fcppt::string const &_text
+)
 {
 	return
 		(
 			fcppt::format(
-				format_string_
+				_format_string
 			)
-			% _dest
+			% _text
 		).str();
 }

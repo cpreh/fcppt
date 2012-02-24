@@ -4,10 +4,11 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/log/format/object.hpp>
+#ifndef FCPPT_LOG_FORMAT_FUNCTION_HPP_INCLUDED
+#define FCPPT_LOG_FORMAT_FUNCTION_HPP_INCLUDED
 
-fcppt::log::format::object::object()
-{}
+#include <fcppt/function/object.hpp>
+#include <fcppt/log/format/function_fwd.hpp>
 
-fcppt::log::format::object::~object()
-{}
+
+#endif

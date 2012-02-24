@@ -408,15 +408,14 @@ set(
 	include/fcppt/log/exception.hpp
 	include/fcppt/log/fatal.hpp
 	include/fcppt/log/format/chain.hpp
-	include/fcppt/log/format/const_object_ptr.hpp
 	include/fcppt/log/format/create_chain.hpp
+	include/fcppt/log/format/create_inserter.hpp
 	include/fcppt/log/format/create_prefix.hpp
 	include/fcppt/log/format/default_level.hpp
 	include/fcppt/log/format/format.hpp
+	include/fcppt/log/format/function.hpp
+	include/fcppt/log/format/function_fwd.hpp
 	include/fcppt/log/format/inserter.hpp
-	include/fcppt/log/format/object.hpp
-	include/fcppt/log/format/object_fwd.hpp
-	include/fcppt/log/format/object_ptr.hpp
 	include/fcppt/log/global.hpp
 	include/fcppt/log/headers.hpp
 	include/fcppt/log/impl/exception.hpp
@@ -1042,10 +1041,10 @@ set(
 	src/log/find_logger_node.cpp
 	src/log/format/chain.cpp
 	src/log/format/create_chain.cpp
+	src/log/format/create_inserter.cpp
 	src/log/format/create_prefix.cpp
 	src/log/format/default_level.cpp
 	src/log/format/inserter.cpp
-	src/log/format/object.cpp
 	src/log/global.cpp
 	src/log/inner_node_name.cpp
 	src/log/is_outer_node.cpp

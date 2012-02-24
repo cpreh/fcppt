@@ -4,18 +4,24 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
+#include <fcppt/io/ostream.hpp>
 #include <fcppt/log/level_stream.hpp>
 #include <fcppt/log/detail/temporary_output.hpp>
 #include <fcppt/log/format/create_chain.hpp>
-#include <fcppt/log/format/object.hpp>
+#include <fcppt/log/format/function.hpp>
+
 
 fcppt::log::level_stream::level_stream(
-	io::ostream &_dest,
-	format::const_object_ptr const _formatter
+	fcppt::io::ostream &_dest,
+	fcppt::log::format::function const &_formatter
 )
 :
-	dest_(_dest),
-	formatter_(_formatter)
+	dest_(
+		_dest
+	),
+	formatter_(
+		_formatter
+	)
 {
 }
 
@@ -25,15 +31,16 @@ fcppt::log::level_stream::~level_stream()
 
 void
 fcppt::log::level_stream::log(
-	detail::temporary_output const &_output,
-	format::const_object_ptr const _additional_formatter
+	fcppt::log::detail::temporary_output const &_output,
+	fcppt::log::format::function const &_additional_formatter
 )
 {
 	dest_
-		<< format::create_chain(
+		<<
+		fcppt::log::format::create_chain(
 			_additional_formatter,
 			this->formatter()
-		)->format(
+		)(
 			_output.result()
 		);
 
@@ -42,13 +49,13 @@ fcppt::log::level_stream::log(
 
 void
 fcppt::log::level_stream::formatter(
-	format::const_object_ptr const _formatter
+	fcppt::log::format::function const &_formatter
 )
 {
 	formatter_ = _formatter;
 }
 
-fcppt::log::format::const_object_ptr const
+fcppt::log::format::function const &
 fcppt::log::level_stream::formatter() const
 {
 	return formatter_;

@@ -8,7 +8,7 @@
 #define FCPPT_LOG_FORMAT_CREATE_CHAIN_HPP_INCLUDED
 
 #include <fcppt/symbol.hpp>
-#include <fcppt/log/format/const_object_ptr.hpp>
+#include <fcppt/log/format/function.hpp>
 
 
 namespace fcppt
@@ -24,10 +24,10 @@ namespace format
  * @see format::chain
 */
 FCPPT_SYMBOL
-format::const_object_ptr const
+fcppt::log::format::function const
 create_chain(
-	format::const_object_ptr parent,
-	format::const_object_ptr child
+	fcppt::log::format::function const &parent,
+	fcppt::log::format::function const &child
 );
 
 }
