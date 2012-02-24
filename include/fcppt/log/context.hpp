@@ -26,9 +26,14 @@ namespace fcppt
 namespace log
 {
 
-/*
+/**
 \brief The logger context class is used for finding loggers at runtime.
 
+An object of this class should be declared as static inside a function. This
+ensures that it is available before every global logger gets constructed. The
+context object can be passed using \link
+fcppt::log::parameters::object::context_location \endlink. Logger objects can
+then later be queried providing their location using this class.
 */
 class context
 {
@@ -36,31 +41,53 @@ class context
 		context
 	);
 public:
+	/**
+	\brief Constructs a context with no locations
+	*/
 	FCPPT_SYMBOL
 	context();
 
+	/**
+	\brief Destroys a context
+
+	It is important that all the logger objects that are associated with
+	this context are already destroyed.
+
+	\warning The behaviour is undefined if this context still has
+	associated logger objects.
+	*/
 	FCPPT_SYMBOL
 	~context();
 
 	/**
-	\brief Finds a logger with a given location.
+	\brief Searches for a logger with a given location.
+
+	Searches for a logger whose location is \a location.
+
+	\param location The location to search
+
+	\return If the logger is found, it will be returned, otherwise an empty
+	\link fcppt::log::optional_object \endlink will be returned.
 	*/
 	FCPPT_SYMBOL
 	fcppt::log::optional_object const
 	find(
-		fcppt::log::location const &
+		fcppt::log::location const &location
 	) const;
 
 	/**
-	\brief Apply a function to locations recursively
+	\brief Applies a function to all logers given a location recursively
 
-	\throw fcppt::log::no_such_location if the location doesn't exist
+	Applies \a function to the loggers at \a location and below.
+
+	\throw \link fcppt::log::no_such_location \endlink if the location
+	doesn't exist
 	*/
 	FCPPT_SYMBOL
 	void
 	apply(
-		fcppt::log::location const &,
-		fcppt::log::tree_function const &
+		fcppt::log::location const &location,
+		fcppt::log::tree_function const &function
 	);
 private:
 	friend class fcppt::log::detail::auto_context;

@@ -4,7 +4,6 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/io/ostream.hpp>
 #include <fcppt/log/context_fwd.hpp>
 #include <fcppt/log/context_location.hpp>
 #include <fcppt/log/location_fwd.hpp>
@@ -15,14 +14,11 @@
 fcppt::log::parameters::object
 fcppt::log::parameters::with_context(
 	fcppt::log::context &_context,
-	fcppt::io::ostream &_stream,
 	fcppt::log::location const &_location
 )
 {
 	return
-		fcppt::log::parameters::object(
-			_stream
-		)
+		fcppt::log::parameters::object()
 		.context_location(
 			fcppt::log::context_location(
 				_context,

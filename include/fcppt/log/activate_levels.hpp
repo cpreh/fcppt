@@ -20,7 +20,7 @@ namespace log
 /**
 \brief Activates all the log levels that are equal or higher.
 
-Actives all log levels for \a logger starting at and including \a level.
+Activates all log levels for \a logger starting at and including \a level.
 
 For example, specifying log::level::warning will activate log::level::error and
 log::level::fatal as well.

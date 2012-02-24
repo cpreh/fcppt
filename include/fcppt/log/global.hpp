@@ -16,8 +16,14 @@ namespace fcppt
 namespace log
 {
 
-/// fcppt's own logger root
-FCPPT_SYMBOL object &
+/**
+\brief fcppt's own root logger
+
+Instead of using fcppt's logger, you are encouraged to declare and use your
+own.
+*/
+FCPPT_SYMBOL
+fcppt::log::object &
 global();
 
 }

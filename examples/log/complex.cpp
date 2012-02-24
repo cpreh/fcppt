@@ -52,10 +52,10 @@ logger_parameters(
 	return
 		fcppt::log::parameters::with_context(
 			engine::log_context(),
-			fcppt::io::cout(),
 			_location
 		)
 		.level_defaults(
+			fcppt::io::cout(),
 			fcppt::log::level::debug
 		);
 }

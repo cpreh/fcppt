@@ -17,11 +17,16 @@ namespace fcppt
 namespace log
 {
 
-/// Creates an enabled_level_array which has every entry set to true that is greater or equal to the parameter
+/**
+\brief Creates an array with enabled levels including and above a levle
+
+Creates an \link fcppt::log::enabled_level_array \endlink which has every entry
+set to true that is greater or equal to \a level.
+*/
 FCPPT_SYMBOL
-log::enabled_level_array const
+fcppt::log::enabled_level_array const
 enabled_levels(
-	level::type
+	fcppt::log::level::type level
 );
 
 }

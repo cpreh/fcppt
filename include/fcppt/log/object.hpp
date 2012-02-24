@@ -9,7 +9,6 @@
 
 #include <fcppt/noncopyable.hpp>
 #include <fcppt/symbol.hpp>
-#include <fcppt/io/ostream.hpp>
 #include <fcppt/log/enabled_level_array.hpp>
 #include <fcppt/log/level.hpp>
 #include <fcppt/log/level_stream_array.hpp>
@@ -26,87 +25,204 @@ namespace fcppt
 namespace log
 {
 
-/// The main logger class. If you need a new logger, you should create an object of it.
+/**
+\brief The main logger class
+
+This class represents a logger object, encapsulating a level stream for every
+log level, a formatter for the logger itself and which log levels are
+activated. You should create one logger object for each subsystem you wish to
+enable or disable logging for.
+*/
 class object
 {
 	FCPPT_NONCOPYABLE(
 		object
 	);
 public:
+	/**
+	\brief Constructs a logger object
+
+	Constructs a logger object given the parameters \a parameters
+	*/
 	FCPPT_SYMBOL
 	explicit
 	object(
-		fcppt::log::parameters::object const &
+		fcppt::log::parameters::object const &parameters
 	);
 
+	/**
+	\brief Destroys a logger object
+
+	It is important the logger object is destroyed before its context is
+	destroyed, if it has one.
+	*/
 	FCPPT_SYMBOL
 	~object();
 
+	/**
+	\brief Logs a message
+
+	Logs a message given by \a output to level \a level. If
+	<code>enabled_and_activated(level)</code> is false, nothing will be
+	logged. An output can be constructed from \link fcppt::log::_ \endlink.
+
+	\param level The log level to log to
+
+	\param output The output to log
+
+	\note You are advised not to use this element function directly,
+	because creating an output even if the logger will discard it can be
+	significant overhead. Instead, use the macros FCPPT_LOG_DEBUG and so on
+	directly.
+
+	\warning The behaviour is undefined if level is \link
+	fcppt::log::level::size \endlink
+	*/
 	FCPPT_SYMBOL
 	void
 	log(
-		fcppt::log::level::type,
-		fcppt::log::detail::temporary_output const &
+		fcppt::log::level::type level,
+		fcppt::log::detail::temporary_output const &output
 	);
 
+	/**
+	\brief The level stream corresponding to a log level
+
+	Returns the level stream corresponding to \a level.
+
+	\param level The log level to get the level stream for
+
+	\warning The behaviour is undefined if level is \link
+	fcppt::log::level::size \endlink
+	*/
 	FCPPT_SYMBOL
 	fcppt::log::level_stream &
 	level_sink(
-		fcppt::log::level::type
+		fcppt::log::level::type level
 	);
 
+	/**
+	\brief The level stream corresponding to a log level
+
+	Returns the level stream corresponding to \a level.
+
+	\param level The log level to get the level stream for
+
+	\warning The behaviour is undefined if level is \link
+	fcppt::log::level::size \endlink
+	*/
 	FCPPT_SYMBOL
 	fcppt::log::level_stream const &
 	level_sink(
-		fcppt::log::level::type
+		fcppt::log::level::type level
 	) const;
 
+	/**
+	\brief Activates a log level
+
+	Activates the log level given by \a level
+
+	\param level The log level to activate
+
+	\warning The behaviour is undefined if level is \link
+	fcppt::log::level::size \endlink
+	*/
 	FCPPT_SYMBOL
 	void
 	activate(
-		fcppt::log::level::type
+		fcppt::log::level::type level
 	);
 
+	/**
+	\brief Deactivates a log level
+
+	Deactivates the log level given by \a level
+
+	\param level The log level to deactivate
+
+	\warning The behaviour is undefined if level is \link
+	fcppt::log::level::size \endlink
+	*/
 	FCPPT_SYMBOL
 	void
 	deactivate(
-		fcppt::log::level::type
+		fcppt::log::level::type level
 	);
 
+	/**
+	\brief Returns if a level is activated
+
+	Returns if \a level is activated.
+
+	\param level The log level to query the activated state for
+
+	\warning The behaviour is undefined if level is \link
+	fcppt::log::level::size \endlink
+	*/
 	FCPPT_SYMBOL
 	bool
 	activated(
-		fcppt::log::level::type
+		fcppt::log::level::type level
 	) const;
 
+	/**
+	\brief Returns if a level is activated and the logger is enabled
+
+	Returns if \a level is activated and the logger is enabled.
+	Equalivalent to <code>activated(level) && enabled()</code>.
+
+	\param level The log level to query the activated state for
+
+	\warning The behaviour is undefined if level is \link
+	fcppt::log::level::size \endlink
+	*/
+	FCPPT_SYMBOL
+	bool
+	enabled_and_activated(
+		fcppt::log::level::type level
+	) const;
+
+	/**
+	\brief Sets the logger's enabled state
+
+	Sets the logger's enabled state to \a enabled
+
+	\param enabled The new enabled state
+	*/
 	FCPPT_SYMBOL
 	void
 	enable(
-		bool
+		bool enabled
 	);
 
+	/**
+	\brief Returns if the logger is enabled
+	*/
 	FCPPT_SYMBOL
 	bool
 	enabled() const;
 
-	FCPPT_SYMBOL
-	fcppt::io::ostream &
-	sink() const;
-
+	/**
+	\brief Returns the associated formatter
+	*/
 	FCPPT_SYMBOL
 	fcppt::log::format::function const &
 	formatter() const;
 
+	/**
+	\brief Returns the associated level streams
+	*/
 	FCPPT_SYMBOL
 	fcppt::log::level_stream_array const &
 	level_streams() const;
 
+	/**
+	\brief Returns which levels are enabled
+	*/
 	FCPPT_SYMBOL
 	fcppt::log::enabled_level_array const &
 	enabled_levels() const;
 private:
-	fcppt::io::ostream &sink_;
-
 	fcppt::log::detail::auto_context auto_context_;
 
 	fcppt::log::format::function const formatter_;

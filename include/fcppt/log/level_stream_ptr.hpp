@@ -16,6 +16,9 @@ namespace fcppt
 namespace log
 {
 
+/**
+\brief A shared pointer to a level stream
+*/
 typedef fcppt::shared_ptr<
 	fcppt::log::level_stream
 > level_stream_ptr;

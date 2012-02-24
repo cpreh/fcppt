@@ -46,10 +46,10 @@ try
 	fcppt::log::object logger(
 		fcppt::log::parameters::with_context(
 			context,
-			output_stream,
 			root_location
 		)
 		.level_defaults(
+			output_stream,
 			level
 		)
 		.enabled(
@@ -69,10 +69,10 @@ try
 	fcppt::log::object child_logger(
 		fcppt::log::parameters::with_context(
 			context,
-			output_stream,
 			child_location
 		)
 		.level_defaults(
+			output_stream,
 			level
 		)
 		// not enabled

@@ -10,27 +10,42 @@
 #include <fcppt/log/exception.hpp>
 #include <fcppt/log/location.hpp>
 
+
 namespace fcppt
 {
 namespace log
 {
 
-/// Thrown if a location is not found in a context
+/**
+\brief An exception thrown if a location is not found
+*/
 class no_such_location
 :
-	public exception
+	public fcppt::log::exception
 {
 public:
-	explicit no_such_location(
-		log::location const &
+	/**
+	\brief Constructs the exception given a location
+
+	Constructs the exception given \a location
+
+	\param location The location that was not found
+	*/
+	explicit
+	no_such_location(
+		fcppt::log::location const &location
 	);
 
-	log::location const &
+	/**
+	\brief Returns the associated location
+	*/
+	fcppt::log::location const &
 	location() const;
 
-	virtual ~no_such_location() throw();
+	virtual
+	~no_such_location() throw();
 private:
-	log::location location_;
+	fcppt::log::location location_;
 };
 
 }

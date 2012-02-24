@@ -16,13 +16,8 @@
 #include <fcppt/log/parameters/object.hpp>
 
 
-fcppt::log::parameters::object::object(
-	fcppt::io::ostream &_sink
-)
+fcppt::log::parameters::object::object()
 :
-	sink_(
-		_sink
-	),
 	enabled_(
 		false
 	),
@@ -85,6 +80,7 @@ fcppt::log::parameters::object::formatter(
 
 fcppt::log::parameters::object &
 fcppt::log::parameters::object::level_defaults(
+	fcppt::io::ostream &_sink,
 	fcppt::log::level::type const _level
 )
 {
@@ -96,17 +92,11 @@ fcppt::log::parameters::object::level_defaults(
 
 	this->level_streams(
 		fcppt::log::default_level_streams(
-			sink_
+			_sink
 		)
 	);
 
 	return *this;
-}
-
-fcppt::io::ostream &
-fcppt::log::parameters::object::sink() const
-{
-	return sink_;
 }
 
 fcppt::log::optional_context_location const &

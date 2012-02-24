@@ -18,11 +18,26 @@ namespace fcppt
 namespace log
 {
 
-/// Creates a location from a string with delimiters @a delim
-FCPPT_SYMBOL location const
+/**
+\brief Creates a location from a string with delimiters
+
+Creates a location from \a text, splitting \a text using \a delim,
+concatenating each obtained substring to the resulting location.
+
+\param text The string to split
+
+\param delim The delimiter to split with
+
+\return A new location that consists of every substring of \a text split by \a
+delim
+
+\throw fcppt::log::exception if \a text doesn't contain any \a delim
+*/
+FCPPT_SYMBOL
+fcppt::log::location const
 make_location(
-	string const &name,
-	char_type delim
+	fcppt::string const &text,
+	fcppt::char_type delim
 );
 
 }

@@ -9,6 +9,24 @@
 
 #include <fcppt/log/context.hpp>
 
+
+/**
+\brief Defines a log context function
+
+For a function
+
+\code
+namespace foo
+{
+fcppt::log::context &
+context_name();
+}
+\endcode
+
+the \a name parameter should be <code>foo::context_name</code>
+
+\param name The name of the logger function including its namespaces
+*/
 #define FCPPT_LOG_DEFINE_CONTEXT(\
 	name\
 )\

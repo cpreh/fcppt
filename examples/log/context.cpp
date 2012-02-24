@@ -32,12 +32,12 @@ main()
 	fcppt::log::object root(
 		fcppt::log::parameters::with_context(
 			context,
-			fcppt::io::cout(),
 			fcppt::log::location(
 				FCPPT_TEXT("root")
 			)
 		)
 		.level_defaults(
+			fcppt::io::cout(),
 			fcppt::log::level::warning
 		)
 	);
@@ -49,7 +49,6 @@ main()
 	fcppt::log::object child(
 		fcppt::log::parameters::with_context(
 			context,
-			fcppt::io::cout(),
 			fcppt::log::location(
 				FCPPT_TEXT("root")
 			)
@@ -57,6 +56,7 @@ main()
 			FCPPT_TEXT("child")
 		)
 		.level_defaults(
+			fcppt::io::cout(),
 			fcppt::log::level::warning
 		)
 	);

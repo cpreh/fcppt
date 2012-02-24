@@ -36,12 +36,8 @@ class object
 		object
 	);
 public:
-	/// Constructs the parameters class providing a sink
 	FCPPT_SYMBOL
-	explicit
-	object(
-		fcppt::io::ostream &
-	);
+	object();
 
 	/// Specifies the context and location
 	FCPPT_SYMBOL
@@ -81,12 +77,9 @@ public:
 	FCPPT_SYMBOL
 	fcppt::log::parameters::object &
 	level_defaults(
+		fcppt::io::ostream &,
 		fcppt::log::level::type
 	);
-
-	FCPPT_SYMBOL
-	fcppt::io::ostream &
-	sink() const;
 
 	FCPPT_SYMBOL
 	fcppt::log::optional_context_location const &
@@ -108,8 +101,6 @@ public:
 	fcppt::log::format::function const &
 	formatter() const;
 private:
-	fcppt::io::ostream &sink_;
-
 	bool enabled_;
 
 	fcppt::log::level_stream_array level_streams_;

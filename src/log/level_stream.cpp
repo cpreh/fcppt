@@ -47,14 +47,6 @@ fcppt::log::level_stream::log(
 	dest_.flush();
 }
 
-void
-fcppt::log::level_stream::formatter(
-	fcppt::log::format::function const &_formatter
-)
-{
-	formatter_ = _formatter;
-}
-
 fcppt::log::format::function const &
 fcppt::log::level_stream::formatter() const
 {

@@ -18,12 +18,12 @@
 
 fcppt::log::location const
 fcppt::log::make_location(
-	string const &_name,
-	char_type const _delim
+	fcppt::string const &_name,
+	fcppt::char_type const _delim
 )
 {
 	typedef std::vector<
-		string
+		fcppt::string
 	> vector_type;
 
 	vector_type elements;

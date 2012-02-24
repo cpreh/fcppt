@@ -21,10 +21,9 @@ main()
 	// Create a logger that logs to cout, has level debug and "below"
 	// enabled and is enabled itself.
 	fcppt::log::object logger(
-		fcppt::log::parameters::object(
-			fcppt::io::cout()
-		)
+		fcppt::log::parameters::object()
 		.level_defaults(
+			fcppt::io::cout(),
 			fcppt::log::level::debug
 		)
 		.enabled(

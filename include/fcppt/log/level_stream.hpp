@@ -7,7 +7,7 @@
 #ifndef FCPPT_LOG_LEVEL_STREAM_HPP_INCLUDED
 #define FCPPT_LOG_LEVEL_STREAM_HPP_INCLUDED
 
-#include <fcppt/nonassignable.hpp>
+#include <fcppt/noncopyable.hpp>
 #include <fcppt/symbol.hpp>
 #include <fcppt/io/ostream.hpp>
 #include <fcppt/log/level_stream_fwd.hpp>
@@ -20,47 +20,72 @@ namespace fcppt
 namespace log
 {
 
-/// The stream for a logger level
 /**
- * Every log::object has a level_stream for each of its logging levels.
- * This class dictates which sink and formatters should be used.
+\brief The stream for a logger level
+
+Every logger object a level stream for each logging levels. This class dictates
+which sink and formatters should be used for a given level. Objects of this
+class can be shared between several logger objects.
 */
 class level_stream
 {
-	FCPPT_NONASSIGNABLE(
+	FCPPT_NONCOPYABLE(
 		level_stream
 	);
 public:
-	/// Constructs a level_stream with a sink and a formatter
+	/**
+	\brief Constructs a level stream with a sink and a formatter
+
+	Constructs a level stream with sink \a stream and formatter \a
+	formatter
+
+	\param stream The stream to log to
+
+	\param formatter The formatting to use for this level
+	*/
 	FCPPT_SYMBOL
 	level_stream(
-		fcppt::io::ostream &,
-		fcppt::log::format::function const &
+		fcppt::io::ostream &stream,
+		fcppt::log::format::function const &formatter
 	);
 
+	/**
+	\brief Destroys a level stream
+	*/
 	FCPPT_SYMBOL
 	~level_stream();
 
+	/**
+	\brief Logs to this level stream
+
+	Logs the output represented by \a output, using additional formatting
+	provided by \a additional_formatter.
+	\link fcppt::log::detail::temporary_output \endlink can be constructed
+	by \link fcppt::log::_ \endlink.
+
+	\param output The output to log
+
+	\param additional_formatter Additional formatting to be used. This
+	formatter is used first, and is usually provided by the logger object
+	itself.
+	*/
 	FCPPT_SYMBOL
 	void
 	log(
-		fcppt::log::detail::temporary_output const &,
-		fcppt::log::format::function const &addtional_formatter
+		fcppt::log::detail::temporary_output const &output,
+		fcppt::log::format::function const &additional_formatter
 	);
 
-	FCPPT_SYMBOL
-	void
-	formatter(
-		fcppt::log::format::function const &
-	);
-
+	/**
+	\brief Returns the associated formatter
+	*/
 	FCPPT_SYMBOL
 	fcppt::log::format::function const &
 	formatter() const;
 private:
 	fcppt::io::ostream &dest_;
 
-	fcppt::log::format::function formatter_;
+	fcppt::log::format::function const formatter_;
 };
 
 }

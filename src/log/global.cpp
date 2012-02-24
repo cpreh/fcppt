@@ -17,10 +17,9 @@ namespace
 {
 
 fcppt::log::object global_log(
-	fcppt::log::parameters::object(
-		fcppt::io::clog()
-	)
+	fcppt::log::parameters::object()
 	.level_defaults(
+		fcppt::io::clog(),
 		fcppt::log::level::debug
 	)
 	.formatter(

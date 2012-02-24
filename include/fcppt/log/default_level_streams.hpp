@@ -17,13 +17,18 @@ namespace fcppt
 namespace log
 {
 
-/// Constructs the default level streams
 /**
- * They will get the default formatters that print a prefix for each level
+\brief Constructs the default level streams
+
+Each level stream will log to \a stream and get a corresponding \link
+fcppt::log::format::default_level \endlink as its formatter.
+
+\return A stream array consisting of a default stream for each level
 */
-FCPPT_SYMBOL level_stream_array const
+FCPPT_SYMBOL
+fcppt::log::level_stream_array const
 default_level_streams(
-	io::ostream &
+	fcppt::io::ostream &stream
 );
 
 }

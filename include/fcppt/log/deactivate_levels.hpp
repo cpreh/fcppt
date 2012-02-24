@@ -17,13 +17,22 @@ namespace fcppt
 namespace log
 {
 
-/// Deactivates all the log levels that are equal or higher.
-/** @see activate_levels
+/**
+\brief Deactivates all the log levels that are equal or higher.
+
+Deactivates all log levels for \a logger starting at and including \a level.
+
+For example, specifying log::level::warning will deactivate log::level::error
+and log::level::fatal as well.
+
+\param logger The logger to deactivate the levels for
+\param level The lower bound of the levels to deactivate
 */
-FCPPT_SYMBOL void
+FCPPT_SYMBOL
+void
 deactivate_levels(
-	object &,
-	level::type
+	fcppt::log::object &logger,
+	fcppt::log::level::type level
 );
 
 }

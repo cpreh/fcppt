@@ -8,13 +8,32 @@
 #define FCPPT_LOG_DETAIL_LEVEL_IF_ENABLED_HPP_INCLUDED
 
 #if !defined(FCPPT_DISABLE_LOGGING)
-#define FCPPT_LOG_DETAIL_LEVEL_IF_ENABLED(stream, l, x)\
+
+#define FCPPT_LOG_DETAIL_LEVEL_IF_ENABLED(\
+	stream,\
+	level,\
+	output\
+)\
 {\
-	if((stream).activated(l))\
-		(stream).log(l, x);\
+	if(\
+		(stream).enabled_and_activated(\
+			(level)\
+		)\
+	)\
+		(stream).log(\
+			(level),\
+			(output)\
+		);\
 }
+
 #else
-#define FCPPT_LOG_DETAIL_LEVEL_IF_ENABLED(stream, l, x)
+
+#define FCPPT_LOG_DETAIL_LEVEL_IF_ENABLED(\
+	stream,\
+	level,\
+	output\
+)
+
 #endif
 
 #endif

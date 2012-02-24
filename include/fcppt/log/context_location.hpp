@@ -19,20 +19,41 @@ namespace fcppt
 namespace log
 {
 
-/// Represents a location of a logger
+/**
+\brief Represents a location of a logger in a context
+
+Represents an \link fcppt::log::location \endlink in an \link
+fcppt::log::context \endlink. An object of this class can be used as a
+parameter to \link fcppt::log::parameters::object::context_location \endlink.
+*/
 class context_location
 {
 public:
+	/**
+	\brief Constructs a context location
+
+	Constructs a context location for \a context and \a location.
+
+	\param context The context to associate with
+
+	\param location The location in the context
+	*/
 	FCPPT_SYMBOL
 	context_location(
-		fcppt::log::context &,
-		fcppt::log::location const &
+		fcppt::log::context &context,
+		fcppt::log::location const &location
 	);
 
+	/**
+	\brief Returns the associated context
+	*/
 	FCPPT_SYMBOL
 	fcppt::log::context &
 	context() const;
 
+	/**
+	\brief Returns the location in the context
+	*/
 	FCPPT_SYMBOL
 	fcppt::log::location const &
 	location() const;

@@ -18,53 +18,98 @@ namespace fcppt
 namespace log
 {
 
-/// location of a logger in a context.
 /**
- * A logger's location is the concatenation of its path in the context tree.
- * For example if a logger would inherit from another logger, it will be placed in a child node of the parent's location.
+\brief A location of a logger in a context.
+
+A logger's location is represented by a vector of strings. Each entry in the
+vector describes an edge in the tree. The nodes of the tree are notated by
+double colons, so for example a location of <code>"::root::child"</code>
+denotes a logger that is below the child level, which in turn is below the root
+level.
 */
 class location
 {
 public:
+	/**
+	\brief Constructs an empty location
+	*/
 	FCPPT_SYMBOL
 	location();
 
-	FCPPT_SYMBOL explicit
-	location(
-		fcppt::string const &
-	);
+	/**
+	\brief Constructs a location with one element
 
-	typedef detail::location_vector::const_reference const_reference;
+	Constructs a location with one element given by \a root
 
-	typedef detail::location_vector::const_iterator const_iterator;
-
+	\param root The root element
+	*/
 	FCPPT_SYMBOL
-	log::location &
-	operator /=(
-		fcppt::string const &
+	explicit
+	location(
+		fcppt::string const &root
 	);
 
+	/**
+	\brief The iterator type
+
+	A typedef to an iterator type over \link fcppt::string \endlink
+	*/
+	typedef fcppt::log::detail::location_vector::const_iterator const_iterator;
+
+	/**
+	\brief Adds a new element to this location
+
+	Adds \a element to this location
+
+	\param element The new element
+	*/
+	FCPPT_SYMBOL
+	fcppt::log::location &
+	operator /=(
+		fcppt::string const &element
+	);
+
+	/**
+	\brief Returns an iterator to the beginning
+	*/
 	FCPPT_SYMBOL
 	const_iterator
 	begin() const;
 
+	/**
+	\brief Returns an iterator to one past the end
+	*/
 	FCPPT_SYMBOL
 	const_iterator
 	end() const;
 
-	/// Creates a string represenation of the location using :: as delimiter.
+	/**
+	\brief Creates a string represenation of the location using :: as
+	delimiter.
+	*/
 	FCPPT_SYMBOL
 	fcppt::string const
 	string() const;
 private:
-	detail::location_vector entries_;
+	fcppt::log::detail::location_vector entries_;
 };
 
+/**
+\brief Concatenates a location and an element
+
+Concatenates \a location and \a element.
+
+\param location The location to concatenate to
+
+\param element The element to concatenate
+
+\return A new location that is the concatenation of \a location and \a element
+*/
 FCPPT_SYMBOL
-log::location const
+fcppt::log::location const
 operator /(
-	log::location,
-	fcppt::string const &
+	fcppt::log::location location,
+	fcppt::string const &element
 );
 
 }

@@ -28,9 +28,6 @@ fcppt::log::object::object(
 	fcppt::log::parameters::object const &_param
 )
 :
-	sink_(
-		_param.sink()
-	),
 	auto_context_(
 		_param.context_location(),
 		*this
@@ -70,9 +67,7 @@ fcppt::log::object::log(
 )
 {
 	if(
-		!this->enabled()
-		||
-		!this->activated(
+		!this->enabled_and_activated(
 			_level
 		)
 	)
@@ -88,7 +83,7 @@ fcppt::log::object::log(
 
 fcppt::log::level_stream &
 fcppt::log::object::level_sink(
-	level::type const _level
+	fcppt::log::level::type const _level
 )
 {
 	return
@@ -99,7 +94,7 @@ fcppt::log::object::level_sink(
 
 fcppt::log::level_stream const &
 fcppt::log::object::level_sink(
-	level::type const _level
+	fcppt::log::level::type const _level
 ) const
 {
 	return
@@ -110,7 +105,7 @@ fcppt::log::object::level_sink(
 
 void
 fcppt::log::object::activate(
-	level::type const _level
+	fcppt::log::level::type const _level
 )
 {
 	enabled_levels_[
@@ -120,7 +115,7 @@ fcppt::log::object::activate(
 
 void
 fcppt::log::object::deactivate(
-	level::type const _level
+	fcppt::log::level::type const _level
 )
 {
 	enabled_levels_[
@@ -130,13 +125,26 @@ fcppt::log::object::deactivate(
 
 bool
 fcppt::log::object::activated(
-	level::type const _level
+	fcppt::log::level::type const _level
 ) const
 {
 	return
 		enabled_levels_[
 			_level
 		];
+}
+
+bool
+fcppt::log::object::enabled_and_activated(
+	fcppt::log::level::type const _level
+) const
+{
+	return
+		this->enabled()
+		&&
+		this->activated(
+			_level
+		);
 }
 
 void
@@ -151,12 +159,6 @@ bool
 fcppt::log::object::enabled() const
 {
 	return enabled_;
-}
-
-fcppt::io::ostream &
-fcppt::log::object::sink() const
-{
-	return sink_;
 }
 
 fcppt::log::format::function const &

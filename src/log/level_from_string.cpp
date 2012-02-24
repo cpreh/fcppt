@@ -17,37 +17,37 @@
 
 fcppt::log::level::type
 fcppt::log::level_from_string(
-	fcppt::string const &_str
+	fcppt::string const &_name
 )
 {
-	log::level_string_array const level_strings(
-		log::level_strings()
+	fcppt::log::level_string_array const level_strings(
+		fcppt::log::level_strings()
 	);
 
-	log::level_string_array::const_iterator const it(
+	fcppt::log::level_string_array::const_iterator const it(
 		std::find(
 			level_strings.begin(),
 			level_strings.end(),
-			_str
+			_name
 		)
 	);
 
 	if(
 		it == level_strings.end()
 	)
-		throw log::exception(
+		throw fcppt::log::exception(
 			FCPPT_TEXT("level_from_string(): \"")
-			+ _str
+			+ _name
 			+ FCPPT_TEXT("\" not found!")
 		);
 
 	return
 		static_cast<
-			level::type
+			fcppt::log::level::type
 		>(
 			std::distance(
 				static_cast<
-					log::level_string_array const &
+					fcppt::log::level_string_array const &
 				>(
 					level_strings
 				).begin(),

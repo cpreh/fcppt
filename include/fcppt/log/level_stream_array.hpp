@@ -17,10 +17,16 @@ namespace fcppt
 namespace log
 {
 
-/// An array of level streams with the size level::size
+/**
+\brief An array used to save log level streams for every level
+
+An array of \link fcppt::log::level_stream_ptr \endlink with the size
+\link fcppt::log::level::size \endlink. Each entry corresponds to
+an enumerator from \link fcppt::log::level \endlink.
+*/
 typedef fcppt::container::array<
-	level_stream_ptr,
-	level::size
+	fcppt::log::level_stream_ptr,
+	fcppt::log::level::size
 > level_stream_array;
 
 }

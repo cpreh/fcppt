@@ -17,13 +17,21 @@ namespace fcppt
 namespace log
 {
 
-/// Convert a string to a level
 /**
- * Accepts all strings as parameters that are listed in level::type
+\brief Converts the name of a log level to its enum
+
+Converts the name of a log level given by \a name to its corresponding level
+enumerator. Accepts all strings as parameters that are listed in \link
+fcppt::log::level::type \endlink
+
+\param name the name of the log level
+
+\throw \link fcppt::log::exception \endlink if \a name is invalid
 */
-FCPPT_SYMBOL level::type
+FCPPT_SYMBOL
+fcppt::log::level::type
 level_from_string(
-	string const &
+	fcppt::string const &name
 );
 
 }

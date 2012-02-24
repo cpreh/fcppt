@@ -11,8 +11,17 @@
 #include <fcppt/log/detail/level_if_enabled.hpp>
 
 
-/// Log to a stream if the fatal level is enabled
-#define FCPPT_LOG_FATAL(stream, x)\
-	FCPPT_LOG_DETAIL_LEVEL_IF_ENABLED(stream, fcppt::log::level::fatal, x)
+/**
+\brief Log to a stream if its fatal level is enabled
+*/
+#define FCPPT_LOG_FATAL(\
+	stream,\
+	output\
+)\
+	FCPPT_LOG_DETAIL_LEVEL_IF_ENABLED(\
+		stream,\
+		fcppt::log::level::fatal,\
+		output\
+	)
 
 #endif
