@@ -17,6 +17,7 @@
 #include <fcppt/log/object.hpp>
 #include <fcppt/log/optional_object.hpp>
 #include <fcppt/log/output.hpp>
+#include <fcppt/log/format/create_time_stamp.hpp>
 #include <fcppt/log/parameters/with_context.hpp>
 #include <fcppt/tr1/functional.hpp>
 #include <fcppt/config/external_begin.hpp>
@@ -53,6 +54,9 @@ try
 		)
 		.enabled(
 			true
+		)
+		.formatter(
+			fcppt::log::format::create_time_stamp()
 		)
 	);
 

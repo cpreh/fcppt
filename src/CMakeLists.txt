@@ -411,11 +411,13 @@ set(
 	include/fcppt/log/format/create_chain.hpp
 	include/fcppt/log/format/create_inserter.hpp
 	include/fcppt/log/format/create_prefix.hpp
+	include/fcppt/log/format/create_time_stamp.hpp
 	include/fcppt/log/format/default_level.hpp
 	include/fcppt/log/format/format.hpp
 	include/fcppt/log/format/function.hpp
 	include/fcppt/log/format/function_fwd.hpp
 	include/fcppt/log/format/inserter.hpp
+	include/fcppt/log/format/time_stamp.hpp
 	include/fcppt/log/global.hpp
 	include/fcppt/log/headers.hpp
 	include/fcppt/log/impl/exception.hpp
@@ -1043,8 +1045,10 @@ set(
 	src/log/format/create_chain.cpp
 	src/log/format/create_inserter.cpp
 	src/log/format/create_prefix.cpp
+	src/log/format/create_time_stamp.cpp
 	src/log/format/default_level.cpp
 	src/log/format/inserter.cpp
+	src/log/format/time_stamp.cpp
 	src/log/global.cpp
 	src/log/inner_node_name.cpp
 	src/log/is_outer_node.cpp

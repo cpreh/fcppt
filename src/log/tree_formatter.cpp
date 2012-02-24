@@ -32,9 +32,7 @@ fcppt::log::tree_formatter(
 
 	_node = &_node->parent();
 
-	fcppt::log::format::function ret(
-		_formatter
-	);
+	fcppt::log::format::function ret;
 
 	for(
 		;
@@ -55,5 +53,9 @@ fcppt::log::tree_formatter(
 		ret
 	);
 
-	return ret;
+	return
+		fcppt::log::format::create_chain(
+			_formatter,
+			ret
+		);
 }
