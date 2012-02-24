@@ -267,6 +267,10 @@ whose name is passed in <code>argv</code>.
 
 \snippet log/complex.cpp main
 
+We can also print which loggers are available in a logger context.
+
+\snippet log/complex.cpp print_locations
+
 \section log_headers Header files
 All headers are relative to the log subdirectory.
 
@@ -444,6 +448,18 @@ All headers are relative to the log subdirectory.
 <tr>
 <td><code>optional_object.hpp</code></td>
 <td>Includes <code>optional_object_fwd.hpp</code> and optional headers.</td>
+</tr>
+<tr>
+<td><code>optional_location_fwd.hpp</code></td>
+<td>Contains the \link fcppt::log::optional_location \endlink typedef.</td>
+</tr>
+<tr>
+<td><code>optional_location.hpp</code></td>
+<td>Includes <code>optional_location_fwd.hpp</code> and optional headers.</td>
+</tr>
+<tr>
+<td><code>print_locations.hpp</code></td>
+<td>Contains \link fcppt::log::print_locations \endlink.</td>
 </tr>
 <tr>
 <td><code>tree_function.hpp</code></td>

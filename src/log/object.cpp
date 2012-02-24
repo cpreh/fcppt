@@ -11,6 +11,7 @@
 #include <fcppt/log/level_stream.hpp>
 #include <fcppt/log/level_stream_array.hpp>
 #include <fcppt/log/object.hpp>
+#include <fcppt/log/optional_location.hpp>
 #include <fcppt/log/detail/optional_context_location.hpp>
 #include <fcppt/log/detail/temporary_output_fwd.hpp>
 #include <fcppt/log/format/function.hpp>
@@ -177,4 +178,10 @@ fcppt::log::enabled_level_array const &
 fcppt::log::object::enabled_levels() const
 {
 	return enabled_levels_;
+}
+
+fcppt::log::optional_location const
+fcppt::log::object::location() const
+{
+	return auto_context_.location();
 }

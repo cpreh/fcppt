@@ -19,6 +19,7 @@
 #include <fcppt/log/location.hpp>
 #include <fcppt/log/object.hpp>
 #include <fcppt/log/output.hpp>
+#include <fcppt/log/print_locations.hpp>
 #include <fcppt/log/parameters/object.hpp>
 #include <fcppt/log/parameters/with_context.hpp>
 #include <fcppt/tr1/functional.hpp>
@@ -201,6 +202,14 @@ main(
 )
 try
 {
+//! [print_locations]
+	fcppt::log::print_locations(
+		fcppt::io::cout(),
+		engine::log_context(),
+		engine::logger_location()
+	);
+//! [print_locations]
+
 //! [main]
 	// Each command line parameter specifies a logger to activate.
 	// Example: "./example renderer" will activate the renderer's logger so we can
@@ -211,9 +220,7 @@ try
 		++i
 	)
 		engine::log_context().apply(
-			fcppt::log::location(
-				FCPPT_TEXT("engine")
-			)
+			engine::logger_location()
 			/
 			fcppt::from_std_string(
 				argv[i]

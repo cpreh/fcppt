@@ -440,6 +440,8 @@ set(
 	include/fcppt/log/no_such_location.hpp
 	include/fcppt/log/object.hpp
 	include/fcppt/log/object_fwd.hpp
+	include/fcppt/log/optional_location.hpp
+	include/fcppt/log/optional_location_fwd.hpp
 	include/fcppt/log/optional_object.hpp
 	include/fcppt/log/optional_object_fwd.hpp
 	include/fcppt/log/output.hpp
@@ -447,6 +449,7 @@ set(
 	include/fcppt/log/parameters/object_fwd.hpp
 	include/fcppt/log/parameters/parameters.hpp
 	include/fcppt/log/parameters/with_context.hpp
+	include/fcppt/log/print_locations.hpp
 	include/fcppt/log/trampoline.hpp
 	include/fcppt/log/tree_function.hpp
 	include/fcppt/log/verbose.hpp
@@ -1061,6 +1064,7 @@ set(
 	src/log/object.cpp
 	src/log/parameters/object.cpp
 	src/log/parameters/with_context.cpp
+	src/log/print_locations.cpp
 	src/log/set_levels.cpp
 	src/log/trampoline.cpp
 	src/log/tree_formatter.cpp

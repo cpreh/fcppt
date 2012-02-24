@@ -14,6 +14,7 @@
 #include <fcppt/log/level_stream_array.hpp>
 #include <fcppt/log/level_stream_fwd.hpp>
 #include <fcppt/log/object_fwd.hpp>
+#include <fcppt/log/optional_location_fwd.hpp>
 #include <fcppt/log/detail/auto_context.hpp>
 #include <fcppt/log/detail/temporary_output_fwd.hpp>
 #include <fcppt/log/format/function.hpp>
@@ -224,6 +225,16 @@ public:
 	FCPPT_SYMBOL
 	fcppt::log::enabled_level_array const &
 	enabled_levels() const;
+
+	/**
+	\brief Returns the location if any
+
+	\return Returns the loggers location if it has any or
+	<code>fcppt::log::optional_location()</code>
+	*/
+	FCPPT_SYMBOL
+	fcppt::log::optional_location const
+	location() const;
 private:
 	fcppt::log::detail::auto_context auto_context_;
 

@@ -38,9 +38,12 @@
 #include <fcppt/log/no_such_location.hpp>
 #include <fcppt/log/object.hpp>
 #include <fcppt/log/object_fwd.hpp>
+#include <fcppt/log/optional_location.hpp>
+#include <fcppt/log/optional_location_fwd.hpp>
 #include <fcppt/log/optional_object.hpp>
 #include <fcppt/log/optional_object_fwd.hpp>
 #include <fcppt/log/output.hpp>
+#include <fcppt/log/print_locations.hpp>
 #include <fcppt/log/trampoline.hpp>
 #include <fcppt/log/tree_function.hpp>
 #include <fcppt/log/verbose.hpp>

@@ -7,6 +7,7 @@
 #include <fcppt/null_ptr.hpp>
 #include <fcppt/log/context.hpp>
 #include <fcppt/log/object_fwd.hpp>
+#include <fcppt/log/optional_location.hpp>
 #include <fcppt/log/detail/auto_context.hpp>
 #include <fcppt/log/detail/optional_context_location.hpp>
 
@@ -22,6 +23,15 @@ fcppt::log::detail::auto_context::auto_context(
 			&_context_location->context()
 		:
 			fcppt::null_ptr()
+	),
+	location_(
+		_context_location
+		?
+			fcppt::log::optional_location(
+				_context_location->location()
+			)
+		:
+			fcppt::log::optional_location()
 	),
 	node_(
 		_context_location
@@ -44,6 +54,12 @@ fcppt::log::detail::auto_context::~auto_context()
 		context_->remove(
 			*node_
 		);
+}
+
+fcppt::log::optional_location const
+fcppt::log::detail::auto_context::location() const
+{
+	return location_;
 }
 
 fcppt::log::detail::context_tree const *
