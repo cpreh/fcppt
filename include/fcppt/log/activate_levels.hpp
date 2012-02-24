@@ -20,6 +20,8 @@ namespace log
 /**
 \brief Activates all the log levels that are equal or higher.
 
+\ingroup fcpptlog
+
 Activates all log levels for \a logger starting at and including \a level.
 
 For example, specifying log::level::warning will activate log::level::error and

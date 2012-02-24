@@ -20,6 +20,8 @@ namespace log
 /**
 \brief Deactivates all the log levels that are equal or higher.
 
+\ingroup fcpptlog
+
 Deactivates all log levels for \a logger starting at and including \a level.
 
 For example, specifying log::level::warning will deactivate log::level::error

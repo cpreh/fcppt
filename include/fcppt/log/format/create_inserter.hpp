@@ -22,6 +22,8 @@ namespace format
 /**
 \brief Creates a formatter using \link fcppt::format \endlink
 
+\ingroup fcpptlog
+
 Creates a formatter that behaves like \link fcppt::log::format::inserter
 \endlink called with \a format.
 

@@ -18,6 +18,8 @@ namespace log
 
 /**
 \brief An optional logger object
+
+\ingroup fcpptlog
 */
 typedef fcppt::optional<
 	fcppt::log::object &

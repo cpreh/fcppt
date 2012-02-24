@@ -28,6 +28,8 @@ namespace log
 /**
 \brief The main logger class
 
+\ingroup fcpptlog
+
 This class represents a logger object, encapsulating a level stream for every
 log level, a formatter for the logger itself and which log levels are
 activated. You should create one logger object for each subsystem you wish to

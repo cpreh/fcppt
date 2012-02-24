@@ -32,6 +32,8 @@ namespace parameters
 /**
 \brief The parameters class for an \link fcppt::log::object \endlink
 
+\ingroup fcpptlog
+
 An object of this class must be used to construct a logger object. A
 reasonable default is to call level_streams.
 */

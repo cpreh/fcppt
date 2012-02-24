@@ -18,6 +18,8 @@ namespace log
 
 /**
 \brief An exception thrown if a location is not found
+
+\ingroup fcpptlog
 */
 class no_such_location
 :

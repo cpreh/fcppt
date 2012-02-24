@@ -13,6 +13,8 @@
 
 /**
 \brief Log to a stream if its fatal level is enabled
+
+\ingroup fcpptlog
 */
 #define FCPPT_LOG_FATAL(\
 	stream,\

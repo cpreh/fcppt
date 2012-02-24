@@ -21,6 +21,8 @@ namespace format
 /**
 \brief Creates a chain formatter
 
+\ingroup fcpptlog
+
 Creates a formatter that behaves like \link fcppt::log::format::chain \endlink
 called with \a parent and \a child. If one of the parameters is an empty
 function, the other parameter will be returned.

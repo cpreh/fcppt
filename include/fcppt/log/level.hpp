@@ -14,11 +14,15 @@ namespace log
 
 /**
 \enum_policy{level,fcppt::log::level::type}
+
+\ingroup fcpptlog
 */
 namespace level
 {
 /**
 \brief An enumeration for the available log levels.
+
+\ingroup fcpptlog
 
 Every enumerator state here represents a less serious log level than the next
 one. For example, info is less serious than warning. size itself is not a

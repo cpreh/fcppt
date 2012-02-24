@@ -22,6 +22,8 @@ namespace format
 /**
 \brief Formats using two formatters in succession
 
+\ingroup fcpptlog
+
 Applies \a child to \a text, the result of which \a parent will be applied to.
 <code>return parent(child(text));</code>.
 

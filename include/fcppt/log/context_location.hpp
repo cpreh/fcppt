@@ -22,6 +22,8 @@ namespace log
 /**
 \brief Represents a location of a logger in a context
 
+\ingroup fcpptlog
+
 Represents an \link fcppt::log::location \endlink in an \link
 fcppt::log::context \endlink. An object of this class can be used as a
 parameter to \link fcppt::log::parameters::object::context_location \endlink.

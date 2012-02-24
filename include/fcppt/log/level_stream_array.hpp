@@ -20,6 +20,8 @@ namespace log
 /**
 \brief An array used to save log level streams for every level
 
+\ingroup fcpptlog
+
 An array of \link fcppt::log::level_stream_ptr \endlink with the size
 \link fcppt::log::level::size \endlink. Each entry corresponds to
 an enumerator from \link fcppt::log::level \endlink.

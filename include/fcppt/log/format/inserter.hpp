@@ -21,6 +21,8 @@ namespace format
 /**
 \brief Inserts a text given a format string
 
+\ingroup fcpptlog
+
 Inserts \a text into \a format_string using \link fcppt::format \endlink.
 
 \param format_string The format string to use

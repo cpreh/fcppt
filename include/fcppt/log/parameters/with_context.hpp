@@ -23,6 +23,8 @@ namespace parameters
 /**
 \brief A helper function to create parameters with a context and location
 
+\ingroup fcpptlog
+
 Creates a default constructed \link fcppt::log::parameters::object \endlink,
 which then gets a context and location denoted by \a context and \a location,
 as if by calling

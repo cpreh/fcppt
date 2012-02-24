@@ -19,6 +19,8 @@ namespace log
 /**
 \brief A function object used to manipulate logger state
 
+\ingroup fcpptlog
+
 This function object type can be used with a logger context to manipulate
 loggers through \link fcppt::log::context::apply \endlink.
 */

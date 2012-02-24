@@ -21,6 +21,8 @@ namespace log
 /**
 \brief A location of a logger in a context.
 
+\ingroup fcpptlog
+
 A logger's location is represented by a vector of strings. Each entry in the
 vector describes an edge in the tree. The nodes of the tree are notated by
 double colons, so for example a location of <code>"::root::child"</code>

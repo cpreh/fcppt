@@ -23,6 +23,8 @@ namespace log
 /**
 \brief The stream for a logger level
 
+\ingroup fcpptlog
+
 Every logger object a level stream for each logging levels. This class dictates
 which sink and formatters should be used for a given level. Objects of this
 class can be shared between several logger objects.

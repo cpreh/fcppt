@@ -20,6 +20,8 @@ namespace log
 /**
 \brief Constructs the default level streams
 
+\ingroup fcpptlog
+
 Each level stream will log to \a stream and get a corresponding \link
 fcppt::log::format::default_level \endlink as its formatter.
 

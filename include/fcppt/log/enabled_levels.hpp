@@ -20,6 +20,8 @@ namespace log
 /**
 \brief Creates an array with enabled levels including and above a levle
 
+\ingroup fcpptlog
+
 Creates an \link fcppt::log::enabled_level_array \endlink which has every entry
 set to true that is greater or equal to \a level.
 */

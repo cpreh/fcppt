@@ -20,6 +20,8 @@ namespace log
 /**
 \brief Converts the name of a log level to its enum
 
+\ingroup fcpptlog
+
 Converts the name of a log level given by \a name to its corresponding level
 enumerator. Accepts all strings as parameters that are listed in \link
 fcppt::log::level::type \endlink

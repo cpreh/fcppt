@@ -20,6 +20,8 @@ namespace log
 /**
 \brief Converts a log level to its string representation
 
+\ingroup fcpptlog
+
 Converts a log level given by \a level to its enumerator name as a string.
 
 \return The log level as a string

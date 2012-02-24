@@ -13,6 +13,8 @@
 
 /**
 \brief Log to a stream if its warning level is enabled
+
+\ingroup fcpptlog
 */
 #define FCPPT_LOG_WARNING(\
 	stream,\

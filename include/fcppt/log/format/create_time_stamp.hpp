@@ -21,6 +21,8 @@ namespace format
 /**
 \brief Creates a formatter that prints a time stamp
 
+\ingroup fcpptlog
+
 Creates a formatter that prints a time stamp in front like \link
 fcppt::log::format::time_stamp \endlink does.
 

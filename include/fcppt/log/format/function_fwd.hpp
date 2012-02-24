@@ -21,6 +21,8 @@ namespace format
 /**
 \brief A formatter function object
 
+\ingroup fcpptlog
+
 This object gets a string from which it returns a new string
 */
 typedef fcppt::function::object<

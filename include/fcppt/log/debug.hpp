@@ -13,6 +13,8 @@
 
 /**
 \brief Log to a stream if its debug level is enabled
+
+\ingroup fcpptlog
 */
 #define FCPPT_LOG_DEBUG(\
 	stream,\

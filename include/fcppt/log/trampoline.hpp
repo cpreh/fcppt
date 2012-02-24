@@ -19,6 +19,8 @@ namespace log
 /**
 \brief Trampoline to create logger output
 
+\ingroup fcpptlog
+
 This trampoline refers to an object that has <code>operator << </code>
 overloaded and accepts every input an <code>std::basic_ostream</code> does.
 */

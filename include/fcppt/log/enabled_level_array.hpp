@@ -19,6 +19,8 @@ namespace log
 /**
 \brief An array used to save which log levels are activated
 
+\ingroup fcpptlog
+
 An array of bool with the size \link fcppt::log::level::size \endlink. Each
 entry corresponds to an enumerator from \link fcppt::log::level \endlink.
 */

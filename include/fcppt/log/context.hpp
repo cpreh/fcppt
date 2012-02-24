@@ -29,6 +29,8 @@ namespace log
 /**
 \brief The logger context class is used for finding loggers at runtime.
 
+\ingroup fcpptlog
+
 An object of this class should be declared as static inside a function. This
 ensures that it is available before every global logger gets constructed. The
 context object can be passed using \link

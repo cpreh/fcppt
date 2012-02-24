@@ -21,6 +21,8 @@ namespace log
 /**
 \brief Creates a location from a string with delimiters
 
+\ingroup fcpptlog
+
 Creates a location from \a text, splitting \a text using \a delim,
 concatenating each obtained substring to the resulting location.
 

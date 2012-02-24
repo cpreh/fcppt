@@ -13,6 +13,8 @@
 /**
 \brief Defines a log context function
 
+\ingroup fcpptlog
+
 For a function
 
 \code

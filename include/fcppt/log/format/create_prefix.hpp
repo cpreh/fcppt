@@ -22,6 +22,8 @@ namespace format
 /**
 \brief Creates a prefix formatter
 
+\ingroup fcpptlog
+
 Creates a formatter that output \a prefix in front.
 
 \param prefix The prefix to print in front

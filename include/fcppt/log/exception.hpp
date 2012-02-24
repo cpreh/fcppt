@@ -18,6 +18,8 @@ namespace log
 
 /**
 \brief The exception base class for logger exceptions
+
+\ingroup fcpptlog
 */
 class exception
 :

@@ -19,6 +19,8 @@ namespace log
 /**
 \brief fcppt's own root logger
 
+\ingroup fcpptlog
+
 Instead of using fcppt's logger, you are encouraged to declare and use your
 own.
 */

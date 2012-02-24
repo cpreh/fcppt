@@ -18,6 +18,8 @@ namespace log
 
 /**
 \brief A shared pointer to a level stream
+
+\ingroup fcpptlog
 */
 typedef fcppt::shared_ptr<
 	fcppt::log::level_stream
