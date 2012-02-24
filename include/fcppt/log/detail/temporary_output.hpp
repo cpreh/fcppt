@@ -28,21 +28,24 @@ namespace detail
 class temporary_output
 {
 public:
-	FCPPT_SYMBOL temporary_output();
+	FCPPT_SYMBOL
+	temporary_output();
 
-	FCPPT_SYMBOL string const
+	FCPPT_SYMBOL
+	fcppt::string const
 	result() const;
 private:
-	shared_ptr<
-		io::ostringstream
+	fcppt::shared_ptr<
+		fcppt::io::ostringstream
 	> stream_;
 
 	template<
 		typename T
 	>
-	friend temporary_output const
+	friend
+	fcppt::log::detail::temporary_output const
 	operator<<(
-		temporary_output const &,
+		fcppt::log::detail::temporary_output const &,
 		T const &
 	);
 };
@@ -50,25 +53,27 @@ private:
 template<
 	typename T
 >
-temporary_output const
+fcppt::log::detail::temporary_output const
 operator<<(
-	output_helper const &,
+	fcppt::log::detail::output_helper const &,
 	T const &_arg
 )
 {
-	return detail::temporary_output() << _arg;
+	return
+		fcppt::log::detail::temporary_output()
+		<< _arg;
 }
 
 template<
 	typename T
 >
-temporary_output const
+fcppt::log::detail::temporary_output const
 operator<<(
-	temporary_output const &_temp,
+	fcppt::log::detail::temporary_output const &_temp,
 	T const &_arg
 )
 {
-	temporary_output new_temp(
+	fcppt::log::detail::temporary_output new_temp(
 		_temp
 	);
 

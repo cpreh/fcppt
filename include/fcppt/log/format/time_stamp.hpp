@@ -18,10 +18,21 @@ namespace log
 namespace format
 {
 
+/**
+\brief Puts a time stamp in front of a string
+
+Puts a time stamp in front of \a text as if it was obtained by \link
+fcppt::time::std_time \endlink and formatted by \link fcppt::time::output_tm
+\endlink.
+
+\param text The string to put the time stamp in front of
+
+\return The formatted string
+*/
 FCPPT_SYMBOL
 fcppt::string const
 time_stamp(
-	fcppt::string const &
+	fcppt::string const &text
 );
 
 }

@@ -16,8 +16,11 @@ namespace fcppt
 namespace log
 {
 
+/**
+\brief An optional context location
+*/
 typedef fcppt::optional<
-	log::context_location
+	fcppt::log::context_location
 > optional_context_location;
 
 }

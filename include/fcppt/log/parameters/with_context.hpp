@@ -20,11 +20,26 @@ namespace log
 namespace parameters
 {
 
+/**
+\brief A helper function to create parameters with a context and location
+
+Creates a default constructed \link fcppt::log::parameters::object \endlink,
+which then gets a context and location denoted by \a context and \a location,
+as if by calling
+<code>param.context_location(fcppt::log::context_location(context,
+location))</code>.
+
+\param context The context to use
+
+\param location The location in the context
+
+\return The constructed parameters class
+*/
 FCPPT_SYMBOL
 fcppt::log::parameters::object
 with_context(
-	fcppt::log::context &,
-	fcppt::log::location const &
+	fcppt::log::context &context,
+	fcppt::log::location const &location
 );
 
 }

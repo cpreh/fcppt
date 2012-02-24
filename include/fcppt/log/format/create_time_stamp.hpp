@@ -18,7 +18,14 @@ namespace log
 namespace format
 {
 
-/// Creates a formatter that will output @a time_stamp in front
+/**
+\brief Creates a formatter that prints a time stamp
+
+Creates a formatter that prints a time stamp in front like \link
+fcppt::log::format::time_stamp \endlink does.
+
+\return A new formatter that prints a time stamp
+*/
 FCPPT_SYMBOL
 fcppt::log::format::function const
 create_time_stamp();

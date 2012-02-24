@@ -19,12 +19,26 @@ namespace log
 namespace format
 {
 
+/**
+\brief Formats using two formatters in succession
+
+Applies \a child to \a text, the result of which \a parent will be applied to.
+<code>return parent(child(text));</code>.
+
+\param parent The parent formatter. Must not be empty.
+
+\param child The child formatter. Must not be empty.
+
+\param text The text to format using \a parent and \a child.
+
+\return The formatted text
+*/
 FCPPT_SYMBOL
 fcppt::string const
 chain(
 	fcppt::log::format::function const &parent,
 	fcppt::log::format::function const &child,
-	fcppt::string const &
+	fcppt::string const &text
 );
 
 }

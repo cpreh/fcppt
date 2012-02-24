@@ -29,75 +29,147 @@ namespace log
 namespace parameters
 {
 
-/// The parameters class that can be used to specify all arguments
+/**
+\brief The parameters class for an \link fcppt::log::object \endlink
+
+An object of this class must be used to construct a logger object. A
+reasonable default is to call level_streams.
+*/
 class object
 {
 	FCPPT_NONASSIGNABLE(
 		object
 	);
 public:
+	/**
+	\brief Default constructs a parameters object
+
+	Default constructs a parameters object with <code>running =
+	false</code>, no level streams, all levels disabled and no formatter.
+	*/
 	FCPPT_SYMBOL
 	object();
 
-	/// Specifies the context and location
+	/**
+	\brief Specifies the context and location
+
+	Sets the context and location obtained from \a context_location. This
+	is used to insert a logger object in a context at a given location.
+	Initially, the context and location are empty.
+
+	\param context_location The context and location to use
+
+	\return <code>*this</code>
+
+	\see fcppt::log::parameters::with_context
+	*/
 	FCPPT_SYMBOL
 	fcppt::log::parameters::object &
 	context_location(
-		fcppt::log::context_location const &
+		fcppt::log::context_location const &context_location
 	);
 
-	/// Sets the logger's enabled status
+	/**
+	\brief Sets the logger's enabled status
+
+	Sets the enabled status to \a enabled. Initially, enabled is false.
+
+	\param enabled The enabled value to use
+
+	\return <code>*this</code>
+	*/
 	FCPPT_SYMBOL
 	fcppt::log::parameters::object &
 	enabled(
-		bool
+		bool enabled
 	);
 
-	/// Sets the logger's level streams
+	/**
+	\brief Sets the logger's level streams
+
+	Sets the level streams to \a streams. Initially, all level streams are
+	null pointers.
+
+	\param streams The new level streams
+
+	\return <code>*this</code>
+	*/
 	FCPPT_SYMBOL
 	fcppt::log::parameters::object &
 	level_streams(
-		fcppt::log::level_stream_array const &
+		fcppt::log::level_stream_array const &streams
 	);
 
-	/// Sets the logger's enabled arrays
+	/**
+	\brief Sets the logger's enabled arrays
+
+	Sets which log levels are enabled given by \a levels. Initially, all
+	levels are disabled.
+
+	\param levels The enabled states for all levels
+
+	\return <code>*this</code>
+	*/
 	FCPPT_SYMBOL
 	fcppt::log::parameters::object &
 	enabled_levels(
-		fcppt::log::enabled_level_array const &
+		fcppt::log::enabled_level_array const &levels
 	);
 
-	/// Sets the logger's formatter
+	/**
+	\brief Sets the logger's formatter
+
+	Sets the logger's formatter to \a formatter. Initially, the formatter
+	is empty.
+
+	\param formatter The formatter to use
+
+	\return <code>*this</code>
+	*/
 	FCPPT_SYMBOL
 	fcppt::log::parameters::object &
 	formatter(
-		fcppt::log::format::function const &
+		fcppt::log::format::function const &formatter
 	);
 
+	/**
+	\brief Sets defaults for all levels
+
+	This element function should provide a somewhat often wanted default.
+	It can be recreated with all the other element functions of this class.
+
+	Sets the enabled status for all levels to true that are equal to or
+	higher than \a level, as if by calling
+	<code>this->enabled_levels(fcppt::log::enabled_levels(level))</code>.
+	It also sets a level stream for every level using \a sink, as if by
+	calling
+	<code>this->level_streams(fcppt::log::default_level_streams(sink))</code>.
+
+	\param sink The sink to use for every level stream
+
+	\param level The lowest level to activate
+
+	\return <code>*this</code>
+	*/
 	FCPPT_SYMBOL
 	fcppt::log::parameters::object &
 	level_defaults(
-		fcppt::io::ostream &,
-		fcppt::log::level::type
+		fcppt::io::ostream &sink,
+		fcppt::log::level::type level
 	);
 
-	FCPPT_SYMBOL
 	fcppt::log::optional_context_location const &
 	context_location() const;
 
-	FCPPT_SYMBOL
 	bool
 	enabled() const;
 
-	FCPPT_SYMBOL
 	fcppt::log::level_stream_array const &
 	level_streams() const;
 
-	FCPPT_SYMBOL
 	fcppt::log::enabled_level_array const &
 	enabled_levels() const;
 
-	FCPPT_SYMBOL
 	fcppt::log::format::function const &
 	formatter() const;
 private:

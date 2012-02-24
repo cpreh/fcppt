@@ -19,11 +19,21 @@ namespace log
 namespace format
 {
 
-/// Creates the default formatter for the given log level
+/**
+\brief Creates a default formatter for a level stream
+
+Creates a default formatter for a level stream with the level of \a level.
+This formatter prints the level's string in front as obtained by \link
+fcppt::log::level_to_string \endlink.
+
+\param level The level to print
+
+\return A new formatter printing the level in front
+*/
 FCPPT_SYMBOL
 fcppt::log::format::function const
 default_level(
-	fcppt::log::level::type
+	fcppt::log::level::type level
 );
 
 }

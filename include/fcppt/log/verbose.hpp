@@ -11,8 +11,17 @@
 #include <fcppt/log/detail/level_if_enabled.hpp>
 
 
-/// Log to a stream if the verbose level is enabled
-#define FCPPT_LOG_VERBOSE(stream, x)\
-	FCPPT_LOG_DETAIL_LEVEL_IF_ENABLED(stream, fcppt::log::level::verbose, x)
+/**
+\brief Log to a stream if its verbose level is enabled
+*/
+#define FCPPT_LOG_VERBOSE(\
+	stream,\
+	output\
+)\
+	FCPPT_LOG_DETAIL_LEVEL_IF_ENABLED(\
+		stream,\
+		fcppt::log::level::verbose,\
+		output\
+	)
 
 #endif

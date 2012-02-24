@@ -19,7 +19,15 @@ namespace log
 namespace format
 {
 
-/// Creates a formatter that will output @a prefix in front
+/**
+\brief Creates a prefix formatter
+
+Creates a formatter that output \a prefix in front.
+
+\param prefix The prefix to print in front
+
+\return A new formatter printing \a prefix in front
+*/
 FCPPT_SYMBOL
 fcppt::log::format::function const
 create_prefix(

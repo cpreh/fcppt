@@ -18,10 +18,20 @@ namespace log
 namespace format
 {
 
-/// Factory for creating format::chain
 /**
- * At least one of parent and child must not be zero
- * @see format::chain
+\brief Creates a chain formatter
+
+Creates a formatter that behaves like \link fcppt::log::format::chain \endlink
+called with \a parent and \a child. If one of the parameters is an empty
+function, the other parameter will be returned.
+
+\param parent The parent formatter. can be empty if \a child is not empty
+
+\param child The child formatter. Can be empty if \a parent is not empty
+
+\return A new formatter combining \a parent and \a child
+
+\warning The behaviour is undefined if both parameters are empty
 */
 FCPPT_SYMBOL
 fcppt::log::format::function const

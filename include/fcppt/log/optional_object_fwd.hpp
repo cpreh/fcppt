@@ -16,8 +16,11 @@ namespace fcppt
 namespace log
 {
 
+/**
+\brief An optional logger object
+*/
 typedef fcppt::optional<
-	log::object &
+	fcppt::log::object &
 > optional_object;
 
 }

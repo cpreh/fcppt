@@ -16,9 +16,15 @@ namespace fcppt
 namespace log
 {
 
-typedef function::object<
+/**
+\brief A function object used to manipulate logger state
+
+This function object type can be used with a logger context to manipulate
+loggers through \link fcppt::log::context::apply \endlink.
+*/
+typedef fcppt::function::object<
 	void (
-		log::object &
+		fcppt::log::object &
 	)
 > tree_function;
 

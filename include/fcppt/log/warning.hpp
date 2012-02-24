@@ -11,8 +11,17 @@
 #include <fcppt/log/detail/level_if_enabled.hpp>
 
 
-/// Log to a stream if the warning level is enabled
-#define FCPPT_LOG_WARNING(stream, x)\
-	FCPPT_LOG_DETAIL_LEVEL_IF_ENABLED(stream, fcppt::log::level::warning, x)
+/**
+\brief Log to a stream if its warning level is enabled
+*/
+#define FCPPT_LOG_WARNING(\
+	stream,\
+	output\
+)\
+	FCPPT_LOG_DETAIL_LEVEL_IF_ENABLED(\
+		stream,\
+		fcppt::log::level::warning,\
+		output\
+	)
 
 #endif

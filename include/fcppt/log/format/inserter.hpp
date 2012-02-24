@@ -18,6 +18,17 @@ namespace log
 namespace format
 {
 
+/**
+\brief Inserts a text given a format string
+
+Inserts \a text into \a format_string using \link fcppt::format \endlink.
+
+\param format_string The format string to use
+
+\param text The text to insert
+
+\return The result of the insertion
+*/
 FCPPT_SYMBOL
 fcppt::string const
 inserter(

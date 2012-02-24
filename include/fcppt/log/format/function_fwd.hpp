@@ -18,6 +18,11 @@ namespace log
 namespace format
 {
 
+/**
+\brief A formatter function object
+
+This object gets a string from which it returns a new string
+*/
 typedef fcppt::function::object<
 	fcppt::string const (
 		fcppt::string const &

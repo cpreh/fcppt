@@ -19,7 +19,16 @@ namespace log
 namespace format
 {
 
-/// Creates a formatter that will output @a inserter in front
+/**
+\brief Creates a formatter using \link fcppt::format \endlink
+
+Creates a formatter that behaves like \link fcppt::log::format::inserter
+\endlink called with \a format.
+
+\param format The format string to use
+
+\return A new formatter using \link fcppt::format \endlink with \a format
+*/
 FCPPT_SYMBOL
 fcppt::log::format::function const
 create_inserter(
