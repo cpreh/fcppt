@@ -398,6 +398,8 @@ set(
 	include/fcppt/log/detail/inner_context_node.hpp
 	include/fcppt/log/detail/level_if_enabled.hpp
 	include/fcppt/log/detail/location_vector.hpp
+	include/fcppt/log/detail/optional_context_location.hpp
+	include/fcppt/log/detail/optional_context_location_fwd.hpp
 	include/fcppt/log/detail/outer_context_node.hpp
 	include/fcppt/log/detail/output_helper.hpp
 	include/fcppt/log/detail/temporary_output.hpp
@@ -438,8 +440,6 @@ set(
 	include/fcppt/log/no_such_location.hpp
 	include/fcppt/log/object.hpp
 	include/fcppt/log/object_fwd.hpp
-	include/fcppt/log/optional_context_location.hpp
-	include/fcppt/log/optional_context_location_fwd.hpp
 	include/fcppt/log/optional_object.hpp
 	include/fcppt/log/optional_object_fwd.hpp
 	include/fcppt/log/output.hpp

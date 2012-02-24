@@ -4,12 +4,12 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_LOG_OPTIONAL_CONTEXT_LOCATION_HPP_INCLUDED
-#define FCPPT_LOG_OPTIONAL_CONTEXT_LOCATION_HPP_INCLUDED
+#ifndef FCPPT_LOG_DETAIL_OPTIONAL_CONTEXT_LOCATION_HPP_INCLUDED
+#define FCPPT_LOG_DETAIL_OPTIONAL_CONTEXT_LOCATION_HPP_INCLUDED
 
 #include <fcppt/optional_impl.hpp>
 #include <fcppt/log/context_location.hpp>
-#include <fcppt/log/optional_context_location_fwd.hpp>
+#include <fcppt/log/detail/optional_context_location_fwd.hpp>
 
 
 #endif

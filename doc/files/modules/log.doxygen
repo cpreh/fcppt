@@ -270,10 +270,234 @@ whose name is passed in <code>argv</code>.
 \snippet log/complex.cpp main
 
 \section log_headers Header files
+All headers are relative to the log subdirectory.
+
+\subsection log_headers_essential Essential header files
 <table>
 <tr>
 <th>Header file</th>
 <th>Description</th>
+</tr>
+<tr>
+<td><code>context_fwd.hpp</code></td>
+<td>Contains \link fcppt::log::context \endlink's declaration.</td>
+</tr>
+<tr>
+<td><code>context.hpp</code></td>
+<td>Contains \link fcppt::log::context \endlink's definition.</td>
+</tr>
+<tr>
+<td><code>debug.hpp</code></td>
+<td>Contains the <code>FCPPT_LOG_DEBUG</code> macro.</td>
+</tr>
+<tr>
+<td><code>define_context.hpp</code></td>
+<td>Contains the <code>FCPPT_LOG_DEFINE_CONTEXT</code> macro for defining \link fcppt::log::context \endlink getter functions.</td>
+</tr>
+<tr>
+<td><code>error.hpp</code></td>
+<td>Contains the <code>FCPPT_LOG_ERROR</code> macro.</td>
+</tr>
+<tr>
+<td><code>fatal.hpp</code></td>
+<td>Contains the <code>FCPPT_LOG_FATAL</code> macro.</td>
+</tr>
+<tr>
+<td><code>headers.hpp</code></td>
+<td>Includes <code>macros.hpp</code> and <code>output.hpp</code>.</td>
+</tr>
+<tr>
+<td><code>info.hpp</code></td>
+<td>Contains the <code>FCPPT_LOG_INFO</code> macro.</td>
+</tr>
+<tr>
+<td><code>level.hpp</code></td>
+<td>Contains the \link fcppt::log::level \endlink enumeration.</td>
+</tr>
+<tr>
+<td><code>location_fwd.hpp</code></td>
+<td>Contains \link fcppt::log::location \endlink's declaration.</td>
+</tr>
+<tr>
+<td><code>location.hpp</code></td>
+<td>Contains \link fcppt::log::location \endlink's definition.</td>
+</tr>
+<tr>
+<td><code>log.hpp</code></td>
+<td>Includes all log headers.</td>
+</tr>
+<tr>
+<td><code>macros.hpp</code></td>
+<td>Includes <code>debug.hpp, error.hpp, fatal.hpp, info.hpp, verbose.hpp, warning.hpp</code>.</td>
+</tr>
+<tr>
+<td><code>object_fwd.hpp</code></td>
+<td>Contains \link fcppt::log::object \endlink's declaration.</td>
+</tr>
+<tr>
+<td><code>object.hpp</code></td>
+<td>Contains \link fcppt::log::object \endlink's defintiion.</td>
+</tr>
+<tr>
+<td><code>output.hpp</code></td>
+<td>Contains the necessary things to use \link fcppt::log::_ \endlink.</td>
+</tr>
+<tr>
+<td><code>trampoline.hpp</code></td>
+<td>Contains \link fcppt::log::_ \endlink.</td>
+</tr>
+<tr>
+<td><code>verbose.hpp</code></td>
+<td>Contains the <code>FCPPT_LOG_VERBOSE</code> macro.</td>
+</tr>
+<tr>
+<td><code>warning.hpp</code></td>
+<td>Contains the <code>FCPPT_LOG_WARNING</code> macro.</td>
+</tr>
+<tr>
+<td><code>parameters/object_fwd.hpp</code></td>
+<td>Contains \link fcppt::log::parameters::object \endlink's declaration.</td>
+</tr>
+<tr>
+<td><code>parameters/object.hpp</code></td>
+<td>Contains \link fcppt::log::parameters::object \endlink's definition.</td>
+</tr>
+</table>
+
+\subsection log_headers_helpers Other header files
+
+<table>
+<tr>
+<th>Header file</th>
+<th>Description</th>
+</tr>
+<tr>
+<td><code>activate_levels.hpp</code></td>
+<td>Contains \link fcppt::log::activate_levels \endlink which can enable multiple log levels.</td>
+</tr>
+<tr>
+<td><code>context_location_fwd.hpp</code></td>
+<td>Contains \link fcppt::log::context_location \endlink's declaration.</td>
+</tr>
+<tr>
+<td><code>context_location.hpp</code></td>
+<td>Contains \link fcppt::log::context_location \endlink's definition.</td>
+</tr>
+<tr>
+<td><code>deactivate_levels.hpp</code></td>
+<td>Contains \link fcppt::log::deactivate_levels \endlink which can disable multiple log levels.</td>
+</tr>
+<tr>
+<td><code>default_level_streams.hpp</code></td>
+<td>Contains \link fcppt::log::default_level_streams \endlink for construction of all level stream defaults.</td>
+</tr>
+<tr>
+<td><code>enabled_level_array.hpp</code></td>
+<td>Contains the \link fcppt::log::enabled_level_array \endlink typedef.</td>
+</tr>
+<tr>
+<td><code>enabled_levels.hpp</code></td>
+<td>Contains the \link fcppt::log::enabled_levels \endlink helper function to create an array of certain enabled levels.</td>
+</tr>
+<tr>
+<td><code>exception.hpp</code></td>
+<td>Contains \link fcppt::log::exception \endlink.</td>
+</tr>
+<tr>
+<td><code>global.hpp</code></td>
+<td>Contains fcppt's global logger.</td>
+</tr>
+<tr>
+<td><code>level_from_string.hpp</code></td>
+<td>Contains \link fcppt::log::level_from_string \endlink.</td>
+</tr>
+<tr>
+<td><code>level_stream_array.hpp</code></td>
+<td>Contains the \link fcppt::log::level_stream_array \endlink typedef.</td>
+</tr>
+<tr>
+<td><code>level_stream_fwd.hpp</code></td>
+<td>Contains \link fcppt::log::level_stream \endlink's declaration.</td>
+</tr>
+<tr>
+<td><code>level_stream.hpp</code></td>
+<td>Contains \link fcppt::log::level_stream \endlink's definition.</td>
+</tr>
+<tr>
+<td><code>level_stream_ptr.hpp</code></td>
+<td>Contains the \link fcppt::log::level_stream_ptr \endlink typedef.</td>
+</tr>
+<tr>
+<td><code>level_to_string.hpp</code></td>
+<td>Contains \link fcppt::log::level_to_string \endlink.</td>
+</tr>
+<tr>
+<td><code>make_location.hpp</code></td>
+<td>Contains \link fcppt::log::make_location \endlink.</td>
+</tr>
+<tr>
+<td><code>no_such_location.hpp</code></td>
+<td>Contains the \link fcppt::log::no_such_location \endlink exception.</td>
+</tr>
+<tr>
+<td><code>optional_object_fwd.hpp</code></td>
+<td>Contains the \link fcppt::log::optional_object \endlink typedef.</td>
+</tr>
+<tr>
+<td><code>optional_object.hpp</code></td>
+<td>Includes <code>optional_object_fwd.hpp</code> and optional headers.</td>
+</tr>
+<tr>
+<td><code>tree_function.hpp</code></td>
+<td>Contains the \link fcppt::log::tree_function \endlink typedef.</td>
+</tr>
+<tr>
+<td><code>parameters/with_context.hpp</code></td>
+<td>Contains the \link fcppt::log::parameters::with_context \endlink helper function.</td>
+</tr>
+<tr>
+<td><code>format/chain.hpp</code></td>
+<td>Contains the \link fcppt::log::format::chain \endlink function.</td>
+</tr>
+<tr>
+<td><code>format/create_chain.hpp</code></td>
+<td>Contains the \link fcppt::log::format::create_chain \endlink function.</td>
+</tr>
+<tr>
+<td><code>format/create_inserter.hpp</code></td>
+<td>Contains the \link fcppt::log::format::create_inserter \endlink function.</td>
+</tr>
+<tr>
+<td><code>format/create_prefix.hpp</code></td>
+<td>Contains the \link fcppt::log::format::create_prefix \endlink function.</td>
+</tr>
+<tr>
+<td><code>format/create_time_stamp.hpp</code></td>
+<td>Contains the \link fcppt::log::format::create_time_stamp \endlink function.</td>
+</tr>
+<tr>
+<td><code>format/default_level.hpp</code></td>
+<td>Contains the \link fcppt::log::format::default_level \endlink function.</td>
+</tr>
+<tr>
+<td><code>format/format.hpp</code></td>
+<td>Includes all headers of <code>log/format</code>.</td>
+</tr>
+<tr>
+<td><code>format/function_fwd.hpp</code></td>
+<td>Contains the \link fcppt::log::format::function \endlink typedef.</td>
+</tr>
+<tr>
+<td><code>format/function.hpp</code></td>
+<td>Includes <code>format/function_fwd.hpp</code> and function headers.</td>
+</tr>
+<tr>
+<td><code>format/inserter.hpp</code></td>
+<td>Contains the \link fcppt::log::format::inserter \endlink typedef.</td>
+</tr>
+<tr>
+<td><code>format/time_stamp.hpp</code></td>
+<td>Contains the \link fcppt::log::format::time_stamp \endlink typedef.</td>
 </tr>
 </table>
 

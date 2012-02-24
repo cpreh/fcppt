@@ -7,12 +7,12 @@
 #include <fcppt/null_ptr.hpp>
 #include <fcppt/log/context.hpp>
 #include <fcppt/log/object_fwd.hpp>
-#include <fcppt/log/optional_context_location.hpp>
 #include <fcppt/log/detail/auto_context.hpp>
+#include <fcppt/log/detail/optional_context_location.hpp>
 
 
 fcppt::log::detail::auto_context::auto_context(
-	fcppt::log::optional_context_location const &_context_location,
+	fcppt::log::detail::optional_context_location const &_context_location,
 	fcppt::log::object &_object
 )
 :

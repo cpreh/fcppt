@@ -9,9 +9,9 @@
 
 #include <fcppt/noncopyable.hpp>
 #include <fcppt/log/object_fwd.hpp>
-#include <fcppt/log/optional_context_location.hpp>
 #include <fcppt/log/detail/auto_context_fwd.hpp>
 #include <fcppt/log/detail/context_tree.hpp>
+#include <fcppt/log/detail/optional_context_location.hpp>
 
 
 namespace fcppt
@@ -28,7 +28,7 @@ class auto_context
 	);
 public:
 	auto_context(
-		fcppt::log::optional_context_location const &,
+		fcppt::log::detail::optional_context_location const &,
 		fcppt::log::object &
 	);
 

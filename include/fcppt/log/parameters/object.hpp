@@ -17,7 +17,7 @@
 #include <fcppt/log/level_stream_array.hpp>
 #include <fcppt/log/location_fwd.hpp>
 #include <fcppt/log/object_fwd.hpp>
-#include <fcppt/log/optional_context_location.hpp>
+#include <fcppt/log/detail/optional_context_location.hpp>
 #include <fcppt/log/format/function.hpp>
 #include <fcppt/log/parameters/object_fwd.hpp>
 
@@ -193,7 +193,7 @@ public:
 		fcppt::log::level::type level
 	);
 
-	fcppt::log::optional_context_location const &
+	fcppt::log::detail::optional_context_location const &
 	context_location() const;
 
 	bool
@@ -216,7 +216,7 @@ private:
 
 	fcppt::log::format::function formatter_;
 
-	fcppt::log::optional_context_location context_location_;
+	fcppt::log::detail::optional_context_location context_location_;
 };
 
 }

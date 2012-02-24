@@ -11,7 +11,7 @@
 #include <fcppt/log/level_stream.hpp>
 #include <fcppt/log/level_stream_array.hpp>
 #include <fcppt/log/object.hpp>
-#include <fcppt/log/optional_context_location.hpp>
+#include <fcppt/log/detail/optional_context_location.hpp>
 #include <fcppt/log/detail/temporary_output_fwd.hpp>
 #include <fcppt/log/format/function.hpp>
 #include <fcppt/log/parameters/object.hpp>
