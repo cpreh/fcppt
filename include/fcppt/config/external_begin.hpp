@@ -55,6 +55,7 @@ FCPPT_PP_DISABLE_VC_WARNING(4987) // non standard throw(...)
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 #if defined(FCPPT_CONFIG_CLANG_COMPILER)
 FCPPT_PP_DISABLE_GCC_WARNING(-Wnewline-eof)
+FCPPT_PP_DISABLE_GCC_WARNING(-Wtautological-compare)
 #endif
 #if defined(FCPPT_CONFIG_HAVE_DELETE_NON_VIRTUAL_DTOR_WARNING)
 	FCPPT_PP_DISABLE_GCC_WARNING(-Wdelete-non-virtual-dtor)
