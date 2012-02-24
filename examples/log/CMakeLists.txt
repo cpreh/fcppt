@@ -14,4 +14,5 @@ endfunction()
 
 add_fcppt_log_example(complex "" "")
 add_fcppt_log_example(context "" "")
+add_fcppt_log_example(formatting "" "")
 add_fcppt_log_example(helloworld "" "")

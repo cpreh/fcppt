@@ -24,7 +24,7 @@ namespace format
 
 Creates a default formatter for a level stream with the level of \a level.
 This formatter prints the level's string in front as obtained by \link
-fcppt::log::level_to_string \endlink.
+fcppt::log::level_to_string \endlink. It also appends a newline at the end.
 
 \param level The level to print
 

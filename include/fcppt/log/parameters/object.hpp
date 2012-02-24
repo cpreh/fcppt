@@ -101,6 +101,25 @@ public:
 	);
 
 	/**
+	\brief Sets the logger's level stream for a level
+
+	Sets the level stream for \a level to \a stream. Initially, all level
+	streams are null pointers.
+
+	\param level The level to change the stream for
+
+	\param stream The new level stream
+
+	\return <code>*this</code>
+	*/
+	FCPPT_SYMBOL
+	fcppt::log::parameters::object &
+	level_stream(
+		fcppt::log::level::type level,
+		fcppt::log::level_stream_ptr stream
+	);
+
+	/**
 	\brief Sets the logger's enabled arrays
 
 	Sets which log levels are enabled given by \a levels. Initially, all
@@ -114,6 +133,22 @@ public:
 	fcppt::log::parameters::object &
 	enabled_levels(
 		fcppt::log::enabled_level_array const &levels
+	);
+
+	/**
+	\brief Activates a log level
+
+	Activates the log level given by \a level. Initially, all levels are
+	disabled.
+
+	\param level The level to enable
+
+	\return <code>*this</code>
+	*/
+	FCPPT_SYMBOL
+	fcppt::log::parameters::object &
+	activate(
+		fcppt::log::level::type level
 	);
 
 	/**

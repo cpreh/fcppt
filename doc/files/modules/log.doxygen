@@ -12,6 +12,11 @@
 		<ol>
 			<li>\ref log_simple_example</li>
 		</ol>
+	<li>\ref log_formatting_and_sinks</li>
+		<ol>
+			<li>\ref log_design</li>
+			<li>\ref log_formatting_example</li>
+		</ol>
 	<li>\ref log_controlling</li>
 		<ol>
 			<li>\ref log_context_example</li>
@@ -77,12 +82,17 @@ that can be written to like an <code>std::basic_ostream</code>. This is used to
 create a whole message in a threadsafe manner. If you log in multiple pieces
 instead, the log message might end up interleaved with other messages.
 
-<code>level_defaults(debug)</code> tells the logger that it should enable all
-log levels for debug and above and use default formatting for each of them.
+level_defaults is a convennience function that tells the logger to enable all
+log levels for a given log level and above. It also gets a stream that all
+levels will log to, using default formatting.
+
+\section log_formatting_and_sinks Formatting and sinks
 
 \subsection log_design General design
 
-Here is a more detailed explanation of fcppt::log's design.
+Here is a more detailed explanation of fcppt::log's design, regarding where
+output is directed and how it is formatted.
+
 <ul>
 <li>
 Each logger object contains a sink for every log level. Such a sink controls
@@ -97,7 +107,39 @@ The following log levels, declared in \link fcppt::log::level \endlink are
 provided in ascending order: <code>verbose, debug, info, warning, error,
 fatal</code>. The lower the level, the less serious the message.
 </li>
+<li>
+Formatting is done through \link fcppt::log::format::function \endlink objects
+which can be naturally chained together. Every logger object and every sink for
+each log level can have their own formatters.
 </ul>
+
+\subsection log_formatting_example Sink and formatting example
+
+In the following example, we are going to give our logger object a special
+formatting function that prints <code>This is a formatting test: </code> in
+front of every log message.
+
+Such a formatting function takes a string and returns a string and can be
+implemented as follows:
+
+\snippet log/formatting.cpp logger_formatter_declaration
+
+We are also going to create another formatting function for the <em>error</em>
+output sink.
+
+\snippet log/formatting.cpp error_formatter_declaration
+
+We can then specify our logger formatting function for the logger, using \link
+fcppt::log::parameters::object::formatter \endlink. We also change the level
+for the <em>error</em> log level, redirecting it to \link fcppt::io::cerr
+\endlink and giving it a different formatting function, using \link
+fcppt::log::parameters::object::level_stream \endlink.
+
+\snippet log/formatting.cpp logger_declaration
+
+The following code shows what is printed:
+
+\snippet log/formatting.cpp log_print
 
 \section log_controlling Controlling loggers
 

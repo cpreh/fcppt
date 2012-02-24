@@ -59,11 +59,38 @@ fcppt::log::parameters::object::level_streams(
 }
 
 fcppt::log::parameters::object &
+fcppt::log::parameters::object::level_stream(
+	fcppt::log::level::type const _level,
+	fcppt::log::level_stream_ptr const _stream
+)
+{
+	level_streams_[
+		_level
+	]
+		= _stream;
+
+	return *this;
+}
+
+fcppt::log::parameters::object &
 fcppt::log::parameters::object::enabled_levels(
 	fcppt::log::enabled_level_array const &_enabled_levels
 )
 {
 	enabled_levels_ = _enabled_levels;
+
+	return *this;
+}
+
+fcppt::log::parameters::object &
+fcppt::log::parameters::object::activate(
+	fcppt::log::level::type const _level
+)
+{
+	enabled_levels_[
+		_level
+	] =
+		true;
 
 	return *this;
 }
