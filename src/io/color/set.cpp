@@ -4,6 +4,7 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
+#include <fcppt/null_ptr.hpp>
 #include <fcppt/sn_cast.hpp>
 #include <fcppt/io/color/set.hpp>
 #include <fcppt/config/external_begin.hpp>
@@ -80,7 +81,7 @@ struct instance
 			"xterm-88color",
 			"xterm-color",
 			"xterm-debian",
-			0
+			fcppt::null_ptr()
 		};
 
 		for(char const **ptr = term_names; *ptr; ++ptr)

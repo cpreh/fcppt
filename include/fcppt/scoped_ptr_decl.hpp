@@ -8,6 +8,7 @@
 #define FCPPT_SCOPED_PTR_DECL_HPP_INCLUDED
 
 #include <fcppt/noncopyable.hpp>
+#include <fcppt/null_ptr.hpp>
 #include <fcppt/safe_bool.hpp>
 #include <fcppt/scoped_ptr_fwd.hpp>
 #include <fcppt/unique_ptr_fwd.hpp>
@@ -40,7 +41,7 @@ public:
 	typedef T *pointer;
 
 	explicit scoped_ptr(
-		pointer = 0
+		pointer = fcppt::null_ptr()
 	);
 
 	template<
@@ -54,7 +55,7 @@ public:
 
 	void
 	reset(
-		pointer = 0
+		pointer = fcppt::null_ptr()
 	);
 
 	reference

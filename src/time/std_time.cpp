@@ -4,6 +4,7 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
+#include <fcppt/null_ptr.hpp>
 #include <fcppt/text.hpp>
 #include <fcppt/time/exception.hpp>
 #include <fcppt/time/std_time.hpp>
@@ -16,13 +17,15 @@ std::time_t
 fcppt::time::std_time()
 {
 	std::time_t const ret(
-		std::time(0)
+		std::time(
+			fcppt::null_ptr()
+		)
 	);
 
 	if(
 		ret == static_cast<std::time_t>(-1)
 	)
-		throw time::exception(
+		throw fcppt::time::exception(
 			FCPPT_TEXT("std_time() failed!")
 		);
 

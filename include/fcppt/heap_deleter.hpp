@@ -8,6 +8,7 @@
 #define FCPPT_HEAP_DELETER_HPP_INCLUDED
 
 #include <fcppt/assert_complete.hpp>
+#include <fcppt/null_ptr.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/type_traits/is_convertible.hpp>
 #include <boost/utility/enable_if.hpp>
@@ -51,7 +52,7 @@ struct heap_deleter
 				U *,
 				T *
 			>
-		>::type * = 0
+		>::type * = fcppt::null_ptr()
 	)
 	{
 	}

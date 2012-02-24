@@ -8,7 +8,9 @@
 #define FCPPT_SRC_CODECVT_HPP_INCLUDED
 
 #include <fcppt/exception.hpp>
+#include <fcppt/null_ptr.hpp>
 #include <fcppt/text.hpp>
+#include <fcppt/assert/unreachable.hpp>
 #include <fcppt/container/data_end.hpp>
 #include <fcppt/container/raw_vector_impl.hpp>
 #include <fcppt/src/codecvt_type.hpp>
@@ -73,7 +75,8 @@ codecvt(
 	Out *to = buf.data();
 
 	for(
-		In const *from = _string.data(), *from_next = 0;
+		In const *from = _string.data(),
+		*from_next = fcppt::null_ptr();
 		; // loop forever
 		from = from_next
 	)
@@ -134,9 +137,7 @@ codecvt(
 				);
 		}
 
-		throw fcppt::exception(
-			FCPPT_TEXT("Unknown return value in codecvt!")
-		);
+		FCPPT_ASSERT_UNREACHABLE;
 	}
 }
 

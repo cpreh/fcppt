@@ -7,6 +7,13 @@
 #ifndef FCPPT_DETAIL_NULLPTR_T_HPP_INCLUDED
 #define FCPPT_DETAIL_NULLPTR_T_HPP_INCLUDED
 
+#include <fcppt/config/warnings.hpp>
+#if defined(FCPPT_CONFIG_HAVE_ZERO_AS_NULL_POINTER_CONSTANT_WARNING)
+#include <fcppt/preprocessor/disable_gcc_warning.hpp>
+#include <fcppt/preprocessor/pop_warning.hpp>
+#include <fcppt/preprocessor/push_warning.hpp>
+#endif
+
 namespace fcppt
 {
 namespace detail
@@ -14,6 +21,10 @@ namespace detail
 
 struct nullptr_t
 {
+#if defined(FCPPT_CONFIG_HAVE_ZERO_AS_NULL_POINTER_CONSTANT_WARNING)
+FCPPT_PP_PUSH_WARNING
+FCPPT_PP_DISABLE_GCC_WARNING(-Wzero-as-null-pointer-constant)
+#endif
 	template<
 		typename T
 	>
@@ -21,6 +32,9 @@ struct nullptr_t
 	{
 		return 0;
 	}
+#if defined(FCPPT_CONFIG_HAVE_ZERO_AS_NULL_POINTER_CONSTANT_WARNING)
+FCPPT_PP_POP_WARNING
+#endif
 };
 
 

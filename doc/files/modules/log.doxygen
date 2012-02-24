@@ -113,7 +113,7 @@ which can be naturally chained together. Every logger object and every sink for
 each log level can have their own formatters.
 </ul>
 
-\subsection log_formatting_example Sink and formatting example
+\subsection log_formatting_example Formatting and sinks example
 
 In the following example, we are going to give our logger object a special
 formatting function that prints <code>This is a formatting test: </code> in

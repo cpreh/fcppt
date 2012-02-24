@@ -7,6 +7,7 @@
 #ifndef FCPPT_SAFE_BOOL_HPP_INCLUDED
 #define FCPPT_SAFE_BOOL_HPP_INCLUDED
 
+
 #define FCPPT_SAFE_BOOL(\
 	classname\
 )\
@@ -25,7 +26,8 @@ operator bool_type() const \
 		?\
 			&classname::safe_bool_reference_function \
 		:\
-			0;\
+			bool_type() \
+		;\
 }
 
 #endif

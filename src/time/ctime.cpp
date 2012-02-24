@@ -5,6 +5,7 @@
 
 
 #include <fcppt/from_std_string.hpp>
+#include <fcppt/null_ptr.hpp>
 #include <fcppt/text.hpp>
 #include <fcppt/time/ctime.hpp>
 #include <fcppt/time/exception.hpp>
@@ -25,7 +26,7 @@ fcppt::time::ctime(
 	);
 
 	if(
-		ret == 0
+		ret == fcppt::null_ptr()
 	)
 		throw fcppt::time::exception(
 			FCPPT_TEXT("std::ctime() failed!")

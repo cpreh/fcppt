@@ -14,10 +14,10 @@ namespace fcppt
 {
 
 inline
-detail::nullptr_t const
+fcppt::detail::nullptr_t const
 null_ptr()
 {
-	return detail::nullptr_t();
+	return fcppt::detail::nullptr_t();
 }
 
 }

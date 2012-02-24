@@ -7,6 +7,7 @@
 #ifndef FCPPT_TYPE_TRAITS_IS_ITERATOR_HPP_INCLUDED
 #define FCPPT_TYPE_TRAITS_IS_ITERATOR_HPP_INCLUDED
 
+#include <fcppt/null_ptr.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/mpl/not.hpp>
 #include <boost/type_traits/integral_constant.hpp>
@@ -71,10 +72,10 @@ private:
 	static true_t
 	check(
 		T *,
-		typename T::iterator_category * = 0,
-		typename T::value_type * = 0,
-		typename T::difference_type * = 0,
-		typename T::pointer * = 0
+		typename T::iterator_category * = fcppt::null_ptr(),
+		typename T::value_type * = fcppt::null_ptr(),
+		typename T::difference_type * = fcppt::null_ptr(),
+		typename T::pointer * = fcppt::null_ptr()
 	);
 
 	static false_t

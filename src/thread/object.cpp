@@ -5,14 +5,18 @@
 
 
 #include <fcppt/chrono/convert/to_boost_duration.hpp>
+#include <fcppt/thread/id.hpp>
+#include <fcppt/thread/join_duration.hpp>
+#include <fcppt/thread/native_handle.hpp>
 #include <fcppt/thread/object.hpp>
+#include <fcppt/thread/task.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <exception>
 #include <fcppt/config/external_end.hpp>
 
 
 fcppt::thread::object::object(
-	task const &_task
+	fcppt::thread::task const &_task
 )
 :
 	thread_(
@@ -23,11 +27,11 @@ fcppt::thread::object::object(
 
 void
 fcppt::thread::object::swap(
-	object &other_
+	fcppt::thread::object &_other
 )
 {
 	thread_.swap(
-		other_.thread_
+		_other.thread_
 	);
 }
 
@@ -51,13 +55,13 @@ fcppt::thread::object::join()
 
 bool
 fcppt::thread::object::try_join(
-	join_duration const &duration_
+	fcppt::thread::join_duration const &_duration
 )
 {
 	return
 		thread_.timed_join(
-			chrono::convert::to_boost_duration(
-				duration_
+			fcppt::chrono::convert::to_boost_duration(
+				_duration
 			)
 		);
 }
@@ -88,17 +92,19 @@ fcppt::thread::object::interruption_requested() const
 
 fcppt::thread::object::~object()
 {
-	if(joinable())
+	if(
+		this->joinable()
+	)
 		std::terminate();
 }
 
 void
 fcppt::thread::swap(
-	object &x,
-	object &y
+	fcppt::thread::object &_x,
+	fcppt::thread::object &_y
 )
 {
-	x.swap(
-		y
+	_x.swap(
+		_y
 	);
 }

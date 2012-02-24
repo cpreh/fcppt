@@ -9,6 +9,7 @@
 #ifndef FCPPT_UNIQUE_PTR_DECL_HPP_INCLUDED
 #define FCPPT_UNIQUE_PTR_DECL_HPP_INCLUDED
 
+#include <fcppt/null_ptr.hpp>
 #include <fcppt/unique_ptr_fwd.hpp>
 #include <fcppt/detail_unique_ptr/pointer_type.hpp>
 #include <fcppt/detail_unique_ptr/rv.hpp>
@@ -69,6 +70,8 @@ private:
 		int for_bool_;
 	};
 
+	typedef int (nat::*bool_type);
+
 	unique_ptr(
 		unique_ptr &
 	);
@@ -120,14 +123,14 @@ public:
 				typename unique_ptr<U>::pointer,
 				pointer
 			>
-		>::type* = 0
+		>::type * = fcppt::null_ptr()
 	);
 
 	~unique_ptr();
 
 	unique_ptr &
 	operator=(
-		int nat::*
+		bool_type
 	);
 
 	template<
@@ -153,7 +156,7 @@ public:
 	deleter_const_reference
 	get_deleter() const;
 
-	operator int nat::*() const;
+	operator bool_type() const;
 
 	void
 	reset(

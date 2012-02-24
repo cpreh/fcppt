@@ -9,10 +9,12 @@
 #ifndef FCPPT_DETAIL_UNIQUE_PTR_POINTER_TYPE_HPP_INCLUDED
 #define FCPPT_DETAIL_UNIQUE_PTR_POINTER_TYPE_HPP_INCLUDED
 
+#include <fcppt/null_ptr.hpp>
 #include <fcppt/detail_unique_ptr/one_two.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/type_traits/remove_reference.hpp>
 #include <fcppt/config/external_end.hpp>
+
 
 namespace fcppt
 {
@@ -32,7 +34,7 @@ template<
 >
 one
 test(
-	typename U::pointer * = 0
+	typename U::pointer * = fcppt::null_ptr()
 );
 
 }  // pointer_type_imp
@@ -44,7 +46,9 @@ struct has_pointer_type
 {
 	static bool const value =
 		sizeof(
-			pointer_type_imp::test<T>(0)
+			pointer_type_imp::test<T>(
+				fcppt::null_ptr()
+			)
 		) == 1;
 };
 

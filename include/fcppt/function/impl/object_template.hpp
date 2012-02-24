@@ -184,7 +184,7 @@ class object< FCPPT_FUNCTION_OBJECT_PP_TEMPLATE_ARGS >
 			if( function_ )
 				return &hidden_type::bool_;
 			else
-				return 0;
+				return safe_bool();
 		}
 
 		FCPPT_FUNCTION_OBJECT_PP_FUNCTION_OPERATOR

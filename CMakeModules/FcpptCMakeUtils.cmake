@@ -270,6 +270,11 @@ IF(
 		FCPPT_UTILS_HAVE_SIGN_CONVERSION_FLAG
 	)
 
+	CHECK_CXX_COMPILER_FLAG(
+		"-Wzero-as-null-pointer-constant"
+		FCPPT_UTILS_HAVE_ZERO_AS_NULL_POINTER_CONSTANT_FLAG
+	)
+
 	if(
 		FCPPT_ENABLE_CPP11
 	)
@@ -312,6 +317,10 @@ IF(
 
 	if(FCPPT_UTILS_HAVE_SIGN_CONVERSION_FLAG)
 		add_definitions("-Wsign-conversion")
+	endif()
+
+	if(FCPPT_UTILS_HAVE_ZERO_AS_NULL_POINTER_CONSTANT_FLAG)
+		add_definitions("-Wzero-as-null-pointer-constant")
 	endif()
 
 	if(FCPPT_UTILS_HAVE_GCC_VISIBILITY)

@@ -44,7 +44,7 @@ public:
 	FCPPT_THREAD_SYMBOL
 	void
 	swap(
-		object &
+		fcppt::thread::object &
 	);
 
 	FCPPT_THREAD_SYMBOL
@@ -103,8 +103,8 @@ private:
 FCPPT_THREAD_SYMBOL
 void
 swap(
-	object &,
-	object &
+	fcppt::thread::object &,
+	fcppt::thread::object &
 );
 
 }
