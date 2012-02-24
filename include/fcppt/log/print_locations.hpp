@@ -10,6 +10,7 @@
 #include <fcppt/symbol.hpp>
 #include <fcppt/io/ostream.hpp>
 #include <fcppt/log/context_fwd.hpp>
+#include <fcppt/log/location_fwd.hpp>
 
 
 namespace fcppt
