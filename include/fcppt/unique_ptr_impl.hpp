@@ -322,7 +322,7 @@ template<
 	> class Deleter
 >
 fcppt::unique_ptr<T, Deleter>::
-operator fcppt::unique_ptr<T, Deleter>::bool_type() const
+operator int fcppt::unique_ptr<T, Deleter>::nat::*() const
 {
 	return
 		this->get()
