@@ -4,8 +4,8 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_DETAIL_NULLPTR_T_HPP_INCLUDED
-#define FCPPT_DETAIL_NULLPTR_T_HPP_INCLUDED
+#ifndef FCPPT_NULL_PTR_T_HPP_INCLUDED
+#define FCPPT_NULL_PTR_T_HPP_INCLUDED
 
 #include <fcppt/config/warnings.hpp>
 #if defined(FCPPT_CONFIG_HAVE_ZERO_AS_NULL_POINTER_CONSTANT_WARNING)
@@ -16,10 +16,8 @@
 
 namespace fcppt
 {
-namespace detail
-{
 
-struct nullptr_t
+struct null_ptr_t
 {
 #if defined(FCPPT_CONFIG_HAVE_ZERO_AS_NULL_POINTER_CONSTANT_WARNING)
 FCPPT_PP_PUSH_WARNING
@@ -37,8 +35,6 @@ FCPPT_PP_POP_WARNING
 #endif
 };
 
-
-}
 }
 
 #endif

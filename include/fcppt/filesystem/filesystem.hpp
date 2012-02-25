@@ -21,11 +21,9 @@
 #include <fcppt/filesystem/extension_without_dot.hpp>
 #include <fcppt/filesystem/file_size.hpp>
 #include <fcppt/filesystem/file_to_string.hpp>
-#include <fcppt/filesystem/first_file.hpp>
 #include <fcppt/filesystem/is_directory.hpp>
 #include <fcppt/filesystem/is_executable.hpp>
 #include <fcppt/filesystem/is_regular.hpp>
-#include <fcppt/filesystem/next_file.hpp>
 #include <fcppt/filesystem/path.hpp>
 #include <fcppt/filesystem/path_to_string.hpp>
 #include <fcppt/filesystem/readlink.hpp>
@@ -34,7 +32,6 @@
 #include <fcppt/filesystem/remove_extension.hpp>
 #include <fcppt/filesystem/remove_filename.hpp>
 #include <fcppt/filesystem/replace_extension.hpp>
-#include <fcppt/filesystem/skip_directories.hpp>
 #include <fcppt/filesystem/stem.hpp>
 #include <fcppt/filesystem/symbol.hpp>
 

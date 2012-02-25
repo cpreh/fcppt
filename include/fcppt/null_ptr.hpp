@@ -7,17 +7,17 @@
 #ifndef FCPPT_NULL_PTR_HPP_INCLUDED
 #define FCPPT_NULL_PTR_HPP_INCLUDED
 
-#include <fcppt/detail/nullptr_t.hpp>
+#include <fcppt/null_ptr_t.hpp>
 
 
 namespace fcppt
 {
 
 inline
-fcppt::detail::nullptr_t const
+fcppt::null_ptr_t const
 null_ptr()
 {
-	return fcppt::detail::nullptr_t();
+	return fcppt::null_ptr_t();
 }
 
 }

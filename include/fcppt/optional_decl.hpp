@@ -7,6 +7,7 @@
 #ifndef FCPPT_OPTIONAL_DECL_HPP_INCLUDED
 #define FCPPT_OPTIONAL_DECL_HPP_INCLUDED
 
+#include <fcppt/null_ptr.hpp>
 #include <fcppt/optional_fwd.hpp>
 #include <fcppt/safe_bool.hpp>
 #include <fcppt/alignment/array.hpp>
@@ -114,7 +115,7 @@ public:
 			T,
 			Other,
 			void
-		>::type const * = 0
+		>::type const * = fcppt::null_ptr()
 	);
 
 	/**
@@ -440,7 +441,7 @@ public:
 		typename detail::enable_optional_ref_conv<
 			T,
 			Other
-		>::type * = 0
+		>::type * = fcppt::null_ptr()
 	);
 
 	/**

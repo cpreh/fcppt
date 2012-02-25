@@ -697,7 +697,8 @@ fcppt::container::raw_vector<T, A>::insert(
 
 		pointer const new_memory(
 			impl_.alloc_.allocate(
-				new_cap
+				new_cap,
+				fcppt::null_ptr()
 			)
 		);
 
@@ -781,7 +782,8 @@ fcppt::container::raw_vector<T, A>::insert(
 
 		pointer const new_memory(
 			impl_.alloc_.allocate(
-				new_cap
+				new_cap,
+				fcppt::null_ptr()
 			)
 		);
 
@@ -1125,7 +1127,8 @@ fcppt::container::raw_vector<T, A>::reallocate(
 
 	pointer const new_memory(
 		impl_.alloc_.allocate(
-			_new_cap
+			_new_cap,
+			fcppt::null_ptr()
 		)
 	);
 
@@ -1222,7 +1225,8 @@ fcppt::container::raw_vector<T,A>::impl::impl(
 			fcppt::null_ptr()
 		:
 			alloc_.allocate(
-				_size
+				_size,
+				fcppt::null_ptr()
 			)
 	),
 	last_(

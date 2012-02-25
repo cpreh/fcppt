@@ -277,7 +277,6 @@ set(
 	include/fcppt/detail/make_ptr_base.hpp
 	include/fcppt/detail/make_shared_wrapper.hpp
 	include/fcppt/detail/make_shared_wrapper_fwd.hpp
-	include/fcppt/detail/nullptr_t.hpp
 	include/fcppt/detail/optional_cast.hpp
 	include/fcppt/detail/process_assert.hpp
 	include/fcppt/detail/strong_typedef_assignment_operator.hpp
@@ -688,6 +687,7 @@ set(
 	include/fcppt/nonassignable.hpp
 	include/fcppt/noncopyable.hpp
 	include/fcppt/null_ptr.hpp
+	include/fcppt/null_ptr_t.hpp
 	include/fcppt/optional.hpp
 	include/fcppt/optional_comparison.hpp
 	include/fcppt/optional_decl.hpp
