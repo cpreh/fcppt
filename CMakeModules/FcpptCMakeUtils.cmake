@@ -261,6 +261,11 @@ IF(
 	)
 
 	CHECK_CXX_COMPILER_FLAG(
+		"-Wmaybe-uninitialized"
+		FCPPT_UTILS_HAVE_MAYBE_UNINITIALIZED_FLAG
+	)
+
+	CHECK_CXX_COMPILER_FLAG(
 		"-Wmissing-declarations"
 		FCPPT_UTILS_HAVE_MISSING_DECLARATIONS_FLAG
 	)
@@ -311,9 +316,13 @@ IF(
 		add_definitions("-Wlogical-op")
 	endif()
 
+	if(FCPPT_UTILS_HAVE_MAYBE_UNINITIALIZED_FLAG)
+		add_definitions("-Wmaybe-uninitialized")
+	endif()
+
 	if(FCPPT_UTILS_HAVE_MISSING_DECLARATIONS_FLAG)
 		add_definitions("-Wmissing-declarations")
-	ENDIF()
+	endif()
 
 	if(FCPPT_UTILS_HAVE_SIGN_CONVERSION_FLAG)
 		add_definitions("-Wsign-conversion")
