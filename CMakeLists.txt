@@ -15,6 +15,10 @@ include(
 	FcpptCMakeUtils
 )
 
+include(
+	FcpptSymbol
+)
+
 set(FCPPT_MAJOR_VERSION 0)
 set(FCPPT_MINOR_VERSION 11)
 set(FCPPT_MICRO_VERSION 0)
@@ -120,6 +124,33 @@ macro(
 		)
 	endif()
 endmacro()
+
+function(
+	generate_symbol_header
+	EXPORTS_NAME
+	SYMBOL_NAME
+)
+	string(
+		REPLACE
+		"_"
+		"/"
+		RELATIVE_PATH
+		"${SYMBOL_NAME}"
+	)
+
+	string(
+		TOLOWER
+		"${RELATIVE_PATH}"
+		RELATIVE_PATH
+	)
+
+	fcppt_generate_symbol_header(
+		"FCPPT_STATIC_LINK"
+		"${EXPORTS_NAME}"
+		"${SYMBOL_NAME}"
+		"${RELATIVE_PATH}"
+	)
+endfunction()
 
 if(
 	ENABLE_NARROW_STRING

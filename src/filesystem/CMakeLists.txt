@@ -29,7 +29,6 @@ set(
 	include/fcppt/filesystem/remove_filename.hpp
 	include/fcppt/filesystem/replace_extension.hpp
 	include/fcppt/filesystem/stem.hpp
-	include/fcppt/filesystem/symbol.hpp
 	src/filesystem/create_directories_recursive.cpp
 	src/filesystem/create_directories_recursive_exn.cpp
 	src/filesystem/create_directory.cpp
@@ -54,6 +53,11 @@ set(
 
 add_definitions(
 	-D BOOST_FILESYSTEM_NO_DEPRECATED
+)
+
+generate_symbol_header(
+	"fcppt_filesystem"
+	"FCPPT_FILESYSTEM"
 )
 
 make_fcppt_library(

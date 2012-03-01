@@ -864,7 +864,6 @@ set(
 	include/fcppt/strong_typedef_impl.hpp
 	include/fcppt/strong_typedef_input.hpp
 	include/fcppt/strong_typedef_output.hpp
-	include/fcppt/symbol.hpp
 	include/fcppt/text.hpp
 	include/fcppt/time/ctime.hpp
 	include/fcppt/time/detail/sleep_duration.hpp
@@ -1099,6 +1098,11 @@ set(
 
 include_directories(
 	"${CMAKE_CURRENT_SOURCE_DIR}/include"
+)
+
+generate_symbol_header(
+	"fcppt_core"
+	"FCPPT"
 )
 
 make_fcppt_library(

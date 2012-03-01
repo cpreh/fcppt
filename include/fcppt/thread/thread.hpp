@@ -15,7 +15,6 @@
 #include <fcppt/thread/object.hpp>
 #include <fcppt/thread/sleep.hpp>
 #include <fcppt/thread/sleep_duration.hpp>
-#include <fcppt/thread/symbol.hpp>
 #include <fcppt/thread/task.hpp>
 #include <fcppt/thread/yield.hpp>
 

@@ -33,6 +33,5 @@
 #include <fcppt/filesystem/remove_filename.hpp>
 #include <fcppt/filesystem/replace_extension.hpp>
 #include <fcppt/filesystem/stem.hpp>
-#include <fcppt/filesystem/symbol.hpp>
 
 #endif

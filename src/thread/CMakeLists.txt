@@ -8,7 +8,6 @@ set(
 	include/fcppt/thread/object.hpp
 	include/fcppt/thread/sleep.hpp
 	include/fcppt/thread/sleep_duration.hpp
-	include/fcppt/thread/symbol.hpp
 	include/fcppt/thread/task.hpp
 	include/fcppt/thread/thread.hpp
 	include/fcppt/thread/yield.hpp
@@ -20,6 +19,11 @@ set(
 
 add_definitions(
 	"${FcpptThreads_DEFINITIONS}"
+)
+
+generate_symbol_header(
+	"fcppt_thread"
+	"FCPPT_THREAD"
 )
 
 make_fcppt_library(
