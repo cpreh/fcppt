@@ -7,6 +7,7 @@
 #ifndef FCPPT_VARIANT_DETAIL_ASSERT_TYPE_HPP_INCLUDED
 #define FCPPT_VARIANT_DETAIL_ASSERT_TYPE_HPP_INCLUDED
 
+#include <fcppt/variant/size_type.hpp>
 #include <fcppt/variant/detail/index_of.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/static_assert.hpp>
@@ -18,10 +19,14 @@
 	elements\
 )\
 BOOST_STATIC_ASSERT((\
-	fcppt::variant::detail::index_of<\
-		types,\
-		other\
-	>::value\
+	static_cast<\
+		fcppt::variant::size_type\
+	>(\
+		fcppt::variant::detail::index_of<\
+			types,\
+			other\
+		>::value\
+	)\
 	< elements\
 ))
 
