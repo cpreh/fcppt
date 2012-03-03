@@ -426,9 +426,29 @@ if(
 		FCPPT_UTILS_HAVE_NO_COPY_DT_NEEDED_ENTRIES_LINKER_FLAG
 	)
 
+	set(
+		CMAKE_REQUIRED_FLAGS
+		"-Wall -Werror -pedantic"
+	)
+
+	check_cxx_source_compiles(
+		"#pragma GCC diagnostic push
+		int main() {}"
+		FCPPT_UTILS_HAVE_GCC_DIAGNOSTIC
+	)
+
 	unset(
 		CMAKE_REQUIRED_FLAGS
 	)
+
+	if(
+		NOT FCPPT_UTILS_HAVE_GCC_DIAGNOSTIC
+	)
+		set(
+			FCPPT_UTILS_INCLUDE_SYSTEM
+			"SYSTEM"
+		)
+	endif()
 
 	if(FCPPT_UTILS_HAVE_AS_NEEDED_LINKER_FLAG)
 		set(
@@ -457,82 +477,94 @@ if(
 endif()
 
 # configure standard CMake build paths
-SET(
+set(
 	EXECUTABLE_OUTPUT_PATH
 	${CMAKE_BINARY_DIR}/bin
 )
 
-SET(
+set(
 	LIBRARY_OUTPUT_PATH
 	${CMAKE_BINARY_DIR}/lib
 )
 
 #macro for adding source groups
-MACRO(
+macro(
 	FCPPT_UTILS_ADD_SOURCE_GROUPS
 	ALL_FILES
 )
-	FOREACH(
+	foreach(
 		CURFILE
 		${ALL_FILES}
 	)
-		GET_FILENAME_COMPONENT(
+		get_filename_component(
 			REL_PATH
 			"${CURFILE}"
 			PATH
 		)
 
-		STRING(REPLACE "/" "\\" GROUPFOLDER ${REL_PATH})
+		string(
+			REPLACE
+			"/"
+			"\\"
+			GROUPFOLDER
+			${REL_PATH}
+		)
 
-		SOURCE_GROUP(
+		source_group(
 			${GROUPFOLDER}
 			FILES
 			${CURFILE}
 		)
-	ENDFOREACH()
-ENDMACRO()
+	endforeach()
+endmacro()
 
-MACRO(
+macro(
 	FCPPT_UTILS_APPEND_SOURCE_DIR_AND_MAKE_GROUPS
 	FILES
 	RESULT
 )
-	UNSET(
+	unset(
 		TEMP_RESULT
 	)
 
-	FOREACH(
+	foreach(
 		CUR_FILE
 		${FILES}
 	)
-		SET(
+		set(
 			WHOLE_FILE
 			${CMAKE_SOURCE_DIR}/${CUR_FILE}
 		)
 
-		GET_FILENAME_COMPONENT(
+		get_filename_component(
 			REL_PATH
 			${CUR_FILE}
 			PATH
 		)
 
-		STRING(REPLACE "/" "\\" GROUPFOLDER ${REL_PATH})
+		string(
+			REPLACE
+			"/"
+			"\\"
+			GROUPFOLDER
+			${REL_PATH}
+		)
 
-		SOURCE_GROUP(
+		source_group(
 			${GROUPFOLDER}
 			FILES
 			${WHOLE_FILE}
 		)
 
-		SET(
+		set(
 			TEMP_RESULT
 			${TEMP_RESULT}
 			${WHOLE_FILE}
 		)
-	ENDFOREACH()
+	endforeach()
 
-	SET(
+	set(
 		${RESULT}
 		"${${RESULT}};${TEMP_RESULT}"
 	)
-ENDMACRO()
+endmacro()

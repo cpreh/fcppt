@@ -199,7 +199,7 @@ if(
 		"-Wall -Werror -pedantic"
 	)
 
-	CHECK_CXX_SOURCE_COMPILES(
+	check_cxx_source_compiles(
 		"
 		#define DO_PRAGMA(x) _Pragma(#x)
 		#define DO_MESSAGE(x) DO_PRAGMA(message (#x))
@@ -209,13 +209,14 @@ if(
 		FCPPT_HAVE_GCC_PRAGMA_MESSAGE
 	)
 
-	CHECK_CXX_SOURCE_COMPILES(
-		"#pragma GCC diagnostic push
-		int main() {}"
-		FCPPT_HAVE_GCC_DIAGNOSTIC
+	unset(
+		CMAKE_REQUIRED_FLAGS
 	)
 
-	unset(CMAKE_REQUIRED_FLAGS)
+	set(
+		FCPPT_HAVE_GCC_DIAGNOSTIC
+		${FCPPT_UTILS_HAVE_GCC_DIAGNOSTIC}
+	)
 endif()
 
 include_directories(
@@ -251,9 +252,14 @@ unset(
 	NEEDED_BOOST_LIBS
 )
 
-include_directories(${Boost_INCLUDE_DIRS})
+include_directories(
+	${FCPPT_UTILS_INCLUDE_SYSTEM}
+	${Boost_INCLUDE_DIRS}
+)
 
-link_directories(${Boost_LIBRARY_DIRS})
+link_directories(
+	${Boost_LIBRARY_DIRS}
+)
 
 find_package(
 	FcpptThreads
@@ -266,7 +272,7 @@ set(
 	${Boost_INCLUDE_DIRS}
 )
 
-CHECK_CXX_SOURCE_COMPILES(
+check_cxx_source_compiles(
 	"#include <boost/cstdint.hpp>
 	int main()
 	{
@@ -284,7 +290,7 @@ if(
 	)
 endif()
 
-CHECK_CXX_SOURCE_COMPILES(
+check_cxx_source_compiles(
 	"int main()
 	{
 		long long test = 1LL;
@@ -292,7 +298,7 @@ CHECK_CXX_SOURCE_COMPILES(
 	FCPPT_HAVE_LONG_LONG
 )
 
-CHECK_CXX_SOURCE_COMPILES(
+check_cxx_source_compiles(
 	"#include <fcppt/alignment/align.hpp>
 	#include <cstddef>
 	template<
