@@ -8,6 +8,8 @@
 #define FCPPT_VARIANT_DETAIL_INDEX_OF_HPP_INCLUDED
 
 #include <fcppt/mpl/index_of.hpp>
+#include <fcppt/mpl/integral_cast.hpp>
+#include <fcppt/variant/size_type.hpp>
 #include <fcppt/variant/detail/real_type.hpp>
 
 
@@ -24,12 +26,15 @@ template<
 >
 struct index_of
 :
-fcppt::mpl::index_of<
-	Types,
-	typename detail::real_type<
+fcppt::mpl::integral_cast<
+	fcppt::variant::size_type,
+	fcppt::mpl::index_of<
 		Types,
-		Element
-	>::type
+		typename detail::real_type<
+			Types,
+			Element
+		>::type
+	>
 >
 {};
 
