@@ -476,6 +476,13 @@ if(
 	endif()
 endif()
 
+# Ignore Boost's deprecated features
+
+add_definitions(
+	"-D BOOST_FILESYSTEM_NO_DEPRECATED"
+	"-D BOOST_SYSTEM_NO_DEPRECATED"
+)
+
 # configure standard CMake build paths
 set(
 	EXECUTABLE_OUTPUT_PATH

@@ -51,10 +51,6 @@ set(
 	src/filesystem/stem.cpp
 )
 
-add_definitions(
-	-D BOOST_FILESYSTEM_NO_DEPRECATED
-)
-
 generate_symbol_header(
 	"fcppt_filesystem"
 	"FCPPT_FILESYSTEM"
