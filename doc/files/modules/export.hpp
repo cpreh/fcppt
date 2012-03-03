@@ -13,6 +13,7 @@
 	<li>\ref exports_vtable</li>
 	<li>\ref exports_list</li>
 	<li>\ref exports_compiler</li>
+	<li>\ref exports_static</li>
 	<li>\ref exports_headers</li>
 </ol>
 
@@ -48,7 +49,7 @@ currently exported. This macro will not be defined in all other cases, which
 means the symbols are currently imported.
 
 In the following example the macro <code>MYLIB_EXPORTS</code> is defined
-by the build system if the library is currently begin built. This macro
+by the build system if the library is currently beign built. This macro
 is used to define <code>MYLIB_SYMBOL</code> to either \link FCPPT_EXPORT_SYMBOL \endlink
 or \link FCPPT_IMPORT_SYMBOL \endlink.
 
@@ -68,7 +69,8 @@ If a class's vtable needs to be exported, a special macro \link
 FCPPT_CLASS_SYMBOL \endlink must be used. This macro doesn't need to change
 whether the vtable is currently imported or exported.
 
-\see \link FCPPT_CLASS_SYMBOL \endlink for a detailed explanation
+\see \link FCPPT_CLASS_SYMBOL \endlink for a detailed explanation on when this
+is necessary.
 
 \snippet visibility.cpp visibility_export_vtable1
 \snippet visibility.cpp visibility_export_vtable2
@@ -92,20 +94,49 @@ functions.
 \snippet visibility.cpp visibility_define_object
 </li>
 
-<li>Explicitly instantiated templates are special because they not only need
-what their non template variants would need, but they also need an \link
-FCPPT_EXPORT_SYMBOL \endlink at their explicit instantiation. In the following
-example, a templated function is explicitly instantiated and exported. The
-function delaration needs a conditional symbol like <code>MYLIB_SYMBOL</code>
-because a normal function would also need it.
+<li>Classes that need their vtables to be exported must use \link
+FCPPT_CLASS_SYMBOL \endlink at their definition.
 
-\snippet visibility.cpp visibility_export_template
+\see \ref exports_vtable.
+</li>
 
-The explicit instantiation needs an additional \link FCPPT_EXPORT_SYMBOL
-\endlink. It is important that this comes after the <code>template</code>
-keyword but before the rest of the explicit instantiation.
+<li>
+An explicitly instantiated template function needs everything that a normal
+function would need, but is also needs an \link
+FCPPT_EXPORT_FUNCTION_INSTANTIATION \endlink at its explicit instantiation.
 
-\snippet visibility.cpp visibility_define_template
+In the following example, a templated function is explicitly instantiated and
+exported. The function delaration needs a conditional symbol like
+<code>MYLIB_SYMBOL</code> because a normal function would also need it.
+
+\snippet visibility.cpp visibility_export_template_function
+
+The explicit instantiation needs an additional \link
+FCPPT_EXPORT_FUNCTION_INSTANTIATION \endlink. It is important that this comes
+after the <code>template</code> keyword but before the rest of the explicit
+function instantiation.
+
+\snippet visibility.cpp visibility_define_template_function
+</li>
+
+<li>
+An explicitly instantiated template class is handled in a similarly to
+explicitly instantied functions.
+
+In the following example, a templated class is explicitly instantiated and
+exported. The class definition is, again, as if it was a normal class.
+
+\snippet visibility.cpp visibility_export_template_class
+
+The explicit instantiation needs an additional \link
+FCPPT_EXPORT_CLASS_INSTANTIATION \endlink. It must be placed after the
+<code>class</code> or <code>struct</code> keyword and before the rest of the
+type.
+
+\warning If you fail to put the macro at the right place, some compilers
+may ignore the visibility attributes without any warnings.
+
+\snippet visibility.cpp visibility_define_template_class
 </li>
 </ul>
 
@@ -120,19 +151,28 @@ how to use different build systems:
 <code>-fvisibility=hidden</code>. Only then will all the symbols be hidden by
 default, so that making symbols public actually does anything.</li>
 
-<li>VC++ can only use public symbols when building a DLL. If you want to build
-a static library instead, you should simply define your conditional symbol as
-nothing.
-\code
-#if defined(MYLIB_STATIC)
-#define MYLIB_SYMBOL
-#elif defined(MYLIB_EXPORTS)
-// ...
-#endif
-\endcode
-</li>
+<li>gcc might ignore \link FCPPT_EXPORT_FUNCTION_INSTANTIATION \endlink or
+\link FCPPT_EXPORT_CLASS_INSTANTIATION \endlink if an implicit instantiation of
+the same type already took place in the same translation unit. You must ensure
+that this does not happen by creating separate translation units for every type
+you wish to explicitly instantiate and export.</li>
 
 </ul>
+
+\section exports_static Static linking
+
+For static linking to work, all of the attributes must be disabled. To do that,
+we are first going to introduce a macro <code>MYLIB_STATIC</code> that is
+defined <em>both</em> when the static library is being built <em>and</em> when
+the library should be used statically.
+
+\snippet visibility.cpp visibility_macros_static
+
+You also have to make sure that the macros for explicit template instantiations
+are empty if <code>MYLIB_STATIC</code> is defined. These two macros should be
+used instead of the ones provided by fcppt.
+
+\snippet visibility.cpp visibility_macros_instantiation_static
 
 \section exports_headers Header files
 <table>
@@ -151,6 +191,14 @@ nothing.
 <tr>
 <td><code>class_symbol.hpp</code></td>
 <td>Contains \link FCPPT_CLASS_SYMBOL \endlink.</td>
+</tr>
+<tr>
+<td><code>export_class_instantiation.hpp</code></td>
+<td>Contains \link FCPPT_EXPORT_CLASS_INSTANTIATION \endlink.</td>
+</tr>
+<tr>
+<td><code>export_function_instantiation.hpp</code></td>
+<td>Contains \link FCPPT_EXPORT_FUNCTION_INSTANTIATION \endlink.</td>
 </tr>
 </table>
 

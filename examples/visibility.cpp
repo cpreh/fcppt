@@ -9,7 +9,7 @@
 #include <fcppt/import_symbol.hpp>
 
 // MYLIB_EXPORTS should be defined by the build system when the library is
-// begin built. If other code includes the library's header, the macro will not
+// beign built. If other code includes the library's header, the macro will not
 // be defined.
 #if defined(MYLIB_EXPORTS)
 #define MYLIB_SYMBOL FCPPT_EXPORT_SYMBOL
@@ -17,6 +17,36 @@
 #define MYLIB_SYMBOL FCPPT_IMPORT_SYMBOL
 #endif
 //! [visibility_macros]
+
+//![visibility_macros_static]
+#include <fcppt/export_symbol.hpp>
+#include <fcppt/import_symbol.hpp>
+
+// If MYLIB_STATIC is defined, the library is being built or used as a static
+// library. In this case we can't use any special symbols.
+#if defined(MYLIB_STATIC)
+#define MYLIB_SYMBOL
+#elif defined(MYLIB_EXPORTS)
+#define MYLIB_SYMBOL FCPPT_EXPORT_SYMBOL
+#else
+#define MYLIB_SYMBOL FCPPT_IMPORT_SYMBOL
+#endif
+//![visibility_macros_static]
+
+//![visibility_macros_instantiation_static]
+#include <fcppt/export_class_instantiation.hpp>
+#include <fcppt/export_function_instantiation.hpp>
+
+// Also, we have to leave the macros for explicit instantiations empty, if
+// MYLIB_STATIC is defined.
+#if defined(MYLIB_STATIC)
+#define MYLIB_EXPORT_CLASS_INSTANTIATION
+#define MYLIB_EXPORT_FUNCTION_INSTANTIATION
+#else
+#define MYLIB_EXPORT_CLASS_INSTANTIATION FCPPT_EXPORT_CLASS_INSTANTIATION
+#define MYLIB_EXPORT_FUNCTION_INSTANTIATION FCPPT_EXPORT_FUNCTION_INSTANTIATION
+#endif
+//![visibility_macros_instantiation_static]
 
 // We really can't use the macros in the example, so undef them
 #undef MYLIB_SYMBOL
@@ -68,7 +98,7 @@ extern const int some_constant;
 }
 //! [visibility_export_object]
 
-//! [visibility_export_template]
+//! [visibility_export_template_function]
 namespace mylib
 {
 
@@ -82,9 +112,27 @@ template_function(
 );
 
 }
-//! [visibility_export_template]
+//! [visibility_export_template_function]
 
-// define our functions
+//! [visibility_export_template_class]
+namespace mylib
+{
+
+template<
+	typename T
+>
+class template_class
+{
+public:
+	MYLIB_SYMBOL
+	void
+	some_function();
+};
+
+}
+//! [visibility_export_template_class]
+
+// Define our functions
 
 //! [visibility_define_function]
 void
@@ -100,7 +148,7 @@ mylib::someclass::~someclass()
 int const mylib::some_constant = 42;
 //! [visibility_define_object]
 
-//! [visibility_define_template]
+//! [visibility_define_template_function]
 
 // Define our template function
 template<
@@ -113,16 +161,40 @@ mylib::template_function(
 {
 }
 
-// Explicitly instantiate the template with int and export it
+// Explicitly instantiate the template function with int and export it
+#include <fcppt/export_function_instantiation.hpp>
+
 template
-FCPPT_EXPORT_SYMBOL
+FCPPT_EXPORT_FUNCTION_INSTANTIATION
 void
 mylib::template_function<
 	int
 >(
 	int const &
 );
-//! [visibility_define_template]
+//! [visibility_define_template_function]
 
+//! [visibility_define_template_class]
+// Define the member functions of the template class
+template<
+	typename T
+>
+void
+mylib::template_class<
+	T
+>::some_function()
+{
+}
+
+// Explicitly instantiate the template class with int and export it
+#include <fcppt/export_class_instantiation.hpp>
+
+template
+class
+FCPPT_EXPORT_CLASS_INSTANTIATION
+mylib::template_class<
+	int
+>;
+//! [visibility_define_template_class]
 int main()
 {}
