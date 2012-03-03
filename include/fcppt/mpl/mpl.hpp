@@ -17,6 +17,7 @@
 #include <fcppt/mpl/index_of.hpp>
 #include <fcppt/mpl/inner.hpp>
 #include <fcppt/mpl/integral_c.hpp>
+#include <fcppt/mpl/integral_cast.hpp>
 #include <fcppt/mpl/invalid_invoke.hpp>
 #include <fcppt/mpl/invoke_on.hpp>
 #include <fcppt/mpl/max_value.hpp>
