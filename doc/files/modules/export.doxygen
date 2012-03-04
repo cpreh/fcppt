@@ -106,7 +106,7 @@ function would need, but is also needs an \link
 FCPPT_EXPORT_FUNCTION_INSTANTIATION \endlink at its explicit instantiation.
 
 In the following example, a templated function is explicitly instantiated and
-exported. The function delaration needs a conditional symbol like
+exported. The function declaration needs a conditional symbol like
 <code>MYLIB_SYMBOL</code> because a normal function would also need it.
 
 \snippet visibility.cpp visibility_export_template_function
