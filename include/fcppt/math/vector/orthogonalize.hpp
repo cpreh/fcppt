@@ -47,7 +47,7 @@ that.
 
 Example:
 
-\code
+\code{.cpp}
 typedef
 fcppt::math::vector::static_<float,2>::type
 vec2f;

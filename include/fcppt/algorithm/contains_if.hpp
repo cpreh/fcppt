@@ -24,7 +24,7 @@ namespace algorithm
 
 This is equivalent to
 
-\code
+\code{.cpp}
 std::find_if(beg, end, pred) != end
 \endcode
 */
@@ -57,7 +57,7 @@ contains_if(
 This is equivalent to
 
 This is equivalent to
-\code
+\code{.cpp}
 contains_if(container.begin(), container.end(), value)
 \endcode
 */

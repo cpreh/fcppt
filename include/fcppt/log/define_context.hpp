@@ -17,7 +17,7 @@
 
 For a function
 
-\code
+\code{.cpp}
 namespace foo
 {
 fcppt::log::context &

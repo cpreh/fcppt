@@ -35,7 +35,7 @@ The inverse operation is fcppt::math::vector::narrow_cast.
 
 Example:
 
-\code
+\code{.cpp}
 typedef
 fcppt::math::vector::static_<int,2>::type
 int2;

@@ -29,7 +29,7 @@ this function will be called for every value that is held by each node.
 
 Example:
 
-\code
+\code{.cpp}
 namespace mine
 {
   struct mytype

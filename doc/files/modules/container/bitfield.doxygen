@@ -21,7 +21,7 @@ orthogonal options like "a person can be hungry and tired, not hungry and
 tired, hungry and not tired or not hungry and not tired". An obvious solution
 is using the bit representation of an enumeration:
 
-\code
+\code{.cpp}
 enum person_status
 {
 	hungry = 1,
@@ -48,14 +48,14 @@ fcppt::container::bitfield::basic takes as first template parameter an enum
 	enumerators with explicit values.
 
 	<strong>Example 1:</strong>
-	\code
+	\code{.cpp}
 	enum my_enum { value1, value2, value3 };
 	\endcode
 
 	This is perfectly valid.
 
 	<strong>Example 2:</strong>
-	\code
+	\code{.cpp}
 	enum my_enum { value = 100 };
 	\endcode
 
@@ -65,7 +65,7 @@ fcppt::container::bitfield::basic takes as first template parameter an enum
 	<code>Size</code> shall be the number of enumerators defined in Enum.
 	To achieve consistency you should define the enum's size within the
 	enum itsself.  <strong>Example:</strong>
-	\code
+	\code{.cpp}
 	enum my_enum { value1, value2, value3, _my_enum_size };
 
 	typedef basic<my_enum,_my_enum_size> mybasic;

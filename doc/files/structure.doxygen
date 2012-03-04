@@ -126,7 +126,7 @@ functions.
 \note
 The C standard library's <code>assert</code> function is a source for confusion
 in this respect. You're not the only one if you tried to use it as:
-\code
+\code{.cpp}
 std::assert(0 < 1);
 \endcode
 Macros have no namespace scope.
@@ -149,7 +149,7 @@ This is where tabs come in handy. They allow for a variable 'n', depending on
 what you specify in your text editor. But there are pitfalls. For example,
 consider your tab width is 4:
 
-\code
+\code{.cpp}
 int a = 3,
     b = 4;
 \endcode
@@ -157,7 +157,7 @@ int a = 3,
 You (or your automatically refactoring editor) might be tempted to write this
 as:
 
-\code
+\code{.cpp}
 int a = 3,
 \tb = 4;
 \endcode
@@ -165,7 +165,7 @@ int a = 3,
 Which — with <em>n</em>=4 — <em>looks</em> the same. But the problem with this
 is obvious, if you set your tab width to 8, it looks like this:
 
-\code
+\code{.cpp}
 int a = 3,
         b = 4;
 \endcode
@@ -180,7 +180,7 @@ int a = 3,<br>
 
 The second solution is to indent it like this
 
-\code
+\code{.cpp}
 int
 \ta=3,
 \tb=4;
@@ -194,7 +194,7 @@ When to indent is pretty much left to the individual programmer. Specifying
 more than a few encouragements would be pretty harsh. A rule of thumb for us is
 "indent as much as possible", which can be best explained by an example:
 
-\code
+\code{.cpp}
 template<
     typename T,
     typename U
@@ -232,13 +232,13 @@ newline after every opening brace (curly brace, parentheses, whatever).
 We encourage you to use bools very sparingly. To illustrate the problem with
 bools, consider the function:
 
-\code
+\code{.cpp}
 void draw_text(string text,bool center_vertically,bool center_horizontally,int font_size);
 \endcode
 
 A function call looks like this
 
-\code
+\code{.cpp}
 draw_text("Hello World",true,false,15);
 \endcode
 
@@ -252,7 +252,7 @@ declaration. There's another, more subtle, problem with this code. Say your
 memory is tainted and you think you have to specify the font size first, then
 the alignment stuff, so you write:
 
-\code
+\code{.cpp}
 draw_text("Hello World",15,true,false);
 \endcode
 
@@ -262,7 +262,7 @@ help. That's pretty much the reason bools are discouraged: You lose
 information. bool is, however, useful with functions which really just give
 "yes" or "no" as an answer such as:
 
-\code
+\code{.cpp}
 class life
 {
 public:
@@ -278,7 +278,7 @@ insert_link_to_strong_typedef_tutorial_here strong typedefs\endlink.
 So how do we use enums in C++ properly? Without thinking further, you might
 write your enums like this:
 
-\code
+\code{.cpp}
 enum shape
 {
     circle,
@@ -289,13 +289,13 @@ enum shape
 
 You could then write functions which take this enum and do something with it:
 
-\code
+\code{.cpp}
 player_shape create(shape);
 \endcode
 
 And you'd call this function with:
 
-\code
+\code{.cpp}
 player_shape s = create(shape::circle);
 \endcode
 
@@ -303,7 +303,7 @@ This code, however, doesn't compile. That's because enums do not open a new
 namespace! Which is a problem, since they pollute the namespace they're defined
 in. So we encourage a simple workaround:
 
-\code
+\code{.cpp}
 namespace shape
 {
 enum type
@@ -318,7 +318,7 @@ enum type
 
 Now the create function declaration and its call look like:
 
-\code
+\code{.cpp}
 player_shape create(shape::type);
 
 create(shape::circle);
@@ -362,7 +362,7 @@ In the following cases only a declaration is needed:
 	<li>A type is returned by a function or taken as an argument</li>
 	<li>
 	A typedef to a template is declared
-	\code
+	\code{.cpp}
 template
 <
   typename T
@@ -384,7 +384,7 @@ undefined references.
 So we devised a simple scheme for the names: We use the complete namespace
 hierarchy plus the suffix <code>_HPP_INCLUDED</code>, so consider this file:
 
-\code
+\code{.cpp}
 namespace sge
 {
 namespace gui
@@ -414,7 +414,7 @@ The C++ standard states that basically all operations regarding floats are
 implementation defined. This might lead to a "fatal error" in the following
 code:
 
-\code
+\code{.cpp}
 float f = 1.0f;
 if (f == 1.0f)
   do_something_safe();

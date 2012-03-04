@@ -4,7 +4,7 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-//[signal_combine
+//! [signal_combine]
 #include <fcppt/text.hpp>
 #include <fcppt/io/cout.hpp>
 #include <fcppt/signal/object.hpp>
@@ -71,4 +71,4 @@ int main()
 		<< signal()
 		<< FCPPT_TEXT('\n');
 }
-//]
+//! [signal_combine]

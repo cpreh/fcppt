@@ -33,9 +33,9 @@ namespace log
 
 An object of this class should be declared as static inside a function. This
 ensures that it is available before every global logger gets constructed. The
-context object can be passed using \link
-fcppt::log::parameters::object::context_location \endlink. Logger objects can
-then later be queried providing their location using this class.
+context object can be passed using
+fcppt::log::parameters::object::context_location. Logger objects can then later
+be queried providing their location using this class.
 */
 class context
 {
@@ -69,7 +69,7 @@ public:
 	\param location The location to search
 
 	\return If the logger is found, it will be returned, otherwise an empty
-	\link fcppt::log::optional_object \endlink will be returned.
+	fcppt::log::optional_object will be returned.
 	*/
 	FCPPT_SYMBOL
 	fcppt::log::optional_object const
@@ -82,8 +82,7 @@ public:
 
 	Applies \a function to the loggers at \a location and below.
 
-	\throw \link fcppt::log::no_such_location \endlink if the location
-	doesn't exist
+	\throw fcppt::log::no_such_location if the location doesn't exist
 	*/
 	FCPPT_SYMBOL
 	void

@@ -44,7 +44,7 @@ prone as well.</li>
 
 An fcppt::optional instead is a wrapper around a value that can be absent.
 Here is a small example.
-\code
+\code{.cpp}
 typedef fcppt::optional<
 	unsigned
 > optional_uint;
@@ -82,7 +82,7 @@ semantics, meaning that it will copy the value. Therefore, T has to be
 CopyConstructible and Assignable with the usual meanings. Here is a small
 example:
 
-\code
+\code{.cpp}
 typedef fcppt::optional<
 	unsigned
 > optional_uint;

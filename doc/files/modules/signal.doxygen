@@ -1,0 +1,336 @@
+/**
+\defgroup fcpptsignal fcppt::signal
+\ingroup fcpptmain
+\brief An implementation of a managed signals and slots system (replacement for boost's signals).
+
+\section signal_introduction Introduction
+
+From the introduction of <a href="http://www.boost.org/doc/libs/1_49_0/doc/html/signals.html">boost.signals</a>:
+
+<blockquote>
+The Boost.Signals library is an implementation of a managed signals and slots
+system. Signals represent callbacks with multiple targets, and are also called
+publishers or events in similar systems. Signals are connected to some set of
+slots, which are callback receivers (also called event targets or subscribers),
+which are called when the signal is "emitted."
+
+Signals and slots are managed, in that signals and slots (or, more properly,
+objects that occur as part of the slots) track all connections and are capable
+of automatically disconnecting signal/slot connections when either is
+destroyed. This enables the user to make signal/slot connections without
+expending a great effort to manage the lifetimes of those connections with
+regard to the lifetimes of all objects involved.
+
+When signals are connected to multiple slots, there is a question regarding the
+relationship between the return values of the slots and the return value of the
+signals. Boost.Signals allows the user to specify the manner in which multiple
+return values are combined.
+</blockquote>
+
+\section signal_motivation Motivation
+
+There are (at least) three signal implementations out there. The table below
+shows the most well-known implementations with some remarks.
+
+<table>
+	<tr>
+		<th>
+			Name
+		</th>
+		<th>
+			Remarks
+		</th>
+	</tr>
+	<tr>
+		<td>
+			<a href="http://www.boost.org/doc/libs/1_49_0/doc/html/signals.html">boost.signals</a>
+		</td>
+		<td>
+			<ul>
+				<li>
+					The first version of boost's solution to signals.
+				</li>
+				<li>
+					Extremely slow (see benchmarks below).
+				</li>
+				<li>
+					Not header-only.
+				</li>
+				<li>
+					Not thread-safe.
+				</li>
+				<li>
+					Works with very old compilers.
+				</li>
+				<li>
+					No disconnect callback.
+				</li>
+			</ul>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<a href="http://www.boost.org/doc/libs/1_49_0/doc/html/signals2.html">boost.signals2</a>
+		</td>
+		<td>
+			<ul>
+				<li>
+					The second version of boost's solution to signals.
+				</li>
+				<li>
+					Still pretty slow (see benchmarks below).
+				</li>
+				<li>
+					Header-only.
+				</li>
+				<li>
+					Thread-safe.
+				</li>
+				<li>
+					No disconnect callback.
+				</li>
+			</ul>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<a href="http://libsigc.sourceforge.net/">libsigc++</a>
+		</td>
+		<td>
+			<ul>
+				<li>
+					Independent of boost.
+				</li>
+				<li>
+					Not header-only.
+				</li>
+				<li>
+					Relatively fast.
+				</li>
+				<li>
+					Slightly "quirky" interface (<code>signal&lt;void,int&gt;</code> instead of <code>signal&lt;void(int)&gt;</code>)
+				</li>
+				<li>
+					No disconnect callback.
+				</li>
+			</ul>
+		</td>
+	</tr>
+</table>
+
+When you're working on a high-performance application such as a real-time game,
+you're often reluctant to use certain constructs (such as signals) because of
+performance concerns. As you can see from the table above, this might indeed be
+an issue with the given implementations. This has led to a fcppt.signal.
+
+\section signal_basic_usage Basic usage
+
+Here's a simple, motivating example:
+
+\snippet "signal/simple.cpp" signal_simple
+
+As you can see, a signal is represented by an object of type
+fcppt::signal::object. This type has a template parameter which contains the
+signal's function type. Note that signals may have a return type; see below for
+more on that.
+
+To attach a callback function to the signal, you have to call the \link
+fcppt::signal::object::connect connect \endlink member function. Arbitrarily
+many attached functions are allowed. The <code>connect</code> function returns
+an \link fcppt::signal::auto_connection auto_connection \endlink. This is
+actually a typedef to
+<code>fcppt::unique_ptr&lt;fcppt::signal::connection&gt;</code>, so beware of
+the semantics.
+
+The callback function is disconnected from the signal when the connection
+object dies. There are typedefs to other smart pointers to connections, such as
+fcppt::signal::scoped_connection and fcppt::signal::shared_connection, so feel
+free to wrap <code>connect</code>'s result inside more adequate smart pointers.
+
+fcppt::signal::object has overloads for <code>operator()</code>, so you can
+treat a signal as a functor. However, you <em>cannot</em> directly wrap a
+signal inside a function object wrapper (like <code>std::function</code>,fcppt::function::object or
+<code>boost::%function</code>), since it's noncopyable. You will get a
+compile error if you try:
+
+\code{.cpp}
+void f(fcppt::function::object<void()> callback)
+{
+	callback();
+}
+
+int main()
+{
+	fcppt::signal::object<void()> s;
+	// Error!
+	f(s);
+}
+\endcode
+
+Pass <code>fcppt::ref(s)</code> to the function to circumvent
+this:
+
+\code{.cpp}
+void f(fcppt::function::object<void()> callback)
+{
+	callback();
+}
+
+int main()
+{
+	fcppt::signal::object<void()> s;
+	// No error! :-)
+	f(fcppt::ref(s));
+}
+\endcode
+
+\section signal_signals_with_return_values Signals with return values
+
+If a signal has a return value other than <code>void</code>, you cannot use
+fcppt::signal::object's default constructor, it's not available anymore.
+Instead, there's a constructor taking two parameters:
+
+<ol>
+	<li>
+		A <em>combiner</em> object, which is a functor with the signature:
+		\code{.cpp}
+		result_type(result_type,result_type)
+		\endcode
+		where <code>result_type</code> is the return type of the signal's
+		function type. This combiner object will be used to "fold" the
+		intermediate results, see below.
+	</li>
+	<li>
+		An <em>initial value</em> for the folding process. This is of
+		type <code>result_type</code>.
+	</li>
+</ol>
+
+Folding is an operation that takes a list <strong><code>vs</code></strong> of values, an
+initial value <strong><code>I</code></strong> and a binary functor <strong><code>op</code></strong>. It
+takes <strong><code>vs</code></strong> first element <strong><code>v</code></strong> and applies <strong><code>op</code></strong>
+on <strong><code>I</code></strong> and <strong><code>v</code></strong>: <code>result = op(I,v)</code>. Then
+<strong><code>result</code></strong> is the new <strong><code>I</code></strong>, and the process repeats itself.
+Thus, if <strong><code>vs</code></strong> is the sequence of results of all attached functions,
+the signal's <code>operator()</code> does the equivalent of the following:
+
+\code{.cpp}
+result_type result = I;
+for(auto v in vs)
+	result = op(result,v);
+return result;
+\endcode
+
+Here's an example which should clarify how combiners are used:
+
+\snippet "signal/combine.cpp" signal_combine
+
+Note that there are setters for both the initial value and the combiner.
+
+\section signal_connection_manager Connection managers
+
+If you catch yourself writing code with a <em>lot</em> of connection objects:
+
+\code{.cpp}
+class foo
+{
+public:
+	// ...
+private:
+	fcppt::signal::scoped_connection a;
+	fcppt::signal::scoped_connection b;
+	fcppt::signal::scoped_connection c;
+	fcppt::signal::scoped_connection d;
+	fcppt::signal::scoped_connection e;
+};
+\endcode
+
+Then maybe a connection manager is the right tool for you. It's basically a
+wrapper around a <code>vector&lt;fcppt::signal::shared_connection&gt;</code>,
+providing member functions to add connections to it and a constructor taking a
+vector of shared connections. Again, an example should clarify how it's used:
+
+\snippet "signal/connection.cpp" signal_connection
+
+\section signal_disconnect_callbacks Disconnect callbacks
+
+One unique feature of fcppt::signal::object is the ability to receive a
+callback from the signal when a connection dies.
+
+\section signal_benchmarks Benchmarks
+
+We're assuming connecting and disconnecting signals isn't a big performance
+issue. Instead, our benchmark is as follows:
+
+<ul>
+	<li>
+		Define a global function which outputs something on the console.
+	</li>
+	<li>
+		Create a signal, attach the global function 1.000.000 times,
+		store the connections inside a <code>vector</code>.
+	</li>
+	<li>
+		Call the signal.
+	</li>
+</ul>
+
+The results are as follows:
+
+<table>
+	<tr>
+		<th>
+			Signals-Implementation
+		</th>
+		<th>
+			gcc-4.6 (<code>-O3</code>)
+		</th>
+		<th>
+			clang-3.0 (<code>-O3</code>)
+		</th>
+		<th>
+			icc-12.1.0 (<code>-O3</code>)
+		</th>
+	</tr>
+	<tr>
+		<td>boost.signals</td>
+		<td>1.426s</td>
+		<td>1.444s</td>
+		<td>1.679s</td>
+	</tr>
+	<tr>
+		<td>boost.signals2</td>
+		<td>0.871s</td>
+		<td>1.644s</td>
+		<td>1.728s</td>
+	</tr>
+	<tr>
+		<td>libsigc++</td>
+		<td>0.614s</td>
+		<td>0.615s</td>
+		<td>0.647s</td>
+	</tr>
+	<tr>
+		<td>fcppt.signal</td>
+		<td>0.526s</td>
+		<td>0.505s</td>
+		<td>0.539s</td>
+	</tr>
+</table>
+
+Or, graphically:
+
+\image html signal_benchmark.svg "Benchmark results"
+
+As you can see, fcppt.signal outperforms all the other signal libraries.
+Additionally, it behaves the same way across different compilers with respect
+to speed.
+*/
+
+namespace fcppt
+{
+/*
+\brief An implementation of a managed signals and slots system (replacement for boost's signals).
+*/
+namespace signal {}
+}

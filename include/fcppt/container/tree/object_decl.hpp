@@ -107,13 +107,13 @@ This is useful for values that cannot be copied, for example.
 <code>fcppt::container::tree::object</code> also supports storing non-copyable values
 (and taking ownership of them). Instead of writing
 
-\code
+\code{.cpp}
 fcppt::container::tree::object<T>
 \endcode
 
 you can say
 
-\code
+\code{.cpp}
 fcppt::container::tree::object
 <
 	fcppt::container::tree::ptr_value<T>
@@ -138,7 +138,7 @@ case, there is a function called \link fcppt::container::tree::copy_tree_value
 copy_tree_value \endlink which the tree will invoke via argument dependant
 lookup. For a <code>tree::%object<tree::ptr_value<T>></code> the signature must be
 
-\code
+\code{.cpp}
 fcppt::unique_ptr<T> copy_tree_value(T const &);
 \endcode
 

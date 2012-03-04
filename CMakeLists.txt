@@ -224,9 +224,23 @@ include_directories(
 )
 
 set(
+	SIGNALS_BENCHMARK_BACKEND
+	"fcppt"
+	CACHE
+	STRING
+	"Which backend to use for the signal benchmark example (fcppt/boostsignals/boostsignals2)"
+)
+
+set(
 	NEEDED_BOOST_LIBS
 	"filesystem;system;thread"
 )
+
+if(${SIGNALS_BENCHMARK_BACKEND} STREQUAL "boostsignals")
+	set(
+		NEEDED_BOOST_LIBS
+		"${NEEDED_BOOST_LIBS};signals")
+endif()
 
 option(
 	ENABLE_TEST

@@ -4,7 +4,7 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-//[signal_simple
+//! [signal_simple]
 #include <fcppt/ref.hpp>
 #include <fcppt/text.hpp>
 #include <fcppt/io/cout.hpp>
@@ -77,4 +77,4 @@ int main()
 		)
 	);
 }
-//]
+//! [signal_simple]

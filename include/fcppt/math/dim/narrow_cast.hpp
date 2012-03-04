@@ -33,7 +33,7 @@ The inverse operation is fcppt::math::dim::construct.
 
 Example:
 
-\code
+\code{.cpp}
 typedef
 fcppt::math::dim::static_<int,2>::type
 int2;

@@ -37,7 +37,7 @@ library.</li>
 It is not necessary to specify whether the class is currently exported or
 imported.
 
-\code
+\code{.cpp}
 class FCPPT_CLASS_SYMBOL my_exception
 {
 };

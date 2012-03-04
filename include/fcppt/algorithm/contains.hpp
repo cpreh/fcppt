@@ -23,7 +23,7 @@ namespace algorithm
 \tparam T A type compatible with the iterator's value type
 
 This is equivalent to
-\code
+\code{.cpp}
 std::find(beg, end, value) != end
 \endcode
 */
@@ -54,7 +54,7 @@ contains(
 \tparam T The container's value type
 
 This is equivalent to
-\code
+\code{.cpp}
 contains(container.begin(), container.end(), value)
 \endcode
 */

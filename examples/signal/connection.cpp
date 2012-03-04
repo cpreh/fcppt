@@ -4,7 +4,7 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-//[signal_connection
+//! [signal_connection]
 #include <fcppt/assign/make_container.hpp>
 #include <fcppt/signal/auto_connection.hpp>
 #include <fcppt/signal/connection_manager.hpp>
@@ -13,7 +13,6 @@
 #include <fcppt/signal/shared_connection.hpp>
 
 
-//<-
 namespace
 {
 
@@ -43,7 +42,6 @@ function5()
 }
 
 }
-//->
 
 namespace
 {
@@ -54,9 +52,7 @@ take_connection(
 )
 {
 	// do something with connection
-//<-
 	connection.reset();
-//->
 }
 
 }
@@ -118,4 +114,4 @@ int main()
 		)
 	);
 }
-//]
+//! [signal_connection]
