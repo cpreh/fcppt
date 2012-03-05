@@ -16,6 +16,10 @@ namespace fcppt
 namespace signal
 {
 
+/**
+\brief A unique pointer to a connection
+\ingroup fcpptsignal
+*/
 typedef fcppt::unique_ptr<
 	detail::connection
 > auto_connection;

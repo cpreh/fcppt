@@ -25,6 +25,14 @@ namespace signal
 namespace unregister
 {
 
+/**
+\brief A base class for signals providing unlinking.
+\tparam T The signal's function type
+\ingroup fcpptsignal
+
+See the \link fcpptsignal module documentation \endlink for more information on
+unlinking.
+*/
 template<
 	typename T
 >
@@ -34,18 +42,30 @@ class base
 		base
 	);
 public:
+	/**
+	\brief A typedef for the function's return type
+	*/
 	typedef T function_signature;
 
+	/**
+	\brief A typedef for the wrapped function
+	*/
 	typedef fcppt::function::object<
 		T
 	> function_type;
 
+	/**
+	\brief Connect a callback to this signal
+	*/
 	signal::auto_connection
 	connect(
 		function_type const &,
 		unregister::function const &
 	);
 
+	/**
+	\brief Return if the signal has connections attached to it.
+	*/
 	bool
 	empty() const;
 protected:

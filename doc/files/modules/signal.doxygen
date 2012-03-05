@@ -3,6 +3,24 @@
 \ingroup fcpptmain
 \brief An implementation of a managed signals and slots system (replacement for boost's signals).
 
+<table id="toc">
+<tr>
+<td>
+
+<ol>
+	<li>\ref signal_introduction</li>
+	<li>\ref signal_motivation</li>
+	<li>\ref signal_basic_usage</li>
+	<li>\ref signal_signals_with_return_values</li>
+	<li>\ref signal_connection_manager</li>
+	<li>\ref signal_disconnect_callbacks</li>
+	<li>\ref signal_benchmarks</li>
+</ol>
+
+</td>
+</tr>
+</table>
+
 \section signal_introduction Introduction
 
 From the introduction of <a href="http://www.boost.org/doc/libs/1_49_0/doc/html/signals.html">boost.signals</a>:
@@ -147,6 +165,18 @@ object dies. There are typedefs to other smart pointers to connections, such as
 fcppt::signal::scoped_connection and fcppt::signal::shared_connection, so feel
 free to wrap <code>connect</code>'s result inside more adequate smart pointers.
 
+\note
+If you know other signal libraries like boost.signals or libsigc++, you might
+know connection objects. However, in those libraries, they're copyable and
+assignable, so fcppt is a bit more "strict" in that respect. You're free to use
+shared connections everywhere to emulate connections that are as easy to pass
+around.
+
+\note
+The "real" connection class is actually in a detail namespace:
+fcppt::signal::detail::connection. You're never supposed to "look
+inside" this object. Merely pass it around using a smart pointer to it.
+
 fcppt::signal::object has overloads for <code>operator()</code>, so you can
 treat a signal as a functor. However, you <em>cannot</em> directly wrap a
 signal inside a function object wrapper (like <code>std::function</code>,fcppt::function::object or
@@ -229,7 +259,7 @@ Note that there are setters for both the initial value and the combiner.
 
 \section signal_connection_manager Connection managers
 
-If you catch yourself writing code with a <em>lot</em> of connection objects:
+If you catch yourself writing code with a lot of connection objects, like this:
 
 \code{.cpp}
 class foo
@@ -255,7 +285,111 @@ vector of shared connections. Again, an example should clarify how it's used:
 \section signal_disconnect_callbacks Disconnect callbacks
 
 One unique feature of fcppt::signal::object is the ability to receive a
-callback from the signal when a connection dies.
+callback from the signal when a connection dies. To demonstrate how this works,
+let's say you want to associate a name with a signal. Users can then attach to
+such a named signal (think about a Quake-style console where you can register
+new console commands). However, when the last connection to a named
+signal dies, the signal should die with it. To do that, we define (headers
+omitted here):
+
+\code{.cpp}
+typedef
+fcppt::signal::object<void(),fcppt::signal::unregister::base>
+signal_type;
+
+// Remember, signals are noncopyable, we cannot use std::map!
+typedef
+boost::ptr_map<fcppt::string,signal_type>
+name_to_signal;
+
+// A global object, oh dear! Glad it's only an example.
+name_to_signal global_name_to_signal;
+
+// This function will be called whenever a connection dies. It receives the
+// signal's name.
+void remove_function(fcppt::string const &s)
+{
+	fcppt::io::cout() << FCPPT_TEXT("Goodbye, ") << s << FCPPT_TEXT("!\n");
+	// Signal has "empty" to test if there are connections attached to it.
+	if(global_name_to_signal.find(s)->second.empty())
+		global_name_to_signal.erase(s);
+}
+\endcode
+
+To receive disconnect "events", we use fcppt::signal::object's second
+template parameter and set it to fcppt::signal::unregister::base. Using this
+base class, we have the empty method at our disposal to check if there are
+connections attached to the signal.
+
+To register to a named signal, check out the following function:
+
+\code{.cpp}
+fcppt::signal::auto_connection
+register_named_signal(
+	fcppt::string const &name,
+	fcppt::function::object<void()> const &f)
+{
+	// If the signal doesn't exist, add it to the map.
+	if(global_name_to_signal.find(name) == global_name_to_signal.end())
+		fcppt::container::ptr::insert_unique_ptr_map(
+			global_name_to_signal,
+			name,
+			fcppt::make_unique_ptr<signal_type>());
+
+	return
+		global_name_to_signal.find(name)->second.connect(
+			f,
+			// Add our remove function as the disconnect handler (see above)
+			std::tr1::bind(
+				&remove_function,
+				name));
+}
+\endcode
+
+Note that the remove callbacks's signature is just <code>void()</code>. Our main might look like this:
+
+\code{.cpp}
+void
+say_hello()
+{
+	std::cout << "hello!\n";
+}
+
+void
+say_goodbye()
+{
+	std::cout << "goodbye!\n";
+}
+
+int main()
+{
+	fcppt::signal::scoped_connection hello_connection(
+		register_named_signal(
+			FCPPT_TEXT("hello"),
+			&say_hello));
+
+	// Will print "goodbye"
+	global_name_to_signal.find(FCPPT_TEXT("hello"))->second();
+
+	{
+		fcppt::signal::scoped_connection hello_connection(
+			register_named_signal(
+				FCPPT_TEXT("goodbye"),
+				&say_goodbye));
+
+		// Will print "goodbye!"
+		global_name_to_signal.find(FCPPT_TEXT("goodbye"))->second();
+
+		// Will print "Goodbye goodbye!" at end of scope
+	}
+
+	// Will print "Goodbye hello!" at end of scope
+}
+\endcode
+
+Note that in "real" code, it is advisable to use more typedefs: Use a typedef
+for the signal's function, one for the signal itself and one for the signal's
+function wrapper (fcppt::function::object).
 
 \section signal_benchmarks Benchmarks
 

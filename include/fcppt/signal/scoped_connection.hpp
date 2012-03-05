@@ -16,6 +16,10 @@ namespace fcppt
 namespace signal
 {
 
+/**
+\brief A scoped pointer pointer to a connection
+\ingroup fcpptsignal
+*/
 typedef fcppt::scoped_ptr<
 	fcppt::signal::detail::connection
 > scoped_connection;

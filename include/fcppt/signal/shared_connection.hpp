@@ -16,6 +16,10 @@ namespace fcppt
 namespace signal
 {
 
+/**
+\brief A shared pointer pointer to a connection
+\ingroup fcpptsignal
+*/
 typedef fcppt::shared_ptr<
 	detail::connection
 > shared_connection;

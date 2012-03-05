@@ -16,6 +16,10 @@ namespace signal
 namespace unregister
 {
 
+/**
+\brief The unregister function object
+\ingroup fcpptsignal
+*/
 typedef fcppt::function::object<
 	void ()
 > function;
