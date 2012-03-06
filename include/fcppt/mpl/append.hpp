@@ -18,7 +18,19 @@ namespace fcppt
 namespace mpl
 {
 
-/// Appends @tparam Sequence2 to @tparam Sequence1
+/**
+\brief Appends two MPL sequences
+
+\ingroup fcpptmpl
+
+Appends \tparam Sequence2 to \tparam Sequence1
+
+\snippet mpl/various.cpp mpl_append
+
+\tparam Sequence1 The first mpl sequence to append to
+
+\tparam Sequence2 The second mpl sequenc to append to the first
+*/
 template<
 	typename Sequence1,
 	typename Sequence2

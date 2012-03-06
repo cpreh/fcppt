@@ -671,6 +671,9 @@ set(
 	include/fcppt/mpl/contains_if.hpp
 	include/fcppt/mpl/detail/for_each.hpp
 	include/fcppt/mpl/detail/invoke_on.hpp
+	include/fcppt/mpl/detail/print.hpp
+	include/fcppt/mpl/detail/print_function.hpp
+	include/fcppt/mpl/detail/print_one.hpp
 	include/fcppt/mpl/exception.hpp
 	include/fcppt/mpl/find_nth.hpp
 	include/fcppt/mpl/for_each.hpp
@@ -686,6 +689,7 @@ set(
 	include/fcppt/mpl/max_value.hpp
 	include/fcppt/mpl/mpl.hpp
 	include/fcppt/mpl/partial_sums.hpp
+	include/fcppt/mpl/print.hpp
 	include/fcppt/mpl/value_type.hpp
 	include/fcppt/narrow.hpp
 	include/fcppt/nonassignable.hpp

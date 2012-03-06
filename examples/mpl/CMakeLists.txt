@@ -13,3 +13,4 @@ function(
 endfunction()
 
 add_fcppt_mpl_example(for_each "" "")
+add_fcppt_mpl_example(various "" "")

@@ -22,6 +22,7 @@
 #include <fcppt/mpl/invoke_on.hpp>
 #include <fcppt/mpl/max_value.hpp>
 #include <fcppt/mpl/partial_sums.hpp>
+#include <fcppt/mpl/print.hpp>
 #include <fcppt/mpl/value_type.hpp>
 
 #endif
