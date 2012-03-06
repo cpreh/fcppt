@@ -20,7 +20,8 @@ fcppt::homogenous_pair<T>::homogenous_pair()
 :
 	first(),
 	second()
-{}
+{
+}
 
 template
 <
@@ -46,63 +47,18 @@ template
 >
 void
 fcppt::homogenous_pair<T>::swap(
-	homogenous_pair &other_
+	homogenous_pair &_other
 )
 {
 	swap(
 		first,
-		other_.first
+		_other.first
 	);
 
 	swap(
 		second,
-		other_.second
+		_other.second
 	);
-}
-
-template
-<
-	typename T
->
-bool
-fcppt::operator<(
-	homogenous_pair<T> const &_a,
-	homogenous_pair<T> const &_b
-)
-{
-	if (_a.first < _b.first)
-		return true;
-	if (_b.first < _a.first)
-		return false;
-	return _a.second < _b.second;
-}
-
-template
-<
-	typename T
->
-bool
-fcppt::operator==(
-	homogenous_pair<T> const &_a,
-	homogenous_pair<T> const &_b
-)
-{
-	return
-		_a.first == _b.first
-		&& _a.second == _b.second;
-}
-
-template
-<
-	typename T
->
-bool
-fcppt::operator!=(
-	homogenous_pair<T> const &_a,
-	homogenous_pair<T> const &_b
-)
-{
-	return !(_a == _b);
 }
 
 template
@@ -111,8 +67,8 @@ template
 >
 void
 fcppt::swap(
-	homogenous_pair<T> &_a,
-	homogenous_pair<T> &_b
+	fcppt::homogenous_pair<T> &_a,
+	fcppt::homogenous_pair<T> &_b
 )
 {
 	_a.swap(

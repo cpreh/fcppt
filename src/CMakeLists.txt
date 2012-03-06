@@ -313,6 +313,8 @@ set(
 	include/fcppt/error/strerrno.hpp
 	include/fcppt/error/strerror.hpp
 	include/fcppt/exception.hpp
+	include/fcppt/export_class_instantiation.hpp
+	include/fcppt/export_function_instantiation.hpp
 	include/fcppt/export_symbol.hpp
 	include/fcppt/extract_from_string.hpp
 	include/fcppt/extract_from_string_error.hpp
@@ -337,6 +339,7 @@ set(
 	include/fcppt/function/object_fwd.hpp
 	include/fcppt/heap_deleter.hpp
 	include/fcppt/homogenous_pair.hpp
+	include/fcppt/homogenous_pair_comparison.hpp
 	include/fcppt/homogenous_pair_decl.hpp
 	include/fcppt/homogenous_pair_fwd.hpp
 	include/fcppt/homogenous_pair_impl.hpp
@@ -677,6 +680,7 @@ set(
 	include/fcppt/mpl/index_of.hpp
 	include/fcppt/mpl/inner.hpp
 	include/fcppt/mpl/integral_c.hpp
+	include/fcppt/mpl/integral_cast.hpp
 	include/fcppt/mpl/invalid_invoke.hpp
 	include/fcppt/mpl/invoke_on.hpp
 	include/fcppt/mpl/max_value.hpp

@@ -13,9 +13,22 @@
 #include <ostream>
 #include <fcppt/config/external_end.hpp>
 
+
 namespace fcppt
 {
 
+/**
+\brief Writes a pair to an ostream
+
+Writes the pair \a _pair to \a _stream, using the formatting
+<code>(_pair.first, _pair.second)</code>.
+
+\param _stream The stream to write to
+
+\param _pair The pair to write
+
+\return \a _stream
+*/
 template<
 	typename T,
 	typename Ch,
@@ -25,22 +38,23 @@ std::basic_ostream<
 	Ch,
 	Traits
 > &
-operator << (
+operator<<(
 	std::basic_ostream<
 		Ch,
 		Traits
-	> &stream_,
-	homogenous_pair<
+	> &_stream,
+	fcppt::homogenous_pair<
 		T
-	> const &pair_
+	> const &_pair
 )
 {
-	return stream_
-		<< stream_.widen('(')
-		<< pair_.first
-		<< stream_.widen(',')
-		<< pair_.second
-		<< stream_.widen(')');
+	return
+		_stream
+		<< _stream.widen('(')
+		<< _pair.first
+		<< _stream.widen(',')
+		<< _pair.second
+		<< _stream.widen(')');
 }
 
 }

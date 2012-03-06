@@ -7,6 +7,7 @@
 #ifndef FCPPT_HOMOGENOUS_PAIR_HPP_INCLUDED
 #define FCPPT_HOMOGENOUS_PAIR_HPP_INCLUDED
 
+#include <fcppt/homogenous_pair_comparison.hpp>
 #include <fcppt/homogenous_pair_decl.hpp>
 #include <fcppt/homogenous_pair_fwd.hpp>
 #include <fcppt/homogenous_pair_impl.hpp>

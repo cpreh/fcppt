@@ -12,7 +12,14 @@
 namespace fcppt
 {
 
-/// Like <code>%std::pair</code>, but both elements are of the same type
+/**
+\brief A pair like <code>%std::pair</code> with both elements of the same type
+
+A homogenous pair of type <code>T</code> is like an
+<code>%std::pair<T,T></code>.
+
+\tparam T Can be any type
+*/
 template
 <
 	typename T
@@ -20,68 +27,79 @@ template
 class homogenous_pair
 {
 public:
+	/**
+	\brief The value type
+	*/
 	typedef T value_type;
 
 	typedef T first_type;
 
 	typedef T second_type;
 
+	/**
+	\brief The first element
+	*/
 	value_type first;
+
+	/**
+	\brief The second element
+	*/
 	value_type second;
 
-	explicit
+	/**
+	\brief Default constructs the pair
+
+	Initializes both first and second with their default constructors.
+	*/
 	homogenous_pair();
 
-	explicit
+	/**
+	\brief Initializes a pair
+
+	Initializes the pair with the values provided by \a first and \a
+	second.
+
+	\param first The value for the first member
+
+	\param second The value for the second member
+	*/
 	homogenous_pair(
-		value_type const &_first,
-		value_type const &_second
+		value_type const &first,
+		value_type const &second
 	);
 
+	/**
+	\brief Swaps two pairs
+
+	Swaps this pair with \a other. Swaps <code>this->first</code> with
+	<code>other.first</code> and <code>this->second</code> with
+	<code>other.second</code>.
+
+	\param other The pair to swap with
+	*/
 	void
 	swap(
-		homogenous_pair &
+		homogenous_pair &other
 	);
 };
 
-template
-<
-	typename T
->
-bool
-operator<(
-	homogenous_pair<T> const &,
-	homogenous_pair<T> const &
-);
+/**
+\brief Free function for swapping pairs
 
-template
-<
-	typename T
->
-bool
-operator==(
-	homogenous_pair<T> const &,
-	homogenous_pair<T> const &
-);
+Calls <code>left.swap(right)</code>
 
-template
-<
-	typename T
->
-bool
-operator!=(
-	homogenous_pair<T> const &,
-	homogenous_pair<T> const &
-);
+\param left The first pair to swap
 
+\param right The second pair to swap
+*/
 template
 <
 	typename T
 >
 void
 swap(
-	homogenous_pair<T> &,
-	homogenous_pair<T> &
+	fcppt::homogenous_pair<T> &left,
+	fcppt::homogenous_pair<T> &right
 );
 
 }
