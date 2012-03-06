@@ -13,7 +13,7 @@
 \ingroup fcpptmain
 
 In some cases, a type must be complete, which bascially means that it is not
-void and if it is a class, the definition must already be known.  For example,
+void and if it is a class, the definition must already be known. For example,
 <code>delete</code> has undefined behaviour if it is invoked on a type that is
 not complete but has a non trivial destructor.
 
