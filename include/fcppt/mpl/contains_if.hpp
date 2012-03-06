@@ -20,8 +20,13 @@ namespace fcppt
 namespace mpl
 {
 
-/// Checks if a sequence contains an element matching a predicate
 /**
+Checks if a sequence contains an element matching a predicate
+
+Checks if \a Sequence contains an element matching \a Predicate.
+
+\snippet mpl/various.cpp mpl_contains_if
+
 \tparam Sequence An MPL sequence
 
 \tparam Predicate A unary lambda expression evaluating to a truth valued

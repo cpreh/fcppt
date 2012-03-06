@@ -15,14 +15,24 @@ namespace fcppt
 namespace mpl
 {
 
-/// The exception thrown by some mpl operations
+/**
+\brief The exception thrown by some mpl operations
+*/
 class exception
 :
 	public fcppt::exception
 {
 public:
-	explicit exception(
-		fcppt::string const &
+	/**
+	\brief Constructs an exception from a string
+
+	Constructs an exception from \a what
+
+	\param The error message
+	*/
+	explicit
+	exception(
+		fcppt::string const &what
 	);
 };
 

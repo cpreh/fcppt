@@ -19,16 +19,33 @@ namespace fcppt
 namespace mpl
 {
 
-/// Calculates Dividend / Divisor rounded towards infinity
+/**
+\brief Calculates a division of integral contants rounded towards infinity
+
+\ingroup fcpptmpl
+
+Calculates <code>Dividend / Divisor</code> rounded towards infinity. For
+example, <code>5 / 3</code> would result in <code>2</code>.
+
+\snippet mpl/various.cpp mpl_ceil_div
+
+\tparam Type Must be an unsigned integral type
+
+\tparam Dividend The dividend
+
+\tparam Divisor The divisor
+
+\return An integral constant representing the rounded divison
+*/
 template<
-	typename T,
-	T Dividend,
-	T Divisor
+	typename Type,
+	Type Dividend,
+	Type Divisor
 >
 struct ceil_div
 :
 boost::mpl::integral_c<
-	T,
+	Type,
 	Dividend
 	/
 	Divisor
@@ -45,7 +62,7 @@ boost::mpl::integral_c<
 {
 	BOOST_STATIC_ASSERT(
 		boost::is_unsigned<
-			T
+			Type
 		>::value
 	);
 };

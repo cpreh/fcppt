@@ -25,9 +25,13 @@ namespace fcppt
 namespace mpl
 {
 
-/// Find the nth matching Element in a sequence
 /**
- * @tparam Sequence The mpl sequence
+\brief Find the nth matching Element in a sequence
+
+Searches \a Sequence for the nth element, where n is given by \a Number, that
+is equal to \a Element.
+
+\tparam Sequence The mpl sequence
  * @tparam Element The element to find
  * @tparam Number The number of matches to skip
 */

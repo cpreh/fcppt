@@ -23,13 +23,15 @@ namespace mpl
 
 \ingroup fcpptmpl
 
-Appends \tparam Sequence2 to \tparam Sequence1
+Appends \a Sequence2 to \a Sequence1
 
 \snippet mpl/various.cpp mpl_append
 
-\tparam Sequence1 The first mpl sequence to append to
+\tparam Sequence1 The MPL sequence to append to
 
-\tparam Sequence2 The second mpl sequenc to append to the first
+\tparam Sequence2 The MPL sequence to append
+
+\return An MPL sequence consisting of \a Sequence1 and \a Sequence2
 */
 template<
 	typename Sequence1,
