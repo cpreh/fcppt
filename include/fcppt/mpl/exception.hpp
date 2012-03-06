@@ -28,7 +28,7 @@ public:
 
 	Constructs an exception from \a what
 
-	\param The error message
+	\param what The error message
 	*/
 	explicit
 	exception(
