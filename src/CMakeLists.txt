@@ -675,7 +675,6 @@ set(
 	include/fcppt/mpl/detail/print_function.hpp
 	include/fcppt/mpl/detail/print_one.hpp
 	include/fcppt/mpl/exception.hpp
-	include/fcppt/mpl/find_nth.hpp
 	include/fcppt/mpl/for_each.hpp
 	include/fcppt/mpl/impl/exception.hpp
 	include/fcppt/mpl/impl/invalid_invoke.hpp

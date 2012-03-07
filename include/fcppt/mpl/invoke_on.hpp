@@ -21,44 +21,68 @@ namespace fcppt
 namespace mpl
 {
 
-/// Apply the function @a fun on the nth element @a index in @a Sequence
 /**
- * @tparam Sequence An MPL sequence
- * @param index A runtime index of the element to invoke the functor on
- * @param fun The functor
- * @return The result of @a fun<T>() if T is the element of @a Sequence at @a index
- * @throws invalid_invoke if @a index is out of range
+\brief Applies a functor to the nth element of a sequence with a runtime index
+
+\ingroup fcpptmpl
+
+Applies \a _functor to the nth element (where n is denoted by \a _index) of the
+sequence \a Sequence. This can be useful if you have a runtime index into an
+MPL sequence and you want to invoke something on that type.
+
+\note The compile time and the runtime complexities of this function are linear
+in the size of the MPL sequence
+
+\snippet mpl/invoke_on.cpp mpl_invoke_on
+
+\tparam Sequence An MPL sequence
+
+\tparam Index An integral type
+
+\param _index The runtime index of type \a Index
+
+\param _functor The functor to invoke
+
+\return The result of <code>_functor<T>()</code> if <code>T</code> is the
+element of \a Sequence at \a _index
+
+\throw invalid_invoke if \a _index is out of range
 */
 template<
 	typename Sequence,
-	typename Function,
-	typename Index
+	typename Index,
+	typename Functor
 >
-typename Function::result_type
+typename Functor::result_type
 invoke_on(
-	Index const &index,
-	Function const &fun
+	Index const &_index,
+	Functor const &_functor
 )
 {
-	return detail::invoke_on<
-		boost::mpl::integral_c<
-			Index,
-			0
-		>,
-		boost::mpl::empty<
-			Sequence
-		>::value
-	>:: template execute<
-		typename boost::mpl::begin<
-			Sequence
-		>::type,
-		typename boost::mpl::end<
-			Sequence
-		>::type
-	>(
-		index,
-		fun
-	);
+	return
+		fcppt::mpl::detail::invoke_on<
+			boost::mpl::integral_c<
+				Index,
+				static_cast<
+					Index
+				>(
+					0
+				)
+			>,
+			boost::mpl::empty<
+				Sequence
+			>::value
+		>:: template execute<
+			typename boost::mpl::begin<
+				Sequence
+			>::type,
+			typename boost::mpl::end<
+				Sequence
+			>::type
+		>(
+			_index,
+			_functor
+		);
 }
 
 }

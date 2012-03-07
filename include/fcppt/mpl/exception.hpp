@@ -17,6 +17,8 @@ namespace mpl
 
 /**
 \brief The exception thrown by some mpl operations
+
+\ingroup fcpptmpl
 */
 class exception
 :

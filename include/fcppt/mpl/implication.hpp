@@ -18,11 +18,21 @@ namespace fcppt
 namespace mpl
 {
 
-/// The Implication function: @a Left -> @a Right
 /**
- * @tparam Left A boolean expression
- * @tparam Right A boolean expression
- * @remarks Equal to (not @a Left) or @a Right
+\brief The Implication function: \a Left -> \a Right
+
+\ingroup fcpptmpl
+
+Calculates the implication of \a Left and \a Right. Equal to (not \a Left) or
+\a Right)
+
+\snippet mpl/various.cpp mpl_implication
+
+\tparam Left A boolean expression
+
+\tparam Right A boolean expression
+
+\return A boolean expression
 */
 template<
 	typename Left,
@@ -36,7 +46,8 @@ boost::mpl::or_<
 	>,
 	Right
 >
-{};
+{
+};
 
 }
 }

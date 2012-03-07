@@ -18,15 +18,27 @@ namespace fcppt
 namespace mpl
 {
 
-/// Calculates the maximum value in @a Sequence
 /**
- * @tparam Sequence An MPL sequence
- * @tparam Pred The predicate to use on each element. It has to return an integral wrapper type.
- * @return The maximum element
+\brief Calculates the maximum value in a sequence using a metafunction
+
+\ingroup fcpptmpl
+
+Calculates the maximum value in \a Sequence according to \a MetaFunction. \a
+MetaFunction will be invoked on every type in \a Sequence and the maximum value
+of them will be returned.
+
+\snippet mpl/various.cpp mpl_max_value
+
+\tparam Sequence An MPL sequence
+
+\tparam MetaFunction A metafunction transforming every type in the sequence
+into an MPL integral constant
+
+\return The type of the maximum element
 */
 template<
 	typename Sequence,
-	typename Pred
+	typename MetaFunction
 >
 struct max_value
 :
@@ -34,7 +46,7 @@ boost::mpl::deref<
 	typename boost::mpl::max_element<
 		typename boost::mpl::transform<
 			Sequence,
-			Pred
+			MetaFunction
 		>::type
 	>::type
 >::type

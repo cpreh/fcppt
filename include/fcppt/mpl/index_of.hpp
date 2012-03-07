@@ -15,16 +15,26 @@
 #include <boost/mpl/find.hpp>
 #include <fcppt/config/external_end.hpp>
 
+
 namespace fcppt
 {
 namespace mpl
 {
 
-/// Return the index of @a Element in @a Sequence
 /**
-\tparam Sequence An MPL sequence
-\tparam Element The element to find
-\return The index of the element
+\brief Calculates the index of an element in a sequence
+
+\ingroup fcpptmpl
+
+Calculates the index of \a Element in \a Sequence.
+
+\snippet mpl/various.cpp mpl_index_of
+
+\tparam Sequence The MPL sequence
+
+\tparam Element The element to calculate the index of
+
+\return The index of the element or an error if the element was not found
 */
 template<
 	typename Sequence,

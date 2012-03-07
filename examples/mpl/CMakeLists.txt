@@ -12,5 +12,14 @@ function(
 	)
 endfunction()
 
-add_fcppt_mpl_example(for_each "" "")
-add_fcppt_mpl_example(various "" "")
+add_fcppt_mpl_example(
+	for_each "" ""
+)
+
+add_fcppt_mpl_example(
+	invoke_on "" ""
+)
+
+add_fcppt_mpl_example(
+	various "" ""
+)

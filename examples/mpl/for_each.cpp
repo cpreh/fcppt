@@ -4,7 +4,7 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-//[mplforeach
+//! [mpl_for_each]
 #include <fcppt/text.hpp>
 #include <fcppt/type_name.hpp>
 #include <fcppt/io/cout.hpp>
@@ -18,16 +18,18 @@
 namespace
 {
 
-// declare a type that cannot be constructed
+// Declare a type that cannot be constructed
 struct abstract_type
 {
 	virtual ~abstract_type() = 0;
 };
 
-// declare a normal type, too
+// Declare a constructible type, too
 struct normal_type
-{};
+{
+};
 
+// Declare our functor that is used invoked on each type
 struct visitor
 {
 	typedef void result_type;
@@ -39,7 +41,6 @@ struct visitor
 	operator()() const
 	{
 		// use fcppt::type_name to print the type
-
 		fcppt::io::cout()
 			<< fcppt::type_name(
 				typeid(
@@ -52,19 +53,20 @@ struct visitor
 
 }
 
-int main()
+int
+main()
 {
+	// Declare a vector of two ones, where one is not constructible
 	typedef boost::mpl::vector2<
 		abstract_type,
 		normal_type
 	> types;
 
-	// do the visitation
+	// Do the visitation
 	fcppt::mpl::for_each<
 		types
 	>(
 		visitor()
 	);
-
 }
-//]
+//! [mpl_for_each]

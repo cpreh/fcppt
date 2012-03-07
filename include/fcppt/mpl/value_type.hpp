@@ -12,13 +12,23 @@ namespace fcppt
 namespace mpl
 {
 
-/// value_type meta function, calculates T::value_type
+/**
+\brief value_type meta function
+
+\ingroup fcpptmpl
+
+Calculates <code>Type::value_type</code>.
+
+\tparam Type Any type that has a nested <code>value_type</code> typedef
+
+\return The inner <code>value_type</code>
+*/
 template<
-	typename T
+	typename Type
 >
 struct value_type
 {
-	typedef typename T::value_type type;
+	typedef typename Type::value_type type;
 };
 
 }

@@ -12,10 +12,13 @@ namespace fcppt
 namespace mpl
 {
 
-/// Replacement for boost::mpl::integral_c
 /**
- * boost::mpl::integral_c has problems with the minimum and maximum of integer types.
- * This class does not emulate the prior and next typedefs.
+\brief Replacement for boost::mpl::integral_c
+
+\ingroup fcpptmpl
+
+boost::mpl::integral_c has problems with the minimum and maximum of integer
+types. This class does not emulate the prior and next typedefs.
 */
 template<
 	typename Type,

@@ -1,0 +1,5 @@
+/**
+\defgroup fcpptmpl fcppt::mpl
+\ingroup fcpptmain
+\brief MPL related helper functions and metafunctions
+*/

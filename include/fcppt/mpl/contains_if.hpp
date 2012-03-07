@@ -21,7 +21,9 @@ namespace mpl
 {
 
 /**
-Checks if a sequence contains an element matching a predicate
+\brief Checks if a sequence contains an element matching a predicate
+
+\ingroup fcpptmpl
 
 Checks if \a Sequence contains an element matching \a Predicate.
 

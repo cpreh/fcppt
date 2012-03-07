@@ -17,6 +17,23 @@ namespace fcppt
 namespace mpl
 {
 
+/**
+\brief Does an integral cast on compile an integral constant
+
+\ingroup fcpptmpl
+
+Casts \a Integral to the correspoding type using \a IntegralType. Equivalent
+to <code>boost::mpl::integral_c<IntegralType,
+static_cast<IntegralType>(Integral::value)</code>.
+
+\snippet mpl/various.cpp mpl_integral_cast
+
+\tparam IntegralType An integral type to cast to
+
+\tparam Integral An MPL integral constant to cast from
+
+\return An MPL integral constant
+*/
 template<
 	typename IntegralType,
 	typename Integral

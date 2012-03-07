@@ -20,23 +20,33 @@ namespace fcppt
 namespace mpl
 {
 
-/// Invoke a functor on each element of a sequence without constructing them
 /**
- * @tparam Sequence The sequence
- * @param f The functor to invoke
- * @remarks Calls f<T>() for each type T in @a Sequence
+\brief Invoke a functor on each element of a sequence without constructing them
+
+\ingroup fcpptmpl
+
+Invokes \a _functor on each element of \a Sequence without constructing the
+elements. This function is similar to <code>boost::mpl::for_each</code> but can
+be used with unconstructible types like abstract classes. Calls
+<code>_functor<T>()</code> for each type T in \a Sequence.
+
+\snippet mpl/for_each.cpp mpl_for_each
+
+\tparam Sequence The MPL sequence
+
+\tparam Functor The functor type which must be callable with every element
 */
 template<
 	typename Sequence,
-	typename Fun
+	typename Functor
 >
 void
 for_each(
-	Fun const &f
+	Functor const &_functor
 )
 {
 	return
-		detail::for_each<
+		fcppt::mpl::detail::for_each<
 			boost::mpl::empty<
 				Sequence
 			>::value
@@ -48,7 +58,7 @@ for_each(
 				Sequence
 			>::type
 		>(
-			f
+			_functor
 		);
 }
 

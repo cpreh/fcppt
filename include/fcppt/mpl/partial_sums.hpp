@@ -22,11 +22,19 @@ namespace fcppt
 namespace mpl
 {
 
-/// Calculates a new Sequence out of @a Sequence with the partial sums
 /**
- * @tparam Sequence An MPL sequence of integral wrapper types
- * @return A new Sequence of the partial sums
- * @remarks If @a Sequence consists of a_1, ..., a_n the result will be 0, a_1, a_1 + a_2, ...
+\brief Calculates a new sequence that consists of the sums of the old sequence
+
+\ingroup fcpptmpl
+
+For the integral constantsn (c_1, ..., c_n) in \a Sequence, the resulting
+sequence will consist of the values (0, c_1, c_1 + c_2, ..., c_1 + ... c_n)
+
+\snippet mpl/various.cpp mpl_partial_sums
+
+\tparam Sequence An MPL sequence of integral constant types
+
+\return A new MPL sequence of integral constant types
 */
 template<
 	typename Sequence
@@ -35,7 +43,11 @@ struct partial_sums
 :
 boost::mpl::fold<
 	Sequence,
-	boost::mpl::vector_c<int, 0>, // mpl::plus<> converts its operands, so int is most conservative
+	// mpl::plus<> converts its operands, so int is most conservative
+	boost::mpl::vector_c<
+		int,
+		0
+	>,
 	boost::mpl::push_back<
 		boost::mpl::_1,
 		boost::mpl::plus<
@@ -45,7 +57,9 @@ boost::mpl::fold<
 			boost::mpl::_2
 		>
 	>
-> {};
+>
+{
+};
 
 }
 }

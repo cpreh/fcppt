@@ -14,13 +14,20 @@ namespace fcppt
 namespace mpl
 {
 
-/// Thrown by an invalid invoke
+/**
+\brief Thrown by an invalid invoke
+
+\ingroup fcpptmpl
+*/
 class invalid_invoke
 :
-	public mpl::exception
+	public fcppt::mpl::exception
 {
 public:
-	explicit invalid_invoke();
+	/**
+	\brief Constructs an invalid_invoke
+	*/
+	invalid_invoke();
 };
 
 }

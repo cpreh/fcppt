@@ -20,6 +20,21 @@ namespace fcppt
 namespace mpl
 {
 
+/**
+\brief Pretty prints an MPL sequence
+
+\ingroup fcpptmpl
+
+Pretty prints \a Sequence to \a _stream. Every type in \a Sequence will be
+converted to a string using fcppt::type_name. The resulting format of the
+printed sequence will be <code>(name_1, ..., name_n)</code>.
+
+\tparam Sequence An MPL sequence
+
+\param _stream The stream to print to
+
+\return \a _stream
+*/
 template<
 	typename Sequence
 >

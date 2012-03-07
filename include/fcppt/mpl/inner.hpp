@@ -12,7 +12,20 @@ namespace fcppt
 namespace mpl
 {
 
-/// Applies <code>::%type</code> on \p Type
+/**
+\brief Extracts the inner type of a type
+
+\ingroup fcpptmpl
+
+Extracts the type contained withing \a Type. The result is the same type as
+<code>typename Type::type</code>.
+
+\snippet mpl/various.cpp mpl_inner
+
+\tparam Type Can be any type containing a <code>type</code> typedef
+
+\return The inner type
+*/
 template<
 	typename Type
 >
