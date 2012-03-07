@@ -42,7 +42,6 @@ update_cmake_file \
 	include/fcppt/time \
 	include/fcppt/tr1 \
 	include/fcppt/type_traits \
-	include/fcppt/utf8 \
 	include/fcppt/variant \
 	-n \
 	src \
@@ -58,7 +57,6 @@ update_cmake_file \
 	src/random \
 	src/signal \
 	src/time \
-	src/utf8 \
 	|| exit -1
 
 update_cmake_file \

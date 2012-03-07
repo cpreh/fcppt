@@ -26,10 +26,11 @@
 #include <boost/mpl/sizeof.hpp>
 #include <boost/mpl/vector/vector10.hpp>
 #include <boost/mpl/vector/vector10_c.hpp>
-#include <boost/type_traits/is_unsigned.hpp>
 #include <boost/type_traits/is_same.hpp>
+#include <boost/type_traits/is_unsigned.hpp>
 #include <ostream>
 #include <fcppt/config/external_end.hpp>
+
 
 namespace
 {

@@ -1,9 +1,9 @@
 {
   "standard_match" : ".*\.?pp",
   "main_license" : "util/license_template.hpp",
-  "exceptions" : 
+  "exceptions" :
   [
-    { 
+    {
       "files" : ["include/fcppt/ratio/.*"],
       "license" : "util/license_template_ratio.hpp"
     },
@@ -22,5 +22,5 @@
       "license" : "util/license_template_unique_ptr.hpp"
     }
   ],
-  "nolicense" : ["src/utf8/facet.cpp", "build/.*", "doc/.*", "util/.*"]
+  "nolicense" : ["build/.*", "doc/.*", "util/.*"]
 }
