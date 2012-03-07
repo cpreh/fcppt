@@ -165,7 +165,7 @@ template<typename T,typename N,typename Storage>
 class vector
 {
 public:
-	// We need to access the the individual components
+	// We need to access the individual components
 	T &operator[](std::size_t const i)
 	{
 		return storage_[i];

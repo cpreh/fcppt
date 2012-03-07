@@ -357,7 +357,7 @@ public:
 	/**
 	\brief Returns a reference to the holder type
 
-	This can be used to release the the scoped_ptr if the tree has noncopyable semantics.
+	This can be used to release the scoped_ptr if the tree has noncopyable semantics.
 
 	\see fcppt::container::tree::release
 	*/
