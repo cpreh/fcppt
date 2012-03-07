@@ -167,15 +167,6 @@ if(
 endif()
 
 if(
-	UNIX
-)
-	set(
-		FCPPT_STRING_IS_UTF8
-		true
-	)
-endif()
-
-if(
 	CMAKE_COMPILER_IS_GNUCXX OR FCPPT_UTILS_COMPILER_IS_CLANGPP
 )
 	set(

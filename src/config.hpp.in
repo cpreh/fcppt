@@ -12,7 +12,6 @@
 
 // string config
 #cmakedefine FCPPT_NARROW_STRING
-#cmakedefine FCPPT_STRING_IS_UTF8
 
 // compile extensions
 #cmakedefine FCPPT_ALIGN_TEMPLATE_PARAMETER
