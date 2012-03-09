@@ -16,9 +16,10 @@ namespace fcppt
 {
 
 /**
- * @brief The string type used for text.
- *
- * @see char_type
+\brief The string type used for text.
+\ingroup fcpptstring
+
+\see fcppt::char_type
 */
 typedef std::basic_string<
 	char_type
