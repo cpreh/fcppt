@@ -32,18 +32,18 @@ specifies
 <li>its <em>size</em> which is measured in bytes (and returned by
 <code>sizeof</code>) and</li>
 
-<li>its alignment which is also measured in bytes.</li>
+<li>its <em>alignment</em> which is also measured in bytes.</li>
 </ul>
 
-The alignment of a type is defined as the number of bytes between successive
-addresses at which an object can be allocated. It usually also means that the
-address of the object must be a multiple of the alignment.
+The alignment is defined as the number of bytes between successive addresses at
+which objects can be allocated. It usually also means that the address of the
+object must be a multiple of the alignment.
 
-In <em>C++03</em> no language support for alignment is available but it is
-nevertheless required to obey the alignment rules, namely the imposed object
-representations for given types. Usually, this is taken care of by the language
-itself: Allocated objects on the stack always are properly aligned, so are
-objects returned by <code>new</code>. However, if you want to allocate raw
+In <em>C++03</em>, no language support for specifying alignment is available
+but it is nevertheless required to obey the alignment rules, namely the imposed
+object representations for given types. Usually, this is taken care of by the
+language itself: Allocated objects on the stack always are properly aligned, so
+are objects returned by <code>new</code>. However, if you want to allocate raw
 memory for an object of a given type, which is later used to construct the
 object using <em>placement new</em>, you have to make sure the memory is
 properly aligned. Failure to obey the imposed alignment of an object type is
