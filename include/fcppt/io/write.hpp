@@ -7,8 +7,8 @@
 #ifndef FCPPT_IO_WRITE_HPP_INCLUDED
 #define FCPPT_IO_WRITE_HPP_INCLUDED
 
+#include <fcppt/endianness/convert.hpp>
 #include <fcppt/endianness/format.hpp>
-#include <fcppt/endianness/from_host.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/type_traits/is_fundamental.hpp>
 #include <boost/utility/enable_if.hpp>
@@ -22,22 +22,22 @@ namespace io
 {
 
 template<
-	typename T
+	typename Type
 >
 typename boost::enable_if<
 	boost::is_fundamental<
-		T
+		Type
 	>,
 	void
 >::type
 write(
 	std::ostream &_stream,
-	T const &_value,
-	endianness::format::type const _format
+	Type const &_value,
+	fcppt::endianness::format::type const _format
 )
 {
-	T const tmp(
-		endianness::from_host(
+	Type const tmp(
+		fcppt::endianness::convert(
 			_value,
 			_format
 		)
@@ -49,7 +49,9 @@ write(
 		>(
 			&tmp
 		),
-		sizeof(T)
+		sizeof(
+			Type
+		)
 	);
 }
 

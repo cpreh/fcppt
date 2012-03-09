@@ -4,11 +4,12 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_ENDIANNESS_HOST_FORMAT_HPP_INCLUDED
-#define FCPPT_ENDIANNESS_HOST_FORMAT_HPP_INCLUDED
+#ifndef FCPPT_ENDIANNESS_SIZE_TYPE_HPP_INCLUDED
+#define FCPPT_ENDIANNESS_SIZE_TYPE_HPP_INCLUDED
 
-#include <fcppt/symbol.hpp>
-#include <fcppt/endianness/format.hpp>
+#include <fcppt/config/external_begin.hpp>
+#include <cstddef>
+#include <fcppt/config/external_end.hpp>
 
 
 namespace fcppt
@@ -16,9 +17,7 @@ namespace fcppt
 namespace endianness
 {
 
-FCPPT_SYMBOL
-fcppt::endianness::format::type
-host_format();
+typedef std::size_t size_type;
 
 }
 }

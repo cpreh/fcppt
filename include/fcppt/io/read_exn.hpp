@@ -4,16 +4,18 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_IO_READ_HPP_INCLUDED
-#define FCPPT_IO_READ_HPP_INCLUDED
+#ifndef FCPPT_IO_READ_EXN_HPP_INCLUDED
+#define FCPPT_IO_READ_EXN_HPP_INCLUDED
 
+#include <fcppt/exception.hpp>
 #include <fcppt/optional_impl.hpp>
-#include <fcppt/endianness/convert.hpp>
+#include <fcppt/text.hpp>
 #include <fcppt/endianness/format.hpp>
+#include <fcppt/io/read.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/type_traits/is_fundamental.hpp>
 #include <boost/utility/enable_if.hpp>
-#include <istream>
+#include <iosfwd>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -29,11 +31,9 @@ typename boost::enable_if<
 	boost::is_fundamental<
 		Type
 	>,
-	fcppt::optional<
-		Type
-	>
+	Type
 >::type
-read(
+read_exn(
 	std::istream &_stream,
 	fcppt::endianness::format::type const _format
 )
@@ -42,29 +42,24 @@ read(
 		Type
 	> result_type;
 
-	Type result;
+	result_type const result(
+		fcppt::io::read<
+			Type
+		>(
+			_stream,
+			_format
+		)
+	);
+
+	if(
+		!result
+	)
+		throw fcppt::exception(
+			FCPPT_TEXT("read_exn failed!")
+		);
 
 	return
-		_stream.read(
-			reinterpret_cast<
-				char *
-			>(
-				&result
-			),
-			sizeof(
-				Type
-			)
-		)
-		?
-			result_type(
-				fcppt::endianness::convert(
-					result,
-					_format
-				)
-			)
-		:
-			result_type()
-		;
+		*result;
 }
 
 }

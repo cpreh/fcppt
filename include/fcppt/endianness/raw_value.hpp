@@ -4,21 +4,15 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_ENDIANNESS_HOST_FORMAT_HPP_INCLUDED
-#define FCPPT_ENDIANNESS_HOST_FORMAT_HPP_INCLUDED
-
-#include <fcppt/symbol.hpp>
-#include <fcppt/endianness/format.hpp>
-
+#ifndef FCPPT_ENDIANNESS_RAW_VALUE_HPP_INCLUDED
+#define FCPPT_ENDIANNESS_RAW_VALUE_HPP_INCLUDED
 
 namespace fcppt
 {
 namespace endianness
 {
 
-FCPPT_SYMBOL
-fcppt::endianness::format::type
-host_format();
+typedef unsigned char raw_value;
 
 }
 }

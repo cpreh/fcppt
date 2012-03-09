@@ -4,11 +4,12 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_ENDIANNESS_FROM_HOST_HPP_INCLUDED
-#define FCPPT_ENDIANNESS_FROM_HOST_HPP_INCLUDED
+#ifndef FCPPT_ENDIANNESS_CONVERT_HPP_INCLUDED
+#define FCPPT_ENDIANNESS_CONVERT_HPP_INCLUDED
 
 #include <fcppt/endianness/host_format.hpp>
 #include <fcppt/endianness/swap.hpp>
+
 
 namespace fcppt
 {
@@ -16,15 +17,24 @@ namespace endianness
 {
 
 template<
-	typename T
+	typename Type
 >
-T from_host(
-	T const &t,
-	format::type const fmt)
+Type
+convert(
+	Type const &_value,
+	fcppt::endianness::format::type const _format
+)
 {
-	return fmt == host_format()
-		? t
-		: swap(t);
+	return
+		_format
+		==
+		fcppt::endianness::host_format()
+		?
+			_value
+		:
+			fcppt::endianness::swap(
+				_value
+			);
 }
 
 }

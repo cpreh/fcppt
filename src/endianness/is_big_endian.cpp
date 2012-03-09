@@ -4,12 +4,16 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
+#include <fcppt/endianness/format.hpp>
+#include <fcppt/endianness/host_format.hpp>
 #include <fcppt/endianness/is_big_endian.hpp>
-#include <fcppt/endianness/is_little_endian.hpp>
+
 
 bool
 fcppt::endianness::is_big_endian()
 {
 	return
-		!endianness::is_little_endian();
+		fcppt::endianness::host_format()
+		==
+		fcppt::endianness::format::big;
 }

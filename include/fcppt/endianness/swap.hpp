@@ -7,7 +7,9 @@
 #ifndef FCPPT_ENDIANNESS_SWAP_HPP_INCLUDED
 #define FCPPT_ENDIANNESS_SWAP_HPP_INCLUDED
 
+#include <fcppt/endianness/raw_pointer.hpp>
 #include <fcppt/endianness/reverse_mem.hpp>
+
 
 namespace fcppt
 {
@@ -15,26 +17,27 @@ namespace endianness
 {
 
 template<
-	typename T
+	typename Type
 >
-T
+Type
 swap(
-	T t
+	Type _value
 )
 {
-	reverse_mem(
+	fcppt::endianness::reverse_mem(
 		reinterpret_cast<
-			unsigned char *
+			fcppt::endianness::raw_pointer
 		>(
-			&t
+			&_value
 		),
 		sizeof(
-			T
+			Type
 		)
 	);
 
-	return t;
+	return _value;
 }
+
 }
 }
 

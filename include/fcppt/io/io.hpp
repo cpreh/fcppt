@@ -26,6 +26,7 @@
 #include <fcppt/io/raw_container_source_fwd.hpp>
 #include <fcppt/io/raw_container_source_impl.hpp>
 #include <fcppt/io/read.hpp>
+#include <fcppt/io/read_exn.hpp>
 #include <fcppt/io/stream_to_string.hpp>
 #include <fcppt/io/stringstream.hpp>
 #include <fcppt/io/write.hpp>

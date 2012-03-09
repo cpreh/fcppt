@@ -14,7 +14,8 @@ namespace endianness
 
 namespace format
 {
-enum type {
+enum type
+{
 	little,
 	big
 };

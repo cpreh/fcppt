@@ -8,19 +8,30 @@
 #define FCPPT_ENDIANNESS_REVERSE_MEM_HPP_INCLUDED
 
 #include <fcppt/symbol.hpp>
-#include <fcppt/config/external_begin.hpp>
-#include <cstddef>
-#include <fcppt/config/external_end.hpp>
+#include <fcppt/endianness/raw_pointer.hpp>
+#include <fcppt/endianness/size_type.hpp>
+
 
 namespace fcppt
 {
 namespace endianness
 {
 
-FCPPT_SYMBOL void
+/**
+\brief Reverses the byte order of a given memory block
+
+Reverses the byte order of the memory pointed to by \a data
+and the size of \a size.
+
+\param data The memory to the memory block
+
+\param size The size of the memory block
+*/
+FCPPT_SYMBOL
+void
 reverse_mem(
-	unsigned char *,
-	std::size_t len
+	fcppt::endianness::raw_pointer,
+	fcppt::endianness::size_type
 );
 
 }

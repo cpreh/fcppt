@@ -4,6 +4,7 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
+#include <fcppt/endianness/format.hpp>
 #include <fcppt/endianness/host_format.hpp>
 #include <fcppt/endianness/is_little_endian.hpp>
 
@@ -12,5 +13,7 @@ bool
 fcppt::endianness::is_little_endian()
 {
 	return
-		endianness::host_format() == format::little;
+		fcppt::endianness::host_format()
+		==
+		fcppt::endianness::format::little;
 }
