@@ -18,9 +18,18 @@
 #endif
 
 /**
- * \brief Forces the specified alignment on a declaration in bytes
- * \ingroup fcpptalignment
- * */
-#define FCPPT_ALIGNMENT_ALIGN(x) FCPPT_ALIGNMENT_ALIGN_IMPL(x)
+\brief Specifies the alignment for a declaration
+
+This macro must be placed after the type and before the declarator.
+It will specify \a alignment for the declaration.
+
+\ingroup fcpptalignment
+*/
+#define FCPPT_ALIGNMENT_ALIGN(\
+	alignment\
+)\
+FCPPT_ALIGNMENT_ALIGN_IMPL(\
+	alignment\
+)
 
 #endif

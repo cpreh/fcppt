@@ -17,21 +17,29 @@ namespace alignment
 {
 
 /**
-\brief Creates a nested typedef 'type' of type <code>T</code> with alignment <code>Alignment</code>
+\brief Creates a typedef to an aligned type
+
 \ingroup fcpptalignment
-\details
-Which alignments are supported is unspecified.  In most cases you can only use
-alignments that are a power 2.  Also, every compiler implements a limit
-depending on the platform.
+
+Creates a nested typedef 'type' of type \a Type with alignment \a Alignment.
+Which alignments are supported is unspecified. In most cases you can only use
+alignments that are a power 2. Also, every compiler implements a limit
+depending on the platform. If you declare an object of such a type, it might be
+possible that its alignment will be larger which depends on the type itself and
+if it is allocated on the stack.
+
+\tparam Type The type to typedef
+
+\tparam Alignment The alignment to use
 */
 template<
-	typename T,
-	size_type Alignment
+	typename Type,
+	fcppt::alignment::size_type Alignment
 >
 struct make_type
 :
 fcppt::alignment::detail::make_type<
-	T,
+	Type,
 	Alignment
 >
 {};

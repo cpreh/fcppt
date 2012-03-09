@@ -15,26 +15,35 @@ namespace alignment
 {
 
 /**
- * FIXME
- * \ingroup fcpptalignment
- */
+\brief Checks if a given pointer is aligned
+
+\ingroup fcpptalignment
+
+Checks if \a _pointer is aligned to \a _alignment
+
+\param _pointer The pointer to check the alignment of
+
+\param _alignment The alignment to check for
+
+\return If the alignment is satisfied
+*/
 template<
-	typename T
+	typename Type
 >
 bool
 is_aligned(
-	T const *const pointer,
-	size_type const alignment
+	Type const *const _pointer,
+	fcppt::alignment::size_type const _alignment
 )
 {
 	return
 		reinterpret_cast<
-			size_type
+			fcppt::alignment::size_type
 		>(
-			pointer
+			_pointer
 		)
-		% alignment
-		== 0;
+		% _alignment
+		== 0u;
 }
 
 }

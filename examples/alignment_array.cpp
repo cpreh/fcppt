@@ -4,7 +4,7 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-//[alignment_new
+//! [alignment_array]
 #include <fcppt/alignment/array.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/type_traits/alignment_of.hpp>
@@ -14,7 +14,7 @@
 namespace
 {
 
-// declare a test class
+// Declare a test class
 struct mystruct
 {
 	int i;
@@ -29,9 +29,10 @@ struct mystruct
 
 }
 
-int main()
+int
+main()
 {
-	// create an array with proper alignment for mystruct
+	// Create an array with proper alignment for mystruct
 	typedef fcppt::alignment::array<
 		unsigned char,
 		sizeof(mystruct),
@@ -40,9 +41,12 @@ int main()
 		>::value
 	>::type raw_array;
 
-	raw_array array_;
+	raw_array storage;
 
-	// now placement new can be used
-	new (array_.data()) mystruct();
+	// Now placement new can be used
+	mystruct *ptr = new (storage.data()) mystruct();
+
+	// Don't forget to call its destructor manually
+	ptr->~mystruct();
 }
-//]
+//! [alignment_array]

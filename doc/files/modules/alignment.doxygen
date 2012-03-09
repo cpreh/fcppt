@@ -1,11 +1,133 @@
 /**
 \defgroup fcpptalignment fcppt::alignment
 \ingroup fcpptmain
+\brief Typedef structs and macros to specify alignment
 
-TODO: Write description here
+<table id="toc">
+<tr>
+<td>
+
+<ol>
+	<li>\ref alignment_introduction</li>
+	<li>\ref alignment_specification
+		<ol>
+			<li>\ref alignment_objects</li>
+			<li>\ref alignment_types</li>
+			<li>\ref alignment_array</li>
+		</ol>
+	</li>
+	<li>\ref alignment_restrictions</li>
+	<li>\ref alignment_headers</li>
+</ol>
+
+</td>
+</tr>
+</table>
+
+\section alignment_introduction Introduction
+
+In C++'s abstract machine the <em>object representation</em> of an object
+specifies
+<ul>
+<li>its <em>size</em> which is measured in bytes (and returned by
+<code>sizeof</code>) and</li>
+
+<li>its alignment which is also measured in bytes.</li>
+</ul>
+
+The alignment of a type is defined as the number of bytes between successive
+addresses at which an object can be allocated. It usually also means that the
+address of the object must be a multiple of the alignment.
+
+In <em>C++03</em> no language support for alignment is available but it is
+nevertheless required to obey the alignment rules, namely the imposed object
+representations for given types. Usually, this is taken care of by the language
+itself: Allocated objects on the stack always are properly aligned, so are
+objects returned by <code>new</code>. However, if you want to allocate raw
+memory for an object of a given type, which is later used to construct the
+object using <em>placement new</em>, you have to make sure the memory is
+properly aligned. Failure to obey the imposed alignment of an object type is
+undefined behaviour.
+
+fcppt's alignment support builds on compiler specific extensions to make
+specification of alignment possible.
+
+\section alignment_specification Specifying Alignment
+
+In this section, various ways to specify alignment are presented.
+
+\subsection alignment_objects Alignment for objects
+
+Alignment on object declarations can be specified using \link
+FCPPT_ALIGNMENT_ALIGN \endlink. This macro must be placed after the type but
+before the declarator.
+
+\snippet alignment_object.cpp alignment_object
+
+\subsection alignment_types Alignment for types
+
+Alignment can also be specified on types so that they can be transparently used
+to declare objects of a given alignment.
+
+\snippet alignment_type.cpp alignment_type
+
+\subsection alignment_array Alignment for arrays
+
+There is a shorthand for declaring array types with a given alignment. These
+can later be used with <em>placement new</em> to construct objects in. The
+underlying type of the array used here is <code>unsigned char</code>. You
+should never use anything else to be most portable.
+
+\snippet alignment_array.cpp alignment_array
+
+\section alignment_restrictions Restrictions
+
+Because fcppt makes use of compiler extensions to specify alignment and
+alignment is poorly supported in <em>C++03</em> in general, there are several
+restrictions to keep in mind.
+
+<ul>
+<li>Not every alignment is possible to use, depending on the compiler and
+platform. Usually, every power of 2 up to an unspecified number can be used,
+though.
+</li>
+
+<li>The actual alignment an object gets can be more strict than the specified
+alignment. For example, this can happen if an object is declared on the stack
+which can have a greater stack alignment.</li>
+</ul>
+
+\section alignment_headers Header files
+
+<table>
+<tr>
+<th>Header file</th>
+<th>Description</th>
+</tr>
+<tr>
+<td><code>align.hpp</code></td>
+<td>Contains \link FCPPT_ALIGNMENT_ALIGN \endlink</td>
+</tr>
+<tr>
+<td><code>array.hpp</code></td>
+<td>Contains the fcppt::alignment::array typedef struct</td>
+</tr>
+<tr>
+<td><code>make_type.hpp</code></td>
+<td>Contains the fcppt::alignment::make_type typedef struct</td>
+</tr>
+<tr>
+<td><code>is_aligned.hpp</code></td>
+<td>Contains fcppt::alignment::is_aligned</td>
+</tr>
+<tr>
+<td><code>size_type.hpp</code></td>
+<td>Contains fcppt::alignment::size_type which is used to specify alignments</td>
+</tr>
+</table>
 */
 namespace fcppt
 {
-/// TODO: Write description here
+/// Typedef structs to specify alignment
 namespace alignment {}
 }

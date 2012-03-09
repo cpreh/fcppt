@@ -53,9 +53,9 @@ function(
 endfunction()
 
 add_fcppt_example(algorithm "" "")
-add_fcppt_example(alignment "" "")
-add_fcppt_example(alignment_new "" "")
-add_fcppt_example(alignment_simple "" "")
+add_fcppt_example(alignment_array "" "")
+add_fcppt_example(alignment_object "" "")
+add_fcppt_example(alignment_type "" "")
 add_fcppt_example(assert "" "")
 add_fcppt_example(assert_complete "" "")
 add_fcppt_example(backtrace "" "")

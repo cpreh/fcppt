@@ -18,21 +18,31 @@ namespace alignment
 {
 
 /**
-\brief Creates a nested typedef <code>type</code> to an <code>fcppt::container::array<T, Size></code> with alignment \p Alignment
+\brief Creates an array with a given alignment
+
 \ingroup fcpptalignment
-\tparam Alignment TODO
+
+Contains a nested typedef <code>type</code> to an
+<code>fcppt::container::array<Type, Size></code> with alignment \a Alignment
+
+\tparam Type Can be any type
+
+\tparam Size The size of the array
+
+\tparam Alignment The alignment to use for the array
+
 \see fcppt::alignment::make_type
 */
 template<
-	typename T,
-	size_type Size,
-	size_type Alignment
+	typename Type,
+	fcppt::alignment::size_type Size,
+	fcppt::alignment::size_type Alignment
 >
 struct array
 :
 fcppt::alignment::make_type<
 	fcppt::container::array<
-		T,
+		Type,
 		Size
 	>,
 	Alignment

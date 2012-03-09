@@ -4,15 +4,17 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-//[alignment_simple
+//! [alignment_object]
 #include <fcppt/text.hpp>
 #include <fcppt/alignment/align.hpp>
 #include <fcppt/alignment/is_aligned.hpp>
 #include <fcppt/io/cout.hpp>
 
 
-int main()
+int
+main()
 {
+	// Align this integer test to 16 bytes
 	int FCPPT_ALIGNMENT_ALIGN(16) test = 0;
 
 	fcppt::io::cout()
@@ -23,4 +25,4 @@ int main()
 		)
 		<< FCPPT_TEXT('\n');
 }
-//]
+//! [alignment_object]

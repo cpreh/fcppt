@@ -16,9 +16,11 @@ namespace fcppt
 namespace alignment
 {
 
-/**  The size_type used to specify alignments
- * \ingroup fcpptalignment
- */
+/**
+\brief The size type used to specify alignments
+
+\ingroup fcpptalignment
+*/
 typedef std::size_t size_type;
 
 }
