@@ -20,7 +20,7 @@ namespace endianness
 
 \ingroup fcpptendianness
 
-Equalivalent to <code>host_format() == format::big</code>
+Equivalent to <code>host_format() == format::big</code>
 */
 FCPPT_SYMBOL
 bool

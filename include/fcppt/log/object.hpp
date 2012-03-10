@@ -172,7 +172,7 @@ public:
 	\brief Returns if a level is activated and the logger is enabled
 
 	Returns if \a level is activated and the logger is enabled.
-	Equalivalent to <code>activated(level) && enabled()</code>.
+	Equivalent to <code>activated(level) && enabled()</code>.
 
 	\param level The log level to query the activated state for
 

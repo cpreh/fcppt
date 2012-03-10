@@ -23,7 +23,7 @@ In C++, the representation of objects of fundamental type (like integers) in
 memory consists of two aspects:
 <ul>
 <li>The <em>object representation</em> which describes the object's size and
-alignment in bytes (see also \ref alignment_introduction).</li>
+alignment in bytes (see also \ref alignment_introduction "Alignment").</li>
 
 <li>The <em>value representation</em> which describes of how many bits an
 object consists and what their meanings are.</li>
@@ -34,7 +34,7 @@ where the most significant bit is the leftmost (meaning it contributes
 the highest number value), and the least significant bit is rightmost
 (meaning it only contributes 1 to the value).
 
-This order is established by the fact that for unsigned types left shift
+This order is established by the fact that for unsigned types, left shift
 <code>(<<)</code> and right shift <code>(>>)</code> are the same as
 multiplications and divisions with powers of 2.
 
