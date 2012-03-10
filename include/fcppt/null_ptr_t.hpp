@@ -17,6 +17,12 @@
 namespace fcppt
 {
 
+/**
+\brief A class that is implicitly convertible to null pointers
+
+This class is returned by fcppt::null_ptr to emulate C++11's
+<code>nullptr</code>.
+*/
 struct null_ptr_t
 {
 #if defined(FCPPT_CONFIG_HAVE_ZERO_AS_NULL_POINTER_CONSTANT_WARNING)

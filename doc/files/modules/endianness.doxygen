@@ -29,10 +29,10 @@ alignment in bytes (see also \ref alignment_introduction "Alignment").</li>
 object consists and what their meanings are.</li>
 </ul>
 
-The order of bits can be thought of <em>from left to right</em>,
-where the most significant bit is the leftmost (meaning it contributes
-the highest number value), and the least significant bit is rightmost
-(meaning it only contributes 1 to the value).
+The order of bits can be thought of <em>from left to right</em>, where the most
+significant bit is the leftmost (meaning it contributes the highest number to
+the value), and the least significant bit is rightmost (meaning it only
+contributes 1 to the value).
 
 This order is established by the fact that for unsigned types, left shift
 <code>(<<)</code> and right shift <code>(>>)</code> are the same as
