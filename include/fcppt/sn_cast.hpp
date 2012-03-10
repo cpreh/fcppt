@@ -14,6 +14,7 @@
 #include <boost/mpl/sizeof.hpp>
 #include <boost/type_traits/is_floating_point.hpp>
 #include <boost/type_traits/is_integral.hpp>
+#include <boost/type_traits/is_same.hpp>
 #include <boost/utility/enable_if.hpp>
 #include <fcppt/config/external_end.hpp>
 
@@ -21,65 +22,75 @@
 namespace fcppt
 {
 
-/// safe_numeric_cast is a safer static_cast that forbids some lossy conversions
 /**
- * The size of the destination type must be at least as big as the source type's size.
- * Conversions from integral types to floating point types are allowed.
- * Conversions from floating point types to floating point types and
- * conversions from integral types to integral types are also allowed.
+\brief safe_numeric_cast is a safer static_cast that forbids lossy conversions
+
+This cast converts one fundamental type to another, where the size of the
+destination type must be at least the size of the source type.
+
+Furthermore, the conversion is only allowed if one of the following cases hold
+true:
+
+<ul>
+
+<li>Both types are the same type</li>
+
+<li>Both types are integer types</li>
+
+<li>Both types are floating point types</li>
+
+</ul>
+
+\tparam Dest The destination type of the conversion
+
+\tparam Source the source type of the conversion
+
+\param _source The source
 */
 template<
-	typename T,
-	typename U
+	typename Dest,
+	typename Source
 >
 typename boost::enable_if<
 	boost::mpl::and_<
 		boost::mpl::greater_equal<
 			boost::mpl::sizeof_<
-				T
+				Dest
 			>,
 			boost::mpl::sizeof_<
-				U
+				Source
 			>
 		>,
 		boost::mpl::or_<
-			boost::mpl::and_<
-				boost::is_floating_point<
-					T
-				>,
-				boost::is_floating_point<
-					U
-				>
+			boost::is_same<
+				Dest,
+				Source
 			>,
 			boost::mpl::and_<
 				boost::is_floating_point<
-					T
+					Dest
 				>,
-				boost::is_integral<
-					U
+				boost::is_floating_point<
+					Source
 				>
 			>,
 			boost::mpl::and_<
 				boost::is_integral<
-					T
+					Dest
 				>,
 				boost::is_integral<
-					U
+					Source
 				>
 			>
 		>
 	>,
-	T
+	Dest
 >::type
 sn_cast(
-	U const &u
+	Source const &_source
 )
 {
-	return static_cast<
-		T
-	>(
-		u
-	);
+	return _source;
 }
 
 }

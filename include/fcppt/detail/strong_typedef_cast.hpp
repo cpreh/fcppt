@@ -35,10 +35,10 @@ typename boost::disable_if<
 	T
 >::type
 strong_typedef_cast(
-	U const &u
+	U const &_other
 )
 {
-	return T(u);
+	return _other;
 }
 
 template<
@@ -57,14 +57,15 @@ typename boost::enable_if<
 	T
 >::type
 strong_typedef_cast(
-	U const &u
+	U const &_other
 )
 {
-	return sn_cast<
-		T
-	>(
-		u
-	);
+	return
+		fcppt::sn_cast<
+			T
+		>(
+			_other
+		);
 }
 
 }

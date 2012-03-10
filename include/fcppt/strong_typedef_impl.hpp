@@ -41,7 +41,7 @@ fcppt::strong_typedef<
 )
 :
 	value_(
-		detail::strong_typedef_cast<
+		fcppt::detail::strong_typedef_cast<
 			T
 		>(
 			_other
@@ -69,7 +69,7 @@ fcppt::strong_typedef<
 )
 {
 	value_ =
-		detail::strong_typedef_cast<
+		fcppt::detail::strong_typedef_cast<
 			T
 		>(
 			_other
@@ -113,7 +113,7 @@ fcppt::strong_typedef<
 	T,
 	Tag
 >::swap(
-	strong_typedef<
+	fcppt::strong_typedef<
 		T,
 		Tag
 	> &_other
@@ -169,11 +169,11 @@ template<
 >
 void
 fcppt::swap(
-	strong_typedef<
+	fcppt::strong_typedef<
 		T,
 		Tag
 	> &_a,
-	strong_typedef<
+	fcppt::strong_typedef<
 		T,
 		Tag
 	> &_b
