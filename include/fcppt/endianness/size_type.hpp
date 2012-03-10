@@ -17,6 +17,11 @@ namespace fcppt
 namespace endianness
 {
 
+/**
+\brief The size of raw memory, used to swap bytes
+
+\ingroup fcpptendianness
+*/
 typedef std::size_t size_type;
 
 }

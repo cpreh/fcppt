@@ -49,7 +49,7 @@ currently exported. This macro will not be defined in all other cases, which
 means the symbols are currently imported.
 
 In the following example the macro <code>MYLIB_EXPORTS</code> is defined
-by the build system if the library is currently beign built. This macro
+by the build system if the library is currently being built. This macro
 is used to define <code>MYLIB_SYMBOL</code> to either \link FCPPT_EXPORT_SYMBOL \endlink
 or \link FCPPT_IMPORT_SYMBOL \endlink.
 

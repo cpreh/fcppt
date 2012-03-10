@@ -12,6 +12,11 @@ namespace fcppt
 namespace endianness
 {
 
+/**
+\brief The raw memory type used to swap bytes
+
+\ingroup fcpptendianness
+*/
 typedef unsigned char raw_value;
 
 }

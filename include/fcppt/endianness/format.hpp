@@ -12,11 +12,31 @@ namespace fcppt
 namespace endianness
 {
 
+/**
+\enum_policy{format,fcppt::endianness::format::type}
+
+\ingroup fcpptendianness
+*/
 namespace format
 {
+/**
+\brief An enumeration for the possible endiannesses
+*/
 enum type
 {
+	/**
+	\brief Little endianness
+
+	This means that the least significant bits are in the first byte. It
+	is also the most common endianness, because x86 and amd64 architectures
+	use it.
+	*/
 	little,
+	/**
+	\brief Big endianness
+
+	This means that the most significant bits are in the first byte.
+	*/
 	big
 };
 }

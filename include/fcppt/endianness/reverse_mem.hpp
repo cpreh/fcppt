@@ -20,8 +20,10 @@ namespace endianness
 /**
 \brief Reverses the byte order of a given memory block
 
-Reverses the byte order of the memory pointed to by \a data
-and the size of \a size.
+\ingroup fcpptendianness
+
+Reverses the byte order of the memory pointed to by \a data and the size of \a
+size.
 
 \param data The memory to the memory block
 
@@ -30,8 +32,8 @@ and the size of \a size.
 FCPPT_SYMBOL
 void
 reverse_mem(
-	fcppt::endianness::raw_pointer,
-	fcppt::endianness::size_type
+	fcppt::endianness::raw_pointer data,
+	fcppt::endianness::size_type size
 );
 
 }

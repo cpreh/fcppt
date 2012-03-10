@@ -15,6 +15,11 @@ namespace fcppt
 namespace endianness
 {
 
+/**
+\brief A pointer to raw memory, used to swap bytes
+
+\ingroup fcpptendianness
+*/
 typedef fcppt::endianness::raw_value *raw_pointer;
 
 }

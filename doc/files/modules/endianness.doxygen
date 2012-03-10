@@ -1,0 +1,129 @@
+/**
+\defgroup fcpptendianness fcppt::endianness
+\ingroup fcpptmain
+\brief Functions to convert and query endianness
+
+<table id="toc">
+<tr>
+<td>
+
+<ol>
+	<li>\ref endianness_introduction</li>
+	<li>\ref endianness_example</li>
+	<li>\ref endianness_headers</li>
+</ol>
+
+</td>
+</tr>
+</table>
+
+\section endianness_introduction Introduction
+
+In C++, the representation of objects of fundamental type (like integers) in
+memory consists of two aspects:
+<ul>
+<li>The <em>object representation</em> which describes the object's size and
+alignment in bytes (see also \ref alignment_introduction).</li>
+
+<li>The <em>value representation</em> which describes of how many bits an
+object consists and what their meanings are.</li>
+</ul>
+
+The order of bits can be thought of <em>from left to right</em>,
+where the most significant bit is the leftmost (meaning it contributes
+the highest number value), and the least significant bit is rightmost
+(meaning it only contributes 1 to the value).
+
+This order is established by the fact that for unsigned types left shift
+<code>(<<)</code> and right shift <code>(>>)</code> are the same as
+multiplications and divisions with powers of 2.
+
+Such a value representation (consisting of N bits) requires an object
+representation of M bytes, so that <code>M * bits_in_a_byte</code> is at least
+N. However, it is not clear to which bytes the individual bits go, not even if
+they are implemented in the order exposed by the semantics of the shift
+operations and other bit manipulating operators.
+
+This means that serializing an integer byte by byte and (possibly) reading it
+back from another machine is not guaranteed to work.
+
+Luckily, there are only two majorly used mappings from bits to bytes, called
+<em>big</em> and <em>little</em> endianness. For big endianness, the byte
+containing the most significant bits comes first, where for little endianness
+the byte containing the least significant bits comes first.
+
+The most used endianness is little, because the x86 and amd64 architectures use
+it. For example, PowerPC uses big endianness.
+
+fcppt provides simple means to query the endianness of the machine and to
+convert endianness of objects of fundamental types.
+
+\section endianness_example Example
+
+To query the endianness of the host, the functions fcppt::endianness::host_format
+can be used. There are also shorthand functions called fcppt::endianness::is_little_endian
+and fcppt::endianness::is_big_endian.
+
+\snippet endianness.cpp endianness_query
+
+To convert endianness, the template function fcppt::endianness::convert can be
+used. Because endianness conversion is symmetrical, it can not only convert
+from the host endianness to a given endianness, but it can also convert from a
+given endianness to the host endianness.
+
+\snippet endianness.cpp endianness_convert
+
+\section endianness_headers Header files
+
+<table>
+<tr>
+<th>Header file</th>
+<th>Description</th>
+</tr>
+<tr>
+<td><code>convert.hpp</code></td>
+<td>Contains the fcppt::endianness::convert function</td>
+</tr>
+<tr>
+<td><code>format.hpp</code></td>
+<td>Contains the fcppt::endianness::format enumeration</td>
+</tr>
+<tr>
+<td><code>host_format.hpp</code></td>
+<td>Contains the fcppt::endianness::host_format function</td>
+</tr>
+<tr>
+<td><code>is_big_endian.hpp</code></td>
+<td>Contains the fcppt::endianness::is_big_endian function</td>
+</tr>
+<tr>
+<td><code>is_little_endian.hpp</code></td>
+<td>Contains the fcppt::endianness::is_little_endian function</td>
+</tr>
+<tr>
+<td><code>raw_pointer.hpp</code></td>
+<td>Contains the fcppt::endianness::raw_pointer typedef</td>
+</tr>
+<tr>
+<td><code>raw_value.hpp</code></td>
+<td>Contains the fcppt::endianness::raw_value typedef</td>
+</tr>
+<tr>
+<td><code>reverse_mem.hpp</code></td>
+<td>Contains the fcppt::endianness::reverse_mem function</td>
+</tr>
+<tr>
+<td><code>size_type.hpp</code></td>
+<td>Contains the fcppt::endianness::size_type typedef</td>
+</tr>
+<tr>
+<td><code>swap.hpp</code></td>
+<td>Contains the fcppt::endianness::swap function</td>
+</tr>
+</table>
+*/
+namespace fcppt
+{
+/// Functions to convert and query endianness
+namespace endianness {}
+}

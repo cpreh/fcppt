@@ -9,11 +9,23 @@
 
 #include <fcppt/symbol.hpp>
 
+
 namespace fcppt
 {
 namespace endianness
 {
-FCPPT_SYMBOL bool is_big_endian();
+
+/**
+\brief Returns if this machine uses big endianness
+
+\ingroup fcpptendianness
+
+Equalivalent to <code>host_format() == format::big</code>
+*/
+FCPPT_SYMBOL
+bool
+is_big_endian();
+
 }
 }
 

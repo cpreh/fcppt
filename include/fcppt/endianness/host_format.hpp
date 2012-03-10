@@ -16,6 +16,11 @@ namespace fcppt
 namespace endianness
 {
 
+/**
+\brief Returns the endianness of this machine
+
+\ingroup fcpptendianness
+*/
 FCPPT_SYMBOL
 fcppt::endianness::format::type
 host_format();

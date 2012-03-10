@@ -15,6 +15,7 @@
 int
 main()
 {
+//! [endianness_query]
 	switch(
 		fcppt::endianness::host_format()
 	)
@@ -26,12 +27,15 @@ main()
 		std::cout << "This system is little endian\n";
 		break;
 	}
+//! [endianness_query]
 
+//! [endianness_convert]
 	int const ivariable(
 		108
 	);
 
-	// Converts from the host format to little endian
+	// Converts from the host format to little endian, because ivariable is
+	// in the host format.
 	int const iconverted(
 		fcppt::endianness::convert(
 			ivariable,
@@ -46,13 +50,14 @@ main()
 		<< iconverted
 		<< '\n';
 
-	// Convert the value back to the host format
-	// Should output 108
+	// Convert the value back to the host format, because iconverted is in
+	// little endianness. Should output 108
 	std::cout
 		<< fcppt::endianness::convert(
 			iconverted,
 			fcppt::endianness::format::little
 		)
 		<< '\n';
+//! [endianness_convert]
 }
 //]

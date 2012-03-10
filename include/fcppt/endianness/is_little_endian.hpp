@@ -9,11 +9,23 @@
 
 #include <fcppt/symbol.hpp>
 
+
 namespace fcppt
 {
 namespace endianness
 {
-FCPPT_SYMBOL bool is_little_endian();
+
+/**
+\brief Returns if this machine uses little endianness
+
+\ingroup fcpptendianness
+
+Equalivalent to <code>host_format() == format::little</code>
+*/
+FCPPT_SYMBOL
+bool
+is_little_endian();
+
 }
 }
 
