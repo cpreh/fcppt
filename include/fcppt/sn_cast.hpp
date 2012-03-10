@@ -9,12 +9,14 @@
 
 #include <fcppt/config/external_begin.hpp>
 #include <boost/mpl/and.hpp>
+#include <boost/mpl/equal_to.hpp>
 #include <boost/mpl/greater_equal.hpp>
 #include <boost/mpl/or.hpp>
 #include <boost/mpl/sizeof.hpp>
 #include <boost/type_traits/is_floating_point.hpp>
 #include <boost/type_traits/is_integral.hpp>
 #include <boost/type_traits/is_same.hpp>
+#include <boost/type_traits/is_signed.hpp>
 #include <boost/utility/enable_if.hpp>
 #include <fcppt/config/external_end.hpp>
 
@@ -35,7 +37,7 @@ true:
 
 <li>Both types are the same type</li>
 
-<li>Both types are integer types</li>
+<li>Both types are integer types and both have the same signedness</li>
 
 <li>Both types are floating point types</li>
 
@@ -80,6 +82,14 @@ typename boost::enable_if<
 				>,
 				boost::is_integral<
 					Source
+				>,
+				boost::mpl::equal_to<
+					boost::is_signed<
+						Dest
+					>,
+					boost::is_signed<
+						Source
+					>
 				>
 			>
 		>
