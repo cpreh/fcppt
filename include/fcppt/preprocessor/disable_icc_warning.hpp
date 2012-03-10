@@ -13,9 +13,11 @@
 /**
 \brief Disables a given icc warning (does nothing on other compilers)
 
+\ingroup fcpptpreprocessor
+
 Disables the icc warning denoted by \a warning_number
 
-\param warning_name The warning number to disable
+\param warning_number The warning number to disable
 
 \see \ref preprocessor_warnings
 */

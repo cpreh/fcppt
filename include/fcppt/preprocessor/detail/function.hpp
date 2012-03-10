@@ -18,9 +18,9 @@
 			__PRETTY_FUNCTION__ \
 		)
 #	else
-#	include <fcppt/text.hpp>
-#	define FCPPT_PP_DETAIL_FUNCTION \
-	FCPPT_TEXT("")
+#		include <fcppt/text.hpp>
+#		define FCPPT_PP_DETAIL_FUNCTION \
+		FCPPT_TEXT("")
 #	endif
 #elif defined(FCPPT_CONFIG_MSVC_COMPILER)
 #	include <fcppt/from_std_string.hpp>

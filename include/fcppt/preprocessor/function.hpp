@@ -12,6 +12,8 @@
 /**
 \brief Pretty prints the current function name
 
+\ingroup fcpptpreprocessor
+
 If support for pretty function printing is available, this macro will expand to
 the name of the current function, either as a literal or as some other rvalue,
 depending on the compiler. The type of the function name is suitable to use

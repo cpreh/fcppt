@@ -1,0 +1,168 @@
+/**
+\defgroup fcpptpreprocessor fcppt.preprocessor
+\ingroup fcpptmain
+\brief Macros for controlling warnings and printing message
+
+<table id="toc">
+<tr>
+<td>
+
+<ol>
+	<li>\ref preprocessor_warnings</li>
+	<li>\ref preprocessor_messages</li>
+	<li>\ref preprocessor_pragma</li>
+	<li>\ref preprocessor_printing</li>
+	<li>\ref preprocessor_headers</li>
+</ol>
+
+</td>
+</tr>
+</table>
+
+\section preprocessor_warnings Controlling Warnings
+
+In general, you should enable as many warnings as possible for your projects.
+However, sometimes you might want to disable a warning only in a part of your
+code. Another problem arises when other libraries like Boost cause you warnings
+you cannot fix.
+
+To disable warnings in a scope, fcppt provides the following macros:
+<dl>
+<dt>\link FCPPT_PP_PUSH_WARNING \endlink</dt>
+<dd>Pushes the warning stack</dd>
+
+<dt>\link FCPPT_PP_POP_WARNING \endlink</dt>
+<dd>Pops the warning stack</dd>
+
+<dt>\link FCPPT_PP_DISABLE_GCC_WARNING \endlink</dt>
+<dd>Diables a given warning option only on gcc like compilers</dd>
+
+<dt>\link FCPPT_PP_DISABLE_ICC_WARNING \endlink</dt>
+<dd>Diables a given warning option only on icc</dd>
+
+<dt>\link FCPPT_PP_DISABLE_VC_WARNING \endlink</dt>
+<dd>Diables a given warning option only on VC++</dd>
+</dl>
+
+To minimize the scope where warnings are disabled, you should always start with
+an \link FCPPT_PP_PUSH_WARNING \endlink, followed by disabling the warning(s).
+To close the scope, \link FCPPT_PP_POP_WARNING \endlink should be used.
+
+\warning These macros cannot be placed everywhere. You should only place them
+around statements or scopes. For example, placing them around an initialization
+list will not work.
+
+The first example shows how to disable the <em>this used in constructor
+initialization list</em> warning for VC++.
+
+\snippet preprocessor/warning.cpp pp_warning_vc
+
+The second example shows how to disable <code>-Wold-style-cast</code> warning
+for gcc.
+
+\snippet preprocessor/warning.cpp pp_warning_gcc
+
+\section preprocessor_messages Printing messages
+
+Printing compiler messages can be useful to print general diagnostics, todo or
+fixme messages.
+
+fcppt provides \link FCPPT_PP_MESSAGE \endlink to do that. There are three more
+macros called \link FCPPT_PP_TODO \endlink, \link FCPPT_PP_FIXME \endlink and
+\link FCPPT_PP_WARNING \endlink, that print "TODO: ", "FIXME: " and "warning: "
+in front or their message, respectively.
+
+Here is a simple example:
+
+\snippet preprocessor/message.cpp pp_message_todo
+
+\section preprocessor_pragma Pragmas in macros
+
+Pragmas are implementation-defined ways to instruct the compiler to do
+something special. The warning and message macros of fcppt are implemented by
+pragmas, for example. The problem with the pragma directive is that it cannot
+be embedded in a macro, like in the following code:
+
+\code{.cpp}
+#define MY_MACRO #pragma something
+\endcode
+
+Instead, fcppt provides a macro that can be used instead of the pragma
+directive, called \link FCPPT_PP_PRAGMA \endlink. The above example can then be
+written as:
+
+\code{.cpp}
+#define MY_MACRO FCPPT_PP_PRAGMA(something)
+\endcode
+
+\section preprocessor_printing Pretty printing
+
+C++03 has <code>__FILE__</code> and <code>__LINE__</code> to print information
+about where a macro is invoked in a file. However, it is missing a
+<code>__FUNCTION__</code> macro that C99 (and now C++11) has.  \link
+FCPPT_PP_FUNCTION \endlink fills in that gap. There is also \link FCPPT_PP_FILE
+\endlink that expands to the current file compatible with fcppt::string.
+
+\snippet preprocessor/printing.cpp pp_printing
+
+\section preprocessor_headers Header files
+
+<table>
+<tr>
+<th>Header file</th>
+<th>Description</th>
+</tr>
+<tr>
+<td><code>disable_gcc_warning.hpp</code></td>
+<td>Contains \link FCPPT_PP_DISABLE_GCC_WARNING \endlink</td>
+</tr>
+<tr>
+<td><code>disable_icc_warning.hpp</code></td>
+<td>Contains \link FCPPT_PP_DISABLE_ICC_WARNING \endlink</td>
+</tr>
+<tr>
+<td><code>disable_vc_warning.hpp</code></td>
+<td>Contains \link FCPPT_PP_DISABLE_VC_WARNING \endlink</td>
+</tr>
+<tr>
+<td><code>file.hpp</code></td>
+<td>Contains \link FCPPT_PP_FILE \endlink</td>
+</tr>
+<tr>
+<td><code>fixme.hpp</code></td>
+<td>Contains \link FCPPT_PP_FIXME \endlink</td>
+</tr>
+<tr>
+<td><code>function.hpp</code></td>
+<td>Contains \link FCPPT_PP_FUNCTION \endlink</td>
+</tr>
+<tr>
+<td><code>message.hpp</code></td>
+<td>Contains \link FCPPT_PP_MESSAGE \endlink</td>
+</tr>
+<tr>
+<td><code>pop_warning.hpp</code></td>
+<td>Contains \link FCPPT_PP_POP_WARNING \endlink</td>
+</tr>
+<tr>
+<td><code>pragma.hpp</code></td>
+<td>Contains \link FCPPT_PP_PRAGMA \endlink</td>
+</tr>
+<tr>
+<td><code>push_warning.hpp</code></td>
+<td>Contains \link FCPPT_PP_PUSH_WARNING \endlink</td>
+</tr>
+<tr>
+<td><code>stringize.hpp</code></td>
+<td>Contains \link FCPPT_PP_STRINGIZE \endlink</td>
+</tr>
+<tr>
+<td><code>todo.hpp</code></td>
+<td>Contains \link FCPPT_PP_TODO \endlink</td>
+</tr>
+<tr>
+<td><code>warning.hpp</code></td>
+<td>Contains \link FCPPT_PP_WARNING \endlink</td>
+</tr>
+</table>
+*/

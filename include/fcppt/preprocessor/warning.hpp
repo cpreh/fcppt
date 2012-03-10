@@ -13,6 +13,8 @@
 /**
 \brief Prints a warning compiler message
 
+\ingroup fcpptpreprocessor
+
 Prints the compiler message <code>"warning: " message</code>. Note, that this
 is just a normal message and might not be interpreted by the compiler, IDE,
 etc. as a real warning.

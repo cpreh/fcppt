@@ -7,11 +7,21 @@
 #ifndef FCPPT_PREPROCESSOR_FILE_HPP_INCLUDED
 #define FCPPT_PREPROCESSOR_FILE_HPP_INCLUDED
 
-#include <fcppt/preprocessor/stringize.hpp>
+#include <fcppt/from_std_string.hpp>
 
 /**
+\brief Prints the current file name
+
+\ingroup fcpptpreprocessor
+
+It is equivalent to <code>__FILE__</code> except that it returns an rvalue that
+is suitable to use with fcppt::string.
+
 TODO: Should this be part of the string documentation?
 */
-#define FCPPT_PP_FILE FCPPT_PP_STRINGIZE(__FILE__)
+#define FCPPT_PP_FILE \
+fcppt::from_std_string(\
+	__FILE__\
+)
 
 #endif

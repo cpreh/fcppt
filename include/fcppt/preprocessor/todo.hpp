@@ -13,6 +13,8 @@
 /**
 \brief Prints a TODO compiler message
 
+\ingroup fcpptpreprocessor
+
 Prints the compiler message <code>"TODO: " message</code>.
 
 \param message The message should be a narrow string literal

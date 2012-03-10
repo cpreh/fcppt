@@ -4,7 +4,6 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-//[preprocessor_printing
 #include <fcppt/text.hpp>
 #include <fcppt/io/cout.hpp>
 #include <fcppt/preprocessor/file.hpp>
@@ -14,20 +13,24 @@
 namespace
 {
 
+//! [pp_printing]
 void
 some_function()
 {
 	fcppt::io::cout()
 		<< FCPPT_PP_FILE
+		<< FCPPT_TEXT(':')
+		<< __LINE__
 		<< FCPPT_TEXT(": ")
 		<< FCPPT_PP_FUNCTION
 		<< FCPPT_TEXT('\n');
 }
+//! [pp_printing]
 
 }
-//]
 
-int main()
+int
+main()
 {
 	some_function();
 }

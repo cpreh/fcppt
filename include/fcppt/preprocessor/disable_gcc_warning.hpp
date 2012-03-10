@@ -13,6 +13,8 @@
 /**
 \brief Disables a given gcc warning (does nothing on other compilers)
 
+\ingroup fcpptpreprocessor
+
 Disables the gcc warning denoted by \a warning_name
 
 \param warning_name The full command line option of the warning to disable

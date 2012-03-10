@@ -13,6 +13,8 @@
 /**
 \brief Pushes the current warning stack
 
+\ingroup fcpptpreprocessor
+
 Pushes the stack of the current warning settings so that changes can be made
 which can later be undone by FCPPT_PP_POP_WARNING
 

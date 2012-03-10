@@ -13,6 +13,8 @@
 /**
 \brief Prints a compiler message
 
+\ingroup fcpptpreprocessor
+
 Intructs the compiler to print \a message. If there is no support for compiler
 messages, nothing will happen.
 

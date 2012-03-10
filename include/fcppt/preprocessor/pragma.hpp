@@ -7,18 +7,23 @@
 #ifndef FCPPT_PREPROCESSOR_PRAGMA_HPP_INCLUDED
 #define FCPPT_PREPROCESSOR_PRAGMA_HPP_INCLUDED
 
-#include <fcppt/config/compiler.hpp>
+#include <fcppt/preprocessor/detail/pragma.hpp>
 
-/// Pragma macro, the same as #pragma
 /**
- * This can be used to wrap pragma inside other macros
+\brief A macro that expands to a pragma directive
+
+\ingroup fcpptpreprocessor
+
+Expands expr as if <code>\#pragma expr</code> was written. This is useful to
+embed pragmas into macro definitions which is normally not possible.
+
+\param expr The pragma expression
 */
-#if defined(FCPPT_CONFIG_MSVC_COMPILER) || defined(FCPPT_CONFIG_ICC_COMPILER)
-#define FCPPT_PP_PRAGMA(x) __pragma(x)
-#elif defined(FCPPT_CONFIG_GCC_COMPILER)
-#define FCPPT_PP_PRAGMA(x) _Pragma(#x)
-#else
-#error "Don't know what pragma should be!"
-#endif
+#define FCPPT_PP_PRAGMA(\
+	expr\
+)\
+FCPPT_PP_DETAIL_PRAGMA(\
+	expr\
+)
 
 #endif

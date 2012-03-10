@@ -13,6 +13,8 @@
 /**
 \brief Prints a FIXME compiler message
 
+\ingroup fcpptpreprocessor
+
 Prints the compiler message <code>"FIXME: " message</code>.
 
 \param message The message should be a narrow string literal

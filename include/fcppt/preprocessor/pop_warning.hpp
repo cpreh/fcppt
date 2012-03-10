@@ -12,6 +12,8 @@
 /**
 \brief Pops the current warning stack
 
+\ingroup fcpptpreprocessor
+
 Pops the stack of the current warning settings so that changes made since the
 last FCPPT_PP_PUSH_WARNING will be undone.
 
