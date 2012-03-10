@@ -20,10 +20,13 @@ namespace fcppt
 {
 namespace io
 {
-/// This is sort of a replacement for
-/// boost::iostreams::array_source. The problem with array_source is
-/// that it doesn't have ownership over the
-/// range. raw_container_source has ownership.
+/**
+\brief An alternative to boost::iostreams::array_source which has ownership
+
+This is a replacement for boost::iostreams::array_source. The problem with
+array_source is that it doesn't have ownership over the range.
+raw_container_source has ownership.
+*/
 template<typename Container>
 class raw_container_source
 {

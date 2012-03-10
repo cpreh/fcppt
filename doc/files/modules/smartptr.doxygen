@@ -1,5 +1,5 @@
 /**
-\defgroup fcpptsmartptr Smart Pointers
+\defgroup fcpptsmartptr fcppt.smart_pointers
 \ingroup \fcpptmain
 \brief Smart pointers and their utilities
 */

@@ -16,6 +16,7 @@
 \brief A macro to wrap a narrow character literal so it results in a fcppt::char_type[] array.
 \ingroup fcpptstring
 
+
 See the \link fcpptstring string module description \endlink for more information.
 */
 #define FCPPT_TEXT(x) x

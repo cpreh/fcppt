@@ -18,6 +18,14 @@
 namespace fcppt
 {
 
+/**
+\brief Convert from std::string to fcppt::string using a custom locale
+\ingroup fcpptstring
+
+
+See the \link fcpptstring string module description \endlink for more
+information about this function.
+*/
 FCPPT_SYMBOL
 fcppt::string const
 from_std_string_locale(

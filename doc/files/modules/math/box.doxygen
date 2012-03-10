@@ -12,7 +12,7 @@ namespace box
 }
 
 /**
-\defgroup fcpptmathbox fcppt::math::box
+\defgroup fcpptmathbox fcppt.math.box
 \ingroup fcpptmath
 \brief A class representing axis-aligned rectangles, boxes, hypercubes, ...
 

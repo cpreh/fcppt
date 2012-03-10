@@ -12,7 +12,7 @@ namespace dim
 }
 
 /**
-\defgroup fcpptmathdim fcppt::math::dim
+\defgroup fcpptmathdim fcppt.math.dim
 \ingroup fcpptmath
 \brief A class representing dynamic or static n-dimensional dimensions
 

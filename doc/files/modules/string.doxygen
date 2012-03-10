@@ -1,5 +1,5 @@
 /**
-\defgroup fcpptstring fcppt::string
+\defgroup fcpptstring fcppt.string
 \ingroup fcpptmain
 \brief String-related functions and types
 
@@ -13,16 +13,17 @@ and wide literals, as such:
 
 \code
 char const [] chars = "foobar";
-char const [] wchars = L"foobar";
+wchar_t const [] wchars = L"foobar";
 \endcode
 
-System functions like <code>CreateFile</code> in Windows accept
+Depending on the operating system, one of these character types is the "native"
+one.  System functions like <code>CreateFile</code> in Windows accept
 <code>wchar_t</code>. In Linux, calls like <code>open</code> accept
 <code>char</code>. Along with the different types go different
-<em>encodings</em>. Windows uses UTF-16 for (<code>wchar_t</code>) strings
-such as the file name given to <code>CreateFile</code>. Linux uses whatever
-encoding the current <em>locale</em> specifies. On most systems, this is UTF-8
-for <code>char</code> strings.
+<em>encodings</em>. Windows uses UTF-16 for (<code>wchar_t</code>) strings such
+as the file name given to <code>CreateFile</code>. Linux uses whatever encoding
+the current <em>locale</em> specifies. On most systems, this is UTF-8 for
+<code>char</code> strings.
 
 When you're designing a library that frequently calls system functions, it's
 most efficient to use a string format that suits the current operating system.
@@ -94,7 +95,11 @@ The semantics of this locale are described, for example, in the
 <code>setlocale</code> manpage. Under Linux, this leads to the inspection of
 the locale environment variables (<code>LC_ALL, LANG</code> etc.). The default
 locale for an application is the (rather unlocalized) "C" locale. We feel that
-using the "native" locale as the default makes more sense.
+using the "native" locale as the default makes more sense, since the C locale
+has no information about the system's native encoding. Converting std::string
+to std::wstring on a typical Linux machine means converting UTF-8 to UTF-32.
+The C locale, however, has no information about these encodings, so it cannot
+work properly.
 
 Note that fcppt::string is <strong>not</strong> intended to be used "between"
 platforms. Writing an fcppt::string to a file (see below) on a Linux machine
@@ -138,14 +143,13 @@ It uses <code>operator&lt;&lt;</code> and <code>operator&gt;&gt;</code> to do
 the conversions, which is convenient.
 
 Casting both ways is also not a real problem per se. However,
-<code>lexical_cast</code> allows too many conversions. For example
+<code>lexical_cast</code> allows too many conversions. For example,
 
 \code
 boost::lexical_cast<float>(3)
 \endcode
 
-is valid, so you can misuse <code>lexical_cast</code> as a numeric cast. Also,
-stuff like
+is valid, so you can misuse <code>lexical_cast</code> as a numeric cast. Also, the following
 
 \code
 std::cout << boost::lexical_cast<char *>(std::string("foobar"));
@@ -161,7 +165,7 @@ For these reasons, we felt the need to create something that's both
 unidirectional (meaning you have "from string" and "to string" functions
 separately), safer and a little bit more flexible. This resulted in the
 following functions (where <code>T</code> is a type with an
-<code>operator&lt;&lt;</code> or <code>operator&lt;&lt;</code>,
+<code>operator&lt;&lt;</code> or <code>operator&gt;&gt;</code>,
 respectively, and <code>CharT</code> is <code>char</code> or <code>wchar_t</code>):
 
 <table>

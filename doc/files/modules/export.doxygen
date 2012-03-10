@@ -1,5 +1,5 @@
 /**
-\defgroup fcpptexport Export
+\defgroup fcpptexport fcppt.export
 \ingroup fcpptmain
 \brief Macros related to library visibility
 

@@ -19,7 +19,9 @@ namespace fcppt
 \brief The string type used for text.
 \ingroup fcpptstring
 
-\see fcppt::char_type
+
+See the \link fcpptstring string module description \endlink for more
+information about this type.
 */
 typedef std::basic_string<
 	char_type

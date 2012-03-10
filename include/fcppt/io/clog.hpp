@@ -19,6 +19,14 @@ namespace fcppt
 namespace io
 {
 
+/**
+\brief Returns either std::clog or std::wclog, depending on fcppt::char_type
+\ingroup fcpptstring
+
+
+See the \link fcpptstring string module documentation \endlink for a motivation
+for this.
+*/
 FCPPT_SYMBOL
 io::ostream &
 clog();

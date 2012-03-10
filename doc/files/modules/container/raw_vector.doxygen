@@ -1,5 +1,5 @@
 /**
-\defgroup fcpptcontainerraw_vector fcppt::container::raw_vector
+\defgroup fcpptcontainerraw_vector fcppt.container.raw_vector
 \ingroup fcpptcontainer
 \brief A special vector class for POD types
 

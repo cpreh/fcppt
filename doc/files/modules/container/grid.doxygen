@@ -10,7 +10,7 @@ namespace grid
 }
 
 /**
-\defgroup fcpptcontainergrid fcppt::container::grid
+\defgroup fcpptcontainergrid fcppt.container.grid
 \ingroup fcpptcontainer
 \brief A simple n-dimensional array
 

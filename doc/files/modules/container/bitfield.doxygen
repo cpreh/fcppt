@@ -10,7 +10,7 @@ namespace bitfield
 }
 
 /**
-\defgroup fcpptcontainerbitfield fcppt::container::bitfield
+\defgroup fcpptcontainerbitfield fcppt.container.bitfield
 \ingroup fcpptcontainer
 \brief A wrapper around a bitfield using an enum
 

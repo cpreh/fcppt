@@ -19,6 +19,26 @@
 namespace fcppt
 {
 
+/**
+\brief Lexical cast a string to a different type using a locale
+\tparam Dest The destination type, has to have an <code>operator&gt;&gt;</code> defined
+\tparam Source A string type (see fcppt::type_traits::is_string)
+\param _source The string to extract from
+\param _locale The locale to use (defaults to std::locale())
+
+
+Note that the string has to be consumed completely.
+<code>extract_from_string_exn<float>("3.0 4.0")</code> will fail.
+
+Also note that the default locale for this function is the C locale. This was
+chosen deliberately to avoid confusion when converting, for example, "300,100"
+to int. Using the C locale, this will fail, since the string isn't completely
+consumed. Using a German locale, however, this will return "300100", since ','
+is the thousand separator for this locale.
+
+\see fcppt::extract_from_string_exn
+\see fcppt::insert_to_string
+*/
 template<
 	typename Dest,
 	typename Source

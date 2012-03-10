@@ -18,6 +18,23 @@
 namespace fcppt
 {
 
+/**
+\brief Convert an arbitrary type to a string
+\tparam Dest A string type, see fcppt::type_traits::is_string
+\tparam Source The type to make into a string. Has to have an <code>operator&lt;&lt;</code> defined.
+\param _source The object to convert
+\param _locale The locale (defaults to the C locale)
+
+
+Note that the default locale for this function is the C locale. This is
+consistent with the fcppt::extract_from_string function. See this function to
+see why this locale was chosen.
+
+\see fcppt::extract_from_string
+\see fcppt::insert_to_std_string
+\see fcppt::insert_to_std_wstring
+\see fcppt::insert_to_fcppt_string
+*/
 template<
 	typename Dest,
 	typename Source

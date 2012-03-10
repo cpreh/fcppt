@@ -1,5 +1,5 @@
 /**
-\defgroup fcpptassign fcppt::assign
+\defgroup fcpptassign fcppt.assign
 \ingroup fcpptmain
 \brief A replacement for <a href="http://www.boost.org/doc/libs/1_47_0/libs/assign/doc/index.html">boost::assign</a>
 

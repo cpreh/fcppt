@@ -17,6 +17,14 @@
 namespace fcppt
 {
 
+/**
+\brief Convert from std::string to fcppt::string using fcppt::string_conv_locale
+\ingroup fcpptstring
+
+
+See the \link fcpptstring string module description \endlink for more
+information about this function.
+*/
 FCPPT_SYMBOL
 fcppt::string const
 from_std_string(

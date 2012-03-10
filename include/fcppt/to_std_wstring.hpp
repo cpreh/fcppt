@@ -16,6 +16,13 @@
 namespace fcppt
 {
 
+/**
+\brief Convert from fcppt::string to std::wstring using fcppt::string_conv_locale
+\ingroup fcpptstring
+
+See the \link fcpptstring string module description \endlink for more
+information about this function.
+*/
 FCPPT_SYMBOL
 std::wstring const
 to_std_wstring(

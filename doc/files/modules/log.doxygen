@@ -1,5 +1,5 @@
 /**
-\defgroup fcpptlog Log
+\defgroup fcpptlog fcppt.log
 \ingroup fcpptmain
 \brief Logging classes and functions
 

@@ -9,7 +9,7 @@ namespace variant
 }
 
 /**
-\defgroup fcpptvariant fcppt::variant
+\defgroup fcpptvariant fcppt.variant
 \ingroup fcpptmain
 \brief A class that can hold any object from a fixed set of types
 

@@ -12,6 +12,10 @@
 namespace fcppt
 {
 
+/**
+\brief Exception thrown by fcppt::extract_from_string_exn
+\ingroup fcpptstring
+*/
 class extract_from_string_error
 :
 	public fcppt::exception

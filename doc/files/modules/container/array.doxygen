@@ -1,5 +1,5 @@
 /**
-\defgroup fcpptcontainerarray fcppt::container::array
+\defgroup fcpptcontainerarray fcppt.container.array
 \ingroup fcpptcontainer
 \brief An implementation of <code>std::array</code> (see <a href="http://en.wikipedia.org/wiki/Array_(C%2B%2B)">here</a> for a reference)
 

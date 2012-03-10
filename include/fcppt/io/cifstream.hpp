@@ -17,6 +17,14 @@ namespace fcppt
 namespace io
 {
 
+/**
+\brief A boost::filesystem::ifstream to read files byte-wise
+\ingroup fcpptstring
+
+
+See the \link fcpptstring string module documentation \endlink for a motivation
+for this.
+*/
 typedef boost::filesystem::ifstream cifstream;
 
 }

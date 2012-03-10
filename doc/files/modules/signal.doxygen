@@ -1,5 +1,5 @@
 /**
-\defgroup fcpptsignal fcppt::signal
+\defgroup fcpptsignal fcppt.signal
 \ingroup fcpptmain
 \brief An implementation of a managed signals and slots system (replacement for boost's signals).
 

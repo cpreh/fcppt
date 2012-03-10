@@ -19,6 +19,14 @@ namespace fcppt
 namespace io
 {
 
+/**
+\brief Typedef to either boost::filesystem::ifstream or boost::filesystem::wifstream, depending on fcppt::char_type
+\ingroup fcpptstring
+
+
+See the \link fcpptstring string module documentation \endlink for a motivation
+for this.
+*/
 typedef boost::filesystem::basic_ifstream<
 	char_type
 > ifstream;

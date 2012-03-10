@@ -18,7 +18,10 @@ namespace fcppt
 namespace io
 {
 
-/// Extracts a string from @a _stream
+/**
+\brief Converts the contents of a stream to a string
+\ingroup fcpptstring
+*/
 template<
 	typename Ch,
 	typename Traits

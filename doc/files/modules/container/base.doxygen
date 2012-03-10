@@ -1,6 +1,6 @@
 /**
 \brief Various containers complementing the standard library and boost.
-\defgroup fcpptcontainer fcppt::container
+\defgroup fcpptcontainer fcppt.container
 \ingroup fcpptmain
 */
 

@@ -1,5 +1,5 @@
 /**
-\defgroup fcpptcasts Casts
+\defgroup fcpptcasts fcppt.casts
 \ingroup fcpptmain
 \brief Cast helpers which provide more type information or do additional checks
 

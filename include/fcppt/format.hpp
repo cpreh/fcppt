@@ -15,8 +15,15 @@
 namespace fcppt
 {
 
+/**
+\brief A fcppt::char_type typedef for <a href="http://www.boost.org/doc/libs/1_49_0/libs/format/">boost.format</a>
+\ingroup fcpptstring
+
+See the \link fcpptstring string module description \endlink for more
+information about fcppt::char_type.
+*/
 typedef boost::basic_format<
-	char_type
+	fcppt::char_type
 > format;
 
 }

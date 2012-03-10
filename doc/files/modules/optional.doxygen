@@ -1,5 +1,5 @@
 /**
-\defgroup fcpptoptional fcppt::optional
+\defgroup fcpptoptional fcppt.optional
 \ingroup fcpptmain
 \brief A class that makes values optional.
 

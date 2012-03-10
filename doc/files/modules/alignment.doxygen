@@ -1,5 +1,5 @@
 /**
-\defgroup fcpptalignment fcppt::alignment
+\defgroup fcpptalignment fcppt.alignment
 \ingroup fcpptmain
 \brief Typedef structs and macros to specify alignment
 

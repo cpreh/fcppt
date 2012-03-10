@@ -17,6 +17,14 @@ namespace fcppt
 namespace io
 {
 
+/**
+\brief A boost::filesystem::fstream to read and write byte-wise
+\ingroup fcpptstring
+
+
+See the \link fcpptstring string module documentation \endlink for a motivation
+for this.
+*/
 typedef boost::filesystem::fstream cfstream;
 
 }

@@ -17,6 +17,14 @@ namespace fcppt
 namespace io
 {
 
+/**
+\brief Typedef to either std::istream or std::wistream, depending on fcppt::char_type
+\ingroup fcpptstring
+
+
+See the \link fcpptstring string module documentation \endlink for a motivation
+for this.
+*/
 typedef std::basic_istream<
 	char_type
 > istream;
