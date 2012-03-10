@@ -4,21 +4,66 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-//[noncopyable
+#include <fcppt/nonassignable.hpp>
 #include <fcppt/noncopyable.hpp>
 
-class test
+namespace
+{
+
+//! [noncopyable]
+class test_noncopyable
 {
 	FCPPT_NONCOPYABLE(
-		test
+		test_noncopyable
 	);
 public:
-	void
-	some_function()
+	test_noncopyable()
+	:
+		ptr_(new int(42))
 	{
 	}
-};
-//]
 
-int main()
-{}
+	~test_noncopyable()
+	{
+		delete ptr_;
+	}
+private:
+	int *ptr_;
+};
+//! [noncopyable]
+
+//! [nonassignable]
+
+// The following is not assignable because it has a reference and a constant
+class test_nonassignable
+{
+	FCPPT_NONASSIGNABLE(
+		test_nonassignable
+	);
+public:
+	test_nonassignable(
+		int &_some_ref,
+		float const _some_float
+	)
+	:
+		some_ref_(
+			_some_ref
+		),
+		float_constant_(
+			_some_float
+		)
+	{
+	}
+private:
+	int &some_ref_;
+
+	float const float_constant_;
+};
+//! [nonassignable]
+
+}
+
+int
+main()
+{
+}
