@@ -1,5 +1,5 @@
 /**
-\defgroup fcpptendianness fcppt::endianness
+\defgroup fcpptendianness fcppt.endianness
 \ingroup fcpptmain
 \brief Functions to convert and query endianness
 
