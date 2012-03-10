@@ -7,7 +7,7 @@
 #ifndef FCPPT_DETAIL_MAKE_PTR_BASE_HPP_INCLUDED
 #define FCPPT_DETAIL_MAKE_PTR_BASE_HPP_INCLUDED
 
-#include <fcppt/preprocessor/enum_params_forward_z.hpp>
+#include <fcppt/preprocessor/detail/enum_params_forward_z.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/preprocessor/cat.hpp>
 #include <boost/preprocessor/arithmetic/inc.hpp>
@@ -56,7 +56,7 @@
 				Type\
 			>(\
 				BOOST_PP_TUPLE_ELEM(3, 2, args) (\
-					FCPPT_PP_ENUM_PARAMS_FORWARD_Z(\
+					FCPPT_PP_DETAIL_ENUM_PARAMS_FORWARD_Z(\
 						state,\
 						BOOST_PP_INC(\
 							count\

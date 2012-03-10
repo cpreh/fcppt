@@ -7,15 +7,23 @@
 #ifndef FCPPT_PREPROCESSOR_DISABLE_VC_WARNING_HPP_INCLUDED
 #define FCPPT_PREPROCESSOR_DISABLE_VC_WARNING_HPP_INCLUDED
 
-#include <fcppt/config/compiler.hpp>
+#include <fcppt/preprocessor/detail/disable_vc_warning.hpp>
 
-/// Disables a given VC++ warning (does nothing on other compilers)
-#if defined(FCPPT_CONFIG_MSVC_COMPILER)
-#	include <fcppt/preprocessor/pragma.hpp>
-#	define FCPPT_PP_DISABLE_VC_WARNING(number) \
-	FCPPT_PP_PRAGMA(warning(disable:number))
-#else
-#	define FCPPT_PP_DISABLE_VC_WARNING(number)
-#endif
+
+/**
+\brief Disables a given VC++ warning (does nothing on other compilers)
+
+Disables the VC++ warning denoted by \a warning_number
+
+\param warning_name The warning number to disable
+
+\see \ref preprocessor_warnings
+*/
+#define FCPPT_PP_DISABLE_VC_WARNING(\
+	warning_number\
+)\
+FCPPT_PP_DETAIL_DISABLE_VC_WARNING(\
+	warning_number\
+)
 
 #endif

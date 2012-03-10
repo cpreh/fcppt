@@ -9,7 +9,23 @@
 
 #include <fcppt/preprocessor/message.hpp>
 
-/// Prints the compiler message "warning: " @a x
-#define FCPPT_PP_WARNING(x) FCPPT_PP_MESSAGE("warning: " x)
+
+/**
+\brief Prints a warning compiler message
+
+Prints the compiler message <code>"warning: " message</code>. Note, that this
+is just a normal message and might not be interpreted by the compiler, IDE,
+etc. as a real warning.
+
+\param message The message should be a narrow string literal
+
+\see FCPPT_PP_MESSAGE
+*/
+#define FCPPT_PP_WARNING(\
+	message\
+)\
+FCPPT_PP_MESSAGE(\
+	"warning: " message\
+)
 
 #endif

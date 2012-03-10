@@ -9,10 +9,20 @@
 
 #include <fcppt/preprocessor/detail/message.hpp>
 
-/// Prints a compiler message
+
 /**
- * This macro might be unsupported on old platforms and will print nothing.
+\brief Prints a compiler message
+
+Intructs the compiler to print \a message. If there is no support for compiler
+messages, nothing will happen.
+
+\param message The message should be a narrow string literal
 */
-#define FCPPT_PP_MESSAGE(x) FCPPT_PP_DETAIL_MESSAGE(x)
+#define FCPPT_PP_MESSAGE(\
+	message\
+)\
+FCPPT_PP_DETAIL_MESSAGE(\
+	message\
+)
 
 #endif

@@ -9,7 +9,21 @@
 
 #include <fcppt/preprocessor/message.hpp>
 
-/// Prints the compiler message "TODO: " @a x
-#define FCPPT_PP_TODO(x) FCPPT_PP_MESSAGE("TODO: " x)
+
+/**
+\brief Prints a TODO compiler message
+
+Prints the compiler message <code>"TODO: " message</code>.
+
+\param message The message should be a narrow string literal
+
+\see FCPPT_PP_MESSAGE
+*/
+#define FCPPT_PP_TODO(\
+	message\
+)\
+FCPPT_PP_MESSAGE(\
+	"TODO: " message\
+)
 
 #endif

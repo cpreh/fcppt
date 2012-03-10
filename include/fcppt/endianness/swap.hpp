@@ -10,8 +10,8 @@
 #include <fcppt/endianness/raw_pointer.hpp>
 #include <fcppt/endianness/reverse_mem.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/utility/enable_if.hpp>
 #include <boost/type_traits/is_fundamental.hpp>
+#include <boost/utility/enable_if.hpp>
 #include <fcppt/config/external_end.hpp>
 
 

@@ -9,10 +9,16 @@
 
 #include <fcppt/preprocessor/detail/function.hpp>
 
-/// Pretty printing macro for the current function
 /**
- * Note that the return type might be a variable or a literal!
- * @return May return an empty string if there is no support for function names
+\brief Pretty prints the current function name
+
+If support for pretty function printing is available, this macro will expand to
+the name of the current function, either as a literal or as some other rvalue,
+depending on the compiler. The type of the function name is suitable to use
+with fcppt::string.
+
+If there is no support for function printing, then this macro will always
+expand to an empty literal.
 */
 #define FCPPT_PP_FUNCTION FCPPT_PP_DETAIL_FUNCTION
 

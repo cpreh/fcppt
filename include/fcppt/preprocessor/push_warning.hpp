@@ -7,21 +7,18 @@
 #ifndef FCPPT_PREPROCESSOR_PUSH_WARNING_HPP_INCLUDED
 #define FCPPT_PREPROCESSOR_PUSH_WARNING_HPP_INCLUDED
 
-#include <fcppt/config.hpp>
-#include <fcppt/config/compiler.hpp>
+#include <fcppt/preprocessor/detail/push_warning.hpp>
 
 
-/// Push the warning level
-#if defined(FCPPT_CONFIG_MSVC_COMPILER) || defined(FCPPT_CONFIG_ICC_COMPILER)
-#	include <fcppt/preprocessor/pragma.hpp>
-#	define FCPPT_PP_PUSH_WARNING \
-	FCPPT_PP_PRAGMA(warning(push))
-#elif defined(FCPPT_HAVE_GCC_DIAGNOSTIC)
-#	include <fcppt/preprocessor/pragma.hpp>
-#	define FCPPT_PP_PUSH_WARNING \
-	FCPPT_PP_PRAGMA(GCC diagnostic push)
-#else
-	#define FCPPT_PP_PUSH_WARNING
-#endif
+/**
+\brief Pushes the current warning stack
+
+Pushes the stack of the current warning settings so that changes can be made
+which can later be undone by FCPPT_PP_POP_WARNING
+
+\see \ref preprocessor_warnings
+*/
+#define FCPPT_PP_PUSH_WARNING \
+FCPPT_PP_DETAIL_PUSH_WARNING
 
 #endif

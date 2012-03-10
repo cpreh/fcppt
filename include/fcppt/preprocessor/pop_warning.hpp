@@ -7,21 +7,18 @@
 #ifndef FCPPT_PREPROCESSOR_POP_WARNING_HPP_INCLUDED
 #define FCPPT_PREPROCESSOR_POP_WARNING_HPP_INCLUDED
 
-#include <fcppt/config.hpp>
-#include <fcppt/config/compiler.hpp>
+#include <fcppt/preprocessor/detail/pop_warning.hpp>
 
+/**
+\brief Pops the current warning stack
 
-/// Pop the warning level
-#if defined(FCPPT_CONFIG_MSVC_COMPILER) || defined(FCPPT_CONFIG_ICC_COMPILER)
-#	include <fcppt/preprocessor/pragma.hpp>
-#	define FCPPT_PP_POP_WARNING \
-	FCPPT_PP_PRAGMA(warning(pop))
-#elif defined(FCPPT_HAVE_GCC_DIAGNOSTIC)
-#	include <fcppt/preprocessor/pragma.hpp>
-#	define FCPPT_PP_POP_WARNING \
-	FCPPT_PP_PRAGMA(GCC diagnostic pop)
-#else
-	#define FCPPT_PP_POP_WARNING
-#endif
+Pops the stack of the current warning settings so that changes made since the
+last FCPPT_PP_PUSH_WARNING will be undone.
+
+\see \ref preprocessor_warnings
+*/
+#define FCPPT_PP_POP_WARNING \
+FCPPT_PP_DETAIL_POP_WARNING
+
 
 #endif

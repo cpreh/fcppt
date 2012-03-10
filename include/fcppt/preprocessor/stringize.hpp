@@ -9,7 +9,14 @@
 
 #include <fcppt/preprocessor/detail/stringize.hpp>
 
-/// Stringizes a macro parameter used with BOOST_PP so that it is compatible with fcppt::string
-#define FCPPT_PP_STRINGIZE(s) FCPPT_PP_DETAIL_STRINGIZE(s)
+/**
+TODO: Should this be part of the string documentation?
+*/
+#define FCPPT_PP_STRINGIZE(\
+	string\
+)\
+FCPPT_PP_DETAIL_STRINGIZE(\
+	string\
+)
 
 #endif

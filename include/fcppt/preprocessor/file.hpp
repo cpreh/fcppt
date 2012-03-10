@@ -9,7 +9,9 @@
 
 #include <fcppt/preprocessor/stringize.hpp>
 
-/// Procudes a string literal for the current file (__FILE__) that is compatible to fcppt::string
+/**
+TODO: Should this be part of the string documentation?
+*/
 #define FCPPT_PP_FILE FCPPT_PP_STRINGIZE(__FILE__)
 
 #endif

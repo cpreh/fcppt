@@ -373,6 +373,7 @@ set(
 	include/fcppt/io/raw_container_source_fwd.hpp
 	include/fcppt/io/raw_container_source_impl.hpp
 	include/fcppt/io/read.hpp
+	include/fcppt/io/read_exn.hpp
 	include/fcppt/io/stream_to_string.hpp
 	include/fcppt/io/stringstream.hpp
 	include/fcppt/io/write.hpp
@@ -695,14 +696,19 @@ set(
 	include/fcppt/optional_dynamic_cast.hpp
 	include/fcppt/optional_fwd.hpp
 	include/fcppt/optional_impl.hpp
+	include/fcppt/preprocessor/detail/disable_gcc_warning.hpp
+	include/fcppt/preprocessor/detail/disable_icc_warning.hpp
+	include/fcppt/preprocessor/detail/disable_vc_warning.hpp
 	include/fcppt/preprocessor/detail/enum_params_forward_m.hpp
+	include/fcppt/preprocessor/detail/enum_params_forward_z.hpp
 	include/fcppt/preprocessor/detail/function.hpp
 	include/fcppt/preprocessor/detail/message.hpp
+	include/fcppt/preprocessor/detail/pop_warning.hpp
+	include/fcppt/preprocessor/detail/push_warning.hpp
 	include/fcppt/preprocessor/detail/stringize.hpp
 	include/fcppt/preprocessor/disable_gcc_warning.hpp
 	include/fcppt/preprocessor/disable_icc_warning.hpp
 	include/fcppt/preprocessor/disable_vc_warning.hpp
-	include/fcppt/preprocessor/enum_params_forward_z.hpp
 	include/fcppt/preprocessor/file.hpp
 	include/fcppt/preprocessor/fixme.hpp
 	include/fcppt/preprocessor/function.hpp
