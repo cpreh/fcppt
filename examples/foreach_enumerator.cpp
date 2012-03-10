@@ -4,7 +4,6 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-//[foreach_enumerator
 #include <fcppt/foreach_enumerator.hpp>
 #include <fcppt/foreach_enumerator_start.hpp>
 #include <fcppt/text.hpp>
@@ -14,19 +13,22 @@
 namespace
 {
 
+// ![foreach_enumerator_declaration]
 namespace my_enum
 {
 enum type // the nested name type is important
 {
-	foo,
-	bar,
-	baz,
+	enum0,
+	enum1,
+	enum2,
+	enum3,
 	size // note the additional size, which is needed for FOREACH_ENUMERATOR to work
 };
 }
+// ![foreach_enumerator_declaration]
 
 void
-do_something(
+print_enum_value(
 	my_enum::type const val
 )
 {
@@ -37,26 +39,53 @@ do_something(
 
 }
 
-int main()
+int
+main()
 {
-	// outputs 0, 1, 2
+//! [foreach_enumerator]
+	// Iterates over (enum0, enum1, enum2, enum3)
+	// Prints 0, 1, 2, 3
 	FCPPT_FOREACH_ENUMERATOR(
-		i,
+		loop_var,
 		my_enum
 	)
-		do_something(i);
+		print_enum_value(
+			loop_var
+		);
+//! [foreach_enumerator]
 
 	fcppt::io::cout()
 		<< FCPPT_TEXT('\n');
 
-	// it is also possible to dictate the start value
-	// prints 1, 2
+//! [foreach_enumerator_start]
+	// Iterates over (enum1, enum2, enum3).
+	// Prints 1, 2, 3
 	FCPPT_FOREACH_ENUMERATOR_START(
-		i,
+		loop_var,
 		my_enum,
-		my_enum::bar
+		my_enum::enum1
 	)
-		do_something(i);
+		print_enum_value(
+			loop_var
+		);
+//! [foreach_enumerator_start]
+
+	fcppt::io::cout()
+		<< FCPPT_TEXT('\n');
+
+//! [foreach_enumerator_start_end]
+	// Iterates over (enum2, enum3).
+	// Prints 1, 2
+	FCPPT_FOREACH_ENUMERATOR_START_END(
+		loop_var,
+		my_enum,
+		my_enum::enum1,
+		my_enum::enum3
+	)
+		print_enum_value(
+			loop_var
+		);
+//! [foreach_enumerator_start_end]
 
 	fcppt::io::cout()
 		<< FCPPT_TEXT('\n');
