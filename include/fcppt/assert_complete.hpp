@@ -10,7 +10,7 @@
 /**
 \brief Assert at compile time that a type is complete
 
-\ingroup fcpptmain
+\ingroup fcpptvarious
 
 In some cases, a type must be complete, which bascially means that it is not
 void and if it is a class, the definition must already be known. For example,

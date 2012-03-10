@@ -16,6 +16,8 @@ namespace fcppt
 /**
 \brief Partial replacement for C++11's nullptr
 
+\ingroup fcpptvarious
+
 This function is a partial replacement for C++11's <code>nullptr</code>. It can
 be used for pointers to objects and pointers to functions only. Member function
 pointers are currently not supported.

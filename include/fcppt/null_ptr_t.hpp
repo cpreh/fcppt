@@ -20,6 +20,8 @@ namespace fcppt
 /**
 \brief A class that is implicitly convertible to null pointers
 
+\ingroup fcpptvarious
+
 This class is returned by fcppt::null_ptr to emulate C++11's
 <code>nullptr</code>.
 */
