@@ -377,6 +377,7 @@ set(
 	include/fcppt/io/stream_to_string.hpp
 	include/fcppt/io/stringstream.hpp
 	include/fcppt/io/write.hpp
+	include/fcppt/is_strong_typedef.hpp
 	include/fcppt/log/activate_levels.hpp
 	include/fcppt/log/context.hpp
 	include/fcppt/log/context_fwd.hpp
@@ -704,6 +705,7 @@ set(
 	include/fcppt/preprocessor/detail/function.hpp
 	include/fcppt/preprocessor/detail/message.hpp
 	include/fcppt/preprocessor/detail/pop_warning.hpp
+	include/fcppt/preprocessor/detail/pragma.hpp
 	include/fcppt/preprocessor/detail/push_warning.hpp
 	include/fcppt/preprocessor/detail/stringize.hpp
 	include/fcppt/preprocessor/disable_gcc_warning.hpp
@@ -866,10 +868,12 @@ set(
 	include/fcppt/strong_typedef_assignment.hpp
 	include/fcppt/strong_typedef_bitwise.hpp
 	include/fcppt/strong_typedef_comparison.hpp
+	include/fcppt/strong_typedef_construct_cast.hpp
 	include/fcppt/strong_typedef_decl.hpp
 	include/fcppt/strong_typedef_fwd.hpp
 	include/fcppt/strong_typedef_impl.hpp
 	include/fcppt/strong_typedef_input.hpp
+	include/fcppt/strong_typedef_operators.hpp
 	include/fcppt/strong_typedef_output.hpp
 	include/fcppt/text.hpp
 	include/fcppt/time/ctime.hpp

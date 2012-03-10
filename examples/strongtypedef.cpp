@@ -6,6 +6,7 @@
 
 //[strongtypedef_simple
 #include <fcppt/strong_typedef.hpp>
+#include <fcppt/strong_typedef_construct_cast.hpp>
 #include <fcppt/text.hpp>
 #include <fcppt/io/cout.hpp>
 
@@ -51,6 +52,11 @@ FCPPT_MAKE_STRONG_TYPEDEF(
 );
 //]
 
+FCPPT_MAKE_STRONG_TYPEDEF(
+	float,
+	strong_float
+);
+
 template class fcppt::strong_typedef<
 	int,
 	distinct_type
@@ -59,4 +65,15 @@ template class fcppt::strong_typedef<
 int main()
 {
 	g();
+
+	// TODO: make this a proper example
+	strong_float const test(
+		fcppt::strong_typedef_construct_cast<
+			strong_float
+		>(
+			42
+		)
+	);
+
+	fcppt::io::cout() << test << '\n';
 }
