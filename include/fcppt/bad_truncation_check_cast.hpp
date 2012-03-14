@@ -8,7 +8,9 @@
 #define FCPPT_BAD_TRUNCATION_CHECK_CAST_HPP_INCLUDED
 
 #include <fcppt/exception.hpp>
+#include <fcppt/string.hpp>
 #include <fcppt/type_info.hpp>
+
 
 namespace fcppt
 {
@@ -32,11 +34,14 @@ public:
 	/**
 	\brief Constructs a bad_truncation_check_cast exception
 
+	\param source_value The value to cast from
+
 	\param source The source type information
 
 	\param dest The destination type information
 	*/
 	bad_truncation_check_cast(
+		fcppt::string const &source_value,
 		fcppt::type_info const &source,
 		fcppt::type_info const &dest
 	);

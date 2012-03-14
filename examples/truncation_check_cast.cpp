@@ -14,11 +14,13 @@
 #include <fcppt/config/external_end.hpp>
 
 
-int main()
+int
+main()
 try
 {
-	// try to cast the greatest unsigned long value into an unsigned int
-	// this might fail or it might not fail depending on the implementation
+	// Try to cast the greatest unsigned long value into an unsigned int.
+	// This might fail or it might not fail depending on the
+	// implementation.
 	unsigned const result(
 		fcppt::truncation_check_cast<
 			unsigned
@@ -35,11 +37,11 @@ try
 		<< FCPPT_TEXT('\n');
 }
 catch(
-	fcppt::bad_truncation_check_cast const &e
+	fcppt::bad_truncation_check_cast const &_error
 )
 {
 	fcppt::io::cout()
-		<< e.string()
+		<< _error.string()
 		<< FCPPT_TEXT('\n');
 }
 //]

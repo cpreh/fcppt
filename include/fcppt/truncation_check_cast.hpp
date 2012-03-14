@@ -8,66 +8,72 @@
 #define FCPPT_TRUNCATION_CHECK_CAST_HPP_INCLUDED
 
 #include <fcppt/bad_truncation_check_cast.hpp>
+#include <fcppt/insert_to_fcppt_string.hpp>
+#include <fcppt/optional_impl.hpp>
 #include <fcppt/type_info.hpp>
+#include <fcppt/detail/truncation_check_cast.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/mpl/and.hpp>
-#include <boost/type_traits/is_fundamental.hpp>
+#include <boost/type_traits/is_integral.hpp>
 #include <boost/utility/enable_if.hpp>
 #include <typeinfo>
 #include <fcppt/config/external_end.hpp>
 
+
 namespace fcppt
 {
 
-/// Does a static_cast but tries to detect narrowing conversions
-/**
- * @throws If the new value cannot be cast back safely, fcppt::bad_truncation_check_cast will be thrown
-*/
 template<
 	typename Dest,
 	typename Source
 >
 typename boost::enable_if<
 	boost::mpl::and_<
-		boost::is_fundamental<
+		boost::is_integral<
 			Source
 		>,
-		boost::is_fundamental<
+		boost::is_integral<
 			Dest
 		>
 	>,
 	Dest
 >::type
 truncation_check_cast(
-	Source const source
+	Source const _source
 )
 {
-	Dest const dest(
-		static_cast<
+	typedef fcppt::optional<
+		Dest
+	> dest_type;
+
+	dest_type const dest(
+		fcppt::detail::truncation_check_cast<
 			Dest
 		>(
-			source
+			_source
 		)
 	);
 
 	if(
-		static_cast<
-			Source
-		>(
-			dest
-		)
-		!= source
+		!dest
 	)
-		throw bad_truncation_check_cast(
-			fcppt::type_info(
-				typeid(Source)
+		throw fcppt::bad_truncation_check_cast(
+			fcppt::insert_to_fcppt_string(
+				_source
 			),
 			fcppt::type_info(
-				typeid(Dest)
+				typeid(
+					Source
+				)
+			),
+			fcppt::type_info(
+				typeid(
+					Dest
+				)
 			)
 		);
 
-	return dest;
+	return *dest;
 }
 
 }

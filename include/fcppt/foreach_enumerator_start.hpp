@@ -19,8 +19,8 @@ name \a name, starting at the enumerator \a start and ending before <code>enum_:
 (which means that <code>enum_::size</code> is not included).
 
 This macro generates a for loop that hides some enum casting behind its scenes.
-It is important the enumerators in the enum are contiguous as in the following
-example:
+It is important that the enumerators in the enum are contiguous as in the
+following example:
 
 \snippet foreach_enumerator.cpp foreach_enumerator_declaration
 

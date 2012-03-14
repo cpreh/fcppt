@@ -284,6 +284,7 @@ set(
 	include/fcppt/detail/strong_typedef_cast.hpp
 	include/fcppt/detail/strong_typedef_comparison_operator.hpp
 	include/fcppt/detail/strong_typedef_unary_operator.hpp
+	include/fcppt/detail/truncation_check_cast.hpp
 	include/fcppt/detail_unique_ptr/detail_unique_ptr.hpp
 	include/fcppt/detail_unique_ptr/one_two.hpp
 	include/fcppt/detail_unique_ptr/pointer_type.hpp
