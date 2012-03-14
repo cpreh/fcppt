@@ -3,6 +3,20 @@
 \ingroup fcpptmain
 \brief Cast helpers which provide more type information or do additional checks
 
+<table id="toc">
+<tr>
+<td>
+
+<ol>
+	<li>\ref fcpptcasts_dynamic_casting</li>
+	<li>\ref fcpptcasts_truncation_check_cast</li>
+</ol>
+
+</td>
+</tr>
+</table>
+
+
 \section fcpptcasts_dynamic_casting Dynamic casting
 
 Let's say you have the following extremely simple class hierarchy:
@@ -90,4 +104,36 @@ fcppt::optional.
 To provie a little more information on the types for the reference
 <code>dynamic_cast</code>, there is fcppt::dynamic_cast_ (mind the
 underscore!).
+
+
+\section fcpptcasts_truncation_check_cast Checking truncation
+
+C++ defines several fundamental integral types: <code>unsigned char, signed
+char, char, short, unsigned short, int, unsigned int, long and unsigned
+long</code> ( and for <em>C++11</em> additionally <code>long long and unsigned
+long long</code>).
+
+Also, there are <code>std::size_t and std::ptrdiff_t</code> which can even be
+different from every type mentioned above.
+
+Sometimes, it is necessary to convert between these types, which is dangerous
+if the conversion doesn't preserve the original value. This can happen if the
+result (as a magnitude) doesn't fit into the destination type, or if signedness
+cannot be preserved. If the destination type is signed, the result is even
+implmementation-defined if the value cannot be preserved, which is especially
+dangerous.
+
+To automatically check for such conditions, fcppt provides
+fcppt::truncation_check_cast.
+
+In the following example, it is tested if the biggest <code>unsigned
+long</code> value fits into an <code>unsigned int</code>. This might be true,
+depending on the architecture.
+
+\snippet truncation_check_cast.cpp truncation_check_cast_int_long
+
+Truncating conversions of negative values are also detected.
+
+\snippet truncation_check_cast.cpp truncation_check_cast_negative
+
 */

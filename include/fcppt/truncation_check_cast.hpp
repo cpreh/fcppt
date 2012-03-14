@@ -23,6 +23,27 @@
 namespace fcppt
 {
 
+/**
+\brief Cast between integral types, checking for truncation
+
+\ingroup fcpptcasts
+
+Casts \a _source of type \a Source to the type \a Dest. It returns the
+converted value ff the conversion results in no truncation, otherwise
+fcppt::bad_truncation_check_cast is thrown.
+
+\tparam Dest Must be an integral type
+
+\tparam Source Must be an integral type
+
+\param _source The source to cast from
+
+\return The casted value if no truncation occurs
+
+\throw fcppt::bad_truncation_check_cast if truncation occurs
+
+\see \ref fcpptcasts_truncation_check_cast
+*/
 template<
 	typename Dest,
 	typename Source
