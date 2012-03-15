@@ -159,7 +159,7 @@ try
 		food::apple
 	);
 
-	throwing_function();
+	test_function();
 }
 catch(
 	fcppt::exception const &_error
