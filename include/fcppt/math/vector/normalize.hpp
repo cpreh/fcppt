@@ -7,6 +7,7 @@
 #ifndef FCPPT_MATH_VECTOR_NORMALIZE_HPP_INCLUDED
 #define FCPPT_MATH_VECTOR_NORMALIZE_HPP_INCLUDED
 
+#include <fcppt/math/vector/arithmetic.hpp>
 #include <fcppt/math/vector/basic_impl.hpp>
 #include <fcppt/math/vector/length.hpp>
 
@@ -37,7 +38,7 @@ normalize(
 	basic<T, N, S> const &v
 )
 {
-	return v / length(v);
+	return v / vector::length(v);
 }
 
 }
