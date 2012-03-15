@@ -35,7 +35,6 @@ set(
 	include/fcppt/assert/basic/conditional_message.hpp
 	include/fcppt/assert/basic/default_message.hpp
 	include/fcppt/assert/basic/gather_information.hpp
-	include/fcppt/assert/basic/make_message.hpp
 	include/fcppt/assert/basic/message_and_action.hpp
 	include/fcppt/assert/basic/print_message.hpp
 	include/fcppt/assert/basic/terminate_conditional.hpp
@@ -54,6 +53,7 @@ set(
 	include/fcppt/assert/information.hpp
 	include/fcppt/assert/information_fwd.hpp
 	include/fcppt/assert/line.hpp
+	include/fcppt/assert/make_message.hpp
 	include/fcppt/assert/message.hpp
 	include/fcppt/assert/post.hpp
 	include/fcppt/assert/post_message.hpp

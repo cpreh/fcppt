@@ -9,8 +9,11 @@
 
 #include <fcppt/assert/basic/unconditional_message.hpp>
 
+
 /**
 \brief Asserts that a condition is true, with an extra message on failure
+
+\ingroup fcpptassert
 
 Asserts that \a condition is true, taking \a action if it is not and also
 printing \a message.

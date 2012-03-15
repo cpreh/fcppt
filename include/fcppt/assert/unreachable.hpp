@@ -14,6 +14,8 @@
 /**
 \brief Terminates the program
 
+\ingroup fcpptassert
+
 This macro should be used when an unreachable code part is executed.
 */
 #define FCPPT_ASSERT_UNREACHABLE \

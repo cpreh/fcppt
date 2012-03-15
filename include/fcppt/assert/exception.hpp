@@ -16,10 +16,13 @@ namespace assert_
 {
 
 /**
-\brief The exception class thrown by some assertions
+\brief An exception class that can be used with throwing assertions
 
-This class is thrown by some assertions, including all the information gathered
-by the assertion mechanism.
+\ingroup fcpptassert
+
+This class can be used with throwing assertions if you don't want to define
+your own exception type. It takes an fcppt::assert_::information in its
+constructor.
 */
 class exception
 :

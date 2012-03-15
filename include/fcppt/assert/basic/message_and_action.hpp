@@ -9,8 +9,11 @@
 
 #include <fcppt/assert/basic/print_message.hpp>
 
+
 /**
 \brief Executes a macro with an action and printing of a message
+
+\ingroup fcpptassert
 
 Executes \a macro, passing it an action that consists of printing a message
 with \a reason and \a message and executing \a action afterwards.

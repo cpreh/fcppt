@@ -12,8 +12,11 @@
 #include <exception>
 #include <fcppt/config/external_end.hpp>
 
+
 /**
 \brief Calls terminate on a failed assertion, with an extra message on failure
+
+\ingroup fcpptassert
 
 Calls terminate if \a condition is false and also prints \a message.
 

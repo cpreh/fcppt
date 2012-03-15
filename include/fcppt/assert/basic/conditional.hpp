@@ -9,8 +9,11 @@
 
 #include <fcppt/assert/basic/unconditional.hpp>
 
+
 /**
 \brief Asserts that a condition is true
+
+\ingroup fcpptassert
 
 Asserts that \a condition is true, taking \a action if it is not.
 

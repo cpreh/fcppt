@@ -10,8 +10,11 @@
 #include <fcppt/assert/throw_message.hpp>
 #include <fcppt/assert/basic/default_message.hpp>
 
+
 /**
 \brief Throws an exception on a failed assertion
+
+\ingroup fcpptassert
 
 Throw \a exception if \a condition is false. The exception must have a
 constructor that takes an fcppt::assert_::information.

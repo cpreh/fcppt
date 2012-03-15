@@ -21,6 +21,8 @@
 /**
 \brief Gathers fcppt::assert_::information at the current file and function
 
+\ingroup fcpptassert
+
 This macro expands to an fcppt::assert_::information, which gathers the current
 source file, the line of the file, the function name, the failed condition
 obtained from \a condition_arg, and the message obtained from \a message_arg.

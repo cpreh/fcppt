@@ -15,6 +15,8 @@
 \brief Throws an exception on a failed assertion, with an extra message on
 failure
 
+\ingroup fcpptassert
+
 Throw \a exception if \a condition is false and also prints \a message. The
 exception must have a constructor that takes an fcppt::assert_::information.
 

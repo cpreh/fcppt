@@ -9,8 +9,11 @@
 
 #include <fcppt/text.hpp>
 
+
 /**
 \brief The default assert message
+
+\ingroup fcpptassert
 
 The default assert message, which is empty.
 */

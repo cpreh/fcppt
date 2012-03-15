@@ -13,6 +13,8 @@
 /**
 \brief Asserts a post condition of a function, with an extra message on failure
 
+\ingroup fcpptassert
+
 Asserts that \a condition is true, throw the exception \a exception if it is
 not and also printing \a message. The exception must have a constructor that
 takes an fcppt::assert_::information. This macro should be used if an error

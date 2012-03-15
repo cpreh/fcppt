@@ -13,6 +13,8 @@
 /**
 \brief Terminates the program, also printing a message
 
+\ingroup fcpptassert
+
 Prints \a message and terminates the program. This macro should be used when
 an unreachable code part is executed.
 

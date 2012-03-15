@@ -4,8 +4,8 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_ASSERT_BASIC_MAKE_MESSAGE_HPP_INCLUDED
-#define FCPPT_ASSERT_BASIC_MAKE_MESSAGE_HPP_INCLUDED
+#ifndef FCPPT_ASSERT_MAKE_MESSAGE_HPP_INCLUDED
+#define FCPPT_ASSERT_MAKE_MESSAGE_HPP_INCLUDED
 
 #include <fcppt/insert_to_fcppt_string.hpp>
 #include <fcppt/string.hpp>
@@ -17,11 +17,11 @@ namespace fcppt
 {
 namespace assert_
 {
-namespace basic
-{
 
 /**
 \brief Generates a message string from assert information
+
+\ingroup fcpptassert
 
 Generates a message string from the assert information contained in \a _info.
 
@@ -79,7 +79,6 @@ make_message(
 		);
 }
 
-}
 }
 }
 

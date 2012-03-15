@@ -8,13 +8,15 @@
 #define FCPPT_ASSERT_BASIC_PRINT_MESSAGE_HPP_INCLUDED
 
 #include <fcppt/text.hpp>
+#include <fcppt/assert/make_message.hpp>
 #include <fcppt/assert/basic/gather_information.hpp>
-#include <fcppt/assert/basic/make_message.hpp>
 #include <fcppt/io/cerr.hpp>
 
 
 /**
 \brief Prints an assert message to cerr, containing fcppt::assert_::information
+
+\ingroup fcpptassert
 
 Prints an assert message to <code>cerr</code>, consisting of information
 gathered at the current code position, like file, line and function name, and
@@ -29,7 +31,7 @@ static_cast<\
 >( \
 	fcppt::io::cerr() \
 		<< \
-		fcppt::assert_::basic::make_message(\
+		fcppt::assert_::make_message(\
 			FCPPT_ASSERT_BASIC_GATHER_INFORMATION(\
 				condition_arg,\
 				message_arg\

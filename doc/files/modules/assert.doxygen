@@ -9,6 +9,8 @@
 
 <ol>
 	<li>\ref assert_introduction</li>
+	<li>\ref assert_categories</li>
+	<li>\ref assert_messages</li>
 	<li>\ref assert_headers</li>
 </ol>
 
@@ -22,8 +24,6 @@ So called assertions are conditions in the source code that are checked at
 runtime. If the conditions do not hold, then some sort of error mechanism
 should be invoked. So, assertions fit into the greater picture of
 error handling, where they play an important role.
-
-\subsection assert_error_handling Error Handling
 
 Error handling in C++ can happen using different mechanisms. Usually, this
 means how a failed function call should be handled.
@@ -72,11 +72,80 @@ from this.</dd>
 
 <dd>An example for this would be a switch over an enum that handles every
 possible enumerator. The default case should never be reached. In such a case,
-throwing an exception would also be meaningless</dd>
+throwing an exception would also be meaningless.</dd>
 
 </dl>
 
-\section assert_
+\section assert_categories Assertion categories
+
+As previously outlined, errors not only fall into different categories, but you
+also want to act upon them differently. fcppt provides different assert macros
+to do that. For most of the macros, there also exists a <em>message</em>
+variant that lets you specify an additional message for what went wrong.
+
+<dl>
+<dt>\link FCPPT_ASSERT_PRE \endlink and \link FCPPT_ASSERT_PRE_MESSAGE
+\endlink</dt>
+
+<dd>These should be used to check pre conditions for a function and they will
+terminate the program if they are violated.</dd>
+
+<dt>\link FCPPT_ASSERT_POST \endlink and \link FCPPT_ASSERT_POST_MESSAGE
+\endlink</dt>
+
+<dd>These should be used to check for post conditions of functions. They will
+throw an exception on failure.</dd>
+
+<dt>\link FCPPT_ASSERT_ERROR \endlink and \link FCPPT_ASSERT_ERROR_MESSAGE
+\endlink</dt>
+
+<dd>These should be used if something in the middle of a function goes wrong
+that could be considered a delayed pre condition. They will also terminate the
+program if they are violated.</dd>
+
+<dt>\link FCPPT_ASSERT_THROW \endlink and \link FCPPT_ASSERT_THROW_MESSAGE
+\endlink</dt>
+
+<dd>These can generally be used as a replacement for throwing exceptions.</dd>
+
+<dt>\link FCPPT_ASSERT_UNIMPLEMENTED_MESSAGE \endlink<dt>
+
+<dd>This macro can be used as a placeholder for unimplemented features. It must
+be given a message describing what feature is missing, and it will terminate
+the program.</dd>
+
+<dt>\link FCPPT_ASSERT_UNREACHABLE \endlink and \link
+FCPPT_ASSERT_UNREACHABLE_MESSAGE \endlink</dt>
+
+<dd>These should be used to check for unreachable code, like reaching a default
+case in a switch that handles every possible enum value. They will
+terminate the program.</dd>
+
+</dl>
+
+Here is an example on how to use the pre and post condition macros:
+
+\snippet assert.cpp assert_pre_post
+
+The usual case where every enumerator is handled in a switch can be tested as
+follows:
+
+\snippet assert.cpp assert_unreachable
+
+\section assert_messages Assertion messages
+
+Another important feature is that assertions should be as elaborate as
+possible. Therefore, every macro gathers information about the current file,
+line of the current file, the current function's name, the failed assertion and
+the optional message. If a macro terminates the program, the message will be
+printed to <code>cerr</code> before that happens. If a macro throws an
+exception, that exception will be constructed with an
+fcppt::assert_::information object that holds the information instead.
+
+An exception that is to receive such information must have a constructor that
+takes an fcppt::assert_::information object.
+
+\snippet assert.cpp assert_throw
 
 \section assert_headers Header files
 
@@ -84,6 +153,66 @@ throwing an exception would also be meaningless</dd>
 <tr>
 <th>Header file</th>
 <th>Description</th>
+</tr>
+<tr>
+<td><code>error.hpp</code></td>
+<td>Contains \link FCPPT_ASSERT_ERROR \endlink</td>
+</tr>
+<tr>
+<td><code>error_message.hpp</code></td>
+<td>Contains \link FCPPT_ASSERT_ERROR_MESSAGE \endlink</td>
+</tr>
+<tr>
+<td><code>exception.hpp</code></td>
+<td>Contains fcppt::assert_::exception</td>
+</tr>
+<tr>
+<td><code>information_fwd.hpp</code></td>
+<td>Contains fcppt::assert_::information's declaration</td>
+</tr>
+<tr>
+<td><code>information.hpp</code></td>
+<td>Contains fcppt::assert_::information's definition</td>
+</tr>
+<tr>
+<td><code>make_message.hpp</code></td>
+<td>Contains the fcppt::assert_::make_message function</td>
+</tr>
+<tr>
+<td><code>post.hpp</code></td>
+<td>Contains \link FCPPT_ASSERT_POST \endlink</td>
+</tr>
+<tr>
+<td><code>post_message.hpp</code></td>
+<td>Contains \link FCPPT_ASSERT_POST_MESSAGE \endlink</td>
+</tr>
+<tr>
+<td><code>pre.hpp</code></td>
+<td>Contains \link FCPPT_ASSERT_PRE \endlink</td>
+</tr>
+<tr>
+<td><code>pre_message.hpp</code></td>
+<td>Contains \link FCPPT_ASSERT_PRE_MESSAGE \endlink</td>
+</tr>
+<tr>
+<td><code>throw.hpp</code></td>
+<td>Contains \link FCPPT_ASSERT_THROW \endlink</td>
+</tr>
+<tr>
+<td><code>throw_message.hpp</code></td>
+<td>Contains \link FCPPT_ASSERT_THROW_MESSAGE \endlink</td>
+</tr>
+<tr>
+<td><code>unimplemented_message.hpp</code></td>
+<td>Contains \link FCPPT_ASSERT_UNIMPLEMENTED_MESSAGE \endlink</td>
+</tr>
+<tr>
+<td><code>unreachable.hpp</code></td>
+<td>Contains \link FCPPT_ASSERT_UNREACHABLE \endlink</td>
+</tr>
+<tr>
+<td><code>unreachable_message.hpp</code></td>
+<td>Contains \link FCPPT_ASSERT_UNREACHABLE_MESSAGE \endlink</td>
 </tr>
 </table>
 */

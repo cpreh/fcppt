@@ -14,6 +14,8 @@
 /**
 \brief Takes an unconditional action, also printing a message
 
+\ingroup fcpptassert
+
 Takes the unconditional action \a action, also printing a message with \a
 reason and \a message.
 

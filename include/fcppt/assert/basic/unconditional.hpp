@@ -7,8 +7,11 @@
 #ifndef FCPPT_ASSERT_BASIC_UNCONDITIONAL_HPP_INCLUDED
 #define FCPPT_ASSERT_BASIC_UNCONDITIONAL_HPP_INCLUDED
 
+
 /**
 \brief Takes an unconditional action
+
+\ingroup fcpptassert
 
 Takes the unconditional action \a action.
 

@@ -16,6 +16,8 @@
 /**
 \brief Prints a message and terminates the program
 
+\ingroup fcpptassert
+
 Prints \a message and \a reason, and then calls <code>std::terminate</code>.
 
 \param reason The reason for the assertion to fail

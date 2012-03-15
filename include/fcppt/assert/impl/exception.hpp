@@ -8,7 +8,8 @@
 #define FCPPT_ASSERT_IMPL_EXCEPTION_HPP_INCLUDED
 
 #include <fcppt/assert/information.hpp>
-#include <fcppt/assert/basic/make_message.hpp>
+#include <fcppt/assert/make_message.hpp>
+
 
 inline
 fcppt::assert_::exception::exception(
@@ -16,7 +17,7 @@ fcppt::assert_::exception::exception(
 )
 :
 	fcppt::exception(
-		fcppt::assert_::basic::make_message(
+		fcppt::assert_::make_message(
 			_information
 		)
 	),

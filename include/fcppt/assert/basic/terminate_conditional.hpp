@@ -14,6 +14,8 @@
 /**
 \brief Calls terminate on a failed assertion
 
+\ingroup fcpptassert
+
 Calls terminate if \a condition is false.
 
 \param condition The condition to check for

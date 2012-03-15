@@ -13,6 +13,8 @@
 /**
 \brief Terminates the program, also printing a message
 
+\ingroup fcpptassert
+
 Terminates the program, printing \a message. This assertion should be used when
 an implemented feature is reached.
 

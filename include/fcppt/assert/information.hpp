@@ -21,6 +21,10 @@ namespace assert_
 
 /**
 \brief Represents information gathered at the assertion side
+
+\ingroup fcpptassert
+
+This class is used to construct exceptions thrown by assert macros.
 */
 class information
 {

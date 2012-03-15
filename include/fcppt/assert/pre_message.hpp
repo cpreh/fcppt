@@ -13,6 +13,8 @@
 /**
 \brief Asserts a pre condition of a function, with an extra message on failure
 
+\ingroup fcpptassert
+
 Asserts that \a condition is true, calling <code>std::terminate</code> if it is
 not and also printing \a message. This macro should be used to check for a
 function's preconditions.

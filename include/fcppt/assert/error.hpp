@@ -12,6 +12,8 @@
 /**
 \brief Asserts a condition in the middle of a function
 
+\ingroup fcpptassert
+
 Asserts that \a condition is true, calling <code>std::terminate</code> if it is
 not. This macro should be used if an error occurs in the middle of a function
 that should not happen.
