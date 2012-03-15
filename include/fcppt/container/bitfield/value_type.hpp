@@ -14,6 +14,12 @@ namespace container
 namespace bitfield
 {
 
+/**
+\brief The type denoting a single bit
+
+This is currently a boolean, but might be subject to change due to bool's
+"likeliness" to implicitly convert to other types (and the other way round).
+*/
 typedef bool value_type;
 
 }

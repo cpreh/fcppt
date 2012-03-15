@@ -170,6 +170,6 @@ they will be converted using fcppt::safe_numeric_cast, otherwise they must be
 implicitly convertible. This is used for constructing strong typedefs,
 see
 \link
-insert_link_to_strong_typedef_tutorial_here strong typedefs\endlink.
+fcpptstrongtypedef strong typedefs\endlink.
 
 */

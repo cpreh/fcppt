@@ -25,6 +25,10 @@ namespace container
 namespace bitfield
 {
 
+/**
+\brief The proxy class referencing a single bit in a bitfield
+\tparam StoredType The internal container type for the bitfield
+*/
 template<
 	typename StoredType
 >
@@ -34,6 +38,9 @@ class proxy
 		proxy
 	);
 
+	/**
+	\brief Create a proxy object for an array element
+	*/
 	proxy(
 		StoredType array,
 		size_type pos

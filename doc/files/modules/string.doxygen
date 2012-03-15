@@ -3,6 +3,21 @@
 \ingroup fcpptmain
 \brief String-related functions and types
 
+<table id="toc">
+<tr>
+<td>
+
+<ol>
+	<li>\ref fcpptstring_motivation</li>
+	<li>\ref fcpptstring_conversions</li>
+	<li>\ref fcpptstring_streams</li>
+	<li>\ref fcpptstring_lexical_casts</li>
+</ol>
+
+</td>
+</tr>
+</table>
+
 \section fcpptstring_motivation Motivation
 
 In C++, there are two character types: <code>char</code> and

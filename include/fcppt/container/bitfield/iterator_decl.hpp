@@ -24,6 +24,11 @@ namespace container
 namespace bitfield
 {
 
+/**
+\brief The (random-access) iterator type used by fcppt::container::bitfield::basic
+\tparam StoredType The (internal) container to iterate over
+\tparam Reference The reference type
+*/
 template<
 	typename StoredType,
 	typename Reference

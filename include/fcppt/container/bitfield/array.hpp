@@ -22,6 +22,15 @@ namespace container
 namespace bitfield
 {
 
+/**
+\brief Meta function to retrieve the (quasi-internal) storage type used for fcppt::container::bitfield::basic
+\tparam Enum The enumeration (see fcppt::container::bitfield::basic)
+\tparam Size The enumeration's size (see fcppt::container::bitfield::basic)
+\tparam Internal The internal type (see fcppt::container::bitfield::basic)
+
+This is currently just an array of as many <code>InternalTypes</code> values as
+necessary to hold all the specified bits.
+*/
 template<
 	typename Enum,
 	Enum Size,

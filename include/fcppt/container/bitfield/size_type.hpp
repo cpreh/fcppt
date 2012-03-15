@@ -14,6 +14,9 @@ namespace container
 namespace bitfield
 {
 
+/**
+\brief The size type used for some of fcppt::container::bitfield::basic's operations.
+*/
 typedef unsigned size_type;
 
 }

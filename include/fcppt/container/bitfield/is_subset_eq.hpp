@@ -16,7 +16,11 @@ namespace container
 namespace bitfield
 {
 
-/// Checks if @a left is a subset of @a right or if both are equal
+/**
+\brief Checks if one bitfield has all the bits of another bitfield set.
+\param left The "bigger" bitfield
+\param right The "smaller" bitfield
+*/
 template<
 	typename Enum,
 	Enum Size,

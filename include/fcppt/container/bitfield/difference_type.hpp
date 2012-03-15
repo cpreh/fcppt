@@ -14,6 +14,9 @@ namespace container
 namespace bitfield
 {
 
+/**
+\brief The difference type used for some of fcppt::container::bitfield::basic's operations.
+*/
 typedef int difference_type;
 
 }

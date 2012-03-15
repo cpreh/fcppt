@@ -1,0 +1,205 @@
+/**
+\defgroup fcpptstrongtypedef fcppt.strong_typedef
+\ingroup fcpptmain
+\brief The strong typedef class an helper macros
+
+\section fcpptstrongtypedef_motivation Motivation
+
+C++ offers <strong>typedefs</strong> to provide aliases (different names) for a
+type. This is helpful in some situations, but many times, a different name is
+not enough. You want a new type statt encapsulates the old type (if you know
+Haskell, think of <code>newtype</code> vs. <code>type</code> - fcppt's strong
+typedefs are very similar to <code>newtype</code>). This was the idea behind
+strong typedefs. However, strong typedefs are useful in other situations, which
+shall be described now.
+
+\subsection fcpptstrongtypedef_named_parameters Strong typedefs as named parameters
+
+One problem of C's and C++'s function call mechanism is the lack of what is
+sometimes called <em>named parameters</em>. To clarify the problem, consider
+the following function declaration:
+
+\code
+void f(int,bool,char);
+\endcode
+
+Since the method is rather ill-named, we cannot deduce the meaning of its
+parameters from the function name. The parameters also have no names - the
+standard permits to omit those. Thirdly, the parameter types don't really narrow
+our choices down, it's just <code>int,bool,char</code>. So, just looking at the
+declaration, we're having a rough time figuring out what to pass to the
+function.
+
+Other languages have means to improve on the situation. In Objective-C, for
+example, it's customary to intersperse the function name with the parameters, as
+such:
+
+\code
+(void)fWithVertexCount:(int)count enableCulling:(bool)enableCulling drawChar:(char)c;
+\endcode
+
+Aside from the strange syntax, that's much more readable! C++, however, doesn't
+have any language features supporting named parameters, and so multiple
+solutions exist (see <a
+href="http://www.parashift.com/c++-faq-lite/ctors.html#faq-10.20">The Named
+Parameter Idiom</a> and <a
+href="http://www.boost.org/doc/libs/1_42_0/libs/parameter/doc/html/reference.html">boost.parameter</a>).
+Using fcppt.strong_typedef is another solution to this. We can rewrite the
+function declaration in the following way:
+
+\code
+#include <fcppt/strong_typedef.hpp>
+
+FCPPT_MAKE_STRONG_TYPEDEF(
+	int,
+	vertex_count);
+
+FCPPT_MAKE_STRONG_TYPEDEF(
+	bool,
+	enable_culling);
+
+FCPPT_MAKE_STRONG_TYPEDEF(
+	char,
+	draw_char);
+
+void f(vertex_count,enable_culling,draw_char);
+\endcode
+
+Now we can call the function via:
+
+\code
+f(vertex_count(100),enable_culling(false),draw_char('c'));
+\endcode
+
+Of course, it's not perfect. Other languages (such as Python) allow arbitrary
+parameter reorderings: It doesn't matter in which order you name the
+parameters. That's something you cannot do with strong typedefs. But there are
+other advantages in using them.
+
+\subsection fcpptstrongtypedef_conversion_guards Strong typedefs as conversion guards
+
+There are flaws in the reasoning above. If we wanted to attach the parameter name to the type, we could use normal typedefs:
+
+\code
+typedef
+int
+vertex_count;
+
+typedef
+bool
+enable_culling;
+
+typedef
+char
+draw_char;
+
+void f(vertex_count,enable_culling,draw_char);
+\endcode
+
+Now you know what the parameters mean by looking at the function declaration!
+Also, even without using typedefs, we might not be completely lost after all.
+There might be excellent documentation for the function, so we can look there
+to understand how it's supposed to be called.
+
+These are valid points. However, there's another flaw in the design of C++, and
+that's <em>implicit conversions</em>. The following calls to our function
+<code>f</code> are all valid C++:
+
+\code
+f(100,true,'c');
+f(true,100,'c');
+f(true,'c',100);
+f(100,'c',true);
+f('c',true,100);
+f('c',100,true);
+\endcode
+
+You can compile with all warnings enabled (even with
+<code>-Wconversion</code>), no warning will ever be emitted. Clearly, only one
+of the lines above <em>should</em> be accepted - the first one.
+
+Using typedefs doesn't help here. Since typedefs just create aliases, the
+underlying types with their conversion rules still apply.
+
+Strong typedefs, on the other hand, create new types. When creating these
+types, you have to mention their name explicitly. Also, strong typedefs provide more strict conversion rules, so from the calls:
+
+\code
+f(vertex_count(100),enable_culling(true),draw_char('c'));
+f(vertex_count(true),enable_culling('c'),draw_char(100));
+f(vertex_count(true),enable_culling(100),draw_char('c'));
+f(vertex_count(true),enable_culling(100),draw_char('c'));
+f(vertex_count(100),enable_culling('c'),draw_char(true));
+f(vertex_count('c'),enable_culling(true),draw_char(100));
+f(vertex_count('c'),enable_culling(100),draw_char(true));
+\endcode
+
+Only the first one doesn't fail. The other calls give an error:
+
+<pre>
+error: no matching function for call to 'safe_numeric_cast'
+</pre>
+
+So you're completely safe with respect to implicit conversions.
+
+\subsection fcpptstrongtypedef_operator_overloading_guards Strong typedefs as operator overloading guards
+
+Strong typedefs provide a way to separate two things that have the same
+<em>underlying</em> type. This helps in situations where you want to disallow
+interaction between unrelated quantities. For example, suppose you have a
+"jogger" class with two attributes: <code>float elapsed_distance;</code>  and
+<code>float current_speed</code>. Each "tick", the jogger's <code>update</code>
+function is called, which does the following:
+
+\code
+void jogger::update()
+{
+	elapsed_distance += current_speed;
+}
+\endcode
+
+That, however, is not necessarily safe. The distance is <em>length</em>, the
+speed is <em>length per time</em>. There's no operator for adding a <em>length
+per time</em> to a <em>length</em>. We're missing something here. To get to a
+length value, we have to multiply the speed by a time value:
+
+\code
+void jogger::update(float tick_delta)
+{
+	elapsed_distance += current_speed * tick_delta;
+}
+\endcode
+
+These errors can be detected by using a different type for the distance and the speed, respectively:
+
+\code
+FCPPT_MAKE_STRONG_TYPEDEF(
+	float,
+	distance);
+
+FCPPT_MAKE_STRONG_TYPEDEF(
+	float,
+	speed);
+
+// While we're at it, add another type for the time!
+FCPPT_MAKE_STRONG_TYPEDEF(
+	float,
+	time);
+
+void
+jogger::update(time tick_delta)
+{
+	elapsed_distance += distance(current_speed.get() * tick_delta.get());
+}
+\endcode
+
+This is a bit less readable, but it's safe. Trying to calculate
+<code>elapsed_distance += current_speed</code> will fail since
+fcppt.strong_typedef offers only "safe" operator usage.
+
+Note that there's an excellent library to take the notion of encoding units
+into types a step further: <a
+href="http://www.boost.org/doc/libs/1_49_0/doc/html/boost_units.html">boost.units</a>.
+You should check it out if you've got a similar use-case. It also integrates
+really well with fcppt.strong_typedef, so you can combine the two libraries.
+*/

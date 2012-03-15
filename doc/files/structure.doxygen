@@ -271,7 +271,7 @@ public:
 \endcode
 
 In this example, you could either use an enum (see below) or \link
-insert_link_to_strong_typedef_tutorial_here strong typedefs\endlink.
+fcpptstrongtypedef strong typedefs\endlink.
 
 \subsubsection structure_using_enums Using enums
 

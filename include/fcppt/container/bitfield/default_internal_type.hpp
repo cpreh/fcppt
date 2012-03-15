@@ -14,6 +14,14 @@ namespace container
 namespace bitfield
 {
 
+/**
+\brief The default (unsigned) type to hold the bitfield's bits.
+
+An array of these values is created to hold all bits specified, so a bitfield
+cannot "overflow".
+
+\see fcppt::container::bitfield::array
+*/
 typedef unsigned default_internal_type;
 
 }
