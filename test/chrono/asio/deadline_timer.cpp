@@ -5,7 +5,8 @@
 
 
 #include <fcppt/chrono/milliseconds.hpp>
-#include <fcppt/chrono/asio/asio.hpp>
+#include <fcppt/chrono/asio/deadline_timer.hpp>
+#include <fcppt/chrono/asio/expires_from_now_any.hpp>
 #include <fcppt/tr1/functional.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/asio/io_service.hpp>

@@ -4,7 +4,9 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/math/matrix/matrix.hpp>
+#include <fcppt/math/matrix/arithmetic.hpp>
+#include <fcppt/math/matrix/basic_impl.hpp>
+#include <fcppt/math/matrix/comparison.hpp>
 #include <fcppt/math/matrix/static.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/test/unit_test.hpp>
@@ -21,7 +23,9 @@ typedef fcppt::math::matrix::static_<
 
 }
 
-BOOST_AUTO_TEST_CASE(math_matrix_operators_add)
+BOOST_AUTO_TEST_CASE(
+	math_matrix_operators_add
+)
 {
 	matrix_type const first(
 		1, 2,
@@ -44,7 +48,9 @@ BOOST_AUTO_TEST_CASE(math_matrix_operators_add)
 	);
 }
 
-BOOST_AUTO_TEST_CASE(math_matrix_operators_scalar)
+BOOST_AUTO_TEST_CASE(
+	math_matrix_operators_scalar
+)
 {
 	matrix_type first(
 		1, 2,

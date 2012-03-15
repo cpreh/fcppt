@@ -4,12 +4,16 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/ratio/ratio.hpp>
+#include <fcppt/ratio/multiply.hpp>
+#include <fcppt/ratio/object.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/test/unit_test.hpp>
 #include <fcppt/config/external_end.hpp>
 
-BOOST_AUTO_TEST_CASE(ratio_multiply)
+
+BOOST_AUTO_TEST_CASE(
+	ratio_multiply
+)
 {
 	typedef fcppt::ratio::object<
 		10,

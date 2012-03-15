@@ -7,7 +7,8 @@
 #include <fcppt/make_unique_ptr.hpp>
 #include <fcppt/noncopyable.hpp>
 #include <fcppt/unique_ptr.hpp>
-#include <fcppt/container/tree/tree.hpp>
+#include <fcppt/container/tree/object_impl.hpp>
+#include <fcppt/container/tree/ptr_value.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/test/unit_test.hpp>
 #include <fcppt/config/external_end.hpp>

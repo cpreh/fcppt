@@ -5,8 +5,12 @@
 
 
 //[vectorconvert
+#include <fcppt/math/vector/basic_impl.hpp>
+#include <fcppt/math/vector/construct.hpp>
+#include <fcppt/math/vector/narrow_cast.hpp>
+#include <fcppt/math/vector/output.hpp>
 #include <fcppt/math/vector/static.hpp>
-#include <fcppt/math/vector/vector.hpp>
+#include <fcppt/math/vector/structure_cast.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <iostream>
 #include <ostream>

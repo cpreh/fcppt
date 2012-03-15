@@ -5,7 +5,8 @@
 
 
 //[mathbox
-#include <fcppt/math/box/box.hpp>
+#include <fcppt/math/box/basic_impl.hpp>
+#include <fcppt/math/box/output.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <iostream>
 #include <ostream>

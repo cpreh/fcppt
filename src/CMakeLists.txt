@@ -1,6 +1,5 @@
 set(
 	FCPPT_CORE_FILES
-	include/fcppt/algorithm/algorithm.hpp
 	include/fcppt/algorithm/append.hpp
 	include/fcppt/algorithm/array_map.hpp
 	include/fcppt/algorithm/contains.hpp
@@ -27,13 +26,11 @@ set(
 	include/fcppt/algorithm/shift_compare.hpp
 	include/fcppt/algorithm/shortest_levenshtein.hpp
 	include/fcppt/alignment/align.hpp
-	include/fcppt/alignment/alignment.hpp
 	include/fcppt/alignment/array.hpp
 	include/fcppt/alignment/detail/make_type.hpp
 	include/fcppt/alignment/is_aligned.hpp
 	include/fcppt/alignment/make_type.hpp
 	include/fcppt/alignment/size_type.hpp
-	include/fcppt/assert/assert.hpp
 	include/fcppt/assert/condition.hpp
 	include/fcppt/assert/conditional.hpp
 	include/fcppt/assert/conditional_message.hpp
@@ -68,7 +65,6 @@ set(
 	include/fcppt/assert/unreachable.hpp
 	include/fcppt/assert/unreachable_message.hpp
 	include/fcppt/assert_complete.hpp
-	include/fcppt/backtrace/backtrace.hpp
 	include/fcppt/backtrace/current_stack_frame.hpp
 	include/fcppt/backtrace/print_current_stack_frame.hpp
 	include/fcppt/backtrace/stack_frame.hpp
@@ -77,7 +73,6 @@ set(
 	include/fcppt/bad_truncation_check_cast.hpp
 	include/fcppt/c_deleter.hpp
 	include/fcppt/char_type.hpp
-	include/fcppt/chrono/asio/asio.hpp
 	include/fcppt/chrono/asio/clock.hpp
 	include/fcppt/chrono/asio/convert_duration.hpp
 	include/fcppt/chrono/asio/convert_time_point.hpp
@@ -90,10 +85,8 @@ set(
 	include/fcppt/chrono/asio/time_traits.hpp
 	include/fcppt/chrono/asio/time_traits_decl.hpp
 	include/fcppt/chrono/asio/time_traits_impl.hpp
-	include/fcppt/chrono/chrono.hpp
 	include/fcppt/chrono/clock_failure.hpp
 	include/fcppt/chrono/common_type.hpp
-	include/fcppt/chrono/convert/convert.hpp
 	include/fcppt/chrono/convert/to_boost_duration.hpp
 	include/fcppt/chrono/days.hpp
 	include/fcppt/chrono/detail/common_type_arithmetic.hpp
@@ -153,7 +146,6 @@ set(
 	include/fcppt/container/bitfield/basic_decl.hpp
 	include/fcppt/container/bitfield/basic_fwd.hpp
 	include/fcppt/container/bitfield/basic_impl.hpp
-	include/fcppt/container/bitfield/bitfield.hpp
 	include/fcppt/container/bitfield/default_internal_type.hpp
 	include/fcppt/container/bitfield/detail/element_bits.hpp
 	include/fcppt/container/bitfield/detail/iterator_type.hpp
@@ -169,7 +161,6 @@ set(
 	include/fcppt/container/bitfield/proxy_impl.hpp
 	include/fcppt/container/bitfield/size_type.hpp
 	include/fcppt/container/bitfield/value_type.hpp
-	include/fcppt/container/container.hpp
 	include/fcppt/container/data.hpp
 	include/fcppt/container/data_end.hpp
 	include/fcppt/container/detail/array_range_check.hpp
@@ -195,7 +186,6 @@ set(
 	include/fcppt/container/grid/dim.hpp
 	include/fcppt/container/grid/exception.hpp
 	include/fcppt/container/grid/fill.hpp
-	include/fcppt/container/grid/grid.hpp
 	include/fcppt/container/grid/impl/exception.hpp
 	include/fcppt/container/grid/impl/out_of_range.hpp
 	include/fcppt/container/grid/in_range.hpp
@@ -235,7 +225,6 @@ set(
 	include/fcppt/container/ptr/insert_unique_ptr_multiset.hpp
 	include/fcppt/container/ptr/insert_unique_ptr_set.hpp
 	include/fcppt/container/ptr/make_equal.hpp
-	include/fcppt/container/ptr/ptr.hpp
 	include/fcppt/container/ptr/push_back_unique_ptr.hpp
 	include/fcppt/container/ptr/push_front_unique_ptr.hpp
 	include/fcppt/container/ptr/replace_unique_ptr.hpp
@@ -261,7 +250,6 @@ set(
 	include/fcppt/container/tree/print.hpp
 	include/fcppt/container/tree/ptr_value.hpp
 	include/fcppt/container/tree/release.hpp
-	include/fcppt/container/tree/tree.hpp
 	include/fcppt/cref.hpp
 	include/fcppt/cyclic_iterator.hpp
 	include/fcppt/cyclic_iterator_decl.hpp
@@ -285,7 +273,6 @@ set(
 	include/fcppt/detail/strong_typedef_comparison_operator.hpp
 	include/fcppt/detail/strong_typedef_unary_operator.hpp
 	include/fcppt/detail/truncation_check_cast.hpp
-	include/fcppt/detail_unique_ptr/detail_unique_ptr.hpp
 	include/fcppt/detail_unique_ptr/one_two.hpp
 	include/fcppt/detail_unique_ptr/pointer_type.hpp
 	include/fcppt/detail_unique_ptr/rv.hpp
@@ -294,7 +281,6 @@ set(
 	include/fcppt/dynamic_optional_cast.hpp
 	include/fcppt/dynamic_pointer_cast.hpp
 	include/fcppt/endianness/convert.hpp
-	include/fcppt/endianness/endianness.hpp
 	include/fcppt/endianness/format.hpp
 	include/fcppt/endianness/host_format.hpp
 	include/fcppt/endianness/is_big_endian.hpp
@@ -304,7 +290,6 @@ set(
 	include/fcppt/endianness/reverse_mem.hpp
 	include/fcppt/endianness/size_type.hpp
 	include/fcppt/endianness/swap.hpp
-	include/fcppt/error/error.hpp
 	include/fcppt/error/strerrno.hpp
 	include/fcppt/error/strerror.hpp
 	include/fcppt/exception.hpp
@@ -328,7 +313,6 @@ set(
 	include/fcppt/function/detail/functor_wrapper_fwd.hpp
 	include/fcppt/function/detail/has_addressof_overload.hpp
 	include/fcppt/function/detail/impl/functor_wrapper_template.hpp
-	include/fcppt/function/function.hpp
 	include/fcppt/function/impl/object_template.hpp
 	include/fcppt/function/object.hpp
 	include/fcppt/function/object_fwd.hpp
@@ -356,14 +340,12 @@ set(
 	include/fcppt/io/cofstream.hpp
 	include/fcppt/io/color/attribute.hpp
 	include/fcppt/io/color/background.hpp
-	include/fcppt/io/color/color.hpp
 	include/fcppt/io/color/foreground.hpp
 	include/fcppt/io/color/reset.hpp
 	include/fcppt/io/color/set.hpp
 	include/fcppt/io/cout.hpp
 	include/fcppt/io/fstream.hpp
 	include/fcppt/io/ifstream.hpp
-	include/fcppt/io/io.hpp
 	include/fcppt/io/istream.hpp
 	include/fcppt/io/istringstream.hpp
 	include/fcppt/io/ofstream.hpp
@@ -414,7 +396,6 @@ set(
 	include/fcppt/log/format/create_prefix.hpp
 	include/fcppt/log/format/create_time_stamp.hpp
 	include/fcppt/log/format/default_level.hpp
-	include/fcppt/log/format/format.hpp
 	include/fcppt/log/format/function.hpp
 	include/fcppt/log/format/function_fwd.hpp
 	include/fcppt/log/format/inserter.hpp
@@ -433,7 +414,6 @@ set(
 	include/fcppt/log/level_to_string.hpp
 	include/fcppt/log/location.hpp
 	include/fcppt/log/location_fwd.hpp
-	include/fcppt/log/log.hpp
 	include/fcppt/log/macros.hpp
 	include/fcppt/log/make_location.hpp
 	include/fcppt/log/no_such_location.hpp
@@ -446,7 +426,6 @@ set(
 	include/fcppt/log/output.hpp
 	include/fcppt/log/parameters/object.hpp
 	include/fcppt/log/parameters/object_fwd.hpp
-	include/fcppt/log/parameters/parameters.hpp
 	include/fcppt/log/parameters/with_context.hpp
 	include/fcppt/log/print_locations.hpp
 	include/fcppt/log/trampoline.hpp
@@ -461,7 +440,6 @@ set(
 	include/fcppt/math/box/basic_decl.hpp
 	include/fcppt/math/box/basic_fwd.hpp
 	include/fcppt/math/box/basic_impl.hpp
-	include/fcppt/math/box/box.hpp
 	include/fcppt/math/box/center.hpp
 	include/fcppt/math/box/componentwise_equal.hpp
 	include/fcppt/math/box/contains.hpp
@@ -531,7 +509,6 @@ set(
 	include/fcppt/math/dim/comparison.hpp
 	include/fcppt/math/dim/componentwise_equal.hpp
 	include/fcppt/math/dim/construct.hpp
-	include/fcppt/math/dim/dim.hpp
 	include/fcppt/math/dim/dynamic.hpp
 	include/fcppt/math/dim/fill.hpp
 	include/fcppt/math/dim/has_dim.hpp
@@ -547,7 +524,6 @@ set(
 	include/fcppt/math/exception.hpp
 	include/fcppt/math/generate_binary_vectors.hpp
 	include/fcppt/math/impl/exception.hpp
-	include/fcppt/math/interpolation/interpolation.hpp
 	include/fcppt/math/interpolation/linear.hpp
 	include/fcppt/math/interpolation/linear_functor.hpp
 	include/fcppt/math/interpolation/trigonometric.hpp
@@ -557,7 +533,6 @@ set(
 	include/fcppt/math/is_rational.hpp
 	include/fcppt/math/is_static_size.hpp
 	include/fcppt/math/log2.hpp
-	include/fcppt/math/math.hpp
 	include/fcppt/math/matrix/adjugate.hpp
 	include/fcppt/math/matrix/arithmetic.hpp
 	include/fcppt/math/matrix/basic.hpp
@@ -583,7 +558,6 @@ set(
 	include/fcppt/math/matrix/inverse.hpp
 	include/fcppt/math/matrix/is_matrix.hpp
 	include/fcppt/math/matrix/is_static_size.hpp
-	include/fcppt/math/matrix/matrix.hpp
 	include/fcppt/math/matrix/max_ctor_params.hpp
 	include/fcppt/math/matrix/normal_storage.hpp
 	include/fcppt/math/matrix/output.hpp
@@ -608,7 +582,6 @@ set(
 	include/fcppt/math/quaternion/from_scalar_and_vector.hpp
 	include/fcppt/math/quaternion/is_normalized.hpp
 	include/fcppt/math/quaternion/normalize.hpp
-	include/fcppt/math/quaternion/quaternion.hpp
 	include/fcppt/math/quaternion/to_angle_and_axis.hpp
 	include/fcppt/math/quaternion/to_matrix.hpp
 	include/fcppt/math/quaternion/vector_rotation.hpp
@@ -620,7 +593,6 @@ set(
 	include/fcppt/math/sphere/basic_impl.hpp
 	include/fcppt/math/sphere/circle.hpp
 	include/fcppt/math/sphere/intersects.hpp
-	include/fcppt/math/sphere/sphere.hpp
 	include/fcppt/math/twopi.hpp
 	include/fcppt/math/vector/angle_between.hpp
 	include/fcppt/math/vector/angle_between_cast.hpp
@@ -659,7 +631,6 @@ set(
 	include/fcppt/math/vector/static.hpp
 	include/fcppt/math/vector/structure_cast.hpp
 	include/fcppt/math/vector/unit.hpp
-	include/fcppt/math/vector/vector.hpp
 	include/fcppt/micro_version.hpp
 	include/fcppt/minor_version.hpp
 	include/fcppt/move.hpp
@@ -683,7 +654,6 @@ set(
 	include/fcppt/mpl/invalid_invoke.hpp
 	include/fcppt/mpl/invoke_on.hpp
 	include/fcppt/mpl/max_value.hpp
-	include/fcppt/mpl/mpl.hpp
 	include/fcppt/mpl/partial_sums.hpp
 	include/fcppt/mpl/print.hpp
 	include/fcppt/mpl/value_type.hpp
@@ -718,12 +688,10 @@ set(
 	include/fcppt/preprocessor/message.hpp
 	include/fcppt/preprocessor/pop_warning.hpp
 	include/fcppt/preprocessor/pragma.hpp
-	include/fcppt/preprocessor/preprocessor.hpp
 	include/fcppt/preprocessor/push_warning.hpp
 	include/fcppt/preprocessor/stringize.hpp
 	include/fcppt/preprocessor/todo.hpp
 	include/fcppt/preprocessor/warning.hpp
-	include/fcppt/random/actor/actor.hpp
 	include/fcppt/random/actor/callback.hpp
 	include/fcppt/random/actor/container.hpp
 	include/fcppt/random/actor/element.hpp
@@ -746,7 +714,6 @@ set(
 	include/fcppt/random/last_exclusive_range_impl.hpp
 	include/fcppt/random/make_inclusive_range.hpp
 	include/fcppt/random/make_last_exclusive_range.hpp
-	include/fcppt/random/random.hpp
 	include/fcppt/random/range.hpp
 	include/fcppt/random/range_decl.hpp
 	include/fcppt/random/range_fwd.hpp
@@ -805,7 +772,6 @@ set(
 	include/fcppt/ratio/object_fwd.hpp
 	include/fcppt/ratio/peta.hpp
 	include/fcppt/ratio/pico.hpp
-	include/fcppt/ratio/ratio.hpp
 	include/fcppt/ratio/substract.hpp
 	include/fcppt/ratio/substract_fwd.hpp
 	include/fcppt/ratio/tera.hpp
@@ -847,7 +813,6 @@ set(
 	include/fcppt/signal/object_impl.hpp
 	include/fcppt/signal/scoped_connection.hpp
 	include/fcppt/signal/shared_connection.hpp
-	include/fcppt/signal/signal.hpp
 	include/fcppt/signal/unregister/base.hpp
 	include/fcppt/signal/unregister/base_decl.hpp
 	include/fcppt/signal/unregister/base_fwd.hpp
@@ -855,10 +820,8 @@ set(
 	include/fcppt/signal/unregister/detail/concrete_connection.hpp
 	include/fcppt/signal/unregister/detail/concrete_connection_impl.hpp
 	include/fcppt/signal/unregister/function.hpp
-	include/fcppt/signal/unregister/unregister.hpp
 	include/fcppt/sn_cast.hpp
 	include/fcppt/spirit_traits/optional_basic.hpp
-	include/fcppt/spirit_traits/spirit_traits.hpp
 	include/fcppt/spirit_traits/variant_basic.hpp
 	include/fcppt/static_optional_cast.hpp
 	include/fcppt/static_pointer_cast.hpp
@@ -892,7 +855,6 @@ set(
 	include/fcppt/time/sleep_duration.hpp
 	include/fcppt/time/sleep_interrupted.hpp
 	include/fcppt/time/std_time.hpp
-	include/fcppt/time/time.hpp
 	include/fcppt/to_std_string.hpp
 	include/fcppt/to_std_string_locale.hpp
 	include/fcppt/to_std_wstring.hpp
@@ -905,7 +867,6 @@ set(
 	include/fcppt/tr1/memory.hpp
 	include/fcppt/tr1/random.hpp
 	include/fcppt/tr1/regex.hpp
-	include/fcppt/tr1/tr1.hpp
 	include/fcppt/tr1/tuple.hpp
 	include/fcppt/tr1/type_traits.hpp
 	include/fcppt/tr1/unordered_map.hpp
@@ -932,7 +893,6 @@ set(
 	include/fcppt/type_traits/is_random_access_iterator.hpp
 	include/fcppt/type_traits/is_string.hpp
 	include/fcppt/type_traits/is_unique_ptr.hpp
-	include/fcppt/type_traits/type_traits.hpp
 	include/fcppt/unique_ptr.hpp
 	include/fcppt/unique_ptr_decl.hpp
 	include/fcppt/unique_ptr_fwd.hpp
@@ -980,7 +940,6 @@ set(
 	include/fcppt/variant/recursive_fwd.hpp
 	include/fcppt/variant/recursive_impl.hpp
 	include/fcppt/variant/size_type.hpp
-	include/fcppt/variant/variant.hpp
 	include/fcppt/version_int.hpp
 	include/fcppt/version_integral_c.hpp
 	include/fcppt/version_string.hpp

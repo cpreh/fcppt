@@ -5,7 +5,8 @@
 
 
 #include <fcppt/text.hpp>
-#include <fcppt/assert/assert.hpp>
+#include <fcppt/assert/exception.hpp>
+#include <fcppt/assert/throw_message.hpp>
 #include <fcppt/preprocessor/disable_vc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>

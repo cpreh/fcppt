@@ -4,7 +4,8 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/container/bitfield/bitfield.hpp>
+#include <fcppt/container/bitfield/basic_impl.hpp>
+#include <fcppt/container/bitfield/is_subset_eq.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/test/unit_test.hpp>
 #include <algorithm>

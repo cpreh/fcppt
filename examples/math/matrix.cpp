@@ -5,9 +5,13 @@
 
 
 //[matrixtransform
-#include <fcppt/math/matrix/matrix.hpp>
+#include <fcppt/math/matrix/basic_impl.hpp>
+#include <fcppt/math/matrix/static.hpp>
 #include <fcppt/math/matrix/translation.hpp>
-#include <fcppt/math/vector/vector.hpp>
+#include <fcppt/math/matrix/vector.hpp>
+#include <fcppt/math/vector/basic_impl.hpp>
+#include <fcppt/math/vector/output.hpp>
+#include <fcppt/math/vector/static.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <iostream>
 #include <ostream>

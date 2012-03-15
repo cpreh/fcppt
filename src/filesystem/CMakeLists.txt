@@ -14,7 +14,6 @@ set(
 	include/fcppt/filesystem/extension_without_dot.hpp
 	include/fcppt/filesystem/file_size.hpp
 	include/fcppt/filesystem/file_to_string.hpp
-	include/fcppt/filesystem/filesystem.hpp
 	include/fcppt/filesystem/impl/create_directory_failed.hpp
 	include/fcppt/filesystem/impl/exception.hpp
 	include/fcppt/filesystem/is_directory.hpp

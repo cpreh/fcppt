@@ -9,7 +9,6 @@ set(
 	include/fcppt/thread/sleep.hpp
 	include/fcppt/thread/sleep_duration.hpp
 	include/fcppt/thread/task.hpp
-	include/fcppt/thread/thread.hpp
 	include/fcppt/thread/yield.hpp
 	src/thread/hardware_concurrency.cpp
 	src/thread/object.cpp

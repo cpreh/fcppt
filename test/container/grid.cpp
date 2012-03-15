@@ -4,7 +4,15 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/container/grid/grid.hpp>
+#include <fcppt/container/grid/comparison.hpp>
+#include <fcppt/container/grid/fill.hpp>
+#include <fcppt/container/grid/in_range.hpp>
+#include <fcppt/container/grid/is_square.hpp>
+#include <fcppt/container/grid/iterator_position.hpp>
+#include <fcppt/container/grid/object_impl.hpp>
+#include <fcppt/container/grid/resize_preserve.hpp>
+#include <fcppt/container/grid/resize_preserve_init.hpp>
+#include <fcppt/container/grid/size_type.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/test/unit_test.hpp>
 #include <algorithm>

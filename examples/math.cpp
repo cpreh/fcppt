@@ -7,12 +7,19 @@
 #include <fcppt/text.hpp>
 #include <fcppt/io/cout.hpp>
 #include <fcppt/math/point_rotate.hpp>
-#include <fcppt/math/box/box.hpp>
+#include <fcppt/math/box/basic_impl.hpp>
+#include <fcppt/math/box/output.hpp>
 #include <fcppt/math/box/rect.hpp>
-#include <fcppt/math/dim/dim.hpp>
+#include <fcppt/math/dim/basic_impl.hpp>
 #include <fcppt/math/matrix/dynamic_impl.hpp>
-#include <fcppt/math/matrix/matrix.hpp>
-#include <fcppt/math/vector/vector.hpp>
+#include <fcppt/math/matrix/basic_impl.hpp>
+#include <fcppt/math/vector/atan2.hpp>
+#include <fcppt/math/vector/basic_impl.hpp>
+#include <fcppt/math/vector/cross.hpp>
+#include <fcppt/math/vector/length.hpp>
+#include <fcppt/math/vector/make.hpp>
+#include <fcppt/math/vector/normalize.hpp>
+#include <fcppt/math/vector/output.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/assign/list_of.hpp>
 #include <istream>
@@ -20,7 +27,8 @@
 #include <fcppt/config/external_end.hpp>
 
 
-int main()
+int
+main()
 {
 	fcppt::math::vector::static_<
 		int,
@@ -62,7 +70,7 @@ int main()
 			(2.f)(2.f)
 	);
 
-	normalize(vecf);
+	fcppt::math::vector::normalize(vecf);
 
 	fcppt::io::cout()
 		<< vec << FCPPT_TEXT('\n')

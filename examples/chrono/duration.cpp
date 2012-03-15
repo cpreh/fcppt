@@ -6,7 +6,7 @@
 
 //[chrono_duration_decl
 #include <fcppt/chrono/duration.hpp>
-#include <fcppt/ratio/ratio.hpp>
+#include <fcppt/ratio/object.hpp>
 #include <fcppt/io/cout.hpp>
 #include <fcppt/text.hpp>
 

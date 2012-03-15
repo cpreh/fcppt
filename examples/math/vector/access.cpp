@@ -5,8 +5,8 @@
 
 
 //[vectoraccess
+#include <fcppt/math/vector/basic_impl.hpp>
 #include <fcppt/math/vector/static.hpp>
-#include <fcppt/math/vector/vector.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <iostream>
 #include <ostream>

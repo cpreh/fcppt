@@ -7,9 +7,10 @@
 #ifndef FCPPT_IMPL_BAD_TRUNCATION_CHECK_CAST_HPP_INCLUDED
 #define FCPPT_IMPL_BAD_TRUNCATION_CHECK_CAST_HPP_INCLUDED
 
-#include <fcppt/type_info.hpp>
 #include <fcppt/string.hpp>
 #include <fcppt/text.hpp>
+#include <fcppt/type_info.hpp>
+
 
 inline
 fcppt::bad_truncation_check_cast::bad_truncation_check_cast(
