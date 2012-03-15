@@ -11,8 +11,8 @@
 #include <fcppt/math/box/output.hpp>
 #include <fcppt/math/box/rect.hpp>
 #include <fcppt/math/dim/basic_impl.hpp>
-#include <fcppt/math/matrix/dynamic_impl.hpp>
 #include <fcppt/math/matrix/basic_impl.hpp>
+#include <fcppt/math/matrix/dynamic_impl.hpp>
 #include <fcppt/math/vector/atan2.hpp>
 #include <fcppt/math/vector/basic_impl.hpp>
 #include <fcppt/math/vector/cross.hpp>

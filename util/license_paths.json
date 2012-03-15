@@ -1,5 +1,5 @@
 {
-  "standard_match" : ".*\.?pp",
+  "standard_match" : "./(examples|include|src|test)/.*\.?pp",
   "main_license" : "util/license_template.hpp",
   "exceptions" :
   [
@@ -22,5 +22,5 @@
       "license" : "util/license_template_unique_ptr.hpp"
     }
   ],
-  "nolicense" : ["build/.*", "doc/.*", "util/.*"]
+  "nolicense" : []
 }
