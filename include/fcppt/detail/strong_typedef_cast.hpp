@@ -7,12 +7,8 @@
 #ifndef FCPPT_DETAIL_STRONG_TYPEDEF_CAST_HPP_INCLUDED
 #define FCPPT_DETAIL_STRONG_TYPEDEF_CAST_HPP_INCLUDED
 
-#include <fcppt/sn_cast.hpp>
-#include <fcppt/config/external_begin.hpp>
-#include <boost/mpl/and.hpp>
-#include <boost/type_traits/is_fundamental.hpp>
-#include <boost/utility/enable_if.hpp>
-#include <fcppt/config/external_end.hpp>
+#include <fcppt/safe_cast.hpp>
+
 
 namespace fcppt
 {
@@ -23,45 +19,13 @@ template<
 	typename T,
 	typename U
 >
-typename boost::disable_if<
-	boost::mpl::and_<
-		boost::is_fundamental<
-			T
-		>,
-		boost::is_fundamental<
-			U
-		>
-	>,
-	T
->::type
-strong_typedef_cast(
-	U const &_other
-)
-{
-	return _other;
-}
-
-template<
-	typename T,
-	typename U
->
-typename boost::enable_if<
-	boost::mpl::and_<
-		boost::is_fundamental<
-			T
-		>,
-		boost::is_fundamental<
-			U
-		>
-	>,
-	T
->::type
+T
 strong_typedef_cast(
 	U const &_other
 )
 {
 	return
-		fcppt::sn_cast<
+		fcppt::safe_cast<
 			T
 		>(
 			_other

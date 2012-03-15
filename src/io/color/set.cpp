@@ -5,7 +5,6 @@
 
 
 #include <fcppt/null_ptr.hpp>
-#include <fcppt/sn_cast.hpp>
 #include <fcppt/io/color/set.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <cstdlib>

@@ -267,6 +267,7 @@ set(
 	include/fcppt/detail/make_shared_wrapper_fwd.hpp
 	include/fcppt/detail/optional_cast.hpp
 	include/fcppt/detail/process_assert.hpp
+	include/fcppt/detail/safe_cast.hpp
 	include/fcppt/detail/strong_typedef_assignment_operator.hpp
 	include/fcppt/detail/strong_typedef_binary_operator.hpp
 	include/fcppt/detail/strong_typedef_cast.hpp
@@ -778,6 +779,8 @@ set(
 	include/fcppt/ref.hpp
 	include/fcppt/reference_wrapper.hpp
 	include/fcppt/safe_bool.hpp
+	include/fcppt/safe_cast.hpp
+	include/fcppt/safe_numeric_cast.hpp
 	include/fcppt/scoped_ptr.hpp
 	include/fcppt/scoped_ptr_decl.hpp
 	include/fcppt/scoped_ptr_fwd.hpp
@@ -820,7 +823,6 @@ set(
 	include/fcppt/signal/unregister/detail/concrete_connection.hpp
 	include/fcppt/signal/unregister/detail/concrete_connection_impl.hpp
 	include/fcppt/signal/unregister/function.hpp
-	include/fcppt/sn_cast.hpp
 	include/fcppt/spirit_traits/optional_basic.hpp
 	include/fcppt/spirit_traits/variant_basic.hpp
 	include/fcppt/static_optional_cast.hpp

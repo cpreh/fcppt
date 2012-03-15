@@ -10,6 +10,7 @@
 <ol>
 	<li>\ref fcpptcasts_dynamic_casting</li>
 	<li>\ref fcpptcasts_truncation_check_cast</li>
+	<li>\ref fcpptcasts_safe_conversions</li>
 </ol>
 
 </td>
@@ -135,5 +136,40 @@ depending on the architecture.
 Truncating conversions of negative values are also detected.
 
 \snippet truncation_check_cast.cpp truncation_check_cast_negative
+
+\section fcpptcasts_safe_conversions Safe conversions
+
+In C++, almost every fundamental type is implicitly convertible to almost every
+other fundamental type. For example, all arithmetic types can be implicitly
+converted into each other, which means integers to floats, floats to integers,
+bigger to smaller types, etc.
+
+The major problem with this is that most of these conversions don't preserve
+values (see also \ref fcpptcasts_truncation_check_cast for problems that can
+occur when converting between different integer types). Conversions from
+integers to floats and vice versa almost always lose some part of the value.
+
+fcppt::safe_numeric_cast is a cast that doesn't do any runtime checking (as
+opposed to fcppt::truncation_check_cast) but it checks at compile time which
+conversions between arithmetic types are safe, see fcppt::safe_numeric_cast for
+a detailed description which conditions must hold true in order for the cast to
+compile.
+
+The following example shows how a class's constructor can be strengthened by
+fcppt::safe_numeric_cast :
+
+\snippet safe_numeric_cast.cpp safe_numeric_cast_class
+
+Here are some examples of how the constructor can and can't be called:
+
+\snippet safe_numeric_cast.cpp safe_numeric_cast_objects
+
+fcppt::safe_cast is another cast that extends the set of types that
+fcppt::safe_numeric_cast can cast. If the types are both arithmetic types, then
+they will be converted using fcppt::safe_numeric_cast, otherwise they must be
+implicitly convertible. This is used for constructing strong typedefs,
+see
+\link
+insert_link_to_strong_typedef_tutorial_here strong typedefs\endlink.
 
 */
