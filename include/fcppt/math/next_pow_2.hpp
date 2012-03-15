@@ -7,7 +7,12 @@
 #ifndef FCPPT_MATH_NEXT_POW_2_HPP_INCLUDED
 #define FCPPT_MATH_NEXT_POW_2_HPP_INCLUDED
 
-#include <fcppt/math/detail/next_pow_2.hpp>
+#include <fcppt/math/is_power_of_2.hpp>
+#include <fcppt/config/external_begin.hpp>
+#include <boost/type_traits/is_unsigned.hpp>
+#include <boost/utility/enable_if.hpp>
+#include <fcppt/config/external_end.hpp>
+
 
 namespace fcppt
 {
@@ -15,26 +20,48 @@ namespace math
 {
 
 /**
-\brief Calculates the next power of 2 for a given value
+\brief Calculates the next power of 2 for an unsigned value
 \ingroup fcpptmath
-\tparam T Either an integral type or a floating point type
-
-For unsigned types it will use multiplication.
-For signed types it will use multiplication as well plus some additional checks.
-For floating point types std::pow, std::ceil and std::log will be used.
+\tparam T An unsigned type
 */
 template<
 	typename T
 >
-T
+typename boost::enable_if<
+	boost::is_unsigned<
+		T
+	>,
+	T
+>::type
 next_pow_2(
-	T const t
+	T const _value
 )
 {
-	return
-		detail::next_pow_2(
-			t
-		);
+	T const two(
+		static_cast<T>(2)
+	);
+
+	if(
+		fcppt::math::is_power_of_2(
+			_value
+		)
+	)
+		return _value * two;
+
+	T counter(
+		_value
+	);
+
+	T ret(
+		static_cast<T>(1u)
+	);
+
+	while(
+		counter /= two
+	)
+		ret *= two;
+
+	return ret * two;
 }
 
 }

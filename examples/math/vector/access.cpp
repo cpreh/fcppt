@@ -5,12 +5,11 @@
 
 
 //[vectoraccess
+#include <fcppt/exception.hpp>
+#include <fcppt/text.hpp>
+#include <fcppt/io/cout.hpp>
 #include <fcppt/math/vector/basic_impl.hpp>
 #include <fcppt/math/vector/static.hpp>
-#include <fcppt/config/external_begin.hpp>
-#include <iostream>
-#include <ostream>
-#include <fcppt/config/external_end.hpp>
 
 
 int main()
@@ -27,10 +26,23 @@ int main()
 
 	obj.x() = 42.f;
 
-	std::cout
+	fcppt::io::cout()
 		<< obj.x()
 		<< ' '
 		<< obj.y()
-		<< '\n';
+		<< FCPPT_TEXT('\n');
+
+	try
+	{
+		obj.at(2);
+	}
+	catch(
+		fcppt::exception const &_error
+	)
+	{
+		fcppt::io::cout()
+			<< _error.string()
+			<< FCPPT_TEXT('\n');
+	}
 }
 //]

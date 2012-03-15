@@ -488,7 +488,6 @@ set(
 	include/fcppt/math/detail/mod.hpp
 	include/fcppt/math/detail/mod_assign.hpp
 	include/fcppt/math/detail/narrow_cast.hpp
-	include/fcppt/math/detail/next_pow_2.hpp
 	include/fcppt/math/detail/one_dimensional_input.hpp
 	include/fcppt/math/detail/one_dimensional_output.hpp
 	include/fcppt/math/detail/pi.hpp
