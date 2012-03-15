@@ -62,8 +62,8 @@ public:
 
 	Logs the output represented by \a output, using additional formatting
 	provided by \a additional_formatter.
-	\link fcppt::log::detail::temporary_output \endlink can be constructed
-	by \link fcppt::log::_ \endlink.
+	fcppt::log::detail::temporary_output can be constructed by \link
+	fcppt::log::_ \endlink.
 
 	\param output The output to log
 
