@@ -4,8 +4,8 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_ASSERT_GATHER_INFORMATION_HPP_INCLUDED
-#define FCPPT_ASSERT_GATHER_INFORMATION_HPP_INCLUDED
+#ifndef FCPPT_ASSERT_BASIC_GATHER_INFORMATION_HPP_INCLUDED
+#define FCPPT_ASSERT_BASIC_GATHER_INFORMATION_HPP_INCLUDED
 
 #include <fcppt/assert/condition.hpp>
 #include <fcppt/assert/file.hpp>
@@ -17,7 +17,19 @@
 #include <fcppt/preprocessor/function.hpp>
 #include <fcppt/preprocessor/stringize.hpp>
 
-#define FCPPT_ASSERT_GATHER_INFORMATION(\
+
+/**
+\brief Gathers fcppt::assert_::information at the current file and function
+
+This macro expands to an fcppt::assert_::information, which gathers the current
+source file, the line of the file, the function name, the failed condition
+obtained from \a condition_arg, and the message obtained from \a message_arg.
+
+\param condition_arg The condition of the assertion
+
+\param message_arg The message of the assertion
+*/
+#define FCPPT_ASSERT_BASIC_GATHER_INFORMATION(\
 	condition_arg,\
 	message_arg\
 )\

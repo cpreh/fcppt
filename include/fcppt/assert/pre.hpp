@@ -7,12 +7,21 @@
 #ifndef FCPPT_ASSERT_PRE_HPP_INCLUDED
 #define FCPPT_ASSERT_PRE_HPP_INCLUDED
 
-#include <fcppt/assert/terminate_conditional.hpp>
+#include <fcppt/assert/basic/terminate_conditional.hpp>
 
+
+/**
+\brief Asserts a pre condition of a function
+
+Asserts that \a condition is true, calling <code>std::terminate</code> if it is
+not. This macro should be used to check for a function's preconditions.
+
+\param condition The condition to check for
+*/
 #define FCPPT_ASSERT_PRE(\
 	condition\
 )\
-FCPPT_ASSERT_TERMINATE_CONDITIONAL(\
+FCPPT_ASSERT_BASIC_TERMINATE_CONDITIONAL(\
 	condition\
 )
 

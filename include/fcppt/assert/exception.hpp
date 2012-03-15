@@ -15,21 +15,41 @@ namespace fcppt
 namespace assert_
 {
 
+/**
+\brief The exception class thrown by some assertions
+
+This class is thrown by some assertions, including all the information gathered
+by the assertion mechanism.
+*/
 class exception
 :
 	public fcppt::exception
 {
 public:
-	explicit exception(
-		assert_::information const &
+	/**
+	\brief Constructs the exception
+
+	Constructs the exception from \a information.
+
+	\param information The assert information
+	*/
+	explicit
+	exception(
+		fcppt::assert_::information const &information
 	);
 
-	assert_::information const &
+	/**
+	\brief Returns the assert information
+	*/
+	fcppt::assert_::information const &
 	information() const;
 
+	/**
+	\brief Destroys the exception
+	*/
 	~exception() throw();
 private:
-	assert_::information information_;
+	fcppt::assert_::information information_;
 };
 
 }

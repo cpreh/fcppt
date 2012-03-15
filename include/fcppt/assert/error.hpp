@@ -7,12 +7,21 @@
 #ifndef FCPPT_ASSERT_ERROR_HPP_INCLUDED
 #define FCPPT_ASSERT_ERROR_HPP_INCLUDED
 
-#include <fcppt/assert/terminate_conditional.hpp>
+#include <fcppt/assert/basic/terminate_conditional.hpp>
 
+/**
+\brief Asserts a condition in the middle of a function
+
+Asserts that \a condition is true, calling <code>std::terminate</code> if it is
+not. This macro should be used if an error occurs in the middle of a function
+that should not happen.
+
+\param condition The condition to check for
+*/
 #define FCPPT_ASSERT_ERROR(\
 	condition\
 )\
-FCPPT_ASSERT_TERMINATE_CONDITIONAL(\
+FCPPT_ASSERT_BASIC_TERMINATE_CONDITIONAL(\
 	condition\
 )
 

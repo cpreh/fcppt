@@ -7,9 +7,19 @@
 #ifndef FCPPT_ASSERT_THROW_HPP_INCLUDED
 #define FCPPT_ASSERT_THROW_HPP_INCLUDED
 
-#include <fcppt/assert/default_message.hpp>
 #include <fcppt/assert/throw_message.hpp>
+#include <fcppt/assert/basic/default_message.hpp>
 
+/**
+\brief Throws an exception on a failed assertion
+
+Throw \a exception if \a condition is false. The exception must have a
+constructor that takes an fcppt::assert_::information.
+
+\param condition The condition to check for
+
+\param exception The exception to throw on failure
+*/
 #define FCPPT_ASSERT_THROW(\
 	condition,\
 	exception\
@@ -17,7 +27,7 @@
 FCPPT_ASSERT_THROW_MESSAGE(\
 	condition,\
 	exception,\
-	FCPPT_ASSERT_DEFAULT_MESSAGE\
+	FCPPT_ASSERT_BASIC_DEFAULT_MESSAGE\
 )
 
 #endif

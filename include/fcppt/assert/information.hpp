@@ -19,41 +19,75 @@ namespace fcppt
 namespace assert_
 {
 
+/**
+\brief Represents information gathered at the assertion side
+*/
 class information
 {
 public:
+	/**
+	\brief Constructs the information
+
+	Constructs the information from \a file,
+	\a line, \a function, \a condition and \a message.
+
+	\param file The current file
+
+	\param line The line of the current file
+
+	\param function The current function
+
+	\param condition The failed condition
+
+	\param message The message of the assertion
+	*/
 	information(
-		assert_::file const &,
-		assert_::line,
-		assert_::function const &,
-		assert_::condition const &,
-		assert_::message const &
+		fcppt::assert_::file const &file,
+		fcppt::assert_::line line,
+		fcppt::assert_::function const &function,
+		fcppt::assert_::condition const &condition,
+		fcppt::assert_::message const &message
 	);
 
-	assert_::file const &
+	/**
+	\brief Returns the current file
+	*/
+	fcppt::assert_::file const &
 	file() const;
 
-	assert_::line const
+	/**
+	\brief Returns the line of the current file
+	*/
+	fcppt::assert_::line const
 	line() const;
 
-	assert_::function const &
+	/**
+	\brief Returns the current function
+	*/
+	fcppt::assert_::function const &
 	function() const;
 
-	assert_::condition const &
+	/**
+	\brief Returns the failed condition
+	*/
+	fcppt::assert_::condition const &
 	condition() const;
 
-	assert_::message const &
+	/**
+	\brief Returns the message of the assertion
+	*/
+	fcppt::assert_::message const &
 	message() const;
 private:
-	assert_::file file_;
+	fcppt::assert_::file file_;
 
-	assert_::line line_;
+	fcppt::assert_::line line_;
 
-	assert_::function function_;
+	fcppt::assert_::function function_;
 
-	assert_::condition condition_;
+	fcppt::assert_::condition condition_;
 
-	assert_::message message_;
+	fcppt::assert_::message message_;
 };
 
 }

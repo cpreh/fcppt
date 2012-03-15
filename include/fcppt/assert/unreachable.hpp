@@ -7,12 +7,18 @@
 #ifndef FCPPT_ASSERT_UNREACHABLE_HPP_INCLUDED
 #define FCPPT_ASSERT_UNREACHABLE_HPP_INCLUDED
 
-#include <fcppt/assert/default_message.hpp>
 #include <fcppt/assert/unreachable_message.hpp>
+#include <fcppt/assert/basic/default_message.hpp>
 
+
+/**
+\brief Terminates the program
+
+This macro should be used when an unreachable code part is executed.
+*/
 #define FCPPT_ASSERT_UNREACHABLE \
 FCPPT_ASSERT_UNREACHABLE_MESSAGE(\
-	FCPPT_ASSERT_DEFAULT_MESSAGE \
+	FCPPT_ASSERT_BASIC_DEFAULT_MESSAGE \
 )
 
 #endif

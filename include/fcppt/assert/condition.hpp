@@ -10,6 +10,7 @@
 #include <fcppt/string.hpp>
 #include <fcppt/strong_typedef.hpp>
 
+
 namespace fcppt
 {
 namespace assert_

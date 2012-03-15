@@ -1,0 +1,94 @@
+/**
+\defgroup fcpptassert fcppt.assert
+\ingroup fcpptmain
+\brief Macros and functions for assertions
+
+<table id="toc">
+<tr>
+<td>
+
+<ol>
+	<li>\ref assert_introduction</li>
+	<li>\ref assert_headers</li>
+</ol>
+
+</td>
+</tr>
+</table>
+
+\section assert_introduction Introduction
+
+So called assertions are conditions in the source code that are checked at
+runtime. If the conditions do not hold, then some sort of error mechanism
+should be invoked. So, assertions fit into the greater picture of
+error handling, where they play an important role.
+
+\subsection assert_error_handling Error Handling
+
+Error handling in C++ can happen using different mechanisms. Usually, this
+means how a failed function call should be handled.
+<ul>
+
+<li>Checking return values of functions, acting appropriately when an error has
+occured.</li>
+
+<li>Throwing an exception, which may be caught during the stack unwinding
+process.</li>
+
+<li>Calling <code>std::terminate</code></li>
+
+<li>Using other mechanisms like C's <code>assert</code> macro, which might call
+<code>std::abort</code></li>
+
+</ul>
+
+A lot of times you might hear that exceptions are the superior mechanism, and
+that you should never use return values to indicate errors or even abort the
+program.
+
+The important thing to realize here is that there are different kind of errors,
+that should be handled differently.
+
+<dl>
+<dt>A failed function call that is to be expected under certain
+conditions.</dt>
+
+<dd>In this case, a function should definitly report this as a return value,
+probably using something like fcppt::optional.</dt>
+
+<dt>A failed function call that is not expected under normal conditions.</dt>
+
+<dd>Here an exception is usually a good choice. Common errors in this category
+include: Resources are exhausted and normal program execution is not possible,
+a file that should be there is missing, and so on.</dd>
+
+<dt>A failed function call because the parameters are wrong.</dt>
+
+<dd>This usually indicates a programming mistake. Throwing an exception here is
+almost never the right thing to do because code cannot be expected to recover
+from this.</dd>
+
+<dt>Other conditions that are impossible in the absence of errors.</dt>
+
+<dd>An example for this would be a switch over an enum that handles every
+possible enumerator. The default case should never be reached. In such a case,
+throwing an exception would also be meaningless</dd>
+
+</dl>
+
+\section assert_
+
+\section assert_headers Header files
+
+<table>
+<tr>
+<th>Header file</th>
+<th>Description</th>
+</tr>
+</table>
+*/
+namespace fcppt
+{
+/// Helper functions for assertions
+namespace assert_ {}
+}
