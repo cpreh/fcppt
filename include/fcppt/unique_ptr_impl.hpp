@@ -9,14 +9,13 @@
 #ifndef FCPPT_UNIQUE_PTR_IMPL_HPP_INCLUDED
 #define FCPPT_UNIQUE_PTR_IMPL_HPP_INCLUDED
 
-#include <fcppt/forward.hpp>
-#include <fcppt/move.hpp>
 #include <fcppt/null_ptr.hpp>
 #include <fcppt/unique_ptr_decl.hpp>
+#include <fcppt/detail/rvalue_ref.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/static_assert.hpp>
-#include <boost/type_traits/is_pointer.hpp>
-#include <boost/type_traits/is_reference.hpp>
+#include <boost/type_traits/common_type.hpp>
+#include <algorithm>
+#include <functional>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -30,7 +29,7 @@ fcppt::unique_ptr<
 	Type,
 	Deleter
 >::
-operator fcppt::detail_unique_ptr::rv<
+operator fcppt::detail::rvalue_ref<
 	fcppt::unique_ptr<
 		Type,
 		Deleter
@@ -38,7 +37,7 @@ operator fcppt::detail_unique_ptr::rv<
 >()
 {
 	return
-		fcppt::detail_unique_ptr::rv<
+		fcppt::detail::rvalue_ref<
 			unique_ptr
 		>(
 			*this
@@ -54,18 +53,13 @@ fcppt::unique_ptr<
 	Type,
 	Deleter
 >::unique_ptr(
-	fcppt::detail_unique_ptr::rv<
+	fcppt::detail::rvalue_ref<
 		unique_ptr
 	> _other
 )
 :
 	ptr_(
-		_other->release(),
-		fcppt::forward<
-			Deleter
-		>(
-			_other->get_deleter()
-		)
+		_other->release()
 	)
 {
 }
@@ -82,7 +76,7 @@ fcppt::unique_ptr<
 	Type,
 	Deleter
 >::operator=(
-	fcppt::detail_unique_ptr::rv<
+	fcppt::detail::rvalue_ref<
 		unique_ptr
 	> _other
 )
@@ -90,11 +84,6 @@ fcppt::unique_ptr<
 	this->reset(
 		_other->release()
 	);
-
-	ptr_.second() =
-		fcppt::move(
-			_other->get_deleter()
-		);
 
         return *this;
 }
@@ -108,17 +97,6 @@ fcppt::unique_ptr<
 	Deleter
 >::unique_ptr()
 {
-	BOOST_STATIC_ASSERT(
-		!boost::is_reference<
-			Deleter
-		>::value
-	);
-
-	BOOST_STATIC_ASSERT(
-		!boost::is_pointer<
-			Deleter
-		>::value
-	);
 }
 
 template<
@@ -134,54 +112,6 @@ fcppt::unique_ptr<
 :
 	ptr_(
 		_ptr
-	)
-{
-	BOOST_STATIC_ASSERT(
-		!boost::is_reference<
-			Deleter
-		>::value
-	);
-
-	BOOST_STATIC_ASSERT(
-		!boost::is_pointer<
-			Deleter
-		>::value
-	);
-}
-
-template<
-	typename Type,
-	typename Deleter
->
-fcppt::unique_ptr<
-	Type,
-	Deleter
->::unique_ptr(
-	pointer const _ptr,
-	typename boost::mpl::if_<
-		boost::is_reference<Deleter>,
-		volatile typename boost::remove_reference<
-			Deleter
-		>::type &,
-		Deleter
-	>::type const _deleter
-)
-:
-	ptr_(
-		fcppt::move(
-			_ptr
-		),
-		fcppt::forward<
-			Deleter
-		>(
-			const_cast<
-				typename boost::add_reference<
-					Deleter
-				>::type
-			>(
-				_deleter
-			)
-		)
 	)
 {
 }
@@ -212,12 +142,7 @@ fcppt::unique_ptr<
 )
 :
 	ptr_(
-		_other.release(),
-		fcppt::forward<
-			Deleter
-		>(
-			_other.get_deleter()
-		)
+		_other.release()
 	)
 {
 }
@@ -279,11 +204,6 @@ fcppt::unique_ptr<
 		_other.release()
 	);
 
-	ptr_.second() =
-		fcppt::move(
-			_other.get_deleter()
-		);
-
 	return *this;
 }
 
@@ -291,9 +211,10 @@ template<
 	typename Type,
 	typename Deleter
 >
-typename boost::add_reference<
-	Type
->::type
+typename fcppt::unique_ptr<
+	Type,
+	Deleter
+>::reference
 fcppt::unique_ptr<
 	Type,
 	Deleter
@@ -331,39 +252,7 @@ fcppt::unique_ptr<
 	Deleter
 >::get() const
 {
-	return ptr_.first();
-}
-
-template<
-	typename Type,
-	typename Deleter
->
-typename fcppt::unique_ptr<
-	Type,
-	Deleter
->::deleter_reference
-fcppt::unique_ptr<
-	Type,
-	Deleter
->::get_deleter()
-{
-	return ptr_.second();
-}
-
-template<
-	typename Type,
-	typename Deleter
->
-typename fcppt::unique_ptr<
-	Type,
-	Deleter
->::deleter_const_reference
-fcppt::unique_ptr<
-	Type,
-	Deleter
->::get_deleter() const
-{
-	return ptr_.second();
+	return ptr_;
 }
 
 // Doxygen says: warning: member `operator int fcppt::unique_ptr' of class `unique_ptr' cannot be found
@@ -410,11 +299,11 @@ fcppt::unique_ptr<
 	if(
 		this_ptr != fcppt::null_ptr()
 	)
-		this->get_deleter()(
+		Deleter()(
 			this_ptr
 		);
 
-	ptr_.first() = _ptr;
+	ptr_ = _ptr;
 }
 
 template<
@@ -434,7 +323,7 @@ fcppt::unique_ptr<
 		this->get()
 	);
 
-	ptr_.first() = fcppt::null_ptr();
+	ptr_ = fcppt::null_ptr();
 
 	return this_ptr;
 }
@@ -451,7 +340,7 @@ fcppt::unique_ptr<
 	unique_ptr &_other
 )
 {
-	fcppt::detail_unique_ptr::swap(
+	std::swap(
 		ptr_,
 		_other.ptr_
 	);
@@ -548,84 +437,14 @@ fcppt::operator<(
 )
 {
 	return
-		_left.get()
-		<
-		_right.get();
-}
-
-template<
-	typename Type1,
-	typename Type2,
-	typename Deleter
->
-inline
-bool
-fcppt::operator<=(
-	fcppt::unique_ptr<
-		Type1,
-		Deleter
-	> const &_left,
-	fcppt::unique_ptr<
-		Type2,
-		Deleter
-	> const &_right
-)
-{
-	return
-		!(
-			_right
-			<
-			_left
-		);
-}
-
-template<
-	typename Type1,
-	typename Type2,
-	typename Deleter
->
-inline
-bool
-fcppt::operator>(
-	fcppt::unique_ptr<
-		Type1,
-		Deleter
-	> const &_left,
-	fcppt::unique_ptr<
-		Type2,
-		Deleter
-	> const &_right
-)
-{
-	return
-		_right
-		<
-		_left;
-}
-
-template<
-	typename Type1,
-	typename Type2,
-	typename Deleter
->
-inline
-bool
-fcppt::operator>=(
-	fcppt::unique_ptr<
-		Type1,
-		Deleter
-	> const &_left,
-	fcppt::unique_ptr<
-		Type2,
-		Deleter
-	> const &_right
-)
-{
-	return
-		!(
-			_left
-			<
-			_right
+		std::less<
+			typename boost::common_type<
+				Type1 *,
+				Type2 *
+			>::type
+		>()(
+			_left.get(),
+			_right.get()
 		);
 }
 

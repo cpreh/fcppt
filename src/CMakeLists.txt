@@ -267,6 +267,7 @@ set(
 	include/fcppt/detail/make_shared_wrapper_fwd.hpp
 	include/fcppt/detail/optional_cast.hpp
 	include/fcppt/detail/process_assert.hpp
+	include/fcppt/detail/rvalue_ref.hpp
 	include/fcppt/detail/safe_cast.hpp
 	include/fcppt/detail/strong_typedef/assignment_operator.hpp
 	include/fcppt/detail/strong_typedef/binary_operator.hpp
@@ -281,10 +282,6 @@ set(
 	include/fcppt/detail/strong_typedef/pre_inc_dec_operator.hpp
 	include/fcppt/detail/strong_typedef/unary_operator.hpp
 	include/fcppt/detail/truncation_check_cast.hpp
-	include/fcppt/detail_unique_ptr/one_two.hpp
-	include/fcppt/detail_unique_ptr/pointer_type.hpp
-	include/fcppt/detail_unique_ptr/rv.hpp
-	include/fcppt/detail_unique_ptr/storage.hpp
 	include/fcppt/dynamic_cast.hpp
 	include/fcppt/dynamic_optional_cast.hpp
 	include/fcppt/dynamic_pointer_cast.hpp

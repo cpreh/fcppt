@@ -601,7 +601,7 @@ fcppt::operator!=(
 )
 {
 	return
-		!(_a == _b);
+		_a.boost_ptr() != _b.boost_ptr();
 }
 
 template<

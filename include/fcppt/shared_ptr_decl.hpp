@@ -21,7 +21,13 @@ namespace fcppt
 {
 
 /**
-\brief A shared pointer class that get's the deleter as template parameter
+\brief A shared pointer class that gets the deleter as a template parameter
+
+A shared pointer shares ownership of a single pointer with other shared
+pointers. How many shared pointers actually own a pointer is kept track of as a
+reference count. Copying shared pointers increases the count by one, while
+destroying shared pointers decrases the count by one. If the count reaches
+zero, the object that is pointed to will be destroyed.
 
 The class is implemented using <code>boost::shared_ptr</code>, so it will
 inherit all its traits. This means that the class also uses type erasure for
@@ -47,7 +53,7 @@ public:
 	> impl_type;
 
 	/**
-	\brief The element type, which is T
+	\brief The element type, which is \a Type
 	*/
 	typedef typename impl_type::element_type element_type;
 
@@ -476,6 +482,16 @@ private:
 	>;
 };
 
+/**
+\brief Compares two shared ptrs for equality
+
+Compares \a left and \a right for equality, comparing their pointers. Pointers
+to \a Type1 and to \a Type2 must be equality comparable.
+
+\param left The left argument
+
+\param right The right argument
+*/
 template<
 	typename Type1,
 	typename Type2,
@@ -486,13 +502,23 @@ operator==(
 	fcppt::shared_ptr<
 		Type1,
 		Deleter
-	> const &,
+	> const &left,
 	fcppt::shared_ptr<
 		Type2,
 		Deleter
-	> const &
+	> const &right
 );
 
+/**
+\brief Compares two shared ptrs for inequality
+
+Compares \a left and \a right for inequality, comparing their pointers.
+Pointers to \a Type1 and to \a Type2 must be inequality comparable.
+
+\param left The left argument
+
+\param right The right argument
+*/
 template<
 	typename Type1,
 	typename Type2,
@@ -503,13 +529,26 @@ operator!=(
 	fcppt::shared_ptr<
 		Type1,
 		Deleter
-	> const &,
+	> const &left,
 	fcppt::shared_ptr<
 		Type2,
 		Deleter
-	> const &
+	> const &right
 );
 
+/**
+\brief Checks if one shared ptr is less than the other
+
+Checks if \a left is less than \a right, comparing their pointers with
+<code>std::less</code>.
+
+Pointers to \a Type1 and to \a Type2 must be comparable using
+<code>std::less</code>.
+
+\param left The left argument
+
+\param right The right argument
+*/
 template<
 	typename Type1,
 	typename Type2,
@@ -520,13 +559,22 @@ operator<(
 	fcppt::shared_ptr<
 		Type1,
 		Deleter
-	> const &,
+	> const &left,
 	fcppt::shared_ptr<
 		Type2,
 		Deleter
-	> const &
+	> const &right
 );
 
+/**
+\brief Swaps two shared pointers
+
+Swaps \a left and \a right
+
+\param left The left argument
+
+\param right The right argument
+*/
 template<
 	typename Type,
 	typename Deleter
@@ -536,13 +584,24 @@ swap(
 	fcppt::shared_ptr<
 		Type,
 		Deleter
-	> &,
+	> &left,
 	fcppt::shared_ptr<
 		Type,
 		Deleter
-	> &
+	> &right
 );
 
+/**
+\brief Outputs a shared pointer
+
+Outputs \a ptr to \a stream.
+
+\param stream The stream to write to
+
+\param ptr The shared pointer to output
+
+\return \a stream
+*/
 template<
 	typename Ch,
 	typename Traits,
@@ -557,11 +616,11 @@ operator<< (
 	std::basic_ostream<
 		Ch,
 		Traits
-	> &,
+	> &stream,
 	fcppt::shared_ptr<
 		Type,
 		Deleter
-	> const &
+	> const &ptr
 );
 
 }

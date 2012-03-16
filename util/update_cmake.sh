@@ -25,7 +25,6 @@ update_cmake_file \
 	include/fcppt/config \
 	include/fcppt/container \
 	include/fcppt/detail \
-	include/fcppt/detail_unique_ptr \
 	include/fcppt/endianness \
 	include/fcppt/error \
 	include/fcppt/function \

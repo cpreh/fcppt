@@ -15,9 +15,9 @@
       "files": [
          "include/fcppt/unique_ptr_decl.hpp",
          "include/fcppt/unique_ptr_impl.hpp",
-         "include/fcppt/detail_unique_ptr/.*",
          "include/fcppt/forward.hpp",
-         "include/fcppt/move.hpp"
+         "include/fcppt/move.hpp",
+         "include/fcppt/detail/rvalue_ref.hpp"
       ],
       "license" : "util/license_template_unique_ptr.hpp"
     }

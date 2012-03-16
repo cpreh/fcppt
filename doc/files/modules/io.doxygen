@@ -1,0 +1,27 @@
+/**
+\defgroup fcpptio fcppt.io
+\ingroup fcpptmain
+\brief IO-related typedefs and functions
+
+<table id="toc">
+<tr>
+<td>
+	<li>\ref fcpptio_introduction</li>
+<ol>
+</ol>
+
+</td>
+</tr>
+</table>
+
+\section fcpptio_introduction Introduction
+
+The io namespace mostly includes typedefs and functions related to the string
+module, see \ref fcpptstring.
+
+*/
+namespace fcppt
+{
+/// IO-related typedefs and functions
+namespace io {}
+}

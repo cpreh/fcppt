@@ -11,18 +11,12 @@
 
 #include <fcppt/null_ptr.hpp>
 #include <fcppt/unique_ptr_fwd.hpp>
-#include <fcppt/detail_unique_ptr/pointer_type.hpp>
-#include <fcppt/detail_unique_ptr/rv.hpp>
-#include <fcppt/detail_unique_ptr/storage.hpp>
+#include <fcppt/detail/rvalue_ref.hpp>
 #include <fcppt/preprocessor/disable_icc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/mpl/if.hpp>
-#include <boost/type_traits/add_reference.hpp>
 #include <boost/type_traits/is_convertible.hpp>
-#include <boost/type_traits/is_reference.hpp>
-#include <boost/type_traits/remove_reference.hpp>
 #include <boost/utility/enable_if.hpp>
 #include <fcppt/config/external_end.hpp>
 
@@ -33,6 +27,20 @@ namespace fcppt
 FCPPT_PP_PUSH_WARNING
 FCPPT_PP_DISABLE_ICC_WARNING(2289)
 FCPPT_PP_DISABLE_ICC_WARNING(2304)
+
+/**
+\brief A unique pointer class, designed to emulate <em>C++11's</em>
+<code>std::unique_ptr</code>
+
+A unique pointer is similar to <code>std::auto_ptr</code> (which is deprecated
+in C++11), because only one object holds ownership over a pointer. The
+difference is that unique_ptr disallows certain things that auto_ptr allowed
+(like moving from lvalue).
+
+\tparam Type The type the shared pointer points to
+
+\tparam Deleter A deleter class that must be callable with a pointer to T.
+*/
 template<
 	typename Type,
 	typename Deleter
@@ -40,26 +48,27 @@ template<
 class unique_ptr
 {
 public:
+	/**
+	\brief The element type, which is \a Type
+	*/
 	typedef Type element_type;
 
-	typedef typename fcppt::detail_unique_ptr::pointer_type<
-    		element_type,
-		Deleter
-	>::type pointer;
+	/**
+	\brief Same as element_type
+	*/
+	typedef element_type value_type;
 
+	/**
+	\brief The reference type, same as <code>value_type &</code>
+	*/
+	typedef element_type &reference;
+
+	/**
+	\brief The pointer type, same as <code>value_type *</code>
+	*/
+	typedef element_type *pointer;
 private:
-	fcppt::detail_unique_ptr::storage<
-		pointer,
-		Deleter
-	> ptr_;
-
-	typedef typename boost::add_reference<
-		Deleter
-	>::type deleter_reference;
-
-	typedef typename boost::add_reference<
-		Deleter const
-	>::type deleter_const_reference;
+	pointer ptr_;
 
 	struct nat
 	{
@@ -77,58 +86,111 @@ private:
 		unique_ptr &
 	);
 public:
-	operator fcppt::detail_unique_ptr::rv<
+	/**
+	\brief Used for marking rvalues
+
+	This implicit conversion operator will convert a unique ptr into a
+	marked rvalue.
+	*/
+	operator fcppt::detail::rvalue_ref<
 		unique_ptr
 	>();
 
+	/**
+	\brief Construction from a marked rvalue
+	*/
 	unique_ptr(
-		fcppt::detail_unique_ptr::rv<unique_ptr>
+		fcppt::detail::rvalue_ref<
+			unique_ptr
+		>
 	);
 
+	/**
+	\brief Assignment from a marked rvalue
+	*/
 	unique_ptr &
 	operator=(
-		fcppt::detail_unique_ptr::rv<unique_ptr>
+		fcppt::detail::rvalue_ref<
+			unique_ptr
+		>
 	);
 
+	/**
+	\brief Constructs an empty unique_ptr
+
+	get() will return a null pointer
+	*/
 	unique_ptr();
 
-	explicit unique_ptr(
-		pointer
-	);
+	/**
+	\brief Constructs a unique_ptr from a pointer
 
+	Constructs the unique_ptr from \a ptr, taking ownership of it.
+
+	\param ptr The pointer to take ownership of
+	*/
+	explicit
 	unique_ptr(
-		pointer,
-		typename boost::mpl::if_<
-			boost::is_reference<
-				Deleter
-			>,
-			volatile typename boost::remove_reference<
-				Deleter
-			>::type &,
-			Deleter
-		>::type
+		pointer ptr
 	);
 
+	/**
+	\brief Moves from a compatible unique_ptr
+
+	Moves from \a other, taking ownerhsip of its pointer. If \a other is
+	empty, then this unique_ptr will also be empty.
+
+	\tparam Other A type, so that <code>Other *</code> is implicitly
+	convertible to <code>Type *</code>
+
+	\param other The unique_ptr to move from
+	*/
 	template<
-		typename U
+		typename Other
 	>
 	unique_ptr(
-		unique_ptr<U, Deleter> u,
+		fcppt::unique_ptr<
+			Other,
+			Deleter
+		> other,
 		typename boost::enable_if<
 			boost::is_convertible<
-				typename unique_ptr<U>::pointer,
+				typename fcppt::unique_ptr<
+					Other
+				>::pointer,
 				pointer
 			>
 		>::type * = fcppt::null_ptr()
 	);
 
+	/**
+	\brief Destroys the unique_ptr
+
+	If the unique_ptr is empty, nothing happens. Otherwise, the owned
+	object will be destroyed, which will be done by Deleter().
+	*/
 	~unique_ptr();
 
+	/**
+	\brief TODO: WHY?
+	*/
 	unique_ptr &
 	operator=(
 		bool_type
 	);
 
+	/**
+	\brief Assigns a unique_ptr from a compatible unique_ptr
+
+	If this unique_ptr is not empty, then the owned object will be
+	destroyed. Afterwards, \a other will move the ownership to this
+	unique_ptr.
+
+	\tparam Other A type, so that <code>Other *</code> is implicitly
+	convertible to <code>Type *</code>
+
+	\param other The unique_ptr to assign from
+	*/
 	template<
 		typename Other
 	>
@@ -137,12 +199,10 @@ public:
 		fcppt::unique_ptr<
 			Other,
 			Deleter
-		>
+		> other
 	);
 
-	typename boost::add_reference<
-		Type
-	>::type
+	reference
 	operator*() const;
 
 	pointer
@@ -150,12 +210,6 @@ public:
 
 	pointer
 	get() const;
-
-	deleter_reference
-	get_deleter();
-
-	deleter_const_reference
-	get_deleter() const;
 
 	operator bool_type() const;
 
@@ -231,57 +285,6 @@ template<
 >
 bool
 operator<(
-	fcppt::unique_ptr<
-		Type1,
-		Deleter
-	> const &,
-	fcppt::unique_ptr<
-		Type2,
-		Deleter
-	> const &
-);
-
-template<
-	typename Type1,
-	typename Type2,
-	typename Deleter
->
-bool
-operator<=(
-	fcppt::unique_ptr<
-		Type1,
-		Deleter
-	> const &,
-	fcppt::unique_ptr<
-		Type2,
-		Deleter
-	> const &
-);
-
-template<
-	typename Type1,
-	typename Type2,
-	typename Deleter
->
-bool
-operator>(
-	fcppt::unique_ptr<
-		Type1,
-		Deleter
-	> const &,
-	fcppt::unique_ptr<
-		Type2,
-		Deleter
-	> const &
-);
-
-template<
-	typename Type1,
-	typename Type2,
-	typename Deleter
->
-bool
-operator>=(
 	fcppt::unique_ptr<
 		Type1,
 		Deleter

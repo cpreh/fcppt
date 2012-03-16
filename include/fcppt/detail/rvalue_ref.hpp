@@ -6,45 +6,50 @@
 // See http://www.boost.org/libs/foreach for documentation
 
 
-#ifndef FCPPT_DETAIL_UNIQUE_PTR_RV_HPP_INCLUDED
-#define FCPPT_DETAIL_UNIQUE_PTR_RV_HPP_INCLUDED
+#ifndef FCPPT_DETAIL_RVALUE_REF_HPP_INCLUDED
+#define FCPPT_DETAIL_RVALUE_REF_HPP_INCLUDED
 
 #include <fcppt/nonassignable.hpp>
 
+
 namespace fcppt
 {
-namespace detail_unique_ptr
+namespace detail
 {
 
 template<
-	typename T
+	typename Type
 >
-class rv
+class rvalue_ref
 {
 	FCPPT_NONASSIGNABLE(
-		rv
+		rvalue_ref
 	);
 public:
-	explicit rv(
-		T &_r
+	explicit
+	rvalue_ref(
+		Type &_rvalue
 	)
 	:
-		r_(_r)
-	{}
+		rvalue_(
+			_rvalue
+		)
+	{
+	}
 
-	T *
+	Type *
 	operator->()
 	{
-		return &r_;
+		return &rvalue_;
 	}
 
-	T &
+	Type &
 	operator*()
 	{
-		return r_;
+		return rvalue_;
 	}
 private:
-	T &r_;
+	Type &rvalue_;
 };
 
 }
