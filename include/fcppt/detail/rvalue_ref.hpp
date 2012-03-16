@@ -10,6 +10,7 @@
 #define FCPPT_DETAIL_RVALUE_REF_HPP_INCLUDED
 
 #include <fcppt/nonassignable.hpp>
+#include <fcppt/detail/rvalue_ref_fwd.hpp>
 
 
 namespace fcppt

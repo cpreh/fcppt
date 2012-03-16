@@ -268,6 +268,7 @@ set(
 	include/fcppt/detail/optional_cast.hpp
 	include/fcppt/detail/process_assert.hpp
 	include/fcppt/detail/rvalue_ref.hpp
+	include/fcppt/detail/rvalue_ref_fwd.hpp
 	include/fcppt/detail/safe_cast.hpp
 	include/fcppt/detail/strong_typedef/assignment_operator.hpp
 	include/fcppt/detail/strong_typedef/binary_operator.hpp

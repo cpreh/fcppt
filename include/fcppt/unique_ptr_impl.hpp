@@ -163,26 +163,6 @@ template<
 	typename Type,
 	typename Deleter
 >
-fcppt::unique_ptr<
-	Type,
-	Deleter
-> &
-fcppt::unique_ptr<
-	Type,
-	Deleter
->::operator=(
-	bool_type
-)
-{
-	this->reset();
-
-	return *this;
-}
-
-template<
-	typename Type,
-	typename Deleter
->
 template<
 	typename Other
 >
@@ -257,27 +237,6 @@ fcppt::unique_ptr<
 
 // Doxygen says: warning: member `operator int fcppt::unique_ptr' of class `unique_ptr' cannot be found
 /// \cond FCPPT_DOXYGEN_DEBUG
-template<
-	typename Type,
-	typename Deleter
->
-fcppt::unique_ptr<
-	Type,
-	Deleter
->::
-operator int fcppt::unique_ptr<
-	Type,
-	Deleter
->::nat::*() const
-{
-	return
-		this->get()
-		?
-			&nat::for_bool_
-		:
-			bool_type()
-		;
-}
 /// \endcond
 
 template<
@@ -344,6 +303,22 @@ fcppt::unique_ptr<
 		ptr_,
 		_other.ptr_
 	);
+}
+
+template<
+	typename Type,
+	typename Deleter
+>
+bool
+fcppt::unique_ptr<
+	Type,
+	Deleter
+>::boolean_test() const
+{
+	return
+		ptr_
+		!=
+		fcppt::null_ptr();
 }
 
 template<

@@ -10,8 +10,9 @@
 #define FCPPT_UNIQUE_PTR_DECL_HPP_INCLUDED
 
 #include <fcppt/null_ptr.hpp>
+#include <fcppt/safe_bool.hpp>
 #include <fcppt/unique_ptr_fwd.hpp>
-#include <fcppt/detail/rvalue_ref.hpp>
+#include <fcppt/detail/rvalue_ref_fwd.hpp>
 #include <fcppt/preprocessor/disable_icc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
@@ -47,6 +48,18 @@ template<
 >
 class unique_ptr
 {
+	FCPPT_SAFE_BOOL(
+		unique_ptr
+	)
+private:
+	unique_ptr(
+		unique_ptr &
+	);
+
+	unique_ptr &
+	operator=(
+		unique_ptr &
+	);
 public:
 	/**
 	\brief The element type, which is \a Type
@@ -67,25 +80,7 @@ public:
 	\brief The pointer type, same as <code>value_type *</code>
 	*/
 	typedef element_type *pointer;
-private:
-	pointer ptr_;
 
-	struct nat
-	{
-		int for_bool_;
-	};
-
-	typedef int (nat::*bool_type);
-
-	unique_ptr(
-		unique_ptr &
-	);
-
-	unique_ptr &
-	operator=(
-		unique_ptr &
-	);
-public:
 	/**
 	\brief Used for marking rvalues
 
@@ -172,14 +167,6 @@ public:
 	~unique_ptr();
 
 	/**
-	\brief TODO: WHY?
-	*/
-	unique_ptr &
-	operator=(
-		bool_type
-	);
-
-	/**
 	\brief Assigns a unique_ptr from a compatible unique_ptr
 
 	If this unique_ptr is not empty, then the owned object will be
@@ -211,8 +198,6 @@ public:
 	pointer
 	get() const;
 
-	operator bool_type() const;
-
 	void
 	reset(
 		pointer = pointer()
@@ -225,6 +210,12 @@ public:
 	swap(
 		unique_ptr &
 	);
+private:
+	bool
+	boolean_test() const;
+
+	pointer ptr_;
+
 };
 FCPPT_PP_POP_WARNING
 
