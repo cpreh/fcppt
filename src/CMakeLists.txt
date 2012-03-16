@@ -268,11 +268,18 @@ set(
 	include/fcppt/detail/optional_cast.hpp
 	include/fcppt/detail/process_assert.hpp
 	include/fcppt/detail/safe_cast.hpp
-	include/fcppt/detail/strong_typedef_assignment_operator.hpp
-	include/fcppt/detail/strong_typedef_binary_operator.hpp
-	include/fcppt/detail/strong_typedef_cast.hpp
-	include/fcppt/detail/strong_typedef_comparison_operator.hpp
-	include/fcppt/detail/strong_typedef_unary_operator.hpp
+	include/fcppt/detail/strong_typedef/assignment_operator.hpp
+	include/fcppt/detail/strong_typedef/binary_operator.hpp
+	include/fcppt/detail/strong_typedef/cast.hpp
+	include/fcppt/detail/strong_typedef/comparison_operator.hpp
+	include/fcppt/detail/strong_typedef/foreach_assignment_operator.hpp
+	include/fcppt/detail/strong_typedef/foreach_inc_dec_operator.hpp
+	include/fcppt/detail/strong_typedef/friend_assignment_operator.hpp
+	include/fcppt/detail/strong_typedef/friend_operators.hpp
+	include/fcppt/detail/strong_typedef/friend_pre_inc_dec_operator.hpp
+	include/fcppt/detail/strong_typedef/post_inc_dec_operator.hpp
+	include/fcppt/detail/strong_typedef/pre_inc_dec_operator.hpp
+	include/fcppt/detail/strong_typedef/unary_operator.hpp
 	include/fcppt/detail/truncation_check_cast.hpp
 	include/fcppt/detail_unique_ptr/one_two.hpp
 	include/fcppt/detail_unique_ptr/pointer_type.hpp

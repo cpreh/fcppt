@@ -14,22 +14,22 @@ template< \
 	typename T,\
 	typename Tag\
 > \
-strong_typedef< \
+fcppt::strong_typedef< \
 	T, \
 	Tag \
 > & \
 operator op( \
-	strong_typedef< \
+	fcppt::strong_typedef< \
 		T, \
 		Tag \
 	> &_left, \
-	strong_typedef< \
+	fcppt::strong_typedef< \
 		T, \
 		Tag \
 	> const &_right \
 ) \
 { \
-	_left.get() \
+	_left.value_ \
 	op \
 	_right.get(); \
 \

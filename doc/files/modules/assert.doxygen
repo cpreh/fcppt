@@ -46,8 +46,8 @@ A lot of times you might hear that exceptions are the superior mechanism, and
 that you should never use return values to indicate errors or even abort the
 program.
 
-The important thing to realize here is that there are different kind of errors,
-that should be handled differently.
+The important thing to realize here is that there are different kinds of
+errors, that should be handled differently.
 
 <dl>
 <dt>A failed function call that is to be expected under certain

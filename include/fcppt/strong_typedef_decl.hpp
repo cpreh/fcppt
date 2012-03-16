@@ -9,6 +9,8 @@
 
 #include <fcppt/nonassignable.hpp>
 #include <fcppt/strong_typedef_fwd.hpp>
+#include <fcppt/detail/strong_typedef/friend_operators.hpp>
+
 
 namespace fcppt
 {
@@ -41,7 +43,8 @@ public:
 	template<
 		typename U
 	>
-	explicit strong_typedef(
+	explicit
+	strong_typedef(
 		U const &
 	);
 
@@ -53,9 +56,6 @@ public:
 		U const &
 	);
 
-	T &
-	get();
-
 	T const &
 	get() const;
 
@@ -64,6 +64,8 @@ public:
 		strong_typedef &
 	);
 private:
+	FCPPT_DETAIL_STRONG_TYPEDEF_FRIEND_OPERATORS
+
 	T value_;
 };
 
@@ -86,14 +88,17 @@ public:
 
 	typedef Tag tag_type;
 
-	explicit strong_typedef(
+	explicit
+	strong_typedef(
 		reference
 	);
 
 	reference
 	get() const;
 private:
-	reference ref_;
+	FCPPT_DETAIL_STRONG_TYPEDEF_FRIEND_OPERATORS
+
+	reference value_;
 };
 
 
@@ -103,8 +108,8 @@ template<
 >
 void
 swap(
-	strong_typedef<T, Tag> &,
-	strong_typedef<T, Tag> &
+	fcppt::strong_typedef<T, Tag> &,
+	fcppt::strong_typedef<T, Tag> &
 );
 
 }

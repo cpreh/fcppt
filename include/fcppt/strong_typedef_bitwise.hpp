@@ -8,8 +8,8 @@
 #define FCPPT_STRONG_TYPEDEF_BITWISE_HPP_INCLUDED
 
 #include <fcppt/strong_typedef_impl.hpp>
-#include <fcppt/detail/strong_typedef_binary_operator.hpp>
-#include <fcppt/detail/strong_typedef_unary_operator.hpp>
+#include <fcppt/detail/strong_typedef/binary_operator.hpp>
+#include <fcppt/detail/strong_typedef/unary_operator.hpp>
 
 
 namespace fcppt

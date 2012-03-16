@@ -8,7 +8,7 @@
 #define FCPPT_STRONG_TYPEDEF_COMPARISON_HPP_INCLUDED
 
 #include <fcppt/strong_typedef_impl.hpp>
-#include <fcppt/detail/strong_typedef_comparison_operator.hpp>
+#include <fcppt/detail/strong_typedef/comparison_operator.hpp>
 
 
 namespace fcppt

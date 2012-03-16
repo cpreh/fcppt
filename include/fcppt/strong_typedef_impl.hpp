@@ -8,10 +8,11 @@
 #define FCPPT_STRONG_TYPEDEF_IMPL_HPP_INCLUDED
 
 #include <fcppt/strong_typedef_decl.hpp>
-#include <fcppt/detail/strong_typedef_cast.hpp>
+#include <fcppt/detail/strong_typedef/cast.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <algorithm>
 #include <fcppt/config/external_end.hpp>
+
 
 template<
 	typename T,
@@ -82,19 +83,6 @@ template<
 	typename T,
 	typename Tag
 >
-T &
-fcppt::strong_typedef<
-	T,
-	Tag
->::get()
-{
-	return value_;
-}
-
-template<
-	typename T,
-	typename Tag
->
 T const &
 fcppt::strong_typedef<
 	T,
@@ -137,11 +125,11 @@ fcppt::strong_typedef<
 	T &,
 	Tag
 >::strong_typedef(
-	reference _ref
+	reference _value
 )
 :
-	ref_(
-		_ref
+	value_(
+		_value
 	)
 {
 }
@@ -160,7 +148,7 @@ fcppt::strong_typedef<
 	Tag
 >::get() const
 {
-	return ref_;
+	return value_;
 }
 
 template<
