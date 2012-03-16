@@ -7,7 +7,7 @@
 
 C++ offers <strong>typedefs</strong> to provide aliases (different names) for a
 type. This is helpful in some situations, but many times, a different name is
-not enough. You want a new type statt encapsulates the old type (if you know
+not enough. You want a new type that encapsulates the old type (if you know
 Haskell, think of <code>newtype</code> vs. <code>type</code> - fcppt's strong
 typedefs are very similar to <code>newtype</code>). This was the idea behind
 strong typedefs. However, strong typedefs are useful in other situations, which
@@ -202,4 +202,84 @@ into types a step further: <a
 href="http://www.boost.org/doc/libs/1_49_0/doc/html/boost_units.html">boost.units</a>.
 You should check it out if you've got a similar use-case. It also integrates
 really well with fcppt.strong_typedef, so you can combine the two libraries.
+
+\section fcpptstrongtypedefusage_Usage
+
+As you can see from the examples above, you create a strong typedef using the
+<code>FCPPT_MAKE_STRONG_TYPEDEF</code> macro:
+
+\code
+FCPPT_MAKE_STRONG_TYPEDEF(
+	Type,
+	Name);
+\endcode
+
+There are almost no limitations imposed on <code>Type</code>, except that it
+has to have a callable constructor or copy-constructor as well as a callable
+destructor. The internals of this macro are described in a separate section.
+You don't need to understand it to use strong typedefs.
+
+The <code>FCPPT_MAKE_STRONG_TYPEDEF</code> macro can be used where declarations
+are allowed.
+
+To "extract" the value out of a typedef, call the <code>get</code> member
+function. The function is only for reading the value, however, you cannot do
+
+\code
+FCPPT_MAKE_STRONG_TYPEDEF(
+	int,
+	strong_int);
+
+strong_int t;
+t.get() = 3;
+\endcode
+
+To assign an initial value, use the constructor. To assign a new value later
+on, assign a new strong value:
+
+\code
+strong_int t(3);
+t = strong_int(4);
+\endcode
+
+Almost all operators are overloaded for strong typedefs, so you can use them as
+if you're handling the wrapped type. The operators currently <em>not</em> implemented are:
+
+<ul>
+	<li>The logical operators, that include <code>bool operator!</code>,
+	<code>operator&&</code> and <code>operator||</code></li>
+	<li>The member and pointer operators: <code>operator[]</code>,
+	<code>operator*</code>, <code>operator&</code>, <code>operator-></code>
+	and <code>operator->*</code></li>
+	<li><code>operator()</code>, <code>operator,</code> (sequence),
+	<code>operator new</code>, <code>operator new[]</code>, <code>operator
+	delete</code> and <code>operator delete[]</code></li>
+</ul>
+
+References are also allowed for strong typedefs. However, you might get some
+warnings with Microsoft's Visual Studio about that.
+
+\section fcpptstrongtypedef_internal Internals
+
+When declaring two strong typedefs with the same underlying type, two distinct
+types should be created:
+
+\code
+FCPPT_MAKE_STRONG_TYPEDEF(
+	int,
+	first);
+
+FCPPT_MAKE_STRONG_TYPEDEF(
+	int,
+	second);
+
+assert(!boost::is_same<first,second>::value);
+\endcode
+
+To achieve that, the <code>FCPPT_MAKE_STRONG_TYPEDEF</code> macro first creates
+an empty struct containing the name you specify as the first parameter. This is
+just a "tag" structure and has no use other than to differentiate two otherwise
+equal strong typedefs. Then, a typedef to fcppt::strong_typedef is declared,
+the tag structure and the underlying type as template parameters.
+
 */
