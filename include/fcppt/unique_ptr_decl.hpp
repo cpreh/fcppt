@@ -9,17 +9,12 @@
 #ifndef FCPPT_UNIQUE_PTR_DECL_HPP_INCLUDED
 #define FCPPT_UNIQUE_PTR_DECL_HPP_INCLUDED
 
-#include <fcppt/null_ptr.hpp>
 #include <fcppt/safe_bool.hpp>
 #include <fcppt/unique_ptr_fwd.hpp>
 #include <fcppt/detail/rvalue_ref_fwd.hpp>
 #include <fcppt/preprocessor/disable_icc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
-#include <fcppt/config/external_begin.hpp>
-#include <boost/type_traits/is_convertible.hpp>
-#include <boost/utility/enable_if.hpp>
-#include <fcppt/config/external_end.hpp>
 
 
 namespace fcppt
@@ -38,7 +33,7 @@ in C++11), because only one object holds ownership over a pointer. The
 difference is that unique_ptr disallows certain things that auto_ptr allowed
 (like moving from lvalue).
 
-\tparam Type The type the shared pointer points to
+\tparam Type The type the unique pointer points to
 
 \tparam Deleter A deleter class that must be callable with a pointer to T.
 */
@@ -147,15 +142,7 @@ public:
 		fcppt::unique_ptr<
 			Other,
 			Deleter
-		> other,
-		typename boost::enable_if<
-			boost::is_convertible<
-				typename fcppt::unique_ptr<
-					Other
-				>::pointer,
-				pointer
-			>
-		>::type * = fcppt::null_ptr()
+		> other
 	);
 
 	/**
@@ -189,26 +176,83 @@ public:
 		> other
 	);
 
+	/**
+	\brief Dereferences the owned pointer
+
+	Returns a reference to the owned object.
+
+	\warning The behaviour is undefined if the unique_ptr is empty.
+	*/
 	reference
 	operator*() const;
 
+	/**
+	\brief Dereferences a member of the owned object
+
+	Returns a pointer to the owned object.
+
+	\warning The behaviour is undefined if the unique_ptr is empty.
+	*/
 	pointer
 	operator->() const;
 
+	/**
+	\brief Returns a pointer to the owned object
+
+	Returns a pointer to the owned object or the null pointer if the
+	unique_ptr is empty.
+	*/
 	pointer
 	get() const;
 
+	/**
+	\brief Resets this unique_ptr
+
+	If this unique_ptr is empty, nothing happens. Otherwise, the owned
+	object will be destroyed. In any case, this unique_ptr will be empty.
+	*/
+	void
+	reset();
+
+	/**
+	\brief Resets this unique_ptr from a compatible pointer type
+
+	If this unique_ptr is empty, no destruction happens. Otherwise, the
+	previously owned object will be destroyed. After that, this unique_ptr
+	will take ownership of \a pointer.
+
+	\tparam Other A type, so that <code>Other *</code> is implicitly
+	convertible to <code>T *</code>
+
+	\param pointer The pointer to take ownership of
+	*/
+	template<
+		typename Other
+	>
 	void
 	reset(
-		pointer = pointer()
+		Other *pointer
 	);
 
+	/**
+	\brief Releases the ownership
+
+	Returns the currently held pointer, and makes this unique_ptr empty,
+	effectively releasing ownership.
+	*/
 	pointer
 	release();
 
+	/**
+	\brief Swaps the unique_ptr
+
+	Swaps the unique_ptr with \a other.
+
+	\param other The unique_ptr to swap with
+	*/
 	void
 	swap(
-		unique_ptr &
+		unique_ptr &other
 	);
 private:
 	bool
@@ -219,6 +263,15 @@ private:
 };
 FCPPT_PP_POP_WARNING
 
+/**
+\brief Swaps two unique pointers
+
+Swaps \a left and \a right
+
+\param left The left argument
+
+\param right The right argument
+*/
 template<
 	typename Type,
 	typename Deleter
@@ -228,13 +281,23 @@ swap(
 	fcppt::unique_ptr<
 		Type,
 		Deleter
-	> &,
+	> &left,
 	fcppt::unique_ptr<
 		Type,
 		Deleter
-	> &
+	> &right
 );
 
+/**
+\brief Compares two unique ptrs for equality
+
+Compares \a left and \a right for equality, comparing their pointers. Pointers
+to \a Type1 and to \a Type2 must be equality comparable.
+
+\param left The left argument
+
+\param right The right argument
+*/
 template<
 	typename Type1,
 	typename Type2,
@@ -252,6 +315,16 @@ operator==(
 	> const &
 );
 
+/**
+\brief Compares two unique ptrs for inequality
+
+Compares \a left and \a right for inequality, comparing their pointers.
+Pointers to \a Type1 and to \a Type2 must be inequality comparable.
+
+\param left The left argument
+
+\param right The right argument
+*/
 template<
 	typename Type1,
 	typename Type2,
@@ -269,6 +342,19 @@ operator!=(
 	> const &
 );
 
+/**
+\brief Checks if one unique ptr is less than the other
+
+Checks if \a left is less than \a right, comparing their pointers with
+<code>std::less</code>.
+
+Pointers to \a Type1 and to \a Type2 must be comparable using
+<code>std::less</code>.
+
+\param left The left argument
+
+\param right The right argument
+*/
 template<
 	typename Type1,
 	typename Type2,

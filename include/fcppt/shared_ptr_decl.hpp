@@ -359,7 +359,7 @@ public:
 	);
 
 	/**
-	\brief Dereferences the owned object
+	\brief Dereferences the owned pointer
 
 	Returns a reference to the owned object.
 

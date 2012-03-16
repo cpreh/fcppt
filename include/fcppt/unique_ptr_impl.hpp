@@ -130,15 +130,7 @@ fcppt::unique_ptr<
 	fcppt::unique_ptr<
 		Other,
 		Deleter
-	> _other,
-	typename boost::enable_if<
-		boost::is_convertible<
-			typename fcppt::unique_ptr<
-				Other
-			>::pointer,
-			pointer
-		>
-	>::type *
+	> _other
 )
 :
 	ptr_(
@@ -247,20 +239,32 @@ void
 fcppt::unique_ptr<
 	Type,
 	Deleter
->::reset(
-	pointer const _ptr
-)
+>::reset()
 {
-	pointer const this_ptr(
-		this->get()
-	);
-
 	if(
-		this_ptr != fcppt::null_ptr()
+		ptr_ != fcppt::null_ptr()
 	)
 		Deleter()(
-			this_ptr
+			ptr_
 		);
+}
+
+template<
+	typename Type,
+	typename Deleter
+>
+template<
+	typename Other
+>
+void
+fcppt::unique_ptr<
+	Type,
+	Deleter
+>::reset(
+	Other *const _ptr
+)
+{
+	this->reset();
 
 	ptr_ = _ptr;
 }

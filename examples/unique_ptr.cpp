@@ -70,7 +70,7 @@ test2()
 	);
 
 	return
-		move(
+		fcppt::move(
 			ptr
 		);
 }
@@ -100,7 +100,7 @@ to_shared_ptr(
 	// note: move is found via ADL
 	return
 		shared_int_ptr(
-			move(
+			fcppt::move(
 				ptr
 			)
 		);
