@@ -71,7 +71,8 @@ public:
 	typedef InternalType internal_type;
 
 	/**
-	\brief A type denoting a reference to a mask value (a reference to a boolean, basically).
+	\brief A type denoting a reference to a mask value (a reference to a
+	boolean, basically).
 
 	Note that this is <em>not</em> a bool or internal_type, but a proxy class.
 	*/
@@ -87,7 +88,8 @@ public:
 	typedef bitfield::value_type const_reference;
 
 	/**
-	\brief A type that provides a random-access iterator that can read or modify any element in a bitfield.
+	\brief A type that provides a random-access iterator that can read or
+	modify any element in a bitfield.
 	*/
 	typedef bitfield::iterator<
 		array_type &,
@@ -95,7 +97,8 @@ public:
 	> iterator;
 
 	/**
-	\brief A type that provides a random-access iterator that can read a <code>const</code> element in a bitfield.
+	\brief A type that provides a random-access iterator that can read a
+	<code>const</code> element in a bitfield.
 	*/
 	typedef bitfield::iterator<
 		array_type const &,
@@ -103,14 +106,16 @@ public:
 	> const_iterator;
 
 	/**
-	\brief A type that provides a random-access iterator that can read or modify any element in a reversed bitfield.
+	\brief A type that provides a random-access iterator that can read or
+	modify any element in a reversed bitfield.
 	*/
 	typedef std::reverse_iterator<
 		iterator
 	> reverse_iterator;
 
 	/**
-	\brief A type that provides a random-access iterator that can read any <code>const</code> element in the bitfield.
+	\brief A type that provides a random-access iterator that can read any
+	<code>const</code> element in the bitfield.
 	*/
 	typedef std::reverse_iterator<
 		const_iterator

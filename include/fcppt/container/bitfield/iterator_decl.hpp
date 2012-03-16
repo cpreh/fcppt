@@ -25,7 +25,13 @@ namespace bitfield
 {
 
 /**
-\brief The (random-access) iterator type used by fcppt::container::bitfield::basic
+\brief The (random-access) iterator type used by
+fcppt::container::bitfield::basic
+
+This class provides an iterator over a bitfield, see also
+fcppt::container::bitfield::basic::iterator and
+fcppt::container::bitfield::const_iterator.
+
 \tparam StoredType The (internal) container to iterate over
 \tparam Reference The reference type
 */
@@ -35,21 +41,51 @@ template<
 >
 class iterator
 :
-	public detail::iterator_type<
+	public fcppt::container::bitfield::detail::iterator_type<
 		StoredType,
 		Reference
 	>::type
 {
-	typedef typename detail::iterator_type<
+	typedef typename fcppt::container::bitfield::detail::iterator_type<
 		StoredType,
 		Reference
 	>::type base;
 public:
+	/**
+	\brief The value type associated with the iterator
+
+	The value type is always fcppt::container::bitfield::value_type
+	*/
 	typedef typename base::value_type value_type;
+
+	/**
+	\brief The reference type
+
+	Because it is not possible to provide references to single bits, this
+	type is always a an fcppt::container::bitfield::proxy.
+	*/
 	typedef typename base::reference reference;
+
+	/**
+	\brief The difference type
+	*/
 	typedef typename base::difference_type difference_type;
+
+	/**
+	\brief The pointer type
+
+	This is unused
+	*/
+	typedef typename base::pointer pointer;
+
+	/**
+	\brief The iterator categroy, which is random access
+	*/
 	typedef typename base::iterator_category iterator_category;
 
+	/**
+	\brief Creates a singular iterator
+	*/
 	iterator();
 private:
 	template<

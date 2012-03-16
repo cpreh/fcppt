@@ -27,6 +27,9 @@ namespace bitfield
 
 /**
 \brief The proxy class referencing a single bit in a bitfield
+
+This class is used as a reference type for fcppt::container::bitfield::iterator
+
 \tparam StoredType The internal container type for the bitfield
 */
 template<
@@ -38,9 +41,6 @@ class proxy
 		proxy
 	);
 
-	/**
-	\brief Create a proxy object for an array element
-	*/
 	proxy(
 		StoredType array,
 		size_type pos
@@ -74,12 +74,27 @@ class proxy
 		size_type
 	);
 public:
+	/**
+	\brief Assigns a new value to the bit
+
+	Assign \a rhs to the bit referenced by this proxy.
+
+	\param rhs The new boolean value
+	*/
 	proxy &
 	operator=(
-		value_type
+		fcppt::container::bitfield::value_type rhs
 	);
 
-	operator value_type() const;
+	/**
+	\brief Provides conversion into a bool
+
+	Converts into a boolean value. Depending on whether the bit referenced
+	by this proxy is set or not, the value will be <code>true</code> or
+	<code>false</code>.
+	*/
+	operator
+	fcppt::container::bitfield::value_type() const;
 };
 
 }
