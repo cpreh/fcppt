@@ -24,8 +24,9 @@ namespace fcppt
 Casts the pointer stored in \a _ptr to type <code>U *</code> using
 <code>static_cast</code>.
 
-\tparam T The type of the source shared_ptr
-\tparam U The type of the destination shared_ptr
+\tparam Dest The type of the destination shared_ptr
+
+\tparam Source The type of the source shared_ptr
 
 \param _ptr The source shared_ptr
 
@@ -35,19 +36,26 @@ Casts the pointer stored in \a _ptr to type <code>U *</code> using
 formed.
 */
 template<
-	typename T,
-	typename U,
-	template<
-		typename
-	> class Deleter
+	typename Dest,
+	typename Source,
+	typename Deleter
 >
-fcppt::shared_ptr<T, Deleter> const
+fcppt::shared_ptr<
+	Dest,
+	Deleter
+> const
 static_pointer_cast(
-	fcppt::shared_ptr<U, Deleter> const &_ptr
+	fcppt::shared_ptr<
+		Source,
+		Deleter
+	> const &_ptr
 )
 {
 	return
-		fcppt::shared_ptr<T, Deleter>(
+		fcppt::shared_ptr<
+			Dest,
+			Deleter
+		>(
 			_ptr,
 			boost::detail::static_cast_tag()
 		);

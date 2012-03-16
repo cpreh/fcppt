@@ -8,157 +8,203 @@
 #define FCPPT_WEAK_PTR_IMPL_HPP_INCLUDED
 
 #include <fcppt/weak_ptr_decl.hpp>
+#include <fcppt/shared_ptr_fwd.hpp>
+
 
 template<
-	typename T,
-	template<
-		typename
-	> class Deleter
+	typename Type,
+	typename Deleter
 >
-fcppt::weak_ptr<T, Deleter>::weak_ptr()
+fcppt::weak_ptr<
+	Type,
+	Deleter
+>::weak_ptr()
 :
-	impl()
-{}
-
-template<
-	typename T,
-	template<
-		typename
-	> class Deleter
->
-template<
-	typename Y
->
-fcppt::weak_ptr<T, Deleter>::weak_ptr(
-	weak_ptr<Y, Deleter> const &r
-)
-:
-	impl(r.boost_ptr())
-{}
-
-template<
-	typename T,
-	template<
-		typename
-	> class Deleter
->
-template<
-	typename Y
->
-fcppt::weak_ptr<T, Deleter>::weak_ptr(
-	fcppt::shared_ptr<Y, Deleter> const &r
-)
-:
-	impl(r.boost_ptr())
-{}
-
-template<
-	typename T,
-	template<
-		typename
-	> class Deleter
->
-typename fcppt::weak_ptr<T, Deleter>::shared_ptr const
-fcppt::weak_ptr<T, Deleter>::lock() const
+	impl_()
 {
-       	return shared_ptr(
-		impl.lock()
-	);
 }
 
 template<
-	typename T,
-	template<
-		typename
-	> class Deleter
+	typename Type,
+	typename Deleter
+>
+template<
+	typename Other
+>
+fcppt::weak_ptr<
+	Type,
+	Deleter
+>::weak_ptr(
+	fcppt::weak_ptr<
+		Other,
+		Deleter
+	> const &_other
+)
+:
+	impl_(
+		_other.boost_ptr()
+	)
+{
+}
+
+template<
+	typename Type,
+	typename Deleter
+>
+template<
+	typename Other
+>
+fcppt::weak_ptr<
+	Type,
+	Deleter
+>::weak_ptr(
+	fcppt::shared_ptr<
+		Other,
+		Deleter
+	> const &_other
+)
+:
+	impl_(
+		_other.boost_ptr()
+	)
+{
+}
+
+template<
+	typename Type,
+	typename Deleter
+>
+typename fcppt::weak_ptr<
+	Type,
+	Deleter
+>::shared_ptr const
+fcppt::weak_ptr<
+	Type,
+	Deleter
+>::lock() const
+{
+       	return
+		shared_ptr(
+			impl_.lock()
+		);
+}
+
+template<
+	typename Type,
+	typename Deleter
 >
 long
-fcppt::weak_ptr<T, Deleter>::use_count() const
+fcppt::weak_ptr<
+	Type,
+	Deleter
+>::use_count() const
 {
-	return impl.use_count();
+	return
+		impl_.use_count();
 }
 
 template<
-	typename T,
-	template<
-		typename
-	> class Deleter
+	typename Type,
+	typename Deleter
 >
 bool
-fcppt::weak_ptr<T, Deleter>::expired() const
+fcppt::weak_ptr<
+	Type,
+	Deleter
+>::expired() const
 {
-	return impl.expired();
+	return
+		impl_.expired();
 }
 
 template<
-	typename T,
-	template<
-		typename
-	> class Deleter
+	typename Type,
+	typename Deleter
 >
 void
-fcppt::weak_ptr<T, Deleter>::reset()
+fcppt::weak_ptr<
+	Type,
+	Deleter
+>::reset()
 {
-	impl.reset();
+	impl_.reset();
 }
 
 template<
-	typename T,
-	template<
-		typename
-	> class Deleter
+	typename Type,
+	typename Deleter
 >
 void
-fcppt::weak_ptr<T, Deleter>::swap(
-	weak_ptr &other
+fcppt::weak_ptr<
+	Type,
+	Deleter
+>::swap(
+	weak_ptr &_other
 )
 {
-	impl.swap(
-		other.impl
+	impl_.swap(
+		_other.impl_
 	);
 }
 
 template<
-	typename T,
-	template<
-		typename
-	> class Deleter
+	typename Type,
+	typename Deleter
 >
-typename fcppt::weak_ptr<T, Deleter>::impl_type const
-fcppt::weak_ptr<T, Deleter>::boost_ptr() const
+typename fcppt::weak_ptr<
+	Type,
+	Deleter
+>::impl_type const
+fcppt::weak_ptr<
+	Type,
+	Deleter
+>::boost_ptr() const
 {
-	return impl;
+	return impl_;
 }
 
 template<
-	typename T,
-	typename U,
-	template<
-		typename
-	> class Deleter
+	typename Type1,
+	typename Type2,
+	typename Deleter
 >
 bool
 fcppt::operator<(
-	weak_ptr<T, Deleter> const & a,
-	weak_ptr<U, Deleter> const & b
+	fcppt::weak_ptr<
+		Type1,
+		Deleter
+	> const &_left,
+	fcppt::weak_ptr<
+		Type2,
+		Deleter
+	> const &_right
 )
 {
-	return a.boost_ptr() < b.boost_ptr();
+	return
+		_left.boost_ptr()
+		<
+		_right.boost_ptr();
 }
 
 template<
-	typename T,
-	template<
-		typename
-	> class Deleter
+	typename Type,
+	typename Deleter
 >
 void
 fcppt::swap(
-	weak_ptr<T, Deleter> &a,
-	weak_ptr<T, Deleter> &b
+	fcppt::weak_ptr<
+		Type,
+		Deleter
+	> &_left,
+	fcppt::weak_ptr<
+		Type,
+		Deleter
+	> &_right
 )
 {
-	a.swap(b);
+	_left.swap(
+		_right
+	);
 }
 
 #endif

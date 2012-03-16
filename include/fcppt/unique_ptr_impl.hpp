@@ -23,18 +23,22 @@
 // doxygen says: warning: member `operator fcppt::detail_rv' of class `unique_ptr' cannot be found
 /// \cond FCPPT_DOXYGEN_DEBUG
 template<
-	typename T,
-	template<
-		typename
-	> class Deleter
+	typename Type,
+	typename Deleter
 >
-fcppt::unique_ptr<T, Deleter>::
+fcppt::unique_ptr<
+	Type,
+	Deleter
+>::
 operator fcppt::detail_unique_ptr::rv<
-	fcppt::unique_ptr<T, Deleter>
+	fcppt::unique_ptr<
+		Type,
+		Deleter
+	>
 >()
 {
 	return
-		detail_unique_ptr::rv<
+		fcppt::detail_unique_ptr::rv<
 			unique_ptr
 		>(
 			*this
@@ -43,19 +47,22 @@ operator fcppt::detail_unique_ptr::rv<
 /// \endcond
 
 template<
-	typename T,
-	template<
-		typename
-	> class Deleter
+	typename Type,
+	typename Deleter
 >
-fcppt::unique_ptr<T, Deleter>::unique_ptr(
-	detail_unique_ptr::rv<unique_ptr> _other
+fcppt::unique_ptr<
+	Type,
+	Deleter
+>::unique_ptr(
+	fcppt::detail_unique_ptr::rv<
+		unique_ptr
+	> _other
 )
 :
 	ptr_(
 		_other->release(),
 		fcppt::forward<
-			deleter_type
+			Deleter
 		>(
 			_other->get_deleter()
 		)
@@ -64,14 +71,20 @@ fcppt::unique_ptr<T, Deleter>::unique_ptr(
 }
 
 template<
-	typename T,
-	template<
-		typename
-	> class Deleter
+	typename Type,
+	typename Deleter
 >
-fcppt::unique_ptr<T, Deleter> &
-fcppt::unique_ptr<T, Deleter>::operator=(
-	detail_unique_ptr::rv<unique_ptr> _other
+fcppt::unique_ptr<
+	Type,
+	Deleter
+> &
+fcppt::unique_ptr<
+	Type,
+	Deleter
+>::operator=(
+	fcppt::detail_unique_ptr::rv<
+		unique_ptr
+	> _other
 )
 {
 	this->reset(
@@ -87,33 +100,35 @@ fcppt::unique_ptr<T, Deleter>::operator=(
 }
 
 template<
-	typename T,
-	template<
-		typename
-	> class Deleter
+	typename Type,
+	typename Deleter
 >
-fcppt::unique_ptr<T, Deleter>::unique_ptr()
+fcppt::unique_ptr<
+	Type,
+	Deleter
+>::unique_ptr()
 {
 	BOOST_STATIC_ASSERT(
 		!boost::is_reference<
-			deleter_type
+			Deleter
 		>::value
 	);
 
 	BOOST_STATIC_ASSERT(
 		!boost::is_pointer<
-			deleter_type
+			Deleter
 		>::value
 	);
 }
 
 template<
-	typename T,
-	template<
-		typename
-	> class Deleter
+	typename Type,
+	typename Deleter
 >
-fcppt::unique_ptr<T, Deleter>::unique_ptr(
+fcppt::unique_ptr<
+	Type,
+	Deleter
+>::unique_ptr(
 	pointer const _ptr
 )
 :
@@ -123,31 +138,32 @@ fcppt::unique_ptr<T, Deleter>::unique_ptr(
 {
 	BOOST_STATIC_ASSERT(
 		!boost::is_reference<
-			deleter_type
+			Deleter
 		>::value
 	);
 
 	BOOST_STATIC_ASSERT(
 		!boost::is_pointer<
-			deleter_type
+			Deleter
 		>::value
 	);
 }
 
 template<
-	typename T,
-	template<
-		typename
-	> class Deleter
+	typename Type,
+	typename Deleter
 >
-fcppt::unique_ptr<T, Deleter>::unique_ptr(
+fcppt::unique_ptr<
+	Type,
+	Deleter
+>::unique_ptr(
 	pointer const _ptr,
 	typename boost::mpl::if_<
-		boost::is_reference<deleter_type>,
+		boost::is_reference<Deleter>,
 		volatile typename boost::remove_reference<
-			deleter_type
+			Deleter
 		>::type &,
-		deleter_type
+		Deleter
 	>::type const _deleter
 )
 :
@@ -156,11 +172,11 @@ fcppt::unique_ptr<T, Deleter>::unique_ptr(
 			_ptr
 		),
 		fcppt::forward<
-			deleter_type
+			Deleter
 		>(
 			const_cast<
 				typename boost::add_reference<
-					deleter_type
+					Deleter
 				>::type
 			>(
 				_deleter
@@ -171,19 +187,25 @@ fcppt::unique_ptr<T, Deleter>::unique_ptr(
 }
 
 template<
-	typename T,
-	template<
-		typename
-	> class Deleter
+	typename Type,
+	typename Deleter
 >
 template<
-	typename U
+	typename Other
 >
-fcppt::unique_ptr<T, Deleter>::unique_ptr(
-	unique_ptr<U, Deleter> _other,
+fcppt::unique_ptr<
+	Type,
+	Deleter
+>::unique_ptr(
+	fcppt::unique_ptr<
+		Other,
+		Deleter
+	> _other,
 	typename boost::enable_if<
 		boost::is_convertible<
-			typename unique_ptr<U>::pointer,
+			typename fcppt::unique_ptr<
+				Other
+			>::pointer,
 			pointer
 		>
 	>::type *
@@ -192,7 +214,7 @@ fcppt::unique_ptr<T, Deleter>::unique_ptr(
 	ptr_(
 		_other.release(),
 		fcppt::forward<
-			deleter_type
+			Deleter
 		>(
 			_other.get_deleter()
 		)
@@ -201,24 +223,29 @@ fcppt::unique_ptr<T, Deleter>::unique_ptr(
 }
 
 template<
-	typename T,
-	template<
-		typename
-	> class Deleter
+	typename Type,
+	typename Deleter
 >
-fcppt::unique_ptr<T, Deleter>::~unique_ptr()
+fcppt::unique_ptr<
+	Type,
+	Deleter
+>::~unique_ptr()
 {
 	this->reset();
 }
 
 template<
-	typename T,
-	template<
-		typename
-	> class Deleter
+	typename Type,
+	typename Deleter
 >
-fcppt::unique_ptr<T, Deleter> &
-fcppt::unique_ptr<T, Deleter>::operator=(
+fcppt::unique_ptr<
+	Type,
+	Deleter
+> &
+fcppt::unique_ptr<
+	Type,
+	Deleter
+>::operator=(
 	bool_type
 )
 {
@@ -228,17 +255,24 @@ fcppt::unique_ptr<T, Deleter>::operator=(
 }
 
 template<
-	typename T,
-	template<
-		typename
-	> class Deleter
+	typename Type,
+	typename Deleter
 >
 template<
-	typename U
+	typename Other
 >
-fcppt::unique_ptr<T, Deleter> &
-fcppt::unique_ptr<T, Deleter>::operator=(
-	unique_ptr<U, Deleter> _other
+fcppt::unique_ptr<
+	Type,
+	Deleter
+> &
+fcppt::unique_ptr<
+	Type,
+	Deleter
+>::operator=(
+	fcppt::unique_ptr<
+		Other,
+		Deleter
+	> _other
 )
 {
 	this->reset(
@@ -254,61 +288,80 @@ fcppt::unique_ptr<T, Deleter>::operator=(
 }
 
 template<
-	typename T,
-	template<
-		typename
-	> class Deleter
+	typename Type,
+	typename Deleter
 >
-typename boost::add_reference<T>::type
-fcppt::unique_ptr<T, Deleter>::operator*() const
+typename boost::add_reference<
+	Type
+>::type
+fcppt::unique_ptr<
+	Type,
+	Deleter
+>::operator*() const
 {
 	return *this->get();
 }
 
 template<
-	typename T,
-	template<
-		typename
-	> class Deleter
+	typename Type,
+	typename Deleter
 >
-typename fcppt::unique_ptr<T, Deleter>::pointer
-fcppt::unique_ptr<T, Deleter>::operator->() const
+typename fcppt::unique_ptr<
+	Type,
+	Deleter
+>::pointer
+fcppt::unique_ptr<
+	Type,
+	Deleter
+>::operator->() const
 {
 	return this->get();
 }
 
 template<
-	typename T,
-	template<
-		typename
-	> class Deleter
+	typename Type,
+	typename Deleter
 >
-typename fcppt::unique_ptr<T, Deleter>::pointer
-fcppt::unique_ptr<T, Deleter>::get() const
+typename fcppt::unique_ptr<
+	Type,
+	Deleter
+>::pointer
+fcppt::unique_ptr<
+	Type,
+	Deleter
+>::get() const
 {
 	return ptr_.first();
 }
 
 template<
-	typename T,
-	template<
-		typename
-	> class Deleter
+	typename Type,
+	typename Deleter
 >
-typename fcppt::unique_ptr<T, Deleter>::deleter_reference
-fcppt::unique_ptr<T, Deleter>::get_deleter()
+typename fcppt::unique_ptr<
+	Type,
+	Deleter
+>::deleter_reference
+fcppt::unique_ptr<
+	Type,
+	Deleter
+>::get_deleter()
 {
 	return ptr_.second();
 }
 
 template<
-	typename T,
-	template<
-		typename
-	> class Deleter
+	typename Type,
+	typename Deleter
 >
-typename fcppt::unique_ptr<T, Deleter>::deleter_const_reference
-fcppt::unique_ptr<T, Deleter>::get_deleter() const
+typename fcppt::unique_ptr<
+	Type,
+	Deleter
+>::deleter_const_reference
+fcppt::unique_ptr<
+	Type,
+	Deleter
+>::get_deleter() const
 {
 	return ptr_.second();
 }
@@ -316,13 +369,17 @@ fcppt::unique_ptr<T, Deleter>::get_deleter() const
 // Doxygen says: warning: member `operator int fcppt::unique_ptr' of class `unique_ptr' cannot be found
 /// \cond FCPPT_DOXYGEN_DEBUG
 template<
-	typename T,
-	template<
-		typename
-	> class Deleter
+	typename Type,
+	typename Deleter
 >
-fcppt::unique_ptr<T, Deleter>::
-operator int fcppt::unique_ptr<T, Deleter>::nat::*() const
+fcppt::unique_ptr<
+	Type,
+	Deleter
+>::
+operator int fcppt::unique_ptr<
+	Type,
+	Deleter
+>::nat::*() const
 {
 	return
 		this->get()
@@ -335,13 +392,14 @@ operator int fcppt::unique_ptr<T, Deleter>::nat::*() const
 /// \endcond
 
 template<
-	typename T,
-	template<
-		typename
-	> class Deleter
+	typename Type,
+	typename Deleter
 >
 void
-fcppt::unique_ptr<T, Deleter>::reset(
+fcppt::unique_ptr<
+	Type,
+	Deleter
+>::reset(
 	pointer const _ptr
 )
 {
@@ -360,13 +418,17 @@ fcppt::unique_ptr<T, Deleter>::reset(
 }
 
 template<
-	typename T,
-	template<
-		typename
-	> class Deleter
+	typename Type,
+	typename Deleter
 >
-typename fcppt::unique_ptr<T, Deleter>::pointer
-fcppt::unique_ptr<T, Deleter>::release()
+typename fcppt::unique_ptr<
+	Type,
+	Deleter
+>::pointer
+fcppt::unique_ptr<
+	Type,
+	Deleter
+>::release()
 {
 	pointer const this_ptr(
 		this->get()
@@ -378,33 +440,38 @@ fcppt::unique_ptr<T, Deleter>::release()
 }
 
 template<
-	typename T,
-	template<
-		typename
-	> class Deleter
+	typename Type,
+	typename Deleter
 >
 void
-fcppt::unique_ptr<T, Deleter>::swap(
+fcppt::unique_ptr<
+	Type,
+	Deleter
+>::swap(
 	unique_ptr &_other
 )
 {
-	detail_unique_ptr::swap(
+	fcppt::detail_unique_ptr::swap(
 		ptr_,
 		_other.ptr_
 	);
 }
 
 template<
-	typename T,
-	template<
-		typename
-	> class D
+	typename Type,
+	typename Deleter
 >
 inline
 void
 fcppt::swap(
-	unique_ptr<T, D> &_left,
-	unique_ptr<T, D> &_right
+	fcppt::unique_ptr<
+		Type,
+		Deleter
+	> &_left,
+	fcppt::unique_ptr<
+		Type,
+		Deleter
+	> &_right
 )
 {
 	_left.swap(
@@ -413,17 +480,21 @@ fcppt::swap(
 }
 
 template<
-	typename T1,
-	typename T2,
-	template<
-		typename
-	> class D
+	typename Type1,
+	typename Type2,
+	typename Deleter
 >
 inline
 bool
 fcppt::operator==(
-	unique_ptr<T1, D> const &_left,
-	unique_ptr<T2, D> const &_right
+	fcppt::unique_ptr<
+		Type1,
+		Deleter
+	> const &_left,
+	fcppt::unique_ptr<
+		Type2,
+		Deleter
+	> const &_right
 )
 {
 	return
@@ -433,17 +504,21 @@ fcppt::operator==(
 }
 
 template<
-	typename T1,
-	typename T2,
-	template<
-		typename
-	> class D
+	typename Type1,
+	typename Type2,
+	typename Deleter
 >
 inline
 bool
 fcppt::operator!=(
-	unique_ptr<T1, D> const &_left,
-	unique_ptr<T2, D> const &_right
+	fcppt::unique_ptr<
+		Type1,
+		Deleter
+	> const &_left,
+	fcppt::unique_ptr<
+		Type2,
+		Deleter
+	> const &_right
 )
 {
 	return
@@ -455,17 +530,21 @@ fcppt::operator!=(
 }
 
 template<
-	typename T1,
-	typename T2,
-	template<
-		typename
-	> class D
+	typename Type1,
+	typename Type2,
+	typename Deleter
 >
 inline
 bool
 fcppt::operator<(
-	unique_ptr<T1, D> const &_left,
-	unique_ptr<T2, D> const &_right
+	fcppt::unique_ptr<
+		Type1,
+		Deleter
+	> const &_left,
+	fcppt::unique_ptr<
+		Type2,
+		Deleter
+	> const &_right
 )
 {
 	return
@@ -475,17 +554,21 @@ fcppt::operator<(
 }
 
 template<
-	typename T1,
-	typename T2,
-	template<
-		typename
-	> class D
+	typename Type1,
+	typename Type2,
+	typename Deleter
 >
 inline
 bool
 fcppt::operator<=(
-	unique_ptr<T1, D> const &_left,
-	unique_ptr<T2, D> const &_right
+	fcppt::unique_ptr<
+		Type1,
+		Deleter
+	> const &_left,
+	fcppt::unique_ptr<
+		Type2,
+		Deleter
+	> const &_right
 )
 {
 	return
@@ -497,17 +580,21 @@ fcppt::operator<=(
 }
 
 template<
-	typename T1,
-	typename T2,
-	template<
-		typename
-	> class D
+	typename Type1,
+	typename Type2,
+	typename Deleter
 >
 inline
 bool
 fcppt::operator>(
-	unique_ptr<T1, D> const &_left,
-	unique_ptr<T2, D> const &_right
+	fcppt::unique_ptr<
+		Type1,
+		Deleter
+	> const &_left,
+	fcppt::unique_ptr<
+		Type2,
+		Deleter
+	> const &_right
 )
 {
 	return
@@ -517,17 +604,21 @@ fcppt::operator>(
 }
 
 template<
-	typename T1,
-	typename T2,
-	template<
-		typename
-	> class D
+	typename Type1,
+	typename Type2,
+	typename Deleter
 >
 inline
 bool
 fcppt::operator>=(
-	unique_ptr<T1, D> const &_left,
-	unique_ptr<T2, D> const &_right
+	fcppt::unique_ptr<
+		Type1,
+		Deleter
+	> const &_left,
+	fcppt::unique_ptr<
+		Type2,
+		Deleter
+	> const &_right
 )
 {
 	return

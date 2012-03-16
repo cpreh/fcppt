@@ -21,10 +21,8 @@ namespace fcppt
 {
 
 template<
-	typename T,
-	template<
-		typename
-	> class Deleter
+	typename Type,
+	typename Deleter
 >
 class scoped_ptr
 {
@@ -32,23 +30,30 @@ class scoped_ptr
 		scoped_ptr
 	);
 
-	FCPPT_SAFE_BOOL(scoped_ptr)
+	FCPPT_SAFE_BOOL(
+		scoped_ptr
+	)
 public:
 	typedef typename boost::add_reference<
-		T
+		Type
 	>::type reference;
 
-	typedef T *pointer;
+	typedef Type *pointer;
 
-	explicit scoped_ptr(
+	explicit
+	scoped_ptr(
 		pointer = fcppt::null_ptr()
 	);
 
 	template<
-		typename Y
+		typename Other
 	>
-	explicit scoped_ptr(
-		unique_ptr<Y, Deleter>
+	explicit
+	scoped_ptr(
+		fcppt::unique_ptr<
+			Other,
+			Deleter
+		>
 	);
 
 	~scoped_ptr();
@@ -76,14 +81,20 @@ public:
 	);
 
 	template<
-		typename Y
+		typename Other
 	>
 	void
 	take(
-		unique_ptr<Y, Deleter>
+		fcppt::unique_ptr<
+			Other,
+			Deleter
+		>
 	);
 
-	unique_ptr<T, Deleter>
+	fcppt::unique_ptr<
+		Type,
+		Deleter
+	>
 	release();
 private:
 	bool
@@ -93,15 +104,19 @@ private:
 };
 
 template<
-	typename T,
-	template<
-		typename
-	> class Deleter
+	typename Type,
+	typename Deleter
 >
 void
 swap(
-	scoped_ptr<T, Deleter> &,
-	scoped_ptr<T, Deleter> &
+	fcppt::scoped_ptr<
+		Type,
+		Deleter
+	> &,
+	fcppt::scoped_ptr<
+		Type,
+		Deleter
+	> &
 );
 
 }

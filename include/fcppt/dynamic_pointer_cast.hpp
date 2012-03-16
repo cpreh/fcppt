@@ -26,8 +26,9 @@ Casts the pointer stored in \a _ptr to type <code>U *</code> using
 *</code> be members of the same class hierarchy. If the cast succeeds, the
 resulting shared_ptr will share ownership with the source.
 
-\tparam T The type of the source shared_ptr
-\tparam U The type of the destination shared_ptr
+\tparam Dest The type of the destination shared_ptr
+
+\tparam Source The type of the source shared_ptr
 
 \param _ptr The source shared_ptr
 
@@ -35,19 +36,26 @@ resulting shared_ptr will share ownership with the source.
 <code>dynamic_cast</code> fails
 */
 template<
-	typename T,
-	typename U,
-	template<
-		typename
-	> class Deleter
+	typename Dest,
+	typename Source,
+	typename Deleter
 >
-shared_ptr<T, Deleter> const
+fcppt::shared_ptr<
+	Dest,
+	Deleter
+> const
 dynamic_pointer_cast(
-	shared_ptr<U, Deleter> const &_ptr
+	fcppt::shared_ptr<
+		Source,
+		Deleter
+	> const &_ptr
 )
 {
 	return
-		fcppt::shared_ptr<T, Deleter>(
+		fcppt::shared_ptr<
+			Dest,
+			Deleter
+		>(
 			_ptr,
 			boost::detail::dynamic_cast_tag()
 		);

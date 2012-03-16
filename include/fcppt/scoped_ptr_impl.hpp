@@ -17,12 +17,13 @@
 
 
 template<
-	typename T,
-	template<
-		typename
-	> class Deleter
+	typename Type,
+	typename Deleter
 >
-fcppt::scoped_ptr<T, Deleter>::scoped_ptr(
+fcppt::scoped_ptr<
+	Type,
+	Deleter
+>::scoped_ptr(
 	pointer const _ptr
 )
 :
@@ -33,16 +34,20 @@ fcppt::scoped_ptr<T, Deleter>::scoped_ptr(
 }
 
 template<
-	typename T,
-	template<
-		typename
-	> class Deleter
+	typename Type,
+	typename Deleter
 >
 template<
-	typename Y
+	typename Other
 >
-fcppt::scoped_ptr<T, Deleter>::scoped_ptr(
-	unique_ptr<Y, Deleter> _ptr
+fcppt::scoped_ptr<
+	Type,
+	Deleter
+>::scoped_ptr(
+	fcppt::unique_ptr<
+		Other,
+		Deleter
+	> _ptr
 )
 :
 	ptr_(
@@ -52,26 +57,28 @@ fcppt::scoped_ptr<T, Deleter>::scoped_ptr(
 }
 
 template<
-	typename T,
-	template<
-		typename
-	> class Deleter
+	typename Type,
+	typename Deleter
 >
-fcppt::scoped_ptr<T, Deleter>::~scoped_ptr()
+fcppt::scoped_ptr<
+	Type,
+	Deleter
+>::~scoped_ptr()
 {
-	Deleter<T>()(
+	Deleter()(
 		ptr_
 	);
 }
 
 template<
-	typename T,
-	template<
-		typename
-	> class Deleter
+	typename Type,
+	typename Deleter
 >
 void
-fcppt::scoped_ptr<T, Deleter>::reset(
+fcppt::scoped_ptr<
+	Type,
+	Deleter
+>::reset(
 	pointer const _ptr
 )
 {
@@ -83,61 +90,75 @@ fcppt::scoped_ptr<T, Deleter>::reset(
 }
 
 template<
-	typename T,
-	template<
-		typename
-	> class Deleter
+	typename Type,
+	typename Deleter
 >
-typename fcppt::scoped_ptr<T, Deleter>::reference
-fcppt::scoped_ptr<T, Deleter>::operator*() const
+typename fcppt::scoped_ptr<
+	Type,
+	Deleter
+>::reference
+fcppt::scoped_ptr<
+	Type,
+	Deleter
+>::operator*() const
 {
 	return *ptr_;
 }
 
 template<
-	typename T,
-	template<
-		typename
-	> class Deleter
+	typename Type,
+	typename Deleter
 >
-typename fcppt::scoped_ptr<T, Deleter>::pointer
-fcppt::scoped_ptr<T, Deleter>::operator->() const
+typename fcppt::scoped_ptr<
+	Type,
+	Deleter
+>::pointer
+fcppt::scoped_ptr<
+	Type,
+	Deleter
+>::operator->() const
 {
 	return ptr_;
 }
 
 template<
-	typename T,
-	template<
-		typename
-	> class Deleter
+	typename Type,
+	typename Deleter
 >
-typename fcppt::scoped_ptr<T, Deleter>::pointer
-fcppt::scoped_ptr<T, Deleter>::get() const
+typename fcppt::scoped_ptr<
+	Type,
+	Deleter
+>::pointer
+fcppt::scoped_ptr<
+	Type,
+	Deleter
+>::get() const
 {
 	return ptr_;
 }
 
 template<
-	typename T,
-	template<
-		typename
-	> class Deleter
+	typename Type,
+	typename Deleter
 >
 bool
-fcppt::scoped_ptr<T, Deleter>::operator! () const
+fcppt::scoped_ptr<
+	Type,
+	Deleter
+>::operator! () const
 {
 	return !ptr_;
 }
 
 template<
-	typename T,
-	template<
-		typename
-	> class Deleter
+	typename Type,
+	typename Deleter
 >
 void
-fcppt::scoped_ptr<T, Deleter>::swap(
+fcppt::scoped_ptr<
+	Type,
+	Deleter
+>::swap(
 	scoped_ptr &_other
 )
 {
@@ -148,35 +169,43 @@ fcppt::scoped_ptr<T, Deleter>::swap(
 }
 
 template<
-	typename T,
-	template<
-		typename
-	> class Deleter
+	typename Type,
+	typename Deleter
 >
 template<
-	typename Y
+	typename Other
 >
 void
-fcppt::scoped_ptr<T, Deleter>::take(
-	unique_ptr<Y, Deleter> _ptr
+fcppt::scoped_ptr<
+	Type,
+	Deleter
+>::take(
+	fcppt::unique_ptr<
+		Other,
+		Deleter
+	> _ptr
 )
 {
-	reset();
+	this->reset();
 
 	ptr_ = _ptr.release();
 }
 
 template<
-	typename T,
-	template<
-		typename
-	> class Deleter
+	typename Type,
+	typename Deleter
 >
-fcppt::unique_ptr<T, Deleter>
-fcppt::scoped_ptr<T, Deleter>::release()
+fcppt::unique_ptr<
+	Type,
+	Deleter
+>
+fcppt::scoped_ptr<
+	Type,
+	Deleter
+>::release()
 {
 	fcppt::unique_ptr<
-		T,
+		Type,
 		Deleter
 	> ret(
 		ptr_
@@ -191,27 +220,35 @@ fcppt::scoped_ptr<T, Deleter>::release()
 }
 
 template<
-	typename T,
-	template<
-		typename
-	> class Deleter
+	typename Type,
+	typename Deleter
 >
 bool
-fcppt::scoped_ptr<T, Deleter>::boolean_test() const
+fcppt::scoped_ptr<
+	Type,
+	Deleter
+>::boolean_test() const
 {
-	return ptr_ != fcppt::null_ptr();
+	return
+		ptr_
+		!=
+		fcppt::null_ptr();
 }
 
 template<
-	typename T,
-	template<
-		typename
-	> class Deleter
+	typename Type,
+	typename Deleter
 >
 void
 fcppt::swap(
-	scoped_ptr<T, Deleter> &_a,
-	scoped_ptr<T, Deleter> &_b
+	fcppt::scoped_ptr<
+		Type,
+		Deleter
+	> &_a,
+	fcppt::scoped_ptr<
+		Type,
+		Deleter
+	> &_b
 )
 {
 	_a.swap(

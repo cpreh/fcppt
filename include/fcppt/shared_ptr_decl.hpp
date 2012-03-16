@@ -20,261 +20,548 @@
 namespace fcppt
 {
 
-/// A shared_ptr class that get's the deleter as template parameter
-/* The class is implemented using boost::shared_ptr so it will inherit
- * all its traits. This means that the class also uses type erasure
- * for its deleter and internal ref count.
+/**
+\brief A shared pointer class that get's the deleter as template parameter
+
+The class is implemented using <code>boost::shared_ptr</code>, so it will
+inherit all its traits. This means that the class also uses type erasure for
+its deleter and internal ref count.
+
+\tparam Type The type the shared pointer points to
+
+\tparam Deleter A deleter class that must be callable with a pointer to T.
 */
 template<
-	typename T,
-	template<
-		typename
-	> class Deleter
+	typename Type,
+	typename Deleter
 >
 class shared_ptr
 {
 public:
-	typedef boost::shared_ptr<T> impl_type;
+	/**
+	\brief The type of the <code>boost::shared_ptr</code> used to implement
+	this class
+	*/
+	typedef boost::shared_ptr<
+		Type
+	> impl_type;
+
+	/**
+	\brief The element type, which is T
+	*/
 	typedef typename impl_type::element_type element_type;
+
+	/**
+	\brief Same as element_type
+	*/
 	typedef typename impl_type::value_type value_type;
+
+	/**
+	\brief The pointer type, same as <code>value_type *</code>
+	*/
 	typedef typename impl_type::pointer pointer;
+
+	/**
+	\brief The reference type, same as <code>value_type &</code>
+	*/
 	typedef typename impl_type::reference reference;
 
+	/**
+	\brief Constructs an empty shared_ptr
+
+	The shared_ptr will not be set, and get() will return a null pointer
+	*/
 	shared_ptr();
 
+	/**
+	\brief Constructs a shared_ptr from a compatible pointer type
+
+	Contructs a shared_ptr from \a pointer, taking ownership over it.
+
+	\tparam Other A type, so that <code>Other *</code> is implicitly
+	convertible to <code>Type *</code>
+
+	\param pointer The pointer to take ownership of
+	*/
 	template<
-		typename Y
+		typename Other
 	>
-	explicit shared_ptr(
-		Y *
+	explicit
+	shared_ptr(
+		Other *pointer
 	);
 
+	/**
+	\brief Constructs a shared_ptr from a compatible pointer type and allocator
+
+	Contructs a shared_ptr from \a pointer, taking ownership over it, also
+	using \a allocator to manage the reference counts.
+
+	\tparam Other A type, so that <code>Other *</code> is implicitly
+	convertible to <code>Type *</code>
+
+	\tparam Alloc An allocator type
+
+	\param pointer The pointer to take ownership of
+
+	\param allocator The allocator to use for reference counting
+	*/
 	template<
-		typename Y,
-		typename A
+		typename Other,
+		typename Alloc
 	>
 	shared_ptr(
-		Y *,
-		A const &
+		Other *pointer,
+		Alloc const &allocator
 	);
 
+	/**
+	\brief Constructs a shared_ptr from a compatible weak_ptr
+
+	Constructs a shared_ptr from the weak_ptr \a ref. If the weak_ptr still
+	refers to a shared_ptr, then this constructor will behave as if the
+	copy constructor with that shared_ptr was invoked instead. Otherwise,
+	the shared_ptr will be constructed as empty.
+
+	\tparam Other A type, so that <code>Other *</code> is implicitly
+	convertible to <code>Type *</code>
+
+	\param ref The weak_ptr to copy from
+	*/
 	template<
-		typename Y
+		typename Other
 	>
-	explicit shared_ptr(
-		weak_ptr<Y, Deleter> const &
+	explicit
+	shared_ptr(
+		fcppt::weak_ptr<
+			Other,
+			Deleter
+		> const &ref
 	);
 
+	/**
+	\brief Constructs a shared_ptr from a compatible shared_ptr
+
+	Constructs a shared_ptr from \a ref. If \a ref is empty, then the
+	constructed shared_ptr will be empty. Otherwise, the reference count
+	will be increased by one.
+
+	\tparam Other A type, so that <code>Other *</code> is implicitly
+	convertible to <code>Type *</code>
+
+	\param ref The shared pointer to copy from
+	*/
 	template<
-		typename Y
+		typename Other
 	>
 	shared_ptr(
-		shared_ptr<Y> const &
+		fcppt::shared_ptr<
+			Other,
+			Deleter
+		> const &ref
 	);
 
+// \cond
+// Internal constructors that maybe should become private  They are public so
+// that the compatibility to boost::shared_ptr is as good as possible.
 	template<
-		typename Y
+		typename Other
 	>
 	shared_ptr(
-		shared_ptr<Y> const &,
+		fcppt::shared_ptr<
+			Other,
+			Deleter
+		> const &,
 		boost::detail::static_cast_tag
 	);
 
 	template<
-		typename Y
+		typename Other
 	>
 	shared_ptr(
-		shared_ptr<Y> const &,
+		fcppt::shared_ptr<
+			Other,
+			Deleter
+		> const &,
 		boost::detail::const_cast_tag
 	);
 
 	template<
-		typename Y
+		typename Other
 	>
 	shared_ptr(
-		shared_ptr<Y> const &,
+		fcppt::shared_ptr<
+			Other,
+			Deleter
+		> const &,
 		boost::detail::dynamic_cast_tag
 	);
 
 	template<
-		typename Y
+		typename Other
 	>
 	shared_ptr(
-		shared_ptr<Y> const &,
+		fcppt::shared_ptr<
+			Other,
+			Deleter
+		> const &,
 		boost::detail::polymorphic_cast_tag
 	);
+// \endcond
 
+	/**
+	\brief Constructs a shared_ptr from a compatible unique_ptr
+
+	Constructs a shared_ptr from the unique_ptr \a ref.
+	If the unique_ptr holds a pointer, then this shared_ptr will take
+	ownership. Otherwise, the shared_ptr will be empy.
+
+	\tparam Other A type, so that <code>Other *</code> is implicitly
+	convertible to <code>Type *</code>
+
+	\param ref The unique_ptr to take ownership from
+	*/
 	template<
-		typename Y
+		typename Other
 	>
-	explicit shared_ptr(
-		unique_ptr<Y, Deleter>
+	explicit
+	shared_ptr(
+		fcppt::unique_ptr<
+			Other,
+			Deleter
+		>
 	);
 
+	/**
+	\brief Assigns a shared_ptr from a compatible shared_ptr
+
+	Assigns this shared_ptr from \a ref. In any case, the reference count
+	of the current shared_ptr will be decreased by one, possibly leading to
+	the destruction of the object. If \a ref is empty, then this shared_ptr
+	will also be empty. Otherwise, the shared count of \a ref will be
+	increased by one and this shared_ptr will also take ownership.
+
+	\tparam Other A type, so that <code>Other *</code> is implicitly
+	convertible to <code>Type *</code>
+
+	\param ref The shared_ptr to assign from
+	*/
 	template<
-		typename Y
+		typename Other
 	>
 	shared_ptr &
 	operator=(
-		shared_ptr<Y> const &
+		fcppt::shared_ptr<
+			Other,
+			Deleter
+		> const &ref
 	);
 
+	/**
+	\brief Assigns a shared_ptr from a compatible unique_ptr
+
+	Assigns this shared_ptr from \a ref. In any case, the reference count
+	of the current shared_ptr will be decreased by one, possibly leading to
+	the destruction of the object. If \a ref is empty, then this shared_ptr
+	will also be empty. Otherwise, this shared_ptr will take onwerhsip of
+	the pointer from \a ref.
+
+	\tparam Other A type, so that <code>Other *</code> is implicitly
+	convertible to <code>T *</code>
+
+	\param ref The shared_ptr to assign from
+	*/
 	template<
-		typename Y
+		typename Other
 	>
 	shared_ptr &
 	operator=(
-		unique_ptr<Y, Deleter>
+		fcppt::unique_ptr<
+			Other,
+			Deleter
+		> ref
 	);
 
+	/**
+	\brief Destroys this shared_ptr
+
+	If this shared_ptr is empty, nothing happens. Otherwise, the shared
+	count will be decreased by one, possibly leading to the destruction of
+	the object. Deletion will be done calling Deleter().
+	*/
 	~shared_ptr();
 
+	/**
+	\brief Resets this shared_ptr
+
+	If this shared_ptr is empty, nothing happens. Otherwise, the shared
+	count will be decreased by one, possibly leading to the destruction of
+	the object. In any case, this shared_ptr will be empty.
+	*/
 	void
 	reset();
 
+	/**
+	\brief Resets this shared_ptr from a compatible pointer type
+
+	If this shared_ptr is empty, no possible destruction happens.
+	Otherwise, the shared count will be decreased by one, possibly leading
+	to the destruction of the object. After that, this shared_ptr will take
+	ownership of \a pointer.
+
+	\tparam Other A type, so that <code>Other *</code> is implicitly
+	convertible to <code>T *</code>
+
+	\param pointer The pointer to take ownership of
+	*/
 	template<
-		typename Y
+		typename Other
 	>
 	void
 	reset(
-		Y *
+		Other *pointer
 	);
 
+	/**
+	\brief Resets this shared_ptr from a compatible pointer type, and
+	resets the allocator
+
+	If this shared_ptr is empty, no possible destruction happens.
+	Otherwise, the shared count will be decreased by one, possibly leading
+	to the destruction of the object. After that, this shared_ptr will take
+	ownership of \a pointer. The allocation of the new shared count will be
+	done by \a allocator and the shared_ptr will use this allocator from
+	here on.
+
+	\tparam Other A type, so that <code>Other *</code> is implicitly
+	convertible to <code>T *</code>
+
+	\tparam Alloc An allocator type
+
+	\param pointer The pointer to take ownership of
+
+	\param alloactor The new allocator to use
+	*/
 	template<
-		typename Y,
-		typename A
+		typename Other,
+		typename Alloc
 	>
 	void
 	reset(
-		Y *,
-		A const &
+		Other *pointer,
+		Alloc const &alloactor
 	);
 
+	/**
+	\brief Dereferences the owned object
+
+	Returns a reference to the owned object.
+
+	\warning The behaviour is undefined if the shared_ptr is empty.
+	*/
 	reference
 	operator* () const;
 
+	/**
+	\brief Dereferences a member of the owned object
+
+	Returns a pointer to the owned object.
+
+	\warning The behaviour is undefined if the shared_ptr is empty.
+	*/
 	pointer
 	operator-> () const;
 
+	/**
+	\brief Returns a pointer to the owned object
+
+	Returns a pointer to the owned object or the null pointer if the
+	shared_ptr is empty.
+	*/
 	pointer
 	get() const;
 
 	typedef typename impl_type::unspecified_bool_type unspecified_bool_type;
 
+	/**
+	\brief The safe bool trick
+
+	Returns something that evaluates to true if the shared_ptr is not empty
+	and false otherwise
+	*/
 	operator unspecified_bool_type() const;
 
+	/**
+	\brief The negation operator
+
+	Returns true if the shared_ptr is empty and false otherwise.
+	*/
 	bool
 	operator! () const;
 
+	/**
+	\brief Returns if this shared_ptr is the only owner of the current object
+
+	If the shared_ptr is empty, the behaviour is unspecified. Otherwise,
+	true will be returned if this shared_ptr is the only shared_ptr that
+	takes part in the ownership of the currently owned object.
+	*/
 	bool
 	unique() const;
 
+	/**
+	\brief The use count
+
+	If this shared_ptr is empty, 0 will be returned. Otherwise, the number
+	of shared_ptr objects owning the currently owned object will be
+	returned.
+
+	\note This type is <code>long</code> because
+	<code>boost::shared_ptr</code> also uses <code>long</code>.
+	*/
 	long
 	use_count() const;
 
+	/**
+	\brief Swaps the shared_ptr
+
+	Swaps the shared_ptr with \a other.
+
+	\param other The shared_ptr to swap with
+	*/
 	void
 	swap(
-		shared_ptr<T> &
+		shared_ptr &other
 	);
 
+	/**
+	\brief Returns the underlying <code>boost::shared_ptr</code> object
+	*/
 	impl_type const
 	boost_ptr() const;
 
+// \cond
 	template<
-		typename U
+		typename Other
 	>
 	shared_ptr(
-		detail::make_shared_wrapper<U>
+		fcppt::detail::make_shared_wrapper<
+			Other
+		>
 	);
+// \endcond
 private:
 	impl_type impl_;
 
 	// This is used to create a shared_ptr from a weak_ptr
 	template<
-		typename U
+		typename Other
 	>
-	explicit shared_ptr(
-		boost::shared_ptr<U>
+	explicit
+	shared_ptr(
+		boost::shared_ptr<
+			Other
+		>
 	);
-
-	static Deleter<T> const
-	deleter();
 
 	template<
 		typename Other,
-		template<
-			typename
-		> class OtherDeleter
+		typename OtherDeleter
 	>
 	friend class shared_ptr;
 
-	friend class weak_ptr<T, Deleter>;
+	friend class fcppt::weak_ptr<
+		Type,
+		Deleter
+	>;
 };
 
 template<
-	typename T,
-	typename U,
-	template<
-		typename
-	> class Deleter
+	typename Type1,
+	typename Type2,
+	typename Deleter
 >
 bool
 operator==(
-	shared_ptr<T, Deleter> const &,
-	shared_ptr<U, Deleter> const &
+	fcppt::shared_ptr<
+		Type1,
+		Deleter
+	> const &,
+	fcppt::shared_ptr<
+		Type2,
+		Deleter
+	> const &
 );
 
 template<
-	typename T,
-	typename U,
-	template<
-		typename
-	> class Deleter
+	typename Type1,
+	typename Type2,
+	typename Deleter
 >
 bool
 operator!=(
-	shared_ptr<T, Deleter> const &,
-	shared_ptr<U, Deleter> const &
+	fcppt::shared_ptr<
+		Type1,
+		Deleter
+	> const &,
+	fcppt::shared_ptr<
+		Type2,
+		Deleter
+	> const &
 );
 
 template<
-	typename T,
-	typename U,
-	template<
-		typename
-	> class Deleter
+	typename Type1,
+	typename Type2,
+	typename Deleter
 >
 bool
 operator<(
-	shared_ptr<T, Deleter> const &,
-	shared_ptr<U, Deleter> const &
+	fcppt::shared_ptr<
+		Type1,
+		Deleter
+	> const &,
+	fcppt::shared_ptr<
+		Type2,
+		Deleter
+	> const &
 );
 
 template<
-	typename T,
-	typename U,
-	template<
-		typename
-	> class Deleter
+	typename Type,
+	typename Deleter
 >
 void
 swap(
-	shared_ptr<T, Deleter> &,
-	shared_ptr<T, Deleter> &
+	fcppt::shared_ptr<
+		Type,
+		Deleter
+	> &,
+	fcppt::shared_ptr<
+		Type,
+		Deleter
+	> &
 );
 
 template<
 	typename Ch,
 	typename Traits,
-	typename T,
-	template<
-		typename
-	> class Deleter
+	typename Type,
+	typename Deleter
 >
-std::basic_ostream<Ch, Traits> &
+std::basic_ostream<
+	Ch,
+	Traits
+> &
 operator<< (
-	std::basic_ostream<Ch, Traits> &,
-	shared_ptr<T, Deleter> const &
+	std::basic_ostream<
+		Ch,
+		Traits
+	> &,
+	fcppt::shared_ptr<
+		Type,
+		Deleter
+	> const &
 );
 
 }

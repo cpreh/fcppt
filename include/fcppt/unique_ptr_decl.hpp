@@ -34,35 +34,31 @@ FCPPT_PP_PUSH_WARNING
 FCPPT_PP_DISABLE_ICC_WARNING(2289)
 FCPPT_PP_DISABLE_ICC_WARNING(2304)
 template<
-	typename T,
-	template<
-		typename
-	> class Deleter
+	typename Type,
+	typename Deleter
 >
 class unique_ptr
 {
 public:
-	typedef T element_type;
+	typedef Type element_type;
 
-	typedef Deleter<T> deleter_type;
-
-	typedef typename detail_unique_ptr::pointer_type<
+	typedef typename fcppt::detail_unique_ptr::pointer_type<
     		element_type,
-		deleter_type
+		Deleter
 	>::type pointer;
 
 private:
-	detail_unique_ptr::storage<
+	fcppt::detail_unique_ptr::storage<
 		pointer,
-		deleter_type
+		Deleter
 	> ptr_;
 
 	typedef typename boost::add_reference<
-		deleter_type
+		Deleter
 	>::type deleter_reference;
 
 	typedef typename boost::add_reference<
-		deleter_type const
+		Deleter const
 	>::type deleter_const_reference;
 
 	struct nat
@@ -81,17 +77,17 @@ private:
 		unique_ptr &
 	);
 public:
-	operator detail_unique_ptr::rv<
+	operator fcppt::detail_unique_ptr::rv<
 		unique_ptr
 	>();
 
 	unique_ptr(
-		detail_unique_ptr::rv<unique_ptr>
+		fcppt::detail_unique_ptr::rv<unique_ptr>
 	);
 
 	unique_ptr &
 	operator=(
-		detail_unique_ptr::rv<unique_ptr>
+		fcppt::detail_unique_ptr::rv<unique_ptr>
 	);
 
 	unique_ptr();
@@ -104,12 +100,12 @@ public:
 		pointer,
 		typename boost::mpl::if_<
 			boost::is_reference<
-				deleter_type
+				Deleter
 			>,
 			volatile typename boost::remove_reference<
-				deleter_type
+				Deleter
 			>::type &,
-			deleter_type
+			Deleter
 		>::type
 	);
 
@@ -134,14 +130,19 @@ public:
 	);
 
 	template<
-		typename U
+		typename Other
 	>
 	unique_ptr &
 	operator=(
-		unique_ptr<U, Deleter>
+		fcppt::unique_ptr<
+			Other,
+			Deleter
+		>
 	);
 
-	typename boost::add_reference<T>::type
+	typename boost::add_reference<
+		Type
+	>::type
 	operator*() const;
 
 	pointer
@@ -174,93 +175,121 @@ public:
 FCPPT_PP_POP_WARNING
 
 template<
-	typename T,
-	template<
-		typename
-	> class D
+	typename Type,
+	typename Deleter
 >
 void
 swap(
-	unique_ptr<T, D> &,
-	unique_ptr<T, D> &
+	fcppt::unique_ptr<
+		Type,
+		Deleter
+	> &,
+	fcppt::unique_ptr<
+		Type,
+		Deleter
+	> &
 );
 
 template<
-	typename T1,
-	typename T2,
-	template<
-		typename
-	> class D
+	typename Type1,
+	typename Type2,
+	typename Deleter
 >
 bool
 operator==(
-	unique_ptr<T1, D> const &,
-	unique_ptr<T2, D> const &
+	fcppt::unique_ptr<
+		Type1,
+		Deleter
+	> const &,
+	fcppt::unique_ptr<
+		Type2,
+		Deleter
+	> const &
 );
 
 template<
-	typename T1,
-	typename T2,
-	template<
-		typename
-	> class D
+	typename Type1,
+	typename Type2,
+	typename Deleter
 >
 bool
 operator!=(
-	unique_ptr<T1, D> const &,
-	unique_ptr<T2, D> const &
+	fcppt::unique_ptr<
+		Type1,
+		Deleter
+	> const &,
+	fcppt::unique_ptr<
+		Type2,
+		Deleter
+	> const &
 );
 
 template<
-	typename T1,
-	typename T2,
-	template<
-		typename
-	> class D
+	typename Type1,
+	typename Type2,
+	typename Deleter
 >
 bool
 operator<(
-	unique_ptr<T1, D> const &,
-	unique_ptr<T2, D> const &
+	fcppt::unique_ptr<
+		Type1,
+		Deleter
+	> const &,
+	fcppt::unique_ptr<
+		Type2,
+		Deleter
+	> const &
 );
 
 template<
-	typename T1,
-	typename T2,
-	template<
-		typename
-	> class D
+	typename Type1,
+	typename Type2,
+	typename Deleter
 >
 bool
 operator<=(
-	unique_ptr<T1, D> const &,
-	unique_ptr<T2, D> const &
+	fcppt::unique_ptr<
+		Type1,
+		Deleter
+	> const &,
+	fcppt::unique_ptr<
+		Type2,
+		Deleter
+	> const &
 );
 
 template<
-	typename T1,
-	typename T2,
-	template<
-		typename
-	> class D
+	typename Type1,
+	typename Type2,
+	typename Deleter
 >
 bool
 operator>(
-	unique_ptr<T1, D> const &,
-	unique_ptr<T2, D> const &
+	fcppt::unique_ptr<
+		Type1,
+		Deleter
+	> const &,
+	fcppt::unique_ptr<
+		Type2,
+		Deleter
+	> const &
 );
 
 template<
-	typename T1,
-	typename T2,
-	template<
-		typename
-	> class D
+	typename Type1,
+	typename Type2,
+	typename Deleter
 >
 bool
 operator>=(
-	unique_ptr<T1, D> const &,
-	unique_ptr<T2, D> const &
+	fcppt::unique_ptr<
+		Type1,
+		Deleter
+	> const &,
+	fcppt::unique_ptr<
+		Type2,
+		Deleter
+	> const &
 );
 
 }

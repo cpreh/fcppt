@@ -12,34 +12,35 @@
 #include <boost/type_traits/integral_constant.hpp>
 #include <fcppt/config/external_end.hpp>
 
+
 namespace fcppt
 {
 namespace type_traits
 {
 
 template<
-	typename T
+	typename Type
 >
 struct is_movable
 :
 boost::false_type
-{};
+{
+};
 
 template<
-	typename T,
-	template<
-		typename
-	> class Deleter
+	typename Type,
+	typename Deleter
 >
 struct is_movable<
 	fcppt::unique_ptr<
-		T,
+		Type,
 		Deleter
 	>
 >
 :
 boost::true_type
-{};
+{
+};
 
 }
 }

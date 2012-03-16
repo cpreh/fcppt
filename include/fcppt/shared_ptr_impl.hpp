@@ -19,71 +19,78 @@
 
 
 template<
-	typename T,
-	template<
-		typename
-	> class Deleter
+	typename Type,
+	typename Deleter
 >
-fcppt::shared_ptr<T, Deleter>::shared_ptr()
+fcppt::shared_ptr<
+	Type,
+	Deleter
+>::shared_ptr()
 :
 	impl_()
 {
 }
 
 template<
-	typename T,
-	template<
-		typename
-	> class Deleter
+	typename Type,
+	typename Deleter
 >
 template<
-	typename Y
+	typename Other
 >
-fcppt::shared_ptr<T, Deleter>::shared_ptr(
-	Y *const _ptr
+fcppt::shared_ptr<
+	Type,
+	Deleter
+>::shared_ptr(
+	Other *const _ptr
 )
 :
 	impl_(
 		_ptr,
-		deleter()
+		Deleter()
 	)
 {
 }
 
 template<
-	typename T,
-	template<
-		typename
-	> class Deleter
+	typename Type,
+	typename Deleter
 >
 template<
-	typename Y,
-	typename A
+	typename Other,
+	typename Alloc
 >
-fcppt::shared_ptr<T, Deleter>::shared_ptr(
-	Y *const _ptr,
-	A const &_alloc
+fcppt::shared_ptr<
+	Type,
+	Deleter
+>::shared_ptr(
+	Other *const _ptr,
+	Alloc const &_alloc
 )
 :
 	impl_(
 		_ptr,
-		deleter(),
+		Deleter(),
 		_alloc
 	)
 {
 }
 
 template<
-	typename T,
-	template<
-		typename
-	> class Deleter
+	typename Type,
+	typename Deleter
 >
 template<
-	typename Y
+	typename Other
 >
-fcppt::shared_ptr<T, Deleter>::shared_ptr(
-	weak_ptr<Y, Deleter> const &_other
+fcppt::shared_ptr<
+	Type,
+	Deleter
+>::shared_ptr(
+	fcppt::weak_ptr<
+		Other,
+		Deleter
+	> const &_other
 )
 :
 	impl_(
@@ -93,16 +100,20 @@ fcppt::shared_ptr<T, Deleter>::shared_ptr(
 }
 
 template<
-	typename T,
-	template<
-		typename
-	> class Deleter
+	typename Type,
+	typename Deleter
 >
 template<
-	typename Y
+	typename Other
 >
-fcppt::shared_ptr<T, Deleter>::shared_ptr(
-	shared_ptr<Y> const &_other
+fcppt::shared_ptr<
+	Type,
+	Deleter
+>::shared_ptr(
+	fcppt::shared_ptr<
+		Other,
+		Deleter
+	> const &_other
 )
 :
 	impl_(
@@ -112,16 +123,20 @@ fcppt::shared_ptr<T, Deleter>::shared_ptr(
 }
 
 template<
-	typename T,
-	template<
-		typename
-	> class Deleter
+	typename Type,
+	typename Deleter
 >
 template<
-	typename Y
+	typename Other
 >
-fcppt::shared_ptr<T, Deleter>::shared_ptr(
-	shared_ptr<Y> const & _other,
+fcppt::shared_ptr<
+	Type,
+	Deleter
+>::shared_ptr(
+	fcppt::shared_ptr<
+		Other,
+		Deleter
+	> const & _other,
 	boost::detail::static_cast_tag
 )
 :
@@ -133,16 +148,20 @@ fcppt::shared_ptr<T, Deleter>::shared_ptr(
 }
 
 template<
-	typename T,
-	template<
-		typename
-	> class Deleter
+	typename Type,
+	typename Deleter
 >
 template<
-	typename Y
+	typename Other
 >
-fcppt::shared_ptr<T, Deleter>::shared_ptr(
-	shared_ptr<Y> const &_other,
+fcppt::shared_ptr<
+	Type,
+	Deleter
+>::shared_ptr(
+	fcppt::shared_ptr<
+		Other,
+		Deleter
+	> const &_other,
 	boost::detail::const_cast_tag
 )
 :
@@ -154,16 +173,20 @@ fcppt::shared_ptr<T, Deleter>::shared_ptr(
 }
 
 template<
-	typename T,
-	template<
-		typename
-	> class Deleter
+	typename Type,
+	typename Deleter
 >
 template<
-	typename Y
+	typename Other
 >
-fcppt::shared_ptr<T, Deleter>::shared_ptr(
-	shared_ptr<Y> const &_other,
+fcppt::shared_ptr<
+	Type,
+	Deleter
+>::shared_ptr(
+	fcppt::shared_ptr<
+		Other,
+		Deleter
+	> const &_other,
 	boost::detail::dynamic_cast_tag
 )
 :
@@ -175,16 +198,20 @@ fcppt::shared_ptr<T, Deleter>::shared_ptr(
 }
 
 template<
-	typename T,
-	template<
-		typename
-	> class Deleter
+	typename Type,
+	typename Deleter
 >
 template<
-	typename Y
+	typename Other
 >
-fcppt::shared_ptr<T, Deleter>::shared_ptr(
-	shared_ptr<Y> const &_other,
+fcppt::shared_ptr<
+	Type,
+	Deleter
+>::shared_ptr(
+	fcppt::shared_ptr<
+		Other,
+		Deleter
+	> const &_other,
 	boost::detail::polymorphic_cast_tag
 )
 :
@@ -196,16 +223,20 @@ fcppt::shared_ptr<T, Deleter>::shared_ptr(
 }
 
 template<
-	typename T,
-	template<
-		typename
-	> class Deleter
+	typename Type,
+	typename Deleter
 >
 template<
-	typename Y
+	typename Other
 >
-fcppt::shared_ptr<T, Deleter>::shared_ptr(
-	unique_ptr<Y, Deleter> _other
+fcppt::shared_ptr<
+	Type,
+	Deleter
+>::shared_ptr(
+	fcppt::unique_ptr<
+		Other,
+		Deleter
+	> _other
 )
 :
 	impl_()
@@ -216,17 +247,24 @@ fcppt::shared_ptr<T, Deleter>::shared_ptr(
 }
 
 template<
-	typename T,
-	template<
-		typename
-	> class Deleter
+	typename Type,
+	typename Deleter
 >
 template<
-	typename Y
+	typename Other
 >
-fcppt::shared_ptr<T, Deleter> &
-fcppt::shared_ptr<T, Deleter>::operator=(
-	shared_ptr<Y> const &_other
+fcppt::shared_ptr<
+	Type,
+	Deleter
+> &
+fcppt::shared_ptr<
+	Type,
+	Deleter
+>::operator=(
+	fcppt::shared_ptr<
+		Other,
+		Deleter
+	> const &_other
 )
 {
 	impl_ = _other.impl;
@@ -235,17 +273,24 @@ fcppt::shared_ptr<T, Deleter>::operator=(
 }
 
 template<
-	typename T,
-	template<
-		typename
-	> class Deleter
+	typename Type,
+	typename Deleter
 >
 template<
-	typename Y
+	typename Other
 >
-fcppt::shared_ptr<T, Deleter> &
-fcppt::shared_ptr<T, Deleter>::operator=(
-	unique_ptr<Y, Deleter> _other
+fcppt::shared_ptr<
+	Type,
+	Deleter
+> &
+fcppt::shared_ptr<
+	Type,
+	Deleter
+>::operator=(
+	fcppt::unique_ptr<
+		Other,
+		Deleter
+	> _other
 )
 {
 	impl_.reset(
@@ -256,102 +301,118 @@ fcppt::shared_ptr<T, Deleter>::operator=(
 }
 
 template<
-	typename T,
-	template<
-		typename
-	> class Deleter
+	typename Type,
+	typename Deleter
 >
-fcppt::shared_ptr<T, Deleter>::~shared_ptr()
+fcppt::shared_ptr<
+	Type,
+	Deleter
+>::~shared_ptr()
 {
 }
 
 template<
-	typename T,
-	template<
-		typename
-	> class Deleter
+	typename Type,
+	typename Deleter
 >
 void
-fcppt::shared_ptr<T, Deleter>::reset()
+fcppt::shared_ptr<
+	Type,
+	Deleter
+>::reset()
 {
 	impl_.reset();
 }
 
 template<
-	typename T,
-	template<
-		typename
-	> class Deleter
+	typename Type,
+	typename Deleter
 >
 template<
-	typename Y
+	typename Other
 >
 void
-fcppt::shared_ptr<T, Deleter>::reset(
-	Y *const _ptr
+fcppt::shared_ptr<
+	Type,
+	Deleter
+>::reset(
+	Other *const _ptr
 )
 {
        	impl_.reset(
 		_ptr,
-		deleter()
+		Deleter()
 	);
 }
 
 template<
-	typename T,
-	template<
-		typename
-	> class Deleter
+	typename Type,
+	typename Deleter
 >
 template<
-	typename Y,
-	typename A
+	typename Other,
+	typename Alloc
 >
 void
-fcppt::shared_ptr<T, Deleter>::reset(
-	Y *const _ptr,
-	A const &_alloc
+fcppt::shared_ptr<
+	Type,
+	Deleter
+>::reset(
+	Other *const _ptr,
+	Alloc const &_alloc
 )
 {
 	impl_.reset(
 		_ptr,
-		deleter(),
+		Deleter(),
 		_alloc
 	);
 }
 
 template<
-	typename T,
-	template<
-		typename
-	> class Deleter
+	typename Type,
+	typename Deleter
 >
-typename fcppt::shared_ptr<T, Deleter>::reference
-fcppt::shared_ptr<T, Deleter>::operator* () const
+typename fcppt::shared_ptr<
+	Type,
+	Deleter
+>::reference
+fcppt::shared_ptr<
+	Type,
+	Deleter
+>::operator* () const
 {
 	return *impl_;
 }
 
 template<
-	typename T,
-	template<
-		typename
-	> class Deleter
+	typename Type,
+	typename Deleter
 >
-typename fcppt::shared_ptr<T, Deleter>::pointer
-fcppt::shared_ptr<T, Deleter>::operator-> () const
+typename fcppt::shared_ptr<
+	Type,
+	Deleter
+>::pointer
+fcppt::shared_ptr<
+	Type,
+	Deleter
+>::operator-> () const
 {
 	return impl_.operator->();
 }
 
 template<
-	typename T,
-	template<
-		typename
-	> class Deleter
+	typename Type,
+	typename Deleter
 >
-typename fcppt::shared_ptr<T, Deleter>::pointer
-fcppt::shared_ptr<T, Deleter>::get() const
+typename fcppt::shared_ptr<
+	Type,
+	Deleter
+>::pointer
+fcppt::shared_ptr<
+	Type,
+	Deleter
+>::get() const
 {
 	return impl_.get();
 }
@@ -359,63 +420,74 @@ fcppt::shared_ptr<T, Deleter>::get() const
 // Doxygen says: warning: member `operator typename fcppt::shared_ptr' of class `shared_ptr' cannot be found
 /// \cond FCPPT_DOXYGEN_DEBUG
 template<
-	typename T,
-	template<
-		typename
-	> class Deleter
+	typename Type,
+	typename Deleter
 >
-fcppt::shared_ptr<T, Deleter>::operator
-typename fcppt::shared_ptr<T, Deleter>::unspecified_bool_type() const
+fcppt::shared_ptr<
+	Type,
+	Deleter
+>::operator
+typename fcppt::shared_ptr<
+	Type,
+	Deleter
+>::unspecified_bool_type() const
 {
 	return impl_;
 }
 /// \endcond
 
 template<
-	typename T,
-	template<
-		typename
-	> class Deleter
+	typename Type,
+	typename Deleter
 >
 bool
-fcppt::shared_ptr<T, Deleter>::operator! () const
+fcppt::shared_ptr<
+	Type,
+	Deleter
+>::operator! () const
 {
 	return !impl_;
 }
 
 template<
-	typename T,
-	template<
-		typename
-	> class Deleter
+	typename Type,
+	typename Deleter
 >
 bool
-fcppt::shared_ptr<T, Deleter>::unique() const
+fcppt::shared_ptr<
+	Type,
+	Deleter
+>::unique() const
 {
 	return impl_.unique();
 }
 
 template<
-	typename T,
-	template<
-		typename
-	> class Deleter
+	typename Type,
+	typename Deleter
 >
 long
-fcppt::shared_ptr<T, Deleter>::use_count() const
+fcppt::shared_ptr<
+	Type,
+	Deleter
+>::use_count() const
 {
 	return impl_.use_count();
 }
 
 template<
-	typename T,
-	template<
-		typename
-	> class Deleter
+	typename Type,
+	typename Deleter
 >
 void
-fcppt::shared_ptr<T, Deleter>::swap(
-	shared_ptr<T> &_other
+fcppt::shared_ptr<
+	Type,
+	Deleter
+>::swap(
+	fcppt::shared_ptr<
+		Type,
+		Deleter
+	> &_other
 )
 {
 	std::swap(
@@ -425,28 +497,35 @@ fcppt::shared_ptr<T, Deleter>::swap(
  }
 
 template<
-	typename T,
-	template<
-		typename
-	> class Deleter
+	typename Type,
+	typename Deleter
 >
-typename fcppt::shared_ptr<T, Deleter>::impl_type const
-fcppt::shared_ptr<T, Deleter>::boost_ptr() const
+typename fcppt::shared_ptr<
+	Type,
+	Deleter
+>::impl_type const
+fcppt::shared_ptr<
+	Type,
+	Deleter
+>::boost_ptr() const
 {
 	return impl_;
 }
 
 template<
-	typename T,
-	template<
-		typename
-	> class Deleter
+	typename Type,
+	typename Deleter
 >
 template<
-	typename U
+	typename Other
 >
-fcppt::shared_ptr<T, Deleter>::shared_ptr(
-	fcppt::detail::make_shared_wrapper<U> const _other
+fcppt::shared_ptr<
+	Type,
+	Deleter
+>::shared_ptr(
+	fcppt::detail::make_shared_wrapper<
+		Other
+	> const _other
 )
 :
 	impl_(
@@ -455,23 +534,26 @@ fcppt::shared_ptr<T, Deleter>::shared_ptr(
 {
 	BOOST_STATIC_ASSERT((
 		boost::is_same<
-			Deleter<T>,
-			fcppt::heap_deleter<T>
+			Deleter,
+			fcppt::heap_deleter
 		>::value
 	));
 }
 
 template<
-	typename T,
-	template<
-		typename
-	> class Deleter
+	typename Type,
+	typename Deleter
 >
 template<
-	typename U
+	typename Other
 >
-fcppt::shared_ptr<T, Deleter>::shared_ptr(
-	boost::shared_ptr<U> const _other
+fcppt::shared_ptr<
+	Type,
+	Deleter
+>::shared_ptr(
+	boost::shared_ptr<
+		Other
+	> const _other
 )
 :
 	impl_(
@@ -481,28 +563,20 @@ fcppt::shared_ptr<T, Deleter>::shared_ptr(
 }
 
 template<
-	typename T,
-	template<
-		typename
-	> class Deleter
->
-Deleter<T> const
-fcppt::shared_ptr<T, Deleter>::deleter()
-{
-	return Deleter<T>();
-}
-
-template<
-	typename T,
-	typename U,
-	template<
-		typename
-	> class Deleter
+	typename Type1,
+	typename Type2,
+	typename Deleter
 >
 bool
 fcppt::operator==(
-	shared_ptr<T, Deleter> const &_a,
-	shared_ptr<U, Deleter> const &_b
+	fcppt::shared_ptr<
+		Type1,
+		Deleter
+	> const &_a,
+	fcppt::shared_ptr<
+		Type2,
+		Deleter
+	> const &_b
 )
 {
 	return
@@ -510,16 +584,20 @@ fcppt::operator==(
 }
 
 template<
-	typename T,
-	typename U,
-	template<
-		typename
-	> class Deleter
+	typename Type1,
+	typename Type2,
+	typename Deleter
 >
 bool
 fcppt::operator!=(
-	shared_ptr<T, Deleter> const &_a,
-	shared_ptr<U, Deleter> const &_b
+	fcppt::shared_ptr<
+		Type1,
+		Deleter
+	> const &_a,
+	fcppt::shared_ptr<
+		Type2,
+		Deleter
+	> const &_b
 )
 {
 	return
@@ -527,16 +605,20 @@ fcppt::operator!=(
 }
 
 template<
-	typename T,
-	typename U,
-	template<
-		typename
-	> class Deleter
+	typename Type1,
+	typename Type2,
+	typename Deleter
 >
 bool
 fcppt::operator<(
-	shared_ptr<T, Deleter> const &_a,
-	shared_ptr<U, Deleter> const &_b
+	fcppt::shared_ptr<
+		Type1,
+		Deleter
+	> const &_a,
+	fcppt::shared_ptr<
+		Type2,
+		Deleter
+	> const &_b
 )
 {
 	return
@@ -544,16 +626,19 @@ fcppt::operator<(
 }
 
 template<
-	typename T,
-	typename U,
-	template<
-		typename
-	> class Deleter
+	typename Type,
+	typename Deleter
 >
 void
 fcppt::swap(
-	shared_ptr<T, Deleter> &_a,
-	shared_ptr<T, Deleter> &_b)
+	fcppt::shared_ptr<
+		Type,
+		Deleter
+	> &_a,
+	fcppt::shared_ptr<
+		Type,
+		Deleter
+	> &_b)
 {
 	_a.swap(
 		_b
@@ -563,15 +648,22 @@ fcppt::swap(
 template<
 	typename Ch,
 	typename Traits,
-	typename T,
-	template<
-		typename
-	> class Deleter
+	typename Type,
+	typename Deleter
 >
-std::basic_ostream<Ch, Traits> &
+std::basic_ostream<
+	Ch,
+	Traits
+> &
 fcppt::operator<< (
-	std::basic_ostream<Ch, Traits> &_os,
-	shared_ptr<T, Deleter> const &_ptr
+	std::basic_ostream<
+		Ch,
+		Traits
+	> &_os,
+	fcppt::shared_ptr<
+		Type,
+		Deleter
+	> const &_ptr
 )
 {
 	return

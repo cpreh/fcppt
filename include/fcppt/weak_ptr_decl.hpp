@@ -18,39 +18,43 @@ namespace fcppt
 {
 
 template<
-	typename T,
-	template<
-		typename
-	> class Deleter
+	typename Type,
+	typename Deleter
 >
 class weak_ptr
 {
 public:
 	typedef boost::weak_ptr<
-		T
+		Type
 	> impl_type;
 
 	typedef fcppt::shared_ptr<
-		T,
+		Type,
 		Deleter
 	> shared_ptr;
 
-	typedef T element_type;
+	typedef Type element_type;
 
 	weak_ptr();
 
 	template<
-		typename Y
+		typename Other
 	>
 	weak_ptr(
-		weak_ptr<Y, Deleter> const &
+		fcppt::weak_ptr<
+			Other,
+			Deleter
+		> const &
 	);
 
 	template<
-		typename Y
+		typename Other
 	>
 	weak_ptr(
-		fcppt::shared_ptr<Y, Deleter> const &
+		fcppt::shared_ptr<
+			Other,
+			Deleter
+		> const &
 	);
 
 	shared_ptr const
@@ -73,32 +77,40 @@ public:
 	impl_type const
 	boost_ptr() const;
 private:
-	impl_type impl;
+	impl_type impl_;
 };
 
 template<
-	typename T,
-	typename U,
-	template<
-		typename
-	> class Deleter
+	typename Type1,
+	typename Type2,
+	typename Deleter
 >
 bool
 operator<(
-	weak_ptr<T, Deleter> const & a,
-	weak_ptr<U, Deleter> const & b
+	fcppt::weak_ptr<
+		Type1,
+		Deleter
+	> const &,
+	fcppt::weak_ptr<
+		Type2,
+		Deleter
+	> const &
 );
 
 template<
-	typename T,
-	template<
-		typename
-	> class Deleter
+	typename Type,
+	typename Deleter
 >
 void
 swap(
-	weak_ptr<T, Deleter> &a,
-	weak_ptr<T, Deleter> &b
+	fcppt::weak_ptr<
+		Type,
+		Deleter
+	> &,
+	fcppt::weak_ptr<
+		Type,
+		Deleter
+	> &
 );
 
 }

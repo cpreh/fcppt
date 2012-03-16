@@ -18,7 +18,7 @@ namespace type_traits
 {
 
 template<
-	typename T
+	typename Type
 >
 struct is_unique_ptr
 :
@@ -27,14 +27,12 @@ boost::false_type
 };
 
 template<
-	typename T,
-	template<
-		typename
-	> class Deleter
+	typename Type,
+	typename Deleter
 >
 struct is_unique_ptr<
 	fcppt::unique_ptr<
-		T,
+		Type,
 		Deleter
 	>
 >

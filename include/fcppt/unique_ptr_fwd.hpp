@@ -9,15 +9,13 @@
 
 #include <fcppt/heap_deleter.hpp>
 
+
 namespace fcppt
 {
 
 template<
-	typename T,
-	template<
-		typename
-	> class Deleter
-	= heap_deleter
+	typename Type,
+	typename Deleter = fcppt::heap_deleter
 >
 class unique_ptr;
 

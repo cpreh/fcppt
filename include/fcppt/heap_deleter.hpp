@@ -8,11 +8,7 @@
 #define FCPPT_HEAP_DELETER_HPP_INCLUDED
 
 #include <fcppt/assert_complete.hpp>
-#include <fcppt/null_ptr.hpp>
-#include <fcppt/config/external_begin.hpp>
-#include <boost/type_traits/is_convertible.hpp>
-#include <boost/utility/enable_if.hpp>
-#include <fcppt/config/external_end.hpp>
+
 
 namespace fcppt
 {
@@ -21,42 +17,9 @@ namespace fcppt
 \brief A deleter that uses <code>delete</code> to destroy an object.
 
 \ingroup fcpptsmartptr
-
-\tparam T Can be any type but must be complete upon deletion
 */
-template<
-	typename T
->
 struct heap_deleter
 {
-	heap_deleter()
-	{
-	}
-
-	/**
-	\brief Converts a heap deleter if the pointers are also convertible
-
-	If \a U is convertible to \a T, then an
-	<code>fcppt::heap_deleter<U></code> is convertible to
-	<code>*this</code>
-
-	\tparam U The template parameter of the other <code>heap_deleter</code>
-	*/
-	template<
-		typename U
-	>
-	heap_deleter(
-		fcppt::heap_deleter<U> const &,
-		typename boost::enable_if<
-			boost::is_convertible<
-				U *,
-				T *
-			>
-		>::type * = fcppt::null_ptr()
-	)
-	{
-	}
-
 	/**
 	\brief Deletes a pointer using <code>delete</code>
 
@@ -66,7 +29,12 @@ struct heap_deleter
 	\see FCPPT_ASSSERT_COMPLETE
 
 	\param _ptr The pointer to delete
+
+	\tparam T Can be any type but must be complete upon deletion
 	*/
+	template<
+		typename T
+	>
 	void
 	operator()(
 		T *const _ptr
