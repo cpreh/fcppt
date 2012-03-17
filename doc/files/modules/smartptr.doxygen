@@ -2,4 +2,461 @@
 \defgroup fcpptsmartptr fcppt.smart_pointers
 \ingroup \fcpptmain
 \brief Smart pointers and their utilities
+
+<table id="toc">
+<tr>
+<td>
+
+<ol>
+	<li>\ref smartptr_introduction</li>
+	<li>\ref smartptr_types</li>
+	<li>\ref smartptr_shared_ptr</li>
+	<ol>
+		<li>\ref smartptr_shared_ptr_make_shared</li>
+		<li>\ref smartptr_shared_ptr_weak_ptr</li>
+		<li>\ref smartptr_shared_ptr_casts</li>
+	</ol>
+	<li>\ref smartptr_unique_ptr</li>
+	<ol>
+		<li>\ref smartptr_unique_ptr_usage</li>
+		<li>\ref smartptr_unique_ptr_move</li>
+		<li>\ref smartptr_unique_ptr_limitations</li>
+	</ol>
+	<li>\ref smartptr_scoped_ptr</li>
+	<ol>
+		<li>\ref smartptr_scoped_ptr_pimpl</li>
+	</ol>
+	<li>\ref smartptr_deleter</li>
+	<ol>
+		<li>\ref smartptr_deleter_predef</li>
+		<li>\ref smartptr_deleter_example</li>
+	</ol>
+	<li>\ref smartptr_headers</li>
+</ol>
+
+</td>
+</tr>
+</table>
+
+\section smartptr_introduction Introduction
+
+C++ manages dynamic memory by raw pointers that you have to free explicitly at
+some point. The general problem with this approach is that it can be easily
+forgotten to free the memory. The reasons for that are that the programmer can
+simply forget or that a control flow is executed (for example, an exception is
+thrown), so that the point where the memory should be freed won't be reached.
+
+A smart pointer is a class that takes ownership over the pointer, freeing the
+object pointed to when the smart pointer is destroyed. Such a smart pointer
+resides on the stack, so freeing is done automatically.
+
+fcppt provides several kinds of smart pointers, where some of them are also
+provided by Boost. The difference is that the deleter (which dictates how the
+object is to be freed) is a template parameter for all classes. This is a
+tradeoff and removes some of the dynamic behaviour, switching it for a
+statically typesafe one.
+
+\section smartptr_types Smart pointer types
+
+fcppt provides four smart pointer classes, each with their own tradeoffs.
+
+<table>
+<tr>
+<th>Class name</th>
+<th>Description</th>
+</tr>
+<tr>
+<td>fcppt::shared_ptr</td>
+
+<td>Manages objects using a shared count. Every shared ptr pointing to the same
+object increases the shared count by one. The object will only be destroyed
+when all shared ptrs have been destroyed.</td>
+
+</tr>
+
+<tr>
+<td>fcppt::weak_ptr</td>
+
+<td>A weak reference to an object managed by shared ptrs. This smart pointer
+doesn't contribute to the shared count and can be used to observe if
+shared ptrs are still alive.</td>
+
+</tr>
+
+<tr>
+<td>fcppt::unique_ptr</td>
+
+<td>A replacement for <code>std::auto_ptr</code>. Only one unique ptr will
+manage the ownership at a time. It can be transfered into a shared ptr or into
+a scoped ptr. The difference to <code>std::auto_ptr</code> is that transfering
+ownership from one unique ptr to another is safer.</td>
+
+</tr>
+
+<tr>
+<td>fcppt::scoped_ptr</td>
+
+<td>A noncopyable smart pointer, similar to unique ptr. Only one scoped ptr
+will manage the ownership at a time. It can be transfered into a unique ptr or
+from a unique ptr.</td>
+
+</tr>
+</table>
+
+\section smartptr_shared_ptr Shared Pointers
+
+Multiple fcppt::shared_ptr that point to the same object share ownership by
+internally managing a shared count that counts how many shared ptrs are left.
+This shared count will be increased whenever a shared ptr is copied and
+decreased when one is destroyed.
+
+Generally, it is advisable to think twice before using a shared ptr. Under most
+circumstances, shared ownership is not really necessary and a scoped ptr or a
+unique ptr should be used instead.
+
+The general traits of a shared ptr are as follows:
+
+<ul>
+
+<li>Copying, destroying and assigning of shared ptrs is thread safe. This
+usually means that these operators have to consist of some atomic operations,
+making them a lot less cheap than they might seem.</li>
+
+<li>Although the shared ptr gets its deleter as a template parameter, it does
+type erasure on it. This implies that the owned object does not have to be
+complete unless the shared ptr is constructed or dereferenced.</li>
+
+<li>Because not only the shared count but also the owned object must be
+dynamically allocated, it is possible to put them both into the same memory
+block if the deleter is the default one that uses <code>delete</code>. This is
+done by fcppt::make_shared_ptr.</li>
+
+<li>An fcppt::weak_ptr can be used to keep track of the shared ptrs to one
+object without contributing to the shared count. This way it is possible to
+observe if shared ptrs are still alive.</li>
+
+<li>Casting shared pointers must be done through special functions, so that the
+shared count between them is preserved.</li>
+
+</ul>
+
+Here is a simple example using shared pointers.
+
+\snippet shared_ptr.cpp shared_ptr_example
+
+\subsection smartptr_shared_ptr_make_shared Using make_shared
+
+fcppt::make_shared_ptr can be used to place an object allocated via new into
+the same memory block as the shared count managed by the shared ptrs. Another
+reason to use this function is to avoid memory leaks, that can happen due to
+C++'s unspecified order of evaluation, if you are not careful.
+
+\note fcppt::make_shared_ptr takes every argument by value, which means that
+you have to use fcppt::ref or fcppt::cref for references.
+
+Here is an example of how not using fcppt::make_shared_ptr can lead to a memory
+leak.
+
+\snippet shared_ptr.cpp shared_ptr_make_shared_wrong
+
+Using fcppt::make_shared_ptr eliminates this problem and also makes the dynamic
+memory management of the shared ptrs more efficient.
+
+\snippet shared_ptr.cpp shared_ptr_make_shared_right
+
+\subsection smartptr_shared_ptr_weak_ptr Weak Pointers
+
+A weak pointer can be used to keep track of the shared ptrs to one object
+without contributing to the shared count. We can then observe if a shared ptr
+is still alive. This can also be used to break cycles, but it is not
+recommended to introcude cycles anyway.
+
+A weak ptr can be used as follows:
+
+\snippet weak_ptr.cpp weak_ptr
+
+\subsection smartptr_shared_ptr_casts Casting Shared Pointers
+
+When casting shared ptrs, using <code>static_cast</code>,
+<code>dynamic_cast</code> or <code>const_cast</code> directly will not work,
+because the shared count will not be preserved. Instead, we have to use one of
+the special functions fcppt::static_pointer_cast, fcppt::dynamic_pointer_cast
+or fcppt::const_pointer_cast.
+
+Here is an example:
+
+\snippet shared_ptr.cpp shared_ptr_cast
+
+\section smartptr_unique_ptr Unique Pointers
+
+An fcppt::unique_ptr is a replacement for <code>std::auto_ptr</code> and is
+modeled after C++11's <code>std::unique_ptr</code>. In contrast to a shared
+ptr, a unique ptr always is the sole owner of an object.
+
+The general traits of a unique ptr are as follows:
+
+<ul>
+
+<li>unique ptrs cannot be copied or assigned. Instead, they must be
+<em>moved</em>, which takes the ownership away from the original owner.
+Copying or assigning from rvalues works without moving.</li>
+
+<li>unique ptrs don't use type erasure for their deleter. This means that when
+constructing, copying, assigning, destroying or dereferencing unique ptrs, the
+type of the pointed to object must usually be complete (this depends on the
+deleter used).</li>
+
+<li>fcppt::make_unique_ptr should be used to construct unique ptrs. It is
+similar to fcppt::make_shared_ptr in the sense that it helps to avoid memory
+leaks, but it is not more efficient than normal construction of unique ptrs,
+because there is no shared count to keep track of.
+
+\note Like fcppt::make_shared_ptr, fcppt::make_unique_ptr also takes every
+argument by value, which means that you have to use fcppt::ref or fcppt::cref
+for references.
+</li>
+
+</ul>
+
+\subsection smartptr_unique_ptr_usage Using Unique Pointers
+
+The first thing to note is that unique ptrs are an excellent candidate for
+factory functions. They don't impose overly strict ownership requirements like
+shared ptr does. However, unique ptrs can be converted into shared ptrs or
+scoped ptrs as desired. The following example shows how such a factory can be
+created.
+
+\snippet unique_ptr.cpp unique_ptr_factory
+
+The return of <code>make_unique_ptr</code> doesn't require a move, because it
+returns an rvalue.
+
+The factory can be used as follows:
+
+\snippet unique_ptr.cpp unique_ptr_factory_use
+
+Again, there is no move required because the factory also returns an rvalue.
+
+\subsection smartptr_unique_ptr_move Moving Unique Pointers
+
+The next example shows when a move is required. This is generally true when an
+lvalue is involved (which means a named object here). The reason for this is to
+ensure that a unique ptr doesn't accidentally get its object disowned.
+
+\snippet unique_ptr.cpp unique_ptr_move
+
+Consider the following example where an implicit move would be very dangerous:
+
+\snippet unique_ptr.cpp unique_ptr_move_dangerous
+
+\subsection smartptr_unique_ptr_limitations Unique Pointer Limitations
+
+There are some limitations for unique ptrs because they are only a hack
+in C++03:
+
+<ul>
+
+<li>Non move aware code will not work with unique ptrs, especially function and
+bind.</li>
+
+<li>Converting an <code>fcppt::unique_ptr<Derived></code> into an
+<code>fcppt::unique_ptr<Base></code> currently doesn't work implicitly. This
+must be done explicitly instead.</li>
+
+</ul>
+
+\section smartptr_scoped_ptr Scoped Pointers
+
+fcppt::scoped_ptr is similar to fcppt::unique_ptr, except it cannot even be
+moved and is completely noncopyable. Like for unique ptrs, no type erasure is
+done for the deleter.
+
+Such a scoped ptr is usually a good choice if you want to hold onto something
+returned by a factory creating unique ptrs.
+
+Such a factory can again be declared as follows:
+
+\snippet scoped_ptr.cpp scoped_ptr_factory_decl
+
+A scoped ptr can then be used to hold onto a unique ptr.
+
+\snippet scoped_ptr.cpp scoped_ptr_factory
+
+\subsection smartptr_scoped_ptr_pimpl Using Scoped Pointers for pimpl
+
+<em>pimpl</em> is an idiom that allows the type of the pointed to object to be
+incomplete where the scoped ptr object is declared. As previously noted, a
+scoped ptr does require its type to be complete, but only when it is
+constructed or destroyed, not when an object is declared.
+
+This can then be used to leave the pointed to object undefined in the header
+of a class.
+
+\snippet scoped_ptr.cpp scoped_ptr_pimpl_decl
+
+The constructor and destructor of such a class can then be defined in a
+separate translation unit where the definition of the owned object's class is
+known.
+
+\snippet scoped_ptr.cpp scoped_ptr_pimpl_def
+
+\section smartptr_deleter Custom Deleters
+
+As previously mentioned, fcppt's smart pointers all take the deleter as a
+template parameter in order to ensure maximum type safety. Such a deleter must
+have the following properties:
+
+For some smart pointer over type <code>Type</code> the deleter must be callable
+with an expression of type <code>Type *</code>. The deleter must ensure to
+destroy the object if it is not a null pointer.
+
+\subsection smartptr_deleter_predef Fcppt's Deleters
+
+fcppt predefines several deleters:
+
+For some invented variable name <code>ptr</code> of type <code>Type *</code>
+their semantics are as follows:
+
+<table>
+<tr>
+<td>
+fcppt::heap_deleter
+</td>
+<td>
+<code>delete ptr;</code>
+</td>
+</tr>
+<tr>
+<td>
+fcppt::c_deleter
+</td>
+<td>
+<code>std::free(ptr);</code>
+</td>
+</tr>
+<tr>
+<td>
+fcppt::com_deleter
+</td>
+<td>
+<code>if(ptr) ptr->Release();</code>
+</td>
+</tr>
+</table>
+
+\subsection smartptr_deleter_example Deleter example
+
+The following example shows how fcppt::c_deleter can be used to free memory
+allocated via <code>std::malloc</code>
+
+\snippet scoped_ptr.cpp scoped_ptr_c_deleter
+
+\section smartptr_headers Header files
+
+<table>
+<tr>
+<th>Header file</th>
+<th>Description</th>
+</tr>
+<tr>
+<td><code>c_deleter.hpp</code></td>
+<td>Contains fcppt::c_deleter</td>
+</tr>
+<tr>
+<td><code>com_deleter.hpp</code></td>
+<td>Contains fcppt::com_deleter</td>
+</tr>
+<tr>
+<td><code>const_pointer_cast.hpp</code></td>
+<td>Contains fcppt::const_pointer_cast</td>
+</tr>
+<tr>
+<td><code>dynamic_pointer_cast.hpp</code></td>
+<td>Contains fcppt::dynamic_pointer_cast</td>
+</tr>
+<tr>
+<td><code>heap_deleter.hpp</code></td>
+<td>Contains fcppt::heap_deleter</td>
+</tr>
+<tr>
+<td><code>make_shared_ptr.hpp</code></td>
+<td>Contains fcppt::make_shared_ptr</td>
+</tr>
+<tr>
+<td><code>make_unique_ptr.hpp</code></td>
+<td>Contains fcppt::make_unique_ptr</td>
+</tr>
+<tr>
+<td><code>move.hpp</code></td>
+<td>Contains fcppt::move</td>
+</tr>
+<tr>
+<td><code>scoped_ptr_fwd.hpp</code></td>
+<td>Contains fcppt::scoped_ptr's declaration.</td>
+</tr>
+<tr>
+<td><code>scoped_ptr_decl.hpp</code></td>
+<td>Contains fcppt::scoped_ptr's definition.</td>
+</tr>
+<tr>
+<td><code>scoped_ptr_impl.hpp</code></td>
+<td>Contains the definition of fcppt::scoped_ptr's member functions.</td>
+</tr>
+<tr>
+<td><code>scoped_ptr.hpp</code></td>
+<td>Contains all of fcppt::scoped_ptr</td>
+</tr>
+<tr>
+<td><code>shared_ptr_fwd.hpp</code></td>
+<td>Contains fcppt::shared_ptr's declaration.</td>
+</tr>
+<tr>
+<td><code>shared_ptr_decl.hpp</code></td>
+<td>Contains fcppt::shared_ptr's definition.</td>
+</tr>
+<tr>
+<td><code>shared_ptr_impl.hpp</code></td>
+<td>Contains the definition of fcppt::shared_ptr's member functions.</td>
+</tr>
+<tr>
+<td><code>shared_ptr.hpp</code></td>
+<td>Contains all of fcppt::shared_ptr, fcppt::make_shared_ptr, and the cast functions.</td>
+</tr>
+<tr>
+<td><code>static_pointer_cast.hpp</code></td>
+<td>Contains fcppt::static_pointer_cast</td>
+</tr>
+<tr>
+<td><code>unique_ptr_fwd.hpp</code></td>
+<td>Contains fcppt::unique_ptr's declaration.</td>
+</tr>
+<tr>
+<td><code>unique_ptr_decl.hpp</code></td>
+<td>Contains fcppt::unique_ptr's definition.</td>
+</tr>
+<tr>
+<td><code>unique_ptr_impl.hpp</code></td>
+<td>Contains the definition of fcppt::unique_ptr's member functions.</td>
+</tr>
+<tr>
+<td><code>unique_ptr.hpp</code></td>
+<td>Contains all of fcppt::unique_ptr and fcppt::make_unique_ptr</td>
+</tr>
+<tr>
+<td><code>weak_ptr_fwd.hpp</code></td>
+<td>Contains fcppt::weak_ptr's declaration.</td>
+</tr>
+<tr>
+<td><code>weak_ptr_decl.hpp</code></td>
+<td>Contains fcppt::weak_ptr's definition.</td>
+</tr>
+<tr>
+<td><code>weak_ptr_impl.hpp</code></td>
+<td>Contains the definition of fcppt::weak_ptr's member functions.</td>
+</tr>
+<tr>
+<td><code>weak_ptr.hpp</code></td>
+<td>Contains all of fcppt::weak_ptr</td>
+</tr>
+</table>
 */

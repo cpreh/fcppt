@@ -6,31 +6,61 @@
 
 #include <fcppt/preprocessor/disable_vc_warning.hpp>
 FCPPT_PP_DISABLE_VC_WARNING(4702)
-
-//[sharedptr_normal
 #include <fcppt/shared_ptr_impl.hpp>
+#include <fcppt/text.hpp>
+#include <fcppt/io/cout.hpp>
 
 namespace
 {
 
+//! [shared_ptr_example]
+
+// Typedef a shared_ptr to in int
 typedef fcppt::shared_ptr<
 	int
 > int_ptr;
 
-int_ptr
-factory()
+// Objects of this class should share ownership of int_ptrs
+class owner
 {
-	return
-		int_ptr(
-			new int(42)
-		);
+public:
+	explicit
+	owner(
+		int_ptr _ptr
+	)
+	:
+		ptr_(
+			_ptr
+		)
+	{
+	}
+private:
+	int_ptr ptr_;
+};
+
+void
+shared_ptr_example()
+{
+	// Creates a shared_ptr
+	int_ptr const ptr(
+		new int(42)
+	);
+
+	// Copies the ownership to owner1, increasing the shared count to 2
+	owner owner1(
+		ptr
+	);
+
+	// Copies from owner1 to owner2, increasing the shared count to 3
+	owner owner2(
+		owner1
+	);
+
+	// The destruction of owner2, owner1 and ptr will free the int
 }
 
 }
-
-//]
-
-//[sharedptr_deleter
+//! [shared_ptr_example]
 
 #include <fcppt/c_deleter.hpp>
 #include <fcppt/config/external_begin.hpp>
@@ -60,12 +90,13 @@ test_c_deleter()
 
 }
 
-//]
-
 namespace
 {
 
-//[sharedptr_wrong
+//! [shared_ptr_make_shared_wrong]
+
+// Create a function that takes ownership of an int_ptr, but also takes another
+// argument.
 void
 take_pointer(
 	int_ptr,
@@ -75,6 +106,8 @@ take_pointer(
 	//
 }
 
+// This function will be used to provide a bool value for take_pointer, but it
+// throws when executed.
 bool
 throw_something()
 {
@@ -84,8 +117,9 @@ throw_something()
 void
 wrong()
 {
-	// The order in which function arguments and their sub expressions are evaluated is unspecified.
-	// So it might be possible that they are evaluated as follows:
+	// The order in which function arguments and their sub expressions are
+	// evaluated is unspecified. So it might be possible that they are
+	// evaluated as follows:
 	// a) new int(100)
 	// b) throw_something()
 	// c) int_ptr(...) is never reached and we have a leak
@@ -96,16 +130,15 @@ wrong()
 		throw_something()
 	);
 }
-//]
+//! [shared_ptr_make_shared_wrong]
 }
-
-//[sharedptr_make
 
 #include <fcppt/make_shared_ptr.hpp>
 
 namespace
 {
 
+//! [shared_ptr_make_shared_right]
 void
 right()
 {
@@ -118,19 +151,22 @@ right()
 		throw_something()
 	);
 }
+//! [shared_ptr_make_shared_right]
 
 }
-//]
 
-//[sharedptr_cast
-
-#include <fcppt/static_pointer_cast.hpp>
+#include <fcppt/dynamic_pointer_cast.hpp>
 
 namespace
 {
 
+// ![shared_ptr_cast]
 struct base
-{};
+{
+	virtual ~base()
+	{
+	}
+};
 
 struct derived
 :
@@ -153,20 +189,26 @@ cast()
 	> derived_ptr;
 
 	derived_ptr dptr(
-		fcppt::static_pointer_cast<
+		fcppt::dynamic_pointer_cast<
 			derived
 		>(
 			ptr
 		)
 	);
+
+	if(
+		dptr
+	)
+		fcppt::io::cout()
+			<< FCPPT_TEXT("ptr points to a derived.\n");
 }
+// ![shared_ptr_cast]
 
 }
-//]
 
 int main()
 {
-	factory();
+	shared_ptr_example();
 
 	test_c_deleter();
 

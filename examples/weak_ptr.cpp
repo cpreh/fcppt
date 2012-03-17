@@ -4,15 +4,16 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-//[weakptr
 #include <fcppt/shared_ptr_impl.hpp>
 #include <fcppt/text.hpp>
-#include <fcppt/weak_ptr.hpp>
+#include <fcppt/weak_ptr_impl.hpp>
 #include <fcppt/io/cout.hpp>
 
 
-int main()
+int
+main()
 {
+//! [weak_ptr]
 	typedef fcppt::weak_ptr<
 		int
 	> weak_int_ptr;
@@ -21,33 +22,43 @@ int main()
 		int
 	> shared_int_ptr;
 
-	shared_int_ptr ip(
+	shared_int_ptr int_ptr(
 		new int(42)
 	);
 
+	// Create a weak_ptr to the shared_ptr
 	weak_int_ptr weak_p(
-		ip
+		int_ptr
 	);
 
 	{
-		shared_int_ptr x = weak_p.lock();
+		// Observe if a shared_ptr is still alive, which it is
+		shared_int_ptr ref(
+			weak_p.lock()
+		);
 
-		// x will be != 0
-		fcppt::io::cout()
-			<< x
-			<< FCPPT_TEXT('\n');
+		if(
+			ref
+		)
+			fcppt::io::cout()
+				<< FCPPT_TEXT("A shared ptr is still alive.\n");
 	}
 
-	// delete the shared pointer
-	ip.reset();
+	// Delete the shared_ptr
+	int_ptr.reset();
 
 	{
-		shared_int_ptr x = weak_p.lock();
+		// Observe if a shared_ptr is still alive. At this point, no
+		// shared_ptr is alive.
+		shared_int_ptr ref(
+			weak_p.lock()
+		);
 
-		// x will be 0
-		fcppt::io::cout()
-			<< x
-			<< FCPPT_TEXT('\n');
+		if(
+			!ref
+		)
+			fcppt::io::cout()
+				<< FCPPT_TEXT("No shared ptrs are alive.\n");
 	}
+//! [weak_ptr]
 }
-//]

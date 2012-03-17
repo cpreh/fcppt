@@ -90,8 +90,8 @@ which turns the tree into a ptr_container. A <code>tree::object<ptr_value<T>
 ></code> will have the following changes from a normal tree:
 
 <ul>
-	<li>All arguments of values it expects are <code>fcppt::unique_ptr<T></code> (see \ref insert_link_to_unique_ptr_introduction_here)</li>
-	<li>The internal type is an <code>fcppt::scoped_ptr<T></code> (see \ref insert_link_to_scoped_ptr_here)</li>
+	<li>All arguments of values it expects are <code>fcppt::unique_ptr<T></code> (see \ref smartptr_unique_ptr)</li>
+	<li>The internal type is an <code>fcppt::scoped_ptr<T></code> (see \ref smartptr_scoped_ptr)</li>
 </ul>
 
 It is also possible to release the held <code>scoped_ptr</code> with fcppt::container::tree::release.

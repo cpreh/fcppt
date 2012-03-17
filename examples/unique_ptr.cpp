@@ -4,26 +4,25 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-//[unique_ptr_factory
 #include <fcppt/unique_ptr.hpp>
 #include <fcppt/make_unique_ptr.hpp>
 #include <fcppt/io/cout.hpp>
 #include <fcppt/text.hpp>
 
-//<-
 namespace
 {
-//->
+
+//! [unique_ptr_factory]
 typedef fcppt::unique_ptr<
 	int
 > unique_int_ptr;
 
-// create a unique_ptr factory
+// Create a unique_ptr factory
 unique_int_ptr
 int_ptr_factory()
 {
 	// make_unique_ptr is a factory function to make a unique_ptr
-	// note: an rvalue is returned here
+	// An ravlue is returned here, so no moving is necessary.
 	return
 		fcppt::make_unique_ptr<
 			int
@@ -31,8 +30,9 @@ int_ptr_factory()
 			42
 		);
 }
+//! [unique_ptr_factory]
 
-// make a function that takes a unique_ptr
+//! [unique_ptr_factory_use]
 void
 int_ptr_arg(
 	unique_int_ptr ptr
@@ -51,15 +51,35 @@ test()
 		int_ptr_factory()
 	);
 }
-//]
+//! [unique_ptr_factory_use]
 
-
-//[unique_ptr_move
 
 #include <fcppt/move.hpp>
 
+//! [unique_ptr_move]
 unique_int_ptr
 test2()
+{
+	// ptr is a named object
+	unique_int_ptr ptr(
+		fcppt::make_unique_ptr<
+			int
+		>(
+			42
+		)
+	);
+
+	// ptr must be moved here to take ownership away from it
+	return
+		fcppt::move(
+			ptr
+		);
+}
+//! [unique_ptr_move]
+
+//! [unique_ptr_move_dangerous]
+void
+test3()
 {
 	unique_int_ptr ptr(
 		fcppt::make_unique_ptr<
@@ -69,13 +89,26 @@ test2()
 		)
 	);
 
-	return
+	// Implicit move is not allowed
+	/*
+	int_ptr_arg(
+		ptr
+	);
+	*/
+
+	// Make the move explicit
+	int_ptr_arg(
 		fcppt::move(
 			ptr
-		);
-}
+		)
+	);
 
-//]
+	// ptr is now the null pointer
+	fcppt::io::cout()
+		<< ptr.get()
+		<< FCPPT_TEXT('\n');
+}
+//! [unique_ptr_move_dangerous]
 }
 
 //[unique_ptr_shared_ptr
@@ -131,7 +164,7 @@ struct dervied
 };
 
 void
-test3()
+test4()
 {
 	typedef fcppt::unique_ptr<
 		base
@@ -158,4 +191,6 @@ int main()
 	);
 
 	::test3();
+
+	::test4();
 }
