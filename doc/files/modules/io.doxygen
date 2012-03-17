@@ -8,6 +8,8 @@
 <td>
 <ol>
 	<li>\ref fcpptio_introduction</li>
+	<li>\ref fcpptio_endianness</li>
+	<li>\ref fcpptio_headers</li>
 </ol>
 
 </td>
@@ -17,8 +19,41 @@
 \section fcpptio_introduction Introduction
 
 The io namespace mostly includes typedefs and functions related to the string
-module, see \ref fcpptstring.
+module, see \ref fcpptstring. There are some functions that deal with I/O and
+endianness at the same time, also living in the io namespace.
 
+\section fcpptio_endianness I/O and endianness
+
+The three functions dealing with I/O and endianness are fcppt::io::read,
+fcppt::io::read_exn and fcppt::io::write. They can be used to read or write
+objects of fundamental types from or to char based streams. All of these
+functions treat the data as binary data, which means they don't use the stream
+extractors and inserters, but they use read and write directly.
+
+Here is an example:
+
+\snippet io.cpp io_endianness
+
+\section fcpptio_headers Header files
+
+<table>
+<tr>
+<th>Header file</th>
+<th>Description</th>
+</tr>
+<tr>
+<td><code>read.hpp</code></td>
+<td>Contains fcppt::io::read</td>
+</tr>
+<tr>
+<td><code>read_exn.hpp</code></td>
+<td>Contains fcppt::io::read</td>
+</tr>
+<tr>
+<td><code>write.hpp</code></td>
+<td>Contains fcppt::io::read</td>
+</tr>
+</table>
 */
 namespace fcppt
 {

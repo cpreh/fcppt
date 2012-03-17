@@ -24,6 +24,8 @@ namespace io
 /**
 \brief Writes an object of fundamental type to a stream
 
+\ingroup fcpptio
+
 Writes \a _value to \a _stream using the endianness of \a _format. The write
 will be done binary.
 

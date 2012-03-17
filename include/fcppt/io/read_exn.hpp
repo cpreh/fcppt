@@ -27,6 +27,8 @@ namespace io
 /**
 \brief Reads an object of fundamental type from a stream
 
+\ingroup fcpptio
+
 Reads a fundamental type \a Type from \a _stream using the endianness of \a
 _format. The read will be done binary. If it fails, an exception will be
 thrown.
