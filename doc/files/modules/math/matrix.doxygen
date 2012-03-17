@@ -53,7 +53,7 @@ A matrix can be constructed using a variadic constructor which takes the matrix
 components in row-major order. This way, you can arrange the matrix's
 components nicely in the source code, as seen in the following example:
 
-\code{.cpp}
+\code
 typedef
 fcppt::math::matrix::static_
 <
@@ -204,7 +204,7 @@ operator*(
 
 To get the identity matrix, use the static <code>identity</code> function:
 
-\code{.cpp}
+\code
 typedef
 fcppt::math::matrix::static_<int,3,3>::type
 int_matrix_3x3;
@@ -214,7 +214,7 @@ int_matrix_3x3 m = int_matrix_3x3::identity();
 
 Mutatis mutandis with <code>null</code>:
 
-\code{.cpp}
+\code
 typedef
 fcppt::math::matrix::static_<int,3,3>::type
 int_matrix_3x3;
@@ -226,7 +226,7 @@ int_matrix_3x3 m = int_matrix_3x3::null();
 
 To iterate over all elements in the matrix, use an iterator together with begin/end:
 
-\code{.cpp}
+\code
 typedef
 fcppt::math::matrix::static_<int,3,3>::type
 int_matrix_3x3;
@@ -246,7 +246,7 @@ When it comes to iteration, however, we do <em>not</em> use proxy vectors, but
 regular pointers to the individual matrix cells. If you want to iterate over
 all rows, use a loop using an index instead of an iterator:
 
-\code{.cpp}
+\code
 typedef
 fcppt::math::matrix::static_<int,3,3>::type
 int_matrix_3x3;

@@ -49,7 +49,7 @@ fully-fledged geometry primitive class.
 
 fcppt::math::box::basic is declared like this:
 
-\code{.cpp}
+\code
 template<typename T,typename N>
 class basic;
 \endcode
@@ -61,7 +61,7 @@ dimension and the position <em>statically</em>.
 
 To construct a box, you have to specify the position and the size:
 
-\code{.cpp}
+\code
 typedef
 fcppt::math::box::basic<int,2>
 int_box;
@@ -102,7 +102,7 @@ if your coordinate system isn't compatible with them.
 
 To get a box with all zeroes, use the static member function <code>::%null()</code>:
 
-\code{.cpp}
+\code
 int main()
 {
 	typedef
@@ -115,7 +115,7 @@ int main()
 
 To compare two boxes, you <em>can</em> use the comparison operator(s):
 
-\code{.cpp}
+\code
 int main()
 {
 	typedef

@@ -54,7 +54,7 @@ This is used, for example, in fcppt::math::box::corner_points.
 
 Example:
 
-\code{.cpp}
+\code
 typedef
 fcppt::math::vector::static_<int,3>::type
 vector3;

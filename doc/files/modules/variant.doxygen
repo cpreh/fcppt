@@ -48,7 +48,7 @@ with the types of objects you can store in them.</li>
 
 </ul>
 
-\code{.cpp}
+\code
 union int_or_float
 {
 	int i;
@@ -89,7 +89,7 @@ the environment where the union is used. This is cumbersome to do, but it can
 be done. Taking our previously defined int_or_float, it might look something
 like this.
 
-\code{.cpp}
+\code
 enum stored_type
 {
 	int_,
@@ -143,7 +143,7 @@ exception.</li>
 
 The above example can be rewritten as follows:
 
-\code{.cpp}
+\code
 // Note that an MPL sequence is used here to describe which types the variant
 // can hold
 typedef fcppt::variant::object<
@@ -199,7 +199,7 @@ in the set exactly one of them matches. The function call operators must also
 be <code>const</code>. The visitor must have a typedef <code>result_type</code>
 which must be the result type of every function call operator it provides.
 
-\code{.cpp}
+\code
 struct print_visitor
 {
 	typedef void result_type;
@@ -243,7 +243,7 @@ fcppt::variant::apply_unary(
 In this case, it is possible to employ templates to make the visitor a lot
 easier.
 
-\code{.cpp}
+\code
 struct print_visitor2
 {
 	typedef void result_type;

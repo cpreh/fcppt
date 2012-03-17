@@ -183,7 +183,7 @@ signal inside a function object wrapper (like <code>std::function</code>,fcppt::
 <code>boost::%function</code>), since it's noncopyable. You will get a
 compile error if you try:
 
-\code{.cpp}
+\code
 void f(fcppt::function::object<void()> callback)
 {
 	callback();
@@ -200,7 +200,7 @@ int main()
 Pass <code>fcppt::ref(s)</code> to the function to circumvent
 this:
 
-\code{.cpp}
+\code
 void f(fcppt::function::object<void()> callback)
 {
 	callback();
@@ -223,7 +223,7 @@ Instead, there's a constructor taking two parameters:
 <ol>
 	<li>
 		A <em>combiner</em> object, which is a functor with the signature:
-		\code{.cpp}
+		\code
 		result_type(result_type,result_type)
 		\endcode
 		where <code>result_type</code> is the return type of the signal's
@@ -244,7 +244,7 @@ on <strong><code>I</code></strong> and <strong><code>v</code></strong>: <code>re
 Thus, if <strong><code>vs</code></strong> is the sequence of results of all attached functions,
 the signal's <code>operator()</code> does the equivalent of the following:
 
-\code{.cpp}
+\code
 result_type result = I;
 for(auto v in vs)
 	result = op(result,v);
@@ -261,7 +261,7 @@ Note that there are setters for both the initial value and the combiner.
 
 If you catch yourself writing code with a lot of connection objects, like this:
 
-\code{.cpp}
+\code
 class foo
 {
 public:
@@ -292,7 +292,7 @@ new console commands). However, when the last connection to a named
 signal dies, the signal should die with it. To do that, we define (headers
 omitted here):
 
-\code{.cpp}
+\code
 typedef
 fcppt::signal::object<void(),fcppt::signal::unregister::base>
 signal_type;
@@ -323,7 +323,7 @@ connections attached to the signal.
 
 To register to a named signal, check out the following function:
 
-\code{.cpp}
+\code
 fcppt::signal::auto_connection
 register_named_signal(
 	fcppt::string const &name,
@@ -348,7 +348,7 @@ register_named_signal(
 
 Note that the remove callbacks's signature is just <code>void()</code>. Our main might look like this:
 
-\code{.cpp}
+\code
 void
 say_hello()
 {

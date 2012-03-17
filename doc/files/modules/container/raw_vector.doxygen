@@ -5,7 +5,7 @@
 
 Ordinary arrays in C++ are not default-initialized. The following code is undefined:
 
-\code{.cpp}
+\code
 int main()
 {
 	int numbers[1024];
@@ -17,7 +17,7 @@ int main()
 This is mostly for performance reasons. The array could be huge, and
 initializing it would take time. Moreover, it might be unnecessary! Consider:
 
-\code{.cpp}
+\code
 int main()
 {
 	int numbers[1024];
@@ -35,7 +35,7 @@ after its construction, the array is filled with a different value anyway.
 If you want an array with the ability to grow and shrink dynamically, you could
 use a <code>std::%vector</code>:
 
-\code{.cpp}
+\code
 int main()
 {
 	std::vector<int> numbers(1024);

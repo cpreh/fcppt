@@ -332,7 +332,7 @@ U const &), the optional will be an optional reference. An optional reference
 holds its value by reference and has therefore no ownership over it. Here is a
 small example:
 
-\code{.cpp}
+\code
 typedef fcppt::optional<
 	unsigned &
 > optional_uint;

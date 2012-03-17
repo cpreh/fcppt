@@ -22,7 +22,7 @@
 
 Let's say you have the following extremely simple class hierarchy:
 
-\code{.cpp}
+\code
 class base
 {
 	// Just to make the base class polymorphic
@@ -50,7 +50,7 @@ In C++, when you have a base class and want to "get to" a derived class, you hav
 	them all. If it fails, you get undefined behaviour (meaning you
 	application will crash at a random place):
 
-	\code{.cpp}
+	\code
 	derived &d = static_cast<derived &>(base_ref);
 	\endcode
 
@@ -64,7 +64,7 @@ In C++, when you have a base class and want to "get to" a derived class, you hav
 	derived class <code>derived</code>, you can do an error-checking test
 	such as the dynamic cast with pointers:
 
-	\code{.cpp}
+	\code
 	derived *d = dynamic_cast<derived *>(base_ref);
 
 	if(d)
@@ -80,7 +80,7 @@ In C++, when you have a base class and want to "get to" a derived class, you hav
 	replace the pointers in the above example by references, you get the
 	third method of casting:
 
-	\code{.cpp}
+	\code
 	derived &d = dynamic_cast<derived &>(base_ref);
 	\endcode
 

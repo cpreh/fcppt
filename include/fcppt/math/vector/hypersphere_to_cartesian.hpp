@@ -37,7 +37,7 @@ the result, do it yourself using <code>operator*(T,vector)</code>.
 
 Example:
 
-\code{.cpp}
+\code
 // This code calculates a three-dimensional point from two angles (...of the 3D
 // sphere), typically called azimuth an elevation
 

@@ -83,7 +83,7 @@ something special. The warning and message macros of fcppt are implemented by
 pragmas, for example. The problem with the pragma directive is that it cannot
 be embedded in a macro, like in the following code:
 
-\code{.cpp}
+\code
 #define MY_MACRO #pragma something
 \endcode
 
@@ -91,7 +91,7 @@ Instead, fcppt provides a macro that can be used instead of the pragma
 directive, called \link FCPPT_PP_PRAGMA \endlink. The above example can then be
 written as:
 
-\code{.cpp}
+\code
 #define MY_MACRO FCPPT_PP_PRAGMA(something)
 \endcode
 

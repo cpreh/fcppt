@@ -136,7 +136,7 @@ fcppt::math::interpolation (the ones ending in <code>_functor</code>) or you
 can write your own interpolator class. It just needs an <code>operator()</code>
 looking like this:
 
-\code{.cpp}
+\code
 Grid::value_type
 operator()(
 	Vector::value_type,

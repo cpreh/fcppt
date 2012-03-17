@@ -43,7 +43,7 @@ fcppt::math::vector::length_square
 
 Example:
 
-\code{.cpp}
+\code
 typedef
 fcppt::math::vector::static_<float,3>::type
 vector3f;
@@ -119,7 +119,7 @@ fcppt::math::vector::length_square
 
 Example:
 
-\code{.cpp}
+\code
 typedef
 fcppt::math::vector::static_<float,3>::type
 vector3f;

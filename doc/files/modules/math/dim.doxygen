@@ -55,7 +55,7 @@ parameters), but not the same member and free functions.
 
 To convert a dimension to a vector, use fcppt::math::dim::structure_cast:
 
-\code{.cpp}
+\code
 typedef
 fcppt::math::dim::static_<int,3>::type
 dim3;
@@ -71,7 +71,7 @@ vector3 v = fcppt::math::dim::structure_cast<vector3>(d);
 
 Conversely, use fcppt::math::vector::structure_cast to convert a vector to a dim:
 
-\code{.cpp}
+\code
 typedef
 fcppt::math::dim::static_<int,3>::type
 dim3;

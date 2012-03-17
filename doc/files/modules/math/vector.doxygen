@@ -41,7 +41,7 @@ very quickly in many disciplines. The simplest approach to this problem is to
 use a plain old array (or, slightly better, an fcppt::container::array) to
 represent those values:
 
-\code{.cpp}
+\code
 fcppt::container::array<float,3> point = {{1.0f,2.0f,3.0f}};
 \endcode
 
@@ -49,7 +49,7 @@ As you can see, we can initialize the structure very elegantly with the struct m
 initialization syntax. This approach is, however, not very comfortable. To add
 two vectors, you need a separate function (let's call it <code>add</code>):
 
-\code{.cpp}
+\code
 template<typename T,std::size_t N>
 fcppt::container::array<T,N>
 add(
@@ -82,7 +82,7 @@ But you shouldn't overload operators for fcppt::container::array, other people
 using the class might not want to have your <code>operator+</code>. To work
 around that, we need a small wrapper around the array:
 
-\code{.cpp}
+\code
 template<typename T,std::size_t N>
 class vector
 {
@@ -129,7 +129,7 @@ and operations like computing the dot or cross product. However, there are a
 few things that still bug us. For example, the vector's size is fixed at
 compile time.  What if we have a program that needs dynamically sized vectors?
 
-\code{.cpp}
+\code
 int main()
 {
 	std::size_t N;
@@ -160,7 +160,7 @@ kill the <code>new</code>/<code>delete</code>.
 To be as flexible as possible, you have no choice but to make the underlying
 storage a template parameter:
 
-\code{.cpp}
+\code
 template<typename T,typename N,typename Storage>
 class vector
 {
@@ -222,14 +222,14 @@ its values.
 
 fcppt::math::vector::basic is declared like this:
 
-\code{.cpp}
+\code
 template<typename T,typename N,typename S>
 class vector;
 \endcode
 
 To typedef a <em>static</em> vector, you can write:
 
-\code{.cpp}
+\code
 typedef
 fcppt::math::vector::basic
 <
@@ -245,7 +245,7 @@ vector's data type or dimension, you have to change it in two places.
 
 Luckily, there is a better way to do it:
 
-\code{.cpp}
+\code
 typedef
 fcppt::math::vector::static_<float,2>::type
 vector2f;
@@ -265,7 +265,7 @@ actually is a class you can instantiate. But you're not supposed to do that.
 
 With <em>dynamic</em> vectors, it's almost the same. You can write...
 
-\code{.cpp}
+\code
 typedef
 fcppt::math::vector::basic
 <
@@ -278,7 +278,7 @@ vectorf;
 
 ...or you can write:
 
-\code{.cpp}
+\code
 typedef
 fcppt::math::vector::dynamic<float>::type
 vectorf;
@@ -289,7 +289,7 @@ vectorf;
 As you have seen in the motivation section, you can initialize an array with a
 neat initializer syntax:
 
-\code{.cpp}
+\code
 fcppt::container::array<int,3> a = {{1,2,3}};
 \endcode
 
@@ -299,7 +299,7 @@ cannot initialize it that way. However, since comfortable initialization is
 very important for readable code, we added "pseudo-variadic" constructors to
 the vector class. It looks like this:
 
-\code{.cpp}
+\code
 int main()
 {
 	typedef
@@ -322,7 +322,7 @@ int main()
 
 This also works with dynamic vectors:
 
-\code{.cpp}
+\code
 int main()
 {
 	typedef
@@ -352,7 +352,7 @@ encapsulates. It has most of the numeric operators, can be freely copied and so
 on. Conversion between vectors, however, are always explicit. The following
 code will compile just fine:
 
-\code{.cpp}
+\code
 int main()
 {
 	int i = 10;
@@ -362,7 +362,7 @@ int main()
 
 The following code, however, will not compile:
 
-\code{.cpp}
+\code
 int main()
 {
 	fcppt::math::vector::static_<int,1>::type i(10);
@@ -372,7 +372,7 @@ int main()
 
 If you want to make it work, use fcppt::math::vector::structure_cast, as such:
 
-\code{.cpp}
+\code
 int main()
 {
 	fcppt::math::vector::static_<int,1>::type i(10);
@@ -387,7 +387,7 @@ int main()
 
 The same logic applies to vectors of different dimensions. The following will fail:
 
-\code{.cpp}
+\code
 int main()
 {
 	fcppt::math::vector::static_<int,1>::type small(10);
@@ -400,7 +400,7 @@ int main()
 
 To make this work, use fcppt::math::vector::construct and fcppt::math::vector::narrow_cast:
 
-\code{.cpp}
+\code
 int main()
 {
 	fcppt::math::vector::static_<int,1> small(10);
@@ -424,7 +424,7 @@ int main()
 
 To get a vector with all zeroes, use the static member function <code>::%null()</code>:
 
-\code{.cpp}
+\code
 int main()
 {
 	typedef
@@ -437,7 +437,7 @@ int main()
 
 To compare two vectors, you <em>can</em> use the comparison operators:
 
-\code{.cpp}
+\code
 int main()
 {
 	typedef
@@ -456,7 +456,7 @@ what you want to do. Instead, you should use a different method for comparsion.
 For example, you could check if the Euclidean distance is small enough, using
 fcppt::math::vector::length:
 
-\code{.cpp}
+\code
 int main()
 {
 	typedef
@@ -473,7 +473,7 @@ int main()
 Or, you could test if one of the components exceeds the given epsilon, using
 fcppt::math::range_compare:
 
-\code{.cpp}
+\code
 int main()
 {
 	typedef
