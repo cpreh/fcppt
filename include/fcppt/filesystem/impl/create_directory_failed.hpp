@@ -7,24 +7,27 @@
 #ifndef FCPPT_FILESYSTEM_IMPL_CREATE_DIRECTORY_FAILED_HPP_INCLUDED
 #define FCPPT_FILESYSTEM_IMPL_CREATE_DIRECTORY_FAILED_HPP_INCLUDED
 
-#include <fcppt/string.hpp>
 #include <fcppt/text.hpp>
 #include <fcppt/filesystem/path_to_string.hpp>
+#include <fcppt/config/external_begin.hpp>
+#include <boost/filesystem/path.hpp>
+#include <fcppt/config/external_end.hpp>
 
 
 inline
 fcppt::filesystem::create_directory_failed::create_directory_failed(
-	path const &_what
+	boost::filesystem::path const &_what
 )
 :
-	filesystem::exception(
+	fcppt::filesystem::exception(
 		FCPPT_TEXT("Failed to create directory \"")
 		+
-		filesystem::path_to_string(
+		fcppt::filesystem::path_to_string(
 			_what
 		)
 		+ FCPPT_TEXT('"')
 	)
-{}
+{
+}
 
 #endif

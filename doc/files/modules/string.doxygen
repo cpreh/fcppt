@@ -131,10 +131,6 @@ a filesystem path object in the constructor instead of a <code>const char *</cod
 A filesystem path can be converted to a fcppt::string, so you don't have to
 worry about conversions here.
 
-Additionally, if you want to read or write <em>byte-wise</em>, you can use
-fcppt::io::cifstream and fcppt::io::cofstream. These streams also take
-filesystem paths.
-
 There are also preprocessor macros, currently <code>FCPPT_PP_STRINGIZE</code>
 and <code>FCPPT_PP_FILE</code> to provide compatibility with fcppt::string.
 <code>FCPPT_PP_STRINGIZE</code> stringizes its argument to a fcppt::string

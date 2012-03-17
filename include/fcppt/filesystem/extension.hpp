@@ -8,8 +8,10 @@
 #define FCPPT_FILESYSTEM_EXTENSION_HPP_INCLUDED
 
 #include <fcppt/string.hpp>
-#include <fcppt/filesystem/path.hpp>
 #include <fcppt/filesystem/symbol.hpp>
+#include <fcppt/config/external_begin.hpp>
+#include <boost/filesystem/path.hpp>
+#include <fcppt/config/external_end.hpp>
 
 
 namespace fcppt
@@ -17,10 +19,22 @@ namespace fcppt
 namespace filesystem
 {
 
+/**
+\brief Returns the extension of a path as string
+
+\ingroup fcpptfilesystem
+
+Returns the extension of \a path as a string instead of a path.
+
+\param path The path to return the extension from
+
+\return The extension as a string. If there is no extension, the string will be
+empty.
+*/
 FCPPT_FILESYSTEM_SYMBOL
 fcppt::string const
 extension(
-	filesystem::path const &
+	boost::filesystem::path const &path
 );
 
 }

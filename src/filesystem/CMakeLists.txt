@@ -1,49 +1,27 @@
 set(
 	FCPPT_FILESYSTEM_FILES
-	include/fcppt/filesystem/config.hpp
-	include/fcppt/filesystem/create_directories_recursive.hpp
 	include/fcppt/filesystem/create_directories_recursive_exn.hpp
-	include/fcppt/filesystem/create_directory.hpp
 	include/fcppt/filesystem/create_directory_exn.hpp
 	include/fcppt/filesystem/create_directory_failed.hpp
-	include/fcppt/filesystem/current_path.hpp
-	include/fcppt/filesystem/directory_iterator.hpp
 	include/fcppt/filesystem/exception.hpp
-	include/fcppt/filesystem/exists.hpp
 	include/fcppt/filesystem/extension.hpp
 	include/fcppt/filesystem/extension_without_dot.hpp
-	include/fcppt/filesystem/file_size.hpp
 	include/fcppt/filesystem/file_to_string.hpp
 	include/fcppt/filesystem/impl/create_directory_failed.hpp
 	include/fcppt/filesystem/impl/exception.hpp
-	include/fcppt/filesystem/is_directory.hpp
 	include/fcppt/filesystem/is_executable.hpp
-	include/fcppt/filesystem/is_regular.hpp
-	include/fcppt/filesystem/path.hpp
 	include/fcppt/filesystem/path_to_string.hpp
-	include/fcppt/filesystem/readlink.hpp
-	include/fcppt/filesystem/recursive_directory_iterator.hpp
-	include/fcppt/filesystem/remove.hpp
 	include/fcppt/filesystem/remove_extension.hpp
 	include/fcppt/filesystem/remove_filename.hpp
 	include/fcppt/filesystem/replace_extension.hpp
 	include/fcppt/filesystem/stem.hpp
-	src/filesystem/create_directories_recursive.cpp
 	src/filesystem/create_directories_recursive_exn.cpp
-	src/filesystem/create_directory.cpp
 	src/filesystem/create_directory_exn.cpp
-	src/filesystem/current_path.cpp
-	src/filesystem/exists.cpp
 	src/filesystem/extension.cpp
 	src/filesystem/extension_without_dot.cpp
-	src/filesystem/file_size.cpp
 	src/filesystem/file_to_string.cpp
-	src/filesystem/is_directory.cpp
 	src/filesystem/is_executable.cpp
-	src/filesystem/is_regular.cpp
 	src/filesystem/path_to_string.cpp
-	src/filesystem/readlink.cpp
-	src/filesystem/remove.cpp
 	src/filesystem/remove_extension.cpp
 	src/filesystem/remove_filename.cpp
 	src/filesystem/replace_extension.cpp

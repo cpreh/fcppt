@@ -10,12 +10,13 @@
 #include <fcppt/assert/exception.hpp>
 #include <fcppt/assert/post.hpp>
 #include <fcppt/filesystem/exception.hpp>
-#include <fcppt/filesystem/file_size.hpp>
 #include <fcppt/filesystem/file_to_string.hpp>
 #include <fcppt/filesystem/path_to_string.hpp>
 #include <fcppt/io/ifstream.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/cstdint.hpp>
+#include <boost/filesystem/operations.hpp>
+#include <boost/filesystem/path.hpp>
 #include <boost/mpl/greater_equal.hpp>
 #include <boost/mpl/less.hpp>
 #include <boost/mpl/sizeof.hpp>
@@ -83,7 +84,7 @@ check_size(
 
 fcppt::string const
 fcppt::filesystem::file_to_string(
-	filesystem::path const &_path
+	boost::filesystem::path const &_path
 )
 {
 	fcppt::io::ifstream stream(
@@ -93,7 +94,7 @@ fcppt::filesystem::file_to_string(
 	if(
 		!stream.is_open()
 	)
-		throw filesystem::exception(
+		throw fcppt::filesystem::exception(
 			FCPPT_TEXT("Unable to open file ")
 			+ fcppt::filesystem::path_to_string(
 				_path
@@ -101,7 +102,7 @@ fcppt::filesystem::file_to_string(
 		);
 
 	boost::uintmax_t const size(
-		fcppt::filesystem::file_size(
+		boost::filesystem::file_size(
 			_path
 		)
 	);
@@ -113,7 +114,7 @@ fcppt::filesystem::file_to_string(
 			size
 		)
 	)
-		throw filesystem::exception(
+		throw fcppt::filesystem::exception(
 			fcppt::filesystem::path_to_string(
 				_path
 			)

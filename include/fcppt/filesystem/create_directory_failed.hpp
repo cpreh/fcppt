@@ -8,21 +8,36 @@
 #define FCPPT_FILESYSTEM_CREATE_DIRECTORY_FAILED_HPP_INCLUDED
 
 #include <fcppt/filesystem/exception.hpp>
-#include <fcppt/filesystem/create_directory_failed.hpp>
-#include <fcppt/filesystem/path.hpp>
+#include <fcppt/config/external_begin.hpp>
+#include <boost/filesystem/path.hpp>
+#include <fcppt/config/external_end.hpp>
+
 
 namespace fcppt
 {
 namespace filesystem
 {
 
+/**
+\brief Thrown by the functions that try to create directories
+
+\ingroup fcpptfilesystem
+*/
 class create_directory_failed
 :
-	public filesystem::exception
+	public fcppt::filesystem::exception
 {
 public:
-	explicit create_directory_failed(
-		filesystem::path const &
+	/**
+	\brief Constructs the exception
+
+	Constructs the exception from \a path.
+
+	\param path The path that couldn't be created
+	*/
+	explicit
+	create_directory_failed(
+		boost::filesystem::path const &path
 	);
 };
 

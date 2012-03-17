@@ -7,11 +7,14 @@
 #include <fcppt/string.hpp>
 #include <fcppt/filesystem/path_to_string.hpp>
 #include <fcppt/filesystem/stem.hpp>
+#include <fcppt/config/external_begin.hpp>
+#include <boost/filesystem/path.hpp>
+#include <fcppt/config/external_end.hpp>
 
 
 fcppt::string const
 fcppt::filesystem::stem(
-	filesystem::path const &_path
+	boost::filesystem::path const &_path
 )
 {
 	return

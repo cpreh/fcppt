@@ -8,7 +8,6 @@
 #define FCPPT_IO_OFSTREAM_HPP_INCLUDED
 
 #include <fcppt/char_type.hpp>
-#include <fcppt/filesystem/config.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/filesystem/fstream.hpp>
 #include <fcppt/config/external_end.hpp>
@@ -28,7 +27,7 @@ See the \link fcpptstring string module documentation \endlink for a motivation
 for this.
 */
 typedef boost::filesystem::basic_ofstream<
-	char_type
+	fcppt::char_type
 > ofstream;
 
 }

@@ -7,18 +7,34 @@
 #ifndef FCPPT_FILESYSTEM_CREATE_DIRECTORIES_RECURSIVE_EXN_HPP_INCLUDED
 #define FCPPT_FILESYSTEM_CREATE_DIRECTORIES_RECURSIVE_EXN_HPP_INCLUDED
 
-#include <fcppt/filesystem/path.hpp>
 #include <fcppt/filesystem/symbol.hpp>
+#include <fcppt/config/external_begin.hpp>
+#include <boost/filesystem/path.hpp>
+#include <fcppt/config/external_end.hpp>
+
 
 namespace fcppt
 {
 namespace filesystem
 {
 
+/**
+\brief Tries to creates directories recursively
+
+\ingroup fcpptfilesystem
+
+For each nonexistant sub directory of \a path, it is tried to create that
+directory.
+
+\param path The path to create directories recursively
+
+\throw fcppt::filesystem::create_directory_failed if creating one of the
+directories is not successful
+*/
 FCPPT_FILESYSTEM_SYMBOL
 void
 create_directories_recursive_exn(
-	fcppt::filesystem::path const &
+	boost::filesystem::path const &path
 );
 
 }

@@ -5,12 +5,15 @@
 
 
 #include <fcppt/filesystem/is_executable.hpp>
+#include <fcppt/config/external_begin.hpp>
+#include <boost/filesystem/path.hpp>
+#include <fcppt/config/external_end.hpp>
+
 #include <fcppt/config/platform.hpp>
 #if defined(FCPPT_CONFIG_POSIX_PLATFORM)
 #include <fcppt/filesystem/exception.hpp>
 #include <fcppt/filesystem/path_to_string.hpp>
 #include <fcppt/error/strerrno.hpp>
-#include <fcppt/to_std_string.hpp>
 #include <fcppt/text.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <string>
@@ -22,9 +25,9 @@
 bool
 fcppt::filesystem::is_executable(
 #if defined(FCPPT_CONFIG_POSIX_PLATFORM)
-	filesystem::path const &_path
+	boost::filesystem::path const &_path
 #else
-	filesystem::path const &
+	boost::filesystem::path const &
 #endif
 )
 {
@@ -45,14 +48,14 @@ fcppt::filesystem::is_executable(
 	)
 		return false;
 
-	throw filesystem::exception(
+	throw fcppt::filesystem::exception(
 		FCPPT_TEXT("Can't read permissions on \"")
 		+
 		fcppt::filesystem::path_to_string(
 			_path
 		)
 		+ FCPPT_TEXT("\" because \"")
-		+ error::strerrno()
+		+ fcppt::error::strerrno()
 		+ FCPPT_TEXT('"')
 	);
 

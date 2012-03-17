@@ -4,20 +4,26 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
+#include <fcppt/string.hpp>
 #include <fcppt/text.hpp>
 #include <fcppt/filesystem/replace_extension.hpp>
+#include <fcppt/config/external_begin.hpp>
+#include <boost/filesystem/path.hpp>
+#include <fcppt/config/external_end.hpp>
 
 
-fcppt::filesystem::path const
+boost::filesystem::path const
 fcppt::filesystem::replace_extension(
-	filesystem::path const &_path,
+	boost::filesystem::path const &_path,
 	fcppt::string const &_ext
 )
 {
 	return
-		filesystem::path(
+		boost::filesystem::path(
 			_path
 		).replace_extension(
-			FCPPT_TEXT(".") + _ext
+			FCPPT_TEXT(".")
+			+
+			_ext
 		);
 }
