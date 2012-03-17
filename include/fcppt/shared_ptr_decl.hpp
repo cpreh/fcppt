@@ -23,6 +23,8 @@ namespace fcppt
 /**
 \brief A shared pointer class that gets the deleter as a template parameter
 
+\ingroup fcpptsmartptr
+
 A shared pointer shares ownership of a single pointer with other shared
 pointers. How many shared pointers actually own a pointer is kept track of as a
 reference count. Copying shared pointers increases the count by one, while
@@ -35,7 +37,7 @@ its deleter and internal ref count.
 
 \tparam Type The type the shared pointer points to
 
-\tparam Deleter A deleter class that must be callable with a pointer to T.
+\tparam Deleter A deleter class that must be callable with a pointer to Type.
 */
 template<
 	typename Type,
@@ -218,9 +220,9 @@ public:
 	/**
 	\brief Constructs a shared_ptr from a compatible unique_ptr
 
-	Constructs a shared_ptr from the unique_ptr \a ref.
-	If the unique_ptr holds a pointer, then this shared_ptr will take
-	ownership. Otherwise, the shared_ptr will be empy.
+	Constructs a shared_ptr from the unique_ptr \a ref. If the unique_ptr
+	holds a pointer, then this shared_ptr will take ownership. Otherwise,
+	the shared_ptr will be empy.
 
 	\tparam Other A type, so that <code>Other *</code> is implicitly
 	convertible to <code>Type *</code>
@@ -235,7 +237,7 @@ public:
 		fcppt::unique_ptr<
 			Other,
 			Deleter
-		>
+		> ref
 	);
 
 	/**
@@ -398,14 +400,6 @@ public:
 	operator unspecified_bool_type() const;
 
 	/**
-	\brief The negation operator
-
-	Returns true if the shared_ptr is empty and false otherwise.
-	*/
-	bool
-	operator! () const;
-
-	/**
 	\brief Returns if this shared_ptr is the only owner of the current object
 
 	If the shared_ptr is empty, the behaviour is unspecified. Otherwise,
@@ -485,6 +479,8 @@ private:
 /**
 \brief Compares two shared ptrs for equality
 
+\ingroup fcpptsmartptr
+
 Compares \a left and \a right for equality, comparing their pointers. Pointers
 to \a Type1 and to \a Type2 must be equality comparable.
 
@@ -512,6 +508,8 @@ operator==(
 /**
 \brief Compares two shared ptrs for inequality
 
+\ingroup fcpptsmartptr
+
 Compares \a left and \a right for inequality, comparing their pointers.
 Pointers to \a Type1 and to \a Type2 must be inequality comparable.
 
@@ -538,6 +536,8 @@ operator!=(
 
 /**
 \brief Checks if one shared ptr is less than the other
+
+\ingroup fcpptsmartptr
 
 Checks if \a left is less than \a right, comparing their pointers with
 <code>std::less</code>.
@@ -569,6 +569,8 @@ operator<(
 /**
 \brief Swaps two shared pointers
 
+\ingroup fcpptsmartptr
+
 Swaps \a left and \a right
 
 \param left The left argument
@@ -593,6 +595,8 @@ swap(
 
 /**
 \brief Outputs a shared pointer
+
+\ingroup fcpptsmartptr
 
 Outputs \a ptr to \a stream.
 

@@ -23,8 +23,26 @@ template<
 fcppt::scoped_ptr<
 	Type,
 	Deleter
+>::scoped_ptr()
+:
+	ptr_(
+		fcppt::null_ptr()
+	)
+{
+}
+
+template<
+	typename Type,
+	typename Deleter
+>
+template<
+	typename Other
+>
+fcppt::scoped_ptr<
+	Type,
+	Deleter
 >::scoped_ptr(
-	pointer const _ptr
+	Other *const _ptr
 )
 :
 	ptr_(
@@ -78,8 +96,26 @@ void
 fcppt::scoped_ptr<
 	Type,
 	Deleter
+>::reset()
+{
+	scoped_ptr().swap(
+		*this
+	);
+}
+
+template<
+	typename Type,
+	typename Deleter
+>
+template<
+	typename Other
+>
+void
+fcppt::scoped_ptr<
+	Type,
+	Deleter
 >::reset(
-	pointer const _ptr
+	Other *const _ptr
 )
 {
 	scoped_ptr(
@@ -135,19 +171,6 @@ fcppt::scoped_ptr<
 >::get() const
 {
 	return ptr_;
-}
-
-template<
-	typename Type,
-	typename Deleter
->
-bool
-fcppt::scoped_ptr<
-	Type,
-	Deleter
->::operator! () const
-{
-	return !ptr_;
 }
 
 template<

@@ -15,6 +15,9 @@
 #include <fcppt/preprocessor/disable_icc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
+#include <fcppt/config/external_begin.hpp>
+#include <boost/type_traits/add_reference.hpp>
+#include <fcppt/config/external_end.hpp>
 
 
 namespace fcppt
@@ -28,6 +31,8 @@ FCPPT_PP_DISABLE_ICC_WARNING(2304)
 \brief A unique pointer class, designed to emulate <em>C++11's</em>
 <code>std::unique_ptr</code>
 
+\ingroup fcpptsmartptr
+
 A unique pointer is similar to <code>std::auto_ptr</code> (which is deprecated
 in C++11), because only one object holds ownership over a pointer. The
 difference is that unique_ptr disallows certain things that auto_ptr allowed
@@ -35,7 +40,7 @@ difference is that unique_ptr disallows certain things that auto_ptr allowed
 
 \tparam Type The type the unique pointer points to
 
-\tparam Deleter A deleter class that must be callable with a pointer to T.
+\tparam Deleter A deleter class that must be callable with a pointer to Type.
 */
 template<
 	typename Type,
@@ -67,9 +72,11 @@ public:
 	typedef element_type value_type;
 
 	/**
-	\brief The reference type, same as <code>value_type &</code>
+	\brief The reference type
 	*/
-	typedef element_type &reference;
+	typedef typename boost::add_reference<
+		element_type
+	>::type reference;
 
 	/**
 	\brief The pointer type, same as <code>value_type *</code>
@@ -237,7 +244,7 @@ public:
 	/**
 	\brief Releases the ownership
 
-	Returns the currently held pointer, and makes this unique_ptr empty,
+	Returns the currently owned pointer, and makes this unique_ptr empty,
 	effectively releasing ownership.
 	*/
 	pointer
@@ -261,10 +268,14 @@ private:
 	pointer ptr_;
 
 };
+// \cond
 FCPPT_PP_POP_WARNING
+// \endcond
 
 /**
 \brief Swaps two unique pointers
+
+\ingroup fcpptsmartptr
 
 Swaps \a left and \a right
 
@@ -291,6 +302,8 @@ swap(
 /**
 \brief Compares two unique ptrs for equality
 
+\ingroup fcpptsmartptr
+
 Compares \a left and \a right for equality, comparing their pointers. Pointers
 to \a Type1 and to \a Type2 must be equality comparable.
 
@@ -308,15 +321,17 @@ operator==(
 	fcppt::unique_ptr<
 		Type1,
 		Deleter
-	> const &,
+	> const &left,
 	fcppt::unique_ptr<
 		Type2,
 		Deleter
-	> const &
+	> const &right
 );
 
 /**
 \brief Compares two unique ptrs for inequality
+
+\ingroup fcpptsmartptr
 
 Compares \a left and \a right for inequality, comparing their pointers.
 Pointers to \a Type1 and to \a Type2 must be inequality comparable.
@@ -335,15 +350,17 @@ operator!=(
 	fcppt::unique_ptr<
 		Type1,
 		Deleter
-	> const &,
+	> const &left,
 	fcppt::unique_ptr<
 		Type2,
 		Deleter
-	> const &
+	> const &right
 );
 
 /**
 \brief Checks if one unique ptr is less than the other
+
+\ingroup fcpptsmartptr
 
 Checks if \a left is less than \a right, comparing their pointers with
 <code>std::less</code>.
@@ -365,11 +382,11 @@ operator<(
 	fcppt::unique_ptr<
 		Type1,
 		Deleter
-	> const &,
+	> const &left,
 	fcppt::unique_ptr<
 		Type2,
 		Deleter
-	> const &
+	> const &right
 );
 
 }

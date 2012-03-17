@@ -227,10 +227,6 @@ fcppt::unique_ptr<
 	return ptr_;
 }
 
-// Doxygen says: warning: member `operator int fcppt::unique_ptr' of class `unique_ptr' cannot be found
-/// \cond FCPPT_DOXYGEN_DEBUG
-/// \endcond
-
 template<
 	typename Type,
 	typename Deleter

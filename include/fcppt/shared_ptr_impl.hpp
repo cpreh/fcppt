@@ -444,19 +444,6 @@ bool
 fcppt::shared_ptr<
 	Type,
 	Deleter
->::operator! () const
-{
-	return !impl_;
-}
-
-template<
-	typename Type,
-	typename Deleter
->
-bool
-fcppt::shared_ptr<
-	Type,
-	Deleter
 >::unique() const
 {
 	return impl_.unique();
