@@ -8,15 +8,18 @@
 #include <fcppt/text.hpp>
 #include <fcppt/filesystem/extension.hpp>
 #include <fcppt/filesystem/extension_without_dot.hpp>
+#include <fcppt/config/external_begin.hpp>
+#include <boost/filesystem/path.hpp>
+#include <fcppt/config/external_end.hpp>
 
 
 fcppt::string const
 fcppt::filesystem::extension_without_dot(
-	filesystem::path const &_path
+	boost::filesystem::path const &_path
 )
 {
 	fcppt::string ret(
-		filesystem::extension(
+		fcppt::filesystem::extension(
 			_path
 		)
 	);

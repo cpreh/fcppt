@@ -8,8 +8,10 @@
 #define FCPPT_FILESYSTEM_REPLACE_EXTENSION_HPP_INCLUDED
 
 #include <fcppt/string.hpp>
-#include <fcppt/filesystem/path.hpp>
 #include <fcppt/filesystem/symbol.hpp>
+#include <fcppt/config/external_begin.hpp>
+#include <boost/filesystem/path.hpp>
+#include <fcppt/config/external_end.hpp>
 
 
 namespace fcppt
@@ -17,11 +19,24 @@ namespace fcppt
 namespace filesystem
 {
 
+/**
+\brief Replaces the extension of a path
+
+\ingroup fcpptfilesystem
+
+Replaces the extension of \a path with \a new_extension.
+
+\param path The path to replace the extension of
+
+\param new_extension The new extension, excluding the dot
+
+\return A new path with the extension replaced
+*/
 FCPPT_FILESYSTEM_SYMBOL
-filesystem::path const
+boost::filesystem::path const
 replace_extension(
-	filesystem::path const &,
-	fcppt::string const &
+	boost::filesystem::path const &path,
+	fcppt::string const &new_extension
 );
 
 }

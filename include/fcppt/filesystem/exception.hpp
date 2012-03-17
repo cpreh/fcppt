@@ -10,18 +10,32 @@
 #include <fcppt/exception.hpp>
 #include <fcppt/string.hpp>
 
+
 namespace fcppt
 {
 namespace filesystem
 {
 
+/**
+\brief The exception base class for filesystem exceptions
+
+\ingroup fcpptfilesystem
+*/
 class exception
 :
 	public fcppt::exception
 {
 public:
-	explicit exception(
-		fcppt::string const &
+	/**
+	\brief Constructs the exception given an error message
+
+	Constructs the exception give \a message
+
+	\param message The message of the exception
+	*/
+	explicit
+	exception(
+		fcppt::string const &message
 	);
 };
 

@@ -4,48 +4,25 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/string.hpp>
-#include <fcppt/text.hpp>
-#include <fcppt/filesystem/path_to_string.hpp>
 #include <fcppt/filesystem/remove_extension.hpp>
 #include <fcppt/filesystem/remove_filename.hpp>
+#include <fcppt/filesystem/stem.hpp>
+#include <fcppt/config/external_begin.hpp>
+#include <boost/filesystem/path.hpp>
+#include <fcppt/config/external_end.hpp>
 
 
-fcppt::filesystem::path const
+boost::filesystem::path const
 fcppt::filesystem::remove_extension(
-	filesystem::path const &_path
+	boost::filesystem::path const &_path
 )
 {
-	if(
-		!_path.has_filename()
-	)
-		return _path;
-
-	fcppt::string filename(
-		fcppt::filesystem::path_to_string(
-			_path.filename()
-		)
-	);
-
-	fcppt::string::size_type const pos(
-		filename.find_last_of(
-			FCPPT_TEXT('.')
-		)
-	);
-
-	if(
-		pos == fcppt::string::npos
-	)
-		return _path;
-
-	filename.erase(
-		pos,
-		fcppt::string::npos
-	);
-
 	return
 		fcppt::filesystem::remove_filename(
 			_path
 		)
-		/ filename;
+		/
+		fcppt::filesystem::stem(
+			_path
+		);
 }

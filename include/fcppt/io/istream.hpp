@@ -12,6 +12,7 @@
 #include <iosfwd>
 #include <fcppt/config/external_end.hpp>
 
+
 namespace fcppt
 {
 namespace io
@@ -26,7 +27,7 @@ See the \link fcpptstring string module documentation \endlink for a motivation
 for this.
 */
 typedef std::basic_istream<
-	char_type
+	fcppt::char_type
 > istream;
 
 }

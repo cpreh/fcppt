@@ -7,8 +7,10 @@
 #ifndef FCPPT_FILESYSTEM_IS_EXECUTABLE_HPP_INCLUDED
 #define FCPPT_FILESYSTEM_IS_EXECUTABLE_HPP_INCLUDED
 
-#include <fcppt/filesystem/path.hpp>
 #include <fcppt/filesystem/symbol.hpp>
+#include <fcppt/config/external_begin.hpp>
+#include <boost/filesystem/path.hpp>
+#include <fcppt/config/external_end.hpp>
 
 
 namespace fcppt
@@ -16,10 +18,21 @@ namespace fcppt
 namespace filesystem
 {
 
+/**
+\brief Returns if a file is executable
+
+\ingroup fcpptfilesystem
+
+Returns if the file denoted by \a path is executable.
+
+\param path The file to check
+
+\throw fcppt::filesystem::exception if the file is not accessible
+*/
 FCPPT_FILESYSTEM_SYMBOL
 bool
 is_executable(
-	filesystem::path const &
+	boost::filesystem::path const &path
 );
 
 }

@@ -339,11 +339,8 @@ set(
 	include/fcppt/insert_to_std_wstring.hpp
 	include/fcppt/insert_to_string.hpp
 	include/fcppt/io/cerr.hpp
-	include/fcppt/io/cfstream.hpp
-	include/fcppt/io/cifstream.hpp
 	include/fcppt/io/cin.hpp
 	include/fcppt/io/clog.hpp
-	include/fcppt/io/cofstream.hpp
 	include/fcppt/io/color/attribute.hpp
 	include/fcppt/io/color/background.hpp
 	include/fcppt/io/color/foreground.hpp

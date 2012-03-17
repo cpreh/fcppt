@@ -9,11 +9,14 @@
 #include <fcppt/preprocessor/disable_vc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
+#include <fcppt/config/external_begin.hpp>
+#include <boost/filesystem/path.hpp>
+#include <fcppt/config/external_end.hpp>
 
 
 fcppt::string const
 fcppt::filesystem::path_to_string(
-	fcppt::filesystem::path const &_path
+	boost::filesystem::path const &_path
 )
 {
 FCPPT_PP_PUSH_WARNING

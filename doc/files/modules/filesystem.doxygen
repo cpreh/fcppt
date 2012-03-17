@@ -1,0 +1,11 @@
+/**
+\defgroup fcpptfilesystem fcppt.filesystem
+\ingroup fcpptmain
+\brief Helper functions for boost::filesystem
+
+*/
+namespace fcppt
+{
+/// Helper functions for boost::filesystem
+namespace filesystem {}
+}

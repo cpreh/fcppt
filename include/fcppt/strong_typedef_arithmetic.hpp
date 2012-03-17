@@ -10,9 +10,9 @@
 #include <fcppt/strong_typedef_impl.hpp>
 #include <fcppt/detail/strong_typedef/binary_operator.hpp>
 #include <fcppt/detail/strong_typedef/foreach_inc_dec_operator.hpp>
-#include <fcppt/detail/strong_typedef/unary_operator.hpp>
-#include <fcppt/detail/strong_typedef/pre_inc_dec_operator.hpp>
 #include <fcppt/detail/strong_typedef/post_inc_dec_operator.hpp>
+#include <fcppt/detail/strong_typedef/pre_inc_dec_operator.hpp>
+#include <fcppt/detail/strong_typedef/unary_operator.hpp>
 
 
 namespace fcppt
