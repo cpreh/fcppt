@@ -49,6 +49,12 @@ BOOST_AUTO_TEST_CASE(
 	BOOST_REQUIRE(
 		*test1 == 43
 	);
+
+	int_ptr test3;
+
+	BOOST_REQUIRE(
+		!test3
+	);
 }
 
 namespace

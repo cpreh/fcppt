@@ -96,6 +96,10 @@ fcppt::unique_ptr<
 	Type,
 	Deleter
 >::unique_ptr()
+:
+	ptr_(
+		fcppt::null_ptr()
+	)
 {
 }
 
@@ -237,12 +241,9 @@ fcppt::unique_ptr<
 	Deleter
 >::reset()
 {
-	if(
-		ptr_ != fcppt::null_ptr()
-	)
-		Deleter()(
-			ptr_
-		);
+	Deleter()(
+		ptr_
+	);
 }
 
 template<
