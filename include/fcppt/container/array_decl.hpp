@@ -9,6 +9,9 @@
 
 #include <fcppt/container/array_fwd.hpp>
 #include <fcppt/container/detail/array_storage.hpp>
+#include <fcppt/preprocessor/disable_vc_warning.hpp>
+#include <fcppt/preprocessor/pop_warning.hpp>
+#include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/mpl/integral_c.hpp>
 #include <cstddef>
@@ -20,6 +23,13 @@ namespace fcppt
 {
 namespace container
 {
+
+// Don't warn about the default constructor not being generated.
+// This is legitimate and the array can still be constructed using
+// the POD initialization syntax.
+FCPPT_PP_PUSH_WARNING
+FCPPT_PP_DISABLE_VC_WARNING(4510)
+FCPPT_PP_DISABLE_VC_WARNING(4610)
 
 /**
 \brief An implementation of <code>std::array</code> (see <a href="http://en.wikipedia.org/wiki/Array_(C%2B%2B)">here</a> for a reference)
@@ -314,6 +324,8 @@ struct array
 	const_pointer
 	data_end() const;
 };
+
+FCPPT_PP_POP_WARNING
 
 }
 }
