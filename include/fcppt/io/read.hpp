@@ -22,6 +22,22 @@ namespace fcppt
 namespace io
 {
 
+/**
+\brief Reads an object of fundamental type from a stream
+
+Reads a fundamental type \a Type from \a _stream using the endianness of \a
+_format. The read will be done binary. If it fails, an empty optional will be
+returned.
+
+\tparam Type Must be a fundamental type
+
+\param _stream The stream to read from
+
+\param _format The endianness to use
+
+\return If the read is successful, an optional containing the read object will
+be returned. Otherwise an empty optional will be returned.
+*/
 template<
 	typename Type
 >

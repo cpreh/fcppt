@@ -21,6 +21,20 @@ namespace fcppt
 namespace io
 {
 
+/**
+\brief Writes an object of fundamental type to a stream
+
+Writes \a _value to \a _stream using the endianness of \a _format. The write
+will be done binary.
+
+\tparam Type Must be a fundamental type
+
+\param _stream The stream to write to
+
+\param _value The value to write
+
+\param _format The endianness to use
+*/
 template<
 	typename Type
 >
