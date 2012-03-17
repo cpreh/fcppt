@@ -121,7 +121,7 @@ platforms. Writing an fcppt::string to a file (see below) on a Linux machine
 and reading it back in on a Windows machine will, of course not work! Use the
 string for internal stuff, only.
 
-\section fcpptstring_streams IO streams
+\section fcpptstring_streams IO streams and other adaptors
 
 To read in or write out files using the system's native character type, you can
 use the typedefs in the fcppt::io namespace, namely fcppt::io::ifstream,
@@ -134,6 +134,13 @@ worry about conversions here.
 Additionally, if you want to read or write <em>byte-wise</em>, you can use
 fcppt::io::cifstream and fcppt::io::cofstream. These streams also take
 filesystem paths.
+
+There are also preprocessor macros, currently <code>FCPPT_PP_STRINGIZE</code>
+and <code>FCPPT_PP_FILE</code> to provide compatibility with fcppt::string.
+<code>FCPPT_PP_STRINGIZE</code> stringizes its argument to a fcppt::string
+literal (so either wide or narrow). In the same fashion,
+<code>FCPPT_PP_FILE</code> adapts the standard macro
+<code>__FILE__</code> to return a fcppt::string literal.
 
 \section fcpptstring_lexical_casts Lexical casts
 

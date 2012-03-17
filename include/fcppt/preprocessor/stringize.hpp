@@ -17,8 +17,6 @@
 Stringizes its macro argument so that it is suitable to use with fcppt::string.
 
 \param string The argument to stringize
-
-TODO: Should this be part of the string documentation?
 */
 #define FCPPT_PP_STRINGIZE(\
 	string\
