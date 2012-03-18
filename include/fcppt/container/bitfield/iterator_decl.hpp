@@ -26,10 +26,10 @@ namespace bitfield
 
 /**
 \brief The (random-access) iterator type used by
-fcppt::container::bitfield::basic
+fcppt::container::bitfield::object
 
 This class provides an iterator over a bitfield, see also
-fcppt::container::bitfield::basic::iterator and
+fcppt::container::bitfield::object::iterator and
 fcppt::container::bitfield::const_iterator.
 
 \tparam StoredType The (internal) container to iterate over
@@ -92,7 +92,7 @@ private:
 		typename Enum,
 		Enum,
 		typename
-	> friend class basic;
+	> friend class object;
 
 	iterator(
 		StoredType,

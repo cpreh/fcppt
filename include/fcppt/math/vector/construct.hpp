@@ -9,7 +9,7 @@
 
 #include <fcppt/math/is_static_size.hpp>
 #include <fcppt/math/detail/construct.hpp>
-#include <fcppt/math/vector/basic_impl.hpp>
+#include <fcppt/math/vector/object_impl.hpp>
 #include <fcppt/math/vector/static.hpp>
 
 
@@ -69,7 +69,7 @@ typename boost::enable_if<
 	>::type
 >::type const
 construct(
-	basic<T, N, S> const &_base,
+	object<T, N, S> const &_base,
 	T const &_t
 )
 {

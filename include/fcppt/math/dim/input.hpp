@@ -9,7 +9,7 @@
 
 #include <fcppt/math/is_dynamic_size.hpp>
 #include <fcppt/math/detail/one_dimensional_input.hpp>
-#include <fcppt/math/dim/basic_impl.hpp>
+#include <fcppt/math/dim/object_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/utility/enable_if.hpp>
 #include <iosfwd>
@@ -46,7 +46,7 @@ typename boost::disable_if<
 >::type
 operator >> (
 	std::basic_istream<Ch, Traits> &s,
-	basic<T, N, S> &v
+	object<T, N, S> &v
 )
 {
 	return

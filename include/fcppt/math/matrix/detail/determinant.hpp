@@ -9,9 +9,9 @@
 
 #include <fcppt/math/is_static_size.hpp>
 #include <fcppt/math/size_type.hpp>
-#include <fcppt/math/matrix/basic_impl.hpp>
 #include <fcppt/math/matrix/delete_row_and_column.hpp>
 #include <fcppt/math/matrix/has_dim.hpp>
+#include <fcppt/math/matrix/object_impl.hpp>
 #include <fcppt/math/matrix/static.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/mpl/and.hpp>
@@ -40,14 +40,14 @@ boost::enable_if
 <
 	has_dim
 	<
-		basic<T,N,N,S>,
+		object<T,N,N,S>,
 		1,
 		1
 	>,
 	T
 >::type
 determinant(
-	basic<T,N,N,S> const &t
+	object<T,N,N,S> const &t
 )
 {
 	return t[0][0];
@@ -69,7 +69,7 @@ boost::enable_if
 		<
 			has_dim
 			<
-				basic<T,N,N,S>,
+				object<T,N,N,S>,
 				1,
 				1
 			>
@@ -82,7 +82,7 @@ boost::enable_if
 	T
 >::type
 determinant(
-	basic<T,N,N,S> const &t
+	object<T,N,N,S> const &t
 )
 {
 	T sum = static_cast<T>(0);

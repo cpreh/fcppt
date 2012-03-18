@@ -4,14 +4,14 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_MATH_BOX_BASIC_DECL_HPP_INCLUDED
-#define FCPPT_MATH_BOX_BASIC_DECL_HPP_INCLUDED
+#ifndef FCPPT_MATH_BOX_OBJECT_DECL_HPP_INCLUDED
+#define FCPPT_MATH_BOX_OBJECT_DECL_HPP_INCLUDED
 
 #include <fcppt/math/size_type.hpp>
-#include <fcppt/math/box/basic_fwd.hpp>
-#include <fcppt/math/dim/basic_decl.hpp>
+#include <fcppt/math/box/object_fwd.hpp>
+#include <fcppt/math/dim/object_decl.hpp>
 #include <fcppt/math/dim/static.hpp>
-#include <fcppt/math/vector/basic_decl.hpp>
+#include <fcppt/math/vector/object_decl.hpp>
 #include <fcppt/math/vector/static.hpp>
 
 
@@ -34,7 +34,7 @@ template<
 	typename T,
 	math::size_type N
 >
-class basic
+class object
 {
 public:
 	/**
@@ -75,14 +75,14 @@ public:
 	The content of the box will be undefined (not null) after
 	initialization
 	*/
-	basic();
+	object();
 
 	/**
 	\brief Fully construct an box
 	\param v The box's position
 	\param s The box's size
 	*/
-	basic(
+	object(
 		vector const &v,
 		dim const &s
 	);
@@ -90,7 +90,7 @@ public:
 	/**
 	\brief Return a box at the origin with no exents
 	*/
-	static basic const
+	static object const
 	null();
 
 	/**
@@ -289,7 +289,7 @@ public:
 	*/
 	void
 	swap(
-		basic &
+		object &
 	);
 private:
 	vector pos_;
@@ -306,8 +306,8 @@ template<
 >
 bool
 operator==(
-	basic<T, N> const &,
-	basic<T, N> const &
+	object<T, N> const &,
+	object<T, N> const &
 );
 
 /**
@@ -319,8 +319,8 @@ template<
 >
 bool
 operator !=(
-	basic<T, N> const &,
-	basic<T, N> const &
+	object<T, N> const &,
+	object<T, N> const &
 );
 
 /**
@@ -332,8 +332,8 @@ template<
 >
 void
 swap(
-	basic<T, N> &,
-	basic<T, N> &
+	object<T, N> &,
+	object<T, N> &
 );
 
 }

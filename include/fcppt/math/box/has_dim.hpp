@@ -8,7 +8,7 @@
 #define FCPPT_MATH_BOX_HAS_DIM_HPP_INCLUDED
 
 #include <fcppt/math/size_type.hpp>
-#include <fcppt/math/box/basic_fwd.hpp>
+#include <fcppt/math/box/object_fwd.hpp>
 #include <fcppt/math/detail/dim_matches.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/type_traits/integral_constant.hpp>
@@ -41,7 +41,7 @@ template<
 	size_type Dim
 >
 struct has_dim<
-	basic<
+	object<
 		T,
 		N
 	>,

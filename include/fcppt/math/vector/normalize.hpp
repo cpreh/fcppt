@@ -8,8 +8,9 @@
 #define FCPPT_MATH_VECTOR_NORMALIZE_HPP_INCLUDED
 
 #include <fcppt/math/vector/arithmetic.hpp>
-#include <fcppt/math/vector/basic_impl.hpp>
 #include <fcppt/math/vector/length.hpp>
+#include <fcppt/math/vector/object_impl.hpp>
+
 
 namespace fcppt
 {
@@ -33,9 +34,9 @@ template<
 	typename N,
 	typename S
 >
-basic<T, N, S> const
+object<T, N, S> const
 normalize(
-	basic<T, N, S> const &v
+	object<T, N, S> const &v
 )
 {
 	return v / vector::length(v);

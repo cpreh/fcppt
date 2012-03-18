@@ -8,8 +8,8 @@
 #define FCPPT_MATH_BOX_CONTAINS_POINT_HPP_INCLUDED
 
 #include <fcppt/math/size_type.hpp>
-#include <fcppt/math/box/basic_impl.hpp>
-#include <fcppt/math/vector/basic_impl.hpp>
+#include <fcppt/math/box/object_impl.hpp>
+#include <fcppt/math/vector/object_impl.hpp>
 
 
 namespace fcppt
@@ -37,8 +37,8 @@ template<
 >
 bool
 contains_point(
-	box::basic<T, NBox> const &_box,
-	vector::basic<T, NPoint, S> const &_point
+	box::object<T, NBox> const &_box,
+	vector::object<T, NPoint, S> const &_point
 )
 {
 	bool ret = true;

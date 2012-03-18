@@ -8,8 +8,8 @@
 #define FCPPT_MATH_VECTOR_MAKE_HPP_INCLUDED
 
 #include <fcppt/math/detail/make_impl.hpp>
-#include <fcppt/math/vector/basic_impl.hpp>
 #include <fcppt/math/vector/max_ctor_params.hpp>
+#include <fcppt/math/vector/object_impl.hpp>
 #include <fcppt/math/vector/static.hpp>
 
 

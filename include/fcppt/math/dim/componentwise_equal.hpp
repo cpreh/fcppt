@@ -8,7 +8,7 @@
 #define FCPPT_MATH_DIM_COMPONENTWISE_EQUAL_HPP_INCLUDED
 
 #include <fcppt/math/detail/array_componentwise_equal.hpp>
-#include <fcppt/math/dim/basic_impl.hpp>
+#include <fcppt/math/dim/object_impl.hpp>
 
 
 namespace fcppt
@@ -26,12 +26,12 @@ template<
 >
 bool
 componentwise_equal(
-	dim::basic<
+	dim::object<
 		T,
 		N,
 		S1
 	> const &_v1,
-	dim::basic<
+	dim::object<
 		T,
 		N,
 		S2

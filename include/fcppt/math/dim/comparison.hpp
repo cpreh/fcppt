@@ -9,7 +9,7 @@
 
 #include <fcppt/math/detail/array_equal.hpp>
 #include <fcppt/math/detail/array_less.hpp>
-#include <fcppt/math/dim/basic_impl.hpp>
+#include <fcppt/math/dim/object_impl.hpp>
 
 namespace fcppt
 {
@@ -26,8 +26,8 @@ template<
 >
 bool
 operator==(
-	basic<T, N, S1> const &v1,
-	basic<T, N, S2> const &v2
+	object<T, N, S1> const &v1,
+	object<T, N, S2> const &v2
 )
 {
 	return
@@ -45,8 +45,8 @@ template<
 >
 bool
 operator!=(
-	basic<T, N, S1> const &v1,
-	basic<T, N, S2> const &v2
+	object<T, N, S1> const &v1,
+	object<T, N, S2> const &v2
 )
 {
 	return
@@ -61,8 +61,8 @@ template<
 >
 bool
 operator<(
-	basic<T, N, S1> const &v1,
-	basic<T, N, S2> const &v2
+	object<T, N, S1> const &v1,
+	object<T, N, S2> const &v2
 )
 {
 	return
@@ -80,8 +80,8 @@ template<
 >
 bool
 operator>(
-	basic<T, N, S1> const &v1,
-	basic<T, N, S2> const &v2
+	object<T, N, S1> const &v1,
+	object<T, N, S2> const &v2
 )
 {
 	return
@@ -96,8 +96,8 @@ template<
 >
 bool
 operator<=(
-	basic<T, N, S1> const &v1,
-	basic<T, N, S2> const &v2
+	object<T, N, S1> const &v1,
+	object<T, N, S2> const &v2
 )
 {
 	return
@@ -112,8 +112,8 @@ template<
 >
 bool
 operator>=(
-	basic<T, N, S1> const &v1,
-	basic<T, N, S2> const &v2
+	object<T, N, S1> const &v1,
+	object<T, N, S2> const &v2
 )
 {
 	return

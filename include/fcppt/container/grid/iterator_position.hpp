@@ -8,7 +8,7 @@
 #define FCPPT_CONTAINER_GRID_ITERATOR_POSITION_HPP_INCLUDED
 
 #include <fcppt/container/grid/object_impl.hpp>
-#include <fcppt/math/dim/basic_impl.hpp>
+#include <fcppt/math/dim/object_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <iterator>
 #include <fcppt/config/external_end.hpp>

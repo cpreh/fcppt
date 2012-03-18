@@ -8,10 +8,10 @@
 #define FCPPT_MATH_SPHERE_INTERSECTS_HPP_INCLUDED
 
 #include <fcppt/math/size_type.hpp>
-#include <fcppt/math/sphere/basic_fwd.hpp>
+#include <fcppt/math/sphere/object_fwd.hpp>
 #include <fcppt/math/vector/arithmetic.hpp>
-#include <fcppt/math/vector/basic_impl.hpp>
 #include <fcppt/math/vector/length.hpp>
+#include <fcppt/math/vector/object_impl.hpp>
 
 
 namespace fcppt
@@ -28,12 +28,12 @@ template<
 >
 bool
 intersects(
-	basic<T, N> const &a,
-	basic<T, N> const &b
+	object<T, N> const &a,
+	object<T, N> const &b
 )
 {
 	return
-		length(a.origin() - b.origin())
+		fcppt::math::vector::length(a.origin() - b.origin())
 		< a.radius() + b.radius();
 }
 

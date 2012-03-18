@@ -4,7 +4,7 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/math/box/basic_impl.hpp>
+#include <fcppt/math/box/object_impl.hpp>
 #include <fcppt/math/box/structure_cast.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/test/unit_test.hpp>
@@ -14,12 +14,12 @@ BOOST_AUTO_TEST_CASE(
 	math_box_structure_cast
 )
 {
-	typedef fcppt::math::box::basic<
+	typedef fcppt::math::box::object<
 		float,
 		2
 	> box_f2;
 
-	typedef fcppt::math::box::basic<
+	typedef fcppt::math::box::object<
 		int,
 		2
 	> box_i2;

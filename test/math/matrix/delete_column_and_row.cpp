@@ -4,9 +4,9 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/math/matrix/basic_impl.hpp>
 #include <fcppt/math/matrix/componentwise_equal.hpp>
 #include <fcppt/math/matrix/delete_row_and_column.hpp>
+#include <fcppt/math/matrix/object_impl.hpp>
 #include <fcppt/math/matrix/static.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/test/unit_test.hpp>

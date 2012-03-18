@@ -5,8 +5,8 @@
 
 
 #include <fcppt/math/matrix/adjugate.hpp>
-#include <fcppt/math/matrix/basic_impl.hpp>
 #include <fcppt/math/matrix/comparison.hpp>
+#include <fcppt/math/matrix/object_impl.hpp>
 #include <fcppt/math/matrix/output.hpp>
 #include <fcppt/math/matrix/static.hpp>
 #include <fcppt/config/external_begin.hpp>

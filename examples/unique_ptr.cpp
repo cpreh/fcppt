@@ -22,7 +22,7 @@ unique_int_ptr
 int_ptr_factory()
 {
 	// make_unique_ptr is a factory function to make a unique_ptr
-	// An ravlue is returned here, so no moving is necessary.
+	// An rvalue is returned here, so no moving is necessary.
 	return
 		fcppt::make_unique_ptr<
 			int

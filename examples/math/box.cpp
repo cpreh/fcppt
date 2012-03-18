@@ -5,7 +5,7 @@
 
 
 //[mathbox
-#include <fcppt/math/box/basic_impl.hpp>
+#include <fcppt/math/box/object_impl.hpp>
 #include <fcppt/math/box/output.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <iostream>
@@ -15,7 +15,7 @@
 int main()
 {
 	// declare a two dimensional box (a rect)
-	typedef fcppt::math::box::basic<
+	typedef fcppt::math::box::object<
 		unsigned,
 		2
 	> box2i;

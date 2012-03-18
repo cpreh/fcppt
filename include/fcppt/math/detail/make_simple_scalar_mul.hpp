@@ -13,7 +13,7 @@ template<\
 	typename N,\
 	typename S\
 >\
-basic<\
+object<\
 	T,\
 	N,\
 	typename normal_storage<\
@@ -22,12 +22,12 @@ basic<\
 	>::type\
 > const \
 operator *(\
-	basic<T, N, S> const &a,\
+	object<T, N, S> const &a,\
 	T const &s\
 )\
 {\
 	return \
-		basic<\
+		object<\
 			T,\
 			N,\
 			typename normal_storage<\
@@ -45,7 +45,7 @@ template<\
 	typename N,\
 	typename S\
 >\
-basic<\
+object<\
 	T,\
 	N,\
 	typename normal_storage<\
@@ -55,7 +55,7 @@ basic<\
 > const \
 operator *(\
 	T const &s,\
-	basic<T, N, S> const &a\
+	object<T, N, S> const &a\
 )\
 {\
 	return a * s;\

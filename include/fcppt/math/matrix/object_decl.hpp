@@ -4,19 +4,19 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_MATH_MATRIX_BASIC_DECL_HPP_INCLUDED
-#define FCPPT_MATH_MATRIX_BASIC_DECL_HPP_INCLUDED
+#ifndef FCPPT_MATH_MATRIX_OBJECT_DECL_HPP_INCLUDED
+#define FCPPT_MATH_MATRIX_OBJECT_DECL_HPP_INCLUDED
 
 #include <fcppt/math/difference_type.hpp>
 #include <fcppt/math/size_type.hpp>
 #include <fcppt/math/detail/make_op_decl.hpp>
 #include <fcppt/math/detail/make_variadic_constructor_decl.hpp>
-#include <fcppt/math/matrix/basic_fwd.hpp>
 #include <fcppt/math/matrix/dim_type.hpp>
 #include <fcppt/math/matrix/max_ctor_params.hpp>
+#include <fcppt/math/matrix/object_fwd.hpp>
 #include <fcppt/math/matrix/detail/dim_storage.hpp>
 #include <fcppt/math/matrix/detail/row_view.hpp>
-#include <fcppt/math/vector/basic_decl.hpp>
+#include <fcppt/math/vector/object_decl.hpp>
 #include <fcppt/type_traits/is_iterator.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/static_assert.hpp>
@@ -51,7 +51,7 @@ template<
 	typename M,
 	typename S
 >
-class basic
+class object
 /// \cond
 :
 private
@@ -104,7 +104,7 @@ public:
 	typedef, as it's really a vector that models a row-view over the
 	matrix, see the explanation above.
 	*/
-	typedef vector::basic<
+	typedef vector::object<
 		T,
 		N,
 		matrix::detail::row_view<
@@ -122,7 +122,7 @@ public:
 	typedef, as it's really a vector that models a row-view over the
 	matrix, see the explanation above.
 	*/
-	typedef vector::basic<
+	typedef vector::object<
 		T,
 		N,
 		matrix::detail::row_view<
@@ -179,7 +179,7 @@ public:
 	The content of the vector will be undefined (not null) after
 	initialization
 	*/
-	basic();
+	object();
 
 	/**
 	\brief Construct an uninitialized dynamic matrix
@@ -187,7 +187,7 @@ public:
 	\warning
 	This operation makes no sense on a static matrix.
 	*/
-	explicit basic(
+	explicit object(
 		dim const &
 	);
 
@@ -195,15 +195,15 @@ public:
 	\brief Construct a vector from a storage source
 	\param s The storage source to copy from
 	*/
-	explicit basic(
+	explicit object(
 		storage_type const &s
 	);
 
 	/**
 	\brief Copy-construct the matrix from another matrix
 	*/
-	basic(
-		basic const &
+	object(
+		object const &
 	);
 
 	/**
@@ -213,8 +213,8 @@ public:
 	template<
 		typename OtherStorage
 	>
-	basic(
-		basic<
+	object(
+		object<
 			T,
 			N,
 			M,
@@ -231,7 +231,7 @@ public:
 	template<
 		typename In
 	>
-	basic(
+	object(
 		In beg,
 		typename boost::enable_if<
 			type_traits::is_iterator<
@@ -254,7 +254,7 @@ public:
 	template<
 		typename In
 	>
-	basic(
+	object(
 		dim const &_dim,
 		In beg,
 		typename boost::enable_if<
@@ -275,26 +275,26 @@ public:
 	template<
 		typename Container
 	>
-	basic(
+	object(
 		dim const &,
 		Container const &
 	);
 
 	FCPPT_MATH_DETAIL_ARRAY_ADAPTER(
-		basic
+		object
 	)
 
 	FCPPT_MATH_DETAIL_MAKE_VARIADIC_CONSTRUCTOR_DECL(
 		FCPPT_MATH_MATRIX_MAX_CTOR_PARAMS,
-		basic
+		object
 	)
 
 	/**
 	\brief Copy the values from a different matrix
 	*/
-	basic &
+	object &
 	operator=(
-		basic const &
+		object const &
 	);
 
 	/**
@@ -304,9 +304,9 @@ public:
 	template<
 		typename OtherStorage
 	>
-	basic &
+	object &
 	operator=(
-		basic<
+		object<
 			T,
 			N,
 			M,
@@ -314,28 +314,28 @@ public:
 		> const &
 	);
 
-	~basic();
+	~object();
 
 // \cond FCPPT_DOXYGEN_DEBUG
-#define FCPPT_MATH_MATRIX_BASIC_DECLARE_OPERATOR(op)\
+#define FCPPT_MATH_MATRIX_OBJECT_DECLARE_OPERATOR(op)\
 FCPPT_MATH_DETAIL_MAKE_OP_DECL(\
 	template<\
 		typename OtherStorage\
 	>, \
-	(basic<T, N, M, OtherStorage>),\
+	(object<T, N, M, OtherStorage>),\
 	4,\
 	op \
 )
 // \endcond
 
-	FCPPT_MATH_MATRIX_BASIC_DECLARE_OPERATOR(+=)
-	FCPPT_MATH_MATRIX_BASIC_DECLARE_OPERATOR(-=)
-#undef FCPPT_MATH_MATRIX_BASIC_DECLARE_OPERATOR
+	FCPPT_MATH_MATRIX_OBJECT_DECLARE_OPERATOR(+=)
+	FCPPT_MATH_MATRIX_OBJECT_DECLARE_OPERATOR(-=)
+#undef FCPPT_MATH_MATRIX_OBJECT_DECLARE_OPERATOR
 
 	/**
 	\brief Multiply a matrix by a scalar
 	*/
-	basic &
+	object &
 	operator*=(
 		value_type const &
 	);
@@ -343,7 +343,7 @@ FCPPT_MATH_DETAIL_MAKE_OP_DECL(\
 	/**
 	\brief Divide a matrix by a scalar
 	*/
-	basic &
+	object &
 	operator/=(
 		value_type const &
 	);
@@ -409,7 +409,7 @@ FCPPT_MATH_DETAIL_MAKE_OP_DECL(\
 	/**
 	\brief Returns the identity matrix;
 	*/
-	static basic const
+	static object const
 	identity();
 
 	/**
@@ -417,7 +417,7 @@ FCPPT_MATH_DETAIL_MAKE_OP_DECL(\
 	*/
 	void
 	swap(
-		basic &
+		object &
 	);
 private:
 	S storage_;
@@ -434,8 +434,8 @@ template<
 >
 void
 swap(
-	basic<T, N, M, S> &,
-	basic<T, N, M, S> &
+	object<T, N, M, S> &,
+	object<T, N, M, S> &
 );
 
 }

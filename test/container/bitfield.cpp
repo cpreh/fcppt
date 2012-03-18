@@ -4,12 +4,13 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/container/bitfield/basic_impl.hpp>
 #include <fcppt/container/bitfield/is_subset_eq.hpp>
+#include <fcppt/container/bitfield/object_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/test/unit_test.hpp>
 #include <algorithm>
 #include <fcppt/config/external_end.hpp>
+
 
 namespace
 {
@@ -27,7 +28,7 @@ enum type
 
 }
 
-typedef fcppt::container::bitfield::basic<
+typedef fcppt::container::bitfield::object<
 	test_enum::type,
 	test_enum::size
 > bitfield;
@@ -44,7 +45,7 @@ enum type
 
 }
 
-typedef fcppt::container::bitfield::basic<
+typedef fcppt::container::bitfield::object<
 	empty_enum::type,
 	empty_enum::size
 > empty_bitfield;
@@ -53,7 +54,7 @@ typedef fcppt::container::bitfield::basic<
 	enum_,\
 	internal_\
 )\
-template class fcppt::container::bitfield::basic< \
+template class fcppt::container::bitfield::object< \
 	enum_::type, \
 	enum_::size \
 >; \

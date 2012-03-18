@@ -4,16 +4,16 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_MATH_DIM_BASIC_DECL_HPP_INCLUDED
-#define FCPPT_MATH_DIM_BASIC_DECL_HPP_INCLUDED
+#ifndef FCPPT_MATH_DIM_OBJECT_DECL_HPP_INCLUDED
+#define FCPPT_MATH_DIM_OBJECT_DECL_HPP_INCLUDED
 
 #include <fcppt/math/difference_type.hpp>
 #include <fcppt/math/size_type.hpp>
 #include <fcppt/math/detail/array_adapter.hpp>
 #include <fcppt/math/detail/make_op_decl.hpp>
 #include <fcppt/math/detail/make_variadic_constructor_decl.hpp>
-#include <fcppt/math/dim/basic_fwd.hpp>
 #include <fcppt/math/dim/max_ctor_params.hpp>
+#include <fcppt/math/dim/object_fwd.hpp>
 #include <fcppt/type_traits/is_iterator.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/utility/enable_if.hpp>
@@ -42,7 +42,7 @@ template<
 	typename N,
 	typename S
 >
-class basic
+class object
 {
 public:
 	/**
@@ -106,21 +106,21 @@ public:
 	The content of the dim will be undefined (not null) after
 	initialization
 	*/
-	basic();
+	object();
 
 	/**
 	\brief Construct a dim from a storage source
 	\param s The storage source to copy from
 	*/
-	explicit basic(
+	explicit object(
 		storage_type const &s
 	);
 
 	/**
 	\brief Copy-construct the dim from another dim
 	*/
-	basic(
-		basic const &
+	object(
+		object const &
 	);
 
 	/**
@@ -130,8 +130,8 @@ public:
 	template<
 		typename OtherStorage
 	>
-	basic(
-		basic<
+	object(
+		object<
 			T,
 			N,
 			OtherStorage
@@ -147,7 +147,7 @@ public:
 	template<
 		typename In
 	>
-	basic(
+	object(
 		In beg,
 		typename boost::enable_if<
 			type_traits::is_iterator<
@@ -157,19 +157,19 @@ public:
 		>::type end
 	);
 
-	FCPPT_MATH_DETAIL_ARRAY_ADAPTER(basic)
+	FCPPT_MATH_DETAIL_ARRAY_ADAPTER(object)
 
 	FCPPT_MATH_DETAIL_MAKE_VARIADIC_CONSTRUCTOR_DECL(
 		FCPPT_MATH_DIM_MAX_CTOR_PARAMS,
-		basic
+		object
 	)
 
 	/**
 	\brief Copy the values from a different dim
 	*/
-	basic &
+	object &
 	operator=(
-		basic const &
+		object const &
 	);
 
 	/**
@@ -179,38 +179,38 @@ public:
 	template<
 		typename OtherStorage
 	>
-	basic &
+	object &
 	operator=(
-		basic<
+		object<
 			T,
 			N,
 			OtherStorage
 		> const &
 	);
 
-	~basic();
+	~object();
 
-#define FCPPT_MATH_DIM_BASIC_DECLARE_OPERATOR(op)\
+#define FCPPT_MATH_DIM_OBJECT_DECLARE_OPERATOR(op)\
 FCPPT_MATH_DETAIL_MAKE_OP_DECL(\
 	template<\
 		typename OtherStorage\
 	>, \
-	(basic<T, N, OtherStorage>),\
+	(object<T, N, OtherStorage>),\
 	3,\
 	op \
 )
 
-	FCPPT_MATH_DIM_BASIC_DECLARE_OPERATOR(+=)
-	FCPPT_MATH_DIM_BASIC_DECLARE_OPERATOR(-=)
-	FCPPT_MATH_DIM_BASIC_DECLARE_OPERATOR(*=)
-	FCPPT_MATH_DIM_BASIC_DECLARE_OPERATOR(/=)
-	FCPPT_MATH_DIM_BASIC_DECLARE_OPERATOR(%=)
-#undef FCPPT_MATH_DIM_BASIC_DECLARE_OPERATOR
+	FCPPT_MATH_DIM_OBJECT_DECLARE_OPERATOR(+=)
+	FCPPT_MATH_DIM_OBJECT_DECLARE_OPERATOR(-=)
+	FCPPT_MATH_DIM_OBJECT_DECLARE_OPERATOR(*=)
+	FCPPT_MATH_DIM_OBJECT_DECLARE_OPERATOR(/=)
+	FCPPT_MATH_DIM_OBJECT_DECLARE_OPERATOR(%=)
+#undef FCPPT_MATH_DIM_OBJECT_DECLARE_OPERATOR
 
 	/**
 	\brief Multiply a dim by a scalar
 	*/
-	basic &
+	object &
 	operator*=(
 		value_type const &
 	);
@@ -218,7 +218,7 @@ FCPPT_MATH_DETAIL_MAKE_OP_DECL(\
 	/**
 	\brief Divide a dim by a scalar
 	*/
-	basic &
+	object &
 	operator/=(
 		value_type const &
 	);
@@ -315,7 +315,7 @@ FCPPT_MATH_DETAIL_MAKE_OP_DECL(\
 	/**
 	\brief Returns the dim filled with all zeroes
 	*/
-	static basic const
+	static object const
 	null();
 
 	/**
@@ -323,7 +323,7 @@ FCPPT_MATH_DETAIL_MAKE_OP_DECL(\
 	*/
 	void
 	swap(
-		basic &
+		object &
 	);
 private:
 	S storage_;
@@ -339,8 +339,8 @@ template<
 >
 void
 swap(
-	basic<T, N, S> &,
-	basic<T, N, S> &
+	object<T, N, S> &,
+	object<T, N, S> &
 );
 
 }

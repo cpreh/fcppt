@@ -7,7 +7,7 @@
 #ifndef FCPPT_MATH_SPHERE_CIRCLE_HPP_INCLUDED
 #define FCPPT_MATH_SPHERE_CIRCLE_HPP_INCLUDED
 
-#include <fcppt/math/sphere/basic_fwd.hpp>
+#include <fcppt/math/sphere/object_fwd.hpp>
 
 namespace fcppt
 {
@@ -22,7 +22,7 @@ template<
 >
 struct circle
 {
-	typedef basic<
+	typedef object<
 		T,
 		2
 	> type;

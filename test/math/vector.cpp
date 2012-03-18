@@ -273,7 +273,7 @@ BOOST_AUTO_TEST_CASE(vector_construct)
 		unsigned
 	> unsigned_view_storage;
 
-	typedef fcppt::math::vector::basic<
+	typedef fcppt::math::vector::object<
 		unsigned,
 		boost::mpl::integral_c<
 			fcppt::math::size_type,

@@ -9,8 +9,8 @@
 
 #include <fcppt/math/detail/structure_cast.hpp>
 #include <fcppt/math/detail/structure_cast_fun.hpp>
-#include <fcppt/math/matrix/basic_impl.hpp>
 #include <fcppt/math/matrix/is_static_size.hpp>
+#include <fcppt/math/matrix/object_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/iterator/transform_iterator.hpp>
 #include <boost/utility/enable_if.hpp>
@@ -41,7 +41,7 @@ typename boost::enable_if<
 	Dest const
 >::type
 structure_cast(
-	basic<T, N, M, S> const &src
+	object<T, N, M, S> const &src
 )
 {
 	return
@@ -67,7 +67,7 @@ typename boost::disable_if<
 	Dest const
 >::type
 structure_cast(
-	basic<T, N, M, S> const &src
+	object<T, N, M, S> const &src
 )
 {
 	typedef math::detail::structure_cast_fun<

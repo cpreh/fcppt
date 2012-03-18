@@ -10,7 +10,7 @@
 #include <fcppt/container/grid/object_impl.hpp>
 #include <fcppt/container/grid/size_type.hpp>
 #include <fcppt/container/grid/detail/fill.hpp>
-#include <fcppt/math/dim/basic_impl.hpp>
+#include <fcppt/math/dim/object_impl.hpp>
 
 
 namespace fcppt
@@ -20,10 +20,10 @@ namespace container
 namespace grid
 {
 /**
- * \brief Fills a grid using a functor
- * \ingroup fcpptcontainergrid
- * \tparam Fn A functor with the signature: <code>grid::value_type(grid::dim)</code>
- */
+\brief Fills a grid using a functor
+\ingroup fcpptcontainergrid
+\tparam Fn A functor with the signature: <code>grid::value_type(grid::dim)</code>
+*/
 template
 <
 	typename T,

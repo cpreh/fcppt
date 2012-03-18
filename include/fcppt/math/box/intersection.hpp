@@ -8,8 +8,8 @@
 #define FCPPT_MATH_BOX_INTERSECTION_HPP_INCLUDED
 
 #include <fcppt/math/size_type.hpp>
-#include <fcppt/math/box/basic_impl.hpp>
 #include <fcppt/math/box/intersects.hpp>
+#include <fcppt/math/box/object_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <algorithm>
 #include <fcppt/config/external_end.hpp>
@@ -34,10 +34,10 @@ template<
 	typename T,
 	size_type N
 >
-basic<T, N> const
+object<T, N> const
 intersection(
-	basic<T, N> const &_a,
-	basic<T, N> const &_b
+	object<T, N> const &_a,
+	object<T, N> const &_b
 )
 {
 	if(
@@ -46,9 +46,9 @@ intersection(
 			_b
 		)
 	)
-		return basic<T, N>::null();
+		return object<T, N>::null();
 
-	basic<T, N> ret;
+	object<T, N> ret;
 
 	for(
 		size_type i = 0;

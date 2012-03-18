@@ -8,7 +8,7 @@
 #define FCPPT_MATH_DIM_NARROW_CAST_HPP_INCLUDED
 
 #include <fcppt/math/detail/narrow_cast.hpp>
-#include <fcppt/math/dim/basic_impl.hpp>
+#include <fcppt/math/dim/object_impl.hpp>
 
 
 namespace fcppt
@@ -59,7 +59,7 @@ template<
 >
 Dest const
 narrow_cast(
-	basic<T, N, S> const &src
+	object<T, N, S> const &src
 )
 {
 	return math::detail::narrow_cast<

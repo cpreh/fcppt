@@ -10,10 +10,10 @@
 #include <fcppt/container/array.hpp>
 #include <fcppt/container/grid/object_impl.hpp>
 #include <fcppt/math/generate_binary_vectors.hpp>
-#include <fcppt/math/dim/basic_impl.hpp>
+#include <fcppt/math/dim/object_impl.hpp>
 #include <fcppt/math/dim/structure_cast.hpp>
-#include <fcppt/math/vector/basic_impl.hpp>
 #include <fcppt/math/vector/mod.hpp>
+#include <fcppt/math/vector/object_impl.hpp>
 #include <fcppt/math/vector/structure_cast.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/mpl/identity.hpp>
@@ -165,7 +165,7 @@ interpolate(
 	Interpolator const &interpolator)
 {
 	typedef
-	fcppt::math::vector::basic
+	fcppt::math::vector::object
 	<
 		typename Grid::dim::value_type,
 		typename Grid::dim::dim_wrapper,

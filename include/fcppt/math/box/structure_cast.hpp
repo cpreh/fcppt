@@ -8,7 +8,7 @@
 #define FCPPT_MATH_BOX_STRUCTURE_CAST_HPP_INCLUDED
 
 #include <fcppt/math/size_type.hpp>
-#include <fcppt/math/box/basic_impl.hpp>
+#include <fcppt/math/box/object_impl.hpp>
 #include <fcppt/math/dim/structure_cast.hpp>
 #include <fcppt/math/vector/structure_cast.hpp>
 
@@ -34,7 +34,7 @@ template<
 >
 Dest const
 structure_cast(
-	basic<T, N> const &src
+	object<T, N> const &src
 )
 {
 	return

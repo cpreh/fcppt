@@ -3,7 +3,7 @@ namespace fcppt
 namespace math
 {
 /**
-\brief Contains \link fcppt::math::box::basic box::basic \endlink and helper functions, classes and types for it
+\brief Contains \link fcppt::math::box::object box::object \endlink and helper functions, classes and types for it
 */
 namespace box
 {
@@ -39,7 +39,7 @@ namespace box
 In your code, you might need a class representing a rectangle, for example, to
 specify the position and size of a window on the screen. Or, you might want to
 store the bounding box of an object in your 3D world. To do that,
-fcppt::math::box::basic was invented.
+fcppt::math::box::object was invented.
 
 Note that this class only represents axis-aligned boxes, so they do not have a
 rotation. It's more of a wrapper around a <code>(vector,dim)</code> pair than a
@@ -47,11 +47,11 @@ fully-fledged geometry primitive class.
 
 \section fcpptmathbox_declaring_boxes Declaring boxes
 
-fcppt::math::box::basic is declared like this:
+fcppt::math::box::object is declared like this:
 
 \code
 template<typename T,typename N>
-class basic;
+class object;
 \endcode
 
 Notice that you do not have to specify a storage type. A box always stores the
@@ -63,7 +63,7 @@ To construct a box, you have to specify the position and the size:
 
 \code
 typedef
-fcppt::math::box::basic<int,2>
+fcppt::math::box::object<int,2>
 int_box;
 
 int_box my_box(
@@ -89,9 +89,9 @@ coordinate system origin is at the <em>top left</em>, with the x axis extending
 coordinate system, the "top" coordinate must be smaller than the bottom
 coordinate (and the left coordinate smaller than the right coordinate).
 
-fcppt::math::box::basic doesn't enforce those constraints, and thus is useful
+fcppt::math::box::object doesn't enforce those constraints, and thus is useful
 in arbitrary coordinate systems. However, some of the getter functions are
-suggestive: There's fcppt::math::box::basic::top which returns the y coordinate
+suggestive: There's fcppt::math::box::object::top which returns the y coordinate
 of the box's position. This, of course, assumes that the top coordinate is
 really given by the position, not the position plus the size.
 
@@ -106,7 +106,7 @@ To get a box with all zeroes, use the static member function <code>::%null()</co
 int main()
 {
 	typedef
-	fcppt::math::box::basic<float,2>
+	fcppt::math::box::object<float,2>
 	box2f;
 
 	box2f n = box2f::null();
@@ -119,7 +119,7 @@ To compare two boxes, you <em>can</em> use the comparison operator(s):
 int main()
 {
 	typedef
-	fcppt::math::box::basic<float,2>::type
+	fcppt::math::box::object<float,2>::type
 	box2f;
 
 	box2f x(box2f::vector(1.0f,2.0f),box2f::size(1.0f,1.0f));
@@ -141,14 +141,14 @@ own).
 
 \section fcpptmathbox_operators Operators
 
-fcppt::math::box::basic defines no operators other than <code>operator==</code>
+fcppt::math::box::object defines no operators other than <code>operator==</code>
 and <code>operator!=</code> for comparison (see above) and
 <code>operator<<</code> to output a box to the standard output.
 
 \section fcpptmathbox_headers Header files
 
 fcppt::math::box is spread out across various header files. There's one
-header per free function. fcppt::math::box::basic itself is split into
+header per free function. fcppt::math::box::object itself is split into
 various headers, too. Here's an exhaustive list:
 
 <table>
@@ -157,20 +157,20 @@ various headers, too. Here's an exhaustive list:
 <th>Description</th>
 </tr>
 <tr>
-<td><code>basic_fwd.hpp</code></td>
-<td>Contains \link fcppt::math::box::basic basic's \endlink declaration. Include this if you pass a box by reference, for example.</td>
+<td><code>object_fwd.hpp</code></td>
+<td>Contains \link fcppt::math::box::object object's \endlink declaration. Include this if you pass a box by reference, for example.</td>
 </tr>
 <tr>
-<td><code>basic_decl.hpp</code></td>
-<td>Contains \link fcppt::math::box::basic basic's \endlink definition.</td>
+<td><code>object_decl.hpp</code></td>
+<td>Contains \link fcppt::math::box::object object's \endlink definition.</td>
 </tr>
 <tr>
-<td><code>basic_impl.hpp</code></td>
-<td>Contains the definition of \link fcppt::math::box::basic basic's \endlink member functions.</td>
+<td><code>object_impl.hpp</code></td>
+<td>Contains the definition of \link fcppt::math::box::object object's \endlink member functions.</td>
 </tr>
 <tr>
-<td><code>basic.hpp</code></td>
-<td>Includes <code>basic_fwd.hpp</code>, <code>basic_decl.hpp</code> and <code>basic_impl.hpp</code></td>
+<td><code>object.hpp</code></td>
+<td>Includes <code>object_fwd.hpp</code>, <code>object_decl.hpp</code> and <code>object_impl.hpp</code></td>
 </tr>
 <tr>
 <td><code>output.hpp</code></td>

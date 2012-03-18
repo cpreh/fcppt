@@ -7,7 +7,7 @@
 #ifndef FCPPT_MATH_QUATERNION_TO_ANGLE_AND_AXIS_HPP_INCLUDED
 #define FCPPT_MATH_QUATERNION_TO_ANGLE_AND_AXIS_HPP_INCLUDED
 
-#include <fcppt/math/vector/basic_impl.hpp>
+#include <fcppt/math/vector/object_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/math/quaternion.hpp>
 #include <cmath>
@@ -37,7 +37,7 @@ void
 to_angle_and_axis(
 	boost::math::quaternion<T> const &q,
 	T &angle,
-	fcppt::math::vector::basic<T,N,S> &axis)
+	fcppt::math::vector::object<T,N,S> &axis)
 {
 	// NOTE: Can we express this with quaternion functions instead of the manual sqrt?
 	T const scale =

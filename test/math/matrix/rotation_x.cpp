@@ -6,11 +6,11 @@
 
 #include <fcppt/math/pi.hpp>
 #include <fcppt/math/range_compare.hpp>
-#include <fcppt/math/matrix/basic_impl.hpp>
+#include <fcppt/math/matrix/object_impl.hpp>
 #include <fcppt/math/matrix/rotation_x.hpp>
 #include <fcppt/math/matrix/static.hpp>
 #include <fcppt/math/matrix/vector.hpp>
-#include <fcppt/math/vector/basic_impl.hpp>
+#include <fcppt/math/vector/object_impl.hpp>
 #include <fcppt/math/vector/static.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/test/unit_test.hpp>

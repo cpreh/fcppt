@@ -4,22 +4,23 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_MATH_DIM_BASIC_FWD_HPP_INCLUDED
-#define FCPPT_MATH_DIM_BASIC_FWD_HPP_INCLUDED
+#ifndef FCPPT_MATH_SPHERE_OBJECT_FWD_HPP_INCLUDED
+#define FCPPT_MATH_SPHERE_OBJECT_FWD_HPP_INCLUDED
+
+#include <fcppt/math/size_type.hpp>
 
 namespace fcppt
 {
 namespace math
 {
-namespace dim
+namespace sphere
 {
 
 template<
 	typename T,
-	typename N,
-	typename S
+	size_type N
 >
-class basic;
+class object;
 
 }
 }

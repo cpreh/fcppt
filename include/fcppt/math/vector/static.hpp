@@ -9,7 +9,7 @@
 
 #include <fcppt/math/size_type.hpp>
 #include <fcppt/math/detail/static_storage.hpp>
-#include <fcppt/math/vector/basic_fwd.hpp>
+#include <fcppt/math/vector/object_fwd.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/mpl/integral_c.hpp>
 #include <fcppt/config/external_end.hpp>
@@ -26,7 +26,7 @@ namespace vector
 \brief Typedef helper for static vectors
 \ingroup fcpptmathvector
 \tparam The vector's <code>value_type</code>
-See the introduction to fcppt::math::vector::basic for more information on
+See the introduction to fcppt::math::vector::object for more information on
 static vectors (and on this class).
 */
 template<
@@ -35,7 +35,7 @@ template<
 >
 struct static_
 {
-	typedef basic<
+	typedef object<
 		T,
 		boost::mpl::integral_c<
 			size_type,

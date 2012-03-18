@@ -23,11 +23,11 @@ namespace grid
 {
 
 /**
- * \ingroup fcpptcontainergrid
- * \brief Outputs a grid
- *
- * FIXME
- */
+\ingroup fcpptcontainergrid
+\brief Outputs a grid
+
+FIXME
+*/
 template<
 	typename Ch,
 	typename Traits,

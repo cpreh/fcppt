@@ -6,11 +6,11 @@
 
 #include <fcppt/algorithm/contains.hpp>
 #include <fcppt/container/array.hpp>
-#include <fcppt/math/box/basic_impl.hpp>
 #include <fcppt/math/box/corner_points.hpp>
+#include <fcppt/math/box/object_impl.hpp>
 #include <fcppt/math/box/output.hpp>
-#include <fcppt/math/vector/basic_impl.hpp>
 #include <fcppt/math/vector/comparison.hpp>
+#include <fcppt/math/vector/object_impl.hpp>
 #include <fcppt/math/vector/output.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/test/unit_test.hpp>
@@ -22,7 +22,7 @@
 BOOST_AUTO_TEST_CASE(test_corner_points)
 {
 	typedef
-	fcppt::math::box::basic
+	fcppt::math::box::object
 	<
 		int,
 		2

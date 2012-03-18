@@ -7,7 +7,7 @@
 #ifndef FCPPT_CONTAINER_BITFIELD_IS_SUBSET_EQ_HPP_INCLUDED
 #define FCPPT_CONTAINER_BITFIELD_IS_SUBSET_EQ_HPP_INCLUDED
 
-#include <fcppt/container/bitfield/basic_impl.hpp>
+#include <fcppt/container/bitfield/object_impl.hpp>
 
 namespace fcppt
 {
@@ -28,12 +28,12 @@ template<
 >
 bool
 is_subset_eq(
-	basic<
+	object<
 		Enum,
 		Size,
 		InternalType
 	> const &left,
-	basic<
+	object<
 		Enum,
 		Size,
 		InternalType

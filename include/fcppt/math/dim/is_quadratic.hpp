@@ -7,7 +7,7 @@
 #ifndef FCPPT_MATH_DIM_IS_QUADRATIC_HPP_INCLUDED
 #define FCPPT_MATH_DIM_IS_QUADRATIC_HPP_INCLUDED
 
-#include <fcppt/math/dim/basic_impl.hpp>
+#include <fcppt/math/dim/object_impl.hpp>
 
 namespace fcppt
 {
@@ -31,11 +31,11 @@ template<
 >
 bool
 is_quadratic(
-	dim::basic<T,N,S> const &r
+	dim::object<T,N,S> const &r
 )
 {
 	for(
-		typename dim::basic<T,N,S>::const_iterator i = r.begin();
+		typename dim::object<T,N,S>::const_iterator i = r.begin();
 		i != r.end();
 		++i
 	)

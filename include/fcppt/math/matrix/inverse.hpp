@@ -53,7 +53,7 @@ boost::enable_if<
 	>::type const
 >::type
 inverse(
-	basic<T,N,N,S> const &t
+	object<T,N,N,S> const &t
 )
 {
 	T const det =

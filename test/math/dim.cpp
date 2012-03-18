@@ -4,8 +4,8 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/math/dim/basic_impl.hpp>
 #include <fcppt/math/dim/fill.hpp>
+#include <fcppt/math/dim/object_impl.hpp>
 #include <fcppt/math/dim/static.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/test/unit_test.hpp>

@@ -6,7 +6,7 @@
 
 //[bitfield
 #include <fcppt/text.hpp>
-#include <fcppt/container/bitfield/basic_impl.hpp>
+#include <fcppt/container/bitfield/object_impl.hpp>
 #include <fcppt/io/cout.hpp>
 
 
@@ -24,7 +24,7 @@ enum type
 }
 
 typedef
-fcppt::container::bitfield::basic<
+fcppt::container::bitfield::object<
 	person_status::type,
 	person_status::size
 >

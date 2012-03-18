@@ -11,7 +11,7 @@
 #include <fcppt/math/dim/arithmetic.hpp>
 #include <fcppt/math/dim/structure_cast.hpp>
 #include <fcppt/math/vector/arithmetic.hpp>
-#include <fcppt/math/vector/basic_impl.hpp>
+#include <fcppt/math/vector/object_impl.hpp>
 
 
 namespace fcppt
@@ -27,18 +27,18 @@ namespace box
 \tparam N The box's dimension
 */
 template<typename T,size_type N>
-basic<T,N> const
+object<T,N> const
 stretch(
-	basic<T,N> const &b,
+	object<T,N> const &b,
 	T const factor)
 {
-	typename basic<T,N>::dim const d =
+	typename object<T,N>::dim const d =
 		b.size() * factor;
 	return
-		basic<T,N>(
+		object<T,N>(
 			center(
 				b) -
-			fcppt::math::dim::structure_cast<typename basic<T,N>::vector>(
+			fcppt::math::dim::structure_cast<typename object<T,N>::vector>(
 				d)/
 			static_cast<T>(
 				2),

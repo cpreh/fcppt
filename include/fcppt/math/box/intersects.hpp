@@ -8,7 +8,7 @@
 #define FCPPT_MATH_BOX_INTERSECTS_HPP_INCLUDED
 
 #include <fcppt/math/size_type.hpp>
-#include <fcppt/math/box/basic_impl.hpp>
+#include <fcppt/math/box/object_impl.hpp>
 
 
 namespace fcppt
@@ -30,8 +30,8 @@ template<
 >
 bool
 intersects(
-	basic<T, N> const &a,
-	basic<T, N> const &b
+	object<T, N> const &a,
+	object<T, N> const &b
 )
 {
 	bool ret = false;

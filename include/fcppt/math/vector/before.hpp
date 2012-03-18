@@ -8,7 +8,7 @@
 #define FCPPT_MATH_VECTOR_BEFORE_HPP_INCLUDED
 
 #include <fcppt/math/detail/before.hpp>
-#include <fcppt/math/vector/basic_impl.hpp>
+#include <fcppt/math/vector/object_impl.hpp>
 
 
 namespace fcppt
@@ -25,8 +25,8 @@ template<
 >
 bool
 before(
-	basic<T, N, S> const &_a,
-	basic<T, N, S> const &_b
+	object<T, N, S> const &_a,
+	object<T, N, S> const &_b
 )
 {
 	return

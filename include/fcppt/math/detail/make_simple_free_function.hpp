@@ -14,7 +14,7 @@ template<\
 	typename S1,\
 	typename S2\
 >\
-basic<\
+object<\
 	T,\
 	N,\
 	typename normal_storage<\
@@ -23,12 +23,12 @@ basic<\
 	>::type\
 > const \
 operator op(\
-	basic<T, N, S1> const &a,\
-	basic<T, N, S2> const &b\
+	object<T, N, S1> const &a,\
+	object<T, N, S2> const &b\
 )\
 {\
 	return \
-		basic<\
+		object<\
 			T,\
 			N,\
 			typename normal_storage<\

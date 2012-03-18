@@ -4,17 +4,18 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/math/box/basic_impl.hpp>
 #include <fcppt/math/box/intersection.hpp>
+#include <fcppt/math/box/object_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/test/unit_test.hpp>
 #include <fcppt/config/external_end.hpp>
+
 
 BOOST_AUTO_TEST_CASE(
 	math_box_intersection
 )
 {
-	typedef fcppt::math::box::basic<
+	typedef fcppt::math::box::object<
 		int,
 		2
 	> box_i2;

@@ -7,7 +7,7 @@
 #ifndef FCPPT_MATH_QUATERNION_FROM_SCALAR_AND_VECTOR_HPP_INCLUDED
 #define FCPPT_MATH_QUATERNION_FROM_SCALAR_AND_VECTOR_HPP_INCLUDED
 
-#include <fcppt/math/vector/basic_impl.hpp>
+#include <fcppt/math/vector/object_impl.hpp>
 #include <fcppt/math/vector/static.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/math/quaternion.hpp>
@@ -34,7 +34,7 @@ template<typename T,typename N,typename S>
 boost::math::quaternion<T> const
 from_scalar_and_vector(
 	T const &s,
-	fcppt::math::vector::basic<T,N,S> const &v)
+	fcppt::math::vector::object<T,N,S> const &v)
 {
 	return
 		boost::math::quaternion<T>(

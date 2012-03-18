@@ -15,7 +15,7 @@
 #include <fcppt/container/grid/detail/data_end.hpp>
 #include <fcppt/container/grid/detail/resize.hpp>
 #include <fcppt/container/grid/detail/shrink_to_fit.hpp>
-#include <fcppt/math/dim/basic_impl.hpp>
+#include <fcppt/math/dim/object_impl.hpp>
 
 
 template<

@@ -8,7 +8,7 @@
 #define FCPPT_MATH_VECTOR_OUTPUT_HPP_INCLUDED
 
 #include <fcppt/math/detail/one_dimensional_output.hpp>
-#include <fcppt/math/vector/basic_impl.hpp>
+#include <fcppt/math/vector/object_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <iosfwd>
 #include <fcppt/config/external_end.hpp>
@@ -39,7 +39,7 @@ template<
 std::basic_ostream<Ch, Traits> &
 operator<< (
 	std::basic_ostream<Ch, Traits> &s,
-	basic<T, N, S> const &v
+	object<T, N, S> const &v
 )
 {
 	return math::detail::one_dimensional_output(

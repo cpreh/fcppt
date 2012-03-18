@@ -7,7 +7,7 @@
 #ifndef FCPPT_MATH_BOX_CONTAINS_HPP_INCLUDED
 #define FCPPT_MATH_BOX_CONTAINS_HPP_INCLUDED
 
-#include <fcppt/math/box/basic_fwd.hpp>
+#include <fcppt/math/box/object_fwd.hpp>
 
 namespace fcppt
 {
@@ -30,8 +30,8 @@ template<
 >
 bool
 contains(
-	basic<T, N> const &outer,
-	basic<T, N> const &inner
+	object<T, N> const &outer,
+	object<T, N> const &inner
 )
 {
 	bool ret = true;

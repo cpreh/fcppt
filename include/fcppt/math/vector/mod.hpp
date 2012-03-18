@@ -8,7 +8,7 @@
 #define FCPPT_MATH_VECTOR_MOD_HPP_INCLUDED
 
 #include <fcppt/math/mod.hpp>
-#include <fcppt/math/vector/basic_impl.hpp>
+#include <fcppt/math/vector/object_impl.hpp>
 
 
 namespace fcppt
@@ -21,13 +21,13 @@ namespace vector
 \brief Calculate vector modulo a scalar
 */
 template<typename T,typename N,typename S>
-vector::basic<T,N,S> const
+vector::object<T,N,S> const
 mod(
-	vector::basic<T,N,S> v,
+	vector::object<T,N,S> v,
 	T const div)
 {
 	typedef typename
-	vector::basic<T,N,S>
+	vector::object<T,N,S>
 	vector;
 
 	typedef typename
@@ -48,13 +48,13 @@ mod(
 }
 
 template<typename T,typename N,typename S>
-vector::basic<T,N,S> const
+vector::object<T,N,S> const
 mod(
-	vector::basic<T,N,S> v0,
-	vector::basic<T,N,S> const &v1)
+	vector::object<T,N,S> v0,
+	vector::object<T,N,S> const &v1)
 {
 	typedef typename
-	vector::basic<T,N,S>
+	vector::object<T,N,S>
 	vector;
 
 	typedef typename

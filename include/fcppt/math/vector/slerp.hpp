@@ -8,9 +8,9 @@
 #define FCPPT_MATH_VECTOR_SLERP_HPP_INCLUDED
 
 #include <fcppt/math/vector/arithmetic.hpp>
-#include <fcppt/math/vector/basic.hpp>
 #include <fcppt/math/vector/dot.hpp>
 #include <fcppt/math/vector/length.hpp>
+#include <fcppt/math/vector/object.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/type_traits/is_floating_point.hpp>
 #include <boost/utility/enable_if.hpp>
@@ -48,11 +48,11 @@ typename
 boost::enable_if
 <
 	boost::is_floating_point<T>,
-	basic<T,N,S> const
+	object<T,N,S> const
 >::type
 slerp(
-	basic<T,N,S> const &start,
-	basic<T,N,S> const &end,
+	object<T,N,S> const &start,
+	object<T,N,S> const &end,
 	T const t)
 {
 	// acos of the angle between start and end. We need a function for

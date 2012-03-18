@@ -4,14 +4,14 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_CONTAINER_BITFIELD_BASIC_DECL_HPP_INCLUDED
-#define FCPPT_CONTAINER_BITFIELD_BASIC_DECL_HPP_INCLUDED
+#ifndef FCPPT_CONTAINER_BITFIELD_OBJECT_DECL_HPP_INCLUDED
+#define FCPPT_CONTAINER_BITFIELD_OBJECT_DECL_HPP_INCLUDED
 
 #include <fcppt/safe_bool.hpp>
 #include <fcppt/container/array_decl.hpp>
 #include <fcppt/container/bitfield/array.hpp>
-#include <fcppt/container/bitfield/basic_fwd.hpp>
 #include <fcppt/container/bitfield/iterator_fwd.hpp>
+#include <fcppt/container/bitfield/object_fwd.hpp>
 #include <fcppt/container/bitfield/proxy_fwd.hpp>
 #include <fcppt/container/bitfield/size_type.hpp>
 #include <fcppt/container/bitfield/value_type.hpp>
@@ -44,9 +44,9 @@ template<
 	Enum Size,
 	typename InternalType
 >
-class basic
+class object
 {
-	FCPPT_SAFE_BOOL(basic)
+	FCPPT_SAFE_BOOL(object)
 private:
 	BOOST_STATIC_ASSERT(
 		boost::is_unsigned<
@@ -124,13 +124,13 @@ public:
 	/**
 	\brief Constructs an uninitialized bitfield
 	*/
-	basic();
+	object();
 
 	/**
 	\brief Constructs a bitfield where every bit is valse except the argument's bit.
 	\param e The bit that is <em>not</em> set to false
 	*/
-	explicit basic(
+	explicit object(
 		Enum e
 	);
 
@@ -138,7 +138,7 @@ public:
 	\brief Constructs a bitfield where every bit is valse except the right hand side bit.
 	\param e The bit that is <em>not</em> set to false
 	*/
-	basic &
+	object &
 	operator=(
 		Enum e
 	);
@@ -243,7 +243,7 @@ public:
 	/**
 	\brief Set the specified bit to <code>true</code>
 	*/
-	basic &
+	object &
 	operator|=(
 		Enum
 	);
@@ -251,31 +251,31 @@ public:
 	/**
 	\brief Do a bit-wise "or" for all bits.
 	*/
-	basic &
+	object &
 	operator|=(
-		basic const &
+		object const &
 	);
 
 	/**
 	\brief Do a bit-wise "and" for all bits.
 	*/
-	basic &
+	object &
 	operator&=(
-		basic const &
+		object const &
 	);
 
 	/**
 	\brief Do a bit-wise "xor" for all bits.
 	*/
-	basic &
+	object &
 	operator^=(
-		basic const &
+		object const &
 	);
 
 	/**
 	\brief Do a bit-wise "not" for all bits (inverts all bits)
 	*/
-	basic const
+	object const
 	operator~() const;
 
 	/**
@@ -302,7 +302,7 @@ public:
 	*/
 	bool
 	operator==(
-		basic const &
+		object const &
 	) const;
 
 	/**
@@ -310,7 +310,7 @@ public:
 	*/
 	bool
 	operator<(
-		basic const &
+		object const &
 	) const;
 
 	/**
@@ -343,14 +343,14 @@ public:
 	*/
 	void
 	swap(
-		basic &
+		object &
 	);
 
 	/**
 	\brief Returns the bitfield with all bits set to zero.
 	*/
 	static
-	basic const
+	object const
 	null();
 };
 
@@ -358,16 +358,16 @@ public:
 \brief Set the specified bit to true
 \tparam Enum An enumeration type satisfying the requirements described in the module documentation.
 \tparam Size The enumeration's size value.
-\tparam InternalType The internal storage type. See fcppt::container::bitfield::basic for more info.
+\tparam InternalType The internal storage type. See fcppt::container::bitfield::object for more info.
 */
 template<
 	typename Enum,
 	Enum Size,
 	typename InternalType
 >
-basic<Enum, Size, InternalType> const
+object<Enum, Size, InternalType> const
 operator|(
-	basic<Enum, Size, InternalType> const &,
+	object<Enum, Size, InternalType> const &,
 	Enum
 );
 
@@ -375,74 +375,74 @@ operator|(
 \brief Do a bit-wise "or" for all bits.
 \tparam Enum An enumeration type satisfying the requirements described in the module documentation.
 \tparam Size The enumeration's size value.
-\tparam InternalType The internal storage type. See fcppt::container::bitfield::basic for more info.
+\tparam InternalType The internal storage type. See fcppt::container::bitfield::object for more info.
 */
 template<
 	typename Enum,
 	Enum Size,
 	typename InternalType
 >
-basic<Enum, Size, InternalType> const
+object<Enum, Size, InternalType> const
 operator|(
-	basic<Enum, Size, InternalType> const &,
-	basic<Enum, Size, InternalType> const &
+	object<Enum, Size, InternalType> const &,
+	object<Enum, Size, InternalType> const &
 );
 
 /**
 \brief Do a bit-wise "and" for all bits.
 \tparam Enum An enumeration type satisfying the requirements described in the module documentation.
 \tparam Size The enumeration's size value.
-\tparam InternalType The internal storage type. See fcppt::container::bitfield::basic for more info.
+\tparam InternalType The internal storage type. See fcppt::container::bitfield::object for more info.
 */
 template<
 	typename Enum,
 	Enum Size,
 	typename InternalType
 >
-basic<Enum, Size, InternalType> const
+object<Enum, Size, InternalType> const
 operator&(
-	basic<Enum, Size, InternalType> const &,
-	basic<Enum, Size, InternalType> const &
+	object<Enum, Size, InternalType> const &,
+	object<Enum, Size, InternalType> const &
 );
 
 /**
 \brief Do a bit-wise "xor" for all bits.
 \tparam Enum An enumeration type satisfying the requirements described in the module documentation.
 \tparam Size The enumeration's size value.
-\tparam InternalType The internal storage type. See fcppt::container::bitfield::basic for more info.
+\tparam InternalType The internal storage type. See fcppt::container::bitfield::object for more info.
 */
 template<
 	typename Enum,
 	Enum Size,
 	typename InternalType
 >
-basic<Enum, Size, InternalType> const
+object<Enum, Size, InternalType> const
 operator^(
-	basic<Enum, Size, InternalType> const &,
-	basic<Enum, Size, InternalType> const &
+	object<Enum, Size, InternalType> const &,
+	object<Enum, Size, InternalType> const &
 );
 
 /**
 \brief Do a bit-wise "not" for all bits.
 \tparam Enum An enumeration type satisfying the requirements described in the module documentation.
 \tparam Size The enumeration's size value.
-\tparam InternalType The internal storage type. See fcppt::container::bitfield::basic for more info.
+\tparam InternalType The internal storage type. See fcppt::container::bitfield::object for more info.
 */
 template<
 	typename Enum,
 	Enum Size,
 	typename InternalType
 >
-basic<Enum, Size, InternalType> const
+object<Enum, Size, InternalType> const
 operator~(
-	basic<Enum, Size, InternalType>
+	object<Enum, Size, InternalType>
 );
 
 /**
 \brief Exchanges the elements of two bitfields.
 \tparam Enum An enumeration type satisfying the requirements described in the module documentation.
 \tparam Size The enumeration's size value.
-\tparam InternalType The internal storage type. See fcppt::container::bitfield::basic for more info.
+\tparam InternalType The internal storage type. See fcppt::container::bitfield::object for more info.
 */
 template<
 	typename Enum,
@@ -451,8 +451,8 @@ template<
 >
 void
 swap(
-	basic<Enum, Size, InternalType> &,
-	basic<Enum, Size, InternalType> &
+	object<Enum, Size, InternalType> &,
+	object<Enum, Size, InternalType> &
 );
 
 /**
@@ -465,8 +465,8 @@ template<
 >
 bool
 operator==(
-	basic<Enum, Size, InternalType> const &,
-	basic<Enum, Size, InternalType> const &
+	object<Enum, Size, InternalType> const &,
+	object<Enum, Size, InternalType> const &
 );
 
 /**
@@ -479,8 +479,8 @@ template<
 >
 bool
 operator!=(
-	basic<Enum, Size, InternalType> const &,
-	basic<Enum, Size, InternalType> const &
+	object<Enum, Size, InternalType> const &,
+	object<Enum, Size, InternalType> const &
 );
 
 /**
@@ -493,8 +493,8 @@ template<
 >
 bool
 operator<(
-	basic<Enum, Size, InternalType> const &,
-	basic<Enum, Size, InternalType> const &
+	object<Enum, Size, InternalType> const &,
+	object<Enum, Size, InternalType> const &
 );
 
 /**
@@ -507,8 +507,8 @@ template<
 >
 bool
 operator<=(
-	basic<Enum, Size, InternalType> const &,
-	basic<Enum, Size, InternalType> const &
+	object<Enum, Size, InternalType> const &,
+	object<Enum, Size, InternalType> const &
 );
 
 /**
@@ -521,8 +521,8 @@ template<
 >
 bool
 operator>(
-	basic<Enum, Size, InternalType> const &,
-	basic<Enum, Size, InternalType> const &
+	object<Enum, Size, InternalType> const &,
+	object<Enum, Size, InternalType> const &
 );
 
 /**
@@ -535,8 +535,8 @@ template<
 >
 bool
 operator>=(
-	basic<Enum, Size, InternalType> const &,
-	basic<Enum, Size, InternalType> const &
+	object<Enum, Size, InternalType> const &,
+	object<Enum, Size, InternalType> const &
 );
 
 }

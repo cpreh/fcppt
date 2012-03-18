@@ -8,7 +8,7 @@
 #define FCPPT_MATH_DIM_STRUCTURE_CAST_HPP_INCLUDED
 
 #include <fcppt/math/detail/structure_cast.hpp>
-#include <fcppt/math/dim/basic_impl.hpp>
+#include <fcppt/math/dim/object_impl.hpp>
 
 
 namespace fcppt
@@ -27,7 +27,7 @@ namespace dim
 \tparam S The source dim's storage type
 \param _src The dim to cast
 
-See the introduction to fcppt::math::vector::basic for more information on this
+See the introduction to fcppt::math::vector::object for more information on this
 function (and dim/vector in general).
 */
 template<
@@ -38,7 +38,7 @@ template<
 >
 Dest const
 structure_cast(
-	basic<T, N, S> const &_src
+	object<T, N, S> const &_src
 )
 {
 	return math::detail::structure_cast<

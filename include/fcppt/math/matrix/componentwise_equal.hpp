@@ -8,7 +8,7 @@
 #define FCPPT_MATH_MATRIX_COMPONENTWISE_EQUAL_HPP_INCLUDED
 
 #include <fcppt/math/detail/array_componentwise_equal.hpp>
-#include <fcppt/math/matrix/basic_impl.hpp>
+#include <fcppt/math/matrix/object_impl.hpp>
 
 
 namespace fcppt
@@ -39,13 +39,13 @@ template<
 >
 bool
 componentwise_equal(
-	matrix::basic<
+	matrix::object<
 		T,
 		N,
 		M,
 		S1
 	> const &_v1,
-	matrix::basic<
+	matrix::object<
 		T,
 		N,
 		M,

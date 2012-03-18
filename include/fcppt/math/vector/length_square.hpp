@@ -7,8 +7,9 @@
 #ifndef FCPPT_MATH_VECTOR_LENGTH_SQUARE_HPP_INCLUDED
 #define FCPPT_MATH_VECTOR_LENGTH_SQUARE_HPP_INCLUDED
 
-#include <fcppt/math/vector/basic_impl.hpp>
 #include <fcppt/math/vector/dot.hpp>
+#include <fcppt/math/vector/object_impl.hpp>
+
 
 namespace fcppt
 {
@@ -38,9 +39,9 @@ template<
 	typename N,
 	typename S
 >
-typename basic<T, N, S>::value_type
+typename object<T, N, S>::value_type
 length_square(
-	basic<T, N, S> const &v
+	object<T, N, S> const &v
 )
 {
 	return dot(v, v);

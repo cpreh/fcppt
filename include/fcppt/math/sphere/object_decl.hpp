@@ -4,12 +4,12 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_MATH_SPHERE_BASIC_DECL_HPP_INCLUDED
-#define FCPPT_MATH_SPHERE_BASIC_DECL_HPP_INCLUDED
+#ifndef FCPPT_MATH_SPHERE_OBJECT_DECL_HPP_INCLUDED
+#define FCPPT_MATH_SPHERE_OBJECT_DECL_HPP_INCLUDED
 
 #include <fcppt/math/size_type.hpp>
-#include <fcppt/math/sphere/basic_fwd.hpp>
-#include <fcppt/math/vector/basic_decl.hpp>
+#include <fcppt/math/sphere/object_fwd.hpp>
+#include <fcppt/math/vector/object_decl.hpp>
 #include <fcppt/math/vector/static.hpp>
 
 
@@ -20,7 +20,7 @@ namespace math
 namespace sphere
 {
 
-/// The basic sphere class
+/// The object sphere class
 /**
  * @param T The value type to hold
  * @param N The static size of the sphere
@@ -29,7 +29,7 @@ template<
 	typename T,
 	size_type N
 >
-class basic
+class object
 {
 public:
 	typedef T value_type;
@@ -42,7 +42,7 @@ public:
 	>::type point_type;
 
 	/// Constructs a sphere from @a origin and @a radius
-	basic(
+	object(
 		point_type const &origin,
 		const_reference radius
 	);
@@ -61,7 +61,7 @@ public:
 
 	void
 	swap(
-		basic &
+		object &
 	);
 private:
 	point_type origin_;
@@ -75,8 +75,8 @@ template<
 >
 bool
 operator==(
-	basic<T, N> const &,
-	basic<T, N> const &
+	object<T, N> const &,
+	object<T, N> const &
 );
 
 template<
@@ -85,8 +85,8 @@ template<
 >
 bool
 operator!=(
-	basic<T, N> const &,
-	basic<T, N> const &
+	object<T, N> const &,
+	object<T, N> const &
 );
 
 template<
@@ -95,8 +95,8 @@ template<
 >
 void
 swap(
-	basic<T, N> &,
-	basic<T, N> &
+	object<T, N> &,
+	object<T, N> &
 );
 
 }

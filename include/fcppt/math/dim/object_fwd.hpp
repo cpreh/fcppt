@@ -4,23 +4,22 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_MATH_MATRIX_BASIC_FWD_HPP_INCLUDED
-#define FCPPT_MATH_MATRIX_BASIC_FWD_HPP_INCLUDED
+#ifndef FCPPT_MATH_DIM_OBJECT_FWD_HPP_INCLUDED
+#define FCPPT_MATH_DIM_OBJECT_FWD_HPP_INCLUDED
 
 namespace fcppt
 {
 namespace math
 {
-namespace matrix
+namespace dim
 {
 
 template<
 	typename T,
 	typename N,
-	typename M,
 	typename S
 >
-class basic;
+class object;
 
 }
 }

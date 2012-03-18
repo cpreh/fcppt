@@ -3,7 +3,7 @@ namespace fcppt
 namespace math
 {
 /**
-\brief Contains \link fcppt::math::dim::basic dim::basic \endlink and helper functions, classes and types for it
+\brief Contains \link fcppt::math::dim::object dim::object \endlink and helper functions, classes and types for it
 */
 namespace dim
 {
@@ -21,24 +21,24 @@ namespace dim
 <td>
 
 <ol>
-	<li>\ref fcpptmathdimbasic_motivation</li>
-	<li>\ref fcpptmathdimbasic_converting_from_and_to_vectors</li>
-	<li>\ref fcpptmathdimbasic_operators</li>
-	<li>\ref fcpptmathdimbasic_headers</li>
+	<li>\ref fcpptmathdimobject_motivation</li>
+	<li>\ref fcpptmathdimobject_converting_from_and_to_vectors</li>
+	<li>\ref fcpptmathdimobject_operators</li>
+	<li>\ref fcpptmathdimobject_headers</li>
 </ol>
 
 </td>
 </tr>
 </table>
 
-\section fcpptmathdimbasic_motivation Motivation
+\section fcpptmathdimobject_motivation Motivation
 
 When writing code that deals with geometry, you need a type to denote the
 size (or extent) of the geometry for each dimension. You also need such a class
 when writing multi-dimensional containers (like
 fcppt::container::grid::object).
 
-Conceptually, you could just use fcppt::math::vector::basic, and we (the
+Conceptually, you could just use fcppt::math::vector::object, and we (the
 authors of fcppt) have thought about going that way. However, a vector just
 isn't a dimension type. You have operations you can apply to a vector (like the
 dot product) that make no sense in the context of a dimension. Conversely, you
@@ -51,7 +51,7 @@ So don't be confused, vector and dim are distinct types, not (strong) typedefs
 of another. They have a very similar interface (and the same template
 parameters), but not the same member and free functions.
 
-\section fcpptmathdimbasic_converting_from_and_to_vectors Converting from and to vectors
+\section fcpptmathdimobject_converting_from_and_to_vectors Converting from and to vectors
 
 To convert a dimension to a vector, use fcppt::math::dim::structure_cast:
 
@@ -89,27 +89,27 @@ If you include the fcppt/math/vector/dim.hpp header, you get the operators
 <code>+-*%/</code> which all have the signature
 
 <pre>
-vector::basic<T,N,S> operator(vector::basic<T,N,S> left,dim::basic<T,N,S>)
+vector::object<T,N,S> operator(vector::object<T,N,S> left,dim::object<T,N,S>)
 </pre>
 
 This way, you can add a dimension to a vector, for example.
 
-\section fcpptmathdimbasic_operators Operators
+\section fcpptmathdimobject_operators Operators
 
-Including <strong><code>fcppt/math/dim/basic_decl.hpp</code></strong> you
+Including <strong><code>fcppt/math/dim/object_decl.hpp</code></strong> you
 will get the following operators (<code>S2</code> defines some other storage
 type):
 
 <ul>
-	<li><code>operator+=(dim::basic<T,N,S2>)</code></li>
-	<li><code>operator-=(dim::basic<T,N,S2>)</code></li>
-	<li><code>operator*=(dim::basic<T,N,S2>)</code></li>
-	<li><code>operator/=(dim::basic<T,N,S2>)</code></li>
-	<li><code>operator%=(dim::basic<T,N,S2>)</code></li>
+	<li><code>operator+=(dim::object<T,N,S2>)</code></li>
+	<li><code>operator-=(dim::object<T,N,S2>)</code></li>
+	<li><code>operator*=(dim::object<T,N,S2>)</code></li>
+	<li><code>operator/=(dim::object<T,N,S2>)</code></li>
+	<li><code>operator%=(dim::object<T,N,S2>)</code></li>
 	<li><code>operator*=(T)</code> (multiply by a scalar)</li>
 	<li><code>operator/=(T)</code> (divide by a scalar)</li>
-	<li><code>operator=(dim::basic const &)</code> (regular assignment operator)</li>
-	<li><code>operator=(dim::basic<T,N,S2> const &)</code></li>
+	<li><code>operator=(dim::object const &)</code> (regular assignment operator)</li>
+	<li><code>operator=(dim::object<T,N,S2> const &)</code></li>
 	<li><code>operator[](size_type>)</code></li>
 </ul>
 
@@ -137,13 +137,13 @@ Including <strong><code>fcppt/math/dim/arithmetic.hpp</code></strong> gives
 you the following operators:
 
 <ul>
-	<li><code>operator+(dim::basic<T,N,S>,dim::basic<T,N,S>)</code></li>
-	<li><code>operator-(dim::basic<T,N,S>,dim::basic<T,N,S>)</code></li>
-	<li><code>operator*(dim::basic<T,N,S>,dim::basic<T,N,S>)</code></li>
-	<li><code>operator/(dim::basic<T,N,S>,dim::basic<T,N,S>)</code></li>
-	<li><code>operator%(dim::basic<T,N,S>,dim::basic<T,N,S>)</code></li>
-	<li><code>operator*(T,dim::basic<T,N,S>)</code> (scalar multiplication)</li>
-	<li><code>operator/(T,dim::basic<T,N,S>)</code> (scalar division)</li>
+	<li><code>operator+(dim::object<T,N,S>,dim::object<T,N,S>)</code></li>
+	<li><code>operator-(dim::object<T,N,S>,dim::object<T,N,S>)</code></li>
+	<li><code>operator*(dim::object<T,N,S>,dim::object<T,N,S>)</code></li>
+	<li><code>operator/(dim::object<T,N,S>,dim::object<T,N,S>)</code></li>
+	<li><code>operator%(dim::object<T,N,S>,dim::object<T,N,S>)</code></li>
+	<li><code>operator*(T,dim::object<T,N,S>)</code> (scalar multiplication)</li>
+	<li><code>operator/(T,dim::object<T,N,S>)</code> (scalar division)</li>
 	<li>Unary minus for dims</li>
 </ul>
 
@@ -155,10 +155,10 @@ Conversely, including
 <strong><code>fcppt/math/dim/output.hpp</code></strong> gives you an inverse
 <code>operator<<</code>.
 
-\section fcpptmathdimbasic_headers Header files
+\section fcpptmathdimobject_headers Header files
 
 fcppt::math::dim is spread out across various header files. There's one
-header per free function. fcppt::math::dim::basic itself is split into
+header per free function. fcppt::math::dim::object itself is split into
 various headers, too. Here's an exhaustive list:
 
 <table>
@@ -167,28 +167,28 @@ various headers, too. Here's an exhaustive list:
 <th>Description</th>
 </tr>
 <tr>
-<td><code>basic_fwd.hpp</code></td>
-<td>Contains \link fcppt::math::dim::basic basic's \endlink declaration. Include this if you pass a dim by reference, for example.</td>
+<td><code>object_fwd.hpp</code></td>
+<td>Contains \link fcppt::math::dim::object object's \endlink declaration. Include this if you pass a dim by reference, for example.</td>
 </tr>
 <tr>
-<td><code>basic_decl.hpp</code></td>
-<td>Contains \link fcppt::math::dim::basic basic's \endlink definition.</td>
+<td><code>object_decl.hpp</code></td>
+<td>Contains \link fcppt::math::dim::object object's \endlink definition.</td>
 </tr>
 <tr>
-<td><code>basic_impl.hpp</code></td>
-<td>Contains the definition of \link fcppt::math::dim::basic basic's \endlink member functions.</td>
+<td><code>object_impl.hpp</code></td>
+<td>Contains the definition of \link fcppt::math::dim::object object's \endlink member functions.</td>
 </tr>
 <tr>
-<td><code>basic.hpp</code></td>
-<td>Includes <code>basic_fwd.hpp</code>, <code>basic_decl.hpp</code> and <code>basic_impl.hpp</code></td>
+<td><code>object.hpp</code></td>
+<td>Includes <code>object_fwd.hpp</code>, <code>object_decl.hpp</code> and <code>object_impl.hpp</code></td>
 </tr>
 <tr>
 <td><code>arithmetic.hpp</code></td>
-<td>Contains \link fcppt::math::dim::basic basic's \endlink arithmetic operators.</td>
+<td>Contains \link fcppt::math::dim::object object's \endlink arithmetic operators.</td>
 </tr>
 <tr>
 <td><code>comparison.hpp</code></td>
-<td>Contains \link fcppt::math::dim::basic basic's \endlink comparison operators.</td>
+<td>Contains \link fcppt::math::dim::object object's \endlink comparison operators.</td>
 </tr>
 <tr>
 <td><code>input.hpp</code></td>

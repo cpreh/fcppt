@@ -8,7 +8,7 @@
 #define FCPPT_MATH_MATRIX_COMPARISON_HPP_INCLUDED
 
 #include <fcppt/math/detail/array_equal.hpp>
-#include <fcppt/math/matrix/basic_impl.hpp>
+#include <fcppt/math/matrix/object_impl.hpp>
 
 namespace fcppt
 {
@@ -41,8 +41,8 @@ template<
 >
 bool
 operator==(
-	basic<T, N, M, S1> const &v1,
-	basic<T, N, M, S2> const &v2
+	object<T, N, M, S1> const &v1,
+	object<T, N, M, S2> const &v2
 )
 {
 	return
@@ -76,8 +76,8 @@ template<
 >
 bool
 operator!=(
-	basic<T, N, M, S1> const &v1,
-	basic<T, N, M, S2> const &v2
+	object<T, N, M, S1> const &v1,
+	object<T, N, M, S2> const &v2
 )
 {
 	return

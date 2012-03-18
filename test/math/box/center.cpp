@@ -4,15 +4,16 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/math/box/basic_impl.hpp>
 #include <fcppt/math/box/center.hpp>
+#include <fcppt/math/box/object_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/test/unit_test.hpp>
 #include <fcppt/config/external_end.hpp>
 
+
 BOOST_AUTO_TEST_CASE(box_center)
 {
-	typedef fcppt::math::box::basic<
+	typedef fcppt::math::box::object<
 		int,
 		3
 	> box_type;

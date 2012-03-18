@@ -5,7 +5,7 @@
 
 
 #include <fcppt/container/raw_vector.hpp>
-#include <fcppt/container/bitfield/basic.hpp>
+#include <fcppt/container/bitfield/object.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <fstream>
 #include <iostream>

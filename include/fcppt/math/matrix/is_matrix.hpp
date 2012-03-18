@@ -7,7 +7,7 @@
 #ifndef FCPPT_MATH_MATRIX_IS_MATRIX_HPP_INCLUDED
 #define FCPPT_MATH_MATRIX_IS_MATRIX_HPP_INCLUDED
 
-#include <fcppt/math/matrix/basic_decl.hpp>
+#include <fcppt/math/matrix/object_decl.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/mpl/bool.hpp>
 #include <fcppt/config/external_end.hpp>
@@ -43,7 +43,7 @@ template
 >
 struct is_matrix
 <
-	matrix::basic<T,N,M,S>
+	matrix::object<T,N,M,S>
 >
 :
 	boost::mpl::true_

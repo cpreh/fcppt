@@ -18,7 +18,7 @@
 	op\
 )\
 decl \
-basic & \
+object & \
 operator op ( \
 	BOOST_PP_TUPLE_REM(arity)param const &\
 );

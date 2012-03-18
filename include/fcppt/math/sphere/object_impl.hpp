@@ -4,12 +4,12 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_MATH_SPHERE_BASIC_IMPL_HPP_INCLUDED
-#define FCPPT_MATH_SPHERE_BASIC_IMPL_HPP_INCLUDED
+#ifndef FCPPT_MATH_SPHERE_OBJECT_IMPL_HPP_INCLUDED
+#define FCPPT_MATH_SPHERE_OBJECT_IMPL_HPP_INCLUDED
 
-#include <fcppt/math/sphere/basic_decl.hpp>
-#include <fcppt/math/vector/basic_impl.hpp>
+#include <fcppt/math/sphere/object_decl.hpp>
 #include <fcppt/math/vector/comparison.hpp>
+#include <fcppt/math/vector/object_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <algorithm>
 #include <fcppt/config/external_end.hpp>
@@ -19,7 +19,7 @@ template<
 	typename T,
 	fcppt::math::size_type N
 >
-fcppt::math::sphere::basic<T, N>::basic(
+fcppt::math::sphere::object<T, N>::object(
 	point_type const &_origin,
 	const_reference _radius
 )
@@ -32,8 +32,8 @@ template<
 	typename T,
 	fcppt::math::size_type N
 >
-typename fcppt::math::sphere::basic<T, N>::point_type &
-fcppt::math::sphere::basic<T, N>::origin()
+typename fcppt::math::sphere::object<T, N>::point_type &
+fcppt::math::sphere::object<T, N>::origin()
 {
 	return origin_;
 }
@@ -42,8 +42,8 @@ template<
 	typename T,
 	fcppt::math::size_type N
 >
-typename fcppt::math::sphere::basic<T, N>::point_type const &
-fcppt::math::sphere::basic<T, N>::origin() const
+typename fcppt::math::sphere::object<T, N>::point_type const &
+fcppt::math::sphere::object<T, N>::origin() const
 {
 	return origin_;
 }
@@ -52,8 +52,8 @@ template<
 	typename T,
 	fcppt::math::size_type N
 >
-typename fcppt::math::sphere::basic<T, N>::reference
-fcppt::math::sphere::basic<T, N>::radius()
+typename fcppt::math::sphere::object<T, N>::reference
+fcppt::math::sphere::object<T, N>::radius()
 {
 	return radius_;
 }
@@ -62,8 +62,8 @@ template<
 	typename T,
 	fcppt::math::size_type N
 >
-typename fcppt::math::sphere::basic<T, N>::const_reference
-fcppt::math::sphere::basic<T, N>::radius() const
+typename fcppt::math::sphere::object<T, N>::const_reference
+fcppt::math::sphere::object<T, N>::radius() const
 {
 	return radius_;
 }
@@ -73,8 +73,8 @@ template<
 	fcppt::math::size_type N
 >
 void
-fcppt::math::sphere::basic<T, N>::swap(
-	basic &_other
+fcppt::math::sphere::object<T, N>::swap(
+	object &_other
 )
 {
 	std::swap(
@@ -94,8 +94,8 @@ template<
 >
 bool
 fcppt::math::sphere::operator==(
-	basic<T, N> const &_a,
-	basic<T, N> const &_b
+	object<T, N> const &_a,
+	object<T, N> const &_b
 )
 {
 	return
@@ -109,8 +109,8 @@ template<
 >
 bool
 fcppt::math::sphere::operator!=(
-	basic<T, N> const &_a,
-	basic<T, N> const &_b
+	object<T, N> const &_a,
+	object<T, N> const &_b
 )
 {
 	return !(_a == _b);
@@ -122,8 +122,8 @@ template<
 >
 void
 fcppt::math::sphere::swap(
-	basic<T, N> &_a,
-	basic<T, N> &_b
+	object<T, N> &_a,
+	object<T, N> &_b
 )
 {
 	_a.swap(

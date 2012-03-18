@@ -142,10 +142,6 @@ set(
 	include/fcppt/container/array_fwd.hpp
 	include/fcppt/container/array_impl.hpp
 	include/fcppt/container/bitfield/array.hpp
-	include/fcppt/container/bitfield/basic.hpp
-	include/fcppt/container/bitfield/basic_decl.hpp
-	include/fcppt/container/bitfield/basic_fwd.hpp
-	include/fcppt/container/bitfield/basic_impl.hpp
 	include/fcppt/container/bitfield/default_internal_type.hpp
 	include/fcppt/container/bitfield/detail/element_bits.hpp
 	include/fcppt/container/bitfield/detail/iterator_type.hpp
@@ -155,6 +151,10 @@ set(
 	include/fcppt/container/bitfield/iterator_decl.hpp
 	include/fcppt/container/bitfield/iterator_fwd.hpp
 	include/fcppt/container/bitfield/iterator_impl.hpp
+	include/fcppt/container/bitfield/object.hpp
+	include/fcppt/container/bitfield/object_decl.hpp
+	include/fcppt/container/bitfield/object_fwd.hpp
+	include/fcppt/container/bitfield/object_impl.hpp
 	include/fcppt/container/bitfield/proxy.hpp
 	include/fcppt/container/bitfield/proxy_decl.hpp
 	include/fcppt/container/bitfield/proxy_fwd.hpp
@@ -440,9 +440,6 @@ set(
 	include/fcppt/make_shared_ptr.hpp
 	include/fcppt/make_strong_typedef.hpp
 	include/fcppt/make_unique_ptr.hpp
-	include/fcppt/math/box/basic_decl.hpp
-	include/fcppt/math/box/basic_fwd.hpp
-	include/fcppt/math/box/basic_impl.hpp
 	include/fcppt/math/box/center.hpp
 	include/fcppt/math/box/componentwise_equal.hpp
 	include/fcppt/math/box/contains.hpp
@@ -452,6 +449,10 @@ set(
 	include/fcppt/math/box/has_dim.hpp
 	include/fcppt/math/box/intersection.hpp
 	include/fcppt/math/box/intersects.hpp
+	include/fcppt/math/box/object.hpp
+	include/fcppt/math/box/object_decl.hpp
+	include/fcppt/math/box/object_fwd.hpp
+	include/fcppt/math/box/object_impl.hpp
 	include/fcppt/math/box/output.hpp
 	include/fcppt/math/box/rect.hpp
 	include/fcppt/math/box/rect_from_edges.hpp
@@ -503,10 +504,6 @@ set(
 	include/fcppt/math/diff.hpp
 	include/fcppt/math/difference_type.hpp
 	include/fcppt/math/dim/arithmetic.hpp
-	include/fcppt/math/dim/basic.hpp
-	include/fcppt/math/dim/basic_decl.hpp
-	include/fcppt/math/dim/basic_fwd.hpp
-	include/fcppt/math/dim/basic_impl.hpp
 	include/fcppt/math/dim/before.hpp
 	include/fcppt/math/dim/comparison.hpp
 	include/fcppt/math/dim/componentwise_equal.hpp
@@ -520,6 +517,10 @@ set(
 	include/fcppt/math/dim/max_ctor_params.hpp
 	include/fcppt/math/dim/narrow_cast.hpp
 	include/fcppt/math/dim/normal_storage.hpp
+	include/fcppt/math/dim/object.hpp
+	include/fcppt/math/dim/object_decl.hpp
+	include/fcppt/math/dim/object_fwd.hpp
+	include/fcppt/math/dim/object_impl.hpp
 	include/fcppt/math/dim/output.hpp
 	include/fcppt/math/dim/static.hpp
 	include/fcppt/math/dim/structure_cast.hpp
@@ -537,10 +538,6 @@ set(
 	include/fcppt/math/log2.hpp
 	include/fcppt/math/matrix/adjugate.hpp
 	include/fcppt/math/matrix/arithmetic.hpp
-	include/fcppt/math/matrix/basic.hpp
-	include/fcppt/math/matrix/basic_decl.hpp
-	include/fcppt/math/matrix/basic_fwd.hpp
-	include/fcppt/math/matrix/basic_impl.hpp
 	include/fcppt/math/matrix/comparison.hpp
 	include/fcppt/math/matrix/componentwise_equal.hpp
 	include/fcppt/math/matrix/delete_row_and_column.hpp
@@ -562,6 +559,10 @@ set(
 	include/fcppt/math/matrix/is_static_size.hpp
 	include/fcppt/math/matrix/max_ctor_params.hpp
 	include/fcppt/math/matrix/normal_storage.hpp
+	include/fcppt/math/matrix/object.hpp
+	include/fcppt/math/matrix/object_decl.hpp
+	include/fcppt/math/matrix/object_fwd.hpp
+	include/fcppt/math/matrix/object_impl.hpp
 	include/fcppt/math/matrix/output.hpp
 	include/fcppt/math/matrix/rotation_2d.hpp
 	include/fcppt/math/matrix/rotation_axis.hpp
@@ -590,20 +591,17 @@ set(
 	include/fcppt/math/rad_to_deg.hpp
 	include/fcppt/math/range_compare.hpp
 	include/fcppt/math/size_type.hpp
-	include/fcppt/math/sphere/basic_decl.hpp
-	include/fcppt/math/sphere/basic_fwd.hpp
-	include/fcppt/math/sphere/basic_impl.hpp
 	include/fcppt/math/sphere/circle.hpp
 	include/fcppt/math/sphere/intersects.hpp
+	include/fcppt/math/sphere/object.hpp
+	include/fcppt/math/sphere/object_decl.hpp
+	include/fcppt/math/sphere/object_fwd.hpp
+	include/fcppt/math/sphere/object_impl.hpp
 	include/fcppt/math/twopi.hpp
 	include/fcppt/math/vector/angle_between.hpp
 	include/fcppt/math/vector/angle_between_cast.hpp
 	include/fcppt/math/vector/arithmetic.hpp
 	include/fcppt/math/vector/atan2.hpp
-	include/fcppt/math/vector/basic.hpp
-	include/fcppt/math/vector/basic_decl.hpp
-	include/fcppt/math/vector/basic_fwd.hpp
-	include/fcppt/math/vector/basic_impl.hpp
 	include/fcppt/math/vector/before.hpp
 	include/fcppt/math/vector/comparison.hpp
 	include/fcppt/math/vector/componentwise_equal.hpp
@@ -624,6 +622,10 @@ set(
 	include/fcppt/math/vector/narrow_cast.hpp
 	include/fcppt/math/vector/normal_storage.hpp
 	include/fcppt/math/vector/normalize.hpp
+	include/fcppt/math/vector/object.hpp
+	include/fcppt/math/vector/object_decl.hpp
+	include/fcppt/math/vector/object_fwd.hpp
+	include/fcppt/math/vector/object_impl.hpp
 	include/fcppt/math/vector/orthogonalize.hpp
 	include/fcppt/math/vector/output.hpp
 	include/fcppt/math/vector/project.hpp

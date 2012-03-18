@@ -9,7 +9,7 @@
 
 #include <fcppt/math/size_type.hpp>
 #include <fcppt/math/detail/fill.hpp>
-#include <fcppt/math/dim/basic_impl.hpp>
+#include <fcppt/math/dim/object_impl.hpp>
 #include <fcppt/math/dim/static.hpp>
 
 

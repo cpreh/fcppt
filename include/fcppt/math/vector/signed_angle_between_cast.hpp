@@ -8,7 +8,7 @@
 #define FCPPT_MATH_VECTOR_SIGNED_ANGLE_BETWEEN_CAST_HPP_INCLUDED
 
 #include <fcppt/math/detail/has_size.hpp>
-#include <fcppt/math/vector/basic_impl.hpp>
+#include <fcppt/math/vector/object_impl.hpp>
 #include <fcppt/math/vector/signed_angle_between.hpp>
 #include <fcppt/math/vector/static.hpp>
 #include <fcppt/math/vector/structure_cast.hpp>
@@ -64,8 +64,8 @@ typename boost::enable_if<
 	Dest
 >::type
 signed_angle_between_cast(
-	basic<T, N, S1> const &_from,
-	basic<T, N, S2> const &_to
+	object<T, N, S1> const &_from,
+	object<T, N, S2> const &_to
 )
 {
 	typedef typename fcppt::math::vector::static_<

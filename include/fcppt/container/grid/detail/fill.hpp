@@ -9,7 +9,7 @@
 
 #include <fcppt/container/grid/object_impl.hpp>
 #include <fcppt/container/grid/size_type.hpp>
-#include <fcppt/math/dim/basic_impl.hpp>
+#include <fcppt/math/dim/object_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/utility/enable_if.hpp>
 #include <fcppt/config/external_end.hpp>

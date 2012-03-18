@@ -4,13 +4,13 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_CONTAINER_BITFIELD_BASIC_IMPL_HPP_INCLUDED
-#define FCPPT_CONTAINER_BITFIELD_BASIC_IMPL_HPP_INCLUDED
+#ifndef FCPPT_CONTAINER_BITFIELD_OBJECT_IMPL_HPP_INCLUDED
+#define FCPPT_CONTAINER_BITFIELD_OBJECT_IMPL_HPP_INCLUDED
 
 #include <fcppt/algorithm/contains_if.hpp>
 #include <fcppt/container/array_impl.hpp>
-#include <fcppt/container/bitfield/basic_decl.hpp>
 #include <fcppt/container/bitfield/iterator_impl.hpp>
+#include <fcppt/container/bitfield/object_decl.hpp>
 #include <fcppt/container/bitfield/proxy_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/spirit/home/phoenix/core/argument.hpp>
@@ -26,7 +26,7 @@ template<
 	typename InternalType
 >
 bool
-fcppt::container::bitfield::basic<Enum, Size, InternalType>::boolean_test() const
+fcppt::container::bitfield::object<Enum, Size, InternalType>::boolean_test() const
 {
 	return
 		algorithm::contains_if(
@@ -42,7 +42,7 @@ template<
 	Enum Size,
 	typename InternalType
 >
-fcppt::container::bitfield::basic<Enum, Size, InternalType>::basic()
+fcppt::container::bitfield::object<Enum, Size, InternalType>::object()
 {}
 
 template<
@@ -50,7 +50,7 @@ template<
 	Enum Size,
 	typename InternalType
 >
-fcppt::container::bitfield::basic<Enum, Size, InternalType>::basic(
+fcppt::container::bitfield::object<Enum, Size, InternalType>::object(
 	Enum const _index
 )
 {
@@ -67,8 +67,8 @@ template<
 	Enum Size,
 	typename InternalType
 >
-fcppt::container::bitfield::basic<Enum, Size, InternalType> &
-fcppt::container::bitfield::basic<Enum, Size, InternalType>::operator=(
+fcppt::container::bitfield::object<Enum, Size, InternalType> &
+fcppt::container::bitfield::object<Enum, Size, InternalType>::operator=(
 	Enum const _index
 )
 {
@@ -87,8 +87,8 @@ template<
 	Enum Size,
 	typename InternalType
 >
-typename fcppt::container::bitfield::basic<Enum, Size, InternalType>::iterator
-fcppt::container::bitfield::basic<Enum, Size, InternalType>::begin()
+typename fcppt::container::bitfield::object<Enum, Size, InternalType>::iterator
+fcppt::container::bitfield::object<Enum, Size, InternalType>::begin()
 {
 	return
 		iterator(
@@ -102,8 +102,8 @@ template<
 	Enum Size,
 	typename InternalType
 >
-typename fcppt::container::bitfield::basic<Enum, Size, InternalType>::const_iterator
-fcppt::container::bitfield::basic<Enum, Size, InternalType>::begin() const
+typename fcppt::container::bitfield::object<Enum, Size, InternalType>::const_iterator
+fcppt::container::bitfield::object<Enum, Size, InternalType>::begin() const
 {
 	return
 		const_iterator(
@@ -117,8 +117,8 @@ template<
 	Enum Size,
 	typename InternalType
 >
-typename fcppt::container::bitfield::basic<Enum, Size, InternalType>::iterator
-fcppt::container::bitfield::basic<Enum, Size, InternalType>::end()
+typename fcppt::container::bitfield::object<Enum, Size, InternalType>::iterator
+fcppt::container::bitfield::object<Enum, Size, InternalType>::end()
 {
 	return
 		iterator(
@@ -136,8 +136,8 @@ template<
 	Enum Size,
 	typename InternalType
 >
-typename fcppt::container::bitfield::basic<Enum, Size, InternalType>::const_iterator
-fcppt::container::bitfield::basic<Enum, Size, InternalType>::end() const
+typename fcppt::container::bitfield::object<Enum, Size, InternalType>::const_iterator
+fcppt::container::bitfield::object<Enum, Size, InternalType>::end() const
 {
 	return
 		const_iterator(
@@ -155,8 +155,8 @@ template<
 	Enum Size,
 	typename InternalType
 >
-typename fcppt::container::bitfield::basic<Enum, Size, InternalType>::reverse_iterator
-fcppt::container::bitfield::basic<Enum, Size, InternalType>::rbegin()
+typename fcppt::container::bitfield::object<Enum, Size, InternalType>::reverse_iterator
+fcppt::container::bitfield::object<Enum, Size, InternalType>::rbegin()
 {
 	return reverse_iterator(end());
 }
@@ -166,8 +166,8 @@ template<
 	Enum Size,
 	typename InternalType
 >
-typename fcppt::container::bitfield::basic<Enum, Size, InternalType>::const_reverse_iterator
-fcppt::container::bitfield::basic<Enum, Size, InternalType>::rbegin() const
+typename fcppt::container::bitfield::object<Enum, Size, InternalType>::const_reverse_iterator
+fcppt::container::bitfield::object<Enum, Size, InternalType>::rbegin() const
 {
 	return const_reverse_iterator(end());
 }
@@ -177,8 +177,8 @@ template<
 	Enum Size,
 	typename InternalType
 >
-typename fcppt::container::bitfield::basic<Enum, Size, InternalType>::reverse_iterator
-fcppt::container::bitfield::basic<Enum, Size, InternalType>::rend()
+typename fcppt::container::bitfield::object<Enum, Size, InternalType>::reverse_iterator
+fcppt::container::bitfield::object<Enum, Size, InternalType>::rend()
 {
 	return reverse_iterator(begin());
 }
@@ -188,8 +188,8 @@ template<
 	Enum Size,
 	typename InternalType
 >
-typename fcppt::container::bitfield::basic<Enum, Size, InternalType>::const_reverse_iterator
-fcppt::container::bitfield::basic<Enum, Size, InternalType>::rend() const
+typename fcppt::container::bitfield::object<Enum, Size, InternalType>::const_reverse_iterator
+fcppt::container::bitfield::object<Enum, Size, InternalType>::rend() const
 {
 	return const_reverse_iterator(begin());
 }
@@ -199,8 +199,8 @@ template<
 	Enum Size,
 	typename InternalType
 >
-typename fcppt::container::bitfield::basic<Enum, Size, InternalType>::const_iterator
-fcppt::container::bitfield::basic<Enum, Size, InternalType>::cbegin() const
+typename fcppt::container::bitfield::object<Enum, Size, InternalType>::const_iterator
+fcppt::container::bitfield::object<Enum, Size, InternalType>::cbegin() const
 {
 	return begin();
 }
@@ -210,8 +210,8 @@ template<
 	Enum Size,
 	typename InternalType
 >
-typename fcppt::container::bitfield::basic<Enum, Size, InternalType>::	const_iterator
-fcppt::container::bitfield::basic<Enum, Size, InternalType>::cend() const
+typename fcppt::container::bitfield::object<Enum, Size, InternalType>::	const_iterator
+fcppt::container::bitfield::object<Enum, Size, InternalType>::cend() const
 {
 	return end();
 }
@@ -221,8 +221,8 @@ template<
 	Enum Size,
 	typename InternalType
 >
-typename fcppt::container::bitfield::basic<Enum, Size, InternalType>::	const_reverse_iterator
-fcppt::container::bitfield::basic<Enum, Size, InternalType>::crbegin() const
+typename fcppt::container::bitfield::object<Enum, Size, InternalType>::	const_reverse_iterator
+fcppt::container::bitfield::object<Enum, Size, InternalType>::crbegin() const
 {
 	return rbegin();
 }
@@ -232,8 +232,8 @@ template<
 	Enum Size,
 	typename InternalType
 >
-typename fcppt::container::bitfield::basic<Enum, Size, InternalType>::	const_reverse_iterator
-fcppt::container::bitfield::basic<Enum, Size, InternalType>::crend() const
+typename fcppt::container::bitfield::object<Enum, Size, InternalType>::	const_reverse_iterator
+fcppt::container::bitfield::object<Enum, Size, InternalType>::crend() const
 {
 	return rend();
 }
@@ -244,7 +244,7 @@ template<
 	typename InternalType
 >
 typename fcppt::container::bitfield::size_type
-fcppt::container::bitfield::basic<
+fcppt::container::bitfield::object<
 	Enum,
 	Size,
 	InternalType
@@ -258,8 +258,8 @@ template<
 	Enum Size,
 	typename InternalType
 >
-typename fcppt::container::bitfield::basic<Enum, Size, InternalType>::const_reference
-fcppt::container::bitfield::basic<Enum, Size, InternalType>::operator[](
+typename fcppt::container::bitfield::object<Enum, Size, InternalType>::const_reference
+fcppt::container::bitfield::object<Enum, Size, InternalType>::operator[](
 	Enum const _index
 ) const
 {
@@ -271,8 +271,8 @@ template<
 	Enum Size,
 	typename InternalType
 >
-typename fcppt::container::bitfield::basic<Enum, Size, InternalType>::reference
-fcppt::container::bitfield::basic<Enum, Size, InternalType>::operator[](
+typename fcppt::container::bitfield::object<Enum, Size, InternalType>::reference
+fcppt::container::bitfield::object<Enum, Size, InternalType>::operator[](
 	Enum const _index
 )
 {
@@ -284,8 +284,8 @@ template<
 	Enum Size,
 	typename InternalType
 >
-fcppt::container::bitfield::basic<Enum, Size, InternalType>&
-fcppt::container::bitfield::basic<Enum, Size, InternalType>::operator|=(
+fcppt::container::bitfield::object<Enum, Size, InternalType>&
+fcppt::container::bitfield::object<Enum, Size, InternalType>::operator|=(
 	Enum const _index
 )
 {
@@ -302,9 +302,9 @@ template<
 	Enum Size,
 	typename InternalType
 >
-fcppt::container::bitfield::basic<Enum, Size, InternalType> &
-fcppt::container::bitfield::basic<Enum, Size, InternalType>::operator|=(
-	basic<Enum, Size, InternalType> const &_other
+fcppt::container::bitfield::object<Enum, Size, InternalType> &
+fcppt::container::bitfield::object<Enum, Size, InternalType>::operator|=(
+	object<Enum, Size, InternalType> const &_other
 )
 {
 	namespace args = boost::phoenix::arg_names;
@@ -324,9 +324,9 @@ template<
 	Enum Size,
 	typename InternalType
 >
-fcppt::container::bitfield::basic<Enum, Size, InternalType>&
-fcppt::container::bitfield::basic<Enum, Size, InternalType>::operator&=(
-	basic<Enum, Size, InternalType> const &_other
+fcppt::container::bitfield::object<Enum, Size, InternalType>&
+fcppt::container::bitfield::object<Enum, Size, InternalType>::operator&=(
+	object<Enum, Size, InternalType> const &_other
 )
 {
 	namespace args = boost::phoenix::arg_names;
@@ -347,9 +347,9 @@ template<
 	Enum Size,
 	typename InternalType
 >
-fcppt::container::bitfield::basic<Enum, Size, InternalType>&
-fcppt::container::bitfield::basic<Enum, Size, InternalType>::operator^=(
-	basic<Enum, Size, InternalType> const &_other
+fcppt::container::bitfield::object<Enum, Size, InternalType>&
+fcppt::container::bitfield::object<Enum, Size, InternalType>::operator^=(
+	object<Enum, Size, InternalType> const &_other
 )
 {
 	namespace args = boost::phoenix::arg_names;
@@ -369,10 +369,10 @@ template<
 	Enum Size,
 	typename InternalType
 >
-fcppt::container::bitfield::basic<Enum, Size, InternalType> const
-fcppt::container::bitfield::basic<Enum, Size, InternalType>::operator~() const
+fcppt::container::bitfield::object<Enum, Size, InternalType> const
+fcppt::container::bitfield::object<Enum, Size, InternalType>::operator~() const
 {
-	basic ret;
+	object ret;
 
 	namespace args = boost::phoenix::arg_names;
 
@@ -392,8 +392,8 @@ template<
 	typename InternalType
 >
 bool
-fcppt::container::bitfield::basic<Enum, Size, InternalType>::operator==(
-	basic const &_other
+fcppt::container::bitfield::object<Enum, Size, InternalType>::operator==(
+	object const &_other
 ) const
 {
 	return
@@ -410,8 +410,8 @@ template<
 	typename InternalType
 >
 bool
-fcppt::container::bitfield::basic<Enum, Size, InternalType>::operator<(
-	basic const &_other
+fcppt::container::bitfield::object<Enum, Size, InternalType>::operator<(
+	object const &_other
 ) const
 {
 	return
@@ -429,7 +429,7 @@ template<
 	typename InternalType
 >
 bool
-fcppt::container::bitfield::basic<Enum, Size, InternalType>::operator!() const
+fcppt::container::bitfield::object<Enum, Size, InternalType>::operator!() const
 {
 	return !boolean_test();
 }
@@ -440,7 +440,7 @@ template<
 	typename InternalType
 >
 fcppt::container::bitfield::value_type
-fcppt::container::bitfield::basic<Enum, Size, InternalType>::operator&(
+fcppt::container::bitfield::object<Enum, Size, InternalType>::operator&(
 	Enum const _index
 ) const
 {
@@ -456,7 +456,7 @@ template<
 	typename InternalType
 >
 void
-fcppt::container::bitfield::basic<Enum, Size, InternalType>::set(
+fcppt::container::bitfield::object<Enum, Size, InternalType>::set(
 	Enum const _index,
 	value_type const _value
 )
@@ -470,7 +470,7 @@ template<
 	typename InternalType
 >
 fcppt::container::bitfield::value_type
-fcppt::container::bitfield::basic<Enum, Size, InternalType>::get(
+fcppt::container::bitfield::object<Enum, Size, InternalType>::get(
 	Enum const _index
 ) const
 {
@@ -483,7 +483,7 @@ template<
 	typename InternalType
 >
 void
-fcppt::container::bitfield::basic<Enum, Size, InternalType>::clear()
+fcppt::container::bitfield::object<Enum, Size, InternalType>::clear()
 {
 	array_.fill(
 		0
@@ -496,8 +496,8 @@ template<
 	typename InternalType
 >
 void
-fcppt::container::bitfield::basic<Enum, Size, InternalType>::swap(
-	basic &_other
+fcppt::container::bitfield::object<Enum, Size, InternalType>::swap(
+	object &_other
 )
 {
 	std::swap(
@@ -511,10 +511,10 @@ template<
 	Enum Size,
 	typename InternalType
 >
-fcppt::container::bitfield::basic<Enum, Size, InternalType> const
-fcppt::container::bitfield::basic<Enum, Size, InternalType>::null()
+fcppt::container::bitfield::object<Enum, Size, InternalType> const
+fcppt::container::bitfield::object<Enum, Size, InternalType>::null()
 {
-	basic ret;
+	object ret;
 
 	ret.clear();
 
@@ -526,14 +526,14 @@ template<
 	Enum Size,
 	typename InternalType
 >
-fcppt::container::bitfield::basic<Enum, Size, InternalType> const
+fcppt::container::bitfield::object<Enum, Size, InternalType> const
 fcppt::container::bitfield::operator|(
-	basic<Enum, Size, InternalType> const &_field,
+	object<Enum, Size, InternalType> const &_field,
 	Enum const _index
 )
 {
 	return
-		basic<
+		object<
 			Enum,
 			Size,
 			InternalType
@@ -548,14 +548,14 @@ template<
 	Enum Size,
 	typename InternalType
 >
-fcppt::container::bitfield::basic<Enum, Size, InternalType> const
+fcppt::container::bitfield::object<Enum, Size, InternalType> const
 fcppt::container::bitfield::operator|(
-	basic<Enum, Size, InternalType> const &_left,
-	basic<Enum, Size, InternalType> const &_right
+	object<Enum, Size, InternalType> const &_left,
+	object<Enum, Size, InternalType> const &_right
 )
 {
 	return
-		basic<
+		object<
 			Enum,
 			Size,
 			InternalType
@@ -570,14 +570,14 @@ template<
 	Enum Size,
 	typename InternalType
 >
-fcppt::container::bitfield::basic<Enum, Size, InternalType> const
+fcppt::container::bitfield::object<Enum, Size, InternalType> const
 fcppt::container::bitfield::operator&(
-	basic<Enum, Size, InternalType> const &_left,
-	basic<Enum, Size, InternalType> const &_right
+	object<Enum, Size, InternalType> const &_left,
+	object<Enum, Size, InternalType> const &_right
 )
 {
 	return
-		basic<
+		object<
 			Enum,
 			Size,
 			InternalType
@@ -592,14 +592,14 @@ template<
 	Enum Size,
 	typename InternalType
 >
-fcppt::container::bitfield::basic<Enum, Size, InternalType> const
+fcppt::container::bitfield::object<Enum, Size, InternalType> const
 fcppt::container::bitfield::operator^(
-	basic<Enum, Size, InternalType> const &_left,
-	basic<Enum, Size, InternalType> const &_right
+	object<Enum, Size, InternalType> const &_left,
+	object<Enum, Size, InternalType> const &_right
 )
 {
 	return
-		basic<
+		object<
 			Enum,
 			Size,
 			InternalType
@@ -616,8 +616,8 @@ template<
 >
 void
 fcppt::container::bitfield::swap(
-	basic<Enum, Size, InternalType> &_left,
-	basic<Enum, Size, InternalType> &_right
+	object<Enum, Size, InternalType> &_left,
+	object<Enum, Size, InternalType> &_right
 )
 {
 	_left.swap(
@@ -632,8 +632,8 @@ template<
 >
 bool
 fcppt::container::bitfield::operator!=(
-	basic<Enum, Size, InternalType> const &_left,
-	basic<Enum, Size, InternalType> const &_right
+	object<Enum, Size, InternalType> const &_left,
+	object<Enum, Size, InternalType> const &_right
 )
 {
 	return !(_left == _right);
@@ -646,8 +646,8 @@ template<
 >
 bool
 fcppt::container::bitfield::operator<=(
-	basic<Enum, Size, InternalType> const &_left,
-	basic<Enum, Size, InternalType> const &_right
+	object<Enum, Size, InternalType> const &_left,
+	object<Enum, Size, InternalType> const &_right
 )
 {
 	return !(_left > _right);
@@ -660,8 +660,8 @@ template<
 >
 bool
 fcppt::container::bitfield::operator>(
-	basic<Enum, Size, InternalType> const &_left,
-	basic<Enum, Size, InternalType> const &_right
+	object<Enum, Size, InternalType> const &_left,
+	object<Enum, Size, InternalType> const &_right
 )
 {
 	return _right < _left;
@@ -674,8 +674,8 @@ template<
 >
 bool
 fcppt::container::bitfield::operator>=(
-	basic<Enum, Size, InternalType> const &_left,
-	basic<Enum, Size, InternalType> const &_right
+	object<Enum, Size, InternalType> const &_left,
+	object<Enum, Size, InternalType> const &_right
 )
 {
 	return !(_left < _right);

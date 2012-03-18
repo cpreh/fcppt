@@ -4,8 +4,8 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_MATH_MATRIX_BASIC_IMPL_HPP_INCLUDED
-#define FCPPT_MATH_MATRIX_BASIC_IMPL_HPP_INCLUDED
+#ifndef FCPPT_MATH_MATRIX_OBJECT_IMPL_HPP_INCLUDED
+#define FCPPT_MATH_MATRIX_OBJECT_IMPL_HPP_INCLUDED
 
 #include <fcppt/math/detail/array_adapter_impl.hpp>
 #include <fcppt/math/detail/assign.hpp>
@@ -14,11 +14,11 @@
 #include <fcppt/math/detail/make_variadic_constructor.hpp>
 #include <fcppt/math/detail/storage_data.hpp>
 #include <fcppt/math/detail/storage_dim.hpp>
-#include <fcppt/math/dim/basic_impl.hpp>
-#include <fcppt/math/matrix/basic_decl.hpp>
+#include <fcppt/math/dim/object_impl.hpp>
+#include <fcppt/math/matrix/object_decl.hpp>
 #include <fcppt/math/matrix/detail/dim_storage_impl.hpp>
 #include <fcppt/math/matrix/detail/row_view_impl.hpp>
-#include <fcppt/math/vector/basic_impl.hpp>
+#include <fcppt/math/vector/object_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <algorithm>
 #include <iterator>
@@ -31,7 +31,7 @@ template<
 	typename M,
 	typename S
 >
-fcppt::math::matrix::basic<T, N, M, S>::basic()
+fcppt::math::matrix::object<T, N, M, S>::object()
 :
 	dim_base()
 {}
@@ -42,7 +42,7 @@ template<
 	typename M,
 	typename S
 >
-fcppt::math::matrix::basic<T, N, M, S>::basic(
+fcppt::math::matrix::object<T, N, M, S>::object(
 	dim const &_dim
 )
 :
@@ -57,7 +57,7 @@ template<
 	typename M,
 	typename S
 >
-fcppt::math::matrix::basic<T, N, M, S>::basic(
+fcppt::math::matrix::object<T, N, M, S>::object(
 	storage_type const &_storage
 )
 :
@@ -71,8 +71,8 @@ template<
 	typename M,
 	typename S
 >
-fcppt::math::matrix::basic<T, N, M, S>::basic(
-	basic const &_other
+fcppt::math::matrix::object<T, N, M, S>::object(
+	object const &_other
 )
 :
 	dim_base(
@@ -92,8 +92,8 @@ template<
 template<
 	typename OtherStorage
 >
-fcppt::math::matrix::basic<T, N, M, S>::basic(
-	basic<
+fcppt::math::matrix::object<T, N, M, S>::object(
+	object<
 		T,
 		N,
 		M,
@@ -126,7 +126,7 @@ template<
 template<
 	typename In
 >
-fcppt::math::matrix::basic<T, N, M, S>::basic(
+fcppt::math::matrix::object<T, N, M, S>::object(
 	In const _begin,
 	typename boost::enable_if<
 		type_traits::is_iterator<
@@ -154,7 +154,7 @@ template<
 template<
 	typename In
 >
-fcppt::math::matrix::basic<T, N, M, S>::basic(
+fcppt::math::matrix::object<T, N, M, S>::object(
 	dim const &_dim,
 	In const _begin,
 	typename boost::enable_if<
@@ -185,17 +185,17 @@ fcppt::math::matrix::basic<T, N, M, S>::basic(
 }
 
 template<
-        typename T,
-        typename N,
-        typename M,
-        typename S
+	typename T,
+	typename N,
+	typename M,
+	typename S
 >
 template<
-        typename Container
+typename Container
 >
-fcppt::math::matrix::basic<T, N, M, S>::basic(
-        dim const &_dim,
-        Container const &_container
+fcppt::math::matrix::object<T, N, M, S>::object(
+	dim const &_dim,
+	Container const &_container
 )
 :
 	dim_base(
@@ -207,22 +207,22 @@ fcppt::math::matrix::basic<T, N, M, S>::basic(
 		_container.size()
 	);
 
-        std::copy(
-                _container.begin(),
-                _container.end(),
+	std::copy(
+		_container.begin(),
+		_container.end(),
 		begin()
-        );
+	);
 }
 
 FCPPT_MATH_DETAIL_ARRAY_ADAPTER_IMPL(
 	4,
 	(template<typename T, typename N, typename M, typename S>),
-	(fcppt::math::matrix::basic<T, N, M, S>)
+	(fcppt::math::matrix::object<T, N, M, S>)
 )
 
 FCPPT_MATH_DETAIL_MAKE_VARIADIC_CONSTRUCTOR(
 	FCPPT_MATH_MATRIX_MAX_CTOR_PARAMS,
-	(7, (template<typename T, typename N, typename M, typename S> fcppt::math::matrix::basic<T, N, M, S>::basic))
+	(7, (template<typename T, typename N, typename M, typename S> fcppt::math::matrix::object<T, N, M, S>::object))
 )
 
 template<
@@ -231,9 +231,9 @@ template<
 	typename M,
 	typename S
 >
-fcppt::math::matrix::basic<T, N, M, S> &
-fcppt::math::matrix::basic<T, N, M, S>::operator=(
-	basic const &_other
+fcppt::math::matrix::object<T, N, M, S> &
+fcppt::math::matrix::object<T, N, M, S>::operator=(
+	object const &_other
 )
 {
 	storage_ = _other.storage_;
@@ -250,9 +250,9 @@ template<
 template<
 	typename OtherStorage
 >
-fcppt::math::matrix::basic<T, N, M, S> &
-fcppt::math::matrix::basic<T, N, M, S>::operator=(
-	basic<
+fcppt::math::matrix::object<T, N, M, S> &
+fcppt::math::matrix::object<T, N, M, S>::operator=(
+	object<
 		T,
 		N,
 		M,
@@ -278,26 +278,26 @@ template<
 	typename M,
 	typename S
 >
-fcppt::math::matrix::basic<T, N, M, S>::~basic()
+fcppt::math::matrix::object<T, N, M, S>::~object()
 {}
 
 // \cond FCPPT_DOXYGEN_DEBUG
-#define FCPPT_MATH_MATRIX_BASIC_DEFINE_OPERATOR(\
+#define FCPPT_MATH_MATRIX_OBJECT_DEFINE_OPERATOR(\
 	op\
 )\
 FCPPT_MATH_DETAIL_MAKE_OP_DEF(\
 	4,\
 	(template<typename T, typename N, typename M, typename S> template<typename OtherStorage>),\
-	(fcppt::math::matrix::basic<T, N, M, S>),\
-	(fcppt::math::matrix::basic<T, N, M, OtherStorage>),\
+	(fcppt::math::matrix::object<T, N, M, S>),\
+	(fcppt::math::matrix::object<T, N, M, OtherStorage>),\
 	op\
 )
 // \endcond
 
-FCPPT_MATH_MATRIX_BASIC_DEFINE_OPERATOR(+=)
-FCPPT_MATH_MATRIX_BASIC_DEFINE_OPERATOR(-=)
+FCPPT_MATH_MATRIX_OBJECT_DEFINE_OPERATOR(+=)
+FCPPT_MATH_MATRIX_OBJECT_DEFINE_OPERATOR(-=)
 
-#undef FCPPT_MATH_MATRIX_BASIC_DEFINE_OPERATOR
+#undef FCPPT_MATH_MATRIX_OBJECT_DEFINE_OPERATOR
 
 template<
 	typename T,
@@ -305,8 +305,8 @@ template<
 	typename M,
 	typename S
 >
-fcppt::math::matrix::basic<T, N, M, S> &
-fcppt::math::matrix::basic<T, N, M, S>::operator*=(
+fcppt::math::matrix::object<T, N, M, S> &
+fcppt::math::matrix::object<T, N, M, S>::operator*=(
 	value_type const &_value
 )
 {
@@ -328,8 +328,8 @@ template<
 	typename M,
 	typename S
 >
-fcppt::math::matrix::basic<T, N, M, S> &
-fcppt::math::matrix::basic<T, N, M, S>::operator/=(
+fcppt::math::matrix::object<T, N, M, S> &
+fcppt::math::matrix::object<T, N, M, S>::operator/=(
 	value_type const &_value
 )
 {
@@ -351,8 +351,8 @@ template<
 	typename M,
 	typename S
 >
-typename fcppt::math::matrix::basic<T, N, M, S>::reference
-fcppt::math::matrix::basic<T, N, M, S>::operator[](
+typename fcppt::math::matrix::object<T, N, M, S>::reference
+fcppt::math::matrix::object<T, N, M, S>::operator[](
 	size_type const _j
 )
 {
@@ -373,8 +373,8 @@ template<
 	typename M,
 	typename S
 >
-typename fcppt::math::matrix::basic<T, N, M, S>::const_reference const
-fcppt::math::matrix::basic<T, N, M, S>::operator[](
+typename fcppt::math::matrix::object<T, N, M, S>::const_reference const
+fcppt::math::matrix::object<T, N, M, S>::operator[](
 	size_type const _j
 ) const
 {
@@ -395,8 +395,8 @@ template<
 	typename M,
 	typename S
 >
-typename fcppt::math::matrix::basic<T, N, M, S>::pointer
-fcppt::math::matrix::basic<T, N, M, S>::data()
+typename fcppt::math::matrix::object<T, N, M, S>::pointer
+fcppt::math::matrix::object<T, N, M, S>::data()
 {
 	return
 		math::detail::storage_data(
@@ -410,12 +410,12 @@ template<
 	typename M,
 	typename S
 >
-typename fcppt::math::matrix::basic<T, N, M, S>::const_pointer
-fcppt::math::matrix::basic<T, N, M, S>::data() const
+typename fcppt::math::matrix::object<T, N, M, S>::const_pointer
+fcppt::math::matrix::object<T, N, M, S>::data() const
 {
 	return
 		const_cast<
-			basic &
+			object &
 		>(
 			*this
 		).data();
@@ -427,8 +427,8 @@ template<
 	typename M,
 	typename S
 >
-typename fcppt::math::matrix::basic<T, N, M, S>::size_type
-fcppt::math::matrix::basic<T, N, M, S>::size() const
+typename fcppt::math::matrix::object<T, N, M, S>::size_type
+fcppt::math::matrix::object<T, N, M, S>::size() const
 {
 	return
 		static_cast<
@@ -445,8 +445,8 @@ template<
 	typename M,
 	typename S
 >
-typename fcppt::math::matrix::basic<T, N, M, S>::size_type
-fcppt::math::matrix::basic<T, N, M, S>::rows() const
+typename fcppt::math::matrix::object<T, N, M, S>::size_type
+fcppt::math::matrix::object<T, N, M, S>::rows() const
 {
 	return dim_base::rows();
 }
@@ -457,8 +457,8 @@ template<
 	typename M,
 	typename S
 >
-typename fcppt::math::matrix::basic<T, N, M, S>::size_type
-fcppt::math::matrix::basic<T, N, M, S>::columns() const
+typename fcppt::math::matrix::object<T, N, M, S>::size_type
+fcppt::math::matrix::object<T, N, M, S>::columns() const
 {
 	return dim_base::columns();
 }
@@ -469,8 +469,8 @@ template<
 	typename M,
 	typename S
 >
-typename fcppt::math::matrix::basic<T, N, M, S>::dim const
-fcppt::math::matrix::basic<T, N, M, S>::dimension() const
+typename fcppt::math::matrix::object<T, N, M, S>::dim const
+fcppt::math::matrix::object<T, N, M, S>::dimension() const
 {
 	return
 		dim(
@@ -485,10 +485,10 @@ template<
 	typename M,
 	typename S
 >
-fcppt::math::matrix::basic<T, N, M, S> const
-fcppt::math::matrix::basic<T, N, M, S>::identity()
+fcppt::math::matrix::object<T, N, M, S> const
+fcppt::math::matrix::object<T, N, M, S>::identity()
 {
-	basic<T, N, M, S> ret;
+	object<T, N, M, S> ret;
 	for(size_type i = 0; i < N::value; ++i)
 		for(size_type j = 0; j < M::value; ++j)
 			ret[i][j] =
@@ -505,8 +505,8 @@ template<
 	typename S
 >
 void
-fcppt::math::matrix::basic<T, N, M, S>::swap(
-	basic &_other
+fcppt::math::matrix::object<T, N, M, S>::swap(
+	object &_other
 )
 {
 	std::swap(
@@ -527,8 +527,8 @@ template<
 >
 void
 fcppt::math::matrix::swap(
-	basic<T, N, M, S> &_a,
-	basic<T, N, M, S> &_b
+	object<T, N, M, S> &_a,
+	object<T, N, M, S> &_b
 )
 {
 	_a.swap(

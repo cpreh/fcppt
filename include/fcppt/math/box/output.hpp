@@ -8,7 +8,7 @@
 #define FCPPT_MATH_BOX_OUTPUT_HPP_INCLUDED
 
 #include <fcppt/math/size_type.hpp>
-#include <fcppt/math/box/basic_impl.hpp>
+#include <fcppt/math/box/object_impl.hpp>
 #include <fcppt/math/dim/output.hpp>
 #include <fcppt/math/vector/output.hpp>
 #include <fcppt/config/external_begin.hpp>
@@ -47,7 +47,7 @@ std::basic_ostream<
 > &
 operator<<(
 	std::basic_ostream<Ch, Traits> &_stream,
-	basic<T, N> const &_box
+	object<T, N> const &_box
 )
 {
 	return

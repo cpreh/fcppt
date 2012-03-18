@@ -7,7 +7,7 @@
 #ifndef FCPPT_MATH_MATRIX_DETAIL_DIM_STORAGE_IMPL_HPP_INCLUDED
 #define FCPPT_MATH_MATRIX_DETAIL_DIM_STORAGE_IMPL_HPP_INCLUDED
 
-#include <fcppt/math/dim/basic_impl.hpp>
+#include <fcppt/math/dim/object_impl.hpp>
 #include <fcppt/math/matrix/detail/dim_storage.hpp>
 
 

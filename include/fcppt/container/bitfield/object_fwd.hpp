@@ -4,8 +4,8 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_CONTAINER_BITFIELD_BASIC_FWD_HPP_INCLUDED
-#define FCPPT_CONTAINER_BITFIELD_BASIC_FWD_HPP_INCLUDED
+#ifndef FCPPT_CONTAINER_BITFIELD_OBJECT_FWD_HPP_INCLUDED
+#define FCPPT_CONTAINER_BITFIELD_OBJECT_FWD_HPP_INCLUDED
 
 #include <fcppt/container/bitfield/default_internal_type.hpp>
 
@@ -22,7 +22,7 @@ template<
 	typename InternalType =
 		bitfield::default_internal_type
 >
-class basic;
+class object;
 
 }
 }

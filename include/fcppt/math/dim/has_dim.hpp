@@ -9,7 +9,7 @@
 
 #include <fcppt/math/size_type.hpp>
 #include <fcppt/math/detail/dim_matches.hpp>
-#include <fcppt/math/dim/basic_fwd.hpp>
+#include <fcppt/math/dim/object_fwd.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/type_traits/integral_constant.hpp>
 #include <fcppt/config/external_end.hpp>
@@ -42,7 +42,7 @@ template<
 	size_type Size
 >
 struct has_dim<
-	basic<
+	object<
 		T,
 		N,
 		S

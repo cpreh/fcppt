@@ -7,8 +7,9 @@
 #ifndef FCPPT_MATH_MATRIX_ARITHMETIC_HPP_INCLUDED
 #define FCPPT_MATH_MATRIX_ARITHMETIC_HPP_INCLUDED
 
-#include <fcppt/math/matrix/basic_impl.hpp>
 #include <fcppt/math/matrix/normal_storage.hpp>
+#include <fcppt/math/matrix/object_impl.hpp>
+
 
 namespace fcppt
 {
@@ -25,7 +26,7 @@ template<\
 	typename S1,\
 	typename S2\
 >\
-basic<\
+object<\
 	T,\
 	N,\
 	M,\
@@ -36,12 +37,12 @@ basic<\
 	>::type\
 > const \
 operator op(\
-	basic<T, N, M, S1> const &a,\
-	basic<T, N, M, S2> const &b\
+	object<T, N, M, S1> const &a,\
+	object<T, N, M, S2> const &b\
 )\
 {\
 	return \
-		basic<\
+		object<\
 			T,\
 			N,\
 			M,\
@@ -69,7 +70,7 @@ template<
 	typename S1,
 	typename S2
 >
-basic<
+object<
 	T,
 	M1,
 	M2,
@@ -80,11 +81,11 @@ basic<
 	>::type
 > const
 operator *(
-	basic<T, M1, N, S1> const &a,
-	basic<T, N, M2, S2> const &b
+	object<T, M1, N, S1> const &a,
+	object<T, N, M2, S2> const &b
 )
 {
-	typedef basic<
+	typedef object<
 		T,
 		M1,
 		M2,
@@ -103,12 +104,12 @@ operator *(
 	);
 
 	for(
-		typename basic<T, M1, N, S1>::size_type i = 0;
+		typename object<T, M1, N, S1>::size_type i = 0;
 		i < M1::value;
 		++i
 	)
 		for(
-			typename basic<T, N, M2, S2>::size_type j = 0;
+			typename object<T, N, M2, S2>::size_type j = 0;
 			j < M2::value;
 			++j
 		)
@@ -133,7 +134,7 @@ template<
 	typename M,
 	typename S
 >
-basic<
+object<
 	T,
 	N,
 	M,
@@ -144,12 +145,12 @@ basic<
 	>::type
 > const
 operator *(
-	basic<T, N, M, S> const &a,
+	object<T, N, M, S> const &a,
 	T const &s
 )
 {
 	return
-		basic<
+		object<
 			T,
 			N,
 			M,
@@ -170,7 +171,7 @@ template<
 	typename M,
 	typename S
 >
-basic<
+object<
 	T,
 	N,
 	M,
@@ -182,7 +183,7 @@ basic<
 > const
 operator *(
 	T const &s,
-	basic<T, N, M, S> const &a
+	object<T, N, M, S> const &a
 )
 {
 	return a * s;
@@ -194,7 +195,7 @@ template<
 	typename M,
 	typename S
 >
-basic<
+object<
 	T,
 	N,
 	M,
@@ -205,12 +206,12 @@ basic<
 	>::type
 > const
 operator /(
-	basic<T, N, M, S> a,
+	object<T, N, M, S> a,
 	T const &s
 )
 {
 	return
-		basic<
+		object<
 			T,
 			N,
 			M,

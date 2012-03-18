@@ -13,7 +13,7 @@ template<\
 	typename N,\
 	typename S\
 >\
-basic<\
+object<\
 	T,\
 	N,\
 	typename normal_storage<\
@@ -22,14 +22,14 @@ basic<\
 	>::type\
 > const \
 operator -(\
-	basic<\
+	object<\
 		T,\
 		N,\
 		S\
 	> const &a\
 )\
 {\
-	basic<\
+	object<\
 		T,\
 		N,\
 		typename normal_storage<\
@@ -41,7 +41,7 @@ operator -(\
 	);\
 \
 	for(\
-		typename basic<T, N, S>::size_type i = 0;\
+		typename object<T, N, S>::size_type i = 0;\
 		i < ret.size();\
 		++i\
 	)\

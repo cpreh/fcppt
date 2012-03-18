@@ -7,8 +7,8 @@
 #ifndef FCPPT_MATH_VECTOR_LENGTH_HPP_INCLUDED
 #define FCPPT_MATH_VECTOR_LENGTH_HPP_INCLUDED
 
-#include <fcppt/math/vector/basic_impl.hpp>
 #include <fcppt/math/vector/length_square.hpp>
+#include <fcppt/math/vector/object_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/type_traits/is_floating_point.hpp>
 #include <boost/utility/enable_if.hpp>
@@ -85,10 +85,10 @@ template<
 >
 typename boost::enable_if<
 	boost::is_floating_point<T>,
-	typename basic<T, N, S>::value_type
+	typename object<T, N, S>::value_type
 >::type
 length(
-	basic<T, N, S> const &v
+	object<T, N, S> const &v
 )
 {
 	return
@@ -156,7 +156,7 @@ typename boost::disable_if<
 	Dest
 >::type
 length(
-	basic<T, N, S> const &v
+	object<T, N, S> const &v
 )
 {
 	return

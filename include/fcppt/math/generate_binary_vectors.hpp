@@ -10,7 +10,7 @@
 #include <fcppt/container/array.hpp>
 #include <fcppt/math/size_type.hpp>
 #include <fcppt/math/detail/generate_binary_vectors.hpp>
-#include <fcppt/math/vector/basic_impl.hpp>
+#include <fcppt/math/vector/object_impl.hpp>
 #include <fcppt/math/vector/static.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <cstddef>

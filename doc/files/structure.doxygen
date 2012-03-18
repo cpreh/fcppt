@@ -69,34 +69,34 @@ Template classes are split into three files. In addition to the
 the class definition, as well as an <code>_impl</code> header providing the
 method definitions. There is also a header with no suffix which includes the
 three aforementioned headers. For example, the
-fcppt::container::bitfield::basic class consists of the following files:
+fcppt::container::bitfield::object class consists of the following files:
 
 <ul>
 <li>
 	<code>
-		fcppt/container/bitfield/basic_fwd.hpp
+		fcppt/container/bitfield/object_fwd.hpp
 	</code>
 </li>
 <li>
 	<code>
-		fcppt/container/bitfield/basic_decl.hpp
+		fcppt/container/bitfield/object_decl.hpp
 	</code>
 </li>
 <li>
 	<code>
-		fcppt/container/bitfield/basic_impl.hpp
+		fcppt/container/bitfield/object_impl.hpp
 	</code>
 </li>
 <li>
 	<code>
-		fcppt/container/bitfield/basic.hpp
+		fcppt/container/bitfield/object.hpp
 	</code>
 </li>
 </ul>
 
 Using these separate headers might improve compile time, which is known to be a
 problem for more complex template classes. You can, of course, just use the
-non-suffixed header (<code>basic.hpp</code> in the example above) if you're not
+non-suffixed header (<code>object.hpp</code> in the example above) if you're not
 concerned with compilation times.
 
 \attention
@@ -326,7 +326,7 @@ create(shape::circle);
 
 Which is much better. Also note that we added a 'size' element at the end. This
 way, we can use the enumeration together with
-fcppt::container::bitfield::basic, or we could manually iterate over it.
+fcppt::container::bitfield::object, or we could manually iterate over it.
 
 \subsection structure_code_partitioning Code partitioning
 

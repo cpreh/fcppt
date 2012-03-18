@@ -4,7 +4,7 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/math/vector/basic.hpp>
+#include <fcppt/math/vector/object.hpp>
 #include <fcppt/math/vector/static.hpp>
 #include <fcppt/math/vector/unit.hpp>
 #include <fcppt/config/external_begin.hpp>

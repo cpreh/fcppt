@@ -4,9 +4,9 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/math/sphere/basic_impl.hpp>
 #include <fcppt/math/sphere/circle.hpp>
 #include <fcppt/math/sphere/intersects.hpp>
+#include <fcppt/math/sphere/object_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/test/unit_test.hpp>
 #include <fcppt/config/external_end.hpp>

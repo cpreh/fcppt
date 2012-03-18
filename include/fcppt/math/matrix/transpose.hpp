@@ -7,8 +7,8 @@
 #ifndef FCPPT_MATH_MATRIX_TRANSPOSE_HPP_INCLUDED
 #define FCPPT_MATH_MATRIX_TRANSPOSE_HPP_INCLUDED
 
-#include <fcppt/math/matrix/basic_fwd.hpp>
-#include <fcppt/math/matrix/basic_impl.hpp>
+#include <fcppt/math/matrix/object_fwd.hpp>
+#include <fcppt/math/matrix/object_impl.hpp>
 
 namespace fcppt
 {
@@ -32,12 +32,12 @@ template<
 	typename M,
 	typename S
 >
-basic<T, M, N, S> const
+object<T, M, N, S> const
 transpose(
-	basic<T, N, M, S> const &t
+	object<T, N, M, S> const &t
 )
 {
-	typedef basic<T, M, N, S> ret_type;
+	typedef object<T, M, N, S> ret_type;
 
 	ret_type ret(
 		t.dimension()

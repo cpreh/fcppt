@@ -2,7 +2,7 @@ namespace fcppt
 {
 namespace container
 {
-/// Contains fcppt::container::bitfield::basic and helper types/functions for it.
+/// Contains fcppt::container::bitfield::object and helper types/functions for it.
 namespace bitfield
 {
 }
@@ -34,12 +34,12 @@ This is tiresome (!) to write and also a little dangerous since the underlying
 type of an enumeration can only be an integral type. This means that you rely
 upon the fact that you have enough bits available on the target machine --
 which might not always be true. Think about a bit field which has more than 64
-bits. fcppt::container::bitfield::basic is a template which remedies the
+bits. fcppt::container::bitfield::object is a template which remedies the
 situation.
 
 \section bitfield_requirements Requirements
 
-fcppt::container::bitfield::basic takes as first template parameter an enum
+fcppt::container::bitfield::object takes as first template parameter an enum
 <code>Enum</code> which satisfies the following requirements:
 
 <ul>
@@ -68,7 +68,7 @@ fcppt::container::bitfield::basic takes as first template parameter an enum
 	\code
 	enum my_enum { value1, value2, value3, _my_enum_size };
 
-	typedef basic<my_enum,_my_enum_size> mybasic;
+	typedef object<my_enum,_my_enum_size> myobject;
 	\endcode
 </li>
 <li>

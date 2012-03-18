@@ -3,7 +3,7 @@ namespace fcppt
 namespace math
 {
 /**
-\brief Contains \link fcppt::math::matrix::basic matrix::basic \endlink and helper functions, classes and types for it
+\brief Contains \link fcppt::math::matrix::object matrix::object \endlink and helper functions, classes and types for it
 */
 namespace matrix
 {
@@ -21,28 +21,28 @@ namespace matrix
 <td>
 
 <ol>
-	<li>\ref fcpptmathmatrixbasic_motivation</li>
-	<li>\ref fcpptmathmatrixbasic_operators</li>
-	<li>\ref fcpptmathmatrixbasic_accessing_elements</li>
-	<li>\ref fcpptmathmatrixbasic_identity_and_null</li>
-	<li>\ref fcpptmathmatrixbasic_iteration</li>
+	<li>\ref fcpptmathmatrixobject_motivation</li>
+	<li>\ref fcpptmathmatrixobject_operators</li>
+	<li>\ref fcpptmathmatrixobject_accessing_elements</li>
+	<li>\ref fcpptmathmatrixobject_identity_and_null</li>
+	<li>\ref fcpptmathmatrixobject_iteration</li>
 </ol>
 
 </td>
 </tr>
 </table>
 
-\section fcpptmathmatrixbasic_motivation Motivation
+\section fcpptmathmatrixobject_motivation Motivation
 
 Matrices are ubiqituous in mathematics and computer science. Often, matrices
 represent linear operations and are applied to accordingly-sized vectors. Since
 fcppt already provides a vector class, there's the need for a complementary
 matrix class and operations.
 
-The meaning of fcppt::math::matrix::basic's template parameters is the same as
+The meaning of fcppt::math::matrix::object's template parameters is the same as
 for vector and dim, so it'll not be explained in detail here. We will only
 touch the differences between a vector and a matrix, so you should read the
-documentation for fcppt::math::vector::basic before reading this introduction.
+documentation for fcppt::math::vector::object before reading this introduction.
 
 Of course, a matrix has two dimension parameters instead of one. Again, we have
 the metafunctions \link fcppt::math::matrix::static_ static_ \endlink and \link
@@ -75,7 +75,7 @@ To cast between matrices of different value and storage types, you have
 fcppt::math::matrix::structure_cast. There are, however, no functions to
 "expand" or "narrow" a matrix. You have to do that yourself.
 
-\section fcpptmathmatrixbasic_accessing_elements Accessing elements
+\section fcpptmathmatrixobject_accessing_elements Accessing elements
 
 The <code>operator[]</code> in C++ only takes one argument. This is fine for
 one-dimensional data structures like an array (or a vector). For
@@ -99,7 +99,7 @@ multi-dimensional structures, you have to work around it, for example:
 </ol>
 
 fcppt chose to implement the latter. In the statement
-<code>matrix[x][y]</code>, matrix::basic's <code>operator[]</code> is invoked and
+<code>matrix[x][y]</code>, matrix::object's <code>operator[]</code> is invoked and
 returns a <em>proxy vector</em> representing the x-th row in the matrix. You
 can then do all the things you could do with a normal vector (for example, take
 the dot product, add it to another vector and so on).
@@ -109,7 +109,7 @@ This functionality is not (yet) available to access the y-th <em>row</em> of a
 matrix. You'd have to transpose the matrix and then take the y-th row do
 achieve that.
 
-\section fcpptmathmatrixbasic_grid Grid
+\section fcpptmathmatrixobject_grid Grid
 
 The astute documentation reader might have noticed that there already is a
 multi-dimensional data structure included in fcppt:
@@ -125,7 +125,7 @@ There are subtle differences and similarities between the classes:
 
 <ul>
 	<li>
-		Both matrix::basic and grid, store their data in linear
+		Both matrix::object and grid, store their data in linear
 		(one-dimensional) form and calculate the linear index from the
 		n-dimensional tuple.
 	</li>
@@ -142,19 +142,19 @@ There are subtle differences and similarities between the classes:
 	</li>
 </ul>
 
-\section fcpptmathmatrixbasic_operators Operators
+\section fcpptmathmatrixobject_operators Operators
 
-Including <strong><code>fcppt/math/matrix/basic_decl.hpp</code></strong> you
+Including <strong><code>fcppt/math/matrix/object_decl.hpp</code></strong> you
 will get the following operators (<code>S2</code> defines some other storage
 type):
 
 <ul>
-	<li><code>operator+=(matrix::basic<T,M,N,S2>)</code></li>
-	<li><code>operator-=(matrix::basic<T,M,N,S2>)</code></li>
+	<li><code>operator+=(matrix::object<T,M,N,S2>)</code></li>
+	<li><code>operator-=(matrix::object<T,M,N,S2>)</code></li>
 	<li><code>operator*=(T)</code> (multiply by a scalar)</li>
 	<li><code>operator/=(T)</code> (divide by a scalar)</li>
-	<li><code>operator=(matrix::basic const &)</code> (regular assignment operator)</li>
-	<li><code>operator=(dim::basic<T,M,N,S2> const &)</code></li>
+	<li><code>operator=(matrix::object const &)</code> (regular assignment operator)</li>
+	<li><code>operator=(dim::object<T,M,N,S2> const &)</code></li>
 	<li><code>operator[](size_type)</code> (see above)</li>
 </ul>
 
@@ -177,11 +177,11 @@ Including <strong><code>fcppt/math/matrix/arithmetic.hpp</code></strong> gives
 you the following operators:
 
 <ul>
-	<li><code>operator+(matrix::matrix<T,M,N,S1>,matrix::basic<T,M,N,S2>)</code></li>
-	<li><code>operator-(matrix::matrix<T,M,N,S1>,matrix::basic<T,M,N,S2>)</code></li>
-	<li><code>operator*(matrix::basic<T,M,N,S>,matrix::basic<T,N,M2,S>)</code> (matrix multiplication - will return a <code>matrix::basic<T,M1,M2,?></code> where <code>?</code> is determined by fcppt::math::matrix::normal_storage.)</li>
-	<li><code>operator*(matrix::basic<T,M,N,S>,T)</code> (scalar multiplication)</li>
-	<li><code>operator/(matrix::basic<T,M,N,S>,T)</code> (scalar division)</li>
+	<li><code>operator+(matrix::matrix<T,M,N,S1>,matrix::object<T,M,N,S2>)</code></li>
+	<li><code>operator-(matrix::matrix<T,M,N,S1>,matrix::object<T,M,N,S2>)</code></li>
+	<li><code>operator*(matrix::object<T,M,N,S>,matrix::object<T,N,M2,S>)</code> (matrix multiplication - will return a <code>matrix::object<T,M1,M2,?></code> where <code>?</code> is determined by fcppt::math::matrix::normal_storage.)</li>
+	<li><code>operator*(matrix::object<T,M,N,S>,T)</code> (scalar multiplication)</li>
+	<li><code>operator/(matrix::object<T,M,N,S>,T)</code> (scalar division)</li>
 </ul>
 
 <code>operator+</code> and <code>operator-</code> work component-wise. The
@@ -194,13 +194,13 @@ an <code>operator<<</code>.
 Including <strong><code>fcppt/math/matrix/vector.hpp</code></strong> gives you:
 
 <pre>
-vector::basic<T,M,S2>
+vector::object<T,M,S2>
 operator*(
-	matrix::basic<T,N,M,S1> const &,
-	vector::basic<T,N,S2> const &);
+	matrix::object<T,N,M,S1> const &,
+	vector::object<T,N,S2> const &);
 </pre>
 
-\section fcpptmathmatrixbasic_identity_and_null Identity and null
+\section fcpptmathmatrixobject_identity_and_null Identity and null
 
 To get the identity matrix, use the static <code>identity</code> function:
 
@@ -222,7 +222,7 @@ int_matrix_3x3;
 int_matrix_3x3 m = int_matrix_3x3::null();
 \endcode
 
-\section fcpptmathmatrixbasic_iteration Iteration
+\section fcpptmathmatrixobject_iteration Iteration
 
 To iterate over all elements in the matrix, use an iterator together with begin/end:
 

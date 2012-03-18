@@ -4,8 +4,8 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/math/box/basic_impl.hpp>
 #include <fcppt/math/box/componentwise_equal.hpp>
+#include <fcppt/math/box/object_impl.hpp>
 #include <fcppt/math/box/output.hpp>
 #include <fcppt/math/box/stretch.hpp>
 #include <fcppt/config/external_begin.hpp>
@@ -16,7 +16,7 @@
 
 BOOST_AUTO_TEST_CASE(box_stretch)
 {
-	typedef fcppt::math::box::basic<
+	typedef fcppt::math::box::object<
 		float,
 		3
 	> box_type;

@@ -7,9 +7,10 @@
 #ifndef FCPPT_MATH_MATRIX_VECTOR_HPP_INCLUDED
 #define FCPPT_MATH_MATRIX_VECTOR_HPP_INCLUDED
 
-#include <fcppt/math/matrix/basic_impl.hpp>
-#include <fcppt/math/vector/basic_impl.hpp>
+#include <fcppt/math/matrix/object_impl.hpp>
 #include <fcppt/math/vector/normal_storage.hpp>
+#include <fcppt/math/vector/object_impl.hpp>
+
 
 namespace fcppt
 {
@@ -26,13 +27,13 @@ template<
 	typename S1,
 	typename S2
 >
-fcppt::math::vector::basic<T, M, S2>
+fcppt::math::vector::object<T, M, S2>
 operator *(
-	basic<T, N, M, S1> const &m,
-	vector::basic<T, N, S2> const &v
+	object<T, N, M, S1> const &m,
+	vector::object<T, N, S2> const &v
 )
 {
-	typedef vector::basic<
+	typedef vector::object<
 		T,
 		M,
 		typename vector::normal_storage<
@@ -51,7 +52,7 @@ operator *(
 		++i
 	)
 		for(
-			typename basic<T, N, M, S2>::size_type j = 0;
+			typename object<T, N, M, S2>::size_type j = 0;
 			j < N::value;
 			++j
 		)

@@ -11,7 +11,7 @@
 #include <fcppt/container/grid/dim.hpp>
 #include <fcppt/container/grid/object_fwd.hpp>
 #include <fcppt/container/grid/size_type.hpp>
-#include <fcppt/math/dim/basic_decl.hpp>
+#include <fcppt/math/dim/object_decl.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/static_assert.hpp>
 #include <boost/mpl/if.hpp>

@@ -7,10 +7,10 @@
 #ifndef FCPPT_MATH_MATRIX_TRANSLATION_HPP_INCLUDED
 #define FCPPT_MATH_MATRIX_TRANSLATION_HPP_INCLUDED
 
-#include <fcppt/math/matrix/basic_impl.hpp>
+#include <fcppt/math/matrix/object_impl.hpp>
 #include <fcppt/math/matrix/static.hpp>
-#include <fcppt/math/vector/basic_impl.hpp>
 #include <fcppt/math/vector/has_dim.hpp>
+#include <fcppt/math/vector/object_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/utility/enable_if.hpp>
 #include <fcppt/config/external_end.hpp>

@@ -8,8 +8,8 @@
 #define FCPPT_MATH_BOX_EXTEND_BOUNDING_BOX_HPP_INCLUDED
 
 #include <fcppt/math/size_type.hpp>
-#include <fcppt/math/box/basic_impl.hpp>
 #include <fcppt/math/box/contains_point.hpp>
+#include <fcppt/math/box/object_impl.hpp>
 
 
 namespace fcppt
@@ -28,10 +28,10 @@ The result will either be the same box (if the point is contained in the box)
 or a box that's just big enough to hold the given point.
 */
 template<typename T,size_type N>
-basic<T,N> const
+object<T,N> const
 extend_bounding_box(
-	basic<T,N> b,
-	typename basic<T,N>::vector const &p)
+	object<T,N> b,
+	typename object<T,N>::vector const &p)
 {
 	if (fcppt::math::box::contains_point(
 		b,

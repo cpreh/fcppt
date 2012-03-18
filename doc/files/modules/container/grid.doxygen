@@ -36,7 +36,7 @@ Let's first take a look at how to use a simple three dimensional grid of ints.
 
 \snippet container/grid.cpp grid_simple
 
-Grid uses fcppt::math::dim::basic to specify its size and to obtain an element.
+Grid uses fcppt::math::dim::object to specify its size and to obtain an element.
 
 \warning
 Grid tries to be as efficient as possible and won't necessarily initialize its elements.

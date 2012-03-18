@@ -4,12 +4,12 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_MATH_DIM_BASIC_HPP_INCLUDED
-#define FCPPT_MATH_DIM_BASIC_HPP_INCLUDED
+#ifndef FCPPT_MATH_VECTOR_OBJECT_HPP_INCLUDED
+#define FCPPT_MATH_VECTOR_OBJECT_HPP_INCLUDED
 
-#include <fcppt/math/dim/basic_decl.hpp>
-#include <fcppt/math/dim/basic_fwd.hpp>
-#include <fcppt/math/dim/basic_impl.hpp>
+#include <fcppt/math/vector/object_decl.hpp>
+#include <fcppt/math/vector/object_fwd.hpp>
+#include <fcppt/math/vector/object_impl.hpp>
 
 
 #endif

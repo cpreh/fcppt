@@ -8,7 +8,7 @@
 #define FCPPT_MATH_MATRIX_DETERMINANT_HPP_INCLUDED
 
 #include <fcppt/math/is_static_size.hpp>
-#include <fcppt/math/matrix/basic_impl.hpp>
+#include <fcppt/math/matrix/object_impl.hpp>
 #include <fcppt/math/matrix/detail/determinant.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/utility/enable_if.hpp>
@@ -50,7 +50,7 @@ boost::enable_if
 	T
 >::type
 determinant(
-	basic<T, N, N, S> const &matrix_
+	object<T, N, N, S> const &matrix_
 )
 {
 	return

@@ -10,7 +10,7 @@
 #include <fcppt/math/detail/has_size.hpp>
 #include <fcppt/math/vector/arithmetic.hpp>
 #include <fcppt/math/vector/atan2.hpp>
-#include <fcppt/math/vector/basic_impl.hpp>
+#include <fcppt/math/vector/object_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/mpl/and.hpp>
 #include <boost/type_traits/is_floating_point.hpp>
@@ -71,8 +71,8 @@ typename boost::enable_if<
 	T
 >::type
 signed_angle_between(
-	basic<T, N, S1> const &_from,
-	basic<T, N, S2> const &_to
+	object<T, N, S1> const &_from,
+	object<T, N, S2> const &_to
 )
 {
 	return

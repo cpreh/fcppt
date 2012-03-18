@@ -4,28 +4,23 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_MATH_VECTOR_BASIC_FWD_HPP_INCLUDED
-#define FCPPT_MATH_VECTOR_BASIC_FWD_HPP_INCLUDED
+#ifndef FCPPT_MATH_MATRIX_OBJECT_FWD_HPP_INCLUDED
+#define FCPPT_MATH_MATRIX_OBJECT_FWD_HPP_INCLUDED
 
 namespace fcppt
 {
 namespace math
 {
-namespace vector
+namespace matrix
 {
 
-/// The basic vector class
-/**
- * @param T the type of the elements the vector will hold
- * @param N the vectors size.
- * @param S the vector's storage type
-*/
 template<
 	typename T,
 	typename N,
+	typename M,
 	typename S
 >
-class basic;
+class object;
 
 }
 }

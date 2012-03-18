@@ -7,7 +7,7 @@
 #ifndef FCPPT_MATH_VECTOR_HYPERSPHERE_TO_CARTESIAN_HPP_INCLUDED
 #define FCPPT_MATH_VECTOR_HYPERSPHERE_TO_CARTESIAN_HPP_INCLUDED
 
-#include <fcppt/math/vector/basic.hpp>
+#include <fcppt/math/vector/object.hpp>
 #include <fcppt/math/vector/static.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <cmath>
@@ -62,7 +62,7 @@ template<typename T,typename N,typename S>
 typename
 static_<T,N::value+1>::type const
 hypersphere_to_cartesian(
-	basic<T,N,S> const &angles)
+	object<T,N,S> const &angles)
 {
 	typedef typename
 	static_<T,N::value+1>::type

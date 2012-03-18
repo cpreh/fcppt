@@ -3,7 +3,7 @@ namespace fcppt
 namespace math
 {
 /**
-\brief Contains \link fcppt::math::vector::basic vector::basic \endlink and helper functions, classes and types for it
+\brief Contains \link fcppt::math::vector::object vector::object \endlink and helper functions, classes and types for it
 */
 namespace vector
 {
@@ -198,7 +198,7 @@ template parameter. You could use <code>Storage::value_type</code> to retrieve
 <code>T</code> and <code>Storage::static_size</code> to retrieve N (only if
 <code>Storage</code> is an fcppt::container::array, of course). Using three
 template parameters has practical reasons; the dimension and the value
-type shouldn't depend on the storage type (fcppt::math::vector::basic does it
+type shouldn't depend on the storage type (fcppt::math::vector::object does it
 like this, too).
 
 Secondly, we now have a generic type for the dimension (<code>typename N</code>
@@ -220,7 +220,7 @@ its values.
 
 \section fcpptmathvector_declaring_vectors Declaring vectors
 
-fcppt::math::vector::basic is declared like this:
+fcppt::math::vector::object is declared like this:
 
 \code
 template<typename T,typename N,typename S>
@@ -231,7 +231,7 @@ To typedef a <em>static</em> vector, you can write:
 
 \code
 typedef
-fcppt::math::vector::basic
+fcppt::math::vector::object
 <
 	float,
 	boost::mpl::integral_c<fcppt::math::size_type,2>,
@@ -267,7 +267,7 @@ With <em>dynamic</em> vectors, it's almost the same. You can write...
 
 \code
 typedef
-fcppt::math::vector::basic
+fcppt::math::vector::object
 <
 	float,
 	fcppt::math::detail::dynamic_size,
@@ -294,7 +294,7 @@ fcppt::container::array<int,3> a = {{1,2,3}};
 \endcode
 
 This is possible because fcppt::container::array is a "POD" type (see <a href="http://www.boost.org/doc/libs/1_40_0/libs/type_traits/doc/html/boost_typetraits/reference/is_pod.html">here</a>
-for an explanation). fcppt::math::vector::basic is not a POD type, so you
+for an explanation). fcppt::math::vector::object is not a POD type, so you
 cannot initialize it that way. However, since comfortable initialization is
 very important for readable code, we added "pseudo-variadic" constructors to
 the vector class. It looks like this:
@@ -347,7 +347,7 @@ limit, look inside:
 
 \section fcpptmathvector_type_safety_and_dimension_conversion Type safety and dimension conversion
 
-In some areas, fcppt::math::vector::basic behaves like the numeric type it
+In some areas, fcppt::math::vector::object behaves like the numeric type it
 encapsulates. It has most of the numeric operators, can be freely copied and so
 on. Conversion between vectors, however, are always explicit. The following
 code will compile just fine:
@@ -489,20 +489,20 @@ int main()
 
 \section fcpptmathvector_operators Operators
 
-Including <strong><code>fcppt/math/vector/basic_decl.hpp</code></strong> you
+Including <strong><code>fcppt/math/vector/object_decl.hpp</code></strong> you
 will get the following operators (<code>S2</code> defines some other storage
 type):
 
 <ul>
-	<li><code>operator+=(vector::basic<T,N,S2>)</code></li>
-	<li><code>operator-=(vector::basic<T,N,S2>)</code></li>
-	<li><code>operator*=(vector::basic<T,N,S2>)</code></li>
-	<li><code>operator/=(vector::basic<T,N,S2>)</code></li>
-	<li><code>operator%=(vector::basic<T,N,S2>)</code></li>
+	<li><code>operator+=(vector::object<T,N,S2>)</code></li>
+	<li><code>operator-=(vector::object<T,N,S2>)</code></li>
+	<li><code>operator*=(vector::object<T,N,S2>)</code></li>
+	<li><code>operator/=(vector::object<T,N,S2>)</code></li>
+	<li><code>operator%=(vector::object<T,N,S2>)</code></li>
 	<li><code>operator*=(T)</code> (multiply by a scalar)</li>
 	<li><code>operator/=(T)</code> (divide by a scalar)</li>
-	<li><code>operator=(dim::basic const &)</code> (regular assignment operator)</li>
-	<li><code>operator=(dim::basic<T,N,S2> const &)</code></li>
+	<li><code>operator=(dim::object const &)</code> (regular assignment operator)</li>
+	<li><code>operator=(dim::object<T,N,S2> const &)</code></li>
 	<li><code>operator[](size_type)</code></li>
 </ul>
 
@@ -530,13 +530,13 @@ Including <strong><code>fcppt/math/vector/arithmetic.hpp</code></strong> gives
 you the following operators:
 
 <ul>
-	<li><code>operator+(vector::basic<T,N,S>,vector::basic<T,N,S>)</code></li>
-	<li><code>operator-(vector::basic<T,N,S>,vector::basic<T,N,S>)</code></li>
-	<li><code>operator*(vector::basic<T,N,S>,vector::basic<T,N,S>)</code></li>
-	<li><code>operator/(vector::basic<T,N,S>,vector::basic<T,N,S>)</code></li>
-	<li><code>operator%(vector::basic<T,N,S>,vector::basic<T,N,S>)</code></li>
-	<li><code>operator*(T,vector::basic<T,N,S>)</code> (scalar multiplication)</li>
-	<li><code>operator/(T,vector::basic<T,N,S>)</code> (scalar division)</li>
+	<li><code>operator+(vector::object<T,N,S>,vector::object<T,N,S>)</code></li>
+	<li><code>operator-(vector::object<T,N,S>,vector::object<T,N,S>)</code></li>
+	<li><code>operator*(vector::object<T,N,S>,vector::object<T,N,S>)</code></li>
+	<li><code>operator/(vector::object<T,N,S>,vector::object<T,N,S>)</code></li>
+	<li><code>operator%(vector::object<T,N,S>,vector::object<T,N,S>)</code></li>
+	<li><code>operator*(T,vector::object<T,N,S>)</code> (scalar multiplication)</li>
+	<li><code>operator/(T,vector::object<T,N,S>)</code> (scalar division)</li>
 	<li>Unary minus for vectors</li>
 </ul>
 
@@ -555,11 +555,11 @@ Including <strong><code>fcppt/math/vector/dim.hpp</code></strong> gives you the
 following operators:
 
 <ul>
-	<li><code>operator+(vector::basic<T,N,S1>,dim::basic<T,N,S2>)</code></li>
-	<li><code>operator-(vector::basic<T,N,S1>,dim::basic<T,N,S2>)</code></li>
-	<li><code>operator*(vector::basic<T,N,S1>,dim::basic<T,N,S2>)</code></li>
-	<li><code>operator/(vector::basic<T,N,S1>,dim::basic<T,N,S2>)</code></li>
-	<li><code>operator%(vector::basic<T,N,S1>,dim::basic<T,N,S2>)</code></li>
+	<li><code>operator+(vector::object<T,N,S1>,dim::object<T,N,S2>)</code></li>
+	<li><code>operator-(vector::object<T,N,S1>,dim::object<T,N,S2>)</code></li>
+	<li><code>operator*(vector::object<T,N,S1>,dim::object<T,N,S2>)</code></li>
+	<li><code>operator/(vector::object<T,N,S1>,dim::object<T,N,S2>)</code></li>
+	<li><code>operator%(vector::object<T,N,S1>,dim::object<T,N,S2>)</code></li>
 </ul>
 
 Again, these work component-wise.
@@ -567,7 +567,7 @@ Again, these work component-wise.
 \section fcpptmathvector_headers Header files
 
 fcppt::math::vector is spread out across various header files. There's one
-header per free function. fcppt::math::vector::basic itself is split into
+header per free function. fcppt::math::vector::object itself is split into
 various headers, too. Here's an exhaustive list:
 
 <table>
@@ -576,28 +576,28 @@ various headers, too. Here's an exhaustive list:
 <th>Description</th>
 </tr>
 <tr>
-<td><code>basic_fwd.hpp</code></td>
-<td>Contains \link fcppt::math::vector::basic basic's \endlink declaration. Include this if you pass a vector by reference, for example.</td>
+<td><code>object_fwd.hpp</code></td>
+<td>Contains \link fcppt::math::vector::object object's \endlink declaration. Include this if you pass a vector by reference, for example.</td>
 </tr>
 <tr>
-<td><code>basic_decl.hpp</code></td>
-<td>Contains \link fcppt::math::vector::basic basic's \endlink definition.</td>
+<td><code>object_decl.hpp</code></td>
+<td>Contains \link fcppt::math::vector::object object's \endlink definition.</td>
 </tr>
 <tr>
-<td><code>basic_impl.hpp</code></td>
-<td>Contains the definition of \link fcppt::math::vector::basic basic's \endlink member functions.</td>
+<td><code>object_impl.hpp</code></td>
+<td>Contains the definition of \link fcppt::math::vector::object object's \endlink member functions.</td>
 </tr>
 <tr>
-<td><code>basic.hpp</code></td>
-<td>Includes <code>basic_fwd.hpp</code>, <code>basic_decl.hpp</code> and <code>basic_impl.hpp</code></td>
+<td><code>object.hpp</code></td>
+<td>Includes <code>object_fwd.hpp</code>, <code>object_decl.hpp</code> and <code>object_impl.hpp</code></td>
 </tr>
 <tr>
 <td><code>arithmetic.hpp</code></td>
-<td>Contains \link fcppt::math::vector::basic basic's \endlink arithmetic operators.</td>
+<td>Contains \link fcppt::math::vector::object object's \endlink arithmetic operators.</td>
 </tr>
 <tr>
 <td><code>comparison.hpp</code></td>
-<td>Contains \link fcppt::math::vector::basic basic's \endlink comparison operators.</td>
+<td>Contains \link fcppt::math::vector::object object's \endlink comparison operators.</td>
 </tr>
 <tr>
 <td><code>input.hpp</code></td>
@@ -609,7 +609,7 @@ various headers, too. Here's an exhaustive list:
 </tr>
 <tr>
 <td><code>dim.hpp</code></td>
-<td>Contains arithmetic operators to interoperate with the fcppt::math::dim::basic class (see this class for more information)</td>
+<td>Contains arithmetic operators to interoperate with the fcppt::math::dim::object class (see this class for more information)</td>
 </tr>
 </table>
 */

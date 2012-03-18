@@ -7,7 +7,7 @@
 #ifndef FCPPT_MATH_MATRIX_OUTPUT_HPP_INCLUDED
 #define FCPPT_MATH_MATRIX_OUTPUT_HPP_INCLUDED
 
-#include <fcppt/math/matrix/basic_impl.hpp>
+#include <fcppt/math/matrix/object_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <ostream>
 #include <fcppt/config/external_end.hpp>
@@ -49,10 +49,10 @@ template<
 std::basic_ostream<Ch,Traits> &
 operator<< (
 	std::basic_ostream<Ch,Traits> &s,
-	basic<T, N, M, S> const &m
+	object<T, N, M, S> const &m
 )
 {
-	typedef typename basic<T, N, M, S>::size_type size_type;
+	typedef typename object<T, N, M, S>::size_type size_type;
 
 	s << s.widen('(');
 	for(size_type j = 0; j < m.rows(); ++j)

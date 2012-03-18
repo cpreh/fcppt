@@ -5,8 +5,8 @@
 
 
 //[vectorbasic
-#include <fcppt/math/vector/basic_impl.hpp>
 #include <fcppt/math/vector/dynamic_impl.hpp>
+#include <fcppt/math/vector/object_impl.hpp>
 #include <fcppt/math/vector/output.hpp>
 #include <fcppt/math/vector/static.hpp>
 #include <fcppt/config/external_begin.hpp>

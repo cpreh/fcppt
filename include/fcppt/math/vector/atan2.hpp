@@ -8,7 +8,7 @@
 #define FCPPT_MATH_VECTOR_ATAN2_HPP_INCLUDED
 
 #include <fcppt/math/detail/has_size.hpp>
-#include <fcppt/math/vector/basic_impl.hpp>
+#include <fcppt/math/vector/object_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/mpl/and.hpp>
 #include <boost/type_traits/is_floating_point.hpp>
@@ -63,7 +63,7 @@ typename boost::enable_if<
 	T
 >::type
 atan2(
-	basic<T, N, S> const &_vector
+	object<T, N, S> const &_vector
 )
 {
 	return

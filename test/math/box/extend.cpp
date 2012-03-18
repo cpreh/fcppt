@@ -6,8 +6,8 @@
 
 #include <fcppt/text.hpp>
 #include <fcppt/io/cerr.hpp>
-#include <fcppt/math/box/basic_impl.hpp>
 #include <fcppt/math/box/extend_bounding_box.hpp>
+#include <fcppt/math/box/object_impl.hpp>
 #include <fcppt/math/box/output.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/test/unit_test.hpp>
@@ -17,7 +17,7 @@
 BOOST_AUTO_TEST_CASE(box_extend_bounding_box)
 {
 	typedef
-	fcppt::math::box::basic<
+	fcppt::math::box::object<
 		int,
 		2
 	> box_type;

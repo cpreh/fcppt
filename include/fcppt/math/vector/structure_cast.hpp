@@ -8,7 +8,7 @@
 #define FCPPT_MATH_VECTOR_STRUCTURE_CAST_HPP_INCLUDED
 
 #include <fcppt/math/detail/structure_cast.hpp>
-#include <fcppt/math/vector/basic_impl.hpp>
+#include <fcppt/math/vector/object_impl.hpp>
 
 
 namespace fcppt
@@ -27,7 +27,7 @@ namespace vector
 \tparam S The source vector's storage type
 \param _src The vector to cast
 
-See the introduction to fcppt::math::vector::basic for more information on this
+See the introduction to fcppt::math::vector::object for more information on this
 function (and vector in general).
 */
 template<
@@ -38,7 +38,7 @@ template<
 >
 Dest const
 structure_cast(
-	basic<T, N, S> const &_src
+	object<T, N, S> const &_src
 )
 {
 	return

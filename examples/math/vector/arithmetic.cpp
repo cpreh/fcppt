@@ -5,12 +5,12 @@
 
 
 //[vectorarithmetic
-#include <fcppt/math/dim/basic_impl.hpp>
+#include <fcppt/math/dim/object_impl.hpp>
 #include <fcppt/math/dim/static.hpp>
 #include <fcppt/math/vector/arithmetic.hpp>
-#include <fcppt/math/vector/basic_impl.hpp>
 #include <fcppt/math/vector/dim.hpp>
 #include <fcppt/math/vector/dot.hpp>
+#include <fcppt/math/vector/object_impl.hpp>
 #include <fcppt/math/vector/output.hpp>
 #include <fcppt/math/vector/static.hpp>
 #include <fcppt/config/external_begin.hpp>

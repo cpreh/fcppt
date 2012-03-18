@@ -7,7 +7,7 @@
 #ifndef FCPPT_MATH_BOX_RECT_HPP_INCLUDED
 #define FCPPT_MATH_BOX_RECT_HPP_INCLUDED
 
-#include <fcppt/math/box/basic_fwd.hpp>
+#include <fcppt/math/box/object_fwd.hpp>
 
 namespace fcppt
 {
@@ -26,7 +26,7 @@ template<
 >
 struct rect
 {
-	typedef basic<
+	typedef object<
 		T,
 		2
 	> type;

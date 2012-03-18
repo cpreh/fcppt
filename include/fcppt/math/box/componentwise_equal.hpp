@@ -8,7 +8,7 @@
 #define FCPPT_MATH_BOX_COMPONENTWISE_EQUAL_HPP_INCLUDED
 
 #include <fcppt/math/size_type.hpp>
-#include <fcppt/math/box/basic_impl.hpp>
+#include <fcppt/math/box/object_impl.hpp>
 #include <fcppt/math/dim/componentwise_equal.hpp>
 #include <fcppt/math/vector/componentwise_equal.hpp>
 
@@ -37,11 +37,11 @@ template<
 >
 bool
 componentwise_equal(
-	box::basic<
+	box::object<
 		T,
 		N
 	> const &_v1,
-	box::basic<
+	box::object<
 		T,
 		N
 	> const &_v2,

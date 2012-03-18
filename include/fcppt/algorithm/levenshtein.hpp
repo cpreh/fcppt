@@ -8,7 +8,7 @@
 #define FCPPT_ALGORITHM_LEVENSHTEIN_HPP_INCLUDED
 
 #include <fcppt/container/grid/object.hpp>
-#include <fcppt/math/dim/basic_impl.hpp>
+#include <fcppt/math/dim/object_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <algorithm>
 #include <fcppt/config/external_end.hpp>
@@ -18,23 +18,23 @@ namespace fcppt
 namespace algorithm
 {
 /**
- * \brief Calculates the Levenshtein distance
- * \ingroup fcpptalgorithm
- * \details
- * See http://en.wikipedia.org/wiki/Levenshtein_distance for an explanation of the algorithm.
- * \pre
- * <ol>
- * <li><code>Container::size_type</code> and <code>Container::value_type</code> exist</li>
- * <li><code>bool Container::empty() const</code> exists</li>
- * <li><code>size_type Container::size() const</code> exists</li>
- * <li><code>Container::operator[]</code> exists</li>
- * <li><code>Container::value_type</code> has to have an <code>operator==</code></li>
- * </ol>
- *
- * \note
- * The code is taken quite literally from:
- * http://www.merriampark.com/ldcpp.htm
- */
+\brief Calculates the Levenshtein distance
+\ingroup fcpptalgorithm
+\details
+See http://en.wikipedia.org/wiki/Levenshtein_distance for an explanation of the algorithm.
+\pre
+<ol>
+<li><code>Container::size_type</code> and <code>Container::value_type</code> exist</li>
+<li><code>bool Container::empty() const</code> exists</li>
+<li><code>size_type Container::size() const</code> exists</li>
+<li><code>Container::operator[]</code> exists</li>
+<li><code>Container::value_type</code> has to have an <code>operator==</code></li>
+</ol>
+
+\note
+The code is taken quite literally from:
+http://www.merriampark.com/ldcpp.htm
+*/
 template<typename Container>
 typename
 Container::size_type

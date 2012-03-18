@@ -7,7 +7,7 @@
 #ifndef FCPPT_MATH_QUATERNION_TO_MATRIX_HPP_INCLUDED
 #define FCPPT_MATH_QUATERNION_TO_MATRIX_HPP_INCLUDED
 
-#include <fcppt/math/matrix/basic_impl.hpp>
+#include <fcppt/math/matrix/object_impl.hpp>
 #include <fcppt/math/matrix/static.hpp>
 #include <fcppt/math/matrix/transpose.hpp>
 #include <fcppt/config/external_begin.hpp>

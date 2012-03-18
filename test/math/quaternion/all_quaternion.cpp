@@ -9,8 +9,8 @@
 #include <fcppt/math/quaternion/from_angle_and_axis.hpp>
 #include <fcppt/math/quaternion/to_angle_and_axis.hpp>
 #include <fcppt/math/quaternion/vector_rotation.hpp>
-#include <fcppt/math/vector/basic_impl.hpp>
 #include <fcppt/math/vector/componentwise_equal.hpp>
+#include <fcppt/math/vector/object_impl.hpp>
 #include <fcppt/math/vector/static.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/math/quaternion.hpp>

@@ -8,7 +8,7 @@
 #define FCPPT_MATH_VECTOR_COMPONENTWISE_EQUAL_HPP_INCLUDED
 
 #include <fcppt/math/detail/array_componentwise_equal.hpp>
-#include <fcppt/math/vector/basic_impl.hpp>
+#include <fcppt/math/vector/object_impl.hpp>
 
 
 namespace fcppt
@@ -26,12 +26,12 @@ template<
 >
 bool
 componentwise_equal(
-	vector::basic<
+	vector::object<
 		T,
 		N,
 		S1
 	> const &_v1,
-	vector::basic<
+	vector::object<
 		T,
 		N,
 		S2

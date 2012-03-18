@@ -10,10 +10,10 @@
 #include <fcppt/container/array.hpp>
 #include <fcppt/math/generate_binary_vectors.hpp>
 #include <fcppt/math/size_type.hpp>
-#include <fcppt/math/box/basic_impl.hpp>
+#include <fcppt/math/box/object_impl.hpp>
 #include <fcppt/math/dim/structure_cast.hpp>
 #include <fcppt/math/vector/arithmetic.hpp>
-#include <fcppt/math/vector/basic_impl.hpp>
+#include <fcppt/math/vector/object_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <cstddef>
 #include <fcppt/config/external_end.hpp>
@@ -42,7 +42,7 @@ fcppt::container::array
 	static_cast<std::size_t>(1u) << N
 > const
 corner_points(
-	box::basic<T,N> const &_box
+	box::object<T,N> const &_box
 )
 {
 	typedef typename

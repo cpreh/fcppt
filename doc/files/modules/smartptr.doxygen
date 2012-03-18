@@ -1,6 +1,6 @@
 /**
 \defgroup fcpptsmartptr fcppt.smart_pointers
-\ingroup \fcpptmain
+\ingroup fcpptmain
 \brief Smart pointers and their utilities
 
 <table id="toc">

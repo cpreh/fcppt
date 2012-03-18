@@ -18,7 +18,7 @@ namespace vector
 /**
 \brief Project a vector orthogonally onto another vector
 \ingroup fcpptmathvector
-\tparam Vector A fcppt::math::vector::basic type.
+\tparam Vector A fcppt::math::vector::object type.
 \param u The vector to project to
 \param v The vector to project from
 

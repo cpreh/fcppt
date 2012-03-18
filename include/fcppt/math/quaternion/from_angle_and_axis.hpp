@@ -34,7 +34,7 @@ template<typename T,typename N,typename S>
 boost::math::quaternion<T> const
 from_angle_and_axis(
 	T const &angle,
-	fcppt::math::vector::basic<T,N,S> const &axis)
+	fcppt::math::vector::object<T,N,S> const &axis)
 {
 	T const
 		half_angle =

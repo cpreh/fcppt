@@ -10,7 +10,7 @@
 #include <fcppt/container/raw_vector_decl.hpp>
 #include <fcppt/math/detail/dynamic_size.hpp>
 #include <fcppt/math/detail/dynamic_storage.hpp>
-#include <fcppt/math/vector/basic_fwd.hpp>
+#include <fcppt/math/vector/object_fwd.hpp>
 
 
 namespace fcppt
@@ -24,7 +24,7 @@ namespace vector
 \brief Typedef helper for dynamic vectors
 \tparam The vector's <code>value_type</code>
 \ingroup fcpptmathvector
-See the introduction to fcppt::math::vector::basic for more information on
+See the introduction to fcppt::math::vector::object for more information on
 dynamic vectors (and on this class).
 */
 template<
@@ -32,7 +32,7 @@ template<
 >
 struct dynamic
 {
-	typedef basic<
+	typedef object<
 		T,
 		math::detail::dynamic_size,
 		typename math::detail::dynamic_storage<

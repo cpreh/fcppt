@@ -7,7 +7,7 @@
 #ifndef FCPPT_MATH_BOX_RECT_FROM_EDGES_HPP_INCLUDED
 #define FCPPT_MATH_BOX_RECT_FROM_EDGES_HPP_INCLUDED
 
-#include <fcppt/math/box/basic_impl.hpp>
+#include <fcppt/math/box/object_impl.hpp>
 
 namespace fcppt
 {
@@ -24,7 +24,7 @@ namespace box
 template<
 	typename Scalar
 >
-fcppt::math::box::basic
+fcppt::math::box::object
 <
 	Scalar,
 	2
@@ -37,7 +37,7 @@ rect_from_edges(
 )
 {
 	typedef typename
-	fcppt::math::box::basic
+	fcppt::math::box::object
 	<
 		Scalar,
 		2
@@ -45,7 +45,7 @@ rect_from_edges(
 	vector;
 
 	typedef typename
-	fcppt::math::box::basic
+	fcppt::math::box::object
 	<
 		Scalar,
 		2
@@ -53,7 +53,7 @@ rect_from_edges(
 	dim;
 
 	return
-		fcppt::math::box::basic
+		fcppt::math::box::object
 		<
 			Scalar,
 			2

@@ -8,7 +8,7 @@
 #define FCPPT_MATH_MATRIX_STATIC_HPP_INCLUDED
 
 #include <fcppt/math/size_type.hpp>
-#include <fcppt/math/matrix/basic_fwd.hpp>
+#include <fcppt/math/matrix/object_fwd.hpp>
 #include <fcppt/math/matrix/detail/static_storage.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/mpl/integral_c.hpp>
@@ -26,7 +26,7 @@ namespace matrix
 \brief Typedef helper for static matrices
 \ingroup fcpptmathmatrix
 \tparam The matrix's <code>value_type</code>
-See the introduction to fcppt::math::vector::basic for more information on
+See the introduction to fcppt::math::vector::object for more information on
 static matrices (and on this class).
 */
 template<
@@ -36,7 +36,7 @@ template<
 >
 struct static_
 {
-	typedef basic<
+	typedef object<
 		T,
 		boost::mpl::integral_c<
 			size_type,

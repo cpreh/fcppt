@@ -9,9 +9,9 @@
 
 #include <fcppt/math/is_static_size.hpp>
 #include <fcppt/math/size_type.hpp>
-#include <fcppt/math/matrix/basic_impl.hpp>
 #include <fcppt/math/matrix/delete_row_and_column.hpp>
 #include <fcppt/math/matrix/determinant.hpp>
+#include <fcppt/math/matrix/object_impl.hpp>
 #include <fcppt/math/matrix/static.hpp>
 
 
@@ -54,7 +54,7 @@ boost::enable_if
 	>::type const
 >::type
 adjugate(
-	basic<T,N,N,S> const &matrix_
+	matrix::object<T,N,N,S> const &matrix_
 )
 {
 	typedef typename

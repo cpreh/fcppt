@@ -9,7 +9,7 @@
 
 #include <fcppt/math/size_type.hpp>
 #include <fcppt/math/detail/dim_matches.hpp>
-#include <fcppt/math/matrix/basic_fwd.hpp>
+#include <fcppt/math/matrix/object_fwd.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/mpl/and.hpp>
 #include <boost/type_traits/integral_constant.hpp>
@@ -26,7 +26,7 @@ namespace matrix
 /**
 \brief Metafunction to check if a static matrix has the specified dimensions
 \ingroup fcpptmathmatrix
-\tparam Matrix A fcppt::math::matrix::basic type
+\tparam Matrix A fcppt::math::matrix::object type
 \tparam N The static row count
 \tparam N The static column count
 
@@ -52,7 +52,7 @@ template<
 	size_type DM
 >
 struct has_dim<
-	basic<
+	object<
 		T,
 		N,
 		M,
