@@ -80,6 +80,10 @@ uniform int distribution.
 For example, the code could print: <code>5 7 3 7 6 8 9 5 7 9 7 10 1 6 5 6 3 2 5
 0</code>.
 
+<code>print_values</code> is defined as follows:
+
+\snippet random.cpp random_print_values
+
 Using different distributions works similar to using a uniform int distribution,
 for example a normal distribution can be used like this:
 

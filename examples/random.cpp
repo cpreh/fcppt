@@ -17,7 +17,7 @@
 namespace
 {
 
-// helper function used to draw 20 values out of a generator
+// ![random_print_values]
 template<
 	typename Rng
 >
@@ -38,6 +38,7 @@ print_values(
 	fcppt::io::cout()
 		<< FCPPT_TEXT('\n');
 }
+// ![random_print_values]
 
 }
 
