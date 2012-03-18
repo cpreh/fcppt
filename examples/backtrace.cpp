@@ -9,8 +9,10 @@
 #include <fcppt/backtrace/print_current_stack_frame.hpp>
 #include <fcppt/backtrace/stack_limit.hpp>
 #include <fcppt/io/cout.hpp>
-#include <fcppt/random/make_last_exclusive_range.hpp>
-#include <fcppt/random/uniform.hpp>
+#include <fcppt/random/variate.hpp>
+#include <fcppt/random/distribution/uniform_int.hpp>
+#include <fcppt/random/generator/minstd_rand.hpp>
+#include <fcppt/random/generator/seed_from_chrono.hpp>
 
 
 namespace
@@ -92,10 +94,28 @@ main()
 	fcppt::io::cout()
 		<< FCPPT_TEXT("Ok, done, descending into a recursive function...\n");
 
-	fcppt::random::uniform<unsigned> random_depth(
-		fcppt::random::make_last_exclusive_range(
-			10u,
-			100u));
+	typedef fcppt::random::generator::minstd_rand generator_type;
+
+	generator_type generator(
+		fcppt::random::generator::seed_from_chrono<
+			generator_type::seed
+		>()
+	);
+
+	typedef fcppt::random::distribution::uniform_int<
+		unsigned
+	> distribution;
+
+	fcppt::random::variate<
+		generator_type,
+		distribution
+	> random_depth(
+		generator,
+		distribution(
+			distribution::min(
+				10u),
+			distribution::max(
+				100u)));
 
 	recursive_function_0(
 		0u,

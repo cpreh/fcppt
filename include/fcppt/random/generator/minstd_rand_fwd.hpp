@@ -4,25 +4,25 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_RANDOM_ACTOR_CONTAINER_HPP_INCLUDED
-#define FCPPT_RANDOM_ACTOR_CONTAINER_HPP_INCLUDED
+#ifndef FCPPT_RANDOM_GENERATOR_MINSTD_RAND_FWD_HPP_INCLUDED
+#define FCPPT_RANDOM_GENERATOR_MINSTD_RAND_FWD_HPP_INCLUDED
 
-#include <fcppt/random/actor/element.hpp>
+#include <fcppt/random/generator/basic_pseudo_fwd.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <vector>
+#include <boost/random/linear_congruential.hpp>
 #include <fcppt/config/external_end.hpp>
+
 
 namespace fcppt
 {
 namespace random
 {
-namespace actor
+namespace generator
 {
 
-/// The element vector
-typedef std::vector<
-	actor::element
-> container;
+typedef fcppt::random::generator::basic_pseudo<
+	boost::random::minstd_rand
+> minstd_rand;
 
 }
 }

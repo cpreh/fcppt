@@ -53,7 +53,6 @@ update_cmake_file \
 	src/include \
 	src/io \
 	src/log \
-	src/random \
 	src/signal \
 	src/time \
 	|| exit -1

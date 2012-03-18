@@ -694,36 +694,30 @@ set(
 	include/fcppt/preprocessor/stringize.hpp
 	include/fcppt/preprocessor/todo.hpp
 	include/fcppt/preprocessor/warning.hpp
-	include/fcppt/random/actor/callback.hpp
-	include/fcppt/random/actor/container.hpp
-	include/fcppt/random/actor/element.hpp
-	include/fcppt/random/actor/element_fwd.hpp
-	include/fcppt/random/actor/float_type.hpp
-	include/fcppt/random/actor/normalized.hpp
-	include/fcppt/random/default_generator.hpp
-	include/fcppt/random/detail/uniform_distribution.hpp
-	include/fcppt/random/exception.hpp
-	include/fcppt/random/exclusive_range_error.hpp
-	include/fcppt/random/impl/exception.hpp
-	include/fcppt/random/impl/exclusive_range_error.hpp
-	include/fcppt/random/inclusive_range.hpp
-	include/fcppt/random/inclusive_range_decl.hpp
-	include/fcppt/random/inclusive_range_fwd.hpp
-	include/fcppt/random/inclusive_range_impl.hpp
-	include/fcppt/random/last_exclusive_range.hpp
-	include/fcppt/random/last_exclusive_range_decl.hpp
-	include/fcppt/random/last_exclusive_range_fwd.hpp
-	include/fcppt/random/last_exclusive_range_impl.hpp
-	include/fcppt/random/make_inclusive_range.hpp
-	include/fcppt/random/make_last_exclusive_range.hpp
-	include/fcppt/random/range.hpp
-	include/fcppt/random/range_decl.hpp
-	include/fcppt/random/range_fwd.hpp
-	include/fcppt/random/range_impl.hpp
-	include/fcppt/random/uniform.hpp
-	include/fcppt/random/uniform_decl.hpp
-	include/fcppt/random/uniform_fwd.hpp
-	include/fcppt/random/uniform_impl.hpp
+	include/fcppt/random/distribution/declare_call.hpp
+	include/fcppt/random/distribution/define_call.hpp
+	include/fcppt/random/distribution/normal.hpp
+	include/fcppt/random/distribution/normal_decl.hpp
+	include/fcppt/random/distribution/normal_fwd.hpp
+	include/fcppt/random/distribution/normal_impl.hpp
+	include/fcppt/random/distribution/uniform_int.hpp
+	include/fcppt/random/distribution/uniform_int_decl.hpp
+	include/fcppt/random/distribution/uniform_int_fwd.hpp
+	include/fcppt/random/distribution/uniform_int_impl.hpp
+	include/fcppt/random/distribution/uniform_real.hpp
+	include/fcppt/random/distribution/uniform_real_decl.hpp
+	include/fcppt/random/distribution/uniform_real_fwd.hpp
+	include/fcppt/random/distribution/uniform_real_impl.hpp
+	include/fcppt/random/generator/basic_pseudo_decl.hpp
+	include/fcppt/random/generator/basic_pseudo_fwd.hpp
+	include/fcppt/random/generator/basic_pseudo_impl.hpp
+	include/fcppt/random/generator/minstd_rand.hpp
+	include/fcppt/random/generator/minstd_rand_fwd.hpp
+	include/fcppt/random/generator/seed_from_chrono.hpp
+	include/fcppt/random/variate.hpp
+	include/fcppt/random/variate_decl.hpp
+	include/fcppt/random/variate_fwd.hpp
+	include/fcppt/random/variate_impl.hpp
 	include/fcppt/ratio/add.hpp
 	include/fcppt/ratio/add_fwd.hpp
 	include/fcppt/ratio/atto.hpp
@@ -1032,8 +1026,6 @@ set(
 	src/log/trampoline.cpp
 	src/log/tree_formatter.cpp
 	src/narrow.cpp
-	src/random/actor/element.cpp
-	src/random/actor/normalized.cpp
 	src/signal/connection_manager.cpp
 	src/signal/detail/connection.cpp
 	src/string_conv_locale.cpp

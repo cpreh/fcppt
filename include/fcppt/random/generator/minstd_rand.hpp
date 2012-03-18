@@ -4,20 +4,11 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_RANDOM_ACTOR_ELEMENT_FWD_HPP_INCLUDED
-#define FCPPT_RANDOM_ACTOR_ELEMENT_FWD_HPP_INCLUDED
+#ifndef FCPPT_RANDOM_GENERATOR_MINSTD_RAND_HPP_INCLUDED
+#define FCPPT_RANDOM_GENERATOR_MINSTD_RAND_HPP_INCLUDED
 
-namespace fcppt
-{
-namespace random
-{
-namespace actor
-{
+#include <fcppt/random/generator/basic_pseudo_impl.hpp>
+#include <fcppt/random/generator/minstd_rand_fwd.hpp>
 
-class element;
-
-}
-}
-}
 
 #endif

@@ -16,6 +16,8 @@ namespace fcppt
 /**
 \brief safe cast forbids lossy conversions
 
+\ingroup fcpptcasts
+
 This cast implicitly converts arithmetic types like fcppt::safe_numeric_cast
 does. For every other type, the conversion is also done implicitly, but without
 any further restrictions. In general, this means that either the restrictions

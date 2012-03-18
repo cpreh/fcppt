@@ -4,12 +4,14 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-//[randomuniform
 #include <fcppt/text.hpp>
 #include <fcppt/io/cout.hpp>
-#include <fcppt/random/make_inclusive_range.hpp>
-#include <fcppt/random/make_last_exclusive_range.hpp>
-#include <fcppt/random/uniform.hpp>
+#include <fcppt/random/variate.hpp>
+#include <fcppt/random/distribution/normal.hpp>
+#include <fcppt/random/distribution/uniform_int.hpp>
+#include <fcppt/random/distribution/uniform_real.hpp>
+#include <fcppt/random/generator/minstd_rand.hpp>
+#include <fcppt/random/generator/seed_from_chrono.hpp>
 
 
 namespace
@@ -39,14 +41,36 @@ print_values(
 
 }
 
-int main()
+int
+main()
 {
+	typedef fcppt::random::generator::minstd_rand generator_type;
+
+	generator_type generator(
+		fcppt::random::generator::seed_from_chrono<
+			generator_type::seed
+		>()
+	);
+
 	{
-		// create a uniform inclusive distribution [0, 10]
-		fcppt::random::uniform<int> rng(
-			fcppt::random::make_inclusive_range(
-				0,
-				10
+		typedef fcppt::random::distribution::uniform_int<
+			int
+		> uniform_int;
+
+		typedef fcppt::random::variate<
+			generator_type,
+			uniform_int
+		> variate;
+
+		variate rng(
+			generator,
+			uniform_int(
+				uniform_int::min(
+					0
+				),
+				uniform_int::max(
+					10
+				)
 			)
 		);
 
@@ -56,31 +80,56 @@ int main()
 	}
 
 	{
-		// create a uniform inclusive distribution [0, 10] over float instead
-		fcppt::random::uniform<float> rngf(
-			fcppt::random::make_inclusive_range(
-				0.f,
-				10.f
+		typedef fcppt::random::distribution::uniform_real<
+			float
+		> uniform_real;
+
+		typedef fcppt::random::variate<
+			generator_type,
+			uniform_real
+		> variate;
+
+		variate rng(
+			generator,
+			uniform_real(
+				uniform_real::min(
+					0.f
+				),
+				uniform_real::sup(
+					10.f
+				)
 			)
 		);
 
 		print_values(
-			rngf
+			rng
 		);
 	}
 
 	{
-		// create a uniform exclusive distribution [0, 10)
-		fcppt::random::uniform<int> rngex(
-			fcppt::random::make_last_exclusive_range(
-				0,
-				10
+		typedef fcppt::random::distribution::normal<
+			double
+		> normal;
+
+		typedef fcppt::random::variate<
+			generator_type,
+			normal
+		> variate;
+
+		variate rng(
+			generator,
+			normal(
+				normal::mean(
+					0.
+				),
+				normal::sigma(
+					5.
+				)
 			)
 		);
 
 		print_values(
-			rngex
+			rng
 		);
 	}
 }
-//]

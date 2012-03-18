@@ -4,24 +4,20 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_RANDOM_ACTOR_CALLBACK_HPP_INCLUDED
-#define FCPPT_RANDOM_ACTOR_CALLBACK_HPP_INCLUDED
-
-#include <fcppt/function/object_fwd.hpp>
+#ifndef FCPPT_RANDOM_VARIATE_FWD_HPP_INCLUDED
+#define FCPPT_RANDOM_VARIATE_FWD_HPP_INCLUDED
 
 namespace fcppt
 {
 namespace random
 {
-namespace actor
-{
 
-/// The actor callback
-typedef fcppt::function::object<
-	void ()
-> callback;
+template<
+	typename Generator,
+	typename Distribution
+>
+class variate;
 
-}
 }
 }
 

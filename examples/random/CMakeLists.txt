@@ -12,5 +12,4 @@ function(
 	)
 endfunction()
 
-add_fcppt_random_example(actor "" "")
 add_fcppt_random_example(uniform "" "")

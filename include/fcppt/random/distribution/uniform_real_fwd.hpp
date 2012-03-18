@@ -4,19 +4,22 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_RANDOM_INCLUSIVE_RANGE_FWD_HPP_INCLUDED
-#define FCPPT_RANDOM_INCLUSIVE_RANGE_FWD_HPP_INCLUDED
+#ifndef FCPPT_RANDOM_DISTRIBUTION_UNIFORM_REAL_FWD_HPP_INCLUDED
+#define FCPPT_RANDOM_DISTRIBUTION_UNIFORM_REAL_FWD_HPP_INCLUDED
 
 namespace fcppt
 {
 namespace random
 {
+namespace distribution
+{
 
 template<
-	typename T
+	typename FloatType
 >
-class inclusive_range;
+class uniform_real;
 
+}
 }
 }
 

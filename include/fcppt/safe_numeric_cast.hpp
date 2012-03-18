@@ -27,6 +27,8 @@ namespace fcppt
 /**
 \brief safe numeric cast is a safer static_cast that forbids lossy conversions
 
+\ingroup fcpptcasts
+
 This cast implicitly converts one arithmetic type to another, where the size of
 the destination type must be at least the size of the source type.
 

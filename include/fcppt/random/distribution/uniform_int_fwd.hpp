@@ -4,21 +4,20 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_RANDOM_ACTOR_FLOAT_TYPE_HPP_INCLUDED
-#define FCPPT_RANDOM_ACTOR_FLOAT_TYPE_HPP_INCLUDED
+#ifndef FCPPT_RANDOM_DISTRIBUTION_UNIFORM_INT_FWD_HPP_INCLUDED
+#define FCPPT_RANDOM_DISTRIBUTION_UNIFORM_INT_FWD_HPP_INCLUDED
 
 namespace fcppt
 {
 namespace random
 {
-namespace actor
+namespace distribution
 {
 
-/// The float type
-/**
- * note: if we use double here, VC++ will generate only INF values
-*/
-typedef float float_type;
+template<
+	typename IntType
+>
+class uniform_int;
 
 }
 }
