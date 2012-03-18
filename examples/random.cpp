@@ -44,6 +44,7 @@ print_values(
 int
 main()
 {
+// ![random_generator]
 	typedef fcppt::random::generator::minstd_rand generator_type;
 
 	generator_type generator(
@@ -51,85 +52,90 @@ main()
 			generator_type::seed
 		>()
 	);
+// ![random_generator]
 
 	{
-		typedef fcppt::random::distribution::uniform_int<
-			int
-		> uniform_int;
+// ![random_uniform_int]
+	typedef fcppt::random::distribution::uniform_int<
+		int
+	> uniform_int;
 
-		typedef fcppt::random::variate<
-			generator_type,
-			uniform_int
-		> variate;
+	typedef fcppt::random::variate<
+		generator_type,
+		uniform_int
+	> variate;
 
-		variate rng(
-			generator,
-			uniform_int(
-				uniform_int::min(
-					0
-				),
-				uniform_int::max(
-					10
-				)
+	variate rng(
+		generator,
+		uniform_int(
+			uniform_int::min(
+				0
+			),
+			uniform_int::max(
+				10
 			)
-		);
+		)
+	);
 
-		print_values(
-			rng
-		);
+	print_values(
+		rng
+	);
+// ![random_uniform_int]
 	}
 
 	{
-		typedef fcppt::random::distribution::uniform_real<
-			float
-		> uniform_real;
+	typedef fcppt::random::distribution::uniform_real<
+		float
+	> uniform_real;
 
-		typedef fcppt::random::variate<
-			generator_type,
-			uniform_real
-		> variate;
+	typedef fcppt::random::variate<
+		generator_type,
+		uniform_real
+	> variate;
 
-		variate rng(
-			generator,
-			uniform_real(
-				uniform_real::min(
-					0.f
-				),
-				uniform_real::sup(
-					10.f
-				)
+	variate rng(
+		generator,
+		uniform_real(
+			uniform_real::min(
+				0.f
+			),
+			uniform_real::sup(
+				10.f
 			)
-		);
+		)
+	);
 
-		print_values(
-			rng
-		);
+	print_values(
+		rng
+	);
 	}
 
 	{
-		typedef fcppt::random::distribution::normal<
-			double
-		> normal;
+// ![random_normal]
+	typedef fcppt::random::distribution::normal<
+		double
+	> normal;
 
-		typedef fcppt::random::variate<
-			generator_type,
-			normal
-		> variate;
+	typedef fcppt::random::variate<
+		generator_type,
+		normal
+	> variate;
 
-		variate rng(
-			generator,
-			normal(
-				normal::mean(
-					0.
-				),
-				normal::sigma(
-					5.
-				)
+	variate rng(
+		generator,
+		normal(
+			normal::mean(
+				0.
+			),
+			normal::sigma(
+				5.
 			)
-		);
+		)
+	);
 
-		print_values(
-			rng
-		);
+	print_values(
+		rng
+	);
+// ![random_normal]
 	}
 }

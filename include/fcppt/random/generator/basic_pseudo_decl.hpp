@@ -18,18 +18,32 @@ namespace random
 namespace generator
 {
 
+/**
+\brief A wrapper around pseudo random number generators
+
+\ingroup fcpptrandom
+
+Wraps a pseudo random number generator. This class is not copyable, although
+pseudo random number generators are. However, copying them is discouraged.
+Also, this class uses a strong typedef for the seed and doesn't allow any
+default value for it.
+
+\tparam Generator Must be a pseudo random number generator
+*/
 template<
-	typename Wrapped
+	typename Generator
 >
 class basic_pseudo
 {
 	FCPPT_NONCOPYABLE(
 		basic_pseudo
 	);
-public:\
 
-	typedef Wrapped wrapped;
-
+	typedef Generator wrapped;
+public:
+	/**
+	\brief The result type used for drawing random numbers
+	*/
 	typedef typename wrapped::result_type result_type;
 
 	FCPPT_MAKE_STRONG_TYPEDEF(
@@ -37,19 +51,38 @@ public:\
 		seed
 	);
 
+	/**
+	\brief Constructs the generator using a seed
+
+	Constructs the generator using \a _seed
+
+	\param _seed The seed to use
+	*/
 	explicit
 	basic_pseudo(
-		seed
+		seed _seed
 	);
 
+	/**
+	\brief Destroys the generator
+	*/
 	~basic_pseudo();
 
+	/**
+	\brief Draws a random number
+	*/
 	result_type
 	operator()();
 
+	/**
+	\brief Returns the minimum element of all the possible random numbers
+	*/
 	result_type
 	min() const;
 
+	/**
+	\brief Returns the maximum element of all the possible random numbers
+	*/
 	result_type
 	max() const;
 private:

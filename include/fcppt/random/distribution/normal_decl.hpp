@@ -24,6 +24,16 @@ namespace random
 namespace distribution
 {
 
+/**
+\brief A wrapper around a normal distribution
+
+\ingroup fcpptrandom
+
+Wraps a normal distribution, removing the default parameters of the constructor
+and also using strong typedefs.
+
+\tparam FloatType Must be an floating point type
+*/
 template<
 	typename FloatType
 >
@@ -33,8 +43,14 @@ class normal
 		FloatType
 	> wrapped;
 public:
+	/**
+	\brief The float type used
+	*/
 	typedef FloatType float_type;
 
+	/**
+	\brief The result returned by drawing random numbers
+	*/
 	typedef typename wrapped::result_type result_type;
 
 	BOOST_STATIC_ASSERT(
@@ -53,9 +69,18 @@ public:
 		sigma
 	);
 
+	/**
+	\brief Constructs a normal distribution
+
+	Constructs the normal distribution from \a _mean and \a _sigma.
+
+	\param _mean The mean value
+
+	\param _sigma The sigma value
+	*/
 	normal(
-		mean,
-		sigma
+		mean _mean,
+		sigma _sigma
 	);
 
 	FCPPT_RANDOM_DISTRIBUTION_DECLARE_CALL;

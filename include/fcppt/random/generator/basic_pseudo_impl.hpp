@@ -11,11 +11,11 @@
 
 
 template<
-	typename Wrapped
+	typename Generator
 >
 inline
 fcppt::random::generator::basic_pseudo<
-	Wrapped
+	Generator
 >::basic_pseudo(
 	seed const _seed
 )
@@ -27,52 +27,52 @@ fcppt::random::generator::basic_pseudo<
 }
 
 template<
-	typename Wrapped
+	typename Generator
 >
 inline
 fcppt::random::generator::basic_pseudo<
-	Wrapped
+	Generator
 >::~basic_pseudo()
 {
 }
 
 template<
-	typename Wrapped
+	typename Generator
 >
 inline
 typename fcppt::random::generator::basic_pseudo<
-	Wrapped
+	Generator
 >::result_type
 fcppt::random::generator::basic_pseudo<
-	Wrapped
+	Generator
 >::operator()()
 {
 	return wrapped_();
 }
 
 template<
-	typename Wrapped
+	typename Generator
 >
 inline
 typename fcppt::random::generator::basic_pseudo<
-	Wrapped
+	Generator
 >::result_type
 fcppt::random::generator::basic_pseudo<
-	Wrapped
+	Generator
 >::min() const
 {
 	return wrapped_.min();
 }
 
 template<
-	typename Wrapped
+	typename Generator
 >
 inline
 typename fcppt::random::generator::basic_pseudo<
-	Wrapped
+	Generator
 >::result_type
 fcppt::random::generator::basic_pseudo<
-	Wrapped
+	Generator
 >::max() const
 {
 	return wrapped_.max();

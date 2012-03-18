@@ -8,6 +8,11 @@
 #define FCPPT_RANDOM_DISTRIBUTION_DECLARE_CALL_HPP_INCLUDED
 
 
+/**
+\brief Declares the call operator for a distribution
+
+\ingroup fcpptrandom
+*/
 #define FCPPT_RANDOM_DISTRIBUTION_DECLARE_CALL \
 template<\
 	typename Engine\

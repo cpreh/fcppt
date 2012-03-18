@@ -15,7 +15,7 @@ namespace generator
 {
 
 template<
-	typename Wrapped
+	typename Generator
 >
 class basic_pseudo;
 

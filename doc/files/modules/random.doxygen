@@ -1,0 +1,194 @@
+/**
+\defgroup fcpptrandom fcppt.random
+\ingroup \fcpptmain
+\brief Random number generators and distributions
+
+<table id="toc">
+<tr>
+<td>
+
+<ol>
+	<li>\ref random_introduction</li>
+	<li>\ref random_usage</li>
+	<li>\ref random_headers</li>
+</ol>
+
+</td>
+</tr>
+</table>
+
+\section random_introduction Introduction
+
+Random number generation support in C++03 is very poor, only consisting of
+<code>std::rand</code> to draw pseudo random numbers between <code>0</code> and
+<code>RAND_MAX</code>, and <code>std::srand</code> to seed the generator.
+Boost.Random and now C++11 both have much better facilities, which are outlined
+below.
+
+<ul>
+<li>Pseudo random number generators are classes that only produce random
+numbers. They have different tradeoffs in randomness and speed. In a way, they
+are very similar to the functions provided by C++03: They must be seeded and
+produce random numbers in a certain range.</li>
+
+<li>Distributions map random numbers drawn from a random number generator into
+a specific range, for example into the range of ints from <code>0</code> to
+<code>10</code>. They are a very important addition, because doing this by hand
+is not only hard but also very error prone.</li>
+
+</ul>
+
+fcppt wraps some of the classes provided by Boost.Random, because their
+interfaces are designed in a way that allow many mistakes to be made.
+
+<ul>
+<li>The pseudo random number generators are all copyable, although it is
+discouraged to do so. A generator should usually be shared with different
+distributions to ensure an overall diverse randomness.</li>
+
+<li>Some of the random number generators as well as some of the distributions
+have very arbitrary default parameters that shouldn't be used
+accidentally.</li>
+
+<li>Some distributions like <code>boost::uniform_real_distribution</code> also
+work with integers, while <code>boost::uniform_int_distribution</code> doesn't
+work with floats <em>by accident</em>.</li>
+
+</ul>
+
+To overcome this situation, fcppt wraps these classes, making the pseudo random
+number generators noncopyable, and removing all of the default parameters,
+replacing them by strong typedefs instead. It also does some additional type
+checks on the distributions.
+
+\section random_usage Using Random
+
+To actually draw random numbers, you have to create a (pseudo) random number
+generator first. Such a generator must be seeded, for example with a time value
+obtained from fcppt::chrono.
+
+\snippet random.cpp random_generator
+
+fcppt::random::variate is a class that combines a generator and a distribution
+into a single callable class. It takes the generator by reference and is also
+noncopyable itself. We are first going to create a variate object with a
+uniform int distribution.
+
+\snippet random.cpp random_uniform_int
+
+<code>print_values</code> is a function that draws 20 numbers and prints them.
+For example, the code could print: <code>5 7 3 7 6 8 9 5 7 9 7 10 1 6 5 6 3 2 5
+0</code>.
+
+Using different distributions works similar to using a uniform int distribution,
+for example a normal distribution can be used like this:
+
+\snippet random.cpp random_normal
+
+For example, the code could print: <code>0.441851 5.37344 -7.79767 1.89097
+-2.03191 3.17695 3.55056 -1.17422 2.86699 -7.46394 5.63758 2.65694 1.35165
+0.953806 4.9783 2.02385 4.69477 -2.96583 5.22453 4.10744</code>.
+
+\section random_headers Header files
+
+<table>
+<tr>
+<th>Header file</th>
+<th>Description</th>
+</tr>
+<tr>
+<td><code>variate_fwd.hpp</code></td>
+<td>Contains fcppt::random::variate's declaration.</td>
+</tr>
+<tr>
+<td><code>variate_decl.hpp</code></td>
+<td>Contains fcppt::random::variate's definition.</td>
+</tr>
+<tr>
+<td><code>variate_impl.hpp</code></td>
+<td>Contains the definition of fcppt::random::variate's member functions.</td>
+</tr>
+<tr>
+<td><code>variate.hpp</code></td>
+<td>Contains all of fcppt::random::variate</td>
+</tr>
+<tr>
+<td><code>distribution/normal_fwd.hpp</code></td>
+<td>Contains fcppt::random::distribution::normal's declaration.</td>
+</tr>
+<tr>
+<td><code>distribution/normal_decl.hpp</code></td>
+<td>Contains fcppt::random::distribution::mindstd_rand's definition.</td>
+</tr>
+<tr>
+<td><code>distribution/normal_impl.hpp</code></td>
+<td>Contains the definition of fcppt::random::distribution::normal's member functions.</td>
+</tr>
+<tr>
+<td><code>distribution/normal.hpp</code></td>
+<td>Contains all of fcppt::random::distribution::normal</td>
+</tr>
+<tr>
+<td><code>distribution/uniform_int_fwd.hpp</code></td>
+<td>Contains fcppt::random::distribution::uniform_int's declaration.</td>
+</tr>
+<tr>
+<td><code>distribution/uniform_int_decl.hpp</code></td>
+<td>Contains fcppt::random::distribution::mindstd_rand's definition.</td>
+</tr>
+<tr>
+<td><code>distribution/uniform_int_impl.hpp</code></td>
+<td>Contains the definition of fcppt::random::distribution::uniform_int's member functions.</td>
+</tr>
+<tr>
+<td><code>distribution/uniform_int.hpp</code></td>
+<td>Contains all of fcppt::random::distribution::uniform_int</td>
+</tr>
+<tr>
+<td><code>distribution/uniform_real_fwd.hpp</code></td>
+<td>Contains fcppt::random::distribution::uniform_real's declaration.</td>
+</tr>
+<tr>
+<td><code>distribution/uniform_real_decl.hpp</code></td>
+<td>Contains fcppt::random::distribution::mindstd_rand's definition.</td>
+</tr>
+<tr>
+<td><code>distribution/uniform_real_impl.hpp</code></td>
+<td>Contains the definition of fcppt::random::distribution::uniform_real's member functions.</td>
+</tr>
+<tr>
+<td><code>distribution/uniform_real.hpp</code></td>
+<td>Contains all of fcppt::random::distribution::uniform_real</td>
+</tr>
+<tr>
+<td><code>generator/minstd_rand_fwd.hpp</code></td>
+<td>Contains fcppt::random::generator::minstd_rand's declaration.</td>
+</tr>
+<tr>
+<td><code>generator/minstd_rand_decl.hpp</code></td>
+<td>Contains fcppt::random::generator::mindstd_rand's definition.</td>
+</tr>
+<tr>
+<td><code>generator/minstd_rand_impl.hpp</code></td>
+<td>Contains the definition of fcppt::random::generator::minstd_rand's member functions.</td>
+</tr>
+<tr>
+<td><code>generator/minstd_rand.hpp</code></td>
+<td>Contains all of fcppt::random::generator::minstd_rand</td>
+</tr>
+<tr>
+<td><code>generator/seed_from_chrono.hpp</code></td>
+<td>Contains fcppt::random::generator::seed_from_chrono</td>
+</tr>
+
+</table>
+*/
+namespace fcppt
+{
+/// Main namespace for random, also containing the variate generator
+namespace random {}
+/// The namespace for all distributions
+namespace distribution {}
+/// The namespace for all generators and helper functions
+namespace generator {}
+}

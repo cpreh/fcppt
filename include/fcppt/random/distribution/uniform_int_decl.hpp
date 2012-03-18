@@ -24,6 +24,16 @@ namespace random
 namespace distribution
 {
 
+/**
+\brief A wrapper around a uniform int distribution
+
+\ingroup fcpptrandom
+
+Wraps a uniform int distribution, removing the default parameters of the
+constructor and also using strong typedefs.
+
+\tparam IntType Must be an integer type
+*/
 template<
 	typename IntType
 >
@@ -33,8 +43,14 @@ class uniform_int
 		IntType
 	> wrapped;
 public:
+	/**
+	\brief The int type used
+	*/
 	typedef IntType int_type;
 
+	/**
+	\brief The result returned by drawing random numbers
+	*/
 	typedef typename wrapped::result_type result_type;
 
 	BOOST_STATIC_ASSERT(
@@ -53,9 +69,18 @@ public:
 		max
 	);
 
+	/**
+	\brief Constructs a uniform int distribution
+
+	Constructs the uniform int distribution from \a _min and \a _max.
+
+	\param _min The minimum value this distribution can produce
+
+	\param _max The maximum value this distribution can produce
+	*/
 	uniform_int(
-		min,
-		max
+		min _min,
+		max _max
 	);
 
 	FCPPT_RANDOM_DISTRIBUTION_DECLARE_CALL;

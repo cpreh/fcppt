@@ -23,6 +23,18 @@ namespace random
 namespace generator
 {
 
+/**
+\brief Creates a seed from a chrono clock
+
+\ingroup fcpptrandom
+
+Creates a seed of type \a Seed from a chrono clock.
+
+\tparam The seed type of a pseudo random number generator. Its value_type must
+be an integral type.
+
+\return The seed
+*/
 template<
 	typename Seed
 >
