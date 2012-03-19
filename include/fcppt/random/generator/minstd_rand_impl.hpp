@@ -4,13 +4,11 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_MATH_SPHERE_OBJECT_HPP_INCLUDED
-#define FCPPT_MATH_SPHERE_OBJECT_HPP_INCLUDED
+#ifndef FCPPT_RANDOM_GENERATOR_MINSTD_RAND_IMPL_HPP_INCLUDED
+#define FCPPT_RANDOM_GENERATOR_MINSTD_RAND_IMPL_HPP_INCLUDED
 
-#include <fcppt/math/sphere/object_decl.hpp>
-#include <fcppt/math/sphere/object_fwd.hpp>
-#include <fcppt/math/sphere/object_impl.hpp>
+#include <fcppt/random/generator/basic_pseudo_impl.hpp>
+#include <fcppt/random/generator/minstd_rand_fwd.hpp>
 
 
 #endif
-

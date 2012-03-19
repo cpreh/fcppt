@@ -165,6 +165,22 @@ For example, the code could print: <code>0.441851 5.37344 -7.79767 1.89097
 <td>Contains all of fcppt::random::distribution::uniform_real</td>
 </tr>
 <tr>
+<td><code>generator/basic_pseudo_fwd.hpp</code></td>
+<td>Contains fcppt::random::generator::basic_pseudo's declaration.</td>
+</tr>
+<tr>
+<td><code>generator/basic_pseudo_decl.hpp</code></td>
+<td>Contains fcppt::random::generator::mindstd_rand's definition.</td>
+</tr>
+<tr>
+<td><code>generator/basic_pseudo_impl.hpp</code></td>
+<td>Contains the definition of fcppt::random::generator::basic_pseudo's member functions.</td>
+</tr>
+<tr>
+<td><code>generator/basic_pseudo.hpp</code></td>
+<td>Contains all of fcppt::random::generator::basic_pseudo</td>
+</tr>
+<tr>
 <td><code>generator/minstd_rand_fwd.hpp</code></td>
 <td>Contains fcppt::random::generator::minstd_rand's declaration.</td>
 </tr>

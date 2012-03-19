@@ -714,7 +714,9 @@ set(
 	include/fcppt/random/generator/basic_pseudo_fwd.hpp
 	include/fcppt/random/generator/basic_pseudo_impl.hpp
 	include/fcppt/random/generator/minstd_rand.hpp
+	include/fcppt/random/generator/minstd_rand_decl.hpp
 	include/fcppt/random/generator/minstd_rand_fwd.hpp
+	include/fcppt/random/generator/minstd_rand_impl.hpp
 	include/fcppt/random/generator/seed_from_chrono.hpp
 	include/fcppt/random/variate.hpp
 	include/fcppt/random/variate_decl.hpp
