@@ -1,6 +1,6 @@
 /**
 \defgroup fcpptrandom fcppt.random
-\ingroup \fcpptmain
+\ingroup fcpptmain
 \brief Random number generators and distributions
 
 <table id="toc">
