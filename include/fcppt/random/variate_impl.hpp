@@ -7,6 +7,9 @@
 #ifndef FCPPT_RANDOM_VARIATE_IMPL_HPP_INCLUDED
 #define FCPPT_RANDOM_VARIATE_IMPL_HPP_INCLUDED
 
+#include <fcppt/random/variate_decl.hpp>
+
+
 template<
 	typename Generator,
 	typename Distribution
