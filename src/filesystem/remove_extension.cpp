@@ -5,7 +5,6 @@
 
 
 #include <fcppt/filesystem/remove_extension.hpp>
-#include <fcppt/filesystem/remove_filename.hpp>
 #include <fcppt/filesystem/stem.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/filesystem/path.hpp>
@@ -18,9 +17,7 @@ fcppt::filesystem::remove_extension(
 )
 {
 	return
-		fcppt::filesystem::remove_filename(
-			_path
-		)
+		_path.parent_path()
 		/
 		fcppt::filesystem::stem(
 			_path

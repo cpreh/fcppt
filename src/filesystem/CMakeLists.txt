@@ -12,7 +12,6 @@ set(
 	include/fcppt/filesystem/is_executable.hpp
 	include/fcppt/filesystem/path_to_string.hpp
 	include/fcppt/filesystem/remove_extension.hpp
-	include/fcppt/filesystem/remove_filename.hpp
 	include/fcppt/filesystem/replace_extension.hpp
 	include/fcppt/filesystem/stem.hpp
 	src/filesystem/create_directories_recursive_exn.cpp
@@ -23,7 +22,6 @@ set(
 	src/filesystem/is_executable.cpp
 	src/filesystem/path_to_string.cpp
 	src/filesystem/remove_extension.cpp
-	src/filesystem/remove_filename.cpp
 	src/filesystem/replace_extension.cpp
 	src/filesystem/stem.cpp
 )
