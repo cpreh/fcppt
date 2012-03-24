@@ -243,6 +243,12 @@ if(
 	)
 endif()
 
+option(
+	ENABLE_EXAMPLES
+	"Build the examples"
+	ON
+)
+
 if(
 	ENABLE_EXAMPLES
 )
@@ -558,12 +564,6 @@ add_subdirectory(
 
 add_subdirectory(
 	src/thread
-)
-
-option(
-	ENABLE_EXAMPLES
-	"Build the examples"
-	ON
 )
 
 if(
