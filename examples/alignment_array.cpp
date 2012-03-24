@@ -5,7 +5,9 @@
 
 
 //! [alignment_array]
+#include <fcppt/text.hpp>
 #include <fcppt/alignment/array.hpp>
+#include <fcppt/io/cout.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/type_traits/alignment_of.hpp>
 #include <new>
@@ -45,6 +47,10 @@ main()
 
 	// Now placement new can be used
 	mystruct *ptr = new (storage.data()) mystruct();
+
+	fcppt::io::cout()
+		<< ptr->i
+		<< FCPPT_TEXT('\n');
 
 	// Don't forget to call its destructor manually
 	ptr->~mystruct();

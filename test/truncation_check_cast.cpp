@@ -30,7 +30,7 @@ BOOST_AUTO_TEST_CASE(
 	truncation_check_cast
 )
 {
-#if SHORT_MAX < LONG_MAX
+#if SHRT_MAX < LONG_MAX
 	BOOST_CHECK_EXCEPTION(
 		fcppt::truncation_check_cast<
 			short
@@ -77,7 +77,7 @@ BOOST_AUTO_TEST_CASE(
 		check_exception
 	);
 
-#if USHORT_MAX < ULONG_MAX
+#if USHRT_MAX < ULONG_MAX
 	BOOST_CHECK_EXCEPTION(
 		fcppt::truncation_check_cast<
 			unsigned short
