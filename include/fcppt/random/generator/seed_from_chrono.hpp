@@ -7,10 +7,8 @@
 #ifndef FCPPT_RANDOM_GENERATOR_SEED_FROM_CHRONO_HPP_INCLUDED
 #define FCPPT_RANDOM_GENERATOR_SEED_FROM_CHRONO_HPP_INCLUDED
 
-#include <fcppt/chrono/duration_impl.hpp>
-#include <fcppt/chrono/high_resolution_clock.hpp>
-#include <fcppt/chrono/time_point_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
+#include <boost/chrono/system_clocks.hpp>
 #include <boost/type_traits/is_integral.hpp>
 #include <boost/utility/enable_if.hpp>
 #include <fcppt/config/external_end.hpp>
@@ -33,6 +31,8 @@ Creates a seed of type \a Seed from a chrono clock.
 \tparam The seed type of a pseudo random number generator. Its value_type must
 be an integral type.
 
+\note If you use this function, you must link to boost.chrono
+
 \return The seed
 */
 template<
@@ -51,7 +51,7 @@ seed_from_chrono()
 			static_cast<
 				typename Seed::value_type
 			>(
-				fcppt::chrono::high_resolution_clock::now().time_since_epoch().count()
+				boost::chrono::high_resolution_clock::now().time_since_epoch().count()
 			)
 		);
 }

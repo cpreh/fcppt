@@ -35,7 +35,6 @@ update_cmake_file \
 	include/fcppt/mpl \
 	include/fcppt/preprocessor \
 	include/fcppt/random \
-	include/fcppt/ratio \
 	include/fcppt/signal \
 	include/fcppt/spirit_traits \
 	include/fcppt/time \
@@ -46,7 +45,6 @@ update_cmake_file \
 	src \
 	-r \
 	src/backtrace \
-	src/chrono \
 	src/config \
 	src/endianness \
 	src/error \

@@ -5,16 +5,16 @@
 
 
 //[chronoasio
-#include <fcppt/chrono/duration_impl.hpp>
-#include <fcppt/chrono/seconds.hpp>
 #include <fcppt/chrono/asio/deadline_timer.hpp>
 #include <fcppt/chrono/asio/expires_from_now_any.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/asio/io_service.hpp>
+#include <boost/chrono/duration.hpp>
 #include <fcppt/config/external_end.hpp>
 
 
-int main()
+int
+main()
 {
 	boost::asio::io_service io_service;
 
@@ -26,7 +26,7 @@ int main()
 	// use this helper function to let the timer fire in one second
 	fcppt::chrono::asio::expires_from_now_any(
 		timer,
-		fcppt::chrono::seconds(1)
+		boost::chrono::seconds(1)
 	);
 
 	io_service.run();

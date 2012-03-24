@@ -6,7 +6,6 @@
 
 #include <fcppt/time/sleep.hpp>
 #include <fcppt/time/sleep_interrupted.hpp>
-#include <fcppt/chrono/duration_impl.hpp>
 #include <fcppt/truncation_check_cast.hpp>
 #include <fcppt/config/platform.hpp>
 #if defined(FCPPT_CONFIG_WINDOWS_PLATFORM)
@@ -22,7 +21,7 @@
 
 void
 fcppt::time::sleep(
-	time::sleep_duration const &_duration
+	fcppt::time::sleep_duration const &_duration
 )
 {
 #if defined(FCPPT_CONFIG_WINDOWS_PLATFORM)
@@ -37,7 +36,7 @@ fcppt::time::sleep(
 		)
 		!= 0
 	)
-		throw time::sleep_interrupted();
+		throw fcppt::time::sleep_interrupted();
 #elif defined(FCPPT_CONFIG_POSIX_PLATFORM)
 	timespec const req =
 	{
@@ -62,7 +61,7 @@ fcppt::time::sleep(
 		)
 		!= 0
 	)
-		throw time::sleep_interrupted();
+		throw fcppt::time::sleep_interrupted();
 #else
 #error "Don't know which sleep to call!"
 #endif

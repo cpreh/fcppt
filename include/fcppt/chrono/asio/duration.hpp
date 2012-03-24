@@ -9,6 +9,7 @@
 
 #include <fcppt/chrono/asio/clock.hpp>
 
+
 namespace fcppt
 {
 namespace chrono
@@ -16,7 +17,7 @@ namespace chrono
 namespace asio
 {
 
-typedef clock::duration duration;
+typedef fcppt::chrono::asio::clock::duration duration;
 
 }
 }

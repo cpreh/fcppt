@@ -7,7 +7,10 @@
 #ifndef FCPPT_CHRONO_ASIO_CLOCK_HPP_INCLUDED
 #define FCPPT_CHRONO_ASIO_CLOCK_HPP_INCLUDED
 
-#include <fcppt/chrono/steady_clock.hpp>
+#include <fcppt/config/external_begin.hpp>
+#include <boost/chrono/system_clocks.hpp>
+#include <fcppt/config/external_end.hpp>
+
 
 namespace fcppt
 {
@@ -16,7 +19,7 @@ namespace chrono
 namespace asio
 {
 
-typedef fcppt::chrono::steady_clock clock;
+typedef boost::chrono::steady_clock clock;
 
 }
 }

@@ -4,9 +4,9 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/chrono/duration_impl.hpp>
-#include <fcppt/chrono/convert/to_boost_duration.hpp>
+#include <fcppt/src/thread/to_boost_duration.hpp>
 #include <fcppt/thread/sleep.hpp>
+#include <fcppt/thread/sleep_duration.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/thread/thread.hpp>
 #include <fcppt/config/external_end.hpp>
@@ -14,11 +14,11 @@
 
 void
 fcppt::thread::sleep(
-	thread::sleep_duration const &_duration
+	fcppt::thread::sleep_duration const &_duration
 )
 {
 	boost::this_thread::sleep(
-		chrono::convert::to_boost_duration(
+		fcppt::thread::to_boost_duration(
 			_duration
 		)
 	);

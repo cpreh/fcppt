@@ -8,13 +8,10 @@
 #define FCPPT_TIME_DETAIL_SLEEP_DURATION_HPP_INCLUDED
 
 #include <fcppt/config/platform.hpp>
-#if defined(FCPPT_CONFIG_WINDOWS_PLATFORM)
-#include <fcppt/chrono/milliseconds.hpp>
-#elif defined(FCPPT_CONFIG_POSIX_PLATFORM)
-#include <fcppt/chrono/nanoseconds.hpp>
-#else
-#error "Don't know what to include for the sleep_duration!"
-#endif
+#include <fcppt/config/external_begin.hpp>
+#include <boost/chrono/duration.hpp>
+#include <fcppt/config/external_end.hpp>
+
 
 namespace fcppt
 {
@@ -24,9 +21,9 @@ namespace detail
 {
 
 #if defined(FCPPT_CONFIG_WINDOWS_PLATFORM)
-typedef fcppt::chrono::milliseconds sleep_duration;
+typedef boost::chrono::milliseconds sleep_duration;
 #elif defined(FCPPT_CONFIG_POSIX_PLATFORM)
-typedef fcppt::chrono::nanoseconds sleep_duration;
+typedef boost::chrono::nanoseconds sleep_duration;
 #else
 #error "Don't know what the sleep duration should be!"
 #endif

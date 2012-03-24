@@ -85,47 +85,6 @@ set(
 	include/fcppt/chrono/asio/time_traits.hpp
 	include/fcppt/chrono/asio/time_traits_decl.hpp
 	include/fcppt/chrono/asio/time_traits_impl.hpp
-	include/fcppt/chrono/clock_failure.hpp
-	include/fcppt/chrono/common_type.hpp
-	include/fcppt/chrono/convert/to_boost_duration.hpp
-	include/fcppt/chrono/days.hpp
-	include/fcppt/chrono/detail/common_type_arithmetic.hpp
-	include/fcppt/chrono/detail/duration_cast.hpp
-	include/fcppt/chrono/duration.hpp
-	include/fcppt/chrono/duration_arithmetic.hpp
-	include/fcppt/chrono/duration_cast.hpp
-	include/fcppt/chrono/duration_comparison.hpp
-	include/fcppt/chrono/duration_decl.hpp
-	include/fcppt/chrono/duration_fwd.hpp
-	include/fcppt/chrono/duration_impl.hpp
-	include/fcppt/chrono/duration_output.hpp
-	include/fcppt/chrono/duration_values.hpp
-	include/fcppt/chrono/exception.hpp
-	include/fcppt/chrono/high_resolution_clock.hpp
-	include/fcppt/chrono/high_resolution_clock_fwd.hpp
-	include/fcppt/chrono/hours.hpp
-	include/fcppt/chrono/impl/clock_failure.hpp
-	include/fcppt/chrono/impl/exception.hpp
-	include/fcppt/chrono/is_duration.hpp
-	include/fcppt/chrono/microseconds.hpp
-	include/fcppt/chrono/milliseconds.hpp
-	include/fcppt/chrono/minutes.hpp
-	include/fcppt/chrono/nanoseconds.hpp
-	include/fcppt/chrono/rep.hpp
-	include/fcppt/chrono/seconds.hpp
-	include/fcppt/chrono/steady_clock.hpp
-	include/fcppt/chrono/steady_clock_fwd.hpp
-	include/fcppt/chrono/system_clock.hpp
-	include/fcppt/chrono/system_clock_fwd.hpp
-	include/fcppt/chrono/time_point.hpp
-	include/fcppt/chrono/time_point_arithmetic.hpp
-	include/fcppt/chrono/time_point_cast.hpp
-	include/fcppt/chrono/time_point_comparison.hpp
-	include/fcppt/chrono/time_point_decl.hpp
-	include/fcppt/chrono/time_point_fwd.hpp
-	include/fcppt/chrono/time_point_impl.hpp
-	include/fcppt/chrono/time_point_output.hpp
-	include/fcppt/chrono/treat_as_floating_point.hpp
 	include/fcppt/class_symbol.hpp
 	include/fcppt/com_deleter.hpp
 	include/fcppt/config/compiler.hpp
@@ -722,59 +681,6 @@ set(
 	include/fcppt/random/variate_decl.hpp
 	include/fcppt/random/variate_fwd.hpp
 	include/fcppt/random/variate_impl.hpp
-	include/fcppt/ratio/add.hpp
-	include/fcppt/ratio/add_fwd.hpp
-	include/fcppt/ratio/atto.hpp
-	include/fcppt/ratio/centi.hpp
-	include/fcppt/ratio/deca.hpp
-	include/fcppt/ratio/deci.hpp
-	include/fcppt/ratio/detail/gcd.hpp
-	include/fcppt/ratio/detail/less.hpp
-	include/fcppt/ratio/detail/less1.hpp
-	include/fcppt/ratio/detail/less2.hpp
-	include/fcppt/ratio/detail/less3.hpp
-	include/fcppt/ratio/detail/ll_add.hpp
-	include/fcppt/ratio/detail/ll_mul.hpp
-	include/fcppt/ratio/detail/ll_sub.hpp
-	include/fcppt/ratio/detail/min_c.hpp
-	include/fcppt/ratio/detail/static_abs.hpp
-	include/fcppt/ratio/detail/static_gcd.hpp
-	include/fcppt/ratio/detail/static_lcm.hpp
-	include/fcppt/ratio/detail/static_sign.hpp
-	include/fcppt/ratio/divide.hpp
-	include/fcppt/ratio/divide_fwd.hpp
-	include/fcppt/ratio/equal.hpp
-	include/fcppt/ratio/equal_fwd.hpp
-	include/fcppt/ratio/exa.hpp
-	include/fcppt/ratio/femto.hpp
-	include/fcppt/ratio/giga.hpp
-	include/fcppt/ratio/greater.hpp
-	include/fcppt/ratio/greater_equal.hpp
-	include/fcppt/ratio/greater_equal_fwd.hpp
-	include/fcppt/ratio/greater_fwd.hpp
-	include/fcppt/ratio/hecto.hpp
-	include/fcppt/ratio/int_type.hpp
-	include/fcppt/ratio/is_object.hpp
-	include/fcppt/ratio/kilo.hpp
-	include/fcppt/ratio/less.hpp
-	include/fcppt/ratio/less_equal.hpp
-	include/fcppt/ratio/less_equal_fwd.hpp
-	include/fcppt/ratio/less_fwd.hpp
-	include/fcppt/ratio/mega.hpp
-	include/fcppt/ratio/micro.hpp
-	include/fcppt/ratio/milli.hpp
-	include/fcppt/ratio/multiply.hpp
-	include/fcppt/ratio/multiply_fwd.hpp
-	include/fcppt/ratio/nano.hpp
-	include/fcppt/ratio/not_equal.hpp
-	include/fcppt/ratio/not_equal_fwd.hpp
-	include/fcppt/ratio/object.hpp
-	include/fcppt/ratio/object_fwd.hpp
-	include/fcppt/ratio/peta.hpp
-	include/fcppt/ratio/pico.hpp
-	include/fcppt/ratio/substract.hpp
-	include/fcppt/ratio/substract_fwd.hpp
-	include/fcppt/ratio/tera.hpp
 	include/fcppt/ref.hpp
 	include/fcppt/reference_wrapper.hpp
 	include/fcppt/safe_bool.hpp
@@ -952,11 +858,6 @@ set(
 	include/fcppt/workarounds.hpp
 	src/backtrace/current_stack_frame.cpp
 	src/backtrace/print_current_stack_frame.cpp
-	src/chrono/high_resolution_clock.cpp
-	src/chrono/mach_timebase.cpp
-	src/chrono/query_performance_frequency.cpp
-	src/chrono/steady_clock.cpp
-	src/chrono/system_clock.cpp
 	src/endianness/host_format.cpp
 	src/endianness/is_big_endian.cpp
 	src/endianness/is_little_endian.cpp
@@ -967,11 +868,6 @@ set(
 	src/from_std_string_locale.cpp
 	src/from_std_wstring.cpp
 	src/from_std_wstring_locale.cpp
-	src/include/fcppt/src/chrono/clock_gettime_impl.hpp
-	src/include/fcppt/src/chrono/mach_time_impl.hpp
-	src/include/fcppt/src/chrono/mach_timebase.hpp
-	src/include/fcppt/src/chrono/performance_counter_time.hpp
-	src/include/fcppt/src/chrono/query_performance_frequency.hpp
 	src/include/fcppt/src/codecvt.hpp
 	src/include/fcppt/src/codecvt_type.hpp
 	src/include/fcppt/src/log/find_inner_node.hpp

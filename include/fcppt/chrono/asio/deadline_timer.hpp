@@ -7,12 +7,12 @@
 #ifndef FCPPT_CHRONO_ASIO_DEADLINE_TIMER_HPP_INCLUDED
 #define FCPPT_CHRONO_ASIO_DEADLINE_TIMER_HPP_INCLUDED
 
-#include <fcppt/chrono/duration_impl.hpp>
-#include <fcppt/chrono/time_point_impl.hpp>
 #include <fcppt/chrono/asio/tag.hpp>
 #include <fcppt/chrono/asio/time_traits.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/asio/basic_deadline_timer.hpp>
+#include <boost/chrono/duration.hpp>
+#include <boost/chrono/time_point.hpp>
 #include <fcppt/config/external_end.hpp>
 
 

@@ -7,9 +7,6 @@
 #ifndef FCPPT_CONFIG_HPP_INCLUDED
 #define FCPPT_CONFIG_HPP_INCLUDED
 
-// general C++
-#cmakedefine FCPPT_HAVE_LONG_LONG
-
 // string config
 #cmakedefine FCPPT_NARROW_STRING
 

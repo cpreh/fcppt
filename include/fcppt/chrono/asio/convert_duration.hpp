@@ -7,9 +7,10 @@
 #ifndef FCPPT_CHRONO_ASIO_CONVERT_DURATION_HPP_INCLUDED
 #define FCPPT_CHRONO_ASIO_CONVERT_DURATION_HPP_INCLUDED
 
-#include <fcppt/chrono/duration_cast.hpp>
-#include <fcppt/chrono/duration_impl.hpp>
 #include <fcppt/chrono/asio/duration.hpp>
+#include <fcppt/config/external_begin.hpp>
+#include <boost/chrono/duration.hpp>
+#include <fcppt/config/external_end.hpp>
 
 
 namespace fcppt
@@ -25,14 +26,14 @@ template<
 >
 fcppt::chrono::asio::duration const
 convert_duration(
-	fcppt::chrono::duration<
+	boost::chrono::duration<
 		Rep,
 		Period
 	> const &_duration
 )
 {
 	return
-		fcppt::chrono::duration_cast<
+		boost::chrono::duration_cast<
 			fcppt::chrono::asio::duration
 		>(
 			_duration

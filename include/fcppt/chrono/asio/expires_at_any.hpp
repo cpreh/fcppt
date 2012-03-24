@@ -7,10 +7,12 @@
 #ifndef FCPPT_CHRONO_ASIO_EXPIRES_AT_ANY_HPP_INCLUDED
 #define FCPPT_CHRONO_ASIO_EXPIRES_AT_ANY_HPP_INCLUDED
 
-#include <fcppt/chrono/time_point_fwd.hpp>
 #include <fcppt/chrono/asio/clock.hpp>
 #include <fcppt/chrono/asio/convert_time_point.hpp>
 #include <fcppt/chrono/asio/deadline_timer.hpp>
+#include <fcppt/config/external_begin.hpp>
+#include <boost/chrono/time_point.hpp>
+#include <fcppt/config/external_end.hpp>
 
 
 namespace fcppt
@@ -26,7 +28,7 @@ template<
 void
 expires_at_any(
 	fcppt::chrono::asio::deadline_timer &_timer,
-	fcppt::chrono::time_point<
+	boost::chrono::time_point<
 		fcppt::chrono::asio::clock,
 		Duration
 	> const &_time_point

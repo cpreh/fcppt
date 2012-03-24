@@ -232,10 +232,24 @@ set(
 	"filesystem;system;thread"
 )
 
-if(${SIGNALS_BENCHMARK_BACKEND} STREQUAL "boostsignals")
+if(
+	${SIGNALS_BENCHMARK_BACKEND}
+	STREQUAL
+	"boostsignals"
+)
 	set(
 		NEEDED_BOOST_LIBS
-		"${NEEDED_BOOST_LIBS};signals")
+		"${NEEDED_BOOST_LIBS};signals"
+	)
+endif()
+
+if(
+	ENABLE_EXAMPLES
+)
+	set(
+		NEEDED_BOOST_LIBS
+		"${NEEDED_BOOST_LIBS};chrono"
+	)
 endif()
 
 option(
@@ -254,7 +268,7 @@ if(
 endif()
 
 find_package(
-	Boost 1.44.0 REQUIRED COMPONENTS
+	Boost 1.47.0 REQUIRED COMPONENTS
 	"${NEEDED_BOOST_LIBS}"
 )
 
@@ -280,32 +294,6 @@ set(
 	CMAKE_REQUIRED_INCLUDES
 	${CMAKE_SOURCE_DIR}/include
 	${Boost_INCLUDE_DIRS}
-)
-
-check_cxx_source_compiles(
-	"#include <boost/cstdint.hpp>
-	int main()
-	{
-	   boost::int_least64_t test;
-	}"
-	FCPPT_HAVE_ATLEAST_INT64
-)
-
-if(
-	NOT FCPPT_HAVE_ATLEAST_INT64
-)
-	message(
-		FATAL_ERROR
-		"fcppt::chrono needs at least a 64 bit type to work properly!"
-	)
-endif()
-
-check_cxx_source_compiles(
-	"int main()
-	{
-		long long test = 1LL;
-	}"
-	FCPPT_HAVE_LONG_LONG
 )
 
 check_cxx_source_compiles(

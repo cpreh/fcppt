@@ -4,37 +4,31 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_CHRONO_CONVERT_TO_BOOST_DURATION_HPP_INCLUDED
-#define FCPPT_CHRONO_CONVERT_TO_BOOST_DURATION_HPP_INCLUDED
+#ifndef FCPPT_SRC_THREAD_TO_BOOST_DURATION_HPP_INCLUDED
+#define FCPPT_SRC_THREAD_TO_BOOST_DURATION_HPP_INCLUDED
 
-#include <fcppt/chrono/duration_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/static_assert.hpp>
+#include <boost/chrono/duration.hpp>
 #include <boost/date_time/posix_time/posix_time_config.hpp>
 #include <fcppt/config/external_end.hpp>
 
 
 namespace fcppt
 {
-namespace chrono
-{
-namespace convert
+namespace thread
 {
 
-/// Converts durations to boost::date_time
-/**
- * @remark The duration to convert must have period::num==1!
-*/
 template<
 	typename Rep,
 	typename Period
 >
 boost::posix_time::time_duration const
 to_boost_duration(
-	duration<
+	boost::chrono::duration<
 		Rep,
 		Period
-	> const &duration_
+	> const &_duration
 )
 {
 	BOOST_STATIC_ASSERT(
@@ -46,11 +40,10 @@ to_boost_duration(
 			boost::posix_time::time_duration,
 			Period::den
 		>(
-			duration_.count()
+			_duration.count()
 		);
 }
 
-}
 }
 }
 

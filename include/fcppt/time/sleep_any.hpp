@@ -7,10 +7,11 @@
 #ifndef FCPPT_TIME_SLEEP_ANY_HPP_INCLUDED
 #define FCPPT_TIME_SLEEP_ANY_HPP_INCLUDED
 
-#include <fcppt/chrono/duration_cast.hpp>
-#include <fcppt/chrono/duration_impl.hpp>
 #include <fcppt/time/sleep.hpp>
 #include <fcppt/time/sleep_duration.hpp>
+#include <fcppt/config/external_begin.hpp>
+#include <boost/chrono/duration.hpp>
+#include <fcppt/config/external_end.hpp>
 
 
 namespace fcppt
@@ -31,9 +32,9 @@ sleep_any(
 	Duration const &_duration
 )
 {
-	time::sleep(
-		chrono::duration_cast<
-			time::sleep_duration
+	fcppt::time::sleep(
+		boost::chrono::duration_cast<
+			fcppt::time::sleep_duration
 		>(
 			_duration
 		)

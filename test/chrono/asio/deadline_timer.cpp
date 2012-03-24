@@ -4,12 +4,12 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/chrono/milliseconds.hpp>
 #include <fcppt/chrono/asio/deadline_timer.hpp>
 #include <fcppt/chrono/asio/expires_from_now_any.hpp>
 #include <fcppt/tr1/functional.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/asio/io_service.hpp>
+#include <boost/chrono/duration.hpp>
 #include <boost/test/unit_test.hpp>
 #include <fcppt/config/external_end.hpp>
 
@@ -45,7 +45,7 @@ BOOST_AUTO_TEST_CASE(
 
 	fcppt::chrono::asio::expires_from_now_any(
 		deadline_timer,
-		fcppt::chrono::milliseconds(
+		boost::chrono::milliseconds(
 			10
 		)
 	);

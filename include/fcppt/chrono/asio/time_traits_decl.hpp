@@ -14,6 +14,7 @@
 #include <boost/date_time/posix_time/posix_time_duration.hpp>
 #include <fcppt/config/external_end.hpp>
 
+
 namespace boost
 {
 namespace asio
@@ -26,9 +27,9 @@ struct time_traits<
 {
 	typedef fcppt::chrono::asio::clock clock;
 
-	typedef clock::time_point time_type;
+	typedef time_traits::clock::time_point time_type;
 
-	typedef clock::duration duration_type;
+	typedef time_traits::clock::duration duration_type;
 
 	static time_type const
 	now();
