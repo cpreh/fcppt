@@ -11,9 +11,7 @@
 #include <fcppt/variant/size_type.hpp>
 #include <fcppt/variant/detail/apply.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/mpl/begin.hpp>
 #include <boost/mpl/empty.hpp>
-#include <boost/mpl/end.hpp>
 #include <boost/mpl/integral_c.hpp>
 #include <fcppt/config/external_end.hpp>
 
@@ -38,22 +36,15 @@ apply_unary_internal(
 	typedef typename Variant::types types;
 
 	return
-		detail::apply<
+		fcppt::variant::detail::apply<
 			boost::mpl::integral_c<
-				size_type,
+				fcppt::variant::size_type,
 				0
 			>,
 			boost::mpl::empty<
 				types
 			>::value
-		>:: template execute<
-			typename boost::mpl::begin<
-				types
-			>::type,
-			typename boost::mpl::end<
-				types
-			>::type
-		>(
+		>::execute(
 			_op,
 			_obj
 		);
@@ -72,7 +63,7 @@ apply_unary_internal(
 )
 {
 	return
-		detail::apply_unary_internal(
+		fcppt::variant::detail::apply_unary_internal(
 			_op,
 			_obj.get()
 		);
