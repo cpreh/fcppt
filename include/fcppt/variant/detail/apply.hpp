@@ -8,10 +8,8 @@
 #define FCPPT_VARIANT_DETAIL_APPLY_HPP_INCLUDED
 
 #include <fcppt/config/external_begin.hpp>
-#include <boost/mpl/at.hpp>
-#include <boost/mpl/equal_to.hpp>
+#include <boost/mpl/deref.hpp>
 #include <boost/mpl/next.hpp>
-#include <boost/mpl/size.hpp>
 #include <boost/type_traits/is_same.hpp>
 #include <exception>
 #include <fcppt/config/external_end.hpp>
@@ -25,20 +23,19 @@ namespace detail
 {
 
 template<
-	typename Counter,
 	bool Done
 >
 struct apply;
 
-template<
-	typename Counter
->
+template<>
 struct apply<
-	Counter,
 	true
 >
 {
 	template<
+		typename Counter,
+		typename Iterator,
+		typename EndIterator,
 		typename Operation,
 		typename Variant
 	>
@@ -53,15 +50,15 @@ struct apply<
 	}
 };
 
-template<
-	typename Counter
->
+template<>
 struct apply<
-	Counter,
 	false
 >
 {
 	template<
+		typename Counter,
+		typename Iterator,
+		typename EndIterator,
 		typename Operation,
 		typename Variant
 	>
@@ -71,33 +68,33 @@ struct apply<
 		Variant &_obj
 	)
 	{
-		typedef typename Variant::types types;
-
 		typedef typename boost::mpl::next<
-			Counter
-		>::type next_counter;
+			Iterator
+		>::type next_iterator;
 
 		return
 			Counter::value == _obj.type_index()
 			?
 				_op(
 					_obj. template get_raw<
-						typename boost::mpl::at<
-							types,
-							Counter
+						typename boost::mpl::deref<
+							Iterator
 						>::type
 					>()
 				)
 			:
 				fcppt::variant::detail::apply<
-					next_counter,
-					boost::mpl::equal_to<
-						next_counter,
-						boost::mpl::size<
-							types
-						>
+					boost::is_same<
+						next_iterator,
+						EndIterator
 					>::value
-				>::execute(
+				>:: template execute<
+					typename boost::mpl::next<
+						Counter
+					>::type,
+					next_iterator,
+					EndIterator
+				>(
 					_op,
 					_obj
 				);
