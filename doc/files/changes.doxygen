@@ -233,6 +233,10 @@ into their own libraries, namely <code>fcppt_filesystem</code> and
 
 	<li>Renamed <code>fcppt/math/log.hpp</code> to
 	<code>fcppt/math/log2.hpp</code></li>
+
+	<li>Split fcppt::math::box::stretch into
+	fcppt::math::box::stretch_absolute and
+	fcppt::math::box::stretch_relative</li>
 </li>
 
 <li>\ref fcpptlog

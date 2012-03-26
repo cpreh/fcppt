@@ -203,7 +203,7 @@ href="http://www.boost.org/doc/libs/1_49_0/doc/html/boost_units.html">boost.unit
 You should check it out if you've got a similar use-case. It also integrates
 really well with fcppt.strong_typedef, so you can combine the two libraries.
 
-\section fcpptstrongtypedefusage_Usage
+\section fcpptstrongtypedefusage Usage
 
 As you can see from the examples above, you create a strong typedef using the
 <code>FCPPT_MAKE_STRONG_TYPEDEF</code> macro:

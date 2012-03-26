@@ -4,14 +4,15 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_MATH_BOX_STRETCH_HPP_INCLUDED
-#define FCPPT_MATH_BOX_STRETCH_HPP_INCLUDED
+#ifndef FCPPT_MATH_BOX_STRETCH_RELATIVE_HPP_INCLUDED
+#define FCPPT_MATH_BOX_STRETCH_RELATIVE_HPP_INCLUDED
 
 #include <fcppt/math/box/center.hpp>
 #include <fcppt/math/dim/arithmetic.hpp>
 #include <fcppt/math/dim/structure_cast.hpp>
 #include <fcppt/math/vector/arithmetic.hpp>
 #include <fcppt/math/vector/object_impl.hpp>
+#include <fcppt/math/vector/structure_cast.hpp>
 
 
 namespace fcppt
@@ -25,15 +26,19 @@ namespace box
 \ingroup fcpptmathbox
 \tparam T The box's <code>value_type</code>
 \tparam N The box's dimension
+\see fcppt::math::box::stretch_absolute
 */
-template<typename T,size_type N>
-object<T,N> const
-stretch(
-	object<T,N> const &b,
-	T const factor)
+template<typename T,math::size_type N>
+box::object<T,N> const
+stretch_relative(
+	box::object<T,N> const &b,
+	typename box::object<T,N>::vector const &factors)
 {
 	typename object<T,N>::dim const d =
-		b.size() * factor;
+		b.size() *
+		fcppt::math::vector::structure_cast<typename object<T,N>::dim>(
+			factors);
+
 	return
 		object<T,N>(
 			center(
