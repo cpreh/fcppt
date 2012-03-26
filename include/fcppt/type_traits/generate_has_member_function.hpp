@@ -11,7 +11,12 @@
 #include <boost/mpl/bool.hpp>
 #include <fcppt/config/external_end.hpp>
 
-/// See http://stackoverflow.com/questions/257288/possible-for-c-template-to-check-for-a-functions-existence/264088#264088
+/**
+
+\ingroup fcppttypetraits
+
+See http://stackoverflow.com/questions/257288/possible-for-c-template-to-check-for-a-functions-existence/264088#264088
+*/
 #define FCPPT_TYPE_TRAITS_GENERATE_HAS_MEMBER_FUNCTION(\
 	func\
 )\

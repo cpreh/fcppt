@@ -17,6 +17,11 @@ namespace fcppt
 namespace type_traits
 {
 
+/**
+
+\ingroup fcppttypetraits
+
+*/
 template<
 	typename T
 >

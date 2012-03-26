@@ -20,6 +20,11 @@ namespace fcppt
 namespace type_traits
 {
 
+/**
+
+\ingroup fcppttypetraits
+
+*/
 template<
 	typename T
 >
@@ -27,9 +32,15 @@ struct is_iterable
 :
 boost::mpl::if_
 <
-	boost::is_const<T>,
-	has_const_iterator<T>,
-	has_iterator<T>
+	boost::is_const<
+		T
+	>,
+	fcppt::type_traits::has_const_iterator<
+		T
+	>,
+	fcppt::type_traits::has_iterator<
+		T
+	>
 >::type
 {
 };

@@ -13,8 +13,11 @@ namespace fcppt
 {
 namespace type_traits
 {
+
 FCPPT_TYPE_TRAITS_GENERATE_HAS_TYPE(
-	iterator);
+	iterator
+);
+
 }
 }
 

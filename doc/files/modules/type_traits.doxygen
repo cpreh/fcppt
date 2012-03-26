@@ -1,0 +1,11 @@
+/**
+\defgroup fcppttypetraits fcppt.type_traits
+\ingroup fcpptmain
+\brief Some additional type traits
+*/
+
+namespace fcppt
+{
+/// Some additional type traits
+namespace type_traits {}
+}

@@ -79,7 +79,7 @@ into their own libraries, namely <code>fcppt_filesystem</code> and
 
 	<li>Added fcppt::math::vector::mod</li>
 
-	<li>Addded componentwise_equal functions to replace the removed
+	<li>Added componentwise_equal functions to replace the removed
 	implicit epsilon comparison.</li>
 
 	</ul>

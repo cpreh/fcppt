@@ -11,7 +11,12 @@
 #include <boost/mpl/bool.hpp>
 #include <fcppt/config/external_end.hpp>
 
-/// See http://debugfailure.wordpress.com/2009/10/06/understanding-sfinae/
+/**
+
+\ingroup fcppttypetraits
+
+See http://debugfailure.wordpress.com/2009/10/06/understanding-sfinae/
+*/
 #define FCPPT_TYPE_TRAITS_GENERATE_HAS_TYPE(\
 	mytype\
 )\
