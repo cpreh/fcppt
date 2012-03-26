@@ -152,13 +152,12 @@ fcppt::signal::object. This type has a template parameter which contains the
 signal's function type. Note that signals may have a return type; see below for
 more on that.
 
-To attach a callback function to the signal, you have to call the \link
-fcppt::signal::object::connect connect \endlink member function. Arbitrarily
-many attached functions are allowed. The <code>connect</code> function returns
-an \link fcppt::signal::auto_connection auto_connection \endlink. This is
-actually a typedef to
-<code>fcppt::unique_ptr&lt;fcppt::signal::connection&gt;</code>, so beware of
-the semantics.
+To attach a callback function to the signal, you have to call the
+fcppt::signal::object::connect member function. Arbitrarily many attached
+functions are allowed. The <code>connect</code> function returns an \link
+fcppt::signal::auto_connection auto_connection \endlink. This is actually a
+typedef to <code>fcppt::unique_ptr&lt;fcppt::signal::connection&gt;</code>, so
+beware of the semantics.
 
 The callback function is disconnected from the signal when the connection
 object dies. There are typedefs to other smart pointers to connections, such as

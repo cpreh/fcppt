@@ -1,84 +1,481 @@
 /**
 \page changes Changes
 
-\section changes_changes_to_010 Changes from 0.9 to 0.10
+\section changes_changes_to_011 Changes from 0.10 to 0.11
 
-\subsection changes_added_functionality_to_010 Added functionality
-
-<ul>
-	<li>Added <code>math::matrix::is_matrix</code> trait.</li>
-	<li>Added <code>io::stream_to_string</code> that reads the whole content of a stream into a string.</li>
-	<li>Added <code>filesystem::create_directory_exn</code> and <code>filesystem::create_directories_recursive_exn</code>.</li>
-	<li>Added <code>backtrace</code> which can print a stack trace for gcc compiled binaries.</li>
-	<li>Install a new <code>FcpptConfig.cmake</code> file so cmake can find an installed fcppt without <code>FindFcppt.cmake</code>.</li>
-	<li>Added fusion adaptors for <code>container::array</code>.</li>
-	<li>Added <code>utf8::from_std_string</code>.</li>
-	<li>Implemented <code>FCPPT_PP_FUNCTION</code> for VC++.</li>
-	<li>Added support for <code>boost::array</code> to <code>assign::array</code>.</li>
-	<li>Added <code>container::ptr::push_front_unique_ptr</code>.</li>
-	<li><code>-fvibisibility=hidden</code> is now optional, but still on by default (use <code>FCPPT_ENABLE_VISIBILITY_HIDDEN</code>).</li>
-	<li>Added <code>mpl::append</code>.</li>
-</ul>
-
-\subsection changes_changed_functionality_to_010 Changed functionality
+\subsection changaes_general_to_011 General changes
 
 <ul>
-	<li>Changed the default cmake module installation path to
-	<code>${CMAKE_ROOT}/Modules</code> if <code>${CMAKE_INSTALL_PREFIX}</code> is a
-	prefix of <code>${CMAKE_ROOT}</code>.</li>
-	<li>Replaced <code>utf8::convert</code> by <code>utf8::from_fcppt_string</code>
-	and <code>utf8::to_fcppt_string</code>.</li>
-	<li>random now uses <code>boost::random</code> instead of
-	<code>tr1::random</code>.</li>
-	<li>A 64 bit type is now required for chrono.</li>
+
+<li>Introduced new headers <code>fcppt/config/external_begin.hpp</code> and
+<code>fcppt/config/external_end.hpp</code> that are used around external
+includes and disable a lot of warnings. This way it was possible for us to
+enable many more warnings for fcppt, especially in VC++.</li>
+
+<li>Removed convenience headers that included everything in a subsystem. They
+are not considered good style anyway.</li>
+
+<li>Removed trailing whitespaces in the code.</li>
+
+<li>Don't use contants with internal linkage anymore.</li>
+
+<li>Parts of fcppt that require additional libraries to link to are now split
+into their own libraries, namely <code>fcppt_filesystem</code> and
+<code>fcppt_thread</code>.</li>
+
 </ul>
 
-\subsection changes_removed_functionality_to_010 Removed functionality
+\subsection changes_added_functionality_to_011 Added functionality
+
+\subsubsection changes_new_libraries_to_011 New Libraries
 
 <ul>
-	<li>Removed boost filesystem v2 support. Boost 1.44 or later is now needed.</li>
-	<li>Removed <code>math::matrix::perspective</code>,
-	<code>math::matrix::orthogonal</code> and
-	<code>math::matrix::orthogonal_xy</code>. Every projection function is only
-	meaningful if you know which canonical view volume you are using.<li>
+
+<li>Added a new \ref fcpptassert "assert" framework</li>
+
+<li>Added fcppt::null_ptr which can be used for null pointers to objects.</li>
+
 </ul>
 
-\subsection changes_bugfixes_to_010 Bugfixes
+\subsubsection changes_additions_to_libraries_to_011 Additions to existing libraries
 
 <ul>
-	<li>Fixed <code>FCPPT_DYN_LINK</code> behaviour in
-	<code>FindFcppt.cmake</code>.</li>
-	<li>Properly pass <code>QUIETLY</code> and <code>REQUIRED</code> in
-	<code>FindFcppt.cmake</code>.</li>
-	<li>Include <code>Boost_INCLUDE_DIRS</code> rather than
-	<code>Boost_INCLUDE_DIR</code>.</li>
-	<li>Use <code>-pthread</code> for POSIX systems because we use
-	boost.thread and asio.</li>
-	<li>Assert that a type requested via <code>variant::object::get</code>
-	or <code>\verbatim ::get_raw \endverbatim</code> is actually among its possible types.</li>
-	<li><code>type_traits::is_iterable</code>,
-	<code>TYPE_TRAITS_GENERATE_HAS_MEMBER_FUNCTION</code> and
-	<code>TYPE_TRAITS_GENERATE_HAS_TYPE</code> now properly expose an
-	<code>mpl::bool</code>.</li>
-	<li>The default case of <code>chrono::common_type</code> has been
-	restricted to fundamental types to avoid compiler errors with certain
-	overloaded operators.</li>
+
+<li>\ref fcpptalgorithm
+	<ul>
+
+	<li>Added fcppt::algorithm::key_set</li>
+
+	<li>Added fcppt::algorithm::set_union</li>
+
+	<li>Added fcppt::algorithm::copy_if</li>
+
+	</ul>
+</li>
+
+<li>\ref fcpptcontainer
+	<ul>
+
+	<li>Added fcppt::container::grid::iterator_position</li>
+
+	<li>Added fcppt::container::grid::is_square</li>
+
+	<li>Added fcppt::container::grid::interpolate</li>
+
+	</ul>
+</li>
+
+<li>\ref fcpptexport
+	<ul>
+
+	<li>Added support for explicit instantiations of template functions and
+	classes.</li>
+
+	</ul>
+</li>
+
+<li>\ref fcpptmath
+	<ul>
+
+	<li>Added fcppt::math::vector::mod</li>
+
+	<li>Addded componentwise_equal functions to replace the removed
+	implicit epsilon comparison.</li>
+
+	</ul>
+</li>
+
+<li>\ref fcpptio
+	<ul>
+
+	<li>Added fcppt::io::read_exn</li>
+
+	</ul>
+</li>
+
+<li>\ref fcpptlog
+	<ul>
+
+	<li>The log library has been redesigned, see \ref
+	changes_changed_functionality_to_011</li>
+
+	<li>Added fcppt::log::format::time_stamp</li>
+
+	</ul>
+</li>
+
+<li>\ref fcpptmpl
+	<ul>
+
+	<li>Added fcppt::mpl::contains_if</li>
+
+	<li>Added fcppt::mpl::integral_cast</li>
+
+	</ul>
+</li>
+
+<li>\ref fcpptoptional
+	<ul>
+
+	<li>Support optional references.</li>
+
+	<li>Added fcppt::dynamic_optional_cast, fcppt::static_optional_cast and
+	fcppt::const_optional_cast to cast between optional references.</li>
+
+	</ul>
+</li>
+
+<li>\ref fcpptstrongtypedef
+	<ul>
+
+	<li>Added fcppt::strong_typedef_construct_cast</li>
+
+	</ul>
+</li>
+
+<li>\ref fcppttypetraits
+	<ul>
+
+	<li>Added fcppt::type_traits::is_random_access_iterator,
+	fcppt::type_traits::is_bidirectional_iterator,
+	fcppt::type_traits::is_forward_iterator,
+	fcppt::type_traits::is_input_iterator and
+	fcppt::type_traits::is_output_iterator.</li>
+
+	</ul>
+</li>
+
+<li>\ref fcpptvariant
+	<ul>
+
+	<li>Added a free fcppt::variant::get function.</li>
+
+	<li>Added nonconst variant visitiation using fcppt::ref</li>
+
+	</ul>
+</li>
+
+<li>\ref fcpptvarious
+	<ul>
+
+	<li>Added \link FCPPT_FOREACH_ENUMERATOR_START_END \endlink </li>
+
+	</ul>
+</li>
+
 </ul>
 
-\section changes_older_changes Older changes
+\subsection changes_changed_functionality_to_011 Changed functionality
 
-\subsection changes_changes_to_09 Changes from 0.8 to 0.9
+<ul>
 
-\subsubsection changes_added_functionality_to_09 Added functionality
+<li>Renamed every template named <code>basic</code> to
+<code>object</code>.</li>
 
-TODO
-\subsubsection changes_changed_functionality_to_09 Changed functionality
+<li>\ref fcpptcasts
+	<ul>
 
-TODO
-\subsubsection changes_removed_functionality_to_09 Removed functionality
+	<li>fcppt::sn_cast has been renamed to fcppt::safe_numeric_cast. Also,
+	it has been changed to forbid any conversions that can lead to data
+	loss.</li>
 
-TODO
-\subsubsection changes_bugfixes_to_09 Bugfixes
+	<li>fcppt::truncation_check_cast has been improved.</li>
 
-TODO
+	</ul>
+</li>
+
+<li>\ref fcpptcontainer
+	<ul>
+
+	<li>fcppt::container::bitfield::object's constructor is now
+	explicit.</li>
+
+	</ul>
+</li>
+
+<li>\ref fcpptendianness
+	<ul>
+
+	<li>fcppt::endianness has been reworked. Most of the functions have
+	been replaced by fcppt::endianness::convert, see \ref
+	changes_removed_functionality_to_011 </li>
+
+	</ul>
+</li>
+
+<li>\ref fcpptfilesystem
+	<ul>
+
+	<li>fcppt::filesystem now uses the boost types directly, because only
+	<code>boost filesystem v3</code> is supported now. Also, a lot of now
+	unnecessary functions have been removed, see \ref
+	changes_removed_functionality_to_011 </li>
+
+	</ul>
+</li>
+
+<li>\ref fcpptio
+	<ul>
+
+	<li>fcppt::io::read now returns an optional.</li>
+
+	</ul>
+</li>
+
+<li>\ref fcpptmath
+	<ul>
+
+	<li>Renamed fcppt::math::vector::signed_angle to
+	fcppt::math::vector::signed_angle_between.</li>
+
+	<li>Renamed fcppt::math::vector::signed_angle_cast to
+	fcppt::math::vector::signed_angle_between_cast.</li>
+
+	<li>Renamed <code>fcppt/math/log.hpp</code> to
+	<code>fcppt/math/log2.hpp</code></li>
+</li>
+
+<li>\ref fcpptlog
+	<ul>
+
+	<li>Redesigned the logger library that makes it possible to declare
+	global loggers and enable and disable them at runtime easily.</li>
+
+	<li>Formatters are now functions instead of classes.</li>
+
+	<li>Renamed fcppt::log::parameters::all to
+	fcppt::log::parameters::object.</li>
+
+	</ul>
+</li>
+
+<li>\ref fcpptoptional
+	<ul>
+
+	<li>The constructor of optionals is now explicit.</li>
+
+	</ul>
+</li>
+
+<li>\ref fcpptrandom
+	<ul>
+
+	<li>fcppt::random has been completely redesigned. Is is now a wrapper
+	around <code>boost.random</code> that forbids copying of generators and
+	disables all default parameters.</li>
+
+	</ul>
+</li>
+
+<li>\ref fcpptsmartptr
+	<ul>
+
+	<li>The deleters are no longer template-template parameters. Instead,
+	they are normal template parameters now.</li>
+
+	</ul>
+</li>
+
+<li>\ref fcpptstring
+	<ul>
+
+	<li>fcppt::io::cout, etc. are now functions to prevent global
+	initialization problems.</li>
+
+	<li>Use the standard locale <code>std::locale("")</code> for the
+	converting string functions by default.</li>
+
+	</ul>
+</li>
+
+<li>\ref fcpptstrongtypedef
+	<ul>
+
+	<li>Improved the type safety of the contructors, which now use
+	fcppt::safe_cast</li>
+
+	<li>Support references in strong typedefs.</li>
+
+	</ul>
+</li>
+
+<li>\ref fcpptvariant
+	<ul>
+
+	<li>Variants can no longer be empty. A default constructor is no longer
+	provided.</li>
+
+	</ul>
+</li>
+
+<li>\ref fcpptvarious
+	<ul>
+
+	<li>Made fcppt::type_info constructor explicit. fcppt::type_name now
+	gets an fcppt::type_info instead of an
+	<code>std::type_info</code>.</li>
+
+	</ul>
+</li>
+
+</ul>
+
+\subsection changes_removed_functionality_to_011 Removed functionality
+
+\subsubsection changes_removed_libraries_to_011 Removed libraries
+
+<ul>
+
+<li>Removed fcppt::utf8. It is not really implementable without OS
+support.</li>
+
+<li>Removed fcppt::chrono, expect the asio glue code. <code>boost.chrono</code>
+should be used.</li>
+
+</ul>
+
+\subsubsection changes_removed_from_libraries_to_011 Removed functionality from libraries
+
+<ul>
+
+<li>Removed fcppt::auto_ptr typedef</li>
+
+<li>Removed FCPPT_ASSERT and FCPPT_ASSERT_MESSAGE, which were replaced by the
+new \ref fcpptassert "assert" framework</li>
+
+<li>Removed FCPPT_STUB_FUNCTION</li>
+
+<li>Removed fcppt::minmax_pair</li>
+
+<li>\ref fcpptendianness
+	<ul>
+
+	<li>Removed fcppt::endianness::copy_n_from_host,
+	fcppt::endianness::copy_n_to_host, fcppt::endianness::copy_n_swapped
+	and fcppt::endianness::copy_swapped,
+	fcppt::endianness::from_big_endian, fcppt::endianness::from_host,
+	fcppt::endianness::from_little_endian,
+	fcppt::endianness::to_big_endian, fcppt::endianness::to_host and
+	fcppt::endianness::to_little_endian.</li>
+
+	</ul>
+</li>
+
+<li>\ref fcpptfilesystem
+	<ul>
+
+	<li>Removed fcppt::filesystem::first_file, fcppt::filesystem::next_file
+	and fcppt::filesystem::skip_directories.</li>
+
+	<li>Removed fcppt::filesystem::create_directories_recursive,
+	fcppt::filesystem::create_directory, fcppt::filesystem::current_path,
+	fcppt::filesystem::directory_iterator, fcppt::filesystem::exists,
+	fcppt::filesystem::file_size, fcppt::filesystem::is_directory,
+	fcppt::filesystem::is_regular, fcppt::filesystem::path,
+	fcppt::filesystem::readlink,
+	fcppt::filesystem::recursive_directory_iterator,
+	fcppt::filesystem::remove and fcppt::filesystem::remove_filename</li>
+
+	<li>Removed fcppt::io::cifstream, fcppt::io::cofstream and
+	fcppt::io::cfstream</li>
+
+	</ul>
+</li>
+
+<li>\ref fcpptmath
+	<ul>
+
+	<li>Removed fcppt::math::almost_zero, fcppt;:math::compare,
+	fcppt::math::machine_epsilon, fcppt::math::vector::is_null,
+	fcppt::math::null and all other epsilon comparing functions. A general
+	epsilon cannot be provided and the user must choose one. As a result of
+	this, all comparison functions use <code>==</code>. It is made sure
+	that they still emit warnings when using
+	<code>-Wfloat-equal</code>.</li>
+
+	<li>Removed fcppt::math::vector::to_angle,
+	fcppt::math::vector::transform, fcppt::math::vector::unit_circle and
+	fcppt::math::vector::place.</li>
+
+	<li>Removed fcppt::math::dim::quad and
+	fcppt::math::dim::transform.</li>
+
+	<li>Removed FCPPT_MATH_INSTANTIATE_ARITHMETIC,
+	fcppt::math::is_negative, fcppt::math::round_div_int, fcppt::math::quad,
+	fcppt::math::inverse and fcppt::math::signum.</li>
+
+	<li>Removed fcppt::math::matrix::look_at</li>
+
+	<li>Removed broken overloads of fcppt::math::next_pow_2</li>
+
+	</ul>
+</li>
+
+<li>\ref fcpptsmartptr
+	<ul>
+
+	<li>fcppt::unique_ptr doesn't store its deleter anymore.</li>
+
+	</ul>
+</li>
+
+<li>\ref fcpptstring
+	<ul>
+
+	<li>Removed fcppt::lexical_cast which was replaced by
+	fcppt::extract_from_string and fcppt::insert_to_string</li>
+
+	</ul>
+</li>
+
+<li>\ref fcpptstrongtypedef
+	<ul>
+
+	<li>Removed the nonconst getter from fcppt::strong_typedef</li>
+
+	</ul>
+</li>
+
+<li>\ref fcpptvariant
+	<ul>
+
+	<li>Removed fcppt::variant::apply, use fcppt::variant::apply_unary,
+	fcppt::variant::apply_binary or fcppt::variant::apply_ternary
+	instead.</li>
+
+	</ul>
+</li>
+
+</ul>
+
+\subsection changes_bugfixes_to_011 Bugfixes
+
+<ul>
+
+<li>Fixed fcppt::mpl::index_of to only allow types that are part of the
+sequence. This also fixes invalid uses of fcppt::variant::object::get </li>
+
+<li>Fixed fcppt::math::vector::to_angle</li>
+
+<li>Fixed fcppt::variant::holds_type when recursive types are involved.</li>
+
+<li>Don't overwrite <code>Boost_ADDITIONAL_VERSIONS</code> in cmake, just
+append to it.</li>
+
+<li>Fixed fcppt::algorithm::ptr_container_erase</li>
+
+<li>Fixed the iterator category of fcppt::cyclic_iterator</li>
+
+<li>Fixed static linking of fcppt</li>
+
+<li>Fixed fcppt::math::box::contains_point</li>
+
+<li>Made logging a lot less expensive</li>
+
+<li>fcppt::variant::apply_unary now has linear complexity instead of quadratic
+complexity if the variant has been declared using an
+<code>boost::mpl::list</code></li>
+
+</ul>
+
 */
