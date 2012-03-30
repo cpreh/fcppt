@@ -15,17 +15,14 @@
 namespace fcppt
 {
 
-/// Used to create strong typedefs.
-/* The first template parameter is the type to be wrapped.
- * The second template parameter should be a unique tag type.
- * strong_typedef has an explicit construct and
- * explicit get member functions.
- * Almost all operators are overloaded and found in their
- * respective header.
- * Currently \em not overloaded are:
- * - The logical operators, that include bool operator!, operator && and operator ||
- * - The member and pointer operators: operator[], operator*, operator&, operator-> and operator->*
- * - operator(), operator, (sequence),  operator new, operator new[], operator delete and operator delete[]
+/**
+\brief Used to create strong typedefs
+\ingroup fcpptstrongtypedef
+\tparam T The underlying type to be wrapped.
+\tparam Tag A unique tag type
+
+strong_typedef has an explicit construct and explicit get member functions.
+Almost all operators are overloaded and found in their respective header.
 */
 template<
 	typename T,
@@ -34,12 +31,24 @@ template<
 class strong_typedef
 {
 public:
+	/**
+	\brief A type that represents the data stored in the strong typedef
+	*/
 	typedef T value_type;
 
+	/**
+	\brief typedef for the <code>Tag</code> template parameter
+	*/
 	typedef Tag tag_type;
 
+	/**
+	\brief Default initializes the strong typedef's value
+	*/
 	strong_typedef();
 
+	/**
+	\brief Constructs the strong typedef from a given value using fcppt::safe_cast.
+	*/
 	template<
 		typename U
 	>
@@ -48,6 +57,9 @@ public:
 		U const &
 	);
 
+	/**
+	\brief Assigns a new value to the strong typedef using fcppt::safe_cast.
+	*/
 	template<
 		typename U
 	>
@@ -56,9 +68,15 @@ public:
 		U const &
 	);
 
+	/**
+	\brief Return the strong typedef's value.
+	*/
 	T const &
 	get() const;
 
+	/**
+	\brief Swap the contents of another strong typedef
+	*/
 	void
 	swap(
 		strong_typedef &
@@ -102,6 +120,11 @@ private:
 };
 
 
+/**
+\brief Swap the contents of two strong typedefs
+\tparam T The underlying type to be wrapped.
+\tparam Tag A unique tag type
+*/
 template<
 	typename T,
 	typename Tag
