@@ -12,10 +12,18 @@
 #include <fcppt/config/external_end.hpp>
 
 /**
+\brief Generates a type trait that checks if a class has a member function of a
+given type
 
 \ingroup fcppttypetraits
 
-See http://stackoverflow.com/questions/257288/possible-for-c-template-to-check-for-a-functions-existence/264088#264088
+Given \a func, generates a type trait called <code>has_ ## func</code>. This
+type trait takes two template parameters: a type that should be checked if it
+has a member function called \a func, and the type of that function.
+
+\snippet examples/type_traits.cpp generate_has_member_function
+
+\see http://stackoverflow.com/questions/257288/possible-for-c-template-to-check-for-a-functions-existence/264088#264088
 */
 #define FCPPT_TYPE_TRAITS_GENERATE_HAS_MEMBER_FUNCTION(\
 	func\

@@ -18,17 +18,21 @@ namespace type_traits
 {
 
 /**
+\brief Checks if an iterator is a forward iterator
 
 \ingroup fcppttypetraits
 
+Checks if \a Iterator is a forward iterator.
+
+\tparam Iterator Must be an iterator type
 */
 template<
-	typename T
+	typename Iterator
 >
 struct is_forward_iterator
 :
 fcppt::type_traits::is_iterator_of_category<
-	T,
+	Iterator,
 	std::forward_iterator_tag
 >
 {

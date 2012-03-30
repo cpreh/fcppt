@@ -18,12 +18,19 @@ namespace type_traits
 {
 
 /**
+\brief Checks if an iterator models a given category
 
 \ingroup fcppttypetraits
 
+Checks if \a Iterator models the iterator category \a Category.  For example, a
+random access iterator also models a bidrectional iterator.
+
+\tparam Iterator Must be an iterator type
+
+\tparam Category Must be an iterator category
 */
 template<
-	typename T,
+	typename Iterator,
 	typename Category
 >
 struct is_iterator_of_category
@@ -31,7 +38,7 @@ struct is_iterator_of_category
 boost::is_base_of<
 	Category,
 	typename std::iterator_traits<
-		T
+		Iterator
 	>::iterator_category
 >
 {

@@ -18,17 +18,21 @@ namespace type_traits
 {
 
 /**
+\brief Checks if an iterator is an output iterator
 
 \ingroup fcppttypetraits
 
+Checks if \a Iterator is an output iterator.
+
+\tparam Iterator Must be an iterator type
 */
 template<
-	typename T
+	typename Iterator
 >
 struct is_output_iterator
 :
 fcppt::type_traits::is_iterator_of_category<
-	T,
+	Iterator,
 	std::output_iterator_tag
 >
 {

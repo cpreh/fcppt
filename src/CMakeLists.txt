@@ -785,6 +785,9 @@ set(
 	include/fcppt/type_info.hpp
 	include/fcppt/type_info_fwd.hpp
 	include/fcppt/type_name.hpp
+	include/fcppt/type_traits/detail/has_const_iterator.hpp
+	include/fcppt/type_traits/detail/has_iterator.hpp
+	include/fcppt/type_traits/detail/is_iterator.hpp
 	include/fcppt/type_traits/generate_has_member_function.hpp
 	include/fcppt/type_traits/generate_has_type.hpp
 	include/fcppt/type_traits/has_const_iterator.hpp

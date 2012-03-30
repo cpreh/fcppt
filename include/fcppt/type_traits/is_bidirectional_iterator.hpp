@@ -18,17 +18,21 @@ namespace type_traits
 {
 
 /**
+\brief Checks if an iterator is a bidirectional iterator
 
 \ingroup fcppttypetraits
 
+Checks if \a Iterator is a bidirectional iterator.
+
+\tparam Iterator Must be an iterator type
 */
 template<
-	typename T
+	typename Iterator
 >
 struct is_bidirectional_iterator
 :
 fcppt::type_traits::is_iterator_of_category<
-	T,
+	Iterator,
 	std::bidirectional_iterator_tag
 >
 {

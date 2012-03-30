@@ -12,11 +12,22 @@
 #include <boost/type_traits/integral_constant.hpp>
 #include <fcppt/config/external_end.hpp>
 
+
 namespace fcppt
 {
 namespace type_traits
 {
 
+/**
+\brief Tells if a type is a unique ptr
+
+\ingroup fcppttypetraits
+
+Tells if \a Type is a unique ptr. It is used by the functions in \ref
+fcpptcontainerptr
+
+\tparam Type Can be any type
+*/
 template<
 	typename Type
 >

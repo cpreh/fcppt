@@ -18,6 +18,16 @@ namespace fcppt
 namespace type_traits
 {
 
+/**
+\brief Tells if a type can be moved by fcppt::move
+
+\ingroup fcppttypetraits
+
+Tells if \a Type can be moved by fcppt::move. This class is more or less an
+internal customization point.
+
+\tparam Type Can be any type
+*/
 template<
 	typename Type
 >

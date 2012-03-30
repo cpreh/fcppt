@@ -7,16 +7,7 @@
 #ifndef FCPPT_TYPE_TRAITS_IS_ITERATOR_HPP_INCLUDED
 #define FCPPT_TYPE_TRAITS_IS_ITERATOR_HPP_INCLUDED
 
-#include <fcppt/null_ptr.hpp>
-#include <fcppt/config/external_begin.hpp>
-#include <boost/mpl/not.hpp>
-#include <boost/type_traits/integral_constant.hpp>
-#include <boost/type_traits/is_pointer.hpp>
-#include <boost/type_traits/is_same.hpp>
-#include <boost/type_traits/remove_cv.hpp>
-#include <boost/type_traits/remove_pointer.hpp>
-#include <boost/type_traits/remove_reference.hpp>
-#include <fcppt/config/external_end.hpp>
+#include <fcppt/type_traits/detail/is_iterator.hpp>
 
 
 namespace fcppt
@@ -24,70 +15,27 @@ namespace fcppt
 namespace type_traits
 {
 
+/**
+\brief Checks if a type is an iterator
+
+\ingroup fcppttypetraits
+
+Checks if \a Type is an iterator. If \a Type is a pointer, then the result is
+true. Otherwise, \a Type is checked for nested iterator typedefs:
+<code>value_type, reference, pointer, difference_type,
+iterator_category</code>.
+
+\tparam Type Can be any type
+*/
 template<
-	typename IterT,
-	bool IsPointer
-		= boost::is_pointer<
-			IterT
-		>::value
+	typename Type
 >
 struct is_iterator
 :
-boost::mpl::not_<
-	boost::is_same<
-		boost::remove_cv<
-			boost::remove_pointer<
-				boost::remove_reference<
-					IterT
-				>
-			>
-		>,
-		void
-	>
->
-{};
-
-template<
-	typename IterT
->
-struct is_iterator<
-	IterT,
-	false
+fcppt::type_traits::detail::is_iterator<
+	Type
 >
 {
-private:
-	typedef char true_t;
-
-	struct false_t
-	{
-		true_t f[2];
-	};
-
-	static IterT *
-	make();
-
-	template<
-		typename T
-	>
-	static true_t
-	check(
-		T *,
-		typename T::iterator_category * = fcppt::null_ptr(),
-		typename T::value_type * = fcppt::null_ptr(),
-		typename T::difference_type * = fcppt::null_ptr(),
-		typename T::pointer * = fcppt::null_ptr()
-	);
-
-	static false_t
-	check(...);
-public:
-	static bool const value =
-		sizeof(
-			check(
-				make()
-			)
-		)
-		== sizeof(true_t);
 };
 
 }

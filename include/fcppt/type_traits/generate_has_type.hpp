@@ -12,8 +12,15 @@
 #include <fcppt/config/external_end.hpp>
 
 /**
+\brief Generates a type trait that checks if a class has a given type
 
 \ingroup fcppttypetraits
+
+Given \a mytype, generates a type trait called <code>has_ ## mytype</code>.
+This type trait takes one template parameter, which should be checked if it has
+a type called \a mytype.
+
+\snippet examples/type_traits.cpp generate_has_type
 
 See http://debugfailure.wordpress.com/2009/10/06/understanding-sfinae/
 */

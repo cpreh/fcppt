@@ -18,17 +18,21 @@ namespace type_traits
 {
 
 /**
+\brief Checks if an iterator is a random access iterator
 
 \ingroup fcppttypetraits
 
+Checks if \a Iterator is a random access iterator.
+
+\tparam Iterator Must be an iterator type
 */
 template<
-	typename T
+	typename Iterator
 >
 struct is_random_access_iterator
 :
 fcppt::type_traits::is_iterator_of_category<
-	T,
+	Iterator,
 	std::random_access_iterator_tag
 >
 {

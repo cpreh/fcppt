@@ -18,22 +18,26 @@ namespace type_traits
 {
 
 /**
+\brief Checks if a type is float or double
 
 \ingroup fcppttypetraits
 
+Checks if \a Type is float or double.
+
+\tparam Type Can be any type
 */
 template<
-	typename T
+	typename Type
 >
 struct is_float_or_double
 :
 boost::mpl::or_<
 	boost::is_same<
-		T,
+		Type,
 		float
 	>,
 	boost::is_same<
-		T,
+		Type,
 		double
 	>
 >

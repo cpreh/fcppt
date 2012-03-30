@@ -27,7 +27,7 @@ INHERIT_DOCS           = YES
 SEPARATE_MEMBER_PAGES  = NO
 TAB_SIZE               = 8
 ALIASES                = "virtualdtor=\brief Virtual dummy destructor to make it a class to safely derive from. \details Note that this destructor is pure virtual, but has an implementation. Strictly speaking, that's redundant. But it's safer for classes which otherwise don't have any pure virtual functions, yet should be abstract."\
-			  "protectedctor=\brief Dummy constructor so no instances of this base class can be created"
+                         "protectedctor=\brief Dummy constructor so no instances of this base class can be created"
 ALIASES += enum_policy{2}="\brief Holds the \link \2 %\1 \endlink enum \details See <strong>Insert fcppt enum policy link here</strong> for more details on how we handle enumerations"
 OPTIMIZE_OUTPUT_FOR_C  = NO
 OPTIMIZE_OUTPUT_JAVA   = NO
@@ -238,12 +238,12 @@ SEARCH_INCLUDES        = YES
 INCLUDE_PATH           =
 INCLUDE_FILE_PATTERNS  =
 PREDEFINED             = "FCPPT_SYMBOL="\
-			 "FCPPT_CLASS_SYMBOL="\
-			  "FCPPT_NONCOPYABLE(a)="\
-			  "FCPPT_NONASSIGNABLE(a)="\
-			  "FCPPT_MAKE_STRONG_TYPEDEF(a,b)=typedef a b;"\
-			  "FCPPT_SAFE_BOOL(a)="\
-			  "BOOST_PP_REPEAT(a,b,c)="
+                         "FCPPT_CLASS_SYMBOL="\
+                         "FCPPT_NONCOPYABLE(a)="\
+                         "FCPPT_NONASSIGNABLE(a)="\
+                         "FCPPT_MAKE_STRONG_TYPEDEF(a,b)=typedef a b;"\
+                         "FCPPT_SAFE_BOOL(a)="\
+                         "BOOST_PP_REPEAT(a,b,c)="
 SKIP_FUNCTION_MACROS   = YES
 #---------------------------------------------------------------------------
 # Configuration::additions related to external references

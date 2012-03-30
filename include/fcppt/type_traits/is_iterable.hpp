@@ -21,25 +21,31 @@ namespace type_traits
 {
 
 /**
+\brief Checks if a type has iterator typedefs
 
 \ingroup fcppttypetraits
 
+Checks if \a Type has iterator typedefs. If \a Type is const, then it checked
+for a <code>const_iterator</code> typedef. Otherwise, it is checked for an
+<code>iterator</code> typedef.
+
+\tparam Type Can be any type
 */
 template<
-	typename T
+	typename Type
 >
 struct is_iterable
 :
 boost::mpl::if_
 <
 	boost::is_const<
-		T
+		Type
 	>,
 	fcppt::type_traits::has_const_iterator<
-		T
+		Type
 	>,
 	fcppt::type_traits::has_iterator<
-		T
+		Type
 	>
 >::type
 {

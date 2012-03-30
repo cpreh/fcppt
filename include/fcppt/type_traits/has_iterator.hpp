@@ -7,16 +7,31 @@
 #ifndef FCPPT_TYPE_TRAITS_HAS_ITERATOR_HPP_INCLUDED
 #define FCPPT_TYPE_TRAITS_HAS_ITERATOR_HPP_INCLUDED
 
-#include <fcppt/type_traits/generate_has_type.hpp>
+#include <fcppt/type_traits/detail/has_iterator.hpp>
+
 
 namespace fcppt
 {
 namespace type_traits
 {
 
-FCPPT_TYPE_TRAITS_GENERATE_HAS_TYPE(
-	iterator
-);
+/**
+\brief Checks if a type has a nested <code>iterator</code> typedef
+
+\ingroup fcppttypetraits
+
+Checks if \a Type has a nested <code>iterator</code> typedef.
+*/
+template<
+	typename Type
+>
+struct has_iterator
+:
+fcppt::type_traits::detail::has_iterator<
+	Type
+>
+{
+};
 
 }
 }

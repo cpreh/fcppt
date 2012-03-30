@@ -12,18 +12,30 @@
 #include <string>
 #include <fcppt/config/external_end.hpp>
 
+
 namespace fcppt
 {
 namespace type_traits
 {
 
+/**
+\brief Tells if a type is a string
+
+\ingroup fcppttypetraits
+
+Tells if \a Type is a string. This trait is used by fcppt::insert_to_string and
+fcppt::extract_from_string.
+
+\tparam Type Can be any type
+*/
 template<
-	typename T
+	typename Type
 >
 struct is_string
 :
 boost::false_type
-{};
+{
+};
 
 template<
 	typename Ch,
@@ -39,7 +51,8 @@ struct is_string<
 >
 :
 boost::true_type
-{};
+{
+};
 
 }
 }

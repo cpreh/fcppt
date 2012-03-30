@@ -18,17 +18,21 @@ namespace type_traits
 {
 
 /**
+\brief Checks if an iterator is an input iterator
 
 \ingroup fcppttypetraits
 
+Checks if \a Iterator is an input iterator.
+
+\tparam Iterator Must be an iterator type
 */
 template<
-	typename T
+	typename Iterator
 >
 struct is_input_iterator
 :
 fcppt::type_traits::is_iterator_of_category<
-	T,
+	Iterator,
 	std::input_iterator_tag
 >
 {
