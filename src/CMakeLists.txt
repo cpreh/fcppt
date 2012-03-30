@@ -700,6 +700,7 @@ set(
 	include/fcppt/shared_ptr_fwd.hpp
 	include/fcppt/shared_ptr_impl.hpp
 	include/fcppt/signal/auto_connection.hpp
+	include/fcppt/signal/auto_connection_fwd.hpp
 	include/fcppt/signal/base.hpp
 	include/fcppt/signal/base_decl.hpp
 	include/fcppt/signal/base_fwd.hpp
