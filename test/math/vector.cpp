@@ -18,6 +18,9 @@
 #include <fcppt/math/vector/signed_angle_between.hpp>
 #include <fcppt/math/vector/signed_angle_between_cast.hpp>
 #include <fcppt/math/vector/structure_cast.hpp>
+#include <fcppt/preprocessor/disable_gcc_warning.hpp>
+#include <fcppt/preprocessor/pop_warning.hpp>
+#include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/mpl/integral_c.hpp>
 #include <boost/test/unit_test.hpp>
@@ -67,8 +70,13 @@ compare(
 }
 }
 
+FCPPT_PP_PUSH_WARNING
+FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
+
 BOOST_AUTO_TEST_CASE(vector_compare)
 {
+FCPPT_PP_POP_WARNING
+
 	uivector2 const
 		vec1(1, 2),
 		vec2(1, 2),
@@ -87,8 +95,13 @@ BOOST_AUTO_TEST_CASE(vector_compare)
 	);
 }
 
+FCPPT_PP_PUSH_WARNING
+FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
+
 BOOST_AUTO_TEST_CASE(vector_angle_between)
 {
+FCPPT_PP_POP_WARNING
+
 	fvector2 const
 		vec1(1.f, 0.f),
 		vec2(0.f, 1.f);
@@ -104,8 +117,13 @@ BOOST_AUTO_TEST_CASE(vector_angle_between)
 	);
 }
 
+FCPPT_PP_PUSH_WARNING
+FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
+
 BOOST_AUTO_TEST_CASE(vector_angle_between_cast)
 {
+FCPPT_PP_POP_WARNING
+
 	uivector2 const
 		vec1(1, 0),
 		vec2(0, 1);
@@ -123,8 +141,13 @@ BOOST_AUTO_TEST_CASE(vector_angle_between_cast)
 	);
 }
 
+FCPPT_PP_PUSH_WARNING
+FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
+
 BOOST_AUTO_TEST_CASE(vector_signed_angle_between)
 {
+FCPPT_PP_POP_WARNING
+
 	fvector2 const
 		vec1(2.f, 1.f),
 		vec2(2.f, 2.f);
@@ -140,8 +163,13 @@ BOOST_AUTO_TEST_CASE(vector_signed_angle_between)
 	);
 }
 
+FCPPT_PP_PUSH_WARNING
+FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
+
 BOOST_AUTO_TEST_CASE(vector_signed_angle_between_cast)
 {
+FCPPT_PP_POP_WARNING
+
 	uivector2 const
 		vec1(2, 1),
 		vec2(2, 2);
@@ -159,8 +187,13 @@ BOOST_AUTO_TEST_CASE(vector_signed_angle_between_cast)
 	);
 }
 
+FCPPT_PP_PUSH_WARNING
+FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
+
 BOOST_AUTO_TEST_CASE(vector_swap)
 {
+FCPPT_PP_POP_WARNING
+
 	uivector2 vec1(
 		1u,
 		2u
@@ -195,16 +228,26 @@ BOOST_AUTO_TEST_CASE(vector_swap)
 	);
 }
 
+FCPPT_PP_PUSH_WARNING
+FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
+
 BOOST_AUTO_TEST_CASE(vector_null)
 {
+FCPPT_PP_POP_WARNING
+
 	BOOST_REQUIRE(
 		uivector2::null()
 		== uivector2(0, 0)
 	);
 }
 
+FCPPT_PP_PUSH_WARNING
+FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
+
 BOOST_AUTO_TEST_CASE(vector_arithmetic)
 {
+FCPPT_PP_POP_WARNING
+
 	uivector2 vec(0, 0);
 
 	vec += uivector2(1, 2);
@@ -267,8 +310,13 @@ private:
 
 }
 
+FCPPT_PP_PUSH_WARNING
+FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
+
 BOOST_AUTO_TEST_CASE(vector_construct)
 {
+FCPPT_PP_POP_WARNING
+
 	typedef view_storage<
 		unsigned
 	> unsigned_view_storage;
@@ -302,8 +350,13 @@ BOOST_AUTO_TEST_CASE(vector_construct)
 	);
 }
 
+FCPPT_PP_PUSH_WARNING
+FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
+
 BOOST_AUTO_TEST_CASE(vector_structure_cast)
 {
+FCPPT_PP_POP_WARNING
+
 	uivector2 const vec(
 		1,
 		2
@@ -325,8 +378,13 @@ BOOST_AUTO_TEST_CASE(vector_structure_cast)
 	);
 }
 
+FCPPT_PP_PUSH_WARNING
+FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
+
 BOOST_AUTO_TEST_CASE(vector_hypersphere_to_cartesian)
 {
+FCPPT_PP_POP_WARNING
+
 	real const
 		phi1 =
 			static_cast<real>(1.5),

@@ -8,6 +8,9 @@
 #define FCPPT_MATH_DETAIL_HAS_SIZE_HPP_INCLUDED
 
 #include <fcppt/math/size_type.hpp>
+#include <fcppt/preprocessor/disable_gcc_warning.hpp>
+#include <fcppt/preprocessor/pop_warning.hpp>
+#include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/mpl/integral_c.hpp>
 #include <boost/type_traits/is_same.hpp>
@@ -19,6 +22,9 @@ namespace math
 {
 namespace detail
 {
+
+FCPPT_PP_PUSH_WARNING
+FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
 
 template<
 	typename T,
@@ -34,6 +40,8 @@ boost::is_same<
 	>
 >
 {};
+
+FCPPT_PP_POP_WARNING
 
 }
 }

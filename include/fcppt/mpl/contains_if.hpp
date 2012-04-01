@@ -7,6 +7,9 @@
 #ifndef FCPPT_MPL_CONTAINS_IF_HPP_INCLUDED
 #define FCPPT_MPL_CONTAINS_IF_HPP_INCLUDED
 
+#include <fcppt/preprocessor/disable_gcc_warning.hpp>
+#include <fcppt/preprocessor/pop_warning.hpp>
+#include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/static_assert.hpp>
 #include <boost/mpl/end.hpp>
@@ -19,6 +22,9 @@ namespace fcppt
 {
 namespace mpl
 {
+
+FCPPT_PP_PUSH_WARNING
+FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
 
 /**
 \brief Checks if a sequence contains an element matching a predicate
@@ -55,6 +61,8 @@ boost::mpl::not_<
 >
 {
 };
+
+FCPPT_PP_POP_WARNING
 
 }
 }

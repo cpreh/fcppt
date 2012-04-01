@@ -6,16 +6,24 @@
 
 #include <fcppt/text.hpp>
 #include <fcppt/filesystem/remove_extension.hpp>
+#include <fcppt/preprocessor/disable_gcc_warning.hpp>
+#include <fcppt/preprocessor/pop_warning.hpp>
+#include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/filesystem/path.hpp>
 #include <boost/test/unit_test.hpp>
 #include <fcppt/config/external_end.hpp>
 
 
+FCPPT_PP_PUSH_WARNING
+FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
+
 BOOST_AUTO_TEST_CASE(
 	filesystem_remove_extension
 )
 {
+FCPPT_PP_POP_WARNING
+
 	boost::filesystem::path const path1(
 		boost::filesystem::path(
 			FCPPT_TEXT("foo")

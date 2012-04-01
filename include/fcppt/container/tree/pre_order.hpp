@@ -10,6 +10,9 @@
 #include <fcppt/noncopyable.hpp>
 #include <fcppt/null_ptr.hpp>
 #include <fcppt/container/tree/is_object.hpp>
+#include <fcppt/preprocessor/disable_gcc_warning.hpp>
+#include <fcppt/preprocessor/pop_warning.hpp>
+#include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/next_prior.hpp>
 #include <boost/static_assert.hpp>
@@ -91,18 +94,67 @@ private:
 		typename tree_iterator::reference
 	> iterator_base;
 public:
+
+FCPPT_PP_PUSH_WARNING
+FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
+
 	class iterator
 	:
 		public iterator_base
 	{
 	public:
-		explicit iterator(
+
+FCPPT_PP_POP_WARNING
+
+		iterator()
+		:
+			current_(
+				fcppt::null_ptr()
+			),
+			positions_()
+		{
+		}
+
+		explicit
+		iterator(
 			tree_pointer const _current
 		)
 		:
-			current_(_current),
+			current_(
+				_current
+			),
 			positions_()
-		{}
+		{
+		}
+
+		iterator(
+			iterator const &_other
+		)
+		:
+			current_(
+				_other.current_
+			),
+			positions_(
+				_other.positions_
+			)
+		{
+		}
+
+		iterator &
+		operator=(
+			iterator const &_other
+		)
+		{
+			current_ = _other.current_;
+
+			positions_ = _other.positions_;
+
+			return *this;
+		}
+
+		~iterator()
+		{
+		}
 
 		typedef typename iterator_base::value_type value_type;
 

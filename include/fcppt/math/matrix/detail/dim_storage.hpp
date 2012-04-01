@@ -92,7 +92,7 @@ protected:
 
 	void
 	swap(
-		dim_storage &other_
+		dim_storage &
 	);
 private:
 	dim_type dim_;

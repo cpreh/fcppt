@@ -5,6 +5,9 @@
 
 
 #include <fcppt/strong_typedef.hpp>
+#include <fcppt/preprocessor/disable_gcc_warning.hpp>
+#include <fcppt/preprocessor/pop_warning.hpp>
+#include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/test/unit_test.hpp>
 #include <sstream>
@@ -30,10 +33,15 @@ FCPPT_MAKE_STRONG_TYPEDEF(
 
 }
 
+FCPPT_PP_PUSH_WARNING
+FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
+
 BOOST_AUTO_TEST_CASE(
 	strong_typedef_arithmetic
 )
 {
+FCPPT_PP_POP_WARNING
+
 	strong_int
 		test1(
 			2
@@ -108,10 +116,15 @@ BOOST_AUTO_TEST_CASE(
 	);
 }
 
+FCPPT_PP_PUSH_WARNING
+FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
+
 BOOST_AUTO_TEST_CASE(
 	strong_typedef_assignment
 )
 {
+FCPPT_PP_POP_WARNING
+
 	strong_int test(
 		1
 	);
@@ -131,10 +144,15 @@ BOOST_AUTO_TEST_CASE(
 	);
 }
 
+FCPPT_PP_PUSH_WARNING
+FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
+
 BOOST_AUTO_TEST_CASE(
 	strong_typedef_comparison
 )
 {
+FCPPT_PP_POP_WARNING
+
 	strong_int const
 		test1(
 			1
@@ -171,10 +189,15 @@ BOOST_AUTO_TEST_CASE(
 	);
 }
 
+FCPPT_PP_PUSH_WARNING
+FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
+
 BOOST_AUTO_TEST_CASE(
 	strong_typedef_io
 )
 {
+FCPPT_PP_POP_WARNING
+
 	std::stringstream stream;
 
 	strong_int const test(
@@ -194,10 +217,15 @@ BOOST_AUTO_TEST_CASE(
 	);
 }
 
+FCPPT_PP_PUSH_WARNING
+FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
+
 BOOST_AUTO_TEST_CASE(
 	strong_typedef_const_reference
 )
 {
+FCPPT_PP_POP_WARNING
+
 	int const test(
 		42
 	);

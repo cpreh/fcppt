@@ -5,6 +5,9 @@
 
 
 #include <fcppt/mpl/append.hpp>
+#include <fcppt/preprocessor/disable_gcc_warning.hpp>
+#include <fcppt/preprocessor/pop_warning.hpp>
+#include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/mpl/at.hpp>
 #include <boost/mpl/vector/vector10.hpp>
@@ -13,10 +16,15 @@
 #include <fcppt/config/external_end.hpp>
 
 
+FCPPT_PP_PUSH_WARNING
+FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
+
 BOOST_AUTO_TEST_CASE(
 	mpl_append
 )
 {
+FCPPT_PP_POP_WARNING
+
 	typedef boost::mpl::vector2<
 		int,
 		float

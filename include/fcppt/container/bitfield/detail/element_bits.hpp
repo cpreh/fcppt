@@ -8,6 +8,9 @@
 #define FCPPT_CONTAINER_BITFIELD_DETAIL_ELEMENT_BITS_HPP_INCLUDED
 
 #include <fcppt/container/bitfield/size_type.hpp>
+#include <fcppt/preprocessor/disable_gcc_warning.hpp>
+#include <fcppt/preprocessor/pop_warning.hpp>
+#include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/mpl/integral_c.hpp>
 #include <limits>
@@ -22,6 +25,9 @@ namespace bitfield
 namespace detail
 {
 
+FCPPT_PP_PUSH_WARNING
+FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
+
 template<
 	typename T
 >
@@ -35,6 +41,8 @@ boost::mpl::integral_c<
 >
 {
 };
+
+FCPPT_PP_POP_WARNING
 
 }
 }

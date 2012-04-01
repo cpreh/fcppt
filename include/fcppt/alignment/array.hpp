@@ -10,12 +10,18 @@
 #include <fcppt/alignment/make_type.hpp>
 #include <fcppt/alignment/size_type.hpp>
 #include <fcppt/container/array.hpp>
+#include <fcppt/preprocessor/disable_gcc_warning.hpp>
+#include <fcppt/preprocessor/pop_warning.hpp>
+#include <fcppt/preprocessor/push_warning.hpp>
 
 
 namespace fcppt
 {
 namespace alignment
 {
+
+FCPPT_PP_PUSH_WARNING
+FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
 
 /**
 \brief Creates an array with a given alignment
@@ -48,6 +54,8 @@ fcppt::alignment::make_type<
 	Alignment
 >
 {};
+
+FCPPT_PP_POP_WARNING
 
 }
 }

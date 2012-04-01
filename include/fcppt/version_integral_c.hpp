@@ -8,12 +8,18 @@
 #define FCPPT_VERSION_INTEGRAL_C_HPP_INCLUDED
 
 #include <fcppt/version_int.hpp>
+#include <fcppt/preprocessor/disable_gcc_warning.hpp>
+#include <fcppt/preprocessor/pop_warning.hpp>
+#include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/mpl/integral_c.hpp>
 #include <fcppt/config/external_end.hpp>
 
 namespace fcppt
 {
+
+FCPPT_PP_PUSH_WARNING
+FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
 
 template<
 	fcppt::version_int Value
@@ -26,6 +32,8 @@ boost::mpl::integral_c<
 >
 {
 };
+
+FCPPT_PP_POP_WARNING
 
 }
 

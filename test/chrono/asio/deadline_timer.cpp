@@ -6,6 +6,9 @@
 
 #include <fcppt/chrono/asio/deadline_timer.hpp>
 #include <fcppt/chrono/asio/expires_from_now_any.hpp>
+#include <fcppt/preprocessor/disable_gcc_warning.hpp>
+#include <fcppt/preprocessor/pop_warning.hpp>
+#include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/tr1/functional.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/asio/io_service.hpp>
@@ -27,10 +30,15 @@ run_to_true()
 
 }
 
+FCPPT_PP_PUSH_WARNING
+FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
+
 BOOST_AUTO_TEST_CASE(
 	chrono_asio_deadline_timer
 )
 {
+FCPPT_PP_POP_WARNING
+
 	boost::asio::io_service io_service;
 
 	fcppt::chrono::asio::deadline_timer deadline_timer(

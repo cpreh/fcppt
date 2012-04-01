@@ -15,16 +15,23 @@
 #include <fcppt/math/detail/storage_data.hpp>
 #include <fcppt/math/detail/storage_dim.hpp>
 #include <fcppt/math/dim/object_impl.hpp>
+#include <fcppt/math/matrix/is_static_size.hpp>
 #include <fcppt/math/matrix/object_decl.hpp>
 #include <fcppt/math/matrix/detail/dim_storage_impl.hpp>
 #include <fcppt/math/matrix/detail/row_view_impl.hpp>
 #include <fcppt/math/vector/object_impl.hpp>
+#include <fcppt/preprocessor/disable_gcc_warning.hpp>
+#include <fcppt/preprocessor/pop_warning.hpp>
+#include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/config/external_begin.hpp>
+#include <boost/static_assert.hpp>
 #include <algorithm>
 #include <iterator>
 #include <fcppt/config/external_end.hpp>
 
 
+FCPPT_PP_PUSH_WARNING
+FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
 template<
 	typename T,
 	typename N,
@@ -34,7 +41,15 @@ template<
 fcppt::math::matrix::object<T, N, M, S>::object()
 :
 	dim_base()
-{}
+// Don't initialize storage_()
+{
+	BOOST_STATIC_ASSERT((
+		fcppt::math::matrix::is_static_size<
+			N,
+			M
+		>::value
+	));
+}
 
 template<
 	typename T,
@@ -49,7 +64,12 @@ fcppt::math::matrix::object<T, N, M, S>::object(
 	dim_base(
 		_dim
 	)
-{}
+// Don't initialize storage_()
+{
+	// This constructor has no effect on static matrices
+}
+
+FCPPT_PP_POP_WARNING
 
 template<
 	typename T,
@@ -62,8 +82,17 @@ fcppt::math::matrix::object<T, N, M, S>::object(
 )
 :
 	dim_base(),
-	storage_(_storage)
-{}
+	storage_(
+		_storage
+	)
+{
+	BOOST_STATIC_ASSERT((
+		fcppt::math::matrix::is_static_size<
+			N,
+			M
+		>::value
+	));
+}
 
 template<
 	typename T,
@@ -81,7 +110,11 @@ fcppt::math::matrix::object<T, N, M, S>::object(
 	storage_(
 		_other.storage_
 	)
-{}
+{
+}
+
+FCPPT_PP_PUSH_WARNING
+FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
 
 template<
 	typename T,
@@ -104,6 +137,7 @@ fcppt::math::matrix::object<T, N, M, S>::object(
 	dim_base(
 		_other
 	)
+// Don't initialize storage_()
 {
 	math::detail::initial_size(
 		storage_,
@@ -137,7 +171,15 @@ fcppt::math::matrix::object<T, N, M, S>::object(
 )
 :
 	dim_base()
+// Don't initialize storage_()
 {
+	BOOST_STATIC_ASSERT((
+		fcppt::math::matrix::is_static_size<
+			N,
+			M
+		>::value
+	));
+
 	std::copy(
 		_begin,
 		_end,
@@ -168,7 +210,15 @@ fcppt::math::matrix::object<T, N, M, S>::object(
 	dim_base(
 		_dim
 	)
+// Don't initialize storage_()
 {
+	BOOST_STATIC_ASSERT((
+		!fcppt::math::matrix::is_static_size<
+			N,
+			M
+		>::value
+	));
+
 	math::detail::initial_size(
 		storage_,
 		std::distance(
@@ -191,7 +241,7 @@ template<
 	typename S
 >
 template<
-typename Container
+	typename Container
 >
 fcppt::math::matrix::object<T, N, M, S>::object(
 	dim const &_dim,
@@ -201,7 +251,15 @@ fcppt::math::matrix::object<T, N, M, S>::object(
 	dim_base(
 		_dim
 	)
+// Don't initialize storage_()
 {
+	BOOST_STATIC_ASSERT((
+		!fcppt::math::matrix::is_static_size<
+			N,
+			M
+		>::value
+	));
+
 	math::detail::initial_size(
 		storage_,
 		_container.size()
@@ -214,16 +272,23 @@ fcppt::math::matrix::object<T, N, M, S>::object(
 	);
 }
 
+FCPPT_PP_POP_WARNING
+
 FCPPT_MATH_DETAIL_ARRAY_ADAPTER_IMPL(
 	4,
 	(template<typename T, typename N, typename M, typename S>),
 	(fcppt::math::matrix::object<T, N, M, S>)
 )
 
+FCPPT_PP_PUSH_WARNING
+FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
+
 FCPPT_MATH_DETAIL_MAKE_VARIADIC_CONSTRUCTOR(
 	FCPPT_MATH_MATRIX_MAX_CTOR_PARAMS,
 	(7, (template<typename T, typename N, typename M, typename S> fcppt::math::matrix::object<T, N, M, S>::object))
 )
+
+FCPPT_PP_POP_WARNING
 
 template<
 	typename T,

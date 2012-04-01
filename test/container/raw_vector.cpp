@@ -6,6 +6,9 @@
 
 #include <fcppt/container/array.hpp>
 #include <fcppt/container/raw_vector.hpp>
+#include <fcppt/preprocessor/disable_gcc_warning.hpp>
+#include <fcppt/preprocessor/pop_warning.hpp>
+#include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/test/unit_test.hpp>
 #include <iterator>
@@ -26,10 +29,15 @@ template class fcppt::container::raw_vector<
 	int
 >;
 
+FCPPT_PP_PUSH_WARNING
+FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
+
 BOOST_AUTO_TEST_CASE(
 	container_raw_vector_shrink_to_fit
 )
 {
+FCPPT_PP_POP_WARNING
+
 	container_type test;
 
 	test.resize_uninitialized(
@@ -55,10 +63,15 @@ BOOST_AUTO_TEST_CASE(
 	);
 }
 
+FCPPT_PP_PUSH_WARNING
+FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
+
 BOOST_AUTO_TEST_CASE(
 	container_raw_vector_shrink
 )
 {
+FCPPT_PP_POP_WARNING
+
 	container_type test;
 
 	test.assign(
@@ -79,10 +92,15 @@ BOOST_AUTO_TEST_CASE(
 	);
 }
 
+FCPPT_PP_PUSH_WARNING
+FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
+
 BOOST_AUTO_TEST_CASE(
 	container_raw_vector_insert
 )
 {
+FCPPT_PP_POP_WARNING
+
 	container_type test;
 
 	test.push_back(10);
@@ -120,10 +138,15 @@ BOOST_AUTO_TEST_CASE(
 	);
 }
 
+FCPPT_PP_PUSH_WARNING
+FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
+
 BOOST_AUTO_TEST_CASE(
 	container_raw_vector_insert_iterator
 )
 {
+FCPPT_PP_POP_WARNING
+
 	container_type test;
 
 	typedef fcppt::container::array<
@@ -185,10 +208,15 @@ BOOST_AUTO_TEST_CASE(
 	);
 }
 
+FCPPT_PP_PUSH_WARNING
+FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
+
 BOOST_AUTO_TEST_CASE(
 	container_raw_vector_push_back
 )
 {
+FCPPT_PP_POP_WARNING
+
 	container_type test;
 
 	for(
@@ -215,10 +243,15 @@ BOOST_AUTO_TEST_CASE(
 		);
 }
 
+FCPPT_PP_PUSH_WARNING
+FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
+
 BOOST_AUTO_TEST_CASE(
 	container_raw_vector_erase
 )
 {
+FCPPT_PP_POP_WARNING
+
 	container_type test;
 
 	for(
@@ -262,10 +295,15 @@ BOOST_AUTO_TEST_CASE(
 	);
 }
 
+FCPPT_PP_PUSH_WARNING
+FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
+
 BOOST_AUTO_TEST_CASE(
 	container_raw_vector_copy
 )
 {
+FCPPT_PP_POP_WARNING
+
 	container_type test;
 
 	for(
@@ -294,10 +332,15 @@ BOOST_AUTO_TEST_CASE(
 	);
 }
 
+FCPPT_PP_PUSH_WARNING
+FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
+
 BOOST_AUTO_TEST_CASE(
 	container_raw_vector_empty_copy
 )
 {
+FCPPT_PP_POP_WARNING
+
 	container_type test;
 
 	container_type test2(test);

@@ -10,6 +10,9 @@
 #include <fcppt/math/size_type.hpp>
 #include <fcppt/math/detail/dim_matches.hpp>
 #include <fcppt/math/matrix/object_fwd.hpp>
+#include <fcppt/preprocessor/disable_gcc_warning.hpp>
+#include <fcppt/preprocessor/pop_warning.hpp>
+#include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/mpl/and.hpp>
 #include <boost/type_traits/integral_constant.hpp>
@@ -22,6 +25,9 @@ namespace math
 {
 namespace matrix
 {
+
+FCPPT_PP_PUSH_WARNING
+FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
 
 /**
 \brief Metafunction to check if a static matrix has the specified dimensions
@@ -74,6 +80,8 @@ boost::mpl::and_<
 >
 {};
 /// \endcond
+
+FCPPT_PP_POP_WARNING
 
 }
 }

@@ -7,8 +7,10 @@
 #ifndef FCPPT_CONTAINER_BITFIELD_ITERATOR_IMPL_HPP_INCLUDED
 #define FCPPT_CONTAINER_BITFIELD_ITERATOR_IMPL_HPP_INCLUDED
 
+#include <fcppt/null_ptr.hpp>
 #include <fcppt/container/bitfield/iterator_decl.hpp>
 #include <fcppt/container/bitfield/proxy_impl.hpp>
+
 
 template<
 	typename StoredType,
@@ -19,9 +21,14 @@ fcppt::container::bitfield::iterator<
 	Reference
 >::iterator()
 :
-	array_(),
-	pos_()
-{}
+	array_(
+		fcppt::null_ptr()
+	),
+	pos_(
+		0
+	)
+{
+}
 
 template<
 	typename StoredType,
@@ -35,9 +42,14 @@ fcppt::container::bitfield::iterator<
 	difference_type const _pos
 )
 :
-	array_(&_array),
-	pos_(_pos)
-{}
+	array_(
+		&_array
+	),
+	pos_(
+		_pos
+	)
+{
+}
 
 template<
 	typename StoredType,

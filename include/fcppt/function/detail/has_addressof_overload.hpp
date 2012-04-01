@@ -8,6 +8,9 @@
 #ifndef FCPPT_FUNCTION_DETAIL_HAS_ADDRESSOF_OVERLOAD_HPP_INCLUDED
 #define FCPPT_FUNCTION_DETAIL_HAS_ADDRESSOF_OVERLOAD_HPP_INCLUDED
 
+#include <fcppt/preprocessor/disable_gcc_warning.hpp>
+#include <fcppt/preprocessor/pop_warning.hpp>
+#include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/mpl/bool.hpp>
 #include <boost/type_traits/integral_constant.hpp>
@@ -44,6 +47,9 @@ struct temp
 
 template< typename Function, typename Enable = void >
 struct has_addressof_overload;
+
+FCPPT_PP_PUSH_WARNING
+FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
 
 template< typename Function >
 struct has_addressof_overload
@@ -84,6 +90,8 @@ struct has_addressof_overload
 :
 boost::false_type
 {};
+
+FCPPT_PP_POP_WARNING
 
 } // end namespace detail
 

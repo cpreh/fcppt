@@ -12,6 +12,9 @@
 #include <fcppt/container/bitfield/iterator_impl.hpp>
 #include <fcppt/container/bitfield/object_decl.hpp>
 #include <fcppt/container/bitfield/proxy_impl.hpp>
+#include <fcppt/preprocessor/disable_gcc_warning.hpp>
+#include <fcppt/preprocessor/pop_warning.hpp>
+#include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/spirit/home/phoenix/core/argument.hpp>
 #include <boost/spirit/home/phoenix/operator/bitwise.hpp>
@@ -37,13 +40,18 @@ fcppt::container::bitfield::object<Enum, Size, InternalType>::boolean_test() con
 		);
 }
 
+FCPPT_PP_PUSH_WARNING
+FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
+
 template<
 	typename Enum,
 	Enum Size,
 	typename InternalType
 >
 fcppt::container::bitfield::object<Enum, Size, InternalType>::object()
-{}
+// Don't initialize array_
+{
+}
 
 template<
 	typename Enum,
@@ -53,14 +61,17 @@ template<
 fcppt::container::bitfield::object<Enum, Size, InternalType>::object(
 	Enum const _index
 )
+// Don't initialize array_
 {
-	clear();
+	this->clear();
 
-	set(
+	this->set(
 		_index,
 		true
 	);
 }
+
+FCPPT_PP_POP_WARNING
 
 template<
 	typename Enum,

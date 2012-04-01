@@ -6,6 +6,9 @@
 
 #include <fcppt/container/array.hpp>
 #include <fcppt/container/array_fusion.hpp>
+#include <fcppt/preprocessor/disable_gcc_warning.hpp>
+#include <fcppt/preprocessor/pop_warning.hpp>
+#include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/fusion/algorithm/iteration/for_each.hpp>
 #include <boost/test/unit_test.hpp>
@@ -44,10 +47,15 @@ private:
 
 }
 
+FCPPT_PP_PUSH_WARNING
+FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
+
 BOOST_AUTO_TEST_CASE(
 	container_array_fusion
 )
 {
+FCPPT_PP_POP_WARNING
+
 	fcppt::container::array<
 		int,
 		5

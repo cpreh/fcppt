@@ -8,6 +8,9 @@
 #define FCPPT_TYPE_TRAITS_DETAIL_IS_ITERATOR_HPP_INCLUDED
 
 #include <fcppt/null_ptr.hpp>
+#include <fcppt/preprocessor/disable_gcc_warning.hpp>
+#include <fcppt/preprocessor/pop_warning.hpp>
+#include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/mpl/not.hpp>
 #include <boost/type_traits/integral_constant.hpp>
@@ -25,6 +28,9 @@ namespace type_traits
 {
 namespace detail
 {
+
+FCPPT_PP_PUSH_WARNING
+FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
 
 template<
 	typename IterT,
@@ -91,6 +97,8 @@ public:
 		)
 		== sizeof(true_t);
 };
+
+FCPPT_PP_POP_WARNING
 
 }
 }

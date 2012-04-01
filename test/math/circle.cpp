@@ -7,15 +7,23 @@
 #include <fcppt/math/sphere/circle.hpp>
 #include <fcppt/math/sphere/intersects.hpp>
 #include <fcppt/math/sphere/object_impl.hpp>
+#include <fcppt/preprocessor/disable_gcc_warning.hpp>
+#include <fcppt/preprocessor/pop_warning.hpp>
+#include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/test/unit_test.hpp>
 #include <fcppt/config/external_end.hpp>
 
 
+FCPPT_PP_PUSH_WARNING
+FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
+
 BOOST_AUTO_TEST_CASE(
 	circle_intersects
 )
 {
+FCPPT_PP_POP_WARNING
+
 	typedef fcppt::math::sphere::circle<
 		float
 	>::type circle_type;

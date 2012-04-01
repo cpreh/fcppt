@@ -7,6 +7,9 @@
 #ifndef FCPPT_SIGNAL_DETAIL_ENABLE_IF_VOID_HPP_INCLUDED
 #define FCPPT_SIGNAL_DETAIL_ENABLE_IF_VOID_HPP_INCLUDED
 
+#include <fcppt/preprocessor/disable_gcc_warning.hpp>
+#include <fcppt/preprocessor/pop_warning.hpp>
+#include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/type_traits/function_traits.hpp>
 #include <boost/type_traits/is_void.hpp>
@@ -20,6 +23,9 @@ namespace signal
 {
 namespace detail
 {
+
+FCPPT_PP_PUSH_WARNING
+FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
 
 template<
 	typename T
@@ -35,6 +41,8 @@ boost::enable_if<
 >
 {
 };
+
+FCPPT_PP_POP_WARNING
 
 }
 }

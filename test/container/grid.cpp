@@ -13,6 +13,9 @@
 #include <fcppt/container/grid/resize_preserve.hpp>
 #include <fcppt/container/grid/resize_preserve_init.hpp>
 #include <fcppt/container/grid/size_type.hpp>
+#include <fcppt/preprocessor/disable_gcc_warning.hpp>
+#include <fcppt/preprocessor/pop_warning.hpp>
+#include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/test/unit_test.hpp>
 #include <algorithm>
@@ -96,8 +99,15 @@ template class fcppt::container::grid::object<
 	2
 >;
 
-BOOST_AUTO_TEST_CASE(container_grid_init)
+FCPPT_PP_PUSH_WARNING
+FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
+
+BOOST_AUTO_TEST_CASE(
+	container_grid_init
+)
 {
+FCPPT_PP_POP_WARNING
+
 	int2_grid const test(
 		int2_grid::dim(
 			10,
@@ -116,8 +126,15 @@ BOOST_AUTO_TEST_CASE(container_grid_init)
 	);
 }
 
-BOOST_AUTO_TEST_CASE(container_grid_iterator)
+FCPPT_PP_PUSH_WARNING
+FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
+
+BOOST_AUTO_TEST_CASE(
+	container_grid_iterator
+)
 {
+FCPPT_PP_POP_WARNING
+
 	typedef std::vector<
 		int
 	> int_vector;
@@ -142,8 +159,15 @@ BOOST_AUTO_TEST_CASE(container_grid_iterator)
 	);
 }
 
-BOOST_AUTO_TEST_CASE(container_grid_iterator_position)
+FCPPT_PP_PUSH_WARNING
+FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
+
+BOOST_AUTO_TEST_CASE(
+	container_grid_iterator_position
+)
 {
+FCPPT_PP_POP_WARNING
+
 	int2_grid const grid(
 		int2_grid::dim(2,2));
 
@@ -175,8 +199,15 @@ BOOST_AUTO_TEST_CASE(container_grid_iterator_position)
 		int2_grid::dim(1,1));
 }
 
-BOOST_AUTO_TEST_CASE(container_grid_compare)
+FCPPT_PP_PUSH_WARNING
+FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
+
+BOOST_AUTO_TEST_CASE(
+	container_grid_compare
+)
 {
+FCPPT_PP_POP_WARNING
+
 	int2_grid const test1(
 		int2_grid::dim(
 			5,
@@ -220,8 +251,15 @@ BOOST_AUTO_TEST_CASE(container_grid_compare)
 	);
 }
 
-BOOST_AUTO_TEST_CASE(container_grid_index_2d)
+FCPPT_PP_PUSH_WARNING
+FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
+
+BOOST_AUTO_TEST_CASE(
+	container_grid_index_2d
+)
 {
+FCPPT_PP_POP_WARNING
+
 	int2_grid test(
 		int2_grid::dim(
 			5,
@@ -266,8 +304,15 @@ BOOST_AUTO_TEST_CASE(container_grid_index_2d)
 			);
 }
 
-BOOST_AUTO_TEST_CASE(container_grid_index_3d)
+FCPPT_PP_PUSH_WARNING
+FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
+
+BOOST_AUTO_TEST_CASE(
+	container_grid_index_3d
+)
 {
+FCPPT_PP_POP_WARNING
+
 	int3_grid test(
 		int3_grid::dim(
 			5,
@@ -319,8 +364,15 @@ BOOST_AUTO_TEST_CASE(container_grid_index_3d)
 				);
 }
 
-BOOST_AUTO_TEST_CASE(container_grid_const_data)
+FCPPT_PP_PUSH_WARNING
+FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
+
+BOOST_AUTO_TEST_CASE(
+	container_grid_const_data
+)
 {
+FCPPT_PP_POP_WARNING
+
 	int2_grid const test(
 		int2_grid::dim(
 			5,
@@ -338,8 +390,15 @@ BOOST_AUTO_TEST_CASE(container_grid_const_data)
 	);
 }
 
-BOOST_AUTO_TEST_CASE(container_grid_size)
+FCPPT_PP_PUSH_WARNING
+FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
+
+BOOST_AUTO_TEST_CASE(
+	container_grid_size
+)
 {
+FCPPT_PP_POP_WARNING
+
 	int2_grid const test(
 		int2_grid::dim(
 			3,
@@ -352,8 +411,15 @@ BOOST_AUTO_TEST_CASE(container_grid_size)
 	);
 }
 
-BOOST_AUTO_TEST_CASE(container_grid_non_pod)
+FCPPT_PP_PUSH_WARNING
+FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
+
+BOOST_AUTO_TEST_CASE(
+	container_grid_non_pod
+)
 {
+FCPPT_PP_POP_WARNING
+
 	grid2_nonpod const test(
 		grid2_nonpod::dim(
 			5,
@@ -374,8 +440,15 @@ BOOST_AUTO_TEST_CASE(container_grid_non_pod)
 		);
 }
 
-BOOST_AUTO_TEST_CASE(container_grid_resize)
+FCPPT_PP_PUSH_WARNING
+FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
+
+BOOST_AUTO_TEST_CASE(
+	container_grid_resize
+)
 {
+FCPPT_PP_POP_WARNING
+
 	int2_grid test(
 		int2_grid::dim(
 			10,
@@ -412,8 +485,15 @@ BOOST_AUTO_TEST_CASE(container_grid_resize)
 	);
 }
 
-BOOST_AUTO_TEST_CASE(container_grid_resize_preverse)
+FCPPT_PP_PUSH_WARNING
+FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
+
+BOOST_AUTO_TEST_CASE(
+	container_grid_resize_preverse
+)
 {
+FCPPT_PP_POP_WARNING
+
 	sz_pair_grid test(
 		sz_pair_grid::dim(
 			5,
@@ -485,8 +565,15 @@ BOOST_AUTO_TEST_CASE(container_grid_resize_preverse)
 		}
 }
 
-BOOST_AUTO_TEST_CASE(container_grid_resize_preverse_init)
+FCPPT_PP_PUSH_WARNING
+FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
+
+BOOST_AUTO_TEST_CASE(
+	container_grid_resize_preverse_init
+)
 {
+FCPPT_PP_POP_WARNING
+
 	sz_pair_grid test(
 		sz_pair_grid::dim(
 			5,
@@ -593,8 +680,15 @@ fill_functor(
 }
 }
 
-BOOST_AUTO_TEST_CASE(container_grid_fill)
+FCPPT_PP_PUSH_WARNING
+FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
+
+BOOST_AUTO_TEST_CASE(
+	container_grid_fill
+)
 {
+FCPPT_PP_POP_WARNING
+
 	int2_grid test(
 		(
 		int2_grid::dim(
@@ -615,10 +709,15 @@ BOOST_AUTO_TEST_CASE(container_grid_fill)
 	);
 }
 
+FCPPT_PP_PUSH_WARNING
+FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
+
 BOOST_AUTO_TEST_CASE(
 	container_grid_in_range
 )
 {
+FCPPT_PP_POP_WARNING
+
 	int2_grid const test(
 		int2_grid::dim(
 			3,
@@ -657,10 +756,15 @@ BOOST_AUTO_TEST_CASE(
 	);
 }
 
+FCPPT_PP_PUSH_WARNING
+FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
+
 BOOST_AUTO_TEST_CASE(
 	container_is_square
 )
 {
+FCPPT_PP_POP_WARNING
+
 	BOOST_CHECK(
 		fcppt::container::grid::is_square(
 			int2_grid(

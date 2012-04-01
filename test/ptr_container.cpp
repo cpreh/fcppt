@@ -12,6 +12,9 @@
 #include <fcppt/container/ptr/insert_unique_ptr_multiset.hpp>
 #include <fcppt/container/ptr/insert_unique_ptr_set.hpp>
 #include <fcppt/container/ptr/push_back_unique_ptr.hpp>
+#include <fcppt/preprocessor/disable_gcc_warning.hpp>
+#include <fcppt/preprocessor/pop_warning.hpp>
+#include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/ptr_container/ptr_map.hpp>
 #include <boost/ptr_container/ptr_set.hpp>
@@ -20,10 +23,15 @@
 #include <fcppt/config/external_end.hpp>
 
 
+FCPPT_PP_PUSH_WARNING
+FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
+
 BOOST_AUTO_TEST_CASE(
 	ptr_container
 )
 {
+FCPPT_PP_POP_WARNING
+
 	typedef fcppt::unique_ptr<
 		std::string
 	> string_unique_ptr;
@@ -73,10 +81,15 @@ BOOST_AUTO_TEST_CASE(
 	);
 }
 
+FCPPT_PP_PUSH_WARNING
+FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
+
 BOOST_AUTO_TEST_CASE(
 	ptr_container_set
 )
 {
+FCPPT_PP_POP_WARNING
+
 	typedef boost::ptr_set<
 		std::string
 	> string_ptr_set;
@@ -103,10 +116,15 @@ BOOST_AUTO_TEST_CASE(
 	);
 }
 
+FCPPT_PP_PUSH_WARNING
+FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
+
 BOOST_AUTO_TEST_CASE(
 	ptr_container_multiset
 )
 {
+FCPPT_PP_POP_WARNING
+
 	typedef boost::ptr_multiset<
 		std::string
 	> string_ptr_multiset;
@@ -134,10 +152,15 @@ BOOST_AUTO_TEST_CASE(
 	);
 }
 
+FCPPT_PP_PUSH_WARNING
+FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
+
 BOOST_AUTO_TEST_CASE(
 	ptr_container_map
 )
 {
+FCPPT_PP_POP_WARNING
+
 	typedef boost::ptr_map<
 		int,
 		std::string
@@ -167,10 +190,15 @@ BOOST_AUTO_TEST_CASE(
 	);
 }
 
+FCPPT_PP_PUSH_WARNING
+FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
+
 BOOST_AUTO_TEST_CASE(
 	ptr_container_multimap
 )
 {
+FCPPT_PP_POP_WARNING
+
 	typedef boost::ptr_multimap<
 		int,
 		std::string

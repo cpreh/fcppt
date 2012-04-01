@@ -7,6 +7,9 @@
 #ifndef FCPPT_CONTAINER_GRID_DETAIL_CHOOSE_POINTER_HPP_INCLUDED
 #define FCPPT_CONTAINER_GRID_DETAIL_CHOOSE_POINTER_HPP_INCLUDED
 
+#include <fcppt/preprocessor/disable_gcc_warning.hpp>
+#include <fcppt/preprocessor/pop_warning.hpp>
+#include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/mpl/if.hpp>
 #include <boost/type_traits/is_const.hpp>
@@ -20,6 +23,9 @@ namespace grid
 {
 namespace detail
 {
+
+FCPPT_PP_PUSH_WARNING
+FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
 
 template<
 	typename Container
@@ -35,6 +41,8 @@ boost::mpl::if_<
 >
 {
 };
+
+FCPPT_PP_POP_WARNING
 
 }
 }

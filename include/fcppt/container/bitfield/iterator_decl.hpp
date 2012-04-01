@@ -11,6 +11,9 @@
 #include <fcppt/container/bitfield/iterator_fwd.hpp>
 #include <fcppt/container/bitfield/value_type.hpp>
 #include <fcppt/container/bitfield/detail/iterator_type.hpp>
+#include <fcppt/preprocessor/disable_gcc_warning.hpp>
+#include <fcppt/preprocessor/pop_warning.hpp>
+#include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/iterator/iterator_facade.hpp>
 #include <boost/type_traits/remove_reference.hpp>
@@ -23,6 +26,9 @@ namespace container
 {
 namespace bitfield
 {
+
+FCPPT_PP_PUSH_WARNING
+FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
 
 /**
 \brief The (random-access) iterator type used by
@@ -46,6 +52,9 @@ class iterator
 		Reference
 	>::type
 {
+
+FCPPT_PP_POP_WARNING
+
 	typedef typename fcppt::container::bitfield::detail::iterator_type<
 		StoredType,
 		Reference

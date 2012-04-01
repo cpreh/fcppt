@@ -7,10 +7,17 @@
 #ifndef FCPPT_ASSIGN_DETAIL_ARRAY_IMPL_HPP_INCLUDED
 #define FCPPT_ASSIGN_DETAIL_ARRAY_IMPL_HPP_INCLUDED
 
+#include <fcppt/preprocessor/disable_gcc_warning.hpp>
+#include <fcppt/preprocessor/pop_warning.hpp>
+#include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/assign/detail/array.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <algorithm>
 #include <fcppt/config/external_end.hpp>
+
+
+FCPPT_PP_PUSH_WARNING
+FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
 
 template<
 	class T,
@@ -19,6 +26,7 @@ template<
 fcppt::assign::detail::array<T,N>::array(
 	T const &_value
 )
+// Don't initialize array_
 {
 	array_[0] = _value;
 }
@@ -31,6 +39,7 @@ fcppt::assign::detail::array<T,N>::array(
 	array<T,N-1> const &_that,
 	T const &_value
 )
+// Don't initialize array_
 {
 	std::copy(
 		_that.array_.begin(),
@@ -40,6 +49,8 @@ fcppt::assign::detail::array<T,N>::array(
 
 	array_.back() = _value;
 }
+
+FCPPT_PP_POP_WARNING
 
 template<
 	class T,

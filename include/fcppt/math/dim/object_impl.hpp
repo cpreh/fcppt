@@ -17,6 +17,9 @@
 #include <fcppt/math/dim/max_ctor_params.hpp>
 #include <fcppt/math/dim/normal_storage.hpp>
 #include <fcppt/math/dim/object_decl.hpp>
+#include <fcppt/preprocessor/disable_gcc_warning.hpp>
+#include <fcppt/preprocessor/pop_warning.hpp>
+#include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <algorithm>
 #include <functional>
@@ -24,6 +27,8 @@
 #include <numeric>
 #include <fcppt/config/external_end.hpp>
 
+FCPPT_PP_PUSH_WARNING
+FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
 
 template<
 	typename T,
@@ -31,7 +36,11 @@ template<
 	typename S
 >
 fcppt::math::dim::object<T, N, S>::object()
-{}
+// Don't initialize storage_
+{
+}
+
+FCPPT_PP_POP_WARNING
 
 template<
 	typename T,
@@ -42,8 +51,11 @@ fcppt::math::dim::object<T, N, S>::object(
 	storage_type const &_storage
 )
 :
-	storage_(_storage)
-{}
+	storage_(
+		_storage
+	)
+{
+}
 
 template<
 	typename T,
@@ -54,8 +66,14 @@ fcppt::math::dim::object<T, N, S>::object(
 	object const &_other
 )
 :
-	storage_(_other.storage_)
-{}
+	storage_(
+		_other.storage_
+	)
+{
+}
+
+FCPPT_PP_PUSH_WARNING
+FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
 
 template<
 	typename T,
@@ -72,6 +90,7 @@ fcppt::math::dim::object<T, N, S>::object(
 		OtherStorage
 	> const &_other
 )
+// Don't initialize storage_
 {
 	math::detail::initial_size(
 		storage_,
@@ -102,6 +121,7 @@ fcppt::math::dim::object<T, N, S>::object(
 		In
 	>::type const _end
 )
+// Don't initialize storage_
 {
 	math::detail::initial_size(
 		storage_,
@@ -118,16 +138,23 @@ fcppt::math::dim::object<T, N, S>::object(
 	);
 }
 
+FCPPT_PP_POP_WARNING
+
 FCPPT_MATH_DETAIL_ARRAY_ADAPTER_IMPL(
 	3,
 	(template<typename T, typename N, typename S>),
 	(fcppt::math::dim::object<T, N, S>)
 )
 
+FCPPT_PP_PUSH_WARNING
+FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
+
 FCPPT_MATH_DETAIL_MAKE_VARIADIC_CONSTRUCTOR(
 	FCPPT_MATH_DIM_MAX_CTOR_PARAMS,
 	(5, (template<typename T, typename N, typename S> fcppt::math::dim::object<T, N, S>::object))
 )
+
+FCPPT_PP_POP_WARNING
 
 // Doxygen says: warning: no uniquely matching class member found for ...
 /// \cond FCPPT_DOXYGEN_DEBUG

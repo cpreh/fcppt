@@ -7,6 +7,7 @@
 #ifndef FCPPT_CONTAINER_RAW_VECTOR_DECL_HPP_INCLUDED
 #define FCPPT_CONTAINER_RAW_VECTOR_DECL_HPP_INCLUDED
 
+#include <fcppt/noncopyable.hpp>
 #include <fcppt/container/raw_vector_fwd.hpp>
 #include <fcppt/type_traits/is_input_iterator.hpp>
 #include <fcppt/config/external_begin.hpp>
@@ -579,9 +580,14 @@ private:
 	void
 	deallocate();
 
-	struct impl
+	class impl
 	{
-		explicit impl(
+		FCPPT_NONCOPYABLE(
+			impl
+		);
+	public:
+		explicit
+		impl(
 			A const &
 		);
 
@@ -589,6 +595,8 @@ private:
 			A const &,
 			size_type
 		);
+
+		~impl();
 
 		A alloc_;
 

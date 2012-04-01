@@ -8,6 +8,9 @@
 #define FCPPT_SIGNAL_OBJECT_DECL_HPP_INCLUDED
 
 #include <fcppt/noncopyable.hpp>
+#include <fcppt/preprocessor/disable_gcc_warning.hpp>
+#include <fcppt/preprocessor/pop_warning.hpp>
+#include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/signal/base_decl.hpp>
 #include <fcppt/signal/object_fwd.hpp>
 #include <fcppt/signal/detail/declare_operator.hpp>
@@ -23,6 +26,9 @@ namespace fcppt
 {
 namespace signal
 {
+
+FCPPT_PP_PUSH_WARNING
+FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
 
 /**
 \brief Represents a signal with a non-void return value
@@ -42,8 +48,11 @@ template<
 >
 class object
 :
-	public Base<T>
+	private Base<T>
 {
+
+FCPPT_PP_POP_WARNING
+
 	FCPPT_NONCOPYABLE(
 		object
 	);
@@ -111,11 +120,16 @@ public:
 		FCPPT_SIGNAL_DETAIL_DECLARE_OPERATOR,
 		nil
 	)
+
+	using base::connect;
 private:
 	combiner_type combiner_;
 
 	result_type initial_result_;
 };
+
+FCPPT_PP_PUSH_WARNING
+FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
 
 /**
 \brief Represents a signal without a return value
@@ -140,8 +154,11 @@ class object<
 	>::type
 >
 :
-	public Base<T>
+	private Base<T>
 {
+
+FCPPT_PP_POP_WARNING
+
 	FCPPT_NONCOPYABLE(
 		object
 	);
@@ -178,6 +195,8 @@ public:
 		FCPPT_SIGNAL_DETAIL_DECLARE_OPERATOR,
 		nil
 	)
+
+	using base::connect;
 };
 
 }

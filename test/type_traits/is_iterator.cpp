@@ -4,6 +4,9 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
+#include <fcppt/preprocessor/disable_gcc_warning.hpp>
+#include <fcppt/preprocessor/pop_warning.hpp>
+#include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/type_traits/is_bidirectional_iterator.hpp>
 #include <fcppt/type_traits/is_forward_iterator.hpp>
 #include <fcppt/type_traits/is_input_iterator.hpp>
@@ -25,10 +28,15 @@ struct not_iterator
 
 }
 
+FCPPT_PP_PUSH_WARNING
+FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
+
 BOOST_AUTO_TEST_CASE(
 	type_traits_is_iterator
 )
 {
+FCPPT_PP_POP_WARNING
+
 	BOOST_CHECK(
 		fcppt::type_traits::is_iterator<
 			int *
@@ -66,10 +74,15 @@ BOOST_AUTO_TEST_CASE(
 	);
 }
 
+FCPPT_PP_PUSH_WARNING
+FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
+
 BOOST_AUTO_TEST_CASE(
 	type_traits_iterator_category
 )
 {
+FCPPT_PP_POP_WARNING
+
 	BOOST_CHECK(
 		fcppt::type_traits::is_input_iterator<
 			int *

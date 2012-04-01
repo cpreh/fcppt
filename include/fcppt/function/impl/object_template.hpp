@@ -76,14 +76,28 @@ class object< FCPPT_FUNCTION_OBJECT_PP_TEMPLATE_ARGS >
 		typedef R result_type;
 
 		object()
-		{}
+		:
+			function_()
+		{
+		}
 
-		object( detail::clear_type* )
-		{}
+		object(
+			detail::clear_type *
+		)
+		:
+			function_()
+		{
+		}
 
-		object( const object& other )
-			: function_( other.function_ )
-		{}
+		object(
+			object const &_other
+		)
+		:
+			function_(
+				_other.function_
+			)
+		{
+		}
 
 		// constructor for functors without operator& overload, and regular functions
 		template< typename F >

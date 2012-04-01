@@ -8,6 +8,9 @@
 #define FCPPT_MATH_MATRIX_IS_MATRIX_HPP_INCLUDED
 
 #include <fcppt/math/matrix/object_decl.hpp>
+#include <fcppt/preprocessor/disable_gcc_warning.hpp>
+#include <fcppt/preprocessor/pop_warning.hpp>
+#include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/mpl/bool.hpp>
 #include <fcppt/config/external_end.hpp>
@@ -18,6 +21,10 @@ namespace math
 {
 namespace matrix
 {
+
+FCPPT_PP_PUSH_WARNING
+FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
+
 /**
 \brief Metafunction to test if a type is a matrix type
 \ingroup fcpptmathmatrix
@@ -50,6 +57,9 @@ struct is_matrix
 {
 };
 /// \endcond
+
+FCPPT_PP_POP_WARNING
+
 }
 }
 }

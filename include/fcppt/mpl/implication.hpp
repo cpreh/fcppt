@@ -7,6 +7,9 @@
 #ifndef FCPPT_MPL_IMPLICATION_HPP_INCLUDED
 #define FCPPT_MPL_IMPLICATION_HPP_INCLUDED
 
+#include <fcppt/preprocessor/disable_gcc_warning.hpp>
+#include <fcppt/preprocessor/pop_warning.hpp>
+#include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/mpl/not.hpp>
 #include <boost/mpl/or.hpp>
@@ -17,6 +20,9 @@ namespace fcppt
 {
 namespace mpl
 {
+
+FCPPT_PP_PUSH_WARNING
+FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
 
 /**
 \brief The Implication function: \a Left -> \a Right
@@ -48,6 +54,8 @@ boost::mpl::or_<
 >
 {
 };
+
+FCPPT_PP_POP_WARNING
 
 }
 }

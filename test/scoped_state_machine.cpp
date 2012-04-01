@@ -6,6 +6,9 @@
 
 #include <fcppt/noncopyable.hpp>
 #include <fcppt/scoped_state_machine.hpp>
+#include <fcppt/preprocessor/disable_gcc_warning.hpp>
+#include <fcppt/preprocessor/pop_warning.hpp>
+#include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/statechart/simple_state.hpp>
 #include <boost/statechart/state_machine.hpp>
@@ -60,10 +63,15 @@ public:
 
 }
 
+FCPPT_PP_PUSH_WARNING
+FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
+
 BOOST_AUTO_TEST_CASE(
 	scoped_state_machine
 )
 {
+FCPPT_PP_POP_WARNING
+
 	machine test;
 
 	BOOST_REQUIRE(

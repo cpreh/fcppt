@@ -9,12 +9,18 @@
 
 #include <fcppt/alignment/size_type.hpp>
 #include <fcppt/alignment/detail/make_type.hpp>
+#include <fcppt/preprocessor/disable_gcc_warning.hpp>
+#include <fcppt/preprocessor/pop_warning.hpp>
+#include <fcppt/preprocessor/push_warning.hpp>
 
 
 namespace fcppt
 {
 namespace alignment
 {
+
+FCPPT_PP_PUSH_WARNING
+FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
 
 /**
 \brief Creates a typedef to an aligned type
@@ -42,7 +48,10 @@ fcppt::alignment::detail::make_type<
 	Type,
 	Alignment
 >
-{};
+{
+};
+
+FCPPT_PP_POP_WARNING
 
 }
 }

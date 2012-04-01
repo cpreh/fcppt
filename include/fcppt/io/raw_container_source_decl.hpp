@@ -10,6 +10,9 @@
 #include <fcppt/nonassignable.hpp>
 #include <fcppt/shared_ptr_impl.hpp>
 #include <fcppt/io/raw_container_source_fwd.hpp>
+#include <fcppt/preprocessor/disable_gcc_warning.hpp>
+#include <fcppt/preprocessor/pop_warning.hpp>
+#include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/iostreams/concepts.hpp>
 #include <ios>
@@ -37,12 +40,17 @@ public:
 	char
 	char_type;
 
+FCPPT_PP_PUSH_WARNING
+FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
+
 	struct category
 	:
 		boost::iostreams::input_seekable,
 		boost::iostreams::device_tag
 	{
 	};
+
+FCPPT_PP_POP_WARNING
 
 	typedef
 	Container
@@ -57,10 +65,15 @@ public:
 	const_iterator;
 
 	template<typename Iterator>
-	explicit
 	raw_container_source(
 		Iterator,
 		Iterator);
+
+	raw_container_source(
+		raw_container_source const &
+	);
+
+	~raw_container_source();
 
 	std::streamsize
 	read(

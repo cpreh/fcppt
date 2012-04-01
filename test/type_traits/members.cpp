@@ -4,6 +4,9 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
+#include <fcppt/preprocessor/disable_gcc_warning.hpp>
+#include <fcppt/preprocessor/pop_warning.hpp>
+#include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/type_traits/generate_has_member_function.hpp>
 #include <fcppt/type_traits/generate_has_type.hpp>
 #include <fcppt/type_traits/is_iterable.hpp>
@@ -14,11 +17,17 @@
 
 namespace
 {
+
+FCPPT_PP_PUSH_WARNING
+FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
+
 FCPPT_TYPE_TRAITS_GENERATE_HAS_MEMBER_FUNCTION(
 	worm);
 
 FCPPT_TYPE_TRAITS_GENERATE_HAS_TYPE(
 	size_type);
+
+FCPPT_PP_POP_WARNING
 
 struct apple
 {
@@ -39,8 +48,13 @@ public:
 };
 }
 
+FCPPT_PP_PUSH_WARNING
+FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
+
 BOOST_AUTO_TEST_CASE(generate_has_member_function)
 {
+FCPPT_PP_POP_WARNING
+
 	BOOST_CHECK(
 		(has_worm<apple,void(apple::*)()>::value));
 
@@ -48,8 +62,13 @@ BOOST_AUTO_TEST_CASE(generate_has_member_function)
 		(!has_worm<orange,void(orange::*)()>::value));
 }
 
+FCPPT_PP_PUSH_WARNING
+FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
+
 BOOST_AUTO_TEST_CASE(generate_has_type)
 {
+FCPPT_PP_POP_WARNING
+
 	BOOST_CHECK(
 		!has_size_type<apple>::value);
 
@@ -57,8 +76,13 @@ BOOST_AUTO_TEST_CASE(generate_has_type)
 		has_size_type<orange>::value);
 }
 
+FCPPT_PP_PUSH_WARNING
+FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
+
 BOOST_AUTO_TEST_CASE(is_iterable)
 {
+FCPPT_PP_POP_WARNING
+
 	BOOST_CHECK(
 		!fcppt::type_traits::is_iterable<int>::value);
 

@@ -8,6 +8,9 @@
 #define FCPPT_MATH_MATRIX_IS_STATIC_SIZE_HPP_INCLUDED
 
 #include <fcppt/math/is_static_size.hpp>
+#include <fcppt/preprocessor/disable_gcc_warning.hpp>
+#include <fcppt/preprocessor/pop_warning.hpp>
+#include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/mpl/and.hpp>
 #include <fcppt/config/external_end.hpp>
@@ -18,6 +21,9 @@ namespace math
 {
 namespace matrix
 {
+
+FCPPT_PP_PUSH_WARNING
+FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
 
 /**
 \brief Metafunction to test if a matrix's dimension types are static
@@ -40,6 +46,8 @@ boost::mpl::and_<
 	>
 >
 {};
+
+FCPPT_PP_POP_WARNING
 
 }
 }

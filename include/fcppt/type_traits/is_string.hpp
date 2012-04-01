@@ -7,6 +7,9 @@
 #ifndef FCPPT_TYPE_TRAITS_IS_STRING_HPP_INCLUDED
 #define FCPPT_TYPE_TRAITS_IS_STRING_HPP_INCLUDED
 
+#include <fcppt/preprocessor/disable_gcc_warning.hpp>
+#include <fcppt/preprocessor/pop_warning.hpp>
+#include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/type_traits/integral_constant.hpp>
 #include <string>
@@ -17,6 +20,9 @@ namespace fcppt
 {
 namespace type_traits
 {
+
+FCPPT_PP_PUSH_WARNING
+FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
 
 /**
 \brief Tells if a type is a string
@@ -53,6 +59,8 @@ struct is_string<
 boost::true_type
 {
 };
+
+FCPPT_PP_POP_WARNING
 
 }
 }

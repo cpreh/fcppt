@@ -17,6 +17,9 @@
 #include <fcppt/math/matrix/detail/dim_storage.hpp>
 #include <fcppt/math/matrix/detail/row_view.hpp>
 #include <fcppt/math/vector/object_decl.hpp>
+#include <fcppt/preprocessor/disable_gcc_warning.hpp>
+#include <fcppt/preprocessor/pop_warning.hpp>
+#include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/type_traits/is_iterator.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/static_assert.hpp>
@@ -33,6 +36,9 @@ namespace math
 {
 namespace matrix
 {
+
+FCPPT_PP_PUSH_WARNING
+FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
 
 /**
 \brief A class representing dynamic or static matrices
@@ -55,7 +61,7 @@ class object
 /// \cond
 :
 private
-	detail::dim_storage<
+	fcppt::math::matrix::detail::dim_storage<
 		N,
 		M
 	>
@@ -63,6 +69,9 @@ private
 {
 	typedef detail::dim_storage<N, M> dim_base;
 public:
+
+FCPPT_PP_POP_WARNING
+
 	BOOST_STATIC_ASSERT((
 		boost::is_same<
 			typename N::value_type,

@@ -5,6 +5,9 @@
 
 
 #include <fcppt/container/map.hpp>
+#include <fcppt/preprocessor/disable_gcc_warning.hpp>
+#include <fcppt/preprocessor/pop_warning.hpp>
+#include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/test/unit_test.hpp>
 #include <map>
@@ -28,8 +31,15 @@ template class fcppt::container::map<
 	inner_map
 >;
 
-BOOST_AUTO_TEST_CASE(map_insert)
+FCPPT_PP_PUSH_WARNING
+FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
+
+BOOST_AUTO_TEST_CASE(
+	map_insert
+)
 {
+FCPPT_PP_POP_WARNING
+
 	ui_map map;
 
 	map.insert(

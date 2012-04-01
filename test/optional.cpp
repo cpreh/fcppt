@@ -5,6 +5,9 @@
 
 
 #include <fcppt/optional.hpp>
+#include <fcppt/preprocessor/disable_gcc_warning.hpp>
+#include <fcppt/preprocessor/pop_warning.hpp>
+#include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/test/unit_test.hpp>
 #include <boost/type_traits/is_same.hpp>
@@ -15,10 +18,15 @@ fcppt::optional<
 	int
 >;
 
+FCPPT_PP_PUSH_WARNING
+FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
+
 BOOST_AUTO_TEST_CASE(
 	optional
 )
 {
+FCPPT_PP_POP_WARNING
+
 	typedef fcppt::optional<
 		int
 	> optional_int;
@@ -54,10 +62,15 @@ BOOST_AUTO_TEST_CASE(
 	);
 }
 
+FCPPT_PP_PUSH_WARNING
+FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
+
 BOOST_AUTO_TEST_CASE(
 	optional_comparison
 )
 {
+FCPPT_PP_POP_WARNING
+
 	typedef fcppt::optional<
 		int
 	> optional_int;
@@ -97,10 +110,15 @@ BOOST_AUTO_TEST_CASE(
 	);
 }
 
+FCPPT_PP_PUSH_WARNING
+FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
+
 BOOST_AUTO_TEST_CASE(
 	optional_ref
 )
 {
+FCPPT_PP_POP_WARNING
+
 	typedef fcppt::optional<
 		int &
 	> optional_int_ref;
@@ -132,10 +150,15 @@ BOOST_AUTO_TEST_CASE(
 	);
 }
 
+FCPPT_PP_PUSH_WARNING
+FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
+
 BOOST_AUTO_TEST_CASE(
 	optional_ref_const
 )
 {
+FCPPT_PP_POP_WARNING
+
 	typedef fcppt::optional<
 		int const &
 	> optional_int_ref_const;
@@ -181,10 +204,14 @@ BOOST_AUTO_TEST_CASE(
 	);
 }
 
+FCPPT_PP_PUSH_WARNING
+FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
+
 BOOST_AUTO_TEST_CASE(
 	optional_ref_conversions
 )
 {
+FCPPT_PP_POP_WARNING
 	typedef fcppt::optional<
 		int &
 	> optional_int_ref;
@@ -244,10 +271,15 @@ BOOST_AUTO_TEST_CASE(
 	);
 }
 
+FCPPT_PP_PUSH_WARNING
+FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
+
 BOOST_AUTO_TEST_CASE(
 	optional_types
 )
 {
+FCPPT_PP_POP_WARNING
+
 	typedef fcppt::optional<
 		int
 	> optional_int;
@@ -336,10 +368,15 @@ typedef fcppt::optional<
 
 }
 
+FCPPT_PP_PUSH_WARNING
+FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
+
 BOOST_AUTO_TEST_CASE(
 	optional_dynamic_cast
 )
 {
+FCPPT_PP_POP_WARNING
+
 	optional_base_ref empty_base;
 
 	optional_derived_ref empty_derived(
@@ -377,11 +414,16 @@ BOOST_AUTO_TEST_CASE(
 		== &derived_object
 	);
 }
+
+FCPPT_PP_PUSH_WARNING
+FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
 
 BOOST_AUTO_TEST_CASE(
 	optional_static_cast
 )
 {
+FCPPT_PP_POP_WARNING
+
 	optional_base_ref empty_base;
 
 	optional_derived_ref empty_derived(
@@ -420,10 +462,15 @@ BOOST_AUTO_TEST_CASE(
 	);
 }
 
+FCPPT_PP_PUSH_WARNING
+FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
+
 BOOST_AUTO_TEST_CASE(
 	optional_const_cast
 )
 {
+FCPPT_PP_POP_WARNING
+
 	typedef fcppt::optional<
 		base const &
 	> optional_const_base_ref;

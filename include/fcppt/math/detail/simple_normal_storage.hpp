@@ -10,6 +10,9 @@
 #include <fcppt/math/detail/dynamic_size.hpp>
 #include <fcppt/math/detail/dynamic_storage.hpp>
 #include <fcppt/math/detail/static_storage.hpp>
+#include <fcppt/preprocessor/disable_gcc_warning.hpp>
+#include <fcppt/preprocessor/pop_warning.hpp>
+#include <fcppt/preprocessor/push_warning.hpp>
 
 
 namespace fcppt
@@ -18,6 +21,9 @@ namespace math
 {
 namespace detail
 {
+
+FCPPT_PP_PUSH_WARNING
+FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
 
 template<
 	typename T,
@@ -45,6 +51,8 @@ math::detail::dynamic_storage<
 >
 {
 };
+
+FCPPT_PP_POP_WARNING
 
 }
 }

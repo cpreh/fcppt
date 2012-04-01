@@ -10,6 +10,9 @@
 #include <fcppt/math/vector/length.hpp>
 #include <fcppt/math/vector/object_impl.hpp>
 #include <fcppt/math/vector/static.hpp>
+#include <fcppt/preprocessor/disable_gcc_warning.hpp>
+#include <fcppt/preprocessor/pop_warning.hpp>
+#include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/test/unit_test.hpp>
 #include <cmath>
@@ -25,8 +28,13 @@ vector2;
 double const epsilon = 0.001;
 }
 
+FCPPT_PP_PUSH_WARNING
+FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
+
 BOOST_AUTO_TEST_CASE(linear_interpolation)
 {
+FCPPT_PP_POP_WARNING
+
 	BOOST_CHECK(
 		std::abs(
 			fcppt::math::interpolation::linear(
@@ -64,8 +72,13 @@ BOOST_AUTO_TEST_CASE(linear_interpolation)
 				vector2(2.0,2.0)) - vector2(1.25,1.25)) < epsilon);
 }
 
+FCPPT_PP_PUSH_WARNING
+FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
+
 BOOST_AUTO_TEST_CASE(trigonometric_interpolation)
 {
+FCPPT_PP_POP_WARNING
+
 	BOOST_CHECK(
 		std::abs(
 			fcppt::math::interpolation::trigonometric(

@@ -9,6 +9,9 @@
 
 #include <fcppt/math/size_type.hpp>
 #include <fcppt/math/detail/static_storage.hpp>
+#include <fcppt/preprocessor/disable_gcc_warning.hpp>
+#include <fcppt/preprocessor/pop_warning.hpp>
+#include <fcppt/preprocessor/push_warning.hpp>
 
 
 namespace fcppt
@@ -19,6 +22,9 @@ namespace matrix
 {
 namespace detail
 {
+
+FCPPT_PP_PUSH_WARNING
+FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
 
 template<
 	typename T,
@@ -33,6 +39,8 @@ math::detail::static_storage<
 >
 {
 };
+
+FCPPT_PP_POP_WARNING
 
 }
 }

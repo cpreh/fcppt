@@ -6,6 +6,9 @@
 
 #include <fcppt/algorithm/levenshtein.hpp>
 #include <fcppt/algorithm/shortest_levenshtein.hpp>
+#include <fcppt/preprocessor/disable_gcc_warning.hpp>
+#include <fcppt/preprocessor/pop_warning.hpp>
+#include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/test/unit_test.hpp>
 #include <iostream>
@@ -41,10 +44,15 @@ test_single_levenshtein(
 }
 }
 
+FCPPT_PP_PUSH_WARNING
+FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
+
 BOOST_AUTO_TEST_CASE(
 	algorithm_levenshtein
 )
 {
+FCPPT_PP_POP_WARNING
+
 	std::cout << "Checking levenshtein distance functions...\n";
 
 	std::vector<std::string> strings;

@@ -8,6 +8,9 @@
 #define FCPPT_TYPE_TRAITS_IS_UNIQUE_PTR_HPP_INCLUDED
 
 #include <fcppt/unique_ptr_fwd.hpp>
+#include <fcppt/preprocessor/disable_gcc_warning.hpp>
+#include <fcppt/preprocessor/pop_warning.hpp>
+#include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/type_traits/integral_constant.hpp>
 #include <fcppt/config/external_end.hpp>
@@ -17,6 +20,9 @@ namespace fcppt
 {
 namespace type_traits
 {
+
+FCPPT_PP_PUSH_WARNING
+FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
 
 /**
 \brief Tells if a type is a unique ptr
@@ -51,6 +57,8 @@ struct is_unique_ptr<
 boost::true_type
 {
 };
+
+FCPPT_PP_POP_WARNING
 
 }
 }

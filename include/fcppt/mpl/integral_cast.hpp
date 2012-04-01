@@ -7,6 +7,9 @@
 #ifndef FCPPT_MPL_INTEGRAL_CAST_HPP_INCLUDED
 #define FCPPT_MPL_INTEGRAL_CAST_HPP_INCLUDED
 
+#include <fcppt/preprocessor/disable_gcc_warning.hpp>
+#include <fcppt/preprocessor/pop_warning.hpp>
+#include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/mpl/integral_c.hpp>
 #include <fcppt/config/external_end.hpp>
@@ -16,6 +19,9 @@ namespace fcppt
 {
 namespace mpl
 {
+
+FCPPT_PP_PUSH_WARNING
+FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
 
 /**
 \brief Does an integral cast on compile an integral constant
@@ -50,6 +56,8 @@ boost::mpl::integral_c<
 >
 {
 };
+
+FCPPT_PP_POP_WARNING
 
 }
 }

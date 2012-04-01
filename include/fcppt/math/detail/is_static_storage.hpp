@@ -8,6 +8,9 @@
 #define FCPPT_MATH_DETAIL_IS_STATIC_STORAGE_HPP_INCLUDED
 
 #include <fcppt/container/array_fwd.hpp>
+#include <fcppt/preprocessor/disable_gcc_warning.hpp>
+#include <fcppt/preprocessor/pop_warning.hpp>
+#include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/type_traits/integral_constant.hpp>
 #include <cstddef>
@@ -19,6 +22,9 @@ namespace math
 {
 namespace detail
 {
+
+FCPPT_PP_PUSH_WARNING
+FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
 
 template<
 	typename T
@@ -41,6 +47,8 @@ struct is_static_storage<
 :
 boost::true_type
 {};
+
+FCPPT_PP_POP_WARNING
 
 }
 }

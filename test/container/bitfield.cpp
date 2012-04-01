@@ -6,6 +6,9 @@
 
 #include <fcppt/container/bitfield/is_subset_eq.hpp>
 #include <fcppt/container/bitfield/object_impl.hpp>
+#include <fcppt/preprocessor/disable_gcc_warning.hpp>
+#include <fcppt/preprocessor/pop_warning.hpp>
+#include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/test/unit_test.hpp>
 #include <algorithm>
@@ -94,10 +97,15 @@ FCPPT_INSTANTIATE_BITFIELD(
 
 #undef FCPPT_INSTANTIATE_BITFIELD
 
+FCPPT_PP_PUSH_WARNING
+FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
+
 BOOST_AUTO_TEST_CASE(
 	container_bitfield_arithmetic
 )
 {
+FCPPT_PP_POP_WARNING
+
 	bitfield field1(
 		bitfield::null()
 	);
@@ -169,10 +177,15 @@ BOOST_AUTO_TEST_CASE(
 	);
 }
 
+FCPPT_PP_PUSH_WARNING
+FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
+
 BOOST_AUTO_TEST_CASE(
 	container_bitfield_comparison
 )
 {
+FCPPT_PP_POP_WARNING
+
 	bitfield field1(
 		bitfield::null()
 	);
@@ -205,10 +218,15 @@ BOOST_AUTO_TEST_CASE(
 	);
 }
 
+FCPPT_PP_PUSH_WARNING
+FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
+
 BOOST_AUTO_TEST_CASE(
 	container_bitfield_is_subset_eq
 )
 {
+FCPPT_PP_POP_WARNING
+
 	bitfield field1(
 		bitfield::null()
 	);
@@ -250,10 +268,15 @@ BOOST_AUTO_TEST_CASE(
 	);
 }
 
+FCPPT_PP_PUSH_WARNING
+FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
+
 BOOST_AUTO_TEST_CASE(
 	container_bitfield_empty
 )
 {
+FCPPT_PP_POP_WARNING
+
 	empty_bitfield field;
 
 	BOOST_REQUIRE(

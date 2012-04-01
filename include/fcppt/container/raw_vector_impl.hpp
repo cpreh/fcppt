@@ -307,8 +307,11 @@ fcppt::container::raw_vector<T, A>::raw_vector(
 	A const &_alloc
 )
 :
-	impl_(_alloc)
-{}
+	impl_(
+		_alloc
+	)
+{
+}
 
 template<
 	typename T,
@@ -323,7 +326,8 @@ fcppt::container::raw_vector<T, A>::raw_vector(
 		_alloc,
 		_size
 	)
-{}
+{
+}
 
 template<
 	typename T,
@@ -1237,6 +1241,15 @@ fcppt::container::raw_vector<T,A>::impl::impl(
 	)
 {
 }
+
+template<
+	typename T,
+	typename A
+>
+fcppt::container::raw_vector<T,A>::impl::~impl()
+{
+}
+
 /// \endcond
 
 template<

@@ -32,6 +32,25 @@ fcppt::io::raw_container_source<Container>::raw_container_source(
 }
 
 template<typename Container>
+fcppt::io::raw_container_source<Container>::raw_container_source(
+	raw_container_source const &_other
+)
+:
+	chars_(
+		_other.chars_
+	),
+	pos_(
+		_other.pos_
+	)
+{
+}
+
+template<typename Container>
+fcppt::io::raw_container_source<Container>::~raw_container_source()
+{
+}
+
+template<typename Container>
 std::streamsize
 fcppt::io::raw_container_source<Container>::read(
 	char *target,

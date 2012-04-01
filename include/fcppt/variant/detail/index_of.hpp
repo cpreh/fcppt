@@ -9,6 +9,9 @@
 
 #include <fcppt/mpl/index_of.hpp>
 #include <fcppt/mpl/integral_cast.hpp>
+#include <fcppt/preprocessor/disable_gcc_warning.hpp>
+#include <fcppt/preprocessor/pop_warning.hpp>
+#include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/variant/size_type.hpp>
 #include <fcppt/variant/detail/real_type.hpp>
 
@@ -19,6 +22,9 @@ namespace variant
 {
 namespace detail
 {
+
+FCPPT_PP_PUSH_WARNING
+FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
 
 template<
 	typename Types,
@@ -37,6 +43,8 @@ fcppt::mpl::integral_cast<
 	>
 >
 {};
+
+FCPPT_PP_POP_WARNING
 
 }
 }

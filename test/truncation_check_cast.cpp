@@ -6,6 +6,9 @@
 
 #include <fcppt/bad_truncation_check_cast.hpp>
 #include <fcppt/truncation_check_cast.hpp>
+#include <fcppt/preprocessor/disable_gcc_warning.hpp>
+#include <fcppt/preprocessor/pop_warning.hpp>
+#include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/test/unit_test.hpp>
 #include <climits>
@@ -26,10 +29,15 @@ check_exception(
 
 }
 
+FCPPT_PP_PUSH_WARNING
+FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
+
 BOOST_AUTO_TEST_CASE(
 	truncation_check_cast
 )
 {
+FCPPT_PP_POP_WARNING
+
 #if SHRT_MAX < LONG_MAX
 	BOOST_CHECK_EXCEPTION(
 		fcppt::truncation_check_cast<

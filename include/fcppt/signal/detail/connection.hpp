@@ -10,6 +10,9 @@
 #include <fcppt/class_symbol.hpp>
 #include <fcppt/noncopyable.hpp>
 #include <fcppt/symbol.hpp>
+#include <fcppt/preprocessor/disable_gcc_warning.hpp>
+#include <fcppt/preprocessor/pop_warning.hpp>
+#include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/signal/detail/connection_base.hpp>
 
 
@@ -20,11 +23,17 @@ namespace signal
 namespace detail
 {
 
+FCPPT_PP_PUSH_WARNING
+FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
+
 // this class is intentionally left blank
 class FCPPT_CLASS_SYMBOL connection
 :
 	public detail::connection_base
 {
+
+FCPPT_PP_POP_WARNING
+
 	FCPPT_NONCOPYABLE(
 		connection
 	);

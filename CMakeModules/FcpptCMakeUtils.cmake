@@ -300,6 +300,7 @@ IF(
 	add_definitions(
 		"-pedantic-errors -Wfloat-equal -Wredundant-decls"
 		"-Winit-self -Wsign-promo -Wcast-align -Wold-style-cast"
+		"-Weffc++"
 	)
 
 	# Disable warnings about long long because too much stuff uses it

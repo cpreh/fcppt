@@ -7,6 +7,9 @@
 #ifndef FCPPT_CONTAINER_IS_STD_VECTOR_HPP_INCLUDED
 #define FCPPT_CONTAINER_IS_STD_VECTOR_HPP_INCLUDED
 
+#include <fcppt/preprocessor/disable_gcc_warning.hpp>
+#include <fcppt/preprocessor/pop_warning.hpp>
+#include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/type_traits/integral_constant.hpp>
 #include <vector>
@@ -16,6 +19,9 @@ namespace fcppt
 {
 namespace container
 {
+
+FCPPT_PP_PUSH_WARNING
+FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
 
 /**
 \brief Metafunction to test if a container is a <code>std::%vector</code>
@@ -45,6 +51,8 @@ struct is_std_vector<
 boost::true_type
 {};
 /// \endcond
+
+FCPPT_PP_POP_WARNING
 
 }
 }

@@ -8,6 +8,9 @@
 #define FCPPT_CYCLIC_ITERATOR_DECL_HPP_INCLUDED
 
 #include <fcppt/cyclic_iterator_fwd.hpp>
+#include <fcppt/preprocessor/disable_gcc_warning.hpp>
+#include <fcppt/preprocessor/pop_warning.hpp>
+#include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/detail/cyclic_iterator_base.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/iterator/iterator_facade.hpp>
@@ -15,6 +18,9 @@
 
 namespace fcppt
 {
+
+FCPPT_PP_PUSH_WARNING
+FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
 
 /**
 \brief An iterator adaptor that cycles through a range
@@ -47,6 +53,9 @@ class cyclic_iterator
 		ContainerIterator
 	>::type
 {
+
+FCPPT_PP_POP_WARNING
+
 public:
 	/**
 	\brief The base type which is a <code>boost::iterator_facade</code>
