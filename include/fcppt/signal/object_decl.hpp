@@ -197,6 +197,8 @@ public:
 	)
 
 	using base::connect;
+
+	using base::empty;
 };
 
 }

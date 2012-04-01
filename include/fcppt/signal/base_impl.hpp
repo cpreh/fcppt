@@ -46,6 +46,15 @@ fcppt::signal::base<T>::connect(
 template<
 	typename T
 >
+bool
+fcppt::signal::base<T>::empty() const
+{
+	return connections_.empty();
+}
+
+template<
+	typename T
+>
 fcppt::signal::base<T>::base()
 :
 	connections_()

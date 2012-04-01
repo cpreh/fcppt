@@ -57,6 +57,12 @@ public:
 	connect(
 		function_type const &
 	);
+
+	/**
+	\brief Return if the signal has connections attached to it.
+	*/
+	bool
+	empty() const;
 protected:
 	typedef detail::concrete_connection<
 		function_signature
