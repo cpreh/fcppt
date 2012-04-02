@@ -206,7 +206,9 @@ FCPPT_PP_POP_WARNING
 
 	stream << test;
 
-	strong_int result;
+	strong_int result(
+		0
+	);
 
 	BOOST_REQUIRE(
 		stream >> result

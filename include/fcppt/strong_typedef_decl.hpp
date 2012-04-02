@@ -42,11 +42,6 @@ public:
 	typedef Tag tag_type;
 
 	/**
-	\brief Default initializes the strong typedef's value
-	*/
-	strong_typedef();
-
-	/**
 	\brief Constructs the strong typedef from a given value using fcppt::safe_cast.
 	*/
 	template<

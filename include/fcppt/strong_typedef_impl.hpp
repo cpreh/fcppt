@@ -18,19 +18,6 @@ template<
 	typename T,
 	typename Tag
 >
-fcppt::strong_typedef<
-	T,
-	Tag
->::strong_typedef()
-:
-	value_()
-{
-}
-
-template<
-	typename T,
-	typename Tag
->
 template<
 	typename U
 >
