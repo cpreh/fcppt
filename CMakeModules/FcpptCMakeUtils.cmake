@@ -297,11 +297,42 @@ IF(
 		${FCPPT_UTILS_GCC_ICC_CLANG_COMMON_OPTIONS}
 	)
 
+	set(
+		CMAKE_REQUIRED_FLAGS
+		"-Wall -Werror -pedantic"
+	)
+
+	check_cxx_source_compiles(
+		"#pragma GCC diagnostic push
+		int main() {}"
+		FCPPT_UTILS_HAVE_GCC_DIAGNOSTIC
+	)
+
+	unset(
+		CMAKE_REQUIRED_FLAGS
+	)
+
+	if(
+		NOT FCPPT_UTILS_HAVE_GCC_DIAGNOSTIC
+	)
+		set(
+			FCPPT_UTILS_INCLUDE_SYSTEM
+			"SYSTEM"
+		)
+	endif()
+
 	add_definitions(
 		"-pedantic-errors -Wfloat-equal -Wredundant-decls"
 		"-Winit-self -Wsign-promo -Wcast-align -Wold-style-cast"
-		"-Weffc++"
 	)
+
+	if(
+		FCPPT_UTILS_HAVE_GCC_DIAGNOSTIC
+	)
+		add_definitions(
+			"-Weffc++"
+		)
+	endif()
 
 	# Disable warnings about long long because too much stuff uses it
 	if(
@@ -431,30 +462,6 @@ if(
 		"-Wl,--no-copy-dt-needed-entries"
 		FCPPT_UTILS_HAVE_NO_COPY_DT_NEEDED_ENTRIES_LINKER_FLAG
 	)
-
-	set(
-		CMAKE_REQUIRED_FLAGS
-		"-Wall -Werror -pedantic"
-	)
-
-	check_cxx_source_compiles(
-		"#pragma GCC diagnostic push
-		int main() {}"
-		FCPPT_UTILS_HAVE_GCC_DIAGNOSTIC
-	)
-
-	unset(
-		CMAKE_REQUIRED_FLAGS
-	)
-
-	if(
-		NOT FCPPT_UTILS_HAVE_GCC_DIAGNOSTIC
-	)
-		set(
-			FCPPT_UTILS_INCLUDE_SYSTEM
-			"SYSTEM"
-		)
-	endif()
 
 	if(FCPPT_UTILS_HAVE_AS_NEEDED_LINKER_FLAG)
 		set(
