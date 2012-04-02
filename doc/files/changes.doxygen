@@ -300,6 +300,8 @@ into their own libraries, namely <code>fcppt_filesystem</code> and
 
 	<li>Support references in strong typedefs.</li>
 
+	<li>Removed the default constructor.</li>
+
 	</ul>
 </li>
 
