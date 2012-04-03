@@ -4,6 +4,7 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
+#include <fcppt/config.hpp>
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 #include <fcppt/preprocessor/disable_vc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
@@ -50,6 +51,7 @@ float
 test()
 {
 
+#if defined(FCPPT_HAVE_GCC_DIAGNOSTIC)
 // Here is a C macro from another library that uses a C style cast.
 #define SOME_C_LIB_MACRO \
 	(float)(42)
@@ -60,6 +62,9 @@ FCPPT_PP_DISABLE_GCC_WARNING(-Wold-style-cast)
 
 	return SOME_C_LIB_MACRO;
 FCPPT_PP_POP_WARNING
+#else
+	return 0.f;
+#endif
 }
 //! [pp_warning_gcc]
 
