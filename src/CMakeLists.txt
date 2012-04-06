@@ -537,7 +537,7 @@ set(
 	include/fcppt/math/matrix/vector.hpp
 	include/fcppt/math/mod.hpp
 	include/fcppt/math/mod_assign.hpp
-	include/fcppt/math/next_pow_2.hpp
+	include/fcppt/math/next_power_of_2.hpp
 	include/fcppt/math/pi.hpp
 	include/fcppt/math/point_rotate.hpp
 	include/fcppt/math/quaternion/dot.hpp
