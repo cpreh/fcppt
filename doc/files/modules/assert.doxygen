@@ -25,8 +25,8 @@ runtime. If the conditions do not hold, then some sort of error mechanism
 should be invoked. So, assertions fit into the greater picture of
 error handling, where they play an important role.
 
-Error handling in C++ can happen using different mechanisms. Usually, this
-means how a failed function call should be handled.
+Error handling in C++ can be done using different mechanisms:
+
 <ul>
 
 <li>Checking return values of functions, acting appropriately when an error has
@@ -53,7 +53,7 @@ errors, that should be handled differently.
 <dt>A failed function call that is to be expected under certain
 conditions.</dt>
 
-<dd>In this case, a function should definitly report this as a return value,
+<dd>In this case, a function should definitely report this as a return value,
 probably using something like fcppt::optional.</dt>
 
 <dt>A failed function call that is not expected under normal conditions.</dt>

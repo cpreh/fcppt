@@ -4,8 +4,8 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_MATH_NEXT_POW_2_HPP_INCLUDED
-#define FCPPT_MATH_NEXT_POW_2_HPP_INCLUDED
+#ifndef FCPPT_MATH_NEXT_POWER_OF_2_HPP_INCLUDED
+#define FCPPT_MATH_NEXT_POWER_OF_2_HPP_INCLUDED
 
 #include <fcppt/math/is_power_of_2.hpp>
 #include <fcppt/config/external_begin.hpp>
@@ -33,7 +33,7 @@ typename boost::enable_if<
 	>,
 	T
 >::type
-next_pow_2(
+next_power_of_2(
 	T const _value
 )
 {

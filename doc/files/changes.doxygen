@@ -228,6 +228,9 @@ into their own libraries, namely <code>fcppt_filesystem</code> and
 	<li>Renamed fcppt::math::vector::signed_angle to
 	fcppt::math::vector::signed_angle_between.</li>
 
+	<li>Renamed fcppt::math::next_pow_2 to
+	fcppt::math::next_power_of_2.</li>
+
 	<li>Renamed fcppt::math::vector::signed_angle_cast to
 	fcppt::math::vector::signed_angle_between_cast.</li>
 

@@ -57,6 +57,42 @@ vector3f point =
 			fcppt::math::pi<float>(),
 			0.0f));
 \endcode
+
+Note that in two dimensions, you have polar coordinates, and so you need one
+angle to denote a point on the unit circle. The point then has cartesian coordinates:
+
+<pre>
+(cos(angle),sin(angle))
+</pre>
+
+Just as expected.
+
+In three dimensions, you need two angles, usually called <em>azimuth</em> and
+<em>inclination</em> to denote a point. The resulting point has the following
+coordinates:
+
+<pre>
+(cos(inclination),cos(azimuth)*sin(inclination),sin(inclination)*sin(azimuth))
+</pre>
+
+So, if azimuth and inclination are zero, you get the point (1,0,0). In a
+coordinate system where x points to the right, y to the top and z denotes the
+"depth" (goes into the screen or out of the screen), you are on the right
+boundary of the sphere.
+
+The case where inclination is zero can be considered the sphere's "zenith"
+point, meaning a change in azimuth has no effect on the point's coordinate.
+This might be counter-intuitive if you're used to a sphere having the zenith
+point at the top. The formula for the hyperspherical coordinates, however,
+results in this slight "aberration".
+
+If the inclination is not zero, changing the azimuth towards positive infinity
+results in a clockwise rotation around the x axis, assuming the viewer looks
+down the positive x axis.
+
+Changing the inclination towards positive infinity results in a
+counterclockwise rotation around the z axis, assuming the viewer looks down
+the positive z axis.
 */
 template<typename T,typename N,typename S>
 typename
