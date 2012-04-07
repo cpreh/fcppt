@@ -69,9 +69,6 @@ private
 {
 	typedef detail::dim_storage<N, M> dim_base;
 public:
-
-FCPPT_PP_POP_WARNING
-
 	BOOST_STATIC_ASSERT((
 		boost::is_same<
 			typename N::value_type,
@@ -431,6 +428,8 @@ FCPPT_MATH_DETAIL_MAKE_OP_DECL(\
 private:
 	S storage_;
 };
+
+FCPPT_PP_POP_WARNING
 
 /**
 \brief Exchanges the elements of two matrices.

@@ -53,9 +53,6 @@ class cyclic_iterator
 		ContainerIterator
 	>::type
 {
-
-FCPPT_PP_POP_WARNING
-
 public:
 	/**
 	\brief The base type which is a <code>boost::iterator_facade</code>
@@ -197,6 +194,8 @@ private:
 		begin_,
 		end_;
 };
+
+FCPPT_PP_POP_WARNING
 
 }
 
