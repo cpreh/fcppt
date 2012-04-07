@@ -33,7 +33,7 @@
 fcppt needs the following at build time:
 <ul>
 	<li><a href="http://www.cmake.org">>= cmake-2.6</a></li>
-	<li><a href="http://www.boost.org">>= boost-1.44</a></li>
+	<li><a href="http://www.boost.org">>= boost-1.47</a></li>
 	<li>A compiler that implements <a
 	href="http://open-std.org/JTC1/SC22/WG21/docs/papers/2005/n1836.pdf">tr1</a></li>
 </ul>
@@ -41,16 +41,17 @@ fcppt needs the following at build time:
 To build the documentation, you also need <a href="http://www.doxygen.org/">>=
 doxygen-1.7.5</a>.
 
-\section requirements_download_installation_supported_platforms Supported Platforms
+\section requirements_download_installation_tested_platforms Tested Platforms
 
-The following platforms are supported:
+The following platforms are tested by us:
 
 <ul>
-	<li>gcc-4.6.1 (Gentoo Linux)</li>
-	<li>gcc-4.5.3 (Exherbo Linux)</li>
-	<li>clang-2.9 (MacOS)</li>
-	<li>clang 3.0 trunk (Exherbo Linux)</li>
-	<li>VC++ 2010 SP1 (Windows XP 32 Bit and Windows 7 64 Bit) </li>
+	<li>gcc-4.5.3 (Gentoo Linux, x86)</li>
+	<li>gcc-4.6.3 (Gentoo Linux, amd64)</li>
+	<li>gcc-4.7.0 (Gentoo Linux, amd64)</li>
+	<li>clang-3.0 (Gentoo Linux, amd64)</li>
+	<li>Apple clang 3.0 (MacOS)</li>
+	<li>VC++ 2010 SP1 (Windows 7 64 Bit) </li>
 </ul>
 
 \section requirements_download_installation_download Download
@@ -59,9 +60,9 @@ fcppt is available through our public Git Repository:
 
 git://github.com/freundlich/fcppt.git
 
-The latest fcppt release is 0.10. Get it <a
-href="http://supraverse.net/freundlich/fcppt-0.10.tar.bz2">here</a> (SHA1:
-92c0ad06b163041235897e2352ae373bfd78f7fc).
+The latest fcppt release is 0.11. Get it <a
+href="http://fcppt.org/downloads/fcppt-0.11.tar.bz2">here</a> (SHA1:
+TODO).
 
 Gentoo ebuilds are available in Freundlich's overlay at
 
