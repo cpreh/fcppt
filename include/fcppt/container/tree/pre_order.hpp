@@ -104,7 +104,7 @@ FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
 	{
 	public:
 
-FCPPT_PP_POP_WARNING
+
 
 		iterator()
 		:
@@ -225,6 +225,8 @@ FCPPT_PP_POP_WARNING
 
 		stack_type positions_;
 	};
+
+FCPPT_PP_POP_WARNING
 
 	/**
 	\brief Return an iterator to the first tree in the traversal

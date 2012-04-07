@@ -50,9 +50,6 @@ class object
 :
 	private Base<T>
 {
-
-FCPPT_PP_POP_WARNING
-
 	FCPPT_NONCOPYABLE(
 		object
 	);
@@ -128,8 +125,6 @@ private:
 	result_type initial_result_;
 };
 
-FCPPT_PP_PUSH_WARNING
-FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
 
 /**
 \brief Represents a signal without a return value
@@ -156,9 +151,6 @@ class object<
 :
 	private Base<T>
 {
-
-FCPPT_PP_POP_WARNING
-
 	FCPPT_NONCOPYABLE(
 		object
 	);
@@ -200,6 +192,8 @@ public:
 
 	using base::empty;
 };
+	
+FCPPT_PP_POP_WARNING
 
 }
 }

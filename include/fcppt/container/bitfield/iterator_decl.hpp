@@ -52,9 +52,6 @@ class iterator
 		Reference
 	>::type
 {
-
-FCPPT_PP_POP_WARNING
-
 	typedef typename fcppt::container::bitfield::detail::iterator_type<
 		StoredType,
 		Reference
@@ -159,6 +156,8 @@ public:
 		> const &
 	);
 };
+
+FCPPT_PP_POP_WARNING
 
 }
 }
