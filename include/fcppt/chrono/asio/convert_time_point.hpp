@@ -7,11 +7,12 @@
 #ifndef FCPPT_CHRONO_ASIO_CONVERT_TIME_POINT_HPP_INCLUDED
 #define FCPPT_CHRONO_ASIO_CONVERT_TIME_POINT_HPP_INCLUDED
 
-#include <fcppt/chrono/time_point_cast.hpp>
-#include <fcppt/chrono/time_point_impl.hpp>
 #include <fcppt/chrono/asio/clock.hpp>
 #include <fcppt/chrono/asio/duration.hpp>
 #include <fcppt/chrono/asio/time_point.hpp>
+#include <fcppt/config/external_begin.hpp>
+#include <boost/chrono/time_point.hpp>
+#include <fcppt/config/external_end.hpp>
 
 
 namespace fcppt
@@ -26,14 +27,14 @@ template<
 >
 fcppt::chrono::asio::time_point const
 convert_time_point(
-	fcppt::chrono::time_point<
+	boost::chrono::time_point<
 		fcppt::chrono::asio::clock,
 		Duration
 	> const &_time_point
 )
 {
 	return
-		fcppt::chrono::time_point_cast<
+		boost::chrono::time_point_cast<
 			fcppt::chrono::asio::duration
 		>(
 			_time_point
