@@ -1,4 +1,5 @@
 //          Copyright Carl Philipp Reh 2009 - 2012.
+//          Copyright Philipp Middendorf 2009 - 2012.
 // Distributed under the Boost Software License, Version 1.0.
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
@@ -7,10 +8,10 @@
 #ifndef FCPPT_ASSIGN_DETAIL_ARRAY_IMPL_HPP_INCLUDED
 #define FCPPT_ASSIGN_DETAIL_ARRAY_IMPL_HPP_INCLUDED
 
+#include <fcppt/assign/detail/array.hpp>
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
-#include <fcppt/assign/detail/array.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <algorithm>
 #include <fcppt/config/external_end.hpp>

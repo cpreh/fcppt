@@ -5,17 +5,3 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_SIGNAL_CONNECTION_MANAGER_FWD_HPP_INCLUDED
-#define FCPPT_SIGNAL_CONNECTION_MANAGER_FWD_HPP_INCLUDED
-
-namespace fcppt
-{
-namespace signal
-{
-
-class connection_manager;
-
-}
-}
-
-#endif
