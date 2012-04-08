@@ -9,14 +9,16 @@
 
 #include <fcppt/time/detail/sleep_duration.hpp>
 
+
 namespace fcppt
 {
 namespace time
 {
 
-/// The internal sleep duration
 /**
- * It defines a duration that is most appropriate for a given platform.
+\brief The duration type used by fcppt::time::sleep
+
+\ingroup fcppttime
 */
 typedef fcppt::time::detail::sleep_duration sleep_duration;
 

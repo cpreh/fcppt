@@ -9,17 +9,25 @@
 
 #include <fcppt/time/exception.hpp>
 
+
 namespace fcppt
 {
 namespace time
 {
 
-/// May be thrown if a sleep gets interrupted
+/**
+\brief May be thrown if a sleep gets interrupted
+
+\ingroup fcppttime
+*/
 class sleep_interrupted
 :
-	public time::exception
+	public fcppt::time::exception
 {
 public:
+	/**
+	\brief Constructs the exception
+	*/
 	sleep_interrupted();
 };
 

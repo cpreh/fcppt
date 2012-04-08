@@ -16,7 +16,7 @@
 
 fcppt::io::ostream &
 fcppt::time::output_tm(
-	io::ostream &_stream,
+	fcppt::io::ostream &_stream,
 	std::tm const &_tm
 )
 {

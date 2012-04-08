@@ -12,15 +12,20 @@
 #include <ctime>
 #include <fcppt/config/external_end.hpp>
 
+
 namespace fcppt
 {
 namespace time
 {
 
-/// Returns the seconds since the epoch (1.1.1970 00:00)
 /**
- * Calls std::time(0)
- * @throws time::exception if an error occurs
+\brief A wrapper around <code>%std::time</code>
+
+\ingroup fcppttime
+
+A wrapper around <code>%std::time</code>, returning the current time.
+
+\throw fcppt::time::exception if an error occurs
 */
 FCPPT_SYMBOL
 std::time_t

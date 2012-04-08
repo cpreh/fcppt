@@ -12,15 +12,25 @@
 #include <ctime>
 #include <fcppt/config/external_end.hpp>
 
+
 namespace fcppt
 {
 namespace time
 {
 
+/**
+\brief A wrapper around <code>%std::gmtime</code>
+
+\ingroup fcppttime
+
+Converts \a time to an <code>%std::tm</code> using <code>%std::gmtime</code>.
+
+\param time The time to convert
+*/
 FCPPT_SYMBOL
 std::tm const
 gmtime(
-	std::time_t
+	std::time_t time
 );
 
 }

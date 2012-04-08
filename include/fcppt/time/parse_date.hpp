@@ -19,18 +19,28 @@ namespace fcppt
 namespace time
 {
 
-/// Tries to parse a date from @a stream and put the result in @a result
 /**
- * If the parsing is successful, the result will be placed in @result (tm_mday, tm_mon and tm_year)
- * Otherwise the failbit of @a stream will be set and @a result will be left untouched.
- * Note that this function will only touch a portion of the members of @a result.
- * You will have to set the other members to meaningful values yourself.
- * @return @a stream
+\brief Tries to parse a date from a stream
+
+\ingroup fcppttime
+
+Tries to parse a date from \a stream, storing the result in \a result, using
+the <code>std::time_get</code> locale face obtained from the locale of \a
+stream. If the parsing is successful, the following members of \a result might
+be modified: <code>tm_mday</code>, <code>tm_mon</code> and
+<code>tm_year</code>. Otherwise the failbit of \a stream will be set and \a
+result will be left untouched.
+
+\param stream The stream to parse from
+
+\param result The result
+
+\return \a stream
 */
 FCPPT_SYMBOL
-io::istream &
+fcppt::io::istream &
 parse_date(
-	io::istream &stream,
+	fcppt::io::istream &stream,
 	std::tm &result
 );
 

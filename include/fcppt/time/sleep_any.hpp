@@ -19,10 +19,18 @@ namespace fcppt
 namespace time
 {
 
-/// Sleep for a given duration
 /**
- * \tparam Duration must be a chrono::duration
- * \see sleep
+\brief Tries to sleep for a given duration
+
+\ingroup fcppttime
+
+Tries to sleep for \a _duration.
+
+\param _duration The duration to sleep for
+
+\tparam Duration Must be a duration type
+
+\see fcppt::time::sleep
 */
 template<
 	typename Duration

@@ -16,14 +16,22 @@ namespace fcppt
 namespace time
 {
 
-/// Sleep for at least a given time, unless interrupted
 /**
- * @throws sleep_interrupted if the sleep didn't finish
+\brief Tries to sleep for a given duration
+
+\ingroup fcppttime
+
+Tries to sleep for \a duration.
+
+\param duration The duration to sleep for
+
+\throw fcppt::time::sleep_interrupted if sleeping for the requested time was
+not possible
 */
 FCPPT_SYMBOL
 void
 sleep(
-	sleep_duration const &
+	fcppt::time::sleep_duration const &duration
 );
 
 }

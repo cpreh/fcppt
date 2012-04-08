@@ -18,14 +18,21 @@ namespace fcppt
 namespace time
 {
 
-/// A wrapper around std::ctime
 /**
- * Converts the given time_t into a string
+\brief A wrapper around <code>%std::ctime</code>
+
+\ingroup fcppttime
+
+Converts \a time into a string using <code>%std::ctime</code>.
+
+\param time The time to convert into a string
+
+\throw fcppt::time::exception if anything fails
 */
 FCPPT_SYMBOL
-string const
+fcppt::string const
 ctime(
-	std::time_t
+	std::time_t time
 );
 
 }

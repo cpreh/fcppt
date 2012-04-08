@@ -1,0 +1,11 @@
+/**
+\defgroup fcppttime fcppt.time
+\ingroup fcpptmain
+\brief Time query, formatting and sleep utilities
+
+*/
+namespace fcppt
+{
+/// Time query, formatting and sleep utilities
+namespace time{}
+}

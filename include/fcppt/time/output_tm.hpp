@@ -19,14 +19,24 @@ namespace fcppt
 namespace time
 {
 
-/// Outputs @a tm using the locale of the @a stream
 /**
- * @return @a stream
+\brief Outputs an <code>%std::tm</code> to a stream
+
+\ingroup fcppttime
+
+Outputs \a tm to \a stream using the <code>std::time_put</code> locale facet,
+obtained from the locale of \a stream.
+
+\param stream The stream to output to
+
+\param tm The time struct to output
+
+\return \a stream
 */
 FCPPT_SYMBOL
-io::ostream &
+fcppt::io::ostream &
 output_tm(
-	io::ostream &stream,
+	fcppt::io::ostream &stream,
 	std::tm const &tm
 );
 

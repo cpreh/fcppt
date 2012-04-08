@@ -17,10 +17,20 @@ namespace fcppt
 namespace time
 {
 
+/**
+\brief A wrapper around <code>%std::localtime</code>
+
+\ingroup fcppttime
+
+Converts \a time to an <code>%std::tm</code> using
+<code>%std::localtime</code>.
+
+\param time The time to convert
+*/
 FCPPT_SYMBOL
 std::tm const
 localtime(
-	std::time_t
+	std::time_t time
 );
 
 }

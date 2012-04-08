@@ -9,6 +9,7 @@
 #include <ctime>
 #include <fcppt/config/external_end.hpp>
 
+
 std::tm const
 fcppt::time::gmtime(
 	std::time_t const _time
