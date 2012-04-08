@@ -26,7 +26,18 @@ namespace grid
 \ingroup fcpptcontainergrid
 \brief Outputs a grid
 
-FIXME
+Outputs the grid \a _object to \a _stream. Every level of the grid will be
+wrapped in parenthesis. So, for example, a two dimensional grid of size
+<code>(n,m)</code> will be written as <code>((x_0, y_0), (x_1, y_0), ..., (x_0,
+y_1), ..., (x_n, y_m))</code>.
+
+\tparam T Must be a type that has an appropriate <code>operator<< </code>
+
+\param _stream The stream to write to
+
+\param _object The grid to write
+
+\return \a _stream
 */
 template<
 	typename Ch,

@@ -19,7 +19,10 @@ namespace ptr
 /**
 \brief Creates a functor that will compare the address of elements in a ptr_container to \p _ptr
 \ingroup fcpptcontainerptr
-\param _ptr A pointer type
+
+\param _ptr The pointer to compare to
+
+\tparam Ptr Must be a pointer type
 */
 template<
 	typename Ptr

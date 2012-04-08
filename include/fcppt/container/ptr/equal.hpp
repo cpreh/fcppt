@@ -15,7 +15,7 @@ namespace ptr
 {
 
 /**
-\brief FIXME
+\brief A functor that compares an element in a ptr_container to a pointer
 \ingroup fcpptcontainerptr
 */
 template<
@@ -26,6 +26,13 @@ class equal
 public:
 	typedef bool result_type;
 
+	/**
+	\brief Constructs the functor
+
+	Constructs the functor from \a _ptr
+
+	\param _ptr The pointer to compare to
+	*/
 	explicit equal(
 		Ptr const _ptr
 	)
@@ -33,6 +40,13 @@ public:
 		ptr_(_ptr)
 	{}
 
+	/**
+	\brief Compares the address of a value to the pointer
+
+	Compares the address of \a _val to the pointer.
+
+	\param _val The value to compare the address of
+	*/
 	template<
 		typename Val
 	>
