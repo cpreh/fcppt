@@ -462,8 +462,16 @@ to speed.
 
 namespace fcppt
 {
-/*
+/**
 \brief An implementation of a managed signals and slots system (replacement for boost's signals).
 */
-namespace signal {}
+namespace signal
+{
+/**
+\brief Contains classes and functions related to unregistration callbacks
+*/
+namespace unregister
+{
+}
+}
 }
