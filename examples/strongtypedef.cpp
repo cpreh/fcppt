@@ -13,7 +13,6 @@
 
 namespace
 {
-
 struct distinct_type
 {};
 
