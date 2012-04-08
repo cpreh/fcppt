@@ -1,14 +1,17 @@
+#include <fcppt/config/external_begin.hpp>
 #include <boost/static_assert.hpp>
 #include <boost/type_traits/is_same.hpp>
+#include <fcppt/config/external_end.hpp>
 
-namespace without_strong_typedef
+
+namespace
 {
 //! [strong_typedef_for_named_parameters_without_strong_typedef_without_typedef]
 void f(int,bool,char);
 //! [strong_typedef_for_named_parameters_without_strong_typedef_without_typedef]
 }
 
-namespace without_strong_typedef
+namespace
 {
 //! [strong_typedef_for_named_parameters_without_strong_typedef_with_typedef]
 typedef
@@ -27,7 +30,7 @@ void f(vertex_count,enable_culling,draw_char) {}
 //! [strong_typedef_for_named_parameters_without_strong_typedef_with_typedef]
 }
 
-namespace without_strong_typedef
+namespace
 {
 void g()
 {
@@ -42,9 +45,10 @@ f('c',100,true);
 }
 }
 
-//! [strong_typedef_for_named_parameters_with_strong_typedef]
 #include <fcppt/strong_typedef.hpp>
-
+namespace
+{
+//! [strong_typedef_for_named_parameters_with_strong_typedef]
 namespace with_strong_typedef
 {
 FCPPT_MAKE_STRONG_TYPEDEF(
@@ -118,5 +122,7 @@ FCPPT_MAKE_STRONG_TYPEDEF(
 BOOST_STATIC_ASSERT((
 	!boost::is_same<first,second>::value));
 //! [strong_typedef_is_same]
+
+}
 
 int main() {}
