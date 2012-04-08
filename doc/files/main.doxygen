@@ -39,7 +39,7 @@ The documentation is split into the following parts:
 		\subpage requirements_download_installation
 		<ol>
 			<li>\ref requirements_download_installation_requirements</li>
-			<li>\ref requirements_download_installation_supported_platforms</li>
+			<li>\ref requirements_download_installation_tested_platforms</li>
 			<li>\ref requirements_download_installation_download</li>
 			<li>\ref requirements_download_installation_building_and_installation</li>
 			<li>\ref requirements_download_installation_using_fcppt</li>
