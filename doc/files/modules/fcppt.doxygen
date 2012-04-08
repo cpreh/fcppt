@@ -1,6 +1,10 @@
 /**
 \defgroup fcpptmain fcppt
 \brief The main fcppt module
+
+This module is the top-level container for all other fcppt modules. It directly
+contains only those classes, functions and files that are too small to be put
+into a separate module.
 */
 
 /// The top level namespace

@@ -1,5 +1,5 @@
 /**
-\page structure Structure
+\page code_style_and_structure Code style and structure
 
 <table id="toc">
 <tr>
@@ -7,45 +7,38 @@
 
 
 <ol>
-<li>
-	\ref structure_file_separation
-</li>
-<li>
-	\ref structure_coding_style
-	<ol>
-		<li>\ref structure_identifiers</li>
-		<li>\ref structure_indentation
-			<ol>
-				<li>\ref structure_tabs</li>
-				<li>\ref structure_when_to_indent</li>
-			</ol>
-		</li>
-		<li>
-		\ref structure_enums
-			<ol>
-				<li>\ref structure_bool_and_enums</li>
-				<li>\ref structure_using_enums</li>
-			</ol>
-		</li>
-		<li>
-			\ref structure_code_partitioning
-			<ol>
-				<li>\ref structure_file_extension</li>
-				<li>\ref structure_namespaces_and_directories</li>
-				<li>\ref structure_atomic_headers</li>
-				<li>\ref structure_minimal_includes</li>
-				<li>\ref structure_include_guards</li>
-			</ol>
-		</li>
-		<li>
-			\ref structure_numerical_considerations
-			<ol>
-				<li>\ref structure_float_double_long_double</li>
-				<li>\ref structure_integral_types</li>
-			</ol>
-		</li>
-	</ol>
-</li>
+	<li>\ref structure_file_separation</li>
+	<li>\ref structure_identifiers</li>
+	<li>\ref structure_indentation
+		<ol>
+			<li>\ref structure_tabs</li>
+			<li>\ref structure_when_to_indent</li>
+		</ol>
+	</li>
+	<li>
+	\ref structure_enums
+		<ol>
+			<li>\ref structure_bool_and_enums</li>
+			<li>\ref structure_using_enums</li>
+		</ol>
+	</li>
+	<li>
+		\ref structure_code_partitioning
+		<ol>
+			<li>\ref structure_file_extension</li>
+			<li>\ref structure_namespaces_and_directories</li>
+			<li>\ref structure_atomic_headers</li>
+			<li>\ref structure_minimal_includes</li>
+			<li>\ref structure_include_guards</li>
+		</ol>
+	</li>
+	<li>
+		\ref structure_numerical_considerations
+		<ol>
+			<li>\ref structure_float_double_long_double</li>
+			<li>\ref structure_integral_types</li>
+		</ol>
+	</li>
 </ol>
 
 
@@ -110,9 +103,7 @@ under <code>fcppt/math/vector/</code>. Be aware, though, that this might
 include a large number of (unnecessary) files and might slow down compilation
 times.
 
-\section structure_coding_style Coding style
-
-\subsection structure_identifiers Identifiers
+\section structure_identifiers Identifiers
 
 We use the same naming scheme as the C++ standard library. This means no camel
 case, but all lowercase letters and underscores as separators
@@ -131,9 +122,9 @@ std::assert(0 < 1);
 \endcode
 Macros have no namespace scope.
 
-\subsection structure_indentation Indentation
+\section structure_indentation Indentation
 
-\subsubsection structure_tabs Tabs
+\subsection structure_tabs Tabs
 
 We consistently use tabs instead of whitespaces for indentation. If you're
 interested, here's why we do that:
@@ -188,7 +179,7 @@ int
 
 Which is tab-safe and doesn't look too ugly, so that's what we're doing.
 
-\subsubsection structure_when_to_indent When to indent
+\subsection structure_when_to_indent When to indent
 
 When to indent is pretty much left to the individual programmer. Specifying
 more than a few encouragements would be pretty harsh. A rule of thumb for us is
@@ -225,9 +216,9 @@ might encounter when reading fcppt code (Freundlich's code in particular :P).
 This method of indentation is a bit extreme, but it is consistent: We insert a
 newline after every opening brace (curly brace, parentheses, whatever).
 
-\subsection structure_enums Enums
+\section structure_enums Enums
 
-\subsubsection structure_bool_and_enums bool and enums
+\subsection structure_bool_and_enums bool and enums
 
 We encourage you to use bools very sparingly. To illustrate the problem with
 bools, consider the function:
@@ -273,7 +264,7 @@ public:
 In this example, you could either use an enum (see below) or \link
 fcpptstrongtypedef strong typedefs\endlink.
 
-\subsubsection structure_using_enums Using enums
+\subsection structure_using_enums Using enums
 
 So how do we use enums in C++ properly? Without thinking further, you might
 write your enums like this:
@@ -328,21 +319,21 @@ Which is much better. Also note that we added a 'size' element at the end. This
 way, we can use the enumeration together with
 fcppt::container::bitfield::object, or we could manually iterate over it.
 
-\subsection structure_code_partitioning Code partitioning
+\section structure_code_partitioning Code partitioning
 
-\subsubsection structure_file_extension File extension
+\subsection structure_file_extension File extension
 
 Many people use ".h" for their C++ header files. We encourage using ".hpp"
 because that way your favorite editor can deduce that you're writing C++ code
 and change, for example, the syntax highlighting accordingly.
 
-\subsubsection structure_namespaces_and_directories Namespaces and directories
+\subsection structure_namespaces_and_directories Namespaces and directories
 
 To avoid filename clashes we let the file system hierarchy follow the namespace
 hierarchy. So a namespace creates a new directory - with nesting of directories
 of course.
 
-\subsubsection structure_atomic_headers Atomic headers
+\subsection structure_atomic_headers Atomic headers
 
 We encourage writing header files which contain only one "entity", so one
 typedef, one class, one constant only. This way, it's very easy to memorize
@@ -350,7 +341,7 @@ which file you have to include to get a specific entity (for
 <code>foo::bar::baz</code> you need <code>foo/bar/baz.hpp</code>, see
 \ref structure_namespaces_and_directories above).
 
-\subsubsection structure_minimal_includes Minimal includes
+\subsection structure_minimal_includes Minimal includes
 
 A header should only include what it needs so it can be included without
 causing errors by itself. If code from the header is used, however, additional
@@ -375,7 +366,7 @@ typedef vector<char> char_vector;
 
 TODO: Expand this!
 
-\subsubsection structure_include_guards Include guards
+\subsection structure_include_guards Include guards
 
 It's extremely important for include guards to be unique. If they're not, you
 end up in a long debugging session to find missing declarations or even
@@ -406,9 +397,9 @@ guaranteed. This, of course, requires that header files are quite atomic (see
 \ref structure_atomic_headers above). If headers aren't really atomic, use the
 (converted) file name as the include guard.
 
-\subsection structure_numerical_considerations Numerical considerations
+\section structure_numerical_considerations Numerical considerations
 
-\subsubsection structure_float_double_long_double float/double/long double
+\subsection structure_float_double_long_double float/double/long double
 
 The C++ standard states that basically all operations regarding floats are
 implementation defined. This might lead to a "fatal error" in the following
@@ -431,7 +422,7 @@ href="http://en.wikipedia.org/wiki/Machine_epsilon">machine epsilon</a> for
 comparison. This is, however, a bad choice in most cases. You might have to
 write your own comparison function.
 
-\subsubsection structure_integral_types Integral types
+\subsection structure_integral_types Integral types
 
 The use of the signed types is discouraged. Of course, sometimes you need to
 use them to get negative numbers, but the signed types have a distinct

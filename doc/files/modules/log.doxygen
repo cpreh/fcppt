@@ -516,3 +516,26 @@ All headers are relative to the log subdirectory.
 </table>
 
 */
+
+namespace fcppt
+{
+/**
+\brief Logging classes and functions
+*/
+namespace log
+{
+/**
+\brief Functions and classes related to log formatting
+*/
+namespace format
+{
+}
+
+/**
+\brief Contains logger parameter classes
+*/
+namespace parameters
+{
+}
+}
+}

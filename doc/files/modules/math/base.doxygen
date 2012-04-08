@@ -11,5 +11,11 @@ namespace fcppt
 */
 namespace math
 {
+/**
+\brief Contains interpolation functions and functors
+*/
+namespace interpolation
+{
+}
 }
 }

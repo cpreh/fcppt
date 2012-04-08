@@ -206,9 +206,12 @@ For example, the code could print: <code>0.441851 5.37344 -7.79767 1.89097
 namespace fcppt
 {
 /// Main namespace for random, also containing the variate generator
-namespace random {}
+namespace random
+{
 /// The namespace for all distributions
 namespace distribution {}
+
 /// The namespace for all generators and helper functions
 namespace generator {}
+}
 }

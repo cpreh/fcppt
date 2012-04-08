@@ -1,20 +1,6 @@
 /**
 \mainpage Overview
 
-<table id="toc">
-<tr>
-<td>
-
-<ol>
-	<li>\ref main_introduction</li>
-	<li>\ref main_sitemap</li>
-	<li>\ref main_contact</li>
-</ol>
-
-</td>
-</tr>
-</table>
-
 \section main_introduction Introduction
 
 <a href="http://boost.org">Boost</a> already is a very useful general purpose
@@ -34,62 +20,32 @@ The documentation is split into the following parts:
 <tr>
 <td>
 
-<ol>
+<ul>
+	<li>
+		\link fcpptmain Documentation \endlink
+	</li>
 	<li>
 		\subpage requirements_download_installation
-		<ol>
+		<ul>
 			<li>\ref requirements_download_installation_requirements</li>
 			<li>\ref requirements_download_installation_tested_platforms</li>
 			<li>\ref requirements_download_installation_download</li>
 			<li>\ref requirements_download_installation_building_and_installation</li>
 			<li>\ref requirements_download_installation_using_fcppt</li>
 			<li>\ref requirements_download_installation_static_and_shared_builds</li>
-		</ol>
+		</ul>
+	</li>
+	<li>
+		\subpage code_style_and_structure
 	</li>
 	<li>
 		\subpage changes
-		<ol>
+		<ul>
 			<li>\ref changes_changes_to_011</li>
 			<li>\ref older_changes</li>
-		</ol>
+		</ul>
 	</li>
-	<li>
-		\subpage structure
-		<ol>
-			<li>\ref structure_file_separation</li>
-			<li>\ref structure_coding_style</li>
-		</ol>
-	</li>
-	<li>
-		Documentation
-		<ol>
-			<li>\ref fcpptalgorithm "fcppt.algorithm"</li>
-			<li>\ref fcpptalignment "fcppt.alignment"</li>
-			<li>\ref fcpptassert "fcppt.alignment"</li>
-			<li>\ref fcpptassign "fcppt.assign"</li>
-			<li>\ref fcpptcasts "fcppt.casts"</li>
-			<li>\ref fcpptcontainer "fcppt.container"</li>
-			<li>\ref fcpptendianness "fcppt.endianness"</li>
-			<li>\ref fcpptexport "fcppt.export"</li>
-			<li>\ref fcpptfilesystem "fcppt.fileystem"</li>
-			<li>\ref fcpptio "fcppt.io"</li>
-			<li>\ref fcpptlog "fcppt.log"</li>
-			<li>\ref fcpptmath "fcppt.math"</li>
-			<li>\ref fcpptmpl "fcppt.mpl"</li>
-			<li>\ref fcpptoptional "fcppt.optional"</li>
-			<li>\ref fcpptpreprocessor "fcppt.preprocessor"</li>
-			<li>\ref fcpptrandom "fcppt.random"</li>
-			<li>\ref fcpptref "fcppt.ref"</li>
-			<li>\ref fcpptsignal "fcppt.signal"</li>
-			<li>\ref fcpptsmartptr "fcppt.smart_pointers"</li>
-			<li>\ref fcpptstring "fcppt.string"</li>
-			<li>\ref fcpptstrongtypedef "fcppt.strong_typedef"</li>
-			<li>\ref fcppttypetraits "fcppt.type_traits"</li>
-			<li>\ref fcpptvariant "fcppt.variant"</li>
-			<li>\ref fcpptvarious "fcppt.various"</li>
-		</ol>
-	</li>
-</ol>
+</ul>
 
 </td>
 </tr>
@@ -103,6 +59,10 @@ You can contact us via our IRC channel
 
 at
 
-<code>irc.freenode.net</code>
+<code>\verbatim irc.freenode.net \endverbatim</code>
+
+If you've found a bug or want to request something, please head over to the <a
+href="https://github.com/freundlich/fcppt/issues">github issue tracker</a> and
+create an issue.
 
 */
