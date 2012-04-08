@@ -16,9 +16,15 @@ namespace container
 {
 
 /**
- * FIXME
- * \ingroup fcpptcontainer
- */
+\brief Returns a pointer one past the end of a random access container
+
+\ingroup fcpptcontainer
+
+Returns a pointer one past the end of \a _container, or the null pointer if \a
+_container is empty.
+
+\param _container The container to return the pointer for
+*/
 template<
 	typename Container
 >
@@ -36,9 +42,15 @@ data_end(
 }
 
 /**
- * FIXME
- * \ingroup fcpptcontainer
- */
+\brief Returns a const_pointer one past the end of a random access container
+
+\ingroup fcpptcontainer
+
+Returns a const_pointer one past the end of \a _container, or the null pointer
+if \a _container is empty.
+
+\param _container The container to return the const_pointer for
+*/
 template<
 	typename Container
 >
