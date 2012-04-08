@@ -9,12 +9,17 @@
 
 #include <fcppt/function/object.hpp>
 
+
 namespace fcppt
 {
 namespace thread
 {
 
-/// The task type
+/**
+\brief The type of function a thread runs
+
+\ingroup fcpptthread
+*/
 typedef fcppt::function::object<
 	void ()
 > task;

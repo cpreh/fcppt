@@ -14,7 +14,11 @@ namespace fcppt
 namespace thread
 {
 
-/// The duration used for sleep
+/**
+\brief The duration used for sleep
+
+\ingroup fcpptthread
+*/
 typedef fcppt::time::sleep_duration sleep_duration;
 
 }

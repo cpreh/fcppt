@@ -16,16 +16,21 @@ namespace fcppt
 namespace thread
 {
 
-/// Let the current thread sleep
 /**
- * This is different from 'time::sleep'.
- * It is important to let threads sleep with this function.
- * Equivalent to boost::thread::sleep
+\brief Lets the current thread sleep
+
+\ingroup fcpptthread
+
+Lets the current thread sleep for \a duration. This is a different function
+than fcppt::time::sleep and should be used inside threads that have been
+started through fcppt::thread::object
+
+\param duration The duration to sleep for
 */
 FCPPT_THREAD_SYMBOL
 void
 sleep(
-	fcppt::thread::sleep_duration const &
+	fcppt::thread::sleep_duration const &duration
 );
 
 }

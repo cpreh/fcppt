@@ -84,6 +84,7 @@ The documentation is split into the following parts:
 			<li>\ref fcpptsmartptr "fcppt.smart_pointers"</li>
 			<li>\ref fcpptstring "fcppt.string"</li>
 			<li>\ref fcpptstrongtypedef "fcppt.strong_typedef"</li>
+			<li>\ref fcpptthread "fcppt.thread"</li>
 			<li>\ref fcppttypetraits "fcppt.type_traits"</li>
 			<li>\ref fcpptvariant "fcppt.variant"</li>
 			<li>\ref fcpptvarious "fcppt.various"</li>

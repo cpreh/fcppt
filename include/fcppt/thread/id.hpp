@@ -16,7 +16,11 @@ namespace fcppt
 namespace thread
 {
 
-/// A thread's id type
+/**
+\brief A thread's id type
+
+\ingroup fcpptthread
+*/
 typedef boost::thread::id id;
 
 }

@@ -16,7 +16,13 @@ namespace fcppt
 namespace thread
 {
 
-/// Give other threads a chance to get CPU time
+/**
+\brief Give other threads a chance to get CPU time
+
+\ingroup fcpptthread
+
+Can be called from any thread and gives other threads a chance to run.
+*/
 FCPPT_THREAD_SYMBOL
 void
 yield();

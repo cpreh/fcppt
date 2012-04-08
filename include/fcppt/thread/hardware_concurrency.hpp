@@ -16,12 +16,16 @@ namespace fcppt
 namespace thread
 {
 
-/// Returns the number of concurrent threads that can run
 /**
- * @return The number of possible concurrent threads or 0, if the information is not available.
+\brief Returns the number of concurrent threads that can run
+
+\ingroup fcpptthread
+
+\return The number of possible concurrent threads or 0 if the information is
+not available.
 */
 FCPPT_THREAD_SYMBOL
-hardware_concurrency_type
+fcppt::thread::hardware_concurrency_type
 hardware_concurrency();
 
 }

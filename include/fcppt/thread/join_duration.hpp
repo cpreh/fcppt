@@ -14,7 +14,11 @@ namespace fcppt
 namespace thread
 {
 
-/// The duration used for join
+/**
+\brief The chrono duration used for join
+
+\ingroup fcpptthread
+*/
 typedef fcppt::thread::sleep_duration join_duration;
 
 }

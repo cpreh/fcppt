@@ -16,7 +16,14 @@ namespace fcppt
 namespace thread
 {
 
-/// The thread's internal native handle
+/**
+\brief The thread's internal native handle
+
+\ingroup fcpptthread
+
+This handle type is the platform specific handle for a thread and can be used
+to access the platform specific thread API.
+*/
 typedef boost::thread::native_handle_type native_handle;
 
 }
