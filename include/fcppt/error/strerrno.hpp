@@ -15,6 +15,14 @@ namespace fcppt
 namespace error
 {
 
+/**
+\brief A wrapper around <code>std::strerror(strerrno)</code>
+
+\ingroup fcpptstring
+
+A wrapper around <code>std::strerror(strerrno)</code> returning the message for
+the current global error number.
+*/
 FCPPT_SYMBOL
 fcppt::string const
 strerrno();

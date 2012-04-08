@@ -15,6 +15,16 @@ namespace fcppt
 namespace error
 {
 
+/**
+\brief A wrapper around <code>std::strerror</code>
+
+\ingroup fcpptstring
+
+A wrapper around <code>std::strerror</code> returning the message for the error
+code given by \a errnum.
+
+\a errnum The error code to return the message for
+*/
 FCPPT_SYMBOL
 fcppt::string const
 strerror(
