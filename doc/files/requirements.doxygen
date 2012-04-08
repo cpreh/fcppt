@@ -147,7 +147,6 @@ installation of different components:
 	<li><strong>INSTALL_INCLUDE_DIR</strong>: Path where the fcppt include directory is installed</li>
 	<li><strong>INSTALL_LIBRARY_DIR</strong>: Path where the libraries are installed</li>
 	<li><strong>INSTALL_DOC_DIR</strong>: Path where the documentation is installed</li>
-	<li><strong>INSTALL_PKGCONFIG_DIR</strong>: Path where the pkgconfig file is installed</li>
 	<li><strong>INSTALL_CMAKEMODULES_DIR</strong>: Path where the cmake modules are installed</li>
 	<li><strong>INSTALL_CMAKECONFIG_DIR</strong>: Path where the cmake config files are installed</li>
 </ul>
