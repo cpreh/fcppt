@@ -7,13 +7,13 @@
 <tr>
 <td>
 
-<ol>
+<ul>
 	<li>\ref optional_motivation</li>
 	<li>\ref optional_value</li>
 	<li>\ref optional_reference</li>
 	<li>\ref optional_design</li>
 	<li>\ref optional_headers</li>
-</ol>
+</ul>
 
 </td>
 </tr>

@@ -18,11 +18,11 @@ namespace grid
 <tr>
 <td>
 
-<ol>
+<ul>
 	<li>\ref fcpptcontainergrid_introduction</li>
 	<li>\ref fcpptcontainergrid_iteration</li>
 	<li>\ref fcpptcontainergrid_resizing</li>
-</ol>
+</ul>
 
 </td>
 </tr>

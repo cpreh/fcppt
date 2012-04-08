@@ -6,11 +6,11 @@
 <table id="toc">
 <tr>
 <td>
-<ol>
+<ul>
 	<li>\ref fcpptio_introduction</li>
 	<li>\ref fcpptio_endianness</li>
 	<li>\ref fcpptio_headers</li>
-</ol>
+</ul>
 
 </td>
 </tr>

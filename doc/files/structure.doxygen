@@ -6,40 +6,40 @@
 <td>
 
 
-<ol>
+<ul>
 	<li>\ref structure_file_separation</li>
 	<li>\ref structure_identifiers</li>
 	<li>\ref structure_indentation
-		<ol>
+		<ul>
 			<li>\ref structure_tabs</li>
 			<li>\ref structure_when_to_indent</li>
-		</ol>
+		</ul>
 	</li>
 	<li>
 	\ref structure_enums
-		<ol>
+		<ul>
 			<li>\ref structure_bool_and_enums</li>
 			<li>\ref structure_using_enums</li>
-		</ol>
+		</ul>
 	</li>
 	<li>
 		\ref structure_code_partitioning
-		<ol>
+		<ul>
 			<li>\ref structure_file_extension</li>
 			<li>\ref structure_namespaces_and_directories</li>
 			<li>\ref structure_atomic_headers</li>
 			<li>\ref structure_minimal_includes</li>
 			<li>\ref structure_include_guards</li>
-		</ol>
+		</ul>
 	</li>
 	<li>
 		\ref structure_numerical_considerations
-		<ol>
+		<ul>
 			<li>\ref structure_float_double_long_double</li>
 			<li>\ref structure_integral_types</li>
-		</ol>
+		</ul>
 	</li>
-</ol>
+</ul>
 
 
 </td>
@@ -349,7 +349,7 @@ includes may be needed.
 
 In the following cases only a declaration is needed:
 
-<ol>
+<ul>
 	<li>A type is returned by a function or taken as an argument</li>
 	<li>
 	A typedef to a template is declared
@@ -362,7 +362,7 @@ template
 typedef vector<char> char_vector;
 	\endcode
 	</li>
-</ol>
+</ul>
 
 TODO: Expand this!
 

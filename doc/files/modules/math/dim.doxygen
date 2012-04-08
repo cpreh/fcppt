@@ -20,12 +20,12 @@ namespace dim
 <tr>
 <td>
 
-<ol>
+<ul>
 	<li>\ref fcpptmathdimobject_motivation</li>
 	<li>\ref fcpptmathdimobject_converting_from_and_to_vectors</li>
 	<li>\ref fcpptmathdimobject_operators</li>
 	<li>\ref fcpptmathdimobject_headers</li>
-</ol>
+</ul>
 
 </td>
 </tr>

@@ -20,13 +20,13 @@ namespace matrix
 <tr>
 <td>
 
-<ol>
+<ul>
 	<li>\ref fcpptmathmatrixobject_motivation</li>
 	<li>\ref fcpptmathmatrixobject_operators</li>
 	<li>\ref fcpptmathmatrixobject_accessing_elements</li>
 	<li>\ref fcpptmathmatrixobject_identity_and_null</li>
 	<li>\ref fcpptmathmatrixobject_iteration</li>
-</ol>
+</ul>
 
 </td>
 </tr>
@@ -81,7 +81,7 @@ The <code>operator[]</code> in C++ only takes one argument. This is fine for
 one-dimensional data structures like an array (or a vector). For
 multi-dimensional structures, you have to work around it, for example:
 
-<ol>
+<ul>
 	<li>
 		Use a function instead of an operator to access the elements.
 		Functions can, of course, take two arguments:
@@ -96,7 +96,7 @@ multi-dimensional structures, you have to work around it, for example:
 		Nest two <code>operator[]</code> expressions:
 		<code>matrix[x][y] = 10;</code>.
 	</li>
-</ol>
+</ul>
 
 fcppt chose to implement the latter. In the statement
 <code>matrix[x][y]</code>, matrix::object's <code>operator[]</code> is invoked and

@@ -7,7 +7,7 @@
 <tr>
 <td>
 
-<ol>
+<ul>
 	<li>\ref exports_introduction</li>
 	<li>\ref exports_library</li>
 	<li>\ref exports_vtable</li>
@@ -15,7 +15,7 @@
 	<li>\ref exports_compiler</li>
 	<li>\ref exports_static</li>
 	<li>\ref exports_headers</li>
-</ol>
+</ul>
 
 </td>
 </tr>

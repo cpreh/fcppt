@@ -20,7 +20,7 @@ namespace vector
 <tr>
 <td>
 
-<ol>
+<ul>
 	<li>\ref fcpptmathvector_motivation</li>
 	<li>\ref fcpptmathvector_declaring_vectors</li>
 	<li>\ref fcpptmathvector_podness_and_variadic_constructors</li>
@@ -28,7 +28,7 @@ namespace vector
 	<li>\ref fcpptmathvector_null_vectors_and_comparisons</li>
 	<li>\ref fcpptmathvector_operators</li>
 	<li>\ref fcpptmathvector_headers</li>
-</ol>
+</ul>
 
 </td>
 </tr>

@@ -7,18 +7,18 @@
 <tr>
 <td>
 
-<ol>
+<ul>
 	<li>\ref alignment_introduction</li>
 	<li>\ref alignment_specification
-		<ol>
+		<ul>
 			<li>\ref alignment_objects</li>
 			<li>\ref alignment_types</li>
 			<li>\ref alignment_array</li>
-		</ol>
+		</ul>
 	</li>
 	<li>\ref alignment_restrictions</li>
 	<li>\ref alignment_headers</li>
-</ol>
+</ul>
 
 </td>
 </tr>

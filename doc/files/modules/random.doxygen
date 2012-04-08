@@ -7,11 +7,11 @@
 <tr>
 <td>
 
-<ol>
+<ul>
 	<li>\ref random_introduction</li>
 	<li>\ref random_usage</li>
 	<li>\ref random_headers</li>
-</ol>
+</ul>
 
 </td>
 </tr>

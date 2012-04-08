@@ -7,32 +7,32 @@
 <tr>
 <td>
 
-<ol>
+<ul>
 	<li>\ref smartptr_introduction</li>
 	<li>\ref smartptr_types</li>
 	<li>\ref smartptr_shared_ptr</li>
-	<ol>
+	<ul>
 		<li>\ref smartptr_shared_ptr_make_shared</li>
 		<li>\ref smartptr_shared_ptr_weak_ptr</li>
 		<li>\ref smartptr_shared_ptr_casts</li>
-	</ol>
+	</ul>
 	<li>\ref smartptr_unique_ptr</li>
-	<ol>
+	<ul>
 		<li>\ref smartptr_unique_ptr_usage</li>
 		<li>\ref smartptr_unique_ptr_move</li>
 		<li>\ref smartptr_unique_ptr_limitations</li>
-	</ol>
+	</ul>
 	<li>\ref smartptr_scoped_ptr</li>
-	<ol>
+	<ul>
 		<li>\ref smartptr_scoped_ptr_pimpl</li>
-	</ol>
+	</ul>
 	<li>\ref smartptr_deleter</li>
-	<ol>
+	<ul>
 		<li>\ref smartptr_deleter_predef</li>
 		<li>\ref smartptr_deleter_example</li>
-	</ol>
+	</ul>
 	<li>\ref smartptr_headers</li>
-</ol>
+</ul>
 
 </td>
 </tr>

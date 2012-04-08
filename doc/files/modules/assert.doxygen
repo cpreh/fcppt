@@ -7,12 +7,12 @@
 <tr>
 <td>
 
-<ol>
+<ul>
 	<li>\ref assert_introduction</li>
 	<li>\ref assert_categories</li>
 	<li>\ref assert_messages</li>
 	<li>\ref assert_headers</li>
-</ol>
+</ul>
 
 </td>
 </tr>

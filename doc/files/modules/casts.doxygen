@@ -7,11 +7,11 @@
 <tr>
 <td>
 
-<ol>
+<ul>
 	<li>\ref fcpptcasts_dynamic_casting</li>
 	<li>\ref fcpptcasts_truncation_check_cast</li>
 	<li>\ref fcpptcasts_safe_conversions</li>
-</ol>
+</ul>
 
 </td>
 </tr>
@@ -44,7 +44,7 @@ int main()
 
 In C++, when you have a base class and want to "get to" a derived class, you have three options:
 
-<ol>
+<ul>
 	<li>
 	<strong><code>static_cast</code></strong>: This is the unsafest cast of
 	them all. If it fails, you get undefined behaviour (meaning you
@@ -96,7 +96,7 @@ In C++, when you have a base class and want to "get to" a derived class, you hav
 	have to use either pointers or a <code>catch</code> block to achieve
 	that.
 	</li>
-</ol>
+</ul>
 
 For these reasons, fcppt provides helpers for dynamic-casting. To work around
 the ugly pointer cast, there is fcppt::optional_dynamic_cast which returns an

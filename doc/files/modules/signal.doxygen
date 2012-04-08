@@ -7,7 +7,7 @@
 <tr>
 <td>
 
-<ol>
+<ul>
 	<li>\ref signal_introduction</li>
 	<li>\ref signal_motivation</li>
 	<li>\ref signal_basic_usage</li>
@@ -15,7 +15,7 @@
 	<li>\ref signal_connection_manager</li>
 	<li>\ref signal_disconnect_callbacks</li>
 	<li>\ref signal_benchmarks</li>
-</ol>
+</ul>
 
 </td>
 </tr>
@@ -219,7 +219,7 @@ If a signal has a return value other than <code>void</code>, you cannot use
 fcppt::signal::object's default constructor, it's not available anymore.
 Instead, there's a constructor taking two parameters:
 
-<ol>
+<ul>
 	<li>
 		A <em>combiner</em> object, which is a functor with the signature:
 		\code
@@ -233,7 +233,7 @@ Instead, there's a constructor taking two parameters:
 		An <em>initial value</em> for the folding process. This is of
 		type <code>result_type</code>.
 	</li>
-</ol>
+</ul>
 
 Folding is an operation that takes a list <strong><code>vs</code></strong> of values, an
 initial value <strong><code>I</code></strong> and a binary functor <strong><code>op</code></strong>. It

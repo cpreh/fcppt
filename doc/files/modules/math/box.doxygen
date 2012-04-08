@@ -20,7 +20,7 @@ namespace box
 <tr>
 <td>
 
-<ol>
+<ul>
 	<li>\ref fcpptmathbox_motivation</li>
 	<li>\ref fcpptmathbox_declaring_boxes</li>
 	<li>\ref fcpptmathbox_constructors_and_getters</li>
@@ -28,7 +28,7 @@ namespace box
 	<li>\ref fcpptmathbox_null_boxes_and_comparisons</li>
 	<li>\ref fcpptmathbox_operators</li>
 	<li>\ref fcpptmathbox_headers</li>
-</ol>
+</ul>
 
 </td>
 </tr>

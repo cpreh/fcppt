@@ -7,12 +7,12 @@
 <tr>
 <td>
 
-<ol>
+<ul>
 	<li>\ref fcpptstring_motivation</li>
 	<li>\ref fcpptstring_conversions</li>
 	<li>\ref fcpptstring_streams</li>
 	<li>\ref fcpptstring_lexical_casts</li>
-</ol>
+</ul>
 
 </td>
 </tr>

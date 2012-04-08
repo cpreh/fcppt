@@ -16,28 +16,33 @@ padding-right:2em;
 
 /* @group Heading Levels */
 
-/*
-h1 {
-	font-size: 150%;
-}
-*/
-
 .title {
-	font-size: 20pt;
+	font-size: 25pt;
 	font-weight: bold;
 	text-shadow: 0px 1px 1px #555;
 /*	margin: 10px 2px; */
+	/*
 	margin-left: 2em;
 	margin-top: 1em;
 	margin-bottom: 1em;
+	*/
 }
 
+h1 {
+	font-size: 2.0em;
+}
+
+
 h2 {
-	font-size: 100%;
+	font-size: 1.5em;
 }
 
 h3 {
-	font-size: 100%;
+	font-size: 1.3em;
+}
+
+h4 {
+	font-size: 1.0em;
 }
 
 dt {
@@ -781,8 +786,15 @@ div.summary a
 	white-space: nowrap;
 }
 
+/* */
+hr
+{
+	display:none;
+}
+
 div.ingroups
 {
+	display:none;
 	margin-left: 5px;
 	font-size: 8pt;
 	padding-left: 5px;

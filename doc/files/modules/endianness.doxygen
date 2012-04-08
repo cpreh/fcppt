@@ -7,11 +7,11 @@
 <tr>
 <td>
 
-<ol>
+<ul>
 	<li>\ref endianness_introduction</li>
 	<li>\ref endianness_example</li>
 	<li>\ref endianness_headers</li>
-</ol>
+</ul>
 
 </td>
 </tr>

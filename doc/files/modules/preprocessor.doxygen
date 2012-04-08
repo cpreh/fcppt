@@ -7,13 +7,13 @@
 <tr>
 <td>
 
-<ol>
+<ul>
 	<li>\ref preprocessor_warnings</li>
 	<li>\ref preprocessor_messages</li>
 	<li>\ref preprocessor_pragma</li>
 	<li>\ref preprocessor_printing</li>
 	<li>\ref preprocessor_headers</li>
-</ol>
+</ul>
 
 </td>
 </tr>

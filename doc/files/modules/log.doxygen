@@ -7,23 +7,23 @@
 <tr>
 <td>
 
-<ol>
+<ul>
 	<li>\ref log_introduction</li>
-		<ol>
+		<ul>
 			<li>\ref log_simple_example</li>
-		</ol>
+		</ul>
 	<li>\ref log_formatting_and_sinks</li>
-		<ol>
+		<ul>
 			<li>\ref log_design</li>
 			<li>\ref log_formatting_example</li>
-		</ol>
+		</ul>
 	<li>\ref log_controlling</li>
-		<ol>
+		<ul>
 			<li>\ref log_context_example</li>
 			<li>\ref log_context_complex</li>
-		</ol>
+		</ul>
 	<li>\ref log_headers</li>
-</ol>
+</ul>
 
 </td>
 </tr>

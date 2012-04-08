@@ -17,13 +17,13 @@ namespace variant
 <tr>
 <td>
 
-<ol>
+<ul>
 	<li>\ref variant_motivation</li>
 	<li>\ref variant_visitation</li>
 	<li>\ref variant_design</li>
 	<li>\ref variant_recursive</li>
 	<li>\ref variant_headers</li>
-</ol>
+</ul>
 
 </td>
 </tr>

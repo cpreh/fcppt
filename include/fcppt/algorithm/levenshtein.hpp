@@ -24,13 +24,13 @@ namespace algorithm
 \details
 See http://en.wikipedia.org/wiki/Levenshtein_distance for an explanation of the algorithm.
 \pre
-<ol>
+<ul>
 <li><code>Container::size_type</code> and <code>Container::value_type</code> exist</li>
 <li><code>bool Container::empty() const</code> exists</li>
 <li><code>size_type Container::size() const</code> exists</li>
 <li><code>Container::operator[]</code> exists</li>
 <li><code>Container::value_type</code> has to have an <code>operator==</code></li>
-</ol>
+</ul>
 
 \note
 The code is taken quite literally from:
