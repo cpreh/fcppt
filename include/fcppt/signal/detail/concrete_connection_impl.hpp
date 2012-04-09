@@ -10,6 +10,7 @@
 
 #include <fcppt/signal/detail/concrete_connection.hpp>
 
+
 template<
 	typename T
 >
@@ -17,7 +18,10 @@ fcppt::signal::detail::concrete_connection<T>::concrete_connection(
 	function_type const &_function
 )
 :
-	function_(_function)
+	fcppt::signal::connection(),
+	function_(
+		_function
+	)
 {
 }
 

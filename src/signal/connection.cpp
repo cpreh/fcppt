@@ -5,18 +5,13 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_SIGNAL_DETAIL_CONNECTION_FWD_HPP_INCLUDED
-#define FCPPT_SIGNAL_DETAIL_CONNECTION_FWD_HPP_INCLUDED
+#include <fcppt/signal/connection.hpp>
 
-namespace fcppt
+
+fcppt::signal::connection::connection()
 {
-namespace signal
-{
-namespace detail
-{
-class connection;
-}
-}
 }
 
-#endif
+fcppt::signal::connection::~connection()
+{
+}

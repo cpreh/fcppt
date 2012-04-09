@@ -10,7 +10,7 @@
 
 #include <fcppt/unique_ptr_impl.hpp>
 #include <fcppt/signal/auto_connection_fwd.hpp>
-#include <fcppt/signal/detail/connection.hpp>
+#include <fcppt/signal/connection.hpp>
 
 
 #endif

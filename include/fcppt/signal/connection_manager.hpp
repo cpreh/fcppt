@@ -10,7 +10,7 @@
 
 #include <fcppt/noncopyable.hpp>
 #include <fcppt/symbol.hpp>
-#include <fcppt/signal/auto_connection.hpp>
+#include <fcppt/signal/auto_connection_fwd.hpp>
 #include <fcppt/signal/connection_manager_fwd.hpp>
 #include <fcppt/signal/shared_connection.hpp>
 #include <fcppt/config/external_begin.hpp>
@@ -30,21 +30,25 @@ class connection_manager
 	);
 public:
 	typedef std::vector<
-		shared_connection
+		fcppt::signal::shared_connection
 	> container;
 
-	FCPPT_SYMBOL connection_manager();
+	FCPPT_SYMBOL
+	connection_manager();
 
-	FCPPT_SYMBOL explicit connection_manager(
+	FCPPT_SYMBOL
+	explicit
+	connection_manager(
 		container const &
 	);
 
-	FCPPT_SYMBOL ~connection_manager();
+	FCPPT_SYMBOL
+	~connection_manager();
 
 	FCPPT_SYMBOL
 	void
 	add(
-		auto_connection
+		fcppt::signal::auto_connection
 	);
 
 	FCPPT_SYMBOL

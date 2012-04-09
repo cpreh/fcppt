@@ -10,6 +10,7 @@
 
 #include <fcppt/make_unique_ptr.hpp>
 #include <fcppt/move.hpp>
+#include <fcppt/signal/auto_connection.hpp>
 #include <fcppt/signal/base_decl.hpp>
 #include <fcppt/signal/detail/concrete_connection_impl.hpp>
 

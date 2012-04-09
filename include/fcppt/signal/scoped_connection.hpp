@@ -9,7 +9,7 @@
 #define FCPPT_SIGNAL_SCOPED_CONNECTION_HPP_INCLUDED
 
 #include <fcppt/scoped_ptr_impl.hpp>
-#include <fcppt/signal/detail/connection.hpp>
+#include <fcppt/signal/connection_fwd.hpp>
 
 
 namespace fcppt
@@ -22,7 +22,7 @@ namespace signal
 \ingroup fcpptsignal
 */
 typedef fcppt::scoped_ptr<
-	fcppt::signal::detail::connection
+	fcppt::signal::connection
 > scoped_connection;
 
 }

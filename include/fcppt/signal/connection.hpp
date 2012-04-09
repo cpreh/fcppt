@@ -5,8 +5,8 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_SIGNAL_DETAIL_CONNECTION_HPP_INCLUDED
-#define FCPPT_SIGNAL_DETAIL_CONNECTION_HPP_INCLUDED
+#ifndef FCPPT_SIGNAL_CONNECTION_HPP_INCLUDED
+#define FCPPT_SIGNAL_CONNECTION_HPP_INCLUDED
 
 #include <fcppt/class_symbol.hpp>
 #include <fcppt/noncopyable.hpp>
@@ -21,16 +21,21 @@ namespace fcppt
 {
 namespace signal
 {
-namespace detail
-{
 
 FCPPT_PP_PUSH_WARNING
 FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
 
-// this class is intentionally left blank
+/**
+\brief A connection returned by a connect call
+
+\ingroup fcpptsignal
+
+This class must be held onto as long as the connection should to the signal
+should be established.
+*/
 class FCPPT_CLASS_SYMBOL connection
 :
-	public detail::connection_base
+	public fcppt::signal::detail::connection_base
 {
 
 FCPPT_PP_POP_WARNING
@@ -46,7 +51,6 @@ public:
 	virtual ~connection();
 };
 
-}
 }
 }
 

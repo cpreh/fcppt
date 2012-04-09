@@ -9,7 +9,7 @@
 #define FCPPT_SIGNAL_SHARED_CONNECTION_HPP_INCLUDED
 
 #include <fcppt/shared_ptr_impl.hpp>
-#include <fcppt/signal/detail/connection_fwd.hpp>
+#include <fcppt/signal/connection_fwd.hpp>
 
 
 namespace fcppt
@@ -22,7 +22,7 @@ namespace signal
 \ingroup fcpptsignal
 */
 typedef fcppt::shared_ptr<
-	detail::connection
+	fcppt::signal::connection
 > shared_connection;
 
 }

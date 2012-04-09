@@ -704,13 +704,13 @@ set(
 	include/fcppt/signal/base_decl.hpp
 	include/fcppt/signal/base_fwd.hpp
 	include/fcppt/signal/base_impl.hpp
+	include/fcppt/signal/connection.hpp
+	include/fcppt/signal/connection_fwd.hpp
 	include/fcppt/signal/connection_manager.hpp
 	include/fcppt/signal/connection_manager_fwd.hpp
 	include/fcppt/signal/detail/concrete_connection.hpp
 	include/fcppt/signal/detail/concrete_connection_impl.hpp
-	include/fcppt/signal/detail/connection.hpp
 	include/fcppt/signal/detail/connection_base.hpp
-	include/fcppt/signal/detail/connection_fwd.hpp
 	include/fcppt/signal/detail/declare_operator.hpp
 	include/fcppt/signal/detail/define_operator.hpp
 	include/fcppt/signal/detail/define_void_operator.hpp
@@ -930,8 +930,8 @@ set(
 	src/log/trampoline.cpp
 	src/log/tree_formatter.cpp
 	src/narrow.cpp
+	src/signal/connection.cpp
 	src/signal/connection_manager.cpp
-	src/signal/detail/connection.cpp
 	src/string_conv_locale.cpp
 	src/time/ctime.cpp
 	src/time/gmtime.cpp

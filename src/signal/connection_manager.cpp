@@ -6,7 +6,9 @@
 
 
 #include <fcppt/move.hpp>
+#include <fcppt/signal/auto_connection.hpp>
 #include <fcppt/signal/connection_manager.hpp>
+#include <fcppt/signal/shared_connection.hpp>
 
 
 fcppt::signal::connection_manager::connection_manager()
@@ -19,8 +21,11 @@ fcppt::signal::connection_manager::connection_manager(
 	container const &_connections
 )
 :
-	connections_(_connections)
-{}
+	connections_(
+		_connections
+	)
+{
+}
 
 fcppt::signal::connection_manager::~connection_manager()
 {
@@ -28,11 +33,11 @@ fcppt::signal::connection_manager::~connection_manager()
 
 void
 fcppt::signal::connection_manager::add(
-	auto_connection _con
+	fcppt::signal::auto_connection _con
 )
 {
 	connections_.push_back(
-		shared_connection(
+		fcppt::signal::shared_connection(
 			fcppt::move(
 				_con
 			)

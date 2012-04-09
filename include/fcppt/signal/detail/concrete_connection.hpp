@@ -10,7 +10,7 @@
 
 #include <fcppt/noncopyable.hpp>
 #include <fcppt/function/object.hpp>
-#include <fcppt/signal/detail/connection.hpp>
+#include <fcppt/signal/connection.hpp>
 
 
 namespace fcppt
@@ -25,7 +25,7 @@ template<
 >
 class concrete_connection
 :
-	public detail::connection
+	public fcppt::signal::connection
 {
 	FCPPT_NONCOPYABLE(
 		concrete_connection

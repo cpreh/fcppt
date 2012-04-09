@@ -10,7 +10,7 @@
 
 #include <fcppt/noncopyable.hpp>
 #include <fcppt/function/object.hpp>
-#include <fcppt/signal/auto_connection.hpp>
+#include <fcppt/signal/auto_connection_fwd.hpp>
 #include <fcppt/signal/unregister/base_fwd.hpp>
 #include <fcppt/signal/unregister/function.hpp>
 #include <fcppt/signal/unregister/detail/concrete_connection.hpp>

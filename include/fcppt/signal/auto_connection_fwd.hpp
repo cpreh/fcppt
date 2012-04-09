@@ -9,7 +9,7 @@
 #define FCPPT_SIGNAL_AUTO_CONNECTION_FWD_HPP_INCLUDED
 
 #include <fcppt/unique_ptr_fwd.hpp>
-#include <fcppt/signal/detail/connection_fwd.hpp>
+#include <fcppt/signal/connection_fwd.hpp>
 
 
 namespace fcppt
@@ -22,7 +22,7 @@ namespace signal
 \ingroup fcpptsignal
 */
 typedef fcppt::unique_ptr<
-	fcppt::signal::detail::connection
+	fcppt::signal::connection
 > auto_connection;
 
 }

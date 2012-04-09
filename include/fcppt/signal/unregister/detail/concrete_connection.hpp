@@ -10,7 +10,7 @@
 
 #include <fcppt/noncopyable.hpp>
 #include <fcppt/function/object.hpp>
-#include <fcppt/signal/detail/connection.hpp>
+#include <fcppt/signal/connection.hpp>
 #include <fcppt/signal/unregister/function.hpp>
 
 
@@ -28,7 +28,7 @@ template<
 >
 class concrete_connection
 :
-	public signal::detail::connection
+	public fcppt::signal::connection
 {
 	FCPPT_NONCOPYABLE(
 		concrete_connection
@@ -40,7 +40,7 @@ public:
 
 	explicit concrete_connection(
 		function_type const &,
-		unregister::function const &
+		fcppt::signal::unregister::function const &
 	);
 
 	~concrete_connection();
@@ -50,7 +50,7 @@ public:
 private:
 	function_type function_;
 
-	unregister::function unregister_;
+	fcppt::signal::unregister::function unregister_;
 };
 
 }
