@@ -118,7 +118,7 @@ Then, open the generated solution in Visual Studio and build the library.
 
 First, download and extract the tarball or clone the git repository. Then, open
 a terminal and switch to the directory where fcppt is located. Now, while it
-<em>is</em> possible to invoke cmake from the a project's root directory, this
+<em>is</em> possible to invoke cmake from the project's root directory, this
 is not advised (and is, in fact, not possible with fcppt) since this will
 litter the source tree with build files. For that reason, create a build
 subdirectory and switch to it:

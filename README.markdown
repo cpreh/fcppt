@@ -26,7 +26,7 @@ Top-level module list
 		<td>Typedef structs and macros to specify alignment.</td>
 	</tr>
 	<tr>
-		<td>fcppt.alignment</td>
+		<td>fcppt.assert</td>
 		<td>Macros and functions for assertions.</td>
 	</tr>
 	<tr>
@@ -99,7 +99,7 @@ Top-level module list
 	</tr>
 	<tr>
 		<td>fcppt.strong_typedef</td>
-		<td>The strong typedef class an helper macros. </td>
+		<td>The strong typedef class and helper macros. </td>
 	</tr>
 	<tr>
 		<td>fcppt.thread</td>
@@ -148,7 +148,7 @@ Building and installation
 -------------------------
 
 The official fcppt installation guide can be found in the <a
-href="http://fcppt./d3/d36/requirements_download_installation.html">official
+href="http://fcppt.org/d3/d36/requirements_download_installation.html">official
 documentation</a>.
 
 More information

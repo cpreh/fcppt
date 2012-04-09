@@ -345,7 +345,7 @@ register_named_signal(
 }
 \endcode
 
-Note that the remove callbacks's signature is just <code>void()</code>. Our main might look like this:
+Note that the remove callbacks' signature is just <code>void()</code>. Our main might look like this:
 
 \code
 void

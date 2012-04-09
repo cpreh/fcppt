@@ -452,7 +452,7 @@ int main()
 
 This will use the float comparison operator. However, since floating point
 values are inherently inaccurate, an exact comparison is almost <em>never</em>
-what you want to do. Instead, you should use a different method for comparsion.
+what you want to do. Instead, you should use a different method for comparison.
 For example, you could check if the Euclidean distance is small enough, using
 fcppt::math::vector::length:
 

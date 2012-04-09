@@ -1,7 +1,7 @@
 /**
 \defgroup fcpptstrongtypedef fcppt.strong_typedef
 \ingroup fcpptmain
-\brief The strong typedef class an helper macros
+\brief The strong typedef class and helper macros
 
 \section fcpptstrongtypedef_motivation Motivation
 

@@ -64,7 +64,7 @@ fcppt::container::bitfield::object takes as first template parameter an enum
 <li>
 	<code>Size</code> shall be the number of enumerators defined in Enum.
 	To achieve consistency you should define the enum's size within the
-	enum itsself.  <strong>Example:</strong>
+	enum itself.  <strong>Example:</strong>
 	\code
 	enum my_enum { value1, value2, value3, _my_enum_size };
 

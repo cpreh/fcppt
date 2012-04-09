@@ -27,7 +27,7 @@ below.
 
 <ul>
 <li>Pseudo random number generators are classes that only produce random
-numbers. They have different tradeoffs in randomness and speed. In a way, they
+numbers. They have different trade-offs in randomness and speed. In a way, they
 are very similar to the functions provided by C++03: They must be seeded and
 produce random numbers in a certain range.</li>
 

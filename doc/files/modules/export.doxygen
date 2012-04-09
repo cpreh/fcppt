@@ -36,7 +36,7 @@ this).
 Although every symbol can be made public under a POSIX system by default, this
 is still not recommended, because you have to specify the visibility for
 Windows anyway and libraries with only public symbols tend to have an
-unnecessarly large interface.
+unnecessarily large interface.
 
 \section exports_library Defining library interfaces
 
@@ -121,7 +121,7 @@ function instantiation.
 
 <li>
 An explicitly instantiated template class is handled in a similarly to
-explicitly instantied functions.
+explicitly instantiated functions.
 
 In the following example, a templated class is explicitly instantiated and
 exported. The class definition is, again, as if it was a normal class.

@@ -102,7 +102,7 @@ For these reasons, fcppt provides helpers for dynamic-casting. To work around
 the ugly pointer cast, there is fcppt::optional_dynamic_cast which returns an
 fcppt::optional.
 
-To provie a little more information on the types for the reference
+To provide a little more information on the types for the reference
 <code>dynamic_cast</code>, there is fcppt::dynamic_cast_ (mind the
 underscore!).
 
@@ -121,7 +121,7 @@ Sometimes, it is necessary to convert between these types, which is dangerous
 if the conversion doesn't preserve the original value. This can happen if the
 result (as a magnitude) doesn't fit into the destination type, or if signedness
 cannot be preserved. If the destination type is signed, the result is even
-implmementation-defined if the value cannot be preserved, which is especially
+implementation-defined if the value cannot be preserved, which is especially
 dangerous.
 
 To automatically check for such conditions, fcppt provides

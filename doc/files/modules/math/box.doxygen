@@ -131,7 +131,7 @@ int main()
 
 This will use the float comparison operator. However, since floating point
 values are inherently inaccurate, an exact comparison is almost <em>never</em>
-what you want to do. Instead, you should use a different method for comparsion.
+what you want to do. Instead, you should use a different method for comparison.
 fcppt::math::box provides the \link fcppt::math::box::componentwise_equal
 componentwise_equal \endlink method which takes two boxes and an epsilon. If
 one of the components of the difference is larger than the given epsilon, this
@@ -174,7 +174,7 @@ various headers, too. Here's an exhaustive list:
 </tr>
 <tr>
 <td><code>output.hpp</code></td>
-<td>Contains an <code>operator<<</code> for the standard input streams (wide and narrow) which outputs boxs in the format: <code>(v1,v2,v3,...)</code></td>
+<td>Contains an <code>operator<<</code> for the standard input streams (wide and narrow) which outputs boxes in the format: <code>(v1,v2,v3,...)</code></td>
 </tr>
 </table>
 */

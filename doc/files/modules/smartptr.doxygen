@@ -53,12 +53,12 @@ resides on the stack, so freeing is done automatically.
 fcppt provides several kinds of smart pointers, where some of them are also
 provided by Boost. The difference is that the deleter (which dictates how the
 object is to be freed) is a template parameter for all classes. This is a
-tradeoff and removes some of the dynamic behaviour, switching it for a
-statically typesafe one.
+trade-off and removes some of the dynamic behaviour, switching it for a
+statically type-safe one.
 
 \section smartptr_types Smart pointer types
 
-fcppt provides four smart pointer classes, each with their own tradeoffs.
+fcppt provides four smart pointer classes, each with their own trade-offs.
 
 <table>
 <tr>
@@ -88,7 +88,7 @@ shared ptrs are still alive.</td>
 
 <td>A replacement for <code>std::auto_ptr</code>. Only one unique ptr will
 manage the ownership at a time. It can be transfered into a shared ptr or into
-a scoped ptr. The difference to <code>std::auto_ptr</code> is that transfering
+a scoped ptr. The difference to <code>std::auto_ptr</code> is that transferring
 ownership from one unique ptr to another is safer.</td>
 
 </tr>
@@ -169,7 +169,7 @@ memory management of the shared ptrs more efficient.
 A weak pointer can be used to keep track of the shared ptrs to one object
 without contributing to the shared count. We can then observe if a shared ptr
 is still alive. This can also be used to break cycles, but it is not
-recommended to introcude cycles anyway.
+recommended to introduce cycles anyway.
 
 A weak ptr can be used as follows:
 

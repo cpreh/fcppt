@@ -79,7 +79,7 @@ enabled.
 
 \link fcppt::log::_ \endlink is a trampoline object that constructs something
 that can be written to like an <code>std::basic_ostream</code>. This is used to
-create a whole message in a threadsafe manner. If you log in multiple pieces
+create a whole message in a thread-safe manner. If you log in multiple pieces
 instead, the log message might end up interleaved with other messages.
 
 \link fcppt::log::parameters::object::level_defaults \endlink is a convenience

@@ -34,7 +34,7 @@ namespace matrix
 
 \section fcpptmathmatrixobject_motivation Motivation
 
-Matrices are ubiqituous in mathematics and computer science. Often, matrices
+Matrices are ubiquituous in mathematics and computer science. Often, matrices
 represent linear operations and are applied to accordingly-sized vectors. Since
 fcppt already provides a vector class, there's the need for a complementary
 matrix class and operations.

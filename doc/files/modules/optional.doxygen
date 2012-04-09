@@ -123,7 +123,7 @@ For optional references, see \ref optional_reference
 There is already <code>%boost::optional</code> so you might wonder why
 fcppt provides its own optional type. It is actually quite similar to
 <code>%boost::optional</code> in the sense that it stores optional values
-by value and not by means of dynamically allocated memmory. This means
+by value and not by means of dynamically allocated memory. This means
 that an optional value is at least as big as its type it holds.
 The key differences to <code>%boost::optional</code> are
 <ul>

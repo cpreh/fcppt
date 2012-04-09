@@ -30,7 +30,7 @@ Error handling in C++ can be done using different mechanisms:
 <ul>
 
 <li>Checking return values of functions, acting appropriately when an error has
-occured.</li>
+occurred.</li>
 
 <li>Throwing an exception, which may be caught during the stack unwinding
 process.</li>

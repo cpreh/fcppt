@@ -96,7 +96,7 @@ concerned with compilation times.
 If you forget to include the <code>_impl</code> header where the implementation
 of a template is needed, you will get undefined references when linking.
 
-Some sublibraries, like fcppt::math::vector, provide convenience headers that
+Some sub-libraries, like fcppt::math::vector, provide convenience headers that
 include almost everything that belongs to the sub library. For example,
 <code><fcppt/math/vector/vector.hpp></code> includes most of the headers found
 under <code>fcppt/math/vector/</code>. Be aware, though, that this might
