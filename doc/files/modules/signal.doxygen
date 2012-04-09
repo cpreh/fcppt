@@ -172,9 +172,9 @@ shared connections everywhere to emulate connections that are as easy to pass
 around.
 
 \note
-The "real" connection class is actually in a detail namespace:
-fcppt::signal::detail::connection. You're never supposed to "look
-inside" this object. Merely pass it around using a smart pointer to it.
+The "real" connection class, fcppt::signal::connection, is somewhat
+"implementation-defined". You're never supposed to "look inside" this object.
+Merely pass it around using a smart pointer to it.
 
 fcppt::signal::object has overloads for <code>operator()</code>, so you can
 treat a signal as a functor. However, you <em>cannot</em> directly wrap a
