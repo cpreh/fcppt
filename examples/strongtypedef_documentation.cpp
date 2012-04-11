@@ -1,18 +1,17 @@
+#include <fcppt/strong_typedef.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/static_assert.hpp>
 #include <boost/type_traits/is_same.hpp>
 #include <fcppt/config/external_end.hpp>
 
-
 namespace
+{
+namespace strong_typedef_example
 {
 //! [strong_typedef_for_named_parameters_without_strong_typedef_without_typedef]
 void f(int,bool,char);
 //! [strong_typedef_for_named_parameters_without_strong_typedef_without_typedef]
-}
 
-namespace
-{
 //! [strong_typedef_for_named_parameters_without_strong_typedef_with_typedef]
 typedef
 int
@@ -28,10 +27,7 @@ draw_char;
 
 void f(vertex_count,enable_culling,draw_char) {}
 //! [strong_typedef_for_named_parameters_without_strong_typedef_with_typedef]
-}
 
-namespace
-{
 void g()
 {
 //! [strong_typedef_for_named_parameters_without_strong_typedef_with_typedef_call_test]
@@ -43,11 +39,7 @@ f('c',true,100);
 f('c',100,true);
 //! [strong_typedef_for_named_parameters_without_strong_typedef_with_typedef_call_test]
 }
-}
 
-#include <fcppt/strong_typedef.hpp>
-namespace
-{
 //! [strong_typedef_for_named_parameters_with_strong_typedef]
 namespace with_strong_typedef
 {
@@ -124,16 +116,17 @@ BOOST_STATIC_ASSERT((
 //! [strong_typedef_is_same]
 
 }
+}
 
 int main()
 {
-	jogger::update(
-		time(
+	strong_typedef_example::jogger::update(
+		strong_typedef_example::time(
 			1.0f));
 
-	g();
+	strong_typedef_example::g();
 
-	f(1,2,3);
+	strong_typedef_example::f(1,2,3);
 
-	with_strong_typedef::named_parameters_call_test();
+	strong_typedef_example::with_strong_typedef::named_parameters_call_test();
 }
