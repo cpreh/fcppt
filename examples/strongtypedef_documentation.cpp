@@ -125,4 +125,15 @@ BOOST_STATIC_ASSERT((
 
 }
 
-int main() {}
+int main()
+{
+	jogger::update(
+		time(
+			1.0f));
+
+	g();
+
+	f(1,2,3);
+
+	with_strong_typedef::named_parameters_call_test();
+}
