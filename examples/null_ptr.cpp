@@ -41,13 +41,14 @@ int_func(
 }
 
 #include <fcppt/config/warnings.hpp>
-
-#if defined(FCPPT_CONFIG_HAVE_CONVERSION_NULL_WARNING)
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
 FCPPT_PP_PUSH_WARNING
+FCPPT_PP_DISABLE_GCC_WARNING(-Wconversion)
+#if defined(FCPPT_CONFIG_HAVE_CONVERSION_NULL_WARNING)
 FCPPT_PP_DISABLE_GCC_WARNING(-Wconversion-null)
 #endif
+
 int
 main()
 {
@@ -75,8 +76,6 @@ main()
 	*/
 //! [null_ptr_call]
 }
-#if defined(FCPPT_CONFIG_HAVE_CONVERSION_NULL_WARNING)
+
 #include <fcppt/preprocessor/pop_warning.hpp>
 FCPPT_PP_POP_WARNING
-#endif
-
