@@ -1,4 +1,7 @@
 #include <fcppt/strong_typedef.hpp>
+#include <fcppt/preprocessor/disable_vc_warning.hpp>
+#include <fcppt/preprocessor/pop_warning.hpp>
+#include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/static_assert.hpp>
 #include <boost/type_traits/is_same.hpp>
@@ -28,6 +31,9 @@ draw_char;
 void f(vertex_count,enable_culling,draw_char) {}
 //! [strong_typedef_for_named_parameters_without_strong_typedef_with_typedef]
 
+FCPPT_PP_PUSH_WARNING
+FCPPT_PP_DISABLE_VC_WARNING(4305)
+
 void g()
 {
 //! [strong_typedef_for_named_parameters_without_strong_typedef_with_typedef_call_test]
@@ -39,6 +45,8 @@ f('c',true,100);
 f('c',100,true);
 //! [strong_typedef_for_named_parameters_without_strong_typedef_with_typedef_call_test]
 }
+
+FCPPT_PP_POP_WARNING
 
 //! [strong_typedef_for_named_parameters_with_strong_typedef]
 namespace with_strong_typedef
@@ -126,7 +134,7 @@ int main()
 
 	strong_typedef_example::g();
 
-	strong_typedef_example::f(1,2,3);
+	strong_typedef_example::f(1,true,'c');
 
 	strong_typedef_example::with_strong_typedef::named_parameters_call_test();
 }
