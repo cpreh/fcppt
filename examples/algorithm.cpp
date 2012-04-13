@@ -4,7 +4,6 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-//[algorithm
 #include <fcppt/algorithm/append.hpp>
 #include <fcppt/algorithm/contains.hpp>
 #include <fcppt/algorithm/copy_if.hpp>
@@ -103,4 +102,3 @@ int main()
 			&std::string::size,
 			boost::phoenix::arg_names::arg1) == 2u);
 }
-//]

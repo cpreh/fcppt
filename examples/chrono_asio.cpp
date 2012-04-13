@@ -4,7 +4,6 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-//[chronoasio
 #include <fcppt/chrono/asio/deadline_timer.hpp>
 #include <fcppt/chrono/asio/expires_from_now_any.hpp>
 #include <fcppt/config/external_begin.hpp>
@@ -31,4 +30,3 @@ main()
 
 	io_service.run();
 }
-//]

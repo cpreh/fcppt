@@ -66,12 +66,12 @@ f()
 }
 //! [dynamic_cast_]
 
-//[trydynamiccast
 #include <fcppt/try_dynamic_cast.hpp>
 
 namespace
 {
 
+//! [try_dynamic_cast]
 void
 g()
 {
@@ -92,9 +92,9 @@ g()
 			<< ptr
 			<< FCPPT_TEXT('\n');
 }
+//! [try_dynamic_cast]
 
 }
-//]
 
 int main()
 {
