@@ -55,6 +55,7 @@ three_ints const b(
 		boost::phoenix::arg_names::arg1 * 3));
 // b now contains: 3, 6, 9
 //! [array_map]
+std::cout << b.empty() << '\n';
 }
 
 {
