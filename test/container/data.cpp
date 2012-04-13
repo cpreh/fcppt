@@ -7,6 +7,9 @@
 #include <fcppt/null_ptr.hpp>
 #include <fcppt/container/data.hpp>
 #include <fcppt/container/data_end.hpp>
+#include <fcppt/preprocessor/disable_gcc_warning.hpp>
+#include <fcppt/preprocessor/pop_warning.hpp>
+#include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/test/unit_test.hpp>
 #include <iterator>
