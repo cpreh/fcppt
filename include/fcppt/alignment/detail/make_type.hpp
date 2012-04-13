@@ -44,7 +44,7 @@ struct make_type<\
 	state\
 >\
 {\
-	typedef FCPPT_ALIGNMENT_ALIGN(state) T type;\
+	typedef T FCPPT_ALIGNMENT_ALIGN(state) type;\
 };
 
 #define FCPPT_ALIGNMENT_DETAIL_MAXIMUM 128

@@ -12,7 +12,9 @@
 #include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/test/unit_test.hpp>
+#include <vector>
 #include <fcppt/config/external_end.hpp>
+
 
 FCPPT_PP_PUSH_WARNING
 FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
@@ -31,27 +33,30 @@ FCPPT_PP_POP_WARNING
 		alignment
 	>::type array_type;
 
-	array_type array1;
-	array_type array2;
-	array_type array3;
+	typedef std::vector<
+		array_type
+	> array_vector;
 
+	array_vector arrays;
+
+	arrays.push_back(
+		array_type()
+	);
+	
+	arrays.push_back(
+		array_type()
+	);
+	
 	BOOST_CHECK(
 		fcppt::alignment::is_aligned(
-			&array1,
+			&arrays[0],
 			alignment
 		)
 	);
 
 	BOOST_CHECK(
 		fcppt::alignment::is_aligned(
-			&array2,
-			alignment
-		)
-	);
-
-	BOOST_CHECK(
-		fcppt::alignment::is_aligned(
-			&array3,
+			&arrays[1],
 			alignment
 		)
 	);
