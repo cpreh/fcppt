@@ -31,6 +31,7 @@ FCPPT_PP_POP_WARNING
 	>::type char_type;
 
 	char_type test1;
+
 	char_type test2;
 
 	BOOST_CHECK(
