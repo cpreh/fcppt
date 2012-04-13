@@ -46,12 +46,11 @@ FCPPT_PP_POP_WARNING
 };
 //! [pp_warning_vc]
 
+#if defined(FCPPT_HAVE_GCC_DIAGNOSTIC)
 //! [pp_warning_gcc]
 float
 test()
 {
-
-#if defined(FCPPT_HAVE_GCC_DIAGNOSTIC)
 // Here is a C macro from another library that uses a C style cast.
 #define SOME_C_LIB_MACRO \
 	(float)(42)
@@ -62,11 +61,15 @@ FCPPT_PP_DISABLE_GCC_WARNING(-Wold-style-cast)
 
 	return SOME_C_LIB_MACRO;
 FCPPT_PP_POP_WARNING
-#else
-	return 0.f;
-#endif
 }
 //! [pp_warning_gcc]
+#else
+float
+test()
+{
+	return 0.f;
+}
+#endif
 
 }
 
