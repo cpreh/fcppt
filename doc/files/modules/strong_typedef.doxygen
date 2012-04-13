@@ -19,7 +19,7 @@ One problem of C's and C++'s function call mechanism is the lack of what is
 sometimes called <em>named parameters</em>. To clarify the problem, consider
 the following function declaration:
 
-\snippet strongtypedef_documentation.cpp strong_typedef_for_named_parameters_without_strong_typedef_without_typedef
+\snippet doc/strong_typedef.cpp strong_typedef_for_named_parameters_without_strong_typedef_without_typedef
 
 Since the method is rather ill-named, we cannot deduce the meaning of its
 parameters from the function name. The parameters also have no names - the
@@ -45,11 +45,11 @@ href="http://www.boost.org/doc/libs/1_42_0/libs/parameter/doc/html/reference.htm
 Using fcppt.strong_typedef is another solution to this. We can rewrite the
 function declaration in the following way:
 
-\snippet strongtypedef_documentation.cpp strong_typedef_for_named_parameters_with_strong_typedef
+\snippet doc/strong_typedef.cpp strong_typedef_for_named_parameters_with_strong_typedef
 
 Now we can call the function via:
 
-\snippet strongtypedef_documentation.cpp strong_typedef_for_named_parameters_with_strong_typedef_call_test
+\snippet doc/strong_typedef.cpp strong_typedef_for_named_parameters_with_strong_typedef_call_test
 
 Of course, it's not perfect. Other languages (such as Python) allow arbitrary
 parameter reorderings: It doesn't matter in which order you name the
@@ -60,7 +60,7 @@ other advantages in using them.
 
 There are flaws in the reasoning above. If we wanted to attach the parameter name to the type, we could use normal typedefs:
 
-\snippet strongtypedef_documentation.cpp strong_typedef_for_named_parameters_without_strong_typedef_with_typedef
+\snippet doc/strong_typedef.cpp strong_typedef_for_named_parameters_without_strong_typedef_with_typedef
 
 Now you know what the parameters mean by looking at the function declaration!
 Also, even without using typedefs, we might not be completely lost after all.
@@ -71,7 +71,7 @@ These are valid points. However, there's another flaw in the design of C++, and
 that's <em>implicit conversions</em>. The following calls to our function
 <code>f</code> are all valid C++:
 
-\snippet strongtypedef_documentation.cpp strong_typedef_for_named_parameters_without_strong_typedef_with_typedef_call_test
+\snippet doc/strong_typedef.cpp strong_typedef_for_named_parameters_without_strong_typedef_with_typedef_call_test
 
 You can compile with all warnings enabled (even with
 <code>-Wconversion</code>), no warning will ever be emitted. Clearly, only one
@@ -131,11 +131,11 @@ void jogger::update(float tick_delta)
 
 These errors can be detected by using a different type for the distance and the speed, respectively:
 
-\snippet strongtypedef_documentation.cpp strong_typedef_for_overloading_guards_definitions
+\snippet doc/strong_typedef.cpp strong_typedef_for_overloading_guards_definitions
 
 Then, the function looks like this:
 
-\snippet strongtypedef_documentation.cpp strong_typedef_for_overloading_guards_example
+\snippet doc/strong_typedef.cpp strong_typedef_for_overloading_guards_example
 
 This is a bit less readable, but it's safe. Trying to calculate
 <code>elapsed_distance += current_speed</code> will fail since
@@ -208,7 +208,7 @@ warnings with Microsoft's Visual Studio about that.
 When declaring two strong typedefs with the same underlying type, two distinct
 types should be created:
 
-\snippet strongtypedef_documentation.cpp strong_typedef_is_same
+\snippet doc/strong_typedef.cpp strong_typedef_is_same
 
 To achieve that, the <code>FCPPT_MAKE_STRONG_TYPEDEF</code> macro first creates
 an empty struct containing the name you specify as the first parameter. This is
