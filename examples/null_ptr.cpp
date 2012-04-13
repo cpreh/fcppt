@@ -4,6 +4,7 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
+#include <fcppt/config.hpp>
 #include <fcppt/null_ptr.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <cstddef>
@@ -52,6 +53,7 @@ FCPPT_PP_DISABLE_GCC_WARNING(-Wconversion-null)
 int
 main()
 {
+#if defined(FCPPT_HAVE_GCC_DIAGNOSTIC)
 //! [null_ptr_call]
 	// false is convertible to a pointer
 	pointer_func(
@@ -75,6 +77,7 @@ main()
 	);
 	*/
 //! [null_ptr_call]
+#endif
 }
 
 #include <fcppt/preprocessor/pop_warning.hpp>
