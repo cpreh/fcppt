@@ -6,11 +6,13 @@
 
 #include <fcppt/algorithm/append.hpp>
 #include <fcppt/algorithm/array_map.hpp>
+#include <fcppt/algorithm/join_strings.hpp>
 #include <fcppt/algorithm/levenshtein.hpp>
 #include <fcppt/algorithm/shift_compare.hpp>
 #include <fcppt/container/array.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/phoenix/core.hpp>
+#include <boost/spirit/home/phoenix/core/argument.hpp>
+#include <boost/spirit/home/phoenix/operator/arithmetic.hpp>
 #include <functional>
 #include <iostream>
 #include <ostream>
@@ -50,7 +52,7 @@ three_ints const a = {{ 1,2,3 }};
 three_ints const b(
 	fcppt::algorithm::array_map<three_ints>(
 		a,
-		boost::phoenix::placeholders::arg1 * 3));
+		boost::phoenix::arg_names::arg1 * 3));
 // b now contains: 3, 6, 9
 //! [array_map]
 }

@@ -5,7 +5,7 @@
 
 
 #include <fcppt/text.hpp>
-#include <fcppt/container/bitfield/bitfield.hpp>
+#include <fcppt/container/bitfield/object_impl.hpp>
 #include <fcppt/io/cout.hpp>
 
 //! [bitfield]

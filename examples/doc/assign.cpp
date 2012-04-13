@@ -6,6 +6,10 @@
 
 #include <fcppt/assign/make_array.hpp>
 #include <fcppt/assign/make_container.hpp>
+#include <fcppt/container/array.hpp>
+#include <fcppt/config/external_begin.hpp>
+#include <vector>
+#include <fcppt/config/external_end.hpp>
 
 int
 main()
@@ -22,10 +26,13 @@ result = fcppt::assign::make_array<int>(1)(2)(3).container();
 
 {
 //! [make_container]
-std::vector<int> result;
-result = fcppt::assign::make_container<int>(1)(2)(3);
+typedef std::vector<int> container;
+
+container result;
+
+result = fcppt::assign::make_container<container>(1)(2)(3);
 // Result now contains 1,2,3
-result = fcppt::assign::make_container<int>(1)(2)(3).container();
+result = fcppt::assign::make_container<container>(1)(2)(3).container();
 // The same, but more explicit (might be needed inside templates)
 //! [make_container]
 }
