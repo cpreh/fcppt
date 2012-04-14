@@ -55,7 +55,7 @@ The following platforms are tested by us:
 	<li>gcc-4.7.0 (Gentoo Linux, amd64)</li>
 	<li>clang-3.0 (Gentoo Linux, amd64)</li>
 	<li>Apple clang 3.0 (MacOS)</li>
-	<li>VC++ 2010 SP1 (Windows 7 64 Bit) </li>
+	<li>VC++ 2010 SP1 (Windows XP x86 and Windows 7 amd64) </li>
 </ul>
 
 \section requirements_download_installation_download Download
