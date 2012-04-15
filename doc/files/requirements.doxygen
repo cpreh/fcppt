@@ -61,8 +61,8 @@ The following platforms are tested by us:
 \section requirements_download_installation_download Download
 
 The latest fcppt release is 0.11. Get it <a
-href="http://fcppt.org/downloads/fcppt-0.11.tar.bz2">here</a> (SHA1:
-TODO).
+href="http://fcppt.org/downloads/fcppt-0.11.tar.bz2">here</a> (<a
+href="http://fcppt.org/downloads/fcppt-0.11.tar.bz2.digest">SHA1</a>).
 
 fcppt is available through our public Git Repository:
 
