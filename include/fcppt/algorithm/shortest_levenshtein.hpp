@@ -11,7 +11,12 @@
 #include <fcppt/algorithm/levenshtein.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/next_prior.hpp>
+#include <boost/range/begin.hpp>
+#include <boost/range/iterator.hpp>
+#include <boost/range/reference.hpp>
+#include <boost/range/value_type.hpp>
 #include <fcppt/config/external_end.hpp>
+
 
 namespace fcppt
 {
@@ -23,17 +28,18 @@ namespace algorithm
 ///
 /// FIXME: Have a nonconst version for this? Base this on iterators?
 template<
-	typename Container
+	typename Range,
+	typename Value
 >
 typename
-Container::const_reference
+boost::range_reference<Range>::type
 shortest_levenshtein(
-	Container const &_container,
-	typename Container::const_reference _ref
+	Range &_range,
+	Value const &_element
 )
 {
 	typedef typename
-	Container::value_type
+	boost::range_value<Range>::type
 	string_type;
 
 	typedef typename
@@ -41,34 +47,37 @@ shortest_levenshtein(
 	size_type;
 
 	typedef typename
-	Container::const_iterator
-	const_iterator;
+	boost::range_iterator<Range>::type
+	iterator;
 
 	size_type shortest_dist(
 		::fcppt::algorithm::levenshtein(
-			*_container.begin(),
-			_ref
+			*boost::begin(
+				_range),
+			_element
 		)
 	);
 
-	const_iterator shortest(
-		_container.begin()
+	iterator shortest(
+		boost::begin(
+			_range)
 	);
 
 	for(
-		const_iterator it(
+		iterator it(
 			boost::next(
-				_container.begin()
+				boost::begin(
+					_range)
 			)
 		);
-		it != _container.end();
+		it != boost::end(_range);
 		++it
 	)
 	{
 		size_type const new_shortest_dist(
 			::fcppt::algorithm::levenshtein(
 				*it,
-				_ref
+				_element
 			)
 		);
 

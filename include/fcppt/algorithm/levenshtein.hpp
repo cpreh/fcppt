@@ -11,8 +11,14 @@
 #include <fcppt/container/grid/object.hpp>
 #include <fcppt/math/dim/object_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
+#include <boost/range/empty.hpp>
+#include <boost/range/size.hpp>
+#include <boost/range/size_type.hpp>
+#include <boost/range/value_type.hpp>
+#include <boost/type_traits/make_unsigned.hpp>
 #include <algorithm>
 #include <fcppt/config/external_end.hpp>
+
 
 namespace fcppt
 {
@@ -25,46 +31,57 @@ namespace algorithm
 See http://en.wikipedia.org/wiki/Levenshtein_distance for an explanation of the algorithm.
 \pre
 <ul>
-<li><code>Container::size_type</code> and <code>Container::value_type</code> exist</li>
-<li><code>bool Container::empty() const</code> exists</li>
-<li><code>size_type Container::size() const</code> exists</li>
-<li><code>Container::operator[]</code> exists</li>
-<li><code>Container::value_type</code> has to have an <code>operator==</code></li>
+<li><code>Range::size_type</code> and <code>Range::value_type</code> exist</li>
+<li><code>bool Range::empty() const</code> exists</li>
+<li><code>size_type Range::size() const</code> exists</li>
+<li><code>Range::operator[]</code> exists</li>
+<li><code>Range::value_type</code> has to have an <code>operator==</code></li>
 </ul>
 
 \note
 The code is taken quite literally from:
 http://www.merriampark.com/ldcpp.htm
 */
-template<typename Container>
+template<typename Range>
 typename
-Container::size_type
+boost::range_size<Range>::type
 levenshtein(
-	Container const &source,
-	Container const &target)
+	Range const &source,
+	Range const &target)
 {
 	typedef typename
-	Container::size_type
-	result_type;
+	boost::range_size<Range>::type
+	size_type;
+
+	typedef typename
+	boost::range_difference<Range>::type
+	difference_type;
 
 	// This doesn't have to be a char_type, it's just called that way :>
 	typedef typename
-	Container::value_type
+	boost::range_value<Range>::type
 	char_type;
 
-	result_type const
-		n = source.size(),
-		m = target.size();
+	size_type const
+		n =
+			static_cast<size_type>(
+				boost::size(
+					source)),
+		m =
+			static_cast<size_type>(
+				boost::size(
+					target));
 
-	if (source.empty())
+	if(boost::empty(source))
 		return m;
-	if (target.empty())
+
+	if(boost::empty(target))
 		return n;
 
 	typedef
 	fcppt::container::grid::object
 	<
-		result_type,
+		size_type,
 		2
 	>
 	grid;
@@ -73,64 +90,124 @@ levenshtein(
 	grid::dim
 	dim;
 
+	typedef typename
+	dim::value_type
+	dimension_type;
+
 	grid matrix(
 		dim(
-			static_cast<result_type>(
+			static_cast<dimension_type>(
 				n+1),
-			static_cast<result_type>(
+			static_cast<dimension_type>(
 				m+1)));
 
 	// Step 2
 
-	for (result_type i = 0; i <= n; i++)
-		matrix[dim(i,0)] = i;
+	for (size_type i = 0; i <= n; i++)
+		matrix[dim(static_cast<dimension_type>(i),0u)] = i;
 
-	for (result_type j = 0; j <= m; j++)
-		matrix[dim(0,j)] = j;
+	for (size_type j = 0; j <= m; j++)
+		matrix[dim(0u,static_cast<dimension_type>(j))] = j;
 
-	for (result_type i = 1; i <= n; i++)
+	for (difference_type i = 1; i <= static_cast<difference_type>(n); i++)
 	{
 		char_type const &s_i =
-			source[i-1];
+			*(boost::begin(
+				source) +
+			i-1);
 
-		for (result_type j = 1; j <= m; j++)
+		for (difference_type j = 1; j <= static_cast<difference_type>(m); j++)
 		{
 			char_type const &t_j =
-				target[j-1];
+				*(boost::begin(
+					target) +
+				j-1);
 
-			result_type cost;
+			size_type cost;
 			if (s_i == t_j)
-				cost = 0;
+				cost = 0u;
 			else
-				cost = 1;
+				cost = 1u;
 
 			// Step 6
 
-			result_type const
-				above = matrix[dim(i-1,j)],
-				left = matrix[dim(i,j-1)],
-				diag = matrix[dim(i-1,j-1)];
-			result_type
-				cell = ::std::min(above + 1,::std::min(left + 1, diag + cost));
+			size_type const
+				above =
+					matrix[
+						dim(
+							static_cast<dimension_type>(
+								i-1),
+							static_cast<dimension_type>(
+								j))],
+				left =
+					matrix[
+						dim(
+							static_cast<dimension_type>(
+								i),
+							static_cast<dimension_type>(
+								j-1))],
+				diag =
+					matrix[
+						dim(
+							static_cast<dimension_type>(
+								i-1),
+							static_cast<dimension_type>(
+								j-1))];
+
+			size_type cell =
+				::std::min(
+					static_cast<size_type>(
+						above + 1u),
+					::std::min(
+						static_cast<size_type>(
+							left + 1u),
+						static_cast<size_type>(
+							diag + cost)));
 
 			// Step 6A: Cover transposition, in addition to deletion,
 			// insertion and substitution. This step is taken from:
 			// Berghel, Hal ; Roach, David : "An Extension of Ukkonen's
 			// Enhanced Dynamic Programming ASM Algorithm"
 			// (http://www.acm.org/~hlb/publications/asm/asm.html)
-			if (i>static_cast<result_type>(2) && j>static_cast<result_type>(2))
+			if(i>static_cast<difference_type>(2) && j>static_cast<difference_type>(2))
 			{
-				result_type trans = matrix[dim(i-2,j-2)]+1;
-				if (source[i-2]!=t_j) trans++;
-				if (s_i!=target[j-2]) trans++;
-				if (cell>trans) cell = trans;
+				size_type trans =
+					static_cast<size_type>(
+						matrix[
+							dim(
+								static_cast<dimension_type>(
+									i-2),
+								static_cast<dimension_type>(
+									j-2))] +
+							1u);
+
+				if(*(boost::begin(source) + i-2) != t_j)
+					trans++;
+
+				if(s_i != *(boost::begin(target) + j-2))
+					trans++;
+
+				if(cell>trans)
+					cell = trans;
 			}
 
-			matrix[dim(i,j)] = cell;
+			matrix[
+				dim(
+					static_cast<dimension_type>(
+						i),
+					static_cast<dimension_type>(
+						j))] =
+				cell;
 		}
 	}
 
-	return matrix[dim(n,m)];
+	return
+		matrix[
+			dim(
+				static_cast<dimension_type>(
+					n),
+				static_cast<dimension_type>(
+					m))];
 }
 }
 }

@@ -11,6 +11,8 @@
 #include <fcppt/algorithm/find_exn.hpp>
 #include <fcppt/algorithm/join_strings.hpp>
 #include <fcppt/algorithm/ptr_container_erase.hpp>
+#include <fcppt/algorithm/shortest_levenshtein.hpp>
+#include <fcppt/assign/make_container.hpp>
 #include <fcppt/container/raw_vector_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/ptr_container/ptr_vector.hpp>
@@ -75,6 +77,25 @@ int main()
 
 	// join_strings, outputs "foo|bar|baz"
 	std::cout << fcppt::algorithm::join_strings(strings,"|") << "\n";
+
+	string_vector const more_strings(
+		fcppt::assign::make_container<string_vector>
+			("test")
+			("test2"));
+
+	std::string const &string_cref =
+		fcppt::algorithm::shortest_levenshtein(
+			more_strings,
+			std::string("test3"));
+
+	std::cout << "Shortest distance to \"test\" and \"test2\" is: " << string_cref << "\n";
+
+	std::string &nonconst_ref =
+		fcppt::algorithm::shortest_levenshtein(
+			strings,
+			std::string("test3"));
+
+	std::cout << "Shortest distance to \"foo\", \"ba\" and \"bu\" is: " << nonconst_ref << "\n";
 
 	typedef
 	boost::ptr_vector<std::string>
