@@ -240,6 +240,8 @@ into their own libraries, namely <code>fcppt_filesystem</code> and
 	<li>Split fcppt::math::box::stretch into
 	fcppt::math::box::stretch_absolute and
 	fcppt::math::box::stretch_relative</li>
+
+	</ul>
 </li>
 
 <li>\ref fcpptlog
