@@ -122,7 +122,7 @@ For example, the code could print: <code>0.441851 5.37344 -7.79767 1.89097
 </tr>
 <tr>
 <td><code>distribution/normal_decl.hpp</code></td>
-<td>Contains fcppt::random::distribution::mindstd_rand's definition.</td>
+<td>Contains fcppt::random::distribution::normal's definition.</td>
 </tr>
 <tr>
 <td><code>distribution/normal_impl.hpp</code></td>
@@ -138,7 +138,7 @@ For example, the code could print: <code>0.441851 5.37344 -7.79767 1.89097
 </tr>
 <tr>
 <td><code>distribution/uniform_int_decl.hpp</code></td>
-<td>Contains fcppt::random::distribution::mindstd_rand's definition.</td>
+<td>Contains fcppt::random::distribution::uniform_int's definition.</td>
 </tr>
 <tr>
 <td><code>distribution/uniform_int_impl.hpp</code></td>
@@ -154,7 +154,7 @@ For example, the code could print: <code>0.441851 5.37344 -7.79767 1.89097
 </tr>
 <tr>
 <td><code>distribution/uniform_real_decl.hpp</code></td>
-<td>Contains fcppt::random::distribution::mindstd_rand's definition.</td>
+<td>Contains fcppt::random::distribution::uniform_real's definition.</td>
 </tr>
 <tr>
 <td><code>distribution/uniform_real_impl.hpp</code></td>
@@ -170,7 +170,7 @@ For example, the code could print: <code>0.441851 5.37344 -7.79767 1.89097
 </tr>
 <tr>
 <td><code>generator/basic_pseudo_decl.hpp</code></td>
-<td>Contains fcppt::random::generator::mindstd_rand's definition.</td>
+<td>Contains fcppt::random::generator::basic_pseudo's definition.</td>
 </tr>
 <tr>
 <td><code>generator/basic_pseudo_impl.hpp</code></td>
@@ -186,7 +186,7 @@ For example, the code could print: <code>0.441851 5.37344 -7.79767 1.89097
 </tr>
 <tr>
 <td><code>generator/minstd_rand_decl.hpp</code></td>
-<td>Contains fcppt::random::generator::mindstd_rand's definition.</td>
+<td>Contains fcppt::random::generator::minstd_rand's definition.</td>
 </tr>
 <tr>
 <td><code>generator/minstd_rand_impl.hpp</code></td>
