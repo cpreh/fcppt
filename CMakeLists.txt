@@ -360,6 +360,21 @@ CHECK_CXX_SOURCE_COMPILES(
 	FCPPT_HAVE_BACKTRACE
 )
 
+CHECK_CXX_SOURCE_COMPILES(
+	"int purefunction() __attribute__((const));int main() {}"
+	FCPPT_HAVE_CONST_ATTRIBUTE
+)
+
+CHECK_CXX_SOURCE_COMPILES(
+	"int purefunction() __attribute__((pure));int main() {}"
+	FCPPT_HAVE_PURE_ATTRIBUTE
+)
+
+CHECK_CXX_SOURCE_COMPILES(
+	"int unused_result_function() __attribute__((warn_unused_result)); int main() {}"
+	FCPPT_HAVE_WARN_UNUSED_RESULT_ATTRIBUTE
+)
+
 function(
 	configure_fcppt_file
 	FILE_RELPATH

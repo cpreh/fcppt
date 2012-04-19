@@ -12,6 +12,9 @@
 
 // compile extensions
 #cmakedefine FCPPT_ALIGN_TEMPLATE_PARAMETER
+#cmakedefine FCPPT_HAVE_CONST_ATTRIBUTE
+#cmakedefine FCPPT_HAVE_PURE_ATTRIBUTE
+#cmakedefine FCPPT_HAVE_WARN_UNUSED_RESULT_ATTRIBUTE
 
 // posix (apple doesn't define it)
 #cmakedefine FCPPT_HAVE_CLOCK_GETTIME

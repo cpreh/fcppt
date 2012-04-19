@@ -631,6 +631,7 @@ set(
 	include/fcppt/optional_dynamic_cast.hpp
 	include/fcppt/optional_fwd.hpp
 	include/fcppt/optional_impl.hpp
+	include/fcppt/preprocessor/const.hpp
 	include/fcppt/preprocessor/detail/disable_gcc_warning.hpp
 	include/fcppt/preprocessor/detail/disable_icc_warning.hpp
 	include/fcppt/preprocessor/detail/disable_vc_warning.hpp
@@ -651,9 +652,11 @@ set(
 	include/fcppt/preprocessor/message.hpp
 	include/fcppt/preprocessor/pop_warning.hpp
 	include/fcppt/preprocessor/pragma.hpp
+	include/fcppt/preprocessor/pure.hpp
 	include/fcppt/preprocessor/push_warning.hpp
 	include/fcppt/preprocessor/stringize.hpp
 	include/fcppt/preprocessor/todo.hpp
+	include/fcppt/preprocessor/warn_unused_result.hpp
 	include/fcppt/preprocessor/warning.hpp
 	include/fcppt/random/distribution/declare_call.hpp
 	include/fcppt/random/distribution/define_call.hpp
