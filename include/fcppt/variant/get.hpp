@@ -30,13 +30,13 @@ template<
 >
 Type &
 get(
-	variant::object<
+	fcppt::variant::object<
 		Elements
 	> &_object
 )
 {
 	return
-		_object.get<
+		_object. template get<
 			Type
 		>();
 }
@@ -56,13 +56,13 @@ template<
 >
 Type const &
 get(
-	variant::object<
+	fcppt::variant::object<
 		Elements
 	> const &_object
 )
 {
 	return
-		_object.get<
+		_object. template get<
 			Type
 		>();
 }
