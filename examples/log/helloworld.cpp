@@ -31,7 +31,7 @@ main()
 		)
 	);
 
-	// Outputs: mylogger: Hello World
+	// Outputs: "debug: Hello World"
 	if(
 		logger.activated(
 			fcppt::log::level::debug
