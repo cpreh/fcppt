@@ -489,6 +489,8 @@ set(
 	include/fcppt/math/impl/exception.hpp
 	include/fcppt/math/interpolation/linear.hpp
 	include/fcppt/math/interpolation/linear_functor.hpp
+	include/fcppt/math/interpolation/perlin_fifth_degree.hpp
+	include/fcppt/math/interpolation/perlin_fifth_degree_functor.hpp
 	include/fcppt/math/interpolation/trigonometric.hpp
 	include/fcppt/math/interpolation/trigonometric_functor.hpp
 	include/fcppt/math/is_dynamic_size.hpp
