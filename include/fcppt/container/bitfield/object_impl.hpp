@@ -98,6 +98,30 @@ template<
 	Enum Size,
 	typename InternalType
 >
+typename fcppt::container::bitfield::object<Enum, Size, InternalType>::pointer
+fcppt::container::bitfield::object<Enum, Size, InternalType>::data()
+{
+	return
+		array_.data();
+}
+
+template<
+	typename Enum,
+	Enum Size,
+	typename InternalType
+>
+typename fcppt::container::bitfield::object<Enum, Size, InternalType>::const_pointer
+fcppt::container::bitfield::object<Enum, Size, InternalType>::data() const
+{
+	return
+		array_.data();
+}
+
+template<
+	typename Enum,
+	Enum Size,
+	typename InternalType
+>
 typename fcppt::container::bitfield::object<Enum, Size, InternalType>::iterator
 fcppt::container::bitfield::object<Enum, Size, InternalType>::begin()
 {

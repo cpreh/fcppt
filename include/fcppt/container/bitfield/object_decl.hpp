@@ -17,6 +17,7 @@
 #include <fcppt/container/bitfield/value_type.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/static_assert.hpp>
+#include <boost/mpl/integral_c.hpp>
 #include <boost/type_traits/is_unsigned.hpp>
 #include <iterator>
 #include <limits>
@@ -66,9 +67,32 @@ private:
 	boolean_test() const;
 public:
 	/**
+	\brief Typedef to <code>Enum</code>
+	*/
+	typedef Enum enum_type;
+
+	/**
+	\brief An mpl integral constant for <code>Size</code>
+	*/
+	typedef boost::mpl::integral_c<
+		Enum,
+		Size
+	> static_size;
+
+	/**
 	\brief Typedef to the internal storage type (template parameter <code>InternalType</code>
 	*/
 	typedef InternalType internal_type;
+
+	/**
+	\brief Typedef to a pointer to the internal storage type
+	*/
+	typedef typename array_type::pointer pointer;
+
+	/**
+	\brief Typedef to a pointer to the const internal storage type
+	*/
+	typedef typename array_type::const_pointer const_pointer;
 
 	/**
 	\brief A type denoting a reference to a mask value (a reference to a
@@ -142,6 +166,18 @@ public:
 	operator=(
 		Enum e
 	);
+
+	/**
+	\brief Returns a pointer to the internal storage.
+	*/
+	pointer
+	data();
+
+	/**
+	\brief Returns a pointer to the const internal storage.
+	*/
+	const_pointer
+	data() const;
 
 	/**
 	\brief Returns a random-access iterator to the first element in the bitfield.
