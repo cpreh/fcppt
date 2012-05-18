@@ -416,6 +416,10 @@ fcppt_set_utils_warning(
 )
 
 fcppt_set_utils_warning(
+	EXTRA_SEMI
+)
+
+fcppt_set_utils_warning(
 	LOGICAL_OP
 )
 
