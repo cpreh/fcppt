@@ -104,7 +104,6 @@ set(
 	include/fcppt/container/bitfield/default_internal_type.hpp
 	include/fcppt/container/bitfield/detail/element_bits.hpp
 	include/fcppt/container/bitfield/detail/iterator_type.hpp
-	include/fcppt/container/bitfield/difference_type.hpp
 	include/fcppt/container/bitfield/is_subset_eq.hpp
 	include/fcppt/container/bitfield/iterator.hpp
 	include/fcppt/container/bitfield/iterator_decl.hpp
@@ -118,7 +117,6 @@ set(
 	include/fcppt/container/bitfield/proxy_decl.hpp
 	include/fcppt/container/bitfield/proxy_fwd.hpp
 	include/fcppt/container/bitfield/proxy_impl.hpp
-	include/fcppt/container/bitfield/size_type.hpp
 	include/fcppt/container/bitfield/value_type.hpp
 	include/fcppt/container/data.hpp
 	include/fcppt/container/data_end.hpp

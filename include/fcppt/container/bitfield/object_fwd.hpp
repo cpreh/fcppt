@@ -9,6 +9,7 @@
 
 #include <fcppt/container/bitfield/default_internal_type.hpp>
 
+
 namespace fcppt
 {
 namespace container
@@ -20,7 +21,7 @@ template<
 	typename Enum,
 	Enum Size,
 	typename InternalType =
-		bitfield::default_internal_type
+		fcppt::container::bitfield::default_internal_type
 >
 class object;
 

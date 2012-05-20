@@ -9,7 +9,6 @@
 
 #include <fcppt/nonassignable.hpp>
 #include <fcppt/container/bitfield/proxy_fwd.hpp>
-#include <fcppt/container/bitfield/size_type.hpp>
 #include <fcppt/container/bitfield/value_type.hpp>
 #include <fcppt/container/bitfield/detail/element_bits.hpp>
 #include <fcppt/config/external_begin.hpp>
@@ -41,18 +40,25 @@ class proxy
 		proxy
 	);
 
+	typedef typename boost::remove_const<
+		typename boost::remove_reference<
+			StoredType
+		>::type
+	>::type array_type;
+
+	typedef typename array_type::size_type size_type;
+
+	typedef typename array_type::value_type internal_type;
+
 	proxy(
 		StoredType array,
 		size_type pos
 	);
 
 	static size_type const element_bits =
-		bitfield::detail::element_bits<
-			typename boost::remove_const<
-				typename boost::remove_reference<
-					StoredType
-				>::type
-			>::type::value_type
+		fcppt::container::bitfield::detail::element_bits<
+			size_type,
+			internal_type
 		>::value;
 
 	StoredType array_;
@@ -64,13 +70,21 @@ class proxy
 		typename
 	> friend class iterator;
 
-	static size_type
+	static
+	size_type
 	bit_offset(
 		size_type
 	);
 
-	static size_type
+	static
+	size_type
 	array_offset(
+		size_type
+	);
+
+	static
+	internal_type
+	bit_mask(
 		size_type
 	);
 public:

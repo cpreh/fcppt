@@ -9,6 +9,7 @@
 
 #include <fcppt/container/bitfield/object_impl.hpp>
 
+
 namespace fcppt
 {
 namespace container
@@ -28,12 +29,12 @@ template<
 >
 bool
 is_subset_eq(
-	object<
+	fcppt::container::bitfield::object<
 		Enum,
 		Size,
 		InternalType
 	> const &left,
-	object<
+	fcppt::container::bitfield::object<
 		Enum,
 		Size,
 		InternalType

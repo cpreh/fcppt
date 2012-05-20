@@ -43,7 +43,8 @@ struct array
 		fcppt::mpl::ceil_div<
 			std::size_t,
 			Size,
-			bitfield::detail::element_bits<
+			fcppt::container::bitfield::detail::element_bits<
+				std::size_t,
 				InternalType
 			>::value
 		>::value

@@ -13,7 +13,6 @@
 #include <fcppt/container/bitfield/iterator_fwd.hpp>
 #include <fcppt/container/bitfield/object_fwd.hpp>
 #include <fcppt/container/bitfield/proxy_fwd.hpp>
-#include <fcppt/container/bitfield/size_type.hpp>
 #include <fcppt/container/bitfield/value_type.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/static_assert.hpp>
@@ -47,7 +46,9 @@ template<
 >
 class object
 {
-	FCPPT_SAFE_BOOL(object)
+	FCPPT_SAFE_BOOL(
+		object
+	)
 private:
 	BOOST_STATIC_ASSERT(
 		boost::is_unsigned<
@@ -55,7 +56,7 @@ private:
 		>::value
 	);
 
-	typedef typename bitfield::array<
+	typedef typename fcppt::container::bitfield::array<
 		Enum,
 		Size,
 		InternalType
@@ -70,6 +71,16 @@ public:
 	\brief Typedef to <code>Enum</code>
 	*/
 	typedef Enum enum_type;
+
+	/**
+	\brief The size type, the same as <code>Enum</code>
+	*/
+	typedef enum_type size_type;
+
+	/**
+	\brief The value type, which is bool
+	*/
+	typedef fcppt::container::bitfield::value_type value_type;
 
 	/**
 	\brief An mpl integral constant for <code>Size</code>
@@ -100,7 +111,7 @@ public:
 
 	Note that this is <em>not</em> a bool or internal_type, but a proxy class.
 	*/
-	typedef bitfield::proxy<
+	typedef fcppt::container::bitfield::proxy<
 		array_type &
 	> reference;
 
@@ -109,13 +120,13 @@ public:
 
 	This forwards to fcppt::container::bitfield::value_type.
 	*/
-	typedef bitfield::value_type const_reference;
+	typedef fcppt::container::bitfield::value_type const_reference;
 
 	/**
 	\brief A type that provides a random-access iterator that can read or
 	modify any element in a bitfield.
 	*/
-	typedef bitfield::iterator<
+	typedef fcppt::container::bitfield::iterator<
 		array_type &,
 		reference
 	> iterator;
@@ -124,7 +135,7 @@ public:
 	\brief A type that provides a random-access iterator that can read a
 	<code>const</code> element in a bitfield.
 	*/
-	typedef bitfield::iterator<
+	typedef fcppt::container::bitfield::iterator<
 		array_type const &,
 		const_reference
 	> const_iterator;
@@ -154,7 +165,8 @@ public:
 	\brief Constructs a bitfield where every bit is valse except the argument's bit.
 	\param e The bit that is <em>not</em> set to false
 	*/
-	explicit object(
+	explicit
+	object(
 		Enum e
 	);
 
@@ -208,7 +220,6 @@ public:
 	*/
 	reverse_iterator
 	rbegin();
-
 
 	/**
 	\brief Returns an iterator to the first element in a reversed bitfield.
@@ -401,9 +412,17 @@ template<
 	Enum Size,
 	typename InternalType
 >
-object<Enum, Size, InternalType> const
+fcppt::container::bitfield::object<
+	Enum,
+	Size,
+	InternalType
+> const
 operator|(
-	object<Enum, Size, InternalType> const &,
+	fcppt::container::bitfield::object<
+		Enum,
+		Size,
+		InternalType
+	> const &,
 	Enum
 );
 
@@ -418,10 +437,22 @@ template<
 	Enum Size,
 	typename InternalType
 >
-object<Enum, Size, InternalType> const
+fcppt::container::bitfield::object<
+	Enum,
+	Size,
+	InternalType
+> const
 operator|(
-	object<Enum, Size, InternalType> const &,
-	object<Enum, Size, InternalType> const &
+	fcppt::container::bitfield::object<
+		Enum,
+		Size,
+		InternalType
+	> const &,
+	fcppt::container::bitfield::object<
+		Enum,
+		Size,
+		InternalType
+	> const &
 );
 
 /**
@@ -435,10 +466,22 @@ template<
 	Enum Size,
 	typename InternalType
 >
-object<Enum, Size, InternalType> const
+fcppt::container::bitfield::object<
+	Enum,
+	Size,
+	InternalType
+> const
 operator&(
-	object<Enum, Size, InternalType> const &,
-	object<Enum, Size, InternalType> const &
+	fcppt::container::bitfield::object<
+		Enum,
+		Size,
+		InternalType
+	> const &,
+	fcppt::container::bitfield::object<
+		Enum,
+		Size,
+		InternalType
+	> const &
 );
 
 /**
@@ -452,10 +495,22 @@ template<
 	Enum Size,
 	typename InternalType
 >
-object<Enum, Size, InternalType> const
+fcppt::container::bitfield::object<
+	Enum,
+	Size,
+	InternalType
+> const
 operator^(
-	object<Enum, Size, InternalType> const &,
-	object<Enum, Size, InternalType> const &
+	fcppt::container::bitfield::object<
+		Enum,
+		Size,
+		InternalType
+	> const &,
+	fcppt::container::bitfield::object<
+		Enum,
+		Size,
+		InternalType
+	> const &
 );
 
 /**
@@ -469,9 +524,17 @@ template<
 	Enum Size,
 	typename InternalType
 >
-object<Enum, Size, InternalType> const
+fcppt::container::bitfield::object<
+	Enum,
+	Size,
+	InternalType
+> const
 operator~(
-	object<Enum, Size, InternalType>
+	fcppt::container::bitfield::object<
+		Enum,
+		Size,
+		InternalType
+	>
 );
 
 /**
@@ -487,8 +550,16 @@ template<
 >
 void
 swap(
-	object<Enum, Size, InternalType> &,
-	object<Enum, Size, InternalType> &
+	fcppt::container::bitfield::object<
+		Enum,
+		Size,
+		InternalType
+	> &,
+	fcppt::container::bitfield::object<
+		Enum,
+		Size,
+		InternalType
+	> &
 );
 
 /**
@@ -501,8 +572,16 @@ template<
 >
 bool
 operator==(
-	object<Enum, Size, InternalType> const &,
-	object<Enum, Size, InternalType> const &
+	fcppt::container::bitfield::object<
+		Enum,
+		Size,
+		InternalType
+	> const &,
+	fcppt::container::bitfield::object<
+		Enum,
+		Size,
+		InternalType
+	> const &
 );
 
 /**
@@ -515,8 +594,16 @@ template<
 >
 bool
 operator!=(
-	object<Enum, Size, InternalType> const &,
-	object<Enum, Size, InternalType> const &
+	fcppt::container::bitfield::object<
+		Enum,
+		Size,
+		InternalType
+	> const &,
+	fcppt::container::bitfield::object<
+		Enum,
+		Size,
+		InternalType
+	> const &
 );
 
 /**
@@ -529,8 +616,16 @@ template<
 >
 bool
 operator<(
-	object<Enum, Size, InternalType> const &,
-	object<Enum, Size, InternalType> const &
+	fcppt::container::bitfield::object<
+		Enum,
+		Size,
+		InternalType
+	> const &,
+	fcppt::container::bitfield::object<
+		Enum,
+		Size,
+		InternalType
+	> const &
 );
 
 /**
@@ -543,8 +638,16 @@ template<
 >
 bool
 operator<=(
-	object<Enum, Size, InternalType> const &,
-	object<Enum, Size, InternalType> const &
+	fcppt::container::bitfield::object<
+		Enum,
+		Size,
+		InternalType
+	> const &,
+	fcppt::container::bitfield::object<
+		Enum,
+		Size,
+		InternalType
+	> const &
 );
 
 /**
@@ -557,8 +660,16 @@ template<
 >
 bool
 operator>(
-	object<Enum, Size, InternalType> const &,
-	object<Enum, Size, InternalType> const &
+	fcppt::container::bitfield::object<
+		Enum,
+		Size,
+		InternalType
+	> const &,
+	fcppt::container::bitfield::object<
+		Enum,
+		Size,
+		InternalType
+	> const &
 );
 
 /**
@@ -571,8 +682,16 @@ template<
 >
 bool
 operator>=(
-	object<Enum, Size, InternalType> const &,
-	object<Enum, Size, InternalType> const &
+	fcppt::container::bitfield::object<
+		Enum,
+		Size,
+		InternalType
+	> const &,
+	fcppt::container::bitfield::object<
+		Enum,
+		Size,
+		InternalType
+	> const &
 );
 
 }

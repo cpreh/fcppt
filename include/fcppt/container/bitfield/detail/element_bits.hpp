@@ -7,7 +7,7 @@
 #ifndef FCPPT_CONTAINER_BITFIELD_DETAIL_ELEMENT_BITS_HPP_INCLUDED
 #define FCPPT_CONTAINER_BITFIELD_DETAIL_ELEMENT_BITS_HPP_INCLUDED
 
-#include <fcppt/container/bitfield/size_type.hpp>
+#include <fcppt/mpl/integral_cast.hpp>
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
@@ -15,6 +15,7 @@
 #include <boost/mpl/integral_c.hpp>
 #include <limits>
 #include <fcppt/config/external_end.hpp>
+
 
 namespace fcppt
 {
@@ -29,15 +30,19 @@ FCPPT_PP_PUSH_WARNING
 FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
 
 template<
-	typename T
+	typename SizeType,
+	typename Type
 >
 struct element_bits
 :
-boost::mpl::integral_c<
-	bitfield::size_type,
-	std::numeric_limits<
-		T
-	>::digits
+fcppt::mpl::integral_cast<
+	SizeType,
+	boost::mpl::integral_c<
+		int,
+		std::numeric_limits<
+			Type
+		>::digits
+	>
 >
 {
 };

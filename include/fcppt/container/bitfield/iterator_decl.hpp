@@ -7,9 +7,7 @@
 #ifndef FCPPT_CONTAINER_BITFIELD_ITERATOR_DECL_HPP_INCLUDED
 #define FCPPT_CONTAINER_BITFIELD_ITERATOR_DECL_HPP_INCLUDED
 
-#include <fcppt/container/bitfield/difference_type.hpp>
 #include <fcppt/container/bitfield/iterator_fwd.hpp>
-#include <fcppt/container/bitfield/value_type.hpp>
 #include <fcppt/container/bitfield/detail/iterator_type.hpp>
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>

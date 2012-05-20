@@ -107,7 +107,8 @@ fcppt::container::bitfield::iterator<
 	> const &_other
 ) const
 {
-	return pos_ == _other.pos_;
+	return
+		pos_ == _other.pos_;
 }
 
 template<
@@ -121,12 +122,14 @@ fcppt::container::bitfield::iterator<
 >::dereference() const
 {
 	return
-		proxy<
+		fcppt::container::bitfield::proxy<
 			StoredType
 		>(
 			*array_,
 			static_cast<
-				size_type
+				typename fcppt::container::bitfield::proxy<
+					StoredType
+				>::size_type
 			>(
 				pos_
 			)
@@ -148,7 +151,8 @@ fcppt::container::bitfield::iterator<
 	iterator const &_other
 ) const
 {
-	return _other.pos_ - pos_;
+	return
+		_other.pos_ - pos_;
 }
 
 template<
@@ -169,8 +173,13 @@ fcppt::container::bitfield::iterator<
 	> const &_other
 )
 :
-	array_(_other.array_),
-	pos_(_other.pos_)
-{}
+	array_(
+		_other.array_
+	),
+	pos_(
+		_other.pos_
+	)
+{
+}
 
 #endif
