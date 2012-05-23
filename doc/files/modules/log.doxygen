@@ -325,10 +325,6 @@ All headers are relative to the log subdirectory.
 <td>Contains \link fcppt::log::location \endlink's definition.</td>
 </tr>
 <tr>
-<td><code>log.hpp</code></td>
-<td>Includes all log headers.</td>
-</tr>
-<tr>
 <td><code>macros.hpp</code></td>
 <td>Includes <code>debug.hpp, error.hpp, fatal.hpp, info.hpp, verbose.hpp, warning.hpp</code>.</td>
 </tr>
