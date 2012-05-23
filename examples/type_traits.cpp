@@ -131,5 +131,9 @@ int main()
 	std::cout << edit_string(s) << '\n';
 	// Would give a compiler error, although operator+ is defined
 	//std::cout << edit_string(10) << '\n';
+
+	apple foo;
+
+	foo.worm();
 }
 //]

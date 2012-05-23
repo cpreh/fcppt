@@ -267,6 +267,11 @@ if(
 	)
 
 	CHECK_CXX_COMPILER_FLAG(
+		"-Wimplicit-fallthrough"
+		FCPPT_UTILS_HAVE_IMPLICIT_FALLTHROUGH_FLAG
+	)
+
+	CHECK_CXX_COMPILER_FLAG(
 		"-Wlogical-op"
 		FCPPT_UTILS_HAVE_LOGICAL_OP_FLAG
 	)
@@ -284,6 +289,16 @@ if(
 	CHECK_CXX_COMPILER_FLAG(
 		"-Wsign-conversion"
 		FCPPT_UTILS_HAVE_SIGN_CONVERSION_FLAG
+	)
+
+	CHECK_CXX_COMPILER_FLAG(
+		"-Wunneeded-member-function"
+		FCPPT_UTILS_HAVE_UNNEEDED_MEMBER_FUNCTION_FLAG
+	)
+
+	CHECK_CXX_COMPILER_FLAG(
+		"-Wunused-member-function"
+		FCPPT_UTILS_HAVE_UNUSED_MEMBER_FUNCTION_FLAG
 	)
 
 	CHECK_CXX_COMPILER_FLAG(
@@ -355,6 +370,10 @@ if(
 		add_definitions("-Wdouble-promotion")
 	endif()
 
+	if(FCPPT_UTILS_HAVE_IMPLICIT_FALLTHROUGH_FLAG)
+		add_definitions("-Wimplicit-fallthrough")
+	endif()
+
 	if(FCPPT_UTILS_HAVE_LOGICAL_OP_FLAG)
 		add_definitions("-Wlogical-op")
 	endif()
@@ -371,10 +390,20 @@ if(
 		add_definitions("-Wsign-conversion")
 	endif()
 
+	if(FCPPT_UTILS_HAVE_UNNEEDED_MEMBER_FUNCTION_FLAG)
+		add_definitions("-Wunneeded-member-function")
+	endif()
+
+	if(FCPPT_UTILS_HAVE_UNUSED_MEMBER_FUNCTION_FLAG)
+		add_definitions("-Wunused-member-function")
+	endif()
+
 #	if(FCPPT_UTILS_HAVE_ZERO_AS_NULL_POINTER_CONSTANT_FLAG)
 #		add_definitions("-Wzero-as-null-pointer-constant")
 #	endif()
 
+	# Only enable this for clang for now, because in gcc its not possible
+	# to ignore this warning with a pragma
 	if(FCPPT_UTILS_COMPILER_IS_CLANGPP)
 		add_definitions("-Wundef")
 	endif()

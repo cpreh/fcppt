@@ -420,6 +420,10 @@ fcppt_set_utils_warning(
 )
 
 fcppt_set_utils_warning(
+	IMPLICIT_FALLTHROUGH
+)
+
+fcppt_set_utils_warning(
 	LOGICAL_OP
 )
 
@@ -433,6 +437,14 @@ fcppt_set_utils_warning(
 
 fcppt_set_utils_warning(
 	SIGN_CONVERSION
+)
+
+fcppt_set_utils_warning(
+	UNNEEDED_MEMBER_FUNCTION
+)
+
+fcppt_set_utils_warning(
+	UNUSED_MEMBER_FUNCTION
 )
 
 fcppt_set_utils_warning(

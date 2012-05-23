@@ -66,4 +66,18 @@ private:
 int
 main()
 {
+	test_noncopyable test1;
+
+	int ref(
+		0
+	);
+
+	float const foo(
+		42.f
+	);
+
+	test_nonassignable test2(
+		ref,
+		foo
+	);
 }

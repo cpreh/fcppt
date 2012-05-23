@@ -125,5 +125,7 @@ main()
 		)
 	);
 //! [scoped_ptr_c_deleter]
+
+	holder foo;
 }
 //]

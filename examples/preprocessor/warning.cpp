@@ -77,4 +77,10 @@ int
 main()
 {
 	test();
+
+	outer foo;
+
+	inner bar(
+		&foo
+	);
 }

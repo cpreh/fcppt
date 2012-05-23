@@ -41,7 +41,7 @@ struct functor2
 			<< FCPPT_TEXT("functor2\n");
 	}
 
-	float operator&()
+	float operator&() const
 	{
 		static float f = 0.f;
 
@@ -108,6 +108,11 @@ try
 
 	fcppt::io::cout()
 		<< f_5( 7 )
+		<< std::endl;
+
+	fcppt::io::cout()
+		<<
+		&f2
 		<< std::endl;
 
 	bool b = true;

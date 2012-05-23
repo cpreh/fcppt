@@ -40,7 +40,9 @@ public:
 struct orange
 {
 public:
-	void skin();
+	void skin()
+	{
+	}
 
 	typedef
 	int
@@ -60,6 +62,14 @@ FCPPT_PP_POP_WARNING
 
 	BOOST_CHECK(
 		(!has_worm<orange,void(orange::*)()>::value));
+
+	apple foo;
+
+	foo.worm();
+
+	orange bar;
+
+	bar.skin();
 }
 
 FCPPT_PP_PUSH_WARNING

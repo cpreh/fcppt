@@ -70,4 +70,20 @@ FCPPT_PP_POP_WARNING
 			test_struct_yes2
 		>::value
 	);
+
+	test_struct_yes1 test1;
+
+	static_cast<
+		void
+	>(
+		&test1
+	);
+
+	test_struct_yes2 test2;
+
+	static_cast<
+		void
+	>(
+		&test2
+	);
 }
