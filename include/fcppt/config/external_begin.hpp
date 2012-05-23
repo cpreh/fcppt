@@ -96,7 +96,7 @@ FCPPT_PP_DISABLE_GCC_WARNING(-Wshadow)
 FCPPT_PP_DISABLE_GCC_WARNING(-Wstrict-aliasing)
 FCPPT_PP_DISABLE_GCC_WARNING(-Wtype-limits)
 // This currently doesn't silence -Wundef warnings
-//FCPPT_PP_DISABLE_GCC_WARNING(-Wundef)
+FCPPT_PP_DISABLE_GCC_WARNING(-Wundef)
 FCPPT_PP_DISABLE_GCC_WARNING(-Wuninitialized)
 FCPPT_PP_DISABLE_GCC_WARNING(-Wunused-parameter)
 FCPPT_PP_DISABLE_GCC_WARNING(-Wunused-variable)

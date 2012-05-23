@@ -223,7 +223,8 @@ set(
 )
 
 # Setup default compiler flags
-IF(
+
+if(
 	CMAKE_COMPILER_IS_GNUCXX OR FCPPT_UTILS_COMPILER_IS_CLANGPP
 )
 	set(
@@ -374,6 +375,10 @@ IF(
 #		add_definitions("-Wzero-as-null-pointer-constant")
 #	endif()
 
+	if(FCPPT_UTILS_COMPILER_IS_CLANGPP)
+		add_definitions("-Wundef")
+	endif()
+
 	if(FCPPT_UTILS_HAVE_GCC_VISIBILITY)
 		option(
 			FCPPT_ENABLE_VISIBILITY_HIDDEN
@@ -385,7 +390,6 @@ IF(
 			add_definitions("-fvisibility=hidden")
 		endif()
 	endif()
-
 elseif(
 	MSVC
 )
