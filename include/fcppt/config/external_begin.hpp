@@ -57,6 +57,9 @@ FCPPT_PP_DISABLE_VC_WARNING(4987) // non standard throw(...)
 FCPPT_PP_DISABLE_GCC_WARNING(-Wnewline-eof)
 FCPPT_PP_DISABLE_GCC_WARNING(-Wtautological-compare)
 #endif
+#if defined(FCPPT_CONFIG_HAVE_CONDITIONAL_UNINITIALIZED_WARNING)
+	FCPPT_PP_DISABLE_GCC_WARNING(-Wconditional-uninitialized)
+#endif
 #if defined(FCPPT_CONFIG_HAVE_DELETE_NON_VIRTUAL_DTOR_WARNING)
 	FCPPT_PP_DISABLE_GCC_WARNING(-Wdelete-non-virtual-dtor)
 #endif
@@ -86,6 +89,9 @@ FCPPT_PP_DISABLE_GCC_WARNING(-Wtautological-compare)
 #endif
 #if defined(FCPPT_CONFIG_HAVE_UNUSED_MEMBER_FUNCTION_WARNING)
 	FCPPT_PP_DISABLE_GCC_WARNING(-Wunused-member-function)
+#endif
+#if defined(FCPPT_CONFIG_HAVE_UNREACHABLE_CODE_WARNING)
+	FCPPT_PP_DISABLE_GCC_WARNING(-Wunreachable-code)
 #endif
 #if defined(FCPPT_CONFIG_HAVE_ZERO_AS_NULL_POINTER_CONSTANT_WARNING)
 	FCPPT_PP_DISABLE_GCC_WARNING(-Wzero-as-null-pointer-constant)

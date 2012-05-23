@@ -404,6 +404,10 @@ macro(
 endmacro()
 
 fcppt_set_utils_warning(
+	CONDITIONAL_UNINITIALIZED
+)
+
+fcppt_set_utils_warning(
 	CONVERSION_NULL
 )
 
@@ -445,6 +449,10 @@ fcppt_set_utils_warning(
 
 fcppt_set_utils_warning(
 	UNUSED_MEMBER_FUNCTION
+)
+
+fcppt_set_utils_warning(
+	UNREACHABLE_CODE
 )
 
 fcppt_set_utils_warning(

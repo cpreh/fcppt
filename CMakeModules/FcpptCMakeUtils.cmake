@@ -247,6 +247,11 @@ if(
 	)
 
 	CHECK_CXX_COMPILER_FLAG(
+		"-Wconditional-uninitialized"
+		FCPPT_UTILS_HAVE_CONDITIONAL_UNINITIALIZED_FLAG
+	)
+
+	CHECK_CXX_COMPILER_FLAG(
 		"-Wconversion-null"
 		FCPPT_UTILS_HAVE_CONVERSION_NULL_FLAG
 	)
@@ -299,6 +304,11 @@ if(
 	CHECK_CXX_COMPILER_FLAG(
 		"-Wunused-member-function"
 		FCPPT_UTILS_HAVE_UNUSED_MEMBER_FUNCTION_FLAG
+	)
+
+	CHECK_CXX_COMPILER_FLAG(
+		"-Wunreachable-code"
+		FCPPT_UTILS_HAVE_UNREACHABLE_CODE_FLAG
 	)
 
 	CHECK_CXX_COMPILER_FLAG(
@@ -362,6 +372,10 @@ if(
 		add_definitions("-Wno-long-long")
 	endif()
 
+	if(FCPPT_UTILS_HAVE_CONDITIONAL_UNINITIALIZED_FLAG)
+		add_definitions("-Wconditional-uninitialized")
+	endif()
+
 	if(FCPPT_UTILS_HAVE_DELETE_NON_VIRTUAL_DTOR_FLAG)
 		add_definitions("-Wdelete-non-virtual-dtor")
 	endif()
@@ -396,6 +410,10 @@ if(
 
 	if(FCPPT_UTILS_HAVE_UNUSED_MEMBER_FUNCTION_FLAG)
 		add_definitions("-Wunused-member-function")
+	endif()
+
+	if(FCPPT_UTILS_HAVE_UNREACHABLE_CODE_FLAG)
+		add_definitions("-Wunreachable-code")
 	endif()
 
 #	if(FCPPT_UTILS_HAVE_ZERO_AS_NULL_POINTER_CONSTANT_FLAG)
