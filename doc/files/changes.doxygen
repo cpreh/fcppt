@@ -22,7 +22,7 @@ now support boost.range and not only containers.</li>
 fcppt::container::bitfield::object::static_size for easy integration into
 other APIs.</li>
 
-<li>Ignore <code>-Wextra-semi</code> in Boost headers for clang-3.1</li>
+<li>Ignore <code>-Wextra-semi</code> in Boost headers for clang-3.2 trunk</li>
 
 <li>Fixed type problems in bitfield. The size type is now the same as the enum
 type. The difference type is its signed counterpart.</li>
