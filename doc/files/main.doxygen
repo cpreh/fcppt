@@ -41,6 +41,7 @@ The documentation is split into the following parts:
 	<li>
 		\subpage changes
 		<ul>
+			<li>\ref changes_changes_to_011_1</li>
 			<li>\ref changes_changes_to_011</li>
 			<li>\ref older_changes</li>
 		</ul>

@@ -1,6 +1,42 @@
 /**
 \page changes Changes
 
+\section changes_changes_to_011_1 Changes from 0.11 to 0.11.1
+
+This release is mainly a bugfix release.
+
+<ul>
+
+<li>Some documentation fixes.</li>
+
+<li>fcppt::algorithm::levenshtein and fcppt::algorithm::shortest_levenshtein
+now support boost.range and not only containers.</li>
+
+<li>FCPPT_PP_CONST, FCPPT_PP_PURE and FCPPT_PP_WARN_UNUSED_RESULT.</li>
+
+<li>Added missing template keywords for clang-3.1</li>
+
+<li>TODO: Phillemann: Perlin noise?</li>
+
+<li>Added fcppt::container::bitfield::object::get and
+fcppt::container::bitfield::object::static_size for easy integration into
+other APIs.</li>
+
+<li>Ignore <code>-Wextra-semi</code> in Boost headers for clang-3.1</li>
+
+<li>Fixed type problems in bitfield. The size type is now the same as the enum
+type. The difference type is its signed counterpart.<li>
+
+<li>Enabled more warnings in clang if available, namely <code>-Wundef</code>,
+<code>-Wimplicit-fallthrough</code>, <code>-Wunneeded-member-function</code>,
+<code>-Wunused-member-function</code>,
+<code>-Wconditional-uninitialized</code>,
+<code>-Wunreachable-code</code>.</li>
+
+<li>Updates for doxygen-1.8.1</li>
+
+</ul>
+
 \section changes_changes_to_011 Changes from 0.10 to 0.11
 
 \subsection changaes_general_to_011 General changes
