@@ -25,7 +25,7 @@ other APIs.</li>
 <li>Ignore <code>-Wextra-semi</code> in Boost headers for clang-3.1</li>
 
 <li>Fixed type problems in bitfield. The size type is now the same as the enum
-type. The difference type is its signed counterpart.<li>
+type. The difference type is its signed counterpart.</li>
 
 <li>Enabled more warnings in clang if available, namely <code>-Wundef</code>,
 <code>-Wimplicit-fallthrough</code>, <code>-Wunneeded-member-function</code>,
