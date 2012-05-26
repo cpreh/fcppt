@@ -193,7 +193,7 @@ public:
 
 	using base::empty;
 };
-	
+
 FCPPT_PP_POP_WARNING
 
 }
