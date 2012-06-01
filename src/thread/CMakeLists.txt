@@ -34,6 +34,6 @@ make_fcppt_library(
 	fcppt_thread
 	"${FCPPT_THREAD_FILES}"
 	""
-	"${Boost_THREAD_LIBRARY};${FcpptThreads_LIBRARIES}"
+	"${Boost_THREAD_LIBRARY};${Boost_SYSTEM_LIBRARY};${FcpptThreads_LIBRARIES}"
 	""
 )
