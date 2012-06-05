@@ -8,10 +8,10 @@
 #define FCPPT_CONTAINER_RAW_VECTOR_DECL_HPP_INCLUDED
 
 #include <fcppt/noncopyable.hpp>
+#include <fcppt/static_assert_statement.hpp>
 #include <fcppt/container/raw_vector_fwd.hpp>
 #include <fcppt/type_traits/is_input_iterator.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/static_assert.hpp>
 #include <boost/type_traits/is_pod.hpp>
 #include <boost/utility/enable_if.hpp>
 #include <iterator>
@@ -24,11 +24,17 @@ namespace container
 
 /**
 \brief A special vector class for pod types
+
 \ingroup fcpptcontainerraw_vector
-\tparam T Container's <code>value_type</code>. Has to be a POD type; see <a href="http://www.boost.org/doc/libs/1_40_0/libs/type_traits/doc/html/boost_typetraits/reference/is_pod.html">here</a> for what this means.
+
+\tparam T Container's <code>value_type</code>. Has to be a POD type; see <a
+href="http://www.boost.org/doc/libs/1_40_0/libs/type_traits/doc/html/boost_typetraits/reference/is_pod.html">here</a>
+for what this means.
+
 \tparam A The allocator.
 
-See the \link fcpptcontainerraw_vector module documentation \endlink for more information.
+See the \link fcpptcontainerraw_vector module documentation \endlink for more
+information.
 */
 template<
 	typename T,
@@ -36,7 +42,7 @@ template<
 >
 class raw_vector
 {
-	BOOST_STATIC_ASSERT(
+	FCPPT_STATIC_ASSERT_STATEMENT(
 		boost::is_pod<
 			T
 		>::value

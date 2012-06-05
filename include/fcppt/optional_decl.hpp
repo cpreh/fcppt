@@ -10,11 +10,11 @@
 #include <fcppt/null_ptr.hpp>
 #include <fcppt/optional_fwd.hpp>
 #include <fcppt/safe_bool.hpp>
+#include <fcppt/static_assert_statement.hpp>
 #include <fcppt/alignment/array.hpp>
 #include <fcppt/detail/enable_optional_ref_conv.hpp>
 #include <fcppt/detail/enable_optional_value_conv.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/static_assert.hpp>
 #include <boost/type_traits/alignment_of.hpp>
 #include <boost/type_traits/is_const.hpp>
 #include <boost/type_traits/remove_const.hpp>
@@ -41,7 +41,7 @@ class optional
 		optional
 	)
 public:
-	BOOST_STATIC_ASSERT(
+	FCPPT_STATIC_ASSERT_STATEMENT(
 		!boost::is_const<
 			T
 		>::value

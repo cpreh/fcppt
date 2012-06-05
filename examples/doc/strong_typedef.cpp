@@ -4,12 +4,12 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
+#include <fcppt/static_assert_statement.hpp>
 #include <fcppt/strong_typedef.hpp>
 #include <fcppt/preprocessor/disable_vc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/static_assert.hpp>
 #include <boost/type_traits/is_same.hpp>
 #include <fcppt/config/external_end.hpp>
 
@@ -125,7 +125,7 @@ FCPPT_MAKE_STRONG_TYPEDEF(
 	        int,
 	        second);
 
-BOOST_STATIC_ASSERT((
+FCPPT_STATIC_ASSERT_STATEMENT((
 	!boost::is_same<first,second>::value));
 //! [strong_typedef_is_same]
 

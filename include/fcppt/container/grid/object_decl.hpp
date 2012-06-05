@@ -7,13 +7,13 @@
 #ifndef FCPPT_CONTAINER_GRID_OBJECT_DECL_HPP_INCLUDED
 #define FCPPT_CONTAINER_GRID_OBJECT_DECL_HPP_INCLUDED
 
+#include <fcppt/static_assert_statement.hpp>
 #include <fcppt/container/raw_vector_decl.hpp>
 #include <fcppt/container/grid/dim.hpp>
 #include <fcppt/container/grid/object_fwd.hpp>
 #include <fcppt/container/grid/size_type.hpp>
 #include <fcppt/math/dim/object_decl.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/static_assert.hpp>
 #include <boost/mpl/if.hpp>
 #include <boost/type_traits/is_pod.hpp>
 #include <vector>
@@ -41,7 +41,7 @@ template<
 class object
 {
 // \cond  FCPPT_DOXYGEN_DEBUG
-	BOOST_STATIC_ASSERT(
+	FCPPT_STATIC_ASSERT_STATEMENT(
 		N >= 1u
 	);
 

@@ -87,6 +87,9 @@ FCPPT_PP_DISABLE_GCC_WARNING(-Wtautological-compare)
 #if defined(FCPPT_CONFIG_HAVE_UNNEEDED_MEMBER_FUNCTION_WARNING)
 	FCPPT_PP_DISABLE_GCC_WARNING(-Wunneeded-member-function)
 #endif
+#if defined(FCPPT_CONFIG_HAVE_UNUSED_LOCAL_TYPEDEFS_WARNING)
+	FCPPT_PP_DISABLE_GCC_WARNING(-Wunused-local-typedefs)
+#endif
 #if defined(FCPPT_CONFIG_HAVE_UNUSED_MEMBER_FUNCTION_WARNING)
 	FCPPT_PP_DISABLE_GCC_WARNING(-Wunused-member-function)
 #endif
@@ -110,7 +113,6 @@ FCPPT_PP_DISABLE_GCC_WARNING(-Wredundant-decls)
 FCPPT_PP_DISABLE_GCC_WARNING(-Wshadow)
 FCPPT_PP_DISABLE_GCC_WARNING(-Wstrict-aliasing)
 FCPPT_PP_DISABLE_GCC_WARNING(-Wtype-limits)
-// This currently doesn't silence -Wundef warnings
 FCPPT_PP_DISABLE_GCC_WARNING(-Wundef)
 FCPPT_PP_DISABLE_GCC_WARNING(-Wuninitialized)
 FCPPT_PP_DISABLE_GCC_WARNING(-Wunused-parameter)

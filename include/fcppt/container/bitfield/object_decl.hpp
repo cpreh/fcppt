@@ -8,6 +8,7 @@
 #define FCPPT_CONTAINER_BITFIELD_OBJECT_DECL_HPP_INCLUDED
 
 #include <fcppt/safe_bool.hpp>
+#include <fcppt/static_assert_statement.hpp>
 #include <fcppt/container/array_decl.hpp>
 #include <fcppt/container/bitfield/array.hpp>
 #include <fcppt/container/bitfield/iterator_fwd.hpp>
@@ -15,7 +16,6 @@
 #include <fcppt/container/bitfield/proxy_fwd.hpp>
 #include <fcppt/container/bitfield/value_type.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/static_assert.hpp>
 #include <boost/mpl/integral_c.hpp>
 #include <boost/type_traits/is_unsigned.hpp>
 #include <iterator>
@@ -50,7 +50,7 @@ class object
 		object
 	)
 private:
-	BOOST_STATIC_ASSERT(
+	FCPPT_STATIC_ASSERT_STATEMENT(
 		boost::is_unsigned<
 			InternalType
 		>::value

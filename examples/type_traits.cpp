@@ -4,6 +4,7 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
+#include <fcppt/static_assert_statement.hpp>
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
@@ -12,7 +13,6 @@
 #include <fcppt/type_traits/is_float_or_double.hpp>
 #include <fcppt/type_traits/is_string.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/static_assert.hpp>
 #include <boost/utility/enable_if.hpp>
 #include <iostream>
 #include <ostream>
@@ -42,7 +42,7 @@ struct orange
 };
 
 // apple has a worm function
-BOOST_STATIC_ASSERT((
+FCPPT_STATIC_ASSERT_STATEMENT((
 	has_worm<
 		apple,
 		void (apple::*)()
@@ -50,7 +50,7 @@ BOOST_STATIC_ASSERT((
 ));
 
 // orange doesn't have a worm function
-BOOST_STATIC_ASSERT((
+FCPPT_STATIC_ASSERT_STATEMENT((
 	!has_worm<
 		orange,
 		void (orange::*)()
@@ -72,13 +72,13 @@ struct container
 	typedef int *iterator;
 };
 
-BOOST_STATIC_ASSERT(
+FCPPT_STATIC_ASSERT_STATEMENT(
 	has_iterator<
 		container
 	>::value
 );
 
-BOOST_STATIC_ASSERT(
+FCPPT_STATIC_ASSERT_STATEMENT(
 	!has_iterator<
 		normal
 	>::value

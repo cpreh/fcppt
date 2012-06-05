@@ -9,6 +9,7 @@
 
 #include <fcppt/config.hpp>
 
+
 #ifdef FCPPT_HAVE_WARN_UNUSED_RESULT_ATTRIBUTE
 #define FCPPT_PP_WARN_UNUSED_RESULT __attribute__((warn_unused_result))
 #else
@@ -16,4 +17,3 @@
 #endif
 
 #endif
-

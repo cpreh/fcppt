@@ -7,11 +7,11 @@
 #ifndef FCPPT_MPL_INDEX_OF_HPP_INCLUDED
 #define FCPPT_MPL_INDEX_OF_HPP_INCLUDED
 
+#include <fcppt/static_assert_statement.hpp>
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/static_assert.hpp>
 #include <boost/mpl/begin.hpp>
 #include <boost/mpl/contains.hpp>
 #include <boost/mpl/distance.hpp>
@@ -58,7 +58,7 @@ boost::mpl::distance<
 	>::type
 >
 {
-	BOOST_STATIC_ASSERT((
+	FCPPT_STATIC_ASSERT_STATEMENT((
 		boost::mpl::contains<
 			Sequence,
 			Element

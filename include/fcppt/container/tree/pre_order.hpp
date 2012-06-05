@@ -9,13 +9,13 @@
 
 #include <fcppt/noncopyable.hpp>
 #include <fcppt/null_ptr.hpp>
+#include <fcppt/static_assert_statement.hpp>
 #include <fcppt/container/tree/is_object.hpp>
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/next_prior.hpp>
-#include <boost/static_assert.hpp>
 #include <boost/iterator/iterator_facade.hpp>
 #include <boost/mpl/if.hpp>
 #include <boost/type_traits/is_const.hpp>
@@ -47,7 +47,7 @@ template<
 >
 class pre_order
 {
-	BOOST_STATIC_ASSERT(
+	FCPPT_STATIC_ASSERT_STATEMENT(
 		is_object<
 			typename boost::remove_const<
 				Tree

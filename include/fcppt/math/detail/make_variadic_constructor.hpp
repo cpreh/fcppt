@@ -7,10 +7,10 @@
 #ifndef FCPPT_MATH_DETAIL_MAKE_VARIADIC_CONSTRUCTOR_HPP_INCLUDED
 #define FCPPT_MATH_DETAIL_MAKE_VARIADIC_CONSTRUCTOR_HPP_INCLUDED
 
+#include <fcppt/static_assert_expression.hpp>
 #include <fcppt/math/detail/dim_matches.hpp>
 #include <fcppt/math/detail/initial_size.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/static_assert.hpp>
 #include <boost/preprocessor/arithmetic/inc.hpp>
 #include <boost/preprocessor/repetition/enum_params.hpp>
 #include <boost/preprocessor/repetition/repeat.hpp>
@@ -32,7 +32,7 @@ BOOST_PP_TUPLE_REM_CTOR(BOOST_PP_TUPLE_ELEM(2, 0, text),BOOST_PP_TUPLE_ELEM(2, 1
 	)\
 )\
 {\
-	BOOST_STATIC_ASSERT((\
+	FCPPT_STATIC_ASSERT_EXPRESSION((\
 		math::detail::dim_matches<\
 			BOOST_PP_INC(n),\
 			dim_wrapper::value\

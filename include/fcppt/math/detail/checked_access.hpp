@@ -7,10 +7,10 @@
 #ifndef FCPPT_MATH_DETAIL_CHECKED_ACCESS_HPP_INCLUDED
 #define FCPPT_MATH_DETAIL_CHECKED_ACCESS_HPP_INCLUDED
 
+#include <fcppt/static_assert_expression.hpp>
 #include <fcppt/math/size_type.hpp>
 #include <fcppt/math/detail/dynamic_size.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/static_assert.hpp>
 #include <boost/type_traits/is_same.hpp>
 #include <boost/utility/enable_if.hpp>
 #include <fcppt/config/external_end.hpp>
@@ -35,10 +35,11 @@ typename boost::enable_if<
 	typename T::reference
 >::type
 checked_access(
-	T &t
+	T &_value
 )
 {
-	return t[N];
+	return
+		_value[N];
 }
 
 template<
@@ -53,16 +54,17 @@ typename boost::disable_if<
 	typename T::reference
 >::type
 checked_access(
-	T &t
+	T &_value
 )
 {
 	typedef typename T::dim_wrapper dim_wrapper;
 
-	BOOST_STATIC_ASSERT(
+	FCPPT_STATIC_ASSERT_EXPRESSION(
 		N < dim_wrapper::value
 	);
 
-	return t[N];
+	return
+		_value[N];
 }
 
 template<
@@ -77,10 +79,11 @@ typename boost::enable_if<
 	typename T::const_reference
 >::type
 checked_access(
-	T const &t
+	T const &_value
 )
 {
-	return t[N];
+	return
+		_value[N];
 }
 
 template<
@@ -95,16 +98,17 @@ typename boost::disable_if<
 	typename T::const_reference
 >::type
 checked_access(
-	T const &t
+	T const &_value
 )
 {
 	typedef typename T::dim_wrapper dim_wrapper;
 
-	BOOST_STATIC_ASSERT(
+	FCPPT_STATIC_ASSERT_EXPRESSION(
 		N < dim_wrapper::value
 	);
 
-	return t[N];
+	return
+		_value[N];
 }
 
 }

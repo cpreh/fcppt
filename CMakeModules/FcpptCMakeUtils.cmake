@@ -302,6 +302,11 @@ if(
 	)
 
 	CHECK_CXX_COMPILER_FLAG(
+		"-Wunused-local-typedefs"
+		FCPPT_UTILS_HAVE_UNUSED_LOCAL_TYPEDEFS_FLAG
+	)
+
+	CHECK_CXX_COMPILER_FLAG(
 		"-Wunused-member-function"
 		FCPPT_UTILS_HAVE_UNUSED_MEMBER_FUNCTION_FLAG
 	)
@@ -406,6 +411,10 @@ if(
 
 	if(FCPPT_UTILS_HAVE_UNNEEDED_MEMBER_FUNCTION_FLAG)
 		add_definitions("-Wunneeded-member-function")
+	endif()
+
+	if(FCPPT_UTILS_HAVE_UNUSED_LOCAL_TYPEDEFS_FLAG)
+		add_definitions("-Wunused-local-typedefs")
 	endif()
 
 	if(FCPPT_UTILS_HAVE_UNUSED_MEMBER_FUNCTION_FLAG)

@@ -32,10 +32,6 @@ BOOST_AUTO_TEST_CASE(
 {
 FCPPT_PP_POP_WARNING
 
-	typedef fcppt::unique_ptr<
-		std::string
-	> string_unique_ptr;
-
 	typedef boost::ptr_vector<
 		std::string
 	> string_ptr_vector;

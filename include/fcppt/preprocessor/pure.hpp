@@ -9,6 +9,7 @@
 
 #include <fcppt/config.hpp>
 
+
 #ifdef FCPPT_HAVE_PURE_ATTRIBUTE
 #define FCPPT_PP_PURE __attribute__((pure))
 #else
@@ -16,4 +17,3 @@
 #endif
 
 #endif
-

@@ -7,6 +7,7 @@
 #ifndef FCPPT_MATH_MATRIX_OBJECT_DECL_HPP_INCLUDED
 #define FCPPT_MATH_MATRIX_OBJECT_DECL_HPP_INCLUDED
 
+#include <fcppt/static_assert_statement.hpp>
 #include <fcppt/math/difference_type.hpp>
 #include <fcppt/math/size_type.hpp>
 #include <fcppt/math/detail/make_op_decl.hpp>
@@ -22,7 +23,6 @@
 #include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/type_traits/is_iterator.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/static_assert.hpp>
 #include <boost/mpl/times.hpp>
 #include <boost/type_traits/is_same.hpp>
 #include <boost/utility/enable_if.hpp>
@@ -69,7 +69,7 @@ private
 {
 	typedef detail::dim_storage<N, M> dim_base;
 public:
-	BOOST_STATIC_ASSERT((
+	FCPPT_STATIC_ASSERT_STATEMENT((
 		boost::is_same<
 			typename N::value_type,
 			typename M::value_type

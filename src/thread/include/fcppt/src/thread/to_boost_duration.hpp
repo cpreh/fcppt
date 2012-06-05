@@ -7,8 +7,8 @@
 #ifndef FCPPT_SRC_THREAD_TO_BOOST_DURATION_HPP_INCLUDED
 #define FCPPT_SRC_THREAD_TO_BOOST_DURATION_HPP_INCLUDED
 
+#include <fcppt/static_assert_expression.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/static_assert.hpp>
 #include <boost/chrono/duration.hpp>
 #include <boost/date_time/posix_time/posix_time_config.hpp>
 #include <fcppt/config/external_end.hpp>
@@ -31,7 +31,7 @@ to_boost_duration(
 	> const &_duration
 )
 {
-	BOOST_STATIC_ASSERT(
+	FCPPT_STATIC_ASSERT_EXPRESSION(
 		Period::num == 1
 	);
 

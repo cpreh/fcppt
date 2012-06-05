@@ -7,11 +7,11 @@
 #ifndef FCPPT_RANDOM_DISTRIBUTION_NORMAL_DECL_HPP_INCLUDED
 #define FCPPT_RANDOM_DISTRIBUTION_NORMAL_DECL_HPP_INCLUDED
 
+#include <fcppt/static_assert_statement.hpp>
 #include <fcppt/strong_typedef.hpp>
 #include <fcppt/random/distribution/declare_call.hpp>
 #include <fcppt/random/distribution/normal_fwd.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/static_assert.hpp>
 #include <boost/random/normal_distribution.hpp>
 #include <boost/type_traits/is_floating_point.hpp>
 #include <fcppt/config/external_end.hpp>
@@ -53,7 +53,7 @@ public:
 	*/
 	typedef typename wrapped::result_type result_type;
 
-	BOOST_STATIC_ASSERT(
+	FCPPT_STATIC_ASSERT_STATEMENT(
 		boost::is_floating_point<
 			float_type
 		>::value

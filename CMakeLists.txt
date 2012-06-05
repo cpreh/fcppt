@@ -448,6 +448,10 @@ fcppt_set_utils_warning(
 )
 
 fcppt_set_utils_warning(
+	UNUSED_LOCAL_TYPEDEFS
+)
+
+fcppt_set_utils_warning(
 	UNUSED_MEMBER_FUNCTION
 )
 

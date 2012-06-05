@@ -227,6 +227,8 @@ set(
 	include/fcppt/detail/rvalue_ref.hpp
 	include/fcppt/detail/rvalue_ref_fwd.hpp
 	include/fcppt/detail/safe_cast.hpp
+	include/fcppt/detail/static_assert_failure.hpp
+	include/fcppt/detail/static_assert_test.hpp
 	include/fcppt/detail/strong_typedef/assignment_operator.hpp
 	include/fcppt/detail/strong_typedef/binary_operator.hpp
 	include/fcppt/detail/strong_typedef/cast.hpp
@@ -734,6 +736,8 @@ set(
 	include/fcppt/signal/unregister/function.hpp
 	include/fcppt/spirit_traits/optional_basic.hpp
 	include/fcppt/spirit_traits/variant_basic.hpp
+	include/fcppt/static_assert_expression.hpp
+	include/fcppt/static_assert_statement.hpp
 	include/fcppt/static_optional_cast.hpp
 	include/fcppt/static_pointer_cast.hpp
 	include/fcppt/string.hpp

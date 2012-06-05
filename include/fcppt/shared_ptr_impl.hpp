@@ -9,10 +9,10 @@
 
 #include <fcppt/heap_deleter.hpp>
 #include <fcppt/shared_ptr_decl.hpp>
+#include <fcppt/static_assert_expression.hpp>
 #include <fcppt/unique_ptr_impl.hpp>
 #include <fcppt/detail/make_shared_wrapper.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/static_assert.hpp>
 #include <boost/type_traits/is_same.hpp>
 #include <algorithm>
 #include <fcppt/config/external_end.hpp>
@@ -519,7 +519,7 @@ fcppt::shared_ptr<
 		_other.get()
 	)
 {
-	BOOST_STATIC_ASSERT((
+	FCPPT_STATIC_ASSERT_EXPRESSION((
 		boost::is_same<
 			Deleter,
 			fcppt::heap_deleter

@@ -4,6 +4,7 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
+#include <fcppt/static_assert_statement.hpp>
 #include <fcppt/text.hpp>
 #include <fcppt/io/cout.hpp>
 #include <fcppt/mpl/append.hpp>
@@ -17,7 +18,6 @@
 #include <fcppt/mpl/partial_sums.hpp>
 #include <fcppt/mpl/print.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/static_assert.hpp>
 #include <boost/mpl/bool.hpp>
 #include <boost/mpl/equal.hpp>
 #include <boost/mpl/equal_to.hpp>
@@ -58,7 +58,7 @@ fcppt::mpl::append<
 >::type
 vec3;
 
-BOOST_STATIC_ASSERT((
+FCPPT_STATIC_ASSERT_STATEMENT((
 	boost::mpl::equal<
 		vec3,
 		boost::mpl::vector4<
@@ -83,7 +83,7 @@ fcppt::mpl::ceil_div<
 >::type
 result;
 
-BOOST_STATIC_ASSERT((
+FCPPT_STATIC_ASSERT_STATEMENT((
 	boost::mpl::equal_to<
 		result,
 		boost::mpl::integral_c<
@@ -114,7 +114,7 @@ fcppt::mpl::contains_if<
 >::type
 result;
 
-BOOST_STATIC_ASSERT((
+FCPPT_STATIC_ASSERT_STATEMENT((
 	boost::mpl::equal_to<
 		result,
 		boost::mpl::true_
@@ -133,7 +133,7 @@ fcppt::mpl::implication<
 >::type
 result;
 
-BOOST_STATIC_ASSERT((
+FCPPT_STATIC_ASSERT_STATEMENT((
 	boost::mpl::equal<
 		result,
 		boost::mpl::true_
@@ -160,7 +160,7 @@ fcppt::mpl::index_of<
 >::type
 result;
 
-BOOST_STATIC_ASSERT((
+FCPPT_STATIC_ASSERT_STATEMENT((
 	boost::mpl::equal_to<
 		result,
 		boost::mpl::integral_c<
@@ -186,7 +186,7 @@ fcppt::mpl::inner<
 >::type
 result;
 
-BOOST_STATIC_ASSERT((
+FCPPT_STATIC_ASSERT_STATEMENT((
 	boost::is_same<
 		result,
 		int
@@ -211,7 +211,7 @@ fcppt::mpl::integral_cast<
 >::type
 result;
 
-BOOST_STATIC_ASSERT((
+FCPPT_STATIC_ASSERT_STATEMENT((
 	boost::is_same<
 		result::value_type,
 		unsigned
@@ -245,7 +245,7 @@ fcppt::mpl::max_value<
 >::type
 result;
 
-BOOST_STATIC_ASSERT((
+FCPPT_STATIC_ASSERT_STATEMENT((
 	boost::mpl::equal_to<
 		result,
 		boost::mpl::sizeof_<
@@ -274,7 +274,7 @@ fcppt::mpl::partial_sums<
 >::type
 result;
 
-BOOST_STATIC_ASSERT((
+FCPPT_STATIC_ASSERT_STATEMENT((
 	boost::mpl::equal<
 		result,
 		boost::mpl::vector4_c<

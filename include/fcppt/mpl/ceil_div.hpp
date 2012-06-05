@@ -7,11 +7,11 @@
 #ifndef FCPPT_MPL_CEIL_DIV_HPP_INCLUDED
 #define FCPPT_MPL_CEIL_DIV_HPP_INCLUDED
 
+#include <fcppt/static_assert_statement.hpp>
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/static_assert.hpp>
 #include <boost/mpl/integral_c.hpp>
 #include <boost/type_traits/is_unsigned.hpp>
 #include <fcppt/config/external_end.hpp>
@@ -66,7 +66,7 @@ boost::mpl::integral_c<
 	)
 >
 {
-	BOOST_STATIC_ASSERT(
+	FCPPT_STATIC_ASSERT_STATEMENT(
 		boost::is_unsigned<
 			Type
 		>::value
