@@ -362,9 +362,10 @@ into their own libraries, namely <code>fcppt_filesystem</code> and
 <li>\ref fcpptvarious
 	<ul>
 
-	<li>Made fcppt::type_info constructor explicit. fcppt::type_name now
-	gets an fcppt::type_info instead of an
-	<code>std::type_info</code>.</li>
+	<li>Made fcppt::type_info constructor explicit.</li>
+
+	<li> fcppt::type_name now gets a <code>std::type_info</code> instead of
+	an fcppt::type_info.</li>
 
 	</ul>
 </li>
@@ -505,8 +506,6 @@ new \ref fcpptassert "assert" framework</li>
 
 <li>Fixed fcppt::mpl::index_of to only allow types that are part of the
 sequence. This also fixes invalid uses of fcppt::variant::object::get </li>
-
-<li>Fixed fcppt::math::vector::to_angle</li>
 
 <li>Fixed fcppt::variant::holds_type when recursive types are involved.</li>
 
