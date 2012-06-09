@@ -12,7 +12,7 @@ This release is mainly a bugfix release.
 <li>fcppt::algorithm::levenshtein and fcppt::algorithm::shortest_levenshtein
 now support boost.range and not only containers.</li>
 
-<li>FCPPT_PP_CONST, FCPPT_PP_PURE and FCPPT_PP_WARN_UNUSED_RESULT.</li>
+<li>Added FCPPT_PP_CONST, FCPPT_PP_PURE and FCPPT_PP_WARN_UNUSED_RESULT.</li>
 
 <li>Added missing template keywords for clang-3.1</li>
 
@@ -34,6 +34,10 @@ type. The difference type is its signed counterpart.</li>
 <code>-Wunreachable-code</code>.</li>
 
 <li>Updates for doxygen-1.8.1</li>
+
+<li>Updates for boost-1.50</li>
+
+<li>Made fcppt <code>-Wunused-local-typedefs</code>-proof.</li>
 
 </ul>
 

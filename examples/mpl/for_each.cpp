@@ -29,7 +29,7 @@ struct normal_type
 {
 };
 
-// Declare our functor that is used invoked on each type
+// Declare our functor that is invoked on each type
 struct visitor
 {
 	typedef void result_type;
