@@ -16,7 +16,9 @@ now support boost.range and not only containers.</li>
 
 <li>Added missing template keywords for clang-3.1</li>
 
-<li>Added fcppt::math::interpolation::perlin_fifth degree function (along with the corresponding functor) which implements Ken Perlin's noise interpolation function.</li>
+<li>Added fcppt::math::interpolation::perlin_fifth_degree function (along with
+the corresponding functor) which implements Ken Perlin's noise interpolation
+function.</li>
 
 <li>Added fcppt::container::bitfield::object::get and
 fcppt::container::bitfield::object::static_size for easy integration into
