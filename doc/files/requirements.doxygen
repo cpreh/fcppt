@@ -50,19 +50,18 @@ doxygen-1.7.5</a>.
 The following platforms are tested by us:
 
 <ul>
-	<li>gcc-4.5.3 (Gentoo Linux, x86)</li>
-	<li>gcc-4.6.3 (Gentoo Linux, amd64)</li>
-	<li>gcc-4.7.0 (Gentoo Linux, amd64)</li>
-	<li>clang-3.0 (Gentoo Linux, amd64)</li>
-	<li>Apple clang 3.0 (MacOS)</li>
-	<li>VC++ 2010 SP1 (Windows XP x86 and Windows 7 amd64) </li>
+	<li>gcc-4.7.1 (Gentoo Linux, amd64)</li>
+	<li>clang-3.1 (Gentoo Linux, amd64)</li>
+	<li>VC++ 2010 SP1 (Windows XP x86 and Windows 7 amd64)</li>
 </ul>
+
+The list does not mean that fcppt won't work on other platforms.
 
 \section requirements_download_installation_download Download
 
-The latest fcppt release is 0.11. Get it <a
-href="http://fcppt.org/downloads/fcppt-0.11.tar.bz2">here</a> (<a
-href="http://fcppt.org/downloads/fcppt-0.11.tar.bz2.digest">SHA1</a>).
+The latest fcppt release is 0.11.1. Get it <a
+href="http://fcppt.org/downloads/fcppt-0.11.1.tar.bz2">here</a> (<a
+href="http://fcppt.org/downloads/fcppt-0.11.1.tar.bz2.digest">SHA1</a>).
 
 fcppt is available through our public Git Repository:
 
