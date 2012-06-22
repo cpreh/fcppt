@@ -152,7 +152,7 @@ fcppt::unique_ptr<
 	Deleter
 >::~unique_ptr()
 {
-	this->reset();
+	this->destroy();
 }
 
 template<
@@ -241,8 +241,8 @@ fcppt::unique_ptr<
 	Deleter
 >::reset()
 {
-	Deleter()(
-		ptr_
+	this->reset(
+		fcppt::null_ptr()
 	);
 }
 
@@ -250,18 +250,15 @@ template<
 	typename Type,
 	typename Deleter
 >
-template<
-	typename Other
->
 void
 fcppt::unique_ptr<
 	Type,
 	Deleter
 >::reset(
-	Other *const _ptr
+	Type *const _ptr
 )
 {
-	this->reset();
+	this->destroy();
 
 	ptr_ = _ptr;
 }
@@ -320,6 +317,21 @@ fcppt::unique_ptr<
 		ptr_
 		!=
 		fcppt::null_ptr();
+}
+
+template<
+	typename Type,
+	typename Deleter
+>
+void
+fcppt::unique_ptr<
+	Type,
+	Deleter
+>::destroy()
+{
+	Deleter()(
+		ptr_
+	);
 }
 
 template<

@@ -222,23 +222,17 @@ public:
 	reset();
 
 	/**
-	\brief Resets this unique_ptr from a compatible pointer type
+	\brief Resets this unique_ptr from a pointer
 
 	If this unique_ptr is empty, no destruction happens. Otherwise, the
 	previously owned object will be destroyed. After that, this unique_ptr
-	will take ownership of \a pointer.
+	will take ownership of \a other.
 
-	\tparam Other A type, so that <code>Other *</code> is implicitly
-	convertible to <code>T *</code>
-
-	\param pointer The pointer to take ownership of
+	\param other The pointer to take ownership of
 	*/
-	template<
-		typename Other
-	>
 	void
 	reset(
-		Other *pointer
+		pointer other
 	);
 
 	/**
@@ -264,6 +258,9 @@ public:
 private:
 	bool
 	boolean_test() const;
+
+	void
+	destroy();
 
 	pointer ptr_;
 

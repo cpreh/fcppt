@@ -149,3 +149,35 @@ FCPPT_PP_POP_WARNING
 		ptr->value() == "foo"
 	);
 }
+
+FCPPT_PP_PUSH_WARNING
+FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
+
+BOOST_AUTO_TEST_CASE(
+	unique_ptr_reset
+)
+{
+FCPPT_PP_POP_WARNING
+
+	typedef fcppt::unique_ptr<
+		int
+	> int_ptr;
+
+	int_ptr ptr(
+		fcppt::make_unique_ptr<
+			int
+		>(
+			42
+		)
+	);
+
+	BOOST_REQUIRE(
+		ptr
+	);
+
+	ptr.reset();
+
+	BOOST_REQUIRE(
+		!ptr
+	);
+}
