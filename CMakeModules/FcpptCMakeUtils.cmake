@@ -1,23 +1,36 @@
-SET (CMAKE_ALLOW_LOOSE_LOOP_CONSTRUCTS ON)
+set(
+	CMAKE_ALLOW_LOOSE_LOOP_CONSTRUCTS
+	ON
+)
 
 #Disallow in source builds everywhere
-IF(${CMAKE_BINARY_DIR} STREQUAL ${CMAKE_SOURCE_DIR})
-	message(FATAL_ERROR "In-source builds are not permitted. Make a separate folder for building:\nmkdir build; cd build; cmake ..\nBefore that, remove the files that cmake just created:\nrm -rf CMakeCache.txt CMakeFiles")
-ENDIF()
+if(
+	${CMAKE_BINARY_DIR} STREQUAL ${CMAKE_SOURCE_DIR}
+)
+	message(
+		FATAL_ERROR
+		"In-source builds are not permitted. Make a separate folder for building:\nmkdir build; cd build; cmake ..\nBefore that, remove the files that cmake just created:\nrm -rf CMakeCache.txt CMakeFiles"
+	)
+endif()
 
 #Has to be kept in sync with boost releases
-SET(
+set(
 	Boost_ADDITIONAL_VERSIONS
 	"${Boost_ADDITIONAL_VERSIONS}" "1.47" "1.47.0" "1.48" "1.48.0" "1.49" "1.49.0" "1.50" "1.50.0"
 )
 
-INCLUDE(CMakeDetermineCXXCompiler)
-INCLUDE(CheckCXXCompilerFlag)
+include(
+	CMakeDetermineCXXCompiler
+)
+
+include(
+	CheckCXXCompilerFlag
+)
 
 # Define locations for installations
 # These don't have an FCPPT_ prefix because they have to be set by the user
 
-SET(
+set(
 	INSTALL_BINARY_DIR
 	"${CMAKE_INSTALL_PREFIX}/bin"
 	CACHE
@@ -25,15 +38,35 @@ SET(
 	"Custom binary installation directory"
 )
 
-SET(
+# Some distributions set CMAKE_INSTALL_LIBDIR to handle multilib. Also, some of
+# them use an absolute path, some use a relative path. We have chosen an
+# absolute path here, so please change it in the build if your distribution is
+# using relative paths.
+if(
+	"${CMAKE_INSTALL_LIBDIR}"
+	STREQUAL
+	""
+)
+	set(
+		FCPPT_UTILS_DEFAULT_INSTALL_LIB_DIR
+		"${CMAKE_INSTALL_PREFIX}/lib"
+	)
+else()
+	set(
+		FCPPT_UTILS_DEFAULT_INSTALL_LIB_DIR
+		"${CMAKE_INSTALL_LIBDIR}"
+	)
+endif()
+
+set(
 	INSTALL_LIBRARY_DIR
-	"${CMAKE_INSTALL_PREFIX}/lib"
+	"${FCPPT_UTILS_DEFAULT_INSTALL_LIB_DIR}"
 	CACHE
 	STRING
 	"Custom library installation directory"
 )
 
-SET(
+set(
 	INSTALL_INCLUDE_DIR
 	"${CMAKE_INSTALL_PREFIX}/include"
 	CACHE
@@ -41,7 +74,7 @@ SET(
 	"Custom include installation directory"
 )
 
-SET(
+set(
 	INSTALL_DATA_DIR_BASE
 	"${CMAKE_INSTALL_PREFIX}/share"
 	CACHE
@@ -49,7 +82,7 @@ SET(
 	"Custom data installation directory without suffixes"
 )
 
-SET(
+set(
 	INSTALL_DATA_DIR
 	"${INSTALL_DATA_DIR_BASE}/${CMAKE_PROJECT_NAME}"
 	CACHE
@@ -57,7 +90,7 @@ SET(
 	"Custom data installation directory"
 )
 
-SET(
+set(
 	INSTALL_DOC_DIR_BASE
 	"${INSTALL_DATA_DIR_BASE}/doc"
 	CACHE
@@ -65,7 +98,7 @@ SET(
 	"Custom doc installation directory without suffixes"
 )
 
-SET(
+set(
 	INSTALL_DOC_DIR
 	"${INSTALL_DOC_DIR_BASE}/${CMAKE_PROJECT_NAME}"
 	CACHE
@@ -73,7 +106,7 @@ SET(
 	"Custom doc installation directory"
 )
 
-SET(
+set(
 	INSTALL_PKGCONFIG_DIR
 	"${INSTALL_LIBRARY_DIR}/pkgconfig"
 	CACHE
@@ -81,83 +114,83 @@ SET(
 	"Custom pkgconfig installation directory"
 )
 
-SET(
+set(
 	FCPPT_UTILS_CURRENT_DIRECTORY
 	"${CMAKE_ROOT}"
 )
 
-SET(
+set(
 	FCPPT_UTILS_INSTALL_PREFIX_IS_PREFIX_OF_CMAKE_ROOT
 	FALSE
 )
 
-SET(
+set(
 	FCPPT_UTILS_LOOP_VAR
 	TRUE
 )
 
-WHILE(
+while(
 	FCPPT_UTILS_LOOP_VAR
 )
-	IF(
+	if(
 		"${CMAKE_INSTALL_PREFIX}"
 		STREQUAL "${FCPPT_UTILS_CURRENT_DIRECTORY}"
 	)
-		SET(
+		set(
 			FCPPT_UTILS_INSTALL_PREFIX_IS_PREFIX_OF_CMAKE_ROOT
 			TRUE
 		)
 
-		BREAK()
-	ENDIF()
+		break()
+	endif()
 
-	GET_FILENAME_COMPONENT(
+	get_filename_component(
 		FCPPT_UTILS_NEW_CURRENT_DIRECTORY
 		"${FCPPT_UTILS_CURRENT_DIRECTORY}"
 		PATH
 	)
 
-	IF(
+	if(
 		"${FCPPT_UTILS_NEW_CURRENT_DIRECTORY}"
 		STREQUAL
 		"${FCPPT_UTILS_CURRENT_DIRECTORY}"
 	)
-		BREAK()
-	ENDIF()
+		break()
+	endif()
 
-	SET(
+	set(
 		FCPPT_UTILS_CURRENT_DIRECTORY
 		"${FCPPT_UTILS_NEW_CURRENT_DIRECTORY}"
 	)
-ENDWHILE()
+endwhile()
 
-UNSET(
+unset(
 	FCPPT_UTILS_CURRENT_DIRECTORY
 )
 
-UNSET(
+unset(
 	FCPPT_UTILS_NEW_CURRENT_DIRECTORY
 )
 
-UNSET(
+unset(
 	FCPPT_UTILS_LOOP_VAR
 )
 
-IF(
+if(
 	FCPPT_UTILS_INSTALL_PREFIX_IS_PREFIX_OF_CMAKE_ROOT
 )
-	SET(
+	set(
 		FCPPT_UTILS_CMAKE_MODULE_DIR
 		"${CMAKE_ROOT}/Modules"
 	)
-ELSE()
-	SET(
+else()
+	set(
 		FCPPT_UTILS_CMAKE_MODULE_DIR
 		"${INSTALL_DATA_DIR_BASE}/cmake/Modules"
 	)
-ENDIF()
+endif()
 
-SET(
+set(
 	INSTALL_CMAKEMODULES_DIR
 	"${FCPPT_UTILS_CMAKE_MODULE_DIR}"
 	CACHE
@@ -165,7 +198,7 @@ SET(
 	"Custom cmake module installation directory"
 )
 
-SET(
+set(
 	INSTALL_CMAKECONFIG_DIR_BASE
 	"${INSTALL_LIBRARY_DIR}/cmake"
 	CACHE
@@ -173,7 +206,7 @@ SET(
 	"Custom cmake config installation directory without suffixes"
 )
 
-SET(
+set(
 	INSTALL_CMAKECONFIG_DIR
 	"${INSTALL_CMAKECONFIG_DIR_BASE}/${CMAKE_PROJECT_NAME}"
 	CACHE
@@ -181,7 +214,7 @@ SET(
 	"Custom cmake module installation directory"
 )
 
-SET(
+set(
 	INSTALL_SYSCONFIG_DIR_BASE
 	"${CMAKE_INSTALL_PREFIX}/etc"
 	CACHE
@@ -189,28 +222,28 @@ SET(
 	"Custom config installation directory"
 )
 
-OPTION(
+option(
 	FCPPT_ENABLE_CPP11
 	"Enable C++11 support."
 	FALSE
 )
 
 # cmake-2.8.3 is required for this to work
-IF(
+if(
 	"${CMAKE_CXX_COMPILER_ID}" STREQUAL "Clang"
 )
-	SET(
+	set(
 		FCPPT_UTILS_COMPILER_IS_CLANGPP ON
 	)
-ENDIF()
+endif()
 
-IF(
+if(
 	"${CMAKE_CXX_COMPILER_ID}" STREQUAL "Intel"
 )
-	SET(
+	set(
 		FCPPT_UTILS_COMPILER_IS_INTELCPP ON
 	)
-ENDIF()
+endif()
 
 set(
 	FCPPT_UTILS_GCC_ICC_CLANG_COMMON_OPTIONS
