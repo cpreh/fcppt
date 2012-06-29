@@ -403,6 +403,7 @@ macro(
 	)
 endmacro()
 
+# gcc and clang warnings
 fcppt_set_utils_warning(
 	CONDITIONAL_UNINITIALIZED
 )
@@ -461,6 +462,11 @@ fcppt_set_utils_warning(
 
 fcppt_set_utils_warning(
 	ZERO_AS_NULL_POINTER_CONSTANT
+)
+
+# VC++ warnings
+fcppt_set_utils_warning(
+	4347
 )
 
 configure_fcppt_file(

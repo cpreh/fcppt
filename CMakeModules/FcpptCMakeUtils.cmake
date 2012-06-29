@@ -482,6 +482,32 @@ if(
 elseif(
 	MSVC
 )
+	macro(
+		FCPPT_CMAKE_UTILS_CHECK_VC_WARNING
+		WARNING_NUMBER
+	)
+		set(
+			CMAKE_REQUIRED_FLAGS "/WX /W4 /Wall"
+		)
+
+		check_cxx_source_compiles(
+			"
+			#pragma warning(push)
+			#pragma warning(disable:${WARNING_NUMBER})
+			#pragma warning(pop)
+			int main() {}"
+			"FCPPT_UTILS_HAVE_${WARNING_NUMBER}_FLAG"
+		)
+
+		unset(
+			CMAKE_REQUIRED_FLAGS
+		)
+	endmacro()
+
+	FCPPT_CMAKE_UTILS_CHECK_VC_WARNING(
+		"4347"
+	)
+
 	add_definitions(
 		"/W4 /Wall /EHa /D_BIND_TO_CURRENT_VCLIBS_VERSION=1"
 		" /wd4996 /wd4061 /wd4350 /wd4371 /wd4503 /wd4514 /wd4710 /wd4711 /wd4714 /wd4738 /wd4820"

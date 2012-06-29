@@ -5,6 +5,7 @@
 
 
 #include <fcppt/string.hpp>
+#include <fcppt/config/warnings.hpp>
 #include <fcppt/filesystem/path_to_string.hpp>
 #include <fcppt/preprocessor/disable_vc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
@@ -20,7 +21,9 @@ fcppt::filesystem::path_to_string(
 )
 {
 FCPPT_PP_PUSH_WARNING
+#if defined(FCPPT_CONFIG_HAVE_4347_WARNING)
 FCPPT_PP_DISABLE_VC_WARNING(4347)
+#endif
 	return
 		_path.string<
 			fcppt::string
