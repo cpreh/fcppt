@@ -4,8 +4,11 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_MATH_MATRIX_DETAIL_ROW_VIEW_HPP_INCLUDED
-#define FCPPT_MATH_MATRIX_DETAIL_ROW_VIEW_HPP_INCLUDED
+#ifndef FCPPT_MATH_MATRIX_DETAIL_ROW_VIEW_DECL_HPP_INCLUDED
+#define FCPPT_MATH_MATRIX_DETAIL_ROW_VIEW_DECL_HPP_INCLUDED
+
+#include <fcppt/math/matrix/detail/row_view_fwd.hpp>
+
 
 namespace fcppt
 {
@@ -24,9 +27,20 @@ class row_view
 {
 public:
 	typedef T value_type;
+
 	typedef typename N::value_type size_type;
+
 	typedef T &reference;
+
+	typedef T const &const_reference;
+
 	typedef T *pointer;
+
+	typedef T const *const_pointer;
+
+	typedef pointer iterator;
+
+	typedef const_pointer const_iterator;
 
 	row_view(
 		pointer,
@@ -35,10 +49,8 @@ public:
 		size_type size
 	);
 
-	reference
-	operator[](
-		size_type
-	) const;
+	iterator
+	begin() const;
 
 	pointer
 	data() const;

@@ -16,7 +16,7 @@
 #include <fcppt/math/matrix/max_ctor_params.hpp>
 #include <fcppt/math/matrix/object_fwd.hpp>
 #include <fcppt/math/matrix/detail/dim_storage.hpp>
-#include <fcppt/math/matrix/detail/row_view.hpp>
+#include <fcppt/math/matrix/detail/row_view_fwd.hpp>
 #include <fcppt/math/vector/object_decl.hpp>
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
@@ -128,10 +128,10 @@ public:
 	typedef, as it's really a vector that models a row-view over the
 	matrix, see the explanation above.
 	*/
-	typedef vector::object<
+	typedef fcppt::math::vector::object<
 		T,
 		N,
-		matrix::detail::row_view<
+		fcppt::math::matrix::detail::row_view<
 			T const,
 			N
 		>
@@ -375,24 +375,6 @@ FCPPT_MATH_DETAIL_MAKE_OP_DECL(\
 	operator[](
 		size_type
 	) const;
-
-	/**
-	\brief Returns the pointer to the store.
-	*/
-	pointer
-	data();
-
-	/**
-	\brief Returns the pointer to the store.
-	*/
-	const_pointer
-	data() const;
-
-	/**
-	\brief Returns the number of elements in the matrix.
-	*/
-	size_type
-	size() const;
 
 	/**
 	\brief Returns the number of rows in the matrix.

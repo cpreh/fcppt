@@ -4,38 +4,26 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_MATH_DETAIL_STORAGE_DATA_HPP_INCLUDED
-#define FCPPT_MATH_DETAIL_STORAGE_DATA_HPP_INCLUDED
+#ifndef FCPPT_MATH_MATRIX_DETAIL_ROW_VIEW_FWD_HPP_INCLUDED
+#define FCPPT_MATH_MATRIX_DETAIL_ROW_VIEW_FWD_HPP_INCLUDED
+
 
 namespace fcppt
 {
 namespace math
 {
+namespace matrix
+{
 namespace detail
 {
 
 template<
-	typename T
+	typename T,
+	typename N
 >
-typename T::value_type *
-storage_data(
-	T &t
-)
-{
-	return t.data();
-}
+class row_view;
 
-template<
-	typename T
->
-typename T::value_type const *
-storage_data(
-	T const &t
-)
-{
-	return t.data();
 }
-
 }
 }
 }

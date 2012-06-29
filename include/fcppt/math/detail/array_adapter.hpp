@@ -7,7 +7,15 @@
 #ifndef FCPPT_MATH_DETAIL_ARRAY_ADAPTER_HPP_INCLUDED
 #define FCPPT_MATH_DETAIL_ARRAY_ADAPTER_HPP_INCLUDED
 
-#define FCPPT_MATH_DETAIL_ARRAY_ADAPTER(name)\
+#define FCPPT_MATH_DETAIL_ARRAY_ADAPTER(\
+	name\
+)\
+	pointer \
+	data(); \
+\
+	const_pointer \
+	data() const; \
+\
 	reference \
 	at(\
 		size_type\
@@ -17,12 +25,6 @@
 	at(\
 		size_type\
 	) const;\
-\
-	pointer \
-	data_end();\
-\
-	const_pointer \
-	data_end() const;\
 \
 	iterator \
 	begin();\
@@ -61,6 +63,9 @@
 	front() const;\
 \
 	bool \
-	empty() const;
+	empty() const;\
+\
+	size_type \
+	size() const;
 
 #endif

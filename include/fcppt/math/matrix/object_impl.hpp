@@ -13,8 +13,6 @@
 #include <fcppt/math/detail/initial_size.hpp>
 #include <fcppt/math/detail/make_op_def.hpp>
 #include <fcppt/math/detail/make_variadic_constructor.hpp>
-#include <fcppt/math/detail/storage_data.hpp>
-#include <fcppt/math/detail/storage_dim.hpp>
 #include <fcppt/math/dim/object_impl.hpp>
 #include <fcppt/math/matrix/is_static_size.hpp>
 #include <fcppt/math/matrix/object_decl.hpp>
@@ -454,56 +452,6 @@ fcppt::math::matrix::object<T, N, M, S>::operator[](
 		);
 }
 
-template<
-	typename T,
-	typename N,
-	typename M,
-	typename S
->
-typename fcppt::math::matrix::object<T, N, M, S>::pointer
-fcppt::math::matrix::object<T, N, M, S>::data()
-{
-	return
-		math::detail::storage_data(
-			storage_
-		);
-}
-
-template<
-	typename T,
-	typename N,
-	typename M,
-	typename S
->
-typename fcppt::math::matrix::object<T, N, M, S>::const_pointer
-fcppt::math::matrix::object<T, N, M, S>::data() const
-{
-	return
-		const_cast<
-			object &
-		>(
-			*this
-		).data();
-}
-
-template<
-	typename T,
-	typename N,
-	typename M,
-	typename S
->
-typename fcppt::math::matrix::object<T, N, M, S>::size_type
-fcppt::math::matrix::object<T, N, M, S>::size() const
-{
-	return
-		static_cast<
-			size_type
-		>(
-			math::detail::storage_dim(
-				storage_
-			)
-		);
-}
 template<
 	typename T,
 	typename N,

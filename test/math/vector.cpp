@@ -6,14 +6,13 @@
 
 #include <fcppt/math/diff.hpp>
 #include <fcppt/math/pi.hpp>
-#include <fcppt/math/size_type.hpp>
 #include <fcppt/math/vector/angle_between.hpp>
 #include <fcppt/math/vector/angle_between_cast.hpp>
 #include <fcppt/math/vector/arithmetic.hpp>
 #include <fcppt/math/vector/comparison.hpp>
 #include <fcppt/math/vector/componentwise_equal.hpp>
-#include <fcppt/math/vector/construct.hpp>
 #include <fcppt/math/vector/hypersphere_to_cartesian.hpp>
+#include <fcppt/math/vector/object.hpp>
 #include <fcppt/math/vector/output.hpp>
 #include <fcppt/math/vector/signed_angle_between.hpp>
 #include <fcppt/math/vector/signed_angle_between_cast.hpp>
@@ -22,7 +21,6 @@
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/mpl/integral_c.hpp>
 #include <boost/test/unit_test.hpp>
 #include <algorithm>
 #include <iostream>
@@ -268,88 +266,6 @@ FCPPT_PP_POP_WARNING
 		vec == uivector2(1, 2)
 	);
 }
-
-namespace
-{
-
-template<
-	typename T
->
-class view_storage
-{
-public:
-	typedef T value_type;
-	typedef fcppt::math::size_type size_type;
-	typedef value_type *pointer;
-
-	explicit view_storage(
-		pointer const _data,
-		size_type const _size
-	)
-	:
-		data_(_data),
-		size_(_size)
-	{}
-
-	pointer
-	data() const
-	{
-		return data_;
-	}
-
-	size_type
-	size() const
-	{
-		return size_;
-	}
-private:
-	pointer data_;
-
-	size_type size_;
-};
-
-}
-
-FCPPT_PP_PUSH_WARNING
-FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
-
-BOOST_AUTO_TEST_CASE(vector_construct)
-{
-FCPPT_PP_POP_WARNING
-
-	typedef view_storage<
-		unsigned
-	> unsigned_view_storage;
-
-	typedef fcppt::math::vector::object<
-		unsigned,
-		boost::mpl::integral_c<
-			fcppt::math::size_type,
-			2
-		>,
-		view_storage<
-			unsigned
-		>
-	> view_vector;
-
-	unsigned data[] = { 1, 2 };
-
-	view_vector const view(
-		unsigned_view_storage(
-			data,
-			sizeof(data) / sizeof(unsigned)
-		)
-	);
-
-	uivector2 const vec(
-		view
-	);
-
-	BOOST_REQUIRE(
-		vec == view
-	);
-}
-
 FCPPT_PP_PUSH_WARNING
 FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
 

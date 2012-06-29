@@ -437,6 +437,7 @@ set(
 	include/fcppt/math/detail/fill.hpp
 	include/fcppt/math/detail/generate_binary_vectors.hpp
 	include/fcppt/math/detail/has_size.hpp
+	include/fcppt/math/detail/index_at.hpp
 	include/fcppt/math/detail/initial_size.hpp
 	include/fcppt/math/detail/is_static_storage.hpp
 	include/fcppt/math/detail/make_impl.hpp
@@ -456,8 +457,6 @@ set(
 	include/fcppt/math/detail/pi.hpp
 	include/fcppt/math/detail/simple_normal_storage.hpp
 	include/fcppt/math/detail/static_storage.hpp
-	include/fcppt/math/detail/storage_data.hpp
-	include/fcppt/math/detail/storage_dim.hpp
 	include/fcppt/math/detail/structure_cast.hpp
 	include/fcppt/math/detail/structure_cast_fun.hpp
 	include/fcppt/math/detail/transform.hpp
@@ -507,7 +506,8 @@ set(
 	include/fcppt/math/matrix/detail/dim_storage.hpp
 	include/fcppt/math/matrix/detail/dim_storage_impl.hpp
 	include/fcppt/math/matrix/detail/dynamic_dim.hpp
-	include/fcppt/math/matrix/detail/row_view.hpp
+	include/fcppt/math/matrix/detail/row_view_decl.hpp
+	include/fcppt/math/matrix/detail/row_view_fwd.hpp
 	include/fcppt/math/matrix/detail/row_view_impl.hpp
 	include/fcppt/math/matrix/detail/static_storage.hpp
 	include/fcppt/math/matrix/detail/structure_cast.hpp
@@ -559,6 +559,7 @@ set(
 	include/fcppt/math/sphere/object_decl.hpp
 	include/fcppt/math/sphere/object_fwd.hpp
 	include/fcppt/math/sphere/object_impl.hpp
+	include/fcppt/math/static_size.hpp
 	include/fcppt/math/twopi.hpp
 	include/fcppt/math/vector/angle_between.hpp
 	include/fcppt/math/vector/angle_between_cast.hpp

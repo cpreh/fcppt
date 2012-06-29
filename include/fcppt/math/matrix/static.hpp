@@ -8,11 +8,9 @@
 #define FCPPT_MATH_MATRIX_STATIC_HPP_INCLUDED
 
 #include <fcppt/math/size_type.hpp>
+#include <fcppt/math/static_size.hpp>
 #include <fcppt/math/matrix/object_fwd.hpp>
 #include <fcppt/math/matrix/detail/static_storage.hpp>
-#include <fcppt/config/external_begin.hpp>
-#include <boost/mpl/integral_c.hpp>
-#include <fcppt/config/external_end.hpp>
 
 
 namespace fcppt
@@ -31,22 +29,20 @@ static matrices (and on this class).
 */
 template<
 	typename T,
-	size_type N,
-	size_type M
+	fcppt::math::size_type N,
+	fcppt::math::size_type M
 >
 struct static_
 {
-	typedef object<
+	typedef fcppt::math::matrix::object<
 		T,
-		boost::mpl::integral_c<
-			size_type,
+		typename fcppt::math::static_size<
 			N
-		>,
-		boost::mpl::integral_c<
-			size_type,
+		>::type,
+		typename fcppt::math::static_size<
 			M
-		>,
-		typename matrix::detail::static_storage<
+		>::type,
+		typename fcppt::math::matrix::detail::static_storage<
 			T,
 			N,
 			M

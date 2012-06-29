@@ -7,7 +7,8 @@
 #ifndef FCPPT_MATH_MATRIX_DETAIL_ROW_VIEW_IMPL_HPP_INCLUDED
 #define FCPPT_MATH_MATRIX_DETAIL_ROW_VIEW_IMPL_HPP_INCLUDED
 
-#include <fcppt/math/matrix/detail/row_view.hpp>
+#include <fcppt/math/matrix/detail/row_view_decl.hpp>
+
 
 template<
 	typename T,
@@ -26,38 +27,58 @@ fcppt::math::matrix::detail::row_view<T, N>::row_view(
 	size_(
 		_size
 	)
-{}
-
-template<
-	typename T,
-	typename N
->
-typename fcppt::math::matrix::detail::row_view<T, N>::reference
-fcppt::math::matrix::detail::row_view<T, N>::operator[](
-	size_type const i
-) const
 {
-	return rep_[i];
 }
 
 template<
 	typename T,
 	typename N
 >
-typename fcppt::math::matrix::detail::row_view<T, N>::pointer
-fcppt::math::matrix::detail::row_view<T, N>::data() const
+typename fcppt::math::matrix::detail::row_view<
+	T,
+	N
+>::iterator
+fcppt::math::matrix::detail::row_view<
+	T,
+	N
+>::begin() const
 {
-	return rep_;
+	return
+		rep_;
 }
 
 template<
 	typename T,
 	typename N
 >
-typename fcppt::math::matrix::detail::row_view<T, N>::size_type
-fcppt::math::matrix::detail::row_view<T, N>::size() const
+typename fcppt::math::matrix::detail::row_view<
+	T,
+	N
+>::pointer
+fcppt::math::matrix::detail::row_view<
+	T,
+	N
+>::data() const
 {
-	return size_;
+	return
+		rep_;
+}
+
+template<
+	typename T,
+	typename N
+>
+typename fcppt::math::matrix::detail::row_view<
+	T,
+	N
+>::size_type
+fcppt::math::matrix::detail::row_view<
+	T,
+	N
+>::size() const
+{
+	return
+		size_;
 }
 
 #endif

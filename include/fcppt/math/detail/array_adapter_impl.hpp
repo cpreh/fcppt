@@ -22,6 +22,20 @@
 	def_pre\
 )\
 BOOST_PP_TUPLE_REM(class_arity)template_pre \
+typename BOOST_PP_TUPLE_REM(class_arity)def_pre ::pointer \
+BOOST_PP_TUPLE_REM(class_arity)def_pre ::data()\
+{\
+	return storage_.data();\
+}\
+\
+BOOST_PP_TUPLE_REM(class_arity)template_pre \
+typename BOOST_PP_TUPLE_REM(class_arity)def_pre ::const_pointer \
+BOOST_PP_TUPLE_REM(class_arity)def_pre ::data() const\
+{\
+	return storage_.data();\
+}\
+\
+BOOST_PP_TUPLE_REM(class_arity)template_pre \
 typename BOOST_PP_TUPLE_REM(class_arity)def_pre ::reference \
 BOOST_PP_TUPLE_REM(class_arity)def_pre ::at(\
 	size_type const index\
@@ -50,45 +64,31 @@ BOOST_PP_TUPLE_REM(class_arity)def_pre ::at(\
 }\
 \
 BOOST_PP_TUPLE_REM(class_arity)template_pre \
-typename BOOST_PP_TUPLE_REM(class_arity)def_pre ::pointer \
-BOOST_PP_TUPLE_REM(class_arity)def_pre ::data_end() \
-{\
-	return data() + size();\
-}\
-\
-BOOST_PP_TUPLE_REM(class_arity)template_pre \
-typename BOOST_PP_TUPLE_REM(class_arity)def_pre ::const_pointer \
-BOOST_PP_TUPLE_REM(class_arity)def_pre ::data_end() const\
-{\
-	return data() + size();\
-}\
-\
-BOOST_PP_TUPLE_REM(class_arity)template_pre \
 typename BOOST_PP_TUPLE_REM(class_arity)def_pre ::iterator \
 BOOST_PP_TUPLE_REM(class_arity)def_pre ::begin() \
 {\
-	return static_cast<iterator>(data());\
+	return storage_.begin();\
 }\
 \
 BOOST_PP_TUPLE_REM(class_arity)template_pre \
 typename BOOST_PP_TUPLE_REM(class_arity)def_pre ::const_iterator \
 BOOST_PP_TUPLE_REM(class_arity)def_pre ::begin() const\
 {\
-	return static_cast<const_iterator>(data());\
+	return storage_.begin();\
 }\
 \
 BOOST_PP_TUPLE_REM(class_arity)template_pre \
 typename BOOST_PP_TUPLE_REM(class_arity)def_pre ::iterator \
 BOOST_PP_TUPLE_REM(class_arity)def_pre ::end()\
 {\
-	return static_cast<iterator>(data_end());\
+	return this->begin() + this->size();\
 }\
 \
 BOOST_PP_TUPLE_REM(class_arity)template_pre \
 typename BOOST_PP_TUPLE_REM(class_arity)def_pre ::const_iterator \
 BOOST_PP_TUPLE_REM(class_arity)def_pre ::end() const\
 {\
-	return static_cast<const_iterator>(data_end());\
+	return this->begin() + this->size();\
 }\
 \
 BOOST_PP_TUPLE_REM(class_arity)template_pre \
@@ -151,7 +151,19 @@ BOOST_PP_TUPLE_REM(class_arity)template_pre \
 bool \
 BOOST_PP_TUPLE_REM(class_arity)def_pre ::empty() const\
 {\
-	return begin() == end();\
+	return this->begin() == this->end();\
+}\
+\
+BOOST_PP_TUPLE_REM(class_arity)template_pre \
+typename BOOST_PP_TUPLE_REM(class_arity)def_pre ::size_type \
+BOOST_PP_TUPLE_REM(class_arity)def_pre ::size() const\
+{\
+	return \
+		static_cast<\
+			size_type\
+		>(\
+			storage_.size()\
+		);\
 }
 
 #endif

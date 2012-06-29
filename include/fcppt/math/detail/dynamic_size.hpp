@@ -7,10 +7,8 @@
 #ifndef FCPPT_MATH_DETAIL_DYNAMIC_SIZE_HPP_INCLUDED
 #define FCPPT_MATH_DETAIL_DYNAMIC_SIZE_HPP_INCLUDED
 
-#include <fcppt/math/size_type.hpp>
-#include <fcppt/config/external_begin.hpp>
-#include <boost/mpl/integral_c.hpp>
-#include <fcppt/config/external_end.hpp>
+#include <fcppt/math/static_size.hpp>
+
 
 namespace fcppt
 {
@@ -19,10 +17,9 @@ namespace math
 namespace detail
 {
 
-typedef boost::mpl::integral_c<
-	size_type,
-	0
-> dynamic_size;
+typedef fcppt::math::static_size<
+	0u
+>::type dynamic_size;
 
 }
 }

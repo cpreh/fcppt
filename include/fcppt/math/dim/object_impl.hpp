@@ -10,10 +10,9 @@
 #include <fcppt/math/detail/array_adapter_impl.hpp>
 #include <fcppt/math/detail/assign.hpp>
 #include <fcppt/math/detail/checked_access.hpp>
+#include <fcppt/math/detail/index_at.hpp>
 #include <fcppt/math/detail/make_op_def.hpp>
 #include <fcppt/math/detail/make_variadic_constructor.hpp>
-#include <fcppt/math/detail/storage_data.hpp>
-#include <fcppt/math/detail/storage_dim.hpp>
 #include <fcppt/math/dim/max_ctor_params.hpp>
 #include <fcppt/math/dim/normal_storage.hpp>
 #include <fcppt/math/dim/object_decl.hpp>
@@ -26,6 +25,7 @@
 #include <iterator>
 #include <numeric>
 #include <fcppt/config/external_end.hpp>
+
 
 FCPPT_PP_PUSH_WARNING
 FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
@@ -269,10 +269,14 @@ template<
 >
 typename fcppt::math::dim::object<T, N, S>::reference
 fcppt::math::dim::object<T, N, S>::operator[](
-	size_type const index
+	size_type const _index
 )
 {
-	return storage_[index];
+	return
+		fcppt::math::detail::index_at(
+			this->begin(),
+			_index
+		);
 }
 
 template<
@@ -282,55 +286,13 @@ template<
 >
 typename fcppt::math::dim::object<T, N, S>::const_reference
 fcppt::math::dim::object<T, N, S>::operator[](
-	size_type const index
+	size_type const _index
 ) const
 {
-	return storage_[index];
-}
-
-template<
-	typename T,
-	typename N,
-	typename S
->
-typename fcppt::math::dim::object<T, N, S>::pointer
-fcppt::math::dim::object<T, N, S>::data()
-{
 	return
-		math::detail::storage_data(
-			storage_
-		);
-}
-
-template<
-	typename T,
-	typename N,
-	typename S
->
-typename fcppt::math::dim::object<T, N, S>::const_pointer
-fcppt::math::dim::object<T, N, S>::data() const
-{
-	return
-		math::detail::storage_data(
-			storage_
-		);
-}
-
-template<
-	typename T,
-	typename N,
-	typename S
->
-typename fcppt::math::dim::object<T, N, S>::size_type
-fcppt::math::dim::object<T, N, S>::size() const
-{
-	return
-		static_cast<
-			size_type
-		>(
-			math::detail::storage_dim(
-				storage_
-			)
+		fcppt::math::detail::index_at(
+			this->begin(),
+			_index
 		);
 }
 

@@ -10,11 +10,10 @@
 #include <fcppt/math/detail/array_adapter_impl.hpp>
 #include <fcppt/math/detail/assign.hpp>
 #include <fcppt/math/detail/checked_access.hpp>
+#include <fcppt/math/detail/index_at.hpp>
 #include <fcppt/math/detail/initial_size.hpp>
 #include <fcppt/math/detail/make_op_def.hpp>
 #include <fcppt/math/detail/make_variadic_constructor.hpp>
-#include <fcppt/math/detail/storage_data.hpp>
-#include <fcppt/math/detail/storage_dim.hpp>
 #include <fcppt/math/vector/max_ctor_params.hpp>
 #include <fcppt/math/vector/normal_storage.hpp>
 #include <fcppt/math/vector/object_decl.hpp>
@@ -269,7 +268,11 @@ fcppt::math::vector::object<T, N, S>::operator[](
 	size_type const _index
 ) const
 {
-	return storage_[_index];
+	return
+		fcppt::math::detail::index_at(
+			this->begin(),
+			_index
+		);
 }
 
 template<
@@ -282,52 +285,10 @@ fcppt::math::vector::object<T, N, S>::operator[](
 	size_type const _index
 )
 {
-	return storage_[_index];
-}
-
-template<
-	typename T,
-	typename N,
-	typename S
->
-typename fcppt::math::vector::object<T, N, S>::pointer
-fcppt::math::vector::object<T, N, S>::data()
-{
 	return
-		math::detail::storage_data(
-			storage_
-		);
-}
-
-template<
-	typename T,
-	typename N,
-	typename S
->
-typename fcppt::math::vector::object<T, N, S>::const_pointer
-fcppt::math::vector::object<T, N, S>::data() const
-{
-	return
-		math::detail::storage_data(
-			storage_
-		);
-}
-
-template<
-	typename T,
-	typename N,
-	typename S
->
-typename fcppt::math::vector::object<T, N, S>::size_type
-fcppt::math::vector::object<T, N, S>::size() const
-{
-	return
-		static_cast<
-			size_type
-		>(
-			math::detail::storage_dim(
-				storage_
-			)
+		fcppt::math::detail::index_at(
+			this->begin(),
+			_index
 		);
 }
 

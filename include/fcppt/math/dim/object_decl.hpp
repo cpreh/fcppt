@@ -246,63 +246,47 @@ FCPPT_MATH_DETAIL_MAKE_OP_DECL(\
 	) const;
 
 	/**
-	\brief Returns the pointer to the store.
-
-	May return 0 if the dim is empty.
+	\brief Returns a reference to the first element in the dim
 	*/
-	pointer
-	data();
-
-	/**
-	\brief Returns the pointer to the store.
-
-	May return 0 if the dim is empty.
-	*/
-	const_pointer
-	data() const;
-
-	/**
-	\brief Returns the number of elements in the dim.
-	*/
-	size_type
-	size() const;
-
+	reference
+	w();
 	/**
 	\brief Returns a reference to the first element in the dim
 	*/
-	reference w();
-	/**
-	\brief Returns a reference to the first element in the dim
-	*/
-	const_reference w() const;
+	const_reference
+	w() const;
 	/**
 	\brief Returns a reference to the second element in the dim
 
 	\warning
 	This will fail at compile-time if <code>N <= 1</code>
 	*/
-	reference h();
+	reference
+	h();
 	/**
 	\brief Returns a reference to the second element in the dim
 
 	\warning
 	This will fail at compile-time if <code>N <= 1</code>
 	*/
-	const_reference h() const;
+	const_reference
+	h() const;
 	/**
 	\brief Returns a reference to the third element in the dim
 
 	\warning
 	This will fail at compile-time if <code>N <= 2</code>
 	*/
-	reference d();
+	reference
+	d();
 	/**
 	\brief Returns a reference to the third element in the dim
 
 	\warning
 	This will fail at compile-time if <code>N <= 2</code>
 	*/
-	const_reference d() const;
+	const_reference
+	d() const;
 
 	/**
 	\brief Returns the area/volume of the dimension
