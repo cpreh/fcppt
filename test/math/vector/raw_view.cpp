@@ -18,6 +18,7 @@
 #include <boost/iterator/iterator_facade.hpp>
 #include <boost/test/unit_test.hpp>
 #include <cstring>
+#include <iterator>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -166,8 +167,9 @@ public:
 	{
 	}
 private:
+	static
 	difference_type
-	stride() const
+	stride()
 	{
 		return
 			static_cast<
