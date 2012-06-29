@@ -4,9 +4,7 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/math/matrix/adjugate.hpp>
-#include <fcppt/math/matrix/comparison.hpp>
-#include <fcppt/math/matrix/object_impl.hpp>
+#include <fcppt/math/matrix/object.hpp>
 #include <fcppt/math/matrix/static.hpp>
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
@@ -19,29 +17,38 @@
 FCPPT_PP_PUSH_WARNING
 FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
 
-BOOST_AUTO_TEST_CASE(adjugate)
+BOOST_AUTO_TEST_CASE(
+	math_matrix_access
+)
 {
 FCPPT_PP_POP_WARNING
 
 	typedef
 	fcppt::math::matrix::static_<
 		int,
-		3,
-		3
+		2,
+		2
 	>::type
 	matrix_type;
 
-	matrix_type const t(
-		-3, 2, -5,
-		-1, 0, -2,
-		3, -4, 1);
+	matrix_type const mat(
+		-3, 2,
+		-1, 0
+	);
 
 	BOOST_CHECK(
-		(
-		fcppt::math::matrix::adjugate(
-			t) ==
-		matrix_type(
-			-8,18,-4,
-			-5,12,-1,
-			4,-6,2)));
+		mat[0][0] == -3
+	);
+
+	BOOST_CHECK(
+		mat[0][1] == 2
+	);
+
+	BOOST_CHECK(
+		mat[1][0] == -1
+	);
+
+	BOOST_CHECK(
+		mat[1][1] == 0
+	);
 }
