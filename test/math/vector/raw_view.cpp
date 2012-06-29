@@ -109,6 +109,9 @@ struct raw_iterator_base
 
 };
 
+FCPPT_PP_PUSH_WARNING
+FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
+
 template<
 	typename Type,
 	typename Pointer
@@ -246,6 +249,8 @@ private:
 
 	pointer data_;
 };
+
+FCPPT_PP_POP_WARNING
 
 template<
 	typename Type
