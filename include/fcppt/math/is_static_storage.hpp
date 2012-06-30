@@ -4,8 +4,8 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_MATH_DETAIL_IS_STATIC_STORAGE_HPP_INCLUDED
-#define FCPPT_MATH_DETAIL_IS_STATIC_STORAGE_HPP_INCLUDED
+#ifndef FCPPT_MATH_IS_STATIC_STORAGE_HPP_INCLUDED
+#define FCPPT_MATH_IS_STATIC_STORAGE_HPP_INCLUDED
 
 #include <fcppt/container/array_fwd.hpp>
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
@@ -16,11 +16,10 @@
 #include <cstddef>
 #include <fcppt/config/external_end.hpp>
 
+
 namespace fcppt
 {
 namespace math
-{
-namespace detail
 {
 
 FCPPT_PP_PUSH_WARNING
@@ -32,7 +31,8 @@ template<
 struct is_static_storage
 :
 boost::false_type
-{};
+{
+};
 
 template<
 	typename T,
@@ -46,11 +46,11 @@ struct is_static_storage<
 >
 :
 boost::true_type
-{};
+{
+};
 
 FCPPT_PP_POP_WARNING
 
-}
 }
 }
 

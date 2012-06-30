@@ -7,10 +7,11 @@
 #ifndef FCPPT_MATH_DETAIL_INITIAL_SIZE_HPP_INCLUDED
 #define FCPPT_MATH_DETAIL_INITIAL_SIZE_HPP_INCLUDED
 
-#include <fcppt/math/detail/is_static_storage.hpp>
+#include <fcppt/math/is_static_storage.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/utility/enable_if.hpp>
 #include <fcppt/config/external_end.hpp>
+
 
 namespace fcppt
 {
@@ -20,38 +21,38 @@ namespace detail
 {
 
 template<
-	typename T,
-	typename S
+	typename Storage,
+	typename Size
 >
 typename boost::disable_if<
-	detail::is_static_storage<
-		T
+	fcppt::math::is_static_storage<
+		Storage
 	>,
 	void
 >::type
 initial_size(
-	T &t,
-	S const size
+	Storage &_storage,
+	Size const _size
 )
 {
-	t.resize(
-		size
+	_storage.resize(
+		_size
 	);
 }
 
 template<
-	typename T,
-	typename S
+	typename Storage,
+	typename Size
 >
 typename boost::enable_if<
-	detail::is_static_storage<
-		T
+	fcppt::math::is_static_storage<
+		Storage
 	>,
 	void
 >::type
 initial_size(
-	T &,
-	S
+	Storage &,
+	Size
 )
 {
 }

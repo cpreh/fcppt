@@ -439,7 +439,6 @@ set(
 	include/fcppt/math/detail/has_size.hpp
 	include/fcppt/math/detail/index_at.hpp
 	include/fcppt/math/detail/initial_size.hpp
-	include/fcppt/math/detail/is_static_storage.hpp
 	include/fcppt/math/detail/make_impl.hpp
 	include/fcppt/math/detail/make_op_decl.hpp
 	include/fcppt/math/detail/make_op_def.hpp
@@ -496,6 +495,7 @@ set(
 	include/fcppt/math/is_power_of_2.hpp
 	include/fcppt/math/is_rational.hpp
 	include/fcppt/math/is_static_size.hpp
+	include/fcppt/math/is_static_storage.hpp
 	include/fcppt/math/log2.hpp
 	include/fcppt/math/matrix/adjugate.hpp
 	include/fcppt/math/matrix/arithmetic.hpp
