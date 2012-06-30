@@ -28,14 +28,11 @@ assign(
 	Src const &src
 )
 {
-	if(
-		&dest != &src
-	)
-		std::copy(
-			src.begin(),
-			src.end(),
-			dest.begin()
-		);
+	std::copy(
+		src.begin(),
+		src.end(),
+		dest.begin()
+	);
 
 	return dest;
 }
