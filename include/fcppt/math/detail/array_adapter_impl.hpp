@@ -81,14 +81,28 @@ BOOST_PP_TUPLE_REM(class_arity)template_pre \
 typename BOOST_PP_TUPLE_REM(class_arity)def_pre ::iterator \
 BOOST_PP_TUPLE_REM(class_arity)def_pre ::end()\
 {\
-	return this->begin() + this->size();\
+	return \
+		this->begin() \
+		+ \
+		static_cast<\
+			difference_type\
+		>(\
+			this->size()\
+		);\
 }\
 \
 BOOST_PP_TUPLE_REM(class_arity)template_pre \
 typename BOOST_PP_TUPLE_REM(class_arity)def_pre ::const_iterator \
 BOOST_PP_TUPLE_REM(class_arity)def_pre ::end() const\
 {\
-	return this->begin() + this->size();\
+	return \
+		this->begin() \
+		+ \
+		static_cast<\
+			difference_type\
+		>(\
+			this->size()\
+		);\
 }\
 \
 BOOST_PP_TUPLE_REM(class_arity)template_pre \
