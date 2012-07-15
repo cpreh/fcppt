@@ -10,7 +10,8 @@
 #include <fcppt/heap_deleter.hpp>
 #include <fcppt/shared_ptr_decl.hpp>
 #include <fcppt/static_assert_expression.hpp>
-#include <fcppt/unique_ptr_impl.hpp>
+#include <fcppt/unique_ptr_fwd.hpp>
+#include <fcppt/weak_ptr_fwd.hpp>
 #include <fcppt/detail/make_shared_wrapper.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/type_traits/is_same.hpp>

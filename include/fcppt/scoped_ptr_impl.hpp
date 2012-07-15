@@ -10,7 +10,7 @@
 #include <fcppt/move.hpp>
 #include <fcppt/null_ptr.hpp>
 #include <fcppt/scoped_ptr_decl.hpp>
-#include <fcppt/unique_ptr_impl.hpp>
+#include <fcppt/unique_ptr_fwd.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <algorithm>
 #include <fcppt/config/external_end.hpp>

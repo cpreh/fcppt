@@ -29,7 +29,7 @@ difference to owning an object by scoped ptr instead of by value is that it
 doesn't have to be complete. Also, a scoped ptr is a perfect candidate for
 owning an object created by a factory that returns a unique ptr.
 
-\tparam Type The type the shared pointer points to
+\tparam Type The type the scoped pointer points to
 
 \tparam Deleter A deleter class that must be callable with a pointer to Type.
 */
