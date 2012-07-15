@@ -255,7 +255,7 @@ fcppt::unique_ptr<
 	Type,
 	Deleter
 >::reset(
-	Type *const _ptr
+	pointer const _ptr
 )
 {
 	this->destroy();
