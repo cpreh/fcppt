@@ -51,7 +51,7 @@ The following platforms are tested by us:
 
 <ul>
 	<li>gcc-4.7.1 (Gentoo Linux, amd64)</li>
-	<li>clang-3.1 (Gentoo Linux, amd64)</li>
+	<li>clang-3.2 trunk (Gentoo Linux, amd64)</li>
 	<li>VC++ 2010 SP1 (Windows XP x86 and Windows 7 amd64)</li>
 </ul>
 
