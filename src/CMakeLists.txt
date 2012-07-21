@@ -90,7 +90,6 @@ set(
 	include/fcppt/config/compiler.hpp
 	include/fcppt/config/external_begin.hpp
 	include/fcppt/config/external_end.hpp
-	include/fcppt/config/include_windows.hpp
 	include/fcppt/config/platform.hpp
 	include/fcppt/const_optional_cast.hpp
 	include/fcppt/const_pointer_cast.hpp
@@ -882,6 +881,7 @@ set(
 	src/from_std_wstring_locale.cpp
 	src/include/fcppt/src/codecvt.hpp
 	src/include/fcppt/src/codecvt_type.hpp
+	src/include/fcppt/src/include_windows.hpp
 	src/include/fcppt/src/log/find_inner_node.hpp
 	src/include/fcppt/src/log/find_location.hpp
 	src/include/fcppt/src/log/find_logger_node.hpp

@@ -9,7 +9,7 @@
 #include <fcppt/truncation_check_cast.hpp>
 #include <fcppt/config/platform.hpp>
 #if defined(FCPPT_CONFIG_WINDOWS_PLATFORM)
-#include <fcppt/config/include_windows.hpp>
+#include <fcppt/src/include_windows.hpp>
 #elif defined(FCPPT_CONFIG_POSIX_PLATFORM)
 #include <fcppt/config/external_begin.hpp>
 #include <time.h>
