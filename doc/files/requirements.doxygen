@@ -98,15 +98,15 @@ the end:
 
 <pre>
 <code>
-cmake\
-        -D ENABLE_TEST=OFF\
-        -D ENABLE_EXAMPLES=OFF\
-        -D ENABLE_SHARED=OFF\
-        -D ENABLE_STATIC=ON\
-        -D CMAKE_INSTALL_PREFIX=""\
-        -D CMAKE_BUILD_TYPE="Release"\
-        -D Boost_USE_STATIC_LIBS=ON\
-        -G "Visual Studio 10 Win64"\
+cmake ^
+        -D ENABLE_TEST=OFF ^
+        -D ENABLE_EXAMPLES=OFF ^
+        -D ENABLE_SHARED=OFF ^
+        -D ENABLE_STATIC=ON ^
+        -D CMAKE_INSTALL_PREFIX="" ^
+        -D CMAKE_BUILD_TYPE="Release" ^
+        -D Boost_USE_STATIC_LIBS=ON ^
+        -G "Visual Studio 10 Win64" ^
 	$fcppt_root_directory
 </code>
 </pre>
