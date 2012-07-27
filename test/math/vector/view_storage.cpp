@@ -4,7 +4,6 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-
 #include <fcppt/math/size_type.hpp>
 #include <fcppt/math/vector/comparison.hpp>
 #include <fcppt/math/vector/object.hpp>

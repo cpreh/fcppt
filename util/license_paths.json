@@ -11,6 +11,7 @@
       "files" : [
       	"include/fcppt/algorithm/.*",
         "include/fcppt/homogenous_pair.*",
+        "test/math/box/stretch.cpp",
 	"include/fcppt/cyclic_iterator.*",
 	"include/fcppt/signal/.*",
 	"src/signal/.*",
@@ -29,6 +30,8 @@
 	"include/fcppt/math/box/intersects.hpp",
 	"include/fcppt/math/box/rect_from_edges.hpp",
 	"include/fcppt/math/box/stretch_.*",
+	"include/fcppt/math/box/expand.hpp",
+	"include/fcppt/math/box/shrink.hpp",
 	"include/fcppt/math/vector/atan2.hpp",
 	"include/fcppt/math/vector/hypersphere_to_cartesian.hpp",
 	"include/fcppt/math/vector/orthogonalize.hpp",
