@@ -189,6 +189,7 @@ set(
 	include/fcppt/container/raw_vector_fwd.hpp
 	include/fcppt/container/raw_vector_impl.hpp
 	include/fcppt/container/tree/copy_tree_value.hpp
+	include/fcppt/container/tree/depth.hpp
 	include/fcppt/container/tree/detail/assign_parents.hpp
 	include/fcppt/container/tree/detail/assign_value.hpp
 	include/fcppt/container/tree/detail/copy_value.hpp

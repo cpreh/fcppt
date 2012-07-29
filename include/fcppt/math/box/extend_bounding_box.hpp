@@ -11,6 +11,10 @@
 #include <fcppt/math/size_type.hpp>
 #include <fcppt/math/box/contains_point.hpp>
 #include <fcppt/math/box/object_impl.hpp>
+#include <fcppt/preprocessor/const.hpp>
+#include <fcppt/config/external_begin.hpp>
+#include <algorithm>
+#include <fcppt/config/external_end.hpp>
 
 
 namespace fcppt
@@ -28,18 +32,18 @@ namespace box
 The result will either be the same box (if the point is contained in the box)
 or a box that's just big enough to hold the given point.
 */
-template<typename T,size_type N>
-object<T,N> const
+template<typename T,fcppt::math::size_type N>
+fcppt::math::box::object<T,N> const
 extend_bounding_box(
-	object<T,N> b,
-	typename object<T,N>::vector const &p)
+	fcppt::math::box::object<T,N> b,
+	typename fcppt::math::box::object<T,N>::vector const &p)
 {
 	if (fcppt::math::box::contains_point(
 		b,
 		p))
 		return b;
 
-	for (size_type i = 0; i < N; ++i)
+	for (fcppt::math::size_type i = 0; i < N; ++i)
 	{
 		if (p[i] < b.pos()[i])
 		{
@@ -65,6 +69,39 @@ extend_bounding_box(
 	}
 
 	return b;
+}
+
+/**
+\brief Take the bounding box of two boxes
+\ingroup fcpptmathbox
+\tparam N The box's dimension
+\tparam T The box's <code>value_type</code>
+*/
+template<typename T,fcppt::math::size_type N>
+fcppt::math::box::object<T,N> const
+extend_bounding_box(
+	fcppt::math::box::object<T,N> const &a,
+	fcppt::math::box::object<T,N> const &b)
+{
+	fcppt::math::box::object<T,N> result;
+
+	for (fcppt::math::size_type i = 0; i < N; ++i)
+	{
+		result.pos(
+			i,
+			std::min(
+				a.pos()[i],
+				b.pos()[i]));
+
+		result.size(
+			i,
+			std::max(
+				a.pos()[i] + a.size()[i],
+				b.pos()[i] + b.size()[i]) -
+			result.pos()[i]);
+	}
+
+	return result;
 }
 }
 }
