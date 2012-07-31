@@ -44,11 +44,15 @@ unset(
 	FCPPTTHREADS_FIND_OPTIONS
 )
 
-# If FindThreads.cmake thinks we should use -lpthread,
-# we are obviously on a pthread supporting system.
-# However, the manpages for pthreads say that
-# we should use -pthread both as compiler and linker flag.
-# So we will check here if that is supported and use that instead.
+set(
+	FcpptThreads_LIBRARIES
+	"${CMAKE_THREAD_LIBS_INIT}"
+)
+
+# If FindThreads.cmake thinks we should use -lpthread, we are obviously on a
+# pthread supporting system. However, the Linux manpages for pthreads say that
+# we should use -pthread both as compiler and linker flag. So we check if
+# that's supported and add it to the definitions.
 if(
 	"${CMAKE_THREAD_LIBS_INIT}" STREQUAL "-lpthread"
 )
@@ -89,17 +93,7 @@ if(
 			FcpptThreads_DEFINITIONS
 			"-pthread"
 		)
-
-		set(
-			FcpptThreads_LIBRARIES
-			"-pthread"
-		)
 	endif()
-else()
-	set(
-		FcpptThreads_LIBRARIES
-		"${CMAKE_THREAD_LIBS_INIT}"
-	)
 endif()
 
 include(
