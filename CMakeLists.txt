@@ -321,34 +321,6 @@ check_cxx_source_compiles(
 	FCPPT_ALIGN_TEMPLATE_PARAMETER
 )
 
-CHECK_INCLUDE_FILE(
-	mach/mach_time.h
-	FCPPT_HAVE_MACH_TIME
-)
-
-find_library(
-	RT_LIBRARY
-	rt
-)
-
-set(
-	CMAKE_REQUIRED_LIBRARIES
-	${RT_LIBRARY}
-)
-
-CHECK_CXX_SOURCE_COMPILES(
-	"#include <time.h>
-	int main()
-	{
-		int (*tmp)(clockid_t, struct timespec *) = clock_gettime;
-	}"
-	FCPPT_HAVE_CLOCK_GETTIME
-)
-
-unset(
-	CMAKE_REQUIRED_LIBRARIES
-)
-
 CHECK_CXX_SOURCE_COMPILES(
 	"#include <execinfo.h>
 	int main()
@@ -527,15 +499,6 @@ function(
 		${FCPPT_DEPS}
 		${OTHER_DEPS}
 	)
-
-	if(
-		FCPPT_HAVE_CLOCK_GETTIME
-	)
-		target_link_libraries(
-			${TARGETNAME}
-			${RT_LIBRARY}
-		)
-	endif()
 
 	set_target_properties(
 		${TARGETNAME}

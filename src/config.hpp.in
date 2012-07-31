@@ -16,12 +16,6 @@
 #cmakedefine FCPPT_HAVE_PURE_ATTRIBUTE
 #cmakedefine FCPPT_HAVE_WARN_UNUSED_RESULT_ATTRIBUTE
 
-// posix (apple doesn't define it)
-#cmakedefine FCPPT_HAVE_CLOCK_GETTIME
-
-// apple
-#cmakedefine FCPPT_HAVE_MACH_TIME
-
 // gcc capabilities
 #cmakedefine FCPPT_HAVE_GCC_DEMANGLE
 #cmakedefine FCPPT_HAVE_GCC_DIAGNOSTIC
