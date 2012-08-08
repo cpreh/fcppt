@@ -9,6 +9,7 @@
 #ifndef FCPPT_UNIQUE_PTR_IMPL_HPP_INCLUDED
 #define FCPPT_UNIQUE_PTR_IMPL_HPP_INCLUDED
 
+#include <fcppt/heap_deleter.hpp>
 #include <fcppt/null_ptr.hpp>
 #include <fcppt/unique_ptr_decl.hpp>
 #include <fcppt/detail/rvalue_ref.hpp>

@@ -7,9 +7,11 @@
 #ifndef FCPPT_C_DELETER_HPP_INCLUDED
 #define FCPPT_C_DELETER_HPP_INCLUDED
 
+#include <fcppt/c_deleter_fwd.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <cstdlib>
 #include <fcppt/config/external_end.hpp>
+
 
 namespace fcppt
 {

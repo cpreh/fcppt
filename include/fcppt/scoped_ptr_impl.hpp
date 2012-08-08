@@ -7,6 +7,7 @@
 #ifndef FCPPT_SCOPED_PTR_IMPL_HPP_INCLUDED
 #define FCPPT_SCOPED_PTR_IMPL_HPP_INCLUDED
 
+#include <fcppt/heap_deleter.hpp>
 #include <fcppt/move.hpp>
 #include <fcppt/null_ptr.hpp>
 #include <fcppt/scoped_ptr_decl.hpp>

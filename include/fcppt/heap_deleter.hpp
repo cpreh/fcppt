@@ -8,6 +8,7 @@
 #define FCPPT_HEAP_DELETER_HPP_INCLUDED
 
 #include <fcppt/assert_complete.hpp>
+#include <fcppt/heap_deleter_fwd.hpp>
 
 
 namespace fcppt

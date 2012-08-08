@@ -7,7 +7,8 @@
 #ifndef FCPPT_WEAK_PTR_FWD_HPP_INCLUDED
 #define FCPPT_WEAK_PTR_FWD_HPP_INCLUDED
 
-#include <fcppt/heap_deleter.hpp>
+#include <fcppt/heap_deleter_fwd.hpp>
+
 
 namespace fcppt
 {

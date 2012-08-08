@@ -4,20 +4,14 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_SCOPED_PTR_FWD_HPP_INCLUDED
-#define FCPPT_SCOPED_PTR_FWD_HPP_INCLUDED
-
-#include <fcppt/heap_deleter_fwd.hpp>
+#ifndef FCPPT_C_DELETER_FWD_HPP_INCLUDED
+#define FCPPT_C_DELETER_FWD_HPP_INCLUDED
 
 
 namespace fcppt
 {
 
-template<
-	typename Type,
-	typename Deleter = fcppt::heap_deleter
->
-class scoped_ptr;
+struct c_deleter;
 
 }
 

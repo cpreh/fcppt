@@ -7,6 +7,9 @@
 #ifndef FCPPT_COM_DELETER_HPP_INCLUDED
 #define FCPPT_COM_DELETER_HPP_INCLUDED
 
+#include <fcppt/com_deleter_fwd.hpp>
+
+
 namespace fcppt
 {
 
