@@ -72,6 +72,7 @@ set(
 	include/fcppt/bad_dynamic_cast.hpp
 	include/fcppt/bad_truncation_check_cast.hpp
 	include/fcppt/c_deleter.hpp
+	include/fcppt/c_deleter_fwd.hpp
 	include/fcppt/char_type.hpp
 	include/fcppt/chrono/asio/clock.hpp
 	include/fcppt/chrono/asio/convert_duration.hpp
@@ -87,6 +88,7 @@ set(
 	include/fcppt/chrono/asio/time_traits_impl.hpp
 	include/fcppt/class_symbol.hpp
 	include/fcppt/com_deleter.hpp
+	include/fcppt/com_deleter_fwd.hpp
 	include/fcppt/config/compiler.hpp
 	include/fcppt/config/external_begin.hpp
 	include/fcppt/config/external_end.hpp
@@ -282,6 +284,7 @@ set(
 	include/fcppt/function/object.hpp
 	include/fcppt/function/object_fwd.hpp
 	include/fcppt/heap_deleter.hpp
+	include/fcppt/heap_deleter_fwd.hpp
 	include/fcppt/homogenous_pair.hpp
 	include/fcppt/homogenous_pair_comparison.hpp
 	include/fcppt/homogenous_pair_decl.hpp
