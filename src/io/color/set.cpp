@@ -9,7 +9,7 @@
 #include <fcppt/config/external_begin.hpp>
 #include <cstdlib>
 #include <cstring>
-#include <iostream>
+#include <ostream>
 #include <fcppt/config/external_end.hpp>
 
 

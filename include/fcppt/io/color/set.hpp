@@ -13,7 +13,7 @@
 #include <fcppt/io/color/background.hpp>
 #include <fcppt/io/color/foreground.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <ostream>
+#include <iosfwd>
 #include <fcppt/config/external_end.hpp>
 
 
