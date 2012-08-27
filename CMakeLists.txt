@@ -217,9 +217,10 @@ set(
 	"Which backend to use for the signal benchmark example (fcppt/boostsignals/boostsignals2)"
 )
 
+# boost.thread needs chrono
 set(
 	NEEDED_BOOST_LIBS
-	"filesystem;system;thread"
+	"chrono;filesystem;system;thread"
 )
 
 if(
@@ -227,9 +228,10 @@ if(
 	STREQUAL
 	"boostsignals"
 )
-	set(
+	list(
+		APPEND
 		NEEDED_BOOST_LIBS
-		"${NEEDED_BOOST_LIBS};signals"
+		"signals"
 	)
 endif()
 
@@ -238,15 +240,6 @@ option(
 	"Build the examples"
 	ON
 )
-
-if(
-	ENABLE_EXAMPLES
-)
-	set(
-		NEEDED_BOOST_LIBS
-		"${NEEDED_BOOST_LIBS};chrono"
-	)
-endif()
 
 option(
 	ENABLE_TEST
