@@ -509,10 +509,20 @@ elseif(
 		"4347"
 	)
 
+	FCPPT_CMAKE_UTILS_CHECK_VC_WARNING(
+		"4435"
+	)
+
 	add_definitions(
 		"/W4 /Wall /EHa /D_BIND_TO_CURRENT_VCLIBS_VERSION=1"
 		" /wd4996 /wd4061 /wd4350 /wd4371 /wd4503 /wd4514 /wd4710 /wd4711 /wd4714 /wd4738 /wd4820"
 	)
+
+	if(
+		FCPPT_UTILS_HAVE_4435_FLAG
+	)
+		add_definitions("/wd4435")
+	endif()
 
 	# /W4 warnings
 	#4996 - unsafe standard C++ functions
@@ -521,6 +531,7 @@ elseif(
 	#4061 - warning for not handled cases in switchs even with default
 	#4350 - behaviour change due to implicit conversions (needed for unique_ptr)
 	#4371 - layout of class may have changed from previous compiler version
+	#4435 - layout change because of virtual base class
 	#4503 - decorated name length exceeded
 	#4514 - unreferenced inline function removed
 	#4710 - function not inlined
