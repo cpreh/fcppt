@@ -11,7 +11,6 @@ set(
 	include/fcppt/thread/task.hpp
 	include/fcppt/thread/yield.hpp
 	src/thread/hardware_concurrency.cpp
-	src/thread/include/fcppt/src/thread/to_boost_duration.hpp
 	src/thread/object.cpp
 	src/thread/sleep.cpp
 	src/thread/yield.cpp
@@ -19,10 +18,6 @@ set(
 
 add_definitions(
 	"${FcpptThreads_DEFINITIONS}"
-)
-
-include_directories(
-	${CMAKE_CURRENT_SOURCE_DIR}/include
 )
 
 generate_symbol_header(

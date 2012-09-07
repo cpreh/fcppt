@@ -4,7 +4,6 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/src/thread/to_boost_duration.hpp>
 #include <fcppt/thread/id.hpp>
 #include <fcppt/thread/join_duration.hpp>
 #include <fcppt/thread/native_handle.hpp>
@@ -59,10 +58,8 @@ fcppt::thread::object::try_join(
 )
 {
 	return
-		thread_.timed_join(
-			fcppt::thread::to_boost_duration(
-				_duration
-			)
+		thread_.try_join_for(
+			_duration
 		);
 }
 

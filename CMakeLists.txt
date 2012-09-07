@@ -257,7 +257,7 @@ if(
 endif()
 
 find_package(
-	Boost 1.47.0 REQUIRED COMPONENTS
+	Boost 1.50.0 REQUIRED COMPONENTS
 	"${NEEDED_BOOST_LIBS}"
 )
 

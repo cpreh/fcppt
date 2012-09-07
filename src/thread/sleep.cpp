@@ -4,7 +4,6 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/src/thread/to_boost_duration.hpp>
 #include <fcppt/thread/sleep.hpp>
 #include <fcppt/thread/sleep_duration.hpp>
 #include <fcppt/config/external_begin.hpp>
@@ -17,9 +16,7 @@ fcppt::thread::sleep(
 	fcppt::thread::sleep_duration const &_duration
 )
 {
-	boost::this_thread::sleep(
-		fcppt::thread::to_boost_duration(
-			_duration
-		)
+	boost::this_thread::sleep_for(
+		_duration
 	);
 }
