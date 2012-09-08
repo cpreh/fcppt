@@ -35,6 +35,7 @@
 	"include/fcppt/math/vector/atan2.hpp",
 	"include/fcppt/math/vector/hypersphere_to_cartesian.hpp",
 	"include/fcppt/math/vector/orthogonalize.hpp",
+	"include/fcppt/math/matrix/multiply_matrix4_vector3.hpp",
 	"include/fcppt/math/vector/project.hpp",
 	"include/fcppt/math/vector/slerp.hpp",
 	"include/fcppt/math/interpolation/.*",
