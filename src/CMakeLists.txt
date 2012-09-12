@@ -13,6 +13,7 @@ set(
 	include/fcppt/algorithm/find_if_exn.hpp
 	include/fcppt/algorithm/impl/element_not_found.hpp
 	include/fcppt/algorithm/impl/exception.hpp
+	include/fcppt/algorithm/join.hpp
 	include/fcppt/algorithm/join_strings.hpp
 	include/fcppt/algorithm/key_set.hpp
 	include/fcppt/algorithm/levenshtein.hpp
