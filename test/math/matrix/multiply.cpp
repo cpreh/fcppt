@@ -10,10 +10,10 @@
 #include <fcppt/math/matrix/comparison.hpp>
 #include <fcppt/math/matrix/multiply_matrix4_vector3.hpp>
 #include <fcppt/math/matrix/output.hpp>
-#include <fcppt/math/vector/output.hpp>
-#include <fcppt/math/vector/comparison.hpp>
 #include <fcppt/math/matrix/static.hpp>
 #include <fcppt/math/matrix/vector.hpp>
+#include <fcppt/math/vector/comparison.hpp>
+#include <fcppt/math/vector/output.hpp>
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>

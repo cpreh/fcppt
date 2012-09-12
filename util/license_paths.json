@@ -41,6 +41,7 @@
 	"include/fcppt/math/interpolation/.*",
 	"include/fcppt/math/matrix/adjugate.hpp",
 	"include/fcppt/math/matrix/delete_row_and_column.hpp",
+	"include/fcppt/number_multiplexer/.*",
 	"include/fcppt/math/matrix/determinant.hpp",
 	"include/fcppt/math/matrix/inverse.hpp",
 	"include/fcppt/math/quaternion/.*",
