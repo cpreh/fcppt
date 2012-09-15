@@ -77,6 +77,16 @@ public:
 	));
 
 	/**
+	\brief A typedef for the \p N parameter
+	*/
+	typedef N n_wrapper;
+
+	/**
+	\brief A typedef for the \p M parameter
+	*/
+	typedef M m_wrapper;
+
+	/**
 	\brief A typedef for the \p M and \p N parameters
 	*/
 	typedef typename boost::mpl::times<
