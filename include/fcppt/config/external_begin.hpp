@@ -23,6 +23,7 @@ FCPPT_PP_DISABLE_VC_WARNING(4061) // enum not handled in switch
 FCPPT_PP_DISABLE_VC_WARNING(4100) // unreferenced formal parameter
 FCPPT_PP_DISABLE_VC_WARNING(4127) // conditional expression is constant
 FCPPT_PP_DISABLE_VC_WARNING(4146) // unary minus operator applied to unsigned type, result still unsigned
+FCPPT_PP_DISABLE_VC_WARNING(4180) // qualifier applied to function type
 FCPPT_PP_DISABLE_VC_WARNING(4189) // local variable is initialized but not referenced
 FCPPT_PP_DISABLE_VC_WARNING(4191) // unsafe type cast
 FCPPT_PP_DISABLE_VC_WARNING(4242) // loss of data
