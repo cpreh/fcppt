@@ -28,6 +28,7 @@ class make_container
 public:
 	typedef Container container_type;
 
+	explicit
 	make_container(
 		typename container_type::const_reference
 	);
