@@ -208,7 +208,7 @@ respectively, and <code>CharT</code> is <code>char</code> or <code>wchar_t</code
 <td><code>T</code> → <code>std::wstring</code></td>
 </tr>
 <tr>
-<td>fcppt::insert_to_fcppt_wstring</td>
+<td>fcppt::insert_to_fcppt_string</td>
 <td><code>T</code> → <code>fcppt::string</code></td>
 </tr>
 <tr>
