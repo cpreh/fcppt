@@ -13,13 +13,6 @@ if(
 	)
 endif()
 
-#Has to be kept in sync with boost releases
-list(
-	APPEND
-	Boost_ADDITIONAL_VERSIONS
-	"1.51" "1.51.0" "1.50" "1.50.0" "1.49" "1.49.0" "1.48" "1.48.0" "1.47" "1.47.0"
-)
-
 include(
 	CMakeDetermineCXXCompiler
 )
