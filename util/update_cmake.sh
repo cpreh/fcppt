@@ -20,6 +20,7 @@ update_cmake_file \
 	include/fcppt/algorithm \
 	include/fcppt/alignment \
 	include/fcppt/assert \
+	include/fcppt/assign \
 	include/fcppt/backtrace \
 	include/fcppt/chrono \
 	include/fcppt/config \
@@ -33,6 +34,7 @@ update_cmake_file \
 	include/fcppt/log \
 	include/fcppt/math \
 	include/fcppt/mpl \
+	include/fcppt/number_multiplexer \
 	include/fcppt/preprocessor \
 	include/fcppt/random \
 	include/fcppt/signal \

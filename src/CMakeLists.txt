@@ -66,6 +66,14 @@ set(
 	include/fcppt/assert/unreachable.hpp
 	include/fcppt/assert/unreachable_message.hpp
 	include/fcppt/assert_complete.hpp
+	include/fcppt/assign/detail/array.hpp
+	include/fcppt/assign/detail/array_impl.hpp
+	include/fcppt/assign/detail/insert.hpp
+	include/fcppt/assign/impl/make_container.hpp
+	include/fcppt/assign/impl/make_map.hpp
+	include/fcppt/assign/make_array.hpp
+	include/fcppt/assign/make_container.hpp
+	include/fcppt/assign/make_map.hpp
 	include/fcppt/backtrace/current_stack_frame.hpp
 	include/fcppt/backtrace/print_current_stack_frame.hpp
 	include/fcppt/backtrace/stack_frame.hpp
@@ -635,6 +643,11 @@ set(
 	include/fcppt/noncopyable.hpp
 	include/fcppt/null_ptr.hpp
 	include/fcppt/null_ptr_t.hpp
+	include/fcppt/number_multiplexer/object.hpp
+	include/fcppt/number_multiplexer/object_decl.hpp
+	include/fcppt/number_multiplexer/object_fwd.hpp
+	include/fcppt/number_multiplexer/object_impl.hpp
+	include/fcppt/number_multiplexer/set_bits.hpp
 	include/fcppt/optional.hpp
 	include/fcppt/optional_comparison.hpp
 	include/fcppt/optional_decl.hpp
