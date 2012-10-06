@@ -667,6 +667,12 @@ macro(
 	endforeach()
 endmacro()
 
+option(
+	FCPPT_UTILS_BUILD_HEADERS
+	"Build headers files as well. This is useful for compile_commands.json. Don't use it to do an actual build."
+	FALSE
+)
+
 macro(
 	fcppt_utils_append_source_dir_and_make_groups
 	FILES
