@@ -638,7 +638,7 @@ set(
 
 #macro for adding source groups
 macro(
-	FCPPT_UTILS_ADD_SOURCE_GROUPS
+	fcppt_utils_add_source_groups
 	ALL_FILES
 )
 	foreach(
@@ -668,7 +668,7 @@ macro(
 endmacro()
 
 macro(
-	FCPPT_UTILS_APPEND_SOURCE_DIR_AND_MAKE_GROUPS
+	fcppt_utils_append_source_dir_and_make_groups
 	FILES
 	RESULT
 )
@@ -716,4 +716,36 @@ macro(
 		${RESULT}
 		"${${RESULT}};${TEMP_RESULT}"
 	)
+
+	if(
+		FCPPT_UTILS_BUILD_HEADERS
+	)
+		foreach(
+			CUR_FILE
+			${${RESULT}}
+		)
+			get_filename_component(
+				CUR_EXT
+				"${CUR_FILE}"
+				EXT
+			)
+
+			if(
+				"${CUR_EXT}"
+				STREQUAL
+				".hpp"
+			)
+				set_source_files_properties(
+					"${CUR_FILE}"
+					PROPERTIES
+					LANGUAGE
+					"CXX"
+				)
+			endif()
+		endforeach()
+
+		unset(
+			CUR_EXT
+		)
+	endif()
 endmacro()

@@ -441,7 +441,7 @@ function(
 	OTHER_DEPS
 	TRANSITIVE_DEPS
 )
-	FCPPT_UTILS_APPEND_SOURCE_DIR_AND_MAKE_GROUPS(
+	fcppt_utils_append_source_dir_and_make_groups(
 		"${CUR_FILES}"
 		FCPPT_${TARGETNAME}_FILES
 	)
