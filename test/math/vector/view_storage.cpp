@@ -108,7 +108,11 @@ FCPPT_PP_POP_WARNING
 	view_vector const view(
 		unsigned_view_storage(
 			data,
-			sizeof(data) / sizeof(unsigned)
+			static_cast<
+				unsigned_view_storage::size_type
+			>(
+				sizeof(data) / sizeof(unsigned)
+			)
 		)
 	);
 

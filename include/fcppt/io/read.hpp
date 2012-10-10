@@ -13,6 +13,7 @@
 #include <fcppt/config/external_begin.hpp>
 #include <boost/type_traits/is_fundamental.hpp>
 #include <boost/utility/enable_if.hpp>
+#include <iosfwd>
 #include <istream>
 #include <fcppt/config/external_end.hpp>
 
@@ -69,8 +70,12 @@ read(
 			>(
 				&result
 			),
-			sizeof(
-				Type
+			static_cast<
+				std::streamsize
+			>(
+				sizeof(
+					Type
+				)
 			)
 		)
 		?

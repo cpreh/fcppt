@@ -8,6 +8,7 @@
 #include <fcppt/container/bitfield/object.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <fstream>
+#include <iosfwd>
 #include <iostream>
 #include <ostream>
 #include <vector>
@@ -31,7 +32,11 @@ std::ifstream file("test_file");
 file.read(
 	reinterpret_cast<char *>(
 		raw_chars.data()),
-	1024 * sizeof(int));
+	1024 *
+	static_cast<
+		std::streamsize
+	>(
+		sizeof(int)));
 //! [raw_vector]
 }
 }
