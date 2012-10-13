@@ -616,6 +616,7 @@ set(
 	include/fcppt/micro_version.hpp
 	include/fcppt/minor_version.hpp
 	include/fcppt/move.hpp
+	include/fcppt/mpl/all_of.hpp
 	include/fcppt/mpl/append.hpp
 	include/fcppt/mpl/ceil_div.hpp
 	include/fcppt/mpl/contains_if.hpp
