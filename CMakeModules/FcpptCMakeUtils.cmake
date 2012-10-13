@@ -636,6 +636,45 @@ set(
 	${CMAKE_BINARY_DIR}/lib
 )
 
+option(
+	FCPPT_UTILS_BUILD_HEADERS
+	"Build headers files as well. This is useful for compile_commands.json. Don't use it to do an actual build."
+	FALSE
+)
+
+function(
+	fcppt_utils_add_headers
+	ALL_FILES
+)
+	foreach(
+		CUR_FILE
+		${ALL_FILES}
+	)
+		get_filename_component(
+			CUR_EXT
+			"${CUR_FILE}"
+			EXT
+		)
+
+		if(
+			"${CUR_EXT}"
+			STREQUAL
+			".hpp"
+		)
+			set_source_files_properties(
+				"${CUR_FILE}"
+				PROPERTIES
+				LANGUAGE
+				"CXX"
+			)
+		endif()
+	endforeach()
+
+	unset(
+		CUR_EXT
+	)
+endfunction()
+
 #macro for adding source groups
 macro(
 	fcppt_utils_add_source_groups
@@ -665,13 +704,15 @@ macro(
 			${CURFILE}
 		)
 	endforeach()
-endmacro()
 
-option(
-	FCPPT_UTILS_BUILD_HEADERS
-	"Build headers files as well. This is useful for compile_commands.json. Don't use it to do an actual build."
-	FALSE
-)
+	if(
+		FCPPT_UTILS_BUILD_HEADERS
+	)
+		fcppt_utils_add_headers(
+			"${ALL_FILES}"
+		)
+	endif()
+endmacro()
 
 macro(
 	fcppt_utils_append_source_dir_and_make_groups
@@ -726,32 +767,8 @@ macro(
 	if(
 		FCPPT_UTILS_BUILD_HEADERS
 	)
-		foreach(
-			CUR_FILE
-			${${RESULT}}
-		)
-			get_filename_component(
-				CUR_EXT
-				"${CUR_FILE}"
-				EXT
-			)
-
-			if(
-				"${CUR_EXT}"
-				STREQUAL
-				".hpp"
-			)
-				set_source_files_properties(
-					"${CUR_FILE}"
-					PROPERTIES
-					LANGUAGE
-					"CXX"
-				)
-			endif()
-		endforeach()
-
-		unset(
-			CUR_EXT
+		fcppt_utils_add_headers(
+			"${${RESULT}}"
 		)
 	endif()
 endmacro()
