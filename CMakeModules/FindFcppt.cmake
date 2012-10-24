@@ -7,7 +7,6 @@
 #	Fcppt_DEFINITIONS          - Additional compiler flags required
 #	Fcppt_core_LIBRARIES       - All libraries required for fcppt_core to work
 #	Fcppt_filesystem_LIBRARIES - All libraries required for fcppt_filesystem to work
-#	Fcppt_thread_LIBRARIES     - All libraries required for fcppt_thread to work
 #
 # This modules accepts the following variables
 #
@@ -39,10 +38,10 @@ endif()
 
 find_package(
 	Boost
-	1.44.0
+	1.47.0
 	${FCPPT_FIND_OPTIONS}
 	COMPONENTS
-	filesystem thread system
+	filesystem system
 )
 
 unset(
@@ -69,7 +68,7 @@ endmacro()
 
 set(
 	FCPPT_COMPONENTS
-	"core;filesystem;thread"
+	"core;filesystem"
 )
 
 foreach(
@@ -116,11 +115,6 @@ set(
 )
 
 set(
-	Fcppt_thread_LIBRARIES
-	"${FcpptThreads_LIBRARIES};${Fcppt_thread_LIBRARY};${Boost_THREAD_LIBRARY}"
-)
-
-set(
 	Fcppt_INCLUDE_DIRS
 	"${Boost_INCLUDE_DIRS};${Fcppt_INCLUDE_DIR}"
 )
@@ -134,13 +128,11 @@ find_package_handle_standard_args(
 	DEFAULT_MSG
 	Fcppt_core_LIBRARY
 	Fcppt_filesystem_LIBRARY
-	Fcppt_thread_LIBRARY
 	Fcppt_INCLUDE_DIR
 )
 
 mark_as_advanced(
 	Fcppt_core_LIBRARY
 	Fcppt_filesystem_LIBRARY
-	Fcppt_thread_LIBRARY
 	Fcppt_INCLUDE_DIR
 )

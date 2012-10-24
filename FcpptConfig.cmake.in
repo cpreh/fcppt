@@ -22,11 +22,6 @@ if(
 	)
 
 	set(
-		Fcppt_thread_LIBRARY
-		fcppt_thread_static
-	)
-
-	set(
 		FCPPT_CONFIG_DEFINITIONS
 		"-D FCPPT_STATIC_LINK"
 	)
@@ -39,11 +34,6 @@ else()
 	set(
 		Fcppt_filesystem_LIBRARY
 		fcppt_filesystem
-	)
-
-	set(
-		Fcppt_thread_LIBRARY
-		fcppt_thread
 	)
 endif()
 
@@ -60,11 +50,6 @@ set(
 set(
 	Fcppt_filesystem_LIBRARIES
 	"${Fcppt_filesystem_LIBRARY};${Fcppt_core_LIBRARY};@Boost_FILESYSTEM_LIBRARY@;@Boost_SYSTEM_LIBRARY@"
-)
-
-set(
-	Fcppt_thread_LIBRARIES
-	"@FcpptThreads_LIBRARIES@;${Fcppt_thread_LIBRARY};@Boost_THREAD_LIBRARY@"
 )
 
 set(
