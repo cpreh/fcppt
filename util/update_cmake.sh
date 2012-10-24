@@ -63,10 +63,3 @@ update_cmake_file \
 	include/fcppt/filesystem \
 	src/filesystem \
 	|| exit -1
-
-update_cmake_file \
-	src/thread/CMakeLists.txt \
-	FCPPT_THREAD_FILES \
-	include/fcppt/thread \
-	src/thread \
-	|| exit -1

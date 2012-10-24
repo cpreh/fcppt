@@ -217,10 +217,9 @@ set(
 	"Which backend to use for the signal benchmark example (fcppt/boostsignals/boostsignals2)"
 )
 
-# boost.thread needs chrono
 set(
 	NEEDED_BOOST_LIBS
-	"chrono;filesystem;system;thread"
+	"chrono;filesystem;system"
 )
 
 if(
@@ -257,7 +256,7 @@ if(
 endif()
 
 find_package(
-	Boost 1.50.0 REQUIRED COMPONENTS
+	Boost 1.47.0 REQUIRED COMPONENTS
 	"${NEEDED_BOOST_LIBS}"
 )
 
@@ -554,10 +553,6 @@ add_subdirectory(
 
 add_subdirectory(
 	src/filesystem
-)
-
-add_subdirectory(
-	src/thread
 )
 
 if(
