@@ -575,6 +575,7 @@ set(
 	include/fcppt/math/sphere/object_fwd.hpp
 	include/fcppt/math/sphere/object_impl.hpp
 	include/fcppt/math/static_size.hpp
+	include/fcppt/math/step.hpp
 	include/fcppt/math/twopi.hpp
 	include/fcppt/math/vector/angle_between.hpp
 	include/fcppt/math/vector/angle_between_cast.hpp

@@ -19,6 +19,7 @@
 	"include/fcppt/safe_bool.hpp",
 	"include/fcppt/scoped_state_machine.*",
 	"include/fcppt/math/clamp.hpp",
+	"include/fcppt/math/step.hpp",
 	"include/fcppt/math/generate_binary_vectors.hpp",
 	"include/fcppt/math/range_compare.hpp",
 	"include/fcppt/math/box/center.hpp",
