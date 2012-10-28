@@ -17,7 +17,7 @@ namespace math
 \ingroup fcpptmath
 \tparam T A type with an operator>= which is convertible from 1 and 0
 
-Returns 0 if _value >= _vmin, else 1.
+Returns 1 if _value >= _vmin, else 0.
 */
 template<
 	typename T
