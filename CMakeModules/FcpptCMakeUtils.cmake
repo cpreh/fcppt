@@ -390,7 +390,7 @@ if(
 	endif()
 
 	add_definitions(
-		"-pedantic-errors -Wfloat-equal -Wredundant-decls"
+		"-pedantic-errors -Wfloat-equal -Wredundant-decls -Wunused"
 		"-Winit-self -Wsign-promo -Wcast-align -Wold-style-cast"
 	)
 

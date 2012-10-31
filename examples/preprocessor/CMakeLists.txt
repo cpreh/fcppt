@@ -12,6 +12,5 @@ function(
 	)
 endfunction()
 
-add_fcppt_preprocessor_example(message "" "")
 add_fcppt_preprocessor_example(printing "" "")
 add_fcppt_preprocessor_example(warning "" "")
