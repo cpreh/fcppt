@@ -72,10 +72,6 @@ macros called \link FCPPT_PP_TODO \endlink, \link FCPPT_PP_FIXME \endlink and
 \link FCPPT_PP_WARNING \endlink, that print "TODO: ", "FIXME: " and "warning: "
 in front or their message, respectively.
 
-Here is a simple example:
-
-\snippet preprocessor/message.cpp pp_message_todo
-
 \section preprocessor_pragma Pragmas in macros
 
 Pragmas are implementation-defined ways to instruct the compiler to do
