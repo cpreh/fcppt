@@ -529,10 +529,13 @@ set(
 	include/fcppt/math/matrix/dim_type.hpp
 	include/fcppt/math/matrix/dynamic.hpp
 	include/fcppt/math/matrix/dynamic_impl.hpp
+	include/fcppt/math/matrix/exponential_pade.hpp
 	include/fcppt/math/matrix/has_dim.hpp
+	include/fcppt/math/matrix/infinity_norm.hpp
 	include/fcppt/math/matrix/inverse.hpp
 	include/fcppt/math/matrix/is_matrix.hpp
 	include/fcppt/math/matrix/is_static_size.hpp
+	include/fcppt/math/matrix/logarithm.hpp
 	include/fcppt/math/matrix/max_ctor_params.hpp
 	include/fcppt/math/matrix/multiply_matrix4_vector3.hpp
 	include/fcppt/math/matrix/normal_storage.hpp
@@ -547,6 +550,7 @@ set(
 	include/fcppt/math/matrix/rotation_y.hpp
 	include/fcppt/math/matrix/rotation_z.hpp
 	include/fcppt/math/matrix/scaling.hpp
+	include/fcppt/math/matrix/sqrt.hpp
 	include/fcppt/math/matrix/static.hpp
 	include/fcppt/math/matrix/structure_cast.hpp
 	include/fcppt/math/matrix/translation.hpp
