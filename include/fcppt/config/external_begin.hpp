@@ -50,6 +50,7 @@ FCPPT_PP_DISABLE_VC_WARNING(4626) // assignment operator could not be generated 
 FCPPT_PP_DISABLE_VC_WARNING(4640) // local static object
 FCPPT_PP_DISABLE_VC_WARNING(4668) // #if with an undefined macro
 FCPPT_PP_DISABLE_VC_WARNING(4702) // unreachable code
+FCPPT_PP_DISABLE_VC_WARNING(4913) // user defined binary operator, exists but is not used
 FCPPT_PP_DISABLE_VC_WARNING(4986) // unmatching exception specification
 FCPPT_PP_DISABLE_VC_WARNING(4987) // non standard throw(...)
 
