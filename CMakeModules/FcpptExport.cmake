@@ -1,0 +1,77 @@
+set(
+	CMAKE_ALLOW_LOOSE_LOOP_CONSTRUCTS
+	ON
+)
+
+function(
+	fcppt_export_init
+	TARGET
+	BINARY_DIR
+	LIBRARY_DIR
+)
+	if(
+		FCPPT_EXPORT_IN_SOURCE_BUILD
+	)
+		# Replace leading / from the lib path
+		string(
+			REGEX
+			REPLACE
+			"^/"
+			""
+			LIBRARY_DIR
+			"${LIBRARY_DIR}"
+		)
+
+		set(
+			FCPPT_EXPORT_DIR
+			"${BINARY_DIR}/CMakeFiles/Export/_${LIBRARY_DIR}/cmake/${TARGET}"
+		)
+	else()
+		get_filename_component(
+			FCPPT_EXPORT_DIR
+			"${CMAKE_CURRENT_LIST_FILE}"
+			PATH
+		)
+	endif()
+
+	if(
+		NOT
+		"${LIBRARY_DIR}"
+		STREQUAL
+		""
+	)
+		include(
+			"${FCPPT_EXPORT_DIR}/${TARGET}Targets.cmake"
+		)
+	endif()
+endfunction()
+
+macro(
+	fcppt_export_generate_targets
+	TARGETS
+	USE_STATIC_LIBS
+)
+	foreach(
+		TARGET
+		${TARGETS}
+	)
+		set(
+			TARGET_NAME
+			"${TARGET}_TARGET"
+		)
+
+		if(
+			${USE_STATIC_LIBS}
+		)
+			set(
+				"${TARGET_NAME}"
+				"${TARGET}_static"
+			)
+		else()
+			set(
+				"${TARGET_NAME}"
+				"${TARGET}"
+			)
+		endif()
+	endforeach()
+endmacro()

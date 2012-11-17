@@ -5,7 +5,9 @@ set(
 
 #Disallow in source builds everywhere
 if(
-	${CMAKE_BINARY_DIR} STREQUAL ${CMAKE_SOURCE_DIR}
+	"${CMAKE_BINARY_DIR}"
+	STREQUAL
+	"${CMAKE_SOURCE_DIR}"
 )
 	message(
 		FATAL_ERROR
@@ -20,6 +22,18 @@ include(
 include(
 	CheckCXXCompilerFlag
 )
+
+# In source builds are done when the install prefix is set to the empty string
+if(
+	"${CMAKE_INSTALL_PREFIX}"
+	STREQUAL
+	""
+)
+	set(
+		FCPPT_UTILS_IN_SOURCE_BUILD
+		TRUE
+	)
+endif()
 
 # Define locations for installations
 # These don't have an FCPPT_ prefix because they have to be set by the user
@@ -624,10 +638,10 @@ if(
 endif()
 
 # Ignore Boost's deprecated features
-
 add_definitions(
 	"-D BOOST_FILESYSTEM_NO_DEPRECATED"
 	"-D BOOST_SYSTEM_NO_DEPRECATED"
+	"-D BOOST_THREAD_DONT_PROVIDE_DEPRECATED_FEATURES_SINCE_V3_0_0"
 )
 
 # configure standard CMake build paths
@@ -643,7 +657,7 @@ set(
 
 option(
 	FCPPT_UTILS_BUILD_HEADERS
-	"Build headers files as well. This is useful for compile_commands.json. Don't use it to do an actual build."
+	"Build header files as well. This is useful for compile_commands.json. Don't use it to do an actual build."
 	FALSE
 )
 
@@ -680,7 +694,6 @@ function(
 	)
 endfunction()
 
-#macro for adding source groups
 macro(
 	fcppt_utils_add_source_groups
 	ALL_FILES
@@ -777,3 +790,69 @@ macro(
 		)
 	endif()
 endmacro()
+
+macro(
+	fcppt_utils_include_path
+	RESULT_VAR
+)
+	if(
+		FCPPT_UTILS_IN_SOURCE_BUILD
+	)
+		set(
+			${RESULT_VAR}
+			"${CMAKE_SOURCE_DIR}/include;${CMAKE_BINARY_DIR}/include"
+		)
+	else()
+		set(
+			${RESULT_VAR}
+			"${INSTALL_INCLUDE_DIR}"
+		)
+	endif()
+endmacro()
+
+macro(
+	fcppt_utils_library_output_path
+	RESULT_VAR
+)
+	if(
+		FCPPT_UTILS_IN_SOURCE_BUILD
+	)
+		set(
+			${RESULT_VAR}
+			"${LIBRARY_OUTPUT_PATH}"
+		)
+	else()
+		set(
+			${RESULT_VAR}
+			"${INSTALL_LIBRARY_DIR}"
+		)
+	endif()
+endmacro()
+
+function(
+	fcppt_utils_generate_config
+	LIBNAME
+)
+	set(
+		CONFIG_NAME
+		"${LIBNAME}Config.cmake"
+	)
+
+	set(
+		CONFIG_DEST
+		"${CMAKE_BINARY_DIR}/config/${CONFIG_NAME}"
+	)
+
+	configure_file(
+		"${CMAKE_SOURCE_DIR}/${CONFIG_NAME}.in"
+		"${CONFIG_DEST}"
+		@ONLY
+	)
+
+	install(
+		FILES
+		"${CONFIG_DEST}"
+		DESTINATION
+		${INSTALL_CMAKECONFIG_DIR}
+	)
+endfunction()

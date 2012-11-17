@@ -249,9 +249,10 @@ option(
 if(
 	ENABLE_TEST
 )
-	set(
+	list(
+		APPEND
 		NEEDED_BOOST_LIBS
-		"${NEEDED_BOOST_LIBS};unit_test_framework"
+		"unit_test_framework"
 	)
 endif()
 
@@ -479,26 +480,34 @@ function(
 		${OTHER_DEPS}
 	)
 
-	set_target_properties(
-		${TARGETNAME}
-		PROPERTIES
-		LINK_INTERFACE_LIBRARIES
-		""
+	if(
+		NOT ${VARIANT} STREQUAL "STATIC"
 	)
+		set_target_properties(
+			${TARGETNAME}
+			PROPERTIES
+			LINK_INTERFACE_LIBRARIES
+			""
+		)
 
-	target_link_libraries(
-		${TARGETNAME}
-		LINK_INTERFACE_LIBRARIES
-		${TRANSITIVE_DEPS}
+		target_link_libraries(
+			${TARGETNAME}
+			LINK_INTERFACE_LIBRARIES
+			${TRANSITIVE_DEPS}
+		)
+	endif()
+
+	fcppt_utils_library_output_path(
+		FCPPT_LIBRARY_DIR
 	)
 
 	install(
 		TARGETS
 		${TARGETNAME}
 		DESTINATION
-		${INSTALL_LIBRARY_DIR}
+		"${FCPPT_LIBRARY_DIR}"
 		EXPORT
-		FcpptTargets
+		fcpptTargets
 	)
 endfunction()
 
@@ -587,22 +596,12 @@ if(
 	)
 endif()
 
-set(
-	Fcppt_INCLUDE_DIR
-	${INSTALL_INCLUDE_DIR}
+fcppt_utils_include_path(
+	fcppt_INCLUDE_DIR
 )
 
-configure_file(
-	${CMAKE_SOURCE_DIR}/FcpptConfig.cmake.in
-	${CMAKE_BINARY_DIR}/FcpptConfig.cmake
-	@ONLY
-)
-
-install(
-	FILES
-	${CMAKE_BINARY_DIR}/FcpptConfig.cmake
-	DESTINATION
-	${INSTALL_CMAKECONFIG_DIR}
+fcppt_utils_generate_config(
+	fcppt
 )
 
 install(
@@ -621,9 +620,9 @@ install(
 
 install(
 	FILES
-	${CMAKE_SOURCE_DIR}/CMakeModules/FindFcppt.cmake
 	${CMAKE_SOURCE_DIR}/CMakeModules/FindFcpptThreads.cmake
 	${CMAKE_SOURCE_DIR}/CMakeModules/FcpptCMakeUtils.cmake
+	${CMAKE_SOURCE_DIR}/CMakeModules/FcpptExportUtils.cmake
 	${CMAKE_SOURCE_DIR}/CMakeModules/FcpptSymbol.cmake
 	DESTINATION
 	${INSTALL_CMAKEMODULES_DIR}
@@ -631,7 +630,7 @@ install(
 
 install(
 	EXPORT
-	FcpptTargets
+	fcpptTargets
 	DESTINATION
 	${INSTALL_CMAKECONFIG_DIR}
 )
