@@ -835,7 +835,7 @@ function(
 )
 	set(
 		CONFIG_NAME
-		"${LIBNAME}Config.cmake"
+		"${LIBNAME}-config.cmake"
 	)
 
 	set(
