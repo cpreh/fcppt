@@ -622,7 +622,7 @@ install(
 	FILES
 	${CMAKE_SOURCE_DIR}/CMakeModules/FindFcpptThreads.cmake
 	${CMAKE_SOURCE_DIR}/CMakeModules/FcpptCMakeUtils.cmake
-	${CMAKE_SOURCE_DIR}/CMakeModules/FcpptExportUtils.cmake
+	${CMAKE_SOURCE_DIR}/CMakeModules/FcpptExport.cmake
 	${CMAKE_SOURCE_DIR}/CMakeModules/FcpptSymbol.cmake
 	DESTINATION
 	${INSTALL_CMAKEMODULES_DIR}
