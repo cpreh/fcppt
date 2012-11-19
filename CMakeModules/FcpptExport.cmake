@@ -23,6 +23,11 @@ macro(
 	TARGETS
 	USE_STATIC_LIBS
 )
+	set(
+		FCPPT_EXPORT_USE_STATIC_LIBS
+		${USE_STATIC_LIBS}
+	)
+
 	foreach(
 		TARGET
 		${TARGETS}
@@ -33,7 +38,7 @@ macro(
 		)
 
 		if(
-			${USE_STATIC_LIBS}
+			${FCPPT_EXPORT_USE_STATIC_LIBS}
 		)
 			set(
 				"${TARGET_NAME}"
