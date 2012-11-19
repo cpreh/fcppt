@@ -825,10 +825,15 @@ function(
 	endif()
 endfunction()
 
-function(
+macro(
 	fcppt_utils_export_install_target
 	TARGETNAME
 )
+	set(
+		FCPPT_UTILS_TARGETS_EXPORTED
+		TRUE
+	)
+
 	if(
 		FCPPT_UTILS_IN_SOURCE_BUILD
 	)
@@ -849,7 +854,7 @@ function(
 			"${FCPPT_UTILS_TARGETS_CONFIG}"
 		)
 	endif()
-endfunction()
+endmacro()
 
 function(
 	fcppt_utils_generate_config
@@ -894,11 +899,16 @@ function(
 			"${INSTALL_CMAKECONFIG_DIR}"
 		)
 
-		install(
-			EXPORT
-			"${FCPPT_UTILS_TARGETS_CONFIG}"
-			DESTINATION
-			"${INSTALL_CMAKECONFIG_DIR}"
+
+		if(
+			FCPPT_UTILS_TARGETS_EXPORTED
 		)
+			install(
+				EXPORT
+				"${FCPPT_UTILS_TARGETS_CONFIG}"
+				DESTINATION
+				"${INSTALL_CMAKECONFIG_DIR}"
+			)
+		endif()
 	endif()
 endfunction()
