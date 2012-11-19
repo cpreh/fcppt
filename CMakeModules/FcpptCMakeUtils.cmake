@@ -816,6 +816,12 @@ function(
 			REMOVE
 			"${FCPPT_UTILS_BUILD_CONFIG}"
 		)
+
+		file(
+			WRITE
+			"${FCPPT_UTILS_BUILD_CONFIG}"
+			""
+		)
 	endif()
 endfunction()
 
