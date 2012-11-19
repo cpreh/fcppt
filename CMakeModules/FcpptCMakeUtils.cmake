@@ -829,11 +829,6 @@ macro(
 	fcppt_utils_export_install_target
 	TARGETNAME
 )
-	set(
-		FCPPT_UTILS_TARGETS_EXPORTED
-		TRUE
-	)
-
 	if(
 		FCPPT_UTILS_IN_SOURCE_BUILD
 	)
@@ -901,7 +896,7 @@ function(
 
 
 		if(
-			FCPPT_UTILS_TARGETS_EXPORTED
+			NOT FCPPT_UTILS_NO_TARGETS
 		)
 			install(
 				EXPORT
