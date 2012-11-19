@@ -791,56 +791,85 @@ macro(
 	endif()
 endmacro()
 
-macro(
-	fcppt_utils_include_path
-	RESULT_VAR
+set(
+	FCPPT_UTILS_TARGETS_CONFIG
+	"${CMAKE_PROJECT_NAME}Targets"
+)
+
+set(
+	FCPPT_UTILS_BUILD_CONFIG_DIR
+	"${CMAKE_BINARY_DIR}/config"
+)
+
+set(
+	FCPPT_UTILS_BUILD_CONFIG
+	"${FCPPT_UTILS_BUILD_CONFIG_DIR}/${FCPPT_UTILS_TARGETS_CONFIG}.cmake"
+)
+
+function(
+	fcppt_utils_prepare_config
+)
+	if(
+		FCPPT_UTILS_IN_SOURCE_BUILD
+	)
+		file(
+			REMOVE
+			"${FCPPT_UTILS_BUILD_CONFIG}"
+		)
+	endif()
+endfunction()
+
+function(
+	fcppt_utils_export_install_target
+	TARGETNAME
+)
+	if(
+		FCPPT_UTILS_IN_SOURCE_BUILD
+	)
+		export(
+			TARGETS
+			${TARGETNAME}
+			FILE
+			"${FCPPT_UTILS_BUILD_CONFIG}"
+			APPEND
+		)
+	else()
+		install(
+			TARGETS
+			${TARGETNAME}
+			DESTINATION
+			"${INSTALL_LIBRARY_DIR}/${CMAKE_PROJECT_NAME}"
+			EXPORT
+			"${FCPPT_UTILS_TARGETS_CONFIG}"
+		)
+	endif()
+endfunction()
+
+function(
+	fcppt_utils_generate_config
 )
 	if(
 		FCPPT_UTILS_IN_SOURCE_BUILD
 	)
 		set(
-			${RESULT_VAR}
+			${CMAKE_PROJECT_NAME}_INCLUDE_DIR
 			"${CMAKE_SOURCE_DIR}/include;${CMAKE_BINARY_DIR}/include"
 		)
 	else()
 		set(
-			${RESULT_VAR}
+			${CMAKE_PROJECT_NAME}_INCLUDE_DIR
 			"${INSTALL_INCLUDE_DIR}"
 		)
 	endif()
-endmacro()
 
-macro(
-	fcppt_utils_library_output_path
-	RESULT_VAR
-)
-	if(
-		FCPPT_UTILS_IN_SOURCE_BUILD
-	)
-		set(
-			${RESULT_VAR}
-			"${LIBRARY_OUTPUT_PATH}"
-		)
-	else()
-		set(
-			${RESULT_VAR}
-			"${INSTALL_LIBRARY_DIR}"
-		)
-	endif()
-endmacro()
-
-function(
-	fcppt_utils_generate_config
-	LIBNAME
-)
 	set(
 		CONFIG_NAME
-		"${LIBNAME}-config.cmake"
+		"${CMAKE_PROJECT_NAME}-config.cmake"
 	)
 
 	set(
 		CONFIG_DEST
-		"${CMAKE_BINARY_DIR}/config/${CONFIG_NAME}"
+		"${FCPPT_UTILS_BUILD_CONFIG_DIR}/${CONFIG_NAME}"
 	)
 
 	configure_file(
@@ -849,10 +878,21 @@ function(
 		@ONLY
 	)
 
-	install(
-		FILES
-		"${CONFIG_DEST}"
-		DESTINATION
-		${INSTALL_CMAKECONFIG_DIR}
+	if(
+		NOT FCPPT_UTILS_IN_SOURCE_BUILD
 	)
+		install(
+			FILES
+			"${CONFIG_DEST}"
+			DESTINATION
+			"${INSTALL_CMAKECONFIG_DIR}"
+		)
+
+		install(
+			EXPORT
+			"${FCPPT_UTILS_TARGETS_CONFIG}"
+			DESTINATION
+			"${INSTALL_CMAKECONFIG_DIR}"
+		)
+	endif()
 endfunction()

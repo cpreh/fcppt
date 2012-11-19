@@ -15,6 +15,8 @@ include(
 	FcpptCMakeUtils
 )
 
+fcppt_utils_prepare_config()
+
 include(
 	FcpptSymbol
 )
@@ -497,17 +499,8 @@ function(
 		)
 	endif()
 
-	fcppt_utils_library_output_path(
-		FCPPT_LIBRARY_DIR
-	)
-
-	install(
-		TARGETS
+	fcppt_utils_export_install_target(
 		${TARGETNAME}
-		DESTINATION
-		"${FCPPT_LIBRARY_DIR}"
-		EXPORT
-		fcpptTargets
 	)
 endfunction()
 
@@ -596,13 +589,7 @@ if(
 	)
 endif()
 
-fcppt_utils_include_path(
-	fcppt_INCLUDE_DIR
-)
-
-fcppt_utils_generate_config(
-	fcppt
-)
+fcppt_utils_generate_config()
 
 install(
 	DIRECTORY
@@ -626,11 +613,4 @@ install(
 	${CMAKE_SOURCE_DIR}/CMakeModules/FcpptSymbol.cmake
 	DESTINATION
 	${INSTALL_CMAKEMODULES_DIR}
-)
-
-install(
-	EXPORT
-	fcpptTargets
-	DESTINATION
-	${INSTALL_CMAKECONFIG_DIR}
 )

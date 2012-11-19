@@ -2,36 +2,8 @@ include(
 	FcpptExport
 )
 
-if(
-	FCPPT_FOUND
-)
-	return()
-endif()
-
-set(
-	FCPPT_FOUND
-	TRUE
-)
-
-set(
-	FCPPT_BINARY_DIR
-	@CMAKE_BINARY_DIR@
-)
-
-set(
-	FCPPT_INSTALL_LIBRARY_DIR
-	@INSTALL_LIBRARY_DIR@
-)
-
-set(
-	FCPPT_EXPORT_IN_SOURCE_BUILD
-	@FCPPT_UTILS_IN_SOURCE_BUILD@
-)
-
 fcppt_export_init(
 	"fcppt"
-	"${FCPPT_BINARY_DIR}"
-	"${FCPPT_INSTALL_LIBRARY_DIR}"
 )
 
 fcppt_export_generate_targets(

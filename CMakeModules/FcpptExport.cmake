@@ -5,45 +5,17 @@ set(
 
 function(
 	fcppt_export_init
-	TARGET
-	BINARY_DIR
-	LIBRARY_DIR
+	PROJECT_NAME
 )
-	if(
-		FCPPT_EXPORT_IN_SOURCE_BUILD
+	get_filename_component(
+		FCPPT_EXPORT_DIR
+		"${CMAKE_CURRENT_LIST_FILE}"
+		PATH
 	)
-		# Replace leading / from the lib path
-		string(
-			REGEX
-			REPLACE
-			"^/"
-			""
-			LIBRARY_DIR
-			"${LIBRARY_DIR}"
-		)
 
-		set(
-			FCPPT_EXPORT_DIR
-			"${BINARY_DIR}/CMakeFiles/Export/_${LIBRARY_DIR}/cmake/${TARGET}"
-		)
-	else()
-		get_filename_component(
-			FCPPT_EXPORT_DIR
-			"${CMAKE_CURRENT_LIST_FILE}"
-			PATH
-		)
-	endif()
-
-	if(
-		NOT
-		"${LIBRARY_DIR}"
-		STREQUAL
-		""
+	include(
+		"${FCPPT_EXPORT_DIR}/${PROJECT_NAME}Targets.cmake"
 	)
-		include(
-			"${FCPPT_EXPORT_DIR}/${TARGET}Targets.cmake"
-		)
-	endif()
 endfunction()
 
 macro(
