@@ -38,7 +38,7 @@ macro(
 		)
 
 		if(
-			${FCPPT_EXPORT_USE_STATIC_LIBS}
+			FCPPT_EXPORT_USE_STATIC_LIBS
 		)
 			set(
 				"${TARGET_NAME}"
@@ -51,4 +51,8 @@ macro(
 			)
 		endif()
 	endforeach()
+
+	unset(
+		FCPPT_EXPORT_USE_STATIC_LIBS
+	)
 endmacro()
