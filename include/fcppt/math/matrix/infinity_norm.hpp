@@ -29,7 +29,7 @@ namespace matrix
 \tparam N The matrix's row dimension type
 \tparam M The matrix's column dimension type
 \tparam S The matrix's storage type
-\param matrix_ The input matrix
+\param _matrix The input matrix
 */
 template
 <
