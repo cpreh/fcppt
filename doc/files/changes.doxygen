@@ -32,10 +32,6 @@ distributions set to handle multilib.</li>
 
 <li>Added fcppt::container::tree::depth</li>
 
-<li>Added fcppt::math::matrix::multiply_matrix4_vector3</li>
-
-<li>TODO: Added number_multiplexer?</li>
-
 <li>Added fcppt::algorithm::join to join two containers into a new one</li>
 
 <li>Added typedefs for <code>N</code> and <code>M</code> template parameters
@@ -49,7 +45,11 @@ fcppt::assign::make_container so that you don't have to call
 
 <li>Added fcppt::math::step</li>
 
-<li>TODO: Added some more matrix functions (which ones)?</li>
+<li>Added fcppt::math::matrix::transform_point and fcppt::math::matrix::transform_direction to multiply a 4x4 matrix by a 3-dimensinal point or direction vector, respectively.</li>
+
+<li>Added fcppt::math::matrix::exponential_pade to calculate the exponential of a matrix using the Pade algorithm.</li>
+
+<li>Added fcppt::math::matrix::logarithm to calculate the logarithm of a matrix.</li>
 
 </ul>
 
