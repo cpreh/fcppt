@@ -1,6 +1,535 @@
 /**
 \page older_changes Older Changes
 
+\section changes_changes_to_011_1 Changes from 0.11 to 0.11.1
+
+This release is mainly a bugfix release.
+
+<ul>
+
+<li>Some documentation fixes.</li>
+
+<li>fcppt::algorithm::levenshtein and fcppt::algorithm::shortest_levenshtein
+now support boost.range and not only containers.</li>
+
+<li>Added FCPPT_PP_CONST, FCPPT_PP_PURE and FCPPT_PP_WARN_UNUSED_RESULT.</li>
+
+<li>Added missing template keywords for clang-3.1</li>
+
+<li>Added fcppt::math::interpolation::perlin_fifth_degree function (along with
+the corresponding functor) which implements Ken Perlin's noise interpolation
+function.</li>
+
+<li>Added fcppt::container::bitfield::object::get and
+fcppt::container::bitfield::object::static_size for easy integration into
+other APIs.</li>
+
+<li>Ignore <code>-Wextra-semi</code> in Boost headers for clang-3.2 trunk</li>
+
+<li>Fixed type problems in bitfield. The size type is now the same as the enum
+type. The difference type is its signed counterpart.</li>
+
+<li>Enabled more warnings in clang if available, namely <code>-Wundef</code>,
+<code>-Wimplicit-fallthrough</code>, <code>-Wunneeded-member-function</code>,
+<code>-Wunused-member-function</code>,
+<code>-Wconditional-uninitialized</code>,
+<code>-Wunreachable-code</code>.</li>
+
+<li>Updates for doxygen-1.8.1</li>
+
+<li>Updates for boost-1.50</li>
+
+<li>Made fcppt <code>-Wunused-local-typedefs</code>-proof.</li>
+
+</ul>
+
+\section changes_changes_to_011 Changes from 0.10 to 0.11
+
+\subsection changaes_general_to_011 General changes
+
+<ul>
+
+<li>Introduced new headers <code>fcppt/config/external_begin.hpp</code> and
+<code>fcppt/config/external_end.hpp</code> that are used around external
+includes and disable a lot of warnings. This way it was possible for us to
+enable many more warnings for fcppt, especially in VC++.</li>
+
+<li>Removed convenience headers that included everything in a subsystem. They
+are not considered good style anyway.</li>
+
+<li>Removed trailing whitespaces in the code.</li>
+
+<li>Don't use constants with internal linkage anymore.</li>
+
+<li>Parts of fcppt that require additional libraries to link to are now split
+into their own libraries, namely <code>fcppt_filesystem</code> and
+<code>fcppt_thread</code>.</li>
+
+</ul>
+
+\subsection changes_added_functionality_to_011 Added functionality
+
+\subsubsection changes_new_libraries_to_011 New Libraries
+
+<ul>
+
+<li>Added a new \ref fcpptassert "assert" framework</li>
+
+<li>Added fcppt::null_ptr which can be used for null pointers to objects.</li>
+
+</ul>
+
+\subsubsection changes_additions_to_libraries_to_011 Additions to existing libraries
+
+<ul>
+
+<li>\ref fcpptalgorithm
+	<ul>
+
+	<li>Added fcppt::algorithm::key_set</li>
+
+	<li>Added fcppt::algorithm::set_union</li>
+
+	<li>Added fcppt::algorithm::copy_if</li>
+
+	</ul>
+</li>
+
+<li>\ref fcpptcontainer
+	<ul>
+
+	<li>Added fcppt::container::grid::iterator_position</li>
+
+	<li>Added fcppt::container::grid::is_square</li>
+
+	<li>Added fcppt::container::grid::interpolate</li>
+
+	</ul>
+</li>
+
+<li>\ref fcpptexport
+	<ul>
+
+	<li>Added support for explicit instantiations of template functions and
+	classes.</li>
+
+	</ul>
+</li>
+
+<li>\ref fcpptmath
+	<ul>
+
+	<li>Added fcppt::math::vector::mod</li>
+
+	<li>Added componentwise_equal functions to replace the removed
+	implicit epsilon comparison.</li>
+
+	</ul>
+</li>
+
+<li>\ref fcpptio
+	<ul>
+
+	<li>Added fcppt::io::read_exn</li>
+
+	</ul>
+</li>
+
+<li>\ref fcpptlog
+	<ul>
+
+	<li>The log library has been redesigned, see \ref
+	changes_changed_functionality_to_011</li>
+
+	<li>Added fcppt::log::format::time_stamp</li>
+
+	</ul>
+</li>
+
+<li>\ref fcpptmpl
+	<ul>
+
+	<li>Added fcppt::mpl::contains_if</li>
+
+	<li>Added fcppt::mpl::integral_cast</li>
+
+	</ul>
+</li>
+
+<li>\ref fcpptoptional
+	<ul>
+
+	<li>Support optional references.</li>
+
+	<li>Added fcppt::dynamic_optional_cast, fcppt::static_optional_cast and
+	fcppt::const_optional_cast to cast between optional references.</li>
+
+	</ul>
+</li>
+
+<li>\ref fcpptstrongtypedef
+	<ul>
+
+	<li>Added fcppt::strong_typedef_construct_cast</li>
+
+	</ul>
+</li>
+
+<li>\ref fcppttypetraits
+	<ul>
+
+	<li>Added fcppt::type_traits::is_random_access_iterator,
+	fcppt::type_traits::is_bidirectional_iterator,
+	fcppt::type_traits::is_forward_iterator,
+	fcppt::type_traits::is_input_iterator and
+	fcppt::type_traits::is_output_iterator.</li>
+
+	</ul>
+</li>
+
+<li>\ref fcpptvariant
+	<ul>
+
+	<li>Added a free fcppt::variant::get function.</li>
+
+	<li>Added nonconst variant visitation using fcppt::ref</li>
+
+	</ul>
+</li>
+
+<li>\ref fcpptvarious
+	<ul>
+
+	<li>Added \link FCPPT_FOREACH_ENUMERATOR_START_END \endlink </li>
+
+	</ul>
+</li>
+
+</ul>
+
+\subsection changes_changed_functionality_to_011 Changed functionality
+
+<ul>
+
+<li>Renamed every template named <code>basic</code> to
+<code>object</code>.</li>
+
+<li>\ref fcpptcasts
+	<ul>
+
+	<li>fcppt::sn_cast has been renamed to fcppt::safe_numeric_cast. Also,
+	it has been changed to forbid any conversions that can lead to data
+	loss.</li>
+
+	<li>fcppt::truncation_check_cast has been improved.</li>
+
+	</ul>
+</li>
+
+<li>\ref fcpptcontainer
+	<ul>
+
+	<li>fcppt::container::bitfield::object's constructor is now
+	explicit.</li>
+
+	</ul>
+</li>
+
+<li>\ref fcpptendianness
+	<ul>
+
+	<li>fcppt::endianness has been reworked. Most of the functions have
+	been replaced by fcppt::endianness::convert, see \ref
+	changes_removed_functionality_to_011 </li>
+
+	</ul>
+</li>
+
+<li>\ref fcpptfilesystem
+	<ul>
+
+	<li>fcppt::filesystem now uses the boost types directly, because only
+	<code>boost filesystem v3</code> is supported now. Also, a lot of now
+	unnecessary functions have been removed, see \ref
+	changes_removed_functionality_to_011 </li>
+
+	</ul>
+</li>
+
+<li>\ref fcpptio
+	<ul>
+
+	<li>fcppt::io::read now returns an optional.</li>
+
+	</ul>
+</li>
+
+<li>\ref fcpptmath
+	<ul>
+
+	<li>Renamed fcppt::math::vector::signed_angle to
+	fcppt::math::vector::signed_angle_between.</li>
+
+	<li>Renamed fcppt::math::next_pow_2 to
+	fcppt::math::next_power_of_2.</li>
+
+	<li>Renamed fcppt::math::vector::signed_angle_cast to
+	fcppt::math::vector::signed_angle_between_cast.</li>
+
+	<li>Renamed <code>fcppt/math/log.hpp</code> to
+	<code>fcppt/math/log2.hpp</code></li>
+
+	<li>Split fcppt::math::box::stretch into
+	fcppt::math::box::stretch_absolute and
+	fcppt::math::box::stretch_relative</li>
+
+	</ul>
+</li>
+
+<li>\ref fcpptlog
+	<ul>
+
+	<li>Redesigned the logger library that makes it possible to declare
+	global loggers and enable and disable them at runtime easily.</li>
+
+	<li>Formatters are now functions instead of classes.</li>
+
+	<li>Renamed fcppt::log::parameters::all to
+	fcppt::log::parameters::object.</li>
+
+	</ul>
+</li>
+
+<li>\ref fcpptoptional
+	<ul>
+
+	<li>The constructor of optionals is now explicit.</li>
+
+	</ul>
+</li>
+
+<li>\ref fcpptrandom
+	<ul>
+
+	<li>fcppt::random has been completely redesigned. Is is now a wrapper
+	around <code>boost.random</code> that forbids copying of generators and
+	disables all default parameters.</li>
+
+	</ul>
+</li>
+
+<li>\ref fcpptsmartptr
+	<ul>
+
+	<li>The deleters are no longer template-template parameters. Instead,
+	they are normal template parameters now.</li>
+
+	</ul>
+</li>
+
+<li>\ref fcpptstring
+	<ul>
+
+	<li>fcppt::io::cout, etc. are now functions to prevent global
+	initialization problems.</li>
+
+	<li>Use the standard locale <code>std::locale("")</code> for the
+	converting string functions by default.</li>
+
+	</ul>
+</li>
+
+<li>\ref fcpptstrongtypedef
+	<ul>
+
+	<li>Improved the type safety of the constructors, which now use
+	fcppt::safe_cast</li>
+
+	<li>Support references in strong typedefs.</li>
+
+	<li>Removed the default constructor.</li>
+
+	</ul>
+</li>
+
+<li>\ref fcpptvariant
+	<ul>
+
+	<li>Variants can no longer be empty. A default constructor is no longer
+	provided.</li>
+
+	</ul>
+</li>
+
+<li>\ref fcpptvarious
+	<ul>
+
+	<li>Made fcppt::type_info constructor explicit.</li>
+
+	<li> fcppt::type_name now gets a <code>std::type_info</code> instead of
+	an fcppt::type_info.</li>
+
+	</ul>
+</li>
+
+</ul>
+
+\subsection changes_removed_functionality_to_011 Removed functionality
+
+\subsubsection changes_removed_libraries_to_011 Removed libraries
+
+<ul>
+
+<li>Removed fcppt::utf8. It is not really implementable without OS
+support.</li>
+
+<li>Removed fcppt::chrono, expect the asio glue code. <code>boost.chrono</code>
+should be used.</li>
+
+</ul>
+
+\subsubsection changes_removed_from_libraries_to_011 Removed functionality from libraries
+
+<ul>
+
+<li>Removed fcppt::auto_ptr typedef</li>
+
+<li>Removed FCPPT_ASSERT and FCPPT_ASSERT_MESSAGE, which were replaced by the
+new \ref fcpptassert "assert" framework</li>
+
+<li>Removed FCPPT_STUB_FUNCTION</li>
+
+<li>Removed fcppt::minmax_pair</li>
+
+<li>\ref fcpptendianness
+	<ul>
+
+	<li>Removed fcppt::endianness::copy_n_from_host,
+	fcppt::endianness::copy_n_to_host, fcppt::endianness::copy_n_swapped
+	and fcppt::endianness::copy_swapped,
+	fcppt::endianness::from_big_endian, fcppt::endianness::from_host,
+	fcppt::endianness::from_little_endian,
+	fcppt::endianness::to_big_endian, fcppt::endianness::to_host and
+	fcppt::endianness::to_little_endian.</li>
+
+	</ul>
+</li>
+
+<li>\ref fcpptfilesystem
+	<ul>
+
+	<li>Removed fcppt::filesystem::first_file, fcppt::filesystem::next_file
+	and fcppt::filesystem::skip_directories.</li>
+
+	<li>Removed fcppt::filesystem::create_directories_recursive,
+	fcppt::filesystem::create_directory, fcppt::filesystem::current_path,
+	fcppt::filesystem::directory_iterator, fcppt::filesystem::exists,
+	fcppt::filesystem::file_size, fcppt::filesystem::is_directory,
+	fcppt::filesystem::is_regular, fcppt::filesystem::path,
+	fcppt::filesystem::readlink,
+	fcppt::filesystem::recursive_directory_iterator,
+	fcppt::filesystem::remove and fcppt::filesystem::remove_filename</li>
+
+	<li>Removed fcppt::io::cifstream, fcppt::io::cofstream and
+	fcppt::io::cfstream</li>
+
+	</ul>
+</li>
+
+<li>\ref fcpptmath
+	<ul>
+
+	<li>Removed fcppt::math::almost_zero, fcppt;:math::compare,
+	fcppt::math::machine_epsilon, fcppt::math::vector::is_null,
+	fcppt::math::null and all other epsilon comparing functions. A general
+	epsilon cannot be provided and the user must choose one. As a result of
+	this, all comparison functions use <code>==</code>. It is made sure
+	that they still emit warnings when using
+	<code>-Wfloat-equal</code>.</li>
+
+	<li>Removed fcppt::math::vector::to_angle,
+	fcppt::math::vector::transform, fcppt::math::vector::unit_circle and
+	fcppt::math::vector::place.</li>
+
+	<li>Removed fcppt::math::dim::quad and
+	fcppt::math::dim::transform.</li>
+
+	<li>Removed FCPPT_MATH_INSTANTIATE_ARITHMETIC,
+	fcppt::math::is_negative, fcppt::math::round_div_int, fcppt::math::quad,
+	fcppt::math::inverse and fcppt::math::signum.</li>
+
+	<li>Removed fcppt::math::matrix::look_at</li>
+
+	<li>Removed broken overloads of fcppt::math::next_pow_2</li>
+
+	</ul>
+</li>
+
+<li>\ref fcpptsmartptr
+	<ul>
+
+	<li>fcppt::unique_ptr doesn't store its deleter anymore.</li>
+
+	</ul>
+</li>
+
+<li>\ref fcpptstring
+	<ul>
+
+	<li>Removed fcppt::lexical_cast which was replaced by
+	fcppt::extract_from_string and fcppt::insert_to_string</li>
+
+	</ul>
+</li>
+
+<li>\ref fcpptstrongtypedef
+	<ul>
+
+	<li>Removed the nonconst getter from fcppt::strong_typedef</li>
+
+	</ul>
+</li>
+
+<li>\ref fcpptvariant
+	<ul>
+
+	<li>Removed fcppt::variant::apply, use fcppt::variant::apply_unary,
+	fcppt::variant::apply_binary or fcppt::variant::apply_ternary
+	instead.</li>
+
+	</ul>
+</li>
+
+</ul>
+
+\subsection changes_bugfixes_to_011 Bugfixes
+
+<ul>
+
+<li>Fixed fcppt::mpl::index_of to only allow types that are part of the
+sequence. This also fixes invalid uses of fcppt::variant::object::get </li>
+
+<li>Fixed fcppt::variant::holds_type when recursive types are involved.</li>
+
+<li>Don't overwrite <code>Boost_ADDITIONAL_VERSIONS</code> in cmake, just
+append to it.</li>
+
+<li>Fixed fcppt::algorithm::ptr_container_erase</li>
+
+<li>Fixed the iterator category of fcppt::cyclic_iterator</li>
+
+<li>Fixed static linking of fcppt</li>
+
+<li>Fixed fcppt::math::box::contains_point</li>
+
+<li>Made logging a lot less expensive</li>
+
+<li>fcppt::variant::apply_unary now has linear complexity instead of quadratic
+complexity if the variant has been declared using an
+<code>boost::mpl::list</code></li>
+
+</ul>
+
 \section changes_changes_to_010 Changes from 0.9 to 0.10
 
 \subsection changes_added_functionality_to_010 Added functionality
