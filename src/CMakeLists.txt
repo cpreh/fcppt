@@ -537,7 +537,6 @@ set(
 	include/fcppt/math/matrix/is_static_size.hpp
 	include/fcppt/math/matrix/logarithm.hpp
 	include/fcppt/math/matrix/max_ctor_params.hpp
-	include/fcppt/math/matrix/multiply_matrix4_vector3.hpp
 	include/fcppt/math/matrix/normal_storage.hpp
 	include/fcppt/math/matrix/object.hpp
 	include/fcppt/math/matrix/object_decl.hpp
@@ -553,6 +552,8 @@ set(
 	include/fcppt/math/matrix/sqrt.hpp
 	include/fcppt/math/matrix/static.hpp
 	include/fcppt/math/matrix/structure_cast.hpp
+	include/fcppt/math/matrix/transform_direction.hpp
+	include/fcppt/math/matrix/transform_point.hpp
 	include/fcppt/math/matrix/translation.hpp
 	include/fcppt/math/matrix/transpose.hpp
 	include/fcppt/math/matrix/vector.hpp
