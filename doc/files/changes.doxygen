@@ -1,15 +1,15 @@
 /**
 \page changes Changes
 
-\section changes_changes_to_012 Changes from 0.11.1 to 0.12
+\section changes_changes_to_012 Changes from 0.11.1 to 0.12.0
 
 \subsection changaes_general_to_012 General changes
 
 <ul>
 
-<li>Expose cmake targets from the build dir and when installing. This should
-make it a lot easier to use fcppt from other cmake based projects. See \ref
-requirements_download_installation_using_fcppt </li>
+<li>Expose cmake targets from the build directory and when installing. This
+should make it a lot easier to use fcppt from other cmake based projects. See
+\ref requirements_download_installation_using_fcppt </li>
 
 <li>Some updates for VC++11, mostly warning fixes.</li>
 
