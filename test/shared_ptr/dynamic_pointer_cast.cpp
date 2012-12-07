@@ -58,8 +58,7 @@ FCPPT_PP_POP_WARNING
 	derived_ptr ptr2(
 		fcppt::dynamic_pointer_cast<
 			derived
-		>
-		(
+		>(
 			ptr
 		)
 	);

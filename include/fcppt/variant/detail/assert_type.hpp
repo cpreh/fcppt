@@ -7,7 +7,6 @@
 #ifndef FCPPT_VARIANT_DETAIL_ASSERT_TYPE_HPP_INCLUDED
 #define FCPPT_VARIANT_DETAIL_ASSERT_TYPE_HPP_INCLUDED
 
-#include <fcppt/static_assert_expression.hpp>
 #include <fcppt/variant/detail/index_of.hpp>
 
 
@@ -16,12 +15,14 @@
 	other,\
 	elements\
 )\
-FCPPT_STATIC_ASSERT_EXPRESSION((\
+static_assert((\
 	::fcppt::variant::detail::index_of<\
 		types,\
 		other\
 	>::value\
 	< elements\
-))
+	),\
+	"Invalid type given to a variant"\
+)
 
 #endif

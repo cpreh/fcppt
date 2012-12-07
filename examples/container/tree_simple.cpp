@@ -6,7 +6,6 @@
 
 #include <fcppt/exception.hpp>
 #include <fcppt/make_unique_ptr.hpp>
-#include <fcppt/move.hpp>
 #include <fcppt/string.hpp>
 #include <fcppt/text.hpp>
 #include <fcppt/container/tree/object.hpp>
@@ -15,6 +14,7 @@
 #include <fcppt/config/external_begin.hpp>
 #include <cstdlib>
 #include <iterator>
+#include <utility>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -54,7 +54,7 @@ try
 		);
 
 		tree.push_back(
-			fcppt::move(
+			std::move(
 				child1
 			)
 		);
@@ -68,7 +68,7 @@ try
 		);
 
 		tree.push_back(
-			fcppt::move(
+			std::move(
 				child2
 			)
 		);

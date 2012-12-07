@@ -8,7 +8,6 @@
 #ifndef FCPPT_NUMBER_MULTIPLEXER_OBJECT_DECL_HPP_INCLUDED
 #define FCPPT_NUMBER_MULTIPLEXER_OBJECT_DECL_HPP_INCLUDED
 
-#include <fcppt/static_assert_statement.hpp>
 #include <fcppt/strong_typedef.hpp>
 #include <fcppt/number_multiplexer/object_fwd.hpp>
 #include <fcppt/config/external_begin.hpp>
@@ -23,8 +22,9 @@ namespace number_multiplexer
 template<typename T>
 class object
 {
-FCPPT_STATIC_ASSERT_STATEMENT(
-	boost::is_unsigned<T>::value);
+static_assert(
+	boost::is_unsigned<T>::value,
+	"number_multiplexer only works on unsigned types");
 public:
 	typedef
 	T

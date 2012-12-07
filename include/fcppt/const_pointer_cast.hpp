@@ -8,9 +8,6 @@
 #define FCPPT_CONST_POINTER_CAST_HPP_INCLUDED
 
 #include <fcppt/shared_ptr_impl.hpp>
-#include <fcppt/config/external_begin.hpp>
-#include <boost/smart_ptr/shared_ptr.hpp>
-#include <fcppt/config/external_end.hpp>
 
 
 namespace fcppt
@@ -55,7 +52,11 @@ const_pointer_cast(
 			Deleter
 		>(
 			_ptr,
-			boost::detail::const_cast_tag()
+			const_cast<
+				Dest *
+			>(
+				_ptr.get()
+			)
 		);
 }
 

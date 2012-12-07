@@ -26,14 +26,23 @@ template<
 	> class Base,
 	typename Enable
 >
-fcppt::signal::object<T, Base, Enable>::object(
+fcppt::signal::object<
+	T,
+	Base,
+	Enable
+>::object(
 	combiner_type const &_combiner,
 	result_type const &_initial_result
 )
 :
-	combiner_(_combiner),
-	initial_result_(_initial_result)
-{}
+	combiner_(
+		_combiner
+	),
+	initial_result_(
+		_initial_result
+	)
+{
+}
 
 template<
 	typename T,
@@ -42,7 +51,11 @@ template<
 	> class Base,
 	typename Enable
 >
-fcppt::signal::object<T, Base, Enable>::~object()
+fcppt::signal::object<
+	T,
+	Base,
+	Enable
+>::~object()
 {
 }
 
@@ -54,7 +67,11 @@ template<
 	typename Enable
 >
 void
-fcppt::signal::object<T, Base, Enable>::combiner(
+fcppt::signal::object<
+	T,
+	Base,
+	Enable
+>::combiner(
 	combiner_type const &_combiner
 )
 {
@@ -69,7 +86,11 @@ template<
 	typename Enable
 >
 void
-fcppt::signal::object<T, Base, Enable>::initial_result(
+fcppt::signal::object<
+	T,
+	Base,
+	Enable
+>::initial_result(
 	result_type const &_initial_result
 )
 {
@@ -83,8 +104,16 @@ template<
 	> class Base,
 	typename Enable
 >
-typename fcppt::signal::object<T, Base, Enable>::result_type
-fcppt::signal::object<T, Base, Enable>::operator()() const
+typename fcppt::signal::object<
+	T,
+	Base,
+	Enable
+>::result_type
+fcppt::signal::object<
+	T,
+	Base,
+	Enable
+>::operator()() const
 {
 	result_type result(
 		initial_result_

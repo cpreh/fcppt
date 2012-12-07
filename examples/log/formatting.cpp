@@ -5,7 +5,6 @@
 
 
 #include <fcppt/make_shared_ptr.hpp>
-#include <fcppt/ref.hpp>
 #include <fcppt/string.hpp>
 #include <fcppt/text.hpp>
 #include <fcppt/io/cerr.hpp>
@@ -80,9 +79,7 @@ main()
 			fcppt::make_shared_ptr<
 				fcppt::log::level_stream
 			>(
-				fcppt::ref(
-					fcppt::io::cerr()
-				),
+				fcppt::io::cerr(),
 				error_formatter
 			)
 		)

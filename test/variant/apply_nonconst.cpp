@@ -4,7 +4,6 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/ref.hpp>
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
@@ -15,6 +14,7 @@
 #include <fcppt/config/external_begin.hpp>
 #include <boost/mpl/vector/vector10.hpp>
 #include <boost/test/unit_test.hpp>
+#include <functional>
 #include <string>
 #include <fcppt/config/external_end.hpp>
 
@@ -108,7 +108,7 @@ FCPPT_PP_POP_WARNING
 
 	fcppt::variant::apply_unary(
 		unary_functor(),
-		fcppt::ref(
+		std::ref(
 			v1
 		)
 	);
@@ -142,10 +142,10 @@ FCPPT_PP_POP_WARNING
 
 	fcppt::variant::apply_binary(
 		binary_functor(),
-		fcppt::ref(
+		std::ref(
 			v1
 		),
-		fcppt::ref(
+		std::ref(
 			v2
 		)
 	);
@@ -190,13 +190,13 @@ FCPPT_PP_POP_WARNING
 
 	fcppt::variant::apply_ternary(
 		ternary_functor(),
-		fcppt::ref(
+		std::ref(
 			v1
 		),
-		fcppt::ref(
+		std::ref(
 			v2
 		),
-		fcppt::ref(
+		std::ref(
 			v3
 		)
 	);

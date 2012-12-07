@@ -47,7 +47,7 @@
 				count\
 			),\
 			T,\
-			param\
+			&& param\
 		)\
 	)\
 	{\

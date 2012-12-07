@@ -8,12 +8,12 @@
 #define FCPPT_SHARED_PTR_DECL_HPP_INCLUDED
 
 #include <fcppt/shared_ptr_fwd.hpp>
-#include <fcppt/unique_ptr_fwd.hpp>
 #include <fcppt/weak_ptr_fwd.hpp>
 #include <fcppt/detail/make_shared_wrapper_fwd.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/smart_ptr/shared_ptr.hpp>
 #include <iosfwd>
+#include <memory>
+#include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -31,7 +31,7 @@ reference count. Copying shared pointers increases the count by one, while
 destroying shared pointers decrases the count by one. If the count reaches
 zero, the object that is pointed to will be destroyed.
 
-The class is implemented using <code>boost::shared_ptr</code>, so it will
+The class is implemented using <code>std::shared_ptr</code>, so it will
 inherit all its traits. This means that the class also uses type erasure for
 its deleter and internal ref count.
 
@@ -47,10 +47,10 @@ class shared_ptr
 {
 public:
 	/**
-	\brief The type of the <code>boost::shared_ptr</code> used to implement
+	\brief The type of the <code>std::shared_ptr</code> used to implement
 	this class
 	*/
-	typedef boost::shared_ptr<
+	typedef std::shared_ptr<
 		Type
 	> impl_type;
 
@@ -62,17 +62,19 @@ public:
 	/**
 	\brief Same as element_type
 	*/
-	typedef typename impl_type::value_type value_type;
+	typedef element_type value_type;
 
 	/**
 	\brief The pointer type, same as <code>value_type *</code>
 	*/
-	typedef typename impl_type::pointer pointer;
+	typedef element_type *pointer;
 
 	/**
 	\brief The reference type, same as <code>value_type &</code>
 	*/
-	typedef typename impl_type::reference reference;
+	typedef typename std::add_lvalue_reference<
+		element_type
+	>::type reference;
 
 	/**
 	\brief Constructs an empty shared_ptr
@@ -169,53 +171,28 @@ public:
 		> const &ref
 	);
 
-// \cond
-// Internal constructors that maybe should become private  They are public so
-// that the compatibility to boost::shared_ptr is as good as possible.
-	template<
-		typename Other
-	>
-	shared_ptr(
-		fcppt::shared_ptr<
-			Other,
-			Deleter
-		> const &,
-		boost::detail::static_cast_tag
-	);
+	/**
+	\brief Constructs a shared_ptr that shares ownership with another
 
-	template<
-		typename Other
-	>
-	shared_ptr(
-		fcppt::shared_ptr<
-			Other,
-			Deleter
-		> const &,
-		boost::detail::const_cast_tag
-	);
+	Constructs a shared_ptr that shares ownership with \a ref and
+	stores \a data. This is useful for implementing dynamic_pointer_cast and so on.
 
-	template<
-		typename Other
-	>
-	shared_ptr(
-		fcppt::shared_ptr<
-			Other,
-			Deleter
-		> const &,
-		boost::detail::dynamic_cast_tag
-	);
+	\tparam Other A type, so that <code>Other *</code> is implicitly
+	convertible to <code>Type *</code>
 
+	\param ref The shared pointer to share ownership with
+
+	\param data The pointer this shared_ptr will point to
+	*/
 	template<
 		typename Other
 	>
 	shared_ptr(
 		fcppt::shared_ptr<
-			Other,
-			Deleter
-		> const &,
-		boost::detail::polymorphic_cast_tag
+			Other
+		> const &ref,
+		pointer data
 	);
-// \endcond
 
 	/**
 	\brief Constructs a shared_ptr from a compatible unique_ptr
@@ -234,7 +211,7 @@ public:
 	>
 	explicit
 	shared_ptr(
-		fcppt::unique_ptr<
+		std::unique_ptr<
 			Other,
 			Deleter
 		> ref
@@ -284,7 +261,7 @@ public:
 	>
 	shared_ptr &
 	operator=(
-		fcppt::unique_ptr<
+		std::unique_ptr<
 			Other,
 			Deleter
 		> ref
@@ -389,15 +366,13 @@ public:
 	pointer
 	get() const;
 
-	typedef typename impl_type::unspecified_bool_type unspecified_bool_type;
-
 	/**
 	\brief The safe bool trick
 
 	Returns something that evaluates to true if the shared_ptr is not empty
 	and false otherwise
 	*/
-	operator unspecified_bool_type() const;
+	explicit operator bool() const;
 
 	/**
 	\brief Returns if this shared_ptr is the only owner of the current object
@@ -417,7 +392,7 @@ public:
 	returned.
 
 	\note This type is <code>long</code> because
-	<code>boost::shared_ptr</code> also uses <code>long</code>.
+	<code>std::shared_ptr</code> also uses <code>long</code>.
 	*/
 	long
 	use_count() const;
@@ -435,10 +410,10 @@ public:
 	);
 
 	/**
-	\brief Returns the underlying <code>boost::shared_ptr</code> object
+	\brief Returns the underlying <code>std::shared_ptr</code> object
 	*/
 	impl_type const
-	boost_ptr() const;
+	std_ptr() const;
 
 // \cond
 	template<
@@ -459,7 +434,7 @@ private:
 	>
 	explicit
 	shared_ptr(
-		boost::shared_ptr<
+		std::shared_ptr<
 			Other
 		>
 	);

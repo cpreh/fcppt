@@ -10,9 +10,9 @@
 #include <fcppt/signal/base.hpp>
 #include <fcppt/signal/object.hpp>
 #include <fcppt/signal/scoped_connection.hpp>
-#include <fcppt/tr1/functional.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/test/unit_test.hpp>
+#include <functional>
 #include <fcppt/config/external_end.hpp>
 
 namespace
@@ -48,7 +48,7 @@ FCPPT_PP_POP_WARNING
 	{
 		fcppt::signal::scoped_connection const con1(
 			sig.connect(
-				std::tr1::bind(
+				std::bind(
 					add,
 					1
 				)
@@ -67,7 +67,7 @@ FCPPT_PP_POP_WARNING
 
 		fcppt::signal::scoped_connection const con2(
 			sig.connect(
-				std::tr1::bind(
+				std::bind(
 					add,
 					2
 				)

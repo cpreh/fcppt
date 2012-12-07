@@ -7,7 +7,6 @@
 #ifndef FCPPT_MPL_CEIL_DIV_HPP_INCLUDED
 #define FCPPT_MPL_CEIL_DIV_HPP_INCLUDED
 
-#include <fcppt/static_assert_statement.hpp>
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
@@ -66,10 +65,11 @@ boost::mpl::integral_c<
 	)
 >
 {
-	FCPPT_STATIC_ASSERT_STATEMENT(
+	static_assert(
 		boost::is_unsigned<
 			Type
-		>::value
+		>::value,
+		"ceil_div only works on unsigned types"
 	);
 };
 

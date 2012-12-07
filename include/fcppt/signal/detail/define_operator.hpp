@@ -8,10 +8,10 @@
 #ifndef FCPPT_SIGNAL_DETAIL_DEFINE_OPERATOR_HPP_INCLUDED
 #define FCPPT_SIGNAL_DETAIL_DEFINE_OPERATOR_HPP_INCLUDED
 
+#include <fcppt/preprocessor/detail/enum_params_forward_z.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/preprocessor/arithmetic/inc.hpp>
 #include <boost/preprocessor/repetition/enum_binary_params.hpp>
-#include <boost/preprocessor/repetition/enum_params.hpp>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -53,7 +53,7 @@ fcppt::signal::object<\
 		z,\
 		BOOST_PP_INC(n),\
 		T,\
-		const &param\
+		&& param\
 	)\
 ) const\
 {\
@@ -76,9 +76,10 @@ fcppt::signal::object<\
 			this->combiner_(\
 				result,\
 				it->function()(\
-					BOOST_PP_ENUM_PARAMS_Z(\
+					FCPPT_PP_DETAIL_ENUM_PARAMS_FORWARD_Z(\
 						z,\
 						BOOST_PP_INC(n),\
+						T,\
 						param\
 					)\
 				)\

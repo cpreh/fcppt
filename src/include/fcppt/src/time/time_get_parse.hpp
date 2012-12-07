@@ -7,7 +7,6 @@
 #ifndef FCPPT_SRC_TIME_TIME_GET_PARSE_HPP_INCLUDED
 #define FCPPT_SRC_TIME_TIME_GET_PARSE_HPP_INCLUDED
 
-#include <fcppt/null_ptr.hpp>
 #include <fcppt/io/istream.hpp>
 #include <fcppt/src/time/time_get.hpp>
 #include <fcppt/config/external_begin.hpp>
@@ -28,12 +27,12 @@ template<
 >
 fcppt::io::istream &
 time_get_parse(
-	io::istream &_stream,
+	fcppt::io::istream &_stream,
 	std::tm &_result,
 	Function const &_function
 )
 {
-	io::istream::sentry cerberos(
+	fcppt::io::istream::sentry cerberos(
 		_stream
 	);
 
@@ -48,7 +47,7 @@ time_get_parse(
 
 	(
 		std::use_facet<
-			time::time_get
+			fcppt::time::time_get
 		>(
 			_stream.getloc()
 		)

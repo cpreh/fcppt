@@ -7,8 +7,6 @@
 #ifndef FCPPT_CONTAINER_DETAIL_DATA_END_HPP_INCLUDED
 #define FCPPT_CONTAINER_DETAIL_DATA_END_HPP_INCLUDED
 
-#include <fcppt/null_ptr.hpp>
-
 
 namespace fcppt
 {
@@ -29,7 +27,7 @@ data_end(
 	return
 		_container.empty()
 		?
-			fcppt::null_ptr()
+			nullptr
 		:
 			&_container[0]
 			+ _container.size()

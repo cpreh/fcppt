@@ -7,7 +7,6 @@
 #ifndef FCPPT_MATH_DETAIL_MAKE_VARIADIC_CONSTRUCTOR_HPP_INCLUDED
 #define FCPPT_MATH_DETAIL_MAKE_VARIADIC_CONSTRUCTOR_HPP_INCLUDED
 
-#include <fcppt/static_assert_expression.hpp>
 #include <fcppt/math/detail/dim_matches.hpp>
 #include <fcppt/math/detail/initial_size.hpp>
 #include <fcppt/config/external_begin.hpp>
@@ -32,12 +31,13 @@ BOOST_PP_TUPLE_REM_CTOR(BOOST_PP_TUPLE_ELEM(2, 0, text),BOOST_PP_TUPLE_ELEM(2, 1
 	)\
 )\
 {\
-	FCPPT_STATIC_ASSERT_EXPRESSION((\
-		math::detail::dim_matches<\
+	static_assert(\
+		::fcppt::math::detail::dim_matches<\
 			BOOST_PP_INC(n),\
 			dim_wrapper::value\
-		>::value\
-	));\
+		>::value,\
+		"Dimensions do not match"\
+	);\
 	\
 	::fcppt::math::detail::initial_size(\
 		storage_,\

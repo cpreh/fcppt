@@ -7,7 +7,6 @@
 #ifndef FCPPT_CONTAINER_BITFIELD_ITERATOR_IMPL_HPP_INCLUDED
 #define FCPPT_CONTAINER_BITFIELD_ITERATOR_IMPL_HPP_INCLUDED
 
-#include <fcppt/null_ptr.hpp>
 #include <fcppt/container/bitfield/iterator_decl.hpp>
 #include <fcppt/container/bitfield/proxy_impl.hpp>
 
@@ -22,7 +21,7 @@ fcppt::container::bitfield::iterator<
 >::iterator()
 :
 	array_(
-		fcppt::null_ptr()
+		nullptr
 	),
 	pos_(
 		0

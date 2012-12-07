@@ -6,7 +6,6 @@
 
 #include <fcppt/make_unique_ptr.hpp>
 #include <fcppt/noncopyable.hpp>
-#include <fcppt/unique_ptr.hpp>
 #include <fcppt/container/tree/object_impl.hpp>
 #include <fcppt/container/tree/ptr_value.hpp>
 #include <fcppt/container/tree/release.hpp>
@@ -15,6 +14,7 @@
 #include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/test/unit_test.hpp>
+#include <memory>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -86,7 +86,7 @@ FCPPT_PP_POP_WARNING
 		tree.value().value() == 42
 	);
 
-	fcppt::unique_ptr<
+	std::unique_ptr<
 		noncopyable
 	> released(
 		fcppt::container::tree::release(

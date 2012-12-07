@@ -7,13 +7,11 @@
 #ifndef FCPPT_SCOPED_PTR_IMPL_HPP_INCLUDED
 #define FCPPT_SCOPED_PTR_IMPL_HPP_INCLUDED
 
-#include <fcppt/heap_deleter.hpp>
-#include <fcppt/move.hpp>
-#include <fcppt/null_ptr.hpp>
 #include <fcppt/scoped_ptr_decl.hpp>
-#include <fcppt/unique_ptr_fwd.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <algorithm>
+#include <memory>
+#include <utility>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -27,7 +25,7 @@ fcppt::scoped_ptr<
 >::scoped_ptr()
 :
 	ptr_(
-		fcppt::null_ptr()
+		nullptr
 	)
 {
 }
@@ -63,7 +61,7 @@ fcppt::scoped_ptr<
 	Type,
 	Deleter
 >::scoped_ptr(
-	fcppt::unique_ptr<
+	std::unique_ptr<
 		Other,
 		Deleter
 	> _ptr
@@ -204,7 +202,7 @@ fcppt::scoped_ptr<
 	Type,
 	Deleter
 >::take(
-	fcppt::unique_ptr<
+	std::unique_ptr<
 		Other,
 		Deleter
 	> _ptr
@@ -219,7 +217,7 @@ template<
 	typename Type,
 	typename Deleter
 >
-fcppt::unique_ptr<
+std::unique_ptr<
 	Type,
 	Deleter
 >
@@ -228,17 +226,17 @@ fcppt::scoped_ptr<
 	Deleter
 >::release()
 {
-	fcppt::unique_ptr<
+	std::unique_ptr<
 		Type,
 		Deleter
 	> ret(
 		ptr_
 	);
 
-	ptr_ = fcppt::null_ptr();
+	ptr_ = nullptr;
 
 	return
-		fcppt::move(
+		std::move(
 			ret
 		);
 }
@@ -247,16 +245,15 @@ template<
 	typename Type,
 	typename Deleter
 >
-bool
 fcppt::scoped_ptr<
 	Type,
 	Deleter
->::boolean_test() const
+>::operator bool() const
 {
 	return
 		ptr_
 		!=
-		fcppt::null_ptr();
+		nullptr;
 }
 
 template<

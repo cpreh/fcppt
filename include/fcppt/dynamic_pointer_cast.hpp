@@ -8,9 +8,7 @@
 #define FCPPT_DYNAMIC_POINTER_CAST_HPP_INCLUDED
 
 #include <fcppt/shared_ptr_impl.hpp>
-#include <fcppt/config/external_begin.hpp>
-#include <boost/smart_ptr/shared_ptr.hpp>
-#include <fcppt/config/external_end.hpp>
+
 
 namespace fcppt
 {
@@ -37,27 +35,27 @@ resulting shared_ptr will share ownership with the source.
 */
 template<
 	typename Dest,
-	typename Source,
-	typename Deleter
+	typename Source
 >
 fcppt::shared_ptr<
-	Dest,
-	Deleter
-> const
+	Dest
+>
 dynamic_pointer_cast(
 	fcppt::shared_ptr<
-		Source,
-		Deleter
+		Source
 	> const &_ptr
 )
 {
 	return
 		fcppt::shared_ptr<
-			Dest,
-			Deleter
+			Dest
 		>(
 			_ptr,
-			boost::detail::dynamic_cast_tag()
+			dynamic_cast<
+				Dest *
+			>(
+				_ptr.get()
+			)
 		);
 }
 

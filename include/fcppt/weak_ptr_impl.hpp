@@ -42,7 +42,7 @@ fcppt::weak_ptr<
 )
 :
 	impl_(
-		_other.boost_ptr()
+		_other.std_ptr()
 	)
 {
 }
@@ -65,7 +65,7 @@ fcppt::weak_ptr<
 )
 :
 	impl_(
-		_other.boost_ptr()
+		_other.std_ptr()
 	)
 {
 }
@@ -158,7 +158,7 @@ typename fcppt::weak_ptr<
 fcppt::weak_ptr<
 	Type,
 	Deleter
->::boost_ptr() const
+>::std_ptr() const
 {
 	return impl_;
 }
@@ -181,9 +181,9 @@ fcppt::operator<(
 )
 {
 	return
-		_left.boost_ptr()
+		_left.std_ptr()
 		<
-		_right.boost_ptr();
+		_right.std_ptr();
 }
 
 template<

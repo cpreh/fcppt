@@ -7,12 +7,12 @@
 #ifndef FCPPT_TYPE_TRAITS_IS_UNIQUE_PTR_HPP_INCLUDED
 #define FCPPT_TYPE_TRAITS_IS_UNIQUE_PTR_HPP_INCLUDED
 
-#include <fcppt/unique_ptr_fwd.hpp>
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/type_traits/integral_constant.hpp>
+#include <memory>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -48,7 +48,7 @@ template<
 	typename Deleter
 >
 struct is_unique_ptr<
-	fcppt::unique_ptr<
+	std::unique_ptr<
 		Type,
 		Deleter
 	>

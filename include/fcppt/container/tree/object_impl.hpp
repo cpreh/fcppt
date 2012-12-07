@@ -7,12 +7,8 @@
 #ifndef FCPPT_CONTAINER_TREE_OBJECT_IMPL_HPP_INCLUDED
 #define FCPPT_CONTAINER_TREE_OBJECT_IMPL_HPP_INCLUDED
 
-#include <fcppt/forward.hpp>
 #include <fcppt/make_unique_ptr.hpp>
-#include <fcppt/move.hpp>
-#include <fcppt/null_ptr.hpp>
 #include <fcppt/scoped_ptr_impl.hpp>
-#include <fcppt/unique_ptr_impl.hpp>
 #include <fcppt/algorithm/find_if_exn.hpp>
 #include <fcppt/container/ptr/insert_unique_ptr.hpp>
 #include <fcppt/container/ptr/make_equal.hpp>
@@ -25,6 +21,7 @@
 #include <fcppt/container/tree/detail/init_value.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <algorithm>
+#include <utility>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -35,7 +32,7 @@ fcppt::container::tree::object<T>::object()
 :
 	value_(),
 	parent_(
-		fcppt::null_ptr()
+		nullptr
 	),
 	children_()
 {
@@ -49,14 +46,12 @@ fcppt::container::tree::object<T>::object(
 )
 :
 	value_(
-		fcppt::forward<
-			arg_base_type
-		>(
+		std::move(
 			_value
 		)
 	),
 	parent_(
-		fcppt::null_ptr()
+		nullptr
 	),
 	children_()
 {
@@ -70,7 +65,7 @@ fcppt::container::tree::object<T>::object(
 )
 :
 	value_(
-		detail::init_value(
+		fcppt::container::tree::detail::init_value(
 			_other.holder()
 		)
 	),
@@ -79,7 +74,7 @@ fcppt::container::tree::object<T>::object(
 		_other.children()
 	)
 {
-	detail::assign_parents(
+	fcppt::container::tree::detail::assign_parents(
 		*this,
 		children_
 	);
@@ -98,14 +93,14 @@ fcppt::container::tree::object<T>::operator=(
 	)
 		return *this;
 
-	detail::copy_value(
+	fcppt::container::tree::detail::copy_value(
 		value_,
 		_other.holder()
 	);
 
 	children_ = _other.children();
 
-	detail::assign_parents(
+	fcppt::container::tree::detail::assign_parents(
 		*this,
 		children_
 	);
@@ -181,7 +176,7 @@ template<
 bool
 fcppt::container::tree::object<T>::has_parent() const
 {
-	return parent_ != fcppt::null_ptr();
+	return parent_ != nullptr;
 }
 
 template<
@@ -210,7 +205,7 @@ fcppt::container::tree::object<T>::release(
 	);
 
 	return
-		fcppt::move(
+		std::move(
 			ret
 		);
 }
@@ -222,10 +217,10 @@ typename fcppt::container::tree::object<T>::iterator
 fcppt::container::tree::object<T>::child_position()
 {
 	return
-		algorithm::find_if_exn(
+		fcppt::algorithm::find_if_exn(
 			this->parent().begin(),
 			this->parent().end(),
-			ptr::make_equal(
+			fcppt::container::ptr::make_equal(
 				this
 			)
 		);
@@ -240,7 +235,7 @@ fcppt::container::tree::object<T>::child_position() const
 	return
 		const_iterator(
 			const_cast<
-				object<T> &
+				fcppt::container::tree::object<T> &
 			>(
 				*this
 			)
@@ -256,11 +251,9 @@ fcppt::container::tree::object<T>::value(
 	arg_type _value
 )
 {
-	tree::detail::assign_value(
+	fcppt::container::tree::detail::assign_value(
 		value_,
-		fcppt::forward<
-			arg_base_type
-		>(
+		std::move(
 			_value
 		)
 	);
@@ -273,7 +266,7 @@ typename fcppt::container::tree::object<T>::stored_type &
 fcppt::container::tree::object<T>::value()
 {
 	return
-		tree::detail::extract_value(
+		fcppt::container::tree::detail::extract_value(
 			value_
 		);
 }
@@ -285,7 +278,7 @@ typename fcppt::container::tree::object<T>::stored_type const &
 fcppt::container::tree::object<T>::value() const
 {
 	return
-		tree::detail::extract_value(
+		fcppt::container::tree::detail::extract_value(
 			value_
 		);
 }
@@ -297,7 +290,7 @@ bool
 fcppt::container::tree::object<T>::has_value() const
 {
 	return
-		tree::detail::has_value(
+		fcppt::container::tree::detail::has_value(
 			value_
 		);
 }
@@ -330,7 +323,7 @@ fcppt::container::tree::object<T>::push_back(
 {
 	this->insert(
 		this->end(),
-		fcppt::move(
+		std::move(
 			_ptr
 		)
 	);
@@ -346,9 +339,7 @@ fcppt::container::tree::object<T>::push_back(
 {
 	this->insert(
 		this->end(),
-		fcppt::forward<
-			arg_base_type
-		>(
+		std::move(
 			_value
 		)
 	);
@@ -373,7 +364,7 @@ fcppt::container::tree::object<T>::push_front(
 {
 	this->insert(
 		this->begin(),
-		fcppt::move(
+		std::move(
 			_ptr
 		)
 	);
@@ -389,9 +380,7 @@ fcppt::container::tree::object<T>::push_front(
 {
 	this->insert(
 		this->begin(),
-		fcppt::forward<
-			arg_base_type
-		>(
+		std::move(
 			_value
 		)
 	);
@@ -570,14 +559,14 @@ fcppt::container::tree::object<T>::insert(
 	unique_ptr _ptr
 )
 {
-	object<T> &ref(
+	fcppt::container::tree::object<T> &ref(
 		*_ptr
 	);
 
-	container::ptr::insert_unique_ptr(
+	fcppt::container::ptr::insert_unique_ptr(
 		this->children(),
 		_it,
-		fcppt::move(
+		std::move(
 			_ptr
 		)
 	);
@@ -598,16 +587,31 @@ fcppt::container::tree::object<T>::insert(
 {
 	this->insert(
 		_it,
-		fcppt::make_unique_ptr<
-			object<T>
+		std::unique_ptr<
+			fcppt::container::tree::object<
+				T
+			>
 		>(
-			fcppt::forward<
-				arg_base_type
+			new	fcppt::container::tree::object<
+				T
 			>(
-				_value
+				std::move(
+					_value
+				)
 			)
 		)
 	);
+		/*
+		fcppt::make_unique_ptr<
+			fcppt::container::tree::object<
+				T
+			>
+		>(
+			std::move(
+				_value
+			)
+		)
+	);*/
 }
 
 template<
@@ -695,8 +699,8 @@ template<
 >
 bool
 fcppt::container::tree::operator==(
-	object<T> const &_a,
-	object<T> const &_b
+	fcppt::container::tree::object<T> const &_a,
+	fcppt::container::tree::object<T> const &_b
 )
 {
 	return
@@ -709,8 +713,8 @@ template<
 >
 bool
 fcppt::container::tree::operator!=(
-	object<T> const &_a,
-	object<T> const &_b
+	fcppt::container::tree::object<T> const &_a,
+	fcppt::container::tree::object<T> const &_b
 )
 {
 	return !(_a == _b);
@@ -721,8 +725,8 @@ template<
 >
 void
 fcppt::container::tree::swap(
-	object<T> &_a,
-	object<T> &_b
+	fcppt::container::tree::object<T> &_a,
+	fcppt::container::tree::object<T> &_b
 )
 {
 	_a.swap(

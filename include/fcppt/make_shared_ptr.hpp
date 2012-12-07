@@ -9,8 +9,9 @@
 
 #include <fcppt/shared_ptr_impl.hpp>
 #include <fcppt/detail/make_ptr_base.hpp>
+#include <fcppt/detail/make_shared_wrapper.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/smart_ptr/make_shared.hpp>
+#include <memory>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -19,8 +20,8 @@ namespace fcppt
 
 FCPPT_DETAIL_MAKE_PTR_BASE(
 	shared_ptr,
-	detail::make_shared_wrapper,
-	boost::make_shared<
+	fcppt::detail::make_shared_wrapper,
+	std::make_shared<
 		Type
 	>
 )

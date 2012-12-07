@@ -20,6 +20,7 @@
 #include <fcppt/config/external_begin.hpp>
 #include <boost/preprocessor/repetition/repeat.hpp>
 #include <boost/type_traits/function_traits.hpp>
+#include <functional>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -70,7 +71,7 @@ public:
 	/**
 	\brief Typedef to the combiner function
 	*/
-	typedef fcppt::function::object<
+	typedef std::function<
 		result_type (
 			result_type,
 			result_type
@@ -80,7 +81,7 @@ public:
 	/**
 	\brief Construct a signal with a combiner and an initial result
 	*/
-	explicit object(
+	object(
 		combiner_type const &,
 		result_type const &initial_result
 	);
@@ -145,7 +146,7 @@ template<
 class object<
 	T,
 	Base,
-	typename detail::enable_if_void<
+	typename fcppt::signal::detail::enable_if_void<
 		T
 	>::type
 >

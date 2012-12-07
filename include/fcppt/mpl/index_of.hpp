@@ -7,7 +7,6 @@
 #ifndef FCPPT_MPL_INDEX_OF_HPP_INCLUDED
 #define FCPPT_MPL_INDEX_OF_HPP_INCLUDED
 
-#include <fcppt/static_assert_statement.hpp>
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
@@ -58,12 +57,13 @@ boost::mpl::distance<
 	>::type
 >
 {
-	FCPPT_STATIC_ASSERT_STATEMENT((
+	static_assert(
 		boost::mpl::contains<
 			Sequence,
 			Element
-		>::value
-	));
+		>::value,
+		"mpl::index_of<S,E> used but S doesn't contain E"
+	);
 };
 
 FCPPT_PP_POP_WARNING

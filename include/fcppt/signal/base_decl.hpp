@@ -9,12 +9,12 @@
 #define FCPPT_SIGNAL_BASE_DECL_HPP_INCLUDED
 
 #include <fcppt/noncopyable.hpp>
-#include <fcppt/function/object.hpp>
 #include <fcppt/signal/auto_connection_fwd.hpp>
 #include <fcppt/signal/base_fwd.hpp>
 #include <fcppt/signal/detail/concrete_connection.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/intrusive/list.hpp>
+#include <functional>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -47,14 +47,14 @@ public:
 	/**
 	\brief A typedef for the wrapped function
 	*/
-	typedef fcppt::function::object<
+	typedef std::function<
 		T
 	> function_type;
 
 	/**
 	\brief Connect a callback to this signal
 	*/
-	signal::auto_connection
+	fcppt::signal::auto_connection
 	connect(
 		function_type const &
 	);
@@ -65,7 +65,7 @@ public:
 	bool
 	empty() const;
 protected:
-	typedef detail::concrete_connection<
+	typedef fcppt::signal::detail::concrete_connection<
 		function_signature
 	> concrete_connection;
 

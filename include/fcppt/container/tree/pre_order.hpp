@@ -8,8 +8,6 @@
 #define FCPPT_CONTAINER_TREE_PRE_ORDER_HPP_INCLUDED
 
 #include <fcppt/noncopyable.hpp>
-#include <fcppt/null_ptr.hpp>
-#include <fcppt/static_assert_statement.hpp>
 #include <fcppt/container/tree/is_object.hpp>
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
@@ -47,12 +45,13 @@ template<
 >
 class pre_order
 {
-	FCPPT_STATIC_ASSERT_STATEMENT(
-		is_object<
+	static_assert(
+		fcppt::container::tree::is_object<
 			typename boost::remove_const<
 				Tree
 			>::type
-		>::value
+		>::value,
+		"pre_order can only be used with trees"
 	);
 
 	FCPPT_NONCOPYABLE(
@@ -62,12 +61,16 @@ public:
 	/**
 	\brief Construct a pre-order traversal from a tree (which can be const or nonconst)
 	*/
-	explicit pre_order(
+	explicit
+	pre_order(
 		Tree &_tree
 	)
 	:
-		tree_(_tree)
-	{}
+		tree_(
+			_tree
+		)
+	{
+	}
 
 	class iterator;
 private:
@@ -103,13 +106,10 @@ FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
 		public iterator_base
 	{
 	public:
-
-
-
 		iterator()
 		:
 			current_(
-				fcppt::null_ptr()
+				nullptr
 			),
 			positions_()
 		{
@@ -197,7 +197,7 @@ FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
 			else if(
 				positions_.empty()
 			)
-				current_ = fcppt::null_ptr();
+				current_ = nullptr;
 			else
 			{
 
@@ -248,7 +248,7 @@ FCPPT_PP_POP_WARNING
 	{
 		return
 			iterator(
-				fcppt::null_ptr()
+				nullptr
 			);
 	}
 private:

@@ -7,7 +7,6 @@
 #ifndef FCPPT_VARIANT_DETAIL_APPLY_UNARY_INTERNAL_HPP_INCLUDED
 #define FCPPT_VARIANT_DETAIL_APPLY_UNARY_INTERNAL_HPP_INCLUDED
 
-#include <fcppt/reference_wrapper.hpp>
 #include <fcppt/variant/size_type.hpp>
 #include <fcppt/variant/detail/apply.hpp>
 #include <fcppt/config/external_begin.hpp>
@@ -15,6 +14,7 @@
 #include <boost/mpl/empty.hpp>
 #include <boost/mpl/end.hpp>
 #include <boost/mpl/integral_c.hpp>
+#include <functional>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -66,7 +66,7 @@ template<
 typename Operation::result_type
 apply_unary_internal(
 	Operation const &_op,
-	fcppt::reference_wrapper<
+	std::reference_wrapper<
 		Variant
 	> const &_obj
 )

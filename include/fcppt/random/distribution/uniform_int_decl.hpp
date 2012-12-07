@@ -7,7 +7,6 @@
 #ifndef FCPPT_RANDOM_DISTRIBUTION_UNIFORM_INT_DECL_HPP_INCLUDED
 #define FCPPT_RANDOM_DISTRIBUTION_UNIFORM_INT_DECL_HPP_INCLUDED
 
-#include <fcppt/static_assert_statement.hpp>
 #include <fcppt/strong_typedef.hpp>
 #include <fcppt/random/distribution/declare_call.hpp>
 #include <fcppt/random/distribution/uniform_int_fwd.hpp>
@@ -53,10 +52,11 @@ public:
 	*/
 	typedef typename wrapped::result_type result_type;
 
-	FCPPT_STATIC_ASSERT_STATEMENT(
+	static_assert(
 		boost::is_integral<
 			int_type
-		>::value
+		>::value,
+		"uniform_int distributions only take integral types"
 	);
 
 	FCPPT_MAKE_STRONG_TYPEDEF(

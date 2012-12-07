@@ -4,7 +4,6 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/null_ptr.hpp>
 #include <fcppt/container/data.hpp>
 #include <fcppt/container/data_end.hpp>
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
@@ -37,7 +36,7 @@ FCPPT_PP_POP_WARNING
 			container
 		)
 		==
-		fcppt::null_ptr()
+		nullptr
 	);
 
 	BOOST_CHECK(
@@ -45,7 +44,7 @@ FCPPT_PP_POP_WARNING
 			container
 		)
 		==
-		fcppt::null_ptr()
+		nullptr
 	);
 
 	container.push_back(

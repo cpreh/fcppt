@@ -4,7 +4,6 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/null_ptr.hpp>
 #include <fcppt/log/context.hpp>
 #include <fcppt/log/object_fwd.hpp>
 #include <fcppt/log/optional_location.hpp>
@@ -22,7 +21,7 @@ fcppt::log::detail::auto_context::auto_context(
 		?
 			&_context_location->context()
 		:
-			fcppt::null_ptr()
+			nullptr
 	),
 	location_(
 		_context_location
@@ -41,7 +40,7 @@ fcppt::log::detail::auto_context::auto_context(
 				_object
 			)
 		:
-			fcppt::null_ptr()
+			nullptr
 	)
 {
 }

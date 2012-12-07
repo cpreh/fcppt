@@ -7,7 +7,6 @@
 #ifndef FCPPT_CONTAINER_DETAIL_NULL_ARRAY_STORAGE_HPP_INCLUDED
 #define FCPPT_CONTAINER_DETAIL_NULL_ARRAY_STORAGE_HPP_INCLUDED
 
-#include <fcppt/null_ptr.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <cstddef>
 #include <fcppt/config/external_end.hpp>
@@ -29,13 +28,13 @@ struct null_array_storage
 	T *
 	get()
 	{
-		return fcppt::null_ptr();
+		return nullptr;
 	}
 
 	T const *
 	get() const
 	{
-		return fcppt::null_ptr();
+		return nullptr;
 	}
 
 	operator T *()

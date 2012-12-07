@@ -7,7 +7,6 @@
 #ifndef FCPPT_MATH_MATRIX_OBJECT_IMPL_HPP_INCLUDED
 #define FCPPT_MATH_MATRIX_OBJECT_IMPL_HPP_INCLUDED
 
-#include <fcppt/static_assert_expression.hpp>
 #include <fcppt/math/detail/array_adapter_impl.hpp>
 #include <fcppt/math/detail/assign.hpp>
 #include <fcppt/math/detail/initial_size.hpp>
@@ -41,12 +40,13 @@ fcppt::math::matrix::object<T, N, M, S>::object()
 	dim_base()
 // Don't initialize storage_()
 {
-	FCPPT_STATIC_ASSERT_EXPRESSION((
+	static_assert(
 		fcppt::math::matrix::is_static_size<
 			N,
 			M
-		>::value
-	));
+		>::value,
+		"This constructor can only be used with static matrices"
+	);
 }
 
 template<
@@ -84,12 +84,13 @@ fcppt::math::matrix::object<T, N, M, S>::object(
 		_storage
 	)
 {
-	FCPPT_STATIC_ASSERT_EXPRESSION((
+	static_assert(
 		fcppt::math::matrix::is_static_size<
 			N,
 			M
-		>::value
-	));
+		>::value,
+		"This constructor can only be used with static matrices"
+	);
 }
 
 template<
@@ -171,12 +172,13 @@ fcppt::math::matrix::object<T, N, M, S>::object(
 	dim_base()
 // Don't initialize storage_()
 {
-	FCPPT_STATIC_ASSERT_EXPRESSION((
+	static_assert(
 		fcppt::math::matrix::is_static_size<
 			N,
 			M
-		>::value
-	));
+		>::value,
+		"This constructor can only be used with static matrices"
+	);
 
 	std::copy(
 		_begin,
@@ -210,12 +212,13 @@ fcppt::math::matrix::object<T, N, M, S>::object(
 	)
 // Don't initialize storage_()
 {
-	FCPPT_STATIC_ASSERT_EXPRESSION((
+	static_assert(
 		!fcppt::math::matrix::is_static_size<
 			N,
 			M
-		>::value
-	));
+		>::value,
+		"This constructor can only be used with dynamic matrices"
+	);
 
 	math::detail::initial_size(
 		storage_,
@@ -251,12 +254,13 @@ fcppt::math::matrix::object<T, N, M, S>::object(
 	)
 // Don't initialize storage_()
 {
-	FCPPT_STATIC_ASSERT_EXPRESSION((
+	static_assert(
 		!fcppt::math::matrix::is_static_size<
 			N,
 			M
-		>::value
-	));
+		>::value,
+		"This constructor can only be used with dynamic matrices"
+	);
 
 	math::detail::initial_size(
 		storage_,

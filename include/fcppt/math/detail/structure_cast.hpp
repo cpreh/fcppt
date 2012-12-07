@@ -7,7 +7,6 @@
 #ifndef FCPPT_MATH_DETAIL_STRUCTURE_CAST_HPP_INCLUDED
 #define FCPPT_MATH_DETAIL_STRUCTURE_CAST_HPP_INCLUDED
 
-#include <fcppt/static_assert_expression.hpp>
 #include <fcppt/math/detail/structure_cast_fun.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/iterator/transform_iterator.hpp>
@@ -62,12 +61,13 @@ structure_cast(
 
 	op_type const op = {};
 
-	FCPPT_STATIC_ASSERT_EXPRESSION((
+	static_assert(
 		boost::is_same<
 			typename T::dim_wrapper,
 			typename U::dim_wrapper
-		>::value
-	));
+		>::value,
+		"structure_cast works only on types with the same dimensions"
+	);
 
 	return T(
 		boost::make_transform_iterator(

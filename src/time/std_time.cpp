@@ -4,7 +4,6 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/null_ptr.hpp>
 #include <fcppt/text.hpp>
 #include <fcppt/time/exception.hpp>
 #include <fcppt/time/std_time.hpp>
@@ -18,7 +17,7 @@ fcppt::time::std_time()
 {
 	std::time_t const ret(
 		std::time(
-			fcppt::null_ptr()
+			nullptr
 		)
 	);
 

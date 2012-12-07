@@ -4,7 +4,6 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/null_ptr.hpp>
 #include <fcppt/io/color/set.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <cstdlib>
@@ -20,7 +19,8 @@ struct instance
 	instance()
 	:
 		has_color_output_(
-			false)
+			false
+		)
 	{
 		char const * const term =
 			std::getenv("TERM");
@@ -80,7 +80,7 @@ struct instance
 			"xterm-88color",
 			"xterm-color",
 			"xterm-debian",
-			fcppt::null_ptr()
+			nullptr
 		};
 
 		for(char const **ptr = term_names; *ptr; ++ptr)

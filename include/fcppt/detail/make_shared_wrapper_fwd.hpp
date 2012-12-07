@@ -7,6 +7,7 @@
 #ifndef FCPPT_DETAIL_MAKE_SHARED_WRAPPER_FWD_HPP_INCLUDED
 #define FCPPT_DETAIL_MAKE_SHARED_WRAPPER_FWD_HPP_INCLUDED
 
+
 namespace fcppt
 {
 namespace detail

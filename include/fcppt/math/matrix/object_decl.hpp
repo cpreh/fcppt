@@ -7,7 +7,6 @@
 #ifndef FCPPT_MATH_MATRIX_OBJECT_DECL_HPP_INCLUDED
 #define FCPPT_MATH_MATRIX_OBJECT_DECL_HPP_INCLUDED
 
-#include <fcppt/static_assert_statement.hpp>
 #include <fcppt/math/difference_type.hpp>
 #include <fcppt/math/size_type.hpp>
 #include <fcppt/math/detail/make_op_decl.hpp>
@@ -69,12 +68,13 @@ private
 {
 	typedef detail::dim_storage<N, M> dim_base;
 public:
-	FCPPT_STATIC_ASSERT_STATEMENT((
+	static_assert(
 		boost::is_same<
 			typename N::value_type,
 			typename M::value_type
-		>::value
-	));
+		>::value,
+		"The value types of N and M must be the same"
+	);
 
 	/**
 	\brief A typedef for the \p N parameter

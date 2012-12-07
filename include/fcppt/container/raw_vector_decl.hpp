@@ -8,13 +8,12 @@
 #define FCPPT_CONTAINER_RAW_VECTOR_DECL_HPP_INCLUDED
 
 #include <fcppt/noncopyable.hpp>
-#include <fcppt/static_assert_statement.hpp>
 #include <fcppt/container/raw_vector_fwd.hpp>
 #include <fcppt/type_traits/is_input_iterator.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/type_traits/is_pod.hpp>
 #include <boost/utility/enable_if.hpp>
 #include <iterator>
+#include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
 namespace fcppt
@@ -42,10 +41,11 @@ template<
 >
 class raw_vector
 {
-	FCPPT_STATIC_ASSERT_STATEMENT(
-		boost::is_pod<
+	static_assert(
+		std::is_pod<
 			T
-		>::value
+		>::value,
+		"raw_vector can only deal with PODs"
 	);
 public:
 	/**

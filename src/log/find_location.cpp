@@ -4,9 +4,9 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/null_ptr.hpp>
 #include <fcppt/container/tree/object_impl.hpp>
 #include <fcppt/log/location.hpp>
+#include <fcppt/log/detail/context_tree.hpp>
 #include <fcppt/src/log/find_inner_node.hpp>
 #include <fcppt/src/log/find_location.hpp>
 #include <fcppt/variant/object_impl.hpp>
@@ -40,7 +40,7 @@ fcppt::log::find_location(
 		if(
 			item_it == cur->end()
 		)
-			return fcppt::null_ptr();
+			return nullptr;
 
 		cur = &*item_it;
 	}

@@ -9,9 +9,11 @@
 #define FCPPT_SIGNAL_UNREGISTER_DETAIL_CONCRETE_CONNECTION_HPP_INCLUDED
 
 #include <fcppt/noncopyable.hpp>
-#include <fcppt/function/object.hpp>
 #include <fcppt/signal/connection.hpp>
 #include <fcppt/signal/unregister/function.hpp>
+#include <fcppt/config/external_begin.hpp>
+#include <functional>
+#include <fcppt/config/external_end.hpp>
 
 
 namespace fcppt
@@ -36,9 +38,11 @@ class concrete_connection
 public:
 	typedef T function_signature;
 
-	typedef fcppt::function::object<T> function_type;
+	typedef std::function<
+		T
+	> function_type;
 
-	explicit concrete_connection(
+	concrete_connection(
 		function_type const &,
 		fcppt::signal::unregister::function const &
 	);

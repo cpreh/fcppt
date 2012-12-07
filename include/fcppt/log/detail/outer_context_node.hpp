@@ -24,14 +24,15 @@ class outer_context_node
 		outer_context_node
 	);
 public:
-	explicit outer_context_node(
-		log::object &
+	explicit
+	outer_context_node(
+		fcppt::log::object &
 	);
 
-	log::object &
+	fcppt::log::object &
 	object() const;
 private:
-	log::object &object_;
+	fcppt::log::object &object_;
 };
 
 }

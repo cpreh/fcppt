@@ -4,7 +4,6 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/static_assert_statement.hpp>
 #include <fcppt/text.hpp>
 #include <fcppt/io/cout.hpp>
 #include <fcppt/mpl/append.hpp>
@@ -58,7 +57,7 @@ fcppt::mpl::append<
 >::type
 vec3;
 
-FCPPT_STATIC_ASSERT_STATEMENT((
+static_assert(
 	boost::mpl::equal<
 		vec3,
 		boost::mpl::vector4<
@@ -67,8 +66,9 @@ FCPPT_STATIC_ASSERT_STATEMENT((
 			char,
 			double
 		>
-	>::value
-));
+	>::value,
+	""
+);
 //! [mpl_append]
 }
 
@@ -83,15 +83,16 @@ fcppt::mpl::ceil_div<
 >::type
 result;
 
-FCPPT_STATIC_ASSERT_STATEMENT((
+static_assert(
 	boost::mpl::equal_to<
 		result,
 		boost::mpl::integral_c<
 			unsigned,
 			4u
 		>
-	>::value
-));
+	>::value,
+	""
+);
 //! [mpl_ceil_div]
 }
 
@@ -114,12 +115,13 @@ fcppt::mpl::contains_if<
 >::type
 result;
 
-FCPPT_STATIC_ASSERT_STATEMENT((
+static_assert(
 	boost::mpl::equal_to<
 		result,
 		boost::mpl::true_
-	>::value
-));
+	>::value,
+	""
+);
 //! [mpl_contains_if]
 }
 
@@ -133,12 +135,13 @@ fcppt::mpl::implication<
 >::type
 result;
 
-FCPPT_STATIC_ASSERT_STATEMENT((
+static_assert(
 	boost::mpl::equal<
 		result,
 		boost::mpl::true_
-	>::value
-));
+	>::value,
+	""
+);
 //! [mpl_implication]
 }
 
@@ -160,15 +163,16 @@ fcppt::mpl::index_of<
 >::type
 result;
 
-FCPPT_STATIC_ASSERT_STATEMENT((
+static_assert(
 	boost::mpl::equal_to<
 		result,
 		boost::mpl::integral_c<
 			unsigned,
 			1
 		>
-	>::value
-));
+	>::value,
+	""
+);
 //! [mpl_index_of]
 }
 
@@ -186,12 +190,13 @@ fcppt::mpl::inner<
 >::type
 result;
 
-FCPPT_STATIC_ASSERT_STATEMENT((
+static_assert(
 	boost::is_same<
 		result,
 		int
-	>::value
-));
+	>::value,
+	""
+);
 //! [mpl_inner]
 }
 
@@ -211,7 +216,7 @@ fcppt::mpl::integral_cast<
 >::type
 result;
 
-FCPPT_STATIC_ASSERT_STATEMENT((
+static_assert(
 	boost::is_same<
 		result::value_type,
 		unsigned
@@ -219,8 +224,9 @@ FCPPT_STATIC_ASSERT_STATEMENT((
 	&&
 	result::value
 	==
-	2u
-));
+	2u,
+	""
+);
 //! [mpl_integral_cast]
 }
 
@@ -245,14 +251,15 @@ fcppt::mpl::max_value<
 >::type
 result;
 
-FCPPT_STATIC_ASSERT_STATEMENT((
+static_assert(
 	boost::mpl::equal_to<
 		result,
 		boost::mpl::sizeof_<
 			long
 		>
-	>::value
-));
+	>::value,
+	""
+);
 //! [mpl_max_value]
 }
 
@@ -274,7 +281,7 @@ fcppt::mpl::partial_sums<
 >::type
 result;
 
-FCPPT_STATIC_ASSERT_STATEMENT((
+static_assert(
 	boost::mpl::equal<
 		result,
 		boost::mpl::vector4_c<
@@ -284,8 +291,9 @@ FCPPT_STATIC_ASSERT_STATEMENT((
 			7,
 			12
 		>
-	>::value
-));
+	>::value,
+	""
+);
 //! [mpl_partial_sums]
 }
 

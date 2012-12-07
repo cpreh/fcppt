@@ -8,7 +8,6 @@
 #include <fcppt/assert/pre.hpp>
 #include <fcppt/container/tree/object_impl.hpp>
 #include <fcppt/container/tree/pre_order.hpp>
-#include <fcppt/function/object.hpp>
 #include <fcppt/log/context.hpp>
 #include <fcppt/log/location.hpp>
 #include <fcppt/log/no_such_location.hpp>
@@ -30,8 +29,8 @@
 fcppt::log::context::context()
 :
 	tree_(
-		detail::context_tree_node(
-			detail::inner_context_node(
+		fcppt::log::detail::context_tree_node(
+			fcppt::log::detail::inner_context_node(
 				FCPPT_TEXT("")
 			)
 		)
@@ -70,7 +69,7 @@ fcppt::log::context::find(
 	)
 		return fcppt::log::optional_object();
 
-	detail::context_tree::const_iterator const logger_node(
+	fcppt::log::detail::context_tree::const_iterator const logger_node(
 		fcppt::log::find_logger_node(
 			const_cast<
 				fcppt::log::detail::context_tree &
@@ -161,7 +160,7 @@ fcppt::log::context::add(
 		++item
 	)
 	{
-		detail::context_tree::iterator const item_it(
+		fcppt::log::detail::context_tree::iterator const item_it(
 			log::find_inner_node(
 				*cur,
 				*item
@@ -173,8 +172,8 @@ fcppt::log::context::add(
 		)
 		{
 			cur->push_back(
-				detail::context_tree_node(
-					detail::inner_context_node(
+				fcppt::log::detail::context_tree_node(
+					fcppt::log::detail::inner_context_node(
 						*item
 					)
 				)

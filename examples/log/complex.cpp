@@ -8,7 +8,6 @@
 #include <fcppt/exception.hpp>
 #include <fcppt/from_std_string.hpp>
 #include <fcppt/text.hpp>
-#include <fcppt/function/object.hpp>
 #include <fcppt/io/cerr.hpp>
 #include <fcppt/io/cout.hpp>
 #include <fcppt/log/context.hpp>
@@ -22,9 +21,9 @@
 #include <fcppt/log/print_locations.hpp>
 #include <fcppt/log/parameters/object.hpp>
 #include <fcppt/log/parameters/with_context.hpp>
-#include <fcppt/tr1/functional.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <cstdlib>
+#include <functional>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -225,9 +224,9 @@ try
 			fcppt::from_std_string(
 				argv[i]
 			),
-			std::tr1::bind(
+			std::bind(
 				&fcppt::log::object::enable,
-				std::tr1::placeholders::_1,
+				std::placeholders::_1,
 				true
 			)
 		);

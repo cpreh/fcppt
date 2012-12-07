@@ -28,7 +28,6 @@ update_cmake_file \
 	include/fcppt/detail \
 	include/fcppt/endianness \
 	include/fcppt/error \
-	include/fcppt/function \
 	include/fcppt/impl \
 	include/fcppt/io \
 	include/fcppt/log \
@@ -40,7 +39,6 @@ update_cmake_file \
 	include/fcppt/signal \
 	include/fcppt/spirit_traits \
 	include/fcppt/time \
-	include/fcppt/tr1 \
 	include/fcppt/type_traits \
 	include/fcppt/variant \
 	-n \

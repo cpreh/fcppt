@@ -9,6 +9,7 @@
 
 #include <fcppt/scoped_ptr_impl.hpp>
 
+
 namespace fcppt
 {
 namespace container
@@ -28,7 +29,12 @@ has_value(
 	> const &_value
 )
 {
-	return _value;
+	return
+		static_cast<
+			bool
+		>(
+			_value
+		);
 }
 
 template<

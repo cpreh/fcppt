@@ -6,7 +6,6 @@
 
 #include <fcppt/make_unique_ptr.hpp>
 #include <fcppt/noncopyable.hpp>
-#include <fcppt/unique_ptr.hpp>
 #include <fcppt/container/tree/object_impl.hpp>
 #include <fcppt/container/tree/ptr_value.hpp>
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
@@ -14,6 +13,7 @@
 #include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/test/unit_test.hpp>
+#include <memory>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -56,7 +56,7 @@ noncopyable::value() const
 	return value_;
 }
 
-fcppt::unique_ptr<
+std::unique_ptr<
 	noncopyable
 >
 copy_tree_value(

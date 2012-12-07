@@ -8,7 +8,10 @@
 #ifndef FCPPT_SIGNAL_UNREGISTER_FUNCTION_HPP_INCLUDED
 #define FCPPT_SIGNAL_UNREGISTER_FUNCTION_HPP_INCLUDED
 
-#include <fcppt/function/object_fwd.hpp>
+#include <fcppt/config/external_begin.hpp>
+#include <functional>
+#include <fcppt/config/external_end.hpp>
+
 
 namespace fcppt
 {
@@ -21,7 +24,7 @@ namespace unregister
 \brief The unregister function object
 \ingroup fcpptsignal
 */
-typedef fcppt::function::object<
+typedef std::function<
 	void ()
 > function;
 

@@ -8,7 +8,6 @@
 #define FCPPT_SRC_CODECVT_HPP_INCLUDED
 
 #include <fcppt/exception.hpp>
-#include <fcppt/null_ptr.hpp>
 #include <fcppt/text.hpp>
 #include <fcppt/assert/unreachable.hpp>
 #include <fcppt/container/data_end.hpp>
@@ -76,7 +75,7 @@ codecvt(
 
 	for(
 		In const *from = _string.data(),
-		*from_next = fcppt::null_ptr();
+		*from_next = nullptr;
 		; // loop forever
 		from = from_next
 	)

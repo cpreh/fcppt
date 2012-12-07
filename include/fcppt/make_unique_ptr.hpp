@@ -7,15 +7,18 @@
 #ifndef FCPPT_MAKE_UNIQUE_PTR_HPP_INCLUDED
 #define FCPPT_MAKE_UNIQUE_PTR_HPP_INCLUDED
 
-#include <fcppt/unique_ptr_impl.hpp>
 #include <fcppt/detail/make_ptr_base.hpp>
+#include <fcppt/config/external_begin.hpp>
+#include <memory>
+#include <fcppt/config/external_end.hpp>
+
 
 namespace fcppt
 {
 
 FCPPT_DETAIL_MAKE_PTR_BASE(
 	unique_ptr,
-	unique_ptr,
+	std::unique_ptr,
 	new Type
 )
 

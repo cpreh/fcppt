@@ -7,9 +7,12 @@
 #ifndef FCPPT_CONTAINER_TREE_DETAIL_ASSIGN_VALUE_HPP_INCLUDED
 #define FCPPT_CONTAINER_TREE_DETAIL_ASSIGN_VALUE_HPP_INCLUDED
 
-#include <fcppt/move.hpp>
 #include <fcppt/scoped_ptr_impl.hpp>
-#include <fcppt/unique_ptr_impl.hpp>
+#include <fcppt/config/external_begin.hpp>
+#include <memory>
+#include <utility>
+#include <fcppt/config/external_end.hpp>
+
 
 namespace fcppt
 {
@@ -29,13 +32,13 @@ assign_value(
 	fcppt::scoped_ptr<
 		Value
 	> &_result,
-	fcppt::unique_ptr<
+	std::unique_ptr<
 		Arg
 	> _arg
 )
 {
 	_result.take(
-		fcppt::move(
+		std::move(
 			_arg
 		)
 	);

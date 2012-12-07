@@ -7,11 +7,11 @@
 #ifndef FCPPT_PREPROCESSOR_DETAIL_ENUM_PARAMS_FORWARD_M_HPP_INCLUDED
 #define FCPPT_PREPROCESSOR_DETAIL_ENUM_PARAMS_FORWARD_M_HPP_INCLUDED
 
-#include <fcppt/forward.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/preprocessor/cat.hpp>
 #include <boost/preprocessor/punctuation/comma_if.hpp>
 #include <boost/preprocessor/tuple/elem.hpp>
+#include <utility>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -22,7 +22,7 @@
 	param2\
 )\
 	BOOST_PP_COMMA_IF(n) \
-	fcppt::forward<\
+	std::forward<\
 		BOOST_PP_CAT(param1, n)\
 	>(\
 		BOOST_PP_CAT(param2, n)\

@@ -9,7 +9,7 @@
 
 #include <fcppt/string.hpp>
 #include <fcppt/symbol.hpp>
-#include <fcppt/log/format/function_fwd.hpp>
+#include <fcppt/log/format/function.hpp>
 
 
 namespace fcppt

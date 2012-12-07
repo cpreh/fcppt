@@ -9,8 +9,9 @@
 
 #include <fcppt/detail/make_shared_wrapper_fwd.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/smart_ptr/shared_ptr.hpp>
+#include <memory>
 #include <fcppt/config/external_end.hpp>
+
 
 namespace fcppt
 {
@@ -23,15 +24,18 @@ template<
 class make_shared_wrapper
 {
 public:
-	typedef boost::shared_ptr<
+	typedef std::shared_ptr<
 		T
 	> ptr_type;
 
-	explicit make_shared_wrapper(
+	explicit
+	make_shared_wrapper(
 		ptr_type const _ptr
 	)
 	:
-		ptr_(_ptr)
+		ptr_(
+			_ptr
+		)
 	{
 	}
 

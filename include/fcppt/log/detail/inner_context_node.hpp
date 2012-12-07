@@ -19,7 +19,8 @@ namespace detail
 class inner_context_node
 {
 public:
-	explicit inner_context_node(
+	explicit
+	inner_context_node(
 		fcppt::string const &name
 	);
 

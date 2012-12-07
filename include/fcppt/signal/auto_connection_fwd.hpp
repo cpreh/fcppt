@@ -8,8 +8,10 @@
 #ifndef FCPPT_SIGNAL_AUTO_CONNECTION_FWD_HPP_INCLUDED
 #define FCPPT_SIGNAL_AUTO_CONNECTION_FWD_HPP_INCLUDED
 
-#include <fcppt/unique_ptr_fwd.hpp>
 #include <fcppt/signal/connection_fwd.hpp>
+#include <fcppt/config/external_begin.hpp>
+#include <memory>
+#include <fcppt/config/external_end.hpp>
 
 
 namespace fcppt
@@ -21,7 +23,7 @@ namespace signal
 \brief A unique pointer to a connection
 \ingroup fcpptsignal
 */
-typedef fcppt::unique_ptr<
+typedef std::unique_ptr<
 	fcppt::signal::connection
 > auto_connection;
 

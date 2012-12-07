@@ -7,7 +7,6 @@
 #ifndef FCPPT_OPTIONAL_IMPL_HPP_INCLUDED
 #define FCPPT_OPTIONAL_IMPL_HPP_INCLUDED
 
-#include <fcppt/null_ptr.hpp>
 #include <fcppt/optional_decl.hpp>
 #include <fcppt/detail/enable_optional_ref_conv.hpp>
 #include <fcppt/detail/enable_optional_value_conv.hpp>
@@ -25,7 +24,7 @@ fcppt::optional<T>::optional()
 :
 	storage_(),
 	data_(
-		fcppt::null_ptr()
+		nullptr
 	)
 {
 }
@@ -59,7 +58,7 @@ fcppt::optional<T>::optional(
 	optional<
 		Other
 	> const &_other,
-	typename detail::enable_optional_value_conv<
+	typename fcppt::detail::enable_optional_value_conv<
 		T,
 		Other,
 		void
@@ -196,7 +195,7 @@ fcppt::optional<T>::reset()
 {
 	this->destroy();
 
-	data_ = fcppt::null_ptr();
+	data_ = nullptr;
 }
 
 template<
@@ -216,7 +215,7 @@ bool
 fcppt::optional<T>::boolean_test() const
 {
 	return
-		data_ != fcppt::null_ptr();
+		data_ != nullptr;
 }
 
 template<
@@ -262,7 +261,7 @@ fcppt::optional<T>::construct(
 			static_cast<
 				pointer
 			>(
-				fcppt::null_ptr()
+				nullptr
 			);
 }
 
@@ -338,7 +337,7 @@ void
 fcppt::optional<T>::destroy()
 {
 	if(
-		data_ != fcppt::null_ptr()
+		data_ != nullptr
 	)
 		data_->~T();
 }
@@ -350,7 +349,7 @@ template<
 fcppt::optional<T &>::optional()
 :
 	data_(
-		fcppt::null_ptr()
+		nullptr
 	)
 {
 }
@@ -389,7 +388,7 @@ fcppt::optional<T &>::optional(
 		?
 			&*_other
 		:
-			fcppt::null_ptr()
+			nullptr
 	)
 {
 }
@@ -462,7 +461,7 @@ bool
 fcppt::optional<T &>::boolean_test() const
 {
 	return
-		data_ != fcppt::null_ptr();
+		data_ != nullptr;
 }
 
 /// \endcond FCPPT_DOXYGEN_DEBUG

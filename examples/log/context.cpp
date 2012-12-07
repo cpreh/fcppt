@@ -4,9 +4,7 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-//[logcontext
 #include <fcppt/text.hpp>
-#include <fcppt/function/object.hpp>
 #include <fcppt/io/cout.hpp>
 #include <fcppt/log/context.hpp>
 #include <fcppt/log/level.hpp>
@@ -14,7 +12,9 @@
 #include <fcppt/log/output.hpp>
 #include <fcppt/log/warning.hpp>
 #include <fcppt/log/parameters/with_context.hpp>
-#include <fcppt/tr1/functional.hpp>
+#include <fcppt/config/external_begin.hpp>
+#include <functional>
+#include <fcppt/config/external_end.hpp>
 
 
 int
@@ -68,9 +68,9 @@ main()
 		fcppt::log::location(
 			FCPPT_TEXT("root")
 		),
-		std::tr1::bind(
+		std::bind(
 			&fcppt::log::object::enable,
-			std::tr1::placeholders::_1,
+			std::placeholders::_1,
 			true
 		)
 	);

@@ -8,8 +8,10 @@
 #define FCPPT_CONTAINER_TREE_DETAIL_INIT_VALUE_HPP_INCLUDED
 
 #include <fcppt/scoped_ptr_impl.hpp>
-#include <fcppt/unique_ptr_impl.hpp>
 #include <fcppt/container/tree/copy_tree_value.hpp>
+#include <fcppt/config/external_begin.hpp>
+#include <memory>
+#include <fcppt/config/external_end.hpp>
 
 
 namespace fcppt
@@ -24,7 +26,7 @@ namespace detail
 template<
 	typename Arg
 >
-fcppt::unique_ptr<
+std::unique_ptr<
 	Arg
 >
 init_value(

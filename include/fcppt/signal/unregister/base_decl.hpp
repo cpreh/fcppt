@@ -9,13 +9,13 @@
 #define FCPPT_SIGNAL_UNREGISTER_BASE_DECL_HPP_INCLUDED
 
 #include <fcppt/noncopyable.hpp>
-#include <fcppt/function/object.hpp>
 #include <fcppt/signal/auto_connection_fwd.hpp>
 #include <fcppt/signal/unregister/base_fwd.hpp>
 #include <fcppt/signal/unregister/function.hpp>
 #include <fcppt/signal/unregister/detail/concrete_connection.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/intrusive/list.hpp>
+#include <functional>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -51,17 +51,17 @@ public:
 	/**
 	\brief A typedef for the wrapped function
 	*/
-	typedef fcppt::function::object<
+	typedef std::function<
 		T
 	> function_type;
 
 	/**
 	\brief Connect a callback to this signal
 	*/
-	signal::auto_connection
+	fcppt::signal::auto_connection
 	connect(
 		function_type const &,
-		unregister::function const &
+		fcppt::signal::unregister::function const &
 	);
 
 	/**
@@ -70,7 +70,7 @@ public:
 	bool
 	empty() const;
 protected:
-	typedef unregister::detail::concrete_connection<
+	typedef fcppt::signal::unregister::detail::concrete_connection<
 		function_signature
 	> concrete_connection;
 

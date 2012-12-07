@@ -6,7 +6,6 @@
 
 #include <fcppt/foreach_enumerator.hpp>
 #include <fcppt/make_shared_ptr.hpp>
-#include <fcppt/ref.hpp>
 #include <fcppt/container/array_impl.hpp>
 #include <fcppt/log/default_level_streams.hpp>
 #include <fcppt/log/level_stream.hpp>
@@ -15,26 +14,24 @@
 
 fcppt::log::level_stream_array const
 fcppt::log::default_level_streams(
-	io::ostream &_sink
+	fcppt::io::ostream &_sink
 )
 {
-	log::level_stream_array ret;
+	fcppt::log::level_stream_array ret;
 
 	FCPPT_FOREACH_ENUMERATOR(
 		index,
-		level
+		fcppt::log::level
 	)
 	{
 		ret[
 			index
 		] =
 			fcppt::make_shared_ptr<
-				log::level_stream
+				fcppt::log::level_stream
 			>(
-				fcppt::ref(
-					_sink
-				),
-				format::default_level(
+				_sink,
+				fcppt::log::format::default_level(
 					index
 				)
 			);

@@ -8,7 +8,10 @@
 #define FCPPT_CONTAINER_TREE_COPY_TREE_VALUE_HPP_INCLUDED
 
 #include <fcppt/make_unique_ptr.hpp>
-#include <fcppt/unique_ptr_impl.hpp>
+#include <fcppt/config/external_begin.hpp>
+#include <memory>
+#include <fcppt/config/external_end.hpp>
+
 
 namespace fcppt
 {
@@ -37,7 +40,7 @@ namespace mine
      ...
   };
 
-  fcppt::unique_ptr<
+  std::unique_ptr<
     mtype
   >
   copy_tree_value(
@@ -49,7 +52,7 @@ namespace mine
 template<
 	typename T
 >
-fcppt::unique_ptr<
+std::unique_ptr<
 	T
 >
 copy_tree_value(

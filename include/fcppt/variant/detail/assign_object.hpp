@@ -26,11 +26,14 @@ class assign_object
 		assign_object
 	);
 public:
-	explicit assign_object(
+	explicit
+	assign_object(
 		Variant &_left
 	)
 	:
-		left_(_left)
+		left_(
+			_left
+		)
 	{
 	}
 

@@ -52,7 +52,7 @@ fcppt::signal::object<\
 		z,\
 		BOOST_PP_INC(n),\
 		T,\
-		const &param\
+		&& param\
 	)\
 ) const\
 {\

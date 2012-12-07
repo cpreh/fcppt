@@ -5,12 +5,10 @@
 
 
 //! [signal_simple]
-#include <fcppt/ref.hpp>
 #include <fcppt/text.hpp>
 #include <fcppt/io/cout.hpp>
 #include <fcppt/signal/object.hpp>
 #include <fcppt/signal/scoped_connection.hpp>
-#include <fcppt/tr1/functional.hpp>
 
 
 namespace
@@ -72,9 +70,7 @@ int main()
 	// Note the use of fcppt::ref because the signal gets a non-const reference
 	// Outputs: "other_callback" called
 	signal2(
-		fcppt::ref(
-			my_foo
-		)
+		my_foo
 	);
 }
 //! [signal_simple]

@@ -8,7 +8,9 @@
 #include <fcppt/log/format/chain.hpp>
 #include <fcppt/log/format/create_chain.hpp>
 #include <fcppt/log/format/function.hpp>
-#include <fcppt/tr1/functional.hpp>
+#include <fcppt/config/external_begin.hpp>
+#include <functional>
+#include <fcppt/config/external_end.hpp>
 
 
 fcppt::log::format::function const
@@ -35,11 +37,11 @@ fcppt::log::format::create_chain(
 
 	return
 		fcppt::log::format::function(
-			std::tr1::bind(
+			std::bind(
 				fcppt::log::format::chain,
 				_parent,
 				_child,
-				std::tr1::placeholders::_1
+				std::placeholders::_1
 			)
 		);
 }

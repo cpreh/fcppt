@@ -218,7 +218,6 @@ set(
 	include/fcppt/container/tree/print.hpp
 	include/fcppt/container/tree/ptr_value.hpp
 	include/fcppt/container/tree/release.hpp
-	include/fcppt/cref.hpp
 	include/fcppt/cyclic_iterator.hpp
 	include/fcppt/cyclic_iterator_decl.hpp
 	include/fcppt/cyclic_iterator_fwd.hpp
@@ -235,11 +234,7 @@ set(
 	include/fcppt/detail/make_shared_wrapper_fwd.hpp
 	include/fcppt/detail/optional_cast.hpp
 	include/fcppt/detail/process_assert.hpp
-	include/fcppt/detail/rvalue_ref.hpp
-	include/fcppt/detail/rvalue_ref_fwd.hpp
 	include/fcppt/detail/safe_cast.hpp
-	include/fcppt/detail/static_assert_failure.hpp
-	include/fcppt/detail/static_assert_test.hpp
 	include/fcppt/detail/strong_typedef/assignment_operator.hpp
 	include/fcppt/detail/strong_typedef/binary_operator.hpp
 	include/fcppt/detail/strong_typedef/cast.hpp
@@ -279,21 +274,10 @@ set(
 	include/fcppt/foreach_enumerator_start.hpp
 	include/fcppt/foreach_enumerator_start_end.hpp
 	include/fcppt/format.hpp
-	include/fcppt/forward.hpp
 	include/fcppt/from_std_string.hpp
 	include/fcppt/from_std_string_locale.hpp
 	include/fcppt/from_std_wstring.hpp
 	include/fcppt/from_std_wstring_locale.hpp
-	include/fcppt/function/detail/clear_type.hpp
-	include/fcppt/function/detail/functor_wrapper.hpp
-	include/fcppt/function/detail/functor_wrapper_fwd.hpp
-	include/fcppt/function/detail/has_addressof_overload.hpp
-	include/fcppt/function/detail/impl/functor_wrapper_template.hpp
-	include/fcppt/function/impl/object_template.hpp
-	include/fcppt/function/object.hpp
-	include/fcppt/function/object_fwd.hpp
-	include/fcppt/heap_deleter.hpp
-	include/fcppt/heap_deleter_fwd.hpp
 	include/fcppt/homogenous_pair.hpp
 	include/fcppt/homogenous_pair_comparison.hpp
 	include/fcppt/homogenous_pair_decl.hpp
@@ -371,7 +355,6 @@ set(
 	include/fcppt/log/format/create_time_stamp.hpp
 	include/fcppt/log/format/default_level.hpp
 	include/fcppt/log/format/function.hpp
-	include/fcppt/log/format/function_fwd.hpp
 	include/fcppt/log/format/inserter.hpp
 	include/fcppt/log/format/time_stamp.hpp
 	include/fcppt/log/global.hpp
@@ -621,7 +604,6 @@ set(
 	include/fcppt/math/vector/unit.hpp
 	include/fcppt/micro_version.hpp
 	include/fcppt/minor_version.hpp
-	include/fcppt/move.hpp
 	include/fcppt/mpl/all_of.hpp
 	include/fcppt/mpl/append.hpp
 	include/fcppt/mpl/ceil_div.hpp
@@ -648,8 +630,6 @@ set(
 	include/fcppt/narrow.hpp
 	include/fcppt/nonassignable.hpp
 	include/fcppt/noncopyable.hpp
-	include/fcppt/null_ptr.hpp
-	include/fcppt/null_ptr_t.hpp
 	include/fcppt/number_multiplexer/object.hpp
 	include/fcppt/number_multiplexer/object_decl.hpp
 	include/fcppt/number_multiplexer/object_fwd.hpp
@@ -714,8 +694,6 @@ set(
 	include/fcppt/random/variate_decl.hpp
 	include/fcppt/random/variate_fwd.hpp
 	include/fcppt/random/variate_impl.hpp
-	include/fcppt/ref.hpp
-	include/fcppt/reference_wrapper.hpp
 	include/fcppt/safe_bool.hpp
 	include/fcppt/safe_cast.hpp
 	include/fcppt/safe_numeric_cast.hpp
@@ -764,8 +742,6 @@ set(
 	include/fcppt/signal/unregister/function.hpp
 	include/fcppt/spirit_traits/optional_basic.hpp
 	include/fcppt/spirit_traits/variant_basic.hpp
-	include/fcppt/static_assert_expression.hpp
-	include/fcppt/static_assert_statement.hpp
 	include/fcppt/static_optional_cast.hpp
 	include/fcppt/static_pointer_cast.hpp
 	include/fcppt/string.hpp
@@ -802,19 +778,6 @@ set(
 	include/fcppt/to_std_string_locale.hpp
 	include/fcppt/to_std_wstring.hpp
 	include/fcppt/to_std_wstring_locale.hpp
-	include/fcppt/tr1/array.hpp
-	include/fcppt/tr1/cmath.hpp
-	include/fcppt/tr1/complex.hpp
-	include/fcppt/tr1/detail/make_header.hpp
-	include/fcppt/tr1/functional.hpp
-	include/fcppt/tr1/memory.hpp
-	include/fcppt/tr1/random.hpp
-	include/fcppt/tr1/regex.hpp
-	include/fcppt/tr1/tuple.hpp
-	include/fcppt/tr1/type_traits.hpp
-	include/fcppt/tr1/unordered_map.hpp
-	include/fcppt/tr1/unordered_set.hpp
-	include/fcppt/tr1/utility.hpp
 	include/fcppt/truncation_check_cast.hpp
 	include/fcppt/try_dynamic_cast.hpp
 	include/fcppt/type_info.hpp
@@ -839,10 +802,6 @@ set(
 	include/fcppt/type_traits/is_random_access_iterator.hpp
 	include/fcppt/type_traits/is_string.hpp
 	include/fcppt/type_traits/is_unique_ptr.hpp
-	include/fcppt/unique_ptr.hpp
-	include/fcppt/unique_ptr_decl.hpp
-	include/fcppt/unique_ptr_fwd.hpp
-	include/fcppt/unique_ptr_impl.hpp
 	include/fcppt/variant/apply_binary.hpp
 	include/fcppt/variant/apply_ternary.hpp
 	include/fcppt/variant/apply_unary.hpp

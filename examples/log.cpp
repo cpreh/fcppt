@@ -8,7 +8,6 @@
 #include <fcppt/optional_impl.hpp>
 #include <fcppt/text.hpp>
 #include <fcppt/assert/error.hpp>
-#include <fcppt/function/object.hpp>
 #include <fcppt/io/cerr.hpp>
 #include <fcppt/io/cout.hpp>
 #include <fcppt/log/context.hpp>
@@ -19,9 +18,9 @@
 #include <fcppt/log/output.hpp>
 #include <fcppt/log/format/create_time_stamp.hpp>
 #include <fcppt/log/parameters/with_context.hpp>
-#include <fcppt/tr1/functional.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <cstdlib>
+#include <functional>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -112,9 +111,9 @@ try
 
 	context.apply(
 		root_location,
-		std::tr1::bind(
+		std::bind(
 			&fcppt::log::object::enable,
-			std::tr1::placeholders::_1,
+			std::placeholders::_1,
 			false
 		)
 	);

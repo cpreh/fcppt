@@ -4,7 +4,6 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/static_assert_statement.hpp>
 #include <fcppt/strong_typedef.hpp>
 #include <fcppt/preprocessor/disable_vc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
@@ -112,21 +111,23 @@ void update(time);
 void
 jogger::update(time tick_delta)
 {
-        elapsed_distance += distance(current_speed.get() * tick_delta.get());
+	elapsed_distance += distance(current_speed.get() * tick_delta.get());
 }
 //! [strong_typedef_for_overloading_guards_example]
 
 //! [strong_typedef_is_same]
 FCPPT_MAKE_STRONG_TYPEDEF(
-	        int,
-	        first);
+	int,
+	first);
 
 FCPPT_MAKE_STRONG_TYPEDEF(
-	        int,
-	        second);
+	int,
+	second);
 
-FCPPT_STATIC_ASSERT_STATEMENT((
-	!boost::is_same<first,second>::value));
+static_assert(
+	!boost::is_same<first,second>::value,
+	"Both types must be different"
+);
 //! [strong_typedef_is_same]
 
 }

@@ -8,7 +8,9 @@
 #include <fcppt/log/format/create_inserter.hpp>
 #include <fcppt/log/format/function.hpp>
 #include <fcppt/log/format/inserter.hpp>
-#include <fcppt/tr1/functional.hpp>
+#include <fcppt/config/external_begin.hpp>
+#include <functional>
+#include <fcppt/config/external_end.hpp>
 
 
 fcppt::log::format::function const
@@ -18,10 +20,10 @@ fcppt::log::format::create_inserter(
 {
 	return
 		fcppt::log::format::function(
-			std::tr1::bind(
+			std::bind(
 				fcppt::log::format::inserter,
 				_format,
-				std::tr1::placeholders::_1
+				std::placeholders::_1
 			)
 		);
 }

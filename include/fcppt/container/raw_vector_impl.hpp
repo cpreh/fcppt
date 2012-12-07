@@ -7,7 +7,6 @@
 #ifndef FCPPT_CONTAINER_RAW_VECTOR_IMPL_HPP_INCLUDED
 #define FCPPT_CONTAINER_RAW_VECTOR_IMPL_HPP_INCLUDED
 
-#include <fcppt/null_ptr.hpp>
 #include <fcppt/assert/pre.hpp>
 #include <fcppt/container/out_of_range.hpp>
 #include <fcppt/container/raw_vector_decl.hpp>
@@ -702,7 +701,7 @@ fcppt::container::raw_vector<T, A>::insert(
 		pointer const new_memory(
 			impl_.alloc_.allocate(
 				new_cap,
-				fcppt::null_ptr()
+				nullptr
 			)
 		);
 
@@ -787,7 +786,7 @@ fcppt::container::raw_vector<T, A>::insert(
 		pointer const new_memory(
 			impl_.alloc_.allocate(
 				new_cap,
-				fcppt::null_ptr()
+				nullptr
 			)
 		);
 
@@ -937,7 +936,7 @@ fcppt::container::raw_vector<T, A>::free_memory()
 	this->deallocate();
 
 	this->set_pointers(
-		fcppt::null_ptr(),
+		nullptr,
 		0u,
 		0u
 	);
@@ -1132,7 +1131,7 @@ fcppt::container::raw_vector<T, A>::reallocate(
 	pointer const new_memory(
 		impl_.alloc_.allocate(
 			_new_cap,
-			fcppt::null_ptr()
+			nullptr
 		)
 	);
 
@@ -1200,13 +1199,13 @@ fcppt::container::raw_vector<T,A>::impl::impl(
 		_alloc
 	),
 	first_(
-		fcppt::null_ptr()
+		nullptr
 	),
 	last_(
-		fcppt::null_ptr()
+		nullptr
 	),
 	cap_(
-		fcppt::null_ptr()
+		nullptr
 	)
 {
 }
@@ -1226,11 +1225,11 @@ fcppt::container::raw_vector<T,A>::impl::impl(
 	first_(
 		_size == 0u
 		?
-			fcppt::null_ptr()
+			nullptr
 		:
 			alloc_.allocate(
 				_size,
-				fcppt::null_ptr()
+				nullptr
 			)
 	),
 	last_(

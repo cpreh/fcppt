@@ -9,17 +9,21 @@
 #define FCPPT_SIGNAL_BASE_IMPL_HPP_INCLUDED
 
 #include <fcppt/make_unique_ptr.hpp>
-#include <fcppt/move.hpp>
 #include <fcppt/signal/auto_connection.hpp>
 #include <fcppt/signal/base_decl.hpp>
 #include <fcppt/signal/detail/concrete_connection_impl.hpp>
+#include <fcppt/config/external_begin.hpp>
+#include <utility>
+#include <fcppt/config/external_end.hpp>
 
 
 template<
 	typename T
 >
 fcppt::signal::auto_connection
-fcppt::signal::base<T>::connect(
+fcppt::signal::base<
+	T
+>::connect(
 	function_type const &_function
 )
 {
@@ -40,7 +44,7 @@ fcppt::signal::base<T>::connect(
 	);
 
 	return
-		fcppt::move(
+		std::move(
 			con
 		);
 }
@@ -49,7 +53,9 @@ template<
 	typename T
 >
 bool
-fcppt::signal::base<T>::empty() const
+fcppt::signal::base<
+	T
+>::empty() const
 {
 	return connections_.empty();
 }
@@ -57,7 +63,9 @@ fcppt::signal::base<T>::empty() const
 template<
 	typename T
 >
-fcppt::signal::base<T>::base()
+fcppt::signal::base<
+	T
+>::base()
 :
 	connections_()
 {
@@ -66,15 +74,21 @@ fcppt::signal::base<T>::base()
 template<
 	typename T
 >
-fcppt::signal::base<T>::~base()
+fcppt::signal::base<
+	T
+>::~base()
 {
 }
 
 template<
 	typename T
 >
-typename fcppt::signal::base<T>::connection_list &
-fcppt::signal::base<T>::connections() const
+typename fcppt::signal::base<
+	T
+>::connection_list &
+fcppt::signal::base<
+	T
+>::connections() const
 {
 	return connections_;
 }

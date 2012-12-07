@@ -7,7 +7,6 @@
 #ifndef FCPPT_TYPE_TRAITS_DETAIL_IS_ITERATOR_HPP_INCLUDED
 #define FCPPT_TYPE_TRAITS_DETAIL_IS_ITERATOR_HPP_INCLUDED
 
-#include <fcppt/null_ptr.hpp>
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
@@ -80,10 +79,10 @@ private:
 	static true_t
 	check(
 		T *,
-		typename T::iterator_category * = fcppt::null_ptr(),
-		typename T::value_type * = fcppt::null_ptr(),
-		typename T::difference_type * = fcppt::null_ptr(),
-		typename T::pointer * = fcppt::null_ptr()
+		typename T::iterator_category * = nullptr,
+		typename T::value_type * = nullptr,
+		typename T::difference_type * = nullptr,
+		typename T::pointer * = nullptr
 	);
 
 	static false_t

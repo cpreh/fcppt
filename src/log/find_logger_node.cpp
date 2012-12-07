@@ -5,27 +5,28 @@
 
 
 #include <fcppt/container/tree/object_impl.hpp>
+#include <fcppt/log/detail/context_tree.hpp>
 #include <fcppt/src/log/find_logger_node.hpp>
 #include <fcppt/src/log/is_outer_node.hpp>
-#include <fcppt/tr1/functional.hpp>
 #include <fcppt/variant/object_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <algorithm>
+#include <functional>
 #include <fcppt/config/external_end.hpp>
 
 
 fcppt::log::detail::context_tree::iterator
 fcppt::log::find_logger_node(
-	detail::context_tree &_tree
+	fcppt::log::detail::context_tree &_tree
 )
 {
 	return
 		std::find_if(
 			_tree.begin(),
 			_tree.end(),
-			std::tr1::bind(
-				log::is_outer_node,
-				std::tr1::placeholders::_1
+			std::bind(
+				fcppt::log::is_outer_node,
+				std::placeholders::_1
 			)
 		);
 }

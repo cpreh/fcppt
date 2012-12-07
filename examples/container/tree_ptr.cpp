@@ -4,7 +4,6 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-//[tree_ptr
 #include <fcppt/make_unique_ptr.hpp>
 #include <fcppt/noncopyable.hpp>
 #include <fcppt/text.hpp>
@@ -12,6 +11,9 @@
 #include <fcppt/container/tree/ptr_value.hpp>
 #include <fcppt/container/tree/release.hpp>
 #include <fcppt/io/cout.hpp>
+#include <fcppt/config/external_begin.hpp>
+#include <memory>
+#include <fcppt/config/external_end.hpp>
 
 
 namespace
@@ -24,11 +26,14 @@ class noncopyable
 		noncopyable
 	);
 public:
-	explicit noncopyable(
+	explicit
+	noncopyable(
 		int const _value
 	)
 	:
-		value_(_value)
+		value_(
+			_value
+		)
 	{
 	}
 
@@ -71,7 +76,7 @@ int main()
 
 	// we can also release the held value
 //! [tree_ptr_release]
-	typedef fcppt::unique_ptr<
+	typedef std::unique_ptr<
 		noncopyable
 	> noncopyable_unique_ptr;
 
@@ -85,9 +90,16 @@ int main()
 	// check that the internal scoped_ptr is now empty
 	// prints false
 	fcppt::io::cout()
-		<< std::boolalpha
-		<< node.holder()
-		<< FCPPT_TEXT('\n');
+		<<
+		std::boolalpha
+		<<
+			static_cast<
+				bool
+			>(
+				node.holder()
+			)
+		<<
+		FCPPT_TEXT('\n');
 
 	// output the obtained unique_ptr
 	// prints 42

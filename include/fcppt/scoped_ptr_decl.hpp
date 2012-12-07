@@ -8,11 +8,10 @@
 #define FCPPT_SCOPED_PTR_DECL_HPP_INCLUDED
 
 #include <fcppt/noncopyable.hpp>
-#include <fcppt/safe_bool.hpp>
 #include <fcppt/scoped_ptr_fwd.hpp>
-#include <fcppt/unique_ptr_fwd.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/type_traits/add_reference.hpp>
+#include <memory>
+#include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -42,10 +41,6 @@ class scoped_ptr
 	FCPPT_NONCOPYABLE(
 		scoped_ptr
 	);
-
-	FCPPT_SAFE_BOOL(
-		scoped_ptr
-	)
 public:
 	/**
 	\brief The element type, which is \a Type
@@ -55,7 +50,7 @@ public:
 	/**
 	\brief The reference type
 	*/
-	typedef typename boost::add_reference<
+	typedef typename std::add_lvalue_reference<
 		Type
 	>::type reference;
 
@@ -104,7 +99,7 @@ public:
 	>
 	explicit
 	scoped_ptr(
-		fcppt::unique_ptr<
+		std::unique_ptr<
 			Other,
 			Deleter
 		> ref
@@ -199,7 +194,7 @@ public:
 	>
 	void
 	take(
-		fcppt::unique_ptr<
+		std::unique_ptr<
 			Other,
 			Deleter
 		> ptr
@@ -212,15 +207,20 @@ public:
 	scoped_ptr empty. If this scoped_ptr was already empty, then the
 	returned unique_ptr will also be empty.
 	*/
-	fcppt::unique_ptr<
+	std::unique_ptr<
 		Type,
 		Deleter
 	>
 	release();
-private:
-	bool
-	boolean_test() const;
 
+	/**
+	\brief Explicit bool conversion
+
+	Returns true if the <code>get() == nullptr</code>
+	*/
+	explicit
+	operator bool() const;
+private:
 	pointer ptr_;
 };
 

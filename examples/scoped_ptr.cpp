@@ -12,13 +12,14 @@
 #include <fcppt/io/cout.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <cstdlib>
+#include <memory>
 #include <fcppt/config/external_end.hpp>
 
 namespace
 {
 
 //! [scoped_ptr_factory_decl]
-typedef fcppt::unique_ptr<
+typedef std::unique_ptr<
 	int
 > int_unique_ptr;
 

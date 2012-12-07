@@ -7,10 +7,8 @@
 #ifndef FCPPT_OPTIONAL_DECL_HPP_INCLUDED
 #define FCPPT_OPTIONAL_DECL_HPP_INCLUDED
 
-#include <fcppt/null_ptr.hpp>
 #include <fcppt/optional_fwd.hpp>
 #include <fcppt/safe_bool.hpp>
-#include <fcppt/static_assert_statement.hpp>
 #include <fcppt/alignment/array.hpp>
 #include <fcppt/detail/enable_optional_ref_conv.hpp>
 #include <fcppt/detail/enable_optional_value_conv.hpp>
@@ -41,10 +39,11 @@ class optional
 		optional
 	)
 public:
-	FCPPT_STATIC_ASSERT_STATEMENT(
+	static_assert(
 		!boost::is_const<
 			T
-		>::value
+		>::value,
+		"optionals can't hold const types"
 	);
 
 	/**
@@ -108,14 +107,14 @@ public:
 	>
 	explicit
 	optional(
-		optional<
+		fcppt::optional<
 			Other
 		> const &other,
-		typename detail::enable_optional_value_conv<
+		typename fcppt::detail::enable_optional_value_conv<
 			T,
 			Other,
 			void
-		>::type const * = fcppt::null_ptr()
+		>::type const * = nullptr
 	);
 
 	/**
@@ -180,7 +179,7 @@ public:
 	template<
 		typename Other
 	>
-	typename detail::enable_optional_value_conv<
+	typename fcppt::detail::enable_optional_value_conv<
 		T,
 		Other,
 		optional &
@@ -441,7 +440,7 @@ public:
 		typename detail::enable_optional_ref_conv<
 			T,
 			Other
-		>::type * = fcppt::null_ptr()
+		>::type * = nullptr
 	);
 
 	/**

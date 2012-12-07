@@ -4,16 +4,20 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/unique_ptr.hpp>
 #include <fcppt/make_unique_ptr.hpp>
+#include <fcppt/shared_ptr_impl.hpp>
 #include <fcppt/io/cout.hpp>
 #include <fcppt/text.hpp>
+#include <fcppt/config/external_begin.hpp>
+#include <memory>
+#include <utility>
+#include <fcppt/config/external_end.hpp>
 
 namespace
 {
 
 //! [unique_ptr_factory]
-typedef fcppt::unique_ptr<
+typedef std::unique_ptr<
 	int
 > unique_int_ptr;
 
@@ -54,8 +58,6 @@ test()
 //! [unique_ptr_factory_use]
 
 
-#include <fcppt/move.hpp>
-
 //! [unique_ptr_move]
 unique_int_ptr
 test2()
@@ -71,7 +73,7 @@ test2()
 
 	// ptr must be moved here to take ownership away from it
 	return
-		fcppt::move(
+		std::move(
 			ptr
 		);
 }
@@ -98,7 +100,7 @@ test3()
 
 	// Make the move explicit
 	int_ptr_arg(
-		fcppt::move(
+		std::move(
 			ptr
 		)
 	);
@@ -112,8 +114,6 @@ test3()
 }
 
 //[unique_ptr_shared_ptr
-
-#include <fcppt/shared_ptr_impl.hpp>
 
 //<-
 namespace
@@ -133,7 +133,7 @@ to_shared_ptr(
 	// note: move is found via ADL
 	return
 		shared_int_ptr(
-			fcppt::move(
+			std::move(
 				ptr
 			)
 		);
@@ -166,7 +166,7 @@ struct dervied
 void
 test4()
 {
-	typedef fcppt::unique_ptr<
+	typedef std::unique_ptr<
 		base
 	> base_ptr;
 

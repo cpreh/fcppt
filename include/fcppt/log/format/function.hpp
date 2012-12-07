@@ -7,8 +7,34 @@
 #ifndef FCPPT_LOG_FORMAT_FUNCTION_HPP_INCLUDED
 #define FCPPT_LOG_FORMAT_FUNCTION_HPP_INCLUDED
 
-#include <fcppt/function/object.hpp>
-#include <fcppt/log/format/function_fwd.hpp>
+#include <fcppt/string.hpp>
+#include <fcppt/config/external_begin.hpp>
+#include <functional>
+#include <fcppt/config/external_end.hpp>
 
+
+namespace fcppt
+{
+namespace log
+{
+namespace format
+{
+
+/**
+\brief A formatter function object
+
+\ingroup fcpptlog
+
+This object gets a string from which it returns a new string
+*/
+typedef std::function<
+	fcppt::string const (
+		fcppt::string const &
+	)
+> function;
+
+}
+}
+}
 
 #endif

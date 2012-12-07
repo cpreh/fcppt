@@ -8,7 +8,6 @@
 #define FCPPT_CONTAINER_TREE_OBJECT_DECL_HPP_INCLUDED
 
 #include <fcppt/scoped_ptr_decl.hpp>
-#include <fcppt/unique_ptr_fwd.hpp>
 #include <fcppt/container/tree/is_ptr_value.hpp>
 #include <fcppt/container/tree/object_fwd.hpp>
 #include <fcppt/mpl/inner.hpp>
@@ -17,6 +16,7 @@
 #include <boost/mpl/identity.hpp>
 #include <boost/mpl/if.hpp>
 #include <boost/ptr_container/ptr_list.hpp>
+#include <memory>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -41,7 +41,7 @@ public:
 		object
 	> child_list;
 
-	typedef fcppt::unique_ptr<
+	typedef std::unique_ptr<
 		object
 	> unique_ptr;
 
@@ -66,7 +66,7 @@ public:
 
 	// support for ptr_tree
 
-	typedef tree::is_ptr_value<
+	typedef fcppt::container::tree::is_ptr_value<
 		T
 	> is_ptr_tree;
 
@@ -84,7 +84,7 @@ public:
 	/// The type to forward to other functions (either <code>T</code> or <code>unique_ptr<T></code>)
 	typedef typename boost::mpl::if_<
 		is_ptr_tree,
-		fcppt::unique_ptr<
+		std::unique_ptr<
 			stored_type
 		>,
 		stored_type
@@ -110,7 +110,8 @@ public:
 	object();
 
 	/// Constructs the object using the given value
-	explicit object(
+	explicit
+	object(
 		arg_type
 	);
 
@@ -490,8 +491,8 @@ template<
 >
 bool
 operator==(
-	object<T> const &,
-	object<T> const &
+	fcppt::container::tree::object<T> const &,
+	fcppt::container::tree::object<T> const &
 );
 
 /**
@@ -504,8 +505,8 @@ template<
 >
 bool
 operator!=(
-	object<T> const &,
-	object<T> const &
+	fcppt::container::tree::object<T> const &,
+	fcppt::container::tree::object<T> const &
 );
 
 /**
@@ -516,8 +517,8 @@ template<
 >
 void
 swap(
-	object<T> &,
-	object<T> &
+	fcppt::container::tree::object<T> &,
+	fcppt::container::tree::object<T> &
 );
 
 }

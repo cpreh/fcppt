@@ -11,11 +11,11 @@
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
-#include <fcppt/tr1/functional.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/asio/io_service.hpp>
 #include <boost/chrono/duration.hpp>
 #include <boost/test/unit_test.hpp>
+#include <functional>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -55,7 +55,7 @@ FCPPT_PP_POP_WARNING
 	);
 
 	deadline_timer.async_wait(
-		std::tr1::bind(
+		std::bind(
 			run_to_true
 		)
 	);
@@ -92,7 +92,7 @@ FCPPT_PP_POP_WARNING
 	);
 
 	deadline_timer.async_wait(
-		std::tr1::bind(
+		std::bind(
 			run_to_true
 		)
 	);

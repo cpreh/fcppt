@@ -10,7 +10,7 @@
 #include <fcppt/shared_ptr_fwd.hpp>
 #include <fcppt/weak_ptr_fwd.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/weak_ptr.hpp>
+#include <memory>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -42,7 +42,7 @@ public:
 	\brief The type if the <code>boost::weak_ptr</code> used to implement
 	this class
 	*/
-	typedef boost::weak_ptr<
+	typedef std::weak_ptr<
 		Type
 	> impl_type;
 
@@ -168,7 +168,7 @@ public:
 	\brief Returns the underlying <code>boost::weak_ptr</code> object
 	*/
 	impl_type const
-	boost_ptr() const;
+	std_ptr() const;
 private:
 	impl_type impl_;
 };

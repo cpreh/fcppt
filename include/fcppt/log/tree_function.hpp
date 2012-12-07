@@ -7,8 +7,10 @@
 #ifndef FCPPT_LOG_TREE_FUNCTION_HPP_INCLUDED
 #define FCPPT_LOG_TREE_FUNCTION_HPP_INCLUDED
 
-#include <fcppt/function/object_fwd.hpp>
 #include <fcppt/log/object_fwd.hpp>
+#include <fcppt/config/external_begin.hpp>
+#include <functional>
+#include <fcppt/config/external_end.hpp>
 
 
 namespace fcppt
@@ -24,7 +26,7 @@ namespace log
 This function object type can be used with a logger context to manipulate
 loggers through \link fcppt::log::context::apply \endlink.
 */
-typedef fcppt::function::object<
+typedef std::function<
 	void (
 		fcppt::log::object &
 	)

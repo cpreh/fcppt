@@ -8,12 +8,12 @@
 #ifndef FCPPT_ALGORITHM_SHIFT_COMPARE_HPP_INCLUDED
 #define FCPPT_ALGORITHM_SHIFT_COMPARE_HPP_INCLUDED
 
-#include <fcppt/tr1/functional.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/range/numeric.hpp>
 #include <algorithm>
 #include <functional>
 #include <fcppt/config/external_end.hpp>
+
 
 namespace fcppt
 {
@@ -47,10 +47,10 @@ shift_compare(
 			::std::find_if(
 				b.begin(),
 				b.end(),
-				::std::tr1::bind(
+				::std::bind(
 					is_equal,
 					*a.begin(),
-					::std::tr1::placeholders::_1));
+					::std::placeholders::_1));
 
 	if (first_in_second == b.end())
 		return false;

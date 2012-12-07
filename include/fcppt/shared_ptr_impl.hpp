@@ -7,15 +7,13 @@
 #ifndef FCPPT_SHARED_PTR_IMPL_HPP_INCLUDED
 #define FCPPT_SHARED_PTR_IMPL_HPP_INCLUDED
 
-#include <fcppt/heap_deleter.hpp>
 #include <fcppt/shared_ptr_decl.hpp>
-#include <fcppt/static_assert_expression.hpp>
-#include <fcppt/unique_ptr_fwd.hpp>
 #include <fcppt/weak_ptr_fwd.hpp>
 #include <fcppt/detail/make_shared_wrapper.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/type_traits/is_same.hpp>
 #include <algorithm>
+#include <memory>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -118,7 +116,7 @@ fcppt::shared_ptr<
 )
 :
 	impl_(
-		_other.boost_ptr()
+		_other.std_ptr()
 	)
 {
 }
@@ -135,17 +133,25 @@ fcppt::shared_ptr<
 	Deleter
 >::shared_ptr(
 	fcppt::shared_ptr<
-		Other,
-		Deleter
+		Other
 	> const & _other,
-	boost::detail::static_cast_tag
+	pointer const _data
 )
 :
 	impl_(
-		_other.boost_ptr(),
-		boost::detail::static_cast_tag()
+		_other.std_ptr(),
+		_data
 	)
 {
+	static_assert(
+		boost::is_same<
+			Deleter,
+			std::default_delete<
+				Type
+			>
+		>::value,
+		"storing a different pointer in a shared_ptr only works with default_delete"
+	);
 }
 
 template<
@@ -159,82 +165,7 @@ fcppt::shared_ptr<
 	Type,
 	Deleter
 >::shared_ptr(
-	fcppt::shared_ptr<
-		Other,
-		Deleter
-	> const &_other,
-	boost::detail::const_cast_tag
-)
-:
-	impl_(
-		_other.boost_ptr(),
-		boost::detail::const_cast_tag()
-	)
-{
-}
-
-template<
-	typename Type,
-	typename Deleter
->
-template<
-	typename Other
->
-fcppt::shared_ptr<
-	Type,
-	Deleter
->::shared_ptr(
-	fcppt::shared_ptr<
-		Other,
-		Deleter
-	> const &_other,
-	boost::detail::dynamic_cast_tag
-)
-:
-	impl_(
-		_other.boost_ptr(),
-		boost::detail::dynamic_cast_tag()
-	)
-{
-}
-
-template<
-	typename Type,
-	typename Deleter
->
-template<
-	typename Other
->
-fcppt::shared_ptr<
-	Type,
-	Deleter
->::shared_ptr(
-	fcppt::shared_ptr<
-		Other,
-		Deleter
-	> const &_other,
-	boost::detail::polymorphic_cast_tag
-)
-:
-	impl_(
-		_other.boost_ptr(),
-		boost::detail::polymorphic_cast_tag()
-	)
-{
-}
-
-template<
-	typename Type,
-	typename Deleter
->
-template<
-	typename Other
->
-fcppt::shared_ptr<
-	Type,
-	Deleter
->::shared_ptr(
-	fcppt::unique_ptr<
+	std::unique_ptr<
 		Other,
 		Deleter
 	> _other
@@ -288,7 +219,7 @@ fcppt::shared_ptr<
 	Type,
 	Deleter
 >::operator=(
-	fcppt::unique_ptr<
+	std::unique_ptr<
 		Other,
 		Deleter
 	> _other
@@ -428,10 +359,7 @@ fcppt::shared_ptr<
 	Type,
 	Deleter
 >::operator
-typename fcppt::shared_ptr<
-	Type,
-	Deleter
->::unspecified_bool_type() const
+bool() const
 {
 	return impl_;
 }
@@ -495,7 +423,7 @@ typename fcppt::shared_ptr<
 fcppt::shared_ptr<
 	Type,
 	Deleter
->::boost_ptr() const
+>::std_ptr() const
 {
 	return impl_;
 }
@@ -520,12 +448,15 @@ fcppt::shared_ptr<
 		_other.get()
 	)
 {
-	FCPPT_STATIC_ASSERT_EXPRESSION((
+	static_assert(
 		boost::is_same<
 			Deleter,
-			fcppt::heap_deleter
-		>::value
-	));
+			std::default_delete<
+				Type
+			>
+		>::value,
+		"make_shared_ptr only works with default_delete"
+	);
 }
 
 template<
@@ -539,7 +470,7 @@ fcppt::shared_ptr<
 	Type,
 	Deleter
 >::shared_ptr(
-	boost::shared_ptr<
+	std::shared_ptr<
 		Other
 	> const _other
 )
@@ -568,7 +499,7 @@ fcppt::operator==(
 )
 {
 	return
-		_a.boost_ptr() == _b.boost_ptr();
+		_a.std_ptr() == _b.std_ptr();
 }
 
 template<
@@ -589,7 +520,7 @@ fcppt::operator!=(
 )
 {
 	return
-		_a.boost_ptr() != _b.boost_ptr();
+		_a.std_ptr() != _b.std_ptr();
 }
 
 template<
@@ -610,7 +541,7 @@ fcppt::operator<(
 )
 {
 	return
-		_a.boost_ptr() < _b.boost_ptr();
+		_a.std_ptr() < _b.std_ptr();
 }
 
 template<

@@ -5,10 +5,12 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/move.hpp>
 #include <fcppt/signal/auto_connection.hpp>
 #include <fcppt/signal/connection_manager.hpp>
 #include <fcppt/signal/shared_connection.hpp>
+#include <fcppt/config/external_begin.hpp>
+#include <utility>
+#include <fcppt/config/external_end.hpp>
 
 
 fcppt::signal::connection_manager::connection_manager()
@@ -38,7 +40,7 @@ fcppt::signal::connection_manager::add(
 {
 	connections_.push_back(
 		fcppt::signal::shared_connection(
-			fcppt::move(
+			std::move(
 				_con
 			)
 		)

@@ -7,7 +7,6 @@
 #ifndef FCPPT_LOG_CONTEXT_LOCATION_HPP_INCLUDED
 #define FCPPT_LOG_CONTEXT_LOCATION_HPP_INCLUDED
 
-#include <fcppt/reference_wrapper.hpp>
 #include <fcppt/symbol.hpp>
 #include <fcppt/log/context_fwd.hpp>
 #include <fcppt/log/context_location_fwd.hpp>
@@ -60,11 +59,7 @@ public:
 	fcppt::log::location const &
 	location() const;
 private:
-	typedef fcppt::reference_wrapper<
-		fcppt::log::context
-	> context_reference;
-
-	context_reference context_;
+	fcppt::log::context *context_;
 
 	fcppt::log::location location_;
 };

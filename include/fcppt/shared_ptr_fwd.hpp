@@ -7,7 +7,9 @@
 #ifndef FCPPT_SHARED_PTR_FWD_HPP_INCLUDED
 #define FCPPT_SHARED_PTR_FWD_HPP_INCLUDED
 
-#include <fcppt/heap_deleter_fwd.hpp>
+#include <fcppt/config/external_begin.hpp>
+#include <memory>
+#include <fcppt/config/external_end.hpp>
 
 
 namespace fcppt
@@ -15,7 +17,10 @@ namespace fcppt
 
 template<
 	typename Type,
-	typename Deleter = fcppt::heap_deleter
+	typename Deleter =
+		std::default_delete<
+			Type
+		>
 >
 class shared_ptr;
 

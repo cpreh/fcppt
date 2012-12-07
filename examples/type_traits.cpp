@@ -4,7 +4,6 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/static_assert_statement.hpp>
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
@@ -42,20 +41,22 @@ struct orange
 };
 
 // apple has a worm function
-FCPPT_STATIC_ASSERT_STATEMENT((
+static_assert(
 	has_worm<
 		apple,
 		void (apple::*)()
-	>::value
-));
+	>::value,
+	"apples have worms"
+);
 
 // orange doesn't have a worm function
-FCPPT_STATIC_ASSERT_STATEMENT((
+static_assert(
 	!has_worm<
 		orange,
 		void (orange::*)()
-	>::value
-));
+	>::value,
+	"oranges have no worms"
+);
 // ![generate_has_member_function]
 
 // ![generate_has_type]
@@ -72,16 +73,18 @@ struct container
 	typedef int *iterator;
 };
 
-FCPPT_STATIC_ASSERT_STATEMENT(
+static_assert(
 	has_iterator<
 		container
-	>::value
+	>::value,
+	"container has an iterator"
 );
 
-FCPPT_STATIC_ASSERT_STATEMENT(
+static_assert(
 	!has_iterator<
 		normal
-	>::value
+	>::value,
+	"normal doesn't have an iterator"
 );
 // ![generate_has_type]
 

@@ -8,7 +8,6 @@
 #define FCPPT_CONTAINER_BITFIELD_OBJECT_DECL_HPP_INCLUDED
 
 #include <fcppt/safe_bool.hpp>
-#include <fcppt/static_assert_statement.hpp>
 #include <fcppt/container/array_decl.hpp>
 #include <fcppt/container/bitfield/array.hpp>
 #include <fcppt/container/bitfield/iterator_fwd.hpp>
@@ -50,10 +49,11 @@ class object
 		object
 	)
 private:
-	FCPPT_STATIC_ASSERT_STATEMENT(
+	static_assert(
 		boost::is_unsigned<
 			InternalType
-		>::value
+		>::value,
+		"InternalType must be unsigned"
 	);
 
 	typedef typename fcppt::container::bitfield::array<

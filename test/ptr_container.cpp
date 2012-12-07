@@ -5,7 +5,6 @@
 
 
 #include <fcppt/make_unique_ptr.hpp>
-#include <fcppt/unique_ptr.hpp>
 #include <fcppt/container/ptr/insert_unique_ptr.hpp>
 #include <fcppt/container/ptr/insert_unique_ptr_map.hpp>
 #include <fcppt/container/ptr/insert_unique_ptr_multimap.hpp>
@@ -20,6 +19,7 @@
 #include <boost/ptr_container/ptr_set.hpp>
 #include <boost/ptr_container/ptr_vector.hpp>
 #include <boost/test/unit_test.hpp>
+#include <string>
 #include <fcppt/config/external_end.hpp>
 
 

@@ -10,9 +10,9 @@
 #include <fcppt/signal/object.hpp>
 #include <fcppt/signal/scoped_connection.hpp>
 #include <fcppt/signal/unregister/base.hpp>
-#include <fcppt/tr1/functional.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/test/unit_test.hpp>
+#include <functional>
 #include <vector>
 #include <fcppt/config/external_end.hpp>
 
@@ -61,7 +61,7 @@ FCPPT_PP_POP_WARNING
 		fcppt::signal::scoped_connection const con1(
 			sig.connect(
 				::empty_function,
-				std::tr1::bind(
+				std::bind(
 					::unregister,
 					42
 				)
@@ -81,7 +81,7 @@ FCPPT_PP_POP_WARNING
 		fcppt::signal::scoped_connection const con2(
 			sig.connect(
 				::empty_function,
-				std::tr1::bind(
+				std::bind(
 					::unregister,
 					100
 				)

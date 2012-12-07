@@ -4,9 +4,7 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/ref.hpp>
 #include <fcppt/text.hpp>
-#include <fcppt/function/object.hpp>
 #include <fcppt/io/ostream.hpp>
 #include <fcppt/log/context.hpp>
 #include <fcppt/log/location.hpp>
@@ -14,7 +12,9 @@
 #include <fcppt/log/optional_location.hpp>
 #include <fcppt/log/print_locations.hpp>
 #include <fcppt/log/tree_function.hpp>
-#include <fcppt/tr1/functional.hpp>
+#include <fcppt/config/external_begin.hpp>
+#include <functional>
+#include <fcppt/config/external_end.hpp>
 
 
 namespace
@@ -38,12 +38,12 @@ fcppt::log::print_locations(
 	_context.apply(
 		_location,
 		fcppt::log::tree_function(
-			std::tr1::bind(
+			std::bind(
 				&do_print,
-				fcppt::ref(
+				std::ref(
 					_stream
 				),
-				std::tr1::placeholders::_1
+				std::placeholders::_1
 			)
 		)
 	);

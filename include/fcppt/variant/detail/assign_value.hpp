@@ -8,7 +8,6 @@
 #define FCPPT_VARIANT_DETAIL_ASSIGN_VALUE_HPP_INCLUDED
 
 #include <fcppt/nonassignable.hpp>
-#include <fcppt/static_assert_expression.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/type_traits/is_const.hpp>
 #include <boost/type_traits/is_same.hpp>
@@ -32,11 +31,14 @@ class assign_value
 		assign_value
 	);
 public:
-	explicit assign_value(
+	explicit
+	assign_value(
 		Value const &_value
 	)
 	:
-		value_(_value)
+		value_(
+			_value
+		)
 	{
 	}
 
@@ -56,10 +58,11 @@ public:
 		T &_left
 	) const
 	{
-		FCPPT_STATIC_ASSERT_EXPRESSION(
+		static_assert(
 			!boost::is_const<
 				T
-			>::value
+			>::value,
+			"T must be const"
 		);
 
 		_left = value_;
@@ -79,10 +82,11 @@ public:
 		T &
 	) const
 	{
-		FCPPT_STATIC_ASSERT_EXPRESSION(
+		static_assert(
 			!boost::is_const<
 				T
-			>::value
+			>::value,
+			"T must be const"
 		);
 	}
 private:

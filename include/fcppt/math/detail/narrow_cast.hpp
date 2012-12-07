@@ -7,7 +7,6 @@
 #ifndef FCPPT_MATH_DETAIL_NARROW_CAST_HPP_INCLUDED
 #define FCPPT_MATH_DETAIL_NARROW_CAST_HPP_INCLUDED
 
-#include <fcppt/static_assert_expression.hpp>
 #include <fcppt/math/detail/structure_cast_fun.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/iterator/transform_iterator.hpp>
@@ -37,12 +36,13 @@ narrow_cast(
 
 	op_type const op = op_type();
 
-	FCPPT_STATIC_ASSERT_EXPRESSION((
+	static_assert(
 		boost::mpl::less<
 			typename T::dim_wrapper,
 			typename U::dim_wrapper
-		>::value
-	));
+		>::value,
+		"narrow_cast can only cast to types with lesser dimensions"
+	);
 
 	return
 		T(

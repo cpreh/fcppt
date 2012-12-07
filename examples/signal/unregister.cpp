@@ -10,7 +10,9 @@
 #include <fcppt/signal/object.hpp>
 #include <fcppt/signal/scoped_connection.hpp>
 #include <fcppt/signal/unregister/base.hpp>
-#include <fcppt/tr1/functional.hpp>
+#include <fcppt/config/external_begin.hpp>
+#include <functional>
+#include <fcppt/config/external_end.hpp>
 
 
 namespace
@@ -51,7 +53,7 @@ int main()
 		fcppt::signal::scoped_connection const connection(
 			signal.connect(
 				::dummy_function,
-				std::tr1::bind(
+				std::bind(
 					::on_unregister,
 					42
 				)

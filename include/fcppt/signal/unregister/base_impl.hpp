@@ -9,11 +9,13 @@
 #define FCPPT_SIGNAL_UNREGISTER_BASE_IMPL_HPP_INCLUDED
 
 #include <fcppt/make_unique_ptr.hpp>
-#include <fcppt/move.hpp>
 #include <fcppt/signal/auto_connection.hpp>
 #include <fcppt/signal/unregister/base_decl.hpp>
 #include <fcppt/signal/unregister/function.hpp>
 #include <fcppt/signal/unregister/detail/concrete_connection_impl.hpp>
+#include <fcppt/config/external_begin.hpp>
+#include <utility>
+#include <fcppt/config/external_end.hpp>
 
 
 template<
@@ -22,7 +24,7 @@ template<
 fcppt::signal::auto_connection
 fcppt::signal::unregister::base<T>::connect(
 	function_type const &_function,
-	unregister::function const &_unregister
+	fcppt::signal::unregister::function const &_unregister
 )
 {
 	auto_connection con(
@@ -43,7 +45,7 @@ fcppt::signal::unregister::base<T>::connect(
 	);
 
 	return
-		fcppt::move(
+		std::move(
 			con
 		);
 }
