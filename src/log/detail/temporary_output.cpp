@@ -4,21 +4,34 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/make_shared_ptr.hpp>
+#include <fcppt/string.hpp>
 #include <fcppt/log/detail/temporary_output.hpp>
+#include <fcppt/config/external_begin.hpp>
+#include <utility>
+#include <fcppt/config/external_end.hpp>
 
 
 fcppt::log::detail::temporary_output::temporary_output()
 :
+	stream_()
+{
+}
+
+fcppt::log::detail::temporary_output::temporary_output(
+	fcppt::log::detail::temporary_output &&_other
+)
+:
 	stream_(
-		fcppt::make_shared_ptr<
-			io::ostringstream
-		>()
+		std::move(
+			_other.stream_
+		)
 	)
-{}
+{
+}
+
 
 fcppt::string const
 fcppt::log::detail::temporary_output::result() const
 {
-	return stream_->str();
+	return stream_.str();
 }

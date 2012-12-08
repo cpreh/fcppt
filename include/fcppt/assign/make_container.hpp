@@ -33,15 +33,28 @@ public:
 		typename container_type::const_reference
 	);
 
+	explicit
+	make_container(
+		typename container_type::value_type &&
+	);
+
 	make_container &
 	operator()(
 		typename container_type::const_reference
+	);
+
+	make_container &
+	operator()(
+		typename container_type::value_type &&
 	);
 
 	operator Container() const;
 
 	container_type const &
 	container() const;
+
+	container_type &&
+	move_container();
 private:
 	container_type container_;
 };

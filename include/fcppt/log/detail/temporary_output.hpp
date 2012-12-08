@@ -7,7 +7,7 @@
 #ifndef FCPPT_LOG_DETAIL_TEMPORARY_OUTPUT_HPP_INCLUDED
 #define FCPPT_LOG_DETAIL_TEMPORARY_OUTPUT_HPP_INCLUDED
 
-#include <fcppt/shared_ptr_impl.hpp>
+#include <fcppt/noncopyable.hpp>
 #include <fcppt/string.hpp>
 #include <fcppt/symbol.hpp>
 #include <fcppt/io/ostringstream.hpp>
@@ -15,6 +15,7 @@
 #include <fcppt/log/detail/temporary_output_fwd.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <ostream>
+#include <utility>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -27,25 +28,31 @@ namespace detail
 
 class temporary_output
 {
+	FCPPT_NONCOPYABLE(
+		temporary_output
+	);
 public:
 	FCPPT_SYMBOL
 	temporary_output();
 
 	FCPPT_SYMBOL
+	temporary_output(
+		temporary_output &&
+	);
+
+	FCPPT_SYMBOL
 	fcppt::string const
 	result() const;
 private:
-	fcppt::shared_ptr<
-		fcppt::io::ostringstream
-	> stream_;
+	fcppt::io::ostringstream stream_;
 
 	template<
 		typename T
 	>
 	friend
-	fcppt::log::detail::temporary_output const
+	fcppt::log::detail::temporary_output &&
 	operator<<(
-		fcppt::log::detail::temporary_output const &,
+		fcppt::log::detail::temporary_output &&,
 		T const &
 	);
 };
@@ -53,7 +60,7 @@ private:
 template<
 	typename T
 >
-fcppt::log::detail::temporary_output const
+fcppt::log::detail::temporary_output &&
 operator<<(
 	fcppt::log::detail::output_helper const &,
 	T const &_arg
@@ -67,19 +74,18 @@ operator<<(
 template<
 	typename T
 >
-fcppt::log::detail::temporary_output const
+fcppt::log::detail::temporary_output &&
 operator<<(
-	fcppt::log::detail::temporary_output const &_temp,
+	fcppt::log::detail::temporary_output &&_temp,
 	T const &_arg
 )
 {
-	fcppt::log::detail::temporary_output new_temp(
-		_temp
-	);
+	_temp.stream_ << _arg;
 
-	*new_temp.stream_ << _arg;
-
-	return new_temp;
+	return
+		std::move(
+			_temp
+		);
 }
 
 }

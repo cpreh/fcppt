@@ -12,7 +12,6 @@
 #include <fcppt/symbol.hpp>
 #include <fcppt/signal/auto_connection_fwd.hpp>
 #include <fcppt/signal/connection_manager_fwd.hpp>
-#include <fcppt/signal/shared_connection.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/ptr_container/ptr_vector.hpp>
 #include <fcppt/config/external_end.hpp>
@@ -30,7 +29,7 @@ class connection_manager
 	);
 public:
 	typedef std::vector<
-		fcppt::signal::shared_connection
+		fcppt::signal::auto_connection
 	> container;
 
 	FCPPT_SYMBOL
@@ -39,7 +38,7 @@ public:
 	FCPPT_SYMBOL
 	explicit
 	connection_manager(
-		container const &
+		container &&
 	);
 
 	FCPPT_SYMBOL
@@ -48,16 +47,17 @@ public:
 	FCPPT_SYMBOL
 	void
 	add(
-		fcppt::signal::auto_connection
+		fcppt::signal::auto_connection &&
 	);
 
 	FCPPT_SYMBOL
 	void
 	assign(
-		container const &
+		container &&
 	);
 
-	FCPPT_SYMBOL void
+	FCPPT_SYMBOL
+	void
 	clear();
 private:
 	container connections_;

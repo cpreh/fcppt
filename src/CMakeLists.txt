@@ -68,7 +68,6 @@ set(
 	include/fcppt/assert_complete.hpp
 	include/fcppt/assign/detail/array.hpp
 	include/fcppt/assign/detail/array_impl.hpp
-	include/fcppt/assign/detail/insert.hpp
 	include/fcppt/assign/impl/make_container.hpp
 	include/fcppt/assign/impl/make_map.hpp
 	include/fcppt/assign/make_array.hpp
@@ -731,7 +730,6 @@ set(
 	include/fcppt/signal/object_fwd.hpp
 	include/fcppt/signal/object_impl.hpp
 	include/fcppt/signal/scoped_connection.hpp
-	include/fcppt/signal/shared_connection.hpp
 	include/fcppt/signal/unregister/base.hpp
 	include/fcppt/signal/unregister/base_decl.hpp
 	include/fcppt/signal/unregister/base_fwd.hpp
@@ -796,7 +794,6 @@ set(
 	include/fcppt/type_traits/is_iterable.hpp
 	include/fcppt/type_traits/is_iterator.hpp
 	include/fcppt/type_traits/is_iterator_of_category.hpp
-	include/fcppt/type_traits/is_movable.hpp
 	include/fcppt/type_traits/is_output_iterator.hpp
 	include/fcppt/type_traits/is_random_access_iterator.hpp
 	include/fcppt/type_traits/is_string.hpp

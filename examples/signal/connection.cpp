@@ -10,7 +10,9 @@
 #include <fcppt/signal/connection_manager.hpp>
 #include <fcppt/signal/object.hpp>
 #include <fcppt/signal/scoped_connection.hpp>
-#include <fcppt/signal/shared_connection.hpp>
+#include <fcppt/config/external_begin.hpp>
+#include <utility>
+#include <fcppt/config/external_end.hpp>
 
 
 namespace
@@ -33,11 +35,6 @@ function3()
 
 void
 function4()
-{
-}
-
-void
-function5()
 {
 }
 
@@ -72,19 +69,16 @@ int main()
 		fcppt::assign::make_container<
 			fcppt::signal::connection_manager::container
 		>(
-			fcppt::signal::shared_connection(
-				signal.connect(
-					::function1
-				)
+			signal.connect(
+				::function1
 			)
 		)
 		(
-			fcppt::signal::shared_connection(
-				signal.connect(
-					::function2
-				)
+			signal.connect(
+				::function2
 			)
 		)
+		.move_container()
 	);
 
 	// scoped_connection can also be used
@@ -94,23 +88,16 @@ int main()
 		)
 	);
 
-	// or a shared_connection
-	fcppt::signal::shared_connection const connection4(
+	// or you can take the auto_connection and process it somehow
+	fcppt::signal::auto_connection connection4(
 		signal.connect(
 			::function4
 		)
 	);
 
-	// or you can take the auto_connection and process it somehow
-	fcppt::signal::auto_connection connection5(
-		signal.connect(
-			::function5
-		)
-	);
-
 	::take_connection(
-		move(
-			connection5
+		std::move(
+			connection4
 		)
 	);
 }
