@@ -66,11 +66,8 @@ set(
 	include/fcppt/assert/unreachable.hpp
 	include/fcppt/assert/unreachable_message.hpp
 	include/fcppt/assert_complete.hpp
-	include/fcppt/assign/detail/array.hpp
-	include/fcppt/assign/detail/array_impl.hpp
 	include/fcppt/assign/impl/make_container.hpp
 	include/fcppt/assign/impl/make_map.hpp
-	include/fcppt/assign/make_array.hpp
 	include/fcppt/assign/make_container.hpp
 	include/fcppt/assign/make_map.hpp
 	include/fcppt/backtrace/current_stack_frame.hpp
