@@ -5,23 +5,28 @@
 
 
 #include <fcppt/foreach_enumerator.hpp>
-#include <fcppt/container/array_impl.hpp>
+#include <fcppt/log/enabled_level_array.hpp>
 #include <fcppt/log/enabled_levels.hpp>
+#include <fcppt/log/level.hpp>
 
 
 fcppt::log::enabled_level_array const
 fcppt::log::enabled_levels(
-	level::type const _level
+	fcppt::log::level const _level
 )
 {
-	enabled_level_array ret = {{ false }};
+	fcppt::log::enabled_level_array ret{};
 
 	FCPPT_FOREACH_ENUMERATOR(
 		index,
-		log::level
+		fcppt::log::level
 	)
 		ret[
-			index
+			static_cast<
+				fcppt::log::enabled_level_array::size_type
+			>(
+				index
+			)
 		] =
 			_level <= index;
 

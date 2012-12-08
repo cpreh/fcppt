@@ -6,26 +6,23 @@
 
 //[bitfield
 #include <fcppt/text.hpp>
-#include <fcppt/container/bitfield/object_impl.hpp>
+#include <fcppt/container/bitfield/object.hpp>
 #include <fcppt/io/cout.hpp>
 
 
 namespace
 {
-// We use the enum namespace pattern here
-namespace person_status
-{
-enum type
+
+enum class person_status
 {
 	hungry,
 	tired,
 	size // note the extra field here
 };
-}
 
 typedef
 fcppt::container::bitfield::object<
-	person_status::type,
+	person_status,
 	person_status::size
 >
 bitfield;

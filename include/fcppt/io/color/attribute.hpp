@@ -8,15 +8,15 @@
 #ifndef FCPPT_IO_COLOR_ATTRIBUTE_HPP_INCLUDED
 #define FCPPT_IO_COLOR_ATTRIBUTE_HPP_INCLUDED
 
+
 namespace fcppt
 {
 namespace io
 {
 namespace color
 {
-namespace attribute
-{
-enum type
+
+enum class attribute
 {
 	off = 0,
 	bold = 1,
@@ -25,7 +25,7 @@ enum type
 	reverse = 7,
 	concealed = 8
 };
-}
+
 }
 }
 }

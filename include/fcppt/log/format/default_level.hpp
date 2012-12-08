@@ -35,7 +35,7 @@ fcppt::log::level_to_string \endlink. It also appends a newline at the end.
 FCPPT_SYMBOL
 fcppt::log::format::function const
 default_level(
-	fcppt::log::level::type level
+	fcppt::log::level level
 );
 
 }

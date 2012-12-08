@@ -11,8 +11,8 @@
 #include <fcppt/assert/throw.hpp>
 #include <fcppt/math/detail/array_adapter.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/next_prior.hpp>
 #include <algorithm>
+#include <iterator>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -137,14 +137,14 @@ BOOST_PP_TUPLE_REM(class_arity)template_pre \
 typename BOOST_PP_TUPLE_REM(class_arity)def_pre ::reference \
 BOOST_PP_TUPLE_REM(class_arity)def_pre ::back()\
 {\
-	return *boost::prior(end());\
+	return *std::prev(end());\
 }\
 \
 BOOST_PP_TUPLE_REM(class_arity)template_pre \
 typename BOOST_PP_TUPLE_REM(class_arity)def_pre ::const_reference \
 BOOST_PP_TUPLE_REM(class_arity)def_pre ::back() const\
 {\
-	return *boost::prior(end());\
+	return *std::prev(end());\
 }\
 \
 BOOST_PP_TUPLE_REM(class_arity)template_pre \

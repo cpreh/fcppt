@@ -12,7 +12,7 @@
 
 fcppt::string const
 fcppt::log::level_to_string(
-	fcppt::log::level::type const _level
+	fcppt::log::level const _level
 )
 {
 	return

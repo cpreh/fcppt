@@ -9,9 +9,9 @@
 #include <fcppt/log/exception.hpp>
 #include <fcppt/log/make_location.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/next_prior.hpp>
 #include <boost/algorithm/string/classification.hpp>
 #include <boost/algorithm/string/split.hpp>
+#include <iterator>
 #include <vector>
 #include <fcppt/config/external_end.hpp>
 
@@ -54,7 +54,7 @@ fcppt::log::make_location(
 
 	for(
 		vector_type::const_iterator it(
-			boost::next(
+			std::next(
 				elements.begin()
 			)
 		);

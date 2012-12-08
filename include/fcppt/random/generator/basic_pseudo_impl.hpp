@@ -59,9 +59,9 @@ typename fcppt::random::generator::basic_pseudo<
 >::result_type
 fcppt::random::generator::basic_pseudo<
 	Generator
->::min() const
+>::min()
 {
-	return wrapped_.min();
+	return wrapped::min();
 }
 
 template<
@@ -73,9 +73,9 @@ typename fcppt::random::generator::basic_pseudo<
 >::result_type
 fcppt::random::generator::basic_pseudo<
 	Generator
->::max() const
+>::max()
 {
-	return wrapped_.max();
+	return wrapped::max();
 }
 
 #endif

@@ -84,7 +84,7 @@ public:
 	FCPPT_SYMBOL
 	void
 	log(
-		fcppt::log::level::type level,
+		fcppt::log::level level,
 		fcppt::log::detail::temporary_output const &output
 	);
 
@@ -101,7 +101,7 @@ public:
 	FCPPT_SYMBOL
 	fcppt::log::level_stream &
 	level_sink(
-		fcppt::log::level::type level
+		fcppt::log::level level
 	);
 
 	/**
@@ -117,7 +117,7 @@ public:
 	FCPPT_SYMBOL
 	fcppt::log::level_stream const &
 	level_sink(
-		fcppt::log::level::type level
+		fcppt::log::level level
 	) const;
 
 	/**
@@ -133,7 +133,7 @@ public:
 	FCPPT_SYMBOL
 	void
 	activate(
-		fcppt::log::level::type level
+		fcppt::log::level level
 	);
 
 	/**
@@ -149,7 +149,7 @@ public:
 	FCPPT_SYMBOL
 	void
 	deactivate(
-		fcppt::log::level::type level
+		fcppt::log::level level
 	);
 
 	/**
@@ -165,7 +165,7 @@ public:
 	FCPPT_SYMBOL
 	bool
 	activated(
-		fcppt::log::level::type level
+		fcppt::log::level level
 	) const;
 
 	/**
@@ -182,7 +182,7 @@ public:
 	FCPPT_SYMBOL
 	bool
 	enabled_and_activated(
-		fcppt::log::level::type level
+		fcppt::log::level level
 	) const;
 
 	/**

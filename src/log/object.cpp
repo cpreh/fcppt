@@ -63,7 +63,7 @@ fcppt::log::object::~object()
 
 void
 fcppt::log::object::log(
-	fcppt::log::level::type const _level,
+	fcppt::log::level const _level,
 	fcppt::log::detail::temporary_output const &_helper
 )
 {
@@ -84,60 +84,80 @@ fcppt::log::object::log(
 
 fcppt::log::level_stream &
 fcppt::log::object::level_sink(
-	fcppt::log::level::type const _level
+	fcppt::log::level const _level
 )
 {
 	return
 		*level_streams_[
-			_level
+			static_cast<
+				fcppt::log::level_stream_array::size_type
+			>(
+				_level
+			)
 		];
 }
 
 fcppt::log::level_stream const &
 fcppt::log::object::level_sink(
-	fcppt::log::level::type const _level
+	fcppt::log::level const _level
 ) const
 {
 	return
 		*level_streams_[
-			_level
+			static_cast<
+				fcppt::log::level_stream_array::size_type
+			>(
+				_level
+			)
 		];
 }
 
 void
 fcppt::log::object::activate(
-	fcppt::log::level::type const _level
+	fcppt::log::level const _level
 )
 {
 	enabled_levels_[
-		_level
+		static_cast<
+			fcppt::log::enabled_level_array::size_type
+		>(
+			_level
+		)
 	] = true;
 }
 
 void
 fcppt::log::object::deactivate(
-	fcppt::log::level::type const _level
+	fcppt::log::level const _level
 )
 {
 	enabled_levels_[
-		_level
+		static_cast<
+			fcppt::log::enabled_level_array::size_type
+		>(
+			_level
+		)
 	] = false;
 }
 
 bool
 fcppt::log::object::activated(
-	fcppt::log::level::type const _level
+	fcppt::log::level const _level
 ) const
 {
 	return
 		enabled_levels_[
-			_level
+			static_cast<
+				fcppt::log::enabled_level_array::size_type
+			>(
+				_level
+			)
 		];
 }
 
 bool
 fcppt::log::object::enabled_and_activated(
-	fcppt::log::level::type const _level
+	fcppt::log::level const _level
 ) const
 {
 	return

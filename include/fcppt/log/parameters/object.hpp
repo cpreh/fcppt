@@ -117,7 +117,7 @@ public:
 	FCPPT_SYMBOL
 	fcppt::log::parameters::object &
 	level_stream(
-		fcppt::log::level::type level,
+		fcppt::log::level level,
 		fcppt::log::level_stream_ptr stream
 	);
 
@@ -150,7 +150,7 @@ public:
 	FCPPT_SYMBOL
 	fcppt::log::parameters::object &
 	activate(
-		fcppt::log::level::type level
+		fcppt::log::level level
 	);
 
 	/**
@@ -192,7 +192,7 @@ public:
 	fcppt::log::parameters::object &
 	level_defaults(
 		fcppt::io::ostream &sink,
-		fcppt::log::level::type level
+		fcppt::log::level level
 	);
 
 	fcppt::log::detail::optional_context_location const &

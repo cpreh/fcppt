@@ -11,8 +11,8 @@
 #include <fcppt/container/detail/array_range_check.hpp>
 #include <fcppt/container/detail/array_swap.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/next_prior.hpp>
 #include <algorithm>
+#include <iterator>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -284,7 +284,7 @@ template<
 typename fcppt::container::array<T, N>::reference
 fcppt::container::array<T, N>::back()
 {
-	return *boost::prior(end());
+	return *std::prev(end());
 }
 
 template<
@@ -294,7 +294,7 @@ template<
 typename fcppt::container::array<T, N>::const_reference
 fcppt::container::array<T, N>::back() const
 {
-	return *boost::prior(end());
+	return *std::prev(end());
 }
 
 template<

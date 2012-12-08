@@ -18,10 +18,7 @@
 namespace
 {
 
-namespace test_enum
-{
-
-enum type
+enum class test_enum
 {
 	test1,
 	test2,
@@ -29,27 +26,20 @@ enum type
 	size
 };
 
-}
-
 typedef fcppt::container::bitfield::object<
-	test_enum::type,
+	test_enum,
 	test_enum::size
 > bitfield;
 
-namespace empty_enum
-{
-
-enum type
+enum class empty_enum
 {
 	size
 };
 
 }
 
-}
-
 typedef fcppt::container::bitfield::object<
-	empty_enum::type,
+	empty_enum,
 	empty_enum::size
 > empty_bitfield;
 
@@ -58,13 +48,13 @@ typedef fcppt::container::bitfield::object<
 	internal_\
 )\
 template class fcppt::container::bitfield::object< \
-	enum_::type, \
+	enum_, \
 	enum_::size \
 >; \
 \
 template class fcppt::container::bitfield::proxy< \
 	fcppt::container::bitfield::array< \
-		enum_::type, \
+		enum_, \
 		enum_::size, \
 		internal_\
 	>::type & \
@@ -72,13 +62,13 @@ template class fcppt::container::bitfield::proxy< \
 \
 template class fcppt::container::bitfield::iterator< \
 	fcppt::container::bitfield::array< \
-		enum_::type, \
+		enum_, \
 		enum_::size, \
 		internal_ \
 	>::type &, \
 	fcppt::container::bitfield::proxy< \
 		fcppt::container::bitfield::array< \
-			enum_::type, \
+			enum_, \
 			enum_::size, \
 			internal_ \
 		>::type & \

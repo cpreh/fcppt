@@ -62,12 +62,8 @@ invoke_on(
 	return
 		fcppt::mpl::detail::invoke_on<
 			boost::mpl::integral_c<
-				Index,
-				static_cast<
-					Index
-				>(
-					0
-				)
+				unsigned,
+				0u
 			>,
 			boost::mpl::empty<
 				Sequence

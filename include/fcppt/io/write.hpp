@@ -50,7 +50,7 @@ typename boost::enable_if<
 write(
 	std::ostream &_stream,
 	Type const &_value,
-	fcppt::endianness::format::type const _format
+	fcppt::endianness::format const _format
 )
 {
 	Type const tmp(

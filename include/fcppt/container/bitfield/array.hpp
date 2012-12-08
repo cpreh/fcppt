@@ -7,10 +7,10 @@
 #ifndef FCPPT_CONTAINER_BITFIELD_ARRAY_HPP_INCLUDED
 #define FCPPT_CONTAINER_BITFIELD_ARRAY_HPP_INCLUDED
 
-#include <fcppt/container/array_fwd.hpp>
 #include <fcppt/container/bitfield/detail/element_bits.hpp>
 #include <fcppt/mpl/ceil_div.hpp>
 #include <fcppt/config/external_begin.hpp>
+#include <array>
 #include <cstddef>
 #include <fcppt/config/external_end.hpp>
 
@@ -38,11 +38,15 @@ template<
 >
 struct array
 {
-	typedef fcppt::container::array<
+	typedef std::array<
 		InternalType,
 		fcppt::mpl::ceil_div<
 			std::size_t,
-			Size,
+			static_cast<
+				std::size_t
+			>(
+				Size
+			),
 			fcppt::container::bitfield::detail::element_bits<
 				std::size_t,
 				InternalType

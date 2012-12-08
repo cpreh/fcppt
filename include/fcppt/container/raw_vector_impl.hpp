@@ -13,7 +13,6 @@
 #include <fcppt/detail/equal.hpp>
 #include <fcppt/type_traits/is_input_iterator.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/next_prior.hpp>
 #include <boost/utility/enable_if.hpp>
 #include <algorithm>
 #include <iterator>
@@ -237,7 +236,7 @@ fcppt::container::raw_vector<T, A>::back()
 {
 	return
 		*(
-			boost::prior(
+			std::prev(
 				this->end()
 			)
 		);
@@ -252,7 +251,7 @@ fcppt::container::raw_vector<T, A>::back() const
 {
 	return
 		*(
-			boost::prior(
+			std::prev(
 				this->end()
 			)
 		);
@@ -485,7 +484,7 @@ void
 fcppt::container::raw_vector<T, A>::pop_back()
 {
 	this->erase(
-		boost::prior(
+		std::prev(
 			this->end()
 		)
 	);

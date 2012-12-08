@@ -7,13 +7,14 @@
 #ifndef FCPPT_CONTAINER_BITFIELD_OBJECT_DECL_HPP_INCLUDED
 #define FCPPT_CONTAINER_BITFIELD_OBJECT_DECL_HPP_INCLUDED
 
-#include <fcppt/container/array_decl.hpp>
 #include <fcppt/container/bitfield/array.hpp>
 #include <fcppt/container/bitfield/iterator_fwd.hpp>
 #include <fcppt/container/bitfield/object_fwd.hpp>
 #include <fcppt/container/bitfield/proxy_fwd.hpp>
 #include <fcppt/container/bitfield/value_type.hpp>
 #include <fcppt/config/external_begin.hpp>
+#include <boost/mpl/eval_if.hpp>
+#include <boost/mpl/identity.hpp>
 #include <boost/mpl/integral_c.hpp>
 #include <iterator>
 #include <limits>
@@ -66,9 +67,19 @@ public:
 	typedef Enum enum_type;
 
 	/**
-	\brief The size type, the same as <code>Enum</code>
+	\brief The size type which is the underlying type of <code>Enum</code>
 	*/
-	typedef enum_type size_type;
+	typedef typename boost::mpl::eval_if<
+		std::is_enum<
+			enum_type
+		>,
+		std::underlying_type<
+			enum_type
+		>,
+		boost::mpl::identity<
+			enum_type
+		>
+	>::type size_type;
 
 	/**
 	\brief The value type, which is bool
@@ -79,8 +90,12 @@ public:
 	\brief An mpl integral constant for <code>Size</code>
 	*/
 	typedef boost::mpl::integral_c<
-		Enum,
-		Size
+		size_type,
+		static_cast<
+			size_type
+		>(
+			Size
+		)
 	> static_size;
 
 	/**

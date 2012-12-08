@@ -7,22 +7,18 @@
 #ifndef FCPPT_ENDIANNESS_FORMAT_HPP_INCLUDED
 #define FCPPT_ENDIANNESS_FORMAT_HPP_INCLUDED
 
+
 namespace fcppt
 {
 namespace endianness
 {
 
 /**
-\enum_policy{format,fcppt::endianness::format::type}
+\brief An enumeration for the possible endiannesses
 
 \ingroup fcpptendianness
 */
-namespace format
-{
-/**
-\brief An enumeration for the possible endiannesses
-*/
-enum type
+enum class format
 {
 	/**
 	\brief Little endianness
@@ -39,7 +35,6 @@ enum type
 	*/
 	big
 };
-}
 
 }
 }

@@ -22,7 +22,7 @@ namespace endianness
 \ingroup fcpptendianness
 */
 FCPPT_SYMBOL
-fcppt::endianness::format::type
+fcppt::endianness::format
 host_format();
 
 }

@@ -9,15 +9,16 @@
 #include <fcppt/log/object.hpp>
 #include <fcppt/src/log/set_levels.hpp>
 
+
 void
 fcppt::log::deactivate_levels(
-	log::object &_object,
-	level::type const _level
+	fcppt::log::object &_object,
+	fcppt::log::level const _level
 )
 {
-	log::set_levels(
+	fcppt::log::set_levels(
 		_object,
 		_level,
-		&object::deactivate
+		&fcppt::log::object::deactivate
 	);
 }

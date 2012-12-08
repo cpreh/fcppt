@@ -9,8 +9,9 @@
 #define FCPPT_ALGORITHM_JOIN_STRINGS_HPP_INCLUDED
 
 #include <fcppt/config/external_begin.hpp>
-#include <boost/next_prior.hpp>
+#include <iterator>
 #include <fcppt/config/external_end.hpp>
+
 
 namespace fcppt
 {
@@ -49,7 +50,7 @@ join_strings(
 		result += *it;
 
 		if(
-			boost::next(
+			std::next(
 				it
 			)
 			!= _range.end()

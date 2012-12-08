@@ -53,21 +53,18 @@ library_function(
 // ![assert_pre_post]
 
 // ![assert_unreachable]
-namespace food
-{
-enum type
+enum class food
 {
 	apple,
 	banana,
 	potato,
 	bread
 };
-}
 
 // Check if a given kind of food is a fruit
 bool
 is_fruit(
-	food::type const _value
+	food const _value
 )
 {
 	// Handle every possible enumerator

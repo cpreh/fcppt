@@ -13,13 +13,17 @@
 void
 fcppt::log::set_levels(
 	fcppt::log::object &_object,
-	fcppt::log::level::type const _level,
-	void (object::*_fun)(level::type)
+	fcppt::log::level const _level,
+	void(
+		fcppt::log::object::*_fun
+	)(
+		fcppt::log::level
+	)
 )
 {
 	FCPPT_FOREACH_ENUMERATOR_START(
 		index,
-		log::level,
+		fcppt::log::level,
 		_level
 	)
 		(_object.*_fun)(

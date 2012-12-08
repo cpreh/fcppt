@@ -10,14 +10,16 @@
 
 #include <fcppt/cyclic_iterator_decl.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/next_prior.hpp>
 #include <iterator>
 #include <fcppt/config/external_end.hpp>
+
 
 template<
 	typename ContainerIterator
 >
-fcppt::cyclic_iterator<ContainerIterator>::cyclic_iterator()
+fcppt::cyclic_iterator<
+	ContainerIterator
+>::cyclic_iterator()
 :
 	it_(),
 	begin_(),
@@ -31,28 +33,46 @@ template<
 template<
 	typename OtherIterator
 >
-fcppt::cyclic_iterator<ContainerIterator>::cyclic_iterator(
-	cyclic_iterator<OtherIterator> const &_other
+fcppt::cyclic_iterator<
+	ContainerIterator
+>::cyclic_iterator(
+	cyclic_iterator<
+		OtherIterator
+	> const &_other
 )
 :
-	it_(_other.it_),
-	begin_(_other.begin_),
-	end_(_other.end_)
+	it_(
+		_other.it_
+	),
+	begin_(
+		_other.begin_
+	),
+	end_(
+		_other.end_
+	)
 {
 }
 
 template<
 	typename ContainerIterator
 >
-fcppt::cyclic_iterator<ContainerIterator>::cyclic_iterator(
+fcppt::cyclic_iterator<
+	ContainerIterator
+>::cyclic_iterator(
 	container_iterator_type const &_it,
 	container_iterator_type const &_begin,
 	container_iterator_type const &_end
 )
 :
-	it_(_it),
-	begin_(_begin),
-	end_(_end)
+	it_(
+		_it
+	),
+	begin_(
+		_begin
+	),
+	end_(
+		_end
+	)
 {
 }
 
@@ -62,9 +82,15 @@ template<
 template<
 	typename OtherIterator
 >
-fcppt::cyclic_iterator<ContainerIterator> &
-fcppt::cyclic_iterator<ContainerIterator>::operator=(
-	cyclic_iterator<OtherIterator> const &_other
+fcppt::cyclic_iterator<
+	ContainerIterator
+> &
+fcppt::cyclic_iterator<
+	ContainerIterator
+>::operator=(
+	cyclic_iterator<
+		OtherIterator
+	> const &_other
 )
 {
 	it_ = _other.it_;
@@ -79,8 +105,12 @@ fcppt::cyclic_iterator<ContainerIterator>::operator=(
 template<
 	typename ContainerIterator
 >
-typename fcppt::cyclic_iterator<ContainerIterator>::container_iterator_type
-fcppt::cyclic_iterator<ContainerIterator>::begin() const
+typename fcppt::cyclic_iterator<
+	ContainerIterator
+>::container_iterator_type
+fcppt::cyclic_iterator<
+	ContainerIterator
+>::begin() const
 {
 	return begin_;
 }
@@ -88,8 +118,12 @@ fcppt::cyclic_iterator<ContainerIterator>::begin() const
 template<
 	typename ContainerIterator
 >
-typename fcppt::cyclic_iterator<ContainerIterator>::container_iterator_type
-fcppt::cyclic_iterator<ContainerIterator>::end() const
+typename fcppt::cyclic_iterator<
+	ContainerIterator
+>::container_iterator_type
+fcppt::cyclic_iterator<
+	ContainerIterator
+>::end() const
 {
 	return end_;
 }
@@ -97,8 +131,12 @@ fcppt::cyclic_iterator<ContainerIterator>::end() const
 template<
 	typename ContainerIterator
 >
-typename fcppt::cyclic_iterator<ContainerIterator>::container_iterator_type
-fcppt::cyclic_iterator<ContainerIterator>::get() const
+typename fcppt::cyclic_iterator<
+	ContainerIterator
+>::container_iterator_type
+fcppt::cyclic_iterator<
+	ContainerIterator
+>::get() const
 {
 	return it_;
 }
@@ -107,7 +145,9 @@ template<
 	typename ContainerIterator
 >
 void
-fcppt::cyclic_iterator<ContainerIterator>::increment()
+fcppt::cyclic_iterator<
+	ContainerIterator
+>::increment()
 {
 	if(
 		begin_ != end_
@@ -120,7 +160,9 @@ template<
 	typename ContainerIterator
 >
 void
-fcppt::cyclic_iterator<ContainerIterator>::decrement()
+fcppt::cyclic_iterator<
+	ContainerIterator
+>::decrement()
 {
 	if(
 		begin_ == end_
@@ -131,7 +173,7 @@ fcppt::cyclic_iterator<ContainerIterator>::decrement()
 		it_ == begin_
 	)
 		it_ =
-			boost::prior(
+			std::prev(
 				end_
 			);
 	else
@@ -142,7 +184,9 @@ template<
 	typename ContainerIterator
 >
 bool
-fcppt::cyclic_iterator<ContainerIterator>::equal(
+fcppt::cyclic_iterator<
+	ContainerIterator
+>::equal(
 	cyclic_iterator const &_other
 ) const
 {
@@ -152,8 +196,12 @@ fcppt::cyclic_iterator<ContainerIterator>::equal(
 template<
 	typename ContainerIterator
 >
-typename fcppt::cyclic_iterator<ContainerIterator>::reference
-fcppt::cyclic_iterator<ContainerIterator>::dereference() const
+typename fcppt::cyclic_iterator<
+	ContainerIterator
+>::reference
+fcppt::cyclic_iterator<
+	ContainerIterator
+>::dereference() const
 {
 	return *it_;
 }
@@ -161,8 +209,12 @@ fcppt::cyclic_iterator<ContainerIterator>::dereference() const
 template<
 	typename ContainerIterator
 >
-typename fcppt::cyclic_iterator<ContainerIterator>::difference_type
-fcppt::cyclic_iterator<ContainerIterator>::distance_to(
+typename fcppt::cyclic_iterator<
+	ContainerIterator
+>::difference_type
+fcppt::cyclic_iterator<
+	ContainerIterator
+>::distance_to(
 	cyclic_iterator const &_other
 ) const
 {

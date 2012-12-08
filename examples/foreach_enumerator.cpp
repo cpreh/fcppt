@@ -14,9 +14,7 @@ namespace
 {
 
 // ![foreach_enumerator_declaration]
-namespace my_enum
-{
-enum type // the nested name type is important
+enum class my_enum
 {
 	enum0,
 	enum1,
@@ -24,12 +22,12 @@ enum type // the nested name type is important
 	enum3,
 	size // note the additional size, which is needed for FOREACH_ENUMERATOR to work
 };
-}
+
 // ![foreach_enumerator_declaration]
 
 void
 print_enum_value(
-	my_enum::type const val
+	my_enum const val
 )
 {
 	fcppt::io::cout()

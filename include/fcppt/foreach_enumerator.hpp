@@ -36,7 +36,7 @@ following example:
 	FCPPT_FOREACH_ENUMERATOR_START(\
 		name,\
 		enum_, \
-		static_cast<enum_::type>(0)\
+		static_cast<enum_>(0)\
 	)
 
 #endif

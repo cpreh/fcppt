@@ -12,7 +12,7 @@
 #include <fcppt/config/external_begin.hpp>
 #include <boost/mpl/deref.hpp>
 #include <boost/mpl/next.hpp>
-#include <boost/type_traits/is_same.hpp>
+#include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -49,7 +49,7 @@ struct invoke_on<
 		Operation const &
 	)
 	{
-		throw invalid_invoke();
+		throw fcppt::mpl::invalid_invoke();
 	}
 };
 
@@ -67,7 +67,8 @@ struct invoke_on<
 		typename Index,
 		typename Operation
 	>
-	static typename Operation::result_type
+	static
+	typename Operation::result_type
 	execute(
 		Index const &index,
 		Operation const &op
@@ -81,33 +82,40 @@ struct invoke_on<
 			Iterator
 		>::type iter;
 
-		return Counter::value == index
+		return
+			Counter::value
+			==
+			static_cast<
+				typename Counter::value_type
+			>(
+				index
+			)
 			?
 #ifdef FCPPT_MSVC_DEPENDANT_TEMPLATE_BUG
-			op.operator()<
-				item
-			>()
+				op.operator()<
+					item
+				>()
 #else
-
-			op. template operator()<
-				item
-			>()
+				op. template operator()<
+					item
+				>()
 #endif
-			: detail::invoke_on<
-				typename boost::mpl::next<
-					Counter
-				>::type,
-				boost::is_same<
+			:
+				fcppt::mpl::detail::invoke_on<
+					typename boost::mpl::next<
+						Counter
+					>::type,
+					std::is_same<
+						iter,
+						LastIterator
+					>::value
+				>:: template execute<
 					iter,
 					LastIterator
-				>::value
-			>:: template execute<
-				iter,
-				LastIterator
-			>(
-				index,
-				op
-			);
+				>(
+					index,
+					op
+				);
 	}
 };
 

@@ -28,26 +28,26 @@ class set
 public:
 	FCPPT_SYMBOL
 	set(
-		fcppt::io::color::foreground::type,
-		fcppt::io::color::background::type,
-		fcppt::io::color::attribute::type);
+		fcppt::io::color::foreground,
+		fcppt::io::color::background,
+		fcppt::io::color::attribute);
 
 	FCPPT_SYMBOL
-	fcppt::io::color::foreground::type
+	fcppt::io::color::foreground
 	foreground() const;
 
 	FCPPT_SYMBOL
-	fcppt::io::color::background::type
+	fcppt::io::color::background
 	background() const;
 
 	FCPPT_SYMBOL
-	fcppt::io::color::attribute::type
+	fcppt::io::color::attribute
 	attribute() const;
 
 private:
-	fcppt::io::color::foreground::type foreground_;
-	fcppt::io::color::background::type background_;
-	fcppt::io::color::attribute::type attribute_;
+	fcppt::io::color::foreground foreground_;
+	fcppt::io::color::background background_;
+	fcppt::io::color::attribute attribute_;
 };
 
 FCPPT_SYMBOL

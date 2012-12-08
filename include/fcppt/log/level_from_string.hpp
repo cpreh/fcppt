@@ -31,7 +31,7 @@ fcppt::log::level::type
 \throw fcppt::log::exception if \a name is invalid
 */
 FCPPT_SYMBOL
-fcppt::log::level::type
+fcppt::log::level
 level_from_string(
 	fcppt::string const &name
 );

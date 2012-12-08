@@ -4,8 +4,10 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
+#include <fcppt/string.hpp>
 #include <fcppt/text.hpp>
 #include <fcppt/log/exception.hpp>
+#include <fcppt/log/level.hpp>
 #include <fcppt/log/level_from_string.hpp>
 #include <fcppt/src/log/level_string_array.hpp>
 #include <fcppt/src/log/level_strings.hpp>
@@ -15,7 +17,7 @@
 #include <fcppt/config/external_end.hpp>
 
 
-fcppt::log::level::type
+fcppt::log::level
 fcppt::log::level_from_string(
 	fcppt::string const &_name
 )
@@ -43,7 +45,7 @@ fcppt::log::level_from_string(
 
 	return
 		static_cast<
-			fcppt::log::level::type
+			fcppt::log::level
 		>(
 			std::distance(
 				static_cast<

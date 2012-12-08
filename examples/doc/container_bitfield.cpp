@@ -12,20 +12,17 @@
 
 namespace
 {
-// We use the enum namespace pattern here
-namespace person_status
-{
-enum type
+
+enum class person_status
 {
 	hungry,
 	tired,
 	size // note the extra field here
 };
-}
 
 typedef
 fcppt::container::bitfield::object<
-	person_status::type,
+	person_status,
 	person_status::size
 >
 bitfield;

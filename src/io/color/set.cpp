@@ -104,9 +104,9 @@ struct instance
 }
 
 fcppt::io::color::set::set(
-	fcppt::io::color::foreground::type const _foreground,
-	fcppt::io::color::background::type const _background,
-	fcppt::io::color::attribute::type const _attribute)
+	fcppt::io::color::foreground const _foreground,
+	fcppt::io::color::background const _background,
+	fcppt::io::color::attribute const _attribute)
 :
 	foreground_(
 		_foreground),
@@ -117,19 +117,19 @@ fcppt::io::color::set::set(
 {
 }
 
-fcppt::io::color::foreground::type
+fcppt::io::color::foreground
 fcppt::io::color::set::foreground() const
 {
 	return foreground_;
 }
 
-fcppt::io::color::background::type
+fcppt::io::color::background
 fcppt::io::color::set::background() const
 {
 	return background_;
 }
 
-fcppt::io::color::attribute::type
+fcppt::io::color::attribute
 fcppt::io::color::set::attribute() const
 {
 	return attribute_;

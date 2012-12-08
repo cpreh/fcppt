@@ -21,15 +21,12 @@ namespace
 {
 
 // Our color enum
-namespace color_enum
-{
-enum type
+enum class color_enum
 {
 	bgr,
 	rgb
 	// + more color types
 };
-}
 
 // Our static color types
 struct bgr
@@ -76,7 +73,7 @@ struct create_functor
 // Transforms a color enum into a static color type using invoke_on
 color_variant const
 make_color_variant(
-	color_enum::type const _value
+	color_enum const _value
 )
 {
 	return

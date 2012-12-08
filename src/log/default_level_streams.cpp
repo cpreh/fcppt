@@ -25,7 +25,11 @@ fcppt::log::default_level_streams(
 	)
 	{
 		ret[
-			index
+			static_cast<
+				fcppt::log::level_stream_array::size_type
+			>(
+				index
+			)
 		] =
 			fcppt::make_shared_ptr<
 				fcppt::log::level_stream

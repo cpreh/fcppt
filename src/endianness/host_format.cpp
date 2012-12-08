@@ -19,7 +19,7 @@
 namespace
 {
 
-fcppt::endianness::format::type
+fcppt::endianness::format
 compute_endianness()
 {
 	typedef unsigned long int_type;
@@ -63,7 +63,7 @@ public:
 
 	~init();
 
-	fcppt::endianness::format::type const endianness_;
+	fcppt::endianness::format const endianness_;
 } instance;
 
 init::init()
@@ -81,7 +81,7 @@ init::~init()
 }
 #endif
 
-fcppt::endianness::format::type
+fcppt::endianness::format
 fcppt::endianness::host_format()
 {
 #if   defined(FCPPT_LITTLE_ENDIAN)

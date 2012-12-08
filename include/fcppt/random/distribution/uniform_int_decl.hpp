@@ -11,8 +11,8 @@
 #include <fcppt/random/distribution/declare_call.hpp>
 #include <fcppt/random/distribution/uniform_int_fwd.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/random/uniform_int_distribution.hpp>
-#include <boost/type_traits/is_integral.hpp>
+#include <random>
+#include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -38,7 +38,7 @@ template<
 >
 class uniform_int
 {
-	typedef boost::random::uniform_int_distribution<
+	typedef std::uniform_int_distribution<
 		IntType
 	> wrapped;
 public:
@@ -53,7 +53,7 @@ public:
 	typedef typename wrapped::result_type result_type;
 
 	static_assert(
-		boost::is_integral<
+		std::is_integral<
 			int_type
 		>::value,
 		"uniform_int distributions only take integral types"

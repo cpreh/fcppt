@@ -8,15 +8,15 @@
 #ifndef FCPPT_IO_COLOR_BACKGROUND_HPP_INCLUDED
 #define FCPPT_IO_COLOR_BACKGROUND_HPP_INCLUDED
 
+
 namespace fcppt
 {
 namespace io
 {
 namespace color
 {
-namespace background
-{
-enum type
+
+enum class background
 {
 	off = 0,
 	black = 40,
@@ -28,7 +28,7 @@ enum type
 	cyan = 46,
 	white = 47
 };
-}
+
 }
 }
 }

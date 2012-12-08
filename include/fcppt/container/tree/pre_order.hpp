@@ -13,7 +13,6 @@
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/next_prior.hpp>
 #include <boost/iterator/iterator_facade.hpp>
 #include <boost/mpl/if.hpp>
 #include <boost/type_traits/is_const.hpp>
@@ -181,7 +180,7 @@ FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
 							current_->rbegin()
 						),
 						end(
-							boost::prior(
+							std::prev(
 								current_->rend()
 							)
 						);

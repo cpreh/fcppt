@@ -10,8 +10,8 @@
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/next_prior.hpp>
 #include <boost/test/unit_test.hpp>
+#include <iterator>
 #include <vector>
 #include <fcppt/config/external_end.hpp>
 
@@ -82,7 +82,7 @@ FCPPT_PP_POP_WARNING
 
 	BOOST_REQUIRE(
 		test.get()
-		== boost::prior(
+		== std::prev(
 			array.end()
 		)
 	);

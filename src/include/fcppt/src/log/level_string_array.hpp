@@ -8,8 +8,11 @@
 #define FCPPT_SRC_LOG_LEVEL_STRING_ARRAY_HPP_INCLUDED
 
 #include <fcppt/string.hpp>
-#include <fcppt/container/array.hpp>
 #include <fcppt/log/level.hpp>
+#include <fcppt/config/external_begin.hpp>
+#include <array>
+#include <cstddef>
+#include <fcppt/config/external_end.hpp>n
 
 
 namespace fcppt
@@ -17,9 +20,13 @@ namespace fcppt
 namespace log
 {
 
-typedef fcppt::container::array<
+typedef std::array<
 	fcppt::string,
-	fcppt::log::level::size
+	static_cast<
+		std::size_t
+	>(
+		fcppt::log::level::size
+	)
 > level_string_array;
 
 }

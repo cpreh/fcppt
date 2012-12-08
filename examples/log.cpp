@@ -34,7 +34,7 @@ try
 		fcppt::io::cout()
 	);
 
-	fcppt::log::level::type const level(
+	fcppt::log::level const level(
 		fcppt::log::level::debug
 	);
 

@@ -7,8 +7,11 @@
 #ifndef FCPPT_LOG_ENABLED_LEVEL_ARRAY_HPP_INCLUDED
 #define FCPPT_LOG_ENABLED_LEVEL_ARRAY_HPP_INCLUDED
 
-#include <fcppt/container/array_fwd.hpp>
 #include <fcppt/log/level.hpp>
+#include <fcppt/config/external_begin.hpp>
+#include <array>
+#include <cstddef>
+#include <fcppt/config/external_end.hpp>
 
 
 namespace fcppt
@@ -24,9 +27,13 @@ namespace log
 An array of bool with the size \link fcppt::log::level::size \endlink. Each
 entry corresponds to an enumerator from \link fcppt::log::level \endlink.
 */
-typedef fcppt::container::array<
+typedef std::array<
 	bool,
-	fcppt::log::level::size
+	static_cast<
+		std::size_t
+	>(
+		fcppt::log::level::size
+	)
 > enabled_level_array;
 
 }

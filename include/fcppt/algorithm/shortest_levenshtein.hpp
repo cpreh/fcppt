@@ -10,11 +10,11 @@
 
 #include <fcppt/algorithm/levenshtein.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/next_prior.hpp>
 #include <boost/range/begin.hpp>
 #include <boost/range/iterator.hpp>
 #include <boost/range/reference.hpp>
 #include <boost/range/value_type.hpp>
+#include <iterator>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -65,7 +65,7 @@ shortest_levenshtein(
 
 	for(
 		iterator it(
-			boost::next(
+			std::next(
 				boost::begin(
 					_range)
 			)

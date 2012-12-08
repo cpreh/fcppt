@@ -18,9 +18,13 @@ namespace log
 
 void
 set_levels(
-	object &,
-	level::type,
-	void (object::*)(level::type)
+	fcppt::log::object &,
+	fcppt::log::level,
+	void(
+		fcppt::log::object::*
+	)(
+		fcppt::log::level
+	)
 );
 
 }

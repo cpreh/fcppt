@@ -54,7 +54,7 @@ typename boost::enable_if<
 >::type
 read(
 	std::istream &_stream,
-	fcppt::endianness::format::type const _format
+	fcppt::endianness::format const _format
 )
 {
 	typedef fcppt::optional<

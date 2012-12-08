@@ -5,6 +5,7 @@
 
 
 #include <fcppt/text.hpp>
+#include <fcppt/log/level.hpp>
 #include <fcppt/log/level_to_string.hpp>
 #include <fcppt/log/format/create_inserter.hpp>
 #include <fcppt/log/format/default_level.hpp>
@@ -13,7 +14,7 @@
 
 fcppt::log::format::function const
 fcppt::log::format::default_level(
-	fcppt::log::level::type const _level
+	fcppt::log::level const _level
 )
 {
 	return

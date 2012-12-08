@@ -11,8 +11,8 @@
 #include <fcppt/random/distribution/declare_call.hpp>
 #include <fcppt/random/distribution/normal_fwd.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/random/normal_distribution.hpp>
-#include <boost/type_traits/is_floating_point.hpp>
+#include <random>
+#include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -38,7 +38,7 @@ template<
 >
 class normal
 {
-	typedef boost::random::normal_distribution<
+	typedef std::normal_distribution<
 		FloatType
 	> wrapped;
 public:
@@ -53,7 +53,7 @@ public:
 	typedef typename wrapped::result_type result_type;
 
 	static_assert(
-		boost::is_floating_point<
+		std::is_floating_point<
 			float_type
 		>::value,
 		"normal distributions only take floating point types"

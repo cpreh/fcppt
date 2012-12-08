@@ -77,14 +77,16 @@ public:
 	/**
 	\brief Returns the minimum element of all the possible random numbers
 	*/
+	static
 	result_type
-	min() const;
+	min();
 
 	/**
 	\brief Returns the maximum element of all the possible random numbers
 	*/
+	static
 	result_type
-	max() const;
+	max();
 private:
 	wrapped wrapped_;
 };

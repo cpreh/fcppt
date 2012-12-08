@@ -11,7 +11,6 @@
 #include <fcppt/make_shared_ptr.hpp>
 #include <fcppt/io/raw_container_source_decl.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/next_prior.hpp>
 #include <algorithm>
 #include <iterator>
 #include <fcppt/config/external_end.hpp>
@@ -76,7 +75,7 @@ fcppt::io::raw_container_source<Container>::read(
 		return -1;
 
 	const_iterator const new_pos =
-		boost::next(
+		std::next(
 			pos_,
 			result);
 
@@ -99,19 +98,19 @@ fcppt::io::raw_container_source<Container>::seek(
 	{
 		case std::ios_base::beg:
 			pos_ =
-				boost::next(
+				std::next(
 					chars_->cbegin(),
 					off);
 			break;
 		case std::ios_base::cur:
 			pos_ =
-				boost::next(
+				std::next(
 					pos_,
 					off);
 			break;
 		case std::ios_base::end:
 			pos_ =
-				boost::prior(
+				std::prev(
 					chars_->cend(),
 					off);
 			break;

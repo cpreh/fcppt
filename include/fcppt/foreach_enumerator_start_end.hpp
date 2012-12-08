@@ -7,6 +7,11 @@
 #ifndef FCPPT_FOREACH_ENUMERATOR_START_END_HPP_INCLUDED
 #define FCPPT_FOREACH_ENUMERATOR_START_END_HPP_INCLUDED
 
+#include <fcppt/config/external_begin.hpp>
+#include <type_traits>
+#include <fcppt/config/external_end.hpp>
+
+
 /**
 \brief Iterates over an enum with designated start and end values
 
@@ -35,9 +40,38 @@ following example:
 	end\
 )\
 for(\
-	enum_::type name = start;\
-	name < end;\
-	name = static_cast<enum_::type>(name + 1)\
+	enum_ name{\
+		start\
+	};\
+	static_cast<\
+		std::underlying_type< \
+			enum_ \
+		>::type\
+	>(\
+		name\
+	) \
+	< \
+	static_cast<\
+		std::underlying_type< \
+			enum_ \
+		>::type\
+	>(\
+		end\
+	);\
+	name = \
+		static_cast<\
+			enum_\
+		>(\
+			static_cast<\
+				std::underlying_type< \
+					enum_ \
+				>::type\
+			>(\
+				name\
+			)\
+			+ \
+			1\
+		)\
 )
 
 #endif

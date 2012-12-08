@@ -24,7 +24,7 @@ namespace
 
 void
 test_read_write(
-	fcppt::endianness::format::type const _endianness
+	fcppt::endianness::format const _endianness
 )
 {
 	int const foo = 42;

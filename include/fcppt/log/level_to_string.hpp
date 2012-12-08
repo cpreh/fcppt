@@ -31,7 +31,7 @@ Converts a log level given by \a level to its enumerator name as a string.
 FCPPT_SYMBOL
 fcppt::string const
 level_to_string(
-	fcppt::log::level::type level
+	fcppt::log::level level
 );
 
 }

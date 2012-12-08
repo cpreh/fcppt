@@ -8,7 +8,6 @@
 #define FCPPT_CONTAINER_BITFIELD_OBJECT_IMPL_HPP_INCLUDED
 
 #include <fcppt/algorithm/contains_if.hpp>
-#include <fcppt/container/array_impl.hpp>
 #include <fcppt/container/bitfield/iterator_impl.hpp>
 #include <fcppt/container/bitfield/object_decl.hpp>
 #include <fcppt/container/bitfield/proxy_impl.hpp>
@@ -416,7 +415,7 @@ fcppt::container::bitfield::object<
 	InternalType
 >::size() const
 {
-	return Size;
+	return static_size::value;
 }
 
 template<
@@ -441,7 +440,11 @@ fcppt::container::bitfield::object<
 		*(
 			this->begin()
 			+
-			_index
+			static_cast<
+				size_type
+			>(
+				_index
+			)
 		);
 }
 
@@ -467,7 +470,11 @@ fcppt::container::bitfield::object<
 		*(
 			this->begin()
 			+
-			_index
+			static_cast<
+				size_type
+			>(
+				_index
+			)
 		);
 }
 

@@ -49,7 +49,7 @@ typename boost::enable_if<
 >::type
 convert(
 	Type const &_value,
-	fcppt::endianness::format::type const _format
+	fcppt::endianness::format const _format
 )
 {
 	return

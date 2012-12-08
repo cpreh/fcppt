@@ -34,7 +34,7 @@ FCPPT_SYMBOL
 void
 deactivate_levels(
 	fcppt::log::object &logger,
-	fcppt::log::level::type level
+	fcppt::log::level level
 );
 
 }

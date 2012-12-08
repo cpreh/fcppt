@@ -28,7 +28,7 @@ set to true that is greater or equal to \a level.
 FCPPT_SYMBOL
 fcppt::log::enabled_level_array const
 enabled_levels(
-	fcppt::log::level::type level
+	fcppt::log::level level
 );
 
 }

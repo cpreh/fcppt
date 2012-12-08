@@ -9,7 +9,7 @@
 
 #include <fcppt/random/generator/basic_pseudo_fwd.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/random/linear_congruential.hpp>
+#include <random>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -21,7 +21,7 @@ namespace generator
 {
 
 typedef fcppt::random::generator::basic_pseudo<
-	boost::random::minstd_rand
+	std::minstd_rand
 > minstd_rand;
 
 }
