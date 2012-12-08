@@ -7,7 +7,6 @@
 #ifndef FCPPT_CONTAINER_BITFIELD_OBJECT_DECL_HPP_INCLUDED
 #define FCPPT_CONTAINER_BITFIELD_OBJECT_DECL_HPP_INCLUDED
 
-#include <fcppt/safe_bool.hpp>
 #include <fcppt/container/array_decl.hpp>
 #include <fcppt/container/bitfield/array.hpp>
 #include <fcppt/container/bitfield/iterator_fwd.hpp>
@@ -16,9 +15,9 @@
 #include <fcppt/container/bitfield/value_type.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/mpl/integral_c.hpp>
-#include <boost/type_traits/is_unsigned.hpp>
 #include <iterator>
 #include <limits>
+#include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -45,12 +44,9 @@ template<
 >
 class object
 {
-	FCPPT_SAFE_BOOL(
-		object
-	)
 private:
 	static_assert(
-		boost::is_unsigned<
+		std::is_unsigned<
 			InternalType
 		>::value,
 		"InternalType must be unsigned"
@@ -63,9 +59,6 @@ private:
 	>::type array_type;
 
 	array_type array_;
-
-	bool
-	boolean_test() const;
 public:
 	/**
 	\brief Typedef to <code>Enum</code>
@@ -326,12 +319,13 @@ public:
 	operator~() const;
 
 	/**
-	\brief Checks if all bits are zero
+	\brief Checks if at least one bit is non zero
 
-	Return <code>true</code> if all bits are zero, <code>false</code> otherwise.
+	Return <code>false</code> if all bits are zero, <code>true</code> otherwise.
 	*/
-	bool
-	operator!() const;
+	explicit
+	operator
+	bool() const;
 
 	/**
 	\brief Checks if the specified bit is set.

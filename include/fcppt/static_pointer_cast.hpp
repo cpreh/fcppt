@@ -37,27 +37,27 @@ formed.
 */
 template<
 	typename Dest,
-	typename Source,
-	typename Deleter
+	typename Source
 >
 fcppt::shared_ptr<
-	Dest,
-	Deleter
+	Dest
 > const
 static_pointer_cast(
 	fcppt::shared_ptr<
-		Source,
-		Deleter
+		Source
 	> const &_ptr
 )
 {
 	return
 		fcppt::shared_ptr<
-			Dest,
-			Deleter
+			Dest
 		>(
 			_ptr,
-			boost::detail::static_cast_tag()
+			static_cast<
+				Dest *
+			>(
+				_ptr.get()
+			)
 		);
 }
 

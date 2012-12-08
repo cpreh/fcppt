@@ -21,8 +21,8 @@ namespace fcppt
 
 Casts the pointer stored in \a _ptr to type <code>U *</code> using
 <code>dynamic_cast</code>. This means that <code>T *</code> and <code>U
-*</code> be members of the same class hierarchy. If the cast succeeds, the
-resulting shared_ptr will share ownership with the source.
+*</code> must be members of the same class hierarchy. If the cast succeeds,
+the resulting shared_ptr will share ownership with the source.
 
 \tparam Dest The type of the destination shared_ptr
 

@@ -23,27 +23,6 @@
 #include <fcppt/config/external_end.hpp>
 
 
-template<
-	typename Enum,
-	Enum Size,
-	typename InternalType
->
-bool
-fcppt::container::bitfield::object<
-	Enum,
-	Size,
-	InternalType
->::boolean_test() const
-{
-	return
-		fcppt::algorithm::contains_if(
-			array_.begin(),
-			array_.end(),
-			boost::phoenix::arg_names::arg1
-			!= static_cast<InternalType>(0)
-		);
-}
-
 FCPPT_PP_PUSH_WARNING
 FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
 
@@ -658,6 +637,26 @@ template<
 	Enum Size,
 	typename InternalType
 >
+fcppt::container::bitfield::object<
+	Enum,
+	Size,
+	InternalType
+>::operator bool() const
+{
+	return
+		fcppt::algorithm::contains_if(
+			array_.begin(),
+			array_.end(),
+			boost::phoenix::arg_names::arg1
+			!= static_cast<InternalType>(0)
+		);
+}
+
+template<
+	typename Enum,
+	Enum Size,
+	typename InternalType
+>
 bool
 fcppt::container::bitfield::object<
 	Enum,
@@ -696,22 +695,6 @@ fcppt::container::bitfield::object<
 			_other.array_.begin(),
 			_other.array_.end()
 		);
-}
-
-template<
-	typename Enum,
-	Enum Size,
-	typename InternalType
->
-bool
-fcppt::container::bitfield::object<
-	Enum,
-	Size,
-	InternalType
->::operator!() const
-{
-	return
-		!this->boolean_test();
 }
 
 template<

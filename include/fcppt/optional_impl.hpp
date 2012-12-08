@@ -205,17 +205,16 @@ bool
 fcppt::optional<T>::has_value() const
 {
 	return
-		this->boolean_test();
+		data_ != nullptr;
 }
 
 template<
 	typename T
 >
-bool
-fcppt::optional<T>::boolean_test() const
+fcppt::optional<T>::operator bool() const
 {
 	return
-		data_ != nullptr;
+		this->has_value();
 }
 
 template<
@@ -451,17 +450,16 @@ bool
 fcppt::optional<T &>::has_value() const
 {
 	return
-		this->boolean_test();
+		data_ != nullptr;
 }
 
 template<
 	typename T
 >
-bool
-fcppt::optional<T &>::boolean_test() const
+fcppt::optional<T &>::operator bool() const
 {
 	return
-		data_ != nullptr;
+		this->has_value();
 }
 
 /// \endcond FCPPT_DOXYGEN_DEBUG

@@ -694,7 +694,6 @@ set(
 	include/fcppt/random/variate_decl.hpp
 	include/fcppt/random/variate_fwd.hpp
 	include/fcppt/random/variate_impl.hpp
-	include/fcppt/safe_bool.hpp
 	include/fcppt/safe_cast.hpp
 	include/fcppt/safe_numeric_cast.hpp
 	include/fcppt/scoped_ptr.hpp

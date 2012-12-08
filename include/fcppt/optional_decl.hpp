@@ -8,7 +8,6 @@
 #define FCPPT_OPTIONAL_DECL_HPP_INCLUDED
 
 #include <fcppt/optional_fwd.hpp>
-#include <fcppt/safe_bool.hpp>
 #include <fcppt/alignment/array.hpp>
 #include <fcppt/detail/enable_optional_ref_conv.hpp>
 #include <fcppt/detail/enable_optional_value_conv.hpp>
@@ -35,9 +34,6 @@ template<
 >
 class optional
 {
-	FCPPT_SAFE_BOOL(
-		optional
-	)
 public:
 	static_assert(
 		!boost::is_const<
@@ -246,10 +242,16 @@ public:
 	*/
 	bool
 	has_value() const;
-private:
-	bool
-	boolean_test() const;
 
+	/**
+	\brief Explicit boolean test
+
+	\return <code>this->has_value()</code>
+	*/
+	explicit
+	operator
+	bool() const;
+private:
 	pointer
 	construct(
 		const_reference
@@ -367,9 +369,6 @@ class optional<
 	T &
 >
 {
-	FCPPT_SAFE_BOOL(
-		optional
-	)
 public:
 	/**
 	\brief The value type of the optional reference
@@ -488,10 +487,16 @@ public:
 	*/
 	bool
 	has_value() const;
-private:
-	bool
-	boolean_test() const;
 
+	/**
+	\brief Explicit boolean test
+
+	\return <code>this->has_value()</code>
+	*/
+	explicit
+	operator
+	bool() const;
+private:
 	pointer data_;
 };
 

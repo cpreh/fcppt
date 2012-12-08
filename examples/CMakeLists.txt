@@ -9,10 +9,21 @@ function(
 	ADDITIONAL_DEPS
 	ADDITIONAL_DEFINES
 )
-	set(
-		FCPPT_EXAMPLE_NAME
-		fcppt${SUBNAME}${MAINNAME}example
+	if(
+		"${SUBNAME}"
+		STREQUAL
+		""
 	)
+		set(
+			FCPPT_EXAMPLE_NAME
+			example_${MAINNAME}
+		)
+	else()
+		set(
+			FCPPT_EXAMPLE_NAME
+			example_${SUBNAME}_${MAINNAME}
+		)
+	endif()
 
 	add_executable(
 		${FCPPT_EXAMPLE_NAME}
@@ -77,7 +88,6 @@ add_fcppt_example(optional "" "")
 add_fcppt_example(optional_dynamic_cast "" "")
 add_fcppt_example(output_tm "" "")
 add_fcppt_example(random "${Boost_CHRONO_LIBRARIES}" "")
-add_fcppt_example(safe_bool "" "")
 add_fcppt_example(safe_numeric_cast "" "")
 add_fcppt_example(scoped_ptr "" "")
 add_fcppt_example(shared_ptr "" "")

@@ -32,24 +32,20 @@ Casts the pointer stored in \a _ptr to type <code>U *</code> using
 */
 template<
 	typename Dest,
-	typename Source,
-	typename Deleter
+	typename Source
 >
 fcppt::shared_ptr<
-	Dest,
-	Deleter
+	Dest
 > const
 const_pointer_cast(
 	fcppt::shared_ptr<
-		Source const,
-		Deleter
+		Source const
 	> const &_ptr
 )
 {
 	return
 		fcppt::shared_ptr<
-			Dest,
-			Deleter
+			Dest
 		>(
 			_ptr,
 			const_cast<
