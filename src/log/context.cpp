@@ -114,7 +114,7 @@ fcppt::log::context::apply(
 
 	typedef
 	fcppt::container::tree::pre_order<
-		detail::context_tree
+		fcppt::log::detail::context_tree
 	> traversal_type;
 
 	traversal_type traversal(
@@ -122,21 +122,17 @@ fcppt::log::context::apply(
 	);
 
 	for(
-		traversal_type::iterator it(
-			traversal.begin()
-		);
-		it != traversal.end();
-		++it
+		fcppt::log::detail::context_tree const &elem : traversal
 	)
 	{
 		if(
-			log::is_outer_node(
-				*it
+			fcppt::log::is_outer_node(
+				elem
 			)
 		)
 			_function(
-				it->value().get().get<
-					detail::outer_context_node
+				elem.value().get().get<
+					fcppt::log::detail::outer_context_node
 				>().object()
 			);
 	}
@@ -148,22 +144,18 @@ fcppt::log::context::add(
 	fcppt::log::object &_object
 )
 {
-	detail::context_tree *cur(
+	fcppt::log::detail::context_tree *cur(
 		&tree_
 	);
 
 	for(
-		location::const_iterator item(
-			_location.begin()
-		);
-		item != _location.end();
-		++item
+		auto const &item : _location
 	)
 	{
 		fcppt::log::detail::context_tree::iterator const item_it(
-			log::find_inner_node(
+			fcppt::log::find_inner_node(
 				*cur,
-				*item
+				item
 			)
 		);
 
@@ -174,7 +166,7 @@ fcppt::log::context::add(
 			cur->push_back(
 				fcppt::log::detail::context_tree_node(
 					fcppt::log::detail::inner_context_node(
-						*item
+						item
 					)
 				)
 			);
@@ -186,15 +178,15 @@ fcppt::log::context::add(
 	}
 
 	FCPPT_ASSERT_PRE(
-		log::find_logger_node(
+		fcppt::log::find_logger_node(
 			*cur
 		)
 		== cur->end()
 	);
 
 	cur->push_back(
-		detail::context_tree_node(
-			detail::outer_context_node(
+		fcppt::log::detail::context_tree_node(
+			fcppt::log::detail::outer_context_node(
 				_object
 			)
 		)

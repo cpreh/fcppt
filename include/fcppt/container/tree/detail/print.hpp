@@ -12,6 +12,7 @@
 #include <ostream>
 #include <fcppt/config/external_end.hpp>
 
+
 namespace fcppt
 {
 namespace container
@@ -32,7 +33,7 @@ print(
 		Ch,
 		Traits
 	> &_stream,
-	tree::object<
+	fcppt::container::tree::object<
 		Value
 	> const &_tree,
 	unsigned const _indent
@@ -54,17 +55,11 @@ print(
 			<< _stream.widen('\n');
 
 	for(
-		typename tree::object<
-			Value
-		>::const_iterator it(
-			_tree.begin()
-		);
-		it != _tree.end();
-		++it
+		auto child : _tree
 	)
-		tree::detail::print(
+		fcppt::container::tree::detail::print(
 			_stream,
-			*it,
+			child,
 			_indent + 1u
 		);
 }

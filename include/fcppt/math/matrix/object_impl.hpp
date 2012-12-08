@@ -378,13 +378,9 @@ fcppt::math::matrix::object<T, N, M, S>::operator*=(
 )
 {
 	for(
-		iterator it(
-			this->begin()
-		);
-		it != this->end();
-		++it
+		auto &item : *this
 	)
-		*it *= _value;
+		item *= _value;
 
 	return *this;
 }
@@ -401,13 +397,9 @@ fcppt::math::matrix::object<T, N, M, S>::operator/=(
 )
 {
 	for(
-		iterator it(
-			this->begin()
-		);
-		it != this->end();
-		++it
+		auto &item : *this
 	)
-		*it /= _value;
+		item /= _value;
 
 	return *this;
 }

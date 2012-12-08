@@ -66,16 +66,12 @@ fcppt::signal::object<\
 	);\
 \
 	for(\
-		typename base::connection_list::iterator it(\
-			cur_list.begin()\
-		); \
-		it != cur_list.end();\
-		++it\
+		auto &item : cur_list\
 	) \
 		result = \
 			this->combiner_(\
 				result,\
-				it->function()(\
+				item.function()(\
 					FCPPT_PP_DETAIL_ENUM_PARAMS_FORWARD_Z(\
 						z,\
 						BOOST_PP_INC(n),\

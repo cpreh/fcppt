@@ -9,6 +9,7 @@
 
 #include <fcppt/container/grid/detail/choose_reference.hpp>
 
+
 namespace fcppt
 {
 namespace container
@@ -22,7 +23,7 @@ template<
 	typename Container,
 	typename Dim
 >
-typename detail::choose_reference<
+typename fcppt::container::grid::detail::choose_reference<
 	Container
 >::type
 access_member(

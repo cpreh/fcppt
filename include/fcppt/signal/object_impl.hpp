@@ -124,15 +124,11 @@ fcppt::signal::object<
 	);
 
 	for(
-		typename base::connection_list::iterator it(
-			cur_list.begin()
-		);
-		it != cur_list.end();
-		++it
+		auto &item : cur_list
 	)
 		result =
 			combiner_(
-				it->function()(),
+				item.function()(),
 				result
 			);
 
@@ -203,13 +199,9 @@ fcppt::signal::object<
 	);
 
 	for(
-		typename base::connection_list::iterator it(
-			cur_list.begin()
-		);
-		it != cur_list.end();
-		++it
+		auto &item : cur_list
 	)
-		it->function()();
+		item.function()();
 }
 
 BOOST_PP_REPEAT(

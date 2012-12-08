@@ -13,6 +13,7 @@
 #include <ostream>
 #include <fcppt/config/external_end.hpp>
 
+
 namespace fcppt
 {
 namespace container
@@ -77,7 +78,7 @@ print_recurse(
 	{
 		_pos[index] = i;
 
-		detail::print_recurse<
+		fcppt::container::grid::detail::print_recurse<
 			index
 		>(
 			_stream,

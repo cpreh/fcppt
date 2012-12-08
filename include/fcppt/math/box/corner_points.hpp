@@ -63,16 +63,12 @@ corner_points(
 	);
 
 	for(
-		typename result_type::iterator it(
-			result.begin()
-		);
-		it != result.end();
-		++it
+		auto &item : result
 	)
-		*it =
+		item =
 			_box.pos()
 			+
-			*it
+			item
 			*
 			fcppt::math::dim::structure_cast<
 				vector_type

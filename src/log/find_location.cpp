@@ -23,17 +23,13 @@ fcppt::log::find_location(
 	);
 
 	for(
-		fcppt::log::location::const_iterator item(
-			_location.begin()
-		);
-		item != _location.end();
-		++item
+		auto const &item : _location
 	)
 	{
 		fcppt::log::detail::context_tree::iterator const item_it(
 			fcppt::log::find_inner_node(
 				*cur,
-				*item
+				item
 			)
 		);
 

@@ -181,10 +181,6 @@ interpolate(
 	binary_vector_array_type;
 
 	typedef typename
-	binary_vector_array_type::iterator
-	binary_vector_array_type_iterator;
-
-	typedef typename
 	binary_vector_array_type::size_type
 	binary_vector_array_type_size_type;
 
@@ -204,11 +200,8 @@ interpolate(
 		>());
 
 	for(
-		binary_vector_array_type_iterator i =
-			binary_vectors.begin();
-		i != binary_vectors.end();
-		++i)
-		*i += floored;
+		integer_vector_type &i : binary_vectors)
+		i += floored;
 
 	return
 		fcppt::container::grid::detail::interpolate<integer_vector_type::dim_wrapper::value>(

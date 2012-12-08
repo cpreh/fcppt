@@ -38,9 +38,9 @@ boost::disable_if_c
 	void
 >::type
 fill(
-	object<T,N,A> &g,
+	fcppt::container::grid::object<T,N,A> &g,
 	Fn const &f,
-	typename object<T,N,A>::dim position)
+	typename fcppt::container::grid::object<T,N,A>::dim position)
 {
 	g[position] =
 		f(
@@ -62,14 +62,21 @@ boost::enable_if_c
 	void
 >::type
 fill(
-	object<T,N,A> &g,
+	fcppt::container::grid::object<T,N,A> &g,
 	Fn const &f,
-	typename object<T,N,A>::dim position)
+	typename fcppt::container::grid::object<T,N,A>::dim position)
 {
-	for(typename object<T,N,A>::size_type i = 0; i < g.size()[Current]; ++i)
+	for(
+		typename fcppt::container::grid::object<T,N,A>::size_type i = 0;
+		i < g.size()[Current];
+		++i)
 	{
 		position[Current] = i;
-		fcppt::container::grid::detail::fill<static_cast<fcppt::container::grid::size_type>(Current+1)>(
+		fcppt::container::grid::detail::fill<
+			static_cast<
+				fcppt::container::grid::size_type
+			>(Current+1)
+		>(
 			g,
 			f,
 			position);

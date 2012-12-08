@@ -29,14 +29,10 @@ key_set(
 	Set ret;
 
 	for(
-		typename Map::const_iterator it(
-			map.begin()
-		);
-		it != map.end();
-		++it
+		typename Map::const_reference item : map
 	)
 		ret.insert(
-			it->first
+			item.first
 		);
 
 	return ret;

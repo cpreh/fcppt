@@ -25,13 +25,9 @@ fill(
 	Ret ret;
 
 	for(
-		typename Ret::iterator it(
-			ret.begin()
-		);
-		it != ret.end();
-		++it
+		auto &item : ret
 	)
-		*it = _value;
+		item = _value;
 
 	return ret;
 }

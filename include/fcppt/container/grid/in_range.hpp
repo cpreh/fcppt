@@ -29,12 +29,12 @@ template<
 >
 bool
 in_range(
-	grid::object<T, N, A> const &_grid,
-	typename grid::object<T, N, A>::dim const &_pos
+	fcppt::container::grid::object<T, N, A> const &_grid,
+	typename fcppt::container::grid::object<T, N, A>::dim const &_pos
 )
 {
 	for(
-		grid::size_type index(
+		fcppt::container::grid::size_type index(
 			0u
 		);
 		index < N;

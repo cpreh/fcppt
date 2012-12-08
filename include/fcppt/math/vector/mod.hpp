@@ -21,40 +21,29 @@ namespace vector
 \brief Calculate vector modulo a scalar
 */
 template<typename T,typename N,typename S>
-vector::object<T,N,S> const
+fcppt::math::vector::object<T,N,S> const
 mod(
-	vector::object<T,N,S> v,
+	fcppt::math::vector::object<T,N,S> v,
 	T const div)
 {
-	typedef typename
-	vector::object<T,N,S>
-	vector;
-
-	typedef typename
-	vector::iterator
-	vector_iterator;
-
 	for(
-		vector_iterator i =
-			v.begin();
-		i != v.end();
-		++i)
-		*i =
+		auto &item : v)
+		item =
 			fcppt::math::mod(
-				*i,
+				item,
 				div);
 
 	return v;
 }
 
 template<typename T,typename N,typename S>
-vector::object<T,N,S> const
+fcppt::math::vector::object<T,N,S> const
 mod(
-	vector::object<T,N,S> v0,
-	vector::object<T,N,S> const &v1)
+	fcppt::math::vector::object<T,N,S> v0,
+	fcppt::math::vector::object<T,N,S> const &v1)
 {
 	typedef typename
-	vector::object<T,N,S>
+	fcppt::math::vector::object<T,N,S>
 	vector;
 
 	typedef typename

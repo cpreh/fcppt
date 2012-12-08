@@ -238,8 +238,10 @@ fcppt::math::vector::object<T, N, S>::operator*=(
 	value_type const &_value
 )
 {
-	for(size_type i = 0; i < size(); ++i)
-		(*this)[i] *= _value;
+	for(
+		auto &item : *this
+	)
+		item *= _value;
 	return *this;
 }
 
@@ -253,8 +255,10 @@ fcppt::math::vector::object<T, N, S>::operator/=(
 	value_type const &_value
 )
 {
-	for(size_type i = 0; i < size(); ++i)
-		(*this)[i] /= _value;
+	for(
+		auto &item : *this
+	)
+		item /= _value;
 	return *this;
 }
 
@@ -310,11 +314,9 @@ fcppt::math::vector::object<T, N, S>::null()
 	> ret;
 
 	for(
-		size_type i = 0;
-		i < N::value;
-		++i
+		auto &item : ret
 	)
-		ret[i] = static_cast<value_type>(0);
+		item = static_cast<value_type>(0);
 	return ret;
 }
 

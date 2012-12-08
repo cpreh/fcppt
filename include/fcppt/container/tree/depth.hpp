@@ -41,15 +41,12 @@ depth(
 		0u;
 
 	for(
-		typename tree_type::const_iterator it =
-			_tree.begin();
-		it != _tree.end();
-		++it)
+		typename tree_type::const_reference ref : _tree)
 		result =
 			std::max(
 				result,
 				fcppt::container::tree::depth(
-					*it));
+					ref));
 
 	return
 		1u + result;

@@ -24,7 +24,7 @@ template<
 	typename Container,
 	typename Dim
 >
-typename detail::choose_reference<
+typename fcppt::container::grid::detail::choose_reference<
 	Container
 >::type
 at(
@@ -42,7 +42,7 @@ at(
 			_pos[i]
 			>= _dim[i]
 		)
-			throw grid::out_of_range();
+			throw fcppt::container::grid::out_of_range();
 
 	return _container[_pos];
 }

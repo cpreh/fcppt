@@ -23,26 +23,22 @@ template<
 >
 void
 assign_parents(
-	tree::object<
+	fcppt::container::tree::object<
 		T
 	> &_object,
-	typename tree::object<
+	typename fcppt::container::tree::object<
 		T
 	>::child_list &_children
 )
 {
-	typedef typename tree::object<
+	typedef typename fcppt::container::tree::object<
 		T
 	>::child_list child_list;
 
 	for(
-		typename child_list::iterator it(
-			_children.begin()
-		);
-		it != _children.end();
-		++it
+		auto &child : _children
 	)
-		it->parent(
+		child.parent(
 			_object
 		);
 }

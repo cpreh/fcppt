@@ -35,11 +35,9 @@ is_quadratic(
 )
 {
 	for(
-		typename dim::object<T,N,S>::const_iterator i = r.begin();
-		i != r.end();
-		++i
+		auto const &item : r
 	)
-		if(*i != r[0])
+		if(item != r[0])
 			return false;
 	return true;
 }

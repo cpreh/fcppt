@@ -61,13 +61,9 @@ fcppt::signal::object<\
 	);\
 \
 	for(\
-		typename base::connection_list::iterator it(\
-			cur_list.begin()\
-		); \
-		it != cur_list.end();\
-		++it\
+		auto &item : cur_list\
 	) \
-		it->function()(\
+		item.function()(\
 			BOOST_PP_ENUM_PARAMS_Z(\
 				z,\
 				BOOST_PP_INC(n),\

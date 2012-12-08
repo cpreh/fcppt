@@ -13,6 +13,7 @@
 #include <algorithm>
 #include <fcppt/config/external_end.hpp>
 
+
 namespace fcppt
 {
 namespace container
@@ -72,7 +73,7 @@ assign_recurse(
 	{
 		_pos[index] = i;
 
-		detail::assign_recurse<
+		fcppt::container::grid::detail::assign_recurse<
 			Level - 1u
 		>(
 			_result,

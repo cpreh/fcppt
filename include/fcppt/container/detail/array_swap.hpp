@@ -30,8 +30,8 @@ typename boost::enable_if_c<
 	void
 >::type
 array_swap(
-	container::array<T, N> &,
-	container::array<T, N> &
+	fcppt::container::array<T, N> &,
+	fcppt::container::array<T, N> &
 )
 {
 }
@@ -45,8 +45,8 @@ typename boost::disable_if_c<
 	void
 >::type
 array_swap(
-	container::array<T, N> &_array1,
-	container::array<T, N> &_array2
+	fcppt::container::array<T, N> &_array1,
+	fcppt::container::array<T, N> &_array2
 )
 {
 	using std::swap;
