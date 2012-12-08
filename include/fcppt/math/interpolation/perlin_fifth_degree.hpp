@@ -10,9 +10,10 @@
 
 #include <fcppt/math/interpolation/linear.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/type_traits/is_floating_point.hpp>
 #include <boost/utility/enable_if.hpp>
+#include <type_traits>
 #include <fcppt/config/external_end.hpp>
+
 
 namespace fcppt
 {
@@ -24,9 +25,9 @@ namespace interpolation
 /// parameter)
 template<typename Float,typename Value>
 typename
-boost::enable_if_c
+boost::enable_if
 <
-	boost::is_floating_point<Float>::value,
+	std::is_floating_point<Float>,
 	Value const
 >::type
 perlin_fifth_degree(

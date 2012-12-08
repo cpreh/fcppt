@@ -14,7 +14,7 @@
 #include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/iterator/iterator_facade.hpp>
-#include <boost/type_traits/remove_reference.hpp>
+#include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -103,7 +103,7 @@ private:
 		difference_type pos
 	);
 
-	typedef typename boost::remove_reference<
+	typedef typename std::remove_reference<
 		StoredType
 	>::type *ref_type;
 

@@ -211,7 +211,7 @@ public:
 
 	\return A runtime index into <code>types</code> of the held type.
 	*/
-	variant::size_type
+	fcppt::variant::size_type
 	type_index() const;
 private:
 	template<
@@ -225,21 +225,21 @@ private:
 	void
 	destroy();
 
-	static variant::size_type const elements =
+	static fcppt::variant::size_type const elements =
 		boost::mpl::size<
 			Types
 		>::value
 	;
 
-	typedef typename alignment::array<
-		variant::detail::raw_type,
-		mpl::max_value<
+	typedef typename fcppt::alignment::array<
+		fcppt::variant::detail::raw_type,
+		fcppt::mpl::max_value<
 			Types,
 			boost::mpl::sizeof_<
 				boost::mpl::_1
 			>
 		>::value,
-		mpl::max_value<
+		fcppt::mpl::max_value<
 			Types,
 			boost::alignment_of<
 				boost::mpl::_1
@@ -249,7 +249,7 @@ private:
 
 	storage_type storage_;
 
-	variant::size_type index_;
+	fcppt::variant::size_type index_;
 
 	void *data_;
 };

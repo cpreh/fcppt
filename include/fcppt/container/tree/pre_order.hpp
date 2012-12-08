@@ -15,9 +15,8 @@
 #include <fcppt/config/external_begin.hpp>
 #include <boost/iterator/iterator_facade.hpp>
 #include <boost/mpl/if.hpp>
-#include <boost/type_traits/is_const.hpp>
-#include <boost/type_traits/remove_const.hpp>
 #include <stack>
+#include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -46,7 +45,7 @@ class pre_order
 {
 	static_assert(
 		fcppt::container::tree::is_object<
-			typename boost::remove_const<
+			typename std::remove_const<
 				Tree
 			>::type
 		>::value,
@@ -74,7 +73,7 @@ public:
 	class iterator;
 private:
 	typedef typename boost::mpl::if_<
-		boost::is_const<
+		std::is_const<
 			Tree
 		>,
 		typename Tree::const_reverse_iterator,

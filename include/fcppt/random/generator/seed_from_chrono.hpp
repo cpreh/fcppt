@@ -9,8 +9,8 @@
 
 #include <fcppt/config/external_begin.hpp>
 #include <boost/chrono/system_clocks.hpp>
-#include <boost/type_traits/is_integral.hpp>
 #include <boost/utility/enable_if.hpp>
+#include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -39,7 +39,7 @@ template<
 	typename Seed
 >
 typename boost::enable_if<
-	boost::is_integral<
+	std::is_integral<
 		typename Seed::value_type
 	>,
 	Seed

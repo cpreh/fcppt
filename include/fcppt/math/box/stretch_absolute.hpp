@@ -14,8 +14,8 @@
 #include <fcppt/math/vector/object_impl.hpp>
 #include <fcppt/math/vector/structure_cast.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/type_traits/is_signed.hpp>
 #include <boost/utility/enable_if.hpp>
+#include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -45,7 +45,7 @@ template<typename T,fcppt::math::size_type N>
 typename
 boost::enable_if
 <
-	boost::is_signed<T>,
+	std::is_signed<T>,
 	fcppt::math::box::object<T,N> const
 >::type
 stretch_absolute(

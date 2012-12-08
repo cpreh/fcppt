@@ -9,7 +9,7 @@
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/type_traits/is_same.hpp>
+#include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
 namespace
@@ -125,7 +125,7 @@ FCPPT_MAKE_STRONG_TYPEDEF(
 	second);
 
 static_assert(
-	!boost::is_same<first,second>::value,
+	!std::is_same<first,second>::value,
 	"Both types must be different"
 );
 //! [strong_typedef_is_same]

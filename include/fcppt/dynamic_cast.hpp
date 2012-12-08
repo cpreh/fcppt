@@ -10,11 +10,10 @@
 #include <fcppt/bad_dynamic_cast.hpp>
 #include <fcppt/type_info.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/type_traits/is_pointer.hpp>
-#include <boost/type_traits/is_reference.hpp>
 #include <boost/utility/enable_if.hpp>
 #include <stdexcept>
 #include <typeinfo>
+#include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -48,7 +47,7 @@ template<
 	typename Src
 >
 typename boost::enable_if<
-	boost::is_reference<
+	std::is_reference<
 		Dest
 	>,
 	Dest
@@ -105,7 +104,7 @@ template<
 	typename Src
 >
 typename boost::enable_if<
-	boost::is_pointer<
+	std::is_pointer<
 		Dest
 	>,
 	Dest

@@ -10,8 +10,8 @@
 #include <fcppt/math/detail/structure_cast_fun.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/iterator/transform_iterator.hpp>
-#include <boost/type_traits/is_same.hpp>
 #include <boost/utility/enable_if.hpp>
+#include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -27,7 +27,7 @@ template<
 	typename U
 >
 typename boost::enable_if<
-	boost::is_same<
+	std::is_same<
 		T,
 		U
 	>,
@@ -45,7 +45,7 @@ template<
 	typename U
 >
 typename boost::disable_if<
-	boost::is_same<
+	std::is_same<
 		T,
 		U
 	>,
@@ -55,14 +55,14 @@ structure_cast(
 	U const &u
 )
 {
-	typedef structure_cast_fun<
+	typedef fcppt::math::detail::structure_cast_fun<
 		typename T::value_type
 	> op_type;
 
 	op_type const op = {};
 
 	static_assert(
-		boost::is_same<
+		std::is_same<
 			typename T::dim_wrapper,
 			typename U::dim_wrapper
 		>::value,

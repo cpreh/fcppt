@@ -12,7 +12,7 @@
 #include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/mpl/or.hpp>
-#include <boost/type_traits/is_same.hpp>
+#include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
 namespace fcppt
@@ -38,16 +38,17 @@ template<
 struct is_float_or_double
 :
 boost::mpl::or_<
-	boost::is_same<
+	std::is_same<
 		Type,
 		float
 	>,
-	boost::is_same<
+	std::is_same<
 		Type,
 		double
 	>
 >
-{};
+{
+};
 
 FCPPT_PP_POP_WARNING
 

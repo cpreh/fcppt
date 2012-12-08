@@ -14,9 +14,9 @@
 #include <fcppt/detail/truncation_check_cast.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/mpl/and.hpp>
-#include <boost/type_traits/is_integral.hpp>
 #include <boost/utility/enable_if.hpp>
 #include <typeinfo>
+#include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -50,10 +50,10 @@ template<
 >
 typename boost::enable_if<
 	boost::mpl::and_<
-		boost::is_integral<
+		std::is_integral<
 			Source
 		>,
-		boost::is_integral<
+		std::is_integral<
 			Dest
 		>
 	>,

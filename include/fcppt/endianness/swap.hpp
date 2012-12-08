@@ -10,8 +10,8 @@
 #include <fcppt/endianness/raw_pointer.hpp>
 #include <fcppt/endianness/reverse_mem.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/type_traits/is_fundamental.hpp>
 #include <boost/utility/enable_if.hpp>
+#include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -37,7 +37,7 @@ template<
 	typename Type
 >
 typename boost::enable_if<
-	boost::is_fundamental<
+	std::is_fundamental<
 		Type
 	>,
 	Type

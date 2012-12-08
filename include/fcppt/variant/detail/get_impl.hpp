@@ -13,7 +13,7 @@
 #include <fcppt/variant/detail/real_type.hpp>
 #include <fcppt/variant/detail/unwrap_recursive.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/type_traits/remove_const.hpp>
+#include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -33,7 +33,7 @@ get_impl(
 	Variant &_variant
 )
 {
-	typedef typename boost::remove_const<
+	typedef typename std::remove_const<
 		Ret
 	>::type return_type;
 
@@ -45,18 +45,18 @@ get_impl(
 		static_cast<
 			variant::size_type
 		>(
-			detail::index_of<
+			fcppt::variant::detail::index_of<
 				types,
 				return_type
 			>::value
 		)
 	)
-		throw variant::invalid_get();
+		throw fcppt::variant::invalid_get();
 
 	return
-		detail::unwrap_recursive(
+		fcppt::variant::detail::unwrap_recursive(
 			_variant. template get_raw<
-				typename detail::real_type<
+				typename fcppt::variant::detail::real_type<
 					types,
 					return_type
 				>::type

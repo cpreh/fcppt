@@ -25,9 +25,8 @@
 #include <boost/mpl/sizeof.hpp>
 #include <boost/mpl/vector/vector10.hpp>
 #include <boost/mpl/vector/vector10_c.hpp>
-#include <boost/type_traits/is_same.hpp>
-#include <boost/type_traits/is_unsigned.hpp>
 #include <ostream>
+#include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -109,7 +108,7 @@ vec;
 typedef
 fcppt::mpl::contains_if<
 	vec,
-	boost::is_unsigned<
+	std::is_unsigned<
 		boost::mpl::_1
 	>
 >::type
@@ -191,7 +190,7 @@ fcppt::mpl::inner<
 result;
 
 static_assert(
-	boost::is_same<
+	std::is_same<
 		result,
 		int
 	>::value,
@@ -217,7 +216,7 @@ fcppt::mpl::integral_cast<
 result;
 
 static_assert(
-	boost::is_same<
+	std::is_same<
 		result::value_type,
 		unsigned
 	>::value

@@ -11,11 +11,8 @@
 #include <fcppt/algorithm/ptr_container_erase_if.hpp>
 #include <fcppt/algorithm/detail/ptr_container_erase_pred.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/type_traits/add_pointer.hpp>
-#include <boost/type_traits/is_same.hpp>
-#include <boost/type_traits/remove_const.hpp>
-#include <boost/type_traits/remove_pointer.hpp>
 #include <boost/utility/enable_if.hpp>
+#include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
 namespace fcppt
@@ -34,10 +31,10 @@ template<
 	typename Ptr
 >
 typename boost::enable_if<
-	boost::is_same<
-		typename boost::add_pointer<
-			typename boost::remove_const<
-				typename boost::remove_pointer<
+	std::is_same<
+		typename std::add_pointer<
+			typename std::remove_const<
+				typename std::remove_pointer<
 					Ptr
 				>::type
 			>::type

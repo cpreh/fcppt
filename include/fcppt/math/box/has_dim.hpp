@@ -14,7 +14,7 @@
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/type_traits/integral_constant.hpp>
+#include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -38,7 +38,7 @@ template
 >
 struct has_dim
 :
-boost::false_type
+std::false_type
 {};
 
 /// \cond FCPPT_DOXYGEN_DEBUG
@@ -48,14 +48,14 @@ template<
 	size_type Dim
 >
 struct has_dim<
-	object<
+	fcppt::math::box::object<
 		T,
 		N
 	>,
 	Dim
 >
 :
-detail::dim_matches<
+fcppt::math::detail::dim_matches<
 	Dim,
 	N
 >

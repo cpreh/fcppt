@@ -15,7 +15,7 @@
 #include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/mpl/and.hpp>
-#include <boost/type_traits/integral_constant.hpp>
+#include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -40,13 +40,14 @@ This will return <code>false</code> for dynamic matrices.
 */
 template<
 	typename Matrix,
-	size_type N,
-	size_type M
+	fcppt::math::size_type N,
+	fcppt::math::size_type M
 >
 struct has_dim
 :
-boost::false_type
-{};
+std::false_type
+{
+};
 
 /// \cond FCPPT_DOXYGEN_DEBUG
 template<
@@ -54,11 +55,11 @@ template<
 	typename N,
 	typename M,
 	typename S,
-	size_type DN,
-	size_type DM
+	fcppt::math::size_type DN,
+	fcppt::math::size_type DM
 >
 struct has_dim<
-	object<
+	fcppt::math::matrix::object<
 		T,
 		N,
 		M,
@@ -69,16 +70,17 @@ struct has_dim<
 >
 :
 boost::mpl::and_<
-	math::detail::dim_matches<
+	fcppt::math::detail::dim_matches<
 		DN,
 		N::value
 	>,
-	math::detail::dim_matches<
+	fcppt::math::detail::dim_matches<
 		DM,
 		M::value
 	>
 >
-{};
+{
+};
 /// \endcond
 
 FCPPT_PP_POP_WARNING

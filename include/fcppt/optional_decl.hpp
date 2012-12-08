@@ -12,9 +12,7 @@
 #include <fcppt/detail/enable_optional_ref_conv.hpp>
 #include <fcppt/detail/enable_optional_value_conv.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/type_traits/alignment_of.hpp>
-#include <boost/type_traits/is_const.hpp>
-#include <boost/type_traits/remove_const.hpp>
+#include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -36,7 +34,7 @@ class optional
 {
 public:
 	static_assert(
-		!boost::is_const<
+		!std::is_const<
 			T
 		>::value,
 		"optionals can't hold const types"
@@ -293,10 +291,10 @@ private:
 	void
 	destroy();
 
-	typedef typename alignment::array<
+	typedef typename fcppt::alignment::array<
 		unsigned char,
 		sizeof(T),
-		boost::alignment_of<
+		std::alignment_of<
 			T
 		>::value
 	>::type storage_type;
@@ -375,7 +373,7 @@ public:
 
 	The value type of the optional reference is always non const.
 	*/
-	typedef typename boost::remove_const<
+	typedef typename std::remove_const<
 		T
 	>::type value_type;
 

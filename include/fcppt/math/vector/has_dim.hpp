@@ -14,7 +14,7 @@
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/type_traits/integral_constant.hpp>
+#include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -33,22 +33,23 @@ FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
 */
 template<
 	typename Vector,
-	size_type Dim
+	fcppt::math::size_type Dim
 >
 struct has_dim
 :
-boost::false_type
-{};
+std::false_type
+{
+};
 
 /// \cond FCPPT_DOXYGEN_DEBUG
 template<
 	typename T,
 	typename N,
 	typename S,
-	size_type Dim
+	fcppt::math::size_type Dim
 >
 struct has_dim<
-	object<
+	fcppt::math::vector::object<
 		T,
 		N,
 		S
@@ -56,11 +57,12 @@ struct has_dim<
 	Dim
 >
 :
-detail::dim_matches<
+fcppt::math::detail::dim_matches<
 	Dim,
 	N::value
 >
-{};
+{
+};
 /// \endcond
 
 FCPPT_PP_POP_WARNING

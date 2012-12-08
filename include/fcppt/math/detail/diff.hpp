@@ -14,11 +14,11 @@
 #define FCPPT_MATH_DETAIL_DIFF_HPP_INCLUDED
 
 #include <fcppt/config/external_begin.hpp>
-#include <boost/type_traits/is_unsigned.hpp>
 #include <boost/utility/enable_if.hpp>
 #include <algorithm>
 #include <cmath>
 #include <cstdlib>
+#include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -34,7 +34,7 @@ template<
 >
 inline
 typename boost::disable_if<
-	boost::is_unsigned<
+	std::is_unsigned<
 		T
 	>,
 	T
@@ -55,7 +55,7 @@ template<
 >
 inline
 typename boost::enable_if<
-	boost::is_unsigned<
+	std::is_unsigned<
 		T
 	>,
 	T

@@ -12,11 +12,8 @@
 #include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/mpl/and.hpp>
-#include <boost/type_traits/is_reference.hpp>
-#include <boost/type_traits/is_same.hpp>
-#include <boost/type_traits/remove_const.hpp>
-#include <boost/type_traits/remove_reference.hpp>
 #include <boost/utility/enable_if.hpp>
+#include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -37,13 +34,13 @@ struct enable_optional_value_conv
 :
 boost::enable_if<
 	boost::mpl::and_<
-		boost::is_reference<
+		std::is_reference<
 			Other
 		>,
-		boost::is_same<
+		std::is_same<
 			Own,
-			typename boost::remove_const<
-				typename boost::remove_reference<
+			typename std::remove_const<
+				typename std::remove_reference<
 					Other
 				>::type
 			>::type

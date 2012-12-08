@@ -14,11 +14,10 @@
 #include <boost/mpl/greater_equal.hpp>
 #include <boost/mpl/less.hpp>
 #include <boost/mpl/sizeof.hpp>
-#include <boost/type_traits/is_signed.hpp>
-#include <boost/type_traits/is_unsigned.hpp>
-#include <boost/type_traits/make_unsigned.hpp>
 #include <boost/utility/enable_if.hpp>
+#include <boost/type_traits/is_signed.hpp>
 #include <limits>
+#include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -72,10 +71,10 @@ template<
 >
 typename boost::enable_if<
 	boost::mpl::and_<
-		boost::is_unsigned<
+		std::is_unsigned<
 			Dest
 		>,
-		boost::is_unsigned<
+		std::is_unsigned<
 			Source
 		>,
 		boost::mpl::less<
@@ -128,10 +127,10 @@ template<
 >
 typename boost::enable_if<
 	boost::mpl::and_<
-		boost::is_signed<
+		std::is_signed<
 			Dest
 		>,
-		boost::is_signed<
+		std::is_signed<
 			Source
 		>,
 		boost::mpl::less<
@@ -194,10 +193,10 @@ template<
 >
 typename boost::enable_if<
 	boost::mpl::and_<
-		boost::is_unsigned<
+		std::is_unsigned<
 			Dest
 		>,
-		boost::is_signed<
+		std::is_signed<
 			Source
 		>
 	>,
@@ -213,7 +212,7 @@ truncation_check_cast(
 		Dest
 	> dest_type;
 
-	typedef typename boost::make_unsigned<
+	typedef typename std::make_unsigned<
 		Source
 	>::type intermediate_type;
 
@@ -245,10 +244,10 @@ template<
 >
 typename boost::enable_if<
 	boost::mpl::and_<
-		boost::is_signed<
+		std::is_signed<
 			Dest
 		>,
-		boost::is_unsigned<
+		std::is_unsigned<
 			Source
 		>
 	>,
@@ -264,7 +263,7 @@ truncation_check_cast(
 		Dest
 	> dest_type;
 
-	typedef typename boost::make_unsigned<
+	typedef typename std::make_unsigned<
 		Dest
 	>::type intermediate_type;
 

@@ -14,8 +14,9 @@
 #include <boost/mpl/end.hpp>
 #include <boost/mpl/find_if.hpp>
 #include <boost/mpl/not.hpp>
-#include <boost/type_traits/is_same.hpp>
+#include <type_traits>
 #include <fcppt/config/external_end.hpp>
+
 
 namespace fcppt
 {
@@ -48,7 +49,7 @@ template<
 struct contains_if
 :
 boost::mpl::not_<
-	boost::is_same<
+	std::is_same<
 		typename boost::mpl::find_if<
 			Sequence,
 			Predicate

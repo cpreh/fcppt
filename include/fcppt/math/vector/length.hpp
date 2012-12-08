@@ -10,9 +10,9 @@
 #include <fcppt/math/vector/length_square.hpp>
 #include <fcppt/math/vector/object_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/type_traits/is_floating_point.hpp>
 #include <boost/utility/enable_if.hpp>
 #include <cmath>
+#include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -84,16 +84,16 @@ template<
 	typename S
 >
 typename boost::enable_if<
-	boost::is_floating_point<T>,
-	typename object<T, N, S>::value_type
+	std::is_floating_point<T>,
+	typename fcppt::math::vector::object<T, N, S>::value_type
 >::type
 length(
-	object<T, N, S> const &v
+	fcppt::math::vector::object<T, N, S> const &v
 )
 {
 	return
 		std::sqrt(
-			length_square(
+			fcppt::math::vector::length_square(
 				v
 			)
 		);
@@ -152,17 +152,17 @@ template<
 	typename S
 >
 typename boost::disable_if<
-	boost::is_floating_point<T>,
+	std::is_floating_point<T>,
 	Dest
 >::type
 length(
-	object<T, N, S> const &v
+	fcppt::math::vector::object<T, N, S> const &v
 )
 {
 	return
 		std::sqrt(
 			static_cast<Dest>(
-				length_square(
+				fcppt::math::vector::length_square(
 					v
 				)
 			)

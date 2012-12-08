@@ -11,8 +11,8 @@
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/type_traits/integral_constant.hpp>
 #include <memory>
+#include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -39,7 +39,7 @@ template<
 >
 struct is_unique_ptr
 :
-boost::false_type
+std::false_type
 {
 };
 
@@ -54,7 +54,7 @@ struct is_unique_ptr<
 	>
 >
 :
-boost::true_type
+std::true_type
 {
 };
 

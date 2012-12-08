@@ -13,8 +13,8 @@
 #include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/type_traits/function_traits.hpp>
-#include <boost/type_traits/is_void.hpp>
 #include <boost/utility/enable_if.hpp>
+#include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -34,7 +34,7 @@ template<
 struct enable_if_void
 :
 boost::enable_if<
-	boost::is_void<
+	std::is_void<
 		typename boost::function_traits<
 			T
 		>::result_type

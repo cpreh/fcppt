@@ -23,9 +23,9 @@
 #include <fcppt/type_traits/is_iterator.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/mpl/times.hpp>
-#include <boost/type_traits/is_same.hpp>
 #include <boost/utility/enable_if.hpp>
 #include <iterator>
+#include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -69,7 +69,7 @@ private
 	typedef detail::dim_storage<N, M> dim_base;
 public:
 	static_assert(
-		boost::is_same<
+		std::is_same<
 			typename N::value_type,
 			typename M::value_type
 		>::value,

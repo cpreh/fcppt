@@ -9,8 +9,8 @@
 #include <fcppt/alignment/array.hpp>
 #include <fcppt/io/cout.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/type_traits/alignment_of.hpp>
 #include <new>
+#include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
 namespace
@@ -38,7 +38,7 @@ main()
 	typedef fcppt::alignment::array<
 		unsigned char,
 		sizeof(mystruct),
-		boost::alignment_of<
+		std::alignment_of<
 			mystruct
 		>::value
 	>::type raw_array;

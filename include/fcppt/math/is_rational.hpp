@@ -9,7 +9,7 @@
 
 #include <fcppt/config/external_begin.hpp>
 #include <boost/rational.hpp>
-#include <boost/type_traits/integral_constant.hpp>
+#include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -27,8 +27,9 @@ template<
 >
 struct is_rational
 :
-boost::false_type
-{};
+std::false_type
+{
+};
 
 /// \cond FCPPT_DOXYGEN_DEBUG
 template<
@@ -36,11 +37,14 @@ template<
 >
 struct is_rational
 <
-	boost::rational<T>
+	boost::rational<
+		T
+	>
 >
 :
-boost::true_type
-{};
+std::true_type
+{
+};
 /// \endcond
 
 }

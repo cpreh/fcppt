@@ -8,7 +8,7 @@
 #ifndef FCPPT_CONTAINER_GRID_INTERPOLATE_HPP_INCLUDED
 #define FCPPT_CONTAINER_GRID_INTERPOLATE_HPP_INCLUDED
 
-#include <fcppt/container/array.hpp>
+#include <fcppt/container/array_impl.hpp>
 #include <fcppt/container/grid/object_impl.hpp>
 #include <fcppt/math/generate_binary_vectors.hpp>
 #include <fcppt/math/dim/object_impl.hpp>
@@ -17,8 +17,6 @@
 #include <fcppt/math/vector/object_impl.hpp>
 #include <fcppt/math/vector/structure_cast.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/mpl/identity.hpp>
-#include <boost/type_traits/is_floating_point.hpp>
 #include <boost/utility/enable_if.hpp>
 #include <cstddef>
 #include <fcppt/config/external_end.hpp>
@@ -213,12 +211,12 @@ interpolate(
 		*i += floored;
 
 	return
-		detail::interpolate<integer_vector_type::dim_wrapper::value>(
+		fcppt::container::grid::detail::interpolate<integer_vector_type::dim_wrapper::value>(
 			grid,
 			binary_vectors,
 			static_cast<binary_vector_array_type_size_type>(
 				0),
-			math::vector::mod(
+			fcppt::math::vector::mod(
 				floating_point_position,
 				static_cast<vector_value_type>(
 					1)),

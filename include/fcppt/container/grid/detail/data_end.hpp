@@ -13,9 +13,8 @@
 #include <fcppt/container/raw_vector_impl.hpp>
 #include <fcppt/container/grid/detail/choose_pointer.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/type_traits/remove_const.hpp>
 #include <boost/utility/enable_if.hpp>
-#include <vector>
+#include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -32,12 +31,12 @@ template<
 	typename Container
 >
 typename boost::enable_if<
-	container::is_std_vector<
-		typename boost::remove_const<
+	fcppt::container::is_std_vector<
+		typename std::remove_const<
 			Container
 		>::type
 	>,
-	typename detail::choose_pointer<
+	typename fcppt::container::grid::detail::choose_pointer<
 		Container
 	>::type
 >::type
@@ -55,12 +54,12 @@ template<
 	typename Container
 >
 typename boost::enable_if<
-	container::is_raw_vector<
-		typename boost::remove_const<
+	fcppt::container::is_raw_vector<
+		typename std::remove_const<
 			Container
 		>::type
 	>,
-	typename detail::choose_pointer<
+	typename fcppt::container::grid::detail::choose_pointer<
 		Container
 	>::type
 >::type

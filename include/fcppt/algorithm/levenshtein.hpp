@@ -15,7 +15,6 @@
 #include <boost/range/size.hpp>
 #include <boost/range/size_type.hpp>
 #include <boost/range/value_type.hpp>
-#include <boost/type_traits/make_unsigned.hpp>
 #include <algorithm>
 #include <fcppt/config/external_end.hpp>
 

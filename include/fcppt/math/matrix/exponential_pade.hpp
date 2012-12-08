@@ -13,10 +13,10 @@
 #include <fcppt/math/matrix/inverse.hpp>
 #include <fcppt/math/matrix/object_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/type_traits/is_floating_point.hpp>
 #include <boost/utility/enable_if.hpp>
 #include <algorithm>
 #include <cmath>
+#include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -43,7 +43,7 @@ template
 typename
 boost::enable_if
 <
-	boost::is_floating_point<T>,
+	std::is_floating_point<T>,
 	fcppt::math::matrix::object<T,DN,DN,S> const
 >::type
 exponential_pade(

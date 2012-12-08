@@ -9,8 +9,9 @@
 
 #include <fcppt/math/size_type.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/type_traits/make_signed.hpp>
+#include <type_traits>
 #include <fcppt/config/external_end.hpp>
+
 
 namespace fcppt
 {
@@ -21,8 +22,8 @@ namespace math
 \brief The difference type used for structure sizes
 \ingroup fcpptmath
 */
-typedef boost::make_signed<
-	math::size_type
+typedef std::make_signed<
+	fcppt::math::size_type
 >::type difference_type;
 
 }

@@ -8,10 +8,9 @@
 #define FCPPT_MATH_DETAIL_MOD_ASSIGN_HPP_INCLUDED
 
 #include <fcppt/config/external_begin.hpp>
-#include <boost/type_traits/is_floating_point.hpp>
-#include <boost/type_traits/is_unsigned.hpp>
 #include <boost/utility/enable_if.hpp>
 #include <cmath>
+#include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -26,7 +25,7 @@ template<
 	typename T
 >
 typename boost::enable_if<
-	boost::is_floating_point<
+	std::is_floating_point<
 		T
 	>,
 	void
@@ -43,7 +42,7 @@ template<
 	typename T
 >
 typename boost::enable_if<
-	boost::is_unsigned<
+	std::is_unsigned<
 		T
 	>,
 	void

@@ -11,9 +11,10 @@
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/type_traits/is_base_of.hpp>
 #include <iterator>
+#include <type_traits>
 #include <fcppt/config/external_end.hpp>
+
 
 namespace fcppt
 {
@@ -41,7 +42,7 @@ template<
 >
 struct is_iterator_of_category
 :
-boost::is_base_of<
+std::is_base_of<
 	Category,
 	typename std::iterator_traits<
 		Iterator

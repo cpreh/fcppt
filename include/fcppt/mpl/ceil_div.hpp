@@ -12,7 +12,7 @@
 #include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/mpl/integral_c.hpp>
-#include <boost/type_traits/is_unsigned.hpp>
+#include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -66,7 +66,7 @@ boost::mpl::integral_c<
 >
 {
 	static_assert(
-		boost::is_unsigned<
+		std::is_unsigned<
 			Type
 		>::value,
 		"ceil_div only works on unsigned types"

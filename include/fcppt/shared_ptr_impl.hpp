@@ -11,9 +11,9 @@
 #include <fcppt/weak_ptr_fwd.hpp>
 #include <fcppt/detail/make_shared_wrapper.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/type_traits/is_same.hpp>
 #include <algorithm>
 #include <memory>
+#include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -144,7 +144,7 @@ fcppt::shared_ptr<
 	)
 {
 	static_assert(
-		boost::is_same<
+		std::is_same<
 			Deleter,
 			std::default_delete<
 				Type
@@ -449,7 +449,7 @@ fcppt::shared_ptr<
 	)
 {
 	static_assert(
-		boost::is_same<
+		std::is_same<
 			Deleter,
 			std::default_delete<
 				Type

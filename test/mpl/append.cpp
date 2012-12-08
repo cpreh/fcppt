@@ -12,7 +12,7 @@
 #include <boost/mpl/at.hpp>
 #include <boost/mpl/vector/vector10.hpp>
 #include <boost/test/unit_test.hpp>
-#include <boost/type_traits/is_same.hpp>
+#include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -41,7 +41,7 @@ FCPPT_PP_POP_WARNING
 	>::type appended;
 
 	BOOST_REQUIRE((
-		boost::is_same<
+		std::is_same<
 			boost::mpl::at_c<
 				appended,
 				0
@@ -51,7 +51,7 @@ FCPPT_PP_POP_WARNING
 	));
 
 	BOOST_REQUIRE((
-		boost::is_same<
+		std::is_same<
 			boost::mpl::at_c<
 				appended,
 				1
@@ -61,7 +61,7 @@ FCPPT_PP_POP_WARNING
 	));
 
 	BOOST_REQUIRE((
-		boost::is_same<
+		std::is_same<
 			boost::mpl::at_c<
 				appended,
 				2
@@ -71,7 +71,7 @@ FCPPT_PP_POP_WARNING
 	));
 
 	BOOST_REQUIRE((
-		boost::is_same<
+		std::is_same<
 			boost::mpl::at_c<
 				appended,
 				3

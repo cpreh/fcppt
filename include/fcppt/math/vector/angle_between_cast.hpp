@@ -12,8 +12,8 @@
 #include <fcppt/math/vector/static.hpp>
 #include <fcppt/math/vector/structure_cast.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/type_traits/is_floating_point.hpp>
 #include <boost/utility/enable_if.hpp>
+#include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -50,14 +50,14 @@ template<
 	typename S2
 >
 typename boost::enable_if<
-	boost::is_floating_point<
+	std::is_floating_point<
 		Dest
 	>,
 	Dest
 >::type
 angle_between_cast(
-	object<T, N, S1> const &_from,
-	object<T, N, S2> const &_to
+	fcppt::math::vector::object<T, N, S1> const &_from,
+	fcppt::math::vector::object<T, N, S2> const &_to
 )
 {
 	typedef typename fcppt::math::vector::static_<
@@ -66,13 +66,13 @@ angle_between_cast(
 	>::type intermediate_type;
 
 	return
-		vector::angle_between(
-			vector::structure_cast<
+		fcppt::math::vector::angle_between(
+			fcppt::math::vector::structure_cast<
 				intermediate_type
 			>(
 				_from
 			),
-			vector::structure_cast<
+			fcppt::math::vector::structure_cast<
 				intermediate_type
 			>(
 				_to

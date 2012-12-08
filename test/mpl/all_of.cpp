@@ -12,7 +12,7 @@
 #include <boost/mpl/placeholders.hpp>
 #include <boost/mpl/vector/vector10.hpp>
 #include <boost/test/unit_test.hpp>
-#include <boost/type_traits/is_integral.hpp>
+#include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -31,7 +31,7 @@ FCPPT_PP_POP_WARNING
 				int,
 				long
 			>,
-			boost::is_integral<
+			std::is_integral<
 				boost::mpl::_1
 			>
 		>::value
@@ -43,7 +43,7 @@ FCPPT_PP_POP_WARNING
 				float,
 				int
 			>,
-			boost::is_integral<
+			std::is_integral<
 				boost::mpl::_1
 			>
 		>::value

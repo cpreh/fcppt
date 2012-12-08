@@ -10,8 +10,8 @@
 #include <fcppt/math/size_type.hpp>
 #include <fcppt/math/detail/dynamic_size.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/type_traits/is_same.hpp>
 #include <boost/utility/enable_if.hpp>
+#include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -25,13 +25,13 @@ namespace detail
 // TODO: Try to unify this!
 
 template<
-	size_type N,
+	fcppt::math::size_type N,
 	typename T
 >
 typename boost::enable_if<
-	boost::is_same<
+	std::is_same<
 		typename T::dim_wrapper,
-		detail::dynamic_size
+		fcppt::math::detail::dynamic_size
 	>,
 	typename T::reference
 >::type
@@ -44,13 +44,13 @@ checked_access(
 }
 
 template<
-	size_type N,
+	fcppt::math::size_type N,
 	typename T
 >
 typename boost::disable_if<
-	boost::is_same<
+	std::is_same<
 		typename T::dim_wrapper,
-		detail::dynamic_size
+		fcppt::math::detail::dynamic_size
 	>,
 	typename T::reference
 >::type
@@ -70,13 +70,13 @@ checked_access(
 }
 
 template<
-	size_type N,
+	fcppt::math::size_type N,
 	typename T
 >
 typename boost::enable_if<
-	boost::is_same<
+	std::is_same<
 		typename T::dim_wrapper,
-		detail::dynamic_size
+		fcppt::math::detail::dynamic_size
 	>,
 	typename T::const_reference
 >::type
@@ -89,13 +89,13 @@ checked_access(
 }
 
 template<
-	size_type N,
+	fcppt::math::size_type N,
 	typename T
 >
 typename boost::disable_if<
-	boost::is_same<
+	std::is_same<
 		typename T::dim_wrapper,
-		detail::dynamic_size
+		fcppt::math::detail::dynamic_size
 	>,
 	typename T::const_reference
 >::type

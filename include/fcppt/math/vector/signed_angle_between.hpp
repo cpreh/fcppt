@@ -13,8 +13,8 @@
 #include <fcppt/math/vector/object_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/mpl/and.hpp>
-#include <boost/type_traits/is_floating_point.hpp>
 #include <boost/utility/enable_if.hpp>
+#include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -60,10 +60,10 @@ template<
 >
 typename boost::enable_if<
 	boost::mpl::and_<
-		boost::is_floating_point<
+		std::is_floating_point<
 			T
 		>,
-		math::detail::has_size<
+		fcppt::math::detail::has_size<
 			N,
 			2
 		>
@@ -71,12 +71,12 @@ typename boost::enable_if<
 	T
 >::type
 signed_angle_between(
-	object<T, N, S1> const &_from,
-	object<T, N, S2> const &_to
+	fcppt::math::vector::object<T, N, S1> const &_from,
+	fcppt::math::vector::object<T, N, S2> const &_to
 )
 {
 	return
-		vector::atan2(
+		fcppt::math::vector::atan2(
 			_to
 			- _from
 		);

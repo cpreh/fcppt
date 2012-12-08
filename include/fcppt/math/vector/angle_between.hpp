@@ -12,9 +12,9 @@
 #include <fcppt/math/vector/length.hpp>
 #include <fcppt/math/vector/object_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/type_traits/is_floating_point.hpp>
 #include <boost/utility/enable_if.hpp>
 #include <cmath>
+#include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -53,27 +53,27 @@ template<
 	typename S2
 >
 typename boost::enable_if<
-	boost::is_floating_point<
+	std::is_floating_point<
 		T
 	>,
 	T
 >::type
 angle_between(
-	object<T, N, S1> const &_from,
-	object<T, N, S2> const &_to
+	fcppt::math::vector::object<T, N, S1> const &_from,
+	fcppt::math::vector::object<T, N, S2> const &_to
 )
 {
 	return
 		std::acos(
-			vector::dot(
+			fcppt::math::vector::dot(
 				_from,
 				_to
 			)
 			/
 			(
-			vector::length(
+			fcppt::math::vector::length(
 				_from) *
-			vector::length(
+			fcppt::math::vector::length(
 				_to)
 			)
 		);

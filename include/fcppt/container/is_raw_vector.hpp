@@ -12,7 +12,7 @@
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/type_traits/integral_constant.hpp>
+#include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
 namespace fcppt
@@ -32,7 +32,7 @@ template<
 >
 struct is_raw_vector
 :
-boost::false_type
+std::false_type
 {};
 
 // Without this, doxygen generates another raw_vector type (wtf?)
@@ -48,7 +48,7 @@ struct is_raw_vector<
 	>
 >
 :
-boost::true_type
+std::true_type
 {};
 /// \endcond
 

@@ -12,12 +12,7 @@
 #include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/mpl/not.hpp>
-#include <boost/type_traits/integral_constant.hpp>
-#include <boost/type_traits/is_pointer.hpp>
-#include <boost/type_traits/is_same.hpp>
-#include <boost/type_traits/remove_cv.hpp>
-#include <boost/type_traits/remove_pointer.hpp>
-#include <boost/type_traits/remove_reference.hpp>
+#include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -34,17 +29,17 @@ FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
 template<
 	typename IterT,
 	bool IsPointer
-		= boost::is_pointer<
+		= std::is_pointer<
 			IterT
 		>::value
 >
 struct is_iterator
 :
 boost::mpl::not_<
-	boost::is_same<
-		boost::remove_cv<
-			boost::remove_pointer<
-				boost::remove_reference<
+	std::is_same<
+		std::remove_cv<
+			std::remove_pointer<
+				std::remove_reference<
 					IterT
 				>
 			>

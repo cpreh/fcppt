@@ -10,10 +10,11 @@
 
 #include <fcppt/math/diff.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/type_traits/is_floating_point.hpp>
 #include <boost/utility/enable_if.hpp>
 #include <cmath>
+#include <type_traits>
 #include <fcppt/config/external_end.hpp>
+
 
 namespace fcppt
 {
@@ -32,7 +33,7 @@ template<typename Range,typename T>
 typename
 boost::enable_if
 <
-	boost::is_floating_point<typename Range::value_type>,
+	std::is_floating_point<typename Range::value_type>,
 	bool
 >::type
 range_compare(

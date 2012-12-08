@@ -9,9 +9,8 @@
 
 #include <fcppt/nonassignable.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/type_traits/is_const.hpp>
-#include <boost/type_traits/is_same.hpp>
 #include <boost/utility/enable_if.hpp>
+#include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -48,7 +47,7 @@ public:
 		typename T
 	>
 	typename boost::enable_if<
-		boost::is_same<
+		std::is_same<
 			T,
 			Value
 		>,
@@ -59,7 +58,7 @@ public:
 	) const
 	{
 		static_assert(
-			!boost::is_const<
+			!std::is_const<
 				T
 			>::value,
 			"T must be const"
@@ -72,7 +71,7 @@ public:
 		typename T
 	>
 	typename boost::disable_if<
-		boost::is_same<
+		std::is_same<
 			T,
 			Value
 		>,
@@ -83,7 +82,7 @@ public:
 	) const
 	{
 		static_assert(
-			!boost::is_const<
+			!std::is_const<
 				T
 			>::value,
 			"T must be const"

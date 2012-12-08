@@ -14,7 +14,7 @@
 #include <fcppt/type_traits/has_iterator.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/mpl/if.hpp>
-#include <boost/type_traits/is_const.hpp>
+#include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -44,7 +44,7 @@ struct is_iterable
 :
 boost::mpl::if_
 <
-	boost::is_const<
+	std::is_const<
 		Type
 	>,
 	fcppt::type_traits::has_const_iterator<

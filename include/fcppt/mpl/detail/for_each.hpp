@@ -11,8 +11,9 @@
 #include <fcppt/config/external_begin.hpp>
 #include <boost/mpl/deref.hpp>
 #include <boost/mpl/next.hpp>
-#include <boost/type_traits/is_same.hpp>
+#include <type_traits>
 #include <fcppt/config/external_end.hpp>
+
 
 namespace fcppt
 {
@@ -40,7 +41,8 @@ struct for_each<
 	execute(
 		Fun const &
 	)
-	{}
+	{
+	}
 };
 
 template<>
@@ -55,19 +57,24 @@ struct for_each<
 	>
 	static void
 	execute(
-		Fun const &f
+		Fun const &_func
 	)
 	{
-		typedef typename boost::mpl::deref<Iterator>::type item;
-		typedef typename boost::mpl::next<Iterator>::type iter;
+		typedef typename boost::mpl::deref<
+			Iterator
+		>::type item;
+
+		typedef typename boost::mpl::next<
+			Iterator
+		>::type iter;
 
 #ifdef FCPPT_MSVC_DEPENDANT_TEMPLATE_BUG
-		f.operator()<item>();
+		_func.operator()<item>();
 #else
-		f. template operator()<item>();
+		_func. template operator()<item>();
 #endif
-		detail::for_each<
-			boost::is_same<
+		fcppt::mpl::detail::for_each<
+			std::is_same<
 				iter,
 				LastIterator
 			>::value
@@ -75,7 +82,7 @@ struct for_each<
 			iter,
 			LastIterator
 		>(
-			f
+			_func
 		);
 	}
 };

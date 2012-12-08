@@ -13,8 +13,8 @@
 #include <fcppt/config/external_begin.hpp>
 #include <boost/mpl/and.hpp>
 #include <boost/mpl/not.hpp>
-#include <boost/type_traits/is_const.hpp>
 #include <boost/utility/enable_if.hpp>
+#include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -34,11 +34,11 @@ struct enable_optional_ref_conv
 :
 boost::enable_if<
 	boost::mpl::and_<
-		boost::is_const<
+		std::is_const<
 			Own
 		>,
 		boost::mpl::not_<
-			boost::is_const<
+			std::is_const<
 				Other
 			>
 		>

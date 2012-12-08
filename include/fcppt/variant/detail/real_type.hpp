@@ -11,8 +11,8 @@
 #include <fcppt/config/external_begin.hpp>
 #include <boost/mpl/contains.hpp>
 #include <boost/mpl/if.hpp>
-#include <boost/type_traits/is_same.hpp>
 #include <fcppt/config/external_end.hpp>
+
 
 namespace fcppt
 {
@@ -28,7 +28,7 @@ template<
 struct real_type
 {
 private:
-	typedef variant::recursive<
+	typedef fcppt::variant::recursive<
 		Element
 	> recursive_type;
 public:

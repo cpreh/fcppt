@@ -8,8 +8,8 @@
 #define FCPPT_MATH_CEIL_DIV_HPP_INCLUDED
 
 #include <fcppt/config/external_begin.hpp>
-#include <boost/type_traits/is_unsigned.hpp>
 #include <boost/utility/enable_if.hpp>
+#include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -29,7 +29,7 @@ template<
 	typename T
 >
 typename boost::enable_if<
-	boost::is_unsigned<
+	std::is_unsigned<
 		T
 	>,
 	T

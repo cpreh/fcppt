@@ -11,8 +11,8 @@
 #include <fcppt/math/quaternion/dot.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/math/quaternion.hpp>
-#include <boost/type_traits/is_floating_point.hpp>
 #include <boost/utility/enable_if.hpp>
+#include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -31,7 +31,7 @@ template<typename T>
 typename
 boost::enable_if
 <
-	boost::is_floating_point<T>,
+	std::is_floating_point<T>,
 	bool
 >::type
 is_normalized(

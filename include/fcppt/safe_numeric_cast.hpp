@@ -13,11 +13,9 @@
 #include <boost/mpl/greater_equal.hpp>
 #include <boost/mpl/or.hpp>
 #include <boost/mpl/sizeof.hpp>
-#include <boost/type_traits/is_floating_point.hpp>
-#include <boost/type_traits/is_integral.hpp>
-#include <boost/type_traits/is_same.hpp>
-#include <boost/type_traits/is_signed.hpp>
 #include <boost/utility/enable_if.hpp>
+#include <boost/type_traits/is_signed.hpp>
+#include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -68,23 +66,23 @@ typename boost::enable_if<
 			>
 		>,
 		boost::mpl::or_<
-			boost::is_same<
+			std::is_same<
 				Dest,
 				Source
 			>,
 			boost::mpl::and_<
-				boost::is_floating_point<
+				std::is_floating_point<
 					Dest
 				>,
-				boost::is_floating_point<
+				std::is_floating_point<
 					Source
 				>
 			>,
 			boost::mpl::and_<
-				boost::is_integral<
+				std::is_integral<
 					Dest
 				>,
-				boost::is_integral<
+				std::is_integral<
 					Source
 				>,
 				boost::mpl::equal_to<

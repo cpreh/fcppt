@@ -12,8 +12,7 @@
 #include <fcppt/container/bitfield/value_type.hpp>
 #include <fcppt/container/bitfield/detail/element_bits.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/type_traits/remove_const.hpp>
-#include <boost/type_traits/remove_reference.hpp>
+#include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -40,8 +39,8 @@ class proxy
 		proxy
 	);
 
-	typedef typename boost::remove_const<
-		typename boost::remove_reference<
+	typedef typename std::remove_const<
+		typename std::remove_reference<
 			StoredType
 		>::type
 	>::type array_type;

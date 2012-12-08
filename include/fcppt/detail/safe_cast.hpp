@@ -10,8 +10,8 @@
 #include <fcppt/safe_numeric_cast.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/mpl/and.hpp>
-#include <boost/type_traits/is_arithmetic.hpp>
 #include <boost/utility/enable_if.hpp>
+#include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -26,10 +26,10 @@ template<
 >
 typename boost::disable_if<
 	boost::mpl::and_<
-		boost::is_arithmetic<
+		std::is_arithmetic<
 			T
 		>,
-		boost::is_arithmetic<
+		std::is_arithmetic<
 			U
 		>
 	>,
@@ -48,10 +48,10 @@ template<
 >
 typename boost::enable_if<
 	boost::mpl::and_<
-		boost::is_arithmetic<
+		std::is_arithmetic<
 			T
 		>,
-		boost::is_arithmetic<
+		std::is_arithmetic<
 			U
 		>
 	>,

@@ -15,6 +15,7 @@
 #include <boost/mpl/not.hpp>
 #include <fcppt/config/external_end.hpp>
 
+
 namespace fcppt
 {
 namespace math
@@ -33,7 +34,7 @@ template<
 struct is_static_size
 :
 boost::mpl::not_<
-	math::is_dynamic_size<
+	fcppt::math::is_dynamic_size<
 		T
 	>
 >

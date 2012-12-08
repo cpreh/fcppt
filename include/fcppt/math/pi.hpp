@@ -9,8 +9,8 @@
 
 #include <fcppt/math/detail/pi.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/type_traits/is_floating_point.hpp>
 #include <boost/utility/enable_if.hpp>
+#include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -29,16 +29,17 @@ template<
 >
 inline
 typename boost::enable_if<
-	boost::is_floating_point<
+	std::is_floating_point<
 		T
 	>,
 	T
 >::type
 pi()
 {
-	return detail::pi<
-		T
-	>::get();
+	return
+		fcppt::math::detail::pi<
+			T
+		>::get();
 }
 
 }

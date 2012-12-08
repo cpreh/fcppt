@@ -10,7 +10,7 @@
 #include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/test/unit_test.hpp>
-#include <boost/type_traits/is_same.hpp>
+#include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
 template class
@@ -285,21 +285,21 @@ FCPPT_PP_POP_WARNING
 	> optional_int;
 
 	BOOST_CHECK((
-		boost::is_same<
+		std::is_same<
 			optional_int::value_type,
 			int
 		>::value
 	));
 
 	BOOST_CHECK((
-		boost::is_same<
+		std::is_same<
 			optional_int::reference,
 			int &
 		>::value
 	));
 
 	BOOST_CHECK((
-		boost::is_same<
+		std::is_same<
 			optional_int::const_reference,
 			int const &
 		>::value
@@ -310,14 +310,14 @@ FCPPT_PP_POP_WARNING
 	> optional_int_ref;
 
 	BOOST_CHECK((
-		boost::is_same<
+		std::is_same<
 			optional_int_ref::value_type,
 			int
 		>::value
 	));
 
 	BOOST_CHECK((
-		boost::is_same<
+		std::is_same<
 			optional_int_ref::reference,
 			int &
 		>::value
@@ -328,14 +328,14 @@ FCPPT_PP_POP_WARNING
 	> optional_const_int_ref;
 
 	BOOST_CHECK((
-		boost::is_same<
+		std::is_same<
 			optional_const_int_ref::value_type,
 			int
 		>::value
 	));
 
 	BOOST_CHECK((
-		boost::is_same<
+		std::is_same<
 			optional_const_int_ref::reference,
 			int const &
 		>::value

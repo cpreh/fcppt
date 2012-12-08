@@ -7,11 +7,10 @@
 #ifndef FCPPT_OPTIONAL_DYNAMIC_CAST_HPP_INCLUDED
 #define FCPPT_OPTIONAL_DYNAMIC_CAST_HPP_INCLUDED
 
-#include <fcppt/optional.hpp>
+#include <fcppt/optional_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/type_traits/is_reference.hpp>
-#include <boost/type_traits/remove_reference.hpp>
 #include <boost/utility/enable_if.hpp>
+#include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -33,14 +32,14 @@ template<typename Derived,typename Base>
 typename
 boost::enable_if
 <
-	boost::is_reference<Derived>,
+	std::is_reference<Derived>,
 	fcppt::optional<Derived> const
 >::type
 optional_dynamic_cast(
 	Base &_base)
 {
 	typedef typename
-	boost::remove_reference<Derived>::type
+	std::remove_reference<Derived>::type
 	derived_no_reference;
 
 	derived_no_reference * const derived_ptr =

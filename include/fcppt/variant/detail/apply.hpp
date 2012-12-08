@@ -10,8 +10,8 @@
 #include <fcppt/config/external_begin.hpp>
 #include <boost/mpl/deref.hpp>
 #include <boost/mpl/next.hpp>
-#include <boost/type_traits/is_same.hpp>
 #include <exception>
+#include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -84,7 +84,7 @@ struct apply<
 				)
 			:
 				fcppt::variant::detail::apply<
-					boost::is_same<
+					std::is_same<
 						next_iterator,
 						EndIterator
 					>::value

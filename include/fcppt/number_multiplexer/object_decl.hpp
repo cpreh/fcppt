@@ -11,7 +11,7 @@
 #include <fcppt/strong_typedef.hpp>
 #include <fcppt/number_multiplexer/object_fwd.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/type_traits/is_unsigned.hpp>
+#include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -23,7 +23,7 @@ template<typename T>
 class object
 {
 static_assert(
-	boost::is_unsigned<T>::value,
+	std::is_unsigned<T>::value,
 	"number_multiplexer only works on unsigned types");
 public:
 	typedef

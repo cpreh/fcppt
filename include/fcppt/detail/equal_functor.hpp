@@ -7,6 +7,7 @@
 #ifndef FCPPT_DETAIL_EQUAL_FUNCTOR_HPP_INCLUDED
 #define FCPPT_DETAIL_EQUAL_FUNCTOR_HPP_INCLUDED
 
+
 namespace fcppt
 {
 namespace detail
