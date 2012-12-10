@@ -15,7 +15,7 @@ fcppt::log::enabled_levels(
 	fcppt::log::level const _level
 )
 {
-	fcppt::log::enabled_level_array ret{};
+	fcppt::log::enabled_level_array ret;
 
 	FCPPT_FOREACH_ENUMERATOR(
 		index,

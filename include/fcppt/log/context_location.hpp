@@ -11,6 +11,9 @@
 #include <fcppt/log/context_fwd.hpp>
 #include <fcppt/log/context_location_fwd.hpp>
 #include <fcppt/log/location.hpp>
+#include <fcppt/config/external_begin.hpp>
+#include <boost/ref.hpp>
+#include <fcppt/config/external_end.hpp>
 
 
 namespace fcppt
@@ -59,7 +62,12 @@ public:
 	fcppt::log::location const &
 	location() const;
 private:
-	fcppt::log::context *context_;
+	// This is a boost::reference_wrapper so context can be incomplete
+	typedef boost::reference_wrapper<
+		fcppt::log::context
+	> context_reference;
+
+	context_reference context_;
 
 	fcppt::log::location location_;
 };

@@ -15,16 +15,18 @@ fcppt::log::context_location::context_location(
 )
 :
 	context_(
-		&_context
+		_context
 	),
-	location_(_location)
+	location_(
+		_location
+	)
 {
 }
 
 fcppt::log::context &
 fcppt::log::context_location::context() const
 {
-	return *context_;
+	return context_.get();
 }
 
 fcppt::log::location const &

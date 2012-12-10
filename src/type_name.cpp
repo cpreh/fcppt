@@ -13,7 +13,6 @@
 #include <fcppt/config.hpp>
 #if defined(FCPPT_HAVE_GCC_DEMANGLE)
 #include <fcppt/c_deleter.hpp>
-#include <fcppt/null_ptr.hpp>
 #include <fcppt/scoped_ptr.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <cxxabi.h>
@@ -34,8 +33,8 @@ fcppt::type_name(
 	> name(
 		abi::__cxa_demangle(
 			_info.name(),
-			fcppt::null_ptr(),
-			fcppt::null_ptr(),
+			nullptr,
+			nullptr,
 			&status
 		)
 	);

@@ -14,6 +14,7 @@
 #include <fcppt/log/detail/output_helper.hpp>
 #include <fcppt/log/detail/temporary_output_fwd.hpp>
 #include <fcppt/config/external_begin.hpp>
+#include <memory>
 #include <ostream>
 #include <utility>
 #include <fcppt/config/external_end.hpp>
@@ -44,7 +45,10 @@ public:
 	fcppt::string const
 	result() const;
 private:
-	fcppt::io::ostringstream stream_;
+	// The unique_ptr should go when libstdc++ streams are movable
+	std::unique_ptr<
+		fcppt::io::ostringstream
+	> stream_;
 
 	template<
 		typename T
@@ -80,7 +84,7 @@ operator<<(
 	T const &_arg
 )
 {
-	_temp.stream_ << _arg;
+	*_temp.stream_ << _arg;
 
 	return
 		std::move(

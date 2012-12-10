@@ -230,12 +230,6 @@ set(
 	"Custom config installation directory"
 )
 
-option(
-	FCPPT_ENABLE_CPP11
-	"Enable C++11 support."
-	FALSE
-)
-
 # cmake-2.8.3 is required for this to work
 if(
 	"${CMAKE_CXX_COMPILER_ID}" STREQUAL "Clang"
@@ -367,13 +361,7 @@ if(
 		FCPPT_UTILS_HAVE_ZERO_AS_NULL_POINTER_CONSTANT_FLAG
 	)
 
-	if(
-		FCPPT_ENABLE_CPP11
-	)
-		add_definitions("-std=c++0x")
-	else()
-		add_definitions("-ansi")
-	endif()
+	add_definitions("-std=c++0x")
 
 	add_definitions(
 		${FCPPT_UTILS_GCC_ICC_CLANG_COMMON_OPTIONS}
@@ -414,13 +402,6 @@ if(
 		add_definitions(
 			"-Weffc++"
 		)
-	endif()
-
-	# Disable warnings about long long because too much stuff uses it
-	if(
-		NOT FCPPT_ENABLE_CPP11
-	)
-		add_definitions("-Wno-long-long")
 	endif()
 
 	if(FCPPT_UTILS_HAVE_CONDITIONAL_UNINITIALIZED_FLAG)

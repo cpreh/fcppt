@@ -361,7 +361,9 @@ fcppt::shared_ptr<
 >::operator
 bool() const
 {
-	return impl_;
+	return
+		impl_.get()
+		!= nullptr;
 }
 /// \endcond
 

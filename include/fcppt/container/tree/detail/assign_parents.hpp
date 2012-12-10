@@ -31,10 +31,6 @@ assign_parents(
 	>::child_list &_children
 )
 {
-	typedef typename fcppt::container::tree::object<
-		T
-	>::child_list child_list;
-
 	for(
 		auto &child : _children
 	)
