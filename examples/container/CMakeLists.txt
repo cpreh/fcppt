@@ -12,7 +12,6 @@ function(
 	)
 endfunction()
 
-add_fcppt_container_example(array "" "")
 add_fcppt_container_example(bitfield "" "")
 add_fcppt_container_example(grid "" "")
 add_fcppt_container_example(grid_iteration "" "")

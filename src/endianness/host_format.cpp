@@ -14,7 +14,10 @@
 
 #if !(defined(FCPPT_LITTLE_ENDIAN) || defined(FCPPT_BIG_ENDIAN))
 #include <fcppt/algorithm/copy_n.hpp>
-#include <fcppt/container/array.hpp>
+#include <fcppt/config/external_begin.hpp>
+#include <array>
+#include <fcppt/config/external_end.hpp>
+
 
 namespace
 {
@@ -28,7 +31,7 @@ compute_endianness()
 		1u
 	);
 
-	typedef fcppt::container::array<
+	typedef std::array<
 		unsigned char,
 		sizeof(int_type)
 	> array_type;

@@ -8,10 +8,12 @@
 #include <fcppt/config.hpp>
 
 #if defined(FCPPT_HAVE_BACKTRACE)
-#include <fcppt/container/array.hpp>
+#include <fcppt/config/external_begin.hpp>
+#include <array>
 #include <cstddef>
 #include <execinfo.h>
 #include <unistd.h>
+#include <fcppt/config/external_end.hpp>
 #endif
 
 #if defined(FCPPT_HAVE_BACKTRACE)
@@ -26,7 +28,11 @@ fcppt::backtrace::print_current_stack_frame()
 {
 #if defined(FCPPT_HAVE_BACKTRACE)
 	typedef
-	fcppt::container::array<void*,max_stacktrace_size>
+	std::array
+	<
+		void *,
+		max_stacktrace_size
+	>
 	symbol_sequence;
 
 	symbol_sequence resulting_symbols;

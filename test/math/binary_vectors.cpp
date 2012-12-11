@@ -14,6 +14,7 @@
 #include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/test/unit_test.hpp>
+#include <array>
 #include <iostream>
 #include <iterator>
 #include <ostream>
@@ -37,7 +38,7 @@ FCPPT_PP_POP_WARNING
 	vector3;
 
 	typedef
-	fcppt::container::array
+	std::array
 	<
 		vector2,
 		4
@@ -45,7 +46,7 @@ FCPPT_PP_POP_WARNING
 	vector2_container;
 
 	typedef
-	fcppt::container::array
+	std::array
 	<
 		vector3,
 		8

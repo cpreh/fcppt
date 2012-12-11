@@ -7,11 +7,11 @@
 #ifndef FCPPT_MATH_IS_STATIC_STORAGE_HPP_INCLUDED
 #define FCPPT_MATH_IS_STATIC_STORAGE_HPP_INCLUDED
 
-#include <fcppt/container/array_fwd.hpp>
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/config/external_begin.hpp>
+#include <array>
 #include <cstddef>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
@@ -39,7 +39,7 @@ template<
 	std::size_t N
 >
 struct is_static_storage<
-	fcppt::container::array<
+	std::array<
 		T,
 		N
 	>

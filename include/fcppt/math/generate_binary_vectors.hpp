@@ -8,12 +8,12 @@
 #ifndef FCPPT_MATH_GENERATE_BINARY_VECTORS_HPP_INCLUDED
 #define FCPPT_MATH_GENERATE_BINARY_VECTORS_HPP_INCLUDED
 
-#include <fcppt/container/array.hpp>
 #include <fcppt/math/size_type.hpp>
 #include <fcppt/math/detail/generate_binary_vectors.hpp>
 #include <fcppt/math/vector/object_impl.hpp>
 #include <fcppt/math/vector/static.hpp>
 #include <fcppt/config/external_begin.hpp>
+#include <array>
 #include <cstddef>
 #include <fcppt/config/external_end.hpp>
 
@@ -64,7 +64,7 @@ vector3;
 // here:
 
 typedef
-fcppt::container::array<vector3,8>
+std::array<vector3,8>
 binary_vectors;
 
 binary_vectors vs(
@@ -80,7 +80,7 @@ std::cout << vs[1];
 \endcode
 */
 template<typename T,fcppt::math::size_type N>
-fcppt::container::array
+std::array
 <
 	typename fcppt::math::vector::static_<T,N>::type,
 	static_cast<std::size_t>(1u << N)
@@ -92,7 +92,7 @@ generate_binary_vectors()
 	vector_type;
 
 	typedef
-	fcppt::container::array
+	std::array
 	<
 		vector_type,
 		static_cast<std::size_t>(1u << N)

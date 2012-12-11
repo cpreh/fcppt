@@ -4,13 +4,13 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/container/array.hpp>
 #include <fcppt/container/raw_vector.hpp>
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/test/unit_test.hpp>
+#include <array>
 #include <iterator>
 #include <sstream>
 #include <fcppt/config/external_end.hpp>
@@ -149,7 +149,7 @@ FCPPT_PP_POP_WARNING
 
 	container_type test;
 
-	typedef fcppt::container::array<
+	typedef std::array<
 		int,
 		5
 	> int_array;

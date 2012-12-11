@@ -9,10 +9,10 @@
 #include <fcppt/algorithm/join_strings.hpp>
 #include <fcppt/algorithm/levenshtein.hpp>
 #include <fcppt/algorithm/shift_compare.hpp>
-#include <fcppt/container/array.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/spirit/home/phoenix/core/argument.hpp>
 #include <boost/spirit/home/phoenix/operator/arithmetic.hpp>
+#include <array>
 #include <functional>
 #include <iostream>
 #include <ostream>
@@ -45,7 +45,7 @@ fcppt::algorithm::append(
 {
 //! [array_map]
 typedef
-fcppt::container::array<int,3>
+std::array<int,3>
 three_ints;
 
 three_ints const a = {{ 1,2,3 }};

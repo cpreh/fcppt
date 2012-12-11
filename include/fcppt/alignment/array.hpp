@@ -9,10 +9,12 @@
 
 #include <fcppt/alignment/make_type.hpp>
 #include <fcppt/alignment/size_type.hpp>
-#include <fcppt/container/array.hpp>
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
+#include <fcppt/config/external_begin.hpp>
+#include <array>
+#include <fcppt/config/external_end.hpp>
 
 
 namespace fcppt
@@ -29,7 +31,7 @@ FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
 \ingroup fcpptalignment
 
 Contains a nested typedef <code>type</code> to an
-<code>fcppt::container::array<Type, Size></code> with alignment \a Alignment
+<code>std::array<Type, Size></code> with alignment \a Alignment
 
 \tparam Type Can be any type
 
@@ -47,7 +49,7 @@ template<
 struct array
 :
 fcppt::alignment::make_type<
-	fcppt::container::array<
+	std::array<
 		Type,
 		Size
 	>,

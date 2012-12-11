@@ -5,7 +5,6 @@
 
 
 #include <fcppt/nonassignable.hpp>
-#include <fcppt/container/array.hpp>
 #include <fcppt/math/difference_type.hpp>
 #include <fcppt/math/size_type.hpp>
 #include <fcppt/math/static_size.hpp>
@@ -17,6 +16,7 @@
 #include <fcppt/config/external_begin.hpp>
 #include <boost/iterator/iterator_facade.hpp>
 #include <boost/test/unit_test.hpp>
+#include <array>
 #include <cstring>
 #include <iterator>
 #include <fcppt/config/external_end.hpp>
@@ -356,7 +356,7 @@ FCPPT_PP_POP_WARNING
 		value_raw_view
 	> vector_raw;
 
-	typedef fcppt::container::array<
+	typedef std::array<
 		unsigned char,
 		sizeof(value_type) * num_elements
 	> array_type;

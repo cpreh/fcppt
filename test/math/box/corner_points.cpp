@@ -5,7 +5,6 @@
 
 
 #include <fcppt/algorithm/contains.hpp>
-#include <fcppt/container/array.hpp>
 #include <fcppt/math/box/corner_points.hpp>
 #include <fcppt/math/box/object_impl.hpp>
 #include <fcppt/math/box/output.hpp>
@@ -17,9 +16,11 @@
 #include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/test/unit_test.hpp>
+#include <array>
 #include <iostream>
 #include <ostream>
 #include <fcppt/config/external_end.hpp>
+
 
 FCPPT_PP_PUSH_WARNING
 FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
@@ -42,7 +43,7 @@ FCPPT_PP_POP_WARNING
 
 	std::cout << "Checking border points of box: " << box << '\n';
 
-	typedef fcppt::container::array<box_type::vector,4> vertex_array;
+	typedef std::array<box_type::vector,4> vertex_array;
 
 	vertex_array const vertices(
 		fcppt::math::box::corner_points(

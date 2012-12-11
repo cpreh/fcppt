@@ -8,7 +8,6 @@
 #ifndef FCPPT_CONTAINER_GRID_INTERPOLATE_HPP_INCLUDED
 #define FCPPT_CONTAINER_GRID_INTERPOLATE_HPP_INCLUDED
 
-#include <fcppt/container/array_impl.hpp>
 #include <fcppt/container/grid/object_impl.hpp>
 #include <fcppt/math/generate_binary_vectors.hpp>
 #include <fcppt/math/dim/object_impl.hpp>
@@ -18,6 +17,7 @@
 #include <fcppt/math/vector/structure_cast.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/utility/enable_if.hpp>
+#include <array>
 #include <cstddef>
 #include <fcppt/config/external_end.hpp>
 
@@ -173,7 +173,7 @@ interpolate(
 	integer_vector_type;
 
 	typedef
-	fcppt::container::array
+	std::array
 	<
 		integer_vector_type,
 		static_cast<std::size_t>(1u << integer_vector_type::dim_wrapper::value)
