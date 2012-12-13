@@ -102,11 +102,11 @@ public:
 	/**
 	\brief A type that counts the number of elements in a matrix.
 	*/
-	typedef math::size_type size_type;
+	typedef fcppt::math::size_type size_type;
 	/**
 	\brief A type that provides the difference between the addresses of two elements in a matrix.
 	*/
-	typedef math::difference_type difference_type;
+	typedef fcppt::math::difference_type difference_type;
 
 	/**
 	\brief A type that represents the data type stored in a matrix.
@@ -120,10 +120,10 @@ public:
 	typedef, as it's really a vector that models a row-view over the
 	matrix, see the explanation above.
 	*/
-	typedef vector::object<
+	typedef fcppt::math::vector::object<
 		T,
 		N,
-		matrix::detail::row_view<
+		fcppt::math::matrix::detail::row_view<
 			T,
 			N
 		>
@@ -150,12 +150,12 @@ public:
 	/**
 	\brief A type that provides a pointer to an element in a matrix.
 	*/
-	typedef T *pointer;
+	typedef typename storage_type::pointer pointer;
 
 	/**
 	\brief A type that provides a pointer to a <code>const</code> element in a matrix.
 	*/
-	typedef T const *const_pointer;
+	typedef typename storage_type::const_pointer const_pointer;
 
 	/**
 	\brief A type that provides a random-access iterator that can read or modify any element in a matrix.
@@ -163,7 +163,7 @@ public:
 	\warning
 	An "element" in this case is <em>not</em> a row, but a single cell. See the iteration section above.
 	*/
-	typedef pointer iterator;
+	typedef typename storage_type::iterator iterator;
 
 	/**
 	\brief A type that provides a random-access iterator that can read or modify any element in a matrix.
@@ -171,7 +171,7 @@ public:
 	\warning
 	An "element" in this case is <em>not</em> a row, but a single cell. See the iteration section above.
 	*/
-	typedef const_pointer const_iterator;
+	typedef typename storage_type::const_iterator const_iterator;
 
 	/**
 	\brief A type that provides a random-access iterator that can read or modify any element in a reversed matrix.
@@ -186,7 +186,7 @@ public:
 	/**
 	\brief The dim type corresponding to this matrix type.
 	*/
-	typedef matrix::dim_type dim;
+	typedef fcppt::math::matrix::dim_type dim;
 
 	/**
 	\brief Construct an uninitialized matrix

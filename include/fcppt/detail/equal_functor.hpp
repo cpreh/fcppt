@@ -18,6 +18,7 @@ struct equal_functor
 	template<
 		typename T
 	>
+	inline
 	bool
 	operator()(
 		T const &_t1,

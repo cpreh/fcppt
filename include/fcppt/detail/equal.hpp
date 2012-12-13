@@ -9,9 +9,7 @@
 
 #include <fcppt/detail/equal_functor.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/utility/enable_if.hpp>
 #include <algorithm>
-#include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -21,20 +19,14 @@ namespace detail
 {
 
 template<
-	typename Iterator
+	typename Iterator1,
+	typename Iterator2
 >
-typename boost::enable_if<
-	std::is_floating_point<
-		typename std::iterator_traits<
-			Iterator
-		>::value_type
-	>,
-	bool
->::type
+bool
 equal(
-	Iterator const _beg1,
-	Iterator const _end1,
-	Iterator const _beg2
+	Iterator1 const _beg1,
+	Iterator1 const _end1,
+	Iterator2 const _beg2
 )
 {
 	return
@@ -43,31 +35,6 @@ equal(
 			_end1,
 			_beg2,
 			fcppt::detail::equal_functor()
-		);
-}
-
-template<
-	typename Iterator
->
-typename boost::disable_if<
-	std::is_floating_point<
-		typename std::iterator_traits<
-			Iterator
-		>::value_type
-	>,
-	bool
->::type
-equal(
-	Iterator const _beg1,
-	Iterator const _end1,
-	Iterator const _beg2
-)
-{
-	return
-		std::equal(
-			_beg1,
-			_end1,
-			_beg2
 		);
 }
 

@@ -57,11 +57,11 @@ public:
 	/**
 	\brief A type that counts the number of elements in a dim.
 	*/
-	typedef math::size_type size_type;
+	typedef fcppt::math::size_type size_type;
 	/**
 	\brief A type that provides the difference between the addresses of two elements in a dim.
 	*/
-	typedef math::difference_type difference_type;
+	typedef fcppt::math::difference_type difference_type;
 	/**
 	\brief A type that represents the data type stored in a dim.
 	*/
@@ -69,27 +69,27 @@ public:
 	/**
 	\brief A type that provides a reference to an element stored in a dim.
 	*/
-	typedef value_type &reference;
+	typedef typename storage_type::reference reference;
 	/**
 	\brief A type that provides a reference to a <code>const</code> element stored in a dim for reading and performing <code>const</code> operations.
 	*/
-	typedef value_type const &const_reference;
+	typedef typename storage_type::const_reference const_reference;
 	/**
 	\brief A type that provides a pointer to an element in a dim.
 	*/
-	typedef T *pointer;
+	typedef typename storage_type::pointer pointer;
 	/**
 	\brief A type that provides a pointer to a <code>const</code> element in a dim.
 	*/
-	typedef T const *const_pointer;
+	typedef typename storage_type::const_pointer const_pointer;
 	/**
 	\brief A type that provides a random-access iterator that can read or modify any element in a dim.
 	*/
-	typedef pointer iterator;
+	typedef typename storage_type::iterator iterator;
 	/**
 	\brief A type that provides a random-access iterator that can read a <code>const</code> element in a dim.
 	*/
-	typedef const_pointer const_iterator;
+	typedef typename storage_type::const_iterator const_iterator;
 	/**
 	\brief A type that provides a random-access iterator that can read or modify any element in a reversed dim.
 	*/
