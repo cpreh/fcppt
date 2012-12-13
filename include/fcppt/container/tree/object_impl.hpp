@@ -46,7 +46,9 @@ fcppt::container::tree::object<T>::object(
 )
 :
 	value_(
-		std::move(
+		std::forward<
+			arg_type
+		>(
 			_value
 		)
 	),
@@ -253,7 +255,9 @@ fcppt::container::tree::object<T>::value(
 {
 	fcppt::container::tree::detail::assign_value(
 		value_,
-		std::move(
+		std::forward<
+			arg_type
+		>(
 			_value
 		)
 	);
@@ -339,7 +343,9 @@ fcppt::container::tree::object<T>::push_back(
 {
 	this->insert(
 		this->end(),
-		std::move(
+		std::forward<
+			arg_type
+		>(
 			_value
 		)
 	);
@@ -380,7 +386,9 @@ fcppt::container::tree::object<T>::push_front(
 {
 	this->insert(
 		this->begin(),
-		std::move(
+		std::forward<
+			arg_type
+		>(
 			_value
 		)
 	);
@@ -587,31 +595,18 @@ fcppt::container::tree::object<T>::insert(
 {
 	this->insert(
 		_it,
-		std::unique_ptr<
-			fcppt::container::tree::object<
-				T
-			>
-		>(
-			new	fcppt::container::tree::object<
-				T
-			>(
-				std::move(
-					_value
-				)
-			)
-		)
-	);
-		/*
 		fcppt::make_unique_ptr<
 			fcppt::container::tree::object<
 				T
 			>
 		>(
-			std::move(
+			std::forward<
+				arg_type
+			>(
 				_value
 			)
 		)
-	);*/
+	);
 }
 
 template<

@@ -81,20 +81,13 @@ public:
 		>
 	>::type stored_type;
 
-	/// The type to forward to other functions (either <code>T</code> or <code>unique_ptr<T></code>)
+	/// The type to pass to other functions (either <code>stored_type const &</code> or <code>unique_ptr<stored_type> &&<T></code>)
 	typedef typename boost::mpl::if_<
 		is_ptr_tree,
 		std::unique_ptr<
 			stored_type
-		>,
-		stored_type
-	>::type arg_base_type;
-
-	/// The type to pass to other functions (either <code>T const &</code> or <code>unique_ptr<T></code>)
-	typedef typename boost::mpl::if_<
-		is_ptr_tree,
-		arg_base_type,
-		arg_base_type const &
+		> &&,
+		stored_type const &
 	>::type arg_type;
 
 	/// The type that holds the stored type (either <code>T</code> or <code>scoped_ptr<T></code>)
