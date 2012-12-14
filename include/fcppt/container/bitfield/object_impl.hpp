@@ -15,9 +15,6 @@
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/spirit/home/phoenix/core/argument.hpp>
-#include <boost/spirit/home/phoenix/operator/bitwise.hpp>
-#include <boost/spirit/home/phoenix/operator/comparison.hpp>
 #include <algorithm>
 #include <fcppt/config/external_end.hpp>
 
@@ -526,14 +523,19 @@ fcppt::container::bitfield::object<
 	> const &_other
 )
 {
-	namespace args = boost::phoenix::arg_names;
-
 	std::transform(
 		array_.begin(),
 		array_.end(),
 		_other.array_.begin(),
 		array_.begin(),
-		args::arg1 | args::arg2
+		[](
+			InternalType const _arg1,
+			InternalType const _arg2
+		)
+		{
+			return
+				_arg1 | _arg2;
+		}
 	);
 
 	return *this;
@@ -561,14 +563,19 @@ fcppt::container::bitfield::object<
 	> const &_other
 )
 {
-	namespace args = boost::phoenix::arg_names;
-
 	std::transform(
 		array_.begin(),
 		array_.end(),
 		_other.array_.begin(),
 		array_.begin(),
-		args::arg1 & args::arg2
+		[](
+			InternalType const _arg1,
+			InternalType const _arg2
+		)
+		{
+			return
+				_arg1 & _arg2;
+		}
 	);
 
 	return *this;
@@ -596,14 +603,19 @@ fcppt::container::bitfield::object<
 	> const &_other
 )
 {
-	namespace args = boost::phoenix::arg_names;
-
 	std::transform(
 		array_.begin(),
 		array_.end(),
 		_other.array_.begin(),
 		array_.begin(),
-		args::arg1 ^ args::arg2
+		[](
+			InternalType const _arg1,
+			InternalType const _arg2
+		)
+		{
+			return
+				_arg1 ^ _arg2;
+		}
 	);
 
 	return *this;
@@ -627,13 +639,17 @@ fcppt::container::bitfield::object<
 {
 	object ret;
 
-	namespace args = boost::phoenix::arg_names;
-
 	std::transform(
 		array_.begin(),
 		array_.end(),
 		ret.array_.begin(),
-		~args::arg1
+		[](
+			InternalType const _arg
+		)
+		{
+			return
+				~_arg;
+		}
 	);
 
 	return ret;
@@ -654,8 +670,13 @@ fcppt::container::bitfield::object<
 		fcppt::algorithm::contains_if(
 			array_.begin(),
 			array_.end(),
-			boost::phoenix::arg_names::arg1
-			!= static_cast<InternalType>(0)
+			[](
+				InternalType const _arg
+			)
+			{
+				return
+					_arg != 0;
+			}
 		);
 }
 

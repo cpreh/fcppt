@@ -8,8 +8,6 @@
 #include <fcppt/text.hpp>
 #include <fcppt/log/location.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/spirit/home/phoenix/core/argument.hpp>
-#include <boost/spirit/home/phoenix/operator/arithmetic.hpp>
 #include <numeric>
 #include <fcppt/config/external_end.hpp>
 
@@ -63,11 +61,19 @@ fcppt::log::location::string() const
 			begin(),
 			end(),
 			fcppt::string(),
-			boost::phoenix::arg_names::arg1
-			+ fcppt::string(
-				FCPPT_TEXT("::")
+			[](
+				fcppt::string const &_state,
+				fcppt::string const &_elem
 			)
-			+ boost::phoenix::arg_names::arg2
+			{
+				return
+					_state
+					+
+					FCPPT_TEXT("::")
+					+
+					_elem
+					;
+			}
 		);
 }
 

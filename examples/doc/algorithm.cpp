@@ -10,8 +10,6 @@
 #include <fcppt/algorithm/levenshtein.hpp>
 #include <fcppt/algorithm/shift_compare.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/spirit/home/phoenix/core/argument.hpp>
-#include <boost/spirit/home/phoenix/operator/arithmetic.hpp>
 #include <array>
 #include <functional>
 #include <iostream>
@@ -52,7 +50,7 @@ three_ints const a = {{ 1,2,3 }};
 three_ints const b(
 	fcppt::algorithm::array_map<three_ints>(
 		a,
-		boost::phoenix::arg_names::arg1 * 3));
+		[](int const _arg) { return _arg * 3; }));
 // b now contains: 3, 6, 9
 //! [array_map]
 std::cout << b.empty() << '\n';

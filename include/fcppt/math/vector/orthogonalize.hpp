@@ -8,11 +8,8 @@
 #ifndef FCPPT_MATH_VECTOR_ORTHOGONALIZE_HPP_INCLUDED
 #define FCPPT_MATH_VECTOR_ORTHOGONALIZE_HPP_INCLUDED
 
-#include "project.hpp"
+#include <fcppt/math/vector/project.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/spirit/home/phoenix/bind/bind_function.hpp>
-#include <boost/spirit/home/phoenix/core/argument.hpp>
-#include <boost/spirit/home/phoenix/operator/arithmetic.hpp>
 #include <iterator>
 #include <numeric>
 #include <fcppt/config/external_end.hpp>
@@ -92,11 +89,20 @@ orthogonalize(
 				begin,
 				it,
 				*it,
-				boost::phoenix::arg_names::arg1 -
-				boost::phoenix::bind(
-					&fcppt::math::vector::project<vector>,
-					boost::phoenix::arg_names::arg2,
-					boost::phoenix::arg_names::arg1));
+				[](
+					vector const &_arg1,
+					vector const &_arg2
+				)
+				{
+					return
+						_arg1
+						-
+						fcppt::math::vector::project(
+							_arg2,
+							_arg2
+						);
+				}
+			);
 	}
 }
 }

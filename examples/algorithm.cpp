@@ -16,9 +16,6 @@
 #include <fcppt/container/raw_vector_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/ptr_container/ptr_vector.hpp>
-#include <boost/spirit/home/phoenix/bind.hpp>
-#include <boost/spirit/home/phoenix/core.hpp>
-#include <boost/spirit/home/phoenix/operator.hpp>
 #include <iostream>
 #include <iterator>
 #include <ostream>
@@ -117,9 +114,17 @@ int main()
 	fcppt::algorithm::copy_if(
 		strings.begin(),
 		strings.end(),
-		std::back_inserter<string_vector>(
-			new_strings),
-		boost::phoenix::bind(
-			&std::string::size,
-			boost::phoenix::arg_names::arg1) == 2u);
+		std::back_inserter<
+			string_vector
+		>(
+			new_strings
+		),
+		[](
+			std::string const &_string
+		)
+		{
+			return
+				_string.size() == 2u;
+		}
+	);
 }
