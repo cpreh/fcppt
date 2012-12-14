@@ -4,6 +4,9 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
+#include <fcppt/io/color/attribute.hpp>
+#include <fcppt/io/color/background.hpp>
+#include <fcppt/io/color/foreground.hpp>
 #include <fcppt/io/color/set.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <cstdlib>

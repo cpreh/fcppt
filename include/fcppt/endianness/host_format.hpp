@@ -8,7 +8,7 @@
 #define FCPPT_ENDIANNESS_HOST_FORMAT_HPP_INCLUDED
 
 #include <fcppt/symbol.hpp>
-#include <fcppt/endianness/format.hpp>
+#include <fcppt/endianness/format_fwd.hpp>
 
 
 namespace fcppt

@@ -4,6 +4,7 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
+#include <fcppt/endianness/format.hpp>
 #include <fcppt/endianness/host_format.hpp>
 #include <fcppt/noncopyable.hpp>
 #include <fcppt/config.hpp>

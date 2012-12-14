@@ -8,7 +8,7 @@
 #define FCPPT_IO_WRITE_HPP_INCLUDED
 
 #include <fcppt/endianness/convert.hpp>
-#include <fcppt/endianness/format.hpp>
+#include <fcppt/endianness/format_fwd.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/utility/enable_if.hpp>
 #include <iosfwd>

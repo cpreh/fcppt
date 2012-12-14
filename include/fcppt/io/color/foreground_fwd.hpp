@@ -5,10 +5,8 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_IO_COLOR_ATTRIBUTE_HPP_INCLUDED
-#define FCPPT_IO_COLOR_ATTRIBUTE_HPP_INCLUDED
-
-#include <fcppt/io/color/attribute_fwd.hpp>
+#ifndef FCPPT_IO_COLOR_FOREGROUND_FWD_HPP_INCLUDED
+#define FCPPT_IO_COLOR_FOREGROUND_FWD_HPP_INCLUDED
 
 
 namespace fcppt
@@ -18,15 +16,7 @@ namespace io
 namespace color
 {
 
-enum class attribute
-{
-	off = 0,
-	bold = 1,
-	underscore = 4,
-	blink = 5,
-	reverse = 7,
-	concealed = 8
-};
+enum class foreground;
 
 }
 }

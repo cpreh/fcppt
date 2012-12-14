@@ -5,6 +5,7 @@
 
 
 #include <fcppt/endianness/convert.hpp>
+#include <fcppt/endianness/format.hpp>
 #include <fcppt/endianness/host_format.hpp>
 #include <fcppt/endianness/is_big_endian.hpp>
 #include <fcppt/endianness/is_little_endian.hpp>

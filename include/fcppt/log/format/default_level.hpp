@@ -8,7 +8,7 @@
 #define FCPPT_LOG_FORMAT_DEFAULT_LEVEL_HPP_INCLUDED
 
 #include <fcppt/symbol.hpp>
-#include <fcppt/log/level.hpp>
+#include <fcppt/log/level_fwd.hpp>
 #include <fcppt/log/format/function.hpp>
 
 

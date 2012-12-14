@@ -7,7 +7,7 @@
 #ifndef FCPPT_SRC_LOG_SET_LEVELS_HPP_INCLUDED
 #define FCPPT_SRC_LOG_SET_LEVELS_HPP_INCLUDED
 
-#include <fcppt/log/level.hpp>
+#include <fcppt/log/level_fwd.hpp>
 #include <fcppt/log/object_fwd.hpp>
 
 

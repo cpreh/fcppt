@@ -249,6 +249,7 @@ set(
 	include/fcppt/dynamic_pointer_cast.hpp
 	include/fcppt/endianness/convert.hpp
 	include/fcppt/endianness/format.hpp
+	include/fcppt/endianness/format_fwd.hpp
 	include/fcppt/endianness/host_format.hpp
 	include/fcppt/endianness/is_big_endian.hpp
 	include/fcppt/endianness/is_little_endian.hpp
@@ -293,8 +294,11 @@ set(
 	include/fcppt/io/cin.hpp
 	include/fcppt/io/clog.hpp
 	include/fcppt/io/color/attribute.hpp
+	include/fcppt/io/color/attribute_fwd.hpp
 	include/fcppt/io/color/background.hpp
+	include/fcppt/io/color/background_fwd.hpp
 	include/fcppt/io/color/foreground.hpp
+	include/fcppt/io/color/foreground_fwd.hpp
 	include/fcppt/io/color/reset.hpp
 	include/fcppt/io/color/set.hpp
 	include/fcppt/io/cout.hpp
@@ -360,6 +364,7 @@ set(
 	include/fcppt/log/info.hpp
 	include/fcppt/log/level.hpp
 	include/fcppt/log/level_from_string.hpp
+	include/fcppt/log/level_fwd.hpp
 	include/fcppt/log/level_stream.hpp
 	include/fcppt/log/level_stream_array.hpp
 	include/fcppt/log/level_stream_fwd.hpp

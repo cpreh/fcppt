@@ -13,7 +13,7 @@
 #include <fcppt/log/context_fwd.hpp>
 #include <fcppt/log/context_location.hpp>
 #include <fcppt/log/enabled_level_array.hpp>
-#include <fcppt/log/level.hpp>
+#include <fcppt/log/level_fwd.hpp>
 #include <fcppt/log/level_stream_array.hpp>
 #include <fcppt/log/location_fwd.hpp>
 #include <fcppt/log/object_fwd.hpp>

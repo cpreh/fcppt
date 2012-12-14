@@ -5,6 +5,7 @@
 
 
 #include <fcppt/endianness/convert.hpp>
+#include <fcppt/endianness/format.hpp>
 #include <fcppt/endianness/host_format.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <iostream>

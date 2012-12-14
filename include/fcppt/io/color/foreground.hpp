@@ -8,6 +8,8 @@
 #ifndef FCPPT_IO_COLOR_FOREGROUND_HPP_INCLUDED
 #define FCPPT_IO_COLOR_FOREGROUND_HPP_INCLUDED
 
+#include <fcppt/io/color/foreground_fwd.hpp>
+
 
 namespace fcppt
 {

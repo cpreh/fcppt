@@ -9,7 +9,7 @@
 
 #include <fcppt/symbol.hpp>
 #include <fcppt/log/enabled_level_array.hpp>
-#include <fcppt/log/level.hpp>
+#include <fcppt/log/level_fwd.hpp>
 
 
 namespace fcppt

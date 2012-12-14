@@ -10,7 +10,7 @@
 #include <fcppt/exception.hpp>
 #include <fcppt/optional_impl.hpp>
 #include <fcppt/text.hpp>
-#include <fcppt/endianness/format.hpp>
+#include <fcppt/endianness/format_fwd.hpp>
 #include <fcppt/io/read.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/utility/enable_if.hpp>
