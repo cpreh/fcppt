@@ -15,8 +15,8 @@
 #include <fcppt/config/external_begin.hpp>
 #include <boost/mpl/and.hpp>
 #include <boost/utility/enable_if.hpp>
-#include <typeinfo>
 #include <type_traits>
+#include <typeinfo>
 #include <fcppt/config/external_end.hpp>
 
 

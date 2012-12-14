@@ -14,8 +14,8 @@
 #include <boost/mpl/greater_equal.hpp>
 #include <boost/mpl/less.hpp>
 #include <boost/mpl/sizeof.hpp>
-#include <boost/utility/enable_if.hpp>
 #include <boost/type_traits/is_signed.hpp>
+#include <boost/utility/enable_if.hpp>
 #include <limits>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>

@@ -6,12 +6,13 @@
 
 #include <fcppt/make_unique_ptr.hpp>
 #include <fcppt/shared_ptr_impl.hpp>
-#include <fcppt/io/cout.hpp>
 #include <fcppt/text.hpp>
+#include <fcppt/io/cout.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <memory>
 #include <utility>
 #include <fcppt/config/external_end.hpp>
+
 
 namespace
 {
