@@ -337,6 +337,11 @@ CHECK_CXX_SOURCE_COMPILES(
 	FCPPT_HAVE_WARN_UNUSED_RESULT_ATTRIBUTE
 )
 
+CHECK_CXX_SOURCE_COMPILES(
+	"struct foo { foo(foo const &) = delete; }; int main() {}"
+	FCPPT_HAVE_DEFAULTED_AND_DELETED_FUNCTIONS
+)
+
 function(
 	configure_fcppt_file
 	FILE_RELPATH

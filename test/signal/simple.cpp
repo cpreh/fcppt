@@ -86,5 +86,4 @@ FCPPT_PP_POP_WARNING
 	BOOST_REQUIRE(
 		global == 4
 	);
-
 }

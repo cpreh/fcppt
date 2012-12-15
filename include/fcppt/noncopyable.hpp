@@ -7,6 +7,8 @@
 #ifndef FCPPT_NONCOPYABLE_HPP_INCLUDED
 #define FCPPT_NONCOPYABLE_HPP_INCLUDED
 
+#include <fcppt/detail/noncopyable.hpp>
+
 
 /**
 \brief Makes a class noncopyable
@@ -14,8 +16,9 @@
 \ingroup fcpptvarious
 
 Makes the class called \a classname noncopyable. The macro must be placed
-inside the class definition and called with the name of the class.
-It makes the copy constructor and the assignment operator inaccessible.
+inside the class definition and called with the name of the class. It deletes
+the copy constructor and the assignment operator if that is supported.
+Otherwise, it makes them inaccessible.
 
 By default, C++ generates a copy constructor and assignment operator for every
 class where this is possible (when its elements can all be copy constructed and
@@ -42,7 +45,8 @@ classes in a hierarchy noncopyable.</li>
 	classname\
 ) \
 private: \
-classname(classname const &); \
-classname &operator=(classname const &)
+FCPPT_DETAIL_NONCOPYABLE(\
+	classname\
+)
 
 #endif

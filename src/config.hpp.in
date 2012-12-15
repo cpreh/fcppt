@@ -26,4 +26,7 @@
 // gnu
 #cmakedefine FCPPT_HAVE_BACKTRACE
 
+// C++11
+#cmakedefine FCPPT_HAVE_DEFAULTED_AND_DELETED_FUNCTIONS
+
 #endif

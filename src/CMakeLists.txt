@@ -228,6 +228,8 @@ set(
 	include/fcppt/detail/make_ptr_base.hpp
 	include/fcppt/detail/make_shared_wrapper.hpp
 	include/fcppt/detail/make_shared_wrapper_fwd.hpp
+	include/fcppt/detail/nonassignable.hpp
+	include/fcppt/detail/noncopyable.hpp
 	include/fcppt/detail/optional_cast.hpp
 	include/fcppt/detail/process_assert.hpp
 	include/fcppt/detail/safe_cast.hpp

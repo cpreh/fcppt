@@ -7,14 +7,18 @@
 #ifndef FCPPT_NONASSIGNABLE_HPP_INCLUDED
 #define FCPPT_NONASSIGNABLE_HPP_INCLUDED
 
+#include <fcppt/detail/nonassignable.hpp>
+
+
 /**
 \brief Makes a class nonassignable
 
 \ingroup fcpptvarious
 
 Makes the class called \a classname nonassignable. The macro must be placed
-inside the class definition and called with the name of the class. It makes
-the assignment operator inaccessible.
+inside the class definition and called with the name of the class. It deletes
+the assignment operator if that is supported. Otherwise, it makes it
+inaccessible.
 
 Often, classes are not assignable but copyable, for example when they contain
 constant elements or references. To make it clear to the compiler and to the
@@ -31,6 +35,8 @@ should be used.
 	classname\
 ) \
 private: \
-classname &operator=(classname const &)
+FCPPT_DETAIL_NONASSIGNABLE(\
+	classname\
+)
 
 #endif

@@ -27,6 +27,16 @@ class connection_manager
 	FCPPT_NONCOPYABLE(
 		connection_manager
 	);
+
+/*
+	connection_manager(
+		connection_manager const &
+	) = delete;
+
+	connection_manager &
+	operator=(
+		connection_manager const &
+	) = delete;*/
 public:
 	typedef std::vector<
 		fcppt::signal::auto_connection
