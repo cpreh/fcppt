@@ -38,7 +38,18 @@ public:
 	FCPPT_SYMBOL
 	explicit
 	connection_manager(
-		container &&
+		fcppt::signal::connection_manager::container &&
+	);
+
+	FCPPT_SYMBOL
+	connection_manager(
+		fcppt::signal::connection_manager &&
+	);
+
+	FCPPT_SYMBOL
+	fcppt::signal::connection_manager &
+	operator=(
+		fcppt::signal::connection_manager &&
 	);
 
 	FCPPT_SYMBOL
@@ -59,9 +70,22 @@ public:
 	FCPPT_SYMBOL
 	void
 	clear();
+
+	FCPPT_SYMBOL
+	void
+	swap(
+		fcppt::signal::connection_manager &
+	);
 private:
-	container connections_;
+	fcppt::signal::connection_manager::container connections_;
 };
+
+FCPPT_SYMBOL
+void
+swap(
+	fcppt::signal::connection_manager &,
+	fcppt::signal::connection_manager &
+);
 
 }
 }

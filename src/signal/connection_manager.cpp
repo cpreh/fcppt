@@ -30,6 +30,29 @@ fcppt::signal::connection_manager::connection_manager(
 {
 }
 
+fcppt::signal::connection_manager::connection_manager(
+	fcppt::signal::connection_manager &&_other
+)
+:
+	connections_()
+{
+	_other.swap(
+		*this
+	);
+}
+
+fcppt::signal::connection_manager &
+fcppt::signal::connection_manager::operator=(
+	fcppt::signal::connection_manager &&_other
+)
+{
+	_other.swap(
+		*this
+	);
+
+	return *this;
+}
+
 fcppt::signal::connection_manager::~connection_manager()
 {
 }
@@ -61,4 +84,25 @@ void
 fcppt::signal::connection_manager::clear()
 {
 	connections_.clear();
+}
+
+void
+fcppt::signal::connection_manager::swap(
+	fcppt::signal::connection_manager &_other
+)
+{
+	_other.connections_.swap(
+		connections_
+	);
+}
+
+void
+fcppt::signal::swap(
+	fcppt::signal::connection_manager &_a,
+	fcppt::signal::connection_manager &_b
+)
+{
+	_a.swap(
+		_b
+	);
 }
