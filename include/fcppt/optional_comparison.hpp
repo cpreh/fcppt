@@ -7,7 +7,8 @@
 #ifndef FCPPT_OPTIONAL_COMPARISON_HPP_INCLUDED
 #define FCPPT_OPTIONAL_COMPARISON_HPP_INCLUDED
 
-#include <fcppt/optional_impl.hpp>
+#include <fcppt/optional_fwd.hpp>
+
 
 namespace fcppt
 {
@@ -29,8 +30,8 @@ template<
 >
 bool
 operator==(
-	optional<T> const &_a,
-	optional<T> const &_b
+	fcppt::optional<T> const &_a,
+	fcppt::optional<T> const &_b
 )
 {
 	return
@@ -57,8 +58,8 @@ template<
 >
 bool
 operator!=(
-	optional<T> const &_a,
-	optional<T> const &_b
+	fcppt::optional<T> const &_a,
+	fcppt::optional<T> const &_b
 )
 {
 	return

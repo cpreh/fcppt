@@ -13,6 +13,7 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
+
 template class
 fcppt::optional<
 	int
@@ -496,5 +497,45 @@ FCPPT_PP_POP_WARNING
 	BOOST_CHECK(
 		&*nonconst_ref
 		== &object
+	);
+}
+
+FCPPT_PP_PUSH_WARNING
+FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
+
+BOOST_AUTO_TEST_CASE(
+	optional_ref_compare
+)
+{
+FCPPT_PP_POP_WARNING
+
+	typedef fcppt::optional<
+		int &
+	> optional_int_ref;
+
+	int a = 0;
+
+	int b = 0;
+
+	optional_int_ref const opt_a(
+		a
+	);
+
+	optional_int_ref const opt_b(
+		b
+	);
+
+	BOOST_CHECK(
+		fcppt::optional_ref_compare(
+			opt_a,
+			opt_b
+		)
+	);
+
+	BOOST_CHECK(
+		!fcppt::optional_ref_compare(
+			opt_a,
+			optional_int_ref()
+		)
 	);
 }

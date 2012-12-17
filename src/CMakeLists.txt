@@ -644,6 +644,7 @@ set(
 	include/fcppt/optional_dynamic_cast.hpp
 	include/fcppt/optional_fwd.hpp
 	include/fcppt/optional_impl.hpp
+	include/fcppt/optional_ref_compare.hpp
 	include/fcppt/preprocessor/const.hpp
 	include/fcppt/preprocessor/detail/disable_gcc_warning.hpp
 	include/fcppt/preprocessor/detail/disable_icc_warning.hpp

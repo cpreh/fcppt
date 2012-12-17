@@ -481,6 +481,15 @@ public:
 	operator->() const;
 
 	/**
+	\brief Returns a pointer to the current reference
+
+	\return If<code>has_value()</code> is true, returns the a pointer to
+	the current reference, otherwise return 0.
+	*/
+	pointer
+	data() const;
+
+	/**
 	\brief Returns whether the optional holds a reference
 	*/
 	bool

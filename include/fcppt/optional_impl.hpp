@@ -446,6 +446,15 @@ fcppt::optional<T &>::operator->() const
 template<
 	typename T
 >
+typename fcppt::optional<T &>::pointer
+fcppt::optional<T &>::data() const
+{
+	return data_;
+}
+
+template<
+	typename T
+>
 bool
 fcppt::optional<T &>::has_value() const
 {
