@@ -92,17 +92,20 @@ public:
 	\tparam Other A type, so that <code>Other *</code> is implicitly
 	convertible to <code>Type *</code>
 
+	\tparam OtherDeleter A deleter that must be convertible to \a Deleter
+
 	\param ref The unique_ptr to take ownership from
 	*/
 	template<
-		typename Other
+		typename Other,
+		typename OtherDeleter
 	>
 	explicit
 	scoped_ptr(
 		std::unique_ptr<
 			Other,
-			Deleter
-		> ref
+			OtherDeleter
+		> &&ref
 	);
 
 	~scoped_ptr();
@@ -187,17 +190,20 @@ public:
 	\tparam Other A type, so that <code>Other *</code> is implicitly
 	convertible to <code>T *</code>
 
+	\tparam OtherDeleter A deleter that must be convertible to \a Deleter
+
 	\param ptr The unique to take ownership of
 	*/
 	template<
-		typename Other
+		typename Other,
+		typename OtherDeleter
 	>
 	void
 	take(
 		std::unique_ptr<
 			Other,
-			Deleter
-		> ptr
+			OtherDeleter
+		> &&ptr
 	);
 
 	/**

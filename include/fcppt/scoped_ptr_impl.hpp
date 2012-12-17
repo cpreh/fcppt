@@ -11,6 +11,7 @@
 #include <fcppt/config/external_begin.hpp>
 #include <algorithm>
 #include <memory>
+#include <type_traits>
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
@@ -55,7 +56,8 @@ template<
 	typename Deleter
 >
 template<
-	typename Other
+	typename Other,
+	typename OtherDeleter
 >
 fcppt::scoped_ptr<
 	Type,
@@ -63,14 +65,21 @@ fcppt::scoped_ptr<
 >::scoped_ptr(
 	std::unique_ptr<
 		Other,
-		Deleter
-	> _ptr
+		OtherDeleter
+	> &&_ptr
 )
 :
 	ptr_(
 		_ptr.release()
 	)
 {
+	static_assert(
+		std::is_convertible<
+			OtherDeleter,
+			Deleter
+		>::value,
+		"The deleter of the unique_ptr must be compatible!"
+	);
 }
 
 template<
@@ -195,7 +204,8 @@ template<
 	typename Deleter
 >
 template<
-	typename Other
+	typename Other,
+	typename OtherDeleter
 >
 void
 fcppt::scoped_ptr<
@@ -204,10 +214,18 @@ fcppt::scoped_ptr<
 >::take(
 	std::unique_ptr<
 		Other,
-		Deleter
-	> _ptr
+		OtherDeleter
+	> &&_ptr
 )
 {
+	static_assert(
+		std::is_convertible<
+			OtherDeleter,
+			Deleter
+		>::value,
+		"The deleter of the unique_ptr must be compatible!"
+	);
+
 	this->reset();
 
 	ptr_ = _ptr.release();
