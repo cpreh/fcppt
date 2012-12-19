@@ -64,7 +64,7 @@ private:
 template<
 	typename T
 >
-fcppt::log::detail::temporary_output &&
+fcppt::log::detail::temporary_output
 operator<<(
 	fcppt::log::detail::output_helper const &,
 	T const &_arg

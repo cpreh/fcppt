@@ -45,6 +45,7 @@ contains_false_and_contains_1337(
 }
 
 }
+
 FCPPT_PP_PUSH_WARNING
 FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
 

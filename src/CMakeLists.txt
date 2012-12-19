@@ -394,6 +394,8 @@ set(
 	include/fcppt/log/warning.hpp
 	include/fcppt/major_version.hpp
 	include/fcppt/make_auto_ptr.hpp
+	include/fcppt/make_cref.hpp
+	include/fcppt/make_ref.hpp
 	include/fcppt/make_shared_ptr.hpp
 	include/fcppt/make_strong_typedef.hpp
 	include/fcppt/make_unique_ptr.hpp
@@ -698,6 +700,10 @@ set(
 	include/fcppt/random/variate_decl.hpp
 	include/fcppt/random/variate_fwd.hpp
 	include/fcppt/random/variate_impl.hpp
+	include/fcppt/reference_wrapper.hpp
+	include/fcppt/reference_wrapper_decl.hpp
+	include/fcppt/reference_wrapper_fwd.hpp
+	include/fcppt/reference_wrapper_impl.hpp
 	include/fcppt/safe_cast.hpp
 	include/fcppt/safe_numeric_cast.hpp
 	include/fcppt/scoped_ptr.hpp

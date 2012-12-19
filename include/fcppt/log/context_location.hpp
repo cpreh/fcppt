@@ -7,13 +7,11 @@
 #ifndef FCPPT_LOG_CONTEXT_LOCATION_HPP_INCLUDED
 #define FCPPT_LOG_CONTEXT_LOCATION_HPP_INCLUDED
 
+#include <fcppt/reference_wrapper.hpp>
 #include <fcppt/symbol.hpp>
 #include <fcppt/log/context_fwd.hpp>
 #include <fcppt/log/context_location_fwd.hpp>
 #include <fcppt/log/location.hpp>
-#include <fcppt/config/external_begin.hpp>
-#include <boost/ref.hpp>
-#include <fcppt/config/external_end.hpp>
 
 
 namespace fcppt
@@ -62,8 +60,7 @@ public:
 	fcppt::log::location const &
 	location() const;
 private:
-	// This is a boost::reference_wrapper so context can be incomplete
-	typedef boost::reference_wrapper<
+	typedef fcppt::reference_wrapper<
 		fcppt::log::context
 	> context_reference;
 

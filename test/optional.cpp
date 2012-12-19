@@ -528,6 +528,15 @@ FCPPT_PP_POP_WARNING
 	BOOST_CHECK(
 		fcppt::optional_ref_compare(
 			opt_a,
+			optional_int_ref(
+				a
+			)
+		)
+	);
+
+	BOOST_CHECK(
+		!fcppt::optional_ref_compare(
+			opt_a,
 			opt_b
 		)
 	);
