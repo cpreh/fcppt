@@ -6,6 +6,11 @@
 
 #include <fcppt/nonassignable.hpp>
 #include <fcppt/noncopyable.hpp>
+#include <fcppt/config/external_begin.hpp>
+#include <iostream>
+#include <ostream>
+#include <fcppt/config/external_end.hpp>
+
 
 namespace
 {
@@ -53,6 +58,11 @@ public:
 			_some_float
 		)
 	{
+		std::cout
+			<< some_ref_
+			<< ' '
+			<< float_constant_
+			<< '\n';
 	}
 private:
 	int &some_ref_;
