@@ -28,7 +28,6 @@ namespace vector
 /**
 \brief Calculates the signed angle between two 2D vectors
 \ingroup fcpptmathvector
-\tparam Dest Must be a vector with a smaller dimension
 \tparam N The vector's dimension
 \tparam T The vector's <code>value_type</code>. Must be a floating point type.
 \tparam S1 The first vector's storage type

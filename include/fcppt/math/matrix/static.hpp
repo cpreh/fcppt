@@ -23,7 +23,7 @@ namespace matrix
 /**
 \brief Typedef helper for static matrices
 \ingroup fcpptmathmatrix
-\tparam The matrix's <code>value_type</code>
+\tparam T The matrix's <code>value_type</code>
 See the introduction to fcppt::math::vector::object for more information on
 static matrices (and on this class).
 */

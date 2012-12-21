@@ -30,7 +30,7 @@ namespace matrix
 \brief Calculates the matrix exponential e^A using a Pade approximation
 \ingroup fcpptmathmatrix
 \tparam T The matrix's <code>value_type</code>
-\tparam N The matrix's row and column dimension type
+\tparam DN The matrix's row and column dimension type
 \tparam S The matrix's storage type
 \param _matrix The input matrix
 */

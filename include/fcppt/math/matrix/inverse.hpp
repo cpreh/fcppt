@@ -28,8 +28,7 @@ namespace matrix
 \brief Calculates the inverse matrix, uses fcppt::math::matrix::adjugate and fcppt::math::matrix::determinant.
 \ingroup fcpptmathmatrix
 \tparam T The matrix's <code>value_type</code>
-\tparam M The matrix's row dimension type
-\tparam N The matrix's column dimension type
+\tparam N The matrix's row and column dimension type
 \tparam S The matrix's storage type
 \param t The matrix (must be a static matrix)
 

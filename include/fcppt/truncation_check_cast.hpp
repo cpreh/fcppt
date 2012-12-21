@@ -42,7 +42,7 @@ fcppt::bad_truncation_check_cast is thrown.
 
 \throw fcppt::bad_truncation_check_cast if truncation occurs
 
-\see \ref fcpptcasts_truncation_check_cast
+\see fcpptcasts_truncation_check_cast
 */
 template<
 	typename Dest,

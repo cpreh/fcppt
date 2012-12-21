@@ -23,8 +23,6 @@ Extracts the type contained withing \a Type. The result is the same type as
 \snippet mpl/various.cpp mpl_inner
 
 \tparam Type Can be any type containing a <code>type</code> typedef
-
-\return The inner type
 */
 template<
 	typename Type

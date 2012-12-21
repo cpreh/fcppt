@@ -23,7 +23,6 @@ namespace algorithm
  * \brief Tests if \p a is equal \p b up to rotation
  * \ingroup fcpptalgorithm
  * \pre <code>Container1::value_type</code> and <code>Container2::value_type</code> have to be equality-comparable.
- * \details
  *
  * Example:
  *

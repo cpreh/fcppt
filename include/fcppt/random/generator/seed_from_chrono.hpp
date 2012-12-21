@@ -28,8 +28,8 @@ namespace generator
 
 Creates a seed of type \a Seed from a chrono clock.
 
-\tparam The seed type of a pseudo random number generator. Its value_type must
-be an integral type.
+\tparam Seed The seed type of a pseudo random number generator. Its value_type
+must be an integral type.
 
 \note If you use this function, you must link to boost.chrono
 

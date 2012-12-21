@@ -297,6 +297,11 @@ if(
 	)
 
 	CHECK_CXX_COMPILER_FLAG(
+		"-Wdocumentation"
+		FCPPT_UTILS_HAVE_DOCUMENTATION_FLAG
+	)
+
+	CHECK_CXX_COMPILER_FLAG(
 		"-Wdouble-promotion"
 		FCPPT_UTILS_HAVE_DOUBLE_PROMOTION_FLAG
 	)
@@ -414,6 +419,10 @@ if(
 
 	if(FCPPT_UTILS_HAVE_DOUBLE_PROMOTION_FLAG)
 		add_definitions("-Wdouble-promotion")
+	endif()
+
+	if(FCPPT_UTILS_HAVE_DOCUMENTATION_FLAG)
+		add_definitions("-Wdocumentation")
 	endif()
 
 	if(FCPPT_UTILS_HAVE_IMPLICIT_FALLTHROUGH_FLAG)

@@ -132,7 +132,6 @@ private:
 \brief Represents a signal without a return value
 \tparam T The signal's function type
 \tparam Base The signal's base class (determines the existence of unregister functions)
-\tparam Enable Dummy for SFINAE operations
 \ingroup fcpptsignal
 
 See the \link fcpptsignal module documentation \endlink for more information.

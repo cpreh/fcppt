@@ -15,7 +15,6 @@
 #include <fcppt/config/external_end.hpp>
 
 
-//[type_info
 namespace fcppt
 {
 
@@ -41,10 +40,8 @@ public:
 	FCPPT_SYMBOL
 	fcppt::string const
 	name() const;
-//<-
 private:
 	std::type_info const *info_;
-//->
 };
 
 FCPPT_SYMBOL
@@ -90,6 +87,5 @@ operator>=(
 );
 
 }
-//]
 
 #endif

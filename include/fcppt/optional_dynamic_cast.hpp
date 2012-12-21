@@ -20,7 +20,7 @@ namespace fcppt
 \brief Tries a <code>dynamic_cast</code>, returning an empty optional value if it failed
 \ingroup fcpptcasts
 \tparam Derived The type do cast into. This has to be a reference type (see the example below)
-\tparam The type which is to be cast (must not be a reference)
+\tparam Base The type which is to be cast (must not be a reference)
 
 The logic of this cast is basically the <code>dynamic_cast</code> with
 pointers, but with optional references. Note that you can only cast to a

@@ -51,7 +51,9 @@ contains(
 /**
 \brief Checks if a given \p value is inside a range
 \ingroup fcpptalgorithm
-\tparam In A container type having <code>begin</code> and <code>end</code> member functions
+
+\tparam Container A container type having <code>begin</code> and <code>end</code> member functions
+
 \tparam T The container's value type
 
 This is equivalent to

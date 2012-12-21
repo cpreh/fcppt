@@ -36,8 +36,6 @@ Appends \a Sequence2 to \a Sequence1
 \tparam Sequence1 The MPL sequence to append to
 
 \tparam Sequence2 The MPL sequence to append
-
-\return An MPL sequence consisting of \a Sequence1 and \a Sequence2
 */
 template<
 	typename Sequence1,

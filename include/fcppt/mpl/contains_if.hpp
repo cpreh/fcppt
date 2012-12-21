@@ -39,8 +39,6 @@ Checks if \a Sequence contains an element matching \a Predicate.
 
 \tparam Predicate A unary lambda expression evaluating to a truth valued
 integral constant
-
-\return A truth valued integral constant
 */
 template<
 	typename Sequence,

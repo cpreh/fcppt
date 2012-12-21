@@ -39,8 +39,6 @@ sequence will consist of the values (0, c_1, c_1 + c_2, ..., c_1 + ... c_n)
 \snippet mpl/various.cpp mpl_partial_sums
 
 \tparam Sequence An MPL sequence of integral constant types
-
-\return A new MPL sequence of integral constant types
 */
 template<
 	typename Sequence

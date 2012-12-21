@@ -114,12 +114,8 @@ test3()
 //! [unique_ptr_move_dangerous]
 }
 
-//[unique_ptr_shared_ptr
-
-//<-
 namespace
 {
-//->
 typedef fcppt::shared_ptr<
 	int
 > shared_int_ptr;
@@ -140,16 +136,11 @@ to_shared_ptr(
 		);
 }
 
-//]
 
 }
 
-//[unique_ptr_derived
-
-//<-
 namespace
 {
-//->
 
 struct base
 {
@@ -177,7 +168,6 @@ test4()
 		>()
 	);
 }
-//]
 
 }
 

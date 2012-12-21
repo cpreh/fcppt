@@ -29,7 +29,8 @@ namespace tree
 /**
 \brief A tree data structure
 \ingroup fcpptcontainertree
-\brief See the documentation of fcppt::container::tree::object to know more.
+
+See the documentation of fcppt::container::tree::object to know more.
 */
 template<
 	typename T

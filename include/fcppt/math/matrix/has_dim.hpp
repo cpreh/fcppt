@@ -34,7 +34,7 @@ FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
 \ingroup fcpptmathmatrix
 \tparam Matrix A fcppt::math::matrix::object type
 \tparam N The static row count
-\tparam N The static column count
+\tparam M The static column count
 
 This will return <code>false</code> for dynamic matrices.
 */

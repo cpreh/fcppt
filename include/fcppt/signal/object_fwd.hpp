@@ -10,6 +10,7 @@
 
 #include <fcppt/signal/base_fwd.hpp>
 
+
 namespace fcppt
 {
 namespace signal
@@ -19,7 +20,7 @@ template<
 	typename T,
 	template<
 		typename
-	> class Base = signal::base,
+	> class Base = fcppt::signal::base,
 	typename Enable = void
 >
 class object;

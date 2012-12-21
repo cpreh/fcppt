@@ -52,7 +52,7 @@ contains_if(
 /**
 \brief Checks if a given \p value is inside a range
 \ingroup fcpptalgorithm
-\tparam In A container type having <code>begin</code> and <code>end</code> member functions
+\tparam Container A container type having <code>begin</code> and <code>end</code> member functions
 \tparam Pred A predicate (a unary function returning a bool)
 
 This is equivalent to

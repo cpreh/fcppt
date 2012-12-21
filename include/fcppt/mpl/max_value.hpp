@@ -40,8 +40,6 @@ of them will be returned.
 
 \tparam MetaFunction A metafunction transforming every type in the sequence
 into an MPL integral constant
-
-\return The type of the maximum element
 */
 template<
 	typename Sequence,

@@ -22,7 +22,7 @@ namespace matrix
 
 /**
 \brief Typedef helper for dynamic matrices
-\tparam The matrix's <code>value_type</code>
+\tparam T The matrix's <code>value_type</code>
 \ingroup fcpptmathmatrix
 See the introduction to fcppt::math::vector::object for more information on
 dynamic types (and on this class).

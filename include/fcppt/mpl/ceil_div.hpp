@@ -39,8 +39,6 @@ example, <code>5 / 3</code> would result in <code>2</code>.
 \tparam Dividend The dividend
 
 \tparam Divisor The divisor
-
-\return An integral constant representing the rounded divison
 */
 template<
 	typename Type,

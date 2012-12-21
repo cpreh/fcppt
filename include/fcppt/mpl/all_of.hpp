@@ -38,8 +38,6 @@ For every element in \a Sequence, it is checked whether \a Predicate holds
 \tparam Sequence The MPL sequence to check
 
 \tparam Predicate A unary MPL predicate to apply to every element
-
-\return A boolean type
 */
 template<
 	typename Sequence,

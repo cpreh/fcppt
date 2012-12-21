@@ -38,8 +38,6 @@ Calculates the index of \a Element in \a Sequence.
 \tparam Sequence The MPL sequence
 
 \tparam Element The element to calculate the index of
-
-\return The index of the element or an error if the element was not found
 */
 template<
 	typename Sequence,

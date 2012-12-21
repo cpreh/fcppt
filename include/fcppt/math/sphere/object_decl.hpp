@@ -20,10 +20,11 @@ namespace math
 namespace sphere
 {
 
-/// The object sphere class
 /**
- * @param T The value type to hold
- * @param N The static size of the sphere
+\brief The object sphere class
+
+\tparam T The value type to hold
+\tparam N The static size of the sphere
 */
 template<
 	typename T,

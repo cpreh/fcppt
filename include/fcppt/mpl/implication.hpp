@@ -37,8 +37,6 @@ Calculates the implication of \a Left and \a Right. Equal to (not \a Left) or
 \tparam Left A boolean expression
 
 \tparam Right A boolean expression
-
-\return A boolean type
 */
 template<
 	typename Left,

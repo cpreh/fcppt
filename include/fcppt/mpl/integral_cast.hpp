@@ -37,8 +37,6 @@ static_cast<IntegralType>(Integral::value)</code>.
 \tparam IntegralType An integral type to cast to
 
 \tparam Integral An MPL integral constant to cast from
-
-\return An MPL integral constant
 */
 template<
 	typename IntegralType,

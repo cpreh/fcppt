@@ -25,7 +25,7 @@ namespace math
 /**
 \brief Generates vectors consisting of zeros and ones
 \ingroup fcpptmath
-\tparam Any type that you can <code>static_cast</code> 0 and 1 to
+\tparam T Any type that you can <code>static_cast</code> 0 and 1 to
 
 Generates the binary vectors of type <code>T</code> in dimension
 <code>N</code>. Examples:
