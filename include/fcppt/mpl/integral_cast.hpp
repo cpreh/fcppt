@@ -11,7 +11,7 @@
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/mpl/integral_c.hpp>
+#include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -28,8 +28,8 @@ FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
 
 \ingroup fcpptmpl
 
-Casts \a Integral to the correspoding type using \a IntegralType. Equivalent
-to <code>boost::mpl::integral_c<IntegralType,
+Casts \a Integral to the correspoding type using \a IntegralType. Equivalent to
+<code>std::integral_constant<IntegralType,
 static_cast<IntegralType>(Integral::value)</code>.
 
 \snippet mpl/various.cpp mpl_integral_cast
@@ -46,7 +46,7 @@ template<
 >
 struct integral_cast
 :
-boost::mpl::integral_c<
+std::integral_constant<
 	IntegralType,
 	static_cast<
 		IntegralType

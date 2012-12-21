@@ -13,9 +13,9 @@
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/mpl/integral_c.hpp>
 #include <cstddef>
 #include <iterator>
+#include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -106,9 +106,9 @@ struct array
 	static size_type const static_size = N;
 
 	/**
-	\brief The static size as an mpl::integral_c
+	\brief The static size as a std::integral_constant
 	*/
-	typedef boost::mpl::integral_c<
+	typedef std::integral_constant<
 		size_type,
 		N
 	> dim_wrapper;

@@ -15,7 +15,6 @@
 #include <fcppt/config/external_begin.hpp>
 #include <boost/mpl/eval_if.hpp>
 #include <boost/mpl/identity.hpp>
-#include <boost/mpl/integral_c.hpp>
 #include <iterator>
 #include <limits>
 #include <type_traits>
@@ -87,9 +86,9 @@ public:
 	typedef fcppt::container::bitfield::value_type value_type;
 
 	/**
-	\brief An mpl integral constant for <code>Size</code>
+	\brief A std::integral_constant for <code>Size</code>
 	*/
-	typedef boost::mpl::integral_c<
+	typedef std::integral_constant<
 		size_type,
 		static_cast<
 			size_type

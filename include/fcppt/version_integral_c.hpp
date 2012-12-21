@@ -12,8 +12,9 @@
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/mpl/integral_c.hpp>
+#include <type_traits>
 #include <fcppt/config/external_end.hpp>
+
 
 namespace fcppt
 {
@@ -26,7 +27,7 @@ template<
 >
 struct version_integral_c
 :
-boost::mpl::integral_c<
+std::integral_constant<
 	fcppt::version_int,
 	Value
 >

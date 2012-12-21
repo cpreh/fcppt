@@ -12,8 +12,8 @@
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/mpl/integral_c.hpp>
 #include <limits>
+#include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -37,7 +37,7 @@ struct element_bits
 :
 fcppt::mpl::integral_cast<
 	SizeType,
-	boost::mpl::integral_c<
+	std::integral_constant<
 		int,
 		std::numeric_limits<
 			Type
