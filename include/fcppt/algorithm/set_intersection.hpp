@@ -13,18 +13,21 @@
 #include <iterator>
 #include <fcppt/config/external_end.hpp>
 
+
 namespace fcppt
 {
 namespace algorithm
 {
 
 /**
- * \brief Calculates the intersection of two sets
- * \ingroup fcpptalgorithm
- * \tparam Set Must be default-constructible
- * \details
- * This just calls <code>std::set_intersection</code> writes the result to a new container.
- * </pre
+\brief Calculates the intersection of two sets
+
+This just calls <code>std::set_intersection</code> and writes the result to a
+new container.
+
+\ingroup fcpptalgorithm
+
+\tparam Set Must be default-constructible
 */
 template<
 	typename Set
