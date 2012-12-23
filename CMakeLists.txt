@@ -384,6 +384,10 @@ fcppt_set_utils_warning(
 )
 
 fcppt_set_utils_warning(
+	DOCUMENTATION
+)
+
+fcppt_set_utils_warning(
 	DOUBLE_PROMOTION
 )
 
