@@ -393,7 +393,6 @@ set(
 	include/fcppt/log/verbose.hpp
 	include/fcppt/log/warning.hpp
 	include/fcppt/major_version.hpp
-	include/fcppt/make_auto_ptr.hpp
 	include/fcppt/make_cref.hpp
 	include/fcppt/make_ref.hpp
 	include/fcppt/make_shared_ptr.hpp
