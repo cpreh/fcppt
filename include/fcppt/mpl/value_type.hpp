@@ -20,8 +20,6 @@ namespace mpl
 Calculates <code>Type::value_type</code>.
 
 \tparam Type Any type that has a nested <code>value_type</code> typedef
-
-\return The inner <code>value_type</code>
 */
 template<
 	typename Type

@@ -25,7 +25,6 @@ namespace vector
 \brief Orthogonalizes a sequence of vectors
 \ingroup fcpptmathvector
 \tparam Iterator A non-const forward-iterator pointing to a fcppt::math::vector::object
-\tparam Iterator A non-const forward-iterator pointing to a fcppt::math::vector::object
 \param begin The beginning of the sequence to orthogonalize
 \param end One past the end of the sequence to orthogonalize
 
