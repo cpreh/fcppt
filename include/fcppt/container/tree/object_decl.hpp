@@ -82,7 +82,7 @@ public:
 		>
 	>::type stored_type;
 
-	/// The type to pass to other functions (either <code>stored_type const &</code> or <code>unique_ptr<stored_type> &&<T></code>)
+	/// The type to pass to other functions (either <code>stored_type const &</code> or <code>unique_ptr<stored_type> &&</code>)
 	typedef typename boost::mpl::if_<
 		is_ptr_tree,
 		std::unique_ptr<
