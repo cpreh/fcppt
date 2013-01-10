@@ -8,7 +8,6 @@
 #define FCPPT_OPTIONAL_DECL_HPP_INCLUDED
 
 #include <fcppt/optional_fwd.hpp>
-#include <fcppt/alignment/array.hpp>
 #include <fcppt/detail/enable_optional_ref_conv.hpp>
 #include <fcppt/detail/enable_optional_value_conv.hpp>
 #include <fcppt/config/external_begin.hpp>
@@ -142,7 +141,7 @@ public:
 	operator=(
 		optional const &other
 	);
-
+	
 	/**
 	\brief Assigns from a const reference
 
@@ -251,48 +250,54 @@ public:
 	bool() const;
 private:
 	pointer
+	data();
+
+	const_pointer
+	data() const;
+
+	void *
+	raw_data();
+	
+	void const *
+	raw_data() const;
+
+	void
 	construct(
 		const_reference
-	);
-
-	template<
-		typename Other
-	>
-	pointer
-	construct(
-		optional<
-			Other
-		> const &
-	);
-
-	optional &
-	assign(
-		const_reference
-	);
-
-	template<
-		typename Other
-	>
-	optional &
-	assign(
-		optional<
-			Other
-		> const &
 	);
 
 	template<
 		typename Other
 	>
 	void
-	copy_from_other(
-		Other const &
+	construct(
+		optional<
+			Other
+		> const &
+	);
+
+	optional &
+	assign(
+		const_reference
+	);
+
+	template<
+		typename Other
+	>
+	optional &
+	assign(
+		optional<
+			Other
+		> const &
 	);
 
 	void
 	destroy();
 
-	typedef typename fcppt::alignment::array<
-		unsigned char,
+	void
+	destroy_unchecked();
+
+	typedef typename std::aligned_storage<
 		sizeof(T),
 		std::alignment_of<
 			T
@@ -301,7 +306,7 @@ private:
 
 	storage_type storage_;
 
-	pointer data_;
+	bool initialized_;
 };
 
 /**
