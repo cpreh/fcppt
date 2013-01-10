@@ -29,11 +29,14 @@ class operation_wrapper
 public:
 	typedef typename Operation::result_type result_type;
 
-	explicit operation_wrapper(
+	explicit
+	operation_wrapper(
 		Operation const &_op
 	)
 	:
-		op_(_op)
+		op_(
+			_op
+		)
 	{
 	}
 
@@ -47,7 +50,7 @@ public:
 	{
 		return
 			op_(
-				detail::unwrap_recursive(
+				fcppt::variant::detail::unwrap_recursive(
 					_value
 				)
 			);

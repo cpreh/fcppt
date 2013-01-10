@@ -32,12 +32,16 @@ public:
 		Types
 	> variant_type;
 
-	explicit compare(
+	explicit
+	compare(
 		variant_type const &_left
 	)
 	:
-		left_(_left)
-	{}
+		left_(
+			_left
+		)
+	{
+	}
 
 	typedef bool result_type;
 
@@ -50,7 +54,7 @@ public:
 	) const
 	{
 		return
-			variant::holds_type<
+			fcppt::variant::holds_type<
 				OtherType
 			>(
 				left_

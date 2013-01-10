@@ -48,14 +48,14 @@ operator<<(
 		Ch,
 		Traits
 	> &_stream,
-	variant::object<
+	fcppt::variant::object<
 		Types
 	> const &_object
 )
 {
 	return
-		variant::apply_unary(
-			detail::output<
+		fcppt::variant::apply_unary(
+			fcppt::variant::detail::output<
 				std::basic_ostream<
 					Ch,
 					Traits

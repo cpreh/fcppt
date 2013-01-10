@@ -7,6 +7,9 @@
 #ifndef FCPPT_VARIANT_OBJECT_IMPL_HPP_INCLUDED
 #define FCPPT_VARIANT_OBJECT_IMPL_HPP_INCLUDED
 
+#include <fcppt/preprocessor/disable_gcc_warning.hpp>
+#include <fcppt/preprocessor/pop_warning.hpp>
+#include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/variant/apply_unary.hpp>
 #include <fcppt/variant/object_decl.hpp>
 #include <fcppt/variant/size_type.hpp>
@@ -26,21 +29,49 @@
 #include <fcppt/config/external_end.hpp>
 
 
+FCPPT_PP_PUSH_WARNING
+FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
+
 template<
 	typename Types
 >
 template<
 	typename U
 >
-fcppt::variant::object<Types>::object(
+fcppt::variant::object<
+	Types
+>::object(
 	U const &_other
 )
 :
-	storage_(),
-	index_(),
-	data_()
+	storage_()
+	// Don't initialize index_
 {
 	this->construct(
+		_other
+	);
+}
+
+FCPPT_PP_POP_WARNING
+
+template<
+	typename Types
+>
+fcppt::variant::object<
+	Types
+>::object(
+	object const &_other
+)
+:
+	storage_(),
+	index_(
+		_other.index_
+	)
+{
+	fcppt::variant::detail::apply_unary_internal(
+		fcppt::variant::detail::copy(
+			this->raw_data()
+		),
 		_other
 	);
 }
@@ -48,46 +79,28 @@ fcppt::variant::object<Types>::object(
 template<
 	typename Types
 >
-fcppt::variant::object<Types>::object(
-	object const &_other
-)
-:
-	storage_(),
-	index_(
-		_other.index_
-	),
-	data_(
-		detail::apply_unary_internal(
-			detail::copy(
-				storage_.data()
-			),
-			_other
-		)
-	)
-{
-}
-
-template<
-	typename Types
->
 template<
 	typename U
 >
-fcppt::variant::object<Types> &
-fcppt::variant::object<Types>::operator=(
+fcppt::variant::object<
+	Types
+> &
+fcppt::variant::object<
+	Types
+>::operator=(
 	U const &_other
 )
 {
 	if(
-		detail::index_of<
+		fcppt::variant::detail::index_of<
 			Types,
 			U
 		>::value
 		==
 		index_
 	)
-		detail::apply_unary_internal(
-			detail::assign_value<
+		fcppt::variant::detail::apply_unary_internal(
+			fcppt::variant::detail::assign_value<
 				U
 			>(
 				_other
@@ -109,18 +122,23 @@ fcppt::variant::object<Types>::operator=(
 template<
 	typename Types
 >
-fcppt::variant::object<Types> &
-fcppt::variant::object<Types>::operator=(
+fcppt::variant::object<
+	Types
+> &
+fcppt::variant::object<
+	Types
+>::operator=(
 	object const &_other
 )
 {
 	if(
 		index_
-		== _other.type_index()
+		==
+		_other.type_index()
 	)
-		detail::apply_unary_internal(
-			detail::assign_object<
-				variant::object<
+		fcppt::variant::detail::apply_unary_internal(
+			fcppt::variant::detail::assign_object<
+				fcppt::variant::object<
 					Types
 				>
 			>(
@@ -129,9 +147,9 @@ fcppt::variant::object<Types>::operator=(
 			_other
 		);
 	else
-		detail::apply_unary_internal(
-			detail::construct<
-				variant::object<
+		fcppt::variant::detail::apply_unary_internal(
+			fcppt::variant::detail::construct<
+				fcppt::variant::object<
 					Types
 				>
 			>(
@@ -146,7 +164,9 @@ fcppt::variant::object<Types>::operator=(
 template<
 	typename Types
 >
-fcppt::variant::object<Types>::~object()
+fcppt::variant::object<
+	Types
+>::~object()
 {
 	this->destroy();
 }
@@ -158,7 +178,9 @@ template<
 	typename U
 >
 U const &
-fcppt::variant::object<Types>::get() const
+fcppt::variant::object<
+	Types
+>::get() const
 {
 	FCPPT_VARIANT_DETAIL_ASSERT_TYPE(
 		Types,
@@ -167,7 +189,7 @@ fcppt::variant::object<Types>::get() const
 	);
 
 	return
-		detail::get_impl<
+		fcppt::variant::detail::get_impl<
 			U const
 		>(
 			*this
@@ -181,7 +203,9 @@ template<
 	typename U
 >
 U &
-fcppt::variant::object<Types>::get()
+fcppt::variant::object<
+	Types
+>::get()
 {
 	FCPPT_VARIANT_DETAIL_ASSERT_TYPE(
 		Types,
@@ -190,7 +214,7 @@ fcppt::variant::object<Types>::get()
 	);
 
 	return
-		detail::get_impl<
+		fcppt::variant::detail::get_impl<
 			U
 		>(
 			*this
@@ -204,7 +228,9 @@ template<
 	typename U
 >
 U &
-fcppt::variant::object<Types>::get_raw()
+fcppt::variant::object<
+	Types
+>::get_raw()
 {
 	FCPPT_VARIANT_DETAIL_ASSERT_TYPE(
 		Types,
@@ -216,7 +242,7 @@ fcppt::variant::object<Types>::get_raw()
 		*static_cast<
 			U *
 		>(
-			data_
+			this->raw_data()
 		);
 }
 
@@ -227,7 +253,9 @@ template<
 	typename U
 >
 U const &
-fcppt::variant::object<Types>::get_raw() const
+fcppt::variant::object<
+	Types
+>::get_raw() const
 {
 	FCPPT_VARIANT_DETAIL_ASSERT_TYPE(
 		Types,
@@ -239,7 +267,7 @@ fcppt::variant::object<Types>::get_raw() const
 		*static_cast<
 			U const *
 		>(
-			data_
+			this->raw_data()
 		);
 }
 
@@ -247,11 +275,13 @@ template<
 	typename Types
 >
 std::type_info const &
-fcppt::variant::object<Types>::type() const
+fcppt::variant::object<
+	Types
+>::type() const
 {
 	return
-		variant::apply_unary(
-			detail::type_info(),
+		fcppt::variant::apply_unary(
+			fcppt::variant::detail::type_info(),
 			*this
 		);
 }
@@ -260,7 +290,9 @@ template<
 	typename Types
 >
 fcppt::variant::size_type
-fcppt::variant::object<Types>::type_index() const
+fcppt::variant::object<
+	Types
+>::type_index() const
 {
 	return index_;
 }
@@ -272,20 +304,21 @@ template<
 	typename U
 >
 void
-fcppt::variant::object<Types>::construct(
+fcppt::variant::object<
+	Types
+>::construct(
 	U const &_other
 )
 {
-	data_ =
-		new (
-			storage_.data()
-		)
-		typename detail::real_type<
-			Types,
-			U
-		>::type(
-			_other
-		);
+	new (
+		this->raw_data()
+	)
+	typename fcppt::variant::detail::real_type<
+		Types,
+		U
+	>::type(
+		_other
+	);
 
 	FCPPT_VARIANT_DETAIL_ASSERT_TYPE(
 		Types,
@@ -294,7 +327,7 @@ fcppt::variant::object<Types>::construct(
 	);
 
 	index_ =
-		detail::index_of<
+		fcppt::variant::detail::index_of<
 			Types,
 			U
 		>::value;
@@ -304,12 +337,38 @@ template<
 	typename Types
 >
 void
-fcppt::variant::object<Types>::destroy()
+fcppt::variant::object<
+	Types
+>::destroy()
 {
-	detail::apply_unary_internal(
-		detail::destroy(),
+	fcppt::variant::detail::apply_unary_internal(
+		fcppt::variant::detail::destroy(),
 		*this
 	);
+}
+
+template<
+	typename Types
+>
+void *
+fcppt::variant::object<
+	Types
+>::raw_data()
+{
+	return
+		&storage_;
+}
+
+template<
+	typename Types
+>
+void const *
+fcppt::variant::object<
+	Types
+>::raw_data() const
+{
+	return
+		&storage_;
 }
 
 #endif

@@ -7,17 +7,16 @@
 #ifndef FCPPT_VARIANT_OBJECT_DECL_HPP_INCLUDED
 #define FCPPT_VARIANT_OBJECT_DECL_HPP_INCLUDED
 
-#include <fcppt/alignment/array.hpp>
 #include <fcppt/mpl/max_value.hpp>
 #include <fcppt/variant/object_fwd.hpp>
 #include <fcppt/variant/size_type.hpp>
-#include <fcppt/variant/detail/raw_type.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/mpl/placeholders.hpp>
 #include <boost/mpl/size.hpp>
 #include <boost/mpl/sizeof.hpp>
 #include <boost/type_traits/alignment_of.hpp>
 #include <typeinfo>
+#include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -225,14 +224,19 @@ private:
 	void
 	destroy();
 
+	void *
+	raw_data();
+
+	void const *
+	raw_data() const;
+
 	static fcppt::variant::size_type const elements =
 		boost::mpl::size<
 			Types
 		>::value
 	;
 
-	typedef typename fcppt::alignment::array<
-		fcppt::variant::detail::raw_type,
+	typedef typename std::aligned_storage<
 		fcppt::mpl::max_value<
 			Types,
 			boost::mpl::sizeof_<
@@ -250,8 +254,6 @@ private:
 	storage_type storage_;
 
 	fcppt::variant::size_type index_;
-
-	void *data_;
 };
 
 }

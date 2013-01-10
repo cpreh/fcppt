@@ -9,6 +9,7 @@
 
 #include <fcppt/variant/recursive_fwd.hpp>
 
+
 namespace fcppt
 {
 namespace variant
@@ -32,7 +33,7 @@ template<
 >
 Type &
 unwrap_recursive(
-	variant::recursive<
+	fcppt::variant::recursive<
 		Type
 	> &_value
 )
@@ -46,7 +47,7 @@ template<
 >
 Type &
 unwrap_recursive(
-	variant::recursive<
+	fcppt::variant::recursive<
 		Type
 	> const &_value
 )

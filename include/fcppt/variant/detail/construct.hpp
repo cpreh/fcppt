@@ -9,6 +9,7 @@
 
 #include <fcppt/nonassignable.hpp>
 
+
 namespace fcppt
 {
 namespace variant
@@ -27,12 +28,16 @@ class construct
 public:
 	typedef void result_type;
 
-	explicit construct(
+	explicit
+	construct(
 		Variant &_obj
 	)
 	:
-		obj_(_obj)
-	{}
+		obj_(
+			_obj
+		)
+	{
+	}
 
 	template<
 		typename T

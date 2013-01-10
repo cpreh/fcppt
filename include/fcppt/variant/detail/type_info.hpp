@@ -11,6 +11,7 @@
 #include <typeinfo>
 #include <fcppt/config/external_end.hpp>
 
+
 namespace fcppt
 {
 namespace variant

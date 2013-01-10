@@ -36,13 +36,14 @@ fcppt::mpl::integral_cast<
 	fcppt::variant::size_type,
 	fcppt::mpl::index_of<
 		Types,
-		typename detail::real_type<
+		typename fcppt::variant::detail::real_type<
 			Types,
 			Element
 		>::type
 	>
 >
-{};
+{
+};
 
 FCPPT_PP_POP_WARNING
 

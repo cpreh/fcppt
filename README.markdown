@@ -22,10 +22,6 @@ Top-level module list
 		<th>Description</th>
 	</tr>
 	<tr>
-		<td>fcppt.alignment</td>
-		<td>Typedef structs and macros to specify alignment.</td>
-	</tr>
-	<tr>
 		<td>fcppt.assert</td>
 		<td>Macros and functions for assertions.</td>
 	</tr>
@@ -102,10 +98,6 @@ Top-level module list
 		<td>The strong typedef class and helper macros. </td>
 	</tr>
 	<tr>
-		<td>fcppt.thread</td>
-		<td>Wrappers around boost.thread following std::thread semantics. </td>
-	</tr>
-	<tr>
 		<td>fcppt.time</td>
 		<td>Time query, formatting and sleep utilities. </td>
 	</tr>
@@ -119,7 +111,7 @@ Top-level module list
 	</tr>
 	<tr>
 		<td>fcppt.various</td>
-		<td>Smaller macros and functions like <code>FCPPT_NONCOPYABLE</code>, <code>FCPPT_SAFE_BOOL</code>, <code>FCPPT_ASSERT_COMPLETE</code>, <code>fcppt::null_ptr_t</code></td>
+		<td>Smaller macros and functions like <code>FCPPT_NONCOPYABLE</code>, <code>FCPPT_ASSERT_COMPLETE</code>
 	</tr>
 </table>
 

@@ -18,7 +18,6 @@ update_cmake_file \
 	include/fcppt \
 	-r \
 	include/fcppt/algorithm \
-	include/fcppt/alignment \
 	include/fcppt/assert \
 	include/fcppt/assign \
 	include/fcppt/backtrace \

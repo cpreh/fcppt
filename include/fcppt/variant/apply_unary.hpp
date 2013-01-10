@@ -43,8 +43,8 @@ apply_unary(
 )
 {
 	return
-		detail::apply_unary_internal(
-			detail::operation_wrapper<
+		fcppt::variant::detail::apply_unary_internal(
+			fcppt::variant::detail::operation_wrapper<
 				Operation
 			>(
 				_op

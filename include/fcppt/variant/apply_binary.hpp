@@ -48,8 +48,8 @@ apply_binary(
 )
 {
 	return
-		variant::apply_unary(
-			detail::binary_unwrap<
+		fcppt::variant::apply_unary(
+			fcppt::variant::detail::binary_unwrap<
 				Operation,
 				Variant1
 			>(

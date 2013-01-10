@@ -9,6 +9,7 @@
 
 #include <fcppt/variant/recursive_fwd.hpp>
 
+
 namespace fcppt
 {
 namespace variant
@@ -78,8 +79,8 @@ template<
 >
 void
 swap(
-	recursive<T> &,
-	recursive<T> &
+	fcppt::variant::recursive<T> &,
+	fcppt::variant::recursive<T> &
 );
 
 }

@@ -36,8 +36,12 @@ public:
 		Variant const &_obj
 	)
 	:
-		op_(_op),
-		obj_(_obj)
+		op_(
+			_op
+		),
+		obj_(
+			_obj
+		)
 	{
 	}
 
@@ -50,8 +54,8 @@ public:
 	) const
 	{
 		return
-			variant::apply_unary(
-				detail::binary_applier<
+			fcppt::variant::apply_unary(
+				fcppt::variant::detail::binary_applier<
 					Operation,
 					T2
 				>(

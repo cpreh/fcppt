@@ -53,8 +53,8 @@ apply_ternary(
 )
 {
 	return
-		variant::apply_binary(
-			detail::ternary_unwrap<
+		fcppt::variant::apply_binary(
+			fcppt::variant::detail::ternary_unwrap<
 				Operation,
 				Variant1
 			>(

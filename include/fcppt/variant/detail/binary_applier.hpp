@@ -9,6 +9,7 @@
 
 #include <fcppt/nonassignable.hpp>
 
+
 namespace fcppt
 {
 namespace variant
@@ -33,9 +34,14 @@ public:
 		Type &_t2
 	)
 	:
-		op_(_op),
-		t2_(_t2)
-	{}
+		op_(
+			_op
+		),
+		t2_(
+			_t2
+		)
+	{
+	}
 
 	template<
 		typename T

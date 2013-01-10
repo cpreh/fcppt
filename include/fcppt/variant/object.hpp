@@ -8,6 +8,8 @@
 #define FCPPT_VARIANT_OBJECT_HPP_INCLUDED
 
 #include <fcppt/variant/object_decl.hpp>
+#include <fcppt/variant/object_fwd.hpp>
 #include <fcppt/variant/object_impl.hpp>
+
 
 #endif

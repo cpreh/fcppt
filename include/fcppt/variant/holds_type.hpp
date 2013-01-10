@@ -59,7 +59,7 @@ typename boost::enable_if<
 	bool
 >::type
 holds_type(
-	variant::object<
+	fcppt::variant::object<
 		Elements
 	> const &_variant
 )

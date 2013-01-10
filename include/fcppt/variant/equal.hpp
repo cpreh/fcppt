@@ -34,13 +34,17 @@ template<
 >
 bool
 operator==(
-	object<Types> const &_a,
-	object<Types> const &_b
+	fcppt::variant::object<
+		Types
+	> const &_a,
+	fcppt::variant::object<
+		Types
+	> const &_b
 )
 {
 	return
-		variant::apply_unary(
-			detail::compare<
+		fcppt::variant::apply_unary(
+			fcppt::variant::detail::compare<
 				Types
 			>(
 				_a

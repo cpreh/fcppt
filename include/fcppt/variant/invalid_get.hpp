@@ -9,6 +9,7 @@
 
 #include <fcppt/variant/exception.hpp>
 
+
 namespace fcppt
 {
 namespace variant
@@ -21,7 +22,7 @@ namespace variant
 */
 class invalid_get
 :
-	public variant::exception
+	public fcppt::variant::exception
 {
 public:
 	invalid_get();

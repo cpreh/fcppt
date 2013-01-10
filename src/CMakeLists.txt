@@ -26,12 +26,6 @@ set(
 	include/fcppt/algorithm/set_union.hpp
 	include/fcppt/algorithm/shift_compare.hpp
 	include/fcppt/algorithm/shortest_levenshtein.hpp
-	include/fcppt/alignment/align.hpp
-	include/fcppt/alignment/array.hpp
-	include/fcppt/alignment/detail/make_type.hpp
-	include/fcppt/alignment/is_aligned.hpp
-	include/fcppt/alignment/make_type.hpp
-	include/fcppt/alignment/size_type.hpp
 	include/fcppt/assert/basic/conditional.hpp
 	include/fcppt/assert/basic/conditional_message.hpp
 	include/fcppt/assert/basic/default_message.hpp
@@ -826,7 +820,6 @@ set(
 	include/fcppt/variant/detail/index_of.hpp
 	include/fcppt/variant/detail/operation_wrapper.hpp
 	include/fcppt/variant/detail/output.hpp
-	include/fcppt/variant/detail/raw_type.hpp
 	include/fcppt/variant/detail/real_type.hpp
 	include/fcppt/variant/detail/ternary_applier.hpp
 	include/fcppt/variant/detail/ternary_unwrap.hpp

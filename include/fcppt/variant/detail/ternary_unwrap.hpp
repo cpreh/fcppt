@@ -36,9 +36,14 @@ public:
 		Variant const &_obj
 	)
 	:
-		op_(_op),
-		obj_(_obj)
-	{}
+		op_(
+			_op
+		),
+		obj_(
+			_obj
+		)
+	{
+	}
 
 	template<
 		typename T2,
@@ -51,8 +56,8 @@ public:
 	) const
 	{
 		return
-			variant::apply_unary(
-				detail::ternary_applier<
+			fcppt::variant::apply_unary(
+				fcppt::variant::detail::ternary_applier<
 					Operation,
 					T2,
 					T3

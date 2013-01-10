@@ -33,11 +33,16 @@ template<
 >
 bool
 operator!=(
-	object<Types> const &_a,
-	object<Types> const &_b
+	fcppt::variant::object<
+		Types
+	> const &_a,
+	fcppt::variant::object<
+		Types
+	> const &_b
 )
 {
-	return !(_a == _b);
+	return
+		!(_a == _b);
 }
 
 }

@@ -7,6 +7,7 @@
 #ifndef FCPPT_VARIANT_SIZE_TYPE_HPP_INCLUDED
 #define FCPPT_VARIANT_SIZE_TYPE_HPP_INCLUDED
 
+
 namespace fcppt
 {
 namespace variant

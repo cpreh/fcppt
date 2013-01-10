@@ -12,6 +12,7 @@
 #include <ostream>
 #include <fcppt/config/external_end.hpp>
 
+
 namespace fcppt
 {
 namespace variant
@@ -30,12 +31,14 @@ class output
 public:
 	typedef Stream &result_type;
 
-	explicit output(
+	explicit
+	output(
 		Stream &_stream
 	)
 	:
 		stream_(_stream)
-	{}
+	{
+	}
 
 	template<
 		typename T

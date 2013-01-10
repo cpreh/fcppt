@@ -12,6 +12,7 @@
 #include <algorithm>
 #include <fcppt/config/external_end.hpp>
 
+
 template<
 	typename T
 >

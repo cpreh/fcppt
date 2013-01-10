@@ -7,6 +7,9 @@
 #ifndef FCPPT_VARIANT_RECURSIVE_HPP_INCLUDED
 #define FCPPT_VARIANT_RECURSIVE_HPP_INCLUDED
 
+#include <fcppt/variant/recursive_decl.hpp>
+#include <fcppt/variant/recursive_fwd.hpp>
 #include <fcppt/variant/recursive_impl.hpp>
+
 
 #endif
