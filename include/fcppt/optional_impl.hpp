@@ -10,6 +10,9 @@
 #include <fcppt/optional_decl.hpp>
 #include <fcppt/detail/enable_optional_ref_conv.hpp>
 #include <fcppt/detail/enable_optional_value_conv.hpp>
+#include <fcppt/config/external_begin.hpp>
+#include <new>
+#include <fcppt/config/external_end.hpp>
 
 
 /// \cond FCPPT_DOXYGEN_DEBUG
