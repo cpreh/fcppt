@@ -12,6 +12,7 @@
 #include <fcppt/detail/enable_optional_value_conv.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <new>
+#include <utility>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -47,6 +48,27 @@ fcppt::optional<
 {
 	this->construct(
 		_other
+	);
+}
+
+template<
+	typename T
+>
+fcppt::optional<
+	T
+>::optional(
+	T &&_other
+)
+:
+	storage_(),
+	initialized_(
+		true
+	)
+{
+	this->move_from(
+		std::move(
+			_other
+		)
 	);
 }
 
@@ -103,6 +125,27 @@ template<
 >
 fcppt::optional<
 	T
+>::optional(
+	optional &&_other
+)
+:
+	storage_(),
+	initialized_(
+		_other.has_value()
+	)
+{
+	this->move_from(
+		std::move(
+			_other
+		)
+	);
+}
+
+template<
+	typename T
+>
+fcppt::optional<
+	T
 > &
 fcppt::optional<
 	T
@@ -113,6 +156,26 @@ fcppt::optional<
 	return
 		this->assign(
 			_other
+		);
+}
+
+template<
+	typename T
+>
+fcppt::optional<
+	T
+> &
+fcppt::optional<
+	T
+>::operator=(
+	optional &&_other
+)
+{
+	return
+		this->move_assign(
+			std::move(
+				_other
+			)
 		);
 }
 
@@ -137,6 +200,26 @@ fcppt::optional<
 template<
 	typename T
 >
+fcppt::optional<
+	T
+> &
+fcppt::optional<
+	T
+>::operator=(
+	T &&_other
+)
+{
+	return
+		this->move_assign(
+			std::move(
+				_other
+			)
+		);
+}
+
+template<
+	typename T
+>
 template<
 	typename Other
 >
@@ -150,7 +233,7 @@ typename fcppt::detail::enable_optional_value_conv<
 fcppt::optional<
 	T
 >::operator=(
-	optional<
+	fcppt::optional<
 		Other
 	> const &_other
 )
@@ -367,6 +450,50 @@ fcppt::optional<
 template<
 	typename T
 >
+void
+fcppt::optional<
+	T
+>::move_from(
+	T &&_other
+)
+{
+	new (
+		this->raw_data()
+	)
+	T(
+		std::move(
+			_other
+		)
+	);
+}
+
+template<
+	typename T
+>
+void
+fcppt::optional<
+	T
+>::move_from(
+	optional &&_other
+)
+{
+	if(
+		_other.has_value()
+	)
+	{
+		this->move_from(
+			std::move(
+				*_other
+			)
+		);
+
+		_other.reset();
+	}
+}
+
+template<
+	typename T
+>
 fcppt::optional<
 	T
 > &
@@ -411,7 +538,8 @@ fcppt::optional<
 {
 	if(
 		this->has_value()
-		&& _other.has_value()
+		&&
+		_other.has_value()
 	)
 		*this->data() = *_other;
 	else
@@ -423,6 +551,76 @@ fcppt::optional<
 		);
 
 		initialized_ = _other.has_value();
+	}
+
+	return *this;
+}
+
+template<
+	typename T
+>
+fcppt::optional<
+	T
+> &
+fcppt::optional<
+	T
+>::move_assign(
+	T && _other
+)
+{
+	if(
+		this->has_value()
+	)
+		*this->data() =
+			std::move(
+				_other
+			);
+	else
+	{
+		this->construct(
+			std::move(
+				_other
+			)
+		);
+
+		initialized_ = true;
+	}
+
+	return *this;
+}
+
+template<
+	typename T
+>
+fcppt::optional<
+	T
+> &
+fcppt::optional<
+	T
+>::move_assign(
+	optional &&_other
+)
+{
+	if(
+		this->has_value()
+		&&
+		_other.has_value()
+	)
+		*this->data() =
+			std::move(
+				*_other
+			);
+	else
+	{
+		this->destroy();
+
+		initialized_ = _other.has_value();
+
+		this->move_from(
+			std::move(
+				_other
+			)
+		);
 	}
 
 	return *this;

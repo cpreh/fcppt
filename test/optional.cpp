@@ -4,6 +4,7 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
+#include <fcppt/noncopyable.hpp>
 #include <fcppt/optional.hpp>
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
@@ -12,6 +13,7 @@
 #include <boost/test/unit_test.hpp>
 #include <string>
 #include <type_traits>
+#include <utility>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -547,5 +549,137 @@ FCPPT_PP_POP_WARNING
 			opt_a,
 			optional_int_ref()
 		)
+	);
+}
+
+namespace
+{
+
+class movable
+{
+	FCPPT_NONCOPYABLE(
+		movable
+	);
+public:
+	movable(
+		std::string const &_value
+	)
+	:
+		value_(
+			_value
+		)
+	{
+	}
+
+	movable(
+		movable &&_other
+	)
+	:
+		value_(
+			std::move(
+				_other.value_
+			)
+		)
+	{
+	}
+
+	movable &
+	operator=(
+		movable &&_other
+	)
+	{
+		value_ =
+			std::move(
+				_other.value_
+			);
+
+		return
+			*this;
+	}
+
+	~movable()
+	{
+	}
+
+	std::string const &
+	value() const
+	{
+		return value_;
+	}
+private:
+	std::string value_;
+};
+
+}
+
+FCPPT_PP_PUSH_WARNING
+FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
+
+BOOST_AUTO_TEST_CASE(
+	optional_move
+)
+{
+FCPPT_PP_POP_WARNING
+
+	typedef fcppt::optional<
+		movable
+	> optional_movable;
+
+
+	optional_movable opta(
+		movable(
+			"test"
+		)
+	);
+
+	optional_movable optb(
+		std::move(
+			opta
+		)
+	);
+
+	BOOST_REQUIRE(
+		!opta.has_value()
+	);
+
+	BOOST_REQUIRE(
+		optb.has_value()
+	);
+
+	BOOST_CHECK(
+		optb->value()
+		==
+		"test"
+	);
+
+	optional_movable optc(
+		movable(
+			"test2"
+		)
+	);
+
+	optc =
+		std::move(
+			optb
+		);
+
+	BOOST_REQUIRE(
+		optc.has_value()
+	);
+
+	BOOST_REQUIRE(
+		optb.has_value()
+	);
+
+	BOOST_CHECK(
+		optc->value()
+		==
+		"test"
+	);
+
+	BOOST_CHECK(
+		optb->value()
+		==
+		"test2"
 	);
 }

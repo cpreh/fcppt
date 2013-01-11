@@ -20,9 +20,12 @@ namespace fcppt
 
 /**
 \brief A class that makes values optional
+
 \ingroup fcpptoptional
-\tparam T The type to make optional, which must be CopyConstructible,
-Assignable and complete. It therefore must also not be const.
+
+\tparam T The type to make optional, which must be CopyConstructible or
+Movable, Assignable or AssignMovable and complete. It therefore must also not
+be const.
 
 See the \link fcpptoptional module description \endlink for more information.
 */
@@ -78,11 +81,25 @@ public:
 
 	\param ref The value to initialize the optional with
 
-	\post has_value() will be true.
+	\post <code>has_value()</code> will be true.
 	*/
 	explicit
 	optional(
 		const_reference ref
+	);
+
+	/**
+	\brief Constructs an optional by moving from an rvalue reference
+
+	Constructs an optional by moving from \a ref
+
+	\param ref The value to move from
+
+	\post <code>has_value()</code> will be true
+	*/
+	explicit
+	optional(
+		T &&ref
 	);
 
 	/**
@@ -124,12 +141,24 @@ public:
 	);
 
 	/**
+	\brief Move constructs an optional
+
+	Constructs an optional by moving from \a other. In any case, \a other
+	will be left uninitialized.
+
+	\param other The optional to move from
+	*/
+	optional(
+		optional &&other
+	);
+
+	/**
 	\brief Assigns from an optional
 
 	Assigns the current value from <code>*other</code> if
 	<code>has_value()</code> and <code>other.has_value()</code> are true.
-	Otherwise, if has_value() is false, then the current value will be copy
-	constructed from <code>*other</code>. Otherwise, if
+	Otherwise, if <code>has_value()</code> is false, then the current value
+	will be copy constructed from <code>*other</code>. Otherwise, if
 	<code>other.has_value()</code> is false, then the optional will be
 	reset.
 
@@ -141,23 +170,60 @@ public:
 	operator=(
 		optional const &other
 	);
-	
+
+	/**
+	\brief Move assigns from an optional
+
+	Moves the current value from <code>*other</code>
+	if <code>has_value()</code> and <code>other.has_value()</code> are true.
+	Otherwise, if <code>has_value()</code> is false, then the current value
+	will be move constructed from <code>*other</code>. Otherwise, if
+	<code>other.has_value()</code> is false, then the optional will be
+	reset.
+
+	\param other The optional to move assign from
+
+	\return <code>*this</code>
+	*/
+	optional &
+	operator=(
+		optional &&other
+	);
+
 	/**
 	\brief Assigns from a const reference
 
-	Assign the current value from <code>other</code> if
-	<code>has_value()</code> is true. Otherwise, the current value will be
-	copy constructed from <code>other</code>.
+	Assigns from <code>other</code> if <code>has_value()</code> is true.
+	Otherwise, the current value will be copy constructed from
+	<code>other</code>.
 
 	\param other The const reference to assign from
 
-	\post has_value() will be true.
+	\post <code>has_value()</code> will be true.
 
 	\return <code>*this</code>
 	*/
 	optional &
 	operator=(
 		const_reference other
+	);
+
+	/**
+	\brief Move assigns from an rvalue reference
+
+	Move assigns from <code>other</code> if <code>has_value()</code> is true.
+	Otherwise, the current value will be move constructed from
+	<code>other</code>.
+
+	\param other The rvalue reference to move assign from
+
+	\post <code>has_value()</code> will be true.
+
+	\return <code>*this</code>
+	*/
+	optional &
+	operator=(
+		T &&other
 	);
 
 	/**
@@ -257,7 +323,7 @@ private:
 
 	void *
 	raw_data();
-	
+
 	void const *
 	raw_data() const;
 
@@ -271,9 +337,19 @@ private:
 	>
 	void
 	construct(
-		optional<
+		fcppt::optional<
 			Other
 		> const &
+	);
+
+	void
+	move_from(
+		T &&
+	);
+
+	void
+	move_from(
+		optional &&
 	);
 
 	optional &
@@ -286,16 +362,28 @@ private:
 	>
 	optional &
 	assign(
-		optional<
+		fcppt::optional<
 			Other
 		> const &
+	);
+
+	optional &
+	move_assign(
+		T &&
+	);
+
+	optional &
+	move_assign(
+		optional &&
 	);
 
 	void
 	destroy();
 
 	typedef typename std::aligned_storage<
-		sizeof(T),
+		sizeof(
+			T
+		),
 		std::alignment_of<
 			T
 		>::value
@@ -432,11 +520,12 @@ public:
 	template<
 		typename Other
 	>
-	explicit optional(
-		optional<
+	explicit
+	optional(
+		fcppt::optional<
 			Other &
 		> const &other,
-		typename detail::enable_optional_ref_conv<
+		typename fcppt::detail::enable_optional_ref_conv<
 			T,
 			Other
 		>::type * = nullptr
