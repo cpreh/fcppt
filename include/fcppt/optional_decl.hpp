@@ -294,9 +294,6 @@ private:
 	void
 	destroy();
 
-	void
-	destroy_unchecked();
-
 	typedef typename std::aligned_storage<
 		sizeof(T),
 		std::alignment_of<

@@ -10,6 +10,7 @@
 #include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/test/unit_test.hpp>
+#include <string>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
@@ -23,13 +24,13 @@ FCPPT_PP_PUSH_WARNING
 FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
 
 BOOST_AUTO_TEST_CASE(
-	optional
+	optional_general
 )
 {
 FCPPT_PP_POP_WARNING
 
 	typedef fcppt::optional<
-		int
+		std::string
 	> optional_int;
 
 	optional_int test;
@@ -42,7 +43,7 @@ FCPPT_PP_POP_WARNING
 		!test.has_value()
 	);
 
-	test = 42;
+	test = "test";
 
 	BOOST_REQUIRE(
 		test
@@ -53,7 +54,7 @@ FCPPT_PP_POP_WARNING
 	);
 
 	BOOST_REQUIRE(
-		*test == 42
+		*test == "test"
 	);
 
 	test.reset();

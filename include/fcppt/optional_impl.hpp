@@ -382,8 +382,6 @@ fcppt::optional<
 		*this->data() = _other;
 	else
 	{
-		this->destroy_unchecked();
-
 		this->construct(
 			_other
 		);
@@ -441,18 +439,7 @@ fcppt::optional<
 	if(
 		this->has_value()
 	)
-		this->destroy_unchecked();
-}
-
-template<
-	typename T
->
-void
-fcppt::optional<
-	T
->::destroy_unchecked()
-{
-	this->data()->~T();
+		this->data()->~T();
 }
 
 template<
