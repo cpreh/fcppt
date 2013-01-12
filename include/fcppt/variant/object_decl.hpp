@@ -49,8 +49,7 @@ public:
 	Constructs the variant from \a value. This constructor is intentionally
 	not explicit.
 
-	\tparam U Must be a type or a type contained in an
-	fcppt::variant::recursive among <code>types</code>
+	\tparam U Must be a type among <code>types</code>
 
 	\param value The value to construct the variant from
 
@@ -82,8 +81,7 @@ public:
 	Assigns \a value to the variant. Calls the assignment operator of the
 	held type when possible.
 
-	\tparam U Must be a type or a type contained in an
-	fcppt::variant::recursive among <code>types</code>
+	\tparam U Must be a type among <code>types</code>
 
 	\param value The value to assign the variant from
 
@@ -125,8 +123,7 @@ public:
 	If <code>fcppt::variant::holds_type<U>(*this)</code> is true, then a
 	const reference to currently held value is be returned.
 
-	\tparam U Must be a type or a type contained in an
-	fcppt::variant::recursive among <code>types</code>
+	\tparam U Must be a type among <code>types</code>
 
 	\throw fcppt::variant::invalid_get if
 	<code>fcppt::variant::holds_type<U>(*this)</code> is false
@@ -143,8 +140,7 @@ public:
 	If <code>fcppt::variant::holds_type<U>(*this)</code> is true, then a
 	reference to currently held value is be returned.
 
-	\tparam U Must be a type or a type contained in an
-	fcppt::variant::recursive among <code>types</code>
+	\tparam U Must be a type among <code>types</code>
 
 	\throw fcppt::variant::invalid_get if
 	<code>fcppt::variant::holds_type<U>(*this)</code> is false
@@ -162,9 +158,6 @@ public:
 	this->type_index()</code> is true, a const reference to currently held
 	value is be returned.
 
-	Note that this function does not transform recursive types, they will
-	be returned as is.
-
 	\tparam U Must be a type among <code>types</code>
 
 	\warning The behaviour is undefined if
@@ -175,7 +168,7 @@ public:
 		typename U
 	>
 	U const &
-	get_raw() const;
+	get_unchecked() const;
 
 	/**
 	\brief Returns a reference to the held type without any checks
@@ -183,9 +176,6 @@ public:
 	If <code>fcppt::mpl::index_of<types, U>::value ==
 	this->type_index()</code> is true, a reference to currently held value
 	is be returned.
-
-	Note that this function does not transform recursive types, they will
-	be returned as is.
 
 	\tparam U Must be a type among <code>types</code>
 
@@ -197,7 +187,7 @@ public:
 		typename U
 	>
 	U &
-	get_raw();
+	get_unchecked();
 
 	/**
 	\brief Returns an <code>std::%type_info</code> of the held type

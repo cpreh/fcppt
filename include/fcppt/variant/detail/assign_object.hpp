@@ -47,7 +47,7 @@ public:
 		T const &_other
 	) const
 	{
-		left_. template get_raw<
+		left_. template get_unchecked<
 			T
 		>() =
 			_other;

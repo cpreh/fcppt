@@ -10,8 +10,6 @@
 #include <fcppt/variant/invalid_get.hpp>
 #include <fcppt/variant/size_type.hpp>
 #include <fcppt/variant/detail/index_of.hpp>
-#include <fcppt/variant/detail/real_type.hpp>
-#include <fcppt/variant/detail/unwrap_recursive.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
@@ -43,7 +41,7 @@ get_impl(
 		_variant.type_index()
 		!=
 		static_cast<
-			variant::size_type
+			fcppt::variant::size_type
 		>(
 			fcppt::variant::detail::index_of<
 				types,
@@ -54,14 +52,9 @@ get_impl(
 		throw fcppt::variant::invalid_get();
 
 	return
-		fcppt::variant::detail::unwrap_recursive(
-			_variant. template get_raw<
-				typename fcppt::variant::detail::real_type<
-					types,
-					return_type
-				>::type
-			>()
-		);
+		_variant. template get_unchecked<
+			return_type
+		>();
 }
 
 }

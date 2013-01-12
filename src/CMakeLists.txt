@@ -818,13 +818,10 @@ set(
 	include/fcppt/variant/detail/destroy.hpp
 	include/fcppt/variant/detail/get_impl.hpp
 	include/fcppt/variant/detail/index_of.hpp
-	include/fcppt/variant/detail/operation_wrapper.hpp
 	include/fcppt/variant/detail/output.hpp
-	include/fcppt/variant/detail/real_type.hpp
 	include/fcppt/variant/detail/ternary_applier.hpp
 	include/fcppt/variant/detail/ternary_unwrap.hpp
 	include/fcppt/variant/detail/type_info.hpp
-	include/fcppt/variant/detail/unwrap_recursive.hpp
 	include/fcppt/variant/equal.hpp
 	include/fcppt/variant/exception.hpp
 	include/fcppt/variant/get.hpp
@@ -839,10 +836,6 @@ set(
 	include/fcppt/variant/object_fwd.hpp
 	include/fcppt/variant/object_impl.hpp
 	include/fcppt/variant/output.hpp
-	include/fcppt/variant/recursive.hpp
-	include/fcppt/variant/recursive_decl.hpp
-	include/fcppt/variant/recursive_fwd.hpp
-	include/fcppt/variant/recursive_impl.hpp
 	include/fcppt/variant/size_type.hpp
 	include/fcppt/version_int.hpp
 	include/fcppt/version_integral_c.hpp

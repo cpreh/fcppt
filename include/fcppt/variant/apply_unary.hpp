@@ -8,7 +8,6 @@
 #define FCPPT_VARIANT_APPLY_UNARY_HPP_INCLUDED
 
 #include <fcppt/variant/detail/apply_unary_internal.hpp>
-#include <fcppt/variant/detail/operation_wrapper.hpp>
 
 
 namespace fcppt
@@ -44,11 +43,7 @@ apply_unary(
 {
 	return
 		fcppt::variant::detail::apply_unary_internal(
-			fcppt::variant::detail::operation_wrapper<
-				Operation
-			>(
-				_op
-			),
+			_op,
 			_obj
 		);
 }

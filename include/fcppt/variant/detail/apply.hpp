@@ -76,7 +76,7 @@ struct apply<
 			Counter::value == _obj.type_index()
 			?
 				_op(
-					_obj. template get_raw<
+					_obj. template get_unchecked<
 						typename boost::mpl::deref<
 							Iterator
 						>::type

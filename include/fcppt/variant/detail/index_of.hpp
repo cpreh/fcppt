@@ -13,7 +13,6 @@
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/variant/size_type.hpp>
-#include <fcppt/variant/detail/real_type.hpp>
 
 
 namespace fcppt
@@ -36,10 +35,7 @@ fcppt::mpl::integral_cast<
 	fcppt::variant::size_type,
 	fcppt::mpl::index_of<
 		Types,
-		typename fcppt::variant::detail::real_type<
-			Types,
-			Element
-		>::type
+		Element
 	>
 >
 {

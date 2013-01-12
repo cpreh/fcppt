@@ -10,7 +10,6 @@
 #include <fcppt/variant/object_impl.hpp>
 #include <fcppt/variant/size_type.hpp>
 #include <fcppt/variant/detail/index_of.hpp>
-#include <fcppt/variant/detail/real_type.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/mpl/contains.hpp>
 #include <boost/utility/enable_if.hpp>
@@ -29,9 +28,7 @@ namespace variant
 
 The <em>currently held</em> type of a variant is the type passed to its
 constructor or assignment operator. A type T <em>can be held</em> by a
-<code>variant<Set></code> if T is a member of Set or if
-<code>recursive<T></code> is a member of Set. Such a type is also said to be
-possible for <code>variant<Set></code>.
+<code>variant<Set></code> if T is a member of Set.
 
 This function checks if \a Type is held by \a _variant.
 
@@ -51,10 +48,7 @@ template<
 typename boost::enable_if<
 	boost::mpl::contains<
 		Elements,
-		typename fcppt::variant::detail::real_type<
-			Elements,
-			Type
-		>::type
+		Type
 	>,
 	bool
 >::type

@@ -21,7 +21,6 @@ namespace variant
 	<li>\ref variant_motivation</li>
 	<li>\ref variant_visitation</li>
 	<li>\ref variant_design</li>
-	<li>\ref variant_recursive</li>
 	<li>\ref variant_headers</li>
 </ul>
 
@@ -315,28 +314,6 @@ supports visitation of lvalues.</li>
 
 </ul>
 
-\section variant_recursive Recursive data structures
-
-A problem arises when a variant can hold a data structure that holds the yet to
-be defined variant itself. To break the cycle, such a data structure, called
-<code>wrapper</code> here, must be forward declared and passed as a
-<code>fcppt::variant::recursive<wrapper></code> to the variant. This is
-necessary because the variant can only use complete types and
-fcppt::variant::recursive is always complete. The variant itself will act as if
-the recursive wrapper isn't there, which means that the type used with
-fcppt::variant::object::get as well as the argument type passed for a
-visitation will be <code>wrapper</code> and not
-<code>fcppt::variant::recursive<wrapper></code>.
-See \link fcppt::variant::holds_type \endlink
-
-The following example shows how to declare such a recursive variant:
-
-\snippet variant/recursive.cpp variant_recursive_declaration
-
-The variant can hold <code>wrapper</code> which contains a variant itself.
-
-\snippet variant/recursive.cpp variant_recursive_construction
-
 \section variant_headers Header files
 <table>
 <tr>
@@ -394,10 +371,6 @@ The variant can hold <code>wrapper</code> which contains a variant itself.
 <tr>
 <td><code>output.hpp</code></td>
 <td>Contains operator<< for output</td>
-</tr>
-<tr>
-<td><code>recursive.hpp</code></td>
-<td>Contains the recursive tag struct</td>
 </tr>
 </table>
 */

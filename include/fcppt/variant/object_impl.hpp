@@ -22,7 +22,6 @@
 #include <fcppt/variant/detail/destroy.hpp>
 #include <fcppt/variant/detail/get_impl.hpp>
 #include <fcppt/variant/detail/index_of.hpp>
-#include <fcppt/variant/detail/real_type.hpp>
 #include <fcppt/variant/detail/type_info.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <new>
@@ -230,7 +229,7 @@ template<
 U &
 fcppt::variant::object<
 	Types
->::get_raw()
+>::get_unchecked()
 {
 	FCPPT_VARIANT_DETAIL_ASSERT_TYPE(
 		Types,
@@ -255,7 +254,7 @@ template<
 U const &
 fcppt::variant::object<
 	Types
->::get_raw() const
+>::get_unchecked() const
 {
 	FCPPT_VARIANT_DETAIL_ASSERT_TYPE(
 		Types,
@@ -313,10 +312,7 @@ fcppt::variant::object<
 	new (
 		this->raw_data()
 	)
-	typename fcppt::variant::detail::real_type<
-		Types,
-		U
-	>::type(
+	U(
 		_other
 	);
 
