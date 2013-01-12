@@ -30,6 +30,7 @@
 #include <fcppt/variant/detail/swap_unequal.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <new>
+#include <type_traits>
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
@@ -478,7 +479,9 @@ fcppt::variant::object<
 	new (
 		this->raw_data()
 	)
-	U(
+	typename std::remove_reference<
+		U
+	>::type(
 		std::move(
 			_other
 		)

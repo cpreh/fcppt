@@ -13,6 +13,7 @@
 #include <fcppt/variant/is_object.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <type_traits>
+#include <boost/mpl/or.hpp>
 #include <boost/utility/enable_if.hpp>
 #include <fcppt/config/external_end.hpp>
 
@@ -34,12 +35,19 @@ template<
 struct disable_object
 :
 boost::disable_if<
-	fcppt::variant::is_object<
-		typename std::remove_const<
+	boost::mpl::or_<
+		std::is_const<
 			typename std::remove_reference<
 				U
 			>::type
-		>::type
+		>,
+		fcppt::variant::is_object<
+			typename std::remove_const<
+				typename std::remove_reference<
+					U
+				>::type
+			>::type
+		>
 	>,
 	T
 >

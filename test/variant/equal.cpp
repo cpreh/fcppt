@@ -10,6 +10,7 @@
 #include <fcppt/variant/equal.hpp>
 #include <fcppt/variant/not_equal.hpp>
 #include <fcppt/variant/object.hpp>
+#include <fcppt/variant/type_info.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/mpl/vector/vector10.hpp>
 #include <boost/test/unit_test.hpp>
@@ -55,5 +56,15 @@ FCPPT_PP_POP_WARNING
 
 	BOOST_REQUIRE(
 		v1 != v3
+	);
+
+	BOOST_REQUIRE(
+		fcppt::variant::type_info(
+			v1
+		)
+		==
+		fcppt::variant::type_info(
+			v2
+		)
 	);
 }

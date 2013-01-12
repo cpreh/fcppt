@@ -10,9 +10,6 @@
 #include <fcppt/nonassignable.hpp>
 #include <fcppt/variant/apply_unary.hpp>
 #include <fcppt/variant/detail/binary_applier.hpp>
-#include <fcppt/config/external_begin.hpp>
-#include <utility>
-#include <fcppt/config/external_end.hpp>
 
 
 namespace fcppt
@@ -36,7 +33,7 @@ public:
 
 	binary_unwrap(
 		Operation const &_op,
-		Variant &&_obj
+		Variant const &_obj
 	)
 	:
 		op_(
@@ -53,7 +50,7 @@ public:
 	>
 	result_type
 	operator()(
-		T2 &&_t2
+		T2 &_t2
 	) const
 	{
 		return
@@ -63,23 +60,15 @@ public:
 					T2
 				>(
 					op_,
-					std::forward<
-						T2
-					>(
-						_t2
-					)
+					_t2
 				),
-				std::forward<
-					Variant
-				>(
-					obj_
-				)
+				obj_
 			);
 	}
 private:
 	Operation const &op_;
 
-	Variant &&obj_;
+	Variant const &obj_;
 };
 
 }

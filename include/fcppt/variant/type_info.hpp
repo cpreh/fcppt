@@ -33,7 +33,7 @@ type_info(
 	fcppt::variant::object<
 		Types
 	> const &_variant
-) const
+)
 {
 	return
 		fcppt::variant::apply_unary(
