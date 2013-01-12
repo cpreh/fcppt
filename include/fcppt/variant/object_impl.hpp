@@ -10,21 +10,27 @@
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
+#include <fcppt/variant/apply_binary.hpp>
 #include <fcppt/variant/apply_unary.hpp>
+#include <fcppt/variant/is_object.hpp>
 #include <fcppt/variant/object_decl.hpp>
 #include <fcppt/variant/size_type.hpp>
-#include <fcppt/variant/detail/apply_unary_internal.hpp>
 #include <fcppt/variant/detail/assert_type.hpp>
 #include <fcppt/variant/detail/assign_object.hpp>
 #include <fcppt/variant/detail/assign_value.hpp>
 #include <fcppt/variant/detail/construct.hpp>
 #include <fcppt/variant/detail/copy.hpp>
 #include <fcppt/variant/detail/destroy.hpp>
+#include <fcppt/variant/detail/disable_object.hpp>
 #include <fcppt/variant/detail/get_impl.hpp>
 #include <fcppt/variant/detail/index_of.hpp>
-#include <fcppt/variant/detail/type_info.hpp>
+#include <fcppt/variant/detail/move_assign_object.hpp>
+#include <fcppt/variant/detail/move_assign_value.hpp>
+#include <fcppt/variant/detail/move_construct.hpp>
+#include <fcppt/variant/detail/swap_unequal.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <new>
+#include <utility>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -51,6 +57,31 @@ fcppt::variant::object<
 	);
 }
 
+template<
+	typename Types
+>
+template<
+	typename U
+>
+fcppt::variant::object<
+	Types
+>::object(
+	U &&_other,
+	typename fcppt::variant::detail::disable_object<
+		U
+	>::type *
+)
+:
+	storage_()
+	// Don't initialize index_
+{
+	this->move_from(
+		std::move(
+			_other
+		)
+	);
+}
+
 FCPPT_PP_POP_WARNING
 
 template<
@@ -67,11 +98,35 @@ fcppt::variant::object<
 		_other.index_
 	)
 {
-	fcppt::variant::detail::apply_unary_internal(
+	fcppt::variant::apply_unary(
 		fcppt::variant::detail::copy(
 			this->raw_data()
 		),
 		_other
+	);
+}
+
+template<
+	typename Types
+>
+fcppt::variant::object<
+	Types
+>::object(
+	object &&_other
+)
+:
+	storage_(),
+	index_(
+		_other.index_
+	)
+{
+	fcppt::variant::apply_unary(
+		fcppt::variant::detail::move_construct(
+			this->raw_data()
+		),
+		std::move(
+			_other
+		)
 	);
 }
 
@@ -98,7 +153,7 @@ fcppt::variant::object<
 		==
 		index_
 	)
-		fcppt::variant::detail::apply_unary_internal(
+		fcppt::variant::apply_unary(
 			fcppt::variant::detail::assign_value<
 				U
 			>(
@@ -112,6 +167,56 @@ fcppt::variant::object<
 
 		this->construct(
 			_other
+		);
+	}
+
+	return *this;
+}
+
+template<
+	typename Types
+>
+template<
+	typename U
+>
+typename fcppt::variant::detail::disable_object<
+	U,
+	fcppt::variant::object<
+		Types
+	> &
+>::type
+fcppt::variant::object<
+	Types
+>::operator=(
+	U &&_other
+)
+{
+	if(
+		fcppt::variant::detail::index_of<
+			Types,
+			U
+		>::value
+		==
+		index_
+	)
+		fcppt::variant::apply_unary(
+			fcppt::variant::detail::move_assign_value<
+				U
+			>(
+				std::move(
+					_other
+				)
+			),
+			*this
+		);
+	else
+	{
+		this->destroy();
+
+		this->move_from(
+			std::move(
+				_other
+			)
 		);
 	}
 
@@ -135,7 +240,7 @@ fcppt::variant::object<
 		==
 		_other.type_index()
 	)
-		fcppt::variant::detail::apply_unary_internal(
+		fcppt::variant::apply_unary(
 			fcppt::variant::detail::assign_object<
 				fcppt::variant::object<
 					Types
@@ -146,7 +251,7 @@ fcppt::variant::object<
 			_other
 		);
 	else
-		fcppt::variant::detail::apply_unary_internal(
+		fcppt::variant::apply_unary(
 			fcppt::variant::detail::construct<
 				fcppt::variant::object<
 					Types
@@ -154,6 +259,43 @@ fcppt::variant::object<
 			>(
 				*this
 			),
+			_other
+		);
+
+	return *this;
+}
+
+template<
+	typename Types
+>
+fcppt::variant::object<
+	Types
+> &
+fcppt::variant::object<
+	Types
+>::operator=(
+	object &&_other
+)
+{
+	if(
+		index_
+		==
+		_other.type_index()
+	)
+		fcppt::variant::apply_unary(
+			fcppt::variant::detail::move_assign_object<
+				fcppt::variant::object<
+					Types
+				>
+			>(
+				*this
+			),
+			std::move(
+				_other
+			)
+		);
+	else
+		this->swap_unequal(
 			_other
 		);
 
@@ -273,21 +415,6 @@ fcppt::variant::object<
 template<
 	typename Types
 >
-std::type_info const &
-fcppt::variant::object<
-	Types
->::type() const
-{
-	return
-		fcppt::variant::apply_unary(
-			fcppt::variant::detail::type_info(),
-			*this
-		);
-}
-
-template<
-	typename Types
->
 fcppt::variant::size_type
 fcppt::variant::object<
 	Types
@@ -309,6 +436,12 @@ fcppt::variant::object<
 	U const &_other
 )
 {
+	FCPPT_VARIANT_DETAIL_ASSERT_TYPE(
+		Types,
+		U,
+		elements
+	);
+
 	new (
 		this->raw_data()
 	)
@@ -316,10 +449,39 @@ fcppt::variant::object<
 		_other
 	);
 
+	index_ =
+		fcppt::variant::detail::index_of<
+			Types,
+			U
+		>::value;
+}
+
+template<
+	typename Types
+>
+template<
+	typename U
+>
+void
+fcppt::variant::object<
+	Types
+>::move_from(
+	U &&_other
+)
+{
 	FCPPT_VARIANT_DETAIL_ASSERT_TYPE(
 		Types,
 		U,
 		elements
+	);
+
+	new (
+		this->raw_data()
+	)
+	U(
+		std::move(
+			_other
+		)
 	);
 
 	index_ =
@@ -337,9 +499,33 @@ fcppt::variant::object<
 	Types
 >::destroy()
 {
-	fcppt::variant::detail::apply_unary_internal(
+	fcppt::variant::apply_unary(
 		fcppt::variant::detail::destroy(),
 		*this
+	);
+}
+
+template<
+	typename Types
+>
+void
+fcppt::variant::object<
+	Types
+>::swap_unequal(
+	object &_other
+)
+{
+	fcppt::variant::apply_binary(
+		fcppt::variant::detail::swap_unequal<
+			fcppt::variant::object<
+				Types
+			>
+		>(
+			*this,
+			_other
+		),
+		*this,
+		_other
 	);
 }
 

@@ -9,6 +9,9 @@
 
 #include <fcppt/variant/apply_unary.hpp>
 #include <fcppt/variant/detail/binary_unwrap.hpp>
+#include <fcppt/config/external_begin.hpp>
+#include <utility>
+#include <fcppt/config/external_end.hpp>
 
 
 namespace fcppt
@@ -43,8 +46,8 @@ template<
 typename Operation::result_type
 apply_binary(
 	Operation const &_op,
-	Variant1 const &_obj1,
-	Variant2 const &_obj2
+	Variant1 &&_obj1,
+	Variant2 &&_obj2
 )
 {
 	return
@@ -54,9 +57,17 @@ apply_binary(
 				Variant1
 			>(
 				_op,
-				_obj1
+				std::forward<
+					Variant1
+				>(
+					_obj1
+				)
 			),
-			_obj2
+			std::forward<
+				Variant2
+			>(
+				_obj2
+			)
 		);
 }
 

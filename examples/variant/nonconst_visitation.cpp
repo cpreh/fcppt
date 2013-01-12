@@ -8,7 +8,6 @@
 #include <fcppt/variant/object_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/mpl/vector/vector10.hpp>
-#include <functional>
 #include <iostream>
 #include <ostream>
 #include <string>
@@ -57,9 +56,7 @@ int main()
 
 	fcppt::variant::apply_unary(
 		visitor(),
-		std::ref(
-			v
-		)
+		v
 	);
 
 	// only prints a newline because the string contains nothing anymore

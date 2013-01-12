@@ -7,7 +7,16 @@
 #ifndef FCPPT_VARIANT_APPLY_UNARY_HPP_INCLUDED
 #define FCPPT_VARIANT_APPLY_UNARY_HPP_INCLUDED
 
-#include <fcppt/variant/detail/apply_unary_internal.hpp>
+#include <fcppt/variant/size_type.hpp>
+#include <fcppt/variant/detail/apply.hpp>
+#include <fcppt/config/external_begin.hpp>
+#include <boost/mpl/begin.hpp>
+#include <boost/mpl/empty.hpp>
+#include <boost/mpl/end.hpp>
+#include <boost/mpl/integral_c.hpp>
+#include <type_traits>
+#include <utility>
+#include <fcppt/config/external_end.hpp>
 
 
 namespace fcppt
@@ -38,13 +47,36 @@ template<
 typename Operation::result_type
 apply_unary(
 	Operation const &_op,
-	Variant const &_obj
+	Variant &&_obj
 )
 {
+	typedef typename std::remove_reference<
+		Variant
+	>::type::types types;
+
 	return
-		fcppt::variant::detail::apply_unary_internal(
+		fcppt::variant::detail::apply<
+			boost::mpl::empty<
+				types
+			>::value
+		>:: template execute<
+			boost::mpl::integral_c<
+				fcppt::variant::size_type,
+				0
+			>,
+			typename boost::mpl::begin<
+				types
+			>::type,
+			typename boost::mpl::end<
+				types
+			>::type
+		>(
 			_op,
-			_obj
+			std::forward<
+				Variant
+			>(
+				_obj
+			)
 		);
 }
 

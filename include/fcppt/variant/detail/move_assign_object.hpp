@@ -4,12 +4,13 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_VARIANT_DETAIL_COPY_HPP_INCLUDED
-#define FCPPT_VARIANT_DETAIL_COPY_HPP_INCLUDED
+#ifndef FCPPT_VARIANT_DETAIL_MOVE_ASSIGN_OBJECT_HPP_INCLUDED
+#define FCPPT_VARIANT_DETAIL_MOVE_ASSIGN_OBJECT_HPP_INCLUDED
 
 #include <fcppt/nonassignable.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <new>
+#include <type_traits>
+#include <utility>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -20,43 +21,47 @@ namespace variant
 namespace detail
 {
 
-class copy
+template<
+	typename Variant
+>
+class move_assign_object
 {
 	FCPPT_NONASSIGNABLE(
-		copy
+		move_assign_object
 	);
 public:
-	typedef void *result_type;
-
 	explicit
-	copy(
-		void *const _store
+	move_assign_object(
+		Variant &_left
 	)
 	:
-		store_(
-			_store
+		left_(
+			_left
 		)
 	{
 	}
+
+	typedef void result_type;
 
 	template<
 		typename T
 	>
 	result_type
 	operator()(
-		T const &_t
+		T &&_other
 	) const
 	{
-		return
-			new (
-				store_
-			)
-			T(
-				_t
+		left_. template get_unchecked<
+			typename std::remove_reference<
+				T
+			>::type
+		>() =
+			std::move(
+				_other
 			);
 	}
 private:
-	void *const store_;
+	Variant &left_;
 };
 
 }

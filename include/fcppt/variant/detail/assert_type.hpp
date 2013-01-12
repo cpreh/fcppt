@@ -8,6 +8,9 @@
 #define FCPPT_VARIANT_DETAIL_ASSERT_TYPE_HPP_INCLUDED
 
 #include <fcppt/variant/detail/index_of.hpp>
+#include <fcppt/config/external_begin.hpp>
+#include <type_traits>
+#include <fcppt/config/external_end.hpp>
 
 
 #define FCPPT_VARIANT_DETAIL_ASSERT_TYPE(\
@@ -18,7 +21,9 @@
 static_assert((\
 	::fcppt::variant::detail::index_of<\
 		types,\
-		other\
+		typename std::remove_reference<\
+			other\
+		>::type\
 	>::value\
 	< elements\
 	),\

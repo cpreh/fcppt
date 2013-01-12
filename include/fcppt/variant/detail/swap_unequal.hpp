@@ -4,12 +4,12 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_VARIANT_DETAIL_COPY_HPP_INCLUDED
-#define FCPPT_VARIANT_DETAIL_COPY_HPP_INCLUDED
+#ifndef FCPPT_VARIANT_DETAIL_SWAP_UNEQUAL_HPP_INCLUDED
+#define FCPPT_VARIANT_DETAIL_SWAP_UNEQUAL_HPP_INCLUDED
 
 #include <fcppt/nonassignable.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <new>
+#include <utility>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -20,43 +20,61 @@ namespace variant
 namespace detail
 {
 
-class copy
+template<
+	typename Variant
+>
+class swap_unequal
 {
 	FCPPT_NONASSIGNABLE(
-		copy
+		swap_unequal
 	);
 public:
-	typedef void *result_type;
-
-	explicit
-	copy(
-		void *const _store
+	swap_unequal(
+		Variant &_left,
+		Variant &_right
 	)
 	:
-		store_(
-			_store
+		left_(
+			_left
+		),
+		right_(
+			_right
 		)
 	{
 	}
 
+	typedef void result_type;
+
 	template<
-		typename T
+		typename Type1,
+		typename Type2
 	>
 	result_type
 	operator()(
-		T const &_t
+		Type1 &_left,
+		Type2 &_right
 	) const
 	{
-		return
-			new (
-				store_
+		Type1 temp(
+			std::move(
+				_left
 			)
-			T(
-				_t
+		);
+
+		left_ =
+			std::move(
+				_right
+			);
+
+		right_ =
+			std::move(
+				temp
 			);
 	}
 private:
-	void *const store_;
+	Variant &left_;
+
+	Variant &right_;
 };
 
 }

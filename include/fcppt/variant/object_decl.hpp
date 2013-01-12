@@ -10,12 +10,12 @@
 #include <fcppt/mpl/max_value.hpp>
 #include <fcppt/variant/object_fwd.hpp>
 #include <fcppt/variant/size_type.hpp>
+#include <fcppt/variant/detail/disable_object.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/mpl/placeholders.hpp>
 #include <boost/mpl/size.hpp>
 #include <boost/mpl/sizeof.hpp>
 #include <boost/type_traits/alignment_of.hpp>
-#include <typeinfo>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
@@ -27,8 +27,12 @@ namespace variant
 
 /**
 \brief A class that can hold any object from a fixed set of types
+
 \ingroup fcpptvariant
-\tparam Types An MPL sequence of types that must be <code>CopyConstructible</code>, <code>Assignable</code> and complete.
+
+\tparam Types An MPL sequence of types that must be CopyConstructible or
+Movable, Assignable or AssignMovable and complete. It therefore must also not
+be const.
 
 See the \link fcpptvariant module description \endlink for more information.
 */
@@ -63,6 +67,28 @@ public:
 	);
 
 	/**
+	\brief Move constructs the variant from a value
+
+	Move constructs the variant from \a value. This constructor is
+	intentionally not explicit.
+
+	\tparam U Must be a type among <code>types</code>
+
+	\param value The value to move construct the variant from
+
+	\post <code>fcppt::variant::holds_type<U>(*this)</code> is true
+	*/
+	template<
+		typename U
+	>
+	object(
+		U &&value,
+		typename fcppt::variant::detail::disable_object<
+			U
+		>::type * = nullptr
+	);
+
+	/**
 	\brief Copy constructs a variant
 
 	Copy constructs the value held by \a other into the variant.
@@ -73,6 +99,19 @@ public:
 	*/
 	object(
 		object const &other
+	);
+
+	/**
+	\brief Move constructs a variant
+
+	Move constructs the value held by \a other into the variant.
+
+	\param other The variant to move from
+
+	\post <code>this->type_index() == other.type_index()</code>
+	*/
+	object(
+		object &&other
 	);
 
 	/**
@@ -96,6 +135,29 @@ public:
 	);
 
 	/**
+	\brief Move assigns a new value to the variant
+
+	Move assigns \a value to the variant. Calls the move assignment
+	operator of the held type when possible.
+
+	\tparam U Must be a type among <code>types</code>
+
+	\param value The value to assign the variant from
+
+	\post <code>fcppt::variant::holds_type<U>(*this)</code> is true
+	*/
+	template<
+		typename U
+	>
+	typename fcppt::variant::detail::disable_object<
+		U,
+		object &
+	>::type
+	operator=(
+		U &&value
+	);
+
+	/**
 	\brief Assigns a variant
 
 	Assigns the value from \a other to the variant. Calls the assignment
@@ -108,6 +170,19 @@ public:
 	object &
 	operator=(
 		object const &other
+	);
+
+	/**
+	\brief Move assigns a variant
+
+	Move assigns the value from \a other to the variant. Calls the
+	move assignment operator of the held type when possible.
+
+	\param other The variant to assign from
+	*/
+	object &
+	operator=(
+		object &&other
 	);
 
 	/**
@@ -190,12 +265,6 @@ public:
 	get_unchecked();
 
 	/**
-	\brief Returns an <code>std::%type_info</code> of the held type
-	*/
-	std::type_info const &
-	type() const;
-
-	/**
 	\brief Returns the index of the held type
 
 	\return A runtime index into <code>types</code> of the held type.
@@ -211,8 +280,21 @@ private:
 		U const &
 	);
 
+	template<
+		typename U
+	>
+	void
+	move_from(
+		U &&
+	);
+
 	void
 	destroy();
+
+	void
+	swap_unequal(
+		object &
+	);
 
 	void *
 	raw_data();

@@ -14,9 +14,9 @@
 #include <fcppt/config/external_begin.hpp>
 #include <boost/mpl/vector/vector10.hpp>
 #include <boost/test/unit_test.hpp>
-#include <functional>
 #include <string>
 #include <fcppt/config/external_end.hpp>
+
 
 namespace
 {
@@ -108,9 +108,7 @@ FCPPT_PP_POP_WARNING
 
 	fcppt::variant::apply_unary(
 		unary_functor(),
-		std::ref(
-			v1
-		)
+		v1
 	);
 
 	BOOST_CHECK(
@@ -142,12 +140,8 @@ FCPPT_PP_POP_WARNING
 
 	fcppt::variant::apply_binary(
 		binary_functor(),
-		std::ref(
-			v1
-		),
-		std::ref(
-			v2
-		)
+		v1,
+		v2
 	);
 
 	BOOST_CHECK(
@@ -190,15 +184,9 @@ FCPPT_PP_POP_WARNING
 
 	fcppt::variant::apply_ternary(
 		ternary_functor(),
-		std::ref(
-			v1
-		),
-		std::ref(
-			v2
-		),
-		std::ref(
-			v3
-		)
+		v1,
+		v2,
+		v3
 	);
 
 	BOOST_CHECK(

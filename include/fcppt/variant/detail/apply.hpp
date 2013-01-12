@@ -12,6 +12,7 @@
 #include <boost/mpl/next.hpp>
 #include <exception>
 #include <type_traits>
+#include <utility>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -42,7 +43,7 @@ struct apply<
 	static typename Operation::result_type
 	execute(
 		Operation const &,
-		Variant &
+		Variant &&
 	)
 	{
 		// this code is unreachable
@@ -65,7 +66,7 @@ struct apply<
 	static typename Operation::result_type
 	execute(
 		Operation const &_op,
-		Variant &_obj
+		Variant &&_obj
 	)
 	{
 		typedef typename boost::mpl::next<
@@ -96,7 +97,11 @@ struct apply<
 					EndIterator
 				>(
 					_op,
-					_obj
+					std::forward<
+						Variant
+					>(
+						_obj
+					)
 				);
 	}
 };
