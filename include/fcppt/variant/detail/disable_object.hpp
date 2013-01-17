@@ -10,6 +10,7 @@
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
+#include <fcppt/type_traits/remove_cv_ref.hpp>
 #include <fcppt/variant/is_object.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <type_traits>
@@ -42,10 +43,8 @@ boost::disable_if<
 			>::type
 		>,
 		fcppt::variant::is_object<
-			typename std::remove_const<
-				typename std::remove_reference<
-					U
-				>::type
+			typename fcppt::type_traits::remove_cv_ref<
+				U
 			>::type
 		>
 	>,

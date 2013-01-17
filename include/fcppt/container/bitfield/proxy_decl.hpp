@@ -11,9 +11,7 @@
 #include <fcppt/container/bitfield/proxy_fwd.hpp>
 #include <fcppt/container/bitfield/value_type.hpp>
 #include <fcppt/container/bitfield/detail/element_bits.hpp>
-#include <fcppt/config/external_begin.hpp>
-#include <type_traits>
-#include <fcppt/config/external_end.hpp>
+#include <fcppt/type_traits/remove_cv_ref.hpp>
 
 
 namespace fcppt
@@ -39,10 +37,8 @@ class proxy
 		proxy
 	);
 
-	typedef typename std::remove_const<
-		typename std::remove_reference<
-			StoredType
-		>::type
+	typedef typename fcppt::type_traits::remove_cv_ref<
+		StoredType
 	>::type array_type;
 
 	typedef typename array_type::size_type size_type;

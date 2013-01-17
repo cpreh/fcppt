@@ -802,6 +802,7 @@ set(
 	include/fcppt/type_traits/is_random_access_iterator.hpp
 	include/fcppt/type_traits/is_string.hpp
 	include/fcppt/type_traits/is_unique_ptr.hpp
+	include/fcppt/type_traits/remove_cv_ref.hpp
 	include/fcppt/variant/apply_binary.hpp
 	include/fcppt/variant/apply_ternary.hpp
 	include/fcppt/variant/apply_unary.hpp
@@ -822,6 +823,7 @@ set(
 	include/fcppt/variant/detail/move_assign_value.hpp
 	include/fcppt/variant/detail/move_construct.hpp
 	include/fcppt/variant/detail/output.hpp
+	include/fcppt/variant/detail/swap_unequal.hpp
 	include/fcppt/variant/detail/ternary_applier.hpp
 	include/fcppt/variant/detail/ternary_unwrap.hpp
 	include/fcppt/variant/detail/type_info.hpp

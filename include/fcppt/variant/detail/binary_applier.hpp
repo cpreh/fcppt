@@ -8,6 +8,9 @@
 #define FCPPT_VARIANT_DETAIL_BINARY_APPLIER_HPP_INCLUDED
 
 #include <fcppt/nonassignable.hpp>
+#include <fcppt/config/external_begin.hpp>
+#include <type_traits>
+#include <fcppt/config/external_end.hpp>
 
 
 namespace fcppt
@@ -19,7 +22,7 @@ namespace detail
 
 template<
 	typename Operation,
-	typename Type
+	typename T2
 >
 class binary_applier
 {
@@ -27,11 +30,13 @@ class binary_applier
 		binary_applier
 	);
 public:
-	typedef typename Operation::result_type result_type;
+	typedef typename std::remove_reference<
+		Operation
+	>::type::result_type result_type;
 
 	binary_applier(
-		Operation const &_op,
-		Type &_t2
+		Operation &_op,
+		T2 &_t2
 	)
 	:
 		op_(
@@ -44,11 +49,11 @@ public:
 	}
 
 	template<
-		typename T
+		typename T1
 	>
 	result_type
 	operator()(
-		T &_t1
+		T1 &_t1
 	) const
 	{
 		return
@@ -58,9 +63,9 @@ public:
 			);
 	}
 private:
-	Operation const &op_;
+	Operation &op_;
 
-	Type &t2_;
+	T2 &t2_;
 };
 
 }

@@ -10,6 +10,9 @@
 #include <fcppt/nonassignable.hpp>
 #include <fcppt/variant/apply_unary.hpp>
 #include <fcppt/variant/detail/binary_applier.hpp>
+#include <fcppt/config/external_begin.hpp>
+#include <type_traits>
+#include <fcppt/config/external_end.hpp>
 
 
 namespace fcppt
@@ -29,11 +32,13 @@ class binary_unwrap
 		binary_unwrap
 	);
 public:
-	typedef typename Operation::result_type result_type;
+	typedef typename std::remove_reference<
+		Operation
+	>::type::result_type result_type;
 
 	binary_unwrap(
-		Operation const &_op,
-		Variant const &_obj
+		Operation &_op,
+		Variant &_obj
 	)
 	:
 		op_(
@@ -66,9 +71,9 @@ public:
 			);
 	}
 private:
-	Operation const &op_;
+	Operation &op_;
 
-	Variant const &obj_;
+	Variant &obj_;
 };
 
 }

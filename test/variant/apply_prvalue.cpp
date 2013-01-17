@@ -58,7 +58,7 @@ FCPPT_PP_PUSH_WARNING
 FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
 
 BOOST_AUTO_TEST_CASE(
-	variant_apply_ternary
+	variant_apply_prvalue
 )
 {
 FCPPT_PP_POP_WARNING
@@ -75,23 +75,18 @@ FCPPT_PP_POP_WARNING
 		"foo"
 	);
 
-	variant const
-		v1(
-			false
-		),
-		v2(
-			42
-		),
-		v3(
-			string
-		);
-
 	BOOST_REQUIRE(
 		fcppt::variant::apply_ternary(
 			functor(),
-			v1,
-			v2,
-			v3
+			variant(
+				false
+			),
+			variant(
+				42
+			),
+			variant(
+				string
+			)
 		)
 	);
 }

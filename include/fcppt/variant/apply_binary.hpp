@@ -10,7 +10,7 @@
 #include <fcppt/variant/apply_unary.hpp>
 #include <fcppt/variant/detail/binary_unwrap.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <utility>
+#include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -43,9 +43,11 @@ template<
 	typename Variant1,
 	typename Variant2
 >
-typename Operation::result_type
+typename std::remove_reference<
+	Operation
+>::type::result_type
 apply_binary(
-	Operation const &_op,
+	Operation &&_op,
 	Variant1 &&_obj1,
 	Variant2 &&_obj2
 )
@@ -57,17 +59,9 @@ apply_binary(
 				Variant1
 			>(
 				_op,
-				std::forward<
-					Variant1
-				>(
-					_obj1
-				)
+				_obj1
 			),
-			std::forward<
-				Variant2
-			>(
-				_obj2
-			)
+			_obj2
 		);
 }
 

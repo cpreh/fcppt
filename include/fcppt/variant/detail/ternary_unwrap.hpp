@@ -10,6 +10,9 @@
 #include <fcppt/nonassignable.hpp>
 #include <fcppt/variant/apply_unary.hpp>
 #include <fcppt/variant/detail/ternary_applier.hpp>
+#include <fcppt/config/external_begin.hpp>
+#include <type_traits>
+#include <fcppt/config/external_end.hpp>
 
 
 namespace fcppt
@@ -29,11 +32,13 @@ class ternary_unwrap
 		ternary_unwrap
 	);
 public:
-	typedef typename Operation::result_type result_type;
+	typedef typename std::remove_reference<
+		Operation
+	>::type::result_type result_type;
 
 	ternary_unwrap(
-		Operation const &_op,
-		Variant const &_obj
+		Operation &_op,
+		Variant &_obj
 	)
 	:
 		op_(
@@ -70,9 +75,9 @@ public:
 			);
 	}
 private:
-	Operation const &op_;
+	Operation &op_;
 
-	Variant const &obj_;
+	Variant &obj_;
 };
 
 }

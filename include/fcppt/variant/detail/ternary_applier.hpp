@@ -8,6 +8,9 @@
 #define FCPPT_VARIANT_DETAIL_TERNARY_APPLIER_HPP_INCLUDED
 
 #include <fcppt/nonassignable.hpp>
+#include <fcppt/config/external_begin.hpp>
+#include <type_traits>
+#include <fcppt/config/external_end.hpp>
 
 
 namespace fcppt
@@ -19,8 +22,8 @@ namespace detail
 
 template<
 	typename Operation,
-	typename Type2,
-	typename Type3
+	typename T2,
+	typename T3
 >
 class ternary_applier
 {
@@ -28,12 +31,14 @@ class ternary_applier
 		ternary_applier
 	);
 public:
-	typedef typename Operation::result_type result_type;
+	typedef typename std::remove_reference<
+		Operation
+	>::type::result_type result_type;
 
 	ternary_applier(
-		Operation const &_op,
-		Type2 &_t2,
-		Type3 &_t3
+		Operation &_op,
+		T2 &_t2,
+		T3 &_t3
 	)
 	:
 		op_(
@@ -64,11 +69,11 @@ public:
 			);
 	}
 private:
-	Operation const &op_;
+	Operation &op_;
 
-	Type2 &t2_;
+	T2 &t2_;
 
-	Type3 &t3_;
+	T3 &t3_;
 };
 
 }

@@ -4,47 +4,44 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_DETAIL_ENABLE_OPTIONAL_VALUE_CONV_HPP_INCLUDED
-#define FCPPT_DETAIL_ENABLE_OPTIONAL_VALUE_CONV_HPP_INCLUDED
+#ifndef FCPPT_TYPE_TRAITS_REMOVE_CV_REF_HPP_INCLUDED
+#define FCPPT_TYPE_TRAITS_REMOVE_CV_REF_HPP_INCLUDED
 
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
-#include <fcppt/type_traits/remove_cv_ref.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/mpl/and.hpp>
-#include <boost/utility/enable_if.hpp>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
 
 namespace fcppt
 {
-namespace detail
+namespace type_traits
 {
 
 FCPPT_PP_PUSH_WARNING
 FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
 
+/**
+\brief Removes references and cv qualifiers
+
+\ingroup fcppttypetraits
+
+Removes references and cv qualifiers from \a Type. It's the same as applying
+<code>remove_reference</code>, followed by <code>remove_cv</code>.
+
+\tparam Type Can be any type
+*/
 template<
-	typename Own,
-	typename Other,
-	typename Result
+	typename Type
 >
-struct enable_optional_value_conv
+struct remove_cv_ref
 :
-boost::enable_if<
-	boost::mpl::and_<
-		std::is_reference<
-			Other
-		>,
-		std::is_same<
-			Own,
-			typename fcppt::type_traits::remove_cv_ref<
-				Other
-			>::type
-		>
-	>
+std::remove_cv<
+	typename std::remove_reference<
+		Type
+	>::type
 >
 {
 };

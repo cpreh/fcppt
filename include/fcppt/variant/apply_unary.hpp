@@ -15,7 +15,6 @@
 #include <boost/mpl/end.hpp>
 #include <boost/mpl/integral_c.hpp>
 #include <type_traits>
-#include <utility>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -44,9 +43,11 @@ template<
 	typename Operation,
 	typename Variant
 >
-typename Operation::result_type
+typename std::remove_reference<
+	Operation
+>::type::result_type
 apply_unary(
-	Operation const &_op,
+	Operation &&_op,
 	Variant &&_obj
 )
 {
@@ -72,11 +73,7 @@ apply_unary(
 			>::type
 		>(
 			_op,
-			std::forward<
-				Variant
-			>(
-				_obj
-			)
+			_obj
 		);
 }
 
