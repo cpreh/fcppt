@@ -4,22 +4,20 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_SRC_LOG_FIND_LOGGER_NODE_HPP_INCLUDED
-#define FCPPT_SRC_LOG_FIND_LOGGER_NODE_HPP_INCLUDED
-
-#include <fcppt/log/detail/context_tree.hpp>
+#ifndef FCPPT_LOG_DETAIL_INNER_CONTEXT_NODE_FWD_HPP_INCLUDED
+#define FCPPT_LOG_DETAIL_INNER_CONTEXT_NODE_FWD_HPP_INCLUDED
 
 
 namespace fcppt
 {
 namespace log
 {
+namespace detail
+{
 
-fcppt::log::detail::context_tree::iterator
-find_logger_node(
-	fcppt::log::detail::context_tree &
-);
+class inner_context_node;
 
+}
 }
 }
 

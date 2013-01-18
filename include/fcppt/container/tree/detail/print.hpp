@@ -47,12 +47,9 @@ print(
 		_stream
 			<< _stream.widen('\t');
 
-	if(
-		_tree.has_value()
-	)
-		_stream
-			<< _tree.value()
-			<< _stream.widen('\n');
+	_stream
+		<< _tree.value()
+		<< _stream.widen('\n');
 
 	for(
 		auto child : _tree

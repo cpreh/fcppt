@@ -4,13 +4,10 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/container/tree/object_impl.hpp>
 #include <fcppt/log/detail/context_tree.hpp>
-#include <fcppt/log/detail/context_tree_node.hpp>
 #include <fcppt/log/detail/outer_context_node.hpp>
 #include <fcppt/src/log/is_outer_node.hpp>
 #include <fcppt/variant/holds_type.hpp>
-#include <fcppt/variant/object_impl.hpp>
 
 
 bool

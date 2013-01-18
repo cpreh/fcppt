@@ -7,7 +7,7 @@
 #ifndef FCPPT_SRC_LOG_TREE_FORMATTER_HPP_INCLUDED
 #define FCPPT_SRC_LOG_TREE_FORMATTER_HPP_INCLUDED
 
-#include <fcppt/log/detail/context_tree.hpp>
+#include <fcppt/log/detail/optional_context_tree_ref.hpp>
 #include <fcppt/log/format/function.hpp>
 
 
@@ -18,7 +18,7 @@ namespace log
 
 fcppt::log::format::function const
 tree_formatter(
-	fcppt::log::detail::context_tree const *,
+	fcppt::log::detail::optional_context_tree_ref,
 	fcppt::log::format::function const &
 );
 

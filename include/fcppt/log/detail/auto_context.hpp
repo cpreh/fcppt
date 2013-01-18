@@ -11,8 +11,8 @@
 #include <fcppt/log/object_fwd.hpp>
 #include <fcppt/log/optional_location.hpp>
 #include <fcppt/log/detail/auto_context_fwd.hpp>
-#include <fcppt/log/detail/context_tree.hpp>
 #include <fcppt/log/detail/optional_context_location.hpp>
+#include <fcppt/log/detail/optional_context_tree_ref.hpp>
 
 
 namespace fcppt
@@ -38,14 +38,14 @@ public:
 	fcppt::log::optional_location const
 	location() const;
 
-	fcppt::log::detail::context_tree const *
+	fcppt::log::detail::optional_context_tree_ref const
 	node() const;
 private:
 	fcppt::log::context *const context_;
 
 	fcppt::log::optional_location const location_;
 
-	fcppt::log::detail::context_tree *const node_;
+	fcppt::log::detail::optional_context_tree_ref const node_;
 };
 
 }

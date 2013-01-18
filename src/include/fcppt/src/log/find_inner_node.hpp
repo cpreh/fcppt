@@ -8,10 +8,7 @@
 #define FCPPT_SRC_LOG_FIND_INNER_NODE_HPP_INCLUDED
 
 #include <fcppt/string.hpp>
-#include <fcppt/container/tree/object_decl.hpp>
 #include <fcppt/log/detail/context_tree.hpp>
-#include <fcppt/log/detail/context_tree_node.hpp>
-#include <fcppt/variant/object_decl.hpp>
 
 
 namespace fcppt

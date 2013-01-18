@@ -4,22 +4,21 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/container/tree/object_impl.hpp>
 #include <fcppt/log/location.hpp>
 #include <fcppt/log/detail/context_tree.hpp>
+#include <fcppt/log/detail/optional_context_tree_ref.hpp>
 #include <fcppt/src/log/find_inner_node.hpp>
 #include <fcppt/src/log/find_location.hpp>
-#include <fcppt/variant/object_impl.hpp>
 
 
-fcppt::log::detail::context_tree *
+fcppt::log::detail::optional_context_tree_ref const
 fcppt::log::find_location(
 	fcppt::log::detail::context_tree &_tree,
 	fcppt::log::location const &_location
 )
 {
-	fcppt::log::detail::context_tree *cur(
-		&_tree
+	fcppt::log::detail::optional_context_tree_ref cur(
+		_tree
 	);
 
 	for(
@@ -36,9 +35,13 @@ fcppt::log::find_location(
 		if(
 			item_it == cur->end()
 		)
-			return nullptr;
+			return
+				fcppt::log::detail::optional_context_tree_ref();
 
-		cur = &*item_it;
+		cur =
+			fcppt::log::detail::optional_context_tree_ref(
+				*item_it
+			);
 	}
 
 	return cur;

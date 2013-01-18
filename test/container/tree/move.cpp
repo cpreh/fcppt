@@ -10,6 +10,8 @@
 #include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/test/unit_test.hpp>
+#include <string>
+#include <utility>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -17,60 +19,77 @@ FCPPT_PP_PUSH_WARNING
 FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
 
 BOOST_AUTO_TEST_CASE(
-	container_tree_copy
+	container_tree_move
 )
 {
 FCPPT_PP_POP_WARNING
 
 	typedef fcppt::container::tree::object<
-		unsigned
-	> ui_tree;
+		std::string
+	> string_tree;
 
-	ui_tree head(
-		10
+	string_tree tree1(
+		"root"
 	);
 
-	head.push_back(
-		20
+	tree1.push_back(
+		"child1"
 	);
 
-	head.push_back(
-		30
+	string_tree tree2(
+		std::move(
+			tree1
+		)
 	);
 
-	ui_tree const head2(
-		head
-	);
-
-	BOOST_REQUIRE(
-		head2.value() == 10
-	);
-
-	BOOST_REQUIRE(
-		head2.children().size() == 2u
-	);
-
-	BOOST_REQUIRE(
-		head2.front().value() == 20
-	);
-
-	BOOST_REQUIRE(
-		head2.back().value() == 30
-	);
-
-	BOOST_REQUIRE(
-		head2.front().has_parent()
+	BOOST_CHECK(
+		tree1.empty()
 		&&
-		&*head2.front().parent()
+		tree1.value()
 		==
-		&head2
+		""
 	);
 
-	BOOST_REQUIRE(
-		head2.back().has_parent()
+	BOOST_CHECK(
+		tree2.value() == "root"
+		&& !tree2.empty()
+		&& tree2.front().value() == "child1"
+	);
+
+	BOOST_CHECK(
+		tree2.front().parent()
 		&&
-		&*head2.back().parent()
+		tree2.front().parent().data()
 		==
-		&head2
+		&tree2
+	);
+
+	string_tree tree3;
+
+	tree3 =
+		std::move(
+			tree2
+		);
+
+	BOOST_CHECK(
+		tree2.empty()
+		&&
+		tree2.value()
+		==
+		""
+	);
+
+	BOOST_CHECK(
+		tree3.value() == "root"
+		&& !tree3.empty()
+		&& tree3.front().value() == "child1"
+	);
+
+	BOOST_CHECK(
+		tree3.front().parent()
+		&&
+		tree3.front().parent().data()
+		==
+		&tree3
 	);
 }

@@ -4,8 +4,9 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_CONTAINER_TREE_PTR_VALUE_HPP_INCLUDED
-#define FCPPT_CONTAINER_TREE_PTR_VALUE_HPP_INCLUDED
+#ifndef FCPPT_CONTAINER_TREE_ITERATOR_FWD_HPP_INCLUDED
+#define FCPPT_CONTAINER_TREE_ITERATOR_FWD_HPP_INCLUDED
+
 
 namespace fcppt
 {
@@ -14,17 +15,10 @@ namespace container
 namespace tree
 {
 
-/**
-\ingroup fcpptcontainertree
-\brief A wrapper class to implement noncopyable semantics to the tree
-*/
 template<
-	typename T
+	typename It
 >
-struct ptr_value
-{
-	typedef T type;
-};
+class iterator;
 
 }
 }

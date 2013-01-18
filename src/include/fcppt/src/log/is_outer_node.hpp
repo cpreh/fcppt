@@ -7,7 +7,8 @@
 #ifndef FCPPT_SRC_LOG_IS_OUTER_NODE_HPP_INCLUDED
 #define FCPPT_SRC_LOG_IS_OUTER_NODE_HPP_INCLUDED
 
-#include <fcppt/log/detail/context_tree.hpp>
+#include <fcppt/log/detail/context_tree_fwd.hpp>
+
 
 namespace fcppt
 {
@@ -16,7 +17,7 @@ namespace log
 
 bool
 is_outer_node(
-	detail::context_tree const &
+	fcppt::log::detail::context_tree const &
 );
 
 }

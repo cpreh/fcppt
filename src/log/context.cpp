@@ -6,7 +6,6 @@
 
 #include <fcppt/text.hpp>
 #include <fcppt/assert/pre.hpp>
-#include <fcppt/container/tree/object_impl.hpp>
 #include <fcppt/container/tree/pre_order.hpp>
 #include <fcppt/log/context.hpp>
 #include <fcppt/log/location.hpp>
@@ -15,12 +14,12 @@
 #include <fcppt/log/detail/context_tree.hpp>
 #include <fcppt/log/detail/context_tree_node.hpp>
 #include <fcppt/log/detail/inner_context_node.hpp>
+#include <fcppt/log/detail/optional_context_tree_ref.hpp>
 #include <fcppt/log/detail/outer_context_node.hpp>
 #include <fcppt/src/log/find_inner_node.hpp>
 #include <fcppt/src/log/find_location.hpp>
 #include <fcppt/src/log/find_logger_node.hpp>
 #include <fcppt/src/log/is_outer_node.hpp>
-#include <fcppt/variant/object_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <exception>
 #include <fcppt/config/external_end.hpp>
@@ -53,7 +52,7 @@ fcppt::log::context::find(
 	fcppt::log::location const &_location
 ) const
 {
-	fcppt::log::detail::context_tree const *const tree_location(
+	fcppt::log::detail::optional_context_tree_ref const tree_location(
 		fcppt::log::find_location(
 			const_cast<
 				fcppt::log::detail::context_tree &
@@ -98,7 +97,7 @@ fcppt::log::context::apply(
 	log::tree_function const &_function
 )
 {
-	fcppt::log::detail::context_tree *const tree_location(
+	fcppt::log::detail::optional_context_tree_ref const tree_location(
 		fcppt::log::find_location(
 			tree_,
 			_location
@@ -201,12 +200,12 @@ fcppt::log::context::remove(
 	fcppt::log::detail::context_tree &_tree
 )
 {
-	FCPPT_ASSERT_PRE(
-		_tree.has_parent()
+	fcppt::log::detail::context_tree::optional_ref node(
+		_tree.parent()
 	);
 
-	fcppt::log::detail::context_tree *node(
-		&_tree.parent()
+	FCPPT_ASSERT_PRE(
+		node
 	);
 
 	node->erase(
@@ -214,12 +213,13 @@ fcppt::log::context::remove(
 	);
 
 	while(
-		node->has_parent()
-		&& node->empty()
+		node->parent()
+		&&
+		node->empty()
 	)
 	{
-		fcppt::log::detail::context_tree *const parent(
-			&node->parent()
+		fcppt::log::detail::context_tree::optional_ref const parent(
+			node->parent()
 		);
 
 		parent->erase(

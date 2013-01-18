@@ -8,7 +8,8 @@
 #define FCPPT_SRC_LOG_FIND_LOCATION_HPP_INCLUDED
 
 #include <fcppt/log/location_fwd.hpp>
-#include <fcppt/log/detail/context_tree.hpp>
+#include <fcppt/log/detail/context_tree_fwd.hpp>
+#include <fcppt/log/detail/optional_context_tree_ref_fwd.hpp>
 
 
 namespace fcppt
@@ -16,7 +17,7 @@ namespace fcppt
 namespace log
 {
 
-fcppt::log::detail::context_tree *
+fcppt::log::detail::optional_context_tree_ref const
 find_location(
 	fcppt::log::detail::context_tree &,
 	fcppt::log::location const &

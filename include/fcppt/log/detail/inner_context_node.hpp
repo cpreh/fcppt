@@ -7,7 +7,9 @@
 #ifndef FCPPT_LOG_DETAIL_INNER_CONTEXT_NODE_HPP_INCLUDED
 #define FCPPT_LOG_DETAIL_INNER_CONTEXT_NODE_HPP_INCLUDED
 
+#include <fcppt/log/detail/inner_context_node_fwd.hpp>
 #include <fcppt/string.hpp>
+
 
 namespace fcppt
 {

@@ -8,7 +8,9 @@
 #define FCPPT_CONTAINER_TREE_PRE_ORDER_HPP_INCLUDED
 
 #include <fcppt/noncopyable.hpp>
+#include <fcppt/optional_ref_compare.hpp>
 #include <fcppt/container/tree/is_object.hpp>
+#include <fcppt/container/tree/optional_ref_impl.hpp>
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
@@ -45,7 +47,7 @@ class pre_order
 {
 	static_assert(
 		fcppt::container::tree::is_object<
-			typename std::remove_const<
+			typename std::remove_cv<
 				Tree
 			>::type
 		>::value,
@@ -80,10 +82,12 @@ private:
 		typename Tree::reverse_iterator
 	>::type tree_iterator;
 
-	typedef typename tree_iterator::pointer tree_pointer;
+	typedef typename fcppt::container::tree::optional_ref<
+		Tree
+	>::type tree_ref;
 
 	typedef std::stack<
-		tree_pointer
+		tree_ref
 	> stack_type;
 
 	typedef typename Tree::child_list child_list;
@@ -106,16 +110,14 @@ FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
 	public:
 		iterator()
 		:
-			current_(
-				nullptr
-			),
+			current_(),
 			positions_()
 		{
 		}
 
 		explicit
 		iterator(
-			tree_pointer const _current
+			tree_ref const _current
 		)
 		:
 			current_(
@@ -187,15 +189,20 @@ FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
 					++it
 				)
 					positions_.push(
-						&*it
+						tree_ref(
+							*it
+						)
 					);
 
-				current_ = &current_->front();
+				current_ =
+					tree_ref(
+						current_->front()
+					);
 			}
 			else if(
 				positions_.empty()
 			)
-				current_ = nullptr;
+				current_ = tree_ref();
 			else
 			{
 
@@ -216,10 +223,14 @@ FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
 			iterator const &_other
 		) const
 		{
-			return current_ == _other.current_;
+			return
+				fcppt::optional_ref_compare(
+					current_,
+					_other.current_
+				);
 		}
 
-		tree_pointer current_;
+		tree_ref current_;
 
 		stack_type positions_;
 	};
@@ -234,7 +245,9 @@ FCPPT_PP_POP_WARNING
 	{
 		return
 			iterator(
-				&tree_
+				tree_ref(
+					tree_
+				)
 			);
 	}
 
@@ -246,7 +259,7 @@ FCPPT_PP_POP_WARNING
 	{
 		return
 			iterator(
-				nullptr
+				tree_ref()
 			);
 	}
 private:

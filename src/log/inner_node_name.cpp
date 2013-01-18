@@ -6,14 +6,11 @@
 
 #include <fcppt/nonassignable.hpp>
 #include <fcppt/string.hpp>
-#include <fcppt/container/tree/object_impl.hpp>
 #include <fcppt/log/detail/context_tree.hpp>
-#include <fcppt/log/detail/context_tree_node.hpp>
 #include <fcppt/log/detail/inner_context_node.hpp>
 #include <fcppt/log/detail/outer_context_node.hpp>
 #include <fcppt/src/log/inner_node_name.hpp>
 #include <fcppt/variant/apply_unary.hpp>
-#include <fcppt/variant/object_impl.hpp>
 
 
 namespace
@@ -59,7 +56,7 @@ fcppt::log::inner_node_name::inner_node_name(
 
 fcppt::log::inner_node_name::result_type
 fcppt::log::inner_node_name::operator()(
-	detail::context_tree const &_tree
+	fcppt::log::detail::context_tree const &_tree
 ) const
 {
 	return
@@ -81,14 +78,16 @@ compare::compare(
 	name_(
 		_name
 	)
-{}
+{
+}
 
 compare::result_type
 compare::operator()(
 	fcppt::log::detail::inner_context_node const &_inner_node
 ) const
 {
-	return _inner_node.name() == name_;
+	return
+		_inner_node.name() == name_;
 }
 
 compare::result_type
@@ -96,7 +95,8 @@ compare::operator()(
 	fcppt::log::detail::outer_context_node const &
 ) const
 {
-	return false;
+	return
+		false;
 }
 
 }

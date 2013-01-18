@@ -6,9 +6,9 @@
 
 #include <fcppt/assert/error.hpp>
 #include <fcppt/container/tree/object_impl.hpp>
-#include <fcppt/log/detail/context_tree.hpp>
 #include <fcppt/log/detail/context_tree_node.hpp>
 #include <fcppt/log/detail/inner_context_node.hpp>
+#include <fcppt/log/detail/optional_context_tree_ref.hpp>
 #include <fcppt/log/format/create_chain.hpp>
 #include <fcppt/log/format/create_prefix.hpp>
 #include <fcppt/log/format/function.hpp>
@@ -18,7 +18,7 @@
 
 fcppt::log::format::function const
 fcppt::log::tree_formatter(
-	fcppt::log::detail::context_tree const *_node,
+	fcppt::log::detail::optional_context_tree_ref _node,
 	fcppt::log::format::function const &_formatter
 )
 {
@@ -26,18 +26,18 @@ fcppt::log::tree_formatter(
 		_node
 	);
 
-	FCPPT_ASSERT_ERROR(
-		_node->has_parent()
-	);
+	_node = _node->parent();
 
-	_node = &_node->parent();
+	FCPPT_ASSERT_ERROR(
+		_node
+	);
 
 	fcppt::log::format::function ret;
 
 	for(
 		;
-		_node->has_parent();
-		_node = &_node->parent()
+		_node->parent();
+		_node = _node->parent()
 	)
 		ret =
 			fcppt::log::format::create_chain(

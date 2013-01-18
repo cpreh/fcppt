@@ -35,20 +35,19 @@ print(
 		Ch,
 		Traits
 	> &_stream,
-	tree::object<
+	fcppt::container::tree::object<
 		Value
 	> const &_tree
 )
 {
-	tree::detail::print(
+	fcppt::container::tree::detail::print(
 		_stream,
 		_tree,
 		0u
 	);
 
-	return _stream;
-
-
+	return
+		_stream;
 }
 
 }

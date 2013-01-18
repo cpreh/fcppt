@@ -8,19 +8,18 @@
 #define FCPPT_CONTAINER_TREE_OBJECT_IMPL_HPP_INCLUDED
 
 #include <fcppt/make_unique_ptr.hpp>
-#include <fcppt/scoped_ptr_impl.hpp>
 #include <fcppt/algorithm/find_if_exn.hpp>
-#include <fcppt/container/ptr/insert_unique_ptr.hpp>
-#include <fcppt/container/ptr/make_equal.hpp>
+#include <fcppt/container/tree/iterator_impl.hpp>
 #include <fcppt/container/tree/object_decl.hpp>
-#include <fcppt/container/tree/detail/assign_parents.hpp>
-#include <fcppt/container/tree/detail/assign_value.hpp>
-#include <fcppt/container/tree/detail/copy_value.hpp>
-#include <fcppt/container/tree/detail/extract_value.hpp>
-#include <fcppt/container/tree/detail/has_value.hpp>
-#include <fcppt/container/tree/detail/init_value.hpp>
+#include <fcppt/container/tree/optional_ref_impl.hpp>
+#include <fcppt/container/tree/detail/copy_children.hpp>
+#include <fcppt/container/tree/detail/move_children.hpp>
+#include <fcppt/preprocessor/disable_vc_warning.hpp>
+#include <fcppt/preprocessor/pop_warning.hpp>
+#include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <algorithm>
+#include <iterator>
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
@@ -28,12 +27,12 @@
 template<
 	typename T
 >
-fcppt::container::tree::object<T>::object()
+fcppt::container::tree::object<
+	T
+>::object()
 :
 	value_(),
-	parent_(
-		nullptr
-	),
+	parent_(),
 	children_()
 {
 }
@@ -41,20 +40,16 @@ fcppt::container::tree::object<T>::object()
 template<
 	typename T
 >
-fcppt::container::tree::object<T>::object(
-	arg_type _value
+fcppt::container::tree::object<
+	T
+>::object(
+	T const &_value
 )
 :
 	value_(
-		std::forward<
-			arg_type
-		>(
-			_value
-		)
+		_value
 	),
-	parent_(
-		nullptr
-	),
+	parent_(),
 	children_()
 {
 }
@@ -62,50 +57,97 @@ fcppt::container::tree::object<T>::object(
 template<
 	typename T
 >
-fcppt::container::tree::object<T>::object(
+fcppt::container::tree::object<
+	T
+>::object(
+	T &&_value
+)
+:
+	value_(
+		std::move(
+			_value
+		)
+	),
+	parent_(),
+	children_()
+{
+}
+
+FCPPT_PP_PUSH_WARNING
+FCPPT_PP_DISABLE_VC_WARNING(4355)
+
+template<
+	typename T
+>
+fcppt::container::tree::object<
+	T
+>::object(
 	object const &_other
 )
 :
 	value_(
-		fcppt::container::tree::detail::init_value(
-			_other.holder()
+		_other.value()
+	),
+	parent_(),
+	children_(
+		fcppt::container::tree::detail::copy_children(
+			*this,
+			_other.children()
+		)
+	)
+{
+}
+
+template<
+	typename T
+>
+fcppt::container::tree::object<
+	T
+>::object(
+	object &&_other
+)
+:
+	value_(
+		std::move(
+			_other.value()
 		)
 	),
 	parent_(),
 	children_(
-		_other.children()
+		fcppt::container::tree::detail::move_children(
+			*this,
+			std::move(
+				_other.children()
+			)
+		)
 	)
 {
-	fcppt::container::tree::detail::assign_parents(
-		*this,
-		children_
-	);
 }
+
+FCPPT_PP_POP_WARNING
 
 template<
 	typename T
 >
-fcppt::container::tree::object<T> &
-fcppt::container::tree::object<T>::operator=(
+fcppt::container::tree::object<
+	T
+> &
+fcppt::container::tree::object<
+	T
+>::operator=(
 	object const &_other
 )
 {
-	if(
-		this == &_other
-	)
-		return *this;
+	value_ = _other.value_;
 
-	fcppt::container::tree::detail::copy_value(
-		value_,
-		_other.holder()
-	);
+	parent_
+		= optional_ref();
 
-	children_ = _other.children();
-
-	fcppt::container::tree::detail::assign_parents(
-		*this,
-		children_
-	);
+	children_ =
+		fcppt::container::tree::detail::copy_children(
+			*this,
+			_other.children()
+		);
 
 	return *this;
 }
@@ -113,16 +155,55 @@ fcppt::container::tree::object<T>::operator=(
 template<
 	typename T
 >
-fcppt::container::tree::object<T>::~object()
+fcppt::container::tree::object<
+	T
+> &
+fcppt::container::tree::object<
+	T
+>::operator=(
+	object &&_other
+)
 {
-	this->clear();
+	value_ =
+		std::move(
+			_other.value_
+		);
+
+	children_ =
+		fcppt::container::tree::detail::move_children(
+			*this,
+			std::move(
+				_other.children_
+			)
+		);
+
+	std::swap(
+		parent_,
+		_other.parent_
+	);
+
+	return
+		*this;
 }
 
 template<
 	typename T
 >
-typename fcppt::container::tree::object<T>::child_list &
-fcppt::container::tree::object<T>::children()
+fcppt::container::tree::object<
+	T
+>::~object()
+{
+}
+
+template<
+	typename T
+>
+typename fcppt::container::tree::object<
+	T
+>::child_list &
+fcppt::container::tree::object<
+	T
+>::children()
 {
 	return children_;
 }
@@ -130,8 +211,12 @@ fcppt::container::tree::object<T>::children()
 template<
 	typename T
 >
-typename fcppt::container::tree::object<T>::child_list const &
-fcppt::container::tree::object<T>::children() const
+typename fcppt::container::tree::object<
+	T
+>::child_list const &
+fcppt::container::tree::object<
+	T
+>::children() const
 {
 	return children_;
 }
@@ -139,71 +224,81 @@ fcppt::container::tree::object<T>::children() const
 template<
 	typename T
 >
-fcppt::container::tree::object<T> &
-fcppt::container::tree::object<T>::parent()
+typename
+fcppt::container::tree::object<
+	T
+>::optional_ref const
+fcppt::container::tree::object<
+	T
+>::parent()
 {
-	return *parent_;
+	return
+		parent_;
 }
 
 template<
 	typename T
 >
-fcppt::container::tree::object<T> const &
-fcppt::container::tree::object<T>::parent() const
+typename
+fcppt::container::tree::object<
+	T
+>::const_optional_ref const
+fcppt::container::tree::object<
+	T
+>::parent() const
 {
-	return *parent_;
-}
-
-template<
-	typename T
->
-fcppt::container::tree::object<T> *
-fcppt::container::tree::object<T>::parent_ptr()
-{
-	return parent_;
-}
-
-template<
-	typename T
->
-fcppt::container::tree::object<T> const *
-fcppt::container::tree::object<T>::parent_ptr() const
-{
-	return parent_;
+	return
+		const_optional_ref(
+			parent_
+		);
 }
 
 template<
 	typename T
 >
 bool
-fcppt::container::tree::object<T>::has_parent() const
+fcppt::container::tree::object<
+	T
+>::has_parent() const
 {
-	return parent_ != nullptr;
+	return
+		this->parent().has_value();
 }
 
 template<
 	typename T
 >
 void
-fcppt::container::tree::object<T>::parent(
-	object &_other
+fcppt::container::tree::object<
+	T
+>::parent(
+	optional_ref const &_other
 )
 {
-	parent_ = &_other;
+	parent_ =
+		_other;
 }
 
 template<
 	typename T
 >
-typename fcppt::container::tree::object<T>::unique_ptr
-fcppt::container::tree::object<T>::release(
+typename fcppt::container::tree::object<
+	T
+>::unique_ptr
+fcppt::container::tree::object<
+	T
+>::release(
 	iterator const _it
 )
 {
 	unique_ptr ret(
-		children_.release(
-			_it
-		).release()
+		std::move(
+			*_it.get()
+		)
+	);
+
+	children_.erase(
+		_it.get()
 	);
 
 	return
@@ -215,24 +310,40 @@ fcppt::container::tree::object<T>::release(
 template<
 	typename T
 >
-typename fcppt::container::tree::object<T>::iterator
-fcppt::container::tree::object<T>::child_position()
+typename fcppt::container::tree::object<
+	T
+>::iterator
+fcppt::container::tree::object<
+	T
+>::child_position()
 {
 	return
 		fcppt::algorithm::find_if_exn(
-			this->parent().begin(),
-			this->parent().end(),
-			fcppt::container::ptr::make_equal(
+			this->parent()->begin(),
+			this->parent()->end(),
+			[
 				this
+			](
+				object const &_child
 			)
+			{
+				return
+					&_child
+					==
+					this;
+			}
 		);
 }
 
 template<
 	typename T
 >
-typename fcppt::container::tree::object<T>::const_iterator
-fcppt::container::tree::object<T>::child_position() const
+typename fcppt::container::tree::object<
+	T
+>::const_iterator
+fcppt::container::tree::object<
+	T
+>::child_position() const
 {
 	return
 		const_iterator(
@@ -249,80 +360,64 @@ template<
 	typename T
 >
 void
-fcppt::container::tree::object<T>::value(
-	arg_type _value
+fcppt::container::tree::object<
+	T
+>::value(
+	T const &_value
 )
 {
-	fcppt::container::tree::detail::assign_value(
-		value_,
-		std::forward<
-			arg_type
-		>(
-			_value
-		)
-	);
-}
-
-template<
-	typename T
->
-typename fcppt::container::tree::object<T>::stored_type &
-fcppt::container::tree::object<T>::value()
-{
-	return
-		fcppt::container::tree::detail::extract_value(
-			value_
-		);
-}
-
-template<
-	typename T
->
-typename fcppt::container::tree::object<T>::stored_type const &
-fcppt::container::tree::object<T>::value() const
-{
-	return
-		fcppt::container::tree::detail::extract_value(
-			value_
-		);
-}
-
-template<
-	typename T
->
-bool
-fcppt::container::tree::object<T>::has_value() const
-{
-	return
-		fcppt::container::tree::detail::has_value(
-			value_
-		);
-}
-
-template<
-	typename T
->
-typename fcppt::container::tree::object<T>::holder_type &
-fcppt::container::tree::object<T>::holder()
-{
-	return value_;
-}
-
-template<
-	typename T
->
-typename fcppt::container::tree::object<T>::holder_type const &
-fcppt::container::tree::object<T>::holder() const
-{
-	return value_;
+	value_ =
+		_value;
 }
 
 template<
 	typename T
 >
 void
-fcppt::container::tree::object<T>::push_back(
-	unique_ptr _ptr
+fcppt::container::tree::object<
+	T
+>::value(
+	T &&_value
+)
+{
+	value_ =
+		std::move(
+			_value
+		);
+}
+
+template<
+	typename T
+>
+T &
+fcppt::container::tree::object<
+	T
+>::value()
+{
+	return
+		value_;
+}
+
+template<
+	typename T
+>
+T const &
+fcppt::container::tree::object<
+	T
+>::value() const
+{
+	return
+		value_;
+}
+
+template<
+	typename T
+>
+void
+fcppt::container::tree::object<
+	T
+>::push_back(
+	unique_ptr &&_ptr
 )
 {
 	this->insert(
@@ -337,15 +432,31 @@ template<
 	typename T
 >
 void
-fcppt::container::tree::object<T>::push_back(
-	arg_type _value
+fcppt::container::tree::object<
+	T
+>::push_back(
+	T const &_value
 )
 {
 	this->insert(
 		this->end(),
-		std::forward<
-			arg_type
-		>(
+		_value
+	);
+}
+
+template<
+	typename T
+>
+void
+fcppt::container::tree::object<
+	T
+>::push_back(
+	T &&_value
+)
+{
+	this->insert(
+		this->end(),
+		std::move(
 			_value
 		)
 	);
@@ -355,7 +466,9 @@ template<
 	typename T
 >
 void
-fcppt::container::tree::object<T>::pop_back()
+fcppt::container::tree::object<
+	T
+>::pop_back()
 {
 	this->children().pop_back();
 }
@@ -364,8 +477,10 @@ template<
 	typename T
 >
 void
-fcppt::container::tree::object<T>::push_front(
-	unique_ptr _ptr
+fcppt::container::tree::object<
+	T
+>::push_front(
+	unique_ptr &&_ptr
 )
 {
 	this->insert(
@@ -380,14 +495,328 @@ template<
 	typename T
 >
 void
-fcppt::container::tree::object<T>::push_front(
-	arg_type _value
+fcppt::container::tree::object<
+	T
+>::push_front(
+	T const &_value
 )
 {
 	this->insert(
 		this->begin(),
-		std::forward<
-			arg_type
+		_value
+	);
+}
+
+template<
+	typename T
+>
+void
+fcppt::container::tree::object<
+	T
+>::pop_front()
+{
+	this->children().pop_front();
+}
+
+template<
+	typename T
+>
+void
+fcppt::container::tree::object<
+	T
+>::clear()
+{
+	children_.clear();
+}
+
+template<
+	typename T
+>
+typename fcppt::container::tree::object<
+	T
+>::reference
+fcppt::container::tree::object<
+	T
+>::back()
+{
+	return
+		*std::prev(
+			this->end()
+		);
+}
+
+template<
+	typename T
+>
+typename fcppt::container::tree::object<
+	T
+>::const_reference
+fcppt::container::tree::object<
+	T
+>::back() const
+{
+	return
+		*std::prev(
+			this->end()
+		);
+}
+
+template<
+	typename T
+>
+typename fcppt::container::tree::object<
+	T
+>::reference
+fcppt::container::tree::object<
+	T
+>::front()
+{
+	return
+		*this->begin();
+}
+
+template<
+	typename T
+>
+typename fcppt::container::tree::object<
+	T
+>::const_reference
+fcppt::container::tree::object<
+	T
+>::front() const
+{
+	return
+		*this->begin();
+}
+
+template<
+	typename T
+>
+typename fcppt::container::tree::object<
+	T
+>::iterator
+fcppt::container::tree::object<
+	T
+>::begin()
+{
+	return
+		iterator(
+			this->children().begin()
+		);
+}
+
+template<
+	typename T
+>
+typename fcppt::container::tree::object<
+	T
+>::iterator
+fcppt::container::tree::object<
+	T
+>::end()
+{
+	return
+		iterator(
+			this->children().end()
+		);
+}
+
+template<
+	typename T
+>
+typename fcppt::container::tree::object<
+	T
+>::const_iterator
+fcppt::container::tree::object<
+	T
+>::begin() const
+{
+	return
+		const_iterator(
+			this->children().begin()
+		);
+}
+
+template<
+	typename T
+>
+typename fcppt::container::tree::object<
+	T
+>::const_iterator
+fcppt::container::tree::object<
+	T
+>::end() const
+{
+	return
+		const_iterator(
+			this->children().end()
+		);
+}
+
+template<
+	typename T
+>
+typename fcppt::container::tree::object<
+	T
+>::reverse_iterator
+fcppt::container::tree::object<
+	T
+>::rbegin()
+{
+	return
+		reverse_iterator(
+			this->children().rbegin()
+		);
+}
+
+template<
+	typename T
+>
+typename fcppt::container::tree::object<
+	T
+>::reverse_iterator
+fcppt::container::tree::object<
+	T
+>::rend()
+{
+	return
+		reverse_iterator(
+			this->children().rend()
+		);
+}
+
+template<
+	typename T
+>
+typename fcppt::container::tree::object<
+	T
+>::const_reverse_iterator
+fcppt::container::tree::object<
+	T
+>::rbegin() const
+{
+	return
+		const_reverse_iterator(
+			this->children().rbegin()
+		);
+}
+
+template<
+	typename T
+>
+typename fcppt::container::tree::object<
+	T
+>::const_reverse_iterator
+fcppt::container::tree::object<
+	T
+>::rend() const
+{
+	return
+		const_reverse_iterator(
+			this->children().rend()
+		);
+}
+
+template<
+	typename T
+>
+typename fcppt::container::tree::object<
+	T
+>::const_iterator
+fcppt::container::tree::object<
+	T
+>::cbegin() const
+{
+	return
+		this->begin();
+}
+
+template<
+	typename T
+>
+typename fcppt::container::tree::object<
+	T
+>::const_iterator
+fcppt::container::tree::object<
+	T
+>::cend() const
+{
+	return
+		this->end();
+}
+
+template<
+	typename T
+>
+typename fcppt::container::tree::object<
+	T
+>::const_reverse_iterator
+fcppt::container::tree::object<
+	T
+>::crbegin() const
+{
+	return
+		this->rbegin();
+}
+
+template<
+	typename T
+>
+typename fcppt::container::tree::object<
+	T
+>::const_reverse_iterator
+fcppt::container::tree::object<
+	T
+>::crend() const
+{
+	return
+		this->rend();
+}
+
+template<
+	typename T
+>
+void
+fcppt::container::tree::object<
+	T
+>::insert(
+	iterator const _it,
+	unique_ptr &&_ptr
+)
+{
+	object &ref(
+		*_ptr
+	);
+
+	children_.insert(
+		_it.get(),
+		std::move(
+			_ptr
+		)
+	);
+
+	ref.parent(
+		optional_ref(
+			*this
+		)
+	);
+}
+
+template<
+	typename T
+>
+void
+fcppt::container::tree::object<
+	T
+>::insert(
+	iterator const _it,
+	T const &_value
+)
+{
+	this->insert(
+		_it,
+		fcppt::make_unique_ptr<
+			object
 		>(
 			_value
 		)
@@ -398,211 +827,19 @@ template<
 	typename T
 >
 void
-fcppt::container::tree::object<T>::pop_front()
-{
-	this->children().pop_front();
-}
-
-template<
-	typename T
->
-void
-fcppt::container::tree::object<T>::clear()
-{
-	this->erase(
-		this->begin(),
-		this->end()
-	);
-}
-
-template<
-	typename T
->
-typename fcppt::container::tree::object<T>::reference
-fcppt::container::tree::object<T>::back()
-{
-	return this->children().back();
-}
-
-template<
-	typename T
->
-typename fcppt::container::tree::object<T>::const_reference
-fcppt::container::tree::object<T>::back() const
-{
-	return this->children().back();
-}
-
-template<
-	typename T
->
-typename fcppt::container::tree::object<T>::reference
-fcppt::container::tree::object<T>::front()
-{
-	return this->children().front();
-}
-template<
-	typename T
->
-typename fcppt::container::tree::object<T>::const_reference
-fcppt::container::tree::object<T>::front() const
-{
-	return this->children().front();
-}
-
-template<
-	typename T
->
-typename fcppt::container::tree::object<T>::iterator
-fcppt::container::tree::object<T>::begin()
-{
-	return this->children().begin();
-}
-
-template<
-	typename T
->
-typename fcppt::container::tree::object<T>::iterator
-fcppt::container::tree::object<T>::end()
-{
-	return this->children().end();
-}
-
-template<
-	typename T
->
-typename fcppt::container::tree::object<T>::const_iterator
-fcppt::container::tree::object<T>::begin() const
-{
-	return this->children().begin();
-}
-
-template<
-	typename T
->
-typename fcppt::container::tree::object<T>::const_iterator
-fcppt::container::tree::object<T>::end() const
-{
-	return this->children().end();
-}
-
-template<
-	typename T
->
-typename fcppt::container::tree::object<T>::reverse_iterator
-fcppt::container::tree::object<T>::rbegin()
-{
-	return this->children().rbegin();
-}
-
-template<
-	typename T
->
-typename fcppt::container::tree::object<T>::reverse_iterator
-fcppt::container::tree::object<T>::rend()
-{
-	return this->children().rend();
-}
-
-template<
-	typename T
->
-typename fcppt::container::tree::object<T>::const_reverse_iterator
-fcppt::container::tree::object<T>::rbegin() const
-{
-	return this->children().rbegin();
-}
-
-template<
-	typename T
->
-typename fcppt::container::tree::object<T>::const_reverse_iterator
-fcppt::container::tree::object<T>::rend() const
-{
-	return this->children().rend();
-}
-
-template<
-	typename T
->
-typename fcppt::container::tree::object<T>::const_iterator
-fcppt::container::tree::object<T>::cbegin() const
-{
-	return this->begin();
-}
-
-template<
-	typename T
->
-typename fcppt::container::tree::object<T>::const_iterator
-fcppt::container::tree::object<T>::cend() const
-{
-	return this->end();
-}
-
-template<
-	typename T
->
-typename fcppt::container::tree::object<T>::const_reverse_iterator
-fcppt::container::tree::object<T>::crbegin() const
-{
-	return this->rbegin();
-}
-
-template<
-	typename T
->
-typename fcppt::container::tree::object<T>::const_reverse_iterator
-fcppt::container::tree::object<T>::crend() const
-{
-	return this->rend();
-}
-
-template<
-	typename T
->
-void
-fcppt::container::tree::object<T>::insert(
+fcppt::container::tree::object<
+	T
+>::insert(
 	iterator const _it,
-	unique_ptr _ptr
-)
-{
-	fcppt::container::tree::object<T> &ref(
-		*_ptr
-	);
-
-	fcppt::container::ptr::insert_unique_ptr(
-		this->children(),
-		_it,
-		std::move(
-			_ptr
-		)
-	);
-
-	ref.parent(
-		*this
-	);
-}
-
-template<
-	typename T
->
-void
-fcppt::container::tree::object<T>::insert(
-	iterator const _it,
-	arg_type _value
+	T &&_value
 )
 {
 	this->insert(
 		_it,
 		fcppt::make_unique_ptr<
-			fcppt::container::tree::object<
-				T
-			>
+			object
 		>(
-			std::forward<
-				arg_type
-			>(
+			std::move(
 				_value
 			)
 		)
@@ -613,12 +850,14 @@ template<
 	typename T
 >
 void
-fcppt::container::tree::object<T>::erase(
+fcppt::container::tree::object<
+	T
+>::erase(
 	iterator const _it
 )
 {
 	this->children().erase(
-		_it
+		_it.get()
 	);
 }
 
@@ -626,49 +865,66 @@ template<
 	typename T
 >
 void
-fcppt::container::tree::object<T>::erase(
+fcppt::container::tree::object<
+	T
+>::erase(
 	iterator const _begin,
 	iterator const _end
 )
 {
 	this->children().erase(
-		_begin,
-		_end
+		_begin.get(),
+		_end.get()
 	);
 }
 
 template<
 	typename T
 >
-typename fcppt::container::tree::object<T>::size_type
-fcppt::container::tree::object<T>::size() const
+typename fcppt::container::tree::object<
+	T
+>::size_type
+fcppt::container::tree::object<
+	T
+>::size() const
 {
-	return this->children().size();
+	return
+		this->children().size();
 }
 
 template<
 	typename T
 >
-typename fcppt::container::tree::object<T>::size_type
-fcppt::container::tree::object<T>::max_size() const
+typename fcppt::container::tree::object<
+	T
+>::size_type
+fcppt::container::tree::object<
+	T
+>::max_size() const
 {
-	return this->children().max_size();
+	return
+		this->children().max_size();
 }
 
 template<
 	typename T
 >
 bool
-fcppt::container::tree::object<T>::empty() const
+fcppt::container::tree::object<
+	T
+>::empty() const
 {
-	return this->children().empty();
+	return
+		this->children().empty();
 }
 
 template<
 	typename T
 >
 void
-fcppt::container::tree::object<T>::swap(
+fcppt::container::tree::object<
+	T
+>::swap(
 	object &_other
 )
 {
@@ -692,36 +948,14 @@ fcppt::container::tree::object<T>::swap(
 template<
 	typename T
 >
-bool
-fcppt::container::tree::operator==(
-	fcppt::container::tree::object<T> const &_a,
-	fcppt::container::tree::object<T> const &_b
-)
-{
-	return
-		_a.value() == _b.value()
-		&& _a.children() == _b.children();
-}
-
-template<
-	typename T
->
-bool
-fcppt::container::tree::operator!=(
-	fcppt::container::tree::object<T> const &_a,
-	fcppt::container::tree::object<T> const &_b
-)
-{
-	return !(_a == _b);
-}
-
-template<
-	typename T
->
 void
 fcppt::container::tree::swap(
-	fcppt::container::tree::object<T> &_a,
-	fcppt::container::tree::object<T> &_b
+	fcppt::container::tree::object<
+		T
+	> &_a,
+	fcppt::container::tree::object<
+		T
+	> &_b
 )
 {
 	_a.swap(

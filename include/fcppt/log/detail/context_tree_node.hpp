@@ -9,7 +9,6 @@
 
 #include <fcppt/log/detail/context_tree_node_fwd.hpp>
 #include <fcppt/log/detail/context_tree_node_variant.hpp>
-#include <fcppt/variant/object_decl.hpp>
 
 
 namespace fcppt

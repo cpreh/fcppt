@@ -33,10 +33,6 @@ depth(
 	tree_type::size_type
 	size_type;
 
-	if(!_tree.has_value())
-		return
-			0u;
-
 	size_type result =
 		0u;
 

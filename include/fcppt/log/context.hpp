@@ -9,7 +9,6 @@
 
 #include <fcppt/noncopyable.hpp>
 #include <fcppt/symbol.hpp>
-#include <fcppt/container/tree/object_decl.hpp>
 #include <fcppt/log/context_fwd.hpp>
 #include <fcppt/log/location_fwd.hpp>
 #include <fcppt/log/object_fwd.hpp>
@@ -17,8 +16,6 @@
 #include <fcppt/log/tree_function.hpp>
 #include <fcppt/log/detail/auto_context_fwd.hpp>
 #include <fcppt/log/detail/context_tree.hpp>
-#include <fcppt/log/detail/context_tree_node.hpp>
-#include <fcppt/variant/object_decl.hpp>
 
 
 namespace fcppt

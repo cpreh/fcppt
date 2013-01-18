@@ -122,7 +122,7 @@ try
 	fcppt::io::cout()
 		<< FCPPT_TEXT("First child's position in the parent's child list: ")
 		<< std::distance(
-			first_child.parent().begin(),
+			first_child.parent()->begin(),
 			first_child.child_position()
 		)
 		<< FCPPT_TEXT('\n');

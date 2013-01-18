@@ -9,7 +9,7 @@
 
 #include <fcppt/nonassignable.hpp>
 #include <fcppt/string.hpp>
-#include <fcppt/log/detail/context_tree.hpp>
+#include <fcppt/log/detail/context_tree_fwd.hpp>
 
 
 namespace fcppt
@@ -25,16 +25,17 @@ class inner_node_name
 public:
 	typedef bool result_type;
 
-	explicit inner_node_name(
-		string const &
+	explicit
+	inner_node_name(
+		fcppt::string const &
 	);
 
 	result_type
 	operator()(
-		detail::context_tree const &
+		fcppt::log::detail::context_tree const &
 	) const;
 private:
-	string const name_;
+	fcppt::string const name_;
 };
 
 }

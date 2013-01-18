@@ -4,24 +4,10 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_CONTAINER_TREE_OBJECT_FWD_HPP_INCLUDED
-#define FCPPT_CONTAINER_TREE_OBJECT_FWD_HPP_INCLUDED
+#ifndef FCPPT_CONTAINER_TREE_OPTIONAL_REF_HPP_INCLUDED
+#define FCPPT_CONTAINER_TREE_OPTIONAL_REF_HPP_INCLUDED
 
+#include <fcppt/container/tree/optional_ref_impl.hpp>
 
-namespace fcppt
-{
-namespace container
-{
-namespace tree
-{
-
-template<
-	typename T
->
-class object;
-
-}
-}
-}
 
 #endif

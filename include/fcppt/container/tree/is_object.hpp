@@ -36,7 +36,8 @@ template<
 struct is_object
 :
 std::false_type
-{};
+{
+};
 
 /**
 \brief A meta function testing if the given type is really a tree object
@@ -52,7 +53,8 @@ struct is_object<
 >
 :
 std::true_type
-{};
+{
+};
 
 FCPPT_PP_POP_WARNING
 

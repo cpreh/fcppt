@@ -189,25 +189,26 @@ set(
 	include/fcppt/container/raw_vector_decl.hpp
 	include/fcppt/container/raw_vector_fwd.hpp
 	include/fcppt/container/raw_vector_impl.hpp
-	include/fcppt/container/tree/copy_tree_value.hpp
+	include/fcppt/container/tree/comparison.hpp
 	include/fcppt/container/tree/depth.hpp
-	include/fcppt/container/tree/detail/assign_parents.hpp
-	include/fcppt/container/tree/detail/assign_value.hpp
-	include/fcppt/container/tree/detail/copy_value.hpp
-	include/fcppt/container/tree/detail/extract_value.hpp
-	include/fcppt/container/tree/detail/has_value.hpp
-	include/fcppt/container/tree/detail/init_value.hpp
+	include/fcppt/container/tree/detail/copy_children.hpp
+	include/fcppt/container/tree/detail/iterator_base.hpp
+	include/fcppt/container/tree/detail/move_children.hpp
 	include/fcppt/container/tree/detail/print.hpp
 	include/fcppt/container/tree/is_object.hpp
-	include/fcppt/container/tree/is_ptr_value.hpp
+	include/fcppt/container/tree/iterator_decl.hpp
+	include/fcppt/container/tree/iterator_fwd.hpp
+	include/fcppt/container/tree/iterator_impl.hpp
 	include/fcppt/container/tree/object.hpp
 	include/fcppt/container/tree/object_decl.hpp
 	include/fcppt/container/tree/object_fwd.hpp
 	include/fcppt/container/tree/object_impl.hpp
+	include/fcppt/container/tree/optional_ref.hpp
+	include/fcppt/container/tree/optional_ref_decl.hpp
+	include/fcppt/container/tree/optional_ref_fwd.hpp
+	include/fcppt/container/tree/optional_ref_impl.hpp
 	include/fcppt/container/tree/pre_order.hpp
 	include/fcppt/container/tree/print.hpp
-	include/fcppt/container/tree/ptr_value.hpp
-	include/fcppt/container/tree/release.hpp
 	include/fcppt/cyclic_iterator.hpp
 	include/fcppt/cyclic_iterator_decl.hpp
 	include/fcppt/cyclic_iterator_fwd.hpp
@@ -327,15 +328,21 @@ set(
 	include/fcppt/log/detail/auto_context.hpp
 	include/fcppt/log/detail/auto_context_fwd.hpp
 	include/fcppt/log/detail/context_tree.hpp
+	include/fcppt/log/detail/context_tree_fwd.hpp
 	include/fcppt/log/detail/context_tree_node.hpp
 	include/fcppt/log/detail/context_tree_node_fwd.hpp
 	include/fcppt/log/detail/context_tree_node_variant.hpp
+	include/fcppt/log/detail/context_tree_node_variant_fwd.hpp
 	include/fcppt/log/detail/inner_context_node.hpp
+	include/fcppt/log/detail/inner_context_node_fwd.hpp
 	include/fcppt/log/detail/level_if_enabled.hpp
 	include/fcppt/log/detail/location_vector.hpp
 	include/fcppt/log/detail/optional_context_location.hpp
 	include/fcppt/log/detail/optional_context_location_fwd.hpp
+	include/fcppt/log/detail/optional_context_tree_ref.hpp
+	include/fcppt/log/detail/optional_context_tree_ref_fwd.hpp
 	include/fcppt/log/detail/outer_context_node.hpp
+	include/fcppt/log/detail/outer_context_node_fwd.hpp
 	include/fcppt/log/detail/output_helper.hpp
 	include/fcppt/log/detail/temporary_output.hpp
 	include/fcppt/log/detail/temporary_output_fwd.hpp

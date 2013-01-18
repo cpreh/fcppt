@@ -9,6 +9,7 @@
 
 #include <fcppt/nonassignable.hpp>
 #include <fcppt/log/object_fwd.hpp>
+#include <fcppt/log/detail/outer_context_node_fwd.hpp>
 
 
 namespace fcppt

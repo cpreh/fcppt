@@ -14,6 +14,7 @@
 #include <fcppt/log/tree_function.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <functional>
+#include <ostream>
 #include <fcppt/config/external_end.hpp>
 
 
