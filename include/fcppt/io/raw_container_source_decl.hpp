@@ -17,6 +17,7 @@
 #include <fcppt/config/external_begin.hpp>
 #include <boost/iostreams/concepts.hpp>
 #include <ios>
+#include <iterator>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -86,6 +87,10 @@ FCPPT_PP_POP_WARNING
 		boost::iostreams::stream_offset,
 		std::ios_base::seekdir);
 private:
+	typedef typename std::iterator_traits<
+		const_iterator
+	>::difference_type difference_type;
+
 	container_ptr const chars_;
 	const_iterator pos_;
 };

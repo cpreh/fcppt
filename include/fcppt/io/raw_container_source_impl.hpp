@@ -19,13 +19,13 @@
 template<typename Container>
 template<typename Iterator>
 fcppt::io::raw_container_source<Container>::raw_container_source(
-	Iterator const begin,
-	Iterator const end)
+	Iterator const _begin,
+	Iterator const _end)
 :
 	chars_(
 		fcppt::make_shared_ptr<container>(
-			begin,
-			end)),
+			_begin,
+			_end)),
 	pos_(
 		chars_->begin())
 {
@@ -53,19 +53,15 @@ fcppt::io::raw_container_source<Container>::~raw_container_source()
 template<typename Container>
 std::streamsize
 fcppt::io::raw_container_source<Container>::read(
-	char *target,
-	std::streamsize const n)
+	char *const _target,
+	std::streamsize const _sz)
 {
-	typedef typename std::iterator_traits<
-		const_iterator
-	>::difference_type difference_type;
-
 	difference_type const result =
 		std::min(
 			static_cast<
 				difference_type
 			>(
-				n),
+				_sz),
 			std::distance(
 				pos_,
 				chars_->cend()));
@@ -82,7 +78,7 @@ fcppt::io::raw_container_source<Container>::read(
 	std::copy(
 		pos_,
 		new_pos,
-		target);
+		_target);
 
 	pos_ = new_pos;
 	return result;
@@ -91,28 +87,34 @@ fcppt::io::raw_container_source<Container>::read(
 template<typename Container>
 std::streampos
 fcppt::io::raw_container_source<Container>::seek(
-	boost::iostreams::stream_offset const off,
-	std::ios_base::seekdir const way)
+	boost::iostreams::stream_offset const _off,
+	std::ios_base::seekdir const _way)
 {
-	switch (way)
+	difference_type const coff(
+		static_cast<
+			difference_type
+		>(
+			_off));
+
+	switch (_way)
 	{
 		case std::ios_base::beg:
 			pos_ =
 				std::next(
 					chars_->cbegin(),
-					off);
+					coff);
 			break;
 		case std::ios_base::cur:
 			pos_ =
 				std::next(
 					pos_,
-					off);
+					coff);
 			break;
 		case std::ios_base::end:
 			pos_ =
 				std::prev(
 					chars_->cend(),
-					off);
+					coff);
 			break;
 		default: break;
 	}
