@@ -1,14 +1,16 @@
 /**
 \defgroup fcpptassign fcppt.assign
 \ingroup fcpptmain
-\brief A replacement for <a href="http://www.boost.org/doc/libs/1_47_0/libs/assign/doc/index.html">boost::assign</a>
+\brief A supplement to C++11 initialization
 
-This part of fcppt is similar to <a href="http://www.boost.org/doc/libs/1_48_0/libs/assign/doc/index.html">boost::assign</a>, but fixes one issue: Why is there
-<code>list_of</code>, which has a method <code>to_container</code>? Why not
-just a single templated <code>make_container</code> function? This is exactly
-what fcppt::assign consists of. It even works for associative containers (like
-<code>%std::map</code> or <code>%std::set</code>), because it uses the generic insert function that takes an
-iterator.
+C++11 provides initializer lists to initialize containers. One drawback is
+that they cannot be used to initialize containers of movable objects.
+
+For example, fcppt::signal::connection_manager takes a container of signal
+connections (which are movable only). To initialize such a container,
+fcppt::assign::make_container can be used.
+
+\snippet examples/signal/connection.cpp signal_movable_assign
 */
 
 namespace fcppt
@@ -16,14 +18,7 @@ namespace fcppt
 /**
 \brief A replacement for boost::assign
 
-This part of fcppt is similar to <a
-href="http://www.boost.org/doc/libs/1_48_0/libs/assign/doc/index.html">boost::assign</a>,
-but fixes one issue: Why is there <code>list_of</code>, which has a method
-<code>to_container</code>? Why not just a single templated
-<code>make_container</code> function? This is exactly what fcppt::assign
-consists of. It even works for associative containers (like <code>\verbatim
-std::map \endverbatim</code> or <code>\verbatim std::set \endverbatim</code>),
-because it uses the generic insert function that takes an iterator.
+Provides assignment helpers for containers of movable types
 */
 namespace assign {}
 }

@@ -64,6 +64,7 @@ int main()
 
 	void_signal signal;
 
+// ![signal_movable_assign]
 	// use fcppt::assign::make_container to pass a container of connections
 	fcppt::signal::connection_manager const connections(
 		fcppt::assign::make_container<
@@ -80,6 +81,7 @@ int main()
 		)
 		.move_container()
 	);
+// ![signal_movable_assign]
 
 	// scoped_connection can also be used
 	fcppt::signal::scoped_connection const connection3(
