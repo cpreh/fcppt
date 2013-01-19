@@ -16,10 +16,11 @@
 		</ul>
 	</li>
 	<li>
-	\ref structure_enums
+	\ref structure_types
 		<ul>
-			<li>\ref structure_bool_and_enums</li>
+			<li>\ref structure_fundamental</li>
 			<li>\ref structure_using_enums</li>
+			<li>\ref structure_const</li>
 		</ul>
 	</li>
 	<li>
@@ -50,10 +51,10 @@
 
 Every function, typedef or class resides in its own header file. So, for
 example, if you want to use fcppt::to_std_string (which is a function) you have
-to <code>\verbatim #include <fcppt/to_std_string.hpp>\endverbatim</code>.
+to <code>\verbatim #include <fcppt/to_std_string.hpp>\endverbatim</code>
 
 All classes have an additional fwd header, which only provides a declaration of
-the class. For example <code><fcppt/type_info_fwd.hpp></code> provides the
+the class. For example, <code><fcppt/type_info_fwd.hpp></code> provides the
 declaration of fcppt::type_info and <code><fcppt/type_info.hpp></code> provides
 the definition.
 
@@ -95,13 +96,6 @@ concerned with compilation times.
 \attention
 If you forget to include the <code>_impl</code> header where the implementation
 of a template is needed, you will get undefined references when linking.
-
-Some sub-libraries, like fcppt::math::vector, provide convenience headers that
-include almost everything that belongs to the sub library. For example,
-<code><fcppt/math/vector/vector.hpp></code> includes most of the headers found
-under <code>fcppt/math/vector/</code>. Be aware, though, that this might
-include a large number of (unnecessary) files and might slow down compilation
-times.
 
 \section structure_identifiers Identifiers
 
@@ -212,16 +206,17 @@ cast_stuff(
 \endcode
 
 This, at first glance, might look pretty odd to you, but it is something you
-might encounter when reading fcppt code (Freundlich's code in particular :P).
-This method of indentation is a bit extreme, but it is consistent: We insert a
-newline after every opening brace (curly brace, parentheses, whatever).
+might encounter when reading fcppt code. This method of indentation is a bit
+extreme, but it is consistent: We insert a newline after every opening brace
+(curly brace, parentheses, whatever).
 
-\section structure_enums Enums
+\section structure_types Types
 
-\subsection structure_bool_and_enums bool and enums
+\subsection structure_fundamental Fundamental types
 
-We encourage you to use bools very sparingly. To illustrate the problem with
-bools, consider the function:
+Fundamental types usually don't convey any meaning, which can be a huge problem
+for function (and constructor) arguments. To illustrate the problem, consider
+the function:
 
 \code
 void draw_text(string text,bool center_vertically,bool center_horizontally,int font_size);
@@ -247,11 +242,10 @@ the alignment stuff, so you write:
 draw_text("Hello World",15,true,false);
 \endcode
 
-This code compiles without a warning with recent gcc and with all warnings
+This code compiles without a warning with a recent gcc and with all warnings
 enabled. So you have a hard time refactoring because the compiler is of no
-help. That's pretty much the reason bools are discouraged: You lose
-information. bool is, however, useful with functions which really just give
-"yes" or "no" as an answer such as:
+help. That's pretty much the reason fundamental types are discouraged: You lose
+information. As return types, however, they can be useful:
 
 \code
 class life
@@ -261,63 +255,72 @@ public:
 };
 \endcode
 
-In this example, you could either use an enum (see below) or \link
-fcpptstrongtypedef strong typedefs\endlink.
+To fix the situation with parameters, you could either use an enum (see below)
+or \link fcpptstrongtypedef strong typedefs\endlink.
 
 \subsection structure_using_enums Using enums
 
-So how do we use enums in C++ properly? Without thinking further, you might
-write your enums like this:
+C++03 enums have a lot of disadvantages like injecting their enumerators in the
+enclosing namespace and implicitly converting to other integral types.
+Therefore, we only use the new C++11 enum classes (strongly types enums).
+
+\subsection structure_const Using const
+
+We declare as many variables const as possible. This helps to reason about the
+code flow by knowing what values can change at all. In particular, function
+arguments should be const whenever possible:
 
 \code
-enum shape
+void f(T); // no const at the declaration which makes no sense
+
+void f(T const _arg)
 {
-    circle,
-    square,
-    fridge
-};
-\endcode
-
-You could then write functions which take this enum and do something with it:
-
-\code
-player_shape create(shape);
-\endcode
-
-And you'd call this function with:
-
-\code
-player_shape s = create(shape::circle);
-\endcode
-
-This code, however, doesn't compile. That's because enums do not open a new
-namespace! Which is a problem, since they pollute the namespace they're defined
-in. So we encourage a simple workaround:
-
-\code
-namespace shape
-{
-enum type
-{
-    circle,
-    square,
-    fridge,
-    size
-};
+  // _arg can't change here
 }
 \endcode
 
-Now the create function declaration and its call look like:
+Making class members const is also often a good idea. The only problem
+with this is that a class with const members won't be assignable anymore.
 
 \code
-player_shape create(shape::type);
-
-create(shape::circle);
+class foo
+{
+  T const bar;
+};
 \endcode
 
-Which is much better. Also note that we added a 'size' element at the end. This
-way, we can use the enumeration together with
-fcppt::container::bitfield::object, or we could manually iterate over it.
+Consider using FCPPT_NONASSIGNABLE in this case.
+
+Making return types of functions const can prevent erroneous code that tries to
+modify the returned value.
+
+\code
+struct foo
+{
+};
+
+foo f();
+
+f() = foo();
+\endcode
+
+This actually compiles, although <code>foo</code> returns a prvalue. prvalues
+of class type can still be modified by calling member functions (like
+<code>operator=</code>) on them. In this case, it would probably (see below) a
+good idea to change the declaration to <code>foo const f();</code>
+
+However, making return types of functions const can have disadvantages:
+
+<ul>
+
+<li>If the return type is fundamental (e.g. <code>int</code>), const won't do
+anything, and most compilers will generate a warning. If the return type is a
+template parameter, this can be a problem. </li>
+
+<li>A const return type prevents moving. For example, <code>std::vector<T>
+const foo();</code> will probably call the copy constructor of vector when the
+function is called. This can be optimized away, but we found some cases where
+it isn't.</li>
 
 \section structure_code_partitioning Code partitioning
 
@@ -344,27 +347,32 @@ which file you have to include to get a specific entity (for
 \subsection structure_minimal_includes Minimal includes
 
 A header should only include what it needs so it can be included without
-causing errors by itself. If code from the header is used, however, additional
-includes may be needed.
+causing errors by itself (this means it should produce no errors when compiling
+it with <code>-fsyntax-only</code>). If code from the header is used, however,
+additional includes may be needed.
 
-In the following cases only a declaration is needed:
+The main reason for this is that for function declarations, the argument and
+return types can be incomplete, as shown in the following example:
 
-<ul>
-	<li>A type is returned by a function or taken as an argument</li>
-	<li>
-	A typedef to a template is declared
-	\code
-template
-<
-  typename T
-> struct vector;
+\code
+#include <mylib/arg1_fwd.hpp>
+#include <mylib/arg2_fwd.hpp>
+#include <mylib/ret1_fwd.hpp>
+#include <mylib/ret2_fwd.hpp>
 
-typedef vector<char> char_vector;
-	\endcode
-	</li>
-</ul>
+struct mine
+{
+  mylib::ret1 foo1(mylib::arg1);
+  mylib::ret2 foo2(mylib::arg2);
+};
+\endcode
 
-TODO: Expand this!
+Depending on whether the user of <code>mine</code> intends to use
+<code>foo1</code> or <code>foo2</code>, they need to include the corresponding
+headers that provide the definitions of the argument and return types. A class
+like <code>mine</code> could be a huge interface of which a user might only use
+a small portion, so only declaring the argument and return types usually helps
+to reduce the number of includes needed.
 
 \subsection structure_include_guards Include guards
 
@@ -414,13 +422,9 @@ else
 \endcode
 
 float comparison is not only implementation defined, it's pretty "blurry" in
-most implementations.
-
-So you shouldn't use "strict" comparison. There's fcppt::math::compare and
-fcppt::math::almost_zero which use the <a
-href="http://en.wikipedia.org/wiki/Machine_epsilon">machine epsilon</a> for
-comparison. This is, however, a bad choice in most cases. You might have to
-write your own comparison function.
+most implementations. How to properly compare floats really depends on the
+situation. Sometimes you might want to test the relative error, sometimes the
+absolute error. In any case, comparing floats directly is almost always wrong.
 
 \subsection structure_integral_types Integral types
 
@@ -429,7 +433,7 @@ use them to get negative numbers, but the signed types have a distinct
 disadvantage: Some operations are undefined or implementation defined.
 
 For example, the behavior of the % operator is partially implementation
-defined.  Also, the value of <code>INT_MAX+1</code> is undefined, so you cannot
+defined. Also, the value of <code>INT_MAX+1</code> is undefined, so you cannot
 use ints to "wrap around" the borders. The unsigned types have such guarantees,
 so use them if you really do not need negative numbers.
 */
