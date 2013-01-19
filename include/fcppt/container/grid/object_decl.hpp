@@ -123,7 +123,7 @@ public:
 	/**
 	\brief A type representing the dimension of the array
 	*/
-	typedef typename grid::dim<
+	typedef typename fcppt::container::grid::dim<
 		size_type,
 		N
 	>::type dim;
@@ -137,7 +137,8 @@ public:
 	\brief The grid will have an initial size but the elements might not be initialized
 	\param d The initial size of the grid
 	*/
-	explicit object(
+	explicit
+	object(
 		dim const &d
 	);
 
@@ -146,7 +147,7 @@ public:
 	\param d The size of the grid
 	\param r The value to assign to each element of the grid
 	*/
-	explicit object(
+	object(
 		dim const &d,
 		const_reference r
 	);
@@ -161,7 +162,7 @@ public:
 	template<
 		typename In
 	>
-	explicit object(
+	object(
 		dim const &d,
 		In beg,
 		In end
@@ -171,9 +172,18 @@ public:
 		object const &
 	);
 
+	object(
+		object &&
+	);
+
 	object &
 	operator=(
 		object const &
+	);
+
+	object &
+	operator=(
+		object &&
 	);
 
 	~object();

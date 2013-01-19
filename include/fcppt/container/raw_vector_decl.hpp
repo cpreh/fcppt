@@ -290,7 +290,8 @@ public:
 	All of the elements will have indeterminate values and must be written
 	before being read.
 	*/
-	explicit raw_vector(
+	explicit
+	raw_vector(
 		size_type sz,
 		A const &a = A()
 	);
@@ -327,11 +328,20 @@ public:
 		raw_vector const &
 	);
 
+	raw_vector (
+		raw_vector &&
+	);
+
 	~raw_vector();
 
 	raw_vector &
 	operator=(
 		raw_vector const &
+	);
+
+	raw_vector &
+	operator=(
+		raw_vector &&
 	);
 
 	/**
@@ -598,11 +608,23 @@ private:
 		);
 
 		impl(
+			impl &&
+		);
+
+		impl(
 			A const &,
 			size_type
 		);
 
+		impl &
+		operator=(
+			impl &&
+		);
+
 		~impl();
+
+		void
+		reset_pointers();
 
 		A alloc_;
 

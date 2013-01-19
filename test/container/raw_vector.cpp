@@ -13,6 +13,7 @@
 #include <array>
 #include <iterator>
 #include <sstream>
+#include <utility>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -346,6 +347,63 @@ FCPPT_PP_POP_WARNING
 	container_type test2(test);
 
 	BOOST_REQUIRE(
+		test2.empty()
+	);
+}
+
+FCPPT_PP_PUSH_WARNING
+FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
+
+BOOST_AUTO_TEST_CASE(
+	container_raw_vector_move
+)
+{
+FCPPT_PP_POP_WARNING
+
+	container_type test1(
+		100
+	);
+
+	test1[0] = 500;
+
+	container_type test2(
+		std::move(
+			test1
+		)
+	);
+
+	BOOST_CHECK(
+		test2.size()
+		==
+		100
+		&&
+		test2[0]
+		==
+		500
+	);
+
+	BOOST_CHECK(
+		test1.empty()
+	);
+
+	container_type test3;
+
+	test3 =
+		std::move(
+			test2
+		);
+
+	BOOST_CHECK(
+		test3.size()
+		==
+		100
+		&&
+		test3[0]
+		==
+		500
+	);
+
+	BOOST_CHECK(
 		test2.empty()
 	);
 }

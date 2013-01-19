@@ -760,7 +760,7 @@ FCPPT_PP_PUSH_WARNING
 FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
 
 BOOST_AUTO_TEST_CASE(
-	container_is_square
+	container_grid_is_square
 )
 {
 FCPPT_PP_POP_WARNING
@@ -778,4 +778,114 @@ FCPPT_PP_POP_WARNING
 				int2_grid::dim(
 					4,
 					5))));
+}
+
+FCPPT_PP_PUSH_WARNING
+FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
+
+BOOST_AUTO_TEST_CASE(
+	container_grid_move
+)
+{
+FCPPT_PP_POP_WARNING
+
+	int2_grid grid1(
+		int2_grid::dim(
+			2,
+			3
+		)
+	);
+
+	grid1[
+		int2_grid::dim(
+			0,
+			0
+		)
+	] = 1;
+
+	grid1[
+		int2_grid::dim(
+			1,
+			1
+		)
+	] = 2;
+
+	int2_grid grid2(
+		std::move(
+			grid1
+		)
+	);
+
+	BOOST_CHECK(
+		grid2.size()
+		==
+		int2_grid::dim(
+			2,
+			3
+		)
+	);
+
+	BOOST_CHECK(
+		grid2[
+			int2_grid::dim(
+				0,
+				0
+			)
+		] == 1
+	);
+
+	BOOST_CHECK(
+		grid2[
+			int2_grid::dim(
+				1,
+				1
+			)
+		] == 2
+	);
+
+	BOOST_CHECK(
+		grid1.begin()
+		==
+		grid1.end()
+	);
+
+	int2_grid grid3;
+
+	grid3 =
+		std::move(
+			grid2
+		);
+
+	BOOST_CHECK(
+		grid3.size()
+		==
+		int2_grid::dim(
+			2,
+			3
+		)
+	);
+
+	BOOST_CHECK(
+		grid3[
+			int2_grid::dim(
+				0,
+				0
+			)
+		] == 1
+	);
+
+	BOOST_CHECK(
+		grid3[
+			int2_grid::dim(
+				1,
+				1
+			)
+		] == 2
+	);
+
+	BOOST_CHECK(
+		grid2.begin()
+		==
+		grid2.end()
+	);
 }
