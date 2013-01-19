@@ -6,7 +6,6 @@
 
 #include <fcppt/foreach_enumerator.hpp>
 #include <fcppt/make_shared_ptr.hpp>
-#include <fcppt/container/array_impl.hpp>
 #include <fcppt/log/default_level_streams.hpp>
 #include <fcppt/log/level_stream.hpp>
 #include <fcppt/log/format/default_level.hpp>

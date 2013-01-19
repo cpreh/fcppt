@@ -94,12 +94,6 @@ set(
 	include/fcppt/config/platform.hpp
 	include/fcppt/const_optional_cast.hpp
 	include/fcppt/const_pointer_cast.hpp
-	include/fcppt/container/array.hpp
-	include/fcppt/container/array_comparison.hpp
-	include/fcppt/container/array_decl.hpp
-	include/fcppt/container/array_fusion.hpp
-	include/fcppt/container/array_fwd.hpp
-	include/fcppt/container/array_impl.hpp
 	include/fcppt/container/bitfield/array.hpp
 	include/fcppt/container/bitfield/default_internal_type.hpp
 	include/fcppt/container/bitfield/detail/element_bits.hpp
