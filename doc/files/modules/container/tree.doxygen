@@ -9,9 +9,8 @@
 
 <ul>
 	<li>\ref tree_introduction</li>
+	<li>\ref tree_design</li>
 	<li>\ref tree_traversals</li>
-	<li>\ref tree_noncopyable</li>
-	<li>\ref tree_copying</li>
 </ul>
 
 </td>
@@ -20,106 +19,46 @@
 
 \section tree_introduction Introduction
 An fcppt::container::tree::object<T> is a container modeling an n-ary tree
-holding objects of type <code>T</code>. It has a value of type
-<code>T</code> and children of type fcppt::container::tree::object<T>.
+holding objects of type <code>T</code>. It has a value of type <code>T</code>
+and children of type fcppt::container::tree::object<T>.
 
-\note
-Because of the inherent recursive property of the tree, it has to store its
-children in a <a
-href="http://www.boost.org/doc/libs/1_48_0/libs/ptr_container/doc/ptr_list.html">boost::ptr_list</a>
-which might make tree a bit heavy to include.  Consider using forward
-declarations where possible.
-
-The tree tries to mimic the sequence containers from the standard library. Also,
-its implementation is "minimal" in the sense that everything but trivial
-operations are outsourced to external headers - the pre order traversal
-is an example of this. Most of the operations are self-explanatory.
-Here is a small example of the tree:
+The tree tries to mimic the sequence containers from the standard library.
+Also, its implementation is "minimal" in the sense that everything but trivial
+operations are outsourced to external headers - the pre order traversal is an
+example of this. Most of the operations are self-explanatory. Here is a small
+example of the tree:
 
 \snippet container/tree_simple.cpp main
 
-Note also that all operations which implicitly depend on a parent being
-present are undefined if \link fcppt::container::tree::object::has_parent
-has_parent \endlink returns false. The same goes for all operations which
-depend on at least one child being present and \link
-fcppt::container::tree::object::empty empty \endlink returning true.
+Note also that all operations which implicitly depend on a parent being present
+are undefined if \link fcppt::container::tree::object::has_parent has_parent
+\endlink returns false. The same goes for all operations which depend on at
+least one child being present and \link fcppt::container::tree::object::empty
+empty \endlink returning true.
+
+\section tree_design Design
+
+Internally, a <code>fcppt::container::tree::object<T></code> holds a
+<code>std::list</code> of
+<code>std::unique_ptr<fcppt::container::tree::object<T>></code>. The advantage
+of this approach (instead of holding trees directly in a list) is that moving
+subtrees around is cheap. Iterators hide the fact that unique_ptrs are used and
+return trees directly.
 
 \section tree_traversals Iterators/Traversals
 
-The tree uses a <a
-href="http://www.boost.org/doc/libs/1_48_0/libs/ptr_container/doc/ptr_list.html">boost::ptr_list</a>
-to store its children, so the iterator guarantees are the same as for this
-container. Apart from using the traditional iteration methods &ndash; using
+To only iterate over the tree's children, the following functions are provided.
+
 \link fcppt::container::tree::object::begin begin \endlink, \link
 fcppt::container::tree::object::end end \endlink, \link
 fcppt::container::tree::object::rbegin rbegin \endlink, \link
 fcppt::container::tree::object::rend rend \endlink
-&ndash; there are external traversal classes. Those are best explained using
-a little example:
+
+There are also external traversal classes that can be used to iterate over a
+whole tree. Those are best explained using a little example:
 
 \snippet container/tree_traversal.cpp main
 
-Aside from \link fcppt::container::tree::pre_order pre_order \endlink, no
-other traversals are implemented as of yet.
-
-\section tree_noncopyable Non-copyable semantics
-
-We already mentioned <a
-href="http://www.boost.org/doc/libs/1_48_0/libs/ptr_container/doc/ptr_list.html">boost::ptr_list</a>,
-which is designed to store values by pointer and to have ownership at the
-same time.
-
-This is useful for values that cannot be copied, for example.
-<code>fcppt::container::tree::object</code> also supports storing non-copyable values
-(and taking ownership of them). Instead of writing
-
-\code
-fcppt::container::tree::object<T>
-\endcode
-
-you can say
-
-\code
-fcppt::container::tree::object
-<
-	fcppt::container::tree::ptr_value<T>
->
-\endcode
-
-which turns the tree into a ptr_container. A <code>tree::object<ptr_value<T>
-></code> will have the following changes from a normal tree:
-
-<ul>
-	<li>All arguments of values it expects are <code>fcppt::unique_ptr<T></code> (see \ref smartptr_unique_ptr)</li>
-	<li>The internal type is an <code>fcppt::scoped_ptr<T></code> (see \ref smartptr_scoped_ptr)</li>
-</ul>
-
-It is also possible to release the held <code>scoped_ptr</code> with fcppt::container::tree::release.
-
-\section tree_copying Copying
-
-Every tree can be deeply copied by invoking its copy constructor or assignment
-operator. However, for a tree with noncopyable semantics, the situation isn't as easy. To still provide deep copying in this
-case, there is a function called \link fcppt::container::tree::copy_tree_value
-copy_tree_value \endlink which the tree will invoke via argument dependant
-lookup. For a <code>tree::%object<tree::ptr_value<T>></code> the signature must be
-
-\code
-fcppt::unique_ptr<T> copy_tree_value(T const &);
-\endcode
-
-The default behaviour is to invoke the copy constructor of <code>T</code> which will only
-work if <code>T</code> is copyable itself.
+Aside from \link fcppt::container::tree::pre_order pre_order \endlink, no other
+traversals are implemented as of yet.
 */
-namespace fcppt
-{
-namespace container
-{
-/**
-\brief Contains fcppt::container::tree::object and helper types/functions for it.
-*/
-namespace tree
-{
-}
-}
-}
