@@ -40,7 +40,7 @@ int_ptr_factory()
 //! [unique_ptr_factory_use]
 void
 int_ptr_arg(
-	unique_int_ptr ptr
+	unique_int_ptr &&ptr
 )
 {
 	fcppt::io::cout()

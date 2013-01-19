@@ -20,7 +20,6 @@
 	<ul>
 		<li>\ref smartptr_unique_ptr_usage</li>
 		<li>\ref smartptr_unique_ptr_move</li>
-		<li>\ref smartptr_unique_ptr_limitations</li>
 	</ul>
 	<li>\ref smartptr_scoped_ptr</li>
 	<ul>
@@ -51,14 +50,14 @@ object pointed to when the smart pointer is destroyed. Such a smart pointer
 resides on the stack, so freeing is done automatically.
 
 fcppt provides several kinds of smart pointers, where some of them are also
-provided by Boost. The difference is that the deleter (which dictates how the
-object is to be freed) is a template parameter for all classes. This is a
-trade-off and removes some of the dynamic behaviour, switching it for a
-statically type-safe one.
+provided by Boost or by C++11. The difference is that the deleter (which
+dictates how the object is to be freed) is a template parameter for all
+classes. This is a trade-off and removes some of the dynamic behaviour,
+switching it for a statically type-safe one.
 
 \section smartptr_types Smart pointer types
 
-fcppt provides four smart pointer classes, each with their own trade-offs.
+fcppt provides three smart pointer classes, each with their own trade-offs.
 
 <table>
 <tr>
@@ -84,16 +83,6 @@ shared ptrs are still alive.</td>
 </tr>
 
 <tr>
-<td>fcppt::unique_ptr</td>
-
-<td>A replacement for <code>std::auto_ptr</code>. Only one unique ptr will
-manage the ownership at a time. It can be transfered into a shared ptr or into
-a scoped ptr. The difference to <code>std::auto_ptr</code> is that transferring
-ownership from one unique ptr to another is safer.</td>
-
-</tr>
-
-<tr>
 <td>fcppt::scoped_ptr</td>
 
 <td>A noncopyable smart pointer, similar to unique ptr. Only one scoped ptr
@@ -102,6 +91,23 @@ from a unique ptr.</td>
 
 </tr>
 </table>
+
+fcppt used to provide its own unique ptr for C++03. However, C++11's
+<code>std::unique_ptr</code> already uses a static deleter, so it is not wrapped.
+
+<table>
+<tr>
+<td><code>std::unique_ptr</code></td>
+
+<td>A replacement for <code>std::auto_ptr</code>. Only one unique ptr will
+manage the ownership at a time. It can be transfered into a shared ptr or into
+a scoped ptr. The difference to <code>std::auto_ptr</code> is that transferring
+ownership from one unique ptr to another is safer.</td>
+
+</tr>
+</table>
+
+
 
 \section smartptr_shared_ptr Shared Pointers
 
@@ -151,9 +157,6 @@ the same memory block as the shared count managed by the shared ptrs. Another
 reason to use this function is to avoid memory leaks, that can happen due to
 C++'s unspecified order of evaluation, if you are not careful.
 
-\note fcppt::make_shared_ptr takes every argument by value, which means that
-you have to use fcppt::ref or fcppt::cref for references.
-
 Here is an example of how not using fcppt::make_shared_ptr can lead to a memory
 leak.
 
@@ -189,9 +192,8 @@ Here is an example:
 
 \section smartptr_unique_ptr Unique Pointers
 
-An fcppt::unique_ptr is a replacement for <code>std::auto_ptr</code> and is
-modeled after C++11's <code>std::unique_ptr</code>. In contrast to a shared
-ptr, a unique ptr always is the sole owner of an object.
+A <code>std::unique_ptr</code> is a replacement for <code>std::auto_ptr</code>. In contrast
+to a shared ptr, a unique ptr always is the sole owner of an object.
 
 The general traits of a unique ptr are as follows:
 
@@ -209,12 +211,7 @@ deleter used).</li>
 <li>fcppt::make_unique_ptr should be used to construct unique ptrs. It is
 similar to fcppt::make_shared_ptr in the sense that it helps to avoid memory
 leaks, but it is not more efficient than normal construction of unique ptrs,
-because there is no shared count to keep track of.
-
-\note Like fcppt::make_shared_ptr, fcppt::make_unique_ptr also takes every
-argument by value, which means that you have to use fcppt::ref or fcppt::cref
-for references.
-</li>
+because there is no shared count to keep track of.</li>
 
 </ul>
 
@@ -249,27 +246,11 @@ Consider the following example where an implicit move would be very dangerous:
 
 \snippet unique_ptr.cpp unique_ptr_move_dangerous
 
-\subsection smartptr_unique_ptr_limitations Unique Pointer Limitations
-
-There are some limitations for unique ptrs because they are only a hack
-in C++03:
-
-<ul>
-
-<li>Non move aware code will not work with unique ptrs, especially function and
-bind.</li>
-
-<li>Converting an <code>fcppt::unique_ptr<Derived></code> into an
-<code>fcppt::unique_ptr<Base></code> currently doesn't work implicitly. This
-must be done explicitly instead.</li>
-
-</ul>
-
 \section smartptr_scoped_ptr Scoped Pointers
 
-fcppt::scoped_ptr is similar to fcppt::unique_ptr, except it cannot even be
-moved and is completely noncopyable. Like for unique ptrs, no type erasure is
-done for the deleter.
+fcppt::scoped_ptr is similar to <code>std::unique_ptr</code>, except it cannot
+even be moved and is completely noncopyable. Like for unique ptrs, no type
+erasure is done for the deleter.
 
 Such a scoped ptr is usually a good choice if you want to hold onto something
 returned by a factory creating unique ptrs.
@@ -320,14 +301,6 @@ their semantics are as follows:
 <table>
 <tr>
 <td>
-fcppt::heap_deleter
-</td>
-<td>
-<code>delete ptr;</code>
-</td>
-</tr>
-<tr>
-<td>
 fcppt::c_deleter
 </td>
 <td>
@@ -340,6 +313,20 @@ fcppt::com_deleter
 </td>
 <td>
 <code>if(ptr) ptr->Release();</code>
+</td>
+</tr>
+</table>
+
+C++11 provides <code>std::default_delete</code> which is the
+default deleter for every smart pointer.
+
+<table>
+<tr>
+<td>
+<code>std::default_delete<Type></code>
+</td>
+<td>
+<code>delete ptr;</code>
 </td>
 </tr>
 </table>
@@ -375,20 +362,12 @@ allocated via <code>std::malloc</code>
 <td>Contains fcppt::dynamic_pointer_cast</td>
 </tr>
 <tr>
-<td><code>heap_deleter.hpp</code></td>
-<td>Contains fcppt::heap_deleter</td>
-</tr>
-<tr>
 <td><code>make_shared_ptr.hpp</code></td>
 <td>Contains fcppt::make_shared_ptr</td>
 </tr>
 <tr>
 <td><code>make_unique_ptr.hpp</code></td>
 <td>Contains fcppt::make_unique_ptr</td>
-</tr>
-<tr>
-<td><code>move.hpp</code></td>
-<td>Contains fcppt::move</td>
 </tr>
 <tr>
 <td><code>scoped_ptr_fwd.hpp</code></td>
@@ -425,22 +404,6 @@ allocated via <code>std::malloc</code>
 <tr>
 <td><code>static_pointer_cast.hpp</code></td>
 <td>Contains fcppt::static_pointer_cast</td>
-</tr>
-<tr>
-<td><code>unique_ptr_fwd.hpp</code></td>
-<td>Contains fcppt::unique_ptr's declaration.</td>
-</tr>
-<tr>
-<td><code>unique_ptr_decl.hpp</code></td>
-<td>Contains fcppt::unique_ptr's definition.</td>
-</tr>
-<tr>
-<td><code>unique_ptr_impl.hpp</code></td>
-<td>Contains the definition of fcppt::unique_ptr's member functions.</td>
-</tr>
-<tr>
-<td><code>unique_ptr.hpp</code></td>
-<td>Contains all of fcppt::unique_ptr and fcppt::make_unique_ptr</td>
 </tr>
 <tr>
 <td><code>weak_ptr_fwd.hpp</code></td>
