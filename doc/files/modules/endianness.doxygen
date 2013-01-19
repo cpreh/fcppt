@@ -23,7 +23,7 @@ In C++, the representation of objects of fundamental type (like integers) in
 memory consists of two aspects:
 <ul>
 <li>The <em>object representation</em> which describes the object's size and
-alignment in bytes (see also \ref alignment_introduction "Alignment").</li>
+alignment in bytes.</li>
 
 <li>The <em>value representation</em> which describes of how many bits an
 object consists and what their meanings are.</li>
