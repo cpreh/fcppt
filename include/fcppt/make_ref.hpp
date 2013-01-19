@@ -16,7 +16,7 @@ namespace fcppt
 /**
 \brief Convenience function to create reference_wrappers
 
-\ingroup fcpptvarious
+\ingroup fcpptref
 */
 template<
 	typename Type

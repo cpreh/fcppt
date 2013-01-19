@@ -16,7 +16,7 @@ namespace fcppt
 /**
 \brief A simple reference wrapper that supports incomplete types
 
-\ingroup fcpptvarious
+\ingroup fcpptref
 
 C++11's reference_wrapper is also a function call wrapper, which implies that
 the type it holds must be complete. This class's purpose is to allow objects of
