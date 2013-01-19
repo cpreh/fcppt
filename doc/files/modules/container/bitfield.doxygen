@@ -49,14 +49,14 @@ fcppt::container::bitfield::object takes as first template parameter an enum
 
 	<strong>Example 1:</strong>
 	\code
-	enum my_enum { value1, value2, value3 };
+	enum class my_enum { value1, value2, value3 };
 	\endcode
 
 	This is perfectly valid.
 
 	<strong>Example 2:</strong>
 	\code
-	enum my_enum { value = 100 };
+	enum class my_enum { value = 100 };
 	\endcode
 
 	This is <strong>NOT</strong> valid.
@@ -66,9 +66,9 @@ fcppt::container::bitfield::object takes as first template parameter an enum
 	To achieve consistency you should define the enum's size within the
 	enum itself.  <strong>Example:</strong>
 	\code
-	enum my_enum { value1, value2, value3, _my_enum_size };
+	enum class my_enum { value1, value2, value3, _my_enum_size };
 
-	typedef object<my_enum,_my_enum_size> myobject;
+	typedef object<my_enum,my_enum::_my_enum_size> myobject;
 	\endcode
 </li>
 <li>
