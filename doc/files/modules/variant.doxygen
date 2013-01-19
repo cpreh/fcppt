@@ -75,7 +75,7 @@ print(
 
 print(var);
 
-// Doesn't work
+// Doesn't work in C++03
 union string_or_int
 {
 	std::string s;
@@ -273,8 +273,7 @@ Here is a small example for defining a binary visitor:
 \snippet variant/binary_visitation.cpp variant_binary_visitation
 
 Non const visitation, which means that the visited variant can be modified, is
-also supported. You have to use fcppt::ref on each variant that should be
-passed nonconst to the visitor.
+also supported, thanks to C++11's perfect forwarding.
 
 \snippet variant/nonconst_visitation.cpp variant_nonconst_visitor
 \snippet variant/nonconst_visitation.cpp variant_nonconst_visitation
@@ -282,10 +281,8 @@ passed nonconst to the visitor.
 \section variant_design Design
 
 There is already <code>%boost::variant</code> so you might wonder why fcppt
-provides its own variant type. Like <code>%boost::variant</code>
-fcppt::variant::object holds its values by value and not by means of
-dynamically allocated memory. This means that the size of the variant is the
-maximum of the sizes of all its possible types.
+provides its own variant type.
+
 The key differences to <code>%boost::variant</code> are
 <ul>
 
@@ -308,9 +305,9 @@ is.</li>
 <li>fcppt::variant::object doesn't allow any implicit conversions for possible
 types. You should explicitly convert instead.</li>
 
-<li>fcppt::variant allows non const visitation through fcppt::ref which makes
-it possible for rvalues to be visited. <code>%boost::variant</code> only
-supports visitation of lvalues.</li>
+<li>fcppt::variant allows non const visitation and visitation of rvalues,
+thanks to C++11. <code>%boost::variant</code> only supports visitation of
+lvalues.</li>
 
 </ul>
 
