@@ -513,6 +513,24 @@ template<
 void
 fcppt::container::tree::object<
 	T
+>::push_front(
+	T &&_value
+)
+{
+	this->insert(
+		this->begin(),
+		std::move(
+			_value
+		)
+	);
+}
+
+template<
+	typename T
+>
+void
+fcppt::container::tree::object<
+	T
 >::pop_front()
 {
 	this->children().pop_front();
