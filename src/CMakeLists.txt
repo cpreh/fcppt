@@ -73,18 +73,6 @@ set(
 	include/fcppt/c_deleter.hpp
 	include/fcppt/c_deleter_fwd.hpp
 	include/fcppt/char_type.hpp
-	include/fcppt/chrono/asio/clock.hpp
-	include/fcppt/chrono/asio/convert_duration.hpp
-	include/fcppt/chrono/asio/convert_time_point.hpp
-	include/fcppt/chrono/asio/deadline_timer.hpp
-	include/fcppt/chrono/asio/duration.hpp
-	include/fcppt/chrono/asio/expires_at_any.hpp
-	include/fcppt/chrono/asio/expires_from_now_any.hpp
-	include/fcppt/chrono/asio/tag.hpp
-	include/fcppt/chrono/asio/time_point.hpp
-	include/fcppt/chrono/asio/time_traits.hpp
-	include/fcppt/chrono/asio/time_traits_decl.hpp
-	include/fcppt/chrono/asio/time_traits_impl.hpp
 	include/fcppt/class_symbol.hpp
 	include/fcppt/com_deleter.hpp
 	include/fcppt/com_deleter_fwd.hpp

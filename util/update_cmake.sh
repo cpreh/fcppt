@@ -21,7 +21,6 @@ update_cmake_file \
 	include/fcppt/assert \
 	include/fcppt/assign \
 	include/fcppt/backtrace \
-	include/fcppt/chrono \
 	include/fcppt/config \
 	include/fcppt/container \
 	include/fcppt/detail \
