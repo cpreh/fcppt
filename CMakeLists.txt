@@ -161,6 +161,12 @@ if(
 		FCPPT_NARROW_STRING
 		true
 	)
+elseif(
+	WIN32
+)
+	add_definitions(
+		"-D UNICODE -D _UNICODE"
+	)
 endif()
 
 if(
