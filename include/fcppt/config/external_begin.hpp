@@ -35,9 +35,6 @@ FCPPT_PP_DISABLE_VC_WARNING(4265) // destructor not virtual
 FCPPT_PP_DISABLE_VC_WARNING(4266) // no override available for virtual member function from base
 FCPPT_PP_DISABLE_VC_WARNING(4302) // type cast truncation
 FCPPT_PP_DISABLE_VC_WARNING(4324) // structure was padded due to __declspec(align())
-#if defined(FCPPT_CONFIG_HAVE_4347_WARNING)
-	FCPPT_PP_DISABLE_VC_WARNING(4347) // behaviour change
-#endif
 FCPPT_PP_DISABLE_VC_WARNING(4365) // signed/unsigned mismatch in action
 FCPPT_PP_DISABLE_VC_WARNING(4510) // default constructor could not be generated
 FCPPT_PP_DISABLE_VC_WARNING(4512) // assignment operator could not be generated
@@ -50,6 +47,7 @@ FCPPT_PP_DISABLE_VC_WARNING(4626) // assignment operator could not be generated 
 FCPPT_PP_DISABLE_VC_WARNING(4640) // local static object
 FCPPT_PP_DISABLE_VC_WARNING(4668) // #if with an undefined macro
 FCPPT_PP_DISABLE_VC_WARNING(4702) // unreachable code
+FCPPT_PP_DISABLE_VC_WARNING(4819) // unrepresentable characters
 FCPPT_PP_DISABLE_VC_WARNING(4913) // user defined binary operator, exists but is not used
 FCPPT_PP_DISABLE_VC_WARNING(4986) // unmatching exception specification
 FCPPT_PP_DISABLE_VC_WARNING(4987) // non standard throw(...)
