@@ -360,89 +360,20 @@ configure_fcppt_file(
 	version.hpp
 )
 
-macro(
-	fcppt_set_utils_warning
-	WARNING_NAME
+foreach(
+	CUR_WARNING
+	${FCPPT_UTILS_GCC_CLANG_WARNINGS}
 )
-	set(
-		FCPPT_CONFIG_HAVE_${WARNING_NAME}_WARNING
-		${FCPPT_UTILS_HAVE_${WARNING_NAME}_FLAG}
+	fcppt_utils_gcc_clang_warning_to_var_name(
+		"${CUR_WARNING}"
+		"OUT_WARNING"
 	)
-endmacro()
 
-# gcc and clang warnings
-fcppt_set_utils_warning(
-	CONDITIONAL_UNINITIALIZED
-)
-
-fcppt_set_utils_warning(
-	CONVERSION_NULL
-)
-
-fcppt_set_utils_warning(
-	DELETE_NON_VIRTUAL_DTOR
-)
-
-fcppt_set_utils_warning(
-	DOCUMENTATION
-)
-
-fcppt_set_utils_warning(
-	DOUBLE_PROMOTION
-)
-
-fcppt_set_utils_warning(
-	EXTRA_SEMI
-)
-
-fcppt_set_utils_warning(
-	IMPLICIT_FALLTHROUGH
-)
-
-fcppt_set_utils_warning(
-	LOGICAL_OP
-)
-
-fcppt_set_utils_warning(
-	MAYBE_UNINITIALIZED
-)
-
-fcppt_set_utils_warning(
-	MISSING_DECLARATIONS
-)
-
-fcppt_set_utils_warning(
-	SIGN_CONVERSION
-)
-
-fcppt_set_utils_warning(
-	UNNEEDED_MEMBER_FUNCTION
-)
-
-fcppt_set_utils_warning(
-	UNUSED_FUNCTION
-)
-
-fcppt_set_utils_warning(
-	UNUSED_LOCAL_TYPEDEFS
-)
-
-fcppt_set_utils_warning(
-	UNUSED_MEMBER_FUNCTION
-)
-
-fcppt_set_utils_warning(
-	UNREACHABLE_CODE
-)
-
-fcppt_set_utils_warning(
-	ZERO_AS_NULL_POINTER_CONSTANT
-)
-
-# VC++ warnings
-fcppt_set_utils_warning(
-	4347
-)
+	set(
+		FCPPT_CONFIG_HAVE_${OUT_WARNING}_WARNING
+		${FCPPT_UTILS_HAVE_${OUT_WARNING}_FLAG}
+	)
+endforeach()
 
 configure_fcppt_file(
 	config/warnings.hpp

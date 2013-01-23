@@ -281,92 +281,47 @@ if(
 		FCPPT_UTILS_HAVE_GCC_VISIBILITY
 	)
 
-	CHECK_CXX_COMPILER_FLAG(
-		"-Wconditional-uninitialized"
-		FCPPT_UTILS_HAVE_CONDITIONAL_UNINITIALIZED_FLAG
+	set(
+		FCPPT_UTILS_GCC_CLANG_WARNINGS
+		"conditional-uninitialized;"
+		"documentation;"
+		"double-promotion;"
+		"extra-semi;"
+		"implicit-fallthrough;"
+		"logical-op;"
+		"maybe-uninitialized;"
+		"unneeded-member-function;"
+		"unused-local-typedefs;"
+		"unused-member-function;"
 	)
 
-	CHECK_CXX_COMPILER_FLAG(
-		"-Wconversion-null"
-		FCPPT_UTILS_HAVE_CONVERSION_NULL_FLAG
+	macro(
+		fcppt_utils_gcc_clang_warning_to_var_name
+		WARNING
+		VAR_NAME
 	)
+		string(
+			REPLACE
+			"-"
+			"_"
+			"${VAR_NAME}"
+			"${WARNING}"
+		)
 
-	CHECK_CXX_COMPILER_FLAG(
-		"-Wdelete-non-virtual-dtor"
-		FCPPT_UTILS_HAVE_DELETE_NON_VIRTUAL_DTOR_FLAG
-	)
+		string(
+			TOUPPER
+			"${${VAR_NAME}}"
+			"${VAR_NAME}"
+		)
 
-	CHECK_CXX_COMPILER_FLAG(
-		"-Wdocumentation"
-		FCPPT_UTILS_HAVE_DOCUMENTATION_FLAG
-	)
-
-	CHECK_CXX_COMPILER_FLAG(
-		"-Wdouble-promotion"
-		FCPPT_UTILS_HAVE_DOUBLE_PROMOTION_FLAG
-	)
-
-	CHECK_CXX_COMPILER_FLAG(
-		"-Wextra-semi"
-		FCPPT_UTILS_HAVE_EXTRA_SEMI_FLAG
-	)
-
-	CHECK_CXX_COMPILER_FLAG(
-		"-Wimplicit-fallthrough"
-		FCPPT_UTILS_HAVE_IMPLICIT_FALLTHROUGH_FLAG
-	)
-
-	CHECK_CXX_COMPILER_FLAG(
-		"-Wlogical-op"
-		FCPPT_UTILS_HAVE_LOGICAL_OP_FLAG
-	)
-
-	CHECK_CXX_COMPILER_FLAG(
-		"-Wmaybe-uninitialized"
-		FCPPT_UTILS_HAVE_MAYBE_UNINITIALIZED_FLAG
-	)
-
-	CHECK_CXX_COMPILER_FLAG(
-		"-Wmissing-declarations"
-		FCPPT_UTILS_HAVE_MISSING_DECLARATIONS_FLAG
-	)
-
-	CHECK_CXX_COMPILER_FLAG(
-		"-Wsign-conversion"
-		FCPPT_UTILS_HAVE_SIGN_CONVERSION_FLAG
-	)
-
-	CHECK_CXX_COMPILER_FLAG(
-		"-Wunneeded-member-function"
-		FCPPT_UTILS_HAVE_UNNEEDED_MEMBER_FUNCTION_FLAG
-	)
-
-	CHECK_CXX_COMPILER_FLAG(
-		"-Wunused-function"
-		FCPPT_UTILS_HAVE_UNUSED_FUNCTION_FLAG
-	)
-
-	CHECK_CXX_COMPILER_FLAG(
-		"-Wunused-local-typedefs"
-		FCPPT_UTILS_HAVE_UNUSED_LOCAL_TYPEDEFS_FLAG
-	)
-
-	CHECK_CXX_COMPILER_FLAG(
-		"-Wunused-member-function"
-		FCPPT_UTILS_HAVE_UNUSED_MEMBER_FUNCTION_FLAG
-	)
-
-	CHECK_CXX_COMPILER_FLAG(
-		"-Wunreachable-code"
-		FCPPT_UTILS_HAVE_UNREACHABLE_CODE_FLAG
-	)
+	endmacro()
 
 	CHECK_CXX_COMPILER_FLAG(
 		"-Wzero-as-null-pointer-constant"
 		FCPPT_UTILS_HAVE_ZERO_AS_NULL_POINTER_CONSTANT_FLAG
 	)
 
-	add_definitions("-std=c++0x")
+	add_definitions("-std=c++11")
 
 	add_definitions(
 		${FCPPT_UTILS_GCC_ICC_CLANG_COMMON_OPTIONS}
@@ -399,6 +354,11 @@ if(
 	add_definitions(
 		"-pedantic-errors -Wfloat-equal -Wredundant-decls -Wunused"
 		"-Winit-self -Wsign-promo -Wcast-align -Wold-style-cast"
+		"-Wconversion-null"
+		"-Wdelete-non-virtual-dtor"
+		"-Wmissing-declarations"
+		"-Wsign-conversion"
+		"-Wunused-function"
 	)
 
 	if(
@@ -409,57 +369,36 @@ if(
 		)
 	endif()
 
-	if(FCPPT_UTILS_HAVE_CONDITIONAL_UNINITIALIZED_FLAG)
-		add_definitions("-Wconditional-uninitialized")
-	endif()
+	foreach(
+		CUR_WARNING
+		${FCPPT_UTILS_GCC_CLANG_WARNINGS}
+	)
+		fcppt_utils_gcc_clang_warning_to_var_name(
+			"${CUR_WARNING}"
+			"OUT_WARNING"
+		)
 
-	if(FCPPT_UTILS_HAVE_DELETE_NON_VIRTUAL_DTOR_FLAG)
-		add_definitions("-Wdelete-non-virtual-dtor")
-	endif()
+		set(
+			OUT_WARNING
+			"FCPPT_UTILS_HAVE_${OUT_WARNING}_FLAG"
+		)
 
-	if(FCPPT_UTILS_HAVE_DOUBLE_PROMOTION_FLAG)
-		add_definitions("-Wdouble-promotion")
-	endif()
+		set(
+			WARNING_OPTION
+			"-W${CUR_WARNING}"
+		)
 
-	if(FCPPT_UTILS_HAVE_DOCUMENTATION_FLAG)
-		add_definitions("-Wdocumentation")
-	endif()
+		CHECK_CXX_COMPILER_FLAG(
+			"-W${CUR_WARNING}"
+			"${OUT_WARNING}"
+		)
 
-	if(FCPPT_UTILS_HAVE_IMPLICIT_FALLTHROUGH_FLAG)
-		add_definitions("-Wimplicit-fallthrough")
-	endif()
-
-	if(FCPPT_UTILS_HAVE_LOGICAL_OP_FLAG)
-		add_definitions("-Wlogical-op")
-	endif()
-
-	if(FCPPT_UTILS_HAVE_MAYBE_UNINITIALIZED_FLAG)
-		add_definitions("-Wmaybe-uninitialized")
-	endif()
-
-	if(FCPPT_UTILS_HAVE_MISSING_DECLARATIONS_FLAG)
-		add_definitions("-Wmissing-declarations")
-	endif()
-
-	if(FCPPT_UTILS_HAVE_SIGN_CONVERSION_FLAG)
-		add_definitions("-Wsign-conversion")
-	endif()
-
-	if(FCPPT_UTILS_HAVE_UNNEEDED_MEMBER_FUNCTION_FLAG)
-		add_definitions("-Wunneeded-member-function")
-	endif()
-
-	if(FCPPT_UTILS_HAVE_UNUSED_LOCAL_TYPEDEFS_FLAG)
-		add_definitions("-Wunused-local-typedefs")
-	endif()
-
-	if(FCPPT_UTILS_HAVE_UNUSED_MEMBER_FUNCTION_FLAG)
-		add_definitions("-Wunused-member-function")
-	endif()
-
-	if(FCPPT_UTILS_HAVE_UNREACHABLE_CODE_FLAG)
-		add_definitions("-Wunreachable-code")
-	endif()
+		if(
+			${OUT_WARNING}
+		)
+			add_definitions("${WARNING_OPTION}")
+		endif()
+	endforeach()
 
 #	if(FCPPT_UTILS_HAVE_ZERO_AS_NULL_POINTER_CONSTANT_FLAG)
 #		add_definitions("-Wzero-as-null-pointer-constant")
