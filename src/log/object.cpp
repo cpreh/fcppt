@@ -88,7 +88,7 @@ fcppt::log::object::level_sink(
 )
 {
 	return
-		*level_streams_[
+		level_streams_[
 			static_cast<
 				fcppt::log::level_stream_array::size_type
 			>(
@@ -103,7 +103,7 @@ fcppt::log::object::level_sink(
 ) const
 {
 	return
-		*level_streams_[
+		level_streams_[
 			static_cast<
 				fcppt::log::level_stream_array::size_type
 			>(

@@ -5,9 +5,11 @@
 
 
 #include <fcppt/foreach_enumerator.hpp>
-#include <fcppt/make_shared_ptr.hpp>
+#include <fcppt/io/ostream.hpp>
 #include <fcppt/log/default_level_streams.hpp>
+#include <fcppt/log/level.hpp>
 #include <fcppt/log/level_stream.hpp>
+#include <fcppt/log/level_stream_array.hpp>
 #include <fcppt/log/format/default_level.hpp>
 
 
@@ -30,9 +32,7 @@ fcppt::log::default_level_streams(
 				index
 			)
 		] =
-			fcppt::make_shared_ptr<
-				fcppt::log::level_stream
-			>(
+			fcppt::log::level_stream(
 				_sink,
 				fcppt::log::format::default_level(
 					index

@@ -7,7 +7,7 @@
 #ifndef FCPPT_LOG_LEVEL_STREAM_HPP_INCLUDED
 #define FCPPT_LOG_LEVEL_STREAM_HPP_INCLUDED
 
-#include <fcppt/noncopyable.hpp>
+#include <fcppt/optional_impl.hpp>
 #include <fcppt/symbol.hpp>
 #include <fcppt/io/ostream.hpp>
 #include <fcppt/log/level_stream_fwd.hpp>
@@ -31,10 +31,9 @@ class can be shared between several logger objects.
 */
 class level_stream
 {
-	FCPPT_NONCOPYABLE(
-		level_stream
-	);
 public:
+	level_stream();
+
 	/**
 	\brief Constructs a level stream with a sink and a formatter
 
@@ -85,9 +84,13 @@ public:
 	fcppt::log::format::function const &
 	formatter() const;
 private:
-	fcppt::io::ostream &dest_;
+	typedef fcppt::optional<
+		fcppt::io::ostream &
+	> ostream_reference;
 
-	fcppt::log::format::function const formatter_;
+	ostream_reference dest_;
+
+	fcppt::log::format::function formatter_;
 };
 
 }

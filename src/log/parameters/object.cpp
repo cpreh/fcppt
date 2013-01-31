@@ -10,6 +10,7 @@
 #include <fcppt/log/enabled_level_array.hpp>
 #include <fcppt/log/enabled_levels.hpp>
 #include <fcppt/log/level.hpp>
+#include <fcppt/log/level_stream.hpp>
 #include <fcppt/log/level_stream_array.hpp>
 #include <fcppt/log/detail/optional_context_location.hpp>
 #include <fcppt/log/format/function.hpp>
@@ -61,7 +62,7 @@ fcppt::log::parameters::object::level_streams(
 fcppt::log::parameters::object &
 fcppt::log::parameters::object::level_stream(
 	fcppt::log::level const _level,
-	fcppt::log::level_stream_ptr const _stream
+	fcppt::log::level_stream const &_stream
 )
 {
 	level_streams_[

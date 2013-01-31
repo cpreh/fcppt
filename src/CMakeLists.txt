@@ -351,7 +351,6 @@ set(
 	include/fcppt/log/level_stream.hpp
 	include/fcppt/log/level_stream_array.hpp
 	include/fcppt/log/level_stream_fwd.hpp
-	include/fcppt/log/level_stream_ptr.hpp
 	include/fcppt/log/level_to_string.hpp
 	include/fcppt/log/location.hpp
 	include/fcppt/log/location_fwd.hpp

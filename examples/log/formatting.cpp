@@ -4,7 +4,6 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/make_shared_ptr.hpp>
 #include <fcppt/string.hpp>
 #include <fcppt/text.hpp>
 #include <fcppt/io/cerr.hpp>
@@ -76,9 +75,7 @@ main()
 		// cerr and also has a special formatter.
 		.level_stream(
 			fcppt::log::level::error,
-			fcppt::make_shared_ptr<
-				fcppt::log::level_stream
-			>(
+			fcppt::log::level_stream(
 				fcppt::io::cerr(),
 				error_formatter
 			)

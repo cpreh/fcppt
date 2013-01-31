@@ -11,6 +11,13 @@
 #include <fcppt/log/format/function.hpp>
 
 
+fcppt::log::level_stream::level_stream()
+:
+	dest_(),
+	formatter_()
+{
+}
+
 fcppt::log::level_stream::level_stream(
 	fcppt::io::ostream &_dest,
 	fcppt::log::format::function const &_formatter
@@ -35,7 +42,7 @@ fcppt::log::level_stream::log(
 	fcppt::log::format::function const &_additional_formatter
 )
 {
-	dest_
+	*dest_
 		<<
 		fcppt::log::format::create_chain(
 			_additional_formatter,
@@ -44,7 +51,7 @@ fcppt::log::level_stream::log(
 			_output.result()
 		);
 
-	dest_.flush();
+	dest_->flush();
 }
 
 fcppt::log::format::function const &
