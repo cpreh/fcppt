@@ -259,7 +259,12 @@ and one for the audio subsystem.
 
 Finally, we also define the subsystem loggers.
 
-\snippet log/complex.cpp define_subsystem_loggers
+\snippet log/complex.cpp define_subsystem_renderer
+
+To encapsulate this somewhat verbose code, fcppt provides a macro called \ref
+FCPPT_LOG_DEFINE_OBJECT which is used to define the audio subsystem's logger.
+
+\snippet log/complex.cpp define_subsystem_audio
 
 The following program illustrates how the different loggers can be manipulated
 at runtime by only using the log context. The program activates every subsystem

@@ -305,6 +305,7 @@ set(
 	include/fcppt/log/debug.hpp
 	include/fcppt/log/default_level_streams.hpp
 	include/fcppt/log/define_context.hpp
+	include/fcppt/log/define_object.hpp
 	include/fcppt/log/detail/auto_context.hpp
 	include/fcppt/log/detail/auto_context_fwd.hpp
 	include/fcppt/log/detail/context_tree.hpp

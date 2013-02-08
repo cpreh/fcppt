@@ -13,6 +13,7 @@
 #include <fcppt/log/context.hpp>
 #include <fcppt/log/debug.hpp>
 #include <fcppt/log/define_context.hpp>
+#include <fcppt/log/define_object.hpp>
 #include <fcppt/log/error.hpp>
 #include <fcppt/log/level.hpp>
 #include <fcppt/log/location.hpp>
@@ -147,7 +148,7 @@ engine::root_logger()
 }
 //! [define_engine_root_logger]
 
-//! [define_subsystem_loggers]
+//! [define_subsystem_renderer]
 //
 // Translation unit for the renderer logger
 //
@@ -170,29 +171,24 @@ engine::renderer::logger()
 	return renderer_logger_obj;
 }
 
+//! [define_subsystem_renderer]
+
+// [define_subsystem_audio]
+
 //
 // Translation unit for the audio logger
 //
 
-namespace
-{
-
-fcppt::log::object audio_logger_obj(
+FCPPT_LOG_DEFINE_OBJECT(
+	engine::audio::logger,
 	engine::logger_parameters(
 		engine::logger_location()
 		/
 		FCPPT_TEXT("audio")
 	)
-);
+)
 
-}
-
-fcppt::log::object &
-engine::audio::logger()
-{
-	return audio_logger_obj;
-}
-//! [define_subsystem_loggers]
+//! [define_subsystem_audio]
 
 int
 main(
