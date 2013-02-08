@@ -72,4 +72,22 @@ FCPPT_PP_POP_WARNING
 		==
 		&x
 	);
+
+	int_ref other_ref(
+		ref
+	);
+
+	BOOST_CHECK(
+		&other_ref.get()
+		==
+		&ref.get()
+	);
+
+	ref = other_ref;
+
+	BOOST_CHECK(
+		&other_ref.get()
+		==
+		&ref.get()
+	);
 }
