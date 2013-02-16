@@ -33,6 +33,9 @@ set(
 set(
 	FCPPT_SO_VERSION
 	"0.11.1"
+	CACHE
+	STRING
+	"The .so version to use"
 )
 
 math(
