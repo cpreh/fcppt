@@ -30,12 +30,10 @@ set(
 	"${FCPPT_MAJOR_VERSION}.${FCPPT_MINOR_VERSION}.${FCPPT_MICRO_VERSION}"
 )
 
-set(
+fcppt_utils_handle_so_version(
 	FCPPT_SO_VERSION
+	FCPPT_USED_SO_VERSION
 	"0.11.1"
-	CACHE
-	STRING
-	"The .so version to use"
 )
 
 math(
@@ -44,10 +42,13 @@ math(
 	"${FCPPT_MAJOR_VERSION} * 1000000 + ${FCPPT_MINOR_VERSION} * 1000 + ${FCPPT_MICRO_VERSION}"
 )
 
-include(CheckCXXSourceCompiles)
-include(CheckCXXSourceRuns)
-include(CheckIncludeFile)
-include(FindPkgConfig)
+include(
+	CheckCXXSourceCompiles
+)
+
+include(
+	CheckCXXSourceRuns
+)
 
 if(WIN32)
 	set(ENABLE_NARROW_STRING_DEFAULT OFF)
@@ -416,7 +417,7 @@ function(
 		${TARGETNAME}
 		PROPERTIES
 		VERSION
-		${FCPPT_SO_VERSION}
+		${FCPPT_USED_SO_VERSION}
 	)
 
 	if(

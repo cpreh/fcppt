@@ -844,3 +844,34 @@ function(
 		endif()
 	endif()
 endfunction()
+
+macro(
+	fcppt_utils_handle_so_version
+	CACHE_VAR
+	OUT_VAR
+	DEFAULT_VERSION
+)
+	set(
+		"${CACHE_VAR}"
+		""
+		CACHE
+		STRING
+		"The custom .so version to use. If empty, the default will be used."
+	)
+
+	if(
+		"${CACHE_VAR}"
+		STREQUAL
+		""
+	)
+		set(
+			"${OUT_VAR}"
+			"${DEFAULT_VERSION}"
+		)
+	else()
+		set(
+			"${OUT_VAR}"
+			"${${CACHE_VAR}}"
+		)
+	endif()
+endmacro()
