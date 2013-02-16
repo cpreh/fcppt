@@ -1,17 +1,6 @@
 #!/bin/sh
-function update_cmake_file()
-{
-	local cmakefile="$1"
 
-	update_cmake \
-		"${cmakefile}" \
-		"${@:2}" \
-		|| exit -1
-
-	mv "${cmakefile}".new "${cmakefile}" || exit -1
-}
-
-update_cmake_file \
+update_cmake \
 	src/CMakeLists.txt \
 	FCPPT_CORE_FILES \
 	-n \
@@ -53,14 +42,14 @@ update_cmake_file \
 	src/time \
 	|| exit -1
 
-update_cmake_file \
+update_cmake \
 	src/filesystem/CMakeLists.txt \
 	FCPPT_FILESYSTEM_FILES \
 	include/fcppt/filesystem \
 	src/filesystem \
 	|| exit -1
 
-update_cmake_file \
+update_cmake \
 	doc/CMakeLists.txt \
 	FCPPT_DOC_FILES \
 	include \
