@@ -1,5 +1,7 @@
 #!/bin/sh
 
+set -e -u
+
 update_cmake \
 	src/CMakeLists.txt \
 	FCPPT_CORE_FILES \
@@ -39,20 +41,17 @@ update_cmake \
 	src/io \
 	src/log \
 	src/signal \
-	src/time \
-	|| exit -1
+	src/time
 
 update_cmake \
 	src/filesystem/CMakeLists.txt \
 	FCPPT_FILESYSTEM_FILES \
 	include/fcppt/filesystem \
-	src/filesystem \
-	|| exit -1
+	src/filesystem
 
 update_cmake \
 	doc/CMakeLists.txt \
 	FCPPT_DOC_FILES \
 	include \
 	-e ".*" \
-	doc \
-	|| exit -1
+	doc
