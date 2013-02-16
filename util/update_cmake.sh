@@ -59,3 +59,11 @@ update_cmake_file \
 	include/fcppt/filesystem \
 	src/filesystem \
 	|| exit -1
+
+update_cmake_file \
+	doc/CMakeLists.txt \
+	FCPPT_DOC_FILES \
+	include \
+	-e ".*" \
+	doc \
+	|| exit -1

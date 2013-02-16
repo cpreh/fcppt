@@ -648,6 +648,28 @@ macro(
 endmacro()
 
 macro(
+	fcppt_utils_append_source_dir
+	FILES
+	RESULT
+)
+	foreach(
+		CUR_FILE
+		${FILES}
+	)
+		set(
+			WHOLE_FILE
+			${CMAKE_SOURCE_DIR}/${CUR_FILE}
+		)
+
+		set(
+			${RESULT}
+			${${RESULT}}
+			${WHOLE_FILE}
+		)
+	endforeach()
+endmacro()
+
+macro(
 	fcppt_utils_append_source_dir_and_make_groups
 	FILES
 	RESULT
