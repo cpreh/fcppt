@@ -875,3 +875,27 @@ macro(
 		)
 	endif()
 endmacro()
+
+function(
+	fcppt_utils_add_dummy_target
+	TARGET_NAME
+	TARGET_FILES
+)
+	set(
+		LIBNAME
+		"${TARGET_NAME}_dummy"
+	)
+
+	add_library(
+		"${LIBNAME}"
+		STATIC
+		${TARGET_FILES}
+	)
+
+	set_target_properties(
+		"${LIBNAME}"
+		PROPERTIES
+		LINKER_LANGUAGE
+		"CXX"
+	)
+endfunction()
