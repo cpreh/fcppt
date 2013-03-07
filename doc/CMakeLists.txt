@@ -404,6 +404,7 @@ set(
 	include/fcppt/io/write.hpp
 	include/fcppt/is_strong_typedef.hpp
 	include/fcppt/log/activate_levels.hpp
+	include/fcppt/log/activate_levels_recursive.hpp
 	include/fcppt/log/context.hpp
 	include/fcppt/log/context_fwd.hpp
 	include/fcppt/log/context_location.hpp
