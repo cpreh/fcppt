@@ -379,6 +379,10 @@ All headers are relative to the log subdirectory.
 <td>Contains \link fcppt::log::activate_levels \endlink which can enable multiple log levels.</td>
 </tr>
 <tr>
+<td><code>activate_levels_recursive.hpp</code></td>
+<td>Contains \link fcppt::log::activate_levels_recursive \endlink which can enable multiple log levels on multiple loggers.</td>
+</tr>
+<tr>
 <td><code>context_location_fwd.hpp</code></td>
 <td>Contains \link fcppt::log::context_location \endlink's declaration.</td>
 </tr>
@@ -425,10 +429,6 @@ All headers are relative to the log subdirectory.
 <tr>
 <td><code>level_stream.hpp</code></td>
 <td>Contains \link fcppt::log::level_stream \endlink's definition.</td>
-</tr>
-<tr>
-<td><code>level_stream_ptr.hpp</code></td>
-<td>Contains the \link fcppt::log::level_stream_ptr \endlink typedef.</td>
 </tr>
 <tr>
 <td><code>level_to_string.hpp</code></td>
