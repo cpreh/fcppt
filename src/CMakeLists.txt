@@ -303,6 +303,7 @@ set(
 	include/fcppt/log/context_location.hpp
 	include/fcppt/log/context_location_fwd.hpp
 	include/fcppt/log/deactivate_levels.hpp
+	include/fcppt/log/deactivate_levels_recursive.hpp
 	include/fcppt/log/debug.hpp
 	include/fcppt/log/default_level_streams.hpp
 	include/fcppt/log/define_context.hpp
@@ -878,6 +879,7 @@ set(
 	src/log/context.cpp
 	src/log/context_location.cpp
 	src/log/deactivate_levels.cpp
+	src/log/deactivate_levels_recursive.cpp
 	src/log/default_level_streams.cpp
 	src/log/detail/auto_context.cpp
 	src/log/detail/context_tree_node.cpp

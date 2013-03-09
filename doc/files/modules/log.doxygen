@@ -395,6 +395,10 @@ All headers are relative to the log subdirectory.
 <td>Contains \link fcppt::log::deactivate_levels \endlink which can disable multiple log levels.</td>
 </tr>
 <tr>
+<td><code>deactivate_levels_recursive.hpp</code></td>
+<td>Contains \link fcppt::log::deactivate_levels_recursive \endlink which can disable multiple log levels on multiple loggers.</td>
+</tr>
+<tr>
 <td><code>default_level_streams.hpp</code></td>
 <td>Contains \link fcppt::log::default_level_streams \endlink for construction of all level stream defaults.</td>
 </tr>
