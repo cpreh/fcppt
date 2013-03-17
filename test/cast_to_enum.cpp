@@ -21,7 +21,7 @@ enum class testenum
 {
 	enum1,
 	enum2,
-	size
+	fcppt_maximum = enum2
 };
 
 bool

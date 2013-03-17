@@ -20,7 +20,7 @@ enum class my_enum
 	enum1,
 	enum2,
 	enum3,
-	size // note the additional size, which is needed for FOREACH_ENUMERATOR to work
+	fcppt_maximum = enum3 // note the additional element which is needed for FOREACH_ENUMERATOR to work
 };
 
 // ![foreach_enumerator_declaration]

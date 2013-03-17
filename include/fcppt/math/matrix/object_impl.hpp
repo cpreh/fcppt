@@ -528,6 +528,7 @@ fcppt::math::matrix::object<T, N, M, S>::swap(
 	);
 }
 
+// \cond
 template<
 	typename T,
 	typename N,
@@ -536,13 +537,14 @@ template<
 >
 void
 fcppt::math::matrix::swap(
-	object<T, N, M, S> &_a,
-	object<T, N, M, S> &_b
+	fcppt::math::matrix::object<T, N, M, S> &_a,
+	fcppt::math::matrix::object<T, N, M, S> &_b
 )
 {
 	_a.swap(
 		_b
 	);
 }
+// \endcond
 
 #endif

@@ -434,8 +434,8 @@ template<
 >
 void
 swap(
-	object<T, N, M, S> &,
-	object<T, N, M, S> &
+	fcppt::math::matrix::object<T, N, M, S> &,
+	fcppt::math::matrix::object<T, N, M, S> &
 );
 
 }

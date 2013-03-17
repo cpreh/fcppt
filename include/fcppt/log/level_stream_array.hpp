@@ -7,6 +7,7 @@
 #ifndef FCPPT_LOG_LEVEL_STREAM_ARRAY_HPP_INCLUDED
 #define FCPPT_LOG_LEVEL_STREAM_ARRAY_HPP_INCLUDED
 
+#include <fcppt/enum_size.hpp>
 #include <fcppt/log/level.hpp>
 #include <fcppt/log/level_stream.hpp>
 #include <fcppt/config/external_begin.hpp>
@@ -25,16 +26,18 @@ namespace log
 
 \ingroup fcpptlog
 
-An array of \link fcppt::log::level_stream_ptr \endlink with the size
-\link fcppt::log::level::size \endlink. Each entry corresponds to
-an enumerator from \link fcppt::log::level \endlink.
+An array of \link fcppt::log::level_stream \endlink with the size \link
+fcppt::log::level \endlink. Each entry corresponds to an enumerator from \link
+fcppt::log::level \endlink.
 */
 typedef std::array<
 	fcppt::log::level_stream,
 	static_cast<
 		std::size_t
 	>(
-		fcppt::log::level::size
+		fcppt::enum_size<
+			fcppt::log::level
+		>::value
 	)
 > level_stream_array;
 

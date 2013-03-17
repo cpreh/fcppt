@@ -77,9 +77,6 @@ public:
 	because creating an output even if the logger will discard it can be
 	significant overhead. Instead, use the macros FCPPT_LOG_DEBUG and so on
 	directly.
-
-	\warning The behaviour is undefined if level is \link
-	fcppt::log::level::size \endlink
 	*/
 	FCPPT_SYMBOL
 	void
@@ -94,9 +91,6 @@ public:
 	Returns the level stream corresponding to \a level.
 
 	\param level The log level to get the level stream for
-
-	\warning The behaviour is undefined if level is \link
-	fcppt::log::level::size \endlink
 	*/
 	FCPPT_SYMBOL
 	fcppt::log::level_stream &
@@ -110,9 +104,6 @@ public:
 	Returns the level stream corresponding to \a level.
 
 	\param level The log level to get the level stream for
-
-	\warning The behaviour is undefined if level is \link
-	fcppt::log::level::size \endlink
 	*/
 	FCPPT_SYMBOL
 	fcppt::log::level_stream const &
@@ -126,9 +117,6 @@ public:
 	Activates the log level given by \a level
 
 	\param level The log level to activate
-
-	\warning The behaviour is undefined if level is \link
-	fcppt::log::level::size \endlink
 	*/
 	FCPPT_SYMBOL
 	void
@@ -142,9 +130,6 @@ public:
 	Deactivates the log level given by \a level
 
 	\param level The log level to deactivate
-
-	\warning The behaviour is undefined if level is \link
-	fcppt::log::level::size \endlink
 	*/
 	FCPPT_SYMBOL
 	void
@@ -158,9 +143,6 @@ public:
 	Returns if \a level is activated.
 
 	\param level The log level to query the activated state for
-
-	\warning The behaviour is undefined if level is \link
-	fcppt::log::level::size \endlink
 	*/
 	FCPPT_SYMBOL
 	bool
@@ -175,9 +157,6 @@ public:
 	Equivalent to <code>activated(level) && enabled()</code>.
 
 	\param level The log level to query the activated state for
-
-	\warning The behaviour is undefined if level is \link
-	fcppt::log::level::size \endlink
 	*/
 	FCPPT_SYMBOL
 	bool

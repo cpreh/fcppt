@@ -74,11 +74,9 @@ enum class level
 	*/
 	fatal,
 	/**
-	\brief The size of the enumeration
-
-	Don't use this as a log level!
+	\brief The maximum value of the enumeration
 	*/
-	size
+	fcppt_maximum = fatal
 };
 
 }

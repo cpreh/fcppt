@@ -7,6 +7,7 @@
 #ifndef FCPPT_SRC_LOG_LEVEL_STRING_ARRAY_HPP_INCLUDED
 #define FCPPT_SRC_LOG_LEVEL_STRING_ARRAY_HPP_INCLUDED
 
+#include <fcppt/enum_size.hpp>
 #include <fcppt/string.hpp>
 #include <fcppt/log/level.hpp>
 #include <fcppt/config/external_begin.hpp>
@@ -25,7 +26,9 @@ typedef std::array<
 	static_cast<
 		std::size_t
 	>(
-		fcppt::log::level::size
+		fcppt::enum_size<
+			fcppt::log::level
+		>::value
 	)
 > level_string_array;
 
