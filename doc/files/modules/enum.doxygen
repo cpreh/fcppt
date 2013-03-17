@@ -1,0 +1,60 @@
+/**
+\defgroup fcpptenum fcppt.enum
+\ingroup fcpptmain
+\brief Helper functions for contiguous enums
+
+<table id="toc">
+<tr>
+<td>
+
+<ul>
+	<li>\ref fcpptenum_contiguous</li>
+	<li>\ref fcpptenum_cast_to</li>
+	<li>\ref fcpptenum_iterate</li>
+</ul>
+
+</td>
+</tr>
+</table>
+
+\section fcpptenum_contiguous Contiguous Enums
+
+Contiguous enums are enums whose enumerator values form a range of
+<code>0</code> to <code>max</code>, which means there is no gap in between the
+values. For example, if no enumerator values are specified, an enum is contiguous
+as in the following example:
+\code
+enum class myenum
+{
+  val1,
+  val2,
+  val3
+};
+\endcode
+
+It is often desirable to know the enum's maximum value, or its number of
+enumerators, for that matter. Unfortunately, C++ offers no introspection of any
+kind which makes it possible to query the maximum value. fcppt provides a trait
+class called \ref fcppt::enum_size which has a default behavior of inferring
+the maximum value from special enumerator names. Additionally, the trait class
+can also be specialized.
+
+\section fcpptenum_cast_to Cast to enums
+
+Casting an integral value to an enum might be needed when deserializing data.
+It is important, however, that the value must not fall outside of the enum's
+range. \ref fcppt::cast_to_enum throws an exception in this case.
+
+\section fcpptenum_iterate Iterating over enums
+
+Another appilcation where the maximum value of an enum is needed is when you
+want to iterate over all enumerators in an enum. fcppt provides three functions
+for this: \ref FCPPT_FOREACH_ENUMERATOR, \ref FCPPT_FOREACH_ENUMERATOR_START
+and \ref FCPPT_FOREACH_ENUMERATOR_START_END
+
+The following example shows how this can be used:
+
+\snippet foreach_enumerator.cpp foreach_enumerator_declaration
+
+\snippet foreach_enumerator.cpp foreach_enumerator_start
+*/

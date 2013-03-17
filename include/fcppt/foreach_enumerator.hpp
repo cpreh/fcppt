@@ -12,20 +12,11 @@
 /**
 \brief Iterates over an enum
 
-\ingroup fcpptvarious
+\ingroup fcpptenum
 
-Iterates over the type <code>enum_::type</code>, giving the loop variable the
-name \a name, starting at <code>static_cast<enum_::type>(0)</code> and ending
-before <code>enum_::size</code> (which means that <code>enum_::size</code> is
-not included).
-
-This macro generates a for loop that hides some enum casting behind its scenes.
-It is important that the enumerators in the enum are contiguous as in the
-following example:
-
-\snippet foreach_enumerator.cpp foreach_enumerator_declaration
-
-\snippet foreach_enumerator.cpp foreach_enumerator
+Iterates over the type <code>enum_</code>, giving the loop variable the name \a
+name, starting at <code>static_cast<enum_>(0)</code> and ending at the enum's
+size minus one.
 
 \see FCPPT_FOREACH_ENUMERATOR_START_END
 */

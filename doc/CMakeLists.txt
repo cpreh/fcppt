@@ -59,6 +59,7 @@ set(
 	doc/files/modules/container/raw_vector.doxygen
 	doc/files/modules/container/tree.doxygen
 	doc/files/modules/endianness.doxygen
+	doc/files/modules/enum.doxygen
 	doc/files/modules/export.doxygen
 	doc/files/modules/fcppt.doxygen
 	doc/files/modules/filesystem.doxygen
@@ -165,6 +166,7 @@ set(
 	include/fcppt/bad_truncation_check_cast.hpp
 	include/fcppt/c_deleter.hpp
 	include/fcppt/c_deleter_fwd.hpp
+	include/fcppt/cast_to_enum.hpp
 	include/fcppt/char_type.hpp
 	include/fcppt/class_symbol.hpp
 	include/fcppt/com_deleter.hpp
@@ -328,6 +330,7 @@ set(
 	include/fcppt/endianness/reverse_mem.hpp
 	include/fcppt/endianness/size_type.hpp
 	include/fcppt/endianness/swap.hpp
+	include/fcppt/enum_size.hpp
 	include/fcppt/error/strerrno.hpp
 	include/fcppt/error/strerror.hpp
 	include/fcppt/exception.hpp
