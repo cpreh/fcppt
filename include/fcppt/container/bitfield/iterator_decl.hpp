@@ -94,7 +94,7 @@ public:
 private:
 	template<
 		typename Enum,
-		Enum,
+		typename,
 		typename
 	> friend class object;
 

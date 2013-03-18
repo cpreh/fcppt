@@ -4,7 +4,10 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
+#include <fcppt/enum_is_empty.hpp>
+#include <fcppt/enum_size.hpp>
 #include <fcppt/container/bitfield/is_subset_eq.hpp>
+#include <fcppt/container/bitfield/object_from_enum.hpp>
 #include <fcppt/container/bitfield/object_impl.hpp>
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
@@ -12,6 +15,7 @@
 #include <fcppt/config/external_begin.hpp>
 #include <boost/test/unit_test.hpp>
 #include <algorithm>
+#include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -23,39 +27,60 @@ enum class test_enum
 	test1,
 	test2,
 	test3,
-	size
+	fcppt_maximum = test3
 };
 
-typedef fcppt::container::bitfield::object<
-	test_enum,
-	test_enum::size
-> bitfield;
+typedef fcppt::container::bitfield::object_from_enum<
+	test_enum
+>::type bitfield;
 
 enum class empty_enum
 {
-	size
 };
 
 }
 
-typedef fcppt::container::bitfield::object<
-	empty_enum,
-	empty_enum::size
-> empty_bitfield;
+namespace fcppt
+{
+
+FCPPT_PP_PUSH_WARNING
+FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
+
+template<>
+struct enum_is_empty<
+	empty_enum
+>
+:
+std::true_type
+{
+};
+
+FCPPT_PP_POP_WARNING
+
+}
+
+typedef fcppt::container::bitfield::object_from_enum<
+	empty_enum
+>::type empty_bitfield;
 
 #define FCPPT_INSTANTIATE_BITFIELD(\
 	enum_,\
 	internal_\
 )\
-template class fcppt::container::bitfield::object< \
+template class \
+fcppt::container::bitfield::object< \
 	enum_, \
-	enum_::size \
+	fcppt::enum_size<\
+		enum_\
+	>::type\
 >; \
 \
 template class fcppt::container::bitfield::proxy< \
 	fcppt::container::bitfield::array< \
 		enum_, \
-		enum_::size, \
+		fcppt::enum_size<\
+			enum_\
+		>::type,\
 		internal_\
 	>::type & \
 >; \
@@ -63,13 +88,17 @@ template class fcppt::container::bitfield::proxy< \
 template class fcppt::container::bitfield::iterator< \
 	fcppt::container::bitfield::array< \
 		enum_, \
-		enum_::size, \
+		fcppt::enum_size<\
+			enum_\
+		>::type,\
 		internal_ \
 	>::type &, \
 	fcppt::container::bitfield::proxy< \
 		fcppt::container::bitfield::array< \
 			enum_, \
-			enum_::size, \
+			fcppt::enum_size<\
+				enum_\
+			>::type,\
 			internal_ \
 		>::type & \
 	> \

@@ -94,6 +94,7 @@ set(
 	include/fcppt/container/bitfield/iterator_impl.hpp
 	include/fcppt/container/bitfield/object.hpp
 	include/fcppt/container/bitfield/object_decl.hpp
+	include/fcppt/container/bitfield/object_from_enum.hpp
 	include/fcppt/container/bitfield/object_fwd.hpp
 	include/fcppt/container/bitfield/object_impl.hpp
 	include/fcppt/container/bitfield/proxy.hpp
@@ -199,8 +200,14 @@ set(
 	include/fcppt/detail/cyclic_iterator_category.hpp
 	include/fcppt/detail/enable_optional_ref_conv.hpp
 	include/fcppt/detail/enable_optional_value_conv.hpp
+	include/fcppt/detail/enum_size.hpp
 	include/fcppt/detail/equal.hpp
 	include/fcppt/detail/equal_functor.hpp
+	include/fcppt/detail/foreach_enumerator.hpp
+	include/fcppt/detail/foreach_enumerator_start.hpp
+	include/fcppt/detail/foreach_enumerator_start_end.hpp
+	include/fcppt/detail/foreach_enumerator_var_decl.hpp
+	include/fcppt/detail/foreach_enumerator_var_impl.hpp
 	include/fcppt/detail/make_ptr_base.hpp
 	include/fcppt/detail/make_shared_wrapper.hpp
 	include/fcppt/detail/make_shared_wrapper_fwd.hpp
@@ -236,8 +243,12 @@ set(
 	include/fcppt/endianness/reverse_mem.hpp
 	include/fcppt/endianness/size_type.hpp
 	include/fcppt/endianness/swap.hpp
+	include/fcppt/enum_is_empty.hpp
+	include/fcppt/enum_is_empty_fwd.hpp
 	include/fcppt/enum_size.hpp
 	include/fcppt/enum_size_fwd.hpp
+	include/fcppt/enum_size_type.hpp
+	include/fcppt/enum_size_type_fwd.hpp
 	include/fcppt/error/strerrno.hpp
 	include/fcppt/error/strerror.hpp
 	include/fcppt/exception.hpp

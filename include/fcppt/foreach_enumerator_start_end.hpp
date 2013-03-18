@@ -7,9 +7,8 @@
 #ifndef FCPPT_FOREACH_ENUMERATOR_START_END_HPP_INCLUDED
 #define FCPPT_FOREACH_ENUMERATOR_START_END_HPP_INCLUDED
 
-#include <fcppt/config/external_begin.hpp>
-#include <type_traits>
-#include <fcppt/config/external_end.hpp>
+#include <fcppt/detail/foreach_enumerator.hpp>
+#include <fcppt/detail/foreach_enumerator_start_end.hpp>
 
 
 /**
@@ -17,13 +16,12 @@
 
 \ingroup fcpptenum
 
-Iterates over the type <code>enum_</code>, giving the loop variable the
-name \a name, starting at the enumerator \a start and ending before \a end
-(which means \a end itself is not included).
+Iterates over the type <code>enum_</code>, giving the loop variable the name \a
+name, starting at the enumerator \a start and ending at \a end.
 
-\see FCPPT_FOREACH_ENUMERATOR
+\snippet foreach_enumerator.cpp foreach_enumerator_declaration
 
-\see FCPPT_FOREACH_ENUMERATOR_START_END
+\snippet foreach_enumerator.cpp foreach_enumerator_start_end
 */
 #define FCPPT_FOREACH_ENUMERATOR_START_END(\
 	name,\
@@ -31,39 +29,14 @@ name \a name, starting at the enumerator \a start and ending before \a end
 	start,\
 	end\
 )\
-for(\
-	enum_ name{\
-		start\
-	};\
-	static_cast<\
-		std::underlying_type< \
-			enum_ \
-		>::type\
-	>(\
-		name\
-	) \
-	< \
-	static_cast<\
-		std::underlying_type< \
-			enum_ \
-		>::type\
-	>(\
+FCPPT_DETAIL_FOREACH_ENUMERATOR(\
+	FCPPT_DETAIL_FOREACH_ENUMERATOR_START_END(\
+		name,\
+		enum_,\
+		start,\
 		end\
-	);\
-	name = \
-		static_cast<\
-			enum_\
-		>(\
-			static_cast<\
-				std::underlying_type< \
-					enum_ \
-				>::type\
-			>(\
-				name\
-			)\
-			+ \
-			1\
-		)\
+	),\
+	name\
 )
 
 #endif

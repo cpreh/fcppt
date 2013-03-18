@@ -18,8 +18,8 @@ namespace bitfield
 {
 
 template<
-	typename Enum,
-	Enum Size,
+	typename ElementType,
+	typename NumElements,
 	typename InternalType =
 		fcppt::container::bitfield::default_internal_type
 >

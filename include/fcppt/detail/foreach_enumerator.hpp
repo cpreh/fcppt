@@ -4,24 +4,18 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_CONTAINER_BITFIELD_PROXY_FWD_HPP_INCLUDED
-#define FCPPT_CONTAINER_BITFIELD_PROXY_FWD_HPP_INCLUDED
+#ifndef FCPPT_DETAIL_FOREACH_ENUMERATOR_HPP_INCLUDED
+#define FCPPT_DETAIL_FOREACH_ENUMERATOR_HPP_INCLUDED
 
 
-namespace fcppt
-{
-namespace container
-{
-namespace bitfield
-{
-
-template<
-	typename StoredType
->
-class proxy;
-
-}
-}
-}
+#define FCPPT_DETAIL_FOREACH_ENUMERATOR(\
+	decl,\
+	name\
+) \
+for(\
+	decl;\
+	name.running();\
+	name.increment()\
+)
 
 #endif

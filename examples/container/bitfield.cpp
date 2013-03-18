@@ -7,6 +7,7 @@
 //[bitfield
 #include <fcppt/text.hpp>
 #include <fcppt/container/bitfield/object.hpp>
+#include <fcppt/container/bitfield/object_from_enum.hpp>
 #include <fcppt/io/cout.hpp>
 
 
@@ -17,14 +18,13 @@ enum class person_status
 {
 	hungry,
 	tired,
-	size // note the extra field here
+	fcppt_maximum = tired // note the extra field here
 };
 
 typedef
-fcppt::container::bitfield::object<
-	person_status,
-	person_status::size
->
+fcppt::container::bitfield::object_from_enum<
+	person_status
+>::type
 bitfield;
 
 void

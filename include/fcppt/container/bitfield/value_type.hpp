@@ -7,6 +7,7 @@
 #ifndef FCPPT_CONTAINER_BITFIELD_VALUE_TYPE_HPP_INCLUDED
 #define FCPPT_CONTAINER_BITFIELD_VALUE_TYPE_HPP_INCLUDED
 
+
 namespace fcppt
 {
 namespace container

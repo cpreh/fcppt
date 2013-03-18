@@ -18,7 +18,9 @@ Iterates over the type <code>enum_</code>, giving the loop variable the name \a
 name, starting at <code>static_cast<enum_>(0)</code> and ending at the enum's
 size minus one.
 
-\see FCPPT_FOREACH_ENUMERATOR_START_END
+\snippet foreach_enumerator.cpp foreach_enumerator_declaration
+
+\snippet foreach_enumerator.cpp foreach_enumerator
 */
 #define FCPPT_FOREACH_ENUMERATOR(\
 	name,\
@@ -27,7 +29,11 @@ size minus one.
 	FCPPT_FOREACH_ENUMERATOR_START(\
 		name,\
 		enum_, \
-		static_cast<enum_>(0)\
+		static_cast<\
+			enum_\
+		>(\
+			0\
+		)\
 	)
 
 #endif

@@ -6,6 +6,7 @@
 
 #include <fcppt/foreach_enumerator.hpp>
 #include <fcppt/foreach_enumerator_start.hpp>
+#include <fcppt/foreach_enumerator_start_end.hpp>
 #include <fcppt/text.hpp>
 #include <fcppt/io/cout.hpp>
 
@@ -78,7 +79,7 @@ main()
 		loop_var,
 		my_enum,
 		my_enum::enum1,
-		my_enum::enum3
+		my_enum::enum2
 	)
 		print_enum_value(
 			loop_var

@@ -51,10 +51,4 @@ Another appilcation where the maximum value of an enum is needed is when you
 want to iterate over all enumerators in an enum. fcppt provides three functions
 for this: \ref FCPPT_FOREACH_ENUMERATOR, \ref FCPPT_FOREACH_ENUMERATOR_START
 and \ref FCPPT_FOREACH_ENUMERATOR_START_END
-
-The following example shows how this can be used:
-
-\snippet foreach_enumerator.cpp foreach_enumerator_declaration
-
-\snippet foreach_enumerator.cpp foreach_enumerator_start
 */

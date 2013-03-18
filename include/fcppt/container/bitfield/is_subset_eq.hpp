@@ -19,24 +19,26 @@ namespace bitfield
 
 /**
 \brief Checks if one bitfield has all the bits of another bitfield set.
+
 \param left The "bigger" bitfield
+
 \param right The "smaller" bitfield
 */
 template<
-	typename Enum,
-	Enum Size,
+	typename ElementType,
+	typename NumElements,
 	typename InternalType
 >
 bool
 is_subset_eq(
 	fcppt::container::bitfield::object<
-		Enum,
-		Size,
+		ElementType,
+		NumElements,
 		InternalType
 	> const &left,
 	fcppt::container::bitfield::object<
-		Enum,
-		Size,
+		ElementType,
+		NumElements,
 		InternalType
 	> const &right
 )

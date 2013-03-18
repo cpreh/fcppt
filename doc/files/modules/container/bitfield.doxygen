@@ -39,6 +39,8 @@ situation.
 
 \section bitfield_requirements Requirements
 
+TODO: This is wrong now. Link to an explanation in fcppt.enum instead!
+
 fcppt::container::bitfield::object takes as first template parameter an enum
 <code>Enum</code> which satisfies the following requirements:
 

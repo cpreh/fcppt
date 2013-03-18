@@ -13,10 +13,7 @@
 #include <fcppt/container/bitfield/proxy_fwd.hpp>
 #include <fcppt/container/bitfield/value_type.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/mpl/eval_if.hpp>
-#include <boost/mpl/identity.hpp>
 #include <iterator>
-#include <limits>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
@@ -29,17 +26,22 @@ namespace bitfield
 {
 
 /**
-\brief A wrapper around a bitfield using an enum
+\brief A statically sized bitfield
+
 \ingroup fcpptcontainerbitfield
-\tparam Enum An enumeration type satisfying the requirements described in the module documentation
-\tparam Size The enumeration's size value
-\tparam InternalType The internal storage type. Must be unsigned. This fcppt::container::bitfield::default_internal_type by default
+
+\tparam ElementType An integral or enumeration type
+
+\tparam NumElements An integral constant wrapper specifying the number of bits
+
+\tparam InternalType The internal storage type. Must be unsigned. This is
+fcppt::container::bitfield::default_internal_type by default
 
 See the \link fcpptcontainerbitfield module description \endlink for more information.
 */
 template<
-	typename Enum,
-	Enum Size,
+	typename ElementType,
+	typename NumElements,
 	typename InternalType
 >
 class object
@@ -53,32 +55,22 @@ private:
 	);
 
 	typedef typename fcppt::container::bitfield::array<
-		Enum,
-		Size,
+		ElementType,
+		NumElements,
 		InternalType
 	>::type array_type;
 
 	array_type array_;
 public:
 	/**
-	\brief Typedef to <code>Enum</code>
+	\brief Typedef to <code>ElementType</code>
 	*/
-	typedef Enum enum_type;
+	typedef ElementType element_type;
 
 	/**
-	\brief The size type which is the underlying type of <code>Enum</code>
+	\brief The size type which is taken from <code>NumElements</code>
 	*/
-	typedef typename boost::mpl::eval_if<
-		std::is_enum<
-			enum_type
-		>,
-		std::underlying_type<
-			enum_type
-		>,
-		boost::mpl::identity<
-			enum_type
-		>
-	>::type size_type;
+	typedef typename NumElements::value_type size_type;
 
 	/**
 	\brief The value type, which is bool
@@ -86,16 +78,9 @@ public:
 	typedef fcppt::container::bitfield::value_type value_type;
 
 	/**
-	\brief A std::integral_constant for <code>Size</code>
+	\brief Typedef to <code>NumElements</code>
 	*/
-	typedef std::integral_constant<
-		size_type,
-		static_cast<
-			size_type
-		>(
-			Size
-		)
-	> static_size;
+	typedef NumElements static_size;
 
 	/**
 	\brief Typedef to the internal storage type (template parameter <code>InternalType</code>
@@ -174,7 +159,7 @@ public:
 	*/
 	explicit
 	object(
-		Enum e
+		ElementType e
 	);
 
 	/**
@@ -183,7 +168,7 @@ public:
 	*/
 	object &
 	operator=(
-		Enum e
+		ElementType e
 	);
 
 	/**
@@ -273,7 +258,7 @@ public:
 	/**
 	\brief Returns the number of elements in the bitfield.
 
-	This is the same as <code>Size</code>.
+	This is the same as <code>NumElements::value</code>.
 	*/
 	size_type
 	size() const;
@@ -283,7 +268,7 @@ public:
 	*/
 	const_reference
 	operator[](
-		Enum
+		ElementType
 	) const;
 
 	/**
@@ -291,7 +276,7 @@ public:
 	*/
 	reference
 	operator[](
-		Enum
+		ElementType
 	);
 
 	/**
@@ -299,7 +284,7 @@ public:
 	*/
 	object &
 	operator|=(
-		Enum
+		ElementType
 	);
 
 	/**
@@ -349,7 +334,7 @@ public:
 	*/
 	value_type
 	operator &(
-		Enum
+		ElementType
 	) const;
 
 	/**
@@ -375,7 +360,7 @@ public:
 	*/
 	void
 	set(
-		Enum where,
+		ElementType where,
 		value_type value
 	);
 
@@ -384,7 +369,7 @@ public:
 	*/
 	value_type
 	get(
-		Enum
+		ElementType
 	) const;
 
 	/**
@@ -411,161 +396,143 @@ public:
 
 /**
 \brief Set the specified bit to true
-\tparam Enum An enumeration type satisfying the requirements described in the module documentation.
-\tparam Size The enumeration's size value.
-\tparam InternalType The internal storage type. See fcppt::container::bitfield::object for more info.
 */
 template<
-	typename Enum,
-	Enum Size,
+	typename ElementType,
+	typename NumElements,
 	typename InternalType
 >
 fcppt::container::bitfield::object<
-	Enum,
-	Size,
+	ElementType,
+	NumElements,
 	InternalType
 > const
 operator|(
 	fcppt::container::bitfield::object<
-		Enum,
-		Size,
+		ElementType,
+		NumElements,
 		InternalType
 	> const &,
-	Enum
+	ElementType
 );
 
 /**
 \brief Do a bit-wise "or" for all bits.
-\tparam Enum An enumeration type satisfying the requirements described in the module documentation.
-\tparam Size The enumeration's size value.
-\tparam InternalType The internal storage type. See fcppt::container::bitfield::object for more info.
 */
 template<
-	typename Enum,
-	Enum Size,
+	typename ElementType,
+	typename NumElements,
 	typename InternalType
 >
 fcppt::container::bitfield::object<
-	Enum,
-	Size,
+	ElementType,
+	NumElements,
 	InternalType
 > const
 operator|(
 	fcppt::container::bitfield::object<
-		Enum,
-		Size,
+		ElementType,
+		NumElements,
 		InternalType
 	> const &,
 	fcppt::container::bitfield::object<
-		Enum,
-		Size,
+		ElementType,
+		NumElements,
 		InternalType
 	> const &
 );
 
 /**
 \brief Do a bit-wise "and" for all bits.
-\tparam Enum An enumeration type satisfying the requirements described in the module documentation.
-\tparam Size The enumeration's size value.
-\tparam InternalType The internal storage type. See fcppt::container::bitfield::object for more info.
 */
 template<
-	typename Enum,
-	Enum Size,
+	typename ElementType,
+	typename NumElements,
 	typename InternalType
 >
 fcppt::container::bitfield::object<
-	Enum,
-	Size,
+	ElementType,
+	NumElements,
 	InternalType
 > const
 operator&(
 	fcppt::container::bitfield::object<
-		Enum,
-		Size,
+		ElementType,
+		NumElements,
 		InternalType
 	> const &,
 	fcppt::container::bitfield::object<
-		Enum,
-		Size,
+		ElementType,
+		NumElements,
 		InternalType
 	> const &
 );
 
 /**
 \brief Do a bit-wise "xor" for all bits.
-\tparam Enum An enumeration type satisfying the requirements described in the module documentation.
-\tparam Size The enumeration's size value.
-\tparam InternalType The internal storage type. See fcppt::container::bitfield::object for more info.
 */
 template<
-	typename Enum,
-	Enum Size,
+	typename ElementType,
+	typename NumElements,
 	typename InternalType
 >
 fcppt::container::bitfield::object<
-	Enum,
-	Size,
+	ElementType,
+	NumElements,
 	InternalType
 > const
 operator^(
 	fcppt::container::bitfield::object<
-		Enum,
-		Size,
+		ElementType,
+		NumElements,
 		InternalType
 	> const &,
 	fcppt::container::bitfield::object<
-		Enum,
-		Size,
+		ElementType,
+		NumElements,
 		InternalType
 	> const &
 );
 
 /**
 \brief Do a bit-wise "not" for all bits.
-\tparam Enum An enumeration type satisfying the requirements described in the module documentation.
-\tparam Size The enumeration's size value.
-\tparam InternalType The internal storage type. See fcppt::container::bitfield::object for more info.
 */
 template<
-	typename Enum,
-	Enum Size,
+	typename ElementType,
+	typename NumElements,
 	typename InternalType
 >
 fcppt::container::bitfield::object<
-	Enum,
-	Size,
+	ElementType,
+	NumElements,
 	InternalType
 > const
 operator~(
 	fcppt::container::bitfield::object<
-		Enum,
-		Size,
+		ElementType,
+		NumElements,
 		InternalType
 	>
 );
 
 /**
 \brief Exchanges the elements of two bitfields.
-\tparam Enum An enumeration type satisfying the requirements described in the module documentation.
-\tparam Size The enumeration's size value.
-\tparam InternalType The internal storage type. See fcppt::container::bitfield::object for more info.
 */
 template<
-	typename Enum,
-	Enum Size,
+	typename ElementType,
+	typename NumElements,
 	typename InternalType
 >
 void
 swap(
 	fcppt::container::bitfield::object<
-		Enum,
-		Size,
+		ElementType,
+		NumElements,
 		InternalType
 	> &,
 	fcppt::container::bitfield::object<
-		Enum,
-		Size,
+		ElementType,
+		NumElements,
 		InternalType
 	> &
 );
@@ -574,20 +541,20 @@ swap(
 \brief Compares two bitfields component-wise
 */
 template<
-	typename Enum,
-	Enum Size,
+	typename ElementType,
+	typename NumElements,
 	typename InternalType
 >
 bool
 operator==(
 	fcppt::container::bitfield::object<
-		Enum,
-		Size,
+		ElementType,
+		NumElements,
 		InternalType
 	> const &,
 	fcppt::container::bitfield::object<
-		Enum,
-		Size,
+		ElementType,
+		NumElements,
 		InternalType
 	> const &
 );
@@ -596,20 +563,20 @@ operator==(
 \brief Compares two bitfields component-wise
 */
 template<
-	typename Enum,
-	Enum Size,
+	typename ElementType,
+	typename NumElements,
 	typename InternalType
 >
 bool
 operator!=(
 	fcppt::container::bitfield::object<
-		Enum,
-		Size,
+		ElementType,
+		NumElements,
 		InternalType
 	> const &,
 	fcppt::container::bitfield::object<
-		Enum,
-		Size,
+		ElementType,
+		NumElements,
 		InternalType
 	> const &
 );
@@ -618,20 +585,20 @@ operator!=(
 \brief Compares two bitfields lexicographically bit by bit.
 */
 template<
-	typename Enum,
-	Enum Size,
+	typename ElementType,
+	typename NumElements,
 	typename InternalType
 >
 bool
 operator<(
 	fcppt::container::bitfield::object<
-		Enum,
-		Size,
+		ElementType,
+		NumElements,
 		InternalType
 	> const &,
 	fcppt::container::bitfield::object<
-		Enum,
-		Size,
+		ElementType,
+		NumElements,
 		InternalType
 	> const &
 );
@@ -640,20 +607,20 @@ operator<(
 \brief Compares two bitfields lexicographically bit by bit.
 */
 template<
-	typename Enum,
-	Enum Size,
+	typename ElementType,
+	typename NumElements,
 	typename InternalType
 >
 bool
 operator<=(
 	fcppt::container::bitfield::object<
-		Enum,
-		Size,
+		ElementType,
+		NumElements,
 		InternalType
 	> const &,
 	fcppt::container::bitfield::object<
-		Enum,
-		Size,
+		ElementType,
+		NumElements,
 		InternalType
 	> const &
 );
@@ -662,20 +629,20 @@ operator<=(
 \brief Compares two bitfields lexicographically bit by bit.
 */
 template<
-	typename Enum,
-	Enum Size,
+	typename ElementType,
+	typename NumElements,
 	typename InternalType
 >
 bool
 operator>(
 	fcppt::container::bitfield::object<
-		Enum,
-		Size,
+		ElementType,
+		NumElements,
 		InternalType
 	> const &,
 	fcppt::container::bitfield::object<
-		Enum,
-		Size,
+		ElementType,
+		NumElements,
 		InternalType
 	> const &
 );
@@ -684,20 +651,20 @@ operator>(
 \brief Compares two bitfields lexicographically bit by bit.
 */
 template<
-	typename Enum,
-	Enum Size,
+	typename ElementType,
+	typename NumElements,
 	typename InternalType
 >
 bool
 operator>=(
 	fcppt::container::bitfield::object<
-		Enum,
-		Size,
+		ElementType,
+		NumElements,
 		InternalType
 	> const &,
 	fcppt::container::bitfield::object<
-		Enum,
-		Size,
+		ElementType,
+		NumElements,
 		InternalType
 	> const &
 );

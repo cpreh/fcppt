@@ -7,8 +7,8 @@
 #ifndef FCPPT_FOREACH_ENUMERATOR_START_HPP_INCLUDED
 #define FCPPT_FOREACH_ENUMERATOR_START_HPP_INCLUDED
 
-#include <fcppt/enum_size.hpp>
-#include <fcppt/foreach_enumerator_start_end.hpp>
+#include <fcppt/detail/foreach_enumerator.hpp>
+#include <fcppt/detail/foreach_enumerator_start.hpp>
 
 
 /**
@@ -20,20 +20,22 @@ Iterates over the type <code>enum_</code>, giving the loop variable the name \a
 name, starting at the enumerator \a start and ending at the enum's size minus
 one.
 
-\see FCPPT_FOREACH_ENUMERATOR_START_END
+\snippet foreach_enumerator.cpp foreach_enumerator_declaration
+
+\snippet foreach_enumerator.cpp foreach_enumerator_start
 */
 #define FCPPT_FOREACH_ENUMERATOR_START(\
 	name,\
 	enum_,\
 	start\
 )\
-	FCPPT_FOREACH_ENUMERATOR_START_END(\
+FCPPT_DETAIL_FOREACH_ENUMERATOR(\
+	FCPPT_DETAIL_FOREACH_ENUMERATOR_START(\
 		name,\
 		enum_,\
-		start,\
-		fcppt::enum_size<\
-			enum_\
-		>::value\
-	)
+		start\
+	),\
+	name\
+)
 
 #endif
