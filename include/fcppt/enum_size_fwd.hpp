@@ -4,8 +4,8 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_ENUM_SIZE_HPP_INCLUDED
-#define FCPPT_ENUM_SIZE_HPP_INCLUDED
+#ifndef FCPPT_ENUM_SIZE_FWD_HPP_INCLUDED
+#define FCPPT_ENUM_SIZE_FWD_HPP_INCLUDED
 
 
 namespace fcppt

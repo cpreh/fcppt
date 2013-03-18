@@ -331,6 +331,7 @@ set(
 	include/fcppt/endianness/size_type.hpp
 	include/fcppt/endianness/swap.hpp
 	include/fcppt/enum_size.hpp
+	include/fcppt/enum_size_fwd.hpp
 	include/fcppt/error/strerrno.hpp
 	include/fcppt/error/strerror.hpp
 	include/fcppt/exception.hpp
