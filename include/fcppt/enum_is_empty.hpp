@@ -8,6 +8,9 @@
 #define FCPPT_ENUM_IS_EMPTY_HPP_INCLUDED
 
 #include <fcppt/enum_is_empty_fwd.hpp>
+#include <fcppt/preprocessor/disable_gcc_warning.hpp>
+#include <fcppt/preprocessor/pop_warning.hpp>
+#include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>

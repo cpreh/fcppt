@@ -106,6 +106,7 @@ template<
 fcppt::detail::foreach_enumerator_var<
 	Enum
 >::operator
+typename
 fcppt::detail::foreach_enumerator_var<
 	Enum
 >::size_type() const
