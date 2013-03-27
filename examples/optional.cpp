@@ -5,7 +5,7 @@
 
 
 //[optional
-#include <fcppt/optional_impl.hpp>
+#include <fcppt/optional_string.hpp>
 #include <fcppt/string.hpp>
 #include <fcppt/text.hpp>
 #include <fcppt/io/cout.hpp>
@@ -13,18 +13,13 @@
 
 int main()
 {
-	// typedef an optional string
-	typedef fcppt::optional<
-		fcppt::string
-	> optional_string;
-
 	// set the optional to "test"
-	optional_string opt1(
+	fcppt::optional_string opt1(
 		FCPPT_TEXT("test")
 	);
 
 	// copy opt1 by value
-	optional_string opt2(
+	fcppt::optional_string opt2(
 		opt1
 	);
 
@@ -45,14 +40,18 @@ int main()
 		<< *opt2
 		<< FCPPT_TEXT('\n');
 
-	if(opt1)
+	if(
+		opt1
+	)
 		fcppt::io::cout()
 			<< FCPPT_TEXT("opt1 is set\n");
 
 	// destroy opt1's value
 	opt1.reset();
 
-	if(!opt1)
+	if(
+		!opt1
+	)
 		fcppt::io::cout()
 			<< FCPPT_TEXT("opt1 is not set\n");
 }

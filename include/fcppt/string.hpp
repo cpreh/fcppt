@@ -12,19 +12,20 @@
 #include <string>
 #include <fcppt/config/external_end.hpp>
 
+
 namespace fcppt
 {
 
 /**
 \brief The string type used for text.
-\ingroup fcpptstring
 
+\ingroup fcpptstring
 
 See the \link fcpptstring string module description \endlink for more
 information about this type.
 */
 typedef std::basic_string<
-	char_type
+	fcppt::char_type
 > string;
 
 }
