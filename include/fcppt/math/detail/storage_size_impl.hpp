@@ -4,8 +4,8 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_MATH_DETAIL_STORAGE_SIZE_IMPL_HPP_INCLUDED 
-#define FCPPT_MATH_DETAIL_STORAGE_SIZE_IMPL_HPP_INCLUDED 
+#ifndef FCPPT_MATH_DETAIL_STORAGE_SIZE_IMPL_HPP_INCLUDED
+#define FCPPT_MATH_DETAIL_STORAGE_SIZE_IMPL_HPP_INCLUDED
 
 #include <fcppt/math/detail/storage_size_decl.hpp>
 

@@ -23,31 +23,31 @@ template<\
 	typename S\
 >\
 object<\
-	FCPPT_MATH_DETAIL_BINARY_TYPE(L, op, R),\
+	FCPPT_MATH_DETAIL_BINARY_TYPE(L, *, R),\
 	N,\
 	typename normal_storage<\
-		FCPPT_MATH_DETAIL_BINARY_TYPE(L, op, R),\
+		FCPPT_MATH_DETAIL_BINARY_TYPE(L, *, R),\
 		N\
 	>::type\
 > const \
-operator*(\
+operator *(\
 	L const &_left,\
 	object<R, N, S> const &_right\
 )\
 {\
 	typedef \
 	object<\
-		FCPPT_MATH_DETAIL_BINARY_TYPE(L, op, R),\
+		FCPPT_MATH_DETAIL_BINARY_TYPE(L, *, R),\
 		N,\
 		typename normal_storage<\
-			FCPPT_MATH_DETAIL_BINARY_TYPE(L, op, R),\
+			FCPPT_MATH_DETAIL_BINARY_TYPE(L, *, R),\
 			N\
 		>::type\
 	> result_type; \
 \
 	result_type result(\
 		fcppt::math::detail::make_storage_size(\
-			_left.size()\
+			_right.size()\
 		)\
 	);\
 \
@@ -62,7 +62,7 @@ operator*(\
 			index\
 		] = \
 			_left \
-			op \
+			* \
 			_right[\
 				index\
 			];\
