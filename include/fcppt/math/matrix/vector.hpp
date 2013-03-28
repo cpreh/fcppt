@@ -7,6 +7,7 @@
 #ifndef FCPPT_MATH_MATRIX_VECTOR_HPP_INCLUDED
 #define FCPPT_MATH_MATRIX_VECTOR_HPP_INCLUDED
 
+#include <fcppt/math/detail/binary_type.hpp>
 #include <fcppt/math/matrix/object_impl.hpp>
 #include <fcppt/math/vector/normal_storage.hpp>
 #include <fcppt/math/vector/object_impl.hpp>
@@ -21,43 +22,67 @@ namespace matrix
 
 /// Multiplies a matrix by a vector
 template<
-	typename T,
+	typename L,
+	typename R,
 	typename N,
 	typename M,
 	typename S1,
 	typename S2
 >
-fcppt::math::vector::object<T, M, S2>
+fcppt::math::vector::object<
+	FCPPT_MATH_DETAIL_BINARY_TYPE(L, *, R),
+	M,
+	typename fcppt::math::vector::normal_storage<
+		FCPPT_MATH_DETAIL_BINARY_TYPE(L, *, R),
+		M
+	>::type
+>
 operator *(
-	object<T, N, M, S1> const &m,
-	vector::object<T, N, S2> const &v
+	fcppt::math::matrix::object<
+		L,
+		N,
+		M,
+		S1
+	> const &_left,
+	fcppt::math::vector::object<
+		R,
+		N,
+		S2
+	> const &_right
 )
 {
-	typedef vector::object<
-		T,
+	typedef fcppt::math::vector::object<
+		FCPPT_MATH_DETAIL_BINARY_TYPE(L, *, R),
 		M,
-		typename vector::normal_storage<
-			T,
+		typename fcppt::math::vector::normal_storage<
+			FCPPT_MATH_DETAIL_BINARY_TYPE(L, *, R),
 			M
 		>::type
 	> result_type;
 
-	result_type ret(
+	result_type result(
 		result_type::null()
 	);
 
 	for(
 		typename result_type::size_type i = 0;
-		i < v.size();
+		i < result.size();
 		++i
 	)
 		for(
-			typename object<T, N, M, S2>::size_type j = 0;
-			j < N::value;
+			typename
+			fcppt::math::matrix::object<
+				L,
+				N,
+				M,
+				S2
+			>::size_type j = 0;
+			j < _right.size();
 			++j
 		)
-			ret[i] += v[j] * m[i][j];
-	return ret;
+			result[i] += _left[i][j] * _right[j];
+
+	return result;
 }
 
 }

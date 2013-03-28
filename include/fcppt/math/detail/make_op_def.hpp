@@ -7,9 +7,11 @@
 #ifndef FCPPT_MATH_DETAIL_MAKE_OP_DEF_HPP_INCLUDED
 #define FCPPT_MATH_DETAIL_MAKE_OP_DEF_HPP_INCLUDED
 
+#include <fcppt/math/detail/linear_access.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/preprocessor/tuple/rem.hpp>
 #include <fcppt/config/external_end.hpp>
+
 
 #define FCPPT_MATH_DETAIL_MAKE_OP_DEF(\
 	class_arity,\
@@ -27,12 +29,22 @@ BOOST_PP_TUPLE_REM(class_arity)def_pre \
 ) \
 {\
 	for(\
-		size_type i = 0;\
-		i < size();\
-		++i\
+		size_type index(\
+			0u\
+		);\
+		index < this->size();\
+		++index\
 	)\
-		*(data() + i) op *(expr.data() + i);\
-	\
+		fcppt::math::detail::linear_access(\
+			*this,\
+			index\
+		) \
+		op \
+		fcppt::math::detail::linear_access(\
+			expr,\
+			index\
+		);\
+\
 	return *this;\
 }
 

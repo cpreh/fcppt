@@ -7,37 +7,12 @@
 #ifndef FCPPT_MATH_DETAIL_MAKE_SIMPLE_SCALAR_DIV_HPP_INCLUDED
 #define FCPPT_MATH_DETAIL_MAKE_SIMPLE_SCALAR_DIV_HPP_INCLUDED
 
+#include <fcppt/math/detail/make_simple_scalar_left.hpp>
+
+
 #define FCPPT_MATH_DETAIL_MAKE_SIMPLE_SCALAR_DIV \
-template<\
-	typename T,\
-	typename N,\
-	typename S\
->\
-object<\
-	T,\
-	N,\
-	typename normal_storage<\
-		T,\
-		N\
-	>::type\
-> const \
-operator /(\
-	object<T, N, S> a,\
-	T const &s\
-)\
-{\
-	return \
-		object<\
-			T,\
-			N,\
-			typename normal_storage<\
-				T,\
-				N\
-			>::type\
-		>(\
-			a\
-		)\
-		/= s;\
-}
+FCPPT_MATH_DETAIL_MAKE_SIMPLE_SCALAR_LEFT(\
+	/\
+)
 
 #endif

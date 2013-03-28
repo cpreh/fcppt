@@ -31,7 +31,7 @@ template<
 >
 struct simple_normal_storage
 :
-math::detail::static_storage<
+fcppt::math::detail::static_storage<
 	T,
 	N::value
 >
@@ -43,10 +43,10 @@ template<
 >
 struct simple_normal_storage<
 	T,
-	math::detail::dynamic_size
+	fcppt::math::detail::dynamic_size
 >
 :
-math::detail::dynamic_storage<
+fcppt::math::detail::dynamic_storage<
 	T
 >
 {

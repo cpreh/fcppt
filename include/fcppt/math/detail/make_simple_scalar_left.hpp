@@ -4,22 +4,21 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_MATH_DETAIL_MAKE_SIMPLE_FREE_FUNCTION_HPP_INCLUDED
-#define FCPPT_MATH_DETAIL_MAKE_SIMPLE_FREE_FUNCTION_HPP_INCLUDED
+#ifndef FCPPT_MATH_DETAIL_MAKE_SIMPLE_SCALAR_LEFT_HPP_INCLUDED
+#define FCPPT_MATH_DETAIL_MAKE_SIMPLE_SCALAR_LEFT_HPP_INCLUDED
 
 #include <fcppt/math/detail/binary_type.hpp>
 #include <fcppt/math/detail/make_storage_size.hpp>
 
 
-#define FCPPT_MATH_DETAIL_MAKE_SIMPLE_FREE_FUNCTION(\
+#define FCPPT_MATH_DETAIL_MAKE_SIMPLE_SCALAR_LEFT(\
 	op\
 )\
 template<\
 	typename L,\
 	typename R,\
 	typename N,\
-	typename S1,\
-	typename S2\
+	typename S\
 >\
 object<\
 	FCPPT_MATH_DETAIL_BINARY_TYPE(L, op, R),\
@@ -30,8 +29,8 @@ object<\
 	>::type\
 > const \
 operator op(\
-	object<L, N, S1> const &_left,\
-	object<R, N, S2> const &_right\
+	object<L, N, S> const &_left,\
+	R const &_right\
 )\
 {\
 	typedef \
@@ -56,7 +55,7 @@ operator op(\
 		);\
 		index < result.size();\
 		++index\
-	) \
+	)\
 		result[\
 			index\
 		] = \
@@ -64,12 +63,10 @@ operator op(\
 				index\
 			]\
 			op \
-			_right[\
-				index\
-			];\
+			_right;\
 \
 	return \
-		result; \
+		result;\
 }
 
 #endif

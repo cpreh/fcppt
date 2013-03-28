@@ -4,24 +4,24 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_MATH_DETAIL_MAKE_OP_DECL_HPP_INCLUDED
-#define FCPPT_MATH_DETAIL_MAKE_OP_DECL_HPP_INCLUDED
+#ifndef FCPPT_MATH_DETAIL_BINARY_TYPE_HPP_INCLUDED
+#define FCPPT_MATH_DETAIL_BINARY_TYPE_HPP_INCLUDED
 
 #include <fcppt/config/external_begin.hpp>
-#include <boost/preprocessor/tuple/rem.hpp>
+#include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
 
-#define FCPPT_MATH_DETAIL_MAKE_OP_DECL(\
-	decl,\
-	param,\
-	arity,\
-	op\
-)\
-decl \
-object & \
-operator op ( \
-	BOOST_PP_TUPLE_REM(arity)param const &\
-);
+#define FCPPT_MATH_DETAIL_BINARY_TYPE(\
+	left,\
+	op,\
+	right\
+) \
+decltype(\
+	std::declval<left>() \
+	op \
+	std::declval<right>() \
+)
+
 
 #endif

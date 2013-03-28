@@ -51,8 +51,12 @@ shrink(
 		fcppt::math::box::object<T,N>(
 			b.pos() + absolute_values,
 			b.size() - static_cast<T>(2) *
-			fcppt::math::vector::structure_cast<typename box::object<T,N>::dim>(
-				absolute_values));
+			fcppt::math::vector::structure_cast<
+				typename box::object<T,N>::dim
+			>(
+				absolute_values
+			)
+		);
 }
 }
 }

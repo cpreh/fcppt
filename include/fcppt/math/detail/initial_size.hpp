@@ -24,6 +24,7 @@ template<
 	typename Storage,
 	typename Size
 >
+inline
 typename boost::disable_if<
 	fcppt::math::is_static_storage<
 		Storage
@@ -35,6 +36,7 @@ initial_size(
 	Size const _size
 )
 {
+	// TODO: resize_uninitialized for raw_vector?
 	_storage.resize(
 		_size
 	);
@@ -44,6 +46,7 @@ template<
 	typename Storage,
 	typename Size
 >
+inline
 typename boost::enable_if<
 	fcppt::math::is_static_storage<
 		Storage

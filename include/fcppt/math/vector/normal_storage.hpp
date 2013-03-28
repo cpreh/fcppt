@@ -29,7 +29,7 @@ template<
 >
 struct normal_storage
 :
-math::detail::simple_normal_storage<
+fcppt::math::detail::simple_normal_storage<
 	T,
 	N
 >

@@ -4,23 +4,21 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_MATH_VECTOR_OBJECT_FWD_HPP_INCLUDED
-#define FCPPT_MATH_VECTOR_OBJECT_FWD_HPP_INCLUDED
+#ifndef FCPPT_MATH_DETAIL_STORAGE_SIZE_FWD_HPP_INCLUDED
+#define FCPPT_MATH_DETAIL_STORAGE_SIZE_FWD_HPP_INCLUDED
 
 
 namespace fcppt
 {
 namespace math
 {
-namespace vector
+namespace detail
 {
 
 template<
-	typename T,
-	typename N,
-	typename S
+	typename Size
 >
-class object;
+class storage_size;
 
 }
 }

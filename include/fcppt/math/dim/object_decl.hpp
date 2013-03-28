@@ -12,6 +12,7 @@
 #include <fcppt/math/detail/array_adapter.hpp>
 #include <fcppt/math/detail/make_op_decl.hpp>
 #include <fcppt/math/detail/make_variadic_constructor_decl.hpp>
+#include <fcppt/math/detail/storage_size_fwd.hpp>
 #include <fcppt/math/dim/max_ctor_params.hpp>
 #include <fcppt/math/dim/object_fwd.hpp>
 #include <fcppt/type_traits/is_iterator.hpp>
@@ -108,11 +109,19 @@ public:
 	*/
 	object();
 
+	explicit
+	object(
+		fcppt::math::detail::storage_size<
+			size_type
+		>
+	);
+
 	/**
 	\brief Construct a dim from a storage source
 	\param s The storage source to copy from
 	*/
-	explicit object(
+	explicit
+	object(
 		storage_type const &s
 	);
 
@@ -131,7 +140,7 @@ public:
 		typename OtherStorage
 	>
 	object(
-		object<
+		fcppt::math::dim::object<
 			T,
 			N,
 			OtherStorage
@@ -150,7 +159,7 @@ public:
 	object(
 		In beg,
 		typename boost::enable_if<
-			type_traits::is_iterator<
+			fcppt::type_traits::is_iterator<
 				In
 			>,
 			In
@@ -181,7 +190,7 @@ public:
 	>
 	object &
 	operator=(
-		object<
+		fcppt::math::dim::object<
 			T,
 			N,
 			OtherStorage

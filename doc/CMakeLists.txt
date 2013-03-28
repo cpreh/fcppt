@@ -530,6 +530,7 @@ set(
 	include/fcppt/math/detail/array_less.hpp
 	include/fcppt/math/detail/assign.hpp
 	include/fcppt/math/detail/before.hpp
+	include/fcppt/math/detail/binary_type.hpp
 	include/fcppt/math/detail/checked_access.hpp
 	include/fcppt/math/detail/construct.hpp
 	include/fcppt/math/detail/diff.hpp
@@ -541,13 +542,16 @@ set(
 	include/fcppt/math/detail/has_size.hpp
 	include/fcppt/math/detail/index_at.hpp
 	include/fcppt/math/detail/initial_size.hpp
+	include/fcppt/math/detail/linear_access.hpp
 	include/fcppt/math/detail/make_impl.hpp
 	include/fcppt/math/detail/make_op_decl.hpp
 	include/fcppt/math/detail/make_op_def.hpp
 	include/fcppt/math/detail/make_simple_free_function.hpp
 	include/fcppt/math/detail/make_simple_scalar_div.hpp
+	include/fcppt/math/detail/make_simple_scalar_left.hpp
 	include/fcppt/math/detail/make_simple_scalar_mul.hpp
 	include/fcppt/math/detail/make_simple_unary_minus.hpp
+	include/fcppt/math/detail/make_storage_size.hpp
 	include/fcppt/math/detail/make_variadic_constructor.hpp
 	include/fcppt/math/detail/make_variadic_constructor_decl.hpp
 	include/fcppt/math/detail/mod.hpp
@@ -558,6 +562,9 @@ set(
 	include/fcppt/math/detail/pi.hpp
 	include/fcppt/math/detail/simple_normal_storage.hpp
 	include/fcppt/math/detail/static_storage.hpp
+	include/fcppt/math/detail/storage_size_decl.hpp
+	include/fcppt/math/detail/storage_size_fwd.hpp
+	include/fcppt/math/detail/storage_size_impl.hpp
 	include/fcppt/math/detail/structure_cast.hpp
 	include/fcppt/math/detail/structure_cast_fun.hpp
 	include/fcppt/math/detail/transform.hpp

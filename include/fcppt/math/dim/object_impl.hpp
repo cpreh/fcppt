@@ -13,13 +13,16 @@
 #include <fcppt/math/detail/index_at.hpp>
 #include <fcppt/math/detail/make_op_def.hpp>
 #include <fcppt/math/detail/make_variadic_constructor.hpp>
+#include <fcppt/math/detail/storage_size_impl.hpp>
 #include <fcppt/math/dim/max_ctor_params.hpp>
 #include <fcppt/math/dim/normal_storage.hpp>
 #include <fcppt/math/dim/object_decl.hpp>
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
+#include <fcppt/type_traits/is_iterator.hpp>
 #include <fcppt/config/external_begin.hpp>
+#include <boost/utility/enable_if.hpp>
 #include <algorithm>
 #include <functional>
 #include <iterator>
@@ -35,9 +38,35 @@ template<
 	typename N,
 	typename S
 >
-fcppt::math::dim::object<T, N, S>::object()
+fcppt::math::dim::object<
+	T,
+	N,
+	S
+>::object()
 // Don't initialize storage_
 {
+}
+
+template<
+	typename T,
+	typename N,
+	typename S
+>
+fcppt::math::dim::object<
+	T,
+	N,
+	S
+>::object(
+	fcppt::math::detail::storage_size<
+		size_type
+	> const _size
+)
+// Don't initialize storage_
+{
+	fcppt::math::detail::initial_size(
+		storage_,
+		_size.get()
+	);
 }
 
 FCPPT_PP_POP_WARNING
@@ -47,7 +76,11 @@ template<
 	typename N,
 	typename S
 >
-fcppt::math::dim::object<T, N, S>::object(
+fcppt::math::dim::object<
+	T,
+	N,
+	S
+>::object(
 	storage_type const &_storage
 )
 :
@@ -62,7 +95,11 @@ template<
 	typename N,
 	typename S
 >
-fcppt::math::dim::object<T, N, S>::object(
+fcppt::math::dim::object<
+	T,
+	N,
+	S
+>::object(
 	object const &_other
 )
 :
@@ -83,8 +120,12 @@ template<
 template<
 	typename OtherStorage
 >
-fcppt::math::dim::object<T, N, S>::object(
-	object<
+fcppt::math::dim::object<
+	T,
+	N,
+	S
+>::object(
+	fcppt::math::dim::object<
 		T,
 		N,
 		OtherStorage
@@ -92,7 +133,7 @@ fcppt::math::dim::object<T, N, S>::object(
 )
 // Don't initialize storage_
 {
-	math::detail::initial_size(
+	fcppt::math::detail::initial_size(
 		storage_,
 		_other.size()
 	);
@@ -100,7 +141,7 @@ fcppt::math::dim::object<T, N, S>::object(
 	std::copy(
 		_other.begin(),
 		_other.end(),
-		begin()
+		this->begin()
 	);
 }
 
@@ -112,10 +153,14 @@ template<
 template<
 	typename In
 >
-fcppt::math::dim::object<T, N, S>::object(
+fcppt::math::dim::object<
+	T,
+	N,
+	S
+>::object(
 	In const _begin,
 	typename boost::enable_if<
-		type_traits::is_iterator<
+		fcppt::type_traits::is_iterator<
 			In
 		>,
 		In
@@ -123,7 +168,7 @@ fcppt::math::dim::object<T, N, S>::object(
 )
 // Don't initialize storage_
 {
-	math::detail::initial_size(
+	fcppt::math::detail::initial_size(
 		storage_,
 		std::distance(
 			_begin,
@@ -134,7 +179,7 @@ fcppt::math::dim::object<T, N, S>::object(
 	std::copy(
 		_begin,
 		_end,
-		begin()
+		this->begin()
 	);
 }
 
@@ -163,8 +208,16 @@ template<
 	typename N,
 	typename S
 >
-fcppt::math::dim::object<T, N, S> &
-fcppt::math::dim::object<T, N, S>::operator=(
+fcppt::math::dim::object<
+	T,
+	N,
+	S
+> &
+fcppt::math::dim::object<
+	T,
+	N,
+	S
+>::operator=(
 	object const &_other
 )
 {
@@ -182,22 +235,30 @@ template<
 template<
 	typename OtherStorage
 >
-fcppt::math::dim::object<T, N, S> &
-fcppt::math::dim::object<T, N, S>::operator=(
-	object<
+fcppt::math::dim::object<
+	T,
+	N,
+	S
+> &
+fcppt::math::dim::object<
+	T,
+	N,
+	S
+>::operator=(
+	fcppt::math::dim::object<
 		T,
 		N,
 		OtherStorage
 	> const &_other
 )
 {
-	math::detail::initial_size(
+	fcppt::math::detail::initial_size(
 		storage_,
 		_other.size()
 	);
 
 	return
-		math::detail::assign(
+		fcppt::math::detail::assign(
 			*this,
 			_other
 		);
@@ -208,8 +269,13 @@ template<
 	typename N,
 	typename S
 >
-fcppt::math::dim::object<T, N, S>::~object()
-{}
+fcppt::math::dim::object<
+	T,
+	N,
+	S
+>::~object()
+{
+}
 
 // \cond FCPPT_DOXYGEN_DEBUG
 #define FCPPT_MATH_DIM_OBJECT_DEFINE_OPERATOR(\
@@ -237,13 +303,24 @@ template<
 	typename N,
 	typename S
 >
-fcppt::math::dim::object<T, N, S> &
-fcppt::math::dim::object<T, N, S>::operator*=(
+fcppt::math::dim::object<
+	T,
+	N,
+	S
+> &
+fcppt::math::dim::object<
+	T,
+	N,
+	S
+>::operator*=(
 	value_type const &_value
 )
 {
-	for(size_type i = 0; i < size(); ++i)
-		(*this)[i] *= _value;
+	for(
+		auto &ref : *this
+	)
+		ref *= _value;
+
 	return *this;
 }
 
@@ -252,13 +329,24 @@ template<
 	typename N,
 	typename S
 >
-fcppt::math::dim::object<T, N, S> &
-fcppt::math::dim::object<T, N, S>::operator/=(
+fcppt::math::dim::object<
+	T,
+	N,
+	S
+> &
+fcppt::math::dim::object<
+	T,
+	N,
+	S
+>::operator/=(
 	value_type const &_value
 )
 {
-	for(size_type i = 0; i < size(); ++i)
-		(*this)[i] /= _value;
+	for(
+		auto &ref : *this
+	)
+		ref /= _value;
+
 	return *this;
 }
 
@@ -267,8 +355,16 @@ template<
 	typename N,
 	typename S
 >
-typename fcppt::math::dim::object<T, N, S>::reference
-fcppt::math::dim::object<T, N, S>::operator[](
+typename fcppt::math::dim::object<
+	T,
+	N,
+	S
+>::reference
+fcppt::math::dim::object<
+	T,
+	N,
+	S
+>::operator[](
 	size_type const _index
 )
 {
@@ -284,8 +380,16 @@ template<
 	typename N,
 	typename S
 >
-typename fcppt::math::dim::object<T, N, S>::const_reference
-fcppt::math::dim::object<T, N, S>::operator[](
+typename fcppt::math::dim::object<
+	T,
+	N,
+	S
+>::const_reference
+fcppt::math::dim::object<
+	T,
+	N,
+	S
+>::operator[](
 	size_type const _index
 ) const
 {
@@ -301,10 +405,23 @@ template<
 	typename N,
 	typename S
 >
-typename fcppt::math::dim::object<T, N, S>::reference
-fcppt::math::dim::object<T, N, S>::w()
+typename fcppt::math::dim::object<
+	T,
+	N,
+	S
+>::reference
+fcppt::math::dim::object<
+	T,
+	N,
+	S
+>::w()
 {
-	return math::detail::checked_access<0>(*this);
+	return
+		fcppt::math::detail::checked_access<
+			0
+	>(
+		*this
+	);
 }
 
 template<
@@ -312,10 +429,23 @@ template<
 	typename N,
 	typename S
 >
-typename fcppt::math::dim::object<T, N, S>::const_reference
-fcppt::math::dim::object<T, N, S>::w() const
+typename fcppt::math::dim::object<
+	T,
+	N,
+	S
+>::const_reference
+fcppt::math::dim::object<
+	T,
+	N,
+	S
+>::w() const
 {
-	return math::detail::checked_access<0>(*this);
+	return
+		fcppt::math::detail::checked_access<
+			0
+		>(
+			*this
+		);
 }
 
 template<
@@ -323,10 +453,23 @@ template<
 	typename N,
 	typename S
 >
-typename fcppt::math::dim::object<T, N, S>::reference
-fcppt::math::dim::object<T, N, S>::h()
+typename fcppt::math::dim::object<
+	T,
+	N,
+	S
+>::reference
+fcppt::math::dim::object<
+	T,
+	N,
+	S
+>::h()
 {
-	return math::detail::checked_access<1>(*this);
+	return
+		fcppt::math::detail::checked_access<
+			1
+		>(
+			*this
+		);
 }
 
 template<
@@ -334,10 +477,23 @@ template<
 	typename N,
 	typename S
 >
-typename fcppt::math::dim::object<T, N, S>::const_reference
-fcppt::math::dim::object<T, N, S>::h() const
+typename fcppt::math::dim::object<
+	T,
+	N,
+	S
+>::const_reference
+fcppt::math::dim::object<
+	T,
+	N,
+	S
+>::h() const
 {
-	return math::detail::checked_access<1>(*this);
+	return
+		fcppt::math::detail::checked_access<
+			1
+		>(
+			*this
+		);
 }
 
 template<
@@ -345,10 +501,23 @@ template<
 	typename N,
 	typename S
 >
-typename fcppt::math::dim::object<T, N, S>::reference
-fcppt::math::dim::object<T, N, S>::d()
+typename fcppt::math::dim::object<
+	T,
+	N,
+	S
+>::reference
+fcppt::math::dim::object<
+	T,
+	N,
+	S
+>::d()
 {
-	return math::detail::checked_access<2>(*this);
+	return
+		fcppt::math::detail::checked_access<
+			2
+		>(
+			*this
+		);
 }
 
 template<
@@ -356,10 +525,23 @@ template<
 	typename N,
 	typename S
 >
-typename fcppt::math::dim::object<T, N, S>::const_reference
-fcppt::math::dim::object<T, N, S>::d() const
+typename fcppt::math::dim::object<
+	T,
+	N,
+	S
+>::const_reference
+fcppt::math::dim::object<
+	T,
+	N,
+	S
+>::d() const
 {
-	return math::detail::checked_access<2>(*this);
+	return
+		fcppt::math::detail::checked_access<
+			2
+		>(
+			*this
+		);
 }
 
 template<
@@ -367,13 +549,21 @@ template<
 	typename N,
 	typename S
 >
-typename fcppt::math::dim::object<T, N, S>::value_type
-fcppt::math::dim::object<T, N, S>::content() const
+typename fcppt::math::dim::object<
+	T,
+	N,
+	S
+>::value_type
+fcppt::math::dim::object<
+	T,
+	N,
+	S
+>::content() const
 {
 	return
 		std::accumulate(
-			begin(),
-			end(),
+			this->begin(),
+			this->end(),
 			static_cast<
 				value_type
 			>(
@@ -390,13 +580,21 @@ template<
 	typename N,
 	typename S
 >
-fcppt::math::dim::object<T, N, S> const
-fcppt::math::dim::object<T, N, S>::null()
+fcppt::math::dim::object<
+	T,
+	N,
+	S
+> const
+fcppt::math::dim::object<
+	T,
+	N,
+	S
+>::null()
 {
-	object<
+	fcppt::math::dim::object<
 		T,
 		N,
-		typename normal_storage<
+		typename fcppt::math::dim::normal_storage<
 			T,
 			N
 		>::type
@@ -408,6 +606,7 @@ fcppt::math::dim::object<T, N, S>::null()
 		++i
 	)
 		ret[i] = static_cast<value_type>(0);
+
 	return ret;
 }
 
@@ -417,7 +616,11 @@ template<
 	typename S
 >
 void
-fcppt::math::dim::object<T, N, S>::swap(
+fcppt::math::dim::object<
+	T,
+	N,
+	S
+>::swap(
 	object &_other
 )
 {
@@ -434,12 +637,20 @@ template<
 >
 void
 fcppt::math::dim::swap(
-	object<T, N, S> &_a,
-	object<T, N, S> &_b
+	fcppt::math::dim::object<
+		T,
+		N,
+		S
+	> &_left,
+	fcppt::math::dim::object<
+		T,
+		N,
+		S
+	> &_right
 )
 {
-	_a.swap(
-		_b
+	_left.swap(
+		_right
 	);
 }
 

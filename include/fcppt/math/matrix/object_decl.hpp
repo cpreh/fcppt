@@ -11,6 +11,7 @@
 #include <fcppt/math/size_type.hpp>
 #include <fcppt/math/detail/make_op_decl.hpp>
 #include <fcppt/math/detail/make_variadic_constructor_decl.hpp>
+#include <fcppt/math/detail/storage_size_fwd.hpp>
 #include <fcppt/math/matrix/dim_type.hpp>
 #include <fcppt/math/matrix/max_ctor_params.hpp>
 #include <fcppt/math/matrix/object_fwd.hpp>
@@ -66,7 +67,10 @@ private
 	>
 /// \endcond
 {
-	typedef detail::dim_storage<N, M> dim_base;
+	typedef fcppt::math::matrix::detail::dim_storage<
+		N,
+		M
+	> dim_base;
 public:
 	static_assert(
 		std::is_same<
@@ -203,7 +207,8 @@ public:
 	\warning
 	This operation makes no sense on a static matrix.
 	*/
-	explicit object(
+	explicit
+	object(
 		dim const &
 	);
 
@@ -211,8 +216,16 @@ public:
 	\brief Construct a vector from a storage source
 	\param s The storage source to copy from
 	*/
-	explicit object(
+	explicit
+	object(
 		storage_type const &s
+	);
+
+	explicit
+	object(
+		fcppt::math::detail::storage_size<
+			size_type
+		>
 	);
 
 	/**
@@ -230,7 +243,7 @@ public:
 		typename OtherStorage
 	>
 	object(
-		object<
+		fcppt::math::matrix::object<
 			T,
 			N,
 			M,
@@ -250,7 +263,7 @@ public:
 	object(
 		In beg,
 		typename boost::enable_if<
-			type_traits::is_iterator<
+			fcppt::type_traits::is_iterator<
 				In
 			>,
 			In
@@ -274,7 +287,7 @@ public:
 		dim const &_dim,
 		In beg,
 		typename boost::enable_if<
-			type_traits::is_iterator<
+			fcppt::type_traits::is_iterator<
 				In
 			>,
 			In
@@ -322,7 +335,7 @@ public:
 	>
 	object &
 	operator=(
-		object<
+		fcppt::math::matrix::object<
 			T,
 			N,
 			M,
@@ -434,8 +447,18 @@ template<
 >
 void
 swap(
-	fcppt::math::matrix::object<T, N, M, S> &,
-	fcppt::math::matrix::object<T, N, M, S> &
+	fcppt::math::matrix::object<
+		T,
+		N,
+		M,
+		S
+	> &,
+	fcppt::math::matrix::object<
+		T,
+		N,
+		M,
+		S
+	> &
 );
 
 }
