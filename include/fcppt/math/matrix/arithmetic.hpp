@@ -316,7 +316,7 @@ operator *(
 	for(
 		typename result_type::size_type index(
 			0u
-		); 
+		);
 		index < result.size();
 		++index
 	)
