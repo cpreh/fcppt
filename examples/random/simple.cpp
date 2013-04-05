@@ -7,9 +7,10 @@
 #include <fcppt/text.hpp>
 #include <fcppt/io/cout.hpp>
 #include <fcppt/random/variate.hpp>
-#include <fcppt/random/distribution/normal.hpp>
-#include <fcppt/random/distribution/uniform_int.hpp>
-#include <fcppt/random/distribution/uniform_real.hpp>
+#include <fcppt/random/distribution/basic.hpp>
+#include <fcppt/random/distribution/parameters/normal.hpp>
+#include <fcppt/random/distribution/parameters/uniform_int.hpp>
+#include <fcppt/random/distribution/parameters/uniform_real.hpp>
 #include <fcppt/random/generator/minstd_rand.hpp>
 #include <fcppt/random/generator/seed_from_chrono.hpp>
 
@@ -56,11 +57,15 @@ main()
 // ![random_generator]
 
 	{
-// ![random_uniform_int]
-	typedef fcppt::random::distribution::uniform_int<
-		int
+// ![random_uniform_int_distribution]
+	typedef fcppt::random::distribution::basic<
+		fcppt::random::distribution::parameters::uniform_int<
+			int
+		>
 	> uniform_int;
+// ![random_uniform_int_distribution]
 
+// ![random_uniform_int]
 	typedef fcppt::random::variate<
 		generator_type,
 		uniform_int
@@ -69,10 +74,10 @@ main()
 	variate rng(
 		generator,
 		uniform_int(
-			uniform_int::min(
+			uniform_int::param_type::min(
 				0
 			),
-			uniform_int::max(
+			uniform_int::param_type::max(
 				10
 			)
 		)
@@ -85,8 +90,10 @@ main()
 	}
 
 	{
-	typedef fcppt::random::distribution::uniform_real<
-		float
+	typedef fcppt::random::distribution::basic<
+		fcppt::random::distribution::parameters::uniform_real<
+			float
+		>
 	> uniform_real;
 
 	typedef fcppt::random::variate<
@@ -97,10 +104,10 @@ main()
 	variate rng(
 		generator,
 		uniform_real(
-			uniform_real::min(
+			uniform_real::param_type::min(
 				0.f
 			),
-			uniform_real::sup(
+			uniform_real::param_type::sup(
 				10.f
 			)
 		)
@@ -113,8 +120,10 @@ main()
 
 	{
 // ![random_normal]
-	typedef fcppt::random::distribution::normal<
-		double
+	typedef fcppt::random::distribution::basic<
+		fcppt::random::distribution::parameters::normal<
+			double
+		>
 	> normal;
 
 	typedef fcppt::random::variate<
@@ -125,10 +134,10 @@ main()
 	variate rng(
 		generator,
 		normal(
-			normal::mean(
+			normal::param_type::mean(
 				0.
 			),
-			normal::sigma(
+			normal::param_type::stddev(
 				5.
 			)
 		)

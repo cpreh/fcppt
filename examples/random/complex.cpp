@@ -1,0 +1,93 @@
+//          Copyright Carl Philipp Reh 2009 - 2013.
+// Distributed under the Boost Software License, Version 1.0.
+//    (See accompanying file LICENSE_1_0.txt or copy at
+//          http://www.boost.org/LICENSE_1_0.txt)
+
+
+#include <fcppt/strong_typedef.hpp>
+#include <fcppt/text.hpp>
+#include <fcppt/io/cout.hpp>
+#include <fcppt/random/variate.hpp>
+#include <fcppt/random/distribution/basic.hpp>
+#include <fcppt/random/distribution/parameters/uniform_int.hpp>
+#include <fcppt/random/distribution/transform/boost_units.hpp>
+#include <fcppt/random/distribution/transform/strong_typedef.hpp>
+#include <fcppt/random/generator/minstd_rand.hpp>
+#include <fcppt/random/generator/seed_from_chrono.hpp>
+#include <fcppt/config/external_begin.hpp>
+#include <boost/units/quantity.hpp>
+#include <boost/units/systems/si/length.hpp>
+#include <fcppt/config/external_end.hpp>
+
+
+int
+main()
+{
+//![random_complex_distribution]
+	typedef
+	boost::units::quantity<
+		boost::units::si::length,
+		int
+	> meter;
+
+	FCPPT_MAKE_STRONG_TYPEDEF(
+		meter,
+		radius
+	);
+
+	typedef
+	fcppt::random::distribution::basic<
+		fcppt::random::distribution::parameters::uniform_int<
+			radius
+		>
+	>
+	distribution;
+//![random_complex_distribution]
+
+	typedef
+	fcppt::random::generator::minstd_rand
+	generator_type;
+
+	generator_type generator(
+		fcppt::random::generator::seed_from_chrono<
+			generator_type::seed
+		>()
+	);
+
+	typedef fcppt::random::variate<
+		generator_type,
+		distribution
+	> variate;
+
+//![random_complex_variate]
+	variate rng(
+		generator,
+		distribution(
+			distribution::param_type::min(
+				radius(
+					0 * boost::units::si::meter
+				)
+			),
+			distribution::param_type::max(
+				radius(
+					10 * boost::units::si::meter
+				)
+			)
+		)
+	);
+//![random_complex_variate]
+
+//![random_complex_output]
+	for(
+		unsigned i = 0;
+		i < 10;
+		++i
+	)
+		fcppt::io::cout()
+			<< rng().get().value()
+			<< FCPPT_TEXT(' ');
+//![random_complex_output]
+
+	fcppt::io::cout()
+		<< FCPPT_TEXT('\n');
+}

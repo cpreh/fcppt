@@ -675,20 +675,34 @@ set(
 	include/fcppt/preprocessor/todo.hpp
 	include/fcppt/preprocessor/warn_unused_result.hpp
 	include/fcppt/preprocessor/warning.hpp
-	include/fcppt/random/distribution/declare_call.hpp
-	include/fcppt/random/distribution/define_call.hpp
-	include/fcppt/random/distribution/normal.hpp
-	include/fcppt/random/distribution/normal_decl.hpp
-	include/fcppt/random/distribution/normal_fwd.hpp
-	include/fcppt/random/distribution/normal_impl.hpp
-	include/fcppt/random/distribution/uniform_int.hpp
-	include/fcppt/random/distribution/uniform_int_decl.hpp
-	include/fcppt/random/distribution/uniform_int_fwd.hpp
-	include/fcppt/random/distribution/uniform_int_impl.hpp
-	include/fcppt/random/distribution/uniform_real.hpp
-	include/fcppt/random/distribution/uniform_real_decl.hpp
-	include/fcppt/random/distribution/uniform_real_fwd.hpp
-	include/fcppt/random/distribution/uniform_real_impl.hpp
+	include/fcppt/random/distribution/base_type.hpp
+	include/fcppt/random/distribution/base_value.hpp
+	include/fcppt/random/distribution/basic.hpp
+	include/fcppt/random/distribution/basic_decl.hpp
+	include/fcppt/random/distribution/basic_fwd.hpp
+	include/fcppt/random/distribution/basic_impl.hpp
+	include/fcppt/random/distribution/decorated_value.hpp
+	include/fcppt/random/distribution/detail/base_type.hpp
+	include/fcppt/random/distribution/detail/base_value.hpp
+	include/fcppt/random/distribution/detail/decorated_value.hpp
+	include/fcppt/random/distribution/detail/is_terminal.hpp
+	include/fcppt/random/distribution/detail/terminal_tag.hpp
+	include/fcppt/random/distribution/parameters/normal.hpp
+	include/fcppt/random/distribution/parameters/normal_decl.hpp
+	include/fcppt/random/distribution/parameters/normal_fwd.hpp
+	include/fcppt/random/distribution/parameters/normal_impl.hpp
+	include/fcppt/random/distribution/parameters/uniform_int.hpp
+	include/fcppt/random/distribution/parameters/uniform_int_decl.hpp
+	include/fcppt/random/distribution/parameters/uniform_int_fwd.hpp
+	include/fcppt/random/distribution/parameters/uniform_int_impl.hpp
+	include/fcppt/random/distribution/parameters/uniform_real.hpp
+	include/fcppt/random/distribution/parameters/uniform_real_decl.hpp
+	include/fcppt/random/distribution/parameters/uniform_real_fwd.hpp
+	include/fcppt/random/distribution/parameters/uniform_real_impl.hpp
+	include/fcppt/random/distribution/transform/boost_units.hpp
+	include/fcppt/random/distribution/transform/strong_typedef.hpp
+	include/fcppt/random/distribution/transform/terminal.hpp
+	include/fcppt/random/distribution/transform/terminal_fwd.hpp
 	include/fcppt/random/generator/basic_pseudo_decl.hpp
 	include/fcppt/random/generator/basic_pseudo_fwd.hpp
 	include/fcppt/random/generator/basic_pseudo_impl.hpp

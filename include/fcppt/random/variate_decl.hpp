@@ -7,7 +7,7 @@
 #ifndef FCPPT_RANDOM_VARIATE_DECL_HPP_INCLUDED
 #define FCPPT_RANDOM_VARIATE_DECL_HPP_INCLUDED
 
-#include <fcppt/noncopyable.hpp>
+#include <fcppt/reference_wrapper.hpp>
 #include <fcppt/random/variate_fwd.hpp>
 
 
@@ -34,9 +34,6 @@ template<
 >
 class variate
 {
-	FCPPT_NONCOPYABLE(
-		variate
-	);
 public:
 	/**
 	\brief The generator type
@@ -68,11 +65,6 @@ public:
 	);
 
 	/**
-	\brief Destroys the variate object
-	*/
-	~variate();
-
-	/**
 	\brief Draws a random number
 
 	Draws a random number from the distribution passing it the generator to
@@ -81,7 +73,11 @@ public:
 	result_type
 	operator()();
 private:
-	generator &generator_;
+	typedef fcppt::reference_wrapper<
+		generator
+	> generator_reference;
+
+	generator_reference generator_;
 
 	distribution distribution_;
 };

@@ -4,8 +4,10 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_RANDOM_DISTRIBUTION_NORMAL_FWD_HPP_INCLUDED
-#define FCPPT_RANDOM_DISTRIBUTION_NORMAL_FWD_HPP_INCLUDED
+
+#ifndef FCPPT_RANDOM_DISTRIBUTION_DETAIL_TERMINAL_TAG_HPP_INCLUDED
+#define FCPPT_RANDOM_DISTRIBUTION_DETAIL_TERMINAL_TAG_HPP_INCLUDED
+
 
 namespace fcppt
 {
@@ -13,12 +15,14 @@ namespace random
 {
 namespace distribution
 {
+namespace detail
+{
 
-template<
-	typename FloatType
->
-class normal;
+struct terminal_tag
+{
+};
 
+}
 }
 }
 }

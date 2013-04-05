@@ -53,5 +53,6 @@ update_cmake \
 	doc/CMakeLists.txt \
 	FCPPT_DOC_FILES \
 	include \
+	examples \
 	-e ".*" \
 	doc

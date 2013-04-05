@@ -35,17 +35,6 @@ template<
 	typename Generator,
 	typename Distribution
 >
-fcppt::random::variate<
-	Generator,
-	Distribution
->::~variate()
-{
-}
-
-template<
-	typename Generator,
-	typename Distribution
->
 typename fcppt::random::variate<
 	Generator,
 	Distribution
@@ -57,7 +46,7 @@ fcppt::random::variate<
 {
 	return
 		distribution_(
-			generator_
+			generator_.get()
 		);
 }
 

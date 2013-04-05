@@ -10,6 +10,7 @@
 <ul>
 	<li>\ref random_introduction</li>
 	<li>\ref random_usage</li>
+	<li>\ref random_conversion</li>
 	<li>\ref random_headers</li>
 </ul>
 
@@ -22,8 +23,7 @@
 Random number generation support in C++03 is very poor, only consisting of
 <code>std::rand</code> to draw pseudo random numbers between <code>0</code> and
 <code>RAND_MAX</code>, and <code>std::srand</code> to seed the generator.
-Boost.Random and now C++11 both have much better facilities, which are outlined
-below.
+C++11 has much better facilities, which are outlined below.
 
 <ul>
 <li>Pseudo random number generators are classes that only produce random
@@ -34,11 +34,11 @@ produce random numbers in a certain range.</li>
 <li>Distributions map random numbers drawn from a random number generator into
 a specific range, for example into the range of ints from <code>0</code> to
 <code>10</code>. They are a very important addition, because doing this by hand
-is not only hard but also very error prone.</li>
+is not only hard but also very error-prone.</li>
 
 </ul>
 
-fcppt wraps some of the classes provided by Boost.Random, because their
+fcppt wraps some of the classes provided by C++11, because their
 interfaces are designed in a way that allow many mistakes to be made.
 
 <ul>
@@ -50,16 +50,14 @@ distributions to ensure an overall diverse randomness.</li>
 have very arbitrary default parameters that shouldn't be used
 accidentally.</li>
 
-<li>Some distributions like <code>boost::uniform_real_distribution</code> also
-work with integers, while <code>boost::uniform_int_distribution</code> doesn't
-work with floats <em>by accident</em>.</li>
+<li>It is not possible to easily integrate other types like the ones from
+Boost.Units or fcppt's strong typedefs (\ref fcpptstrongtypedef).</lI>
 
 </ul>
 
 To overcome this situation, fcppt wraps these classes, making the pseudo random
 number generators noncopyable, and removing all of the default parameters,
-replacing them by strong typedefs instead. It also does some additional type
-checks on the distributions.
+replacing them by strong typedefs instead.
 
 \section random_usage Using Random
 
@@ -67,14 +65,26 @@ To actually draw random numbers, you have to create a (pseudo) random number
 generator first. Such a generator must be seeded, for example with a time value
 obtained from fcppt::chrono.
 
-\snippet random.cpp random_generator
+\snippet random/simple.cpp random_generator
+
+fcppt wraps random distributions using the classes provided in
+fcppt::random::distribution::parameters. Each of these classes implements a
+scheme of parameter translation (like providing strong typedefs instead) and
+also tells which underlying distribution it uses. To create a distribution,
+you have to use fcppt::random::distribution::basic which gets a parameter
+class as its template argument.
+
+\snippet random/simple.cpp random_uniform_int_distribution
 
 fcppt::random::variate is a class that combines a generator and a distribution
-into a single callable class. It takes the generator by reference and is also
-noncopyable itself. We are first going to create a variate object with a
-uniform int distribution.
+into a single callable class. A class like this had been proposed for C++11 but
+was removed later. In C++11, the general idiom for constructing such a class is
+to use a <code>std::function</code> and <code>std::bind</code> which comes at a
+slight overhead.
 
-\snippet random.cpp random_uniform_int
+We are first going to create a variate object with a uniform int distribution.
+
+\snippet random/simple.cpp random_uniform_int
 
 <code>print_values</code> is a function that draws 20 numbers and prints them.
 For example, the code could print: <code>5 7 3 7 6 8 9 5 7 9 7 10 1 6 5 6 3 2 5
@@ -82,16 +92,72 @@ For example, the code could print: <code>5 7 3 7 6 8 9 5 7 9 7 10 1 6 5 6 3 2 5
 
 <code>print_values</code> is defined as follows:
 
-\snippet random.cpp random_print_values
+\snippet random/simple.cpp random_print_values
 
-Using different distributions works similar to using a uniform int distribution,
-for example a normal distribution can be used like this:
+Using different distributions works similar to using a uniform int
+distribution, for example a normal distribution can be used like this:
 
-\snippet random.cpp random_normal
+\snippet random/simple.cpp random_normal
 
 For example, the code could print: <code>0.441851 5.37344 -7.79767 1.89097
 -2.03191 3.17695 3.55056 -1.17422 2.86699 -7.46394 5.63758 2.65694 1.35165
 0.953806 4.9783 2.02385 4.69477 -2.96583 5.22453 4.10744</code>.
+
+\section random_conversion Conversion of types
+
+As mentioned in the introduction, it is hard to adapt C++11's distributions to
+other types like strong typedefs. fcppt provides a customization point as
+fcppt::random::distribution::transform which you can specialize.
+
+In the following example, we are going to construct a <code>uniform_int</code>
+distribution over a strong typedef to an int. The specialization used for this
+is located in
+<code>fcppt/random/distribution/transform/strong_typedef.hpp</code> and must be
+included.
+
+\snippet random/strong_typedef.cpp random_strong_typedef_distribution
+
+Notice, that the distribution's min and max parameter also turned into strong
+typedefs <code>my_type</code>.
+
+\snippet random/strong_typedef.cpp random_strong_typedef_variate
+
+Also, <code>operator()</code> of the variate object returns strong typedefs.
+
+\snippet random/strong_typedef.cpp random_strong_typedef_output
+
+It is also possible to chain multiple of these classes together as we can see
+in the next example. This is automatically done by the random facility itself.
+Again, the corresponding specializations must be included.
+
+The following example creates a distribution of strong typedef called \em
+radius which itself contains a type used to express distances from
+<code>boost::units</code>
+
+\snippet random/complex.cpp random_complex_distribution
+
+The distribution's parameters now need additional constructs to create the right
+types.
+
+\snippet random/complex.cpp random_complex_variate
+
+Finally, we output the values generated. <code>value()</code> is a function
+that extracts the underlying value of a <code>boost::units::quantity</code>
+
+\snippet random/complex.cpp random_complex_output
+
+The following example shows how you can specialize
+fcppt::random::distribution::transform in order to use your own types with a
+distribution.
+
+Suppose you have created a simple type similar to a strong typedef that wraps
+its underlying type:
+
+\snippet random/transform.cpp random_transform_my_type
+
+In order to use it with fcppt, you can provide the following specialization:
+
+\snippet random/transform.cpp random_transform_specialization
 
 \section random_headers Header files
 
@@ -117,52 +183,80 @@ For example, the code could print: <code>0.441851 5.37344 -7.79767 1.89097
 <td>Contains all of fcppt::random::variate</td>
 </tr>
 <tr>
-<td><code>distribution/normal_fwd.hpp</code></td>
-<td>Contains fcppt::random::distribution::normal's declaration.</td>
+<td><code>distribution/base_value.hpp</code></td>
+<td>Contains fcppt::random::distribution::base_value</td>
 </tr>
 <tr>
-<td><code>distribution/normal_decl.hpp</code></td>
-<td>Contains fcppt::random::distribution::normal's definition.</td>
+<td><code>distribution/base_type.hpp</code></td>
+<td>Contains fcppt::random::distribution::base_type</td>
 </tr>
 <tr>
-<td><code>distribution/normal_impl.hpp</code></td>
-<td>Contains the definition of fcppt::random::distribution::normal's member functions.</td>
+<td><code>distribution/basic_fwd.hpp</code></td>
+<td>Contains fcppt::random::distribution::basic's declaration.</td>
 </tr>
 <tr>
-<td><code>distribution/normal.hpp</code></td>
-<td>Contains all of fcppt::random::distribution::normal</td>
+<td><code>distribution/basic_decl.hpp</code></td>
+<td>Contains fcppt::random::distribution::basic's definition.</td>
 </tr>
 <tr>
-<td><code>distribution/uniform_int_fwd.hpp</code></td>
-<td>Contains fcppt::random::distribution::uniform_int's declaration.</td>
+<td><code>distribution/basic_impl.hpp</code></td>
+<td>Contains the definition of fcppt::random::distribution::basic's member functions.</td>
 </tr>
 <tr>
-<td><code>distribution/uniform_int_decl.hpp</code></td>
-<td>Contains fcppt::random::distribution::uniform_int's definition.</td>
+<td><code>distribution/basic.hpp</code></td>
+<td>Contains all of fcppt::random::distribution::basic</td>
 </tr>
 <tr>
-<td><code>distribution/uniform_int_impl.hpp</code></td>
-<td>Contains the definition of fcppt::random::distribution::uniform_int's member functions.</td>
+<td><code>distribution/decorated_value.hpp</code></td>
+<td>Contains fcppt::random::distribution::decorated_value</td>
 </tr>
 <tr>
-<td><code>distribution/uniform_int.hpp</code></td>
-<td>Contains all of fcppt::random::distribution::uniform_int</td>
+<td><code>distribution/parameters/normal_fwd.hpp</code></td>
+<td>Contains fcppt::random::distribution::parameters::normal's declaration.</td>
 </tr>
 <tr>
-<td><code>distribution/uniform_real_fwd.hpp</code></td>
-<td>Contains fcppt::random::distribution::uniform_real's declaration.</td>
+<td><code>distribution/parameters/normal_decl.hpp</code></td>
+<td>Contains fcppt::random::distribution::parameters::normal's definition.</td>
 </tr>
 <tr>
-<td><code>distribution/uniform_real_decl.hpp</code></td>
-<td>Contains fcppt::random::distribution::uniform_real's definition.</td>
+<td><code>distribution/parameters/normal_impl.hpp</code></td>
+<td>Contains the definition of fcppt::random::distribution::parameters::normal's member functions.</td>
 </tr>
 <tr>
-<td><code>distribution/uniform_real_impl.hpp</code></td>
-<td>Contains the definition of fcppt::random::distribution::uniform_real's member functions.</td>
+<td><code>distribution/parameters/normal.hpp</code></td>
+<td>Contains all of fcppt::random::distribution::parameters::normal</td>
 </tr>
 <tr>
-<td><code>distribution/uniform_real.hpp</code></td>
-<td>Contains all of fcppt::random::distribution::uniform_real</td>
+<td><code>distribution/parameters/uniform_int_fwd.hpp</code></td>
+<td>Contains fcppt::random::distribution::parameters::uniform_int's declaration.</td>
+</tr>
+<tr>
+<td><code>distribution/parameters/uniform_int_decl.hpp</code></td>
+<td>Contains fcppt::random::distribution::parameters::uniform_int's definition.</td>
+</tr>
+<tr>
+<td><code>distribution/parameters/uniform_int_impl.hpp</code></td>
+<td>Contains the definition of fcppt::random::distribution::parameters::uniform_int's member functions.</td>
+</tr>
+<tr>
+<td><code>distribution/parameters/uniform_int.hpp</code></td>
+<td>Contains all of fcppt::random::distribution::parameters::uniform_int</td>
+</tr>
+<tr>
+<td><code>distribution/parameters/uniform_real_fwd.hpp</code></td>
+<td>Contains fcppt::random::distribution::parameters::uniform_real's declaration.</td>
+</tr>
+<tr>
+<td><code>distribution/parameters/uniform_real_decl.hpp</code></td>
+<td>Contains fcppt::random::distribution::parameters::uniform_real's definition.</td>
+</tr>
+<tr>
+<td><code>distribution/parameters/uniform_real_impl.hpp</code></td>
+<td>Contains the definition of fcppt::random::distribution::parameters::uniform_real's member functions.</td>
+</tr>
+<tr>
+<td><code>distribution/parameters/uniform_real.hpp</code></td>
+<td>Contains all of fcppt::random::distribution::parameters::uniform_real</td>
 </tr>
 <tr>
 <td><code>generator/basic_pseudo_fwd.hpp</code></td>
@@ -208,8 +302,12 @@ namespace fcppt
 /// Main namespace for random, also containing the variate generator
 namespace random
 {
-/// The namespace for all distributions
-namespace distribution {}
+/// The namespace for the basic distribution and helper functions
+namespace distribution
+{
+/// The namespace for all distribution parameters
+namespace parameters {}
+}
 
 /// The namespace for all generators and helper functions
 namespace generator {}

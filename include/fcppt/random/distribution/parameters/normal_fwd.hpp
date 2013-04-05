@@ -4,8 +4,9 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_RANDOM_DISTRIBUTION_UNIFORM_INT_FWD_HPP_INCLUDED
-#define FCPPT_RANDOM_DISTRIBUTION_UNIFORM_INT_FWD_HPP_INCLUDED
+#ifndef FCPPT_RANDOM_DISTRIBUTION_PARAMETERS_NORMAL_FWD_HPP_INCLUDED
+#define FCPPT_RANDOM_DISTRIBUTION_PARAMETERS_NORMAL_FWD_HPP_INCLUDED
+
 
 namespace fcppt
 {
@@ -13,12 +14,15 @@ namespace random
 {
 namespace distribution
 {
+namespace parameters
+{
 
 template<
 	typename IntType
 >
-class uniform_int;
+class normal;
 
+}
 }
 }
 }

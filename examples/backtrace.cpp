@@ -10,7 +10,8 @@
 #include <fcppt/backtrace/stack_limit.hpp>
 #include <fcppt/io/cout.hpp>
 #include <fcppt/random/variate.hpp>
-#include <fcppt/random/distribution/uniform_int.hpp>
+#include <fcppt/random/distribution/basic.hpp>
+#include <fcppt/random/distribution/parameters/uniform_int.hpp>
 #include <fcppt/random/generator/minstd_rand.hpp>
 #include <fcppt/random/generator/seed_from_chrono.hpp>
 
@@ -102,8 +103,10 @@ main()
 		>()
 	);
 
-	typedef fcppt::random::distribution::uniform_int<
-		unsigned
+	typedef fcppt::random::distribution::basic<
+		fcppt::random::distribution::parameters::uniform_int<
+			unsigned
+		>
 	> distribution;
 
 	fcppt::random::variate<
@@ -112,10 +115,11 @@ main()
 	> random_depth(
 		generator,
 		distribution(
-			distribution::min(
-				10u),
-			distribution::max(
-				100u)));
+			distribution::param_type(
+				distribution::param_type::min(
+					10u),
+				distribution::param_type::max(
+					100u))));
 
 	recursive_function_0(
 		0u,

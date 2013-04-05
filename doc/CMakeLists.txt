@@ -94,6 +94,79 @@ set(
 	doc/images/signal_benchmark.svg
 	doc/layout.xml
 	doc/stylesheet.css
+	examples/algorithm.cpp
+	examples/assert.cpp
+	examples/assert_complete.cpp
+	examples/backtrace.cpp
+	examples/chrono_asio.cpp
+	examples/codecvt.cpp
+	examples/container.cpp
+	examples/container/bitfield.cpp
+	examples/container/grid.cpp
+	examples/container/grid_iteration.cpp
+	examples/container/ptr.cpp
+	examples/container/raw_vector.cpp
+	examples/container/tree_simple.cpp
+	examples/container/tree_traversal.cpp
+	examples/cyclic_iterator.cpp
+	examples/doc/algorithm.cpp
+	examples/doc/assign.cpp
+	examples/doc/container.cpp
+	examples/doc/container_bitfield.cpp
+	examples/doc/strong_typedef.cpp
+	examples/dynamic_cast.cpp
+	examples/endianness.cpp
+	examples/foreach_enumerator.cpp
+	examples/homogenous_pair.cpp
+	examples/io.cpp
+	examples/log.cpp
+	examples/log/complex.cpp
+	examples/log/context.cpp
+	examples/log/formatting.cpp
+	examples/log/helloworld.cpp
+	examples/make_container.cpp
+	examples/math.cpp
+	examples/math/box.cpp
+	examples/math/matrix.cpp
+	examples/math/matrix_indices.cpp
+	examples/math/utility.cpp
+	examples/math/vector/access.cpp
+	examples/math/vector/arithmetic.cpp
+	examples/math/vector/basic.cpp
+	examples/math/vector/convert.cpp
+	examples/mpl/for_each.cpp
+	examples/mpl/invoke_on.cpp
+	examples/mpl/various.cpp
+	examples/noncopyable.cpp
+	examples/optional.cpp
+	examples/optional_dynamic_cast.cpp
+	examples/output_tm.cpp
+	examples/preprocessor/printing.cpp
+	examples/preprocessor/warning.cpp
+	examples/random/complex.cpp
+	examples/random/simple.cpp
+	examples/random/strong_typedef.cpp
+	examples/random/transform.cpp
+	examples/safe_numeric_cast.cpp
+	examples/scoped_ptr.cpp
+	examples/shared_ptr.cpp
+	examples/signal/benchmark.cpp
+	examples/signal/combine.cpp
+	examples/signal/connection.cpp
+	examples/signal/simple.cpp
+	examples/signal/unregister.cpp
+	examples/sleep.cpp
+	examples/string_conversion.cpp
+	examples/strongtypedef.cpp
+	examples/time_parse.cpp
+	examples/truncation_check_cast.cpp
+	examples/type_traits.cpp
+	examples/unique_ptr.cpp
+	examples/variant/binary_visitation.cpp
+	examples/variant/nonconst_visitation.cpp
+	examples/version.cpp
+	examples/visibility.cpp
+	examples/weak_ptr.cpp
 	include/fcppt/algorithm/append.hpp
 	include/fcppt/algorithm/array_map.hpp
 	include/fcppt/algorithm/contains.hpp
@@ -783,20 +856,34 @@ set(
 	include/fcppt/preprocessor/todo.hpp
 	include/fcppt/preprocessor/warn_unused_result.hpp
 	include/fcppt/preprocessor/warning.hpp
-	include/fcppt/random/distribution/declare_call.hpp
-	include/fcppt/random/distribution/define_call.hpp
-	include/fcppt/random/distribution/normal.hpp
-	include/fcppt/random/distribution/normal_decl.hpp
-	include/fcppt/random/distribution/normal_fwd.hpp
-	include/fcppt/random/distribution/normal_impl.hpp
-	include/fcppt/random/distribution/uniform_int.hpp
-	include/fcppt/random/distribution/uniform_int_decl.hpp
-	include/fcppt/random/distribution/uniform_int_fwd.hpp
-	include/fcppt/random/distribution/uniform_int_impl.hpp
-	include/fcppt/random/distribution/uniform_real.hpp
-	include/fcppt/random/distribution/uniform_real_decl.hpp
-	include/fcppt/random/distribution/uniform_real_fwd.hpp
-	include/fcppt/random/distribution/uniform_real_impl.hpp
+	include/fcppt/random/distribution/base_type.hpp
+	include/fcppt/random/distribution/base_value.hpp
+	include/fcppt/random/distribution/basic.hpp
+	include/fcppt/random/distribution/basic_decl.hpp
+	include/fcppt/random/distribution/basic_fwd.hpp
+	include/fcppt/random/distribution/basic_impl.hpp
+	include/fcppt/random/distribution/decorated_value.hpp
+	include/fcppt/random/distribution/detail/base_type.hpp
+	include/fcppt/random/distribution/detail/base_value.hpp
+	include/fcppt/random/distribution/detail/decorated_value.hpp
+	include/fcppt/random/distribution/detail/is_terminal.hpp
+	include/fcppt/random/distribution/detail/terminal_tag.hpp
+	include/fcppt/random/distribution/parameters/normal.hpp
+	include/fcppt/random/distribution/parameters/normal_decl.hpp
+	include/fcppt/random/distribution/parameters/normal_fwd.hpp
+	include/fcppt/random/distribution/parameters/normal_impl.hpp
+	include/fcppt/random/distribution/parameters/uniform_int.hpp
+	include/fcppt/random/distribution/parameters/uniform_int_decl.hpp
+	include/fcppt/random/distribution/parameters/uniform_int_fwd.hpp
+	include/fcppt/random/distribution/parameters/uniform_int_impl.hpp
+	include/fcppt/random/distribution/parameters/uniform_real.hpp
+	include/fcppt/random/distribution/parameters/uniform_real_decl.hpp
+	include/fcppt/random/distribution/parameters/uniform_real_fwd.hpp
+	include/fcppt/random/distribution/parameters/uniform_real_impl.hpp
+	include/fcppt/random/distribution/transform/boost_units.hpp
+	include/fcppt/random/distribution/transform/strong_typedef.hpp
+	include/fcppt/random/distribution/transform/terminal.hpp
+	include/fcppt/random/distribution/transform/terminal_fwd.hpp
 	include/fcppt/random/generator/basic_pseudo_decl.hpp
 	include/fcppt/random/generator/basic_pseudo_fwd.hpp
 	include/fcppt/random/generator/basic_pseudo_impl.hpp
