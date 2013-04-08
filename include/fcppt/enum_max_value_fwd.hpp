@@ -4,25 +4,18 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_RANDOM_DISTRIBUTION_TRANSFORM_TERMINAL_FWD_HPP_INCLUDED
-#define FCPPT_RANDOM_DISTRIBUTION_TRANSFORM_TERMINAL_FWD_HPP_INCLUDED
+#ifndef FCPPT_ENUM_MAX_VALUE_FWD_HPP_INCLUDED
+#define FCPPT_ENUM_MAX_VALUE_FWD_HPP_INCLUDED
 
 
 namespace fcppt
 {
-namespace random
-{
-namespace distribution
-{
 
 template<
-	typename Type,
-	typename Enable = void
+	typename Type
 >
-struct transform;
+struct enum_max_value;
 
-}
-}
 }
 
 #endif

@@ -25,7 +25,8 @@ FCPPT_PP_PUSH_WARNING
 FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
 
 template<
-	typename Type
+	typename Type,
+	typename Enable
 >
 struct transform
 :

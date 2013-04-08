@@ -241,6 +241,8 @@ set(
 	include/fcppt/endianness/swap.hpp
 	include/fcppt/enum_is_empty.hpp
 	include/fcppt/enum_is_empty_fwd.hpp
+	include/fcppt/enum_max_value.hpp
+	include/fcppt/enum_max_value_fwd.hpp
 	include/fcppt/enum_size.hpp
 	include/fcppt/enum_size_fwd.hpp
 	include/fcppt/enum_size_type.hpp
@@ -687,6 +689,7 @@ set(
 	include/fcppt/random/distribution/detail/decorated_value.hpp
 	include/fcppt/random/distribution/detail/is_terminal.hpp
 	include/fcppt/random/distribution/detail/terminal_tag.hpp
+	include/fcppt/random/distribution/parameters/make_uniform_enum.hpp
 	include/fcppt/random/distribution/parameters/normal.hpp
 	include/fcppt/random/distribution/parameters/normal_decl.hpp
 	include/fcppt/random/distribution/parameters/normal_fwd.hpp
@@ -700,6 +703,7 @@ set(
 	include/fcppt/random/distribution/parameters/uniform_real_fwd.hpp
 	include/fcppt/random/distribution/parameters/uniform_real_impl.hpp
 	include/fcppt/random/distribution/transform/boost_units.hpp
+	include/fcppt/random/distribution/transform/enum.hpp
 	include/fcppt/random/distribution/transform/strong_typedef.hpp
 	include/fcppt/random/distribution/transform/terminal.hpp
 	include/fcppt/random/distribution/transform/terminal_fwd.hpp

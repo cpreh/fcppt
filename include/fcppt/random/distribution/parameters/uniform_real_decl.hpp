@@ -25,6 +25,15 @@ namespace distribution
 namespace parameters
 {
 
+/**
+\brief Parameters class for uniform real distributions
+
+This class can be used as fcppt::random::distribution::basic's template
+parameter and is also used to initialize an object of it. It uses strong
+typedefs for the min and sup parameters.
+
+\ingroup fcpptrandom
+*/
 template<
 	typename FloatType
 >

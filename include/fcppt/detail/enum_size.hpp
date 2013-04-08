@@ -8,6 +8,7 @@
 #define FCPPT_DETAIL_ENUM_SIZE_HPP_INCLUDED
 
 #include <fcppt/enum_is_empty.hpp>
+#include <fcppt/enum_max_value.hpp>
 #include <fcppt/enum_size_type.hpp>
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
@@ -74,7 +75,9 @@ std::integral_constant<
 			Type
 		>::type
 	>(
-		Type::fcppt_maximum
+		fcppt::enum_max_value<
+			Type
+		>::value
 	)
 	+ 1u
 >

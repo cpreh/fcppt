@@ -11,6 +11,7 @@
 	<li>\ref random_introduction</li>
 	<li>\ref random_usage</li>
 	<li>\ref random_conversion</li>
+	<li>\ref random_enum</li>
 	<li>\ref random_headers</li>
 </ul>
 
@@ -159,6 +160,28 @@ In order to use it with fcppt, you can provide the following specialization:
 
 \snippet random/transform.cpp random_transform_specialization
 
+\section random_enum Random enums
+
+With the aforementioned type conversion, it's also possible to draw random enum
+values. As described in \ref fcpptenum, fcppt provides an abstraction over
+contiguous enums and their maximum values. Random builds on top of that and
+provides fcppt::random::distribution::parameters::make_uniform_enum that
+automatically creates parameters suited for a uniform int distribution that
+draws enum values from 0 to the maximum enum value.
+
+Suppose you have the following enum definition:
+
+\snippet random/enum.cpp random_enum_definition
+
+You can then declare a uniform int distribution for the enum:
+
+\snippet random/enum.cpp random_enum_distribution
+
+fcppt::random::distribution::parameters::make_uniform_enum can then be used
+to initialize the uniform int distribution:
+
+\snippet random/enum.cpp random_enum_parameters
+
 \section random_headers Header files
 
 <table>
@@ -211,6 +234,10 @@ In order to use it with fcppt, you can provide the following specialization:
 <td>Contains fcppt::random::distribution::decorated_value</td>
 </tr>
 <tr>
+<td><code>distribution/parameters/make_uniform_enum.hpp</code></td>
+<td>Contains fcppt::random::distribution::parameters::make_uniform_enum</td>
+</tr>
+<tr>
 <td><code>distribution/parameters/normal_fwd.hpp</code></td>
 <td>Contains fcppt::random::distribution::parameters::normal's declaration.</td>
 </tr>
@@ -257,6 +284,22 @@ In order to use it with fcppt, you can provide the following specialization:
 <tr>
 <td><code>distribution/parameters/uniform_real.hpp</code></td>
 <td>Contains all of fcppt::random::distribution::parameters::uniform_real</td>
+</tr>
+<tr>
+<td><code>distribution/parameters/transform/boost_units.hpp</code></td>
+<td>Contains the specialization for enum conversions.</td>
+</tr>
+<tr>
+<td><code>distribution/parameters/transform/enum.hpp</code></td>
+<td>Contains the specialization for enum conversions.</td>
+</tr>
+<tr>
+<td><code>distribution/parameters/transform/strong_typedef.hpp</code></td>
+<td>Contains the specialization for strong typedef conversions.</td>
+</tr>
+<tr>
+<td><code>distribution/parameters/transform/terminal.hpp</code></td>
+<td>Contains the default case for conversions.</td>
 </tr>
 <tr>
 <td><code>generator/basic_pseudo_fwd.hpp</code></td>

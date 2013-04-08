@@ -4,11 +4,10 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_ENUM_SIZE_HPP_INCLUDED
-#define FCPPT_ENUM_SIZE_HPP_INCLUDED
+#ifndef FCPPT_ENUM_MAX_VALUE_HPP_INCLUDED
+#define FCPPT_ENUM_MAX_VALUE_HPP_INCLUDED
 
-#include <fcppt/enum_size_fwd.hpp>
-#include <fcppt/detail/enum_size.hpp>
+#include <fcppt/enum_max_value_fwd.hpp>
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
@@ -24,26 +23,27 @@ FCPPT_PP_PUSH_WARNING
 FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
 
 /**
-\brief The number of enumerators in an enum
+\brief The maximum enumerator in an enum
+
+This class defines the maximum enumerator (the enumerator with the biggest
+integral value) in the enum denoted by \a Type. The default behaviour is to use
+<code>Type::fcppt_maximum</code>. Specialize this class to change that.
 
 \ingroup fcpptenum
 
-This class defines the number of enumerators in the enum denoted by \a Type.
-The default behavior is to set it to use <code>fcppt::enum_max_value<Type> +
-1</code>. Specialize this class to change that.
-
-\note Unfortunately, there is no way to automatically retrieve the number of
-enumerators in an enum in C++.
+\note Unfortunately, there is no way to automatically retrieve the maximum
+enumerator in an enum in C++.
 
 \tparam Type Must be an enum type
 */
 template<
 	typename Type
 >
-struct enum_size
+struct enum_max_value
 :
-fcppt::detail::enum_size<
-	Type
+std::integral_constant<
+	Type,
+	Type::fcppt_maximum
 >
 {
 	static_assert(

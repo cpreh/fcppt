@@ -35,9 +35,13 @@ enum class myenum
 It is often desirable to know the enum's maximum value, or its number of
 enumerators, for that matter. Unfortunately, C++ offers no introspection of any
 kind which makes it possible to query the maximum value. fcppt provides a trait
-class called \ref fcppt::enum_size which has a default behavior of inferring
-the maximum value from special enumerator names. Additionally, the trait class
-can also be specialized.
+class called \ref fcppt::enum_max_value which has a default behavior of
+inferring the maximum value from special enumerator names. Additionally, the
+trait class can also be specialized. Building on top of this, \ref
+fcppt::enum_size calculates the number of enumerators in an enum, setting it to
+<code>fcppt::enum_max_value<Enum> + 1</code> by default. \ref
+fcppt::enum_is_empty can be specialized to set this to zero because empty enums
+don't have a maximum element.
 
 \section fcpptenum_cast_to Cast to enums
 

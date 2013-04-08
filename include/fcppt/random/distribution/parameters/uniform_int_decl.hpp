@@ -25,6 +25,15 @@ namespace distribution
 namespace parameters
 {
 
+/**
+\brief Parameters class for uniform int distributions
+
+This class can be used as fcppt::random::distribution::basic's template
+parameter and is also used to initialize an object of it. It uses strong
+typedefs for the min and max parameters.
+
+\ingroup fcpptrandom
+*/
 template<
 	typename IntType
 >
