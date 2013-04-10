@@ -90,4 +90,41 @@ main()
 
 	fcppt::io::cout()
 		<< FCPPT_TEXT('\n');
+
+	typedef
+	fcppt::random::distribution::basic<
+		fcppt::random::distribution::parameters::uniform_int<
+			meter
+		>
+	>
+	meter_distribution;
+
+	typedef fcppt::random::variate<
+		generator_type,
+		meter_distribution
+	> meter_variate;
+
+	meter_variate meter_rng(
+		generator,
+		meter_distribution(
+			meter_distribution::param_type::min(
+				0 * boost::units::si::meter
+			),
+			meter_distribution::param_type::max(
+				10 * boost::units::si::meter
+			)
+		)
+	);
+
+	for(
+		unsigned i = 0;
+		i < 10;
+		++i
+	)
+		fcppt::io::cout()
+			<< meter_rng().value()
+			<< FCPPT_TEXT(' ');
+
+	fcppt::io::cout()
+		<< FCPPT_TEXT('\n');
 }
