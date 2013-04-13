@@ -8,9 +8,11 @@
 #ifndef FCPPT_MATH_BOX_CENTER_HPP_INCLUDED
 #define FCPPT_MATH_BOX_CENTER_HPP_INCLUDED
 
+#include <fcppt/math/size_type.hpp>
 #include <fcppt/math/box/object_impl.hpp>
 #include <fcppt/math/dim/structure_cast.hpp>
 #include <fcppt/math/vector/arithmetic.hpp>
+#include <fcppt/math/vector/dim.hpp>
 #include <fcppt/math/vector/object_impl.hpp>
 
 
@@ -29,16 +31,34 @@ namespace box
 Note that this might not calculate the box's "real" center, since the
 calculation is performed using <code>T</code>, which might be integral.
 */
-template<typename T,size_type N>
-typename object<T,N>::vector const
+template<
+	typename T,
+	fcppt::math::size_type N
+>
+typename
+fcppt::math::box::object<
+	T,
+	N
+>::vector const
 center(
-	object<T,N> const &b)
+	fcppt::math::box::object<
+		T,
+		N
+	> const &b)
 {
 	return
 		b.pos() +
-		fcppt::math::dim::structure_cast<typename object<T,N>::vector>(
-			b.size())/
-		static_cast<T>(2);
+		fcppt::math::dim::structure_cast<
+			typename fcppt::math::box::object
+			<
+				T,
+				N
+			>::vector
+		>(
+			b.size()
+		)
+		/
+		2;
 }
 }
 }
