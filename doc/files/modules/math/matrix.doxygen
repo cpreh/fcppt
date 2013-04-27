@@ -14,7 +14,7 @@ namespace matrix
 /**
 \defgroup fcpptmathmatrix fcppt.math.matrix
 \ingroup fcpptmath
-\brief A class representing dynamic or static n-dimensional vectors
+\brief A class representing static n-dimensional vectors
 
 <table id="toc">
 <tr>
@@ -45,9 +45,8 @@ touch the differences between a vector and a matrix, so you should read the
 documentation for fcppt::math::vector::object before reading this introduction.
 
 Of course, a matrix has two dimension parameters instead of one. Again, we have
-the metafunctions \link fcppt::math::matrix::static_ static_ \endlink and \link
-fcppt::math::matrix::dynamic dynamic \endlink to typedef static and dynamic
-matrices, respectively.
+the metafunction \link fcppt::math::matrix::static_ static_ \endlink to typedef
+a static matrix.
 
 A matrix can be constructed using a variadic constructor which takes the matrix
 components in row-major order. This way, you can arrange the matrix's

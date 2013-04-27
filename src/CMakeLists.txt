@@ -1,11 +1,16 @@
 set(
 	FCPPT_CORE_FILES
 	include/fcppt/algorithm/append.hpp
+	include/fcppt/algorithm/array_fold.hpp
+	include/fcppt/algorithm/array_init.hpp
 	include/fcppt/algorithm/array_map.hpp
 	include/fcppt/algorithm/contains.hpp
 	include/fcppt/algorithm/contains_if.hpp
 	include/fcppt/algorithm/copy_if.hpp
 	include/fcppt/algorithm/copy_n.hpp
+	include/fcppt/algorithm/detail/array_fold.hpp
+	include/fcppt/algorithm/detail/array_init_function.hpp
+	include/fcppt/algorithm/detail/array_map_function.hpp
 	include/fcppt/algorithm/detail/ptr_container_erase_pred.hpp
 	include/fcppt/algorithm/element_not_found.hpp
 	include/fcppt/algorithm/exception.hpp
@@ -83,6 +88,7 @@ set(
 	include/fcppt/config/platform.hpp
 	include/fcppt/const_optional_cast.hpp
 	include/fcppt/const_pointer_cast.hpp
+	include/fcppt/container/array_size.hpp
 	include/fcppt/container/bitfield/array.hpp
 	include/fcppt/container/bitfield/default_internal_type.hpp
 	include/fcppt/container/bitfield/detail/element_bits.hpp
@@ -104,6 +110,7 @@ set(
 	include/fcppt/container/bitfield/value_type.hpp
 	include/fcppt/container/data.hpp
 	include/fcppt/container/data_end.hpp
+	include/fcppt/container/detail/array_size.hpp
 	include/fcppt/container/detail/data.hpp
 	include/fcppt/container/detail/data_end.hpp
 	include/fcppt/container/exception.hpp
@@ -427,15 +434,14 @@ set(
 	include/fcppt/math/detail/binary_type.hpp
 	include/fcppt/math/detail/checked_access.hpp
 	include/fcppt/math/detail/construct.hpp
+	include/fcppt/math/detail/default_storage.hpp
 	include/fcppt/math/detail/diff.hpp
 	include/fcppt/math/detail/dim_matches.hpp
-	include/fcppt/math/detail/dynamic_size.hpp
-	include/fcppt/math/detail/dynamic_storage.hpp
 	include/fcppt/math/detail/fill.hpp
 	include/fcppt/math/detail/generate_binary_vectors.hpp
 	include/fcppt/math/detail/has_size.hpp
 	include/fcppt/math/detail/index_at.hpp
-	include/fcppt/math/detail/initial_size.hpp
+	include/fcppt/math/detail/init_storage.hpp
 	include/fcppt/math/detail/linear_access.hpp
 	include/fcppt/math/detail/make_impl.hpp
 	include/fcppt/math/detail/make_op_decl.hpp
@@ -445,20 +451,15 @@ set(
 	include/fcppt/math/detail/make_simple_scalar_left.hpp
 	include/fcppt/math/detail/make_simple_scalar_mul.hpp
 	include/fcppt/math/detail/make_simple_unary_minus.hpp
-	include/fcppt/math/detail/make_storage_size.hpp
 	include/fcppt/math/detail/make_variadic_constructor.hpp
 	include/fcppt/math/detail/make_variadic_constructor_decl.hpp
 	include/fcppt/math/detail/mod.hpp
 	include/fcppt/math/detail/mod_assign.hpp
 	include/fcppt/math/detail/narrow_cast.hpp
+	include/fcppt/math/detail/null_storage.hpp
 	include/fcppt/math/detail/one_dimensional_input.hpp
 	include/fcppt/math/detail/one_dimensional_output.hpp
 	include/fcppt/math/detail/pi.hpp
-	include/fcppt/math/detail/simple_normal_storage.hpp
-	include/fcppt/math/detail/static_storage.hpp
-	include/fcppt/math/detail/storage_size_decl.hpp
-	include/fcppt/math/detail/storage_size_fwd.hpp
-	include/fcppt/math/detail/storage_size_impl.hpp
 	include/fcppt/math/detail/structure_cast.hpp
 	include/fcppt/math/detail/structure_cast_fun.hpp
 	include/fcppt/math/detail/transform.hpp
@@ -469,15 +470,14 @@ set(
 	include/fcppt/math/dim/comparison.hpp
 	include/fcppt/math/dim/componentwise_equal.hpp
 	include/fcppt/math/dim/construct.hpp
-	include/fcppt/math/dim/dynamic.hpp
 	include/fcppt/math/dim/fill.hpp
 	include/fcppt/math/dim/has_dim.hpp
 	include/fcppt/math/dim/input.hpp
+	include/fcppt/math/dim/is_dim.hpp
 	include/fcppt/math/dim/is_quadratic.hpp
 	include/fcppt/math/dim/make.hpp
 	include/fcppt/math/dim/max_ctor_params.hpp
 	include/fcppt/math/dim/narrow_cast.hpp
-	include/fcppt/math/dim/normal_storage.hpp
 	include/fcppt/math/dim/object.hpp
 	include/fcppt/math/dim/object_decl.hpp
 	include/fcppt/math/dim/object_fwd.hpp
@@ -494,11 +494,8 @@ set(
 	include/fcppt/math/interpolation/perlin_fifth_degree_functor.hpp
 	include/fcppt/math/interpolation/trigonometric.hpp
 	include/fcppt/math/interpolation/trigonometric_functor.hpp
-	include/fcppt/math/is_dynamic_size.hpp
 	include/fcppt/math/is_power_of_2.hpp
 	include/fcppt/math/is_rational.hpp
-	include/fcppt/math/is_static_size.hpp
-	include/fcppt/math/is_static_storage.hpp
 	include/fcppt/math/log2.hpp
 	include/fcppt/math/matrix/adjugate.hpp
 	include/fcppt/math/matrix/arithmetic.hpp
@@ -506,27 +503,19 @@ set(
 	include/fcppt/math/matrix/componentwise_equal.hpp
 	include/fcppt/math/matrix/delete_row_and_column.hpp
 	include/fcppt/math/matrix/detail/determinant.hpp
-	include/fcppt/math/matrix/detail/dim_storage.hpp
-	include/fcppt/math/matrix/detail/dim_storage_impl.hpp
-	include/fcppt/math/matrix/detail/dynamic_dim.hpp
 	include/fcppt/math/matrix/detail/row_view_decl.hpp
 	include/fcppt/math/matrix/detail/row_view_fwd.hpp
 	include/fcppt/math/matrix/detail/row_view_impl.hpp
-	include/fcppt/math/matrix/detail/static_storage.hpp
-	include/fcppt/math/matrix/detail/structure_cast.hpp
 	include/fcppt/math/matrix/determinant.hpp
-	include/fcppt/math/matrix/dim_type.hpp
-	include/fcppt/math/matrix/dynamic.hpp
-	include/fcppt/math/matrix/dynamic_impl.hpp
+	include/fcppt/math/matrix/dim.hpp
+	include/fcppt/math/matrix/dim_fwd.hpp
 	include/fcppt/math/matrix/exponential_pade.hpp
 	include/fcppt/math/matrix/has_dim.hpp
 	include/fcppt/math/matrix/infinity_norm.hpp
 	include/fcppt/math/matrix/inverse.hpp
 	include/fcppt/math/matrix/is_matrix.hpp
-	include/fcppt/math/matrix/is_static_size.hpp
 	include/fcppt/math/matrix/logarithm.hpp
 	include/fcppt/math/matrix/max_ctor_params.hpp
-	include/fcppt/math/matrix/normal_storage.hpp
 	include/fcppt/math/matrix/object.hpp
 	include/fcppt/math/matrix/object_decl.hpp
 	include/fcppt/math/matrix/object_fwd.hpp
@@ -538,8 +527,10 @@ set(
 	include/fcppt/math/matrix/rotation_y.hpp
 	include/fcppt/math/matrix/rotation_z.hpp
 	include/fcppt/math/matrix/scaling.hpp
+	include/fcppt/math/matrix/size.hpp
 	include/fcppt/math/matrix/sqrt.hpp
 	include/fcppt/math/matrix/static.hpp
+	include/fcppt/math/matrix/static_storage.hpp
 	include/fcppt/math/matrix/structure_cast.hpp
 	include/fcppt/math/matrix/transform_direction.hpp
 	include/fcppt/math/matrix/transform_point.hpp
@@ -569,6 +560,7 @@ set(
 	include/fcppt/math/sphere/object_fwd.hpp
 	include/fcppt/math/sphere/object_impl.hpp
 	include/fcppt/math/static_size.hpp
+	include/fcppt/math/static_storage.hpp
 	include/fcppt/math/step.hpp
 	include/fcppt/math/twopi.hpp
 	include/fcppt/math/vector/angle_between.hpp
@@ -582,18 +574,16 @@ set(
 	include/fcppt/math/vector/cross.hpp
 	include/fcppt/math/vector/dim.hpp
 	include/fcppt/math/vector/dot.hpp
-	include/fcppt/math/vector/dynamic.hpp
-	include/fcppt/math/vector/dynamic_impl.hpp
 	include/fcppt/math/vector/has_dim.hpp
 	include/fcppt/math/vector/hypersphere_to_cartesian.hpp
 	include/fcppt/math/vector/input.hpp
+	include/fcppt/math/vector/is_vector.hpp
 	include/fcppt/math/vector/length.hpp
 	include/fcppt/math/vector/length_square.hpp
 	include/fcppt/math/vector/make.hpp
 	include/fcppt/math/vector/max_ctor_params.hpp
 	include/fcppt/math/vector/mod.hpp
 	include/fcppt/math/vector/narrow_cast.hpp
-	include/fcppt/math/vector/normal_storage.hpp
 	include/fcppt/math/vector/normalize.hpp
 	include/fcppt/math/vector/object.hpp
 	include/fcppt/math/vector/object_decl.hpp
@@ -634,6 +624,8 @@ set(
 	include/fcppt/mpl/print.hpp
 	include/fcppt/mpl/value_type.hpp
 	include/fcppt/narrow.hpp
+	include/fcppt/no_init.hpp
+	include/fcppt/no_init_fwd.hpp
 	include/fcppt/nonassignable.hpp
 	include/fcppt/noncopyable.hpp
 	include/fcppt/number_multiplexer/object.hpp
@@ -826,6 +818,7 @@ set(
 	include/fcppt/type_traits/is_iterator_of_category.hpp
 	include/fcppt/type_traits/is_output_iterator.hpp
 	include/fcppt/type_traits/is_random_access_iterator.hpp
+	include/fcppt/type_traits/is_std_array.hpp
 	include/fcppt/type_traits/is_string.hpp
 	include/fcppt/type_traits/is_unique_ptr.hpp
 	include/fcppt/type_traits/remove_cv_ref.hpp

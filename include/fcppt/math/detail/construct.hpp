@@ -7,6 +7,9 @@
 #ifndef FCPPT_MATH_DETAIL_CONSTRUCT_HPP_INCLUDED
 #define FCPPT_MATH_DETAIL_CONSTRUCT_HPP_INCLUDED
 
+#include <fcppt/no_init.hpp>
+
+
 namespace fcppt
 {
 namespace math
@@ -24,7 +27,9 @@ construct(
 	typename Src::value_type const &value
 )
 {
-	Dest ret;
+	Dest ret{
+		fcppt::no_init()
+	};
 
 	for(
 		typename Src::size_type i = 0;

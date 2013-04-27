@@ -8,42 +8,81 @@
 #ifndef FCPPT_ALGORITHM_ARRAY_MAP_HPP_INCLUDED
 #define FCPPT_ALGORITHM_ARRAY_MAP_HPP_INCLUDED
 
+#include <fcppt/algorithm/array_fold.hpp>
+#include <fcppt/algorithm/detail/array_map_function.hpp>
+#include <fcppt/type_traits/is_std_array.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <algorithm>
+#include <array>
 #include <fcppt/config/external_end.hpp>
+
 
 namespace fcppt
 {
 namespace algorithm
 {
+
 /**
- * \brief Applies a functor to an array and returns a new array containing the results.
- * \ingroup fcpptalgorithm
- * \tparam TargetArray Must be default-constructible
- *
- * Example:
- *
- * \snippet doc/algorithm.cpp array_map
- **/
+\brief Applies a function to an array and returns a new array containing the
+results.
+
+\ingroup fcpptalgorithm
+
+Applies \a _function to every element of \a _source.
+
+Example:
+
+\snippet doc/algorithm.cpp array_map
+
+\tparam TargetArray Must be a std::array
+
+\tparam SourceType Can be any type
+
+\tparam SourceCount The number of elements in the source array
+
+\tparam Function Must be a function taking elements of the source array and
+returning elements of the \a TargetArray
+**/
 template
 <
 	typename TargetArray,
-	typename SourceArray,
-	typename Functor
+	typename SourceType,
+	std::size_t SourceCount,
+	typename Function
 >
 TargetArray const
 array_map(
-	SourceArray const &source,
-	Functor const &f)
+	std::array<
+		SourceType,
+		SourceCount
+	> const &_source,
+	Function const &_function
+)
 {
-	TargetArray result;
-	std::transform(
-		source.begin(),
-		source.end(),
-		result.begin(),
-		f);
-	return result;
+	static_assert(
+		fcppt::type_traits::is_std_array<
+			TargetArray
+		>::value,
+		"TargetArray must be a std::array"
+	);
+
+	return
+		fcppt::algorithm::array_fold<
+			TargetArray
+		>(
+			fcppt::algorithm::detail::array_map_function<
+				Function,
+				typename TargetArray::value_type,
+				std::array<
+					SourceType,
+					SourceCount
+				>
+			>(
+				_function,
+				_source
+			)
+		);
 }
+
 }
 }
 

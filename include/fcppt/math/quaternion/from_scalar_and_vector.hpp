@@ -25,8 +25,8 @@ namespace quaternion
 \brief Initializes a quaternion from a scalar and a vector.
 \ingroup fcpptmathquaternion
 \tparam T The quaternion's value type
-\tparam N The vector's dimension type (dynamic vectors are allowed)
-\tparam S The vector's storage type (dynamic vectors are allowed)
+\tparam N The vector's dimension type
+\tparam S The vector's storage type
 \see fcppt::math::quaternion::from_angle_and_axis.
 \note
 The vector is <em>not</em> an axis, see fcppt::math::quaternion::from_angle_and_axis for that!

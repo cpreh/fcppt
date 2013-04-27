@@ -7,6 +7,7 @@
 #ifndef FCPPT_MATH_SIZE_TYPE_HPP_INCLUDED
 #define FCPPT_MATH_SIZE_TYPE_HPP_INCLUDED
 
+
 namespace fcppt
 {
 namespace math

@@ -7,7 +7,6 @@
 #ifndef FCPPT_MATH_VECTOR_CONSTRUCT_HPP_INCLUDED
 #define FCPPT_MATH_VECTOR_CONSTRUCT_HPP_INCLUDED
 
-#include <fcppt/math/is_static_size.hpp>
 #include <fcppt/math/detail/construct.hpp>
 #include <fcppt/math/vector/object_impl.hpp>
 #include <fcppt/math/vector/static.hpp>
@@ -59,23 +58,24 @@ template<
 	typename N,
 	typename S
 >
-typename boost::enable_if<
-	math::is_static_size<
-		N
-	>,
-	typename static_<
-		T,
-		N::value + 1
-	>::type
+typename
+fcppt::math::vector::static_<
+	T,
+	N::value + 1
 >::type const
 construct(
-	object<T, N, S> const &_base,
+	fcppt::math::vector::object<
+		T,
+		N,
+		S
+	> const &_base,
 	T const &_t
 )
 {
 	return
-		math::detail::construct<
-			typename static_<
+		fcppt::math::detail::construct<
+			typename
+			fcppt::math::vector::static_<
 				T,
 				N::value + 1
 			>::type

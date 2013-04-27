@@ -24,7 +24,7 @@ namespace box
 \brief Test if a box contains a point
 \ingroup fcpptmathbox
 \tparam NBox The box's (and point's) dimension
-\tparam NPoint The point's dimension (dynamic points are allowed)
+\tparam NPoint The point's dimension
 \tparam S The point's storage type
 \tparam T The box's (and point's) <code>value_type</code>
 \param _box The box to test

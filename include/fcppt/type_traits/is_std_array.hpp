@@ -4,8 +4,8 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_MATH_IS_STATIC_STORAGE_HPP_INCLUDED
-#define FCPPT_MATH_IS_STATIC_STORAGE_HPP_INCLUDED
+#ifndef FCPPT_TYPE_TRAITS_IS_STD_ARRAY_HPP_INCLUDED
+#define FCPPT_TYPE_TRAITS_IS_STD_ARRAY_HPP_INCLUDED
 
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
@@ -19,16 +19,25 @@
 
 namespace fcppt
 {
-namespace math
+namespace type_traits
 {
 
 FCPPT_PP_PUSH_WARNING
 FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
 
+/**
+\brief Checks if an type is a std::array
+
+\ingroup fcppttypetraits
+
+Checks if \a Type is a std::array
+
+\tparam Type Can be any type
+*/
 template<
-	typename T
+	typename Type
 >
-struct is_static_storage
+struct is_std_array
 :
 std::false_type
 {
@@ -38,7 +47,7 @@ template<
 	typename T,
 	std::size_t N
 >
-struct is_static_storage<
+struct is_std_array<
 	std::array<
 		T,
 		N

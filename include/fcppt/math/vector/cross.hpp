@@ -7,8 +7,8 @@
 #ifndef FCPPT_MATH_VECTOR_CROSS_HPP_INCLUDED
 #define FCPPT_MATH_VECTOR_CROSS_HPP_INCLUDED
 
+#include <fcppt/math/static_storage.hpp>
 #include <fcppt/math/detail/has_size.hpp>
-#include <fcppt/math/vector/normal_storage.hpp>
 #include <fcppt/math/vector/object_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/utility/enable_if.hpp>
@@ -41,29 +41,37 @@ template<
 	typename S2
 >
 typename boost::enable_if<
-	math::detail::has_size<
+	fcppt::math::detail::has_size<
 		N,
 		3
 	>,
-	object<
+	fcppt::math::vector::object<
 		T,
 		N,
-		typename normal_storage<
+		typename fcppt::math::static_storage<
 			T,
 			N
 		>::type
 	> const
 >::type
 cross(
-	object<T, N, S1> const &l,
-	object<T, N, S2> const &r
+	fcppt::math::vector::object<
+		T,
+		N,
+		S1
+	> const &l,
+	fcppt::math::vector::object<
+		T,
+		N,
+		S2
+	> const &r
 )
 {
 	return
-		object<
+		fcppt::math::vector::object<
 			T,
 			N,
-			typename normal_storage<
+			typename fcppt::math::static_storage<
 				T,
 				N
 			>::type

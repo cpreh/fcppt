@@ -4,24 +4,15 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_MATH_DETAIL_STORAGE_SIZE_FWD_HPP_INCLUDED
-#define FCPPT_MATH_DETAIL_STORAGE_SIZE_FWD_HPP_INCLUDED
+#ifndef FCPPT_NO_INIT_FWD_HPP_INCLUDED
+#define FCPPT_NO_INIT_FWD_HPP_INCLUDED
 
 
 namespace fcppt
 {
-namespace math
-{
-namespace detail
-{
 
-template<
-	typename Size
->
-class storage_size;
+struct no_init;
 
-}
-}
 }
 
 #endif

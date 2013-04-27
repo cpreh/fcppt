@@ -25,8 +25,8 @@ namespace quaternion
 \brief Converts a quaternion to an angle and and axis
 \ingroup fcpptmathquaternion
 \tparam T The quaternion's value type (has to be a floating point type)
-\tparam N The vector's dimension type (dynamic vectors are allowed)
-\tparam S The vector's storage type (dynamic vectors are allowed)
+\tparam N The vector's dimension type
+\tparam S The vector's storage type
 */
 template
 <
@@ -40,6 +40,7 @@ to_angle_and_axis(
 	T &angle,
 	fcppt::math::vector::object<T,N,S> &axis)
 {
+	// FIXME: Make this function return something instead
 	// NOTE: Can we express this with quaternion functions instead of the manual sqrt?
 	T const scale =
 		std::sqrt(

@@ -7,6 +7,7 @@
 #ifndef FCPPT_CONTAINER_GRID_OUTPUT_HPP_INCLUDED
 #define FCPPT_CONTAINER_GRID_OUTPUT_HPP_INCLUDED
 
+#include <fcppt/no_init.hpp>
 #include <fcppt/container/grid/object_impl.hpp>
 #include <fcppt/container/grid/size_type.hpp>
 #include <fcppt/container/grid/detail/print_recurse.hpp>
@@ -55,24 +56,32 @@ operator<<(
 		Ch,
 		Traits
 	> &_stream,
-	grid::object<
+	fcppt::container::grid::object<
 		T,
 		N,
 		A
 	> const &_object
 )
 {
-	typedef grid::object<T, N, A> object;
+	typedef
+	fcppt::container::grid::object<
+		T,
+		N,
+		A
+	> object;
 
-	detail::print_recurse<
+	fcppt::container::grid::detail::print_recurse<
 		N
 	>(
 		_stream,
 		_object,
-		typename object::dim()
+		typename object::dim{
+			fcppt::no_init()
+		}
 	);
 
-	return _stream;
+	return
+		_stream;
 }
 
 }

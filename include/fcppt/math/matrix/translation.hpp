@@ -65,7 +65,7 @@ translation(
 \brief Calculates a 4x4 translation matrix from a three-dimensional vector
 \ingroup fcpptmathmatrix
 \tparam Vector The Vector type to translate with
-\param _vec A three-dimensional vector (static or dynamic)
+\param _vec A three-dimensional vector
 
 The resulting matrix will be static.
 */

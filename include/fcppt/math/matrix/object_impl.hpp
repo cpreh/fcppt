@@ -7,47 +7,52 @@
 #ifndef FCPPT_MATH_MATRIX_OBJECT_IMPL_HPP_INCLUDED
 #define FCPPT_MATH_MATRIX_OBJECT_IMPL_HPP_INCLUDED
 
+#include <fcppt/no_init.hpp>
 #include <fcppt/math/detail/array_adapter_impl.hpp>
 #include <fcppt/math/detail/assign.hpp>
-#include <fcppt/math/detail/initial_size.hpp>
+#include <fcppt/math/detail/default_storage.hpp>
 #include <fcppt/math/detail/make_op_def.hpp>
 #include <fcppt/math/detail/make_variadic_constructor.hpp>
-#include <fcppt/math/dim/object_impl.hpp>
-#include <fcppt/math/matrix/is_static_size.hpp>
 #include <fcppt/math/matrix/object_decl.hpp>
-#include <fcppt/math/matrix/detail/dim_storage_impl.hpp>
+#include <fcppt/math/matrix/static_storage.hpp>
 #include <fcppt/math/matrix/detail/row_view_impl.hpp>
 #include <fcppt/math/vector/object_impl.hpp>
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
+#include <fcppt/type_traits/is_iterator.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <algorithm>
-#include <iterator>
 #include <fcppt/config/external_end.hpp>
 
 
-FCPPT_PP_PUSH_WARNING
-FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
 template<
 	typename T,
 	typename N,
 	typename M,
 	typename S
 >
-fcppt::math::matrix::object<T, N, M, S>::object()
+fcppt::math::matrix::object<
+	T,
+	N,
+	M,
+	S
+>::object()
 :
-	dim_base()
-// Don't initialize storage_()
+	storage_(
+		fcppt::math::detail::default_storage<
+			typename fcppt::math::matrix::static_storage<
+				T,
+				N,
+				M
+			>::type
+		>()
+	)
 {
-	static_assert(
-		fcppt::math::matrix::is_static_size<
-			N,
-			M
-		>::value,
-		"This constructor can only be used with static matrices"
-	);
 }
+
+FCPPT_PP_PUSH_WARNING
+FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
 
 template<
 	typename T,
@@ -55,16 +60,16 @@ template<
 	typename M,
 	typename S
 >
-fcppt::math::matrix::object<T, N, M, S>::object(
-	dim const &_dim
+fcppt::math::matrix::object<
+	T,
+	N,
+	M,
+	S
+>::object(
+	fcppt::no_init const &
 )
-:
-	dim_base(
-		_dim
-	)
 // Don't initialize storage_()
 {
-	// This constructor has no effect on static matrices
 }
 
 FCPPT_PP_POP_WARNING
@@ -75,22 +80,19 @@ template<
 	typename M,
 	typename S
 >
-fcppt::math::matrix::object<T, N, M, S>::object(
+fcppt::math::matrix::object<
+	T,
+	N,
+	M,
+	S
+>::object(
 	storage_type const &_storage
 )
 :
-	dim_base(),
 	storage_(
 		_storage
 	)
 {
-	static_assert(
-		fcppt::math::matrix::is_static_size<
-			N,
-			M
-		>::value,
-		"This constructor can only be used with static matrices"
-	);
 }
 
 template<
@@ -99,13 +101,15 @@ template<
 	typename M,
 	typename S
 >
-fcppt::math::matrix::object<T, N, M, S>::object(
+fcppt::math::matrix::object<
+	T,
+	N,
+	M,
+	S
+>::object(
 	object const &_other
 )
 :
-	dim_base(
-		_other
-	),
 	storage_(
 		_other.storage_
 	)
@@ -124,29 +128,25 @@ template<
 template<
 	typename OtherStorage
 >
-fcppt::math::matrix::object<T, N, M, S>::object(
-	object<
+fcppt::math::matrix::object<
+	T,
+	N,
+	M,
+	S
+>::object(
+	fcppt::math::matrix::object<
 		T,
 		N,
 		M,
 		OtherStorage
 	> const &_other
 )
-:
-	dim_base(
-		_other
-	)
 // Don't initialize storage_()
 {
-	math::detail::initial_size(
-		storage_,
-		_other.size()
-	);
-
 	std::copy(
 		_other.begin(),
 		_other.end(),
-		begin()
+		this->begin()
 	);
 }
 
@@ -159,118 +159,26 @@ template<
 template<
 	typename In
 >
-fcppt::math::matrix::object<T, N, M, S>::object(
+fcppt::math::matrix::object<
+	T,
+	N,
+	M,
+	S
+>::object(
 	In const _begin,
 	typename boost::enable_if<
-		type_traits::is_iterator<
+		fcppt::type_traits::is_iterator<
 			In
 		>,
 		In
 	>::type const _end
 )
-:
-	dim_base()
 // Don't initialize storage_()
 {
-	static_assert(
-		fcppt::math::matrix::is_static_size<
-			N,
-			M
-		>::value,
-		"This constructor can only be used with static matrices"
-	);
-
 	std::copy(
 		_begin,
 		_end,
-		begin()
-	);
-}
-
-template<
-	typename T,
-	typename N,
-	typename M,
-	typename S
->
-template<
-	typename In
->
-fcppt::math::matrix::object<T, N, M, S>::object(
-	dim const &_dim,
-	In const _begin,
-	typename boost::enable_if<
-		type_traits::is_iterator<
-			In
-		>,
-		In
-	>::type const _end
-)
-:
-	dim_base(
-		_dim
-	)
-// Don't initialize storage_()
-{
-	static_assert(
-		!fcppt::math::matrix::is_static_size<
-			N,
-			M
-		>::value,
-		"This constructor can only be used with dynamic matrices"
-	);
-
-	math::detail::initial_size(
-		storage_,
-		std::distance(
-			_begin,
-			_end
-		)
-	);
-
-	std::copy(
-		_begin,
-		_end,
-		begin()
-	);
-}
-
-template<
-	typename T,
-	typename N,
-	typename M,
-	typename S
->
-template<
-	typename Container
->
-fcppt::math::matrix::object<T, N, M, S>::object(
-	dim const &_dim,
-	Container const &_container
-)
-:
-	dim_base(
-		_dim
-	)
-// Don't initialize storage_()
-{
-	static_assert(
-		!fcppt::math::matrix::is_static_size<
-			N,
-			M
-		>::value,
-		"This constructor can only be used with dynamic matrices"
-	);
-
-	math::detail::initial_size(
-		storage_,
-		_container.size()
-	);
-
-	std::copy(
-		_container.begin(),
-		_container.end(),
-		begin()
+		this->begin()
 	);
 }
 
@@ -298,8 +206,18 @@ template<
 	typename M,
 	typename S
 >
-fcppt::math::matrix::object<T, N, M, S> &
-fcppt::math::matrix::object<T, N, M, S>::operator=(
+fcppt::math::matrix::object<
+	T,
+	N,
+	M,
+	S
+> &
+fcppt::math::matrix::object<
+	T,
+	N,
+	M,
+	S
+>::operator=(
 	object const &_other
 )
 {
@@ -317,9 +235,19 @@ template<
 template<
 	typename OtherStorage
 >
-fcppt::math::matrix::object<T, N, M, S> &
-fcppt::math::matrix::object<T, N, M, S>::operator=(
-	object<
+fcppt::math::matrix::object<
+	T,
+	N,
+	M,
+	S
+> &
+fcppt::math::matrix::object<
+	T,
+	N,
+	M,
+	S
+>::operator=(
+	fcppt::math::matrix::object<
 		T,
 		N,
 		M,
@@ -327,13 +255,8 @@ fcppt::math::matrix::object<T, N, M, S>::operator=(
 	> const &_other
 )
 {
-	math::detail::initial_size(
-		storage_,
-		_other.size()
-	);
-
 	return
-		math::detail::assign(
+		fcppt::math::detail::assign(
 			*this,
 			_other
 		);
@@ -345,8 +268,14 @@ template<
 	typename M,
 	typename S
 >
-fcppt::math::matrix::object<T, N, M, S>::~object()
-{}
+fcppt::math::matrix::object<
+	T,
+	N,
+	M,
+	S
+>::~object()
+{
+}
 
 // \cond FCPPT_DOXYGEN_DEBUG
 #define FCPPT_MATH_MATRIX_OBJECT_DEFINE_OPERATOR(\
@@ -410,18 +339,29 @@ template<
 	typename M,
 	typename S
 >
-typename fcppt::math::matrix::object<T, N, M, S>::reference
-fcppt::math::matrix::object<T, N, M, S>::operator[](
+typename
+fcppt::math::matrix::object<
+	T,
+	N,
+	M,
+	S
+>::reference
+fcppt::math::matrix::object<
+	T,
+	N,
+	M,
+	S
+>::operator[](
 	size_type const _j
 )
 {
 	return
 		reference(
 			typename reference::storage_type(
-				data(),
+				this->data(),
 				_j,
-				columns(),
-				rows()
+				this->columns(),
+				this->rows()
 			)
 		);
 }
@@ -432,18 +372,29 @@ template<
 	typename M,
 	typename S
 >
-typename fcppt::math::matrix::object<T, N, M, S>::const_reference const
-fcppt::math::matrix::object<T, N, M, S>::operator[](
+typename
+fcppt::math::matrix::object<
+	T,
+	N,
+	M,
+	S
+>::const_reference const
+fcppt::math::matrix::object<
+	T,
+	N,
+	M,
+	S
+>::operator[](
 	size_type const _j
 ) const
 {
 	return
 		const_reference(
 			typename const_reference::storage_type(
-				data(),
+				this->data(),
 				_j,
-				columns(),
-				rows()
+				this->columns(),
+				this->rows()
 			)
 		);
 }
@@ -454,38 +405,21 @@ template<
 	typename M,
 	typename S
 >
-typename fcppt::math::matrix::object<T, N, M, S>::size_type
-fcppt::math::matrix::object<T, N, M, S>::rows() const
-{
-	return dim_base::rows();
-}
-
-template<
-	typename T,
-	typename N,
-	typename M,
-	typename S
->
-typename fcppt::math::matrix::object<T, N, M, S>::size_type
-fcppt::math::matrix::object<T, N, M, S>::columns() const
-{
-	return dim_base::columns();
-}
-
-template<
-	typename T,
-	typename N,
-	typename M,
-	typename S
->
-typename fcppt::math::matrix::object<T, N, M, S>::dim const
-fcppt::math::matrix::object<T, N, M, S>::dimension() const
+typename fcppt::math::matrix::object<
+	T,
+	N,
+	M,
+	S
+>::size_type
+fcppt::math::matrix::object<
+	T,
+	N,
+	M,
+	S
+>::rows()
 {
 	return
-		dim(
-			columns(),
-			rows()
-		);
+		M::value;
 }
 
 template<
@@ -494,16 +428,70 @@ template<
 	typename M,
 	typename S
 >
-fcppt::math::matrix::object<T, N, M, S> const
-fcppt::math::matrix::object<T, N, M, S>::identity()
+typename fcppt::math::matrix::object<
+	T,
+	N,
+	M,
+	S
+>::size_type
+fcppt::math::matrix::object<
+	T,
+	N,
+	M,
+	S
+>::columns()
 {
-	object<T, N, M, S> ret;
-	for(size_type i = 0; i < N::value; ++i)
-		for(size_type j = 0; j < M::value; ++j)
+	return
+		N::value;
+}
+
+template<
+	typename T,
+	typename N,
+	typename M,
+	typename S
+>
+fcppt::math::matrix::object<
+	T,
+	N,
+	M,
+	typename fcppt::math::matrix::static_storage<
+		T,
+		N,
+		M
+	>::type
+> const
+fcppt::math::matrix::object<
+	T,
+	N,
+	M,
+	S
+>::identity()
+{
+	fcppt::math::matrix::object<
+		T,
+		N,
+		M,
+		typename fcppt::math::matrix::static_storage<
+			T,
+			N,
+			M
+		>::type
+	> ret{
+		fcppt::no_init()
+	};
+
+	for(
+		size_type i = 0; i < object::rows(); ++i
+	)
+		for(
+			size_type j = 0; j < object::columns(); ++j
+		)
 			ret[i][j] =
 				i == j
 				? static_cast<T>(1)
 				: static_cast<T>(0);
+
 	return ret;
 }
 
@@ -514,7 +502,12 @@ template<
 	typename S
 >
 void
-fcppt::math::matrix::object<T, N, M, S>::swap(
+fcppt::math::matrix::object<
+	T,
+	N,
+	M,
+	S
+>::swap(
 	object &_other
 )
 {
@@ -522,10 +515,24 @@ fcppt::math::matrix::object<T, N, M, S>::swap(
 		storage_,
 		_other.storage_
 	);
+}
 
-	dim_base::swap(
-		_other
-	);
+template<
+	typename T,
+	typename N,
+	typename M,
+	typename S
+>
+S const &
+fcppt::math::matrix::object<
+	T,
+	N,
+	M,
+	S
+>::storage() const
+{
+	return
+		storage_;
 }
 
 // \cond
@@ -537,8 +544,18 @@ template<
 >
 void
 fcppt::math::matrix::swap(
-	fcppt::math::matrix::object<T, N, M, S> &_a,
-	fcppt::math::matrix::object<T, N, M, S> &_b
+	fcppt::math::matrix::object<
+		T,
+		N,
+		M,
+		S
+	> &_a,
+	fcppt::math::matrix::object<
+		T,
+		N,
+		M,
+		S
+	> &_b
 )
 {
 	_a.swap(

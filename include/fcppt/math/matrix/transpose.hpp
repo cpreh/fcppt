@@ -7,8 +7,9 @@
 #ifndef FCPPT_MATH_MATRIX_TRANSPOSE_HPP_INCLUDED
 #define FCPPT_MATH_MATRIX_TRANSPOSE_HPP_INCLUDED
 
-#include <fcppt/math/matrix/object_fwd.hpp>
+#include <fcppt/no_init.hpp>
 #include <fcppt/math/matrix/object_impl.hpp>
+
 
 namespace fcppt
 {
@@ -32,16 +33,26 @@ template<
 	typename M,
 	typename S
 >
-object<T, M, N, S> const
+fcppt::math::matrix::object<
+	T,
+	M,
+	N,
+	S
+> const
 transpose(
-	object<T, N, M, S> const &t
+	fcppt::math::matrix::object<
+		T,
+		N,
+		M,
+		S
+	> const &t
 )
 {
 	typedef object<T, M, N, S> ret_type;
 
-	ret_type ret(
-		t.dimension()
-	);
+	ret_type ret{
+		fcppt::no_init()
+	};
 
 	typedef typename ret_type::size_type size_type;
 	for(size_type i = 0; i < t.rows(); ++i)

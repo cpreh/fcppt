@@ -35,8 +35,6 @@ FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
 \tparam Matrix A fcppt::math::matrix::object type
 \tparam N The static row count
 \tparam M The static column count
-
-This will return <code>false</code> for dynamic matrices.
 */
 template<
 	typename Matrix,

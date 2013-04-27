@@ -11,7 +11,6 @@
 #include <fcppt/math/detail/make_simple_scalar_div.hpp>
 #include <fcppt/math/detail/make_simple_scalar_mul.hpp>
 #include <fcppt/math/detail/make_simple_unary_minus.hpp>
-#include <fcppt/math/dim/normal_storage.hpp>
 #include <fcppt/math/dim/object_impl.hpp>
 
 

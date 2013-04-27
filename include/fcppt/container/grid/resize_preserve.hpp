@@ -7,6 +7,7 @@
 #ifndef FCPPT_CONTAINER_GRID_RESIZE_PRESERVE_HPP_INCLUDED
 #define FCPPT_CONTAINER_GRID_RESIZE_PRESERVE_HPP_INCLUDED
 
+#include <fcppt/no_init.hpp>
 #include <fcppt/container/grid/object_impl.hpp>
 #include <fcppt/container/grid/size_type.hpp>
 #include <fcppt/container/grid/detail/assign_recurse.hpp>
@@ -31,11 +32,24 @@ template<
 >
 void
 resize_preserve(
-	grid::object<T, N, A> &_result,
-	typename grid::object<T, N, A>::dim const &_new_size
+	fcppt::container::grid::object<
+		T,
+		N,
+		A
+	> &_result,
+	typename fcppt::container::grid::object<
+		T,
+		N,
+		A
+	>::dim const &_new_size
 )
 {
-	typedef grid::object<T, N, A> object;
+	typedef
+	fcppt::container::grid::object<
+		T,
+		N,
+		A
+	> object;
 
 	object const temp(
 		_result
@@ -45,12 +59,14 @@ resize_preserve(
 		_new_size
 	);
 
-	detail::assign_recurse<
+	fcppt::container::grid::detail::assign_recurse<
 		N
 	>(
 		_result,
 		temp,
-		typename object::dim()
+		typename object::dim{
+			fcppt::no_init()
+		}
 	);
 }
 

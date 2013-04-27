@@ -7,9 +7,9 @@
 #ifndef FCPPT_MATH_MATRIX_VECTOR_HPP_INCLUDED
 #define FCPPT_MATH_MATRIX_VECTOR_HPP_INCLUDED
 
+#include <fcppt/math/static_storage.hpp>
 #include <fcppt/math/detail/binary_type.hpp>
 #include <fcppt/math/matrix/object_impl.hpp>
-#include <fcppt/math/vector/normal_storage.hpp>
 #include <fcppt/math/vector/object_impl.hpp>
 
 
@@ -32,7 +32,7 @@ template<
 fcppt::math::vector::object<
 	FCPPT_MATH_DETAIL_BINARY_TYPE(L, *, R),
 	M,
-	typename fcppt::math::vector::normal_storage<
+	typename fcppt::math::static_storage<
 		FCPPT_MATH_DETAIL_BINARY_TYPE(L, *, R),
 		M
 	>::type
@@ -54,7 +54,7 @@ operator *(
 	typedef fcppt::math::vector::object<
 		FCPPT_MATH_DETAIL_BINARY_TYPE(L, *, R),
 		M,
-		typename fcppt::math::vector::normal_storage<
+		typename fcppt::math::static_storage<
 			FCPPT_MATH_DETAIL_BINARY_TYPE(L, *, R),
 			M
 		>::type

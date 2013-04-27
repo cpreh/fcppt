@@ -7,6 +7,9 @@
 #ifndef FCPPT_MATH_VECTOR_UNIT_HPP_INCLUDED
 #define FCPPT_MATH_VECTOR_UNIT_HPP_INCLUDED
 
+#include <fcppt/no_init.hpp>
+
+
 namespace fcppt
 {
 namespace math
@@ -34,7 +37,9 @@ unit(
 	typename Vec::size_type const _axis
 )
 {
-	Vec ret;
+	Vec ret{
+		fcppt::no_init()
+	};
 
 	for(
 		typename Vec::size_type index = 0;

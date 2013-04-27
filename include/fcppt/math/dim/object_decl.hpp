@@ -7,12 +7,13 @@
 #ifndef FCPPT_MATH_DIM_OBJECT_DECL_HPP_INCLUDED
 #define FCPPT_MATH_DIM_OBJECT_DECL_HPP_INCLUDED
 
+#include <fcppt/no_init_fwd.hpp>
 #include <fcppt/math/difference_type.hpp>
 #include <fcppt/math/size_type.hpp>
+#include <fcppt/math/static_storage.hpp>
 #include <fcppt/math/detail/array_adapter.hpp>
 #include <fcppt/math/detail/make_op_decl.hpp>
 #include <fcppt/math/detail/make_variadic_constructor_decl.hpp>
-#include <fcppt/math/detail/storage_size_fwd.hpp>
 #include <fcppt/math/dim/max_ctor_params.hpp>
 #include <fcppt/math/dim/object_fwd.hpp>
 #include <fcppt/type_traits/is_iterator.hpp>
@@ -30,7 +31,7 @@ namespace dim
 {
 
 /**
-\brief A class representing dynamic or static n-dimensional dimensions
+\brief A class representing a static n-dimensional dimension
 \tparam T The dim's <code>value_type</code>
 \tparam N The dim's dimension type (this is not necessarily a number!)
 \tparam S The dim's storage type
@@ -101,19 +102,20 @@ public:
 	typedef std::reverse_iterator<const_iterator> const_reverse_iterator;
 
 	/**
+	\brief Calls the default constructor for every element
+	*/
+	object();
+
+	/**
 	\brief Construct an uninitialized dim
 
 	\warning
 	The content of the dim will be undefined (not null) after
 	initialization
 	*/
-	object();
-
 	explicit
 	object(
-		fcppt::math::detail::storage_size<
-			size_type
-		>
+		fcppt::no_init const &
 	);
 
 	/**
@@ -308,7 +310,15 @@ FCPPT_MATH_DETAIL_MAKE_OP_DECL(\
 	/**
 	\brief Returns the dim filled with all zeroes
 	*/
-	static object const
+	static
+	fcppt::math::dim::object<
+		T,
+		N,
+		typename fcppt::math::static_storage<
+			T,
+			N
+		>::type
+	> const
 	null();
 
 	/**
@@ -318,6 +328,9 @@ FCPPT_MATH_DETAIL_MAKE_OP_DECL(\
 	swap(
 		object &
 	);
+
+	S const &
+	storage() const;
 private:
 	S storage_;
 };

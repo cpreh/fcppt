@@ -7,12 +7,13 @@
 #ifndef FCPPT_MATH_VECTOR_OBJECT_DECL_HPP_INCLUDED
 #define FCPPT_MATH_VECTOR_OBJECT_DECL_HPP_INCLUDED
 
+#include <fcppt/no_init_fwd.hpp>
 #include <fcppt/math/difference_type.hpp>
 #include <fcppt/math/size_type.hpp>
+#include <fcppt/math/static_storage.hpp>
 #include <fcppt/math/detail/array_adapter.hpp>
 #include <fcppt/math/detail/make_op_decl.hpp>
 #include <fcppt/math/detail/make_variadic_constructor_decl.hpp>
-#include <fcppt/math/detail/storage_size_fwd.hpp>
 #include <fcppt/math/vector/max_ctor_params.hpp>
 #include <fcppt/math/vector/object_fwd.hpp>
 #include <fcppt/type_traits/is_iterator.hpp>
@@ -30,9 +31,9 @@ namespace vector
 {
 
 /**
-\brief A class representing dynamic or static n-dimensional vectors
+\brief A class representing static n-dimensional vectors
 \tparam T The vector's <code>value_type</code>
-\tparam N The vector's dimension type (this is not necessarily a number!)
+\tparam N The vector's dimension type
 \tparam S The vector's storage type
 \ingroup fcpptmathvector
 
@@ -102,23 +103,25 @@ public:
 	typedef std::reverse_iterator<const_iterator> const_reverse_iterator;
 
 	/**
+	\brief Calls the default constructor for every element
+	*/
+	object();
+
+	/**
 	\brief Construct an uninitialized vector
 
 	\warning
 	The content of the vector will be undefined (not null) after
 	initialization
 	*/
-	object();
-
 	explicit
 	object(
-		fcppt::math::detail::storage_size<
-			size_type
-		>
+		fcppt::no_init const &
 	);
 
 	/**
-	\brief Construct a dim from a storage source
+	\brief Construct a vector from a storage source
+
 	\param s The storage source to copy from
 	*/
 	explicit
@@ -134,7 +137,9 @@ public:
 	);
 
 	/**
-	\brief Create a vector from a vector with the same dimension and value type but different storage type
+	\brief Create a vector from a vector with the same dimension and value
+	type but different storage type
+
 	\tparam OtherStorage The other vector's storage type
 	*/
 	template<
@@ -261,7 +266,14 @@ FCPPT_MATH_DETAIL_MAKE_OP_DECL(\
 	\brief Returns the vector filled with all zeroes
 	*/
 	static
-	object const
+	fcppt::math::vector::object<
+		T,
+		N,
+		typename fcppt::math::static_storage<
+			T,
+			N
+		>::type
+	> const
 	null();
 
 	/**
@@ -337,6 +349,9 @@ FCPPT_MATH_DETAIL_MAKE_OP_DECL(\
 	swap(
 		object &
 	);
+
+	S const &
+	storage() const;
 private:
 	S storage_;
 };

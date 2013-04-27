@@ -4,10 +4,9 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_MATH_DETAIL_STATIC_STORAGE_HPP_INCLUDED
-#define FCPPT_MATH_DETAIL_STATIC_STORAGE_HPP_INCLUDED
+#ifndef FCPPT_MATH_STATIC_STORAGE_HPP_INCLUDED
+#define FCPPT_MATH_STATIC_STORAGE_HPP_INCLUDED
 
-#include <fcppt/math/size_type.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <array>
 #include <fcppt/config/external_end.hpp>
@@ -17,22 +16,19 @@ namespace fcppt
 {
 namespace math
 {
-namespace detail
-{
 
 template<
 	typename T,
-	fcppt::math::size_type N
+	typename N
 >
 struct static_storage
 {
 	typedef std::array<
 		T,
-		N
+		N::value
 	> type;
 };
 
-}
 }
 }
 

@@ -8,7 +8,7 @@
 #ifndef FCPPT_MATH_MATRIX_ADJUGATE_HPP_INCLUDED
 #define FCPPT_MATH_MATRIX_ADJUGATE_HPP_INCLUDED
 
-#include <fcppt/math/is_static_size.hpp>
+#include <fcppt/no_init.hpp>
 #include <fcppt/math/size_type.hpp>
 #include <fcppt/math/matrix/delete_row_and_column.hpp>
 #include <fcppt/math/matrix/determinant.hpp>
@@ -29,7 +29,7 @@ namespace matrix
 \tparam T The matrix's <code>value_type</code>
 \tparam N The matrix's row (and column!) dimension type
 \tparam S The matrix's storage type
-\param matrix_ Must be a statically sized matrix
+\param _matrix Must be a statically sized matrix
 
 \warning
 You should consider this a slow operation.
@@ -40,29 +40,32 @@ template
 	typename N,
 	typename S
 >
-typename
-boost::enable_if
+typename fcppt::math::matrix::static_
 <
-	math::is_static_size
-	<
-		N
-	>,
-	typename static_
-	<
-		T,
-		N::value,
-		N::value
-	>::type const
->::type
+	T,
+	N::value,
+	N::value
+>::type const
 adjugate(
-	matrix::object<T,N,N,S> const &matrix_
+	fcppt::math::matrix::object<
+		T,
+		N,
+		N,
+		S
+	> const &_matrix
 )
 {
 	typedef typename
-	static_<T,N::value,N::value>::type
+	fcppt::math::matrix::static_<
+		T,
+		N::value,
+		N::value
+	>::type
 	ret_type;
 
-	ret_type ret;
+	ret_type ret{
+		fcppt::no_init()
+	};
 
 	for (size_type rows = 0; rows < N::value; ++rows)
 	{
@@ -83,9 +86,9 @@ adjugate(
 			// matrix
 			ret[cols][rows] =
 				coeff *
-				matrix::determinant(
-					matrix::delete_row_and_column(
-						matrix_,
+				fcppt::math::matrix::determinant(
+					fcppt::math::matrix::delete_row_and_column(
+						_matrix,
 						rows,
 						cols
 					)

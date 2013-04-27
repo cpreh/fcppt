@@ -7,9 +7,10 @@
 #ifndef FCPPT_MATH_MATRIX_ARITHMETIC_HPP_INCLUDED
 #define FCPPT_MATH_MATRIX_ARITHMETIC_HPP_INCLUDED
 
+#include <fcppt/no_init.hpp>
 #include <fcppt/math/detail/binary_type.hpp>
 #include <fcppt/math/detail/linear_access.hpp>
-#include <fcppt/math/matrix/normal_storage.hpp>
+#include <fcppt/math/matrix/static_storage.hpp>
 #include <fcppt/math/matrix/object_impl.hpp>
 
 
@@ -35,7 +36,7 @@ fcppt::math::matrix::object<\
 	FCPPT_MATH_DETAIL_BINARY_TYPE(L, op, R),\
 	N,\
 	M,\
-	typename fcppt::math::matrix::normal_storage<\
+	typename fcppt::math::matrix::static_storage<\
 		FCPPT_MATH_DETAIL_BINARY_TYPE(L, op, R),\
 		N,\
 		M\
@@ -60,16 +61,16 @@ operator op(\
 		FCPPT_MATH_DETAIL_BINARY_TYPE(L, op, R),\
 		N,\
 		M,\
-		typename fcppt::math::matrix::normal_storage<\
+		typename fcppt::math::matrix::static_storage<\
 			FCPPT_MATH_DETAIL_BINARY_TYPE(L, op, R),\
 			N,\
 			M\
 		>::type \
 	> result_type; \
 \
-	result_type result(\
-		_left.dimension() \
-	);\
+	result_type result{\
+		fcppt::no_init()\
+	};\
 \
 	for(\
 		typename result_type::size_type index(\
@@ -115,7 +116,7 @@ fcppt::math::matrix::object<
 	FCPPT_MATH_DETAIL_BINARY_TYPE(L, *, R),
 	M1,
 	M2,
-	typename fcppt::math::matrix::normal_storage<
+	typename fcppt::math::matrix::static_storage<
 		FCPPT_MATH_DETAIL_BINARY_TYPE(L, *, R),
 		M1,
 		M2
@@ -140,19 +141,16 @@ operator *(
 		FCPPT_MATH_DETAIL_BINARY_TYPE(L, *, R),
 		M1,
 		M2,
-		typename fcppt::math::matrix::normal_storage<
+		typename fcppt::math::matrix::static_storage<
 			FCPPT_MATH_DETAIL_BINARY_TYPE(L, *, R),
 			M1,
 			M2
 		>::type
 	> result_type;
 
-	result_type ret(
-		typename result_type::dim(
-			_left.rows(),
-			_right.columns()
-		)
-	);
+	result_type ret{
+		fcppt::no_init()
+	};
 
 	for(
 		typename
@@ -205,7 +203,7 @@ fcppt::math::matrix::object<\
 	FCPPT_MATH_DETAIL_BINARY_TYPE(L, op, R),\
 	N,\
 	M,\
-	typename fcppt::math::matrix::normal_storage<\
+	typename fcppt::math::matrix::static_storage<\
 		FCPPT_MATH_DETAIL_BINARY_TYPE(L, op, R),\
 		N,\
 		M\
@@ -226,7 +224,7 @@ operator op(\
 		FCPPT_MATH_DETAIL_BINARY_TYPE(L, op, R),\
 		N,\
 		M,\
-		typename fcppt::math::matrix::normal_storage<\
+		typename fcppt::math::matrix::static_storage<\
 			FCPPT_MATH_DETAIL_BINARY_TYPE(L, op, R),\
 			N,\
 			M\
@@ -281,7 +279,7 @@ fcppt::math::matrix::object<
 	FCPPT_MATH_DETAIL_BINARY_TYPE(L, *, R),
 	N,
 	M,
-	typename fcppt::math::matrix::normal_storage<
+	typename fcppt::math::matrix::static_storage<
 		FCPPT_MATH_DETAIL_BINARY_TYPE(L, *, R),
 		N,
 		M
@@ -302,16 +300,16 @@ operator *(
 		FCPPT_MATH_DETAIL_BINARY_TYPE(L, *, R),
 		N,
 		M,
-		typename fcppt::math::matrix::normal_storage<
+		typename fcppt::math::matrix::static_storage<
 			FCPPT_MATH_DETAIL_BINARY_TYPE(L, *, R),
 			N,
 			M
 		>::type
 	> result_type;
 
-	result_type result(
-		_right.dimension()
-	);
+	result_type result{
+		fcppt::no_init()
+	};
 
 	for(
 		typename result_type::size_type index(

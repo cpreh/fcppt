@@ -4,10 +4,10 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_MATH_IS_DYNAMIC_SIZE_HPP_INCLUDED
-#define FCPPT_MATH_IS_DYNAMIC_SIZE_HPP_INCLUDED
+#ifndef FCPPT_MATH_DIM_IS_DIM_HPP_INCLUDED
+#define FCPPT_MATH_DIM_IS_DIM_HPP_INCLUDED
 
-#include <fcppt/math/detail/dynamic_size.hpp>
+#include <fcppt/math/dim/object_decl.hpp>
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
@@ -20,27 +20,51 @@ namespace fcppt
 {
 namespace math
 {
+namespace dim
+{
 
 FCPPT_PP_PUSH_WARNING
 FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
 
 /**
-\brief A metafunction that checks if T specifies a dynamic size
-\ingroup fcpptmath
+\brief Metafunction to test if a type is a dim type
+\ingroup fcpptmathdim
+\tparam T The type to test against
 */
-template<
+template
+<
 	typename T
 >
-struct is_dynamic_size
+struct is_dim
 :
-std::is_same<
-	T,
-	fcppt::math::detail::dynamic_size
+	boost::mpl::false_
+{
+};
+
+/// \cond FCPPT_DOXYGEN_DEBUG
+template
+<
+	typename T,
+	typename N,
+	typename S
 >
-{};
+struct is_dim
+<
+	fcppt::math::dim::object<
+		T,
+		N,
+		S
+	>
+>
+:
+	boost::mpl::true_
+{
+};
+/// \endcond
 
 FCPPT_PP_POP_WARNING
 
+}
 }
 }
 

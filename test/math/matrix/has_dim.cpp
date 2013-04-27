@@ -4,6 +4,7 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
+#include <fcppt/no_init.hpp>
 #include <fcppt/math/matrix/has_dim.hpp>
 #include <fcppt/math/matrix/object_impl.hpp>
 #include <fcppt/math/matrix/static.hpp>
@@ -72,7 +73,9 @@ FCPPT_PP_POP_WARNING
 		1
 	>::type f1x1;
 
-	f1x1 const m1x1;
+	f1x1 const m1x1{
+		fcppt::no_init()
+	};
 
 	typedef fcppt::math::matrix::static_<
 		float,
@@ -80,7 +83,9 @@ FCPPT_PP_POP_WARNING
 		2
 	>::type f2x2;
 
-	f2x2 const m2x2;
+	f2x2 const m2x2{
+		fcppt::no_init()
+	};
 
 	BOOST_REQUIRE(
 		is_1x1(

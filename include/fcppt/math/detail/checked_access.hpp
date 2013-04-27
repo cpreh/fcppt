@@ -8,9 +8,8 @@
 #define FCPPT_MATH_DETAIL_CHECKED_ACCESS_HPP_INCLUDED
 
 #include <fcppt/math/size_type.hpp>
-#include <fcppt/math/detail/dynamic_size.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/utility/enable_if.hpp>
+#include <boost/mpl/if.hpp>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
@@ -22,36 +21,15 @@ namespace math
 namespace detail
 {
 
-// TODO: Try to unify this!
-
 template<
 	fcppt::math::size_type N,
 	typename T
 >
-typename boost::enable_if<
-	std::is_same<
-		typename T::dim_wrapper,
-		fcppt::math::detail::dynamic_size
+typename boost::mpl::if_<
+	std::is_const<
+		T
 	>,
-	typename T::reference
->::type
-checked_access(
-	T &_value
-)
-{
-	return
-		_value[N];
-}
-
-template<
-	fcppt::math::size_type N,
-	typename T
->
-typename boost::disable_if<
-	std::is_same<
-		typename T::dim_wrapper,
-		fcppt::math::detail::dynamic_size
-	>,
+	typename T::const_reference,
 	typename T::reference
 >::type
 checked_access(
@@ -66,52 +44,9 @@ checked_access(
 	);
 
 	return
-		_value[N];
-}
-
-template<
-	fcppt::math::size_type N,
-	typename T
->
-typename boost::enable_if<
-	std::is_same<
-		typename T::dim_wrapper,
-		fcppt::math::detail::dynamic_size
-	>,
-	typename T::const_reference
->::type
-checked_access(
-	T const &_value
-)
-{
-	return
-		_value[N];
-}
-
-template<
-	fcppt::math::size_type N,
-	typename T
->
-typename boost::disable_if<
-	std::is_same<
-		typename T::dim_wrapper,
-		fcppt::math::detail::dynamic_size
-	>,
-	typename T::const_reference
->::type
-checked_access(
-	T const &_value
-)
-{
-	typedef typename T::dim_wrapper dim_wrapper;
-
-	static_assert(
-		N < dim_wrapper::value,
-		"Out of bounds operator[] access to a math type"
-	);
-
-	return
-		_value[N];
+		_value[
+			N
+		];
 }
 
 }

@@ -8,6 +8,7 @@
 #ifndef FCPPT_MATH_BOX_INTERSECTION_HPP_INCLUDED
 #define FCPPT_MATH_BOX_INTERSECTION_HPP_INCLUDED
 
+#include <fcppt/no_init.hpp>
 #include <fcppt/math/size_type.hpp>
 #include <fcppt/math/box/intersects.hpp>
 #include <fcppt/math/box/object_impl.hpp>
@@ -33,23 +34,40 @@ If there is no intersection, the null box will be returned.
 */
 template<
 	typename T,
-	size_type N
+	fcppt::math::size_type N
 >
-object<T, N> const
+fcppt::math::box::object<
+	T,
+	N
+> const
 intersection(
-	object<T, N> const &_a,
-	object<T, N> const &_b
+	fcppt::math::box::object<
+		T,
+		N
+	> const &_a,
+	fcppt::math::box::object<
+		T,
+		N
+	> const &_b
 )
 {
+	typedef
+	fcppt::math::box::object<
+		T,
+		N
+	> result_type;
+
 	if(
-		!box::intersects(
+		!fcppt::math::box::intersects(
 			_a,
 			_b
 		)
 	)
-		return object<T, N>::null();
+		return result_type::null();
 
-	object<T, N> ret;
+	result_type ret{
+		fcppt::no_init()
+	};
 
 	for(
 		size_type i = 0;

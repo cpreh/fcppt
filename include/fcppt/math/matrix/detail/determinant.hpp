@@ -7,15 +7,12 @@
 #ifndef FCPPT_MATH_MATRIX_DETAIL_DETERMINANT_HPP_INCLUDED
 #define FCPPT_MATH_MATRIX_DETAIL_DETERMINANT_HPP_INCLUDED
 
-#include <fcppt/math/is_static_size.hpp>
 #include <fcppt/math/size_type.hpp>
 #include <fcppt/math/matrix/delete_row_and_column.hpp>
 #include <fcppt/math/matrix/has_dim.hpp>
 #include <fcppt/math/matrix/object_impl.hpp>
 #include <fcppt/math/matrix/static.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/mpl/and.hpp>
-#include <boost/mpl/not.hpp>
 #include <boost/utility/enable_if.hpp>
 #include <fcppt/config/external_end.hpp>
 
@@ -38,16 +35,26 @@ template
 typename
 boost::enable_if
 <
-	has_dim
+	fcppt::math::matrix::has_dim
 	<
-		object<T,N,N,S>,
+		fcppt::math::matrix::object<
+			T,
+			N,
+			N,
+			S
+		>,
 		1,
 		1
 	>,
 	T
 >::type
 determinant(
-	object<T,N,N,S> const &t
+	fcppt::math::matrix::object<
+		T,
+		N,
+		N,
+		S
+	> const &t
 )
 {
 	return t[0][0];
@@ -61,28 +68,23 @@ template
 	typename S
 >
 typename
-boost::enable_if
+boost::disable_if
 <
-	boost::mpl::and_
+	fcppt::math::matrix::has_dim
 	<
-		boost::mpl::not_
-		<
-			has_dim
-			<
-				object<T,N,N,S>,
-				1,
-				1
-			>
+		fcppt::math::matrix::object<
+			T,
+			N,
+			N,
+			S
 		>,
-		math::is_static_size
-		<
-			N
-		>
+		1,
+		1
 	>,
 	T
 >::type
 determinant(
-	object<T,N,N,S> const &t
+	fcppt::math::matrix::object<T,N,N,S> const &t
 )
 {
 	T sum = static_cast<T>(0);
@@ -101,8 +103,8 @@ determinant(
 		sum +=
 			coeff *
 			t[i][0] *
-			matrix::detail::determinant(
-				matrix::delete_row_and_column(
+			fcppt::math::matrix::detail::determinant(
+				fcppt::math::matrix::delete_row_and_column(
 					t,
 					i,
 					0

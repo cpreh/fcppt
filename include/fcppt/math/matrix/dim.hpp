@@ -4,11 +4,11 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_MATH_VECTOR_DYNAMIC_IMPL_HPP_INCLUDED
-#define FCPPT_MATH_VECTOR_DYNAMIC_IMPL_HPP_INCLUDED
+#ifndef FCPPT_MATH_MATRIX_DIM_HPP_INCLUDED
+#define FCPPT_MATH_MATRIX_DIM_HPP_INCLUDED
 
-#include <fcppt/container/raw_vector_impl.hpp>
-#include <fcppt/math/vector/dynamic.hpp>
+#include <fcppt/math/matrix/dim_fwd.hpp>
+#include <fcppt/math/dim/object_impl.hpp>
 
 
 #endif

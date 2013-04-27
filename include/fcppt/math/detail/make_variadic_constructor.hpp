@@ -8,7 +8,6 @@
 #define FCPPT_MATH_DETAIL_MAKE_VARIADIC_CONSTRUCTOR_HPP_INCLUDED
 
 #include <fcppt/math/detail/dim_matches.hpp>
-#include <fcppt/math/detail/initial_size.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/preprocessor/arithmetic/inc.hpp>
 #include <boost/preprocessor/repetition/enum_params.hpp>
@@ -38,15 +37,6 @@ BOOST_PP_TUPLE_REM_CTOR(BOOST_PP_TUPLE_ELEM(2, 0, text),BOOST_PP_TUPLE_ELEM(2, 1
 		>::value,\
 		"Dimensions do not match"\
 	);\
-	\
-	::fcppt::math::detail::initial_size(\
-		storage_,\
-		static_cast<\
-			size_type\
-		>(\
-			BOOST_PP_INC(n)\
-		)\
-	); \
 	\
 	BOOST_PP_REPEAT(\
 		BOOST_PP_INC(n),\

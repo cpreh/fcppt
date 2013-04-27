@@ -7,20 +7,16 @@
 #ifndef FCPPT_MATH_MATRIX_OBJECT_DECL_HPP_INCLUDED
 #define FCPPT_MATH_MATRIX_OBJECT_DECL_HPP_INCLUDED
 
+#include <fcppt/no_init_fwd.hpp>
 #include <fcppt/math/difference_type.hpp>
 #include <fcppt/math/size_type.hpp>
 #include <fcppt/math/detail/make_op_decl.hpp>
 #include <fcppt/math/detail/make_variadic_constructor_decl.hpp>
-#include <fcppt/math/detail/storage_size_fwd.hpp>
-#include <fcppt/math/matrix/dim_type.hpp>
 #include <fcppt/math/matrix/max_ctor_params.hpp>
 #include <fcppt/math/matrix/object_fwd.hpp>
-#include <fcppt/math/matrix/detail/dim_storage.hpp>
+#include <fcppt/math/matrix/static_storage.hpp>
 #include <fcppt/math/matrix/detail/row_view_fwd.hpp>
 #include <fcppt/math/vector/object_decl.hpp>
-#include <fcppt/preprocessor/disable_gcc_warning.hpp>
-#include <fcppt/preprocessor/pop_warning.hpp>
-#include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/type_traits/is_iterator.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/mpl/times.hpp>
@@ -37,11 +33,8 @@ namespace math
 namespace matrix
 {
 
-FCPPT_PP_PUSH_WARNING
-FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
-
 /**
-\brief A class representing dynamic or static matrices
+\brief A class representing a static matrix
 \ingroup fcpptmathmatrix
 \tparam T The matrix's <code>value_type</code>
 \tparam N The matrix's row type (this is not necessarily a number!)
@@ -58,19 +51,7 @@ template<
 	typename S
 >
 class object
-/// \cond
-:
-private
-	fcppt::math::matrix::detail::dim_storage<
-		N,
-		M
-	>
-/// \endcond
 {
-	typedef fcppt::math::matrix::detail::dim_storage<
-		N,
-		M
-	> dim_base;
 public:
 	static_assert(
 		std::is_same<
@@ -188,9 +169,9 @@ public:
 	typedef std::reverse_iterator<const_iterator> const_reverse_iterator;
 
 	/**
-	\brief The dim type corresponding to this matrix type.
+	\brief Calls the default constructor for every element
 	*/
-	typedef fcppt::math::matrix::dim_type dim;
+	object();
 
 	/**
 	\brief Construct an uninitialized matrix
@@ -199,17 +180,9 @@ public:
 	The content of the vector will be undefined (not null) after
 	initialization
 	*/
-	object();
-
-	/**
-	\brief Construct an uninitialized dynamic matrix
-
-	\warning
-	This operation makes no sense on a static matrix.
-	*/
 	explicit
 	object(
-		dim const &
+		fcppt::no_init const &
 	);
 
 	/**
@@ -219,13 +192,6 @@ public:
 	explicit
 	object(
 		storage_type const &s
-	);
-
-	explicit
-	object(
-		fcppt::math::detail::storage_size<
-			size_type
-		>
 	);
 
 	/**
@@ -268,45 +234,6 @@ public:
 			>,
 			In
 		>::type end
-	);
-
-	/**
-	\brief Create a dynamic matrix and fill it with the contents of the given range
-	\tparam In A forward iterator pointing to elements of type <code>T</code>
-	\param _dim The two-dimensional dimension corresponding to the one-dimensional range
-	\param beg The beginning of the range
-	\param end One past the end of the range
-
-	\warning
-	This operation makes no sense on a static matrix.
-	*/
-	template<
-		typename In
-	>
-	object(
-		dim const &_dim,
-		In beg,
-		typename boost::enable_if<
-			fcppt::type_traits::is_iterator<
-				In
-			>,
-			In
-		>::type end
-	);
-
-	/**
-	\brief Create a dynamic matrix and fill it with the contents of a range
-	\tparam Container A sequence container containing elements of type <code>T</code>
-
-	\warning
-	This operation makes no sense on a static matrix.
-	*/
-	template<
-		typename Container
-	>
-	object(
-		dim const &,
-		Container const &
 	);
 
 	FCPPT_MATH_DETAIL_ARRAY_ADAPTER(
@@ -402,25 +329,31 @@ FCPPT_MATH_DETAIL_MAKE_OP_DECL(\
 	/**
 	\brief Returns the number of rows in the matrix.
 	*/
+	static
 	size_type
-	rows() const;
+	rows();
 
 	/**
 	\brief Returns the number of columns in the matrix.
 	*/
+	static
 	size_type
-	columns() const;
-
-	/**
-	\brief Returns the matrix's dimensions.
-	*/
-	dim const
-	dimension() const;
+	columns();
 
 	/**
 	\brief Returns the identity matrix;
 	*/
-	static object const
+	static
+	fcppt::math::matrix::object<
+		T,
+		N,
+		M,
+		typename fcppt::math::matrix::static_storage<
+			T,
+			N,
+			M
+		>::type
+	> const
 	identity();
 
 	/**
@@ -430,11 +363,12 @@ FCPPT_MATH_DETAIL_MAKE_OP_DECL(\
 	swap(
 		object &
 	);
+
+	S const &
+	storage() const;
 private:
 	S storage_;
 };
-
-FCPPT_PP_POP_WARNING
 
 /**
 \brief Exchanges the elements of two matrices.

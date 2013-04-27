@@ -4,10 +4,11 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_MATH_DETAIL_DYNAMIC_STORAGE_HPP_INCLUDED
-#define FCPPT_MATH_DETAIL_DYNAMIC_STORAGE_HPP_INCLUDED
+#ifndef FCPPT_MATH_DETAIL_NULL_STORAGE_HPP_INCLUDED
+#define FCPPT_MATH_DETAIL_NULL_STORAGE_HPP_INCLUDED
 
-#include <fcppt/container/raw_vector_fwd.hpp>
+#include <fcppt/math/detail/init_storage.hpp>
+
 
 namespace fcppt
 {
@@ -17,14 +18,18 @@ namespace detail
 {
 
 template<
-	typename T
+	typename Result
 >
-struct dynamic_storage
+Result const
+null_storage()
 {
-	typedef container::raw_vector<
-		T
-	> type;
-};
+	return
+		fcppt::math::detail::init_storage<
+			Result
+		>(
+			0
+		);
+}
 
 }
 }

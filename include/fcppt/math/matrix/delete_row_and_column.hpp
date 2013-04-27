@@ -8,8 +8,8 @@
 #ifndef FCPPT_MATH_MATRIX_DELETE_ROW_AND_COLUMN_HPP_INCLUDED
 #define FCPPT_MATH_MATRIX_DELETE_ROW_AND_COLUMN_HPP_INCLUDED
 
+#include <fcppt/no_init.hpp>
 #include <fcppt/math/size_type.hpp>
-#include <fcppt/math/matrix/is_static_size.hpp>
 #include <fcppt/math/matrix/object_impl.hpp>
 #include <fcppt/math/matrix/static.hpp>
 
@@ -39,17 +39,11 @@ template<
 	typename M,
 	typename S
 >
-typename boost::enable_if<
-	matrix::is_static_size<
-		N,
-		M
-	>,
-	typename matrix::static_<
-		T,
-		N::value-1,
-		M::value-1
-	>::type const
->::type
+typename matrix::static_<
+	T,
+	N::value-1,
+	M::value-1
+>::type const
 delete_row_and_column(
 	object<T, N, M, S> const &matrix_,
 	typename object<T, N, M, S>::size_type const row,
@@ -64,7 +58,9 @@ delete_row_and_column(
 	ret_type::size_type
 	size_type;
 
-	ret_type ret;
+	ret_type ret{
+		fcppt::no_init()
+	};
 
 	for(
 		size_type i =

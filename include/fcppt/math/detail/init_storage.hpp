@@ -4,10 +4,10 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_MATH_DETAIL_FILL_HPP_INCLUDED
-#define FCPPT_MATH_DETAIL_FILL_HPP_INCLUDED
+#ifndef FCPPT_MATH_DETAIL_INIT_STORAGE_HPP_INCLUDED
+#define FCPPT_MATH_DETAIL_INIT_STORAGE_HPP_INCLUDED
 
-#include <fcppt/no_init.hpp>
+#include <fcppt/algorithm/array_init.hpp>
 
 
 namespace fcppt
@@ -18,23 +18,19 @@ namespace detail
 {
 
 template<
-	typename Ret
+	typename Result
 >
-Ret const
-fill(
-	typename Ret::value_type const &_value
+Result const
+init_storage(
+	typename Result::value_type const &_value
 )
 {
-	Ret ret{
-		fcppt::no_init()
-	};
-
-	for(
-		auto &item : ret
-	)
-		item = _value;
-
-	return ret;
+	return
+		fcppt::algorithm::array_init<
+			Result
+		>(
+			_value
+		);
 }
 
 }

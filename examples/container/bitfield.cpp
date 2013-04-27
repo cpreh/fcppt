@@ -75,14 +75,10 @@ int main()
 
 	// Iterate through the field
 	for(
-		bitfield::const_iterator it(
-			field.begin()
-		);
-		it != field.end();
-		++it
+		auto elem : field
 	)
 		fcppt::io::cout()
-			<< *it
+			<< elem
 			<< FCPPT_TEXT('\n');
 }
 //]

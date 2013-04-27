@@ -8,14 +8,11 @@
 #ifndef FCPPT_MATH_MATRIX_INVERSE_HPP_INCLUDED
 #define FCPPT_MATH_MATRIX_INVERSE_HPP_INCLUDED
 
-#include <fcppt/text.hpp>
-#include <fcppt/math/is_static_size.hpp>
 #include <fcppt/math/matrix/adjugate.hpp>
 #include <fcppt/math/matrix/arithmetic.hpp>
 #include <fcppt/math/matrix/determinant.hpp>
-#include <fcppt/config/external_begin.hpp>
-#include <boost/utility/enable_if.hpp>
-#include <fcppt/config/external_end.hpp>
+#include <fcppt/math/matrix/object_impl.hpp>
+#include <fcppt/math/matrix/static.hpp>
 
 
 namespace fcppt
@@ -41,19 +38,13 @@ template
 	typename N,
 	typename S
 >
-typename
-boost::enable_if<
-	math::is_static_size<
-		N
-	>,
-	typename matrix::static_<
-		T,
-		N::value,
-		N::value
-	>::type const
->::type
+typename fcppt::math::matrix::static_<
+	T,
+	N::value,
+	N::value
+>::type const
 inverse(
-	object<T,N,N,S> const &t
+	fcppt::math::matrix::object<T,N,N,S> const &t
 )
 {
 	T const det =
@@ -61,9 +52,10 @@ inverse(
 			t);
 	return
 		(static_cast<T>(1)/static_cast<T>(det)) *
-		matrix::adjugate(
+		fcppt::math::matrix::adjugate(
 			t);
 }
+
 }
 }
 }

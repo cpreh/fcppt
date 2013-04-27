@@ -4,10 +4,10 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_MATH_DETAIL_MAKE_STORAGE_SIZE_HPP_INCLUDED
-#define FCPPT_MATH_DETAIL_MAKE_STORAGE_SIZE_HPP_INCLUDED
+#ifndef FCPPT_MATH_DETAIL_DEFAULT_STORAGE_HPP_INCLUDED
+#define FCPPT_MATH_DETAIL_DEFAULT_STORAGE_HPP_INCLUDED
 
-#include <fcppt/math/detail/storage_size_impl.hpp>
+#include <fcppt/math/detail/init_storage.hpp>
 
 
 namespace fcppt
@@ -18,20 +18,16 @@ namespace detail
 {
 
 template<
-	typename Size
+	typename Result
 >
-fcppt::math::detail::storage_size<
-	Size
-> const
-make_storage_size(
-	Size const _size
-)
+Result const
+default_storage()
 {
 	return
-		fcppt::math::detail::storage_size<
-			Size
+		fcppt::math::detail::init_storage<
+			Result
 		>(
-			_size
+			typename Result::value_type()
 		);
 }
 

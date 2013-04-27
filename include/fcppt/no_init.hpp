@@ -4,25 +4,24 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_MATH_DETAIL_DYNAMIC_SIZE_HPP_INCLUDED
-#define FCPPT_MATH_DETAIL_DYNAMIC_SIZE_HPP_INCLUDED
+#ifndef FCPPT_NO_INIT_HPP_INCLUDED
+#define FCPPT_NO_INIT_HPP_INCLUDED
 
-#include <fcppt/math/static_size.hpp>
+#include <fcppt/no_init_fwd.hpp>
 
 
 namespace fcppt
 {
-namespace math
-{
-namespace detail
-{
 
-typedef fcppt::math::static_size<
-	0u
->::type dynamic_size;
+/**
+\brief A dummy struct to use a constructor that does not initialize
 
-}
-}
+\ingroup fcpptvarious
+*/
+struct no_init
+{
+};
+
 }
 
 #endif

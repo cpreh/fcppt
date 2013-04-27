@@ -4,15 +4,16 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_MATH_MATRIX_NORMAL_STORAGE_HPP_INCLUDED
-#define FCPPT_MATH_MATRIX_NORMAL_STORAGE_HPP_INCLUDED
+#ifndef FCPPT_MATH_MATRIX_STATIC_STORAGE_HPP_INCLUDED
+#define FCPPT_MATH_MATRIX_STATIC_STORAGE_HPP_INCLUDED
 
-#include <fcppt/math/detail/dynamic_size.hpp>
-#include <fcppt/math/detail/dynamic_storage.hpp>
-#include <fcppt/math/matrix/detail/static_storage.hpp>
+#include <fcppt/math/static_storage.hpp>
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
+#include <fcppt/config/external_begin.hpp>
+#include <boost/mpl/times.hpp>
+#include <fcppt/config/external_end.hpp>
 
 
 namespace fcppt
@@ -30,27 +31,14 @@ template<
 	typename N,
 	typename M
 >
-struct normal_storage
+struct static_storage
 :
-matrix::detail::static_storage<
+fcppt::math::static_storage<
 	T,
-	N::value,
-	M::value
->
-{
-};
-
-template<
-	typename T
->
-struct normal_storage<
-	T,
-	math::detail::dynamic_size,
-	math::detail::dynamic_size
->
-:
-math::detail::dynamic_storage<
-	T
+	typename boost::mpl::times<
+		N,
+		M
+	>::type
 >
 {
 };

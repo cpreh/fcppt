@@ -7,6 +7,7 @@
 #ifndef FCPPT_MATH_BOX_OBJECT_DECL_HPP_INCLUDED
 #define FCPPT_MATH_BOX_OBJECT_DECL_HPP_INCLUDED
 
+#include <fcppt/no_init_fwd.hpp>
 #include <fcppt/math/size_type.hpp>
 #include <fcppt/math/box/object_fwd.hpp>
 #include <fcppt/math/dim/object_decl.hpp>
@@ -32,7 +33,7 @@ See the \link fcpptmathvector module documentation \endlink for more information
 */
 template<
 	typename T,
-	math::size_type N
+	fcppt::math::size_type N
 >
 class object
 {
@@ -50,12 +51,12 @@ public:
 	/**
 	\brief A type that counts the number of elements in a box's vector/dimension.
 	*/
-	typedef math::size_type size_type;
+	typedef fcppt::math::size_type size_type;
 
 	/**
 	\brief A type represents a box's position.
 	*/
-	typedef typename math::vector::static_<
+	typedef typename fcppt::math::vector::static_<
 		T,
 		N
 	>::type vector;
@@ -63,10 +64,15 @@ public:
 	/**
 	\brief A type represents a box's size.
 	*/
-	typedef typename math::dim::static_<
+	typedef typename fcppt::math::dim::static_<
 		T,
 		N
 	>::type dim;
+
+	/**
+	\brief Calls the default constructor for every element
+	*/
+	object();
 
 	/**
 	\brief Construct an uninitialized box
@@ -75,7 +81,10 @@ public:
 	The content of the box will be undefined (not null) after
 	initialization
 	*/
-	object();
+	explicit
+	object(
+		fcppt::no_init const &
+	);
 
 	/**
 	\brief Fully construct an box
@@ -90,7 +99,8 @@ public:
 	/**
 	\brief Return a box at the origin with no exents
 	*/
-	static object const
+	static
+	object const
 	null();
 
 	/**
@@ -302,12 +312,18 @@ private:
 */
 template<
 	typename T,
-	size_type N
+	fcppt::math::size_type N
 >
 bool
 operator==(
-	object<T, N> const &,
-	object<T, N> const &
+	fcppt::math::box::object<
+		T,
+		N
+	> const &,
+	fcppt::math::box::object<
+		T,
+		N
+	> const &
 );
 
 /**
@@ -315,12 +331,18 @@ operator==(
 */
 template<
 	typename T,
-	size_type N
+	fcppt::math::size_type N
 >
 bool
 operator !=(
-	object<T, N> const &,
-	object<T, N> const &
+	fcppt::math::box::object<
+		T,
+		N
+	> const &,
+	fcppt::math::box::object<
+		T,
+		N
+	> const &
 );
 
 /**
@@ -328,12 +350,18 @@ operator !=(
 */
 template<
 	typename T,
-	size_type N
+	fcppt::math::size_type N
 >
 void
 swap(
-	object<T, N> &,
-	object<T, N> &
+	fcppt::math::box::object<
+		T,
+		N
+	> &,
+	fcppt::math::box::object<
+		T,
+		N
+	> &
 );
 
 }

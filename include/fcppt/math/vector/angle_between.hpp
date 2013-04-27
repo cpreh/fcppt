@@ -71,10 +71,13 @@ angle_between(
 			)
 			/
 			(
-			fcppt::math::vector::length(
-				_from) *
-			fcppt::math::vector::length(
-				_to)
+				fcppt::math::vector::length(
+					_from
+				)
+				*
+				fcppt::math::vector::length(
+					_to
+				)
 			)
 		);
 }

@@ -7,15 +7,17 @@
 #ifndef FCPPT_MATH_DIM_OBJECT_IMPL_HPP_INCLUDED
 #define FCPPT_MATH_DIM_OBJECT_IMPL_HPP_INCLUDED
 
+#include <fcppt/no_init_fwd.hpp>
+#include <fcppt/math/static_storage.hpp>
 #include <fcppt/math/detail/array_adapter_impl.hpp>
 #include <fcppt/math/detail/assign.hpp>
 #include <fcppt/math/detail/checked_access.hpp>
+#include <fcppt/math/detail/default_storage.hpp>
 #include <fcppt/math/detail/index_at.hpp>
 #include <fcppt/math/detail/make_op_def.hpp>
 #include <fcppt/math/detail/make_variadic_constructor.hpp>
-#include <fcppt/math/detail/storage_size_impl.hpp>
+#include <fcppt/math/detail/null_storage.hpp>
 #include <fcppt/math/dim/max_ctor_params.hpp>
-#include <fcppt/math/dim/normal_storage.hpp>
 #include <fcppt/math/dim/object_decl.hpp>
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
@@ -25,10 +27,31 @@
 #include <boost/utility/enable_if.hpp>
 #include <algorithm>
 #include <functional>
-#include <iterator>
 #include <numeric>
 #include <fcppt/config/external_end.hpp>
 
+
+template<
+	typename T,
+	typename N,
+	typename S
+>
+fcppt::math::dim::object<
+	T,
+	N,
+	S
+>::object()
+:
+	storage_(
+		fcppt::math::detail::default_storage<
+			typename fcppt::math::static_storage<
+				T,
+				N
+			>::type
+		>()
+	)
+{
+}
 
 FCPPT_PP_PUSH_WARNING
 FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
@@ -42,31 +65,11 @@ fcppt::math::dim::object<
 	T,
 	N,
 	S
->::object()
-// Don't initialize storage_
-{
-}
-
-template<
-	typename T,
-	typename N,
-	typename S
->
-fcppt::math::dim::object<
-	T,
-	N,
-	S
 >::object(
-	fcppt::math::detail::storage_size<
-		size_type
-	> const _size
+	fcppt::no_init const &
 )
 // Don't initialize storage_
 {
-	fcppt::math::detail::initial_size(
-		storage_,
-		_size.get()
-	);
 }
 
 FCPPT_PP_POP_WARNING
@@ -133,11 +136,6 @@ fcppt::math::dim::object<
 )
 // Don't initialize storage_
 {
-	fcppt::math::detail::initial_size(
-		storage_,
-		_other.size()
-	);
-
 	std::copy(
 		_other.begin(),
 		_other.end(),
@@ -168,14 +166,6 @@ fcppt::math::dim::object<
 )
 // Don't initialize storage_
 {
-	fcppt::math::detail::initial_size(
-		storage_,
-		std::distance(
-			_begin,
-			_end
-		)
-	);
-
 	std::copy(
 		_begin,
 		_end,
@@ -252,11 +242,6 @@ fcppt::math::dim::object<
 	> const &_other
 )
 {
-	fcppt::math::detail::initial_size(
-		storage_,
-		_other.size()
-	);
-
 	return
 		fcppt::math::detail::assign(
 			*this,
@@ -583,7 +568,10 @@ template<
 fcppt::math::dim::object<
 	T,
 	N,
-	S
+	typename fcppt::math::static_storage<
+		T,
+		N
+	>::type
 > const
 fcppt::math::dim::object<
 	T,
@@ -591,23 +579,15 @@ fcppt::math::dim::object<
 	S
 >::null()
 {
-	fcppt::math::dim::object<
-		T,
-		N,
-		typename fcppt::math::dim::normal_storage<
-			T,
-			N
-		>::type
-	> ret;
-
-	for(
-		size_type i = 0;
-		i < N::value;
-		++i
-	)
-		ret[i] = static_cast<value_type>(0);
-
-	return ret;
+	return
+		object(
+			fcppt::math::detail::null_storage<
+				typename fcppt::math::static_storage<
+					T,
+					N
+				>::type
+			>()
+		);
 }
 
 template<
@@ -628,6 +608,22 @@ fcppt::math::dim::object<
 		storage_,
 		_other.storage_
 	);
+}
+
+template<
+	typename T,
+	typename N,
+	typename S
+>
+S const &
+fcppt::math::dim::object<
+	T,
+	N,
+	S
+>::storage() const
+{
+	return
+		storage_;
 }
 
 template<

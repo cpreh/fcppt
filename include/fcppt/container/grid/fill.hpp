@@ -7,6 +7,7 @@
 #ifndef FCPPT_CONTAINER_GRID_FILL_HPP_INCLUDED
 #define FCPPT_CONTAINER_GRID_FILL_HPP_INCLUDED
 
+#include <fcppt/no_init.hpp>
 #include <fcppt/container/grid/object_impl.hpp>
 #include <fcppt/container/grid/size_type.hpp>
 #include <fcppt/container/grid/detail/fill.hpp>
@@ -33,15 +34,31 @@ template
 >
 void
 fill(
-	object<T,N,A> &g,
-	Fn const &f)
+	fcppt::container::grid::object<
+		T,
+		N,
+		A
+	> &g,
+	Fn const &f
+)
 {
-	typename object<T,N,A>::dim position;
-	fcppt::container::grid::detail::fill<0>(
+	typename fcppt::container::grid::object<
+		T,
+		N,
+		A
+	>::dim position{
+		fcppt::no_init()
+	};
+
+	fcppt::container::grid::detail::fill<
+		0
+	>(
 		g,
 		f,
-		position);
+		position
+	);
 }
+
 }
 }
 }

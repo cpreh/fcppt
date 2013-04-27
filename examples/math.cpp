@@ -11,7 +11,6 @@
 #include <fcppt/math/box/output.hpp>
 #include <fcppt/math/box/rect.hpp>
 #include <fcppt/math/dim/object_impl.hpp>
-#include <fcppt/math/matrix/dynamic_impl.hpp>
 #include <fcppt/math/matrix/object_impl.hpp>
 #include <fcppt/math/vector/atan2.hpp>
 #include <fcppt/math/vector/cross.hpp>
@@ -47,7 +46,9 @@ main()
 		2.f
 	);
 
-	fcppt::math::vector::atan2(vecf);
+	fcppt::math::vector::atan2(
+		vecf
+	);
 
 	fcppt::math::point_rotate(
 		vecf,
@@ -55,22 +56,9 @@ main()
 		3.f
 	);
 
-	typedef fcppt::math::matrix::dynamic<
-		float
-	>::type dynamic_float_matrix;
-
-	dynamic_float_matrix matrix(
-		dynamic_float_matrix::dim(
-			2,
-			3
-		),
-		boost::assign::list_of
-			(0.f)(0.f)
-			(1.f)(1.f)
-			(2.f)(2.f)
+	fcppt::math::vector::normalize(
+		vecf
 	);
-
-	fcppt::math::vector::normalize(vecf);
 
 	fcppt::io::cout()
 		<< vec << FCPPT_TEXT('\n')

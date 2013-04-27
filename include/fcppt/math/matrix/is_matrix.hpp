@@ -12,8 +12,9 @@
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/mpl/bool.hpp>
+#include <type_traits>
 #include <fcppt/config/external_end.hpp>
+
 
 namespace fcppt
 {
@@ -50,7 +51,12 @@ template
 >
 struct is_matrix
 <
-	matrix::object<T,N,M,S>
+	fcppt::math::matrix::object<
+		T,
+		N,
+		M,
+		S
+	>
 >
 :
 	boost::mpl::true_

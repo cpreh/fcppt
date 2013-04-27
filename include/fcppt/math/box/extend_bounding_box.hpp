@@ -8,6 +8,7 @@
 #ifndef FCPPT_MATH_BOX_EXTEND_BOUNDING_BOX_HPP_INCLUDED
 #define FCPPT_MATH_BOX_EXTEND_BOUNDING_BOX_HPP_INCLUDED
 
+#include <fcppt/no_init.hpp>
 #include <fcppt/math/size_type.hpp>
 #include <fcppt/math/box/contains_point.hpp>
 #include <fcppt/math/box/object_impl.hpp>
@@ -83,7 +84,9 @@ extend_bounding_box(
 	fcppt::math::box::object<T,N> const &a,
 	fcppt::math::box::object<T,N> const &b)
 {
-	fcppt::math::box::object<T,N> result;
+	fcppt::math::box::object<T,N> result{
+		fcppt::no_init()
+	};
 
 	for (fcppt::math::size_type i = 0; i < N; ++i)
 	{

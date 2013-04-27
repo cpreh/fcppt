@@ -7,8 +7,9 @@
 #ifndef FCPPT_MATH_MATRIX_STRUCTURE_CAST_HPP_INCLUDED
 #define FCPPT_MATH_MATRIX_STRUCTURE_CAST_HPP_INCLUDED
 
+#include <fcppt/math/detail/structure_cast.hpp>
 #include <fcppt/math/matrix/object_impl.hpp>
-#include <fcppt/math/matrix/detail/structure_cast.hpp>
+
 
 namespace fcppt
 {
@@ -36,11 +37,16 @@ template<
 >
 Dest const
 structure_cast(
-	object<T, N, M, S> const &src
+	fcppt::math::matrix::object<
+		T,
+		N,
+		M,
+		S
+	> const &src
 )
 {
 	return
-		matrix::detail::structure_cast<
+		fcppt::math::detail::structure_cast<
 			Dest
 		>(
 			src

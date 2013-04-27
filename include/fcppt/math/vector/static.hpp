@@ -9,7 +9,7 @@
 
 #include <fcppt/math/size_type.hpp>
 #include <fcppt/math/static_size.hpp>
-#include <fcppt/math/detail/static_storage.hpp>
+#include <fcppt/math/static_storage.hpp>
 #include <fcppt/math/vector/object_fwd.hpp>
 
 
@@ -38,9 +38,11 @@ struct static_
 		typename fcppt::math::static_size<
 			N
 		>::type,
-		typename fcppt::math::detail::static_storage<
+		typename fcppt::math::static_storage<
 			T,
-			N
+			typename fcppt::math::static_size<
+				N
+			>::type
 		>::type
 	> type;
 };

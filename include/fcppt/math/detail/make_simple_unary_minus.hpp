@@ -7,6 +7,9 @@
 #ifndef FCPPT_MATH_DETAIL_MAKE_SIMPLE_UNARY_MINUS_HPP_INCLUDED
 #define FCPPT_MATH_DETAIL_MAKE_SIMPLE_UNARY_MINUS_HPP_INCLUDED
 
+#include <fcppt/math/static_storage.hpp>
+
+
 #define FCPPT_MATH_DETAIL_MAKE_SIMPLE_UNARY_MINUS \
 template<\
 	typename T,\
@@ -16,7 +19,7 @@ template<\
 object<\
 	T,\
 	N,\
-	typename normal_storage<\
+	typename fcppt::math::static_storage<\
 		T,\
 		N\
 	>::type\
@@ -32,7 +35,7 @@ operator -(\
 	object<\
 		T,\
 		N,\
-		typename normal_storage<\
+		typename fcppt::math::static_storage<\
 			T,\
 			N\
 		>::type\

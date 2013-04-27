@@ -8,11 +8,13 @@
 #ifndef FCPPT_MATH_VECTOR_HYPERSPHERE_TO_CARTESIAN_HPP_INCLUDED
 #define FCPPT_MATH_VECTOR_HYPERSPHERE_TO_CARTESIAN_HPP_INCLUDED
 
+#include <fcppt/no_init.hpp>
 #include <fcppt/math/vector/object.hpp>
 #include <fcppt/math/vector/static.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <cmath>
 #include <fcppt/config/external_end.hpp>
+
 
 namespace fcppt
 {
@@ -113,7 +115,10 @@ hypersphere_to_cartesian(
 	result_type::value_type
 	value_type;
 
-	result_type result;
+	result_type result{
+		fcppt::no_init()
+	};
+
 	for(size_type i = 0; i < result.size(); ++i)
 	{
 		// Hehe..."sins"

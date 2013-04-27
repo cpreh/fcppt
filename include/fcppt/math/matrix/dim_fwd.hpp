@@ -4,8 +4,8 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_MATH_MATRIX_DIM_TYPE_HPP_INCLUDED
-#define FCPPT_MATH_MATRIX_DIM_TYPE_HPP_INCLUDED
+#ifndef FCPPT_MATH_MATRIX_DIM_FWD_HPP_INCLUDED
+#define FCPPT_MATH_MATRIX_DIM_FWD_HPP_INCLUDED
 
 #include <fcppt/math/size_type.hpp>
 #include <fcppt/math/dim/static.hpp>
@@ -19,13 +19,14 @@ namespace matrix
 {
 
 /**
-\brief The two-dimensional dim type used everywhere
+\brief The two-dimensional dim type
+
 \ingroup fcpptmathmatrix
 */
-typedef math::dim::static_<
-	math::size_type,
+typedef fcppt::math::dim::static_<
+	fcppt::math::size_type,
 	2
->::type dim_type;
+>::type dim;
 
 }
 }

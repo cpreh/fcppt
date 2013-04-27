@@ -4,6 +4,7 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
+#include <fcppt/no_init.hpp>
 #include <fcppt/math/pi.hpp>
 #include <fcppt/math/range_compare.hpp>
 #include <fcppt/math/quaternion/from_angle_and_axis.hpp>
@@ -54,7 +55,10 @@ FCPPT_PP_POP_WARNING
 			original_axis));
 
 	element_type angle;
-	vector_type axis;
+
+	vector_type axis{
+		fcppt::no_init()
+	};
 
 	fcppt::math::quaternion::to_angle_and_axis(
 		rot,

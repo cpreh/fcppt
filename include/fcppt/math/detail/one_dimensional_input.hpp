@@ -7,11 +7,11 @@
 #ifndef FCPPT_MATH_DETAIL_ONE_DIMENSIONAL_INPUT_HPP_INCLUDED
 #define FCPPT_MATH_DETAIL_ONE_DIMENSIONAL_INPUT_HPP_INCLUDED
 
-#include <fcppt/math/is_static_size.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/utility/enable_if.hpp>
+#include <ios>
 #include <istream>
 #include <fcppt/config/external_end.hpp>
+
 
 namespace fcppt
 {
@@ -25,12 +25,7 @@ template<
 	typename Traits,
 	typename T
 >
-typename boost::enable_if<
-	math::is_static_size<
-		typename T::dim_wrapper
-	>,
-	std::basic_istream<Ch, Traits> &
->::type
+std::basic_istream<Ch, Traits> &
 one_dimensional_input(
 	std::basic_istream<Ch, Traits> &s,
 	T &v

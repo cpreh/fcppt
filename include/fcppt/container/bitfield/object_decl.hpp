@@ -7,6 +7,7 @@
 #ifndef FCPPT_CONTAINER_BITFIELD_OBJECT_DECL_HPP_INCLUDED
 #define FCPPT_CONTAINER_BITFIELD_OBJECT_DECL_HPP_INCLUDED
 
+#include <fcppt/no_init_fwd.hpp>
 #include <fcppt/container/bitfield/array.hpp>
 #include <fcppt/container/bitfield/iterator_fwd.hpp>
 #include <fcppt/container/bitfield/object_fwd.hpp>
@@ -151,10 +152,13 @@ public:
 	/**
 	\brief Constructs an uninitialized bitfield
 	*/
-	object();
+	explicit
+	object(
+		fcppt::no_init const &
+	);
 
 	/**
-	\brief Constructs a bitfield where every bit is valse except the argument's bit.
+	\brief Constructs a bitfield where every bit is false except the argument's bit.
 	\param e The bit that is <em>not</em> set to false
 	*/
 	explicit
@@ -163,7 +167,7 @@ public:
 	);
 
 	/**
-	\brief Constructs a bitfield where every bit is valse except the right hand side bit.
+	\brief Constructs a bitfield where every bit is false except the right hand side bit.
 	\param e The bit that is <em>not</em> set to false
 	*/
 	object &

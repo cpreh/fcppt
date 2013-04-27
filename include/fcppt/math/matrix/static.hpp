@@ -10,7 +10,7 @@
 #include <fcppt/math/size_type.hpp>
 #include <fcppt/math/static_size.hpp>
 #include <fcppt/math/matrix/object_fwd.hpp>
-#include <fcppt/math/matrix/detail/static_storage.hpp>
+#include <fcppt/math/matrix/static_storage.hpp>
 
 
 namespace fcppt
@@ -42,10 +42,14 @@ struct static_
 		typename fcppt::math::static_size<
 			M
 		>::type,
-		typename fcppt::math::matrix::detail::static_storage<
+		typename fcppt::math::matrix::static_storage<
 			T,
-			N,
-			M
+			typename fcppt::math::static_size<
+				N
+			>::type,
+			typename fcppt::math::static_size<
+				M
+			>::type
 		>::type
 	> type;
 };

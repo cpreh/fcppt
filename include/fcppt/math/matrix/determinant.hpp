@@ -8,12 +8,8 @@
 #ifndef FCPPT_MATH_MATRIX_DETERMINANT_HPP_INCLUDED
 #define FCPPT_MATH_MATRIX_DETERMINANT_HPP_INCLUDED
 
-#include <fcppt/math/is_static_size.hpp>
 #include <fcppt/math/matrix/object_impl.hpp>
 #include <fcppt/math/matrix/detail/determinant.hpp>
-#include <fcppt/config/external_begin.hpp>
-#include <boost/utility/enable_if.hpp>
-#include <fcppt/config/external_end.hpp>
 
 
 namespace fcppt
@@ -29,7 +25,7 @@ namespace matrix
 \tparam T The matrix's <code>value_type</code>
 \tparam N The matrix's row (and column!) dimension type
 \tparam S The matrix's storage type
-\param matrix_ The matrix
+\param _matrix The matrix
 
 This function uses the Laplace extension. Consider it slow (very slow!).
 
@@ -41,22 +37,19 @@ template
 	typename N,
 	typename S
 >
-typename
-boost::enable_if
-<
-	math::is_static_size
-	<
-		N
-	>,
-	T
->::type
+T
 determinant(
-	object<T, N, N, S> const &matrix_
+	fcppt::math::matrix::object<
+		T,
+		N,
+		N,
+		S
+	> const &_matrix
 )
 {
 	return
-		matrix::detail::determinant(
-			matrix_
+		fcppt::math::matrix::detail::determinant(
+			_matrix
 		);
 }
 

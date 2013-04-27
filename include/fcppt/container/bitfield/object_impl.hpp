@@ -7,6 +7,7 @@
 #ifndef FCPPT_CONTAINER_BITFIELD_OBJECT_IMPL_HPP_INCLUDED
 #define FCPPT_CONTAINER_BITFIELD_OBJECT_IMPL_HPP_INCLUDED
 
+#include <fcppt/no_init.hpp>
 #include <fcppt/algorithm/contains_if.hpp>
 #include <fcppt/container/bitfield/iterator_impl.hpp>
 #include <fcppt/container/bitfield/object_decl.hpp>
@@ -31,7 +32,9 @@ fcppt::container::bitfield::object<
 	ElementType,
 	NumElements,
 	InternalType
->::object()
+>::object(
+	fcppt::no_init const &
+)
 // Don't initialize array_
 {
 }
@@ -637,7 +640,9 @@ fcppt::container::bitfield::object<
 	InternalType
 >::operator~() const
 {
-	object ret;
+	object ret{
+		fcppt::no_init()
+	};
 
 	std::transform(
 		array_.begin(),
@@ -839,7 +844,9 @@ fcppt::container::bitfield::object<
 	InternalType
 >::null()
 {
-	object ret;
+	object ret{
+		fcppt::no_init()
+	};
 
 	ret.clear();
 

@@ -33,7 +33,6 @@ struct dim_matches
 :
 	boost::mpl::bool_<
 		Desired == Current
-		|| Current == 0
 	>
 {};
 

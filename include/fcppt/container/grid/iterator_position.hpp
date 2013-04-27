@@ -7,11 +7,13 @@
 #ifndef FCPPT_CONTAINER_GRID_ITERATOR_POSITION_HPP_INCLUDED
 #define FCPPT_CONTAINER_GRID_ITERATOR_POSITION_HPP_INCLUDED
 
+#include <fcppt/no_init.hpp>
 #include <fcppt/container/grid/object_impl.hpp>
 #include <fcppt/math/dim/object_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <iterator>
 #include <fcppt/config/external_end.hpp>
+
 
 namespace fcppt
 {
@@ -43,14 +45,17 @@ iterator_position(
 	dim::size_type
 	dim_size_type;
 
-	dim stacked_dim;
+	dim stacked_dim{
+		fcppt::no_init()};
+
 	stacked_dim[0] = grid.size()[0];
 
 	for(dim_size_type i = 1; i < stacked_dim.size(); ++i)
 		stacked_dim[i] =
 			stacked_dim[static_cast<dim_size_type>(i-1)] * grid.size()[i];
 
-	dim ret;
+	dim ret{
+		fcppt::no_init()};
 
 	dim_unit const offset =
 		static_cast<dim_unit>(

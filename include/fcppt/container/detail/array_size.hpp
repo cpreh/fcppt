@@ -4,48 +4,51 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_MATH_MATRIX_IS_STATIC_SIZE_HPP_INCLUDED
-#define FCPPT_MATH_MATRIX_IS_STATIC_SIZE_HPP_INCLUDED
+#ifndef FCPPT_CONTAINER_DETAIL_ARRAY_SIZE_HPP_INCLUDED
+#define FCPPT_CONTAINER_DETAIL_ARRAY_SIZE_HPP_INCLUDED
 
-#include <fcppt/math/is_static_size.hpp>
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/mpl/and.hpp>
+#include <array>
+#include <cstddef>
+#include <type_traits>
 #include <fcppt/config/external_end.hpp>
+
 
 namespace fcppt
 {
-namespace math
+namespace container
 {
-namespace matrix
+namespace detail
 {
+
+template<
+	typename Type
+>
+struct array_size;
 
 FCPPT_PP_PUSH_WARNING
 FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
 
-/**
-\brief Metafunction to test if a matrix's dimension types are static
-\ingroup fcpptmathmatrix
-\tparam N The row dimension type
-\tparam M The column dimension type
-*/
 template<
-	typename N,
-	typename M
+	typename T,
+	std::size_t N
 >
-struct is_static_size
-:
-boost::mpl::and_<
-	math::is_static_size<
+struct array_size<
+	std::array<
+		T,
 		N
-	>,
-	math::is_static_size<
-		M
 	>
 >
-{};
+:
+std::integral_constant<
+	std::size_t,
+	N
+>
+{
+};
 
 FCPPT_PP_POP_WARNING
 
