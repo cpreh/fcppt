@@ -169,14 +169,17 @@ set(
 	examples/visibility.cpp
 	examples/weak_ptr.cpp
 	include/fcppt/algorithm/append.hpp
+	include/fcppt/algorithm/array_binary_map.hpp
 	include/fcppt/algorithm/array_fold.hpp
+	include/fcppt/algorithm/array_fold_static.hpp
 	include/fcppt/algorithm/array_init.hpp
 	include/fcppt/algorithm/array_map.hpp
 	include/fcppt/algorithm/contains.hpp
 	include/fcppt/algorithm/contains_if.hpp
 	include/fcppt/algorithm/copy_if.hpp
 	include/fcppt/algorithm/copy_n.hpp
-	include/fcppt/algorithm/detail/array_fold.hpp
+	include/fcppt/algorithm/detail/array_fold_function.hpp
+	include/fcppt/algorithm/detail/array_fold_static.hpp
 	include/fcppt/algorithm/detail/array_init_function.hpp
 	include/fcppt/algorithm/detail/array_map_function.hpp
 	include/fcppt/algorithm/detail/ptr_container_erase_pred.hpp
@@ -582,6 +585,7 @@ set(
 	include/fcppt/make_shared_ptr.hpp
 	include/fcppt/make_strong_typedef.hpp
 	include/fcppt/make_unique_ptr.hpp
+	include/fcppt/math/binary_map.hpp
 	include/fcppt/math/box/center.hpp
 	include/fcppt/math/box/componentwise_equal.hpp
 	include/fcppt/math/box/contains.hpp
@@ -679,6 +683,7 @@ set(
 	include/fcppt/math/is_power_of_2.hpp
 	include/fcppt/math/is_rational.hpp
 	include/fcppt/math/log2.hpp
+	include/fcppt/math/map.hpp
 	include/fcppt/math/matrix/adjugate.hpp
 	include/fcppt/math/matrix/arithmetic.hpp
 	include/fcppt/math/matrix/comparison.hpp

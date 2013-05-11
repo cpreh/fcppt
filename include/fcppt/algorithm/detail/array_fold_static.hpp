@@ -4,8 +4,8 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_ALGORITHM_DETAIL_ARRAY_FOLD_HPP_INCLUDED
-#define FCPPT_ALGORITHM_DETAIL_ARRAY_FOLD_HPP_INCLUDED
+#ifndef FCPPT_ALGORITHM_DETAIL_ARRAY_FOLD_STATIC_HPP_INCLUDED
+#define FCPPT_ALGORITHM_DETAIL_ARRAY_FOLD_STATIC_HPP_INCLUDED
 
 #include <fcppt/config/external_begin.hpp>
 #include <array>
@@ -35,7 +35,7 @@ typename std::enable_if<
 		N
 	>
 >::type
-array_fold(
+array_fold_static(
 	F const &,
 	Args && ..._args
 )
@@ -67,13 +67,13 @@ typename std::enable_if<
 		N
 	>
 >::type
-array_fold(
+array_fold_static(
 	F const &_function,
 	Args && ..._args
 )
 {
 	return
-		fcppt::algorithm::detail::array_fold<
+		fcppt::algorithm::detail::array_fold_static<
 			Index + 1,
 			T,
 			N

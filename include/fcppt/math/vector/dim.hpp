@@ -7,7 +7,7 @@
 #ifndef FCPPT_MATH_VECTOR_DIM_HPP_INCLUDED
 #define FCPPT_MATH_VECTOR_DIM_HPP_INCLUDED
 
-#include <fcppt/no_init.hpp>
+#include <fcppt/math/binary_map.hpp>
 #include <fcppt/math/static_storage.hpp>
 #include <fcppt/math/detail/binary_type.hpp>
 #include <fcppt/math/dim/object_impl.hpp>
@@ -53,39 +53,33 @@ operator op(\
 )\
 {\
 	typedef \
-	fcppt::math::vector::object<\
-		FCPPT_MATH_DETAIL_BINARY_TYPE(L, op, R),\
-		N,\
-		typename fcppt::math::static_storage<\
-			FCPPT_MATH_DETAIL_BINARY_TYPE(L, op, R),\
-			N\
-		>::type\
-	> result_type;\
-\
-	result_type result{\
-		fcppt::no_init()\
-	};\
-\
-	for(\
-		typename result_type::size_type index(\
-			0u\
-		);\
-		index < result.size();\
-		++index\
-	) \
-		result[\
-			index\
-		] = \
-			_left[\
-				index\
-			] \
-			op \
-			_right[\
-				index\
-			];\
+	FCPPT_MATH_DETAIL_BINARY_TYPE(L, op, R)\
+	result_value_type; \
 \
 	return \
-		result;\
+		fcppt::math::binary_map<\
+			fcppt::math::vector::object<\
+				result_value_type,\
+				N,\
+				typename fcppt::math::static_storage<\
+					result_value_type,\
+					N\
+				>::type\
+			>\
+		>(\
+			_left,\
+			_right,\
+			[](\
+				L const &_left_elem,\
+				R const &_right_elem\
+			)\
+			{\
+				return \
+					_left_elem \
+					op \
+					_right_elem;\
+			}\
+		);\
 }
 
 FCPPT_MATH_MAKE_FREE_VECTOR_DIM_FUNCTION(+)

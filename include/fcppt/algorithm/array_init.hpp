@@ -7,7 +7,7 @@
 #ifndef FCPPT_ALGORITHM_ARRAY_INIT_HPP_INCLUDED
 #define FCPPT_ALGORITHM_ARRAY_INIT_HPP_INCLUDED
 
-#include <fcppt/algorithm/array_fold.hpp>
+#include <fcppt/algorithm/array_fold_static.hpp>
 #include <fcppt/algorithm/detail/array_init_function.hpp>
 #include <fcppt/type_traits/is_std_array.hpp>
 #include <fcppt/config/external_begin.hpp>
@@ -48,7 +48,7 @@ array_init(
 )
 {
 	return
-		fcppt::algorithm::array_fold<
+		fcppt::algorithm::array_fold_static<
 			Array
 		>(
 			fcppt::algorithm::detail::array_init_function<

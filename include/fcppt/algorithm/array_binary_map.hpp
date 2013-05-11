@@ -4,11 +4,10 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_ALGORITHM_ARRAY_MAP_HPP_INCLUDED
-#define FCPPT_ALGORITHM_ARRAY_MAP_HPP_INCLUDED
+#ifndef FCPPT_ALGORITHM_ARRAY_BINARY_MAP_HPP_INCLUDED
+#define FCPPT_ALGORITHM_ARRAY_BINARY_MAP_HPP_INCLUDED
 
-#include <fcppt/algorithm/array_fold_static.hpp>
-#include <fcppt/algorithm/detail/array_map_function.hpp>
+#include <fcppt/algorithm/array_fold.hpp>
 #include <fcppt/container/array_size.hpp>
 #include <fcppt/type_traits/is_std_array.hpp>
 #include <fcppt/config/external_begin.hpp>
@@ -23,39 +22,43 @@ namespace algorithm
 {
 
 /**
-\brief Applies a function to every element of an array and returns an array of
-the results.
+\brief Applies a function to each pair of elements of two arrays and returns an
+array containing the results.
 
 \ingroup fcpptalgorithm
 
-Calls <code>_function(element)</code> for every element of \a _source.
-
-Example:
-
-\snippet doc/algorithm.cpp array_map
+Calls <code>_function(element1, element2)</code> for every element1 of \a
+_source1 and element2 of \a _source2.
 
 \tparam TargetArray Must be a std::array
 
-\tparam SourceType Can be any type
+\tparam SourceType1 Can be any type
+
+\tparam SourceType2 Can be any type
 
 \tparam SourceCount The number of elements in the source array
 
-\tparam Function Must be a function taking elements of the source array and
-returning elements of the \a TargetArray
+\tparam Function Must be a function taking elements of source arrays 1 and 2
+and returning elements of the \a TargetArray
 **/
 template
 <
 	typename TargetArray,
-	typename SourceType,
+	typename SourceType1,
+	typename SourceType2,
 	std::size_t SourceCount,
 	typename Function
 >
 TargetArray const
-array_map(
+array_binary_map(
 	std::array<
-		SourceType,
+		SourceType1,
 		SourceCount
-	> const &_source,
+	> const &_source1,
+	std::array<
+		SourceType2,
+		SourceCount
+	> const &_source2,
 	Function const &_function
 )
 {
@@ -72,24 +75,32 @@ array_map(
 		>::value
 		==
 		SourceCount,
-		"All arrays must have the same number of elements"
+		"Both arrays must have the same number of elements"
 	);
 
 	return
-		fcppt::algorithm::array_fold_static<
+		fcppt::algorithm::array_fold<
 			TargetArray
 		>(
-			fcppt::algorithm::detail::array_map_function<
-				Function,
-				typename TargetArray::value_type,
-				std::array<
-					SourceType,
-					SourceCount
-				>
-			>(
-				_function,
-				_source
+			[
+				&_source1,
+				&_source2,
+				&_function
+			]
+			(
+				std::size_t const _index
 			)
+			{
+				return
+					_function(
+						_source1[
+							_index
+						],
+						_source2[
+							_index
+						]
+					);
+			}
 		);
 }
 
