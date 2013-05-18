@@ -168,6 +168,23 @@ public:
 		In end
 	);
 
+	/**
+	\brief Constructs a grid from a range
+
+	\tparam Range Must be a range with begin/end
+
+	\param d The size of the grid
+
+	\param r The range to initialize from
+	*/
+	template<
+		typename Range
+	>
+	object(
+		dim const &d,
+		Range const &r
+	);
+
 	object(
 		object const &
 	);

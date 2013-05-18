@@ -889,3 +889,42 @@ FCPPT_PP_POP_WARNING
 		grid2.end()
 	);
 }
+
+FCPPT_PP_PUSH_WARNING
+FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
+
+BOOST_AUTO_TEST_CASE(
+	container_grid_range_ctor
+)
+{
+FCPPT_PP_POP_WARNING
+
+	typedef
+	std::vector<
+		int
+	>
+	int_vector;
+
+	int_vector vec(
+		6,
+		42
+	);
+
+	int2_grid grid(
+		int2_grid::dim(
+			2,
+			3
+		),
+		vec
+	);
+
+	BOOST_CHECK(
+		std::count(
+			grid.begin(),
+			grid.end(),
+			42
+		)
+		==
+		6
+	);
+}
