@@ -8,13 +8,13 @@
 #define FCPPT_CONTAINER_GRID_OBJECT_IMPL_HPP_INCLUDED
 
 #include <fcppt/container/raw_vector_impl.hpp>
+#include <fcppt/container/grid/dim.hpp>
 #include <fcppt/container/grid/object_decl.hpp>
 #include <fcppt/container/grid/size_type.hpp>
 #include <fcppt/container/grid/detail/access_member.hpp>
 #include <fcppt/container/grid/detail/at.hpp>
 #include <fcppt/container/grid/detail/resize.hpp>
 #include <fcppt/container/grid/detail/shrink_to_fit.hpp>
-#include <fcppt/math/dim/object_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <utility>
 #include <fcppt/config/external_end.hpp>
