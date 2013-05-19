@@ -293,24 +293,40 @@ set(
 	include/fcppt/container/grid/detail/choose_pointer.hpp
 	include/fcppt/container/grid/detail/choose_reference.hpp
 	include/fcppt/container/grid/detail/fill.hpp
+	include/fcppt/container/grid/detail/pos_iterator_base.hpp
 	include/fcppt/container/grid/detail/print_recurse.hpp
 	include/fcppt/container/grid/detail/resize.hpp
 	include/fcppt/container/grid/detail/shrink_to_fit.hpp
 	include/fcppt/container/grid/dim.hpp
+	include/fcppt/container/grid/dim_fwd.hpp
 	include/fcppt/container/grid/exception.hpp
 	include/fcppt/container/grid/fill.hpp
 	include/fcppt/container/grid/impl/exception.hpp
 	include/fcppt/container/grid/impl/out_of_range.hpp
 	include/fcppt/container/grid/in_range.hpp
 	include/fcppt/container/grid/interpolate.hpp
+	include/fcppt/container/grid/is_object.hpp
 	include/fcppt/container/grid/is_square.hpp
 	include/fcppt/container/grid/iterator_position.hpp
+	include/fcppt/container/grid/make_pos_crange.hpp
+	include/fcppt/container/grid/make_pos_crange_start_end.hpp
+	include/fcppt/container/grid/make_pos_range.hpp
+	include/fcppt/container/grid/make_pos_range_start_end.hpp
 	include/fcppt/container/grid/object.hpp
 	include/fcppt/container/grid/object_decl.hpp
 	include/fcppt/container/grid/object_fwd.hpp
 	include/fcppt/container/grid/object_impl.hpp
 	include/fcppt/container/grid/out_of_range.hpp
 	include/fcppt/container/grid/output.hpp
+	include/fcppt/container/grid/pos_iterator_decl.hpp
+	include/fcppt/container/grid/pos_iterator_fwd.hpp
+	include/fcppt/container/grid/pos_iterator_impl.hpp
+	include/fcppt/container/grid/pos_range_decl.hpp
+	include/fcppt/container/grid/pos_range_fwd.hpp
+	include/fcppt/container/grid/pos_range_impl.hpp
+	include/fcppt/container/grid/pos_reference_decl.hpp
+	include/fcppt/container/grid/pos_reference_fwd.hpp
+	include/fcppt/container/grid/pos_reference_impl.hpp
 	include/fcppt/container/grid/resize_preserve.hpp
 	include/fcppt/container/grid/resize_preserve_init.hpp
 	include/fcppt/container/grid/size_type.hpp
