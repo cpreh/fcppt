@@ -624,6 +624,7 @@ set(
 	include/fcppt/math/box/stretch_relative.hpp
 	include/fcppt/math/box/structure_cast.hpp
 	include/fcppt/math/ceil_div.hpp
+	include/fcppt/math/ceil_div_signed.hpp
 	include/fcppt/math/clamp.hpp
 	include/fcppt/math/deg_to_rad.hpp
 	include/fcppt/math/detail/array_adapter.hpp
