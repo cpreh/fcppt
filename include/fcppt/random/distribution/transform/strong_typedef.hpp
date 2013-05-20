@@ -7,8 +7,8 @@
 #ifndef FCPPT_RANDOM_DISTRIBUTION_TRANSFORM_STRONG_TYPEDEF_HPP_INCLUDED
 #define FCPPT_RANDOM_DISTRIBUTION_TRANSFORM_STRONG_TYPEDEF_HPP_INCLUDED
 
-#include <fcppt/random/distribution/transform/terminal_fwd.hpp>
 #include <fcppt/strong_typedef_impl.hpp>
+#include <fcppt/random/distribution/transform/terminal_fwd.hpp>
 
 
 namespace fcppt

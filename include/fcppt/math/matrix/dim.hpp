@@ -7,8 +7,8 @@
 #ifndef FCPPT_MATH_MATRIX_DIM_HPP_INCLUDED
 #define FCPPT_MATH_MATRIX_DIM_HPP_INCLUDED
 
-#include <fcppt/math/matrix/dim_fwd.hpp>
 #include <fcppt/math/dim/object_impl.hpp>
+#include <fcppt/math/matrix/dim_fwd.hpp>
 
 
 #endif
