@@ -44,7 +44,6 @@ set(
 	FCPPT_DOC_FILES
 	doc/CMakeLists.txt
 	doc/Doxyfile.in
-	doc/Doxyfile.in.bak
 	doc/files/changes.doxygen
 	doc/files/changes_old.doxygen
 	doc/files/logo.svg
