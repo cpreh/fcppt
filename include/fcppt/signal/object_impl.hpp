@@ -10,12 +10,9 @@
 
 #include <fcppt/signal/base_impl.hpp>
 #include <fcppt/signal/object_decl.hpp>
-#include <fcppt/signal/detail/define_operator.hpp>
-#include <fcppt/signal/detail/define_void_operator.hpp>
 #include <fcppt/signal/detail/enable_if_void.hpp>
-#include <fcppt/signal/detail/operator_limit.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/preprocessor/repetition/repeat.hpp>
+#include <utility>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -104,6 +101,9 @@ template<
 	> class Base,
 	typename Enable
 >
+template<
+	typename... Args
+>
 typename fcppt::signal::object<
 	T,
 	Base,
@@ -113,7 +113,9 @@ fcppt::signal::object<
 	T,
 	Base,
 	Enable
->::operator()() const
+>::operator()(
+	Args && ..._args
+)
 {
 	result_type result(
 		initial_result_
@@ -128,18 +130,18 @@ fcppt::signal::object<
 	)
 		result =
 			combiner_(
-				item.function()(),
+				item.function()(
+					std::forward<
+						Args
+					>(
+						_args
+					)...
+				),
 				result
 			);
 
 	return result;
 }
-
-BOOST_PP_REPEAT(
-	FCPPT_SIGNAL_DETAIL_OPERATOR_LIMIT,
-	FCPPT_SIGNAL_DETAIL_DEFINE_OPERATOR,
-	nil
-)
 
 template<
 	typename T,
@@ -179,6 +181,9 @@ template<
 		typename
 	> class Base
 >
+template<
+	typename... Args
+>
 typename fcppt::signal::object<
 	T,
 	Base,
@@ -192,7 +197,9 @@ fcppt::signal::object<
 	typename fcppt::signal::detail::enable_if_void<
 		T
 	>::type
->::operator()() const
+>::operator()(
+	Args && ..._args
+)
 {
 	typename base::connection_list &cur_list(
 		base::connections()
@@ -201,13 +208,13 @@ fcppt::signal::object<
 	for(
 		auto &item : cur_list
 	)
-		item.function()();
+		item.function()(
+			std::forward<
+				Args
+			>(
+				_args
+			)...
+		);
 }
-
-BOOST_PP_REPEAT(
-	FCPPT_SIGNAL_DETAIL_OPERATOR_LIMIT,
-	FCPPT_SIGNAL_DETAIL_DEFINE_VOID_OPERATOR,
-	nil
-)
 
 #endif

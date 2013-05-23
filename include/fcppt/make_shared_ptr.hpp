@@ -7,24 +7,42 @@
 #ifndef FCPPT_MAKE_SHARED_PTR_HPP_INCLUDED
 #define FCPPT_MAKE_SHARED_PTR_HPP_INCLUDED
 
-#include <fcppt/shared_ptr_impl.hpp>
-#include <fcppt/detail/make_ptr_base.hpp>
 #include <fcppt/detail/make_shared_wrapper.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <memory>
+#include <utility>
 #include <fcppt/config/external_end.hpp>
 
 
 namespace fcppt
 {
 
-FCPPT_DETAIL_MAKE_PTR_BASE(
-	shared_ptr,
-	fcppt::detail::make_shared_wrapper,
-	std::make_shared<
-		Type
-	>
+template<
+	typename Res,
+	typename... Args
+>
+fcppt::detail::make_shared_wrapper<
+	Res
+>
+make_shared_ptr(
+	Args && ..._args
 )
+{
+	return
+		fcppt::detail::make_shared_wrapper<
+			Res
+		>(
+			std::make_shared<
+				Res
+			>(
+				std::forward<
+					Args
+				>(
+					_args
+				)...
+			)
+		);
+}
 
 }
 

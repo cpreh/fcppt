@@ -230,7 +230,6 @@ set(
 	include/fcppt/detail/foreach_enumerator_start_end.hpp
 	include/fcppt/detail/foreach_enumerator_var_decl.hpp
 	include/fcppt/detail/foreach_enumerator_var_impl.hpp
-	include/fcppt/detail/make_ptr_base.hpp
 	include/fcppt/detail/make_shared_wrapper.hpp
 	include/fcppt/detail/make_shared_wrapper_fwd.hpp
 	include/fcppt/detail/nonassignable.hpp
@@ -464,7 +463,6 @@ set(
 	include/fcppt/math/detail/index_at.hpp
 	include/fcppt/math/detail/init_storage.hpp
 	include/fcppt/math/detail/linear_access.hpp
-	include/fcppt/math/detail/make_impl.hpp
 	include/fcppt/math/detail/make_op_decl.hpp
 	include/fcppt/math/detail/make_op_def.hpp
 	include/fcppt/math/detail/make_simple_free_function.hpp
@@ -496,7 +494,6 @@ set(
 	include/fcppt/math/dim/input.hpp
 	include/fcppt/math/dim/is_dim.hpp
 	include/fcppt/math/dim/is_quadratic.hpp
-	include/fcppt/math/dim/make.hpp
 	include/fcppt/math/dim/max_ctor_params.hpp
 	include/fcppt/math/dim/narrow_cast.hpp
 	include/fcppt/math/dim/object.hpp
@@ -602,7 +599,6 @@ set(
 	include/fcppt/math/vector/is_vector.hpp
 	include/fcppt/math/vector/length.hpp
 	include/fcppt/math/vector/length_square.hpp
-	include/fcppt/math/vector/make.hpp
 	include/fcppt/math/vector/max_ctor_params.hpp
 	include/fcppt/math/vector/mod.hpp
 	include/fcppt/math/vector/narrow_cast.hpp
@@ -668,8 +664,6 @@ set(
 	include/fcppt/preprocessor/detail/disable_gcc_warning.hpp
 	include/fcppt/preprocessor/detail/disable_icc_warning.hpp
 	include/fcppt/preprocessor/detail/disable_vc_warning.hpp
-	include/fcppt/preprocessor/detail/enum_params_forward_m.hpp
-	include/fcppt/preprocessor/detail/enum_params_forward_z.hpp
 	include/fcppt/preprocessor/detail/function.hpp
 	include/fcppt/preprocessor/detail/message.hpp
 	include/fcppt/preprocessor/detail/pop_warning.hpp
@@ -764,11 +758,7 @@ set(
 	include/fcppt/signal/detail/concrete_connection.hpp
 	include/fcppt/signal/detail/concrete_connection_impl.hpp
 	include/fcppt/signal/detail/connection_base.hpp
-	include/fcppt/signal/detail/declare_operator.hpp
-	include/fcppt/signal/detail/define_operator.hpp
-	include/fcppt/signal/detail/define_void_operator.hpp
 	include/fcppt/signal/detail/enable_if_void.hpp
-	include/fcppt/signal/detail/operator_limit.hpp
 	include/fcppt/signal/object.hpp
 	include/fcppt/signal/object_decl.hpp
 	include/fcppt/signal/object_fwd.hpp

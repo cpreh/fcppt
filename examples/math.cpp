@@ -15,7 +15,6 @@
 #include <fcppt/math/vector/atan2.hpp>
 #include <fcppt/math/vector/cross.hpp>
 #include <fcppt/math/vector/length.hpp>
-#include <fcppt/math/vector/make.hpp>
 #include <fcppt/math/vector/normalize.hpp>
 #include <fcppt/math/vector/object_impl.hpp>
 #include <fcppt/math/vector/output.hpp>
@@ -98,14 +97,6 @@ main()
 			<< c
 			<< FCPPT_TEXT('\n');
 	}
-
-	fcppt::io::cout()
-		<< fcppt::math::vector::make(
-			42,
-			43,
-			44
-		)
-		<< FCPPT_TEXT('\n');
 
 	typedef fcppt::math::box::rect<
 		int

@@ -14,11 +14,8 @@
 #include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/signal/base_decl.hpp>
 #include <fcppt/signal/object_fwd.hpp>
-#include <fcppt/signal/detail/declare_operator.hpp>
 #include <fcppt/signal/detail/enable_if_void.hpp>
-#include <fcppt/signal/detail/operator_limit.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/preprocessor/repetition/repeat.hpp>
 #include <boost/type_traits/function_traits.hpp>
 #include <functional>
 #include <fcppt/config/external_end.hpp>
@@ -105,20 +102,15 @@ public:
 	);
 
 	/**
-	\brief Call the signal (with no arguments)
-
-	\note
-	There are other operator() overloads for more arguments, but
-	doxygen cannot parse the code!
+	\brief Call the signal
 	*/
+	template<
+		typename... Args
+	>
 	result_type
-	operator()() const;
-
-	BOOST_PP_REPEAT(
-		FCPPT_SIGNAL_DETAIL_OPERATOR_LIMIT,
-		FCPPT_SIGNAL_DETAIL_DECLARE_OPERATOR,
-		nil
-	)
+	operator()(
+		Args && ...
+	);
 
 	using base::connect;
 private:
@@ -174,20 +166,15 @@ public:
 	typedef void result_type;
 
 	/**
-	\brief Call the signal (with no arguments)
-
-	\note
-	There are other operator() overloads for more arguments, but
-	doxygen cannot parse the code!
+	\brief Call the signal
 	*/
+	template<
+		typename... Args
+	>
 	result_type
-	operator()() const;
-
-	BOOST_PP_REPEAT(
-		FCPPT_SIGNAL_DETAIL_OPERATOR_LIMIT,
-		FCPPT_SIGNAL_DETAIL_DECLARE_OPERATOR,
-		nil
-	)
+	operator()(
+		Args && ...
+	);
 
 	using base::connect;
 
