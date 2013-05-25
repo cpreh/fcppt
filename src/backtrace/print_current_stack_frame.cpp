@@ -5,7 +5,7 @@
 
 
 #include <fcppt/backtrace/print_current_stack_frame.hpp>
-#include <fcppt/config.hpp>
+#include <fcppt/private_config.hpp>
 
 #if defined(FCPPT_HAVE_BACKTRACE)
 #include <fcppt/config/external_begin.hpp>

@@ -4,12 +4,16 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_STRONG_TYPEDEF_HPP_INCLUDED
-#define FCPPT_STRONG_TYPEDEF_HPP_INCLUDED
+#ifndef FCPPT_DETAIL_TEXT_HPP_INCLUDED
+#define FCPPT_DETAIL_TEXT_HPP_INCLUDED
 
-#include <fcppt/make_strong_typedef.hpp>
-#include <fcppt/strong_typedef_std_hash.hpp>
-#include <fcppt/strong_typedef_operators.hpp>
+#include <fcppt/public_config.hpp>
 
+
+#if defined(FCPPT_NARROW_STRING)
+#define FCPPT_DETAIL_TEXT(x) x
+#else
+#define FCPPT_DETAIL_TEXT(x) L ## x
+#endif
 
 #endif

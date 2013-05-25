@@ -7,7 +7,7 @@
 #include <fcppt/backtrace/current_stack_frame.hpp>
 #include <fcppt/backtrace/stack_frame.hpp>
 #include <fcppt/backtrace/stack_limit.hpp>
-#include <fcppt/config.hpp>
+#include <fcppt/private_config.hpp>
 #if defined(FCPPT_HAVE_BACKTRACE)
 #include <fcppt/container/raw_vector.hpp>
 #include <fcppt/c_deleter.hpp>

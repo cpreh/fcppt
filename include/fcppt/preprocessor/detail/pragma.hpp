@@ -10,7 +10,7 @@
 #include <fcppt/config/compiler.hpp>
 
 
-#if defined(FCPPT_CONFIG_MSVC_COMPILER) || defined(FCPPT_CONFIG_ICC_COMPILER)
+#if defined(FCPPT_CONFIG_MSVC_COMPILER)
 #define FCPPT_PP_DETAIL_PRAGMA(x) __pragma(x)
 #elif defined(FCPPT_CONFIG_GCC_COMPILER)
 #define FCPPT_PP_DETAIL_PRAGMA(x) _Pragma(#x)

@@ -11,7 +11,7 @@
 
 #if defined(FCPPT_CONFIG_MSVC_COMPILER)
 #	define FCPPT_IMPORT_SYMBOL_IMPL __declspec(dllimport)
-#elif defined(FCPPT_CONFIG_GCC_COMPILER) || defined(FCPPT_CONFIG_ICC_COMPILER)
+#elif defined(FCPPT_CONFIG_GCC_COMPILER)
 #	define FCPPT_IMPORT_SYMBOL_IMPL
 #else
 #	error "Don't know what FCPPT_IMPORT_SYMBOL should be"

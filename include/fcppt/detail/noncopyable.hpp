@@ -7,10 +7,10 @@
 #ifndef FCPPT_DETAIL_NONCOPYABLE_HPP_INCLUDED
 #define FCPPT_DETAIL_NONCOPYABLE_HPP_INCLUDED
 
-#include <fcppt/config.hpp>
+#include <fcppt/config/compiler.hpp>
 
 
-#if defined(FCPPT_HAVE_DEFAULTED_AND_DELETED_FUNCTIONS)
+#if defined(FCPPT_CONFIG_GCC_COMPILER)
 
 #define FCPPT_DETAIL_NONCOPYABLE(\
 	classname\

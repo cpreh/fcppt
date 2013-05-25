@@ -9,6 +9,7 @@
 
 #include <fcppt/detail/char_type.hpp>
 
+
 namespace fcppt
 {
 

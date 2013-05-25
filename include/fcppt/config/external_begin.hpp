@@ -12,7 +12,6 @@
 #endif
 
 #include <fcppt/config/compiler.hpp>
-#include <fcppt/config/warnings.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
 FCPPT_PP_PUSH_WARNING
 
@@ -55,43 +54,35 @@ FCPPT_PP_DISABLE_VC_WARNING(4987) // non standard throw(...)
 #elif defined(FCPPT_CONFIG_GCC_COMPILER)
 
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
+
 #if defined(FCPPT_CONFIG_CLANG_COMPILER)
+
+// clang only warnings
+
+FCPPT_PP_DISABLE_GCC_WARNING(-Wconditional-uninitialized)
+FCPPT_PP_DISABLE_GCC_WARNING(-Wdocumentation)
+FCPPT_PP_DISABLE_GCC_WARNING(-Wextra-semi)
+FCPPT_PP_DISABLE_GCC_WARNING(-Wimplicit-fallthrough)
+FCPPT_PP_DISABLE_GCC_WARNING(-Wmismatched-tags)
 FCPPT_PP_DISABLE_GCC_WARNING(-Wnewline-eof)
 FCPPT_PP_DISABLE_GCC_WARNING(-Wtautological-compare)
+FCPPT_PP_DISABLE_GCC_WARNING(-Wunneeded-member-function)
+FCPPT_PP_DISABLE_GCC_WARNING(-Wunused-member-function)
+
+#else
+
+// gcc only warnings
+
+FCPPT_PP_DISABLE_GCC_WARNING(-Wdouble-promotion)
+FCPPT_PP_DISABLE_GCC_WARNING(-Wlogical-op)
+FCPPT_PP_DISABLE_GCC_WARNING(-Wmaybe-uninitialized)
+FCPPT_PP_DISABLE_GCC_WARNING(-Wunused-local-typedefs)
+FCPPT_PP_DISABLE_GCC_WARNING(-Wzero-as-null-pointer-constant)
+
 #endif
-#if defined(FCPPT_CONFIG_HAVE_CONDITIONAL_UNINITIALIZED_WARNING)
-	FCPPT_PP_DISABLE_GCC_WARNING(-Wconditional-uninitialized)
-#endif
-#if defined(FCPPT_CONFIG_HAVE_DOCUMENTATION_WARNING)
-	FCPPT_PP_DISABLE_GCC_WARNING(-Wdocumentation)
-#endif
-#if defined(FCPPT_CONFIG_HAVE_DOUBLE_PROMOTION_WARNING)
-	FCPPT_PP_DISABLE_GCC_WARNING(-Wdouble-promotion)
-#endif
-#if defined(FCPPT_CONFIG_HAVE_EXTRA_SEMI_WARNING)
-	FCPPT_PP_DISABLE_GCC_WARNING(-Wextra-semi)
-#endif
-#if defined(FCPPT_CONFIG_HAVE_IMPLICIT_FALLTHROUGH_WARNING)
-	FCPPT_PP_DISABLE_GCC_WARNING(-Wimplicit-fallthrough)
-#endif
-#if defined(FCPPT_CONFIG_HAVE_LOGICAL_OP_WARNING)
-	FCPPT_PP_DISABLE_GCC_WARNING(-Wlogical-op)
-#endif
-#if defined(FCPPT_CONFIG_HAVE_MAYBE_UNINITIALIZED_WARNING)
-	FCPPT_PP_DISABLE_GCC_WARNING(-Wmaybe-uninitialized)
-#endif
-#if defined(FCPPT_CONFIG_HAVE_UNNEEDED_MEMBER_FUNCTION_WARNING)
-	FCPPT_PP_DISABLE_GCC_WARNING(-Wunneeded-member-function)
-#endif
-#if defined(FCPPT_CONFIG_HAVE_UNUSED_LOCAL_TYPEDEFS_WARNING)
-	FCPPT_PP_DISABLE_GCC_WARNING(-Wunused-local-typedefs)
-#endif
-#if defined(FCPPT_CONFIG_HAVE_UNUSED_MEMBER_FUNCTION_WARNING)
-	FCPPT_PP_DISABLE_GCC_WARNING(-Wunused-member-function)
-#endif
-#if defined(FCPPT_CONFIG_HAVE_ZERO_AS_NULL_POINTER_CONSTANT_WARNING)
-	FCPPT_PP_DISABLE_GCC_WARNING(-Wzero-as-null-pointer-constant)
-#endif
+
+// common clang and gcc warnings
+
 FCPPT_PP_DISABLE_GCC_WARNING(-Wattributes)
 FCPPT_PP_DISABLE_GCC_WARNING(-Wcast-align)
 FCPPT_PP_DISABLE_GCC_WARNING(-Wcast-qual)
@@ -116,15 +107,6 @@ FCPPT_PP_DISABLE_GCC_WARNING(-Wunreachable-code)
 FCPPT_PP_DISABLE_GCC_WARNING(-Wunused-function)
 FCPPT_PP_DISABLE_GCC_WARNING(-Wunused-parameter)
 FCPPT_PP_DISABLE_GCC_WARNING(-Wunused-variable)
-
-#elif defined(FCPPT_CONFIG_ICC_COMPILER)
-
-#include <fcppt/preprocessor/disable_icc_warning.hpp>
-FCPPT_PP_DISABLE_ICC_WARNING(193) // zero used for undefined preprocessor identifier
-FCPPT_PP_DISABLE_ICC_WARNING(279) // controlling expression is constant
-FCPPT_PP_DISABLE_ICC_WARNING(593) // variable set but never used
-FCPPT_PP_DISABLE_ICC_WARNING(2304) // non-explicit constructor with single argument
-FCPPT_PP_DISABLE_ICC_WARNING(2415) // unused variable with static storage
 
 #endif
 

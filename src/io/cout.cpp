@@ -4,8 +4,9 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/config.hpp>
+#include <fcppt/public_config.hpp>
 #include <fcppt/io/cout.hpp>
+#include <fcppt/io/ostream.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <iostream>
 #include <fcppt/config/external_end.hpp>
@@ -15,10 +16,10 @@ fcppt::io::ostream &
 fcppt::io::cout()
 {
 	return
-#ifndef FCPPT_NARROW_STRING
-		std::wcout
-#else
+#if defined(FCPPT_NARROW_STRING)
 		std::cout
+#else
+		std::wcout
 #endif
 	;
 }

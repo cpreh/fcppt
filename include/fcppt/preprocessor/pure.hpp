@@ -7,10 +7,10 @@
 #ifndef FCPPT_PREPROCESSOR_PURE_HPP_INCLUDED
 #define FCPPT_PREPROCESSOR_PURE_HPP_INCLUDED
 
-#include <fcppt/config.hpp>
+#include <fcppt/config/compiler.hpp>
 
 
-#ifdef FCPPT_HAVE_PURE_ATTRIBUTE
+#if defined(FCPPT_CONFIG_GCC_COMPILER)
 #define FCPPT_PP_PURE __attribute__((pure))
 #else
 #define FCPPT_PP_PURE

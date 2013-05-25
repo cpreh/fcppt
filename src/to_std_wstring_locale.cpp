@@ -6,7 +6,7 @@
 
 #include <fcppt/string.hpp>
 #include <fcppt/to_std_wstring_locale.hpp>
-#include <fcppt/config.hpp>
+#include <fcppt/public_config.hpp>
 #if defined(FCPPT_NARROW_STRING)
 #include <fcppt/widen.hpp>
 #endif

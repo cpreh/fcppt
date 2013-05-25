@@ -7,10 +7,10 @@
 #ifndef FCPPT_PREPROCESSOR_WARN_UNUSED_RESULT_HPP_INCLUDED
 #define FCPPT_PREPROCESSOR_WARN_UNUSED_RESULT_HPP_INCLUDED
 
-#include <fcppt/config.hpp>
+#include <fcppt/config/compiler.hpp>
 
 
-#ifdef FCPPT_HAVE_WARN_UNUSED_RESULT_ATTRIBUTE
+#if defined(FCPPT_CONFIG_GCC_COMPILER)
 #define FCPPT_PP_WARN_UNUSED_RESULT __attribute__((warn_unused_result))
 #else
 #define FCPPT_PP_WARN_UNUSED_RESULT

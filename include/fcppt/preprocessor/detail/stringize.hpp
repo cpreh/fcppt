@@ -7,7 +7,7 @@
 #ifndef FCPPT_PREPROCESSOR_DETAIL_STRINGIZE_HPP_INCLUDED
 #define FCPPT_PREPROCESSOR_DETAIL_STRINGIZE_HPP_INCLUDED
 
-#include <fcppt/config.hpp>
+#include <fcppt/public_config.hpp>
 
 #include <fcppt/config/external_begin.hpp>
 #if defined(FCPPT_NARROW_STRING)

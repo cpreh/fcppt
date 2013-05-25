@@ -8,16 +8,18 @@
 #ifndef FCPPT_ALGORITHM_IMPL_EXCEPTION_HPP_INCLUDED
 #define FCPPT_ALGORITHM_IMPL_EXCEPTION_HPP_INCLUDED
 
+#include <fcppt/string.hpp>
 #include <fcppt/text.hpp>
+
 
 inline
 fcppt::algorithm::exception::exception(
-	fcppt::string const &s
+	fcppt::string const &_text
 )
 :
 	fcppt::exception(
 		FCPPT_TEXT("algorithm: ")
-		+ s
+		+ _text
 	)
 {}
 

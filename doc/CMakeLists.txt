@@ -417,6 +417,7 @@ set(
 	include/fcppt/detail/strong_typedef/post_inc_dec_operator.hpp
 	include/fcppt/detail/strong_typedef/pre_inc_dec_operator.hpp
 	include/fcppt/detail/strong_typedef/unary_operator.hpp
+	include/fcppt/detail/text.hpp
 	include/fcppt/detail/truncation_check_cast.hpp
 	include/fcppt/dynamic_cast.hpp
 	include/fcppt/dynamic_optional_cast.hpp
@@ -844,7 +845,6 @@ set(
 	include/fcppt/optional_string_fwd.hpp
 	include/fcppt/preprocessor/const.hpp
 	include/fcppt/preprocessor/detail/disable_gcc_warning.hpp
-	include/fcppt/preprocessor/detail/disable_icc_warning.hpp
 	include/fcppt/preprocessor/detail/disable_vc_warning.hpp
 	include/fcppt/preprocessor/detail/function.hpp
 	include/fcppt/preprocessor/detail/message.hpp
@@ -853,7 +853,6 @@ set(
 	include/fcppt/preprocessor/detail/push_warning.hpp
 	include/fcppt/preprocessor/detail/stringize.hpp
 	include/fcppt/preprocessor/disable_gcc_warning.hpp
-	include/fcppt/preprocessor/disable_icc_warning.hpp
 	include/fcppt/preprocessor/disable_vc_warning.hpp
 	include/fcppt/preprocessor/file.hpp
 	include/fcppt/preprocessor/fixme.hpp
@@ -967,10 +966,15 @@ set(
 	include/fcppt/strong_typedef_construct_cast.hpp
 	include/fcppt/strong_typedef_decl.hpp
 	include/fcppt/strong_typedef_fwd.hpp
+	include/fcppt/strong_typedef_hash.hpp
+	include/fcppt/strong_typedef_hash_decl.hpp
+	include/fcppt/strong_typedef_hash_fwd.hpp
+	include/fcppt/strong_typedef_hash_impl.hpp
 	include/fcppt/strong_typedef_impl.hpp
 	include/fcppt/strong_typedef_input.hpp
 	include/fcppt/strong_typedef_operators.hpp
 	include/fcppt/strong_typedef_output.hpp
+	include/fcppt/strong_typedef_std_hash.hpp
 	include/fcppt/text.hpp
 	include/fcppt/time/ctime.hpp
 	include/fcppt/time/detail/sleep_duration.hpp

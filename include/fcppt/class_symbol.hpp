@@ -11,7 +11,7 @@
 
 #if defined(FCPPT_CONFIG_MSVC_COMPILER)
 #	define FCPPT_CLASS_SYMBOL_IMPL
-#elif defined(FCPPT_CONFIG_GCC_COMPILER) || defined(FCPPT_CONFIG_ICC_COMPILER)
+#elif defined(FCPPT_CONFIG_GCC_COMPILER)
 #	include <fcppt/export_symbol.hpp>
 #	define FCPPT_CLASS_SYMBOL_IMPL FCPPT_EXPORT_SYMBOL
 #else

@@ -10,7 +10,7 @@
 #include <fcppt/config/external_begin.hpp>
 #include <typeinfo>
 #include <fcppt/config/external_end.hpp>
-#include <fcppt/config.hpp>
+#include <fcppt/private_config.hpp>
 #if defined(FCPPT_HAVE_GCC_DEMANGLE)
 #include <fcppt/c_deleter.hpp>
 #include <fcppt/scoped_ptr.hpp>

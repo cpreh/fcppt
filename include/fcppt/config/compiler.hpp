@@ -9,9 +9,6 @@
 
 #if defined(_MSC_VER)
 #define FCPPT_CONFIG_MSVC_COMPILER
-// ICC emulates gcc to some extent, but we want to take a different code path for it
-#elif defined(__ICC)
-#define FCPPT_CONFIG_ICC_COMPILER
 #elif defined(__GNUC__)
 #define FCPPT_CONFIG_GCC_COMPILER
 #endif

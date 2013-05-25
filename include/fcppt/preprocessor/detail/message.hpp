@@ -7,11 +7,10 @@
 #ifndef FCPPT_PREPROCESSOR_DETAIL_MESSAGE_HPP_INCLUDED
 #define FCPPT_PREPROCESSOR_DETAIL_MESSAGE_HPP_INCLUDED
 
-#include <fcppt/config.hpp>
 #include <fcppt/config/compiler.hpp>
 
 
-#if defined(FCPPT_CONFIG_MSVC_COMPILER) || defined(FCPPT_HAVE_GCC_PRAGMA_MESSAGE)
+#if defined(FCPPT_CONFIG_MSVC_COMPILER) || defined(FCPPT_CONFIG_GCC_COMPILER)
 #	include <fcppt/preprocessor/pragma.hpp>
 #	define FCPPT_PP_DETAIL_MESSAGE(x) FCPPT_PP_PRAGMA(message (x))
 #else

@@ -11,7 +11,9 @@
 #include <fcppt/config/external_begin.hpp>
 #include <boost/test/unit_test.hpp>
 #include <sstream>
+#include <unordered_set>
 #include <fcppt/config/external_end.hpp>
+
 
 namespace
 {
@@ -247,11 +249,15 @@ FCPPT_PP_POP_WARNING
 	);
 }
 
-/*
+FCPPT_PP_PUSH_WARNING
+FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
+
 BOOST_AUTO_TEST_CASE(
 	strong_typedef_reference
 )
 {
+FCPPT_PP_POP_WARNING
+
 	int test(
 		42
 	);
@@ -270,4 +276,41 @@ BOOST_AUTO_TEST_CASE(
 		== test
 	);
 }
-*/
+
+FCPPT_PP_PUSH_WARNING
+FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
+
+BOOST_AUTO_TEST_CASE(
+	strong_typedef_hash
+)
+{
+FCPPT_PP_POP_WARNING
+
+	typedef std::unordered_set<
+		strong_int
+	> hash_set;
+
+	hash_set elements;
+
+	elements.insert(
+		strong_int(1)
+	);
+
+	elements.insert(
+		strong_int(2)
+	);
+
+	BOOST_CHECK(
+		elements.count(
+			strong_int(1)
+		)
+		== 1
+	);
+
+	BOOST_CHECK(
+		elements.count(
+			strong_int(2)
+		)
+		== 1
+	);
+}

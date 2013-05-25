@@ -7,13 +7,22 @@
 #ifndef FCPPT_IMPL_EXCEPTION_HPP_INCLUDED
 #define FCPPT_IMPL_EXCEPTION_HPP_INCLUDED
 
+#include <fcppt/string.hpp>
+#include <fcppt/config/external_begin.hpp>
+#include <exception>
+#include <fcppt/config/external_end.hpp>
+
+
 inline
 fcppt::exception::exception(
 	fcppt::string const &_string
 )
 :
-	string_(_string)
-{}
+	string_(
+		_string
+	)
+{
+}
 
 inline
 fcppt::exception::exception(
@@ -24,15 +33,17 @@ fcppt::exception::exception(
 	string_(
 		_exception.string_
 	)
-{}
+{
+}
 
 inline
 fcppt::exception &
 fcppt::exception::operator=(
-	exception const &_exception
+	fcppt::exception const &_exception
 )
 {
 	string_ = _exception.string_;
+
 	return *this;
 }
 
@@ -52,6 +63,7 @@ fcppt::exception::what() const throw()
 
 inline
 fcppt::exception::~exception() throw()
-{}
+{
+}
 
 #endif

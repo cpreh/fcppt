@@ -4,7 +4,6 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/config.hpp>
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 #include <fcppt/preprocessor/disable_vc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
@@ -46,7 +45,6 @@ FCPPT_PP_POP_WARNING
 };
 //! [pp_warning_vc]
 
-#if defined(FCPPT_HAVE_GCC_DIAGNOSTIC)
 //! [pp_warning_gcc]
 float
 test()
@@ -63,13 +61,6 @@ FCPPT_PP_DISABLE_GCC_WARNING(-Wold-style-cast)
 FCPPT_PP_POP_WARNING
 }
 //! [pp_warning_gcc]
-#else
-float
-test()
-{
-	return 0.f;
-}
-#endif
 
 }
 

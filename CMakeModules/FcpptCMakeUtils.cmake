@@ -247,16 +247,6 @@ if(
 	)
 endif()
 
-set(
-	FCPPT_UTILS_GCC_ICC_CLANG_COMMON_OPTIONS
-	"-Wall -Wextra -Wconversion"
-	"-Wuninitialized "
-	"-Woverloaded-virtual -Wnon-virtual-dtor -Wshadow"
-	"-Wstrict-aliasing=1"
-	"-Wcast-qual"
-	#currently, -Wundef cannot be disabled via a pragma
-)
-
 # Setup default compiler flags
 
 if(
@@ -281,171 +271,74 @@ if(
 		FCPPT_UTILS_HAVE_GCC_VISIBILITY
 	)
 
-	set(
-		FCPPT_UTILS_GCC_CLANG_WARNINGS
-		"conditional-uninitialized;"
-		"documentation;"
-		"double-promotion;"
-		"extra-semi;"
-		"implicit-fallthrough;"
-		"logical-op;"
-		"maybe-uninitialized;"
-		"unneeded-member-function;"
-		"unused-local-typedefs;"
-		"unused-member-function;"
-	)
-
-	macro(
-		fcppt_utils_gcc_clang_warning_to_var_name
-		WARNING
-		VAR_NAME
-	)
-		string(
-			REPLACE
-			"-"
-			"_"
-			"${VAR_NAME}"
-			"${WARNING}"
-		)
-
-		string(
-			TOUPPER
-			"${${VAR_NAME}}"
-			"${VAR_NAME}"
-		)
-
-	endmacro()
-
-	CHECK_CXX_COMPILER_FLAG(
-		"-Wzero-as-null-pointer-constant"
-		FCPPT_UTILS_HAVE_ZERO_AS_NULL_POINTER_CONSTANT_FLAG
-	)
-
-	add_definitions("-std=c++11")
-
 	add_definitions(
-		${FCPPT_UTILS_GCC_ICC_CLANG_COMMON_OPTIONS}
-	)
-
-	set(
-		CMAKE_REQUIRED_FLAGS
-		"-Wall -Werror -pedantic"
-	)
-
-	check_cxx_source_compiles(
-		"#pragma GCC diagnostic push
-		int main() {}"
-		FCPPT_UTILS_HAVE_GCC_DIAGNOSTIC
-	)
-
-	unset(
-		CMAKE_REQUIRED_FLAGS
-	)
-
-	if(
-		NOT FCPPT_UTILS_HAVE_GCC_DIAGNOSTIC
-	)
-		set(
-			FCPPT_UTILS_INCLUDE_SYSTEM
-			"SYSTEM"
-		)
-	endif()
-
-	add_definitions(
-		"-pedantic-errors -Wfloat-equal -Wredundant-decls -Wunused"
-		"-Winit-self -Wsign-promo -Wcast-align -Wold-style-cast"
+		"-std=c++11"
+		"-pedantic-errors"
+		"-Wall"
+		"-Wextra"
+		"-Wcast-align"
+		"-Wcast-qual"
+		"-Wconversion"
 		"-Wconversion-null"
 		"-Wdelete-non-virtual-dtor"
+		"-Weffc++"
+		"-Wfloat-equal"
+		"-Winit-self"
 		"-Wmissing-declarations"
+		"-Wnon-virtual-dtor"
+		"-Wold-style-cast"
+		"-Woverloaded-virtual"
+		"-Wredundant-decls"
+		"-Wsign-promo"
 		"-Wsign-conversion"
+		"-Wshadow"
+		"-Wstrict-aliasing=1"
+		"-Wuninitialized"
+		"-Wunused"
 		"-Wunused-function"
+		#currently, -Wundef cannot be disabled via a pragma
 	)
 
 	if(
-		FCPPT_UTILS_HAVE_GCC_DIAGNOSTIC
+		FCPPT_UTILS_COMPILER_IS_CLANGPP
 	)
 		add_definitions(
-			"-Weffc++"
+			"-Wconditional-uninitialized"
+			"-Wdocumentation"
+			"-Wextra-semi"
+			"-Wimplicit-fallthrough"
+			"-Wundef"
+			"-Wunneeded-member-function"
+			"-Wunused-member-function"
 		)
+	else()
+		add_definitions(
+			"-Wdouble-promotion"
+			"-Wlogical-op"
+			"-Wmaybe-uninitialized"
+			"-Wunused-local-typedefs"
+		)
+	#add_definitions("-Wzero-as-null-pointer-constant")
 	endif()
 
-	foreach(
-		CUR_WARNING
-		${FCPPT_UTILS_GCC_CLANG_WARNINGS}
+	if(
+		FCPPT_UTILS_HAVE_GCC_VISIBILITY
 	)
-		fcppt_utils_gcc_clang_warning_to_var_name(
-			"${CUR_WARNING}"
-			"OUT_WARNING"
-		)
-
-		set(
-			OUT_WARNING
-			"FCPPT_UTILS_HAVE_${OUT_WARNING}_FLAG"
-		)
-
-		set(
-			WARNING_OPTION
-			"-W${CUR_WARNING}"
-		)
-
-		CHECK_CXX_COMPILER_FLAG(
-			"-W${CUR_WARNING}"
-			"${OUT_WARNING}"
-		)
-
-		if(
-			${OUT_WARNING}
-		)
-			add_definitions("${WARNING_OPTION}")
-		endif()
-	endforeach()
-
-#	if(FCPPT_UTILS_HAVE_ZERO_AS_NULL_POINTER_CONSTANT_FLAG)
-#		add_definitions("-Wzero-as-null-pointer-constant")
-#	endif()
-
-	# Only enable this for clang for now, because in gcc its not possible
-	# to ignore this warning with a pragma
-	if(FCPPT_UTILS_COMPILER_IS_CLANGPP)
-		add_definitions("-Wundef")
-	endif()
-
-	if(FCPPT_UTILS_HAVE_GCC_VISIBILITY)
 		option(
 			FCPPT_ENABLE_VISIBILITY_HIDDEN
 			"Enable -fvisbility=hidden"
 			TRUE
 		)
+	endif()
 
-		if(FCPPT_ENABLE_VISIBILITY_HIDDEN)
-			add_definitions("-fvisibility=hidden")
-		endif()
+	if(
+		FCPPT_ENABLE_VISIBILITY_HIDDEN
+	)
+		add_definitions("-fvisibility=hidden")
 	endif()
 elseif(
 	MSVC
 )
-	macro(
-		FCPPT_CMAKE_UTILS_CHECK_VC_WARNING
-		WARNING_NUMBER
-	)
-		set(
-			CMAKE_REQUIRED_FLAGS "/WX /W4 /Wall"
-		)
-
-		check_cxx_source_compiles(
-			"
-			#pragma warning(push)
-			#pragma warning(disable:${WARNING_NUMBER})
-			#pragma warning(pop)
-			int main() {}"
-			"FCPPT_UTILS_HAVE_${WARNING_NUMBER}_FLAG"
-		)
-
-		unset(
-			CMAKE_REQUIRED_FLAGS
-		)
-	endmacro()
-
 	add_definitions(
 		"/W4 /Wall /EHa /D_BIND_TO_CURRENT_VCLIBS_VERSION=1"
 		"/wd4435 /wd4996 /wd4061 /wd4350 /wd4371 /wd4503 /wd4514 /wd4710 /wd4711 /wd4714 /wd4738 /wd4820"
@@ -466,21 +359,6 @@ elseif(
 	#4714 - function marked as __forceinline not inlined
 	#4738 - storing 32-bit float result in memory
 	#4820 - byte padding after data members
-elseif(
-	FCPPT_UTILS_COMPILER_IS_INTELCPP
-)
-	add_definitions(
-		${FCPPT_UTILS_GCC_ICC_CLANG_COMMON_OPTIONS}
-	)
-
-	# 304: No explicit public/private used for inheritance
-	# 383: rvalue bound to const reference
-	# 444: destructor of base class not virtual
-	# 981: Arguments are evaluated in unspecified order
-	# 1418: Function definition without declaration (even emitted for inline functions and templates)
-	add_definitions(
-		"-wd304 -wd383 -wd444 -wd981 -wd1418"
-	)
 endif()
 
 # setup platform specific flags

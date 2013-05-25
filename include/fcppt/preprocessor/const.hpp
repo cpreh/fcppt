@@ -7,10 +7,10 @@
 #ifndef FCPPT_PREPROCESSOR_CONST_HPP_INCLUDED
 #define FCPPT_PREPROCESSOR_CONST_HPP_INCLUDED
 
-#include <fcppt/config.hpp>
+#include <fcppt/config/compiler.hpp>
 
 
-#ifdef FCPPT_HAVE_CONST_ATTRIBUTE
+#if defined(FCPPT_CONFIG_GCC_COMPILER)
 #define FCPPT_PP_CONST __attribute__((const))
 #else
 #define FCPPT_PP_CONST

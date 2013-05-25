@@ -34,7 +34,6 @@ update_cmake \
 	src \
 	-r \
 	src/backtrace \
-	src/config \
 	src/endianness \
 	src/error \
 	src/include \

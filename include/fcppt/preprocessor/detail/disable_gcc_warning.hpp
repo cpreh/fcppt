@@ -7,10 +7,10 @@
 #ifndef FCPPT_PREPROCESSOR_DETAIL_DISABLE_GCC_WARNING_HPP_INCLUDED
 #define FCPPT_PREPROCESSOR_DETAIL_DISABLE_GCC_WARNING_HPP_INCLUDED
 
-#include <fcppt/config.hpp>
+#include <fcppt/config/compiler.hpp>
 
 
-#if defined(FCPPT_HAVE_GCC_DIAGNOSTIC)
+#if defined(FCPPT_CONFIG_GCC_COMPILER)
 #	include <fcppt/preprocessor/pragma.hpp>
 #	define FCPPT_PP_DETAIL_DISABLE_GCC_WARNING(id) \
 	FCPPT_PP_PRAGMA(GCC diagnostic ignored #id)

@@ -176,49 +176,12 @@ endif()
 if(
 	CMAKE_COMPILER_IS_GNUCXX OR FCPPT_UTILS_COMPILER_IS_CLANGPP
 )
-	set(
-		FCPPT_HAVE_GCC_VISIBILITY
-		${FCPPT_UTILS_HAVE_GCC_VISIBILITY}
-	)
-
 	CHECK_CXX_SOURCE_COMPILES(
 		"#include <cxxabi.h>
 		 #include <cstdlib>
 		int main() { int status; char *name =
 		abi::__cxa_demangle(typeid(int).name(),0,0,&status); std::free(name); }"
 		FCPPT_HAVE_GCC_DEMANGLE
-	)
-
-	CHECK_CXX_SOURCE_COMPILES(
-		"int main()
-		{
-			char const *name = __PRETTY_FUNCTION__;
-		}"
-		FCPPT_HAVE_GCC_PRETTY_FUNCTION
-	)
-
-	set(
-		CMAKE_REQUIRED_FLAGS
-		"-Wall -Werror -pedantic"
-	)
-
-	check_cxx_source_compiles(
-		"
-		#define DO_PRAGMA(x) _Pragma(#x)
-		#define DO_MESSAGE(x) DO_PRAGMA(message (#x))
-		DO_MESSAGE(test)
-		int main() {}
-		"
-		FCPPT_HAVE_GCC_PRAGMA_MESSAGE
-	)
-
-	unset(
-		CMAKE_REQUIRED_FLAGS
-	)
-
-	set(
-		FCPPT_HAVE_GCC_DIAGNOSTIC
-		${FCPPT_UTILS_HAVE_GCC_DIAGNOSTIC}
 	)
 endif()
 
@@ -283,7 +246,6 @@ unset(
 )
 
 include_directories(
-	${FCPPT_UTILS_INCLUDE_SYSTEM}
 	${Boost_INCLUDE_DIRS}
 )
 
@@ -302,25 +264,6 @@ set(
 	${Boost_INCLUDE_DIRS}
 )
 
-check_cxx_source_compiles(
-	"#include <fcppt/alignment/align.hpp>
-	#include <cstddef>
-	template<
-		std::size_t N
-	>
-	struct test
-	{
-		char FCPPT_ALIGNMENT_ALIGN(N) testmember;
-	};
-
-	int main()
-	{
-		test<8> tmp;
-	}
-	"
-	FCPPT_ALIGN_TEMPLATE_PARAMETER
-)
-
 CHECK_CXX_SOURCE_COMPILES(
 	"#include <execinfo.h>
 	int main()
@@ -330,26 +273,6 @@ CHECK_CXX_SOURCE_COMPILES(
 		void(*tmp3)(void* const*,int,int) throw() = ::backtrace_symbols_fd;
 	}"
 	FCPPT_HAVE_BACKTRACE
-)
-
-CHECK_CXX_SOURCE_COMPILES(
-	"int purefunction() __attribute__((const));int main() {}"
-	FCPPT_HAVE_CONST_ATTRIBUTE
-)
-
-CHECK_CXX_SOURCE_COMPILES(
-	"int purefunction() __attribute__((pure));int main() {}"
-	FCPPT_HAVE_PURE_ATTRIBUTE
-)
-
-CHECK_CXX_SOURCE_COMPILES(
-	"int unused_result_function() __attribute__((warn_unused_result)); int main() {}"
-	FCPPT_HAVE_WARN_UNUSED_RESULT_ATTRIBUTE
-)
-
-CHECK_CXX_SOURCE_COMPILES(
-	"struct foo { foo(foo const &) = delete; }; int main() {}"
-	FCPPT_HAVE_DEFAULTED_AND_DELETED_FUNCTIONS
 )
 
 function(
@@ -363,34 +286,21 @@ function(
 endfunction()
 
 configure_fcppt_file(
-	config.hpp
+	public_config.hpp
 )
 
 configure_fcppt_file(
 	version.hpp
 )
 
-foreach(
-	CUR_WARNING
-	${FCPPT_UTILS_GCC_CLANG_WARNINGS}
-)
-	fcppt_utils_gcc_clang_warning_to_var_name(
-		"${CUR_WARNING}"
-		"OUT_WARNING"
-	)
-
-	set(
-		FCPPT_CONFIG_HAVE_${OUT_WARNING}_WARNING
-		${FCPPT_UTILS_HAVE_${OUT_WARNING}_FLAG}
-	)
-endforeach()
-
-configure_fcppt_file(
-	config/warnings.hpp
+configure_file(
+	${CMAKE_SOURCE_DIR}/src/private_config.hpp.in
+	${CMAKE_BINARY_DIR}/src/include/fcppt/private_config.hpp
 )
 
 include_directories(
 	${CMAKE_BINARY_DIR}/include
+	${CMAKE_BINARY_DIR}/src/include
 )
 
 function(

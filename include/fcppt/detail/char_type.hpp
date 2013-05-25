@@ -7,14 +7,15 @@
 #ifndef FCPPT_DETAIL_CHAR_TYPE_HPP_INCLUDED
 #define FCPPT_DETAIL_CHAR_TYPE_HPP_INCLUDED
 
-#include <fcppt/config.hpp>
+#include <fcppt/public_config.hpp>
+
 
 namespace fcppt
 {
 namespace detail
 {
 
-#ifdef FCPPT_NARROW_STRING
+#if defined(FCPPT_NARROW_STRING)
 typedef char char_type;
 #else
 typedef wchar_t char_type;
