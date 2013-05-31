@@ -7,6 +7,7 @@
 #ifndef FCPPT_MAKE_LITERAL_BOOST_UNITS_HPP_INCLUDED
 #define FCPPT_MAKE_LITERAL_BOOST_UNITS_HPP_INCLUDED
 
+#include <fcppt/check_literal_conversion.hpp>
 #include <fcppt/make_literal_fwd.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/units/quantity.hpp>
@@ -43,6 +44,11 @@ struct make_literal<
 		Fundamental const _fundamental
 	)
 	{
+		FCPPT_CHECK_LITERAL_CONVERSION(
+			Type,
+			Fundamental
+		);
+
 		return
 			decorated_type::from_value(
 				static_cast<

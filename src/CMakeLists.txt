@@ -82,6 +82,7 @@ set(
 	include/fcppt/c_deleter_fwd.hpp
 	include/fcppt/cast_to_enum.hpp
 	include/fcppt/char_type.hpp
+	include/fcppt/check_literal_conversion.hpp
 	include/fcppt/class_symbol.hpp
 	include/fcppt/com_deleter.hpp
 	include/fcppt/com_deleter_fwd.hpp

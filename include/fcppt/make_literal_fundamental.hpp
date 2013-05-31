@@ -7,6 +7,7 @@
 #ifndef FCPPT_MAKE_LITERAL_FUNDAMENTAL_HPP_INCLUDED
 #define FCPPT_MAKE_LITERAL_FUNDAMENTAL_HPP_INCLUDED
 
+#include <fcppt/check_literal_conversion.hpp>
 #include <fcppt/make_literal_fwd.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/utility/enable_if.hpp>
@@ -38,6 +39,11 @@ struct make_literal<
 		Fundamental const _fundamental
 	)
 	{
+		FCPPT_CHECK_LITERAL_CONVERSION(
+			Type,
+			Fundamental
+		);
+
 		return
 			static_cast<
 				Type
