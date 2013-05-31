@@ -8,6 +8,7 @@
 #ifndef FCPPT_MATH_BOX_CENTER_HPP_INCLUDED
 #define FCPPT_MATH_BOX_CENTER_HPP_INCLUDED
 
+#include <fcppt/literal.hpp>
 #include <fcppt/math/size_type.hpp>
 #include <fcppt/math/box/object_impl.hpp>
 #include <fcppt/math/dim/structure_cast.hpp>
@@ -58,7 +59,11 @@ center(
 			b.size()
 		)
 		/
-		2;
+		fcppt::literal<
+			T
+		>(
+			2
+		);
 }
 }
 }

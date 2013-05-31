@@ -516,6 +516,7 @@ set(
 	include/fcppt/io/stringstream.hpp
 	include/fcppt/io/write.hpp
 	include/fcppt/is_strong_typedef.hpp
+	include/fcppt/literal.hpp
 	include/fcppt/log/activate_levels.hpp
 	include/fcppt/log/activate_levels_recursive.hpp
 	include/fcppt/log/context.hpp
@@ -597,6 +598,9 @@ set(
 	include/fcppt/log/warning.hpp
 	include/fcppt/major_version.hpp
 	include/fcppt/make_cref.hpp
+	include/fcppt/make_literal_boost_units.hpp
+	include/fcppt/make_literal_fundamental.hpp
+	include/fcppt/make_literal_fwd.hpp
 	include/fcppt/make_ref.hpp
 	include/fcppt/make_shared_ptr.hpp
 	include/fcppt/make_strong_typedef.hpp
