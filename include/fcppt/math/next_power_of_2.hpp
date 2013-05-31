@@ -7,6 +7,7 @@
 #ifndef FCPPT_MATH_NEXT_POWER_OF_2_HPP_INCLUDED
 #define FCPPT_MATH_NEXT_POWER_OF_2_HPP_INCLUDED
 
+#include <fcppt/literal.hpp>
 #include <fcppt/math/is_power_of_2.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/utility/enable_if.hpp>
@@ -38,7 +39,7 @@ next_power_of_2(
 )
 {
 	T const two(
-		static_cast<T>(2)
+		fcppt::literal<T>(2)
 	);
 
 	if(
@@ -53,7 +54,7 @@ next_power_of_2(
 	);
 
 	T ret(
-		static_cast<T>(1u)
+		fcppt::literal<T>(1u)
 	);
 
 	while(

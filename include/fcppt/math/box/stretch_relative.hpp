@@ -8,6 +8,7 @@
 #ifndef FCPPT_MATH_BOX_STRETCH_RELATIVE_HPP_INCLUDED
 #define FCPPT_MATH_BOX_STRETCH_RELATIVE_HPP_INCLUDED
 
+#include <fcppt/literal.hpp>
 #include <fcppt/math/box/center.hpp>
 #include <fcppt/math/dim/arithmetic.hpp>
 #include <fcppt/math/dim/structure_cast.hpp>
@@ -46,7 +47,7 @@ stretch_relative(
 				b) -
 			fcppt::math::dim::structure_cast<typename object<T,N>::vector>(
 				d)/
-			static_cast<T>(
+			fcppt::literal<T>(
 				2),
 			d);
 }

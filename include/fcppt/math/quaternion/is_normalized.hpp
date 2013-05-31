@@ -8,6 +8,7 @@
 #ifndef FCPPT_MATH_QUATERNION_IS_NORMALIZED_HPP_INCLUDED
 #define FCPPT_MATH_QUATERNION_IS_NORMALIZED_HPP_INCLUDED
 
+#include <fcppt/literal.hpp>
 #include <fcppt/math/quaternion/dot.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/math/quaternion.hpp>
@@ -41,7 +42,7 @@ is_normalized(
 	return
 		dot(
 			r,
-			r) - static_cast<T>(1) < epsilon;
+			r) - fcppt::literal<T>(1) < epsilon;
 }
 }
 }

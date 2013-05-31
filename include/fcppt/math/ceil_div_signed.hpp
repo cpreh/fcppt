@@ -51,7 +51,11 @@ ceil_div_signed(
 		(
 			_dividend
 			<
-			0
+			fcppt::literal<
+				T
+			>(
+				0
+			)
 		)
 		?
 			_dividend

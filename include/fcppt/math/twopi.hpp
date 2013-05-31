@@ -7,7 +7,9 @@
 #ifndef FCPPT_MATH_TWOPI_HPP_INCLUDED
 #define FCPPT_MATH_TWOPI_HPP_INCLUDED
 
+#include <fcppt/literal.hpp>
 #include <fcppt/math/pi.hpp>
+
 
 namespace fcppt
 {
@@ -26,7 +28,7 @@ inline
 T
 twopi()
 {
-	return static_cast<T>(2) * pi<T>();
+	return fcppt::literal<T>(2) * fcppt::math::pi<T>();
 }
 
 }

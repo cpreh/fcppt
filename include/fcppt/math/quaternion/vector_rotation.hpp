@@ -8,6 +8,7 @@
 #ifndef FCPPT_MATH_QUATERNION_VECTOR_ROTATION_HPP_INCLUDED
 #define FCPPT_MATH_QUATERNION_VECTOR_ROTATION_HPP_INCLUDED
 
+#include <fcppt/literal.hpp>
 #include <fcppt/math/vector/static.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/math/quaternion.hpp>
@@ -39,7 +40,7 @@ vector_rotation(
 	quaternion;
 
 	quaternion const p(
-		static_cast<T>(
+		fcppt::literal<T>(
 			0),
 		v[0],
 		v[1],

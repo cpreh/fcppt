@@ -8,6 +8,9 @@
 #ifndef FCPPT_MATH_STEP_HPP_INCLUDED
 #define FCPPT_MATH_STEP_HPP_INCLUDED
 
+#include <fcppt/literal.hpp>
+
+
 namespace fcppt
 {
 namespace math
@@ -31,11 +34,15 @@ step(
 	return
 		_value >= _vmin
 		?
-			static_cast<T>(
+			fcppt::literal<
+				T
+			>(
 				1
 			)
 		:
-			static_cast<T>(
+			fcppt::literal<
+				T
+			>(
 				0
 			);
 }

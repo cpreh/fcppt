@@ -7,6 +7,7 @@
 #ifndef FCPPT_MATH_MATRIX_OBJECT_IMPL_HPP_INCLUDED
 #define FCPPT_MATH_MATRIX_OBJECT_IMPL_HPP_INCLUDED
 
+#include <fcppt/literal.hpp>
 #include <fcppt/no_init.hpp>
 #include <fcppt/math/detail/array_adapter_impl.hpp>
 #include <fcppt/math/detail/assign.hpp>
@@ -489,8 +490,8 @@ fcppt::math::matrix::object<
 		)
 			ret[i][j] =
 				i == j
-				? static_cast<T>(1)
-				: static_cast<T>(0);
+				? fcppt::literal<T>(1)
+				: fcppt::literal<T>(0);
 
 	return ret;
 }

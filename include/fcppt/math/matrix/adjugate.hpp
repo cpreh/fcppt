@@ -8,6 +8,7 @@
 #ifndef FCPPT_MATH_MATRIX_ADJUGATE_HPP_INCLUDED
 #define FCPPT_MATH_MATRIX_ADJUGATE_HPP_INCLUDED
 
+#include <fcppt/literal.hpp>
 #include <fcppt/no_init.hpp>
 #include <fcppt/math/size_type.hpp>
 #include <fcppt/math/matrix/delete_row_and_column.hpp>
@@ -74,11 +75,11 @@ adjugate(
 			T const coeff =
 				(rows+cols) % static_cast<size_type>(2) == static_cast<size_type>(0)
 				?
-					static_cast<T>(
+					fcppt::literal<T>(
 						1
 					)
 				:
-					static_cast<T>(
+					fcppt::literal<T>(
 						-1
 					);
 

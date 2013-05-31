@@ -8,6 +8,7 @@
 #ifndef FCPPT_MATH_QUATERNION_FROM_ANGLE_AND_AXIS_HPP_INCLUDED
 #define FCPPT_MATH_QUATERNION_FROM_ANGLE_AND_AXIS_HPP_INCLUDED
 
+#include <fcppt/literal.hpp>
 #include <fcppt/math/quaternion/from_scalar_and_vector.hpp>
 #include <fcppt/math/quaternion/is_normalized.hpp>
 #include <fcppt/math/vector/arithmetic.hpp>
@@ -39,7 +40,7 @@ from_angle_and_axis(
 {
 	T const
 		half_angle =
-			angle/static_cast<T>(2),
+			angle/fcppt::literal<T>(2),
 		sin_angle =
 			std::sin(
 				half_angle),

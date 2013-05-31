@@ -7,7 +7,9 @@
 #ifndef FCPPT_MATH_VECTOR_DOT_HPP_INCLUDED
 #define FCPPT_MATH_VECTOR_DOT_HPP_INCLUDED
 
+#include <fcppt/literal.hpp>
 #include <fcppt/math/vector/object_impl.hpp>
+
 
 namespace fcppt
 {
@@ -40,7 +42,7 @@ dot(
 	object<T, N, S2> const &r
 )
 {
-	T result(static_cast<T>(0));
+	T result(fcppt::literal<T>(0));
 
 	for(
 		typename object<T, N, S1>::size_type i = 0;

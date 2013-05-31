@@ -8,6 +8,7 @@
 #ifndef FCPPT_MATH_INTERPOLATION_PERLIN_FIFTH_DEGREE_HPP_INCLUDED
 #define FCPPT_MATH_INTERPOLATION_PERLIN_FIFTH_DEGREE_HPP_INCLUDED
 
+#include <fcppt/literal.hpp>
 #include <fcppt/math/interpolation/linear.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/utility/enable_if.hpp>
@@ -37,7 +38,7 @@ perlin_fifth_degree(
 {
 	return
 		fcppt::math::interpolation::linear(
-			f * f * f * (f * (static_cast<Float>(6.0f) * f - static_cast<Float>(15.0f)) + static_cast<Float>(10.0f)),
+			f * f * f * (f * (fcppt::literal<Float>(6.0f) * f - fcppt::literal<Float>(15.0f)) + fcppt::literal<Float>(10.0f)),
 			v1,
 			v2);
 }

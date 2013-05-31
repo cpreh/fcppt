@@ -7,6 +7,7 @@
 #ifndef FCPPT_MATH_RAD_TO_DEG_HPP_INCLUDED
 #define FCPPT_MATH_RAD_TO_DEG_HPP_INCLUDED
 
+#include <fcppt/literal.hpp>
 #include <fcppt/math/pi.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/utility/enable_if.hpp>
@@ -38,7 +39,7 @@ rad_to_deg(
 	T const rad
 )
 {
-	return rad * static_cast<T>(180) / math::pi<T>();
+	return rad * fcppt::literal<T>(180) / math::pi<T>();
 }
 
 }

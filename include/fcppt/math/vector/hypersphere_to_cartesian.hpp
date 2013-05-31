@@ -8,6 +8,7 @@
 #ifndef FCPPT_MATH_VECTOR_HYPERSPHERE_TO_CARTESIAN_HPP_INCLUDED
 #define FCPPT_MATH_VECTOR_HYPERSPHERE_TO_CARTESIAN_HPP_INCLUDED
 
+#include <fcppt/literal.hpp>
 #include <fcppt/no_init.hpp>
 #include <fcppt/math/vector/object.hpp>
 #include <fcppt/math/vector/static.hpp>
@@ -123,7 +124,7 @@ hypersphere_to_cartesian(
 	{
 		// Hehe..."sins"
 		value_type sins =
-			static_cast<value_type>(
+			fcppt::literal<value_type>(
 				1);
 		for(size_type j = 0; j < i; ++j)
 			sins *=
@@ -134,7 +135,7 @@ hypersphere_to_cartesian(
 			(
 			i >= angles.size()
 			?
-				static_cast<value_type>(1)
+				fcppt::literal<value_type>(1)
 			:
 				std::cos(
 					angles[i]));

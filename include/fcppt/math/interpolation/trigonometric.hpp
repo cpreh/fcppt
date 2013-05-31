@@ -8,6 +8,7 @@
 #ifndef FCPPT_MATH_INTERPOLATION_TRIGONOMETRIC_HPP_INCLUDED
 #define FCPPT_MATH_INTERPOLATION_TRIGONOMETRIC_HPP_INCLUDED
 
+#include <fcppt/literal.hpp>
 #include <fcppt/math/pi.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/utility/enable_if.hpp>
@@ -37,16 +38,16 @@ trigonometric(
 	Value const &v2)
 {
 	Float const t =
-		static_cast<Float>(0.5) *
+		fcppt::literal<Float>(0.5) *
 			(
-			static_cast<Float>(1) -
+			fcppt::literal<Float>(1) -
 				std::cos(
 					fcppt::math::pi<Float>() *
 					f
 				)
 			);
 	return
-		(static_cast<Float>(1) - t) * v1 + t * v2;
+		(fcppt::literal<Float>(1) - t) * v1 + t * v2;
 }
 }
 }

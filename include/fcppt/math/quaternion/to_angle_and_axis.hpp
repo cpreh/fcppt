@@ -8,6 +8,7 @@
 #ifndef FCPPT_MATH_QUATERNION_TO_ANGLE_AND_AXIS_HPP_INCLUDED
 #define FCPPT_MATH_QUATERNION_TO_ANGLE_AND_AXIS_HPP_INCLUDED
 
+#include <fcppt/literal.hpp>
 #include <fcppt/math/vector/object_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/math/quaternion.hpp>
@@ -51,7 +52,7 @@ to_angle_and_axis(
 	axis.x() = q.R_component_2() / scale;
 	axis.y() = q.R_component_3() / scale;
 	axis.z() = q.R_component_4() / scale;
-	angle = std::acos(q.R_component_1()) * static_cast<T>(2.0);
+	angle = std::acos(q.R_component_1()) * fcppt::literal<T>(2);
 }
 }
 }

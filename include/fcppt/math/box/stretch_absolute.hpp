@@ -8,6 +8,7 @@
 #ifndef FCPPT_MATH_BOX_STRETCH_ABSOLUTE_HPP_INCLUDED
 #define FCPPT_MATH_BOX_STRETCH_ABSOLUTE_HPP_INCLUDED
 
+#include <fcppt/literal.hpp>
 #include <fcppt/math/box/center.hpp>
 #include <fcppt/math/dim/arithmetic.hpp>
 #include <fcppt/math/vector/arithmetic.hpp>
@@ -55,7 +56,7 @@ stretch_absolute(
 	return
 		fcppt::math::box::object<T,N>(
 			b.pos() - absolute_values,
-			b.size() + static_cast<T>(2) *
+			b.size() + fcppt::literal<T>(2) *
 			fcppt::math::vector::structure_cast<typename fcppt::math::box::object<T,N>::dim>(
 				absolute_values));
 }

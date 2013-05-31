@@ -8,6 +8,7 @@
 #ifndef FCPPT_MATH_VECTOR_SLERP_HPP_INCLUDED
 #define FCPPT_MATH_VECTOR_SLERP_HPP_INCLUDED
 
+#include <fcppt/literal.hpp>
 #include <fcppt/math/vector/arithmetic.hpp>
 #include <fcppt/math/vector/dot.hpp>
 #include <fcppt/math/vector/length.hpp>
@@ -67,7 +68,7 @@ slerp(
 			std::sin(omega);
 
 	return
-		std::sin((static_cast<T>(1)-t) * omega) / sinomega * start +
+		std::sin((fcppt::literal<T>(1)-t) * omega) / sinomega * start +
 		std::sin(t * omega) / sinomega * end;
 }
 }

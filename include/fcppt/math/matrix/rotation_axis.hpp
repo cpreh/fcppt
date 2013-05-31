@@ -7,6 +7,7 @@
 #ifndef FCPPT_MATH_MATRIX_ROTATION_AXIS_HPP_INCLUDED
 #define FCPPT_MATH_MATRIX_ROTATION_AXIS_HPP_INCLUDED
 
+#include <fcppt/literal.hpp>
 #include <fcppt/math/matrix/object_impl.hpp>
 #include <fcppt/math/matrix/static.hpp>
 #include <fcppt/math/vector/object_impl.hpp>
@@ -56,12 +57,12 @@ rotation_axis(
 	T const
 		sinx = std::sin(angle),
 		cosx = std::cos(angle),
-		cosxc = static_cast<T>(1) - cosx,
+		cosxc = fcppt::literal<T>(1) - cosx,
 		x = a.x(),
 		y = a.y(),
 		z = a.z(),
-		zero = static_cast<T>(0),
-		one = static_cast<T>(1);
+		zero = fcppt::literal<T>(0),
+		one = fcppt::literal<T>(1);
 
 	return
 		typename static_<T, 4, 4>::type(

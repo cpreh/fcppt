@@ -7,6 +7,7 @@
 #ifndef FCPPT_MATH_VECTOR_UNIT_HPP_INCLUDED
 #define FCPPT_MATH_VECTOR_UNIT_HPP_INCLUDED
 
+#include <fcppt/literal.hpp>
 #include <fcppt/no_init.hpp>
 
 
@@ -49,7 +50,7 @@ unit(
 		ret[
 			index
 		] =
-			static_cast<
+			fcppt::literal<
 				typename Vec::value_type
 			>(
 				index == _axis

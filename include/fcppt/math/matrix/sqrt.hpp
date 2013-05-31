@@ -8,6 +8,7 @@
 #ifndef FCPPT_MATH_MATRIX_SQRT_HPP_INCLUDED
 #define FCPPT_MATH_MATRIX_SQRT_HPP_INCLUDED
 
+#include <fcppt/literal.hpp>
 #include <fcppt/math/matrix/arithmetic.hpp>
 #include <fcppt/math/matrix/infinity_norm.hpp>
 #include <fcppt/math/matrix/inverse.hpp>
@@ -62,12 +63,12 @@ sqrt(
 				X);
 
 		X =
-			static_cast<T>(
+			fcppt::literal<T>(
 				0.5) *
 			(X + fcppt::math::matrix::inverse(Y));
 
 		Y =
-			static_cast<T>(
+			fcppt::literal<T>(
 				0.5) *
 			(Y + inverse_X);
 	}

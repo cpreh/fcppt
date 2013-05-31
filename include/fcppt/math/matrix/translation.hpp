@@ -7,6 +7,7 @@
 #ifndef FCPPT_MATH_MATRIX_TRANSLATION_HPP_INCLUDED
 #define FCPPT_MATH_MATRIX_TRANSLATION_HPP_INCLUDED
 
+#include <fcppt/literal.hpp>
 #include <fcppt/math/matrix/object_impl.hpp>
 #include <fcppt/math/matrix/static.hpp>
 #include <fcppt/math/vector/has_dim.hpp>
@@ -45,10 +46,10 @@ translation(
 {
 	T const
 		zero(
-			static_cast<T>(0)
+			fcppt::literal<T>(0)
 		),
 		one(
-			static_cast<T>(1)
+			fcppt::literal<T>(1)
 		);
 
 	return

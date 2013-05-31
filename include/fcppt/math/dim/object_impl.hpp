@@ -7,6 +7,7 @@
 #ifndef FCPPT_MATH_DIM_OBJECT_IMPL_HPP_INCLUDED
 #define FCPPT_MATH_DIM_OBJECT_IMPL_HPP_INCLUDED
 
+#include <fcppt/literal.hpp>
 #include <fcppt/no_init_fwd.hpp>
 #include <fcppt/math/static_storage.hpp>
 #include <fcppt/math/detail/array_adapter_impl.hpp>
@@ -549,7 +550,7 @@ fcppt::math::dim::object<
 		std::accumulate(
 			this->begin(),
 			this->end(),
-			static_cast<
+			fcppt::literal<
 				value_type
 			>(
 				1

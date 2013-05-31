@@ -7,6 +7,7 @@
 #ifndef FCPPT_MATH_MATRIX_TRANSFORM_POINT_HPP_INCLUDED
 #define FCPPT_MATH_MATRIX_TRANSFORM_POINT_HPP_INCLUDED
 
+#include <fcppt/literal.hpp>
 #include <fcppt/math/matrix/object_impl.hpp>
 #include <fcppt/math/matrix/vector.hpp>
 #include <fcppt/math/vector/construct.hpp>
@@ -45,7 +46,7 @@ transform_point(
 			_matrix *
 			fcppt::math::vector::construct(
 				_vector,
-				static_cast<T>(
+				fcppt::literal<T>(
 					1)));
 }
 }

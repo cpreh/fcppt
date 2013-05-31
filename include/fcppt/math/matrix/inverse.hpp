@@ -8,6 +8,7 @@
 #ifndef FCPPT_MATH_MATRIX_INVERSE_HPP_INCLUDED
 #define FCPPT_MATH_MATRIX_INVERSE_HPP_INCLUDED
 
+#include <fcppt/literal.hpp>
 #include <fcppt/math/matrix/adjugate.hpp>
 #include <fcppt/math/matrix/arithmetic.hpp>
 #include <fcppt/math/matrix/determinant.hpp>
@@ -51,7 +52,7 @@ inverse(
 		fcppt::math::matrix::determinant(
 			t);
 	return
-		(static_cast<T>(1)/static_cast<T>(det)) *
+		(fcppt::literal<T>(1)/static_cast<T>(det)) *
 		fcppt::math::matrix::adjugate(
 			t);
 }

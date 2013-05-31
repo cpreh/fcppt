@@ -8,6 +8,7 @@
 #ifndef FCPPT_MATH_MATRIX_INFINITY_NORM_HPP_INCLUDED
 #define FCPPT_MATH_MATRIX_INFINITY_NORM_HPP_INCLUDED
 
+#include <fcppt/literal.hpp>
 #include <fcppt/math/matrix/object_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <algorithm>
@@ -60,7 +61,7 @@ infinity_norm(
 		++row)
 	{
 		T current_row_sum =
-			static_cast<T>(
+			fcppt::literal<T>(
 				0);
 
 		for(

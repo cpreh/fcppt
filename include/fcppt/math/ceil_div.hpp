@@ -7,6 +7,7 @@
 #ifndef FCPPT_MATH_CEIL_DIV_HPP_INCLUDED
 #define FCPPT_MATH_CEIL_DIV_HPP_INCLUDED
 
+#include <fcppt/literal.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/utility/enable_if.hpp>
 #include <type_traits>
@@ -41,15 +42,25 @@ ceil_div(
 {
 	return
 		_dividend
-		/ _divisor
+		/
+		_divisor
 		+
 		(
 			_dividend
-			% _divisor
+			%
+			_divisor
 			?
-				1u
+				fcppt::literal<
+					T
+				>(
+					1
+				)
 			:
-				0u
+				fcppt::literal<
+					T
+				>(
+					0
+				)
 		);
 }
 

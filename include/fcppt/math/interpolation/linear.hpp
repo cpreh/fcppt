@@ -8,6 +8,7 @@
 #ifndef FCPPT_MATH_INTERPOLATION_LINEAR_HPP_INCLUDED
 #define FCPPT_MATH_INTERPOLATION_LINEAR_HPP_INCLUDED
 
+#include <fcppt/literal.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/utility/enable_if.hpp>
 #include <type_traits>
@@ -34,7 +35,7 @@ linear(
 	Value const &v1,
 	Value const &v2)
 {
-	return (static_cast<Float>(1) - f) * v1 + f * v2;
+	return (fcppt::literal<Float>(1) - f) * v1 + f * v2;
 }
 }
 }

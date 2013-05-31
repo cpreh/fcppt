@@ -8,6 +8,7 @@
 #ifndef FCPPT_MATH_BOX_EXPAND_HPP_INCLUDED
 #define FCPPT_MATH_BOX_EXPAND_HPP_INCLUDED
 
+#include <fcppt/literal.hpp>
 #include <fcppt/math/size_type.hpp>
 #include <fcppt/math/box/center.hpp>
 #include <fcppt/math/dim/arithmetic.hpp>
@@ -48,7 +49,7 @@ expand(
 	return
 		fcppt::math::box::object<T,N>(
 			b.pos() - absolute_values,
-			b.size() + static_cast<T>(2) *
+			b.size() + fcppt::literal<T>(2) *
 			fcppt::math::vector::structure_cast<typename box::object<T,N>::dim>(
 				absolute_values));
 }
