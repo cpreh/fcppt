@@ -29,8 +29,8 @@ fcppt::container::grid::pos_range<
 > const
 make_pos_range_start_end(
 	Grid &_grid,
-	typename Grid::dim const &_start,
-	typename Grid::dim const &_end
+	typename Grid::pos const &_start,
+	typename Grid::pos const &_end
 )
 {
 	static_assert(

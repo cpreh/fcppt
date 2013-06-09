@@ -16,7 +16,7 @@ template<
 fcppt::container::grid::pos_reference<
 	Grid
 >::pos_reference(
-	dim const &_pos,
+	pos_type const &_pos,
 	reference _value
 )
 :
@@ -35,7 +35,7 @@ template<
 typename
 fcppt::container::grid::pos_reference<
 	Grid
->::dim const &
+>::pos_type const &
 fcppt::container::grid::pos_reference<
 	Grid
 >::pos() const

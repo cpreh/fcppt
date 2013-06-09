@@ -12,6 +12,7 @@
 #include <boost/utility/enable_if.hpp>
 #include <fcppt/config/external_end.hpp>
 
+
 namespace fcppt
 {
 namespace container
@@ -33,14 +34,18 @@ assign_fill_recurse(
 	Object &_result,
 	Object const &_source,
 	typename Object::const_reference _value,
-	typename Object::dim const _pos,
+	typename Object::pos const _pos,
 	bool const _is_contained
 )
 {
-	_result[_pos] =
+	_result[
+		_pos
+	] =
 		_is_contained
 		?
-			_source[_pos]
+			_source[
+				_pos
+			]
 		:
 			_value;
 }
@@ -57,7 +62,7 @@ assign_fill_recurse(
 	Object &_result,
 	Object const &_source,
 	typename Object::const_reference _value,
-	typename Object::dim _pos,
+	typename Object::pos _pos,
 	bool const _is_contained
 )
 {
@@ -73,7 +78,7 @@ assign_fill_recurse(
 	{
 		_pos[index] = i;
 
-		detail::assign_fill_recurse<
+		fcppt::container::grid::detail::assign_fill_recurse<
 			Level - 1u
 		>(
 			_result,

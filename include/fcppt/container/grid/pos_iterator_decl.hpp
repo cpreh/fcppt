@@ -55,6 +55,11 @@ class pos_iterator
 
 	typedef
 	typename
+	Grid::pos
+	pos;
+
+	typedef
+	typename
 	boost::mpl::if_<
 		std::is_const<
 			Grid
@@ -94,9 +99,9 @@ public:
 	pos_iterator(
 		iterator const &,
 		dim const &size,
-		dim const &pos,
-		dim const &min,
-		dim const &max,
+		pos const &current,
+		pos const &min,
+		pos const &max,
 		bool is_end
 	);
 private:
@@ -117,11 +122,11 @@ private:
 
 	dim size_;
 
-	dim pos_;
+	pos current_;
 
-	dim min_;
+	pos min_;
 
-	dim max_;
+	pos max_;
 
 	bool is_end_;
 };

@@ -34,7 +34,7 @@ typename boost::enable_if_c<
 assign_recurse(
 	Object &_result,
 	Object const &_source,
-	typename Object::dim const _pos
+	typename Object::pos const _pos
 )
 {
 	_result[_pos] = _source[_pos];
@@ -51,7 +51,7 @@ typename boost::enable_if_c<
 assign_recurse(
 	Object &_result,
 	Object const &_source,
-	typename Object::dim _pos
+	typename Object::pos _pos
 )
 {
 	size_type const index(

@@ -7,7 +7,6 @@
 #ifndef FCPPT_CONTAINER_GRID_RESIZE_PRESERVE_HPP_INCLUDED
 #define FCPPT_CONTAINER_GRID_RESIZE_PRESERVE_HPP_INCLUDED
 
-#include <fcppt/no_init.hpp>
 #include <fcppt/container/grid/object_impl.hpp>
 #include <fcppt/container/grid/size_type.hpp>
 #include <fcppt/container/grid/detail/assign_recurse.hpp>
@@ -64,9 +63,7 @@ resize_preserve(
 	>(
 		_result,
 		temp,
-		typename object::dim{
-			fcppt::no_init()
-		}
+		object::pos::null()
 	);
 }
 

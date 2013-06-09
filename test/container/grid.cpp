@@ -5,7 +5,6 @@
 
 
 #include <fcppt/container/grid/comparison.hpp>
-#include <fcppt/container/grid/dim.hpp>
 #include <fcppt/container/grid/fill.hpp>
 #include <fcppt/container/grid/in_range.hpp>
 #include <fcppt/container/grid/is_square.hpp>
@@ -14,9 +13,11 @@
 #include <fcppt/container/grid/make_pos_range.hpp>
 #include <fcppt/container/grid/make_pos_range_start_end.hpp>
 #include <fcppt/container/grid/object_impl.hpp>
+#include <fcppt/container/grid/pos.hpp>
 #include <fcppt/container/grid/resize_preserve.hpp>
 #include <fcppt/container/grid/resize_preserve_init.hpp>
 #include <fcppt/container/grid/size_type.hpp>
+#include <fcppt/math/vector/comparison.hpp>
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
@@ -182,25 +183,25 @@ FCPPT_PP_POP_WARNING
 		fcppt::container::grid::iterator_position(
 			grid,
 			it++) ==
-		int2_grid::dim(0,0));
+		int2_grid::pos(0,0));
 
 	BOOST_CHECK(
 		fcppt::container::grid::iterator_position(
 			grid,
 			it++) ==
-		int2_grid::dim(1,0));
+		int2_grid::pos(1,0));
 
 	BOOST_CHECK(
 		fcppt::container::grid::iterator_position(
 			grid,
 			it++) ==
-		int2_grid::dim(0,1));
+		int2_grid::pos(0,1));
 
 	BOOST_CHECK(
 		fcppt::container::grid::iterator_position(
 			grid,
 			it++) ==
-		int2_grid::dim(1,1));
+		int2_grid::pos(1,1));
 }
 
 FCPPT_PP_PUSH_WARNING
@@ -294,7 +295,7 @@ FCPPT_PP_POP_WARNING
 		)
 			BOOST_REQUIRE(
 				test[
-					int2_grid::dim(
+					int2_grid::pos(
 						x,
 						y
 					)
@@ -353,7 +354,7 @@ FCPPT_PP_POP_WARNING
 			)
 				BOOST_REQUIRE(
 					test[
-						int3_grid::dim(
+						int3_grid::pos(
 							x,
 							y,
 							z
@@ -516,7 +517,7 @@ FCPPT_PP_POP_WARNING
 			++x
 		)
 			test[
-				sz_pair_grid::dim(
+				sz_pair_grid::pos(
 					x,
 					y
 				)
@@ -556,7 +557,7 @@ FCPPT_PP_POP_WARNING
 		{
 			BOOST_REQUIRE(
 				test[
-					sz_pair_grid::dim(
+					sz_pair_grid::pos(
 						x,
 						y
 					)
@@ -596,7 +597,7 @@ FCPPT_PP_POP_WARNING
 			++x
 		)
 			test[
-				sz_pair_grid::dim(
+				sz_pair_grid::pos(
 					x,
 					y
 				)
@@ -643,7 +644,7 @@ FCPPT_PP_POP_WARNING
 			)
 				BOOST_REQUIRE(
 					test[
-						sz_pair_grid::dim(
+						sz_pair_grid::pos(
 							x,
 							y
 						)
@@ -656,7 +657,7 @@ FCPPT_PP_POP_WARNING
 			else
 				BOOST_REQUIRE(
 					test[
-						sz_pair_grid::dim(
+						sz_pair_grid::pos(
 							x,
 							y
 						)
@@ -674,7 +675,7 @@ namespace
 {
 int
 fill_functor(
-	int2_grid::dim const &v)
+	int2_grid::pos const &v)
 {
 	return
 		std::accumulate(
@@ -706,10 +707,10 @@ FCPPT_PP_POP_WARNING
 		&fill_functor);
 
 	BOOST_REQUIRE(
-		test[int2_grid::dim(0,0)] == 0 &&
-		test[int2_grid::dim(1,0)] == 1 &&
-		test[int2_grid::dim(0,1)] == 1 &&
-		test[int2_grid::dim(1,1)] == 2
+		test[int2_grid::pos(0,0)] == 0 &&
+		test[int2_grid::pos(1,0)] == 1 &&
+		test[int2_grid::pos(0,1)] == 1 &&
+		test[int2_grid::pos(1,1)] == 2
 	);
 }
 
@@ -732,7 +733,7 @@ FCPPT_PP_POP_WARNING
 	BOOST_CHECK(
 		fcppt::container::grid::in_range(
 			test,
-			int2_grid::dim(
+			int2_grid::pos(
 				2,
 				2
 			)
@@ -742,7 +743,7 @@ FCPPT_PP_POP_WARNING
 	BOOST_CHECK(
 		!fcppt::container::grid::in_range(
 			test,
-			int2_grid::dim(
+			int2_grid::pos(
 				3,
 				2
 			)
@@ -752,7 +753,7 @@ FCPPT_PP_POP_WARNING
 	BOOST_CHECK(
 		!fcppt::container::grid::in_range(
 			test,
-			int2_grid::dim(
+			int2_grid::pos(
 				2,
 				4
 			)
@@ -801,14 +802,14 @@ FCPPT_PP_POP_WARNING
 	);
 
 	grid1[
-		int2_grid::dim(
+		int2_grid::pos(
 			0,
 			0
 		)
 	] = 1;
 
 	grid1[
-		int2_grid::dim(
+		int2_grid::pos(
 			1,
 			1
 		)
@@ -831,7 +832,7 @@ FCPPT_PP_POP_WARNING
 
 	BOOST_CHECK(
 		grid2[
-			int2_grid::dim(
+			int2_grid::pos(
 				0,
 				0
 			)
@@ -840,7 +841,7 @@ FCPPT_PP_POP_WARNING
 
 	BOOST_CHECK(
 		grid2[
-			int2_grid::dim(
+			int2_grid::pos(
 				1,
 				1
 			)
@@ -871,7 +872,7 @@ FCPPT_PP_POP_WARNING
 
 	BOOST_CHECK(
 		grid3[
-			int2_grid::dim(
+			int2_grid::pos(
 				0,
 				0
 			)
@@ -880,7 +881,7 @@ FCPPT_PP_POP_WARNING
 
 	BOOST_CHECK(
 		grid3[
-			int2_grid::dim(
+			int2_grid::pos(
 				1,
 				1
 			)
@@ -943,7 +944,7 @@ BOOST_AUTO_TEST_CASE(
 FCPPT_PP_POP_WARNING
 
 	typedef
-	fcppt::container::grid::dim<
+	fcppt::container::grid::pos<
 		std::size_t,
 		2
 	>::type
@@ -996,8 +997,8 @@ FCPPT_PP_POP_WARNING
 		:
 		fcppt::container::grid::make_pos_range_start_end(
 			grid,
-			dim2_grid::dim::null(),
-			dim2_grid::dim::null()
+			dim2_grid::pos::null(),
+			dim2_grid::pos::null()
 		)
 	)
 		loop_empty = false;
@@ -1011,8 +1012,8 @@ FCPPT_PP_POP_WARNING
 		:
 		fcppt::container::grid::make_pos_range_start_end(
 			grid,
-			dim2_grid::dim::null(),
-			dim2_grid::dim(0, 1)
+			dim2_grid::pos::null(),
+			dim2_grid::pos(0, 1)
 		)
 	)
 		loop_empty = false;
@@ -1026,8 +1027,8 @@ FCPPT_PP_POP_WARNING
 		:
 		fcppt::container::grid::make_pos_range_start_end(
 			grid,
-			dim2_grid::dim::null(),
-			dim2_grid::dim(1, 0)
+			dim2_grid::pos::null(),
+			dim2_grid::pos(1, 0)
 		)
 	)
 		loop_empty = false;

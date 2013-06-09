@@ -10,6 +10,7 @@
 #include <fcppt/container/raw_vector_impl.hpp>
 #include <fcppt/container/grid/dim.hpp>
 #include <fcppt/container/grid/object_decl.hpp>
+#include <fcppt/container/grid/pos.hpp>
 #include <fcppt/container/grid/size_type.hpp>
 #include <fcppt/container/grid/detail/access_member.hpp>
 #include <fcppt/container/grid/detail/at.hpp>
@@ -274,7 +275,7 @@ fcppt::container::grid::object<
 	N,
 	A
 >::operator[](
-	dim const &_pos
+	pos const &_pos
 )
 {
 	return
@@ -300,7 +301,7 @@ fcppt::container::grid::object<
 	N,
 	A
 >::operator[](
-	dim const &_pos
+	pos const &_pos
 ) const
 {
 	return
@@ -326,7 +327,7 @@ fcppt::container::grid::object<
 	N,
 	A
 >::at(
-	dim const &_pos
+	pos const &_pos
 )
 {
 	return
@@ -352,7 +353,7 @@ fcppt::container::grid::object<
 	N,
 	A
 >::at(
-	dim const &_pos
+	pos const &_pos
 ) const
 {
 	return

@@ -15,6 +15,7 @@
 #include <algorithm>
 #include <fcppt/config/external_end.hpp>
 
+
 namespace fcppt
 {
 namespace container
@@ -24,13 +25,13 @@ namespace grid
 
 template<
 	typename T,
-	size_type N,
+	fcppt::container::grid::size_type N,
 	typename A
 >
 bool
 operator==(
-	object<T, N, A> const &_a,
-	object<T, N, A> const &_b
+	fcppt::container::grid::object<T, N, A> const &_a,
+	fcppt::container::grid::object<T, N, A> const &_b
 )
 {
 	return
@@ -45,13 +46,13 @@ operator==(
 
 template<
 	typename T,
-	size_type N,
+	fcppt::container::grid::size_type N,
 	typename A
 >
 bool
 operator!=(
-	object<T, N, A> const &_a,
-	object<T, N, A> const &_b
+	fcppt::container::grid::object<T, N, A> const &_a,
+	fcppt::container::grid::object<T, N, A> const &_b
 )
 {
 	return !(_a == _b);
@@ -59,20 +60,20 @@ operator!=(
 
 template<
 	typename T,
-	size_type N,
+	fcppt::container::grid::size_type N,
 	typename A
 >
 bool
 operator<(
-	object<T, N, A> const &_a,
-	object<T, N, A> const &_b
+	fcppt::container::grid::object<T, N, A> const &_a,
+	fcppt::container::grid::object<T, N, A> const &_b
 )
 {
 	return
 		_a.size()
 		!= _b.size()
 		?
-			math::dim::before(
+			fcppt::math::dim::before(
 				_a.size(),
 				_b.size()
 			)
@@ -87,13 +88,13 @@ operator<(
 
 template<
 	typename T,
-	size_type N,
+	fcppt::container::grid::size_type N,
 	typename A
 >
 bool
 operator>(
-	object<T, N, A> const &_a,
-	object<T, N, A> const &_b
+	fcppt::container::grid::object<T, N, A> const &_a,
+	fcppt::container::grid::object<T, N, A> const &_b
 )
 {
 	return _b < _a;
@@ -101,13 +102,13 @@ operator>(
 
 template<
 	typename T,
-	size_type N,
+	fcppt::container::grid::size_type N,
 	typename A
 >
 bool
 operator<=(
-	object<T, N, A> const &_a,
-	object<T, N, A> const &_b
+	fcppt::container::grid::object<T, N, A> const &_a,
+	fcppt::container::grid::object<T, N, A> const &_b
 )
 {
 	return !(_a > _b);
@@ -115,13 +116,13 @@ operator<=(
 
 template<
 	typename T,
-	size_type N,
+	fcppt::container::grid::size_type N,
 	typename A
 >
 bool
 operator>=(
-	object<T, N, A> const &_a,
-	object<T, N, A> const &_b
+	fcppt::container::grid::object<T, N, A> const &_a,
+	fcppt::container::grid::object<T, N, A> const &_b
 )
 {
 	return !(_a < _b);

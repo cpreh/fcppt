@@ -319,6 +319,8 @@ set(
 	include/fcppt/container/grid/object_impl.hpp
 	include/fcppt/container/grid/out_of_range.hpp
 	include/fcppt/container/grid/output.hpp
+	include/fcppt/container/grid/pos.hpp
+	include/fcppt/container/grid/pos_fwd.hpp
 	include/fcppt/container/grid/pos_iterator_decl.hpp
 	include/fcppt/container/grid/pos_iterator_fwd.hpp
 	include/fcppt/container/grid/pos_iterator_impl.hpp
@@ -781,6 +783,7 @@ set(
 	include/fcppt/math/vector/cross.hpp
 	include/fcppt/math/vector/dim.hpp
 	include/fcppt/math/vector/dot.hpp
+	include/fcppt/math/vector/fill.hpp
 	include/fcppt/math/vector/has_dim.hpp
 	include/fcppt/math/vector/hypersphere_to_cartesian.hpp
 	include/fcppt/math/vector/input.hpp

@@ -10,6 +10,7 @@
 #include <fcppt/container/raw_vector_decl.hpp>
 #include <fcppt/container/grid/dim_fwd.hpp>
 #include <fcppt/container/grid/object_fwd.hpp>
+#include <fcppt/container/grid/pos_fwd.hpp>
 #include <fcppt/container/grid/size_type.hpp>
 #include <fcppt/math/dim/object_decl.hpp>
 #include <fcppt/config/external_begin.hpp>
@@ -121,12 +122,20 @@ public:
 	typedef typename container::const_reverse_iterator const_reverse_iterator;
 
 	/**
-	\brief A type representing the dimension of the array
+	\brief A type representing the dimension of the grid
 	*/
 	typedef typename fcppt::container::grid::dim<
 		size_type,
 		N
 	>::type dim;
+
+	/**
+	\brief A type representing a position in the grid
+	*/
+	typedef typename fcppt::container::grid::pos<
+		size_type,
+		N
+	>::type pos;
 
 	/**
 	\brief An empty grid.
@@ -210,7 +219,7 @@ public:
 	*/
 	reference
 	operator[](
-		dim const &
+		pos const &
 	);
 
 	/**
@@ -218,7 +227,7 @@ public:
 	*/
 	const_reference
 	operator[](
-		dim const &
+		pos const &
 	) const;
 
 	/**
@@ -227,7 +236,7 @@ public:
 	*/
 	reference
 	at(
-		dim const &
+		pos const &
 	);
 
 	/**
@@ -236,7 +245,7 @@ public:
 	*/
 	const_reference
 	at(
-		dim const &
+		pos const &
 	) const;
 
 	/**

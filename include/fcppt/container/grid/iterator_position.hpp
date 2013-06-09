@@ -28,11 +28,15 @@ namespace grid
 Behavior is undefined if the iterator doesn't belong to the given grid.
 */
 template<typename Grid,typename Iterator>
-typename Grid::dim const
+typename Grid::pos const
 iterator_position(
 	Grid const &grid,
 	Iterator const it)
 {
+	typedef typename
+	Grid::pos
+	pos;
+
 	typedef typename
 	Grid::dim
 	dim;
@@ -42,7 +46,7 @@ iterator_position(
 	dim_unit;
 
 	typedef typename
-	dim::size_type
+	pos::size_type
 	dim_size_type;
 
 	dim stacked_dim{
@@ -54,7 +58,7 @@ iterator_position(
 		stacked_dim[i] =
 			stacked_dim[static_cast<dim_size_type>(i-1)] * grid.size()[i];
 
-	dim ret{
+	pos ret{
 		fcppt::no_init()};
 
 	dim_unit const offset =

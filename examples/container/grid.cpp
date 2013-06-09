@@ -36,7 +36,7 @@ use_grid()
 
 	// Set the value on position (1,2,3) to 42
 	grid[
-		int3d_grid::dim(
+		int3d_grid::pos(
 			1u,
 			2u,
 			3u
@@ -45,7 +45,7 @@ use_grid()
 
 	fcppt::io::cout()
 		<< grid[
-			int3d_grid::dim(
+			int3d_grid::pos(
 				1u,
 				2u,
 				3u
@@ -143,10 +143,10 @@ interpolate_grid()
 		)
 	);
 
-	grid[float2d_grid::dim( 0u, 0u)] = 0.0f;
-	grid[float2d_grid::dim( 0u, 1u)] = 1.0f;
-	grid[float2d_grid::dim( 1u, 0u)] = 2.0f;
-	grid[float2d_grid::dim( 1u, 1u)] = 3.0f;
+	grid[float2d_grid::pos( 0u, 0u)] = 0.0f;
+	grid[float2d_grid::pos( 0u, 1u)] = 1.0f;
+	grid[float2d_grid::pos( 1u, 0u)] = 2.0f;
+	grid[float2d_grid::pos( 1u, 1u)] = 3.0f;
 
 	float const result =
 		fcppt::container::grid::interpolate(

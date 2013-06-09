@@ -26,8 +26,8 @@ fcppt::container::grid::pos_range<
 > const
 make_pos_crange_start_end(
 	Grid const &_grid,
-	typename Grid::dim const &_start,
-	typename Grid::dim const &_end
+	typename Grid::pos const &_start,
+	typename Grid::pos const &_end
 )
 {
 	return

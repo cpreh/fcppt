@@ -10,6 +10,7 @@
 #include <fcppt/container/exception.hpp>
 #include <fcppt/string.hpp>
 
+
 namespace fcppt
 {
 namespace container
@@ -22,7 +23,8 @@ class exception
 	public fcppt::container::exception
 {
 public:
-	explicit exception(
+	explicit
+	exception(
 		fcppt::string const &
 	);
 };

@@ -9,7 +9,6 @@
 #define FCPPT_ALGORITHM_LEVENSHTEIN_HPP_INCLUDED
 
 #include <fcppt/container/grid/object.hpp>
-#include <fcppt/math/dim/object_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/range/empty.hpp>
 #include <boost/range/size.hpp>
@@ -90,7 +89,11 @@ levenshtein(
 	dim;
 
 	typedef typename
-	dim::value_type
+	grid::pos
+	pos;
+
+	typedef typename
+	pos::value_type
 	dimension_type;
 
 	grid matrix(
@@ -103,10 +106,10 @@ levenshtein(
 	// Step 2
 
 	for (size_type i = 0; i <= n; i++)
-		matrix[dim(static_cast<dimension_type>(i),0u)] = i;
+		matrix[pos(static_cast<dimension_type>(i),0u)] = i;
 
 	for (size_type j = 0; j <= m; j++)
-		matrix[dim(0u,static_cast<dimension_type>(j))] = j;
+		matrix[pos(0u,static_cast<dimension_type>(j))] = j;
 
 	for (difference_type i = 1; i <= static_cast<difference_type>(n); i++)
 	{
@@ -133,21 +136,21 @@ levenshtein(
 			size_type const
 				above =
 					matrix[
-						dim(
+						pos(
 							static_cast<dimension_type>(
 								i-1),
 							static_cast<dimension_type>(
 								j))],
 				left =
 					matrix[
-						dim(
+						pos(
 							static_cast<dimension_type>(
 								i),
 							static_cast<dimension_type>(
 								j-1))],
 				diag =
 					matrix[
-						dim(
+						pos(
 							static_cast<dimension_type>(
 								i-1),
 							static_cast<dimension_type>(
@@ -173,7 +176,7 @@ levenshtein(
 				size_type trans =
 					static_cast<size_type>(
 						matrix[
-							dim(
+							pos(
 								static_cast<dimension_type>(
 									i-2),
 								static_cast<dimension_type>(
@@ -191,7 +194,7 @@ levenshtein(
 			}
 
 			matrix[
-				dim(
+				pos(
 					static_cast<dimension_type>(
 						i),
 					static_cast<dimension_type>(
@@ -202,7 +205,7 @@ levenshtein(
 
 	return
 		matrix[
-			dim(
+			pos(
 				static_cast<dimension_type>(
 					n),
 				static_cast<dimension_type>(

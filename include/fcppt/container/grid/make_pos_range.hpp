@@ -9,6 +9,7 @@
 
 #include <fcppt/container/grid/make_pos_range_start_end.hpp>
 #include <fcppt/container/grid/pos_range_impl.hpp>
+#include <fcppt/math/dim/structure_cast.hpp>
 
 
 namespace fcppt
@@ -31,8 +32,12 @@ make_pos_range(
 	return
 		fcppt::container::grid::make_pos_range_start_end(
 			_grid,
-			Grid::dim::null(),
-			_grid.size()
+			Grid::pos::null(),
+			fcppt::math::dim::structure_cast<
+				typename Grid::pos
+			>(
+				_grid.size()
+			)
 		);
 }
 

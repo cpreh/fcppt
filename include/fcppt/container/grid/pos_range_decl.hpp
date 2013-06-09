@@ -8,8 +8,8 @@
 #define FCPPT_CONTAINER_GRID_POS_RANGE_DECL_HPP_INCLUDED
 
 #include <fcppt/nonassignable.hpp>
-#include <fcppt/container/grid/dim.hpp>
 #include <fcppt/container/grid/object_decl.hpp>
+#include <fcppt/container/grid/pos.hpp>
 #include <fcppt/container/grid/pos_iterator_fwd.hpp>
 #include <fcppt/container/grid/pos_range_fwd.hpp>
 
@@ -38,8 +38,8 @@ public:
 
 	typedef
 	typename
-	Grid::dim
-	dim;
+	Grid::pos
+	pos;
 
 	typedef
 	fcppt::container::grid::pos_iterator<
@@ -49,8 +49,8 @@ public:
 
 	pos_range(
 		Grid &,
-		dim const &start,
-		dim const &end
+		pos const &start,
+		pos const &end
 	);
 
 	iterator
@@ -61,15 +61,15 @@ public:
 private:
 	iterator
 	make_iterator(
-		dim const &pos,
+		pos const &,
 		bool is_end
 	) const;
 
 	Grid &grid_;
 
-	dim const start_;
+	pos const start_;
 
-	dim const end_;
+	pos const end_;
 };
 
 }

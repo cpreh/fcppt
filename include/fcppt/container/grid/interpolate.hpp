@@ -52,17 +52,17 @@ interpolate(
 	Interpolator const &interpolator)
 {
 	typedef typename
-	Grid::dim
-	grid_dim;
+	Grid::pos
+	grid_pos;
 
 	return
 		interpolator(
 			p[0],
 			grid[
-				fcppt::math::vector::structure_cast<grid_dim>(
+				fcppt::math::vector::structure_cast<grid_pos>(
 					indices[value_index])],
 			grid[
-				fcppt::math::vector::structure_cast<grid_dim>(
+				fcppt::math::vector::structure_cast<grid_pos>(
 					indices[value_index+1])]);
 }
 

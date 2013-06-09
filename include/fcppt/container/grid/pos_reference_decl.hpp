@@ -8,6 +8,7 @@
 #define FCPPT_CONTAINER_GRID_POS_REFERENCE_DECL_HPP_INCLUDED
 
 #include <fcppt/nonassignable.hpp>
+#include <fcppt/container/grid/pos.hpp>
 #include <fcppt/container/grid/pos_reference_fwd.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/mpl/if.hpp>
@@ -33,8 +34,8 @@ class pos_reference
 public:
 	typedef
 	typename
-	Grid::dim
-	dim;
+	Grid::pos
+	pos_type;
 
 	typedef
 	typename
@@ -50,17 +51,17 @@ public:
 	reference;
 
 	pos_reference(
-		dim const &,
+		pos_type const &,
 		reference
 	);
 
-	dim const &
+	pos_type const &
 	pos() const;
 
 	reference
 	value() const;
 private:
-	dim const pos_;
+	pos_type const pos_;
 
 	reference value_;
 };

@@ -9,9 +9,10 @@
 
 #include <fcppt/container/grid/dim.hpp>
 #include <fcppt/container/grid/object_impl.hpp>
+#include <fcppt/container/grid/pos.hpp>
 #include <fcppt/container/grid/pos_iterator_decl.hpp>
 #include <fcppt/container/grid/pos_reference_impl.hpp>
-#include <fcppt/math/dim/comparison.hpp>
+#include <fcppt/math/vector/comparison.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <iterator>
 #include <fcppt/config/external_end.hpp>
@@ -25,9 +26,9 @@ fcppt::container::grid::pos_iterator<
 >::pos_iterator(
 	iterator const &_iterator,
 	dim const &_size,
-	dim const &_pos,
-	dim const &_min,
-	dim const &_max,
+	pos const &_current,
+	pos const &_min,
+	pos const &_max,
 	bool const _is_end
 )
 :
@@ -37,8 +38,8 @@ fcppt::container::grid::pos_iterator<
 	size_(
 		_size
 	),
-	pos_(
-		_pos
+	current_(
+		_current
 	),
 	min_(
 		_min
@@ -62,14 +63,14 @@ fcppt::container::grid::pos_iterator<
 {
 	// TODO: Generalize this!
 	if(
-		++pos_.w()
+		++current_.x()
 		==
-		max_.w()
+		max_.x()
 	)
 	{
-		pos_.w() = min_.w();
+		current_.x() = min_.x();
 
-		++pos_.h();
+		++current_.y();
 	}
 }
 
@@ -86,7 +87,7 @@ fcppt::container::grid::pos_iterator<
 {
 	return
 		reference(
-			pos_,
+			current_,
 			*(
 				iterator_
 				+
@@ -96,9 +97,9 @@ fcppt::container::grid::pos_iterator<
 						iterator
 					>::difference_type
 				>(
-					pos_.w()
+					current_.x()
 					+
-					pos_.h()
+					current_.y()
 					*
 					size_.w()
 				)
@@ -121,17 +122,17 @@ fcppt::container::grid::pos_iterator<
 		!=
 		_other.is_end_
 		?
-			pos_.w()
+			current_.x()
 			==
-			_other.pos_.w()
+			_other.current_.x()
 			||
-			pos_.h()
+			current_.y()
 			==
-			_other.pos_.h()
+			_other.current_.y()
 		:
-			pos_
+			current_
 			==
-			_other.pos_;
+			_other.current_;
 }
 
 #endif

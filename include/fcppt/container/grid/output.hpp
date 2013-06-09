@@ -7,7 +7,6 @@
 #ifndef FCPPT_CONTAINER_GRID_OUTPUT_HPP_INCLUDED
 #define FCPPT_CONTAINER_GRID_OUTPUT_HPP_INCLUDED
 
-#include <fcppt/no_init.hpp>
 #include <fcppt/container/grid/object_impl.hpp>
 #include <fcppt/container/grid/size_type.hpp>
 #include <fcppt/container/grid/detail/print_recurse.hpp>
@@ -75,9 +74,7 @@ operator<<(
 	>(
 		_stream,
 		_object,
-		typename object::dim{
-			fcppt::no_init()
-		}
+		object::pos::null()
 	);
 
 	return

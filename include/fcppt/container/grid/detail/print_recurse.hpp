@@ -35,7 +35,7 @@ typename boost::enable_if_c<
 print_recurse(
 	Stream &_stream,
 	Object const &_object,
-	typename Object::dim const _pos
+	typename Object::pos const _pos
 )
 {
 	_stream
@@ -56,7 +56,7 @@ typename boost::enable_if_c<
 print_recurse(
 	Stream &_stream,
 	Object const &_object,
-	typename Object::dim _pos
+	typename Object::pos _pos
 )
 {
 	size_type const index(

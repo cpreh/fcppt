@@ -22,7 +22,8 @@ namespace detail
 
 template<
 	typename Container,
-	typename Dim
+	typename Dim,
+	typename Pos
 >
 typename fcppt::container::grid::detail::choose_reference<
 	Container
@@ -30,7 +31,7 @@ typename fcppt::container::grid::detail::choose_reference<
 at(
 	Container &_container,
 	Dim const &_dim,
-	Dim const &_pos
+	Pos const &_pos
 )
 {
 	for(

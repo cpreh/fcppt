@@ -4,21 +4,11 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_CONTAINER_GRID_SIZE_TYPE_HPP_INCLUDED
-#define FCPPT_CONTAINER_GRID_SIZE_TYPE_HPP_INCLUDED
+#ifndef FCPPT_CONTAINER_GRID_POS_HPP_INCLUDED
+#define FCPPT_CONTAINER_GRID_POS_HPP_INCLUDED
 
+#include <fcppt/container/grid/pos_fwd.hpp>
+#include <fcppt/math/vector/object_impl.hpp>
 
-namespace fcppt
-{
-namespace container
-{
-namespace grid
-{
-
-typedef unsigned size_type;
-
-}
-}
-}
 
 #endif
