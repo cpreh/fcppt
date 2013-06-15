@@ -37,7 +37,7 @@ The resulting matrix will be static.
 template<
 	typename T
 >
-typename static_<T, 4, 4>::type const
+static_<T, 4, 4> const
 scaling(
 	T const _x,
 	T const _y,
@@ -49,7 +49,7 @@ scaling(
 		one = fcppt::literal<T>(1);
 
 	return
-		typename static_<T, 4, 4>::type
+		static_<T, 4, 4>
 		(
 			   _x, zero, zero, zero,
 			zero,     _y,zero, zero,
@@ -68,11 +68,11 @@ typename boost::enable_if<
 		Vector,
 		3
 	>,
-	typename static_<
+	static_<
 		typename Vector::value_type,
 		4,
 		4
-	>::type
+	>
 >::type const
 scaling(
 	Vector const &_vec

@@ -26,13 +26,13 @@ namespace quaternion
 \tparam T The quaternion's value type (has to be a floating point type)
 */
 template<typename T>
-typename fcppt::math::vector::static_<T,3>::type const
+fcppt::math::vector::static_<T,3> const
 vector_rotation(
-	typename fcppt::math::vector::static_<T,3>::type const &v,
+	fcppt::math::vector::static_<T,3> const &v,
 	boost::math::quaternion<T> const &q)
 {
-	typedef typename
-	fcppt::math::vector::static_<T,3>::type
+	typedef
+	fcppt::math::vector::static_<T,3>
 	vector;
 
 	typedef

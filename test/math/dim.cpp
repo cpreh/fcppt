@@ -21,7 +21,7 @@ namespace
 typedef fcppt::math::dim::static_<
 	unsigned,
 	2
->::type ui2_dim;
+> ui2_dim;
 
 }
 

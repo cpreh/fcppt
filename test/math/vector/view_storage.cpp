@@ -97,7 +97,7 @@ FCPPT_PP_POP_WARNING
 		unsigned,
 		fcppt::math::static_size<
 			2
-		>::type,
+		>,
 		view_storage<
 			unsigned
 		>
@@ -120,7 +120,7 @@ FCPPT_PP_POP_WARNING
 	fcppt::math::vector::static_<
 		unsigned,
 		2
-	>::type
+	>
 	uivector2;
 
 	uivector2 const vec(

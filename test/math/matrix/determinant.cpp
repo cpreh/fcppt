@@ -25,7 +25,7 @@ FCPPT_PP_POP_WARNING
 		int,
 		3,
 		3
-	>::type
+	>
 	large_matrix_type;
 
 	typedef
@@ -33,7 +33,7 @@ FCPPT_PP_POP_WARNING
 		int,
 		2,
 		2
-	>::type
+	>
 	small_matrix_type;
 
 	BOOST_CHECK((

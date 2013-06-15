@@ -34,10 +34,10 @@ template<\
 fcppt::math::vector::object<\
 	FCPPT_MATH_DETAIL_BINARY_TYPE(L, op, R),\
 	N,\
-	typename fcppt::math::static_storage<\
+	fcppt::math::static_storage<\
 		FCPPT_MATH_DETAIL_BINARY_TYPE(L, op, R),\
 		N\
-	>::type\
+	>\
 > const \
 operator op(\
 	fcppt::math::vector::object<\
@@ -61,10 +61,10 @@ operator op(\
 			fcppt::math::vector::object<\
 				result_value_type,\
 				N,\
-				typename fcppt::math::static_storage<\
+				fcppt::math::static_storage<\
 					result_value_type,\
 					N\
-				>::type\
+				>\
 			>\
 		>(\
 			_left,\

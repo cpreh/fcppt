@@ -42,10 +42,10 @@ fcppt::math::vector::object<
 :
 	storage_(
 		fcppt::math::detail::default_storage<
-			typename fcppt::math::static_storage<
+			fcppt::math::static_storage<
 				T,
 				N
-			>::type
+			>
 		>()
 	)
 {
@@ -380,6 +380,8 @@ fcppt::math::vector::object<
 		);
 }
 
+// \cond
+
 template<
 	typename T,
 	typename N,
@@ -388,10 +390,10 @@ template<
 fcppt::math::vector::object<
 	T,
 	N,
-	typename fcppt::math::static_storage<
+	fcppt::math::static_storage<
 		T,
 		N
-	>::type
+	>
 > const
 fcppt::math::vector::object<
 	T,
@@ -402,13 +404,15 @@ fcppt::math::vector::object<
 	return
 		object(
 			fcppt::math::detail::null_storage<
-				typename fcppt::math::static_storage<
+				fcppt::math::static_storage<
 					T,
 					N
-				>::type
+				>
 			>()
 		);
 }
+
+// \endcond
 
 template<
 	typename T,

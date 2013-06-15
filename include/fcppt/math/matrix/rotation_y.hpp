@@ -45,7 +45,7 @@ fcppt::math::matrix::rotation_axis
 template<
 	typename T
 >
-typename static_<T, 4, 4>::type const
+static_<T, 4, 4> const
 rotation_y(
 	T const angle
 )
@@ -57,7 +57,7 @@ rotation_y(
 		zero = fcppt::literal<T>(0);
 
 	return
-		typename static_<T, 4, 4>::type(
+		static_<T, 4, 4>(
 			cosx, zero, sinx, zero,
 			zero,  one,  zero, zero,
 			-sinx, zero,  cosx, zero,

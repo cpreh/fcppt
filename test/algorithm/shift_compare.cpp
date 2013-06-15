@@ -19,7 +19,7 @@
 namespace
 {
 typedef
-fcppt::math::vector::static_<int,3>::type
+fcppt::math::vector::static_<int,3>
 vector;
 }
 

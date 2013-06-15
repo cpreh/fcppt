@@ -48,10 +48,10 @@ template
 <
 	typename T
 >
-typename static_<T, 4, 4>::type const
+static_<T, 4, 4> const
 rotation_axis(
 	T const angle,
-	typename vector::static_<T,3>::type const &a
+	vector::static_<T,3> const &a
 )
 {
 	T const
@@ -65,7 +65,7 @@ rotation_axis(
 		one = fcppt::literal<T>(1);
 
 	return
-		typename static_<T, 4, 4>::type(
+		static_<T, 4, 4>(
 			cosx + x*x*cosxc,   x*y*cosxc - z*sinx, x*z*cosxc + y*sinx, zero,
 			x*y*cosxc + z*sinx, cosx + y*y*cosxc,   y*z*cosxc - x*sinx, zero,
 			x*z*cosxc - y*sinx, y*z*cosxc + x*sinx, cosx + z*z*cosxc,   zero,

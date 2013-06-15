@@ -131,7 +131,7 @@ typedef fcppt::container::grid::object<
 	2
 > float2d_grid;
 
-typedef fcppt::math::vector::static_<float,2>::type float2d_vector;
+typedef fcppt::math::vector::static_<float,2> float2d_vector;
 
 void
 interpolate_grid()

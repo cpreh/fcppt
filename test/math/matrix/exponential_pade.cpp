@@ -35,7 +35,7 @@ FCPPT_PP_POP_WARNING
 		double,
 		3,
 		3
-	>::type
+	>
 	matrix_type;
 
 	matrix_type const t(

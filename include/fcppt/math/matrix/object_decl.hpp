@@ -348,11 +348,11 @@ FCPPT_MATH_DETAIL_MAKE_OP_DECL(\
 		T,
 		N,
 		M,
-		typename fcppt::math::matrix::static_storage<
+		fcppt::math::matrix::static_storage<
 			T,
 			N,
 			M
-		>::type
+		>
 	> const
 	identity();
 

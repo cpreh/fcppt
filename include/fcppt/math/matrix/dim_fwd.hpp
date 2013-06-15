@@ -26,7 +26,7 @@ namespace matrix
 typedef fcppt::math::dim::static_<
 	fcppt::math::size_type,
 	2
->::type dim;
+> dim;
 
 }
 }

@@ -31,7 +31,7 @@ template
 <
 	typename T
 >
-typename fcppt::math::matrix::static_<T,4,4>::type const
+fcppt::math::matrix::static_<T,4,4> const
 to_matrix(
 	boost::math::quaternion<T> const &q)
 {
@@ -44,7 +44,7 @@ to_matrix(
 	return
 		// NOTE: more ugly static_casts here?
 		// NOTE: Maybe transpose this?
-		typename fcppt::math::matrix::static_<T,4,4>::type(
+		fcppt::math::matrix::static_<T,4,4>(
 			1-2*(y*y + z*z), 2*x*y-2*s*z, 2*s*y + 2*x*z, 0,
 			2*x*y+2*s*z, 1-2*(x*x + z*z),-2*s*x+2*y*z,0,
 			-2*s*y + 2*x*z,2*s*x+2*y*z,1-2*(x*x+y*y),0,

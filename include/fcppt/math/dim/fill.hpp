@@ -31,20 +31,20 @@ template<
 	math::size_type N,
 	typename T
 >
-typename fcppt::math::dim::static_<
+fcppt::math::dim::static_<
 	T,
 	N
->::type
+>
 fill(
 	T const &_value
 )
 {
 	return
 		fcppt::math::detail::fill<
-			typename fcppt::math::dim::static_<
+			fcppt::math::dim::static_<
 				T,
 				N
-			>::type
+			>
 		>(
 			_value
 		);

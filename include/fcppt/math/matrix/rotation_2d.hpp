@@ -32,7 +32,7 @@ The resulting matrix will be a static one.
 template<
 	typename T
 >
-typename static_<T, 2, 2>::type const
+fcppt::math::matrix::static_<T, 2, 2> const
 rotation_2d(
 	T const angle
 )
@@ -46,7 +46,7 @@ rotation_2d(
 				angle);
 
 	return
-		typename static_<T, 2, 2>::type(
+		fcppt::math::matrix::static_<T, 2, 2>(
 			cosx, -sinx,
 			sinx,  cosx
 		);

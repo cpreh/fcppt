@@ -22,7 +22,7 @@
 namespace
 {
 typedef
-fcppt::math::vector::static_<double,2>::type
+fcppt::math::vector::static_<double,2>
 vector2;
 
 double const epsilon = 0.001;

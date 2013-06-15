@@ -4,7 +4,9 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
+#include <fcppt/container/grid/clamp_pos.hpp>
 #include <fcppt/container/grid/comparison.hpp>
+#include <fcppt/container/grid/dim.hpp>
 #include <fcppt/container/grid/fill.hpp>
 #include <fcppt/container/grid/in_range.hpp>
 #include <fcppt/container/grid/is_square.hpp>
@@ -947,7 +949,7 @@ FCPPT_PP_POP_WARNING
 	fcppt::container::grid::pos<
 		std::size_t,
 		2
-	>::type
+	>
 	dim;
 
 	typedef
@@ -1035,5 +1037,45 @@ FCPPT_PP_POP_WARNING
 
 	BOOST_CHECK(
 		loop_empty
+	);
+}
+
+FCPPT_PP_PUSH_WARNING
+FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
+
+BOOST_AUTO_TEST_CASE(
+	container_grid_clamp_pos
+)
+{
+FCPPT_PP_POP_WARNING
+
+	typedef
+	fcppt::container::grid::dim<
+		unsigned,
+		2
+	> dim;
+
+	typedef
+	fcppt::container::grid::pos<
+		unsigned,
+		2
+	> pos;
+
+	BOOST_CHECK(
+		fcppt::container::grid::clamp_pos(
+			pos(
+				4u,
+				5u
+			),
+			dim(
+				3u,
+				3u
+			)
+		)
+		==
+		pos(
+			3u,
+			3u
+		)
 	);
 }

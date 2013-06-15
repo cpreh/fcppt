@@ -56,18 +56,18 @@ public:
 	/**
 	\brief A type represents a box's position.
 	*/
-	typedef typename fcppt::math::vector::static_<
+	typedef fcppt::math::vector::static_<
 		T,
 		N
-	>::type vector;
+	> vector;
 
 	/**
 	\brief A type represents a box's size.
 	*/
-	typedef typename fcppt::math::dim::static_<
+	typedef fcppt::math::dim::static_<
 		T,
 		N
-	>::type dim;
+	> dim;
 
 	/**
 	\brief Calls the default constructor for every element

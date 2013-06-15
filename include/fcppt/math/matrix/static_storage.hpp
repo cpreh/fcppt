@@ -8,9 +8,6 @@
 #define FCPPT_MATH_MATRIX_STATIC_STORAGE_HPP_INCLUDED
 
 #include <fcppt/math/static_storage.hpp>
-#include <fcppt/preprocessor/disable_gcc_warning.hpp>
-#include <fcppt/preprocessor/pop_warning.hpp>
-#include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/mpl/times.hpp>
 #include <fcppt/config/external_end.hpp>
@@ -23,27 +20,20 @@ namespace math
 namespace matrix
 {
 
-FCPPT_PP_PUSH_WARNING
-FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
-
 template<
 	typename T,
 	typename N,
 	typename M
 >
-struct static_storage
-:
+using static_storage
+=
 fcppt::math::static_storage<
 	T,
-	typename boost::mpl::times<
+	boost::mpl::times<
 		N,
 		M
-	>::type
->
-{
-};
-
-FCPPT_PP_POP_WARNING
+	>
+>;
 
 }
 }

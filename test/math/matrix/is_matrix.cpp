@@ -27,7 +27,7 @@ FCPPT_PP_POP_WARNING
 		double,
 		3,
 		3
-	>::type
+	>
 	large_matrix_type;
 
 	BOOST_CHECK(

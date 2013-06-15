@@ -27,10 +27,10 @@ template<\
 object<\
 	FCPPT_MATH_DETAIL_BINARY_TYPE(L, *, R),\
 	N,\
-	typename fcppt::math::static_storage<\
+	fcppt::math::static_storage<\
 		FCPPT_MATH_DETAIL_BINARY_TYPE(L, *, R),\
 		N\
-	>::type\
+	>\
 > const \
 operator *(\
 	L const &_left,\
@@ -46,10 +46,10 @@ operator *(\
 			object<\
 				result_value_type,\
 				N,\
-				typename fcppt::math::static_storage<\
+				fcppt::math::static_storage<\
 					result_value_type,\
 					N\
-				>::type\
+				>\
 			>\
 		>(\
 			_right,\

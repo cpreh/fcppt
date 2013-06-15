@@ -32,10 +32,10 @@ template<
 fcppt::math::vector::object<
 	FCPPT_MATH_DETAIL_BINARY_TYPE(L, *, R),
 	M,
-	typename fcppt::math::static_storage<
+	fcppt::math::static_storage<
 		FCPPT_MATH_DETAIL_BINARY_TYPE(L, *, R),
 		M
-	>::type
+	>
 >
 operator *(
 	fcppt::math::matrix::object<
@@ -54,10 +54,10 @@ operator *(
 	typedef fcppt::math::vector::object<
 		FCPPT_MATH_DETAIL_BINARY_TYPE(L, *, R),
 		M,
-		typename fcppt::math::static_storage<
+		fcppt::math::static_storage<
 			FCPPT_MATH_DETAIL_BINARY_TYPE(L, *, R),
 			M
-		>::type
+		>
 	> result_type;
 
 	result_type result(

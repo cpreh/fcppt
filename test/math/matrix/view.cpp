@@ -34,14 +34,14 @@ FCPPT_PP_POP_WARNING
 		value_type,
 		size,
 		size
-	>::type
+	>
 	matrix_type;
 
 	typedef
 	fcppt::math::vector::static_<
 		value_type,
 		size
-	>::type
+	>
 	vector_type;
 
 	matrix_type const t(

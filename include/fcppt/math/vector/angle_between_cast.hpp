@@ -60,10 +60,10 @@ angle_between_cast(
 	fcppt::math::vector::object<T, N, S2> const &_to
 )
 {
-	typedef typename fcppt::math::vector::static_<
+	typedef fcppt::math::vector::static_<
 		Dest,
 		N::value
-	>::type intermediate_type;
+	> intermediate_type;
 
 	return
 		fcppt::math::vector::angle_between(

@@ -23,7 +23,7 @@ typedef fcppt::math::matrix::static_<
 	int,
 	2,
 	2
->::type matrix_type;
+> matrix_type;
 
 }
 

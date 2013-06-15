@@ -37,7 +37,7 @@ The resulting matrix will be static.
 template<
 	typename T
 >
-typename static_<T, 4, 4>::type const
+fcppt::math::matrix::static_<T, 4, 4> const
 translation(
 	T const _x,
 	T const _y,
@@ -53,7 +53,7 @@ translation(
 		);
 
 	return
-		typename static_<T, 4, 4>::type
+		fcppt::math::matrix::static_<T, 4, 4>
 		(
 			one, zero, zero, _x,
 			zero, one, zero, _y,
@@ -74,22 +74,22 @@ template<
 	typename Vector
 >
 typename boost::enable_if<
-	vector::has_dim<
+	fcppt::math::vector::has_dim<
 		Vector,
 		3
 	>,
-	typename static_<
+	fcppt::math::matrix::static_<
 		typename Vector::value_type,
 		4,
 		4
-	>::type
+	>
 >::type const
 translation(
 	Vector const &_vec
 )
 {
 	return
-		matrix::translation(
+		fcppt::math::matrix::translation(
 			_vec.x(),
 			_vec.y(),
 			_vec.z()

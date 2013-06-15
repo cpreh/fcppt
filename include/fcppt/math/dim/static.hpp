@@ -30,21 +30,20 @@ template<
 	typename T,
 	fcppt::math::size_type N
 >
-struct static_
-{
-	typedef fcppt::math::dim::object<
+using static_
+=
+fcppt::math::dim::object<
+	T,
+	fcppt::math::static_size<
+		N
+	>,
+	fcppt::math::static_storage<
 		T,
-		typename fcppt::math::static_size<
+		fcppt::math::static_size<
 			N
-		>::type,
-		typename fcppt::math::static_storage<
-			T,
-			typename fcppt::math::static_size<
-				N
-			>::type
-		>::type
-	> type;
-};
+		>
+	>
+>;
 
 }
 }

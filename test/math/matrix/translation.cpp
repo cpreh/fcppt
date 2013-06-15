@@ -31,7 +31,7 @@ FCPPT_PP_POP_WARNING
 		float,
 		4,
 		4
-	>::type matrix_type;
+	> matrix_type;
 
 	float const epsilon(
 		std::numeric_limits<
@@ -63,7 +63,7 @@ FCPPT_PP_POP_WARNING
 	typedef fcppt::math::vector::static_<
 		float,
 		4
-	>::type vector_type;
+	> vector_type;
 
 	vector_type const vec(
 		1.f,

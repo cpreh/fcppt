@@ -39,21 +39,21 @@ template<
 >
 std::array
 <
-	typename fcppt::math::vector::static_<T,N>::type,
+	fcppt::math::vector::static_<T,N>,
 	static_cast<std::size_t>(1u) << N
 > const
 corner_points(
 	box::object<T,N> const &_box
 )
 {
-	typedef typename
-	fcppt::math::vector::static_<T,N>::type
+	typedef
+	fcppt::math::vector::static_<T,N>
 	vector_type;
 
 	typedef
 	std::array
 	<
-		typename fcppt::math::vector::static_<T,N>::type,
+		fcppt::math::vector::static_<T,N>,
 		static_cast<std::size_t>(1u << N)
 	>
 	result_type;

@@ -27,7 +27,7 @@ FCPPT_PP_POP_WARNING
 	typedef fcppt::math::vector::static_<
 		int,
 		3
-	>::type int3_vector;
+	> int3_vector;
 
 	int3_vector const vec(
 		fcppt::math::vector::unit<

@@ -9,9 +9,6 @@
 
 #include <fcppt/container/grid/size_type.hpp>
 #include <fcppt/math/dim/static.hpp>
-#include <fcppt/preprocessor/disable_gcc_warning.hpp>
-#include <fcppt/preprocessor/pop_warning.hpp>
-#include <fcppt/preprocessor/push_warning.hpp>
 
 
 namespace fcppt
@@ -21,23 +18,16 @@ namespace container
 namespace grid
 {
 
-FCPPT_PP_PUSH_WARNING
-FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
-
 template<
 	typename SizeType,
 	fcppt::container::grid::size_type N
 >
-struct dim
-:
+using dim
+=
 fcppt::math::dim::static_<
 	SizeType,
 	N
->
-{
-};
-
-FCPPT_PP_POP_WARNING
+>;
 
 }
 }

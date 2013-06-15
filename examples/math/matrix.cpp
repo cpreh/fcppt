@@ -23,13 +23,13 @@ int main()
 	typedef fcppt::math::vector::static_<
 		float,
 		4
-	>::type vec4f;
+	> vec4f;
 
 	typedef fcppt::math::matrix::static_<
 		float,
 		4,
 		4
-	>::type matrix4x4f;
+	> matrix4x4f;
 
 	// initialize the vector so it is compatible for affine transformations
 	vec4f const vec(

@@ -45,10 +45,10 @@ fcppt::math::dim::object<
 :
 	storage_(
 		fcppt::math::detail::default_storage<
-			typename fcppt::math::static_storage<
+			fcppt::math::static_storage<
 				T,
 				N
-			>::type
+			>
 		>()
 	)
 {
@@ -561,6 +561,8 @@ fcppt::math::dim::object<
 		);
 }
 
+// \cond
+
 template<
 	typename T,
 	typename N,
@@ -569,10 +571,10 @@ template<
 fcppt::math::dim::object<
 	T,
 	N,
-	typename fcppt::math::static_storage<
+	fcppt::math::static_storage<
 		T,
 		N
-	>::type
+	>
 > const
 fcppt::math::dim::object<
 	T,
@@ -583,13 +585,15 @@ fcppt::math::dim::object<
 	return
 		object(
 			fcppt::math::detail::null_storage<
-				typename fcppt::math::static_storage<
+				fcppt::math::static_storage<
 					T,
 					N
-				>::type
+				>
 			>()
 		);
 }
+
+// \endcond
 
 template<
 	typename T,

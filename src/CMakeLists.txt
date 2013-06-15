@@ -118,6 +118,8 @@ set(
 	include/fcppt/container/detail/data.hpp
 	include/fcppt/container/detail/data_end.hpp
 	include/fcppt/container/exception.hpp
+	include/fcppt/container/grid/clamp_pos.hpp
+	include/fcppt/container/grid/clamp_signed_pos.hpp
 	include/fcppt/container/grid/comparison.hpp
 	include/fcppt/container/grid/detail/access_member.hpp
 	include/fcppt/container/grid/detail/assign_fill_recurse.hpp
@@ -595,6 +597,7 @@ set(
 	include/fcppt/math/vector/arithmetic.hpp
 	include/fcppt/math/vector/atan2.hpp
 	include/fcppt/math/vector/before.hpp
+	include/fcppt/math/vector/ceil_div_signed.hpp
 	include/fcppt/math/vector/comparison.hpp
 	include/fcppt/math/vector/componentwise_equal.hpp
 	include/fcppt/math/vector/construct.hpp

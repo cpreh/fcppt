@@ -24,7 +24,7 @@ int main()
 	typedef fcppt::math::vector::static_<
 		float,
 		3
-	>::type float3_vec;
+	> float3_vec;
 
 	float3_vec const vec1(
 		1.f,
@@ -51,7 +51,7 @@ int main()
 	typedef fcppt::math::dim::static_<
 		float,
 		3
-	>::type float3_dim;
+	> float3_dim;
 
 	float3_dim const dim_(
 		1.4f,

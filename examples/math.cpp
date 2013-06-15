@@ -31,14 +31,14 @@ main()
 	fcppt::math::vector::static_<
 		int,
 		2
-	>::type vec(
+	> vec(
 		1,
 		2);
 
 	typedef fcppt::math::vector::static_<
 		float,
 		2
-	>::type vec2f;
+	> vec2f;
 
 	vec2f const vecf(
 		1.f,
@@ -67,7 +67,7 @@ main()
 	typedef fcppt::math::vector::static_<
 		double,
 		3
-	>::type vec3d;
+	> vec3d;
 
 	{
 		vec3d
@@ -100,7 +100,7 @@ main()
 
 	typedef fcppt::math::box::rect<
 		int
-	>::type int_rect;
+	> int_rect;
 
 	int_rect test_rect(
 		int_rect::vector(1, 2),

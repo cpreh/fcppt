@@ -32,27 +32,26 @@ template<
 	fcppt::math::size_type N,
 	fcppt::math::size_type M
 >
-struct static_
-{
-	typedef fcppt::math::matrix::object<
+using static_
+=
+fcppt::math::matrix::object<
+	T,
+	fcppt::math::static_size<
+		N
+	>,
+	fcppt::math::static_size<
+		M
+	>,
+	fcppt::math::matrix::static_storage<
 		T,
-		typename fcppt::math::static_size<
+		fcppt::math::static_size<
 			N
-		>::type,
-		typename fcppt::math::static_size<
+		>,
+		fcppt::math::static_size<
 			M
-		>::type,
-		typename fcppt::math::matrix::static_storage<
-			T,
-			typename fcppt::math::static_size<
-				N
-			>::type,
-			typename fcppt::math::static_size<
-				M
-			>::type
-		>::type
-	> type;
-};
+		>
+	>
+>;
 
 }
 }

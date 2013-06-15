@@ -124,18 +124,18 @@ public:
 	/**
 	\brief A type representing the dimension of the grid
 	*/
-	typedef typename fcppt::container::grid::dim<
+	typedef fcppt::container::grid::dim<
 		size_type,
 		N
-	>::type dim;
+	> dim;
 
 	/**
 	\brief A type representing a position in the grid
 	*/
-	typedef typename fcppt::container::grid::pos<
+	typedef fcppt::container::grid::pos<
 		size_type,
 		N
-	>::type pos;
+	> pos;
 
 	/**
 	\brief An empty grid.

@@ -9,6 +9,7 @@
 
 #include <fcppt/math/box/object_fwd.hpp>
 
+
 namespace fcppt
 {
 namespace math
@@ -24,13 +25,12 @@ namespace box
 template<
 	typename T
 >
-struct rect
-{
-	typedef object<
-		T,
-		2
-	> type;
-};
+using rect
+=
+fcppt::math::box::object<
+	T,
+	2
+>;
 
 }
 }

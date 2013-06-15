@@ -36,11 +36,11 @@ Example:
 
 \code
 typedef
-fcppt::math::dim::static_<int,2>::type
+fcppt::math::dim::static_<int,2>
 int2;
 
 typedef
-fcppt::math::dim::static_<int,3>::type
+fcppt::math::dim::static_<int,3>
 int3;
 
 int2 narrow_dim(1,2);
@@ -62,7 +62,7 @@ typename
 fcppt::math::dim::static_<
 	T,
 	N::value + 1
->::type const
+> const
 construct(
 	fcppt::math::dim::object<
 		T,
@@ -78,7 +78,7 @@ construct(
 			fcppt::math::dim::static_<
 				T,
 				N::value + 1
-			>::type
+			>
 		>(
 			base,
 			t

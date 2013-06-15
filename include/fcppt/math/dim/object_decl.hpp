@@ -314,10 +314,10 @@ FCPPT_MATH_DETAIL_MAKE_OP_DECL(\
 	fcppt::math::dim::object<
 		T,
 		N,
-		typename fcppt::math::static_storage<
+		fcppt::math::static_storage<
 			T,
 			N
-		>::type
+		>
 	> const
 	null();
 

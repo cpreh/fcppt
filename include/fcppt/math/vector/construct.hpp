@@ -36,11 +36,11 @@ Example:
 
 \code
 typedef
-fcppt::math::vector::static_<int,2>::type
+fcppt::math::vector::static_<int,2>
 int2;
 
 typedef
-fcppt::math::vector::static_<int,3>::type
+fcppt::math::vector::static_<int,3>
 int3;
 
 int2 narrow_vector(1,2);
@@ -58,11 +58,10 @@ template<
 	typename N,
 	typename S
 >
-typename
 fcppt::math::vector::static_<
 	T,
 	N::value + 1
->::type const
+> const
 construct(
 	fcppt::math::vector::object<
 		T,
@@ -74,11 +73,10 @@ construct(
 {
 	return
 		fcppt::math::detail::construct<
-			typename
 			fcppt::math::vector::static_<
 				T,
 				N::value + 1
-			>::type
+			>
 		>(
 			_base,
 			_t

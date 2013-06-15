@@ -48,10 +48,10 @@ typename boost::enable_if<
 	fcppt::math::vector::object<
 		T,
 		N,
-		typename fcppt::math::static_storage<
+		fcppt::math::static_storage<
 			T,
 			N
-		>::type
+		>
 	> const
 >::type
 cross(
@@ -71,10 +71,10 @@ cross(
 		fcppt::math::vector::object<
 			T,
 			N,
-			typename fcppt::math::static_storage<
+			fcppt::math::static_storage<
 				T,
 				N
-			>::type
+			>
 		>(
 			l.y() * r.z() - l.z() * r.y(),
 			l.z() * r.x() - l.x() * r.z(),

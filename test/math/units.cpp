@@ -47,17 +47,17 @@ FCPPT_PP_POP_WARNING
 	typedef fcppt::math::vector::static_<
 		length,
 		2
-	>::type length2;
+	> length2;
 
 	typedef fcppt::math::vector::static_<
 		time,
 		2
-	>::type time2;
+	> time2;
 
 	typedef fcppt::math::vector::static_<
 		velocity,
 		2
-	>::type velocity2;
+	> velocity2;
 
 
 	length2 l1(

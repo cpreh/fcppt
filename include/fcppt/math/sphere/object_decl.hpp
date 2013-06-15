@@ -28,19 +28,22 @@ namespace sphere
 */
 template<
 	typename T,
-	size_type N
+	fcppt::math::size_type N
 >
 class object
 {
 public:
 	typedef T value_type;
+
 	typedef T &reference;
+
 	typedef T const &const_reference;
 
-	typedef typename vector::static_<
+	typedef
+	fcppt::math::vector::static_<
 		value_type,
 		N
-	>::type point_type;
+	> point_type;
 
 	/// Constructs a sphere from @a origin and @a radius
 	object(
@@ -72,32 +75,32 @@ private:
 
 template<
 	typename T,
-	size_type N
+	fcppt::math::size_type N
 >
 bool
 operator==(
-	object<T, N> const &,
-	object<T, N> const &
+	fcppt::math::sphere::object<T, N> const &,
+	fcppt::math::sphere::object<T, N> const &
 );
 
 template<
 	typename T,
-	size_type N
+	fcppt::math::size_type N
 >
 bool
 operator!=(
-	object<T, N> const &,
-	object<T, N> const &
+	fcppt::math::sphere::object<T, N> const &,
+	fcppt::math::sphere::object<T, N> const &
 );
 
 template<
 	typename T,
-	size_type N
+	fcppt::math::size_type N
 >
 void
 swap(
-	object<T, N> &,
-	object<T, N> &
+	fcppt::math::sphere::object<T, N> &,
+	fcppt::math::sphere::object<T, N> &
 );
 
 }

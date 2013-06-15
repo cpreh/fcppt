@@ -39,11 +39,11 @@ template
 	typename N,
 	typename S
 >
-typename fcppt::math::matrix::static_<
+fcppt::math::matrix::static_<
 	T,
 	N::value,
 	N::value
->::type const
+> const
 inverse(
 	fcppt::math::matrix::object<T,N,N,S> const &t
 )

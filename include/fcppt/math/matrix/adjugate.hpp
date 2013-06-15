@@ -41,12 +41,12 @@ template
 	typename N,
 	typename S
 >
-typename fcppt::math::matrix::static_
+fcppt::math::matrix::static_
 <
 	T,
 	N::value,
 	N::value
->::type const
+> const
 adjugate(
 	fcppt::math::matrix::object<
 		T,
@@ -56,12 +56,12 @@ adjugate(
 	> const &_matrix
 )
 {
-	typedef typename
+	typedef
 	fcppt::math::matrix::static_<
 		T,
 		N::value,
 		N::value
-	>::type
+	>
 	ret_type;
 
 	ret_type ret{

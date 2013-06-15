@@ -56,12 +56,12 @@ FCPPT_PP_POP_WARNING
 		float,
 		4,
 		4
-	>::type matrix_type;
+	> matrix_type;
 
 	typedef fcppt::math::vector::static_<
 		float,
 		3
-	>::type vector_rotation_type;
+	> vector_rotation_type;
 
 	matrix_type const trans_(
 		fcppt::math::matrix::rotation_axis(
@@ -77,7 +77,7 @@ FCPPT_PP_POP_WARNING
 	typedef fcppt::math::vector::static_<
 		float,
 		4
-	>::type vector_type;
+	> vector_type;
 
 	vector_type const vec_(
 		0.f,

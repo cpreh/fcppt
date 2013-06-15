@@ -32,7 +32,7 @@ FCPPT_PP_POP_WARNING
 		int,
 		3,
 		3
-	>::type mat3;
+	> mat3;
 
 	mat3 const
 		left(

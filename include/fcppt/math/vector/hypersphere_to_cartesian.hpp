@@ -47,12 +47,12 @@ Example:
 
 // The point type
 typedef
-fcppt::math::vector::static_<float,3>::type
+fcppt::math::vector::static_<float,3>
 vector3f;
 
 // The angles type
 typedef
-fcppt::math::vector::static_<float,2>::type
+fcppt::math::vector::static_<float,2>
 vector2f;
 
 vector3f point =
@@ -99,13 +99,12 @@ counterclockwise rotation around the z axis, assuming the viewer looks down
 the positive z axis.
 */
 template<typename T,typename N,typename S>
-typename
-static_<T,N::value+1>::type const
+fcppt::math::vector::static_<T,N::value+1> const
 hypersphere_to_cartesian(
-	object<T,N,S> const &angles)
+	fcppt::math::vector::object<T,N,S> const &angles)
 {
-	typedef typename
-	static_<T,N::value+1>::type
+	typedef
+	static_<T,N::value+1>
 	result_type;
 
 	typedef typename

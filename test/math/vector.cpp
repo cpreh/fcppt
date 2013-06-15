@@ -43,19 +43,19 @@ epsilon(
 );
 
 typedef
-fcppt::math::vector::static_<unsigned,2>::type
+fcppt::math::vector::static_<unsigned,2>
 uivector2;
 
 typedef
-fcppt::math::vector::static_<real,1>::type
+fcppt::math::vector::static_<real,1>
 fvector1;
 
 typedef
-fcppt::math::vector::static_<real,2>::type
+fcppt::math::vector::static_<real,2>
 fvector2;
 
 typedef
-fcppt::math::vector::static_<real,3>::type
+fcppt::math::vector::static_<real,3>
 fvector3;
 
 template<typename T>

@@ -29,7 +29,7 @@ FCPPT_PP_POP_WARNING
 		float,
 		3,
 		4
-	>::type
+	>
 	large_matrix_type;
 
 	typedef
@@ -37,7 +37,7 @@ FCPPT_PP_POP_WARNING
 		float,
 		2,
 		3
-	>::type
+	>
 	small_matrix_type;
 
 	large_matrix_type const t(

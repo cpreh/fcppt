@@ -71,7 +71,7 @@ FCPPT_PP_POP_WARNING
 		float,
 		1,
 		1
-	>::type f1x1;
+	> f1x1;
 
 	f1x1 const m1x1{
 		fcppt::no_init()
@@ -81,7 +81,7 @@ FCPPT_PP_POP_WARNING
 		float,
 		2,
 		2
-	>::type f2x2;
+	> f2x2;
 
 	f2x2 const m2x2{
 		fcppt::no_init()

@@ -30,11 +30,11 @@ BOOST_AUTO_TEST_CASE(
 FCPPT_PP_POP_WARNING
 
 	typedef
-	fcppt::math::vector::static_<int,2>::type
+	fcppt::math::vector::static_<int,2>
 	vector2;
 
 	typedef
-	fcppt::math::vector::static_<int,3>::type
+	fcppt::math::vector::static_<int,3>
 	vector3;
 
 	typedef

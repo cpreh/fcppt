@@ -59,7 +59,7 @@ Example:
 
 \code
 typedef
-fcppt::math::vector::static_<int,3>::type
+fcppt::math::vector::static_<int,3>
 vector3;
 
 // In dimension 3, we have 2^3=8 vectors, so typedef an array of this size
@@ -84,13 +84,13 @@ std::cout << vs[1];
 template<typename T,fcppt::math::size_type N>
 std::array
 <
-	typename fcppt::math::vector::static_<T,N>::type,
+	fcppt::math::vector::static_<T,N>,
 	static_cast<std::size_t>(1u) << N
 > const
 generate_binary_vectors()
 {
-	typedef typename
-	fcppt::math::vector::static_<T,N>::type
+	typedef
+	fcppt::math::vector::static_<T,N>
 	vector_type;
 
 	typedef

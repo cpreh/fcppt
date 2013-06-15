@@ -17,7 +17,7 @@ int main()
 	typedef fcppt::math::vector::static_<
 		float,
 		2
-	>::type float2_vec;
+	> float2_vec;
 
 	float2_vec obj(
 		1.f,

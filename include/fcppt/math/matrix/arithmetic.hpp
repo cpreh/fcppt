@@ -38,11 +38,11 @@ fcppt::math::matrix::object<\
 	FCPPT_MATH_DETAIL_BINARY_TYPE(L, op, R),\
 	N,\
 	M,\
-	typename fcppt::math::matrix::static_storage<\
+	fcppt::math::matrix::static_storage<\
 		FCPPT_MATH_DETAIL_BINARY_TYPE(L, op, R),\
 		N,\
 		M\
-	>::type\
+	>\
 > const \
 operator op(\
 	fcppt::math::matrix::object<\
@@ -69,11 +69,11 @@ operator op(\
 				result_value_type,\
 				N,\
 				M,\
-				typename fcppt::math::matrix::static_storage<\
+				fcppt::math::matrix::static_storage<\
 					result_value_type,\
 					N,\
 					M\
-				>::type \
+				>\
 			> \
 		>(\
 			_left,\
@@ -109,11 +109,11 @@ fcppt::math::matrix::object<
 	FCPPT_MATH_DETAIL_BINARY_TYPE(L, *, R),
 	M1,
 	M2,
-	typename fcppt::math::matrix::static_storage<
+	fcppt::math::matrix::static_storage<
 		FCPPT_MATH_DETAIL_BINARY_TYPE(L, *, R),
 		M1,
 		M2
-	>::type
+	>
 > const
 operator *(
 	fcppt::math::matrix::object<
@@ -134,11 +134,11 @@ operator *(
 		FCPPT_MATH_DETAIL_BINARY_TYPE(L, *, R),
 		M1,
 		M2,
-		typename fcppt::math::matrix::static_storage<
+		fcppt::math::matrix::static_storage<
 			FCPPT_MATH_DETAIL_BINARY_TYPE(L, *, R),
 			M1,
 			M2
-		>::type
+		>
 	> result_type;
 
 	result_type ret{
@@ -196,11 +196,11 @@ fcppt::math::matrix::object<\
 	FCPPT_MATH_DETAIL_BINARY_TYPE(L, op, R),\
 	N,\
 	M,\
-	typename fcppt::math::matrix::static_storage<\
+	fcppt::math::matrix::static_storage<\
 		FCPPT_MATH_DETAIL_BINARY_TYPE(L, op, R),\
 		N,\
 		M\
-	>::type\
+	>\
 > const \
 operator op(\
 	fcppt::math::matrix::object<\
@@ -222,11 +222,11 @@ operator op(\
 				result_value_type,\
 				N,\
 				M,\
-				typename fcppt::math::matrix::static_storage<\
+				fcppt::math::matrix::static_storage<\
 					result_value_type,\
 					N,\
 					M\
-				>::type\
+				>\
 			>\
 		>(\
 			_left,\
@@ -264,11 +264,11 @@ fcppt::math::matrix::object<
 	FCPPT_MATH_DETAIL_BINARY_TYPE(L, *, R),
 	N,
 	M,
-	typename fcppt::math::matrix::static_storage<
+	fcppt::math::matrix::static_storage<
 		FCPPT_MATH_DETAIL_BINARY_TYPE(L, *, R),
 		N,
 		M
-	>::type
+	>
 > const
 operator *(
 	L const &_left,
@@ -290,11 +290,11 @@ operator *(
 				result_value_type,
 				N,
 				M,
-				typename fcppt::math::matrix::static_storage<
+				fcppt::math::matrix::static_storage<
 					result_value_type,
 					N,
 					M
-				>::type
+				>
 			>
 		>(
 			_right,

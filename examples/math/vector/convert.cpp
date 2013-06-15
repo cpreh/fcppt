@@ -22,7 +22,7 @@ int main()
 	typedef fcppt::math::vector::static_<
 		float,
 		2
-	>::type float2_vec;
+	> float2_vec;
 
 	float2_vec const vecf2(
 		1.5f,
@@ -32,7 +32,7 @@ int main()
 	typedef fcppt::math::vector::static_<
 		unsigned,
 		2
-	>::type unsigned2_vec;
+	> unsigned2_vec;
 
 	// cast all the elements from float to unsigned int
 	unsigned2_vec const vecui2(
@@ -48,7 +48,7 @@ int main()
 	typedef fcppt::math::vector::static_<
 		unsigned,
 		3
-	>::type unsigned3_vec;
+	> unsigned3_vec;
 
 	// construct a three dimensional vector from a two dimensional one
 	unsigned3_vec const vecui3(

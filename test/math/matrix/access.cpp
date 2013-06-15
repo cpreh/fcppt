@@ -28,7 +28,7 @@ FCPPT_PP_POP_WARNING
 		int,
 		2,
 		2
-	>::type
+	>
 	matrix_type;
 
 	matrix_type const mat(

@@ -42,11 +42,11 @@ fcppt::math::matrix::object<
 :
 	storage_(
 		fcppt::math::detail::default_storage<
-			typename fcppt::math::matrix::static_storage<
+			fcppt::math::matrix::static_storage<
 				T,
 				N,
 				M
-			>::type
+			>
 		>()
 	)
 {
@@ -446,6 +446,8 @@ fcppt::math::matrix::object<
 		N::value;
 }
 
+// \cond
+
 template<
 	typename T,
 	typename N,
@@ -456,11 +458,11 @@ fcppt::math::matrix::object<
 	T,
 	N,
 	M,
-	typename fcppt::math::matrix::static_storage<
+	fcppt::math::matrix::static_storage<
 		T,
 		N,
 		M
-	>::type
+	>
 > const
 fcppt::math::matrix::object<
 	T,
@@ -473,11 +475,11 @@ fcppt::math::matrix::object<
 		T,
 		N,
 		M,
-		typename fcppt::math::matrix::static_storage<
+		fcppt::math::matrix::static_storage<
 			T,
 			N,
 			M
-		>::type
+		>
 	> ret{
 		fcppt::no_init()
 	};
@@ -495,6 +497,8 @@ fcppt::math::matrix::object<
 
 	return ret;
 }
+
+// \endcond
 
 template<
 	typename T,

@@ -39,7 +39,7 @@ FCPPT_PP_POP_WARNING
 	typedef fcppt::math::vector::static_<
 		element_type,
 		3
-	>::type vector_type;
+	> vector_type;
 
 	element_type const original_angle =
 		fcppt::math::pi<element_type>();

@@ -35,16 +35,16 @@ template<
 	typename N,
 	typename S
 >
-vector::object<T, N, S> const
+fcppt::math::vector::object<T, N, S> const
 point_rotate(
-	vector::object<T, N, S> const &point,
-	vector::object<T, N, S> const &around,
+	fcppt::math::vector::object<T, N, S> const &point,
+	fcppt::math::vector::object<T, N, S> const &around,
 	T const rot
 )
 {
 	return
 		(
-			matrix::rotation_2d(rot)
+			fcppt::math::matrix::rotation_2d(rot)
 			* (point - around)
 		)
 		+ around;

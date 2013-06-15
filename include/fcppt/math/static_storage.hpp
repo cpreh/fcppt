@@ -21,13 +21,12 @@ template<
 	typename T,
 	typename N
 >
-struct static_storage
-{
-	typedef std::array<
-		T,
-		N::value
-	> type;
-};
+using static_storage
+=
+std::array<
+	T,
+	N::value
+>;
 
 }
 }

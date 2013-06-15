@@ -20,7 +20,7 @@ int main()
 	typedef fcppt::math::vector::static_<
 		float,
 		3
-	>::type float3_vec;
+	> float3_vec;
 
 	// vectors can be constructed directly. Note that you cannot specify less
 	// than N arguments (3 in this case) or you'll get a compiler error.

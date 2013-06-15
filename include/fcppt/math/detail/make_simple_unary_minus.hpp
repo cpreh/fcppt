@@ -19,10 +19,10 @@ template<\
 object<\
 	T,\
 	N,\
-	typename fcppt::math::static_storage<\
+	fcppt::math::static_storage<\
 		T,\
 		N\
-	>::type\
+	>\
 > const \
 operator -(\
 	object<\
@@ -35,10 +35,10 @@ operator -(\
 	object<\
 		T,\
 		N,\
-		typename fcppt::math::static_storage<\
+		fcppt::math::static_storage<\
 			T,\
 			N\
-		>::type\
+		>\
 	> ret(\
 		a\
 	);\

@@ -39,19 +39,19 @@ template<
 	typename M,
 	typename S
 >
-typename matrix::static_<
+matrix::static_<
 	T,
 	N::value-1,
 	M::value-1
->::type const
+> const
 delete_row_and_column(
 	object<T, N, M, S> const &matrix_,
 	typename object<T, N, M, S>::size_type const row,
 	typename object<T, N, M, S>::size_type const column
 )
 {
-	typedef typename
-	static_<T, N::value-1, M::value-1>::type
+	typedef
+	static_<T, N::value-1, M::value-1>
 	ret_type;
 
 	typedef typename
