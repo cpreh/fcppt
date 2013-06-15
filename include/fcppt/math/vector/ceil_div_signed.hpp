@@ -7,8 +7,8 @@
 #ifndef FCPPT_MATH_VECTOR_CEIL_DIV_SIGNED_HPP_INCLUDED
 #define FCPPT_MATH_VECTOR_CEIL_DIV_SIGNED_HPP_INCLUDED
 
-#include <fcppt/algorithm/map.hpp>
 #include <fcppt/math/ceil_div_signed.hpp>
+#include <fcppt/math/map.hpp>
 #include <fcppt/math/static_storage.hpp>
 #include <fcppt/math/vector/object_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
