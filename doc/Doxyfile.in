@@ -42,7 +42,6 @@ DISTRIBUTE_GROUP_DOC   = NO
 SUBGROUPING            = YES
 INLINE_GROUPED_CLASSES = NO
 TYPEDEF_HIDES_STRUCT   = NO
-SYMBOL_CACHE_SIZE      = 0
 #---------------------------------------------------------------------------
 # Build related configuration options
 #---------------------------------------------------------------------------
