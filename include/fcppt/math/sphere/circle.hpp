@@ -9,6 +9,7 @@
 
 #include <fcppt/math/sphere/object_fwd.hpp>
 
+
 namespace fcppt
 {
 namespace math
@@ -20,13 +21,12 @@ namespace sphere
 template<
 	typename T
 >
-struct circle
-{
-	typedef object<
-		T,
-		2
-	> type;
-};
+using circle
+=
+fcppt::math::sphere::object<
+	T,
+	2
+>;
 
 }
 }

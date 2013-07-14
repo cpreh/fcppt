@@ -26,7 +26,7 @@ FCPPT_PP_POP_WARNING
 
 	typedef fcppt::math::sphere::circle<
 		float
-	>::type circle_type;
+	> circle_type;
 
 	BOOST_CHECK(
 		fcppt::math::sphere::intersects(
