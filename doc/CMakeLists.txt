@@ -279,6 +279,7 @@ set(
 	include/fcppt/container/bitfield/proxy_decl.hpp
 	include/fcppt/container/bitfield/proxy_fwd.hpp
 	include/fcppt/container/bitfield/proxy_impl.hpp
+	include/fcppt/container/bitfield/underlying_value.hpp
 	include/fcppt/container/bitfield/value_type.hpp
 	include/fcppt/container/data.hpp
 	include/fcppt/container/data_end.hpp

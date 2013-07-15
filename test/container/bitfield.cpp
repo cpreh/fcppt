@@ -7,9 +7,11 @@
 #include <fcppt/enum_is_empty.hpp>
 #include <fcppt/enum_size.hpp>
 #include <fcppt/no_init.hpp>
+#include <fcppt/literal.hpp>
 #include <fcppt/container/bitfield/is_subset_eq.hpp>
 #include <fcppt/container/bitfield/object_from_enum.hpp>
 #include <fcppt/container/bitfield/object_impl.hpp>
+#include <fcppt/container/bitfield/underlying_value.hpp>
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
@@ -308,5 +310,86 @@ FCPPT_PP_POP_WARNING
 	BOOST_REQUIRE(
 		field.begin()
 		== field.end()
+	);
+}
+
+FCPPT_PP_PUSH_WARNING
+FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
+
+namespace
+{
+
+bool
+check_bit(
+	bitfield::internal_type const _value,
+	test_enum const _enum
+)
+{
+	return
+		(
+			_value
+			&
+			(
+				fcppt::literal<
+					bitfield::internal_type
+				>(
+					1
+				)
+				<<
+				static_cast<
+					bitfield::internal_type
+				>(
+					_enum
+				)
+			)
+		)
+		!=
+		fcppt::literal<
+			bitfield::internal_type
+		>(
+			0
+		);
+}
+
+}
+
+BOOST_AUTO_TEST_CASE(
+	container_bitfield_underlying_value
+)
+{
+FCPPT_PP_POP_WARNING
+	bitfield field1(
+		bitfield::null()
+	);
+
+	field1[
+		test_enum::test2
+	] = true;
+
+	bitfield::internal_type const value(
+		fcppt::container::bitfield::underlying_value(
+			field1
+		)
+	);
+
+	BOOST_REQUIRE(
+		!check_bit(
+			value,
+			test_enum::test1
+		)
+	);
+
+	BOOST_REQUIRE(
+		check_bit(
+			value,
+			test_enum::test2
+		)
+	);
+
+	BOOST_REQUIRE(
+		!check_bit(
+			value,
+			test_enum::test3
+		)
 	);
 }

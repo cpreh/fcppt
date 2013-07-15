@@ -8,6 +8,7 @@
 #define FCPPT_CONTAINER_BITFIELD_OBJECT_DECL_HPP_INCLUDED
 
 #include <fcppt/no_init_fwd.hpp>
+#include <fcppt/container/array_size.hpp>
 #include <fcppt/container/bitfield/array.hpp>
 #include <fcppt/container/bitfield/iterator_fwd.hpp>
 #include <fcppt/container/bitfield/object_fwd.hpp>
@@ -63,6 +64,16 @@ private:
 
 	array_type array_;
 public:
+	/**
+	\brief The size of the underlying array
+	*/
+	typedef
+	typename
+	fcppt::container::array_size<
+		array_type
+	>::type
+	array_size;
+
 	/**
 	\brief Typedef to <code>ElementType</code>
 	*/
