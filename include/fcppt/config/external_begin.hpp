@@ -74,6 +74,7 @@ FCPPT_PP_DISABLE_GCC_WARNING(-Wunused-member-function)
 // gcc only warnings
 
 FCPPT_PP_DISABLE_GCC_WARNING(-Wdouble-promotion)
+FCPPT_PP_DISABLE_GCC_WARNING(-Wliteral-suffix)
 FCPPT_PP_DISABLE_GCC_WARNING(-Wlogical-op)
 FCPPT_PP_DISABLE_GCC_WARNING(-Wmaybe-uninitialized)
 FCPPT_PP_DISABLE_GCC_WARNING(-Wunused-local-typedefs)
