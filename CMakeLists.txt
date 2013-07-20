@@ -2,13 +2,13 @@ cmake_minimum_required(
 	VERSION 2.6
 )
 
-set(
-	CMAKE_MODULE_PATH
-	"${CMAKE_SOURCE_DIR}/CMakeModules;${CMAKE_MODULE_PATH}"
-)
-
 project(
 	fcppt
+)
+
+set(
+	CMAKE_MODULE_PATH
+	"${CMAKE_CURRENT_SOURCE_DIR}/CMakeModules;${CMAKE_MODULE_PATH}"
 )
 
 include(
@@ -186,7 +186,7 @@ if(
 endif()
 
 include_directories(
-	${CMAKE_SOURCE_DIR}/include
+	${FCPPT_UTILS_PROJECT_SOURCE_DIR}/include
 )
 
 set(
@@ -260,7 +260,7 @@ find_package(
 
 set(
 	CMAKE_REQUIRED_INCLUDES
-	${CMAKE_SOURCE_DIR}/include
+	${FCPPT_UTILS_PROJECT_SOURCE_DIR}/include
 	${Boost_INCLUDE_DIRS}
 )
 
@@ -280,8 +280,8 @@ function(
 	FILE_RELPATH
 )
 	configure_file(
-		${CMAKE_SOURCE_DIR}/src/${FILE_RELPATH}.in
-		${CMAKE_BINARY_DIR}/include/fcppt/${FILE_RELPATH}
+		${FCPPT_UTILS_PROJECT_SOURCE_DIR}/src/${FILE_RELPATH}.in
+		${FCPPT_UTILS_PROJECT_BINARY_DIR}/include/fcppt/${FILE_RELPATH}
 	)
 endfunction()
 
@@ -294,13 +294,13 @@ configure_fcppt_file(
 )
 
 configure_file(
-	${CMAKE_SOURCE_DIR}/src/private_config.hpp.in
-	${CMAKE_BINARY_DIR}/src/include/fcppt/private_config.hpp
+	${FCPPT_UTILS_PROJECT_SOURCE_DIR}/src/private_config.hpp.in
+	${FCPPT_UTILS_PROJECT_BINARY_DIR}/src/include/fcppt/private_config.hpp
 )
 
 include_directories(
-	${CMAKE_BINARY_DIR}/include
-	${CMAKE_BINARY_DIR}/src/include
+	${FCPPT_UTILS_PROJECT_BINARY_DIR}/include
+	${FCPPT_UTILS_PROJECT_BINARY_DIR}/src/include
 )
 
 function(
@@ -465,17 +465,17 @@ install(
 
 install(
 	DIRECTORY
-	${CMAKE_BINARY_DIR}/include/
+	${FCPPT_UTILS_PROJECT_BINARY_DIR}/include/
 	DESTINATION
 	${INSTALL_INCLUDE_DIR}
 )
 
 install(
 	FILES
-	${CMAKE_SOURCE_DIR}/CMakeModules/FindFcpptThreads.cmake
-	${CMAKE_SOURCE_DIR}/CMakeModules/FcpptCMakeUtils.cmake
-	${CMAKE_SOURCE_DIR}/CMakeModules/FcpptExport.cmake
-	${CMAKE_SOURCE_DIR}/CMakeModules/FcpptSymbol.cmake
+	${FCPPT_UTILS_PROJECT_SOURCE_DIR}/CMakeModules/FindFcpptThreads.cmake
+	${FCPPT_UTILS_PROJECT_SOURCE_DIR}/CMakeModules/FcpptCMakeUtils.cmake
+	${FCPPT_UTILS_PROJECT_SOURCE_DIR}/CMakeModules/FcpptExport.cmake
+	${FCPPT_UTILS_PROJECT_SOURCE_DIR}/CMakeModules/FcpptSymbol.cmake
 	DESTINATION
 	${INSTALL_CMAKEMODULES_DIR}
 )

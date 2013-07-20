@@ -92,7 +92,7 @@ set(
 
 set(
 	INSTALL_DATA_DIR
-	"${INSTALL_DATA_DIR_BASE}/${CMAKE_PROJECT_NAME}"
+	"${INSTALL_DATA_DIR_BASE}/${PROJECT_NAME}"
 	CACHE
 	STRING
 	"Custom data installation directory"
@@ -108,7 +108,7 @@ set(
 
 set(
 	INSTALL_DOC_DIR
-	"${INSTALL_DOC_DIR_BASE}/${CMAKE_PROJECT_NAME}"
+	"${INSTALL_DOC_DIR_BASE}/${PROJECT_NAME}"
 	CACHE
 	STRING
 	"Custom doc installation directory"
@@ -125,6 +125,16 @@ set(
 set(
 	FCPPT_UTILS_CURRENT_DIRECTORY
 	"${CMAKE_ROOT}"
+)
+
+set(
+	FCPPT_UTILS_PROJECT_SOURCE_DIR
+	"${${PROJECT_NAME}_SOURCE_DIR}"
+)
+
+set(
+	FCPPT_UTILS_PROJECT_BINARY_DIR
+	"${${PROJECT_NAME}_BINARY_DIR}"
 )
 
 set(
@@ -216,7 +226,7 @@ set(
 
 set(
 	INSTALL_CMAKECONFIG_DIR
-	"${INSTALL_CMAKECONFIG_DIR_BASE}/${CMAKE_PROJECT_NAME}"
+	"${INSTALL_CMAKECONFIG_DIR_BASE}/${PROJECT_NAME}"
 	CACHE
 	STRING
 	"Custom cmake module installation directory"
@@ -440,12 +450,12 @@ add_definitions(
 # configure standard CMake build paths
 set(
 	EXECUTABLE_OUTPUT_PATH
-	${CMAKE_BINARY_DIR}/bin
+	${FCPPT_UTILS_PROJECT_BINARY_DIR}/bin
 )
 
 set(
 	LIBRARY_OUTPUT_PATH
-	${CMAKE_BINARY_DIR}/lib
+	${FCPPT_UTILS_PROJECT_BINARY_DIR}/lib
 )
 
 option(
@@ -536,7 +546,7 @@ macro(
 	)
 		set(
 			WHOLE_FILE
-			${CMAKE_SOURCE_DIR}/${CUR_FILE}
+			${FCPPT_UTILS_PROJECT_SOURCE_DIR}/${CUR_FILE}
 		)
 
 		set(
@@ -562,7 +572,7 @@ macro(
 	)
 		set(
 			WHOLE_FILE
-			${CMAKE_SOURCE_DIR}/${CUR_FILE}
+			${FCPPT_UTILS_PROJECT_SOURCE_DIR}/${CUR_FILE}
 		)
 
 		get_filename_component(
@@ -608,12 +618,12 @@ endmacro()
 
 set(
 	FCPPT_UTILS_TARGETS_CONFIG
-	"${CMAKE_PROJECT_NAME}Targets"
+	"${PROJECT_NAME}Targets"
 )
 
 set(
 	FCPPT_UTILS_BUILD_CONFIG_DIR
-	"${CMAKE_BINARY_DIR}/config"
+	"${FCPPT_UTILS_PROJECT_BINARY_DIR}/config"
 )
 
 set(
@@ -673,19 +683,19 @@ function(
 		FCPPT_UTILS_IN_SOURCE_BUILD
 	)
 		set(
-			${CMAKE_PROJECT_NAME}_INCLUDE_DIR
-			"${CMAKE_SOURCE_DIR}/include;${CMAKE_BINARY_DIR}/include"
+			${PROJECT_NAME}_INCLUDE_DIR
+			"${FCPPT_UTILS_PROJECT_SOURCE_DIR}/include;${FCPPT_UTILS_PROJECT_BINARY_DIR}/include"
 		)
 	else()
 		set(
-			${CMAKE_PROJECT_NAME}_INCLUDE_DIR
+			${PROJECT_NAME}_INCLUDE_DIR
 			"${INSTALL_INCLUDE_DIR}"
 		)
 	endif()
 
 	set(
 		CONFIG_NAME
-		"${CMAKE_PROJECT_NAME}-config.cmake"
+		"${PROJECT_NAME}-config.cmake"
 	)
 
 	set(
@@ -694,7 +704,7 @@ function(
 	)
 
 	configure_file(
-		"${CMAKE_SOURCE_DIR}/${CONFIG_NAME}.in"
+		"${FCPPT_UTILS_PROJECT_SOURCE_DIR}/${CONFIG_NAME}.in"
 		"${CONFIG_DEST}"
 		@ONLY
 	)

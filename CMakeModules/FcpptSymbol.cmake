@@ -11,8 +11,13 @@ function(
 	)
 
 	set(
+		BINARY_DIR
+		"${${PROJECT_NAME}_BINARY_DIR}"
+	)
+
+	set(
 		TEMP_FILE
-		"${CMAKE_BINARY_DIR}/fcppt_generate_symbol.hpp.in"
+		"${BINARY_DIR}/fcppt_generate_symbol.hpp.in"
 	)
 
 	file(
@@ -38,6 +43,6 @@ function(
 
 	configure_file(
 		"${TEMP_FILE}"
-		"${CMAKE_BINARY_DIR}/include/${RELATIVE_PATH}/symbol.hpp"
+		"${BINARY_DIR}/include/${RELATIVE_PATH}/symbol.hpp"
 	)
 endfunction()
