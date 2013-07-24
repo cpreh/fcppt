@@ -15,6 +15,7 @@
 #include <fcppt/config/external_begin.hpp>
 #include <boost/utility/enable_if.hpp>
 #include <algorithm>
+#include <initializer_list>
 #include <iterator>
 #include <utility>
 #include <fcppt/config/external_end.hpp>
@@ -524,6 +525,30 @@ fcppt::container::raw_vector<
 	this->assign(
 		_begin,
 		_end
+	);
+}
+
+template<
+	typename T,
+	typename A
+>
+fcppt::container::raw_vector<
+	T,
+	A
+>::raw_vector(
+	std::initializer_list<
+		T
+	> const _inits,
+	A const &_alloc
+)
+:
+	impl_(
+		_alloc
+	)
+{
+	this->assign(
+		_inits.begin(),
+		_inits.end()
 	);
 }
 

@@ -12,7 +12,6 @@
 #include <fcppt/algorithm/join_strings.hpp>
 #include <fcppt/algorithm/ptr_container_erase.hpp>
 #include <fcppt/algorithm/shortest_levenshtein.hpp>
-#include <fcppt/assign/make_container.hpp>
 #include <fcppt/container/raw_vector_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/ptr_container/ptr_vector.hpp>
@@ -67,18 +66,19 @@ int main()
 	std::vector<std::string>
 	string_vector;
 
-	string_vector strings;
-	strings.push_back("foo");
-	strings.push_back("ba");
-	strings.push_back("bu");
+	string_vector strings{
+		"foo",
+		"ba",
+		"bu"
+	};
 
 	// join_strings, outputs "foo|bar|baz"
 	std::cout << fcppt::algorithm::join_strings(strings,"|") << "\n";
 
-	string_vector const more_strings(
-		fcppt::assign::make_container<string_vector>
-			("test")
-			("test2"));
+	string_vector const more_strings{
+		"test",
+		"test2"
+	};
 
 	std::string const &string_cref =
 		fcppt::algorithm::shortest_levenshtein(

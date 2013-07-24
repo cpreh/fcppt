@@ -12,6 +12,7 @@
 #include <fcppt/type_traits/is_input_iterator.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/utility/enable_if.hpp>
+#include <initializer_list>
 #include <iterator>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
@@ -321,6 +322,13 @@ public:
 	raw_vector (
 		In beg,
 		In end,
+		A const &a = A()
+	);
+
+	raw_vector(
+		std::initializer_list<
+			value_type
+		>,
 		A const &a = A()
 	);
 

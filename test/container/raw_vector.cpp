@@ -407,3 +407,31 @@ FCPPT_PP_POP_WARNING
 		test2.empty()
 	);
 }
+
+FCPPT_PP_PUSH_WARNING
+FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
+
+BOOST_AUTO_TEST_CASE(
+	container_raw_vector_initializer_list
+)
+{
+FCPPT_PP_POP_WARNING
+
+	container_type const test1{
+		1,
+		2,
+		3
+	};
+
+	BOOST_REQUIRE(
+		test1.size() == 3u
+	);
+
+	BOOST_CHECK(
+		test1[0] == 1
+		&&
+		test1[1] == 2
+		&&
+		test1[2] == 3
+	);
+}
