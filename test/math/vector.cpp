@@ -11,6 +11,7 @@
 #include <fcppt/math/vector/arithmetic.hpp>
 #include <fcppt/math/vector/comparison.hpp>
 #include <fcppt/math/vector/componentwise_equal.hpp>
+#include <fcppt/math/vector/fill.hpp>
 #include <fcppt/math/vector/hypersphere_to_cartesian.hpp>
 #include <fcppt/math/vector/object.hpp>
 #include <fcppt/math/vector/output.hpp>
@@ -375,4 +376,31 @@ FCPPT_PP_POP_WARNING
 				std::sin(
 					phi2)),
 			epsilon));
+}
+
+FCPPT_PP_PUSH_WARNING
+FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
+
+BOOST_AUTO_TEST_CASE(
+	vector_fill
+)
+{
+FCPPT_PP_POP_WARNING
+	typedef fcppt::math::vector::static_<
+		unsigned,
+		2
+	> ui2_vector;
+
+	ui2_vector const vector(
+		fcppt::math::vector::fill<
+			2
+		>(
+			42u
+		)
+	);
+
+	BOOST_REQUIRE(
+		vector.x() == 42
+		&& vector.y() == 42
+	);
 }
