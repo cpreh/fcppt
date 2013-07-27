@@ -253,11 +253,6 @@ link_directories(
 	${Boost_LIBRARY_DIRS}
 )
 
-find_package(
-	FcpptThreads
-	REQUIRED
-)
-
 set(
 	CMAKE_REQUIRED_INCLUDES
 	${FCPPT_UTILS_PROJECT_SOURCE_DIR}/include

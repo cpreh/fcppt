@@ -98,7 +98,6 @@ set(
 	examples/assert.cpp
 	examples/assert_complete.cpp
 	examples/backtrace.cpp
-	examples/chrono_asio.cpp
 	examples/codecvt.cpp
 	examples/container.cpp
 	examples/container/bitfield.cpp
