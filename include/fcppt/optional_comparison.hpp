@@ -39,7 +39,8 @@ operator==(
 		?
 			*_a == *_b
 		:
-			_a.has_value() == _b.has_value();
+			_a.has_value() == _b.has_value()
+		;
 }
 
 /**
@@ -64,6 +65,35 @@ operator!=(
 {
 	return
 		!(_a == _b);
+}
+
+/**
+\brief Compares two optionals lexicographically
+
+\ingroup fcpptoptional
+
+Compares \a _a and \a _b lexicographically. If one or both of them are empty,
+returns <code>_a.has_value() < _b.has_value()</code>, otherwise returns
+<code>*_a < *_b</code>.
+\param _a The first optional
+\param _b The second optional
+*/
+template<
+	typename T
+>
+bool
+operator<(
+	fcppt::optional<T> const &_a,
+	fcppt::optional<T> const &_b
+)
+{
+	return
+		_a && _b
+		?
+			*_a < *_b
+		:
+			_a.has_value() < _b.has_value()
+		;
 }
 
 }

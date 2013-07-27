@@ -683,3 +683,65 @@ FCPPT_PP_POP_WARNING
 		"test2"
 	);
 }
+
+FCPPT_PP_PUSH_WARNING
+FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
+
+BOOST_AUTO_TEST_CASE(
+	optional_less
+)
+{
+FCPPT_PP_POP_WARNING
+
+	typedef fcppt::optional<
+		int
+	> optional_int;
+
+	BOOST_CHECK(
+		!(
+			optional_int()
+			<
+			optional_int()
+		)
+	);
+
+	BOOST_CHECK(
+		optional_int()
+		<
+		optional_int(
+			10
+		)
+	);
+
+	BOOST_CHECK(
+		!(
+			optional_int(
+				10
+			)
+			<
+			optional_int()
+		)
+	);
+
+	BOOST_CHECK(
+		optional_int(
+			5
+		)
+		<
+		optional_int(
+			10
+		)
+	);
+
+	BOOST_CHECK(
+		!(
+			optional_int(
+				10
+			)
+			<
+			optional_int(
+				5
+			)
+		)
+	);
+}
