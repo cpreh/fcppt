@@ -4,6 +4,7 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
+#include <fcppt/make_unique_ptr.hpp>
 #include <fcppt/noncopyable.hpp>
 #include <fcppt/optional.hpp>
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
@@ -11,6 +12,7 @@
 #include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/test/unit_test.hpp>
+#include <memory>
 #include <string>
 #include <type_traits>
 #include <utility>
@@ -743,5 +745,56 @@ FCPPT_PP_POP_WARNING
 				5
 			)
 		)
+	);
+}
+
+FCPPT_PP_PUSH_WARNING
+FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
+
+BOOST_AUTO_TEST_CASE(
+	unique_ptr_to_optional
+)
+{
+FCPPT_PP_POP_WARNING
+	typedef
+	std::unique_ptr<
+		int
+	>
+	int_unique_ptr;
+
+	BOOST_CHECK(
+		!fcppt::unique_ptr_to_optional(
+			int_unique_ptr()
+		).has_value()
+	);
+
+	int_unique_ptr ptr(
+		fcppt::make_unique_ptr<
+			int
+		>(
+			42
+		)
+	);
+
+	typedef
+	fcppt::optional<
+		int &
+	>
+	optional_reference;
+
+	optional_reference const ref(
+		fcppt::unique_ptr_to_optional(
+			ptr
+		)
+	);
+
+	BOOST_REQUIRE(
+		ref.has_value()
+	);
+
+	BOOST_CHECK(
+		*ref
+		==
+		42
 	);
 }

@@ -15,6 +15,7 @@
 #include <fcppt/optional_impl.hpp>
 #include <fcppt/optional_ref_compare.hpp>
 #include <fcppt/static_optional_cast.hpp>
+#include <fcppt/unique_ptr_to_optional.hpp>
 
 
 #endif
