@@ -33,7 +33,7 @@ Returns the contents of the file denoted by \a path as string.
 \throw fcppt::filesystem::exception if anything goes wrong
 */
 FCPPT_FILESYSTEM_SYMBOL
-fcppt::string const
+fcppt::string
 file_to_string(
 	boost::filesystem::path const &path
 );

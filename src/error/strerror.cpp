@@ -11,7 +11,7 @@
 #include <fcppt/config/external_end.hpp>
 
 
-fcppt::string const
+fcppt::string
 fcppt::error::strerror(
 	int const _errnum
 )

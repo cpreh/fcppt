@@ -19,7 +19,8 @@
 #include <fcppt/config/external_end.hpp>
 #endif
 
-fcppt::string const
+
+fcppt::string
 fcppt::type_name(
 	std::type_info const &_info
 )

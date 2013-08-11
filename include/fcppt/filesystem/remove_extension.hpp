@@ -30,7 +30,7 @@ Removes the extension (inluding the dot) from \a path if it has any.
 \return A new path with the extension removed
 */
 FCPPT_FILESYSTEM_SYMBOL
-boost::filesystem::path const
+boost::filesystem::path
 remove_extension(
 	boost::filesystem::path const &path
 );

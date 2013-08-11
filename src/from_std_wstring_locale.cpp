@@ -17,7 +17,7 @@
 
 
 
-fcppt::string const
+fcppt::string
 fcppt::from_std_wstring_locale(
 	std::wstring const &_input,
 #if defined(FCPPT_NARROW_STRING)

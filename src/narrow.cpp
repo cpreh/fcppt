@@ -13,7 +13,7 @@
 #include <fcppt/config/external_end.hpp>
 
 
-std::string const
+std::string
 fcppt::narrow(
 	std::wstring const &_string,
 	std::locale const &_locale

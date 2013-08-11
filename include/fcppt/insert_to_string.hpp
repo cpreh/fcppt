@@ -15,6 +15,7 @@
 #include <string>
 #include <fcppt/config/external_end.hpp>
 
+
 namespace fcppt
 {
 
@@ -45,7 +46,7 @@ typename boost::enable_if<
 		Dest
 	>,
 	Dest
->::type const
+>::type
 insert_to_string(
 	Source const &_source,
 	std::locale const &_locale

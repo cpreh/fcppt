@@ -36,21 +36,29 @@ template
 	typename SourceContainer,
 	typename Functor
 >
-TargetContainer const
+TargetContainer
 map(
 	SourceContainer const &s,
-	Functor const &f)
+	Functor const &f
+)
 {
 	TargetContainer t;
+
 	::std::transform(
 		s.begin(),
 		s.end(),
-		::std::inserter<TargetContainer>(
+		::std::inserter<
+			TargetContainer
+		>(
 			t,
-			t.end()),
-		f);
+			t.end()
+		),
+		f
+	);
+
 	return t;
 }
+
 }
 }
 

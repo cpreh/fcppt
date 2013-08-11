@@ -14,6 +14,7 @@
 #include <string>
 #include <fcppt/config/external_end.hpp>
 
+
 namespace fcppt
 {
 
@@ -25,7 +26,7 @@ See the \link fcpptstring string module description \endlink for more
 information about this function.
 */
 FCPPT_SYMBOL
-std::wstring const
+std::wstring
 to_std_wstring_locale(
 	fcppt::string const &,
 	std::locale const &

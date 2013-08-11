@@ -12,7 +12,7 @@
 #include <fcppt/config/external_end.hpp>
 
 
-boost::filesystem::path const
+boost::filesystem::path
 fcppt::filesystem::replace_extension(
 	boost::filesystem::path const &_path,
 	fcppt::string const &_ext

@@ -22,6 +22,7 @@
 #include <fcppt/config/external_end.hpp>
 #endif
 
+
 bool
 fcppt::filesystem::is_executable(
 #if defined(FCPPT_CONFIG_POSIX_PLATFORM)

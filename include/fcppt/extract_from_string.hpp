@@ -16,6 +16,7 @@
 #include <string>
 #include <fcppt/config/external_end.hpp>
 
+
 namespace fcppt
 {
 

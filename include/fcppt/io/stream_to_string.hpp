@@ -30,7 +30,7 @@ template<
 std::basic_string<
 	Ch,
 	Traits
-> const
+>
 stream_to_string(
 	std::basic_istream<
 		Ch,

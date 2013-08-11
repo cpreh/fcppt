@@ -29,7 +29,7 @@ Converts a log level given by \a level to its enumerator name as a string.
 \warning The behaviour is undefined if fcppt::log::level::size is passed.
 */
 FCPPT_SYMBOL
-fcppt::string const
+fcppt::string
 level_to_string(
 	fcppt::log::level level
 );

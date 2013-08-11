@@ -14,6 +14,7 @@
 #include <string>
 #include <fcppt/config/external_end.hpp>
 
+
 namespace fcppt
 {
 
@@ -37,7 +38,7 @@ see why this locale was chosen.
 template<
 	typename Source
 >
-fcppt::string const
+fcppt::string
 insert_to_fcppt_string(
 	Source const &_source,
 	std::locale const &_locale

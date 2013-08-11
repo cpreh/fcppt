@@ -10,6 +10,7 @@
 #include <fcppt/string.hpp>
 #include <fcppt/symbol.hpp>
 
+
 namespace fcppt
 {
 namespace error
@@ -26,7 +27,7 @@ code given by \a errnum.
 \a errnum The error code to return the message for
 */
 FCPPT_SYMBOL
-fcppt::string const
+fcppt::string
 strerror(
 	int errnum
 );

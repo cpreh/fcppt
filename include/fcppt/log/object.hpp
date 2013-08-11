@@ -212,7 +212,7 @@ public:
 	<code>fcppt::log::optional_location()</code>
 	*/
 	FCPPT_SYMBOL
-	fcppt::log::optional_location const
+	fcppt::log::optional_location
 	location() const;
 private:
 	fcppt::log::detail::auto_context auto_context_;

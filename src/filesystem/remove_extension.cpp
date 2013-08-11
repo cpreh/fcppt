@@ -11,7 +11,7 @@
 #include <fcppt/config/external_end.hpp>
 
 
-boost::filesystem::path const
+boost::filesystem::path
 fcppt::filesystem::remove_extension(
 	boost::filesystem::path const &_path
 )

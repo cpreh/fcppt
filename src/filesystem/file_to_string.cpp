@@ -82,7 +82,7 @@ check_size(
 
 }
 
-fcppt::string const
+fcppt::string
 fcppt::filesystem::file_to_string(
 	boost::filesystem::path const &_path
 )

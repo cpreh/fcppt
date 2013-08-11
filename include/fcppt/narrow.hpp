@@ -20,7 +20,7 @@ namespace fcppt
 
 /// convert an std::wstring to std::string
 FCPPT_SYMBOL
-std::string const
+std::string
 narrow(
 	std::wstring const &,
 	std::locale const &

@@ -32,7 +32,7 @@ Returns the extension of \a path without the dot as a string instead of a path.
 the string will be empty.
 */
 FCPPT_FILESYSTEM_SYMBOL
-fcppt::string const
+fcppt::string
 extension_without_dot(
 	boost::filesystem::path const &path
 );

@@ -28,7 +28,7 @@ fcppt::log::format::default_level \endlink as its formatter.
 \return A stream array consisting of a default stream for each level
 */
 FCPPT_SYMBOL
-fcppt::log::level_stream_array const
+fcppt::log::level_stream_array
 default_level_streams(
 	fcppt::io::ostream &stream
 );

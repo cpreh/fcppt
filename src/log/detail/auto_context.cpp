@@ -58,7 +58,7 @@ fcppt::log::detail::auto_context::~auto_context()
 		);
 }
 
-fcppt::log::optional_location const
+fcppt::log::optional_location const &
 fcppt::log::detail::auto_context::location() const
 {
 	return location_;

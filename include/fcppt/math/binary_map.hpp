@@ -26,7 +26,7 @@ template<
 	typename Source2,
 	typename Function
 >
-Dest const
+Dest
 binary_map(
 	Source1 const &_source1,
 	Source2 const &_source2,

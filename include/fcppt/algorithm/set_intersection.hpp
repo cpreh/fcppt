@@ -32,7 +32,7 @@ new container.
 template<
 	typename Set
 >
-Set const
+Set
 set_intersection(
 	Set const &a,
 	Set const &b

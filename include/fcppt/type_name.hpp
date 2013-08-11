@@ -18,7 +18,7 @@ namespace fcppt
 {
 
 FCPPT_SYMBOL
-fcppt::string const
+fcppt::string
 type_name(
 	std::type_info const &
 );

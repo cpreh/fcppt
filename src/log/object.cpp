@@ -200,7 +200,7 @@ fcppt::log::object::enabled_levels() const
 	return enabled_levels_;
 }
 
-fcppt::log::optional_location const
+fcppt::log::optional_location
 fcppt::log::object::location() const
 {
 	return auto_context_.location();

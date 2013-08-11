@@ -35,7 +35,7 @@ public:
 
 	~auto_context();
 
-	fcppt::log::optional_location const
+	fcppt::log::optional_location const &
 	location() const;
 
 	fcppt::log::detail::optional_context_tree_ref const

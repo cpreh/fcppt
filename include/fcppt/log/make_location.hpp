@@ -36,7 +36,7 @@ delim
 \throw fcppt::log::exception if \a text doesn't contain any \a delim
 */
 FCPPT_SYMBOL
-fcppt::log::location const
+fcppt::log::location
 make_location(
 	fcppt::string const &text,
 	fcppt::char_type delim

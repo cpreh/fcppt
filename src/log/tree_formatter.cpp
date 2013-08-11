@@ -16,7 +16,7 @@
 #include <fcppt/variant/object_impl.hpp>
 
 
-fcppt::log::format::function const
+fcppt::log::format::function
 fcppt::log::tree_formatter(
 	fcppt::log::detail::optional_context_tree_ref _node,
 	fcppt::log::format::function const &_formatter

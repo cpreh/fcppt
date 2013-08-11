@@ -16,7 +16,7 @@ namespace fcppt
 namespace log
 {
 
-fcppt::log::format::function const
+fcppt::log::format::function
 tree_formatter(
 	fcppt::log::detail::optional_context_tree_ref,
 	fcppt::log::format::function const &

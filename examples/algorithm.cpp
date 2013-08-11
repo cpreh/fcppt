@@ -6,7 +6,6 @@
 
 #include <fcppt/algorithm/append.hpp>
 #include <fcppt/algorithm/contains.hpp>
-#include <fcppt/algorithm/copy_if.hpp>
 #include <fcppt/algorithm/copy_n.hpp>
 #include <fcppt/algorithm/find_exn.hpp>
 #include <fcppt/algorithm/join_strings.hpp>
@@ -108,23 +107,4 @@ int main()
 	fcppt::algorithm::ptr_container_erase(
 		ptrs,
 		ptr);
-
-	string_vector new_strings;
-
-	fcppt::algorithm::copy_if(
-		strings.begin(),
-		strings.end(),
-		std::back_inserter<
-			string_vector
-		>(
-			new_strings
-		),
-		[](
-			std::string const &_string
-		)
-		{
-			return
-				_string.size() == 2u;
-		}
-	);
 }

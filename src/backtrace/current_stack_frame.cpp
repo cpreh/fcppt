@@ -16,7 +16,7 @@
 #include <execinfo.h>
 #endif
 
-fcppt::backtrace::stack_frame const
+fcppt::backtrace::stack_frame
 fcppt::backtrace::current_stack_frame(
 	backtrace::stack_limit const &
 #if defined(FCPPT_HAVE_BACKTRACE)

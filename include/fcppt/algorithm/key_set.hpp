@@ -21,7 +21,7 @@ template<
 	typename Set,
 	typename Map
 >
-Set const
+Set
 key_set(
 	Map const &map
 )

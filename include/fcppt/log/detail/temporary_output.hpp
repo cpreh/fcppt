@@ -42,7 +42,7 @@ public:
 	);
 
 	FCPPT_SYMBOL
-	fcppt::string const
+	fcppt::string
 	result() const;
 private:
 	// The unique_ptr should go when libstdc++ streams are movable

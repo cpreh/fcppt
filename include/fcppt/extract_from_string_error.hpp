@@ -9,6 +9,7 @@
 
 #include <fcppt/exception.hpp>
 
+
 namespace fcppt
 {
 

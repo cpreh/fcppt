@@ -50,7 +50,7 @@ template
 	std::size_t SourceCount,
 	typename Function
 >
-TargetArray const
+TargetArray
 array_binary_map(
 	std::array<
 		SourceType1,

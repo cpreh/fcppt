@@ -30,7 +30,7 @@ Converts \a time into a string using <code>%std::ctime</code>.
 \throw fcppt::time::exception if anything fails
 */
 FCPPT_SYMBOL
-fcppt::string const
+fcppt::string
 ctime(
 	std::time_t time
 );

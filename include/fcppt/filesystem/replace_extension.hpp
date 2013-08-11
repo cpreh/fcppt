@@ -33,7 +33,7 @@ Replaces the extension of \a path with \a new_extension.
 \return A new path with the extension replaced
 */
 FCPPT_FILESYSTEM_SYMBOL
-boost::filesystem::path const
+boost::filesystem::path
 replace_extension(
 	boost::filesystem::path const &path,
 	fcppt::string const &new_extension

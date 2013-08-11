@@ -10,7 +10,7 @@
 #include <fcppt/src/log/level_strings.hpp>
 
 
-fcppt::string const
+fcppt::string
 fcppt::log::level_to_string(
 	fcppt::log::level const _level
 )

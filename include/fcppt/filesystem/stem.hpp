@@ -33,7 +33,7 @@ extension.
 no filename
 */
 FCPPT_FILESYSTEM_SYMBOL
-fcppt::string const
+fcppt::string
 stem(
 	boost::filesystem::path const &path
 );

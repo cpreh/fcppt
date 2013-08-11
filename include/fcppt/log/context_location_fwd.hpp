@@ -7,6 +7,7 @@
 #ifndef FCPPT_LOG_CONTEXT_LOCATION_FWD_HPP_INCLUDED
 #define FCPPT_LOG_CONTEXT_LOCATION_FWD_HPP_INCLUDED
 
+
 namespace fcppt
 {
 namespace log

@@ -32,7 +32,7 @@ Returns the extension of \a path as a string instead of a path.
 empty.
 */
 FCPPT_FILESYSTEM_SYMBOL
-fcppt::string const
+fcppt::string
 extension(
 	boost::filesystem::path const &path
 );

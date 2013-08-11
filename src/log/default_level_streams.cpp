@@ -13,7 +13,7 @@
 #include <fcppt/log/format/default_level.hpp>
 
 
-fcppt::log::level_stream_array const
+fcppt::log::level_stream_array
 fcppt::log::default_level_streams(
 	fcppt::io::ostream &_sink
 )

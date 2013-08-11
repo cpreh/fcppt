@@ -27,7 +27,7 @@ namespace algorithm
 template<
 	typename Set
 >
-Set const
+Set
 set_union(
 	Set const &a,
 	Set const &b

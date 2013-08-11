@@ -31,7 +31,7 @@ template
 <
 	typename Range
 >
-typename Range::value_type const
+typename Range::value_type
 join_strings(
 	Range const &_range,
 	typename Range::value_type const &_delim

@@ -26,20 +26,23 @@ namespace algorithm
 /// Returns the array element with the shortest levenshtein distance
 /// to the "ref" element. Undefined if _container.empty().
 ///
-/// FIXME: Have a nonconst version for this? Base this on iterators?
 template<
 	typename Range,
 	typename Value
 >
 typename
-boost::range_reference<Range>::type
+boost::range_reference<
+	Range
+>::type
 shortest_levenshtein(
 	Range &_range,
 	Value const &_element
 )
 {
 	typedef typename
-	boost::range_value<Range>::type
+	boost::range_value<
+		Range
+	>::type
 	string_type;
 
 	typedef typename
@@ -47,7 +50,9 @@ shortest_levenshtein(
 	size_type;
 
 	typedef typename
-	boost::range_iterator<Range>::type
+	boost::range_iterator<
+		Range
+	>::type
 	iterator;
 
 	size_type shortest_dist(
@@ -92,6 +97,28 @@ shortest_levenshtein(
 	}
 
 	return *shortest;
+}
+
+template<
+	typename Range,
+	typename Value
+>
+typename
+boost::range_reference<
+	Range const
+>::type
+shortest_levenshtein(
+	Range const &_range,
+	Value const &_element
+)
+{
+	return
+		fcppt::algorithm::shortest_levenshtein<
+			Range const
+		>(
+			_range,
+			_element
+		);
 }
 
 }

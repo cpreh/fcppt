@@ -26,7 +26,7 @@ See the \link fcpptstring string module description \endlink for more
 information about this function.
 */
 FCPPT_SYMBOL
-std::string const
+std::string
 to_std_string_locale(
 	fcppt::string const &,
 	std::locale const &

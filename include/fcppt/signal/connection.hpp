@@ -30,8 +30,8 @@ FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
 
 \ingroup fcpptsignal
 
-This class must be held onto as long as the connection should to the signal
-should be established.
+This class must be held onto as long as the connection to the signal should be
+established.
 */
 class FCPPT_CLASS_SYMBOL connection
 :

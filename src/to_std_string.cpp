@@ -16,7 +16,7 @@
 #include <fcppt/config/external_end.hpp>
 
 
-std::string const
+std::string
 fcppt::to_std_string(
 	fcppt::string const &_input
 )

@@ -18,7 +18,7 @@ namespace fcppt
 namespace backtrace
 {
 FCPPT_SYMBOL
-backtrace::stack_frame const
+backtrace::stack_frame
 current_stack_frame(
 	backtrace::stack_limit const &);
 }

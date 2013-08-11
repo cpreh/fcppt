@@ -13,7 +13,7 @@
 #include <fcppt/config/external_end.hpp>
 
 
-fcppt::string const
+fcppt::string
 fcppt::filesystem::extension_without_dot(
 	boost::filesystem::path const &_path
 )

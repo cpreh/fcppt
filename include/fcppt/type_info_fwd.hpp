@@ -7,6 +7,7 @@
 #ifndef FCPPT_TYPE_INFO_FWD_HPP_INCLUDED
 #define FCPPT_TYPE_INFO_FWD_HPP_INCLUDED
 
+
 namespace fcppt
 {
 

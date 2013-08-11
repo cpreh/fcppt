@@ -16,7 +16,7 @@
 #include <fcppt/config/external_end.hpp>
 
 
-fcppt::log::location const
+fcppt::log::location
 fcppt::log::make_location(
 	fcppt::string const &_name,
 	fcppt::char_type const _delim

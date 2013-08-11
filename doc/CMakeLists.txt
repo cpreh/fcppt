@@ -175,7 +175,6 @@ set(
 	include/fcppt/algorithm/array_map.hpp
 	include/fcppt/algorithm/contains.hpp
 	include/fcppt/algorithm/contains_if.hpp
-	include/fcppt/algorithm/copy_if.hpp
 	include/fcppt/algorithm/copy_n.hpp
 	include/fcppt/algorithm/detail/array_fold_function.hpp
 	include/fcppt/algorithm/detail/array_fold_static.hpp

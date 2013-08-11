@@ -13,7 +13,7 @@
 #include <fcppt/config/external_end.hpp>
 
 
-std::wstring const
+std::wstring
 fcppt::widen(
 	std::string const &_string,
 	std::locale const &_locale

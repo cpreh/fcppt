@@ -27,7 +27,7 @@ namespace filesystem
 Turns \a path into an fcppt::string.
 */
 FCPPT_FILESYSTEM_SYMBOL
-fcppt::string const
+fcppt::string
 path_to_string(
 	boost::filesystem::path const &path
 );

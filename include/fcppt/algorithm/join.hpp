@@ -32,7 +32,7 @@ template
 <
 	typename Container
 >
-Container const
+Container
 join(
 	Container _left,
 	Container const &_right

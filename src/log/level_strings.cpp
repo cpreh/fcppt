@@ -9,7 +9,7 @@
 #include <fcppt/src/log/level_strings.hpp>
 
 
-fcppt::log::level_string_array const
+fcppt::log::level_string_array
 fcppt::log::level_strings()
 {
 	level_string_array const ret{{

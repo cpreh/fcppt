@@ -29,7 +29,7 @@ template<
 	typename In,
 	typename Function
 >
-std::basic_string<Out> const
+std::basic_string<Out>
 codecvt(
 	std::basic_string<In> const &_string,
 	std::locale const &_locale,
