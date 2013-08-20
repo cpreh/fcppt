@@ -8,8 +8,8 @@
 #define FCPPT_RANDOM_GENERATOR_SEED_FROM_CHRONO_HPP_INCLUDED
 
 #include <fcppt/config/external_begin.hpp>
-#include <boost/chrono/system_clocks.hpp>
 #include <boost/utility/enable_if.hpp>
+#include <chrono>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
@@ -51,7 +51,7 @@ seed_from_chrono()
 			static_cast<
 				typename Seed::value_type
 			>(
-				boost::chrono::high_resolution_clock::now().time_since_epoch().count()
+				std::chrono::high_resolution_clock::now().time_since_epoch().count()
 			)
 		);
 }

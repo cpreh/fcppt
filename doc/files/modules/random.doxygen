@@ -64,7 +64,7 @@ replacing them by strong typedefs instead.
 
 To actually draw random numbers, you have to create a (pseudo) random number
 generator first. Such a generator must be seeded, for example with a time value
-obtained from fcppt::chrono.
+obtained from std::chrono.
 
 \snippet random/simple.cpp random_generator
 

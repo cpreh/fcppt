@@ -199,7 +199,7 @@ set(
 
 set(
 	NEEDED_BOOST_LIBS
-	"chrono;filesystem;system"
+	"filesystem;system"
 )
 
 if(

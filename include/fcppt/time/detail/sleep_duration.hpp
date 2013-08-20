@@ -9,7 +9,7 @@
 
 #include <fcppt/config/platform.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/chrono/duration.hpp>
+#include <chrono>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -21,9 +21,9 @@ namespace detail
 {
 
 #if defined(FCPPT_CONFIG_WINDOWS_PLATFORM)
-typedef boost::chrono::milliseconds sleep_duration;
+typedef std::chrono::milliseconds sleep_duration;
 #elif defined(FCPPT_CONFIG_POSIX_PLATFORM)
-typedef boost::chrono::nanoseconds sleep_duration;
+typedef std::chrono::nanoseconds sleep_duration;
 #else
 #error "Don't know what the sleep duration should be!"
 #endif

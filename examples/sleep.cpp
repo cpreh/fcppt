@@ -7,7 +7,7 @@
 //[sleep
 #include <fcppt/time/sleep_any.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/chrono/duration.hpp>
+#include <chrono>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -16,7 +16,7 @@ main()
 {
 	// sleep for 10 seconds
 	fcppt::time::sleep_any(
-		boost::chrono::seconds(
+		std::chrono::seconds(
 			10
 		)
 	);
