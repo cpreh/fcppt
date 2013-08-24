@@ -16,9 +16,12 @@ namespace fcppt
 {
 namespace backtrace
 {
+
 FCPPT_MAKE_STRONG_TYPEDEF(
-	backtrace::stack_frame::size_type,
-	stack_limit);
+	fcppt::backtrace::stack_frame::size_type,
+	stack_limit
+);
+
 }
 }
 

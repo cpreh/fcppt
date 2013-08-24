@@ -7,6 +7,7 @@
 #ifndef FCPPT_VARIANT_OBJECT_IMPL_HPP_INCLUDED
 #define FCPPT_VARIANT_OBJECT_IMPL_HPP_INCLUDED
 
+#include <fcppt/cast/from_void_ptr.hpp>
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
@@ -381,7 +382,7 @@ fcppt::variant::object<
 	);
 
 	return
-		*static_cast<
+		*fcppt::cast::from_void_ptr<
 			U *
 		>(
 			this->raw_data()
@@ -406,7 +407,7 @@ fcppt::variant::object<
 	);
 
 	return
-		*static_cast<
+		*fcppt::cast::from_void_ptr<
 			U const *
 		>(
 			this->raw_data()

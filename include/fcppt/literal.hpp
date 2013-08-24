@@ -32,6 +32,7 @@ template<
 	typename Type,
 	typename Fundamental
 >
+constexpr
 typename
 boost::enable_if<
 	std::is_fundamental<

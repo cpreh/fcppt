@@ -7,6 +7,9 @@
 #ifndef FCPPT_MATH_DETAIL_PI_HPP_INCLUDED
 #define FCPPT_MATH_DETAIL_PI_HPP_INCLUDED
 
+#include <fcppt/cast/size.hpp>
+
+
 namespace fcppt
 {
 namespace math
@@ -24,7 +27,8 @@ struct pi<
 	long double
 >
 {
-	static long double
+	static
+	long double
 	get()
 	{
 		return 3.1415926535897932384626433832795028841971693993751058L;
@@ -36,7 +40,8 @@ struct pi<
 	double
 >
 {
-	static double
+	static
+	double
 	get()
 	{
 		return 3.1415926535897932384626433832795028841971693993751058;
@@ -48,13 +53,19 @@ struct pi<
 	float
 >
 {
-	static float
+	static
+	float
 	get()
 	{
 		// TODO: add another constant for this!
-		return static_cast<float>(
-			pi<double>::get()
-		);
+		return
+			fcppt::cast::size<
+				float
+			>(
+				fcppt::math::detail::pi<
+					double
+				>::get()
+			);
 	}
 };
 

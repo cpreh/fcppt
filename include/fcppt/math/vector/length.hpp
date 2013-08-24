@@ -7,6 +7,7 @@
 #ifndef FCPPT_MATH_VECTOR_LENGTH_HPP_INCLUDED
 #define FCPPT_MATH_VECTOR_LENGTH_HPP_INCLUDED
 
+#include <fcppt/cast/int_to_float.hpp>
 #include <fcppt/math/vector/length_square.hpp>
 #include <fcppt/math/vector/object_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
@@ -152,7 +153,9 @@ length(
 {
 	return
 		std::sqrt(
-			static_cast<Dest>(
+			fcppt::cast::int_to_float<
+				Dest
+			>(
 				fcppt::math::vector::length_square(
 					v
 				)

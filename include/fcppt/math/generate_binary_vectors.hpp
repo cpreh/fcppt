@@ -9,6 +9,7 @@
 #define FCPPT_MATH_GENERATE_BINARY_VECTORS_HPP_INCLUDED
 
 #include <fcppt/no_init.hpp>
+#include <fcppt/literal.hpp>
 #include <fcppt/algorithm/array_init.hpp>
 #include <fcppt/math/size_type.hpp>
 #include <fcppt/math/detail/generate_binary_vectors.hpp>
@@ -85,7 +86,7 @@ template<typename T,fcppt::math::size_type N>
 std::array
 <
 	fcppt::math::vector::static_<T,N>,
-	static_cast<std::size_t>(1u) << N
+	fcppt::literal<std::size_t>(1u) << N
 > const
 generate_binary_vectors()
 {
@@ -97,7 +98,7 @@ generate_binary_vectors()
 	std::array
 	<
 		vector_type,
-		static_cast<std::size_t>(1u) << N
+		fcppt::literal<std::size_t>(1u) << N
 	>
 	result_type;
 
@@ -113,7 +114,7 @@ generate_binary_vectors()
 
 	fcppt::math::detail::generate_binary_vectors
 	<
-		static_cast<fcppt::math::size_type>(N-1),
+		N - fcppt::literal<fcppt::math::size_type>(1),
 		typename result_type::iterator,
 		vector_type
 	>(

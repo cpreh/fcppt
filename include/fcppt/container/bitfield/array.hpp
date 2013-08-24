@@ -7,6 +7,7 @@
 #ifndef FCPPT_CONTAINER_BITFIELD_ARRAY_HPP_INCLUDED
 #define FCPPT_CONTAINER_BITFIELD_ARRAY_HPP_INCLUDED
 
+#include <fcppt/cast/size.hpp>
 #include <fcppt/container/bitfield/detail/element_bits.hpp>
 #include <fcppt/mpl/ceil_div.hpp>
 #include <fcppt/config/external_begin.hpp>
@@ -40,7 +41,7 @@ struct array
 		InternalType,
 		fcppt::mpl::ceil_div<
 			std::size_t,
-			static_cast<
+			fcppt::cast::size<
 				std::size_t
 			>(
 				NumElements::value

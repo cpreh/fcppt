@@ -7,6 +7,8 @@
 #ifndef FCPPT_MATH_DETAIL_INDEX_AT_HPP_INCLUDED
 #define FCPPT_MATH_DETAIL_INDEX_AT_HPP_INCLUDED
 
+#include <fcppt/cast/size.hpp>
+#include <fcppt/cast/to_signed.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <iterator>
 #include <fcppt/config/external_end.hpp>
@@ -35,12 +37,14 @@ index_at(
 		*(
 			_iterator
 			+
-			static_cast<
+			fcppt::cast::size<
 				typename std::iterator_traits<
 					Iterator
 				>::difference_type
 			>(
-				_size
+				fcppt::cast::to_signed(
+					_size
+				)
 			)
 		);
 }

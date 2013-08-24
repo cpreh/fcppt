@@ -93,12 +93,12 @@ determinant(
 	for (size_type i = 0; i < t.columns(); ++i)
 	{
 		T const coeff =
-			i % static_cast<size_type>(2) == static_cast<size_type>(0)
+			i % fcppt::literal<size_type>(2) == fcppt::literal<size_type>(0)
 			?
-				static_cast<T>(
+				fcppt::literal<T>(
 					1)
 			:
-				static_cast<T>(
+				fcppt::literal<T>(
 					-1);
 
 		sum +=

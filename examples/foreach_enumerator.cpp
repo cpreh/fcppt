@@ -8,6 +8,7 @@
 #include <fcppt/foreach_enumerator_start.hpp>
 #include <fcppt/foreach_enumerator_start_end.hpp>
 #include <fcppt/text.hpp>
+#include <fcppt/cast/enum_to_underlying.hpp>
 #include <fcppt/io/cout.hpp>
 
 
@@ -32,8 +33,12 @@ print_enum_value(
 )
 {
 	fcppt::io::cout()
-		<< static_cast<unsigned long>(val) // necessary to silence a warning about promotions
-		<< FCPPT_TEXT(' ');
+		<<
+		fcppt::cast::enum_to_underlying(
+			val
+		)
+		<<
+		FCPPT_TEXT(' ');
 }
 
 }

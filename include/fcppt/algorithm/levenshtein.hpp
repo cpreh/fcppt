@@ -8,6 +8,9 @@
 #ifndef FCPPT_ALGORITHM_LEVENSHTEIN_HPP_INCLUDED
 #define FCPPT_ALGORITHM_LEVENSHTEIN_HPP_INCLUDED
 
+#include <fcppt/literal.hpp>
+#include <fcppt/cast/to_signed.hpp>
+#include <fcppt/cast/to_unsigned.hpp>
 #include <fcppt/container/grid/object.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/range/empty.hpp>
@@ -22,6 +25,7 @@ namespace fcppt
 {
 namespace algorithm
 {
+
 /**
 \brief Calculates the Levenshtein distance
 \ingroup fcpptalgorithm
@@ -62,13 +66,11 @@ levenshtein(
 
 	size_type const
 		n =
-			static_cast<size_type>(
-				boost::size(
-					source)),
+			boost::size(
+				source),
 		m =
-			static_cast<size_type>(
-				boost::size(
-					target));
+			boost::size(
+				target);
 
 	if(boost::empty(source))
 		return m;
@@ -92,44 +94,42 @@ levenshtein(
 	grid::pos
 	pos;
 
-	typedef typename
-	pos::value_type
-	dimension_type;
-
 	grid matrix(
 		dim(
-			static_cast<dimension_type>(
-				n+1),
-			static_cast<dimension_type>(
-				m+1)));
+			n + 1,
+			m + 1
+		)
+	);
 
 	// Step 2
 
 	for (size_type i = 0; i <= n; i++)
-		matrix[pos(static_cast<dimension_type>(i),0u)] = i;
+		matrix[pos(i,0u)] = i;
 
 	for (size_type j = 0; j <= m; j++)
-		matrix[pos(0u,static_cast<dimension_type>(j))] = j;
+		matrix[pos(0u,j)] = j;
 
-	for (difference_type i = 1; i <= static_cast<difference_type>(n); i++)
+	for (difference_type i = 1; i <= fcppt::cast::to_signed(n); i++)
 	{
 		char_type const &s_i =
 			*(boost::begin(
 				source) +
 			i-1);
 
-		for (difference_type j = 1; j <= static_cast<difference_type>(m); j++)
+		for (difference_type j = 1; j <= fcppt::cast::to_signed(m); j++)
 		{
 			char_type const &t_j =
 				*(boost::begin(
 					target) +
 				j-1);
 
-			size_type cost;
-			if (s_i == t_j)
-				cost = 0u;
-			else
-				cost = 1u;
+			size_type const cost(
+				s_i == t_j
+				?
+					0u
+				:
+					1u
+			);
 
 			// Step 6
 
@@ -137,51 +137,48 @@ levenshtein(
 				above =
 					matrix[
 						pos(
-							static_cast<dimension_type>(
+							fcppt::cast::to_unsigned(
 								i-1),
-							static_cast<dimension_type>(
+							fcppt::cast::to_unsigned(
 								j))],
 				left =
 					matrix[
 						pos(
-							static_cast<dimension_type>(
+							fcppt::cast::to_unsigned(
 								i),
-							static_cast<dimension_type>(
+							fcppt::cast::to_unsigned(
 								j-1))],
 				diag =
 					matrix[
 						pos(
-							static_cast<dimension_type>(
+							fcppt::cast::to_unsigned(
 								i-1),
-							static_cast<dimension_type>(
+							fcppt::cast::to_unsigned(
 								j-1))];
 
 			size_type cell =
 				::std::min(
-					static_cast<size_type>(
-						above + 1u),
+					above + 1u,
 					::std::min(
-						static_cast<size_type>(
-							left + 1u),
-						static_cast<size_type>(
-							diag + cost)));
+						left + 1u,
+						diag + cost));
 
 			// Step 6A: Cover transposition, in addition to deletion,
 			// insertion and substitution. This step is taken from:
 			// Berghel, Hal ; Roach, David : "An Extension of Ukkonen's
 			// Enhanced Dynamic Programming ASM Algorithm"
 			// (http://www.acm.org/~hlb/publications/asm/asm.html)
-			if(i>static_cast<difference_type>(2) && j>static_cast<difference_type>(2))
+			if(i>fcppt::literal<difference_type>(2) && j>fcppt::literal<difference_type>(2))
 			{
 				size_type trans =
-					static_cast<size_type>(
-						matrix[
-							pos(
-								static_cast<dimension_type>(
-									i-2),
-								static_cast<dimension_type>(
-									j-2))] +
-							1u);
+					matrix[
+						pos(
+							fcppt::cast::to_unsigned(
+								i-2),
+							fcppt::cast::to_unsigned(
+								j-2))
+					] +
+						1u;
 
 				if(*(boost::begin(source) + i-2) != t_j)
 					trans++;
@@ -195,9 +192,9 @@ levenshtein(
 
 			matrix[
 				pos(
-					static_cast<dimension_type>(
+					fcppt::cast::to_unsigned(
 						i),
-					static_cast<dimension_type>(
+					fcppt::cast::to_unsigned(
 						j))] =
 				cell;
 		}
@@ -206,11 +203,12 @@ levenshtein(
 	return
 		matrix[
 			pos(
-				static_cast<dimension_type>(
-					n),
-				static_cast<dimension_type>(
-					m))];
+				n,
+				m
+			)
+		];
 }
+
 }
 }
 

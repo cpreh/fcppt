@@ -8,6 +8,7 @@
 #define FCPPT_STATIC_OPTIONAL_CAST_HPP_INCLUDED
 
 #include <fcppt/optional_fwd.hpp>
+#include <fcppt/cast/static_downcast.hpp>
 #include <fcppt/detail/optional_cast.hpp>
 
 
@@ -44,7 +45,7 @@ static_optional_cast(
 {
 	return
 		FCPPT_DETAIL_OPTIONAL_CAST(
-			static_cast
+			fcppt::cast::static_downcast
 		);
 }
 

@@ -9,6 +9,7 @@
 
 #include <fcppt/no_init.hpp>
 #include <fcppt/algorithm/contains_if.hpp>
+#include <fcppt/cast/to_signed.hpp>
 #include <fcppt/container/bitfield/iterator_impl.hpp>
 #include <fcppt/container/bitfield/object_decl.hpp>
 #include <fcppt/container/bitfield/proxy_impl.hpp>
@@ -17,6 +18,7 @@
 #include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <algorithm>
+#include <iterator>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -196,9 +198,7 @@ fcppt::container::bitfield::object<
 	return
 		iterator(
 			array_,
-			static_cast<
-				typename iterator::difference_type
-			>(
+			fcppt::cast::to_signed(
 				this->size()
 			)
 		);
@@ -223,9 +223,7 @@ fcppt::container::bitfield::object<
 	return
 		const_iterator(
 			array_,
-			static_cast<
-				typename const_iterator::difference_type
-			>(
+			fcppt::cast::to_signed(
 				this->size()
 			)
 		);
@@ -441,7 +439,11 @@ fcppt::container::bitfield::object<
 			this->begin()
 			+
 			static_cast<
-				typename const_iterator::difference_type
+				typename
+				std::iterator_traits<
+					typename
+					array_type::const_iterator
+				>::difference_type
 			>(
 				_index
 			)
@@ -471,7 +473,11 @@ fcppt::container::bitfield::object<
 			this->begin()
 			+
 			static_cast<
-				typename iterator::difference_type
+				typename
+				std::iterator_traits<
+					typename
+					array_type::const_iterator
+				>::difference_type
 			>(
 				_index
 			)

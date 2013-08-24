@@ -8,17 +8,19 @@
 #ifndef FCPPT_NUMBER_MULTIPLEXER_OBJECT_IMPL_HPP_INCLUDED
 #define FCPPT_NUMBER_MULTIPLEXER_OBJECT_IMPL_HPP_INCLUDED
 
+#include <fcppt/literal.hpp>
 #include <fcppt/number_multiplexer/object_decl.hpp>
 #include <fcppt/number_multiplexer/set_bits.hpp>
+
 
 template<typename T>
 fcppt::number_multiplexer::object<T>::object()
 :
 	value_(
-		static_cast<value_type>(
+		fcppt::literal<value_type>(
 			0)),
 	last_bit_set_(
-		static_cast<value_type>(
+		fcppt::literal<value_type>(
 			0))
 {
 }
@@ -30,7 +32,7 @@ fcppt::number_multiplexer::object<T>::object(
 	value_(
 		_value),
 	last_bit_set_(
-		static_cast<value_type>(
+		fcppt::literal<value_type>(
 			0))
 {
 }

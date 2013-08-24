@@ -9,6 +9,7 @@
 #define FCPPT_SIGNAL_UNREGISTER_BASE_IMPL_HPP_INCLUDED
 
 #include <fcppt/make_unique_ptr.hpp>
+#include <fcppt/cast/static_downcast.hpp>
 #include <fcppt/signal/auto_connection.hpp>
 #include <fcppt/signal/unregister/base_decl.hpp>
 #include <fcppt/signal/unregister/function.hpp>
@@ -37,7 +38,7 @@ fcppt::signal::unregister::base<T>::connect(
 	);
 
 	connections_.push_back(
-		static_cast<
+		fcppt::cast::static_downcast<
 			concrete_connection &
 		>(
 			*con

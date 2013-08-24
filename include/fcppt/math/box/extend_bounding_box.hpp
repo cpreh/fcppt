@@ -60,8 +60,7 @@ extend_bounding_box(
 		}
 
 		T const end =
-			static_cast<T>(
-				b.pos()[i] + b.size()[i]);
+			b.pos()[i] + b.size()[i];
 
 		if (p[i] > end)
 			b.size(

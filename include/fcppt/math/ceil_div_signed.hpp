@@ -7,6 +7,8 @@
 #ifndef FCPPT_MATH_CEIL_DIV_SIGNED_HPP_INCLUDED
 #define FCPPT_MATH_CEIL_DIV_SIGNED_HPP_INCLUDED
 
+#include <fcppt/cast/to_signed.hpp>
+#include <fcppt/cast/to_unsigned.hpp>
 #include <fcppt/math/ceil_div.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/utility/enable_if.hpp>
@@ -40,13 +42,6 @@ ceil_div_signed(
 	T const &_divisor
 )
 {
-	typedef
-	typename
-	std::make_unsigned<
-		T
-	>::type
-	unsigned_type;
-
 	return
 		(
 			_dividend
@@ -62,18 +57,12 @@ ceil_div_signed(
 			/
 			_divisor
 		:
-			static_cast<
-				T
-			>(
+			fcppt::cast::to_signed(
 				fcppt::math::ceil_div(
-					static_cast<
-						unsigned_type
-					>(
+					fcppt::cast::to_unsigned(
 						_dividend
 					),
-					static_cast<
-						unsigned_type
-					>(
+					fcppt::cast::to_unsigned(
 						_divisor
 					)
 				)

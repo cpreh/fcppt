@@ -9,6 +9,8 @@
 
 #include <fcppt/assert/exception.hpp>
 #include <fcppt/assert/throw.hpp>
+#include <fcppt/cast/size.hpp>
+#include <fcppt/cast/to_signed.hpp>
 #include <fcppt/math/detail/array_adapter.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <algorithm>
@@ -84,9 +86,7 @@ BOOST_PP_TUPLE_REM(class_arity)def_pre ::end()\
 	return \
 		this->begin() \
 		+ \
-		static_cast<\
-			difference_type\
-		>(\
+		fcppt::cast::to_signed(\
 			this->size()\
 		);\
 }\
@@ -98,9 +98,7 @@ BOOST_PP_TUPLE_REM(class_arity)def_pre ::end() const\
 	return \
 		this->begin() \
 		+ \
-		static_cast<\
-			difference_type\
-		>(\
+		fcppt::cast::to_signed(\
 			this->size()\
 		);\
 }\
@@ -173,7 +171,7 @@ typename BOOST_PP_TUPLE_REM(class_arity)def_pre ::size_type \
 BOOST_PP_TUPLE_REM(class_arity)def_pre ::size() const\
 {\
 	return \
-		static_cast<\
+		fcppt::cast::size<\
 			size_type\
 		>(\
 			storage_.size()\

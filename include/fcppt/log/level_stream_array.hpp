@@ -8,6 +8,7 @@
 #define FCPPT_LOG_LEVEL_STREAM_ARRAY_HPP_INCLUDED
 
 #include <fcppt/enum_size.hpp>
+#include <fcppt/cast/size.hpp>
 #include <fcppt/log/level.hpp>
 #include <fcppt/log/level_stream.hpp>
 #include <fcppt/config/external_begin.hpp>
@@ -32,7 +33,7 @@ fcppt::log::level \endlink.
 */
 typedef std::array<
 	fcppt::log::level_stream,
-	static_cast<
+	fcppt::cast::size<
 		std::size_t
 	>(
 		fcppt::enum_size<

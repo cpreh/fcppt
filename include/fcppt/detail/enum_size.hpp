@@ -10,6 +10,7 @@
 #include <fcppt/enum_is_empty.hpp>
 #include <fcppt/enum_max_value.hpp>
 #include <fcppt/enum_size_type.hpp>
+#include <fcppt/cast/enum_to_int.hpp>
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
@@ -70,7 +71,7 @@ std::integral_constant<
 	typename fcppt::enum_size_type<
 		Type
 	>::type,
-	static_cast<
+	fcppt::cast::enum_to_int<
 		typename fcppt::enum_size_type<
 			Type
 		>::type
@@ -79,7 +80,8 @@ std::integral_constant<
 			Type
 		>::value
 	)
-	+ 1u
+	+
+	1u
 >
 {
 };

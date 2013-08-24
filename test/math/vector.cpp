@@ -304,9 +304,9 @@ FCPPT_PP_POP_WARNING
 
 	real const
 		phi1 =
-			static_cast<real>(1.5),
+			fcppt::literal<real>(1.5),
 		phi2 =
-			static_cast<real>(0.5);
+			fcppt::literal<real>(0.5);
 
 	fvector2 const result2 =
 		fcppt::math::vector::hypersphere_to_cartesian(

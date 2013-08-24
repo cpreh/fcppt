@@ -8,6 +8,8 @@
 #define FCPPT_FOREACH_ENUMERATOR_HPP_INCLUDED
 
 #include <fcppt/foreach_enumerator_start.hpp>
+#include <fcppt/cast/int_to_enum.hpp>
+
 
 /**
 \brief Iterates over an enum
@@ -29,7 +31,7 @@ size minus one.
 	FCPPT_FOREACH_ENUMERATOR_START(\
 		name,\
 		enum_, \
-		static_cast<\
+		fcppt::cast::int_to_enum<\
 			enum_\
 		>(\
 			0\

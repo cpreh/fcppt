@@ -8,6 +8,7 @@
 #define FCPPT_CONTAINER_RAW_VECTOR_IMPL_HPP_INCLUDED
 
 #include <fcppt/assert/pre.hpp>
+#include <fcppt/cast/to_unsigned.hpp>
 #include <fcppt/container/out_of_range.hpp>
 #include <fcppt/container/raw_vector_decl.hpp>
 #include <fcppt/detail/equal.hpp>
@@ -768,11 +769,10 @@ fcppt::container::raw_vector<
 >::size() const
 {
 	return
-		static_cast<
-			size_type
-		>(
+		fcppt::cast::to_unsigned(
 			impl_.last_
-			- impl_.first_
+			-
+			impl_.first_
 		);
 }
 
@@ -820,11 +820,10 @@ fcppt::container::raw_vector<
 >::capacity() const
 {
 	return
-		static_cast<
-			size_type
-		>(
+		fcppt::cast::to_unsigned(
 			impl_.cap_
-			- impl_.first_
+			-
+			impl_.first_
 		);
 }
 
@@ -1328,7 +1327,11 @@ fcppt::container::raw_vector<
 	);
 
 	size_type const new_size(
-		this->size() + static_cast<size_type>(distance)
+		this->size()
+		+
+		fcppt::cast::to_unsigned(
+			distance
+		)
 	);
 
 	if(

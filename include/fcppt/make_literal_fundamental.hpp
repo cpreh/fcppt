@@ -34,6 +34,7 @@ struct make_literal<
 		typename Fundamental
 	>
 	static
+	constexpr
 	Type
 	get(
 		Fundamental const _fundamental

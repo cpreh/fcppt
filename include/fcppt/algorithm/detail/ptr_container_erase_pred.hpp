@@ -27,7 +27,8 @@ class ptr_container_erase_pred
 		ptr_container_erase_pred
 	);
 public:
-	explicit ptr_container_erase_pred(
+	explicit
+	ptr_container_erase_pred(
 		Pointer const _pointer
 	)
 	:
@@ -48,6 +49,7 @@ public:
 		return
 			pointer_
 			==
+			// TODO: Is this necessary?
 			static_cast<
 				Pointer
 			>(

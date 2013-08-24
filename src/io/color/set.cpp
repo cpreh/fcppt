@@ -4,6 +4,7 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
+#include <fcppt/cast/enum_to_underlying.hpp>
 #include <fcppt/io/color/attribute.hpp>
 #include <fcppt/io/color/background.hpp>
 #include <fcppt/io/color/foreground.hpp>
@@ -138,10 +139,6 @@ fcppt::io::color::set::attribute() const
 	return attribute_;
 }
 
-typedef
-int
-enum_impl;
-
 std::ostream &
 fcppt::io::color::operator<<(
 	std::ostream &s,
@@ -151,9 +148,9 @@ fcppt::io::color::operator<<(
 		return s;
 	return s
 		<< "\033["
-		<< static_cast<enum_impl>(c.attribute()) << ";"
-		<< static_cast<enum_impl>(c.foreground()) << ";"
-		<< static_cast<enum_impl>(c.background()) << "m";
+		<< fcppt::cast::enum_to_underlying(c.attribute()) << ";"
+		<< fcppt::cast::enum_to_underlying(c.foreground()) << ";"
+		<< fcppt::cast::enum_to_underlying(c.background()) << "m";
 }
 
 std::wostream &
@@ -165,7 +162,7 @@ fcppt::io::color::operator<<(
 		return s;
 	return s
 		<< L"\033["
-		<< static_cast<enum_impl>(c.attribute()) << L";"
-		<< static_cast<enum_impl>(c.foreground()) << L";"
-		<< static_cast<enum_impl>(c.background()) << L"m";
+		<< fcppt::cast::enum_to_underlying(c.attribute()) << L";"
+		<< fcppt::cast::enum_to_underlying(c.foreground()) << L";"
+		<< fcppt::cast::enum_to_underlying(c.background()) << L"m";
 }

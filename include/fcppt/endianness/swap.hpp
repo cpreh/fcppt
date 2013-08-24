@@ -7,6 +7,7 @@
 #ifndef FCPPT_ENDIANNESS_SWAP_HPP_INCLUDED
 #define FCPPT_ENDIANNESS_SWAP_HPP_INCLUDED
 
+#include <fcppt/cast/to_char_ptr.hpp>
 #include <fcppt/endianness/raw_pointer.hpp>
 #include <fcppt/endianness/reverse_mem.hpp>
 #include <fcppt/config/external_begin.hpp>
@@ -47,7 +48,7 @@ swap(
 )
 {
 	fcppt::endianness::reverse_mem(
-		reinterpret_cast<
+		fcppt::cast::to_char_ptr<
 			fcppt::endianness::raw_pointer
 		>(
 			&_value

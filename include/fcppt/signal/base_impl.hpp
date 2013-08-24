@@ -9,6 +9,7 @@
 #define FCPPT_SIGNAL_BASE_IMPL_HPP_INCLUDED
 
 #include <fcppt/make_unique_ptr.hpp>
+#include <fcppt/cast/static_downcast.hpp>
 #include <fcppt/signal/auto_connection.hpp>
 #include <fcppt/signal/base_decl.hpp>
 #include <fcppt/signal/detail/concrete_connection_impl.hpp>
@@ -36,7 +37,7 @@ fcppt::signal::base<
 	);
 
 	connections_.push_back(
-		static_cast<
+		fcppt::cast::static_downcast<
 			concrete_connection &
 		>(
 			*con

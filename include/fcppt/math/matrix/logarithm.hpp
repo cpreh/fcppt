@@ -9,6 +9,7 @@
 #define FCPPT_MATH_MATRIX_LOGARITHM_HPP_INCLUDED
 
 #include <fcppt/literal.hpp>
+#include <fcppt/cast/int_to_float.hpp>
 #include <fcppt/math/matrix/arithmetic.hpp>
 #include <fcppt/math/matrix/infinity_norm.hpp>
 #include <fcppt/math/matrix/object_impl.hpp>
@@ -84,17 +85,27 @@ logarithm(
 	{
 		Z =
 			Z * A;
-		i++;
+		++i;
 		X =
 			X +
-			fcppt::literal<T>(1)/static_cast<T>(i) *
+			fcppt::literal<T>(1)/fcppt::cast::int_to_float<T>(i) *
 			Z;
 	}
 
-	if(k != 0)
+	if(k != fcppt::literal<matrix_size_type>(0))
 		X =
-			fcppt::literal<T>(
-				1u << k) *
+			fcppt::cast::int_to_float<
+				T
+			>(
+				fcppt::literal<
+					matrix_size_type
+				>(
+					1u
+				)
+				<<
+				k
+			)
+			*
 			X;
 
 	return

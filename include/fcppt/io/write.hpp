@@ -7,6 +7,9 @@
 #ifndef FCPPT_IO_WRITE_HPP_INCLUDED
 #define FCPPT_IO_WRITE_HPP_INCLUDED
 
+#include <fcppt/cast/size.hpp>
+#include <fcppt/cast/to_char_ptr.hpp>
+#include <fcppt/cast/to_signed.hpp>
 #include <fcppt/endianness/convert.hpp>
 #include <fcppt/endianness/format_fwd.hpp>
 #include <fcppt/config/external_begin.hpp>
@@ -61,16 +64,18 @@ write(
 	);
 
 	_stream.write(
-		reinterpret_cast<
+		fcppt::cast::to_char_ptr<
 			char const *
 		>(
 			&tmp
 		),
-		static_cast<
+		fcppt::cast::size<
 			std::streamsize
 		>(
-			sizeof(
-				Type
+			fcppt::cast::to_signed(
+				sizeof(
+					Type
+				)
 			)
 		)
 	);

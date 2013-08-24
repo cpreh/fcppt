@@ -5,6 +5,7 @@
 
 
 #include <fcppt/string.hpp>
+#include <fcppt/cast/enum_to_int.hpp>
 #include <fcppt/log/level.hpp>
 #include <fcppt/log/level_to_string.hpp>
 #include <fcppt/src/log/level_strings.hpp>
@@ -17,7 +18,7 @@ fcppt::log::level_to_string(
 {
 	return
 		fcppt::log::level_strings()[
-			static_cast<
+			fcppt::cast::enum_to_int<
 				fcppt::log::level_string_array::size_type
 			>(
 				_level

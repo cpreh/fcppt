@@ -7,6 +7,7 @@
 #ifndef FCPPT_CONTAINER_BITFIELD_PROXY_IMPL_HPP_INCLUDED
 #define FCPPT_CONTAINER_BITFIELD_PROXY_IMPL_HPP_INCLUDED
 
+#include <fcppt/literal.hpp>
 #include <fcppt/container/bitfield/proxy_decl.hpp>
 #include <fcppt/container/bitfield/value_type.hpp>
 
@@ -73,7 +74,7 @@ fcppt::container::bitfield::proxy<
 )
 {
 	return
-		static_cast<
+		fcppt::literal<
 			internal_type
 		>(
 			1u

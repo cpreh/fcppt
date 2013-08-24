@@ -4,6 +4,7 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
+#include <fcppt/literal.hpp>
 #include <fcppt/assign/make_container.hpp>
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
@@ -40,7 +41,7 @@ FCPPT_PP_POP_WARNING
 				5));
 
 	BOOST_REQUIRE(
-		c.size() == static_cast<sequence::size_type>(3) &&
+		c.size() == fcppt::literal<sequence::size_type>(3) &&
 		c[0] == 3 &&
 		c[1] == 4 &&
 		c[2] == 5);
@@ -61,7 +62,7 @@ FCPPT_PP_POP_WARNING
 				5));
 
 	BOOST_REQUIRE(
-		c.size() == static_cast<set::size_type>(3) &&
+		c.size() == fcppt::literal<set::size_type>(3) &&
 		c.find(3) != c.end() &&
 		c.find(4) != c.end() &&
 		c.find(5) != c.end());
@@ -82,7 +83,7 @@ FCPPT_PP_POP_WARNING
 				5)));
 
 	BOOST_REQUIRE(
-		m.size() == static_cast<map::size_type>(2) &&
+		m.size() == fcppt::literal<map::size_type>(2) &&
 		m.find(3) != m.end() &&
 		m.find(3)->second == 2 &&
 		m.find(4) != m.end() &&

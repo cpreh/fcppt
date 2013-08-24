@@ -246,6 +246,17 @@ set(
 	include/fcppt/bad_truncation_check_cast.hpp
 	include/fcppt/c_deleter.hpp
 	include/fcppt/c_deleter_fwd.hpp
+	include/fcppt/cast/enum_to_int.hpp
+	include/fcppt/cast/enum_to_underlying.hpp
+	include/fcppt/cast/from_void_ptr.hpp
+	include/fcppt/cast/int_to_enum.hpp
+	include/fcppt/cast/int_to_float.hpp
+	include/fcppt/cast/size.hpp
+	include/fcppt/cast/static_downcast.hpp
+	include/fcppt/cast/static_downcast_ptr.hpp
+	include/fcppt/cast/to_signed.hpp
+	include/fcppt/cast/to_unsigned.hpp
+	include/fcppt/cast/to_void.hpp
 	include/fcppt/cast_to_enum.hpp
 	include/fcppt/char_type.hpp
 	include/fcppt/check_literal_conversion.hpp
@@ -295,6 +306,7 @@ set(
 	include/fcppt/container/grid/detail/choose_pointer.hpp
 	include/fcppt/container/grid/detail/choose_reference.hpp
 	include/fcppt/container/grid/detail/fill.hpp
+	include/fcppt/container/grid/detail/interpolate.hpp
 	include/fcppt/container/grid/detail/pos_iterator_base.hpp
 	include/fcppt/container/grid/detail/print_recurse.hpp
 	include/fcppt/container/grid/detail/resize.hpp
@@ -401,6 +413,7 @@ set(
 	include/fcppt/detail/foreach_enumerator_start.hpp
 	include/fcppt/detail/foreach_enumerator_start_end.hpp
 	include/fcppt/detail/foreach_enumerator_var_decl.hpp
+	include/fcppt/detail/foreach_enumerator_var_fwd.hpp
 	include/fcppt/detail/foreach_enumerator_var_impl.hpp
 	include/fcppt/detail/make_shared_wrapper.hpp
 	include/fcppt/detail/make_shared_wrapper_fwd.hpp
@@ -1018,6 +1031,7 @@ set(
 	include/fcppt/type_traits/has_const_iterator.hpp
 	include/fcppt/type_traits/has_iterator.hpp
 	include/fcppt/type_traits/is_bidirectional_iterator.hpp
+	include/fcppt/type_traits/is_enum.hpp
 	include/fcppt/type_traits/is_float_or_double.hpp
 	include/fcppt/type_traits/is_forward_iterator.hpp
 	include/fcppt/type_traits/is_input_iterator.hpp

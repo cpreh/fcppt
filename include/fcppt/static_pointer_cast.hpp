@@ -8,9 +8,11 @@
 #define FCPPT_STATIC_POINTER_CAST_HPP_INCLUDED
 
 #include <fcppt/shared_ptr_impl.hpp>
+#include <fcppt/cast/static_downcast_ptr.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/smart_ptr/shared_ptr.hpp>
 #include <fcppt/config/external_end.hpp>
+
 
 namespace fcppt
 {
@@ -53,7 +55,7 @@ static_pointer_cast(
 			Dest
 		>(
 			_ptr,
-			static_cast<
+			fcppt::cast::static_downcast_ptr<
 				Dest *
 			>(
 				_ptr.get()

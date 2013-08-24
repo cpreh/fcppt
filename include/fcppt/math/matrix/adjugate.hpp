@@ -73,7 +73,7 @@ adjugate(
 		for (size_type cols = 0; cols < N::value; ++cols)
 		{
 			T const coeff =
-				(rows+cols) % static_cast<size_type>(2) == static_cast<size_type>(0)
+				(rows+cols) % fcppt::literal<size_type>(2) == fcppt::literal<size_type>(0)
 				?
 					fcppt::literal<T>(
 						1

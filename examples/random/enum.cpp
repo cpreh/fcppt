@@ -5,6 +5,7 @@
 
 
 #include <fcppt/text.hpp>
+#include <fcppt/cast/enum_to_underlying.hpp>
 #include <fcppt/io/cout.hpp>
 #include <fcppt/random/variate.hpp>
 #include <fcppt/random/distribution/basic.hpp>
@@ -71,9 +72,7 @@ main()
 
 	fcppt::io::cout()
 		<<
-		static_cast<
-			unsigned
-		>(
+		fcppt::cast::enum_to_underlying(
 			chosen
 		)
 		<<

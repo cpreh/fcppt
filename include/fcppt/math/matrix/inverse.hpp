@@ -52,7 +52,7 @@ inverse(
 		fcppt::math::matrix::determinant(
 			t);
 	return
-		(fcppt::literal<T>(1)/static_cast<T>(det)) *
+		(fcppt::literal<T>(1)/det) *
 		fcppt::math::matrix::adjugate(
 			t);
 }

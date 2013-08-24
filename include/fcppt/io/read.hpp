@@ -8,6 +8,9 @@
 #define FCPPT_IO_READ_HPP_INCLUDED
 
 #include <fcppt/optional_impl.hpp>
+#include <fcppt/cast/size.hpp>
+#include <fcppt/cast/to_char_ptr.hpp>
+#include <fcppt/cast/to_signed.hpp>
 #include <fcppt/endianness/convert.hpp>
 #include <fcppt/endianness/format_fwd.hpp>
 #include <fcppt/config/external_begin.hpp>
@@ -65,16 +68,18 @@ read(
 
 	return
 		_stream.read(
-			reinterpret_cast<
+			fcppt::cast::to_char_ptr<
 				char *
 			>(
 				&result
 			),
-			static_cast<
+			fcppt::cast::size<
 				std::streamsize
 			>(
-				sizeof(
-					Type
+				fcppt::cast::to_signed(
+					sizeof(
+						Type
+					)
 				)
 			)
 		)

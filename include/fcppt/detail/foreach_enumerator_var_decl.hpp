@@ -9,6 +9,7 @@
 
 #include <fcppt/enum_size_type.hpp>
 #include <fcppt/noncopyable.hpp>
+#include <fcppt/detail/foreach_enumerator_var_fwd.hpp>
 
 
 namespace fcppt

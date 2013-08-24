@@ -6,6 +6,7 @@
 
 #include <fcppt/string.hpp>
 #include <fcppt/text.hpp>
+#include <fcppt/cast/int_to_enum.hpp>
 #include <fcppt/log/exception.hpp>
 #include <fcppt/log/level.hpp>
 #include <fcppt/log/level_from_string.hpp>
@@ -28,8 +29,8 @@ fcppt::log::level_from_string(
 
 	fcppt::log::level_string_array::const_iterator const it(
 		std::find(
-			level_strings.begin(),
-			level_strings.end(),
+			level_strings.cbegin(),
+			level_strings.cend(),
 			_name
 		)
 	);
@@ -44,15 +45,11 @@ fcppt::log::level_from_string(
 		);
 
 	return
-		static_cast<
+		fcppt::cast::int_to_enum<
 			fcppt::log::level
 		>(
 			std::distance(
-				static_cast<
-					fcppt::log::level_string_array const &
-				>(
-					level_strings
-				).begin(),
+				level_strings.cbegin(),
 				it
 			)
 		);

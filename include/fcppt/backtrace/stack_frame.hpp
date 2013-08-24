@@ -13,13 +13,18 @@
 #include <vector>
 #include <fcppt/config/external_end.hpp>
 
+
 namespace fcppt
 {
 namespace backtrace
 {
+
 typedef
-std::vector<fcppt::string>
+std::vector<
+	fcppt::string
+>
 stack_frame;
+
 }
 }
 

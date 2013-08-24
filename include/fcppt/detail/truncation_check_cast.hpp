@@ -7,7 +7,11 @@
 #ifndef FCPPT_DETAIL_TRUNCATION_CHECK_CAST_HPP_INCLUDED
 #define FCPPT_DETAIL_TRUNCATION_CHECK_CAST_HPP_INCLUDED
 
+#include <fcppt/literal.hpp>
 #include <fcppt/optional_impl.hpp>
+#include <fcppt/cast/size.hpp>
+#include <fcppt/cast/to_signed.hpp>
+#include <fcppt/cast/to_unsigned.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/mpl/and.hpp>
 #include <boost/mpl/equal_to.hpp>
@@ -99,7 +103,7 @@ truncation_check_cast(
 	> dest_type;
 
 	return
-		static_cast<
+		fcppt::cast::size<
 			Source
 		>(
 			std::numeric_limits<
@@ -112,7 +116,7 @@ truncation_check_cast(
 			dest_type()
 		:
 			dest_type(
-				static_cast<
+				fcppt::cast::size<
 					Dest
 				>(
 					_source
@@ -155,7 +159,7 @@ truncation_check_cast(
 	> dest_type;
 
 	return
-		static_cast<
+		fcppt::cast::size<
 			Source
 		>(
 			std::numeric_limits<
@@ -165,7 +169,7 @@ truncation_check_cast(
 		<
 		_source
 		||
-		static_cast<
+		fcppt::cast::size<
 			Source
 		>(
 			std::numeric_limits<
@@ -178,7 +182,7 @@ truncation_check_cast(
 			dest_type()
 		:
 			dest_type(
-				static_cast<
+				fcppt::cast::size<
 					Dest
 				>(
 					_source
@@ -212,14 +216,10 @@ truncation_check_cast(
 		Dest
 	> dest_type;
 
-	typedef typename std::make_unsigned<
-		Source
-	>::type intermediate_type;
-
 	return
 		_source
 		<
-		static_cast<
+		fcppt::literal<
 			Source
 		>(
 			0
@@ -230,9 +230,7 @@ truncation_check_cast(
 			fcppt::detail::truncation_check_cast<
 				Dest
 			>(
-				static_cast<
-					intermediate_type
-				>(
+				fcppt::cast::to_unsigned(
 					_source
 				)
 			);
@@ -282,9 +280,7 @@ truncation_check_cast(
 	return
 		!dest
 		||
-		static_cast<
-			intermediate_type
-		>(
+		fcppt::cast::to_unsigned(
 			std::numeric_limits<
 				Dest
 			>::max()
@@ -295,10 +291,12 @@ truncation_check_cast(
 			dest_type()
 		:
 			dest_type(
-				static_cast<
+				fcppt::cast::size<
 					Dest
 				>(
-					_source
+					fcppt::cast::to_signed(
+						_source
+					)
 				)
 			);
 }

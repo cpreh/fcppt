@@ -85,11 +85,7 @@ struct invoke_on<
 		return
 			Counter::value
 			==
-			static_cast<
-				typename Counter::value_type
-			>(
-				index
-			)
+			index
 			?
 #ifdef FCPPT_MSVC_DEPENDANT_TEMPLATE_BUG
 				op.operator()<

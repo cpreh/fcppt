@@ -61,14 +61,10 @@ holds_type(
 	return
 		_variant.type_index()
 		==
-		static_cast<
-			fcppt::variant::size_type
-		>(
-			fcppt::variant::detail::index_of<
-				Elements,
-				Type
-			>::value
-		);
+		fcppt::variant::detail::index_of<
+			Elements,
+			Type
+		>::value;
 }
 
 }

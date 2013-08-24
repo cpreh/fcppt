@@ -7,15 +7,13 @@
 #ifndef FCPPT_CONTAINER_GRID_POS_ITERATOR_IMPL_HPP_INCLUDED
 #define FCPPT_CONTAINER_GRID_POS_ITERATOR_IMPL_HPP_INCLUDED
 
+#include <fcppt/cast/to_signed.hpp>
 #include <fcppt/container/grid/dim.hpp>
 #include <fcppt/container/grid/object_impl.hpp>
 #include <fcppt/container/grid/pos.hpp>
 #include <fcppt/container/grid/pos_iterator_decl.hpp>
 #include <fcppt/container/grid/pos_reference_impl.hpp>
 #include <fcppt/math/vector/comparison.hpp>
-#include <fcppt/config/external_begin.hpp>
-#include <iterator>
-#include <fcppt/config/external_end.hpp>
 
 
 template<
@@ -91,12 +89,7 @@ fcppt::container::grid::pos_iterator<
 			*(
 				iterator_
 				+
-				static_cast<
-					typename
-					std::iterator_traits<
-						iterator
-					>::difference_type
-				>(
+				fcppt::cast::to_signed(
 					current_.x()
 					+
 					current_.y()

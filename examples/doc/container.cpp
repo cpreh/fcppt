@@ -4,6 +4,10 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
+#include <fcppt/literal.hpp>
+#include <fcppt/cast/size.hpp>
+#include <fcppt/cast/to_char_ptr.hpp>
+#include <fcppt/cast/to_signed.hpp>
 #include <fcppt/container/raw_vector.hpp>
 #include <fcppt/container/bitfield/object.hpp>
 #include <fcppt/config/external_begin.hpp>
@@ -30,13 +34,25 @@ std::ifstream file("test_file");
 // Note here that raw_vector has a ::data member (unlike C++03's
 // std::vector)
 file.read(
-	reinterpret_cast<char *>(
-		raw_chars.data()),
-	1024 *
-	static_cast<
+	fcppt::cast::to_char_ptr<
+		char *
+	>(
+		raw_chars.data()
+	),
+	fcppt::literal<
 		std::streamsize
 	>(
-		sizeof(int)));
+		1024
+	)
+	*
+	fcppt::cast::size<
+		std::streamsize
+	>(
+		fcppt::cast::to_signed(
+			sizeof(int)
+		)
+	)
+);
 //! [raw_vector]
 }
 }

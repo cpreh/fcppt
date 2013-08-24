@@ -7,12 +7,15 @@
 #include <fcppt/math/matrix/adjugate.hpp>
 #include <fcppt/math/matrix/comparison.hpp>
 #include <fcppt/math/matrix/object_impl.hpp>
+#include <fcppt/math/matrix/output.hpp>
 #include <fcppt/math/matrix/static.hpp>
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/test/unit_test.hpp>
+#include <iostream>
+#include <ostream>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -34,14 +37,26 @@ FCPPT_PP_POP_WARNING
 	matrix_type const t(
 		-3, 2, -5,
 		-1, 0, -2,
-		3, -4, 1);
+		3, -4, 1
+	);
+
+	matrix_type const result(
+		fcppt::math::matrix::adjugate(
+			t
+		)
+	);
+
+	std::cout
+		<< result
+		<< '\n';
 
 	BOOST_CHECK(
-		(
-		fcppt::math::matrix::adjugate(
-			t) ==
+		result
+		==
 		matrix_type(
 			-8,18,-4,
 			-5,12,-1,
-			4,-6,2)));
+			4,-6,2
+		)
+	);
 }

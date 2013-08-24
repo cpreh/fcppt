@@ -8,6 +8,7 @@
 #define FCPPT_RANDOM_DISTRIBUTION_PARAMETERS_MAKE_UNIFORM_ENUM_HPP_INCLUDED
 
 #include <fcppt/enum_max_value.hpp>
+#include <fcppt/cast/int_to_enum.hpp>
 #include <fcppt/random/distribution/parameters/uniform_int.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/utility/enable_if.hpp>
@@ -49,10 +50,10 @@ make_uniform_enum()
 			Enum
 		>(
 			typename param_type::min(
-				static_cast<
+				fcppt::cast::int_to_enum<
 					Enum
 				>(
-					0
+					0u
 				)
 			),
 			typename param_type::max(

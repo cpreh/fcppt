@@ -8,15 +8,13 @@
 #ifndef FCPPT_CONTAINER_GRID_INTERPOLATE_HPP_INCLUDED
 #define FCPPT_CONTAINER_GRID_INTERPOLATE_HPP_INCLUDED
 
+#include <fcppt/literal.hpp>
 #include <fcppt/container/grid/object_impl.hpp>
+#include <fcppt/container/grid/detail/interpolate.hpp>
 #include <fcppt/math/generate_binary_vectors.hpp>
-#include <fcppt/math/dim/object_impl.hpp>
-#include <fcppt/math/dim/structure_cast.hpp>
 #include <fcppt/math/vector/mod.hpp>
-#include <fcppt/math/vector/object_impl.hpp>
 #include <fcppt/math/vector/structure_cast.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/utility/enable_if.hpp>
 #include <array>
 #include <cstddef>
 #include <fcppt/config/external_end.hpp>
@@ -28,92 +26,6 @@ namespace container
 {
 namespace grid
 {
-namespace detail
-{
-template
-<
-	std::size_t N,
-	typename Grid,
-	typename IndexSequence,
-	typename FloatVector,
-	typename Interpolator
->
-typename
-boost::enable_if_c
-<
-	N == 1,
-	typename Grid::value_type
->::type
-interpolate(
-	Grid const &grid,
-	IndexSequence const &indices,
-	typename IndexSequence::size_type const value_index,
-	FloatVector const &p,
-	Interpolator const &interpolator)
-{
-	typedef typename
-	Grid::pos
-	grid_pos;
-
-	return
-		interpolator(
-			p[0],
-			grid[
-				fcppt::math::vector::structure_cast<grid_pos>(
-					indices[value_index])],
-			grid[
-				fcppt::math::vector::structure_cast<grid_pos>(
-					indices[value_index+1])]);
-}
-
-template
-<
-	std::size_t N,
-	typename Grid,
-	typename IndexSequence,
-	typename FloatVector,
-	typename Interpolator
->
-typename
-boost::enable_if_c
-<
-	N != 1,
-	typename Grid::value_type
->::type
-interpolate(
-	Grid const &grid,
-	IndexSequence const &indices,
-	typename IndexSequence::size_type const value_index,
-	FloatVector const &p,
-	Interpolator const &interpolator)
-{
-	typedef typename
-	FloatVector::size_type
-	float_vector_size_type;
-
-	typedef typename
-	IndexSequence::size_type
-	index_sequence_size_type;
-
-	return
-		interpolator(
-			p[static_cast<float_vector_size_type>(N-1)],
-			interpolate<static_cast<std::size_t>(N-1)>(
-				grid,
-				indices,
-				value_index,
-				p,
-				interpolator),
-			interpolate<static_cast<std::size_t>(N-1)>(
-				grid,
-				indices,
-				static_cast<index_sequence_size_type>(
-					value_index + (1u << (N-1u))),
-				p,
-				interpolator));
-}
-}
-
 /**
 \ingroup fcpptcontainergrid
 \brief Interpolates a value inside the grid cells
@@ -176,7 +88,13 @@ interpolate(
 	std::array
 	<
 		integer_vector_type,
-		static_cast<std::size_t>(1u << integer_vector_type::dim_wrapper::value)
+		fcppt::literal<
+			std::size_t
+		>(
+			1u
+		)
+		<<
+		integer_vector_type::dim_wrapper::value
 	>
 	binary_vector_array_type;
 
@@ -200,21 +118,31 @@ interpolate(
 		>());
 
 	for(
-		integer_vector_type &i : binary_vectors)
+		integer_vector_type &i : binary_vectors
+	)
 		i += floored;
 
 	return
 		fcppt::container::grid::detail::interpolate<integer_vector_type::dim_wrapper::value>(
 			grid,
 			binary_vectors,
-			static_cast<binary_vector_array_type_size_type>(
-				0),
+			fcppt::literal<
+				binary_vector_array_type_size_type
+			>(
+				0
+			),
 			fcppt::math::vector::mod(
 				floating_point_position,
-				static_cast<vector_value_type>(
-					1)),
-			interpolator);
+				fcppt::literal<
+					vector_value_type
+				>(
+					1
+				)
+			),
+			interpolator
+		);
 }
+
 }
 }
 }

@@ -5,6 +5,7 @@
 
 
 //[rawvector
+#include <fcppt/literal.hpp>
 #include <fcppt/text.hpp>
 #include <fcppt/container/raw_vector.hpp>
 #include <fcppt/io/cout.hpp>
@@ -31,7 +32,7 @@ read(
 	std::size_t const max_(
 		std::min(
 			count,
-			static_cast<
+			fcppt::literal<
 				std::size_t
 			>(
 				200

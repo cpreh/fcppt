@@ -10,6 +10,7 @@
 #include <fcppt/text.hpp>
 #include <fcppt/assert/make_message.hpp>
 #include <fcppt/assert/basic/gather_information.hpp>
+#include <fcppt/cast/to_void.hpp>
 #include <fcppt/io/cerr.hpp>
 
 
@@ -26,9 +27,7 @@ also the failed condition \a condition_arg and \a message_arg.
 	condition_arg,\
 	message_arg\
 ) \
-static_cast<\
-	void \
->( \
+fcppt::cast::to_void(\
 	fcppt::io::cerr() \
 		<< \
 		fcppt::assert_::make_message(\

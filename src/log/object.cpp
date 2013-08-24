@@ -4,6 +4,7 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
+#include <fcppt/cast/enum_to_int.hpp>
 #include <fcppt/io/ostream.hpp>
 #include <fcppt/log/context.hpp>
 #include <fcppt/log/enabled_level_array.hpp>
@@ -89,7 +90,7 @@ fcppt::log::object::level_sink(
 {
 	return
 		level_streams_[
-			static_cast<
+			fcppt::cast::enum_to_int<
 				fcppt::log::level_stream_array::size_type
 			>(
 				_level
@@ -104,7 +105,7 @@ fcppt::log::object::level_sink(
 {
 	return
 		level_streams_[
-			static_cast<
+			fcppt::cast::enum_to_int<
 				fcppt::log::level_stream_array::size_type
 			>(
 				_level
@@ -118,7 +119,7 @@ fcppt::log::object::activate(
 )
 {
 	enabled_levels_[
-		static_cast<
+		fcppt::cast::enum_to_int<
 			fcppt::log::enabled_level_array::size_type
 		>(
 			_level
@@ -132,7 +133,7 @@ fcppt::log::object::deactivate(
 )
 {
 	enabled_levels_[
-		static_cast<
+		fcppt::cast::enum_to_int<
 			fcppt::log::enabled_level_array::size_type
 		>(
 			_level
@@ -147,7 +148,7 @@ fcppt::log::object::activated(
 {
 	return
 		enabled_levels_[
-			static_cast<
+			fcppt::cast::enum_to_int<
 				fcppt::log::enabled_level_array::size_type
 			>(
 				_level

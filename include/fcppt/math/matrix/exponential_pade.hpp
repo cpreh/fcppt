@@ -9,6 +9,7 @@
 #define FCPPT_MATH_MATRIX_EXPONENTIAL_PADE_HPP_INCLUDED
 
 #include <fcppt/literal.hpp>
+#include <fcppt/cast/int_to_float.hpp>
 #include <fcppt/math/matrix/arithmetic.hpp>
 #include <fcppt/math/matrix/infinity_norm.hpp>
 #include <fcppt/math/matrix/inverse.hpp>
@@ -69,22 +70,24 @@ exponential_pade(
 			fcppt::literal<T>(
 				2);
 
-	matrix_size_type j =
-		static_cast<matrix_size_type>(
-			std::max(
-				zero,
-				one +
-				std::log(
-					fcppt::math::matrix::infinity_norm(
-						_matrix)) /
-				std::log(
-					two)));
+	T const j(
+		std::max(
+			zero,
+			one +
+			std::log(
+				fcppt::math::matrix::infinity_norm(
+					_matrix)) /
+			std::log(
+				two)));
 
 	_matrix =
 		std::pow(
 			two,
-			-static_cast<T>(
-				j)) *
+			std::floor(
+				-j
+			)
+		)
+		*
 		_matrix;
 
 	matrix_type
@@ -110,10 +113,10 @@ exponential_pade(
 	{
 		T const
 			qf =
-				static_cast<T>(
+				fcppt::cast::int_to_float<T>(
 					q),
 			kf =
-				static_cast<T>(
+				fcppt::cast::int_to_float<T>(
 					k);
 		c =
 			(c*(qf-kf+one))/

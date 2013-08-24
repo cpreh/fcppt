@@ -9,6 +9,7 @@
 #include <fcppt/text.hpp>
 #include <fcppt/assert/exception.hpp>
 #include <fcppt/assert/post.hpp>
+#include <fcppt/cast/size.hpp>
 #include <fcppt/filesystem/exception.hpp>
 #include <fcppt/filesystem/file_to_string.hpp>
 #include <fcppt/filesystem/path_to_string.hpp>
@@ -68,16 +69,17 @@ check_size(
 )
 {
 	return
-		static_cast<
+		fcppt::cast::size<
 			Size
 		>(
-			static_cast<
+			fcppt::cast::size<
 				boost::uintmax_t
 			>(
 				_size
 			)
 		)
-		== _size;
+		==
+		_size;
 }
 
 }
@@ -124,7 +126,7 @@ fcppt::filesystem::file_to_string(
 	fcppt::string ret;
 
 	ret.reserve(
-		static_cast<
+		fcppt::cast::size<
 			fcppt::string::size_type
 		>(
 			size

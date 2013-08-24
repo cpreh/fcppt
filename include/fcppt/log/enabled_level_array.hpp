@@ -8,6 +8,7 @@
 #define FCPPT_LOG_ENABLED_LEVEL_ARRAY_HPP_INCLUDED
 
 #include <fcppt/enum_size.hpp>
+#include <fcppt/cast/size.hpp>
 #include <fcppt/log/level.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <array>
@@ -30,7 +31,7 @@ corresponds to an enumerator from \link fcppt::log::level \endlink.
 */
 typedef std::array<
 	bool,
-	static_cast<
+	fcppt::cast::size<
 		std::size_t
 	>(
 		fcppt::enum_size<

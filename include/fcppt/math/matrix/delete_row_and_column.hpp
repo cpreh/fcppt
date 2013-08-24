@@ -8,6 +8,7 @@
 #ifndef FCPPT_MATH_MATRIX_DELETE_ROW_AND_COLUMN_HPP_INCLUDED
 #define FCPPT_MATH_MATRIX_DELETE_ROW_AND_COLUMN_HPP_INCLUDED
 
+#include <fcppt/literal.hpp>
 #include <fcppt/no_init.hpp>
 #include <fcppt/math/size_type.hpp>
 #include <fcppt/math/matrix/object_impl.hpp>
@@ -28,9 +29,9 @@ namespace matrix
 \tparam M The matrix's row dimension type
 \tparam N The matrix's column dimension type
 \tparam S The matrix's storage type
-\param matrix_ The matrix (must be a static matrix)
-\param row The row to delete
-\param column The column to delete
+\param _matrix The matrix (must be a static matrix)
+\param _row The row to delete
+\param _column The column to delete
 \return The result type will be <code>(N - 1, M - 1)</code>
 */
 template<
@@ -39,19 +40,27 @@ template<
 	typename M,
 	typename S
 >
-matrix::static_<
+fcppt::math::matrix::static_<
 	T,
 	N::value-1,
 	M::value-1
 > const
 delete_row_and_column(
-	object<T, N, M, S> const &matrix_,
-	typename object<T, N, M, S>::size_type const row,
-	typename object<T, N, M, S>::size_type const column
+	fcppt::math::matrix::object<T, N, M, S> const &_matrix,
+	typename object<T, N, M, S>::size_type const _row,
+	typename object<T, N, M, S>::size_type const _column
 )
 {
 	typedef
-	static_<T, N::value-1, M::value-1>
+	fcppt::math::matrix::static_<
+		T,
+		N::value
+		-
+		1,
+		M::value
+		-
+		1
+	>
 	ret_type;
 
 	typedef typename
@@ -64,38 +73,41 @@ delete_row_and_column(
 
 	for(
 		size_type i =
-			static_cast<size_type>(0);
-		i < matrix_.rows();
+			fcppt::literal<size_type>(0);
+		i < _matrix.rows();
 		++i
 	)
 	{
-		if (i == row)
+		if (i == _row)
 			continue;
 
 		size_type const reali =
-			i > row
+			i > _row
 			?
-				static_cast<size_type>(
-					i-1)
+				i
+				-
+				fcppt::literal<size_type>(
+					1
+				)
 			: i;
 
 		for(
-			size_type j = static_cast<size_type>(0);
-			j < matrix_.columns();
+			size_type j = fcppt::literal<size_type>(0);
+			j < _matrix.columns();
 			++j
 		)
 		{
-			if (j == column)
+			if (j == _column)
 				continue;
 
 			size_type const realj =
-				j > column
+				j > _column
 				?
-					static_cast<size_type>(j-1)
+					j - fcppt::literal<size_type>(1)
 				:
 					j;
 
-			ret[reali][realj] = matrix_[i][j];
+			ret[reali][realj] = _matrix[i][j];
 		}
 	}
 

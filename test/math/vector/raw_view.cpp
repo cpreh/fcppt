@@ -5,6 +5,8 @@
 
 
 #include <fcppt/nonassignable.hpp>
+#include <fcppt/cast/size.hpp>
+#include <fcppt/cast/to_signed.hpp>
 #include <fcppt/math/difference_type.hpp>
 #include <fcppt/math/size_type.hpp>
 #include <fcppt/math/static_size.hpp>
@@ -172,11 +174,13 @@ private:
 	stride()
 	{
 		return
-			static_cast<
+			fcppt::cast::size<
 				difference_type
 			>(
-				sizeof(
-					Type
+				fcppt::cast::to_signed(
+					sizeof(
+						Type
+					)
 				)
 			);
 	}

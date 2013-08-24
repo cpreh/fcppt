@@ -7,9 +7,10 @@
 #ifndef FCPPT_CONTAINER_GRID_ITERATOR_POSITION_HPP_INCLUDED
 #define FCPPT_CONTAINER_GRID_ITERATOR_POSITION_HPP_INCLUDED
 
+#include <fcppt/literal.hpp>
 #include <fcppt/no_init.hpp>
+#include <fcppt/cast/to_unsigned.hpp>
 #include <fcppt/container/grid/object_impl.hpp>
-#include <fcppt/math/dim/object_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <iterator>
 #include <fcppt/config/external_end.hpp>
@@ -54,37 +55,81 @@ iterator_position(
 
 	stacked_dim[0] = grid.size()[0];
 
-	for(dim_size_type i = 1; i < stacked_dim.size(); ++i)
-		stacked_dim[i] =
-			stacked_dim[static_cast<dim_size_type>(i-1)] * grid.size()[i];
+	for(
+		dim_size_type index(1);
+		index < stacked_dim.size();
+		++index
+	)
+		stacked_dim[
+			index
+		] =
+			stacked_dim[
+				index
+				-
+				fcppt::literal<
+					dim_size_type
+				>(
+					1
+				)
+			]
+			*
+			grid.size()[
+				index
+			];
 
 	pos ret{
 		fcppt::no_init()};
 
 	dim_unit const offset =
-		static_cast<dim_unit>(
+		fcppt::cast::to_unsigned(
 			std::distance(
 				grid.begin(),
 				it));
 
-	for(dim_size_type i = 0; i < dim::dim_wrapper::value; ++i)
+	for(
+		dim_size_type i(0);
+		i < dim::dim_wrapper::value;
+		++i
+	)
 	{
 		ret[i] = offset;
 
 		for(
 			dim_size_type m =
-				static_cast<dim_size_type>(
-					dim::dim_wrapper::value - 1);
+				dim::dim_wrapper::value
+				-
+				fcppt::literal<
+					dim_size_type
+				>(
+					1
+				);
 			m > i;
-			--m)
+			--m
+		)
 			ret[i] =
-				static_cast<dim_unit>(
-					ret[i] % stacked_dim[i]);
+				ret[i] % stacked_dim[i];
 
-		if(i > 0)
+		if(
+			i
+			>
+			fcppt::literal<
+				dim_size_type
+			>(
+				0
+			)
+		)
 			ret[i] =
-				static_cast<dim_unit>(
-					ret[i] / stacked_dim[i - 1]);
+				ret[i]
+				/
+				stacked_dim[
+					i
+					-
+					fcppt::literal<
+						dim_size_type
+					>(
+						1
+					)
+				];
 	}
 
 	return

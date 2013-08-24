@@ -7,6 +7,8 @@
 #ifndef FCPPT_RANDOM_DISTRIBUTION_TRANSFORM_ENUM_HPP_INCLUDED
 #define FCPPT_RANDOM_DISTRIBUTION_TRANSFORM_ENUM_HPP_INCLUDED
 
+#include <fcppt/cast/enum_to_int.hpp>
+#include <fcppt/cast/int_to_enum.hpp>
 #include <fcppt/random/distribution/transform/terminal_fwd.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/utility/enable_if.hpp>
@@ -49,7 +51,7 @@ struct transform<
 	)
 	{
 		return
-			static_cast<
+			fcppt::cast::int_to_enum<
 				Enum
 			>(
 				_value
@@ -64,7 +66,7 @@ struct transform<
 	)
 	{
 		return
-			static_cast<
+			fcppt::cast::enum_to_int<
 				base_type
 			>(
 				_value

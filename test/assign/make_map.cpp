@@ -4,6 +4,7 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
+#include <fcppt/literal.hpp>
 #include <fcppt/assign/make_map.hpp>
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
@@ -45,7 +46,7 @@ FCPPT_PP_POP_WARNING
 	);
 
 	BOOST_REQUIRE(
-		m.size() == static_cast<map::size_type>(2) &&
+		m.size() == fcppt::literal<map::size_type>(2) &&
 		m.find(3) != m.end() &&
 		m.find(3)->second == "foo" &&
 		m.find(4) != m.end() &&

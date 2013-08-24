@@ -4,6 +4,7 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
+#include <fcppt/cast/size.hpp>
 #include <fcppt/math/size_type.hpp>
 #include <fcppt/math/vector/comparison.hpp>
 #include <fcppt/math/vector/object.hpp>
@@ -108,7 +109,7 @@ FCPPT_PP_POP_WARNING
 	view_vector const view(
 		unsigned_view_storage(
 			data,
-			static_cast<
+			fcppt::cast::size<
 				unsigned_view_storage::size_type
 			>(
 				sizeof(data) / sizeof(unsigned)

@@ -40,14 +40,10 @@ get_impl(
 	if(
 		_variant.type_index()
 		!=
-		static_cast<
-			fcppt::variant::size_type
-		>(
-			fcppt::variant::detail::index_of<
-				types,
-				return_type
-			>::value
-		)
+		fcppt::variant::detail::index_of<
+			types,
+			return_type
+		>::value
 	)
 		throw fcppt::variant::invalid_get();
 

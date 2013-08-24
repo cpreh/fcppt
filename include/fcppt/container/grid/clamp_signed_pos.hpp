@@ -10,6 +10,8 @@
 #include <fcppt/literal.hpp>
 #include <fcppt/no_init.hpp>
 #include <fcppt/assert/pre.hpp>
+#include <fcppt/cast/to_signed.hpp>
+#include <fcppt/cast/to_unsigned.hpp>
 #include <fcppt/container/grid/dim.hpp>
 #include <fcppt/container/grid/pos.hpp>
 #include <fcppt/container/grid/size_type.hpp>
@@ -58,6 +60,13 @@ clamp_signed_pos(
 		"Source must be signed"
 	);
 
+	static_assert(
+		std::is_unsigned<
+			Dest
+		>::value,
+		"Dest must be unsigned"
+	);
+
 	FCPPT_ASSERT_PRE(
 		_size.content()
 		!=
@@ -84,9 +93,7 @@ clamp_signed_pos(
 		ret[
 			index
 		] =
-			static_cast<
-				Dest
-			>(
+			fcppt::cast::to_unsigned(
 				fcppt::math::clamp(
 					_pos[
 						index
@@ -96,9 +103,7 @@ clamp_signed_pos(
 					>(
 						0
 					),
-					static_cast<
-						Source
-					>(
+					fcppt::cast::to_signed(
 						_size[
 							index
 						]

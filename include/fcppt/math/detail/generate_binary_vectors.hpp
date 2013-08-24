@@ -10,9 +10,9 @@
 #include <fcppt/literal.hpp>
 #include <fcppt/math/size_type.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/utility/enable_if.hpp>
-#include <cstddef>
+#include <type_traits>
 #include <fcppt/config/external_end.hpp>
+
 
 namespace fcppt
 {
@@ -20,53 +20,72 @@ namespace math
 {
 namespace detail
 {
-template<fcppt::math::size_type N,typename ForwardIterator,typename Vector>
+
+template<
+	fcppt::math::size_type N,
+	typename ForwardIterator,
+	typename Vector
+>
 typename
-boost::enable_if_c
+std::enable_if
 <
-	N == static_cast<fcppt::math::size_type>(0),
+	N == fcppt::literal<fcppt::math::size_type>(0),
 	void
 >::type
 generate_binary_vectors(
 	ForwardIterator &it,
 	Vector v)
 {
-	v[static_cast<std::size_t>(N)] =
+	v[N] =
 		fcppt::literal<typename Vector::value_type>(
 			0);
 	*it++ =
 		v;
-	v[static_cast<std::size_t>(N)] =
+	v[N] =
 		fcppt::literal<typename Vector::value_type>(
 			1);
 	*it++ =
 		v;
 }
 
-template<fcppt::math::size_type N,typename ForwardIterator,typename Vector>
+template<
+	fcppt::math::size_type N,
+	typename ForwardIterator,
+	typename Vector
+>
 typename
-boost::enable_if_c
+std::enable_if
 <
-	N != static_cast<fcppt::math::size_type>(0),
+	N != fcppt::literal<fcppt::math::size_type>(0),
 	void
 >::type
 generate_binary_vectors(
 	ForwardIterator &it,
 	Vector v)
 {
-	v[static_cast<std::size_t>(N)] =
+	v[N] =
 		fcppt::literal<typename Vector::value_type>(
 			0);
-	fcppt::math::detail::generate_binary_vectors<static_cast<fcppt::math::size_type>(N-1),ForwardIterator,Vector>(
+
+	fcppt::math::detail::generate_binary_vectors<
+		N - fcppt::literal<fcppt::math::size_type>(1)
+	>(
 		it,
-		v);
-	v[static_cast<std::size_t>(N)] =
+		v
+	);
+
+	v[N] =
 		fcppt::literal<typename Vector::value_type>(
 			1);
-	fcppt::math::detail::generate_binary_vectors<static_cast<fcppt::math::size_type>(N-1),ForwardIterator,Vector>(
+
+	fcppt::math::detail::generate_binary_vectors<
+		N - fcppt::literal<fcppt::math::size_type>(1)
+	>(
 		it,
-		v);
+		v
+	);
 }
+
 }
 }
 }

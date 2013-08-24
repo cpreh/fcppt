@@ -9,6 +9,7 @@
 
 #include <fcppt/enum_size.hpp>
 #include <fcppt/string.hpp>
+#include <fcppt/cast/size.hpp>
 #include <fcppt/log/level.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <array>
@@ -23,7 +24,7 @@ namespace log
 
 typedef std::array<
 	fcppt::string,
-	static_cast<
+	fcppt::cast::size<
 		std::size_t
 	>(
 		fcppt::enum_size<

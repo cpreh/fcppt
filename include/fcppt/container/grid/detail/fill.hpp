@@ -73,9 +73,7 @@ fill(
 	{
 		position[Current] = i;
 		fcppt::container::grid::detail::fill<
-			static_cast<
-				fcppt::container::grid::size_type
-			>(Current+1)
+			Current + 1u
 		>(
 			g,
 			f,

@@ -7,6 +7,7 @@
 #ifndef FCPPT_CONTAINER_BITFIELD_ITERATOR_IMPL_HPP_INCLUDED
 #define FCPPT_CONTAINER_BITFIELD_ITERATOR_IMPL_HPP_INCLUDED
 
+#include <fcppt/cast/to_unsigned.hpp>
 #include <fcppt/container/bitfield/iterator_decl.hpp>
 #include <fcppt/container/bitfield/proxy_impl.hpp>
 
@@ -125,11 +126,7 @@ fcppt::container::bitfield::iterator<
 			StoredType
 		>(
 			*array_,
-			static_cast<
-				typename fcppt::container::bitfield::proxy<
-					StoredType
-				>::size_type
-			>(
+			fcppt::cast::to_unsigned(
 				pos_
 			)
 		);

@@ -9,9 +9,12 @@
 #define FCPPT_IO_RAW_CONTAINER_SOURCE_IMPL_HPP_INCLUDED
 
 #include <fcppt/make_shared_ptr.hpp>
+#include <fcppt/cast/size.hpp>
 #include <fcppt/io/raw_container_source_decl.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <algorithm>
+#include <iosfwd>
+#include <ios>
 #include <iterator>
 #include <fcppt/config/external_end.hpp>
 
@@ -58,7 +61,7 @@ fcppt::io::raw_container_source<Container>::read(
 {
 	difference_type const result =
 		std::min(
-			static_cast<
+			fcppt::cast::size<
 				difference_type
 			>(
 				_sz),
@@ -67,7 +70,7 @@ fcppt::io::raw_container_source<Container>::read(
 				chars_->cend()));
 
 	// EOF
-	if (result == 0u)
+	if (result == 0)
 		return -1;
 
 	const_iterator const new_pos =
@@ -91,7 +94,7 @@ fcppt::io::raw_container_source<Container>::seek(
 	std::ios_base::seekdir const _way)
 {
 	difference_type const coff(
-		static_cast<
+		fcppt::cast::size<
 			difference_type
 		>(
 			_off));
@@ -119,7 +122,7 @@ fcppt::io::raw_container_source<Container>::seek(
 		default: break;
 	}
 	return
-		static_cast<
+		fcppt::cast::size<
 			std::streampos
 		>(
 			std::distance(

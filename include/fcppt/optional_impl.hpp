@@ -8,6 +8,7 @@
 #define FCPPT_OPTIONAL_IMPL_HPP_INCLUDED
 
 #include <fcppt/optional_decl.hpp>
+#include <fcppt/cast/from_void_ptr.hpp>
 #include <fcppt/detail/enable_optional_ref_conv.hpp>
 #include <fcppt/detail/enable_optional_value_conv.hpp>
 #include <fcppt/config/external_begin.hpp>
@@ -357,7 +358,7 @@ fcppt::optional<
 >::data()
 {
 	return
-		static_cast<
+		fcppt::cast::from_void_ptr<
 			T *
 		>(
 			this->raw_data()
@@ -375,7 +376,7 @@ fcppt::optional<
 >::data() const
 {
 	return
-		static_cast<
+		fcppt::cast::from_void_ptr<
 			T const *
 		>(
 			this->raw_data()

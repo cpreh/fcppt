@@ -4,6 +4,7 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
+#include <fcppt/literal.hpp>
 #include <fcppt/math/generate_binary_vectors.hpp>
 #include <fcppt/math/vector/comparison.hpp>
 #include <fcppt/math/vector/object_impl.hpp>
@@ -60,13 +61,9 @@ FCPPT_PP_POP_WARNING
 
 	std::cout << "Result: \n";
 	for(
-		vector2_container::const_iterator it(
-			result2.begin()
-		);
-		it != result2.end();
-		++it
+		auto const &element : result2
 	)
-		std::cout << *it << '\n';
+		std::cout << element << '\n';
 
 	std::cout << "Now checking...\n";
 
@@ -86,18 +83,14 @@ FCPPT_PP_POP_WARNING
 
 	std::cout << "Result: \n";
 	for(
-		vector2_container::const_iterator it(
-			result2.begin()
-		);
-		it != result2.end();
-		++it
+		auto const &element : result2
 	)
-		std::cout << *it << '\n';
+		std::cout << element << '\n';
 
 	std::cout << "Now checking...\n";
 
 	BOOST_CHECK(
-		result3.size() == static_cast<vector3_container::size_type>(8));
+		result3.size() == fcppt::literal<vector3_container::size_type>(8));
 	BOOST_CHECK(
 		result3[0] == vector3(0,0,0));
 	BOOST_CHECK(

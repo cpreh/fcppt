@@ -8,6 +8,8 @@
 #include <fcppt/private_config.hpp>
 
 #if defined(FCPPT_HAVE_BACKTRACE)
+#include <fcppt/cast/size.hpp>
+#include <fcppt/cast/to_signed.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <array>
 #include <cstddef>
@@ -19,7 +21,9 @@
 #if defined(FCPPT_HAVE_BACKTRACE)
 namespace
 {
+
 std::size_t const max_stacktrace_size = 128;
+
 }
 #endif
 
@@ -37,15 +41,23 @@ fcppt::backtrace::print_current_stack_frame()
 
 	symbol_sequence resulting_symbols;
 
-	int const number_of_symbols =
+	int const number_of_symbols(
 		::backtrace(
 			resulting_symbols.data(),
-			static_cast<int>(
-				max_stacktrace_size));
+			fcppt::cast::size<
+				int
+			>(
+				fcppt::cast::to_signed(
+					max_stacktrace_size
+				)
+			)
+		)
+	);
 
 	::backtrace_symbols_fd(
 		resulting_symbols.data(),
 		number_of_symbols,
-		STDERR_FILENO);
+		STDERR_FILENO
+	);
 #endif
 }

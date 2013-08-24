@@ -7,12 +7,15 @@
 #ifndef FCPPT_MPL_INVOKE_ON_HPP_INCLUDED
 #define FCPPT_MPL_INVOKE_ON_HPP_INCLUDED
 
+#include <fcppt/literal.hpp>
 #include <fcppt/mpl/detail/invoke_on.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/mpl/begin.hpp>
 #include <boost/mpl/empty.hpp>
 #include <boost/mpl/end.hpp>
 #include <boost/mpl/integral_c.hpp>
+#include <boost/utility/enable_if.hpp>
+#include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -37,7 +40,7 @@ in the size of the MPL sequence
 
 \tparam Sequence An MPL sequence
 
-\tparam Index An integral type
+\tparam Index An unsigned type
 
 \param _index The runtime index of type \a Index
 
@@ -53,7 +56,14 @@ template<
 	typename Index,
 	typename Functor
 >
-typename Functor::result_type
+typename
+boost::enable_if<
+	std::is_unsigned<
+		Index
+	>,
+	typename
+	Functor::result_type
+>::type
 invoke_on(
 	Index const &_index,
 	Functor const &_functor
@@ -62,17 +72,23 @@ invoke_on(
 	return
 		fcppt::mpl::detail::invoke_on<
 			boost::mpl::integral_c<
-				unsigned,
-				0u
+				Index,
+				fcppt::literal<
+					Index
+				>(
+					0
+				)
 			>,
 			boost::mpl::empty<
 				Sequence
 			>::value
 		>:: template execute<
-			typename boost::mpl::begin<
+			typename
+			boost::mpl::begin<
 				Sequence
 			>::type,
-			typename boost::mpl::end<
+			typename
+			boost::mpl::end<
 				Sequence
 			>::type
 		>(

@@ -12,6 +12,7 @@
 #include <fcppt/insert_to_fcppt_string.hpp>
 #include <fcppt/text.hpp>
 #include <fcppt/type_name.hpp>
+#include <fcppt/cast/size.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/mpl/and.hpp>
 #include <boost/utility/enable_if.hpp>
@@ -64,21 +65,24 @@ cast_to_enum(
 )
 {
 	if(
-		_value
-		>=
-		static_cast<
-			Value
-		>(
-			fcppt::enum_size<
+		fcppt::cast::size<
+			typename
+			fcppt::enum_size_type<
 				Enum
-			>::value
+			>::type
+		>(
+			_value
 		)
+		>=
+		fcppt::enum_size<
+			Enum
+		>::value
 	)
 		throw fcppt::exception(
 			FCPPT_TEXT("Tried to cast value ")
 			+
 			fcppt::insert_to_fcppt_string(
-				static_cast<
+				fcppt::cast::size<
 					unsigned long long
 				>(
 					_value

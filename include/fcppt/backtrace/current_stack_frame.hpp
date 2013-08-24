@@ -17,10 +17,13 @@ namespace fcppt
 {
 namespace backtrace
 {
+
 FCPPT_SYMBOL
-backtrace::stack_frame
+fcppt::backtrace::stack_frame
 current_stack_frame(
-	backtrace::stack_limit const &);
+	fcppt::backtrace::stack_limit const &
+);
+
 }
 }
 

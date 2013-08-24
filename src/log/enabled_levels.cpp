@@ -5,6 +5,7 @@
 
 
 #include <fcppt/foreach_enumerator.hpp>
+#include <fcppt/cast/enum_to_int.hpp>
 #include <fcppt/log/enabled_level_array.hpp>
 #include <fcppt/log/enabled_levels.hpp>
 #include <fcppt/log/level.hpp>
@@ -24,7 +25,7 @@ fcppt::log::enabled_levels(
 		fcppt::log::level
 	)
 		ret[
-			static_cast<
+			fcppt::cast::enum_to_int<
 				fcppt::log::enabled_level_array::size_type
 			>(
 				index
