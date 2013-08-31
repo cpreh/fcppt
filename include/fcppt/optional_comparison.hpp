@@ -7,7 +7,7 @@
 #ifndef FCPPT_OPTIONAL_COMPARISON_HPP_INCLUDED
 #define FCPPT_OPTIONAL_COMPARISON_HPP_INCLUDED
 
-#include <fcppt/optional_fwd.hpp>
+#include <fcppt/optional_impl.hpp>
 
 
 namespace fcppt

@@ -12,8 +12,22 @@
 #include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/test/unit_test.hpp>
+#include <unordered_set>
 #include <fcppt/config/external_end.hpp>
 
+
+namespace
+{
+
+typedef fcppt::reference_wrapper<
+	int
+> int_ref;
+
+typedef fcppt::reference_wrapper<
+	int const
+> const_int_ref;
+
+}
 
 FCPPT_PP_PUSH_WARNING
 FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
@@ -24,14 +38,6 @@ BOOST_AUTO_TEST_CASE(
 {
 
 FCPPT_PP_POP_WARNING
-
-	typedef fcppt::reference_wrapper<
-		int
-	> int_ref;
-
-	typedef fcppt::reference_wrapper<
-		int const
-	> const_int_ref;
 
 	int x(
 		42
@@ -90,4 +96,95 @@ FCPPT_PP_POP_WARNING
 		==
 		&ref.get()
 	);
+}
+
+FCPPT_PP_PUSH_WARNING
+FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
+
+BOOST_AUTO_TEST_CASE(
+	reference_wrapper_hash
+)
+{
+
+FCPPT_PP_POP_WARNING
+
+	typedef
+	std::unordered_set<
+		int_ref
+	>
+	int_ref_set;
+
+	int x(
+		42
+	);
+
+	int_ref_set set;
+
+	set.insert(
+		int_ref(
+			x
+		)
+	);
+
+	{
+		int_ref_set::const_iterator const it(
+			set.find(
+				int_ref(
+					x
+				)
+			)
+		);
+
+		BOOST_REQUIRE(
+			it
+			!=
+			set.end()
+		);
+
+		BOOST_CHECK(
+			&it->get()
+			==
+			&x
+		);
+	}
+
+	typedef
+	std::unordered_set<
+		const_int_ref
+	>
+	const_int_ref_set;
+
+	int const y(
+		42
+	);
+
+	const_int_ref_set const_set;
+
+	const_set.insert(
+		const_int_ref(
+			y
+		)
+	);
+
+	{
+		const_int_ref_set::const_iterator const it(
+			const_set.find(
+				const_int_ref(
+					y
+				)
+			)
+		);
+
+		BOOST_REQUIRE(
+			it
+			!=
+			const_set.end()
+		);
+
+		BOOST_CHECK(
+			&it->get()
+			==
+			&y
+		);
+	}
 }

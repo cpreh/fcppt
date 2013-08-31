@@ -77,7 +77,21 @@ fcppt::reference_wrapper<
 >::get() const
 {
 	return
-		*impl_;
+		*this->get_pointer();
+}
+
+template<
+	typename Type
+>
+typename fcppt::reference_wrapper<
+	Type
+>::type *
+fcppt::reference_wrapper<
+	Type
+>::get_pointer() const
+{
+	return
+		impl_;
 }
 
 #endif

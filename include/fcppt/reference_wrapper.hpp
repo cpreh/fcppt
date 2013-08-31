@@ -7,9 +7,12 @@
 #ifndef FCPPT_REFERENCE_WRAPPER_HPP_INCLUDED
 #define FCPPT_REFERENCE_WRAPPER_HPP_INCLUDED
 
+#include <fcppt/reference_wrapper_comparison.hpp>
 #include <fcppt/reference_wrapper_decl.hpp>
 #include <fcppt/reference_wrapper_fwd.hpp>
+#include <fcppt/reference_wrapper_hash.hpp>
 #include <fcppt/reference_wrapper_impl.hpp>
+#include <fcppt/reference_wrapper_std_hash.hpp>
 
 
 #endif

@@ -58,6 +58,9 @@ public:
 
 	type &
 	get() const;
+
+	type *
+	get_pointer() const;
 private:
 	type *impl_;
 };

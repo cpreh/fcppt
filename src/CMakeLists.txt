@@ -740,9 +740,15 @@ set(
 	include/fcppt/random/variate_fwd.hpp
 	include/fcppt/random/variate_impl.hpp
 	include/fcppt/reference_wrapper.hpp
+	include/fcppt/reference_wrapper_comparison.hpp
 	include/fcppt/reference_wrapper_decl.hpp
 	include/fcppt/reference_wrapper_fwd.hpp
+	include/fcppt/reference_wrapper_hash.hpp
+	include/fcppt/reference_wrapper_hash_decl.hpp
+	include/fcppt/reference_wrapper_hash_fwd.hpp
+	include/fcppt/reference_wrapper_hash_impl.hpp
 	include/fcppt/reference_wrapper_impl.hpp
+	include/fcppt/reference_wrapper_std_hash.hpp
 	include/fcppt/safe_cast.hpp
 	include/fcppt/safe_numeric_cast.hpp
 	include/fcppt/scoped_ptr.hpp
@@ -848,6 +854,7 @@ set(
 	include/fcppt/type_traits/is_iterator_of_category.hpp
 	include/fcppt/type_traits/is_output_iterator.hpp
 	include/fcppt/type_traits/is_random_access_iterator.hpp
+	include/fcppt/type_traits/is_raw_pointer.hpp
 	include/fcppt/type_traits/is_std_array.hpp
 	include/fcppt/type_traits/is_string.hpp
 	include/fcppt/type_traits/is_unique_ptr.hpp

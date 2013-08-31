@@ -98,6 +98,7 @@ set(
 	examples/assert.cpp
 	examples/assert_complete.cpp
 	examples/backtrace.cpp
+	examples/casts.cpp
 	examples/codecvt.cpp
 	examples/container.cpp
 	examples/container/bitfield.cpp
@@ -248,12 +249,14 @@ set(
 	include/fcppt/c_deleter_fwd.hpp
 	include/fcppt/cast/enum_to_int.hpp
 	include/fcppt/cast/enum_to_underlying.hpp
+	include/fcppt/cast/float_to_int.hpp
 	include/fcppt/cast/from_void_ptr.hpp
 	include/fcppt/cast/int_to_enum.hpp
 	include/fcppt/cast/int_to_float.hpp
 	include/fcppt/cast/size.hpp
 	include/fcppt/cast/static_downcast.hpp
 	include/fcppt/cast/static_downcast_ptr.hpp
+	include/fcppt/cast/to_char_ptr.hpp
 	include/fcppt/cast/to_signed.hpp
 	include/fcppt/cast/to_unsigned.hpp
 	include/fcppt/cast/to_void.hpp
@@ -932,9 +935,15 @@ set(
 	include/fcppt/random/variate_fwd.hpp
 	include/fcppt/random/variate_impl.hpp
 	include/fcppt/reference_wrapper.hpp
+	include/fcppt/reference_wrapper_comparison.hpp
 	include/fcppt/reference_wrapper_decl.hpp
 	include/fcppt/reference_wrapper_fwd.hpp
+	include/fcppt/reference_wrapper_hash.hpp
+	include/fcppt/reference_wrapper_hash_decl.hpp
+	include/fcppt/reference_wrapper_hash_fwd.hpp
+	include/fcppt/reference_wrapper_hash_impl.hpp
 	include/fcppt/reference_wrapper_impl.hpp
+	include/fcppt/reference_wrapper_std_hash.hpp
 	include/fcppt/safe_cast.hpp
 	include/fcppt/safe_numeric_cast.hpp
 	include/fcppt/scoped_ptr.hpp
@@ -1040,6 +1049,7 @@ set(
 	include/fcppt/type_traits/is_iterator_of_category.hpp
 	include/fcppt/type_traits/is_output_iterator.hpp
 	include/fcppt/type_traits/is_random_access_iterator.hpp
+	include/fcppt/type_traits/is_raw_pointer.hpp
 	include/fcppt/type_traits/is_std_array.hpp
 	include/fcppt/type_traits/is_string.hpp
 	include/fcppt/type_traits/is_unique_ptr.hpp

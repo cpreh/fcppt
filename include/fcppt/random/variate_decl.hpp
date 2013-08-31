@@ -7,7 +7,7 @@
 #ifndef FCPPT_RANDOM_VARIATE_DECL_HPP_INCLUDED
 #define FCPPT_RANDOM_VARIATE_DECL_HPP_INCLUDED
 
-#include <fcppt/reference_wrapper.hpp>
+#include <fcppt/reference_wrapper_impl.hpp>
 #include <fcppt/random/variate_fwd.hpp>
 
 
