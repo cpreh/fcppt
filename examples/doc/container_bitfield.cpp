@@ -24,7 +24,7 @@ enum class person_status
 typedef
 fcppt::container::bitfield::object_from_enum<
 	person_status
->::type
+>
 bitfield;
 
 void

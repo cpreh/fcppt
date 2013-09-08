@@ -33,16 +33,15 @@ template<
 	typename InternalType
 		= fcppt::container::bitfield::default_internal_type
 >
-struct object_from_enum
-{
-	typedef fcppt::container::bitfield::object<
-		Enum,
-		typename fcppt::enum_size<
-			Enum
-		>::type,
-		InternalType
-	> type;
-};
+using object_from_enum
+=
+fcppt::container::bitfield::object<
+	Enum,
+	typename fcppt::enum_size<
+		Enum
+	>::type,
+	InternalType
+>;
 
 }
 }

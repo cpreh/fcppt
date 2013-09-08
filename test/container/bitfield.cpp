@@ -35,7 +35,7 @@ enum class test_enum
 
 typedef fcppt::container::bitfield::object_from_enum<
 	test_enum
->::type bitfield;
+> bitfield;
 
 enum class empty_enum
 {
@@ -64,7 +64,7 @@ FCPPT_PP_POP_WARNING
 
 typedef fcppt::container::bitfield::object_from_enum<
 	empty_enum
->::type empty_bitfield;
+> empty_bitfield;
 
 #define FCPPT_INSTANTIATE_BITFIELD(\
 	enum_,\
