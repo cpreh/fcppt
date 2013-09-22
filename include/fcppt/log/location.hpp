@@ -90,7 +90,7 @@ public:
 	delimiter.
 	*/
 	FCPPT_SYMBOL
-	fcppt::string const
+	fcppt::string
 	string() const;
 private:
 	fcppt::log::detail::location_vector entries_;
@@ -108,7 +108,7 @@ Concatenates \a location and \a element.
 \return A new location that is the concatenation of \a location and \a element
 */
 FCPPT_SYMBOL
-fcppt::log::location const
+fcppt::log::location
 operator /(
 	fcppt::log::location location,
 	fcppt::string const &element

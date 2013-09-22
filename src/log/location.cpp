@@ -53,7 +53,7 @@ fcppt::log::location::end() const
 	return entries_.end();
 }
 
-fcppt::string const
+fcppt::string
 fcppt::log::location::string() const
 {
 	return
@@ -77,7 +77,7 @@ fcppt::log::location::string() const
 		);
 }
 
-fcppt::log::location const
+fcppt::log::location
 fcppt::log::operator /(
 	log::location _location,
 	fcppt::string const &_string
