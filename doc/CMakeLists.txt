@@ -825,6 +825,7 @@ set(
 	include/fcppt/math/vector/signed_angle_between_cast.hpp
 	include/fcppt/math/vector/slerp.hpp
 	include/fcppt/math/vector/static.hpp
+	include/fcppt/math/vector/std_hash.hpp
 	include/fcppt/math/vector/structure_cast.hpp
 	include/fcppt/math/vector/unit.hpp
 	include/fcppt/micro_version.hpp
@@ -936,6 +937,10 @@ set(
 	include/fcppt/random/variate_decl.hpp
 	include/fcppt/random/variate_fwd.hpp
 	include/fcppt/random/variate_impl.hpp
+	include/fcppt/range_hash.hpp
+	include/fcppt/range_hash_decl.hpp
+	include/fcppt/range_hash_fwd.hpp
+	include/fcppt/range_hash_impl.hpp
 	include/fcppt/reference_wrapper.hpp
 	include/fcppt/reference_wrapper_comparison.hpp
 	include/fcppt/reference_wrapper_decl.hpp
