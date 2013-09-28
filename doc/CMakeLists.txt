@@ -329,6 +329,8 @@ set(
 	include/fcppt/container/grid/make_pos_crange_start_end.hpp
 	include/fcppt/container/grid/make_pos_range.hpp
 	include/fcppt/container/grid/make_pos_range_start_end.hpp
+	include/fcppt/container/grid/neumann_neighbor_array.hpp
+	include/fcppt/container/grid/neumann_neighbors.hpp
 	include/fcppt/container/grid/object.hpp
 	include/fcppt/container/grid/object_decl.hpp
 	include/fcppt/container/grid/object_fwd.hpp
