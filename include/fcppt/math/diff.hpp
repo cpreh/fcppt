@@ -9,6 +9,7 @@
 
 #include <fcppt/math/detail/diff.hpp>
 
+
 namespace fcppt
 {
 namespace math
@@ -37,7 +38,7 @@ diff(
 )
 {
 	return
-		detail::diff(
+		fcppt::math::detail::diff(
 			_a,
 			_b
 		);
