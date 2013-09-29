@@ -75,6 +75,7 @@ fcppt_link_target(
 	fcppt_filesystem
 )
 
+add_fcppt_test(algorithm/contains_set "" "")
 add_fcppt_test(algorithm/join "" "")
 add_fcppt_test(algorithm/levenshtein "" "")
 add_fcppt_test(algorithm/ptr_container_erase "" "")

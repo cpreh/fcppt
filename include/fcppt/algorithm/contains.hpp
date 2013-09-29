@@ -12,6 +12,7 @@
 #include <algorithm>
 #include <fcppt/config/external_end.hpp>
 
+
 namespace fcppt
 {
 namespace algorithm
@@ -72,7 +73,7 @@ contains(
 )
 {
 	return
-		algorithm::contains(
+		fcppt::algorithm::contains(
 			container.begin(),
 			container.end(),
 			value
