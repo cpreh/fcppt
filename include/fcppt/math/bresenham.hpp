@@ -178,7 +178,7 @@ bresenham(
 		++x
 	)
 	{
-		if(
+		bool const inc_y(
 			diff
 			>
 			fcppt::literal<
@@ -186,11 +186,15 @@ bresenham(
 			>(
 				0
 			)
+		);
+
+		if(
+			inc_y
 		)
-		{
 			++y;
 
-			_callback(
+		if(
+			!_callback(
 				steep
 				?
 					vector_type(
@@ -202,32 +206,18 @@ bresenham(
 						x,
 						y
 					)
-				);
+			)
+		)
+			return;
 
-			diff +=
+		diff +=
+			inc_y
+			?
 				two * dy
 				-
-				two * dx;
-		}
-		else
-		{
-			_callback(
-				steep
-				?
-					vector_type(
-						y,
-						x
-					)
-				:
-					vector_type(
-						x,
-						y
-					)
-			);
-
-			diff +=
+				two * dx
+			:
 				two * dy;
-		}
 	}
 }
 

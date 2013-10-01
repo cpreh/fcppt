@@ -59,6 +59,8 @@ FCPPT_PP_POP_WARNING
 			result.push_back(
 				_vec
 			);
+
+			return true;
 		}
 	);
 
