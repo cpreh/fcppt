@@ -33,7 +33,7 @@ std::enable_if<
 	N::value
 	==
 	2,
-	void
+	bool
 >::type
 bresenham(
 	fcppt::math::vector::object<
@@ -208,7 +208,7 @@ bresenham(
 					)
 			)
 		)
-			return;
+			return false;
 
 		diff +=
 			inc_y
@@ -219,6 +219,8 @@ bresenham(
 			:
 				two * dy;
 	}
+
+	return true;
 }
 
 }
