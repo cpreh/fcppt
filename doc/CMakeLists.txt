@@ -176,6 +176,7 @@ set(
 	include/fcppt/algorithm/array_map.hpp
 	include/fcppt/algorithm/contains.hpp
 	include/fcppt/algorithm/contains_if.hpp
+	include/fcppt/algorithm/contains_set.hpp
 	include/fcppt/algorithm/copy_n.hpp
 	include/fcppt/algorithm/detail/array_fold_function.hpp
 	include/fcppt/algorithm/detail/array_fold_static.hpp
@@ -649,6 +650,7 @@ set(
 	include/fcppt/math/box/stretch_absolute.hpp
 	include/fcppt/math/box/stretch_relative.hpp
 	include/fcppt/math/box/structure_cast.hpp
+	include/fcppt/math/bresenham.hpp
 	include/fcppt/math/ceil_div.hpp
 	include/fcppt/math/ceil_div_signed.hpp
 	include/fcppt/math/clamp.hpp
