@@ -449,6 +449,29 @@ fcppt::container::grid::object<
 	T,
 	N,
 	A
+>::resize_init(
+	dim const &_size,
+	T const &_value
+)
+{
+	container_.resize(
+		_size.content(),
+		_value
+	);
+
+	size_ = _size;
+}
+
+template<
+	typename T,
+	fcppt::container::grid::size_type N,
+	typename A
+>
+void
+fcppt::container::grid::object<
+	T,
+	N,
+	A
 >::shrink_to_fit()
 {
 	fcppt::container::grid::detail::shrink_to_fit(

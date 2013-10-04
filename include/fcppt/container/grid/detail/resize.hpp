@@ -12,6 +12,7 @@
 #include <vector>
 #include <fcppt/config/external_end.hpp>
 
+
 namespace fcppt
 {
 namespace container

@@ -280,6 +280,18 @@ public:
 	);
 
 	/**
+	\brief Resizes the grid leaving its internal elements in an unspecific
+	state
+	\param d The new dimensions of the grid
+	\param v The value to initialize new elements with
+	*/
+	void
+	resize_init(
+		dim const &d,
+		T const &v
+	);
+
+	/**
 	\brief Tries to shrink capacity() to fit size()
 	*/
 	void
