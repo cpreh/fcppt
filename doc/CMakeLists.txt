@@ -314,6 +314,7 @@ set(
 	include/fcppt/container/grid/detail/pos_iterator_base.hpp
 	include/fcppt/container/grid/detail/print_recurse.hpp
 	include/fcppt/container/grid/detail/resize.hpp
+	include/fcppt/container/grid/detail/resize_opt_init.hpp
 	include/fcppt/container/grid/detail/shrink_to_fit.hpp
 	include/fcppt/container/grid/dim.hpp
 	include/fcppt/container/grid/dim_fwd.hpp
@@ -651,6 +652,7 @@ set(
 	include/fcppt/math/box/stretch_relative.hpp
 	include/fcppt/math/box/structure_cast.hpp
 	include/fcppt/math/bresenham.hpp
+	include/fcppt/math/bresenham_thick.hpp
 	include/fcppt/math/ceil_div.hpp
 	include/fcppt/math/ceil_div_signed.hpp
 	include/fcppt/math/clamp.hpp
@@ -663,6 +665,8 @@ set(
 	include/fcppt/math/detail/assign.hpp
 	include/fcppt/math/detail/before.hpp
 	include/fcppt/math/detail/binary_type.hpp
+	include/fcppt/math/detail/bresenham_impl.hpp
+	include/fcppt/math/detail/bresenham_thick.hpp
 	include/fcppt/math/detail/checked_access.hpp
 	include/fcppt/math/detail/construct.hpp
 	include/fcppt/math/detail/default_storage.hpp

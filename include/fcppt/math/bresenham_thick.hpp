@@ -4,8 +4,8 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_MATH_BRESENHAM_HPP_INCLUDED
-#define FCPPT_MATH_BRESENHAM_HPP_INCLUDED
+#ifndef FCPPT_MATH_BRESENHAM_THICK_HPP_INCLUDED
+#define FCPPT_MATH_BRESENHAM_THICK_HPP_INCLUDED
 
 #include <fcppt/math/detail/bresenham_impl.hpp>
 #include <fcppt/math/vector/object_impl.hpp>
@@ -34,7 +34,7 @@ std::enable_if<
 	2,
 	bool
 >::type
-bresenham(
+bresenham_thick(
 	fcppt::math::vector::object<
 		T,
 		N,
@@ -50,7 +50,7 @@ bresenham(
 {
 	return
 		fcppt::math::detail::bresenham_impl<
-			false
+			true
 		>(
 			_start,
 			_end,
