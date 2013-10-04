@@ -72,67 +72,50 @@ bresenham(
 		_end.y()
 	);
 
-	bool const steep =
-		fcppt::math::diff(
-			y1,
-			y0
-		)
-		>
-		fcppt::math::diff(
-			x1,
-			x0
-		);
-
-	if(
-		steep
-	)
-	{
-		std::swap(
-			x0,
-			y0
-		);
-
-		std::swap(
-			x1,
-			y1
-		);
-	}
-
-	if(
-		x0 > x1
-	)
-	{
-		std::swap(
-			x0,
-			x1
-		);
-
-		std::swap(
-			y0,
-			y1
-		);
-	}
-
-	T const dx(
-		x1 - x0
-	);
-
-	T const dy(
-		fcppt::math::diff(
-			y1,
-			y0
-		)
-	);
-
-	T diff(
+	T const two(
 		fcppt::literal<
 			T
 		>(
 			2
 		)
-		* dy
-		- dx
 	);
+
+	T const one(
+		fcppt::literal<
+			T
+		>(
+			1
+		)
+	);
+
+	T const dx(fcppt::math::diff(
+		x1,
+		x0
+	));
+
+	T const dy(fcppt::math::diff(
+		y1,
+		y0
+	));
+
+	T sx(
+		x0 < x1
+		?
+		one
+		:
+		-one);
+
+	T sy(
+		y0 < y1
+		?
+		one
+		:
+		-one);
+
+	T err(
+		dx
+		-
+		dy);
 
 	typedef
 	fcppt::math::vector::object<
@@ -145,79 +128,86 @@ bresenham(
 	>
 	vector_type;
 
-	_callback(
-		vector_type(
-			x0,
-			y0
-		)
-	);
+	auto const
+	plot =
+	[
+		&_callback
+	](
+		T const &x,
+		T const &y
+	){
+			return _callback(
+				vector_type(
+					x,
+					y
+				)
+			);
+	};
 
-	T y(
-		y0
-	);
-
-	T const two(
-		fcppt::literal<
-			T
-		>(
-			2
-		)
-	);
-
-	for(
-		T x(
-			x0
-			+
-			fcppt::literal<
-				T
-			>(
-				1
-			)
-		);
-		x <= x1;
-		++x
+	while(
+		true
 	)
 	{
-		bool const inc_y(
-			diff
-			>
-			fcppt::literal<
-				T
-			>(
-				0
-			)
-		);
-
 		if(
-			inc_y
-		)
-			++y;
-
-		if(
-			!_callback(
-				steep
-				?
-					vector_type(
-						y,
-						x
-					)
-				:
-					vector_type(
-						x,
-						y
-					)
-			)
+			!plot(x0,y0)
 		)
 			return false;
 
-		diff +=
-			inc_y
-			?
-				two * dy
-				-
-				two * dx
-			:
-				two * dy;
+		if(
+			x0 == x1
+			&&
+			y0 == y1
+		)
+			break;
+
+		T err2(
+			two * err);
+
+		if(
+			err2
+			>
+			-dy
+		)
+		{
+			err -=
+				dy;
+			x0 += sx;
+
+#if 0
+			plot(
+				x0 - sx,
+				y0);
+#endif
+		}
+
+		if(
+			x0 == x1
+			&&
+			y0 == y1
+		)
+		{
+			if(
+				!plot(x0,y0)
+			)
+				return false;
+			break;
+		}
+
+		if(
+			err2
+			<
+			dx
+		)
+		{
+			err +=
+				dx;
+			y0 += sy;
+#if 0
+			plot(
+				x0,
+				y0-sy);
+#endif
+		}
 	}
 
 	return true;
