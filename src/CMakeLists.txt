@@ -6,6 +6,7 @@ set(
 	include/fcppt/algorithm/array_fold_static.hpp
 	include/fcppt/algorithm/array_init.hpp
 	include/fcppt/algorithm/array_map.hpp
+	include/fcppt/algorithm/array_push_back.hpp
 	include/fcppt/algorithm/contains.hpp
 	include/fcppt/algorithm/contains_if.hpp
 	include/fcppt/algorithm/contains_set.hpp
@@ -14,6 +15,7 @@ set(
 	include/fcppt/algorithm/detail/array_fold_static.hpp
 	include/fcppt/algorithm/detail/array_init_function.hpp
 	include/fcppt/algorithm/detail/array_map_function.hpp
+	include/fcppt/algorithm/detail/array_push_back_function.hpp
 	include/fcppt/algorithm/detail/ptr_container_erase_pred.hpp
 	include/fcppt/algorithm/element_not_found.hpp
 	include/fcppt/algorithm/exception.hpp
