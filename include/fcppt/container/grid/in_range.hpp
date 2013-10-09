@@ -7,8 +7,10 @@
 #ifndef FCPPT_CONTAINER_GRID_IN_RANGE_HPP_INCLUDED
 #define FCPPT_CONTAINER_GRID_IN_RANGE_HPP_INCLUDED
 
+#include <fcppt/container/grid/in_range_dim.hpp>
 #include <fcppt/container/grid/object_impl.hpp>
 #include <fcppt/container/grid/size_type.hpp>
+
 
 namespace fcppt
 {
@@ -27,31 +29,18 @@ template<
 	fcppt::container::grid::size_type N,
 	typename A
 >
+inline
 bool
 in_range(
 	fcppt::container::grid::object<T, N, A> const &_grid,
 	typename fcppt::container::grid::object<T, N, A>::pos const &_pos
 )
 {
-	for(
-		fcppt::container::grid::size_type index(
-			0u
+	return
+		fcppt::container::grid::in_range_dim(
+			_grid.size(),
+			_pos
 		);
-		index < N;
-		++index
-	)
-		if(
-			_pos[
-				index
-			]
-			>=
-			_grid.size()[
-				index
-			]
-		)
-			return false;
-
-	return true;
 }
 
 }

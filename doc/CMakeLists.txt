@@ -323,6 +323,7 @@ set(
 	include/fcppt/container/grid/impl/exception.hpp
 	include/fcppt/container/grid/impl/out_of_range.hpp
 	include/fcppt/container/grid/in_range.hpp
+	include/fcppt/container/grid/in_range_dim.hpp
 	include/fcppt/container/grid/interpolate.hpp
 	include/fcppt/container/grid/is_object.hpp
 	include/fcppt/container/grid/is_square.hpp
