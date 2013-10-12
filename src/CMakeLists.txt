@@ -188,10 +188,6 @@ set(
 	include/fcppt/container/insert_failed.hpp
 	include/fcppt/container/is_raw_vector.hpp
 	include/fcppt/container/is_std_vector.hpp
-	include/fcppt/container/map.hpp
-	include/fcppt/container/map_decl.hpp
-	include/fcppt/container/map_fwd.hpp
-	include/fcppt/container/map_impl.hpp
 	include/fcppt/container/not_found.hpp
 	include/fcppt/container/out_of_range.hpp
 	include/fcppt/container/ptr/equal.hpp
@@ -853,9 +849,9 @@ set(
 	include/fcppt/to_std_wstring_locale.hpp
 	include/fcppt/truncation_check_cast.hpp
 	include/fcppt/try_dynamic_cast.hpp
-	include/fcppt/type_info.hpp
-	include/fcppt/type_info_fwd.hpp
 	include/fcppt/type_name.hpp
+	include/fcppt/type_name_from_index.hpp
+	include/fcppt/type_name_from_info.hpp
 	include/fcppt/type_traits/detail/has_const_iterator.hpp
 	include/fcppt/type_traits/detail/has_iterator.hpp
 	include/fcppt/type_traits/detail/is_iterator.hpp
@@ -1017,8 +1013,9 @@ set(
 	src/to_std_string_locale.cpp
 	src/to_std_wstring.cpp
 	src/to_std_wstring_locale.cpp
-	src/type_info.cpp
 	src/type_name.cpp
+	src/type_name_from_index.cpp
+	src/type_name_from_info.cpp
 	src/version_string.cpp
 	src/widen.cpp
 )

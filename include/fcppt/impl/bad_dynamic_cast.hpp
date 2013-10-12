@@ -7,38 +7,58 @@
 #ifndef FCPPT_IMPL_BAD_DYNAMIC_CAST_HPP_INCLUDED
 #define FCPPT_IMPL_BAD_DYNAMIC_CAST_HPP_INCLUDED
 
+#include <fcppt/exception.hpp>
 #include <fcppt/text.hpp>
+#include <fcppt/type_name_from_index.hpp>
+#include <fcppt/config/external_begin.hpp>
+#include <typeindex>
+#include <fcppt/config/external_end.hpp>
+
 
 inline
 fcppt::bad_dynamic_cast::bad_dynamic_cast(
-	fcppt::type_info const &_source,
-	fcppt::type_info const &_destination
+	std::type_index const &_source,
+	std::type_index const &_destination
 )
 :
-	exception(
-		FCPPT_TEXT("Invalid dynamic_cast from type \"")+
-		_source.name()+
-		FCPPT_TEXT("\" to type \"")+
-		_destination.name()+
+	fcppt::exception(
+		FCPPT_TEXT("Invalid dynamic_cast from type \"")
+		+
+		fcppt::type_name_from_index(
+			_source
+		)
+		+
+		FCPPT_TEXT("\" to type \"")
+		+
+		fcppt::type_name_from_index(
+			_destination
+		)
+		+
 		FCPPT_TEXT('"')
 	),
-	source_(_source),
-	destination_(_destination)
+	source_(
+		_source
+	),
+	destination_(
+		_destination
+	)
 {
 }
 
 inline
-fcppt::type_info const &
+std::type_index const &
 fcppt::bad_dynamic_cast::source() const
 {
-	return source_;
+	return
+		source_;
 }
 
 inline
-fcppt::type_info const &
+std::type_index const &
 fcppt::bad_dynamic_cast::destination() const
 {
-	return destination_;
+	return
+		destination_;
 }
 
 #endif

@@ -4,43 +4,21 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_MPL_DETAIL_PRINT_ONE_HPP_INCLUDED
-#define FCPPT_MPL_DETAIL_PRINT_ONE_HPP_INCLUDED
-
+#include <fcppt/string.hpp>
 #include <fcppt/type_name.hpp>
-#include <fcppt/io/ostream.hpp>
+#include <fcppt/type_name_from_info.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <ostream>
 #include <typeinfo>
 #include <fcppt/config/external_end.hpp>
 
 
-namespace fcppt
-{
-namespace mpl
-{
-namespace detail
-{
-
-template<
-	typename Type
->
-void
-print_one(
-	fcppt::io::ostream &_stream
+fcppt::string
+fcppt::type_name_from_info(
+	std::type_info const &_info
 )
 {
-	_stream
-		<<
+	return
 		fcppt::type_name(
-			typeid(
-				Type
-			).name()
+			_info.name()
 		);
 }
-
-}
-}
-}
-
-#endif

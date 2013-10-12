@@ -5,54 +5,19 @@
 
 
 #include <fcppt/exception.hpp>
-#include <fcppt/string.hpp>
 #include <fcppt/text.hpp>
 #include <fcppt/assert/error.hpp>
-#include <fcppt/container/map_impl.hpp>
 #include <fcppt/container/raw_vector_impl.hpp>
 #include <fcppt/io/cerr.hpp>
 #include <fcppt/io/cout.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <cstdlib>
-#include <map>
+#include <string>
 #include <fcppt/config/external_end.hpp>
 
 
 int main()
 try
 {
-	typedef fcppt::container::map<
-		std::map<
-			int,
-			fcppt::string
-		>
-	> map_type;
-
-	map_type map;
-
-	map.insert(
-		42,
-		FCPPT_TEXT("peter")
-	);
-
-	map.insert(
-		42,
-		FCPPT_TEXT("peter")
-	);
-
-	for(
-		map_type::const_iterator it(
-			map.begin()
-		);
-		it != map.end();
-		++it
-	)
-		fcppt::io::cout()
-			<< it->first
-			<< FCPPT_TEXT(": ")
-			<< it->second
-			<< FCPPT_TEXT('\n');
-
 	typedef fcppt::container::raw_vector<
 		char
 	> vector_type;

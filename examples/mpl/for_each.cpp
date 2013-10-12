@@ -45,7 +45,7 @@ struct visitor
 			<< fcppt::type_name(
 				typeid(
 					Type
-				)
+				).name()
 			)
 			<< FCPPT_TEXT('\n');
 	}

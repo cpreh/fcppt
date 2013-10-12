@@ -9,7 +9,9 @@
 
 #include <fcppt/exception.hpp>
 #include <fcppt/string.hpp>
-#include <fcppt/type_info.hpp>
+#include <fcppt/config/external_begin.hpp>
+#include <typeindex>
+#include <fcppt/config/external_end.hpp>
 
 
 namespace fcppt
@@ -22,7 +24,7 @@ conversion truncates
 \ingroup fcpptcasts
 
 This class provides type information about the source and the destination
-types, stored as \link fcppt::type_info \endlink.
+types, stored as std::type_index.
 
 \see fcppt::truncation_check_cast
 */
@@ -42,23 +44,23 @@ public:
 	*/
 	bad_truncation_check_cast(
 		fcppt::string const &source_value,
-		fcppt::type_info const &source,
-		fcppt::type_info const &dest
+		std::type_index const &source,
+		std::type_index const &dest
 	);
 
 	/**
 	\brief Returns the source type information
 	*/
-	fcppt::type_info const &
+	std::type_index const &
 	source() const;
 
 	/**
 	\brief Returns the destination type information
 	*/
-	fcppt::type_info const &
+	std::type_index const &
 	destination() const;
 private:
-	fcppt::type_info
+	std::type_index
 		source_,
 		destination_;
 };

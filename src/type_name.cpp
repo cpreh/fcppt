@@ -7,9 +7,6 @@
 #include <fcppt/from_std_string.hpp>
 #include <fcppt/string.hpp>
 #include <fcppt/type_name.hpp>
-#include <fcppt/config/external_begin.hpp>
-#include <typeinfo>
-#include <fcppt/config/external_end.hpp>
 #include <fcppt/private_config.hpp>
 #if defined(FCPPT_HAVE_GCC_DEMANGLE)
 #include <fcppt/c_deleter.hpp>
@@ -22,7 +19,7 @@
 
 fcppt::string
 fcppt::type_name(
-	std::type_info const &_info
+	char const *const _name
 )
 {
 #if defined(FCPPT_HAVE_GCC_DEMANGLE)
@@ -33,7 +30,7 @@ fcppt::type_name(
 		fcppt::c_deleter
 	> name(
 		abi::__cxa_demangle(
-			_info.name(),
+			_name,
 			nullptr,
 			nullptr,
 			&status
@@ -45,7 +42,7 @@ fcppt::type_name(
 		status
 		?
 			fcppt::from_std_string(
-				_info.name()
+				_name
 			)
 		:
 			fcppt::from_std_string(
@@ -54,7 +51,7 @@ fcppt::type_name(
 #else
 	return
 		fcppt::from_std_string(
-			_info.name()
+			_name
 		);
 #endif
 }

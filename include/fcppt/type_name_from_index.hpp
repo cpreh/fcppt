@@ -4,11 +4,14 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_TYPE_NAME_HPP_INCLUDED
-#define FCPPT_TYPE_NAME_HPP_INCLUDED
+#ifndef FCPPT_TYPE_NAME_FROM_INDEX_HPP_INCLUDED
+#define FCPPT_TYPE_NAME_FROM_INDEX_HPP_INCLUDED
 
 #include <fcppt/string.hpp>
 #include <fcppt/symbol.hpp>
+#include <fcppt/config/external_begin.hpp>
+#include <typeindex>
+#include <fcppt/config/external_end.hpp>
 
 
 namespace fcppt
@@ -19,8 +22,8 @@ namespace fcppt
 */
 FCPPT_SYMBOL
 fcppt::string
-type_name(
-	char const *
+type_name_from_index(
+	std::type_index const &
 );
 
 }

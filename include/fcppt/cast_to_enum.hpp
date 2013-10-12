@@ -11,7 +11,7 @@
 #include <fcppt/exception.hpp>
 #include <fcppt/insert_to_fcppt_string.hpp>
 #include <fcppt/text.hpp>
-#include <fcppt/type_name.hpp>
+#include <fcppt/type_name_from_info.hpp>
 #include <fcppt/cast/size.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/mpl/and.hpp>
@@ -91,7 +91,7 @@ cast_to_enum(
 			+
 			FCPPT_TEXT(" to an enum of type ")
 			+
-			fcppt::type_name(
+			fcppt::type_name_from_info(
 				typeid(
 					Enum
 				)

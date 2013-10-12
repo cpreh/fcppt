@@ -8,7 +8,10 @@
 #define FCPPT_BAD_DYNAMIC_CAST_HPP_INCLUDED
 
 #include <fcppt/exception.hpp>
-#include <fcppt/type_info.hpp>
+#include <fcppt/config/external_begin.hpp>
+#include <typeindex>
+#include <fcppt/config/external_end.hpp>
+
 
 namespace fcppt
 {
@@ -19,8 +22,7 @@ namespace fcppt
 \ingroup fcpptcasts
 
 This class provides more type information than <code>std::bad_cast</code> does.
-It stores an \link fcppt::type_info \endlink for the source and the destination
-type.
+It stores an std::type_index for the source and the destination type.
 
 \see fcppt::dynamic_cast_
 */
@@ -37,23 +39,23 @@ public:
 	\param dest The destination type information
 	*/
 	bad_dynamic_cast(
-		fcppt::type_info const &source,
-		fcppt::type_info const &dest
+		std::type_index const &source,
+		std::type_index const &dest
 	);
 
 	/**
 	\brief Returns the source type information
 	*/
-	fcppt::type_info const &
+	std::type_index const &
 	source() const;
 
 	/**
 	\brief Returns the destination type information
 	*/
-	fcppt::type_info const &
+	std::type_index const &
 	destination() const;
 private:
-	fcppt::type_info
+	std::type_index
 		source_,
 		destination_;
 };

@@ -8,11 +8,11 @@
 #define FCPPT_DYNAMIC_CAST_HPP_INCLUDED
 
 #include <fcppt/bad_dynamic_cast.hpp>
-#include <fcppt/type_info.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/utility/enable_if.hpp>
 #include <stdexcept>
 #include <type_traits>
+#include <typeindex>
 #include <typeinfo>
 #include <fcppt/config/external_end.hpp>
 
@@ -71,12 +71,12 @@ dynamic_cast_(
 	{
 		throw
 			fcppt::bad_dynamic_cast(
-				fcppt::type_info(
+				std::type_index(
 					typeid(
 						_src
 					)
 				),
-				fcppt::type_info(
+				std::type_index(
 					typeid(
 						Dest
 					)

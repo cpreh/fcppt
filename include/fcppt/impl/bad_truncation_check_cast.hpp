@@ -9,14 +9,17 @@
 
 #include <fcppt/string.hpp>
 #include <fcppt/text.hpp>
-#include <fcppt/type_info.hpp>
+#include <fcppt/type_name_from_index.hpp>
+#include <fcppt/config/external_begin.hpp>
+#include <typeindex>
+#include <fcppt/config/external_end.hpp>
 
 
 inline
 fcppt::bad_truncation_check_cast::bad_truncation_check_cast(
 	fcppt::string const &_source_value,
-	fcppt::type_info const &_source,
-	fcppt::type_info const &_destination
+	std::type_index const &_source,
+	std::type_index const &_destination
 )
 :
 	fcppt::exception(
@@ -26,11 +29,15 @@ fcppt::bad_truncation_check_cast::bad_truncation_check_cast(
 		+
 		FCPPT_TEXT(" of type \"")
 		+
-		_source.name()
+		fcppt::type_name_from_index(
+			_source
+		)
 		+
 		FCPPT_TEXT("\" to type \"")
 		+
-		_destination.name()
+		fcppt::type_name_from_index(
+			_destination
+		)
 		+
 		FCPPT_TEXT('"')
 	),
@@ -44,14 +51,14 @@ fcppt::bad_truncation_check_cast::bad_truncation_check_cast(
 }
 
 inline
-fcppt::type_info const &
+std::type_index const &
 fcppt::bad_truncation_check_cast::source() const
 {
 	return source_;
 }
 
 inline
-fcppt::type_info const &
+std::type_index const &
 fcppt::bad_truncation_check_cast::destination() const
 {
 	return destination_;

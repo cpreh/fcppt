@@ -10,11 +10,11 @@
 #include <fcppt/bad_truncation_check_cast.hpp>
 #include <fcppt/insert_to_fcppt_string.hpp>
 #include <fcppt/optional_impl.hpp>
-#include <fcppt/type_info.hpp>
 #include <fcppt/detail/truncation_check_cast.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/mpl/and.hpp>
 #include <boost/utility/enable_if.hpp>
+#include <typeindex>
 #include <type_traits>
 #include <typeinfo>
 #include <fcppt/config/external_end.hpp>
@@ -82,12 +82,12 @@ truncation_check_cast(
 			fcppt::insert_to_fcppt_string(
 				_source
 			),
-			fcppt::type_info(
+			std::type_index(
 				typeid(
 					Source
 				)
 			),
-			fcppt::type_info(
+			std::type_index(
 				typeid(
 					Dest
 				)
