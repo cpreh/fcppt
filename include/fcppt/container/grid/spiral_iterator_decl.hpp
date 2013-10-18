@@ -7,8 +7,6 @@
 #ifndef FCPPT_CONTAINER_GRID_SPIRAL_ITERATOR_DECL_HPP_INCLUDED
 #define FCPPT_CONTAINER_GRID_SPIRAL_ITERATOR_DECL_HPP_INCLUDED
 
-#include <fcppt/container/grid/dim.hpp>
-#include <fcppt/container/grid/object_decl.hpp>
 #include <fcppt/container/grid/spiral_iterator_fwd.hpp>
 #include <fcppt/container/grid/detail/spiral_iterator_base.hpp>
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
@@ -16,7 +14,6 @@
 #include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/iterator/iterator_facade.hpp>
-#include <boost/mpl/if.hpp>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
@@ -56,6 +53,13 @@ public:
 	typename
 	base_type::value_type
 	value_type;
+
+	static_assert(
+		std::is_signed<
+			typename Pos::value_type
+		>::value,
+		"spiral_iterator only works with signed integers"
+	);
 
 	typedef
 	typename
