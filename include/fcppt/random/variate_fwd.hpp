@@ -7,6 +7,7 @@
 #ifndef FCPPT_RANDOM_VARIATE_FWD_HPP_INCLUDED
 #define FCPPT_RANDOM_VARIATE_FWD_HPP_INCLUDED
 
+
 namespace fcppt
 {
 namespace random

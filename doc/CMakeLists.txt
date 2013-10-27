@@ -318,6 +318,7 @@ set(
 	include/fcppt/container/grid/detail/resize.hpp
 	include/fcppt/container/grid/detail/resize_opt_init.hpp
 	include/fcppt/container/grid/detail/shrink_to_fit.hpp
+	include/fcppt/container/grid/detail/spiral_iterator_base.hpp
 	include/fcppt/container/grid/dim.hpp
 	include/fcppt/container/grid/dim_fwd.hpp
 	include/fcppt/container/grid/exception.hpp
@@ -334,6 +335,7 @@ set(
 	include/fcppt/container/grid/make_pos_crange_start_end.hpp
 	include/fcppt/container/grid/make_pos_range.hpp
 	include/fcppt/container/grid/make_pos_range_start_end.hpp
+	include/fcppt/container/grid/make_spiral_range.hpp
 	include/fcppt/container/grid/moore_neighbor_array.hpp
 	include/fcppt/container/grid/moore_neighbors.hpp
 	include/fcppt/container/grid/neumann_neighbor_array.hpp
@@ -358,6 +360,12 @@ set(
 	include/fcppt/container/grid/resize_preserve.hpp
 	include/fcppt/container/grid/resize_preserve_init.hpp
 	include/fcppt/container/grid/size_type.hpp
+	include/fcppt/container/grid/spiral_iterator_decl.hpp
+	include/fcppt/container/grid/spiral_iterator_fwd.hpp
+	include/fcppt/container/grid/spiral_iterator_impl.hpp
+	include/fcppt/container/grid/spiral_range_decl.hpp
+	include/fcppt/container/grid/spiral_range_fwd.hpp
+	include/fcppt/container/grid/spiral_range_impl.hpp
 	include/fcppt/container/impl/exception.hpp
 	include/fcppt/container/impl/insert_failed.hpp
 	include/fcppt/container/impl/not_found.hpp
@@ -915,7 +923,9 @@ set(
 	include/fcppt/random/distribution/detail/decorated_value.hpp
 	include/fcppt/random/distribution/detail/is_terminal.hpp
 	include/fcppt/random/distribution/detail/terminal_tag.hpp
+	include/fcppt/random/distribution/make_basic.hpp
 	include/fcppt/random/distribution/parameters/make_uniform_enum.hpp
+	include/fcppt/random/distribution/parameters/make_uniform_indices.hpp
 	include/fcppt/random/distribution/parameters/normal.hpp
 	include/fcppt/random/distribution/parameters/normal_decl.hpp
 	include/fcppt/random/distribution/parameters/normal_fwd.hpp
@@ -941,6 +951,7 @@ set(
 	include/fcppt/random/generator/minstd_rand_fwd.hpp
 	include/fcppt/random/generator/minstd_rand_impl.hpp
 	include/fcppt/random/generator/seed_from_chrono.hpp
+	include/fcppt/random/make_variate.hpp
 	include/fcppt/random/variate.hpp
 	include/fcppt/random/variate_decl.hpp
 	include/fcppt/random/variate_fwd.hpp

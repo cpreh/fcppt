@@ -46,9 +46,7 @@ make_uniform_enum()
 	param_type;
 
 	return
-		fcppt::random::distribution::parameters::uniform_int<
-			Enum
-		>(
+		param_type(
 			typename param_type::min(
 				fcppt::cast::int_to_enum<
 					Enum

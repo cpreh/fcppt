@@ -23,6 +23,8 @@ namespace distribution
 /**
 \brief A wrapper for distributions
 
+\ingroup fcpptrandom
+
 A wrapped for distributions that draws its properties from \a Parameters. The
 capabilities provided by this class are almost the same as the random
 distribution requirements by the standard except it lacks a default
