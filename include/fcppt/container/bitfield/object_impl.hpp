@@ -74,6 +74,25 @@ fcppt::container::bitfield::object<
 	ElementType,
 	NumElements,
 	InternalType
+>::object(
+	array_type const &_array
+)
+:
+	array_(
+		_array
+	)
+{
+}
+
+template<
+	typename ElementType,
+	typename NumElements,
+	typename InternalType
+>
+fcppt::container::bitfield::object<
+	ElementType,
+	NumElements,
+	InternalType
 > &
 fcppt::container::bitfield::object<
 	ElementType,
@@ -812,6 +831,27 @@ fcppt::container::bitfield::object<
 	array_.fill(
 		0
 	);
+}
+
+template<
+	typename ElementType,
+	typename NumElements,
+	typename InternalType
+>
+typename
+fcppt::container::bitfield::object<
+	ElementType,
+	NumElements,
+	InternalType
+>::array_type const &
+fcppt::container::bitfield::object<
+	ElementType,
+	NumElements,
+	InternalType
+>::array() const
+{
+	return
+		array_;
 }
 
 template<

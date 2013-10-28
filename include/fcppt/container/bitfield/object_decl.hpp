@@ -55,15 +55,13 @@ private:
 		>::value,
 		"InternalType must be unsigned"
 	);
-
+public:
 	typedef typename fcppt::container::bitfield::array<
 		ElementType,
 		NumElements,
 		InternalType
 	>::type array_type;
 
-	array_type array_;
-public:
 	/**
 	\brief The size of the underlying array
 	*/
@@ -175,6 +173,14 @@ public:
 	explicit
 	object(
 		ElementType e
+	);
+
+	/**
+	\brief Constructs a bitfield from its internal array type
+	*/
+	explicit
+	object(
+		array_type const &
 	);
 
 	/**
@@ -394,6 +400,12 @@ public:
 	clear();
 
 	/**
+	\brief Const accessor to the internal array
+	*/
+	array_type const &
+	array() const;
+
+	/**
 	\brief Exchanges the bits of two bitfields.
 	*/
 	void
@@ -407,6 +419,8 @@ public:
 	static
 	object const
 	null();
+private:
+	array_type array_;
 };
 
 /**
