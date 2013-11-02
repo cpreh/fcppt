@@ -17,7 +17,7 @@
 int
 main()
 {
-// ![io_endianness]
+//[io_endianness]
 	std::stringstream stream;
 
 	// Write 42u into the stream, using big endianness
@@ -48,5 +48,5 @@ main()
 		fcppt::io::cout()
 			<< *result
 			<< FCPPT_TEXT('\n');
-// ![io_endianness]
+//[io_endianness]
 }

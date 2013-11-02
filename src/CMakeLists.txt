@@ -244,6 +244,7 @@ set(
 	include/fcppt/detail/enum_size.hpp
 	include/fcppt/detail/equal.hpp
 	include/fcppt/detail/equal_functor.hpp
+	include/fcppt/detail/export_class_instantiation.hpp
 	include/fcppt/detail/foreach_enumerator.hpp
 	include/fcppt/detail/foreach_enumerator_start.hpp
 	include/fcppt/detail/foreach_enumerator_start_end.hpp
@@ -325,6 +326,9 @@ set(
 	include/fcppt/insert_to_std_string.hpp
 	include/fcppt/insert_to_std_wstring.hpp
 	include/fcppt/insert_to_string.hpp
+	include/fcppt/io/basic_scoped_rdbuf_decl.hpp
+	include/fcppt/io/basic_scoped_rdbuf_fwd.hpp
+	include/fcppt/io/basic_scoped_rdbuf_impl.hpp
 	include/fcppt/io/cerr.hpp
 	include/fcppt/io/cin.hpp
 	include/fcppt/io/clog.hpp
@@ -350,6 +354,8 @@ set(
 	include/fcppt/io/raw_container_source_impl.hpp
 	include/fcppt/io/read.hpp
 	include/fcppt/io/read_exn.hpp
+	include/fcppt/io/scoped_rdbuf.hpp
+	include/fcppt/io/scoped_rdbuf_fwd.hpp
 	include/fcppt/io/stream_to_string.hpp
 	include/fcppt/io/stringstream.hpp
 	include/fcppt/io/write.hpp
@@ -950,6 +956,7 @@ set(
 	src/from_std_wstring_locale.cpp
 	src/include/fcppt/src/codecvt.hpp
 	src/include/fcppt/src/codecvt_type.hpp
+	src/include/fcppt/src/export_class_instantiation_impl.hpp
 	src/include/fcppt/src/include_windows.hpp
 	src/include/fcppt/src/log/find_inner_node.hpp
 	src/include/fcppt/src/log/find_location.hpp
@@ -968,6 +975,7 @@ set(
 	src/io/color/reset.cpp
 	src/io/color/set.cpp
 	src/io/cout.cpp
+	src/io/scoped_rdbuf.cpp
 	src/log/activate_levels.cpp
 	src/log/activate_levels_recursive.cpp
 	src/log/context.cpp

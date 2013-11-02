@@ -118,7 +118,8 @@ set(
 	examples/endianness.cpp
 	examples/foreach_enumerator.cpp
 	examples/homogenous_pair.cpp
-	examples/io.cpp
+	examples/io/endianness.cpp
+	examples/io/scoped_rdbuf.cpp
 	examples/log.cpp
 	examples/log/complex.cpp
 	examples/log/context.cpp
@@ -425,6 +426,7 @@ set(
 	include/fcppt/detail/enum_size.hpp
 	include/fcppt/detail/equal.hpp
 	include/fcppt/detail/equal_functor.hpp
+	include/fcppt/detail/export_class_instantiation.hpp
 	include/fcppt/detail/foreach_enumerator.hpp
 	include/fcppt/detail/foreach_enumerator_start.hpp
 	include/fcppt/detail/foreach_enumerator_start_end.hpp
@@ -520,6 +522,9 @@ set(
 	include/fcppt/insert_to_std_string.hpp
 	include/fcppt/insert_to_std_wstring.hpp
 	include/fcppt/insert_to_string.hpp
+	include/fcppt/io/basic_scoped_rdbuf_decl.hpp
+	include/fcppt/io/basic_scoped_rdbuf_fwd.hpp
+	include/fcppt/io/basic_scoped_rdbuf_impl.hpp
 	include/fcppt/io/cerr.hpp
 	include/fcppt/io/cin.hpp
 	include/fcppt/io/clog.hpp
@@ -545,6 +550,8 @@ set(
 	include/fcppt/io/raw_container_source_impl.hpp
 	include/fcppt/io/read.hpp
 	include/fcppt/io/read_exn.hpp
+	include/fcppt/io/scoped_rdbuf.hpp
+	include/fcppt/io/scoped_rdbuf_fwd.hpp
 	include/fcppt/io/stream_to_string.hpp
 	include/fcppt/io/stringstream.hpp
 	include/fcppt/io/write.hpp

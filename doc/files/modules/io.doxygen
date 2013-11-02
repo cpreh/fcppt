@@ -32,7 +32,7 @@ extractors and inserters, but they use read and write directly.
 
 Here is an example:
 
-\snippet io.cpp io_endianness
+\snippet io/endianness.cpp io_endianness
 
 \section fcpptio_headers Header files
 

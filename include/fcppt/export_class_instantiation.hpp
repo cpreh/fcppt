@@ -7,16 +7,7 @@
 #ifndef FCPPT_EXPORT_CLASS_INSTANTIATION_HPP_INCLUDED
 #define FCPPT_EXPORT_CLASS_INSTANTIATION_HPP_INCLUDED
 
-#include <fcppt/config/compiler.hpp>
-
-#if defined(FCPPT_CONFIG_MSVC_COMPILER)
-#	define FCPPT_EXPORT_CLASS_INSTANTIATION_IMPL
-#elif defined(FCPPT_CONFIG_GCC_COMPILER)
-#	include <fcppt/export_symbol.hpp>
-#	define FCPPT_EXPORT_CLASS_INSTANTIATION_IMPL FCPPT_EXPORT_SYMBOL
-#else
-#	error "Don't know what FCPPT_EXPORT_CLASS_INSTANTIATION should be"
-#endif
+#include <fcppt/detail/export_class_instantiation.hpp>
 
 
 /**
@@ -29,6 +20,6 @@ it can be used by other libraries or programs.
 
 \see \ref exports_library
 */
-#define FCPPT_EXPORT_CLASS_INSTANTIATION FCPPT_EXPORT_CLASS_INSTANTIATION_IMPL
+#define FCPPT_EXPORT_CLASS_INSTANTIATION FCPPT_DETAIL_EXPORT_CLASS_INSTANTIATION
 
 #endif
