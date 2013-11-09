@@ -41,7 +41,7 @@ boost::enable_if<
 	Type
 >::type
 literal(
-	Fundamental const _integral
+	Fundamental const &&_integral
 )
 {
 	return
