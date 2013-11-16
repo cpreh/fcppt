@@ -1,5 +1,5 @@
 cmake_minimum_required(
-	VERSION 2.6
+	VERSION 2.8.12
 )
 
 project(
@@ -338,26 +338,12 @@ function(
 
 	target_link_libraries(
 		${TARGETNAME}
+		PRIVATE
 		${FCPPT_DEPS}
 		${OTHER_DEPS}
+		INTERFACE
+		${TRANSITIVE_DEPS}
 	)
-
-	if(
-		NOT ${VARIANT} STREQUAL "STATIC"
-	)
-		set_target_properties(
-			${TARGETNAME}
-			PROPERTIES
-			LINK_INTERFACE_LIBRARIES
-			""
-		)
-
-		target_link_libraries(
-			${TARGETNAME}
-			LINK_INTERFACE_LIBRARIES
-			${TRANSITIVE_DEPS}
-		)
-	endif()
 
 	fcppt_utils_export_install_target(
 		${TARGETNAME}
