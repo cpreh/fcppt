@@ -6,8 +6,8 @@
 
 #include <fcppt/math/vector/comparison.hpp>
 #include <fcppt/math/vector/object.hpp>
-#include <fcppt/math/vector/std_hash.hpp>
 #include <fcppt/math/vector/static.hpp>
+#include <fcppt/math/vector/std_hash.hpp>
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>

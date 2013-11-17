@@ -7,8 +7,8 @@
 #ifndef FCPPT_IO_SCOPED_RDBUF_FWD_HPP_INCLUDED
 #define FCPPT_IO_SCOPED_RDBUF_FWD_HPP_INCLUDED
 
-#include <fcppt/io/basic_scoped_rdbuf_fwd.hpp>
 #include <fcppt/char_type.hpp>
+#include <fcppt/io/basic_scoped_rdbuf_fwd.hpp>
 
 
 namespace fcppt

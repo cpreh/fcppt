@@ -7,9 +7,9 @@
 #ifndef FCPPT_CONTAINER_GRID_SPIRAL_RANGE_DECL_HPP_INCLUDED
 #define FCPPT_CONTAINER_GRID_SPIRAL_RANGE_DECL_HPP_INCLUDED
 
+#include <fcppt/nonassignable.hpp>
 #include <fcppt/container/grid/spiral_iterator_fwd.hpp>
 #include <fcppt/container/grid/spiral_range_fwd.hpp>
-#include <fcppt/nonassignable.hpp>
 
 
 namespace fcppt

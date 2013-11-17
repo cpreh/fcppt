@@ -7,8 +7,8 @@
 #ifndef FCPPT_REFERENCE_WRAPPER_HASH_IMPL_HPP_INCLUDED
 #define FCPPT_REFERENCE_WRAPPER_HASH_IMPL_HPP_INCLUDED
 
-#include <fcppt/reference_wrapper_impl.hpp>
 #include <fcppt/reference_wrapper_hash_decl.hpp>
+#include <fcppt/reference_wrapper_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <cstddef>
 #include <functional>

@@ -4,8 +4,8 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/io/basic_scoped_rdbuf_impl.hpp>
 #include <fcppt/char_type.hpp>
+#include <fcppt/io/basic_scoped_rdbuf_impl.hpp>
 #include <fcppt/io/scoped_rdbuf.hpp>
 #include <fcppt/src/export_class_instantiation_impl.hpp>
 

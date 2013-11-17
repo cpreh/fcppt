@@ -13,8 +13,8 @@
 #include <fcppt/io/raw_container_source_decl.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <algorithm>
-#include <iosfwd>
 #include <ios>
+#include <iosfwd>
 #include <iterator>
 #include <fcppt/config/external_end.hpp>
 

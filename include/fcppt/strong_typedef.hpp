@@ -8,8 +8,8 @@
 #define FCPPT_STRONG_TYPEDEF_HPP_INCLUDED
 
 #include <fcppt/make_strong_typedef.hpp>
-#include <fcppt/strong_typedef_std_hash.hpp>
 #include <fcppt/strong_typedef_operators.hpp>
+#include <fcppt/strong_typedef_std_hash.hpp>
 
 
 #endif
