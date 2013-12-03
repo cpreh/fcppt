@@ -10,6 +10,7 @@
 #include <fcppt/enum_max_value.hpp>
 #include <fcppt/cast/int_to_enum.hpp>
 #include <fcppt/random/distribution/parameters/uniform_int.hpp>
+#include <fcppt/random/distribution/transform/enum.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/utility/enable_if.hpp>
 #include <type_traits>
