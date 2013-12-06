@@ -33,6 +33,10 @@ class enum_array
 {
 public:
 	typedef
+	Enum
+	enum_type;
+
+	typedef
 	fcppt::enum_size<
 		Enum
 	>
@@ -51,7 +55,13 @@ public:
 	value_type;
 
 	typedef
-	Enum
+	typename
+	internal::difference_type
+	difference_type;
+
+	typedef
+	typename
+	internal::size_type
 	size_type;
 
 	typedef
@@ -66,6 +76,16 @@ public:
 
 	typedef
 	typename
+	internal::pointer
+	pointer;
+
+	typedef
+	typename
+	internal::const_pointer
+	const_pointer;
+
+	typedef
+	typename
 	internal::iterator
 	iterator;
 
@@ -74,17 +94,53 @@ public:
 	internal::const_iterator
 	const_iterator;
 
-	// TODO: Add all members of array!
+	typedef
+	typename
+	internal::reverse_iterator
+	reverse_iterator;
+
+	typedef
+	typename
+	internal::const_reverse_iterator
+	const_reverse_iterator;
+
+	reference
+	at(
+		Enum
+	);
+
+	const_reference
+	at(
+		Enum
+	) const;
 
 	reference
 	operator[](
-		size_type
+		Enum
 	);
 
 	const_reference
 	operator[](
-		size_type
+		Enum
 	) const;
+
+	reference
+	front();
+
+	const_reference
+	front() const;
+
+	reference
+	back();
+
+	const_reference
+	back() const;
+
+	pointer
+	data();
+
+	const_pointer
+	data() const;
 
 	iterator
 	begin();
@@ -104,19 +160,73 @@ public:
 	const_iterator
 	end() const;
 
+	reverse_iterator
+	rbegin();
 
-	// Not private so enum_array is still a POD
+	reverse_iterator
+	rend();
+
+	const_reverse_iterator
+	crbegin() const;
+
+	const_reverse_iterator
+	crend() const;
+
+	const_reverse_iterator
+	rbegin() const;
+
+	const_reverse_iterator
+	rend() const;
+
+	bool
+	empty() const;
+
+	size_type
+	size() const;
+
+	size_type
+	max_size() const;
+
+	void
+	fill(
+		Value const &
+	);
+
+	void
+	swap(
+		enum_array &
+	);
+
+// Not private so enum_array is still a POD
 	static
 	typename
 	internal::size_type
 	to_index(
-		size_type
+		Enum
 	);
 
 	internal impl_;
 };
 
 FCPPT_PP_POP_WARNING
+
+template<
+	typename Enum,
+	typename Value
+>
+void
+swap(
+	fcppt::container::enum_array<
+		Enum,
+		Value
+	> &,
+	fcppt::container::enum_array<
+		Enum,
+		Value
+	> &
+);
+
+// TODO: comparison operators, tuple special functions
 
 }
 }
