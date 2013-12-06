@@ -12,14 +12,14 @@
 fcppt::log::level_string_array
 fcppt::log::level_strings()
 {
-	level_string_array const ret{{
+	level_string_array const ret{{{
 		FCPPT_TEXT("verbose"),
 		FCPPT_TEXT("debug"),
 		FCPPT_TEXT("info"),
 		FCPPT_TEXT("warning"),
 		FCPPT_TEXT("error"),
 		FCPPT_TEXT("fatal")
-	}};
+	}}};
 
 	return ret;
 }

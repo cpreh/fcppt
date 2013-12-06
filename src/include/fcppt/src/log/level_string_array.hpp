@@ -7,14 +7,9 @@
 #ifndef FCPPT_SRC_LOG_LEVEL_STRING_ARRAY_HPP_INCLUDED
 #define FCPPT_SRC_LOG_LEVEL_STRING_ARRAY_HPP_INCLUDED
 
-#include <fcppt/enum_size.hpp>
 #include <fcppt/string.hpp>
-#include <fcppt/cast/size.hpp>
+#include <fcppt/container/enum_array_impl.hpp>
 #include <fcppt/log/level.hpp>
-#include <fcppt/config/external_begin.hpp>
-#include <array>
-#include <cstddef>
-#include <fcppt/config/external_end.hpp>
 
 
 namespace fcppt
@@ -22,16 +17,12 @@ namespace fcppt
 namespace log
 {
 
-typedef std::array<
-	fcppt::string,
-	fcppt::cast::size<
-		std::size_t
-	>(
-		fcppt::enum_size<
-			fcppt::log::level
-		>::value
-	)
-> level_string_array;
+typedef
+fcppt::container::enum_array<
+	fcppt::log::level,
+	fcppt::string
+>
+level_string_array;
 
 }
 }

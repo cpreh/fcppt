@@ -4,7 +4,6 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/cast/enum_to_int.hpp>
 #include <fcppt/io/ostream.hpp>
 #include <fcppt/log/context_location.hpp>
 #include <fcppt/log/default_level_streams.hpp>
@@ -67,11 +66,7 @@ fcppt::log::parameters::object::level_stream(
 )
 {
 	level_streams_[
-		fcppt::cast::enum_to_int<
-			fcppt::log::level_stream_array::size_type
-		>(
-			_level
-		)
+		_level
 	]
 		= _stream;
 
@@ -94,11 +89,7 @@ fcppt::log::parameters::object::activate(
 )
 {
 	enabled_levels_[
-		fcppt::cast::enum_to_int<
-			fcppt::log::level_stream_array::size_type
-		>(
-			_level
-		)
+		_level
 	] =
 		true;
 

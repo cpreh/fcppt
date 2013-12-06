@@ -5,7 +5,6 @@
 
 
 #include <fcppt/foreach_enumerator.hpp>
-#include <fcppt/cast/enum_to_int.hpp>
 #include <fcppt/io/ostream.hpp>
 #include <fcppt/log/default_level_streams.hpp>
 #include <fcppt/log/level.hpp>
@@ -27,11 +26,7 @@ fcppt::log::default_level_streams(
 	)
 	{
 		ret[
-			fcppt::cast::enum_to_int<
-				fcppt::log::level_stream_array::size_type
-			>(
-				index
-			)
+			index
 		] =
 			fcppt::log::level_stream(
 				_sink,

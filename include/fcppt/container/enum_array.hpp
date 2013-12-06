@@ -4,12 +4,12 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_LOG_ENABLED_LEVEL_ARRAY_HPP_INCLUDED
-#define FCPPT_LOG_ENABLED_LEVEL_ARRAY_HPP_INCLUDED
+#ifndef FCPPT_CONTAINER_ENUM_ARRAY_HPP_INCLUDED
+#define FCPPT_CONTAINER_ENUM_ARRAY_HPP_INCLUDED
 
+#include <fcppt/container/enum_array_decl.hpp>
+#include <fcppt/container/enum_array_fwd.hpp>
 #include <fcppt/container/enum_array_impl.hpp>
-#include <fcppt/log/level.hpp>
-#include <fcppt/log/enabled_level_array_fwd.hpp>
 
 
 #endif

@@ -120,6 +120,10 @@ set(
 	include/fcppt/container/detail/array_size.hpp
 	include/fcppt/container/detail/data.hpp
 	include/fcppt/container/detail/data_end.hpp
+	include/fcppt/container/enum_array.hpp
+	include/fcppt/container/enum_array_decl.hpp
+	include/fcppt/container/enum_array_fwd.hpp
+	include/fcppt/container/enum_array_impl.hpp
 	include/fcppt/container/exception.hpp
 	include/fcppt/container/grid/clamp_pos.hpp
 	include/fcppt/container/grid/clamp_signed_pos.hpp
@@ -395,6 +399,7 @@ set(
 	include/fcppt/log/detail/temporary_output.hpp
 	include/fcppt/log/detail/temporary_output_fwd.hpp
 	include/fcppt/log/enabled_level_array.hpp
+	include/fcppt/log/enabled_level_array_fwd.hpp
 	include/fcppt/log/enabled_levels.hpp
 	include/fcppt/log/error.hpp
 	include/fcppt/log/exception.hpp
@@ -418,6 +423,7 @@ set(
 	include/fcppt/log/level_fwd.hpp
 	include/fcppt/log/level_stream.hpp
 	include/fcppt/log/level_stream_array.hpp
+	include/fcppt/log/level_stream_array_fwd.hpp
 	include/fcppt/log/level_stream_fwd.hpp
 	include/fcppt/log/level_to_string.hpp
 	include/fcppt/log/location.hpp
