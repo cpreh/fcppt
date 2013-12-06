@@ -9,6 +9,9 @@
 
 #include <fcppt/enum_size.hpp>
 #include <fcppt/container/enum_array_fwd.hpp>
+#include <fcppt/preprocessor/disable_gcc_warning.hpp>
+#include <fcppt/preprocessor/pop_warning.hpp>
+#include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <array>
 #include <fcppt/config/external_end.hpp>
@@ -18,6 +21,9 @@ namespace fcppt
 {
 namespace container
 {
+
+FCPPT_PP_PUSH_WARNING
+FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
 
 template<
 	typename Enum,
@@ -109,6 +115,8 @@ public:
 
 	internal impl_;
 };
+
+FCPPT_PP_POP_WARNING
 
 }
 }
