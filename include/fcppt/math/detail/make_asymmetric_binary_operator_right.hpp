@@ -4,15 +4,15 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_MATH_DETAIL_MAKE_SIMPLE_SCALAR_LEFT_HPP_INCLUDED
-#define FCPPT_MATH_DETAIL_MAKE_SIMPLE_SCALAR_LEFT_HPP_INCLUDED
+#ifndef FCPPT_MATH_DETAIL_MAKE_ASYMMETRIC_BINARY_OPERATOR_RIGHT_HPP_INCLUDED
+#define FCPPT_MATH_DETAIL_MAKE_ASYMMETRIC_BINARY_OPERATOR_RIGHT_HPP_INCLUDED
 
 #include <fcppt/math/map.hpp>
 #include <fcppt/math/static_storage.hpp>
 #include <fcppt/math/detail/binary_type.hpp>
 
 
-#define FCPPT_MATH_DETAIL_MAKE_SIMPLE_SCALAR_LEFT(\
+#define FCPPT_MATH_DETAIL_MAKE_ASYMMETRIC_BINARY_OPERATOR_RIGHT(\
 	op\
 )\
 template<\

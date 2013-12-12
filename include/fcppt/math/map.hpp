@@ -25,7 +25,7 @@ template<
 	typename Source,
 	typename Function
 >
-Dest const
+Dest
 map(
 	Source const &_source,
 	Function const &_function

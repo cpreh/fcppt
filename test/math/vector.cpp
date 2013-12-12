@@ -44,8 +44,18 @@ epsilon(
 );
 
 typedef
-fcppt::math::vector::static_<unsigned,2>
+fcppt::math::vector::static_<
+	unsigned,
+	2
+>
 uivector2;
+
+typedef
+fcppt::math::vector::static_<
+	int,
+	2
+>
+ivector2;
 
 typedef
 fcppt::math::vector::static_<real,1>
@@ -265,6 +275,30 @@ FCPPT_PP_POP_WARNING
 
 	BOOST_REQUIRE(
 		vec == uivector2(1, 2)
+	);
+
+	ivector2 veci(1, 2);
+
+	veci = -veci;
+
+	BOOST_REQUIRE(
+		veci
+		==
+		ivector2(
+			-1,
+			-2
+		)
+	);
+
+	veci = +veci;
+
+	BOOST_REQUIRE(
+		veci
+		==
+		ivector2(
+			-1,
+			-2
+		)
 	);
 }
 FCPPT_PP_PUSH_WARNING

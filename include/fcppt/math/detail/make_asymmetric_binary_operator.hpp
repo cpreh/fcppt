@@ -4,23 +4,27 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_MATH_DETAIL_MAKE_SIMPLE_FREE_FUNCTION_HPP_INCLUDED
-#define FCPPT_MATH_DETAIL_MAKE_SIMPLE_FREE_FUNCTION_HPP_INCLUDED
+#ifndef FCPPT_MATH_DETAIL_MAKE_ASYMMETRIC_BINARY_OPERATOR_HPP_INCLUDED
+#define FCPPT_MATH_DETAIL_MAKE_ASYMMETRIC_BINARY_OPERATOR_HPP_INCLUDED
 
-#include <fcppt/math/binary_map.hpp>
+#include <fcppt/math/map.hpp>
 #include <fcppt/math/static_storage.hpp>
 #include <fcppt/math/detail/binary_type.hpp>
+#include <fcppt/math/detail/make_asymmetric_binary_operator_right.hpp>
 
 
-#define FCPPT_MATH_DETAIL_MAKE_SIMPLE_FREE_FUNCTION(\
+#define FCPPT_MATH_DETAIL_MAKE_ASYMMETRIC_BINARY_OPERATOR(\
 	op\
 )\
+FCPPT_MATH_DETAIL_MAKE_ASYMMETRIC_BINARY_OPERATOR_RIGHT(\
+	op\
+)\
+\
 template<\
 	typename L,\
 	typename R,\
 	typename N,\
-	typename S1,\
-	typename S2\
+	typename S\
 >\
 object<\
 	FCPPT_MATH_DETAIL_BINARY_TYPE(L, op, R),\
@@ -31,8 +35,8 @@ object<\
 	>\
 > const \
 operator op(\
-	object<L, N, S1> const &_left,\
-	object<R, N, S2> const &_right\
+	L const &_left,\
+	object<R, N, S> const &_right\
 )\
 {\
 	typedef \
@@ -40,7 +44,7 @@ operator op(\
 	result_value_type; \
 \
 	return \
-		fcppt::math::binary_map<\
+		fcppt::math::map<\
 			object<\
 				result_value_type,\
 				N,\
@@ -50,15 +54,15 @@ operator op(\
 				>\
 			>\
 		>(\
-			_left,\
 			_right,\
-			[](\
-				L const &_left_elem,\
+			[\
+				&_left\
+			](\
 				R const &_right_elem\
 			)\
 			{\
 				return \
-					_left_elem \
+					_left \
 					op \
 					_right_elem; \
 			}\

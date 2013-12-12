@@ -504,13 +504,12 @@ set(
 	include/fcppt/math/detail/index_at.hpp
 	include/fcppt/math/detail/init_storage.hpp
 	include/fcppt/math/detail/linear_access.hpp
+	include/fcppt/math/detail/make_asymmetric_binary_operator.hpp
+	include/fcppt/math/detail/make_asymmetric_binary_operator_right.hpp
 	include/fcppt/math/detail/make_op_decl.hpp
 	include/fcppt/math/detail/make_op_def.hpp
-	include/fcppt/math/detail/make_simple_free_function.hpp
-	include/fcppt/math/detail/make_simple_scalar_div.hpp
-	include/fcppt/math/detail/make_simple_scalar_left.hpp
-	include/fcppt/math/detail/make_simple_scalar_mul.hpp
-	include/fcppt/math/detail/make_simple_unary_minus.hpp
+	include/fcppt/math/detail/make_symmetric_binary_operator.hpp
+	include/fcppt/math/detail/make_unary_operator.hpp
 	include/fcppt/math/detail/make_variadic_constructor.hpp
 	include/fcppt/math/detail/make_variadic_constructor_decl.hpp
 	include/fcppt/math/detail/mod.hpp
@@ -523,6 +522,7 @@ set(
 	include/fcppt/math/detail/structure_cast.hpp
 	include/fcppt/math/detail/structure_cast_fun.hpp
 	include/fcppt/math/detail/transform.hpp
+	include/fcppt/math/detail/unary_type.hpp
 	include/fcppt/math/diff.hpp
 	include/fcppt/math/difference_type.hpp
 	include/fcppt/math/dim/arithmetic.hpp

@@ -4,45 +4,43 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_MATH_DETAIL_MAKE_SIMPLE_SCALAR_MUL_HPP_INCLUDED
-#define FCPPT_MATH_DETAIL_MAKE_SIMPLE_SCALAR_MUL_HPP_INCLUDED
+#ifndef FCPPT_MATH_DETAIL_MAKE_SYMMETRIC_BINARY_OPERATOR_HPP_INCLUDED
+#define FCPPT_MATH_DETAIL_MAKE_SYMMETRIC_BINARY_OPERATOR_HPP_INCLUDED
 
-#include <fcppt/math/map.hpp>
+#include <fcppt/math/binary_map.hpp>
 #include <fcppt/math/static_storage.hpp>
 #include <fcppt/math/detail/binary_type.hpp>
-#include <fcppt/math/detail/make_simple_scalar_left.hpp>
 
 
-#define FCPPT_MATH_DETAIL_MAKE_SIMPLE_SCALAR_MUL \
-FCPPT_MATH_DETAIL_MAKE_SIMPLE_SCALAR_LEFT(\
-	*\
+#define FCPPT_MATH_DETAIL_MAKE_SYMMETRIC_BINARY_OPERATOR(\
+	op\
 )\
-\
 template<\
 	typename L,\
 	typename R,\
 	typename N,\
-	typename S\
+	typename S1,\
+	typename S2\
 >\
 object<\
-	FCPPT_MATH_DETAIL_BINARY_TYPE(L, *, R),\
+	FCPPT_MATH_DETAIL_BINARY_TYPE(L, op, R),\
 	N,\
 	fcppt::math::static_storage<\
-		FCPPT_MATH_DETAIL_BINARY_TYPE(L, *, R),\
+		FCPPT_MATH_DETAIL_BINARY_TYPE(L, op, R),\
 		N\
 	>\
 > const \
-operator *(\
-	L const &_left,\
-	object<R, N, S> const &_right\
+operator op(\
+	object<L, N, S1> const &_left,\
+	object<R, N, S2> const &_right\
 )\
 {\
 	typedef \
-	FCPPT_MATH_DETAIL_BINARY_TYPE(L, *, R)\
+	FCPPT_MATH_DETAIL_BINARY_TYPE(L, op, R)\
 	result_value_type; \
 \
 	return \
-		fcppt::math::map<\
+		fcppt::math::binary_map<\
 			object<\
 				result_value_type,\
 				N,\
@@ -52,16 +50,16 @@ operator *(\
 				>\
 			>\
 		>(\
+			_left,\
 			_right,\
-			[\
-				&_left\
-			](\
+			[](\
+				L const &_left_elem,\
 				R const &_right_elem\
 			)\
 			{\
 				return \
-					_left \
-					* \
+					_left_elem \
+					op \
 					_right_elem; \
 			}\
 		);\
