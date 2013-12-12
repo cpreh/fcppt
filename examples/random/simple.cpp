@@ -11,7 +11,7 @@
 #include <fcppt/random/distribution/parameters/normal.hpp>
 #include <fcppt/random/distribution/parameters/uniform_int.hpp>
 #include <fcppt/random/distribution/parameters/uniform_real.hpp>
-#include <fcppt/random/generator/minstd_rand.hpp>
+#include <fcppt/random/generator/mt19937.hpp>
 #include <fcppt/random/generator/seed_from_chrono.hpp>
 
 
@@ -47,7 +47,7 @@ int
 main()
 {
 // ![random_generator]
-	typedef fcppt::random::generator::minstd_rand generator_type;
+	typedef fcppt::random::generator::mt19937 generator_type;
 
 	generator_type generator(
 		fcppt::random::generator::seed_from_chrono<

@@ -767,6 +767,10 @@ set(
 	include/fcppt/random/generator/minstd_rand_decl.hpp
 	include/fcppt/random/generator/minstd_rand_fwd.hpp
 	include/fcppt/random/generator/minstd_rand_impl.hpp
+	include/fcppt/random/generator/mt19937.hpp
+	include/fcppt/random/generator/mt19937_decl.hpp
+	include/fcppt/random/generator/mt19937_fwd.hpp
+	include/fcppt/random/generator/mt19937_impl.hpp
 	include/fcppt/random/generator/seed_from_chrono.hpp
 	include/fcppt/random/make_variate.hpp
 	include/fcppt/random/variate.hpp
