@@ -4,14 +4,17 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
+#include <fcppt/make_unique_ptr.hpp>
 #include <fcppt/strong_typedef.hpp>
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/test/unit_test.hpp>
+#include <memory>
 #include <sstream>
 #include <unordered_set>
+#include <utility>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -312,5 +315,65 @@ FCPPT_PP_POP_WARNING
 			strong_int(2)
 		)
 		== 1
+	);
+}
+
+FCPPT_PP_PUSH_WARNING
+FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
+
+BOOST_AUTO_TEST_CASE(
+	strong_typedef_move
+)
+{
+FCPPT_PP_POP_WARNING
+
+	typedef
+	std::unique_ptr<
+		int
+	>
+	int_unique_ptr;
+
+	FCPPT_MAKE_STRONG_TYPEDEF(
+		int_unique_ptr,
+		strong_int_ptr
+	);
+
+	strong_int_ptr val(
+		fcppt::make_unique_ptr<
+			int
+		>(
+			42
+		)
+	);
+
+	strong_int_ptr val2(
+		std::move(
+			val
+		)
+	);
+
+	BOOST_REQUIRE(
+		*val2.get()
+		==
+		42
+	);
+
+	strong_int_ptr val3(
+		fcppt::make_unique_ptr<
+			int
+		>(
+			10
+		)
+	);
+
+	val3 =
+		std::move(
+			val2
+		);
+
+	BOOST_REQUIRE(
+		*val3.get()
+		==
+		42
 	);
 }

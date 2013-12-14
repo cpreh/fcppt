@@ -53,6 +53,14 @@ public:
 	);
 
 	/**
+	\brief Constructs a strong typedef by moving
+	*/
+	explicit
+	strong_typedef(
+		T &&
+	);
+
+	/**
 	\brief Assigns a new value to the strong typedef using fcppt::safe_cast.
 	*/
 	template<
