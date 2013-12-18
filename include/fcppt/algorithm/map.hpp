@@ -8,28 +8,20 @@
 #ifndef FCPPT_ALGORITHM_MAP_HPP_INCLUDED
 #define FCPPT_ALGORITHM_MAP_HPP_INCLUDED
 
-#include <fcppt/config/external_begin.hpp>
-#include <algorithm>
-#include <iterator>
-#include <fcppt/config/external_end.hpp>
 
 namespace fcppt
 {
 namespace algorithm
 {
+
 /**
- * \brief Transforms a container using a functor to another container
- * \tparam TargetContainer Must be default-constructible
- * \ingroup fcpptalgorithm
- * \details
- * This is equivalent to:
- *
- * <pre>
- * std::transform(source.begin(),source.end(),inserter,f)
- * </pre>
- *
- * with an appropriate <code>inserter</code>.
- */
+\brief Transforms a container using a functor to another container
+
+\ingroup fcpptalgorithm
+
+For every element \em e in \a _source, _function(e) is inserted into the result
+container.
+*/
 template
 <
 	typename TargetContainer,
@@ -38,25 +30,26 @@ template
 >
 TargetContainer
 map(
-	SourceContainer const &s,
-	Functor const &f
+	SourceContainer const &_source,
+	Functor const &_function
 )
 {
-	TargetContainer t;
+	TargetContainer result;
 
-	::std::transform(
-		s.begin(),
-		s.end(),
-		::std::inserter<
-			TargetContainer
-		>(
-			t,
-			t.end()
-		),
-		f
-	);
+	for(
+		auto const &element
+		:
+		_source
+	)
+		result.insert(
+			result.end(),
+			_function(
+				element
+			)
+		);
 
-	return t;
+	return
+		result;
 }
 
 }
