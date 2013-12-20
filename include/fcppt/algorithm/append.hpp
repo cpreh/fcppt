@@ -8,35 +8,41 @@
 #ifndef FCPPT_ALGORITHM_APPEND_HPP_INCLUDED
 #define FCPPT_ALGORITHM_APPEND_HPP_INCLUDED
 
+
 namespace fcppt
 {
 namespace algorithm
 {
 
 /**
- * \brief Appends the sequence \p src to \p dest.
- * \ingroup fcpptalgorithm
- * \tparam DestContainer Must have an insert function taking three integers (like the std containers all do).
- * \tparam SourceContainer Must have a <code>begin</code> and <code>end</code> member function.
- *
- * Example:
- *
- * \snippet doc/algorithm.cpp append
- **/
+\brief Appends two sequences.
+
+\ingroup fcpptalgorithm
+
+\tparam DestContainer Must have an insert function taking three integers (like the std containers all do).
+
+\tparam SourceContainer Must have a <code>begin</code> and <code>end</code> member function.
+
+Appends the sequence \a _src to \a _dest.
+
+Example:
+
+\snippet doc/algorithm.cpp append
+**/
 template<
 	typename DestContainer,
 	typename SourceContainer
 >
 void
 append(
-	DestContainer &dest,
-	SourceContainer const &src
+	DestContainer &_dest,
+	SourceContainer const &_src
 )
 {
-	dest.insert(
-		dest.end(),
-		src.begin(),
-		src.end()
+	_dest.insert(
+		_dest.end(),
+		_src.begin(),
+		_src.end()
 	);
 }
 

@@ -1,6 +1,7 @@
 set(
 	FCPPT_CORE_FILES
 	include/fcppt/algorithm/append.hpp
+	include/fcppt/algorithm/append_result.hpp
 	include/fcppt/algorithm/array_binary_map.hpp
 	include/fcppt/algorithm/array_fold.hpp
 	include/fcppt/algorithm/array_fold_static.hpp
@@ -21,6 +22,7 @@ set(
 	include/fcppt/algorithm/exception.hpp
 	include/fcppt/algorithm/find_exn.hpp
 	include/fcppt/algorithm/find_if_exn.hpp
+	include/fcppt/algorithm/fold.hpp
 	include/fcppt/algorithm/impl/element_not_found.hpp
 	include/fcppt/algorithm/impl/exception.hpp
 	include/fcppt/algorithm/join.hpp
@@ -226,6 +228,7 @@ set(
 	include/fcppt/container/tree/iterator_decl.hpp
 	include/fcppt/container/tree/iterator_fwd.hpp
 	include/fcppt/container/tree/iterator_impl.hpp
+	include/fcppt/container/tree/level.hpp
 	include/fcppt/container/tree/object.hpp
 	include/fcppt/container/tree/object_decl.hpp
 	include/fcppt/container/tree/object_fwd.hpp

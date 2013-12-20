@@ -4,14 +4,14 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/container/tree/depth.hpp>
-#include <fcppt/container/tree/object_impl.hpp>
+#include <fcppt/algorithm/fold.hpp>
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/test/unit_test.hpp>
-#include <string>
+#include <functional>
+#include <vector>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -19,35 +19,58 @@ FCPPT_PP_PUSH_WARNING
 FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
 
 BOOST_AUTO_TEST_CASE(
-	container_tree_depth
+	algorithm_fold
 )
 {
 FCPPT_PP_POP_WARNING
 
-	typedef fcppt::container::tree::object<
-		std::string
-	> string_tree;
+	typedef
+	std::vector<
+		int
+	>
+	int_vector;
 
-	string_tree tree("a");
+	typedef
+	std::vector<
+		int_vector
+	>
+	int_vector_vector;
 
-	tree.push_back(
-		std::string("b")
+	int_vector_vector const vectors{
+		int_vector{
+			1,
+			2
+		},
+		int_vector{
+			3,
+			4
+		}
+	};
+
+	int const sum(
+		fcppt::algorithm::fold(
+			vectors,
+			0,
+			[](
+				int_vector const &_vec,
+				int const _sum
+			)
+			{
+				return
+					fcppt::algorithm::fold(
+						_vec,
+						_sum,
+						std::plus<
+							int
+						>()
+					);
+			}
+		)
 	);
 
-	tree.back().push_back(
-		std::string("c")
+	BOOST_CHECK(
+		sum
+		==
+		10
 	);
-
-	tree.push_back(
-		std::string("d")
-	);
-
-	tree.push_back(
-		std::string("e")
-	);
-
-	BOOST_CHECK_EQUAL(
-		fcppt::container::tree::depth(
-			tree),
-		3u);
 }
