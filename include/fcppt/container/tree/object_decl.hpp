@@ -13,6 +13,7 @@
 #include <fcppt/config/external_begin.hpp>
 #include <list>
 #include <memory>
+#include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -103,6 +104,11 @@ public:
 
 	object(
 		object &&
+	)
+	noexcept(
+		std::is_nothrow_move_constructible<
+			T
+		>::value
 	);
 
 	/**

@@ -20,6 +20,7 @@
 #include <fcppt/config/external_begin.hpp>
 #include <algorithm>
 #include <iterator>
+#include <type_traits>
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
@@ -105,6 +106,11 @@ fcppt::container::tree::object<
 	T
 >::object(
 	object &&_other
+)
+noexcept(
+	std::is_nothrow_move_constructible<
+		T
+	>::value
 )
 :
 	value_(

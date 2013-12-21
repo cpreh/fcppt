@@ -17,6 +17,29 @@
 #include <fcppt/config/external_end.hpp>
 
 
+namespace
+{
+
+typedef
+std::unique_ptr<
+	int
+>
+int_unique_ptr;
+
+typedef
+std::vector<
+	int
+>
+int_vector;
+
+typedef
+std::vector<
+	int_unique_ptr
+>
+int_unique_ptr_vector;
+
+}
+
 FCPPT_PP_PUSH_WARNING
 FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
 
@@ -25,24 +48,6 @@ BOOST_AUTO_TEST_CASE(
 )
 {
 FCPPT_PP_POP_WARNING
-
-	typedef
-	std::unique_ptr<
-		int
-	>
-	int_unique_ptr;
-
-	typedef
-	std::vector<
-		int
-	>
-	int_vector;
-
-	typedef
-	std::vector<
-		int_unique_ptr
-	>
-	int_unique_ptr_vector;
 
 	int_unique_ptr_vector const ptrs{
 		fcppt::assign::make_container<
@@ -90,5 +95,53 @@ FCPPT_PP_POP_WARNING
 
 	BOOST_CHECK(
 		result[1] == 2
+	);
+}
+
+FCPPT_PP_PUSH_WARNING
+FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
+
+BOOST_AUTO_TEST_CASE(
+	algorithm_map_move
+)
+{
+FCPPT_PP_POP_WARNING
+
+	int_vector const ints{
+		1,
+		2
+	};
+
+	int_unique_ptr_vector const result(
+		fcppt::algorithm::map<
+			int_unique_ptr_vector
+		>(
+			ints,
+			[](
+				int const _value
+			)
+			{
+				return
+					fcppt::make_unique_ptr<
+						int
+					>(
+						_value
+					);
+			}
+		)
+	);
+
+	BOOST_REQUIRE(
+		result.size()
+		==
+		ints.size()
+	);
+
+	BOOST_CHECK(
+		*result[0] == 1
+	);
+
+	BOOST_CHECK(
+		*result[1] == 2
 	);
 }

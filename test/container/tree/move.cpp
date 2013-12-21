@@ -4,14 +4,17 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
+#include <fcppt/algorithm/map.hpp>
 #include <fcppt/container/tree/object_impl.hpp>
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/test/unit_test.hpp>
+#include <memory>
 #include <string>
 #include <utility>
+#include <vector>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -91,5 +94,77 @@ FCPPT_PP_POP_WARNING
 		tree3.front().parent().data()
 		==
 		&tree3
+	);
+}
+
+FCPPT_PP_PUSH_WARNING
+FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
+
+BOOST_AUTO_TEST_CASE(
+	container_tree_move_map
+)
+{
+FCPPT_PP_POP_WARNING
+	typedef
+	std::unique_ptr<
+		std::string
+	>
+	string_unique_ptr;
+
+	typedef
+	fcppt::container::tree::object<
+		string_unique_ptr
+	>
+	string_unique_ptr_tree;
+
+	typedef
+	std::vector<
+		string_unique_ptr_tree
+	>
+	string_unique_ptr_tree_vector;
+
+	typedef
+	std::vector<
+		std::string
+	>
+	string_vector;
+
+	string_vector const strings{
+		"foo",
+		"bar"
+	};
+
+	string_unique_ptr_tree_vector const result(
+		fcppt::algorithm::map<
+			string_unique_ptr_tree_vector
+		>(
+			strings,
+			[](
+				std::string const &_value
+			)
+			{
+				return
+					string_unique_ptr_tree(
+						fcppt::make_unique_ptr<
+							std::string
+						>(
+							_value
+						)
+					);
+			}
+		)
+	);
+
+	BOOST_REQUIRE_EQUAL(
+		strings.size(),
+		result.size()
+	);
+
+	BOOST_CHECK(
+		*result[0].value() == "foo"
+	);
+
+	BOOST_CHECK(
+		*result[1].value() == "bar"
 	);
 }
