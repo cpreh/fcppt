@@ -7,9 +7,7 @@
 #ifndef FCPPT_CONTAINER_TREE_OBJECT_IMPL_HPP_INCLUDED
 #define FCPPT_CONTAINER_TREE_OBJECT_IMPL_HPP_INCLUDED
 
-#include <fcppt/make_unique_ptr.hpp>
 #include <fcppt/algorithm/find_if_exn.hpp>
-#include <fcppt/container/tree/iterator_impl.hpp>
 #include <fcppt/container/tree/object_decl.hpp>
 #include <fcppt/container/tree/optional_ref_impl.hpp>
 #include <fcppt/container/tree/detail/copy_children.hpp>
@@ -76,6 +74,33 @@ fcppt::container::tree::object<
 
 FCPPT_PP_PUSH_WARNING
 FCPPT_PP_DISABLE_VC_WARNING(4355)
+
+template<
+	typename T
+>
+fcppt::container::tree::object<
+	T
+>::object(
+	T &&_value,
+	child_list &&_children
+)
+:
+	value_(
+		std::move(
+			_value
+		)
+	),
+	parent_(),
+	children_(
+		fcppt::container::tree::detail::move_children(
+			*this,
+			std::move(
+				_children
+			)
+		)
+	)
+{
+}
 
 template<
 	typename T
@@ -288,23 +313,23 @@ fcppt::container::tree::object<
 template<
 	typename T
 >
-typename fcppt::container::tree::object<
+fcppt::container::tree::object<
 	T
->::unique_ptr
+>
 fcppt::container::tree::object<
 	T
 >::release(
 	iterator const _it
 )
 {
-	unique_ptr ret(
+	object ret(
 		std::move(
-			*_it.get()
+			*_it
 		)
 	);
 
 	children_.erase(
-		_it.get()
+		_it
 	);
 
 	return
@@ -423,13 +448,13 @@ void
 fcppt::container::tree::object<
 	T
 >::push_back(
-	unique_ptr &&_ptr
+	object &&_tree
 )
 {
 	this->insert(
 		this->end(),
 		std::move(
-			_ptr
+			_tree
 		)
 	);
 }
@@ -486,13 +511,13 @@ void
 fcppt::container::tree::object<
 	T
 >::push_front(
-	unique_ptr &&_ptr
+	object &&_tree
 )
 {
 	this->insert(
 		this->begin(),
 		std::move(
-			_ptr
+			_tree
 		)
 	);
 }
@@ -805,21 +830,15 @@ fcppt::container::tree::object<
 	T
 >::insert(
 	iterator const _it,
-	unique_ptr &&_ptr
+	object &&_tree
 )
 {
-	object &ref(
-		*_ptr
-	);
-
 	children_.insert(
-		_it.get(),
+		_it,
 		std::move(
-			_ptr
+			_tree
 		)
-	);
-
-	ref.parent(
+	)->parent(
 		optional_ref(
 			*this
 		)
@@ -839,9 +858,7 @@ fcppt::container::tree::object<
 {
 	this->insert(
 		_it,
-		fcppt::make_unique_ptr<
-			object
-		>(
+		object(
 			_value
 		)
 	);
@@ -860,9 +877,7 @@ fcppt::container::tree::object<
 {
 	this->insert(
 		_it,
-		fcppt::make_unique_ptr<
-			object
-		>(
+		object(
 			std::move(
 				_value
 			)
@@ -881,7 +896,7 @@ fcppt::container::tree::object<
 )
 {
 	this->children().erase(
-		_it.get()
+		_it
 	);
 }
 
@@ -897,8 +912,8 @@ fcppt::container::tree::object<
 )
 {
 	this->children().erase(
-		_begin.get(),
-		_end.get()
+		_begin,
+		_end
 	);
 }
 
@@ -966,6 +981,58 @@ fcppt::container::tree::object<
 
 	children_.swap(
 		_other.children_
+	);
+}
+
+template<
+	typename T
+>
+void
+fcppt::container::tree::object<
+	T
+>::sort()
+{
+	children_.sort(
+		[](
+			object const &_left,
+			object const &_right
+		)
+		{
+			return
+				_left.value()
+				<
+				_right.value();
+		}
+	);
+}
+
+template<
+	typename T
+>
+template<
+	typename Predicate
+>
+void
+fcppt::container::tree::object<
+	T
+>::sort(
+	Predicate const &_predicate
+)
+{
+	children_.sort(
+		[
+			_predicate
+		](
+			object const &_left,
+			object const &_right
+		)
+		{
+			return
+				_predicate(
+					_left.value(),
+					_right.value()
+				);
+		}
 	);
 }
 

@@ -32,7 +32,8 @@ move_children(
 	fcppt::container::tree::object<
 		T
 	> &_parent,
-	typename fcppt::container::tree::object<
+	typename
+	fcppt::container::tree::object<
 		T
 	>::child_list &&_children
 )
@@ -48,9 +49,11 @@ move_children(
 	);
 
 	for(
-		auto &child : result
+		auto &child
+		:
+		result
 	)
-		child->parent(
+		child.parent(
 			typename object::optional_ref(
 				_parent
 			)

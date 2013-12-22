@@ -37,7 +37,9 @@ operator==(
 )
 {
 	return
-		_a.value() == _b.value()
+		_a.value()
+		==
+		_b.value()
 		&&
 		_a.size()
 		==

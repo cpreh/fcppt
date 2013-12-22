@@ -7,12 +7,10 @@
 #ifndef FCPPT_CONTAINER_TREE_OBJECT_DECL_HPP_INCLUDED
 #define FCPPT_CONTAINER_TREE_OBJECT_DECL_HPP_INCLUDED
 
-#include <fcppt/container/tree/iterator_fwd.hpp>
 #include <fcppt/container/tree/object_fwd.hpp>
 #include <fcppt/container/tree/optional_ref_decl.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <list>
-#include <memory>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
@@ -27,8 +25,6 @@ namespace tree
 /**
 \brief A tree data structure
 \ingroup fcpptcontainertree
-
-See the documentation of fcppt::container::tree::object to know more.
 */
 template<
 	typename T
@@ -36,48 +32,61 @@ template<
 class object
 {
 public:
-	typedef std::unique_ptr<
+	typedef
+	std::list<
 		object
-	> unique_ptr;
+	>
+	child_list;
 
-	typedef std::list<
-		unique_ptr
-	> child_list;
+	typedef
+	T
+	value_type;
 
-	// This is not child_list::value_type so T is easily accessible
-	typedef T value_type;
+	typedef
+	typename
+	child_list::size_type
+	size_type;
 
-	typedef typename child_list::size_type size_type;
-
-	typedef typename child_list::difference_type difference_type;
+	typedef
+	typename
+	child_list::difference_type
+	difference_type;
 
 	typedef object &reference;
 
 	typedef object const &const_reference;
 
-	typedef fcppt::container::tree::iterator<
-		typename child_list::iterator
-	> iterator;
+	typedef
+	typename
+	child_list::iterator
+	iterator;
 
-	typedef fcppt::container::tree::iterator<
-		typename child_list::const_iterator
-	> const_iterator;
+	typedef
+	typename
+	child_list::const_iterator
+	const_iterator;
 
-	typedef fcppt::container::tree::iterator<
-		typename child_list::reverse_iterator
-	> reverse_iterator;
+	typedef
+	typename
+	child_list::reverse_iterator
+	reverse_iterator;
 
-	typedef fcppt::container::tree::iterator<
-		typename child_list::const_reverse_iterator
-	> const_reverse_iterator;
+	typedef
+	typename
+	child_list::const_reverse_iterator
+	const_reverse_iterator;
 
-	typedef typename fcppt::container::tree::optional_ref<
+	typedef
+	fcppt::container::tree::optional_ref<
 		object
-	>::type optional_ref;
+	>
+	optional_ref;
 
-	typedef typename fcppt::container::tree::optional_ref<
+	typedef
+	fcppt::container::tree::optional_ref<
 		object const
-	>::type const_optional_ref;
+	>
+	const_optional_ref;
 
 	/// Constructs the tree using the default constructed value
 	object();
@@ -91,6 +100,14 @@ public:
 	explicit
 	object(
 		T &&
+	);
+
+	/**
+	\brief Constructs a tree, including its children, by moving
+	*/
+	object(
+		T &&,
+		child_list &&
 	);
 
 	/**
@@ -163,7 +180,7 @@ public:
 	/**
 	\brief Detaches the given child from the parent and returns it.
 	*/
-	unique_ptr
+	object
 	release(
 		iterator
 	);
@@ -214,7 +231,7 @@ public:
 	*/
 	void
 	push_back(
-		unique_ptr &&
+		object &&
 	);
 
 	/**
@@ -241,7 +258,7 @@ public:
 	*/
 	void
 	push_front(
-		unique_ptr &&
+		object &&
 	);
 
 	/**
@@ -379,7 +396,7 @@ public:
 	void
 	insert(
 		iterator,
-		unique_ptr &&
+		object &&
 	);
 
 	/**
@@ -440,6 +457,23 @@ public:
 	void
 	swap(
 		object &
+	);
+
+	/**
+	\brief Sorts the children using operator< on T
+	*/
+	void
+	sort();
+
+	/**
+	\brief Sorts the children using a predicate on two Ts
+	*/
+	template<
+		typename Predicate
+	>
+	void
+	sort(
+		Predicate const &
 	);
 private:
 	T value_;

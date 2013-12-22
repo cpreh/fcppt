@@ -5,7 +5,6 @@
 
 
 #include <fcppt/exception.hpp>
-#include <fcppt/make_unique_ptr.hpp>
 #include <fcppt/string.hpp>
 #include <fcppt/text.hpp>
 #include <fcppt/container/tree/object.hpp>
@@ -44,13 +43,9 @@ try
 		<< FCPPT_TEXT('\n');
 
 	{
-		// Adding two items via an unique_ptr and passing ownership
-		string_tree::unique_ptr child1(
-			fcppt::make_unique_ptr<
-				string_tree
-			>(
-				FCPPT_TEXT("blubb")
-			)
+		// Adding two items by moving
+		string_tree child1(
+			FCPPT_TEXT("blubb")
 		);
 
 		tree.push_back(
@@ -59,12 +54,8 @@ try
 			)
 		);
 
-		string_tree::unique_ptr child2(
-			fcppt::make_unique_ptr<
-				string_tree
-			>(
-				FCPPT_TEXT("blah")
-			)
+		string_tree child2(
+			FCPPT_TEXT("blah")
 		);
 
 		tree.push_back(

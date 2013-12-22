@@ -4,6 +4,7 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
+#include <fcppt/make_unique_ptr.hpp>
 #include <fcppt/algorithm/map.hpp>
 #include <fcppt/container/tree/object_impl.hpp>
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>

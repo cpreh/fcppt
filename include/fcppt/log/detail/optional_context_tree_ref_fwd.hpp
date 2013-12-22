@@ -18,9 +18,11 @@ namespace log
 namespace detail
 {
 
-typedef fcppt::container::tree::optional_ref<
+typedef
+fcppt::container::tree::optional_ref<
 	fcppt::log::detail::context_tree
->::type optional_context_tree_ref;
+>
+optional_context_tree_ref;
 
 }
 }

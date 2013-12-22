@@ -7,7 +7,6 @@
 #ifndef FCPPT_CONTAINER_TREE_DETAIL_COPY_CHILDREN_HPP_INCLUDED
 #define FCPPT_CONTAINER_TREE_DETAIL_COPY_CHILDREN_HPP_INCLUDED
 
-#include <fcppt/make_unique_ptr.hpp>
 #include <fcppt/container/tree/object_fwd.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <utility>
@@ -26,7 +25,8 @@ namespace detail
 template<
 	typename T
 >
-typename fcppt::container::tree::object<
+typename
+fcppt::container::tree::object<
 	T
 >::child_list
 copy_children(
@@ -45,18 +45,16 @@ copy_children(
 	typename object::child_list result;
 
 	for(
-		auto const &child : _children
+		auto const &child
+		:
+		_children
 	)
 	{
 		result.push_back(
-			fcppt::make_unique_ptr<
-				object
-			>(
-				*child
-			)
+			child
 		);
 
-		result.back()->parent(
+		result.back().parent(
 			typename object::optional_ref(
 				_parent
 			)

@@ -225,10 +225,8 @@ set(
 	include/fcppt/container/tree/detail/move_children.hpp
 	include/fcppt/container/tree/detail/print.hpp
 	include/fcppt/container/tree/is_object.hpp
-	include/fcppt/container/tree/iterator_decl.hpp
-	include/fcppt/container/tree/iterator_fwd.hpp
-	include/fcppt/container/tree/iterator_impl.hpp
 	include/fcppt/container/tree/level.hpp
+	include/fcppt/container/tree/map.hpp
 	include/fcppt/container/tree/object.hpp
 	include/fcppt/container/tree/object_decl.hpp
 	include/fcppt/container/tree/object_fwd.hpp

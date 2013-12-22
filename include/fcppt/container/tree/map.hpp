@@ -7,7 +7,6 @@
 #ifndef FCPPT_CONTAINER_TREE_MAP_HPP_INCLUDED
 #define FCPPT_CONTAINER_TREE_MAP_HPP_INCLUDED
 
-#include <fcppt/make_unique_ptr.hpp>
 #include <fcppt/container/tree/is_object.hpp>
 #include <fcppt/container/tree/object_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
@@ -61,15 +60,11 @@ map(
 		_tree
 	)
 		result.push_back(
-			fcppt::make_unique_ptr<
+			fcppt::container::tree::map<
 				Result
 			>(
-				fcppt::container::tree::map<
-					Result
-				>(
-					child,
-					_function
-				)
+				child,
+				_function
 			)
 		);
 

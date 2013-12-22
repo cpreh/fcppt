@@ -74,30 +74,45 @@ public:
 
 	class iterator;
 private:
-	typedef typename boost::mpl::if_<
+	typedef
+	typename
+	boost::mpl::if_<
 		std::is_const<
 			Tree
 		>,
-		typename Tree::const_reverse_iterator,
-		typename Tree::reverse_iterator
-	>::type tree_iterator;
+		typename
+		Tree::const_reverse_iterator,
+		typename
+		Tree::reverse_iterator
+	>::type
+	tree_iterator;
 
-	typedef typename fcppt::container::tree::optional_ref<
+	typedef
+	fcppt::container::tree::optional_ref<
 		Tree
-	>::type tree_ref;
+	>
+	tree_ref;
 
-	typedef std::stack<
+	typedef
+	std::stack<
 		tree_ref
-	> stack_type;
+	>
+	stack_type;
 
-	typedef typename Tree::child_list child_list;
+	typedef
+	typename
+	Tree::child_list child_list;
 
-	typedef boost::iterator_facade<
+	typedef
+	boost::iterator_facade<
 		iterator,
-		typename tree_iterator::value_type,
+		typename
+		tree_iterator::value_type,
 		boost::forward_traversal_tag,
-		typename tree_iterator::reference
-	> iterator_base;
+		typename
+		tree_iterator::reference
+	>
+	iterator_base;
 public:
 
 FCPPT_PP_PUSH_WARNING
