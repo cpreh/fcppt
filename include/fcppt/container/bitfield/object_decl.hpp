@@ -15,6 +15,7 @@
 #include <fcppt/container/bitfield/proxy_fwd.hpp>
 #include <fcppt/container/bitfield/value_type.hpp>
 #include <fcppt/config/external_begin.hpp>
+#include <initializer_list>
 #include <iterator>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
@@ -159,6 +160,15 @@ public:
 	> const_reverse_iterator;
 
 	/**
+	\brief Initializer list type used to initialize a bitfield
+	*/
+	typedef
+	std::initializer_list<
+		ElementType
+	>
+	initializer_list_type;
+
+	/**
 	\brief Constructs an uninitialized bitfield
 	*/
 	explicit
@@ -167,12 +177,12 @@ public:
 	);
 
 	/**
-	\brief Constructs a bitfield where every bit is false except the argument's bit.
-	\param e The bit that is <em>not</em> set to false
+	\brief Constructs a bitfield using an initializer list, setting every
+	bit from the list to true
 	*/
 	explicit
 	object(
-		ElementType e
+		initializer_list_type const &
 	);
 
 	/**

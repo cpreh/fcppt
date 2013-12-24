@@ -57,7 +57,7 @@ int main()
 	output(field);
 
 	// And unset it again
-	field &= ~bitfield(person_status::hungry);
+	field &= ~bitfield{person_status::hungry};
 
 	// You can access a single flag via operator[]
 	fcppt::io::cout()

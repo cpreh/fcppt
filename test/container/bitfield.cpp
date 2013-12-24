@@ -313,9 +313,6 @@ FCPPT_PP_POP_WARNING
 	);
 }
 
-FCPPT_PP_PUSH_WARNING
-FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
-
 namespace
 {
 
@@ -353,6 +350,9 @@ check_bit(
 
 }
 
+FCPPT_PP_PUSH_WARNING
+FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
+
 BOOST_AUTO_TEST_CASE(
 	container_bitfield_underlying_value
 )
@@ -389,6 +389,39 @@ FCPPT_PP_POP_WARNING
 	BOOST_REQUIRE(
 		!check_bit(
 			value,
+			test_enum::test3
+		)
+	);
+}
+
+FCPPT_PP_PUSH_WARNING
+FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
+
+BOOST_AUTO_TEST_CASE(
+	container_bitfield_initializer_list
+)
+{
+FCPPT_PP_POP_WARNING
+
+	bitfield const field1{
+		test_enum::test1,
+		test_enum::test3
+	};
+
+	BOOST_CHECK(
+		field1.get(
+			test_enum::test1
+		)
+	);
+
+	BOOST_CHECK(
+		!field1.get(
+			test_enum::test2
+		)
+	);
+
+	BOOST_CHECK(
+		field1.get(
 			test_enum::test3
 		)
 	);

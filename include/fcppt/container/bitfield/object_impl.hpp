@@ -51,16 +51,21 @@ fcppt::container::bitfield::object<
 	NumElements,
 	InternalType
 >::object(
-	ElementType const _index
+	initializer_list_type const &_init
 )
 // Don't initialize array_
 {
 	this->clear();
 
-	this->set(
-		_index,
-		true
-	);
+	for(
+		auto const &elem
+		:
+		_init
+	)
+		this->set(
+			elem,
+			true
+		);
 }
 
 FCPPT_PP_POP_WARNING
