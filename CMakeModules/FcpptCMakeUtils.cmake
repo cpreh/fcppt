@@ -23,6 +23,21 @@ include(
 	CheckCXXCompilerFlag
 )
 
+if(
+	FCPPT_WINE_TOOLCHAIN
+)
+	# TODO: Put this somewhere else! It doesn't work in toolchain files.
+	set(
+		CMAKE_SHARED_LIBRARY_SUFFIX
+		".dll.so"
+	)
+
+	set(
+		WIN32
+		TRUE
+	)
+endif()
+
 # In source builds are done when the install prefix is set to the empty string
 if(
 	"${CMAKE_INSTALL_PREFIX}"
@@ -763,6 +778,24 @@ macro(
 		)
 	endif()
 endmacro()
+
+function(
+	fcppt_utils_set_so_version
+	TARGET
+	VERSION
+)
+	if(
+		# TODO: How do we know we are building with wine?
+		NOT FCPPT_WINE_TOOLCHAIN
+	)
+		set_target_properties(
+			${TARGETN}
+			PROPERTIES
+			VERSION
+			${VERSION}
+		)
+	endif()
+endfunction()
 
 function(
 	fcppt_utils_add_dummy_target
