@@ -576,6 +576,8 @@ set(
 	include/fcppt/log/define_object.hpp
 	include/fcppt/log/detail/auto_context.hpp
 	include/fcppt/log/detail/auto_context_fwd.hpp
+	include/fcppt/log/detail/auto_context_rep.hpp
+	include/fcppt/log/detail/auto_context_rep_fwd.hpp
 	include/fcppt/log/detail/context_tree.hpp
 	include/fcppt/log/detail/context_tree_fwd.hpp
 	include/fcppt/log/detail/context_tree_node.hpp

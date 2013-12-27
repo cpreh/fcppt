@@ -45,7 +45,7 @@ namespace engine
 
 // Helper function to create our logger parameters
 inline
-fcppt::log::parameters::object const
+fcppt::log::parameters::object
 logger_parameters(
 	fcppt::log::location const &_location
 )
@@ -70,7 +70,7 @@ namespace engine
 
 // Helper function to return the engine's log location
 inline
-fcppt::log::location const
+fcppt::log::location
 logger_location()
 {
 	return

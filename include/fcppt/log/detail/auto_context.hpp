@@ -8,9 +8,12 @@
 #define FCPPT_LOG_DETAIL_AUTO_CONTEXT_HPP_INCLUDED
 
 #include <fcppt/noncopyable.hpp>
+#include <fcppt/optional_decl.hpp>
+#include <fcppt/log/context_fwd.hpp>
 #include <fcppt/log/object_fwd.hpp>
 #include <fcppt/log/optional_location.hpp>
 #include <fcppt/log/detail/auto_context_fwd.hpp>
+#include <fcppt/log/detail/auto_context_rep.hpp>
 #include <fcppt/log/detail/optional_context_location.hpp>
 #include <fcppt/log/detail/optional_context_tree_ref.hpp>
 
@@ -35,17 +38,25 @@ public:
 
 	~auto_context();
 
-	fcppt::log::optional_location const &
+	fcppt::log::optional_location
 	location() const;
 
 	fcppt::log::detail::optional_context_tree_ref const
 	node() const;
+
+	void
+	transfer(
+		fcppt::log::context &,
+		fcppt::log::object &
+	);
 private:
-	fcppt::log::context *const context_;
+	typedef
+	fcppt::optional<
+		fcppt::log::detail::auto_context_rep
+	>
+	optional_auto_context_rep;
 
-	fcppt::log::optional_location const location_;
-
-	fcppt::log::detail::optional_context_tree_ref const node_;
+	optional_auto_context_rep rep_;
 };
 
 }

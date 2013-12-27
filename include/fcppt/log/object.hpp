@@ -9,6 +9,7 @@
 
 #include <fcppt/noncopyable.hpp>
 #include <fcppt/symbol.hpp>
+#include <fcppt/log/context_fwd.hpp>
 #include <fcppt/log/enabled_level_array.hpp>
 #include <fcppt/log/level_fwd.hpp>
 #include <fcppt/log/level_stream_array.hpp>
@@ -214,6 +215,11 @@ public:
 	FCPPT_SYMBOL
 	fcppt::log::optional_location
 	location() const;
+
+	void
+	transfer(
+		fcppt::log::context &
+	);
 private:
 	fcppt::log::detail::auto_context auto_context_;
 

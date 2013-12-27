@@ -153,35 +153,52 @@ fcppt::log::object::enable(
 	bool const _enabled
 )
 {
-	enabled_ = _enabled;
+	enabled_ =
+		_enabled;
 }
 
 bool
 fcppt::log::object::enabled() const
 {
-	return enabled_;
+	return
+		enabled_;
 }
 
 fcppt::log::format::function const &
 fcppt::log::object::formatter() const
 {
-	return formatter_;
+	return
+		formatter_;
 }
 
 fcppt::log::level_stream_array const &
 fcppt::log::object::level_streams() const
 {
-	return level_streams_;
+	return
+		level_streams_;
 }
 
 fcppt::log::enabled_level_array const &
 fcppt::log::object::enabled_levels() const
 {
-	return enabled_levels_;
+	return
+		enabled_levels_;
 }
 
 fcppt::log::optional_location
 fcppt::log::object::location() const
 {
-	return auto_context_.location();
+	return
+		auto_context_.location();
+}
+
+void
+fcppt::log::object::transfer(
+	fcppt::log::context &_context
+)
+{
+	auto_context_.transfer(
+		_context,
+		*this
+	);
 }

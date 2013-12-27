@@ -380,6 +380,8 @@ set(
 	include/fcppt/log/define_object.hpp
 	include/fcppt/log/detail/auto_context.hpp
 	include/fcppt/log/detail/auto_context_fwd.hpp
+	include/fcppt/log/detail/auto_context_rep.hpp
+	include/fcppt/log/detail/auto_context_rep_fwd.hpp
 	include/fcppt/log/detail/context_tree.hpp
 	include/fcppt/log/detail/context_tree_fwd.hpp
 	include/fcppt/log/detail/context_tree_node.hpp
@@ -995,6 +997,7 @@ set(
 	src/log/deactivate_levels_recursive.cpp
 	src/log/default_level_streams.cpp
 	src/log/detail/auto_context.cpp
+	src/log/detail/auto_context_rep.cpp
 	src/log/detail/context_tree_node.cpp
 	src/log/detail/inner_context_node.cpp
 	src/log/detail/outer_context_node.cpp

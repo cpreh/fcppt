@@ -4,12 +4,14 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/text.hpp>
+#include <fcppt/string.hpp>
+#include <fcppt/assert/error.hpp>
 #include <fcppt/assert/pre.hpp>
 #include <fcppt/container/tree/pre_order.hpp>
 #include <fcppt/log/context.hpp>
 #include <fcppt/log/location.hpp>
 #include <fcppt/log/no_such_location.hpp>
+#include <fcppt/log/object.hpp>
 #include <fcppt/log/optional_object.hpp>
 #include <fcppt/log/detail/context_tree.hpp>
 #include <fcppt/log/detail/context_tree_node.hpp>
@@ -22,6 +24,7 @@
 #include <fcppt/src/log/is_outer_node.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <exception>
+#include <vector>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -30,7 +33,7 @@ fcppt::log::context::context()
 	tree_(
 		fcppt::log::detail::context_tree_node(
 			fcppt::log::detail::inner_context_node(
-				FCPPT_TEXT("")
+				fcppt::string()
 			)
 		)
 	)
@@ -93,8 +96,8 @@ fcppt::log::context::find(
 
 void
 fcppt::log::context::apply(
-	log::location const &_location,
-	log::tree_function const &_function
+	fcppt::log::location const &_location,
+	fcppt::log::tree_function const &_function
 )
 {
 	fcppt::log::detail::optional_context_tree_ref const tree_location(
@@ -111,17 +114,14 @@ fcppt::log::context::apply(
 			_location
 		);
 
-	typedef
-	fcppt::container::tree::pre_order<
-		fcppt::log::detail::context_tree
-	> traversal_type;
-
-	traversal_type traversal(
-		*tree_location
-	);
-
 	for(
-		fcppt::log::detail::context_tree const &elem : traversal
+		fcppt::log::detail::context_tree const &elem
+		:
+		fcppt::container::tree::pre_order<
+			fcppt::log::detail::context_tree
+		>(
+			*tree_location
+		)
 	)
 	{
 		if(
@@ -137,6 +137,53 @@ fcppt::log::context::apply(
 	}
 }
 
+void
+fcppt::log::context::transfer_to(
+	fcppt::log::context &_other
+)
+{
+	typedef
+	std::vector<
+		fcppt::log::detail::outer_context_node
+	>
+	outer_context_node_vector;
+
+	outer_context_node_vector nodes;
+
+	for(
+		fcppt::log::detail::context_tree const &elem
+		:
+		fcppt::container::tree::pre_order<
+			fcppt::log::detail::context_tree
+		>(
+			tree_
+		)
+	)
+		if(
+			fcppt::log::is_outer_node(
+				elem
+			)
+		)
+			nodes.push_back(
+				elem.value().get().get<
+					fcppt::log::detail::outer_context_node
+				>()
+			);
+
+	for(
+		auto const &node
+		:
+		nodes
+	)
+		node.object().transfer(
+			_other
+		);
+
+	FCPPT_ASSERT_ERROR(
+		tree_.empty()
+	);
+}
+
 fcppt::log::detail::context_tree &
 fcppt::log::context::add(
 	fcppt::log::location const &_location,
@@ -148,7 +195,9 @@ fcppt::log::context::add(
 	);
 
 	for(
-		auto const &item : _location
+		auto const &item
+		:
+		_location
 	)
 	{
 		fcppt::log::detail::context_tree::iterator const item_it(

@@ -34,7 +34,7 @@ you can invoke this macro with:
 namespace \
 { \
 \
-fcppt::log::object global( \
+fcppt::log::object fcppt_global_logger( \
 	parameters \
 ); \
 \
@@ -43,7 +43,7 @@ fcppt::log::object global( \
 fcppt::log::object & \
 function ()\
 { \
-	return global; \
+	return fcppt_global_logger; \
 }
 
 #endif

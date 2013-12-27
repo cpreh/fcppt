@@ -13,21 +13,9 @@
 #include <fcppt/log/print_locations.hpp>
 #include <fcppt/log/tree_function.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <functional>
 #include <ostream>
 #include <fcppt/config/external_end.hpp>
 
-
-namespace
-{
-
-void
-do_print(
-	fcppt::io::ostream &,
-	fcppt::log::object const &
-);
-
-}
 
 void
 fcppt::log::print_locations(
@@ -39,29 +27,16 @@ fcppt::log::print_locations(
 	_context.apply(
 		_location,
 		fcppt::log::tree_function(
-			std::bind(
-				&do_print,
-				std::ref(
-					_stream
-				),
-				std::placeholders::_1
+			[
+				&_stream
+			](
+				fcppt::log::object const &_object
 			)
+			{
+				_stream
+					<< _object.location()->string()
+					<< FCPPT_TEXT('\n');
+			}
 		)
 	);
-}
-
-namespace
-{
-
-void
-do_print(
-	fcppt::io::ostream &_stream,
-	fcppt::log::object const &_object
-)
-{
-	_stream
-		<< _object.location()->string()
-		<< FCPPT_TEXT('\n');
-}
-
 }

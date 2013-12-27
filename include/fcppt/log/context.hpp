@@ -87,6 +87,17 @@ public:
 		fcppt::log::location const &location,
 		fcppt::log::tree_function const &function
 	);
+
+	/**
+	\brief Transfers all locations to another context
+
+	Transfers all locations of this context to \a other
+	*/
+	FCPPT_SYMBOL
+	void
+	transfer_to(
+		fcppt::log::context &other
+	);
 private:
 	friend class fcppt::log::detail::auto_context;
 
