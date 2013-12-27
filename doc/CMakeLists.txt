@@ -403,7 +403,6 @@ set(
 	include/fcppt/container/tree/comparison.hpp
 	include/fcppt/container/tree/depth.hpp
 	include/fcppt/container/tree/detail/copy_children.hpp
-	include/fcppt/container/tree/detail/iterator_base.hpp
 	include/fcppt/container/tree/detail/move_children.hpp
 	include/fcppt/container/tree/detail/print.hpp
 	include/fcppt/container/tree/is_object.hpp
