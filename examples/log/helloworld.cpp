@@ -6,10 +6,10 @@
 
 #include <fcppt/text.hpp>
 #include <fcppt/io/cout.hpp>
+#include <fcppt/log/_.hpp>
 #include <fcppt/log/debug.hpp>
 #include <fcppt/log/level.hpp>
 #include <fcppt/log/object.hpp>
-#include <fcppt/log/output.hpp>
 #include <fcppt/log/verbose.hpp>
 #include <fcppt/log/parameters/object.hpp>
 

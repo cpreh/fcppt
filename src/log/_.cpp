@@ -4,11 +4,10 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_LOG_HEADERS_HPP_INCLUDED
-#define FCPPT_LOG_HEADERS_HPP_INCLUDED
-
-#include <fcppt/log/macros.hpp>
-#include <fcppt/log/output.hpp>
+#include <fcppt/log/_.hpp>
+#include <fcppt/log/detail/output_helper.hpp>
 
 
-#endif
+fcppt::log::detail::output_helper const
+fcppt::log::_
+	= fcppt::log::detail::output_helper();

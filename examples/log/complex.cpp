@@ -10,6 +10,7 @@
 #include <fcppt/text.hpp>
 #include <fcppt/io/cerr.hpp>
 #include <fcppt/io/cout.hpp>
+#include <fcppt/log/_.hpp>
 #include <fcppt/log/context.hpp>
 #include <fcppt/log/debug.hpp>
 #include <fcppt/log/define_context.hpp>
@@ -18,7 +19,6 @@
 #include <fcppt/log/level.hpp>
 #include <fcppt/log/location.hpp>
 #include <fcppt/log/object.hpp>
-#include <fcppt/log/output.hpp>
 #include <fcppt/log/print_locations.hpp>
 #include <fcppt/log/parameters/object.hpp>
 #include <fcppt/log/parameters/with_context.hpp>

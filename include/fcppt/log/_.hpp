@@ -4,11 +4,11 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_LOG_TRAMPOLINE_HPP_INCLUDED
-#define FCPPT_LOG_TRAMPOLINE_HPP_INCLUDED
+#ifndef FCPPT_LOG___HPP_INCLUDED
+#define FCPPT_LOG___HPP_INCLUDED
 
-#include <fcppt/symbol.hpp>
 #include <fcppt/log/detail/output_helper.hpp>
+#include <fcppt/log/detail/temporary_output.hpp>
 
 
 namespace fcppt

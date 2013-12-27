@@ -366,6 +366,7 @@ set(
 	include/fcppt/io/write.hpp
 	include/fcppt/is_strong_typedef.hpp
 	include/fcppt/literal.hpp
+	include/fcppt/log/_.hpp
 	include/fcppt/log/activate_levels.hpp
 	include/fcppt/log/activate_levels_recursive.hpp
 	include/fcppt/log/context.hpp
@@ -417,7 +418,6 @@ set(
 	include/fcppt/log/format/inserter.hpp
 	include/fcppt/log/format/time_stamp.hpp
 	include/fcppt/log/global.hpp
-	include/fcppt/log/headers.hpp
 	include/fcppt/log/impl/exception.hpp
 	include/fcppt/log/impl/no_such_location.hpp
 	include/fcppt/log/info.hpp
@@ -431,7 +431,6 @@ set(
 	include/fcppt/log/level_to_string.hpp
 	include/fcppt/log/location.hpp
 	include/fcppt/log/location_fwd.hpp
-	include/fcppt/log/macros.hpp
 	include/fcppt/log/make_location.hpp
 	include/fcppt/log/no_such_location.hpp
 	include/fcppt/log/object.hpp
@@ -440,12 +439,10 @@ set(
 	include/fcppt/log/optional_location_fwd.hpp
 	include/fcppt/log/optional_object.hpp
 	include/fcppt/log/optional_object_fwd.hpp
-	include/fcppt/log/output.hpp
 	include/fcppt/log/parameters/object.hpp
 	include/fcppt/log/parameters/object_fwd.hpp
 	include/fcppt/log/parameters/with_context.hpp
 	include/fcppt/log/print_locations.hpp
-	include/fcppt/log/trampoline.hpp
 	include/fcppt/log/tree_function.hpp
 	include/fcppt/log/verbose.hpp
 	include/fcppt/log/warning.hpp
@@ -989,6 +986,7 @@ set(
 	src/io/color/set.cpp
 	src/io/cout.cpp
 	src/io/scoped_rdbuf.cpp
+	src/log/_.cpp
 	src/log/activate_levels.cpp
 	src/log/activate_levels_recursive.cpp
 	src/log/context.cpp
@@ -1028,7 +1026,6 @@ set(
 	src/log/parameters/with_context.cpp
 	src/log/print_locations.cpp
 	src/log/set_levels.cpp
-	src/log/trampoline.cpp
 	src/log/tree_formatter.cpp
 	src/narrow.cpp
 	src/signal/connection.cpp

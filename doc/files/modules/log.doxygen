@@ -286,6 +286,10 @@ All headers are relative to the log subdirectory.
 <th>Description</th>
 </tr>
 <tr>
+<td><code>_.hpp</code></td>
+<td>Contains the necessary things to use \link fcppt::log::_ \endlink.</td>
+</tr>
+<tr>
 <td><code>context_fwd.hpp</code></td>
 <td>Contains \link fcppt::log::context \endlink's declaration.</td>
 </tr>
@@ -310,10 +314,6 @@ All headers are relative to the log subdirectory.
 <td>Contains the <code>FCPPT_LOG_FATAL</code> macro.</td>
 </tr>
 <tr>
-<td><code>headers.hpp</code></td>
-<td>Includes <code>macros.hpp</code> and <code>output.hpp</code>.</td>
-</tr>
-<tr>
 <td><code>info.hpp</code></td>
 <td>Contains the <code>FCPPT_LOG_INFO</code> macro.</td>
 </tr>
@@ -330,24 +330,12 @@ All headers are relative to the log subdirectory.
 <td>Contains \link fcppt::log::location \endlink's definition.</td>
 </tr>
 <tr>
-<td><code>macros.hpp</code></td>
-<td>Includes <code>debug.hpp, error.hpp, fatal.hpp, info.hpp, verbose.hpp, warning.hpp</code>.</td>
-</tr>
-<tr>
 <td><code>object_fwd.hpp</code></td>
 <td>Contains \link fcppt::log::object \endlink's declaration.</td>
 </tr>
 <tr>
 <td><code>object.hpp</code></td>
 <td>Contains \link fcppt::log::object \endlink's defintiion.</td>
-</tr>
-<tr>
-<td><code>output.hpp</code></td>
-<td>Contains the necessary things to use \link fcppt::log::_ \endlink.</td>
-</tr>
-<tr>
-<td><code>trampoline.hpp</code></td>
-<td>Contains \link fcppt::log::_ \endlink.</td>
 </tr>
 <tr>
 <td><code>verbose.hpp</code></td>

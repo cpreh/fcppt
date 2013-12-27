@@ -10,12 +10,12 @@
 #include <fcppt/assert/error.hpp>
 #include <fcppt/io/cerr.hpp>
 #include <fcppt/io/cout.hpp>
+#include <fcppt/log/_.hpp>
 #include <fcppt/log/context.hpp>
 #include <fcppt/log/info.hpp>
 #include <fcppt/log/level.hpp>
 #include <fcppt/log/object.hpp>
 #include <fcppt/log/optional_object.hpp>
-#include <fcppt/log/output.hpp>
 #include <fcppt/log/format/create_time_stamp.hpp>
 #include <fcppt/log/parameters/with_context.hpp>
 #include <fcppt/config/external_begin.hpp>
