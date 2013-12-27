@@ -383,7 +383,7 @@ allocated via <code>std::malloc</code>
 </tr>
 <tr>
 <td><code>scoped_ptr.hpp</code></td>
-<td>Contains all of fcppt::scoped_ptr</td>
+<td>The same as <code>scoped_ptr_impl.hpp</code></td>
 </tr>
 <tr>
 <td><code>shared_ptr_fwd.hpp</code></td>
@@ -399,7 +399,7 @@ allocated via <code>std::malloc</code>
 </tr>
 <tr>
 <td><code>shared_ptr.hpp</code></td>
-<td>Contains all of fcppt::shared_ptr, fcppt::make_shared_ptr, and the cast functions.</td>
+<td>The same as <code>shared_ptr_impl.hpp</code></td>
 </tr>
 <tr>
 <td><code>static_pointer_cast.hpp</code></td>
@@ -419,7 +419,7 @@ allocated via <code>std::malloc</code>
 </tr>
 <tr>
 <td><code>weak_ptr.hpp</code></td>
-<td>Contains all of fcppt::weak_ptr</td>
+<td>The same as <code>weak_ptr_impl.hpp</code></td>
 </tr>
 </table>
 */

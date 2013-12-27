@@ -172,7 +172,7 @@ fcppt::optional is spread out across various header files.
 </tr>
 <tr>
 <td><code>optional.hpp</code></td>
-<td>Includes all of the headers above.</td>
+<td>Includes <code>optional_impl.hpp</code> and <code>optional_comparison.hpp</code></td>
 </tr>
 </table>
 */

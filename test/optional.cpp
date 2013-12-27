@@ -4,9 +4,14 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
+#include <fcppt/const_optional_cast.hpp>
+#include <fcppt/dynamic_optional_cast.hpp>
 #include <fcppt/make_unique_ptr.hpp>
 #include <fcppt/noncopyable.hpp>
 #include <fcppt/optional.hpp>
+#include <fcppt/optional_ref_compare.hpp>
+#include <fcppt/static_optional_cast.hpp>
+#include <fcppt/unique_ptr_to_optional.hpp>
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
