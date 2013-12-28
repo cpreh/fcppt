@@ -114,27 +114,21 @@ fcppt::log::context::apply(
 			_location
 		);
 
-	for(
-		fcppt::log::detail::context_tree const &elem
-		:
-		fcppt::container::tree::pre_order<
-			fcppt::log::detail::context_tree
-		>(
-			*tree_location
-		)
-	)
-	{
-		if(
-			fcppt::log::is_outer_node(
-				elem
-			)
-		)
-			_function(
-				elem.value().get().get<
-					fcppt::log::detail::outer_context_node
-				>().object()
-			);
-	}
+	this->apply_to(
+		_function,
+		*tree_location
+	);
+}
+
+void
+fcppt::log::context::apply_all(
+	fcppt::log::tree_function const &_function
+)
+{
+	this->apply_to(
+		_function,
+		tree_
+	);
 }
 
 void
@@ -182,6 +176,35 @@ fcppt::log::context::transfer_to(
 	FCPPT_ASSERT_ERROR(
 		tree_.empty()
 	);
+}
+
+void
+fcppt::log::context::apply_to(
+	fcppt::log::tree_function const &_function,
+	fcppt::log::detail::context_tree const &_tree
+)
+{
+	for(
+		fcppt::log::detail::context_tree const &elem
+		:
+		fcppt::container::tree::pre_order<
+			fcppt::log::detail::context_tree const
+		>(
+			_tree
+		)
+	)
+	{
+		if(
+			fcppt::log::is_outer_node(
+				elem
+			)
+		)
+			_function(
+				elem.value().get().get<
+					fcppt::log::detail::outer_context_node
+				>().object()
+			);
+	}
 }
 
 fcppt::log::detail::context_tree &

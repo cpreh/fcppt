@@ -54,8 +54,20 @@ fcppt::log::level_stream::log(
 	dest_->flush();
 }
 
+void
+fcppt::log::level_stream::sink(
+	fcppt::io::ostream &_stream
+)
+{
+	dest_ =
+		ostream_reference(
+			_stream
+		);
+}
+
 fcppt::log::format::function const &
 fcppt::log::level_stream::formatter() const
 {
-	return formatter_;
+	return
+		formatter_;
 }

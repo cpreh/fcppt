@@ -89,6 +89,17 @@ public:
 	);
 
 	/**
+	\brief Applies a function to all logers recursively
+
+	Applies \a function to all loggers.
+	*/
+	FCPPT_SYMBOL
+	void
+	apply_all(
+		fcppt::log::tree_function const &function
+	);
+
+	/**
 	\brief Transfers all locations to another context
 
 	Transfers all locations of this context to \a other
@@ -99,6 +110,12 @@ public:
 		fcppt::log::context &other
 	);
 private:
+	void
+	apply_to(
+		fcppt::log::tree_function const &,
+		fcppt::log::detail::context_tree const &
+	);
+
 	friend class fcppt::log::detail::auto_context;
 
 	fcppt::log::detail::context_tree &

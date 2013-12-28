@@ -78,15 +78,28 @@ public:
 	);
 
 	/**
+	\brief Sets a new sink
+
+	\param stream The stream to use
+	*/
+	FCPPT_SYMBOL
+	void
+	sink(
+		fcppt::io::ostream &stream
+	);
+
+	/**
 	\brief Returns the associated formatter
 	*/
 	FCPPT_SYMBOL
 	fcppt::log::format::function const &
 	formatter() const;
 private:
-	typedef fcppt::optional<
+	typedef
+	fcppt::optional<
 		fcppt::io::ostream &
-	> ostream_reference;
+	>
+	ostream_reference;
 
 	ostream_reference dest_;
 

@@ -431,6 +431,7 @@ set(
 	include/fcppt/log/location.hpp
 	include/fcppt/log/location_fwd.hpp
 	include/fcppt/log/make_location.hpp
+	include/fcppt/log/new_sink.hpp
 	include/fcppt/log/no_such_location.hpp
 	include/fcppt/log/object.hpp
 	include/fcppt/log/object_fwd.hpp
@@ -1020,6 +1021,7 @@ set(
 	src/log/level_to_string.cpp
 	src/log/location.cpp
 	src/log/make_location.cpp
+	src/log/new_sink.cpp
 	src/log/object.cpp
 	src/log/parameters/object.cpp
 	src/log/parameters/with_context.cpp
