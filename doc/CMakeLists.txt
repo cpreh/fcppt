@@ -612,7 +612,6 @@ set(
 	include/fcppt/log/format/function.hpp
 	include/fcppt/log/format/inserter.hpp
 	include/fcppt/log/format/time_stamp.hpp
-	include/fcppt/log/global.hpp
 	include/fcppt/log/impl/exception.hpp
 	include/fcppt/log/impl/no_such_location.hpp
 	include/fcppt/log/info.hpp

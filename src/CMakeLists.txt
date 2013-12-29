@@ -416,7 +416,6 @@ set(
 	include/fcppt/log/format/function.hpp
 	include/fcppt/log/format/inserter.hpp
 	include/fcppt/log/format/time_stamp.hpp
-	include/fcppt/log/global.hpp
 	include/fcppt/log/impl/exception.hpp
 	include/fcppt/log/impl/no_such_location.hpp
 	include/fcppt/log/info.hpp
@@ -1012,7 +1011,6 @@ set(
 	src/log/format/default_level.cpp
 	src/log/format/inserter.cpp
 	src/log/format/time_stamp.cpp
-	src/log/global.cpp
 	src/log/inner_node_name.cpp
 	src/log/is_outer_node.cpp
 	src/log/level_from_string.cpp
