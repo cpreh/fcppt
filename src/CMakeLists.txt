@@ -441,6 +441,7 @@ set(
 	include/fcppt/log/parameters/object.hpp
 	include/fcppt/log/parameters/object_fwd.hpp
 	include/fcppt/log/parameters/with_context.hpp
+	include/fcppt/log/print_all_locations.hpp
 	include/fcppt/log/print_locations.hpp
 	include/fcppt/log/tree_function.hpp
 	include/fcppt/log/verbose.hpp
@@ -974,6 +975,7 @@ set(
 	src/include/fcppt/src/log/is_outer_node.hpp
 	src/include/fcppt/src/log/level_string_array.hpp
 	src/include/fcppt/src/log/level_strings.hpp
+	src/include/fcppt/src/log/print_locations_function.hpp
 	src/include/fcppt/src/log/set_levels.hpp
 	src/include/fcppt/src/log/tree_formatter.hpp
 	src/include/fcppt/src/time/time_get.hpp
@@ -1023,7 +1025,9 @@ set(
 	src/log/object.cpp
 	src/log/parameters/object.cpp
 	src/log/parameters/with_context.cpp
+	src/log/print_all_locations.cpp
 	src/log/print_locations.cpp
+	src/log/print_locations_function.cpp
 	src/log/set_levels.cpp
 	src/log/tree_formatter.cpp
 	src/narrow.cpp

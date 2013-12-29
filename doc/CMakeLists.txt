@@ -637,6 +637,7 @@ set(
 	include/fcppt/log/parameters/object.hpp
 	include/fcppt/log/parameters/object_fwd.hpp
 	include/fcppt/log/parameters/with_context.hpp
+	include/fcppt/log/print_all_locations.hpp
 	include/fcppt/log/print_locations.hpp
 	include/fcppt/log/tree_function.hpp
 	include/fcppt/log/verbose.hpp

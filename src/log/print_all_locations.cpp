@@ -6,20 +6,17 @@
 
 #include <fcppt/io/ostream.hpp>
 #include <fcppt/log/context.hpp>
-#include <fcppt/log/location_fwd.hpp>
-#include <fcppt/log/print_locations.hpp>
+#include <fcppt/log/print_all_locations.hpp>
 #include <fcppt/src/log/print_locations_function.hpp>
 
 
 void
-fcppt::log::print_locations(
+fcppt::log::print_all_locations(
 	fcppt::io::ostream &_stream,
-	fcppt::log::context &_context,
-	fcppt::log::location const &_location
+	fcppt::log::context &_context
 )
 {
-	_context.apply(
-		_location,
+	_context.apply_all(
 		fcppt::log::print_locations_function(
 			_stream
 		)
