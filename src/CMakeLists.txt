@@ -34,6 +34,7 @@ set(
 	include/fcppt/algorithm/ptr_container_erase_if.hpp
 	include/fcppt/algorithm/remove.hpp
 	include/fcppt/algorithm/remove_if.hpp
+	include/fcppt/algorithm/repeat.hpp
 	include/fcppt/algorithm/set_intersection.hpp
 	include/fcppt/algorithm/set_union.hpp
 	include/fcppt/algorithm/shift_compare.hpp
@@ -451,6 +452,7 @@ set(
 	include/fcppt/make_literal_boost_units.hpp
 	include/fcppt/make_literal_fundamental.hpp
 	include/fcppt/make_literal_fwd.hpp
+	include/fcppt/make_literal_strong_typedef.hpp
 	include/fcppt/make_ref.hpp
 	include/fcppt/make_shared_ptr.hpp
 	include/fcppt/make_strong_typedef.hpp
