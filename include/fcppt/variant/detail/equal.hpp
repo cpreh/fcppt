@@ -4,8 +4,8 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_VARIANT_DETAIL_COMPARE_HPP_INCLUDED
-#define FCPPT_VARIANT_DETAIL_COMPARE_HPP_INCLUDED
+#ifndef FCPPT_VARIANT_DETAIL_EQUAL_HPP_INCLUDED
+#define FCPPT_VARIANT_DETAIL_EQUAL_HPP_INCLUDED
 
 #include <fcppt/nonassignable.hpp>
 #include <fcppt/variant/holds_type.hpp>
@@ -20,13 +20,12 @@ namespace detail
 {
 
 template<
-	typename Types,
-	typename Compare
+	typename Types
 >
-class compare
+class equal
 {
 	FCPPT_NONASSIGNABLE(
-		compare
+		equal
 	);
 public:
 	typedef
@@ -34,16 +33,13 @@ public:
 		Types
 	> variant_type;
 
-	compare(
-		variant_type const &_left,
-		Compare const &_compare
+	explicit
+	equal(
+		variant_type const &_left
 	)
 	:
 		left_(
 			_left
-		),
-		compare_(
-			_compare
 		)
 	{
 	}
@@ -65,17 +61,13 @@ public:
 				left_
 			)
 			&&
-			compare_(
-				left_. template get<
-					OtherType
-				>(),
-				_right
-			);
+			left_. template get<
+				OtherType
+			>()
+			== _right;
 	}
 private:
 	variant_type const &left_;
-
-	Compare const compare_;
 };
 
 }

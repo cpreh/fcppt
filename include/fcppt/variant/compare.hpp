@@ -4,12 +4,12 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_VARIANT_EQUAL_HPP_INCLUDED
-#define FCPPT_VARIANT_EQUAL_HPP_INCLUDED
+#ifndef FCPPT_VARIANT_COMPARE_HPP_INCLUDED
+#define FCPPT_VARIANT_COMPARE_HPP_INCLUDED
 
 #include <fcppt/variant/apply_unary.hpp>
 #include <fcppt/variant/object_fwd.hpp>
-#include <fcppt/variant/detail/equal.hpp>
+#include <fcppt/variant/detail/compare.hpp>
 
 
 namespace fcppt
@@ -18,36 +18,41 @@ namespace variant
 {
 
 /**
-\brief Compares two variants for equality
+\brief Compares two variants using a Compare function
 
 \ingroup fcpptvariant
 
-Compares \a _a and \a _b for equality. The two variants are equal if they hold
-the same type and the values compare equal. This function requires all possible
-types of the variant to be equality comparable.
+Compares \a _a and \a _b using \a _compare. The two variants are equal if they
+hold the same type <code>T</code> and <code>_compare(_a.get<T>(),
+_b.get<T>())</code> holds.
 
 \param _a The first variant
 \param _b The second variant
+\param _compare The function to use for comparison
 */
 template<
-	typename Types
+	typename Types,
+	typename Compare
 >
 bool
-operator==(
+compare(
 	fcppt::variant::object<
 		Types
 	> const &_a,
 	fcppt::variant::object<
 		Types
-	> const &_b
+	> const &_b,
+	Compare const &_compare
 )
 {
 	return
 		fcppt::variant::apply_unary(
-			fcppt::variant::detail::equal<
-				Types
+			fcppt::variant::detail::compare<
+				Types,
+				Compare
 			>(
-				_a
+				_a,
+				_compare
 			),
 			_b
 		);

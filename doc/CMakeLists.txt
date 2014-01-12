@@ -1103,6 +1103,7 @@ set(
 	include/fcppt/variant/apply_binary.hpp
 	include/fcppt/variant/apply_ternary.hpp
 	include/fcppt/variant/apply_unary.hpp
+	include/fcppt/variant/compare.hpp
 	include/fcppt/variant/detail/apply.hpp
 	include/fcppt/variant/detail/assert_type.hpp
 	include/fcppt/variant/detail/assign_object.hpp
@@ -1114,6 +1115,7 @@ set(
 	include/fcppt/variant/detail/copy.hpp
 	include/fcppt/variant/detail/destroy.hpp
 	include/fcppt/variant/detail/disable_object.hpp
+	include/fcppt/variant/detail/equal.hpp
 	include/fcppt/variant/detail/get_impl.hpp
 	include/fcppt/variant/detail/index_of.hpp
 	include/fcppt/variant/detail/move_assign_object.hpp
