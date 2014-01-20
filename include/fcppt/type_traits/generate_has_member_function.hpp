@@ -12,7 +12,6 @@
 #include <boost/mpl/bool.hpp>
 #include <fcppt/config/external_end.hpp>
 
-
 /**
 \brief Generates a type trait that checks if a class has a member function of a
 given type
@@ -50,6 +49,6 @@ has a member function called \a func, and the type of that function.
 			Sign\
 		>::type\
 	{\
-	}\
+	}
 
 #endif
