@@ -13,10 +13,12 @@
 
 
 template<
-	typename IntType
+	typename IntType,
+	typename Distribution
 >
 fcppt::random::distribution::parameters::uniform_int<
-	IntType
+	IntType,
+	Distribution
 >::uniform_int(
 	min const _min,
 	max const _max
@@ -32,14 +34,17 @@ fcppt::random::distribution::parameters::uniform_int<
 }
 
 template<
-	typename IntType
+	typename IntType,
+	typename Distribution
 >
 typename
 fcppt::random::distribution::parameters::uniform_int<
-	IntType
+	IntType,
+	Distribution
 >::wrapped_param_type const
 fcppt::random::distribution::parameters::uniform_int<
-	IntType
+	IntType,
+	Distribution
 >::convert_from() const
 {
 	return
@@ -54,13 +59,16 @@ fcppt::random::distribution::parameters::uniform_int<
 }
 
 template<
-	typename IntType
+	typename IntType,
+	typename Distribution
 >
 fcppt::random::distribution::parameters::uniform_int<
-	IntType
+	IntType,
+	Distribution
 > const
 fcppt::random::distribution::parameters::uniform_int<
-	IntType
+	IntType,
+	Distribution
 >::convert_to(
 	distribution const &_dist
 )

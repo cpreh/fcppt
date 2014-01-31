@@ -4,22 +4,22 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_RANDOM_GENERATOR_BASIC_PSEUDO_FWD_HPP_INCLUDED
-#define FCPPT_RANDOM_GENERATOR_BASIC_PSEUDO_FWD_HPP_INCLUDED
+#ifndef FCPPT_RANDOM_DISTRIBUTION_PARAMETERS_UNIFORM_INT_WRAPPER_FWD_HPP_INCLUDED
+#define FCPPT_RANDOM_DISTRIBUTION_PARAMETERS_UNIFORM_INT_WRAPPER_FWD_HPP_INCLUDED
 
 
 namespace fcppt
 {
 namespace random
 {
-namespace generator
+namespace distribution
+{
+namespace parameters
 {
 
-template<
-	typename Generator
->
-class basic_pseudo;
+struct uniform_int_wrapper;
 
+}
 }
 }
 }

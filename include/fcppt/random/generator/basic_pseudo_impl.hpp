@@ -54,6 +54,7 @@ template<
 	typename Generator
 >
 inline
+constexpr
 typename fcppt::random::generator::basic_pseudo<
 	Generator
 >::result_type
@@ -68,6 +69,7 @@ template<
 	typename Generator
 >
 inline
+constexpr
 typename fcppt::random::generator::basic_pseudo<
 	Generator
 >::result_type

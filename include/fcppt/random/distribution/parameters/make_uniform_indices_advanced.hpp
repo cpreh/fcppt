@@ -4,11 +4,10 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_RANDOM_DISTRIBUTION_PARAMETERS_MAKE_UNIFORM_INDICES_HPP_INCLUDED
-#define FCPPT_RANDOM_DISTRIBUTION_PARAMETERS_MAKE_UNIFORM_INDICES_HPP_INCLUDED
+#ifndef FCPPT_RANDOM_DISTRIBUTION_PARAMETERS_MAKE_UNIFORM_INDICES_ADVANCED_HPP_INCLUDED
+#define FCPPT_RANDOM_DISTRIBUTION_PARAMETERS_MAKE_UNIFORM_INDICES_ADVANCED_HPP_INCLUDED
 
 #include <fcppt/random/distribution/parameters/uniform_int.hpp>
-#include <fcppt/random/distribution/parameters/make_uniform_indices_advanced.hpp>
 #include <fcppt/random/distribution/parameters/uniform_int_wrapper_fwd.hpp>
 
 
@@ -22,21 +21,34 @@ namespace parameters
 {
 
 template<
+	typename Distribution,
 	typename Container
 >
 fcppt::random::distribution::parameters::uniform_int<
 	typename
-	Container::size_type
+	Container::size_type,
+	Distribution
 > const
-make_uniform_indices(
+make_uniform_indices_advanced(
 	Container const &_container
 )
 {
+	typedef
+	fcppt::random::distribution::parameters::uniform_int<
+		typename
+		Container::size_type,
+		Distribution
+	>
+	param_type;
+
 	return
-		fcppt::random::distribution::parameters::make_uniform_indices_advanced<
-			fcppt::random::distribution::parameters::uniform_int_wrapper
-		>(
-			_container
+		param_type(
+			typename param_type::min(
+				0u
+			),
+			typename param_type::max(
+				_container.size() - 1u
+			)
 		);
 }
 

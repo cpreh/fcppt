@@ -11,9 +11,7 @@
 #include <fcppt/strong_typedef_impl.hpp>
 #include <fcppt/random/distribution/base_type.hpp>
 #include <fcppt/random/distribution/parameters/uniform_int_fwd.hpp>
-#include <fcppt/config/external_begin.hpp>
-#include <random>
-#include <fcppt/config/external_end.hpp>
+#include <fcppt/random/distribution/parameters/uniform_int_wrapper.hpp>
 
 
 namespace fcppt
@@ -35,7 +33,8 @@ typedefs for the min and max parameters.
 \ingroup fcpptrandom
 */
 template<
-	typename IntType
+	typename IntType,
+	typename Distribution
 >
 class uniform_int
 {
@@ -52,9 +51,10 @@ public:
 	base_type;
 
 	typedef
-	std::uniform_int_distribution<
+	typename
+	Distribution:: template apply<
 		base_type
-	>
+	>::type
 	distribution;
 
 	typedef

@@ -744,7 +744,9 @@ set(
 	include/fcppt/random/distribution/detail/terminal_tag.hpp
 	include/fcppt/random/distribution/make_basic.hpp
 	include/fcppt/random/distribution/parameters/make_uniform_enum.hpp
+	include/fcppt/random/distribution/parameters/make_uniform_enum_advanced.hpp
 	include/fcppt/random/distribution/parameters/make_uniform_indices.hpp
+	include/fcppt/random/distribution/parameters/make_uniform_indices_advanced.hpp
 	include/fcppt/random/distribution/parameters/normal.hpp
 	include/fcppt/random/distribution/parameters/normal_decl.hpp
 	include/fcppt/random/distribution/parameters/normal_fwd.hpp
@@ -753,6 +755,8 @@ set(
 	include/fcppt/random/distribution/parameters/uniform_int_decl.hpp
 	include/fcppt/random/distribution/parameters/uniform_int_fwd.hpp
 	include/fcppt/random/distribution/parameters/uniform_int_impl.hpp
+	include/fcppt/random/distribution/parameters/uniform_int_wrapper.hpp
+	include/fcppt/random/distribution/parameters/uniform_int_wrapper_fwd.hpp
 	include/fcppt/random/distribution/parameters/uniform_real.hpp
 	include/fcppt/random/distribution/parameters/uniform_real_decl.hpp
 	include/fcppt/random/distribution/parameters/uniform_real_fwd.hpp

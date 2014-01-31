@@ -11,6 +11,7 @@
 #include <fcppt/strong_typedef.hpp>
 #include <fcppt/random/generator/basic_pseudo_fwd.hpp>
 
+
 namespace fcppt
 {
 namespace random
@@ -78,6 +79,7 @@ public:
 	\brief Returns the minimum element of all the possible random numbers
 	*/
 	static
+	constexpr
 	result_type
 	min();
 
@@ -85,6 +87,7 @@ public:
 	\brief Returns the maximum element of all the possible random numbers
 	*/
 	static
+	constexpr
 	result_type
 	max();
 private:
