@@ -8,6 +8,8 @@
 #ifndef FCPPT_ALGORITHM_MAP_HPP_INCLUDED
 #define FCPPT_ALGORITHM_MAP_HPP_INCLUDED
 
+#include <fcppt/algorithm/detail/map_reserve.hpp>
+
 
 namespace fcppt
 {
@@ -35,6 +37,11 @@ map(
 )
 {
 	TargetContainer result;
+
+	fcppt::algorithm::detail::map_reserve(
+		result,
+		_source
+	);
 
 	for(
 		auto const &element
