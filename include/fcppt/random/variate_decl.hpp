@@ -64,6 +64,26 @@ public:
 		Distribution const &distribution
 	);
 
+	typedef
+	typename
+	Distribution::param_type
+	param_type;
+
+	/**
+	\brief Constructs a variate object
+
+	Constructs a variate object from \a generator and \a param, where param
+	is the param_type of Distribution.
+
+	\param generator The generator to use
+
+	\param param The parameters for the distribution
+	*/
+	variate(
+		Generator &generator,
+		param_type const &param
+	);
+
 	/**
 	\brief Draws a random number
 

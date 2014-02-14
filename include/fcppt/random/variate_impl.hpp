@@ -35,6 +35,27 @@ template<
 	typename Generator,
 	typename Distribution
 >
+fcppt::random::variate<
+	Generator,
+	Distribution
+>::variate(
+	Generator &_generator,
+	param_type const &_param
+)
+:
+	generator_(
+		_generator
+	),
+	distribution_(
+		_param
+	)
+{
+}
+
+template<
+	typename Generator,
+	typename Distribution
+>
 typename fcppt::random::variate<
 	Generator,
 	Distribution
