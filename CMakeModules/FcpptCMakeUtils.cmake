@@ -38,18 +38,6 @@ if(
 	)
 endif()
 
-# In source builds are done when the install prefix is set to the empty string
-if(
-	"${CMAKE_INSTALL_PREFIX}"
-	STREQUAL
-	""
-)
-	set(
-		FCPPT_UTILS_IN_SOURCE_BUILD
-		TRUE
-	)
-endif()
-
 # Define locations for installations
 # These don't have an FCPPT_ prefix because they have to be set by the user
 
@@ -296,7 +284,9 @@ if(
 		FCPPT_UTILS_HAVE_GCC_VISIBILITY
 	)
 
-	add_definitions(
+	list(
+		APPEND
+		FCPPT_UTILS_COMPILE_OPTIONS
 		"-std=c++11"
 		"-pedantic-errors"
 		"-Wall"
@@ -327,7 +317,9 @@ if(
 	if(
 		FCPPT_UTILS_COMPILER_IS_CLANGPP
 	)
-		add_definitions(
+		list(
+			APPEND
+			FCPPT_UTILS_COMPILE_OPTIONS
 			"-Wconditional-uninitialized"
 			"-Wdocumentation"
 			"-Wextra-semi"
@@ -337,13 +329,14 @@ if(
 			"-Wunused-member-function"
 		)
 	else()
-		add_definitions(
+		list(
+			APPEND
+			FCPPT_UTILS_COMPILE_OPTIONS
 			"-Wdouble-promotion"
 			"-Wlogical-op"
 			"-Wmaybe-uninitialized"
 			"-Wunused-local-typedefs"
 		)
-	#add_definitions("-Wzero-as-null-pointer-constant")
 	endif()
 
 	if(
@@ -359,12 +352,18 @@ if(
 	if(
 		FCPPT_ENABLE_VISIBILITY_HIDDEN
 	)
-		add_definitions("-fvisibility=hidden")
+		list(
+			APPEND
+			FCPPT_UTILS_COMPILE_OPTIONS
+			"-fvisibility=hidden"
+		)
 	endif()
 elseif(
 	MSVC
 )
-	add_definitions(
+	list(
+		APPEND
+		FCPPT_UTILS_COMPILE_OPTIONS
 		"/W4 /Wall /EHa /D_BIND_TO_CURRENT_VCLIBS_VERSION=1"
 		"/wd4435 /wd4996 /wd4061 /wd4350 /wd4371 /wd4503 /wd4514 /wd4710 /wd4711 /wd4714 /wd4738 /wd4820"
 	)
@@ -392,7 +391,9 @@ if(
 )
 	# we need -fPIC for libraries on AMD64
 	if("${CMAKE_SYSTEM_PROCESSOR}" STREQUAL "x86_64")
-		add_definitions(
+		list(
+			APPEND
+			FCPPT_UTILS_COMPILE_OPTIONS
 			"-fPIC"
 		)
 	endif()
@@ -429,6 +430,7 @@ if(
 		FCPPT_UTILS_HAVE_NO_COPY_DT_NEEDED_ENTRIES_LINKER_FLAG
 	)
 
+	# TODO: Remove global setting of SHARED_LINKER_FLAGS
 	if(FCPPT_UTILS_HAVE_AS_NEEDED_LINKER_FLAG)
 		set(
 			CMAKE_SHARED_LINKER_FLAGS
@@ -456,10 +458,11 @@ if(
 endif()
 
 # Ignore Boost's deprecated features
-add_definitions(
-	"-D BOOST_FILESYSTEM_NO_DEPRECATED"
-	"-D BOOST_SYSTEM_NO_DEPRECATED"
-	"-D BOOST_THREAD_DONT_PROVIDE_DEPRECATED_FEATURES_SINCE_V3_0_0"
+set(
+	FCPPT_UTILS_COMPILE_DEFINITIONS
+	"BOOST_FILESYSTEM_NO_DEPRECATED"
+	"BOOST_SYSTEM_NO_DEPRECATED"
+	"BOOST_THREAD_DONT_PROVIDE_DEPRECATED_FEATURES_SINCE_V3_0_0"
 )
 
 # configure standard CMake build paths
@@ -649,102 +652,114 @@ set(
 function(
 	fcppt_utils_prepare_config
 )
-	if(
-		FCPPT_UTILS_IN_SOURCE_BUILD
+	file(
+		REMOVE
+		"${FCPPT_UTILS_BUILD_CONFIG}"
 	)
-		file(
-			REMOVE
-			"${FCPPT_UTILS_BUILD_CONFIG}"
-		)
 
-		file(
-			WRITE
-			"${FCPPT_UTILS_BUILD_CONFIG}"
-			""
-		)
-	endif()
+	file(
+		WRITE
+		"${FCPPT_UTILS_BUILD_CONFIG}"
+		""
+	)
 endfunction()
 
 macro(
 	fcppt_utils_export_install_target
 	TARGETNAME
 )
-	if(
-		FCPPT_UTILS_IN_SOURCE_BUILD
+	export(
+		TARGETS
+		${TARGETNAME}
+		FILE
+		"${FCPPT_UTILS_BUILD_CONFIG}"
+		APPEND
 	)
-		export(
-			TARGETS
-			${TARGETNAME}
-			FILE
-			"${FCPPT_UTILS_BUILD_CONFIG}"
-			APPEND
-		)
-	else()
-		install(
-			TARGETS
-			${TARGETNAME}
-			DESTINATION
-			"${INSTALL_LIBRARY_DIR}"
-			EXPORT
-			"${FCPPT_UTILS_TARGETS_CONFIG}"
-		)
-	endif()
+
+	install(
+		TARGETS
+		${TARGETNAME}
+		DESTINATION
+		"${INSTALL_LIBRARY_DIR}"
+		EXPORT
+		"${FCPPT_UTILS_TARGETS_CONFIG}"
+	)
 endmacro()
+
+set(
+	FCPPT_UTILS_SOURCE_INCLUDE_DIR
+	${FCPPT_UTILS_PROJECT_SOURCE_DIR}/include
+)
+
+set(
+	FCPPT_UTILS_BINARY_INCLUDE_DIR
+	${FCPPT_UTILS_PROJECT_BINARY_DIR}/include
+)
 
 function(
 	fcppt_utils_generate_config
 )
-	if(
-		FCPPT_UTILS_IN_SOURCE_BUILD
+
+	set(
+		INCLUDE_DIR_VAR
+		${PROJECT_NAME}_INCLUDE_DIR
 	)
-		set(
-			${PROJECT_NAME}_INCLUDE_DIR
-			"${FCPPT_UTILS_PROJECT_SOURCE_DIR}/include;${FCPPT_UTILS_PROJECT_BINARY_DIR}/include"
-		)
-	else()
-		set(
-			${PROJECT_NAME}_INCLUDE_DIR
-			"${INSTALL_INCLUDE_DIR}"
-		)
-	endif()
 
 	set(
 		CONFIG_NAME
 		"${PROJECT_NAME}-config.cmake"
 	)
 
+	# Make build dir config
 	set(
-		CONFIG_DEST
-		"${FCPPT_UTILS_BUILD_CONFIG_DIR}/${CONFIG_NAME}"
+		${INCLUDE_DIR_VAR}
+		"${FCPPT_UTILS_SOURCE_INCLUDE_DIR};${FCPPT_UTILS_BINARY_INCLUDE_DIR}"
+	)
+
+	set(
+		CONFIG_IN_FILE
+		"${FCPPT_UTILS_PROJECT_SOURCE_DIR}/${CONFIG_NAME}.in"
 	)
 
 	configure_file(
-		"${FCPPT_UTILS_PROJECT_SOURCE_DIR}/${CONFIG_NAME}.in"
+		${CONFIG_IN_FILE}
+		"${FCPPT_UTILS_BUILD_CONFIG_DIR}/${CONFIG_NAME}"
+		@ONLY
+	)
+
+	# Make installable config
+	set(
+		${INCLUDE_DIR_VAR}
+		"${INSTALL_INCLUDE_DIR}"
+	)
+
+	set(
+		CONFIG_DEST
+		"${FCPPT_UTILS_BUILD_CONFIG_DIR}/install-config/${CONFIG_NAME}"
+	)
+
+	configure_file(
+		${CONFIG_IN_FILE}
 		"${CONFIG_DEST}"
 		@ONLY
 	)
 
+	install(
+		FILES
+		"${CONFIG_DEST}"
+		DESTINATION
+		"${INSTALL_CMAKECONFIG_DIR}"
+	)
+
 	if(
-		NOT FCPPT_UTILS_IN_SOURCE_BUILD
+		NOT FCPPT_UTILS_NO_TARGETS
 	)
 		install(
-			FILES
-			"${CONFIG_DEST}"
+			EXPORT
+			"${FCPPT_UTILS_TARGETS_CONFIG}"
 			DESTINATION
 			"${INSTALL_CMAKECONFIG_DIR}"
 		)
-
-
-		if(
-			NOT FCPPT_UTILS_NO_TARGETS
-		)
-			install(
-				EXPORT
-				"${FCPPT_UTILS_TARGETS_CONFIG}"
-				DESTINATION
-				"${INSTALL_CMAKECONFIG_DIR}"
-			)
-		endif()
 	endif()
 endfunction()
 
@@ -819,4 +834,52 @@ function(
 		LINKER_LANGUAGE
 		"CXX"
 	)
+endfunction()
+
+function(
+	fcppt_utils_set_target_compiler_flags
+	TARGET_NAME
+)
+	target_compile_definitions(
+		${TARGET_NAME}
+		PRIVATE
+		${FCPPT_UTILS_COMPILE_DEFINITIONS}
+	)
+
+	set_target_properties(
+		${TARGET_NAME}
+		PROPERTIES
+		COMPILE_OPTIONS
+		"${FCPPT_UTILS_COMPILE_OPTIONS}"
+	)
+endfunction()
+
+function(
+	fcppt_utils_add_target_include_dir
+	TARGET_NAME
+)
+	target_include_directories(
+		${TARGET_NAME}
+		INTERFACE
+		"$<INSTALL_INTERFACE:${INSTALL_INCLUDE_DIR}>"
+		"$<BUILD_INTERFACE:${FCPPT_UTILS_SOURCE_INCLUDE_DIR}>"
+		"$<BUILD_INTERFACE:${FCPPT_UTILS_BINARY_INCLUDE_DIR}>"
+	)
+endfunction()
+
+function(
+	fcppt_utils_interface_static_link
+	TARGET_NAME
+	VARIANT
+	LINK_FLAG
+)
+	if(
+		${VARIANT} STREQUAL "STATIC"
+	)
+		target_compile_definitions(
+			${TARGET_NAME}
+			INTERFACE
+			${LINK_FLAG}
+		)
+	endif()
 endfunction()

@@ -12,21 +12,6 @@ fcppt_export_generate_targets(
 )
 
 set(
-	FCPPT_CONFIG_ENABLE_NARROW_STRING
-	@ENABLE_NARROW_STRING@
-)
-
-if(
-	NOT FCPPT_CONFIG_ENABLE_NARROW_STRING
-	AND WIN32
-)
-	set(
-		fcppt_DEFINITIONS
-		"${fcppt_DEFINITIONS} -D UNICODE -D _UNICODE"
-	)
-endif()
-
-set(
 	fcppt_INCLUDE_DIRS
 	"@Boost_INCLUDE_DIRS@;@fcppt_INCLUDE_DIR@"
 )

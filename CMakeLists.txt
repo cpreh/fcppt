@@ -1,5 +1,6 @@
 cmake_minimum_required(
-	VERSION 2.8.12
+	VERSION
+	2.8.12
 )
 
 project(
@@ -50,10 +51,18 @@ include(
 	CheckCXXSourceRuns
 )
 
-if(WIN32)
-	set(ENABLE_NARROW_STRING_DEFAULT OFF)
+if(
+	WIN32
+)
+	set(
+		ENABLE_NARROW_STRING_DEFAULT
+		OFF
+	)
 else()
-	set(ENABLE_NARROW_STRING_DEFAULT ON)
+	set(
+		ENABLE_NARROW_STRING_DEFAULT
+		ON
+	)
 endif()
 
 option(
@@ -158,20 +167,10 @@ function(
 	)
 endfunction()
 
-if(
-	ENABLE_NARROW_STRING
+set(
+	FCPPT_NARROW_STRING
+	${ENABLE_NARROW_STRING}
 )
-	set(
-		FCPPT_NARROW_STRING
-		true
-	)
-elseif(
-	WIN32
-)
-	add_definitions(
-		"-D UNICODE -D _UNICODE"
-	)
-endif()
 
 if(
 	CMAKE_COMPILER_IS_GNUCXX OR FCPPT_UTILS_COMPILER_IS_CLANGPP
@@ -323,16 +322,26 @@ function(
 		${FCPPT_USED_SO_VERSION}
 	)
 
-	if(
-		${VARIANT} STREQUAL "STATIC"
+	fcppt_utils_set_target_compiler_flags(
+		${TARGETNAME}
 	)
-		set_target_properties(
-			${TARGETNAME}
-			PROPERTIES
-			COMPILE_DEFINITIONS
-			"FCPPT_STATIC_LINK"
-		)
-	endif()
+
+	fcppt_utils_interface_static_link(
+		${TARGETNAME}
+		${VARIANT}
+		"FCPPT_STATIC_LINK"
+	)
+
+	target_include_directories(
+		${TARGETNAME}
+		INTERFACE
+		${Boost_INCLUDE_DIRS}
+	)
+
+	fcppt_utils_add_target_include_dir(
+		${TARGETNAME}
+		${fcppt_INCLUDE_DIR}
+	)
 
 	target_link_libraries(
 		${TARGETNAME}

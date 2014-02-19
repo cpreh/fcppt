@@ -105,7 +105,6 @@ cmake ^
         -D ENABLE_EXAMPLES=OFF ^
         -D ENABLE_SHARED=OFF ^
         -D ENABLE_STATIC=ON ^
-        -D CMAKE_INSTALL_PREFIX="" ^
         -D CMAKE_BUILD_TYPE="Release" ^
         -D Boost_USE_STATIC_LIBS=ON ^
         -G "Visual Studio 10 Win64" ^
@@ -129,17 +128,14 @@ mkdir build;
 cd build
 </pre>
 
-Next, you have to call cmake and pass it fcppt's source directory as well as
-the installation prefix. Continuing the previous example,
+Next, you have to call cmake and pass it fcppt's source directory.  Continuing
+the previous example,
 
-<pre>cmake -D CMAKE_INSTALL_PREFIX="/home/me/local" ..</pre>
+<pre>cmake ..</pre>
 
-if you want to install fcppt to <code>/home/me/local</code>.
-
-If you don't want to install fcppt, but use it directly from the source tree,
-you have to pass an empty installation prefix:
-
-<pre>cmake -D CMAKE_INSTALL_PREFIX="" ..</pre>
+fcppt does not need to be installed in order to be used. After building fcppt,
+you can directly use it from its source directory. If you want to install,
+however, don't forget to set <code>CMAKE_INSTALL_PREFIX</code>.
 
 There are other customizable paths that you can use to fine tune the
 installation of different components:
@@ -202,14 +198,6 @@ find_package(
 	REQUIRED
 )
 
-include_directories(
-	${fcppt_INCLUDE_DIRS}
-)
-
-add_definitions(
-	${fcppt_DEFINITIONS}
-)
-
 add_executable(
 	mytarget
 	main.cpp
@@ -223,10 +211,22 @@ target_link_libraries(
 </pre>
 
 Note, that we're explicitly specifying which of the fcppt libraries we're
-linking against, namely core and filesystem.
+linking against, namely core and filesystem. If you don't use any libraries
+directly, you will have to add fcppt's include directories explicitly:
 
-Just modifying your <code>CMakeLists.txt</code> might not work out of the box,
-however. Read on.
+<pre>
+target_include_directories(
+	mytarget
+	PRIVATE
+	${fcppt_INCLUDE_DIRS}
+)
+</pre>
+
+<code>PRIVATE</code> can, of course, be sustituted by <code>PUBLIC</code> or
+<code>INTERFACE</code> depending on your use case.
+
+If fcppt has not been installed in a location already recognized by cmake, you
+will have to specify additional parameters depending on where fcppt is located:
 
 \subsubsection requirements_download_installation_using_from_build_directory Using fcppt from the build directory
 

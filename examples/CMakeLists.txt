@@ -30,11 +30,14 @@ function(
 		${MAINNAME}.cpp
 	)
 
-	set_target_properties(
+	fcppt_utils_set_target_compiler_flags(
 		${FCPPT_EXAMPLE_NAME}
-		PROPERTIES
-		COMPILE_FLAGS
-		"${ADDITIONAL_DEFINES}"
+	)
+
+	target_compile_definitions(
+		${FCPPT_EXAMPLE_NAME}
+		PRIVATE
+		${ADDITIONAL_DEFINES}
 	)
 
 	fcppt_link_target(

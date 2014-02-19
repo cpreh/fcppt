@@ -18,7 +18,7 @@ function(
 	)
 endfunction()
 
-macro(
+function(
 	fcppt_export_generate_targets
 	TARGETS
 	USE_STATIC_LIBS
@@ -43,16 +43,14 @@ macro(
 			set(
 				"${TARGET_NAME}"
 				"${TARGET}_static"
+				PARENT_SCOPE
 			)
 		else()
 			set(
 				"${TARGET_NAME}"
 				"${TARGET}"
+				PARENT_SCOPE
 			)
 		endif()
 	endforeach()
-
-	unset(
-		FCPPT_EXPORT_USE_STATIC_LIBS
-	)
-endmacro()
+endfunction()

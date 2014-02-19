@@ -26,28 +26,30 @@ function(
 		${PATHNAME}.cpp
 	)
 
-	set_target_properties(
+	fcppt_utils_set_target_compiler_flags(
 		${FCPPT_TEST_NAME}
-		PROPERTIES
-		COMPILE_FLAGS
-		"${ADDITIONAL_DEFINES}"
+	)
+
+	target_compile_definitions(
+		${FCPPT_TEST_NAME}
+		PRIVATE
+		BOOST_TEST_MODULE=${TESTNAME}
+		${ADDITIONAL_DEFINES}
 	)
 
 	if(
 		Boost_USE_STATIC_LIBS
 	)
-		set_property(
-			TARGET
+		target_compile_definitions(
 			${FCPPT_TEST_NAME}
-			PROPERTY COMPILE_DEFINITIONS
-			"BOOST_TEST_NO_LIB;BOOST_TEST_MODULE=${TESTNAME}"
+			PRIVATE
+			BOOST_TEST_NO_LIB
 		)
 	else()
-		set_property(
-			TARGET
+		target_compile_definitions(
 			${FCPPT_TEST_NAME}
-			PROPERTY COMPILE_DEFINITIONS
-			"BOOST_TEST_DYN_LINK;BOOST_TEST_MODULE=${TESTNAME}"
+			PRIVATE
+			BOOST_TEST_DYN_LINK
 		)
 	endif()
 
