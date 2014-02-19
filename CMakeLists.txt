@@ -340,7 +340,7 @@ function(
 
 	fcppt_utils_add_target_include_dir(
 		${TARGETNAME}
-		${fcppt_INCLUDE_DIR}
+		TRUE
 	)
 
 	target_link_libraries(
@@ -442,7 +442,9 @@ if(
 	)
 endif()
 
-fcppt_utils_generate_config()
+fcppt_utils_generate_config(
+	TRUE
+)
 
 install(
 	DIRECTORY

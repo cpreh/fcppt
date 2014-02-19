@@ -698,6 +698,7 @@ set(
 
 function(
 	fcppt_utils_generate_config
+	HAS_BUILDDIR
 )
 
 	set(
@@ -711,10 +712,21 @@ function(
 	)
 
 	# Make build dir config
-	set(
+	list(
+		APPEND
 		${INCLUDE_DIR_VAR}
-		"${FCPPT_UTILS_SOURCE_INCLUDE_DIR};${FCPPT_UTILS_BINARY_INCLUDE_DIR}"
+		"${FCPPT_UTILS_SOURCE_INCLUDE_DIR}"
 	)
+
+	if(
+		HAS_BUILDDIR
+	)
+		list(
+			APPEND
+			${INCLUDE_DIR_VAR}
+			"${FCPPT_UTILS_BINARY_INCLUDE_DIR}"
+		)
+	endif()
 
 	set(
 		CONFIG_IN_FILE
@@ -857,13 +869,29 @@ endfunction()
 function(
 	fcppt_utils_add_target_include_dir
 	TARGET_NAME
+	HAS_BUILDDIR
 )
+	list(
+		APPEND
+		DIRECTORIES
+		"$<INSTALL_INTERFACE:${INSTALL_INCLUDE_DIR}>"
+		"$<BUILD_INTERFACE:${FCPPT_UTILS_SOURCE_INCLUDE_DIR}>"
+	)
+
+	if(
+		HAS_BUILDDIR
+	)
+		list(
+			APPEND
+			DIRECTORIES
+			"$<BUILD_INTERFACE:${FCPPT_UTILS_BINARY_INCLUDE_DIR}>"
+		)
+	endif()
+
 	target_include_directories(
 		${TARGET_NAME}
 		INTERFACE
-		"$<INSTALL_INTERFACE:${INSTALL_INCLUDE_DIR}>"
-		"$<BUILD_INTERFACE:${FCPPT_UTILS_SOURCE_INCLUDE_DIR}>"
-		"$<BUILD_INTERFACE:${FCPPT_UTILS_BINARY_INCLUDE_DIR}>"
+		${DIRECTORIES}
 	)
 endfunction()
 
@@ -882,4 +910,74 @@ function(
 			${LINK_FLAG}
 		)
 	endif()
+endfunction()
+
+function(
+	fcppt_utils_add_test
+	PATH_NAME
+	LIB_DEPS
+	INCLUDE_DIRS
+)
+	string(
+		REPLACE
+		"/"
+		"_"
+		TEST_NAME
+		${PATH_NAME}
+	)
+
+	set(
+		FULL_TEST_NAME
+		test_${TEST_NAME}
+	)
+
+	add_executable(
+		${FULL_TEST_NAME}
+		${PATH_NAME}.cpp
+	)
+
+	fcppt_utils_set_target_compiler_flags(
+		${FULL_TEST_NAME}
+	)
+
+	target_compile_definitions(
+		${FULL_TEST_NAME}
+		PRIVATE
+		BOOST_TEST_MODULE=${TEST_NAME}
+	)
+
+	if(
+		Boost_USE_STATIC_LIBS
+	)
+		target_compile_definitions(
+			${FULL_TEST_NAME}
+			PRIVATE
+			BOOST_TEST_NO_LIB
+		)
+	else()
+		target_compile_definitions(
+			${FULL_TEST_NAME}
+			PRIVATE
+			BOOST_TEST_DYN_LINK
+		)
+	endif()
+
+	target_include_directories(
+		${FULL_TEST_NAME}
+		PRIVATE
+		${INCLUDE_DIRS}
+	)
+
+	target_link_libraries(
+		${FULL_TEST_NAME}
+		${Boost_UNIT_TEST_FRAMEWORK_LIBRARY}
+		${LIB_DEPS}
+	)
+
+	add_test(
+		NAME
+		${TEST_NAME}
+		COMMAND
+		${FULL_TEST_NAME}
+	)
 endfunction()

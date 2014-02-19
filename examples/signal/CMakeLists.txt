@@ -7,18 +7,35 @@ function(
 	make_fcppt_example(
 		signal
 		${MAINNAME}
-		"${ADDITIONAL_DEPS}"
+		"${fcppt_core_TARGET};${ADDITIONAL_DEPS}"
 		"${ADDITIONAL_DEFINITIONS}"
 	)
 endfunction()
 
-if(${SIGNALS_BENCHMARK_BACKEND} STREQUAL "boostsignals")
-	add_fcppt_signal_example(benchmark "${Boost_SIGNALS_LIBRARY}" "-D FCPPT_EXAMPLES_SIGNAL_BENCHMARK_USE_BOOST_SIGNALS1")
-elseif(${SIGNALS_BENCHMARK_BACKEND} STREQUAL "boostsignals2")
-	add_fcppt_signal_example(benchmark "" "-D FCPPT_EXAMPLES_SIGNAL_BENCHMARK_USE_BOOST_SIGNALS2")
+if(
+	${SIGNALS_BENCHMARK_BACKEND} STREQUAL "boostsignals"
+)
+	add_fcppt_signal_example(
+		benchmark
+		"${Boost_SIGNALS_LIBRARY}"
+		"FCPPT_EXAMPLES_SIGNAL_BENCHMARK_USE_BOOST_SIGNALS1"
+	)
+elseif(
+	${SIGNALS_BENCHMARK_BACKEND} STREQUAL "boostsignals2"
+)
+	add_fcppt_signal_example(
+		benchmark
+		""
+		"FCPPT_EXAMPLES_SIGNAL_BENCHMARK_USE_BOOST_SIGNALS2"
+	)
 else()
-	add_fcppt_signal_example(benchmark "" "-D FCPPT_EXAMPLES_SIGNAL_BENCHMARK_USE_FCPPT")
+	add_fcppt_signal_example(
+		benchmark
+		""
+		"FCPPT_EXAMPLES_SIGNAL_BENCHMARK_USE_FCPPT"
+	)
 endif()
+
 add_fcppt_signal_example(combine "" "")
 add_fcppt_signal_example(connection "" "")
 add_fcppt_signal_example(simple "" "")
