@@ -28,7 +28,7 @@ if(
 )
 	# TODO: Put this somewhere else! It doesn't work in toolchain files.
 	set(
-		CMAKE_SHARED_LIBRARY_SUFFIX
+		FCPPT_UTILS_SHARED_LIBRARY_SUFFIX
 		".dll.so"
 	)
 
@@ -430,29 +430,34 @@ if(
 		FCPPT_UTILS_HAVE_NO_COPY_DT_NEEDED_ENTRIES_LINKER_FLAG
 	)
 
-	# TODO: Remove global setting of SHARED_LINKER_FLAGS
-	if(FCPPT_UTILS_HAVE_AS_NEEDED_LINKER_FLAG)
+	if(
+		FCPPT_UTILS_HAVE_AS_NEEDED_LINKER_FLAG
+	)
 		set(
-			CMAKE_SHARED_LINKER_FLAGS
-			"-Wl,--as-needed ${CMAKE_SHARED_LINKER_FLAGS}"
+			FCPPT_UTILS_SHARED_LINKER_FLAGS
+			"-Wl,--as-needed ${FCPPT_UTILS_SHARED_LINKER_FLAGS}"
 		)
 	endif()
 
-	if(FCPPT_UTILS_HAVE_NO_UNDEFINED_LINKER_FLAG)
+	if(
+		FCPPT_UTILS_HAVE_NO_UNDEFINED_LINKER_FLAG
+	)
 		set(
-			CMAKE_SHARED_LINKER_FLAGS
-			"-Wl,--no-undefined ${CMAKE_SHARED_LINKER_FLAGS}"
+			FCPPT_UTILS_SHARED_LINKER_FLAGS
+			"-Wl,--no-undefined ${FCPPT_UTILS_SHARED_LINKER_FLAGS}"
 		)
 	endif()
 
-	if(FCPPT_UTILS_HAVE_NO_COPY_DT_NEEDED_ENTRIES_LINKER_FLAG)
+	if(
+		FCPPT_UTILS_HAVE_NO_COPY_DT_NEEDED_ENTRIES_LINKER_FLAG
+	)
 		set(
-			CMAKE_SHARED_LINKER_FLAGS
-			"-Wl,--no-copy-dt-needed-entries ${CMAKE_SHARED_LINKER_FLAGS}"
+			FCPPT_UTILS_SHARED_LINKER_FLAGS
+			"-Wl,--no-copy-dt-needed-entries ${FCPPT_UTILS_SHARED_LINKER_FLAGS}"
 		)
 		set(
-			CMAKE_EXE_LINKER_FLAGS
-			"-Wl,--no-copy-dt-needed-entries ${CMAKE_EXE_LINKER_FLAGS}"
+			FCPPT_UTILS_EXE_LINKER_FLAGS
+			"-Wl,--no-copy-dt-needed-entries ${FCPPT_UTILS_EXE_LINKER_FLAGS}"
 		)
 	endif()
 endif()
@@ -869,6 +874,57 @@ function(
 		PROPERTIES
 		COMPILE_OPTIONS
 		"${FCPPT_UTILS_COMPILE_OPTIONS}"
+	)
+
+	get_target_property(
+		TARGET_TYPE
+		${TARGET_NAME}
+		TYPE
+	)
+
+	get_target_property(
+		TEMP_LINK_FLAGS
+		${TARGET_NAME}
+		LINK_FLAGS
+	)
+
+	if(
+		TEMP_LINK_FLAGS
+		STREQUAL
+		"TEMP_LINK_FLAGS-NOTFOUND"
+	)
+		unset(
+			TEMP_LINK_FLAGS
+		)
+	endif()
+
+	if(
+		${TARGET_TYPE}
+		STREQUAL
+		"SHARED_LIBRARY"
+	)
+		set(
+			TEMP_LINK_FLAGS
+			"${FCPPT_UTILS_SHARED_LINKER_FLAGS} ${OLD_LINK_FLAGS}"
+		)
+	endif()
+
+	if(
+		${TARGET_TYPE}
+		STREQUAL
+		"EXECUTABLE"
+	)
+		set(
+			TEMP_LINK_FLAGS
+			"${FCPPT_UTILS_EXE_LINKER_FLAGS} ${OLD_LINK_FLAGS}"
+		)
+	endif()
+
+	set_target_properties(
+		${TARGET_NAME}
+		PROPERTIES
+		LINK_FLAGS
+		"${TEMP_LINK_FLAGS}"
 	)
 endfunction()
 
