@@ -93,13 +93,16 @@ set(
 	"Custom data installation directory without suffixes"
 )
 
-set(
-	INSTALL_DATA_DIR
-	"${INSTALL_DATA_DIR_BASE}/${PROJECT_NAME}"
-	CACHE
-	STRING
-	"Custom data installation directory"
+function(
+	fcppt_utils_install_data_dir
+	VAR_NAME
 )
+	set(
+		${VAR_NAME}
+		"${INSTALL_DATA_DIR_BASE}/${PROJECT_NAME}"
+		PARENT_SCOPE
+	)
+endfunction()
 
 set(
 	INSTALL_DOC_DIR_BASE
@@ -109,13 +112,16 @@ set(
 	"Custom doc installation directory without suffixes"
 )
 
-set(
-	INSTALL_DOC_DIR
-	"${INSTALL_DOC_DIR_BASE}/${PROJECT_NAME}"
-	CACHE
-	STRING
-	"Custom doc installation directory"
+function(
+	fcppt_utils_install_doc_dir
+	VAR_NAME
 )
+	set(
+		${VAR_NAME}
+		"${INSTALL_DOC_DIR_BASE}/${PROJECT_NAME}"
+		PARENT_SCOPE
+	)
+endfunction()
 
 set(
 	INSTALL_PKGCONFIG_DIR
@@ -227,13 +233,16 @@ set(
 	"Custom cmake config installation directory without suffixes"
 )
 
-set(
-	INSTALL_CMAKECONFIG_DIR
-	"${INSTALL_CMAKECONFIG_DIR_BASE}/${PROJECT_NAME}"
-	CACHE
-	STRING
-	"Custom cmake module installation directory"
+function(
+	fcppt_utils_install_cmakeconfig_dir
+	VAR_NAME
 )
+	set(
+		${VAR_NAME}
+		"${INSTALL_CMAKECONFIG_DIR_BASE}/${PROJECT_NAME}"
+		PARENT_SCOPE
+	)
+endfunction()
 
 set(
 	INSTALL_SYSCONFIG_DIR_BASE
@@ -705,6 +714,9 @@ function(
 	fcppt_utils_generate_config
 	HAS_BUILDDIR
 )
+	fcppt_utils_install_cmakeconfig_dir(
+		INSTALL_CMAKECONFIG_DIR
+	)
 
 	set(
 		INCLUDE_DIR_VAR
