@@ -701,6 +701,7 @@ set(
 	include/fcppt/number_multiplexer/object_impl.hpp
 	include/fcppt/number_multiplexer/set_bits.hpp
 	include/fcppt/optional.hpp
+	include/fcppt/optional_bind.hpp
 	include/fcppt/optional_comparison.hpp
 	include/fcppt/optional_decl.hpp
 	include/fcppt/optional_dynamic_cast.hpp

@@ -9,6 +9,7 @@
 #include <fcppt/make_unique_ptr.hpp>
 #include <fcppt/noncopyable.hpp>
 #include <fcppt/optional.hpp>
+#include <fcppt/optional_bind.hpp>
 #include <fcppt/optional_ref_compare.hpp>
 #include <fcppt/static_optional_cast.hpp>
 #include <fcppt/unique_ptr_to_optional.hpp>
@@ -40,9 +41,9 @@ FCPPT_PP_POP_WARNING
 
 	typedef fcppt::optional<
 		std::string
-	> optional_int;
+	> optional_string;
 
-	optional_int test;
+	optional_string test;
 
 	BOOST_REQUIRE(
 		!test
@@ -801,5 +802,57 @@ FCPPT_PP_POP_WARNING
 		*ref
 		==
 		42
+	);
+}
+
+FCPPT_PP_PUSH_WARNING
+FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
+
+BOOST_AUTO_TEST_CASE(
+	optional_bind
+)
+{
+FCPPT_PP_POP_WARNING
+
+	typedef
+	fcppt::optional<
+		std::string::size_type
+	>
+	optional_size;
+
+	typedef
+	fcppt::optional<
+		std::string
+	>
+	optional_string;
+
+	auto const conversion(
+		[](
+			std::string const &_val
+		)
+		{
+			return
+				_val.size();
+		}
+	);
+
+	BOOST_CHECK(
+		fcppt::optional_bind(
+			optional_string(),
+			conversion
+		)
+		==
+		optional_size()
+	);
+
+	BOOST_CHECK(
+		*fcppt::optional_bind(
+			optional_string(
+				"test"
+			),
+			conversion
+		)
+		==
+		4u
 	);
 }
