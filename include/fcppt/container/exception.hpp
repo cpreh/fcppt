@@ -10,20 +10,24 @@
 #include <fcppt/string.hpp>
 #include <fcppt/exception.hpp>
 
+
 namespace fcppt
 {
 namespace container
 {
+
 /**
- * \brief An exception thrown by some container functions
- * \ingroup fcpptcontainer
- */
+\brief An exception thrown by some container functions
+
+\ingroup fcpptcontainer
+*/
 class exception
 :
 	public fcppt::exception
 {
 public:
-	explicit exception(
+	explicit
+	exception(
 		fcppt::string const &
 	);
 };
