@@ -123,13 +123,12 @@ set(
 	include/fcppt/container/data.hpp
 	include/fcppt/container/data_end.hpp
 	include/fcppt/container/detail/array_size.hpp
-	include/fcppt/container/detail/data.hpp
-	include/fcppt/container/detail/data_end.hpp
 	include/fcppt/container/enum_array.hpp
 	include/fcppt/container/enum_array_decl.hpp
 	include/fcppt/container/enum_array_fwd.hpp
 	include/fcppt/container/enum_array_impl.hpp
 	include/fcppt/container/exception.hpp
+	include/fcppt/container/find_exn.hpp
 	include/fcppt/container/grid/clamp_pos.hpp
 	include/fcppt/container/grid/clamp_signed_pos.hpp
 	include/fcppt/container/grid/comparison.hpp

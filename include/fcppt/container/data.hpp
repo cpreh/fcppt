@@ -7,7 +7,10 @@
 #ifndef FCPPT_CONTAINER_DATA_HPP_INCLUDED
 #define FCPPT_CONTAINER_DATA_HPP_INCLUDED
 
-#include <fcppt/container/detail/data.hpp>
+#include <fcppt/config/external_begin.hpp>
+#include <boost/mpl/if.hpp>
+#include <type_traits>
+#include <fcppt/config/external_end.hpp>
 
 
 namespace fcppt
@@ -28,43 +31,29 @@ _container is empty.
 template<
 	typename Container
 >
-typename Container::pointer
+typename
+boost::mpl::if_<
+	std::is_const<
+		Container
+	>,
+	typename
+	Container::const_pointer,
+	typename
+	Container::pointer
+>::type
 data(
 	Container &_container
 )
 {
 	return
-		container::detail::data<
-			typename Container::pointer
-		>(
-			_container
-		);
-}
-
-/**
-\brief Returns a const_pointer the beginning of a random access container
-
-\ingroup fcpptcontainer
-
-Returns a const_pointer the beginning of \a _container, or the null pointer if
-\a _container is empty.
-
-\param _container The container to return the const_pointer for
-*/
-template<
-	typename Container
->
-typename Container::const_pointer
-data(
-	Container const &_container
-)
-{
-	return
-		container::detail::data<
-			typename Container::const_pointer
-		>(
-			_container
-		);
+		_container.empty()
+		?
+			nullptr
+		:
+			&_container[
+				0
+			]
+		;
 }
 
 }

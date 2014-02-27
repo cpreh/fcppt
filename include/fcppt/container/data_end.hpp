@@ -7,7 +7,13 @@
 #ifndef FCPPT_CONTAINER_DATA_END_HPP_INCLUDED
 #define FCPPT_CONTAINER_DATA_END_HPP_INCLUDED
 
-#include <fcppt/container/detail/data_end.hpp>
+#include <fcppt/cast/to_signed.hpp>
+#include <fcppt/container/data.hpp>
+#include <fcppt/config/external_begin.hpp>
+#include <boost/mpl/if.hpp>
+#include <type_traits>
+#include <fcppt/config/external_end.hpp>
+
 
 
 namespace fcppt
@@ -20,51 +26,42 @@ namespace container
 
 \ingroup fcpptcontainer
 
-Returns a pointer one past the end of \a _container, or the null pointer if \a
-_container is empty.
-
 \param _container The container to return the pointer for
 */
 template<
 	typename Container
 >
-typename Container::pointer
+typename
+boost::mpl::if_<
+	std::is_const<
+		Container
+	>,
+	typename
+	Container::const_pointer,
+	typename
+	Container::pointer
+>::type
 data_end(
 	Container &_container
 )
 {
-	return
-		container::detail::data_end<
-			typename Container::pointer
-		>(
+	auto const result(
+		fcppt::container::data(
 			_container
-		);
-}
+		)
+	);
 
-/**
-\brief Returns a const_pointer one past the end of a random access container
-
-\ingroup fcpptcontainer
-
-Returns a const_pointer one past the end of \a _container, or the null pointer
-if \a _container is empty.
-
-\param _container The container to return the const_pointer for
-*/
-template<
-	typename Container
->
-typename Container::const_pointer
-data_end(
-	Container const &_container
-)
-{
 	return
-		container::detail::data_end<
-			typename Container::const_pointer
-		>(
-			_container
-		);
+		_container.empty()
+		?
+			result
+		:
+			result
+			+
+			fcppt::cast::to_signed(
+				_container.size()
+			)
+		;
 }
 
 }
