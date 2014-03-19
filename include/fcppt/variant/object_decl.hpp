@@ -271,6 +271,17 @@ public:
 	*/
 	fcppt::variant::size_type
 	type_index() const;
+
+	/**
+	\brief Returns if the variant is invalid.
+
+	This can only happen if an assignment of a different type throws an
+	exception. There is no way to recover from that, except for falling
+	back to heap allocation. An invalid variant should only be used
+	destroyed or assigned to.
+	*/
+	bool
+	is_invalid() const;
 private:
 	template<
 		typename U

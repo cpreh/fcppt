@@ -422,7 +422,22 @@ fcppt::variant::object<
 	Types
 >::type_index() const
 {
-	return index_;
+	return
+		index_;
+}
+
+template<
+	typename Types
+>
+bool
+fcppt::variant::object<
+	Types
+>::is_invalid() const
+{
+	return
+		this->type_index()
+		!=
+		elements;
 }
 
 template<
@@ -503,10 +518,18 @@ fcppt::variant::object<
 	Types
 >::destroy()
 {
+	if(
+		this->is_invalid()
+	)
+		return;
+
 	fcppt::variant::apply_unary(
 		fcppt::variant::detail::destroy(),
 		*this
 	);
+
+	index_ =
+		elements;
 }
 
 template<

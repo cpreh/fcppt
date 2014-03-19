@@ -309,6 +309,19 @@ types. You should explicitly convert instead.</li>
 thanks to C++11. <code>%boost::variant</code> only supports visitation of
 lvalues.</li>
 
+<li><code>%boost::variant</code> offers the so-called "non-empty" guarantee.
+This means that a variant always holds one of its possible types, which is
+generally a good thing. However, the difficult part about this guarantee is
+that an assignment of an object of different type than the variant already
+holds can throw an exception. In more detail, this means that the variant first
+has to destroy the object that is being held to make the store available for
+the new object. Then, if copy construction of the new object fails, there is no
+way to recover from that. <code>%boost::variant</code> circumvents that by
+heap-allocating the new object which can then safely be moved after destroying
+the old object. fcppt::variant instead allows this corner case to leave the
+variant in an unspecified state which can only be used to destroy the variant
+or to assign a new object.</li>
+
 </ul>
 
 \section variant_headers Header files
