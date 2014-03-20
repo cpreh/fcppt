@@ -569,6 +569,7 @@ class movable
 		movable
 	);
 public:
+	explicit
 	movable(
 		std::string const &_value
 	)
@@ -580,30 +581,13 @@ public:
 	}
 
 	movable(
-		movable &&_other
-	)
-	:
-		value_(
-			std::move(
-				_other.value_
-			)
-		)
-	{
-	}
+		movable &&
+	) = default;
 
 	movable &
 	operator=(
-		movable &&_other
-	)
-	{
-		value_ =
-			std::move(
-				_other.value_
-			);
-
-		return
-			*this;
-	}
+		movable &&
+	) = default;
 
 	~movable()
 	{
@@ -689,6 +673,30 @@ FCPPT_PP_POP_WARNING
 		optb->value()
 		==
 		"test2"
+	);
+
+	optional_movable optd;
+
+	optd =
+		movable(
+			"test3"
+		);
+
+	BOOST_CHECK(
+		optd->value()
+		==
+		"test3"
+	);
+
+	optd =
+		movable(
+			"test4"
+		);
+
+	BOOST_CHECK(
+		optd->value()
+		==
+		"test4"
 	);
 }
 

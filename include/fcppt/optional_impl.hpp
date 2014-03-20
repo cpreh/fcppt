@@ -578,7 +578,7 @@ fcppt::optional<
 			);
 	else
 	{
-		this->construct(
+		this->move_from(
 			std::move(
 				_other
 			)
