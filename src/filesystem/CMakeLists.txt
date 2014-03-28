@@ -10,20 +10,24 @@ set(
 	include/fcppt/filesystem/impl/create_directory_failed.hpp
 	include/fcppt/filesystem/impl/exception.hpp
 	include/fcppt/filesystem/is_executable.hpp
+	include/fcppt/filesystem/num_subpaths.hpp
 	include/fcppt/filesystem/path_to_string.hpp
 	include/fcppt/filesystem/remove_extension.hpp
 	include/fcppt/filesystem/replace_extension.hpp
 	include/fcppt/filesystem/stem.hpp
+	include/fcppt/filesystem/strip_prefix.hpp
 	src/filesystem/create_directories_recursive_exn.cpp
 	src/filesystem/create_directory_exn.cpp
 	src/filesystem/extension.cpp
 	src/filesystem/extension_without_dot.cpp
 	src/filesystem/file_to_string.cpp
 	src/filesystem/is_executable.cpp
+	src/filesystem/num_subpaths.cpp
 	src/filesystem/path_to_string.cpp
 	src/filesystem/remove_extension.cpp
 	src/filesystem/replace_extension.cpp
 	src/filesystem/stem.cpp
+	src/filesystem/strip_prefix.cpp
 )
 
 generate_symbol_header(
