@@ -38,7 +38,12 @@ map_reserve(
 )
 {
 	_dest.reserve(
-		_src.size()
+		static_cast<
+			typename
+			Dest::size_type
+		>(
+			_src.size()
+		)
 	);
 }
 
