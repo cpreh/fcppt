@@ -88,6 +88,10 @@ FCPPT_PP_POP_WARNING
 		std::string("test")
 	);
 
+	BOOST_CHECK(
+		!test.is_invalid()
+	);
+
 	throw_cctor const test_cctor{};
 
 	BOOST_CHECK_EXCEPTION(
@@ -97,10 +101,18 @@ FCPPT_PP_POP_WARNING
 		is_exception
 	);
 
+	BOOST_CHECK(
+		test.is_invalid()
+	);
+
 	BOOST_CHECK_EXCEPTION(
 		test =
 			throw_cctor(),
 		fcppt::exception,
 		is_exception
+	);
+
+	BOOST_CHECK(
+		test.is_invalid()
 	);
 }

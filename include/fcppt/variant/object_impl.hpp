@@ -436,7 +436,7 @@ fcppt::variant::object<
 {
 	return
 		this->type_index()
-		!=
+		==
 		elements;
 }
 
