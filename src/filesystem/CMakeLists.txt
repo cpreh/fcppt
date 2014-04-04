@@ -10,6 +10,7 @@ set(
 	include/fcppt/filesystem/impl/create_directory_failed.hpp
 	include/fcppt/filesystem/impl/exception.hpp
 	include/fcppt/filesystem/is_executable.hpp
+	include/fcppt/filesystem/normalize.hpp
 	include/fcppt/filesystem/num_subpaths.hpp
 	include/fcppt/filesystem/path_to_string.hpp
 	include/fcppt/filesystem/remove_extension.hpp
@@ -22,6 +23,7 @@ set(
 	src/filesystem/extension_without_dot.cpp
 	src/filesystem/file_to_string.cpp
 	src/filesystem/is_executable.cpp
+	src/filesystem/normalize.cpp
 	src/filesystem/num_subpaths.cpp
 	src/filesystem/path_to_string.cpp
 	src/filesystem/remove_extension.cpp

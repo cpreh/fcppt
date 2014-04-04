@@ -504,6 +504,7 @@ set(
 	include/fcppt/filesystem/impl/create_directory_failed.hpp
 	include/fcppt/filesystem/impl/exception.hpp
 	include/fcppt/filesystem/is_executable.hpp
+	include/fcppt/filesystem/normalize.hpp
 	include/fcppt/filesystem/num_subpaths.hpp
 	include/fcppt/filesystem/path_to_string.hpp
 	include/fcppt/filesystem/remove_extension.hpp
