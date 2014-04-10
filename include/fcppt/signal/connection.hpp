@@ -24,6 +24,7 @@ namespace signal
 
 FCPPT_PP_PUSH_WARNING
 FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
+FCPPT_PP_DISABLE_GCC_WARNING(-Wnon-virtual-dtor)
 
 /**
 \brief A connection returned by a connect call
@@ -37,9 +38,6 @@ class FCPPT_CLASS_SYMBOL connection
 :
 	public fcppt::signal::detail::connection_base
 {
-
-FCPPT_PP_POP_WARNING
-
 	FCPPT_NONCOPYABLE(
 		connection
 	);
@@ -48,8 +46,11 @@ public:
 	connection();
 
 	FCPPT_SYMBOL
-	virtual ~connection();
+	virtual
+	~connection() = 0;
 };
+
+FCPPT_PP_POP_WARNING
 
 }
 }
