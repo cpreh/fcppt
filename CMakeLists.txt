@@ -262,9 +262,8 @@ CHECK_CXX_SOURCE_COMPILES(
 	"#include <execinfo.h>
 	int main()
 	{
-		int (*tmp)(void**,int) throw() = ::backtrace;
-		char **(*tmp2)(void* const *,int) throw() = ::backtrace_symbols;
-		void(*tmp3)(void* const*,int,int) throw() = ::backtrace_symbols_fd;
+		static_cast<void>(static_cast<int (*)(void**,int)>(::backtrace));
+		static_cast<void>(static_cast<char **(*)(void* const *,int)>(::backtrace_symbols));
 	}"
 	FCPPT_HAVE_BACKTRACE
 )

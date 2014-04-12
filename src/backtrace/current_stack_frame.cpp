@@ -15,7 +15,7 @@
 #include <fcppt/container/raw_vector.hpp>
 #include <fcppt/c_deleter.hpp>
 #include <fcppt/from_std_string.hpp>
-#include <fcppt/scoped_ptr_impl.hpp>
+#include <memory>
 #include <execinfo.h>
 #endif
 
@@ -68,8 +68,8 @@ fcppt::backtrace::current_stack_frame(
 		)
 	);
 
-	fcppt::scoped_ptr<
-		char*,
+	std::unique_ptr<
+		char *,
 		fcppt::c_deleter
 	> raw_symbols(
 		::backtrace_symbols(
