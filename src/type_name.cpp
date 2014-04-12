@@ -10,8 +10,8 @@
 #include <fcppt/private_config.hpp>
 #if defined(FCPPT_HAVE_GCC_DEMANGLE)
 #include <fcppt/c_deleter.hpp>
-#include <fcppt/scoped_ptr.hpp>
 #include <fcppt/config/external_begin.hpp>
+#include <memory>
 #include <cxxabi.h>
 #include <fcppt/config/external_end.hpp>
 #endif
@@ -25,7 +25,7 @@ fcppt::type_name(
 #if defined(FCPPT_HAVE_GCC_DEMANGLE)
 	int status;
 
-	fcppt::scoped_ptr<
+	std::unique_ptr<
 		char,
 		fcppt::c_deleter
 	> name(

@@ -5,6 +5,7 @@
 
 
 #include <fcppt/make_unique_ptr.hpp>
+#include <fcppt/noncopyable.hpp>
 #include <fcppt/shared_ptr_impl.hpp>
 #include <fcppt/text.hpp>
 #include <fcppt/io/cout.hpp>
@@ -120,7 +121,7 @@ typedef fcppt::shared_ptr<
 	int
 > shared_int_ptr;
 
-shared_int_ptr const
+shared_int_ptr
 to_shared_ptr(
 	unique_int_ptr ptr
 )
@@ -171,6 +172,74 @@ test4()
 
 }
 
+namespace
+{
+
+void
+test5()
+{
+//! [unique_ptr_const]
+	typedef std::unique_ptr<
+		int
+	> const scoped_int_ptr;
+
+	scoped_int_ptr const ptr(
+		fcppt::make_unique_ptr<
+			int
+		>(
+			42
+		)
+	);
+//! [unique_ptr_const]
+}
+
+}
+
+namespace
+{
+
+//! [unique_ptr_pimpl_header]
+class foo_impl;
+
+class foo
+{
+	// Explicitly disable copying
+	FCPPT_NONCOPYABLE(
+		foo
+	);
+public:
+	foo();
+
+	~foo();
+private:
+	// const to disable move
+	std::unique_ptr<
+		foo_impl
+	> const impl_;
+};
+//! [unique_ptr_pimpl_header]
+
+//! [unique_ptr_pimpl_cpp]
+class foo_impl
+{
+	// Something here
+};
+
+foo::foo()
+:
+	impl_(
+		fcppt::make_unique_ptr<
+			foo_impl
+		>()
+	)
+{
+}
+
+foo::~foo() = default;
+//! [unique_ptr_pimpl_cpp]
+
+}
+
 int main()
 {
 	::test();
@@ -184,4 +253,8 @@ int main()
 	::test3();
 
 	::test4();
+
+	::test5();
+
+	foo f;
 }

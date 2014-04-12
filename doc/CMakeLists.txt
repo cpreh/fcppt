@@ -150,7 +150,6 @@ set(
 	examples/random/strong_typedef.cpp
 	examples/random/transform.cpp
 	examples/safe_numeric_cast.cpp
-	examples/scoped_ptr.cpp
 	examples/shared_ptr.cpp
 	examples/signal/benchmark.cpp
 	examples/signal/combine.cpp
@@ -158,6 +157,7 @@ set(
 	examples/signal/simple.cpp
 	examples/signal/unregister.cpp
 	examples/sleep.cpp
+	examples/smart_ptr_deleter.cpp
 	examples/string_conversion.cpp
 	examples/strongtypedef.cpp
 	examples/time_parse.cpp
@@ -1004,10 +1004,6 @@ set(
 	include/fcppt/reference_wrapper_std_hash.hpp
 	include/fcppt/safe_cast.hpp
 	include/fcppt/safe_numeric_cast.hpp
-	include/fcppt/scoped_ptr.hpp
-	include/fcppt/scoped_ptr_decl.hpp
-	include/fcppt/scoped_ptr_fwd.hpp
-	include/fcppt/scoped_ptr_impl.hpp
 	include/fcppt/scoped_state_machine.hpp
 	include/fcppt/scoped_state_machine_decl.hpp
 	include/fcppt/scoped_state_machine_fwd.hpp

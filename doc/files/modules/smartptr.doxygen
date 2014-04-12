@@ -20,10 +20,8 @@
 	<ul>
 		<li>\ref smartptr_unique_ptr_usage</li>
 		<li>\ref smartptr_unique_ptr_move</li>
-	</ul>
-	<li>\ref smartptr_scoped_ptr</li>
-	<ul>
-		<li>\ref smartptr_scoped_ptr_pimpl</li>
+		<li>\ref smartptr_unique_ptr_const</li>
+		<li>\ref smartptr_unique_ptr_pimpl</li>
 	</ul>
 	<li>\ref smartptr_deleter</li>
 	<ul>
@@ -81,15 +79,6 @@ doesn't contribute to the shared count and can be used to observe if
 shared ptrs are still alive.</td>
 
 </tr>
-
-<tr>
-<td>fcppt::scoped_ptr</td>
-
-<td>A noncopyable smart pointer, similar to unique ptr. Only one scoped ptr
-will manage the ownership at a time. It can be transfered into a unique ptr or
-from a unique ptr.</td>
-
-</tr>
 </table>
 
 fcppt used to provide its own unique ptr for C++03. However, C++11's
@@ -100,9 +89,10 @@ fcppt used to provide its own unique ptr for C++03. However, C++11's
 <td><code>std::unique_ptr</code></td>
 
 <td>A replacement for <code>std::auto_ptr</code>. Only one unique ptr will
-manage the ownership at a time. It can be transfered into a shared ptr or into
-a scoped ptr. The difference to <code>std::auto_ptr</code> is that transferring
-ownership from one unique ptr to another is safer.</td>
+manage ownership at a time. It can be transfered into a shared ptr. The
+difference to <code>std::auto_ptr</code> is that transferring ownership from
+one unique ptr to another is syntactically safer and works with move
+semantics.</td>
 
 </tr>
 </table>
@@ -117,8 +107,8 @@ This shared count will be increased whenever a shared ptr is copied and
 decreased when one is destroyed.
 
 Generally, it is advisable to think twice before using a shared ptr. Under most
-circumstances, shared ownership is not really necessary and a scoped ptr or a
-unique ptr should be used instead.
+circumstances, shared ownership is not really necessary and a unique ptr should
+be used instead.
 
 The general traits of a shared ptr are as follows:
 
@@ -219,9 +209,8 @@ because there is no shared count to keep track of.</li>
 
 The first thing to note is that unique ptrs are an excellent candidate for
 factory functions. They don't impose overly strict ownership requirements like
-shared ptr does. However, unique ptrs can be converted into shared ptrs or
-scoped ptrs as desired. The following example shows how such a factory can be
-created.
+shared ptr does. However, unique ptrs can be converted into shared ptrs
+desired. The following example shows how such a factory can be created.
 
 \snippet unique_ptr.cpp unique_ptr_factory
 
@@ -246,40 +235,31 @@ Consider the following example where an implicit move would be very dangerous:
 
 \snippet unique_ptr.cpp unique_ptr_move_dangerous
 
-\section smartptr_scoped_ptr Scoped Pointers
+\subsection smartptr_unique_ptr_const Const Unique Pointers
 
-fcppt::scoped_ptr is similar to <code>std::unique_ptr</code>, except it cannot
-even be moved and is completely noncopyable. Like for unique ptrs, no type
-erasure is done for the deleter.
+Fcppt used to provide a scoped_ptr class similar to
+<code>boost::scoped_ptr</code> that additionally took a deleter. This class
+has been removed in favor of const unique ptrs.
 
-Such a scoped ptr is usually a good choice if you want to hold onto something
-returned by a factory creating unique ptrs.
+\snippet unique_ptr.cpp unique_ptr_const
 
-Such a factory can again be declared as follows:
+A unique ptr that has been delcared const cannot be copied nor moved.
+Additionally, it can also not be swapped.
 
-\snippet scoped_ptr.cpp scoped_ptr_factory_decl
+\subsection smartptr_unique_ptr_pimpl Unique Pointers and Pimpl
 
-A scoped ptr can then be used to hold onto a unique ptr.
+A unique ptr can also be used to implement the pimpl idiom. When a unique ptr
+object is defined, the pointed to object doesn't need to be complete. It only
+has to be complete when the destructor of the unique ptr is instantiated.
+Therefore, an implementation can be hidden by using unique ptrs as shown
+in the following example:
 
-\snippet scoped_ptr.cpp scoped_ptr_factory
+\snippet unique_ptr.cpp unique_ptr_pimpl_header
 
-\subsection smartptr_scoped_ptr_pimpl Using Scoped Pointers for pimpl
+Because <code>foo</code> has an explicitly declared destructor, the destruction
+of the implementation can be hidden in a source file.
 
-<em>pimpl</em> is an idiom that allows the type of the pointed to object to be
-incomplete where the scoped ptr object is declared. As previously noted, a
-scoped ptr does require its type to be complete, but only when it is
-constructed or destroyed, not when an object is declared.
-
-This can then be used to leave the pointed to object undefined in the header
-of a class.
-
-\snippet scoped_ptr.cpp scoped_ptr_pimpl_decl
-
-The constructor and destructor of such a class can then be defined in a
-separate translation unit where the definition of the owned object's class is
-known.
-
-\snippet scoped_ptr.cpp scoped_ptr_pimpl_def
+\snippet unique_ptr.cpp unique_ptr_pimpl_cpp
 
 \section smartptr_deleter Custom Deleters
 
@@ -336,7 +316,7 @@ default deleter for every smart pointer.
 The following example shows how fcppt::c_deleter can be used to free memory
 allocated via <code>std::malloc</code>
 
-\snippet scoped_ptr.cpp scoped_ptr_c_deleter
+\snippet smart_ptr_deleter.cpp c_deleter
 
 \section smartptr_headers Header files
 
@@ -368,22 +348,6 @@ allocated via <code>std::malloc</code>
 <tr>
 <td><code>make_unique_ptr.hpp</code></td>
 <td>Contains fcppt::make_unique_ptr</td>
-</tr>
-<tr>
-<td><code>scoped_ptr_fwd.hpp</code></td>
-<td>Contains fcppt::scoped_ptr's declaration.</td>
-</tr>
-<tr>
-<td><code>scoped_ptr_decl.hpp</code></td>
-<td>Contains fcppt::scoped_ptr's definition.</td>
-</tr>
-<tr>
-<td><code>scoped_ptr_impl.hpp</code></td>
-<td>Contains the definition of fcppt::scoped_ptr's member functions.</td>
-</tr>
-<tr>
-<td><code>scoped_ptr.hpp</code></td>
-<td>The same as <code>scoped_ptr_impl.hpp</code></td>
 </tr>
 <tr>
 <td><code>shared_ptr_fwd.hpp</code></td>

@@ -805,10 +805,6 @@ set(
 	include/fcppt/reference_wrapper_std_hash.hpp
 	include/fcppt/safe_cast.hpp
 	include/fcppt/safe_numeric_cast.hpp
-	include/fcppt/scoped_ptr.hpp
-	include/fcppt/scoped_ptr_decl.hpp
-	include/fcppt/scoped_ptr_fwd.hpp
-	include/fcppt/scoped_ptr_impl.hpp
 	include/fcppt/scoped_state_machine.hpp
 	include/fcppt/scoped_state_machine_decl.hpp
 	include/fcppt/scoped_state_machine_fwd.hpp

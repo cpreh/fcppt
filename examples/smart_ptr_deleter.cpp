@@ -4,26 +4,26 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_SCOPED_PTR_FWD_HPP_INCLUDED
-#define FCPPT_SCOPED_PTR_FWD_HPP_INCLUDED
-
+#include <fcppt/c_deleter.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <memory>
 #include <fcppt/config/external_end.hpp>
 
 
-namespace fcppt
+int
+main()
 {
+//! [c_deleter]
+	typedef std::unique_ptr<
+		void,
+		fcppt::c_deleter
+	> void_c_ptr;
 
-template<
-	typename Type,
-	typename Deleter =
-		std::default_delete<
-			Type
-		>
->
-class scoped_ptr;
-
+	void_c_ptr ptr(
+		std::malloc(
+			100
+		)
+	);
+//! [c_deleter]
 }
-
-#endif
+//]
