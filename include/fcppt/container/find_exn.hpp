@@ -7,10 +7,8 @@
 #ifndef FCPPT_CONTAINER_FIND_EXN_HPP_INCLUDED
 #define FCPPT_CONTAINER_FIND_EXN_HPP_INCLUDED
 
-#include <fcppt/config/external_begin.hpp>
-#include <boost/mpl/if.hpp>
-#include <type_traits>
-#include <fcppt/config/external_end.hpp>
+#include <fcppt/container/find_opt.hpp>
+#include <fcppt/container/to_mapped_type.hpp>
 
 
 namespace fcppt
@@ -33,38 +31,30 @@ template<
 	typename Container,
 	typename MakeException
 >
-typename
-boost::mpl::if_<
-	std::is_const<
-		Container
-	>,
-	typename
-	Container::mapped_type const &,
-	typename
-	Container::mapped_type &
->::type
+fcppt::container::to_mapped_type<
+	Container
+>
 find_exn(
 	Container &_container,
 	typename Container::key_type const &_key,
 	MakeException const &_make_exception
 )
 {
-	auto const it(
-		_container.find(
+	auto const opt_result(
+		fcppt::container::find_opt(
+			_container,
 			_key
 		)
 	);
 
 	if(
-		it
-		==
-		_container.end()
+		!opt_result
 	)
 		throw
 			_make_exception();
 
 	return
-		it->second;
+		*opt_result;
 }
 
 }

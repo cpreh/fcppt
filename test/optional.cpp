@@ -9,7 +9,7 @@
 #include <fcppt/make_unique_ptr.hpp>
 #include <fcppt/noncopyable.hpp>
 #include <fcppt/optional.hpp>
-#include <fcppt/optional_bind.hpp>
+#include <fcppt/optional_bind_construct.hpp>
 #include <fcppt/optional_ref_compare.hpp>
 #include <fcppt/static_optional_cast.hpp>
 #include <fcppt/unique_ptr_to_optional.hpp>
@@ -845,7 +845,7 @@ FCPPT_PP_POP_WARNING
 	);
 
 	BOOST_CHECK(
-		fcppt::optional_bind(
+		fcppt::optional_bind_construct(
 			optional_string(),
 			conversion
 		)
@@ -854,7 +854,7 @@ FCPPT_PP_POP_WARNING
 	);
 
 	BOOST_CHECK(
-		*fcppt::optional_bind(
+		*fcppt::optional_bind_construct(
 			optional_string(
 				"test"
 			),

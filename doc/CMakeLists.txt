@@ -314,6 +314,7 @@ set(
 	include/fcppt/container/enum_array_impl.hpp
 	include/fcppt/container/exception.hpp
 	include/fcppt/container/find_exn.hpp
+	include/fcppt/container/find_opt.hpp
 	include/fcppt/container/grid/clamp_pos.hpp
 	include/fcppt/container/grid/clamp_signed_pos.hpp
 	include/fcppt/container/grid/comparison.hpp
@@ -405,6 +406,7 @@ set(
 	include/fcppt/container/raw_vector_decl.hpp
 	include/fcppt/container/raw_vector_fwd.hpp
 	include/fcppt/container/raw_vector_impl.hpp
+	include/fcppt/container/to_mapped_type.hpp
 	include/fcppt/container/tree/comparison.hpp
 	include/fcppt/container/tree/depth.hpp
 	include/fcppt/container/tree/detail/copy_children.hpp
@@ -904,6 +906,7 @@ set(
 	include/fcppt/number_multiplexer/set_bits.hpp
 	include/fcppt/optional.hpp
 	include/fcppt/optional_bind.hpp
+	include/fcppt/optional_bind_construct.hpp
 	include/fcppt/optional_comparison.hpp
 	include/fcppt/optional_decl.hpp
 	include/fcppt/optional_dynamic_cast.hpp

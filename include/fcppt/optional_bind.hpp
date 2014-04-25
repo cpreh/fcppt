@@ -7,6 +7,7 @@
 #ifndef FCPPT_OPTIONAL_BIND_HPP_INCLUDED
 #define FCPPT_OPTIONAL_BIND_HPP_INCLUDED
 
+#include <fcppt/is_optional.hpp>
 #include <fcppt/optional_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <type_traits>
@@ -21,10 +22,9 @@ namespace fcppt
 
 \ingroup fcpptoptional
 
-Converts \a _source into the optional type
-<code>optional<Function(Source)></code>. If \a _source is empty, the empty
-optional is returned. Otherwise, \a _source is dereferenced and the result from
-applying \a _function is returned.
+Converts \a _source into the optional type returned by \a _function. If \a
+_source is empty, the empty optional is returned. Otherwise, \a _source is
+dereferenced and the result from applying \a _function is returned.
 
 \param _source The optional to convert
 
@@ -35,14 +35,13 @@ template<
 	typename Source,
 	typename Function
 >
-fcppt::optional<
-	typename
-	std::result_of<
-		Function(
-			Source
-		)
-	>::type
->
+inline
+typename
+std::result_of<
+	Function(
+		Source
+	)
+>::type
 optional_bind(
 	fcppt::optional<
 		Source
@@ -51,24 +50,27 @@ optional_bind(
 )
 {
 	typedef
-	fcppt::optional<
-		typename
-		std::result_of<
-			Function(
-				Source
-			)
-		>::type
-	>
+	typename
+	std::result_of<
+		Function(
+			Source
+		)
+	>::type
 	result_type;
+
+	static_assert(
+		fcppt::is_optional<
+			result_type
+		>::value,
+		"optional_bind must return an optional"
+	);
 
 	return
 		_source
 		?
-			result_type{
-				_function(
-					*_source
-				)
-			}
+			_function(
+				*_source
+			)
 		:
 			result_type{}
 		;
