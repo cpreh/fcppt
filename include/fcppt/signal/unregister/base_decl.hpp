@@ -83,6 +83,15 @@ protected:
 
 	base();
 
+	base(
+		base &&
+	);
+
+	base &
+	operator=(
+		base &&
+	);
+
 	~base();
 
 	connection_list &

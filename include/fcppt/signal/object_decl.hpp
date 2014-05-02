@@ -83,6 +83,15 @@ public:
 		result_type const &initial_result
 	);
 
+	object(
+		object &&
+	);
+
+	object &
+	operator=(
+		object &&
+	);
+
 	~object();
 
 	/**
@@ -157,6 +166,15 @@ public:
 	\brief Construct an empty signal
 	*/
 	object();
+
+	object(
+		object &&
+	);
+
+	object &
+	operator=(
+		object &&
+	);
 
 	~object();
 

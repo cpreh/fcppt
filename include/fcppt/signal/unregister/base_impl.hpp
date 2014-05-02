@@ -23,7 +23,9 @@ template<
 	typename T
 >
 fcppt::signal::auto_connection
-fcppt::signal::unregister::base<T>::connect(
+fcppt::signal::unregister::base<
+	T
+>::connect(
 	function_type const &_function,
 	fcppt::signal::unregister::function const &_unregister
 )
@@ -55,7 +57,9 @@ template<
 	typename T
 >
 bool
-fcppt::signal::unregister::base<T>::empty() const
+fcppt::signal::unregister::base<
+	T
+>::empty() const
 {
 	return connections().empty();
 }
@@ -63,7 +67,9 @@ fcppt::signal::unregister::base<T>::empty() const
 template<
 	typename T
 >
-fcppt::signal::unregister::base<T>::base()
+fcppt::signal::unregister::base<
+	T
+>::base()
 :
 	connections_()
 {
@@ -72,15 +78,42 @@ fcppt::signal::unregister::base<T>::base()
 template<
 	typename T
 >
-fcppt::signal::unregister::base<T>::~base()
+fcppt::signal::unregister::base<
+	T
+>::base(
+	base &&
+) = default;
+
+template<
+	typename T
+>
+fcppt::signal::unregister::base<
+	T
+> &
+fcppt::signal::unregister::base<
+	T
+>::operator=(
+	base &&
+) = default;
+
+template<
+	typename T
+>
+fcppt::signal::unregister::base<
+	T
+>::~base()
 {
 }
 
 template<
 	typename T
 >
-typename fcppt::signal::unregister::base<T>::connection_list &
-fcppt::signal::unregister::base<T>::connections() const
+typename fcppt::signal::unregister::base<
+	T
+>::connection_list &
+fcppt::signal::unregister::base<
+	T
+>::connections() const
 {
 	return connections_;
 }

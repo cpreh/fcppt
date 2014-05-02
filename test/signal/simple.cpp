@@ -13,20 +13,18 @@
 #include <fcppt/config/external_begin.hpp>
 #include <boost/test/unit_test.hpp>
 #include <functional>
+#include <utility>
 #include <fcppt/config/external_end.hpp>
+
 
 namespace
 {
 
-int global = 0;
-
-void
-add(
-	int const _value
-)
-{
-	global += _value;
-}
+typedef
+fcppt::signal::object<
+	void ()
+>
+signal;
 
 }
 
@@ -39,9 +37,20 @@ BOOST_AUTO_TEST_CASE(
 {
 FCPPT_PP_POP_WARNING
 
-	typedef fcppt::signal::object<
-		void ()
-	> signal;
+	int counter{
+		0
+	};
+
+	auto const add(
+		[
+			&counter
+		](
+			int const _value
+		)
+		{
+			counter += _value;
+		}
+	);
 
 	signal sig;
 
@@ -56,13 +65,13 @@ FCPPT_PP_POP_WARNING
 		);
 
 		BOOST_REQUIRE(
-			global == 0
+			counter == 0
 		);
 
 		sig();
 
 		BOOST_REQUIRE(
-			global == 1
+			counter == 1
 		);
 
 		fcppt::signal::scoped_connection const con2(
@@ -77,13 +86,55 @@ FCPPT_PP_POP_WARNING
 		sig();
 
 		BOOST_REQUIRE(
-			global == 4
+			counter == 4
 		);
 	}
 
 	sig();
 
 	BOOST_REQUIRE(
-		global == 4
+		counter == 4
+	);
+}
+
+FCPPT_PP_PUSH_WARNING
+FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
+
+BOOST_AUTO_TEST_CASE(
+	signal_simple_move
+)
+{
+FCPPT_PP_POP_WARNING
+
+	signal sig;
+
+	bool done{
+		false
+	};
+
+	fcppt::signal::scoped_connection const con1(
+		sig.connect(
+			[
+				&done
+			]{
+				done = true;
+			}
+		)
+	);
+
+	signal sig2(
+		std::move(
+			sig
+		)
+	);
+
+	BOOST_CHECK(
+		sig.empty()
+	);
+
+	sig2();
+
+	BOOST_CHECK(
+		done
 	);
 }

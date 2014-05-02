@@ -20,24 +20,10 @@
 namespace
 {
 
-void
-empty_function()
-{
-}
-
-std::vector<
-	int
-> values;
-
-void
-unregister(
-	int const _value
-)
-{
-	values.push_back(
-		_value
-	);
-}
+typedef fcppt::signal::object<
+	void (),
+	fcppt::signal::unregister::base
+> signal;
 
 }
 
@@ -50,19 +36,35 @@ BOOST_AUTO_TEST_CASE(
 {
 FCPPT_PP_POP_WARNING
 
-	typedef fcppt::signal::object<
-		void (),
-		fcppt::signal::unregister::base
-	> signal;
+	std::vector<
+		int
+	> values;
+
+	auto const empty_function(
+		[]{}
+	);
+
+	auto const unregister(
+		[
+			&values
+		](
+			int const _value
+		)
+		{
+			values.push_back(
+				_value
+			);
+		}
+	);
 
 	signal sig;
 
 	{
 		fcppt::signal::scoped_connection const con1(
 			sig.connect(
-				::empty_function,
+				empty_function,
 				std::bind(
-					::unregister,
+					unregister,
 					42
 				)
 			)
@@ -80,9 +82,9 @@ FCPPT_PP_POP_WARNING
 	{
 		fcppt::signal::scoped_connection const con2(
 			sig.connect(
-				::empty_function,
+				empty_function,
 				std::bind(
-					::unregister,
+					unregister,
 					100
 				)
 			)
@@ -95,5 +97,63 @@ FCPPT_PP_POP_WARNING
 
 	BOOST_REQUIRE(
 		values.back() == 100
+	);
+}
+
+FCPPT_PP_PUSH_WARNING
+FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
+
+BOOST_AUTO_TEST_CASE(
+	signal_simple_move
+)
+{
+FCPPT_PP_POP_WARNING
+
+	signal sig;
+
+	bool done{
+		false
+	};
+
+	bool unregistered{
+		false
+	};
+
+	{
+		fcppt::signal::scoped_connection const con1(
+			sig.connect(
+				[
+					&done
+				]{
+					done = true;
+				},
+				[
+					&unregistered
+				]
+				{
+					unregistered = true;
+				}
+			)
+		);
+
+		signal sig2(
+			std::move(
+				sig
+			)
+		);
+
+		BOOST_CHECK(
+			sig.empty()
+		);
+
+		sig2();
+
+		BOOST_CHECK(
+			done
+		);
+	}
+
+	BOOST_CHECK(
+		unregistered
 	);
 }

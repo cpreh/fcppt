@@ -77,6 +77,27 @@ template<
 >
 fcppt::signal::base<
 	T
+>::base(
+	base &&
+) = default;
+
+template<
+	typename T
+>
+fcppt::signal::base<
+	T
+> &
+fcppt::signal::base<
+	T
+>::operator=(
+	base &&
+) = default;
+
+template<
+	typename T
+>
+fcppt::signal::base<
+	T
 >::~base()
 {
 }
