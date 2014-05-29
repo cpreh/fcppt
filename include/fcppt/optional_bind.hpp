@@ -60,7 +60,10 @@ optional_bind(
 
 	static_assert(
 		fcppt::is_optional<
-			result_type
+			typename
+			std::decay<
+				result_type
+			>::type
 		>::value,
 		"optional_bind must return an optional"
 	);

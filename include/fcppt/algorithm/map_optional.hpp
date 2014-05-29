@@ -45,7 +45,10 @@ map_optional(
 
 	static_assert(
 		fcppt::is_optional<
-			result_type
+			typename
+			std::decay<
+				result_type
+			>::type
 		>::value,
 		"map_optional requires a function that returns an optional"
 	);
