@@ -27,20 +27,16 @@ FCPPT_PP_POP_WARNING
 		int
 	> int_vector;
 
-	int_vector vec1;
-
-	vec1.push_back(1);
-	vec1.push_back(2);
-
-	int_vector vec2;
-
-	vec2.push_back(3);
-	vec2.push_back(4);
-
 	int_vector const result(
 		fcppt::algorithm::join(
-			vec1,
-			vec2
+			int_vector{
+				1,
+				2
+			},
+			int_vector{
+				3,
+				4
+			}
 		)
 	);
 
