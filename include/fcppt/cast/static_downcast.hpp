@@ -26,15 +26,12 @@ typename
 boost::enable_if<
 	std::is_base_of<
 		typename
-		std::remove_const<
+		std::remove_cv<
 			Source
 		>::type,
 		typename
-		std::remove_const<
-			typename
-			std::remove_reference<
-				Dest
-			>::type
+		std::decay<
+			Dest
 		>::type
 	>,
 	Dest

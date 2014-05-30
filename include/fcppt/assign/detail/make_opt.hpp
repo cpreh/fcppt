@@ -32,11 +32,8 @@ typename
 boost::disable_if<
 	fcppt::is_optional<
 		typename
-		std::remove_const<
-			typename
-			std::remove_reference<
-				Arg
-			>::type
+		std::decay<
+			Arg
 		>::type
 	>,
 	Result
@@ -70,11 +67,8 @@ typename
 boost::enable_if<
 	fcppt::is_optional<
 		typename
-		std::remove_const<
-			typename
-			std::remove_reference<
-				Arg
-			>::type
+		std::decay<
+			Arg
 		>::type
 	>,
 	Result
@@ -111,11 +105,8 @@ typename
 boost::enable_if<
 	fcppt::is_optional<
 		typename
-		std::remove_const<
-			typename
-			std::remove_reference<
-				Arg
-			>::type
+		std::decay<
+			Arg
 		>::type
 	>,
 	Result

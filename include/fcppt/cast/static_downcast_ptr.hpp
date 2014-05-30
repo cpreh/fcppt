@@ -26,11 +26,11 @@ typename
 boost::enable_if<
 	std::is_base_of<
 		typename
-		std::remove_const<
+		std::remove_cv<
 			Source
 		>::type,
 		typename
-		std::remove_const<
+		std::remove_cv<
 			typename
 			std::remove_pointer<
 				Dest

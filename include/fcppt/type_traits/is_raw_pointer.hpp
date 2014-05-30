@@ -47,7 +47,7 @@ boost::mpl::contains<
 		unsigned char
 	>,
 	typename
-	std::remove_const<
+	std::remove_cv<
 		Type
 	>::type
 >
