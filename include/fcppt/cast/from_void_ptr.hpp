@@ -9,6 +9,7 @@
 
 #include <fcppt/config/external_begin.hpp>
 #include <boost/utility/enable_if.hpp>
+#include <boost/mpl/and.hpp>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
@@ -19,40 +20,26 @@ namespace cast
 {
 
 template<
-	typename Dest
+	typename Dest,
+	typename Source
 >
 typename
 boost::enable_if<
-	std::is_pointer<
-		Dest
-	>,
-	Dest
->::type
-from_void_ptr(
-	void *const _ptr
-)
-{
-	return
-		static_cast<
+	boost::mpl::and_<
+		std::is_pointer<
 			Dest
-		>(
-			_ptr
-		);
-}
-
-template<
-	typename Dest
->
-inline
-typename
-boost::enable_if<
-	std::is_pointer<
-		Dest
+		>,
+		std::is_void<
+			typename
+			std::remove_cv<
+				Source
+			>::type
+		>
 	>,
 	Dest
 >::type
 from_void_ptr(
-	void const *const _ptr
+	Source *const _ptr
 )
 {
 	return
