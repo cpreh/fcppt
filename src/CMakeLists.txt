@@ -28,10 +28,12 @@ set(
 	include/fcppt/algorithm/impl/element_not_found.hpp
 	include/fcppt/algorithm/impl/exception.hpp
 	include/fcppt/algorithm/join.hpp
+	include/fcppt/algorithm/join_move.hpp
 	include/fcppt/algorithm/join_strings.hpp
 	include/fcppt/algorithm/key_set.hpp
 	include/fcppt/algorithm/levenshtein.hpp
 	include/fcppt/algorithm/map.hpp
+	include/fcppt/algorithm/map_optional.hpp
 	include/fcppt/algorithm/ptr_container_erase.hpp
 	include/fcppt/algorithm/ptr_container_erase_if.hpp
 	include/fcppt/algorithm/remove.hpp
