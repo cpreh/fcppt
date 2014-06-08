@@ -6,7 +6,7 @@
 
 #ifdef FCPPT_EXAMPLES_SIGNAL_BENCHMARK_USE_FCPPT
 #include <fcppt/signal/object.hpp>
-#include <fcppt/signal/connection_manager.hpp>
+#include <fcppt/signal/auto_connection_container.hpp>
 #elif defined(FCPPT_EXAMPLES_SIGNAL_BENCHMARK_USE_BOOST_SIGNALS1)
 #include <fcppt/config/external_begin.hpp>
 #include <boost/signals.hpp>
@@ -49,10 +49,10 @@ main()
 
 	signal_type s;
 
-	fcppt::signal::connection_manager manager;
+	fcppt::signal::auto_connection_container manager;
 
 	for(std::size_t i = 0; i < max_iterations; ++i)
-		manager.add(
+		manager.push_back(
 			s.connect(
 				&f));
 

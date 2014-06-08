@@ -7,7 +7,7 @@
 //! [signal_connection]
 #include <fcppt/assign/make_container.hpp>
 #include <fcppt/signal/auto_connection.hpp>
-#include <fcppt/signal/connection_manager.hpp>
+#include <fcppt/signal/auto_connection_container.hpp>
 #include <fcppt/signal/object.hpp>
 #include <fcppt/signal/scoped_connection.hpp>
 #include <fcppt/config/external_begin.hpp>
@@ -66,9 +66,9 @@ int main()
 
 // ![signal_movable_assign]
 	// use fcppt::assign::make_container to pass a container of connections
-	fcppt::signal::connection_manager const connections(
+	fcppt::signal::auto_connection_container const connections(
 		fcppt::assign::make_container<
-			fcppt::signal::connection_manager::container
+			fcppt::signal::auto_connection_container
 		>(
 			signal.connect(
 				::function1
