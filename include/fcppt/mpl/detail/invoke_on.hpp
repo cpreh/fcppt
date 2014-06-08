@@ -7,7 +7,6 @@
 #ifndef FCPPT_MPL_DETAIL_INVOKE_ON_HPP_INCLUDED
 #define FCPPT_MPL_DETAIL_INVOKE_ON_HPP_INCLUDED
 
-#include <fcppt/workarounds.hpp>
 #include <fcppt/mpl/invalid_invoke.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/mpl/deref.hpp>
@@ -87,15 +86,9 @@ struct invoke_on<
 			==
 			index
 			?
-#ifdef FCPPT_MSVC_DEPENDANT_TEMPLATE_BUG
-				op.operator()<
-					item
-				>()
-#else
 				op. template operator()<
 					item
 				>()
-#endif
 			:
 				fcppt::mpl::detail::invoke_on<
 					typename boost::mpl::next<

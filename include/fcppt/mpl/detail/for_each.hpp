@@ -7,7 +7,6 @@
 #ifndef FCPPT_MPL_DETAIL_FOR_EACH_HPP_INCLUDED
 #define FCPPT_MPL_DETAIL_FOR_EACH_HPP_INCLUDED
 
-#include <fcppt/workarounds.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/mpl/deref.hpp>
 #include <boost/mpl/next.hpp>
@@ -37,7 +36,8 @@ struct for_each<
 		typename LastIterator,
 		typename Fun
 	>
-	static void
+	static
+	void
 	execute(
 		Fun const &
 	)
@@ -55,7 +55,8 @@ struct for_each<
 		typename LastIterator,
 		typename Fun
 	>
-	static void
+	static
+	void
 	execute(
 		Fun const &_func
 	)
@@ -68,11 +69,8 @@ struct for_each<
 			Iterator
 		>::type iter;
 
-#ifdef FCPPT_MSVC_DEPENDANT_TEMPLATE_BUG
-		_func.operator()<item>();
-#else
 		_func. template operator()<item>();
-#endif
+
 		fcppt::mpl::detail::for_each<
 			std::is_same<
 				iter,
