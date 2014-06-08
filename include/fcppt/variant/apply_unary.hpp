@@ -7,13 +7,11 @@
 #ifndef FCPPT_VARIANT_APPLY_UNARY_HPP_INCLUDED
 #define FCPPT_VARIANT_APPLY_UNARY_HPP_INCLUDED
 
-#include <fcppt/variant/size_type.hpp>
-#include <fcppt/variant/detail/apply.hpp>
+#include <fcppt/mpl/runtime_index.hpp>
+#include <fcppt/variant/detail/apply_function.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/mpl/begin.hpp>
-#include <boost/mpl/empty.hpp>
-#include <boost/mpl/end.hpp>
-#include <boost/mpl/integral_c.hpp>
+#include <boost/mpl/size.hpp>
+#include <exception>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
@@ -43,7 +41,8 @@ template<
 	typename Operation,
 	typename Variant
 >
-typename std::remove_reference<
+typename
+std::decay<
 	Operation
 >::type::result_type
 apply_unary(
@@ -51,29 +50,33 @@ apply_unary(
 	Variant &&_obj
 )
 {
-	typedef typename std::remove_reference<
-		Variant
-	>::type::types types;
-
 	return
-		fcppt::variant::detail::apply<
-			boost::mpl::empty<
-				types
-			>::value
-		>:: template execute<
-			boost::mpl::integral_c<
-				fcppt::variant::size_type,
-				0
-			>,
-			typename boost::mpl::begin<
-				types
-			>::type,
-			typename boost::mpl::end<
-				types
+		fcppt::mpl::runtime_index<
+			typename
+			boost::mpl::size<
+				typename
+				std::decay<
+					Variant
+				>::type::types
 			>::type
 		>(
-			_op,
-			_obj
+			_obj.type_index(),
+			fcppt::variant::detail::apply_function<
+				Operation,
+				Variant
+			>(
+				_op,
+				_obj
+			),
+			[]()
+			->
+			typename
+			std::decay<
+				Operation
+			>::type::result_type
+			{
+				std::terminate();
+			}
 		);
 }
 

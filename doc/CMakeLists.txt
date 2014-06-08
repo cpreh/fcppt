@@ -879,7 +879,7 @@ set(
 	include/fcppt/mpl/ceil_div.hpp
 	include/fcppt/mpl/contains_if.hpp
 	include/fcppt/mpl/detail/for_each.hpp
-	include/fcppt/mpl/detail/invoke_on.hpp
+	include/fcppt/mpl/detail/invoke_on_function.hpp
 	include/fcppt/mpl/detail/print.hpp
 	include/fcppt/mpl/detail/print_function.hpp
 	include/fcppt/mpl/detail/print_one.hpp
@@ -891,7 +891,6 @@ set(
 	include/fcppt/mpl/index_of.hpp
 	include/fcppt/mpl/inner.hpp
 	include/fcppt/mpl/integral_cast.hpp
-	include/fcppt/mpl/invalid_invoke.hpp
 	include/fcppt/mpl/invoke_on.hpp
 	include/fcppt/mpl/max_value.hpp
 	include/fcppt/mpl/partial_sums.hpp
@@ -1119,7 +1118,7 @@ set(
 	include/fcppt/variant/apply_ternary.hpp
 	include/fcppt/variant/apply_unary.hpp
 	include/fcppt/variant/compare.hpp
-	include/fcppt/variant/detail/apply.hpp
+	include/fcppt/variant/detail/apply_function.hpp
 	include/fcppt/variant/detail/assert_type.hpp
 	include/fcppt/variant/detail/assign_object.hpp
 	include/fcppt/variant/detail/assign_value.hpp

@@ -7,13 +7,10 @@
 #ifndef FCPPT_MPL_INVOKE_ON_HPP_INCLUDED
 #define FCPPT_MPL_INVOKE_ON_HPP_INCLUDED
 
-#include <fcppt/literal.hpp>
-#include <fcppt/mpl/detail/invoke_on.hpp>
+#include <fcppt/mpl/runtime_index.hpp>
+#include <fcppt/mpl/detail/invoke_on_function.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/mpl/begin.hpp>
-#include <boost/mpl/empty.hpp>
-#include <boost/mpl/end.hpp>
-#include <boost/mpl/integral_c.hpp>
+#include <boost/mpl/size.hpp>
 #include <boost/utility/enable_if.hpp>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
@@ -25,13 +22,14 @@ namespace mpl
 {
 
 /**
-\brief Applies a functor to the nth element of a sequence with a runtime index
+\brief Applies a function to the nth element of a sequence with a runtime index
 
 \ingroup fcpptmpl
 
-Applies \a _functor to the nth element (where n is denoted by \a _index) of the
-sequence \a Sequence. This can be useful if you have a runtime index into an
-MPL sequence and you want to invoke something on that type.
+Applies \a _function to the nth element (where n is denoted by \a _index) of
+the sequence \a Sequence. This can be useful if you have a runtime index into
+an MPL sequence and you want to invoke something on that type. If \a _index is
+out of range, the result of <code>_fail_function()</code> is returned.
 
 \note The compile time and the runtime complexities of this function are linear
 in the size of the MPL sequence
@@ -42,19 +40,25 @@ in the size of the MPL sequence
 
 \tparam Index An unsigned type
 
+\tparam Function Must be callable with <code>operator()%<T%>()</code> for every T
+in \a Sequence
+
+\tparam FailFunction Must be a callable with no parameters.
+
 \param _index The runtime index of type \a Index
 
-\param _functor The functor to invoke
+\param _function The function to invoke
 
-\return The result of <code>_functor<T>()</code> if <code>T</code> is the
+\param _fail_function The function to call when \a _index is out of range.
+
+\return The result of <code>_function%<T%>()</code> if <code>T</code> is the
 element of \a Sequence at \a _index
-
-\throw invalid_invoke if \a _index is out of range
 */
 template<
 	typename Sequence,
 	typename Index,
-	typename Functor
+	typename Function,
+	typename FailFunction
 >
 typename
 boost::enable_if<
@@ -62,38 +66,29 @@ boost::enable_if<
 		Index
 	>,
 	typename
-	Functor::result_type
+	Function::result_type
 >::type
 invoke_on(
 	Index const &_index,
-	Functor const &_functor
+	Function const &_function,
+	FailFunction const &_fail_function
 )
 {
 	return
-		fcppt::mpl::detail::invoke_on<
-			boost::mpl::integral_c<
-				Index,
-				fcppt::literal<
-					Index
-				>(
-					0
-				)
-			>,
-			boost::mpl::empty<
-				Sequence
-			>::value
-		>:: template execute<
+		fcppt::mpl::runtime_index<
 			typename
-			boost::mpl::begin<
-				Sequence
-			>::type,
-			typename
-			boost::mpl::end<
+			boost::mpl::size<
 				Sequence
 			>::type
 		>(
 			_index,
-			_functor
+			fcppt::mpl::detail::invoke_on_function<
+				Sequence,
+				Function
+			>(
+				_function
+			),
+			_fail_function
 		);
 }
 

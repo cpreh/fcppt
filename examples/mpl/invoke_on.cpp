@@ -16,6 +16,7 @@
 #include <fcppt/config/external_begin.hpp>
 #include <boost/mpl/vector/vector10.hpp>
 #include <cassert>
+#include <exception>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -87,7 +88,12 @@ make_color_variant(
 					_value
 				)
 			),
-			create_functor()
+			create_functor(),
+			[]()
+			-> color_variant
+			{
+				std::terminate();
+			}
 		);
 }
 
