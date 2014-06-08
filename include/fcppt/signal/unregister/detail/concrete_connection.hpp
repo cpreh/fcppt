@@ -47,7 +47,8 @@ public:
 		fcppt::signal::unregister::function const &
 	);
 
-	~concrete_connection();
+	~concrete_connection()
+	override;
 
 	function_type &
 	function();

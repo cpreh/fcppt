@@ -50,7 +50,8 @@ public:
 	/**
 	\brief Destroys the exception
 	*/
-	~exception() throw();
+	~exception() throw()
+	override;
 private:
 	fcppt::assert_::information information_;
 };

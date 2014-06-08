@@ -37,6 +37,7 @@ public:
 	}
 
 	~machine()
+	override
 	{
 	}
 };
@@ -56,7 +57,8 @@ public:
 	{
 	}
 
-	virtual ~state()
+	~state()
+	override
 	{
 	}
 };

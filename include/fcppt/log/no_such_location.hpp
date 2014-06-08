@@ -45,7 +45,8 @@ public:
 	location() const;
 
 	virtual
-	~no_such_location() throw();
+	~no_such_location() throw()
+	override;
 private:
 	fcppt::log::location location_;
 };

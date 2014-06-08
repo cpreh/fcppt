@@ -88,10 +88,12 @@ public:
 	<code>std::exception</code>. It returns nothing useful.
 	*/
 	char const *
-	what() const throw();
+	what() const throw()
+	override;
 
 	virtual
-	~exception() throw();
+	~exception() throw()
+	override;
 private:
 	fcppt::string string_;
 };
