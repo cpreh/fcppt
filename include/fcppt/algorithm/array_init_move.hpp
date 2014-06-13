@@ -4,14 +4,14 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_ALGORITHM_ARRAY_INIT_HPP_INCLUDED
-#define FCPPT_ALGORITHM_ARRAY_INIT_HPP_INCLUDED
+#ifndef FCPPT_ALGORITHM_ARRAY_INIT_MOVE_HPP_INCLUDED
+#define FCPPT_ALGORITHM_ARRAY_INIT_MOVE_HPP_INCLUDED
 
-#include <fcppt/algorithm/array_fold_static.hpp>
-#include <fcppt/algorithm/detail/array_init_function.hpp>
+#include <fcppt/algorithm/array_fold.hpp>
 #include <fcppt/type_traits/is_std_array.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/utility/enable_if.hpp>
+#include <cstddef>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -21,19 +21,22 @@ namespace algorithm
 {
 
 /**
-\brief Constructs an array from a value
+\brief Constructs an array by moving a function result
 
 \ingroup fcpptalgorithm
 
-Constructs an array of type \a Array by initializing every element with \a
-_value.
+Constructs an array of type \a Array by initializing every element with
+<code>_function()</code>
 
 \tparam Array Must be a std::array
 
-\param _value The value to initialize every element with
+\tparam Function Must return <code>typename Array::value_type</code>
+
+\param _function The function to call for each element
 */
 template<
-	typename Array
+	typename Array,
+	typename Function
 >
 typename boost::enable_if<
 	fcppt::type_traits::is_std_array<
@@ -41,19 +44,23 @@ typename boost::enable_if<
 	>,
 	Array
 >::type
-array_init(
-	typename Array::value_type const &_value
+array_init_move(
+	Function const &_function
 )
 {
 	return
-		fcppt::algorithm::array_fold_static<
+		fcppt::algorithm::array_fold<
 			Array
 		>(
-			fcppt::algorithm::detail::array_init_function<
-				typename Array::value_type
-			>(
-				_value
+			[
+				&_function
+			](
+				std::size_t
 			)
+			{
+				return
+					_function();
+			}
 		);
 }
 
