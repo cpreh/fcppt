@@ -202,12 +202,15 @@ set(
 	include/fcppt/algorithm/key_set.hpp
 	include/fcppt/algorithm/levenshtein.hpp
 	include/fcppt/algorithm/map.hpp
+	include/fcppt/algorithm/map_iteration.hpp
+	include/fcppt/algorithm/map_iteration_second.hpp
 	include/fcppt/algorithm/map_optional.hpp
 	include/fcppt/algorithm/ptr_container_erase.hpp
 	include/fcppt/algorithm/ptr_container_erase_if.hpp
 	include/fcppt/algorithm/remove.hpp
 	include/fcppt/algorithm/remove_if.hpp
 	include/fcppt/algorithm/repeat.hpp
+	include/fcppt/algorithm/sequence_iteration.hpp
 	include/fcppt/algorithm/set_intersection.hpp
 	include/fcppt/algorithm/set_union.hpp
 	include/fcppt/algorithm/shift_compare.hpp
@@ -883,6 +886,7 @@ set(
 	include/fcppt/mpl/detail/print.hpp
 	include/fcppt/mpl/detail/print_function.hpp
 	include/fcppt/mpl/detail/print_one.hpp
+	include/fcppt/mpl/detail/runtime_index.hpp
 	include/fcppt/mpl/exception.hpp
 	include/fcppt/mpl/for_each.hpp
 	include/fcppt/mpl/impl/exception.hpp
@@ -895,6 +899,7 @@ set(
 	include/fcppt/mpl/max_value.hpp
 	include/fcppt/mpl/partial_sums.hpp
 	include/fcppt/mpl/print.hpp
+	include/fcppt/mpl/runtime_index.hpp
 	include/fcppt/mpl/value_type.hpp
 	include/fcppt/narrow.hpp
 	include/fcppt/no_init.hpp
