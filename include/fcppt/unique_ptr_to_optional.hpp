@@ -17,7 +17,7 @@ namespace fcppt
 {
 
 /**
-\brief Transforms a unique_ptr into an optional reference
+\brief Transforms an optional unique_ptr into an optional reference
 
 \ingroup fcpptoptional
 
@@ -36,8 +36,10 @@ fcppt::optional<
 	Type &
 > const
 unique_ptr_to_optional(
-	std::unique_ptr<
-		Type
+	fcppt::optional<
+		std::unique_ptr<
+			Type
+		>
 	> const &_ptr
 )
 {
@@ -51,7 +53,7 @@ unique_ptr_to_optional(
 		_ptr
 		?
 			result_type(
-				*_ptr
+				**_ptr
 			)
 		:
 			result_type()

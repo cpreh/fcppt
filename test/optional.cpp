@@ -777,13 +777,19 @@ FCPPT_PP_POP_WARNING
 	>
 	int_unique_ptr;
 
+	typedef
+	fcppt::optional<
+		int_unique_ptr
+	>
+	optional_int_unique_ptr;
+
 	BOOST_CHECK(
 		!fcppt::unique_ptr_to_optional(
-			int_unique_ptr()
+			optional_int_unique_ptr()
 		).has_value()
 	);
 
-	int_unique_ptr ptr(
+	optional_int_unique_ptr ptr(
 		fcppt::make_unique_ptr<
 			int
 		>(
