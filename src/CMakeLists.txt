@@ -258,6 +258,7 @@ set(
 	include/fcppt/detail/cyclic_iterator_category.hpp
 	include/fcppt/detail/enable_optional_ref_conv.hpp
 	include/fcppt/detail/enable_optional_value_conv.hpp
+	include/fcppt/detail/enum_iterator_base.hpp
 	include/fcppt/detail/enum_size.hpp
 	include/fcppt/detail/equal.hpp
 	include/fcppt/detail/equal_functor.hpp
@@ -305,8 +306,14 @@ set(
 	include/fcppt/endianness/swap.hpp
 	include/fcppt/enum_is_empty.hpp
 	include/fcppt/enum_is_empty_fwd.hpp
+	include/fcppt/enum_iterator_decl.hpp
+	include/fcppt/enum_iterator_fwd.hpp
+	include/fcppt/enum_iterator_impl.hpp
 	include/fcppt/enum_max_value.hpp
 	include/fcppt/enum_max_value_fwd.hpp
+	include/fcppt/enum_range_decl.hpp
+	include/fcppt/enum_range_fwd.hpp
+	include/fcppt/enum_range_impl.hpp
 	include/fcppt/enum_size.hpp
 	include/fcppt/enum_size_fwd.hpp
 	include/fcppt/enum_size_type.hpp
@@ -462,6 +469,9 @@ set(
 	include/fcppt/log/warning.hpp
 	include/fcppt/major_version.hpp
 	include/fcppt/make_cref.hpp
+	include/fcppt/make_enum_range.hpp
+	include/fcppt/make_enum_range_start.hpp
+	include/fcppt/make_enum_range_start_end.hpp
 	include/fcppt/make_literal_boost_units.hpp
 	include/fcppt/make_literal_fundamental.hpp
 	include/fcppt/make_literal_fwd.hpp
