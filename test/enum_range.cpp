@@ -111,19 +111,10 @@ FCPPT_PP_POP_WARNING
 	test(
 		fcppt::make_enum_range_start_end(
 			test_enum::test2,
-			test_enum::test3
+			test_enum::test2
 		),
 		enum_vector{
 			test_enum::test2
 		}
 	);
-
-	test(
-		fcppt::make_enum_range_start_end(
-			test_enum::test2,
-			test_enum::test2
-		),
-		enum_vector{}
-	);
-
 }

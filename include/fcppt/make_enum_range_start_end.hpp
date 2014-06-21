@@ -8,6 +8,7 @@
 #define FCPPT_MAKE_ENUM_RANGE_START_END_HPP_INCLUDED
 
 #include <fcppt/enum_range_impl.hpp>
+#include <fcppt/literal.hpp>
 #include <fcppt/cast/enum_to_int.hpp>
 
 
@@ -44,6 +45,13 @@ make_enum_range_start_end(
 				result_type::size_type
 			>(
 				_end
+			)
+			+
+			fcppt::literal<
+				typename
+				result_type::size_type
+			>(
+				1
 			)
 		);
 }
