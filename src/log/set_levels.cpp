@@ -4,7 +4,7 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/foreach_enumerator_start.hpp>
+#include <fcppt/make_enum_range_start.hpp>
 #include <fcppt/log/level.hpp>
 #include <fcppt/log/object.hpp>
 #include <fcppt/src/log/set_levels.hpp>
@@ -21,10 +21,12 @@ fcppt::log::set_levels(
 	)
 )
 {
-	FCPPT_FOREACH_ENUMERATOR_START(
-		index,
-		fcppt::log::level,
-		_level
+	for(
+		fcppt::log::level index
+		:
+		fcppt::make_enum_range_start(
+			_level
+		)
 	)
 		(_object.*_fun)(
 			index

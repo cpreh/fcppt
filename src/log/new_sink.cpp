@@ -4,7 +4,7 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/foreach_enumerator.hpp>
+#include <fcppt/make_enum_range.hpp>
 #include <fcppt/io/ostream.hpp>
 #include <fcppt/log/level.hpp>
 #include <fcppt/log/new_sink.hpp>
@@ -17,12 +17,15 @@ fcppt::log::new_sink(
 	fcppt::io::ostream &_stream
 )
 {
-	FCPPT_FOREACH_ENUMERATOR(
-		cur_level,
-		fcppt::log::level
+	for(
+		fcppt::log::level level
+		:
+		fcppt::make_enum_range<
+			fcppt::log::level
+		>()
 	)
 		_logger.level_sink(
-			cur_level
+			level
 		).sink(
 			_stream
 		);

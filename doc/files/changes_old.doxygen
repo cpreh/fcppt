@@ -200,7 +200,7 @@ into their own libraries, namely <code>fcppt_filesystem</code> and
 <li>\ref fcpptvarious
 	<ul>
 
-	<li>Added \link FCPPT_FOREACH_ENUMERATOR_START_END \endlink </li>
+	<li>Added FCPPT_FOREACH_ENUMERATOR_START_END </li>
 
 	</ul>
 </li>

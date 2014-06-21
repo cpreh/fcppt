@@ -4,7 +4,7 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/foreach_enumerator.hpp>
+#include <fcppt/algorithm/enum_array_fold.hpp>
 #include <fcppt/log/enabled_level_array.hpp>
 #include <fcppt/log/enabled_levels.hpp>
 #include <fcppt/log/level.hpp>
@@ -15,16 +15,20 @@ fcppt::log::enabled_levels(
 	fcppt::log::level const _level
 )
 {
-	fcppt::log::enabled_level_array ret;
-
-	FCPPT_FOREACH_ENUMERATOR(
-		index,
-		fcppt::log::level
-	)
-		ret[
-			index
-		] =
-			_level <= index;
-
-	return ret;
+	return
+		fcppt::algorithm::enum_array_fold<
+			fcppt::log::enabled_level_array
+		>(
+			[
+				_level
+			](
+				fcppt::log::level const _index
+			)
+			{
+				return
+					_level
+					<=
+					_index;
+			}
+		);
 }

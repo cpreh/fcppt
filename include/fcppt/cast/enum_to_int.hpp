@@ -7,7 +7,6 @@
 #ifndef FCPPT_CAST_ENUM_TO_INT_HPP_INCLUDED
 #define FCPPT_CAST_ENUM_TO_INT_HPP_INCLUDED
 
-#include <fcppt/type_traits/is_enum.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/mpl/and.hpp>
 #include <boost/utility/enable_if.hpp>
@@ -32,7 +31,7 @@ boost::enable_if<
 		std::is_integral<
 			Dest
 		>,
-		fcppt::type_traits::is_enum<
+		std::is_enum<
 			Enum
 		>
 	>,

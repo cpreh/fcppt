@@ -22,6 +22,7 @@ set(
 	include/fcppt/algorithm/detail/map_reserve.hpp
 	include/fcppt/algorithm/detail/ptr_container_erase_pred.hpp
 	include/fcppt/algorithm/element_not_found.hpp
+	include/fcppt/algorithm/enum_array_fold.hpp
 	include/fcppt/algorithm/exception.hpp
 	include/fcppt/algorithm/find_exn.hpp
 	include/fcppt/algorithm/find_if_exn.hpp
@@ -263,12 +264,6 @@ set(
 	include/fcppt/detail/equal.hpp
 	include/fcppt/detail/equal_functor.hpp
 	include/fcppt/detail/export_class_instantiation.hpp
-	include/fcppt/detail/foreach_enumerator.hpp
-	include/fcppt/detail/foreach_enumerator_start.hpp
-	include/fcppt/detail/foreach_enumerator_start_end.hpp
-	include/fcppt/detail/foreach_enumerator_var_decl.hpp
-	include/fcppt/detail/foreach_enumerator_var_fwd.hpp
-	include/fcppt/detail/foreach_enumerator_var_impl.hpp
 	include/fcppt/detail/make_shared_wrapper.hpp
 	include/fcppt/detail/make_shared_wrapper_fwd.hpp
 	include/fcppt/detail/nonassignable.hpp
@@ -327,9 +322,6 @@ set(
 	include/fcppt/extract_from_string.hpp
 	include/fcppt/extract_from_string_error.hpp
 	include/fcppt/extract_from_string_exn.hpp
-	include/fcppt/foreach_enumerator.hpp
-	include/fcppt/foreach_enumerator_start.hpp
-	include/fcppt/foreach_enumerator_start_end.hpp
 	include/fcppt/format.hpp
 	include/fcppt/from_std_string.hpp
 	include/fcppt/from_std_string_locale.hpp
@@ -915,7 +907,6 @@ set(
 	include/fcppt/type_traits/has_const_iterator.hpp
 	include/fcppt/type_traits/has_iterator.hpp
 	include/fcppt/type_traits/is_bidirectional_iterator.hpp
-	include/fcppt/type_traits/is_enum.hpp
 	include/fcppt/type_traits/is_float_or_double.hpp
 	include/fcppt/type_traits/is_forward_iterator.hpp
 	include/fcppt/type_traits/is_input_iterator.hpp
