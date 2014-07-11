@@ -19,8 +19,10 @@ set(
 	include/fcppt/algorithm/detail/array_map_function.hpp
 	include/fcppt/algorithm/detail/array_push_back_function.hpp
 	include/fcppt/algorithm/detail/has_size_reserve.hpp
+	include/fcppt/algorithm/detail/map_concat.hpp
 	include/fcppt/algorithm/detail/map_reserve.hpp
 	include/fcppt/algorithm/detail/ptr_container_erase_pred.hpp
+	include/fcppt/algorithm/detail/variadic_fold.hpp
 	include/fcppt/algorithm/element_not_found.hpp
 	include/fcppt/algorithm/enum_array_fold.hpp
 	include/fcppt/algorithm/exception.hpp
@@ -35,6 +37,8 @@ set(
 	include/fcppt/algorithm/key_set.hpp
 	include/fcppt/algorithm/levenshtein.hpp
 	include/fcppt/algorithm/map.hpp
+	include/fcppt/algorithm/map_concat.hpp
+	include/fcppt/algorithm/map_concat_move.hpp
 	include/fcppt/algorithm/map_iteration.hpp
 	include/fcppt/algorithm/map_iteration_second.hpp
 	include/fcppt/algorithm/map_optional.hpp
