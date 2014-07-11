@@ -834,7 +834,6 @@ set(
 	include/fcppt/signal/base_impl.hpp
 	include/fcppt/signal/connection.hpp
 	include/fcppt/signal/connection_fwd.hpp
-	include/fcppt/signal/connection_manager_fwd.hpp
 	include/fcppt/signal/detail/concrete_connection.hpp
 	include/fcppt/signal/detail/concrete_connection_impl.hpp
 	include/fcppt/signal/detail/connection_base.hpp
