@@ -1,7 +1,6 @@
 set(
 	FCPPT_CORE_FILES
 	include/fcppt/algorithm/append.hpp
-	include/fcppt/algorithm/append_result.hpp
 	include/fcppt/algorithm/array_binary_map.hpp
 	include/fcppt/algorithm/array_fold.hpp
 	include/fcppt/algorithm/array_fold_static.hpp

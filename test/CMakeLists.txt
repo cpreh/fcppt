@@ -22,7 +22,6 @@ fcppt_link_target(
 	fcppt_filesystem
 )
 
-add_fcppt_test(algorithm/append_result "")
 add_fcppt_test(algorithm/array_push_back "")
 add_fcppt_test(algorithm/contains_set "")
 add_fcppt_test(algorithm/find_if_exn "")
