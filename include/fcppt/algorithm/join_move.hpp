@@ -7,8 +7,10 @@
 #ifndef FCPPT_ALGORITHM_JOIN_MOVE_HPP_INCLUDED
 #define FCPPT_ALGORITHM_JOIN_MOVE_HPP_INCLUDED
 
+#include <fcppt/algorithm/detail/variadic_fold.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <iterator>
+#include <utility>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -20,40 +22,58 @@ namespace algorithm
 /**
 \brief Joins two containers by moving their contents
 
-Joins containers \a _left and \a _right, by inserting \a _right into \a _left.
+Joins containers \a _first and \a _args, by recursively inserting all
+containers from \a _args into \a _first.
 
 \ingroup fcpptalgorithm
 
-\param _left The left container
+\param _first The left container
 
-\param _right The right container, which will be inserted into the left
+\param _args The other containers, which will be inserted into the left
 container
 
 \tparam Container A container class that supports insert of iterator ranges
 */
-template
-<
-	typename Container
+template<
+	typename Container,
+	typename... Args
 >
 Container
 join_move(
-	Container &&_left,
-	Container &&_right
+	Container &&_first,
+	Args && ..._args
 )
 {
-	_left.insert(
-		_left.end(),
-		std::make_move_iterator(
-			_right.begin()
-		),
-		std::make_move_iterator(
-			_right.end()
-		)
-	);
-
 	return
-		std::move(
-			_left
+		fcppt::algorithm::detail::variadic_fold(
+			[](
+				Container &&_left,
+				Container &&_right
+			)
+			{
+				_left.insert(
+					_left.end(),
+					std::make_move_iterator(
+						_right.begin()
+					),
+					std::make_move_iterator(
+						_right.end()
+					)
+				);
+
+				return
+					std::move(
+						_left
+					);
+			},
+			std::move(
+				_first
+			),
+			std::forward<
+				Args
+			>(
+				_args
+			)...
 		);
 }
 

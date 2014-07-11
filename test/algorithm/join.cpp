@@ -27,6 +27,11 @@ FCPPT_PP_POP_WARNING
 		int
 	> int_vector;
 
+	int_vector const vec3{
+		5,
+		6
+	};
+
 	int_vector const result(
 		fcppt::algorithm::join(
 			int_vector{
@@ -36,15 +41,18 @@ FCPPT_PP_POP_WARNING
 			int_vector{
 				3,
 				4
-			}
+			},
+			vec3
 		)
 	);
 
 	BOOST_REQUIRE(
-		result.size() == 4u
+		result.size() == 6u
 		&& result[0] == 1
 		&& result[1] == 2
 		&& result[2] == 3
 		&& result[3] == 4
+		&& result[4] == 5
+		&& result[5] == 6
 	);
 }
