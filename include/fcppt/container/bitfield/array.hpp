@@ -35,24 +35,24 @@ template<
 	typename NumElements,
 	typename InternalType
 >
-struct array
-{
-	typedef std::array<
-		InternalType,
-		fcppt::mpl::ceil_div<
+using
+array
+=
+std::array<
+	InternalType,
+	fcppt::mpl::ceil_div<
+		std::size_t,
+		fcppt::cast::size<
+			std::size_t
+		>(
+			NumElements::value
+		),
+		fcppt::container::bitfield::detail::element_bits<
 			std::size_t,
-			fcppt::cast::size<
-				std::size_t
-			>(
-				NumElements::value
-			),
-			fcppt::container::bitfield::detail::element_bits<
-				std::size_t,
-				InternalType
-			>::value
+			InternalType
 		>::value
-	> type;
-};
+	>::value
+>;
 
 }
 }

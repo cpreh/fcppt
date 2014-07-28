@@ -11,6 +11,7 @@
 #include <fcppt/container/bitfield/is_subset_eq.hpp>
 #include <fcppt/container/bitfield/object_from_enum.hpp>
 #include <fcppt/container/bitfield/object_impl.hpp>
+#include <fcppt/container/bitfield/std_hash.hpp>
 #include <fcppt/container/bitfield/underlying_value.hpp>
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
@@ -18,6 +19,7 @@
 #include <fcppt/config/external_begin.hpp>
 #include <boost/test/unit_test.hpp>
 #include <algorithm>
+#include <unordered_set>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
@@ -85,7 +87,7 @@ template class fcppt::container::bitfield::proxy< \
 			enum_\
 		>::type,\
 		internal_\
-	>::type & \
+	> & \
 >; \
 \
 template class fcppt::container::bitfield::iterator< \
@@ -95,7 +97,7 @@ template class fcppt::container::bitfield::iterator< \
 			enum_\
 		>::type,\
 		internal_ \
-	>::type &, \
+	>&, \
 	fcppt::container::bitfield::proxy< \
 		fcppt::container::bitfield::array< \
 			enum_, \
@@ -103,7 +105,7 @@ template class fcppt::container::bitfield::iterator< \
 				enum_\
 			>::type,\
 			internal_ \
-		>::type & \
+		> & \
 	> \
 >;
 
@@ -424,5 +426,62 @@ FCPPT_PP_POP_WARNING
 		field1.get(
 			test_enum::test3
 		)
+	);
+}
+
+FCPPT_PP_PUSH_WARNING
+FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
+
+BOOST_AUTO_TEST_CASE(
+	container_bitfield_hash
+)
+{
+FCPPT_PP_POP_WARNING
+
+	typedef
+	std::unordered_set<
+		bitfield
+	>
+	bitfield_set;
+
+	bitfield_set const values{
+		bitfield{
+			test_enum::test1
+		},
+		bitfield{
+			test_enum::test1,
+			test_enum::test2
+		}
+	};
+
+	BOOST_CHECK(
+		values.count(
+			bitfield{
+				test_enum::test1,
+				test_enum::test2
+			}
+		)
+		==
+		1u
+	);
+
+	BOOST_CHECK(
+		values.count(
+			bitfield{
+				test_enum::test1
+			}
+		)
+		==
+		1u
+	);
+
+	BOOST_CHECK(
+		values.count(
+			bitfield{
+				test_enum::test2
+			}
+		)
+		==
+		0u
 	);
 }

@@ -57,11 +57,13 @@ private:
 		"InternalType must be unsigned"
 	);
 public:
-	typedef typename fcppt::container::bitfield::array<
+	typedef
+	fcppt::container::bitfield::array<
 		ElementType,
 		NumElements,
 		InternalType
-	>::type array_type;
+	>
+	array_type;
 
 	/**
 	\brief The size of the underlying array
