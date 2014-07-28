@@ -51,19 +51,19 @@ optional_bind(
 {
 	typedef
 	typename
-	std::result_of<
-		Function(
-			Source
-		)
+	std::decay<
+		typename
+		std::result_of<
+			Function(
+				Source
+			)
+		>::type
 	>::type
 	result_type;
 
 	static_assert(
 		fcppt::is_optional<
-			typename
-			std::decay<
-				result_type
-			>::type
+			result_type
 		>::value,
 		"optional_bind must return an optional"
 	);

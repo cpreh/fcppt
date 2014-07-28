@@ -48,10 +48,13 @@ optional_bind_construct(
 	typedef
 	fcppt::optional<
 		typename
-		std::result_of<
-			Function(
-				Source
-			)
+		std::decay<
+			typename
+			std::result_of<
+				Function(
+					Source
+				)
+			>::type
 		>::type
 	>
 	result_type;
