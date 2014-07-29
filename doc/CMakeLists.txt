@@ -534,6 +534,7 @@ set(
 	include/fcppt/filesystem/stem.hpp
 	include/fcppt/filesystem/strip_prefix.hpp
 	include/fcppt/format.hpp
+	include/fcppt/from_optional.hpp
 	include/fcppt/from_std_string.hpp
 	include/fcppt/from_std_string_locale.hpp
 	include/fcppt/from_std_wstring.hpp

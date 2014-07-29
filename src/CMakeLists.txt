@@ -335,6 +335,7 @@ set(
 	include/fcppt/extract_from_string_error.hpp
 	include/fcppt/extract_from_string_exn.hpp
 	include/fcppt/format.hpp
+	include/fcppt/from_optional.hpp
 	include/fcppt/from_std_string.hpp
 	include/fcppt/from_std_string_locale.hpp
 	include/fcppt/from_std_wstring.hpp
