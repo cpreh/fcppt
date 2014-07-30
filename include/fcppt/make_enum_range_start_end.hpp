@@ -15,6 +15,18 @@
 namespace fcppt
 {
 
+/**
+\brief Creates a closed enum range
+
+\ingroup fcpptenum
+
+Creates the closed enum range [\a _start,\a _end]. The range must be closed
+because there is no "one past the end" enum value.
+
+\param _start The first element of the range.
+
+\param _end The last element of the range.
+*/
 template<
 	typename Enum
 >

@@ -24,6 +24,9 @@ namespace fcppt
 FCPPT_PP_PUSH_WARNING
 FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
 
+/**
+\ingroup fcpptenum
+*/
 template<
 	typename Enum
 >

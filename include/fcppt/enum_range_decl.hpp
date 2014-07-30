@@ -17,6 +17,9 @@
 namespace fcppt
 {
 
+/**
+\ingroup fcpptenum
+*/
 template<
 	typename Enum
 >

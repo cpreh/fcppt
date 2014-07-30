@@ -15,6 +15,15 @@
 namespace fcppt
 {
 
+/**
+\brief Creates an enum range with a custom start value
+
+\ingroup fcpptenum
+
+Creates the closed range [_start, enum_max_value<Enum>::value].
+
+\param _start The first element of the range.
+*/
 template<
 	typename Enum
 >

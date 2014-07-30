@@ -9,8 +9,9 @@
 
 <ul>
 	<li>\ref fcpptenum_contiguous</li>
+	<li>\ref fcpptenum_range</li>
+	<li>\ref fcpptenum_array</li>
 	<li>\ref fcpptenum_cast_to</li>
-	<li>\ref fcpptenum_iterate</li>
 </ul>
 
 </td>
@@ -36,20 +37,39 @@ It is often desirable to know the enum's maximum value, or its number of
 enumerators, for that matter. Unfortunately, C++ offers no introspection of any
 kind which makes it possible to query the maximum value. fcppt provides a trait
 class called \ref fcppt::enum_max_value which has a default behavior of
-inferring the maximum value from special enumerator names. Additionally, the
-trait class can also be specialized. Building on top of this, \ref
-fcppt::enum_size calculates the number of enumerators in an enum, setting it to
-<code>fcppt::enum_max_value<Enum> + 1</code> by default. \ref
+inferring the maximum value from the special enumerator value
+<code>fcppt_maximum</code>, for example:
+
+\snippet enum.cpp enum_maximum
+
+Additionally, the trait class can also be specialized. Building on top of this,
+\ref fcppt::enum_size calculates the number of enumerators in an enum, setting
+it to <code>fcppt::enum_max_value<Enum> + 1</code> by default. \ref
 fcppt::enum_is_empty can be specialized to set this to zero because empty enums
 don't have a maximum element.
+
+\section fcpptenum_range Enum Ranges
+
+Given the above definition of contiguous enums, it is possible to create a
+range that iterates over an enum.
+
+\snippet enum.cpp enum_range
+
+fcppt::make_enum_range creates an fcppt::enum_range which uses
+fcppt::enum_iterator. To create subranges of enums, there are
+fcppt::make_enum_range_start and fcppt::make_enum_range_start_end.
+
+\section fcpptenum_array Array indexed with an enum
+
+A contiguous enum is also a finite range, making it suitable as an index for a
+std::array. fcppt::container::enum_array is a class that wraps std::array,
+replacing all indices by Enums, for example:
+
+\snippet enum.cpp enum_array
 
 \section fcpptenum_cast_to Cast to enums
 
 Casting an integral value to an enum might be needed when deserializing data.
 It is important, however, that the value must not fall outside of the enum's
 range. \ref fcppt::cast_to_enum throws an exception in this case.
-
-\section fcpptenum_iterate Iterating over enums
-
-TODO
 */

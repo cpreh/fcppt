@@ -116,6 +116,7 @@ set(
 	examples/doc/strong_typedef.cpp
 	examples/dynamic_cast.cpp
 	examples/endianness.cpp
+	examples/enum.cpp
 	examples/homogenous_pair.cpp
 	examples/io/endianness.cpp
 	examples/io/scoped_rdbuf.cpp
