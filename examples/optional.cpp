@@ -4,55 +4,171 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-//[optional
-#include <fcppt/optional_string.hpp>
-#include <fcppt/string.hpp>
-#include <fcppt/text.hpp>
-#include <fcppt/io/cout.hpp>
+#include <fcppt/from_optional.hpp>
+#include <fcppt/optional_bind.hpp>
+#include <fcppt/optional_bind_construct.hpp>
+#include <fcppt/optional_impl.hpp>
+#include <fcppt/config/external_begin.hpp>
+#include <cassert>
+#include <iostream>
+#include <string>
+#include <fcppt/config/external_end.hpp>
 
 
-int main()
+namespace
 {
-	// set the optional to "test"
-	fcppt::optional_string opt1(
-		FCPPT_TEXT("test")
+
+void
+optional_example()
+{
+//! [optional_example]
+	typedef fcppt::optional<
+		unsigned
+	> optional_uint;
+
+	auto const test_function(
+		[](
+			optional_uint opt
+		)
+		{
+			// Test if opt is set
+			if(
+				opt.has_value()
+			)
+				// Output the value
+				// This is undefined if has_value() == false
+				std::cout << *opt << '\n';
+		}
 	);
 
-	// copy opt1 by value
-	fcppt::optional_string opt2(
-		opt1
+	// Prints nothing
+	test_function(
+		optional_uint()
 	);
 
-	fcppt::io::cout()
-		<< *opt1
-		<< FCPPT_TEXT('\n')
-		<< *opt2
-		<< FCPPT_TEXT('\n');
-
-	opt2 = FCPPT_TEXT("test2");
-
-	// assign opt1 by value
-	opt1 = opt2;
-
-	fcppt::io::cout()
-		<< *opt1
-		<< FCPPT_TEXT('\n')
-		<< *opt2
-		<< FCPPT_TEXT('\n');
-
-	if(
-		opt1
-	)
-		fcppt::io::cout()
-			<< FCPPT_TEXT("opt1 is set\n");
-
-	// destroy opt1's value
-	opt1.reset();
-
-	if(
-		!opt1
-	)
-		fcppt::io::cout()
-			<< FCPPT_TEXT("opt1 is not set\n");
+	// Prints 3
+	test_function(
+		optional_uint(3u)
+	);
+//! [optional_example]
 }
-//]
+
+void
+optional_copy()
+{
+//! [optional_copy]
+	typedef fcppt::optional<
+		unsigned
+	> optional_uint;
+
+	unsigned int1{
+		5u
+	};
+
+	// opt takes a copy of int1
+	optional_uint opt{
+		int1
+	};
+
+	int1 = 10u;
+
+	// The value of opt will still be 5u
+	assert(
+		*opt != int1
+	);
+//! [optional_copy]
+}
+
+void
+optional_bind()
+{
+//! [optional_bind]
+	typedef fcppt::optional<
+		unsigned
+	> optional_uint;
+
+	typedef fcppt::optional<
+		std::string
+	> optional_string;
+
+	optional_string const value{
+		fcppt::optional_bind(
+			optional_uint{3u},
+			[](
+				unsigned const _val
+			)
+			{
+				return
+					optional_string(
+						std::to_string(
+							_val
+						)
+					);
+			}
+		)
+	};
+
+	assert(
+		*value == "3"
+	);
+//! [optional_bind]
+
+//! [optional_bind_construct]
+	optional_string const value2{
+		fcppt::optional_bind_construct(
+			optional_uint{3u},
+			[](
+				unsigned const _val
+			)
+			{
+				return
+					std::to_string(
+						_val
+					);
+			}
+		)
+	};
+
+	assert(
+		*value2 == "3"
+	);
+//! [optional_bind_construct]
+}
+
+void
+from_optional()
+{
+//! [from_optional]
+	typedef fcppt::optional<
+		unsigned
+	> optional_uint;
+
+	unsigned const value{
+		fcppt::from_optional(
+			optional_uint(),
+			[]{
+				return
+					42u;
+			}
+		)
+	};
+
+	assert(
+		value == 42u
+	);
+//! [from_optional]
+}
+
+}
+
+int
+main()
+{
+	optional_example();
+
+	optional_copy();
+
+	optional_bind();
+
+	from_optional();
+}

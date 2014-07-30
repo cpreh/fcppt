@@ -12,6 +12,7 @@
 	<li>\ref optional_value</li>
 	<li>\ref optional_reference</li>
 	<li>\ref optional_design</li>
+	<li>\ref optional_operations</li>
 	<li>\ref optional_headers</li>
 </ul>
 
@@ -44,66 +45,23 @@ prone as well.</li>
 
 An fcppt::optional instead is a wrapper around a value that can be absent.
 Here is a small example.
-\code
-typedef fcppt::optional<
-	unsigned
-> optional_uint;
 
-void
-test_function(
-	optional_uint opt
-)
-{
-	// Test if opt is set
-	if(
-		opt.has_value()
-	)
-		// Output the value
-		// This is undefined if has_value() == false
-		std::cout << *opt << '\n';
-}
-
-// Prints nothing
-test_function(
-	optional_uint()
-);
-
-// Prints 3
-test_function(
-	optional_uint(3u)
-);
-\endcode
+\snippet optional.cpp optional_example
 
 \section optional_value Values
 
 If fcppt::optional<T> is used and T is not a reference type, the optional will
 be an optional value. An optional value, as its name suggests, has value
-semantics, meaning that it will copy the value. Therefore, T has to be
-CopyConstructible and Assignable with the usual meanings. Here is a small
-example:
+semantics, meaning that it will copy or move the value. Therefore, T has to be
+MoveConstructible and MoveAssignable or CopyConstructible and Assignable,
+depending on whether the optional is moved or copied. Here is a small example:
 
-\code
-typedef fcppt::optional<
-	unsigned
-> optional_uint;
-
-unsigned int1(5u);
-
-// opt takes a copy of int1
-optional_uint opt(int1);
-
-int1 = 10u;
-
-// The value of opt will still be 5u
-assert(
-	*opt != int1
-);
-\endcode
+\snippet optional.cpp optional_copy
 
 Optional values, denoted by fcppt::optional<T>, have some special semantics,
 in contrast to optional references:
 <ul>
-<li>They can be assigned from an expression of type T const &.</li>
+<li>They can be assigned from an expression of type T const & or T &&.</li>
 <li>They can be constructed from an fcppt::optional<T &> or an
 fcppt::optional<T const &>. This has the same semantics as constructing a T
 from a T & or T const & with the addition that has_value will be preserved.</li>
@@ -124,14 +82,33 @@ There is already <code>%boost::optional</code> so you might wonder why
 fcppt provides its own optional type. It is actually quite similar to
 <code>%boost::optional</code> in the sense that it stores optional values
 by value and not by means of dynamically allocated memory. This means
-that an optional value is at least as big as its type it holds.
+that an optional value is at least as big as the type it holds.
 The key differences to <code>%boost::optional</code> are
 <ul>
 <li>fcppt::optional<T> uses alignment support from the compiler instead of
-relying on the hacky <code>%boost::detail::aligned_storage</code></li>
+relying on <code>%boost::detail::aligned_storage</code></li>
 <li>fcppt::optional doesn't have an implicit constructor.</li>
 <li>fcppt::optional<T &> doesn't allow implicit conversions for assignment</li>
 </ul>
+
+\section optional_operations Common Operations
+
+Optional, like Maybe in Haskell or Option in OCaml, is a commonly useful data
+type. Therefore, some commonly needed operations arise as well. Perhaps the
+most prominent operation would be the so called bind function which decomposes
+an optional and creates a new one by preserving empty optionals.
+
+\snippet optional.cpp optional_bind
+
+There is also a shortcut for optional binds that always return a non empty
+optional, called fcppt::optional_bind.
+
+\snippet optional.cpp optional_bind_construct
+
+Another commonly used function is fcppt::from_optional. It deconstructs an
+optional by either taking its value or returning a default value.
+
+\snippet optional.cpp from_optional
 
 \section optional_headers Header files
 
@@ -155,8 +132,20 @@ fcppt::optional is spread out across various header files.
 <td>Contains the definition of \link fcppt::optional optional's \endlink member functions.</td>
 </tr>
 <tr>
+<td><code>from_optional.hpp</code></td>
+<td>Contains \link fcppt::from_optional \endlink.</td>
+</tr>
+<tr>
+<td><code>optional_bind.hpp</code></td>
+<td>Contains \link fcppt::optional_bind \endlink.</td>
+</tr>
+<tr>
+<td><code>optional_bind_construct.hpp</code></td>
+<td>Contains \link fcppt::optional_bind_construct \endlink.</td>
+</tr>
+<tr>
 <td><code>optional_comparison.hpp</code></td>
-<td>Contains operator== and operator!=</td>
+<td>Contains <code>operator==</code>, <code>operator!=</code> and <code>operator< </code></td>
 </tr>
 <tr>
 <td><code>const_optional_cast.hpp</code></td>
