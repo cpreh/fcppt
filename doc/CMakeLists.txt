@@ -55,7 +55,6 @@ set(
 	doc/files/modules/container/base.doxygen
 	doc/files/modules/container/bitfield.doxygen
 	doc/files/modules/container/grid.doxygen
-	doc/files/modules/container/ptr.doxygen
 	doc/files/modules/container/raw_vector.doxygen
 	doc/files/modules/container/tree.doxygen
 	doc/files/modules/endianness.doxygen
@@ -104,7 +103,6 @@ set(
 	examples/container/bitfield.cpp
 	examples/container/grid.cpp
 	examples/container/grid_iteration.cpp
-	examples/container/ptr.cpp
 	examples/container/raw_vector.cpp
 	examples/container/tree_simple.cpp
 	examples/container/tree_traversal.cpp
@@ -409,16 +407,6 @@ set(
 	include/fcppt/container/is_std_vector.hpp
 	include/fcppt/container/not_found.hpp
 	include/fcppt/container/out_of_range.hpp
-	include/fcppt/container/ptr/equal.hpp
-	include/fcppt/container/ptr/insert_unique_ptr.hpp
-	include/fcppt/container/ptr/insert_unique_ptr_map.hpp
-	include/fcppt/container/ptr/insert_unique_ptr_multimap.hpp
-	include/fcppt/container/ptr/insert_unique_ptr_multiset.hpp
-	include/fcppt/container/ptr/insert_unique_ptr_set.hpp
-	include/fcppt/container/ptr/make_equal.hpp
-	include/fcppt/container/ptr/push_back_unique_ptr.hpp
-	include/fcppt/container/ptr/push_front_unique_ptr.hpp
-	include/fcppt/container/ptr/replace_unique_ptr.hpp
 	include/fcppt/container/raw_vector.hpp
 	include/fcppt/container/raw_vector_decl.hpp
 	include/fcppt/container/raw_vector_fwd.hpp
@@ -1127,7 +1115,6 @@ set(
 	include/fcppt/type_traits/is_raw_pointer.hpp
 	include/fcppt/type_traits/is_std_array.hpp
 	include/fcppt/type_traits/is_string.hpp
-	include/fcppt/type_traits/is_unique_ptr.hpp
 	include/fcppt/type_traits/remove_cv_ref.hpp
 	include/fcppt/unique_ptr_to_optional.hpp
 	include/fcppt/variant/apply_binary.hpp
