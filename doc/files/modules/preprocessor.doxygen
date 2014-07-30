@@ -1,7 +1,7 @@
 /**
 \defgroup fcpptpreprocessor fcppt.preprocessor
 \ingroup fcpptmain
-\brief Macros for controlling warnings and printing message
+\brief Macros for controlling warnings and printing messages
 
 <table id="toc">
 <tr>

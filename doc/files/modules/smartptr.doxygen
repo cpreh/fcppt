@@ -1,7 +1,7 @@
 /**
 \defgroup fcpptsmartptr fcppt.smart_pointers
 \ingroup fcpptmain
-\brief Smart pointers and their utilities
+\brief Type-safer wrappers for shared_ptr and weak_ptr
 
 <table id="toc">
 <tr>

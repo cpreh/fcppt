@@ -1,7 +1,7 @@
 /**
 \defgroup fcpptoptional fcppt.optional
 \ingroup fcpptmain
-\brief A class that makes values optional.
+\brief A class that makes values or references optional.
 
 <table id="toc">
 <tr>

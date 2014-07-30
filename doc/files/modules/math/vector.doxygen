@@ -14,7 +14,7 @@ namespace vector
 /**
 \defgroup fcpptmathvector fcppt.math.vector
 \ingroup fcpptmath
-\brief A class representing dynamic or static n-dimensional vectors
+\brief A class representing static n-dimensional vectors
 
 <table id="toc">
 <tr>
