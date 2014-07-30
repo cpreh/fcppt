@@ -22,8 +22,8 @@ include(
 	FcpptSymbol
 )
 
-set(FCPPT_MAJOR_VERSION 0)
-set(FCPPT_MINOR_VERSION 12)
+set(FCPPT_MAJOR_VERSION 1)
+set(FCPPT_MINOR_VERSION 0)
 set(FCPPT_MICRO_VERSION 0)
 
 set(
@@ -34,7 +34,7 @@ set(
 fcppt_utils_handle_so_version(
 	FCPPT_SO_VERSION
 	FCPPT_USED_SO_VERSION
-	"0.11.1"
+	"1.0.0"
 )
 
 math(
