@@ -20,7 +20,18 @@ namespace algorithm
 {
 
 /**
+\brief Maps a sequence to other sequences and joins them by moving
+
 \ingroup fcpptalgorithm
+
+For every element in \a _source (a_1, ..., a_n), _function(a_1), ...,
+_function(a_n) is called, yielding (r_1, ..., r_n). The result is
+join_move(join_move(r_1, r_2), ..., r_n).
+
+\param _function A function accepting elements from \a _source and returning an
+object of type \a TargetContainer.
+
+\param _source The sequence to be mapped.
 */
 template<
 	typename TargetContainer,

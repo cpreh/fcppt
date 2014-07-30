@@ -22,7 +22,7 @@ second
 \ingroup fcpptalgorithm
 
 Iterates over \a _map, applying \a _update_action to the mapped object of each
-element. If \a _update_action returns false, the element is deleted from the
+element. If \a _update_action returns true, the element is deleted from the
 map.
 */
 template<

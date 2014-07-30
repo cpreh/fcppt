@@ -19,7 +19,7 @@ namespace algorithm
 \ingroup fcpptalgorithm
 
 Iterates over \a _sequence, applying \a _update_action to each element. If \a
-_update_action returns false, the element is deleted from the sequence.
+_update_action returns true, the element is deleted from the sequence.
 */
 template<
 	typename Sequence,

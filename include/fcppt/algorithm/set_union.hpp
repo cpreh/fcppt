@@ -10,42 +10,46 @@
 #include <fcppt/config/external_begin.hpp>
 #include <algorithm>
 #include <iterator>
+#include <utility>
 #include <fcppt/config/external_end.hpp>
+
 
 namespace fcppt
 {
 namespace algorithm
 {
 
-/// Calculates the union of two sets
 /**
- * Equivalent to
- * std::set_union(a.begin(), a.end(), b.begin(), b.end(), std::back_inserter(result, result.begin()));
- * return result;
+\brief Returns the union of two sets
+
+\ingroup fcpptalgorithm
 */
 template<
 	typename Set
 >
 Set
 set_union(
-	Set const &a,
-	Set const &b
+	Set const &_a,
+	Set const &_b
 )
 {
 	Set result;
 
 	::std::set_union(
-		a.begin(),
-		a.end(),
-		b.begin(),
-		b.end(),
+		_a.begin(),
+		_a.end(),
+		_b.begin(),
+		_b.end(),
 		::std::inserter(
 			result,
 			result.begin()
 		)
 	);
 
-	return result;
+	return
+		std::move(
+			result
+		);
 }
 
 }

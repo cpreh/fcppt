@@ -9,11 +9,9 @@
 #include <fcppt/algorithm/copy_n.hpp>
 #include <fcppt/algorithm/find_exn.hpp>
 #include <fcppt/algorithm/join_strings.hpp>
-#include <fcppt/algorithm/ptr_container_erase.hpp>
 #include <fcppt/algorithm/shortest_levenshtein.hpp>
 #include <fcppt/container/raw_vector_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/ptr_container/ptr_vector.hpp>
 #include <iostream>
 #include <iterator>
 #include <ostream>
@@ -92,19 +90,4 @@ int main()
 			std::string("test3"));
 
 	std::cout << "Shortest distance to \"foo\", \"ba\" and \"bu\" is: " << nonconst_ref << "\n";
-
-	typedef
-	boost::ptr_vector<std::string>
-	ptr_container;
-
-	ptr_container ptrs;
-	ptrs.push_back(new std::string("foo"));
-	ptrs.push_back(new std::string("bar"));
-
-	std::string * const ptr = &(ptrs.back());
-
-	// ptr_container_erase, deletes "bar"
-	fcppt::algorithm::ptr_container_erase(
-		ptrs,
-		ptr);
 }

@@ -16,23 +16,29 @@ namespace algorithm
 {
 
 /**
-\brief Transforms a container using a functor to another container
+\brief Transforms a container to another container by applying a function to
+evert element.
 
 \ingroup fcpptalgorithm
 
 For every element \em e in \a _source, _function(e) is inserted into the result
-container.
+container. As an optimization the result container has its capacity set to the
+source container's size at the start.
+
+\param _function A function accepting elements from \a _source and returning
+objects of the \a TargetContainer's element type.
+
+\param _source The container to be mapped.
 */
-template
-<
+template<
 	typename TargetContainer,
 	typename SourceContainer,
-	typename Functor
+	typename Function
 >
 TargetContainer
 map(
 	SourceContainer const &_source,
-	Functor const &_function
+	Function const &_function
 )
 {
 	TargetContainer result;

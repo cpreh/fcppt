@@ -43,8 +43,7 @@ Example:
 \tparam Function Must be a function taking elements of the source array and
 returning elements of the \a TargetArray
 **/
-template
-<
+template<
 	typename TargetArray,
 	typename SourceType,
 	std::size_t SourceCount,

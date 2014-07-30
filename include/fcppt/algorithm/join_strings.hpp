@@ -19,16 +19,19 @@ namespace algorithm
 {
 
 /**
- * \brief Joins a range of items delimited by \p delim
- * \param _range A forward-iterable range. The range's value_type must have an <code>operator+=</code>
- * \param _delim The delimiting value
- * \ingroup fcpptalgorithm
- * \details Example:
- *
- * \snippet doc/algorithm.cpp join_strings
- */
-template
-<
+\brief Joins a range of items delimited by \p delim
+
+Example:
+
+\snippet doc/algorithm.cpp join_strings
+
+\param _range A forward-iterable range. The range's value_type must have an <code>operator+=</code>
+
+\param _delim The delimiting value
+
+\ingroup fcpptalgorithm
+*/
+template<
 	typename Range
 >
 typename Range::value_type

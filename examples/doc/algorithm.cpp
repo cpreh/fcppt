@@ -24,13 +24,8 @@ main()
 {
 {
 //! [append]
-std::vector<int> v;
-v.push_back(1);
-v.push_back(2);
-v.push_back(3);
-std::vector<int> w;
-w.push_back(4);
-w.push_back(5);
+std::vector<int> v{1,2,3};
+std::vector<int> w{4,5};
 
 fcppt::algorithm::append(
 	v,
@@ -46,11 +41,15 @@ typedef
 std::array<int,3>
 three_ints;
 
-three_ints const a = {{ 1,2,3 }};
+three_ints const a{{ 1,2,3 }};
+
 three_ints const b(
 	fcppt::algorithm::array_map<three_ints>(
 		a,
-		[](int const _arg) { return _arg * 3; }));
+		[](int const _arg) { return _arg * 3; }
+	)
+);
+
 // b now contains: 3, 6, 9
 //! [array_map]
 std::cout << b.empty() << '\n';
@@ -58,31 +57,35 @@ std::cout << b.empty() << '\n';
 
 {
 //! [join_strings]
-std::vector<std::string> strings;
+std::vector<std::string> strings{
+	"ab",
+	"cd",
+	"efg"
+};
 
-strings.push_back("lol");
-strings.push_back("rofl");
-strings.push_back("wololololooo");
-
-std::string const result =
+std::string const result{
 	fcppt::algorithm::join_strings(
 		strings,
-		",");
+		","
+	)
+};
 
-// Outputs "lol,rofl,wololololooo"
+// Outputs "ab,cd,efg"
 std::cout << result << "\n";
 //! [join_strings]
 }
 
 {
 //! [levenshtein]
-std::string const a = "foobarbaz";
-std::string const b = "fobarbax";
+std::string const a{"foobarbaz"};
+std::string const b{"fobarbax"};
 
-std::string::size_type const result =
+std::string::size_type const result{
 	fcppt::algorithm::levenshtein(
 		a,
-		b);
+		b
+	)
+};
 
 std::cout << result << "\n";
 //! [levenshtein]
@@ -90,30 +93,25 @@ std::cout << result << "\n";
 
 {
 //! [shift_compare]
-std::vector<int> a;
-a.push_back(1);
-a.push_back(2);
-a.push_back(3);
-std::vector<int> b;
-b.push_back(3);
-b.push_back(1);
-b.push_back(2);
-std::vector<int> c;
-c.push_back(1);
-c.push_back(3);
-c.push_back(2);
+std::vector<int> const a{1,2,3};
+std::vector<int> const b{3,1,2};
+std::vector<int> const c{1,3,2};
 
-bool const first_result =
+bool const first_result{
 	fcppt::algorithm::shift_compare(
 		a,
 		b,
-		::std::equal_to<int>());
+		::std::equal_to<int>()
+	)
+};
 
-bool const second_result =
+bool const second_result{
 	fcppt::algorithm::shift_compare(
 		a,
 		c,
-		::std::equal_to<int>());
+		::std::equal_to<int>()
+	)
+};
 
 // Outputs true
 std::cout << "first_result: " << first_result << "\n";

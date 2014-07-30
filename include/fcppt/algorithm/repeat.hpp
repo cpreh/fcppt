@@ -15,6 +15,13 @@ namespace fcppt
 namespace algorithm
 {
 
+/**
+\brief Calls a function a number of times
+
+\ingroup fcpptalgorithm
+
+Calls \a _function \a _count times.
+*/
 template<
 	typename Count,
 	typename Function

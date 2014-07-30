@@ -10,7 +10,6 @@ set(
 	include/fcppt/algorithm/array_push_back.hpp
 	include/fcppt/algorithm/contains.hpp
 	include/fcppt/algorithm/contains_if.hpp
-	include/fcppt/algorithm/contains_set.hpp
 	include/fcppt/algorithm/copy_n.hpp
 	include/fcppt/algorithm/detail/array_fold_function.hpp
 	include/fcppt/algorithm/detail/array_fold_static.hpp
@@ -41,8 +40,6 @@ set(
 	include/fcppt/algorithm/map_iteration.hpp
 	include/fcppt/algorithm/map_iteration_second.hpp
 	include/fcppt/algorithm/map_optional.hpp
-	include/fcppt/algorithm/ptr_container_erase.hpp
-	include/fcppt/algorithm/ptr_container_erase_if.hpp
 	include/fcppt/algorithm/remove.hpp
 	include/fcppt/algorithm/remove_if.hpp
 	include/fcppt/algorithm/repeat.hpp

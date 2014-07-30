@@ -9,6 +9,7 @@
 
 #include <fcppt/algorithm/exception.hpp>
 
+
 namespace fcppt
 {
 namespace algorithm
@@ -20,7 +21,7 @@ namespace algorithm
 */
 class element_not_found
 :
-	public algorithm::exception
+	public fcppt::algorithm::exception
 {
 public:
 	element_not_found();

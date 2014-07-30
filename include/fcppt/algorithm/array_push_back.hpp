@@ -27,8 +27,7 @@ namespace algorithm
 
 Pushes \a _element to the back of \a _source.
 */
-template
-<
+template<
 	typename SourceType,
 	std::size_t SourceCount
 >

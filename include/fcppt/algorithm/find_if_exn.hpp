@@ -48,7 +48,7 @@ find_if_exn(
 		ret == _end
 	)
 		throw
-			fcppt::algorithm::element_not_found();
+			fcppt::algorithm::element_not_found{};
 
 	return
 		ret;

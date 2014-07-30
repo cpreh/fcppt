@@ -25,7 +25,7 @@ namespace algorithm
 
 This is equivalent to
 \code
-std::find(beg, end, value) != end
+std::find(_beg, _end, _value) != end
 \endcode
 */
 template<
@@ -34,18 +34,18 @@ template<
 >
 bool
 contains(
-	In const beg,
-	In const end,
-	T const &value
+	In const _beg,
+	In const _end,
+	T const &_value
 )
 {
 	return
 		::std::find(
-			beg,
-			end,
-			value
+			_beg,
+			_end,
+			_value
 		)
-		!= end;
+		!= _end;
 }
 
 /**
@@ -67,15 +67,15 @@ template<
 >
 bool
 contains(
-	Container const &container,
-	T const &value
+	Container const &_container,
+	T const &_value
 )
 {
 	return
 		fcppt::algorithm::contains(
-			container.begin(),
-			container.end(),
-			value
+			_container.begin(),
+			_container.end(),
+			_value
 		);
 }
 

@@ -19,22 +19,17 @@ namespace algorithm
 {
 
 /**
-\brief Calculates the intersection of two sets
-
-This just calls <code>std::set_intersection</code> and writes the result to a
-new container.
+\brief Returns the intersection of two sets
 
 \ingroup fcpptalgorithm
-
-\tparam Set Must be default-constructible
 */
 template<
 	typename Set
 >
 Set
 set_intersection(
-	Set const &a,
-	Set const &b
+	Set const &_a,
+	Set const &_b
 )
 {
 	Set result;
@@ -50,7 +45,10 @@ set_intersection(
 		)
 	);
 
-	return result;
+	return
+		std::move(
+			result
+		);
 }
 
 }

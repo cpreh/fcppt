@@ -12,39 +12,46 @@
 #include <algorithm>
 #include <fcppt/config/external_end.hpp>
 
+
 namespace fcppt
 {
 namespace algorithm
 {
 
 /**
- * \brief Like std::find but throws fcppt::algorithm::element_not_found
- * \throws fcppt::algorithm::element_not_found If the element was not found
- * \ingroup fcpptalgorithm
- */
+\brief Like std::find but throws fcppt::algorithm::element_not_found on failure
+
+\ingroup fcpptalgorithm
+
+\throws fcppt::algorithm::element_not_found If the element was not found
+*/
 template<
 	typename In,
 	typename T
 >
 In
 find_exn(
-	In const begin,
-	In const end,
-	T const &t
+	In const _begin,
+	In const _end,
+	T const &_value
 )
 {
-	In const ret(
+	In const ret{
 		::std::find(
-			begin,
-			end,
-			t
+			_begin,
+			_end,
+			_value
 		)
-	);
+	};
 
-	if(ret == end)
-		throw algorithm::element_not_found();
+	if(
+		ret == _end
+	)
+		throw
+			fcppt::algorithm::element_not_found{};
 
-	return ret;
+	return
+		ret;
 }
 
 }

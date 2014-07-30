@@ -11,15 +11,18 @@
 #include <algorithm>
 #include <fcppt/config/external_end.hpp>
 
+
 namespace fcppt
 {
 namespace algorithm
 {
 
 /**
- * \brief Tries to remove all elements from \p _container matching \p _predicate
- * \ingroup fcpptalgorithm
- * \return <code>true</code> if something has been removed, <code>false</code> otherwise
+\brief Tries to remove all elements from \p _container matching \p _predicate
+
+\ingroup fcpptalgorithm
+
+\return <code>true</code> if something has been removed, <code>false</code> otherwise
 */
 template<
 	typename Container,
@@ -40,16 +43,20 @@ remove_if(
 	);
 
 	if(
-		position == _container.end()
+		position
+		==
+		_container.end()
 	)
-		return false;
+		return
+			false;
 
 	_container.erase(
 		position,
 		_container.end()
 	);
 
-	return true;
+	return
+		true;
 }
 
 }

@@ -11,6 +11,7 @@
 #include <algorithm>
 #include <fcppt/config/external_end.hpp>
 
+
 namespace fcppt
 {
 namespace algorithm
@@ -25,7 +26,7 @@ namespace algorithm
 This is equivalent to
 
 \code
-std::find_if(beg, end, pred) != end
+std::find_if(_beg, _end, _pred) != _end
 \endcode
 */
 template<
@@ -34,18 +35,18 @@ template<
 >
 bool
 contains_if(
-	In const beg,
-	In const end,
-	Pred const &pred
+	In const _beg,
+	In const _end,
+	Pred const &_pred
 )
 {
 	return
-		::std::find_if(
-			beg,
-			end,
-			pred
+		std::find_if(
+			_beg,
+			_end,
+			_pred
 		)
-		!= end;
+		!= _end;
 }
 
 /**
@@ -58,7 +59,7 @@ This is equivalent to
 
 This is equivalent to
 \code
-contains_if(container.begin(), container.end(), value)
+contains_if(_container.begin(), _container.end(), _pred)
 \endcode
 */
 template<
@@ -67,18 +68,18 @@ template<
 >
 bool
 contains_if(
-	Container const &container,
-	Pred const &pred
+	Container const &_container,
+	Pred const &_pred
 )
 {
 	return
-		::std::find_if(
-			container.begin(),
-			container.end(),
-			pred
-		)
-		!= container.end();
+		fcppt::algorithm::contains_if(
+			_container.begin(),
+			_container.end(),
+			_pred
+		);
 }
+
 }
 }
 
