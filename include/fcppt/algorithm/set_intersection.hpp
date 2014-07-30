@@ -35,10 +35,10 @@ set_intersection(
 	Set result;
 
 	::std::set_intersection(
-		a.begin(),
-		a.end(),
-		b.begin(),
-		b.end(),
+		_a.begin(),
+		_a.end(),
+		_b.begin(),
+		_b.end(),
 		::std::inserter(
 			result,
 			result.begin()
