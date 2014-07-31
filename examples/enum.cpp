@@ -9,7 +9,6 @@
 #include <fcppt/cast/enum_to_underlying.hpp>
 #include <fcppt/container/enum_array.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <cassert>
 #include <iostream>
 #include <fcppt/config/external_end.hpp>
 
@@ -87,11 +86,7 @@ enum_array()
 		false
 	}}};
 
-	assert(
-		val[
-			myenum::val1
-		]
-	);
+	std::cout << (val[myenum::val1]) << '\n';
 // ![enum_array]
 }
 

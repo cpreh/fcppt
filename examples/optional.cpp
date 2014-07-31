@@ -9,7 +9,6 @@
 #include <fcppt/optional_bind_construct.hpp>
 #include <fcppt/optional_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <cassert>
 #include <iostream>
 #include <string>
 #include <fcppt/config/external_end.hpp>
@@ -73,9 +72,7 @@ optional_copy()
 	int1 = 10u;
 
 	// The value of opt will still be 5u
-	assert(
-		*opt != int1
-	);
+	std::cout << (*opt != int1) << '\n';
 //! [optional_copy]
 }
 
@@ -108,9 +105,7 @@ optional_bind()
 		)
 	};
 
-	assert(
-		*value == "3"
-	);
+	std::cout << (*value == "3") << '\n';
 //! [optional_bind]
 
 //! [optional_bind_construct]
@@ -129,9 +124,7 @@ optional_bind()
 		)
 	};
 
-	assert(
-		*value2 == "3"
-	);
+	std::cout << (*value == "3") << '\n';
 //! [optional_bind_construct]
 }
 
@@ -153,9 +146,7 @@ from_optional()
 		)
 	};
 
-	assert(
-		value == 42u
-	);
+	std::cout << (value == 42u) << '\n';
 //! [from_optional]
 }
 
