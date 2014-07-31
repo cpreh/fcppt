@@ -20,6 +20,10 @@ class int_range
 {
 public:
 	typedef
+	Int
+	value_type;
+
+	typedef
 	fcppt::int_iterator<
 		Int
 	>

@@ -27,6 +27,10 @@ class enum_range
 {
 public:
 	typedef
+	Enum
+	value_type;
+
+	typedef
 	fcppt::enum_iterator<
 		Enum
 	>
