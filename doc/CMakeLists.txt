@@ -444,6 +444,7 @@ set(
 	include/fcppt/detail/equal.hpp
 	include/fcppt/detail/equal_functor.hpp
 	include/fcppt/detail/export_class_instantiation.hpp
+	include/fcppt/detail/int_iterator_base.hpp
 	include/fcppt/detail/make_shared_wrapper.hpp
 	include/fcppt/detail/make_shared_wrapper_fwd.hpp
 	include/fcppt/detail/nonassignable.hpp
@@ -540,6 +541,12 @@ set(
 	include/fcppt/insert_to_std_string.hpp
 	include/fcppt/insert_to_std_wstring.hpp
 	include/fcppt/insert_to_string.hpp
+	include/fcppt/int_iterator_decl.hpp
+	include/fcppt/int_iterator_fwd.hpp
+	include/fcppt/int_iterator_impl.hpp
+	include/fcppt/int_range_decl.hpp
+	include/fcppt/int_range_fwd.hpp
+	include/fcppt/int_range_impl.hpp
 	include/fcppt/io/basic_scoped_rdbuf_decl.hpp
 	include/fcppt/io/basic_scoped_rdbuf_fwd.hpp
 	include/fcppt/io/basic_scoped_rdbuf_impl.hpp
@@ -662,6 +669,8 @@ set(
 	include/fcppt/make_enum_range.hpp
 	include/fcppt/make_enum_range_start.hpp
 	include/fcppt/make_enum_range_start_end.hpp
+	include/fcppt/make_int_range.hpp
+	include/fcppt/make_int_range_count.hpp
 	include/fcppt/make_literal_boost_units.hpp
 	include/fcppt/make_literal_fundamental.hpp
 	include/fcppt/make_literal_fwd.hpp

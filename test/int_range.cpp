@@ -4,10 +4,11 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/enum_range_impl.hpp>
-#include <fcppt/make_enum_range.hpp>
-#include <fcppt/make_enum_range_start.hpp>
-#include <fcppt/make_enum_range_start_end.hpp>
+#include <fcppt/int_range_impl.hpp>
+#include <fcppt/make_int_range.hpp>
+#include <fcppt/make_int_range_count.hpp>
+#include <fcppt/make_literal_strong_typedef.hpp>
+#include <fcppt/strong_typedef.hpp>
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
@@ -20,32 +21,25 @@
 namespace
 {
 
-enum class test_enum
-{
-	test1,
-	test2,
-	test3,
-	fcppt_maximum = test3
-};
-
-typedef
-std::vector<
-	test_enum
+template<
+	typename Int
 >
-enum_vector;
-
 void
 test(
-	fcppt::enum_range<
-		test_enum
+	fcppt::int_range<
+		Int
 	> const _range,
-	enum_vector const &_result
+	std::vector<
+		Int
+	> const &_result
 )
 {
-	enum_vector values;
+	std::vector<
+		Int
+	> values;
 
 	for(
-		test_enum value
+		Int value
 		:
 		_range
 	)
@@ -60,26 +54,34 @@ test(
 	));
 }
 
+FCPPT_MAKE_STRONG_TYPEDEF(
+	int,
+	strong_int
+);
+
 }
 
 FCPPT_PP_PUSH_WARNING
 FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
 
 BOOST_AUTO_TEST_CASE(
-	enum_range
+	int_range
 )
 {
 
 FCPPT_PP_POP_WARNING
 
 	test(
-		fcppt::make_enum_range<
-			test_enum
-		>(),
-		enum_vector{
-			test_enum::test1,
-			test_enum::test2,
-			test_enum::test3
+		fcppt::make_int_range(
+			0,
+			3
+		),
+		std::vector<
+			int
+		>{
+			0,
+			1,
+			2
 		}
 	);
 }
@@ -88,19 +90,21 @@ FCPPT_PP_PUSH_WARNING
 FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
 
 BOOST_AUTO_TEST_CASE(
-	enum_range_start
+	int_range_count
 )
 {
 
 FCPPT_PP_POP_WARNING
 
 	test(
-		fcppt::make_enum_range_start(
-			test_enum::test2
+		fcppt::make_int_range_count(
+			2
 		),
-		enum_vector{
-			test_enum::test2,
-			test_enum::test3
+		std::vector<
+			int
+		>{
+			0,
+			1
 		}
 	);
 }
@@ -109,19 +113,27 @@ FCPPT_PP_PUSH_WARNING
 FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
 
 BOOST_AUTO_TEST_CASE(
-	enum_range_start_end
+	int_range_count_strong_typedef
 )
 {
 
 FCPPT_PP_POP_WARNING
 
 	test(
-		fcppt::make_enum_range_start_end(
-			test_enum::test2,
-			test_enum::test2
+		fcppt::make_int_range_count(
+			strong_int(
+				2
+			)
 		),
-		enum_vector{
-			test_enum::test2
+		std::vector<
+			strong_int
+		>{
+			strong_int(
+				0
+			),
+			strong_int(
+				1
+			)
 		}
 	);
 }
