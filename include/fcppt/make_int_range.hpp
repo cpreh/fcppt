@@ -7,7 +7,7 @@
 #ifndef FCPPT_MAKE_INT_RANGE_HPP_INCLUDED
 #define FCPPT_MAKE_INT_RANGE_HPP_INCLUDED
 
-#include <fcppt/literal.hpp>
+#include <fcppt/int_range_impl.hpp>
 
 
 namespace fcppt
