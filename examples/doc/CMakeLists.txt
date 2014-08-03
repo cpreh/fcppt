@@ -12,7 +12,6 @@ function(
 endfunction()
 
 add_fcppt_doc_example(algorithm "")
-add_fcppt_doc_example(assign "")
 add_fcppt_doc_example(container "")
 add_fcppt_doc_example(container_bitfield "${fcppt_core_TARGET}")
 add_fcppt_doc_example(strong_typedef "")

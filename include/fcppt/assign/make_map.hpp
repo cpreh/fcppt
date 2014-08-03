@@ -17,7 +17,7 @@ namespace assign
 {
 
 /**
-\brief Creates a map using <code>operator()</code> syntax
+\brief Creates a map using <code>operator()</code> syntax.
 
 This class is a convenience wrapper over fcppt::assign::make_container for
 maps. Instead of taking <code>Container::const_reference</code>, which must be
@@ -35,24 +35,26 @@ public:
 	typedef Container container_type;
 
 	make_map(
-		typename container_type::key_type const &,
-		typename container_type::mapped_type const &
+		typename container_type::key_type &&,
+		typename container_type::mapped_type &&
 	);
 
 	make_map &
 	operator()(
-		typename container_type::key_type const &,
-		typename container_type::mapped_type const &
+		typename container_type::key_type &&,
+		typename container_type::mapped_type &&
 	);
 
-	operator Container() const;
+	operator Container &&();
 
-	container_type const &
-	container() const;
+	container_type &&
+	move_container();
 private:
-	typedef fcppt::assign::make_container<
+	typedef
+	fcppt::assign::make_container<
 		Container
-	> assign_container_type;
+	>
+	assign_container_type;
 
 	assign_container_type assign_container_;
 };

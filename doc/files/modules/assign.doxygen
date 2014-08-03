@@ -16,7 +16,7 @@ fcppt::assign::make_container can be used.
 namespace fcppt
 {
 /**
-\brief A replacement for boost::assign
+\brief A supplement to C++11 initialization
 
 Provides assignment helpers for containers of movable types
 */

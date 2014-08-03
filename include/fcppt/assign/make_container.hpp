@@ -8,30 +8,26 @@
 #ifndef FCPPT_ASSIGN_MAKE_CONTAINER_HPP_INCLUDED
 #define FCPPT_ASSIGN_MAKE_CONTAINER_HPP_INCLUDED
 
+
 namespace fcppt
 {
 namespace assign
 {
 
 /**
- * \brief Creates a container using <code>operator()</code> syntax
- * \ingroup fcpptassign
- * \details
- * Example:
- * \snippet doc/assign.cpp make_container
- */
+\brief Creates a container using <code>operator()</code> syntax.
+
+\ingroup fcpptassign
+*/
 template<
 	typename Container
 >
 class make_container
 {
 public:
-	typedef Container container_type;
-
-	explicit
-	make_container(
-		typename container_type::const_reference
-	);
+	typedef
+	Container
+	container_type;
 
 	explicit
 	make_container(
@@ -40,18 +36,10 @@ public:
 
 	make_container &
 	operator()(
-		typename container_type::const_reference
-	);
-
-	make_container &
-	operator()(
 		typename container_type::value_type &&
 	);
 
-	operator Container() const;
-
-	container_type const &
-	container() const;
+	operator Container &&();
 
 	container_type &&
 	move_container();

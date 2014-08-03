@@ -108,7 +108,6 @@ set(
 	examples/container/tree_traversal.cpp
 	examples/cyclic_iterator.cpp
 	examples/doc/algorithm.cpp
-	examples/doc/assign.cpp
 	examples/doc/container.cpp
 	examples/doc/container_bitfield.cpp
 	examples/doc/strong_typedef.cpp

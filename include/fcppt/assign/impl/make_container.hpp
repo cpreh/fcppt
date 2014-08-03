@@ -19,22 +19,6 @@ template<
 fcppt::assign::make_container<
 	Container
 >::make_container(
-	typename container_type::const_reference _other
-)
-:
-	container_()
-{
-	(*this)(
-		_other
-	);
-}
-
-template<
-	typename Container
->
-fcppt::assign::make_container<
-	Container
->::make_container(
 	typename container_type::value_type &&_other
 )
 :
@@ -56,26 +40,6 @@ fcppt::assign::make_container<
 fcppt::assign::make_container<
 	Container
 >::operator()(
-	typename container_type::const_reference _other
-)
-{
-	container_.insert(
-		container_.end(),
-		_other
-	);
-
-	return *this;
-}
-
-template<
-	typename Container
->
-fcppt::assign::make_container<
-	Container
-> &
-fcppt::assign::make_container<
-	Container
->::operator()(
 	typename container_type::value_type &&_other
 )
 {
@@ -86,7 +50,8 @@ fcppt::assign::make_container<
 		)
 	);
 
-	return *this;
+	return
+		*this;
 }
 
 template<
@@ -94,20 +59,10 @@ template<
 >
 fcppt::assign::make_container<
 	Container
->::operator Container() const
+>::operator Container &&()
 {
-	return this->container();
-}
-
-template<
-	typename Container
->
-Container const &
-fcppt::assign::make_container<
-	Container
->::container() const
-{
-	return container_;
+	return
+		this->move_container();
 }
 
 template<

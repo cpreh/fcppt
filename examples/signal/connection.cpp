@@ -79,7 +79,6 @@ int main()
 				::function2
 			)
 		)
-		.move_container()
 	);
 // ![signal_movable_assign]
 
