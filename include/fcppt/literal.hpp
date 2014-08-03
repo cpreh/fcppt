@@ -20,9 +20,10 @@ namespace fcppt
 /**
 \brief Creates a literal of a type
 
-\ingroup fcpptvarious
+\ingroup fcpptliteral
 
-Creates a literal of type \a Type from the value \a _integral
+Creates a literal of type \a Type from the value \a _integral, using
+fcppt::make_literal to do any conversions if necessary.
 
 \tparam Type The literal type to create
 

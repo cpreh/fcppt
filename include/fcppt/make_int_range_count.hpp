@@ -15,6 +15,17 @@
 namespace fcppt
 {
 
+/**
+\brief Creates a forward integer range starting at zero
+
+Creates the forward integer range [0, \a _count). The purpose of this class is
+to create integer ranges over integer-like types (not just fundamental
+integers), for example strong typedefs of integers.
+
+\ingroup fcpptvarious
+
+\param _count The number of elements in the range
+*/
 template<
 	typename Int
 >

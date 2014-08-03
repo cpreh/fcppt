@@ -3,14 +3,18 @@
 
 \section main_introduction Introduction
 
-<a href="http://boost.org">Boost</a> already is a very useful general purpose
-library. If you use C++ without boost, the need for something that is already
-provided by it will soon arise.  However, boost is not perfect (and fcppt isn't
-either). The need for something that isn't provided by boost might arise, too,
-and there are even some things I consider not done "well" in boost.
-Freundlich's C++ toolkit (from now on shortened to fcppt) tries to fill in some
-gaps left by boost and even implements some replacements for a few boost
-components.
+Freundlich's C++ Toolkit (fcppt) is a collection of libraries focusing
+on improving general C++ code by providing \link structure_types
+better types \endlink, a strong focus on \link structure_cpp11 C++11
+\endlink (non-conforming compilers are mostly not supported) and \link
+structure_fp functional programming \endlink (which is both efficient
+and syntactically affordable in C++11).
+
+fcppt builds on and around Boost. Some Boost libraries like MPL are
+used and extended, while others are rewritten to provide better typing
+rules (\link fcppt.optional Optional\endlink and \link fcppt.variant
+Variant\endlink), C++11 features (\link fcppt.assign Assign\endlink)
+or better performance (\link fcppt.signal Signals\endlink).
 
 \section main_sitemap Site map
 
@@ -64,5 +68,4 @@ at
 If you've found a bug or want to request something, please head over to the <a
 href="https://github.com/freundlich/fcppt/issues">github issue tracker</a> and
 create an issue.
-
 */

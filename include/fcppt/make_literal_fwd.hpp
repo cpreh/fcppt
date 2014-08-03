@@ -11,6 +11,9 @@
 namespace fcppt
 {
 
+/**
+\ingroup fcpptliteral
+*/
 template<
 	typename Type,
 	typename Enable = void

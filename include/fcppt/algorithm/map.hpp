@@ -17,7 +17,7 @@ namespace algorithm
 
 /**
 \brief Transforms a container to another container by applying a function to
-evert element.
+every element.
 
 \ingroup fcpptalgorithm
 

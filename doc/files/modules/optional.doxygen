@@ -160,6 +160,10 @@ fcppt::optional is spread out across various header files.
 <td>Contains \link fcppt::static_optional_cast \endlink.</td>
 </tr>
 <tr>
+<td><code>unique_ptr_to_optional.hpp</code></td>
+<td>Contains \link fcppt::unique_ptr_to_optional \endlink.</td>
+</tr>
+<tr>
 <td><code>optional.hpp</code></td>
 <td>Includes <code>optional_impl.hpp</code> and <code>optional_comparison.hpp</code></td>
 </tr>

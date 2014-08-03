@@ -13,6 +13,11 @@
 namespace fcppt
 {
 
+/**
+\brief A forward range over integers
+
+\ingroup fcpptvarious
+*/
 template<
 	typename Int
 >
@@ -33,6 +38,13 @@ public:
 	iterator
 	const_iterator;
 
+	/**
+	\brief Creates a range
+
+	\param begin The first element in the range
+
+	\param end The element one past the end
+	*/
 	int_range(
 		Int begin,
 		Int end

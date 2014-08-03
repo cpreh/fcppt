@@ -13,6 +13,17 @@
 namespace fcppt
 {
 
+/**
+\brief Creates a forward integer range
+
+Creates the forward integer range [\a _begin, \a _end).
+
+\ingroup fcpptvarious
+
+\param _begin The first element in the range
+
+\param _end One past the last element of the range
+*/
 template<
 	typename Int
 >

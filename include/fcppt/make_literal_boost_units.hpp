@@ -17,6 +17,9 @@
 namespace fcppt
 {
 
+/**
+\ingroup fcpptliteral
+*/
 template<
 	typename Unit,
 	typename Type

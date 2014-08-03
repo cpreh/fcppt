@@ -27,7 +27,7 @@ FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
 /**
 \brief An iterator adaptor that cycles through a range
 
-\ingroup fcpptmain
+\ingroup fcpptvarious
 
 \tparam ContainerIterator The underlying iterator which must be at least a
 forward iterator
