@@ -23,16 +23,34 @@ fcppt::assign::make_map<
 	typename container_type::mapped_type &&_mapped
 )
 :
-	assign_container_(
-		std::make_pair(
-			std::move(
-				_key
-			),
-			std::move(
-				_mapped
-			)
+	container_()
+{
+	(*this)(
+		std::move(
+			_key
+		),
+		std::move(
+			_mapped
 		)
-	)
+	);
+}
+
+template<
+	typename Container
+>
+fcppt::assign::make_map<
+	Container
+>::make_map(
+	typename container_type::key_type const &_key,
+	typename container_type::mapped_type const &_mapped
+)
+:
+	container_{
+		std::make_pair(
+			_key,
+			_mapped
+		)
+	}
 {
 }
 
@@ -49,7 +67,7 @@ fcppt::assign::make_map<
 	typename container_type::mapped_type &&_mapped
 )
 {
-	assign_container_(
+	container_.insert(
 		std::make_pair(
 			std::move(
 				_key
@@ -57,6 +75,30 @@ fcppt::assign::make_map<
 			std::move(
 				_mapped
 			)
+		)
+	);
+
+	return
+		*this;
+}
+
+template<
+	typename Container
+>
+fcppt::assign::make_map<
+	Container
+> &
+fcppt::assign::make_map<
+	Container
+>::operator()(
+	typename container_type::key_type const &_key,
+	typename container_type::mapped_type const &_mapped
+)
+{
+	container_.insert(
+		std::make_pair(
+			_key,
+			_mapped
 		)
 	);
 
@@ -87,7 +129,9 @@ fcppt::assign::make_map<
 >::move_container()
 {
 	return
-		assign_container_.move_container();
+		std::move(
+			container_
+		);
 }
 
 #endif

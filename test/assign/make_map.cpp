@@ -32,6 +32,14 @@ FCPPT_PP_POP_WARNING
 	>
 	map;
 
+	int const i{
+		5
+	};
+
+	std::string const baz{
+		"baz"
+	};
+
 	map m(
 		fcppt::assign::make_map<
 			map
@@ -42,14 +50,19 @@ FCPPT_PP_POP_WARNING
 		)(
 			4,
 			"bar"
+		)(
+			i,
+			baz
 		)
 	);
 
 	BOOST_REQUIRE(
-		m.size() == fcppt::literal<map::size_type>(2) &&
+		m.size() == fcppt::literal<map::size_type>(3) &&
 		m.find(3) != m.end() &&
 		m.find(3)->second == "foo" &&
 		m.find(4) != m.end() &&
-		m.find(4)->second == "bar"
+		m.find(4)->second == "bar" &&
+		m.find(5) != m.end() &&
+		m.find(5)->second == "baz"
 	);
 }
