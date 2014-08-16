@@ -63,6 +63,7 @@ set(
 	doc/files/modules/fcppt.doxygen
 	doc/files/modules/filesystem.doxygen
 	doc/files/modules/io.doxygen
+	doc/files/modules/literal.doxygen
 	doc/files/modules/log.doxygen
 	doc/files/modules/math/base.doxygen
 	doc/files/modules/math/box.doxygen
@@ -192,6 +193,7 @@ set(
 	include/fcppt/algorithm/exception.hpp
 	include/fcppt/algorithm/find_exn.hpp
 	include/fcppt/algorithm/find_if_exn.hpp
+	include/fcppt/algorithm/find_if_opt.hpp
 	include/fcppt/algorithm/fold.hpp
 	include/fcppt/algorithm/impl/element_not_found.hpp
 	include/fcppt/algorithm/impl/exception.hpp

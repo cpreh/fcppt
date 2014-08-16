@@ -24,6 +24,7 @@ fcppt_link_target(
 
 add_fcppt_test(algorithm/array_push_back "")
 add_fcppt_test(algorithm/find_if_exn "")
+add_fcppt_test(algorithm/find_if_opt "")
 add_fcppt_test(algorithm/fold "")
 add_fcppt_test(algorithm/join "")
 add_fcppt_test(algorithm/join_move "")

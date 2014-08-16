@@ -26,6 +26,7 @@ set(
 	include/fcppt/algorithm/exception.hpp
 	include/fcppt/algorithm/find_exn.hpp
 	include/fcppt/algorithm/find_if_exn.hpp
+	include/fcppt/algorithm/find_if_opt.hpp
 	include/fcppt/algorithm/fold.hpp
 	include/fcppt/algorithm/impl/element_not_found.hpp
 	include/fcppt/algorithm/impl/exception.hpp
