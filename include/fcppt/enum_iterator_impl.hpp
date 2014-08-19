@@ -16,6 +16,17 @@ template<
 >
 fcppt::enum_iterator<
 	Enum
+>::enum_iterator()
+:
+	value_{}
+{
+}
+
+template<
+	typename Enum
+>
+fcppt::enum_iterator<
+	Enum
 >::enum_iterator(
 	size_type const _value
 )

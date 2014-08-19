@@ -36,6 +36,8 @@ class int_iterator
 	>
 {
 public:
+	int_iterator();
+
 	explicit
 	int_iterator(
 		Int

@@ -44,6 +44,8 @@ public:
 	>::type
 	size_type;
 
+	enum_iterator();
+
 	explicit
 	enum_iterator(
 		size_type

@@ -15,6 +15,17 @@ template<
 >
 fcppt::int_iterator<
 	Int
+>::int_iterator()
+:
+	value_{}
+{
+}
+
+template<
+	typename Int
+>
+fcppt::int_iterator<
+	Int
 >::int_iterator(
 	Int const _value
 )
