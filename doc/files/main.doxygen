@@ -3,12 +3,11 @@
 
 \section main_introduction Introduction
 
-Freundlich's C++ Toolkit (fcppt) is a collection of libraries focusing
-on improving general C++ code by providing \link structure_types
-better types \endlink, a strong focus on \link structure_cpp11 C++11
-\endlink (non-conforming compilers are mostly not supported) and \link
-structure_fp functional programming \endlink (which is both efficient
-and syntactically affordable in C++11).
+Freundlich's C++ Toolkit (fcppt) is a collection of libraries focusing on
+improving general C++ code by providing \link goals_types better types\endlink,
+a strong focus on \link goals_cpp11 C++11\endlink (non-conforming compilers are
+mostly not supported) and \link goals_fp functional programming\endlink (which
+is both efficient and syntactically affordable in C++11).
 
 fcppt builds on and around Boost. Some Boost libraries like MPL are
 used and extended, while others are rewritten to provide better typing
@@ -40,7 +39,10 @@ The documentation is split into the following parts:
 		</ul>
 	</li>
 	<li>
-		\subpage code_style_and_structure
+		\subpage goals
+	</li>
+	<li>
+		\subpage code_style
 	</li>
 	<li>
 		\subpage changes

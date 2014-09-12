@@ -46,6 +46,8 @@ set(
 	doc/Doxyfile.in
 	doc/files/changes.doxygen
 	doc/files/changes_old.doxygen
+	doc/files/coding_style.doxygen
+	doc/files/goals.doxygen
 	doc/files/logo.svg
 	doc/files/main.doxygen
 	doc/files/modules/algorithm.doxygen
@@ -85,7 +87,6 @@ set(
 	doc/files/modules/variant.doxygen
 	doc/files/modules/various.doxygen
 	doc/files/requirements.doxygen
-	doc/files/structure.doxygen
 	doc/files/types_injected_from_boost.hpp
 	doc/footer.html
 	doc/header.html

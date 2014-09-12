@@ -1,161 +1,59 @@
 /**
-\page code_style_and_structure Code style and structure
+\page code_style Coding style
 
 <table id="toc">
 <tr>
 <td>
 
-
 <ul>
-	<li>\ref structure_cpp11</li>
-	<li>\ref structure_fp</li>
-	<li>\ref structure_file_separation</li>
-	<li>\ref structure_identifiers</li>
-	<li>\ref structure_indentation
+	<li>\ref coding_types
 		<ul>
-			<li>\ref structure_tabs</li>
-			<li>\ref structure_when_to_indent</li>
+			<li>\ref coding_using_enums</li>
+			<li>\ref coding_const</li>
 		</ul>
 	</li>
-	<li>
-	\ref structure_types
+	<li>\ref coding_file_separation</li>
+	<li>\ref coding_identifiers</li>
+	<li>\ref coding_indentation
 		<ul>
-			<li>\ref structure_fundamental</li>
-			<li>\ref structure_using_enums</li>
-			<li>\ref structure_const</li>
+			<li>\ref coding_tabs</li>
+			<li>\ref coding_when_to_indent</li>
 		</ul>
 	</li>
-	<li>
-		\ref structure_code_partitioning
+	<li>\ref coding_code_partitioning
 		<ul>
-			<li>\ref structure_file_extension</li>
-			<li>\ref structure_namespaces_and_directories</li>
-			<li>\ref structure_atomic_headers</li>
-			<li>\ref structure_minimal_includes</li>
-			<li>\ref structure_include_guards</li>
+			<li>\ref coding_file_extension</li>
+			<li>\ref coding_namespaces_and_directories</li>
+			<li>\ref coding_atomic_headers</li>
+			<li>\ref coding_minimal_includes</li>
+			<li>\ref coding_include_guards</li>
 		</ul>
 	</li>
-	<li>
-		\ref structure_numerical_considerations
+	<li>\ref coding_numerical_considerations
 		<ul>
-			<li>\ref structure_float_double_long_double</li>
-			<li>\ref structure_integral_types</li>
+			<li>\ref coding_float_double_long_double</li>
+			<li>\ref coding_integral_types</li>
 		</ul>
 	</li>
 </ul>
-
 
 </td>
 </tr>
 </table>
 
-\section structure_cpp11 C++11
+\section coding_types Types
 
-fcppt makes heavy use of C++11 to simplify code, improve performance
-and make functional programming affordable. Consequently, almost every
-C++11 feature is used somewhere which means that non-conforming
-compilers are not supported (minus minor workarounds). For example,
-gcc-4.8 had a bug that made it impossible to initialize references
-with the new initialization syntax. This is easily worked around by
-using round instead of curly braces. On the other hand, VC++ has too
-many fundamental issues you can't workaround that easily. In the end,
-only gcc and clang provide enough C++11 support to work with fcppt.
-
-\section structure_fp Functional Programming
-
-In C++11, functional programming has become efficient (move semantics
-make it possible to cheaply return or pass on expressions) and
-syntactically convenient (lambda functions can be used in-place
-instead of defining a global function object). In functional
-programming, everything is a value. Values are immutable and their
-computations are notated by combining expressions instead of writing
-out a sequence of statements. Although C++ is an imperative language
-which has statements at the top, using functional programming can be
-of great value to make code more understandable (by providing common
-operations) and less error-prone (by directly initializing objects and
-making them const, if possible).
-
-An example where this becomes apparent is initializing a container,
-which is almost impossible using only what C++11 offers directly. Most
-of the time you end up using loops and initializing the container to
-the empty container. In contrast, fcppt has a lot of common
-functional operations like \link fcppt::algorithm::map Map\endlink,
-\link fcppt::algorithm::map_optional Map Optional\endlink, \link
-fcppt::algorithm::map_concat Map Concat\endlink and \link
-fcppt::algorithm::fold Fold\endlink which cover a lot of common cases
-of initializing a container.
-
-Functional programming also goes hand in hand with \link
-structure_types better types\endlink, for example the above mentioned
-\link fcppt::algorithm::map_optional Map Optional\endlink, but also
-\link fcppt::optional_bind Optional Bind\endlink and \link
-fcppt::from_optional From Optional\endlink.
-
-\section structure_types Types
-
-C++ has a very unique type system which is mostly statically typed,
-supports parametric and ad-hoc polymorphism, and dependent types. It
-also allows for type unsafe conversions, dynamic typing with object
-oriented programming and usage of raw memory, and a lot of implicit
-conversions to mix and match fundamental types. TODO: ...
-
-\subsection structure_fundamental Fundamental types
-
-Using fundamental types directly usually doesn't convey any meaning,
-which can be a huge problem for function (and constructor)
-arguments. To illustrate the problem, consider the function:
-
-\code
-void draw_text(string text,bool center_vertically,bool center_horizontally,int font_size);
-\endcode
-
-A function call looks like this
-
-\code
-draw_text("Hello World",true,false,15);
-\endcode
-
-Say you wrote this line and, weeks later, you open it again. Do you remember
-what the 'true' and 'false' are for? And if you remember that they are
-controlling text alignment, which of the bools controls the vertical alignment
-and which one controls the horizontal alignment?
-
-You cannot deduce that from looking at the code, you have to look at the
-declaration. There's another, more subtle, problem with this code. Say your
-memory is tainted and you think you have to specify the font size first, then
-the alignment stuff, so you write:
-
-\code
-draw_text("Hello World",15,true,false);
-\endcode
-
-This code compiles without a warning with a recent gcc and with all warnings
-enabled. So you have a hard time refactoring because the compiler is of no
-help. That's pretty much the reason fundamental types are discouraged: You lose
-information. As return types, however, they can be useful:
-
-\code
-class life
-{
-public:
-    bool has_meaning() const;
-};
-\endcode
-
-To fix the situation with parameters, you could either use an enum (see below)
-or \link fcpptstrongtypedef strong typedefs\endlink.
-
-\subsection structure_using_enums Using enums
+\subsection coding_using_enums Using enums
 
 C++03 enums have a lot of disadvantages like injecting their enumerators in the
 enclosing namespace and implicitly converting to other integral types.
 Therefore, we only use the new C++11 enum classes (strongly types enums).
 
-\subsection structure_const Using const
+\subsection coding_const Using const
 
 We declare as many variables const as possible. This helps to reason about the
-code flow by knowing what values can change at all. In particular, function
-arguments should be const whenever possible:
+code flow by knowing what values can change. In particular, function arguments
+should be const whenever possible:
 
 \code
 void f(T); // no const at the declaration which makes no sense
@@ -166,8 +64,8 @@ void f(T const _arg)
 }
 \endcode
 
-Making class members const is also often a good idea. The only problem
-with this is that a class with const members won't be assignable anymore.
+Making class members const is also often a good idea. The only problem with
+this is that a class with const members won't be assignable.
 
 \code
 class foo
@@ -202,14 +100,13 @@ However, making return types of functions const can have disadvantages:
 
 <li>If the return type is fundamental (e.g. <code>int</code>), const won't do
 anything, and most compilers will generate a warning. If the return type is a
-template parameter, this can be a problem. </li>
+template parameter, this can be a problem.</li>
 
 <li>A const return type prevents moving. For example, <code>std::vector<T>
-const foo();</code> will probably call the copy constructor of vector when the
-function is called. This can be optimized away, but we found some cases where
-it isn't.</li>
+const foo();</code> will call the copy constructor of vector when the function
+is called.</li>
 
-\section structure_file_separation File separation
+\section coding_file_separation File separation
 
 Every function, typedef or class resides in its own header file. So, for
 example, if you want to use fcppt::to_std_string (which is a function) you have
@@ -259,7 +156,7 @@ concerned with compilation times.
 If you forget to include the <code>_impl</code> header where the implementation
 of a template is needed, you will get undefined references when linking.
 
-\section structure_identifiers Identifiers
+\section coding_identifiers Identifiers
 
 We use the same naming scheme as the C++ standard library. This means no camel
 case, but all lowercase letters and underscores as separators
@@ -278,9 +175,9 @@ std::assert(0 < 1);
 \endcode
 Macros have no namespace scope.
 
-\section structure_indentation Indentation
+\section coding_indentation Indentation
 
-\subsection structure_tabs Tabs
+\subsection coding_tabs Tabs
 
 We consistently use tabs instead of whitespaces for indentation. If you're
 interested, here's why we do that:
@@ -335,7 +232,7 @@ int
 
 Which is tab-safe and doesn't look too ugly, so that's what we're doing.
 
-\subsection structure_when_to_indent When to indent
+\subsection coding_when_to_indent When to indent
 
 When to indent is pretty much left to the individual programmer. Specifying
 more than a few encouragements would be pretty harsh. A rule of thumb for us is
@@ -372,29 +269,29 @@ might encounter when reading fcppt code. This method of indentation is a bit
 extreme, but it is consistent: We insert a newline after every opening brace
 (curly brace, parentheses, whatever).
 
-\section structure_code_partitioning Code partitioning
+\section coding_code_partitioning Code partitioning
 
-\subsection structure_file_extension File extension
+\subsection coding_file_extension File extension
 
 Many people use ".h" for their C++ header files. We encourage using ".hpp"
 because that way your favorite editor can deduce that you're writing C++ code
 and change, for example, the syntax highlighting accordingly.
 
-\subsection structure_namespaces_and_directories Namespaces and directories
+\subsection coding_namespaces_and_directories Namespaces and directories
 
 To avoid filename clashes we let the file system hierarchy follow the namespace
 hierarchy. So a namespace creates a new directory - with nesting of directories
 of course.
 
-\subsection structure_atomic_headers Atomic headers
+\subsection coding_atomic_headers Atomic headers
 
 We encourage writing header files which contain only one "entity", so one
 typedef, one class, one constant only. This way, it's very easy to memorize
 which file you have to include to get a specific entity (for
 <code>foo::bar::baz</code> you need <code>foo/bar/baz.hpp</code>, see
-\ref structure_namespaces_and_directories above).
+\ref coding_namespaces_and_directories above).
 
-\subsection structure_minimal_includes Minimal includes
+\subsection coding_minimal_includes Minimal includes
 
 A header should only include what it needs so it can be included without
 causing errors by itself (this means it should produce no errors when compiling
@@ -424,7 +321,7 @@ like <code>mine</code> could be a huge interface of which a user might only use
 a small portion, so only declaring the argument and return types usually helps
 to reduce the number of includes needed.
 
-\subsection structure_include_guards Include guards
+\subsection coding_include_guards Include guards
 
 It's extremely important for include guards to be unique. If they're not, you
 end up in a long debugging session to find missing declarations or even
@@ -452,12 +349,12 @@ class text
 The corresponding include guard would be:
 <code>SGE_GUI_BUTTONS_TEXT_HPP_INCLUDED</code>.  This way, sensible behavior is
 guaranteed. This, of course, requires that header files are quite atomic (see
-\ref structure_atomic_headers above). If headers aren't really atomic, use the
+\ref coding_atomic_headers above). If headers aren't really atomic, use the
 (converted) file name as the include guard.
 
-\section structure_numerical_considerations Numerical considerations
+\section coding_numerical_considerations Numerical considerations
 
-\subsection structure_float_double_long_double float/double/long double
+\subsection coding_float_double_long_double float/double/long double
 
 The C++ standard states that basically all operations regarding floats are
 implementation defined. This might lead to a "fatal error" in the following
@@ -476,7 +373,7 @@ most implementations. How to properly compare floats really depends on the
 situation. Sometimes you might want to test the relative error, sometimes the
 absolute error. In any case, comparing floats directly is almost always wrong.
 
-\subsection structure_integral_types Integral types
+\subsection coding_integral_types Integral types
 
 The use of the signed types is discouraged. Of course, sometimes you need to
 use them to get negative numbers, but the signed types have a distinct
