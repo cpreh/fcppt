@@ -4,8 +4,8 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_DETAIL_TRUNCATION_CHECK_CAST_HPP_INCLUDED
-#define FCPPT_DETAIL_TRUNCATION_CHECK_CAST_HPP_INCLUDED
+#ifndef FCPPT_CAST_DETAIL_TRUNCATION_CHECK_HPP_INCLUDED
+#define FCPPT_CAST_DETAIL_TRUNCATION_CHECK_HPP_INCLUDED
 
 #include <fcppt/literal.hpp>
 #include <fcppt/optional_impl.hpp>
@@ -26,6 +26,8 @@
 
 
 namespace fcppt
+{
+namespace cast
 {
 namespace detail
 {
@@ -57,7 +59,7 @@ typename boost::enable_if<
 		Dest
 	>
 >::type
-truncation_check_cast(
+truncation_check(
 	Source const _source
 )
 {
@@ -94,7 +96,7 @@ typename boost::enable_if<
 		Dest
 	>
 >::type
-truncation_check_cast(
+truncation_check(
 	Source const _source
 )
 {
@@ -150,7 +152,7 @@ typename boost::enable_if<
 		Dest
 	>
 >::type
-truncation_check_cast(
+truncation_check(
 	Source const _source
 )
 {
@@ -208,7 +210,7 @@ typename boost::enable_if<
 		Dest
 	>
 >::type
-truncation_check_cast(
+truncation_check(
 	Source const _source
 )
 {
@@ -227,7 +229,7 @@ truncation_check_cast(
 		?
 			dest_type()
 		:
-			fcppt::detail::truncation_check_cast<
+			fcppt::cast::detail::truncation_check<
 				Dest
 			>(
 				fcppt::cast::to_unsigned(
@@ -253,7 +255,7 @@ typename boost::enable_if<
 		Dest
 	>
 >::type
-truncation_check_cast(
+truncation_check(
 	Source const _source
 )
 {
@@ -270,7 +272,7 @@ truncation_check_cast(
 	> intermediate_dest;
 
 	intermediate_dest const dest(
-		fcppt::detail::truncation_check_cast<
+		fcppt::cast::detail::truncation_check<
 			intermediate_type
 		>(
 			_source
@@ -301,6 +303,7 @@ truncation_check_cast(
 			);
 }
 
+}
 }
 }
 

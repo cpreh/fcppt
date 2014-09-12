@@ -19,6 +19,14 @@ namespace fcppt
 namespace cast
 {
 
+/**
+\brief Converts an int to a float
+
+\ingroup fcpptcasts
+
+Converts the integer \a _source to float type specified by \a Dest by
+truncating like static_cast. This cast is unsafe and should be used with care.
+*/
 template<
 	typename Dest,
 	typename Source

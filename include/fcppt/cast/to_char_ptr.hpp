@@ -18,6 +18,15 @@ namespace fcppt
 namespace cast
 {
 
+/**
+\brief Converts a pointer to a pointer to characters
+
+\ingroup fcpptcasts
+
+Converts \a _source to the pointer to character type specified by \a Dest.
+This cast can be used to access the byte representation of an object, e.g.
+for serialization and largely replaces <code>reinterpret_cast</code>.
+*/
 template<
 	typename Dest,
 	typename Source

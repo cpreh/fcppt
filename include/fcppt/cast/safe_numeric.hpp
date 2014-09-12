@@ -4,8 +4,8 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_SAFE_NUMERIC_CAST_HPP_INCLUDED
-#define FCPPT_SAFE_NUMERIC_CAST_HPP_INCLUDED
+#ifndef FCPPT_CAST_SAFE_NUMERIC_HPP_INCLUDED
+#define FCPPT_CAST_SAFE_NUMERIC_HPP_INCLUDED
 
 #include <fcppt/config/external_begin.hpp>
 #include <boost/mpl/and.hpp>
@@ -21,17 +21,19 @@
 
 namespace fcppt
 {
+namespace cast
+{
 
 /**
-\brief safe numeric cast is a safer static_cast that forbids lossy conversions
+\brief Safe numeric cast is a safer static_cast that forbids lossy conversions
 
 \ingroup fcpptcasts
 
 This cast implicitly converts one arithmetic type to another, where the size of
 the destination type must be at least the size of the source type.
 
-Furthermore, the conversion is only allowed if one of the following cases hold
-true:
+Furthermore, the conversion is only allowed if and only if one of the following
+cases hold true:
 
 <ul>
 
@@ -98,13 +100,15 @@ typename boost::enable_if<
 	>,
 	Dest
 >::type
-safe_numeric_cast(
+safe_numeric(
 	Source const &_source
 )
 {
-	return _source;
+	return
+		_source;
 }
 
+}
 }
 
 #endif

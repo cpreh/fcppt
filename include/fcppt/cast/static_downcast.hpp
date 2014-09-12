@@ -18,6 +18,16 @@ namespace fcppt
 namespace cast
 {
 
+/**
+\brief Statically converts a reference to a base class to a reference to a
+derived class
+
+\ingroup fcpptcasts
+
+Converts \a _source to the reference type specified by \a Dest. This cast is
+unsafe and should only be used if the \a _source has dynamic type \a Dest.
+Consider using fcppt::cast::dynamic instead.
+*/
 template<
 	typename Dest,
 	typename Source

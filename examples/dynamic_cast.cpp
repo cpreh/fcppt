@@ -6,10 +6,10 @@
 
 //! [dynamic_cast_]
 
-#include <fcppt/bad_dynamic_cast.hpp>
-#include <fcppt/dynamic_cast.hpp>
-#include <fcppt/io/cout.hpp>
 #include <fcppt/text.hpp>
+#include <fcppt/cast/bad_dynamic.hpp>
+#include <fcppt/cast/dynamic.hpp>
+#include <fcppt/io/cout.hpp>
 
 namespace
 {
@@ -41,7 +41,7 @@ f()
 	{
 		// try to cast d1 into a d2, which will fail
 		derived2 &d2(
-			fcppt::dynamic_cast_<
+			fcppt::cast::dynamic<
 				derived2 &
 			>(
 				d1
@@ -53,7 +53,7 @@ f()
 			<< FCPPT_TEXT('\n');
 	}
 	catch(
-		fcppt::bad_dynamic_cast const &_error
+		fcppt::cast::bad_dynamic const &_error
 	)
 	{
 		// shows a nice message with the types in it

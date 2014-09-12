@@ -18,6 +18,14 @@ namespace fcppt
 namespace cast
 {
 
+/**
+\brief Converts a signed int to its unsigned type
+
+\ingroup fcpptcasts
+
+Converts \a _value to its unsigned type. This cast is unsafe and should only be
+used if \a _value is positive.
+*/
 template<
 	typename Type
 >

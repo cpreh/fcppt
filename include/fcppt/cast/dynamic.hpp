@@ -4,10 +4,10 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_DYNAMIC_CAST_HPP_INCLUDED
-#define FCPPT_DYNAMIC_CAST_HPP_INCLUDED
+#ifndef FCPPT_CAST_DYNAMIC_HPP_INCLUDED
+#define FCPPT_CAST_DYNAMIC_HPP_INCLUDED
 
-#include <fcppt/bad_dynamic_cast.hpp>
+#include <fcppt/cast/bad_dynamic.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/utility/enable_if.hpp>
 #include <stdexcept>
@@ -19,6 +19,8 @@
 
 namespace fcppt
 {
+namespace cast
+{
 
 /**
 \brief Converts between references using <code>dynamic_cast</code> and provides
@@ -28,8 +30,9 @@ additional error information
 
 Tries to cast \a _src to \a Dest using <code>dynamic_cast</code>. Both
 <code>Dest</code> and the type of \a _src are reference types. If the
-<code>dynamic_cast</code> fails, an \link fcppt::bad_dynamic_cast \endlink will
-be thrown that includes additional type information about the types involved.
+<code>dynamic_cast</code> fails, an \link fcppt::cast::bad_dynamic \endlink
+will be thrown that includes additional type information about the types
+involved.
 
 The following example shows how this function can be used:
 
@@ -40,7 +43,7 @@ The following example shows how this function can be used:
 \return The casted result as if in <code>dynamic_cast<Dest>(_src)</code> if the
 casts succeeds.
 
-\throws fcppt::bad_dynamic_cast on failure
+\throws fcppt::cast::bad_dynamic on failure
 */
 template<
 	typename Dest,
@@ -52,7 +55,7 @@ typename boost::enable_if<
 	>,
 	Dest
 >::type
-dynamic_cast_(
+dynamic(
 	Src &_src
 )
 {
@@ -70,7 +73,7 @@ dynamic_cast_(
 	)
 	{
 		throw
-			fcppt::bad_dynamic_cast(
+			fcppt::cast::bad_dynamic(
 				std::type_index(
 					typeid(
 						_src
@@ -109,7 +112,7 @@ typename boost::enable_if<
 	>,
 	Dest
 >::type
-dynamic_cast_(
+dynamic(
 	Src *const _src
 )
 {
@@ -121,6 +124,7 @@ dynamic_cast_(
 		);
 }
 
+}
 }
 
 #endif

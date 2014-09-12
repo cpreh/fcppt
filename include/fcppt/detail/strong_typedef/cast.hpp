@@ -7,7 +7,7 @@
 #ifndef FCPPT_DETAIL_STRONG_TYPEDEF_CAST_HPP_INCLUDED
 #define FCPPT_DETAIL_STRONG_TYPEDEF_CAST_HPP_INCLUDED
 
-#include <fcppt/safe_cast.hpp>
+#include <fcppt/cast/safe.hpp>
 
 
 namespace fcppt
@@ -25,7 +25,7 @@ strong_typedef_cast(
 )
 {
 	return
-		fcppt::safe_cast<
+		fcppt::cast::safe<
 			T
 		>(
 			_other

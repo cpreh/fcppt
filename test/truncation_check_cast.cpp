@@ -4,8 +4,8 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/bad_truncation_check_cast.hpp>
-#include <fcppt/truncation_check_cast.hpp>
+#include <fcppt/cast/bad_truncation_check.hpp>
+#include <fcppt/cast/truncation_check.hpp>
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
@@ -21,10 +21,11 @@ namespace
 
 bool
 check_exception(
-	fcppt::bad_truncation_check_cast const &
+	fcppt::cast::bad_truncation_check const &
 )
 {
-	return true;
+	return
+		true;
 }
 
 }
@@ -40,66 +41,66 @@ FCPPT_PP_POP_WARNING
 
 #if SHRT_MAX < LONG_MAX
 	BOOST_CHECK_EXCEPTION(
-		fcppt::truncation_check_cast<
+		fcppt::cast::truncation_check<
 			short
 		>(
 			std::numeric_limits<
 				long
 			>::max()
 		),
-		fcppt::bad_truncation_check_cast,
+		fcppt::cast::bad_truncation_check,
 		check_exception
 	);
 
 	BOOST_CHECK_EXCEPTION(
-		fcppt::truncation_check_cast<
+		fcppt::cast::truncation_check<
 			short
 		>(
 			std::numeric_limits<
 				long
 			>::min()
 		),
-		fcppt::bad_truncation_check_cast,
+		fcppt::cast::bad_truncation_check,
 		check_exception
 	);
 #endif
 	BOOST_CHECK_EXCEPTION(
-		fcppt::truncation_check_cast<
+		fcppt::cast::truncation_check<
 			long
 		>(
 			std::numeric_limits<
 				unsigned long
 			>::max()
 		),
-		fcppt::bad_truncation_check_cast,
+		fcppt::cast::bad_truncation_check,
 		check_exception
 	);
 
 	BOOST_CHECK_EXCEPTION(
-		fcppt::truncation_check_cast<
+		fcppt::cast::truncation_check<
 			unsigned long
 		>(
 			-1
 		),
-		fcppt::bad_truncation_check_cast,
+		fcppt::cast::bad_truncation_check,
 		check_exception
 	);
 
 #if USHRT_MAX < ULONG_MAX
 	BOOST_CHECK_EXCEPTION(
-		fcppt::truncation_check_cast<
+		fcppt::cast::truncation_check<
 			unsigned short
 		>(
 			std::numeric_limits<
 				unsigned long
 			>::max()
 		),
-		fcppt::bad_truncation_check_cast,
+		fcppt::cast::bad_truncation_check,
 		check_exception
 	);
 #endif
 	BOOST_CHECK(
-		fcppt::truncation_check_cast<
+		fcppt::cast::truncation_check<
 			unsigned
 		>(
 			10u
@@ -109,7 +110,7 @@ FCPPT_PP_POP_WARNING
 	);
 
 	BOOST_CHECK(
-		fcppt::truncation_check_cast<
+		fcppt::cast::truncation_check<
 			unsigned long
 		>(
 			42u
@@ -119,7 +120,7 @@ FCPPT_PP_POP_WARNING
 	);
 
 	BOOST_CHECK(
-		fcppt::truncation_check_cast<
+		fcppt::cast::truncation_check<
 			long
 		>(
 			-1

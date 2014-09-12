@@ -19,6 +19,16 @@ namespace fcppt
 namespace cast
 {
 
+/**
+\brief Converts a float to a signed int
+
+\ingroup fcpptcasts
+
+Converts \a _source to an integer. The type signature ensures that only signed
+integers can be used a destination. If you need to cast to unsigned integers,
+use fcppt::casts::to_unsigned in addition. This cast is unsafe and should be
+used with care.
+*/
 template<
 	typename Dest,
 	typename Source

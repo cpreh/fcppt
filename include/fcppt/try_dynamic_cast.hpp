@@ -7,10 +7,9 @@
 #ifndef FCPPT_TRY_DYNAMIC_CAST_HPP_INCLUDED
 #define FCPPT_TRY_DYNAMIC_CAST_HPP_INCLUDED
 
-#include <fcppt/dynamic_cast.hpp>
 
 /**
-\brief Generates an if block with a dynamic_cast_ in its condition
+\brief Generates an if block with a dynamic_cast in its condition
 
 \ingroup fcpptcasts
 
@@ -33,7 +32,7 @@ will not be taken.
 )\
 	if(\
 		dest_type const name = \
-			fcppt::dynamic_cast_<\
+			dynamic_cast<\
 				dest_type\
 			>(\
 				expression\

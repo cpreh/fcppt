@@ -19,6 +19,14 @@ namespace fcppt
 namespace cast
 {
 
+/**
+\brief Converts a void pointer to a different pointer
+
+\ingroup fcpptcasts
+
+Converts the void pointer \a _ptr to the pointer type specified by \a Dest.
+This cast is unsafe.
+*/
 template<
 	typename Dest,
 	typename Source

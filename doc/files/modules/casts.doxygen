@@ -17,6 +17,37 @@
 </tr>
 </table>
 
+\section fcpptcasts_motivation Motivation
+
+C++ offers four different casts: <code>static_cast</code>,
+<code>const_cast</code>, <code>reinterpret_cast</code> and
+<code>dynamic_cast</code> which cover a wide area of explicit conversions.
+Some conversions can only be done by casts, e.g.  <code>dynamic_cast</code> to
+cast in a polymorphic class hierarchy or <code>reinterpret_cast</code> to
+access the bytes of an object, while <code>static_cast</code> can also be used
+to make a lot of otherwise impliict conversions (or coersions) explicit.
+However, <code>static_cast</code> does too many things at once and isn't very
+robust against code changes. Therefore, this module provides more fine-grained
+casts. <code>reinterpret_cast</code> is mostly unsafe to use and is replaced by
+few functions that to casting to bytes. <code>dynamic_cast</code> is wrapped
+for better error messages.
+
+\section fcpptcasts_special_casts Special Casts
+
+Special casts are used to replace <code>static_cast</code> and
+<code>reinterpret_cast</code> where possible. Common cases where a static cast
+is used include:
+<ul>
+	<li>
+	Casting from signed to unsigned integers and vice versa.
+	</li>
+	<li>
+	Casting from integers to floats and vice versa.
+	</li>
+	<li>
+	Casting from void pointers to other pointers.
+	</lI>
+</ul>
 
 \section fcpptcasts_dynamic_casting Dynamic casting
 

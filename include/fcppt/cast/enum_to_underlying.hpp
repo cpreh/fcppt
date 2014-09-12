@@ -18,6 +18,13 @@ namespace fcppt
 namespace cast
 {
 
+/**
+\brief Converts an enum to its underlying type
+
+\ingroup fcpptcasts
+
+Converts \a _enum to its underlying integer type.
+*/
 template<
 	typename Enum
 >

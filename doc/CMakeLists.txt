@@ -262,17 +262,24 @@ set(
 	include/fcppt/backtrace/print_current_stack_frame.hpp
 	include/fcppt/backtrace/stack_frame.hpp
 	include/fcppt/backtrace/stack_limit.hpp
-	include/fcppt/bad_dynamic_cast.hpp
-	include/fcppt/bad_truncation_check_cast.hpp
 	include/fcppt/c_deleter.hpp
 	include/fcppt/c_deleter_fwd.hpp
+	include/fcppt/cast/bad_dynamic.hpp
+	include/fcppt/cast/bad_truncation_check.hpp
+	include/fcppt/cast/detail/safe.hpp
+	include/fcppt/cast/detail/truncation_check.hpp
+	include/fcppt/cast/dynamic.hpp
 	include/fcppt/cast/enum_to_int.hpp
 	include/fcppt/cast/enum_to_underlying.hpp
 	include/fcppt/cast/float_to_int.hpp
 	include/fcppt/cast/from_void_ptr.hpp
+	include/fcppt/cast/impl/bad_dynamic.hpp
+	include/fcppt/cast/impl/bad_truncation_check.hpp
 	include/fcppt/cast/int_to_enum.hpp
 	include/fcppt/cast/int_to_float.hpp
 	include/fcppt/cast/promote.hpp
+	include/fcppt/cast/safe.hpp
+	include/fcppt/cast/safe_numeric.hpp
 	include/fcppt/cast/size.hpp
 	include/fcppt/cast/static_downcast.hpp
 	include/fcppt/cast/static_downcast_ptr.hpp
@@ -280,6 +287,7 @@ set(
 	include/fcppt/cast/to_signed.hpp
 	include/fcppt/cast/to_unsigned.hpp
 	include/fcppt/cast/to_void.hpp
+	include/fcppt/cast/truncation_check.hpp
 	include/fcppt/cast_to_enum.hpp
 	include/fcppt/char_type.hpp
 	include/fcppt/check_literal_conversion.hpp
@@ -453,7 +461,6 @@ set(
 	include/fcppt/detail/noncopyable.hpp
 	include/fcppt/detail/optional_cast.hpp
 	include/fcppt/detail/process_assert.hpp
-	include/fcppt/detail/safe_cast.hpp
 	include/fcppt/detail/strong_typedef/assignment_operator.hpp
 	include/fcppt/detail/strong_typedef/binary_operator.hpp
 	include/fcppt/detail/strong_typedef/cast.hpp
@@ -467,8 +474,6 @@ set(
 	include/fcppt/detail/strong_typedef/pre_inc_dec_operator.hpp
 	include/fcppt/detail/strong_typedef/unary_operator.hpp
 	include/fcppt/detail/text.hpp
-	include/fcppt/detail/truncation_check_cast.hpp
-	include/fcppt/dynamic_cast.hpp
 	include/fcppt/dynamic_optional_cast.hpp
 	include/fcppt/dynamic_pointer_cast.hpp
 	include/fcppt/endianness/convert.hpp
@@ -534,8 +539,6 @@ set(
 	include/fcppt/homogenous_pair_fwd.hpp
 	include/fcppt/homogenous_pair_impl.hpp
 	include/fcppt/homogenous_pair_output.hpp
-	include/fcppt/impl/bad_dynamic_cast.hpp
-	include/fcppt/impl/bad_truncation_check_cast.hpp
 	include/fcppt/impl/exception.hpp
 	include/fcppt/impl/extract_from_string_error.hpp
 	include/fcppt/import_symbol.hpp
@@ -1024,8 +1027,6 @@ set(
 	include/fcppt/reference_wrapper_hash_impl.hpp
 	include/fcppt/reference_wrapper_impl.hpp
 	include/fcppt/reference_wrapper_std_hash.hpp
-	include/fcppt/safe_cast.hpp
-	include/fcppt/safe_numeric_cast.hpp
 	include/fcppt/scoped_state_machine.hpp
 	include/fcppt/scoped_state_machine_decl.hpp
 	include/fcppt/scoped_state_machine_fwd.hpp
@@ -1102,7 +1103,6 @@ set(
 	include/fcppt/to_std_string_locale.hpp
 	include/fcppt/to_std_wstring.hpp
 	include/fcppt/to_std_wstring_locale.hpp
-	include/fcppt/truncation_check_cast.hpp
 	include/fcppt/try_dynamic_cast.hpp
 	include/fcppt/type_name.hpp
 	include/fcppt/type_name_from_index.hpp

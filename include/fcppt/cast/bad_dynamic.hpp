@@ -4,11 +4,10 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_BAD_TRUNCATION_CHECK_CAST_HPP_INCLUDED
-#define FCPPT_BAD_TRUNCATION_CHECK_CAST_HPP_INCLUDED
+#ifndef FCPPT_CAST_BAD_DYNAMIC_HPP_INCLUDED
+#define FCPPT_CAST_BAD_DYNAMIC_HPP_INCLUDED
 
 #include <fcppt/exception.hpp>
-#include <fcppt/string.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <typeindex>
 #include <fcppt/config/external_end.hpp>
@@ -16,34 +15,32 @@
 
 namespace fcppt
 {
+namespace cast
+{
 
 /**
-\brief May be thrown by \link fcppt::truncation_check_cast \endlink if the
-conversion truncates
+\brief May be thrown by \link fcppt::cast::dynamic \endlink if the cast fails
 
 \ingroup fcpptcasts
 
-This class provides type information about the source and the destination
-types, stored as std::type_index.
+This class provides more type information than <code>std::bad_cast</code> does.
+It stores an std::type_index for the source and the destination type.
 
-\see fcppt::truncation_check_cast
+\see fcppt::cast::dynamic
 */
-class bad_truncation_check_cast
+class bad_dynamic
 :
 	public fcppt::exception
 {
 public:
 	/**
-	\brief Constructs a bad_truncation_check_cast exception
-
-	\param source_value The value to cast from
+	\brief Constructs a bad_dynamic_cast exception
 
 	\param source The source type information
 
 	\param dest The destination type information
 	*/
-	bad_truncation_check_cast(
-		fcppt::string const &source_value,
+	bad_dynamic(
 		std::type_index const &source,
 		std::type_index const &dest
 	);
@@ -66,7 +63,8 @@ private:
 };
 
 }
+}
 
-#include <fcppt/impl/bad_truncation_check_cast.hpp>
+#include <fcppt/cast/impl/bad_dynamic.hpp>
 
 #endif

@@ -19,6 +19,14 @@ namespace fcppt
 namespace cast
 {
 
+/**
+\brief Casts a type to its promoted type
+
+\ingroup fcpptcasts
+
+Converts \a _value to its promoted type. This can be used if explicit promotion
+is desired (e.g. when outputting to an ostream).
+*/
 template<
 	typename Type
 >

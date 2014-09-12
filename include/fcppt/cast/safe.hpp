@@ -4,24 +4,26 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_SAFE_CAST_HPP_INCLUDED
-#define FCPPT_SAFE_CAST_HPP_INCLUDED
+#ifndef FCPPT_CAST_SAFE_HPP_INCLUDED
+#define FCPPT_CAST_SAFE_HPP_INCLUDED
 
-#include <fcppt/detail/safe_cast.hpp>
+#include <fcppt/cast/detail/safe.hpp>
 
 
 namespace fcppt
 {
+namespace cast
+{
 
 /**
-\brief safe cast forbids lossy conversions
+\brief A cast that prohibits lossy conversions
 
 \ingroup fcpptcasts
 
-This cast implicitly converts arithmetic types like fcppt::safe_numeric_cast
-does. For every other type, the conversion is also done implicitly, but without
+This cast implicitly converts arithmetic types like fcppt::cast::safe_numeric
+does. For every other type the conversion is also done implicitly, but without
 any further restrictions. In general, this means that either the restrictions
-of fcppt::safe_numeric_cast must hold or \a Source must be implicitly
+of fcppt::cast::safe_numeric must hold or \a Source must be implicitly
 convertible to \a Dest.
 
 \tparam Dest Can be any type
@@ -37,18 +39,19 @@ template<
 	typename Source
 >
 Dest
-safe_cast(
+safe(
 	Source const &_source
 )
 {
 	return
-		fcppt::detail::safe_cast<
+		fcppt::cast::detail::safe<
 			Dest
 		>(
 			_source
 		);
 }
 
+}
 }
 
 #endif

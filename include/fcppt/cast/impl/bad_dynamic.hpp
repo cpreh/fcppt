@@ -4,8 +4,8 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_IMPL_BAD_DYNAMIC_CAST_HPP_INCLUDED
-#define FCPPT_IMPL_BAD_DYNAMIC_CAST_HPP_INCLUDED
+#ifndef FCPPT_CAST_IMPL_BAD_DYNAMIC_HPP_INCLUDED
+#define FCPPT_CAST_IMPL_BAD_DYNAMIC_HPP_INCLUDED
 
 #include <fcppt/exception.hpp>
 #include <fcppt/text.hpp>
@@ -16,7 +16,7 @@
 
 
 inline
-fcppt::bad_dynamic_cast::bad_dynamic_cast(
+fcppt::cast::bad_dynamic::bad_dynamic(
 	std::type_index const &_source,
 	std::type_index const &_destination
 )
@@ -47,7 +47,7 @@ fcppt::bad_dynamic_cast::bad_dynamic_cast(
 
 inline
 std::type_index const &
-fcppt::bad_dynamic_cast::source() const
+fcppt::cast::bad_dynamic::source() const
 {
 	return
 		source_;
@@ -55,7 +55,7 @@ fcppt::bad_dynamic_cast::source() const
 
 inline
 std::type_index const &
-fcppt::bad_dynamic_cast::destination() const
+fcppt::cast::bad_dynamic::destination() const
 {
 	return
 		destination_;

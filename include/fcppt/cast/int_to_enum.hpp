@@ -19,6 +19,15 @@ namespace fcppt
 namespace cast
 {
 
+/**
+\brief Converts an int to an enum
+
+\ingroup fcpptcasts
+
+Converts the integer \a _source to the enum type specified by \a Enum. This
+cast is unsafe and should only be used if the enum can actually hold the
+integer value.  Consider using fcppt::cast_to_enum instead.
+*/
 template<
 	typename Enum,
 	typename Source
@@ -38,14 +47,14 @@ boost::enable_if<
 	Enum
 >::type
 int_to_enum(
-	Source const _value
+	Source const _source
 )
 {
 	return
 		static_cast<
 			Enum
 		>(
-			_value
+			_source
 		);
 }
 

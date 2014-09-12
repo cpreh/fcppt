@@ -4,9 +4,9 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
+#include <fcppt/cast/truncation_check.hpp>
 #include <fcppt/time/sleep.hpp>
 #include <fcppt/time/sleep_interrupted.hpp>
-#include <fcppt/truncation_check_cast.hpp>
 #include <fcppt/config/platform.hpp>
 #if defined(FCPPT_CONFIG_WINDOWS_PLATFORM)
 #include <fcppt/src/include_windows.hpp>
@@ -27,7 +27,7 @@ fcppt::time::sleep(
 #if defined(FCPPT_CONFIG_WINDOWS_PLATFORM)
 	if(
 		::SleepEx(
-			fcppt::truncation_check_cast<
+			fcppt::cast::truncation_check<
 				DWORD
 			>(
 				_duration.count()
@@ -40,12 +40,12 @@ fcppt::time::sleep(
 #elif defined(FCPPT_CONFIG_POSIX_PLATFORM)
 	timespec const req =
 	{
-		fcppt::truncation_check_cast<
+		fcppt::cast::truncation_check<
 			std::time_t
 		>(
 			_duration.count() / sleep_duration::period::den
 		),
-		fcppt::truncation_check_cast<
+		fcppt::cast::truncation_check<
 			long
 		>(
 			_duration.count() % sleep_duration::period::den

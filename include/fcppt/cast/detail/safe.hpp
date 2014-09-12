@@ -4,10 +4,10 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_DETAIL_SAFE_CAST_HPP_INCLUDED
-#define FCPPT_DETAIL_SAFE_CAST_HPP_INCLUDED
+#ifndef FCPPT_CAST_DETAIL_SAFE_HPP_INCLUDED
+#define FCPPT_CAST_DETAIL_SAFE_HPP_INCLUDED
 
-#include <fcppt/safe_numeric_cast.hpp>
+#include <fcppt/cast/safe_numeric.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/mpl/and.hpp>
 #include <boost/utility/enable_if.hpp>
@@ -16,6 +16,8 @@
 
 
 namespace fcppt
+{
+namespace cast
 {
 namespace detail
 {
@@ -35,11 +37,12 @@ typename boost::disable_if<
 	>,
 	T
 >::type
-safe_cast(
+safe(
 	U const &_other
 )
 {
-	return _other;
+	return
+		_other;
 }
 
 template<
@@ -57,18 +60,19 @@ typename boost::enable_if<
 	>,
 	T
 >::type
-safe_cast(
+safe(
 	U const &_other
 )
 {
 	return
-		fcppt::safe_numeric_cast<
+		fcppt::cast::safe_numeric<
 			T
 		>(
 			_other
 		);
 }
 
+}
 }
 }
 

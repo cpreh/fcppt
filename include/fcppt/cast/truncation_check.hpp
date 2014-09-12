@@ -4,13 +4,13 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_TRUNCATION_CHECK_CAST_HPP_INCLUDED
-#define FCPPT_TRUNCATION_CHECK_CAST_HPP_INCLUDED
+#ifndef FCPPT_CAST_TRUNCATION_CHECK_HPP_INCLUDED
+#define FCPPT_CAST_TRUNCATION_CHECK_HPP_INCLUDED
 
-#include <fcppt/bad_truncation_check_cast.hpp>
 #include <fcppt/insert_to_fcppt_string.hpp>
 #include <fcppt/optional_impl.hpp>
-#include <fcppt/detail/truncation_check_cast.hpp>
+#include <fcppt/cast/bad_truncation_check.hpp>
+#include <fcppt/cast/detail/truncation_check.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/mpl/and.hpp>
 #include <boost/utility/enable_if.hpp>
@@ -22,6 +22,8 @@
 
 namespace fcppt
 {
+namespace cast
+{
 
 /**
 \brief Cast between integral types, checking for truncation
@@ -30,7 +32,7 @@ namespace fcppt
 
 Casts \a _source of type \a Source to the type \a Dest. It returns the
 converted value ff the conversion results in no truncation, otherwise
-fcppt::bad_truncation_check_cast is thrown.
+fcppt::cast::bad_truncation_check is thrown.
 
 \tparam Dest Must be an integral type
 
@@ -40,9 +42,9 @@ fcppt::bad_truncation_check_cast is thrown.
 
 \return The casted value if no truncation occurs
 
-\throw fcppt::bad_truncation_check_cast if truncation occurs
+\throw fcppt::cast::bad_truncation_check if truncation occurs
 
-\see fcpptcasts_truncation_check_cast
+\see fcpptcasts_truncation_check
 */
 template<
 	typename Dest,
@@ -59,7 +61,7 @@ typename boost::enable_if<
 	>,
 	Dest
 >::type
-truncation_check_cast(
+truncation_check(
 	Source const _source
 )
 {
@@ -68,7 +70,7 @@ truncation_check_cast(
 	> dest_type;
 
 	dest_type const dest(
-		fcppt::detail::truncation_check_cast<
+		fcppt::cast::detail::truncation_check<
 			Dest
 		>(
 			_source
@@ -78,7 +80,7 @@ truncation_check_cast(
 	if(
 		!dest
 	)
-		throw fcppt::bad_truncation_check_cast(
+		throw fcppt::cast::bad_truncation_check(
 			fcppt::insert_to_fcppt_string(
 				_source
 			),
@@ -94,9 +96,11 @@ truncation_check_cast(
 			)
 		);
 
-	return *dest;
+	return
+		*dest;
 }
 
+}
 }
 
 #endif

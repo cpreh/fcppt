@@ -4,8 +4,8 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_IMPL_BAD_TRUNCATION_CHECK_CAST_HPP_INCLUDED
-#define FCPPT_IMPL_BAD_TRUNCATION_CHECK_CAST_HPP_INCLUDED
+#ifndef FCPPT_CAST_IMPL_BAD_TRUNCATION_CHECK_HPP_INCLUDED
+#define FCPPT_CAST_IMPL_BAD_TRUNCATION_CHECK_HPP_INCLUDED
 
 #include <fcppt/string.hpp>
 #include <fcppt/text.hpp>
@@ -16,7 +16,7 @@
 
 
 inline
-fcppt::bad_truncation_check_cast::bad_truncation_check_cast(
+fcppt::cast::bad_truncation_check::bad_truncation_check(
 	fcppt::string const &_source_value,
 	std::type_index const &_source,
 	std::type_index const &_destination
@@ -52,16 +52,18 @@ fcppt::bad_truncation_check_cast::bad_truncation_check_cast(
 
 inline
 std::type_index const &
-fcppt::bad_truncation_check_cast::source() const
+fcppt::cast::bad_truncation_check::source() const
 {
-	return source_;
+	return
+		source_;
 }
 
 inline
 std::type_index const &
-fcppt::bad_truncation_check_cast::destination() const
+fcppt::cast::bad_truncation_check::destination() const
 {
-	return destination_;
+	return
+		destination_;
 }
 
 #endif

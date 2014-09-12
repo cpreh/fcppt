@@ -23,6 +23,24 @@ namespace fcppt
 namespace cast
 {
 
+/**
+\brief Converts a type to a similar type of different size
+
+\ingroup fcpptcasts
+
+Converts \a _source to the type specified by \a Dest. Exactly one of
+the following cases must hold:
+
+<ul>
+
+<li>Both types are signed integer types.</li>
+
+<li>Both types are unsigned integer types.</li>
+
+<li>Both types are floating point types.</li>
+
+</ul>
+*/
 template<
 	typename Dest,
 	typename Source

@@ -4,8 +4,8 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/safe_numeric_cast.hpp>
 #include <fcppt/text.hpp>
+#include <fcppt/cast/safe_numeric.hpp>
 #include <fcppt/io/cout.hpp>
 
 
@@ -26,7 +26,7 @@ public:
 
 	// Use a templated constructor here so no implicit conversions take
 	// place when calling the constructor. The implicit conversions will be
-	// done by safe_numeric_cast instead, and the unsafe ones will be
+	// done by safe_numeric instead, and the unsafe ones will be
 	// forbidden.
 	template<
 		typename Other
@@ -37,7 +37,7 @@ public:
 	)
 	:
 		inner_(
-			fcppt::safe_numeric_cast<
+			fcppt::cast::safe_numeric<
 				unsigned long
 			>(
 				_other

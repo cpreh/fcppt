@@ -4,9 +4,9 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/bad_truncation_check_cast.hpp>
 #include <fcppt/text.hpp>
-#include <fcppt/truncation_check_cast.hpp>
+#include <fcppt/cast/bad_truncation_check.hpp>
+#include <fcppt/cast/truncation_check.hpp>
 #include <fcppt/io/cout.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <limits>
@@ -25,7 +25,7 @@ try
 	// implementation.
 	// fcppt::bad_truncation_check_cast will be thrown on failure.
 	unsigned const result(
-		fcppt::truncation_check_cast<
+		fcppt::cast::truncation_check<
 			unsigned
 		>(
 			std::numeric_limits<
@@ -40,7 +40,7 @@ try
 		<< FCPPT_TEXT('\n');
 }
 catch(
-	fcppt::bad_truncation_check_cast const &_error
+	fcppt::cast::bad_truncation_check const &_error
 )
 {
 	fcppt::io::cout()
@@ -58,7 +58,7 @@ try
 	// -1 cannot be represented as an unsigned. This will throw an
 	// fcppt::bad_truncation_check_cast.
 	unsigned const result(
-		fcppt::truncation_check_cast<
+		fcppt::cast::truncation_check<
 			unsigned
 		>(
 			-1
@@ -71,7 +71,7 @@ try
 		<< FCPPT_TEXT('\n');
 }
 catch(
-	fcppt::bad_truncation_check_cast const &_error
+	fcppt::cast::bad_truncation_check const &_error
 )
 {
 	fcppt::io::cout()
