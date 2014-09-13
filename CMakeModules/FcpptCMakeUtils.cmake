@@ -23,6 +23,10 @@ include(
 	CheckCXXCompilerFlag
 )
 
+include(
+	CMakeParseArguments
+)
+
 if(
 	FCPPT_WINE_TOOLCHAIN
 )
@@ -876,17 +880,36 @@ function(
 	fcppt_utils_set_target_compiler_flags
 	TARGET_NAME
 )
+	set(
+		MULTI_ARGS
+		ADDITIONAL_FLAGS
+	)
+
+	cmake_parse_arguments(
+		""
+		""
+		""
+		"${MULTI_ARGS}"
+		${ARGN}
+	)
+
 	target_compile_definitions(
 		${TARGET_NAME}
 		PRIVATE
 		${FCPPT_UTILS_COMPILE_DEFINITIONS}
 	)
 
+	set(
+		COMPILE_OPTIONS
+		${FCPPT_UTILS_COMPILE_OPTIONS}
+		${_ADDITIONAL_FLAGS}
+	)
+
 	set_target_properties(
 		${TARGET_NAME}
 		PROPERTIES
 		COMPILE_OPTIONS
-		"${FCPPT_UTILS_COMPILE_OPTIONS}"
+		"${COMPILE_OPTIONS}"
 	)
 
 	get_target_property(
