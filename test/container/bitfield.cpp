@@ -19,8 +19,8 @@
 #include <fcppt/config/external_begin.hpp>
 #include <boost/test/unit_test.hpp>
 #include <algorithm>
-#include <unordered_set>
 #include <type_traits>
+#include <unordered_set>
 #include <fcppt/config/external_end.hpp>
 
 

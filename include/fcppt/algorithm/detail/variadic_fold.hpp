@@ -8,8 +8,8 @@
 #define FCPPT_ALGORITHM_DETAIL_VARIADIC_FOLD_HPP_INCLUDED
 
 #include <fcppt/config/external_begin.hpp>
-#include <utility>
 #include <type_traits>
+#include <utility>
 #include <fcppt/config/external_end.hpp>
 
 
