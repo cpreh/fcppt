@@ -124,7 +124,6 @@ struct make_literal<
 		typename Fundamental
 	>
 	static
-	constexpr
 	mine::custom_type
 	get(
 		Fundamental const _value
