@@ -3,5 +3,65 @@
 \ingroup fcpptmain
 \brief Literals or polymorphic integer constants
 
-TODO
+
+<table id="toc">
+<tr>
+<td>
+
+<ul>
+	<li>\ref fcpptliteral_motivation</li>
+	<li>\ref fcpptliteral_specialize</li>
+</ul>
+
+</td>
+</tr>
+</table>
+
+\section fcpptliteral_motivation Motivation
+
+In C++, most literals are polymorphic in a sense that they can be implicitly
+converted to different types. For example, <code>0</code> can be used in places
+where <code>nullptr</code> can or to initialize a float to <code>0.f</code>.
+Using literals like this, however, doesn't work to initialize integer-like
+types with explicit constructors or types that require special factory
+functions. This can quickly become a problem in generic code. Consider
+a generic function that tries to divide its argument by two.
+
+\snippet literal.cpp literal_motivation
+
+A lot of types provide an <code>operator/</code> but they can't be implicitly
+converted from literals, for example strong typedefs.
+
+\snippet literal.cpp literal_strong_typedef_1
+
+\section fcpptliteral_specialize Specializing literals
+
+The code above obviously doesn't work, so you might conclude from this example
+that we should change the function half to say <code>T{2}</code> instead of
+<code>2</code>. However, other types like units without quantities in
+Boost.Units can only be initialized by a special factory function. Therefore,
+fcppt provides a customization point which is used to create objects from
+literals. For example, we could have found the following type inside a library:
+
+\snippet literal.cpp literal_custom_type
+
+To make fcppt::literal work with this type, we need to provide a specialization
+for fcppt::make_literal.
+
+\snippet literal.cpp literal_specialize
+
+\section fcpptliteral_using Using literals
+
+In order to make the <code>half</code> function work, we call fcppt::literal.
+
+\snippet literal.cpp literal_half
+
+We can then call our <code>half_2</code> function with <code>custom_type</code>
+
+\snippet literal.cpp literal_use
+
+\note As a general rule of thumb, you should only use literals of type
+<code>int</code> with fcppt::literal but this isn't enforced by the type
+system because it might be too restrictive.
+
 */

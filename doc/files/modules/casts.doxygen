@@ -8,6 +8,7 @@
 <td>
 
 <ul>
+	<li>\ref fcpptcasts_motivation</li>
 	<li>\ref fcpptcasts_special</li>
 	<li>\ref fcpptcasts_safe</li>
 	<li>\ref fcpptcasts_truncation_check</li>

@@ -141,6 +141,14 @@ fcppt::optional is spread out across various header files.
 <td>Contains \link fcppt::from_optional \endlink.</td>
 </tr>
 <tr>
+<td><code>maybe.hpp</code></td>
+<td>Contains \link fcppt::maybe \endlink.</td>
+</tr>
+<tr>
+<td><code>maybe_void.hpp</code></td>
+<td>Contains \link fcppt::maybe_void \endlink.</td>
+</tr>
+<tr>
 <td><code>optional_bind.hpp</code></td>
 <td>Contains \link fcppt::optional_bind \endlink.</td>
 </tr>
