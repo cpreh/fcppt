@@ -13,6 +13,11 @@
 #include <fcppt/config/external_end.hpp>
 
 
+namespace fcppt
+{
+namespace cast
+{
+
 /**
 \brief Statically converts a pointer to a base class to a pointer to a derived
 class
@@ -23,11 +28,6 @@ Converts \a _source to the pointer type specified by \a Dest. This cast is
 unsafe and should only be used if the \a _source has dynamic type \a Dest.
 Consider using fcppt::cast::dynamic instead.
 */
-namespace fcppt
-{
-namespace cast
-{
-
 template<
 	typename Dest,
 	typename Source

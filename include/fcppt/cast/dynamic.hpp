@@ -36,7 +36,7 @@ involved.
 
 The following example shows how this function can be used:
 
-\snippet dynamic_cast.cpp dynamic_cast_
+\snippet dynamic_cast.cpp dynamic_cast
 
 \param _src The source reference to cast from
 
@@ -94,7 +94,7 @@ dynamic(
 \ingroup fcpptcasts
 
 This function is the complement to the version of
-<code>fcppt::dynamic_cast_</code> taking references. It doesn't do anything
+<code>fcppt::cast::dynamic</code> taking references. It doesn't do anything
 special, which is to convert \a _src to \a Dest using <code>dynamic_cast</code>.
 Both \a Dest and the type of \a _src are pointer types.
 

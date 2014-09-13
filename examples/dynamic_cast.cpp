@@ -4,7 +4,7 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-//! [dynamic_cast_]
+//! [dynamic_cast]
 
 #include <fcppt/text.hpp>
 #include <fcppt/cast/bad_dynamic.hpp>
@@ -64,41 +64,10 @@ f()
 }
 
 }
-//! [dynamic_cast_]
+//! [dynamic_cast]
 
-#include <fcppt/try_dynamic_cast.hpp>
-
-namespace
-{
-
-//! [try_dynamic_cast]
-void
-g()
-{
-	derived1 d1;
-
-	base &b(
-		d1
-	);
-
-	// try to donvert &b into a pointer to derived1 const
-	// and declare a new variable named ptr to hold the result
-	FCPPT_TRY_DYNAMIC_CAST(
-		derived1 const *,
-		ptr,
-		&b
-	)
-		fcppt::io::cout()
-			<< ptr
-			<< FCPPT_TEXT('\n');
-}
-//! [try_dynamic_cast]
-
-}
-
-int main()
+int
+main()
 {
 	f();
-
-	g();
 }

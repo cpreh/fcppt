@@ -14,9 +14,14 @@ namespace fcppt
 {
 
 /**
-\brief Return the value contained in an optional or a default value
+\brief Returns the value contained in an optional or a default value
 
 \ingroup fcpptoptional
+
+If \a _optional is set to x, then x is returned. Otherwise, the result of \a
+_default is returned.
+
+\tparam Func Must be a function of type <code>Type ()</code>
 */
 template<
 	typename Type,

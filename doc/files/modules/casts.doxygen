@@ -8,9 +8,10 @@
 <td>
 
 <ul>
+	<li>\ref fcpptcasts_special</li>
+	<li>\ref fcpptcasts_safe</li>
+	<li>\ref fcpptcasts_truncation_check</li>
 	<li>\ref fcpptcasts_dynamic_casting</li>
-	<li>\ref fcpptcasts_truncation_check_cast</li>
-	<li>\ref fcpptcasts_safe_conversions</li>
 </ul>
 
 </td>
@@ -22,143 +23,120 @@
 C++ offers four different casts: <code>static_cast</code>,
 <code>const_cast</code>, <code>reinterpret_cast</code> and
 <code>dynamic_cast</code> which cover a wide area of explicit conversions.
-Some conversions can only be done by casts, e.g.  <code>dynamic_cast</code> to
+Some conversions can only be done by casts, e.g. <code>dynamic_cast</code> to
 cast in a polymorphic class hierarchy or <code>reinterpret_cast</code> to
-access the bytes of an object, while <code>static_cast</code> can also be used
-to make a lot of otherwise impliict conversions (or coersions) explicit.
-However, <code>static_cast</code> does too many things at once and isn't very
-robust against code changes. Therefore, this module provides more fine-grained
-casts. <code>reinterpret_cast</code> is mostly unsafe to use and is replaced by
-few functions that to casting to bytes. <code>dynamic_cast</code> is wrapped
-for better error messages.
+access the bytes of an object. <code>static_cast</code> can be used to reverse
+implicit conversions or make implicit conversions explicit. Therefore,
+<code>static_cast</code> does too many things at once, often hiding the intent
+of the programmer. Also, <code>static_cast</code> involves no checking which
+can be undesirable.
 
-\section fcpptcasts_special_casts Special Casts
+In order to fix these shortcomings, this module provides special casts, which
+highlight the intent of the programmer, and casts that check for truncation at
+compile time or at runtime.
+
+\section fcpptcasts_special Special Casts
 
 Special casts are used to replace <code>static_cast</code> and
-<code>reinterpret_cast</code> where possible. Common cases where a static cast
-is used include:
-<ul>
-	<li>
-	Casting from signed to unsigned integers and vice versa.
-	</li>
-	<li>
-	Casting from integers to floats and vice versa.
-	</li>
-	<li>
-	Casting from void pointers to other pointers.
-	</lI>
-</ul>
+<code>reinterpret_cast</code> where possible:
 
-\section fcpptcasts_dynamic_casting Dynamic casting
+<table>
+<tr>
+	<td>
+	Casting between signed and unsigned integers
+	</td>
+	<td>
+	fcppt::cast::to_signed, fcppt::cast::to_unsigned
+	</td>
+</tr>
+<tr>
+	<td>
+	Casting between similar types of different sizes
+	</td>
+	<td>
+	fcppt::cast::size
+	</td>
+</tr>
+<tr>
+	<td>
+	Casting between floats and integers
+	</td>
+	<td>
+	fcppt::cast::int_to_float, fcppt::cast::float_to_int
+	</td>
+</tr>
+<tr>
+	<td>
+	Casting between enums and integers
+	</td>
+	<td>
+	fcppt::cast::int_to_enum, fcppt::cast::enum_to_int, fcppt::cast::enum_to_underlying
+	</td>
+</tr>
+<tr>
+	<td>
+	Casting between objects in a class hierarchy
+	</td>
+	<td>
+	fcppt::cast::static_downcast, fcppt::cast::static_downcast_ptr
+	</td>
+</tr>
+<tr>
+	<td>
+	Casting from pointers to void
+	</td>
+	<td>
+	fcppt::cast::from_void_ptr
+	</td>
+</tr>
+<tr>
+	<td>
+	Casting to a byte array
+	</td>
+	<td>
+	fcppt::cast::to_char_ptr
+	</td>
+</tr>
+</table>
 
-TODO: Rewrite this and integrate fcppt::cast.
+Here is a small example:
 
-Let's say you have the following extremely simple class hierarchy:
+\snippet casts.cpp float_to_int
 
-\code
-class base
-{
-	// Just to make the base class polymorphic
-	virtual ~base() {}
-};
+An important thing to note is that these casts can't be used with the wrong
+types on accident:
 
-class derived : public base
-{
-};
+\snippet casts.cpp to_unsigned
 
-int main()
-{
-	derived most_derived;
-	base &base_ref = most_derived;
+\section fcpptcasts_safe Safe conversions
 
-	// More to come...
-}
-\endcode
+fcppt::cast::safe_numeric is a cast that doesn't do any runtime checking (as
+opposed to fcppt::cast::truncation_check). Instead, it checks at compile time
+which conversions between arithmetic types are safe. See
+fcppt::cast::safe_numeric for a detailed description on which conditions must
+hold in order for the cast to compile.
 
-In C++, when you have a base class and want to "get to" a derived class, you have three options:
+The following example shows how a class's constructor can be strengthened by
+fcppt::cast::safe_numeric:
 
-<ul>
-	<li>
-	<strong><code>static_cast</code></strong>: This is the unsafest cast of
-	them all. If it fails, you get undefined behaviour (meaning you
-	application will crash at a random place):
+\snippet safe_numeric_cast.cpp safe_numeric_cast_class
 
-	\code
-	derived &d = static_cast<derived &>(base_ref);
-	\endcode
+Here are some examples of how the constructor can and can't be called:
 
-	Because it does no error-checking, however, this cast will be the
-	fastest. You can do it when you're sure the base class reference you
-	have is really pointing to a derived class.
-	</li>
-	<li>
-	<strong><code>dynamic_cast</code> with pointers</strong>: If you're not
-	sure that the base class reference you have is really pointing to a
-	derived class <code>derived</code>, you can do an error-checking test
-	such as the dynamic cast with pointers:
+\snippet safe_numeric_cast.cpp safe_numeric_cast_objects
 
-	\code
-	derived *d = dynamic_cast<derived *>(base_ref);
+fcppt::cast::safe is another cast that extends the set of types that
+fcppt::cast::safe_numeric can cast. If the types are both arithmetic types,
+then they will be converted using fcppt::cast::safe_numeric, otherwise they
+must be implicitly convertible. This is used for constructing strong typedefs,
+see
+\link
+fcpptstrongtypedef strong typedefs\endlink.
 
-	if(d)
-		std::cout << "Yeah, it worked!\n";
-	else
-		std::cout << "Ooops, wrong type\n";
-	\endcode
+\section fcpptcasts_truncation_check Checking truncation
 
-	This is still pretty fast and it's safer. But you have to use pointers, which is pretty ugly.
-	</li>
-	<li>
-	<strong><code>dynamic_cast</code> with references</strong>: If you
-	replace the pointers in the above example by references, you get the
-	third method of casting:
-
-	\code
-	derived &d = dynamic_cast<derived &>(base_ref);
-	\endcode
-
-	This is still safe. Why? Well, it'll throw an exception
-	(<code>std::%bad_cast</code>) if the cast doesn't work. This, however,
-	might not be what you want, for several reasons:
-
-	For one, the exception gives you absolutely no information about what
-	went wrong. But what you might want to know, for example, is which type
-	failed to convert to which other type?
-
-	Also, you cannot use this cast in an <code>if</code> statement. You
-	have to use either pointers or a <code>catch</code> block to achieve
-	that.
-	</li>
-</ul>
-
-For these reasons, fcppt provides helpers for dynamic-casting. To work around
-the ugly pointer cast, there is fcppt::optional_dynamic_cast which returns an
-fcppt::optional.
-
-To provide a little more information on the types for the reference
-<code>dynamic_cast</code>, there is fcppt::dynamic_cast_ (mind the
-underscore!).
-
-
-\section fcpptcasts_truncation_check_cast Checking truncation
-
-C++ defines several fundamental integral types: <code>unsigned char, signed
-char, char, short, unsigned short, int, unsigned int, long and unsigned
-long</code> ( and for <em>C++11</em> additionally <code>long long and unsigned
-long long</code>).
-
-Also, there are <code>std::size_t and std::ptrdiff_t</code> which can even be
-different from every type mentioned above.
-
-Sometimes, it is necessary to convert between these types, which is dangerous
-if the conversion doesn't preserve the original value. This can happen if the
-result (as a magnitude) doesn't fit into the destination type, or if signedness
-cannot be preserved. If the destination type is signed, the result is even
-implementation-defined if the value cannot be preserved, which is especially
-dangerous.
-
-To automatically check for such conditions, fcppt provides
-fcppt::truncation_check_cast.
+fcppt::cast::truncation_check complements fcppt::cast::safe_numeric by checking
+at runtime if a conversion truncates.
 
 In the following example, it is tested if the biggest <code>unsigned
 long</code> value fits into an <code>unsigned int</code>. This might be true,
@@ -170,39 +148,25 @@ Truncating conversions of negative values are also detected.
 
 \snippet truncation_check_cast.cpp truncation_check_cast_negative
 
-\section fcpptcasts_safe_conversions Safe conversions
+\section fcpptcasts_dynamic_casting Dynamic casting
 
-In C++, almost every fundamental type is implicitly convertible to almost every
-other fundamental type. For example, all arithmetic types can be implicitly
-converted into each other, which means integers to floats, floats to integers,
-bigger to smaller types, etc.
+<code>dynamic_cast</code> can cast between pointers or references to objects in
+a class hierarchy. The cast can fail at runtime in which case the null pointer
+is returned for pointers and <code>bad_cast</code> is thrown for references.
+fcppt::cast::dynamic improves the latter case by throwing an exception that
+encapsulates the <code>std::type_index</code> objects of the source and
+destination types.
 
-The major problem with this is that most of these conversions don't preserve
-values (see also \ref fcpptcasts_truncation_check_cast for problems that can
-occur when converting between different integer types). Conversions from
-integers to floats and vice versa almost always lose some part of the value.
+\snippet dynamic_cast.cpp dynamic_cast
 
-fcppt::safe_numeric_cast is a cast that doesn't do any runtime checking (as
-opposed to fcppt::truncation_check_cast) but it checks at compile time which
-conversions between arithmetic types are safe, see fcppt::safe_numeric_cast for
-a detailed description which conditions must hold true in order for the cast to
-compile.
+In case dynamic casts are expected to fail, it is more convenient to return an
+optional instead. This is done by fcppt::cast::try_dynamic.
 
-The following example shows how a class's constructor can be strengthened by
-fcppt::safe_numeric_cast :
-
-\snippet safe_numeric_cast.cpp safe_numeric_cast_class
-
-Here are some examples of how the constructor can and can't be called:
-
-\snippet safe_numeric_cast.cpp safe_numeric_cast_objects
-
-fcppt::safe_cast is another cast that extends the set of types that
-fcppt::safe_numeric_cast can cast. If the types are both arithmetic types, then
-they will be converted using fcppt::safe_numeric_cast, otherwise they must be
-implicitly convertible. This is used for constructing strong typedefs,
-see
-\link
-fcpptstrongtypedef strong typedefs\endlink.
-
+\snippet casts.cpp try_dynamic
 */
+
+namespace fcppt
+{
+/// Cast helpers which provide more type information or do additional checks
+namespace cast {}
+}

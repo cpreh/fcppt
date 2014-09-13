@@ -139,7 +139,6 @@ set(
 	examples/mpl/various.cpp
 	examples/noncopyable.cpp
 	examples/optional.cpp
-	examples/optional_dynamic_cast.cpp
 	examples/output_tm.cpp
 	examples/preprocessor/printing.cpp
 	examples/preprocessor/warning.cpp
@@ -288,6 +287,7 @@ set(
 	include/fcppt/cast/to_unsigned.hpp
 	include/fcppt/cast/to_void.hpp
 	include/fcppt/cast/truncation_check.hpp
+	include/fcppt/cast/try_dynamic.hpp
 	include/fcppt/cast_to_enum.hpp
 	include/fcppt/char_type.hpp
 	include/fcppt/check_literal_conversion.hpp
@@ -890,6 +890,8 @@ set(
 	include/fcppt/math/vector/std_hash.hpp
 	include/fcppt/math/vector/structure_cast.hpp
 	include/fcppt/math/vector/unit.hpp
+	include/fcppt/maybe.hpp
+	include/fcppt/maybe_void.hpp
 	include/fcppt/micro_version.hpp
 	include/fcppt/minor_version.hpp
 	include/fcppt/mpl/all_of.hpp
@@ -931,7 +933,6 @@ set(
 	include/fcppt/optional_bind_construct.hpp
 	include/fcppt/optional_comparison.hpp
 	include/fcppt/optional_decl.hpp
-	include/fcppt/optional_dynamic_cast.hpp
 	include/fcppt/optional_fwd.hpp
 	include/fcppt/optional_impl.hpp
 	include/fcppt/optional_ref_compare.hpp
@@ -1103,7 +1104,6 @@ set(
 	include/fcppt/to_std_string_locale.hpp
 	include/fcppt/to_std_wstring.hpp
 	include/fcppt/to_std_wstring_locale.hpp
-	include/fcppt/try_dynamic_cast.hpp
 	include/fcppt/type_name.hpp
 	include/fcppt/type_name_from_index.hpp
 	include/fcppt/type_name_from_info.hpp

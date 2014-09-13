@@ -5,6 +5,7 @@
 
 
 #include <fcppt/from_optional.hpp>
+#include <fcppt/maybe.hpp>
 #include <fcppt/optional_bind.hpp>
 #include <fcppt/optional_bind_construct.hpp>
 #include <fcppt/optional_impl.hpp>
@@ -132,9 +133,11 @@ void
 from_optional()
 {
 //! [from_optional]
-	typedef fcppt::optional<
+	typedef
+	fcppt::optional<
 		unsigned
-	> optional_uint;
+	>
+	optional_uint;
 
 	unsigned const value{
 		fcppt::from_optional(
@@ -150,6 +153,43 @@ from_optional()
 //! [from_optional]
 }
 
+void
+maybe()
+{
+//! [maybe]
+	typedef
+	fcppt::optional<
+		int
+	>
+	optional_int;
+
+	std::string const result{
+		fcppt::maybe(
+			optional_int(),
+			[]{
+				// This is returned if the optional is empty
+				return
+					std::string{
+						"nothing"
+					};
+			},
+			[](
+				int const _val
+			)
+			{
+				// This is returned if the optional contains _val
+				return
+					std::to_string(
+						_val
+					);
+			}
+		)
+	};
+
+	std::cout << result << '\n';
+//! [maybe]
+}
+
 }
 
 int
@@ -162,4 +202,6 @@ main()
 	optional_bind();
 
 	from_optional();
+
+	maybe();
 }

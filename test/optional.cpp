@@ -8,6 +8,8 @@
 #include <fcppt/dynamic_optional_cast.hpp>
 #include <fcppt/from_optional.hpp>
 #include <fcppt/make_unique_ptr.hpp>
+#include <fcppt/maybe.hpp>
+#include <fcppt/maybe_void.hpp>
 #include <fcppt/noncopyable.hpp>
 #include <fcppt/optional.hpp>
 #include <fcppt/optional_bind.hpp>
@@ -27,7 +29,8 @@
 #include <fcppt/config/external_end.hpp>
 
 
-template class
+template
+class
 fcppt::optional<
 	int
 >;
@@ -975,5 +978,125 @@ FCPPT_PP_POP_WARNING
 		x
 		==
 		100
+	);
+}
+
+FCPPT_PP_PUSH_WARNING
+FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
+
+BOOST_AUTO_TEST_CASE(
+	maybe
+)
+{
+FCPPT_PP_POP_WARNING
+	typedef
+	fcppt::optional<
+		int
+	>
+	optional_int;
+
+	BOOST_CHECK(
+		fcppt::maybe(
+			optional_int(
+				10
+			),
+			[]
+			{
+				return
+					std::string{};
+			},
+			[](
+				int const _val
+			)
+			{
+				return
+					std::to_string(
+						_val
+					);
+			}
+		)
+		==
+		"10"
+	);
+
+	BOOST_CHECK(
+		fcppt::maybe(
+			optional_int(),
+			[]
+			{
+				return
+					std::string(
+						"42"
+					);
+			},
+			[](
+				int
+			)
+			{
+				return
+					std::string{};
+			}
+		)
+		==
+		"42"
+	);
+}
+
+FCPPT_PP_PUSH_WARNING
+FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
+
+BOOST_AUTO_TEST_CASE(
+	maybe_void
+)
+{
+FCPPT_PP_POP_WARNING
+	typedef
+	fcppt::optional<
+		int
+	>
+	optional_int;
+
+	int result{
+		0
+	};
+
+	fcppt::maybe_void(
+		optional_int(
+			10
+		),
+		[
+			&result
+		](
+			int const _val
+		)
+		{
+			result =
+				_val;
+		}
+	);
+
+	BOOST_CHECK(
+		result
+		==
+		10
+	);
+
+	fcppt::maybe_void(
+		optional_int(),
+		[
+			&result
+		](
+			int const _val
+		)
+		{
+			result =
+				_val;
+		}
+	);
+
+	BOOST_CHECK(
+		result
+		==
+		10
 	);
 }

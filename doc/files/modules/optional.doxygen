@@ -110,6 +110,11 @@ optional by either taking its value or returning a default value.
 
 \snippet optional.cpp from_optional
 
+An even more general function is fcppt::maybe which either returns a default
+value or transforms the value inside an optional.
+
+\snippet optional.cpp maybe
+
 \section optional_headers Header files
 
 fcppt::optional is spread out across various header files.

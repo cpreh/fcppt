@@ -681,6 +681,8 @@ set(
 	include/fcppt/math/vector/std_hash.hpp
 	include/fcppt/math/vector/structure_cast.hpp
 	include/fcppt/math/vector/unit.hpp
+	include/fcppt/maybe.hpp
+	include/fcppt/maybe_void.hpp
 	include/fcppt/micro_version.hpp
 	include/fcppt/minor_version.hpp
 	include/fcppt/mpl/all_of.hpp
@@ -722,7 +724,6 @@ set(
 	include/fcppt/optional_bind_construct.hpp
 	include/fcppt/optional_comparison.hpp
 	include/fcppt/optional_decl.hpp
-	include/fcppt/optional_dynamic_cast.hpp
 	include/fcppt/optional_fwd.hpp
 	include/fcppt/optional_impl.hpp
 	include/fcppt/optional_ref_compare.hpp
@@ -894,7 +895,6 @@ set(
 	include/fcppt/to_std_string_locale.hpp
 	include/fcppt/to_std_wstring.hpp
 	include/fcppt/to_std_wstring_locale.hpp
-	include/fcppt/try_dynamic_cast.hpp
 	include/fcppt/type_name.hpp
 	include/fcppt/type_name_from_index.hpp
 	include/fcppt/type_name_from_info.hpp
