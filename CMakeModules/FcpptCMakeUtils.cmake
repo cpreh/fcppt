@@ -523,13 +523,9 @@ function(
 			)
 		endif()
 	endforeach()
-
-	unset(
-		CUR_EXT
-	)
 endfunction()
 
-macro(
+function(
 	fcppt_utils_add_source_groups
 	ALL_FILES
 )
@@ -565,9 +561,9 @@ macro(
 			"${ALL_FILES}"
 		)
 	endif()
-endmacro()
+endfunction()
 
-macro(
+function(
 	fcppt_utils_append_source_dir
 	FILES
 	RESULT
@@ -581,23 +577,25 @@ macro(
 			${FCPPT_UTILS_PROJECT_SOURCE_DIR}/${CUR_FILE}
 		)
 
-		set(
+		list(
+			APPEND
 			${RESULT}
-			${${RESULT}}
 			${WHOLE_FILE}
 		)
 	endforeach()
-endmacro()
 
-macro(
+	set(
+		${RESULT}
+		${${RESULT}}
+		PARENT_SCOPE
+	)
+endfunction()
+
+function(
 	fcppt_utils_append_source_dir_and_make_groups
 	FILES
 	RESULT
 )
-	unset(
-		TEMP_RESULT
-	)
-
 	foreach(
 		CUR_FILE
 		${FILES}
@@ -627,26 +625,27 @@ macro(
 			${WHOLE_FILE}
 		)
 
-		set(
+		list(
+			APPEND
 			TEMP_RESULT
-			${TEMP_RESULT}
 			${WHOLE_FILE}
 		)
 	endforeach()
 
 	set(
 		${RESULT}
-		"${${RESULT}};${TEMP_RESULT}"
+		"${TEMP_RESULT}"
+		PARENT_SCOPE
 	)
 
 	if(
 		FCPPT_UTILS_BUILD_HEADERS
 	)
 		fcppt_utils_add_headers(
-			"${${RESULT}}"
+			"${TEMP_RESULT}"
 		)
 	endif()
-endmacro()
+endfunction()
 
 set(
 	FCPPT_UTILS_TARGETS_CONFIG
@@ -678,7 +677,7 @@ function(
 	)
 endfunction()
 
-macro(
+function(
 	fcppt_utils_export_install_target
 	TARGETNAME
 )
@@ -698,7 +697,7 @@ macro(
 		EXPORT
 		"${FCPPT_UTILS_TARGETS_CONFIG}"
 	)
-endmacro()
+endfunction()
 
 set(
 	FCPPT_UTILS_SOURCE_INCLUDE_DIR
@@ -798,7 +797,7 @@ function(
 	endif()
 endfunction()
 
-macro(
+function(
 	fcppt_utils_handle_so_version
 	CACHE_VAR
 	OUT_VAR
@@ -820,14 +819,16 @@ macro(
 		set(
 			"${OUT_VAR}"
 			"${DEFAULT_VERSION}"
+			PARENT_SCOPE
 		)
 	else()
 		set(
 			"${OUT_VAR}"
 			"${${CACHE_VAR}}"
+			PARENT_SCOPE
 		)
 	endif()
-endmacro()
+endfunction()
 
 function(
 	fcppt_utils_set_so_version
