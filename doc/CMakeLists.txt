@@ -119,6 +119,7 @@ set(
 	examples/homogenous_pair.cpp
 	examples/io/endianness.cpp
 	examples/io/scoped_rdbuf.cpp
+	examples/literal.cpp
 	examples/log.cpp
 	examples/log/complex.cpp
 	examples/log/context.cpp

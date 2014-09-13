@@ -1,6 +1,88 @@
 /**
 \page older_changes Older Changes
 
+\section changes_changes_to_012 Changes from 0.11.1 to 0.12.0
+
+\subsection changaes_general_to_012 General changes
+
+<ul>
+
+<li>Expose cmake targets from the build directory and when installing. This
+should make it a lot easier to use fcppt from other cmake based projects. See
+\ref requirements_download_installation_using_fcppt </li>
+
+<li>Some updates for VC++11, mostly warning fixes.</li>
+
+<li>Some updates for gcc-4.8 trunk, also mostly warning fixes.</li>
+
+</ul>
+
+\subsection changes_added_functionality_to_012 Added functionality
+
+<ul>
+
+<li>Automatically set <code>CMAKE_INSTALL_LIBDIR</code> which some
+distributions set to handle multilib.</li>
+
+<li>Expose fcppt::math::is_static_storage</li>
+
+<li>Added fcppt::math::box::expand and fcppt::math::box::shrink</li>
+
+<li>Added fcppt::math::box::extend_bounding_box</li>
+
+<li>Added fcppt::container::tree::depth</li>
+
+<li>Added fcppt::algorithm::join to join two containers into a new one</li>
+
+<li>Added typedefs for <code>N</code> and <code>M</code> template parameters
+for matrix</li>
+
+<li>Added fcppt::assign::make_map as a convenience wrapper for
+fcppt::assign::make_container so that you don't have to call
+<code>std::make_pair</code></li>
+
+<li>Added fcppt::mpl::all_of</li>
+
+<li>Added fcppt::math::step</li>
+
+<li>Added fcppt::math::matrix::transform_point and fcppt::math::matrix::transform_direction to multiply a 4x4 matrix by a 3-dimensinal point or direction vector, respectively.</li>
+
+<li>Added fcppt::math::matrix::exponential_pade to calculate the exponential of a matrix using the Pade algorithm.</li>
+
+<li>Added fcppt::math::matrix::logarithm to calculate the logarithm of a matrix.</li>
+
+</ul>
+
+\subsection changes_removed_from_libraries_to_012 Removed functionality
+
+<ul>
+
+<li>Removed <code>include_windows.hpp</code> from public includes</li>
+
+<li>Removed <code>fcppt.thread</code>. The purpose of <code>fcppt.thread</code>
+was to provide sleeping with a steady clock and to call terminate on joinable
+threads upon destruction. Both issues have been fixed in
+<code>Boost.Thread</code> as of <code>boost-1.52.0</code></li>
+
+</ul>
+
+\subsection changes_bugfixes_to_012 Bugfixes
+
+<ul>
+
+<li>Fixed a bug in fcppt::unique_ptr::reset </li>
+
+<li>Fixed assigning of math views (like matrix's row view)</li>
+
+<li>Reduced smart pointer include dependencies</li>
+
+<li>Don't use <code>-pthread</code> if not necessary</li>
+
+<li>Prefer newer boost versions over older ones. We also don't set
+<code>Boost_ADDITIONAL_VERSIONS</code> anymore.</li>
+
+</ul>
+
 \section changes_changes_to_011_1 Changes from 0.11 to 0.11.1
 
 This release is mainly a bugfix release.

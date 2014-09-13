@@ -35,10 +35,8 @@
 
 fcppt needs the following at build time:
 <ul>
-	<li><a href="http://www.cmake.org">>= cmake-2.6</a></li>
+	<li><a href="http://www.cmake.org">>= cmake-2.8.12</a></li>
 	<li><a href="http://www.boost.org">>= boost-1.47</a></li>
-	<li>A compiler that implements <a
-	href="http://open-std.org/JTC1/SC22/WG21/docs/papers/2005/n1836.pdf">tr1</a></li>
 </ul>
 
 To build the documentation, you also need <a href="http://www.doxygen.org/">>=
@@ -49,21 +47,20 @@ doxygen-1.7.5</a>.
 The following platforms are tested by us:
 
 <ul>
-	<li>gcc-4.6.3 (Gentoo Linux, x86)</li>
-	<li>gcc-4.7.2 (Gentoo Linux, amd64)</li>
-	<li>clang-3.1 (Gentoo Linux, amd64)</li>
-	<li>clang trunk (Gentoo Linux, amd64)</li>
-	<li>VC++ 2010 SP1 (Windows XP x86 and Windows 7 amd64)</li>
-	<li>VC++ 2011 (Windows 7 amd64)</li>
+	<li>gcc-4.8.3 (Gentoo Linux)</li>
+	<li>gcc-4.9.1 (Gentoo Linux)</li>
+	<li>gcc-4.8.1 (MinGW)</li>
+	<li>clang trunk (Gentoo Linux)</li>
 </ul>
 
-The list does not mean that fcppt won't work on other platforms.
+fcppt needs a C++11 conforming compiler which probably excludes everything
+older than gcc-4.8.1 and clang-3.4.
 
 \section requirements_download_installation_download Download
 
-The latest fcppt release is 0.12.0. Get it <a
-href="http://fcppt.org/downloads/fcppt-0.12.0.tar.bz2">here</a> (<a
-href="http://fcppt.org/downloads/fcppt-0.12.0.tar.bz2.digest">SHA1</a>).
+The latest fcppt release is 1.0.0. Get it <a
+href="http://fcppt.org/downloads/fcppt-1.0.0.tar.bz2">here</a> (<a
+href="http://fcppt.org/downloads/fcppt-1.0.0.tar.bz2.digest">SHA1</a>).
 
 fcppt is available through our public Git Repository:
 
@@ -74,47 +71,6 @@ Gentoo ebuilds are available in Freundlich's overlay at
 <a href="git://github.com/freundlich/freundlich-gentoo.git">git://github.com/freundlich/freundlich-gentoo.git</a>
 
 \section requirements_download_installation_building_and_installation Building and Installation
-
-\subsection requirements_download_installation_building_and_installation_windows Windows
-
-Since we're using cmake on all platforms, building fcppt on Windows follows
-"the usual" cmake practice. If you've never used cmake before, you should read
-up on it. In a nutshell, cmake is a program which generates build files for
-different operating systems and IDEs. On Windows, cmake can generate a Visual
-Studio solution file, which you can then use to build the library.
-
-We're intentionally <em>not</em> providing pre-built solutions or project files
-for Visual Studio because these files depend on your build configuration: which
-boost version you have, which architecture you are building on, which build
-type you are using, and so on. We would have to create lots of solution files,
-which is simply unpractical, and invoking cmake is pretty simple. For the same
-reason, we're not providing pre-built binaries. Sorry.
-
-Download and extract the code and invoke either the cmake gui or the
-command-line version inside your designated build directory. Set the generator
-to the IDE you're using ("Visual Studio 10 Win64", for example). Also, explore
-the other build flags and set them to your desired configuration (for example,
-if you want to use fcppt as a static library, be sure to turn on
-<code>ENABLE_STATIC</code>). This is what your configuration might look like in
-the end:
-
-<pre>
-<code>
-cmake ^
-        -D ENABLE_TEST=OFF ^
-        -D ENABLE_EXAMPLES=OFF ^
-        -D ENABLE_SHARED=OFF ^
-        -D ENABLE_STATIC=ON ^
-        -D CMAKE_BUILD_TYPE="Release" ^
-        -D Boost_USE_STATIC_LIBS=ON ^
-        -G "Visual Studio 10 Win64" ^
-	$fcppt_root_directory
-</code>
-</pre>
-
-Then, open the generated solution in Visual Studio and build the library.
-
-\subsection requirements_download_installation_building_and_installation_linux_and_osx Linux and OSX
 
 First, download and extract the tarball or clone the git repository. Then, open
 a terminal and switch to the directory where fcppt is located. Now, while it
