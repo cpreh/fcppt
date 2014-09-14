@@ -71,7 +71,6 @@ set(
 	doc/files/modules/math/box.doxygen
 	doc/files/modules/math/dim.doxygen
 	doc/files/modules/math/matrix.doxygen
-	doc/files/modules/math/quaternion.doxygen
 	doc/files/modules/math/vector.doxygen
 	doc/files/modules/mpl.doxygen
 	doc/files/modules/optional.doxygen
@@ -406,14 +405,12 @@ set(
 	include/fcppt/container/grid/spiral_range_fwd.hpp
 	include/fcppt/container/grid/spiral_range_impl.hpp
 	include/fcppt/container/impl/exception.hpp
-	include/fcppt/container/impl/insert_failed.hpp
 	include/fcppt/container/impl/not_found.hpp
 	include/fcppt/container/impl/out_of_range.hpp
 	include/fcppt/container/index_map.hpp
 	include/fcppt/container/index_map_decl.hpp
 	include/fcppt/container/index_map_fwd.hpp
 	include/fcppt/container/index_map_impl.hpp
-	include/fcppt/container/insert_failed.hpp
 	include/fcppt/container/is_raw_vector.hpp
 	include/fcppt/container/is_std_vector.hpp
 	include/fcppt/container/not_found.hpp
@@ -832,14 +829,6 @@ set(
 	include/fcppt/math/next_power_of_2.hpp
 	include/fcppt/math/pi.hpp
 	include/fcppt/math/point_rotate.hpp
-	include/fcppt/math/quaternion/dot.hpp
-	include/fcppt/math/quaternion/from_angle_and_axis.hpp
-	include/fcppt/math/quaternion/from_scalar_and_vector.hpp
-	include/fcppt/math/quaternion/is_normalized.hpp
-	include/fcppt/math/quaternion/normalize.hpp
-	include/fcppt/math/quaternion/to_angle_and_axis.hpp
-	include/fcppt/math/quaternion/to_matrix.hpp
-	include/fcppt/math/quaternion/vector_rotation.hpp
 	include/fcppt/math/rad_to_deg.hpp
 	include/fcppt/math/range_compare.hpp
 	include/fcppt/math/size_type.hpp

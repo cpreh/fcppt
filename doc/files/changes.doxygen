@@ -250,6 +250,8 @@ longer supported.</li>
 
 <li>Removed FCPPT_TRY_DYNAMIC_CAST.</li>
 
+<li>Removed fcppt::math::quaterion.</li>
+
 </ul>
 
 \subsection changes_bugfixes_to_100 Bugfixes

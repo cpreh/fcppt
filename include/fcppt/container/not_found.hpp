@@ -10,13 +10,13 @@
 #include <fcppt/container/exception.hpp>
 #include <fcppt/string.hpp>
 
+
 namespace fcppt
 {
 namespace container
 {
 
 /**
-\brief FIXME
 \ingroup fcpptcontainer
 */
 class not_found
