@@ -19,7 +19,6 @@ set(
 	include/fcppt/algorithm/detail/has_size_reserve.hpp
 	include/fcppt/algorithm/detail/map_concat.hpp
 	include/fcppt/algorithm/detail/map_reserve.hpp
-	include/fcppt/algorithm/detail/ptr_container_erase_pred.hpp
 	include/fcppt/algorithm/detail/variadic_fold.hpp
 	include/fcppt/algorithm/element_not_found.hpp
 	include/fcppt/algorithm/enum_array_fold.hpp
