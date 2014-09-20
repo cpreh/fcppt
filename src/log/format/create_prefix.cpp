@@ -11,7 +11,7 @@
 #include <fcppt/log/format/function.hpp>
 
 
-fcppt::log::format::function const
+fcppt::log::format::function
 fcppt::log::format::create_prefix(
 	fcppt::string const &_prefix
 )

@@ -31,7 +31,7 @@ Creates a formatter that output \a prefix in front.
 \return A new formatter printing \a prefix in front
 */
 FCPPT_SYMBOL
-fcppt::log::format::function const
+fcppt::log::format::function
 create_prefix(
 	fcppt::string const &prefix
 );

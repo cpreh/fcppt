@@ -13,7 +13,7 @@
 #include <fcppt/config/external_end.hpp>
 
 
-fcppt::log::format::function const
+fcppt::log::format::function
 fcppt::log::format::create_inserter(
 	fcppt::string const &_format
 )

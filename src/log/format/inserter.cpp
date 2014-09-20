@@ -9,7 +9,7 @@
 #include <fcppt/log/format/inserter.hpp>
 
 
-fcppt::string const
+fcppt::string
 fcppt::log::format::inserter(
 	fcppt::string const &_format_string,
 	fcppt::string const &_text

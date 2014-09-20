@@ -13,7 +13,7 @@
 #include <fcppt/config/external_end.hpp>
 
 
-fcppt::log::format::function const
+fcppt::log::format::function
 fcppt::log::format::create_chain(
 	fcppt::log::format::function const &_parent,
 	fcppt::log::format::function const &_child

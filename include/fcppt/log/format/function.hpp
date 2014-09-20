@@ -28,7 +28,7 @@ namespace format
 This object gets a string from which it returns a new string
 */
 typedef std::function<
-	fcppt::string const (
+	fcppt::string (
 		fcppt::string const &
 	)
 > function;

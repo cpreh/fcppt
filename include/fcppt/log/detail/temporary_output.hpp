@@ -54,7 +54,7 @@ private:
 		typename T
 	>
 	friend
-	fcppt::log::detail::temporary_output &&
+	fcppt::log::detail::temporary_output
 	operator<<(
 		fcppt::log::detail::temporary_output &&,
 		T const &
@@ -78,7 +78,7 @@ operator<<(
 template<
 	typename T
 >
-fcppt::log::detail::temporary_output &&
+fcppt::log::detail::temporary_output
 operator<<(
 	fcppt::log::detail::temporary_output &&_temp,
 	T const &_arg

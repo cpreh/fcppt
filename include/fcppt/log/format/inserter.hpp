@@ -32,7 +32,7 @@ Inserts \a text into \a format_string using \link fcppt::format \endlink.
 \return The result of the insertion
 */
 FCPPT_SYMBOL
-fcppt::string const
+fcppt::string
 inserter(
 	fcppt::string const &format_string,
 	fcppt::string const &text

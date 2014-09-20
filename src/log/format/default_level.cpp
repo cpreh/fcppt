@@ -12,7 +12,7 @@
 #include <fcppt/log/format/function.hpp>
 
 
-fcppt::log::format::function const
+fcppt::log::format::function
 fcppt::log::format::default_level(
 	fcppt::log::level const _level
 )

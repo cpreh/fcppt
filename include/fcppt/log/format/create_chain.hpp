@@ -36,7 +36,7 @@ function, the other parameter will be returned.
 \warning The behaviour is undefined if both parameters are empty
 */
 FCPPT_SYMBOL
-fcppt::log::format::function const
+fcppt::log::format::function
 create_chain(
 	fcppt::log::format::function const &parent,
 	fcppt::log::format::function const &child

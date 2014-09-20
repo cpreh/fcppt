@@ -32,7 +32,7 @@ Creates a formatter that behaves like \link fcppt::log::format::inserter
 \return A new formatter using \link fcppt::format \endlink with \a format
 */
 FCPPT_SYMBOL
-fcppt::log::format::function const
+fcppt::log::format::function
 create_inserter(
 	fcppt::string const &format
 );
