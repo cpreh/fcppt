@@ -172,6 +172,8 @@ longer supported.</li>
 
 <li>Added fcppt::maybe and fcppt::maybe_void.</li>
 
+<li>Added fcppt::container::get_or_insert.</li>
+
 </ul>
 
 \subsection changes_changed_functionality_to_100 Changed functionality
