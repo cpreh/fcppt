@@ -915,28 +915,13 @@ class noncopyable
 		noncopyable
 	);
 public:
-	explicit
-	noncopyable(
-		std::string const &_value
-	)
-	:
-		value_(
-			_value
-		)
+	noncopyable()
 	{
 	}
 
 	~noncopyable()
 	{
 	}
-
-	std::string const &
-	value() const
-	{
-		return value_;
-	}
-private:
-	std::string value_;
 };
 
 }
@@ -952,9 +937,7 @@ FCPPT_PP_POP_WARNING
 	>
 	optional_string;
 
-	noncopyable test{
-		"123"
-	};
+	noncopyable test{};
 
 	BOOST_CHECK(
 		&*fcppt::optional_bind_construct(
