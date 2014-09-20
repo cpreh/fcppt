@@ -906,6 +906,81 @@ FCPPT_PP_POP_WARNING
 FCPPT_PP_PUSH_WARNING
 FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
 
+namespace
+{
+
+class noncopyable
+{
+	FCPPT_NONCOPYABLE(
+		noncopyable
+	);
+public:
+	explicit
+	noncopyable(
+		std::string const &_value
+	)
+	:
+		value_(
+			_value
+		)
+	{
+	}
+
+	~noncopyable()
+	{
+	}
+
+	std::string const &
+	value() const
+	{
+		return value_;
+	}
+private:
+	std::string value_;
+};
+
+}
+
+BOOST_AUTO_TEST_CASE(
+	optional_bind_ref
+)
+{
+FCPPT_PP_POP_WARNING
+	typedef
+	fcppt::optional<
+		std::string
+	>
+	optional_string;
+
+	noncopyable test{
+		"123"
+	};
+
+	BOOST_CHECK(
+		&*fcppt::optional_bind_construct(
+			optional_string(
+				"42"
+			),
+			[
+				&test
+			](
+				std::string
+			)
+			-> noncopyable &
+			{
+				return
+					test;
+			}
+		)
+		==
+		&test
+	);
+}
+
+
+FCPPT_PP_PUSH_WARNING
+FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
+
 BOOST_AUTO_TEST_CASE(
 	from_optional
 )

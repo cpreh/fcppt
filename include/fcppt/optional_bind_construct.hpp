@@ -48,7 +48,7 @@ optional_bind_construct(
 	typedef
 	fcppt::optional<
 		typename
-		std::decay<
+		std::remove_cv<
 			typename
 			std::result_of<
 				Function(

@@ -51,7 +51,7 @@ optional_bind(
 {
 	typedef
 	typename
-	std::decay<
+	std::remove_cv<
 		typename
 		std::result_of<
 			Function(
