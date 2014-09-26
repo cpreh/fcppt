@@ -206,6 +206,8 @@ longer supported.</li>
 
 <li>Moved most cast functions to the cast namespace.</li>
 
+<li>Changed fcppt::math::vector::fill and fcppt::math::dim::fill to take the vector or dim as template argument.</li>
+
 </ul>
 
 \subsection changes_removed_from_libraries_to_100 Removed functionality

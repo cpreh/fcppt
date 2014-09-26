@@ -7,10 +7,8 @@
 #ifndef FCPPT_MATH_VECTOR_FILL_HPP_INCLUDED
 #define FCPPT_MATH_VECTOR_FILL_HPP_INCLUDED
 
-#include <fcppt/math/size_type.hpp>
 #include <fcppt/math/detail/fill.hpp>
-#include <fcppt/math/vector/object_impl.hpp>
-#include <fcppt/math/vector/static.hpp>
+#include <fcppt/math/vector/is_vector.hpp>
 
 
 namespace fcppt
@@ -23,28 +21,27 @@ namespace vector
 /**
 \brief Constructs a static vector with all components set to a given value
 \ingroup fcpptmathvector
-\tparam N Must be a static dimension
-\tparam T The vector's <code>value_type</code>
+\tparam Vector Must be a vector
 \param _value The value to fill the vector with
 */
 template<
-	math::size_type N,
-	typename T
+	typename Vector
 >
-fcppt::math::vector::static_<
-	T,
-	N
->
+Vector
 fill(
-	T const &_value
+	typename Vector::value_type const &_value
 )
 {
+	static_assert(
+		fcppt::math::vector::is_vector<
+			Vector
+		>::value,
+		"Vector must be a vector"
+	);
+
 	return
 		fcppt::math::detail::fill<
-			fcppt::math::vector::static_<
-				T,
-				N
-			>
+			Vector
 		>(
 			_value
 		);

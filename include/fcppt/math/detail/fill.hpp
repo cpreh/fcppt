@@ -20,7 +20,7 @@ namespace detail
 template<
 	typename Ret
 >
-Ret const
+Ret
 fill(
 	typename Ret::value_type const &_value
 )

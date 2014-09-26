@@ -427,7 +427,7 @@ FCPPT_PP_POP_WARNING
 
 	ui2_vector const vector(
 		fcppt::math::vector::fill<
-			2
+			ui2_vector
 		>(
 			42u
 		)

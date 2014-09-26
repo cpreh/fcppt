@@ -36,7 +36,7 @@ FCPPT_PP_POP_WARNING
 
 	ui2_dim const dim(
 		fcppt::math::dim::fill<
-			2
+			ui2_dim
 		>(
 			42u
 		)
