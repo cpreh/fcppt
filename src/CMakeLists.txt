@@ -147,6 +147,7 @@ set(
 	include/fcppt/container/exception.hpp
 	include/fcppt/container/find_exn.hpp
 	include/fcppt/container/find_opt.hpp
+	include/fcppt/container/get_or_insert.hpp
 	include/fcppt/container/grid/clamp_pos.hpp
 	include/fcppt/container/grid/clamp_signed_pos.hpp
 	include/fcppt/container/grid/comparison.hpp
@@ -266,6 +267,7 @@ set(
 	include/fcppt/detail/noncopyable.hpp
 	include/fcppt/detail/optional_cast.hpp
 	include/fcppt/detail/process_assert.hpp
+	include/fcppt/detail/runtime_enum_function.hpp
 	include/fcppt/detail/strong_typedef/assignment_operator.hpp
 	include/fcppt/detail/strong_typedef/binary_operator.hpp
 	include/fcppt/detail/strong_typedef/cast.hpp
@@ -808,6 +810,7 @@ set(
 	include/fcppt/reference_wrapper_hash_impl.hpp
 	include/fcppt/reference_wrapper_impl.hpp
 	include/fcppt/reference_wrapper_std_hash.hpp
+	include/fcppt/runtime_enum.hpp
 	include/fcppt/scoped_state_machine.hpp
 	include/fcppt/scoped_state_machine_decl.hpp
 	include/fcppt/scoped_state_machine_fwd.hpp
