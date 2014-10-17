@@ -910,6 +910,8 @@ function(
 		PROPERTIES
 		COMPILE_OPTIONS
 		"${COMPILE_OPTIONS}"
+		NO_SYSTEM_FROM_IMPORTED
+		TRUE
 	)
 
 	get_target_property(
