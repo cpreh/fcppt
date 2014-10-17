@@ -5,13 +5,17 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/signal/connection.hpp>
+#ifndef FCPPT_SIGNAL_IMPL_CONNECTION_HPP_INCLUDED
+#define FCPPT_SIGNAL_IMPL_CONNECTION_HPP_INCLUDED
 
-
+inline
 fcppt::signal::connection::connection()
 {
 }
 
+inline
 fcppt::signal::connection::~connection()
 {
 }
+
+#endif

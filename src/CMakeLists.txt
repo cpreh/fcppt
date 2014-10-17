@@ -16,12 +16,14 @@ set(
 	include/fcppt/algorithm/detail/array_init_function.hpp
 	include/fcppt/algorithm/detail/array_map_function.hpp
 	include/fcppt/algorithm/detail/array_push_back_function.hpp
+	include/fcppt/algorithm/detail/enum_array_fold_static_function.hpp
 	include/fcppt/algorithm/detail/has_size_reserve.hpp
 	include/fcppt/algorithm/detail/map_concat.hpp
 	include/fcppt/algorithm/detail/map_reserve.hpp
 	include/fcppt/algorithm/detail/variadic_fold.hpp
 	include/fcppt/algorithm/element_not_found.hpp
 	include/fcppt/algorithm/enum_array_fold.hpp
+	include/fcppt/algorithm/enum_array_fold_static.hpp
 	include/fcppt/algorithm/exception.hpp
 	include/fcppt/algorithm/find_exn.hpp
 	include/fcppt/algorithm/find_if_exn.hpp
@@ -832,6 +834,7 @@ set(
 	include/fcppt/signal/detail/concrete_connection_impl.hpp
 	include/fcppt/signal/detail/connection_base.hpp
 	include/fcppt/signal/detail/enable_if_void.hpp
+	include/fcppt/signal/impl/connection.hpp
 	include/fcppt/signal/object.hpp
 	include/fcppt/signal/object_decl.hpp
 	include/fcppt/signal/object_fwd.hpp
@@ -1043,7 +1046,6 @@ set(
 	src/log/set_levels.cpp
 	src/log/tree_formatter.cpp
 	src/narrow.cpp
-	src/signal/connection.cpp
 	src/string_conv_locale.cpp
 	src/time/ctime.cpp
 	src/time/gmtime.cpp

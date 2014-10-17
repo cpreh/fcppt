@@ -8,9 +8,7 @@
 #ifndef FCPPT_SIGNAL_CONNECTION_HPP_INCLUDED
 #define FCPPT_SIGNAL_CONNECTION_HPP_INCLUDED
 
-#include <fcppt/class_symbol.hpp>
 #include <fcppt/noncopyable.hpp>
-#include <fcppt/symbol.hpp>
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
@@ -34,7 +32,7 @@ FCPPT_PP_DISABLE_GCC_WARNING(-Wnon-virtual-dtor)
 This class must be held onto as long as the connection to the signal should be
 established.
 */
-class FCPPT_CLASS_SYMBOL connection
+class connection
 :
 	public fcppt::signal::detail::connection_base
 {
@@ -42,10 +40,8 @@ class FCPPT_CLASS_SYMBOL connection
 		connection
 	);
 public:
-	FCPPT_SYMBOL
 	connection();
 
-	FCPPT_SYMBOL
 	virtual
 	~connection() = 0;
 };
@@ -54,5 +50,7 @@ FCPPT_PP_POP_WARNING
 
 }
 }
+
+#include <fcppt/signal/impl/connection.hpp>
 
 #endif

@@ -212,6 +212,8 @@ longer supported.</li>
 
 <li>Changed fcppt::math::vector::fill and fcppt::math::dim::fill to take the vector or dim as template argument.</li>
 
+<li>fcppt::signal::connection is now inline, making fcppt.signal header-only.</li>
+
 </ul>
 
 \subsection changes_removed_from_libraries_to_100 Removed functionality
