@@ -40,7 +40,12 @@ generate_symbol_header(
 make_fcppt_library(
 	fcppt_filesystem
 	"${FCPPT_FILESYSTEM_FILES}"
-	"fcppt_core"
-	"${Boost_FILESYSTEM_LIBRARY};${Boost_SYSTEM_LIBRARY}"
-	"${Boost_FILESYSTEM_LIBRARY};${Boost_SYSTEM_LIBRARY}"
+	FCPPT_DEPS
+		fcppt_core
+	OTHER_DEPS
+		${Boost_FILESYSTEM_LIBRARY}
+		${Boost_SYSTEM_LIBRARY}
+	TRANSITIVE_DEPS
+		${Boost_FILESYSTEM_LIBRARY}
+		${Boost_SYSTEM_LIBRARY}
 )

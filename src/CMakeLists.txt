@@ -1078,7 +1078,4 @@ generate_symbol_header(
 make_fcppt_library(
 	fcppt_core
 	"${FCPPT_CORE_FILES}"
-	""
-	""
-	""
 )

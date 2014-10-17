@@ -296,15 +296,35 @@ include_directories(
 	${FCPPT_UTILS_PROJECT_BINARY_DIR}/src/include
 )
 
+include(
+	CMakeParseArguments
+)
+
 function(
 	make_fcppt_library_base
 	TARGETNAME
-	VARIANT
 	CUR_FILES
-	FCPPT_DEPS
-	OTHER_DEPS
-	TRANSITIVE_DEPS
 )
+	set(
+		SINGLE_ARGS
+		VARIANT
+	)
+
+	set(
+		MULTI_ARGS
+		FCPPT_DEPS
+		OTHER_DEPS
+		TRANSITIVE_DEPS
+	)
+
+	cmake_parse_arguments(
+		""
+		""
+		"${SINGLE_ARGS}"
+		"${MULTI_ARGS}"
+		${ARGN}
+	)
+
 	fcppt_utils_append_source_dir_and_make_groups(
 		"${CUR_FILES}"
 		FCPPT_${TARGETNAME}_FILES
@@ -312,7 +332,7 @@ function(
 
 	add_library(
 		${TARGETNAME}
-		${VARIANT}
+		${_VARIANT}
 		${FCPPT_${TARGETNAME}_FILES}
 	)
 
@@ -327,7 +347,7 @@ function(
 
 	fcppt_utils_interface_static_link(
 		${TARGETNAME}
-		${VARIANT}
+		${_VARIANT}
 		"FCPPT_STATIC_LINK"
 	)
 
@@ -345,10 +365,10 @@ function(
 	target_link_libraries(
 		${TARGETNAME}
 		PRIVATE
-		${FCPPT_DEPS}
-		${OTHER_DEPS}
+		${_FCPPT_DEPS}
+		${_OTHER_DEPS}
 		INTERFACE
-		${TRANSITIVE_DEPS}
+		${_TRANSITIVE_DEPS}
 	)
 
 	fcppt_utils_export_install_target(
@@ -360,20 +380,32 @@ function(
 	make_fcppt_library
 	LIBNAME
 	CUR_FILES
-	FCPPT_DEPS
-	OTHER_DEPS
-	TRANSITIVE_DEPS
 )
+	set(
+		MULTI_ARGS
+		FCPPT_DEPS
+		OTHER_DEPS
+		TRANSITIVE_DEPS
+	)
+
+	cmake_parse_arguments(
+		""
+		""
+		""
+		"${MULTI_ARGS}"
+		${ARGN}
+	)
+
+
 	if(
 		ENABLE_SHARED
 	)
 		make_fcppt_library_base(
 			"${LIBNAME}"
-			"SHARED"
 			"${CUR_FILES}"
-			"${FCPPT_DEPS}"
-			"${OTHER_DEPS}"
-			"${TRANSITIVE_DEPS}"
+			VARIANT
+				"SHARED"
+			${ARGN}
 		)
 	endif()
 
@@ -382,21 +414,26 @@ function(
 	)
 		foreach(
 			FCPPTDEP
-			${FCPPT_DEPS}
+			${_FCPPT_DEPS}
 		)
-			set(
+			list(
+				APPEND
 				REAL_FCPPT_DEPS
-				"${REAL_FCPPT_DEPS};${FCPPTDEP}_static"
+				"${FCPPTDEP}_static"
 			)
 		endforeach()
 
 		make_fcppt_library_base(
 			"${LIBNAME}_static"
-			"STATIC"
 			"${CUR_FILES}"
-			"${REAL_FCPPT_DEPS}"
-			"${OTHER_DEPS}"
-			"${TRANSITIVE_DEPS}"
+			VARIANT
+				"STATIC"
+			FCPPT_DEPS
+				${REAL_FCPPT_DEPS}
+			OTHER_DEPS
+				${_OTHER_DEPS}
+			TRANSITIVE_DEPS
+				${_TRANSITIVE_DEPS}
 		)
 	endif()
 endfunction()
