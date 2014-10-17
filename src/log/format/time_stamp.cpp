@@ -13,7 +13,7 @@
 #include <fcppt/time/std_time.hpp>
 
 
-fcppt::string const
+fcppt::string
 fcppt::log::format::time_stamp(
 	fcppt::string const &_text
 )

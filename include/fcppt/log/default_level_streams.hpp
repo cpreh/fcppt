@@ -7,9 +7,9 @@
 #ifndef FCPPT_LOG_DEFAULT_LEVEL_STREAMS_HPP_INCLUDED
 #define FCPPT_LOG_DEFAULT_LEVEL_STREAMS_HPP_INCLUDED
 
-#include <fcppt/symbol.hpp>
 #include <fcppt/io/ostream.hpp>
 #include <fcppt/log/level_stream_array.hpp>
+#include <fcppt/log/symbol.hpp>
 
 
 namespace fcppt
@@ -27,7 +27,7 @@ fcppt::log::format::default_level \endlink as its formatter.
 
 \return A stream array consisting of a default stream for each level
 */
-FCPPT_SYMBOL
+FCPPT_LOG_SYMBOL
 fcppt::log::level_stream_array
 default_level_streams(
 	fcppt::io::ostream &stream

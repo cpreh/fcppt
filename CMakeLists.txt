@@ -446,6 +446,10 @@ add_subdirectory(
 	src/filesystem
 )
 
+add_subdirectory(
+	src/log
+)
+
 if(
 	ENABLE_EXAMPLES
 )

@@ -9,8 +9,8 @@
 
 #include <fcppt/char_type.hpp>
 #include <fcppt/string.hpp>
-#include <fcppt/symbol.hpp>
 #include <fcppt/log/location.hpp>
+#include <fcppt/log/symbol.hpp>
 
 
 namespace fcppt
@@ -35,7 +35,7 @@ delim
 
 \throw fcppt::log::exception if \a text doesn't contain any \a delim
 */
-FCPPT_SYMBOL
+FCPPT_LOG_SYMBOL
 fcppt::log::location
 make_location(
 	fcppt::string const &text,

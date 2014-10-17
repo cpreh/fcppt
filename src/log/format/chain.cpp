@@ -9,7 +9,7 @@
 #include <fcppt/log/format/function.hpp>
 
 
-fcppt::string const
+fcppt::string
 fcppt::log::format::chain(
 	fcppt::log::format::function const &_parent,
 	fcppt::log::format::function const &_child,

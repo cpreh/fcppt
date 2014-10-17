@@ -7,9 +7,9 @@
 #ifndef FCPPT_LOG_PARAMETERS_WITH_CONTEXT_HPP_INCLUDED
 #define FCPPT_LOG_PARAMETERS_WITH_CONTEXT_HPP_INCLUDED
 
-#include <fcppt/symbol.hpp>
 #include <fcppt/log/context_fwd.hpp>
 #include <fcppt/log/location_fwd.hpp>
+#include <fcppt/log/symbol.hpp>
 #include <fcppt/log/parameters/object.hpp>
 
 
@@ -37,7 +37,7 @@ location))</code>.
 
 \return The constructed parameters class
 */
-FCPPT_SYMBOL
+FCPPT_LOG_SYMBOL
 fcppt::log::parameters::object
 with_context(
 	fcppt::log::context &context,

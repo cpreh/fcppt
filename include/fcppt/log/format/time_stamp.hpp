@@ -8,7 +8,7 @@
 #define FCPPT_LOG_FORMAT_TIME_STAMP_HPP_INCLUDED
 
 #include <fcppt/string.hpp>
-#include <fcppt/symbol.hpp>
+#include <fcppt/log/symbol.hpp>
 
 
 namespace fcppt
@@ -31,8 +31,8 @@ fcppt::time::std_time \endlink and formatted by \link fcppt::time::output_tm
 
 \return The formatted string
 */
-FCPPT_SYMBOL
-fcppt::string const
+FCPPT_LOG_SYMBOL
+fcppt::string
 time_stamp(
 	fcppt::string const &text
 );

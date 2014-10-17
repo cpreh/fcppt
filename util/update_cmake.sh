@@ -19,7 +19,6 @@ update_cmake \
 	include/fcppt/error \
 	include/fcppt/impl \
 	include/fcppt/io \
-	include/fcppt/log \
 	include/fcppt/math \
 	include/fcppt/mpl \
 	include/fcppt/number_multiplexer \
@@ -38,8 +37,6 @@ update_cmake \
 	src/error \
 	src/include \
 	src/io \
-	src/log \
-	src/signal \
 	src/time
 
 update_cmake \
@@ -47,6 +44,12 @@ update_cmake \
 	FCPPT_FILESYSTEM_FILES \
 	include/fcppt/filesystem \
 	src/filesystem
+
+update_cmake \
+	src/log/CMakeLists.txt \
+	FCPPT_LOG_FILES \
+	include/fcppt/log \
+	src/log
 
 update_cmake \
 	doc/CMakeLists.txt \

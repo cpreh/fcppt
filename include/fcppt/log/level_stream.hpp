@@ -8,9 +8,9 @@
 #define FCPPT_LOG_LEVEL_STREAM_HPP_INCLUDED
 
 #include <fcppt/optional_impl.hpp>
-#include <fcppt/symbol.hpp>
 #include <fcppt/io/ostream.hpp>
 #include <fcppt/log/level_stream_fwd.hpp>
+#include <fcppt/log/symbol.hpp>
 #include <fcppt/log/detail/temporary_output_fwd.hpp>
 #include <fcppt/log/format/function.hpp>
 
@@ -44,7 +44,7 @@ public:
 
 	\param formatter The formatting to use for this level
 	*/
-	FCPPT_SYMBOL
+	FCPPT_LOG_SYMBOL
 	level_stream(
 		fcppt::io::ostream &stream,
 		fcppt::log::format::function const &formatter
@@ -53,7 +53,7 @@ public:
 	/**
 	\brief Destroys a level stream
 	*/
-	FCPPT_SYMBOL
+	FCPPT_LOG_SYMBOL
 	~level_stream();
 
 	/**
@@ -70,7 +70,7 @@ public:
 	formatter is used first, and is usually provided by the logger object
 	itself.
 	*/
-	FCPPT_SYMBOL
+	FCPPT_LOG_SYMBOL
 	void
 	log(
 		fcppt::log::detail::temporary_output const &output,
@@ -82,7 +82,7 @@ public:
 
 	\param stream The stream to use
 	*/
-	FCPPT_SYMBOL
+	FCPPT_LOG_SYMBOL
 	void
 	sink(
 		fcppt::io::ostream &stream
@@ -91,7 +91,7 @@ public:
 	/**
 	\brief Returns the associated formatter
 	*/
-	FCPPT_SYMBOL
+	FCPPT_LOG_SYMBOL
 	fcppt::log::format::function const &
 	formatter() const;
 private:

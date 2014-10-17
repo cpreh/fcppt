@@ -7,6 +7,7 @@
 #ifndef FCPPT_LOG___HPP_INCLUDED
 #define FCPPT_LOG___HPP_INCLUDED
 
+#include <fcppt/log/symbol.hpp>
 #include <fcppt/log/detail/output_helper.hpp>
 #include <fcppt/log/detail/temporary_output.hpp>
 
@@ -24,7 +25,7 @@ namespace log
 This trampoline refers to an object that has <code>operator << </code>
 overloaded and accepts every input an <code>std::basic_ostream</code> does.
 */
-FCPPT_SYMBOL extern
+FCPPT_LOG_SYMBOL extern
 fcppt::log::detail::output_helper const _;
 
 }

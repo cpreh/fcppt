@@ -6,6 +6,10 @@ fcppt_link_target(
 	fcppt_core
 )
 
+fcppt_link_target(
+	fcppt_log
+)
+
 function(
 	make_fcppt_example
 	SUBNAME
@@ -76,7 +80,7 @@ add_fcppt_example(endianness "${fcppt_core_TARGET}")
 add_fcppt_example(enum "")
 add_fcppt_example(homogenous_pair "${fcppt_core_TARGET}")
 add_fcppt_example(literal "")
-add_fcppt_example(log "${fcppt_core_TARGET}")
+add_fcppt_example(log "${fcppt_core_TARGET};${fcppt_log_TARGET}")
 add_fcppt_example(make_container "")
 add_fcppt_example(math "${fcppt_core_TARGET}")
 add_fcppt_example(noncopyable "")

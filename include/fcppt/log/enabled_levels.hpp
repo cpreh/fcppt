@@ -7,9 +7,9 @@
 #ifndef FCPPT_LOG_ENABLED_LEVELS_HPP_INCLUDED
 #define FCPPT_LOG_ENABLED_LEVELS_HPP_INCLUDED
 
-#include <fcppt/symbol.hpp>
 #include <fcppt/log/enabled_level_array.hpp>
 #include <fcppt/log/level_fwd.hpp>
+#include <fcppt/log/symbol.hpp>
 
 
 namespace fcppt
@@ -25,7 +25,7 @@ namespace log
 Creates an \link fcppt::log::enabled_level_array \endlink which has every entry
 set to true that is greater or equal to \a level.
 */
-FCPPT_SYMBOL
+FCPPT_LOG_SYMBOL
 fcppt::log::enabled_level_array const
 enabled_levels(
 	fcppt::log::level level

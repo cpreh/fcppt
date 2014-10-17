@@ -163,12 +163,14 @@ target_link_libraries(
 	mytarget
 	${fcppt_core_TARGET}
 	${fcppt_filesystem_TARGET}
+	${fcppt_log_TARGET}
 )
 </pre>
 
 Note, that we're explicitly specifying which of the fcppt libraries we're
-linking against, namely core and filesystem. If you don't use any libraries
-directly, you will have to add fcppt's include directories explicitly:
+linking against, namely core, filesystem and log. If you don't use any
+libraries directly, you will have to add fcppt's include directories
+explicitly:
 
 <pre>
 target_include_directories(

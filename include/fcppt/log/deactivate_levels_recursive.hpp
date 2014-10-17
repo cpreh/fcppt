@@ -7,10 +7,10 @@
 #ifndef FCPPT_LOG_DEACTIVATE_LEVELS_RECURSIVE_HPP_INCLUDED
 #define FCPPT_LOG_DEACTIVATE_LEVELS_RECURSIVE_HPP_INCLUDED
 
-#include <fcppt/symbol.hpp>
 #include <fcppt/log/context_fwd.hpp>
 #include <fcppt/log/level_fwd.hpp>
 #include <fcppt/log/location_fwd.hpp>
+#include <fcppt/log/symbol.hpp>
 
 
 namespace fcppt
@@ -30,7 +30,7 @@ that are reachable from \a location,
 \param location The location of the start logger
 \param level The lower bound of the levels to deactivate
 */
-FCPPT_SYMBOL
+FCPPT_LOG_SYMBOL
 void
 deactivate_levels_recursive(
 	fcppt::log::context &context,

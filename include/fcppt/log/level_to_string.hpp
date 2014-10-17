@@ -8,8 +8,8 @@
 #define FCPPT_LOG_LEVEL_TO_STRING_HPP_INCLUDED
 
 #include <fcppt/string.hpp>
-#include <fcppt/symbol.hpp>
 #include <fcppt/log/level_fwd.hpp>
+#include <fcppt/log/symbol.hpp>
 
 
 namespace fcppt
@@ -28,7 +28,7 @@ Converts a log level given by \a level to its enumerator name as a string.
 
 \warning The behaviour is undefined if fcppt::log::level::size is passed.
 */
-FCPPT_SYMBOL
+FCPPT_LOG_SYMBOL
 fcppt::string
 level_to_string(
 	fcppt::log::level level

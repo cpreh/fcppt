@@ -8,7 +8,6 @@
 #define FCPPT_LOG_OBJECT_HPP_INCLUDED
 
 #include <fcppt/noncopyable.hpp>
-#include <fcppt/symbol.hpp>
 #include <fcppt/log/context_fwd.hpp>
 #include <fcppt/log/enabled_level_array.hpp>
 #include <fcppt/log/level_fwd.hpp>
@@ -16,6 +15,7 @@
 #include <fcppt/log/level_stream_fwd.hpp>
 #include <fcppt/log/object_fwd.hpp>
 #include <fcppt/log/optional_location_fwd.hpp>
+#include <fcppt/log/symbol.hpp>
 #include <fcppt/log/detail/auto_context.hpp>
 #include <fcppt/log/detail/temporary_output_fwd.hpp>
 #include <fcppt/log/format/function.hpp>
@@ -48,7 +48,7 @@ public:
 
 	Constructs a logger object given the parameters \a parameters
 	*/
-	FCPPT_SYMBOL
+	FCPPT_LOG_SYMBOL
 	explicit
 	object(
 		fcppt::log::parameters::object const &parameters
@@ -60,7 +60,7 @@ public:
 	It is important the logger object is destroyed before its context is
 	destroyed, if it has one.
 	*/
-	FCPPT_SYMBOL
+	FCPPT_LOG_SYMBOL
 	~object();
 
 	/**
@@ -79,7 +79,7 @@ public:
 	significant overhead. Instead, use the macros FCPPT_LOG_DEBUG and so on
 	directly.
 	*/
-	FCPPT_SYMBOL
+	FCPPT_LOG_SYMBOL
 	void
 	log(
 		fcppt::log::level level,
@@ -93,7 +93,7 @@ public:
 
 	\param level The log level to get the level stream for
 	*/
-	FCPPT_SYMBOL
+	FCPPT_LOG_SYMBOL
 	fcppt::log::level_stream &
 	level_sink(
 		fcppt::log::level level
@@ -106,7 +106,7 @@ public:
 
 	\param level The log level to get the level stream for
 	*/
-	FCPPT_SYMBOL
+	FCPPT_LOG_SYMBOL
 	fcppt::log::level_stream const &
 	level_sink(
 		fcppt::log::level level
@@ -119,7 +119,7 @@ public:
 
 	\param level The log level to activate
 	*/
-	FCPPT_SYMBOL
+	FCPPT_LOG_SYMBOL
 	void
 	activate(
 		fcppt::log::level level
@@ -132,7 +132,7 @@ public:
 
 	\param level The log level to deactivate
 	*/
-	FCPPT_SYMBOL
+	FCPPT_LOG_SYMBOL
 	void
 	deactivate(
 		fcppt::log::level level
@@ -145,7 +145,7 @@ public:
 
 	\param level The log level to query the activated state for
 	*/
-	FCPPT_SYMBOL
+	FCPPT_LOG_SYMBOL
 	bool
 	activated(
 		fcppt::log::level level
@@ -159,7 +159,7 @@ public:
 
 	\param level The log level to query the activated state for
 	*/
-	FCPPT_SYMBOL
+	FCPPT_LOG_SYMBOL
 	bool
 	enabled_and_activated(
 		fcppt::log::level level
@@ -172,7 +172,7 @@ public:
 
 	\param enabled The new enabled state
 	*/
-	FCPPT_SYMBOL
+	FCPPT_LOG_SYMBOL
 	void
 	enable(
 		bool enabled
@@ -181,28 +181,28 @@ public:
 	/**
 	\brief Returns if the logger is enabled
 	*/
-	FCPPT_SYMBOL
+	FCPPT_LOG_SYMBOL
 	bool
 	enabled() const;
 
 	/**
 	\brief Returns the associated formatter
 	*/
-	FCPPT_SYMBOL
+	FCPPT_LOG_SYMBOL
 	fcppt::log::format::function const &
 	formatter() const;
 
 	/**
 	\brief Returns the associated level streams
 	*/
-	FCPPT_SYMBOL
+	FCPPT_LOG_SYMBOL
 	fcppt::log::level_stream_array const &
 	level_streams() const;
 
 	/**
 	\brief Returns which levels are enabled
 	*/
-	FCPPT_SYMBOL
+	FCPPT_LOG_SYMBOL
 	fcppt::log::enabled_level_array const &
 	enabled_levels() const;
 
@@ -212,7 +212,7 @@ public:
 	\return Returns the loggers location if it has any or
 	<code>fcppt::log::optional_location()</code>
 	*/
-	FCPPT_SYMBOL
+	FCPPT_LOG_SYMBOL
 	fcppt::log::optional_location
 	location() const;
 

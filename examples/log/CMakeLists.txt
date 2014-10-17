@@ -6,7 +6,7 @@ function(
 	make_fcppt_example(
 		log
 		${MAINNAME}
-		"${fcppt_core_TARGET};${ADDITIONAL_DEPS}"
+		"${fcppt_core_TARGET};${fcppt_log_TARGET};${ADDITIONAL_DEPS}"
 		""
 	)
 endfunction()

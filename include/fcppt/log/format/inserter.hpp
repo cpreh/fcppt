@@ -8,7 +8,7 @@
 #define FCPPT_LOG_FORMAT_INSERTER_HPP_INCLUDED
 
 #include <fcppt/string.hpp>
-#include <fcppt/symbol.hpp>
+#include <fcppt/log/symbol.hpp>
 
 
 namespace fcppt
@@ -31,7 +31,7 @@ Inserts \a text into \a format_string using \link fcppt::format \endlink.
 
 \return The result of the insertion
 */
-FCPPT_SYMBOL
+FCPPT_LOG_SYMBOL
 fcppt::string
 inserter(
 	fcppt::string const &format_string,

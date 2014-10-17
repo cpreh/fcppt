@@ -8,8 +8,8 @@
 #define FCPPT_LOG_LEVEL_FROM_STRING_HPP_INCLUDED
 
 #include <fcppt/string.hpp>
-#include <fcppt/symbol.hpp>
 #include <fcppt/log/level_fwd.hpp>
+#include <fcppt/log/symbol.hpp>
 
 
 namespace fcppt
@@ -30,7 +30,7 @@ fcppt::log::level::type
 
 \throw fcppt::log::exception if \a name is invalid
 */
-FCPPT_SYMBOL
+FCPPT_LOG_SYMBOL
 fcppt::log::level
 level_from_string(
 	fcppt::string const &name

@@ -214,6 +214,8 @@ longer supported.</li>
 
 <li>fcppt::signal::connection is now inline, making fcppt.signal header-only.</li>
 
+<li>fcppt.log is now a distinct library.</li>
+
 </ul>
 
 \subsection changes_removed_from_libraries_to_100 Removed functionality

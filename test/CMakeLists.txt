@@ -22,6 +22,10 @@ fcppt_link_target(
 	fcppt_filesystem
 )
 
+fcppt_link_target(
+	fcppt_log
+)
+
 add_fcppt_test(algorithm/array_push_back "")
 add_fcppt_test(algorithm/enum_array_fold "")
 add_fcppt_test(algorithm/find_if_exn "")
@@ -75,7 +79,7 @@ add_fcppt_test(io/read_write "${fcppt_core_TARGET}")
 add_fcppt_test(io/stream_to_string "")
 add_fcppt_test(io/raw_container_source "")
 add_fcppt_test(literal "")
-add_fcppt_test(log/context_transfer "${fcppt_core_TARGET}")
+add_fcppt_test(log/context_transfer "${fcppt_core_TARGET};${fcppt_log_TARGET}")
 add_fcppt_test(math/bresenham "")
 add_fcppt_test(math/ceil_div "")
 add_fcppt_test(math/circle "")

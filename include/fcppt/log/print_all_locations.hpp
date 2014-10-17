@@ -7,9 +7,9 @@
 #ifndef FCPPT_LOG_PRINT_ALL_LOCATIONS_HPP_INCLUDED
 #define FCPPT_LOG_PRINT_ALL_LOCATIONS_HPP_INCLUDED
 
-#include <fcppt/symbol.hpp>
 #include <fcppt/io/ostream.hpp>
 #include <fcppt/log/context_fwd.hpp>
+#include <fcppt/log/symbol.hpp>
 
 
 namespace fcppt
@@ -28,7 +28,7 @@ Prints all locations of \a context to \a stream.
 
 \param context The context to print the locations of
 */
-FCPPT_SYMBOL
+FCPPT_LOG_SYMBOL
 void
 print_all_locations(
 	fcppt::io::ostream &stream,
