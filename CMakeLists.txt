@@ -22,9 +22,20 @@ include(
 	FcpptSymbol
 )
 
-set(FCPPT_MAJOR_VERSION 1)
-set(FCPPT_MINOR_VERSION 0)
-set(FCPPT_MICRO_VERSION 0)
+set(
+	FCPPT_MAJOR_VERSION
+	1
+)
+
+set(
+	FCPPT_MINOR_VERSION
+	0
+)
+
+set(
+	FCPPT_MICRO_VERSION
+	0
+)
 
 set(
 	FCPPT_VERSION
