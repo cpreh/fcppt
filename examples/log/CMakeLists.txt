@@ -1,17 +1,29 @@
 function(
 	add_fcppt_log_example
 	MAINNAME
-	ADDITIONAL_DEPS
 )
 	make_fcppt_example(
-		log
 		${MAINNAME}
-		"${fcppt_core_TARGET};${fcppt_log_TARGET};${ADDITIONAL_DEPS}"
-		""
+		SUBNAME
+			log
+		LINK_LIBS
+			${fcppt_core_TARGET}
+			${fcppt_log_TARGET}
 	)
 endfunction()
 
-add_fcppt_log_example(complex "")
-add_fcppt_log_example(context "")
-add_fcppt_log_example(formatting "")
-add_fcppt_log_example(helloworld "")
+add_fcppt_log_example(
+	complex
+)
+
+add_fcppt_log_example(
+	context
+)
+
+add_fcppt_log_example(
+	formatting
+)
+
+add_fcppt_log_example(
+	helloworld
+)

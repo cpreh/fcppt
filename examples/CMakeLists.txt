@@ -8,13 +8,29 @@ fcppt_link_target(
 
 function(
 	make_fcppt_example
-	SUBNAME
 	MAINNAME
-	ADDITIONAL_DEPS
-	ADDITIONAL_DEFINITIONS
 )
+	set(
+		SINGLE_ARGS
+		SUBNAME
+	)
+
+	set(
+		MULTI_ARGS
+		LINK_LIBS
+		COMPILE_DEFINITIONS
+	)
+
+	cmake_parse_arguments(
+		""
+		""
+		"${SINGLE_ARGS}"
+		"${MULTI_ARGS}"
+		${ARGN}
+	)
+
 	if(
-		"${SUBNAME}"
+		"${_SUBNAME}"
 		STREQUAL
 		""
 	)
@@ -25,7 +41,7 @@ function(
 	else()
 		set(
 			FCPPT_EXAMPLE_NAME
-			example_${SUBNAME}_${MAINNAME}
+			example_${_SUBNAME}_${MAINNAME}
 		)
 	endif()
 
@@ -37,7 +53,7 @@ function(
 	target_compile_definitions(
 		${FCPPT_EXAMPLE_NAME}
 		PRIVATE
-		"${ADDITIONAL_DEFINITIONS}"
+		"${_COMPILE_DEFINITIONS}"
 	)
 
 	fcppt_utils_set_target_compiler_flags(
@@ -46,62 +62,215 @@ function(
 
 	target_link_libraries(
 		${FCPPT_EXAMPLE_NAME}
-		"${ADDITIONAL_DEPS}"
+		PRIVATE
+		"${_LINK_LIBS}"
 	)
 endfunction()
 
 function(
 	add_fcppt_example
-	MAINNAME
-	ADDITIONAL_DEPS
 )
 	make_fcppt_example(
-		""
-		${MAINNAME}
-		"${ADDITIONAL_DEPS}"
-		""
+		${ARGN}
 	)
 endfunction()
 
-add_fcppt_example(algorithm "")
-add_fcppt_example(assert "${fcppt_core_TARGET}")
-add_fcppt_example(assert_complete "")
-add_fcppt_example(backtrace "${fcppt_core_TARGET};${Boost_SYSTEM_LIBRARY}")
-add_fcppt_example(casts "")
-add_fcppt_example(codecvt "${fcppt_core_TARGET}")
-add_fcppt_example(container "${fcppt_core_TARGET}")
-add_fcppt_example(cyclic_iterator "")
-add_fcppt_example(dynamic_cast "${fcppt_core_TARGET}")
-add_fcppt_example(endianness "${fcppt_core_TARGET}")
-add_fcppt_example(enum "")
-add_fcppt_example(homogenous_pair "${fcppt_core_TARGET}")
-add_fcppt_example(literal "")
-add_fcppt_example(log "${fcppt_core_TARGET};${fcppt_log_TARGET}")
-add_fcppt_example(make_container "")
-add_fcppt_example(math "${fcppt_core_TARGET}")
-add_fcppt_example(noncopyable "")
-add_fcppt_example(optional "${fcppt_core_TARGET}")
-add_fcppt_example(output_tm "${fcppt_core_TARGET}")
-add_fcppt_example(safe_numeric_cast "")
-add_fcppt_example(smart_ptr_deleter "${fcppt_core_TARGET}")
-add_fcppt_example(shared_ptr "${fcppt_core_TARGET}")
-add_fcppt_example(sleep "${fcppt_core_TARGET}")
-add_fcppt_example(string_conversion "${fcppt_core_TARGET}")
-add_fcppt_example(time_parse "${fcppt_core_TARGET}")
-add_fcppt_example(truncation_check_cast "${fcppt_core_TARGET}")
-add_fcppt_example(type_traits "")
-add_fcppt_example(unique_ptr "${fcppt_core_TARGET}")
-add_fcppt_example(version "${fcppt_core_TARGET}")
-add_fcppt_example(visibility "")
-add_fcppt_example(weak_ptr "${fcppt_core_TARGET}")
+add_fcppt_example(
+	algorithm
+)
 
-add_subdirectory(container)
-add_subdirectory(doc)
-add_subdirectory(io)
-add_subdirectory(log)
-add_subdirectory(math)
-add_subdirectory(mpl)
-add_subdirectory(preprocessor)
-add_subdirectory(random)
+add_fcppt_example(
+	assert
+	LINK_LIBS
+		${fcppt_core_TARGET}
+)
+
+add_fcppt_example(
+	assert_complete
+)
+
+add_fcppt_example(
+	backtrace
+	LINK_LIBS
+		${fcppt_core_TARGET}
+		${Boost_SYSTEM_LIBRARY}
+)
+
+add_fcppt_example(
+	casts
+)
+
+add_fcppt_example(
+	codecvt
+	LINK_LIBS
+		${fcppt_core_TARGET}
+)
+
+add_fcppt_example(
+	container
+	LINK_LIBS
+		${fcppt_core_TARGET}
+)
+
+add_fcppt_example(
+	cyclic_iterator
+)
+
+add_fcppt_example(
+	dynamic_cast
+	LINK_LIBS
+		${fcppt_core_TARGET}
+)
+
+add_fcppt_example(
+	endianness
+	LINK_LIBS
+		${fcppt_core_TARGET}
+)
+
+add_fcppt_example(
+	enum
+)
+
+add_fcppt_example(
+	homogenous_pair
+	LINK_LIBS
+		${fcppt_core_TARGET}
+)
+
+add_fcppt_example(
+	literal
+)
+
+add_fcppt_example(
+	log
+	LINK_LIBS
+		${fcppt_core_TARGET}
+		${fcppt_log_TARGET}
+)
+
+add_fcppt_example(
+	make_container
+)
+
+add_fcppt_example(
+	math
+	LINK_LIBS
+		${fcppt_core_TARGET}
+)
+
+add_fcppt_example(
+	noncopyable
+)
+
+add_fcppt_example(
+	optional
+	LINK_LIBS
+		${fcppt_core_TARGET}
+)
+
+add_fcppt_example(
+	output_tm
+	LINK_LIBS
+		${fcppt_core_TARGET}
+)
+
+add_fcppt_example(
+	safe_numeric_cast
+)
+
+add_fcppt_example(
+	smart_ptr_deleter
+	LINK_LIBS
+		${fcppt_core_TARGET}
+)
+
+add_fcppt_example(
+	shared_ptr
+	LINK_LIBS
+		${fcppt_core_TARGET}
+)
+
+add_fcppt_example(
+	sleep
+	LINK_LIBS
+		${fcppt_core_TARGET}
+)
+
+add_fcppt_example(
+	string_conversion
+	LINK_LIBS
+		${fcppt_core_TARGET}
+)
+
+add_fcppt_example(
+	time_parse
+	LINK_LIBS
+		${fcppt_core_TARGET}
+)
+
+add_fcppt_example(
+	truncation_check_cast
+	LINK_LIBS
+		${fcppt_core_TARGET}
+)
+
+add_fcppt_example(
+	type_traits
+)
+
+add_fcppt_example(
+	unique_ptr
+	LINK_LIBS
+		${fcppt_core_TARGET}
+)
+
+add_fcppt_example(
+	version
+	LINK_LIBS
+		${fcppt_core_TARGET}
+)
+
+add_fcppt_example(
+	visibility
+)
+
+add_fcppt_example(
+	weak_ptr
+	LINK_LIBS
+		${fcppt_core_TARGET}
+)
+
+add_subdirectory(
+	container
+)
+
+add_subdirectory(
+	doc
+)
+
+add_subdirectory(
+	io
+)
+
+add_subdirectory(
+	log
+)
+
+add_subdirectory(
+	math
+)
+
+add_subdirectory(
+	mpl
+)
+
+add_subdirectory(
+	preprocessor
+)
+
+add_subdirectory(
+	random
+)
 add_subdirectory(signal)
 add_subdirectory(variant)

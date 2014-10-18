@@ -1,24 +1,27 @@
 function(
 	add_fcppt_mpl_example
 	MAINNAME
-	ADDITIONAL_DEPS
 )
 	make_fcppt_example(
-		mpl
 		${MAINNAME}
-		"${ADDITIONAL_DEPS}"
-		""
+		SUBNAME
+			mpl
+		${ARGN}
 	)
 endfunction()
 
 add_fcppt_mpl_example(
-	for_each "${fcppt_core_TARGET}"
+	for_each
+	LINK_LIBS
+		${fcppt_core_TARGET}
 )
 
 add_fcppt_mpl_example(
-	invoke_on ""
+	invoke_on
 )
 
 add_fcppt_mpl_example(
-	various "${fcppt_core_TARGET}"
+	various
+	LINK_LIBS
+		${fcppt_core_TARGET}
 )
