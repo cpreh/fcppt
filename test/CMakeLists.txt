@@ -1,7 +1,3 @@
-add_definitions(
-	${FCPPT_CONFIG_LINK_MACROS}
-)
-
 function(
 	add_fcppt_test
 	PATHNAME
@@ -9,8 +5,8 @@ function(
 )
 	fcppt_utils_add_test(
 		"${PATHNAME}"
-		"${ADDITIONAL_DEPS}"
-		""
+		LINK_LIBS
+			${ADDITIONAL_DEPS}
 	)
 endfunction()
 

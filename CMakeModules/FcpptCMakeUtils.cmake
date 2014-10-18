@@ -1015,9 +1015,21 @@ endfunction()
 function(
 	fcppt_utils_add_test
 	PATH_NAME
-	LIB_DEPS
-	INCLUDE_DIRS
 )
+	set(
+		MULTI_ARGS
+		LINK_LIBS
+		INCLUDE_DIRS
+	)
+
+	cmake_parse_arguments(
+		""
+		""
+		""
+		"${MULTI_ARGS}"
+		${ARGN}
+	)
+
 	string(
 		REPLACE
 		"/"
@@ -1065,13 +1077,14 @@ function(
 	target_include_directories(
 		${FULL_TEST_NAME}
 		PRIVATE
-		${INCLUDE_DIRS}
+		${_INCLUDE_DIRS}
 	)
 
 	target_link_libraries(
 		${FULL_TEST_NAME}
+		PRIVATE
 		${Boost_UNIT_TEST_FRAMEWORK_LIBRARY}
-		${LIB_DEPS}
+		${_LINK_LIBS}
 	)
 
 	add_test(

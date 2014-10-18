@@ -1,7 +1,3 @@
-add_definitions(
-	${FCPPT_CONFIG_LINK_MACROS}
-)
-
 fcppt_link_target(
 	fcppt_core
 )

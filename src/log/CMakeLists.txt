@@ -136,10 +136,6 @@ set(
 	src/log/tree_formatter.cpp
 )
 
-include_directories(
-	"${CMAKE_CURRENT_SOURCE_DIR}/include"
-)
-
 generate_symbol_header(
 	"fcppt_log"
 	"FCPPT_LOG"
@@ -150,4 +146,6 @@ make_fcppt_library(
 	"${FCPPT_LOG_FILES}"
 	FCPPT_DEPS
 		fcppt_core
+	INCLUDE_DIRS
+		"${CMAKE_CURRENT_SOURCE_DIR}/include"
 )

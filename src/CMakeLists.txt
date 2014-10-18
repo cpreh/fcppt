@@ -932,10 +932,6 @@ set(
 	src/widen.cpp
 )
 
-include_directories(
-	"${CMAKE_CURRENT_SOURCE_DIR}/include"
-)
-
 generate_symbol_header(
 	"fcppt_core"
 	"FCPPT"
@@ -944,4 +940,6 @@ generate_symbol_header(
 make_fcppt_library(
 	fcppt_core
 	"${FCPPT_CORE_FILES}"
+	INCLUDE_DIRS
+		"${CMAKE_CURRENT_SOURCE_DIR}/include"
 )

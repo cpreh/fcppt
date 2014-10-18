@@ -112,16 +112,7 @@ if(
 	)
 endif()
 
-if(
-	FCPPT_DEFAULT_LINK_STATIC
-)
-	set(
-		FCPPT_CONFIG_LINK_MACROS
-		"-D FCPPT_STATIC_LINK"
-	)
-endif()
-
-macro(
+function(
 	fcppt_link_target
 	LIBNAME
 )
@@ -131,14 +122,16 @@ macro(
 		set(
 			${LIBNAME}_TARGET
 			${LIBNAME}_static
+			PARENT_SCOPE
 		)
 	else()
 		set(
 			${LIBNAME}_TARGET
 			${LIBNAME}
+			PARENT_SCOPE
 		)
 	endif()
-endmacro()
+endfunction()
 
 function(
 	generate_symbol_header
@@ -315,6 +308,7 @@ function(
 		FCPPT_DEPS
 		OTHER_DEPS
 		TRANSITIVE_DEPS
+		INCLUDE_DIRS
 	)
 
 	cmake_parse_arguments(
@@ -355,6 +349,8 @@ function(
 		${TARGETNAME}
 		INTERFACE
 		${Boost_INCLUDE_DIRS}
+		PRIVATE
+		${_INCLUDE_DIRS}
 	)
 
 	fcppt_utils_add_target_include_dir(
@@ -386,6 +382,7 @@ function(
 		FCPPT_DEPS
 		OTHER_DEPS
 		TRANSITIVE_DEPS
+		INCLUDE_DIRS
 	)
 
 	cmake_parse_arguments(
@@ -434,6 +431,8 @@ function(
 				${_OTHER_DEPS}
 			TRANSITIVE_DEPS
 				${_TRANSITIVE_DEPS}
+			INCLUDE_DIRS
+				${_INCLUDE_DIRS}
 		)
 	endif()
 endfunction()
