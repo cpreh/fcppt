@@ -7,7 +7,7 @@
 #ifndef FCPPT_FILESYSTEM_IS_EXECUTABLE_HPP_INCLUDED
 #define FCPPT_FILESYSTEM_IS_EXECUTABLE_HPP_INCLUDED
 
-#include <fcppt/filesystem/symbol.hpp>
+#include <fcppt/filesystem/detail/symbol.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/filesystem/path.hpp>
 #include <fcppt/config/external_end.hpp>
@@ -29,7 +29,7 @@ Returns if the file denoted by \a path is executable.
 
 \throw fcppt::filesystem::exception if the file is not accessible
 */
-FCPPT_FILESYSTEM_SYMBOL
+FCPPT_FILESYSTEM_DETAIL_SYMBOL
 bool
 is_executable(
 	boost::filesystem::path const &path

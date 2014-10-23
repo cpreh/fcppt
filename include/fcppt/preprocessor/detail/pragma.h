@@ -4,10 +4,10 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_PREPROCESSOR_DETAIL_PRAGMA_HPP_INCLUDED
-#define FCPPT_PREPROCESSOR_DETAIL_PRAGMA_HPP_INCLUDED
+#ifndef FCPPT_PREPROCESSOR_DETAIL_PRAGMA_H_INCLUDED
+#define FCPPT_PREPROCESSOR_DETAIL_PRAGMA_H_INCLUDED
 
-#include <fcppt/config/compiler.hpp>
+#include <fcppt/config/compiler.h>
 
 
 #if defined(FCPPT_CONFIG_MSVC_COMPILER)

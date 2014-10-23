@@ -7,7 +7,7 @@
 #ifndef FCPPT_IO_CIN_HPP_INCLUDED
 #define FCPPT_IO_CIN_HPP_INCLUDED
 
-#include <fcppt/symbol.hpp>
+#include <fcppt/detail/symbol.hpp>
 #include <fcppt/io/istream.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <istream>
@@ -27,8 +27,8 @@ namespace io
 See the \link fcpptstring string module documentation \endlink for a motivation
 for this.
 */
-FCPPT_SYMBOL
-io::istream &
+FCPPT_DETAIL_SYMBOL
+fcppt::io::istream &
 cin();
 
 }

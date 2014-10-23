@@ -12,7 +12,7 @@
 #include <fcppt/log/location_fwd.hpp>
 #include <fcppt/log/object_fwd.hpp>
 #include <fcppt/log/optional_object_fwd.hpp>
-#include <fcppt/log/symbol.hpp>
+#include <fcppt/log/detail/symbol.hpp>
 #include <fcppt/log/tree_function.hpp>
 #include <fcppt/log/detail/auto_context_fwd.hpp>
 #include <fcppt/log/detail/context_tree.hpp>
@@ -43,7 +43,7 @@ public:
 	/**
 	\brief Constructs a context with no locations
 	*/
-	FCPPT_LOG_SYMBOL
+	FCPPT_LOG_DETAIL_SYMBOL
 	context();
 
 	/**
@@ -55,7 +55,7 @@ public:
 	\warning The behaviour is undefined if this context still has
 	associated logger objects.
 	*/
-	FCPPT_LOG_SYMBOL
+	FCPPT_LOG_DETAIL_SYMBOL
 	~context();
 
 	/**
@@ -68,7 +68,7 @@ public:
 	\return If the logger is found, it will be returned, otherwise an empty
 	fcppt::log::optional_object will be returned.
 	*/
-	FCPPT_LOG_SYMBOL
+	FCPPT_LOG_DETAIL_SYMBOL
 	fcppt::log::optional_object const
 	find(
 		fcppt::log::location const &location
@@ -81,7 +81,7 @@ public:
 
 	\throw fcppt::log::no_such_location if the location doesn't exist
 	*/
-	FCPPT_LOG_SYMBOL
+	FCPPT_LOG_DETAIL_SYMBOL
 	void
 	apply(
 		fcppt::log::location const &location,
@@ -93,7 +93,7 @@ public:
 
 	Applies \a function to all loggers.
 	*/
-	FCPPT_LOG_SYMBOL
+	FCPPT_LOG_DETAIL_SYMBOL
 	void
 	apply_all(
 		fcppt::log::tree_function const &function
@@ -104,7 +104,7 @@ public:
 
 	Transfers all locations of this context to \a other
 	*/
-	FCPPT_LOG_SYMBOL
+	FCPPT_LOG_DETAIL_SYMBOL
 	void
 	transfer_to(
 		fcppt::log::context &other

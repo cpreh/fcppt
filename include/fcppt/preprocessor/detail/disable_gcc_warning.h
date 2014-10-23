@@ -4,14 +4,14 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_PREPROCESSOR_DETAIL_DISABLE_GCC_WARNING_HPP_INCLUDED
-#define FCPPT_PREPROCESSOR_DETAIL_DISABLE_GCC_WARNING_HPP_INCLUDED
+#ifndef FCPPT_PREPROCESSOR_DETAIL_DISABLE_GCC_WARNING_H_INCLUDED
+#define FCPPT_PREPROCESSOR_DETAIL_DISABLE_GCC_WARNING_H_INCLUDED
 
-#include <fcppt/config/compiler.hpp>
+#include <fcppt/config/compiler.h>
 
 
 #if defined(FCPPT_CONFIG_GCC_COMPILER)
-#	include <fcppt/preprocessor/pragma.hpp>
+#	include <fcppt/preprocessor/pragma.h>
 #	define FCPPT_PP_DETAIL_DISABLE_GCC_WARNING(id) \
 	FCPPT_PP_PRAGMA(GCC diagnostic ignored #id)
 #else

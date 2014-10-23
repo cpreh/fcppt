@@ -8,7 +8,7 @@
 #define FCPPT_FILESYSTEM_EXTENSION_WITHOUT_DOT_HPP_INCLUDED
 
 #include <fcppt/string.hpp>
-#include <fcppt/filesystem/symbol.hpp>
+#include <fcppt/filesystem/detail/symbol.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/filesystem/path.hpp>
 #include <fcppt/config/external_end.hpp>
@@ -31,7 +31,7 @@ Returns the extension of \a path without the dot as a string instead of a path.
 \return The extension as a string without the dot. If there is no extension,
 the string will be empty.
 */
-FCPPT_FILESYSTEM_SYMBOL
+FCPPT_FILESYSTEM_DETAIL_SYMBOL
 fcppt::string
 extension_without_dot(
 	boost::filesystem::path const &path

@@ -7,23 +7,8 @@
 #ifndef FCPPT_PREPROCESSOR_PRAGMA_HPP_INCLUDED
 #define FCPPT_PREPROCESSOR_PRAGMA_HPP_INCLUDED
 
-#include <fcppt/preprocessor/detail/pragma.hpp>
+#include <fcppt/detail/check_cpp.hpp>
+#include <fcppt/preprocessor/pragma.h>
 
-/**
-\brief A macro that expands to a pragma directive
-
-\ingroup fcpptpreprocessor
-
-Expands expr as if <code>\#pragma expr</code> was written. This is useful to
-embed pragmas into macro definitions which is normally not possible.
-
-\param expr The pragma expression
-*/
-#define FCPPT_PP_PRAGMA(\
-	expr\
-)\
-FCPPT_PP_DETAIL_PRAGMA(\
-	expr\
-)
 
 #endif

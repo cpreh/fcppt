@@ -4,30 +4,30 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_EXPORT_SYMBOL_HPP_INCLUDED
-#define FCPPT_EXPORT_SYMBOL_HPP_INCLUDED
+#ifndef FCPPT_SYMBOL_EXPORT_H_INCLUDED
+#define FCPPT_SYMBOL_EXPORT_H_INCLUDED
 
-#include <fcppt/config/compiler.hpp>
+#include <fcppt/config/compiler.h>
 
 
 #if defined(FCPPT_CONFIG_MSVC_COMPILER)
-#	define FCPPT_EXPORT_SYMBOL_IMPL __declspec(dllexport)
+#	define FCPPT_SYMBOL_EXPORT_IMPL __declspec(dllexport)
 #elif defined(FCPPT_CONFIG_GCC_COMPILER)
-#	define FCPPT_EXPORT_SYMBOL_IMPL __attribute__ ((visibility("default")))
+#	define FCPPT_SYMBOL_EXPORT_IMPL __attribute__ ((visibility("default")))
 #else
-#	error "Don't know what FCPPT_EXPORT_SYMBOL should be"
+#	error "Don't know what FCPPT_SYMBOL_EXPORT should be"
 #endif
 
 /**
 \brief Tells that a symbol should be exported
 
-\ingroup fcpptexport
+\ingroup fcpptsymbol
 
 This macro marks a symbol to be exported, so it can be used by other libraries
 or programs.
 
-\see \ref exports_library
+\see \ref symbol_library
 */
-#define FCPPT_EXPORT_SYMBOL FCPPT_EXPORT_SYMBOL_IMPL
+#define FCPPT_SYMBOL_EXPORT FCPPT_SYMBOL_EXPORT_IMPL
 
 #endif

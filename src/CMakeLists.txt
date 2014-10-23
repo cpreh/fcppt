@@ -100,7 +100,6 @@ set(
 	include/fcppt/cast_to_enum.hpp
 	include/fcppt/char_type.hpp
 	include/fcppt/check_literal_conversion.hpp
-	include/fcppt/class_symbol.hpp
 	include/fcppt/com_deleter.hpp
 	include/fcppt/com_deleter_fwd.hpp
 	include/fcppt/config/compiler.hpp
@@ -253,6 +252,7 @@ set(
 	include/fcppt/cyclic_iterator_fwd.hpp
 	include/fcppt/cyclic_iterator_impl.hpp
 	include/fcppt/detail/char_type.hpp
+	include/fcppt/detail/check_cpp.hpp
 	include/fcppt/detail/cyclic_iterator_base.hpp
 	include/fcppt/detail/cyclic_iterator_category.hpp
 	include/fcppt/detail/enable_optional_ref_conv.hpp
@@ -261,7 +261,6 @@ set(
 	include/fcppt/detail/enum_size.hpp
 	include/fcppt/detail/equal.hpp
 	include/fcppt/detail/equal_functor.hpp
-	include/fcppt/detail/export_class_instantiation.hpp
 	include/fcppt/detail/int_iterator_base.hpp
 	include/fcppt/detail/make_shared_wrapper.hpp
 	include/fcppt/detail/make_shared_wrapper_fwd.hpp
@@ -313,9 +312,6 @@ set(
 	include/fcppt/error/strerrno.hpp
 	include/fcppt/error/strerror.hpp
 	include/fcppt/exception.hpp
-	include/fcppt/export_class_instantiation.hpp
-	include/fcppt/export_function_instantiation.hpp
-	include/fcppt/export_symbol.hpp
 	include/fcppt/extract_from_string.hpp
 	include/fcppt/extract_from_string_error.hpp
 	include/fcppt/extract_from_string_exn.hpp
@@ -333,7 +329,6 @@ set(
 	include/fcppt/homogenous_pair_output.hpp
 	include/fcppt/impl/exception.hpp
 	include/fcppt/impl/extract_from_string_error.hpp
-	include/fcppt/import_symbol.hpp
 	include/fcppt/insert_to_fcppt_string.hpp
 	include/fcppt/insert_to_std_string.hpp
 	include/fcppt/insert_to_std_wstring.hpp
@@ -642,13 +637,9 @@ set(
 	include/fcppt/optional_string.hpp
 	include/fcppt/optional_string_fwd.hpp
 	include/fcppt/preprocessor/const.hpp
-	include/fcppt/preprocessor/detail/disable_gcc_warning.hpp
 	include/fcppt/preprocessor/detail/disable_vc_warning.hpp
 	include/fcppt/preprocessor/detail/function.hpp
 	include/fcppt/preprocessor/detail/message.hpp
-	include/fcppt/preprocessor/detail/pop_warning.hpp
-	include/fcppt/preprocessor/detail/pragma.hpp
-	include/fcppt/preprocessor/detail/push_warning.hpp
 	include/fcppt/preprocessor/detail/stringize.hpp
 	include/fcppt/preprocessor/disable_gcc_warning.hpp
 	include/fcppt/preprocessor/disable_vc_warning.hpp
@@ -932,14 +923,11 @@ set(
 	src/widen.cpp
 )
 
-generate_symbol_header(
-	"fcppt_core"
-	"FCPPT"
-)
-
 make_fcppt_library(
-	fcppt_core
+	core
 	"${FCPPT_CORE_FILES}"
 	INCLUDE_DIRS
 		"${CMAKE_CURRENT_SOURCE_DIR}/include"
+	SYMBOL_NAME
+		FCPPT
 )

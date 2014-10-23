@@ -4,24 +4,24 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_CLASS_SYMBOL_HPP_INCLUDED
-#define FCPPT_CLASS_SYMBOL_HPP_INCLUDED
+#ifndef FCPPT_SYMBOL_CLASS_HPP_INCLUDED
+#define FCPPT_SYMBOL_CLASS_HPP_INCLUDED
 
 #include <fcppt/config/compiler.hpp>
 
 #if defined(FCPPT_CONFIG_MSVC_COMPILER)
-#	define FCPPT_CLASS_SYMBOL_IMPL
+#	define FCPPT_SYMBOL_CLASS_IMPL
 #elif defined(FCPPT_CONFIG_GCC_COMPILER)
-#	include <fcppt/export_symbol.hpp>
-#	define FCPPT_CLASS_SYMBOL_IMPL FCPPT_EXPORT_SYMBOL
+#	include <fcppt/symbol/export.hpp>
+#	define FCPPT_SYMBOL_CLASS_IMPL FCPPT_SYMBOL_EXPORT
 #else
-#	error "Don't know what FCPPT_CLASS_SYMBOL should be"
+#	error "Don't know what FCPPT_DETAIL_SYMBOL_CLASS should be"
 #endif
 
 /**
 \brief Tells that a classes's vtable should be exported
 
-\ingroup fcpptexport
+\ingroup fcpptsymbol
 
 This macro marks a classes's vtable to be exported, so it can be shared across
 dynamic libraries. There are several cases in which this is necessary:
@@ -38,11 +38,11 @@ It is not necessary to specify whether the class is currently exported or
 imported.
 
 \code
-class FCPPT_CLASS_SYMBOL my_exception
+class FCPPT_DETAIL_SYMBOL_CLASS my_exception
 {
 };
 
-class FCPPT_CLASS_SYMBOL my_base
+class FCPPT_DETAIL_SYMBOL_CLASS my_base
 {
 	virtual
 	void
@@ -50,8 +50,8 @@ class FCPPT_CLASS_SYMBOL my_base
 };
 \endcode
 
-\see \ref exports_vtable
+\see \ref symbol_vtable
 */
-#define FCPPT_CLASS_SYMBOL FCPPT_CLASS_SYMBOL_IMPL
+#define FCPPT_SYMBOL_CLASS FCPPT_SYMBOL_CLASS_IMPL
 
 #endif

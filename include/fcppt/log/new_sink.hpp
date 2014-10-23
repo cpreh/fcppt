@@ -9,7 +9,7 @@
 
 #include <fcppt/io/ostream.hpp>
 #include <fcppt/log/object_fwd.hpp>
-#include <fcppt/log/symbol.hpp>
+#include <fcppt/log/detail/symbol.hpp>
 
 
 namespace fcppt
@@ -24,7 +24,7 @@ namespace log
 
 Sets \a stream as a new sink for every level stream of \a logger
 */
-FCPPT_LOG_SYMBOL
+FCPPT_LOG_DETAIL_SYMBOL
 void
 new_sink(
 	fcppt::log::object &logger,

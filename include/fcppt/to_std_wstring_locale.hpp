@@ -8,7 +8,7 @@
 #define FCPPT_TO_STD_WSTRING_LOCALE_HPP_INCLUDED
 
 #include <fcppt/string.hpp>
-#include <fcppt/symbol.hpp>
+#include <fcppt/detail/symbol.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <locale>
 #include <string>
@@ -25,7 +25,7 @@ namespace fcppt
 See the \link fcpptstring string module description \endlink for more
 information about this function.
 */
-FCPPT_SYMBOL
+FCPPT_DETAIL_SYMBOL
 std::wstring
 to_std_wstring_locale(
 	fcppt::string const &,

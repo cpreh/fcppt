@@ -9,7 +9,7 @@
 
 #include <fcppt/string.hpp>
 #include <fcppt/log/location_fwd.hpp>
-#include <fcppt/log/symbol.hpp>
+#include <fcppt/log/detail/symbol.hpp>
 #include <fcppt/log/detail/location_vector.hpp>
 
 
@@ -35,7 +35,7 @@ public:
 	/**
 	\brief Constructs an empty location
 	*/
-	FCPPT_LOG_SYMBOL
+	FCPPT_LOG_DETAIL_SYMBOL
 	location();
 
 	/**
@@ -45,7 +45,7 @@ public:
 
 	\param root The root element
 	*/
-	FCPPT_LOG_SYMBOL
+	FCPPT_LOG_DETAIL_SYMBOL
 	explicit
 	location(
 		fcppt::string const &root
@@ -65,7 +65,7 @@ public:
 
 	\param element The new element
 	*/
-	FCPPT_LOG_SYMBOL
+	FCPPT_LOG_DETAIL_SYMBOL
 	fcppt::log::location &
 	operator /=(
 		fcppt::string const &element
@@ -74,14 +74,14 @@ public:
 	/**
 	\brief Returns an iterator to the beginning
 	*/
-	FCPPT_LOG_SYMBOL
+	FCPPT_LOG_DETAIL_SYMBOL
 	const_iterator
 	begin() const;
 
 	/**
 	\brief Returns an iterator to one past the end
 	*/
-	FCPPT_LOG_SYMBOL
+	FCPPT_LOG_DETAIL_SYMBOL
 	const_iterator
 	end() const;
 
@@ -89,7 +89,7 @@ public:
 	\brief Creates a string represenation of the location using :: as
 	delimiter.
 	*/
-	FCPPT_LOG_SYMBOL
+	FCPPT_LOG_DETAIL_SYMBOL
 	fcppt::string
 	string() const;
 private:
@@ -107,7 +107,7 @@ Concatenates \a location and \a element.
 
 \return A new location that is the concatenation of \a location and \a element
 */
-FCPPT_LOG_SYMBOL
+FCPPT_LOG_DETAIL_SYMBOL
 fcppt::log::location
 operator /(
 	fcppt::log::location location,

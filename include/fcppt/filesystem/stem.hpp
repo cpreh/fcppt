@@ -8,7 +8,7 @@
 #define FCPPT_FILESYSTEM_STEM_HPP_INCLUDED
 
 #include <fcppt/string.hpp>
-#include <fcppt/filesystem/symbol.hpp>
+#include <fcppt/filesystem/detail/symbol.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/filesystem/path.hpp>
 #include <fcppt/config/external_end.hpp>
@@ -32,7 +32,7 @@ extension.
 \return A string with the stem of the path, or an empty string if the path has
 no filename
 */
-FCPPT_FILESYSTEM_SYMBOL
+FCPPT_FILESYSTEM_DETAIL_SYMBOL
 fcppt::string
 stem(
 	boost::filesystem::path const &path

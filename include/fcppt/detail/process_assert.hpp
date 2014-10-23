@@ -8,7 +8,7 @@
 #define FCPPT_DETAIL_PROCESS_ASSERT_HPP_INCLUDED
 
 #include <fcppt/string.hpp>
-#include <fcppt/symbol.hpp>
+#include <fcppt/detail/symbol.hpp>
 
 
 namespace fcppt
@@ -16,7 +16,7 @@ namespace fcppt
 namespace detail
 {
 
-FCPPT_SYMBOL void
+FCPPT_DETAIL_SYMBOL void
 process_assert(
 	string const &file,
 	string const &line,

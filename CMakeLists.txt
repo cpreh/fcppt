@@ -144,33 +144,6 @@ function(
 	endif()
 endfunction()
 
-function(
-	generate_symbol_header
-	EXPORTS_NAME
-	SYMBOL_NAME
-)
-	string(
-		REPLACE
-		"_"
-		"/"
-		RELATIVE_PATH
-		"${SYMBOL_NAME}"
-	)
-
-	string(
-		TOLOWER
-		"${RELATIVE_PATH}"
-		RELATIVE_PATH
-	)
-
-	fcppt_generate_symbol_header(
-		"FCPPT_STATIC_LINK"
-		"${EXPORTS_NAME}"
-		"${SYMBOL_NAME}"
-		"${RELATIVE_PATH}"
-	)
-endfunction()
-
 set(
 	FCPPT_NARROW_STRING
 	${ENABLE_NARROW_STRING}
@@ -385,9 +358,14 @@ endfunction()
 
 function(
 	make_fcppt_library
-	LIBNAME
+	LIB_NAME
 	CUR_FILES
 )
+	set(
+		SINGLE_ARGS
+		SYMBOL_NAME
+	)
+
 	set(
 		MULTI_ARGS
 		FCPPT_DEPS
@@ -396,20 +374,50 @@ function(
 		INCLUDE_DIRS
 	)
 
+	set(
+		FULL_NAME
+		fcppt_${LIB_NAME}
+	)
+
 	cmake_parse_arguments(
 		""
 		""
-		""
+		"${SINGLE_ARGS}"
 		"${MULTI_ARGS}"
 		${ARGN}
 	)
 
+	string(
+		TOUPPER
+		${LIB_NAME}
+		LIB_NAME_UPPER
+	)
+
+	if(
+		"${_SYMBOL_NAME}"
+		STREQUAL
+		""
+	)
+		set(
+			_SYMBOL_NAME
+			FCPPT_${LIB_NAME_UPPER}
+		)
+	endif()
+
+	fcppt_generate_symbol_header(
+		EXPORTS_NAME
+			"${FULL_NAME}"
+		SYMBOL_NAME
+			"${_SYMBOL_NAME}_DETAIL"
+		STATIC_LINK_FLAG
+			"FCPPT_STATIC_LINK"
+	)
 
 	if(
 		ENABLE_SHARED
 	)
 		make_fcppt_library_base(
-			"${LIBNAME}"
+			"${FULL_NAME}"
 			"${CUR_FILES}"
 			VARIANT
 				"SHARED"
@@ -432,7 +440,7 @@ function(
 		endforeach()
 
 		make_fcppt_library_base(
-			"${LIBNAME}_static"
+			"${FULL_NAME}_static"
 			"${CUR_FILES}"
 			VARIANT
 				"STATIC"

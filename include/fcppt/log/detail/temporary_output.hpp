@@ -10,7 +10,7 @@
 #include <fcppt/noncopyable.hpp>
 #include <fcppt/string.hpp>
 #include <fcppt/io/ostringstream.hpp>
-#include <fcppt/log/symbol.hpp>
+#include <fcppt/log/detail/symbol.hpp>
 #include <fcppt/log/detail/output_helper.hpp>
 #include <fcppt/log/detail/temporary_output_fwd.hpp>
 #include <fcppt/config/external_begin.hpp>
@@ -33,15 +33,15 @@ class temporary_output
 		temporary_output
 	);
 public:
-	FCPPT_LOG_SYMBOL
+	FCPPT_LOG_DETAIL_SYMBOL
 	temporary_output();
 
-	FCPPT_LOG_SYMBOL
+	FCPPT_LOG_DETAIL_SYMBOL
 	temporary_output(
 		temporary_output &&
 	);
 
-	FCPPT_LOG_SYMBOL
+	FCPPT_LOG_DETAIL_SYMBOL
 	fcppt::string
 	result() const;
 private:

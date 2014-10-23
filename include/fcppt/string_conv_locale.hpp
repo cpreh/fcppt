@@ -7,17 +7,18 @@
 #ifndef FCPPT_STRING_CONV_LOCALE_HPP_INCLUDED
 #define FCPPT_STRING_CONV_LOCALE_HPP_INCLUDED
 
-#include <fcppt/symbol.hpp>
+#include <fcppt/detail/symbol.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <locale>
 #include <fcppt/config/external_end.hpp>
+
 
 namespace fcppt
 {
 
 /// Returns the default locale to use when converting strings
-FCPPT_SYMBOL
-std::locale const
+FCPPT_DETAIL_SYMBOL
+std::locale
 string_conv_locale();
 
 }

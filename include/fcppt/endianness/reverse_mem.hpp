@@ -7,7 +7,7 @@
 #ifndef FCPPT_ENDIANNESS_REVERSE_MEM_HPP_INCLUDED
 #define FCPPT_ENDIANNESS_REVERSE_MEM_HPP_INCLUDED
 
-#include <fcppt/symbol.hpp>
+#include <fcppt/detail/symbol.hpp>
 #include <fcppt/endianness/raw_pointer.hpp>
 #include <fcppt/endianness/size_type.hpp>
 
@@ -29,7 +29,7 @@ size.
 
 \param size The size of the memory block
 */
-FCPPT_SYMBOL
+FCPPT_DETAIL_SYMBOL
 void
 reverse_mem(
 	fcppt::endianness::raw_pointer data,

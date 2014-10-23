@@ -10,8 +10,9 @@
 #include <fcppt/config/external_end.hpp>
 
 
-std::locale const
+std::locale
 fcppt::string_conv_locale()
 {
-	return std::locale("");
+	return
+		std::locale("");
 }

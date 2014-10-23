@@ -1,5 +1,5 @@
 /**
-\defgroup fcpptexport fcppt.export
+\defgroup fcpptsymbol fcppt.export
 \ingroup fcpptmain
 \brief Macros related to library visibility
 
@@ -8,20 +8,20 @@
 <td>
 
 <ul>
-	<li>\ref exports_introduction</li>
-	<li>\ref exports_library</li>
-	<li>\ref exports_vtable</li>
-	<li>\ref exports_list</li>
-	<li>\ref exports_compiler</li>
-	<li>\ref exports_static</li>
-	<li>\ref exports_headers</li>
+	<li>\ref symbol_introduction</li>
+	<li>\ref symbol_library</li>
+	<li>\ref symbol_vtable</li>
+	<li>\ref symbol_list</li>
+	<li>\ref symbol_compiler</li>
+	<li>\ref symbol_static</li>
+	<li>\ref symbol_headers</li>
 </ul>
 
 </td>
 </tr>
 </table>
 
-\section exports_introduction Introduction
+\section symbol_introduction Introduction
 
 When building a library, several platforms have different notions of
 <em>library visibility</em> that the library author has to consider. A symbol
@@ -38,7 +38,7 @@ is still not recommended, because you have to specify the visibility for
 Windows anyway and libraries with only public symbols tend to have an
 unnecessarily large interface.
 
-\section exports_library Defining library interfaces
+\section symbol_library Defining library interfaces
 
 Several macros are provided to make a symbol public. Because it is necessary to
 specify whether a symbol is currently imported or exported, some additional
@@ -50,8 +50,8 @@ means the symbols are currently imported.
 
 In the following example the macro <code>MYLIB_EXPORTS</code> is defined
 by the build system if the library is currently being built. This macro
-is used to define <code>MYLIB_SYMBOL</code> to either \link FCPPT_EXPORT_SYMBOL \endlink
-or \link FCPPT_IMPORT_SYMBOL \endlink.
+is used to define <code>MYLIB_SYMBOL</code> to either \link FCPPT_SYMBOL_EXPORT \endlink
+or \link FCPPT_SYMBOL_IMPORT \endlink.
 
 \snippet visibility.cpp visibility_macros
 
@@ -63,19 +63,19 @@ The definition of the function doesn't need anything special.
 
 \snippet visibility.cpp visibility_define_function
 
-\section exports_vtable Exporting a vtable of a class
+\section symbol_vtable Exporting a vtable of a class
 
 If a class's vtable needs to be exported, a special macro \link
-FCPPT_CLASS_SYMBOL \endlink must be used. This macro doesn't need to change
+FCPPT_SYMBOL_CLASS \endlink must be used. This macro doesn't need to change
 whether the vtable is currently imported or exported.
 
-\see \link FCPPT_CLASS_SYMBOL \endlink for a detailed explanation on when this
+\see \link FCPPT_SYMBOL_CLASS \endlink for a detailed explanation on when this
 is necessary.
 
 \snippet visibility.cpp visibility_export_vtable1
 \snippet visibility.cpp visibility_export_vtable2
 
-\section exports_list List of things to export
+\section symbol_list List of things to export
 
 Generally, every object with external linkage must be exported.
 This includes:
@@ -95,15 +95,15 @@ functions.
 </li>
 
 <li>Classes that need their vtables to be exported must use \link
-FCPPT_CLASS_SYMBOL \endlink at their definition.
+FCPPT_SYMBOL_CLASS \endlink at their definition.
 
-\see \ref exports_vtable.
+\see \ref symbol_vtable.
 </li>
 
 <li>
 An explicitly instantiated template function needs everything that a normal
 function would need, but is also needs an \link
-FCPPT_EXPORT_FUNCTION_INSTANTIATION \endlink at its explicit instantiation.
+FCPPT_SYMBOL_EXPORT_FUNCTION_INSTANTIATION \endlink at its explicit instantiation.
 
 In the following example, a templated function is explicitly instantiated and
 exported. The function declaration needs a conditional symbol like
@@ -112,7 +112,7 @@ exported. The function declaration needs a conditional symbol like
 \snippet visibility.cpp visibility_export_template_function
 
 The explicit instantiation needs an additional \link
-FCPPT_EXPORT_FUNCTION_INSTANTIATION \endlink. It is important that this comes
+FCPPT_SYMBOL_EXPORT_FUNCTION_INSTANTIATION \endlink. It is important that this comes
 after the <code>template</code> keyword but before the rest of the explicit
 function instantiation.
 
@@ -129,7 +129,7 @@ exported. The class definition is, again, as if it was a normal class.
 \snippet visibility.cpp visibility_export_template_class
 
 The explicit instantiation needs an additional \link
-FCPPT_EXPORT_CLASS_INSTANTIATION \endlink. It must be placed after the
+FCPPT_SYMBOL_EXPORT_CLASS_INSTANTIATION \endlink. It must be placed after the
 <code>class</code> or <code>struct</code> keyword and before the rest of the
 type.
 
@@ -140,7 +140,7 @@ may ignore the visibility attributes without any warnings.
 </li>
 </ul>
 
-\section exports_compiler Compiler specific usage
+\section symbol_compiler Compiler specific usage
 
 Library visibility is only useful if a shared library is being built and if the
 symbols of the shared library are hidden by default. Here is some advice
@@ -151,15 +151,15 @@ how to use different build systems:
 <code>-fvisibility=hidden</code>. Only then will all the symbols be hidden by
 default, so that making symbols public actually does anything.</li>
 
-<li>gcc might ignore \link FCPPT_EXPORT_FUNCTION_INSTANTIATION \endlink or
-\link FCPPT_EXPORT_CLASS_INSTANTIATION \endlink if an implicit instantiation of
+<li>gcc might ignore \link FCPPT_SYMBOL_EXPORT_FUNCTION_INSTANTIATION \endlink or
+\link FCPPT_SYMBOL_EXPORT_CLASS_INSTANTIATION \endlink if an implicit instantiation of
 the same type already took place in the same translation unit. You must ensure
 that this does not happen by creating separate translation units for every type
 you wish to explicitly instantiate and export.</li>
 
 </ul>
 
-\section exports_static Static linking
+\section symbol_static Static linking
 
 For static linking to work, all of the attributes must be disabled. To do that,
 we are first going to introduce a macro <code>MYLIB_STATIC</code> that is
@@ -174,31 +174,31 @@ used instead of the ones provided by fcppt.
 
 \snippet visibility.cpp visibility_macros_instantiation_static
 
-\section exports_headers Header files
+\section symbol_headers Header files
 <table>
 <tr>
 <th>Header file</th>
 <th>Description</th>
 </tr>
 <tr>
-<td><code>export_symbol.hpp</code></td>
-<td>Contains \link FCPPT_EXPORT_SYMBOL \endlink.</td>
+<td><code>symbol/export.hpp</code></td>
+<td>Contains \link FCPPT_SYMBOL_EXPORT \endlink.</td>
 </tr>
 <tr>
-<td><code>import_symbol.hpp</code></td>
-<td>Contains \link FCPPT_IMPORT_SYMBOL \endlink.</td>
+<td><code>symbol/import.hpp</code></td>
+<td>Contains \link FCPPT_SYMBOL_IMPORT \endlink.</td>
 </tr>
 <tr>
-<td><code>class_symbol.hpp</code></td>
-<td>Contains \link FCPPT_CLASS_SYMBOL \endlink.</td>
+<td><code>symbol/class.hpp</code></td>
+<td>Contains \link FCPPT_SYMBOL_CLASS \endlink.</td>
 </tr>
 <tr>
-<td><code>export_class_instantiation.hpp</code></td>
-<td>Contains \link FCPPT_EXPORT_CLASS_INSTANTIATION \endlink.</td>
+<td><code>symbol/export_class_instantiation.hpp</code></td>
+<td>Contains \link FCPPT_SYMBOL_EXPORT_CLASS_INSTANTIATION \endlink.</td>
 </tr>
 <tr>
-<td><code>export_function_instantiation.hpp</code></td>
-<td>Contains \link FCPPT_EXPORT_FUNCTION_INSTANTIATION \endlink.</td>
+<td><code>symbol/export_function_instantiation.hpp</code></td>
+<td>Contains \link FCPPT_SYMBOL_EXPORT_FUNCTION_INSTANTIATION \endlink.</td>
 </tr>
 </table>
 

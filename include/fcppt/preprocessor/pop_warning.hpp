@@ -7,20 +7,8 @@
 #ifndef FCPPT_PREPROCESSOR_POP_WARNING_HPP_INCLUDED
 #define FCPPT_PREPROCESSOR_POP_WARNING_HPP_INCLUDED
 
-#include <fcppt/preprocessor/detail/pop_warning.hpp>
-
-/**
-\brief Pops the current warning stack
-
-\ingroup fcpptpreprocessor
-
-Pops the stack of the current warning settings so that changes made since the
-last FCPPT_PP_PUSH_WARNING will be undone.
-
-\see \ref preprocessor_warnings
-*/
-#define FCPPT_PP_POP_WARNING \
-FCPPT_PP_DETAIL_POP_WARNING
+#include <fcppt/detail/check_cpp.hpp>
+#include <fcppt/preprocessor/pop_warning.h>
 
 
 #endif

@@ -9,7 +9,7 @@
 
 #include <fcppt/log/context_fwd.hpp>
 #include <fcppt/log/location_fwd.hpp>
-#include <fcppt/log/symbol.hpp>
+#include <fcppt/log/detail/symbol.hpp>
 #include <fcppt/log/parameters/object.hpp>
 
 
@@ -37,7 +37,7 @@ location))</code>.
 
 \return The constructed parameters class
 */
-FCPPT_LOG_SYMBOL
+FCPPT_LOG_DETAIL_SYMBOL
 fcppt::log::parameters::object
 with_context(
 	fcppt::log::context &context,

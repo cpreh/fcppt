@@ -8,7 +8,7 @@
 #define FCPPT_TYPE_NAME_HPP_INCLUDED
 
 #include <fcppt/string.hpp>
-#include <fcppt/symbol.hpp>
+#include <fcppt/detail/symbol.hpp>
 
 
 namespace fcppt
@@ -17,7 +17,7 @@ namespace fcppt
 /**
 \brief Returns a demangled type name if possible
 */
-FCPPT_SYMBOL
+FCPPT_DETAIL_SYMBOL
 fcppt::string
 type_name(
 	char const *

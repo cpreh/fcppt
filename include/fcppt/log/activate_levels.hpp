@@ -9,7 +9,7 @@
 
 #include <fcppt/log/level_fwd.hpp>
 #include <fcppt/log/object_fwd.hpp>
-#include <fcppt/log/symbol.hpp>
+#include <fcppt/log/detail/symbol.hpp>
 
 
 namespace fcppt
@@ -30,7 +30,7 @@ log::level::fatal as well.
 \param logger The logger to activate the levels for
 \param level The lower bound of the levels to activate
 */
-FCPPT_LOG_SYMBOL
+FCPPT_LOG_DETAIL_SYMBOL
 void
 activate_levels(
 	fcppt::log::object &logger,

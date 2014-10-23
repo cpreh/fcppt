@@ -8,13 +8,13 @@
 #define FCPPT_VERSION_STRING_HPP_INCLUDED
 
 #include <fcppt/string.hpp>
-#include <fcppt/symbol.hpp>
+#include <fcppt/detail/symbol.hpp>
 
 
 namespace fcppt
 {
 
-FCPPT_SYMBOL
+FCPPT_DETAIL_SYMBOL
 string const
 version_string();
 

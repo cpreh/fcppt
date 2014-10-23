@@ -8,7 +8,7 @@
 #ifndef FCPPT_IO_COLOR_SET_HPP_INCLUDED
 #define FCPPT_IO_COLOR_SET_HPP_INCLUDED
 
-#include <fcppt/symbol.hpp>
+#include <fcppt/detail/symbol.hpp>
 #include <fcppt/io/color/attribute.hpp>
 #include <fcppt/io/color/background.hpp>
 #include <fcppt/io/color/foreground.hpp>
@@ -26,21 +26,21 @@ namespace color
 class set
 {
 public:
-	FCPPT_SYMBOL
+	FCPPT_DETAIL_SYMBOL
 	set(
 		fcppt::io::color::foreground,
 		fcppt::io::color::background,
 		fcppt::io::color::attribute);
 
-	FCPPT_SYMBOL
+	FCPPT_DETAIL_SYMBOL
 	fcppt::io::color::foreground
 	foreground() const;
 
-	FCPPT_SYMBOL
+	FCPPT_DETAIL_SYMBOL
 	fcppt::io::color::background
 	background() const;
 
-	FCPPT_SYMBOL
+	FCPPT_DETAIL_SYMBOL
 	fcppt::io::color::attribute
 	attribute() const;
 
@@ -50,13 +50,13 @@ private:
 	fcppt::io::color::attribute attribute_;
 };
 
-FCPPT_SYMBOL
+FCPPT_DETAIL_SYMBOL
 std::ostream &
 operator<<(
 	std::ostream &,
 	fcppt::io::color::set const &);
 
-FCPPT_SYMBOL
+FCPPT_DETAIL_SYMBOL
 std::wostream &
 operator<<(
 	std::wostream &,

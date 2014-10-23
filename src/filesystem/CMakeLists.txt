@@ -32,13 +32,8 @@ set(
 	src/filesystem/strip_prefix.cpp
 )
 
-generate_symbol_header(
-	"fcppt_filesystem"
-	"FCPPT_FILESYSTEM"
-)
-
 make_fcppt_library(
-	fcppt_filesystem
+	filesystem
 	"${FCPPT_FILESYSTEM_FILES}"
 	FCPPT_DEPS
 		fcppt_core

@@ -8,7 +8,7 @@
 #define FCPPT_ERROR_STRERRNO_HPP_INCLUDED
 
 #include <fcppt/string.hpp>
-#include <fcppt/symbol.hpp>
+#include <fcppt/detail/symbol.hpp>
 
 
 namespace fcppt
@@ -24,7 +24,7 @@ namespace error
 A wrapper around <code>std::strerror(strerrno)</code> returning the message for
 the current global error number.
 */
-FCPPT_SYMBOL
+FCPPT_DETAIL_SYMBOL
 fcppt::string
 strerrno();
 

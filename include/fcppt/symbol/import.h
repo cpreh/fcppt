@@ -4,29 +4,29 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_IMPORT_SYMBOL_HPP_INCLUDED
-#define FCPPT_IMPORT_SYMBOL_HPP_INCLUDED
+#ifndef FCPPT_SYMBOL_IMPORT_H_INCLUDED
+#define FCPPT_SYMBOL_IMPORT_H_INCLUDED
 
-#include <fcppt/config/compiler.hpp>
+#include <fcppt/config/compiler.h>
 
 #if defined(FCPPT_CONFIG_MSVC_COMPILER)
-#	define FCPPT_IMPORT_SYMBOL_IMPL __declspec(dllimport)
+#	define FCPPT_SYMBOL_IMPORT_IMPL __declspec(dllimport)
 #elif defined(FCPPT_CONFIG_GCC_COMPILER)
-#	define FCPPT_IMPORT_SYMBOL_IMPL
+#	define FCPPT_SYMBOL_IMPORT_IMPL
 #else
-#	error "Don't know what FCPPT_IMPORT_SYMBOL should be"
+#	error "Don't know what FCPPT_SYMBOL_IMPORT should be"
 #endif
 
 /**
 \brief Tells that a symbol should be imported
 
-\ingroup fcpptexport
+\ingroup fcpptsymbol
 
 This macro marks a symbol to be imported, so it can be used from another
 library.
 
-\see \ref exports_library
+\see \ref symbol_library
 */
-#define FCPPT_IMPORT_SYMBOL FCPPT_IMPORT_SYMBOL_IMPL
+#define FCPPT_SYMBOL_IMPORT FCPPT_SYMBOL_IMPORT_IMPL
 
 #endif

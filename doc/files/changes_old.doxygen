@@ -189,7 +189,7 @@ into their own libraries, namely <code>fcppt_filesystem</code> and
 	</ul>
 </li>
 
-<li>\ref fcpptexport
+<li>\ref fcpptsymbol
 	<ul>
 
 	<li>Added support for explicit instantiations of template functions and

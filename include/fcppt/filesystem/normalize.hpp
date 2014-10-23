@@ -7,7 +7,7 @@
 #ifndef FCPPT_FILESYSTEM_NORMALIZE_HPP_INCLUDED
 #define FCPPT_FILESYSTEM_NORMALIZE_HPP_INCLUDED
 
-#include <fcppt/filesystem/symbol.hpp>
+#include <fcppt/filesystem/detail/symbol.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/filesystem/path.hpp>
 #include <fcppt/config/external_end.hpp>
@@ -27,7 +27,7 @@ Returns a copy of \a path with trailing slashes removed.
 
 \param path The path to remove trailing slashes from
 */
-FCPPT_FILESYSTEM_SYMBOL
+FCPPT_FILESYSTEM_DETAIL_SYMBOL
 boost::filesystem::path
 normalize(
 	boost::filesystem::path const &path

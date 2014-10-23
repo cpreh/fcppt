@@ -7,7 +7,7 @@
 #ifndef FCPPT_FILESYSTEM_CREATE_DIRECTORY_EXN_HPP_INCLUDED
 #define FCPPT_FILESYSTEM_CREATE_DIRECTORY_EXN_HPP_INCLUDED
 
-#include <fcppt/filesystem/symbol.hpp>
+#include <fcppt/filesystem/detail/symbol.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/filesystem/path.hpp>
 #include <fcppt/config/external_end.hpp>
@@ -30,7 +30,7 @@ Tries to create the last component of \a path as a directory.
 \throw fcppt::filesystem::create_directory_failed if creating the directory is
 not successful
 */
-FCPPT_FILESYSTEM_SYMBOL
+FCPPT_FILESYSTEM_DETAIL_SYMBOL
 void
 create_directory_exn(
 	boost::filesystem::path const &path

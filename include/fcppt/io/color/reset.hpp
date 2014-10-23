@@ -8,7 +8,7 @@
 #ifndef FCPPT_IO_COLOR_RESET_HPP_INCLUDED
 #define FCPPT_IO_COLOR_RESET_HPP_INCLUDED
 
-#include <fcppt/symbol.hpp>
+#include <fcppt/detail/symbol.hpp>
 #include <fcppt/io/color/set.hpp>
 
 
@@ -18,9 +18,11 @@ namespace io
 {
 namespace color
 {
-FCPPT_SYMBOL
-set const
+
+FCPPT_DETAIL_SYMBOL
+fcppt::io::color::set const
 reset();
+
 }
 }
 }

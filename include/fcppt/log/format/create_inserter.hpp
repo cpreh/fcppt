@@ -8,7 +8,7 @@
 #define FCPPT_LOG_FORMAT_CREATE_INSERTER_HPP_INCLUDED
 
 #include <fcppt/string.hpp>
-#include <fcppt/log/symbol.hpp>
+#include <fcppt/log/detail/symbol.hpp>
 #include <fcppt/log/format/function.hpp>
 
 
@@ -31,7 +31,7 @@ Creates a formatter that behaves like \link fcppt::log::format::inserter
 
 \return A new formatter using \link fcppt::format \endlink with \a format
 */
-FCPPT_LOG_SYMBOL
+FCPPT_LOG_DETAIL_SYMBOL
 fcppt::log::format::function
 create_inserter(
 	fcppt::string const &format

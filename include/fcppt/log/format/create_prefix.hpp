@@ -8,7 +8,7 @@
 #define FCPPT_LOG_FORMAT_CREATE_PREFIX_HPP_INCLUDED
 
 #include <fcppt/string.hpp>
-#include <fcppt/log/symbol.hpp>
+#include <fcppt/log/detail/symbol.hpp>
 #include <fcppt/log/format/function.hpp>
 
 
@@ -30,7 +30,7 @@ Creates a formatter that output \a prefix in front.
 
 \return A new formatter printing \a prefix in front
 */
-FCPPT_LOG_SYMBOL
+FCPPT_LOG_DETAIL_SYMBOL
 fcppt::log::format::function
 create_prefix(
 	fcppt::string const &prefix

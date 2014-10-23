@@ -8,9 +8,9 @@
 #ifndef FCPPT_BACKTRACE_CURRENT_STACK_FRAME_HPP_INCLUDED
 #define FCPPT_BACKTRACE_CURRENT_STACK_FRAME_HPP_INCLUDED
 
-#include <fcppt/symbol.hpp>
 #include <fcppt/backtrace/stack_frame.hpp>
 #include <fcppt/backtrace/stack_limit.hpp>
+#include <fcppt/detail/symbol.hpp>
 
 
 namespace fcppt
@@ -18,7 +18,7 @@ namespace fcppt
 namespace backtrace
 {
 
-FCPPT_SYMBOL
+FCPPT_DETAIL_SYMBOL
 fcppt::backtrace::stack_frame
 current_stack_frame(
 	fcppt::backtrace::stack_limit const &

@@ -7,7 +7,7 @@
 #ifndef FCPPT_LOG_FORMAT_CREATE_CHAIN_HPP_INCLUDED
 #define FCPPT_LOG_FORMAT_CREATE_CHAIN_HPP_INCLUDED
 
-#include <fcppt/log/symbol.hpp>
+#include <fcppt/log/detail/symbol.hpp>
 #include <fcppt/log/format/function.hpp>
 
 
@@ -35,7 +35,7 @@ function, the other parameter will be returned.
 
 \warning The behaviour is undefined if both parameters are empty
 */
-FCPPT_LOG_SYMBOL
+FCPPT_LOG_DETAIL_SYMBOL
 fcppt::log::format::function
 create_chain(
 	fcppt::log::format::function const &parent,

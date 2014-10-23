@@ -9,7 +9,7 @@
 
 #include <fcppt/string.hpp>
 #include <fcppt/log/level_fwd.hpp>
-#include <fcppt/log/symbol.hpp>
+#include <fcppt/log/detail/symbol.hpp>
 
 
 namespace fcppt
@@ -30,7 +30,7 @@ fcppt::log::level::type
 
 \throw fcppt::log::exception if \a name is invalid
 */
-FCPPT_LOG_SYMBOL
+FCPPT_LOG_DETAIL_SYMBOL
 fcppt::log::level
 level_from_string(
 	fcppt::string const &name

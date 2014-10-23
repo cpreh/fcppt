@@ -8,7 +8,7 @@
 #define FCPPT_FILESYSTEM_PATH_TO_STRING_HPP_INCLUDED
 
 #include <fcppt/string.hpp>
-#include <fcppt/filesystem/symbol.hpp>
+#include <fcppt/filesystem/detail/symbol.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/filesystem/path.hpp>
 #include <fcppt/config/external_end.hpp>
@@ -26,7 +26,7 @@ namespace filesystem
 
 Turns \a path into an fcppt::string.
 */
-FCPPT_FILESYSTEM_SYMBOL
+FCPPT_FILESYSTEM_DETAIL_SYMBOL
 fcppt::string
 path_to_string(
 	boost::filesystem::path const &path

@@ -11,7 +11,7 @@
 #include <fcppt/log/context_fwd.hpp>
 #include <fcppt/log/context_location_fwd.hpp>
 #include <fcppt/log/location.hpp>
-#include <fcppt/log/symbol.hpp>
+#include <fcppt/log/detail/symbol.hpp>
 
 
 namespace fcppt
@@ -40,7 +40,7 @@ public:
 
 	\param location The location in the context
 	*/
-	FCPPT_LOG_SYMBOL
+	FCPPT_LOG_DETAIL_SYMBOL
 	context_location(
 		fcppt::log::context &context,
 		fcppt::log::location const &location
@@ -49,14 +49,14 @@ public:
 	/**
 	\brief Returns the associated context
 	*/
-	FCPPT_LOG_SYMBOL
+	FCPPT_LOG_DETAIL_SYMBOL
 	fcppt::log::context &
 	context() const;
 
 	/**
 	\brief Returns the location in the context
 	*/
-	FCPPT_LOG_SYMBOL
+	FCPPT_LOG_DETAIL_SYMBOL
 	fcppt::log::location const &
 	location() const;
 private:

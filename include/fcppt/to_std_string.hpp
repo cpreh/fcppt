@@ -8,7 +8,7 @@
 #define FCPPT_TO_STD_STRING_HPP_INCLUDED
 
 #include <fcppt/string.hpp>
-#include <fcppt/symbol.hpp>
+#include <fcppt/detail/symbol.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <string>
 #include <fcppt/config/external_end.hpp>
@@ -24,7 +24,7 @@ namespace fcppt
 See the \link fcpptstring string module description \endlink for more
 information about this function.
 */
-FCPPT_SYMBOL
+FCPPT_DETAIL_SYMBOL
 std::string
 to_std_string(
 	fcppt::string const &

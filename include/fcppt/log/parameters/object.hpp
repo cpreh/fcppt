@@ -17,7 +17,7 @@
 #include <fcppt/log/level_stream_fwd.hpp>
 #include <fcppt/log/location_fwd.hpp>
 #include <fcppt/log/object_fwd.hpp>
-#include <fcppt/log/symbol.hpp>
+#include <fcppt/log/detail/symbol.hpp>
 #include <fcppt/log/detail/optional_context_location.hpp>
 #include <fcppt/log/format/function.hpp>
 #include <fcppt/log/parameters/object_fwd.hpp>
@@ -50,7 +50,7 @@ public:
 	Default constructs a parameters object with <code>running =
 	false</code>, no level streams, all levels disabled and no formatter.
 	*/
-	FCPPT_LOG_SYMBOL
+	FCPPT_LOG_DETAIL_SYMBOL
 	object();
 
 	/**
@@ -66,7 +66,7 @@ public:
 
 	\see fcppt::log::parameters::with_context
 	*/
-	FCPPT_LOG_SYMBOL
+	FCPPT_LOG_DETAIL_SYMBOL
 	fcppt::log::parameters::object &
 	context_location(
 		fcppt::log::context_location const &context_location
@@ -81,7 +81,7 @@ public:
 
 	\return <code>*this</code>
 	*/
-	FCPPT_LOG_SYMBOL
+	FCPPT_LOG_DETAIL_SYMBOL
 	fcppt::log::parameters::object &
 	enabled(
 		bool enabled
@@ -97,7 +97,7 @@ public:
 
 	\return <code>*this</code>
 	*/
-	FCPPT_LOG_SYMBOL
+	FCPPT_LOG_DETAIL_SYMBOL
 	fcppt::log::parameters::object &
 	level_streams(
 		fcppt::log::level_stream_array const &streams
@@ -115,7 +115,7 @@ public:
 
 	\return <code>*this</code>
 	*/
-	FCPPT_LOG_SYMBOL
+	FCPPT_LOG_DETAIL_SYMBOL
 	fcppt::log::parameters::object &
 	level_stream(
 		fcppt::log::level level,
@@ -132,7 +132,7 @@ public:
 
 	\return <code>*this</code>
 	*/
-	FCPPT_LOG_SYMBOL
+	FCPPT_LOG_DETAIL_SYMBOL
 	fcppt::log::parameters::object &
 	enabled_levels(
 		fcppt::log::enabled_level_array const &levels
@@ -148,7 +148,7 @@ public:
 
 	\return <code>*this</code>
 	*/
-	FCPPT_LOG_SYMBOL
+	FCPPT_LOG_DETAIL_SYMBOL
 	fcppt::log::parameters::object &
 	activate(
 		fcppt::log::level level
@@ -164,7 +164,7 @@ public:
 
 	\return <code>*this</code>
 	*/
-	FCPPT_LOG_SYMBOL
+	FCPPT_LOG_DETAIL_SYMBOL
 	fcppt::log::parameters::object &
 	formatter(
 		fcppt::log::format::function const &formatter
@@ -189,7 +189,7 @@ public:
 
 	\return <code>*this</code>
 	*/
-	FCPPT_LOG_SYMBOL
+	FCPPT_LOG_DETAIL_SYMBOL
 	fcppt::log::parameters::object &
 	level_defaults(
 		fcppt::io::ostream &sink,

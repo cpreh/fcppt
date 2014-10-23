@@ -7,7 +7,7 @@
 #ifndef FCPPT_FILESYSTEM_NUM_SUBPATHS_HPP_INCLUDED
 #define FCPPT_FILESYSTEM_NUM_SUBPATHS_HPP_INCLUDED
 
-#include <fcppt/filesystem/symbol.hpp>
+#include <fcppt/filesystem/detail/symbol.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/filesystem/path.hpp>
 #include <cstddef>
@@ -28,7 +28,7 @@ Returns how many sub-path \a path has
 
 \param path The path to count the sub-paths of
 */
-FCPPT_FILESYSTEM_SYMBOL
+FCPPT_FILESYSTEM_DETAIL_SYMBOL
 std::size_t
 num_subpaths(
 	boost::filesystem::path const &path

@@ -7,7 +7,7 @@
 #ifndef FCPPT_TIME_OUTPUT_TM_HPP_INCLUDED
 #define FCPPT_TIME_OUTPUT_TM_HPP_INCLUDED
 
-#include <fcppt/symbol.hpp>
+#include <fcppt/detail/symbol.hpp>
 #include <fcppt/io/ostream.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <ctime>
@@ -33,7 +33,7 @@ obtained from the locale of \a stream.
 
 \return \a stream
 */
-FCPPT_SYMBOL
+FCPPT_DETAIL_SYMBOL
 fcppt::io::ostream &
 output_tm(
 	fcppt::io::ostream &stream,

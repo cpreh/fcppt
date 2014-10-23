@@ -13,6 +13,7 @@ function(
 	set(
 		SINGLE_ARGS
 		SUBNAME
+		IS_C
 	)
 
 	set(
@@ -45,9 +46,23 @@ function(
 		)
 	endif()
 
+	if(
+		_IS_C
+	)
+		set(
+			SUFFIX
+			"c"
+		)
+	else()
+		set(
+			SUFFIX
+			"cpp"
+		)
+	endif()
+
 	add_executable(
 		${FCPPT_EXAMPLE_NAME}
-		${MAINNAME}.cpp
+		${MAINNAME}.${SUFFIX}
 	)
 
 	target_compile_definitions(
@@ -56,9 +71,13 @@ function(
 		"${_COMPILE_DEFINITIONS}"
 	)
 
-	fcppt_utils_set_target_compiler_flags(
-		${FCPPT_EXAMPLE_NAME}
+	if(
+		NOT _IS_C
 	)
+		fcppt_utils_set_target_compiler_flags(
+			${FCPPT_EXAMPLE_NAME}
+		)
+	endif()
 
 	target_link_libraries(
 		${FCPPT_EXAMPLE_NAME}
@@ -157,6 +176,12 @@ add_fcppt_example(
 	math
 	LINK_LIBS
 		${fcppt_core_TARGET}
+)
+
+add_fcppt_example(
+	no_cpp
+	IS_C
+		TRUE
 )
 
 add_fcppt_example(

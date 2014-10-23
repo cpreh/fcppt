@@ -7,7 +7,7 @@
 #ifndef FCPPT_ENDIANNESS_IS_BIG_ENDIAN_HPP_INCLUDED
 #define FCPPT_ENDIANNESS_IS_BIG_ENDIAN_HPP_INCLUDED
 
-#include <fcppt/symbol.hpp>
+#include <fcppt/detail/symbol.hpp>
 
 
 namespace fcppt
@@ -22,7 +22,7 @@ namespace endianness
 
 Equivalent to <code>host_format() == format::big</code>
 */
-FCPPT_SYMBOL
+FCPPT_DETAIL_SYMBOL
 bool
 is_big_endian();
 

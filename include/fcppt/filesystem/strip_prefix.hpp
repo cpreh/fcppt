@@ -7,7 +7,7 @@
 #ifndef FCPPT_FILESYSTEM_STRIP_PREFIX_HPP_INCLUDED
 #define FCPPT_FILESYSTEM_STRIP_PREFIX_HPP_INCLUDED
 
-#include <fcppt/filesystem/symbol.hpp>
+#include <fcppt/filesystem/detail/symbol.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/filesystem/path.hpp>
 #include <fcppt/config/external_end.hpp>
@@ -31,7 +31,7 @@ Strips \a prefix from \a path.
 
 \param path The path to strip the prefix from
 */
-FCPPT_FILESYSTEM_SYMBOL
+FCPPT_FILESYSTEM_DETAIL_SYMBOL
 boost::filesystem::path
 strip_prefix(
 	boost::filesystem::path const &prefix,

@@ -8,10 +8,11 @@
 #define FCPPT_TIME_CTIME_HPP_INCLUDED
 
 #include <fcppt/string.hpp>
-#include <fcppt/symbol.hpp>
+#include <fcppt/detail/symbol.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <ctime>
 #include <fcppt/config/external_end.hpp>
+
 
 namespace fcppt
 {
@@ -29,7 +30,7 @@ Converts \a time into a string using <code>%std::ctime</code>.
 
 \throw fcppt::time::exception if anything fails
 */
-FCPPT_SYMBOL
+FCPPT_DETAIL_SYMBOL
 fcppt::string
 ctime(
 	std::time_t time

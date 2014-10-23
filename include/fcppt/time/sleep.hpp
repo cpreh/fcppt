@@ -7,7 +7,7 @@
 #ifndef FCPPT_TIME_SLEEP_HPP_INCLUDED
 #define FCPPT_TIME_SLEEP_HPP_INCLUDED
 
-#include <fcppt/symbol.hpp>
+#include <fcppt/detail/symbol.hpp>
 #include <fcppt/time/sleep_duration.hpp>
 
 
@@ -28,7 +28,7 @@ Tries to sleep for \a duration.
 \throw fcppt::time::sleep_interrupted if sleeping for the requested time was
 not possible
 */
-FCPPT_SYMBOL
+FCPPT_DETAIL_SYMBOL
 void
 sleep(
 	fcppt::time::sleep_duration const &duration

@@ -7,7 +7,7 @@
 #ifndef FCPPT_TIME_GMTIME_HPP_INCLUDED
 #define FCPPT_TIME_GMTIME_HPP_INCLUDED
 
-#include <fcppt/symbol.hpp>
+#include <fcppt/detail/symbol.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <ctime>
 #include <fcppt/config/external_end.hpp>
@@ -27,7 +27,7 @@ Converts \a time to an <code>%std::tm</code> using <code>%std::gmtime</code>.
 
 \param time The time to convert
 */
-FCPPT_SYMBOL
+FCPPT_DETAIL_SYMBOL
 std::tm const
 gmtime(
 	std::time_t time

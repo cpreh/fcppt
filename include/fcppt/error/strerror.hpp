@@ -8,7 +8,7 @@
 #define FCPPT_ERROR_STRERROR_HPP_INCLUDED
 
 #include <fcppt/string.hpp>
-#include <fcppt/symbol.hpp>
+#include <fcppt/detail/symbol.hpp>
 
 
 namespace fcppt
@@ -26,7 +26,7 @@ code given by \a errnum.
 
 \a errnum The error code to return the message for
 */
-FCPPT_SYMBOL
+FCPPT_DETAIL_SYMBOL
 fcppt::string
 strerror(
 	int errnum

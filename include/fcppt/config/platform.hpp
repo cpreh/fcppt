@@ -7,16 +7,8 @@
 #ifndef FCPPT_CONFIG_PLATFORM_HPP_INCLUDED
 #define FCPPT_CONFIG_PLATFORM_HPP_INCLUDED
 
-#if defined(_WIN32)
-#define FCPPT_CONFIG_WINDOWS_PLATFORM
-#elif defined(__unix__)
-#define FCPPT_CONFIG_UNIX_PLATFORM
-#elif defined(__APPLE__)
-#define FCPPT_CONFIG_DARWIN_PLATFORM
-#endif
+#include <fcppt/config/platform.h>
+#include <fcppt/detail/check_cpp.hpp>
 
-#if defined(FCPPT_CONFIG_UNIX_PLATFORM) || defined(FCPPT_CONFIG_DARWIN_PLATFORM)
-#define FCPPT_CONFIG_POSIX_PLATFORM
-#endif
 
 #endif

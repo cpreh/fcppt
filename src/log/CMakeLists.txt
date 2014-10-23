@@ -136,13 +136,8 @@ set(
 	src/log/tree_formatter.cpp
 )
 
-generate_symbol_header(
-	"fcppt_log"
-	"FCPPT_LOG"
-)
-
 make_fcppt_library(
-	fcppt_log
+	log
 	"${FCPPT_LOG_FILES}"
 	FCPPT_DEPS
 		fcppt_core

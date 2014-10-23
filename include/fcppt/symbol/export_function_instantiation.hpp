@@ -4,21 +4,22 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_EXPORT_FUNCTION_INSTANTIATION_HPP_INCLUDED
-#define FCPPT_EXPORT_FUNCTION_INSTANTIATION_HPP_INCLUDED
+#ifndef FCPPT_SYMBOL_EXPORT_FUNCTION_INSTANTIATION_HPP_INCLUDED
+#define FCPPT_SYMBOL_EXPORT_FUNCTION_INSTANTIATION_HPP_INCLUDED
 
-#include <fcppt/export_symbol.hpp>
+#include <fcppt/symbol/export.hpp>
+
 
 /**
 \brief Tells that an explicit function instantiation should be exported
 
-\ingroup fcpptexport
+\ingroup fcpptsymbol
 
 This macro marks an explicitly instantiated template function to be exported,
 so it can be used by other libraries or programs.
 
-\see \ref exports_library
+\see \ref symbol_library
 */
-#define FCPPT_EXPORT_FUNCTION_INSTANTIATION FCPPT_EXPORT_SYMBOL
+#define FCPPT_SYMBOL_EXPORT_FUNCTION_INSTANTIATION FCPPT_SYMBOL_EXPORT
 
 #endif

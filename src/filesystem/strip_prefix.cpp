@@ -7,7 +7,6 @@
 #include <fcppt/cast/to_signed.hpp>
 #include <fcppt/filesystem/num_subpaths.hpp>
 #include <fcppt/filesystem/strip_prefix.hpp>
-#include <fcppt/filesystem/symbol.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/filesystem/path.hpp>
 #include <algorithm>

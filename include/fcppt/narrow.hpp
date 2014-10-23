@@ -8,7 +8,7 @@
 #define FCPPT_NARROW_HPP_INCLUDED
 
 #include <fcppt/string_conv_locale.hpp>
-#include <fcppt/symbol.hpp>
+#include <fcppt/detail/symbol.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <locale>
 #include <string>
@@ -19,7 +19,7 @@ namespace fcppt
 {
 
 /// convert an std::wstring to std::string
-FCPPT_SYMBOL
+FCPPT_DETAIL_SYMBOL
 std::string
 narrow(
 	std::wstring const &,

@@ -7,7 +7,7 @@
 #ifndef FCPPT_TIME_PARSE_DATE_HPP_INCLUDED
 #define FCPPT_TIME_PARSE_DATE_HPP_INCLUDED
 
-#include <fcppt/symbol.hpp>
+#include <fcppt/detail/symbol.hpp>
 #include <fcppt/io/istream.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <ctime>
@@ -37,7 +37,7 @@ result will be left untouched.
 
 \return \a stream
 */
-FCPPT_SYMBOL
+FCPPT_DETAIL_SYMBOL
 fcppt::io::istream &
 parse_date(
 	fcppt::io::istream &stream,

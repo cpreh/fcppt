@@ -8,7 +8,7 @@
 #define FCPPT_LOG_FORMAT_CHAIN_HPP_INCLUDED
 
 #include <fcppt/string.hpp>
-#include <fcppt/log/symbol.hpp>
+#include <fcppt/log/detail/symbol.hpp>
 #include <fcppt/log/format/function.hpp>
 
 
@@ -35,7 +35,7 @@ Applies \a child to \a text, the result of which \a parent will be applied to.
 
 \return The formatted text
 */
-FCPPT_LOG_SYMBOL
+FCPPT_LOG_DETAIL_SYMBOL
 fcppt::string
 chain(
 	fcppt::log::format::function const &parent,

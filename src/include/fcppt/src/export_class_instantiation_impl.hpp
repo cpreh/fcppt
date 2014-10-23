@@ -10,8 +10,8 @@
 #if defined(FCPPT_STATIC_LINK)
 #	define FCPPT_EXPORT_CLASS_INSTANTIATION_IMPL
 #else
-#	include <fcppt/export_class_instantiation.hpp>
-#	define FCPPT_EXPORT_CLASS_INSTANTIATION_IMPL FCPPT_EXPORT_CLASS_INSTANTIATION
+#	include <fcppt/symbol/export_class_instantiation.hpp>
+#	define FCPPT_EXPORT_CLASS_INSTANTIATION_IMPL FCPPT_SYMBOL_EXPORT_CLASS_INSTANTIATION
 #endif
 
 #endif

@@ -8,15 +8,18 @@
 #ifndef FCPPT_BACKTRACE_PRINT_CURRENT_STACK_FRAME_HPP_INCLUDED
 #define FCPPT_BACKTRACE_PRINT_CURRENT_STACK_FRAME_HPP_INCLUDED
 
-#include <fcppt/symbol.hpp>
+#include <fcppt/detail/symbol.hpp>
+
 
 namespace fcppt
 {
 namespace backtrace
 {
-FCPPT_SYMBOL
+
+FCPPT_DETAIL_SYMBOL
 void
 print_current_stack_frame();
+
 }
 }
 

@@ -7,7 +7,7 @@
 #ifndef FCPPT_LOG_FORMAT_CREATE_TIME_STAMP_HPP_INCLUDED
 #define FCPPT_LOG_FORMAT_CREATE_TIME_STAMP_HPP_INCLUDED
 
-#include <fcppt/log/symbol.hpp>
+#include <fcppt/log/detail/symbol.hpp>
 #include <fcppt/log/format/function.hpp>
 
 
@@ -28,7 +28,7 @@ fcppt::log::format::time_stamp \endlink does.
 
 \return A new formatter that prints a time stamp
 */
-FCPPT_LOG_SYMBOL
+FCPPT_LOG_DETAIL_SYMBOL
 fcppt::log::format::function
 create_time_stamp();
 

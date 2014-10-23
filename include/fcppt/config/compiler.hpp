@@ -7,15 +7,8 @@
 #ifndef FCPPT_CONFIG_COMPILER_HPP_INCLUDED
 #define FCPPT_CONFIG_COMPILER_HPP_INCLUDED
 
-#if defined(_MSC_VER)
-#define FCPPT_CONFIG_MSVC_COMPILER
-#elif defined(__GNUC__)
-#define FCPPT_CONFIG_GCC_COMPILER
-#endif
+#include <fcppt/config/compiler.h>
+#include <fcppt/detail/check_cpp.hpp>
 
-// clang emulates gcc, so FCPPT_CONFIG_GCC_COMPILER will also be defined
-#if defined(__clang__)
-#define FCPPT_CONFIG_CLANG_COMPILER
-#endif
 
 #endif

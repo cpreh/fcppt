@@ -7,7 +7,11 @@
 #ifndef FCPPT_CONFIG_EXTERNAL_BEGIN_HPP_INCLUDED
 #define FCPPT_CONFIG_EXTERNAL_BEGIN_HPP_INCLUDED
 
-#if defined(FCPPT_CONFIG_INSIDE_EXTERNAL)
+#include <fcppt/detail/check_cpp.hpp>
+
+#include <fcppt/config/external_begin.h>
+
+#if defined(FCPPT_CONFIG_INSIDE_EXTERNAL_HPP)
 #error "Missing #include <fcppt/config/external_end.hpp>"
 #endif
 
@@ -57,63 +61,26 @@ FCPPT_PP_DISABLE_VC_WARNING(4987) // non standard throw(...)
 
 #if defined(FCPPT_CONFIG_CLANG_COMPILER)
 
-// clang only warnings
-
-FCPPT_PP_DISABLE_GCC_WARNING(-Wconditional-uninitialized)
-FCPPT_PP_DISABLE_GCC_WARNING(-Wdocumentation)
-FCPPT_PP_DISABLE_GCC_WARNING(-Wextra-semi)
-FCPPT_PP_DISABLE_GCC_WARNING(-Wimplicit-fallthrough)
 FCPPT_PP_DISABLE_GCC_WARNING(-Wmismatched-tags)
-FCPPT_PP_DISABLE_GCC_WARNING(-Wnewline-eof)
-FCPPT_PP_DISABLE_GCC_WARNING(-Wtautological-compare)
 FCPPT_PP_DISABLE_GCC_WARNING(-Wunneeded-member-function)
 FCPPT_PP_DISABLE_GCC_WARNING(-Wunused-member-function)
 
 #else
 
-// gcc only warnings
-
-FCPPT_PP_DISABLE_GCC_WARNING(-Wdouble-promotion)
 FCPPT_PP_DISABLE_GCC_WARNING(-Wliteral-suffix)
-FCPPT_PP_DISABLE_GCC_WARNING(-Wlogical-op)
-FCPPT_PP_DISABLE_GCC_WARNING(-Wmaybe-uninitialized)
-FCPPT_PP_DISABLE_GCC_WARNING(-Wunused-local-typedefs)
 FCPPT_PP_DISABLE_GCC_WARNING(-Wzero-as-null-pointer-constant)
 
 #endif
 
-// common clang and gcc warnings
-
-FCPPT_PP_DISABLE_GCC_WARNING(-Wattributes)
-FCPPT_PP_DISABLE_GCC_WARNING(-Wcast-align)
-FCPPT_PP_DISABLE_GCC_WARNING(-Wcast-qual)
-FCPPT_PP_DISABLE_GCC_WARNING(-Wcomment)
-FCPPT_PP_DISABLE_GCC_WARNING(-Wconversion)
 FCPPT_PP_DISABLE_GCC_WARNING(-Wdelete-non-virtual-dtor)
 FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
-FCPPT_PP_DISABLE_GCC_WARNING(-Wfloat-equal)
-FCPPT_PP_DISABLE_GCC_WARNING(-Wignored-qualifiers)
-FCPPT_PP_DISABLE_GCC_WARNING(-Wmissing-declarations)
-FCPPT_PP_DISABLE_GCC_WARNING(-Wmissing-field-initializers)
 FCPPT_PP_DISABLE_GCC_WARNING(-Wnon-virtual-dtor)
 FCPPT_PP_DISABLE_GCC_WARNING(-Wold-style-cast)
 FCPPT_PP_DISABLE_GCC_WARNING(-Woverloaded-virtual)
-FCPPT_PP_DISABLE_GCC_WARNING(-Wredundant-decls)
-FCPPT_PP_DISABLE_GCC_WARNING(-Wshadow)
-FCPPT_PP_DISABLE_GCC_WARNING(-Wsign-conversion)
-FCPPT_PP_DISABLE_GCC_WARNING(-Wstrict-aliasing)
-FCPPT_PP_DISABLE_GCC_WARNING(-Wtype-limits)
-FCPPT_PP_DISABLE_GCC_WARNING(-Wundef)
-FCPPT_PP_DISABLE_GCC_WARNING(-Wuninitialized)
-FCPPT_PP_DISABLE_GCC_WARNING(-Wunknown-pragmas)
-FCPPT_PP_DISABLE_GCC_WARNING(-Wunreachable-code)
-FCPPT_PP_DISABLE_GCC_WARNING(-Wunused-function)
-FCPPT_PP_DISABLE_GCC_WARNING(-Wunused-parameter)
-FCPPT_PP_DISABLE_GCC_WARNING(-Wunused-variable)
 
 #endif
 
-#define FCPPT_CONFIG_INSIDE_EXTERNAL
+#define FCPPT_CONFIG_INSIDE_EXTERNAL_HPP
 
 #endif
 

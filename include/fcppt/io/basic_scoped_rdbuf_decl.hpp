@@ -8,7 +8,7 @@
 #define FCPPT_IO_BASIC_SCOPED_RDBUF_DECL_HPP_INCLUDED
 
 #include <fcppt/noncopyable.hpp>
-#include <fcppt/symbol.hpp>
+#include <fcppt/detail/symbol.hpp>
 #include <fcppt/io/basic_scoped_rdbuf_fwd.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <iosfwd>
@@ -49,13 +49,13 @@ public:
 	\param source The stream whose streambuf to take
 	\param receiver The stream that will receive the streambuf
 	*/
-	FCPPT_SYMBOL
+	FCPPT_DETAIL_SYMBOL
 	basic_scoped_rdbuf(
 		stream_type &source,
 		stream_type &receiver
 	);
 
-	FCPPT_SYMBOL
+	FCPPT_DETAIL_SYMBOL
 	~basic_scoped_rdbuf();
 private:
 	typedef

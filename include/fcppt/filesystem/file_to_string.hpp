@@ -8,7 +8,7 @@
 #define FCPPT_FILESYSTEM_FILE_TO_STRING_HPP_INCLUDED
 
 #include <fcppt/string.hpp>
-#include <fcppt/filesystem/symbol.hpp>
+#include <fcppt/filesystem/detail/symbol.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/filesystem/path.hpp>
 #include <fcppt/config/external_end.hpp>
@@ -32,7 +32,7 @@ Returns the contents of the file denoted by \a path as string.
 
 \throw fcppt::filesystem::exception if anything goes wrong
 */
-FCPPT_FILESYSTEM_SYMBOL
+FCPPT_FILESYSTEM_DETAIL_SYMBOL
 fcppt::string
 file_to_string(
 	boost::filesystem::path const &path
