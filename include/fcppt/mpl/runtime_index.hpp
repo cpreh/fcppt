@@ -20,6 +20,22 @@ namespace fcppt
 namespace mpl
 {
 
+/**
+\brief Transforms a runtime index into a an integral constant
+
+\ingroup fcpptmpl
+
+Passes \a _index as an integral constant to \a _function if \a _index is less
+than \a MaxIndex::value. Otherwise, \a _fail_function is called.
+
+\tparam Index An integer type
+
+\tparam MaxIndex An integral constant
+
+\tparam Function A function callable with an integral constant
+
+\tparam FailFunction A function callable with no arguments
+*/
 template<
 	typename MaxIndex,
 	typename Index,

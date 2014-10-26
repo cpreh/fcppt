@@ -16,6 +16,13 @@
 namespace fcppt
 {
 
+/**
+\brief Hashes a range
+
+\ingroup fcpptvarious
+
+Hashes a range of type \a Type using begin and end
+*/
 template<
 	typename Type
 >

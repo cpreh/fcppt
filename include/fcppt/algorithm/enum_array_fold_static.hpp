@@ -16,6 +16,11 @@ namespace fcppt
 namespace algorithm
 {
 
+/**
+\ingroup fcpptenum
+
+\see fcppt::algorithm::array_fold_static
+*/
 template<
 	typename Array,
 	typename Function
