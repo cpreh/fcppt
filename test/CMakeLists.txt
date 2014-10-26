@@ -361,6 +361,10 @@ add_fcppt_test(
 )
 
 add_fcppt_test(
+	math/matrix/hash
+)
+
+add_fcppt_test(
 	math/matrix/infinity_norm
 )
 

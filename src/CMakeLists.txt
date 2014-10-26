@@ -478,6 +478,7 @@ set(
 	include/fcppt/math/dim/object_impl.hpp
 	include/fcppt/math/dim/output.hpp
 	include/fcppt/math/dim/static.hpp
+	include/fcppt/math/dim/std_hash.hpp
 	include/fcppt/math/dim/structure_cast.hpp
 	include/fcppt/math/exception.hpp
 	include/fcppt/math/generate_binary_vectors.hpp
@@ -526,6 +527,7 @@ set(
 	include/fcppt/math/matrix/sqrt.hpp
 	include/fcppt/math/matrix/static.hpp
 	include/fcppt/math/matrix/static_storage.hpp
+	include/fcppt/math/matrix/std_hash.hpp
 	include/fcppt/math/matrix/structure_cast.hpp
 	include/fcppt/math/matrix/transform_direction.hpp
 	include/fcppt/math/matrix/transform_point.hpp

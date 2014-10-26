@@ -227,8 +227,8 @@ longer supported.</li>
 
 	<li>Added fcppt::math::ceil_div_signed.</li>
 
-	<li>Added hashing function to fcppt::math::vector::object (TODO:
-	Shouldn't we add this to dim, matrix, etc. as well?)</li>
+	<li>Added hashing function to fcppt::math::vector::object,
+	fcppt::math::dim::object and fcppt::math::matrix::object.</li>
 
 	<li>Added fcppt::math::vector::distance.</li>
 
