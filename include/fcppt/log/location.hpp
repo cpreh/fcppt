@@ -9,8 +9,8 @@
 
 #include <fcppt/string.hpp>
 #include <fcppt/log/location_fwd.hpp>
-#include <fcppt/log/detail/symbol.hpp>
 #include <fcppt/log/detail/location_vector.hpp>
+#include <fcppt/log/detail/symbol.hpp>
 
 
 namespace fcppt

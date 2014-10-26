@@ -12,10 +12,10 @@
 #include <fcppt/log/location_fwd.hpp>
 #include <fcppt/log/object_fwd.hpp>
 #include <fcppt/log/optional_object_fwd.hpp>
-#include <fcppt/log/detail/symbol.hpp>
 #include <fcppt/log/tree_function.hpp>
 #include <fcppt/log/detail/auto_context_fwd.hpp>
 #include <fcppt/log/detail/context_tree.hpp>
+#include <fcppt/log/detail/symbol.hpp>
 
 
 namespace fcppt

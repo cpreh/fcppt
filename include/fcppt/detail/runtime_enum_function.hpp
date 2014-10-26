@@ -7,8 +7,8 @@
 #ifndef FCPPT_DETAIL_RUNTIME_ENUM_FUNCTION_HPP_INCLUDED
 #define FCPPT_DETAIL_RUNTIME_ENUM_FUNCTION_HPP_INCLUDED
 
-#include <fcppt/mpl/integral_cast.hpp>
 #include <fcppt/nonassignable.hpp>
+#include <fcppt/mpl/integral_cast.hpp>
 
 
 namespace fcppt

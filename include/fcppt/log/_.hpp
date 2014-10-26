@@ -7,8 +7,8 @@
 #ifndef FCPPT_LOG___HPP_INCLUDED
 #define FCPPT_LOG___HPP_INCLUDED
 
-#include <fcppt/log/detail/symbol.hpp>
 #include <fcppt/log/detail/output_helper.hpp>
+#include <fcppt/log/detail/symbol.hpp>
 #include <fcppt/log/detail/temporary_output.hpp>
 
 

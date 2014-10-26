@@ -15,8 +15,8 @@
 #include <fcppt/log/level_stream_fwd.hpp>
 #include <fcppt/log/object_fwd.hpp>
 #include <fcppt/log/optional_location_fwd.hpp>
-#include <fcppt/log/detail/symbol.hpp>
 #include <fcppt/log/detail/auto_context.hpp>
+#include <fcppt/log/detail/symbol.hpp>
 #include <fcppt/log/detail/temporary_output_fwd.hpp>
 #include <fcppt/log/format/function.hpp>
 #include <fcppt/log/parameters/object_fwd.hpp>
