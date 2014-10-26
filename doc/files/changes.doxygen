@@ -12,79 +12,162 @@ longer supported.</li>
 
 </ul>
 
+\subsection changes_new_libraries_to_100 New Libraries
+
+<ul>
+
+<li>\ref fcpptcasts
+	<ul>
+
+	<li>Added fcppt.casts which includes casts to replace <code>static_cast</code>.</li>
+
+	</ul>
+</li>
+
+<li>\ref fcpptenum
+	<ul>
+
+	<li>Added fcppt::enum_max_value, fcppt::enum_size and fcppt::cast_to_enum.</li>
+
+	</ul>
+</li>
+
+<li>\ref fcpptliteral
+	<ul>
+
+	<li>Added fcppt::literal.</li>
+
+	</ul>
+</li>
+
+<li>\ref fcpptref
+	<ul>
+
+	<li>Added fcppt::reference_wrapper which supports incomplete types.</li>
+
+	</ul>
+</li>
+
+</ul>
+
 \subsection changes_added_functionality_to_100 Added functionality
 
 <ul>
 
-<li>fcppt::container::tree::object is now movable.</li>
+<li>CMake
+	<ul>
 
-<li>fcppt::optional is now movable.</li>
+	<li>Allow to externally modify fcppt's .so version.</li>
 
-<li>fcppt::variant::object is now movable.</li>
+	<li>Added fcppt_utils_add_dummy_target.</li>
 
-<li>fcppt::container::grid::object is now movable.</li>
+	</ul>
+</li>
 
-<li>fcppt::container::raw_vector is now movable.</li>
+<li>\ref fcpptalgorithm
+	<ul>
 
-<li>Added fcppt::optional_ref_compare.</li>
+	<li>Added fcppt::algorithm::map_concat and fcppt::algorithm::map_concat_move.</li>
 
-<li>Added fcppt::reference_wrapper which supports incomplete types.</li>
+	<li>Added fcppt::algorithm::array_push_back.</li>
 
-<li>Added FCPPT_LOG_DEFINE_OBJECT.</li>
+	</ul>
+</li>
 
-<li>Allow to externally modify fcppt's .so version.</li>
+<li>\ref fcpptcontainer
+	<ul>
 
-<li>Added fcppt_utils_add_dummy_target.</li>
+	<li>fcppt::container::raw_vector is now movable.</li>
 
-<li>Added fcppt::log::activate_levels_recursive.</li>
+	<li>Added initializer list constructor to fcppt::container::raw_vector.</li>
 
-<li>Added fcppt::log::deactivate_levels_recursive.</li>
+	</ul>
+</li>
 
-<li>Added fcppt::enum_max_value, fcppt::enum_size and fcppt::cast_to_enum.</li>
+<li>\ref fcpptcontainergrid
+	<ul>
 
-<li>Added fcppt::optional_string typedef.</li>
+	<li>Added range constructor for fcppt::container::grid::object.</li>
 
-<li>Math operations are asymmetric now (e.g. multiplying a vector of meters by a vector of seconds).</li>
+	<li>fcppt::container::tree::object is now movable.</li>
 
-<li>Random has been improved to allow other types in distributions (e.g. strong typedefs).</li>
+	<li>fcppt::container::grid::object is now movable.</li>
 
-<li>Added range constructor for fcppt::container::grid::object.</li>
+	<li>Added pos type to fcppt::conainer::grid.</li>
 
-<li>Added fcppt::math::ceil_div_signed.</li>
+	<li>Added fcppt::container::grid::clamp_pos and fcppt::container::grid::clamp_signed_pos.</li>
 
-<li>Added fcppt.literal.</li>
+	<li>Added fcppt::container::bitfield::underlying_value.</li>
 
-<li>Added pos type to grid.</li>
+	<li>Added fcppt::container::grid::neumann_neighbors.</li>
 
-<li>Added fcppt::container::grid::clamp_pos and fcppt::container::grid::clamp_signed_pos.</li>
+	<li>Added fcppt::container::grid::in_range_dim.</li>
 
-<li>Added fcppt::container::bitfield::underlying_value.</li>
+	<li>Added fcppt::container::grid::moore_neighbors.</li>
 
-<li>Added initializer list constructor to fcppt::container::raw_vector.</li>
+	</ul>
+</li>
 
-<li>Added operator< to fcppt::optional.</li>
+<li>\ref fcpptlog
+	<ul>
 
-<li>Added fcppt::unique_ptr_to_optional.</li>
+	<li>Added FCPPT_LOG_DEFINE_OBJECT.</li>
 
-<li>Added fcppt.casts which includes casts to replace <code>static_cast</code>.</li>
+	<li>Added fcppt::log::activate_levels_recursive.</li>
 
-<li>Added fcppt::container::grid::neumann_neighbors.</li>
+	<li>Added fcppt::log::deactivate_levels_recursive.</li>
+
+	</ul>
+</li>
+
+<li>\ref fcpptmath
+	<ul>
+
+	<li>Math operations are asymmetric now (e.g. multiplying a vector of meters by a vector of seconds).</li>
+
+	<li>Added fcppt::math::ceil_div_signed.</li>
+
+	<li>Added hashing function to fcppt::math::vector::object (TODO: Shouldn't we add this to dim, matrix, etc. as well?)</li>
+
+	<li>Added fcppt::math::vector::distance.</li>
+
+	<li>Added fcppt::math::bresenham and fcppt::math::bresenham_thick.</li>
+
+	</ul>
+</li>
+
+<li>\ref fcpptoptional
+	<ul>
+
+	<li>fcppt::optional is now movable.</li>
+
+	<li>Added fcppt::optional_ref_compare.</li>
+
+	<li>Added fcppt::optional_string typedef.</li>
+
+	<li>Added operator< to fcppt::optional.</li>
+
+	</ul>
+</li>
+
+<li>\ref fcpptrandom
+	<ul>
+
+	<li>Random has been improved to allow other types in distributions (e.g. strong typedefs).</li>
+
+	</ul>
+</li>
+
+<li>\ref fcpptvariant
+	<ul>
+
+	<li>fcppt::variant::object is now movable.</li>
+
+	</ul>
+</li>
+
 
 <li>Added fcppt::range_hash.</li>
-
-<li>Added hashing function to fcppt::math::vector::object (TODO: Shouldn't we add this to dim, matrix, etc. as well?)</li>
-
-<li>Added fcppt::math::vector::distance.</li>
-
-<li>Added fcppt::algorithm::contains_set.</li>
-
-<li>Added fcppt::math::bresenham and fcppt::math::bresenham_thick.</li>
-
-<li>Added fcppt::container::grid::in_range_dim.</li>
-
-<li>Added fcppt::container::grid::moore_neighbors.</li>
-
-<li>Added fcppt::algorithm::array_push_back.</li>
 
 <li>Added fcppt::container::grid::spiral_iterator.</li>
 
@@ -204,8 +287,6 @@ longer supported.</li>
 
 <li>Allow multi argument fcppt::algorithm::join.</li>
 
-<li>Added fcppt::algorithm::map_concat and fcppt::algorithm::map_concat_move.</li>
-
 <li>fcppt.assign is now move only. Use initializer lists for all other cases.</li>
 
 <li>Moved most cast functions to the cast namespace.</li>
@@ -255,8 +336,6 @@ longer supported.</li>
 <li>Removed FOREACH_ENUMERATOR.</li>
 
 <li>Removed fcppt::algorithm::ptr_container_ease and fcppt::algorithm::ptr_container_erase_if.</li>
-
-<li>Removed fcppt::algorithm::contains_set.</li>
 
 <li>Removed fcppt::container::ptr functions.</li>
 

@@ -1117,7 +1117,6 @@ set(
 	include/fcppt/type_traits/is_std_array.hpp
 	include/fcppt/type_traits/is_string.hpp
 	include/fcppt/type_traits/remove_cv_ref.hpp
-	include/fcppt/unique_ptr_to_optional.hpp
 	include/fcppt/variant/apply_binary.hpp
 	include/fcppt/variant/apply_ternary.hpp
 	include/fcppt/variant/apply_unary.hpp

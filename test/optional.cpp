@@ -16,7 +16,6 @@
 #include <fcppt/optional_bind_construct.hpp>
 #include <fcppt/optional_ref_compare.hpp>
 #include <fcppt/static_optional_cast.hpp>
-#include <fcppt/unique_ptr_to_optional.hpp>
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
@@ -764,63 +763,6 @@ FCPPT_PP_POP_WARNING
 				5
 			)
 		)
-	);
-}
-
-FCPPT_PP_PUSH_WARNING
-FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
-
-BOOST_AUTO_TEST_CASE(
-	unique_ptr_to_optional
-)
-{
-FCPPT_PP_POP_WARNING
-	typedef
-	std::unique_ptr<
-		int
-	>
-	int_unique_ptr;
-
-	typedef
-	fcppt::optional<
-		int_unique_ptr
-	>
-	optional_int_unique_ptr;
-
-	BOOST_CHECK(
-		!fcppt::unique_ptr_to_optional(
-			optional_int_unique_ptr()
-		).has_value()
-	);
-
-	optional_int_unique_ptr ptr(
-		fcppt::make_unique_ptr<
-			int
-		>(
-			42
-		)
-	);
-
-	typedef
-	fcppt::optional<
-		int &
-	>
-	optional_reference;
-
-	optional_reference const ref(
-		fcppt::unique_ptr_to_optional(
-			ptr
-		)
-	);
-
-	BOOST_REQUIRE(
-		ref.has_value()
-	);
-
-	BOOST_CHECK(
-		*ref
-		==
-		42
 	);
 }
 
