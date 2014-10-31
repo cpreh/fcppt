@@ -523,6 +523,24 @@ typename
 fcppt::container::enum_array<
 	Enum,
 	Value
+>::internal const &
+fcppt::container::enum_array<
+	Enum,
+	Value
+>::impl() const
+{
+	return
+		impl_;
+}
+
+template<
+	typename Enum,
+	typename Value
+>
+typename
+fcppt::container::enum_array<
+	Enum,
+	Value
 >::internal::size_type
 fcppt::container::enum_array<
 	Enum,

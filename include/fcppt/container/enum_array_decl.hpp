@@ -209,6 +209,9 @@ public:
 		enum_array &
 	);
 
+	internal const &
+	impl() const;
+
 // Not private so enum_array is still a POD
 	static
 	typename
