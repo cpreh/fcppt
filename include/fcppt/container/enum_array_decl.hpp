@@ -241,8 +241,6 @@ swap(
 	> &
 );
 
-// TODO: comparison operators, tuple special functions
-
 }
 }
 

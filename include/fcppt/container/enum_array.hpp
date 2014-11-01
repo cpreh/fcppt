@@ -7,6 +7,7 @@
 #ifndef FCPPT_CONTAINER_ENUM_ARRAY_HPP_INCLUDED
 #define FCPPT_CONTAINER_ENUM_ARRAY_HPP_INCLUDED
 
+#include <fcppt/container/enum_array_comparison.hpp>
 #include <fcppt/container/enum_array_decl.hpp>
 #include <fcppt/container/enum_array_fwd.hpp>
 #include <fcppt/container/enum_array_impl.hpp>

@@ -46,17 +46,41 @@ FCPPT_PP_POP_WARNING
 	>
 	int_array;
 
-	int_array const test{{{
+	int_array const test1{{{
 		1,
 		2,
 		3
 	}}};
 
 	BOOST_CHECK(
-		test[
+		test1[
 			my_enum::val1
 		]
 		==
 		1
+	);
+
+	int_array const test2{{{
+		1,
+		2,
+		3
+	}}};
+
+	BOOST_CHECK(
+		test1
+		==
+		test2
+	);
+
+	int_array const test3{{{
+		1,
+		2,
+		4
+	}}};
+
+	BOOST_CHECK(
+		test1
+		!=
+		test3
 	);
 }
