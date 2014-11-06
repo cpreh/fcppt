@@ -15,8 +15,6 @@
 #include <fcppt/config/external_end.hpp>
 
 
-// \cond
-
 template<
 	typename Type
 >
@@ -36,7 +34,5 @@ fcppt::reference_wrapper_hash<
 			_value.get_pointer()
 		);
 }
-
-// \endcond
 
 #endif

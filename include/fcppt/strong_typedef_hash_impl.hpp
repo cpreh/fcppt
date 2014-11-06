@@ -15,8 +15,6 @@
 #include <fcppt/config/external_end.hpp>
 
 
-// \cond
-
 template<
 	typename Type,
 	typename Alias
@@ -38,7 +36,5 @@ fcppt::strong_typedef_hash<
 			_value.get()
 		);
 }
-
-// \endcond
 
 #endif

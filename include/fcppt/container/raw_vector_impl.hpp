@@ -1260,8 +1260,6 @@ fcppt::container::raw_vector<
 	);
 }
 
-// I've commented out the private section, so I have to do it here, too
-/// \cond
 template<
 	typename T,
 	typename A
@@ -1676,8 +1674,6 @@ fcppt::container::raw_vector<
 
 	cap_ = nullptr;
 }
-
-/// \endcond
 
 template<
 	typename T,

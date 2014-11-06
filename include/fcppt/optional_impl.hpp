@@ -17,8 +17,6 @@
 #include <fcppt/config/external_end.hpp>
 
 
-/// \cond FCPPT_DOXYGEN_DEBUG
-
 template<
 	typename T
 >
@@ -802,7 +800,5 @@ fcppt::optional<
 	return
 		this->has_value();
 }
-
-/// \endcond FCPPT_DOXYGEN_DEBUG
 
 #endif

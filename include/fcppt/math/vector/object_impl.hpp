@@ -257,7 +257,6 @@ fcppt::math::vector::object<
 {
 }
 
-// \cond FCPPT_DOXYGEN_DEBUG
 #define FCPPT_MATH_VECTOR_OBJECT_DEFINE_OPERATOR(\
 	op\
 )\
@@ -268,7 +267,6 @@ FCPPT_MATH_DETAIL_MAKE_OP_DEF(\
 	(fcppt::math::vector::object<T, N, OtherStorage>),\
 	op\
 )
-// \endcond
 
 FCPPT_MATH_VECTOR_OBJECT_DEFINE_OPERATOR(+=)
 FCPPT_MATH_VECTOR_OBJECT_DEFINE_OPERATOR(-=)
@@ -380,8 +378,6 @@ fcppt::math::vector::object<
 		);
 }
 
-// \cond
-
 template<
 	typename T,
 	typename N,
@@ -411,8 +407,6 @@ fcppt::math::vector::object<
 			>()
 		);
 }
-
-// \endcond
 
 template<
 	typename T,

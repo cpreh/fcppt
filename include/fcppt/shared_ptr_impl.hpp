@@ -349,8 +349,6 @@ fcppt::shared_ptr<
 	return impl_.get();
 }
 
-// Doxygen says: warning: member `operator typename fcppt::shared_ptr' of class `shared_ptr' cannot be found
-/// \cond FCPPT_DOXYGEN_DEBUG
 template<
 	typename Type,
 	typename Deleter
@@ -365,7 +363,6 @@ bool() const
 		impl_.get()
 		!= nullptr;
 }
-/// \endcond
 
 template<
 	typename Type,

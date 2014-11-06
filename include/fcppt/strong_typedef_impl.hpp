@@ -122,8 +122,6 @@ fcppt::strong_typedef<
 	);
 }
 
-// doxygen says: warning: no matching class member found for
-/// \cond FCPPT_DOXYGEN_DEBUG
 template<
 	typename T,
 	typename Tag
@@ -140,7 +138,6 @@ fcppt::strong_typedef<
 	)
 {
 }
-/// \endcond
 
 template<
 	typename T,

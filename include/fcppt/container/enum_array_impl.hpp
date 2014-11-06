@@ -557,7 +557,6 @@ fcppt::container::enum_array<
 		);
 }
 
-// \cond
 template<
 	typename Enum,
 	typename Value
@@ -578,6 +577,5 @@ fcppt::container::swap(
 		_right
 	);
 }
-// \endcond
 
 #endif

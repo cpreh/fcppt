@@ -278,7 +278,6 @@ fcppt::math::matrix::object<
 {
 }
 
-// \cond FCPPT_DOXYGEN_DEBUG
 #define FCPPT_MATH_MATRIX_OBJECT_DEFINE_OPERATOR(\
 	op\
 )\
@@ -289,7 +288,6 @@ FCPPT_MATH_DETAIL_MAKE_OP_DEF(\
 	(fcppt::math::matrix::object<T, N, M, OtherStorage>),\
 	op\
 )
-// \endcond
 
 FCPPT_MATH_MATRIX_OBJECT_DEFINE_OPERATOR(+=)
 FCPPT_MATH_MATRIX_OBJECT_DEFINE_OPERATOR(-=)
@@ -446,8 +444,6 @@ fcppt::math::matrix::object<
 		N::value;
 }
 
-// \cond
-
 template<
 	typename T,
 	typename N,
@@ -498,8 +494,6 @@ fcppt::math::matrix::object<
 	return ret;
 }
 
-// \endcond
-
 template<
 	typename T,
 	typename N,
@@ -540,7 +534,6 @@ fcppt::math::matrix::object<
 		storage_;
 }
 
-// \cond
 template<
 	typename T,
 	typename N,
@@ -567,6 +560,5 @@ fcppt::math::matrix::swap(
 		_b
 	);
 }
-// \endcond
 
 #endif
