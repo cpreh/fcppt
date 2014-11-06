@@ -8,8 +8,6 @@
 #define FCPPT_CAST_FLOAT_TO_INT_HPP_INCLUDED
 
 #include <fcppt/config/external_begin.hpp>
-#include <boost/mpl/and.hpp>
-#include <boost/utility/enable_if.hpp>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
@@ -28,28 +26,32 @@ Converts \a _source to an integer. The type signature ensures that only signed
 integers can be used a destination. If you need to cast to unsigned integers,
 use fcppt::casts::to_unsigned in addition. This cast is unsafe and should be
 used with care.
+
+\tparam Source Must be a floating point type
+
+\tparam Dest Must be a signed integer type
 */
 template<
 	typename Dest,
 	typename Source
 >
 inline
-typename
-boost::enable_if<
-	boost::mpl::and_<
-		std::is_floating_point<
-			Source
-		>,
-		std::is_signed<
-			Dest
-		>
-	>,
-	Dest
->::type
+Dest
 float_to_int(
 	Source const _source
 )
 {
+	static_assert(
+		std::is_floating_point<
+			Source
+		>::value
+		&&
+		std::is_signed<
+			Dest
+		>::value,
+		"float_to_int can only cast from floating point types to signed integer types"
+	);
+
 	return
 		static_cast<
 			Dest

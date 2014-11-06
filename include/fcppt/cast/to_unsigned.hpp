@@ -8,7 +8,6 @@
 #define FCPPT_CAST_TO_UNSIGNED_HPP_INCLUDED
 
 #include <fcppt/config/external_begin.hpp>
-#include <boost/utility/enable_if.hpp>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
@@ -25,6 +24,8 @@ namespace cast
 
 Converts \a _value to its unsigned type. This cast is unsafe and should only be
 used if \a _value is positive.
+
+\tparam Type Must be a signed type
 */
 template<
 	typename Type
@@ -32,19 +33,20 @@ template<
 inline
 constexpr
 typename
-boost::enable_if<
-	std::is_signed<
-		Type
-	>,
-	typename
-	std::make_unsigned<
-		Type
-	>::type
+std::make_unsigned<
+	Type
 >::type
 to_unsigned(
 	Type const _value
 )
 {
+	static_assert(
+		std::is_signed<
+			Type
+		>::value,
+		"to_unsigned can only cast from signed types"
+	);
+
 	return
 		static_cast<
 			typename

@@ -15,7 +15,7 @@ namespace fcppt
 {
 
 FCPPT_DETAIL_SYMBOL
-string const
+fcppt::string
 version_string();
 
 }

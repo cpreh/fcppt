@@ -11,7 +11,6 @@
 #include <fcppt/is_optional.hpp>
 #include <fcppt/optional_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/utility/enable_if.hpp>
 #include <type_traits>
 #include <utility>
 #include <fcppt/config/external_end.hpp>
@@ -30,13 +29,13 @@ template<
 >
 inline
 typename
-boost::disable_if<
-	fcppt::is_optional<
+std::enable_if<
+	!fcppt::is_optional<
 		typename
 		std::decay<
 			Arg
 		>::type
-	>,
+	>::value,
 	Result
 >::type
 make_opt(
@@ -65,13 +64,13 @@ template<
 >
 inline
 typename
-boost::enable_if<
+std::enable_if<
 	fcppt::is_optional<
 		typename
 		std::decay<
 			Arg
 		>::type
-	>,
+	>::value,
 	Result
 >::type
 make_opt(
@@ -103,13 +102,13 @@ template<
 >
 inline
 typename
-boost::enable_if<
+std::enable_if<
 	fcppt::is_optional<
 		typename
 		std::decay<
 			Arg
 		>::type
-	>,
+	>::value,
 	Result
 >::type
 make_opt(

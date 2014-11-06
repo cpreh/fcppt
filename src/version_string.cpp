@@ -13,7 +13,7 @@
 #include <fcppt/version_string.hpp>
 
 
-fcppt::string const
+fcppt::string
 fcppt::version_string()
 {
 	return

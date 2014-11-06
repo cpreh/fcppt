@@ -8,13 +8,6 @@
 #define FCPPT_CAST_SAFE_NUMERIC_HPP_INCLUDED
 
 #include <fcppt/config/external_begin.hpp>
-#include <boost/mpl/and.hpp>
-#include <boost/mpl/equal_to.hpp>
-#include <boost/mpl/greater_equal.hpp>
-#include <boost/mpl/or.hpp>
-#include <boost/mpl/sizeof.hpp>
-#include <boost/type_traits/is_signed.hpp>
-#include <boost/utility/enable_if.hpp>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
@@ -57,53 +50,57 @@ template<
 	typename Dest,
 	typename Source
 >
-typename boost::enable_if<
-	boost::mpl::and_<
-		boost::mpl::greater_equal<
-			boost::mpl::sizeof_<
-				Dest
-			>,
-			boost::mpl::sizeof_<
-				Source
-			>
-		>,
-		boost::mpl::or_<
-			std::is_same<
-				Dest,
-				Source
-			>,
-			boost::mpl::and_<
-				std::is_floating_point<
-					Dest
-				>,
-				std::is_floating_point<
-					Source
-				>
-			>,
-			boost::mpl::and_<
-				std::is_integral<
-					Dest
-				>,
-				std::is_integral<
-					Source
-				>,
-				boost::mpl::equal_to<
-					boost::is_signed<
-						Dest
-					>,
-					boost::is_signed<
-						Source
-					>
-				>
-			>
-		>
-	>,
-	Dest
->::type
+Dest
 safe_numeric(
 	Source const &_source
 )
 {
+	static_assert(
+		sizeof(
+			Dest
+		)
+		>=
+		sizeof(
+			Source
+		)
+		&&
+		(
+			std::is_same<
+				Dest,
+				Source
+			>::value
+			||
+			(
+				std::is_floating_point<
+					Dest
+				>::value
+				&&
+				std::is_floating_point<
+					Source
+				>::value
+			)
+			||
+			(
+				std::is_integral<
+					Dest
+				>::value
+				&&
+				std::is_integral<
+					Source
+				>::value
+				&&
+				std::is_signed<
+					Dest
+				>::value
+				==
+				std::is_signed<
+					Source
+				>::value
+			)
+		),
+		"safe_numeric requirements not met"
+	);
+
 	return
 		_source;
 }

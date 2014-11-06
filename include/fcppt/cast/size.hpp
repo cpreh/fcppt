@@ -8,13 +8,7 @@
 #define FCPPT_CAST_SIZE_HPP_INCLUDED
 
 #include <fcppt/config/external_begin.hpp>
-#include <boost/mpl/equal_to.hpp>
-#include <boost/mpl/or.hpp>
-#include <boost/mpl/sizeof.hpp>
-#include <boost/type_traits/is_floating_point.hpp>
-#include <boost/type_traits/is_signed.hpp>
-#include <boost/type_traits/is_unsigned.hpp>
-#include <boost/utility/enable_if.hpp>
+#include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -47,40 +41,38 @@ template<
 >
 inline
 constexpr
-typename
-boost::enable_if<
-	boost::mpl::or_<
-		boost::mpl::equal_to<
-			boost::is_floating_point<
-				Dest
-			>,
-			boost::is_floating_point<
-				Source
-			>
-		>,
-		boost::mpl::equal_to<
-			boost::is_signed<
-				Dest
-			>,
-			boost::is_signed<
-				Source
-			>
-		>,
-		boost::mpl::equal_to<
-			boost::is_unsigned<
-				Dest
-			>,
-			boost::is_unsigned<
-				Source
-			>
-		>
-	>,
-	Dest
->::type
+Dest
 size(
 	Source const _source
 )
 {
+	static_assert(
+		std::is_floating_point<
+			Dest
+		>::value
+		==
+		std::is_floating_point<
+			Source
+		>::value
+		||
+		std::is_signed<
+			Dest
+		>::value
+		==
+		std::is_signed<
+			Source
+		>::value
+		||
+		std::is_unsigned<
+			Dest
+		>::value
+		==
+		std::is_unsigned<
+			Source
+		>::value,
+		"size cast can only convert between types of the same signedness"
+	);
+
 	return
 		static_cast<
 			Dest

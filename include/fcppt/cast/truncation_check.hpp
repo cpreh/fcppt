@@ -12,8 +12,6 @@
 #include <fcppt/cast/bad_truncation_check.hpp>
 #include <fcppt/cast/detail/truncation_check.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/mpl/and.hpp>
-#include <boost/utility/enable_if.hpp>
 #include <type_traits>
 #include <typeindex>
 #include <typeinfo>
@@ -50,21 +48,22 @@ template<
 	typename Dest,
 	typename Source
 >
-typename boost::enable_if<
-	boost::mpl::and_<
-		std::is_integral<
-			Source
-		>,
-		std::is_integral<
-			Dest
-		>
-	>,
-	Dest
->::type
+Dest
 truncation_check(
 	Source const _source
 )
 {
+	static_assert(
+		std::is_integral<
+			Source
+		>::value
+		&&
+		std::is_integral<
+			Dest
+		>::value,
+		"truncation_check_cast can only cast from integral to integral types"
+	);
+
 	typedef fcppt::optional<
 		Dest
 	> dest_type;

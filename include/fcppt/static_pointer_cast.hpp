@@ -9,9 +9,6 @@
 
 #include <fcppt/shared_ptr_impl.hpp>
 #include <fcppt/cast/static_downcast_ptr.hpp>
-#include <fcppt/config/external_begin.hpp>
-#include <boost/smart_ptr/shared_ptr.hpp>
-#include <fcppt/config/external_end.hpp>
 
 
 namespace fcppt

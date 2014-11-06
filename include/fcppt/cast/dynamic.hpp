@@ -9,7 +9,6 @@
 
 #include <fcppt/cast/bad_dynamic.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/utility/enable_if.hpp>
 #include <stdexcept>
 #include <type_traits>
 #include <typeindex>
@@ -49,10 +48,11 @@ template<
 	typename Dest,
 	typename Src
 >
-typename boost::enable_if<
+typename
+std::enable_if<
 	std::is_reference<
 		Dest
-	>,
+	>::value,
 	Dest
 >::type
 dynamic(
@@ -106,10 +106,11 @@ template<
 	typename Dest,
 	typename Src
 >
-typename boost::enable_if<
+typename
+std::enable_if<
 	std::is_pointer<
 		Dest
-	>,
+	>::value,
 	Dest
 >::type
 dynamic(

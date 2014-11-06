@@ -8,7 +8,6 @@
 #define FCPPT_CAST_STATIC_DOWNCAST_PTR_HPP_INCLUDED
 
 #include <fcppt/config/external_begin.hpp>
-#include <boost/utility/enable_if.hpp>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
@@ -27,32 +26,35 @@ class
 Converts \a _source to the pointer type specified by \a Dest. This cast is
 unsafe and should only be used if the \a _source has dynamic type \a Dest.
 Consider using fcppt::cast::dynamic instead.
+
+Dest must be a pointer to a class type derived from Source.
 */
 template<
 	typename Dest,
 	typename Source
 >
-typename
-boost::enable_if<
-	std::is_base_of<
-		typename
-		std::remove_cv<
-			Source
-		>::type,
-		typename
-		std::remove_cv<
-			typename
-			std::remove_pointer<
-				Dest
-			>::type
-		>::type
-	>,
-	Dest
->::type
+Dest
 static_downcast_ptr(
 	Source *const _source
 )
 {
+	static_assert(
+		std::is_base_of<
+			typename
+			std::remove_cv<
+				Source
+			>::type,
+			typename
+			std::remove_cv<
+				typename
+				std::remove_pointer<
+					Dest
+				>::type
+			>::type
+		>::value,
+		"static_downcast_ptr can only cast from pointers to base classes to pointers to derived classes"
+	);
+
 	return
 		static_cast<
 			Dest

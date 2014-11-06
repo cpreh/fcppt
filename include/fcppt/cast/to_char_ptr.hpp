@@ -8,9 +8,6 @@
 #define FCPPT_CAST_TO_CHAR_PTR_HPP_INCLUDED
 
 #include <fcppt/type_traits/is_raw_pointer.hpp>
-#include <fcppt/config/external_begin.hpp>
-#include <boost/utility/enable_if.hpp>
-#include <fcppt/config/external_end.hpp>
 
 
 namespace fcppt
@@ -26,23 +23,26 @@ namespace cast
 Converts \a _source to the pointer to character type specified by \a Dest.
 This cast can be used to access the byte representation of an object, e.g.
 for serialization and largely replaces <code>reinterpret_cast</code>.
+
+\type Dest Must be a pointer to (cv) unsigned char
 */
 template<
 	typename Dest,
 	typename Source
 >
 inline
-typename
-boost::enable_if<
-	fcppt::type_traits::is_raw_pointer<
-		Dest
-	>,
-	Dest
->::type
+Dest
 to_char_ptr(
 	Source *const _source
 )
 {
+	static_assert(
+		fcppt::type_traits::is_raw_pointer<
+			Dest
+		>::value,
+		"to_char_ptr can only cast to pointers to (cv) unsigned char"
+	);
+
 	return
 		reinterpret_cast<
 			Dest

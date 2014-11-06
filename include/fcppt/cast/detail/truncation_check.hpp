@@ -13,13 +13,6 @@
 #include <fcppt/cast/to_signed.hpp>
 #include <fcppt/cast/to_unsigned.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/mpl/and.hpp>
-#include <boost/mpl/equal_to.hpp>
-#include <boost/mpl/greater_equal.hpp>
-#include <boost/mpl/less.hpp>
-#include <boost/mpl/sizeof.hpp>
-#include <boost/type_traits/is_signed.hpp>
-#include <boost/utility/enable_if.hpp>
 #include <limits>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
@@ -36,25 +29,23 @@ template<
 	typename Dest,
 	typename Source
 >
-typename boost::enable_if<
-	boost::mpl::and_<
-		boost::mpl::equal_to<
-			boost::is_signed<
-				Dest
-			>,
-			boost::is_signed<
-				Source
-			>
-		>,
-		boost::mpl::greater_equal<
-			boost::mpl::sizeof_<
-				Dest
-			>,
-			boost::mpl::sizeof_<
-				Source
-			>
-		>
-	>,
+typename
+std::enable_if<
+	std::is_signed<
+		Dest
+	>::value
+	==
+	std::is_signed<
+		Source
+	>::value
+	&&
+	sizeof(
+		Dest
+	)
+	>=
+	sizeof(
+		Source
+	),
 	fcppt::optional<
 		Dest
 	>
@@ -75,23 +66,23 @@ template<
 	typename Dest,
 	typename Source
 >
-typename boost::enable_if<
-	boost::mpl::and_<
-		std::is_unsigned<
-			Dest
-		>,
-		std::is_unsigned<
-			Source
-		>,
-		boost::mpl::less<
-			boost::mpl::sizeof_<
-				Dest
-			>,
-			boost::mpl::sizeof_<
-				Source
-			>
-		>
-	>,
+typename
+std::enable_if<
+	std::is_unsigned<
+		Dest
+	>::value
+	&&
+	std::is_unsigned<
+		Source
+	>::value
+	&&
+	sizeof(
+		Dest
+	)
+	<
+	sizeof(
+		Source
+	),
 	fcppt::optional<
 		Dest
 	>
@@ -100,9 +91,11 @@ truncation_check(
 	Source const _source
 )
 {
-	typedef fcppt::optional<
+	typedef
+	fcppt::optional<
 		Dest
-	> dest_type;
+	>
+	dest_type;
 
 	return
 		fcppt::cast::size<
@@ -131,23 +124,23 @@ template<
 	typename Dest,
 	typename Source
 >
-typename boost::enable_if<
-	boost::mpl::and_<
-		std::is_signed<
-			Dest
-		>,
-		std::is_signed<
-			Source
-		>,
-		boost::mpl::less<
-			boost::mpl::sizeof_<
-				Dest
-			>,
-			boost::mpl::sizeof_<
-				Source
-			>
-		>
-	>,
+typename
+std::enable_if<
+	std::is_signed<
+		Dest
+	>::value
+	&&
+	std::is_signed<
+		Source
+	>::value
+	&&
+	sizeof(
+		Dest
+	)
+	<
+	sizeof(
+		Source
+	),
 	fcppt::optional<
 		Dest
 	>
@@ -197,15 +190,15 @@ template<
 	typename Dest,
 	typename Source
 >
-typename boost::enable_if<
-	boost::mpl::and_<
-		std::is_unsigned<
-			Dest
-		>,
-		std::is_signed<
-			Source
-		>
-	>,
+typename
+std::enable_if<
+	std::is_unsigned<
+		Dest
+	>::value
+	&&
+	std::is_signed<
+		Source
+	>::value,
 	fcppt::optional<
 		Dest
 	>
@@ -242,15 +235,15 @@ template<
 	typename Dest,
 	typename Source
 >
-typename boost::enable_if<
-	boost::mpl::and_<
-		std::is_signed<
-			Dest
-		>,
-		std::is_unsigned<
-			Source
-		>
-	>,
+typename
+std::enable_if<
+	std::is_signed<
+		Dest
+	>::value
+	&&
+	std::is_unsigned<
+		Source
+	>::value,
 	fcppt::optional<
 		Dest
 	>

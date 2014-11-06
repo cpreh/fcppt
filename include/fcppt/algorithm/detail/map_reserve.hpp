@@ -9,7 +9,7 @@
 
 #include <fcppt/algorithm/detail/has_size_reserve.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/utility/enable_if.hpp>
+#include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -25,11 +25,11 @@ template<
 	typename Source
 >
 typename
-boost::enable_if<
+std::enable_if<
 	fcppt::algorithm::detail::has_size_reserve<
 		Dest,
 		Source
-	>,
+	>::value,
 	void
 >::type
 map_reserve(
@@ -52,11 +52,11 @@ template<
 	typename Source
 >
 typename
-boost::disable_if<
-	fcppt::algorithm::detail::has_size_reserve<
+std::enable_if<
+	!fcppt::algorithm::detail::has_size_reserve<
 		Dest,
 		Source
-	>,
+	>::value,
 	void
 >::type
 map_reserve(

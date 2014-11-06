@@ -8,8 +8,6 @@
 #define FCPPT_CAST_ENUM_TO_INT_HPP_INCLUDED
 
 #include <fcppt/config/external_begin.hpp>
-#include <boost/mpl/and.hpp>
-#include <boost/utility/enable_if.hpp>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
@@ -27,6 +25,10 @@ namespace cast
 Converts \a _enum to the integer type specified by \a Dest. This cast is unsafe
 and should only be used if the enum value can be converted to the destination
 integers. Consider fcppt::casts::enum_to_underlying instead.
+
+\tparam Dest Must be an integral type
+
+\tparam Enum Must be an enumeration type
 */
 template<
 	typename Dest,
@@ -34,22 +36,22 @@ template<
 >
 inline
 constexpr
-typename
-boost::enable_if<
-	boost::mpl::and_<
-		std::is_integral<
-			Dest
-		>,
-		std::is_enum<
-			Enum
-		>
-	>,
-	Dest
->::type
+Dest
 enum_to_int(
 	Enum const _enum
 )
 {
+	static_assert(
+		std::is_integral<
+			Dest
+		>::value
+		&&
+		std::is_enum<
+			Enum
+		>::value,
+		"enum_to_int can only cast from enumerations to integers"
+	);
+
 	return
 		static_cast<
 			Dest

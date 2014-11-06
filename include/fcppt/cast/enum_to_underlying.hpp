@@ -8,7 +8,6 @@
 #define FCPPT_CAST_ENUM_TO_UNDERLYING_HPP_INCLUDED
 
 #include <fcppt/config/external_begin.hpp>
-#include <boost/utility/enable_if.hpp>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
@@ -24,6 +23,8 @@ namespace cast
 \ingroup fcpptcasts
 
 Converts \a _enum to its underlying integer type.
+
+\tparam Enum Must be an enumeration type
 */
 template<
 	typename Enum
@@ -31,19 +32,20 @@ template<
 inline
 constexpr
 typename
-boost::enable_if<
-	std::is_enum<
-		Enum
-	>,
-	typename
-	std::underlying_type<
-		Enum
-	>::type
+std::underlying_type<
+	Enum
 >::type
 enum_to_underlying(
 	Enum const _enum
 )
 {
+	static_assert(
+		std::is_enum<
+			Enum
+		>::value,
+		"Enum must be an enumeration type"
+	);
+
 	return
 		static_cast<
 			typename

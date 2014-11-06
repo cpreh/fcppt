@@ -14,8 +14,6 @@
 #include <fcppt/type_name_from_info.hpp>
 #include <fcppt/cast/size.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/mpl/and.hpp>
-#include <boost/utility/enable_if.hpp>
 #include <type_traits>
 #include <typeinfo>
 #include <fcppt/config/external_end.hpp>
@@ -49,21 +47,22 @@ template<
 	typename Enum,
 	typename Value
 >
-typename boost::enable_if<
-	boost::mpl::and_<
-		std::is_unsigned<
-			Value
-		>,
-		std::is_enum<
-			Enum
-		>
-	>,
-	Enum
->::type
+Enum
 cast_to_enum(
 	Value const &_value
 )
 {
+	static_assert(
+		std::is_unsigned<
+			Value
+		>::value
+		&&
+		std::is_enum<
+			Enum
+		>::value,
+		"cast_to_enum can only cast from unsigned types to enumeration types"
+	);
+
 	if(
 		fcppt::cast::size<
 			typename

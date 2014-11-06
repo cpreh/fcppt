@@ -19,7 +19,6 @@
 #include <fcppt/math/vector/object_impl.hpp>
 #include <fcppt/math/vector/output.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/assign/list_of.hpp>
 #include <istream>
 #include <ostream>
 #include <fcppt/config/external_end.hpp>

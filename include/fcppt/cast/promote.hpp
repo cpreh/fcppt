@@ -9,7 +9,6 @@
 
 #include <fcppt/config/external_begin.hpp>
 #include <boost/type_traits/promote.hpp>
-#include <boost/utility/enable_if.hpp>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
@@ -26,6 +25,8 @@ namespace cast
 
 Converts \a _value to its promoted type. This can be used if explicit promotion
 is desired (e.g. when outputting to an ostream).
+
+\tparam Type Must be a fundamental type
 */
 template<
 	typename Type
@@ -33,19 +34,20 @@ template<
 inline
 constexpr
 typename
-boost::enable_if<
-	std::is_integral<
-		Type
-	>,
-	typename
-	boost::promote<
-		Type
-	>::type
+boost::promote<
+	Type
 >::type
 promote(
 	Type const _value
 )
 {
+	static_assert(
+		std::is_fundamental<
+			Type
+		>,
+		"promote can only promote fundamental types"
+	);
+
 	return
 		static_cast<
 			typename

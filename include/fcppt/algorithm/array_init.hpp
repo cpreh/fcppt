@@ -10,9 +10,6 @@
 #include <fcppt/algorithm/array_fold_static.hpp>
 #include <fcppt/algorithm/detail/array_init_function.hpp>
 #include <fcppt/type_traits/is_std_array.hpp>
-#include <fcppt/config/external_begin.hpp>
-#include <boost/utility/enable_if.hpp>
-#include <fcppt/config/external_end.hpp>
 
 
 namespace fcppt
@@ -35,16 +32,18 @@ _value.
 template<
 	typename Array
 >
-typename boost::enable_if<
-	fcppt::type_traits::is_std_array<
-		Array
-	>,
-	Array
->::type
+Array
 array_init(
 	typename Array::value_type const &_value
 )
 {
+	static_assert(
+		fcppt::type_traits::is_std_array<
+			Array
+		>::value,
+		"Array must be an array"
+	);
+
 	return
 		fcppt::algorithm::array_fold_static<
 			Array

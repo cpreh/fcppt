@@ -9,7 +9,6 @@
 
 #include <fcppt/optional_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/utility/enable_if.hpp>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
@@ -41,18 +40,20 @@ template<
 	typename Base
 >
 typename
-boost::enable_if<
-	std::is_reference<
-		Derived
-	>,
-	fcppt::optional<
-		Derived
-	> const
->::type
+fcppt::optional<
+	Derived
+> const
 try_dynamic(
 	Base &_base
 )
 {
+	static_assert(
+		std::is_reference<
+			Derived
+		>::value,
+		"try_dynamic can only cast to reference types"
+	);
+
 	typedef
 	typename
 	std::remove_reference<

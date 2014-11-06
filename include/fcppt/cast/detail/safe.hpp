@@ -9,8 +9,6 @@
 
 #include <fcppt/cast/safe_numeric.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/mpl/and.hpp>
-#include <boost/utility/enable_if.hpp>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
@@ -26,15 +24,17 @@ template<
 	typename T,
 	typename U
 >
-typename boost::disable_if<
-	boost::mpl::and_<
+typename
+std::enable_if<
+	!(
 		std::is_arithmetic<
 			T
-		>,
+		>::value
+		&&
 		std::is_arithmetic<
 			U
-		>
-	>,
+		>::value
+	),
 	T
 >::type
 safe(
@@ -49,15 +49,15 @@ template<
 	typename T,
 	typename U
 >
-typename boost::enable_if<
-	boost::mpl::and_<
-		std::is_arithmetic<
-			T
-		>,
-		std::is_arithmetic<
-			U
-		>
-	>,
+typename
+std::enable_if<
+	std::is_arithmetic<
+		T
+	>::value
+	&&
+	std::is_arithmetic<
+		U
+	>::value,
 	T
 >::type
 safe(

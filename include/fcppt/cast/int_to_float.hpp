@@ -8,8 +8,6 @@
 #define FCPPT_CAST_INT_TO_FLOAT_HPP_INCLUDED
 
 #include <fcppt/config/external_begin.hpp>
-#include <boost/mpl/and.hpp>
-#include <boost/utility/enable_if.hpp>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
@@ -26,28 +24,32 @@ namespace cast
 
 Converts the integer \a _source to float type specified by \a Dest by
 truncating like static_cast. This cast is unsafe and should be used with care.
+
+\tparam Source Must be an integral type
+
+\tparam Dest Must be a floating point type
 */
 template<
 	typename Dest,
 	typename Source
 >
 inline
-typename
-boost::enable_if<
-	boost::mpl::and_<
-		std::is_integral<
-			Source
-		>,
-		std::is_floating_point<
-			Dest
-		>
-	>,
-	Dest
->::type
+Dest
 int_to_float(
 	Source const _source
 )
 {
+	static_assert(
+		std::is_integral<
+			Source
+		>::value
+		&&
+		std::is_floating_point<
+			Dest
+		>::value,
+		"int_to_float can only cast from integral types to floating point types"
+	);
+
 	return
 		static_cast<
 			Dest
