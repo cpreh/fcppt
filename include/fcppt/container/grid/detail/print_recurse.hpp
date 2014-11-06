@@ -9,8 +9,8 @@
 
 #include <fcppt/container/grid/size_type.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/utility/enable_if.hpp>
 #include <ostream>
+#include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -28,7 +28,7 @@ template<
 	typename Stream,
 	typename Object
 >
-typename boost::enable_if_c<
+typename std::enable_if<
 	Level == 0,
 	void
 >::type
@@ -49,7 +49,7 @@ template<
 	typename Stream,
 	typename Object
 >
-typename boost::enable_if_c<
+typename std::enable_if<
 	Level != 0,
 	void
 >::type

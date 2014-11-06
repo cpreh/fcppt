@@ -12,8 +12,6 @@
 #include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/type_traits/remove_cv_ref.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/mpl/and.hpp>
-#include <boost/utility/enable_if.hpp>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
@@ -31,20 +29,20 @@ template<
 	typename Other,
 	typename Result
 >
-struct enable_optional_value_conv
+struct enable_optional_value_conv final
 :
-boost::enable_if<
-	boost::mpl::and_<
-		std::is_reference<
+std::enable_if<
+	std::is_reference<
+		Other
+	>::value
+	&&
+	std::is_same<
+		Own,
+		typename
+		fcppt::type_traits::remove_cv_ref<
 			Other
-		>,
-		std::is_same<
-			Own,
-			typename fcppt::type_traits::remove_cv_ref<
-				Other
-			>::type
-		>
-	>
+		>::type
+	>::value
 >
 {
 };

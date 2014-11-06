@@ -16,7 +16,6 @@
 #include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/iterator/iterator_facade.hpp>
-#include <boost/mpl/if.hpp>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
@@ -60,10 +59,10 @@ class pos_iterator
 
 	typedef
 	typename
-	boost::mpl::if_<
+	std::conditional<
 		std::is_const<
 			Grid
-		>,
+		>::value,
 		typename
 		Grid::const_iterator,
 		typename

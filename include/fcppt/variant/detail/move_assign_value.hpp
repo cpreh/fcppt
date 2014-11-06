@@ -9,7 +9,6 @@
 
 #include <fcppt/nonassignable.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/utility/enable_if.hpp>
 #include <type_traits>
 #include <utility>
 #include <fcppt/config/external_end.hpp>
@@ -25,7 +24,7 @@ namespace detail
 template<
 	typename Value
 >
-class move_assign_value
+class move_assign_value final
 {
 	FCPPT_NONASSIGNABLE(
 		move_assign_value
@@ -44,16 +43,19 @@ public:
 	{
 	}
 
-	typedef void result_type;
+	typedef
+	void
+	result_type;
 
 	template<
 		typename T
 	>
-	typename boost::enable_if<
+	typename
+	std::enable_if<
 		std::is_same<
 			T,
 			Value
-		>,
+		>::value,
 		result_type
 	>::type
 	operator()(
@@ -76,11 +78,12 @@ public:
 	template<
 		typename T
 	>
-	typename boost::disable_if<
-		std::is_same<
+	typename
+	std::enable_if<
+		!std::is_same<
 			T,
 			Value
-		>,
+		>::value,
 		result_type
 	>::type
 	operator()(

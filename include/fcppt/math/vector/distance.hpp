@@ -13,7 +13,6 @@
 #include <fcppt/math/vector/object_impl.hpp>
 #include <fcppt/math/vector/structure_cast.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/utility/enable_if.hpp>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
@@ -32,10 +31,10 @@ template<
 	typename S2
 >
 typename
-boost::enable_if<
+std::enable_if<
 	std::is_floating_point<
 		T
-	>,
+	>::value,
 	T
 >::type
 distance(
@@ -67,10 +66,10 @@ template<
 	typename S2
 >
 typename
-boost::disable_if<
-	std::is_floating_point<
+std::enable_if<
+	!std::is_floating_point<
 		T
-	>,
+	>::value,
 	Dest
 >::type
 distance(

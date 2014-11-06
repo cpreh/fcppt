@@ -9,7 +9,6 @@
 
 #include <fcppt/random/distribution/transform/terminal.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/utility/enable_if.hpp>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
@@ -28,11 +27,11 @@ template<
 	typename Type
 >
 typename
-boost::enable_if<
+std::enable_if<
 	std::is_same<
 		Result,
 		Type
-	>,
+	>::value,
 	Result
 >::type
 decorated_value(
@@ -48,11 +47,11 @@ template<
 	typename Type
 >
 typename
-boost::disable_if<
-	std::is_same<
+std::enable_if<
+	!std::is_same<
 		Result,
 		Type
-	>,
+	>::value,
 	Result
 >::type
 decorated_value(

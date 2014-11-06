@@ -10,9 +10,6 @@
 #include <fcppt/math/static_storage.hpp>
 #include <fcppt/math/detail/has_size.hpp>
 #include <fcppt/math/vector/object_impl.hpp>
-#include <fcppt/config/external_begin.hpp>
-#include <boost/utility/enable_if.hpp>
-#include <fcppt/config/external_end.hpp>
 
 
 namespace fcppt
@@ -40,20 +37,14 @@ template<
 	typename S1,
 	typename S2
 >
-typename boost::enable_if<
-	fcppt::math::detail::has_size<
-		N,
-		3
-	>,
-	fcppt::math::vector::object<
+fcppt::math::vector::object<
+	T,
+	N,
+	fcppt::math::static_storage<
 		T,
-		N,
-		fcppt::math::static_storage<
-			T,
-			N
-		>
-	> const
->::type
+		N
+	>
+> const
 cross(
 	fcppt::math::vector::object<
 		T,
@@ -67,6 +58,14 @@ cross(
 	> const &r
 )
 {
+	static_assert(
+		fcppt::math::detail::has_size<
+			N,
+			3
+		>::value,
+		"cross can only be used on three-dimensional vectors"
+	);
+
 	return
 		fcppt::math::vector::object<
 			T,

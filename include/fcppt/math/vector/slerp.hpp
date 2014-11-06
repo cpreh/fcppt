@@ -14,7 +14,6 @@
 #include <fcppt/math/vector/length.hpp>
 #include <fcppt/math/vector/object.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/utility/enable_if.hpp>
 #include <cmath>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
@@ -46,17 +45,17 @@ for more information.
 The behaviour is undefined if \p start or \p end are nearly identical.
 */
 template<typename T,typename N,typename S>
-typename
-boost::enable_if
-<
-	std::is_floating_point<T>,
-	fcppt::math::vector::object<T,N,S> const
->::type
+fcppt::math::vector::object<T,N,S> const
 slerp(
 	fcppt::math::vector::object<T,N,S> const &start,
 	fcppt::math::vector::object<T,N,S> const &end,
 	T const t)
 {
+	static_assert(
+		std::is_floating_point<T>,
+		"slerp can only be used on floating point types"
+	);
+
 	// acos of the angle between start and end. We need a function for
 	// this, too!
 	T const

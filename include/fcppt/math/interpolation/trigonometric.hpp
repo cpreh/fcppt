@@ -11,7 +11,6 @@
 #include <fcppt/literal.hpp>
 #include <fcppt/math/pi.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/utility/enable_if.hpp>
 #include <cmath>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
@@ -26,17 +25,17 @@ namespace interpolation
 /// Interpolates between a and b (works only with a floating point
 /// parameter)
 template<typename Float,typename Value>
-typename
-boost::enable_if
-<
-	std::is_floating_point<Float>,
-	Value const
->::type
+Value const
 trigonometric(
 	Float const &f,
 	Value const &v1,
 	Value const &v2)
 {
+	static_assert(
+		std::is_floating_point<Float>::value,
+		"trigonometric can only be used on floating point types"
+	);
+
 	Float const t =
 		fcppt::literal<Float>(0.5) *
 			(

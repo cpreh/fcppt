@@ -15,7 +15,7 @@
 #include <boost/mpl/back.hpp>
 #include <boost/mpl/empty.hpp>
 #include <boost/mpl/pop_back.hpp>
-#include <boost/utility/enable_if.hpp>
+#include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -29,10 +29,11 @@ namespace detail
 template<
 	typename Sequence
 >
-typename boost::enable_if<
+typename
+std::enable_if<
 	boost::mpl::empty<
 		Sequence
-	>,
+	>::value,
 	void
 >::type
 print(
@@ -44,10 +45,11 @@ print(
 template<
 	typename Sequence
 >
-typename boost::disable_if<
-	boost::mpl::empty<
+typename
+std::enable_if<
+	!boost::mpl::empty<
 		Sequence
-	>,
+	>::value,
 	void
 >::type
 print(

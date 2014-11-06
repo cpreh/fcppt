@@ -9,7 +9,6 @@
 
 #include <fcppt/type_traits/is_string.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/utility/enable_if.hpp>
 #include <locale>
 #include <sstream>
 #include <string>
@@ -41,18 +40,20 @@ template<
 	typename Dest,
 	typename Source
 >
-typename boost::enable_if<
-	fcppt::type_traits::is_string<
-		Dest
-	>,
-	Dest
->::type
+Dest
 insert_to_string(
 	Source const &_source,
 	std::locale const &_locale
 		= std::locale()
 )
 {
+	static_assert(
+		fcppt::type_traits::is_string<
+			Dest
+		>::value,
+		"insert_ot_string must return a string"
+	);
+
 	typedef std::basic_ostringstream<
 		typename Dest::value_type,
 		typename Dest::traits_type

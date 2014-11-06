@@ -13,7 +13,7 @@
 #include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/test/unit_test.hpp>
-#include <boost/utility/enable_if.hpp>
+#include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -25,12 +25,12 @@ namespace
 template<
 	typename Matrix
 >
-typename boost::enable_if<
+typename std::enable_if<
 	fcppt::math::matrix::has_dim<
 		Matrix,
 		1,
 		1
-	>,
+	>::value,
 	bool
 >::type
 is_1x1(
@@ -43,12 +43,12 @@ is_1x1(
 template<
 	typename Matrix
 >
-typename boost::disable_if<
-	fcppt::math::matrix::has_dim<
+typename std::enable_if<
+	!fcppt::math::matrix::has_dim<
 		Matrix,
 		1,
 		1
-	>,
+	>::value,
 	bool
 >::type
 is_1x1(

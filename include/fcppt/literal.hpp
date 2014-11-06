@@ -9,7 +9,6 @@
 
 #include <fcppt/make_literal_fundamental.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/utility/enable_if.hpp>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
@@ -34,17 +33,18 @@ template<
 	typename Fundamental
 >
 constexpr
-typename
-boost::enable_if<
-	std::is_fundamental<
-		Fundamental
-	>,
-	Type
->::type
+Type
 literal(
 	Fundamental const &&_integral
 )
 {
+	static_assert(
+		std::is_fundamental<
+			Fundamental
+		>::value,
+		"literal can only be used on fundamental types"
+	);
+
 	return
 		fcppt::make_literal<
 			Type

@@ -13,8 +13,6 @@
 #include <fcppt/type_traits/remove_cv_ref.hpp>
 #include <fcppt/variant/is_object.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/mpl/or.hpp>
-#include <boost/utility/enable_if.hpp>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
@@ -33,21 +31,22 @@ template<
 	typename U,
 	typename T = void
 >
-struct disable_object
+struct disable_object final
 :
-boost::disable_if<
-	boost::mpl::or_<
+std::enable_if<
+	!(
 		std::is_const<
 			typename std::remove_reference<
 				U
 			>::type
-		>,
+		>::value
+		||
 		fcppt::variant::is_object<
 			typename fcppt::type_traits::remove_cv_ref<
 				U
 			>::type
-		>
-	>,
+		>::value
+	),
 	T
 >
 {

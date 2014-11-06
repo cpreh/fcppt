@@ -10,7 +10,6 @@
 #include <fcppt/mpl/detail/runtime_index.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/mpl/integral_c.hpp>
-#include <boost/utility/enable_if.hpp>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
@@ -44,19 +43,20 @@ template<
 >
 inline
 typename
-boost::enable_if<
-	std::is_unsigned<
-		Index
-	>,
-	typename
-	Function::result_type
->::type
+Function::result_type
 runtime_index(
 	Index const _index,
 	Function const &_function,
 	FailFunction const &_fail_function
 )
 {
+	static_assert(
+		std::is_unsigned<
+			Index
+		>::value,
+		"runtime_index can only be used with unsigned indices"
+	);
+
 	return
 		fcppt::mpl::detail::runtime_index<
 			MaxIndex,

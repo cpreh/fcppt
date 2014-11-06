@@ -4,46 +4,43 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_DETAIL_ENABLE_OPTIONAL_REF_CONV_HPP_INCLUDED
-#define FCPPT_DETAIL_ENABLE_OPTIONAL_REF_CONV_HPP_INCLUDED
-
+#include <fcppt/cast/promote.hpp>
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/config/external_begin.hpp>
+#include <boost/test/unit_test.hpp>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
 
-namespace fcppt
-{
-namespace detail
-{
-
 FCPPT_PP_PUSH_WARNING
 FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
 
-template<
-	typename Own,
-	typename Other
->
-struct enable_optional_ref_conv final
-:
-std::enable_if<
-	std::is_const<
-		Own
-	>::value
-	&&
-	!std::is_const<
-		Other
-	>::value
->
+BOOST_AUTO_TEST_CASE(
+	cast_promote
+)
 {
-};
-
 FCPPT_PP_POP_WARNING
 
-}
-}
+	BOOST_CHECK(
+		fcppt::cast::promote(
+			'c'
+		)
+		==
+		'c'
+	);
 
-#endif
+	BOOST_CHECK((
+		std::is_same<
+			decltype(
+				fcppt::cast::promote(
+					'c'
+				)
+			),
+			decltype(
+				+'c'
+			)
+		>::value
+	));
+}

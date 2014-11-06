@@ -11,7 +11,6 @@
 #include <fcppt/container/grid/pos.hpp>
 #include <fcppt/container/grid/pos_reference_fwd.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/mpl/if.hpp>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
@@ -39,10 +38,10 @@ public:
 
 	typedef
 	typename
-	boost::mpl::if_<
+	std::conditional<
 		std::is_const<
 			Grid
-		>,
+		>::value,
 		typename
 		Grid::const_reference,
 		typename

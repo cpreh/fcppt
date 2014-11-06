@@ -13,9 +13,6 @@
 #include <fcppt/math/matrix/has_dim.hpp>
 #include <fcppt/math/matrix/object_impl.hpp>
 #include <fcppt/math/matrix/static.hpp>
-#include <fcppt/config/external_begin.hpp>
-#include <boost/utility/enable_if.hpp>
-#include <fcppt/config/external_end.hpp>
 
 
 namespace fcppt
@@ -34,7 +31,7 @@ template
 	typename S
 >
 typename
-boost::enable_if
+std::enable_if
 <
 	fcppt::math::matrix::has_dim
 	<
@@ -46,7 +43,7 @@ boost::enable_if
 		>,
 		1,
 		1
-	>,
+	>::value,
 	T
 >::type
 determinant(
@@ -69,9 +66,9 @@ template
 	typename S
 >
 typename
-boost::disable_if
+std::enable_if
 <
-	fcppt::math::matrix::has_dim
+	!fcppt::math::matrix::has_dim
 	<
 		fcppt::math::matrix::object<
 			T,
@@ -81,7 +78,7 @@ boost::disable_if
 		>,
 		1,
 		1
-	>,
+	>::value,
 	T
 >::type
 determinant(

@@ -8,7 +8,6 @@
 #define FCPPT_RANDOM_GENERATOR_SEED_FROM_CHRONO_HPP_INCLUDED
 
 #include <fcppt/config/external_begin.hpp>
-#include <boost/utility/enable_if.hpp>
 #include <chrono>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
@@ -38,14 +37,16 @@ must be an integral type.
 template<
 	typename Seed
 >
-typename boost::enable_if<
-	std::is_integral<
-		typename Seed::value_type
-	>,
-	Seed
->::type const
+Seed const
 seed_from_chrono()
 {
+	static_assert(
+		std::is_integral<
+			typename Seed::value_type
+		>::value,
+		"seed_from_chrono requires Seeds with integral type"
+	);
+
 	return
 		Seed(
 			static_cast<

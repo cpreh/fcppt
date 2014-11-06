@@ -10,7 +10,6 @@
 #include <fcppt/container/tree/is_object.hpp>
 #include <fcppt/container/tree/object_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/utility/enable_if.hpp>
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
@@ -34,13 +33,7 @@ template<
 	typename Value,
 	typename Function
 >
-typename
-boost::enable_if<
-	fcppt::container::tree::is_object<
-		Result
-	>,
-	Result
->::type
+Result
 map(
 	fcppt::container::tree::object<
 		Value
@@ -48,6 +41,13 @@ map(
 	Function const _function
 )
 {
+	static_assert(
+		fcppt::container::tree::is_object<
+			Result
+		>::value,
+		"The result of tree::map must be a tree"
+	);
+
 	Result result(
 		_function(
 			_tree.value()

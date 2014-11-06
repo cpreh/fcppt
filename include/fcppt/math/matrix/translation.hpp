@@ -12,9 +12,6 @@
 #include <fcppt/math/matrix/static.hpp>
 #include <fcppt/math/vector/has_dim.hpp>
 #include <fcppt/math/vector/object_impl.hpp>
-#include <fcppt/config/external_begin.hpp>
-#include <boost/utility/enable_if.hpp>
-#include <fcppt/config/external_end.hpp>
 
 
 namespace fcppt
@@ -73,21 +70,23 @@ The resulting matrix will be static.
 template<
 	typename Vector
 >
-typename boost::enable_if<
-	fcppt::math::vector::has_dim<
-		Vector,
-		3
-	>,
-	fcppt::math::matrix::static_<
-		typename Vector::value_type,
-		4,
-		4
-	>
->::type const
+fcppt::math::matrix::static_<
+	typename Vector::value_type,
+	4,
+	4
+> const
 translation(
 	Vector const &_vec
 )
 {
+	static_assert(
+		fcppt::math::vector::has_dim<
+			Vector,
+			3
+		>::value,
+		"matrix::translation can only be used on three-dimensional vectors"
+	);
+
 	return
 		fcppt::math::matrix::translation(
 			_vec.x(),

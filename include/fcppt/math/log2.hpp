@@ -8,7 +8,6 @@
 #define FCPPT_MATH_LOG2_HPP_INCLUDED
 
 #include <fcppt/config/external_begin.hpp>
-#include <boost/utility/enable_if.hpp>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
@@ -29,16 +28,18 @@ template<
 	typename T
 >
 inline
-typename boost::enable_if<
-	std::is_unsigned<
-		T
-	>,
-	T
->::type
+T
 log2(
 	T const x
 )
 {
+	static_assert(
+		std::is_unsigned<
+			T
+		>::value,
+		"log2 can only be used on unsigned types"
+	);
+
 	T r(1);
 
 	while((x >> r) != 0)

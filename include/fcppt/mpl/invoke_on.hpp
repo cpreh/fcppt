@@ -11,7 +11,6 @@
 #include <fcppt/mpl/detail/invoke_on_function.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/mpl/size.hpp>
-#include <boost/utility/enable_if.hpp>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
@@ -61,19 +60,20 @@ template<
 	typename FailFunction
 >
 typename
-boost::enable_if<
-	std::is_unsigned<
-		Index
-	>,
-	typename
-	Function::result_type
->::type
+Function::result_type
 invoke_on(
 	Index const &_index,
 	Function const &_function,
 	FailFunction const &_fail_function
 )
 {
+	static_assert(
+		std::is_unsigned<
+			Index
+		>::value,
+		"mpl::invoke_on can only be used with unsigned indices"
+	);
+
 	return
 		fcppt::mpl::runtime_index<
 			typename

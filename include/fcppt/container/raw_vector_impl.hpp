@@ -14,11 +14,11 @@
 #include <fcppt/detail/equal.hpp>
 #include <fcppt/type_traits/is_input_iterator.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/utility/enable_if.hpp>
 #include <algorithm>
 #include <initializer_list>
 #include <iterator>
 #include <utility>
+#include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -1267,10 +1267,10 @@ template<
 template<
 	typename In
 >
-typename boost::enable_if<
+typename std::enable_if<
 	fcppt::type_traits::is_input_iterator<
 		In
-	>,
+	>::value,
 	void
 >::type
 fcppt::container::raw_vector<
@@ -1302,10 +1302,10 @@ template<
 template<
 	typename In
 >
-typename boost::disable_if<
-	fcppt::type_traits::is_input_iterator<
+typename std::enable_if<
+	!fcppt::type_traits::is_input_iterator<
 		In
-	>,
+	>::value,
 	void
 >::type
 fcppt::container::raw_vector<

@@ -12,10 +12,11 @@
 #include <fcppt/type_traits/is_float_or_double.hpp>
 #include <fcppt/type_traits/is_string.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/utility/enable_if.hpp>
 #include <iostream>
 #include <ostream>
+#include <type_traits>
 #include <fcppt/config/external_end.hpp>
+
 
 FCPPT_PP_PUSH_WARNING
 FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
@@ -92,9 +93,11 @@ static_assert(
 template<
 	typename T
 >
-typename boost::enable_if
-<
-	fcppt::type_traits::is_string<T>,
+typename
+std::enable_if<
+	fcppt::type_traits::is_string<
+		T
+	>::value,
 	T
 >::type
 edit_string(
@@ -108,9 +111,11 @@ edit_string(
 template<
 	typename T
 >
-typename boost::enable_if
-<
-	fcppt::type_traits::is_float_or_double<T>,
+typename
+std::enable_if<
+	fcppt::type_traits::is_float_or_double<
+		T
+	>::value,
 	T
 >::type
 divide_by_1000(

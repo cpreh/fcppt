@@ -45,7 +45,7 @@ array_init_move(
 	static_assert(
 		fcppt::type_traits::is_std_array<
 			Array
-		>,
+		>::value,
 		"Array must be an array"
 	);
 

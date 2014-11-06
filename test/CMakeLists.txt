@@ -37,6 +37,10 @@ fcppt_link_target(
 
 
 add_fcppt_test(
+	algorithm/array_init_move
+)
+
+add_fcppt_test(
 	algorithm/array_push_back
 )
 
@@ -118,6 +122,10 @@ add_fcppt_test(
 	cast_to_enum
 	LINK_LIBS
 		"${fcppt_core_TARGET}"
+)
+
+add_fcppt_test(
+	cast/promote
 )
 
 add_fcppt_test(

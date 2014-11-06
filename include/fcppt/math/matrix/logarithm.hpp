@@ -15,7 +15,6 @@
 #include <fcppt/math/matrix/object_impl.hpp>
 #include <fcppt/math/matrix/sqrt.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/utility/enable_if.hpp>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
@@ -37,18 +36,18 @@ template
 	typename DN,
 	typename S
 >
-typename
-boost::enable_if
-<
-	std::is_floating_point<T>,
-	fcppt::math::matrix::object<T,DN,DN,S> const
->::type
+fcppt::math::matrix::object<T,DN,DN,S> const
 logarithm(
 	fcppt::math::matrix::object<T,DN,DN,S> A,
 	T const e1,
 	T const e2,
 	T const e3)
 {
+	static_assert(
+		std::is_floating_point<T>::value,
+		"logarithm can only be used on floating point types"
+	);
+
 	typedef
 	fcppt::math::matrix::object<T,DN,DN,S>
 	matrix_type;

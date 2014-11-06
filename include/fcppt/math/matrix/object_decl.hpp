@@ -20,7 +20,6 @@
 #include <fcppt/type_traits/is_iterator.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/mpl/times.hpp>
-#include <boost/utility/enable_if.hpp>
 #include <iterator>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
@@ -228,10 +227,10 @@ public:
 	>
 	object(
 		In beg,
-		typename boost::enable_if<
+		typename std::enable_if<
 			fcppt::type_traits::is_iterator<
 				In
-			>,
+			>::value,
 			In
 		>::type end
 	);

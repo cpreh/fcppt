@@ -12,7 +12,6 @@
 #include <fcppt/optional_impl.hpp>
 #include <fcppt/type_traits/is_string.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/utility/enable_if.hpp>
 #include <locale>
 #include <string>
 #include <typeinfo>
@@ -48,18 +47,20 @@ template<
 	typename Dest,
 	typename Source
 >
-typename boost::enable_if<
-	fcppt::type_traits::is_string<
-		Source
-	>,
-	Dest
->::type
+Dest
 extract_from_string_exn(
 	Source const &_source,
 	std::locale const &_locale
 		= std::locale()
 )
 {
+	static_assert(
+		fcppt::type_traits::is_string<
+			Source
+		>::value,
+		"extract_from_string_exn can only be used on strings"
+	);
+
 	typedef fcppt::optional<
 		Dest
 	> dest_opt;

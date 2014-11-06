@@ -10,7 +10,6 @@
 #include <fcppt/endianness/host_format.hpp>
 #include <fcppt/endianness/swap.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/utility/enable_if.hpp>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
@@ -41,17 +40,19 @@ _format to the host format.
 template<
 	typename Type
 >
-typename boost::enable_if<
-	std::is_fundamental<
-		Type
-	>,
-	Type
->::type
+Type
 convert(
 	Type const &_value,
 	fcppt::endianness::format const _format
 )
 {
+	static_assert(
+		std::is_fundamental<
+			Type
+		>::value,
+		"endianness::convert can only be used on fundamental types"
+	);
+
 	return
 		_format
 		==

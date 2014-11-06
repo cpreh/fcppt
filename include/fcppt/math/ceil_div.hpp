@@ -9,7 +9,6 @@
 
 #include <fcppt/literal.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/utility/enable_if.hpp>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
@@ -29,17 +28,19 @@ namespace math
 template<
 	typename T
 >
-typename boost::enable_if<
-	std::is_unsigned<
-		T
-	>,
-	T
->::type
+T
 ceil_div(
 	T const &_dividend,
 	T const &_divisor
 )
 {
+	static_assert(
+		std::is_unsigned<
+			T
+		>::value,
+		"ceil_div can only be used on unsigned types"
+	);
+
 	return
 		_dividend
 		/

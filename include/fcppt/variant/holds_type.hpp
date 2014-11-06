@@ -12,7 +12,6 @@
 #include <fcppt/variant/detail/index_of.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/mpl/contains.hpp>
-#include <boost/utility/enable_if.hpp>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -45,19 +44,21 @@ template<
 	typename Type,
 	typename Elements
 >
-typename boost::enable_if<
-	boost::mpl::contains<
-		Elements,
-		Type
-	>,
-	bool
->::type
+bool
 holds_type(
 	fcppt::variant::object<
 		Elements
 	> const &_variant
 )
 {
+	static_assert(
+		boost::mpl::contains<
+			Elements,
+			Type
+		>::value,
+		"Invalid Type in variant::holds_type"
+	);
+
 	return
 		_variant.type_index()
 		==

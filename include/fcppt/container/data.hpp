@@ -8,7 +8,6 @@
 #define FCPPT_CONTAINER_DATA_HPP_INCLUDED
 
 #include <fcppt/config/external_begin.hpp>
-#include <boost/mpl/if.hpp>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
@@ -32,10 +31,10 @@ template<
 	typename Container
 >
 typename
-boost::mpl::if_<
+std::conditional<
 	std::is_const<
 		Container
-	>,
+	>::value,
 	typename
 	Container::const_pointer,
 	typename

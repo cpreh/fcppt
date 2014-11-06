@@ -11,8 +11,6 @@
 #include <fcppt/math/detail/has_size.hpp>
 #include <fcppt/math/vector/object_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/mpl/and.hpp>
-#include <boost/utility/enable_if.hpp>
 #include <cmath>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
@@ -51,22 +49,26 @@ template<
 	typename S
 >
 inline
-typename boost::enable_if<
-	boost::mpl::and_<
-		std::is_floating_point<
-			T
-		>,
-		fcppt::math::detail::has_size<
-			N,
-			2
-		>
-	>,
-	T
->::type
+T
 atan2(
 	fcppt::math::vector::object<T, N, S> const &_vector
 )
 {
+	static_assert(
+		std::is_floating_point<
+			T
+		>::value,
+		"atan2 can only be used on vectors of floating point type"
+	);
+
+	static_assert(
+		fcppt::math::detail::has_size<
+			N,
+			2
+		>::value,
+		"atan2 can only be used on two-dimensional vectors"
+	);
+
 	return
 		std::atan2(
 			_vector.y(),

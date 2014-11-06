@@ -11,7 +11,6 @@
 #include <fcppt/cast/to_unsigned.hpp>
 #include <fcppt/math/ceil_div.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/utility/enable_if.hpp>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
@@ -31,17 +30,19 @@ namespace math
 template<
 	typename T
 >
-typename boost::enable_if<
-	std::is_signed<
-		T
-	>,
-	T
->::type
+T
 ceil_div_signed(
 	T const &_dividend,
 	T const &_divisor
 )
 {
+	static_assert(
+		std::is_signed<
+			T
+		>::value,
+		"ceil_div_signed can only be used on signed types"
+	);
+
 	return
 		(
 			_dividend

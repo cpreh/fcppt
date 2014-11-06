@@ -9,7 +9,6 @@
 
 #include <fcppt/optional_fwd.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/utility/enable_if.hpp>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
@@ -27,16 +26,13 @@ optional references are equal if they both refer to the same object.
 
 \param _a The first optional
 \param _b The second optional
+
+\tparam T Must be a reference type
 */
 template<
 	typename T
 >
-typename boost::enable_if<
-	std::is_reference<
-		T
-	>,
-	bool
->::type
+bool
 optional_ref_compare(
 	fcppt::optional<
 		T
@@ -46,8 +42,17 @@ optional_ref_compare(
 	> const &_b
 )
 {
+	static_assert(
+		std::is_reference<
+			T
+		>::value,
+		"optional_ref_compare can only be used with optional references"
+	);
+
 	return
-		_a.data() == _b.data();
+		_a.data()
+		==
+		_b.data();
 }
 
 }

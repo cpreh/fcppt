@@ -11,7 +11,6 @@
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/mpl/if.hpp>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
@@ -33,10 +32,10 @@ template<
 >
 struct choose_reference
 :
-boost::mpl::if_<
+std::conditional<
 	std::is_const<
 		Container
-	>,
+	>::value,
 	typename Container::const_reference,
 	typename Container::reference
 >

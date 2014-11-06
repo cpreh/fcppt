@@ -13,7 +13,6 @@
 #include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/type_traits/function_traits.hpp>
-#include <boost/utility/enable_if.hpp>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
@@ -31,14 +30,14 @@ FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
 template<
 	typename T
 >
-struct enable_if_void
+struct enable_if_void final
 :
-boost::enable_if<
+std::enable_if<
 	std::is_void<
 		typename boost::function_traits<
 			T
 		>::result_type
-	>
+	>::value
 >
 {
 };

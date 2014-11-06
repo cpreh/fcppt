@@ -10,7 +10,6 @@
 #include <fcppt/literal.hpp>
 #include <fcppt/math/is_power_of_2.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/utility/enable_if.hpp>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
@@ -28,16 +27,18 @@ namespace math
 template<
 	typename T
 >
-typename boost::enable_if<
-	std::is_unsigned<
-		T
-	>,
-	T
->::type
+T
 next_power_of_2(
 	T const _value
 )
 {
+	static_assert(
+		std::is_unsigned<
+			T
+		>::value,
+		"next_power_of_2 can only be used on unsigned types"
+	);
+
 	T const two(
 		fcppt::literal<T>(2)
 	);

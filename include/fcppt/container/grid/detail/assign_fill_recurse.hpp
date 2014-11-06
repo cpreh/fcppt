@@ -9,7 +9,7 @@
 
 #include <fcppt/container/grid/size_type.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/utility/enable_if.hpp>
+#include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -26,7 +26,7 @@ template<
 	fcppt::container::grid::size_type Level,
 	typename Object
 >
-typename boost::enable_if_c<
+typename std::enable_if<
 	Level == 0,
 	void
 >::type
@@ -54,7 +54,7 @@ template<
 	fcppt::container::grid::size_type Level,
 	typename Object
 >
-typename boost::enable_if_c<
+typename std::enable_if<
 	Level != 0,
 	void
 >::type

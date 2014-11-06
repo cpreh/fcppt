@@ -15,7 +15,6 @@
 #include <fcppt/math/vector/object_impl.hpp>
 #include <fcppt/math/vector/structure_cast.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/utility/enable_if.hpp>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
@@ -43,16 +42,16 @@ positive and shrink the box if <code>absolute_values</code> is
 negative.
 */
 template<typename T,fcppt::math::size_type N>
-typename
-boost::enable_if
-<
-	std::is_signed<T>,
-	fcppt::math::box::object<T,N> const
->::type
+fcppt::math::box::object<T,N> const
 stretch_absolute(
 	fcppt::math::box::object<T,N> const &b,
 	typename fcppt::math::box::object<T,N>::vector const &absolute_values)
 {
+	static_assert(
+		std::is_signed<T>::value,
+		"stretch_absolute can only be used on signed boxes"
+	);
+
 	return
 		fcppt::math::box::object<T,N>(
 			b.pos() - absolute_values,

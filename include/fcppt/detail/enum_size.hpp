@@ -15,7 +15,6 @@
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/utility/enable_if.hpp>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
@@ -39,10 +38,10 @@ template<
 >
 struct enum_size<
 	Type,
-	typename boost::enable_if<
+	typename std::enable_if<
 		fcppt::enum_is_empty<
 			Type
-		>
+		>::value
 	>::type
 >
 :
@@ -60,10 +59,10 @@ template<
 >
 struct enum_size<
 	Type,
-	typename boost::disable_if<
-		fcppt::enum_is_empty<
+	typename std::enable_if<
+		!fcppt::enum_is_empty<
 			Type
-		>
+		>::value
 	>::type
 >
 :

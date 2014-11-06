@@ -44,7 +44,7 @@ promote(
 	static_assert(
 		std::is_fundamental<
 			Type
-		>,
+		>::value,
 		"promote can only promote fundamental types"
 	);
 

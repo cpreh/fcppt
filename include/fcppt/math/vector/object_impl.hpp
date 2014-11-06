@@ -24,8 +24,8 @@
 #include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/type_traits/is_iterator.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/utility/enable_if.hpp>
 #include <algorithm>
+#include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -155,10 +155,10 @@ fcppt::math::vector::object<
 	S
 >::object(
 	In const _begin,
-	typename boost::enable_if<
+	typename std::enable_if<
 		fcppt::type_traits::is_iterator<
 			In
-		>,
+		>::value,
 		In
 	>::type const _end
 )

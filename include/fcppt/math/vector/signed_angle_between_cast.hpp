@@ -13,8 +13,6 @@
 #include <fcppt/math/vector/static.hpp>
 #include <fcppt/math/vector/structure_cast.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/mpl/and.hpp>
-#include <boost/utility/enable_if.hpp>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
@@ -51,23 +49,27 @@ template<
 	typename S1,
 	typename S2
 >
-typename boost::enable_if<
-	boost::mpl::and_<
-		std::is_floating_point<
-			Dest
-		>,
-		fcppt::math::detail::has_size<
-			N,
-			2
-		>
-	>,
-	Dest
->::type
+Dest
 signed_angle_between_cast(
 	fcppt::math::vector::object<T, N, S1> const &_from,
 	fcppt::math::vector::object<T, N, S2> const &_to
 )
 {
+	static_assert(
+		std::is_floating_point<
+			Dest
+		>::value,
+		"signed_angle_between_cast can only be used on vectors of floating point type"
+	);
+
+	static_assert(
+		fcppt::math::detail::has_size<
+			N,
+			2
+		>::value,
+		"signed_angle_between_cast can only be used on two-dimensional vectors"
+	);
+
 	typedef fcppt::math::vector::static_<
 		Dest,
 		N::value

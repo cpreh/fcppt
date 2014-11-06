@@ -8,7 +8,6 @@
 #define FCPPT_CONTAINER_TO_MAPPED_TYPE_HPP_INCLUDED
 
 #include <fcppt/config/external_begin.hpp>
-#include <boost/mpl/if.hpp>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
@@ -25,10 +24,10 @@ using
 to_mapped_type
 =
 typename
-boost::mpl::if_<
+std::conditional<
 	std::is_const<
 		Container
-	>,
+	>::value,
 	typename
 	Container::mapped_type const &,
 	typename

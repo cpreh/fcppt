@@ -13,7 +13,6 @@
 #include <fcppt/endianness/convert.hpp>
 #include <fcppt/endianness/format_fwd.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/utility/enable_if.hpp>
 #include <iosfwd>
 #include <ostream>
 #include <type_traits>
@@ -44,18 +43,20 @@ will be done binary.
 template<
 	typename Type
 >
-typename boost::enable_if<
-	std::is_fundamental<
-		Type
-	>,
-	void
->::type
+void
 write(
 	std::ostream &_stream,
 	Type const &_value,
 	fcppt::endianness::format const _format
 )
 {
+	static_assert(
+		std::is_fundamental<
+			Type
+		>::value,
+		"io::write can only be used on fundamental types"
+	);
+
 	Type const tmp(
 		fcppt::endianness::convert(
 			_value,

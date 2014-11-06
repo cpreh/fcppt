@@ -14,7 +14,6 @@
 #include <fcppt/container/grid/size_type.hpp>
 #include <fcppt/math/dim/object_decl.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/mpl/if.hpp>
 #include <type_traits>
 #include <vector>
 #include <fcppt/config/external_end.hpp>
@@ -46,10 +45,12 @@ class object
 		"The dimensions of a grid cannot be zero"
 	);
 
-	typedef typename boost::mpl::if_<
+	typedef
+	typename
+	std::conditional<
 		std::is_pod<
 			T
-		>,
+		>::value,
 		fcppt::container::raw_vector<
 			T,
 			A
@@ -58,7 +59,8 @@ class object
 			T,
 			A
 		>
-	>::type container;
+	>::type
+	container;
 // \endcond
 public:
 	/**

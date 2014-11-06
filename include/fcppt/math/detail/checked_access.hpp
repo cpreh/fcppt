@@ -9,7 +9,6 @@
 
 #include <fcppt/math/size_type.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/mpl/if.hpp>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
@@ -25,10 +24,11 @@ template<
 	fcppt::math::size_type N,
 	typename T
 >
-typename boost::mpl::if_<
+typename
+std::conditional<
 	std::is_const<
 		T
-	>,
+	>::value,
 	typename T::const_reference,
 	typename T::reference
 >::type

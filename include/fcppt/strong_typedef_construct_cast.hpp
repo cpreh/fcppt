@@ -9,9 +9,6 @@
 
 #include <fcppt/is_strong_typedef.hpp>
 #include <fcppt/strong_typedef_impl.hpp>
-#include <fcppt/config/external_begin.hpp>
-#include <boost/utility/enable_if.hpp>
-#include <fcppt/config/external_end.hpp>
 
 
 namespace fcppt
@@ -21,16 +18,18 @@ template<
 	typename StrongTypedef,
 	typename Arg
 >
-typename boost::enable_if<
-	fcppt::is_strong_typedef<
-		StrongTypedef
-	>,
-	StrongTypedef
->::type const
+StrongTypedef
 strong_typedef_construct_cast(
 	Arg const &_arg
 )
 {
+	static_assert(
+		fcppt::is_strong_typedef<
+			StrongTypedef
+		>::value,
+		"strong_typedef_construct_cast must return a strong typedef"
+	);
+
 	return
 		StrongTypedef(
 			static_cast<

@@ -10,7 +10,6 @@
 #include <fcppt/literal.hpp>
 #include <fcppt/math/pi.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/utility/enable_if.hpp>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
@@ -29,16 +28,18 @@ template<
 	typename T
 >
 inline
-typename boost::enable_if<
-	std::is_floating_point<
-		T
-	>,
-	T
->::type
+T
 deg_to_rad(
 	T const deg
 )
 {
+	static_assert(
+		std::is_floating_point<
+			T
+		>::value,
+		"deg_to_rad can only be used on floating point types"
+	);
+
 	return
 		deg
 		*

@@ -11,7 +11,7 @@
 #include <fcppt/random/distribution/detail/is_terminal.hpp>
 #include <fcppt/random/distribution/transform/terminal.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/utility/enable_if.hpp>
+#include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -28,10 +28,10 @@ template<
 	typename Type
 >
 typename
-boost::enable_if<
+std::enable_if<
 	fcppt::random::distribution::detail::is_terminal<
 		Type
-	>,
+	>::value,
 	Type
 >::type
 base_value(
@@ -46,10 +46,10 @@ template<
 	typename Type
 >
 typename
-boost::disable_if<
-	fcppt::random::distribution::detail::is_terminal<
+std::enable_if<
+	!fcppt::random::distribution::detail::is_terminal<
 		Type
-	>,
+	>::value,
 	typename
 	fcppt::random::distribution::base_type<
 		Type

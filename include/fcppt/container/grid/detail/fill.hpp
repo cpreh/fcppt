@@ -11,7 +11,7 @@
 #include <fcppt/container/grid/size_type.hpp>
 #include <fcppt/math/dim/object_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/utility/enable_if.hpp>
+#include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -32,9 +32,9 @@ template
 	typename Fn
 >
 typename
-boost::disable_if_c
+std::enable_if
 <
-	Current != N,
+	Current == N,
 	void
 >::type
 fill(
@@ -56,7 +56,7 @@ template
 	typename Fn
 >
 typename
-boost::enable_if_c
+std::enable_if
 <
 	Current != N,
 	void

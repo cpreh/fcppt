@@ -75,9 +75,10 @@ template<
 	typename N,
 	typename S
 >
-typename boost::enable_if<
-	std::is_floating_point<T>,
-	typename fcppt::math::vector::object<T, N, S>::value_type
+typename
+std::enable_if<
+	std::is_floating_point<T>::value,
+	T
 >::type
 length(
 	fcppt::math::vector::object<T, N, S> const &v
@@ -143,8 +144,9 @@ template<
 	typename N,
 	typename S
 >
-typename boost::disable_if<
-	std::is_floating_point<T>,
+typename
+std::enable_if<
+	!std::is_floating_point<T>::value,
 	Dest
 >::type
 length(

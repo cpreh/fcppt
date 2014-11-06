@@ -14,7 +14,6 @@
 #include <fcppt/endianness/convert.hpp>
 #include <fcppt/endianness/format_fwd.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/utility/enable_if.hpp>
 #include <iosfwd>
 #include <istream>
 #include <type_traits>
@@ -47,19 +46,21 @@ be returned. Otherwise an empty optional will be returned.
 template<
 	typename Type
 >
-typename boost::enable_if<
-	std::is_fundamental<
-		Type
-	>,
-	fcppt::optional<
-		Type
-	>
->::type
+fcppt::optional<
+	Type
+>
 read(
 	std::istream &_stream,
 	fcppt::endianness::format const _format
 )
 {
+	static_assert(
+		std::is_fundamental<
+			Type
+		>::value,
+		"io::read must return a fundamental type"
+	);
+
 	typedef fcppt::optional<
 		Type
 	> result_type;

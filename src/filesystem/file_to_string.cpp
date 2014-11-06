@@ -18,11 +18,8 @@
 #include <boost/cstdint.hpp>
 #include <boost/filesystem/operations.hpp>
 #include <boost/filesystem/path.hpp>
-#include <boost/mpl/greater_equal.hpp>
-#include <boost/mpl/less.hpp>
-#include <boost/mpl/sizeof.hpp>
-#include <boost/utility/enable_if.hpp>
 #include <iterator>
+#include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -32,36 +29,37 @@ namespace
 template<
 	typename Size
 >
-typename boost::enable_if<
-	boost::mpl::greater_equal<
-		boost::mpl::sizeof_<
-			Size
-		>,
-		boost::mpl::sizeof_<
-			boost::uintmax_t
-		>
-	>,
+typename
+std::enable_if<
+	sizeof(
+		Size
+	)
+	>=
+	sizeof(
+		boost::uintmax_t
+	),
 	bool
 >::type
 check_size(
 	boost::uintmax_t
 )
 {
-	return true;
+	return
+		true;
 }
 
 template<
 	typename Size
 >
-typename boost::enable_if<
-	boost::mpl::less<
-		boost::mpl::sizeof_<
-			Size
-		>,
-		boost::mpl::sizeof_<
-			boost::uintmax_t
-		>
-	>,
+typename
+std::enable_if<
+	sizeof(
+		Size
+	)
+	<
+	sizeof(
+		boost::uintmax_t
+	),
 	bool
 >::type
 check_size(
@@ -149,5 +147,6 @@ fcppt::filesystem::file_to_string(
 		fcppt::assert_::exception
 	);
 
-	return ret;
+	return
+	ret;
 }

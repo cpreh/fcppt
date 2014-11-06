@@ -10,7 +10,6 @@
 #include <fcppt/check_literal_conversion.hpp>
 #include <fcppt/make_literal_fwd.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/utility/enable_if.hpp>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
@@ -23,10 +22,11 @@ template<
 >
 struct make_literal<
 	Type,
-	typename boost::enable_if<
+	typename
+	std::enable_if<
 		std::is_fundamental<
 			Type
-		>
+		>::value
 	>::type
 >
 {

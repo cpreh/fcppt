@@ -13,7 +13,6 @@
 #include <fcppt/endianness/format_fwd.hpp>
 #include <fcppt/io/read.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/utility/enable_if.hpp>
 #include <iosfwd>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
@@ -46,17 +45,19 @@ thrown.
 template<
 	typename Type
 >
-typename boost::enable_if<
-	std::is_fundamental<
-		Type
-	>,
-	Type
->::type
+Type
 read_exn(
 	std::istream &_stream,
 	fcppt::endianness::format const _format
 )
 {
+	static_assert(
+		std::is_fundamental<
+			Type
+		>::value,
+		"io::read_exn must return a fundamental type"
+	);
+
 	typedef fcppt::optional<
 		Type
 	> result_type;

@@ -9,7 +9,6 @@
 
 #include <fcppt/nonassignable.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/utility/enable_if.hpp>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
@@ -46,11 +45,11 @@ public:
 	template<
 		typename T
 	>
-	typename boost::enable_if<
+	typename std::enable_if<
 		std::is_same<
 			T,
 			Value
-		>,
+		>::value,
 		result_type
 	>::type
 	operator()(
@@ -70,11 +69,11 @@ public:
 	template<
 		typename T
 	>
-	typename boost::disable_if<
-		std::is_same<
+	typename std::enable_if<
+		!std::is_same<
 			T,
 			Value
-		>,
+		>::value,
 		result_type
 	>::type
 	operator()(

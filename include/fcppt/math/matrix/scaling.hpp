@@ -12,9 +12,6 @@
 #include <fcppt/math/matrix/static.hpp>
 #include <fcppt/math/vector/has_dim.hpp>
 #include <fcppt/math/vector/object_impl.hpp>
-#include <fcppt/config/external_begin.hpp>
-#include <boost/utility/enable_if.hpp>
-#include <fcppt/config/external_end.hpp>
 
 
 namespace fcppt
@@ -37,7 +34,7 @@ The resulting matrix will be static.
 template<
 	typename T
 >
-static_<T, 4, 4> const
+fcppt::math::matrix::static_<T, 4, 4> const
 scaling(
 	T const _x,
 	T const _y,
@@ -49,7 +46,7 @@ scaling(
 		one = fcppt::literal<T>(1);
 
 	return
-		static_<T, 4, 4>
+		fcppt::math::matrix::static_<T, 4, 4>
 		(
 			   _x, zero, zero, zero,
 			zero,     _y,zero, zero,
@@ -63,23 +60,25 @@ scaling(
 template<
 	typename Vector
 >
-typename boost::enable_if<
-	vector::has_dim<
-		Vector,
-		3
-	>,
-	static_<
-		typename Vector::value_type,
-		4,
-		4
-	>
->::type const
+fcppt::math::matrix::static_<
+	typename Vector::value_type,
+	4,
+	4
+> const
 scaling(
 	Vector const &_vec
 )
 {
+	static_assert(
+		fcppt::math::vector::has_dim<
+			Vector,
+			3
+		>::value,
+		"matrix::scaling can only be used on three-dimensional vectors"
+	);
+
 	return
-		matrix::scaling(
+		fcppt::math::matrix::scaling(
 			_vec.x(),
 			_vec.y(),
 			_vec.z()

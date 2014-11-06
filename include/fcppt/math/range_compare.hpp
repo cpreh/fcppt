@@ -10,7 +10,6 @@
 
 #include <fcppt/math/diff.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/utility/enable_if.hpp>
 #include <cmath>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
@@ -30,17 +29,19 @@ This function returns true if all components of \p r1 are equal to the
 corresponding components in \p r2 up to the given epsilon.
 */
 template<typename Range,typename T>
-typename
-boost::enable_if
-<
-	std::is_floating_point<typename Range::value_type>,
-	bool
->::type
+bool
 range_compare(
 	Range const &r1,
 	Range const &r2,
 	T const &epsilon)
 {
+	static_assert(
+		std::is_floating_point<
+			typename Range::value_type
+		>::value,
+		"range_compare can only be used on ranges of floating point type"
+	);
+
 	for(
 		typename Range::const_iterator
 			i1 =

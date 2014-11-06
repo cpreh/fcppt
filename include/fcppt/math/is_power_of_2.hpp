@@ -8,7 +8,6 @@
 #define FCPPT_MATH_IS_POWER_OF_2_HPP_INCLUDED
 
 #include <fcppt/config/external_begin.hpp>
-#include <boost/utility/enable_if.hpp>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
@@ -30,16 +29,19 @@ template<
 	typename T
 >
 inline
-typename boost::enable_if<
-	std::is_unsigned<
-		T
-	>,
-	bool
->::type
+constexpr
+bool
 is_power_of_2(
 	T const x
 )
 {
+	static_assert(
+		std::is_unsigned<
+			T
+		>::value,
+		"is_power_of_2 can only be used on unsigned types"
+	);
+
 	return x && !(x & (x - 1));
 }
 

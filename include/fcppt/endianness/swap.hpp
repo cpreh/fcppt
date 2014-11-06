@@ -11,7 +11,6 @@
 #include <fcppt/endianness/raw_pointer.hpp>
 #include <fcppt/endianness/reverse_mem.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/utility/enable_if.hpp>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
@@ -37,16 +36,18 @@ Swaps the endiannness of \a _value.
 template<
 	typename Type
 >
-typename boost::enable_if<
-	std::is_fundamental<
-		Type
-	>,
-	Type
->::type
+Type
 swap(
 	Type _value
 )
 {
+	static_assert(
+		std::is_fundamental<
+			Type
+		>::value,
+		"endianness::swap can only be used on fundamental types"
+	);
+
 	fcppt::endianness::reverse_mem(
 		fcppt::cast::to_char_ptr<
 			fcppt::endianness::raw_pointer
@@ -58,7 +59,8 @@ swap(
 		)
 	);
 
-	return _value;
+	return
+	_value;
 }
 
 }

@@ -13,7 +13,6 @@
 #include <fcppt/random/distribution/parameters/uniform_int_wrapper.hpp>
 #include <fcppt/random/distribution/transform/enum.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/utility/enable_if.hpp>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
@@ -32,17 +31,19 @@ template<
 	typename Enum
 >
 typename
-boost::enable_if<
-	std::is_enum<
-		Enum
-	>,
-	fcppt::random::distribution::parameters::uniform_int<
-		Enum,
-		Distribution
-	>
->::type const
+fcppt::random::distribution::parameters::uniform_int<
+	Enum,
+	Distribution
+> const
 make_uniform_enum_advanced()
 {
+	static_assert(
+		std::is_enum<
+			Enum
+		>::value,
+		"make_uniform_enum_advanced can only be used for enumeration types"
+	);
+
 	typedef
 	fcppt::random::distribution::parameters::uniform_int<
 		Enum,

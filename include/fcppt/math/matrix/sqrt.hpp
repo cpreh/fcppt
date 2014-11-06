@@ -14,7 +14,6 @@
 #include <fcppt/math/matrix/inverse.hpp>
 #include <fcppt/math/matrix/object_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/utility/enable_if.hpp>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
@@ -36,16 +35,16 @@ template
 	typename DN,
 	typename S
 >
-typename
-boost::enable_if
-<
-	std::is_floating_point<T>,
-	fcppt::math::matrix::object<T,DN,DN,S> const
->::type
+fcppt::math::matrix::object<T,DN,DN,S> const
 sqrt(
 	fcppt::math::matrix::object<T,DN,DN,S> const &_matrix,
 	T const epsilon)
 {
+	static_assert(
+		std::is_floating_point<T>::value,
+		"matrix::sqrt can only be used on floating point types"
+	);
+
 	typedef
 	fcppt::math::matrix::object<T,DN,DN,S>
 	matrix_type;

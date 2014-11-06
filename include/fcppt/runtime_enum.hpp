@@ -32,18 +32,19 @@ template<
 >
 inline
 typename
-boost::enable_if<
-	std::is_enum<
-		Enum
-	>,
-	typename
-	Function::result_type
->::type
+Function::result_type
 runtime_enum(
 	Enum const _enum,
 	Function const &_function
 )
 {
+	static_assert(
+		std::is_enum<
+			Enum
+		>::value,
+		"runtime_enum can only be used on enumeration types"
+	);
+
 	typedef
 	typename
 	std::make_unsigned<
