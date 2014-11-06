@@ -7,7 +7,7 @@
 #ifndef FCPPT_CONTAINER_BITFIELD_HASH_IMPL_HPP_INCLUDED
 #define FCPPT_CONTAINER_BITFIELD_HASH_IMPL_HPP_INCLUDED
 
-#include <fcppt/container/array_hash_impl.hpp>
+#include <fcppt/range_hash_impl.hpp>
 #include <fcppt/container/bitfield/hash_decl.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <cstddef>
@@ -25,7 +25,7 @@ fcppt::container::bitfield::hash<
 ) const
 {
 	return
-		fcppt::container::array_hash<
+		fcppt::range_hash<
 			typename
 			Bitfield::array_type
 		>()(

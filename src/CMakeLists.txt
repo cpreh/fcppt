@@ -108,10 +108,6 @@ set(
 	include/fcppt/config/platform.hpp
 	include/fcppt/const_optional_cast.hpp
 	include/fcppt/const_pointer_cast.hpp
-	include/fcppt/container/array_hash.hpp
-	include/fcppt/container/array_hash_decl.hpp
-	include/fcppt/container/array_hash_fwd.hpp
-	include/fcppt/container/array_hash_impl.hpp
 	include/fcppt/container/array_size.hpp
 	include/fcppt/container/bitfield/array.hpp
 	include/fcppt/container/bitfield/default_internal_type.hpp
@@ -142,6 +138,7 @@ set(
 	include/fcppt/container/data_end.hpp
 	include/fcppt/container/detail/array_size.hpp
 	include/fcppt/container/enum_array.hpp
+	include/fcppt/container/enum_array_comparison.hpp
 	include/fcppt/container/enum_array_decl.hpp
 	include/fcppt/container/enum_array_fwd.hpp
 	include/fcppt/container/enum_array_impl.hpp
