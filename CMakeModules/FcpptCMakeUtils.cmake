@@ -816,7 +816,7 @@ function(
 	)
 
 	if(
-		"${CACHE_VAR}"
+		"${${CACHE_VAR}}"
 		STREQUAL
 		""
 	)
