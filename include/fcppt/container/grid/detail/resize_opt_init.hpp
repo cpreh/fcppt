@@ -28,10 +28,10 @@ template<
 	typename A
 >
 typename
-boost::enable_if<
+std::enable_if<
 	std::is_default_constructible<
 		T
-	>,
+	>::value,
 	void
 >::type
 resize_opt_init(
@@ -60,10 +60,10 @@ template<
 	typename A
 >
 typename
-boost::disable_if<
-	std::is_default_constructible<
+std::enable_if<
+	!std::is_default_constructible<
 		T
-	>,
+	>::value,
 	void
 >::type
 resize_opt_init(

@@ -871,7 +871,6 @@ set(
 	include/fcppt/math/vector/project.hpp
 	include/fcppt/math/vector/signed_angle_between.hpp
 	include/fcppt/math/vector/signed_angle_between_cast.hpp
-	include/fcppt/math/vector/slerp.hpp
 	include/fcppt/math/vector/static.hpp
 	include/fcppt/math/vector/std_hash.hpp
 	include/fcppt/math/vector/structure_cast.hpp
