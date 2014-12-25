@@ -40,7 +40,6 @@
 				"include/fcppt/math/matrix/logarithm.hpp",
 				"include/fcppt/math/matrix/sqrt.hpp",
 				"include/fcppt/math/vector/project.hpp",
-				"include/fcppt/math/vector/slerp.hpp",
 				"include/fcppt/math/interpolation/.*",
 				"include/fcppt/math/matrix/adjugate.hpp",
 				"include/fcppt/math/matrix/delete_row_and_column.hpp",
