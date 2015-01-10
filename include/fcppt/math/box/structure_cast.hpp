@@ -8,6 +8,7 @@
 #define FCPPT_MATH_BOX_STRUCTURE_CAST_HPP_INCLUDED
 
 #include <fcppt/math/size_type.hpp>
+#include <fcppt/math/box/is_box.hpp>
 #include <fcppt/math/box/object_impl.hpp>
 #include <fcppt/math/dim/structure_cast.hpp>
 #include <fcppt/math/vector/structure_cast.hpp>
@@ -41,6 +42,13 @@ structure_cast(
 	> const &_src
 )
 {
+	static_assert(
+		fcppt::math::box::is_box<
+			Dest
+		>::value,
+		"Dest must be a box"
+	);
+
 	return
 		Dest(
 			fcppt::math::vector::structure_cast<
