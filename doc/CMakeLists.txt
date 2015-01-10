@@ -187,16 +187,13 @@ set(
 	include/fcppt/algorithm/detail/map_concat.hpp
 	include/fcppt/algorithm/detail/map_reserve.hpp
 	include/fcppt/algorithm/detail/variadic_fold.hpp
-	include/fcppt/algorithm/element_not_found.hpp
 	include/fcppt/algorithm/enum_array_fold.hpp
 	include/fcppt/algorithm/enum_array_fold_static.hpp
-	include/fcppt/algorithm/exception.hpp
 	include/fcppt/algorithm/find_exn.hpp
 	include/fcppt/algorithm/find_if_exn.hpp
 	include/fcppt/algorithm/find_if_opt.hpp
 	include/fcppt/algorithm/fold.hpp
 	include/fcppt/algorithm/impl/element_not_found.hpp
-	include/fcppt/algorithm/impl/exception.hpp
 	include/fcppt/algorithm/join.hpp
 	include/fcppt/algorithm/join_move.hpp
 	include/fcppt/algorithm/join_strings.hpp
@@ -273,7 +270,6 @@ set(
 	include/fcppt/cast/float_to_int.hpp
 	include/fcppt/cast/float_to_int_fun.hpp
 	include/fcppt/cast/from_void_ptr.hpp
-	include/fcppt/cast/identity_fun.hpp
 	include/fcppt/cast/impl/bad_dynamic.hpp
 	include/fcppt/cast/impl/bad_truncation_check.hpp
 	include/fcppt/cast/int_to_enum.hpp

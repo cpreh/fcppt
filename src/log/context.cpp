@@ -69,7 +69,8 @@ fcppt::log::context::find(
 	if(
 		!tree_location
 	)
-		return fcppt::log::optional_object();
+		return
+			fcppt::log::optional_object();
 
 	fcppt::log::detail::context_tree::const_iterator const logger_node(
 		fcppt::log::find_logger_node(

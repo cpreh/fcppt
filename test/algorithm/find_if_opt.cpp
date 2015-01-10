@@ -4,7 +4,6 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/algorithm/element_not_found.hpp>
 #include <fcppt/algorithm/find_if_opt.hpp>
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>

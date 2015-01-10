@@ -7,7 +7,6 @@
 #ifndef FCPPT_ALGORITHM_FIND_IF_EXN_HPP_INCLUDED
 #define FCPPT_ALGORITHM_FIND_IF_EXN_HPP_INCLUDED
 
-#include <fcppt/algorithm/element_not_found.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <algorithm>
 #include <fcppt/config/external_end.hpp>
@@ -27,13 +26,15 @@ namespace algorithm
 */
 template<
 	typename In,
-	typename Comp
+	typename Comp,
+	typename MakeException
 >
 In
 find_if_exn(
 	In const _begin,
 	In const _end,
-	Comp const &_comp
+	Comp const &_comp,
+	MakeException const &_make_exception
 )
 {
 	In const ret(
@@ -48,7 +49,7 @@ find_if_exn(
 		ret == _end
 	)
 		throw
-			fcppt::algorithm::element_not_found{};
+			_make_exception();
 
 	return
 		ret;
@@ -56,39 +57,45 @@ find_if_exn(
 
 template<
 	typename Container,
-	typename Comp
+	typename Comp,
+	typename MakeException
 >
 typename
 Container::iterator
 find_if_exn(
 	Container &_container,
-	Comp const &_comp
+	Comp const &_comp,
+	MakeException const &_make_exception
 )
 {
 	return
 		fcppt::algorithm::find_if_exn(
 			_container.begin(),
 			_container.end(),
-			_comp
+			_comp,
+			_make_exception
 		);
 }
 
 template<
 	typename Container,
-	typename Comp
+	typename Comp,
+	typename MakeException
 >
 typename
 Container::const_iterator
 find_if_exn(
 	Container const &_container,
-	Comp const &_comp
+	Comp const &_comp,
+	MakeException const &_make_exception
 )
 {
 	return
 		fcppt::algorithm::find_if_exn(
 			_container.begin(),
 			_container.end(),
-			_comp
+			_comp,
+			_make_exception
 		);
 }
 

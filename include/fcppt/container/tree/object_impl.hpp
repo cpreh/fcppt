@@ -7,7 +7,9 @@
 #ifndef FCPPT_CONTAINER_TREE_OBJECT_IMPL_HPP_INCLUDED
 #define FCPPT_CONTAINER_TREE_OBJECT_IMPL_HPP_INCLUDED
 
+#include <fcppt/text.hpp>
 #include <fcppt/algorithm/find_if_exn.hpp>
+#include <fcppt/container/exception.hpp>
 #include <fcppt/container/tree/object_decl.hpp>
 #include <fcppt/container/tree/optional_ref_impl.hpp>
 #include <fcppt/container/tree/detail/copy_children.hpp>
@@ -362,6 +364,12 @@ fcppt::container::tree::object<
 					&_child
 					==
 					this;
+			},
+			[]{
+				return
+					fcppt::container::exception{
+						FCPPT_TEXT("Tree has no child position.")
+					};
 			}
 		);
 }

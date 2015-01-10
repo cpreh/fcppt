@@ -15,6 +15,7 @@
 #include <iostream>
 #include <iterator>
 #include <ostream>
+#include <stdexcept>
 #include <string>
 #include <vector>
 #include <fcppt/config/external_end.hpp>
@@ -49,9 +50,14 @@ int main()
 
 	// find_exn
 	fcppt::algorithm::find_exn(
-		str.begin(),
-		str.end(),
-		't'
+		str,
+		't',
+		[]{
+			return
+				std::runtime_error(
+					"c not found"
+				);
+		}
 	);
 
 	std::cout << std::string(a.begin(), a.end()) << '\n';

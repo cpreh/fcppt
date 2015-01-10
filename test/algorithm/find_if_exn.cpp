@@ -4,13 +4,13 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/algorithm/element_not_found.hpp>
 #include <fcppt/algorithm/find_if_exn.hpp>
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/test/unit_test.hpp>
+#include <stdexcept>
 #include <vector>
 #include <fcppt/config/external_end.hpp>
 
@@ -20,10 +20,11 @@ namespace
 
 bool
 check_function(
-	fcppt::algorithm::element_not_found const &
+	std::runtime_error const &
 )
 {
-	return true;
+	return
+		true;
 }
 
 }
@@ -49,6 +50,13 @@ FCPPT_PP_POP_WARNING
 		3
 	};
 
+	auto const make_exception(
+		[]{
+			return
+				std::runtime_error("");
+		}
+	);
+
 	BOOST_CHECK(
 		fcppt::algorithm::find_if_exn(
 			vec.begin(),
@@ -59,7 +67,8 @@ FCPPT_PP_POP_WARNING
 			{
 				return
 					_i == 3;
-			}
+			},
+			make_exception
 		)
 		==
 		std::next(
@@ -77,9 +86,10 @@ FCPPT_PP_POP_WARNING
 			{
 				return
 					_i == 4;
-			}
+			},
+			make_exception
 		),
-		fcppt::algorithm::element_not_found,
+		std::runtime_error,
 		check_function
 	);
 }
