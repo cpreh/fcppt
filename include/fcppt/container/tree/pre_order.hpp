@@ -251,6 +251,10 @@ FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
 
 FCPPT_PP_POP_WARNING
 
+	typedef
+	iterator
+	const_iterator;
+
 	/**
 	\brief Return an iterator to the first tree in the traversal
 	*/
