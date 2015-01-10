@@ -8,6 +8,7 @@
 #define FCPPT_CONTAINER_GRID_CLAMP_SIGNED_POS_HPP_INCLUDED
 
 #include <fcppt/literal.hpp>
+#include <fcppt/make_int_range_count.hpp>
 #include <fcppt/no_init.hpp>
 #include <fcppt/assert/pre.hpp>
 #include <fcppt/cast/to_signed.hpp>
@@ -84,11 +85,11 @@ clamp_signed_pos(
 	};
 
 	for(
-		typename result_type::dim_wrapper::value_type index(
-			0u
-		);
-		index < result_type::dim_wrapper::value;
-		++index
+		auto const index
+		:
+		fcppt::make_int_range_count(
+			result_type::dim_wrapper::value
+		)
 	)
 		ret[
 			index

@@ -7,6 +7,7 @@
 #ifndef FCPPT_CONTAINER_GRID_CLAMP_POS_HPP_INCLUDED
 #define FCPPT_CONTAINER_GRID_CLAMP_POS_HPP_INCLUDED
 
+#include <fcppt/make_int_range_count.hpp>
 #include <fcppt/no_init.hpp>
 #include <fcppt/container/grid/dim.hpp>
 #include <fcppt/container/grid/pos.hpp>
@@ -66,11 +67,11 @@ clamp_pos(
 	};
 
 	for(
-		typename result_type::size_type index(
-			0u
-		);
-		index < result_type::dim_wrapper::value;
-		++index
+		auto const index
+		:
+		fcppt::make_int_range_count(
+			result_type::dim_wrapper::value
+		)
 	)
 		ret[
 			index

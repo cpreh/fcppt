@@ -4,6 +4,8 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
+#include <fcppt/maybe.hpp>
+#include <fcppt/optional_bind.hpp>
 #include <fcppt/string.hpp>
 #include <fcppt/assert/error.hpp>
 #include <fcppt/assert/pre.hpp>
@@ -16,7 +18,6 @@
 #include <fcppt/log/detail/context_tree.hpp>
 #include <fcppt/log/detail/context_tree_node.hpp>
 #include <fcppt/log/detail/inner_context_node.hpp>
-#include <fcppt/log/detail/optional_context_tree_ref.hpp>
 #include <fcppt/log/detail/outer_context_node.hpp>
 #include <fcppt/src/log/find_inner_node.hpp>
 #include <fcppt/src/log/find_location.hpp>
@@ -55,44 +56,43 @@ fcppt::log::context::find(
 	fcppt::log::location const &_location
 ) const
 {
-	fcppt::log::detail::optional_context_tree_ref const tree_location(
-		fcppt::log::find_location(
-			const_cast<
-				fcppt::log::detail::context_tree &
-			>(
-				tree_
-			),
-			_location
-		)
-	);
-
-	if(
-		!tree_location
-	)
-		return
-			fcppt::log::optional_object();
-
-	fcppt::log::detail::context_tree::const_iterator const logger_node(
-		fcppt::log::find_logger_node(
-			const_cast<
-				fcppt::log::detail::context_tree &
-			>(
-				*tree_location
-			)
-		)
-	);
-
 	return
-		logger_node != tree_location->end()
-		?
-			fcppt::log::optional_object(
-				logger_node->value().get().get<
-					fcppt::log::detail::outer_context_node
-				>().object()
+		fcppt::optional_bind(
+			fcppt::log::find_location(
+				const_cast<
+					fcppt::log::detail::context_tree &
+				>(
+					tree_
+				),
+				_location
+			),
+			[](
+				fcppt::log::detail::context_tree &_tree_location
 			)
-		:
-			fcppt::log::optional_object()
-		;
+			{
+				fcppt::log::detail::context_tree::const_iterator const logger_node(
+					fcppt::log::find_logger_node(
+						const_cast<
+							fcppt::log::detail::context_tree &
+						>(
+							_tree_location
+						)
+					)
+				);
+
+				return
+					logger_node != _tree_location.end()
+					?
+						fcppt::log::optional_object(
+							logger_node->value().get().get<
+								fcppt::log::detail::outer_context_node
+							>().object()
+						)
+					:
+						fcppt::log::optional_object()
+					;
+			}
+		);
 }
 
 void
@@ -101,23 +101,30 @@ fcppt::log::context::apply(
 	fcppt::log::tree_function const &_function
 )
 {
-	fcppt::log::detail::optional_context_tree_ref const tree_location(
+	fcppt::maybe(
 		fcppt::log::find_location(
 			tree_,
 			_location
+		),
+		[
+			&_location
+		]{
+			throw fcppt::log::no_such_location(
+				_location
+			);
+		},
+		[
+			this,
+			&_function
+		](
+			fcppt::log::detail::context_tree &_tree_location
 		)
-	);
-
-	if(
-		!tree_location
-	)
-		throw fcppt::log::no_such_location(
-			_location
-		);
-
-	this->apply_to(
-		_function,
-		*tree_location
+		{
+			this->apply_to(
+				_function,
+				_tree_location
+			);
+		}
 	);
 }
 
