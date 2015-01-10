@@ -4,6 +4,7 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
+#include <fcppt/cast/int_to_float_fun.hpp>
 #include <fcppt/math/diff.hpp>
 #include <fcppt/math/pi.hpp>
 #include <fcppt/math/vector/angle_between.hpp>
@@ -316,7 +317,8 @@ FCPPT_PP_POP_WARNING
 	BOOST_REQUIRE(
 		fcppt::math::vector::componentwise_equal(
 			fcppt::math::vector::structure_cast<
-				fvector2
+				fvector2,
+				fcppt::cast::int_to_float_fun
 			>(
 				vec
 			),

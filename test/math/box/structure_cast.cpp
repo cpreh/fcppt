@@ -4,6 +4,7 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
+#include <fcppt/cast/int_to_float_fun.hpp>
 #include <fcppt/math/box/object_impl.hpp>
 #include <fcppt/math/box/structure_cast.hpp>
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
@@ -12,6 +13,7 @@
 #include <fcppt/config/external_begin.hpp>
 #include <boost/test/unit_test.hpp>
 #include <fcppt/config/external_end.hpp>
+
 
 FCPPT_PP_PUSH_WARNING
 FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
@@ -43,9 +45,10 @@ FCPPT_PP_POP_WARNING
 		)
 	);
 
-	BOOST_REQUIRE(
+	BOOST_REQUIRE((
 		fcppt::math::box::structure_cast<
-			box_i2
+			box_i2,
+			fcppt::cast::int_to_float_fun
 		>(
 			box1
 		)
@@ -60,5 +63,5 @@ FCPPT_PP_POP_WARNING
 				4
 			)
 		)
-	);
+	));
 }

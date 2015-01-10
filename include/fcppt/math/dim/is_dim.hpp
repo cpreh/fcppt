@@ -7,7 +7,7 @@
 #ifndef FCPPT_MATH_DIM_IS_DIM_HPP_INCLUDED
 #define FCPPT_MATH_DIM_IS_DIM_HPP_INCLUDED
 
-#include <fcppt/math/dim/object_decl.hpp>
+#include <fcppt/math/dim/object_fwd.hpp>
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
@@ -31,25 +31,22 @@ FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
 \ingroup fcpptmathdim
 \tparam T The type to test against
 */
-template
-<
+template<
 	typename T
 >
 struct is_dim
 :
-	boost::mpl::false_
+	std::false_type
 {
 };
 
 /// \cond FCPPT_DOXYGEN_DEBUG
-template
-<
+template<
 	typename T,
 	typename N,
 	typename S
 >
-struct is_dim
-<
+struct is_dim<
 	fcppt::math::dim::object<
 		T,
 		N,
@@ -57,7 +54,7 @@ struct is_dim
 	>
 >
 :
-	boost::mpl::true_
+	std::true_type
 {
 };
 /// \endcond

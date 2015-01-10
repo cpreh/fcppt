@@ -52,13 +52,11 @@ FCPPT_PP_POP_WARNING
 	std::cout << "Result: \n";
 
 	for(
-		vertex_array::const_iterator it(
-			vertices.begin()
-		);
-		it != vertices.end();
-		++it
+		auto const &elem
+		:
+		vertices
 	)
-		std::cout << *it << '\n';
+		std::cout << elem << '\n';
 
 	std::cout << "Running checks now...\n";
 

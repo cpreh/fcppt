@@ -7,7 +7,7 @@
 #ifndef FCPPT_MATH_VECTOR_IS_VECTOR_HPP_INCLUDED
 #define FCPPT_MATH_VECTOR_IS_VECTOR_HPP_INCLUDED
 
-#include <fcppt/math/vector/object_decl.hpp>
+#include <fcppt/math/vector/object_fwd.hpp>
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
@@ -37,7 +37,7 @@ template
 >
 struct is_vector
 :
-	boost::mpl::false_
+	std::false_type
 {
 };
 
@@ -57,7 +57,7 @@ struct is_vector
 	>
 >
 :
-	boost::mpl::true_
+	std::true_type
 {
 };
 /// \endcond

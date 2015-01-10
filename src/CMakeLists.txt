@@ -453,6 +453,7 @@ set(
 	include/fcppt/math/detail/pi.hpp
 	include/fcppt/math/detail/structure_cast.hpp
 	include/fcppt/math/detail/structure_cast_fun.hpp
+	include/fcppt/math/detail/to_different.hpp
 	include/fcppt/math/detail/transform.hpp
 	include/fcppt/math/detail/unary_type.hpp
 	include/fcppt/math/diff.hpp
@@ -477,6 +478,7 @@ set(
 	include/fcppt/math/dim/static.hpp
 	include/fcppt/math/dim/std_hash.hpp
 	include/fcppt/math/dim/structure_cast.hpp
+	include/fcppt/math/dim/to_vector.hpp
 	include/fcppt/math/exception.hpp
 	include/fcppt/math/generate_binary_vectors.hpp
 	include/fcppt/math/impl/exception.hpp
@@ -585,6 +587,7 @@ set(
 	include/fcppt/math/vector/static.hpp
 	include/fcppt/math/vector/std_hash.hpp
 	include/fcppt/math/vector/structure_cast.hpp
+	include/fcppt/math/vector/to_dim.hpp
 	include/fcppt/math/vector/unit.hpp
 	include/fcppt/maybe.hpp
 	include/fcppt/maybe_void.hpp

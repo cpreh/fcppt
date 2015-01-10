@@ -9,7 +9,6 @@
 
 #include <fcppt/literal.hpp>
 #include <fcppt/cast/size.hpp>
-#include <fcppt/math/vector/structure_cast.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <cstddef>
 #include <type_traits>
@@ -46,19 +45,24 @@ interpolate(
 	FloatVector const &p,
 	Interpolator const &interpolator)
 {
-	typedef typename
-	Grid::pos
-	grid_pos;
-
 	return
 		interpolator(
-			p[0],
+			p[
+				0
+			],
 			grid[
-				fcppt::math::vector::structure_cast<grid_pos>(
-					indices[value_index])],
+				indices[
+					value_index
+				]
+			],
 			grid[
-				fcppt::math::vector::structure_cast<grid_pos>(
-					indices[value_index+1u])]);
+				indices[
+					value_index
+					+
+					1u
+				]
+			]
+		);
 }
 
 template

@@ -4,7 +4,7 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-//[vectorconvert
+#include <fcppt/cast/int_to_float_fun.hpp>
 #include <fcppt/math/vector/construct.hpp>
 #include <fcppt/math/vector/narrow_cast.hpp>
 #include <fcppt/math/vector/object_impl.hpp>
@@ -37,7 +37,8 @@ int main()
 	// cast all the elements from float to unsigned int
 	unsigned2_vec const vecui2(
 		fcppt::math::vector::structure_cast<
-			unsigned2_vec
+			unsigned2_vec,
+			fcppt::cast::int_to_float_fun
 		>(
 			vecf2
 		)
@@ -71,6 +72,3 @@ int main()
 
 	std::cout << vecui2n << '\n';
 }
-
-//]
-

@@ -7,7 +7,7 @@
 #ifndef FCPPT_MATH_MATRIX_IS_MATRIX_HPP_INCLUDED
 #define FCPPT_MATH_MATRIX_IS_MATRIX_HPP_INCLUDED
 
-#include <fcppt/math/matrix/object_decl.hpp>
+#include <fcppt/math/matrix/object_fwd.hpp>
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
@@ -37,7 +37,7 @@ template
 >
 struct is_matrix
 :
-	boost::mpl::false_
+	std::false_type
 {
 };
 
@@ -59,7 +59,7 @@ struct is_matrix
 	>
 >
 :
-	boost::mpl::true_
+	std::true_type
 {
 };
 /// \endcond

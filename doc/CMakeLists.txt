@@ -271,20 +271,27 @@ set(
 	include/fcppt/cast/enum_to_int.hpp
 	include/fcppt/cast/enum_to_underlying.hpp
 	include/fcppt/cast/float_to_int.hpp
+	include/fcppt/cast/float_to_int_fun.hpp
 	include/fcppt/cast/from_void_ptr.hpp
+	include/fcppt/cast/identity_fun.hpp
 	include/fcppt/cast/impl/bad_dynamic.hpp
 	include/fcppt/cast/impl/bad_truncation_check.hpp
 	include/fcppt/cast/int_to_enum.hpp
 	include/fcppt/cast/int_to_float.hpp
+	include/fcppt/cast/int_to_float_fun.hpp
 	include/fcppt/cast/promote.hpp
 	include/fcppt/cast/safe.hpp
 	include/fcppt/cast/safe_numeric.hpp
 	include/fcppt/cast/size.hpp
+	include/fcppt/cast/size_fun.hpp
+	include/fcppt/cast/static_cast_fun.hpp
 	include/fcppt/cast/static_downcast.hpp
 	include/fcppt/cast/static_downcast_ptr.hpp
 	include/fcppt/cast/to_char_ptr.hpp
 	include/fcppt/cast/to_signed.hpp
+	include/fcppt/cast/to_signed_fun.hpp
 	include/fcppt/cast/to_unsigned.hpp
+	include/fcppt/cast/to_unsigned_fun.hpp
 	include/fcppt/cast/to_void.hpp
 	include/fcppt/cast/truncation_check.hpp
 	include/fcppt/cast/try_dynamic.hpp
@@ -742,6 +749,7 @@ set(
 	include/fcppt/math/detail/pi.hpp
 	include/fcppt/math/detail/structure_cast.hpp
 	include/fcppt/math/detail/structure_cast_fun.hpp
+	include/fcppt/math/detail/to_different.hpp
 	include/fcppt/math/detail/transform.hpp
 	include/fcppt/math/detail/unary_type.hpp
 	include/fcppt/math/diff.hpp
@@ -766,6 +774,7 @@ set(
 	include/fcppt/math/dim/static.hpp
 	include/fcppt/math/dim/std_hash.hpp
 	include/fcppt/math/dim/structure_cast.hpp
+	include/fcppt/math/dim/to_vector.hpp
 	include/fcppt/math/exception.hpp
 	include/fcppt/math/generate_binary_vectors.hpp
 	include/fcppt/math/impl/exception.hpp
@@ -874,6 +883,7 @@ set(
 	include/fcppt/math/vector/static.hpp
 	include/fcppt/math/vector/std_hash.hpp
 	include/fcppt/math/vector/structure_cast.hpp
+	include/fcppt/math/vector/to_dim.hpp
 	include/fcppt/math/vector/unit.hpp
 	include/fcppt/maybe.hpp
 	include/fcppt/maybe_void.hpp

@@ -25,7 +25,7 @@ namespace vector
 \tparam N The vector's dimension
 \tparam T The vector's <code>value_type</code>
 \tparam S The vector's storage type
-\param src The vector to shorten (narrow)
+\param _src The vector to shorten (narrow)
 
 The inverse operation is fcppt::math::vector::construct.
 
@@ -59,14 +59,18 @@ template<
 >
 Dest const
 narrow_cast(
-	object<T, N, S> const &src
+	fcppt::math::vector::object<
+		T,
+		N,
+		S
+	> const &_src
 )
 {
 	return
-		math::detail::narrow_cast<
+		fcppt::math::detail::narrow_cast<
 			Dest
 		>(
-			src
+			_src
 		);
 }
 

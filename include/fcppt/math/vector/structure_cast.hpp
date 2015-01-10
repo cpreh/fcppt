@@ -8,6 +8,7 @@
 #define FCPPT_MATH_VECTOR_STRUCTURE_CAST_HPP_INCLUDED
 
 #include <fcppt/math/detail/structure_cast.hpp>
+#include <fcppt/math/vector/is_vector.hpp>
 #include <fcppt/math/vector/object_impl.hpp>
 
 
@@ -19,12 +20,20 @@ namespace vector
 {
 
 /**
-\brief Converts a vector into a different vector of the same dimension using <code>static_cast</code>
+\brief Converts a vector into a different vector of the same dimension
+
 \ingroup fcpptmathvector
+
 \tparam Dest The destination vector type (not its value type!)
+
+\tparam Conv the converter to use for each element
+
 \tparam N The source vector's dimension
+
 \tparam T The source vector's <code>value_type</code>
+
 \tparam S The source vector's storage type
+
 \param _src The vector to cast
 
 See the introduction to fcppt::math::vector::object for more information on this
@@ -32,18 +41,32 @@ function (and vector in general).
 */
 template<
 	typename Dest,
+	typename Conv,
 	typename T,
 	typename N,
 	typename S
 >
-Dest const
+inline
+Dest
 structure_cast(
-	object<T, N, S> const &_src
+	fcppt::math::vector::object<
+		T,
+		N,
+		S
+	> const &_src
 )
 {
-	return
-		math::detail::structure_cast<
+	static_assert(
+		fcppt::math::vector::is_vector<
 			Dest
+		>::value,
+		"Dest must be a vector"
+	);
+
+	return
+		fcppt::math::detail::structure_cast<
+			Dest,
+			Conv
 		>(
 			_src
 		);

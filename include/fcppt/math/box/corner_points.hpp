@@ -12,7 +12,7 @@
 #include <fcppt/math/generate_binary_vectors.hpp>
 #include <fcppt/math/size_type.hpp>
 #include <fcppt/math/box/object_impl.hpp>
-#include <fcppt/math/dim/structure_cast.hpp>
+#include <fcppt/math/dim/to_vector.hpp>
 #include <fcppt/math/vector/arithmetic.hpp>
 #include <fcppt/math/vector/object_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
@@ -48,7 +48,7 @@ std::array
 	) << N
 > const
 corner_points(
-	box::object<T,N> const &_box
+	fcppt::math::box::object<T,N> const &_box
 )
 {
 	typedef
@@ -56,9 +56,8 @@ corner_points(
 	vector_type;
 
 	typedef
-	std::array
-	<
-		fcppt::math::vector::static_<T,N>,
+	std::array<
+		vector_type,
 		fcppt::literal<
 			std::size_t
 		>(
@@ -73,20 +72,21 @@ corner_points(
 	);
 
 	for(
-		auto &item : result
+		vector_type &item
+		:
+		result
 	)
 		item =
 			_box.pos()
 			+
 			item
 			*
-			fcppt::math::dim::structure_cast<
-				vector_type
-			>(
+			fcppt::math::dim::to_vector(
 				_box.size()
 			);
 
-	return result;
+	return
+		result;
 }
 
 }

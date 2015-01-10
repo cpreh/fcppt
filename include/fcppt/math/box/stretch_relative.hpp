@@ -11,10 +11,10 @@
 #include <fcppt/literal.hpp>
 #include <fcppt/math/box/center.hpp>
 #include <fcppt/math/dim/arithmetic.hpp>
-#include <fcppt/math/dim/structure_cast.hpp>
+#include <fcppt/math/dim/to_vector.hpp>
 #include <fcppt/math/vector/arithmetic.hpp>
 #include <fcppt/math/vector/object_impl.hpp>
-#include <fcppt/math/vector/structure_cast.hpp>
+#include <fcppt/math/vector/to_dim.hpp>
 
 
 namespace fcppt
@@ -30,27 +30,57 @@ namespace box
 \tparam N The box's dimension
 \see fcppt::math::box::stretch_absolute
 */
-template<typename T,math::size_type N>
-box::object<T,N> const
+template<
+	typename T,
+	fcppt::math::size_type N
+>
+fcppt::math::box::object<
+	T,
+	N
+>
 stretch_relative(
-	box::object<T,N> const &b,
-	typename box::object<T,N>::vector const &factors)
+	fcppt::math::box::object<
+		T,
+		N
+	> const &_box,
+	typename
+	fcppt::math::box::object<
+		T,
+		N
+	>::vector const &_factors
+)
 {
-	typename object<T,N>::dim const d =
-		b.size() *
-		fcppt::math::vector::structure_cast<typename object<T,N>::dim>(
-			factors);
+	auto const dim(
+		_box.size()
+		*
+		fcppt::math::vector::to_dim(
+			_factors
+		)
+	);
 
 	return
-		object<T,N>(
-			center(
-				b) -
-			fcppt::math::dim::structure_cast<typename object<T,N>::vector>(
-				d)/
-			fcppt::literal<T>(
-				2),
-			d);
+		fcppt::math::box::object<
+			T,
+			N
+		>(
+			fcppt::math::box::center(
+				_box
+			)
+			-
+			fcppt::math::dim::to_vector(
+				dim
+			)
+			/
+			fcppt::literal<
+				T
+			>(
+				2
+			)
+			,
+			dim
+		);
 }
+
 }
 }
 }

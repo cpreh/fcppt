@@ -7,6 +7,7 @@
 #ifndef FCPPT_MATH_VECTOR_ANGLE_BETWEEN_CAST_HPP_INCLUDED
 #define FCPPT_MATH_VECTOR_ANGLE_BETWEEN_CAST_HPP_INCLUDED
 
+#include <fcppt/cast/int_to_float_fun.hpp>
 #include <fcppt/math/vector/angle_between.hpp>
 #include <fcppt/math/vector/object_impl.hpp>
 #include <fcppt/math/vector/static.hpp>
@@ -50,8 +51,16 @@ template<
 >
 Dest
 angle_between_cast(
-	fcppt::math::vector::object<T, N, S1> const &_from,
-	fcppt::math::vector::object<T, N, S2> const &_to
+	fcppt::math::vector::object<
+		T,
+		N,
+		S1
+	> const &_from,
+	fcppt::math::vector::object<
+		T,
+		N,
+		S2
+	> const &_to
 )
 {
 	static_assert(
@@ -61,20 +70,24 @@ angle_between_cast(
 		"angle_between_cast must return a floating point type"
 	);
 
-	typedef fcppt::math::vector::static_<
+	typedef
+	fcppt::math::vector::static_<
 		Dest,
 		N::value
-	> intermediate_type;
+	>
+	intermediate_type;
 
 	return
 		fcppt::math::vector::angle_between(
 			fcppt::math::vector::structure_cast<
-				intermediate_type
+				intermediate_type,
+				fcppt::cast::int_to_float_fun
 			>(
 				_from
 			),
 			fcppt::math::vector::structure_cast<
-				intermediate_type
+				intermediate_type,
+				fcppt::cast::int_to_float_fun
 			>(
 				_to
 			)

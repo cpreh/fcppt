@@ -23,8 +23,10 @@ namespace detail
 
 template<
 	typename T,
+	typename Conv,
 	typename U
 >
+inline
 typename std::enable_if<
 	std::is_same<
 		T,
@@ -33,16 +35,19 @@ typename std::enable_if<
 	T
 >::type const
 structure_cast(
-	U const &u
+	U const &_other
 )
 {
-	return u;
+	return
+		_other;
 }
 
 template<
 	typename T,
+	typename Conv,
 	typename U
 >
+inline
 typename std::enable_if<
 	!std::is_same<
 		T,
@@ -51,7 +56,7 @@ typename std::enable_if<
 	T
 >::type const
 structure_cast(
-	U const &u
+	U const &_other
 )
 {
 	typedef fcppt::math::detail::structure_cast_fun<
@@ -68,16 +73,17 @@ structure_cast(
 		"structure_cast works only on types with the same dimensions"
 	);
 
-	return T(
-		boost::make_transform_iterator(
-			u.begin(),
-			op
-		),
-		boost::make_transform_iterator(
-			u.end(),
-			op
-		)
-	);
+	return
+		T(
+			boost::make_transform_iterator(
+				_other.begin(),
+				op
+			),
+			boost::make_transform_iterator(
+				_other.end(),
+				op
+			)
+		);
 }
 
 }

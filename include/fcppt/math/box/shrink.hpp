@@ -14,7 +14,7 @@
 #include <fcppt/math/dim/arithmetic.hpp>
 #include <fcppt/math/vector/arithmetic.hpp>
 #include <fcppt/math/vector/object_impl.hpp>
-#include <fcppt/math/vector/structure_cast.hpp>
+#include <fcppt/math/vector/to_dim.hpp>
 
 
 namespace fcppt
@@ -42,20 +42,45 @@ behavior is undefined.
 If the box contains a signed type, and the stretch value is negative,
 the box will be expanded instead.
 */
-template<typename T,fcppt::math::size_type N>
-fcppt::math::box::object<T,N> const
+template<
+	typename T,
+	fcppt::math::size_type N
+>
+fcppt::math::box::object<
+	T,
+	N
+>
 shrink(
-	fcppt::math::box::object<T,N> const &b,
-	typename fcppt::math::box::object<T,N>::vector const &absolute_values)
+	fcppt::math::box::object<
+		T,
+		N
+	> const &_box,
+	typename
+	fcppt::math::box::object<
+		T,
+		N
+	>::vector const &_absolute_values
+)
 {
 	return
-		fcppt::math::box::object<T,N>(
-			b.pos() + absolute_values,
-			b.size() - fcppt::literal<T>(2) *
-			fcppt::math::vector::structure_cast<
-				typename box::object<T,N>::dim
+		fcppt::math::box::object<
+			T,
+			N
+		>(
+			_box.pos()
+			+
+			_absolute_values
+			,
+			_box.size()
+			-
+			fcppt::literal<
+				T
 			>(
-				absolute_values
+				2
+			)
+			*
+			fcppt::math::vector::to_dim(
+				_absolute_values
 			)
 		);
 }

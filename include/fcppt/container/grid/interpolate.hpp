@@ -9,6 +9,7 @@
 #define FCPPT_CONTAINER_GRID_INTERPOLATE_HPP_INCLUDED
 
 #include <fcppt/literal.hpp>
+#include <fcppt/cast/float_to_int_fun.hpp>
 #include <fcppt/container/grid/object_impl.hpp>
 #include <fcppt/container/grid/detail/interpolate.hpp>
 #include <fcppt/math/generate_binary_vectors.hpp>
@@ -76,12 +77,8 @@ interpolate(
 	Interpolator const &interpolator)
 {
 	typedef
-	fcppt::math::vector::object
-	<
-		typename Grid::dim::value_type,
-		typename Grid::dim::dim_wrapper,
-		typename Grid::dim::storage_type
-	>
+	typename
+	Grid::pos
 	integer_vector_type;
 
 	typedef
@@ -106,9 +103,14 @@ interpolate(
 	Vector::value_type
 	vector_value_type;
 
-	integer_vector_type const floored =
-		fcppt::math::vector::structure_cast<integer_vector_type>(
-			floating_point_position);
+	integer_vector_type const floored(
+		fcppt::math::vector::structure_cast<
+			integer_vector_type,
+			fcppt::cast::float_to_int_fun
+		>(
+			floating_point_position
+		)
+	);
 
 	binary_vector_array_type binary_vectors(
 		fcppt::math::generate_binary_vectors
@@ -123,7 +125,9 @@ interpolate(
 		i += floored;
 
 	return
-		fcppt::container::grid::detail::interpolate<integer_vector_type::dim_wrapper::value>(
+		fcppt::container::grid::detail::interpolate<
+			integer_vector_type::dim_wrapper::value
+		>(
 			grid,
 			binary_vectors,
 			fcppt::literal<

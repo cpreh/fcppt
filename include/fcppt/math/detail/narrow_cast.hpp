@@ -11,6 +11,7 @@
 #include <fcppt/config/external_begin.hpp>
 #include <boost/iterator/transform_iterator.hpp>
 #include <boost/mpl/less.hpp>
+#include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -30,11 +31,20 @@ narrow_cast(
 	U const &_other
 )
 {
-	typedef detail::structure_cast_fun<
+	typedef
+	fcppt::math::detail::structure_cast_fun<
 		typename T::value_type
 	> op_type;
 
-	op_type const op = op_type();
+	op_type const op = op_type{};
+
+	static_assert(
+		std::is_same<
+			typename T::value_type,
+			typename U::value_type
+		>::value,
+		"narrow_cast can only be used on the same value_types"
+	);
 
 	static_assert(
 		boost::mpl::less<
@@ -51,7 +61,9 @@ narrow_cast(
 				op
 			),
 			boost::make_transform_iterator(
-				_other.begin() + T::dim_wrapper::value,
+				_other.begin()
+				+
+				T::dim_wrapper::value,
 				op
 			)
 		);

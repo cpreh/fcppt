@@ -29,25 +29,31 @@ namespace box
 */
 template<
 	typename Dest,
+	typename Conv,
 	typename T,
-	size_type N
+	fcppt::math::size_type N
 >
-Dest const
+Dest
 structure_cast(
-	object<T, N> const &src
+	fcppt::math::box::object<
+		T,
+		N
+	> const &_src
 )
 {
 	return
 		Dest(
 			fcppt::math::vector::structure_cast<
-				typename Dest::vector
+				typename Dest::vector,
+				Conv
 			>(
-				src.pos()
+				_src.pos()
 			),
 			fcppt::math::dim::structure_cast<
-				typename Dest::dim
+				typename Dest::dim,
+				Conv
 			>(
-				src.size()
+				_src.size()
 			)
 		);
 }

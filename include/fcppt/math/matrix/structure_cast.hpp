@@ -8,6 +8,7 @@
 #define FCPPT_MATH_MATRIX_STRUCTURE_CAST_HPP_INCLUDED
 
 #include <fcppt/math/detail/structure_cast.hpp>
+#include <fcppt/math/matrix/is_matrix.hpp>
 #include <fcppt/math/matrix/object_impl.hpp>
 
 
@@ -30,6 +31,7 @@ namespace matrix
 */
 template<
 	typename Dest,
+	typename Conv,
 	typename T,
 	typename N,
 	typename M,
@@ -45,9 +47,17 @@ structure_cast(
 	> const &src
 )
 {
+	static_assert(
+		fcppt::math::matrix::is_matrix<
+			Dest
+		>::value,
+		"Dest must be a matrix"
+	);
+
 	return
 		fcppt::math::detail::structure_cast<
-			Dest
+			Dest,
+			Conv
 		>(
 			src
 		);

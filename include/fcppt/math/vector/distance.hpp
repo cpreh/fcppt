@@ -7,10 +7,11 @@
 #ifndef FCPPT_MATH_VECTOR_DISTANCE_HPP_INCLUDED
 #define FCPPT_MATH_VECTOR_DISTANCE_HPP_INCLUDED
 
-#include <fcppt/math/static_storage.hpp>
+#include <fcppt/cast/int_to_float_fun.hpp>
 #include <fcppt/math/vector/arithmetic.hpp>
 #include <fcppt/math/vector/length.hpp>
 #include <fcppt/math/vector/object_impl.hpp>
+#include <fcppt/math/vector/static.hpp>
 #include <fcppt/math/vector/structure_cast.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <type_traits>
@@ -86,13 +87,9 @@ distance(
 )
 {
 	typedef
-	fcppt::math::vector::object<
+	fcppt::math::vector::static_<
 		Dest,
-		N,
-		fcppt::math::static_storage<
-			Dest,
-			N
-		>
+		N::value
 	>
 	result_vector;
 
@@ -106,12 +103,14 @@ distance(
 	return
 		fcppt::math::vector::distance(
 			fcppt::math::vector::structure_cast<
-				result_vector
+				result_vector,
+				fcppt::cast::int_to_float_fun
 			>(
 				_v1
 			),
 			fcppt::math::vector::structure_cast<
-				result_vector
+				result_vector,
+				fcppt::cast::int_to_float_fun
 			>(
 				_v2
 			)
