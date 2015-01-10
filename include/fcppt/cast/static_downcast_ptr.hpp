@@ -24,8 +24,8 @@ class
 \ingroup fcpptcasts
 
 Converts \a _source to the pointer type specified by \a Dest. This cast is
-unsafe and should only be used if the \a _source has dynamic type \a Dest.
-Consider using fcppt::cast::dynamic instead.
+unsafe and should only be used if the \a _source has a dynamic type which is a
+supertype of \a Dest. Consider using fcppt::cast::dynamic instead.
 
 Dest must be a pointer to a class type derived from Source.
 */

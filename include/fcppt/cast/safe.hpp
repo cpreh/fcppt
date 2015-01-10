@@ -21,7 +21,7 @@ namespace cast
 \ingroup fcpptcasts
 
 This cast implicitly converts arithmetic types like fcppt::cast::safe_numeric
-does. For every other type the conversion is also done implicitly, but without
+does. For every other type the conversion is also done implicitly but without
 any further restrictions. In general, this means that either the restrictions
 of fcppt::cast::safe_numeric must hold or \a Source must be implicitly
 convertible to \a Dest.

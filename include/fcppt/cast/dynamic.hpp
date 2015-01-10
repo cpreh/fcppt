@@ -29,9 +29,8 @@ additional error information
 
 Tries to cast \a _src to \a Dest using <code>dynamic_cast</code>. Both
 <code>Dest</code> and the type of \a _src are reference types. If the
-<code>dynamic_cast</code> fails, an \link fcppt::cast::bad_dynamic \endlink
-will be thrown that includes additional type information about the types
-involved.
+<code>dynamic_cast</code> fails an \link fcppt::cast::bad_dynamic \endlink will
+be thrown that includes additional information about the types involved.
 
 The following example shows how this function can be used:
 

@@ -24,7 +24,7 @@ it failed
 
 \ingroup fcpptcasts
 
-\tparam Derived The type do cast to. This has to be a reference type (see the
+\tparam Derived The type to cast to. This has to be a reference type (see the
 example below)
 
 \tparam Base The type to cast from (must not be a reference)

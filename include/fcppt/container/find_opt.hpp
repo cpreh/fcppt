@@ -17,7 +17,7 @@ namespace container
 {
 
 /**
-\brief Returns and element from a find operation or an empty optional
+\brief Returns an element from a find operation or an empty optional
 
 Searches for \a _key in the associative container \a _container. If \a _key is
 found, the corresponding mapped type is returned. Otherwise, and empty optional

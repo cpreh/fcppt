@@ -14,7 +14,7 @@ namespace cast
 {
 
 /**
-\brief Casts and expression to void
+\brief Casts an expression to void
 
 \ingroup fcpptcasts
 

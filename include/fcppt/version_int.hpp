@@ -7,6 +7,7 @@
 #ifndef FCPPT_VERSION_INT_HPP_INCLUDED
 #define FCPPT_VERSION_INT_HPP_INCLUDED
 
+
 namespace fcppt
 {
 

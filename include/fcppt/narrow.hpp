@@ -18,12 +18,18 @@
 namespace fcppt
 {
 
-/// convert an std::wstring to std::string
+/**
+\brief Converts a std::wstring to std::string
+
+\ingroup fcpptstring
+
+Converts \a _string to std::string using \a _locale.
+*/
 FCPPT_DETAIL_SYMBOL
 std::string
 narrow(
-	std::wstring const &,
-	std::locale const &
+	std::wstring const &_string,
+	std::locale const &_locale
 		= fcppt::string_conv_locale()
 );
 

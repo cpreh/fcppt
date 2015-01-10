@@ -22,7 +22,7 @@ namespace cast
 
 \ingroup fcpptcasts
 
-Converts the integer \a _source to float type specified by \a Dest by
+Converts the integer \a _source to the float type specified by \a Dest by
 truncating like static_cast. This cast is unsafe and should be used with care.
 
 \tparam Source Must be an integral type

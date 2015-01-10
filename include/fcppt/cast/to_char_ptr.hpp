@@ -22,7 +22,7 @@ namespace cast
 
 Converts \a _source to the pointer to character type specified by \a Dest.
 This cast can be used to access the byte representation of an object, e.g.
-for serialization and largely replaces <code>reinterpret_cast</code>.
+for serialization, and largely replaces <code>reinterpret_cast</code>.
 
 \tparam Dest Must be a pointer to (cv) unsigned char
 */

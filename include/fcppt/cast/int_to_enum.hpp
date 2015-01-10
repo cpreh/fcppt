@@ -24,7 +24,7 @@ namespace cast
 
 Converts the integer \a _source to the enum type specified by \a Enum. This
 cast is unsafe and should only be used if the enum can actually hold the
-integer value.  Consider using fcppt::cast_to_enum instead.
+integer value. Consider using fcppt::cast_to_enum instead.
 
 \tparam Source Must be an integral type
 

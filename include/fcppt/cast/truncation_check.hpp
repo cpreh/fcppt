@@ -29,7 +29,7 @@ namespace cast
 \ingroup fcpptcasts
 
 Casts \a _source of type \a Source to the type \a Dest. It returns the
-converted value ff the conversion results in no truncation, otherwise
+converted value iff the conversion results in no truncation, otherwise
 fcppt::cast::bad_truncation_check is thrown.
 
 \tparam Dest Must be an integral type

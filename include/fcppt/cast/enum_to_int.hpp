@@ -24,7 +24,7 @@ namespace cast
 
 Converts \a _enum to the integer type specified by \a Dest. This cast is unsafe
 and should only be used if the enum value can be converted to the destination
-integers. Consider fcppt::casts::enum_to_underlying instead.
+type. Consider fcppt::casts::enum_to_underlying instead.
 
 \tparam Dest Must be an integral type
 
