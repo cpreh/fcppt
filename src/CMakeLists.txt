@@ -99,9 +99,11 @@ set(
 	include/fcppt/check_literal_conversion.hpp
 	include/fcppt/com_deleter.hpp
 	include/fcppt/com_deleter_fwd.hpp
+	include/fcppt/config/clang_version_at_least.hpp
 	include/fcppt/config/compiler.hpp
 	include/fcppt/config/external_begin.hpp
 	include/fcppt/config/external_end.hpp
+	include/fcppt/config/gcc_version_at_least.hpp
 	include/fcppt/config/platform.hpp
 	include/fcppt/const_optional_cast.hpp
 	include/fcppt/const_pointer_cast.hpp

@@ -35,6 +35,12 @@ FCPPT_PP_DISABLE_GCC_WARNING(-Wlogical-op)
 FCPPT_PP_DISABLE_GCC_WARNING(-Wmaybe-uninitialized)
 FCPPT_PP_DISABLE_GCC_WARNING(-Wunused-local-typedefs)
 
+#include <fcppt/config/gcc_version_at_least.h>
+
+#if FCPPT_CONFIG_GCC_VERSION_AT_LEAST(4, 9)
+FCPPT_PP_DISABLE_GCC_WARNING(-Wfloat-conversion)
+#endif
+
 #endif
 
 FCPPT_PP_DISABLE_GCC_WARNING(-Wattributes)
