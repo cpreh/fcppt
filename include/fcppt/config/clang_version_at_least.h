@@ -26,6 +26,14 @@ FCPPT_CONFIG_DETAIL_MAJOR_MINOR_AT_LEAST(\
 	__clang_minor__\
 )
 
+#else
+
+#define FCPPT_CONFIG_CLANG_VERSION_AT_LEAST(\
+	major,\
+	minor\
+) \
+false
+
 #endif
 
 #endif
