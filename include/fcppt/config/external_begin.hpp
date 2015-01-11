@@ -65,6 +65,12 @@ FCPPT_PP_DISABLE_GCC_WARNING(-Wmismatched-tags)
 FCPPT_PP_DISABLE_GCC_WARNING(-Wunneeded-member-function)
 FCPPT_PP_DISABLE_GCC_WARNING(-Wunused-member-function)
 
+#include <fcppt/config/clang_version_at_least.h>
+
+#if FCPPT_CONFIG_CLANG_VERSION_AT_LEAST(3, 6)
+FCPPT_PP_DISABLE_GCC_WARNING(-Winconsistent-missing-override)
+#endif
+
 #else
 
 FCPPT_PP_DISABLE_GCC_WARNING(-Wliteral-suffix)
