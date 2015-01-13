@@ -1,6 +1,82 @@
 /**
 \page changes Changes
 
+\section changes_changes_to_110 Changes from 1.0.0 to 1.1.0
+
+\subsection changes_general_to_110 General changes
+
+<ul>
+
+<li>enable_ifs that checked for type constraints were replaced by
+static_asserts.</li>
+
+</ul>
+
+\subsection changes_added_functionality_to_110 Addedfunctionality
+
+<ul>
+
+<li>Added FCPPT_DONT_EXPORT option to cmake. This option is useful if modules
+are found via add_subdirectory.</li>
+
+<li>\ref fcpptcasts
+	<ul>
+	<li>Added function objects of some casts to fcppt.cast.</li>
+	</ul>
+</li>
+
+<li>\ref fcpptconfig
+	<ul>
+	<li>Added FCPPT_CONFIG_CLANG_VERSION_AT_LEAST and
+	FCPPT_CONFIG_GCC_VERSION_AT_LEAST.</li>
+
+	<li>Ignore float conversion and inconsistent override warnings in
+	external headers.</li>
+	</ul>
+</li>
+
+<li>\ref fcpptmath
+	<ul>
+	<li>Added fcppt::math::vector::to_unsigned,
+	fcppt::math::vector::to_signed and fcppt::math::vector::to_dim. Similar
+	functions were added to fcppt::math::dim.</li>
+	</ul>
+</ul>
+
+\subsection changes_changed_functionality_to_110 Changed functionality
+
+<ul>
+
+<li>Changed fcppt::algorithm::find_exn and fcppt::algorithm::find_if_exn to
+take the exception as a parameter.</li>
+
+<li>Changed structure_cast functions of fcppt::math to require a cast function
+as template parameter.</li>
+
+</ul>
+
+\subsection changes_removed_from_libraries_to_110 Removed functionality
+
+<ul>
+
+<li>Removed array_hash which was a duplicate of fcppt::range_hash.</li>
+
+<li>Removed fcppt::math::vector::slerp.</lI>
+
+<li>Removed fcppt::algorithm::exception and fcppt::algorithm::element_not_found.</li>
+
+</ul>
+
+\subsection changes_bugfixes_to_110 Bugfixes
+
+<ul>
+
+<li>Added missing ${} for cmake-3.1 in fcppt_utils_handle_so_version.</li>
+
+<li>Added const_iterator typedef to fcppt::container::tree::pre_order.</li>
+
+</ul>
+
 \section changes_changes_to_100 Changes from 0.12.0 to 1.0.0
 
 \subsection changaes_general_to_100 General changes

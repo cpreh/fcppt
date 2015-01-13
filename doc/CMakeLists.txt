@@ -54,6 +54,7 @@ set(
 	doc/files/modules/assert.doxygen
 	doc/files/modules/assign.doxygen
 	doc/files/modules/casts.doxygen
+	doc/files/modules/config.doxygen
 	doc/files/modules/container/base.doxygen
 	doc/files/modules/container/bitfield.doxygen
 	doc/files/modules/container/grid.doxygen
@@ -127,6 +128,7 @@ set(
 	examples/make_container.cpp
 	examples/math.cpp
 	examples/math/box.cpp
+	examples/math/casts.cpp
 	examples/math/matrix.cpp
 	examples/math/matrix_indices.cpp
 	examples/math/utility.cpp

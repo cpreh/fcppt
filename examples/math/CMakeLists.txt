@@ -18,6 +18,10 @@ add_fcppt_math_example(
 )
 
 add_fcppt_math_example(
+	casts
+)
+
+add_fcppt_math_example(
 	matrix
 )
 

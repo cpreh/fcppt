@@ -126,6 +126,10 @@ add_fcppt_example(
 )
 
 add_fcppt_example(
+	config
+)
+
+add_fcppt_example(
 	container
 	LINK_LIBS
 		${fcppt_core_TARGET}

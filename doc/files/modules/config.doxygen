@@ -1,0 +1,109 @@
+/**
+\defgroup fcpptconfig fcppt.config
+\ingroup fcpptmain
+\brief Compiler, OS and warning related macros
+
+<table id="toc">
+<tr>
+<td>
+
+<ul>
+	<li>\ref fcpptconfig_introduction</li>
+	<li>\ref fcpptconfig_detection</li>
+	<li>\ref fcpptconfig_external_headers</li>
+	<li>\ref fcpptconfig_compiler_version</li>
+</ul>
+
+</td>
+</tr>
+</table>
+
+\section fcpptconfig_introduction Introduction
+
+fcppt.config contains macros related to the current implementation. This
+includes which compiler and operating system is being used. Also, there is a
+set of headers, called external_begin.h(pp) and external_end.h(pp) which can be
+used to ignore warnings in external headers.
+
+\section fcpptconfig_detection Compiler and OS detection
+
+\subsection fcpptconfig_compiler_detection
+In <code>fcppt/config/compiler.hpp</code> several macros may be defined to
+identify the current compiler:
+<table>
+<tr>
+<th>Macro</th>
+<th>Description</th>
+</tr>
+<tr>
+<td>FCPPT_CONFIG_GCC_COMPILER</td>
+<td>Defined when the compiler is gcc or clang. clang emulates gcc to a large extent.</td>
+</td>
+</tr>
+<tr>
+<td>FCPPT_CONFIG_CLANG_COMPILER</td>
+<td>Defined when the compiler is clang.</td>
+</tr>
+</table>
+
+\subsection fcpptconfig_os_detection
+In <code>fcppt/config/platform.hpp</code> several macros may be defined to
+identify the operating system:
+<table>
+<tr>
+<th>Macro</th>
+<th>Description</th>
+</tr>
+<tr>
+<td>FCPPT_CONFIG_WINDOWS_PLATFORM</td>
+<td>Defined on Windows (and MinGW).</td>
+</tr>
+<tr>
+<td>FCPPT_CONFIG_UNIX_PLATFORM</td>
+<td>Defined on Unix (including Linux).</td>
+</tr>
+<tr>
+<td>FCPPT_CONFIG_POSIX_PLATFORM</td>
+<td>Defined on POSIX (including Linux).</td>
+</tr>
+</table>
+
+\section fcpptconfig_external_headers Ignoring warnings in external headers
+
+There are many possible warning options for different C++ compilers. To improve
+quality of code, it is advisable to enable as many of them as possible. The
+downside is that this will also enable a lot of warnings in files that you
+include but have no control over. fcppt provides a pair of headers, called
+<code>fcppt/config/external_begin.hpp</code> and
+<code><fcppt/config/external_end.hpp></code> which can be used to wrap external
+includes, for example:
+
+\snippet examples/config.cpp include_external
+
+\section fcpptconfig_compiler_version Compiler versions
+
+Sometimes it is necessary to detect if a compiler version is greater or equal
+to a given version. For example, ignoring certain warning options might only
+work starting from a specific compiler version:
+
+\snippet examples/config.cpp gcc_warning
+
+All the macros evaluate to false when on a different compiler, for example
+FCPPT_CONFIG_GCC_VERSION_AT_LEAST is always false on clang.
+
+The macros are:
+<table>
+<tr>
+<th>Macro</th>
+<th>Header</th>
+</tr>
+<tr>
+<td>FCPPT_CONFIG_GCC_VERSION_AT_LEAST(major, minor)</td>
+<td><code><fcppt/config/gcc_version_at_least.hpp></code></td>
+</tr>
+<tr>
+<td>FCPPT_CONFIG_CLANG_VERSION_AT_LEAST(major, minor)</td>
+<td><code><fcppt/config/clang_version_at_least.hpp></code></td>
+</tr>
+</table>
+*/
