@@ -24,7 +24,7 @@ namespace matrix
 	<li>\ref fcpptmathmatrixobject_motivation</li>
 	<li>\ref fcpptmathmatrixobject_operators</li>
 	<li>\ref fcpptmathmatrixobject_accessing_elements</li>
-	<li>\ref fcpptmathmatrixobject_identity_and_null</li>
+	<li>\ref fcpptmathmatrixobject_identity</li>
 	<li>\ref fcpptmathmatrixobject_iteration</li>
 </ul>
 
@@ -52,23 +52,7 @@ A matrix can be constructed using a variadic constructor which takes the matrix
 components in row-major order. This way, you can arrange the matrix's
 components nicely in the source code, as seen in the following example:
 
-\code
-typedef
-fcppt::math::matrix::static_
-<
-	int,
-	2,
-	3
->::type
-int_matrix_3x3;
-
-int_matrix_3x3 m(
-	1,2,3,
-	4,5,6);
-
-// Will print: ((1,2,3),(4,5,6))
-std::cout << m;
-\endcode
+\snippet math/matrix.cpp decl
 
 To cast between matrices of different value and storage types, you have
 fcppt::math::matrix::structure_cast. There are, however, no functions to
@@ -199,43 +183,17 @@ operator*(
 	vector::object<T,N,S2> const &);
 </pre>
 
-\section fcpptmathmatrixobject_identity_and_null Identity and null
+\section fcpptmathmatrixobject_identity Identity
 
 To get the identity matrix, use the static <code>identity</code> function:
 
-\code
-typedef
-fcppt::math::matrix::static_<int,3,3>::type
-int_matrix_3x3;
-
-int_matrix_3x3 m = int_matrix_3x3::identity();
-\endcode
-
-Mutatis mutandis with <code>null</code>:
-
-\code
-typedef
-fcppt::math::matrix::static_<int,3,3>::type
-int_matrix_3x3;
-
-int_matrix_3x3 m = int_matrix_3x3::null();
-\endcode
+\snippet math/matrix.cpp identity
 
 \section fcpptmathmatrixobject_iteration Iteration
 
 To iterate over all elements in the matrix, use an iterator together with begin/end:
 
-\code
-typedef
-fcppt::math::matrix::static_<int,3,3>::type
-int_matrix_3x3;
-
-int_matrix_3x3 m = int_matrix_3x3::identity();
-
-// Will output: 1,0,0,0,1,0,0,0,1,
-for(int_matrix_3x3::const_iterator it = m.begin(); it != m.end(); ++it)
-	std::cout << *it << ",";
-\endcode
+\snippet math/matrix.cpp iterate
 
 This code might puzzle you. Didn't I just say that matrix's
 <code>operator[]</code> returns a proxy vector representing one row of the
@@ -245,15 +203,5 @@ When it comes to iteration, however, we do <em>not</em> use proxy vectors, but
 regular pointers to the individual matrix cells. If you want to iterate over
 all rows, use a loop using an index instead of an iterator:
 
-\code
-typedef
-fcppt::math::matrix::static_<int,3,3>::type
-int_matrix_3x3;
-
-int_matrix_3x3 m = int_matrix_3x3::identity();
-
-// Will output: (1,0,0),(0,1,0),(0,0,1),
-for(int_matrix_3x3::size_type row = 0; row < m.rows(); ++it)
-	std::cout << m[row] << ",";
-\endcode
+\snippet math/matrix.cpp row_iterate
 */

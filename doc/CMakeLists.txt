@@ -133,11 +133,11 @@ set(
 	examples/math/dim.cpp
 	examples/math/matrix.cpp
 	examples/math/utility.cpp
+	examples/math/vector.cpp
 	examples/math/vector/access.cpp
 	examples/math/vector/arithmetic.cpp
 	examples/math/vector/basic.cpp
 	examples/math/vector/convert.cpp
-	examples/math/vector/main.cpp
 	examples/mpl/for_each.cpp
 	examples/mpl/invoke_on.cpp
 	examples/mpl/various.cpp

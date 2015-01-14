@@ -32,3 +32,7 @@ add_fcppt_math_example(
 add_fcppt_math_example(
 	utility
 )
+
+add_fcppt_math_example(
+	vector
+)

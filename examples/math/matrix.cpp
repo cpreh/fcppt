@@ -4,52 +4,111 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-//[matrixtransform
+#include <fcppt/math/matrix/output.hpp>
 #include <fcppt/math/matrix/static.hpp>
-#include <fcppt/math/matrix/translation.hpp>
 #include <fcppt/math/matrix/vector.hpp>
 #include <fcppt/math/vector/output.hpp>
 #include <fcppt/math/vector/static.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <iostream>
-#include <ostream>
 #include <fcppt/config/external_end.hpp>
 
 
-int main()
+namespace
 {
-	typedef fcppt::math::vector::static_<
-		float,
-		4
-	> vec4f;
 
-	typedef fcppt::math::matrix::static_<
-		float,
-		4,
-		4
-	> matrix4x4f;
+// ![decl]
+typedef
+fcppt::math::matrix::static_<
+	int,
+	2,
+	3
+>
+int_matrix_2x3;
 
-	// initialize the vector so it is compatible for affine transformations
-	vec4f const vec(
-		0.f,
-		0.f,
-		0.f,
-		1.f
+void
+ctor()
+{
+	int_matrix_2x3 const m(
+		1,2,3,
+		4,5,6
 	);
 
-	// create a translation matrix
+	// Will print: ((1,2,3),(4,5,6))
+	std::cout << m << '\n';
+}
+// ![decl]
 
-	matrix4x4f const trans(
-		fcppt::math::matrix::translation(
-			10.f,
-			0.f,
-			5.f
-		)
+// ![identity]
+typedef
+fcppt::math::matrix::static_<
+	int,
+	3,
+	3
+>
+int_matrix_3x3;
+
+void
+identity()
+{
+	auto const m(
+		int_matrix_3x3::identity()
 	);
 
-	// apply the transformation to the vector
+	std::cout << m << '\n';
+}
+// ![identity]
 
-	std::cout << (trans * vec) << '\n';
+// ![iterate]
+void
+iterate()
+{
+	auto const m(
+		int_matrix_3x3::identity()
+	);
+
+	// Will output: 1,0,0,0,1,0,0,0,1,
+	for(
+		auto const &elem
+		:
+		m
+	)
+		std::cout << elem << ",";
+}
+// ![iterate]
+
+// ![row_iterate]
+void
+row_iterate()
+{
+	auto const m(
+		int_matrix_3x3::identity()
+	);
+
+	// Will output: (1,0,0),(0,1,0),(0,0,1),
+	for(
+		int_matrix_3x3::size_type row = 0;
+		row < m.rows();
+		++row
+	)
+		std::cout << m[row] << ",";
+}
+// ![row_iterate]
+
 }
 
-//]
+int
+main()
+{
+	ctor();
+
+	identity();
+
+	iterate();
+
+	std::cout << '\n';
+
+	row_iterate();
+
+	std::cout << '\n';
+}

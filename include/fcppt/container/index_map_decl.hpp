@@ -12,15 +12,16 @@
 #include <vector>
 #include <fcppt/config/external_end.hpp>
 
+
 namespace fcppt
 {
 namespace container
 {
 
 /**
- * FIXME
- * \ingroup fcpptcontainer
- */
+TODO: Document this?
+\ingroup fcpptcontainer
+*/
 template<
 	typename T,
 	typename A

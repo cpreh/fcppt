@@ -27,7 +27,3 @@ add_fcppt_math_vector_example(
 add_fcppt_math_vector_example(
 	convert
 )
-
-add_fcppt_math_vector_example(
-	main
-)
