@@ -38,7 +38,7 @@ namespace vector
 
 fcppt::math::vector::object is a statically sized n-dimensional array with the
 usual vector operations like addition, scalar multiplication, and so on.
-The signature consists of three template parameter:
+The signature consists of three template parameters:
 \code
 template<
 	typename T,
@@ -75,8 +75,7 @@ An fcppt::math::vector::object<T,N,S> can be initialized by either:
 
 \snippet math/vector.cpp init
 
-Initializing by a value of type S is important for view vectors and will be
-covered later.
+Initializing by a value of type S is important for view vectors.
 
 \section fcpptmathvector_conversions Conversions
 
@@ -129,7 +128,7 @@ fcppt::math::vector::length:
 
 \snippet math/vector.cpp comparison_length
 
-Or, you could test if one of the components exceeds the given epsilon, using
+Or, you could test if none of the components exceeds the given epsilon, using
 fcppt::math::range_compare:
 
 \snippet math/vector.cpp comparison_range
@@ -200,6 +199,8 @@ speed.
 
 This can now be used to divide vectors of meters by vectors of seconds to
 obtain vectors of speeds.
+
+\snippet math/vector.cpp asymmetric_div
 
 Including <strong><code>fcppt/math/vector/input.hpp</code></strong> gives
 you an <code>operator>></code> for reading input from standard streams.

@@ -98,6 +98,7 @@ set(
 	examples/algorithm.cpp
 	examples/assert.cpp
 	examples/assert_complete.cpp
+	examples/assign.cpp
 	examples/backtrace.cpp
 	examples/casts.cpp
 	examples/codecvt.cpp

@@ -10,7 +10,7 @@ For example, fcppt::signal::auto_connection_container is a vector of
 connections (which are movable only). To initialize such a container,
 fcppt::assign::make_container can be used.
 
-\snippet examples/signal/connection.cpp signal_movable_assign
+\snippet examples/assign.cpp assign
 */
 
 namespace fcppt

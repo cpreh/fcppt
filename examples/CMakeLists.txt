@@ -109,6 +109,10 @@ add_fcppt_example(
 )
 
 add_fcppt_example(
+	assign
+)
+
+add_fcppt_example(
 	backtrace
 	LINK_LIBS
 		${fcppt_core_TARGET}

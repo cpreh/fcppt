@@ -4,66 +4,137 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-//[signal_unregister
-#include <fcppt/text.hpp>
-#include <fcppt/io/cout.hpp>
+#include <fcppt/signal/auto_connection.hpp>
 #include <fcppt/signal/object.hpp>
 #include <fcppt/signal/scoped_connection.hpp>
 #include <fcppt/signal/unregister/base.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <functional>
+#include <iostream>
+#include <map>
+#include <string>
+#include <utility>
 #include <fcppt/config/external_end.hpp>
 
 
 namespace
 {
 
-void
-dummy_function()
-{
-}
+// ![global_map]
+typedef
+fcppt::signal::object<
+	void(),
+	fcppt::signal::unregister::base
+>
+signal_type;
 
+typedef
+std::map<
+	std::string,
+	signal_type
+>
+name_to_signal;
+
+name_to_signal global_name_to_signal;
+
+// This function will be called whenever a connection dies. It receives the
+// signal's name.
 void
-on_unregister(
-	int const _value
+remove_function(
+	std::string const &_name
 )
 {
-	fcppt::io::cout()
-		<< FCPPT_TEXT("Connection destroyed ")
-		<< _value
-		<< FCPPT_TEXT(".\n");
-}
+	std::cout
+		<< "Goodbye, "
+		<< _name
+		<< "!\n";
 
+	// Signal has "empty" to test if there are connections attached to it.
+	if(
+		global_name_to_signal.find(
+			_name
+		)->second.empty()
+	)
+		global_name_to_signal.erase(
+			_name
+		);
 }
+// ![global_map]
 
-int main()
+// ![register]
+fcppt::signal::auto_connection
+register_named_signal(
+	std::string const &_name,
+	std::function<void()> const &_function
+)
 {
-	typedef void function();
-
-	// Tell the signal to use deregistration
-	typedef fcppt::signal::object<
-		function,
-		fcppt::signal::unregister::base
-	> unregister_void_signal;
-
-	unregister_void_signal signal;
-
-	{
-		// connect the function and unregister_callback
-		fcppt::signal::scoped_connection const connection(
-			signal.connect(
-				::dummy_function,
-				std::bind(
-					::on_unregister,
-					42
-				)
+	// If the signal doesn't exist, add it to the map.
+	if(
+		global_name_to_signal.find(
+			_name
+		)
+		==
+		global_name_to_signal.end()
+	)
+		global_name_to_signal.insert(
+			std::make_pair(
+				_name,
+				signal_type()
 			)
 		);
 
-		// The destructor of connection will cause on_unregister(42) to be called
+	return
+		global_name_to_signal.find(
+			_name
+		)->second.connect(
+			_function,
+			// Add our remove function as the disconnect handler (see above)
+			std::bind(
+				&remove_function,
+				_name
+			)
+		);
+}
+// ![register]
+
+}
+
+// ![main]
+int
+main()
+{
+	fcppt::signal::scoped_connection const hello_connection(
+		register_named_signal(
+			"hello",
+			[]{
+				std::cout << "hello!\n";
+			}
+		)
+	);
+
+	// Will print "goodbye"
+	global_name_to_signal.find(
+		"hello"
+	)->second();
+
+	{
+		fcppt::signal::scoped_connection const goodbye_connection(
+			register_named_signal(
+				"goodbye",
+				[]{
+					std::cout << "goodbye!\n";
+				}
+			)
+		);
+
+		// Will print "goodbye!"
+		global_name_to_signal.find(
+			"goodbye"
+		)->second();
+
+		// Will print "Goodbye goodbye!" at end of scope
 	}
 
-	fcppt::io::cout()
-		<< FCPPT_TEXT("After destruction.\n");
+	// Will print "Goodbye hello!" at end of scope
 }
-//]
+// ![main]

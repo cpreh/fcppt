@@ -54,7 +54,8 @@ take_connection(
 
 }
 
-int main()
+int
+main()
 {
 	typedef void function();
 
@@ -64,7 +65,6 @@ int main()
 
 	void_signal signal;
 
-// ![signal_movable_assign]
 	// use fcppt::assign::make_container to pass a container of connections
 	fcppt::signal::auto_connection_container const connections(
 		fcppt::assign::make_container<
@@ -80,7 +80,6 @@ int main()
 			)
 		)
 	);
-// ![signal_movable_assign]
 
 	// scoped_connection can also be used
 	fcppt::signal::scoped_connection const connection3(
