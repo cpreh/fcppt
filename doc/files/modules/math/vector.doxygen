@@ -38,45 +38,11 @@ namespace vector
 
 The need for a vector class representing n-dimensional points or arrows arises
 very quickly in many disciplines. The simplest approach to this problem is to
-use a plain old array (or, slightly better, an fcppt::container::array) to
-represent those values:
+use an array to represent those values:
 
-\code
-fcppt::container::array<float,3> point = {{1.0f,2.0f,3.0f}};
-\endcode
+\snippet math/vector/main.cpp array
 
-As you can see, we can initialize the structure very elegantly with the struct member
-initialization syntax. This approach is, however, not very comfortable. To add
-two vectors, you need a separate function (let's call it <code>add</code>):
-
-\code
-template<typename T,std::size_t N>
-fcppt::container::array<T,N>
-add(
-	fcppt::container::array<T,N> const &left,
-	fcppt::container::array<T,N> const &right)
-{
-	fcppt::container::array<T,N> result;
-	for(std::size_t i = 0; i < N; ++i)
-		result[i] = left[i] + right[i];
-	return result;
-}
-
-int main()
-{
-	fcppt::container::array<float,3>
-		point1 = {{1.0f,2.0f,3.0f}},
-		point2 = {{4.0f,5.0f,6.0f}};
-
-	fcppt::container::array<float,3> result =
-		add(
-			point1,
-			point2);
-}
-\endcode
-
-This is kind of awkward. Operator overloading would be much more suited for
-this job (in this case, of course, we would overload <code>operator+</code>).
+An array, however, doesn't define any operators like <code>operator+</code>.
 
 But you shouldn't overload operators for fcppt::container::array, other people
 using the class might not want to have your <code>operator+</code>. To work

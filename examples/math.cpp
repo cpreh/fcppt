@@ -7,16 +7,12 @@
 #include <fcppt/text.hpp>
 #include <fcppt/io/cout.hpp>
 #include <fcppt/math/point_rotate.hpp>
-#include <fcppt/math/box/object_impl.hpp>
 #include <fcppt/math/box/output.hpp>
 #include <fcppt/math/box/rect.hpp>
-#include <fcppt/math/dim/object_impl.hpp>
-#include <fcppt/math/matrix/object_impl.hpp>
 #include <fcppt/math/vector/atan2.hpp>
 #include <fcppt/math/vector/cross.hpp>
 #include <fcppt/math/vector/length.hpp>
 #include <fcppt/math/vector/normalize.hpp>
-#include <fcppt/math/vector/object_impl.hpp>
 #include <fcppt/math/vector/output.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <istream>

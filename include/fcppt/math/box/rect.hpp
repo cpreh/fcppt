@@ -7,33 +7,8 @@
 #ifndef FCPPT_MATH_BOX_RECT_HPP_INCLUDED
 #define FCPPT_MATH_BOX_RECT_HPP_INCLUDED
 
-#include <fcppt/math/box/object_fwd.hpp>
+#include <fcppt/math/box/object_impl.hpp>
+#include <fcppt/math/box/rect_fwd.hpp>
 
-
-namespace fcppt
-{
-namespace math
-{
-namespace box
-{
-
-/**
-\brief Typedefs a two dimensional box (a rect)
-\ingroup fcpptmathbox
-\tparam T The box's <code>value_type</code>
-*/
-template<
-	typename T
->
-using rect
-=
-fcppt::math::box::object<
-	T,
-	2
->;
-
-}
-}
-}
 
 #endif

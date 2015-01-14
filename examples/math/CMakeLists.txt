@@ -22,6 +22,10 @@ add_fcppt_math_example(
 )
 
 add_fcppt_math_example(
+	dim
+)
+
+add_fcppt_math_example(
 	matrix
 )
 

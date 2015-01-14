@@ -50,7 +50,7 @@ fully-fledged geometry primitive class.
 fcppt::math::box::object is declared like this:
 
 \code
-template<typename T,typename N>
+template<typename T,fcppt::math::size_type N>
 class object;
 \endcode
 

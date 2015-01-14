@@ -27,7 +27,7 @@ used to ignore warnings in external headers.
 
 \section fcpptconfig_detection Compiler and OS detection
 
-\subsection fcpptconfig_compiler_detection
+\subsection fcpptconfig_compiler_detection Compiler Detection
 In <code>fcppt/config/compiler.hpp</code> several macros may be defined to
 identify the current compiler:
 <table>
@@ -46,7 +46,7 @@ identify the current compiler:
 </tr>
 </table>
 
-\subsection fcpptconfig_os_detection
+\subsection fcpptconfig_os_detection OS Detection
 In <code>fcppt/config/platform.hpp</code> several macros may be defined to
 identify the operating system:
 <table>

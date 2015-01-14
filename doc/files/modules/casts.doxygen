@@ -166,16 +166,16 @@ optional instead. This is done by fcppt::cast::try_dynamic.
 
 \snippet casts.cpp try_dynamic
 
-\section fcpptcasts_structure_cast Casting user defined types
+\section fcpptcasts_structure_cast Casting user-defined types
 
-For user defined types static_cast and all of the casts from fcppt.casts can't
+For user-defined types static_cast and all of the casts from fcppt::cast can't
 be used directly. Instead, custom cast functions have to be defined. For
 example, fcppt.math defines functions called structure_cast to cast between
-vectors, dims and matrices. To incorporate cast functions from fcppt.casts, an
+vectors, dims and matrices. To incorporate cast functions from fcppt::cast, an
 additional template argument has to be added to the function's signature which
-then will be used to cast each element of the user defined structure. For this
-purpose, fcppt.casts defines several function objects, for example
-fcppt::cast::float_to_int_fun.
+then will be used to cast each element of the user-defined structure. For this
+purpose, this module defines several function objects suffixed with _fun, for
+example fcppt::cast::float_to_int_fun.
 
 \snippet math/casts.cpp float_to_int_fun
 */

@@ -39,11 +39,8 @@ empty \endlink returning true.
 \section tree_design Design
 
 Internally, a <code>fcppt::container::tree::object<T></code> holds a
-<code>std::list</code> of
-<code>std::unique_ptr<fcppt::container::tree::object<T>></code>. The advantage
-of this approach (instead of holding trees directly in a list) is that moving
-subtrees around is cheap. Iterators hide the fact that unique_ptrs are used and
-return trees directly.
+<code>std::list</code> of <code>fcppt::container::tree::object<T></code>.
+Lists are very cheap to move which makes this representation ideal.
 
 \section tree_traversals Iterators/Traversals
 

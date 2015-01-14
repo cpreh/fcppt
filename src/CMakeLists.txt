@@ -405,6 +405,7 @@ set(
 	include/fcppt/math/box/output.hpp
 	include/fcppt/math/box/rect.hpp
 	include/fcppt/math/box/rect_from_edges.hpp
+	include/fcppt/math/box/rect_fwd.hpp
 	include/fcppt/math/box/shrink.hpp
 	include/fcppt/math/box/stretch_absolute.hpp
 	include/fcppt/math/box/stretch_relative.hpp
@@ -476,6 +477,7 @@ set(
 	include/fcppt/math/dim/object_impl.hpp
 	include/fcppt/math/dim/output.hpp
 	include/fcppt/math/dim/static.hpp
+	include/fcppt/math/dim/static_fwd.hpp
 	include/fcppt/math/dim/std_hash.hpp
 	include/fcppt/math/dim/structure_cast.hpp
 	include/fcppt/math/dim/to_signed.hpp
@@ -527,6 +529,7 @@ set(
 	include/fcppt/math/matrix/size.hpp
 	include/fcppt/math/matrix/sqrt.hpp
 	include/fcppt/math/matrix/static.hpp
+	include/fcppt/math/matrix/static_fwd.hpp
 	include/fcppt/math/matrix/static_storage.hpp
 	include/fcppt/math/matrix/std_hash.hpp
 	include/fcppt/math/matrix/structure_cast.hpp
@@ -544,6 +547,7 @@ set(
 	include/fcppt/math/range_compare.hpp
 	include/fcppt/math/size_type.hpp
 	include/fcppt/math/sphere/circle.hpp
+	include/fcppt/math/sphere/circle_fwd.hpp
 	include/fcppt/math/sphere/intersects.hpp
 	include/fcppt/math/sphere/object.hpp
 	include/fcppt/math/sphere/object_decl.hpp
@@ -587,6 +591,7 @@ set(
 	include/fcppt/math/vector/signed_angle_between.hpp
 	include/fcppt/math/vector/signed_angle_between_cast.hpp
 	include/fcppt/math/vector/static.hpp
+	include/fcppt/math/vector/static_fwd.hpp
 	include/fcppt/math/vector/std_hash.hpp
 	include/fcppt/math/vector/structure_cast.hpp
 	include/fcppt/math/vector/to_dim.hpp

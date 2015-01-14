@@ -10,8 +10,8 @@
 #include <fcppt/algorithm/find_exn.hpp>
 #include <fcppt/algorithm/join_strings.hpp>
 #include <fcppt/algorithm/shortest_levenshtein.hpp>
-#include <fcppt/container/raw_vector_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
+#include <functional>
 #include <iostream>
 #include <iterator>
 #include <ostream>
@@ -23,19 +23,28 @@
 
 int main()
 {
+	// TODO: Split this file into tests and move doc/algorithm here
 	typedef
-	fcppt::container::raw_vector<unsigned char>
+	std::vector<
+		unsigned char
+	>
 	vector_type;
 
 	std::string const str("test");
 
-	vector_type a(str.size());
+	vector_type a;
+
+	a.reserve(
+		str.size()
+	);
 
 	// copy_n
 	fcppt::algorithm::copy_n(
 		str.data(),
 		str.size(),
-		a.data()
+		std::back_inserter(
+			a
+		)
 	);
 
 	a.push_back(' ');

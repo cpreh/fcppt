@@ -7,29 +7,8 @@
 #ifndef FCPPT_MATH_SPHERE_CIRCLE_HPP_INCLUDED
 #define FCPPT_MATH_SPHERE_CIRCLE_HPP_INCLUDED
 
-#include <fcppt/math/sphere/object_fwd.hpp>
+#include <fcppt/math/sphere/circle_fwd.hpp>
+#include <fcppt/math/sphere/object_impl.hpp>
 
-
-namespace fcppt
-{
-namespace math
-{
-namespace sphere
-{
-
-/// Typedefs a sphere with a dimension of 2 (a circle)
-template<
-	typename T
->
-using circle
-=
-fcppt::math::sphere::object<
-	T,
-	2
->;
-
-}
-}
-}
 
 #endif

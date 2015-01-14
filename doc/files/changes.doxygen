@@ -53,6 +53,9 @@ take the exception as a parameter.</li>
 <li>Changed structure_cast functions of fcppt::math to require a cast function
 as template parameter.</li>
 
+<li>Forward headers were added to vector/static.hpp, dim/static.hpp,
+matrix/static.hpp, sphere/circle.hpp and box/rect.hpp.</li>
+
 </ul>
 
 \subsection changes_removed_from_libraries_to_110 Removed functionality

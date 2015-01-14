@@ -39,14 +39,12 @@ situation.
 
 \section bitfield_requirements Requirements
 
-TODO: This is wrong now. Link to an explanation in fcppt.enum instead!
-
-fcppt::container::bitfield::object takes as first template parameter an enum
-<code>Enum</code> which satisfies the following requirements:
+fcppt::container::bitfield::object<ElementType, NumElements, InternalType> has
+the following requirements:
 
 <ul>
 <li>
-	<code>Enum</code> shall be an enumeration type that doesn't contain any
+	<code>ElementType</code> shall be an enumeration type that doesn't contain any
 	enumerators with explicit values.
 
 	<strong>Example 1:</strong>
@@ -62,23 +60,16 @@ fcppt::container::bitfield::object takes as first template parameter an enum
 	\endcode
 
 	This is <strong>NOT</strong> valid.
-</li>
-<li>
-	<code>Size</code> shall be the number of enumerators defined in Enum.
-	To achieve consistency you should define the enum's size within the
-	enum itself.  <strong>Example:</strong>
-	\code
-	enum class my_enum { value1, value2, value3, _my_enum_size };
 
-	typedef object<my_enum,my_enum::_my_enum_size> myobject;
-	\endcode
 </li>
 <li>
-	<code>operator|(Enum,Enum)</code> shall not be declared!
+	<code>Numelements</code> shall be a std::integral_constant with the number of
+	enumerators defined in ElementType. To achieve consistency, you should define the
+	enum's size within the enum itself. See fcppt::container::bitfield::object_from_enum
+	and \ref fcpptenum.
 </li>
 <li>
-	<code>std::numeric_limits<InternalType>::digits</code> shall be the
-	number of bits usable in <code>InternalType</code>
+	<code>InternalType</code> shall be an unsigned type.
 </li>
 </ul>
 

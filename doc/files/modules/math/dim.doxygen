@@ -33,10 +33,9 @@ namespace dim
 
 \section fcpptmathdimobject_motivation Motivation
 
-When writing code that deals with geometry, you need a type to denote the
-size (or extent) of the geometry for each dimension. You also need such a class
-when writing multi-dimensional containers (like
-fcppt::container::grid::object).
+When writing code that deals with geometry, you need a type to denote the size
+(or extent) of the geometry for each dimension. You also need such a class when
+writing multi-dimensional containers (like fcppt::container::grid::object).
 
 Conceptually, you could just use fcppt::math::vector::object, and we (the
 authors of fcppt) have thought about going that way. However, a vector just
@@ -53,37 +52,13 @@ parameters), but not the same member and free functions.
 
 \section fcpptmathdimobject_converting_from_and_to_vectors Converting from and to vectors
 
-To convert a dimension to a vector, use fcppt::math::dim::structure_cast:
+To convert a dimension to a vector, use fcppt::math::dim::to_vector:
 
-\code
-typedef
-fcppt::math::dim::static_<int,3>::type
-dim3;
-
-typedef
-fcppt::math::vector::static_<int,3>::type
-vector3;
-
-dim3 d(1,2,3);
-
-vector3 v = fcppt::math::dim::structure_cast<vector3>(d);
-\endcode
+\snippet math/dim.cpp conversion_to_vector
 
 Conversely, use fcppt::math::vector::structure_cast to convert a vector to a dim:
 
-\code
-typedef
-fcppt::math::dim::static_<int,3>::type
-dim3;
-
-typedef
-fcppt::math::vector::static_<int,3>::type
-vector3;
-
-vector3 d(1,2,3);
-
-dim3 v = fcppt::math::vector::structure_cast<dim3>(d);
-\endcode
+\snippet math/dim.cpp conversion_from_vector
 
 If you include the fcppt/math/vector/dim.hpp header, you get the operators
 <code>+-*%/</code> which all have the signature
