@@ -844,7 +844,7 @@ function(
 		NOT FCPPT_WINE_TOOLCHAIN
 	)
 		set_target_properties(
-			${TARGETN}
+			${TARGET}
 			PROPERTIES
 			VERSION
 			${VERSION}
