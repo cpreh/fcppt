@@ -7,33 +7,22 @@
 #ifndef FCPPT_CONFIG_GCC_VERSION_AT_LEAST_H_INCLUDED
 #define FCPPT_CONFIG_GCC_VERSION_AT_LEAST_H_INCLUDED
 
-#include <fcppt/config/compiler.h>
+#include <fcppt/config/detail/gcc_version_at_least.h>
 
 
-#if defined(FCPPT_CONFIG_GCC_COMPILER) && !defined(FCPPT_CONFIG_CLANG_COMPILER)
+/**
+\brief Checks if the gcc is being used and its version is at least (major,
+minor)
 
-#include <fcppt/config/detail/major_minor_at_least.h>
-
-
+\ingroup fcpptconfig
+*/
 #define FCPPT_CONFIG_GCC_VERSION_AT_LEAST(\
 	major,\
 	minor\
 ) \
-FCPPT_CONFIG_DETAIL_MAJOR_MINOR_AT_LEAST(\
+FCPPT_CONFIG_DETAIL_GCC_VERSION_AT_LEAST(\
 	major,\
-	__GNUC__,\
-	minor,\
-	__GNUC_MINOR__\
+	minor \
 )
-
-#else
-
-#define FCPPT_CONFIG_GCC_VERSION_AT_LEAST(\
-	major,\
-	minor\
-) \
-false
-
-#endif
 
 #endif

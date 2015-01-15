@@ -12,7 +12,7 @@ static_asserts.</li>
 
 </ul>
 
-\subsection changes_added_functionality_to_110 Addedfunctionality
+\subsection changes_added_functionality_to_110 Added functionality
 
 <ul>
 
@@ -27,8 +27,8 @@ are found via add_subdirectory.</li>
 
 <li>\ref fcpptconfig
 	<ul>
-	<li>Added FCPPT_CONFIG_CLANG_VERSION_AT_LEAST and
-	FCPPT_CONFIG_GCC_VERSION_AT_LEAST.</li>
+	<li>Added \link FCPPT_CONFIG_CLANG_VERSION_AT_LEAST\endlink and \link
+	FCPPT_CONFIG_GCC_VERSION_AT_LEAST\endlink.</li>
 
 	<li>Ignore float conversion and inconsistent override warnings in
 	external headers.</li>
