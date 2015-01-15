@@ -58,9 +58,9 @@ older than gcc-4.8.1 and clang-3.4.
 
 \section requirements_download_installation_download Download
 
-The latest fcppt release is 1.0.0. Get it <a
-href="http://fcppt.org/downloads/fcppt-1.0.0.tar.bz2">here</a> (<a
-href="http://fcppt.org/downloads/fcppt-1.0.0.tar.bz2.digest">SHA1</a>).
+The latest fcppt release is 1.1.0. Get it <a
+href="http://fcppt.org/downloads/fcppt-1.1.0.tar.bz2">here</a> (<a
+href="http://fcppt.org/downloads/fcppt-1.1.0.tar.bz2.digest">SHA1</a>).
 
 fcppt is available through our public Git Repository:
 

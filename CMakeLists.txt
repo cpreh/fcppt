@@ -29,7 +29,7 @@ set(
 
 set(
 	FCPPT_MINOR_VERSION
-	0
+	1
 )
 
 set(
@@ -45,7 +45,7 @@ set(
 fcppt_utils_handle_so_version(
 	FCPPT_SO_VERSION
 	FCPPT_USED_SO_VERSION
-	"1.0.0"
+	"${FCPPT_MAJOR_VERSION}.${FCPPT_MINOR_VERSION}"
 )
 
 math(
