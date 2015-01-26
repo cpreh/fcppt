@@ -30,7 +30,7 @@ Generates a message string from the assert information contained in \a _info.
 \return The formatted message
 */
 inline
-fcppt::string const
+fcppt::string
 make_message(
 	fcppt::assert_::information const &_info
 )

@@ -16,7 +16,8 @@
 #include <fcppt/config/external_end.hpp>
 
 
-int main()
+int
+main()
 try
 {
 	//! [main]
@@ -46,35 +47,32 @@ try
 	);
 
 	// Create a traversal and "attach" it to the tree in the ctor
-	typedef
-	fcppt::container::tree::pre_order<string_tree const>
-	traversal_type;
-
-	traversal_type const trav(
-		tree
-	);
-
 	// Then use it like a forward-iterable container!
 	// This outputs:
 	//
 	// hello, foo, qux, bar, baz
 	for(
-		traversal_type::iterator it = trav.begin();
-		it != trav.end();
-		++it
+		string_tree const &item
+		:
+		fcppt::container::tree::pre_order<
+			string_tree const
+		>(
+			tree
+		)
 	)
 		fcppt::io::cout()
-			<< (*it).value()
+			<< item.value()
 			<< std::endl;
 	//! [main]
 }
 catch(
-	fcppt::exception const &e
+	fcppt::exception const &_error
 )
 {
 	fcppt::io::cerr()
-		<< e.string()
+		<< _error.string()
 		<< FCPPT_TEXT('\n');
 
-	return EXIT_FAILURE;
+	return
+		EXIT_FAILURE;
 }

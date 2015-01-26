@@ -17,7 +17,8 @@
 #include <fcppt/config/external_end.hpp>
 
 
-int main()
+int
+main()
 try
 {
 //! [main]
@@ -91,14 +92,12 @@ try
 	// Output the first level of the tree below the root.
 	// Note that iterator::value_type is string_tree.
 	for(
-		string_tree::const_iterator it(
-			tree.begin()
-		);
-		it != tree.end();
-		++it
+		string_tree &item
+		:
+		tree
 	)
 		fcppt::io::cout()
-			<< it->value()
+			<< item.value()
 			<< FCPPT_TEXT('\n');
 
 	string_tree &first_child(

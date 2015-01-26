@@ -21,7 +21,7 @@ namespace
 {
 
 //! [logger_formatter_declaration]
-fcppt::string const
+fcppt::string
 logger_formatter(
 	fcppt::string const &_text
 )
@@ -38,7 +38,7 @@ logger_formatter(
 // Create a formatter for the error log level. Note that we have to append a
 // newline here, because this is normally done by the default formatters for
 // each log level.
-fcppt::string const
+fcppt::string
 error_formatter(
 	fcppt::string const &_text
 )
