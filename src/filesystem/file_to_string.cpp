@@ -148,5 +148,5 @@ fcppt::filesystem::file_to_string(
 	);
 
 	return
-	ret;
+		ret;
 }

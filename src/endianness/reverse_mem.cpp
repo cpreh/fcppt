@@ -4,10 +4,13 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
+#include <fcppt/make_int_range_count.hpp>
 #include <fcppt/endianness/reverse_mem.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <algorithm>
+#include <cstddef>
 #include <fcppt/config/external_end.hpp>
+
 
 void
 fcppt::endianness::reverse_mem(
@@ -16,12 +19,24 @@ fcppt::endianness::reverse_mem(
 )
 {
 	for(
-		std::size_t i = 0;
-		i < _len / 2;
-		++i
+		std::size_t const index
+		:
+		fcppt::make_int_range_count(
+			_len
+			/
+			2
+		)
 	)
 		std::swap(
-			_data[i],
-			_data[_len - i - 1]
+			_data[
+				index
+			],
+			_data[
+				_len
+				-
+				index
+				-
+				1u
+			]
 		);
 }

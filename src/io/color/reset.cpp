@@ -4,14 +4,20 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
+#include <fcppt/io/color/attribute.hpp>
+#include <fcppt/io/color/background.hpp>
+#include <fcppt/io/color/foreground.hpp>
+#include <fcppt/io/color/set.hpp>
 #include <fcppt/io/color/reset.hpp>
+
 
 fcppt::io::color::set const
 fcppt::io::color::reset()
 {
 	return
-		set(
-			foreground::off,
-			background::off,
-		attribute::off);
+		fcppt::io::color::set(
+			fcppt::io::color::foreground::off,
+			fcppt::io::color::background::off,
+			fcppt::io::color::attribute::off
+		);
 }

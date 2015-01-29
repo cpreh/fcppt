@@ -4,6 +4,8 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
+#include <fcppt/noncopyable.hpp>
+#include <fcppt/algorithm/contains.hpp>
 #include <fcppt/cast/enum_to_underlying.hpp>
 #include <fcppt/io/color/attribute.hpp>
 #include <fcppt/io/color/background.hpp>
@@ -11,90 +13,101 @@
 #include <fcppt/io/color/set.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <cstdlib>
-#include <cstring>
 #include <ostream>
+#include <string>
+#include <vector>
 #include <fcppt/config/external_end.hpp>
 
 
 namespace
 {
-struct instance
+
+bool
+init_color_output()
 {
+	char const *const term{
+		std::getenv("TERM")
+	};
+
+	// TERM isn't even set? Could be the case on Windows. We have to fix that later
+	if(
+		!term
+	)
+		return
+			false;
+
+	std::vector<
+		std::string
+	> const term_names{
+		"Eterm",
+		"ansi",
+		"color-xterm",
+		"con132x25",
+		"con132x30",
+		"con132x43",
+		"con132x60",
+		"con80x25",
+		"con80x28",
+		"con80x30",
+		"con80x43",
+		"con80x50",
+		"con80x60",
+		"cons25",
+		"console",
+		"cygwin",
+		"dtterm",
+		"eterm-color",
+		"gnome",
+		"gnome-256color",
+		"konsole",
+		"konsole-256color",
+		"kterm",
+		"linux",
+		"msys",
+		"linux-c",
+		"mach-color",
+		"mlterm",
+		"putty",
+		"rxvt",
+		"rxvt-256color",
+		"rxvt-cygwin",
+		"rxvt-cygwin-native",
+		"rxvt-unicode",
+		"screen",
+		"screen-256color",
+		"screen-bce",
+		"screen-w",
+		"screen.linux",
+		"vt100",
+		"xterm",
+		"xterm-16color",
+		"xterm-256color",
+		"xterm-88color",
+		"xterm-color",
+		"xterm-debian"
+	};
+
+	return
+		fcppt::algorithm::contains(
+			term_names,
+			std::string(
+				term
+			)
+		);
+}
+
+class instance
+{
+	FCPPT_NONCOPYABLE(
+		instance
+	);
+public:
 	instance()
 	:
-		has_color_output_(
-			false
-		)
+		has_color_output_{
+			init_color_output()
+		}
 	{
-		char const * const term =
-			std::getenv("TERM");
-
-		// TERM isn't even set? Could be the case on Windows. We have to fix that later
-		if (!term)
-		{
-			has_color_output_ = false;
-			return;
-		}
-
-		char const *term_names[] =
-		{
-			"Eterm",
-			"ansi",
-			"color-xterm",
-			"con132x25",
-			"con132x30",
-			"con132x43",
-			"con132x60",
-			"con80x25",
-			"con80x28",
-			"con80x30",
-			"con80x43",
-			"con80x50",
-			"con80x60",
-			"cons25",
-			"console",
-			"cygwin",
-			"dtterm",
-			"eterm-color",
-			"gnome",
-			"gnome-256color",
-			"konsole",
-			"konsole-256color",
-			"kterm",
-			"linux",
-			"msys",
-			"linux-c",
-			"mach-color",
-			"mlterm",
-			"putty",
-			"rxvt",
-			"rxvt-256color",
-			"rxvt-cygwin",
-			"rxvt-cygwin-native",
-			"rxvt-unicode",
-			"screen",
-			"screen-256color",
-			"screen-bce",
-			"screen-w",
-			"screen.linux",
-			"vt100",
-			"xterm",
-			"xterm-16color",
-			"xterm-256color",
-			"xterm-88color",
-			"xterm-color",
-			"xterm-debian",
-			nullptr
-		};
-
-		for(char const **ptr = term_names; *ptr; ++ptr)
-		{
-			if(std::strcmp(*ptr,term) == 0)
-			{
-				has_color_output_ = true;
-				return;
-			}
-		}
 	}
 
 	bool
@@ -102,9 +115,10 @@ struct instance
 	{
 		return has_color_output_;
 	}
-
-	bool has_color_output_;
+private:
+	bool const has_color_output_;
 } impl;
+
 }
 
 fcppt::io::color::set::set(
@@ -113,56 +127,96 @@ fcppt::io::color::set::set(
 	fcppt::io::color::attribute const _attribute)
 :
 	foreground_(
-		_foreground),
+		_foreground
+	),
 	background_(
-		_background),
+		_background
+	),
 	attribute_(
-		_attribute)
+		_attribute
+	)
 {
 }
 
 fcppt::io::color::foreground
 fcppt::io::color::set::foreground() const
 {
-	return foreground_;
+	return
+		foreground_;
 }
 
 fcppt::io::color::background
 fcppt::io::color::set::background() const
 {
-	return background_;
+	return
+		background_;
 }
 
 fcppt::io::color::attribute
 fcppt::io::color::set::attribute() const
 {
-	return attribute_;
+	return
+		attribute_;
 }
 
 std::ostream &
 fcppt::io::color::operator<<(
-	std::ostream &s,
-	fcppt::io::color::set const &c)
+	std::ostream &_stream,
+	fcppt::io::color::set const &_color
+)
 {
-	if(!impl.has_color_output())
-		return s;
-	return s
-		<< "\033["
-		<< fcppt::cast::enum_to_underlying(c.attribute()) << ";"
-		<< fcppt::cast::enum_to_underlying(c.foreground()) << ";"
-		<< fcppt::cast::enum_to_underlying(c.background()) << "m";
+	return
+		impl.has_color_output()
+		?
+			_stream
+			<< "\033["
+			<<
+			fcppt::cast::enum_to_underlying(
+				_color.attribute()
+			)
+			<< ";"
+			<<
+			fcppt::cast::enum_to_underlying(
+				_color.foreground()
+			)
+			<< ";"
+			<<
+			fcppt::cast::enum_to_underlying(
+				_color.background()
+			)
+			<< "m"
+		:
+			_stream
+		;
 }
 
 std::wostream &
 fcppt::io::color::operator<<(
-	std::wostream &s,
-	fcppt::io::color::set const &c)
+	std::wostream &_stream,
+	fcppt::io::color::set const &_color
+)
 {
-	if(!impl.has_color_output())
-		return s;
-	return s
-		<< L"\033["
-		<< fcppt::cast::enum_to_underlying(c.attribute()) << L";"
-		<< fcppt::cast::enum_to_underlying(c.foreground()) << L";"
-		<< fcppt::cast::enum_to_underlying(c.background()) << L"m";
+	return
+		impl.has_color_output()
+		?
+			_stream
+			<< L"\033["
+			<<
+			fcppt::cast::enum_to_underlying(
+				_color.attribute()
+			)
+			<< L";"
+			<<
+			fcppt::cast::enum_to_underlying(
+				_color.foreground()
+			)
+			<< L";"
+			<<
+			fcppt::cast::enum_to_underlying(
+				_color.background()
+			)
+			<< L"m"
+		:
+			_stream
+		;
 }

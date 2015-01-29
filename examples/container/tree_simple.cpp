@@ -92,7 +92,7 @@ try
 	// Output the first level of the tree below the root.
 	// Note that iterator::value_type is string_tree.
 	for(
-		string_tree &item
+		string_tree const &item
 		:
 		tree
 	)
