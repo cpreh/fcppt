@@ -341,14 +341,6 @@ set(
 	include/fcppt/io/cerr.hpp
 	include/fcppt/io/cin.hpp
 	include/fcppt/io/clog.hpp
-	include/fcppt/io/color/attribute.hpp
-	include/fcppt/io/color/attribute_fwd.hpp
-	include/fcppt/io/color/background.hpp
-	include/fcppt/io/color/background_fwd.hpp
-	include/fcppt/io/color/foreground.hpp
-	include/fcppt/io/color/foreground_fwd.hpp
-	include/fcppt/io/color/reset.hpp
-	include/fcppt/io/color/set.hpp
 	include/fcppt/io/cout.hpp
 	include/fcppt/io/fstream.hpp
 	include/fcppt/io/ifstream.hpp
@@ -907,8 +899,6 @@ set(
 	src/io/cerr.cpp
 	src/io/cin.cpp
 	src/io/clog.cpp
-	src/io/color/reset.cpp
-	src/io/color/set.cpp
 	src/io/cout.cpp
 	src/io/scoped_rdbuf.cpp
 	src/narrow.cpp
