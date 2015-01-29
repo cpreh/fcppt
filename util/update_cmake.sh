@@ -21,7 +21,6 @@ update_cmake \
 	include/fcppt/io \
 	include/fcppt/math \
 	include/fcppt/mpl \
-	include/fcppt/number_multiplexer \
 	include/fcppt/preprocessor \
 	include/fcppt/random \
 	include/fcppt/signal \

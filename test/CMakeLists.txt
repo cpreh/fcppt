@@ -451,10 +451,6 @@ add_fcppt_test(
 )
 
 add_fcppt_test(
-	number_multiplexer
-)
-
-add_fcppt_test(
 	optional
 )
 

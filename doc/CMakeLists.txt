@@ -919,11 +919,6 @@ set(
 	include/fcppt/no_init_fwd.hpp
 	include/fcppt/nonassignable.hpp
 	include/fcppt/noncopyable.hpp
-	include/fcppt/number_multiplexer/object.hpp
-	include/fcppt/number_multiplexer/object_decl.hpp
-	include/fcppt/number_multiplexer/object_fwd.hpp
-	include/fcppt/number_multiplexer/object_impl.hpp
-	include/fcppt/number_multiplexer/set_bits.hpp
 	include/fcppt/optional.hpp
 	include/fcppt/optional_bind.hpp
 	include/fcppt/optional_bind_construct.hpp
