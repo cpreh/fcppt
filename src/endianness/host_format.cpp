@@ -13,9 +13,9 @@
 #endif
 
 #if !(defined(FCPPT_LITTLE_ENDIAN) || defined(FCPPT_BIG_ENDIAN))
-#include <fcppt/algorithm/copy_n.hpp>
 #include <fcppt/cast/to_char_ptr.hpp>
 #include <fcppt/config/external_begin.hpp>
+#include <algorithm>
 #include <array>
 #include <fcppt/config/external_end.hpp>
 
@@ -39,7 +39,7 @@ compute_endianness()
 
 	array_type array;
 
-	fcppt::algorithm::copy_n(
+	std::copy_n(
 		fcppt::cast::to_char_ptr<
 			unsigned char const *
 		>(

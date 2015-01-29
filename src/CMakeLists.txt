@@ -10,7 +10,6 @@ set(
 	include/fcppt/algorithm/array_push_back.hpp
 	include/fcppt/algorithm/contains.hpp
 	include/fcppt/algorithm/contains_if.hpp
-	include/fcppt/algorithm/copy_n.hpp
 	include/fcppt/algorithm/detail/array_fold_function.hpp
 	include/fcppt/algorithm/detail/array_fold_static.hpp
 	include/fcppt/algorithm/detail/array_init_function.hpp

@@ -95,10 +95,6 @@ function(
 endfunction()
 
 add_fcppt_example(
-	algorithm
-)
-
-add_fcppt_example(
 	assert
 	LINK_LIBS
 		${fcppt_core_TARGET}
