@@ -782,7 +782,6 @@ set(
 	include/fcppt/math/interpolation/trigonometric.hpp
 	include/fcppt/math/interpolation/trigonometric_functor.hpp
 	include/fcppt/math/is_power_of_2.hpp
-	include/fcppt/math/is_rational.hpp
 	include/fcppt/math/log2.hpp
 	include/fcppt/math/map.hpp
 	include/fcppt/math/matrix/adjugate.hpp
