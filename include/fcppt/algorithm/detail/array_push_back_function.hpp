@@ -10,7 +10,6 @@
 #include <fcppt/nonassignable.hpp>
 #include <fcppt/container/array_size.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <cstddef>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
@@ -51,38 +50,42 @@ public:
 	}
 
 	template<
-		std::size_t Index
+		typename Index
 	>
 	typename
 	std::enable_if<
-		Index
+		Index::value
 		!=
 		fcppt::container::array_size<
 			Source
 		>::value,
 		value_type
 	>::type
-	operator()() const
+	operator()(
+		Index
+	) const
 	{
 		return
 			source_[
-				Index
+				Index::value
 			];
 	}
 
 	template<
-		std::size_t Index
+		typename Index
 	>
 	typename
 	std::enable_if<
-		Index
+		Index::value
 		==
 		fcppt::container::array_size<
 			Source
 		>::value,
 		value_type
 	>::type
-	operator()() const
+	operator()(
+		Index
+	) const
 	{
 		return
 			back_;

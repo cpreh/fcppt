@@ -8,9 +8,6 @@
 #define FCPPT_ALGORITHM_DETAIL_ARRAY_INIT_FUNCTION_HPP_INCLUDED
 
 #include <fcppt/nonassignable.hpp>
-#include <fcppt/config/external_begin.hpp>
-#include <cstddef>
-#include <fcppt/config/external_end.hpp>
 
 
 namespace fcppt
@@ -41,12 +38,15 @@ public:
 	}
 
 	template<
-		std::size_t Index
+		typename Index
 	>
 	Type
-	operator()() const
+	operator()(
+		Index
+	) const
 	{
-		return value_;
+		return
+			value_;
 	}
 private:
 	Type const value_;

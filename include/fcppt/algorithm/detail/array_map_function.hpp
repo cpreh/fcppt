@@ -8,9 +8,6 @@
 #define FCPPT_ALGORITHM_DETAIL_ARRAY_MAP_FUNCTION_HPP_INCLUDED
 
 #include <fcppt/nonassignable.hpp>
-#include <fcppt/config/external_begin.hpp>
-#include <cstddef>
-#include <fcppt/config/external_end.hpp>
 
 
 namespace fcppt
@@ -46,15 +43,17 @@ public:
 	}
 
 	template<
-		std::size_t Index
+		typename Index
 	>
 	TargetValue
-	operator()() const
+	operator()(
+		Index
+	) const
 	{
 		return
 			functor_(
 				source_[
-					Index
+					Index::value
 				]
 			);
 	}

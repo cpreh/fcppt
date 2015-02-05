@@ -9,9 +9,6 @@
 
 #include <fcppt/nonassignable.hpp>
 #include <fcppt/cast/int_to_enum.hpp>
-#include <fcppt/config/external_begin.hpp>
-#include <cstddef>
-#include <fcppt/config/external_end.hpp>
 
 
 namespace fcppt
@@ -48,17 +45,19 @@ public:
 	result_type;
 
 	template<
-		std::size_t Index
+		typename Index
 	>
 	result_type
-	operator()() const
+	operator()(
+		Index
+	) const
 	{
 		return
 			function_. template operator()<
 				fcppt::cast::int_to_enum<
 					typename Array::enum_type
 				>(
-					Index
+					Index::value
 				)
 			>();
 	}
