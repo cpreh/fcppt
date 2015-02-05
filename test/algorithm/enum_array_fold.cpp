@@ -40,16 +40,18 @@ struct fold_function
 	result_type;
 
 	template<
-		my_enum Enum
+		typename Enum
 	>
 	result_type
-	operator()() const
+	operator()(
+		Enum
+	) const
 	{
 		return
 			fcppt::cast::enum_to_int<
 				result_type
 			>(
-				Enum
+				Enum::value
 			);
 	}
 };

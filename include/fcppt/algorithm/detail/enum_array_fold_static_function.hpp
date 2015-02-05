@@ -9,6 +9,9 @@
 
 #include <fcppt/nonassignable.hpp>
 #include <fcppt/cast/int_to_enum.hpp>
+#include <fcppt/config/external_begin.hpp>
+#include <type_traits>
+#include <fcppt/config/external_end.hpp>
 
 
 namespace fcppt
@@ -53,13 +56,16 @@ public:
 	) const
 	{
 		return
-			function_. template operator()<
-				fcppt::cast::int_to_enum<
-					typename Array::enum_type
-				>(
-					Index::value
-				)
-			>();
+			function_(
+				std::integral_constant<
+					typename Array::enum_type,
+					fcppt::cast::int_to_enum<
+						typename Array::enum_type
+					>(
+						Index::value
+					)
+				>{}
+			);
 	}
 private:
 	Function const function_;
