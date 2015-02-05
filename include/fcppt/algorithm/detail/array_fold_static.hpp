@@ -11,6 +11,7 @@
 #include <array>
 #include <cstddef>
 #include <utility>
+#include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -84,9 +85,12 @@ array_fold_static(
 			>(
 				_args
 			)...,
-			_function. template operator()<
-				Index
-			>()
+			_function(
+				std::integral_constant<
+					std::size_t,
+					Index
+				>{}
+			)
 		);
 }
 
