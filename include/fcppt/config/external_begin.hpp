@@ -54,6 +54,8 @@ FCPPT_PP_DISABLE_VC_WARNING(4819) // unrepresentable characters
 FCPPT_PP_DISABLE_VC_WARNING(4913) // user defined binary operator, exists but is not used
 FCPPT_PP_DISABLE_VC_WARNING(4986) // unmatching exception specification
 FCPPT_PP_DISABLE_VC_WARNING(4987) // non standard throw(...)
+FCPPT_PP_DISABLE_VC_WARNING(5026) // move constructor could not be generated
+FCPPT_PP_DISABLE_VC_WARNING(5027) // move assignment operator could not be generated
 
 #elif defined(FCPPT_CONFIG_GCC_COMPILER)
 
