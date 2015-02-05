@@ -258,7 +258,7 @@ set(
 
 # cmake-2.8.3 is required for this to work
 if(
-	"${CMAKE_CXX_COMPILER_ID}" STREQUAL "Clang"
+	${CMAKE_CXX_COMPILER_ID} STREQUAL "Clang"
 )
 	set(
 		FCPPT_UTILS_COMPILER_IS_CLANGPP ON
@@ -266,7 +266,7 @@ if(
 endif()
 
 if(
-	"${CMAKE_CXX_COMPILER_ID}" STREQUAL "Intel"
+	${CMAKE_CXX_COMPILER_ID} STREQUAL "Intel"
 )
 	set(
 		FCPPT_UTILS_COMPILER_IS_INTELCPP ON
