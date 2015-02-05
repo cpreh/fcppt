@@ -377,8 +377,22 @@ elseif(
 	list(
 		APPEND
 		FCPPT_UTILS_COMPILE_OPTIONS
-		"/W4 /Wall /EHa /D_BIND_TO_CURRENT_VCLIBS_VERSION=1"
-		"/wd4435 /wd4996 /wd4061 /wd4350 /wd4371 /wd4503 /wd4514 /wd4710 /wd4711 /wd4714 /wd4738 /wd4820"
+		/W4
+		/Wall
+		/EHa
+		/D_BIND_TO_CURRENT_VCLIBS_VERSION=1
+		/wd4435
+		/wd4996
+		/wd4061
+		/wd4350
+		/wd4371
+		/wd4503
+		/wd4514
+		/wd4710
+		/wd4711
+		/wd4714
+		/wd4738
+		/wd4820
 	)
 
 	# /W4 warnings
@@ -1006,7 +1020,7 @@ function(
 	)
 		target_compile_definitions(
 			${TARGET_NAME}
-			INTERFACE
+			PUBLIC
 			${LINK_FLAG}
 		)
 	endif()
