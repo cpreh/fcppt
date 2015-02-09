@@ -6,6 +6,7 @@
 
 #include <fcppt/const_optional_cast.hpp>
 #include <fcppt/dynamic_optional_cast.hpp>
+#include <fcppt/exception.hpp>
 #include <fcppt/from_optional.hpp>
 #include <fcppt/make_unique_ptr.hpp>
 #include <fcppt/maybe.hpp>
@@ -15,7 +16,9 @@
 #include <fcppt/optional_bind.hpp>
 #include <fcppt/optional_bind_construct.hpp>
 #include <fcppt/optional_ref_compare.hpp>
+#include <fcppt/optional_to_exception.hpp>
 #include <fcppt/static_optional_cast.hpp>
+#include <fcppt/text.hpp>
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
@@ -1098,5 +1101,65 @@ FCPPT_PP_POP_WARNING
 		result
 		==
 		10
+	);
+}
+
+namespace
+{
+
+bool
+check_exception(
+	fcppt::exception const &_exn
+)
+{
+	return
+		_exn.string()
+		==
+		FCPPT_TEXT("Invalid");
+}
+
+}
+
+FCPPT_PP_PUSH_WARNING
+FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
+
+BOOST_AUTO_TEST_CASE(
+	optional_exception
+)
+{
+FCPPT_PP_POP_WARNING
+	typedef
+	fcppt::optional<
+		int
+	>
+	optional_int;
+
+	auto const make_exception(
+		[]{
+			return
+				fcppt::exception(
+					FCPPT_TEXT("Invalid")
+				);
+		}
+	);
+
+	BOOST_CHECK(
+		fcppt::optional_to_exception(
+			optional_int(
+				3
+			),
+			make_exception
+		)
+		==
+		3
+	);
+
+	BOOST_CHECK_EXCEPTION(
+		fcppt::optional_to_exception(
+			optional_int(),
+			make_exception
+		),
+		fcppt::exception,
+		check_exception
 	);
 }

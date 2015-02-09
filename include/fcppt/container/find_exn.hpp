@@ -7,6 +7,7 @@
 #ifndef FCPPT_CONTAINER_FIND_EXN_HPP_INCLUDED
 #define FCPPT_CONTAINER_FIND_EXN_HPP_INCLUDED
 
+#include <fcppt/optional_to_exception.hpp>
 #include <fcppt/container/find_opt.hpp>
 #include <fcppt/container/to_mapped_type.hpp>
 
@@ -40,21 +41,14 @@ find_exn(
 	MakeException const &_make_exception
 )
 {
-	auto const opt_result(
-		fcppt::container::find_opt(
-			_container,
-			_key
-		)
-	);
-
-	if(
-		!opt_result
-	)
-		throw
-			_make_exception();
-
 	return
-		*opt_result;
+		fcppt::optional_to_exception(
+			fcppt::container::find_opt(
+				_container,
+				_key
+			),
+			_make_exception
+		);
 }
 
 }
