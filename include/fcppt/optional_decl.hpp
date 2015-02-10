@@ -48,6 +48,11 @@ public:
 	typedef T value_type;
 
 	/**
+	\brief The type of the template parameter
+	*/
+	typedef T element_type;
+
+	/**
 	\brief The non const reference type to <code>value_type</code>
 	*/
 	typedef T &reference;
@@ -463,9 +468,17 @@ public:
 
 	The value type of the optional reference is always non const.
 	*/
-	typedef typename std::remove_const<
+	typedef
+	typename
+	std::remove_const<
 		T
-	>::type value_type;
+	>::type
+	value_type;
+
+	/**
+	\brief The type of the template parameter
+	*/
+	typedef T &element_type;
 
 	/**
 	\brief The reference type

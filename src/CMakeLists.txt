@@ -23,6 +23,7 @@ set(
 	include/fcppt/algorithm/detail/variadic_fold.hpp
 	include/fcppt/algorithm/enum_array_fold.hpp
 	include/fcppt/algorithm/enum_array_fold_static.hpp
+	include/fcppt/algorithm/find_by_exn.hpp
 	include/fcppt/algorithm/find_by_opt.hpp
 	include/fcppt/algorithm/find_exn.hpp
 	include/fcppt/algorithm/find_if_exn.hpp

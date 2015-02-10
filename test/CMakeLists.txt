@@ -49,6 +49,10 @@ add_fcppt_test(
 )
 
 add_fcppt_test(
+	algorithm/find_by_exn
+)
+
+add_fcppt_test(
 	algorithm/find_by_opt
 )
 
