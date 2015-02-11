@@ -15,6 +15,7 @@
 #include <fcppt/math/generate_binary_vectors.hpp>
 #include <fcppt/math/vector/mod.hpp>
 #include <fcppt/math/vector/structure_cast.hpp>
+#include <fcppt/math/vector/to_unsigned.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <array>
 #include <cstddef>
@@ -104,11 +105,14 @@ interpolate(
 	vector_value_type;
 
 	integer_vector_type const floored(
-		fcppt::math::vector::structure_cast<
-			integer_vector_type,
-			fcppt::cast::float_to_int_fun
-		>(
-			floating_point_position
+		fcppt::math::vector::to_unsigned(
+			fcppt::math::vector::structure_cast<
+				typename
+				Grid::signed_pos,
+				fcppt::cast::float_to_int_fun
+			>(
+				floating_point_position
+			)
 		)
 	);
 

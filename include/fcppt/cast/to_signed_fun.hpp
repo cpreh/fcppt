@@ -29,10 +29,11 @@ struct to_signed_fun
 		typename Dest,
 		typename Source
 	>
+	static
 	Dest
-	operator()(
+	execute(
 		Source const &_source
-	) const
+	)
 	{
 		static_assert(
 			std::is_same<

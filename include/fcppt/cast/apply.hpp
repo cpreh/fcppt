@@ -4,8 +4,8 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_CAST_STATIC_CAST_FUN_HPP_INCLUDED
-#define FCPPT_CAST_STATIC_CAST_FUN_HPP_INCLUDED
+#ifndef FCPPT_CAST_APPLY_HPP_INCLUDED
+#define FCPPT_CAST_APPLY_HPP_INCLUDED
 
 
 namespace fcppt
@@ -14,27 +14,29 @@ namespace cast
 {
 
 /**
-\brief Function object that does a static_cast
+\brief Function object that applies a cast function to a result type
 
 \ingroup fcpptcasts
 */
-struct static_cast_fun
+template<
+	typename Fun,
+	typename Res
+>
+struct apply
 {
 	template<
-		typename Dest,
-		typename Source
+		typename Src
 	>
-	static
-	Dest
-	execute(
-		Source const &_source
-	)
+	Res
+	operator()(
+		Src const &_src
+	) const
 	{
 		return
-			static_cast<
-				Dest
+			Fun :: template execute <
+				Res
 			>(
-				_source
+				_src
 			);
 	}
 };

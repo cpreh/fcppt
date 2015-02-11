@@ -266,6 +266,7 @@ set(
 	include/fcppt/backtrace/stack_limit.hpp
 	include/fcppt/c_deleter.hpp
 	include/fcppt/c_deleter_fwd.hpp
+	include/fcppt/cast/apply.hpp
 	include/fcppt/cast/bad_dynamic.hpp
 	include/fcppt/cast/bad_truncation_check.hpp
 	include/fcppt/cast/detail/safe.hpp
@@ -745,7 +746,6 @@ set(
 	include/fcppt/math/detail/one_dimensional_output.hpp
 	include/fcppt/math/detail/pi.hpp
 	include/fcppt/math/detail/structure_cast.hpp
-	include/fcppt/math/detail/structure_cast_fun.hpp
 	include/fcppt/math/detail/to_different.hpp
 	include/fcppt/math/detail/transform.hpp
 	include/fcppt/math/detail/unary_type.hpp

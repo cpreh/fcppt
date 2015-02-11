@@ -7,7 +7,7 @@
 #ifndef FCPPT_MATH_DETAIL_STRUCTURE_CAST_HPP_INCLUDED
 #define FCPPT_MATH_DETAIL_STRUCTURE_CAST_HPP_INCLUDED
 
-#include <fcppt/math/detail/structure_cast_fun.hpp>
+#include <fcppt/cast/apply.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/iterator/transform_iterator.hpp>
 #include <type_traits>
@@ -27,43 +27,19 @@ template<
 	typename U
 >
 inline
-typename std::enable_if<
-	std::is_same<
-		T,
-		U
-	>::value,
-	T
->::type const
+T
 structure_cast(
 	U const &_other
 )
 {
-	return
-		_other;
-}
-
-template<
-	typename T,
-	typename Conv,
-	typename U
->
-inline
-typename std::enable_if<
-	!std::is_same<
-		T,
-		U
-	>::value,
-	T
->::type const
-structure_cast(
-	U const &_other
-)
-{
-	typedef fcppt::math::detail::structure_cast_fun<
+	typedef
+	fcppt::cast::apply<
+		Conv,
 		typename T::value_type
-	> op_type;
+	>
+	op_type;
 
-	op_type const op = {};
+	op_type const op{};
 
 	static_assert(
 		std::is_same<

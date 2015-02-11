@@ -4,7 +4,7 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/cast/int_to_float_fun.hpp>
+#include <fcppt/cast/float_to_int_fun.hpp>
 #include <fcppt/math/box/object_impl.hpp>
 #include <fcppt/math/box/structure_cast.hpp>
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
@@ -48,7 +48,7 @@ FCPPT_PP_POP_WARNING
 	BOOST_REQUIRE((
 		fcppt::math::box::structure_cast<
 			box_i2,
-			fcppt::cast::int_to_float_fun
+			fcppt::cast::float_to_int_fun
 		>(
 			box1
 		)

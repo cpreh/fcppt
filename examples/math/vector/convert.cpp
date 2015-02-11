@@ -4,12 +4,13 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/cast/int_to_float_fun.hpp>
+#include <fcppt/cast/float_to_int_fun.hpp>
 #include <fcppt/math/vector/construct.hpp>
 #include <fcppt/math/vector/narrow_cast.hpp>
 #include <fcppt/math/vector/output.hpp>
 #include <fcppt/math/vector/static.hpp>
 #include <fcppt/math/vector/structure_cast.hpp>
+#include <fcppt/math/vector/to_unsigned.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <iostream>
 #include <ostream>
@@ -29,17 +30,24 @@ int main()
 	);
 
 	typedef fcppt::math::vector::static_<
+		int,
+		2
+	> int2_vec;
+
+	typedef fcppt::math::vector::static_<
 		unsigned,
 		2
 	> unsigned2_vec;
 
 	// cast all the elements from float to unsigned int
 	unsigned2_vec const vecui2(
-		fcppt::math::vector::structure_cast<
-			unsigned2_vec,
-			fcppt::cast::int_to_float_fun
-		>(
-			vecf2
+		fcppt::math::vector::to_unsigned(
+			fcppt::math::vector::structure_cast<
+				int2_vec,
+				fcppt::cast::float_to_int_fun
+			>(
+				vecf2
+			)
 		)
 	);
 

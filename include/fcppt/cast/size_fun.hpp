@@ -26,10 +26,11 @@ struct size_fun
 		typename Dest,
 		typename Source
 	>
+	static
 	Dest
-	operator()(
+	execute(
 		Source const &_source
-	) const
+	)
 	{
 		return
 			fcppt::cast::size<

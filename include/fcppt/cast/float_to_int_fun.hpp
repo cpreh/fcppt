@@ -26,10 +26,11 @@ struct float_to_int_fun
 		typename Dest,
 		typename Source
 	>
+	static
 	Dest
-	operator()(
+	execute(
 		Source const &_source
-	) const
+	)
 	{
 		return
 			fcppt::cast::float_to_int<

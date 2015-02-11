@@ -140,6 +140,14 @@ public:
 	> pos;
 
 	/**
+	\brief A signed version of pos
+	*/
+	typedef fcppt::container::grid::pos<
+		difference_type,
+		N
+	> signed_pos;
+
+	/**
 	\brief An empty grid.
 	*/
 	object();
