@@ -8,6 +8,7 @@
 #define FCPPT_DETAIL_RUNTIME_ENUM_FUNCTION_HPP_INCLUDED
 
 #include <fcppt/nonassignable.hpp>
+#include <fcppt/cast/static_cast_fun.hpp>
 #include <fcppt/mpl/integral_cast.hpp>
 
 
@@ -56,6 +57,7 @@ public:
 				typename
 				fcppt::mpl::integral_cast<
 					Enum,
+					fcppt::cast::static_cast_fun,
 					Index
 				>::type{}
 			);

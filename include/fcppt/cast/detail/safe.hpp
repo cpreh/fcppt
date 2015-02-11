@@ -24,6 +24,7 @@ template<
 	typename T,
 	typename U
 >
+constexpr
 typename
 std::enable_if<
 	!(
@@ -49,6 +50,7 @@ template<
 	typename T,
 	typename U
 >
+constexpr
 typename
 std::enable_if<
 	std::is_arithmetic<

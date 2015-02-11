@@ -9,13 +9,20 @@
 
 #include <fcppt/is_strong_typedef.hpp>
 #include <fcppt/strong_typedef_impl.hpp>
+#include <fcppt/cast/apply.hpp>
 
 
 namespace fcppt
 {
 
+/**
+\brief Applies a cast from fcppt.cast and then construct the strong typedef
+
+\ingroup fcpptstrongtypedef
+*/
 template<
 	typename StrongTypedef,
+	typename Conv,
 	typename Arg
 >
 StrongTypedef
@@ -32,9 +39,11 @@ strong_typedef_construct_cast(
 
 	return
 		StrongTypedef(
-			static_cast<
-				typename StrongTypedef::value_type
-			>(
+			fcppt::cast::apply<
+				Conv,
+				typename
+				StrongTypedef::value_type
+			>{}(
 				_arg
 			)
 		);

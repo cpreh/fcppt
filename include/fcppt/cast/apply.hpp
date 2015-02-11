@@ -27,6 +27,7 @@ struct apply
 	template<
 		typename Src
 	>
+	constexpr
 	Res
 	operator()(
 		Src const &_src

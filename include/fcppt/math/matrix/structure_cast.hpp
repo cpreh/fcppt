@@ -20,7 +20,7 @@ namespace matrix
 {
 
 /**
-\brief Converts a matrix into a different matrix of the same dimension using static_cast
+\brief Converts a matrix into a different matrix of the same dimension using Conv
 \ingroup fcpptmathmatrix
 \tparam Dest The destination matrix's <code>value_type</code>
 \tparam T The matrix's <code>value_type</code>

@@ -50,6 +50,7 @@ template<
 	typename Dest,
 	typename Source
 >
+constexpr
 Dest
 safe_numeric(
 	Source const &_source

@@ -25,6 +25,7 @@ struct static_cast_fun
 		typename Source
 	>
 	static
+	constexpr
 	Dest
 	execute(
 		Source const &_source

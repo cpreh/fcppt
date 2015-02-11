@@ -47,21 +47,15 @@ runtime_enum(
 
 	typedef
 	typename
-	std::make_unsigned<
-		typename
-		std::underlying_type<
-			Enum
-		>::type
+	fcppt::enum_size_type<
+		Enum
 	>::type
 	int_type;
 
 	return
 		fcppt::mpl::runtime_index<
-			fcppt::mpl::integral_cast<
-				int_type,
-				fcppt::enum_size<
-					Enum
-				>
+			fcppt::enum_size<
+				Enum
 			>
 		>(
 			static_cast<

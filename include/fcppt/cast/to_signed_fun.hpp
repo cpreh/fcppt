@@ -29,6 +29,7 @@ struct to_signed_fun
 		typename Dest,
 		typename Source
 	>
+	constexpr
 	static
 	Dest
 	execute(

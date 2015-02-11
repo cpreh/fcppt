@@ -5,6 +5,7 @@
 
 
 #include <fcppt/text.hpp>
+#include <fcppt/cast/to_unsigned_fun.hpp>
 #include <fcppt/io/cout.hpp>
 #include <fcppt/mpl/append.hpp>
 #include <fcppt/mpl/ceil_div.hpp>
@@ -203,7 +204,7 @@ namespace integral_cast
 {
 //! [mpl_integral_cast]
 typedef
-boost::mpl::integral_c<
+std::integral_constant<
 	int,
 	2
 > integral;
@@ -211,6 +212,7 @@ boost::mpl::integral_c<
 typedef
 fcppt::mpl::integral_cast<
 	unsigned,
+	fcppt::cast::to_unsigned_fun,
 	integral
 >::type
 result;

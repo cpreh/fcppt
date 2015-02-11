@@ -7,9 +7,7 @@
 #ifndef FCPPT_MPL_INTEGRAL_CAST_HPP_INCLUDED
 #define FCPPT_MPL_INTEGRAL_CAST_HPP_INCLUDED
 
-#include <fcppt/preprocessor/disable_gcc_warning.hpp>
-#include <fcppt/preprocessor/pop_warning.hpp>
-#include <fcppt/preprocessor/push_warning.hpp>
+#include <fcppt/cast/apply.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
@@ -20,42 +18,38 @@ namespace fcppt
 namespace mpl
 {
 
-FCPPT_PP_PUSH_WARNING
-FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
-
 /**
-\brief Does an integral cast on compile an integral constant
+\brief Does an integral cast on an integral constant
 
 \ingroup fcpptmpl
 
-Casts \a Integral to the correspoding type using \a IntegralType. Equivalent to
-<code>std::integral_constant<IntegralType,
-static_cast<IntegralType>(Integral::value)</code>.
+Casts \a Integral to an integral constant of type \a IntegralType. The cast is
+done using \a Conv from fcppt.casts.
 
 \snippet mpl/various.cpp mpl_integral_cast
 
 \tparam IntegralType An integral type to cast to
 
+\tparam Conv A cast function from fcppt.casts
+
 \tparam Integral An MPL integral constant to cast from
 */
 template<
 	typename IntegralType,
+	typename Conv,
 	typename Integral
 >
-struct integral_cast
-:
+using integral_cast
+=
 std::integral_constant<
 	IntegralType,
-	static_cast<
+	fcppt::cast::apply<
+		Conv,
 		IntegralType
-	>(
+	>{}(
 		Integral::value
 	)
->
-{
-};
-
-FCPPT_PP_POP_WARNING
+>;
 
 }
 }

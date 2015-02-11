@@ -33,6 +33,7 @@ template<
 	typename Dest,
 	typename Source
 >
+inline
 Dest
 from_void_ptr(
 	Source *const _ptr

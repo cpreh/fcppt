@@ -11,9 +11,7 @@
 #include <fcppt/make_literal_fwd.hpp>
 #include <fcppt/strong_typedef_construct_cast.hpp>
 #include <fcppt/strong_typedef_impl.hpp>
-#include <fcppt/config/external_begin.hpp>
-#include <boost/units/quantity.hpp>
-#include <fcppt/config/external_end.hpp>
+#include <fcppt/cast/static_cast_fun.hpp>
 
 
 namespace fcppt
@@ -56,7 +54,8 @@ struct make_literal<
 
 		return
 			fcppt::strong_typedef_construct_cast<
-				decorated_type
+				decorated_type,
+				fcppt::cast::static_cast_fun
 			>(
 				_fundamental
 			);
