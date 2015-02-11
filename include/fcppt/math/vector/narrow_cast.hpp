@@ -57,7 +57,7 @@ template<
 	typename N,
 	typename S
 >
-Dest const
+Dest
 narrow_cast(
 	fcppt::math::vector::object<
 		T,

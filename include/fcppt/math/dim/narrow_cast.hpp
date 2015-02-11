@@ -25,7 +25,7 @@ namespace dim
 \tparam N The dim's dimension
 \tparam T The dim's <code>value_type</code>
 \tparam S The dim's storage type
-\param src The dim to shorten (narrow)
+\param _src The dim to shorten (narrow)
 
 The inverse operation is fcppt::math::dim::construct.
 
@@ -57,16 +57,21 @@ template<
 	typename N,
 	typename S
 >
-Dest const
+Dest
 narrow_cast(
-	object<T, N, S> const &src
+	fcppt::math::dim::object<
+		T,
+		N,
+		S
+	> const &_src
 )
 {
-	return math::detail::narrow_cast<
-		Dest
-	>(
-		src
-	);
+	return
+		fcppt::math::detail::narrow_cast<
+			Dest
+		>(
+			_src
+		);
 }
 
 }

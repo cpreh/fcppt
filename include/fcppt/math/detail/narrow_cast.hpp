@@ -7,9 +7,7 @@
 #ifndef FCPPT_MATH_DETAIL_NARROW_CAST_HPP_INCLUDED
 #define FCPPT_MATH_DETAIL_NARROW_CAST_HPP_INCLUDED
 
-#include <fcppt/math/detail/structure_cast_fun.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/iterator/transform_iterator.hpp>
 #include <boost/mpl/less.hpp>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
@@ -26,18 +24,11 @@ template<
 	typename T,
 	typename U
 >
-T const
+T
 narrow_cast(
 	U const &_other
 )
 {
-	typedef
-	fcppt::math::detail::structure_cast_fun<
-		typename T::value_type
-	> op_type;
-
-	op_type const op = op_type{};
-
 	static_assert(
 		std::is_same<
 			typename T::value_type,
@@ -56,16 +47,10 @@ narrow_cast(
 
 	return
 		T(
-			boost::make_transform_iterator(
-				_other.begin(),
-				op
-			),
-			boost::make_transform_iterator(
-				_other.begin()
-				+
-				T::dim_wrapper::value,
-				op
-			)
+			_other.begin(),
+			_other.begin()
+			+
+			T::dim_wrapper::value
 		);
 }
 
