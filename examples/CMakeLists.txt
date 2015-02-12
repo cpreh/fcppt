@@ -36,15 +36,20 @@ function(
 		""
 	)
 		set(
-			FCPPT_EXAMPLE_NAME
-			example_${MAINNAME}
+			FCPPT_EXAMPLE_NAME_SUFFIX
+			${MAINNAME}
 		)
 	else()
 		set(
-			FCPPT_EXAMPLE_NAME
-			example_${_SUBNAME}_${MAINNAME}
+			FCPPT_EXAMPLE_NAME_SUFFIX
+			${_SUBNAME}_${MAINNAME}
 		)
 	endif()
+
+	set(
+		FCPPT_EXAMPLE_NAME
+		fcppt_example_${FCPPT_EXAMPLE_NAME_SUFFIX}
+	)
 
 	if(
 		_IS_C
@@ -295,5 +300,11 @@ add_subdirectory(
 add_subdirectory(
 	random
 )
-add_subdirectory(signal)
-add_subdirectory(variant)
+
+add_subdirectory(
+	signal
+)
+
+add_subdirectory(
+	variant
+)

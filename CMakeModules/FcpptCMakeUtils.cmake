@@ -1054,7 +1054,7 @@ function(
 
 	set(
 		FULL_TEST_NAME
-		test_${TEST_NAME}
+		${PROJECT_NAME}_test_${TEST_NAME}
 	)
 
 	add_executable(
