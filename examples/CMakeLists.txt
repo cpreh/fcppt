@@ -221,12 +221,6 @@ add_fcppt_example(
 )
 
 add_fcppt_example(
-	sleep
-	LINK_LIBS
-		${fcppt_core_TARGET}
-)
-
-add_fcppt_example(
 	string_conversion
 	LINK_LIBS
 		${fcppt_core_TARGET}

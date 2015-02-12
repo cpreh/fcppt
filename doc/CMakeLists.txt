@@ -158,7 +158,6 @@ set(
 	examples/signal/connection.cpp
 	examples/signal/simple.cpp
 	examples/signal/unregister.cpp
-	examples/sleep.cpp
 	examples/smart_ptr_deleter.cpp
 	examples/string_conversion.cpp
 	examples/time_parse.cpp
@@ -1084,19 +1083,13 @@ set(
 	include/fcppt/symbol/import.hpp
 	include/fcppt/text.hpp
 	include/fcppt/time/ctime.hpp
-	include/fcppt/time/detail/sleep_duration.hpp
 	include/fcppt/time/exception.hpp
 	include/fcppt/time/gmtime.hpp
 	include/fcppt/time/impl/exception.hpp
-	include/fcppt/time/impl/sleep_interrupted.hpp
 	include/fcppt/time/localtime.hpp
 	include/fcppt/time/output_tm.hpp
 	include/fcppt/time/parse_date.hpp
 	include/fcppt/time/parse_time.hpp
-	include/fcppt/time/sleep.hpp
-	include/fcppt/time/sleep_any.hpp
-	include/fcppt/time/sleep_duration.hpp
-	include/fcppt/time/sleep_interrupted.hpp
 	include/fcppt/time/std_time.hpp
 	include/fcppt/to_std_string.hpp
 	include/fcppt/to_std_string_locale.hpp

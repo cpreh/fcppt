@@ -779,19 +779,13 @@ set(
 	include/fcppt/strong_typedef_std_hash.hpp
 	include/fcppt/text.hpp
 	include/fcppt/time/ctime.hpp
-	include/fcppt/time/detail/sleep_duration.hpp
 	include/fcppt/time/exception.hpp
 	include/fcppt/time/gmtime.hpp
 	include/fcppt/time/impl/exception.hpp
-	include/fcppt/time/impl/sleep_interrupted.hpp
 	include/fcppt/time/localtime.hpp
 	include/fcppt/time/output_tm.hpp
 	include/fcppt/time/parse_date.hpp
 	include/fcppt/time/parse_time.hpp
-	include/fcppt/time/sleep.hpp
-	include/fcppt/time/sleep_any.hpp
-	include/fcppt/time/sleep_duration.hpp
-	include/fcppt/time/sleep_interrupted.hpp
 	include/fcppt/time/std_time.hpp
 	include/fcppt/to_std_string.hpp
 	include/fcppt/to_std_string_locale.hpp
@@ -888,7 +882,6 @@ set(
 	src/include/fcppt/src/codecvt.hpp
 	src/include/fcppt/src/codecvt_type.hpp
 	src/include/fcppt/src/export_class_instantiation_impl.hpp
-	src/include/fcppt/src/include_windows.hpp
 	src/include/fcppt/src/time/time_get.hpp
 	src/include/fcppt/src/time/time_get_parse.hpp
 	src/io/cerr.cpp
@@ -904,7 +897,6 @@ set(
 	src/time/output_tm.cpp
 	src/time/parse_date.cpp
 	src/time/parse_time.cpp
-	src/time/sleep.cpp
 	src/time/std_time.cpp
 	src/to_std_string.cpp
 	src/to_std_string_locale.cpp
