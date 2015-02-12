@@ -47,10 +47,9 @@ doxygen-1.7.5</a>.
 The following platforms are tested by us:
 
 <ul>
-	<li>gcc-4.8.3 (Gentoo Linux)</li>
-	<li>gcc-4.9.1 (Gentoo Linux)</li>
+	<li>gcc-4.9.2 (Gentoo Linux)</li>
 	<li>gcc-4.8.1 (MinGW)</li>
-	<li>clang 3.5 (Gentoo Linux)</li>
+	<li>clang 3.5.1 (Gentoo Linux)</li>
 </ul>
 
 fcppt needs a C++11 conforming compiler which probably excludes everything
