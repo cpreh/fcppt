@@ -1,6 +1,71 @@
 /**
 \page changes Changes
 
+\section changes_changes_to_120 Changes from 1.1.0 to 1.2.0
+
+\subsection changes_general_to_120 General changes
+
+<ul>
+
+<li>Ignore VC++ warnings about implicitly deleted move ctors and assignment
+operators in external headers. This goes towards supporting VC++ again, but the
+2015 preview still has issues with noexcept.</li>
+
+</ul>
+
+\subsection changes_added_functionality_to_120 Added functionality
+
+<ul>
+
+<li>Added fcppt::algorithm::find_by_opt and fcppt::algorithm::find_by_exn.</li>
+
+<li>Added fcppt::optional_to_exception.</li>
+
+<li>Added element_type typedef to fcppt::optional.</li>
+
+</ul>
+
+\subsection changes_changed_functionality_to_120 Changed functionality
+
+<ul>
+
+<li>Changed fcppt::algorithm::array_fold_static and
+fcppt::algorithm::enum_array_fold_static to take function objects that are
+callable with one parameter instead of zero parameters. This also goes towards
+supporting VC++ again.</li>
+
+<li>Require cast functions from \ref fcpptcasts in fcppt::strong_typedef_construct_cast
+and fcppt::mpl::integral_cast.</li>
+
+</ul>
+
+\subsection changes_removed_from_libraries_to_120 Removed functionality
+
+<ul>
+
+<li>Removed fcppt::io::color which had a very questionable implementation.</li>
+
+<li>Removed fcppt::algorithm::copy_n. Use std::copy_n instead.</li>
+
+<li>Removed fcppt::math::is_rational which was unused.</li>
+
+<li>Removed fcppt::number_multiplexer which was undocumented.</li>
+
+<li>Removed fcppt::time::sleep. Use std::this_thread::sleep_for instead.</li>
+
+</ul>
+
+\subsection changes_bugfixes_to_120 Bugfixes
+
+<ul>
+
+<li>Fixed cmake-3.1.1 warnings about quoting in if statements.</li>
+
+<li>Fixed structure_cast functions in math to actually use their conversion
+functions instead of static_cast.</li>
+
+</ul>
+
 \section changes_changes_to_110 Changes from 1.0.0 to 1.1.0
 
 \subsection changes_general_to_110 General changes
