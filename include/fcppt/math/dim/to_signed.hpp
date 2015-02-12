@@ -8,9 +8,9 @@
 #define FCPPT_MATH_DIM_TO_SIGNED_HPP_INCLUDED
 
 #include <fcppt/cast/to_signed_fun.hpp>
+#include <fcppt/math/dim/object_impl.hpp>
 #include <fcppt/math/dim/static.hpp>
 #include <fcppt/math/dim/structure_cast.hpp>
-#include <fcppt/math/dim/object_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>

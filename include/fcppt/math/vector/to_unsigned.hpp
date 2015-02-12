@@ -8,9 +8,9 @@
 #define FCPPT_MATH_VECTOR_TO_UNSIGNED_HPP_INCLUDED
 
 #include <fcppt/cast/to_unsigned_fun.hpp>
+#include <fcppt/math/vector/object_impl.hpp>
 #include <fcppt/math/vector/static.hpp>
 #include <fcppt/math/vector/structure_cast.hpp>
-#include <fcppt/math/vector/object_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
