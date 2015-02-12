@@ -41,6 +41,8 @@ public:
 	/**
 	\brief Creates a range
 
+	If end < begin the range will be empty.
+
 	\param begin The first element in the range
 
 	\param end The element one past the end

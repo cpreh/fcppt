@@ -137,3 +137,21 @@ FCPPT_PP_POP_WARNING
 		}
 	);
 }
+
+BOOST_AUTO_TEST_CASE(
+	int_range_empty
+)
+{
+
+FCPPT_PP_POP_WARNING
+
+	test(
+		fcppt::make_int_range(
+			3,
+			2
+		),
+		std::vector<
+			int
+		>{}
+	);
+}

@@ -26,6 +26,12 @@ fcppt::int_range<
 	},
 	end_{
 		_end
+		<
+		_begin
+		?
+			_begin
+		:
+			_end
 	}
 {
 }
