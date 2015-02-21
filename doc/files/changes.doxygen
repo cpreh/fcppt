@@ -64,6 +64,8 @@ and fcppt::mpl::integral_cast.</li>
 <li>Fixed structure_cast functions in math to actually use their conversion
 functions instead of static_cast.</li>
 
+<li>Int ranges where end < begin are now empty.</li>
+
 </ul>
 
 \section changes_changes_to_110 Changes from 1.0.0 to 1.1.0
