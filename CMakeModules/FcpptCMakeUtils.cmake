@@ -533,13 +533,27 @@ function(
 			STREQUAL
 			".hpp"
 		)
-			set_source_files_properties(
-				"${CUR_FILE}"
-				PROPERTIES
+			set(
 				LANGUAGE
 				"CXX"
 			)
+		elseif(
+			"${CUR_EXT}"
+			STREQUAL
+			".h"
+		)
+			set(
+				LANGUAGE
+				"C"
+			)
 		endif()
+
+		set_source_files_properties(
+			"${CUR_FILE}"
+			PROPERTIES
+			LANGUAGE
+			${LANGUAGE}
+		)
 	endforeach()
 endfunction()
 
