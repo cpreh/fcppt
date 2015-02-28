@@ -1,5 +1,5 @@
 {
-	"standard_match" : "./(examples|include|src|test)/.*\.?pp",
+	"standard_match" : "./(examples|include|src|test)/(.*\.?pp|.*\.h)",
 	"main_license" : "util/license_template.hpp",
 	"exceptions" :
 	 [
