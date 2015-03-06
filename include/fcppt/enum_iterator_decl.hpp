@@ -30,11 +30,12 @@ FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
 template<
 	typename Enum
 >
-class enum_iterator
+class enum_iterator final
 :
-	public fcppt::detail::enum_iterator_base<
-		Enum
-	>
+	public
+		fcppt::detail::enum_iterator_base<
+			Enum
+		>
 {
 public:
 	typedef

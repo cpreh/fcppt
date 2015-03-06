@@ -26,24 +26,21 @@ namespace detail
 template<
 	typename Grid
 >
-struct pos_iterator_base
-{
-	typedef
-	boost::iterator_facade<
-		fcppt::container::grid::pos_iterator<
-			Grid
-		>,
-		typename
-		Grid::value_type,
-		boost::forward_traversal_tag,
-		fcppt::container::grid::pos_reference<
-			Grid
-		>,
-		typename
-		Grid::difference_type
-	>
-	type;
-};
+using pos_iterator_base
+=
+boost::iterator_facade<
+	fcppt::container::grid::pos_iterator<
+		Grid
+	>,
+	typename
+	Grid::value_type,
+	boost::forward_traversal_tag,
+	fcppt::container::grid::pos_reference<
+		Grid
+	>,
+	typename
+	Grid::difference_type
+>;
 
 }
 }

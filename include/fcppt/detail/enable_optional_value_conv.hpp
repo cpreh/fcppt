@@ -7,9 +7,6 @@
 #ifndef FCPPT_DETAIL_ENABLE_OPTIONAL_VALUE_CONV_HPP_INCLUDED
 #define FCPPT_DETAIL_ENABLE_OPTIONAL_VALUE_CONV_HPP_INCLUDED
 
-#include <fcppt/preprocessor/disable_gcc_warning.hpp>
-#include <fcppt/preprocessor/pop_warning.hpp>
-#include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/type_traits/remove_cv_ref.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <type_traits>
@@ -21,16 +18,13 @@ namespace fcppt
 namespace detail
 {
 
-FCPPT_PP_PUSH_WARNING
-FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
-
 template<
 	typename Own,
 	typename Other,
 	typename Result
 >
-struct enable_optional_value_conv final
-:
+using enable_optional_value_conv
+=
 std::enable_if<
 	std::is_reference<
 		Other
@@ -43,11 +37,7 @@ std::enable_if<
 			Other
 		>::type
 	>::value
->
-{
-};
-
-FCPPT_PP_POP_WARNING
+>;
 
 }
 }

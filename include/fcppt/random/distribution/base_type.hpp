@@ -7,9 +7,6 @@
 #ifndef FCPPT_RANDOM_DISTRIBUTION_BASE_TYPE_HPP_INCLUDED
 #define FCPPT_RANDOM_DISTRIBUTION_BASE_TYPE_HPP_INCLUDED
 
-#include <fcppt/preprocessor/disable_gcc_warning.hpp>
-#include <fcppt/preprocessor/pop_warning.hpp>
-#include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/random/distribution/detail/base_type.hpp>
 
 
@@ -19,9 +16,6 @@ namespace random
 {
 namespace distribution
 {
-
-FCPPT_PP_PUSH_WARNING
-FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
 
 /**
 \brief Calculates the base type
@@ -35,15 +29,11 @@ recursively, until no specialization is found.
 template<
 	typename Type
 >
-struct base_type
-:
+using base_type
+=
 fcppt::random::distribution::detail::base_type<
 	Type
->
-{
-};
-
-FCPPT_PP_POP_WARNING
+>;
 
 }
 }

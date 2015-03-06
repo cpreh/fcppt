@@ -29,19 +29,18 @@ template<
 	typename StoredType,
 	typename Reference
 >
-struct iterator_type
-{
-	typedef boost::iterator_facade<
-		fcppt::container::bitfield::iterator<
-			StoredType,
-			Reference
-		>,
-		fcppt::container::bitfield::value_type,
-		std::random_access_iterator_tag,
-		Reference,
-		std::ptrdiff_t
-	> type;
-};
+using iterator_type
+=
+boost::iterator_facade<
+	fcppt::container::bitfield::iterator<
+		StoredType,
+		Reference
+	>,
+	fcppt::container::bitfield::value_type,
+	std::random_access_iterator_tag,
+	Reference,
+	std::ptrdiff_t
+>;
 
 }
 }

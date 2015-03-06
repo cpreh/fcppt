@@ -7,9 +7,6 @@
 #ifndef FCPPT_VARIANT_DETAIL_DISABLE_OBJECT_HPP_INCLUDED
 #define FCPPT_VARIANT_DETAIL_DISABLE_OBJECT_HPP_INCLUDED
 
-#include <fcppt/preprocessor/disable_gcc_warning.hpp>
-#include <fcppt/preprocessor/pop_warning.hpp>
-#include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/type_traits/remove_cv_ref.hpp>
 #include <fcppt/variant/is_object.hpp>
 #include <fcppt/config/external_begin.hpp>
@@ -24,15 +21,12 @@ namespace variant
 namespace detail
 {
 
-FCPPT_PP_PUSH_WARNING
-FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
-
 template<
 	typename U,
 	typename T = void
 >
-struct disable_object final
-:
+using disable_object
+=
 std::enable_if<
 	!(
 		std::is_const<
@@ -48,11 +42,7 @@ std::enable_if<
 		>::value
 	),
 	T
->
-{
-};
-
-FCPPT_PP_POP_WARNING
+>;
 
 }
 }

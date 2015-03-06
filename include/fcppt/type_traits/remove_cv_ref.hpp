@@ -7,9 +7,6 @@
 #ifndef FCPPT_TYPE_TRAITS_REMOVE_CV_REF_HPP_INCLUDED
 #define FCPPT_TYPE_TRAITS_REMOVE_CV_REF_HPP_INCLUDED
 
-#include <fcppt/preprocessor/disable_gcc_warning.hpp>
-#include <fcppt/preprocessor/pop_warning.hpp>
-#include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
@@ -19,9 +16,6 @@ namespace fcppt
 {
 namespace type_traits
 {
-
-FCPPT_PP_PUSH_WARNING
-FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
 
 /**
 \brief Removes references and cv qualifiers
@@ -36,17 +30,13 @@ Removes references and cv qualifiers from \a Type. It's the same as applying
 template<
 	typename Type
 >
-struct remove_cv_ref
-:
+using remove_cv_ref
+=
 std::remove_cv<
 	typename std::remove_reference<
 		Type
 	>::type
->
-{
-};
-
-FCPPT_PP_POP_WARNING
+>;
 
 }
 }

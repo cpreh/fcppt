@@ -49,19 +49,22 @@ Here is a short example demonstrating its use.
 template<
 	typename ContainerIterator
 >
-class cyclic_iterator
+class cyclic_iterator final
 :
-	public fcppt::detail::cyclic_iterator_base<
-		ContainerIterator
-	>::type
+	public
+		fcppt::detail::cyclic_iterator_base<
+			ContainerIterator
+		>
 {
 public:
 	/**
 	\brief The base type which is a <code>boost::iterator_facade</code>
 	*/
-	typedef typename detail::cyclic_iterator_base<
+	typedef
+	fcppt::detail::cyclic_iterator_base<
 		ContainerIterator
-	>::type base_type;
+	>
+	base_type;
 
 	/**
 	\brief The underlying iterator type

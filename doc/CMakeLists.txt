@@ -355,7 +355,6 @@ set(
 	include/fcppt/container/grid/detail/assign_fill_recurse.hpp
 	include/fcppt/container/grid/detail/assign_recurse.hpp
 	include/fcppt/container/grid/detail/at.hpp
-	include/fcppt/container/grid/detail/choose_pointer.hpp
 	include/fcppt/container/grid/detail/choose_reference.hpp
 	include/fcppt/container/grid/detail/fill.hpp
 	include/fcppt/container/grid/detail/interpolate.hpp

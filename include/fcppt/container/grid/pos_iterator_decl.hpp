@@ -33,18 +33,17 @@ FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
 template<
 	typename Grid
 >
-class pos_iterator
+class pos_iterator final
 :
 	public
-	fcppt::container::grid::detail::pos_iterator_base<
-		Grid
-	>::type
+		fcppt::container::grid::detail::pos_iterator_base<
+			Grid
+		>
 {
 	typedef
-	typename
 	fcppt::container::grid::detail::pos_iterator_base<
 		Grid
-	>::type
+	>
 	base_type;
 
 	typedef

@@ -43,17 +43,19 @@ template<
 	typename StoredType,
 	typename Reference
 >
-class iterator
+class iterator final
 :
 	public fcppt::container::bitfield::detail::iterator_type<
 		StoredType,
 		Reference
-	>::type
+	>
 {
-	typedef typename fcppt::container::bitfield::detail::iterator_type<
+	typedef
+	fcppt::container::bitfield::detail::iterator_type<
 		StoredType,
 		Reference
-	>::type base;
+	>
+	base;
 public:
 	/**
 	\brief The value type associated with the iterator

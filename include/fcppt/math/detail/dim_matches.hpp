@@ -8,12 +8,10 @@
 #define FCPPT_MATH_DETAIL_DIM_MATCHES_HPP_INCLUDED
 
 #include <fcppt/math/size_type.hpp>
-#include <fcppt/preprocessor/disable_gcc_warning.hpp>
-#include <fcppt/preprocessor/pop_warning.hpp>
-#include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/mpl/bool.hpp>
 #include <fcppt/config/external_end.hpp>
+
 
 namespace fcppt
 {
@@ -22,21 +20,15 @@ namespace math
 namespace detail
 {
 
-FCPPT_PP_PUSH_WARNING
-FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
-
 template<
 	fcppt::math::size_type Desired,
 	fcppt::math::size_type Current
 >
-struct dim_matches
-:
-	boost::mpl::bool_<
-		Desired == Current
-	>
-{};
-
-FCPPT_PP_POP_WARNING
+using dim_matches
+=
+boost::mpl::bool_<
+	Desired == Current
+>;
 
 }
 }

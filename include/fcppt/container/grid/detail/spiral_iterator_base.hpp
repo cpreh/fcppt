@@ -25,21 +25,18 @@ namespace detail
 template<
 	typename Pos
 >
-struct spiral_iterator_base
-{
-	typedef
-	boost::iterator_facade<
-		fcppt::container::grid::spiral_iterator<
-			Pos
-		>,
-		Pos,
-		boost::forward_traversal_tag,
-		Pos,
-		typename
-		Pos::value_type
-	>
-	type;
-};
+using spiral_iterator_base
+=
+boost::iterator_facade<
+	fcppt::container::grid::spiral_iterator<
+		Pos
+	>,
+	Pos,
+	boost::forward_traversal_tag,
+	Pos,
+	typename
+	Pos::value_type
+>;
 
 }
 }

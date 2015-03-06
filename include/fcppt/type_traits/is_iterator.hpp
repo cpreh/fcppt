@@ -7,19 +7,16 @@
 #ifndef FCPPT_TYPE_TRAITS_IS_ITERATOR_HPP_INCLUDED
 #define FCPPT_TYPE_TRAITS_IS_ITERATOR_HPP_INCLUDED
 
-#include <fcppt/preprocessor/disable_gcc_warning.hpp>
-#include <fcppt/preprocessor/pop_warning.hpp>
-#include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/type_traits/detail/is_iterator.hpp>
+#include <fcppt/config/external_begin.hpp>
+#include <boost/mpl/bool.hpp>
+#include <fcppt/config/external_end.hpp>
 
 
 namespace fcppt
 {
 namespace type_traits
 {
-
-FCPPT_PP_PUSH_WARNING
-FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
 
 /**
 \brief Checks if a type is an iterator
@@ -36,15 +33,13 @@ iterator_category</code>.
 template<
 	typename Type
 >
-struct is_iterator
-:
-fcppt::type_traits::detail::is_iterator<
-	Type
->
-{
-};
-
-FCPPT_PP_POP_WARNING
+using is_iterator
+=
+boost::mpl::bool_<
+	fcppt::type_traits::detail::is_iterator<
+		Type
+	>::value
+>;
 
 }
 }

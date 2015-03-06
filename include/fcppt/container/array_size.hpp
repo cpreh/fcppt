@@ -8,18 +8,12 @@
 #define FCPPT_CONTAINER_ARRAY_SIZE_HPP_INCLUDED
 
 #include <fcppt/container/detail/array_size.hpp>
-#include <fcppt/preprocessor/disable_gcc_warning.hpp>
-#include <fcppt/preprocessor/pop_warning.hpp>
-#include <fcppt/preprocessor/push_warning.hpp>
 
 
 namespace fcppt
 {
 namespace container
 {
-
-FCPPT_PP_PUSH_WARNING
-FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
 
 /**
 \brief Defines the size of an array
@@ -33,15 +27,11 @@ Defines the size of \a Array by deriving from an integral constant.
 template<
 	typename Array
 >
-struct array_size
-:
+using array_size
+=
 fcppt::container::detail::array_size<
 	Array
->
-{
-};
-
-FCPPT_PP_POP_WARNING
+>;
 
 }
 }

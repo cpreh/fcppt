@@ -31,18 +31,17 @@ FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
 template<
 	typename Pos
 >
-class spiral_iterator
+class spiral_iterator final
 :
 	public
-	fcppt::container::grid::detail::spiral_iterator_base<
-		Pos
-	>::type
+		fcppt::container::grid::detail::spiral_iterator_base<
+			Pos
+		>
 {
 	typedef
-	typename
 	fcppt::container::grid::detail::spiral_iterator_base<
 		Pos
-	>::type
+	>
 	base_type;
 
 	typedef

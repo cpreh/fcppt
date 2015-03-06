@@ -7,21 +7,16 @@
 #ifndef FCPPT_TYPE_TRAITS_IS_INPUT_ITERATOR_HPP_INCLUDED
 #define FCPPT_TYPE_TRAITS_IS_INPUT_ITERATOR_HPP_INCLUDED
 
-#include <fcppt/preprocessor/disable_gcc_warning.hpp>
-#include <fcppt/preprocessor/pop_warning.hpp>
-#include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/type_traits/is_iterator_of_category.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <iterator>
 #include <fcppt/config/external_end.hpp>
 
+
 namespace fcppt
 {
 namespace type_traits
 {
-
-FCPPT_PP_PUSH_WARNING
-FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
 
 /**
 \brief Checks if an iterator is an input iterator
@@ -35,16 +30,12 @@ Checks if \a Iterator is an input iterator.
 template<
 	typename Iterator
 >
-struct is_input_iterator
-:
+using is_input_iterator
+=
 fcppt::type_traits::is_iterator_of_category<
 	Iterator,
 	std::input_iterator_tag
->
-{
-};
-
-FCPPT_PP_POP_WARNING
+>;
 
 }
 }

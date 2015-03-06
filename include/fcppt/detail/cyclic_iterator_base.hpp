@@ -14,6 +14,7 @@
 #include <iterator>
 #include <fcppt/config/external_end.hpp>
 
+
 namespace fcppt
 {
 namespace detail
@@ -22,25 +23,24 @@ namespace detail
 template<
 	typename ContainerIterator
 >
-struct cyclic_iterator_base
-{
-	typedef boost::iterator_facade<
-		fcppt::cyclic_iterator<
-			ContainerIterator
-		>,
+using cyclic_iterator_base
+=
+boost::iterator_facade<
+	fcppt::cyclic_iterator<
+		ContainerIterator
+	>,
+	typename std::iterator_traits<
+		ContainerIterator
+	>::value_type,
+	typename fcppt::detail::cyclic_iterator_category<
 		typename std::iterator_traits<
 			ContainerIterator
-		>::value_type,
-		typename fcppt::detail::cyclic_iterator_category<
-			typename std::iterator_traits<
-				ContainerIterator
-			>::iterator_category
-		>::type,
-		typename std::iterator_traits<
-			ContainerIterator
-		>::reference
-	> type;
-};
+		>::iterator_category
+	>::type,
+	typename std::iterator_traits<
+		ContainerIterator
+	>::reference
+>;
 
 }
 }

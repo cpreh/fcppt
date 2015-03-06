@@ -24,9 +24,9 @@ template<
 	typename Dim,
 	typename Pos
 >
-typename fcppt::container::grid::detail::choose_reference<
+fcppt::container::grid::detail::choose_reference<
 	Container
->::type
+>
 access_member(
 	Container &_container,
 	Dim const &_dim,

@@ -117,7 +117,7 @@ public:
 FCPPT_PP_PUSH_WARNING
 FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
 
-	class iterator
+	class iterator final
 	:
 		public iterator_base
 	{

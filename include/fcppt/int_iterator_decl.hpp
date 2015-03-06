@@ -29,11 +29,12 @@ FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
 template<
 	typename Int
 >
-class int_iterator
+class int_iterator final
 :
-	public fcppt::detail::int_iterator_base<
-		Int
-	>
+	public
+		fcppt::detail::int_iterator_base<
+			Int
+		>
 {
 public:
 	int_iterator();
