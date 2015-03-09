@@ -548,12 +548,16 @@ function(
 			)
 		endif()
 
-		set_source_files_properties(
-			"${CUR_FILE}"
-			PROPERTIES
-			LANGUAGE
-			${LANGUAGE}
+		if(
+			DEFINED LANGUAGE
 		)
+			set_source_files_properties(
+				"${CUR_FILE}"
+				PROPERTIES
+				LANGUAGE
+				${LANGUAGE}
+			)
+		endif()
 	endforeach()
 endfunction()
 
