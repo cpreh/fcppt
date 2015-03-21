@@ -58,9 +58,8 @@ set(
 # absolute path here, so please change it in the build if your distribution is
 # using relative paths.
 if(
-	"${CMAKE_INSTALL_LIBDIR}"
-	STREQUAL
-	""
+	DEFINED
+	CMAKE_INSTALL_LIBDIR
 )
 	set(
 		FCPPT_UTILS_DEFAULT_INSTALL_LIB_DIR
@@ -685,7 +684,7 @@ endfunction()
 
 set(
 	FCPPT_UTILS_TARGETS_CONFIG
-	"${PROJECT_NAME}Targets"
+	"${PROJECT_NAME}Targets.cmake"
 )
 
 set(
@@ -695,43 +694,25 @@ set(
 
 set(
 	FCPPT_UTILS_BUILD_CONFIG
-	"${FCPPT_UTILS_BUILD_CONFIG_DIR}/${FCPPT_UTILS_TARGETS_CONFIG}.cmake"
+	"${FCPPT_UTILS_BUILD_CONFIG_DIR}/${FCPPT_UTILS_TARGETS_CONFIG}"
 )
 
-function(
-	fcppt_utils_prepare_config
+set(
+	FCPPT_UTILS_EXPORT_NAME
+	"${PROJECT_NAME}Export"
 )
-	file(
-		REMOVE
-		"${FCPPT_UTILS_BUILD_CONFIG}"
-	)
-
-	file(
-		WRITE
-		"${FCPPT_UTILS_BUILD_CONFIG}"
-		""
-	)
-endfunction()
 
 function(
 	fcppt_utils_export_install_target
 	TARGETNAME
 )
-	export(
-		TARGETS
-		${TARGETNAME}
-		FILE
-		"${FCPPT_UTILS_BUILD_CONFIG}"
-		APPEND
-	)
-
 	install(
 		TARGETS
 		${TARGETNAME}
 		DESTINATION
 		"${INSTALL_LIBRARY_DIR}"
 		EXPORT
-		"${FCPPT_UTILS_TARGETS_CONFIG}"
+		"${FCPPT_UTILS_EXPORT_NAME}"
 	)
 endfunction()
 
@@ -814,6 +795,13 @@ function(
 		@ONLY
 	)
 
+	export(
+		EXPORT
+		"${FCPPT_UTILS_EXPORT_NAME}"
+		FILE
+		"${FCPPT_UTILS_BUILD_CONFIG}"
+	)
+
 	install(
 		FILES
 		"${CONFIG_DEST}"
@@ -826,6 +814,8 @@ function(
 	)
 		install(
 			EXPORT
+			"${FCPPT_UTILS_EXPORT_NAME}"
+			FILE
 			"${FCPPT_UTILS_TARGETS_CONFIG}"
 			DESTINATION
 			"${INSTALL_CMAKECONFIG_DIR}"
