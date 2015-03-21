@@ -795,13 +795,6 @@ function(
 		@ONLY
 	)
 
-	export(
-		EXPORT
-		"${FCPPT_UTILS_EXPORT_NAME}"
-		FILE
-		"${FCPPT_UTILS_BUILD_CONFIG}"
-	)
-
 	install(
 		FILES
 		"${CONFIG_DEST}"
@@ -812,6 +805,13 @@ function(
 	if(
 		NOT FCPPT_UTILS_NO_TARGETS
 	)
+		export(
+			EXPORT
+			"${FCPPT_UTILS_EXPORT_NAME}"
+			FILE
+			"${FCPPT_UTILS_BUILD_CONFIG}"
+		)
+
 		install(
 			EXPORT
 			"${FCPPT_UTILS_EXPORT_NAME}"
