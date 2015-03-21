@@ -40,7 +40,7 @@ template<
 >
 TargetContainer
 map_concat_move(
-	SourceContainer const &_source,
+	SourceContainer &&_source,
 	Function const &_function
 )
 {
@@ -48,7 +48,11 @@ map_concat_move(
 		fcppt::algorithm::detail::map_concat<
 			TargetContainer
 		>(
-			_source,
+			std::forward<
+				SourceContainer
+			>(
+				_source
+			),
 			_function,
 			[](
 				TargetContainer &&_state1,

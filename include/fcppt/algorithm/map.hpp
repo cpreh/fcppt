@@ -7,6 +7,7 @@
 #ifndef FCPPT_ALGORITHM_MAP_HPP_INCLUDED
 #define FCPPT_ALGORITHM_MAP_HPP_INCLUDED
 
+#include <fcppt/algorithm/range_element_type.hpp>
 #include <fcppt/algorithm/detail/map_reserve.hpp>
 
 
@@ -37,7 +38,7 @@ template<
 >
 TargetContainer
 map(
-	SourceContainer const &_source,
+	SourceContainer &&_source,
 	Function const &_function
 )
 {
@@ -49,7 +50,9 @@ map(
 	);
 
 	for(
-		auto const &element
+		fcppt::algorithm::range_element_type<
+			SourceContainer
+		> element
 		:
 		_source
 	)

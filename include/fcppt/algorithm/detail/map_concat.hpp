@@ -8,6 +8,7 @@
 #define FCPPT_ALGORITHM_DETAIL_MAP_CONCAT_HPP_INCLUDED
 
 #include <fcppt/algorithm/fold.hpp>
+#include <fcppt/algorithm/range_element_type.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <utility>
 #include <fcppt/config/external_end.hpp>
@@ -29,20 +30,26 @@ template<
 inline
 TargetContainer
 map_concat(
-	SourceContainer const &_source,
+	SourceContainer &&_source,
 	Function const &_function,
 	BinOp const &_bin_op
 )
 {
 	return
 		fcppt::algorithm::fold(
-			_source,
+			std::forward<
+				SourceContainer
+			>(
+				_source
+			),
 			TargetContainer(),
 			[
 				&_function,
 				&_bin_op
 			](
-				typename SourceContainer::const_reference _ref,
+				fcppt::algorithm::range_element_type<
+					SourceContainer
+				> _ref,
 				TargetContainer &&_state
 			)
 			{

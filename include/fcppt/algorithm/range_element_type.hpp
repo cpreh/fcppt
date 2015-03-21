@@ -4,39 +4,39 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_CONTAINER_GRID_DETAIL_CHOOSE_REFERENCE_HPP_INCLUDED
-#define FCPPT_CONTAINER_GRID_DETAIL_CHOOSE_REFERENCE_HPP_INCLUDED
+#ifndef FCPPT_ALGORITHM_RANGE_ELEMENT_TYPE_HPP_INCLUDED
+#define FCPPT_ALGORITHM_RANGE_ELEMENT_TYPE_HPP_INCLUDED
 
 #include <fcppt/config/external_begin.hpp>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
 
+/**
+\brief The type of a range element
+
+\ingroup fcpptalgorithm
+
+Depending on the range, this can be a reference, const reference or an object
+type.
+*/
 namespace fcppt
 {
-namespace container
-{
-namespace grid
-{
-namespace detail
+namespace algorithm
 {
 
 template<
-	typename Container
+	typename Range
 >
-using choose_reference
+using
+range_element_type
 =
-typename
-std::conditional<
-	std::is_const<
-		Container
-	>::value,
-	typename Container::const_reference,
-	typename Container::reference
->::type;
+decltype(
+	*std::declval<
+		Range
+	>().begin()
+);
 
-}
-}
 }
 }
 

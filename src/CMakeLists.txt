@@ -41,6 +41,7 @@ set(
 	include/fcppt/algorithm/map_iteration.hpp
 	include/fcppt/algorithm/map_iteration_second.hpp
 	include/fcppt/algorithm/map_optional.hpp
+	include/fcppt/algorithm/range_element_type.hpp
 	include/fcppt/algorithm/remove.hpp
 	include/fcppt/algorithm/remove_if.hpp
 	include/fcppt/algorithm/repeat.hpp
@@ -154,7 +155,6 @@ set(
 	include/fcppt/container/grid/detail/assign_fill_recurse.hpp
 	include/fcppt/container/grid/detail/assign_recurse.hpp
 	include/fcppt/container/grid/detail/at.hpp
-	include/fcppt/container/grid/detail/choose_reference.hpp
 	include/fcppt/container/grid/detail/fill.hpp
 	include/fcppt/container/grid/detail/interpolate.hpp
 	include/fcppt/container/grid/detail/pos_iterator_base.hpp
@@ -793,6 +793,7 @@ set(
 	include/fcppt/type_name.hpp
 	include/fcppt/type_name_from_index.hpp
 	include/fcppt/type_name_from_info.hpp
+	include/fcppt/type_traits/choose_reference.hpp
 	include/fcppt/type_traits/detail/has_const_iterator.hpp
 	include/fcppt/type_traits/detail/has_iterator.hpp
 	include/fcppt/type_traits/detail/is_iterator.hpp

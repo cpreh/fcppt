@@ -7,6 +7,7 @@
 #ifndef FCPPT_ALGORITHM_FOLD_HPP_INCLUDED
 #define FCPPT_ALGORITHM_FOLD_HPP_INCLUDED
 
+#include <fcppt/algorithm/range_element_type.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <utility>
 #include <fcppt/config/external_end.hpp>
@@ -38,15 +39,18 @@ template<
 	typename State,
 	typename Function
 >
+inline
 State
 fold(
-	Container const &_container,
+	Container &&_container,
 	State _state,
 	Function _function
 )
 {
 	for(
-		auto const &element
+		fcppt::algorithm::range_element_type<
+			Container
+		> element
 		:
 		_container
 	)
