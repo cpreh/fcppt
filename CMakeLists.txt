@@ -82,27 +82,6 @@ option(
 
 fcppt_utils_static_shared()
 
-function(
-	fcppt_link_target
-	LIBNAME
-)
-	if(
-		FCPPT_UTILS_DEFAULT_LINK_STATIC
-	)
-		set(
-			${LIBNAME}_TARGET
-			${LIBNAME}_static
-			PARENT_SCOPE
-		)
-	else()
-		set(
-			${LIBNAME}_TARGET
-			${LIBNAME}
-			PARENT_SCOPE
-		)
-	endif()
-endfunction()
-
 set(
 	FCPPT_NARROW_STRING
 	${ENABLE_NARROW_STRING}
@@ -237,6 +216,11 @@ include(
 	CMakeParseArguments
 )
 
+set(
+	FCPPT_STATIC_LINK_FLAG
+	FCPPT_STATIC_LINK
+)
+
 function(
 	make_fcppt_library_base
 	TARGETNAME
@@ -286,7 +270,7 @@ function(
 	fcppt_utils_interface_static_link(
 		${TARGETNAME}
 		${_VARIANT}
-		"FCPPT_STATIC_LINK"
+		${FCPPT_STATIC_LINK_FLAG}
 	)
 
 	target_include_directories(
@@ -370,7 +354,7 @@ function(
 		SYMBOL_NAME
 			"${_SYMBOL_NAME}_DETAIL"
 		STATIC_LINK_FLAG
-			"FCPPT_STATIC_LINK"
+			"${FCPPT_STATIC_LINK_FLAG}"
 	)
 
 	if(
@@ -392,15 +376,25 @@ function(
 			FCPPTDEP
 			${_FCPPT_DEPS}
 		)
+			fcppt_utils_static_link_name(
+				${FCPPTDEP}
+				STATIC_NAME
+			)
+
 			list(
 				APPEND
 				REAL_FCPPT_DEPS
-				"${FCPPTDEP}_static"
+				${STATIC_NAME}
 			)
 		endforeach()
 
+		fcppt_utils_static_link_name(
+			${FULL_NAME}
+			STATIC_NAME
+		)
+
 		make_fcppt_library_base(
-			"${FULL_NAME}_static"
+			"${STATIC_NAME}"
 			"${CUR_FILES}"
 			VARIANT
 				"STATIC"

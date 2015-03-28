@@ -23,15 +23,15 @@ function(
 endfunction()
 
 
-fcppt_link_target(
+fcppt_utils_link_target(
 	fcppt_core
 )
 
-fcppt_link_target(
+fcppt_utils_link_target(
 	fcppt_filesystem
 )
 
-fcppt_link_target(
+fcppt_utils_link_target(
 	fcppt_log
 )
 

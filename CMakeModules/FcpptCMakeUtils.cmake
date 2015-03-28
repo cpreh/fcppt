@@ -1065,6 +1065,50 @@ function(
 endfunction()
 
 function(
+	fcppt_utils_static_link_name
+	LIBNAME
+	RESULT
+)
+	set(
+		${RESULT}
+		${LIBNAME}_static
+		PARENT_SCOPE
+	)
+endfunction()
+
+function(
+	fcppt_utils_link_target
+	LIBNAME
+)
+	set(
+		TARGET_NAME
+		${LIBNAME}_TARGET
+	)
+
+	if(
+		FCPPT_UTILS_DEFAULT_LINK_STATIC
+	)
+		fcppt_utils_static_link_name(
+			${LIBNAME}
+			STATIC_NAME
+		)
+
+		set(
+			${TARGET_NAME}
+			${STATIC_NAME}
+			PARENT_SCOPE
+		)
+	else()
+		set(
+			${TARGET_NAME}
+			${LIBNAME}
+			PARENT_SCOPE
+		)
+	endif()
+endfunction()
+
+
+function(
 	fcppt_utils_interface_static_link
 	TARGET_NAME
 	VARIANT
