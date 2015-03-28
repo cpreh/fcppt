@@ -75,58 +75,19 @@ else()
 endif()
 
 option(
-	ENABLE_SHARED
-	"Build fcppt as shared libraries"
-	TRUE
-)
-
-option(
-	ENABLE_STATIC
-	"Build fcppt as static libraries"
-	FALSE
-)
-
-option(
 	ENABLE_NARROW_STRING
 	"Build fcppt with std::string instead of std::wstring"
 	${ENABLE_NARROW_STRING_DEFAULT}
 )
 
-if(
-	NOT ENABLE_SHARED AND NOT ENABLE_STATIC
-)
-	message(
-		FATAL_ERROR
-		"You disabled both STATIC and SHARED"
-	)
-endif()
-
-# choose a library to link the tests to
-if(
-	ENABLE_SHARED
-)
-	set(
-		FCPPT_DEFAULT_LINK_STATIC
-		FALSE
-	)
-endif()
-
-# static overrides shared
-if(
-	ENABLE_STATIC
-)
-	set(
-		FCPPT_DEFAULT_LINK_STATIC
-		TRUE
-	)
-endif()
+fcppt_utils_static_shared()
 
 function(
 	fcppt_link_target
 	LIBNAME
 )
 	if(
-		FCPPT_DEFAULT_LINK_STATIC
+		FCPPT_UTILS_DEFAULT_LINK_STATIC
 	)
 		set(
 			${LIBNAME}_TARGET
@@ -173,7 +134,8 @@ set(
 
 set(
 	NEEDED_BOOST_LIBS
-	"filesystem;system"
+	filesystem
+	system
 )
 
 if(

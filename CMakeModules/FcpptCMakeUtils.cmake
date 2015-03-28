@@ -1018,6 +1018,53 @@ function(
 endfunction()
 
 function(
+	fcppt_utils_static_shared
+)
+	option(
+		ENABLE_SHARED
+		"Build shared libraries"
+		ON
+	)
+
+	option(
+		ENABLE_STATIC
+		"Build static libraries"
+		OFF
+	)
+
+	if(
+		NOT ENABLE_SHARED AND NOT ENABLE_STATIC
+	)
+		message(
+			FATAL_ERROR
+			"You disabled both STATIC and SHARED"
+		)
+	endif()
+
+	# choose a library to link the tests to
+	if(
+		ENABLE_SHARED
+	)
+		set(
+			FCPPT_UTILS_DEFAULT_LINK_STATIC
+			FALSE
+			PARENT_SCOPE
+		)
+	endif()
+
+	# static overrides shared
+	if(
+		ENABLE_STATIC
+	)
+		set(
+			FCPPT_UTILS_DEFAULT_LINK_STATIC
+			TRUE
+			PARENT_SCOPE
+		)
+	endif()
+endfunction()
+
+function(
 	fcppt_utils_interface_static_link
 	TARGET_NAME
 	VARIANT
