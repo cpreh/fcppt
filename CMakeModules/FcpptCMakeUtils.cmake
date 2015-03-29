@@ -1041,24 +1041,23 @@ function(
 		)
 	endif()
 
-	# choose a library to link the tests to
-	if(
-		ENABLE_SHARED
-	)
-		set(
-			FCPPT_UTILS_DEFAULT_LINK_STATIC
-			FALSE
-			PARENT_SCOPE
-		)
-	endif()
-
-	# static overrides shared
 	if(
 		ENABLE_STATIC
 	)
 		set(
 			FCPPT_UTILS_DEFAULT_LINK_STATIC
 			TRUE
+			PARENT_SCOPE
+		)
+	endif()
+
+	# shared overrides static
+	if(
+		ENABLE_SHARED
+	)
+		set(
+			FCPPT_UTILS_DEFAULT_LINK_STATIC
+			FALSE
 			PARENT_SCOPE
 		)
 	endif()
