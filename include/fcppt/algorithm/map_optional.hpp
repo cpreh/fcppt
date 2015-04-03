@@ -83,7 +83,7 @@ map_optional(
 			result.insert(
 				result.end(),
 				std::move(
-					*result_element
+					result_element.get_unsafe()
 				)
 			);
 	}

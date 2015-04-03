@@ -40,7 +40,7 @@ optional_to_exception(
 		_optional
 	)
 		return
-			*_optional;
+			_optional.get_unsafe();
 
 	throw
 		_make_exception();

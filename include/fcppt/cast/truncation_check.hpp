@@ -8,7 +8,7 @@
 #define FCPPT_CAST_TRUNCATION_CHECK_HPP_INCLUDED
 
 #include <fcppt/insert_to_fcppt_string.hpp>
-#include <fcppt/optional_impl.hpp>
+#include <fcppt/optional_to_exception.hpp>
 #include <fcppt/cast/bad_truncation_check.hpp>
 #include <fcppt/cast/detail/truncation_check.hpp>
 #include <fcppt/config/external_begin.hpp>
@@ -64,39 +64,35 @@ truncation_check(
 		"truncation_check_cast can only cast from integral to integral types"
 	);
 
-	typedef fcppt::optional<
-		Dest
-	> dest_type;
-
-	dest_type const dest(
-		fcppt::cast::detail::truncation_check<
-			Dest
-		>(
-			_source
-		)
-	);
-
-	if(
-		!dest
-	)
-		throw fcppt::cast::bad_truncation_check(
-			fcppt::insert_to_fcppt_string(
+	return
+		fcppt::optional_to_exception(
+			fcppt::cast::detail::truncation_check<
+				Dest
+			>(
 				_source
 			),
-			std::type_index(
-				typeid(
-					Source
-				)
-			),
-			std::type_index(
-				typeid(
-					Dest
-				)
-			)
+			[
+				_source
+			]
+			{
+				return
+					fcppt::cast::bad_truncation_check(
+						fcppt::insert_to_fcppt_string(
+							_source
+						),
+						std::type_index(
+							typeid(
+								Source
+							)
+						),
+						std::type_index(
+							typeid(
+								Dest
+							)
+						)
+					);
+			}
 		);
-
-	return
-		*dest;
 }
 
 }

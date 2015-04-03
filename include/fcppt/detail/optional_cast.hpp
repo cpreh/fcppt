@@ -20,7 +20,7 @@ _optional \
 		cast_type< \
 			Result & \
 		>( \
-			*_optional \
+			_optional.get_unsafe() \
 		) \
 	) \
 : \

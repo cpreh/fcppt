@@ -37,7 +37,7 @@ operator==(
 	return
 		_a && _b
 		?
-			*_a == *_b
+			_a.get_unsafe() == _b.get_unsafe()
 		:
 			_a.has_value() == _b.has_value()
 		;
@@ -90,7 +90,7 @@ operator<(
 	return
 		_a && _b
 		?
-			*_a < *_b
+			_a.get_unsafe() < _b.get_unsafe()
 		:
 			_a.has_value() < _b.has_value()
 		;

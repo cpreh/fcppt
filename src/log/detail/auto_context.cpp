@@ -4,13 +4,17 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
+#include <fcppt/maybe_void.hpp>
+#include <fcppt/optional_bind_construct.hpp>
 #include <fcppt/optional_impl.hpp>
-#include <fcppt/assert/pre.hpp>
+#include <fcppt/assert/optional_error.hpp>
 #include <fcppt/log/context.hpp>
+#include <fcppt/log/context_location.hpp>
 #include <fcppt/log/object_fwd.hpp>
 #include <fcppt/log/optional_location.hpp>
 #include <fcppt/log/detail/auto_context.hpp>
 #include <fcppt/log/detail/auto_context_rep.hpp>
+#include <fcppt/log/detail/context_tree.hpp>
 #include <fcppt/log/detail/optional_context_location.hpp>
 #include <fcppt/log/detail/optional_context_tree_ref.hpp>
 
@@ -21,30 +25,47 @@ fcppt::log::detail::auto_context::auto_context(
 )
 :
 	rep_(
-		_context_location
-		?
-			optional_auto_context_rep(
-				fcppt::log::detail::auto_context_rep(
-					*_context_location,
-					_context_location->context().add(
-						_context_location->location(),
-						_object
-					)
-				)
+		fcppt::optional_bind_construct(
+			_context_location,
+			[
+				&_object
+			](
+				fcppt::log::context_location const &_location
 			)
-		:
-			optional_auto_context_rep()
+			{
+				return
+					fcppt::log::detail::auto_context_rep(
+						_location,
+						_location.context().add(
+							_location.location(),
+							_object
+						)
+					);
+			}
+		)
 	)
 {
 }
 
 fcppt::log::detail::auto_context::~auto_context()
 {
+	// TODO: Make this possible using maybe_void
+	/*fcppt::maybe_void(
+		rep_,
+		[](
+			fcppt::log::detail::auto_context_rep &_rep
+		)
+		{
+			_rep.context().remove(
+				_rep.node()
+			);
+		}
+	);*/
 	if(
 		rep_
 	)
-		rep_->context().remove(
-			rep_->node()
+		rep_.get_unsafe().context().remove(
+			rep_.get_unsafe().node()
 		);
 }
 
@@ -52,28 +73,33 @@ fcppt::log::optional_location
 fcppt::log::detail::auto_context::location() const
 {
 	return
-		rep_
-		?
-			fcppt::log::optional_location(
-				rep_->location()
+		fcppt::optional_bind_construct(
+			rep_,
+			[](
+				fcppt::log::detail::auto_context_rep const &_rep
 			)
-		:
-			fcppt::log::optional_location()
-		;
+			{
+				return
+					_rep.location();
+			}
+		);
 }
 
 fcppt::log::detail::optional_context_tree_ref const
 fcppt::log::detail::auto_context::node() const
 {
 	return
-		rep_
-		?
-			fcppt::log::detail::optional_context_tree_ref(
-				rep_->node()
+		fcppt::optional_bind_construct(
+			rep_,
+			[](
+				fcppt::log::detail::auto_context_rep const &_rep
 			)
-		:
-			fcppt::log::detail::optional_context_tree_ref()
-		;
+			-> fcppt::log::detail::context_tree &
+			{
+				return
+					_rep.node();
+			}
+		);
 }
 
 void
@@ -82,21 +108,23 @@ fcppt::log::detail::auto_context::transfer(
 	fcppt::log::object &_object
 )
 {
-	FCPPT_ASSERT_PRE(
-		rep_
+	fcppt::log::detail::auto_context_rep &rep(
+		FCPPT_ASSERT_OPTIONAL_ERROR(
+			rep_
+		)
 	);
 
-	rep_->context().remove(
-		rep_->node()
+	rep.context().remove(
+		rep.node()
 	);
 
-	rep_->context(
+	rep.context(
 		_context
 	);
 
-	rep_->node(
+	rep.node(
 		_context.add(
-			rep_->location(),
+			rep.location(),
 			_object
 		)
 	);

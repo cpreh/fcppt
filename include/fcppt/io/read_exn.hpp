@@ -8,7 +8,7 @@
 #define FCPPT_IO_READ_EXN_HPP_INCLUDED
 
 #include <fcppt/exception.hpp>
-#include <fcppt/optional_impl.hpp>
+#include <fcppt/optional_to_exception.hpp>
 #include <fcppt/text.hpp>
 #include <fcppt/endianness/format_fwd.hpp>
 #include <fcppt/io/read.hpp>
@@ -58,28 +58,22 @@ read_exn(
 		"io::read_exn must return a fundamental type"
 	);
 
-	typedef fcppt::optional<
-		Type
-	> result_type;
-
-	result_type const result(
-		fcppt::io::read<
-			Type
-		>(
-			_stream,
-			_format
-		)
-	);
-
-	if(
-		!result
-	)
-		throw fcppt::exception(
-			FCPPT_TEXT("read_exn failed!")
-		);
-
 	return
-		*result;
+		fcppt::optional_to_exception(
+			fcppt::io::read<
+				Type
+			>(
+				_stream,
+				_format
+			),
+			[]
+			{
+				return
+					fcppt::exception(
+						FCPPT_TEXT("read_exn failed!")
+					);
+			}
+		);
 }
 
 }

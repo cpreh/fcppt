@@ -88,7 +88,7 @@ try
 	);
 
 	FCPPT_LOG_INFO(
-		*ref,
+		ref.get_unsafe(),
 		fcppt::log::_
 			<< FCPPT_TEXT("test output!")
 	);
@@ -104,7 +104,7 @@ try
 	);
 
 	FCPPT_LOG_INFO(
-		*child_ref,
+		child_ref.get_unsafe(),
 		fcppt::log::_
 			<< FCPPT_TEXT("child output!")
 	);
@@ -119,7 +119,7 @@ try
 	);
 
 	FCPPT_LOG_INFO(
-		*child_ref,
+		child_ref.get_unsafe(),
 		fcppt::log::_
 			<< FCPPT_TEXT("shouldn't be shown!")
 	);
@@ -132,5 +132,6 @@ catch(
 		<< _error.string()
 		<< FCPPT_TEXT('\n');
 
-	return EXIT_FAILURE;
+	return
+		EXIT_FAILURE;
 }

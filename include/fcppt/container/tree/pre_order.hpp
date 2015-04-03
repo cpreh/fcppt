@@ -16,6 +16,7 @@
 #include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/iterator/iterator_facade.hpp>
+#include <boost/range/iterator_range_core.hpp>
 #include <stack>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
@@ -185,32 +186,33 @@ FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
 		void
 		increment()
 		{
+			reference cur_deref(
+				this->dereference()
+			);
+
 			if(
-				!current_->empty()
+				!cur_deref.empty()
 			)
 			{
 				for(
-					tree_iterator
-						it(
-							current_->rbegin()
-						),
-						end(
-							std::prev(
-								current_->rend()
-							)
-						);
-					it != end;
-					++it
+					reference element
+					:
+					boost::make_iterator_range(
+						cur_deref.rbegin(),
+						std::prev(
+							cur_deref.rend()
+						)
+					)
 				)
 					positions_.push(
 						tree_ref(
-							*it
+							element
 						)
 					);
 
 				current_ =
 					tree_ref(
-						current_->front()
+						cur_deref.front()
 					);
 			}
 			else if(
@@ -229,7 +231,8 @@ FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
 		reference
 		dereference() const
 		{
-			return *current_;
+			return
+				current_.get_unsafe();
 		}
 
 		bool

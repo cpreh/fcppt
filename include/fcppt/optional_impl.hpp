@@ -261,7 +261,7 @@ typename fcppt::optional<
 >::reference
 fcppt::optional<
 	T
->::operator*()
+>::get_unsafe()
 {
 	return
 		*this->data();
@@ -275,38 +275,10 @@ typename fcppt::optional<
 >::const_reference
 fcppt::optional<
 	T
->::operator*() const
+>::get_unsafe() const
 {
 	return
 		*this->data();
-}
-
-template<
-	typename T
->
-typename fcppt::optional<
-	T
->::pointer
-fcppt::optional<
-	T
->::operator->()
-{
-	return
-		this->data();
-}
-
-template<
-	typename T
->
-typename fcppt::optional<
-	T
->::const_pointer
-fcppt::optional<
-	T
->::operator->() const
-{
-	return
-		this->data();
 }
 
 template<
@@ -442,7 +414,7 @@ fcppt::optional<
 		_other.has_value()
 	)
 		this->construct(
-			*_other
+			_other.get_unsafe()
 		);
 }
 
@@ -482,7 +454,7 @@ fcppt::optional<
 	{
 		this->move_from(
 			std::move(
-				*_other
+				_other.get_unsafe()
 			)
 		);
 
@@ -540,7 +512,7 @@ fcppt::optional<
 		&&
 		_other.has_value()
 	)
-		*this->data() = *_other;
+		*this->data() = _other.get_unsafe();
 	else
 	{
 		this->destroy();
@@ -607,7 +579,7 @@ fcppt::optional<
 	)
 		*this->data() =
 			std::move(
-				*_other
+				_other.get_unsafe()
 			);
 	else
 	{
@@ -688,7 +660,7 @@ fcppt::optional<
 	data_(
 		_other.has_value()
 		?
-			&*_other
+			&_other.get_unsafe()
 		:
 			nullptr
 	)
@@ -744,24 +716,10 @@ typename fcppt::optional<
 >::reference
 fcppt::optional<
 	T &
->::operator*() const
+>::get_unsafe() const
 {
 	return
 		*data_;
-}
-
-template<
-	typename T
->
-typename fcppt::optional<
-	T &
->::pointer
-fcppt::optional<
-	T &
->::operator->() const
-{
-	return
-		data_;
 }
 
 template<

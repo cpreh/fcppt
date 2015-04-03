@@ -9,7 +9,7 @@
 
 #include <fcppt/extract_from_string.hpp>
 #include <fcppt/extract_from_string_error.hpp>
-#include <fcppt/optional_impl.hpp>
+#include <fcppt/optional_to_exception.hpp>
 #include <fcppt/type_traits/is_string.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <locale>
@@ -61,25 +61,20 @@ extract_from_string_exn(
 		"extract_from_string_exn can only be used on strings"
 	);
 
-	typedef fcppt::optional<
-		Dest
-	> dest_opt;
-
-	dest_opt const ret(
-		fcppt::extract_from_string<
-			Dest
-		>(
-			_source,
-			_locale
-		)
-	);
-
-	if(
-		!ret
-	)
-		throw fcppt::extract_from_string_error();
-
-	return *ret;
+	return
+		fcppt::optional_to_exception(
+			fcppt::extract_from_string<
+				Dest
+			>(
+				_source,
+				_locale
+			),
+			[]
+			{
+				return
+					fcppt::extract_from_string_error();
+			}
+		);
 }
 
 }

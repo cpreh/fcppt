@@ -36,7 +36,7 @@ FCPPT_PP_POP_WARNING
 	};
 
 	BOOST_CHECK(
-		&*fcppt::algorithm::find_if_opt(
+		&fcppt::algorithm::find_if_opt(
 			vec.begin(),
 			vec.end(),
 			[](
@@ -46,7 +46,7 @@ FCPPT_PP_POP_WARNING
 				return
 					_i == 3;
 			}
-		)
+		).get_unsafe()
 		==
 		std::next(
 			vec.data(),

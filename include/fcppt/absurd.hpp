@@ -4,24 +4,27 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_ASSERT_MESSAGE_HPP_INCLUDED
-#define FCPPT_ASSERT_MESSAGE_HPP_INCLUDED
+#ifndef FCPPT_ABSURD_HPP_INCLUDED
+#define FCPPT_ABSURD_HPP_INCLUDED
 
-#include <fcppt/string.hpp>
-#include <fcppt/strong_typedef.hpp>
+#include <fcppt/config/external_begin.hpp>
+#include <exception>
+#include <fcppt/config/external_end.hpp>
 
 
 namespace fcppt
 {
-namespace assert_
+
+template<
+	typename T
+>
+inline
+T
+absurd()
 {
-
-FCPPT_MAKE_STRONG_TYPEDEF(
-	fcppt::string,
-	message
-);
-
+	std::terminate();
 }
+
 }
 
 #endif

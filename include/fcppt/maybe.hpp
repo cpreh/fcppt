@@ -49,16 +49,14 @@ maybe(
 {
 	static_assert(
 		std::is_same<
-			typename
-			std::result_of<
-				Default()
-			>::type,
-			typename
-			std::result_of<
-				Transform(
-					Type
+			decltype(
+				_default()
+			),
+			decltype(
+				_transform(
+					_optional.get_unsafe()
 				)
-			>::type
+			)
 		>::value,
 		"Default and Transform must return the same type"
 	);
@@ -67,7 +65,7 @@ maybe(
 		_optional
 		?
 			_transform(
-				*_optional
+				_optional.get_unsafe()
 			)
 		:
 			_default()

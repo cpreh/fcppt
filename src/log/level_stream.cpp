@@ -4,6 +4,7 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
+#include <fcppt/assert/optional_error.hpp>
 #include <fcppt/io/ostream.hpp>
 #include <fcppt/log/level_stream.hpp>
 #include <fcppt/log/detail/temporary_output.hpp>
@@ -42,7 +43,13 @@ fcppt::log::level_stream::log(
 	fcppt::log::format::function const &_additional_formatter
 )
 {
-	*dest_
+	fcppt::io::ostream &dest(
+		FCPPT_ASSERT_OPTIONAL_ERROR(
+			dest_
+		)
+	);
+
+	dest
 		<<
 		fcppt::log::format::create_chain(
 			_additional_formatter,
@@ -51,7 +58,7 @@ fcppt::log::level_stream::log(
 			_output.result()
 		);
 
-	dest_->flush();
+	dest.flush();
 }
 
 void

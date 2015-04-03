@@ -1,5 +1,6 @@
 set(
 	FCPPT_CORE_FILES
+	include/fcppt/absurd.hpp
 	include/fcppt/algorithm/append.hpp
 	include/fcppt/algorithm/array_binary_map.hpp
 	include/fcppt/algorithm/array_fold.hpp
@@ -74,6 +75,7 @@ set(
 	include/fcppt/assert/line.hpp
 	include/fcppt/assert/make_message.hpp
 	include/fcppt/assert/message.hpp
+	include/fcppt/assert/optional_error.hpp
 	include/fcppt/assert/post.hpp
 	include/fcppt/assert/post_message.hpp
 	include/fcppt/assert/pre.hpp

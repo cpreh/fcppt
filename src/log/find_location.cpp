@@ -22,18 +22,22 @@ fcppt::log::find_location(
 	);
 
 	for(
-		auto const &item : _location
+		auto const &item
+		:
+		_location
 	)
 	{
 		fcppt::log::detail::context_tree::iterator const item_it(
 			fcppt::log::find_inner_node(
-				*cur,
+				cur.get_unsafe(),
 				item
 			)
 		);
 
 		if(
-			item_it == cur->end()
+			item_it
+			==
+			cur.get_unsafe().end()
 		)
 			return
 				fcppt::log::detail::optional_context_tree_ref();
@@ -44,5 +48,6 @@ fcppt::log::find_location(
 			);
 	}
 
-	return cur;
+	return
+		cur;
 }

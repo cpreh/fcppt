@@ -57,7 +57,7 @@ level(
 		};
 		cur;
 		cur =
-			cur->parent(),
+			cur.get_unsafe().parent(),
 		++result
 	)
 		;

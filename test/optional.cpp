@@ -71,7 +71,7 @@ FCPPT_PP_POP_WARNING
 	);
 
 	BOOST_REQUIRE(
-		*test == "test"
+		test.get_unsafe() == "test"
 	);
 
 	test.reset();
@@ -159,7 +159,7 @@ FCPPT_PP_POP_WARNING
 	);
 
 	BOOST_CHECK(
-		*test2 == 42
+		test2.get_unsafe() == 42
 	);
 
 	test2 = test1;
@@ -199,7 +199,7 @@ FCPPT_PP_POP_WARNING
 	);
 
 	BOOST_CHECK(
-		*test2 == 42
+		test2.get_unsafe() == 42
 	);
 
 	int val2 = 50;
@@ -213,7 +213,7 @@ FCPPT_PP_POP_WARNING
 	);
 
 	BOOST_CHECK(
-		*test3 == 50
+		test3.get_unsafe() == 50
 	);
 
 	test3 = test1;
@@ -266,7 +266,7 @@ FCPPT_PP_POP_WARNING
 	);
 
 	BOOST_CHECK(
-		&*const_opt_ref == &val
+		&const_opt_ref.get_unsafe() == &val
 	);
 
 	typedef fcppt::optional<
@@ -282,11 +282,11 @@ FCPPT_PP_POP_WARNING
 	);
 
 	BOOST_CHECK(
-		*opt3 == 42
+		opt3.get_unsafe() == 42
 	);
 
 	BOOST_CHECK(
-		*opt4 == 42
+		opt4.get_unsafe() == 42
 	);
 }
 
@@ -429,7 +429,7 @@ FCPPT_PP_POP_WARNING
 	);
 
 	BOOST_CHECK(
-		&*derived_ref
+		&derived_ref.get_unsafe()
 		== &derived_object
 	);
 }
@@ -476,7 +476,7 @@ FCPPT_PP_POP_WARNING
 	);
 
 	BOOST_CHECK(
-		&*derived_ref
+		&derived_ref.get_unsafe()
 		== &derived_object
 	);
 }
@@ -513,7 +513,7 @@ FCPPT_PP_POP_WARNING
 	);
 
 	BOOST_CHECK(
-		&*nonconst_ref
+		&nonconst_ref.get_unsafe()
 		== &object
 	);
 }
@@ -646,7 +646,7 @@ FCPPT_PP_POP_WARNING
 	);
 
 	BOOST_CHECK(
-		optb->value()
+		optb.get_unsafe().value()
 		==
 		"test"
 	);
@@ -671,13 +671,13 @@ FCPPT_PP_POP_WARNING
 	);
 
 	BOOST_CHECK(
-		optc->value()
+		optc.get_unsafe().value()
 		==
 		"test"
 	);
 
 	BOOST_CHECK(
-		optb->value()
+		optb.get_unsafe().value()
 		==
 		"test2"
 	);
@@ -690,7 +690,7 @@ FCPPT_PP_POP_WARNING
 		);
 
 	BOOST_CHECK(
-		optd->value()
+		optd.get_unsafe().value()
 		==
 		"test3"
 	);
@@ -701,7 +701,7 @@ FCPPT_PP_POP_WARNING
 		);
 
 	BOOST_CHECK(
-		optd->value()
+		optd.get_unsafe().value()
 		==
 		"test4"
 	);
@@ -810,12 +810,12 @@ FCPPT_PP_POP_WARNING
 	);
 
 	BOOST_CHECK(
-		*fcppt::optional_bind_construct(
+		fcppt::optional_bind_construct(
 			optional_string(
 				"test"
 			),
 			conversion
-		)
+		).get_unsafe()
 		==
 		4u
 	);
@@ -829,7 +829,7 @@ FCPPT_PP_POP_WARNING
 	);
 
 	BOOST_CHECK(
-		*fcppt::optional_bind(
+		fcppt::optional_bind(
 			optional_string(
 				"test2"
 			),
@@ -842,7 +842,7 @@ FCPPT_PP_POP_WARNING
 				return
 					opt_string_ref;
 			}
-		)
+		).get_unsafe()
 		==
 		"test1"
 	);
@@ -885,7 +885,7 @@ FCPPT_PP_POP_WARNING
 	noncopyable test{};
 
 	BOOST_CHECK(
-		&*fcppt::optional_bind_construct(
+		&fcppt::optional_bind_construct(
 			optional_string(
 				"42"
 			),
@@ -899,7 +899,7 @@ FCPPT_PP_POP_WARNING
 				return
 					test;
 			}
-		)
+		).get_unsafe()
 		==
 		&test
 	);
@@ -1059,6 +1059,12 @@ FCPPT_PP_POP_WARNING
 	>
 	optional_int;
 
+	typedef
+	fcppt::optional<
+		int &
+	>
+	optional_int_ref;
+
 	int result{
 		0
 	};
@@ -1102,6 +1108,46 @@ FCPPT_PP_POP_WARNING
 		==
 		10
 	);
+
+	fcppt::maybe_void(
+		optional_int_ref(
+			result
+		),
+		[](
+			int &_val
+		)
+		{
+			_val = 42;
+		}
+	);
+
+	BOOST_CHECK(
+		result
+		==
+		42
+	);
+
+	optional_int temp(
+		0
+	);
+
+	// TODO: Make this possible!
+	/*
+	fcppt::maybe_void(
+		temp,
+		[](
+			int &_val
+		)
+		{
+			_val = 30;
+		}
+	);
+
+	BOOST_CHECK(
+		temp.get_unsafe()
+		==
+		30
+	);*/
 }
 
 namespace

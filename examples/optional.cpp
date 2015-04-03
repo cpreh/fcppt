@@ -37,7 +37,7 @@ optional_example()
 			)
 				// Output the value
 				// This is undefined if has_value() == false
-				std::cout << *opt << '\n';
+				std::cout << opt.get_unsafe() << '\n';
 		}
 	);
 
@@ -73,7 +73,7 @@ optional_copy()
 	int1 = 10u;
 
 	// The value of opt will still be 5u
-	std::cout << (*opt != int1) << '\n';
+	std::cout << (opt.get_unsafe() != int1) << '\n';
 //! [optional_copy]
 }
 
@@ -106,7 +106,7 @@ optional_bind()
 		)
 	};
 
-	std::cout << (*value == "3") << '\n';
+	std::cout << (value.get_unsafe() == "3") << '\n';
 //! [optional_bind]
 
 //! [optional_bind_construct]
@@ -125,7 +125,7 @@ optional_bind()
 		)
 	};
 
-	std::cout << (*value == "3") << '\n';
+	std::cout << (value.get_unsafe() == "3") << '\n';
 //! [optional_bind_construct]
 }
 

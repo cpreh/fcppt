@@ -4,8 +4,10 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
+#include <fcppt/maybe_void.hpp>
 #include <fcppt/text.hpp>
 #include <fcppt/io/ostream.hpp>
+#include <fcppt/log/location.hpp>
 #include <fcppt/log/object.hpp>
 #include <fcppt/log/optional_location.hpp>
 #include <fcppt/log/tree_function.hpp>
@@ -27,8 +29,18 @@ fcppt::log::print_locations_function(
 			fcppt::log::object const &_object
 		)
 		{
-			_stream
-				<< _object.location()->string()
-				<< FCPPT_TEXT('\n');
+			fcppt::maybe_void(
+				_object.location(),
+				[
+					&_stream
+				](
+					fcppt::log::location const &_location
+				)
+				{
+					_stream
+						<< _location.string()
+						<< FCPPT_TEXT('\n');
+				}
+			);
 		};
 }

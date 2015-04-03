@@ -268,7 +268,7 @@ public:
 	\warning The behaviour is undefined if <code>has_value()</code> is false
 	*/
 	reference
-	operator*();
+	get_unsafe();
 
 	/**
 	\brief Returns a const reference to the current value
@@ -276,23 +276,7 @@ public:
 	\warning The behaviour is undefined if <code>has_value()</code> is false
 	*/
 	const_reference
-	operator*() const;
-
-	/**
-	\brief Returns the pointer to the current value
-
-	\warning The behaviour is undefined if <code>has_value()</code> is false
-	*/
-	pointer
-	operator->();
-
-	/**
-	\brief Returns the const pointer to the current value
-
-	\warning The behaviour is undefined if <code>has_value()</code> is false
-	*/
-	const_pointer
-	operator->() const;
+	get_unsafe() const;
 
 	/**
 	\brief Resets the optional and destroys its value, if any
@@ -574,15 +558,7 @@ public:
 	\warning The behaviour is undefined if <code>has_value()</code> is false
 	*/
 	reference
-	operator*() const;
-
-	/**
-	\brief Returns the current reference by pointer
-
-	\warning The behaviour is undefined if <code>has_value()</code> is false
-	*/
-	pointer
-	operator->() const;
+	get_unsafe() const;
 
 	/**
 	\brief Returns a pointer to the current reference

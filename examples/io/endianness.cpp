@@ -46,7 +46,7 @@ main()
 		result
 	)
 		fcppt::io::cout()
-			<< *result
+			<< result.get_unsafe()
 			<< FCPPT_TEXT('\n');
 //[io_endianness]
 }

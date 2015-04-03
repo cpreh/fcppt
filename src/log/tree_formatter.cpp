@@ -26,7 +26,7 @@ fcppt::log::tree_formatter(
 		_node
 	);
 
-	_node = _node->parent();
+	_node = _node.get_unsafe().parent();
 
 	FCPPT_ASSERT_ERROR(
 		_node
@@ -36,13 +36,13 @@ fcppt::log::tree_formatter(
 
 	for(
 		;
-		_node->parent();
-		_node = _node->parent()
+		_node.get_unsafe().parent();
+		_node = _node.get_unsafe().parent()
 	)
 		ret =
 			fcppt::log::format::create_chain(
 				fcppt::log::format::create_prefix(
-					_node->value().get().get<
+					_node.get_unsafe().value().get().get<
 						fcppt::log::detail::inner_context_node
 					>().name()
 				),

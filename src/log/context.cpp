@@ -288,22 +288,22 @@ fcppt::log::context::remove(
 		node
 	);
 
-	node->erase(
+	node.get_unsafe().erase(
 		_tree.child_position()
 	);
 
 	while(
-		node->parent()
+		node.get_unsafe().parent()
 		&&
-		node->empty()
+		node.get_unsafe().empty()
 	)
 	{
 		fcppt::log::detail::context_tree::optional_ref const parent(
-			node->parent()
+			node.get_unsafe().parent()
 		);
 
-		parent->erase(
-			node->child_position()
+		parent.get_unsafe().erase(
+			node.get_unsafe().child_position()
 		);
 
 		node = parent;

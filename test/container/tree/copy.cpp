@@ -61,7 +61,7 @@ FCPPT_PP_POP_WARNING
 	BOOST_REQUIRE(
 		head2.front().has_parent()
 		&&
-		&*head2.front().parent()
+		&head2.front().parent().get_unsafe()
 		==
 		&head2
 	);
@@ -69,7 +69,7 @@ FCPPT_PP_POP_WARNING
 	BOOST_REQUIRE(
 		head2.back().has_parent()
 		&&
-		&*head2.back().parent()
+		&head2.back().parent().get_unsafe()
 		==
 		&head2
 	);

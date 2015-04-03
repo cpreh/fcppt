@@ -352,8 +352,7 @@ fcppt::container::tree::object<
 {
 	return
 		fcppt::algorithm::find_if_exn(
-			this->parent()->begin(),
-			this->parent()->end(),
+			this->parent().get_unsafe(),
 			[
 				this
 			](

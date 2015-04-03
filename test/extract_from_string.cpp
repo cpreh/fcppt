@@ -58,7 +58,7 @@ FCPPT_PP_POP_WARNING
 	);
 
 	BOOST_REQUIRE(
-		*int_val == 42
+		int_val.get_unsafe() == 42
 	);
 
 	BOOST_REQUIRE_EXCEPTION(

@@ -86,7 +86,7 @@ make_opt(
 					_result
 				),
 				std::move(
-					*_arg
+					_arg.get_unsafe()
 				)
 			)
 		:
@@ -123,7 +123,7 @@ make_opt(
 				std::move(
 					_result
 				),
-				*_arg
+				_arg.get_unsafe()
 			)
 		:
 			std::move(

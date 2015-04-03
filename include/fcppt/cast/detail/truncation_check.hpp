@@ -8,6 +8,7 @@
 #define FCPPT_CAST_DETAIL_TRUNCATION_CHECK_HPP_INCLUDED
 
 #include <fcppt/literal.hpp>
+#include <fcppt/optional_bind.hpp>
 #include <fcppt/optional_impl.hpp>
 #include <fcppt/cast/size.hpp>
 #include <fcppt/cast/to_signed.hpp>
@@ -273,27 +274,36 @@ truncation_check(
 	);
 
 	return
-		!dest
-		||
-		fcppt::cast::to_unsigned(
-			std::numeric_limits<
-				Dest
-			>::max()
-		)
-		<
-		*dest
-		?
-			dest_type()
-		:
-			dest_type(
-				fcppt::cast::size<
-					Dest
-				>(
-					fcppt::cast::to_signed(
-						_source
+		fcppt::optional_bind(
+			dest,
+			[
+				_source
+			](
+				intermediate_type const _dest
+			)
+			{
+				return
+					fcppt::cast::to_unsigned(
+						std::numeric_limits<
+							Dest
+						>::max()
 					)
-				)
-			);
+					<
+					_dest
+					?
+						dest_type()
+					:
+						dest_type(
+							fcppt::cast::size<
+								Dest
+							>(
+								fcppt::cast::to_signed(
+									_source
+								)
+							)
+						);
+			}
+		);
 }
 
 }

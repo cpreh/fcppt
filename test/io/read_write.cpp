@@ -53,7 +53,7 @@ test_read_write(
 	BOOST_CHECK(
 		result
 		&&
-		*result
+		result.get_unsafe()
 		==
 		42
 	);

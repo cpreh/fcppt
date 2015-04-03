@@ -38,7 +38,7 @@ from_optional(
 	return
 		_optional
 		?
-			*_optional
+			_optional.get_unsafe()
 		:
 			_default()
 		;

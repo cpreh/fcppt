@@ -72,7 +72,7 @@ optional_bind(
 		_source
 		?
 			_function(
-				*_source
+				_source.get_unsafe()
 			)
 		:
 			result_type{}
