@@ -7,11 +7,7 @@
 #ifndef FCPPT_CONTAINER_GET_OR_INSERT_HPP_INCLUDED
 #define FCPPT_CONTAINER_GET_OR_INSERT_HPP_INCLUDED
 
-#include <fcppt/from_optional.hpp>
-#include <fcppt/container/find_opt.hpp>
-#include <fcppt/config/external_begin.hpp>
-#include <utility>
-#include <fcppt/config/external_end.hpp>
+#include <fcppt/container/get_or_insert_with_result.hpp>
 
 
 namespace fcppt
@@ -20,7 +16,7 @@ namespace container
 {
 
 /**
-\brief Gets are inserts an element from a map
+\brief Gets from or inserts an element into a map
 
 \ingroup fcpptcontainer
 
@@ -37,6 +33,7 @@ template<
 	typename Container,
 	typename Create
 >
+inline
 typename
 Container::mapped_type &
 get_or_insert(
@@ -46,34 +43,11 @@ get_or_insert(
 )
 {
 	return
-		fcppt::from_optional(
-			fcppt::container::find_opt(
-				_container,
-				_key
-			),
-			[
-				&_container,
-				&_create,
-				&_key
-			]()
-			->
-			typename Container::mapped_type &
-			{
-				auto const inserted(
-					_container.insert(
-						std::make_pair(
-							_key,
-							_create(
-								_key
-							)
-						)
-					)
-				);
-
-				return
-					inserted.first->second;
-			}
-		);
+		fcppt::container::get_or_insert_with_result(
+			_container,
+			_key,
+			_create
+		).element();
 }
 
 }

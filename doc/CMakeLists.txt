@@ -349,6 +349,11 @@ set(
 	include/fcppt/container/find_exn.hpp
 	include/fcppt/container/find_opt.hpp
 	include/fcppt/container/get_or_insert.hpp
+	include/fcppt/container/get_or_insert_result.hpp
+	include/fcppt/container/get_or_insert_result_decl.hpp
+	include/fcppt/container/get_or_insert_result_fwd.hpp
+	include/fcppt/container/get_or_insert_result_impl.hpp
+	include/fcppt/container/get_or_insert_with_result.hpp
 	include/fcppt/container/grid/clamp_pos.hpp
 	include/fcppt/container/grid/clamp_signed_pos.hpp
 	include/fcppt/container/grid/comparison.hpp
