@@ -143,6 +143,10 @@ add_fcppt_test(
 )
 
 add_fcppt_test(
+	const
+)
+
+add_fcppt_test(
 	container/bitfield
 )
 
