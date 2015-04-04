@@ -7,7 +7,7 @@
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
-#include <fcppt/variant/get.hpp>
+#include <fcppt/variant/get_exn.hpp>
 #include <fcppt/variant/object.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/mpl/vector/vector10.hpp>
@@ -42,7 +42,7 @@ FCPPT_PP_POP_WARNING
 	);
 
 	BOOST_REQUIRE(
-		test.get<
+		test.get_exn<
 			std::string
 		>()
 		==
@@ -50,7 +50,7 @@ FCPPT_PP_POP_WARNING
 	);
 
 	BOOST_REQUIRE(
-		fcppt::variant::get<
+		fcppt::variant::get_exn<
 			std::string
 		>(
 			test

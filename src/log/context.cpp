@@ -4,9 +4,14 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
+#include <fcppt/make_ref.hpp>
 #include <fcppt/maybe.hpp>
+#include <fcppt/maybe_void.hpp>
 #include <fcppt/optional_bind.hpp>
+#include <fcppt/optional_bind_construct.hpp>
+#include <fcppt/reference_wrapper_impl.hpp>
 #include <fcppt/string.hpp>
+#include <fcppt/algorithm/map_optional.hpp>
 #include <fcppt/assert/error.hpp>
 #include <fcppt/assert/pre.hpp>
 #include <fcppt/container/tree/pre_order.hpp>
@@ -22,7 +27,7 @@
 #include <fcppt/src/log/find_inner_node.hpp>
 #include <fcppt/src/log/find_location.hpp>
 #include <fcppt/src/log/find_logger_node.hpp>
-#include <fcppt/src/log/is_outer_node.hpp>
+#include <fcppt/src/log/to_outer_node.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <exception>
 #include <vector>
@@ -54,43 +59,32 @@ fcppt::log::context::~context()
 fcppt::log::optional_object const
 fcppt::log::context::find(
 	fcppt::log::location const &_location
-) const
+)
 {
 	return
 		fcppt::optional_bind(
 			fcppt::log::find_location(
-				const_cast<
-					fcppt::log::detail::context_tree &
-				>(
-					tree_
-				),
+				tree_,
 				_location
 			),
 			[](
 				fcppt::log::detail::context_tree &_tree_location
 			)
 			{
-				fcppt::log::detail::context_tree::const_iterator const logger_node(
-					fcppt::log::find_logger_node(
-						const_cast<
-							fcppt::log::detail::context_tree &
-						>(
-							_tree_location
-						)
-					)
-				);
-
 				return
-					logger_node != _tree_location.end()
-					?
-						fcppt::log::optional_object(
-							logger_node->value().get().get<
-								fcppt::log::detail::outer_context_node
-							>().object()
+					fcppt::optional_bind_construct(
+						fcppt::log::find_logger_node(
+							_tree_location
+						),
+						[](
+							fcppt::log::detail::outer_context_node &_node
 						)
-					:
-						fcppt::log::optional_object()
-					;
+						-> fcppt::log::object &
+						{
+							return
+								_node.object();
+						}
+					);
 			}
 		);
 }
@@ -150,27 +144,26 @@ fcppt::log::context::transfer_to(
 	>
 	outer_context_node_vector;
 
-	outer_context_node_vector nodes;
-
-	for(
-		fcppt::log::detail::context_tree const &elem
-		:
-		fcppt::container::tree::pre_order<
-			fcppt::log::detail::context_tree
+	outer_context_node_vector const nodes(
+		fcppt::algorithm::map_optional<
+			outer_context_node_vector
 		>(
-			tree_
-		)
-	)
-		if(
-			fcppt::log::is_outer_node(
-				elem
+			fcppt::container::tree::pre_order<
+				fcppt::log::detail::context_tree
+			>(
+				tree_
+			),
+			[](
+				fcppt::log::detail::context_tree &_elem
 			)
+			{
+				return
+					fcppt::log::to_outer_node(
+						_elem
+					);
+			}
 		)
-			nodes.push_back(
-				elem.value().get().get<
-					fcppt::log::detail::outer_context_node
-				>()
-			);
+	);
 
 	for(
 		auto const &node
@@ -189,30 +182,33 @@ fcppt::log::context::transfer_to(
 void
 fcppt::log::context::apply_to(
 	fcppt::log::tree_function const &_function,
-	fcppt::log::detail::context_tree const &_tree
+	fcppt::log::detail::context_tree &_tree
 )
 {
 	for(
-		fcppt::log::detail::context_tree const &elem
+		fcppt::log::detail::context_tree &elem
 		:
 		fcppt::container::tree::pre_order<
-			fcppt::log::detail::context_tree const
+			fcppt::log::detail::context_tree
 		>(
 			_tree
 		)
 	)
-	{
-		if(
-			fcppt::log::is_outer_node(
+		fcppt::maybe_void(
+			fcppt::log::to_outer_node(
 				elem
+			),
+			[
+				&_function
+			](
+				fcppt::log::detail::outer_context_node &_node
 			)
-		)
-			_function(
-				elem.value().get().get<
-					fcppt::log::detail::outer_context_node
-				>().object()
-			);
-	}
+			{
+				_function(
+					_node.object()
+				);
+			}
+		);
 }
 
 fcppt::log::detail::context_tree &
@@ -221,49 +217,58 @@ fcppt::log::context::add(
 	fcppt::log::object &_object
 )
 {
-	fcppt::log::detail::context_tree *cur(
-		&tree_
+	fcppt::reference_wrapper<
+		fcppt::log::detail::context_tree
+	> cur(
+		tree_
 	);
 
 	for(
-		auto const &item
+		fcppt::string const &item
 		:
 		_location
 	)
-	{
-		fcppt::log::detail::context_tree::iterator const item_it(
-			fcppt::log::find_inner_node(
-				*cur,
-				item
-			)
-		);
+		cur =
+			fcppt::maybe(
+				fcppt::log::find_inner_node(
+					cur.get(),
+					item
+				),
+				[
+					cur,
+					&item
+				]{
+					cur.get().push_back(
+						fcppt::log::detail::context_tree_node(
+							fcppt::log::detail::inner_context_node(
+								item
+							)
+						)
+					);
 
-		if(
-			item_it == cur->end()
-		)
-		{
-			cur->push_back(
-				fcppt::log::detail::context_tree_node(
-					fcppt::log::detail::inner_context_node(
-						item
-					)
+					return
+						fcppt::make_ref(
+							cur.get().back()
+						);
+				},
+				[](
+					fcppt::log::detail::context_tree &_node
 				)
+				{
+					return
+						fcppt::make_ref(
+							_node
+						);
+				}
 			);
 
-			cur = &cur->back();
-		}
-		else
-			cur = &*item_it;
-	}
-
 	FCPPT_ASSERT_PRE(
-		fcppt::log::find_logger_node(
-			*cur
+		!fcppt::log::find_logger_node(
+			cur.get()
 		)
-		== cur->end()
 	);
 
-	cur->push_back(
+	cur.get().push_back(
 		fcppt::log::detail::context_tree_node(
 			fcppt::log::detail::outer_context_node(
 				_object
@@ -272,7 +277,7 @@ fcppt::log::context::add(
 	);
 
 	return
-		cur->back();
+		cur.get().back();
 }
 
 void

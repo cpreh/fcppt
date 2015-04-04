@@ -4,17 +4,23 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
+#include <fcppt/log/object_fwd.hpp>
 #include <fcppt/log/detail/outer_context_node.hpp>
 
+
 fcppt::log::detail::outer_context_node::outer_context_node(
-	log::object &_object
+	fcppt::log::object &_object
 )
 :
-	object_(_object)
-{}
+	object_(
+		_object
+	)
+{
+}
 
 fcppt::log::object &
 fcppt::log::detail::outer_context_node::object() const
 {
-	return object_;
+	return
+		object_.get();
 }

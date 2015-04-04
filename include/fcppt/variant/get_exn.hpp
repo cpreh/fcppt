@@ -4,8 +4,8 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_VARIANT_GET_HPP_INCLUDED
-#define FCPPT_VARIANT_GET_HPP_INCLUDED
+#ifndef FCPPT_VARIANT_GET_EXN_HPP_INCLUDED
+#define FCPPT_VARIANT_GET_EXN_HPP_INCLUDED
 
 #include <fcppt/variant/object_impl.hpp>
 
@@ -29,14 +29,14 @@ template<
 	typename Elements
 >
 Type &
-get(
+get_exn(
 	fcppt::variant::object<
 		Elements
 	> &_object
 )
 {
 	return
-		_object. template get<
+		_object. template get_exn<
 			Type
 		>();
 }
@@ -55,14 +55,14 @@ template<
 	typename Elements
 >
 Type const &
-get(
+get_exn(
 	fcppt::variant::object<
 		Elements
 	> const &_object
 )
 {
 	return
-		_object. template get<
+		_object. template get_exn<
 			Type
 		>();
 }

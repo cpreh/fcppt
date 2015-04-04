@@ -6,17 +6,18 @@
 
 #include <fcppt/log/detail/context_tree.hpp>
 #include <fcppt/log/detail/outer_context_node.hpp>
-#include <fcppt/src/log/is_outer_node.hpp>
-#include <fcppt/variant/holds_type.hpp>
+#include <fcppt/src/log/optional_outer_context_node.hpp>
+#include <fcppt/src/log/to_outer_node.hpp>
+#include <fcppt/variant/to_optional.hpp>
 
 
-bool
-fcppt::log::is_outer_node(
-	fcppt::log::detail::context_tree const &_node
+fcppt::log::optional_outer_context_node const
+fcppt::log::to_outer_node(
+	fcppt::log::detail::context_tree &_node
 )
 {
 	return
-		fcppt::variant::holds_type<
+		fcppt::variant::to_optional<
 			fcppt::log::detail::outer_context_node
 		>(
 			_node.value().get()

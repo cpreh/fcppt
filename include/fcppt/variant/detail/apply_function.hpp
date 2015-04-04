@@ -63,7 +63,7 @@ public:
 	{
 		return
 			operation_(
-				variant_. template get_unchecked<
+				variant_. template get_unsafe<
 					typename
 					boost::mpl::at<
 						typename

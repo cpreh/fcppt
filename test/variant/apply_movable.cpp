@@ -128,7 +128,7 @@ FCPPT_PP_POP_WARNING
 	);
 
 	BOOST_REQUIRE(
-		!string_variant.get<
+		!string_variant.get_unsafe<
 			string_unique_ptr
 		>()
 	);

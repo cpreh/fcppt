@@ -55,7 +55,7 @@ FCPPT_PP_POP_WARNING
 	);
 
 	BOOST_CHECK(
-		*test.get<
+		*test.get_exn<
 			int_unique_ptr
 		>()
 		== 42
@@ -68,13 +68,13 @@ FCPPT_PP_POP_WARNING
 	);
 
 	BOOST_CHECK(
-		!test.get<
+		!test.get_exn<
 			int_unique_ptr
 		>()
 	);
 
 	BOOST_CHECK(
-		*test2.get<
+		*test2.get_exn<
 			int_unique_ptr
 		>()
 		== 42
@@ -98,7 +98,7 @@ FCPPT_PP_POP_WARNING
 		);
 
 	BOOST_CHECK(
-		test3.get<
+		test3.get_exn<
 			std::string
 		>()
 		==
@@ -106,7 +106,7 @@ FCPPT_PP_POP_WARNING
 	);
 
 	BOOST_CHECK(
-		test4.get<
+		test4.get_exn<
 			std::string
 		>()
 		==
@@ -119,14 +119,14 @@ FCPPT_PP_POP_WARNING
 		);
 
 	BOOST_CHECK(
-		*test4.get<
+		*test4.get_exn<
 			int_unique_ptr
 		>()
 		== 42
 	);
 
 	BOOST_CHECK(
-		test2.get<
+		test2.get_exn<
 			std::string
 		>()
 		==

@@ -4,28 +4,21 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
+#include <fcppt/algorithm/find_by_opt.hpp>
 #include <fcppt/log/detail/context_tree.hpp>
 #include <fcppt/src/log/find_logger_node.hpp>
-#include <fcppt/src/log/is_outer_node.hpp>
-#include <fcppt/variant/object_impl.hpp>
-#include <fcppt/config/external_begin.hpp>
-#include <algorithm>
-#include <functional>
-#include <fcppt/config/external_end.hpp>
+#include <fcppt/src/log/optional_outer_context_node.hpp>
+#include <fcppt/src/log/to_outer_node.hpp>
 
 
-fcppt::log::detail::context_tree::iterator
+fcppt::log::optional_outer_context_node const
 fcppt::log::find_logger_node(
 	fcppt::log::detail::context_tree &_tree
 )
 {
 	return
-		std::find_if(
-			_tree.begin(),
-			_tree.end(),
-			std::bind(
-				fcppt::log::is_outer_node,
-				std::placeholders::_1
-			)
+		fcppt::algorithm::find_by_opt(
+			_tree,
+			&fcppt::log::to_outer_node
 		);
 }

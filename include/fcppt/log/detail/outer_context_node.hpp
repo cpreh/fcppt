@@ -8,6 +8,7 @@
 #define FCPPT_LOG_DETAIL_OUTER_CONTEXT_NODE_HPP_INCLUDED
 
 #include <fcppt/nonassignable.hpp>
+#include <fcppt/reference_wrapper_impl.hpp>
 #include <fcppt/log/object_fwd.hpp>
 #include <fcppt/log/detail/outer_context_node_fwd.hpp>
 
@@ -21,9 +22,6 @@ namespace detail
 
 class outer_context_node
 {
-	FCPPT_NONASSIGNABLE(
-		outer_context_node
-	);
 public:
 	explicit
 	outer_context_node(
@@ -33,7 +31,9 @@ public:
 	fcppt::log::object &
 	object() const;
 private:
-	fcppt::log::object &object_;
+	fcppt::reference_wrapper<
+		fcppt::log::object
+	> object_;
 };
 
 }

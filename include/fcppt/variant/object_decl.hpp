@@ -207,7 +207,7 @@ public:
 		typename U
 	>
 	U const &
-	get() const;
+	get_exn() const;
 
 	/**
 	\brief Returns a reference to the held type
@@ -224,7 +224,7 @@ public:
 		typename U
 	>
 	U &
-	get();
+	get_exn();
 
 	/**
 	\brief Returns a const reference to the held type without any checks
@@ -243,7 +243,7 @@ public:
 		typename U
 	>
 	U const &
-	get_unchecked() const;
+	get_unsafe() const;
 
 	/**
 	\brief Returns a reference to the held type without any checks
@@ -262,7 +262,7 @@ public:
 		typename U
 	>
 	U &
-	get_unchecked();
+	get_unsafe();
 
 	/**
 	\brief Returns the index of the held type

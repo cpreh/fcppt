@@ -4,25 +4,24 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/container/tree/object_impl.hpp>
+#include <fcppt/string.hpp>
+#include <fcppt/algorithm/find_if_opt.hpp>
+#include <fcppt/log/detail/context_tree.hpp>
+#include <fcppt/log/detail/optional_context_tree_ref.hpp>
 #include <fcppt/src/log/find_inner_node.hpp>
 #include <fcppt/src/log/inner_node_name.hpp>
-#include <fcppt/variant/object_impl.hpp>
-#include <fcppt/config/external_begin.hpp>
-#include <algorithm>
-#include <fcppt/config/external_end.hpp>
 
-fcppt::log::detail::context_tree::iterator
+
+fcppt::log::detail::optional_context_tree_ref const
 fcppt::log::find_inner_node(
-	detail::context_tree &_tree,
-	string const &_name
+	fcppt::log::detail::context_tree &_tree,
+	fcppt::string const &_name
 )
 {
 	return
-		std::find_if(
-			_tree.begin(),
-			_tree.end(),
-			log::inner_node_name(
+		fcppt::algorithm::find_if_opt(
+			_tree,
+			fcppt::log::inner_node_name(
 				_name
 			)
 		);

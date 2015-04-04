@@ -60,6 +60,6 @@ int main()
 	);
 
 	// only prints a newline because the string contains nothing anymore
-	std::cout << v.get<std::string>() << '\n';
+	std::cout << v.get_exn<std::string>() << '\n';
 //! [variant_nonconst_visitation]
 }

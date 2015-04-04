@@ -38,5 +38,6 @@ fcppt::log::detail::temporary_output::temporary_output(
 fcppt::string
 fcppt::log::detail::temporary_output::result() const
 {
-	return stream_->str();
+	return
+		stream_->str();
 }

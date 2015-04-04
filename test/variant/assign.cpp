@@ -53,7 +53,7 @@ FCPPT_PP_POP_WARNING
 	);
 
 	BOOST_REQUIRE(
-		test1.get<
+		test1.get_exn<
 			std::string
 		>()
 		== "test"
@@ -70,7 +70,7 @@ FCPPT_PP_POP_WARNING
 	);
 
 	BOOST_REQUIRE(
-		test1.get<
+		test1.get_exn<
 			int
 		>()
 		== 42

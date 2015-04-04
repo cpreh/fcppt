@@ -323,7 +323,7 @@ template<
 U const &
 fcppt::variant::object<
 	Types
->::get() const
+>::get_exn() const
 {
 	FCPPT_VARIANT_DETAIL_ASSERT_TYPE(
 		Types,
@@ -348,7 +348,7 @@ template<
 U &
 fcppt::variant::object<
 	Types
->::get()
+>::get_exn()
 {
 	FCPPT_VARIANT_DETAIL_ASSERT_TYPE(
 		Types,
@@ -373,7 +373,7 @@ template<
 U &
 fcppt::variant::object<
 	Types
->::get_unchecked()
+>::get_unsafe()
 {
 	FCPPT_VARIANT_DETAIL_ASSERT_TYPE(
 		Types,
@@ -398,7 +398,7 @@ template<
 U const &
 fcppt::variant::object<
 	Types
->::get_unchecked() const
+>::get_unsafe() const
 {
 	FCPPT_VARIANT_DETAIL_ASSERT_TYPE(
 		Types,

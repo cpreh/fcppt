@@ -47,7 +47,7 @@ public:
 		T const &_other
 	) const
 	{
-		left_. template get_unchecked<
+		left_. template get_unsafe<
 			T
 		>() =
 			_other;

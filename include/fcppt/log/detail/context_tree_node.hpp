@@ -26,6 +26,9 @@ public:
 		fcppt::log::detail::context_tree_node_variant const &
 	);
 
+	fcppt::log::detail::context_tree_node_variant &
+	get();
+
 	fcppt::log::detail::context_tree_node_variant const &
 	get() const;
 private:

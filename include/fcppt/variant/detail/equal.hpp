@@ -7,9 +7,11 @@
 #ifndef FCPPT_VARIANT_DETAIL_EQUAL_HPP_INCLUDED
 #define FCPPT_VARIANT_DETAIL_EQUAL_HPP_INCLUDED
 
+#include <fcppt/const.hpp>
+#include <fcppt/maybe.hpp>
 #include <fcppt/nonassignable.hpp>
-#include <fcppt/variant/holds_type.hpp>
-#include <fcppt/variant/object_decl.hpp>
+#include <fcppt/variant/object_impl.hpp>
+#include <fcppt/variant/to_optional.hpp>
 
 
 namespace fcppt
@@ -55,16 +57,27 @@ public:
 	) const
 	{
 		return
-			fcppt::variant::holds_type<
-				OtherType
-			>(
-				left_
-			)
-			&&
-			left_. template get<
-				OtherType
-			>()
-			== _right;
+			fcppt::maybe(
+				fcppt::variant::to_optional<
+					OtherType
+				>(
+					left_
+				),
+				fcppt::const_(
+					false
+				),
+				[
+					&_right
+				](
+					OtherType const &_left
+				)
+				{
+					return
+						_left
+						==
+						_right;
+				}
+			);
 	}
 private:
 	variant_type const &left_;

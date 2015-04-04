@@ -112,7 +112,7 @@ FCPPT_PP_POP_WARNING
 	);
 
 	BOOST_CHECK(
-		v1.get<
+		v1.get_exn<
 			std::string
 		>()
 		== ""
@@ -145,14 +145,14 @@ FCPPT_PP_POP_WARNING
 	);
 
 	BOOST_CHECK(
-		v1.get<
+		v1.get_exn<
 			std::string
 		>()
 		== ""
 	);
 
 	BOOST_CHECK(
-		v2.get<
+		v2.get_exn<
 			int
 		>()
 		== 0
@@ -190,21 +190,21 @@ FCPPT_PP_POP_WARNING
 	);
 
 	BOOST_CHECK(
-		v1.get<
+		v1.get_exn<
 			std::string
 		>()
 		== ""
 	);
 
 	BOOST_CHECK(
-		v2.get<
+		v2.get_exn<
 			int
 		>()
 		== 0
 	);
 
 	BOOST_CHECK(
-		v3.get<
+		v3.get_exn<
 			bool
 		>()
 		== false

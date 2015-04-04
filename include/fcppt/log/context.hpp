@@ -72,7 +72,7 @@ public:
 	fcppt::log::optional_object const
 	find(
 		fcppt::log::location const &location
-	) const;
+	);
 
 	/**
 	\brief Applies a function to all logers given a location recursively
@@ -113,7 +113,7 @@ private:
 	void
 	apply_to(
 		fcppt::log::tree_function const &,
-		fcppt::log::detail::context_tree const &
+		fcppt::log::detail::context_tree &
 	);
 
 	friend class fcppt::log::detail::auto_context;

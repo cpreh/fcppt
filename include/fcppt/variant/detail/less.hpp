@@ -54,7 +54,7 @@ public:
 	) const
 	{
 		return
-			left_. template get<
+			left_. template get_unsafe<
 				OtherType
 			>()
 			<

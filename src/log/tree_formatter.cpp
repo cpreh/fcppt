@@ -13,7 +13,7 @@
 #include <fcppt/log/format/create_prefix.hpp>
 #include <fcppt/log/format/function.hpp>
 #include <fcppt/src/log/tree_formatter.hpp>
-#include <fcppt/variant/object_impl.hpp>
+#include <fcppt/variant/get_exn.hpp>
 
 
 fcppt::log::format::function
@@ -42,9 +42,11 @@ fcppt::log::tree_formatter(
 		ret =
 			fcppt::log::format::create_chain(
 				fcppt::log::format::create_prefix(
-					_node.get_unsafe().value().get().get<
+					fcppt::variant::get_exn<
 						fcppt::log::detail::inner_context_node
-					>().name()
+					>(
+						_node.get_unsafe().value().get()
+					).name()
 				),
 				ret
 			);

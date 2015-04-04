@@ -111,14 +111,15 @@ set(
 	src/log/include/fcppt/src/log/find_location.hpp
 	src/log/include/fcppt/src/log/find_logger_node.hpp
 	src/log/include/fcppt/src/log/inner_node_name.hpp
-	src/log/include/fcppt/src/log/is_outer_node.hpp
 	src/log/include/fcppt/src/log/level_string_array.hpp
 	src/log/include/fcppt/src/log/level_strings.hpp
+	src/log/include/fcppt/src/log/optional_outer_context_node.hpp
+	src/log/include/fcppt/src/log/optional_outer_context_node_fwd.hpp
 	src/log/include/fcppt/src/log/print_locations_function.hpp
 	src/log/include/fcppt/src/log/set_levels.hpp
+	src/log/include/fcppt/src/log/to_outer_node.hpp
 	src/log/include/fcppt/src/log/tree_formatter.hpp
 	src/log/inner_node_name.cpp
-	src/log/is_outer_node.cpp
 	src/log/level_from_string.cpp
 	src/log/level_stream.cpp
 	src/log/level_strings.cpp
@@ -133,6 +134,7 @@ set(
 	src/log/print_locations.cpp
 	src/log/print_locations_function.cpp
 	src/log/set_levels.cpp
+	src/log/to_outer_node.cpp
 	src/log/tree_formatter.cpp
 )
 

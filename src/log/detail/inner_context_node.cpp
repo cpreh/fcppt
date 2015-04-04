@@ -4,17 +4,23 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
+#include <fcppt/string.hpp>
 #include <fcppt/log/detail/inner_context_node.hpp>
 
+
 fcppt::log::detail::inner_context_node::inner_context_node(
-	string const &_name
+	fcppt::string const &_name
 )
 :
-	name_(_name)
-{}
+	name_(
+		_name
+	)
+{
+}
 
 fcppt::string const &
 fcppt::log::detail::inner_context_node::name() const
 {
-	return name_;
+	return
+		name_;
 }

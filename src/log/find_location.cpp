@@ -4,6 +4,7 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
+#include <fcppt/optional_bind.hpp>
 #include <fcppt/log/location.hpp>
 #include <fcppt/log/detail/context_tree.hpp>
 #include <fcppt/log/detail/optional_context_tree_ref.hpp>
@@ -27,25 +28,28 @@ fcppt::log::find_location(
 		_location
 	)
 	{
-		fcppt::log::detail::context_tree::iterator const item_it(
-			fcppt::log::find_inner_node(
-				cur.get_unsafe(),
-				item
-			)
-		);
+		cur =
+			fcppt::optional_bind(
+				cur,
+				[
+					&item
+				](
+					fcppt::log::detail::context_tree &_next_tree
+				)
+				{
+					return
+						fcppt::log::find_inner_node(
+							_next_tree,
+							item
+						);
+
+				}
+			);
 
 		if(
-			item_it
-			==
-			cur.get_unsafe().end()
+			!cur
 		)
-			return
-				fcppt::log::detail::optional_context_tree_ref();
-
-		cur =
-			fcppt::log::detail::optional_context_tree_ref(
-				*item_it
-			);
+			break;
 	}
 
 	return

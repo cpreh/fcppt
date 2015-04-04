@@ -51,7 +51,7 @@ public:
 		T &&_other
 	) const
 	{
-		left_. template get_unchecked<
+		left_. template get_unsafe<
 			typename std::remove_reference<
 				T
 			>::type

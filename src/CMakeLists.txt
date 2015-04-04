@@ -110,6 +110,7 @@ set(
 	include/fcppt/config/external_end.hpp
 	include/fcppt/config/gcc_version_at_least.hpp
 	include/fcppt/config/platform.hpp
+	include/fcppt/const.hpp
 	include/fcppt/const_optional_cast.hpp
 	include/fcppt/const_pointer_cast.hpp
 	include/fcppt/container/array_size.hpp
@@ -258,6 +259,7 @@ set(
 	include/fcppt/detail/char_type.hpp
 	include/fcppt/detail/check_cpp.hpp
 	include/fcppt/detail/check_optional.hpp
+	include/fcppt/detail/const.hpp
 	include/fcppt/detail/cyclic_iterator_base.hpp
 	include/fcppt/detail/cyclic_iterator_category.hpp
 	include/fcppt/detail/enable_optional_ref_conv.hpp
@@ -853,10 +855,11 @@ set(
 	include/fcppt/variant/detail/swap_unequal.hpp
 	include/fcppt/variant/detail/ternary_applier.hpp
 	include/fcppt/variant/detail/ternary_unwrap.hpp
+	include/fcppt/variant/detail/to_optional_result.hpp
 	include/fcppt/variant/detail/type_info.hpp
 	include/fcppt/variant/equal.hpp
 	include/fcppt/variant/exception.hpp
-	include/fcppt/variant/get.hpp
+	include/fcppt/variant/get_exn.hpp
 	include/fcppt/variant/holds_type.hpp
 	include/fcppt/variant/impl/exception.hpp
 	include/fcppt/variant/impl/invalid_apply.hpp
@@ -871,6 +874,7 @@ set(
 	include/fcppt/variant/object_impl.hpp
 	include/fcppt/variant/output.hpp
 	include/fcppt/variant/size_type.hpp
+	include/fcppt/variant/to_optional.hpp
 	include/fcppt/variant/type_info.hpp
 	include/fcppt/version_int.hpp
 	include/fcppt/version_integral_c.hpp

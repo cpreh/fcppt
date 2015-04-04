@@ -48,7 +48,7 @@ get_impl(
 		throw fcppt::variant::invalid_get();
 
 	return
-		_variant. template get_unchecked<
+		_variant. template get_unsafe<
 			return_type
 		>();
 }

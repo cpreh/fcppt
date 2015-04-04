@@ -10,6 +10,9 @@
 #include <fcppt/is_optional.hpp>
 #include <fcppt/optional_impl.hpp>
 #include <fcppt/algorithm/detail/find_by_result.hpp>
+#include <fcppt/config/external_begin.hpp>
+#include <type_traits>
+#include <fcppt/config/external_end.hpp>
 
 
 namespace fcppt
@@ -52,7 +55,10 @@ find_by_opt(
 
 	static_assert(
 		fcppt::is_optional<
-			result_type
+			typename
+			std::remove_const<
+				result_type
+			>::type
 		>::value,
 		"Func must return an optional"
 	);

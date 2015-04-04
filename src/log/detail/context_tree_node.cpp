@@ -19,8 +19,16 @@ fcppt::log::detail::context_tree_node::context_tree_node(
 {
 }
 
+fcppt::log::detail::context_tree_node_variant &
+fcppt::log::detail::context_tree_node::get()
+{
+	return
+		variant_;
+}
+
 fcppt::log::detail::context_tree_node_variant const &
 fcppt::log::detail::context_tree_node::get() const
 {
-	return variant_;
+	return
+		variant_;
 }
