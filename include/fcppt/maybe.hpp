@@ -7,7 +7,8 @@
 #ifndef FCPPT_MAYBE_HPP_INCLUDED
 #define FCPPT_MAYBE_HPP_INCLUDED
 
-#include <fcppt/optional_impl.hpp>
+#include <fcppt/forward_optional_get.hpp>
+#include <fcppt/detail/check_optional.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
@@ -23,15 +24,17 @@ namespace fcppt
 
 For the lack of a better name, this function is called maybe like in Haskell.
 If \a _optional is set to x, then <code>_transform(x)</code> is returned.
-Otherwise, the result of \a _default is returned. This implies that
-\a _transform and \a _default must return the same type Ret.
+Otherwise, the result of \a _default is returned. This implies that \a
+_transform and \a _default must return the same type Ret. \a _optional can be
+perfectly forwarded into \a _transform, i.e. the optional's contents will be
+moved iff \a _optional is an rvalue.
 
 \tparam Default Must be a function of type <code>Ret ()</code>
 
-\tparam Transform Must be a function of type <code>Ret (Type)</code>
+\tparam Transform Must be a function of type <code>Ret (Optional::value_type)</code>
 */
 template<
-	typename Type,
+	typename Optional,
 	typename Default,
 	typename Transform
 >
@@ -40,13 +43,18 @@ std::result_of<
 	Default()
 >::type
 maybe(
-	fcppt::optional<
-		Type
-	> const &_optional,
+	Optional &&_optional,
 	Default const _default,
 	Transform const _transform
 )
 {
+	static_assert(
+		fcppt::detail::check_optional<
+			Optional
+		>::value,
+		"Optional must be an optional"
+	);
+
 	static_assert(
 		std::is_same<
 			decltype(
@@ -65,7 +73,11 @@ maybe(
 		_optional
 		?
 			_transform(
-				_optional.get_unsafe()
+				fcppt::forward_optional_get<
+					Optional
+				>(
+					_optional.get_unsafe()
+				)
 			)
 		:
 			_default()

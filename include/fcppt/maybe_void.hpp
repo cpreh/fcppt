@@ -8,7 +8,9 @@
 #define FCPPT_MAYBE_VOID_HPP_INCLUDED
 
 #include <fcppt/maybe.hpp>
-#include <fcppt/optional_fwd.hpp>
+#include <fcppt/config/external_begin.hpp>
+#include <utility>
+#include <fcppt/config/external_end.hpp>
 
 
 namespace fcppt
@@ -21,23 +23,25 @@ namespace fcppt
 
 If \a _optional is set to x, then <code>_transform(x)</code> is called.
 
-\tparam Transform Must be a function of type <code>void (Type)</code>
+\tparam Transform Must be a function of type <code>void (Optional::value_type)</code>
 */
 template<
-	typename Type,
+	typename Optional,
 	typename Transform
 >
 inline
 void
 maybe_void(
-	fcppt::optional<
-		Type
-	> const &_optional,
+	Optional &&_optional,
 	Transform const _transform
 )
 {
 	fcppt::maybe(
-		_optional,
+		std::forward<
+			Optional
+		>(
+			_optional
+		),
 		[]{},
 		_transform
 	);

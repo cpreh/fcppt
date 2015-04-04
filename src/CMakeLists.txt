@@ -257,6 +257,7 @@ set(
 	include/fcppt/cyclic_iterator_impl.hpp
 	include/fcppt/detail/char_type.hpp
 	include/fcppt/detail/check_cpp.hpp
+	include/fcppt/detail/check_optional.hpp
 	include/fcppt/detail/cyclic_iterator_base.hpp
 	include/fcppt/detail/cyclic_iterator_category.hpp
 	include/fcppt/detail/enable_optional_ref_conv.hpp
@@ -265,9 +266,12 @@ set(
 	include/fcppt/detail/enum_size.hpp
 	include/fcppt/detail/equal.hpp
 	include/fcppt/detail/equal_functor.hpp
+	include/fcppt/detail/forward_optional_get.hpp
 	include/fcppt/detail/int_iterator_base.hpp
+	include/fcppt/detail/is_optional_reference.hpp
 	include/fcppt/detail/make_shared_wrapper.hpp
 	include/fcppt/detail/make_shared_wrapper_fwd.hpp
+	include/fcppt/detail/move_if_rvalue.hpp
 	include/fcppt/detail/nonassignable.hpp
 	include/fcppt/detail/noncopyable.hpp
 	include/fcppt/detail/optional_cast.hpp
@@ -319,6 +323,7 @@ set(
 	include/fcppt/extract_from_string_error.hpp
 	include/fcppt/extract_from_string_exn.hpp
 	include/fcppt/format.hpp
+	include/fcppt/forward_optional_get.hpp
 	include/fcppt/from_optional.hpp
 	include/fcppt/from_std_string.hpp
 	include/fcppt/from_std_string_locale.hpp
@@ -599,6 +604,7 @@ set(
 	include/fcppt/maybe_void.hpp
 	include/fcppt/micro_version.hpp
 	include/fcppt/minor_version.hpp
+	include/fcppt/move_if_rvalue.hpp
 	include/fcppt/mpl/all_of.hpp
 	include/fcppt/mpl/append.hpp
 	include/fcppt/mpl/ceil_div.hpp

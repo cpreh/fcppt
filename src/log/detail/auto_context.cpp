@@ -49,8 +49,7 @@ fcppt::log::detail::auto_context::auto_context(
 
 fcppt::log::detail::auto_context::~auto_context()
 {
-	// TODO: Make this possible using maybe_void
-	/*fcppt::maybe_void(
+	fcppt::maybe_void(
 		rep_,
 		[](
 			fcppt::log::detail::auto_context_rep &_rep
@@ -60,13 +59,7 @@ fcppt::log::detail::auto_context::~auto_context()
 				_rep.node()
 			);
 		}
-	);*/
-	if(
-		rep_
-	)
-		rep_.get_unsafe().context().remove(
-			rep_.get_unsafe().node()
-		);
+	);
 }
 
 fcppt::log::optional_location

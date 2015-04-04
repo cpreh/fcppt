@@ -463,6 +463,14 @@ add_fcppt_test(
 )
 
 add_fcppt_test(
+	optional/maybe_void
+)
+
+add_fcppt_test(
+	optional/to_exception
+)
+
+add_fcppt_test(
 	reference_wrapper
 )
 
