@@ -7,7 +7,9 @@
 #ifndef FCPPT_OPTIONAL_TO_EXCEPTION_HPP_INCLUDED
 #define FCPPT_OPTIONAL_TO_EXCEPTION_HPP_INCLUDED
 
+#include <fcppt/forward_optional_get.hpp>
 #include <fcppt/optional_impl.hpp>
+#include <fcppt/detail/check_optional.hpp>
 
 
 namespace fcppt
@@ -24,23 +26,41 @@ _make_exception is thrown as an exception.
 \tparam MakeException Must be a nullary function returning an object type
 */
 template<
-	typename Type,
+	typename Optional,
 	typename MakeException
 >
 inline
-Type
+decltype(
+	fcppt::forward_optional_get<
+		Optional
+	>(
+		std::declval<
+			Optional
+		>().get_unsafe()
+	)
+)
 optional_to_exception(
-	fcppt::optional<
-		Type
-	> const &_optional,
+	Optional &&_optional,
 	MakeException const _make_exception
 )
 {
+	static_assert(
+		fcppt::detail::check_optional<
+			Optional
+		>::value,
+		"Optional must be an optional"
+	);
+
+
 	if(
 		_optional
 	)
 		return
-			_optional.get_unsafe();
+			fcppt::forward_optional_get<
+				Optional
+			>(
+				_optional.get_unsafe()
+			);
 
 	throw
 		_make_exception();
