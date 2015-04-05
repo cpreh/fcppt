@@ -24,6 +24,7 @@ result of the macro is <code>opt.get_unsafe()</code>.
 #define FCPPT_ASSERT_OPTIONAL_ERROR(\
 	opt\
 )\
+(\
 (opt) \
 ? \
 	(opt).get_unsafe() \
@@ -38,6 +39,7 @@ result of the macro is <code>opt.get_unsafe()</code>.
 				(opt).get_unsafe()\
 			)\
 		>()\
-	)
+	)\
+)
 
 #endif
