@@ -341,6 +341,7 @@ set(
 	include/fcppt/homogenous_pair_fwd.hpp
 	include/fcppt/homogenous_pair_impl.hpp
 	include/fcppt/homogenous_pair_output.hpp
+	include/fcppt/identity.hpp
 	include/fcppt/impl/exception.hpp
 	include/fcppt/impl/extract_from_string_error.hpp
 	include/fcppt/insert_to_fcppt_string.hpp
