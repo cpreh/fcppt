@@ -11,6 +11,7 @@
 #include <fcppt/optional_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <type_traits>
+#include <utility>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -26,25 +27,41 @@ constructor
 \see fcppt::optional_bind
 */
 template<
-	typename Source,
+	typename Optional,
 	typename Function
 >
 inline
+auto
+optional_bind_construct(
+	Optional &&_source,
+	Function const &_function
+)
+->
 fcppt::optional<
 	typename
-	std::result_of<
-		Function(
-			Source
+	std::remove_cv<
+		decltype(
+			_function(
+				fcppt::forward_optional_get<
+					Optional
+				>(
+					_source.get_unsafe()
+				)
+			)
 		)
 	>::type
 >
-optional_bind_construct(
-	fcppt::optional<
-		Source
-	> const &_source,
-	Function const &_function
-)
 {
+	typedef
+	decltype(
+		fcppt::forward_optional_get<
+			Optional
+		>(
+			_source.get_unsafe()
+		)
+	)
+	arg_type;
+
 	typedef
 	fcppt::optional<
 		typename
@@ -52,7 +69,7 @@ optional_bind_construct(
 			typename
 			std::result_of<
 				Function(
-					Source
+					arg_type
 				)
 			>::type
 		>::type
@@ -61,17 +78,25 @@ optional_bind_construct(
 
 	return
 		fcppt::optional_bind(
-			_source,
+			std::forward<
+				Optional
+			>(
+				_source
+			),
 			[
 				&_function
 			](
-				Source const &_arg
+				arg_type _arg
 			)
 			{
 				return
 					result_type(
 						_function(
-							_arg
+							std::forward<
+								arg_type
+							>(
+								_arg
+							)
 						)
 					);
 			}

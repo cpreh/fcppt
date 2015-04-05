@@ -471,6 +471,14 @@ add_fcppt_test(
 )
 
 add_fcppt_test(
+	optional/bind
+)
+
+add_fcppt_test(
+	optional/bind_construct
+)
+
+add_fcppt_test(
 	optional/forward_get
 )
 

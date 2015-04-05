@@ -7,8 +7,9 @@
 #ifndef FCPPT_OPTIONAL_BIND_HPP_INCLUDED
 #define FCPPT_OPTIONAL_BIND_HPP_INCLUDED
 
-#include <fcppt/is_optional.hpp>
+#include <fcppt/forward_optional_get.hpp>
 #include <fcppt/optional_impl.hpp>
+#include <fcppt/detail/check_optional.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
@@ -32,37 +33,49 @@ dereferenced and the result from applying \a _function is returned.
 accept a type of \a Source.
 */
 template<
-	typename Source,
+	typename Optional,
 	typename Function
 >
 inline
-typename
-std::result_of<
-	Function(
-		Source
-	)
->::type
+auto
 optional_bind(
-	fcppt::optional<
-		Source
-	> const &_source,
+	Optional &&_source,
 	Function const &_function
 )
+->
+typename
+std::remove_reference<
+	decltype(
+		_function(
+			fcppt::forward_optional_get<
+				Optional
+			>(
+				_source.get_unsafe()
+			)
+		)
+	)
+>::type
 {
 	typedef
 	typename
 	std::remove_cv<
 		typename
-		std::result_of<
-			Function(
-				Source
+		std::remove_reference<
+			decltype(
+				_function(
+					fcppt::forward_optional_get<
+						Optional
+					>(
+						_source.get_unsafe()
+					)
+				)
 			)
 		>::type
 	>::type
 	result_type;
 
 	static_assert(
-		fcppt::is_optional<
+		fcppt::detail::check_optional<
 			result_type
 		>::value,
 		"optional_bind must return an optional"
@@ -72,7 +85,11 @@ optional_bind(
 		_source
 		?
 			_function(
-				_source.get_unsafe()
+				fcppt::forward_optional_get<
+					Optional
+				>(
+					_source.get_unsafe()
+				)
 			)
 		:
 			result_type{}
