@@ -351,6 +351,7 @@ set(
 	include/fcppt/container/exception.hpp
 	include/fcppt/container/find_exn.hpp
 	include/fcppt/container/find_opt.hpp
+	include/fcppt/container/find_opt_iterator.hpp
 	include/fcppt/container/get_or_insert.hpp
 	include/fcppt/container/get_or_insert_result.hpp
 	include/fcppt/container/get_or_insert_result_decl.hpp

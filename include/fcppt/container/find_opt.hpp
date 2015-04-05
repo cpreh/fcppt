@@ -7,7 +7,10 @@
 #ifndef FCPPT_CONTAINER_FIND_OPT_HPP_INCLUDED
 #define FCPPT_CONTAINER_FIND_OPT_HPP_INCLUDED
 
+#include <fcppt/optional_bind_construct.hpp>
 #include <fcppt/optional_impl.hpp>
+#include <fcppt/container/find_opt_iterator.hpp>
+#include <fcppt/container/to_iterator_type.hpp>
 #include <fcppt/container/to_mapped_type.hpp>
 
 
@@ -30,6 +33,7 @@ is returned.
 template<
 	typename Container
 >
+inline
 fcppt::optional<
 	fcppt::container::to_mapped_type<
 		Container
@@ -40,31 +44,26 @@ find_opt(
 	typename Container::key_type const &_key
 )
 {
-	auto const it(
-		_container.find(
-			_key
-		)
-	);
-
-	typedef
-	fcppt::optional<
-		fcppt::container::to_mapped_type<
-			Container
-		>
-	>
-	result_type;
-
 	return
-		it
-		!=
-		_container.end()
-		?
-			result_type(
-				it->second
+		fcppt::optional_bind_construct(
+			fcppt::container::find_opt_iterator(
+				_container,
+				_key
+			),
+			[](
+				fcppt::container::to_iterator_type<
+					Container
+				> const _iterator
 			)
-		:
-			result_type()
-		;
+			->
+			fcppt::container::to_mapped_type<
+				Container
+			>
+			{
+				return
+					_iterator->second;
+			}
+		);
 }
 
 }
