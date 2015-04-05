@@ -475,6 +475,10 @@ add_fcppt_test(
 )
 
 add_fcppt_test(
+	optional/from
+)
+
+add_fcppt_test(
 	optional/maybe
 )
 

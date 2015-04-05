@@ -7,7 +7,6 @@
 #include <fcppt/const_optional_cast.hpp>
 #include <fcppt/dynamic_optional_cast.hpp>
 #include <fcppt/exception.hpp>
-#include <fcppt/from_optional.hpp>
 #include <fcppt/make_unique_ptr.hpp>
 #include <fcppt/maybe.hpp>
 #include <fcppt/noncopyable.hpp>
@@ -900,84 +899,5 @@ FCPPT_PP_POP_WARNING
 		).get_unsafe()
 		==
 		&test
-	);
-}
-
-
-FCPPT_PP_PUSH_WARNING
-FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
-
-BOOST_AUTO_TEST_CASE(
-	from_optional
-)
-{
-FCPPT_PP_POP_WARNING
-	typedef
-	fcppt::optional<
-		int
-	>
-	optional_int;
-
-	typedef
-	fcppt::optional<
-		int &
-	>
-	optional_int_ref;
-
-
-	BOOST_CHECK(
-		fcppt::from_optional(
-			optional_int(),
-			[]
-			{
-				return
-					42;
-			}
-		)
-		==
-		42
-	);
-
-	BOOST_CHECK(
-		fcppt::from_optional(
-			optional_int(
-				100
-			),
-			[]
-			{
-				return
-					42;
-			}
-		)
-		==
-		100
-	);
-
-	int x{
-		42
-	};
-
-	int y{
-		0
-	};
-
-	fcppt::from_optional(
-		optional_int_ref{
-			x
-		},
-		[
-			&y
-		]()
-		-> int &
-		{
-			return
-				y;
-		}
-	) = 100;
-
-	BOOST_CHECK(
-		x
-		==
-		100
 	);
 }

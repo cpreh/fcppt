@@ -8,6 +8,7 @@
 #define FCPPT_MAYBE_HPP_INCLUDED
 
 #include <fcppt/forward_optional_get.hpp>
+#include <fcppt/optional_impl.hpp>
 #include <fcppt/detail/check_optional.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <type_traits>
