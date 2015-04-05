@@ -463,7 +463,19 @@ add_fcppt_test(
 )
 
 add_fcppt_test(
+	move_if_rvalue
+)
+
+add_fcppt_test(
 	optional
+)
+
+add_fcppt_test(
+	optional/forward_get
+)
+
+add_fcppt_test(
+	optional/maybe
 )
 
 add_fcppt_test(

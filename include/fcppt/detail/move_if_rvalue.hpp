@@ -26,7 +26,7 @@ template<
 inline
 typename
 boost::enable_if<
-	std::is_reference<
+	std::is_lvalue_reference<
 		Type
 	>,
 	Arg &
@@ -46,7 +46,7 @@ template<
 inline
 typename
 boost::disable_if<
-	std::is_reference<
+	std::is_lvalue_reference<
 		Type
 	>,
 	Arg &&

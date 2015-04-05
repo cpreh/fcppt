@@ -1,0 +1,161 @@
+//          Copyright Carl Philipp Reh 2009 - 2015.
+// Distributed under the Boost Software License, Version 1.0.
+//    (See accompanying file LICENSE_1_0.txt or copy at
+//          http://www.boost.org/LICENSE_1_0.txt)
+
+
+#include <fcppt/make_unique_ptr.hpp>
+#include <fcppt/move_if_rvalue.hpp>
+#include <fcppt/noncopyable.hpp>
+#include <fcppt/preprocessor/disable_gcc_warning.hpp>
+#include <fcppt/preprocessor/pop_warning.hpp>
+#include <fcppt/preprocessor/push_warning.hpp>
+#include <fcppt/config/external_begin.hpp>
+#include <boost/test/unit_test.hpp>
+#include <memory>
+#include <type_traits>
+#include <utility>
+#include <fcppt/config/external_end.hpp>
+
+
+namespace
+{
+
+typedef
+std::unique_ptr<
+	int
+>
+int_unique_ptr;
+
+static_assert(
+	std::is_same<
+		decltype(
+			fcppt::move_if_rvalue<
+				int_unique_ptr
+			>(
+				std::declval<
+					int_unique_ptr &
+				>()
+			)
+		),
+		std::unique_ptr<
+			int
+		> &&
+	>::value,
+	""
+);
+
+static_assert(
+	std::is_same<
+		decltype(
+			fcppt::move_if_rvalue<
+				int &
+			>(
+				std::declval<
+					float &
+				>()
+			)
+		),
+		float &
+	>::value,
+	""
+);
+
+class container
+{
+	FCPPT_NONCOPYABLE(
+		container
+	);
+public:
+	container()
+	:
+		val_(
+			fcppt::make_unique_ptr<
+				int
+			>(
+				10
+			)
+		)
+	{
+	}
+
+	~container()
+	{
+	}
+
+	int_unique_ptr &
+	get()
+	{
+		return
+			val_;
+	}
+private:
+	int_unique_ptr val_;
+};
+
+template<
+	typename Arg
+>
+int_unique_ptr
+test_move(
+	Arg &&_arg
+)
+{
+	return
+		fcppt::move_if_rvalue<
+			Arg
+		>(
+			_arg.get()
+		);
+}
+
+int_unique_ptr
+take_arg(
+	int_unique_ptr &&_arg
+)
+{
+	return
+		std::move(
+			_arg
+		);
+}
+
+}
+
+FCPPT_PP_PUSH_WARNING
+FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
+
+BOOST_AUTO_TEST_CASE(
+	move_if_rvalue
+)
+{
+FCPPT_PP_POP_WARNING
+
+	{
+		int_unique_ptr const foo(
+			test_move(
+				container()
+			)
+		);
+
+		BOOST_CHECK_EQUAL(
+			*foo,
+			10
+		);
+	}
+
+	{
+		int_unique_ptr const foo(
+			take_arg(
+				test_move(
+					container()
+				)
+			)
+		);
+
+		BOOST_CHECK_EQUAL(
+			*foo,
+			10
+		);
+	}
+}

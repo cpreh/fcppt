@@ -5,140 +5,87 @@
 
 
 #include <fcppt/make_unique_ptr.hpp>
+#include <fcppt/maybe.hpp>
 #include <fcppt/optional_impl.hpp>
-#include <fcppt/maybe_void.hpp>
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/test/unit_test.hpp>
 #include <memory>
+#include <string>
+#include <utility>
 #include <fcppt/config/external_end.hpp>
 
 
+/*
 FCPPT_PP_PUSH_WARNING
 FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
 
 BOOST_AUTO_TEST_CASE(
-	maybe_void
+	maybe
 )
 {
 FCPPT_PP_POP_WARNING
-
 	typedef
 	fcppt::optional<
 		int
 	>
 	optional_int;
 
-	int result{
-		0
-	};
-
-	fcppt::maybe_void(
-		optional_int(
-			10
-		),
-		[
-			&result
-		](
-			int const _val
+	BOOST_CHECK(
+		fcppt::maybe(
+			optional_int(
+				10
+			),
+			[]
+			{
+				return
+					std::string{};
+			},
+			[](
+				int const _val
+			)
+			{
+				return
+					std::to_string(
+						_val
+					);
+			}
 		)
-		{
-			result =
-				_val;
-		}
+		==
+		"10"
 	);
 
 	BOOST_CHECK(
-		result
-		==
-		10
-	);
-
-	fcppt::maybe_void(
-		optional_int(),
-		[
-			&result
-		](
-			int const _val
+		fcppt::maybe(
+			optional_int(),
+			[]
+			{
+				return
+					std::string(
+						"42"
+					);
+			},
+			[](
+				int
+			)
+			{
+				return
+					std::string{};
+			}
 		)
-		{
-			result =
-				_val;
-		}
-	);
-
-	BOOST_CHECK(
-		result
 		==
-		10
-	);
-
-	optional_int temp(
-		0
-	);
-
-	fcppt::maybe_void(
-		temp,
-		[](
-			int &_val
-		)
-		{
-			_val = 30;
-		}
-	);
-
-	BOOST_CHECK(
-		temp.get_unsafe()
-		==
-		30
+		"42"
 	);
 }
+*/
 
 FCPPT_PP_PUSH_WARNING
 FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
 
 BOOST_AUTO_TEST_CASE(
-	maybe_void_ref
-)
-{
-FCPPT_PP_POP_WARNING
-
-	int result{
-		0
-	};
-
-	typedef
-	fcppt::optional<
-		int &
-	>
-	optional_int_ref;
-
-	fcppt::maybe_void(
-		optional_int_ref(
-			result
-		),
-		[](
-			int &_val
-		)
-		{
-			_val = 42;
-		}
-	);
-
-	BOOST_CHECK(
-		result
-		==
-		42
-	);
-}
-
-FCPPT_PP_PUSH_WARNING
-FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
-
-BOOST_AUTO_TEST_CASE(
-	maybe_void_move
+	maybe_move
 )
 {
 FCPPT_PP_POP_WARNING
@@ -155,22 +102,37 @@ FCPPT_PP_POP_WARNING
 	>
 	optional_int_unique_ptr;
 
-	fcppt::maybe_void(
-		optional_int_unique_ptr(
-			fcppt::make_unique_ptr<
-				int
-			>(
-				42
+	int_unique_ptr const result(
+		fcppt::maybe(
+			optional_int_unique_ptr(
+				fcppt::make_unique_ptr<
+					int
+				>(
+					42
+				)
+			),
+			[]{
+				return
+					fcppt::make_unique_ptr<
+						int
+					>(
+						10
+					);
+			},
+			[](
+				int_unique_ptr &&_ptr
 			)
-		),
-		[](
-			int_unique_ptr &&_ptr
+			{
+				return
+					std::move(
+						_ptr
+					);
+			}
 		)
-		{
-			BOOST_CHECK_EQUAL(
-				*_ptr,
-				42
-			);
-		}
+	);
+
+	BOOST_CHECK_EQUAL(
+		*result,
+		42
 	);
 }

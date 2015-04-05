@@ -62,7 +62,11 @@ maybe(
 			),
 			decltype(
 				_transform(
-					_optional.get_unsafe()
+					fcppt::forward_optional_get<
+						Optional
+					>(
+						_optional.get_unsafe()
+					)
 				)
 			)
 		>::value,
