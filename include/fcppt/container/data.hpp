@@ -7,9 +7,7 @@
 #ifndef FCPPT_CONTAINER_DATA_HPP_INCLUDED
 #define FCPPT_CONTAINER_DATA_HPP_INCLUDED
 
-#include <fcppt/config/external_begin.hpp>
-#include <type_traits>
-#include <fcppt/config/external_end.hpp>
+#include <fcppt/container/to_pointer_type.hpp>
 
 
 namespace fcppt
@@ -30,16 +28,9 @@ _container is empty.
 template<
 	typename Container
 >
-typename
-std::conditional<
-	std::is_const<
-		Container
-	>::value,
-	typename
-	Container::const_pointer,
-	typename
-	Container::pointer
->::type
+fcppt::container::to_pointer_type<
+	Container
+>
 data(
 	Container &_container
 )

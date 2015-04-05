@@ -7,8 +7,8 @@
 #ifndef FCPPT_CONTAINER_GRID_DETAIL_AT_HPP_INCLUDED
 #define FCPPT_CONTAINER_GRID_DETAIL_AT_HPP_INCLUDED
 
+#include <fcppt/container/to_reference_type.hpp>
 #include <fcppt/container/grid/out_of_range.hpp>
-#include <fcppt/type_traits/choose_reference.hpp>
 
 
 namespace fcppt
@@ -25,7 +25,7 @@ template<
 	typename Dim,
 	typename Pos
 >
-fcppt::type_traits::choose_reference<
+fcppt::container::to_reference_type<
 	Container
 >
 at(

@@ -434,7 +434,10 @@ set(
 	include/fcppt/container/raw_vector_decl.hpp
 	include/fcppt/container/raw_vector_fwd.hpp
 	include/fcppt/container/raw_vector_impl.hpp
+	include/fcppt/container/to_iterator_type.hpp
 	include/fcppt/container/to_mapped_type.hpp
+	include/fcppt/container/to_pointer_type.hpp
+	include/fcppt/container/to_reference_type.hpp
 	include/fcppt/container/tree/comparison.hpp
 	include/fcppt/container/tree/depth.hpp
 	include/fcppt/container/tree/detail/copy_children.hpp
@@ -1112,7 +1115,6 @@ set(
 	include/fcppt/type_name.hpp
 	include/fcppt/type_name_from_index.hpp
 	include/fcppt/type_name_from_info.hpp
-	include/fcppt/type_traits/choose_reference.hpp
 	include/fcppt/type_traits/detail/has_const_iterator.hpp
 	include/fcppt/type_traits/detail/has_iterator.hpp
 	include/fcppt/type_traits/detail/is_iterator.hpp

@@ -7,6 +7,7 @@
 #ifndef FCPPT_CONTAINER_GRID_POS_ITERATOR_DECL_HPP_INCLUDED
 #define FCPPT_CONTAINER_GRID_POS_ITERATOR_DECL_HPP_INCLUDED
 
+#include <fcppt/container/to_iterator_type.hpp>
 #include <fcppt/container/grid/dim.hpp>
 #include <fcppt/container/grid/object_decl.hpp>
 #include <fcppt/container/grid/pos_iterator_fwd.hpp>
@@ -57,16 +58,9 @@ class pos_iterator final
 	pos;
 
 	typedef
-	typename
-	std::conditional<
-		std::is_const<
-			Grid
-		>::value,
-		typename
-		Grid::const_iterator,
-		typename
-		Grid::iterator
-	>::type
+	fcppt::container::to_iterator_type<
+		Grid
+	>
 	iterator;
 public:
 	typedef

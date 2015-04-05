@@ -7,7 +7,7 @@
 #ifndef FCPPT_CONTAINER_GRID_DETAIL_ACCESS_MEMBER_HPP_INCLUDED
 #define FCPPT_CONTAINER_GRID_DETAIL_ACCESS_MEMBER_HPP_INCLUDED
 
-#include <fcppt/type_traits/choose_reference.hpp>
+#include <fcppt/container/to_reference_type.hpp>
 
 
 namespace fcppt
@@ -24,7 +24,7 @@ template<
 	typename Dim,
 	typename Pos
 >
-fcppt::type_traits::choose_reference<
+fcppt::container::to_reference_type<
 	Container
 >
 access_member(

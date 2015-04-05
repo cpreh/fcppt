@@ -8,11 +8,9 @@
 #define FCPPT_CONTAINER_GRID_POS_REFERENCE_DECL_HPP_INCLUDED
 
 #include <fcppt/nonassignable.hpp>
+#include <fcppt/container/to_reference_type.hpp>
 #include <fcppt/container/grid/pos.hpp>
 #include <fcppt/container/grid/pos_reference_fwd.hpp>
-#include <fcppt/config/external_begin.hpp>
-#include <type_traits>
-#include <fcppt/config/external_end.hpp>
 
 
 namespace fcppt
@@ -37,16 +35,9 @@ public:
 	pos_type;
 
 	typedef
-	typename
-	std::conditional<
-		std::is_const<
-			Grid
-		>::value,
-		typename
-		Grid::const_reference,
-		typename
-		Grid::reference
-	>::type
+	fcppt::container::to_reference_type<
+		Grid
+	>
 	reference;
 
 	pos_reference(

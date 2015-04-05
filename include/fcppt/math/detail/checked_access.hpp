@@ -7,6 +7,7 @@
 #ifndef FCPPT_MATH_DETAIL_CHECKED_ACCESS_HPP_INCLUDED
 #define FCPPT_MATH_DETAIL_CHECKED_ACCESS_HPP_INCLUDED
 
+#include <fcppt/container/to_reference_type.hpp>
 #include <fcppt/math/size_type.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <type_traits>
@@ -24,14 +25,9 @@ template<
 	fcppt::math::size_type N,
 	typename T
 >
-typename
-std::conditional<
-	std::is_const<
-		T
-	>::value,
-	typename T::const_reference,
-	typename T::reference
->::type
+fcppt::container::to_reference_type<
+	T
+>
 checked_access(
 	T &_value
 )

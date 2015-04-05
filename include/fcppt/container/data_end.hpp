@@ -9,9 +9,7 @@
 
 #include <fcppt/cast/to_signed.hpp>
 #include <fcppt/container/data.hpp>
-#include <fcppt/config/external_begin.hpp>
-#include <type_traits>
-#include <fcppt/config/external_end.hpp>
+#include <fcppt/container/to_pointer_type.hpp>
 
 
 namespace fcppt
@@ -29,16 +27,9 @@ namespace container
 template<
 	typename Container
 >
-typename
-std::conditional<
-	std::is_const<
-		Container
-	>::value,
-	typename
-	Container::const_pointer,
-	typename
-	Container::pointer
->::type
+fcppt::container::to_pointer_type<
+	Container
+>
 data_end(
 	Container &_container
 )
