@@ -943,6 +943,7 @@ set(
 	include/fcppt/optional.hpp
 	include/fcppt/optional_bind.hpp
 	include/fcppt/optional_bind_construct.hpp
+	include/fcppt/optional_combine.hpp
 	include/fcppt/optional_comparison.hpp
 	include/fcppt/optional_decl.hpp
 	include/fcppt/optional_fwd.hpp

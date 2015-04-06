@@ -479,6 +479,10 @@ add_fcppt_test(
 )
 
 add_fcppt_test(
+	optional/combine
+)
+
+add_fcppt_test(
 	optional/forward_get
 )
 
