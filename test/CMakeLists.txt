@@ -37,6 +37,10 @@ fcppt_utils_link_target(
 
 
 add_fcppt_test(
+	absurd
+)
+
+add_fcppt_test(
 	algorithm/array_init_move
 )
 
@@ -112,6 +116,10 @@ add_fcppt_test(
 	assert
 	LINK_LIBS
 		"${fcppt_core_TARGET}"
+)
+
+add_fcppt_test(
+	assert/optional_error
 )
 
 add_fcppt_test(

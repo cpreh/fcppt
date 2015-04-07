@@ -15,6 +15,14 @@
 namespace fcppt
 {
 
+/**
+\brief The polymorphic terminate function
+
+\ingroup fcpptvarious
+
+Terminates the program but can be used where an expression of any type is
+required.
+*/
 template<
 	typename T
 >

@@ -7,10 +7,10 @@
 #ifndef FCPPT_ASSERT_OPTIONAL_ERROR_HPP_INCLUDED
 #define FCPPT_ASSERT_OPTIONAL_ERROR_HPP_INCLUDED
 
-#include <fcppt/absurd.hpp>
+#include <fcppt/forward_optional_get.hpp>
+#include <fcppt/identity.hpp>
 #include <fcppt/optional_impl.hpp>
-#include <fcppt/text.hpp>
-#include <fcppt/assert/basic/print_message.hpp>
+#include <fcppt/assert/pre.hpp>
 
 
 /**
@@ -25,21 +25,41 @@ result of the macro is <code>opt.get_unsafe()</code>.
 	opt\
 )\
 (\
-(opt) \
-? \
-	(opt).get_unsafe() \
-: \
-	(\
-		FCPPT_ASSERT_BASIC_PRINT_MESSAGE(\
-			(opt),\
-			FCPPT_TEXT("")\
-		),\
-		fcppt::absurd<\
-			decltype(\
-				(opt).get_unsafe()\
+[](\
+	decltype(\
+		fcppt::identity{}(\
+			opt\
+		)\
+	) _arg\
+) \
+-> \
+decltype(\
+	fcppt::forward_optional_get<\
+		decltype(\
+			fcppt::identity{}(\
+				opt\
 			)\
-		>()\
+		)\
+	>(\
+		_arg.get_unsafe() \
 	)\
+) \
+{\
+	FCPPT_ASSERT_PRE(\
+		_arg\
+	);\
+\
+	return \
+		fcppt::forward_optional_get<\
+			decltype(\
+				_arg\
+			)\
+		>(\
+			_arg.get_unsafe() \
+		);\
+}(\
+	opt\
+) \
 )
 
 #endif
