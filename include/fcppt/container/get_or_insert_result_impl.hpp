@@ -32,6 +32,29 @@ fcppt::container::get_or_insert_result<
 template<
 	typename Reference
 >
+template<
+	typename Other
+>
+fcppt::container::get_or_insert_result<
+	Reference
+>::get_or_insert_result(
+	get_or_insert_result<
+		Other
+	> const &_other
+)
+:
+	reference_(
+		_other.element()
+	),
+	inserted_(
+		_other.inserted()
+	)
+{
+}
+
+template<
+	typename Reference
+>
 Reference
 fcppt::container::get_or_insert_result<
 	Reference

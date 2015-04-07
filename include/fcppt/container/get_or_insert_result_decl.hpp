@@ -37,6 +37,15 @@ public:
 		bool
 	);
 
+	template<
+		typename Other
+	>
+	get_or_insert_result(
+		get_or_insert_result<
+			Other
+		> const &
+	);
+
 	Reference
 	element() const;
 
