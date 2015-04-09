@@ -4,8 +4,9 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/optional_combine.hpp>
 #include <fcppt/optional.hpp>
+#include <fcppt/optional_combine.hpp>
+#include <fcppt/optional_output.hpp>
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
@@ -34,7 +35,7 @@ FCPPT_PP_POP_WARNING
 		int
 	> const add{};
 
-	BOOST_CHECK(
+	BOOST_CHECK_EQUAL(
 		fcppt::optional_combine(
 			optional_int(
 				10
@@ -43,48 +44,44 @@ FCPPT_PP_POP_WARNING
 				20
 			),
 			add
-		)
-		==
+		),
 		optional_int(
 			30
 		)
 	);
 
-	BOOST_CHECK(
+	BOOST_CHECK_EQUAL(
 		fcppt::optional_combine(
 			optional_int(
 				10
 			),
 			optional_int(),
 			add
-		)
-		==
+		),
 		optional_int(
 			10
 		)
 	);
 
-	BOOST_CHECK(
+	BOOST_CHECK_EQUAL(
 		fcppt::optional_combine(
 			optional_int(),
 			optional_int(
 				20
 			),
 			add
-		)
-		==
+		),
 		optional_int(
 			20
 		)
 	);
 
-	BOOST_CHECK(
+	BOOST_CHECK_EQUAL(
 		fcppt::optional_combine(
 			optional_int(),
 			optional_int(),
 			add
-		)
-		==
+		),
 		optional_int()
 	);
 }

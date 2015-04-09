@@ -649,6 +649,7 @@ set(
 	include/fcppt/optional_decl.hpp
 	include/fcppt/optional_fwd.hpp
 	include/fcppt/optional_impl.hpp
+	include/fcppt/optional_output.hpp
 	include/fcppt/optional_ref_compare.hpp
 	include/fcppt/optional_string.hpp
 	include/fcppt/optional_string_fwd.hpp
