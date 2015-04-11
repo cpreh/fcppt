@@ -69,4 +69,23 @@ FCPPT_PP_POP_WARNING
 		*ptr,
 		10
 	);
+
+	optional_int_unique_ptr const opt_ptr(
+		fcppt::make_unique_ptr<
+			int
+		>(
+			42
+		)
+	);
+
+	int_unique_ptr const &ptr_ref(
+		FCPPT_ASSERT_OPTIONAL_ERROR(
+			opt_ptr
+		)
+	);
+
+	BOOST_CHECK_EQUAL(
+		*ptr_ref,
+		42
+	);
 }
