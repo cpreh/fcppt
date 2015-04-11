@@ -273,6 +273,7 @@ set(
 	include/fcppt/detail/equal.hpp
 	include/fcppt/detail/equal_functor.hpp
 	include/fcppt/detail/forward_optional_get.hpp
+	include/fcppt/detail/has_value_all.hpp
 	include/fcppt/detail/int_iterator_base.hpp
 	include/fcppt/detail/is_optional_reference.hpp
 	include/fcppt/detail/make_shared_wrapper.hpp
@@ -608,7 +609,9 @@ set(
 	include/fcppt/math/vector/to_unsigned.hpp
 	include/fcppt/math/vector/unit.hpp
 	include/fcppt/maybe.hpp
+	include/fcppt/maybe_multi.hpp
 	include/fcppt/maybe_void.hpp
+	include/fcppt/maybe_void_multi.hpp
 	include/fcppt/micro_version.hpp
 	include/fcppt/minor_version.hpp
 	include/fcppt/move_if_rvalue.hpp

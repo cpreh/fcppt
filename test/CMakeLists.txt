@@ -511,7 +511,15 @@ add_fcppt_test(
 )
 
 add_fcppt_test(
+	optional/maybe_multi
+)
+
+add_fcppt_test(
 	optional/maybe_void
+)
+
+add_fcppt_test(
+	optional/maybe_void_multi
 )
 
 add_fcppt_test(
