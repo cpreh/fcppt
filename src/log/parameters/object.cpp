@@ -19,9 +19,9 @@
 
 fcppt::log::parameters::object::object()
 :
-	enabled_(
+	enabled_{
 		false
-	),
+	},
 	level_streams_(),
 	enabled_levels_(),
 	formatter_(),
@@ -34,9 +34,13 @@ fcppt::log::parameters::object::context_location(
 	fcppt::log::context_location const &_context_location
 )
 {
-	context_location_ = _context_location;
+	context_location_ =
+		fcppt::log::detail::optional_context_location(
+			_context_location
+		);
 
-	return *this;
+	return
+		*this;
 }
 
 fcppt::log::parameters::object &
@@ -44,9 +48,11 @@ fcppt::log::parameters::object::enabled(
 	bool const _enabled
 )
 {
-	enabled_ = _enabled;
+	enabled_ =
+		_enabled;
 
-	return *this;
+	return
+		*this;
 }
 
 fcppt::log::parameters::object &
@@ -54,9 +60,11 @@ fcppt::log::parameters::object::level_streams(
 	fcppt::log::level_stream_array const &_level_streams
 )
 {
-	level_streams_ = _level_streams;
+	level_streams_ =
+		_level_streams;
 
-	return *this;
+	return
+		*this;
 }
 
 fcppt::log::parameters::object &
@@ -70,7 +78,8 @@ fcppt::log::parameters::object::level_stream(
 	]
 		= _stream;
 
-	return *this;
+	return
+		*this;
 }
 
 fcppt::log::parameters::object &
@@ -78,9 +87,11 @@ fcppt::log::parameters::object::enabled_levels(
 	fcppt::log::enabled_level_array const &_enabled_levels
 )
 {
-	enabled_levels_ = _enabled_levels;
+	enabled_levels_ =
+		_enabled_levels;
 
-	return *this;
+	return
+		*this;
 }
 
 fcppt::log::parameters::object &
@@ -93,7 +104,8 @@ fcppt::log::parameters::object::activate(
 	] =
 		true;
 
-	return *this;
+	return
+		*this;
 }
 
 fcppt::log::parameters::object &
@@ -101,9 +113,11 @@ fcppt::log::parameters::object::formatter(
 	fcppt::log::format::function const &_formatter
 )
 {
-	formatter_ = _formatter;
+	formatter_ =
+		_formatter;
 
-	return *this;
+	return
+		*this;
 }
 
 fcppt::log::parameters::object &
@@ -124,35 +138,41 @@ fcppt::log::parameters::object::level_defaults(
 		)
 	);
 
-	return *this;
+	return
+		*this;
 }
 
 fcppt::log::detail::optional_context_location const &
 fcppt::log::parameters::object::context_location() const
 {
-	return context_location_;
+	return
+		context_location_;
 }
 
 bool
 fcppt::log::parameters::object::enabled() const
 {
-	return enabled_;
+	return
+		enabled_;
 }
 
 fcppt::log::level_stream_array const &
 fcppt::log::parameters::object::level_streams() const
 {
-	return level_streams_;
+	return
+		level_streams_;
 }
 
 fcppt::log::enabled_level_array const &
 fcppt::log::parameters::object::enabled_levels() const
 {
-	return enabled_levels_;
+	return
+		enabled_levels_;
 }
 
 fcppt::log::format::function const &
 fcppt::log::parameters::object::formatter() const
 {
-	return formatter_;
+	return
+		formatter_;
 }

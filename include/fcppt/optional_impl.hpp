@@ -181,44 +181,6 @@ fcppt::optional<
 template<
 	typename T
 >
-fcppt::optional<
-	T
-> &
-fcppt::optional<
-	T
->::operator=(
-	const_reference _other
-)
-{
-	return
-		this->assign(
-			_other
-		);
-}
-
-template<
-	typename T
->
-fcppt::optional<
-	T
-> &
-fcppt::optional<
-	T
->::operator=(
-	T &&_other
-)
-{
-	return
-		this->move_assign(
-			std::move(
-				_other
-			)
-		);
-}
-
-template<
-	typename T
->
 template<
 	typename Other
 >
@@ -279,19 +241,6 @@ fcppt::optional<
 {
 	return
 		*this->data();
-}
-
-template<
-	typename T
->
-void
-fcppt::optional<
-	T
->::reset()
-{
-	this->destroy();
-
-	initialized_ = false;
 }
 
 template<
@@ -447,7 +396,9 @@ fcppt::optional<
 			)
 		);
 
-		_other.reset();
+		_other.destroy();
+
+		_other.initialized_ = false;
 	}
 }
 

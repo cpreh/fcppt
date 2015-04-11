@@ -196,42 +196,6 @@ public:
 	);
 
 	/**
-	\brief Assigns from a const reference
-
-	Assigns from <code>other</code> if <code>has_value()</code> is true.
-	Otherwise, the current value will be copy constructed from
-	<code>other</code>.
-
-	\param other The const reference to assign from
-
-	\post <code>has_value()</code> will be true.
-
-	\return <code>*this</code>
-	*/
-	optional &
-	operator=(
-		const_reference other
-	);
-
-	/**
-	\brief Move assigns from an rvalue reference
-
-	Move assigns from <code>other</code> if <code>has_value()</code> is true.
-	Otherwise, the current value will be move constructed from
-	<code>other</code>.
-
-	\param other The rvalue reference to move assign from
-
-	\post <code>has_value()</code> will be true.
-
-	\return <code>*this</code>
-	*/
-	optional &
-	operator=(
-		T &&other
-	);
-
-	/**
 	\brief Assigns from an optional reference
 
 	This is a special assignment operator to make assignment from optional
@@ -277,17 +241,6 @@ public:
 	*/
 	const_reference
 	get_unsafe() const;
-
-	/**
-	\brief Resets the optional and destroys its value, if any
-
-	If <code>has_value()</code> is true, then the current value will be
-	destroyed.
-
-	\post <code>has_value() will be false</code>
-	*/
-	void
-	reset();
 
 	/**
 	\brief Returns whether the optional holds a value
@@ -424,7 +377,6 @@ Optional references, denoted by fcppt::optional<T &> or fcppt::optional<T const
 <ul>
 <li>They cannot be assigned from expressions of type T & or T const &. Assign
 a new optional instead: <code>my_value = optional_ref(other_ref)</code></li>
-<li>They cannot be reset. Assign an empty optional instead.</li>
 <li>It is possible to construct an fcppt::optional<T const &> from an
 fcppt::optional<T &>.</li>
 </ul>

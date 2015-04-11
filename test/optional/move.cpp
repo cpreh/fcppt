@@ -135,8 +135,10 @@ FCPPT_PP_POP_WARNING
 	optional_movable optd;
 
 	optd =
-		movable(
-			"test3"
+		optional_movable(
+			movable(
+				"test3"
+			)
 		);
 
 	BOOST_CHECK(
@@ -146,8 +148,10 @@ FCPPT_PP_POP_WARNING
 	);
 
 	optd =
-		movable(
-			"test4"
+		optional_movable(
+			movable(
+				"test4"
+			)
 		);
 
 	BOOST_CHECK(

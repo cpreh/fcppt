@@ -40,7 +40,10 @@ FCPPT_PP_POP_WARNING
 		!test.has_value()
 	);
 
-	test = "test";
+	test =
+		optional_string(
+			"test"
+		);
 
 	BOOST_REQUIRE(
 		test.has_value()
@@ -50,7 +53,8 @@ FCPPT_PP_POP_WARNING
 		test.get_unsafe() == "test"
 	);
 
-	test.reset();
+	test =
+		optional_string();
 
 	BOOST_REQUIRE(
 		!test.has_value()
