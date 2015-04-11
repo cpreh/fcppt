@@ -46,7 +46,7 @@ decltype(\
 ) \
 {\
 	FCPPT_ASSERT_PRE(\
-		_arg\
+		_arg.has_value()\
 	);\
 \
 	return \

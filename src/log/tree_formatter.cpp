@@ -23,20 +23,20 @@ fcppt::log::tree_formatter(
 )
 {
 	FCPPT_ASSERT_ERROR(
-		_node
+		_node.has_value()
 	);
 
 	_node = _node.get_unsafe().parent();
 
 	FCPPT_ASSERT_ERROR(
-		_node
+		_node.has_value()
 	);
 
 	fcppt::log::format::function ret;
 
 	for(
 		;
-		_node.get_unsafe().parent();
+		_node.get_unsafe().parent().has_value();
 		_node = _node.get_unsafe().parent()
 	)
 		ret =

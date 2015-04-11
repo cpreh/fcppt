@@ -265,7 +265,7 @@ fcppt::log::context::add(
 	FCPPT_ASSERT_PRE(
 		!fcppt::log::find_logger_node(
 			cur.get()
-		)
+		).has_value()
 	);
 
 	cur.get().push_back(
@@ -290,7 +290,7 @@ fcppt::log::context::remove(
 	);
 
 	FCPPT_ASSERT_PRE(
-		node
+		node.has_value()
 	);
 
 	node.get_unsafe().erase(
@@ -298,7 +298,7 @@ fcppt::log::context::remove(
 	);
 
 	while(
-		node.get_unsafe().parent()
+		node.get_unsafe().parent().has_value()
 		&&
 		node.get_unsafe().empty()
 	)

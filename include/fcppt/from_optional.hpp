@@ -49,7 +49,7 @@ from_optional(
 	);
 
 	return
-		_optional
+		_optional.has_value()
 		?
 			fcppt::forward_optional_get<
 				Optional

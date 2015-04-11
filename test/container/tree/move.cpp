@@ -61,7 +61,7 @@ FCPPT_PP_POP_WARNING
 	);
 
 	BOOST_CHECK(
-		tree2.front().parent()
+		tree2.front().parent().has_value()
 		&&
 		tree2.front().parent().data()
 		==
@@ -90,7 +90,7 @@ FCPPT_PP_POP_WARNING
 	);
 
 	BOOST_CHECK(
-		tree3.front().parent()
+		tree3.front().parent().has_value()
 		&&
 		tree3.front().parent().data()
 		==

@@ -47,7 +47,7 @@ fcppt::log::find_location(
 			);
 
 		if(
-			!cur
+			!cur.has_value()
 		)
 			break;
 	}

@@ -35,7 +35,7 @@ operator==(
 )
 {
 	return
-		_a && _b
+		_a.has_value() && _b.has_value()
 		?
 			_a.get_unsafe() == _b.get_unsafe()
 		:
@@ -88,7 +88,7 @@ operator<(
 )
 {
 	return
-		_a && _b
+		_a.has_value() && _b.has_value()
 		?
 			_a.get_unsafe() < _b.get_unsafe()
 		:

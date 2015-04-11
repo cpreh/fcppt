@@ -55,7 +55,7 @@ level(
 		tree::const_optional_ref cur{
 			_tree.parent()
 		};
-		cur;
+		cur.has_value();
 		cur =
 			cur.get_unsafe().parent(),
 		++result

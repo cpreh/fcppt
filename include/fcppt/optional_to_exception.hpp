@@ -53,7 +53,7 @@ optional_to_exception(
 
 
 	if(
-		_optional
+		_optional.has_value()
 	)
 		return
 			fcppt::forward_optional_get<

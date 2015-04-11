@@ -75,7 +75,7 @@ map_optional(
 
 
 		if(
-			result_element
+			result_element.has_value()
 		)
 			result.insert(
 				result.end(),

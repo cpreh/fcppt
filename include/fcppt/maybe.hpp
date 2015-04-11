@@ -75,7 +75,7 @@ maybe(
 	);
 
 	return
-		_optional
+		_optional.has_value()
 		?
 			_transform(
 				fcppt::forward_optional_get<

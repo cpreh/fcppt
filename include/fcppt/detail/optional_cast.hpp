@@ -9,10 +9,11 @@
 
 #include <fcppt/optional_fwd.hpp>
 
+
 #define FCPPT_DETAIL_OPTIONAL_CAST(\
 	cast_type\
 )\
-_optional \
+_optional.has_value() \
 ? \
 	fcppt::optional< \
 		Result & \

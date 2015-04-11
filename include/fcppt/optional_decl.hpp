@@ -294,15 +294,6 @@ public:
 	*/
 	bool
 	has_value() const;
-
-	/**
-	\brief Explicit boolean test
-
-	\return <code>this->has_value()</code>
-	*/
-	explicit
-	operator
-	bool() const;
 private:
 	pointer
 	data();
@@ -574,15 +565,6 @@ public:
 	*/
 	bool
 	has_value() const;
-
-	/**
-	\brief Explicit boolean test
-
-	\return <code>this->has_value()</code>
-	*/
-	explicit
-	operator
-	bool() const;
 private:
 	pointer data_;
 };

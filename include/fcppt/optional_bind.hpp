@@ -82,7 +82,7 @@ std::remove_reference<
 	);
 
 	return
-		_source
+		_source.has_value()
 		?
 			_function(
 				fcppt::forward_optional_get<

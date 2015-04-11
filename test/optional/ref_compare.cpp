@@ -4,13 +4,13 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/algorithm/find_if_opt.hpp>
+#include <fcppt/optional_impl.hpp>
+#include <fcppt/optional_ref_compare.hpp>
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/test/unit_test.hpp>
-#include <vector>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -18,52 +18,47 @@ FCPPT_PP_PUSH_WARNING
 FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
 
 BOOST_AUTO_TEST_CASE(
-	algorithm_find_if_opt
+	optional_ref_compare
 )
 {
 FCPPT_PP_POP_WARNING
 
-	typedef
-	std::vector<
-		int
-	>
-	int_vector;
+	typedef fcppt::optional<
+		int &
+	> optional_int_ref;
 
-	int_vector const vec{
-		1,
-		2,
-		3
-	};
+	int a = 0;
+
+	int b = 0;
+
+	optional_int_ref const opt_a(
+		a
+	);
+
+	optional_int_ref const opt_b(
+		b
+	);
 
 	BOOST_CHECK(
-		&fcppt::algorithm::find_if_opt(
-			vec.begin(),
-			vec.end(),
-			[](
-				int const _i
+		fcppt::optional_ref_compare(
+			opt_a,
+			optional_int_ref(
+				a
 			)
-			{
-				return
-					_i == 3;
-			}
-		).get_unsafe()
-		==
-		std::next(
-			vec.data(),
-			2
 		)
 	);
 
 	BOOST_CHECK(
-		!fcppt::algorithm::find_if_opt(
-			vec,
-			[](
-				int const _i
-			)
-			{
-				return
-					_i == 4;
-			}
-		).has_value()
+		!fcppt::optional_ref_compare(
+			opt_a,
+			opt_b
+		)
+	);
+
+	BOOST_CHECK(
+		!fcppt::optional_ref_compare(
+			opt_a,
+			optional_int_ref()
+		)
 	);
 }

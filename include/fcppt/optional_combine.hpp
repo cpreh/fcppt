@@ -80,7 +80,7 @@ fcppt::optional<
 	);
 
 	if(
-		!_optional1
+		!_optional1.has_value()
 	)
 		return
 			result_type{
@@ -92,7 +92,7 @@ fcppt::optional<
 			};
 
 	if(
-		!_optional2
+		!_optional2.has_value()
 	)
 		return
 			result_type{

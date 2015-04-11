@@ -309,17 +309,6 @@ fcppt::optional<
 template<
 	typename T
 >
-fcppt::optional<
-	T
->::operator bool() const
-{
-	return
-		this->has_value();
-}
-
-template<
-	typename T
->
 typename fcppt::optional<
 	T
 >::pointer
@@ -746,17 +735,6 @@ fcppt::optional<
 {
 	return
 		data_ != nullptr;
-}
-
-template<
-	typename T
->
-fcppt::optional<
-	T &
->::operator bool() const
-{
-	return
-		this->has_value();
 }
 
 #endif

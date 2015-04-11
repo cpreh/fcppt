@@ -475,10 +475,6 @@ add_fcppt_test(
 )
 
 add_fcppt_test(
-	optional
-)
-
-add_fcppt_test(
 	optional/bind
 )
 
@@ -487,7 +483,15 @@ add_fcppt_test(
 )
 
 add_fcppt_test(
+	optional/casts
+)
+
+add_fcppt_test(
 	optional/combine
+)
+
+add_fcppt_test(
+	optional/compare
 )
 
 add_fcppt_test(
@@ -499,11 +503,27 @@ add_fcppt_test(
 )
 
 add_fcppt_test(
+	optional/general
+)
+
+add_fcppt_test(
 	optional/maybe
 )
 
 add_fcppt_test(
 	optional/maybe_void
+)
+
+add_fcppt_test(
+	optional/move
+)
+
+add_fcppt_test(
+	optional/ref
+)
+
+add_fcppt_test(
+	optional/ref_compare
 )
 
 add_fcppt_test(

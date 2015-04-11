@@ -4,6 +4,7 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
+#include <fcppt/maybe_void.hpp>
 #include <fcppt/text.hpp>
 #include <fcppt/endianness/format.hpp>
 #include <fcppt/io/cout.hpp>
@@ -27,26 +28,22 @@ main()
 		fcppt::endianness::format::big
 	);
 
-	typedef fcppt::optional<
-		unsigned
-	> optional_unsigned;
-
 	// Read the written unsigned int back
-	optional_unsigned const result(
+	fcppt::maybe_void(
 		fcppt::io::read<
 			unsigned
 		>(
 			stream,
 			fcppt::endianness::format::big
+		),
+		[](
+			unsigned const _result
 		)
+		{
+			fcppt::io::cout()
+				<< _result
+				<< FCPPT_TEXT('\n');
+		}
 	);
-
-	// Should output 42
-	if(
-		result
-	)
-		fcppt::io::cout()
-			<< result.get_unsafe()
-			<< FCPPT_TEXT('\n');
 //[io_endianness]
 }

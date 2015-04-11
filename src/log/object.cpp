@@ -34,7 +34,7 @@ fcppt::log::object::object(
 		*this
 	),
 	formatter_(
-		auto_context_.node()
+		auto_context_.node().has_value()
 		?
 			fcppt::log::tree_formatter(
 				auto_context_.node(),

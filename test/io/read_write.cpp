@@ -5,6 +5,7 @@
 
 
 #include <fcppt/exception.hpp>
+#include <fcppt/optional_comparison.hpp>
 #include <fcppt/optional_impl.hpp>
 #include <fcppt/endianness/format.hpp>
 #include <fcppt/io/read.hpp>
@@ -52,10 +53,10 @@ test_read_write(
 
 	BOOST_CHECK(
 		result
-		&&
-		result.get_unsafe()
 		==
-		42
+		optional_int(
+			42
+		)
 	);
 }
 

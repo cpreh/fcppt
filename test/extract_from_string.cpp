@@ -7,6 +7,7 @@
 #include <fcppt/extract_from_string.hpp>
 #include <fcppt/extract_from_string_error.hpp>
 #include <fcppt/extract_from_string_exn.hpp>
+#include <fcppt/optional_comparison.hpp>
 #include <fcppt/optional_impl.hpp>
 #include <fcppt/string.hpp>
 #include <fcppt/text.hpp>
@@ -17,6 +18,7 @@
 #include <boost/test/unit_test.hpp>
 #include <fcppt/config/external_end.hpp>
 
+
 namespace
 {
 
@@ -25,7 +27,8 @@ check_exception(
 	fcppt::extract_from_string_error const &
 )
 {
-	return true;
+	return
+		true;
 }
 
 }
@@ -55,10 +58,10 @@ FCPPT_PP_POP_WARNING
 
 	BOOST_REQUIRE(
 		int_val
-	);
-
-	BOOST_REQUIRE(
-		int_val.get_unsafe() == 42
+		==
+		opt_int(
+			42
+		)
 	);
 
 	BOOST_REQUIRE_EXCEPTION(

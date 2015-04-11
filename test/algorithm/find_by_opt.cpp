@@ -96,6 +96,6 @@ FCPPT_PP_POP_WARNING
 					;
 
 			}
-		)
+		).has_value()
 	);
 }

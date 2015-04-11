@@ -78,7 +78,7 @@ find_by_opt(
 		);
 
 		if(
-			result
+			result.has_value()
 		)
 			return
 				result;
