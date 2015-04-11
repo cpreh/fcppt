@@ -95,9 +95,8 @@ FCPPT_PP_POP_WARNING
 		optb.has_value()
 	);
 
-	BOOST_CHECK(
-		optb.get_unsafe().value()
-		==
+	BOOST_CHECK_EQUAL(
+		optb.get_unsafe().value(),
 		"test"
 	);
 
@@ -117,19 +116,13 @@ FCPPT_PP_POP_WARNING
 	);
 
 	BOOST_REQUIRE(
-		optb.has_value()
+		!optb.has_value()
 	);
 
 	BOOST_CHECK(
 		optc.get_unsafe().value()
 		==
 		"test"
-	);
-
-	BOOST_CHECK(
-		optb.get_unsafe().value()
-		==
-		"test2"
 	);
 
 	optional_movable optd;
@@ -158,5 +151,68 @@ FCPPT_PP_POP_WARNING
 		optd.get_unsafe().value()
 		==
 		"test4"
+	);
+}
+
+FCPPT_PP_PUSH_WARNING
+FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
+
+BOOST_AUTO_TEST_CASE(
+	optional_move_ref
+)
+{
+FCPPT_PP_POP_WARNING
+	typedef
+	fcppt::optional<
+		int &
+	>
+	optional_int_ref;
+
+
+	int val{
+		42
+	};
+
+	optional_int_ref test(
+		val
+	);
+
+	optional_int_ref test2(
+		std::move(
+			test
+		)
+	);
+
+	BOOST_CHECK(
+		!test.has_value()
+	);
+
+	BOOST_REQUIRE(
+		test2.has_value()
+	);
+
+	BOOST_CHECK_EQUAL(
+		test2.get_unsafe(),
+		42
+	);
+
+	optional_int_ref test3;
+
+	test3 =
+		std::move(
+			test2
+		);
+
+	BOOST_REQUIRE(
+		test3.has_value()
+	);
+
+	BOOST_CHECK(
+		!test2.has_value()
+	);
+
+	BOOST_CHECK_EQUAL(
+		test3.get_unsafe(),
+		42
 	);
 }

@@ -285,6 +285,9 @@ private:
 		optional &&
 	);
 
+	void
+	reset();
+
 	optional &
 	assign(
 		const_reference
@@ -483,6 +486,13 @@ public:
 	);
 
 	/**
+	\brief Moves from an optional and empties it
+	*/
+	optional(
+		optional &&
+	);
+
+	/**
 	\brief Assigns from an optional reference
 
 	Assigns the reference from \a other if <code>other.has_value()</code>
@@ -491,6 +501,14 @@ public:
 	optional &
 	operator=(
 		optional const &
+	);
+
+	/**
+	\brief Moves from an optional and empties it
+	*/
+	optional &
+	operator=(
+		optional &&
 	);
 
 	~optional();

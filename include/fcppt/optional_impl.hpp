@@ -396,10 +396,21 @@ fcppt::optional<
 			)
 		);
 
-		_other.destroy();
-
-		_other.initialized_ = false;
+		_other.reset();
 	}
+}
+
+template<
+	typename T
+>
+void
+fcppt::optional<
+	T
+>::reset()
+{
+	this->destroy();
+
+	initialized_ = false;
 }
 
 template<
@@ -517,10 +528,14 @@ fcppt::optional<
 		&&
 		_other.has_value()
 	)
+	{
 		*this->data() =
 			std::move(
 				_other.get_unsafe()
 			);
+
+		_other.reset();
+	}
 	else
 	{
 		this->destroy();
@@ -627,6 +642,23 @@ template<
 >
 fcppt::optional<
 	T &
+>::optional(
+	optional &&_other
+)
+:
+	data_(
+		_other.data_
+	)
+{
+	_other.data_ =
+		nullptr;
+}
+
+template<
+	typename T
+>
+fcppt::optional<
+	T &
 > &
 fcppt::optional<
 	T &
@@ -634,9 +666,33 @@ fcppt::optional<
 	optional const &_other
 )
 {
-	data_ = _other.data_;
+	data_ =
+		_other.data_;
 
-	return *this;
+	return
+		*this;
+}
+
+template<
+	typename T
+>
+fcppt::optional<
+	T &
+> &
+fcppt::optional<
+	T &
+>::operator=(
+	optional &&_other
+)
+{
+	data_ =
+		_other.data_;
+
+	_other.data_ =
+		nullptr;
+
+	return
+		*this;
 }
 
 template<
@@ -685,7 +741,9 @@ fcppt::optional<
 >::has_value() const
 {
 	return
-		data_ != nullptr;
+		data_
+		!=
+		nullptr;
 }
 
 #endif
