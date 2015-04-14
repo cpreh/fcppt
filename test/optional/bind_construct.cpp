@@ -5,8 +5,8 @@
 
 
 #include <fcppt/noncopyable.hpp>
-#include <fcppt/optional_bind_construct.hpp>
 #include <fcppt/optional.hpp>
+#include <fcppt/optional_bind_construct.hpp>
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>

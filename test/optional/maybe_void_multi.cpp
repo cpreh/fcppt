@@ -4,8 +4,8 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/optional_impl.hpp>
 #include <fcppt/maybe_void_multi.hpp>
+#include <fcppt/optional_impl.hpp>
 #include <fcppt/cast/to_signed.hpp>
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>

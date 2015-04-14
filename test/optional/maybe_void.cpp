@@ -5,8 +5,8 @@
 
 
 #include <fcppt/make_unique_ptr.hpp>
-#include <fcppt/optional_impl.hpp>
 #include <fcppt/maybe_void.hpp>
+#include <fcppt/optional_impl.hpp>
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
