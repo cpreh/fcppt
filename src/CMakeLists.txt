@@ -169,7 +169,6 @@ set(
 	include/fcppt/container/grid/detail/pos_iterator_base.hpp
 	include/fcppt/container/grid/detail/print_recurse.hpp
 	include/fcppt/container/grid/detail/resize.hpp
-	include/fcppt/container/grid/detail/resize_opt_init.hpp
 	include/fcppt/container/grid/detail/shrink_to_fit.hpp
 	include/fcppt/container/grid/detail/spiral_iterator_base.hpp
 	include/fcppt/container/grid/dim.hpp

@@ -10,7 +10,6 @@
 #include <fcppt/container/grid/object_impl.hpp>
 #include <fcppt/container/grid/size_type.hpp>
 #include <fcppt/container/grid/detail/assign_fill_recurse.hpp>
-#include <fcppt/container/grid/detail/resize_opt_init.hpp>
 
 
 namespace fcppt
@@ -60,8 +59,7 @@ resize_preserve_init(
 		_result
 	);
 
-	fcppt::container::grid::detail::resize_opt_init(
-		_result,
+	_result.resize_init(
 		_new_size,
 		_value
 	);
