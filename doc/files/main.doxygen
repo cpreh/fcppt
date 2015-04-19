@@ -47,9 +47,7 @@ The documentation is split into the following parts:
 	<li>
 		\subpage changes
 		<ul>
-			<li>\ref changes_changes_to_120</li>
-			<li>\ref changes_changes_to_110</li>
-			<li>\ref changes_changes_to_100</li>
+			<li>\ref changes_changes_to_130</li>
 			<li>\ref older_changes</li>
 		</ul>
 	</li>
