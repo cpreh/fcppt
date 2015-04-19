@@ -21,7 +21,10 @@ namespace fcppt
 
 \ingroup fcpptvarious
 
-Moves \a _arg iff \a Type is an rvalue.
+Moves \a _arg iff \a Type is an rvalue. The behavior is similar to
+<code>std::forward</code> except that this function depends on two types
+instead of one. This can be useful in situations where you want to move a
+member if the surrounding object is an rvalue.
 */
 template<
 	typename Type,

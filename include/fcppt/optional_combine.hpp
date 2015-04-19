@@ -8,9 +8,11 @@
 #define FCPPT_OPTIONAL_COMBINE_HPP_INCLUDED
 
 #include <fcppt/forward_optional_get.hpp>
-#include <fcppt/move_if_rvalue.hpp>
 #include <fcppt/optional_impl.hpp>
 #include <fcppt/detail/check_optional.hpp>
+#include <fcppt/config/external_begin.hpp>
+#include <utility>
+#include <fcppt/config/external_end.hpp>
 
 
 namespace fcppt
@@ -84,7 +86,7 @@ fcppt::optional<
 	)
 		return
 			result_type{
-				fcppt::move_if_rvalue<
+				std::forward<
 					Optional
 				>(
 					_optional2
@@ -96,7 +98,7 @@ fcppt::optional<
 	)
 		return
 			result_type{
-				fcppt::move_if_rvalue<
+				std::forward<
 					Optional
 				>(
 					_optional1
