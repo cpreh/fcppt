@@ -6,8 +6,10 @@
 
 #include <fcppt/from_optional.hpp>
 #include <fcppt/maybe.hpp>
+#include <fcppt/maybe_void.hpp>
 #include <fcppt/optional_bind.hpp>
 #include <fcppt/optional_bind_construct.hpp>
+#include <fcppt/optional_comparison.hpp>
 #include <fcppt/optional_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <iostream>
@@ -32,12 +34,17 @@ optional_example()
 		)
 		{
 			// Test if opt is set
-			if(
-				opt.has_value()
-			)
-				// Output the value
-				// This is undefined if has_value() == false
-				std::cout << opt.get_unsafe() << '\n';
+			fcppt::maybe_void(
+				opt,
+				[](
+					unsigned const _value
+				)
+				{
+					// Output the value
+					// This is undefined if has_value() == false
+					std::cout << _value << '\n';
+				}
+			);
 		}
 	);
 
@@ -73,7 +80,7 @@ optional_copy()
 	int1 = 10u;
 
 	// The value of opt will still be 5u
-	std::cout << (opt.get_unsafe() != int1) << '\n';
+	std::cout << (opt != optional_uint{int1}) << '\n';
 //! [optional_copy]
 }
 
@@ -106,7 +113,7 @@ optional_bind()
 		)
 	};
 
-	std::cout << (value.get_unsafe() == "3") << '\n';
+	std::cout << (value == optional_string{"3"}) << '\n';
 //! [optional_bind]
 
 //! [optional_bind_construct]
@@ -125,7 +132,7 @@ optional_bind()
 		)
 	};
 
-	std::cout << (value.get_unsafe() == "3") << '\n';
+	std::cout << (value == optional_string{"3"}) << '\n';
 //! [optional_bind_construct]
 }
 
