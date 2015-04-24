@@ -179,6 +179,10 @@ takes an fcppt::assert_::information object.
 <td>Contains the fcppt::assert_::make_message function</td>
 </tr>
 <tr>
+<td><code>optional_error.hpp</code></td>
+<td>Contains \link FCPPT_ASSERT_OPTIONAL_ERROR \endlink</td>
+</tr>
+<tr>
 <td><code>post.hpp</code></td>
 <td>Contains \link FCPPT_ASSERT_POST \endlink</td>
 </tr>
