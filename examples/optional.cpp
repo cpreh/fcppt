@@ -6,7 +6,6 @@
 
 #include <fcppt/from_optional.hpp>
 #include <fcppt/maybe.hpp>
-#include <fcppt/maybe_void.hpp>
 #include <fcppt/optional_bind.hpp>
 #include <fcppt/optional_bind_construct.hpp>
 #include <fcppt/optional_comparison.hpp>
@@ -20,45 +19,51 @@
 namespace
 {
 
+//! [optional_example_bad]
 void
-optional_example()
-{
-//! [optional_example]
-	typedef fcppt::optional<
+optional_example_bad(
+	fcppt::optional<
 		unsigned
-	> optional_uint;
+	> const _opt
+)
+{
+	if(
+		_opt.has_value()
+	)
+		std::cout
+			<< _opt.get_unsafe()
+			<< '\n';
+	else
+		std::cout
+			<< "No value\n";
+}
+//! [optional_example_bad]
 
-	auto const test_function(
+//! [optional_example_good]
+void
+optional_example_good(
+	fcppt::optional<
+		unsigned
+	> const _opt
+)
+{
+	fcppt::maybe(
+		_opt,
+		[]{
+			std::cout
+				<< "No value\n";
+		},
 		[](
-			optional_uint opt
+			unsigned const _val
 		)
 		{
-			// Test if opt is set
-			fcppt::maybe_void(
-				opt,
-				[](
-					unsigned const _value
-				)
-				{
-					// Output the value
-					// This is undefined if has_value() == false
-					std::cout << _value << '\n';
-				}
-			);
+			std::cout
+				<< _val
+				<< '\n';
 		}
 	);
-
-	// Prints nothing
-	test_function(
-		optional_uint()
-	);
-
-	// Prints 3
-	test_function(
-		optional_uint(3u)
-	);
-//! [optional_example]
 }
+//! [optional_example_good]
 
 void
 optional_copy()
@@ -160,55 +165,30 @@ from_optional()
 //! [from_optional]
 }
 
-void
-maybe()
-{
-//! [maybe]
-	typedef
-	fcppt::optional<
-		int
-	>
-	optional_int;
-
-	std::string const result{
-		fcppt::maybe(
-			optional_int(),
-			[]{
-				// This is returned if the optional is empty
-				return
-					std::string{
-						"nothing"
-					};
-			},
-			[](
-				int const _val
-			)
-			{
-				// This is returned if the optional contains _val
-				return
-					std::to_string(
-						_val
-					);
-			}
-		)
-	};
-
-	std::cout << result << '\n';
-//! [maybe]
-}
-
 }
 
 int
 main()
 {
-	optional_example();
+	optional_example_bad(
+		fcppt::optional<
+			unsigned
+		>(
+			0
+		)
+	);
+
+	optional_example_good(
+		fcppt::optional<
+			unsigned
+		>(
+			0
+		)
+	);
 
 	optional_copy();
 
 	optional_bind();
 
 	from_optional();
-
-	maybe();
 }

@@ -22,31 +22,30 @@
 
 \section optional_motivation Motivation
 
-Sometimes it is necessary to distinguish between having a value and having
-none.
-There are several ways that are often used to make this work:
-<ul>
-<li>Using a <em>special value</em> which indicates no value, for example
-<code>static_cast<unsigned>(-1)</code></li>
-<li>Using a pointer to a value and set the pointer to NULL to indicate no
-value</li>
-<li>Setting an additional bool flag</li>
-</ul>
+Often it is necessary to distinguish between having a value and having none.
+This includes operations that might return no result, for example looking for
+an element in a container. Also, in a lot of situations, data may be absent,
+for example a tree might have a parent or it might have none. Values that may
+be nothing are common in C++ but are not handled consistently. This includes
+special values like <code>std::string::npos</code>, <code>nullptr</code> or end
+iterators. Modelling optionals explicitly has several advantages. Consider the
+following example:
 
-All of these have several shortcomings:
-<ul>
-<li>Special values might not be available, and on top of that they are very
-error-prone.</li>
-<li>Pointers to temporaries that might vanish cannot be passed around. For
-example a function returning a value cannot do so by a pointer.</li>
-<li>Additional bool flags are cumbersome to handle and are error-prone as
-well.</li>
-</ul>
+\snippet optional.cpp optional_example_bad
 
-An fcppt::optional instead is a wrapper around a value that can be absent.
-Here is a small example.
+First of all, the example makes it clear that the function can deal with an
+<code>unsigned int</code> or nothing at all. However, using optionals this way
+makes them no safer than using pointers that may be null. To improve the
+situation, we must avoid calling <code>get_unsafe</code> at all, which will
+lead to undefined behavior if the optional has no value. To do this, the most
+basic operation is called <code>maybe</code> which acts upon the two different
+cases.
 
-\snippet optional.cpp optional_example
+\snippet optional.cpp optional_example_good
+
+As you can see, the second lambda function gets the already dereferenced
+optional value as a parameter, freeing the user from dereferencing the
+optional.
 
 \section optional_value Values
 
@@ -74,26 +73,27 @@ For optional references, see \ref optional_reference
 
 \section optional_design Design
 
-TODO: Explain pointer semantics.
-There is already <code>%boost::optional</code> so you might wonder why
-fcppt provides its own optional type. It is actually quite similar to
-<code>%boost::optional</code> in the sense that it stores optional values
-by value and not by means of dynamically allocated memory. This means
-that an optional value is at least as big as the type it holds.
-The key differences to <code>%boost::optional</code> are
+The goal of fcppt::optional, in contrast to <code>%boost::optional</code>, is
+to be as explicit as possible and to avoid pointer semantics. The key
+differences include:
 <ul>
-<li>fcppt::optional<T> uses alignment support from the compiler instead of
-relying on <code>%boost::detail::aligned_storage</code></li>
-<li>fcppt::optional doesn't have an implicit constructor.</li>
-<li>fcppt::optional<T &> doesn't allow implicit conversions for assignment</li>
+<li>fcppt::optional doesn't have <code>operator-></code>,
+<code>operator*</code> nor <code>operator bool</code>, so that it doesn't mimic
+pointers.
+<li>fcppt::optional uses alignment support from the compiler instead of relying
+on <code>%boost::detail::aligned_storage</code></li>
+<li><code>fcppt::optional<T></code> doesn't have an implicit constructor, nor
+assignment operator from <code>T</code>.</li>
+<li><code>fcppt::optional<T &></code> doesn't allow implicit conversions for
+assignment.</li>
 </ul>
 
 \section optional_operations Common Operations
 
-Optional, like Maybe in Haskell or Option in OCaml, is a commonly useful data
-type. Therefore, some commonly needed operations arise as well. Perhaps the
-most prominent operation would be the so called bind function which decomposes
-an optional and creates a new one by preserving empty optionals.
+fcppt::maybe is the most basic function that operates on optionals, However,
+some commonly needed operations arise as well. Perhaps the most prominent
+operation would be the so called bind function which decomposes an optional and
+creates a new one by preserving empty optionals.
 
 \snippet optional.cpp optional_bind
 
@@ -106,11 +106,6 @@ Another commonly used function is fcppt::from_optional. It deconstructs an
 optional by either taking its value or returning a default value.
 
 \snippet optional.cpp from_optional
-
-An even more general function is fcppt::maybe which either returns a default
-value or transforms the value inside an optional.
-
-\snippet optional.cpp maybe
 
 \section optional_headers Header files
 
@@ -142,8 +137,16 @@ fcppt::optional is spread out across various header files.
 <td>Contains \link fcppt::maybe \endlink.</td>
 </tr>
 <tr>
+<td><code>maybe_multi.hpp</code></td>
+<td>Contains \link fcppt::maybe_multi \endlink.</td>
+</tr>
+<tr>
 <td><code>maybe_void.hpp</code></td>
 <td>Contains \link fcppt::maybe_void \endlink.</td>
+</tr>
+<tr>
+<td><code>maybe_void_multi.hpp</code></td>
+<td>Contains \link fcppt::maybe_void_multi \endlink.</td>
 </tr>
 <tr>
 <td><code>optional_bind.hpp</code></td>
@@ -154,8 +157,20 @@ fcppt::optional is spread out across various header files.
 <td>Contains \link fcppt::optional_bind_construct \endlink.</td>
 </tr>
 <tr>
+<td><code>optional_combine.hpp</code></td>
+<td>Contains \link fcppt::optional_combine \endlink.</td>
+</tr>
+<tr>
 <td><code>optional_comparison.hpp</code></td>
 <td>Contains <code>operator==</code>, <code>operator!=</code> and <code>operator< </code></td>
+</tr>
+<tr>
+<td><code>optional_ref_compare.hpp</code></td>
+<td>Contains \link fcppt::optional_ref_compare \endlink.</td>
+</tr>
+<tr>
+<td><code>optional_to_exception.hpp</code></td>
+<td>Contains \link fcppt::optional_to_exception \endlink.</td>
 </tr>
 <tr>
 <td><code>const_optional_cast.hpp</code></td>
