@@ -9,7 +9,6 @@
 #include <fcppt/config/external_begin.hpp>
 #include <boost/mpl/vector/vector10.hpp>
 #include <iostream>
-#include <ostream>
 #include <string>
 #include <fcppt/config/external_end.hpp>
 

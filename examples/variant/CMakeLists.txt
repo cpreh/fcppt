@@ -15,5 +15,13 @@ add_fcppt_variant_example(
 )
 
 add_fcppt_variant_example(
+	motivation
+)
+
+add_fcppt_variant_example(
 	nonconst_visitation
+)
+
+add_fcppt_variant_example(
+	visitation
 )

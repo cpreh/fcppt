@@ -47,144 +47,36 @@ with the types of objects you can store in them.</li>
 
 </ul>
 
-\code
-union int_or_float
-{
-	int i;
-	float f;
-};
-
-int_or_float var;
-
-// Undefined behaviour because the union doesn't store anything
-std::cout << var.i << '\n';
-
-// Ok, but doesn't track that the type is int
-var.i = 42;
-
-// Undefined behaviour because the union stores an int
-std::cout << var.f << '\n';
-
-void
-print(
-	int_or_float x
-)
-{
-	// how do we know which type of object is stored?
-}
-
-print(var);
-
-// Doesn't work in C++03
-union string_or_int
-{
-	std::string s;
-	int i;
-};
-\endcode
-
-For a union, the stored type has to be tracked somehow or must be inferred from
-the environment where the union is used. This is cumbersome to do, but it can
-be done. Taking our previously defined int_or_float, it might look something
-like this.
-
-\code
-enum stored_type
-{
-	int_,
-	float_
-};
-
-int_or_float var;
-
-stored_type type;
-
-var.i = 42;
-type = int_;
-
-void
-print(
-	int_or_float x,
-	stored_type t
-)
-{
-	switch(t)
-	{
-	case int_:
-		std::cout << x.i << '\n';
-	case float_:
-		std::cout << x.f << '\n';
-	}
-}
-
-print(
-	var,
-	type
-);
-\endcode
+\snippet variant/motivation.cpp variant_union
 
 In order to fix the aforementioned problems, fcppt::variant's approach is very
-different from a union.
+different to a union.
 
 <ul>
 
-<li>It knows which type it holds, which can be queried at any time.</li>
+<li>It knows which type it holds.</li>
 
 <li>It is not default constructible which doesn't make any sense for
 variants.</li>
 
-<li>If the wrong type of the variant is accessed, you will get an
-exception.</li>
-
 <li>It calls constructors, assignment operators and destructors as needed.</li>
+
+<li>Safe operations on variants are provided which make it impossible to access
+the wrong type.</li>
 
 </ul>
 
 The above example can be rewritten as follows:
 
-\code
-// Note that an MPL sequence is used here to describe which types the variant
-// can hold
-typedef fcppt::variant::object<
-	boost::mpl::vector2<
-		std::string,
-		int
-	>
-> string_or_int;
+\snippet variant/motivation.cpp variant_example
 
-void
-print(
-	string_or_int x
-)
-{
-	// fcppt::variant::holds_type queries if the type is held by the
-	// variant
-	if(
-		fcppt::variant::holds_type<std::string>(x)
-	)
-		std::cout << x.get<std::string>() << '\n';
-	else if(
-		fcppt::variant::holds_type<int>(x)
-	)
-		std::cout << x.get<int>() << '\n';
-}
-
-string_or_int var(
-	std::string(
-		"Hello World"
-	)
-);
-
-print(
-	var
-);
-\endcode
+While this removes a lot of the problems unions have, we still have to access
+the variant's elements explicitly which can lead to undefined behavior if we
+get it wrong.
 
 \section variant_visitation Visitation
 
-Given the <code>string_or_int</code> variant it is already cumbersome to print
-it. If there were more cases (which means more types that the variant can hold)
-it would be even more cumbersome.
+Not only is the previous unsafe, it is also tedious.
 
 In order to solve this, there is a mechanism called visitation. A class that
 can visit a set of types is called a visitor. Instead of focusing on making the
@@ -198,74 +90,20 @@ in the set exactly one of them matches. The function call operators must also
 be <code>const</code>. The visitor must have a typedef <code>result_type</code>
 which must be the result type of every function call operator it provides.
 
-\code
-struct print_visitor
-{
-	typedef void result_type;
-
-	result_type
-	operator()(
-		std::string s
-	) const
-	{
-		std::cout << s << '\n';
-	}
-
-	result_type
-	operator()(
-		int i
-	) const
-	{
-		std::cout << i << '\n';
-	}
-};
-
-// prints "Hello World"
-fcppt::variant::apply_unary(
-	print_visitor(),
-	string_or_int(
-		std::string(
-			"Hello World"
-		)
-	)
-);
-
-// prints 42
-fcppt::variant::apply_unary(
-	print_visitor(),
-	string_or_int(
-		42
-	)
-);
-\endcode
+\snippet variant/visitation.cpp variant_visit_simple
 
 In this case, it is possible to employ templates to make the visitor a lot
 easier.
 
-\code
-struct print_visitor2
-{
-	typedef void result_type;
-
-	template<
-		typename T
-	>
-	result_type
-	operator()(
-		T const &arg
-	) const
-	{
-		std::cout << arg << '\n';
-	}
-};
-\endcode
+\snippet variant/visitation.cpp variant_visit_template
 
 It is often advisable to make a visitor as generic as possible. enable_if
 combined with type traits can also help.
 
-fcppt::variant::apply_binary and fcppt::variant::apply_ternary are also
-provided. These can be used to visit two or three variants at the same time.
-In this case, the operator() takes two or three arguments, respectively.
+\link fcppt::variant::apply_binary \endlink and \link
+fcppt::variant::apply_ternary \endlink are also provided. These can be used to
+visit two or three variants at the same time.  In this case, the operator()
+takes two or three arguments, respectively.
 
 Here is a small example for defining a binary visitor:
 
@@ -344,15 +182,15 @@ or to assign a new object.</li>
 </tr>
 <tr>
 <td><code>apply_unary.hpp</code></td>
-<td>Contains fcppt::variant::apply_unary for unary visitation</td>
+<td>Contains \link fcppt::variant::apply_unary \endlink for unary visitation.</td>
 </tr>
 <tr>
 <td><code>apply_binary.hpp</code></td>
-<td>Contains fcppt::variant::apply_binary for binary visitation</td>
+<td>Contains \link fcppt::variant::apply_binary \endlink for binary visitation.</td>
 </tr>
 <tr>
 <td><code>apply_ternary.hpp</code></td>
-<td>Contains fcppt::variant::apply_ternary for ternary visitation</td>
+<td>Contains \link fcppt::variant::apply_ternary \endlink for ternary visitation.</td>
 </tr>
 <tr>
 <td><code>equal.hpp</code></td>
@@ -360,19 +198,23 @@ or to assign a new object.</li>
 </tr>
 <tr>
 <td><code>exception.hpp</code></td>
-<td>Contains fcppt::variant::exception, the base class for every variant exception</td>
+<td>Contains \link fcppt::variant::exception \endlink, the base class for every
+variant exception.</td>
 </tr>
 <tr>
-<td><code>get.hpp</code></td>
-<td>Contains a free get function which does the same thing as the get member function</td>
+<td><code>get_exn.hpp</code></td>
+<td>Contains a free \link fcppt::variant::get_exn \endlink function which does
+the same thing as the get_exn member function.</td>
 </tr>
 <tr>
 <td><code>holds_type.hpp</code></td>
-<td>Contains the fcppt::variant::holds_type function to check if a type is held by the variant</td>
+<td>Contains the \link fcppt::variant::holds_type \endlink function to check if
+a type is held by the variant.</td>
 </tr>
 <tr>
 <td><code>invalid_get.hpp</code></td>
-<td>Contains fcppt::variant::invalid_get, which might be thrown by get</td>
+<td>Contains \link fcppt::variant::invalid_get \endlink, which might be thrown
+by \link fcppt::variant::get_exn \endlink</td>
 </tr>
 <tr>
 <td><code>not_equal.hpp</code></td>
@@ -381,6 +223,10 @@ or to assign a new object.</li>
 <tr>
 <td><code>output.hpp</code></td>
 <td>Contains operator<< for output</td>
+</tr>
+<tr>
+<td><code>to_optional.hpp</code></td>
+<td>Contains \link fcppt::variant::to_optional \endlink.</td>
 </tr>
 </table>
 */
