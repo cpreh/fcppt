@@ -227,6 +227,7 @@ set(
 	include/fcppt/container/index_map_impl.hpp
 	include/fcppt/container/is_raw_vector.hpp
 	include/fcppt/container/is_std_vector.hpp
+	include/fcppt/container/maybe_front.hpp
 	include/fcppt/container/not_found.hpp
 	include/fcppt/container/out_of_range.hpp
 	include/fcppt/container/raw_vector.hpp

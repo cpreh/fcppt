@@ -197,6 +197,10 @@ add_fcppt_test(
 )
 
 add_fcppt_test(
+	container/maybe_front
+)
+
+add_fcppt_test(
 	container/raw_vector
 	LINK_LIBS
 		"${fcppt_core_TARGET}"

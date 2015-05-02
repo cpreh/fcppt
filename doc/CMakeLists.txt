@@ -165,7 +165,9 @@ set(
 	examples/type_traits.cpp
 	examples/unique_ptr.cpp
 	examples/variant/binary_visitation.cpp
+	examples/variant/motivation.cpp
 	examples/variant/nonconst_visitation.cpp
+	examples/variant/visitation.cpp
 	examples/version.cpp
 	examples/visibility.cpp
 	examples/weak_ptr.cpp
@@ -428,6 +430,7 @@ set(
 	include/fcppt/container/index_map_impl.hpp
 	include/fcppt/container/is_raw_vector.hpp
 	include/fcppt/container/is_std_vector.hpp
+	include/fcppt/container/maybe_front.hpp
 	include/fcppt/container/not_found.hpp
 	include/fcppt/container/out_of_range.hpp
 	include/fcppt/container/raw_vector.hpp
