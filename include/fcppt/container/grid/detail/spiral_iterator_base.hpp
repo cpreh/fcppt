@@ -10,6 +10,7 @@
 #include <fcppt/container/grid/spiral_iterator_fwd.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/iterator/iterator_facade.hpp>
+#include <iterator>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -32,7 +33,7 @@ boost::iterator_facade<
 		Pos
 	>,
 	Pos,
-	boost::forward_traversal_tag,
+	std::forward_iterator_tag,
 	Pos,
 	typename
 	Pos::value_type

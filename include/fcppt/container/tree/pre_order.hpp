@@ -17,6 +17,7 @@
 #include <fcppt/config/external_begin.hpp>
 #include <boost/iterator/iterator_facade.hpp>
 #include <boost/range/iterator_range_core.hpp>
+#include <iterator>
 #include <stack>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
@@ -108,7 +109,7 @@ private:
 		iterator,
 		typename
 		tree_iterator::value_type,
-		boost::forward_traversal_tag,
+		std::forward_iterator_tag,
 		typename
 		tree_iterator::reference
 	>

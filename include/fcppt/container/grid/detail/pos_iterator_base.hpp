@@ -11,6 +11,7 @@
 #include <fcppt/container/grid/pos_reference_fwd.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/iterator/iterator_facade.hpp>
+#include <iterator>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -34,7 +35,7 @@ boost::iterator_facade<
 	>,
 	typename
 	Grid::value_type,
-	boost::forward_traversal_tag,
+	std::forward_iterator_tag,
 	fcppt::container::grid::pos_reference<
 		Grid
 	>,
