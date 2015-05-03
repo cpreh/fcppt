@@ -1,8 +1,3 @@
-set(
-	CMAKE_ALLOW_LOOSE_LOOP_CONSTRUCTS
-	ON
-)
-
 #Disallow in source builds everywhere
 if(
 	"${CMAKE_BINARY_DIR}"
@@ -260,7 +255,8 @@ if(
 	${CMAKE_CXX_COMPILER_ID} STREQUAL "Clang"
 )
 	set(
-		FCPPT_UTILS_COMPILER_IS_CLANGPP ON
+		FCPPT_UTILS_COMPILER_IS_CLANGPP
+		ON
 	)
 endif()
 
@@ -268,7 +264,8 @@ if(
 	${CMAKE_CXX_COMPILER_ID} STREQUAL "Intel"
 )
 	set(
-		FCPPT_UTILS_COMPILER_IS_INTELCPP ON
+		FCPPT_UTILS_COMPILER_IS_INTELCPP
+		ON
 	)
 endif()
 
@@ -284,11 +281,13 @@ if(
 
 	# cmake tries to grep for warning messages which will fail in a lot of cases
 	set(
-		CMAKE_REQUIRED_FLAGS_BASE "-Wall -Werror -pedantic"
+		CMAKE_REQUIRED_FLAGS_BASE
+		"-Wall -Werror -pedantic"
 	)
 
 	set(
-		CMAKE_REQUIRED_FLAGS ${CMAKE_REQUIRED_FLAGS_BASE}
+		CMAKE_REQUIRED_FLAGS
+		${CMAKE_REQUIRED_FLAGS_BASE}
 	)
 
 	CHECK_CXX_COMPILER_FLAG(
@@ -498,12 +497,17 @@ set(
 
 # configure standard CMake build paths
 set(
-	EXECUTABLE_OUTPUT_PATH
+	CMAKE_RUNTIME_OUTPUT_DIRECTORY
 	${FCPPT_UTILS_PROJECT_BINARY_DIR}/bin
 )
 
 set(
-	LIBRARY_OUTPUT_PATH
+	CMAKE_LIBRARY_OUTPUT_DIRECTORY
+	${FCPPT_UTILS_PROJECT_BINARY_DIR}/lib
+)
+
+set(
+	CMAKE_ARCHIVE_OUTPUT_DIRECTORY
 	${FCPPT_UTILS_PROJECT_BINARY_DIR}/lib
 )
 
