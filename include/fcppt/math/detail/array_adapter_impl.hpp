@@ -24,62 +24,117 @@
 	def_pre\
 )\
 BOOST_PP_TUPLE_REM(class_arity)template_pre \
+inline \
 typename BOOST_PP_TUPLE_REM(class_arity)def_pre ::pointer \
 BOOST_PP_TUPLE_REM(class_arity)def_pre ::data()\
 {\
-	return storage_.data();\
+	return \
+		storage_.data();\
 }\
 \
 BOOST_PP_TUPLE_REM(class_arity)template_pre \
+inline \
 typename BOOST_PP_TUPLE_REM(class_arity)def_pre ::const_pointer \
 BOOST_PP_TUPLE_REM(class_arity)def_pre ::data() const\
 {\
-	return storage_.data();\
+	return \
+		storage_.data();\
 }\
 \
 BOOST_PP_TUPLE_REM(class_arity)template_pre \
+inline \
 typename BOOST_PP_TUPLE_REM(class_arity)def_pre ::reference \
 BOOST_PP_TUPLE_REM(class_arity)def_pre ::at(\
 	size_type const index\
 )\
 {\
 	FCPPT_ASSERT_THROW(\
-		index < size(),\
+		index < this->size(),\
 		fcppt::assert_::exception\
 	); \
 \
-	return (*this)[index];\
+	return \
+		(*this)[\
+			index\
+		];\
 }\
 \
 BOOST_PP_TUPLE_REM(class_arity)template_pre \
+inline \
 typename BOOST_PP_TUPLE_REM(class_arity)def_pre ::const_reference \
 BOOST_PP_TUPLE_REM(class_arity)def_pre ::at(\
 	size_type const index\
 ) const\
 {\
 	FCPPT_ASSERT_THROW(\
-		index < size(),\
+		index < this->size(),\
 		fcppt::assert_::exception\
 	); \
 \
-	return (*this)[index];\
+	return \
+		(*this)[\
+			index\
+		];\
 }\
 \
 BOOST_PP_TUPLE_REM(class_arity)template_pre \
+template< \
+	typename BOOST_PP_TUPLE_REM(class_arity)def_pre ::size_type Index \
+> \
+inline \
+typename BOOST_PP_TUPLE_REM(class_arity)def_pre ::reference \
+BOOST_PP_TUPLE_REM(class_arity)def_pre ::at_c() \
+{\
+	static_assert(\
+		Index < static_size::value,\
+		"Index out of range"\
+	); \
+\
+	return \
+		(*this)[\
+			Index\
+		];\
+}\
+\
+BOOST_PP_TUPLE_REM(class_arity)template_pre \
+template< \
+	typename BOOST_PP_TUPLE_REM(class_arity)def_pre ::size_type Index \
+> \
+inline \
+typename BOOST_PP_TUPLE_REM(class_arity)def_pre ::const_reference \
+BOOST_PP_TUPLE_REM(class_arity)def_pre ::at_c() const \
+{\
+	static_assert(\
+		Index < static_size::value,\
+		"Index out of range"\
+	); \
+\
+	return \
+		(*this)[\
+			Index\
+		];\
+}\
+\
+BOOST_PP_TUPLE_REM(class_arity)template_pre \
+inline \
 typename BOOST_PP_TUPLE_REM(class_arity)def_pre ::iterator \
 BOOST_PP_TUPLE_REM(class_arity)def_pre ::begin() \
 {\
-	return storage_.begin();\
+	return \
+		storage_.begin();\
 }\
 \
 BOOST_PP_TUPLE_REM(class_arity)template_pre \
+inline \
 typename BOOST_PP_TUPLE_REM(class_arity)def_pre ::const_iterator \
 BOOST_PP_TUPLE_REM(class_arity)def_pre ::begin() const\
 {\
-	return storage_.begin();\
+	return \
+		storage_.begin();\
 }\
 \
 BOOST_PP_TUPLE_REM(class_arity)template_pre \
+inline \
 typename BOOST_PP_TUPLE_REM(class_arity)def_pre ::iterator \
 BOOST_PP_TUPLE_REM(class_arity)def_pre ::end()\
 {\
@@ -92,6 +147,7 @@ BOOST_PP_TUPLE_REM(class_arity)def_pre ::end()\
 }\
 \
 BOOST_PP_TUPLE_REM(class_arity)template_pre \
+inline \
 typename BOOST_PP_TUPLE_REM(class_arity)def_pre ::const_iterator \
 BOOST_PP_TUPLE_REM(class_arity)def_pre ::end() const\
 {\
@@ -104,69 +160,102 @@ BOOST_PP_TUPLE_REM(class_arity)def_pre ::end() const\
 }\
 \
 BOOST_PP_TUPLE_REM(class_arity)template_pre \
+inline \
 typename BOOST_PP_TUPLE_REM(class_arity)def_pre ::reverse_iterator \
 BOOST_PP_TUPLE_REM(class_arity)def_pre ::rbegin() \
 {\
-	return reverse_iterator(end());\
+	return \
+		reverse_iterator(\
+			this->end()\
+		);\
 }\
 \
 BOOST_PP_TUPLE_REM(class_arity)template_pre \
+inline \
 typename BOOST_PP_TUPLE_REM(class_arity)def_pre ::const_reverse_iterator \
 BOOST_PP_TUPLE_REM(class_arity)def_pre ::rbegin() const\
 {\
-	return const_reverse_iterator(end());\
+	return \
+		const_reverse_iterator(\
+			this->end()\
+		);\
 }\
 \
 BOOST_PP_TUPLE_REM(class_arity)template_pre \
+inline \
 typename BOOST_PP_TUPLE_REM(class_arity)def_pre ::reverse_iterator \
 BOOST_PP_TUPLE_REM(class_arity)def_pre ::rend() \
 {\
-	return reverse_iterator(begin());\
+	return \
+		reverse_iterator(\
+			this->begin()\
+		);\
 }\
 \
 BOOST_PP_TUPLE_REM(class_arity)template_pre \
+inline \
 typename BOOST_PP_TUPLE_REM(class_arity)def_pre ::const_reverse_iterator \
 BOOST_PP_TUPLE_REM(class_arity)def_pre ::rend() const\
 {\
-	return const_reverse_iterator(begin());\
+	return \
+		const_reverse_iterator(\
+			this->begin()\
+		);\
 }\
 \
 BOOST_PP_TUPLE_REM(class_arity)template_pre \
+inline \
 typename BOOST_PP_TUPLE_REM(class_arity)def_pre ::reference \
 BOOST_PP_TUPLE_REM(class_arity)def_pre ::back()\
 {\
-	return *std::prev(end());\
+	return \
+		*std::prev(\
+			this->end()\
+		);\
 }\
 \
 BOOST_PP_TUPLE_REM(class_arity)template_pre \
+inline \
 typename BOOST_PP_TUPLE_REM(class_arity)def_pre ::const_reference \
 BOOST_PP_TUPLE_REM(class_arity)def_pre ::back() const\
 {\
-	return *std::prev(end());\
+	return \
+		*std::prev(\
+			this->end()\
+		);\
 }\
 \
 BOOST_PP_TUPLE_REM(class_arity)template_pre \
+inline \
 typename BOOST_PP_TUPLE_REM(class_arity)def_pre ::reference \
 BOOST_PP_TUPLE_REM(class_arity)def_pre ::front()\
 {\
-	return *begin();\
+	return \
+		*this->begin();\
 }\
 \
 BOOST_PP_TUPLE_REM(class_arity)template_pre \
+inline \
 typename BOOST_PP_TUPLE_REM(class_arity)def_pre ::const_reference \
 BOOST_PP_TUPLE_REM(class_arity)def_pre ::front() const\
 {\
-	return *begin();\
+	return \
+		*this->begin();\
 }\
 \
 BOOST_PP_TUPLE_REM(class_arity)template_pre \
+inline \
 bool \
 BOOST_PP_TUPLE_REM(class_arity)def_pre ::empty() const\
 {\
-	return this->begin() == this->end();\
+	return \
+		this->begin() \
+		== \
+		this->end();\
 }\
 \
 BOOST_PP_TUPLE_REM(class_arity)template_pre \
+inline \
 typename BOOST_PP_TUPLE_REM(class_arity)def_pre ::size_type \
 BOOST_PP_TUPLE_REM(class_arity)def_pre ::size() const\
 {\

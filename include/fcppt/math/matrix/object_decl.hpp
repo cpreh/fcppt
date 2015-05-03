@@ -70,6 +70,8 @@ public:
 	*/
 	typedef M m_wrapper;
 
+	typedef N static_size;
+
 	/**
 	\brief A typedef for the \p M and \p N parameters
 	*/

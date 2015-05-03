@@ -51,6 +51,8 @@ public:
 	\brief A typedef for the \p N parameter
 	*/
 	typedef N dim_wrapper;
+
+	typedef N static_size;
 	/**
 	\brief A typedef for the \p S parameter
 	*/

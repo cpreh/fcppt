@@ -26,6 +26,18 @@
 		size_type\
 	) const;\
 \
+	template<\
+		size_type\
+	>\
+	reference \
+	at_c(); \
+\
+	template<\
+		size_type\
+	>\
+	const_reference \
+	at_c() const; \
+\
 	iterator \
 	begin();\
 \

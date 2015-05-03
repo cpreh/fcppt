@@ -440,3 +440,33 @@ FCPPT_PP_POP_WARNING
 		&& vector.y() == 42
 	);
 }
+
+BOOST_AUTO_TEST_CASE(
+	vector_at_c
+)
+{
+FCPPT_PP_POP_WARNING
+	typedef fcppt::math::vector::static_<
+		unsigned,
+		2
+	> ui2_vector;
+
+	ui2_vector const vector(
+		1u,
+		2u
+	);
+
+	BOOST_CHECK_EQUAL(
+		vector.at_c<
+			0
+		>(),
+		1u
+	);
+
+	BOOST_CHECK_EQUAL(
+		vector.at_c<
+			1
+		>(),
+		2u
+	);
+}
