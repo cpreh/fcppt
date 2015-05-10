@@ -35,7 +35,7 @@
 
 fcppt needs the following at build time:
 <ul>
-	<li><a href="http://www.cmake.org">>= cmake-2.8.12</a></li>
+	<li><a href="http://www.cmake.org">>= cmake-3.0.0</a></li>
 	<li><a href="http://www.boost.org">>= boost-1.47</a></li>
 </ul>
 
