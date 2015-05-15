@@ -17,6 +17,7 @@
 #include <fcppt/container/grid/detail/resize.hpp>
 #include <fcppt/container/grid/detail/shrink_to_fit.hpp>
 #include <fcppt/config/external_begin.hpp>
+#include <type_traits>
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
@@ -148,17 +149,9 @@ fcppt::container::grid::object<
 	N,
 	A
 >::object(
-	object const &_other
+	object const &
 )
-:
-	container_(
-		_other.container_
-	),
-	size_(
-		_other.size_
-	)
-{
-}
+= default;
 
 template<
 	typename T,
@@ -171,6 +164,11 @@ fcppt::container::grid::object<
 	A
 >::object(
 	object &&_other
+)
+noexcept(
+	std::is_nothrow_move_constructible<
+		T
+	>::value
 )
 :
 	container_(
@@ -199,20 +197,9 @@ fcppt::container::grid::object<
 	N,
 	A
 >::operator=(
-	object const &_other
+	object const &
 )
-{
-	if(
-		&_other == this
-	)
-		return *this;
-
-	container_ = _other.container_;
-
-	size_ = _other.size_;
-
-	return *this;
-}
+= default;
 
 template<
 	typename T,
@@ -231,20 +218,22 @@ fcppt::container::grid::object<
 >::operator=(
 	object &&_other
 )
+noexcept(
+	std::is_nothrow_move_constructible<
+		T
+	>::value
+)
 {
-	if(
-		&_other == this
-	)
-		return *this;
-
 	container_ =
 		std::move(
 			_other.container_
 		);
 
-	size_ = _other.size_;
+	size_ =
+		_other.size_;
 
-	return *this;
+	return
+		*this;
 }
 
 template<

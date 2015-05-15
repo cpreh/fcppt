@@ -210,6 +210,11 @@ public:
 
 	object(
 		object &&
+	)
+	noexcept(
+		std::is_nothrow_move_constructible<
+			T
+		>::value
 	);
 
 	object &
@@ -220,6 +225,11 @@ public:
 	object &
 	operator=(
 		object &&
+	)
+	noexcept(
+		std::is_nothrow_move_constructible<
+			T
+		>::value
 	);
 
 	~object();

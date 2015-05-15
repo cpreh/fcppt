@@ -585,6 +585,7 @@ fcppt::container::raw_vector<
 >::raw_vector(
 	raw_vector &&_other
 )
+noexcept
 :
 	impl_(
 		std::move(
@@ -648,13 +649,15 @@ fcppt::container::raw_vector<
 >::operator=(
 	raw_vector &&_other
 )
+noexcept
 {
 	impl_ =
 		std::move(
 			_other.impl_
 		);
 
-	return *this;
+	return
+		*this;
 }
 
 template<

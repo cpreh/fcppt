@@ -337,7 +337,8 @@ public:
 
 	raw_vector (
 		raw_vector &&
-	);
+	)
+	noexcept;
 
 	~raw_vector();
 
@@ -349,7 +350,8 @@ public:
 	raw_vector &
 	operator=(
 		raw_vector &&
-	);
+	)
+	noexcept;
 
 	/**
 	\brief Erases a vector and copies the specified elements to the empty vector.
