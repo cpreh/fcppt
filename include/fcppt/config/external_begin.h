@@ -27,6 +27,7 @@ FCPPT_PP_DISABLE_GCC_WARNING(-Wdocumentation)
 FCPPT_PP_DISABLE_GCC_WARNING(-Wextra-semi)
 FCPPT_PP_DISABLE_GCC_WARNING(-Wimplicit-fallthrough)
 FCPPT_PP_DISABLE_GCC_WARNING(-Wnewline-eof)
+FCPPT_PP_DISABLE_GCC_WARNING(-Wunused-local-typedef)
 
 #else
 
