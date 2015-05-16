@@ -125,11 +125,11 @@ public:
 		fcppt::optional<
 			Other
 		> const &other,
-		typename fcppt::detail::enable_optional_value_conv<
+		fcppt::detail::enable_optional_value_conv<
 			T,
 			Other,
 			void
-		>::type const * = nullptr
+		> const * = nullptr
 	);
 
 	/**
@@ -155,6 +155,11 @@ public:
 	*/
 	optional(
 		optional &&other
+	)
+	noexcept(
+		std::is_nothrow_move_constructible<
+			T
+		>::value
 	);
 
 	/**
@@ -193,6 +198,15 @@ public:
 	optional &
 	operator=(
 		optional &&other
+	)
+	noexcept(
+		std::is_nothrow_move_constructible<
+			T
+		>::value
+		&&
+		std::is_nothrow_move_assignable<
+			T
+		>::value
 	);
 
 	/**
@@ -207,11 +221,11 @@ public:
 	template<
 		typename Other
 	>
-	typename fcppt::detail::enable_optional_value_conv<
+	fcppt::detail::enable_optional_value_conv<
 		T,
 		Other,
 		optional &
-	>::type
+	>
 	operator=(
 		optional<
 			Other
@@ -468,10 +482,10 @@ public:
 		fcppt::optional<
 			Other &
 		> const &other,
-		typename fcppt::detail::enable_optional_ref_conv<
+		fcppt::detail::enable_optional_ref_conv<
 			T,
 			Other
-		>::type * = nullptr
+		> * = nullptr
 	);
 
 	/**
@@ -483,14 +497,16 @@ public:
 	*/
 	optional(
 		optional const &other
-	);
+	)
+	noexcept;
 
 	/**
 	\brief Moves from an optional and empties it
 	*/
 	optional(
 		optional &&
-	);
+	)
+	noexcept;
 
 	/**
 	\brief Assigns from an optional reference
@@ -501,7 +517,8 @@ public:
 	optional &
 	operator=(
 		optional const &
-	);
+	)
+	noexcept;
 
 	/**
 	\brief Moves from an optional and empties it
@@ -509,7 +526,8 @@ public:
 	optional &
 	operator=(
 		optional &&
-	);
+	)
+	noexcept;
 
 	~optional();
 

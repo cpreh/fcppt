@@ -83,9 +83,9 @@ public:
 	>
 	object(
 		U &&value,
-		typename fcppt::variant::detail::disable_object<
+		fcppt::variant::detail::disable_object<
 			U
-		>::type * = nullptr
+		> * = nullptr
 	);
 
 	/**
@@ -149,10 +149,10 @@ public:
 	template<
 		typename U
 	>
-	typename fcppt::variant::detail::disable_object<
+	fcppt::variant::detail::disable_object<
 		U,
 		object &
-	>::type
+	>
 	operator=(
 		U &&value
 	);

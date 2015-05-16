@@ -25,6 +25,7 @@ template<
 >
 using enable_optional_value_conv
 =
+typename
 std::enable_if<
 	std::is_reference<
 		Other
@@ -37,7 +38,7 @@ std::enable_if<
 			Other
 		>::type
 	>::value
->;
+>::type;
 
 }
 }

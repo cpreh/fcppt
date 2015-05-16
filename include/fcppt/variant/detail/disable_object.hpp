@@ -27,6 +27,7 @@ template<
 >
 using disable_object
 =
+typename
 std::enable_if<
 	!(
 		std::is_const<
@@ -42,7 +43,7 @@ std::enable_if<
 		>::value
 	),
 	T
->;
+>::type;
 
 }
 }

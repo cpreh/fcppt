@@ -23,6 +23,7 @@ template<
 >
 using enable_optional_ref_conv
 =
+typename
 std::enable_if<
 	std::is_const<
 		Own
@@ -31,7 +32,7 @@ std::enable_if<
 	!std::is_const<
 		Other
 	>::value
->;
+>::type;
 
 }
 }

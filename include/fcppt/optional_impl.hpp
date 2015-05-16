@@ -14,6 +14,7 @@
 #include <fcppt/config/external_begin.hpp>
 #include <new>
 #include <utility>
+#include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -83,11 +84,11 @@ fcppt::optional<
 	fcppt::optional<
 		Other
 	> const &_other,
-	typename fcppt::detail::enable_optional_value_conv<
+	fcppt::detail::enable_optional_value_conv<
 		T,
 		Other,
 		void
-	>::type const *
+	> const *
 )
 :
 	storage_(),
@@ -126,6 +127,11 @@ fcppt::optional<
 	T
 >::optional(
 	optional &&_other
+)
+noexcept(
+	std::is_nothrow_move_constructible<
+		T
+	>::value
 )
 :
 	storage_(),
@@ -169,6 +175,15 @@ fcppt::optional<
 >::operator=(
 	optional &&_other
 )
+noexcept(
+	std::is_nothrow_move_constructible<
+		T
+	>::value
+	&&
+	std::is_nothrow_move_assignable<
+		T
+	>::value
+)
 {
 	return
 		this->move_assign(
@@ -184,13 +199,13 @@ template<
 template<
 	typename Other
 >
-typename fcppt::detail::enable_optional_value_conv<
+fcppt::detail::enable_optional_value_conv<
 	T,
 	Other,
 	fcppt::optional<
 		T
 	> &
->::type
+>
 fcppt::optional<
 	T
 >::operator=(
@@ -606,10 +621,10 @@ fcppt::optional<
 	fcppt::optional<
 		Other &
 	> const &_other,
-	typename fcppt::detail::enable_optional_ref_conv<
+	fcppt::detail::enable_optional_ref_conv<
 		T,
 		Other
-	>::type *
+	> *
 )
 :
 	data_(
@@ -630,6 +645,7 @@ fcppt::optional<
 >::optional(
 	optional const &_other
 )
+noexcept
 :
 	data_(
 		_other.data_
@@ -645,6 +661,7 @@ fcppt::optional<
 >::optional(
 	optional &&_other
 )
+noexcept
 :
 	data_(
 		_other.data_
@@ -665,6 +682,7 @@ fcppt::optional<
 >::operator=(
 	optional const &_other
 )
+noexcept
 {
 	data_ =
 		_other.data_;
@@ -684,6 +702,7 @@ fcppt::optional<
 >::operator=(
 	optional &&_other
 )
+noexcept
 {
 	data_ =
 		_other.data_;

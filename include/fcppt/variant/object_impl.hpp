@@ -69,9 +69,9 @@ fcppt::variant::object<
 	Types
 >::object(
 	U &&_other,
-	typename fcppt::variant::detail::disable_object<
+	fcppt::variant::detail::disable_object<
 		U
-	>::type *
+	> *
 )
 :
 	storage_()
@@ -181,12 +181,12 @@ template<
 template<
 	typename U
 >
-typename fcppt::variant::detail::disable_object<
+fcppt::variant::detail::disable_object<
 	U,
 	fcppt::variant::object<
 		Types
 	> &
->::type
+>
 fcppt::variant::object<
 	Types
 >::operator=(
