@@ -227,7 +227,7 @@ public:
 		object &&
 	)
 	noexcept(
-		std::is_nothrow_move_constructible<
+		std::is_nothrow_move_assignable<
 			T
 		>::value
 	);

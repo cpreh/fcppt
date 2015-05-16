@@ -196,6 +196,11 @@ fcppt::container::tree::object<
 >::operator=(
 	object &&_other
 )
+noexcept(
+	std::is_nothrow_move_assignable<
+		T
+	>::value
+)
 {
 	value_ =
 		std::move(

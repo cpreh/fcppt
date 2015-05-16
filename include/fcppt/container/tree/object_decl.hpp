@@ -141,6 +141,11 @@ public:
 	object &
 	operator=(
 		object &&
+	)
+	noexcept(
+		std::is_nothrow_move_assignable<
+			T
+		>::value
 	);
 
 	~object();
