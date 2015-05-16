@@ -858,6 +858,8 @@ set(
 	include/fcppt/variant/detail/get_impl.hpp
 	include/fcppt/variant/detail/index_of.hpp
 	include/fcppt/variant/detail/less.hpp
+	include/fcppt/variant/detail/match_result_type.hpp
+	include/fcppt/variant/detail/match_visitor.hpp
 	include/fcppt/variant/detail/move_assign_object.hpp
 	include/fcppt/variant/detail/move_assign_value.hpp
 	include/fcppt/variant/detail/move_construct.hpp
@@ -877,6 +879,7 @@ set(
 	include/fcppt/variant/invalid_get.hpp
 	include/fcppt/variant/is_object.hpp
 	include/fcppt/variant/less.hpp
+	include/fcppt/variant/match.hpp
 	include/fcppt/variant/not_equal.hpp
 	include/fcppt/variant/object.hpp
 	include/fcppt/variant/object_decl.hpp

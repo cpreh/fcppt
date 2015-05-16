@@ -639,5 +639,9 @@ add_fcppt_test(
 )
 
 add_fcppt_test(
+	variant/match
+)
+
+add_fcppt_test(
 	variant/move
 )
