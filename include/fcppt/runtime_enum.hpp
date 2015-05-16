@@ -7,12 +7,12 @@
 #ifndef FCPPT_RUNTIME_ENUM_HPP_INCLUDED
 #define FCPPT_RUNTIME_ENUM_HPP_INCLUDED
 
+#include <fcppt/absurd.hpp>
 #include <fcppt/enum_size.hpp>
 #include <fcppt/detail/runtime_enum_function.hpp>
 #include <fcppt/mpl/integral_cast.hpp>
 #include <fcppt/mpl/runtime_index.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <exception>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
@@ -69,14 +69,10 @@ runtime_enum(
 			>(
 				_function
 			),
-			[]
-			()
-			->
-			typename
-			Function::result_type
-			{
-				std::terminate();
-			}
+			&fcppt::absurd<
+				typename
+				Function::result_type
+			>
 		);
 
 }

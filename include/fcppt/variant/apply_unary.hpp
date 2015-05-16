@@ -7,11 +7,11 @@
 #ifndef FCPPT_VARIANT_APPLY_UNARY_HPP_INCLUDED
 #define FCPPT_VARIANT_APPLY_UNARY_HPP_INCLUDED
 
+#include <fcppt/absurd.hpp>
 #include <fcppt/mpl/runtime_index.hpp>
 #include <fcppt/variant/detail/apply_function.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/mpl/size.hpp>
-#include <exception>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
@@ -68,15 +68,12 @@ apply_unary(
 				_op,
 				_obj
 			),
-			[]()
-			->
-			typename
-			std::decay<
-				Operation
-			>::type::result_type
-			{
-				std::terminate();
-			}
+			&fcppt::absurd<
+				typename
+				std::decay<
+					Operation
+				>::type::result_type
+			>
 		);
 }
 
