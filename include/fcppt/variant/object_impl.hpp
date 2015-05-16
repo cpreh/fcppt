@@ -28,6 +28,8 @@
 #include <fcppt/variant/detail/move_assign_object.hpp>
 #include <fcppt/variant/detail/move_assign_value.hpp>
 #include <fcppt/variant/detail/move_construct.hpp>
+#include <fcppt/variant/detail/nothrow_move_assignable.hpp>
+#include <fcppt/variant/detail/nothrow_move_constructible.hpp>
 #include <fcppt/variant/detail/swap_unequal.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <new>
@@ -115,6 +117,11 @@ fcppt::variant::object<
 	Types
 >::object(
 	object &&_other
+)
+noexcept(
+	fcppt::variant::detail::nothrow_move_constructible<
+		Types
+	>::value
 )
 :
 	storage_(),
@@ -277,6 +284,11 @@ fcppt::variant::object<
 	Types
 >::operator=(
 	object &&_other
+)
+noexcept(
+	fcppt::variant::detail::nothrow_move_assignable<
+		Types
+	>::value
 )
 {
 	if(

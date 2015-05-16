@@ -11,6 +11,8 @@
 #include <fcppt/variant/object_fwd.hpp>
 #include <fcppt/variant/size_type.hpp>
 #include <fcppt/variant/detail/disable_object.hpp>
+#include <fcppt/variant/detail/nothrow_move_assignable.hpp>
+#include <fcppt/variant/detail/nothrow_move_constructible.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/mpl/placeholders.hpp>
 #include <boost/mpl/size.hpp>
@@ -112,6 +114,11 @@ public:
 	*/
 	object(
 		object &&other
+	)
+	noexcept(
+		fcppt::variant::detail::nothrow_move_constructible<
+			Types
+		>::value
 	);
 
 	/**
@@ -183,6 +190,11 @@ public:
 	object &
 	operator=(
 		object &&other
+	)
+	noexcept(
+		fcppt::variant::detail::nothrow_move_assignable<
+			Types
+		>::value
 	);
 
 	/**

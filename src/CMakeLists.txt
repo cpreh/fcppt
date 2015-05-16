@@ -863,6 +863,8 @@ set(
 	include/fcppt/variant/detail/move_assign_object.hpp
 	include/fcppt/variant/detail/move_assign_value.hpp
 	include/fcppt/variant/detail/move_construct.hpp
+	include/fcppt/variant/detail/nothrow_move_assignable.hpp
+	include/fcppt/variant/detail/nothrow_move_constructible.hpp
 	include/fcppt/variant/detail/output.hpp
 	include/fcppt/variant/detail/swap_unequal.hpp
 	include/fcppt/variant/detail/ternary_applier.hpp
