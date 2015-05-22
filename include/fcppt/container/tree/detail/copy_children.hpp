@@ -8,9 +8,6 @@
 #define FCPPT_CONTAINER_TREE_DETAIL_COPY_CHILDREN_HPP_INCLUDED
 
 #include <fcppt/container/tree/object_fwd.hpp>
-#include <fcppt/config/external_begin.hpp>
-#include <utility>
-#include <fcppt/config/external_end.hpp>
 
 
 namespace fcppt
@@ -62,9 +59,7 @@ copy_children(
 	}
 
 	return
-		std::move(
-			result
-		);
+		result;
 }
 
 }

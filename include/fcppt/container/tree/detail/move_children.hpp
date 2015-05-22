@@ -60,9 +60,7 @@ move_children(
 		);
 
 	return
-		std::move(
-			result
-		);
+		result;
 }
 
 }

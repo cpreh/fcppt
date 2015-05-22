@@ -75,9 +75,7 @@ test2()
 
 	// ptr must be moved here to take ownership away from it
 	return
-		std::move(
-			ptr
-		);
+		ptr;
 }
 //! [unique_ptr_move]
 

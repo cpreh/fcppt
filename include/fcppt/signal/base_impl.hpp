@@ -13,9 +13,6 @@
 #include <fcppt/signal/auto_connection.hpp>
 #include <fcppt/signal/base_decl.hpp>
 #include <fcppt/signal/detail/concrete_connection_impl.hpp>
-#include <fcppt/config/external_begin.hpp>
-#include <utility>
-#include <fcppt/config/external_end.hpp>
 
 
 template<
@@ -45,9 +42,7 @@ fcppt::signal::base<
 	);
 
 	return
-		std::move(
-			con
-		);
+		con;
 }
 
 template<

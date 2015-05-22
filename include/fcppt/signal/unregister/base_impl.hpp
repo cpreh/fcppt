@@ -14,9 +14,6 @@
 #include <fcppt/signal/unregister/base_decl.hpp>
 #include <fcppt/signal/unregister/function.hpp>
 #include <fcppt/signal/unregister/detail/concrete_connection_impl.hpp>
-#include <fcppt/config/external_begin.hpp>
-#include <utility>
-#include <fcppt/config/external_end.hpp>
 
 
 template<
@@ -48,9 +45,7 @@ fcppt::signal::unregister::base<
 	);
 
 	return
-		std::move(
-			con
-		);
+		con;
 }
 
 template<

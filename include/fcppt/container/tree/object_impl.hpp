@@ -340,9 +340,7 @@ fcppt::container::tree::object<
 	);
 
 	return
-		std::move(
-			ret
-		);
+		ret;
 }
 
 template<

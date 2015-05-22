@@ -46,9 +46,7 @@ set_intersection(
 	);
 
 	return
-		std::move(
-			result
-		);
+		result;
 }
 
 }

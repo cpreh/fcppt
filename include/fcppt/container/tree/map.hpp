@@ -9,9 +9,6 @@
 
 #include <fcppt/container/tree/is_object.hpp>
 #include <fcppt/container/tree/object_impl.hpp>
-#include <fcppt/config/external_begin.hpp>
-#include <utility>
-#include <fcppt/config/external_end.hpp>
 
 
 namespace fcppt
@@ -69,9 +66,7 @@ map(
 		);
 
 	return
-		std::move(
-			result
-		);
+		result;
 }
 
 }

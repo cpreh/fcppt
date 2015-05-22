@@ -63,9 +63,7 @@ fold(
 			);
 
 	return
-		std::move(
-			_state
-		);
+		_state;
 }
 
 }
