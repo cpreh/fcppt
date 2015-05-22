@@ -7,10 +7,6 @@
 #ifndef FCPPT_ALGORITHM_KEY_SET_HPP_INCLUDED
 #define FCPPT_ALGORITHM_KEY_SET_HPP_INCLUDED
 
-#include <fcppt/config/external_begin.hpp>
-#include <utility>
-#include <fcppt/config/external_end.hpp>
-
 
 namespace fcppt
 {
@@ -43,9 +39,7 @@ key_set(
 		);
 
 	return
-		std::move(
-			ret
-		);
+		ret;
 }
 
 }
