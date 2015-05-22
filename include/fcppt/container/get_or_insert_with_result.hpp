@@ -10,9 +10,6 @@
 #include <fcppt/maybe.hpp>
 #include <fcppt/container/find_opt.hpp>
 #include <fcppt/container/get_or_insert_result.hpp>
-#include <fcppt/config/external_begin.hpp>
-#include <utility>
-#include <fcppt/config/external_end.hpp>
 
 
 namespace fcppt
@@ -69,12 +66,10 @@ get_or_insert_with_result(
 			]
 			{
 				auto const inserted(
-					_container.insert(
-						std::make_pair(
-							_key,
-							_create(
-								_key
-							)
+					_container.emplace(
+						_key,
+						_create(
+							_key
 						)
 					)
 				);
