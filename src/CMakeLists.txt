@@ -401,6 +401,7 @@ set(
 	include/fcppt/math/at_c.hpp
 	include/fcppt/math/binary_map.hpp
 	include/fcppt/math/box/center.hpp
+	include/fcppt/math/box/comparison.hpp
 	include/fcppt/math/box/componentwise_equal.hpp
 	include/fcppt/math/box/contains.hpp
 	include/fcppt/math/box/contains_point.hpp

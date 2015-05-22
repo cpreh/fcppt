@@ -5,6 +5,7 @@
 
 
 #include <fcppt/math/box/center.hpp>
+#include <fcppt/math/box/comparison.hpp>
 #include <fcppt/math/box/object_impl.hpp>
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>

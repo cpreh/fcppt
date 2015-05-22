@@ -308,44 +308,6 @@ private:
 };
 
 /**
-\brief Compare two boxes componentwise using <code>value_type</code>'s <code>operator==</code>
-*/
-template<
-	typename T,
-	fcppt::math::size_type N
->
-bool
-operator==(
-	fcppt::math::box::object<
-		T,
-		N
-	> const &,
-	fcppt::math::box::object<
-		T,
-		N
-	> const &
-);
-
-/**
-\brief Compare two boxes componentwise using <code>value_type</code>'s <code>operator!=</code>
-*/
-template<
-	typename T,
-	fcppt::math::size_type N
->
-bool
-operator !=(
-	fcppt::math::box::object<
-		T,
-		N
-	> const &,
-	fcppt::math::box::object<
-		T,
-		N
-	> const &
-);
-
-/**
 \brief Swap the box's representation with another box
 */
 template<

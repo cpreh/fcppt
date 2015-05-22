@@ -4,6 +4,7 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
+#include <fcppt/math/box/comparison.hpp>
 #include <fcppt/math/box/intersection.hpp>
 #include <fcppt/math/box/object_impl.hpp>
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
