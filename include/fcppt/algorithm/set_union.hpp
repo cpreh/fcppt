@@ -10,7 +10,6 @@
 #include <fcppt/config/external_begin.hpp>
 #include <algorithm>
 #include <iterator>
-#include <utility>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -47,9 +46,7 @@ set_union(
 	);
 
 	return
-		std::move(
-			result
-		);
+		result;
 }
 
 }
