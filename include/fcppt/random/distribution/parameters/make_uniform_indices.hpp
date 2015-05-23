@@ -7,6 +7,7 @@
 #ifndef FCPPT_RANDOM_DISTRIBUTION_PARAMETERS_MAKE_UNIFORM_INDICES_HPP_INCLUDED
 #define FCPPT_RANDOM_DISTRIBUTION_PARAMETERS_MAKE_UNIFORM_INDICES_HPP_INCLUDED
 
+#include <fcppt/optional_impl.hpp>
 #include <fcppt/random/distribution/parameters/make_uniform_indices_advanced.hpp>
 #include <fcppt/random/distribution/parameters/uniform_int.hpp>
 #include <fcppt/random/distribution/parameters/uniform_int_wrapper_fwd.hpp>
@@ -24,10 +25,13 @@ namespace parameters
 template<
 	typename Container
 >
-fcppt::random::distribution::parameters::uniform_int<
-	typename
-	Container::size_type
-> const
+fcppt::optional<
+	fcppt::random::distribution::parameters::uniform_int<
+		typename
+		Container::size_type,
+		fcppt::random::distribution::parameters::uniform_int_wrapper
+	>
+>
 make_uniform_indices(
 	Container const &_container
 )

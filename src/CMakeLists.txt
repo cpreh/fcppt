@@ -731,6 +731,12 @@ set(
 	include/fcppt/random/variate_decl.hpp
 	include/fcppt/random/variate_fwd.hpp
 	include/fcppt/random/variate_impl.hpp
+	include/fcppt/random/wrapper/make_uniform_container.hpp
+	include/fcppt/random/wrapper/make_uniform_container_advanced.hpp
+	include/fcppt/random/wrapper/uniform_container.hpp
+	include/fcppt/random/wrapper/uniform_container_decl.hpp
+	include/fcppt/random/wrapper/uniform_container_fwd.hpp
+	include/fcppt/random/wrapper/uniform_container_impl.hpp
 	include/fcppt/range_hash.hpp
 	include/fcppt/range_hash_decl.hpp
 	include/fcppt/range_hash_fwd.hpp
