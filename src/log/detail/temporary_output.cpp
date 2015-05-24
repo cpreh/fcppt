@@ -4,7 +4,7 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/make_unique_ptr.hpp>
+#include <fcppt/make_unique_ptr_fcppt.hpp>
 #include <fcppt/string.hpp>
 #include <fcppt/log/detail/temporary_output.hpp>
 #include <fcppt/config/external_begin.hpp>
@@ -15,7 +15,7 @@
 fcppt::log::detail::temporary_output::temporary_output()
 :
 	stream_(
-		fcppt::make_unique_ptr<
+		fcppt::make_unique_ptr_fcppt<
 			fcppt::io::ostringstream
 		>()
 	)

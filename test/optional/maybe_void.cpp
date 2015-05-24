@@ -4,15 +4,15 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/make_unique_ptr.hpp>
+#include <fcppt/make_unique_ptr_fcppt.hpp>
 #include <fcppt/maybe_void.hpp>
 #include <fcppt/optional_impl.hpp>
+#include <fcppt/unique_ptr.hpp>
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/test/unit_test.hpp>
-#include <memory>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -144,7 +144,7 @@ BOOST_AUTO_TEST_CASE(
 FCPPT_PP_POP_WARNING
 
 	typedef
-	std::unique_ptr<
+	fcppt::unique_ptr<
 		int
 	>
 	int_unique_ptr;
@@ -157,7 +157,7 @@ FCPPT_PP_POP_WARNING
 
 	fcppt::maybe_void(
 		optional_int_unique_ptr(
-			fcppt::make_unique_ptr<
+			fcppt::make_unique_ptr_fcppt<
 				int
 			>(
 				42

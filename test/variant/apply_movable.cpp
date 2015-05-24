@@ -4,7 +4,8 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/make_unique_ptr.hpp>
+#include <fcppt/make_unique_ptr_fcppt.hpp>
+#include <fcppt/unique_ptr.hpp>
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
@@ -13,7 +14,6 @@
 #include <fcppt/config/external_begin.hpp>
 #include <boost/mpl/vector/vector10.hpp>
 #include <boost/test/unit_test.hpp>
-#include <memory>
 #include <string>
 #include <utility>
 #include <fcppt/config/external_end.hpp>
@@ -22,15 +22,15 @@
 namespace
 {
 
-typedef std::unique_ptr<
+typedef fcppt::unique_ptr<
 	int
 > int_unique_ptr;
 
-typedef std::unique_ptr<
+typedef fcppt::unique_ptr<
 	std::string
 > string_unique_ptr;
 
-typedef std::unique_ptr<
+typedef fcppt::unique_ptr<
 	bool
 > bool_unique_ptr;
 
@@ -60,15 +60,9 @@ struct functor
 		bool_unique_ptr &_bool
 	) const
 	{
-		string_unique_ptr foo(
-			std::move(
-				_string
-			)
-		);
-
 		return
 			*_int == 42
-			&& *foo == "test"
+			&& *_string == "test"
 			&& *_bool == true;
 	}
 };
@@ -93,7 +87,7 @@ FCPPT_PP_POP_WARNING
 	> variant;
 
 	variant int_variant(
-		fcppt::make_unique_ptr<
+		fcppt::make_unique_ptr_fcppt<
 			int
 		>(
 			42
@@ -101,7 +95,7 @@ FCPPT_PP_POP_WARNING
 	);
 
 	variant string_variant(
-		fcppt::make_unique_ptr<
+		fcppt::make_unique_ptr_fcppt<
 			std::string
 		>(
 			"test"
@@ -109,7 +103,7 @@ FCPPT_PP_POP_WARNING
 	);
 
 	variant bool_variant(
-		fcppt::make_unique_ptr<
+		fcppt::make_unique_ptr_fcppt<
 			bool
 		>(
 			true
@@ -125,11 +119,5 @@ FCPPT_PP_POP_WARNING
 			string_variant,
 			bool_variant
 		)
-	);
-
-	BOOST_REQUIRE(
-		!string_variant.get_unsafe<
-			string_unique_ptr
-		>()
 	);
 }

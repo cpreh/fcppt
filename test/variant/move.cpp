@@ -4,7 +4,8 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/make_unique_ptr.hpp>
+#include <fcppt/make_unique_ptr_fcppt.hpp>
+#include <fcppt/unique_ptr.hpp>
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
@@ -15,7 +16,6 @@
 #include <fcppt/config/external_begin.hpp>
 #include <boost/mpl/vector/vector10.hpp>
 #include <boost/test/unit_test.hpp>
-#include <memory>
 #include <string>
 #include <utility>
 #include <fcppt/config/external_end.hpp>
@@ -24,7 +24,7 @@
 namespace
 {
 
-typedef std::unique_ptr<
+typedef fcppt::unique_ptr<
 	int
 > int_unique_ptr;
 
@@ -47,7 +47,7 @@ BOOST_AUTO_TEST_CASE(
 FCPPT_PP_POP_WARNING
 
 	variant test(
-		fcppt::make_unique_ptr<
+		fcppt::make_unique_ptr_fcppt<
 			int
 		>(
 			42
@@ -65,12 +65,6 @@ FCPPT_PP_POP_WARNING
 		std::move(
 			test
 		)
-	);
-
-	BOOST_CHECK(
-		!test.get_exn<
-			int_unique_ptr
-		>()
 	);
 
 	BOOST_CHECK(

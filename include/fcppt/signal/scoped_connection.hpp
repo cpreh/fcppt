@@ -8,10 +8,8 @@
 #ifndef FCPPT_SIGNAL_SCOPED_CONNECTION_HPP_INCLUDED
 #define FCPPT_SIGNAL_SCOPED_CONNECTION_HPP_INCLUDED
 
+#include <fcppt/unique_ptr_impl.hpp>
 #include <fcppt/signal/connection_fwd.hpp>
-#include <fcppt/config/external_begin.hpp>
-#include <memory>
-#include <fcppt/config/external_end.hpp>
 
 
 namespace fcppt
@@ -24,7 +22,7 @@ namespace signal
 \ingroup fcpptsignal
 */
 typedef
-std::unique_ptr<
+fcppt::unique_ptr<
 	fcppt::signal::connection
 >
 const

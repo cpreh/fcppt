@@ -8,6 +8,7 @@
 #define FCPPT_SHARED_PTR_DECL_HPP_INCLUDED
 
 #include <fcppt/shared_ptr_fwd.hpp>
+#include <fcppt/unique_ptr_fwd.hpp>
 #include <fcppt/weak_ptr_fwd.hpp>
 #include <fcppt/detail/make_shared_wrapper_fwd.hpp>
 #include <fcppt/config/external_begin.hpp>
@@ -194,6 +195,17 @@ public:
 		pointer data
 	);
 
+	template<
+		typename Other
+	>
+	explicit
+	shared_ptr(
+		std::unique_ptr<
+			Other,
+			Deleter
+		> &&ref
+	);
+
 	/**
 	\brief Constructs a shared_ptr from a compatible unique_ptr
 
@@ -211,10 +223,10 @@ public:
 	>
 	explicit
 	shared_ptr(
-		std::unique_ptr<
+		fcppt::unique_ptr<
 			Other,
 			Deleter
-		> ref
+		> &&ref
 	);
 
 	/**
@@ -261,10 +273,10 @@ public:
 	>
 	shared_ptr &
 	operator=(
-		std::unique_ptr<
+		fcppt::unique_ptr<
 			Other,
 			Deleter
-		> ref
+		> &&ref
 	);
 
 	/**

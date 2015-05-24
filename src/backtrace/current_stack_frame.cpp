@@ -9,13 +9,14 @@
 #include <fcppt/backtrace/stack_limit.hpp>
 #include <fcppt/private_config.hpp>
 #if defined(FCPPT_HAVE_BACKTRACE)
+#include <fcppt/make_int_range_count.hpp>
+#include <fcppt/unique_ptr.hpp>
+#include <fcppt/algorithm/map.hpp>
 #include <fcppt/cast/size.hpp>
 #include <fcppt/cast/to_signed.hpp>
-#include <fcppt/cast/to_unsigned.hpp>
 #include <fcppt/container/raw_vector.hpp>
 #include <fcppt/c_deleter.hpp>
 #include <fcppt/from_std_string.hpp>
-#include <memory>
 #include <execinfo.h>
 #endif
 
@@ -56,19 +57,7 @@ fcppt::backtrace::current_stack_frame(
 		)
 	);
 
-	backtrace::stack_frame result;
-
-	result.reserve(
-		fcppt::cast::size<
-			fcppt::backtrace::stack_frame::size_type
-		>(
-			fcppt::cast::to_unsigned(
-				number_of_symbols
-			)
-		)
-	);
-
-	std::unique_ptr<
+	fcppt::unique_ptr<
 		char *,
 		fcppt::c_deleter
 	> raw_symbols(
@@ -78,22 +67,27 @@ fcppt::backtrace::current_stack_frame(
 		)
 	);
 
-
-	for(
-		int index = 0;
-		index < number_of_symbols;
-		++index
-	)
-		result.push_back(
-			fcppt::from_std_string(
-				raw_symbols.get()[
-					index
-				]
-			)
-		);
-
 	return
-		result;
+		fcppt::algorithm::map<
+			fcppt::backtrace::stack_frame
+		>(
+			fcppt::make_int_range_count(
+				number_of_symbols
+			),
+			[
+				&raw_symbols
+			](
+				int const _index
+			)
+			{
+				return
+					fcppt::from_std_string(
+						raw_symbols.get_pointer()[
+							_index
+						]
+					);
+			}
+		);
 #else
 	return
 		fcppt::backtrace::stack_frame();

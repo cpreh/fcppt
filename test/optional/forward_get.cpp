@@ -5,14 +5,14 @@
 
 
 #include <fcppt/forward_optional_get.hpp>
-#include <fcppt/make_unique_ptr.hpp>
+#include <fcppt/make_unique_ptr_fcppt.hpp>
 #include <fcppt/optional_impl.hpp>
+#include <fcppt/unique_ptr.hpp>
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/test/unit_test.hpp>
-#include <memory>
 #include <type_traits>
 #include <utility>
 #include <fcppt/config/external_end.hpp>
@@ -21,7 +21,7 @@
 namespace
 {
 typedef
-std::unique_ptr<
+fcppt::unique_ptr<
 	int
 >
 int_unique_ptr;
@@ -82,7 +82,7 @@ FCPPT_PP_POP_WARNING
 	int_unique_ptr const result(
 		test_move(
 			optional_int_unique_ptr(
-				fcppt::make_unique_ptr<
+				fcppt::make_unique_ptr_fcppt<
 					int
 				>(
 					42

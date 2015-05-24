@@ -5,16 +5,14 @@
 
 
 #include <fcppt/c_deleter.hpp>
-#include <fcppt/config/external_begin.hpp>
-#include <memory>
-#include <fcppt/config/external_end.hpp>
+#include <fcppt/unique_ptr.hpp>
 
 
 int
 main()
 {
 //! [c_deleter]
-	typedef std::unique_ptr<
+	typedef fcppt::unique_ptr<
 		void,
 		fcppt::c_deleter
 	> void_c_ptr;

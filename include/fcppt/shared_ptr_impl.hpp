@@ -8,6 +8,7 @@
 #define FCPPT_SHARED_PTR_IMPL_HPP_INCLUDED
 
 #include <fcppt/shared_ptr_decl.hpp>
+#include <fcppt/unique_ptr_fwd.hpp>
 #include <fcppt/weak_ptr_fwd.hpp>
 #include <fcppt/detail/make_shared_wrapper.hpp>
 #include <fcppt/config/external_begin.hpp>
@@ -168,14 +169,38 @@ fcppt::shared_ptr<
 	std::unique_ptr<
 		Other,
 		Deleter
-	> _other
+	> &&_other
 )
 :
-	impl_()
+	impl_(
+		std::move(
+			_other
+		)
+	)
 {
-	impl_.reset(
-		_other.release()
-	);
+}
+
+template<
+	typename Type,
+	typename Deleter
+>
+template<
+	typename Other
+>
+fcppt::shared_ptr<
+	Type,
+	Deleter
+>::shared_ptr(
+	fcppt::unique_ptr<
+		Other,
+		Deleter
+	> &&_other
+)
+:
+	impl_(
+		_other.release_ownership()
+	)
+{
 }
 
 template<
@@ -219,14 +244,14 @@ fcppt::shared_ptr<
 	Type,
 	Deleter
 >::operator=(
-	std::unique_ptr<
+	fcppt::unique_ptr<
 		Other,
 		Deleter
-	> _other
+	> &&_other
 )
 {
 	impl_.reset(
-		_other.release()
+		_other.release_ownership()
 	);
 
 	return *this;

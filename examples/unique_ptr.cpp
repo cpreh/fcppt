@@ -4,13 +4,14 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/make_unique_ptr.hpp>
+#include <fcppt/make_unique_ptr_fcppt.hpp>
 #include <fcppt/noncopyable.hpp>
 #include <fcppt/shared_ptr_impl.hpp>
+#include <fcppt/unique_ptr_impl.hpp>
+#include <fcppt/unique_ptr_to_base.hpp>
 #include <fcppt/text.hpp>
 #include <fcppt/io/cout.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <memory>
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
@@ -19,7 +20,7 @@ namespace
 {
 
 //! [unique_ptr_factory]
-typedef std::unique_ptr<
+typedef fcppt::unique_ptr<
 	int
 > unique_int_ptr;
 
@@ -30,7 +31,7 @@ int_ptr_factory()
 	// make_unique_ptr is a factory function to make a unique_ptr
 	// An rvalue is returned here, so no moving is necessary.
 	return
-		fcppt::make_unique_ptr<
+		fcppt::make_unique_ptr_fcppt<
 			int
 		>(
 			42
@@ -66,7 +67,7 @@ test2()
 {
 	// ptr is a named object
 	unique_int_ptr ptr(
-		fcppt::make_unique_ptr<
+		fcppt::make_unique_ptr_fcppt<
 			int
 		>(
 			42
@@ -84,7 +85,7 @@ void
 test3()
 {
 	unique_int_ptr ptr(
-		fcppt::make_unique_ptr<
+		fcppt::make_unique_ptr_fcppt<
 			int
 		>(
 			42
@@ -107,7 +108,7 @@ test3()
 
 	// ptr is now the null pointer
 	fcppt::io::cout()
-		<< ptr.get()
+		<< ptr.get_pointer()
 		<< FCPPT_TEXT('\n');
 }
 //! [unique_ptr_move_dangerous]
@@ -157,14 +158,18 @@ struct dervied
 void
 test4()
 {
-	typedef std::unique_ptr<
+	typedef fcppt::unique_ptr<
 		base
 	> base_ptr;
 
 	base_ptr foo(
-		fcppt::make_unique_ptr<
-			dervied
-		>()
+		fcppt::unique_ptr_to_base<
+			base
+		>(
+			fcppt::make_unique_ptr_fcppt<
+				dervied
+			>()
+		)
 	);
 }
 
@@ -177,12 +182,12 @@ void
 test5()
 {
 //! [unique_ptr_const]
-	typedef std::unique_ptr<
+	typedef fcppt::unique_ptr<
 		int
 	> const scoped_int_ptr;
 
 	scoped_int_ptr const ptr(
-		fcppt::make_unique_ptr<
+		fcppt::make_unique_ptr_fcppt<
 			int
 		>(
 			42
@@ -211,7 +216,7 @@ public:
 	~foo();
 private:
 	// const to disable move
-	std::unique_ptr<
+	fcppt::unique_ptr<
 		foo_impl
 	> const impl_;
 };
@@ -226,7 +231,7 @@ class foo_impl
 foo::foo()
 :
 	impl_(
-		fcppt::make_unique_ptr<
+		fcppt::make_unique_ptr_fcppt<
 			foo_impl
 		>()
 	)

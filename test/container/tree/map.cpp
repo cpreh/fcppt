@@ -4,7 +4,8 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/make_unique_ptr.hpp>
+#include <fcppt/make_unique_ptr_fcppt.hpp>
+#include <fcppt/unique_ptr.hpp>
 #include <fcppt/container/tree/map.hpp>
 #include <fcppt/container/tree/object_impl.hpp>
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
@@ -12,7 +13,6 @@
 #include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/test/unit_test.hpp>
-#include <memory>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -32,7 +32,7 @@ FCPPT_PP_POP_WARNING
 	int_tree;
 
 	typedef
-	std::unique_ptr<
+	fcppt::unique_ptr<
 		int
 	>
 	int_unique_ptr;
@@ -61,7 +61,7 @@ FCPPT_PP_POP_WARNING
 			)
 			{
 				return
-					fcppt::make_unique_ptr<
+					fcppt::make_unique_ptr_fcppt<
 						int
 					>(
 						_value

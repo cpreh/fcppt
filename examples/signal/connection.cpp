@@ -45,11 +45,10 @@ namespace
 
 void
 take_connection(
-	fcppt::signal::auto_connection connection
+	fcppt::signal::auto_connection
 )
 {
 	// do something with connection
-	connection.reset();
 }
 
 }
