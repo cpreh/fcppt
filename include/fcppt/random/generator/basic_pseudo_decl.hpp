@@ -65,6 +65,21 @@ public:
 	);
 
 	/**
+	\brief Constructs the generator using a seed sequence
+
+	Constructs the generator using \a _seq
+
+	\tparam SeedSeq must be a seed sequence
+	*/
+	template<
+		typename SeedSeq
+	>
+	explicit
+	basic_pseudo(
+		SeedSeq &_seq
+	);
+
+	/**
 	\brief Destroys the generator
 	*/
 	~basic_pseudo();

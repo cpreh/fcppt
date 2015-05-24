@@ -29,6 +29,25 @@ fcppt::random::generator::basic_pseudo<
 template<
 	typename Generator
 >
+template<
+	typename SeedSeq
+>
+inline
+fcppt::random::generator::basic_pseudo<
+	Generator
+>::basic_pseudo(
+	SeedSeq &_seq
+)
+:
+	wrapped_(
+		_seq
+	)
+{
+}
+
+template<
+	typename Generator
+>
 inline
 fcppt::random::generator::basic_pseudo<
 	Generator
@@ -40,14 +59,16 @@ template<
 	typename Generator
 >
 inline
-typename fcppt::random::generator::basic_pseudo<
+typename
+fcppt::random::generator::basic_pseudo<
 	Generator
 >::result_type
 fcppt::random::generator::basic_pseudo<
 	Generator
 >::operator()()
 {
-	return wrapped_();
+	return
+		wrapped_();
 }
 
 template<
@@ -55,14 +76,16 @@ template<
 >
 inline
 constexpr
-typename fcppt::random::generator::basic_pseudo<
+typename
+fcppt::random::generator::basic_pseudo<
 	Generator
 >::result_type
 fcppt::random::generator::basic_pseudo<
 	Generator
 >::min()
 {
-	return wrapped::min();
+	return
+		wrapped::min();
 }
 
 template<
@@ -70,14 +93,16 @@ template<
 >
 inline
 constexpr
-typename fcppt::random::generator::basic_pseudo<
+typename
+fcppt::random::generator::basic_pseudo<
 	Generator
 >::result_type
 fcppt::random::generator::basic_pseudo<
 	Generator
 >::max()
 {
-	return wrapped::max();
+	return
+		wrapped::max();
 }
 
 #endif
