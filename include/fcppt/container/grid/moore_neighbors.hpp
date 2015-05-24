@@ -22,9 +22,9 @@ namespace grid
 /**
 \ingroup fcpptcontainergrid
 
-\brief Computes the von Neumann neighbors
+\brief Computes the Moore neighbors
 
-Computes the von Neumann neighbors of \a _pos. No range checking is performed.
+Computes the Moore neighbors of \a _pos. No range checking is performed.
 
 \param _pos The position to compute the neighbors of
 
