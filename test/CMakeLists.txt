@@ -199,6 +199,10 @@ add_fcppt_test(
 )
 
 add_fcppt_test(
+	container/maybe_back
+)
+
+add_fcppt_test(
 	container/maybe_front
 )
 
