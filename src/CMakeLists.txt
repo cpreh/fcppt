@@ -157,6 +157,7 @@ set(
 	include/fcppt/container/get_or_insert_result_fwd.hpp
 	include/fcppt/container/get_or_insert_result_impl.hpp
 	include/fcppt/container/get_or_insert_with_result.hpp
+	include/fcppt/container/grid/at_optional.hpp
 	include/fcppt/container/grid/clamp_pos.hpp
 	include/fcppt/container/grid/clamp_signed_pos.hpp
 	include/fcppt/container/grid/comparison.hpp
@@ -227,6 +228,7 @@ set(
 	include/fcppt/container/index_map_impl.hpp
 	include/fcppt/container/is_raw_vector.hpp
 	include/fcppt/container/is_std_vector.hpp
+	include/fcppt/container/maybe_back.hpp
 	include/fcppt/container/maybe_front.hpp
 	include/fcppt/container/not_found.hpp
 	include/fcppt/container/out_of_range.hpp
@@ -397,6 +399,7 @@ set(
 	include/fcppt/make_ref.hpp
 	include/fcppt/make_shared_ptr.hpp
 	include/fcppt/make_strong_typedef.hpp
+	include/fcppt/make_unique_ptr.hpp
 	include/fcppt/make_unique_ptr_fcppt.hpp
 	include/fcppt/math/at_c.hpp
 	include/fcppt/math/binary_map.hpp
@@ -846,6 +849,11 @@ set(
 	include/fcppt/type_traits/is_std_array.hpp
 	include/fcppt/type_traits/is_string.hpp
 	include/fcppt/type_traits/remove_cv_ref.hpp
+	include/fcppt/unique_ptr.hpp
+	include/fcppt/unique_ptr_decl.hpp
+	include/fcppt/unique_ptr_fwd.hpp
+	include/fcppt/unique_ptr_impl.hpp
+	include/fcppt/unique_ptr_to_base.hpp
 	include/fcppt/variant/apply_binary.hpp
 	include/fcppt/variant/apply_ternary.hpp
 	include/fcppt/variant/apply_unary.hpp

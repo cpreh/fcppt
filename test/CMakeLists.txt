@@ -183,6 +183,10 @@ add_fcppt_test(
 )
 
 add_fcppt_test(
+	container/grid/at_optional
+)
+
+add_fcppt_test(
 	container/grid/moore_neighbors
 )
 
