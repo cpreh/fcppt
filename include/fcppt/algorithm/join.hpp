@@ -7,8 +7,9 @@
 #ifndef FCPPT_ALGORITHM_JOIN_HPP_INCLUDED
 #define FCPPT_ALGORITHM_JOIN_HPP_INCLUDED
 
-#include <fcppt/algorithm/detail/variadic_fold.hpp>
+#include <fcppt/algorithm/detail/join_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
+#include <type_traits>
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
@@ -37,31 +38,21 @@ template<
 	typename Container,
 	typename... Args
 >
-Container
+inline
+typename
+std::remove_cv<
+	Container
+>::type
 join(
-	Container _first,
+	Container &&_first,
 	Args && ..._args
 )
 {
 	return
-		fcppt::algorithm::detail::variadic_fold(
-			[](
-				Container &&_left,
-				Container const &_right
-			)
-			{
-				_left.insert(
-					_left.end(),
-					_right.begin(),
-					_right.end()
-				);
-
-				return
-					std::move(
-						_left
-					);
-			},
-			std::move(
+		fcppt::algorithm::detail::join_impl(
+			std::forward<
+				Container
+			>(
 				_first
 			),
 			std::forward<

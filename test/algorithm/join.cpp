@@ -4,7 +4,10 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
+#include <fcppt/make_unique_ptr_fcppt.hpp>
+#include <fcppt/unique_ptr.hpp>
 #include <fcppt/algorithm/join.hpp>
+#include <fcppt/assign/make_container.hpp>
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
@@ -54,5 +57,87 @@ FCPPT_PP_POP_WARNING
 		&& result[3] == 4
 		&& result[4] == 5
 		&& result[5] == 6
+	);
+}
+
+FCPPT_PP_PUSH_WARNING
+FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
+
+BOOST_AUTO_TEST_CASE(
+	algorithm_join_move
+)
+{
+FCPPT_PP_POP_WARNING
+
+	typedef
+	fcppt::unique_ptr<
+		int
+	>
+	int_unique_ptr;
+
+	typedef
+	std::vector<
+		int_unique_ptr
+	>
+	int_unique_ptr_vector;
+
+	int_unique_ptr_vector const result(
+		fcppt::algorithm::join(
+			fcppt::assign::make_container<
+				int_unique_ptr_vector
+			>(
+				fcppt::make_unique_ptr_fcppt<
+					int
+				>(
+					1
+				)
+			)(
+				fcppt::make_unique_ptr_fcppt<
+					int
+				>(
+					2
+				)
+			).move_container(),
+			fcppt::assign::make_container<
+				int_unique_ptr_vector
+			>(
+				fcppt::make_unique_ptr_fcppt<
+					int
+				>(
+					3
+				)
+			)(
+				fcppt::make_unique_ptr_fcppt<
+					int
+				>(
+					4
+				)
+			).move_container(),
+			fcppt::assign::make_container<
+				int_unique_ptr_vector
+			>(
+				fcppt::make_unique_ptr_fcppt<
+					int
+				>(
+					5
+				)
+			)(
+				fcppt::make_unique_ptr_fcppt<
+					int
+				>(
+					6
+				)
+			).move_container()
+		)
+	);
+
+	BOOST_REQUIRE(
+		result.size() == 6u
+		&& *result[0] == 1
+		&& *result[1] == 2
+		&& *result[2] == 3
+		&& *result[3] == 4
+		&& *result[4] == 5
+		&& *result[5] == 6
 	);
 }

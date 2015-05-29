@@ -7,7 +7,6 @@
 #include <fcppt/make_unique_ptr_fcppt.hpp>
 #include <fcppt/unique_ptr.hpp>
 #include <fcppt/algorithm/map_concat.hpp>
-#include <fcppt/algorithm/map_concat_move.hpp>
 #include <fcppt/assign/make_container.hpp>
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
@@ -125,7 +124,7 @@ FCPPT_PP_POP_WARNING
 	};
 
 	int_unique_ptr_vector const result(
-		fcppt::algorithm::map_concat_move<
+		fcppt::algorithm::map_concat<
 			int_unique_ptr_vector
 		>(
 			ints,

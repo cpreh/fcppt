@@ -4,9 +4,10 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_ALGORITHM_DETAIL_VARIADIC_FOLD_HPP_INCLUDED
-#define FCPPT_ALGORITHM_DETAIL_VARIADIC_FOLD_HPP_INCLUDED
+#ifndef FCPPT_ALGORITHM_DETAIL_JOIN_ALL_HPP_INCLUDED
+#define FCPPT_ALGORITHM_DETAIL_JOIN_ALL_HPP_INCLUDED
 
+#include <fcppt/move_iterator_if_rvalue.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <type_traits>
 #include <utility>
@@ -21,14 +22,12 @@ namespace detail
 {
 
 template<
-	typename Operation,
 	typename Result,
 	typename... Args
 >
 inline
 Result
-variadic_fold(
-	Operation const &,
+join_all(
 	Result &&_first
 )
 {
@@ -39,33 +38,39 @@ variadic_fold(
 }
 
 template<
-	typename Operation,
-	typename Result1,
-	typename Result2,
+	typename Result,
+	typename Container,
 	typename... Args
 >
 inline
 typename
 std::remove_cv<
-	Result1
+	Result
 >::type
-variadic_fold(
-	Operation const &_operation,
-	Result1 &&_first,
-	Result2 &&_second,
+join_all(
+	Result &&_result,
+	Container &&_container,
 	Args &&... _args
 )
 {
+	_result.insert(
+		_result.end(),
+		fcppt::move_iterator_if_rvalue<
+			Container
+		>(
+			_container.begin()
+		),
+		fcppt::move_iterator_if_rvalue<
+			Container
+		>(
+			_container.end()
+		)
+	);
+
 	return
-		fcppt::algorithm::detail::variadic_fold(
-			_operation,
-			_operation(
-				std::move(
-					_first
-				),
-				std::move(
-					_second
-				)
+		fcppt::algorithm::detail::join_all(
+			std::move(
+				_result
 			),
 			std::forward<
 				Args

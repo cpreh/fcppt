@@ -19,9 +19,10 @@ set(
 	include/fcppt/algorithm/detail/enum_array_fold_static_function.hpp
 	include/fcppt/algorithm/detail/find_by_result.hpp
 	include/fcppt/algorithm/detail/has_size_reserve.hpp
+	include/fcppt/algorithm/detail/join_all.hpp
+	include/fcppt/algorithm/detail/join_impl.hpp
 	include/fcppt/algorithm/detail/map_concat.hpp
 	include/fcppt/algorithm/detail/map_reserve.hpp
-	include/fcppt/algorithm/detail/variadic_fold.hpp
 	include/fcppt/algorithm/enum_array_fold.hpp
 	include/fcppt/algorithm/enum_array_fold_static.hpp
 	include/fcppt/algorithm/find_by_exn.hpp
@@ -32,13 +33,11 @@ set(
 	include/fcppt/algorithm/fold.hpp
 	include/fcppt/algorithm/impl/element_not_found.hpp
 	include/fcppt/algorithm/join.hpp
-	include/fcppt/algorithm/join_move.hpp
 	include/fcppt/algorithm/join_strings.hpp
 	include/fcppt/algorithm/key_set.hpp
 	include/fcppt/algorithm/levenshtein.hpp
 	include/fcppt/algorithm/map.hpp
 	include/fcppt/algorithm/map_concat.hpp
-	include/fcppt/algorithm/map_concat_move.hpp
 	include/fcppt/algorithm/map_iteration.hpp
 	include/fcppt/algorithm/map_iteration_second.hpp
 	include/fcppt/algorithm/map_optional.hpp
@@ -281,6 +280,7 @@ set(
 	include/fcppt/detail/make_shared_wrapper.hpp
 	include/fcppt/detail/make_shared_wrapper_fwd.hpp
 	include/fcppt/detail/move_if_rvalue.hpp
+	include/fcppt/detail/move_iterator_if_rvalue.hpp
 	include/fcppt/detail/nonassignable.hpp
 	include/fcppt/detail/noncopyable.hpp
 	include/fcppt/detail/optional_cast.hpp
@@ -620,6 +620,7 @@ set(
 	include/fcppt/micro_version.hpp
 	include/fcppt/minor_version.hpp
 	include/fcppt/move_if_rvalue.hpp
+	include/fcppt/move_iterator_if_rvalue.hpp
 	include/fcppt/mpl/all_of.hpp
 	include/fcppt/mpl/append.hpp
 	include/fcppt/mpl/ceil_div.hpp

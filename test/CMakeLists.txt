@@ -77,10 +77,6 @@ add_fcppt_test(
 )
 
 add_fcppt_test(
-	algorithm/join_move
-)
-
-add_fcppt_test(
 	algorithm/levenshtein
 )
 
