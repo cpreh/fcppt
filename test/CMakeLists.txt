@@ -493,6 +493,10 @@ add_fcppt_test(
 )
 
 add_fcppt_test(
+	optional/assign
+)
+
+add_fcppt_test(
 	optional/bind
 )
 

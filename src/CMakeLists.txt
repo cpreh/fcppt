@@ -651,6 +651,7 @@ set(
 	include/fcppt/nonassignable.hpp
 	include/fcppt/noncopyable.hpp
 	include/fcppt/optional.hpp
+	include/fcppt/optional_assign.hpp
 	include/fcppt/optional_bind.hpp
 	include/fcppt/optional_bind_construct.hpp
 	include/fcppt/optional_combine.hpp
