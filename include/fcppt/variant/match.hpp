@@ -8,8 +8,8 @@
 #define FCPPT_VARIANT_MATCH_HPP_INCLUDED
 
 #include <fcppt/variant/apply_unary.hpp>
-#include <fcppt/variant/detail/match_visitor.hpp>
 #include <fcppt/variant/detail/match_result_type.hpp>
+#include <fcppt/variant/detail/match_visitor.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <tuple>
 #include <utility>

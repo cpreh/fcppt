@@ -10,8 +10,8 @@
 #include <fcppt/algorithm/detail/join_all.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/utility/enable_if.hpp>
-#include <utility>
 #include <type_traits>
+#include <utility>
 #include <fcppt/config/external_end.hpp>
 
 

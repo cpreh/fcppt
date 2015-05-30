@@ -13,8 +13,8 @@
 #include <fcppt/detail/enable_optional_value_conv.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <new>
-#include <utility>
 #include <type_traits>
+#include <utility>
 #include <fcppt/config/external_end.hpp>
 
 
