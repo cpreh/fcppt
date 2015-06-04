@@ -19,6 +19,7 @@
 #include <fcppt/config/external_begin.hpp>
 #include <algorithm>
 #include <iterator>
+#include <utility>
 #include <fcppt/config/external_end.hpp>
 
 

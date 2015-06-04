@@ -12,7 +12,7 @@
 #include <fcppt/math/vector/comparison.hpp>
 #include <fcppt/math/vector/object_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <algorithm>
+#include <utility>
 #include <fcppt/config/external_end.hpp>
 
 

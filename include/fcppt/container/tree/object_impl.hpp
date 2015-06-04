@@ -18,7 +18,6 @@
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <algorithm>
 #include <iterator>
 #include <type_traits>
 #include <utility>

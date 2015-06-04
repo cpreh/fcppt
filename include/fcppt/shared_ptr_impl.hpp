@@ -12,8 +12,8 @@
 #include <fcppt/weak_ptr_fwd.hpp>
 #include <fcppt/detail/make_shared_wrapper.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <algorithm>
 #include <memory>
+#include <utility>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 

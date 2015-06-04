@@ -7,8 +7,8 @@
 #include <fcppt/make_int_range_count.hpp>
 #include <fcppt/endianness/reverse_mem.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <algorithm>
 #include <cstddef>
+#include <utility>
 #include <fcppt/config/external_end.hpp>
 
 

@@ -10,7 +10,7 @@
 #include <fcppt/container/grid/spiral_iterator_decl.hpp>
 #include <fcppt/math/vector/comparison.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <algorithm>
+#include <utility>
 #include <fcppt/config/external_end.hpp>
 
 

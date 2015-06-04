@@ -24,10 +24,11 @@
 #include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/test/unit_test.hpp>
-#include <algorithm>
+#include <cmath>
 #include <iostream>
 #include <limits>
 #include <ostream>
+#include <utility>
 #include <fcppt/config/external_end.hpp>
 
 
