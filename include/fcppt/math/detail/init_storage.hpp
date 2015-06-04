@@ -20,7 +20,7 @@ namespace detail
 template<
 	typename Result
 >
-Result const
+Result
 init_storage(
 	typename Result::value_type const &_value
 )

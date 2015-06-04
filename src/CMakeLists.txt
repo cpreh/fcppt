@@ -454,6 +454,7 @@ set(
 	include/fcppt/math/detail/generate_binary_vectors.hpp
 	include/fcppt/math/detail/has_size.hpp
 	include/fcppt/math/detail/index_at.hpp
+	include/fcppt/math/detail/init.hpp
 	include/fcppt/math/detail/init_storage.hpp
 	include/fcppt/math/detail/linear_access.hpp
 	include/fcppt/math/detail/make_asymmetric_binary_operator.hpp
@@ -591,6 +592,7 @@ set(
 	include/fcppt/math/vector/fill.hpp
 	include/fcppt/math/vector/has_dim.hpp
 	include/fcppt/math/vector/hypersphere_to_cartesian.hpp
+	include/fcppt/math/vector/init.hpp
 	include/fcppt/math/vector/input.hpp
 	include/fcppt/math/vector/is_vector.hpp
 	include/fcppt/math/vector/length.hpp
