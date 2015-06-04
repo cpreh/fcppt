@@ -25,9 +25,9 @@ namespace vector
 
 Calls <code>_function</code> for every index of the vector.
 
-\type Vector Must be a vector
+\tparam Vector Must be a vector
 
-\type Function Must be a function of type <code>Vector::value_type
+\tparam Function Must be a function of type <code>Vector::value_type
 (Vector::size_type)</code>
 */
 template<
