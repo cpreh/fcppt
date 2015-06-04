@@ -10,25 +10,16 @@
 
 #include <fcppt/homogenous_pair_decl.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <algorithm>
+#include <utility>
 #include <fcppt/config/external_end.hpp>
 
-template
-<
-	typename T
->
-fcppt::homogenous_pair<T>::homogenous_pair()
-:
-	first(),
-	second()
-{
-}
 
-template
-<
+template<
 	typename T
 >
-fcppt::homogenous_pair<T>::homogenous_pair(
+fcppt::homogenous_pair<
+	T
+>::homogenous_pair(
 	value_type const &_first,
 	value_type const &_second
 )
@@ -42,15 +33,18 @@ fcppt::homogenous_pair<T>::homogenous_pair(
 {
 }
 
-template
-<
+template<
 	typename T
 >
 void
-fcppt::homogenous_pair<T>::swap(
+fcppt::homogenous_pair<
+	T
+>::swap(
 	homogenous_pair &_other
 )
 {
+	using std::swap;
+
 	swap(
 		first,
 		_other.first
@@ -62,14 +56,17 @@ fcppt::homogenous_pair<T>::swap(
 	);
 }
 
-template
-<
+template<
 	typename T
 >
 void
 fcppt::swap(
-	fcppt::homogenous_pair<T> &_a,
-	fcppt::homogenous_pair<T> &_b
+	fcppt::homogenous_pair<
+		T
+	> &_a,
+	fcppt::homogenous_pair<
+		T
+	> &_b
 )
 {
 	_a.swap(

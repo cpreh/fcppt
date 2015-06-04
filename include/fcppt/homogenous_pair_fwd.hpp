@@ -8,10 +8,11 @@
 #ifndef FCPPT_HOMOGENOUS_PAIR_FWD_HPP_INCLUDED
 #define FCPPT_HOMOGENOUS_PAIR_FWD_HPP_INCLUDED
 
+
 namespace fcppt
 {
-template
-<
+
+template<
 	typename T
 >
 class homogenous_pair;

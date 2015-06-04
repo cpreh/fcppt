@@ -691,6 +691,7 @@ set(
 	include/fcppt/make_enum_range.hpp
 	include/fcppt/make_enum_range_start.hpp
 	include/fcppt/make_enum_range_start_end.hpp
+	include/fcppt/make_homogenous_pair.hpp
 	include/fcppt/make_int_range.hpp
 	include/fcppt/make_int_range_count.hpp
 	include/fcppt/make_literal_boost_units.hpp
@@ -809,6 +810,7 @@ set(
 	include/fcppt/math/interpolation/perlin_fifth_degree_functor.hpp
 	include/fcppt/math/interpolation/trigonometric.hpp
 	include/fcppt/math/interpolation/trigonometric_functor.hpp
+	include/fcppt/math/interval_distance.hpp
 	include/fcppt/math/is_power_of_2.hpp
 	include/fcppt/math/log2.hpp
 	include/fcppt/math/map.hpp

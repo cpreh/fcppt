@@ -337,6 +337,10 @@ add_fcppt_test(
 )
 
 add_fcppt_test(
+	math/interval_distance
+)
+
+add_fcppt_test(
 	math/is_power_of_2
 )
 

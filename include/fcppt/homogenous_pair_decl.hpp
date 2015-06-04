@@ -10,11 +10,14 @@
 
 #include <fcppt/homogenous_pair_fwd.hpp>
 
+
 namespace fcppt
 {
 
 /**
 \brief A pair like <code>%std::pair</code> with both elements of the same type
+
+\ingroup fcpptvarious
 
 A homogenous pair of type <code>T</code> is like an
 <code>%std::pair<T,T></code>.
@@ -46,13 +49,6 @@ public:
 	\brief The second element
 	*/
 	value_type second;
-
-	/**
-	\brief Default constructs the pair
-
-	Initializes both first and second with their default constructors.
-	*/
-	homogenous_pair();
 
 	/**
 	\brief Initializes a pair
@@ -93,14 +89,17 @@ Calls <code>left.swap(right)</code>
 
 \param right The second pair to swap
 */
-template
-<
+template<
 	typename T
 >
 void
 swap(
-	fcppt::homogenous_pair<T> &left,
-	fcppt::homogenous_pair<T> &right
+	fcppt::homogenous_pair<
+		T
+	> &left,
+	fcppt::homogenous_pair<
+		T
+	> &right
 );
 
 }
