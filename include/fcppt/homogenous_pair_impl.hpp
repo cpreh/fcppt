@@ -36,6 +36,29 @@ fcppt::homogenous_pair<
 template<
 	typename T
 >
+fcppt::homogenous_pair<
+	T
+>::homogenous_pair(
+	value_type &&_first,
+	value_type &&_second
+)
+:
+	first(
+		std::move(
+			_first
+		)
+	),
+	second(
+		std::move(
+			_second
+		)
+	)
+{
+}
+
+template<
+	typename T
+>
 void
 fcppt::homogenous_pair<
 	T

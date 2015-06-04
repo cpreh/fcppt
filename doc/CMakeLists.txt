@@ -717,6 +717,7 @@ set(
 	include/fcppt/math/box/has_dim.hpp
 	include/fcppt/math/box/intersection.hpp
 	include/fcppt/math/box/intersects.hpp
+	include/fcppt/math/box/interval.hpp
 	include/fcppt/math/box/is_box.hpp
 	include/fcppt/math/box/object.hpp
 	include/fcppt/math/box/object_decl.hpp

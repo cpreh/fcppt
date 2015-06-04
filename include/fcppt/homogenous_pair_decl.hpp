@@ -24,8 +24,7 @@ A homogenous pair of type <code>T</code> is like an
 
 \tparam T Can be any type
 */
-template
-<
+template<
 	typename T
 >
 class homogenous_pair
@@ -63,6 +62,14 @@ public:
 	homogenous_pair(
 		value_type const &first,
 		value_type const &second
+	);
+
+	/**
+	\brief Initializes a pair by moving
+	*/
+	homogenous_pair(
+		value_type &&first,
+		value_type &&second
 	);
 
 	/**

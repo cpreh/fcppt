@@ -7,9 +7,9 @@
 #ifndef FCPPT_MATH_BOX_DISTANCE_HPP_INCLUDED
 #define FCPPT_MATH_BOX_DISTANCE_HPP_INCLUDED
 
-#include <fcppt/make_homogenous_pair.hpp>
 #include <fcppt/math/interval_distance.hpp>
 #include <fcppt/math/size_type.hpp>
+#include <fcppt/math/box/interval.hpp>
 #include <fcppt/math/box/object_impl.hpp>
 #include <fcppt/math/vector/init.hpp>
 #include <fcppt/math/vector/static.hpp>
@@ -62,21 +62,13 @@ distance(
 			{
 				return
 					fcppt::math::interval_distance(
-						fcppt::make_homogenous_pair(
-							_box1.pos(
-								_index
-							),
-							_box1.max(
-								_index
-							)
+						fcppt::math::box::interval(
+							_box1,
+							_index
 						),
-						fcppt::make_homogenous_pair(
-							_box2.pos(
-								_index
-							),
-							_box2.max(
-								_index
-							)
+						fcppt::math::box::interval(
+							_box2,
+							_index
 						)
 					);
 			}
