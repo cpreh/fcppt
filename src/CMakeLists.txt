@@ -410,6 +410,7 @@ set(
 	include/fcppt/math/box/contains.hpp
 	include/fcppt/math/box/contains_point.hpp
 	include/fcppt/math/box/corner_points.hpp
+	include/fcppt/math/box/distance.hpp
 	include/fcppt/math/box/expand.hpp
 	include/fcppt/math/box/extend_bounding_box.hpp
 	include/fcppt/math/box/has_dim.hpp
