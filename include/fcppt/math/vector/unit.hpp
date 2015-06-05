@@ -8,6 +8,7 @@
 #define FCPPT_MATH_VECTOR_UNIT_HPP_INCLUDED
 
 #include <fcppt/literal.hpp>
+#include <fcppt/math/size_type.hpp>
 #include <fcppt/math/vector/init.hpp>
 
 
