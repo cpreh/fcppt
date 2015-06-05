@@ -106,4 +106,18 @@ FCPPT_PP_POP_WARNING
 		),
 		0
 	);
+
+	BOOST_CHECK_EQUAL(
+		fcppt::math::interval_distance(
+			fcppt::make_homogenous_pair(
+				3,
+				4
+			),
+			fcppt::make_homogenous_pair(
+				0,
+				10
+			)
+		),
+		-3
+	);
 }

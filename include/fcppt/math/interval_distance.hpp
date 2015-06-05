@@ -61,9 +61,9 @@ interval_distance(
 	_i1.first - _i2.second
 	:
 	// one completely contains the other, so return the smaller of the two parts
-	std::min(
-		_i1.second - _i2.second,
-		_i2.first - _i1.first
+	std::max(
+		_i2.second - _i1.second,
+		_i1.first - _i2.first
 	);
 }
 
