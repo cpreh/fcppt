@@ -7,11 +7,11 @@
 #ifndef FCPPT_CONTAINER_GRID_CLAMP_POS_HPP_INCLUDED
 #define FCPPT_CONTAINER_GRID_CLAMP_POS_HPP_INCLUDED
 
-#include <fcppt/make_int_range_count.hpp>
-#include <fcppt/no_init.hpp>
 #include <fcppt/container/grid/dim.hpp>
 #include <fcppt/container/grid/pos.hpp>
 #include <fcppt/container/grid/size_type.hpp>
+#include <fcppt/math/size_type.hpp>
+#include <fcppt/math/vector/init.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <algorithm>
 #include <type_traits>
@@ -56,37 +56,31 @@ clamp_pos(
 		"Source must be unsigned"
 	);
 
-	typedef
-	fcppt::container::grid::pos<
-		Source,
-		Size
-	> result_type;
-
-	result_type ret{
-		fcppt::no_init()
-	};
-
-	for(
-		auto const index
-		:
-		fcppt::make_int_range_count(
-			result_type::dim_wrapper::value
-		)
-	)
-		ret[
-			index
-		] =
-			std::min(
-				_pos[
-					index
-				],
-				_size[
-					index
-				]
-			);
-
 	return
-		ret;
+		fcppt::math::vector::init<
+			fcppt::container::grid::pos<
+				Source,
+				Size
+			>
+		>(
+			[
+				&_pos,
+				&_size
+			](
+				fcppt::math::size_type const _index
+			)
+			{
+				return
+					std::min(
+						_pos[
+							_index
+						],
+						_size[
+							_index
+						]
+					);
+			}
+		);
 }
 
 }

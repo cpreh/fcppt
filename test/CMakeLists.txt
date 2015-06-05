@@ -183,6 +183,18 @@ add_fcppt_test(
 )
 
 add_fcppt_test(
+	container/grid/clamp_pos
+	LINK_LIBS
+		"${fcppt_core_TARGET}"
+)
+
+add_fcppt_test(
+	container/grid/clamp_signed_pos
+	LINK_LIBS
+		"${fcppt_core_TARGET}"
+)
+
+add_fcppt_test(
 	container/grid/moore_neighbors
 )
 

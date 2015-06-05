@@ -8,15 +8,14 @@
 #define FCPPT_CONTAINER_GRID_CLAMP_SIGNED_POS_HPP_INCLUDED
 
 #include <fcppt/literal.hpp>
-#include <fcppt/make_int_range_count.hpp>
-#include <fcppt/no_init.hpp>
-#include <fcppt/assert/pre.hpp>
 #include <fcppt/cast/to_signed.hpp>
 #include <fcppt/cast/to_unsigned.hpp>
 #include <fcppt/container/grid/dim.hpp>
 #include <fcppt/container/grid/pos.hpp>
 #include <fcppt/container/grid/size_type.hpp>
 #include <fcppt/math/clamp.hpp>
+#include <fcppt/math/size_type.hpp>
+#include <fcppt/math/vector/init.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
@@ -68,51 +67,40 @@ clamp_signed_pos(
 		"Dest must be unsigned"
 	);
 
-	FCPPT_ASSERT_PRE(
-		_size.content()
-		!=
-		0u
-	);
-
-	typedef
-	fcppt::container::grid::pos<
-		Dest,
-		Size
-	> result_type;
-
-	result_type ret{
-		fcppt::no_init()
-	};
-
-	for(
-		auto const index
-		:
-		fcppt::make_int_range_count(
-			result_type::dim_wrapper::value
-		)
-	)
-		ret[
-			index
-		] =
-			fcppt::cast::to_unsigned(
-				fcppt::math::clamp(
-					_pos[
-						index
-					],
-					fcppt::literal<
-						Source
-					>(
-						0
-					),
-					fcppt::cast::to_signed(
-						_size[
-							index
-						]
-					)
-				)
-			);
-
-	return ret;
+	return
+		fcppt::math::vector::init<
+			fcppt::container::grid::pos<
+				Dest,
+				Size
+			>
+		>(
+			[
+				&_pos,
+				&_size
+			](
+				fcppt::math::size_type const _index
+			)
+			{
+				return
+					fcppt::cast::to_unsigned(
+						fcppt::math::clamp(
+							_pos[
+								_index
+							],
+							fcppt::literal<
+								Source
+							>(
+								0
+							),
+							fcppt::cast::to_signed(
+								_size[
+									_index
+								]
+							)
+						)
+					);
+			}
+		);
 }
 
 }
