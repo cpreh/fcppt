@@ -7,6 +7,7 @@
 #ifndef FCPPT_MATH_DETAIL_CONSTRUCT_HPP_INCLUDED
 #define FCPPT_MATH_DETAIL_CONSTRUCT_HPP_INCLUDED
 
+#include <fcppt/make_int_range_count.hpp>
 #include <fcppt/no_init.hpp>
 
 
@@ -21,10 +22,10 @@ template<
 	typename Dest,
 	typename Src
 >
-Dest const
+Dest
 construct(
-	Src const &src,
-	typename Src::value_type const &value
+	Src const &_src,
+	typename Src::value_type const &_value
 )
 {
 	Dest ret{
@@ -32,17 +33,26 @@ construct(
 	};
 
 	for(
-		typename Src::size_type i = 0;
-		i < src.size();
-		++i
+		auto const index
+		:
+		fcppt::make_int_range_count(
+			_src.size()
+		)
 	)
-		ret[i] = src[i];
+		ret[
+			index
+		] =
+			_src[
+				index
+			];
 
 	ret[
 		Src::dim_wrapper::value
-	] = value;
+	] =
+		_value;
 
-	return ret;
+	return
+		ret;
 }
 
 }

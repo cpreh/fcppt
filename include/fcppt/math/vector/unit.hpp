@@ -8,7 +8,7 @@
 #define FCPPT_MATH_VECTOR_UNIT_HPP_INCLUDED
 
 #include <fcppt/literal.hpp>
-#include <fcppt/no_init.hpp>
+#include <fcppt/math/vector/init.hpp>
 
 
 namespace fcppt
@@ -33,33 +33,36 @@ e_i = (0,\ldots,0,1,0,\ldots,0)
 template<
 	typename Vec
 >
-Vec const
+Vec
 unit(
 	typename Vec::size_type const _axis
 )
 {
-	Vec ret{
-		fcppt::no_init()
-	};
-
-	for(
-		typename Vec::size_type index = 0;
-		index < Vec::dim_wrapper::value;
-		++index
-	)
-		ret[
-			index
-		] =
-			fcppt::literal<
-				typename Vec::value_type
-			>(
-				index == _axis
-				?
-					1
-				:
-					0
-			);
-	return ret;
+	return
+		fcppt::math::vector::init<
+			Vec
+		>(
+			[
+				_axis
+			](
+				fcppt::math::size_type const _index
+			)
+			{
+				return
+					fcppt::literal<
+						typename
+						Vec::value_type
+					>(
+						_index
+						==
+						_axis
+						?
+							1
+						:
+							0
+					);
+			}
+		);
 }
 
 }

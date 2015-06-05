@@ -7,7 +7,8 @@
 #ifndef FCPPT_MATH_DETAIL_FILL_HPP_INCLUDED
 #define FCPPT_MATH_DETAIL_FILL_HPP_INCLUDED
 
-#include <fcppt/no_init.hpp>
+#include <fcppt/math/size_type.hpp>
+#include <fcppt/math/detail/init.hpp>
 
 
 namespace fcppt
@@ -25,16 +26,20 @@ fill(
 	typename Ret::value_type const &_value
 )
 {
-	Ret ret{
-		fcppt::no_init()
-	};
-
-	for(
-		auto &item : ret
-	)
-		item = _value;
-
-	return ret;
+	return
+		fcppt::math::detail::init<
+			Ret
+		>(
+			[
+				&_value
+			](
+				fcppt::math::size_type
+			)
+			{
+				return
+					_value;
+			}
+		);
 }
 
 }
