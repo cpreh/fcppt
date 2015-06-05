@@ -8,6 +8,8 @@
 #define FCPPT_CONTAINER_GRID_ITERATOR_POSITION_HPP_INCLUDED
 
 #include <fcppt/literal.hpp>
+#include <fcppt/make_int_range.hpp>
+#include <fcppt/make_int_range_count.hpp>
 #include <fcppt/no_init.hpp>
 #include <fcppt/cast/to_unsigned.hpp>
 #include <fcppt/container/grid/object_impl.hpp>
@@ -22,43 +24,57 @@ namespace container
 {
 namespace grid
 {
+
 /**
 \brief Returns the position of an iterator
 \ingroup fcpptcontainergrid
 \warning
 Behavior is undefined if the iterator doesn't belong to the given grid.
 */
-template<typename Grid,typename Iterator>
-typename Grid::pos const
+template<
+	typename Grid,
+	typename Iterator
+>
+typename
+Grid::pos const
 iterator_position(
-	Grid const &grid,
-	Iterator const it)
+	Grid const &_grid,
+	Iterator const _it
+)
 {
-	typedef typename
+	typedef
+	typename
 	Grid::pos
 	pos;
 
-	typedef typename
+	typedef
+	typename
 	Grid::dim
 	dim;
 
-	typedef typename
+	typedef
+	typename
 	dim::value_type
 	dim_unit;
 
-	typedef typename
+	typedef
+	typename
 	pos::size_type
 	dim_size_type;
 
 	dim stacked_dim{
-		fcppt::no_init()};
+		fcppt::no_init()
+	};
 
-	stacked_dim[0] = grid.size()[0];
+	stacked_dim[0] = _grid.size()[0];
 
 	for(
-		dim_size_type index(1);
-		index < stacked_dim.size();
-		++index
+		dim_size_type const index
+		:
+		fcppt::make_int_range(
+			1u,
+			stacked_dim.size()
+		)
 	)
 		stacked_dim[
 			index
@@ -73,23 +89,29 @@ iterator_position(
 				)
 			]
 			*
-			grid.size()[
+			_grid.size()[
 				index
 			];
 
 	pos ret{
-		fcppt::no_init()};
+		fcppt::no_init()
+	};
 
-	dim_unit const offset =
+	dim_unit const offset(
 		fcppt::cast::to_unsigned(
 			std::distance(
-				grid.begin(),
-				it));
+				_grid.begin(),
+				_it
+			)
+		)
+	);
 
 	for(
-		dim_size_type i(0);
-		i < dim::dim_wrapper::value;
-		++i
+		dim_size_type const i
+		:
+		fcppt::make_int_range_count(
+			dim::dim_wrapper::value
+		)
 	)
 	{
 		ret[i] = offset;
@@ -135,6 +157,7 @@ iterator_position(
 	return
 		ret;
 }
+
 }
 }
 }

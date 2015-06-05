@@ -715,6 +715,7 @@ set(
 	include/fcppt/math/box/expand.hpp
 	include/fcppt/math/box/extend_bounding_box.hpp
 	include/fcppt/math/box/has_dim.hpp
+	include/fcppt/math/box/init.hpp
 	include/fcppt/math/box/intersection.hpp
 	include/fcppt/math/box/intersects.hpp
 	include/fcppt/math/box/interval.hpp
@@ -787,6 +788,7 @@ set(
 	include/fcppt/math/dim/construct.hpp
 	include/fcppt/math/dim/fill.hpp
 	include/fcppt/math/dim/has_dim.hpp
+	include/fcppt/math/dim/init.hpp
 	include/fcppt/math/dim/input.hpp
 	include/fcppt/math/dim/is_dim.hpp
 	include/fcppt/math/dim/is_quadratic.hpp

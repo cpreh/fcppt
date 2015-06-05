@@ -23,31 +23,53 @@ namespace fcppt
 \ingroup fcpptvarious
 */
 template<
-	typename Type
+	typename Type1,
+	typename Type2
 >
 inline
 fcppt::homogenous_pair<
 	typename
 	std::decay<
-		Type
+		Type1
 	>::type
 >
 make_homogenous_pair(
-	Type &&_first,
-	Type &&_second
+	Type1 &&_first,
+	Type2 &&_second
 )
 {
+	static_assert(
+		std::is_same<
+			typename
+			std::decay<
+				Type1
+			>::type,
+			typename
+			std::decay<
+				Type2
+			>::type
+		>::value,
+		"Type1 and Type2 must be the same decayed type"
+	);
+
+	typedef
+	typename
+	std::decay<
+		Type1
+	>::type
+	result_type;
+
 	return
 		fcppt::homogenous_pair<
-			Type
+			result_type
 		>(
 			std::forward<
-				Type
+				Type1
 			>(
 				_first
 			),
 			std::forward<
-				Type
+				Type2
 			>(
 				_second
 			)

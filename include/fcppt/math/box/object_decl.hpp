@@ -9,6 +9,7 @@
 
 #include <fcppt/no_init_fwd.hpp>
 #include <fcppt/math/size_type.hpp>
+#include <fcppt/math/static_size.hpp>
 #include <fcppt/math/box/object_fwd.hpp>
 #include <fcppt/math/dim/object_decl.hpp>
 #include <fcppt/math/dim/static.hpp>
@@ -42,6 +43,12 @@ public:
 	\brief A type that represents the data type stored in a box's vector/dimension.
 	*/
 	typedef T value_type;
+
+	typedef
+	fcppt::math::static_size<
+		N
+	>
+	dim_wrapper;
 
 	/**
 	\brief A type that represents the data type stored in a box's vector/dimension (synonymous to value_type).

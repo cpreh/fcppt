@@ -8,9 +8,10 @@
 #ifndef FCPPT_MATH_BOX_EXTEND_BOUNDING_BOX_HPP_INCLUDED
 #define FCPPT_MATH_BOX_EXTEND_BOUNDING_BOX_HPP_INCLUDED
 
-#include <fcppt/no_init.hpp>
+#include <fcppt/make_homogenous_pair.hpp>
 #include <fcppt/math/size_type.hpp>
 #include <fcppt/math/box/contains_point.hpp>
+#include <fcppt/math/box/init.hpp>
 #include <fcppt/math/box/object_impl.hpp>
 #include <fcppt/preprocessor/const.hpp>
 #include <fcppt/config/external_begin.hpp>
@@ -24,6 +25,7 @@ namespace math
 {
 namespace box
 {
+
 /**
 \brief Extend a box to fit a point in it
 \ingroup fcpptmathbox
@@ -33,42 +35,105 @@ namespace box
 The result will either be the same box (if the point is contained in the box)
 or a box that's just big enough to hold the given point.
 */
-template<typename T,fcppt::math::size_type N>
-fcppt::math::box::object<T,N> const
+template<
+	typename T,
+	fcppt::math::size_type N
+>
+fcppt::math::box::object<
+	T,
+	N
+> const
 extend_bounding_box(
-	fcppt::math::box::object<T,N> b,
-	typename fcppt::math::box::object<T,N>::vector const &p)
+	fcppt::math::box::object<
+		T,
+		N
+	> const _box,
+	typename
+	fcppt::math::box::object<
+		T,
+		N
+	>::vector const _pos
+)
 {
-	if (fcppt::math::box::contains_point(
-		b,
-		p))
-		return b;
-
-	for (fcppt::math::size_type i = 0; i < N; ++i)
-	{
-		if (p[i] < b.pos()[i])
-		{
-			b.size(
-				i,
-				b.size()[i] + (b.pos()[i] - p[i]));
-
-			b.pos(
-				i,
-				p[i]);
-
-			continue;
-		}
-
-		T const end =
-			b.pos()[i] + b.size()[i];
-
-		if (p[i] > end)
-			b.size(
-				i,
-				b.size()[i] + (p[i] - end));
-	}
-
-	return b;
+	return
+		fcppt::math::box::contains_point(
+			_box,
+			_pos
+		)
+		?
+			_box
+		:
+			fcppt::math::box::init<
+				fcppt::math::box::object<
+					T,
+					N
+				>
+			>(
+				[
+					&_pos,
+					&_box
+				](
+					fcppt::math::size_type const _index
+				)
+				{
+					return
+						_pos[
+							_index
+						]
+						<
+						_box.pos(
+							_index
+						)
+						?
+							fcppt::make_homogenous_pair(
+								_pos[
+									_index
+								],
+								_box.size(
+									_index
+								)
+								+
+								_box.pos(
+									_index
+								)
+								-
+								_pos[
+									_index
+								]
+							)
+						:
+							fcppt::make_homogenous_pair(
+								_box.pos(
+									_index
+								),
+								_pos[
+									_index
+								]
+								>
+								_box.max(
+									_index
+								)
+								?
+									_box.size(
+										_index
+									)
+									+
+									_pos[
+										_index
+									]
+									-
+									_box.max(
+										_index
+									)
+								:
+									_box.size(
+										_index
+									)
+							)
+						;
+				}
+			)
+		;
 }
 
 /**
@@ -77,34 +142,68 @@ extend_bounding_box(
 \tparam N The box's dimension
 \tparam T The box's <code>value_type</code>
 */
-template<typename T,fcppt::math::size_type N>
-fcppt::math::box::object<T,N> const
+template<
+	typename T,
+	fcppt::math::size_type N
+>
+fcppt::math::box::object<
+	T,
+	N
+> const
 extend_bounding_box(
-	fcppt::math::box::object<T,N> const &a,
-	fcppt::math::box::object<T,N> const &b)
+	fcppt::math::box::object<
+		T,
+		N
+	> const &_box1,
+	fcppt::math::box::object<
+		T,
+		N
+	> const &_box2
+)
 {
-	fcppt::math::box::object<T,N> result{
-		fcppt::no_init()
-	};
+	return
+		fcppt::math::box::init<
+			fcppt::math::box::object<
+				T,
+				N
+			>
+		>(
+			[
+				&_box1,
+				&_box2
+			](
+				fcppt::math::size_type const _index
+			)
+			{
+				T const pos(
+					std::min(
+						_box1.pos(
+							_index
+						),
+						_box2.pos(
+							_index
+						)
+					)
+				);
 
-	for (fcppt::math::size_type i = 0; i < N; ++i)
-	{
-		result.pos(
-			i,
-			std::min(
-				a.pos()[i],
-				b.pos()[i]));
-
-		result.size(
-			i,
-			std::max(
-				a.pos()[i] + a.size()[i],
-				b.pos()[i] + b.size()[i]) -
-			result.pos()[i]);
-	}
-
-	return result;
+				return
+					fcppt::make_homogenous_pair(
+						pos,
+						std::max(
+							_box1.max(
+								_index
+							),
+							_box2.max(
+								_index
+							)
+							-
+							pos
+						)
+					);
+			}
+		);
 }
+
 }
 }
 }
