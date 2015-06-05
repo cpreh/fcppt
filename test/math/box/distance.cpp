@@ -57,7 +57,7 @@ FCPPT_PP_POP_WARNING
 		),
 		box_type::vector(
 			2,
-			0
+			-1
 		)
 	);
 }

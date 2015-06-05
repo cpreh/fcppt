@@ -54,8 +54,50 @@ FCPPT_PP_POP_WARNING
 	BOOST_CHECK_EQUAL(
 		fcppt::math::interval_distance(
 			fcppt::make_homogenous_pair(
-				3,
+				2,
 				5
+			),
+			fcppt::make_homogenous_pair(
+				4,
+				7
+			)
+		),
+		-1
+	);
+
+	BOOST_CHECK_EQUAL(
+		fcppt::math::interval_distance(
+			fcppt::make_homogenous_pair(
+				4,
+				7
+			),
+			fcppt::make_homogenous_pair(
+				2,
+				5
+			)
+		),
+		-1
+	);
+
+	BOOST_CHECK_EQUAL(
+		fcppt::math::interval_distance(
+			fcppt::make_homogenous_pair(
+				4,
+				6
+			),
+			fcppt::make_homogenous_pair(
+				6,
+				7
+			)
+		),
+		0
+	);
+
+	BOOST_CHECK_EQUAL(
+		fcppt::math::interval_distance(
+			fcppt::make_homogenous_pair(
+				6,
+				7
 			),
 			fcppt::make_homogenous_pair(
 				4,

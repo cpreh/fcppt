@@ -9,6 +9,10 @@
 
 #include <fcppt/homogenous_pair_impl.hpp>
 #include <fcppt/literal.hpp>
+#include <fcppt/config/external_begin.hpp>
+#include <algorithm>
+#include <utility>
+#include <fcppt/config/external_end.hpp>
 
 
 namespace fcppt
@@ -22,6 +26,7 @@ namespace math
 \ingroup fcpptmath
 
 Returns the distance of the intervals \a _i1 and \a _i2.
+Distance can be zero if the intervals touch, or negative if they overlap.
 
 \tparam Type Must support <code>< </code> and <code>-</code>
 */
@@ -32,27 +37,24 @@ Type
 interval_distance(
 	fcppt::homogenous_pair<
 		Type
-	> const _i1,
+	> _i1,
 	fcppt::homogenous_pair<
 		Type
-	> const _i2
+	> _i2
 )
 {
+	if (_i1.second <= _i2.second)
+		std::swap(_i1,_i2);
+
 	return
-		_i1.second < _i2.first
-		?
-			_i2.first - _i1.second
-		:
-			_i2.second < _i1.first
-		?
-			_i1.first - _i2.second
-		:
-			fcppt::literal<
-				Type
-			>(
-				0
-			)
-		;
+	_i2.first <= _i1.first
+	?
+	_i1.first - _i2.second
+	:
+	std::max(
+		_i2.second - _i1.second,
+		_i1.first - _i2.first
+	);
 }
 
 }
