@@ -46,6 +46,7 @@ set(
 	include/fcppt/algorithm/remove_if.hpp
 	include/fcppt/algorithm/repeat.hpp
 	include/fcppt/algorithm/sequence_iteration.hpp
+	include/fcppt/algorithm/set_difference.hpp
 	include/fcppt/algorithm/set_intersection.hpp
 	include/fcppt/algorithm/set_union.hpp
 	include/fcppt/algorithm/shift_compare.hpp
