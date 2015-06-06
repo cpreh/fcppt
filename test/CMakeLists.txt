@@ -625,6 +625,10 @@ add_fcppt_test(
 )
 
 add_fcppt_test(
+	type_traits/function_pointer_to_reference
+)
+
+add_fcppt_test(
 	type_traits/is_iterator
 )
 
