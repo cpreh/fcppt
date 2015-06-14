@@ -1,6 +1,7 @@
 set(
 	FCPPT_CORE_FILES
 	include/fcppt/absurd.hpp
+	include/fcppt/algorithm/all_of.hpp
 	include/fcppt/algorithm/append.hpp
 	include/fcppt/algorithm/array_binary_map.hpp
 	include/fcppt/algorithm/array_fold.hpp
@@ -114,6 +115,7 @@ set(
 	include/fcppt/const_optional_cast.hpp
 	include/fcppt/const_pointer_cast.hpp
 	include/fcppt/container/array_size.hpp
+	include/fcppt/container/at_optional.hpp
 	include/fcppt/container/bitfield/array.hpp
 	include/fcppt/container/bitfield/default_internal_type.hpp
 	include/fcppt/container/bitfield/detail/element_bits.hpp

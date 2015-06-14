@@ -157,6 +157,10 @@ add_fcppt_test(
 )
 
 add_fcppt_test(
+	container/at_optional
+)
+
+add_fcppt_test(
 	container/bitfield
 )
 
