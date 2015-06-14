@@ -55,7 +55,7 @@ FCPPT_PP_POP_WARNING
 		fcppt::math::vector::to_unsigned(
 			pos(
 				0,
-				2
+				3
 			)
 		)
 	);
