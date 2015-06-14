@@ -4,8 +4,8 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_ALGORITHM_CONTAINS_IF_HPP_INCLUDED
-#define FCPPT_ALGORITHM_CONTAINS_IF_HPP_INCLUDED
+#ifndef FCPPT_ALGORITHM_ALL_OF_HPP_INCLUDED
+#define FCPPT_ALGORITHM_ALL_OF_HPP_INCLUDED
 
 #include <fcppt/config/external_begin.hpp>
 #include <algorithm>
@@ -26,7 +26,7 @@ namespace algorithm
 This is equivalent to
 
 \code
-std::find_if(_beg, _end, _pred) != _end
+std::find_if_not(_beg, _end, _pred) == _end
 \endcode
 */
 template<
@@ -34,19 +34,19 @@ template<
 	typename Pred
 >
 bool
-contains_if(
+all_of(
 	In const _beg,
 	In const _end,
 	Pred const &_pred
 )
 {
 	return
-		std::find_if(
+		std::find_if_not(
 			_beg,
 			_end,
 			_pred
 		)
-		!=
+		==
 		_end;
 }
 
@@ -59,21 +59,22 @@ contains_if(
 
 This is equivalent to
 \code
-contains_if(_container.begin(), _container.end(), _pred)
+all_of(_container.begin(), _container.end(), _pred)
 \endcode
 */
 template<
 	typename Container,
 	typename Pred
 >
+inline
 bool
-contains_if(
+all_of(
 	Container const &_container,
 	Pred const &_pred
 )
 {
 	return
-		fcppt::algorithm::contains_if(
+		fcppt::algorithm::all_of(
 			_container.begin(),
 			_container.end(),
 			_pred

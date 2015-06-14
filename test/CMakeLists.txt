@@ -41,6 +41,10 @@ add_fcppt_test(
 )
 
 add_fcppt_test(
+	algorithm/all_of
+)
+
+add_fcppt_test(
 	algorithm/array_init_move
 )
 
