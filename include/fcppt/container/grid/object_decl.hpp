@@ -63,6 +63,13 @@ class object
 	container;
 // \endcond
 public:
+	typedef
+	std::integral_constant<
+		fcppt::container::grid::size_type,
+		N
+	>
+	static_size;
+
 	/**
 	\brief A type that represents the allocator class for the grid's storage.
 	*/

@@ -4,16 +4,15 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_CONTAINER_GRID_POS_REF_ITERATOR_DECL_HPP_INCLUDED
-#define FCPPT_CONTAINER_GRID_POS_REF_ITERATOR_DECL_HPP_INCLUDED
+#ifndef FCPPT_CONTAINER_GRID_POS_ITERATOR_DECL_HPP_INCLUDED
+#define FCPPT_CONTAINER_GRID_POS_ITERATOR_DECL_HPP_INCLUDED
 
-#include <fcppt/container/to_iterator_type.hpp>
-#include <fcppt/container/grid/dim.hpp>
 #include <fcppt/container/grid/min.hpp>
-#include <fcppt/container/grid/object_decl.hpp>
-#include <fcppt/container/grid/pos_ref_iterator_fwd.hpp>
+#include <fcppt/container/grid/pos.hpp>
+#include <fcppt/container/grid/pos_iterator_fwd.hpp>
+#include <fcppt/container/grid/size_type.hpp>
 #include <fcppt/container/grid/sup.hpp>
-#include <fcppt/container/grid/detail/pos_ref_iterator_base.hpp>
+#include <fcppt/container/grid/detail/pos_iterator_base.hpp>
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
@@ -33,41 +32,34 @@ FCPPT_PP_PUSH_WARNING
 FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
 
 template<
-	typename Grid
+	fcppt::container::grid::size_type Size
 >
-class pos_ref_iterator final
+class pos_iterator final
 :
 	public
-		fcppt::container::grid::detail::pos_ref_iterator_base<
-			Grid
+		fcppt::container::grid::detail::pos_iterator_base<
+			Size
 		>
 {
 	typedef
-	fcppt::container::grid::detail::pos_ref_iterator_base<
-		Grid
+	fcppt::container::grid::detail::pos_iterator_base<
+		Size
 	>
 	base_type;
-
-	typedef
-	typename
-	Grid::dim
-	dim;
-
-	typedef
-	typename
-	Grid::pos
-	pos;
-
-	typedef
-	fcppt::container::to_iterator_type<
-		Grid
-	>
-	iterator;
 public:
 	typedef
 	typename
 	base_type::value_type
 	value_type;
+
+	typedef
+	value_type
+	pos;
+
+	typedef
+	typename
+	pos::value_type
+	size_type;
 
 	typedef
 	typename
@@ -91,23 +83,19 @@ public:
 
 	typedef
 	fcppt::container::grid::min<
-		typename
-		Grid::size_type,
-		Grid::static_size::value
+		size_type,
+		Size
 	>
 	min;
 
 	typedef
 	fcppt::container::grid::sup<
-		typename
-		Grid::size_type,
-		Grid::static_size::value
+		size_type,
+		Size
 	>
 	sup;
 
-	pos_ref_iterator(
-		iterator const &,
-		dim,
+	pos_iterator(
 		pos,
 		min,
 		sup
@@ -123,12 +111,8 @@ private:
 
 	bool
 	equal(
-		pos_ref_iterator const &
+		pos_iterator const &
 	) const;
-
-	iterator iterator_;
-
-	dim size_;
 
 	pos current_;
 

@@ -9,9 +9,6 @@
 #include <fcppt/container/grid/in_range.hpp>
 #include <fcppt/container/grid/is_square.hpp>
 #include <fcppt/container/grid/iterator_position.hpp>
-#include <fcppt/container/grid/make_pos_crange.hpp>
-#include <fcppt/container/grid/make_pos_range.hpp>
-#include <fcppt/container/grid/make_pos_range_start_end.hpp>
 #include <fcppt/container/grid/object_impl.hpp>
 #include <fcppt/container/grid/pos.hpp>
 #include <fcppt/container/grid/resize_preserve.hpp>
@@ -858,109 +855,5 @@ FCPPT_PP_POP_WARNING
 		grid2.begin()
 		==
 		grid2.end()
-	);
-}
-
-FCPPT_PP_PUSH_WARNING
-FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
-
-BOOST_AUTO_TEST_CASE(
-	container_grid_pos_range
-)
-{
-FCPPT_PP_POP_WARNING
-
-	typedef
-	fcppt::container::grid::pos<
-		std::size_t,
-		2
-	>
-	dim;
-
-	typedef
-	fcppt::container::grid::object<
-		dim,
-		2
-	>
-	dim2_grid;
-
-	dim2_grid grid(
-		dim2_grid::dim(
-			4,
-			6
-		)
-	);
-
-	for(
-		auto const element
-		:
-		fcppt::container::grid::make_pos_range(
-			grid
-		)
-	)
-		element.value()
-		=
-		element.pos();
-
-	for(
-		auto const element
-		:
-		fcppt::container::grid::make_pos_crange(
-			grid
-		)
-	)
-		BOOST_CHECK(
-			element.value()
-			==
-			element.pos()
-		);
-
-	bool loop_empty(
-		true
-	);
-
-	for(
-		auto const element
-		:
-		fcppt::container::grid::make_pos_range_start_end(
-			grid,
-			dim2_grid::pos::null(),
-			dim2_grid::pos::null()
-		)
-	)
-		loop_empty = false;
-
-	BOOST_CHECK(
-		loop_empty
-	);
-
-	for(
-		auto const element
-		:
-		fcppt::container::grid::make_pos_range_start_end(
-			grid,
-			dim2_grid::pos::null(),
-			dim2_grid::pos(0, 1)
-		)
-	)
-		loop_empty = false;
-
-	BOOST_CHECK(
-		loop_empty
-	);
-
-	for(
-		auto const element
-		:
-		fcppt::container::grid::make_pos_range_start_end(
-			grid,
-			dim2_grid::pos::null(),
-			dim2_grid::pos(1, 0)
-		)
-	)
-		loop_empty = false;
-
-	BOOST_CHECK(
-		loop_empty
 	);
 }

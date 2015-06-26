@@ -373,12 +373,14 @@ set(
 	include/fcppt/container/grid/detail/fill.hpp
 	include/fcppt/container/grid/detail/interpolate.hpp
 	include/fcppt/container/grid/detail/pos_iterator_base.hpp
+	include/fcppt/container/grid/detail/pos_ref_iterator_base.hpp
 	include/fcppt/container/grid/detail/print_recurse.hpp
 	include/fcppt/container/grid/detail/resize.hpp
 	include/fcppt/container/grid/detail/shrink_to_fit.hpp
 	include/fcppt/container/grid/detail/spiral_iterator_base.hpp
 	include/fcppt/container/grid/dim.hpp
 	include/fcppt/container/grid/dim_fwd.hpp
+	include/fcppt/container/grid/end_position.hpp
 	include/fcppt/container/grid/exception.hpp
 	include/fcppt/container/grid/fill.hpp
 	include/fcppt/container/grid/impl/exception.hpp
@@ -394,10 +396,14 @@ set(
 	include/fcppt/container/grid/make_pos_range.hpp
 	include/fcppt/container/grid/make_pos_range_start_end.hpp
 	include/fcppt/container/grid/make_spiral_range.hpp
+	include/fcppt/container/grid/min.hpp
+	include/fcppt/container/grid/min_fwd.hpp
+	include/fcppt/container/grid/min_tag.hpp
 	include/fcppt/container/grid/moore_neighbor_array.hpp
 	include/fcppt/container/grid/moore_neighbors.hpp
 	include/fcppt/container/grid/neumann_neighbor_array.hpp
 	include/fcppt/container/grid/neumann_neighbors.hpp
+	include/fcppt/container/grid/next_position.hpp
 	include/fcppt/container/grid/object.hpp
 	include/fcppt/container/grid/object_decl.hpp
 	include/fcppt/container/grid/object_fwd.hpp
@@ -412,6 +418,9 @@ set(
 	include/fcppt/container/grid/pos_range_decl.hpp
 	include/fcppt/container/grid/pos_range_fwd.hpp
 	include/fcppt/container/grid/pos_range_impl.hpp
+	include/fcppt/container/grid/pos_ref_iterator_decl.hpp
+	include/fcppt/container/grid/pos_ref_iterator_fwd.hpp
+	include/fcppt/container/grid/pos_ref_iterator_impl.hpp
 	include/fcppt/container/grid/pos_reference_decl.hpp
 	include/fcppt/container/grid/pos_reference_fwd.hpp
 	include/fcppt/container/grid/pos_reference_impl.hpp
@@ -424,6 +433,9 @@ set(
 	include/fcppt/container/grid/spiral_range_decl.hpp
 	include/fcppt/container/grid/spiral_range_fwd.hpp
 	include/fcppt/container/grid/spiral_range_impl.hpp
+	include/fcppt/container/grid/sup.hpp
+	include/fcppt/container/grid/sup_fwd.hpp
+	include/fcppt/container/grid/sup_tag.hpp
 	include/fcppt/container/impl/exception.hpp
 	include/fcppt/container/impl/not_found.hpp
 	include/fcppt/container/impl/out_of_range.hpp

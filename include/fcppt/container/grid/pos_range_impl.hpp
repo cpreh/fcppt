@@ -7,10 +7,17 @@
 #ifndef FCPPT_CONTAINER_GRID_POS_RANGE_IMPL_HPP_INCLUDED
 #define FCPPT_CONTAINER_GRID_POS_RANGE_IMPL_HPP_INCLUDED
 
+#include <fcppt/algorithm/contains_if.hpp>
+#include <fcppt/container/grid/end_position.hpp>
 #include <fcppt/container/grid/object_impl.hpp>
 #include <fcppt/container/grid/pos.hpp>
 #include <fcppt/container/grid/pos_range_decl.hpp>
 #include <fcppt/container/grid/pos_ref_iterator_impl.hpp>
+#include <fcppt/container/grid/size_type.hpp>
+#include <fcppt/config/external_begin.hpp>
+#include <boost/range/combine.hpp>
+#include <boost/tuple/tuple.hpp>
+#include <fcppt/config/external_end.hpp>
 
 
 template<
@@ -20,18 +27,18 @@ fcppt::container::grid::pos_range<
 	Grid
 >::pos_range(
 	Grid &_grid,
-	pos const &_start,
-	pos const &_end
+	min const _min,
+	sup const _sup
 )
 :
 	grid_(
 		_grid
 	),
-	start_(
-		_start
+	min_(
+		_min
 	),
-	end_(
-		_end
+	sup_(
+		_sup
 	)
 {
 }
@@ -49,8 +56,7 @@ fcppt::container::grid::pos_range<
 {
 	return
 		this->make_iterator(
-			start_,
-			false
+			min_.get()
 		);
 }
 
@@ -65,12 +71,43 @@ fcppt::container::grid::pos_range<
 	Grid
 >::end() const
 {
-
 	return
-		this->make_iterator(
-			end_,
-			true
-		);
+		fcppt::algorithm::contains_if(
+			boost::range::combine(
+				min_.get(),
+				sup_.get()
+			),
+			[](
+				boost::tuple<
+					fcppt::container::grid::size_type,
+					fcppt::container::grid::size_type
+				> const _val
+			)
+			{
+				return
+					boost::get<
+						0
+					>(
+						_val
+					)
+					>=
+					boost::get<
+						1
+					>(
+						_val
+					);
+			}
+		)
+		?
+			this->begin()
+		:
+			this->make_iterator(
+				fcppt::container::grid::end_position(
+					min_,
+					sup_
+				)
+			)
+		;
 }
 
 template<
@@ -83,8 +120,7 @@ fcppt::container::grid::pos_range<
 fcppt::container::grid::pos_range<
 	Grid
 >::make_iterator(
-	pos const &_pos,
-	bool const _is_end
+	pos const _pos
 ) const
 {
 	return
@@ -92,9 +128,8 @@ fcppt::container::grid::pos_range<
 			grid_.begin(),
 			grid_.size(),
 			_pos,
-			start_,
-			end_,
-			_is_end
+			min_,
+			sup_
 		);
 }
 

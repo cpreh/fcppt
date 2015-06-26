@@ -8,10 +8,12 @@
 #define FCPPT_CONTAINER_GRID_POS_RANGE_DECL_HPP_INCLUDED
 
 #include <fcppt/nonassignable.hpp>
+#include <fcppt/container/grid/min.hpp>
 #include <fcppt/container/grid/object_decl.hpp>
 #include <fcppt/container/grid/pos.hpp>
 #include <fcppt/container/grid/pos_range_fwd.hpp>
 #include <fcppt/container/grid/pos_ref_iterator_fwd.hpp>
+#include <fcppt/container/grid/sup.hpp>
 
 
 namespace fcppt
@@ -47,10 +49,26 @@ public:
 	>
 	iterator;
 
+	typedef
+	fcppt::container::grid::min<
+		typename
+		Grid::size_type,
+		Grid::static_size::value
+	>
+	min;
+
+	typedef
+	fcppt::container::grid::sup<
+		typename
+		Grid::size_type,
+		Grid::static_size::value
+	>
+	sup;
+
 	pos_range(
 		Grid &,
-		pos const &start,
-		pos const &end
+		min,
+		sup
 	);
 
 	iterator
@@ -58,18 +76,19 @@ public:
 
 	iterator
 	end() const;
+
+	// TODO: Add size here!
 private:
 	iterator
 	make_iterator(
-		pos const &,
-		bool is_end
+		pos
 	) const;
 
 	Grid &grid_;
 
-	pos const start_;
+	min const min_;
 
-	pos const end_;
+	sup const sup_;
 };
 
 }

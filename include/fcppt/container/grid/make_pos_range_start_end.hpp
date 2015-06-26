@@ -24,6 +24,7 @@ namespace grid
 template<
 	typename Grid
 >
+inline
 fcppt::container::grid::pos_range<
 	Grid
 > const
@@ -42,13 +43,23 @@ make_pos_range_start_end(
 		"Grid must be a grid::object"
 	);
 
+	typedef
+	fcppt::container::grid::pos_range<
+		Grid
+	>
+	result_type;
+
 	return
-		fcppt::container::grid::pos_range<
-			Grid
-		>(
+		result_type(
 			_grid,
-			_start,
-			_end
+			typename
+			result_type::min(
+				_start
+			),
+			typename
+			result_type::sup(
+				_end
+			)
 		);
 }
 

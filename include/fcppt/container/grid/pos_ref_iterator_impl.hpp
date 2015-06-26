@@ -9,6 +9,7 @@
 
 #include <fcppt/cast/to_signed.hpp>
 #include <fcppt/container/grid/dim.hpp>
+#include <fcppt/container/grid/next_position.hpp>
 #include <fcppt/container/grid/object_impl.hpp>
 #include <fcppt/container/grid/pos.hpp>
 #include <fcppt/container/grid/pos_ref_iterator_decl.hpp>
@@ -23,11 +24,10 @@ fcppt::container::grid::pos_ref_iterator<
 	Grid
 >::pos_ref_iterator(
 	iterator const &_iterator,
-	dim const &_size,
-	pos const &_current,
-	pos const &_min,
-	pos const &_max,
-	bool const _is_end
+	dim const _size,
+	pos const _current,
+	min const _min,
+	sup const _sup
 )
 :
 	iterator_(
@@ -42,11 +42,8 @@ fcppt::container::grid::pos_ref_iterator<
 	min_(
 		_min
 	),
-	max_(
-		_max
-	),
-	is_end_(
-		_is_end
+	sup_(
+		_sup
 	)
 {
 }
@@ -59,17 +56,12 @@ fcppt::container::grid::pos_ref_iterator<
 	Grid
 >::increment()
 {
-	// TODO: Generalize this!
-	if(
-		++current_.x()
-		==
-		max_.x()
-	)
-	{
-		current_.x() = min_.x();
-
-		++current_.y();
-	}
+	current_ =
+		fcppt::container::grid::next_position(
+			current_,
+			min_,
+			sup_
+		);
 }
 
 template<
@@ -111,21 +103,9 @@ fcppt::container::grid::pos_ref_iterator<
 ) const
 {
 	return
-		is_end_
-		!=
-		_other.is_end_
-		?
-			current_.x()
-			==
-			_other.current_.x()
-			||
-			current_.y()
-			==
-			_other.current_.y()
-		:
-			current_
-			==
-			_other.current_;
+		current_
+		==
+		_other.current_;
 }
 
 #endif

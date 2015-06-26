@@ -211,6 +211,14 @@ add_fcppt_test(
 )
 
 add_fcppt_test(
+	container/grid/pos_range
+)
+
+add_fcppt_test(
+	container/grid/pos_ref_range
+)
+
+add_fcppt_test(
 	container/grid/spiral_range
 )
 
