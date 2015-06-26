@@ -171,22 +171,6 @@ public:
 		const_reference r
 	);
 
-	/**
-	\brief Constructs a grid from an iterator range
-	\tparam In forward iterator type
-	\param d The size of the grid
-	\param beg The begining of the iterator range
-	\param end One past the end of the iterator range
-	*/
-	template<
-		typename In
-	>
-	object(
-		dim const &d,
-		In beg,
-		In end
-	);
-
 	object(
 		object const &
 	);

@@ -27,7 +27,6 @@
 #include <iterator>
 #include <numeric>
 #include <utility>
-#include <vector>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -128,39 +127,6 @@ FCPPT_PP_POP_WARNING
 			42
 		)
 		== 200
-	);
-}
-
-FCPPT_PP_PUSH_WARNING
-FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
-
-BOOST_AUTO_TEST_CASE(
-	container_grid_iterator
-)
-{
-FCPPT_PP_POP_WARNING
-
-	typedef std::vector<
-		int
-	> int_vector;
-
-	int_vector const vec(10, 42);
-
-	int2_grid const test(
-		int2_grid::dim(
-			5,
-			2
-		),
-		vec.begin(),
-		vec.end()
-	);
-
-	BOOST_REQUIRE(
-		std::count(
-			test.begin(),
-			test.end(),
-			42
-		) == 10
 	);
 }
 
