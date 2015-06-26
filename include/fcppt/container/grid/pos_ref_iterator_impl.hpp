@@ -4,14 +4,14 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_CONTAINER_GRID_POS_ITERATOR_IMPL_HPP_INCLUDED
-#define FCPPT_CONTAINER_GRID_POS_ITERATOR_IMPL_HPP_INCLUDED
+#ifndef FCPPT_CONTAINER_GRID_POS_REF_ITERATOR_IMPL_HPP_INCLUDED
+#define FCPPT_CONTAINER_GRID_POS_REF_ITERATOR_IMPL_HPP_INCLUDED
 
 #include <fcppt/cast/to_signed.hpp>
 #include <fcppt/container/grid/dim.hpp>
 #include <fcppt/container/grid/object_impl.hpp>
 #include <fcppt/container/grid/pos.hpp>
-#include <fcppt/container/grid/pos_iterator_decl.hpp>
+#include <fcppt/container/grid/pos_ref_iterator_decl.hpp>
 #include <fcppt/container/grid/pos_reference_impl.hpp>
 #include <fcppt/math/vector/comparison.hpp>
 
@@ -19,9 +19,9 @@
 template<
 	typename Grid
 >
-fcppt::container::grid::pos_iterator<
+fcppt::container::grid::pos_ref_iterator<
 	Grid
->::pos_iterator(
+>::pos_ref_iterator(
 	iterator const &_iterator,
 	dim const &_size,
 	pos const &_current,
@@ -55,7 +55,7 @@ template<
 	typename Grid
 >
 void
-fcppt::container::grid::pos_iterator<
+fcppt::container::grid::pos_ref_iterator<
 	Grid
 >::increment()
 {
@@ -76,10 +76,10 @@ template<
 	typename Grid
 >
 typename
-fcppt::container::grid::pos_iterator<
+fcppt::container::grid::pos_ref_iterator<
 	Grid
 >::reference
-fcppt::container::grid::pos_iterator<
+fcppt::container::grid::pos_ref_iterator<
 	Grid
 >::dereference() const
 {
@@ -104,10 +104,10 @@ template<
 	typename Grid
 >
 bool
-fcppt::container::grid::pos_iterator<
+fcppt::container::grid::pos_ref_iterator<
 	Grid
 >::equal(
-	pos_iterator const &_other
+	pos_ref_iterator const &_other
 ) const
 {
 	return

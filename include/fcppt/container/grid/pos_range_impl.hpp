@@ -9,8 +9,8 @@
 
 #include <fcppt/container/grid/object_impl.hpp>
 #include <fcppt/container/grid/pos.hpp>
-#include <fcppt/container/grid/pos_iterator_impl.hpp>
 #include <fcppt/container/grid/pos_range_decl.hpp>
+#include <fcppt/container/grid/pos_ref_iterator_impl.hpp>
 
 
 template<

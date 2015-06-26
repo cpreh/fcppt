@@ -10,8 +10,8 @@
 #include <fcppt/nonassignable.hpp>
 #include <fcppt/container/grid/object_decl.hpp>
 #include <fcppt/container/grid/pos.hpp>
-#include <fcppt/container/grid/pos_iterator_fwd.hpp>
 #include <fcppt/container/grid/pos_range_fwd.hpp>
+#include <fcppt/container/grid/pos_ref_iterator_fwd.hpp>
 
 
 namespace fcppt
@@ -42,7 +42,7 @@ public:
 	pos;
 
 	typedef
-	fcppt::container::grid::pos_iterator<
+	fcppt::container::grid::pos_ref_iterator<
 		Grid
 	>
 	iterator;

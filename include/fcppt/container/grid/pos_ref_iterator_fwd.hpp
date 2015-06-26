@@ -4,8 +4,8 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_CONTAINER_GRID_POS_ITERATOR_FWD_HPP_INCLUDED
-#define FCPPT_CONTAINER_GRID_POS_ITERATOR_FWD_HPP_INCLUDED
+#ifndef FCPPT_CONTAINER_GRID_POS_REF_ITERATOR_FWD_HPP_INCLUDED
+#define FCPPT_CONTAINER_GRID_POS_REF_ITERATOR_FWD_HPP_INCLUDED
 
 
 namespace fcppt
@@ -18,7 +18,7 @@ namespace grid
 template<
 	typename Grid
 >
-class pos_iterator;
+class pos_ref_iterator;
 
 }
 }

@@ -4,10 +4,10 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_CONTAINER_GRID_DETAIL_POS_ITERATOR_BASE_HPP_INCLUDED
-#define FCPPT_CONTAINER_GRID_DETAIL_POS_ITERATOR_BASE_HPP_INCLUDED
+#ifndef FCPPT_CONTAINER_GRID_DETAIL_POS_REF_ITERATOR_BASE_HPP_INCLUDED
+#define FCPPT_CONTAINER_GRID_DETAIL_POS_REF_ITERATOR_BASE_HPP_INCLUDED
 
-#include <fcppt/container/grid/pos_iterator_fwd.hpp>
+#include <fcppt/container/grid/pos_ref_iterator_fwd.hpp>
 #include <fcppt/container/grid/pos_reference_fwd.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/iterator/iterator_facade.hpp>
@@ -27,10 +27,10 @@ namespace detail
 template<
 	typename Grid
 >
-using pos_iterator_base
+using pos_ref_iterator_base
 =
 boost::iterator_facade<
-	fcppt::container::grid::pos_iterator<
+	fcppt::container::grid::pos_ref_iterator<
 		Grid
 	>,
 	typename
