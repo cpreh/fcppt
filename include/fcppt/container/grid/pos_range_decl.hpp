@@ -4,14 +4,14 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_CONTAINER_GRID_POS_REF_RANGE_DECL_HPP_INCLUDED
-#define FCPPT_CONTAINER_GRID_POS_REF_RANGE_DECL_HPP_INCLUDED
+#ifndef FCPPT_CONTAINER_GRID_POS_RANGE_DECL_HPP_INCLUDED
+#define FCPPT_CONTAINER_GRID_POS_RANGE_DECL_HPP_INCLUDED
 
 #include <fcppt/nonassignable.hpp>
-#include <fcppt/container/grid/object_decl.hpp>
 #include <fcppt/container/grid/pos.hpp>
-#include <fcppt/container/grid/pos_ref_range_fwd.hpp>
-#include <fcppt/container/grid/pos_ref_iterator_fwd.hpp>
+#include <fcppt/container/grid/pos_iterator_fwd.hpp>
+#include <fcppt/container/grid/pos_range_fwd.hpp>
+#include <fcppt/container/grid/size_type.hpp>
 
 
 namespace fcppt
@@ -22,24 +22,24 @@ namespace grid
 {
 
 template<
-	typename Grid
+	fcppt::container::grid::size_type Size
 >
-class pos_ref_range
+class pos_range
 {
 	FCPPT_NONASSIGNABLE(
-		pos_ref_range
+		pos_range
 	);
 public:
 	typedef
-	typename
-	Grid::pos
-	pos;
-
-	typedef
-	fcppt::container::grid::pos_ref_iterator<
-		Grid
+	fcppt::container::grid::pos_iterator<
+		Size
 	>
 	iterator;
+
+	typedef
+	typename
+	iterator::value_type
+	pos;
 
 	typedef
 	typename
@@ -51,8 +51,7 @@ public:
 	iterator::sup
 	sup;
 
-	pos_ref_range(
-		Grid &,
+	pos_range(
 		min,
 		sup
 	);
@@ -69,8 +68,6 @@ private:
 	make_iterator(
 		pos
 	) const;
-
-	Grid &grid_;
 
 	min const min_;
 

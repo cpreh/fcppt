@@ -4,30 +4,26 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_CONTAINER_GRID_POS_REF_RANGE_IMPL_HPP_INCLUDED
-#define FCPPT_CONTAINER_GRID_POS_REF_RANGE_IMPL_HPP_INCLUDED
+#ifndef FCPPT_CONTAINER_GRID_POS_RANGE_IMPL_HPP_INCLUDED
+#define FCPPT_CONTAINER_GRID_POS_RANGE_IMPL_HPP_INCLUDED
 
 #include <fcppt/container/grid/end_position.hpp>
-#include <fcppt/container/grid/object_impl.hpp>
 #include <fcppt/container/grid/pos.hpp>
-#include <fcppt/container/grid/pos_ref_range_decl.hpp>
-#include <fcppt/container/grid/pos_ref_iterator_impl.hpp>
+#include <fcppt/container/grid/pos_iterator_impl.hpp>
+#include <fcppt/container/grid/pos_range_decl.hpp>
+#include <fcppt/container/grid/size_type.hpp>
 
 
 template<
-	typename Grid
+	fcppt::container::grid::size_type Size
 >
-fcppt::container::grid::pos_ref_range<
-	Grid
->::pos_ref_range(
-	Grid &_grid,
+fcppt::container::grid::pos_range<
+	Size
+>::pos_range(
 	min const _min,
 	sup const _sup
 )
 :
-	grid_(
-		_grid
-	),
 	min_(
 		_min
 	),
@@ -38,14 +34,14 @@ fcppt::container::grid::pos_ref_range<
 }
 
 template<
-	typename Grid
+	fcppt::container::grid::size_type Size
 >
 typename
-fcppt::container::grid::pos_ref_range<
-	Grid
+fcppt::container::grid::pos_range<
+	Size
 >::iterator
-fcppt::container::grid::pos_ref_range<
-	Grid
+fcppt::container::grid::pos_range<
+	Size
 >::begin() const
 {
 	return
@@ -55,14 +51,14 @@ fcppt::container::grid::pos_ref_range<
 }
 
 template<
-	typename Grid
+	fcppt::container::grid::size_type Size
 >
 typename
-fcppt::container::grid::pos_ref_range<
-	Grid
+fcppt::container::grid::pos_range<
+	Size
 >::iterator
-fcppt::container::grid::pos_ref_range<
-	Grid
+fcppt::container::grid::pos_range<
+	Size
 >::end() const
 {
 	return
@@ -75,22 +71,20 @@ fcppt::container::grid::pos_ref_range<
 }
 
 template<
-	typename Grid
+	fcppt::container::grid::size_type Size
 >
 typename
-fcppt::container::grid::pos_ref_range<
-	Grid
+fcppt::container::grid::pos_range<
+	Size
 >::iterator
-fcppt::container::grid::pos_ref_range<
-	Grid
+fcppt::container::grid::pos_range<
+	Size
 >::make_iterator(
 	pos const _pos
 ) const
 {
 	return
 		iterator(
-			grid_.begin(),
-			grid_.size(),
 			_pos,
 			min_,
 			sup_
