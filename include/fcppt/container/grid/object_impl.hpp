@@ -119,31 +119,6 @@ template<
 	fcppt::container::grid::size_type N,
 	typename A
 >
-template<
-	typename Range
->
-fcppt::container::grid::object<
-	T,
-	N,
-	A
->::object(
-	dim const &_size,
-	Range const &_range
-)
-:
-	object(
-		_size,
-		_range.begin(),
-		_range.end()
-	)
-{
-}
-
-template<
-	typename T,
-	fcppt::container::grid::size_type N,
-	typename A
->
 fcppt::container::grid::object<
 	T,
 	N,
