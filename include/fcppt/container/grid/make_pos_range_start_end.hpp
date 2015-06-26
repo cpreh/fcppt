@@ -8,7 +8,7 @@
 #define FCPPT_CONTAINER_GRID_MAKE_POS_RANGE_START_END_HPP_INCLUDED
 
 #include <fcppt/container/grid/is_object.hpp>
-#include <fcppt/container/grid/pos_range_impl.hpp>
+#include <fcppt/container/grid/pos_ref_range_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
@@ -25,7 +25,7 @@ template<
 	typename Grid
 >
 inline
-fcppt::container::grid::pos_range<
+fcppt::container::grid::pos_ref_range<
 	Grid
 > const
 make_pos_range_start_end(
@@ -44,7 +44,7 @@ make_pos_range_start_end(
 	);
 
 	typedef
-	fcppt::container::grid::pos_range<
+	fcppt::container::grid::pos_ref_range<
 		Grid
 	>
 	result_type;

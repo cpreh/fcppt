@@ -50,6 +50,14 @@ next_position(
 		_current
 	};
 
+	static_assert(
+		Size
+		==
+		2,
+		"Sorry, this only works with two dimensional grids for now"
+	);
+
+
 	// TODO: Generalize this!
 	if(
 		++result.x()

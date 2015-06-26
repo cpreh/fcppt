@@ -4,14 +4,14 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_CONTAINER_GRID_POS_RANGE_IMPL_HPP_INCLUDED
-#define FCPPT_CONTAINER_GRID_POS_RANGE_IMPL_HPP_INCLUDED
+#ifndef FCPPT_CONTAINER_GRID_POS_REF_RANGE_IMPL_HPP_INCLUDED
+#define FCPPT_CONTAINER_GRID_POS_REF_RANGE_IMPL_HPP_INCLUDED
 
 #include <fcppt/algorithm/contains_if.hpp>
 #include <fcppt/container/grid/end_position.hpp>
 #include <fcppt/container/grid/object_impl.hpp>
 #include <fcppt/container/grid/pos.hpp>
-#include <fcppt/container/grid/pos_range_decl.hpp>
+#include <fcppt/container/grid/pos_ref_range_decl.hpp>
 #include <fcppt/container/grid/pos_ref_iterator_impl.hpp>
 #include <fcppt/container/grid/size_type.hpp>
 #include <fcppt/config/external_begin.hpp>
@@ -23,9 +23,9 @@
 template<
 	typename Grid
 >
-fcppt::container::grid::pos_range<
+fcppt::container::grid::pos_ref_range<
 	Grid
->::pos_range(
+>::pos_ref_range(
 	Grid &_grid,
 	min const _min,
 	sup const _sup
@@ -47,10 +47,10 @@ template<
 	typename Grid
 >
 typename
-fcppt::container::grid::pos_range<
+fcppt::container::grid::pos_ref_range<
 	Grid
 >::iterator
-fcppt::container::grid::pos_range<
+fcppt::container::grid::pos_ref_range<
 	Grid
 >::begin() const
 {
@@ -64,10 +64,10 @@ template<
 	typename Grid
 >
 typename
-fcppt::container::grid::pos_range<
+fcppt::container::grid::pos_ref_range<
 	Grid
 >::iterator
-fcppt::container::grid::pos_range<
+fcppt::container::grid::pos_ref_range<
 	Grid
 >::end() const
 {
@@ -114,10 +114,10 @@ template<
 	typename Grid
 >
 typename
-fcppt::container::grid::pos_range<
+fcppt::container::grid::pos_ref_range<
 	Grid
 >::iterator
-fcppt::container::grid::pos_range<
+fcppt::container::grid::pos_ref_range<
 	Grid
 >::make_iterator(
 	pos const _pos

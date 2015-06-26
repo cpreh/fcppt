@@ -4,14 +4,14 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_CONTAINER_GRID_POS_RANGE_DECL_HPP_INCLUDED
-#define FCPPT_CONTAINER_GRID_POS_RANGE_DECL_HPP_INCLUDED
+#ifndef FCPPT_CONTAINER_GRID_POS_REF_RANGE_DECL_HPP_INCLUDED
+#define FCPPT_CONTAINER_GRID_POS_REF_RANGE_DECL_HPP_INCLUDED
 
 #include <fcppt/nonassignable.hpp>
 #include <fcppt/container/grid/min.hpp>
 #include <fcppt/container/grid/object_decl.hpp>
 #include <fcppt/container/grid/pos.hpp>
-#include <fcppt/container/grid/pos_range_fwd.hpp>
+#include <fcppt/container/grid/pos_ref_range_fwd.hpp>
 #include <fcppt/container/grid/pos_ref_iterator_fwd.hpp>
 #include <fcppt/container/grid/sup.hpp>
 
@@ -26,18 +26,12 @@ namespace grid
 template<
 	typename Grid
 >
-class pos_range
+class pos_ref_range
 {
 	FCPPT_NONASSIGNABLE(
-		pos_range
+		pos_ref_range
 	);
 public:
-	static_assert(
-		Grid::dim::dim_wrapper::value
-		== 2,
-		"Sorry, this only works with two dimensional grids for now"
-	);
-
 	typedef
 	typename
 	Grid::pos
@@ -65,7 +59,7 @@ public:
 	>
 	sup;
 
-	pos_range(
+	pos_ref_range(
 		Grid &,
 		min,
 		sup
