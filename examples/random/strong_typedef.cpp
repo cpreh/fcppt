@@ -5,6 +5,7 @@
 
 
 #include <fcppt/strong_typedef.hpp>
+#include <fcppt/strong_typedef_output.hpp>
 #include <fcppt/text.hpp>
 #include <fcppt/io/cout.hpp>
 #include <fcppt/random/variate.hpp>

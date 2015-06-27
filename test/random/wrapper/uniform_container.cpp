@@ -4,6 +4,7 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
+#include <fcppt/strong_typedef_output.hpp>
 #include <fcppt/algorithm/contains.hpp>
 #include <fcppt/assert/optional_error.hpp>
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>

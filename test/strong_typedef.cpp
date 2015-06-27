@@ -6,6 +6,8 @@
 
 #include <fcppt/make_unique_ptr_fcppt.hpp>
 #include <fcppt/strong_typedef.hpp>
+#include <fcppt/strong_typedef_input.hpp>
+#include <fcppt/strong_typedef_output.hpp>
 #include <fcppt/unique_ptr.hpp>
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
