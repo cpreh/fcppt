@@ -9,10 +9,10 @@
 
 #include <fcppt/container/to_iterator_type.hpp>
 #include <fcppt/container/grid/dim.hpp>
-#include <fcppt/container/grid/min.hpp>
+#include <fcppt/container/grid/min_from_object.hpp>
 #include <fcppt/container/grid/object_decl.hpp>
 #include <fcppt/container/grid/pos_ref_iterator_fwd.hpp>
-#include <fcppt/container/grid/sup.hpp>
+#include <fcppt/container/grid/sup_from_object.hpp>
 #include <fcppt/container/grid/detail/pos_ref_iterator_base.hpp>
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
@@ -90,18 +90,14 @@ public:
 	difference_type;
 
 	typedef
-	fcppt::container::grid::min<
-		typename
-		Grid::size_type,
-		Grid::static_size::value
+	fcppt::container::grid::min_from_object<
+		Grid
 	>
 	min;
 
 	typedef
-	fcppt::container::grid::sup<
-		typename
-		Grid::size_type,
-		Grid::static_size::value
+	fcppt::container::grid::sup_from_object<
+		Grid
 	>
 	sup;
 

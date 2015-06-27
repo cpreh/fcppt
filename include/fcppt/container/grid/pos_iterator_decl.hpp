@@ -32,17 +32,20 @@ FCPPT_PP_PUSH_WARNING
 FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
 
 template<
+	typename SizeType,
 	fcppt::container::grid::size_type Size
 >
 class pos_iterator final
 :
 	public
 		fcppt::container::grid::detail::pos_iterator_base<
+			SizeType,
 			Size
 		>
 {
 	typedef
 	fcppt::container::grid::detail::pos_iterator_base<
+		SizeType,
 		Size
 	>
 	base_type;

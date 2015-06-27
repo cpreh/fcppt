@@ -14,9 +14,11 @@
 
 
 template<
+	typename SizeType,
 	fcppt::container::grid::size_type Size
 >
 fcppt::container::grid::pos_iterator<
+	SizeType,
 	Size
 >::pos_iterator(
 	pos const _current,
@@ -37,10 +39,12 @@ fcppt::container::grid::pos_iterator<
 }
 
 template<
+	typename SizeType,
 	fcppt::container::grid::size_type Size
 >
 void
 fcppt::container::grid::pos_iterator<
+	SizeType,
 	Size
 >::increment()
 {
@@ -53,13 +57,16 @@ fcppt::container::grid::pos_iterator<
 }
 
 template<
+	typename SizeType,
 	fcppt::container::grid::size_type Size
 >
 typename
 fcppt::container::grid::pos_iterator<
+	SizeType,
 	Size
 >::reference
 fcppt::container::grid::pos_iterator<
+	SizeType,
 	Size
 >::dereference() const
 {
@@ -68,10 +75,12 @@ fcppt::container::grid::pos_iterator<
 }
 
 template<
+	typename SizeType,
 	fcppt::container::grid::size_type Size
 >
 bool
 fcppt::container::grid::pos_iterator<
+	SizeType,
 	Size
 >::equal(
 	pos_iterator const &_other

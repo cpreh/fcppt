@@ -7,8 +7,10 @@
 #ifndef FCPPT_CONTAINER_GRID_OBJECT_IMPL_HPP_INCLUDED
 #define FCPPT_CONTAINER_GRID_OBJECT_IMPL_HPP_INCLUDED
 
+#include <fcppt/algorithm/map.hpp>
 #include <fcppt/container/raw_vector_impl.hpp>
 #include <fcppt/container/grid/dim.hpp>
+#include <fcppt/container/grid/make_pos_range.hpp>
 #include <fcppt/container/grid/object_decl.hpp>
 #include <fcppt/container/grid/pos.hpp>
 #include <fcppt/container/grid/size_type.hpp>
@@ -79,6 +81,39 @@ fcppt::container::grid::object<
 	container_(
 		_size.content(),
 		_value
+	),
+	size_(
+		_size
+	)
+{
+}
+
+template<
+	typename T,
+	fcppt::container::grid::size_type N,
+	typename A
+>
+template<
+	typename Function
+>
+fcppt::container::grid::object<
+	T,
+	N,
+	A
+>::object(
+	dim const &_size,
+	Function const &_function
+)
+:
+	container_(
+		fcppt::algorithm::map<
+			container
+		>(
+			fcppt::container::grid::make_pos_range(
+				_size
+			),
+			_function
+		)
 	),
 	size_(
 		_size
@@ -316,7 +351,8 @@ fcppt::container::grid::object<
 	A
 >::size() const
 {
-	return size_;
+	return
+		size_;
 }
 
 template<
@@ -335,7 +371,8 @@ fcppt::container::grid::object<
 	A
 >::content() const
 {
-	return size_.content();
+	return
+		size_.content();
 }
 
 template<
@@ -350,7 +387,8 @@ fcppt::container::grid::object<
 	A
 >::empty() const
 {
-	return size_.empty();
+	return
+		size_.empty();
 }
 
 template<
@@ -372,7 +410,8 @@ fcppt::container::grid::object<
 		_size
 	);
 
-	size_ = _size;
+	size_ =
+		_size;
 }
 
 template<
@@ -395,7 +434,8 @@ fcppt::container::grid::object<
 		_value
 	);
 
-	size_ = _size;
+	size_ =
+		_size;
 }
 
 template<
@@ -515,7 +555,8 @@ fcppt::container::grid::object<
 	A
 >::begin()
 {
-	return container_.begin();
+	return
+		container_.begin();
 }
 
 template<
@@ -534,7 +575,8 @@ fcppt::container::grid::object<
 	A
 >::begin() const
 {
-	return container_.begin();
+	return
+		container_.begin();
 }
 
 template<
@@ -553,7 +595,8 @@ fcppt::container::grid::object<
 	A
 >::cbegin() const
 {
-	return container_.begin();
+	return
+		container_.begin();
 }
 
 template<
@@ -572,7 +615,8 @@ fcppt::container::grid::object<
 	A
 >::end()
 {
-	return container_.end();
+	return
+		container_.end();
 }
 
 template<
@@ -591,7 +635,8 @@ fcppt::container::grid::object<
 	A
 >::end() const
 {
-	return container_.end();
+	return
+		container_.end();
 }
 
 template<
@@ -610,7 +655,8 @@ fcppt::container::grid::object<
 	A
 >::cend() const
 {
-	return container_.end();
+	return
+		container_.end();
 }
 
 template<
@@ -629,7 +675,8 @@ fcppt::container::grid::object<
 	A
 >::rbegin()
 {
-	return container_.rbegin();
+	return
+		container_.rbegin();
 }
 
 template<
@@ -648,7 +695,8 @@ fcppt::container::grid::object<
 	A
 >::rbegin() const
 {
-	return container_.rend();
+	return
+		container_.rend();
 }
 
 template<
@@ -667,7 +715,8 @@ fcppt::container::grid::object<
 	A
 >::crbegin() const
 {
-	return container_.rbegin();
+	return
+		container_.rbegin();
 }
 
 template<
@@ -686,7 +735,8 @@ fcppt::container::grid::object<
 	A
 >::rend()
 {
-	return container_.rend();
+	return
+		container_.rend();
 }
 
 template<
@@ -705,7 +755,8 @@ fcppt::container::grid::object<
 	A
 >::rend() const
 {
-	return container_.rend();
+	return
+		container_.rend();
 }
 
 template<
@@ -724,7 +775,8 @@ fcppt::container::grid::object<
 	A
 >::crend() const
 {
-	return container_.rend();
+	return
+		container_.rend();
 }
 
 template<

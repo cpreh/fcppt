@@ -178,6 +178,21 @@ public:
 		const_reference r
 	);
 
+	/**
+	\brief Initialize the grid by calling a function for every element
+
+	Calls \a function for every position in the grid.
+
+	\tparam Function A function of type <code>value_type (pos)</code>
+	*/
+	template<
+		typename Function
+	>
+	object(
+		dim const &size,
+		Function const &function
+	);
+
 	object(
 		object const &
 	);

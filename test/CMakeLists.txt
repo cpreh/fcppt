@@ -181,12 +181,6 @@ add_fcppt_test(
 )
 
 add_fcppt_test(
-	container/grid
-	LINK_LIBS
-		"${fcppt_core_TARGET}"
-)
-
-add_fcppt_test(
 	container/grid/at_optional
 )
 
@@ -203,6 +197,18 @@ add_fcppt_test(
 )
 
 add_fcppt_test(
+	container/grid/comparison
+)
+
+add_fcppt_test(
+	container/grid/fill
+)
+
+add_fcppt_test(
+	container/grid/in_range
+)
+
+add_fcppt_test(
 	container/grid/moore_neighbors
 )
 
@@ -211,11 +217,33 @@ add_fcppt_test(
 )
 
 add_fcppt_test(
+	container/grid/is_square
+)
+
+add_fcppt_test(
+	container/grid/iterator_position
+)
+
+add_fcppt_test(
+	container/grid/object
+	LINK_LIBS
+		"${fcppt_core_TARGET}"
+)
+
+add_fcppt_test(
 	container/grid/pos_range
 )
 
 add_fcppt_test(
 	container/grid/pos_ref_range
+)
+
+add_fcppt_test(
+	container/grid/resize_preserve
+)
+
+add_fcppt_test(
+	container/grid/resize_preserve_init
 )
 
 add_fcppt_test(

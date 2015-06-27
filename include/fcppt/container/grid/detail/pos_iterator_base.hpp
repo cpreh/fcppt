@@ -12,8 +12,8 @@
 #include <fcppt/container/grid/size_type.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/iterator/iterator_facade.hpp>
-#include <cstddef>
 #include <iterator>
+#include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -27,24 +27,29 @@ namespace detail
 {
 
 template<
+	typename SizeType,
 	fcppt::container::grid::size_type Size
 >
 using pos_iterator_base
 =
 boost::iterator_facade<
 	fcppt::container::grid::pos_iterator<
+		SizeType,
 		Size
 	>,
 	fcppt::container::grid::pos<
-		std::size_t,
+		SizeType,
 		Size
 	>,
 	std::forward_iterator_tag,
 	fcppt::container::grid::pos<
-		std::size_t,
+		SizeType,
 		Size
 	>,
-	std::ptrdiff_t
+	typename
+	std::make_signed<
+		SizeType
+	>::type
 >;
 
 }

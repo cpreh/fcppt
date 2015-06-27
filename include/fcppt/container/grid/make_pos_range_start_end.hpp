@@ -7,11 +7,9 @@
 #ifndef FCPPT_CONTAINER_GRID_MAKE_POS_RANGE_START_END_HPP_INCLUDED
 #define FCPPT_CONTAINER_GRID_MAKE_POS_RANGE_START_END_HPP_INCLUDED
 
-#include <fcppt/container/grid/is_object.hpp>
-#include <fcppt/container/grid/pos_ref_range_impl.hpp>
-#include <fcppt/config/external_begin.hpp>
-#include <type_traits>
-#include <fcppt/config/external_end.hpp>
+#include <fcppt/container/grid/min.hpp>
+#include <fcppt/container/grid/pos_range_impl.hpp>
+#include <fcppt/container/grid/sup.hpp>
 
 
 namespace fcppt
@@ -22,44 +20,32 @@ namespace grid
 {
 
 template<
-	typename Grid
+	typename SizeType,
+	fcppt::container::grid::size_type Size
 >
 inline
-fcppt::container::grid::pos_ref_range<
-	Grid
+fcppt::container::grid::pos_range<
+	SizeType,
+	Size
 > const
 make_pos_range_start_end(
-	Grid &_grid,
-	typename Grid::pos const &_start,
-	typename Grid::pos const &_end
+	fcppt::container::grid::min<
+		SizeType,
+		Size
+	> const _min,
+	fcppt::container::grid::sup<
+		SizeType,
+		Size
+	> const _sup
 )
 {
-	static_assert(
-		fcppt::container::grid::is_object<
-			typename std::remove_const<
-				Grid
-			>::type
-		>::value,
-		"Grid must be a grid::object"
-	);
-
-	typedef
-	fcppt::container::grid::pos_ref_range<
-		Grid
-	>
-	result_type;
-
 	return
-		result_type(
-			_grid,
-			typename
-			result_type::min(
-				_start
-			),
-			typename
-			result_type::sup(
-				_end
-			)
+		fcppt::container::grid::pos_range<
+			SizeType,
+			Size
+		>(
+			_min,
+			_sup
 		);
 }
 

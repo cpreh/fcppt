@@ -15,9 +15,11 @@
 
 
 template<
+	typename SizeType,
 	fcppt::container::grid::size_type Size
 >
 fcppt::container::grid::pos_range<
+	SizeType,
 	Size
 >::pos_range(
 	min const _min,
@@ -34,13 +36,16 @@ fcppt::container::grid::pos_range<
 }
 
 template<
+	typename SizeType,
 	fcppt::container::grid::size_type Size
 >
 typename
 fcppt::container::grid::pos_range<
+	SizeType,
 	Size
 >::iterator
 fcppt::container::grid::pos_range<
+	SizeType,
 	Size
 >::begin() const
 {
@@ -51,13 +56,16 @@ fcppt::container::grid::pos_range<
 }
 
 template<
+	typename SizeType,
 	fcppt::container::grid::size_type Size
 >
 typename
 fcppt::container::grid::pos_range<
+	SizeType,
 	Size
 >::iterator
 fcppt::container::grid::pos_range<
+	SizeType,
 	Size
 >::end() const
 {
@@ -71,13 +79,16 @@ fcppt::container::grid::pos_range<
 }
 
 template<
+	typename SizeType,
 	fcppt::container::grid::size_type Size
 >
 typename
 fcppt::container::grid::pos_range<
+	SizeType,
 	Size
 >::iterator
 fcppt::container::grid::pos_range<
+	SizeType,
 	Size
 >::make_iterator(
 	pos const _pos

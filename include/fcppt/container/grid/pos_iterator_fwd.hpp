@@ -18,6 +18,7 @@ namespace grid
 {
 
 template<
+	typename SizeType,
 	fcppt::container::grid::size_type Dim
 >
 class pos_iterator;

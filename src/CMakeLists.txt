@@ -188,12 +188,16 @@ set(
 	include/fcppt/container/grid/is_object.hpp
 	include/fcppt/container/grid/is_square.hpp
 	include/fcppt/container/grid/iterator_position.hpp
-	include/fcppt/container/grid/make_pos_crange.hpp
-	include/fcppt/container/grid/make_pos_crange_start_end.hpp
 	include/fcppt/container/grid/make_pos_range.hpp
 	include/fcppt/container/grid/make_pos_range_start_end.hpp
+	include/fcppt/container/grid/make_pos_ref_crange.hpp
+	include/fcppt/container/grid/make_pos_ref_crange_start_end.hpp
+	include/fcppt/container/grid/make_pos_ref_range.hpp
+	include/fcppt/container/grid/make_pos_ref_range_start_end.hpp
 	include/fcppt/container/grid/make_spiral_range.hpp
 	include/fcppt/container/grid/min.hpp
+	include/fcppt/container/grid/min_from_object.hpp
+	include/fcppt/container/grid/min_from_object_fwd.hpp
 	include/fcppt/container/grid/min_fwd.hpp
 	include/fcppt/container/grid/min_tag.hpp
 	include/fcppt/container/grid/moore_neighbor_array.hpp
@@ -234,6 +238,8 @@ set(
 	include/fcppt/container/grid/spiral_range_fwd.hpp
 	include/fcppt/container/grid/spiral_range_impl.hpp
 	include/fcppt/container/grid/sup.hpp
+	include/fcppt/container/grid/sup_from_object.hpp
+	include/fcppt/container/grid/sup_from_object_fwd.hpp
 	include/fcppt/container/grid/sup_fwd.hpp
 	include/fcppt/container/grid/sup_tag.hpp
 	include/fcppt/container/impl/exception.hpp

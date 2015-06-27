@@ -4,12 +4,14 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/container/grid/make_pos_crange.hpp>
-#include <fcppt/container/grid/make_pos_crange_start_end.hpp>
-#include <fcppt/container/grid/make_pos_range.hpp>
-#include <fcppt/container/grid/make_pos_range_start_end.hpp>
+#include <fcppt/container/grid/make_pos_ref_crange.hpp>
+#include <fcppt/container/grid/make_pos_ref_crange_start_end.hpp>
+#include <fcppt/container/grid/make_pos_ref_range.hpp>
+#include <fcppt/container/grid/make_pos_ref_range_start_end.hpp>
+#include <fcppt/container/grid/min_from_object.hpp>
 #include <fcppt/container/grid/object.hpp>
 #include <fcppt/container/grid/pos.hpp>
+#include <fcppt/container/grid/sup_from_object.hpp>
 #include <fcppt/math/vector/comparison.hpp>
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
@@ -42,6 +44,22 @@ FCPPT_PP_POP_WARNING
 	>
 	dim2_grid;
 
+	typedef
+	fcppt::container::grid::min_from_object<
+		dim2_grid
+	>
+	min;
+
+	typedef
+	fcppt::container::grid::sup_from_object<
+		dim2_grid
+	>
+	sup;
+
+	typedef
+	dim2_grid::pos
+	pos;
+
 	dim2_grid grid(
 		dim2_grid::dim(
 			4,
@@ -52,7 +70,7 @@ FCPPT_PP_POP_WARNING
 	for(
 		auto const element
 		:
-		fcppt::container::grid::make_pos_range(
+		fcppt::container::grid::make_pos_ref_range(
 			grid
 		)
 	)
@@ -63,7 +81,7 @@ FCPPT_PP_POP_WARNING
 	for(
 		auto const element
 		:
-		fcppt::container::grid::make_pos_crange(
+		fcppt::container::grid::make_pos_ref_crange(
 			grid
 		)
 	)
@@ -84,16 +102,20 @@ FCPPT_PP_POP_WARNING
 	for(
 		auto const element
 		:
-		fcppt::container::grid::make_pos_range_start_end(
+		fcppt::container::grid::make_pos_ref_range_start_end(
 			grid,
-			dim2_grid::pos(
-				1,
-				1
-			),
-			dim2_grid::pos(
-				3,
-				3
-			)
+			min{
+				pos(
+					1,
+					1
+				)
+			},
+			sup{
+				pos(
+					3,
+					3
+				)
+			}
 		)
 	)
 		element.value()
@@ -103,16 +125,20 @@ FCPPT_PP_POP_WARNING
 	for(
 		auto const element
 		:
-		fcppt::container::grid::make_pos_crange_start_end(
+		fcppt::container::grid::make_pos_ref_crange_start_end(
 			grid,
-			dim2_grid::pos(
-				1,
-				1
-			),
-			dim2_grid::pos(
-				3,
-				3
-			)
+			min{
+				pos(
+					1,
+					1
+				)
+			},
+			sup{
+				pos(
+					3,
+					3
+				)
+			}
 		)
 	)
 		BOOST_CHECK(
@@ -129,10 +155,14 @@ FCPPT_PP_POP_WARNING
 	for(
 		auto const element
 		:
-		fcppt::container::grid::make_pos_range_start_end(
+		fcppt::container::grid::make_pos_ref_range_start_end(
 			grid,
-			dim2_grid::pos::null(),
-			dim2_grid::pos::null()
+			min{
+				pos::null()
+			},
+			sup{
+				pos::null()
+			}
 		)
 	)
 		loop_empty = false;
@@ -144,10 +174,17 @@ FCPPT_PP_POP_WARNING
 	for(
 		auto const element
 		:
-		fcppt::container::grid::make_pos_range_start_end(
+		fcppt::container::grid::make_pos_ref_range_start_end(
 			grid,
-			dim2_grid::pos::null(),
-			dim2_grid::pos(0, 1)
+			min{
+				pos::null()
+			},
+			sup{
+				pos(
+					0,
+					1
+				)
+			}
 		)
 	)
 		loop_empty = false;
@@ -159,10 +196,17 @@ FCPPT_PP_POP_WARNING
 	for(
 		auto const element
 		:
-		fcppt::container::grid::make_pos_range_start_end(
+		fcppt::container::grid::make_pos_ref_range_start_end(
 			grid,
-			dim2_grid::pos::null(),
-			dim2_grid::pos(1, 0)
+			min{
+				pos::null()
+			},
+			sup{
+				pos(
+					1,
+					0
+				)
+			}
 		)
 	)
 		loop_empty = false;

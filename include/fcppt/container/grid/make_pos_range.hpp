@@ -7,8 +7,12 @@
 #ifndef FCPPT_CONTAINER_GRID_MAKE_POS_RANGE_HPP_INCLUDED
 #define FCPPT_CONTAINER_GRID_MAKE_POS_RANGE_HPP_INCLUDED
 
+#include <fcppt/container/grid/dim.hpp>
 #include <fcppt/container/grid/make_pos_range_start_end.hpp>
-#include <fcppt/container/grid/pos_ref_range_impl.hpp>
+#include <fcppt/container/grid/min.hpp>
+#include <fcppt/container/grid/pos.hpp>
+#include <fcppt/container/grid/pos_range_impl.hpp>
+#include <fcppt/container/grid/sup.hpp>
 #include <fcppt/math/dim/to_vector.hpp>
 
 
@@ -20,22 +24,39 @@ namespace grid
 {
 
 template<
-	typename Grid
+	typename SizeType,
+	fcppt::container::grid::size_type Size
 >
 inline
-fcppt::container::grid::pos_ref_range<
-	Grid
+fcppt::container::grid::pos_range<
+	SizeType,
+	Size
 > const
 make_pos_range(
-	Grid &_grid
+	fcppt::container::grid::dim<
+		SizeType,
+		Size
+	> const _size
 )
 {
 	return
 		fcppt::container::grid::make_pos_range_start_end(
-			_grid,
-			Grid::pos::null(),
-			fcppt::math::dim::to_vector(
-				_grid.size()
+			fcppt::container::grid::min<
+				SizeType,
+				Size
+			>(
+				fcppt::container::grid::pos<
+					SizeType,
+					Size
+				>::null()
+			),
+			fcppt::container::grid::sup<
+				SizeType,
+				Size
+			>(
+				fcppt::math::dim::to_vector(
+					_size
+				)
 			)
 		);
 }

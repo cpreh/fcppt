@@ -22,6 +22,7 @@ namespace grid
 {
 
 template<
+	typename SizeType,
 	fcppt::container::grid::size_type Size
 >
 class pos_range
@@ -32,6 +33,7 @@ class pos_range
 public:
 	typedef
 	fcppt::container::grid::pos_iterator<
+		SizeType,
 		Size
 	>
 	iterator;
