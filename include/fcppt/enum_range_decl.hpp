@@ -54,16 +54,23 @@ public:
 	>::type
 	size_type;
 
+	constexpr
 	enum_range(
 		size_type begin,
 		size_type end
 	);
 
+	constexpr
 	iterator
 	begin() const;
 
+	constexpr
 	iterator
 	end() const;
+
+	constexpr
+	size_type
+	size() const;
 private:
 	size_type begin_;
 

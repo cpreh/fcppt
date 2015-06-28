@@ -4,6 +4,7 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
+#include <fcppt/enum_range_impl.hpp>
 #include <fcppt/algorithm/detail/has_reserve.hpp>
 #include <fcppt/algorithm/detail/has_size.hpp>
 #include <fcppt/algorithm/detail/optimize_map.hpp>
@@ -147,6 +148,21 @@ static_assert(
 );
 
 FCPPT_PP_POP_WARNING
+
+enum class test_enum
+{
+	test1,
+	fcppt_maximum = test1
+};
+
+static_assert(
+	source_optimized<
+		fcppt::enum_range<
+			test_enum
+		>
+	>::value,
+	"enum range not optimized"
+);
 
 }
 

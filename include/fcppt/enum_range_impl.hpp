@@ -14,6 +14,7 @@
 template<
 	typename Enum
 >
+constexpr
 fcppt::enum_range<
 	Enum
 >::enum_range(
@@ -33,6 +34,7 @@ fcppt::enum_range<
 template<
 	typename Enum
 >
+constexpr
 typename
 fcppt::enum_range<
 	Enum
@@ -50,6 +52,7 @@ fcppt::enum_range<
 template<
 	typename Enum
 >
+constexpr
 typename
 fcppt::enum_range<
 	Enum
@@ -62,6 +65,24 @@ fcppt::enum_range<
 		iterator(
 			end_
 		);
+}
+
+template<
+	typename Enum
+>
+constexpr
+typename
+fcppt::enum_range<
+	Enum
+>::size_type
+fcppt::enum_range<
+	Enum
+>::size() const
+{
+	return
+		end_
+		-
+		begin_;
 }
 
 #endif
