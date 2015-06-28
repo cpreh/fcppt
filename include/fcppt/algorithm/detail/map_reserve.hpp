@@ -7,9 +7,11 @@
 #ifndef FCPPT_ALGORITHM_DETAIL_MAP_RESERVE_HPP_INCLUDED
 #define FCPPT_ALGORITHM_DETAIL_MAP_RESERVE_HPP_INCLUDED
 
-#include <fcppt/algorithm/detail/has_size_reserve.hpp>
+#include <fcppt/algorithm/detail/optimize_map.hpp>
+#include <fcppt/algorithm/detail/source_size.hpp>
+#include <fcppt/cast/size.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <type_traits>
+#include <boost/utility/enable_if.hpp>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -24,12 +26,13 @@ template<
 	typename Dest,
 	typename Source
 >
+inline
 typename
-std::enable_if<
-	fcppt::algorithm::detail::has_size_reserve<
+boost::enable_if<
+	fcppt::algorithm::detail::optimize_map<
 		Dest,
 		Source
-	>::value,
+	>,
 	void
 >::type
 map_reserve(
@@ -38,11 +41,14 @@ map_reserve(
 )
 {
 	_dest.reserve(
+		// some ranges have signed sizes
 		static_cast<
 			typename
 			Dest::size_type
 		>(
-			_src.size()
+			fcppt::algorithm::detail::source_size(
+				_src
+			)
 		)
 	);
 }
@@ -51,12 +57,13 @@ template<
 	typename Dest,
 	typename Source
 >
+inline
 typename
-std::enable_if<
-	!fcppt::algorithm::detail::has_size_reserve<
+boost::disable_if<
+	fcppt::algorithm::detail::optimize_map<
 		Dest,
 		Source
-	>::value,
+	>,
 	void
 >::type
 map_reserve(

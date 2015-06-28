@@ -97,6 +97,10 @@ add_fcppt_test(
 )
 
 add_fcppt_test(
+	algorithm/optimize_map
+)
+
+add_fcppt_test(
 	algorithm/remove
 )
 

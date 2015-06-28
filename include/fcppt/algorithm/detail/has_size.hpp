@@ -4,13 +4,15 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_ALGORITHM_DETAIL_HAS_SIZE_RESERVE_HPP_INCLUDED
-#define FCPPT_ALGORITHM_DETAIL_HAS_SIZE_RESERVE_HPP_INCLUDED
+#ifndef FCPPT_ALGORITHM_DETAIL_HAS_SIZE_HPP_INCLUDED
+#define FCPPT_ALGORITHM_DETAIL_HAS_SIZE_HPP_INCLUDED
 
+#include <fcppt/detail/void.hpp>
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/config/external_begin.hpp>
+#include <boost/mpl/identity.hpp>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
@@ -26,29 +28,24 @@ FCPPT_PP_PUSH_WARNING
 FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
 
 template<
-	typename A,
-	typename B,
+	typename Type,
 	typename Test = void
 >
-struct has_size_reserve
+struct has_size
 :
 std::false_type
 {
 };
 
 template<
-	typename A,
-	typename B
+	typename Type
 >
-struct has_size_reserve<
-	A,
-	B,
+struct has_size<
+	Type,
 	decltype(
-		std::declval<
-			A
-		>().reserve(
+		fcppt::detail::void_(
 			std::declval<
-				B
+				Type
 			>().size()
 		)
 	)
