@@ -8,9 +8,9 @@
 #define FCPPT_CONTAINER_GRID_MAKE_POS_REF_RANGE_HPP_INCLUDED
 
 #include <fcppt/container/grid/make_pos_ref_range_start_end.hpp>
-#include <fcppt/container/grid/min_from_object.hpp>
+#include <fcppt/container/grid/min_from_pos.hpp>
 #include <fcppt/container/grid/pos_ref_range_impl.hpp>
-#include <fcppt/container/grid/sup_from_object.hpp>
+#include <fcppt/container/grid/sup_from_pos.hpp>
 #include <fcppt/math/dim/to_vector.hpp>
 
 
@@ -35,13 +35,15 @@ make_pos_ref_range(
 	return
 		fcppt::container::grid::make_pos_ref_range_start_end(
 			_grid,
-			fcppt::container::grid::min_from_object<
-				Grid
+			fcppt::container::grid::min_from_pos<
+				typename
+				Grid::pos
 			>(
 				Grid::pos::null()
 			),
-			fcppt::container::grid::sup_from_object<
-				Grid
+			fcppt::container::grid::sup_from_pos<
+				typename
+				Grid::pos
 			>(
 				fcppt::math::dim::to_vector(
 					_grid.size()

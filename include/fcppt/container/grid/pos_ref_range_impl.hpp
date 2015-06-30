@@ -73,6 +73,21 @@ template<
 typename
 fcppt::container::grid::pos_ref_range<
 	Grid
+>::size_type
+fcppt::container::grid::pos_ref_range<
+	Grid
+>::size() const
+{
+	return
+		pos_range_.size();
+}
+
+template<
+	typename Grid
+>
+typename
+fcppt::container::grid::pos_ref_range<
+	Grid
 >::iterator
 fcppt::container::grid::pos_ref_range<
 	Grid

@@ -10,6 +10,9 @@
 #include <fcppt/algorithm/detail/has_size.hpp>
 #include <fcppt/algorithm/detail/optimize_map.hpp>
 #include <fcppt/config/compiler.hpp>
+#include <fcppt/container/grid/object_impl.hpp>
+#include <fcppt/container/grid/pos_range_impl.hpp>
+#include <fcppt/container/grid/pos_ref_range_impl.hpp>
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
@@ -174,6 +177,28 @@ static_assert(
 	>::value,
 	"int range not optimized"
 );*/
+
+static_assert(
+	source_optimized<
+		fcppt::container::grid::pos_range<
+			unsigned,
+			2
+		>
+	>::value,
+	"grid::pos_range not optimized"
+);
+
+static_assert(
+	source_optimized<
+		fcppt::container::grid::pos_ref_range<
+			fcppt::container::grid::object<
+				unsigned,
+				2
+			>
+		>
+	>::value,
+	"grid::pos_ref_range not optimized"
+);
 
 }
 

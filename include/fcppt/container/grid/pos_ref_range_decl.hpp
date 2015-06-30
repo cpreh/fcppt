@@ -54,6 +54,11 @@ public:
 	pos_range::sup
 	sup;
 
+	typedef
+	typename
+	pos_range::size_type
+	size_type;
+
 	pos_ref_range(
 		Grid &,
 		min,
@@ -66,7 +71,8 @@ public:
 	iterator
 	end() const;
 
-	// TODO: Add size here!
+	size_type
+	size() const;
 private:
 	typedef
 	typename

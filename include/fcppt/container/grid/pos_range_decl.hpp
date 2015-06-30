@@ -12,6 +12,9 @@
 #include <fcppt/container/grid/pos_iterator_fwd.hpp>
 #include <fcppt/container/grid/pos_range_fwd.hpp>
 #include <fcppt/container/grid/size_type.hpp>
+#include <fcppt/config/external_begin.hpp>
+#include <type_traits>
+#include <fcppt/config/external_end.hpp>
 
 
 namespace fcppt
@@ -64,7 +67,16 @@ public:
 	iterator
 	end() const;
 
-	// TODO: Add size here!
+	typedef
+	typename
+	std::make_unsigned<
+		typename
+		iterator::difference_type
+	>::type
+	size_type;
+
+	size_type
+	size() const;
 private:
 	iterator
 	make_iterator(

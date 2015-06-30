@@ -8,10 +8,10 @@
 #include <fcppt/container/grid/make_pos_ref_crange_start_end.hpp>
 #include <fcppt/container/grid/make_pos_ref_range.hpp>
 #include <fcppt/container/grid/make_pos_ref_range_start_end.hpp>
-#include <fcppt/container/grid/min_from_object.hpp>
+#include <fcppt/container/grid/min_from_pos.hpp>
 #include <fcppt/container/grid/object.hpp>
 #include <fcppt/container/grid/pos.hpp>
-#include <fcppt/container/grid/sup_from_object.hpp>
+#include <fcppt/container/grid/sup_from_pos.hpp>
 #include <fcppt/math/vector/comparison.hpp>
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
@@ -45,14 +45,14 @@ FCPPT_PP_POP_WARNING
 	dim2_grid;
 
 	typedef
-	fcppt::container::grid::min_from_object<
-		dim2_grid
+	fcppt::container::grid::min_from_pos<
+		dim2_grid::pos
 	>
 	min;
 
 	typedef
-	fcppt::container::grid::sup_from_object<
-		dim2_grid
+	fcppt::container::grid::sup_from_pos<
+		dim2_grid::pos
 	>
 	sup;
 

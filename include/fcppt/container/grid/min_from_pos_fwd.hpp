@@ -4,11 +4,11 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_CONTAINER_GRID_MIN_FROM_OBJECT_FWD_HPP_INCLUDED
-#define FCPPT_CONTAINER_GRID_MIN_FROM_OBJECT_FWD_HPP_INCLUDED
+#ifndef FCPPT_CONTAINER_GRID_MIN_FROM_POS_FWD_HPP_INCLUDED
+#define FCPPT_CONTAINER_GRID_MIN_FROM_POS_FWD_HPP_INCLUDED
 
 #include <fcppt/container/grid/min_fwd.hpp>
-#include <fcppt/container/grid/object_decl.hpp>
+#include <fcppt/container/grid/pos.hpp>
 
 
 namespace fcppt
@@ -19,15 +19,15 @@ namespace grid
 {
 
 template<
-	typename Grid
+	typename Pos
 >
 using
-min_from_object
+min_from_pos
 =
 fcppt::container::grid::min<
 	typename
-	Grid::size_type,
-	Grid::static_size::value
+	Pos::value_type,
+	Pos::static_size::value
 >;
 
 }

@@ -11,6 +11,7 @@
 #include <fcppt/container/grid/pos.hpp>
 #include <fcppt/container/grid/pos_iterator_impl.hpp>
 #include <fcppt/container/grid/pos_range_decl.hpp>
+#include <fcppt/container/grid/range_size.hpp>
 #include <fcppt/container/grid/size_type.hpp>
 
 
@@ -75,6 +76,27 @@ fcppt::container::grid::pos_range<
 				min_,
 				sup_
 			)
+		);
+}
+
+template<
+	typename SizeType,
+	fcppt::container::grid::size_type Size
+>
+typename
+fcppt::container::grid::pos_range<
+	SizeType,
+	Size
+>::size_type
+fcppt::container::grid::pos_range<
+	SizeType,
+	Size
+>::size() const
+{
+	return
+		fcppt::container::grid::range_size(
+			min_,
+			sup_
 		);
 }
 
