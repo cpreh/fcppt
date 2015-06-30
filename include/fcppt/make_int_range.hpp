@@ -27,6 +27,7 @@ Creates the forward integer range [\a _begin, \a _end).
 template<
 	typename Int
 >
+inline
 fcppt::int_range<
 	Int
 >

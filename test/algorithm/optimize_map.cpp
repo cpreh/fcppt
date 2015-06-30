@@ -5,6 +5,7 @@
 
 
 #include <fcppt/enum_range_impl.hpp>
+#include <fcppt/int_range_impl.hpp>
 #include <fcppt/algorithm/detail/has_reserve.hpp>
 #include <fcppt/algorithm/detail/has_size.hpp>
 #include <fcppt/algorithm/detail/optimize_map.hpp>
@@ -163,6 +164,16 @@ static_assert(
 	>::value,
 	"enum range not optimized"
 );
+
+/*
+static_assert(
+	source_optimized<
+		fcppt::int_range<
+			int
+		>
+	>::value,
+	"int range not optimized"
+);*/
 
 }
 

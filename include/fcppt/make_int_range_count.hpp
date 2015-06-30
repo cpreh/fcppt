@@ -29,6 +29,7 @@ integers), for example strong typedefs of integers.
 template<
 	typename Int
 >
+inline
 fcppt::int_range<
 	Int
 >

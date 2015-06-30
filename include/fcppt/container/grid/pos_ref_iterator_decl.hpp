@@ -9,10 +9,9 @@
 
 #include <fcppt/container/to_iterator_type.hpp>
 #include <fcppt/container/grid/dim.hpp>
-#include <fcppt/container/grid/min_from_object.hpp>
 #include <fcppt/container/grid/object_decl.hpp>
+#include <fcppt/container/grid/pos_iterator_impl.hpp>
 #include <fcppt/container/grid/pos_ref_iterator_fwd.hpp>
-#include <fcppt/container/grid/sup_from_object.hpp>
 #include <fcppt/container/grid/detail/pos_ref_iterator_base.hpp>
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
@@ -90,23 +89,17 @@ public:
 	difference_type;
 
 	typedef
-	fcppt::container::grid::min_from_object<
-		Grid
+	fcppt::container::grid::pos_iterator<
+		typename
+		pos::value_type,
+		pos::static_size::value
 	>
-	min;
-
-	typedef
-	fcppt::container::grid::sup_from_object<
-		Grid
-	>
-	sup;
+	pos_iterator;
 
 	pos_ref_iterator(
 		iterator const &,
-		dim,
-		pos,
-		min,
-		sup
+		pos_iterator const &,
+		dim
 	);
 private:
 	friend class boost::iterator_core_access;
@@ -124,13 +117,9 @@ private:
 
 	iterator iterator_;
 
+	pos_iterator pos_iterator_;
+
 	dim size_;
-
-	pos current_;
-
-	min min_;
-
-	sup sup_;
 };
 
 FCPPT_PP_POP_WARNING

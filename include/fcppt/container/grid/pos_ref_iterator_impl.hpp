@@ -9,7 +9,6 @@
 
 #include <fcppt/cast/to_signed.hpp>
 #include <fcppt/container/grid/dim.hpp>
-#include <fcppt/container/grid/next_position.hpp>
 #include <fcppt/container/grid/object_impl.hpp>
 #include <fcppt/container/grid/pos.hpp>
 #include <fcppt/container/grid/pos_ref_iterator_decl.hpp>
@@ -24,26 +23,18 @@ fcppt::container::grid::pos_ref_iterator<
 	Grid
 >::pos_ref_iterator(
 	iterator const &_iterator,
-	dim const _size,
-	pos const _current,
-	min const _min,
-	sup const _sup
+	pos_iterator const &_pos_iterator,
+	dim const _size
 )
 :
 	iterator_(
 		_iterator
 	),
+	pos_iterator_(
+		_pos_iterator
+	),
 	size_(
 		_size
-	),
-	current_(
-		_current
-	),
-	min_(
-		_min
-	),
-	sup_(
-		_sup
 	)
 {
 }
@@ -56,12 +47,7 @@ fcppt::container::grid::pos_ref_iterator<
 	Grid
 >::increment()
 {
-	current_ =
-		fcppt::container::grid::next_position(
-			current_,
-			min_,
-			sup_
-		);
+	++pos_iterator_;
 }
 
 template<
@@ -75,16 +61,27 @@ fcppt::container::grid::pos_ref_iterator<
 	Grid
 >::dereference() const
 {
+	static_assert(
+		Grid::static_size::value
+		==
+		2,
+		"Sorry, this only works with two dimensional grids for now"
+	);
+
+	pos const current(
+		*pos_iterator_
+	);
+
 	return
 		reference(
-			current_,
+			current,
 			*(
 				iterator_
 				+
 				fcppt::cast::to_signed(
-					current_.x()
+					current.x()
 					+
-					current_.y()
+					current.y()
 					*
 					size_.w()
 				)
@@ -103,9 +100,9 @@ fcppt::container::grid::pos_ref_iterator<
 ) const
 {
 	return
-		current_
+		pos_iterator_
 		==
-		_other.current_;
+		_other.pos_iterator_;
 }
 
 #endif

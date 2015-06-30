@@ -57,7 +57,6 @@ next_position(
 		"Sorry, this only works with two dimensional grids for now"
 	);
 
-
 	// TODO: Generalize this!
 	if(
 		++result.x()

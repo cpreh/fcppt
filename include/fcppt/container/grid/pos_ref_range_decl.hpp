@@ -9,7 +9,7 @@
 
 #include <fcppt/nonassignable.hpp>
 #include <fcppt/container/grid/object_decl.hpp>
-#include <fcppt/container/grid/pos.hpp>
+#include <fcppt/container/grid/pos_range_impl.hpp>
 #include <fcppt/container/grid/pos_ref_range_fwd.hpp>
 #include <fcppt/container/grid/pos_ref_iterator_fwd.hpp>
 
@@ -31,24 +31,27 @@ class pos_ref_range
 	);
 public:
 	typedef
-	typename
-	Grid::pos
-	pos;
-
-	typedef
 	fcppt::container::grid::pos_ref_iterator<
 		Grid
 	>
 	iterator;
 
 	typedef
+	fcppt::container::grid::pos_range<
+		typename
+		Grid::pos::value_type,
+		Grid::static_size::value
+	>
+	pos_range;
+
+	typedef
 	typename
-	iterator::min
+	pos_range::min
 	min;
 
 	typedef
 	typename
-	iterator::sup
+	pos_range::sup
 	sup;
 
 	pos_ref_range(
@@ -65,16 +68,19 @@ public:
 
 	// TODO: Add size here!
 private:
+	typedef
+	typename
+	pos_range::iterator
+	pos_iterator;
+
 	iterator
 	make_iterator(
-		pos
+		pos_iterator
 	) const;
 
 	Grid &grid_;
 
-	min const min_;
-
-	sup const sup_;
+	pos_range const pos_range_;
 };
 
 }

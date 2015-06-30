@@ -7,9 +7,7 @@
 #ifndef FCPPT_CONTAINER_GRID_POS_REF_RANGE_IMPL_HPP_INCLUDED
 #define FCPPT_CONTAINER_GRID_POS_REF_RANGE_IMPL_HPP_INCLUDED
 
-#include <fcppt/container/grid/end_position.hpp>
 #include <fcppt/container/grid/object_impl.hpp>
-#include <fcppt/container/grid/pos.hpp>
 #include <fcppt/container/grid/pos_ref_range_decl.hpp>
 #include <fcppt/container/grid/pos_ref_iterator_impl.hpp>
 
@@ -28,10 +26,8 @@ fcppt::container::grid::pos_ref_range<
 	grid_(
 		_grid
 	),
-	min_(
-		_min
-	),
-	sup_(
+	pos_range_(
+		_min,
 		_sup
 	)
 {
@@ -50,7 +46,7 @@ fcppt::container::grid::pos_ref_range<
 {
 	return
 		this->make_iterator(
-			min_.get()
+			pos_range_.begin()
 		);
 }
 
@@ -67,10 +63,7 @@ fcppt::container::grid::pos_ref_range<
 {
 	return
 		this->make_iterator(
-			fcppt::container::grid::end_position(
-				min_,
-				sup_
-			)
+			pos_range_.end()
 		);
 }
 
@@ -84,16 +77,14 @@ fcppt::container::grid::pos_ref_range<
 fcppt::container::grid::pos_ref_range<
 	Grid
 >::make_iterator(
-	pos const _pos
+	pos_iterator const _pos_iterator
 ) const
 {
 	return
 		iterator(
 			grid_.begin(),
-			grid_.size(),
-			_pos,
-			min_,
-			sup_
+			_pos_iterator,
+			grid_.size()
 		);
 }
 
