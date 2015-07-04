@@ -22,6 +22,7 @@
 #include <fcppt/log/optional_object.hpp>
 #include <fcppt/log/detail/context_tree.hpp>
 #include <fcppt/log/detail/context_tree_node.hpp>
+#include <fcppt/log/detail/context_tree_node_variant.hpp>
 #include <fcppt/log/detail/inner_context_node.hpp>
 #include <fcppt/log/detail/outer_context_node.hpp>
 #include <fcppt/src/log/find_inner_node.hpp>
@@ -38,9 +39,11 @@ fcppt::log::context::context()
 :
 	tree_(
 		fcppt::log::detail::context_tree_node(
-			fcppt::log::detail::inner_context_node(
-				fcppt::string()
-			)
+			fcppt::log::detail::context_tree_node_variant{
+				fcppt::log::detail::inner_context_node(
+					fcppt::string()
+				)
+			}
 		)
 	)
 {
@@ -240,9 +243,11 @@ fcppt::log::context::add(
 				]{
 					cur.get().push_back(
 						fcppt::log::detail::context_tree_node(
-							fcppt::log::detail::inner_context_node(
-								item
-							)
+							fcppt::log::detail::context_tree_node_variant{
+								fcppt::log::detail::inner_context_node(
+									item
+								)
+							}
 						)
 					);
 
@@ -270,9 +275,11 @@ fcppt::log::context::add(
 
 	cur.get().push_back(
 		fcppt::log::detail::context_tree_node(
-			fcppt::log::detail::outer_context_node(
-				_object
-			)
+			fcppt::log::detail::context_tree_node_variant{
+				fcppt::log::detail::outer_context_node(
+					_object
+				)
+			}
 		)
 	);
 

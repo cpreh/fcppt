@@ -64,6 +64,7 @@ public:
 	template<
 		typename U
 	>
+	explicit
 	object(
 		U const &value
 	);
@@ -83,6 +84,7 @@ public:
 	template<
 		typename U
 	>
+	explicit
 	object(
 		U &&value,
 		fcppt::variant::detail::disable_object<
