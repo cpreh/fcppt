@@ -59,7 +59,9 @@ fcppt::backtrace::current_stack_frame(
 
 	fcppt::unique_ptr<
 		char *,
-		fcppt::c_deleter
+		fcppt::c_deleter<
+			char *
+		>
 	> raw_symbols(
 		::backtrace_symbols(
 			resulting_symbols.data(),

@@ -21,7 +21,12 @@ namespace fcppt
 
 \ingroup fcpptsmartptr
 
+\tparam T Can be any type where <code>T *</code> can be converted to
+<code>void %*</code>
 */
+template<
+	typename T
+>
 struct c_deleter
 {
 	/**
@@ -30,13 +35,7 @@ struct c_deleter
 	Calls <code>std::free(_ptr)</code>
 
 	\param _ptr The pointer to delete
-
-	\tparam T Can be any type where <code>T *</code> can be converted to
-	<code>void %*</code>
 	*/
-	template<
-		typename T
-	>
 	void
 	operator()(
 		T *const _ptr

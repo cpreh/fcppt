@@ -27,7 +27,9 @@ fcppt::type_name(
 
 	fcppt::unique_ptr<
 		char,
-		fcppt::c_deleter
+		fcppt::c_deleter<
+			char
+		>
 	> name(
 		abi::__cxa_demangle(
 			_name,

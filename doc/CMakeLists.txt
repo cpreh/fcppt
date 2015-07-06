@@ -517,6 +517,7 @@ set(
 	include/fcppt/detail/nonassignable.hpp
 	include/fcppt/detail/noncopyable.hpp
 	include/fcppt/detail/optional_cast.hpp
+	include/fcppt/detail/rebind_deleter.hpp
 	include/fcppt/detail/runtime_enum_function.hpp
 	include/fcppt/detail/strong_typedef/assignment_operator.hpp
 	include/fcppt/detail/strong_typedef/binary_operator.hpp
@@ -1086,6 +1087,7 @@ set(
 	include/fcppt/range_hash_decl.hpp
 	include/fcppt/range_hash_fwd.hpp
 	include/fcppt/range_hash_impl.hpp
+	include/fcppt/rebind_deleter.hpp
 	include/fcppt/reference_wrapper.hpp
 	include/fcppt/reference_wrapper_comparison.hpp
 	include/fcppt/reference_wrapper_decl.hpp

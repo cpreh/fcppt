@@ -7,6 +7,7 @@
 #ifndef FCPPT_UNIQUE_PTR_TO_BASE_HPP_INCLUDED
 #define FCPPT_UNIQUE_PTR_TO_BASE_HPP_INCLUDED
 
+#include <fcppt/rebind_deleter.hpp>
 #include <fcppt/unique_ptr_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <type_traits>
@@ -23,15 +24,21 @@ namespace fcppt
 */
 template<
 	typename Base,
-	typename Derived
+	typename Derived,
+	typename Deleter
 >
 inline
 fcppt::unique_ptr<
-	Base
+	Base,
+	fcppt::rebind_deleter<
+		Base,
+		Deleter
+	>
 >
 unique_ptr_to_base(
 	fcppt::unique_ptr<
-		Derived
+		Derived,
+		Deleter
 	> &&_other
 )
 {
@@ -45,7 +52,11 @@ unique_ptr_to_base(
 
 	return
 		fcppt::unique_ptr<
-			Base
+			Base,
+			fcppt::rebind_deleter<
+				Base,
+				Deleter
+			>
 		>(
 			_other.release_ownership()
 		);
