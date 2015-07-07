@@ -4,21 +4,14 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_SHARED_PTR_FWD_HPP_INCLUDED
-#define FCPPT_SHARED_PTR_FWD_HPP_INCLUDED
-
-#include <fcppt/default_deleter.hpp>
+#ifndef FCPPT_DEFAULT_DELETER_FWD_HPP_INCLUDED
+#define FCPPT_DEFAULT_DELETER_FWD_HPP_INCLUDED
 
 
 namespace fcppt
 {
 
-template<
-	typename Type,
-	typename Deleter =
-		fcppt::default_deleter
->
-class shared_ptr;
+struct default_deleter;
 
 }
 

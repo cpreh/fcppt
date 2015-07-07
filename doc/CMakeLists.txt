@@ -494,6 +494,8 @@ set(
 	include/fcppt/cyclic_iterator_decl.hpp
 	include/fcppt/cyclic_iterator_fwd.hpp
 	include/fcppt/cyclic_iterator_impl.hpp
+	include/fcppt/default_deleter.hpp
+	include/fcppt/default_deleter_fwd.hpp
 	include/fcppt/detail/char_type.hpp
 	include/fcppt/detail/check_cpp.hpp
 	include/fcppt/detail/check_optional.hpp

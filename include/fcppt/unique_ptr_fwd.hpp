@@ -7,9 +7,7 @@
 #ifndef FCPPT_UNIQUE_PTR_FWD_HPP_INCLUDED
 #define FCPPT_UNIQUE_PTR_FWD_HPP_INCLUDED
 
-#include <fcppt/config/external_begin.hpp>
-#include <memory>
-#include <fcppt/config/external_end.hpp>
+#include <fcppt/default_deleter.hpp>
 
 
 namespace fcppt
@@ -18,9 +16,7 @@ namespace fcppt
 template<
 	typename Type,
 	typename Deleter =
-		std::default_delete<
-			Type
-		>
+		fcppt::default_deleter
 >
 class unique_ptr;
 

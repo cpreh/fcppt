@@ -23,15 +23,18 @@ namespace fcppt
 */
 template<
 	typename Base,
-	typename Derived
+	typename Derived,
+	typename Deleter
 >
 inline
 fcppt::unique_ptr<
-	Base
+	Base,
+	Deleter
 >
 unique_ptr_to_base(
 	fcppt::unique_ptr<
-		Derived
+		Derived,
+		Deleter
 	> &&_other
 )
 {
@@ -45,7 +48,8 @@ unique_ptr_to_base(
 
 	return
 		fcppt::unique_ptr<
-			Base
+			Base,
+			Deleter
 		>(
 			_other.release_ownership()
 		);

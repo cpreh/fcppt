@@ -7,6 +7,7 @@
 #ifndef FCPPT_SHARED_PTR_IMPL_HPP_INCLUDED
 #define FCPPT_SHARED_PTR_IMPL_HPP_INCLUDED
 
+#include <fcppt/default_deleter.hpp>
 #include <fcppt/shared_ptr_decl.hpp>
 #include <fcppt/unique_ptr_fwd.hpp>
 #include <fcppt/weak_ptr_fwd.hpp>
@@ -147,11 +148,9 @@ fcppt::shared_ptr<
 	static_assert(
 		std::is_same<
 			Deleter,
-			std::default_delete<
-				Type
-			>
+			fcppt::default_deleter
 		>::value,
-		"storing a different pointer in a shared_ptr only works with default_delete"
+		"storing a different pointer in a shared_ptr only works with default_deleter"
 	);
 }
 
@@ -475,11 +474,9 @@ fcppt::shared_ptr<
 	static_assert(
 		std::is_same<
 			Deleter,
-			std::default_delete<
-				Type
-			>
+			fcppt::default_deleter
 		>::value,
-		"make_shared_ptr only works with default_delete"
+		"make_shared_ptr only works with default_deleter"
 	);
 }
 
