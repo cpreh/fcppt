@@ -542,8 +542,8 @@ public:
 	/**
 	\brief Returns a pointer to the current reference
 
-	\return If<code>has_value()</code> is true, returns the a pointer to
-	the current reference, otherwise return 0.
+	\return If<code>has_value()</code> is true, returns the pointer to the
+	current reference, otherwise return nullptr.
 	*/
 	pointer
 	data() const;
