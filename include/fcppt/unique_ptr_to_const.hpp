@@ -19,31 +19,21 @@ namespace fcppt
 \ingroup fcpptsmartptr
 */
 template<
-	typename Type,
-	typename Deleter
+	typename Type
 >
 inline
 fcppt::unique_ptr<
-	Type const,
-	fcppt::rebind_deleter<
-		Type const,
-		Deleter
-	>
+	Type const
 >
 unique_ptr_to_const(
 	fcppt::unique_ptr<
-		Type,
-		Deleter
+		Type
 	> &&_other
 )
 {
 	return
 		fcppt::unique_ptr<
-			Type const,
-			fcppt::rebind_deleter<
-				Type const,
-				Deleter
-			>
+			Type const
 		>(
 			_other.release_ownership()
 		);

@@ -14,9 +14,7 @@ main()
 //! [c_deleter]
 	typedef fcppt::unique_ptr<
 		void,
-		fcppt::c_deleter<
-			void
-		>
+		fcppt::c_deleter
 	> void_c_ptr;
 
 	void_c_ptr ptr(

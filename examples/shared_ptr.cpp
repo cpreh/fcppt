@@ -73,9 +73,7 @@ namespace
 
 typedef fcppt::shared_ptr<
 	void,
-	fcppt::c_deleter<
-		void
-	>
+	fcppt::c_deleter
 > void_c_ptr;
 
 void

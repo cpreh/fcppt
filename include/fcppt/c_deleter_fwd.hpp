@@ -11,9 +11,6 @@
 namespace fcppt
 {
 
-template<
-	typename T
->
 struct c_deleter;
 
 }
