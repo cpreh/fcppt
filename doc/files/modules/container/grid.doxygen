@@ -20,6 +20,7 @@ namespace grid
 
 <ul>
 	<li>\ref fcpptcontainergrid_introduction</li>
+	<li>\ref fcpptcontainergrid_init</li>
 	<li>\ref fcpptcontainergrid_iteration</li>
 	<li>\ref fcpptcontainergrid_resizing</li>
 </ul>
@@ -30,23 +31,32 @@ namespace grid
 
 \section fcpptcontainergrid_introduction Introduction
 
-fcppt::container::grid::object is a simple multi dimensional array similar to
+fcppt::container::grid::object is a simple multi-dimensional array similar to
 <a href="http://www.boost.org/doc/libs/1_48_0/libs/multi_array/doc/index.html">boost::multi_array</a>.
 Let's first take a look at how to use a simple three dimensional grid of ints.
 
 \snippet container/grid.cpp grid_simple
 
-Grid uses fcppt::math::dim::object to specify its size and to obtain an element.
+Grid uses \link fcppt::math::dim::object\endlink to specify its size and \link
+fcppt::math::vector::object\endlink to obtain an element.
 
-\warning
-Grid tries to be as efficient as possible and won't necessarily initialize its elements.
+\section fcpptcontainergrid_init Initialization
+There are three ways to initialize a grid:
+<ul>
+<li>Provide a value that will be copied into each cell.</li>
+<li>Initialize each cell by calling a function with its position.</li>
+<li>Leave the grid uninitialized, using \link fcppt::no_init\endlink.</li>
+</ul>
+Here is a small example:
+\snippet container/grid.cpp grid_init
 
 \section fcpptcontainergrid_iteration Iteration
 
-Internally, the grid uses a <code>std::vector</code> or a
-fcppt::container::raw_vector to linearly represent the grid. The iterators
-returned by the grid are iterators over that internal storage array, so they're
-not special in any way (other than begin random-access). This also means that iteration is...
+Internally, the grid uses a <code>std::vector</code> or a \link
+fcppt::container::raw_vector\endlink to linearly represent the grid. The
+iterators returned by the grid are iterators over that internal storage array,
+so they're not special in any way (other than begin random-access). This also
+means that iteration is...
 <ul>
 <li>
 ...<em>linear</em> for <em>one-dimensional</em> grids (from left to right)
@@ -71,7 +81,8 @@ Here is an example of each iteration method:
 
 \snippet container/grid_iteration.cpp grid_iteration
 
-To get the position of an iterator, use fcppt::container::grid::iterator_position.
+To get the position of an iterator, use \link
+fcppt::container::grid::iterator_position\endlink.
 
 \section fcpptcontainergrid_resizing Resizing
 

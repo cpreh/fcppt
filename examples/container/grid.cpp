@@ -4,11 +4,10 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-//! [grid_simple]
-
+#include <fcppt/no_init.hpp>
 #include <fcppt/text.hpp>
-#include <fcppt/container/grid/object.hpp>
 #include <fcppt/container/grid/interpolate.hpp>
+#include <fcppt/container/grid/object.hpp>
 #include <fcppt/io/cout.hpp>
 #include <fcppt/math/interpolation/linear_functor.hpp>
 #include <fcppt/config/external_begin.hpp>
@@ -18,17 +17,20 @@
 
 namespace
 {
+
+//! [grid_simple]
 // typedef a three dimensional grid of ints
-typedef fcppt::container::grid::object<
+typedef
+fcppt::container::grid::object<
 	int,
 	3
-> int3d_grid;
+>
+int3d_grid;
 
 void
 use_grid()
 {
 	// Create a 5 by 10 by 20 grid.
-	// The initial values will be unspecified.
 	int3d_grid grid(
 		int3d_grid::dim(
 			5u,
@@ -57,9 +59,76 @@ use_grid()
 		]
 		<< FCPPT_TEXT('\n');
 }
+//! [grid_simple]
 
 }
-//! [grid_simple]
+
+namespace
+{
+
+void
+init()
+{
+//! [grid_init]
+	typedef
+	fcppt::container::grid::object<
+		int,
+		2
+	>
+	int2d_grid;
+
+	// Initialize all cells to 42
+	int2d_grid const all_42(
+		int2d_grid::dim(
+			3,
+			2
+		),
+		42
+	);
+
+	// Initialize using a function
+	int2d_grid const init_function(
+		int2d_grid::dim(
+			3,
+			2
+		),
+		[](
+			int2d_grid::pos const _pos
+		)
+		{
+			return
+				_pos.x()
+				==
+				_pos.y()
+				?
+					1
+				:
+					0
+				;
+		}
+	);
+
+	// Don't initialize the grid
+	int2d_grid uninit(
+		int2d_grid::dim(
+			3,
+			4
+		),
+		fcppt::no_init{}
+	);
+
+	uninit[
+		int2d_grid::pos(
+			3,
+			2
+		)
+	] =
+		10;
+
+//! [grid_init]
+}
+
+}
 
 //! [grid_resize]
 #include <fcppt/no_init.hpp>
@@ -169,8 +238,11 @@ interpolate_grid()
 //! [grid_interpolate]
 }
 
-int main()
+int
+main()
 {
+	init();
+
 	use_grid();
 
 	resize_grid();

@@ -12,27 +12,29 @@
 #include <iostream>
 #include <fcppt/config/external_end.hpp>
 
-//! [grid_iteration]
 
+//! [grid_iteration]
 namespace
 {
-typedef fcppt::container::grid::object<
+
+typedef
+fcppt::container::grid::object<
 	int,
 	1
-> int1d_grid;
+>
+int1d_grid;
 
-typedef fcppt::container::grid::object<
+typedef
+fcppt::container::grid::object<
 	int,
 	2
-> int2d_grid;
+>
+int2d_grid;
 
-typedef fcppt::container::grid::object<
-	int,
-	3
-> int3d_grid;
 }
 
-int main()
+int
+main()
 {
 	int1d_grid one_dimensional(
 		int1d_grid::dim(3),
@@ -70,36 +72,6 @@ int main()
 		auto const &elem
 		:
 		two_dimensional
-	)
-		fcppt::io::cout() << elem << FCPPT_TEXT(' ');
-
-	fcppt::io::cout() << FCPPT_TEXT('\n');
-
-	int3d_grid three_dimensional(
-		int3d_grid::dim(3,2,2),
-		fcppt::no_init{}
-	);
-
-	// First slice
-	three_dimensional[int3d_grid::pos(0,0,0)] = 0;
-	three_dimensional[int3d_grid::pos(1,0,0)] = 1;
-	three_dimensional[int3d_grid::pos(2,0,0)] = 2;
-	three_dimensional[int3d_grid::pos(0,1,0)] = 3;
-	three_dimensional[int3d_grid::pos(1,1,0)] = 4;
-	three_dimensional[int3d_grid::pos(2,1,0)] = 5;
-	// Second slice
-	three_dimensional[int3d_grid::pos(0,0,1)] = 6;
-	three_dimensional[int3d_grid::pos(1,0,1)] = 7;
-	three_dimensional[int3d_grid::pos(2,0,1)] = 8;
-	three_dimensional[int3d_grid::pos(0,1,1)] = 9;
-	three_dimensional[int3d_grid::pos(1,1,1)] = 10;
-	three_dimensional[int3d_grid::pos(2,1,1)] = 11;
-
-	// Outputs 0, 1, 2, 3, 4, 5, 6, ..., 11
-	for(
-		auto const &elem
-		:
-		three_dimensional
 	)
 		fcppt::io::cout() << elem << FCPPT_TEXT(' ');
 

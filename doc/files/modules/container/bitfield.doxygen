@@ -22,7 +22,7 @@ tired, hungry and not tired or not hungry and not tired". An obvious solution
 is using the bit representation of an enumeration:
 
 \code
-enum person_status
+enum class person_status
 {
 	hungry = 1,
 	tired = 1 << 1,
@@ -32,15 +32,14 @@ enum person_status
 
 This is tiresome (!) to write and also a little dangerous since the underlying
 type of an enumeration can only be an integral type. This means that you rely
-upon the fact that you have enough bits available on the target machine --
-which might not always be true. Think about a bit field which has more than 64
-bits. fcppt::container::bitfield::object is a template which remedies the
-situation.
+on the fact that you have enough bits available on the target machine -- which
+might not always be true. Think about a bit field which has more than 64 bits.
+fcppt::container::bitfield::object is a template which remedies the situation.
 
 \section bitfield_requirements Requirements
 
-fcppt::container::bitfield::object<ElementType, NumElements, InternalType> has
-the following requirements:
+<code>fcppt::container::bitfield::object<ElementType, NumElements,
+InternalType></code> has the following requirements:
 
 <ul>
 <li>
@@ -63,10 +62,11 @@ the following requirements:
 
 </li>
 <li>
-	<code>Numelements</code> shall be a std::integral_constant with the number of
-	enumerators defined in ElementType. To achieve consistency, you should define the
-	enum's size within the enum itself. See fcppt::container::bitfield::object_from_enum
-	and \ref fcpptenum.
+	<code>NumElements</code> shall be a std::integral_constant with the
+	number of enumerators defined in ElementType. To achieve consistency,
+	you should define the enum's size within the enum itself. See \link
+	fcppt::container::bitfield::object_from_enum\endlink and \ref
+	fcpptenum.
 </li>
 <li>
 	<code>InternalType</code> shall be an unsigned type.
@@ -81,6 +81,6 @@ Here's a small example on how bitfield is used:
 
 As you can see, you can treat a bitfield like an integral type -- it has the
 bitwise <code>operator&, operator|</code> and so on. But you can also treat it
-like a <code>std::map<Enum,bool></code> and access elements like that. You
-could even iterate through the bitfield like a container.
+like a <code>std::map<Enum,bool></code> and access elements like that. You can
+even iterate through the bitfield like a container.
 */
