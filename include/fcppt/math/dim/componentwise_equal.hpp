@@ -7,7 +7,7 @@
 #ifndef FCPPT_MATH_DIM_COMPONENTWISE_EQUAL_HPP_INCLUDED
 #define FCPPT_MATH_DIM_COMPONENTWISE_EQUAL_HPP_INCLUDED
 
-#include <fcppt/math/detail/array_componentwise_equal.hpp>
+#include <fcppt/math/range_compare.hpp>
 #include <fcppt/math/dim/object_impl.hpp>
 
 
@@ -24,14 +24,15 @@ template<
 	typename S1,
 	typename S2
 >
+inline
 bool
 componentwise_equal(
-	dim::object<
+	fcppt::math::dim::object<
 		T,
 		N,
 		S1
 	> const &_v1,
-	dim::object<
+	fcppt::math::dim::object<
 		T,
 		N,
 		S2
@@ -40,7 +41,7 @@ componentwise_equal(
 )
 {
 	return
-		math::detail::array_componentwise_equal(
+		fcppt::math::range_compare(
 			_v1,
 			_v2,
 			_epsilon

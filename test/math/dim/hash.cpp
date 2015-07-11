@@ -5,8 +5,6 @@
 
 
 #include <fcppt/math/dim/comparison.hpp>
-#include <fcppt/math/dim/fill.hpp>
-#include <fcppt/math/dim/object_impl.hpp>
 #include <fcppt/math/dim/static.hpp>
 #include <fcppt/math/dim/std_hash.hpp>
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
@@ -18,39 +16,6 @@
 #include <fcppt/config/external_end.hpp>
 
 
-namespace
-{
-
-typedef fcppt::math::dim::static_<
-	unsigned,
-	2
-> ui2_dim;
-
-}
-
-FCPPT_PP_PUSH_WARNING
-FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
-
-BOOST_AUTO_TEST_CASE(
-	math_dim_fill
-)
-{
-FCPPT_PP_POP_WARNING
-
-	ui2_dim const dim(
-		fcppt::math::dim::fill<
-			ui2_dim
-		>(
-			42u
-		)
-	);
-
-	BOOST_REQUIRE(
-		dim.w() == 42
-		&& dim.h() == 42
-	);
-}
-
 FCPPT_PP_PUSH_WARNING
 FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
 
@@ -60,10 +25,12 @@ BOOST_AUTO_TEST_CASE(
 {
 FCPPT_PP_POP_WARNING
 
-	typedef fcppt::math::dim::static_<
+	typedef
+	fcppt::math::dim::static_<
 		int,
 		3
-	> int3_dim;
+	>
+	int3_dim;
 
 	typedef
 	std::unordered_set<
@@ -81,25 +48,25 @@ FCPPT_PP_POP_WARNING
 		)
 	);
 
-	BOOST_CHECK(
+	BOOST_CHECK_EQUAL(
 		set.count(
 			int3_dim(
 				1,
 				2,
 				3
 			)
-		)
-		== 1u
+		),
+		1u
 	);
 
-	BOOST_CHECK(
+	BOOST_CHECK_EQUAL(
 		set.count(
 			int3_dim(
 				4,
 				2,
 				3
 			)
-		)
-		== 0u
+		),
+		0u
 	);
 }

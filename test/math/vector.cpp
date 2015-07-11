@@ -9,15 +9,12 @@
 #include <fcppt/math/pi.hpp>
 #include <fcppt/math/vector/angle_between.hpp>
 #include <fcppt/math/vector/angle_between_cast.hpp>
-#include <fcppt/math/vector/arithmetic.hpp>
-#include <fcppt/math/vector/comparison.hpp>
 #include <fcppt/math/vector/componentwise_equal.hpp>
-#include <fcppt/math/vector/fill.hpp>
 #include <fcppt/math/vector/hypersphere_to_cartesian.hpp>
-#include <fcppt/math/vector/object.hpp>
 #include <fcppt/math/vector/output.hpp>
 #include <fcppt/math/vector/signed_angle_between.hpp>
 #include <fcppt/math/vector/signed_angle_between_cast.hpp>
+#include <fcppt/math/vector/static.hpp>
 #include <fcppt/math/vector/structure_cast.hpp>
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
@@ -27,8 +24,6 @@
 #include <cmath>
 #include <iostream>
 #include <limits>
-#include <ostream>
-#include <utility>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -53,13 +48,6 @@ fcppt::math::vector::static_<
 uivector2;
 
 typedef
-fcppt::math::vector::static_<
-	int,
-	2
->
-ivector2;
-
-typedef
 fcppt::math::vector::static_<real,1>
 fvector1;
 
@@ -79,31 +67,6 @@ compare(
 {
 	return fcppt::math::diff(t1, t2) < epsilon;
 }
-}
-
-FCPPT_PP_PUSH_WARNING
-FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
-
-BOOST_AUTO_TEST_CASE(vector_compare)
-{
-FCPPT_PP_POP_WARNING
-
-	uivector2 const
-		vec1(1, 2),
-		vec2(1, 2),
-		vec3(2, 2);
-
-	BOOST_CHECK(
-		vec1
-		==
-		vec2
-	);
-
-	BOOST_CHECK(
-		vec2
-		!=
-		vec3
-	);
 }
 
 FCPPT_PP_PUSH_WARNING
@@ -198,111 +161,6 @@ FCPPT_PP_POP_WARNING
 	);
 }
 
-FCPPT_PP_PUSH_WARNING
-FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
-
-BOOST_AUTO_TEST_CASE(vector_swap)
-{
-FCPPT_PP_POP_WARNING
-
-	uivector2 vec1(
-		1u,
-		2u
-	);
-
-	uivector2 vec2(
-		3u,
-		4u
-	);
-
-	std::swap(
-		vec1,
-		vec2
-	);
-
-	BOOST_REQUIRE(
-		vec1
-		==
-		uivector2(
-			3u,
-			4u
-		)
-	);
-
-	BOOST_REQUIRE(
-		vec2
-		==
-		uivector2(
-			1u,
-			2u
-		)
-	);
-}
-
-FCPPT_PP_PUSH_WARNING
-FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
-
-BOOST_AUTO_TEST_CASE(vector_null)
-{
-FCPPT_PP_POP_WARNING
-
-	BOOST_REQUIRE(
-		uivector2::null()
-		== uivector2(0, 0)
-	);
-}
-
-FCPPT_PP_PUSH_WARNING
-FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
-
-BOOST_AUTO_TEST_CASE(vector_arithmetic)
-{
-FCPPT_PP_POP_WARNING
-
-	uivector2 vec(0, 0);
-
-	vec += uivector2(1, 2);
-
-	BOOST_REQUIRE(
-		vec == uivector2(1, 2)
-	);
-
-	vec *= 2;
-
-	BOOST_REQUIRE(
-		vec == uivector2(2, 4)
-	);
-
-	vec /= 2;
-
-	BOOST_REQUIRE(
-		vec == uivector2(1, 2)
-	);
-
-	ivector2 veci(1, 2);
-
-	veci = -veci;
-
-	BOOST_REQUIRE(
-		veci
-		==
-		ivector2(
-			-1,
-			-2
-		)
-	);
-
-	veci = +veci;
-
-	BOOST_REQUIRE(
-		veci
-		==
-		ivector2(
-			-1,
-			-2
-		)
-	);
-}
 FCPPT_PP_PUSH_WARNING
 FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
 
@@ -413,64 +271,4 @@ FCPPT_PP_POP_WARNING
 				std::sin(
 					phi2)),
 			epsilon));
-}
-
-FCPPT_PP_PUSH_WARNING
-FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
-
-BOOST_AUTO_TEST_CASE(
-	vector_fill
-)
-{
-FCPPT_PP_POP_WARNING
-	typedef fcppt::math::vector::static_<
-		unsigned,
-		2
-	> ui2_vector;
-
-	ui2_vector const vector(
-		fcppt::math::vector::fill<
-			ui2_vector
-		>(
-			42u
-		)
-	);
-
-	BOOST_REQUIRE(
-		vector.x() == 42
-		&& vector.y() == 42
-	);
-}
-
-FCPPT_PP_PUSH_WARNING
-FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
-
-BOOST_AUTO_TEST_CASE(
-	vector_at_c
-)
-{
-FCPPT_PP_POP_WARNING
-	typedef fcppt::math::vector::static_<
-		unsigned,
-		2
-	> ui2_vector;
-
-	ui2_vector const vector(
-		1u,
-		2u
-	);
-
-	BOOST_CHECK_EQUAL(
-		vector.at_c<
-			0
-		>(),
-		1u
-	);
-
-	BOOST_CHECK_EQUAL(
-		vector.at_c<
-			1
-		>(),
-		2u
-	);
 }

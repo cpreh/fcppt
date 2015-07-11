@@ -768,7 +768,6 @@ set(
 	include/fcppt/math/deg_to_rad.hpp
 	include/fcppt/math/detail/array_adapter.hpp
 	include/fcppt/math/detail/array_adapter_impl.hpp
-	include/fcppt/math/detail/array_componentwise_equal.hpp
 	include/fcppt/math/detail/array_equal.hpp
 	include/fcppt/math/detail/array_less.hpp
 	include/fcppt/math/detail/assign.hpp

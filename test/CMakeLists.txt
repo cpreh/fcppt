@@ -385,10 +385,6 @@ add_fcppt_test(
 )
 
 add_fcppt_test(
-	math/dim
-)
-
-add_fcppt_test(
 	math/binary_vectors
 )
 
@@ -448,6 +444,14 @@ add_fcppt_test(
 
 add_fcppt_test(
 	math/box/structure_cast
+)
+
+add_fcppt_test(
+	math/dim/fill
+)
+
+add_fcppt_test(
+	math/dim/hash
 )
 
 add_fcppt_test(
@@ -525,7 +529,23 @@ add_fcppt_test(
 )
 
 add_fcppt_test(
+	math/vector/arithmetic
+)
+
+add_fcppt_test(
+	math/vector/at_c
+)
+
+add_fcppt_test(
+	math/vector/comparison
+)
+
+add_fcppt_test(
 	math/vector/distance
+)
+
+add_fcppt_test(
+	math/vector/fill
 )
 
 add_fcppt_test(
@@ -533,7 +553,15 @@ add_fcppt_test(
 )
 
 add_fcppt_test(
+	math/vector/null
+)
+
+add_fcppt_test(
 	math/vector/raw_view
+)
+
+add_fcppt_test(
+	math/vector/swap
 )
 
 add_fcppt_test(

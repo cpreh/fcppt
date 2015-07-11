@@ -28,12 +28,16 @@ namespace math
 This function returns true if all components of \p r1 are equal to the
 corresponding components in \p r2 up to the given epsilon.
 */
-template<typename Range,typename T>
+template<
+	typename Range,
+	typename T
+>
 bool
 range_compare(
 	Range const &r1,
 	Range const &r2,
-	T const &epsilon)
+	T const &epsilon
+)
 {
 	static_assert(
 		std::is_floating_point<
@@ -49,12 +53,23 @@ range_compare(
 			i2 =
 				r2.begin();
 		i1 != r1.end();
-		++i1,++i2)
-		if (fcppt::math::diff(*i1,*i2) > epsilon)
-			return false;
+		++i1,++i2
+	)
+		if(
+			fcppt::math::diff(
+				*i1,
+				*i2
+			)
+			>
+			epsilon
+		)
+			return
+				false;
 
-	return true;
+	return
+		true;
 }
+
 }
 }
 
