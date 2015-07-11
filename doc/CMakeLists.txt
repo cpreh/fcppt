@@ -100,7 +100,10 @@ set(
 	examples/assert_complete.cpp
 	examples/assign.cpp
 	examples/backtrace.cpp
-	examples/casts.cpp
+	examples/cast.cpp
+	examples/cast/dynamic.cpp
+	examples/cast/safe_numeric.cpp
+	examples/cast/truncation_check.cpp
 	examples/codecvt.cpp
 	examples/config.cpp
 	examples/container/bitfield.cpp
@@ -110,7 +113,6 @@ set(
 	examples/container/tree_simple.cpp
 	examples/container/tree_traversal.cpp
 	examples/cyclic_iterator.cpp
-	examples/dynamic_cast.cpp
 	examples/endianness.cpp
 	examples/enum.cpp
 	examples/homogenous_pair.cpp
@@ -122,8 +124,6 @@ set(
 	examples/log/context.cpp
 	examples/log/formatting.cpp
 	examples/log/helloworld.cpp
-	examples/make_container.cpp
-	examples/math.cpp
 	examples/math/box.cpp
 	examples/math/casts.cpp
 	examples/math/dim.cpp
@@ -134,6 +134,7 @@ set(
 	examples/math/vector/arithmetic.cpp
 	examples/math/vector/basic.cpp
 	examples/math/vector/convert.cpp
+	examples/math/vector/various.cpp
 	examples/mpl/for_each.cpp
 	examples/mpl/invoke_on.cpp
 	examples/mpl/various.cpp
@@ -147,7 +148,6 @@ set(
 	examples/random/simple.cpp
 	examples/random/strong_typedef.cpp
 	examples/random/transform.cpp
-	examples/safe_numeric_cast.cpp
 	examples/shared_ptr.cpp
 	examples/signal/benchmark.cpp
 	examples/signal/combine.cpp
@@ -157,8 +157,6 @@ set(
 	examples/smart_ptr_deleter.cpp
 	examples/string_conversion.cpp
 	examples/strong_typedef.cpp
-	examples/time_parse.cpp
-	examples/truncation_check_cast.cpp
 	examples/type_traits.cpp
 	examples/unique_ptr.cpp
 	examples/variant/binary_visitation.cpp

@@ -34,7 +34,7 @@ be thrown that includes additional information about the types involved.
 
 The following example shows how this function can be used:
 
-\snippet dynamic_cast.cpp dynamic_cast
+\snippet cast/dynamic.cpp dynamic_cast
 
 \param _src The source reference to cast from
 

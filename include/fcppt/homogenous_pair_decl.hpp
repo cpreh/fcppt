@@ -20,7 +20,8 @@ namespace fcppt
 \ingroup fcpptvarious
 
 A homogenous pair of type <code>T</code> is like an
-<code>%std::pair<T,T></code>.
+<code>%std::pair<T,T></code>. A short example:
+\snippet homogenous_pair.cpp homogenous_pair
 
 \tparam T Can be any type
 */

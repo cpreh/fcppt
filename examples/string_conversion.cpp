@@ -4,7 +4,7 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-//[string_conversion
+// ![string_conversion]
 #include <fcppt/from_std_string.hpp>
 #include <fcppt/string.hpp>
 #include <fcppt/text.hpp>
@@ -27,15 +27,14 @@ int main()
 		fcppt::to_std_string(s)
 	);
 
-	std::cout << converted << "\n";
+	std::cout << converted << '\n';
 
 	fcppt::io::cout()
 		<< fcppt::from_std_string(converted)
-		<< FCPPT_TEXT("\n");
+		<< FCPPT_TEXT('\n');
 
 	std::wcout
 		<< fcppt::to_std_wstring(s)
-		<< L"\n";
+		<< L'\n';
 }
-
-//]
+// ![string_conversion]

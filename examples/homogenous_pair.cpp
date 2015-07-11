@@ -4,7 +4,7 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-//[homogenous_pair
+// ![homogenous_pair]
 #include <fcppt/homogenous_pair.hpp>
 #include <fcppt/text.hpp>
 #include <fcppt/io/cout.hpp>
@@ -28,4 +28,4 @@ int main()
 		<< test1
 		<< FCPPT_TEXT('\n');
 }
-//]
+// ![homogenous_pair]

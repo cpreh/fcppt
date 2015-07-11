@@ -25,7 +25,8 @@ namespace time
 \ingroup fcppttime
 
 Outputs \a tm to \a stream using the <code>std::time_put</code> locale facet,
-obtained from the locale of \a stream.
+obtained from the locale of \a stream. Example:
+\snippet output_tm.cpp output_tm
 
 \param stream The stream to output to
 

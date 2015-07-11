@@ -18,7 +18,6 @@ main(
 		"test\n"
 	);
 
-
 	return
 		0;
 }

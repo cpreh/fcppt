@@ -125,7 +125,7 @@ add_fcppt_example(
 )
 
 add_fcppt_example(
-	casts
+	cast
 )
 
 add_fcppt_example(
@@ -140,12 +140,6 @@ add_fcppt_example(
 
 add_fcppt_example(
 	cyclic_iterator
-)
-
-add_fcppt_example(
-	dynamic_cast
-	LINK_LIBS
-		${fcppt_core_TARGET}
 )
 
 add_fcppt_example(
@@ -176,16 +170,6 @@ add_fcppt_example(
 )
 
 add_fcppt_example(
-	make_container
-)
-
-add_fcppt_example(
-	math
-	LINK_LIBS
-		${fcppt_core_TARGET}
-)
-
-add_fcppt_example(
 	no_cpp
 	IS_C
 		TRUE
@@ -208,10 +192,6 @@ add_fcppt_example(
 )
 
 add_fcppt_example(
-	safe_numeric_cast
-)
-
-add_fcppt_example(
 	smart_ptr_deleter
 	LINK_LIBS
 		${fcppt_core_TARGET}
@@ -231,18 +211,6 @@ add_fcppt_example(
 
 add_fcppt_example(
 	strong_typedef
-)
-
-add_fcppt_example(
-	time_parse
-	LINK_LIBS
-		${fcppt_core_TARGET}
-)
-
-add_fcppt_example(
-	truncation_check_cast
-	LINK_LIBS
-		${fcppt_core_TARGET}
 )
 
 add_fcppt_example(
@@ -269,6 +237,10 @@ add_fcppt_example(
 	weak_ptr
 	LINK_LIBS
 		${fcppt_core_TARGET}
+)
+
+add_subdirectory(
+	cast
 )
 
 add_subdirectory(

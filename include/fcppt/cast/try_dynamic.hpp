@@ -33,7 +33,7 @@ This cast is basically the same as <code>dynamic_cast</code> with pointers, but
 with optional references. Note that you can only cast to a reference type (be
 that const or nonconst). Here's a usage example:
 
-\snippet casts.cpp try_dynamic
+\snippet cast.cpp try_dynamic
 */
 template<
 	typename Derived,

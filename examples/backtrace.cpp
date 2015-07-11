@@ -35,12 +35,12 @@ print_trace(
 	fcppt::io::cout()
 		<< FCPPT_TEXT("Stacktrace begin...\n");
 	for(
-		fcppt::backtrace::stack_frame::const_iterator current_symbol =
-			sf.begin();
-		current_symbol != sf.end();
-		++current_symbol)
+		auto const &current_symbol
+		:
+		sf
+	)
 		fcppt::io::cout()
-			<< (*current_symbol)
+			<< current_symbol
 			<< FCPPT_TEXT("\n");
 	fcppt::io::cout()
 		<< FCPPT_TEXT("Stacktrace end.\n");

@@ -27,3 +27,9 @@ add_fcppt_math_vector_example(
 add_fcppt_math_vector_example(
 	convert
 )
+
+add_fcppt_math_vector_example(
+	various
+	LINK_LIBS
+		${fcppt_core_TARGET}
+)

@@ -4,7 +4,7 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-//[output_tm
+// ![output_tm]
 #include <fcppt/string_conv_locale.hpp>
 #include <fcppt/text.hpp>
 #include <fcppt/io/cout.hpp>
@@ -28,4 +28,4 @@ main()
 	)
 	<< FCPPT_TEXT('\n');
 }
-//]
+// ![output_tm]

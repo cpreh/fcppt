@@ -41,8 +41,14 @@ int main()
 	one_dimensional[int1d_grid::pos(2)] = 2;
 
 	// Outputs 0, 1, 2
-	for(int1d_grid::const_iterator it = one_dimensional.begin(); it != one_dimensional.end(); ++it)
-		fcppt::io::cout() << it << FCPPT_TEXT("\n");
+	for(
+		auto const &elem
+		:
+		one_dimensional
+	)
+		fcppt::io::cout() << elem << FCPPT_TEXT(' ');
+
+	fcppt::io::cout() << FCPPT_TEXT('\n');
 
 	int2d_grid two_dimensional(
 		int2d_grid::dim(3,2));
@@ -55,8 +61,14 @@ int main()
 	two_dimensional[int2d_grid::pos(2,1)] = 5;
 
 	// Outputs 0, 1, 2, 3, 4, 5
-	for(int2d_grid::const_iterator it = two_dimensional.begin(); it != two_dimensional.end(); ++it)
-		fcppt::io::cout() << it << FCPPT_TEXT("\n");
+	for(
+		auto const &elem
+		:
+		two_dimensional
+	)
+		fcppt::io::cout() << elem << FCPPT_TEXT(' ');
+
+	fcppt::io::cout() << FCPPT_TEXT('\n');
 
 	int3d_grid three_dimensional(
 		int3d_grid::dim(3,2,2));
@@ -77,7 +89,13 @@ int main()
 	three_dimensional[int3d_grid::pos(2,1,1)] = 11;
 
 	// Outputs 0, 1, 2, 3, 4, 5, 6, ..., 11
-	for(int3d_grid::const_iterator it = three_dimensional.begin(); it != three_dimensional.end(); ++it)
-		fcppt::io::cout() << it << FCPPT_TEXT("\n");
+	for(
+		auto const &elem
+		:
+		three_dimensional
+	)
+		fcppt::io::cout() << elem << FCPPT_TEXT(' ');
+
+	fcppt::io::cout() << FCPPT_TEXT('\n');
 }
 //! [grid_iteration]

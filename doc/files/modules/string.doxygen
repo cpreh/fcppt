@@ -118,8 +118,12 @@ work properly.
 
 Note that fcppt::string is <strong>not</strong> intended to be used "between"
 platforms. Writing an fcppt::string to a file (see below) on a Linux machine
-and reading it back in on a Windows machine will, of course not work! Use the
-string for internal stuff, only.
+and reading it back in on a Windows machine will, probably does not work! Use
+the string for internal stuff, only.
+
+Here is a small exmaple:
+
+\snippet string_conversion.cpp string_conversion
 
 \section fcpptstring_streams IO streams and other adaptors
 

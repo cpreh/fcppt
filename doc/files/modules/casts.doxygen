@@ -103,12 +103,12 @@ Special casts are used to replace <code>static_cast</code> and
 
 Here is a small example:
 
-\snippet casts.cpp float_to_int
+\snippet cast.cpp float_to_int
 
 An important thing to note is that these casts can't be used with the wrong
 types on accident:
 
-\snippet casts.cpp to_unsigned
+\snippet cast.cpp to_unsigned
 
 \section fcpptcasts_safe Safe conversions
 
@@ -121,11 +121,11 @@ hold in order for the cast to compile.
 The following example shows how a class's constructor can be strengthened by
 fcppt::cast::safe_numeric:
 
-\snippet safe_numeric_cast.cpp safe_numeric_cast_class
+\snippet cast/safe_numeric.cpp safe_numeric_cast_class
 
 Here are some examples of how the constructor can and can't be called:
 
-\snippet safe_numeric_cast.cpp safe_numeric_cast_objects
+\snippet cast/safe_numeric.cpp safe_numeric_cast_objects
 
 fcppt::cast::safe is another cast that extends the set of types that
 fcppt::cast::safe_numeric can cast. If the types are both arithmetic types,
@@ -144,11 +144,11 @@ In the following example, it is tested if the biggest <code>unsigned
 long</code> value fits into an <code>unsigned int</code>. This might be true,
 depending on the architecture.
 
-\snippet truncation_check_cast.cpp truncation_check_cast_int_long
+\snippet cast/truncation_check.cpp truncation_check_cast_int_long
 
 Truncating conversions of negative values are also detected.
 
-\snippet truncation_check_cast.cpp truncation_check_cast_negative
+\snippet cast/truncation_check.cpp truncation_check_cast_negative
 
 \section fcpptcasts_dynamic_casting Dynamic casting
 
@@ -159,12 +159,12 @@ fcppt::cast::dynamic improves the latter case by throwing an exception that
 encapsulates the <code>std::type_index</code> objects of the source and
 destination types.
 
-\snippet dynamic_cast.cpp dynamic_cast
+\snippet cast/dynamic.cpp dynamic_cast
 
 In case dynamic casts are expected to fail, it is more convenient to return an
 optional instead. This is done by fcppt::cast::try_dynamic.
 
-\snippet casts.cpp try_dynamic
+\snippet cast.cpp try_dynamic
 
 \section fcpptcasts_structure_cast Casting user-defined types
 
