@@ -404,7 +404,8 @@ fcppt::container::grid::object<
 	N,
 	A
 >::resize(
-	dim const &_size
+	dim const &_size,
+	fcppt::no_init const &
 )
 {
 	fcppt::container::grid::detail::resize(

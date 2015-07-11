@@ -6,12 +6,15 @@
 
 //! [grid_simple]
 
+#include <fcppt/text.hpp>
 #include <fcppt/container/grid/object.hpp>
 #include <fcppt/container/grid/interpolate.hpp>
-#include <fcppt/math/interpolation/linear_functor.hpp>
 #include <fcppt/io/cout.hpp>
-#include <fcppt/text.hpp>
+#include <fcppt/math/interpolation/linear_functor.hpp>
+#include <fcppt/config/external_begin.hpp>
 #include <iostream>
+#include <fcppt/config/external_end.hpp>
+
 
 namespace
 {
@@ -31,7 +34,8 @@ use_grid()
 			5u,
 			10u,
 			20u
-		)
+		),
+		0
 	);
 
 	// Set the value on position (1,2,3) to 42
@@ -58,11 +62,13 @@ use_grid()
 //! [grid_simple]
 
 //! [grid_resize]
+#include <fcppt/no_init.hpp>
 #include <fcppt/container/grid/output.hpp>
 #include <fcppt/container/grid/resize_preserve_init.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <algorithm>
 #include <fcppt/config/external_end.hpp>
+
 
 namespace
 {
@@ -79,7 +85,8 @@ resize_grid()
 		int2d_grid::dim(
 			2u,
 			3u
-		)
+		),
+		fcppt::no_init{}
 	);
 
 	{
@@ -140,7 +147,8 @@ interpolate_grid()
 		float2d_grid::dim(
 			2u,
 			2u
-		)
+		),
+		fcppt::no_init{}
 	);
 
 	grid[float2d_grid::pos( 0u, 0u)] = 0.0f;

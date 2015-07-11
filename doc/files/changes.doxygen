@@ -163,6 +163,11 @@ can be omitted from <code>return</code> statements.</li>
 	function for every position that must be initialized.</li>
 	<li>Renamed <code>%fcppt::container::grid::pos_range</code> to
 	\link fcppt::container::grid::pos_ref_range\endlink.</li>
+	<li>\link fcppt::container::grid::object\endlink uses \link
+	fcppt::no_init\endlink to make it more clear when elements might not be
+	initialized.</li>
+	<li>\link fcppt::container::grid::is_square\endlink now takes a
+	dimension instead of a grid object.</li>
 	</ul>
 </li>
 

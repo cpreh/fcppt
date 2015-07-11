@@ -7,9 +7,13 @@
 #ifndef FCPPT_CONTAINER_GRID_IS_SQUARE_HPP_INCLUDED
 #define FCPPT_CONTAINER_GRID_IS_SQUARE_HPP_INCLUDED
 
-#include <fcppt/container/grid/object_impl.hpp>
+#include <fcppt/literal.hpp>
+#include <fcppt/make_int_range.hpp>
+#include <fcppt/algorithm/all_of.hpp>
+#include <fcppt/container/grid/dim.hpp>
 #include <fcppt/container/grid/size_type.hpp>
-#include <fcppt/math/dim/object_impl.hpp>
+#include <fcppt/math/at_c.hpp>
+
 
 namespace fcppt
 {
@@ -17,21 +21,54 @@ namespace container
 {
 namespace grid
 {
+
 /**
 \ingroup fcpptcontainergrid
 \brief Checks if a grid is a square or a rectangle
 \returns <code>true</code> of the grid is square, <code>false</code> otherwise
 */
-template<typename T,grid::size_type N>
+template<
+	typename SizeType,
+	fcppt::container::grid::size_type Size
+>
 bool
 is_square(
-	grid::object<T,N> const &g)
+	fcppt::container::grid::dim<
+		SizeType,
+		Size
+	> const &_size
+)
 {
-	for(typename grid::object<T,N>::dim::size_type i = 1; i < g.size().size(); ++i)
-		if(g.size()[i] != g.size()[0])
-			return false;
-	return true;
+	return
+		fcppt::algorithm::all_of(
+			fcppt::make_int_range(
+				fcppt::literal<
+					fcppt::container::grid::size_type
+				>(
+					1
+				),
+				Size
+			),
+			[
+				&_size
+			](
+				fcppt::container::grid::size_type const _index
+			)
+			{
+				return
+					fcppt::math::at_c<
+						0
+					>(
+						_size
+					)
+					==
+					_size[
+						_index
+					];
+			}
+		);
 }
+
 }
 }
 }

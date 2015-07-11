@@ -4,6 +4,7 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
+#include <fcppt/no_init.hpp>
 #include <fcppt/text.hpp>
 #include <fcppt/container/grid/object.hpp>
 #include <fcppt/io/cout.hpp>
@@ -34,7 +35,9 @@ typedef fcppt::container::grid::object<
 int main()
 {
 	int1d_grid one_dimensional(
-		int1d_grid::dim(3));
+		int1d_grid::dim(3),
+		fcppt::no_init{}
+	);
 
 	one_dimensional[int1d_grid::pos(0)] = 0;
 	one_dimensional[int1d_grid::pos(1)] = 1;
@@ -51,7 +54,9 @@ int main()
 	fcppt::io::cout() << FCPPT_TEXT('\n');
 
 	int2d_grid two_dimensional(
-		int2d_grid::dim(3,2));
+		int2d_grid::dim(3,2),
+		fcppt::no_init{}
+	);
 
 	two_dimensional[int2d_grid::pos(0,0)] = 0;
 	two_dimensional[int2d_grid::pos(1,0)] = 1;
@@ -71,7 +76,9 @@ int main()
 	fcppt::io::cout() << FCPPT_TEXT('\n');
 
 	int3d_grid three_dimensional(
-		int3d_grid::dim(3,2,2));
+		int3d_grid::dim(3,2,2),
+		fcppt::no_init{}
+	);
 
 	// First slice
 	three_dimensional[int3d_grid::pos(0,0,0)] = 0;

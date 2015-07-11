@@ -4,8 +4,8 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
+#include <fcppt/container/grid/dim.hpp>
 #include <fcppt/container/grid/is_square.hpp>
-#include <fcppt/container/grid/object.hpp>
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
@@ -24,30 +24,26 @@ BOOST_AUTO_TEST_CASE(
 FCPPT_PP_POP_WARNING
 
 	typedef
-	fcppt::container::grid::object<
+	fcppt::container::grid::dim<
 		int,
 		2
 	>
-	int2_grid;
+	dim;
 
 	BOOST_CHECK(
 		fcppt::container::grid::is_square(
-			int2_grid(
-				int2_grid::dim(
-					5,
-					5
-				)
+			dim(
+				5,
+				5
 			)
 		)
 	);
 
 	BOOST_CHECK(
 		!fcppt::container::grid::is_square(
-			int2_grid(
-				int2_grid::dim(
-					4,
-					5
-				)
+			dim(
+				4,
+				5
 			)
 		)
 	);

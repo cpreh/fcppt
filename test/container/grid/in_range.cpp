@@ -34,7 +34,8 @@ FCPPT_PP_POP_WARNING
 		int2_grid::dim(
 			3,
 			4
-		)
+		),
+		0
 	);
 
 	typedef

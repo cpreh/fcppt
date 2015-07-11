@@ -286,7 +286,8 @@ public:
 	*/
 	void
 	resize(
-		dim const &d
+		dim const &d,
+		fcppt::no_init const &
 	);
 
 	/**

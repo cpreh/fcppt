@@ -4,6 +4,7 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
+#include <fcppt/no_init.hpp>
 #include <fcppt/container/grid/make_pos_ref_crange.hpp>
 #include <fcppt/container/grid/make_pos_ref_crange_start_end.hpp>
 #include <fcppt/container/grid/make_pos_ref_range.hpp>
@@ -64,7 +65,8 @@ FCPPT_PP_POP_WARNING
 		dim2_grid::dim(
 			4,
 			6
-		)
+		),
+		fcppt::no_init{}
 	);
 
 	for(
@@ -96,7 +98,8 @@ FCPPT_PP_POP_WARNING
 			dim2_grid::dim(
 				4,
 				6
-			)
+			),
+			dim::null()
 		);
 
 	for(

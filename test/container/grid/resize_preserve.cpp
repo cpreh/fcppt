@@ -5,6 +5,7 @@
 
 
 #include <fcppt/make_int_range_count.hpp>
+#include <fcppt/no_init.hpp>
 #include <fcppt/cast/size.hpp>
 #include <fcppt/container/grid/object.hpp>
 #include <fcppt/container/grid/resize_preserve.hpp>
@@ -43,7 +44,8 @@ FCPPT_PP_POP_WARNING
 		sz_pair_grid::dim(
 			5,
 			10
-		)
+		),
+		fcppt::no_init{}
 	);
 
 	for(

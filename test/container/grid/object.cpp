@@ -5,6 +5,7 @@
 
 
 #include <fcppt/make_int_range_count.hpp>
+#include <fcppt/no_init.hpp>
 #include <fcppt/cast/size.hpp>
 #include <fcppt/cast/to_signed.hpp>
 #include <fcppt/container/grid/object.hpp>
@@ -109,7 +110,8 @@ FCPPT_PP_POP_WARNING
 		int2_grid::dim(
 			5,
 			10
-		)
+		),
+		fcppt::no_init{}
 	);
 
 	{
@@ -175,7 +177,8 @@ FCPPT_PP_POP_WARNING
 			5,
 			10,
 			8
-		)
+		),
+		fcppt::no_init{}
 	);
 
 	{
@@ -270,7 +273,8 @@ FCPPT_PP_POP_WARNING
 		int2_grid::dim(
 			3,
 			2
-		)
+		),
+		fcppt::no_init{}
 	);
 
 	BOOST_CHECK_EQUAL(
@@ -327,14 +331,16 @@ FCPPT_PP_POP_WARNING
 		int2_grid::dim(
 			10,
 			5
-		)
+		),
+		fcppt::no_init{}
 	);
 
 	test.resize(
 		int2_grid::dim(
 			5,
 			3
-		)
+		),
+		fcppt::no_init{}
 	);
 
 	BOOST_CHECK_EQUAL(
@@ -369,7 +375,8 @@ FCPPT_PP_POP_WARNING
 		int2_grid::dim(
 			2,
 			3
-		)
+		),
+		fcppt::no_init{}
 	);
 
 	grid1[

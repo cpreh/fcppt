@@ -4,6 +4,7 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
+#include <fcppt/no_init.hpp>
 #include <fcppt/container/grid/fill.hpp>
 #include <fcppt/container/grid/object.hpp>
 #include <fcppt/math/vector/comparison.hpp>
@@ -36,7 +37,8 @@ FCPPT_PP_POP_WARNING
 		int2_grid::dim(
 			2,
 			2
-		)
+		),
+		fcppt::no_init{}
 	);
 
 	typedef

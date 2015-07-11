@@ -98,6 +98,11 @@ levenshtein(
 		dim(
 			n + 1,
 			m + 1
+		),
+		fcppt::literal<
+			size_type
+		>(
+			0
 		)
 	);
 
