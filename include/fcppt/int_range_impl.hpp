@@ -9,11 +9,13 @@
 
 #include <fcppt/int_iterator_impl.hpp>
 #include <fcppt/int_range_decl.hpp>
+#include <fcppt/type_iso/to_base.hpp>
 
 
 template<
 	typename Int
 >
+constexpr
 fcppt::int_range<
 	Int
 >::int_range(
@@ -39,6 +41,7 @@ fcppt::int_range<
 template<
 	typename Int
 >
+constexpr
 typename
 fcppt::int_range<
 	Int
@@ -56,6 +59,7 @@ fcppt::int_range<
 template<
 	typename Int
 >
+constexpr
 typename
 fcppt::int_range<
 	Int
@@ -67,6 +71,28 @@ fcppt::int_range<
 	return
 		iterator(
 			end_
+		);
+}
+
+template<
+	typename Int
+>
+constexpr
+typename
+fcppt::int_range<
+	Int
+>::size_type
+fcppt::int_range<
+	Int
+>::size() const
+{
+	return
+		fcppt::type_iso::to_base(
+			end_
+		)
+		-
+		fcppt::type_iso::to_base(
+			begin_
 		);
 }
 

@@ -4,21 +4,19 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_RANDOM_DISTRIBUTION_TRANSFORM_TERMINAL_HPP_INCLUDED
-#define FCPPT_RANDOM_DISTRIBUTION_TRANSFORM_TERMINAL_HPP_INCLUDED
+#ifndef FCPPT_TYPE_ISO_TRANSFORM_HPP_INCLUDED
+#define FCPPT_TYPE_ISO_TRANSFORM_HPP_INCLUDED
 
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
-#include <fcppt/random/distribution/detail/terminal_tag.hpp>
-#include <fcppt/random/distribution/transform/terminal_fwd.hpp>
+#include <fcppt/type_iso/transform_fwd.hpp>
+#include <fcppt/type_iso/detail/terminal_tag.hpp>
 
 
 namespace fcppt
 {
-namespace random
-{
-namespace distribution
+namespace type_iso
 {
 
 FCPPT_PP_PUSH_WARNING
@@ -30,13 +28,12 @@ template<
 >
 struct transform
 :
-fcppt::random::distribution::detail::terminal_tag
+fcppt::type_iso::detail::terminal_tag
 {
 };
 
 FCPPT_PP_POP_WARNING
 
-}
 }
 }
 

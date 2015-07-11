@@ -4,14 +4,14 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_RANDOM_DISTRIBUTION_DETAIL_BASE_TYPE_HPP_INCLUDED
-#define FCPPT_RANDOM_DISTRIBUTION_DETAIL_BASE_TYPE_HPP_INCLUDED
+#ifndef FCPPT_TYPE_ISO_DETAIL_BASE_TYPE_HPP_INCLUDED
+#define FCPPT_TYPE_ISO_DETAIL_BASE_TYPE_HPP_INCLUDED
 
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
-#include <fcppt/random/distribution/detail/is_terminal.hpp>
-#include <fcppt/random/distribution/transform/terminal.hpp>
+#include <fcppt/type_iso/transform.hpp>
+#include <fcppt/type_iso/detail/is_terminal.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
@@ -19,9 +19,7 @@
 
 namespace fcppt
 {
-namespace random
-{
-namespace distribution
+namespace type_iso
 {
 namespace detail
 {
@@ -39,13 +37,15 @@ struct base_type<
 	Type,
 	typename
 	std::enable_if<
-		fcppt::random::distribution::detail::is_terminal<
+		fcppt::type_iso::detail::is_terminal<
 			Type
 		>::value
 	>::type
 >
 {
-	typedef Type type;
+	typedef
+	Type
+	type;
 };
 
 FCPPT_PP_PUSH_WARNING
@@ -58,14 +58,15 @@ struct base_type<
 	Type,
 	typename
 	std::enable_if<
-		!fcppt::random::distribution::detail::is_terminal<
+		!fcppt::type_iso::detail::is_terminal<
 			Type
 		>::value
 	>::type
 >
 :
-fcppt::random::distribution::detail::base_type<
-	typename fcppt::random::distribution::transform<
+fcppt::type_iso::detail::base_type<
+	typename
+	fcppt::type_iso::transform<
 		Type
 	>::base_type
 >
@@ -74,7 +75,6 @@ fcppt::random::distribution::detail::base_type<
 
 FCPPT_PP_POP_WARNING
 
-}
 }
 }
 }

@@ -168,7 +168,6 @@ static_assert(
 	"enum range not optimized"
 );
 
-/*
 static_assert(
 	source_optimized<
 		fcppt::int_range<
@@ -176,7 +175,7 @@ static_assert(
 		>
 	>::value,
 	"int range not optimized"
-);*/
+);
 
 static_assert(
 	source_optimized<

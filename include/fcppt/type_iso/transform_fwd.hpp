@@ -4,25 +4,21 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_RANDOM_DISTRIBUTION_DETAIL_TERMINAL_TAG_HPP_INCLUDED
-#define FCPPT_RANDOM_DISTRIBUTION_DETAIL_TERMINAL_TAG_HPP_INCLUDED
+#ifndef FCPPT_TYPE_ISO_TRANSFORM_FWD_HPP_INCLUDED
+#define FCPPT_TYPE_ISO_TRANSFORM_FWD_HPP_INCLUDED
 
 
 namespace fcppt
 {
-namespace random
-{
-namespace distribution
-{
-namespace detail
+namespace type_iso
 {
 
-struct terminal_tag
-{
-};
+template<
+	typename Type,
+	typename Enable = void
+>
+struct transform;
 
-}
-}
 }
 }
 

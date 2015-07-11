@@ -39,14 +39,12 @@ private:
 
 
 //![random_transform_specialization]
-#include <fcppt/random/distribution/transform/terminal.hpp>
+#include <fcppt/type_iso/transform.hpp>
 
 
 namespace fcppt
 {
-namespace random
-{
-namespace distribution
+namespace type_iso
 {
 
 template<
@@ -91,7 +89,6 @@ struct transform<
 	}
 };
 
-}
 }
 }
 //![random_transform_specialization]

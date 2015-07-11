@@ -11,9 +11,9 @@
 #include <fcppt/random/variate.hpp>
 #include <fcppt/random/distribution/basic.hpp>
 #include <fcppt/random/distribution/parameters/uniform_int.hpp>
-#include <fcppt/random/distribution/transform/strong_typedef.hpp>
 #include <fcppt/random/generator/minstd_rand.hpp>
 #include <fcppt/random/generator/seed_from_chrono.hpp>
+#include <fcppt/type_iso/strong_typedef.hpp>
 
 
 int

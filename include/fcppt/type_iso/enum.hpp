@@ -4,12 +4,12 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_RANDOM_DISTRIBUTION_TRANSFORM_ENUM_HPP_INCLUDED
-#define FCPPT_RANDOM_DISTRIBUTION_TRANSFORM_ENUM_HPP_INCLUDED
+#ifndef FCPPT_TYPE_ISO_ENUM_HPP_INCLUDED
+#define FCPPT_TYPE_ISO_ENUM_HPP_INCLUDED
 
 #include <fcppt/cast/enum_to_int.hpp>
 #include <fcppt/cast/int_to_enum.hpp>
-#include <fcppt/random/distribution/transform/terminal_fwd.hpp>
+#include <fcppt/type_iso/transform_fwd.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
@@ -17,9 +17,7 @@
 
 namespace fcppt
 {
-namespace random
-{
-namespace distribution
+namespace type_iso
 {
 
 template<
@@ -73,7 +71,6 @@ struct transform<
 	}
 };
 
-}
 }
 }
 

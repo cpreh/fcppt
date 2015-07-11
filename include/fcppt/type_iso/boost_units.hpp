@@ -4,10 +4,10 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_RANDOM_DISTRIBUTION_TRANSFORM_BOOST_UNITS_HPP_INCLUDED
-#define FCPPT_RANDOM_DISTRIBUTION_TRANSFORM_BOOST_UNITS_HPP_INCLUDED
+#ifndef FCPPT_TYPE_ISO_BOOST_UNITS_HPP_INCLUDED
+#define FCPPT_TYPE_ISO_BOOST_UNITS_HPP_INCLUDED
 
-#include <fcppt/random/distribution/transform/terminal_fwd.hpp>
+#include <fcppt/type_iso/transform_fwd.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/units/quantity.hpp>
 #include <fcppt/config/external_end.hpp>
@@ -15,9 +15,7 @@
 
 namespace fcppt
 {
-namespace random
-{
-namespace distribution
+namespace type_iso
 {
 
 template<
@@ -67,7 +65,6 @@ struct transform<
 	}
 };
 
-}
 }
 }
 

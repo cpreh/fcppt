@@ -8,6 +8,7 @@
 #define FCPPT_INT_RANGE_DECL_HPP_INCLUDED
 
 #include <fcppt/int_iterator_fwd.hpp>
+#include <fcppt/type_iso/base_type.hpp>
 
 
 namespace fcppt
@@ -38,6 +39,12 @@ public:
 	iterator
 	const_iterator;
 
+	typedef
+	fcppt::type_iso::base_type<
+		Int
+	>
+	size_type;
+
 	/**
 	\brief Creates a range
 
@@ -47,16 +54,23 @@ public:
 
 	\param end The element one past the end
 	*/
+	constexpr
 	int_range(
 		Int begin,
 		Int end
 	);
 
+	constexpr
 	iterator
 	begin() const;
 
+	constexpr
 	iterator
 	end() const;
+
+	constexpr
+	size_type
+	size() const;
 private:
 	Int begin_;
 

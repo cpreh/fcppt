@@ -7,7 +7,7 @@
 #ifndef FCPPT_RANDOM_DISTRIBUTION_DECORATED_VALUE_HPP_INCLUDED
 #define FCPPT_RANDOM_DISTRIBUTION_DECORATED_VALUE_HPP_INCLUDED
 
-#include <fcppt/random/distribution/detail/decorated_value.hpp>
+#include <fcppt/type_iso/to_decorated.hpp>
 
 
 namespace fcppt
@@ -34,13 +34,14 @@ template<
 	typename Result,
 	typename Type
 >
+inline
 Result
 decorated_value(
 	Type const &_value
 )
 {
 	return
-		fcppt::random::distribution::detail::decorated_value<
+		fcppt::type_iso::to_decorated<
 			Result
 		>(
 			_value

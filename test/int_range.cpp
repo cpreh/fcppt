@@ -12,6 +12,7 @@
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
+#include <fcppt/type_iso/strong_typedef.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/test/unit_test.hpp>
 #include <vector>
@@ -34,9 +35,13 @@ test(
 	> const &_result
 )
 {
+	typedef
 	std::vector<
 		Int
-	> values;
+	>
+	int_vector;
+
+	int_vector values;
 
 	for(
 		Int value
@@ -47,11 +52,22 @@ test(
 			value
 		);
 
+	BOOST_CHECK_EQUAL(
+		static_cast<
+			typename
+			int_vector::size_type
+		>(
+			_range.size()
+		),
+		values.size()
+	);
+
 	BOOST_CHECK((
 		values
 		==
 		_result
 	));
+
 }
 
 FCPPT_MAKE_STRONG_TYPEDEF(

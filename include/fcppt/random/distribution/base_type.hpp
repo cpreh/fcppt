@@ -7,7 +7,7 @@
 #ifndef FCPPT_RANDOM_DISTRIBUTION_BASE_TYPE_HPP_INCLUDED
 #define FCPPT_RANDOM_DISTRIBUTION_BASE_TYPE_HPP_INCLUDED
 
-#include <fcppt/random/distribution/detail/base_type.hpp>
+#include <fcppt/type_iso/base_type.hpp>
 
 
 namespace fcppt
@@ -31,7 +31,7 @@ template<
 >
 using base_type
 =
-fcppt::random::distribution::detail::base_type<
+fcppt::type_iso::base_type<
 	Type
 >;
 

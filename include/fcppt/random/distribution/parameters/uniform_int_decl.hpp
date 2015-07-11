@@ -44,10 +44,9 @@ public:
 	result_type;
 
 	typedef
-	typename
 	fcppt::random::distribution::base_type<
 		result_type
-	>::type
+	>
 	base_type;
 
 	typedef

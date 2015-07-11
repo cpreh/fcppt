@@ -4,10 +4,12 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_RANDOM_DISTRIBUTION_DETAIL_DECORATED_VALUE_HPP_INCLUDED
-#define FCPPT_RANDOM_DISTRIBUTION_DETAIL_DECORATED_VALUE_HPP_INCLUDED
+#ifndef FCPPT_TYPE_ISO_DETAIL_TO_BASE_HPP_INCLUDED
+#define FCPPT_TYPE_ISO_DETAIL_TO_BASE_HPP_INCLUDED
 
-#include <fcppt/random/distribution/transform/terminal.hpp>
+#include <fcppt/type_iso/base_type.hpp>
+#include <fcppt/type_iso/transform.hpp>
+#include <fcppt/type_iso/detail/is_terminal.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
@@ -15,26 +17,23 @@
 
 namespace fcppt
 {
-namespace random
-{
-namespace distribution
+namespace type_iso
 {
 namespace detail
 {
 
 template<
-	typename Result,
 	typename Type
 >
+inline
 typename
 std::enable_if<
-	std::is_same<
-		Result,
+	fcppt::type_iso::detail::is_terminal<
 		Type
 	>::value,
-	Result
+	Type
 >::type
-decorated_value(
+to_base(
 	Type const &_value
 )
 {
@@ -43,39 +42,32 @@ decorated_value(
 }
 
 template<
-	typename Result,
 	typename Type
 >
+inline
 typename
 std::enable_if<
-	!std::is_same<
-		Result,
+	!fcppt::type_iso::detail::is_terminal<
 		Type
 	>::value,
-	Result
+	fcppt::type_iso::base_type<
+		Type
+	>
 >::type
-decorated_value(
+to_base(
 	Type const &_value
 )
 {
-	typedef
-	fcppt::random::distribution::transform<
-		Result
-	>
-	transform_type;
-
 	return
-		transform_type::decorated_value(
-			fcppt::random::distribution::detail::decorated_value<
-				typename
-				transform_type::base_type
-			>(
+		fcppt::type_iso::detail::to_base(
+			fcppt::type_iso::transform<
+				Type
+			>::base_value(
 				_value
 			)
 		);
 }
 
-}
 }
 }
 }

@@ -11,7 +11,7 @@
 #include <fcppt/cast/int_to_enum.hpp>
 #include <fcppt/random/distribution/parameters/uniform_int.hpp>
 #include <fcppt/random/distribution/parameters/uniform_int_wrapper.hpp>
-#include <fcppt/random/distribution/transform/enum.hpp>
+#include <fcppt/type_iso/enum.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>

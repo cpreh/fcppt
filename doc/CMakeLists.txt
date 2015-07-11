@@ -1032,11 +1032,6 @@ set(
 	include/fcppt/random/distribution/basic_fwd.hpp
 	include/fcppt/random/distribution/basic_impl.hpp
 	include/fcppt/random/distribution/decorated_value.hpp
-	include/fcppt/random/distribution/detail/base_type.hpp
-	include/fcppt/random/distribution/detail/base_value.hpp
-	include/fcppt/random/distribution/detail/decorated_value.hpp
-	include/fcppt/random/distribution/detail/is_terminal.hpp
-	include/fcppt/random/distribution/detail/terminal_tag.hpp
 	include/fcppt/random/distribution/make_basic.hpp
 	include/fcppt/random/distribution/parameters/make_uniform_enum.hpp
 	include/fcppt/random/distribution/parameters/make_uniform_enum_advanced.hpp
@@ -1056,11 +1051,6 @@ set(
 	include/fcppt/random/distribution/parameters/uniform_real_decl.hpp
 	include/fcppt/random/distribution/parameters/uniform_real_fwd.hpp
 	include/fcppt/random/distribution/parameters/uniform_real_impl.hpp
-	include/fcppt/random/distribution/transform/boost_units.hpp
-	include/fcppt/random/distribution/transform/enum.hpp
-	include/fcppt/random/distribution/transform/strong_typedef.hpp
-	include/fcppt/random/distribution/transform/terminal.hpp
-	include/fcppt/random/distribution/transform/terminal_fwd.hpp
 	include/fcppt/random/generator/basic_pseudo_decl.hpp
 	include/fcppt/random/generator/basic_pseudo_fwd.hpp
 	include/fcppt/random/generator/basic_pseudo_impl.hpp
@@ -1175,6 +1165,19 @@ set(
 	include/fcppt/to_std_string_locale.hpp
 	include/fcppt/to_std_wstring.hpp
 	include/fcppt/to_std_wstring_locale.hpp
+	include/fcppt/type_iso/base_type.hpp
+	include/fcppt/type_iso/boost_units.hpp
+	include/fcppt/type_iso/detail/base_type.hpp
+	include/fcppt/type_iso/detail/is_terminal.hpp
+	include/fcppt/type_iso/detail/terminal_tag.hpp
+	include/fcppt/type_iso/detail/to_base.hpp
+	include/fcppt/type_iso/detail/to_decorated.hpp
+	include/fcppt/type_iso/enum.hpp
+	include/fcppt/type_iso/strong_typedef.hpp
+	include/fcppt/type_iso/to_base.hpp
+	include/fcppt/type_iso/to_decorated.hpp
+	include/fcppt/type_iso/transform.hpp
+	include/fcppt/type_iso/transform_fwd.hpp
 	include/fcppt/type_name.hpp
 	include/fcppt/type_name_from_index.hpp
 	include/fcppt/type_name_from_info.hpp

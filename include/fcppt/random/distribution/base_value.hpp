@@ -8,7 +8,7 @@
 #define FCPPT_RANDOM_DISTRIBUTION_BASE_VALUE_HPP_INCLUDED
 
 #include <fcppt/random/distribution/base_type.hpp>
-#include <fcppt/random/distribution/detail/base_value.hpp>
+#include <fcppt/type_iso/to_base.hpp>
 
 
 namespace fcppt
@@ -33,16 +33,15 @@ template<
 	typename Type
 >
 inline
-typename
 fcppt::random::distribution::base_type<
 	Type
->::type
+>
 base_value(
 	Type const &_value
 )
 {
 	return
-		fcppt::random::distribution::detail::base_value(
+		fcppt::type_iso::to_base(
 			_value
 		);
 }
