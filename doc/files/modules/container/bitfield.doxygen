@@ -77,7 +77,7 @@ the following requirements:
 
 Here's a small example on how bitfield is used:
 
-\snippet doc/container_bitfield.cpp bitfield
+\snippet container/bitfield.cpp bitfield
 
 As you can see, you can treat a bitfield like an integral type -- it has the
 bitwise <code>operator&, operator|</code> and so on. But you can also treat it

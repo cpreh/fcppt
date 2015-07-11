@@ -26,7 +26,7 @@ namespace algorithm
  *
  * Example:
  *
- * \snippet doc/algorithm.cpp shift_compare
+ * \snippet algorithm.cpp shift_compare
  */
 template
 <

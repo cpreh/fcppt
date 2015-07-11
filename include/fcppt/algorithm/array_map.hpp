@@ -32,7 +32,7 @@ Calls <code>_function(element)</code> for every element of \a _source.
 
 Example:
 
-\snippet doc/algorithm.cpp array_map
+\snippet algorithm.cpp array_map
 
 \tparam TargetArray Must be a std::array
 

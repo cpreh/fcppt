@@ -23,7 +23,7 @@ namespace algorithm
 
 Example:
 
-\snippet doc/algorithm.cpp join_strings
+\snippet algorithm.cpp join_strings
 
 \param _range A forward-iterable range. The range's value_type must have an <code>operator+=</code>
 

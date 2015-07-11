@@ -26,7 +26,7 @@ Appends the sequence \a _src to \a _dest.
 
 Example:
 
-\snippet doc/algorithm.cpp append
+\snippet algorithm.cpp append
 **/
 template<
 	typename DestContainer,

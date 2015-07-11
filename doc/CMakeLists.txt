@@ -95,6 +95,7 @@ set(
 	doc/images/signal_benchmark.svg
 	doc/layout.xml
 	doc/stylesheet.css
+	examples/algorithm.cpp
 	examples/assert.cpp
 	examples/assert_complete.cpp
 	examples/assign.cpp
@@ -102,7 +103,6 @@ set(
 	examples/casts.cpp
 	examples/codecvt.cpp
 	examples/config.cpp
-	examples/container.cpp
 	examples/container/bitfield.cpp
 	examples/container/grid.cpp
 	examples/container/grid_iteration.cpp
@@ -110,10 +110,6 @@ set(
 	examples/container/tree_simple.cpp
 	examples/container/tree_traversal.cpp
 	examples/cyclic_iterator.cpp
-	examples/doc/algorithm.cpp
-	examples/doc/container.cpp
-	examples/doc/container_bitfield.cpp
-	examples/doc/strong_typedef.cpp
 	examples/dynamic_cast.cpp
 	examples/endianness.cpp
 	examples/enum.cpp
@@ -160,6 +156,7 @@ set(
 	examples/signal/unregister.cpp
 	examples/smart_ptr_deleter.cpp
 	examples/string_conversion.cpp
+	examples/strong_typedef.cpp
 	examples/time_parse.cpp
 	examples/truncation_check_cast.cpp
 	examples/type_traits.cpp

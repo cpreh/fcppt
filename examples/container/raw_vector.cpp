@@ -4,80 +4,55 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-//[rawvector
 #include <fcppt/literal.hpp>
-#include <fcppt/text.hpp>
+#include <fcppt/cast/size.hpp>
+#include <fcppt/cast/to_char_ptr.hpp>
+#include <fcppt/cast/to_signed.hpp>
 #include <fcppt/container/raw_vector.hpp>
-#include <fcppt/io/cout.hpp>
+#include <fcppt/container/bitfield/object.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <algorithm>
-#include <cstddef>
+#include <fstream>
+#include <iosfwd>
+#include <iostream>
+#include <ostream>
+#include <vector>
 #include <fcppt/config/external_end.hpp>
 
 
-namespace
+int
+main()
 {
-
-// read at most count bytes in p,
-// return the number of bytes read
-std::size_t
-read(
-	unsigned char *p,
-	std::size_t count
-)
 {
-	// just for exposition,
-	// try to write 200 bytes
+//! [raw_vector]
+fcppt::container::raw_vector<int> raw_chars(
+	1024);
 
-	std::size_t const max_(
-		std::min(
-			count,
-			fcppt::literal<
-				std::size_t
-			>(
-				200
-			)
-		)
-	);
+// This is undefined, since raw_chars is not initialized.
+std::cout << raw_chars[0];
 
-	for(
-		std::size_t i = 0;
-		i < max_;
-		++i
+std::ifstream file("test_file");
+// Note here that raw_vector has a ::data member (unlike C++03's
+// std::vector)
+file.read(
+	fcppt::cast::to_char_ptr<
+		char *
+	>(
+		raw_chars.data()
+	),
+	fcppt::literal<
+		std::streamsize
+	>(
+		1024
 	)
-		*p++ = 'a';
-
-	return max_;
-}
-
-}
-
-int main()
-{
-	typedef fcppt::container::raw_vector<
-		unsigned char
-	> uc_raw_vector;
-
-	// make space for 100 elements, but don't initialize them
-	uc_raw_vector buffer(
-		100
-	);
-
-	// resize the buffer to 150 elements, and also don't initialize them
-	buffer.resize_uninitialized(
-		150
-	);
-
-	std::size_t const read_count(
-		read(
-			buffer.data(),
-			buffer.size()
+	*
+	fcppt::cast::size<
+		std::streamsize
+	>(
+		fcppt::cast::to_signed(
+			sizeof(int)
 		)
-	);
-
-	fcppt::io::cout()
-		<< read_count
-		<< FCPPT_TEXT(" bytes read.\n");
+	)
+);
+//! [raw_vector]
 }
-
-//]
+}

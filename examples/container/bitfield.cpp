@@ -4,12 +4,12 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-//[bitfield
 #include <fcppt/text.hpp>
-#include <fcppt/container/bitfield/object.hpp>
 #include <fcppt/container/bitfield/object_from_enum.hpp>
+#include <fcppt/container/bitfield/object_impl.hpp>
 #include <fcppt/io/cout.hpp>
 
+//! [bitfield]
 
 namespace
 {
@@ -75,10 +75,12 @@ int main()
 
 	// Iterate through the field
 	for(
-		auto elem : field
+		auto const &elem
+		:
+		field
 	)
 		fcppt::io::cout()
 			<< elem
 			<< FCPPT_TEXT('\n');
 }
-//]
+//! [bitfield]

@@ -56,5 +56,5 @@ fcppt::container::raw_vector. It's an almost exact copy of
 
 Here's a small example:
 
-\snippet doc/container.cpp raw_vector
+\snippet container/raw_vector.cpp raw_vector
 */

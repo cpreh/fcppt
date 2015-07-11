@@ -100,6 +100,10 @@ function(
 endfunction()
 
 add_fcppt_example(
+	algorithm
+)
+
+add_fcppt_example(
 	assert
 	LINK_LIBS
 		${fcppt_core_TARGET}
@@ -132,12 +136,6 @@ add_fcppt_example(
 
 add_fcppt_example(
 	config
-)
-
-add_fcppt_example(
-	container
-	LINK_LIBS
-		${fcppt_core_TARGET}
 )
 
 add_fcppt_example(
@@ -232,6 +230,10 @@ add_fcppt_example(
 )
 
 add_fcppt_example(
+	strong_typedef
+)
+
+add_fcppt_example(
 	time_parse
 	LINK_LIBS
 		${fcppt_core_TARGET}
@@ -271,10 +273,6 @@ add_fcppt_example(
 
 add_subdirectory(
 	container
-)
-
-add_subdirectory(
-	doc
 )
 
 add_subdirectory(
