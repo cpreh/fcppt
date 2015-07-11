@@ -1,6 +1,106 @@
 /**
 \page older_changes Older Changes
 
+\section changes_changes_to_130 Changes from 1.2.0 to 1.3.0
+
+\subsection changes_general_to_130 General changes
+
+<ul>
+<li>Ignore <code>-Wdeprecated-declarations</code> in external headers.</li>
+</ul>
+
+\subsection changes_added_functionality_to_130 Added functionality
+
+<ul>
+<li>\ref fcpptalgorithm
+	<ul>
+	<li>Most algorithms (for example \link fcppt::algorithm::map \endlink and \link
+	fcppt::algorithm::fold \endlink) have been extended to allow nonconst lvalue and rvalue
+	ranges.</li>
+	</ul>
+</li>
+
+<li>\ref fcpptassert
+	<ul>
+	<li>Added \link FCPPT_ASSERT_OPTIONAL_ERROR \endlink which first
+	asserts that an optional is set and then evaluates to its
+	contents.</li>
+	</ul>
+</li>
+
+<li>\ref fcpptcontainer
+	<ul>
+	<li>Added \link fcppt::container::get_or_insert_with_result \endlink which returns if the
+	element was inserted.</li>
+	<li>Added \link fcppt::container::find_opt_iterator \endlink which returns an optional
+	iterator instead of an optional reference.</li>
+	<li>Added \link fcppt::container::to_reference_type \endlink, \link
+	fcppt::container::to_iterator_type \endlink, \link
+	fcppt::container::to_pointer_type \endlink and \link
+	fcppt::container::to_mapped_type \endlink.
+	</ul>
+</li>
+
+<li>\ref fcpptoptional
+	<ul>
+	<li>Most functions operating on optionals have been extended to accept
+	nonconst lvalues and rvalues.</li>
+	<li>Added \link fcppt::forward_optional_get \endlink which can be used
+	to forward the contents of an optional if the optional itself is an
+	rvalue.</li>
+	<li>Added \link fcppt::optional_combine \endlink which either chooses
+	one of two optionals or combines both.</li>
+	<li>Added output operator to optional.</li>
+	<li>Added \link fcppt::maybe_multi \endlink and \link fcppt::maybe_void_multi \endlink
+	which accept multiple optionals.</li>
+	</ul>
+</li>
+
+<li>\ref fcpptvarious
+	<ul>
+	<li>Added \link fcppt::const_ \endlink which is the const
+	function.</li>
+	<li>Added \link fcppt::identity \endlink which is the identity
+	function.</li>
+	<li>Added \link fcppt::move_if_rvalue \endlink which is similar to
+	<code>std::foward</code> but works on two types.</li>
+	<li>Added \link fcppt::absurd \endlink which is the polymorphic
+	terminate function.</li>
+	</ul>
+</li>
+
+<li>\ref fcpptvariant
+	<ul>
+	<li>Added \link fcppt::variant::to_optional \endlink which can be used
+	to query the variant for a specific type.</li>
+	</ul>
+</li>
+
+</ul>
+
+\subsection changes_changed_functionality_to_130 Changed functionality
+
+<ul>
+<li>\ref fcpptoptional
+	<ul>
+	<li>Removed pointer semantics from optional. See \ref optional_design for a
+	detailed explanation.</li>
+
+	<li>Also removed <code>reset</code> and assignment of non-lifted values to
+	optionals.</li>
+
+	<li>Optionals that have been moved from are now always empty.</li>
+	</ul>
+</li>
+<li>\ref fcpptvariant
+	<ul>
+	<li><code>get</code> has been renamed to <code>get_exn</code>.
+	</ul>
+</li>
+
+<li>CMake export names are now used properly. The <code>prepare_config</code>
+function is no longer needed and has been removed.</li>
+</ul>
 \section changes_changes_to_120 Changes from 1.1.0 to 1.2.0
 
 \subsection changes_general_to_120 General changes

@@ -1,104 +1,211 @@
 /**
 \page changes Changes
 
-\section changes_changes_to_130 Changes from 1.2.0 to 1.3.0
+\section changes_changes_to_140 Changes from 1.3.0 to 1.4.0
 
-\subsection changes_general_to_130 General changes
+\subsection changes_general_to_140 General changes
 
 <ul>
-<li>Ignore <code>-Wdeprecated-declarations</code> in external headers.</li>
+<li>At least <code>CMake-3.0</code> is now required.</li>
+<li>Fixed upcoming <code>clang-3.7</code> warnings when <code>std::move</code>
+can be omitted from <code>return</code> statements.</li>
 </ul>
 
-\subsection changes_added_functionality_to_130 Added functionality
+\subsection changes_added_functionality_to_140 Added functionality
 
 <ul>
+
 <li>\ref fcpptalgorithm
 	<ul>
-	<li>Most algorithms (for example \link fcppt::algorithm::map \endlink and \link
-	fcppt::algorithm::fold \endlink) have been extended to allow nonconst lvalue and rvalue
-	ranges.</li>
-	</ul>
-</li>
-
-<li>\ref fcpptassert
-	<ul>
-	<li>Added \link FCPPT_ASSERT_OPTIONAL_ERROR \endlink which first
-	asserts that an optional is set and then evaluates to its
-	contents.</li>
+	<li>Added \link fcppt::algorithm::set_difference\endlink.</li>
+	<li>Added \link fcppt::algorithm::all_of\endlink.</li>
+	<li>Improve <code>reserve</code> optimization in \link
+	fcppt::algorithm::map \endlink by either using <code>%end() -
+	%begin()</code> or <code>%size()</code> of the source range.</li>
 	</ul>
 </li>
 
 <li>\ref fcpptcontainer
 	<ul>
-	<li>Added \link fcppt::container::get_or_insert_with_result \endlink which returns if the
-	element was inserted.</li>
-	<li>Added \link fcppt::container::find_opt_iterator \endlink which returns an optional
-	iterator instead of an optional reference.</li>
-	<li>Added \link fcppt::container::to_reference_type \endlink, \link
-	fcppt::container::to_iterator_type \endlink, \link
-	fcppt::container::to_pointer_type \endlink and \link
-	fcppt::container::to_mapped_type \endlink.
+	<li>Added \link fcppt::container::maybe_front\endlink.</li>
+	<li>Added \link fcppt::container::maybe_back\endlink.</li>
+	<li>Added <code>noexcept</code> to move constructors and assignment
+	operators of \link fcppt::container::raw_vector \endlink, \link
+	fcppt::container::tree::object \endlink and \link
+	fcppt::container::grid::object \endlink.
+	</li>
+	<li>Added \link fcppt::container::grid::at_optional\endlink.</li>
+	<li>Added \link fcppt::container::at_optional\endlink.</li>
+	<li>Added \link fcppt::container::grid::pos_range\endlink which is just
+	a range over positions without a grid object.</li>
+	<lI>Added <code>%size</code> function \link
+	fcppt::container::grid::pos_ref_range\endlink.</li>
+	</ul>
+</li>
+
+<li>\ref fcpptconfig
+	<ul>
+	<li>Ignore clang's <code>-Wunused-local-typedef</code> in external
+	headers.  </li>
+	</ul>
+</li>
+
+<li>\ref fcpptenum
+	<ul>
+	<lI>Added <code>%size</code> function to \link
+	fcppt::enum_range\endlink.</li>
+	</ul>
+</li>
+
+<li>\ref fcpptmath
+	<ul>
+	<li>Added \link fcppt::math::at_c \endlink that accesses a container
+	using an integral constant as index.</li>
+	<li>Added \link fcppt::math::interval_distance\endlink.</li>
+	<li>Added \link fcppt::math::box::distance\endlink.</li>
+	<li>Added \link fcppt::math::vector::init\endlink, \link
+	fcppt::math::box::init\endlink and \link fcppt::math::dim::init
+	\endlink.</li>
 	</ul>
 </li>
 
 <li>\ref fcpptoptional
 	<ul>
-	<li>Most functions operating on optionals have been extended to accept
-	nonconst lvalues and rvalues.</li>
-	<li>Added \link fcppt::forward_optional_get \endlink which can be used
-	to forward the contents of an optional if the optional itself is an
-	rvalue.</li>
-	<li>Added \link fcppt::optional_combine \endlink which either chooses
-	one of two optionals or combines both.</li>
-	<li>Added output operator to optional.</li>
-	<li>Added \link fcppt::maybe_multi \endlink and \link fcppt::maybe_void_multi \endlink
-	which accept multiple optionals.</li>
+	<li>Added <code>noexcept</code> to the move constructor and assignment
+	operator.</li>
+	<li> Added \link fcppt::optional_assign\endlink which assigns to an
+	optional but returns the reference to the optional's content.
+	</li>
+	</ul>
+</li>
+
+<li>\ref fcpptrandom
+	<ul>
+	<li>Added \link fcppt::random::wrapper::uniform_container\endlink which
+	returns elements from a container using a uniform distribution.
+	</li>
+	<li>Added <code>SeedSeq</code> constructor to random number generators.</li>
+	</ul>
+</li>
+
+<li>\ref fcpptsmartptr
+	<ul>
+	<li>Added \link fcppt::unique_ptr\endlink which doesn't provide a
+	default constructor and is not supposed to hold a <code>nullptr</code>.</li>
+	<li>Added \link fcppt::unique_ptr_to_base\endlink and \link
+	fcppt::unique_ptr_to_const\endlink.</li>
+	<li>Added \link fcppt::default_deleter\endlink.</li>
+	</ul>
+</li>
+
+<li>\ref fcppttypeiso
+	<ul>
+	<li>New library that has been extracted from \ref fcpptrandom. It can
+	recursively pack and unpack types like strong typedefs, boost units,
+	enums, and more.</li>
+	</ul>
+</li>
+
+<li>\ref fcppttypetraits
+	<ul>
+	<li>Added \link
+	fcppt::type_traits::function_pointer_to_reference\endlink.</li>
+	</ul>
+</li>
+
+<li>\ref fcpptvariant
+	<ul>
+	<li>Added \link fcppt::variant::match \endlink function which often
+	makes code more readable that otherwise would have been written using a
+	unary visitation.</li>
+	<li>Added <code>noexcept</code> to the move constructor and assignment
+	operator.</li>
 	</ul>
 </li>
 
 <li>\ref fcpptvarious
 	<ul>
-	<li>Added \link fcppt::const_ \endlink which is the const
-	function.</li>
-	<li>Added \link fcppt::identity \endlink which is the identity
-	function.</li>
-	<li>Added \link fcppt::move_if_rvalue \endlink which is similar to
-	<code>std::foward</code> but works on two types.</li>
-	<li>Added \link fcppt::absurd \endlink which is the polymorphic
-	terminate function.</li>
-	</ul>
-</li>
-
-<li>\ref fcpptvariant
-	<ul>
-	<li>Added \link fcppt::variant::to_optional \endlink which can be used
-	to query the variant for a specific type.</li>
+	<li>Added \link fcppt::make_homogenous_pair\endlink.</li>
+	<lI>Added <code>%size</code> function to \link
+	fcppt::int_range\endlink.</li>
 	</ul>
 </li>
 
 </ul>
 
-\subsection changes_changed_functionality_to_130 Changed functionality
+\subsection changes_changed_functionality_to_140 Changed functionality
 
 <ul>
-<li>\ref fcpptoptional
+
+<li>FcpptCMakeUtils
 	<ul>
-	<li>Removed pointer semantics from optional. See \ref optional_design for a
-	detailed explanation.</li>
-
-	<li>Also removed <code>reset</code> and assignment of non-lifted values to
-	optionals.</li>
-
-	<li>Optionals that have been moved from are now always empty.</li>
+	<li>Set <code>CMAKE_{RUNTIME,LIBRARY_ARCHIVE}_OUTPUT_DIRECTORY</code> instead
+	of their deprecated versions.</li>
 	</ul>
 </li>
+
+<li>\ref fcpptalgorithm
+	<ul>
+	<li>\link fcppt::algorithm::join\endlink and
+	fcppt::algorithm::join_move have been merged.</li>
+	<li>\link fcppt::algorithm::map_concat\endlink and
+	fcppt::algorithm::map_concat_move have been merged.</li>
+	</ul>
+</li>
+
+<li>\ref fcpptcontainer
+	<ul>
+	<li>Use <code>emplace</code> instead of <code>insert</code> in
+	\link fcppt::container::get_or_insert\endlink.</li>
+	<li>Changed the constructors of \link
+	fcppt::container::grid::object\endlink. Instead of the unsafe range
+	and iterator constructors, there is now a constructor that calls a
+	function for every position that must be initialized.</li>
+	<li>Renamed <code>%fcppt::container::grid::pos_range</code> to
+	\link fcppt::container::grid::pos_ref_range\endlink.</li>
+	</ul>
+</li>
+
+<li>\ref fcpptmath
+	<ul>
+	<li>Moved \link fcppt::math::box::object \endlink comparison operators
+	to <code>fcppt/math/box/comparison.hpp</code>.</li>
+	</ul>
+</li>
+
+<li>\ref fcpptrandom
+	<ul>
+	<li>\link
+	fcppt::random::distribution::parameters::make_uniform_indices\endlink
+	now returns an optional distribution. This covers the case in which the
+	container is empty.</li>
+	</ul>
+</li>
+
+<li>\ref fcpptstrongtypedef
+	<ul>
+	<li>Removed <code>fcppt/strong_typedef_input.hpp</code> and
+	<code>fcppt/strong_typedef_output.hpp</code> from
+	<code>fcppt/strong_typedef.hpp</code>.
+	</ul>
+</li>
+
 <li>\ref fcpptvariant
 	<ul>
-	<li><code>get</code> has been renamed to <code>get_exn</code>.
+	<li>The constructor of \link fcppt::variant::object\endlink is now
+	<code>explicit</code>.</li>
 	</ul>
 </li>
 
-<li>CMake export names are now used properly. The <code>prepare_config</code>
-function is no longer needed and has been removed.</li>
+</ul>
+
+\subsection changes_bugfixes_to_140 Bugfixes
+
+<ul>
+<li>Use standard iterator categories instead of boost iterator categories. The
+latter do not derive from the former and generally break algorithms that test
+for them.</li>
+</li>
+<li>Fix <code>std::swap</code> includes to conform to <code>C++11</code></li>
 </ul>
 */
