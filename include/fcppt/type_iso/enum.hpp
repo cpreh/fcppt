@@ -38,13 +38,13 @@ struct transform<
 	std::underlying_type<
 		Enum
 	>::type
-	base_type;
+	undecorated_type;
 
 	static
 	inline
 	Enum
-	decorated_value(
-		base_type const _value
+	decorate(
+		undecorated_type const _value
 	)
 	{
 		return
@@ -57,14 +57,14 @@ struct transform<
 
 	static
 	inline
-	base_type
-	base_value(
+	undecorated_type
+	undecorate(
 		Enum const _value
 	)
 	{
 		return
 			fcppt::cast::enum_to_int<
-				base_type
+				undecorated_type
 			>(
 				_value
 			);

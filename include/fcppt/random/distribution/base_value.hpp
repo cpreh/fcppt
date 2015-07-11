@@ -8,7 +8,7 @@
 #define FCPPT_RANDOM_DISTRIBUTION_BASE_VALUE_HPP_INCLUDED
 
 #include <fcppt/random/distribution/base_type.hpp>
-#include <fcppt/type_iso/to_base.hpp>
+#include <fcppt/type_iso/undecorate.hpp>
 
 
 namespace fcppt
@@ -21,13 +21,7 @@ namespace distribution
 /**
 \brief Calculates the base value
 
-Calculates the base value of \a _value by calling
-<code>fcppt::random::distribution::transform<Type>::base_value</code>
-recursively, until no specialization is found.
-
-\tparam Type Can be any type
-
-\param _value The value to convert
+\see fcppt::type_iso::undecorate
 */
 template<
 	typename Type
@@ -41,7 +35,7 @@ base_value(
 )
 {
 	return
-		fcppt::type_iso::to_base(
+		fcppt::type_iso::undecorate(
 			_value
 		);
 }

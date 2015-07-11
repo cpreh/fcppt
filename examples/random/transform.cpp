@@ -56,19 +56,21 @@ struct transform<
 	>
 >
 {
-	// Helper typedef, optional
-	typedef mine::my_type<
+	typedef
+	mine::my_type<
 		Type
-	> wrapped;
+	>
+	decorated_type;
 
-	// A mandatory typedef to the underlying type
-	typedef Type base_type;
+	typedef
+	Type
+	undecorated_type;
 
 	// A static function that converts to the base type
 	static
-	base_type
-	base_value(
-		wrapped const &_value
+	undecorated_type
+	undecorate(
+		decorated_type const &_value
 	)
 	{
 		return
@@ -77,13 +79,13 @@ struct transform<
 
 	// A static function that converts from the base type
 	static
-	wrapped const
+	decorated_type const
 	decorated_value(
-		base_type const &_value
+		undecorated_type const &_value
 	)
 	{
 		return
-			wrapped(
+			decorated_type(
 				_value
 			);
 	}

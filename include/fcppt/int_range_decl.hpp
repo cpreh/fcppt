@@ -8,7 +8,7 @@
 #define FCPPT_INT_RANGE_DECL_HPP_INCLUDED
 
 #include <fcppt/int_iterator_fwd.hpp>
-#include <fcppt/type_iso/base_type.hpp>
+#include <fcppt/type_iso/undecorated_type.hpp>
 
 
 namespace fcppt
@@ -40,7 +40,7 @@ public:
 	const_iterator;
 
 	typedef
-	fcppt::type_iso::base_type<
+	fcppt::type_iso::undecorated_type<
 		Int
 	>
 	size_type;

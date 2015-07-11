@@ -83,6 +83,7 @@ set(
 	doc/files/modules/strong_typedef.doxygen
 	doc/files/modules/symbol.doxygen
 	doc/files/modules/time.doxygen
+	doc/files/modules/type_iso.doxygen
 	doc/files/modules/type_traits.doxygen
 	doc/files/modules/variant.doxygen
 	doc/files/modules/various.doxygen
@@ -1159,19 +1160,19 @@ set(
 	include/fcppt/to_std_string_locale.hpp
 	include/fcppt/to_std_wstring.hpp
 	include/fcppt/to_std_wstring_locale.hpp
-	include/fcppt/type_iso/base_type.hpp
 	include/fcppt/type_iso/boost_units.hpp
-	include/fcppt/type_iso/detail/base_type.hpp
+	include/fcppt/type_iso/decorate.hpp
+	include/fcppt/type_iso/detail/decorate.hpp
 	include/fcppt/type_iso/detail/is_terminal.hpp
 	include/fcppt/type_iso/detail/terminal_tag.hpp
-	include/fcppt/type_iso/detail/to_base.hpp
-	include/fcppt/type_iso/detail/to_decorated.hpp
+	include/fcppt/type_iso/detail/undecorate.hpp
+	include/fcppt/type_iso/detail/undecorated_type.hpp
 	include/fcppt/type_iso/enum.hpp
 	include/fcppt/type_iso/strong_typedef.hpp
-	include/fcppt/type_iso/to_base.hpp
-	include/fcppt/type_iso/to_decorated.hpp
 	include/fcppt/type_iso/transform.hpp
 	include/fcppt/type_iso/transform_fwd.hpp
+	include/fcppt/type_iso/undecorate.hpp
+	include/fcppt/type_iso/undecorated_type.hpp
 	include/fcppt/type_name.hpp
 	include/fcppt/type_name_from_index.hpp
 	include/fcppt/type_name_from_info.hpp

@@ -29,7 +29,7 @@ struct transform<
 {
 	typedef
 	Type
-	base_type;
+	undecorated_type;
 
 	typedef
 	fcppt::strong_typedef<
@@ -41,8 +41,8 @@ struct transform<
 	static
 	inline
 	decorated_type
-	decorated_value(
-		base_type const &_value
+	decorate(
+		undecorated_type const &_value
 	)
 	{
 		return
@@ -53,8 +53,8 @@ struct transform<
 
 	static
 	inline
-	base_type
-	base_value(
+	undecorated_type
+	undecorate(
 		decorated_type const &_value
 	)
 	{

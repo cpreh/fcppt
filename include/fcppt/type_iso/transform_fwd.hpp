@@ -13,6 +13,11 @@ namespace fcppt
 namespace type_iso
 {
 
+/**
+\brief Customization point for decorate/undecorate
+
+\ingroup fcppttypeiso
+*/
 template<
 	typename Type,
 	typename Enable = void

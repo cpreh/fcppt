@@ -4,10 +4,12 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_TYPE_ISO_DETAIL_TO_DECORATED_HPP_INCLUDED
-#define FCPPT_TYPE_ISO_DETAIL_TO_DECORATED_HPP_INCLUDED
+#ifndef FCPPT_TYPE_ISO_DETAIL_UNDECORATE_HPP_INCLUDED
+#define FCPPT_TYPE_ISO_DETAIL_UNDECORATE_HPP_INCLUDED
 
 #include <fcppt/type_iso/transform.hpp>
+#include <fcppt/type_iso/undecorated_type.hpp>
+#include <fcppt/type_iso/detail/is_terminal.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
@@ -21,19 +23,17 @@ namespace detail
 {
 
 template<
-	typename Result,
 	typename Type
 >
 inline
 typename
 std::enable_if<
-	std::is_same<
-		Result,
+	fcppt::type_iso::detail::is_terminal<
 		Type
 	>::value,
-	Result
+	Type
 >::type
-to_decorated(
+undecorate(
 	Type const &_value
 )
 {
@@ -42,34 +42,27 @@ to_decorated(
 }
 
 template<
-	typename Result,
 	typename Type
 >
 inline
 typename
 std::enable_if<
-	!std::is_same<
-		Result,
+	!fcppt::type_iso::detail::is_terminal<
 		Type
 	>::value,
-	Result
+	fcppt::type_iso::undecorated_type<
+		Type
+	>
 >::type
-to_decorated(
+undecorate(
 	Type const &_value
 )
 {
-	typedef
-	fcppt::type_iso::transform<
-		Result
-	>
-	transform_type;
-
 	return
-		transform_type::decorated_value(
-			fcppt::type_iso::detail::to_decorated<
-				typename
-				transform_type::base_type
-			>(
+		fcppt::type_iso::detail::undecorate(
+			fcppt::type_iso::transform<
+				Type
+			>::undecorate(
 				_value
 			)
 		);

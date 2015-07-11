@@ -4,8 +4,8 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_TYPE_ISO_DETAIL_BASE_TYPE_HPP_INCLUDED
-#define FCPPT_TYPE_ISO_DETAIL_BASE_TYPE_HPP_INCLUDED
+#ifndef FCPPT_TYPE_ISO_DETAIL_UNDECORATED_TYPE_HPP_INCLUDED
+#define FCPPT_TYPE_ISO_DETAIL_UNDECORATED_TYPE_HPP_INCLUDED
 
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
@@ -28,12 +28,12 @@ template<
 	typename Type,
 	typename Enable = void
 >
-struct base_type;
+struct undecorated_type;
 
 template<
 	typename Type
 >
-struct base_type<
+struct undecorated_type<
 	Type,
 	typename
 	std::enable_if<
@@ -54,7 +54,7 @@ FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
 template<
 	typename Type
 >
-struct base_type<
+struct undecorated_type<
 	Type,
 	typename
 	std::enable_if<
@@ -64,11 +64,11 @@ struct base_type<
 	>::type
 >
 :
-fcppt::type_iso::detail::base_type<
+fcppt::type_iso::detail::undecorated_type<
 	typename
 	fcppt::type_iso::transform<
 		Type
-	>::base_type
+	>::undecorated_type
 >
 {
 };

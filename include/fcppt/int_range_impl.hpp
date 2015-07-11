@@ -9,7 +9,7 @@
 
 #include <fcppt/int_iterator_impl.hpp>
 #include <fcppt/int_range_decl.hpp>
-#include <fcppt/type_iso/to_base.hpp>
+#include <fcppt/type_iso/undecorate.hpp>
 
 
 template<
@@ -87,11 +87,11 @@ fcppt::int_range<
 >::size() const
 {
 	return
-		fcppt::type_iso::to_base(
+		fcppt::type_iso::undecorate(
 			end_
 		)
 		-
-		fcppt::type_iso::to_base(
+		fcppt::type_iso::undecorate(
 			begin_
 		);
 }

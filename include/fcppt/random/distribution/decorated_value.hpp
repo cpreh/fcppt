@@ -7,7 +7,7 @@
 #ifndef FCPPT_RANDOM_DISTRIBUTION_DECORATED_VALUE_HPP_INCLUDED
 #define FCPPT_RANDOM_DISTRIBUTION_DECORATED_VALUE_HPP_INCLUDED
 
-#include <fcppt/type_iso/to_decorated.hpp>
+#include <fcppt/type_iso/decorate.hpp>
 
 
 namespace fcppt
@@ -20,15 +20,7 @@ namespace distribution
 /**
 \brief Calculates the decorated value
 
-Calculates the decorated value of type \a Result from \a _value by calling
-<code>fcppt::random::distribution::transform<Result>::decorated_value</code>
-recursively, until \a Result and \a Value are the same type.
-
-\tparam Result Can be any type
-
-\tparam Type Can be any type
-
-\param _value The value to convert
+\see fcppt::type_iso::decorate
 */
 template<
 	typename Result,
@@ -41,7 +33,7 @@ decorated_value(
 )
 {
 	return
-		fcppt::type_iso::to_decorated<
+		fcppt::type_iso::decorate<
 			Result
 		>(
 			_value

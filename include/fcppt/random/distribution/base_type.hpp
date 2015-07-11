@@ -7,7 +7,7 @@
 #ifndef FCPPT_RANDOM_DISTRIBUTION_BASE_TYPE_HPP_INCLUDED
 #define FCPPT_RANDOM_DISTRIBUTION_BASE_TYPE_HPP_INCLUDED
 
-#include <fcppt/type_iso/base_type.hpp>
+#include <fcppt/type_iso/undecorated_type.hpp>
 
 
 namespace fcppt
@@ -20,18 +20,14 @@ namespace distribution
 /**
 \brief Calculates the base type
 
-Calculates the base type of \a Type by converting to
-<code>fcppt::random::distribution::transform<Type>::base_type</code>
-recursively, until no specialization is found.
-
-\tparam Type Can be any type
+\see fcppt::type_iso::undecorated_type
 */
 template<
 	typename Type
 >
 using base_type
 =
-fcppt::type_iso::base_type<
+fcppt::type_iso::undecorated_type<
 	Type
 >;
 

@@ -214,6 +214,10 @@ add_fcppt_example(
 )
 
 add_fcppt_example(
+	type_iso
+)
+
+add_fcppt_example(
 	type_traits
 )
 
