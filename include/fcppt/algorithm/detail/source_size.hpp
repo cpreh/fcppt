@@ -7,12 +7,12 @@
 #ifndef FCPPT_ALGORITHM_DETAIL_SOURCE_SIZE_HPP_INCLUDED
 #define FCPPT_ALGORITHM_DETAIL_SOURCE_SIZE_HPP_INCLUDED
 
-#include <fcppt/algorithm/detail/has_size.hpp>
 #include <fcppt/algorithm/detail/has_random_access_iterator.hpp>
+#include <fcppt/algorithm/detail/has_size.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/utility/enable_if.hpp>
 #include <boost/mpl/and.hpp>
 #include <boost/mpl/not.hpp>
+#include <boost/utility/enable_if.hpp>
 #include <iterator>
 #include <fcppt/config/external_end.hpp>
 

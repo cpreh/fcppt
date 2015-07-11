@@ -4,8 +4,8 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/container/grid/min_from_pos.hpp>
 #include <fcppt/container/grid/make_pos_range_start_end.hpp>
+#include <fcppt/container/grid/min_from_pos.hpp>
 #include <fcppt/container/grid/pos.hpp>
 #include <fcppt/container/grid/sup_from_pos.hpp>
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>

@@ -8,9 +8,9 @@
 #define FCPPT_CONTAINER_GRID_SUP_FWD_HPP_INCLUDED
 
 #include <fcppt/strong_typedef_fwd.hpp>
-#include <fcppt/container/grid/sup_tag.hpp>
 #include <fcppt/container/grid/pos_fwd.hpp>
 #include <fcppt/container/grid/size_type.hpp>
+#include <fcppt/container/grid/sup_tag.hpp>
 
 
 namespace fcppt

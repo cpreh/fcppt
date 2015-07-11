@@ -10,8 +10,8 @@
 #include <fcppt/nonassignable.hpp>
 #include <fcppt/container/grid/object_decl.hpp>
 #include <fcppt/container/grid/pos_range_impl.hpp>
-#include <fcppt/container/grid/pos_ref_range_fwd.hpp>
 #include <fcppt/container/grid/pos_ref_iterator_fwd.hpp>
+#include <fcppt/container/grid/pos_ref_range_fwd.hpp>
 
 
 namespace fcppt

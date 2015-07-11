@@ -8,8 +8,8 @@
 #define FCPPT_CONTAINER_GRID_POS_REF_RANGE_IMPL_HPP_INCLUDED
 
 #include <fcppt/container/grid/object_impl.hpp>
-#include <fcppt/container/grid/pos_ref_range_decl.hpp>
 #include <fcppt/container/grid/pos_ref_iterator_impl.hpp>
+#include <fcppt/container/grid/pos_ref_range_decl.hpp>
 
 
 template<
