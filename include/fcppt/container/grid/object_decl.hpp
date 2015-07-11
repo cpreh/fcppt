@@ -7,6 +7,7 @@
 #ifndef FCPPT_CONTAINER_GRID_OBJECT_DECL_HPP_INCLUDED
 #define FCPPT_CONTAINER_GRID_OBJECT_DECL_HPP_INCLUDED
 
+#include <fcppt/no_init_fwd.hpp>
 #include <fcppt/container/raw_vector_decl.hpp>
 #include <fcppt/container/grid/dim_fwd.hpp>
 #include <fcppt/container/grid/object_fwd.hpp>
@@ -163,9 +164,9 @@ public:
 	\brief The grid will have an initial size but the elements might not be initialized
 	\param d The initial size of the grid
 	*/
-	explicit
 	object(
-		dim const &d
+		dim const &d,
+		fcppt::no_init const &
 	);
 
 	/**

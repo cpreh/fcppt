@@ -7,6 +7,7 @@
 #ifndef FCPPT_CONTAINER_GRID_OBJECT_IMPL_HPP_INCLUDED
 #define FCPPT_CONTAINER_GRID_OBJECT_IMPL_HPP_INCLUDED
 
+#include <fcppt/no_init_fwd.hpp>
 #include <fcppt/algorithm/map.hpp>
 #include <fcppt/container/raw_vector_impl.hpp>
 #include <fcppt/container/grid/dim.hpp>
@@ -52,7 +53,8 @@ fcppt::container::grid::object<
 	N,
 	A
 >::object(
-	dim const &_size
+	dim const &_size,
+	fcppt::no_init const &
 )
 :
 	container_(
