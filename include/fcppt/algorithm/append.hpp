@@ -20,7 +20,7 @@ namespace algorithm
 
 \tparam DestContainer Must have an insert function taking three integers (like the std containers all do).
 
-\tparam SourceContainer Must have a <code>begin</code> and <code>end</code> member function.
+\tparam Source Must have a <code>begin</code> and <code>end</code> member function.
 
 Appends the sequence \a _src to \a _dest.
 
@@ -30,12 +30,13 @@ Example:
 **/
 template<
 	typename DestContainer,
-	typename SourceContainer
+	typename Source
 >
+inline
 void
 append(
 	DestContainer &_dest,
-	SourceContainer const &_src
+	Source const &_src
 )
 {
 	_dest.insert(

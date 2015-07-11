@@ -20,7 +20,7 @@ namespace algorithm
 {
 
 /**
-\brief Maps a sequence to other sequences and joins them
+\brief Maps a range to other sequences and joins them
 
 \ingroup fcpptalgorithm
 
@@ -31,16 +31,16 @@ join(join(r_1, r_2), ..., r_n).
 \param _function A function accepting elements from \a _source and returning an
 object of type \a TargetContainer.
 
-\param _source The sequence to be mapped.
+\param _source The range to be mapped.
 */
 template<
 	typename TargetContainer,
-	typename SourceContainer,
+	typename Source,
 	typename Function
 >
 TargetContainer
 map_concat(
-	SourceContainer &&_source,
+	Source &&_source,
 	Function const &_function
 )
 {
@@ -49,7 +49,7 @@ map_concat(
 			TargetContainer
 		>(
 			std::forward<
-				SourceContainer
+				Source
 			>(
 				_source
 			),

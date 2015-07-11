@@ -12,6 +12,11 @@
 #include <fcppt/config/external_end.hpp>
 
 
+namespace fcppt
+{
+namespace algorithm
+{
+
 /**
 \brief The type of a range element
 
@@ -20,11 +25,6 @@
 Depending on the range, this can be a reference, const reference or an object
 type.
 */
-namespace fcppt
-{
-namespace algorithm
-{
-
 template<
 	typename Range
 >

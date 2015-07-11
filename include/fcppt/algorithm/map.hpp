@@ -17,28 +17,32 @@ namespace algorithm
 {
 
 /**
-\brief Transforms a container to another container by applying a function to
-every element.
+\brief Transforms a range to another container by applying a function to every
+element.
 
 \ingroup fcpptalgorithm
 
 For every element \em e in \a _source, _function(e) is inserted into the result
-container. As an optimization the result container has its capacity set to the
-source container's size at the start.
+container.
+
+\note As an optimization the result container has its capacity set to the
+source range's size at the start, if possible. For this to work, the result
+container needs a <code>reserve</code> function, and the source range needs a
+<code>size</code> function or must be a random access range.
 
 \param _function A function accepting elements from \a _source and returning
 objects of the \a TargetContainer's element type.
 
-\param _source The container to be mapped.
+\param _source The range to be mapped.
 */
 template<
 	typename TargetContainer,
-	typename SourceContainer,
+	typename SourceRange,
 	typename Function
 >
 TargetContainer
 map(
-	SourceContainer &&_source,
+	SourceRange &&_source,
 	Function const &_function
 )
 {
@@ -51,7 +55,7 @@ map(
 
 	for(
 		fcppt::algorithm::range_element_type<
-			SourceContainer
+			SourceRange
 		> element
 		:
 		_source

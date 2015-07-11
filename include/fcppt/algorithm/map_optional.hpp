@@ -21,8 +21,8 @@ namespace algorithm
 {
 
 /**
-\brief Transforms a container to another container by applying a function to
-evert element, only inserting the results that are not empty optionals.
+\brief Transforms a range to another container by applying a function to
+every element, only inserting the results that are not empty optionals.
 
 \ingroup fcpptalgorithm
 
@@ -32,16 +32,16 @@ not an empty optional, it is inserted into the result container.
 \param _function A function accepting elements from \a _source and returning
 optional objects of the \a TargetContainer's element type.
 
-\param _source The container to be mapped.
+\param _source The range to be mapped.
 */
 template<
 	typename TargetContainer,
-	typename SourceContainer,
+	typename Source,
 	typename Function
 >
 TargetContainer
 map_optional(
-	SourceContainer &&_source,
+	Source &&_source,
 	Function const &_function
 )
 {
@@ -49,7 +49,7 @@ map_optional(
 
 	for(
 		fcppt::algorithm::range_element_type<
-			SourceContainer
+			Source
 		> element
 		:
 		_source
