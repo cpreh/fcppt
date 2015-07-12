@@ -167,7 +167,6 @@ set(
 	include/fcppt/container/grid/clamp_pos.hpp
 	include/fcppt/container/grid/clamp_signed_pos.hpp
 	include/fcppt/container/grid/comparison.hpp
-	include/fcppt/container/grid/detail/access_member.hpp
 	include/fcppt/container/grid/detail/assign_fill_recurse.hpp
 	include/fcppt/container/grid/detail/assign_recurse.hpp
 	include/fcppt/container/grid/detail/at.hpp

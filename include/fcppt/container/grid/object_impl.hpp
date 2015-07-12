@@ -13,9 +13,9 @@
 #include <fcppt/container/grid/dim.hpp>
 #include <fcppt/container/grid/make_pos_range.hpp>
 #include <fcppt/container/grid/object_decl.hpp>
+#include <fcppt/container/grid/offset.hpp>
 #include <fcppt/container/grid/pos.hpp>
 #include <fcppt/container/grid/size_type.hpp>
-#include <fcppt/container/grid/detail/access_member.hpp>
 #include <fcppt/container/grid/detail/at.hpp>
 #include <fcppt/container/grid/detail/resize.hpp>
 #include <fcppt/container/grid/detail/shrink_to_fit.hpp>
@@ -252,11 +252,12 @@ fcppt::container::grid::object<
 )
 {
 	return
-		fcppt::container::grid::detail::access_member(
-			container_,
-			size_,
-			_pos
-		);
+		container_[
+			fcppt::container::grid::offset(
+				_pos,
+				size_
+			)
+		];
 }
 
 template<
@@ -278,11 +279,12 @@ fcppt::container::grid::object<
 ) const
 {
 	return
-		fcppt::container::grid::detail::access_member(
-			container_,
-			size_,
-			_pos
-		);
+		container_[
+			fcppt::container::grid::offset(
+				_pos,
+				size_
+			)
+		];
 }
 
 template<
