@@ -10,6 +10,7 @@
 #include <fcppt/cast/to_signed.hpp>
 #include <fcppt/container/grid/dim.hpp>
 #include <fcppt/container/grid/object_impl.hpp>
+#include <fcppt/container/grid/offset.hpp>
 #include <fcppt/container/grid/pos.hpp>
 #include <fcppt/container/grid/pos_ref_iterator_decl.hpp>
 #include <fcppt/container/grid/pos_reference_impl.hpp>
@@ -61,13 +62,6 @@ fcppt::container::grid::pos_ref_iterator<
 	Grid
 >::dereference() const
 {
-	static_assert(
-		Grid::static_size::value
-		==
-		2,
-		"Sorry, this only works with two dimensional grids for now"
-	);
-
 	pos const current(
 		*pos_iterator_
 	);
@@ -79,11 +73,10 @@ fcppt::container::grid::pos_ref_iterator<
 				iterator_
 				+
 				fcppt::cast::to_signed(
-					current.x()
-					+
-					current.y()
-					*
-					size_.w()
+					fcppt::container::grid::offset(
+						current,
+						size_
+					)
 				)
 			)
 		);

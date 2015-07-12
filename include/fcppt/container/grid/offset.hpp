@@ -4,15 +4,14 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_CONTAINER_GRID_NEXT_POSITION_HPP_INCLUDED
-#define FCPPT_CONTAINER_GRID_NEXT_POSITION_HPP_INCLUDED
+#ifndef FCPPT_CONTAINER_GRID_OFFSET_HPP_INCLUDED
+#define FCPPT_CONTAINER_GRID_OFFSET_HPP_INCLUDED
 
 #include <fcppt/literal.hpp>
-#include <fcppt/make_int_range_count.hpp>
-#include <fcppt/container/grid/min.hpp>
+#include <fcppt/make_int_range.hpp>
+#include <fcppt/container/grid/dim.hpp>
 #include <fcppt/container/grid/pos.hpp>
 #include <fcppt/container/grid/size_type.hpp>
-#include <fcppt/container/grid/sup.hpp>
 
 
 namespace fcppt
@@ -26,23 +25,16 @@ template<
 	typename SizeType,
 	fcppt::container::grid::size_type Size
 >
-fcppt::container::grid::pos<
-	SizeType,
-	Size
->
-next_position(
+SizeType
+offset(
 	fcppt::container::grid::pos<
 		SizeType,
 		Size
-	> const _current,
-	fcppt::container::grid::min<
+	> const &_pos,
+	fcppt::container::grid::dim<
 		SizeType,
 		Size
-	> const _min,
-	fcppt::container::grid::sup<
-		SizeType,
-		Size
-	> const _sup
+	> const &_size
 )
 {
 	auto const one(
@@ -53,50 +45,41 @@ next_position(
 		)
 	);
 
-	fcppt::container::grid::pos<
-		SizeType,
-		Size
-	> result{
-		_current
+	SizeType result{
+		_pos.x()
 	};
 
-	++result.x();
+	SizeType stacked_dim{
+		one
+	};
 
 	for(
 		fcppt::container::grid::size_type const index
 		:
-		fcppt::make_int_range_count(
+		fcppt::make_int_range(
+			one,
 			Size
-			-
-			one
 		)
 	)
-		if(
-			result[
+	{
+		stacked_dim *=
+			_size[
 				index
-			]
-			==
-			_sup.get()[
-				index
-			]
-		)
-		{
-			result[
-				index
-			] =
-				_min.get()[
-					index
-				];
-
-			++result[
-				index
-				+
+				-
 				one
 			];
-		}
+
+		result +=
+			_pos[
+				index
+			]
+			*
+			stacked_dim;
+	}
 
 	return
 		result;
+
 }
 
 }

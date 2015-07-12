@@ -214,6 +214,7 @@ set(
 	include/fcppt/container/grid/object_decl.hpp
 	include/fcppt/container/grid/object_fwd.hpp
 	include/fcppt/container/grid/object_impl.hpp
+	include/fcppt/container/grid/offset.hpp
 	include/fcppt/container/grid/out_of_range.hpp
 	include/fcppt/container/grid/output.hpp
 	include/fcppt/container/grid/pos.hpp

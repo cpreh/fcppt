@@ -158,6 +158,7 @@ set(
 	examples/smart_ptr_deleter.cpp
 	examples/string_conversion.cpp
 	examples/strong_typedef.cpp
+	examples/type_iso.cpp
 	examples/type_traits.cpp
 	examples/unique_ptr.cpp
 	examples/variant/binary_visitation.cpp
@@ -413,6 +414,7 @@ set(
 	include/fcppt/container/grid/object_decl.hpp
 	include/fcppt/container/grid/object_fwd.hpp
 	include/fcppt/container/grid/object_impl.hpp
+	include/fcppt/container/grid/offset.hpp
 	include/fcppt/container/grid/out_of_range.hpp
 	include/fcppt/container/grid/output.hpp
 	include/fcppt/container/grid/pos.hpp
