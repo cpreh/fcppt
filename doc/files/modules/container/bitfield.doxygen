@@ -22,7 +22,7 @@ tired, hungry and not tired or not hungry and not tired". An obvious solution
 is using the bit representation of an enumeration:
 
 \code
-enum class person_status
+enum person_status
 {
 	hungry = 1,
 	tired = 1 << 1,
@@ -30,11 +30,10 @@ enum class person_status
 };
 \endcode
 
-This is tiresome (!) to write and also a little dangerous since the underlying
-type of an enumeration can only be an integral type. This means that you rely
-on the fact that you have enough bits available on the target machine -- which
-might not always be true. Think about a bit field which has more than 64 bits.
-fcppt::container::bitfield::object is a template which remedies the situation.
+This has a multitude of problems: It abuses enums, it is tiresome to write and
+it is limited by the number of bits the biggest integer type can hold. To fix
+this, a bitfield is indexed by natural numbers instead of powers of two and can
+hold an arbitrary (but fixed) number of bits.
 
 \section bitfield_requirements Requirements
 
@@ -43,44 +42,30 @@ InternalType></code> has the following requirements:
 
 <ul>
 <li>
-	<code>ElementType</code> shall be an enumeration type that doesn't contain any
-	enumerators with explicit values.
-
-	<strong>Example 1:</strong>
-	\code
-	enum class my_enum { value1, value2, value3 };
-	\endcode
-
-	This is perfectly valid.
-
-	<strong>Example 2:</strong>
-	\code
-	enum class my_enum { value = 100 };
-	\endcode
-
-	This is <strong>NOT</strong> valid.
-
+	<code>ElementType</code> is the element type of the bitfield which is
+	used to get or set a single bit. This can be an enum or an integral
+	type.
 </li>
 <li>
-	<code>NumElements</code> shall be a std::integral_constant with the
-	number of enumerators defined in ElementType. To achieve consistency,
-	you should define the enum's size within the enum itself. See \link
-	fcppt::container::bitfield::object_from_enum\endlink and \ref
-	fcpptenum.
+	<code>NumElements</code> is an integral constant specifying the total
+	number of bits.
 </li>
 <li>
-	<code>InternalType</code> shall be an unsigned type.
+	An array of <code>InternalType</code> is used to hold
+	<code>NumElements</code> of bits. This must be an unsigned type.
 </li>
 </ul>
 
 \section bitfield_example Example
 
-Here's a small example on how bitfield is used:
+Bitfields are mostly used with enums, see \ref fcpptenum and \link
+fcppt::container::bitfield::object_from_enum\endlink.
+
+Here's a small example:
 
 \snippet container/bitfield.cpp bitfield
 
-As you can see, you can treat a bitfield like an integral type -- it has the
+As you can see, you can treat a bitfield like an integral type -- it has
 bitwise <code>operator&, operator|</code> and so on. But you can also treat it
-like a <code>std::map<Enum,bool></code> and access elements like that. You can
-even iterate through the bitfield like a container.
+like a <code>std::map<Enum,bool></code>.
 */
