@@ -9,8 +9,8 @@
 
 #include <fcppt/container/grid/dim.hpp>
 #include <fcppt/container/grid/pos.hpp>
-#include <fcppt/container/grid/sup.hpp>
 #include <fcppt/container/grid/size_type.hpp>
+#include <fcppt/container/grid/sup.hpp>
 #include <fcppt/math/size_type.hpp>
 #include <fcppt/math/vector/init.hpp>
 #include <fcppt/config/external_begin.hpp>
