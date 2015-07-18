@@ -51,11 +51,6 @@ FCPPT_PP_POP_WARNING
 	);
 
 	BOOST_CHECK_EQUAL(
-		tree1.value(),
-		std::string()
-	);
-
-	BOOST_CHECK_EQUAL(
 		tree2.value(),
 		std::string("root")
 	);
@@ -89,11 +84,6 @@ FCPPT_PP_POP_WARNING
 
 	BOOST_CHECK(
 		tree2.empty()
-	);
-
-	BOOST_CHECK_EQUAL(
-		tree2.value(),
-		std::string()
 	);
 
 	BOOST_CHECK_EQUAL(
