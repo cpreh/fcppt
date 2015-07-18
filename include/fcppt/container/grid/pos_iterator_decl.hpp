@@ -31,6 +31,11 @@ namespace grid
 FCPPT_PP_PUSH_WARNING
 FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
 
+/**
+\brief An iterator over grid position
+
+\ingroup fcpptcontainergrid
+*/
 template<
 	typename SizeType,
 	fcppt::container::grid::size_type Size

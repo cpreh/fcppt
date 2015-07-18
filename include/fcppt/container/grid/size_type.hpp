@@ -15,6 +15,11 @@ namespace container
 namespace grid
 {
 
+/**
+\brief An unsigned type used to count grid dimensions
+
+\ingroup fcpptcontainergrid
+*/
 typedef unsigned size_type;
 
 }

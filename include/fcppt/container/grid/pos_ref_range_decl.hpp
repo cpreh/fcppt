@@ -21,6 +21,11 @@ namespace container
 namespace grid
 {
 
+/**
+\brief A range over grid references
+
+\ingroup fcpptcontainergrid
+*/
 template<
 	typename Grid
 >

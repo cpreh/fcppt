@@ -21,6 +21,11 @@ namespace container
 namespace grid
 {
 
+/**
+\brief Returns the absolute offset of a position
+
+\ingroup fcpptcontainergrid
+*/
 template<
 	typename SizeType,
 	fcppt::container::grid::size_type Size

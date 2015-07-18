@@ -18,6 +18,11 @@ namespace container
 namespace grid
 {
 
+/**
+\brief The type used to index a grid
+
+\ingroup fcpptcontainergrid
+*/
 template<
 	typename SizeType,
 	fcppt::container::grid::size_type N

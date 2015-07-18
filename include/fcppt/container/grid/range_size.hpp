@@ -23,6 +23,13 @@ namespace container
 namespace grid
 {
 
+/**
+\brief The number of elements in a grid range
+
+\ingroup fcpptcontainergrid
+
+The number of elements in the range given by \a _min and \a _sup.
+*/
 template<
 	typename SizeType,
 	fcppt::container::grid::size_type Size

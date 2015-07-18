@@ -24,6 +24,14 @@ namespace container
 namespace grid
 {
 
+/**
+\brief Checks if min is strictly less than sup
+
+\ingroup fcpptcontainergrid
+
+Checks if \a _min is strictly less than \a _sup. If this is false, the range
+denoted by \a _min and \a _sup is empty.
+*/
 template<
 	typename SizeType,
 	fcppt::container::grid::size_type Size

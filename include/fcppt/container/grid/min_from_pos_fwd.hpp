@@ -18,6 +18,11 @@ namespace container
 namespace grid
 {
 
+/**
+\brief Creates the min from a pos type
+
+\ingroup fcpptcontainergrid
+*/
 template<
 	typename Pos
 >

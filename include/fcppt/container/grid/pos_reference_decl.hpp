@@ -20,6 +20,11 @@ namespace container
 namespace grid
 {
 
+/**
+\brief A reference to a grid cell and its position
+
+\ingroup fcpptcontainergrid
+*/
 template<
 	typename Grid
 >

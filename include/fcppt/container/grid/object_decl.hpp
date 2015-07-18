@@ -29,6 +29,7 @@ namespace grid
 
 /**
 \brief A simple n dimensional array
+
 \ingroup fcpptcontainergrid
 
 See the \link fcpptcontainergrid module description \endlink for more information.

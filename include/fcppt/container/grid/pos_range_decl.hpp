@@ -24,6 +24,11 @@ namespace container
 namespace grid
 {
 
+/**
+\brief A range over grid position
+
+\ingroup fcpptcontainergrid
+*/
 template<
 	typename SizeType,
 	fcppt::container::grid::size_type Size

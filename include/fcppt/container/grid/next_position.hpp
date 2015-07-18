@@ -22,6 +22,14 @@ namespace container
 namespace grid
 {
 
+/**
+\brief Returns the next position in a grid range
+
+\ingroup fcpptcontainergrid
+
+Given a range by \a _min and \a _sup, returns the next position after \a
+_current.
+*/
 template<
 	typename SizeType,
 	fcppt::container::grid::size_type Size

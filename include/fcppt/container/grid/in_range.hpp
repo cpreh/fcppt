@@ -35,8 +35,17 @@ template<
 inline
 bool
 in_range(
-	fcppt::container::grid::object<T, N, A> const &_grid,
-	typename fcppt::container::grid::object<T, N, A>::pos const &_pos
+	fcppt::container::grid::object<
+		T,
+		N,
+		A
+	> const &_grid,
+	typename
+	fcppt::container::grid::object<
+		T,
+		N,
+		A
+	>::pos const &_pos
 )
 {
 	return

@@ -70,8 +70,19 @@ simultaneously. Here is an example:
 
 \snippet container/grid_range.cpp pos_ref_range
 
-Additionally, you can iterate over sub ranges by using one of the
-<code>start_end</code> functions.
+Additionally, you can iterate over sub ranges which are denoted by a pair of
+\link fcppt::container::grid::min\endlink and \link
+fcppt::container::grid::sup\endlink. Here, <code>min</code> denotes the first
+element in the range while <code>sup</code> is ''one past the end''. A range is
+empty iff at least one element of <code>min</code> is greater or equal to the
+corresponding element in <code>sup</code>. It is often necessary to clamp
+positions to a valid range that doesn't exceed the size of a grid.  There are
+three functions for this: \link fcppt::container::grid::clamped_min\endlink,
+\link fcppt::container::grid::clamped_sup\endlink and \link
+fcppt::container::grid::clamped_sup_signed\endlink. An unsigned
+<code>min</code> doesn't need to be clamped. Here is an example:
+
+\snippet container/grid_range.cpp pos_ref_sub_range
 
 \section fcpptcontainergrid_layout Layout
 
