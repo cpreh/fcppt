@@ -23,8 +23,8 @@ fcppt::container::grid::pos_range<
 	SizeType,
 	Size
 >::pos_range(
-	min const _min,
-	sup const _sup
+	min_type const _min,
+	sup_type const _sup
 )
 :
 	min_(
@@ -98,6 +98,42 @@ fcppt::container::grid::pos_range<
 			min_,
 			sup_
 		);
+}
+
+template<
+	typename SizeType,
+	fcppt::container::grid::size_type Size
+>
+typename
+fcppt::container::grid::pos_range<
+	SizeType,
+	Size
+>::min_type const &
+fcppt::container::grid::pos_range<
+	SizeType,
+	Size
+>::min() const
+{
+	return
+		min_;
+}
+
+template<
+	typename SizeType,
+	fcppt::container::grid::size_type Size
+>
+typename
+fcppt::container::grid::pos_range<
+	SizeType,
+	Size
+>::sup_type const &
+fcppt::container::grid::pos_range<
+	SizeType,
+	Size
+>::sup() const
+{
+	return
+		sup_;
 }
 
 template<

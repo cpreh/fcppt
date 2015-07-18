@@ -19,8 +19,8 @@ fcppt::container::grid::pos_ref_range<
 	Grid
 >::pos_ref_range(
 	Grid &_grid,
-	min const _min,
-	sup const _sup
+	min_type const _min,
+	sup_type const _sup
 )
 :
 	grid_(
@@ -80,6 +80,36 @@ fcppt::container::grid::pos_ref_range<
 {
 	return
 		pos_range_.size();
+}
+
+template<
+	typename Grid
+>
+typename
+fcppt::container::grid::pos_ref_range<
+	Grid
+>::min_type const &
+fcppt::container::grid::pos_ref_range<
+	Grid
+>::min() const
+{
+	return
+		pos_range_.min();
+}
+
+template<
+	typename Grid
+>
+typename
+fcppt::container::grid::pos_ref_range<
+	Grid
+>::sup_type const &
+fcppt::container::grid::pos_ref_range<
+	Grid
+>::sup() const
+{
+	return
+		pos_range_.sup();
 }
 
 template<

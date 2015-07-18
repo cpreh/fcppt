@@ -54,16 +54,16 @@ public:
 	typedef
 	typename
 	iterator::min
-	min;
+	min_type;
 
 	typedef
 	typename
 	iterator::sup
-	sup;
+	sup_type;
 
 	pos_range(
-		min,
-		sup
+		min_type,
+		sup_type
 	);
 
 	iterator
@@ -82,15 +82,21 @@ public:
 
 	size_type
 	size() const;
+
+	min_type const &
+	min() const;
+
+	sup_type const &
+	sup() const;
 private:
 	iterator
 	make_iterator(
 		pos
 	) const;
 
-	min const min_;
+	min_type const min_;
 
-	sup const sup_;
+	sup_type const sup_;
 };
 
 }

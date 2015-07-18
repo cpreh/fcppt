@@ -37,11 +37,11 @@ make_pos_ref_crange_start_end(
 	typename
 	fcppt::container::grid::pos_ref_range<
 		Grid const
-	>::min const _min,
+	>::min_type const _min,
 	typename
 	fcppt::container::grid::pos_ref_range<
 		Grid const
-	>::sup const _sup
+	>::sup_type const _sup
 )
 {
 	return

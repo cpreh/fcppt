@@ -4,13 +4,16 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_CONTAINER_GRID_RANGE_SIZE_HPP_INCLUDED
-#define FCPPT_CONTAINER_GRID_RANGE_SIZE_HPP_INCLUDED
+#ifndef FCPPT_CONTAINER_GRID_RANGE_DIM_HPP_INCLUDED
+#define FCPPT_CONTAINER_GRID_RANGE_DIM_HPP_INCLUDED
 
+#include <fcppt/container/grid/dim.hpp>
 #include <fcppt/container/grid/min.hpp>
-#include <fcppt/container/grid/range_dim.hpp>
+#include <fcppt/container/grid/min_less_sup.hpp>
 #include <fcppt/container/grid/size_type.hpp>
 #include <fcppt/container/grid/sup.hpp>
+#include <fcppt/math/vector/arithmetic.hpp>
+#include <fcppt/math/vector/to_dim.hpp>
 
 
 namespace fcppt
@@ -21,19 +24,21 @@ namespace grid
 {
 
 /**
-\brief The number of elements in a grid range
+\brief The dimension of a grid range
 
 \ingroup fcpptcontainergrid
 
-The number of elements in the range given by \a _min and \a _sup.
+The dimension of the range given by \a _min and \a _sup.
 */
 template<
 	typename SizeType,
 	fcppt::container::grid::size_type Size
 >
-inline
-SizeType
-range_size(
+fcppt::container::grid::dim<
+	SizeType,
+	Size
+>
+range_dim(
 	fcppt::container::grid::min<
 		SizeType,
 		Size
@@ -45,10 +50,22 @@ range_size(
 )
 {
 	return
-		fcppt::container::grid::range_dim(
+		fcppt::container::grid::min_less_sup(
 			_min,
 			_sup
-		).content();
+		)
+		?
+			fcppt::math::vector::to_dim(
+				_sup.get()
+				-
+				_min.get()
+			)
+		:
+			fcppt::container::grid::dim<
+				SizeType,
+				Size
+			>::null()
+		;
 }
 
 }

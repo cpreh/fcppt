@@ -51,13 +51,13 @@ public:
 
 	typedef
 	typename
-	pos_range::min
-	min;
+	pos_range::min_type
+	min_type;
 
 	typedef
 	typename
-	pos_range::sup
-	sup;
+	pos_range::sup_type
+	sup_type;
 
 	typedef
 	typename
@@ -66,8 +66,8 @@ public:
 
 	pos_ref_range(
 		Grid &,
-		min,
-		sup
+		min_type,
+		sup_type
 	);
 
 	iterator
@@ -78,6 +78,12 @@ public:
 
 	size_type
 	size() const;
+
+	min_type const &
+	min() const;
+
+	sup_type const &
+	sup() const;
 private:
 	typedef
 	typename

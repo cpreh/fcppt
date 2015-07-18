@@ -235,6 +235,7 @@ set(
 	include/fcppt/container/grid/pos_reference_decl.hpp
 	include/fcppt/container/grid/pos_reference_fwd.hpp
 	include/fcppt/container/grid/pos_reference_impl.hpp
+	include/fcppt/container/grid/range_dim.hpp
 	include/fcppt/container/grid/range_size.hpp
 	include/fcppt/container/grid/resize_preserve.hpp
 	include/fcppt/container/grid/resize_preserve_init.hpp

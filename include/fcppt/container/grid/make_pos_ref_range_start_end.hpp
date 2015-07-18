@@ -40,11 +40,11 @@ make_pos_ref_range_start_end(
 	typename
 	fcppt::container::grid::pos_ref_range<
 		Grid
-	>::min const _min,
+	>::min_type const _min,
 	typename
 	fcppt::container::grid::pos_ref_range<
 		Grid
-	>::sup const _sup
+	>::sup_type const _sup
 )
 {
 	static_assert(
