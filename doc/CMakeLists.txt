@@ -423,12 +423,14 @@ set(
 	include/fcppt/container/grid/pos_iterator_decl.hpp
 	include/fcppt/container/grid/pos_iterator_fwd.hpp
 	include/fcppt/container/grid/pos_iterator_impl.hpp
+	include/fcppt/container/grid/pos_range.hpp
 	include/fcppt/container/grid/pos_range_decl.hpp
 	include/fcppt/container/grid/pos_range_fwd.hpp
 	include/fcppt/container/grid/pos_range_impl.hpp
 	include/fcppt/container/grid/pos_ref_iterator_decl.hpp
 	include/fcppt/container/grid/pos_ref_iterator_fwd.hpp
 	include/fcppt/container/grid/pos_ref_iterator_impl.hpp
+	include/fcppt/container/grid/pos_ref_range.hpp
 	include/fcppt/container/grid/pos_ref_range_decl.hpp
 	include/fcppt/container/grid/pos_ref_range_fwd.hpp
 	include/fcppt/container/grid/pos_ref_range_impl.hpp

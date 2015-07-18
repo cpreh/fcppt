@@ -10,9 +10,9 @@
 #include <fcppt/algorithm/detail/has_size.hpp>
 #include <fcppt/algorithm/detail/optimize_map.hpp>
 #include <fcppt/config/compiler.hpp>
-#include <fcppt/container/grid/object_impl.hpp>
-#include <fcppt/container/grid/pos_range_impl.hpp>
-#include <fcppt/container/grid/pos_ref_range_impl.hpp>
+#include <fcppt/container/grid/object.hpp>
+#include <fcppt/container/grid/pos_range.hpp>
+#include <fcppt/container/grid/pos_ref_range.hpp>
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>

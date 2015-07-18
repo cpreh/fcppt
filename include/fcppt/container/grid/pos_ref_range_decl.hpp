@@ -42,6 +42,10 @@ public:
 	iterator;
 
 	typedef
+	iterator
+	const_iterator;
+
+	typedef
 	fcppt::container::grid::pos_range<
 		typename
 		Grid::pos::value_type,

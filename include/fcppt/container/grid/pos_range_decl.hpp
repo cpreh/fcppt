@@ -47,6 +47,10 @@ public:
 	iterator;
 
 	typedef
+	iterator
+	const_iterator;
+
+	typedef
 	typename
 	iterator::value_type
 	pos;
