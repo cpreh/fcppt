@@ -18,6 +18,11 @@ namespace container
 namespace grid
 {
 
+/**
+\brief The type of a grid's size
+
+\ingroup fcpptcontainergrid
+*/
 template<
 	typename SizeType,
 	fcppt::container::grid::size_type N

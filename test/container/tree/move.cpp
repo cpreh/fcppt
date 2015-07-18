@@ -48,23 +48,33 @@ FCPPT_PP_POP_WARNING
 
 	BOOST_CHECK(
 		tree1.empty()
-		&&
-		tree1.value()
-		==
-		""
+	);
+
+	BOOST_CHECK_EQUAL(
+		tree1.value(),
+		std::string()
+	);
+
+	BOOST_CHECK_EQUAL(
+		tree2.value(),
+		std::string("root")
 	);
 
 	BOOST_CHECK(
-		tree2.value() == "root"
-		&& !tree2.empty()
-		&& tree2.front().value() == "child1"
+		!tree2.empty()
+	);
+
+	BOOST_CHECK_EQUAL(
+		tree2.front().value(),
+		std::string("child1")
 	);
 
 	BOOST_CHECK(
 		tree2.front().parent().has_value()
-		&&
-		tree2.front().parent().data()
-		==
+	);
+
+	BOOST_CHECK_EQUAL(
+		tree2.front().parent().data(),
 		&tree2
 	);
 
@@ -79,23 +89,33 @@ FCPPT_PP_POP_WARNING
 
 	BOOST_CHECK(
 		tree2.empty()
-		&&
-		tree2.value()
-		==
-		""
+	);
+
+	BOOST_CHECK_EQUAL(
+		tree2.value(),
+		std::string()
+	);
+
+	BOOST_CHECK_EQUAL(
+		tree3.value(),
+		std::string("root")
 	);
 
 	BOOST_CHECK(
-		tree3.value() == "root"
-		&& !tree3.empty()
-		&& tree3.front().value() == "child1"
+		!tree3.empty()
+	);
+
+	BOOST_CHECK_EQUAL(
+		tree3.front().value(),
+		std::string("child1")
 	);
 
 	BOOST_CHECK(
 		tree3.front().parent().has_value()
-		&&
-		tree3.front().parent().data()
-		==
+	);
+
+	BOOST_CHECK_EQUAL(
+		tree3.front().parent().data(),
 		&tree3
 	);
 }
@@ -163,11 +183,17 @@ FCPPT_PP_POP_WARNING
 		result.size()
 	);
 
-	BOOST_CHECK(
-		*result[0].value() == "foo"
+	BOOST_CHECK_EQUAL(
+		*result.at(
+			0
+		).value(),
+		std::string("foo")
 	);
 
-	BOOST_CHECK(
-		*result[1].value() == "bar"
+	BOOST_CHECK_EQUAL(
+		*result.at(
+			1
+		).value(),
+		std::string("bar")
 	);
 }

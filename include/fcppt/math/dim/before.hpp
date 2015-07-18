@@ -23,14 +23,23 @@ template<
 	typename N,
 	typename S
 >
+inline
 bool
 before(
-	object<T, N, S> const &_a,
-	object<T, N, S> const &_b
+	fcppt::math::dim::object<
+		T,
+		N,
+		S
+	> const &_a,
+	fcppt::math::dim::object<
+		T,
+		N,
+		S
+	> const &_b
 )
 {
 	return
-		math::detail::before(
+		fcppt::math::detail::before(
 			_a,
 			_b
 		);

@@ -189,13 +189,13 @@ add_fcppt_test(
 )
 
 add_fcppt_test(
-	container/grid/clamp_pos
+	container/grid/clamped_min
 	LINK_LIBS
 		"${fcppt_core_TARGET}"
 )
 
 add_fcppt_test(
-	container/grid/clamp_signed_pos
+	container/grid/clamped_sup
 	LINK_LIBS
 		"${fcppt_core_TARGET}"
 )

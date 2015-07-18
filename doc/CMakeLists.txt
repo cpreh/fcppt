@@ -110,6 +110,7 @@ set(
 	examples/container/bitfield.cpp
 	examples/container/grid.cpp
 	examples/container/grid_iteration.cpp
+	examples/container/grid_range.cpp
 	examples/container/raw_vector.cpp
 	examples/container/tree_simple.cpp
 	examples/container/tree_traversal.cpp
@@ -364,8 +365,8 @@ set(
 	include/fcppt/container/get_or_insert_result_impl.hpp
 	include/fcppt/container/get_or_insert_with_result.hpp
 	include/fcppt/container/grid/at_optional.hpp
-	include/fcppt/container/grid/clamp_pos.hpp
-	include/fcppt/container/grid/clamp_signed_pos.hpp
+	include/fcppt/container/grid/clamped_min.hpp
+	include/fcppt/container/grid/clamped_sup.hpp
 	include/fcppt/container/grid/comparison.hpp
 	include/fcppt/container/grid/detail/assign_fill_recurse.hpp
 	include/fcppt/container/grid/detail/assign_recurse.hpp
@@ -430,6 +431,7 @@ set(
 	include/fcppt/container/grid/pos_ref_range_decl.hpp
 	include/fcppt/container/grid/pos_ref_range_fwd.hpp
 	include/fcppt/container/grid/pos_ref_range_impl.hpp
+	include/fcppt/container/grid/pos_reference.hpp
 	include/fcppt/container/grid/pos_reference_decl.hpp
 	include/fcppt/container/grid/pos_reference_fwd.hpp
 	include/fcppt/container/grid/pos_reference_impl.hpp

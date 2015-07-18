@@ -29,6 +29,12 @@ add_fcppt_container_example(
 )
 
 add_fcppt_container_example(
+	grid_range
+	LINK_LIBS
+		${fcppt_core_TARGET}
+)
+
+add_fcppt_container_example(
 	tree_simple
 	LINK_LIBS
 		${fcppt_core_TARGET}

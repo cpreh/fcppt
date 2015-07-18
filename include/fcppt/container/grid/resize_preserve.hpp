@@ -22,6 +22,9 @@ namespace grid
 
 /**
 \brief Resizes \p _result to \p _newsize and preserves all elements possible
+
+\ingroup fcpptcontainergrid
+
 For every p where every component of p is less than every component of
 _new_size, _result[p] will be preserved
 */

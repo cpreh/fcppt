@@ -21,6 +21,9 @@ namespace grid
 
 /**
 \brief Like \ref resize_preserve but also initializes new elements
+
+\ingroup fcpptcontainergrid
+
 For every p where every component of p is greater or equal to \p _new_size
 _result[p] will be assigned from \p _value
 */

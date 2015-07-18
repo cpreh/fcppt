@@ -4,11 +4,12 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/container/grid/clamp_pos.hpp>
-#include <fcppt/container/grid/dim.hpp>
+#include <fcppt/container/grid/clamped_min.hpp>
+#include <fcppt/container/grid/min.hpp>
 #include <fcppt/container/grid/pos.hpp>
 #include <fcppt/math/vector/comparison.hpp>
 #include <fcppt/math/vector/output.hpp>
+#include <fcppt/math/vector/to_unsigned.hpp>
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
@@ -21,37 +22,30 @@ FCPPT_PP_PUSH_WARNING
 FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
 
 BOOST_AUTO_TEST_CASE(
-	container_grid_clamp_pos
+	container_grid_clamped_min
 )
 {
 FCPPT_PP_POP_WARNING
 
 	typedef
-	fcppt::container::grid::dim<
-		unsigned,
-		2
-	> dim;
-
-	typedef
 	fcppt::container::grid::pos<
-		unsigned,
+		int,
 		2
-	> pos;
+	>
+	pos;
 
 	BOOST_CHECK_EQUAL(
-		fcppt::container::grid::clamp_pos(
+		fcppt::container::grid::clamped_min(
 			pos(
-				4u,
-				5u
-			),
-			dim(
-				3u,
-				3u
+				-1,
+				5
 			)
-		),
-		pos(
-			3u,
-			3u
+		).get(),
+		fcppt::math::vector::to_unsigned(
+			pos(
+				0,
+				5
+			)
 		)
 	);
 }

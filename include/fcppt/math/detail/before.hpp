@@ -21,6 +21,7 @@ namespace detail
 template<
 	typename T
 >
+inline
 bool
 before(
 	T const &_a,

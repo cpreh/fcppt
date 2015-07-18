@@ -18,6 +18,11 @@ namespace container
 namespace grid
 {
 
+/**
+\brief A const pos ref range over a grid
+
+\ingroup fcpptcontainergrid
+*/
 template<
 	typename Grid
 >

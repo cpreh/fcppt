@@ -18,6 +18,11 @@ namespace container
 namespace grid
 {
 
+/**
+\brief The exception used by grid functions
+
+\ingroup fcpptcontainergrid
+*/
 class exception
 :
 	public fcppt::container::exception

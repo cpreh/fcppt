@@ -23,8 +23,9 @@ namespace grid
 {
 
 /**
-\ingroup fcpptcontainergrid
 \brief Outputs a grid
+
+\ingroup fcpptcontainergrid
 
 Outputs the grid \a _object to \a _stream. Every level of the grid will be
 wrapped in parenthesis. So, for example, a two dimensional grid of size

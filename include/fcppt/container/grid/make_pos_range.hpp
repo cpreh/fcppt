@@ -23,6 +23,13 @@ namespace container
 namespace grid
 {
 
+/**
+\brief A range over all positions
+
+\ingroup fcpptcontainergrid
+
+Creates a range of positions from "all zeroes" to, but not including, \a _size.
+*/
 template<
 	typename SizeType,
 	fcppt::container::grid::size_type Size

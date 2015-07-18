@@ -19,6 +19,13 @@ namespace container
 namespace grid
 {
 
+/**
+\brief A sub range over positions
+
+\ingroup fcpptcontainergrid
+
+Creates a range of positions from \a _min to, but not including, \a _sup.
+*/
 template<
 	typename SizeType,
 	fcppt::container::grid::size_type Size

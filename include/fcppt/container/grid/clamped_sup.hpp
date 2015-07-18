@@ -4,19 +4,17 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_CONTAINER_GRID_CLAMP_SIGNED_POS_HPP_INCLUDED
-#define FCPPT_CONTAINER_GRID_CLAMP_SIGNED_POS_HPP_INCLUDED
+#ifndef FCPPT_CONTAINER_GRID_CLAMPED_SUP_HPP_INCLUDED
+#define FCPPT_CONTAINER_GRID_CLAMPED_SUP_HPP_INCLUDED
 
-#include <fcppt/literal.hpp>
-#include <fcppt/cast/to_signed.hpp>
-#include <fcppt/cast/to_unsigned.hpp>
 #include <fcppt/container/grid/dim.hpp>
 #include <fcppt/container/grid/pos.hpp>
+#include <fcppt/container/grid/sup.hpp>
 #include <fcppt/container/grid/size_type.hpp>
-#include <fcppt/math/clamp.hpp>
 #include <fcppt/math/size_type.hpp>
 #include <fcppt/math/vector/init.hpp>
 #include <fcppt/config/external_begin.hpp>
+#include <algorithm>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
@@ -29,77 +27,65 @@ namespace grid
 {
 
 /**
-\brief Clamps a signed position to a grid's size
+\brief Clamps a position to a grid's size
 
 \ingroup fcpptcontainergrid
 */
 template<
-	typename Dest,
 	typename Source,
 	fcppt::container::grid::size_type Size
 >
-fcppt::container::grid::pos<
-	Dest,
+fcppt::container::grid::sup<
+	Source,
 	Size
 > const
-clamp_signed_pos(
+clamped_sup(
 	fcppt::container::grid::pos<
 		Source,
 		Size
 	> const _pos,
 	fcppt::container::grid::dim<
-		Dest,
+		Source,
 		Size
 	> const _size
 )
 {
 	static_assert(
-		std::is_signed<
+		std::is_unsigned<
 			Source
 		>::value,
-		"Source must be signed"
-	);
-
-	static_assert(
-		std::is_unsigned<
-			Dest
-		>::value,
-		"Dest must be unsigned"
+		"Source must be unsigned"
 	);
 
 	return
-		fcppt::math::vector::init<
-			fcppt::container::grid::pos<
-				Dest,
-				Size
-			>
+		fcppt::container::grid::sup<
+			Source,
+			Size
 		>(
-			[
-				&_pos,
-				&_size
-			](
-				fcppt::math::size_type const _index
-			)
-			{
-				return
-					fcppt::cast::to_unsigned(
-						fcppt::math::clamp(
+			fcppt::math::vector::init<
+				fcppt::container::grid::pos<
+					Source,
+					Size
+				>
+			>(
+				[
+					&_pos,
+					&_size
+				](
+					fcppt::math::size_type const _index
+				)
+				{
+					return
+						std::min(
 							_pos[
 								_index
 							],
-							fcppt::literal<
-								Source
-							>(
-								0
-							),
-							fcppt::cast::to_signed(
-								_size[
-									_index
-								]
-							)
-						)
-					);
-			}
+							_size[
+								_index
+							]
+						);
+				}
+			)
 		);
 }
 

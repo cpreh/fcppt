@@ -10,6 +10,7 @@
 #include <fcppt/container/grid/exception.hpp>
 #include <fcppt/string.hpp>
 
+
 namespace fcppt
 {
 namespace container
@@ -17,7 +18,11 @@ namespace container
 namespace grid
 {
 
-/// Thrown by the grid's \link fcppt::container::grid::object::at at \endlink function.
+/**
+\brief Thrown by the grid's \link fcppt::container::grid::object::at at \endlink function.
+
+\ingroup fcpptcontainergrid
+*/
 class out_of_range
 :
 	public fcppt::container::grid::exception

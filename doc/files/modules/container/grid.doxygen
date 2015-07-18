@@ -21,7 +21,8 @@ namespace grid
 <ul>
 	<li>\ref fcpptcontainergrid_introduction</li>
 	<li>\ref fcpptcontainergrid_init</li>
-	<li>\ref fcpptcontainergrid_iteration</li>
+	<li>\ref fcpptcontainergrid_ranges</li>
+	<li>\ref fcpptcontainergrid_layout</li>
 	<li>\ref fcpptcontainergrid_resizing</li>
 </ul>
 
@@ -50,7 +51,29 @@ There are three ways to initialize a grid:
 Here is a small example:
 \snippet container/grid.cpp grid_init
 
-\section fcpptcontainergrid_iteration Iteration
+\section fcpptcontainergrid_ranges Ranges
+
+To conveniently iterate over a grid, two ranges are provided:
+<ul>
+<li>\link fcppt::container::grid::pos_range\endlink</li> which
+is a range over positions.
+<li>\link fcppt::container::grid::pos_ref_range\endlink which is a range over
+positions paired with the elements of a grid.</li>
+</ul>
+
+Here is an example for pos ranges:
+
+\snippet container/grid_range.cpp pos_range
+
+Pos ref ranges can be used to interate over a grid's positions and elements
+simultaneously. Here is an example:
+
+\snippet container/grid_range.cpp pos_ref_range
+
+Additionally, you can iterate over sub ranges by using one of the
+<code>start_end</code> functions.
+
+\section fcpptcontainergrid_layout Layout
 
 Internally, the grid uses a <code>std::vector</code> or a \link
 fcppt::container::raw_vector\endlink to linearly represent the grid. The
@@ -74,10 +97,10 @@ means that iteration starts at the top left back (z=0) of the cube, then
 iterates over all elements with z equal to zero, then starts at the top left
 back (z=1) of the cube, and so on.
 </li>
-<li>...and so on in higher dimensions</li>
+<li>...and so on in higher dimensions.</li>
 </ul>
 
-Here is an example of each iteration method:
+Here is an example:
 
 \snippet container/grid_iteration.cpp grid_iteration
 

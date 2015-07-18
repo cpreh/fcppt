@@ -20,6 +20,11 @@ namespace container
 namespace grid
 {
 
+/**
+\brief The start type of a pos range
+
+\ingroup fcpptcontainergrid
+*/
 template<
 	typename SizeType,
 	fcppt::container::grid::size_type Size

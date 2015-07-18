@@ -20,10 +20,13 @@ namespace grid
 {
 
 /**
- * \brief Checks if the given position \p _pos is out of bounds.
- * \returns <code>true</code> if is not out of bounds, <code>false</code> otherwise.
- * \ingroup fcpptcontainergrid
- */
+\brief Checks if the given position \p _pos is out of bounds.
+
+\ingroup fcpptcontainergrid
+
+\returns <code>true</code> if is not out of bounds, <code>false</code> otherwise.
+
+*/
 template<
 	typename T,
 	fcppt::container::grid::size_type N,

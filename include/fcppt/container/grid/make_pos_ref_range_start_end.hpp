@@ -21,6 +21,13 @@ namespace container
 namespace grid
 {
 
+/**
+\brief A pos ref range over a sub-grid
+
+\ingroup fcpptcontainergrid
+
+Creates a pos ref range from \a _min to, but not including, \a _sup.
+*/
 template<
 	typename Grid
 >

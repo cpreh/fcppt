@@ -23,6 +23,14 @@ namespace container
 namespace grid
 {
 
+/**
+\brief The end position of a range
+
+\ingroup fcpptcontainergrid
+
+Returns the end position of a grid range that is formed by \a _min and \a _sup.
+This position is usually further than one past the last element.
+*/
 template<
 	typename SizeType,
 	fcppt::container::grid::size_type Size
