@@ -201,6 +201,12 @@ add_fcppt_test(
 )
 
 add_fcppt_test(
+	container/grid/clamped_sup_signed
+	LINK_LIBS
+		"${fcppt_core_TARGET}"
+)
+
+add_fcppt_test(
 	container/grid/comparison
 )
 

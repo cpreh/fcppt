@@ -367,6 +367,7 @@ set(
 	include/fcppt/container/grid/at_optional.hpp
 	include/fcppt/container/grid/clamped_min.hpp
 	include/fcppt/container/grid/clamped_sup.hpp
+	include/fcppt/container/grid/clamped_sup_signed.hpp
 	include/fcppt/container/grid/comparison.hpp
 	include/fcppt/container/grid/detail/assign_fill_recurse.hpp
 	include/fcppt/container/grid/detail/assign_recurse.hpp
