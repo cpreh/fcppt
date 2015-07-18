@@ -29,19 +29,6 @@ template<
 >
 fcppt::container::tree::object<
 	T
->::object()
-:
-	value_(),
-	parent_(),
-	children_()
-{
-}
-
-template<
-	typename T
->
-fcppt::container::tree::object<
-	T
 >::object(
 	T const &_value
 )

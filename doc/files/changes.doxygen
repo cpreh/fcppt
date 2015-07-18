@@ -38,8 +38,10 @@ can be omitted from <code>return</code> statements.</li>
 	<li>Added \link fcppt::container::at_optional\endlink.</li>
 	<li>Added \link fcppt::container::grid::pos_range\endlink which is just
 	a range over positions without a grid object.</li>
-	<lI>Added <code>%size</code> function \link
+	<li>Added <code>%size</code> function \link
 	fcppt::container::grid::pos_ref_range\endlink.</li>
+	<li>Removed default constructor of \link
+	fcppt::container::tree::object\endlink.</li>
 	</ul>
 </li>
 

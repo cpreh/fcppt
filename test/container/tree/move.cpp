@@ -68,7 +68,9 @@ FCPPT_PP_POP_WARNING
 		&tree2
 	);
 
-	string_tree tree3;
+	string_tree tree3(
+		"test"
+	);
 
 	tree3 =
 		std::move(

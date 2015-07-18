@@ -88,9 +88,6 @@ public:
 	>
 	const_optional_ref;
 
-	/// Constructs the tree using the default constructed value
-	object();
-
 	/// Constructs the object using the given value
 	explicit
 	object(
