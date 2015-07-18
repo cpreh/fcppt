@@ -1,11 +1,25 @@
 /**
 \defgroup fcpptalgorithm fcppt.algorithm
 \ingroup fcpptmain
-\brief General-purpose algorithms that don't really fit into a common category
+\brief General-purpose algorithms
+
+C++'s standard algorithms use iterators both for function inputs and outputs.
+This makes functional programming hard in two ways:
+<ul>
+<li>A range is expressed as a pair of values instead of a single value which
+makes composing ranges impossible.</li>
+<li>Functions do not return results. Instead, they return their result through
+output iterator parameters. This makes composing function calls
+impossible.</li>
+</ul>
+This module provides a collection of very common algorithms over ranges that
+fix both problems. Prominent examples are \link fcppt::algorithm::fold \endlink
+and \link fcppt::algorithm::map \endlink. To get the most out of them, these
+can be used in conjunction with a range library (like <code>Boost.Range</code>).
 */
 
 namespace fcppt
 {
-/// General-purpose algorithms that don't really fit into a common category
+/// General-purpose algorithms
 namespace algorithm {}
 }
