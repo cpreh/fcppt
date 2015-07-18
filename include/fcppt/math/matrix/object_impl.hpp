@@ -11,7 +11,6 @@
 #include <fcppt/no_init.hpp>
 #include <fcppt/math/detail/array_adapter_impl.hpp>
 #include <fcppt/math/detail/assign.hpp>
-#include <fcppt/math/detail/default_storage.hpp>
 #include <fcppt/math/detail/make_op_def.hpp>
 #include <fcppt/math/detail/make_variadic_constructor.hpp>
 #include <fcppt/math/matrix/object_decl.hpp>
@@ -28,31 +27,6 @@
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
-
-template<
-	typename T,
-	typename N,
-	typename M,
-	typename S
->
-fcppt::math::matrix::object<
-	T,
-	N,
-	M,
-	S
->::object()
-:
-	storage_(
-		fcppt::math::detail::default_storage<
-			fcppt::math::matrix::static_storage<
-				T,
-				N,
-				M
-			>
-		>()
-	)
-{
-}
 
 FCPPT_PP_PUSH_WARNING
 FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)

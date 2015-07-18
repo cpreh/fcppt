@@ -68,6 +68,8 @@ can be omitted from <code>return</code> statements.</li>
 	<li>Added \link fcppt::math::vector::init\endlink, \link
 	fcppt::math::box::init\endlink and \link fcppt::math::dim::init
 	\endlink.</li>
+	<li>Removed default constructor of \link
+	fcppt::math::matrix::object\endlink.</li>
 	</ul>
 </li>
 

@@ -170,11 +170,6 @@ public:
 	typedef std::reverse_iterator<const_iterator> const_reverse_iterator;
 
 	/**
-	\brief Calls the default constructor for every element
-	*/
-	object();
-
-	/**
 	\brief Construct an uninitialized matrix
 
 	\warning
