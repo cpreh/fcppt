@@ -7,7 +7,13 @@
 #ifndef FCPPT_DYNAMIC_POINTER_CAST_HPP_INCLUDED
 #define FCPPT_DYNAMIC_POINTER_CAST_HPP_INCLUDED
 
+#include <fcppt/optional_bind_construct.hpp>
+#include <fcppt/optional_impl.hpp>
 #include <fcppt/shared_ptr_impl.hpp>
+#include <fcppt/cast/try_dynamic.hpp>
+#include <fcppt/config/external_begin.hpp>
+#include <type_traits>
+#include <fcppt/config/external_end.hpp>
 
 
 namespace fcppt
@@ -29,16 +35,15 @@ the resulting shared_ptr will share ownership with the source.
 \tparam Source The type of the source shared_ptr
 
 \param _ptr The source shared_ptr
-
-\return The converted shared_ptr or an empty shared_ptr if the
-<code>dynamic_cast</code> fails
 */
 template<
 	typename Dest,
 	typename Source
 >
-fcppt::shared_ptr<
-	Dest
+fcppt::optional<
+	fcppt::shared_ptr<
+		Dest
+	>
 >
 dynamic_pointer_cast(
 	fcppt::shared_ptr<
@@ -47,15 +52,29 @@ dynamic_pointer_cast(
 )
 {
 	return
-		fcppt::shared_ptr<
-			Dest
-		>(
-			_ptr,
-			dynamic_cast<
-				Dest *
+		fcppt::optional_bind_construct(
+			fcppt::cast::try_dynamic<
+				typename
+				std::remove_pointer<
+					Dest
+				>::type &
 			>(
-				_ptr.get()
+				*_ptr
+			),
+			[
+				&_ptr
+			](
+				Dest &_dest
 			)
+			{
+				return
+					fcppt::shared_ptr<
+						Dest
+					>(
+						_ptr,
+						&_dest
+					);
+			}
 		);
 }
 

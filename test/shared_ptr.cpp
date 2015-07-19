@@ -7,6 +7,8 @@
 #include <fcppt/const_pointer_cast.hpp>
 #include <fcppt/dynamic_pointer_cast.hpp>
 #include <fcppt/make_shared_ptr.hpp>
+#include <fcppt/maybe.hpp>
+#include <fcppt/optional_impl.hpp>
 #include <fcppt/shared_ptr_impl.hpp>
 #include <fcppt/static_pointer_cast.hpp>
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
@@ -22,8 +24,10 @@ namespace
 
 struct base
 {
-	virtual ~base()
-	{}
+	virtual
+	~base()
+	{
+	}
 };
 
 struct derived
@@ -32,13 +36,17 @@ struct derived
 {
 };
 
-typedef fcppt::shared_ptr<
+typedef
+fcppt::shared_ptr<
 	base
-> base_ptr;
+>
+base_ptr;
 
-typedef fcppt::shared_ptr<
+typedef
+fcppt::shared_ptr<
 	derived
-> derived_ptr;
+>
+derived_ptr;
 
 }
 
@@ -57,26 +65,45 @@ FCPPT_PP_POP_WARNING
 		>()
 	);
 
-	derived_ptr ptr2(
-		fcppt::dynamic_pointer_cast<
-			derived
-		>(
-			ptr
-		)
-	);
+	{
+		fcppt::optional<
+			derived_ptr
+		> const ptr2(
+			fcppt::dynamic_pointer_cast<
+				derived
+			>(
+				ptr
+			)
+		);
 
-	BOOST_REQUIRE(
-		ptr2
-	);
+		BOOST_CHECK(
+			ptr2.has_value()
+		);
 
-	BOOST_REQUIRE(
-		ptr.use_count() == ptr2.use_count()
-	);
+		fcppt::maybe(
+			ptr2,
+			[]{
+				BOOST_CHECK(
+					false
+				);
+			},
+			[
+				&ptr
+			](
+				derived_ptr const &_ptr2
+			)
+			{
+				BOOST_CHECK_EQUAL(
+					ptr.use_count(),
+					_ptr2.use_count()
+				);
+			}
+		);
+	}
 
-	ptr2.reset();
-
-	BOOST_REQUIRE(
-		ptr.use_count() == 1
+	BOOST_CHECK_EQUAL(
+		ptr.use_count(),
+		1l
 	);
 }
 
@@ -95,26 +122,24 @@ FCPPT_PP_POP_WARNING
 		>()
 	);
 
-	derived_ptr ptr2(
-		fcppt::static_pointer_cast<
-			derived
-		>(
-			ptr
-		)
-	);
+	{
+		derived_ptr const ptr2(
+			fcppt::static_pointer_cast<
+				derived
+			>(
+				ptr
+			)
+		);
 
-	BOOST_REQUIRE(
-		ptr2
-	);
+		BOOST_CHECK_EQUAL(
+			ptr.use_count(),
+			ptr2.use_count()
+		);
+	}
 
-	BOOST_REQUIRE(
-		ptr.use_count() == ptr2.use_count()
-	);
-
-	ptr2.reset();
-
-	BOOST_REQUIRE(
-		ptr.use_count() == 1
+	BOOST_CHECK_EQUAL(
+		ptr.use_count(),
+		1l
 	);
 }
 
@@ -126,9 +151,12 @@ BOOST_AUTO_TEST_CASE(
 )
 {
 FCPPT_PP_POP_WARNING
-	typedef fcppt::shared_ptr<
+
+	typedef
+	fcppt::shared_ptr<
 		base const
-	> const_base_ptr;
+	>
+	const_base_ptr;
 
 	const_base_ptr const ptr(
 		fcppt::make_shared_ptr<
@@ -136,25 +164,23 @@ FCPPT_PP_POP_WARNING
 		>()
 	);
 
-	base_ptr ptr2(
-		fcppt::const_pointer_cast<
-			base
-		>(
-			ptr
-		)
-	);
+	{
+		base_ptr const ptr2(
+			fcppt::const_pointer_cast<
+				base
+			>(
+				ptr
+			)
+		);
 
-	BOOST_REQUIRE(
-		ptr2
-	);
+		BOOST_CHECK_EQUAL(
+			ptr.use_count(),
+			ptr2.use_count()
+		);
+	}
 
-	BOOST_REQUIRE(
-		ptr.use_count() == ptr2.use_count()
-	);
-
-	ptr2.reset();
-
-	BOOST_REQUIRE(
-		ptr.use_count() == 1
+	BOOST_CHECK_EQUAL(
+		ptr.use_count(),
+		1l
 	);
 }

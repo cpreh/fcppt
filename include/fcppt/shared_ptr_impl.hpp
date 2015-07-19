@@ -23,19 +23,6 @@ template<
 	typename Type,
 	typename Deleter
 >
-fcppt::shared_ptr<
-	Type,
-	Deleter
->::shared_ptr()
-:
-	impl_()
-{
-}
-
-template<
-	typename Type,
-	typename Deleter
->
 template<
 	typename Other
 >
@@ -223,9 +210,11 @@ fcppt::shared_ptr<
 	> const &_other
 )
 {
-	impl_ = _other.impl;
+	impl_ =
+		_other.impl;
 
-	return *this;
+	return
+		*this;
 }
 
 template<
@@ -253,7 +242,8 @@ fcppt::shared_ptr<
 		_other.release_ownership()
 	);
 
-	return *this;
+	return
+		*this;
 }
 
 template<
@@ -271,64 +261,6 @@ template<
 	typename Type,
 	typename Deleter
 >
-void
-fcppt::shared_ptr<
-	Type,
-	Deleter
->::reset()
-{
-	impl_.reset();
-}
-
-template<
-	typename Type,
-	typename Deleter
->
-template<
-	typename Other
->
-void
-fcppt::shared_ptr<
-	Type,
-	Deleter
->::reset(
-	Other *const _ptr
-)
-{
-       	impl_.reset(
-		_ptr,
-		Deleter()
-	);
-}
-
-template<
-	typename Type,
-	typename Deleter
->
-template<
-	typename Other,
-	typename Alloc
->
-void
-fcppt::shared_ptr<
-	Type,
-	Deleter
->::reset(
-	Other *const _ptr,
-	Alloc const &_alloc
-)
-{
-	impl_.reset(
-		_ptr,
-		Deleter(),
-		_alloc
-	);
-}
-
-template<
-	typename Type,
-	typename Deleter
->
 typename fcppt::shared_ptr<
 	Type,
 	Deleter
@@ -338,7 +270,8 @@ fcppt::shared_ptr<
 	Deleter
 >::operator* () const
 {
-	return *impl_;
+	return
+		*impl_;
 }
 
 template<
@@ -354,7 +287,8 @@ fcppt::shared_ptr<
 	Deleter
 >::operator-> () const
 {
-	return impl_.operator->();
+	return
+		impl_.operator->();
 }
 
 template<
@@ -368,24 +302,10 @@ typename fcppt::shared_ptr<
 fcppt::shared_ptr<
 	Type,
 	Deleter
->::get() const
-{
-	return impl_.get();
-}
-
-template<
-	typename Type,
-	typename Deleter
->
-fcppt::shared_ptr<
-	Type,
-	Deleter
->::operator
-bool() const
+>::get_pointer() const
 {
 	return
-		impl_.get()
-		!= nullptr;
+		impl_.get();
 }
 
 template<
@@ -398,7 +318,8 @@ fcppt::shared_ptr<
 	Deleter
 >::unique() const
 {
-	return impl_.unique();
+	return
+		impl_.unique();
 }
 
 template<
@@ -411,7 +332,8 @@ fcppt::shared_ptr<
 	Deleter
 >::use_count() const
 {
-	return impl_.use_count();
+	return
+		impl_.use_count();
 }
 
 template<
@@ -442,13 +364,14 @@ template<
 typename fcppt::shared_ptr<
 	Type,
 	Deleter
->::impl_type const
+>::impl_type
 fcppt::shared_ptr<
 	Type,
 	Deleter
 >::std_ptr() const
 {
-	return impl_;
+	return
+		impl_;
 }
 
 template<
@@ -520,7 +443,9 @@ fcppt::operator==(
 )
 {
 	return
-		_a.std_ptr() == _b.std_ptr();
+		_a.std_ptr()
+		==
+		_b.std_ptr();
 }
 
 template<
@@ -541,7 +466,9 @@ fcppt::operator!=(
 )
 {
 	return
-		_a.std_ptr() != _b.std_ptr();
+		_a.std_ptr()
+		!=
+		_b.std_ptr();
 }
 
 template<
@@ -562,7 +489,9 @@ fcppt::operator<(
 )
 {
 	return
-		_a.std_ptr() < _b.std_ptr();
+		_a.std_ptr()
+		<
+		_b.std_ptr();
 }
 
 template<

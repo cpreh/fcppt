@@ -51,7 +51,7 @@ const_pointer_cast(
 			const_cast<
 				Dest *
 			>(
-				_ptr.get()
+				_ptr.get_pointer()
 			)
 		);
 }

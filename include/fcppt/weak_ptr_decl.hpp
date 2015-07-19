@@ -7,6 +7,7 @@
 #ifndef FCPPT_WEAK_PTR_DECL_HPP_INCLUDED
 #define FCPPT_WEAK_PTR_DECL_HPP_INCLUDED
 
+#include <fcppt/optional_fwd.hpp>
 #include <fcppt/shared_ptr_fwd.hpp>
 #include <fcppt/weak_ptr_fwd.hpp>
 #include <fcppt/config/external_begin.hpp>
@@ -42,27 +43,31 @@ public:
 	\brief The type if the <code>boost::weak_ptr</code> used to implement
 	this class
 	*/
-	typedef std::weak_ptr<
+	typedef
+	std::weak_ptr<
 		Type
-	> impl_type;
+	>
+	impl_type;
 
 	/**
 	\brief The corresponding shared pointer class
 	*/
-	typedef fcppt::shared_ptr<
+	typedef
+	fcppt::shared_ptr<
 		Type,
 		Deleter
-	> shared_ptr;
+	>
+	shared_ptr;
 
 	/**
 	\brief The element type, which is \a Type
 	*/
-	typedef Type element_type;
+	typedef
+	Type
+	element_type;
 
 	/**
-	\brief Constructs an empty weak_ptr
-
-	Constructs an empty weak_ptr that won't belong to any shared object
+	\brief Constructs an empty weak ptr
 	*/
 	weak_ptr();
 
@@ -90,9 +95,8 @@ public:
 	/**
 	\brief Constructs a weak_ptr from a compatible shared_ptr
 
-	Constructs a weak_ptr from the shared_ptr \a ref. If the shared_ptr is
-	empty, so will be this weak_ptr. Otherwise, this weak_ptr will keep
-	track of the shared count of the shared_ptr.
+	Constructs a weak_ptr from the shared_ptr \a ref which will keep track
+	of the shared count of the shared_ptr.
 
 	\tparam Other A type, so that <code>Other *</code> is implicitly
 	convertible to <code>Type *</code>
@@ -113,13 +117,14 @@ public:
 	\brief Returns a shared_ptr pointing to the shared object of this
 	weak_ptr
 
-	If this weak_ptr is empty, then an empty shared_ptr will be returned.
-	Otherwise, if the shared object is still aive (which means that the
-	reference count is still greater than zero)), then a new shared_ptr
-	also owning that object will be returned. If all shared_ptrs have been
-	destroyed, then an empty shared_ptr will be returned.
+	If the shared object is still alive (which means that the reference
+	count is still greater than zero), then a new shared_ptr also owning
+	that object will be returned. If all shared_ptrs have been destroyed,
+	then an empty optional will be returned.
 	*/
-	shared_ptr const
+	fcppt::optional<
+		shared_ptr
+	>
 	lock() const;
 
 	/**
@@ -144,15 +149,6 @@ public:
 	expired() const;
 
 	/**
-	\brief Resets this weak_ptr, making it empty
-
-	If this weak_ptr is already empty, nothing happens. Otherwise, it will
-	be made empty.
-	*/
-	void
-	reset();
-
-	/**
 	\brief Swaps the weak_ptr
 
 	Swaps the weak_ptr with \a other.
@@ -167,7 +163,7 @@ public:
 	/**
 	\brief Returns the underlying <code>boost::weak_ptr</code> object
 	*/
-	impl_type const
+	impl_type
 	std_ptr() const;
 private:
 	impl_type impl_;

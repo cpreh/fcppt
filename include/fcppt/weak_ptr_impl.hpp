@@ -7,8 +7,12 @@
 #ifndef FCPPT_WEAK_PTR_IMPL_HPP_INCLUDED
 #define FCPPT_WEAK_PTR_IMPL_HPP_INCLUDED
 
+#include <fcppt/optional_impl.hpp>
 #include <fcppt/shared_ptr_fwd.hpp>
 #include <fcppt/weak_ptr_decl.hpp>
+#include <fcppt/config/external_begin.hpp>
+#include <utility>
+#include <fcppt/config/external_end.hpp>
 
 
 template<
@@ -74,19 +78,42 @@ template<
 	typename Type,
 	typename Deleter
 >
-typename fcppt::weak_ptr<
-	Type,
-	Deleter
->::shared_ptr const
+fcppt::optional<
+	typename
+	fcppt::weak_ptr<
+		Type,
+		Deleter
+	>::shared_ptr
+>
 fcppt::weak_ptr<
 	Type,
 	Deleter
 >::lock() const
 {
+	typename
+	shared_ptr::impl_type result(
+		impl_.lock()
+	);
+
+	typedef
+	fcppt::optional<
+		shared_ptr
+	>
+	result_type;
+
        	return
-		shared_ptr(
-			impl_.lock()
-		);
+		result
+		?
+			result_type(
+				shared_ptr(
+					std::move(
+						result
+					)
+				)
+			)
+		:
+			result_type()
+		;
 }
 
 template<
@@ -125,19 +152,6 @@ void
 fcppt::weak_ptr<
 	Type,
 	Deleter
->::reset()
-{
-	impl_.reset();
-}
-
-template<
-	typename Type,
-	typename Deleter
->
-void
-fcppt::weak_ptr<
-	Type,
-	Deleter
 >::swap(
 	weak_ptr &_other
 )
@@ -154,13 +168,14 @@ template<
 typename fcppt::weak_ptr<
 	Type,
 	Deleter
->::impl_type const
+>::impl_type
 fcppt::weak_ptr<
 	Type,
 	Deleter
 >::std_ptr() const
 {
-	return impl_;
+	return
+		impl_;
 }
 
 template<

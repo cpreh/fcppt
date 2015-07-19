@@ -156,6 +156,7 @@ right()
 }
 
 #include <fcppt/dynamic_pointer_cast.hpp>
+#include <fcppt/optional_impl.hpp>
 
 namespace
 {
@@ -176,19 +177,25 @@ base
 void
 cast()
 {
-	typedef fcppt::shared_ptr<
+	typedef
+	fcppt::shared_ptr<
 		base
-	> base_ptr;
+	>
+	base_ptr;
 
 	base_ptr ptr(
 		new derived()
 	);
 
-	typedef fcppt::shared_ptr<
+	typedef
+	fcppt::shared_ptr<
 		derived
-	> derived_ptr;
+	>
+	derived_ptr;
 
-	derived_ptr dptr(
+	fcppt::optional<
+		derived_ptr
+	> dptr(
 		fcppt::dynamic_pointer_cast<
 			derived
 		>(
@@ -197,7 +204,7 @@ cast()
 	);
 
 	if(
-		dptr
+		dptr.has_value()
 	)
 		fcppt::io::cout()
 			<< FCPPT_TEXT("ptr points to a derived.\n");

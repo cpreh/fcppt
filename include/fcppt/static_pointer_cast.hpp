@@ -55,7 +55,7 @@ static_pointer_cast(
 			fcppt::cast::static_downcast_ptr<
 				Dest *
 			>(
-				_ptr.get()
+				_ptr.get_pointer()
 			)
 		);
 }

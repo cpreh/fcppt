@@ -32,9 +32,9 @@ reference count. Copying shared pointers increases the count by one, while
 destroying shared pointers decrases the count by one. If the count reaches
 zero, the object that is pointed to will be destroyed.
 
-The class is implemented using <code>std::shared_ptr</code>, so it will
-inherit all its traits. This means that the class also uses type erasure for
-its deleter and internal ref count.
+The class is implemented using <code>std::shared_ptr</code>, so it will inherit
+most of its traits. This means that the class also uses type erasure for its
+deleter and internal ref count.
 
 \tparam Type The type the shared pointer points to
 
@@ -76,13 +76,6 @@ public:
 	typedef typename std::add_lvalue_reference<
 		element_type
 	>::type reference;
-
-	/**
-	\brief Constructs an empty shared_ptr
-
-	The shared_ptr will not be set, and get() will return a null pointer
-	*/
-	shared_ptr();
 
 	/**
 	\brief Constructs a shared_ptr from a compatible pointer type
@@ -175,8 +168,8 @@ public:
 	/**
 	\brief Constructs a shared_ptr that shares ownership with another
 
-	Constructs a shared_ptr that shares ownership with \a ref and
-	stores \a data. This is useful for implementing dynamic_pointer_cast and so on.
+	Constructs a shared_ptr that shares ownership with \a ref and stores \a
+	data. This is useful for implementing dynamic_pointer_cast and so on.
 
 	\tparam Other A type, so that <code>Other *</code> is implicitly
 	convertible to <code>Type *</code>
@@ -289,67 +282,6 @@ public:
 	~shared_ptr();
 
 	/**
-	\brief Resets this shared_ptr
-
-	If this shared_ptr is empty, nothing happens. Otherwise, the shared
-	count will be decreased by one, possibly leading to the destruction of
-	the object. In any case, this shared_ptr will be empty.
-	*/
-	void
-	reset();
-
-	/**
-	\brief Resets this shared_ptr from a compatible pointer type
-
-	If this shared_ptr is empty, no possible destruction happens.
-	Otherwise, the shared count will be decreased by one, possibly leading
-	to the destruction of the object. After that, this shared_ptr will take
-	ownership of \a pointer.
-
-	\tparam Other A type, so that <code>Other *</code> is implicitly
-	convertible to <code>T *</code>
-
-	\param pointer The pointer to take ownership of
-	*/
-	template<
-		typename Other
-	>
-	void
-	reset(
-		Other *pointer
-	);
-
-	/**
-	\brief Resets this shared_ptr from a compatible pointer type, and
-	resets the allocator
-
-	If this shared_ptr is empty, no possible destruction happens.
-	Otherwise, the shared count will be decreased by one, possibly leading
-	to the destruction of the object. After that, this shared_ptr will take
-	ownership of \a pointer. The allocation of the new shared count will be
-	done by \a allocator and the shared_ptr will use this allocator from
-	here on.
-
-	\tparam Other A type, so that <code>Other *</code> is implicitly
-	convertible to <code>T *</code>
-
-	\tparam Alloc An allocator type
-
-	\param pointer The pointer to take ownership of
-
-	\param alloactor The new allocator to use
-	*/
-	template<
-		typename Other,
-		typename Alloc
-	>
-	void
-	reset(
-		Other *pointer,
-		Alloc const &alloactor
-	);
-
-	/**
 	\brief Dereferences the owned pointer
 
 	Returns a reference to the owned object.
@@ -376,15 +308,7 @@ public:
 	shared_ptr is empty.
 	*/
 	pointer
-	get() const;
-
-	/**
-	\brief The safe bool trick
-
-	Returns something that evaluates to true if the shared_ptr is not empty
-	and false otherwise
-	*/
-	explicit operator bool() const;
+	get_pointer() const;
 
 	/**
 	\brief Returns if this shared_ptr is the only owner of the current object
@@ -424,7 +348,7 @@ public:
 	/**
 	\brief Returns the underlying <code>std::shared_ptr</code> object
 	*/
-	impl_type const
+	impl_type
 	std_ptr() const;
 
 // \cond

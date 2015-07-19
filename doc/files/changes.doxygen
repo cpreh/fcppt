@@ -182,6 +182,15 @@ can be omitted from <code>return</code> statements.</li>
 	</ul>
 </li>
 
+<li>\ref fcpptsmartptr
+	<ul>
+	<li>Removed default constructor of \link
+	fcppt::shared_ptr\endlink.</li>
+	<li>\link fcppt::weak_ptr::lock\endlink now returns an optional shared
+	ptr.</li>
+	</ul>
+</li>
+
 <li>\ref fcpptrandom
 	<ul>
 	<li>\link
@@ -195,7 +204,7 @@ can be omitted from <code>return</code> statements.</li>
 	<ul>
 	<li>Removed <code>fcppt/strong_typedef_input.hpp</code> and
 	<code>fcppt/strong_typedef_output.hpp</code> from
-	<code>fcppt/strong_typedef.hpp</code>.
+	<code>fcppt/strong_typedef.hpp</code>.</li>
 	</ul>
 </li>
 
