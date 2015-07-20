@@ -10,6 +10,7 @@
 #include <fcppt/text.hpp>
 #include <fcppt/unique_ptr_impl.hpp>
 #include <fcppt/unique_ptr_to_base.hpp>
+#include <fcppt/unique_ptr_to_const.hpp>
 #include <fcppt/io/cout.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <utility>
@@ -28,8 +29,8 @@ typedef fcppt::unique_ptr<
 unique_int_ptr
 int_ptr_factory()
 {
-	// make_unique_ptr is a factory function to make a unique_ptr
-	// An rvalue is returned here, so no moving is necessary.
+	// make_unique_ptr_fcppt is a factory function to make a unique_ptr An
+	// rvalue is returned here, so no moving is necessary.
 	return
 		fcppt::make_unique_ptr_fcppt<
 			int
@@ -53,7 +54,6 @@ int_ptr_arg(
 void
 test()
 {
-	// moving unique_ptrs from rvalues works out of the box
 	int_ptr_arg(
 		int_ptr_factory()
 	);
@@ -136,15 +136,16 @@ to_shared_ptr(
 		);
 }
 
-
 }
 
 namespace
 {
 
+//! [unique_ptr_to_base]
 struct base
 {
-	virtual ~base()
+	virtual
+	~base()
 	{
 	}
 };
@@ -158,9 +159,11 @@ struct dervied
 void
 test4()
 {
-	typedef fcppt::unique_ptr<
+	typedef
+	fcppt::unique_ptr<
 		base
-	> base_ptr;
+	>
+	base_ptr;
 
 	base_ptr foo(
 		fcppt::unique_ptr_to_base<
@@ -172,6 +175,7 @@ test4()
 		)
 	);
 }
+//! [unique_ptr_to_base]
 
 }
 
@@ -180,6 +184,33 @@ namespace
 
 void
 test5()
+{
+//! [unique_ptr_to_const]
+	typedef
+	fcppt::unique_ptr<
+		int const
+	>
+	const_int_ptr;
+
+	const_int_ptr foo(
+		fcppt::unique_ptr_to_const(
+			fcppt::make_unique_ptr_fcppt<
+				int
+			>(
+				42
+			)
+		)
+	);
+//! [unique_ptr_to_const]
+}
+
+}
+
+namespace
+{
+
+void
+test6()
 {
 //! [unique_ptr_const]
 	typedef fcppt::unique_ptr<
@@ -240,10 +271,10 @@ foo::foo()
 
 foo::~foo() = default;
 //! [unique_ptr_pimpl_cpp]
-
 }
 
-int main()
+int
+main()
 {
 	::test();
 
@@ -258,6 +289,8 @@ int main()
 	::test4();
 
 	::test5();
+
+	::test6();
 
 	foo f;
 }

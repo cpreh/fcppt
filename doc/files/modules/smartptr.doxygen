@@ -20,6 +20,7 @@
 	<ul>
 		<li>\ref smartptr_unique_ptr_usage</li>
 		<li>\ref smartptr_unique_ptr_move</li>
+		<li>\ref smartptr_unique_ptr_convert</li>
 		<li>\ref smartptr_unique_ptr_const</li>
 		<li>\ref smartptr_unique_ptr_pimpl</li>
 	</ul>
@@ -37,21 +38,21 @@
 
 \section smartptr_introduction Introduction
 
-C++ manages dynamic memory by raw pointers that you have to free explicitly at
-some point. The general problem with this approach is that it can be easily
-forgotten to free the memory. The reasons for that are that the programmer can
-simply forget or that a control flow is executed (for example, an exception is
-thrown), so that the point where the memory should be freed won't be reached.
-
-A smart pointer is a class that takes ownership over the pointer, freeing the
+A smart pointer is a class that takes ownership over a pointer, freeing the
 object pointed to when the smart pointer is destroyed. Such a smart pointer
 resides on the stack, so freeing is done automatically.
 
-fcppt provides several kinds of smart pointers, where some of them are also
-provided by Boost or by C++11. The difference is that the deleter (which
-dictates how the object is to be freed) is a template parameter for all
-classes. This is a trade-off and removes some of the dynamic behaviour,
-switching it for a statically type-safe one.
+fcppt provides all smart pointers that are also in C++11 with the following
+changes:
+<ul>
+<li>fcppt's smart pointers do not have a default constructor and are not meant
+to be used as null pointers. Instead, \ref fcppt.optional should be used.</li>
+<li>Deleters are template parameters for all smart pointers. This is a
+trade-off and removes some of the dynamic behaviour, switching it for a
+statically type-safe one.</li>
+<li>Deleters do not use template parameters of their own. If a smart pointer is
+convertible to another smart pointer solely depends on the pointer type.</li>
+</ul>
 
 \section smartptr_types Smart pointer types
 
@@ -62,8 +63,17 @@ fcppt provides three smart pointer classes, each with their own trade-offs.
 <th>Class name</th>
 <th>Description</th>
 </tr>
+
 <tr>
-<td>fcppt::shared_ptr</td>
+<td>\link fcppt::unique_ptr\endlink</td>
+
+<td>A move-only smart pointer that is the unique owner of an object. This
+should be the default choice of smart pointer.</td>
+
+</tr>
+
+<tr>
+<td>\link fcppt::shared_ptr\endlink</td>
 
 <td>Manages objects using a shared count. Every shared ptr pointing to the same
 object increases the shared count by one. The object will only be destroyed
@@ -72,51 +82,31 @@ when all shared ptrs have been destroyed.</td>
 </tr>
 
 <tr>
-<td>fcppt::weak_ptr</td>
+<td>\link fcppt::weak_ptr\endlink</td>
 
 <td>A weak reference to an object managed by shared ptrs. This smart pointer
-doesn't contribute to the shared count and can be used to observe if
-shared ptrs are still alive.</td>
+doesn't contribute to the shared count and can be used to observe if shared
+ptrs are still alive.</td>
 
 </tr>
 </table>
-
-fcppt used to provide its own unique ptr for C++03. However, C++11's
-<code>std::unique_ptr</code> already uses a static deleter, so it is not wrapped.
-
-<table>
-<tr>
-<td><code>std::unique_ptr</code></td>
-
-<td>A replacement for <code>std::auto_ptr</code>. Only one unique ptr will
-manage ownership at a time. It can be transfered into a shared ptr. The
-difference to <code>std::auto_ptr</code> is that transferring ownership from
-one unique ptr to another is syntactically safer and works with move
-semantics.</td>
-
-</tr>
-</table>
-
-
 
 \section smartptr_shared_ptr Shared Pointers
 
-Multiple fcppt::shared_ptr that point to the same object share ownership by
-internally managing a shared count that counts how many shared ptrs are left.
-This shared count will be increased whenever a shared ptr is copied and
-decreased when one is destroyed.
+Multiple \link fcppt::shared_ptr\endlink that point to the same object share
+ownership by internally managing a shared count that counts how many shared
+ptrs are left. This shared count will be increased whenever a shared ptr is
+copied and decreased when one is destroyed.
 
-Generally, it is advisable to think twice before using a shared ptr. Under most
-circumstances, shared ownership is not really necessary and a unique ptr should
-be used instead.
+For most use cases, unique ptrs should be preferred over shared ptrs.
 
 The general traits of a shared ptr are as follows:
 
 <ul>
 
-<li>Copying, destroying and assigning of shared ptrs is thread safe. This
-usually means that these operators have to consist of some atomic operations,
-making them a lot less cheap than they might seem.</li>
+<li>Copying, destroying and assigning of shared ptrs is thread-safe. This
+usually means that these atomic operations are involved, making the operations
+a lot less cheap than they might seem.</li>
 
 <li>Although the shared ptr gets its deleter as a template parameter, it does
 type erasure on it. This implies that the owned object does not have to be
@@ -125,11 +115,11 @@ complete unless the shared ptr is constructed or dereferenced.</li>
 <li>Because not only the shared count but also the owned object must be
 dynamically allocated, it is possible to put them both into the same memory
 block if the deleter is the default one that uses <code>delete</code>. This is
-done by fcppt::make_shared_ptr.</li>
+done by \link fcppt::make_shared_ptr\endlink.</li>
 
-<li>An fcppt::weak_ptr can be used to keep track of the shared ptrs to one
-object without contributing to the shared count. This way it is possible to
-observe if shared ptrs are still alive.</li>
+<li>An \link fcppt::weak_ptr\endlink can be used to keep track of the shared
+ptrs to one object without contributing to the shared count. This way it is
+possible to observe if shared ptrs are still alive.</li>
 
 <li>Casting shared pointers must be done through special functions, so that the
 shared count between them is preserved.</li>
@@ -142,18 +132,18 @@ Here is a simple example using shared pointers.
 
 \subsection smartptr_shared_ptr_make_shared Using make_shared
 
-fcppt::make_shared_ptr can be used to place an object allocated via new into
-the same memory block as the shared count managed by the shared ptrs. Another
-reason to use this function is to avoid memory leaks, that can happen due to
-C++'s unspecified order of evaluation, if you are not careful.
+\link fcppt::make_shared_ptr\endlink can be used to place an object allocated
+via new into the same memory block as the shared count managed by the shared
+ptrs. Another reason to use this function is to avoid memory leaks, that can
+happen due to C++'s unspecified order of evaluation, if you are not careful.
 
-Here is an example of how not using fcppt::make_shared_ptr can lead to a memory
-leak.
+Here is an example of how not using \link fcppt::make_shared_ptr\endlink can
+lead to a memory leak.
 
 \snippet shared_ptr.cpp shared_ptr_make_shared_wrong
 
-Using fcppt::make_shared_ptr eliminates this problem and also makes the dynamic
-memory management of the shared ptrs more efficient.
+Using \link fcppt::make_shared_ptr\endlink eliminates this problem and also
+makes the dynamic memory management of the shared ptrs more efficient.
 
 \snippet shared_ptr.cpp shared_ptr_make_shared_right
 
@@ -161,8 +151,7 @@ memory management of the shared ptrs more efficient.
 
 A weak pointer can be used to keep track of the shared ptrs to one object
 without contributing to the shared count. We can then observe if a shared ptr
-is still alive. This can also be used to break cycles, but it is not
-recommended to introduce cycles anyway.
+is still alive. This can also be used to break cycles.
 
 A weak ptr can be used as follows:
 
@@ -173,8 +162,8 @@ A weak ptr can be used as follows:
 When casting shared ptrs, using <code>static_cast</code>,
 <code>dynamic_cast</code> or <code>const_cast</code> directly will not work,
 because the shared count will not be preserved. Instead, we have to use one of
-the special functions fcppt::static_pointer_cast, fcppt::dynamic_pointer_cast
-or fcppt::const_pointer_cast.
+the special functions \link fcppt::static_pointer_cast\endlink, \link
+fcppt::dynamic_pointer_cast\endlink or \link fcppt::const_pointer_cast\endlink.
 
 Here is an example:
 
@@ -182,26 +171,28 @@ Here is an example:
 
 \section smartptr_unique_ptr Unique Pointers
 
-A <code>std::unique_ptr</code> is a replacement for <code>std::auto_ptr</code>. In contrast
-to a shared ptr, a unique ptr always is the sole owner of an object.
+In contrast to a shared ptr, a unique ptr always is the sole owner of an
+object.
 
 The general traits of a unique ptr are as follows:
 
 <ul>
 
-<li>unique ptrs cannot be copied or assigned. Instead, they must be
-<em>moved</em>, which takes the ownership away from the original owner.
-Copying or assigning from rvalues works without moving.</li>
+<li>Unique ptrs cannot be copied or assigned. Instead, they must be
+<em>moved</em>, which takes the ownership away from the original owner. This
+also means that the moved-from object will become the null pointer, so it
+should not be dereferenced.</li>
 
-<li>unique ptrs don't use type erasure for their deleter. This means that when
+<li>Unique ptrs don't use type erasure for their deleter. This means that when
 constructing, copying, assigning, destroying or dereferencing unique ptrs, the
 type of the pointed to object must usually be complete (this depends on the
 deleter used).</li>
 
-<li>fcppt::make_unique_ptr should be used to construct unique ptrs. It is
-similar to fcppt::make_shared_ptr in the sense that it helps to avoid memory
-leaks, but it is not more efficient than normal construction of unique ptrs,
-because there is no shared count to keep track of.</li>
+<li>\link fcppt::make_unique_ptr_fcppt\endlink should be used to construct
+unique ptrs. It is similar to \link fcppt::make_shared_ptr\endlink in the sense
+that it helps to avoid memory leaks, but it is not more efficient than normal
+construction of unique ptrs, because there is no shared count to keep track
+of.</li>
 
 </ul>
 
@@ -209,13 +200,13 @@ because there is no shared count to keep track of.</li>
 
 The first thing to note is that unique ptrs are an excellent candidate for
 factory functions. They don't impose overly strict ownership requirements like
-shared ptr does. However, unique ptrs can be converted into shared ptrs
+shared ptr does. However, unique ptrs can be converted into shared ptrs as
 desired. The following example shows how such a factory can be created.
 
 \snippet unique_ptr.cpp unique_ptr_factory
 
-The return of <code>make_unique_ptr</code> doesn't require a move, because it
-returns an rvalue.
+The return of <code>make_unique_ptr_fcppt</code> doesn't require a move,
+because it returns an rvalue.
 
 The factory can be used as follows:
 
@@ -234,6 +225,19 @@ ensure that a unique ptr doesn't accidentally get its object disowned.
 Consider the following example where an implicit move would be very dangerous:
 
 \snippet unique_ptr.cpp unique_ptr_move_dangerous
+
+\subsection smartptr_unique_ptr_convert Converting Pointers
+
+Unique pointers are not implicitly convertible to any other unique pointers.
+To convert a unique pointer to a unique pointer to base, use \link
+fcppt::unique_ptr_to_base\endlink.
+
+\snippet unique_ptr.cpp unique_ptr_to_base
+
+Similarly, \link fcppt::unique_ptr_to_const\endlink must be used to obtain a
+unique pointer to a const object.
+
+\snippet unique_ptr.cpp unique_ptr_to_const
 
 \subsection smartptr_unique_ptr_const Const Unique Pointers
 
@@ -281,7 +285,15 @@ their semantics are as follows:
 <table>
 <tr>
 <td>
-fcppt::c_deleter
+\link fcppt::default_deleter\endlink
+</td>
+<td>
+<code>delete ptr;</code>
+</td>
+</tr>
+<tr>
+<td>
+\link fcppt::c_deleter\endlink
 </td>
 <td>
 <code>std::free(ptr);</code>
@@ -289,24 +301,10 @@ fcppt::c_deleter
 </tr>
 <tr>
 <td>
-fcppt::com_deleter
+\link fcppt::com_deleter\endlink
 </td>
 <td>
 <code>if(ptr) ptr->Release();</code>
-</td>
-</tr>
-</table>
-
-C++11 provides <code>std::default_delete</code> which is the
-default deleter for every smart pointer.
-
-<table>
-<tr>
-<td>
-<code>std::default_delete<Type></code>
-</td>
-<td>
-<code>delete ptr;</code>
 </td>
 </tr>
 </table>
@@ -327,39 +325,47 @@ allocated via <code>std::malloc</code>
 </tr>
 <tr>
 <td><code>c_deleter.hpp</code></td>
-<td>Contains fcppt::c_deleter</td>
+<td>Contains \link fcppt::c_deleter\endlink.</td>
 </tr>
 <tr>
 <td><code>com_deleter.hpp</code></td>
-<td>Contains fcppt::com_deleter</td>
+<td>Contains \link fcppt::com_deleter\endlink.</td>
 </tr>
 <tr>
 <td><code>const_pointer_cast.hpp</code></td>
-<td>Contains fcppt::const_pointer_cast</td>
+<td>Contains \link fcppt::const_pointer_cast\endlink.</td>
+</tr>
+<tr>
+<td><code>default_deleter.hpp</code></td>
+<td>Contains \link fcppt::default_deleter\endlink.</td>
 </tr>
 <tr>
 <td><code>dynamic_pointer_cast.hpp</code></td>
-<td>Contains fcppt::dynamic_pointer_cast</td>
+<td>Contains \link fcppt::dynamic_pointer_cast\endlink.</td>
 </tr>
 <tr>
 <td><code>make_shared_ptr.hpp</code></td>
-<td>Contains fcppt::make_shared_ptr</td>
+<td>Contains \link fcppt::make_shared_ptr\endlink.</td>
 </tr>
 <tr>
 <td><code>make_unique_ptr.hpp</code></td>
-<td>Contains fcppt::make_unique_ptr</td>
+<td>Contains \link fcppt::make_unique_ptr\endlink.</td>
+</tr>
+<tr>
+<td><code>make_unique_ptr_fcppt.hpp</code></td>
+<td>Contains \link fcppt::make_unique_ptr_fcppt\endlink.</td>
 </tr>
 <tr>
 <td><code>shared_ptr_fwd.hpp</code></td>
-<td>Contains fcppt::shared_ptr's declaration.</td>
+<td>Contains \link fcppt::shared_ptr\endlink's declaration.</td>
 </tr>
 <tr>
 <td><code>shared_ptr_decl.hpp</code></td>
-<td>Contains fcppt::shared_ptr's definition.</td>
+<td>Contains \link fcppt::shared_ptr\endlink's definition.</td>
 </tr>
 <tr>
 <td><code>shared_ptr_impl.hpp</code></td>
-<td>Contains the definition of fcppt::shared_ptr's member functions.</td>
+<td>Contains the definition of \link fcppt::shared_ptr\endlink's member functions.</td>
 </tr>
 <tr>
 <td><code>shared_ptr.hpp</code></td>
@@ -368,6 +374,30 @@ allocated via <code>std::malloc</code>
 <tr>
 <td><code>static_pointer_cast.hpp</code></td>
 <td>Contains fcppt::static_pointer_cast</td>
+</tr>
+<tr>
+<td><code>unique_ptr_fwd.hpp</code></td>
+<td>Contains \link fcppt::unique_ptr\endlink's declaration.</td>
+</tr>
+<tr>
+<td><code>unique_ptr_decl.hpp</code></td>
+<td>Contains \link fcppt::unique_ptr\endlink's definition.</td>
+</tr>
+<tr>
+<td><code>unique_ptr_impl.hpp</code></td>
+<td>Contains the definition of \link fcppt::unique_ptr\endlink's member functions.</td>
+</tr>
+<tr>
+<td><code>unique_ptr.hpp</code></td>
+<td>The same as <code>unique_ptr_impl.hpp</code></td>
+</tr>
+<tr>
+<td><code>unique_ptr_to_base.hpp</code></td>
+<td>Contains \link fcppt::unique_ptr_to_base\endlink.</td>
+</tr>
+<tr>
+<td><code>unique_ptr_to_const.hpp</code></td>
+<td>Contains \link fcppt::unique_ptr_to_const\endlink.</td>
 </tr>
 <tr>
 <td><code>weak_ptr_fwd.hpp</code></td>

@@ -117,7 +117,7 @@ throw_something()
 void
 wrong()
 {
-	// The order in which function arguments and their sub expressions are
+	// The order in which function arguments and their sub-expressions are
 	// evaluated is unspecified. So it might be possible that they are
 	// evaluated as follows:
 	// a) new int(100)
