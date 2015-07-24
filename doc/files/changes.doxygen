@@ -25,6 +25,12 @@ can be omitted from <code>return</code> statements.</li>
 	</ul>
 </li>
 
+<li>\ref fcpptcasts
+	<ul>
+	<li>Added \link fcppt::cast::to_void_ptr\endlink.</li>
+	</ul>
+</li>
+
 <li>\ref fcpptcontainer
 	<ul>
 	<li>Added \link fcppt::container::maybe_front\endlink.</li>

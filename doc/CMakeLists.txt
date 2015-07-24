@@ -303,6 +303,7 @@ set(
 	include/fcppt/cast/to_unsigned.hpp
 	include/fcppt/cast/to_unsigned_fun.hpp
 	include/fcppt/cast/to_void.hpp
+	include/fcppt/cast/to_void_ptr.hpp
 	include/fcppt/cast/truncation_check.hpp
 	include/fcppt/cast/try_dynamic.hpp
 	include/fcppt/cast_to_enum.hpp
