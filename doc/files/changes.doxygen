@@ -87,6 +87,7 @@ can be omitted from <code>return</code> statements.</li>
 	optional but returns the reference to the optional's content.
 	</li>
 	<li>Added \link fcppt::optional_from_pointer\endlink.</li>
+	<li>Added \link fcppt::optional_alternative\endlink.</li>
 	</ul>
 </li>
 
