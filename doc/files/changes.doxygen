@@ -86,6 +86,7 @@ can be omitted from <code>return</code> statements.</li>
 	<li> Added \link fcppt::optional_assign\endlink which assigns to an
 	optional but returns the reference to the optional's content.
 	</li>
+	<li>Added \link fcppt::optional_from_pointer\endlink.</li>
 	</ul>
 </li>
 

@@ -627,6 +627,10 @@ add_fcppt_test(
 )
 
 add_fcppt_test(
+	optional/from_pointer
+)
+
+add_fcppt_test(
 	optional/general
 )
 
