@@ -7,6 +7,7 @@
 #ifndef FCPPT_MATH_AT_C_HPP_INCLUDED
 #define FCPPT_MATH_AT_C_HPP_INCLUDED
 
+#include <fcppt/container/to_reference_type.hpp>
 #include <fcppt/math/size_type.hpp>
 
 
@@ -25,38 +26,24 @@ template<
 	typename Type
 >
 inline
-typename
-Type::reference
+fcppt::container::to_reference_type<
+	Type
+>
 at_c(
 	Type &_value
 )
 {
-	return
-		_value . template at_c<
-			Index
-		>();
-}
+	static_assert(
+		Index
+		<
+		Type::static_size::value,
+		"at_c: out of range"
+	);
 
-/**
-\brief Free function version of at_c<>
-
-\ingroup fcpptmath
-*/
-template<
-	fcppt::math::size_type Index,
-	typename Type
->
-inline
-typename
-Type::const_reference
-at_c(
-	Type const &_value
-)
-{
 	return
-		_value . template at_c<
+		_value[
 			Index
-		>();
+		];
 }
 
 }

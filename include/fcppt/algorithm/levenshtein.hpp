@@ -59,10 +59,9 @@ levenshtein(
 	boost::range_difference<Range>::type
 	difference_type;
 
-	// This doesn't have to be a char_type, it's just called that way :>
 	typedef typename
 	boost::range_value<Range>::type
-	char_type;
+	element_type;
 
 	size_type const
 		n =
@@ -116,14 +115,14 @@ levenshtein(
 
 	for (difference_type i = 1; i <= fcppt::cast::to_signed(n); i++)
 	{
-		char_type const &s_i =
+		element_type const &s_i =
 			*(boost::begin(
 				source) +
 			i-1);
 
 		for (difference_type j = 1; j <= fcppt::cast::to_signed(m); j++)
 		{
-			char_type const &t_j =
+			element_type const &t_j =
 				*(boost::begin(
 					target) +
 				j-1);

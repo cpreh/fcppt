@@ -78,44 +78,6 @@ BOOST_PP_TUPLE_REM(class_arity)def_pre ::at(\
 }\
 \
 BOOST_PP_TUPLE_REM(class_arity)template_pre \
-template< \
-	typename BOOST_PP_TUPLE_REM(class_arity)def_pre ::size_type Index \
-> \
-inline \
-typename BOOST_PP_TUPLE_REM(class_arity)def_pre ::reference \
-BOOST_PP_TUPLE_REM(class_arity)def_pre ::at_c() \
-{\
-	static_assert(\
-		Index < static_size::value,\
-		"Index out of range"\
-	); \
-\
-	return \
-		(*this)[\
-			Index\
-		];\
-}\
-\
-BOOST_PP_TUPLE_REM(class_arity)template_pre \
-template< \
-	typename BOOST_PP_TUPLE_REM(class_arity)def_pre ::size_type Index \
-> \
-inline \
-typename BOOST_PP_TUPLE_REM(class_arity)def_pre ::const_reference \
-BOOST_PP_TUPLE_REM(class_arity)def_pre ::at_c() const \
-{\
-	static_assert(\
-		Index < static_size::value,\
-		"Index out of range"\
-	); \
-\
-	return \
-		(*this)[\
-			Index\
-		];\
-}\
-\
-BOOST_PP_TUPLE_REM(class_arity)template_pre \
 inline \
 typename BOOST_PP_TUPLE_REM(class_arity)def_pre ::iterator \
 BOOST_PP_TUPLE_REM(class_arity)def_pre ::begin() \
