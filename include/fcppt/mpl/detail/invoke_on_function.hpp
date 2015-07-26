@@ -8,6 +8,7 @@
 #define FCPPT_MPL_DETAIL_INVOKE_ON_FUNCTION_HPP_INCLUDED
 
 #include <fcppt/nonassignable.hpp>
+#include <fcppt/tag.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/mpl/at.hpp>
 #include <fcppt/config/external_end.hpp>
@@ -56,13 +57,15 @@ public:
 	) const
 	{
 		return
-			function_. template operator()<
-				typename
-				boost::mpl::at<
-					Sequence,
-					Index
-				>::type
-			>();
+			function_(
+				fcppt::tag<
+					typename
+					boost::mpl::at<
+						Sequence,
+						Index
+					>::type
+				>()
+			);
 	}
 private:
 	Function const &function_;

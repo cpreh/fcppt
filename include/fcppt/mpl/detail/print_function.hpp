@@ -8,6 +8,7 @@
 #define FCPPT_MPL_DETAIL_PRINT_FUNCTION_HPP_INCLUDED
 
 #include <fcppt/nonassignable.hpp>
+#include <fcppt/tag.hpp>
 #include <fcppt/text.hpp>
 #include <fcppt/io/ostream.hpp>
 #include <fcppt/mpl/detail/print_one.hpp>
@@ -46,7 +47,11 @@ public:
 		typename Type
 	>
 	result_type
-	operator()() const
+	operator()(
+		fcppt::tag<
+			Type
+		>
+	) const
 	{
 		fcppt::mpl::detail::print_one<
 			Type

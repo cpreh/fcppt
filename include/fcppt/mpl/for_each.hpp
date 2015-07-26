@@ -21,14 +21,14 @@ namespace mpl
 {
 
 /**
-\brief Invoke a functor on each element of a sequence without constructing them
+\brief Invoke a function on each element of a sequence without constructing them
 
 \ingroup fcpptmpl
 
-Invokes \a _functor on each element of \a Sequence without constructing the
+Invokes \a _function on each element of \a Sequence without constructing the
 elements. This function is similar to <code>boost::mpl::for_each</code> but can
 be used with unconstructible types like abstract classes. Calls
-<code>_functor<T>()</code> for each type T in \a Sequence.
+<code>_function(fcppt::tag<T>)</code> for each type T in \a Sequence.
 
 \snippet mpl/for_each.cpp mpl_for_each
 
@@ -38,11 +38,11 @@ be used with unconstructible types like abstract classes. Calls
 */
 template<
 	typename Sequence,
-	typename Functor
+	typename Function
 >
 void
 for_each(
-	Functor const &_functor
+	Function const &_function
 )
 {
 	return
@@ -58,7 +58,7 @@ for_each(
 				Sequence
 			>::type
 		>(
-			_functor
+			_function
 		);
 }
 

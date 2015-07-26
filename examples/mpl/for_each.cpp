@@ -5,6 +5,7 @@
 
 
 //! [mpl_for_each]
+#include <fcppt/tag.hpp>
 #include <fcppt/text.hpp>
 #include <fcppt/type_name.hpp>
 #include <fcppt/io/cout.hpp>
@@ -38,7 +39,11 @@ struct visitor
 		typename Type
 	>
 	result_type
-	operator()() const
+	operator()(
+		fcppt::tag<
+			Type
+		>
+	) const
 	{
 		// use fcppt::type_name to print the type
 		fcppt::io::cout()

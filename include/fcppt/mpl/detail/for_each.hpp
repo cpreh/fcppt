@@ -7,6 +7,7 @@
 #ifndef FCPPT_MPL_DETAIL_FOR_EACH_HPP_INCLUDED
 #define FCPPT_MPL_DETAIL_FOR_EACH_HPP_INCLUDED
 
+#include <fcppt/tag.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/mpl/deref.hpp>
 #include <boost/mpl/next.hpp>
@@ -69,7 +70,11 @@ struct for_each<
 			Iterator
 		>::type iter;
 
-		_func. template operator()<item>();
+		_func(
+			fcppt::tag<
+				item
+			>()
+		);
 
 		fcppt::mpl::detail::for_each<
 			std::is_same<

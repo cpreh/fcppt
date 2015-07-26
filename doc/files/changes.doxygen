@@ -191,6 +191,14 @@ can be omitted from <code>return</code> statements.</li>
 	</ul>
 </li>
 
+<li>\ref fcpptmpl
+	<ul>
+	<li>Changed \link fcppt::mpl::for_each\endlink and \link
+	fcppt::mpl::invoke_on\endlink to use \link fcppt::tag\endlink to call
+	its function.</li>
+	</ul>
+</li>
+
 <li>\ref fcpptsmartptr
 	<ul>
 	<li>Removed default constructor of \link
