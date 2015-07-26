@@ -539,10 +539,6 @@ add_fcppt_test(
 )
 
 add_fcppt_test(
-	math/vector/at_c
-)
-
-add_fcppt_test(
 	math/vector/comparison
 )
 

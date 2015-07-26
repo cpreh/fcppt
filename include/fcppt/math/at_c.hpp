@@ -42,7 +42,9 @@ at_c(
 	static_assert(
 		Index
 		<
-		Type::static_size::value,
+		std::remove_reference<
+			Type
+		>::type::static_size::value,
 		"at_c: out of range"
 	);
 
