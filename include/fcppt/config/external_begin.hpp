@@ -22,6 +22,7 @@ FCPPT_PP_PUSH_WARNING
 #if defined(FCPPT_CONFIG_MSVC_COMPILER)
 
 #include <fcppt/preprocessor/disable_vc_warning.hpp>
+FCPPT_PP_DISABLE_VC_WARNING(4005) // macro redefinition
 FCPPT_PP_DISABLE_VC_WARNING(4061) // enum not handled in switch
 FCPPT_PP_DISABLE_VC_WARNING(4100) // unreferenced formal parameter
 FCPPT_PP_DISABLE_VC_WARNING(4127) // conditional expression is constant
