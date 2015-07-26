@@ -34,7 +34,7 @@ be used with unconstructible types like abstract classes. Calls
 
 \tparam Sequence The MPL sequence
 
-\tparam Functor The functor type which must be callable with every element
+\tparam Function The functor type which must be callable with every element
 */
 template<
 	typename Sequence,
