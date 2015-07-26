@@ -19,6 +19,14 @@ fcppt::log::find_logger_node(
 	return
 		fcppt::algorithm::find_by_opt(
 			_tree,
-			&fcppt::log::to_outer_node
+			[](
+				fcppt::log::detail::context_tree &_inner
+			)
+			{
+				return
+					fcppt::log::to_outer_node(
+						_inner
+					);
+			}
 		);
 }

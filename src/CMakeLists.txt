@@ -696,12 +696,14 @@ set(
 	include/fcppt/nonassignable.hpp
 	include/fcppt/noncopyable.hpp
 	include/fcppt/optional.hpp
+	include/fcppt/optional_alternative.hpp
 	include/fcppt/optional_assign.hpp
 	include/fcppt/optional_bind.hpp
 	include/fcppt/optional_bind_construct.hpp
 	include/fcppt/optional_combine.hpp
 	include/fcppt/optional_comparison.hpp
 	include/fcppt/optional_decl.hpp
+	include/fcppt/optional_from_pointer.hpp
 	include/fcppt/optional_fwd.hpp
 	include/fcppt/optional_impl.hpp
 	include/fcppt/optional_output.hpp

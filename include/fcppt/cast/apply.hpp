@@ -14,33 +14,28 @@ namespace cast
 {
 
 /**
-\brief Function object that applies a cast function to a result type
+\brief Applies a cast to a source
 
 \ingroup fcpptcasts
 */
 template<
 	typename Fun,
-	typename Res
+	typename Res,
+	typename Src
 >
-struct apply
+constexpr
+Res
+apply(
+	Src const &_src
+)
 {
-	template<
-		typename Src
-	>
-	constexpr
-	Res
-	operator()(
-		Src const &_src
-	) const
-	{
-		return
-			Fun :: template execute <
-				Res
-			>(
-				_src
-			);
-	}
-};
+	return
+		Fun :: template execute <
+			Res
+		>(
+			_src
+		);
+}
 
 }
 }

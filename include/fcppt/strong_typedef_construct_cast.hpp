@@ -43,7 +43,7 @@ strong_typedef_construct_cast(
 				Conv,
 				typename
 				StrongTypedef::value_type
-			>{}(
+			>(
 				_arg
 			)
 		);

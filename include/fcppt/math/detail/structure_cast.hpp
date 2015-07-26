@@ -7,7 +7,7 @@
 #ifndef FCPPT_MATH_DETAIL_STRUCTURE_CAST_HPP_INCLUDED
 #define FCPPT_MATH_DETAIL_STRUCTURE_CAST_HPP_INCLUDED
 
-#include <fcppt/cast/apply.hpp>
+#include <fcppt/cast/apply_fun.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/iterator/transform_iterator.hpp>
 #include <type_traits>
@@ -33,7 +33,7 @@ structure_cast(
 )
 {
 	typedef
-	fcppt::cast::apply<
+	fcppt::cast::apply_fun<
 		Conv,
 		typename T::value_type
 	>

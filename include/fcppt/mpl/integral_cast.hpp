@@ -46,7 +46,7 @@ std::integral_constant<
 	fcppt::cast::apply<
 		Conv,
 		IntegralType
-	>{}(
+	>(
 		Integral::value
 	)
 >;

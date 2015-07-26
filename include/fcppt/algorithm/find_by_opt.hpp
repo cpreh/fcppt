@@ -10,6 +10,7 @@
 #include <fcppt/is_optional.hpp>
 #include <fcppt/optional_impl.hpp>
 #include <fcppt/algorithm/detail/find_by_result.hpp>
+#include <fcppt/container/to_iterator_type.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
@@ -92,36 +93,15 @@ template<
 	typename Container,
 	typename Func
 >
+inline
 fcppt::algorithm::detail::find_by_result<
-	typename
-	Container::iterator,
+	fcppt::container::to_iterator_type<
+		Container
+	>,
 	Func
 >
 find_by_opt(
 	Container &_container,
-	Func const &_func
-)
-{
-	return
-		fcppt::algorithm::find_by_opt(
-			_container.begin(),
-			_container.end(),
-			_func
-		);
-}
-
-template<
-	typename Container,
-	typename Func
->
-inline
-fcppt::algorithm::detail::find_by_result<
-	typename
-	Container::const_iterator,
-	Func
->
-find_by_opt(
-	Container const &_container,
 	Func const &_func
 )
 {
