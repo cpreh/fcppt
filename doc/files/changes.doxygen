@@ -138,8 +138,9 @@ can be omitted from <code>return</code> statements.</li>
 <li>\ref fcpptvarious
 	<ul>
 	<li>Added \link fcppt::make_homogenous_pair\endlink.</li>
-	<lI>Added <code>%size</code> function to \link
+	<li>Added <code>%size</code> function to \link
 	fcppt::int_range\endlink.</li>
+	<li>Added \link fcppt::tag\endlink.</li>
 	</ul>
 </li>
 

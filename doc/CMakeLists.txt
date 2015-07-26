@@ -1157,6 +1157,8 @@ set(
 	include/fcppt/symbol/export_class_instantiation.hpp
 	include/fcppt/symbol/export_function_instantiation.hpp
 	include/fcppt/symbol/import.hpp
+	include/fcppt/tag.hpp
+	include/fcppt/tag_fwd.hpp
 	include/fcppt/text.hpp
 	include/fcppt/time/ctime.hpp
 	include/fcppt/time/exception.hpp

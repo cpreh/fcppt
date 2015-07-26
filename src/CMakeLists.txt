@@ -851,6 +851,8 @@ set(
 	include/fcppt/strong_typedef_operators.hpp
 	include/fcppt/strong_typedef_output.hpp
 	include/fcppt/strong_typedef_std_hash.hpp
+	include/fcppt/tag.hpp
+	include/fcppt/tag_fwd.hpp
 	include/fcppt/text.hpp
 	include/fcppt/time/ctime.hpp
 	include/fcppt/time/exception.hpp
