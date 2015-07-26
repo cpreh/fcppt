@@ -9,6 +9,9 @@
 
 #include <fcppt/container/to_reference_type.hpp>
 #include <fcppt/math/size_type.hpp>
+#include <fcppt/config/external_begin.hpp>
+#include <type_traits>
+#include <fcppt/config/external_end.hpp>
 
 
 namespace fcppt
@@ -27,10 +30,13 @@ template<
 >
 inline
 fcppt::container::to_reference_type<
-	Type
+	typename
+	std::remove_reference<
+		Type
+	>::type
 >
 at_c(
-	Type &_value
+	Type &&_value
 )
 {
 	static_assert(

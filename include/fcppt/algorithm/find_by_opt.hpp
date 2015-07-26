@@ -96,12 +96,15 @@ template<
 inline
 fcppt::algorithm::detail::find_by_result<
 	fcppt::container::to_iterator_type<
-		Container
+		typename
+		std::remove_reference<
+			Container
+		>::type
 	>,
 	Func
 >
 find_by_opt(
-	Container &_container,
+	Container &&_container,
 	Func const &_func
 )
 {
