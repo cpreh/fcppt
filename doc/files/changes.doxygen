@@ -184,6 +184,12 @@ can be omitted from <code>return</code> statements.</li>
 	</ul>
 </li>
 
+<li>\ref fcpptliteral
+	<ul>
+	<li>Boost Units literals are now dimensionless.</li>
+	</ul>
+</li>
+
 <li>\ref fcpptmath
 	<ul>
 	<li>Moved \link fcppt::math::box::object \endlink comparison operators

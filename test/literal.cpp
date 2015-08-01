@@ -28,14 +28,13 @@ BOOST_AUTO_TEST_CASE(
 {
 FCPPT_PP_POP_WARNING
 
-	BOOST_CHECK(
+	BOOST_CHECK_EQUAL(
 		fcppt::literal<
 			unsigned
 		>(
 			2
-		)
-		==
-		2
+		),
+		2u
 	);
 }
 
@@ -48,18 +47,20 @@ BOOST_AUTO_TEST_CASE(
 {
 FCPPT_PP_POP_WARNING
 
-	typedef boost::units::quantity<
+	typedef
+	boost::units::quantity<
 		boost::units::si::length,
 		int
-	> length;
+	>
+	length;
 
-	BOOST_CHECK(
+	BOOST_CHECK_EQUAL(
 		fcppt::literal<
 			length
 		>(
 			2
-		).value()
-		== 2
+		).value(),
+		2
 	);
 }
 
@@ -76,12 +77,12 @@ FCPPT_PP_POP_WARNING
 		my_type
 	);
 
-	BOOST_CHECK(
+	BOOST_CHECK_EQUAL(
 		fcppt::literal<
 			my_type
 		>(
 			1
-		).get()
-		== 1
+		).get(),
+		1
 	);
 }

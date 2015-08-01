@@ -120,6 +120,10 @@ struct make_literal<
 	mine::custom_type
 >
 {
+	typedef
+	mine::custom_type
+	decorated_type;
+
 	template<
 		typename Fundamental
 	>

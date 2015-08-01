@@ -33,7 +33,10 @@ template<
 	typename Fundamental
 >
 constexpr
-Type
+typename
+fcppt::make_literal<
+	Type
+>::decorated_type
 literal(
 	Fundamental const &&_integral
 )

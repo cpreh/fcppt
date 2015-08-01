@@ -10,7 +10,9 @@
 #include <fcppt/check_literal_conversion.hpp>
 #include <fcppt/make_literal_fwd.hpp>
 #include <fcppt/config/external_begin.hpp>
+#include <boost/units/dimensionless_type.hpp>
 #include <boost/units/quantity.hpp>
+#include <boost/units/unit.hpp>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -33,7 +35,11 @@ struct make_literal<
 {
 	typedef
 	boost::units::quantity<
-		Unit,
+		boost::units::unit<
+			boost::units::dimensionless_type,
+			typename
+			Unit::system_type
+		>,
 		Type
 	>
 	decorated_type;

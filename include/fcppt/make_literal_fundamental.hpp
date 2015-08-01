@@ -30,24 +30,28 @@ struct make_literal<
 	>::type
 >
 {
+	typedef
+	Type
+	decorated_type;
+
 	template<
 		typename Fundamental
 	>
 	static
 	constexpr
-	Type
+	decorated_type
 	get(
 		Fundamental const _fundamental
 	)
 	{
 		FCPPT_CHECK_LITERAL_CONVERSION(
-			Type,
+			decorated_type,
 			Fundamental
 		);
 
 		return
 			static_cast<
-				Type
+				decorated_type
 			>(
 				_fundamental
 			);
