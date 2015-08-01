@@ -107,13 +107,13 @@ For example, the code could print: <code>0.441851 5.37344 -7.79767 1.89097
 \section random_conversion Conversion of types
 
 As mentioned in the introduction, it is hard to adapt C++11's distributions to
-other types like strong typedefs. fcppt provides a customization point as
-fcppt::random::distribution::transform which you can specialize.
+other types like strong typedefs. fcppt provides the \ref fcppttypeiso
+library that has a customization point for such conversions.
 
 In the following example, we are going to construct a <code>uniform_int</code>
 distribution over a strong typedef to an int. The specialization used for this
 is located in
-<code>fcppt/random/distribution/transform/strong_typedef.hpp</code> and must be
+<code>fcppt/type_iso/strong_typedef.hpp</code> and must be
 included.
 
 \snippet random/strong_typedef.cpp random_strong_typedef_distribution
@@ -147,8 +147,8 @@ that extracts the underlying value of a <code>boost::units::quantity</code>
 
 \snippet random/complex.cpp random_complex_output
 
-The following example shows how you can specialize
-fcppt::random::distribution::transform in order to use your own types with a
+The following example shows how you can specialize \link
+fcppt::type_iso::transform\endlink in order to use your own types with a
 distribution.
 
 Suppose you have created a simple type similar to a strong typedef that wraps
@@ -284,23 +284,6 @@ to initialize the uniform int distribution:
 <tr>
 <td><code>distribution/parameters/uniform_real.hpp</code></td>
 <td>Contains all of fcppt::random::distribution::parameters::uniform_real</td>
-</tr>
-<tr>
-<td><code>distribution/parameters/transform/boost_units.hpp</code></td>
-<td>Contains the specialization for enum conversions.</td>
-</tr>
-<tr>
-<td><code>distribution/parameters/transform/enum.hpp</code></td>
-<td>Contains the specialization for enum conversions.</td>
-</tr>
-<tr>
-<td><code>distribution/parameters/transform/strong_typedef.hpp</code></td>
-<td>Contains the specialization for strong typedef conversions.</td>
-</tr>
-<tr>
-<td><code>distribution/parameters/transform/terminal.hpp</code></td>
-<td>Contains the default case for conversions.</td>
-</tr>
 <tr>
 <td><code>generator/basic_pseudo_fwd.hpp</code></td>
 <td>Contains fcppt::random::generator::basic_pseudo's declaration.</td>

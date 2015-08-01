@@ -138,7 +138,7 @@ if the variant does not hold the queried type.</li>
 variant actually holds the queried type. It is comparable to
 <code>static_cast</code> to a derived class.</li>
 <li>\link fcppt::variant::to_optional\endlink returns an optional to
-the queried type and ties in with \ref fcppt.optional.</li>
+the queried type and ties in with \ref fcpptoptional.</li>
 </ul>
 
 \section variant_design Design
