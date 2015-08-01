@@ -5,6 +5,7 @@
 
 
 #include <fcppt/variant/apply_unary.hpp>
+#include <fcppt/variant/match.hpp>
 #include <fcppt/variant/object_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/mpl/vector/vector10.hpp>
@@ -16,16 +17,18 @@
 namespace
 {
 
+typedef
+fcppt::variant::object<
+	boost::mpl::vector2<
+		std::string,
+		int
+	>
+>
+string_or_int;
+
 void
 visit_simple()
 {
-	typedef fcppt::variant::object<
-		boost::mpl::vector2<
-			std::string,
-			int
-		>
-	> string_or_int;
-
 // ![variant_visit_simple]
 	struct print_visitor
 	{
@@ -97,6 +100,36 @@ struct print_visitor2
 };
 // ![variant_visit_template]
 
+// ![variant_match]
+void
+match_test(
+	string_or_int const &_variant
+)
+{
+	fcppt::variant::match(
+		_variant,
+		[](
+			std::string const &_string
+		)
+		{
+			std::cout
+				<< "We have a string "
+				<< _string
+				<< '\n';
+		},
+		[](
+			int const _int
+		)
+		{
+			std::cout
+				<< "We have an int "
+				<< _int
+				<< '\n';
+		}
+	);
+}
+// ![variant_match]
+
 }
 
 int
@@ -106,5 +139,13 @@ main()
 
 	print_visitor2()(
 		42
+	);
+
+	match_test(
+		string_or_int(
+			std::string(
+				"test"
+			)
+		)
 	);
 }

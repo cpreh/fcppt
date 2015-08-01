@@ -20,6 +20,8 @@ namespace variant
 <ul>
 	<li>\ref variant_motivation</li>
 	<li>\ref variant_visitation</li>
+	<li>\ref variant_matching</li>
+	<li>\ref variant_access</li>
 	<li>\ref variant_design</li>
 	<li>\ref variant_headers</li>
 </ul>
@@ -30,33 +32,30 @@ namespace variant
 
 \section variant_motivation Motivation
 
-It might be necessary to store objects of different types in a variable.
-C++ has so called unions which can do that. However, a union has several
-disadvantages:
+A variant is a type that can hold objects of a fixed set of types. The closest
+language feature in C++ are unions, which have several disadvantages and are
+very dangerous to use.
 <ul>
 
-<li>It doesn't know which type of object it actually holds. This can also be
-nothing at all when the union has not been initialized.</li>
+<li>A union does not know which type of object it actually holds. This can also
+be nothing at all when the union has not been initialized.</li>
 
-<li>If you access the wrong type of the union, then the behaviour is
-undefined.</li>
+<li>If you access the wrong type of a union the behaviour is undefined.</li>
 
-<li>A union also doesn't know how to call constructors or destructors (this has
-been relaxed in C++11 but it is still cumbersome). So you are very restricted
-with the types of objects you can store in them.</li>
+<li>A union also does not know how to call constructors or destructors, which
+you have to do yourself.</li>
 
 </ul>
 
 \snippet variant/motivation.cpp variant_union
 
-In order to fix the aforementioned problems, fcppt::variant's approach is very
-different to a union.
+fcppt::variant fixes the aforementioned problems in the following way:
 
 <ul>
 
 <li>It knows which type it holds.</li>
 
-<li>It is not default constructible which doesn't make any sense for
+<li>It is not default-constructible which does not make any sense for
 variants.</li>
 
 <li>It calls constructors, assignment operators and destructors as needed.</li>
@@ -76,14 +75,11 @@ get it wrong.
 
 \section variant_visitation Visitation
 
-Not only is the previous unsafe, it is also tedious.
+Not only is the previous example unsafe, it is also tedious.
 
-In order to solve this, there is a mechanism called visitation. A class that
-can visit a set of types is called a visitor. Instead of focusing on making the
-set of types extensible, visitation aims to make the set of operations on them
-extensible. The downside of this is that the visitor has to know about all
-types in the set. Luckily, that's better than it sounds. A visitor can employ
-all sorts of C++ template mechanisms to make this easier.
+In order to solve this, we have to implement a polymorphic function that can be
+called for every possible type in the variant. A class that knows about all
+possible types in a set and operates on them is called a visitor.
 
 To define a visitor, it must have function call operators so that for all types
 in the set exactly one of them matches. The function call operators must also
@@ -97,24 +93,53 @@ easier.
 
 \snippet variant/visitation.cpp variant_visit_template
 
-It is often advisable to make a visitor as generic as possible. enable_if
-combined with type traits can also help.
+It is often advisable to make a visitor as generic as possible.
+<code>enable_if</code> combined with type traits can help with that.
 
 \link fcppt::variant::apply_binary \endlink and \link
 fcppt::variant::apply_ternary \endlink are also provided. These can be used to
-visit two or three variants at the same time.  In this case, the operator()
-takes two or three arguments, respectively.
+visit two or three variants at the same time. In this case, the
+<code>operator()</code> takes two or three arguments, respectively.
 
 Here is a small example for defining a binary visitor:
 
 \snippet variant/binary_visitation.cpp variant_binary_visitor
 \snippet variant/binary_visitation.cpp variant_binary_visitation
 
-Non const visitation, which means that the visited variant can be modified, is
-also supported, thanks to C++11's perfect forwarding.
+Non-const visitation, which means that the visited variant can be modified, is
+also supported.
 
 \snippet variant/nonconst_visitation.cpp variant_nonconst_visitor
 \snippet variant/nonconst_visitation.cpp variant_nonconst_visitation
+
+\section variant_matching Matching
+
+Unary visitations are very common, but require us to define a new function
+object type, which can be called for every type in the variant. Instead, we can
+define a function for each type individually, which we can do using lambda
+expressions.
+
+\snippet variant/visitation.cpp variant_match
+
+The functions need to be passed in the order the types are declared in the
+variant (so in the example <code>string</code> comes first).
+
+Matching often leads to cleaner code but it cannot make use of shared cases
+like a visitor can.
+
+\section variant_access Access
+
+Visitation and matching are the most common ways to access a variant. The
+other ways are:
+<ul>
+<li>\link fcppt::variant::get_exn\endlink which throws an exception
+if the variant does not hold the queried type.</li>
+<li>\link fcppt::variant::get_unsafe\endlink which does not check if the
+variant actually holds the queried type. It is comparable to
+<code>static_cast</code> to a derived class.</li>
+<li>\link fcppt::variant::to_optional\endlink returns an optional to
+the queried type and ties in with \ref fcppt.optional.</li>
+</ul>
 
 \section variant_design Design
 
@@ -124,28 +149,24 @@ provides its own variant type.
 The key differences to <code>%boost::variant</code> are
 <ul>
 
-<li>fcppt::variant::object uses alignment support from the compiler instead of
-relying on the hacky <code>%boost::detail::aligned_storage</code></li>
-
-<li>fcppt::variant::object doesn't provide a default constructor.
+<li><code>fcppt::variant</code> does not provide a default constructor.
 <code>%boost::variant</code> default contructs the first type of all possible
-types instead, which doesn't make any sense.</li>
+types instead, which does not make any sense.</li>
 
-<li>fcppt::variant has properly separated headers and resides in its own
-namespace.</li>
+<li><code>fcppt::variant</code>'s constructor is explicit.</li>
 
-<li>fcppt::variant provides ternary visitation</li>
+<li><code>fcppt::variant</code> does not allow any implicit conversions in its
+constructors.</li>
 
-<li>fcppt::variant reuses MPL instead of generating the template over and over
-for every number of possible types. It is therefore as extensible as MPL
-is.</li>
-
-<li>fcppt::variant::object doesn't allow any implicit conversions for possible
-types. You should explicitly convert instead.</li>
-
-<li>fcppt::variant allows non const visitation and visitation of rvalues,
-thanks to C++11. <code>%boost::variant</code> only supports visitation of
+<li><code>fcppt::variant</code> allows non const visitation and visitation of
+rvalues. <code>%boost::variant</code> only supports visitation of
 lvalues.</li>
+
+<li><code>fcppt::variant</code> provides ternary visitation</li>
+
+<li><code>fcppt::variant</code> reuses MPL instead of generating the template
+over and over for every number of possible types. It is therefore as extensible
+as MPL is.</li>
 
 <li><code>%boost::variant</code> offers the so-called "non-empty" guarantee.
 This means that a variant always holds one of its possible types, which is
@@ -159,6 +180,13 @@ heap-allocating the new object which can then safely be moved after destroying
 the old object. fcppt::variant instead allows this corner case to leave the
 variant in an unspecified state which can only be used to destroy the variant
 or to assign a new object.</li>
+
+<li><code>fcppt::variant</code> uses alignment support from the compiler
+instead of relying on the hacky
+<code>%boost::detail::aligned_storage</code></li>
+
+<li><code>fcppt::variant</code> has properly separated headers and resides in
+its own namespace.</li>
 
 </ul>
 
@@ -194,7 +222,7 @@ or to assign a new object.</li>
 </tr>
 <tr>
 <td><code>equal.hpp</code></td>
-<td>Contains operator==</td>
+<td>Contains <code>operator==</code>.</td>
 </tr>
 <tr>
 <td><code>exception.hpp</code></td>
@@ -203,8 +231,14 @@ variant exception.</td>
 </tr>
 <tr>
 <td><code>get_exn.hpp</code></td>
-<td>Contains a free \link fcppt::variant::get_exn \endlink function which does
-the same thing as the get_exn member function.</td>
+<td>Contains \link fcppt::variant::get_exn\endlink which does the same thing as
+the \link fcppt::variant::object::get_exn\endlink member function.</td>
+</tr>
+<tr>
+<td><code>get_unsafe.hpp</code></td>
+<td>Contains \link fcppt::variant::get_unsafe \endlink which does the same
+thing as the \link fcppt::variant::object::get_unsafe\endlink member
+function.</td>
 </tr>
 <tr>
 <td><code>holds_type.hpp</code></td>
@@ -214,19 +248,23 @@ a type is held by the variant.</td>
 <tr>
 <td><code>invalid_get.hpp</code></td>
 <td>Contains \link fcppt::variant::invalid_get \endlink, which might be thrown
-by \link fcppt::variant::get_exn \endlink</td>
+by \link fcppt::variant::get_exn \endlink.</td>
+</tr>
+<tr>
+<td><code>match.hpp</code></td>
+<td>Contains \link fcppt::variant::match\endlink.</td>
 </tr>
 <tr>
 <td><code>not_equal.hpp</code></td>
-<td>Contains operator!=</td>
+<td>Contains <code>operator!=</code>.</td>
 </tr>
 <tr>
 <td><code>output.hpp</code></td>
-<td>Contains operator<< for output</td>
+<td>Contains <code>operator<<</code> for output.</td>
 </tr>
 <tr>
 <td><code>to_optional.hpp</code></td>
-<td>Contains \link fcppt::variant::to_optional \endlink.</td>
+<td>Contains \link fcppt::variant::to_optional\endlink.</td>
 </tr>
 </table>
 */

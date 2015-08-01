@@ -5,6 +5,7 @@
 
 
 #include <fcppt/variant/apply_unary.hpp>
+#include <fcppt/variant/get_exn.hpp>
 #include <fcppt/variant/object_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/mpl/vector/vector10.hpp>
@@ -59,6 +60,6 @@ int main()
 	);
 
 	// only prints a newline because the string contains nothing anymore
-	std::cout << v.get_exn<std::string>() << '\n';
+	std::cout << fcppt::variant::get_exn<std::string>(v) << '\n';
 //! [variant_nonconst_visitation]
 }

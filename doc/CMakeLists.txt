@@ -1252,6 +1252,7 @@ set(
 	include/fcppt/variant/equal.hpp
 	include/fcppt/variant/exception.hpp
 	include/fcppt/variant/get_exn.hpp
+	include/fcppt/variant/get_unsafe.hpp
 	include/fcppt/variant/holds_type.hpp
 	include/fcppt/variant/impl/exception.hpp
 	include/fcppt/variant/impl/invalid_apply.hpp

@@ -4,6 +4,7 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
+#include <fcppt/variant/get_unsafe.hpp>
 #include <fcppt/variant/holds_type.hpp>
 #include <fcppt/variant/object.hpp>
 #include <fcppt/config/external_begin.hpp>
@@ -84,11 +85,11 @@ variant_example()
 			if(
 				fcppt::variant::holds_type<std::string>(x)
 			)
-				std::cout << x.get_unsafe<std::string>() << '\n';
+				std::cout << fcppt::variant::get_unsafe<std::string>(x) << '\n';
 			else if(
 				fcppt::variant::holds_type<int>(x)
 			)
-				std::cout << x.get_unsafe<int>() << '\n';
+				std::cout << fcppt::variant::get_unsafe<int>(x) << '\n';
 		}
 	);
 
