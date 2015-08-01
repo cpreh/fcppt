@@ -8,6 +8,9 @@
 #define FCPPT_MATH_VECTOR_DOT_HPP_INCLUDED
 
 #include <fcppt/literal.hpp>
+#include <fcppt/make_int_range_count.hpp>
+#include <fcppt/algorithm/fold.hpp>
+#include <fcppt/math/size_type.hpp>
 #include <fcppt/math/vector/object_impl.hpp>
 
 
@@ -36,22 +39,51 @@ template<
 	typename S1,
 	typename S2
 >
-typename object<T, N, S1>::value_type
+inline
+T
 dot(
-	object<T, N, S1> const &l,
-	object<T, N, S2> const &r
+	fcppt::math::vector::object<
+		T,
+		N,
+		S1
+	> const &_left,
+	fcppt::math::vector::object<
+		T,
+		N,
+		S2
+	> const &_right
 )
 {
-	T result(fcppt::literal<T>(0));
-
-	for(
-		typename object<T, N, S1>::size_type i = 0;
-		i < l.size();
-		++i
-	)
-		result += l[i] * r[i];
-
-	return result;
+	return
+		fcppt::algorithm::fold(
+			fcppt::make_int_range_count(
+				N::value
+			),
+			fcppt::literal<
+				T
+			>(
+				0
+			),
+			[
+				&_left,
+				&_right
+			](
+				fcppt::math::size_type const _index,
+				T const _state
+			)
+			{
+				return
+					_state
+					+
+					_left[
+						_index
+					]
+					*
+					_right[
+						_index
+					];
+			}
+		);
 }
 
 }

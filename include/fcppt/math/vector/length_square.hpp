@@ -20,13 +20,10 @@ namespace vector
 
 /**
 \brief Calculate the square of the vector's length
-\ingroup fcpptmathvector
-\tparam T The vector's <code>value_type</code>
-\tparam N The vector's dimension type
-\tparam S The vector's storage type
-\param v The vector to calculate the length for.
 
-This is equivalent to <code>dot(v,v)</code>.
+\ingroup fcpptmathvector
+
+\param _vector The vector to calculate the length for.
 
 \note
 If you just want the length, use fcppt::math::vector::length
@@ -39,12 +36,21 @@ template<
 	typename N,
 	typename S
 >
-typename object<T, N, S>::value_type
+inline
+T
 length_square(
-	object<T, N, S> const &v
+	fcppt::math::vector::object<
+		T,
+		N,
+		S
+	> const &_vector
 )
 {
-	return dot(v, v);
+	return
+		fcppt::math::vector::dot(
+			_vector,
+			_vector
+		);
 }
 
 }

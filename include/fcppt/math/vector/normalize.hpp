@@ -18,13 +18,13 @@ namespace math
 {
 namespace vector
 {
+
 /**
 \brief Normalizes a vector and returns a copy.
+
 \ingroup fcpptmathvector
-\tparam N The vector's dimension
-\tparam T The vector's <code>value_type</code>
-\tparam S The vector's storage type
-\param v The vector to normalize
+
+\param _vec The vector to normalize
 
 \warning
 Behaviour is undefined if <code>length(v)</code> is close to zero.
@@ -34,12 +34,26 @@ template<
 	typename N,
 	typename S
 >
-object<T, N, S> const
+inline
+fcppt::math::vector::object<
+	T,
+	N,
+	S
+>
 normalize(
-	object<T, N, S> const &v
+	fcppt::math::vector::object<
+		T,
+		N,
+		S
+	> const &_vec
 )
 {
-	return v / vector::length(v);
+	return
+		_vec
+		/
+		fcppt::math::vector::length(
+			_vec
+		);
 }
 
 }

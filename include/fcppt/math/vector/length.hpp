@@ -27,9 +27,6 @@ namespace vector
 /**
 \brief Calculates the length of a vector
 \ingroup fcpptmathvector
-\tparam T The vector's <code>value_type</code>. Must be a floating point type.
-\tparam N The vector's dimension type
-\tparam S The vector's storage type
 
 This is the Euclidean distance (or 2 norm) of the vector. There are two
 variants of this function. One works only for floating point vectors (so you
@@ -46,11 +43,11 @@ Example:
 
 \code
 typedef
-fcppt::math::vector::static_<float,3>::type
+fcppt::math::vector::static_<float,3>
 vector3f;
 
 typedef
-fcppt::math::vector::static_<int,3>::type
+fcppt::math::vector::static_<int,3>
 vector3i;
 
 vector3f vf(1.0f,2.0f,3.0f);
@@ -75,19 +72,26 @@ template<
 	typename N,
 	typename S
 >
+inline
 typename
 std::enable_if<
-	std::is_floating_point<T>::value,
+	std::is_floating_point<
+		T
+	>::value,
 	T
 >::type
 length(
-	fcppt::math::vector::object<T, N, S> const &v
+	fcppt::math::vector::object<
+		T,
+		N,
+		S
+	> const &_vec
 )
 {
 	return
 		std::sqrt(
 			fcppt::math::vector::length_square(
-				v
+				_vec
 			)
 		);
 }
@@ -95,9 +99,6 @@ length(
 /**
 \brief Calculates the length of a vector
 \ingroup fcpptmathvector
-\tparam T The vector's <code>value_type</code>. Cannot be a floating point type.
-\tparam N The vector's dimension type
-\tparam S The vector's storage type
 
 This is the Euclidean distance (or 2 norm) of the vector. There are two
 variants of this function. One works only for floating point vectors (so you
@@ -114,11 +115,11 @@ Example:
 
 \code
 typedef
-fcppt::math::vector::static_<float,3>::type
+fcppt::math::vector::static_<float,3>
 vector3f;
 
 typedef
-fcppt::math::vector::static_<int,3>::type
+fcppt::math::vector::static_<int,3>
 vector3i;
 
 vector3f vf(1.0f,2.0f,3.0f);
@@ -144,13 +145,20 @@ template<
 	typename N,
 	typename S
 >
+inline
 typename
 std::enable_if<
-	!std::is_floating_point<T>::value,
+	!std::is_floating_point<
+		T
+	>::value,
 	Dest
 >::type
 length(
-	fcppt::math::vector::object<T, N, S> const &v
+	fcppt::math::vector::object<
+		T,
+		N,
+		S
+	> const &_vec
 )
 {
 	return
@@ -159,7 +167,7 @@ length(
 				Dest
 			>(
 				fcppt::math::vector::length_square(
-					v
+					_vec
 				)
 			)
 		);
