@@ -226,7 +226,7 @@ Consider the following example where an implicit move would be very dangerous:
 
 \snippet unique_ptr.cpp unique_ptr_move_dangerous
 
-\subsection smartptr_unique_ptr_convert Converting Pointers
+\subsection smartptr_unique_ptr_convert Converting Unique Pointers
 
 Unique pointers are not implicitly convertible to any other unique pointers.
 To convert a unique pointer to a unique pointer to base, use \link
