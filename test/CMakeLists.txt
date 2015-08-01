@@ -141,6 +141,10 @@ add_fcppt_test(
 )
 
 add_fcppt_test(
+	boost_units_value
+)
+
+add_fcppt_test(
 	cast_to_enum
 	LINK_LIBS
 		"${fcppt_core_TARGET}"
@@ -461,6 +465,10 @@ add_fcppt_test(
 )
 
 add_fcppt_test(
+	math/dim/map
+)
+
+add_fcppt_test(
 	math/matrix/access
 )
 
@@ -552,6 +560,10 @@ add_fcppt_test(
 
 add_fcppt_test(
 	math/vector/hash
+)
+
+add_fcppt_test(
+	math/vector/map
 )
 
 add_fcppt_test(

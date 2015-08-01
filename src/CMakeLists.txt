@@ -102,6 +102,7 @@ set(
 	include/fcppt/backtrace/print_current_stack_frame.hpp
 	include/fcppt/backtrace/stack_frame.hpp
 	include/fcppt/backtrace/stack_limit.hpp
+	include/fcppt/boost_units_value.hpp
 	include/fcppt/c_deleter.hpp
 	include/fcppt/c_deleter_fwd.hpp
 	include/fcppt/cast_to_enum.hpp
@@ -528,6 +529,7 @@ set(
 	include/fcppt/math/dim/input.hpp
 	include/fcppt/math/dim/is_dim.hpp
 	include/fcppt/math/dim/is_quadratic.hpp
+	include/fcppt/math/dim/map.hpp
 	include/fcppt/math/dim/max_ctor_params.hpp
 	include/fcppt/math/dim/narrow_cast.hpp
 	include/fcppt/math/dim/object.hpp
@@ -637,6 +639,7 @@ set(
 	include/fcppt/math/vector/is_vector.hpp
 	include/fcppt/math/vector/length.hpp
 	include/fcppt/math/vector/length_square.hpp
+	include/fcppt/math/vector/map.hpp
 	include/fcppt/math/vector/max_ctor_params.hpp
 	include/fcppt/math/vector/mod.hpp
 	include/fcppt/math/vector/narrow_cast.hpp
