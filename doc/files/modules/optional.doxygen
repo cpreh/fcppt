@@ -49,22 +49,24 @@ optional.
 
 \section optional_value Values
 
-If fcppt::optional<T> is used and T is not a reference type, the optional will
-be an optional value. An optional value, as its name suggests, has value
-semantics, meaning that it will copy or move the value. Therefore, T has to be
-MoveConstructible and MoveAssignable or CopyConstructible and Assignable,
-depending on whether the optional is moved or copied. Here is a small example:
+If <code>fcppt::optional<T></code> is used and <code>T</code> is not a
+reference type, the optional will be an optional value. An optional value, as
+its name suggests, has value semantics, meaning that it will copy or move the
+value. Therefore, <code>T</code> has to be MoveConstructible and MoveAssignable
+or CopyConstructible and Assignable, depending on whether the optional is moved
+or copied. Here is a small example:
 
 \snippet optional.cpp optional_copy
 
-Optional values, denoted by fcppt::optional<T>, have some special semantics,
-in contrast to optional references:
+Optional values, denoted by <code>fcppt::optional<T></code>, have some special
+semantics, in contrast to optional references:
 <ul>
-<li>They can be constructed from an fcppt::optional<T &> or an
-fcppt::optional<T const &>. This has the same semantics as constructing a T
-from a T & or T const & with the addition that has_value will be preserved.</li>
-<li>They can also be assigned from an fcppt::optional<T &> or an
-fcppt::optional<T const &> with the same semantics.</li>
+<li>They can be constructed from an <code>fcppt::optional<T &></code> or an
+<code>fcppt::optional<T const &></code>. This has the same semantics as
+constructing a <code>T</code> from a <code>T &</code> or <code>T const &</code>
+with the addition that has_value will be preserved.</li>
+<li>They can also be assigned from an <code>fcppt::optional<T &></code> or an
+<code>fcppt::optional<T const &></code> with the same semantics.</li>
 <li>Their own constness determines if they can be modified which means if the
 stored value is const and if the optional can be assigned a new value.</li>
 </ul>
@@ -73,37 +75,38 @@ For optional references, see \ref optional_reference
 
 \section optional_design Design
 
-The goal of fcppt::optional, in contrast to <code>%boost::optional</code>, is
-to be as explicit as possible and to avoid pointer semantics. The key
-differences include:
+The goal of <code>fcppt::optional</code>, in contrast to
+<code>%boost::optional</code>, is to be as explicit as possible and to avoid
+pointer semantics. The key differences include:
 <ul>
-<li>fcppt::optional doesn't have <code>operator-></code>,
-<code>operator*</code> nor <code>operator bool</code>, so that it doesn't mimic
-pointers.
-<li>fcppt::optional uses alignment support from the compiler instead of relying
-on <code>%boost::detail::aligned_storage</code></li>
-<li><code>fcppt::optional<T></code> doesn't have an implicit constructor, nor
+<li><code>fcppt::optional</code> does not have <code>operator-></code>,
+<code>operator*</code> nor <code>operator bool</code>, so that it does not
+mimic pointers.</li>
+<li><code>fcppt::optional</code> uses alignment support from the compiler
+instead of relying on <code>%boost::detail::aligned_storage</code>.</li>
+<li><code>fcppt::optional<T></code> does not have an implicit constructor, nor
 assignment operator from <code>T</code>.</li>
-<li><code>fcppt::optional<T &></code> doesn't allow implicit conversions for
+<li><code>fcppt::optional<T &></code> does not allow implicit conversions for
 assignment.</li>
 </ul>
 
 \section optional_operations Common Operations
 
-fcppt::maybe is the most basic function that operates on optionals, However,
-some commonly needed operations arise as well. Perhaps the most prominent
-operation would be the so called bind function which decomposes an optional and
-creates a new one by preserving empty optionals.
+\link fcppt::maybe\endlink is the most basic function that operates on
+optionals, However, some commonly needed operations arise as well. Perhaps the
+most prominent operation would be the so called bind function which decomposes
+an optional and creates a new one by preserving empty optionals.
 
 \snippet optional.cpp optional_bind
 
 There is also a shortcut for optional binds that always return a non empty
-optional, called fcppt::optional_bind.
+optional, called \link fcppt::optional_bind_construct\endlink.
 
 \snippet optional.cpp optional_bind_construct
 
-Another commonly used function is fcppt::from_optional. It deconstructs an
-optional by either taking its value or returning a default value.
+Another commonly used function is \link fcppt::from_optional\endlink. It
+deconstructs an optional by either taking its value or returning a default
+value.
 
 \snippet optional.cpp from_optional
 
@@ -149,6 +152,14 @@ fcppt::optional is spread out across various header files.
 <td>Contains \link fcppt::maybe_void_multi \endlink.</td>
 </tr>
 <tr>
+<td><code>optional_alternative.hpp</code></td>
+<td>Contains \link fcppt::optional_alternative \endlink.</td>
+</tr>
+<tr>
+<td><code>optional_assign.hpp</code></td>
+<td>Contains \link fcppt::optional_assign \endlink.</td>
+</tr>
+<tr>
 <td><code>optional_bind.hpp</code></td>
 <td>Contains \link fcppt::optional_bind \endlink.</td>
 </tr>
@@ -163,6 +174,10 @@ fcppt::optional is spread out across various header files.
 <tr>
 <td><code>optional_comparison.hpp</code></td>
 <td>Contains <code>operator==</code>, <code>operator!=</code> and <code>operator< </code></td>
+</tr>
+<tr>
+<td><code>optional_from_pointer.hpp</code></td>
+<td>Contains \link fcppt::optional_from_pointer \endlink.</td>
 </tr>
 <tr>
 <td><code>optional_ref_compare.hpp</code></td>
