@@ -10,6 +10,7 @@
 
 #include <fcppt/math/box/object_impl.hpp>
 
+
 namespace fcppt
 {
 namespace math
@@ -25,11 +26,11 @@ namespace box
 template<
 	typename Scalar
 >
-fcppt::math::box::object
-<
+inline
+fcppt::math::box::object<
 	Scalar,
 	2
-> const
+>
 rect_from_edges(
 	Scalar const _left,
 	Scalar const _top,
@@ -37,32 +38,22 @@ rect_from_edges(
 	Scalar const _bottom
 )
 {
-	typedef typename
-	fcppt::math::box::object
-	<
+	typedef
+	fcppt::math::box::object<
 		Scalar,
 		2
-	>::vector
-	vector;
-
-	typedef typename
-	fcppt::math::box::object
-	<
-		Scalar,
-		2
-	>::dim
-	dim;
+	>
+	result_type;
 
 	return
-		fcppt::math::box::object
-		<
-			Scalar,
-			2
-		>(
-			vector(
+		result_type(
+			typename
+			result_type::vector(
 				_left,
-				_top),
-			dim(
+				_top
+			),
+			typename
+			result_type::dim(
 				_right - _left,
 				_bottom - _top
 			)

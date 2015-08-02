@@ -33,15 +33,15 @@ components differ by more than the specified epsilon. If so, return
 */
 template<
 	typename T,
-	math::size_type N
+	fcppt::math::size_type N
 >
 bool
 componentwise_equal(
-	box::object<
+	fcppt::math::box::object<
 		T,
 		N
 	> const &_v1,
-	box::object<
+	fcppt::math::box::object<
 		T,
 		N
 	> const &_v2,
@@ -49,13 +49,13 @@ componentwise_equal(
 )
 {
 	return
-		math::vector::componentwise_equal(
+		fcppt::math::vector::componentwise_equal(
 			_v1.pos(),
 			_v2.pos(),
 			_epsilon
 		)
 		&&
-		math::dim::componentwise_equal(
+		fcppt::math::dim::componentwise_equal(
 			_v1.size(),
 			_v2.size(),
 			_epsilon

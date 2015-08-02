@@ -31,10 +31,9 @@ FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
 /**
 \brief Metafunction to check the dimension of a box
 */
-template
-<
+template<
 	typename Box,
-	size_type Dim
+	fcppt::math::size_type Dim
 >
 struct has_dim
 :
@@ -44,8 +43,8 @@ std::false_type
 /// \cond FCPPT_DOXYGEN_DEBUG
 template<
 	typename T,
-	size_type N,
-	size_type Dim
+	fcppt::math::size_type N,
+	fcppt::math::size_type Dim
 >
 struct has_dim<
 	fcppt::math::box::object<

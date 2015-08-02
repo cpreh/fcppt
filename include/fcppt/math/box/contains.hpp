@@ -8,7 +8,11 @@
 #ifndef FCPPT_MATH_BOX_CONTAINS_HPP_INCLUDED
 #define FCPPT_MATH_BOX_CONTAINS_HPP_INCLUDED
 
-#include <fcppt/math/box/object_fwd.hpp>
+#include <fcppt/make_int_range_count.hpp>
+#include <fcppt/algorithm/all_of.hpp>
+#include <fcppt/math/size_type.hpp>
+#include <fcppt/math/box/object_impl.hpp>
+
 
 namespace fcppt
 {
@@ -19,34 +23,60 @@ namespace box
 
 /**
 \brief Test if one box is completely inside another box
+
 \ingroup fcpptmathbox
-\tparam N The box's dimension
-\tparam T The box's <code>value_type</code>
-\param outer The outer (larger) box
-\param inner The inner (smaller) box
+
+\param _outer The outer (larger) box
+
+\param _inner The inner (smaller) box
 */
 template<
 	typename T,
-	size_type N
+	fcppt::math::size_type N
 >
+inline
 bool
 contains(
-	object<T, N> const &outer,
-	object<T, N> const &inner
+	fcppt::math::box::object<
+		T,
+		N
+	> const &_outer,
+	fcppt::math::box::object<
+		T,
+		N
+	> const &_inner
 )
 {
-	bool ret = true;
-
-	for(
-		size_type i = 0;
-		i < N;
-		++i
-	)
-		ret &=
-			inner.pos(i) >= outer.pos(i)
-			&& inner.max(i) <= outer.max(i);
-
-	return ret;
+	return
+		fcppt::algorithm::all_of(
+			fcppt::make_int_range_count(
+				N
+			),
+			[
+				&_outer,
+				&_inner
+			](
+				fcppt::math::size_type const _index
+			)
+			{
+				return
+					_inner.pos(
+						_index
+					)
+					>=
+					_outer.pos(
+						_index
+					)
+					&&
+					_inner.max(
+						_index
+					)
+					<=
+					_outer.max(
+						_index
+					);
+			}
+		);
 }
 
 }

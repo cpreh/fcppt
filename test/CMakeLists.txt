@@ -431,6 +431,10 @@ add_fcppt_test(
 )
 
 add_fcppt_test(
+	math/box/contains
+)
+
+add_fcppt_test(
 	math/box/corner_points
 )
 

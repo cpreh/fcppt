@@ -8,9 +8,11 @@
 #ifndef FCPPT_MATH_BOX_INTERSECTION_HPP_INCLUDED
 #define FCPPT_MATH_BOX_INTERSECTION_HPP_INCLUDED
 
+#include <fcppt/make_homogenous_pair.hpp>
 #include <fcppt/no_init.hpp>
 #include <fcppt/math/size_type.hpp>
 #include <fcppt/math/box/intersects.hpp>
+#include <fcppt/math/box/init.hpp>
 #include <fcppt/math/box/object_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <algorithm>
@@ -39,7 +41,7 @@ template<
 fcppt::math::box::object<
 	T,
 	N
-> const
+>
 intersection(
 	fcppt::math::box::object<
 		T,
@@ -55,45 +57,55 @@ intersection(
 	fcppt::math::box::object<
 		T,
 		N
-	> result_type;
+	>
+	result_type;
 
-	if(
-		!fcppt::math::box::intersects(
+	return
+		fcppt::math::box::intersects(
 			_a,
 			_b
 		)
-	)
-		return result_type::null();
+		?
+			fcppt::math::box::init<
+				result_type
+			>(
+				[
+					&_a,
+					&_b
+				](
+					fcppt::math::size_type const _index
+				)
+				{
+					T const pos(
+						std::max(
+							_a.pos(
+								_index
+							),
+							_b.pos(
+								_index
+							)
+						)
+					);
 
-	result_type ret{
-		fcppt::no_init()
-	};
-
-	for(
-		size_type i = 0;
-		i < N;
-		++i
-	)
-	{
-		ret.pos(
-			i,
-			std::max(
-				_a.pos(i),
-				_b.pos(i)
+					return
+						fcppt::make_homogenous_pair(
+							pos,
+							std::min(
+								_a.max(
+									_index
+								),
+								_b.max(
+									_index
+								)
+							)
+							-
+							pos
+						);
+				}
 			)
-		);
-
-		ret.size(
-			i,
-			std::min(
-				_a.max(i),
-				_b.max(i)
-			)
-			- ret.pos(i)
-		);
-	}
-
-	return ret;
+		:
+			result_type::null()
+		;
 }
 
 }

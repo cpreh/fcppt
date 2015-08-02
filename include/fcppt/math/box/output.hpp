@@ -37,7 +37,7 @@ The format will be
 */
 template<
 	typename T,
-	size_type N,
+	fcppt::math::size_type N,
 	typename Ch,
 	typename Traits
 >
@@ -46,8 +46,14 @@ std::basic_ostream<
 	Traits
 > &
 operator<<(
-	std::basic_ostream<Ch, Traits> &_stream,
-	object<T, N> const &_box
+	std::basic_ostream<
+		Ch,
+		Traits
+	> &_stream,
+	fcppt::math::box::object<
+		T,
+		N
+	> const &_box
 )
 {
 	return

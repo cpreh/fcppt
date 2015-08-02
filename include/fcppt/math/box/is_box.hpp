@@ -37,7 +37,7 @@ template<
 >
 struct is_box
 :
-	std::false_type
+std::false_type
 {
 };
 
@@ -53,7 +53,7 @@ struct is_box<
 	>
 >
 :
-	std::true_type
+std::true_type
 {
 };
 /// \endcond

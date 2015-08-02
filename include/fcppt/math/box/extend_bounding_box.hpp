@@ -42,7 +42,7 @@ template<
 fcppt::math::box::object<
 	T,
 	N
-> const
+>
 extend_bounding_box(
 	fcppt::math::box::object<
 		T,

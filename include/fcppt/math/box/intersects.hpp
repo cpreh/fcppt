@@ -8,6 +8,8 @@
 #ifndef FCPPT_MATH_BOX_INTERSECTS_HPP_INCLUDED
 #define FCPPT_MATH_BOX_INTERSECTS_HPP_INCLUDED
 
+#include <fcppt/make_int_range_count.hpp>
+#include <fcppt/algorithm/all_of.hpp>
 #include <fcppt/math/size_type.hpp>
 #include <fcppt/math/box/object_impl.hpp>
 
@@ -27,26 +29,52 @@ namespace box
 */
 template<
 	typename T,
-	size_type N
+	fcppt::math::size_type N
 >
+inline
 bool
 intersects(
-	object<T, N> const &a,
-	object<T, N> const &b
+	fcppt::math::box::object<
+		T,
+		N
+	> const &_a,
+	fcppt::math::box::object<
+		T,
+		N
+	> const &_b
 )
 {
-	bool ret = false;
-
-	for(
-		size_type i = 0;
-		i < N;
-		++i
-	)
-		ret = ret
-			|| a.pos(i) > b.max(i)
-			|| a.max(i) < b.pos(i);
-
-	return !ret;
+	return
+		fcppt::algorithm::all_of(
+			fcppt::make_int_range_count(
+				N
+			),
+			[
+				&_a,
+				&_b
+			](
+				fcppt::math::size_type const _index
+			)
+			{
+				return
+					_b.pos(
+						_index
+					)
+					<
+					_a.max(
+						_index
+					)
+					&&
+					_a.pos(
+						_index
+					)
+					<
+					_b.max(
+						_index
+					)
+					;
+			}
+		);
 }
 
 }

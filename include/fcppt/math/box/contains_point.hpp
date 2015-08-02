@@ -8,6 +8,8 @@
 #ifndef FCPPT_MATH_BOX_CONTAINS_POINT_HPP_INCLUDED
 #define FCPPT_MATH_BOX_CONTAINS_POINT_HPP_INCLUDED
 
+#include <fcppt/make_int_range_count.hpp>
+#include <fcppt/algorithm/all_of.hpp>
 #include <fcppt/math/size_type.hpp>
 #include <fcppt/math/box/object_impl.hpp>
 #include <fcppt/math/vector/object_impl.hpp>
@@ -33,27 +35,53 @@ namespace box
 template<
 	typename T,
 	typename S,
-	size_type NBox,
+	fcppt::math::size_type NBox,
 	typename NPoint
 >
+inline
 bool
 contains_point(
-	box::object<T, NBox> const &_box,
-	vector::object<T, NPoint, S> const &_point
+	fcppt::math::box::object<
+		T,
+		NBox
+	> const &_box,
+	fcppt::math::vector::object<
+		T,
+		NPoint,
+		S
+	> const &_point
 )
 {
-	bool ret = true;
-
-	for(
-		math::size_type i = 0;
-		i < NBox;
-		++i
-	)
-		ret = ret &&
-			_point[i] >= _box.pos(i)
-			&& _point[i] < _box.max(i);
-
-	return ret;
+	return
+		fcppt::algorithm::all_of(
+			fcppt::make_int_range_count(
+				NBox
+			),
+			[
+				&_box,
+				&_point
+			](
+				fcppt::math::size_type const _index
+			)
+			{
+				return
+					_point[
+						_index
+					]
+					>=
+					_box.pos(
+						_index
+					)
+					&&
+					_point[
+						_index
+					]
+					<
+					_box.max(
+						_index
+					);
+			}
+		);
 }
 
 }
