@@ -9,9 +9,9 @@
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/config/external_begin.hpp>
+#include <boost/test/unit_test.hpp>
 #include <boost/units/quantity.hpp>
 #include <boost/units/systems/si/length.hpp>
-#include <boost/test/unit_test.hpp>
 #include <fcppt/config/external_end.hpp>
 
 
