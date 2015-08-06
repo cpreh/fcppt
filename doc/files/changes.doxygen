@@ -74,8 +74,8 @@ can be omitted from <code>return</code> statements.</li>
 	<li>Added \link fcppt::math::vector::init\endlink, \link
 	fcppt::math::box::init\endlink and \link fcppt::math::dim::init
 	\endlink.</li>
-	<li>Removed default constructor of \link
-	fcppt::math::matrix::object\endlink.</li>
+	<li>Added \link fcppt::math::vector::map\endlink and \link
+	fcppt::math::dim::map\endlink.</li>
 	</ul>
 </li>
 
@@ -194,6 +194,8 @@ can be omitted from <code>return</code> statements.</li>
 	<ul>
 	<li>Moved \link fcppt::math::box::object \endlink comparison operators
 	to <code>fcppt/math/box/comparison.hpp</code>.</li>
+	<li>Removed default constructor of \link
+	fcppt::math::matrix::object\endlink.</li>
 	</ul>
 </li>
 
@@ -246,7 +248,6 @@ can be omitted from <code>return</code> statements.</li>
 <li>Use standard iterator categories instead of boost iterator categories. The
 latter do not derive from the former and generally break algorithms that test
 for them.</li>
-</li>
-<li>Fix <code>std::swap</code> includes to conform to <code>C++11</code></li>
+<li>Fix <code>std::swap</code> includes to conform to <code>C++11</code>.</li>
 </ul>
 */
