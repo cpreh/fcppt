@@ -62,13 +62,9 @@ The latest fcppt release is 1.4.0. Get it <a
 href="http://fcppt.org/downloads/fcppt-1.4.0.tar.bz2">here</a> (<a
 href="http://fcppt.org/downloads/fcppt-1.4.0.tar.bz2.digest">SHA1</a>).
 
-fcppt is available through our public Git Repository:
+fcppt is on <a href="https://github.com/freundlich/fcppt">Github</a>
 
-<a href="git://github.com/freundlich/fcppt.git">git://github.com/freundlich/fcppt.git</a>
-
-Gentoo ebuilds are available in Freundlich's overlay at
-
-<a href="git://github.com/freundlich/freundlich-gentoo.git">git://github.com/freundlich/freundlich-gentoo.git</a>
+Gentoo ebuilds are available in <a href="https://github.com/freundlich/freundlich-gentoo">Freundlich's overlay</a>
 
 \section requirements_download_installation_building_and_installation Building and Installation
 
