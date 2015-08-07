@@ -29,6 +29,7 @@ template<
 	typename F,
 	typename... Args
 >
+inline
 typename std::enable_if<
 	Index == N,
 	std::array<
@@ -61,6 +62,7 @@ template<
 	typename F,
 	typename... Args
 >
+inline
 typename std::enable_if<
 	Index != N,
 	std::array<
