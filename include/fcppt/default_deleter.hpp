@@ -7,6 +7,7 @@
 #ifndef FCPPT_DEFAULT_DELETER_HPP_INCLUDED
 #define FCPPT_DEFAULT_DELETER_HPP_INCLUDED
 
+#include <fcppt/assert_complete.hpp>
 #include <fcppt/default_deleter_fwd.hpp>
 
 
@@ -20,6 +21,11 @@ namespace fcppt
 */
 struct default_deleter
 {
+	/**
+	\brief Deletes the object using <code>delete</code>
+
+	\tparam T Must be a complete type
+	*/
 	template<
 		typename T
 	>
@@ -28,6 +34,10 @@ struct default_deleter
 		T const *_ptr
 	) const
 	{
+		FCPPT_ASSERT_COMPLETE(
+			T
+		);
+
 		delete
 			_ptr;
 	}
