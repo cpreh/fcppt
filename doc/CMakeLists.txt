@@ -597,6 +597,10 @@ set(
 	include/fcppt/from_std_string_locale.hpp
 	include/fcppt/from_std_wstring.hpp
 	include/fcppt/from_std_wstring_locale.hpp
+	include/fcppt/function.hpp
+	include/fcppt/function_decl.hpp
+	include/fcppt/function_fwd.hpp
+	include/fcppt/function_impl.hpp
 	include/fcppt/homogenous_pair.hpp
 	include/fcppt/homogenous_pair_comparison.hpp
 	include/fcppt/homogenous_pair_decl.hpp

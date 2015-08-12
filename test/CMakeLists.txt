@@ -343,6 +343,10 @@ add_fcppt_test(
 )
 
 add_fcppt_test(
+	function
+)
+
+add_fcppt_test(
 	homogenous_pair
 )
 
