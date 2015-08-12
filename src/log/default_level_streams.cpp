@@ -11,6 +11,7 @@
 #include <fcppt/log/level_stream.hpp>
 #include <fcppt/log/level_stream_array.hpp>
 #include <fcppt/log/format/default_level.hpp>
+#include <fcppt/log/format/optional_function.hpp>
 
 
 fcppt::log::level_stream_array
@@ -31,8 +32,10 @@ fcppt::log::default_level_streams(
 				return
 					fcppt::log::level_stream(
 						_sink,
-						fcppt::log::format::default_level(
-							_index
+						fcppt::log::format::optional_function(
+							fcppt::log::format::default_level(
+								_index
+							)
 						)
 					);
 			}

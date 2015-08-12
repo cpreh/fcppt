@@ -7,12 +7,12 @@
 #ifndef FCPPT_LOG_LEVEL_STREAM_HPP_INCLUDED
 #define FCPPT_LOG_LEVEL_STREAM_HPP_INCLUDED
 
-#include <fcppt/optional_impl.hpp>
+#include <fcppt/reference_wrapper_impl.hpp>
 #include <fcppt/io/ostream.hpp>
 #include <fcppt/log/level_stream_fwd.hpp>
 #include <fcppt/log/detail/symbol.hpp>
 #include <fcppt/log/detail/temporary_output_fwd.hpp>
-#include <fcppt/log/format/function.hpp>
+#include <fcppt/log/format/optional_function.hpp>
 
 
 namespace fcppt
@@ -32,8 +32,6 @@ class can be shared between several logger objects.
 class level_stream
 {
 public:
-	level_stream();
-
 	/**
 	\brief Constructs a level stream with a sink and a formatter
 
@@ -47,14 +45,8 @@ public:
 	FCPPT_LOG_DETAIL_SYMBOL
 	level_stream(
 		fcppt::io::ostream &stream,
-		fcppt::log::format::function const &formatter
+		fcppt::log::format::optional_function const &formatter
 	);
-
-	/**
-	\brief Destroys a level stream
-	*/
-	FCPPT_LOG_DETAIL_SYMBOL
-	~level_stream();
 
 	/**
 	\brief Logs to this level stream
@@ -74,7 +66,7 @@ public:
 	void
 	log(
 		fcppt::log::detail::temporary_output const &output,
-		fcppt::log::format::function const &additional_formatter
+		fcppt::log::format::optional_function const &additional_formatter
 	);
 
 	/**
@@ -92,18 +84,15 @@ public:
 	\brief Returns the associated formatter
 	*/
 	FCPPT_LOG_DETAIL_SYMBOL
-	fcppt::log::format::function const &
+	fcppt::log::format::optional_function const &
 	formatter() const;
 private:
-	typedef
-	fcppt::optional<
-		fcppt::io::ostream &
+	fcppt::reference_wrapper<
+		fcppt::io::ostream
 	>
-	ostream_reference;
+	dest_;
 
-	ostream_reference dest_;
-
-	fcppt::log::format::function formatter_;
+	fcppt::log::format::optional_function formatter_;
 };
 
 }

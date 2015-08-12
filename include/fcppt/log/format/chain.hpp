@@ -7,9 +7,9 @@
 #ifndef FCPPT_LOG_FORMAT_CHAIN_HPP_INCLUDED
 #define FCPPT_LOG_FORMAT_CHAIN_HPP_INCLUDED
 
-#include <fcppt/string.hpp>
 #include <fcppt/log/detail/symbol.hpp>
 #include <fcppt/log/format/function.hpp>
+#include <fcppt/log/format/optional_function_fwd.hpp>
 
 
 namespace fcppt
@@ -20,27 +20,20 @@ namespace format
 {
 
 /**
-\brief Formats using two formatters in succession
+\brief Composes two formatters
 
 \ingroup fcpptlog
 
-Applies \a child to \a text, the result of which \a parent will be applied to.
-<code>return parent(child(text));</code>.
-
-\param parent The parent formatter. Must not be empty.
-
-\param child The child formatter. Must not be empty.
-
-\param text The text to format using \a parent and \a child.
-
-\return The formatted text
+Creates a formatter that composes \a parent and \a child in the following way:
+If \a parent and \a child are not nothing, their functions are composed
+(<code>parent (.) child</code>). Otherwise, if \a parent is not nothing, \a
+parent is returned. Otherwise, \a child is returned.
 */
 FCPPT_LOG_DETAIL_SYMBOL
-fcppt::string
+fcppt::log::format::optional_function
 chain(
-	fcppt::log::format::function const &parent,
-	fcppt::log::format::function const &child,
-	fcppt::string const &text
+	fcppt::log::format::optional_function const &parent,
+	fcppt::log::format::optional_function const &child
 );
 
 }

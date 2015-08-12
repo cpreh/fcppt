@@ -7,9 +7,9 @@
 #include <fcppt/text.hpp>
 #include <fcppt/log/level.hpp>
 #include <fcppt/log/level_to_string.hpp>
-#include <fcppt/log/format/create_inserter.hpp>
 #include <fcppt/log/format/default_level.hpp>
 #include <fcppt/log/format/function.hpp>
+#include <fcppt/log/format/inserter.hpp>
 
 
 fcppt::log::format::function
@@ -18,10 +18,11 @@ fcppt::log::format::default_level(
 )
 {
 	return
-		fcppt::log::format::create_inserter(
+		fcppt::log::format::inserter(
 			fcppt::log::level_to_string(
 				_level
 			)
-			+ FCPPT_TEXT(": %1%\n")
+			+
+			FCPPT_TEXT(": %1%\n")
 		);
 }

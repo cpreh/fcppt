@@ -82,10 +82,9 @@ that can be written to like an <code>std::basic_ostream</code>. This is used to
 create a whole message in a thread-safe manner. If you log in multiple pieces
 instead, the log message might end up interleaved with other messages.
 
-\link fcppt::log::parameters::object::level_defaults \endlink is a convenience
-function that tells the logger to enable all log levels for a given log level
-and above. It also gets a stream that all levels will log to, using default
-formatting.
+The constructor of \link fcppt::log::parameters \endlink tells the logger to
+enable all log levels for a given log level and above. It also gets a stream
+that all levels will log to, using default formatting.
 
 \section log_formatting_and_sinks Formatting and sinks
 
@@ -131,10 +130,10 @@ output sink.
 \snippet log/formatting.cpp error_formatter_declaration
 
 We can then specify our logger formatting function for the logger, using \link
-fcppt::log::parameters::object::formatter \endlink. We also change the level
+fcppt::log::parameters::formatter \endlink. We also change the level
 for the <em>error</em> log level, redirecting it to \link fcppt::io::cerr
 \endlink and giving it a different formatting function, using \link
-fcppt::log::parameters::object::level_stream \endlink.
+fcppt::log::parameters::level_stream \endlink.
 
 \snippet log/formatting.cpp logger_declaration
 
@@ -338,20 +337,20 @@ All headers are relative to the log subdirectory.
 <td>Contains \link fcppt::log::object \endlink's defintiion.</td>
 </tr>
 <tr>
+<td><code>parameters.hpp</code></td>
+<td>Contains \link fcppt::log::parameters \endlink's declaration.</td>
+</tr>
+<tr>
+<td><code>parameters.hpp</code></td>
+<td>Contains \link fcppt::log::parameters \endlink's definition.</td>
+</tr>
+<tr>
 <td><code>verbose.hpp</code></td>
 <td>Contains the <code>FCPPT_LOG_VERBOSE</code> macro.</td>
 </tr>
 <tr>
 <td><code>warning.hpp</code></td>
 <td>Contains the <code>FCPPT_LOG_WARNING</code> macro.</td>
-</tr>
-<tr>
-<td><code>parameters/object_fwd.hpp</code></td>
-<td>Contains \link fcppt::log::parameters::object \endlink's declaration.</td>
-</tr>
-<tr>
-<td><code>parameters/object.hpp</code></td>
-<td>Contains \link fcppt::log::parameters::object \endlink's definition.</td>
 </tr>
 </table>
 
@@ -459,28 +458,8 @@ All headers are relative to the log subdirectory.
 <td>Contains the \link fcppt::log::tree_function \endlink typedef.</td>
 </tr>
 <tr>
-<td><code>parameters/with_context.hpp</code></td>
-<td>Contains the \link fcppt::log::parameters::with_context \endlink helper function.</td>
-</tr>
-<tr>
 <td><code>format/chain.hpp</code></td>
 <td>Contains the \link fcppt::log::format::chain \endlink function.</td>
-</tr>
-<tr>
-<td><code>format/create_chain.hpp</code></td>
-<td>Contains the \link fcppt::log::format::create_chain \endlink function.</td>
-</tr>
-<tr>
-<td><code>format/create_inserter.hpp</code></td>
-<td>Contains the \link fcppt::log::format::create_inserter \endlink function.</td>
-</tr>
-<tr>
-<td><code>format/create_prefix.hpp</code></td>
-<td>Contains the \link fcppt::log::format::create_prefix \endlink function.</td>
-</tr>
-<tr>
-<td><code>format/create_time_stamp.hpp</code></td>
-<td>Contains the \link fcppt::log::format::create_time_stamp \endlink function.</td>
 </tr>
 <tr>
 <td><code>format/default_level.hpp</code></td>
@@ -501,6 +480,10 @@ All headers are relative to the log subdirectory.
 <tr>
 <td><code>format/inserter.hpp</code></td>
 <td>Contains the \link fcppt::log::format::inserter \endlink typedef.</td>
+</tr>
+<tr>
+<td><code>format/prefix.hpp</code></td>
+<td>Contains the \link fcppt::log::format::prefix \endlink function.</td>
 </tr>
 <tr>
 <td><code>format/time_stamp.hpp</code></td>
@@ -524,11 +507,5 @@ namespace format
 {
 }
 
-/**
-\brief Contains logger parameter classes
-*/
-namespace parameters
-{
-}
 }
 }

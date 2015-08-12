@@ -8,7 +8,7 @@
 #include <fcppt/log/context.hpp>
 #include <fcppt/log/location_fwd.hpp>
 #include <fcppt/log/print_locations.hpp>
-#include <fcppt/src/log/print_locations_function.hpp>
+#include <fcppt/log/impl/print_locations_function.hpp>
 
 
 void
@@ -20,7 +20,7 @@ fcppt::log::print_locations(
 {
 	_context.apply(
 		_location,
-		fcppt::log::print_locations_function(
+		fcppt::log::impl::print_locations_function(
 			_stream
 		)
 	);

@@ -10,8 +10,8 @@
 #include <fcppt/log/debug.hpp>
 #include <fcppt/log/level.hpp>
 #include <fcppt/log/object.hpp>
+#include <fcppt/log/parameters.hpp>
 #include <fcppt/log/verbose.hpp>
-#include <fcppt/log/parameters/object.hpp>
 
 
 int
@@ -21,8 +21,7 @@ main()
 	// Create a logger that logs to cout, has level debug and "below"
 	// enabled and is enabled itself.
 	fcppt::log::object logger(
-		fcppt::log::parameters::object()
-		.level_defaults(
+		fcppt::log::parameters(
 			fcppt::io::cout(),
 			fcppt::log::level::debug
 		)

@@ -7,19 +7,31 @@
 #include <fcppt/format.hpp>
 #include <fcppt/string.hpp>
 #include <fcppt/log/format/inserter.hpp>
+#include <fcppt/log/format/function.hpp>
 
 
-fcppt::string
+fcppt::log::format::function
 fcppt::log::format::inserter(
-	fcppt::string const &_format_string,
-	fcppt::string const &_text
+	fcppt::string const &_format
 )
 {
 	return
-		(
-			fcppt::format(
-				_format_string
+		fcppt::log::format::function(
+			[
+				_format
+			](
+				fcppt::string const &_text
 			)
-			% _text
-		).str();
+			-> fcppt::string
+			{
+				return
+					(
+						fcppt::format(
+							_format
+						)
+						%
+						_text
+					).str();
+			}
+		);
 }

@@ -4,24 +4,20 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/assert/optional_error.hpp>
+#include <fcppt/const.hpp>
+#include <fcppt/identity.hpp>
+#include <fcppt/make_ref.hpp>
+#include <fcppt/from_optional.hpp>
 #include <fcppt/io/ostream.hpp>
 #include <fcppt/log/level_stream.hpp>
 #include <fcppt/log/detail/temporary_output.hpp>
-#include <fcppt/log/format/create_chain.hpp>
-#include <fcppt/log/format/function.hpp>
+#include <fcppt/log/format/chain.hpp>
+#include <fcppt/log/format/optional_function.hpp>
 
-
-fcppt::log::level_stream::level_stream()
-:
-	dest_(),
-	formatter_()
-{
-}
 
 fcppt::log::level_stream::level_stream(
 	fcppt::io::ostream &_dest,
-	fcppt::log::format::function const &_formatter
+	fcppt::log::format::optional_function const &_formatter
 )
 :
 	dest_(
@@ -33,32 +29,29 @@ fcppt::log::level_stream::level_stream(
 {
 }
 
-fcppt::log::level_stream::~level_stream()
-{
-}
-
 void
 fcppt::log::level_stream::log(
 	fcppt::log::detail::temporary_output const &_output,
-	fcppt::log::format::function const &_additional_formatter
+	fcppt::log::format::optional_function const &_additional_formatter
 )
 {
-	fcppt::io::ostream &dest(
-		FCPPT_ASSERT_OPTIONAL_ERROR(
-			dest_
-		)
-	);
-
-	dest
+	dest_.get()
 		<<
-		fcppt::log::format::create_chain(
-			_additional_formatter,
-			this->formatter()
+		fcppt::from_optional(
+			fcppt::log::format::chain(
+				_additional_formatter,
+				this->formatter()
+			),
+			fcppt::const_(
+				fcppt::log::format::function(
+					fcppt::identity{}
+				)
+			)
 		)(
 			_output.result()
 		);
 
-	dest.flush();
+	dest_.get().flush();
 }
 
 void
@@ -67,12 +60,12 @@ fcppt::log::level_stream::sink(
 )
 {
 	dest_ =
-		ostream_reference(
+		fcppt::make_ref(
 			_stream
 		);
 }
 
-fcppt::log::format::function const &
+fcppt::log::format::optional_function const &
 fcppt::log::level_stream::formatter() const
 {
 	return

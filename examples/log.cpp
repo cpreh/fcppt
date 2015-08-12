@@ -16,8 +16,9 @@
 #include <fcppt/log/level.hpp>
 #include <fcppt/log/object.hpp>
 #include <fcppt/log/optional_object.hpp>
-#include <fcppt/log/format/create_time_stamp.hpp>
-#include <fcppt/log/parameters/with_context.hpp>
+#include <fcppt/log/parameters.hpp>
+#include <fcppt/log/tree_function.hpp>
+#include <fcppt/log/format/time_stamp.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <cstdlib>
 #include <functional>
@@ -43,19 +44,19 @@ try
 	);
 
 	fcppt::log::object logger(
-		fcppt::log::parameters::with_context(
-			context,
-			root_location
-		)
-		.level_defaults(
+		fcppt::log::parameters(
 			output_stream,
 			level
+		)
+		.context_location(
+			context,
+			root_location
 		)
 		.enabled(
 			true
 		)
 		.formatter(
-			fcppt::log::format::create_time_stamp()
+			fcppt::log::format::time_stamp()
 		)
 	);
 
@@ -66,13 +67,13 @@ try
 	);
 
 	fcppt::log::object child_logger(
-		fcppt::log::parameters::with_context(
-			context,
-			child_location
-		)
-		.level_defaults(
+		fcppt::log::parameters(
 			output_stream,
 			level
+		)
+		.context_location(
+			context,
+			child_location
 		)
 		// not enabled
 	);
@@ -111,10 +112,12 @@ try
 
 	context.apply(
 		root_location,
-		std::bind(
-			&fcppt::log::object::enable,
-			std::placeholders::_1,
-			false
+		fcppt::log::tree_function(
+			std::bind(
+				&fcppt::log::object::enable,
+				std::placeholders::_1,
+				false
+			)
 		)
 	);
 

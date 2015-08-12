@@ -14,7 +14,9 @@
 #include <fcppt/log/level.hpp>
 #include <fcppt/log/level_stream.hpp>
 #include <fcppt/log/object.hpp>
-#include <fcppt/log/parameters/object.hpp>
+#include <fcppt/log/parameters.hpp>
+#include <fcppt/log/format/function.hpp>
+#include <fcppt/log/format/optional_function.hpp>
 
 
 namespace
@@ -59,8 +61,7 @@ main()
 {
 //! [logger_declaration]
 	fcppt::log::object logger(
-		fcppt::log::parameters::object()
-		.level_defaults(
+		fcppt::log::parameters(
 			fcppt::io::cout(),
 			fcppt::log::level::debug
 		)
@@ -69,7 +70,9 @@ main()
 		)
 		// Create a special formatter for the whole logger
 		.formatter(
-			logger_formatter
+			fcppt::log::format::function{
+				logger_formatter
+			}
 		)
 		// Create a special sink for the error log level that prints to
 		// cerr and also has a special formatter.
@@ -77,7 +80,11 @@ main()
 			fcppt::log::level::error,
 			fcppt::log::level_stream(
 				fcppt::io::cerr(),
-				error_formatter
+				fcppt::log::format::optional_function{
+					fcppt::log::format::function{
+						error_formatter
+					}
+				}
 			)
 		)
 	);

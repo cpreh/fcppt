@@ -8,7 +8,7 @@
 #define FCPPT_LOG_LEVEL_FROM_STRING_HPP_INCLUDED
 
 #include <fcppt/string.hpp>
-#include <fcppt/log/level_fwd.hpp>
+#include <fcppt/log/optional_level.hpp>
 #include <fcppt/log/detail/symbol.hpp>
 
 
@@ -23,15 +23,13 @@ namespace log
 \ingroup fcpptlog
 
 Converts the name of a log level given by \a name to its corresponding level
-enumerator. Accepts all strings as parameters that are listed in
-fcppt::log::level::type
+enumerator. Accepts all strings as parameters that are listed in \link
+fcppt::log::level \endlink
 
 \param name the name of the log level
-
-\throw fcppt::log::exception if \a name is invalid
 */
 FCPPT_LOG_DETAIL_SYMBOL
-fcppt::log::level
+fcppt::log::optional_level
 level_from_string(
 	fcppt::string const &name
 );

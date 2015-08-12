@@ -7,7 +7,7 @@
 #include <fcppt/log/deactivate_levels.hpp>
 #include <fcppt/log/level.hpp>
 #include <fcppt/log/object.hpp>
-#include <fcppt/src/log/set_levels.hpp>
+#include <fcppt/log/impl/set_levels.hpp>
 
 
 void
@@ -16,7 +16,7 @@ fcppt::log::deactivate_levels(
 	fcppt::log::level const _level
 )
 {
-	fcppt::log::set_levels(
+	fcppt::log::impl::set_levels(
 		_object,
 		_level,
 		&fcppt::log::object::deactivate

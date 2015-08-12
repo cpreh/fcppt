@@ -4,9 +4,9 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-//[logcomplex
 #include <fcppt/exception.hpp>
 #include <fcppt/from_std_string.hpp>
+#include <fcppt/make_int_range.hpp>
 #include <fcppt/text.hpp>
 #include <fcppt/io/cerr.hpp>
 #include <fcppt/io/cout.hpp>
@@ -19,9 +19,9 @@
 #include <fcppt/log/level.hpp>
 #include <fcppt/log/location.hpp>
 #include <fcppt/log/object.hpp>
+#include <fcppt/log/parameters.hpp>
 #include <fcppt/log/print_locations.hpp>
-#include <fcppt/log/parameters/object.hpp>
-#include <fcppt/log/parameters/with_context.hpp>
+#include <fcppt/log/tree_function.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <cstdlib>
 #include <functional>
@@ -45,19 +45,19 @@ namespace engine
 
 // Helper function to create our logger parameters
 inline
-fcppt::log::parameters::object
+fcppt::log::parameters
 logger_parameters(
 	fcppt::log::location const &_location
 )
 {
 	return
-		fcppt::log::parameters::with_context(
-			engine::log_context(),
-			_location
-		)
-		.level_defaults(
+		fcppt::log::parameters(
 			fcppt::io::cout(),
 			fcppt::log::level::debug
+		)
+		.context_location(
+			engine::log_context(),
+			_location
 		);
 }
 
@@ -144,7 +144,8 @@ fcppt::log::object root_logger_obj(
 fcppt::log::object &
 engine::root_logger()
 {
-	return root_logger_obj;
+	return
+		root_logger_obj;
 }
 //! [define_engine_root_logger]
 
@@ -168,7 +169,8 @@ fcppt::log::object renderer_logger_obj(
 fcppt::log::object &
 engine::renderer::logger()
 {
-	return renderer_logger_obj;
+	return
+		renderer_logger_obj;
 }
 
 //! [define_subsystem_renderer]
@@ -210,21 +212,28 @@ try
 	// Example: "./example renderer" will activate the renderer's logger so we can
 	// diagnose a problem there.
 	for(
-		int i = 1;
-		i < argc;
-		++i
+		int const index
+		:
+		fcppt::make_int_range(
+			1,
+			argc
+		)
 	)
 		engine::log_context().apply(
 			engine::logger_location()
 			/
 			fcppt::from_std_string(
-				argv[i]
+				argv[
+					index
+				]
 			),
-			std::bind(
-				&fcppt::log::object::enable,
-				std::placeholders::_1,
-				true
-			)
+			fcppt::log::tree_function{
+				std::bind(
+					&fcppt::log::object::enable,
+					std::placeholders::_1,
+					true
+				)
+			}
 		);
 //! [main]
 	FCPPT_LOG_DEBUG(
@@ -249,4 +258,3 @@ catch(
 
 	return EXIT_FAILURE;
 }
-//]

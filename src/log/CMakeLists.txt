@@ -17,6 +17,8 @@ set(
 	include/fcppt/log/detail/auto_context_fwd.hpp
 	include/fcppt/log/detail/auto_context_rep.hpp
 	include/fcppt/log/detail/auto_context_rep_fwd.hpp
+	include/fcppt/log/detail/const_optional_context_tree_ref.hpp
+	include/fcppt/log/detail/const_optional_context_tree_ref_fwd.hpp
 	include/fcppt/log/detail/context_tree.hpp
 	include/fcppt/log/detail/context_tree_fwd.hpp
 	include/fcppt/log/detail/context_tree_node.hpp
@@ -43,13 +45,13 @@ set(
 	include/fcppt/log/exception.hpp
 	include/fcppt/log/fatal.hpp
 	include/fcppt/log/format/chain.hpp
-	include/fcppt/log/format/create_chain.hpp
-	include/fcppt/log/format/create_inserter.hpp
-	include/fcppt/log/format/create_prefix.hpp
-	include/fcppt/log/format/create_time_stamp.hpp
 	include/fcppt/log/format/default_level.hpp
 	include/fcppt/log/format/function.hpp
+	include/fcppt/log/format/function_fwd.hpp
 	include/fcppt/log/format/inserter.hpp
+	include/fcppt/log/format/optional_function.hpp
+	include/fcppt/log/format/optional_function_fwd.hpp
+	include/fcppt/log/format/prefix.hpp
 	include/fcppt/log/format/time_stamp.hpp
 	include/fcppt/log/impl/exception.hpp
 	include/fcppt/log/impl/no_such_location.hpp
@@ -69,13 +71,14 @@ set(
 	include/fcppt/log/no_such_location.hpp
 	include/fcppt/log/object.hpp
 	include/fcppt/log/object_fwd.hpp
+	include/fcppt/log/optional_level.hpp
+	include/fcppt/log/optional_level_fwd.hpp
 	include/fcppt/log/optional_location.hpp
 	include/fcppt/log/optional_location_fwd.hpp
 	include/fcppt/log/optional_object.hpp
 	include/fcppt/log/optional_object_fwd.hpp
-	include/fcppt/log/parameters/object.hpp
-	include/fcppt/log/parameters/object_fwd.hpp
-	include/fcppt/log/parameters/with_context.hpp
+	include/fcppt/log/parameters.hpp
+	include/fcppt/log/parameters_fwd.hpp
 	include/fcppt/log/print_all_locations.hpp
 	include/fcppt/log/print_locations.hpp
 	include/fcppt/log/tree_function.hpp
@@ -97,45 +100,43 @@ set(
 	src/log/detail/temporary_output.cpp
 	src/log/enabled_levels.cpp
 	src/log/find_inner_node.cpp
-	src/log/find_location.cpp
-	src/log/find_logger_node.cpp
 	src/log/format/chain.cpp
-	src/log/format/create_chain.cpp
-	src/log/format/create_inserter.cpp
-	src/log/format/create_prefix.cpp
-	src/log/format/create_time_stamp.cpp
 	src/log/format/default_level.cpp
 	src/log/format/inserter.cpp
+	src/log/format/prefix.cpp
 	src/log/format/time_stamp.cpp
-	src/log/include/fcppt/src/log/find_inner_node.hpp
-	src/log/include/fcppt/src/log/find_location.hpp
-	src/log/include/fcppt/src/log/find_logger_node.hpp
-	src/log/include/fcppt/src/log/inner_node_name.hpp
-	src/log/include/fcppt/src/log/level_string_array.hpp
-	src/log/include/fcppt/src/log/level_strings.hpp
-	src/log/include/fcppt/src/log/optional_outer_context_node.hpp
-	src/log/include/fcppt/src/log/optional_outer_context_node_fwd.hpp
-	src/log/include/fcppt/src/log/print_locations_function.hpp
-	src/log/include/fcppt/src/log/set_levels.hpp
-	src/log/include/fcppt/src/log/to_outer_node.hpp
-	src/log/include/fcppt/src/log/tree_formatter.hpp
+	src/log/impl/find_location.cpp
+	src/log/impl/find_logger_node.cpp
+	src/log/impl/level_strings.cpp
+	src/log/impl/print_locations_function.cpp
+	src/log/impl/set_levels.cpp
+	src/log/impl/to_outer_node.cpp
+	src/log/impl/tree_formatter.cpp
+	src/log/include/fcppt/log/impl/const_optional_outer_context_node.hpp
+	src/log/include/fcppt/log/impl/const_optional_outer_context_node_fwd.hpp
+	src/log/include/fcppt/log/impl/find_inner_node.hpp
+	src/log/include/fcppt/log/impl/find_location.hpp
+	src/log/include/fcppt/log/impl/find_logger_node.hpp
+	src/log/include/fcppt/log/impl/inner_node_name.hpp
+	src/log/include/fcppt/log/impl/level_string_array.hpp
+	src/log/include/fcppt/log/impl/level_strings.hpp
+	src/log/include/fcppt/log/impl/optional_outer_context_node.hpp
+	src/log/include/fcppt/log/impl/optional_outer_context_node_fwd.hpp
+	src/log/include/fcppt/log/impl/print_locations_function.hpp
+	src/log/include/fcppt/log/impl/set_levels.hpp
+	src/log/include/fcppt/log/impl/to_outer_node.hpp
+	src/log/include/fcppt/log/impl/tree_formatter.hpp
 	src/log/inner_node_name.cpp
 	src/log/level_from_string.cpp
 	src/log/level_stream.cpp
-	src/log/level_strings.cpp
 	src/log/level_to_string.cpp
 	src/log/location.cpp
 	src/log/make_location.cpp
 	src/log/new_sink.cpp
 	src/log/object.cpp
-	src/log/parameters/object.cpp
-	src/log/parameters/with_context.cpp
+	src/log/parameters.cpp
 	src/log/print_all_locations.cpp
 	src/log/print_locations.cpp
-	src/log/print_locations_function.cpp
-	src/log/set_levels.cpp
-	src/log/to_outer_node.cpp
-	src/log/tree_formatter.cpp
 )
 
 make_fcppt_library(

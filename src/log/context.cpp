@@ -9,6 +9,7 @@
 #include <fcppt/maybe_void.hpp>
 #include <fcppt/optional_bind.hpp>
 #include <fcppt/optional_bind_construct.hpp>
+#include <fcppt/optional_to_exception.hpp>
 #include <fcppt/reference_wrapper_impl.hpp>
 #include <fcppt/string.hpp>
 #include <fcppt/algorithm/map_optional.hpp>
@@ -25,10 +26,10 @@
 #include <fcppt/log/detail/context_tree_node_variant.hpp>
 #include <fcppt/log/detail/inner_context_node.hpp>
 #include <fcppt/log/detail/outer_context_node.hpp>
-#include <fcppt/src/log/find_inner_node.hpp>
-#include <fcppt/src/log/find_location.hpp>
-#include <fcppt/src/log/find_logger_node.hpp>
-#include <fcppt/src/log/to_outer_node.hpp>
+#include <fcppt/log/impl/find_inner_node.hpp>
+#include <fcppt/log/impl/find_location.hpp>
+#include <fcppt/log/impl/find_logger_node.hpp>
+#include <fcppt/log/impl/to_outer_node.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <exception>
 #include <vector>
@@ -66,21 +67,21 @@ fcppt::log::context::find(
 {
 	return
 		fcppt::optional_bind(
-			fcppt::log::find_location(
+			fcppt::log::impl::find_location(
 				tree_,
 				_location
 			),
 			[](
-				fcppt::log::detail::context_tree &_tree_location
+				fcppt::log::detail::context_tree const &_tree_location
 			)
 			{
 				return
 					fcppt::optional_bind_construct(
-						fcppt::log::find_logger_node(
+						fcppt::log::impl::find_logger_node(
 							_tree_location
 						),
 						[](
-							fcppt::log::detail::outer_context_node &_node
+							fcppt::log::detail::outer_context_node const &_node
 						)
 						-> fcppt::log::object &
 						{
@@ -98,30 +99,22 @@ fcppt::log::context::apply(
 	fcppt::log::tree_function const &_function
 )
 {
-	fcppt::maybe(
-		fcppt::log::find_location(
-			tree_,
-			_location
-		),
-		[
-			&_location
-		]{
-			throw fcppt::log::no_such_location(
+	this->apply_to(
+		_function,
+		fcppt::optional_to_exception(
+			fcppt::log::impl::find_location(
+				tree_,
 				_location
-			);
-		},
-		[
-			this,
-			&_function
-		](
-			fcppt::log::detail::context_tree &_tree_location
+			),
+			[
+				&_location
+			]{
+				return
+					fcppt::log::no_such_location(
+						_location
+					);
+			}
 		)
-		{
-			this->apply_to(
-				_function,
-				_tree_location
-			);
-		}
 	);
 }
 
@@ -161,7 +154,7 @@ fcppt::log::context::transfer_to(
 			)
 			{
 				return
-					fcppt::log::to_outer_node(
+					fcppt::log::impl::to_outer_node(
 						_elem
 					);
 			}
@@ -198,7 +191,7 @@ fcppt::log::context::apply_to(
 		)
 	)
 		fcppt::maybe_void(
-			fcppt::log::to_outer_node(
+			fcppt::log::impl::to_outer_node(
 				elem
 			),
 			[
@@ -233,7 +226,7 @@ fcppt::log::context::add(
 	)
 		cur =
 			fcppt::maybe(
-				fcppt::log::find_inner_node(
+				fcppt::log::impl::find_inner_node(
 					cur.get(),
 					item
 				),
@@ -268,7 +261,7 @@ fcppt::log::context::add(
 			);
 
 	FCPPT_ASSERT_PRE(
-		!fcppt::log::find_logger_node(
+		!fcppt::log::impl::find_logger_node(
 			cur.get()
 		).has_value()
 	);

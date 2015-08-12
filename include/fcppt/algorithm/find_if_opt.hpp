@@ -76,6 +76,7 @@ fcppt::optional<
 	typename
 	Container::reference
 >
+inline
 find_if_opt(
 	Container &_container,
 	Comp const &_comp
@@ -97,6 +98,7 @@ fcppt::optional<
 	typename
 	Container::const_reference
 >
+inline
 find_if_opt(
 	Container const &_container,
 	Comp const &_comp

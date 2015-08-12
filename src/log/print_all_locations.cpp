@@ -7,7 +7,7 @@
 #include <fcppt/io/ostream.hpp>
 #include <fcppt/log/context.hpp>
 #include <fcppt/log/print_all_locations.hpp>
-#include <fcppt/src/log/print_locations_function.hpp>
+#include <fcppt/log/impl/print_locations_function.hpp>
 
 
 void
@@ -17,7 +17,7 @@ fcppt::log::print_all_locations(
 )
 {
 	_context.apply_all(
-		fcppt::log::print_locations_function(
+		fcppt::log::impl::print_locations_function(
 			_stream
 		)
 	);

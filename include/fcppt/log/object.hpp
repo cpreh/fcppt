@@ -15,11 +15,11 @@
 #include <fcppt/log/level_stream_fwd.hpp>
 #include <fcppt/log/object_fwd.hpp>
 #include <fcppt/log/optional_location_fwd.hpp>
+#include <fcppt/log/parameters_fwd.hpp>
 #include <fcppt/log/detail/auto_context.hpp>
 #include <fcppt/log/detail/symbol.hpp>
 #include <fcppt/log/detail/temporary_output_fwd.hpp>
-#include <fcppt/log/format/function.hpp>
-#include <fcppt/log/parameters/object_fwd.hpp>
+#include <fcppt/log/format/optional_function.hpp>
 
 
 namespace fcppt
@@ -51,7 +51,7 @@ public:
 	FCPPT_LOG_DETAIL_SYMBOL
 	explicit
 	object(
-		fcppt::log::parameters::object const &parameters
+		fcppt::log::parameters const &parameters
 	);
 
 	/**
@@ -189,7 +189,7 @@ public:
 	\brief Returns the associated formatter
 	*/
 	FCPPT_LOG_DETAIL_SYMBOL
-	fcppt::log::format::function const &
+	fcppt::log::format::optional_function const &
 	formatter() const;
 
 	/**
@@ -223,7 +223,7 @@ public:
 private:
 	fcppt::log::detail::auto_context auto_context_;
 
-	fcppt::log::format::function const formatter_;
+	fcppt::log::format::optional_function const formatter_;
 
 	fcppt::log::level_stream_array level_streams_;
 

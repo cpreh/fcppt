@@ -9,6 +9,7 @@
 
 #include <fcppt/string.hpp>
 #include <fcppt/log/detail/symbol.hpp>
+#include <fcppt/log/format/function.hpp>
 
 
 namespace fcppt
@@ -19,23 +20,21 @@ namespace format
 {
 
 /**
-\brief Inserts a text given a format string
+\brief Creates a formatter using \link fcppt::format \endlink
 
 \ingroup fcpptlog
 
-Inserts \a text into \a format_string using \link fcppt::format \endlink.
+Creates a formatter that behaves like \link fcppt::log::format::inserter
+\endlink called with \a format.
 
-\param format_string The format string to use
+\param format The format string to use
 
-\param text The text to insert
-
-\return The result of the insertion
+\return A new formatter using \link fcppt::format \endlink with \a format
 */
 FCPPT_LOG_DETAIL_SYMBOL
-fcppt::string
+fcppt::log::format::function
 inserter(
-	fcppt::string const &format_string,
-	fcppt::string const &text
+	fcppt::string const &format
 );
 
 }

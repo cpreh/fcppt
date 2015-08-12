@@ -665,6 +665,8 @@ set(
 	include/fcppt/log/detail/auto_context_fwd.hpp
 	include/fcppt/log/detail/auto_context_rep.hpp
 	include/fcppt/log/detail/auto_context_rep_fwd.hpp
+	include/fcppt/log/detail/const_optional_context_tree_ref.hpp
+	include/fcppt/log/detail/const_optional_context_tree_ref_fwd.hpp
 	include/fcppt/log/detail/context_tree.hpp
 	include/fcppt/log/detail/context_tree_fwd.hpp
 	include/fcppt/log/detail/context_tree_node.hpp
@@ -691,13 +693,13 @@ set(
 	include/fcppt/log/exception.hpp
 	include/fcppt/log/fatal.hpp
 	include/fcppt/log/format/chain.hpp
-	include/fcppt/log/format/create_chain.hpp
-	include/fcppt/log/format/create_inserter.hpp
-	include/fcppt/log/format/create_prefix.hpp
-	include/fcppt/log/format/create_time_stamp.hpp
 	include/fcppt/log/format/default_level.hpp
 	include/fcppt/log/format/function.hpp
+	include/fcppt/log/format/function_fwd.hpp
 	include/fcppt/log/format/inserter.hpp
+	include/fcppt/log/format/optional_function.hpp
+	include/fcppt/log/format/optional_function_fwd.hpp
+	include/fcppt/log/format/prefix.hpp
 	include/fcppt/log/format/time_stamp.hpp
 	include/fcppt/log/impl/exception.hpp
 	include/fcppt/log/impl/no_such_location.hpp
@@ -717,13 +719,14 @@ set(
 	include/fcppt/log/no_such_location.hpp
 	include/fcppt/log/object.hpp
 	include/fcppt/log/object_fwd.hpp
+	include/fcppt/log/optional_level.hpp
+	include/fcppt/log/optional_level_fwd.hpp
 	include/fcppt/log/optional_location.hpp
 	include/fcppt/log/optional_location_fwd.hpp
 	include/fcppt/log/optional_object.hpp
 	include/fcppt/log/optional_object_fwd.hpp
-	include/fcppt/log/parameters/object.hpp
-	include/fcppt/log/parameters/object_fwd.hpp
-	include/fcppt/log/parameters/with_context.hpp
+	include/fcppt/log/parameters.hpp
+	include/fcppt/log/parameters_fwd.hpp
 	include/fcppt/log/print_all_locations.hpp
 	include/fcppt/log/print_locations.hpp
 	include/fcppt/log/tree_function.hpp

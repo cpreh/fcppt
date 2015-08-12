@@ -21,9 +21,11 @@ namespace log
 
 \ingroup fcpptlog
 */
-typedef fcppt::optional<
+typedef
+fcppt::optional<
 	fcppt::log::location
-> optional_location;
+>
+optional_location;
 
 }
 }

@@ -4,6 +4,7 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
+#include <fcppt/maybe.hpp>
 #include <fcppt/io/ostream.hpp>
 #include <fcppt/log/context.hpp>
 #include <fcppt/log/enabled_level_array.hpp>
@@ -12,21 +13,21 @@
 #include <fcppt/log/level_stream_array.hpp>
 #include <fcppt/log/object.hpp>
 #include <fcppt/log/optional_location.hpp>
+#include <fcppt/log/parameters.hpp>
 #include <fcppt/log/detail/optional_context_location.hpp>
 #include <fcppt/log/detail/temporary_output_fwd.hpp>
-#include <fcppt/log/format/function.hpp>
-#include <fcppt/log/parameters/object.hpp>
+#include <fcppt/log/format/optional_function.hpp>
+#include <fcppt/log/impl/tree_formatter.hpp>
 #include <fcppt/preprocessor/disable_vc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
-#include <fcppt/src/log/tree_formatter.hpp>
 
 
 FCPPT_PP_PUSH_WARNING
 FCPPT_PP_DISABLE_VC_WARNING(4355)
 
 fcppt::log::object::object(
-	fcppt::log::parameters::object const &_param
+	fcppt::log::parameters const &_param
 )
 :
 	auto_context_(
@@ -34,14 +35,27 @@ fcppt::log::object::object(
 		*this
 	),
 	formatter_(
-		auto_context_.node().has_value()
-		?
-			fcppt::log::tree_formatter(
-				auto_context_.node(),
-				_param.formatter()
+		fcppt::maybe(
+			auto_context_.node(),
+			[
+				&_param
+			]{
+				return
+					_param.formatter();
+			},
+			[
+				&_param
+			](
+				fcppt::log::detail::context_tree &_node
 			)
-		:
-			_param.formatter()
+			{
+				return
+					fcppt::log::impl::tree_formatter(
+						_node,
+						_param.formatter()
+					);
+			}
+		)
 	),
 	level_streams_(
 		_param.level_streams()
@@ -164,7 +178,7 @@ fcppt::log::object::enabled() const
 		enabled_;
 }
 
-fcppt::log::format::function const &
+fcppt::log::format::optional_function const &
 fcppt::log::object::formatter() const
 {
 	return

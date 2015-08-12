@@ -7,11 +7,12 @@
 #include <fcppt/text.hpp>
 #include <fcppt/io/clog.hpp>
 #include <fcppt/log/context.hpp>
+#include <fcppt/log/level.hpp>
 #include <fcppt/log/location.hpp>
 #include <fcppt/log/object.hpp>
 #include <fcppt/log/optional_object.hpp>
+#include <fcppt/log/parameters.hpp>
 #include <fcppt/log/print_locations.hpp>
-#include <fcppt/log/parameters/with_context.hpp>
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
@@ -44,14 +45,20 @@ FCPPT_PP_POP_WARNING
 	fcppt::log::context context2;
 
 	fcppt::log::object object1(
-		fcppt::log::parameters::with_context(
+		fcppt::log::parameters(
+			fcppt::io::clog(),
+			fcppt::log::level::debug
+		).context_location(
 			context1,
 			head_location
 		)
 	);
 
 	fcppt::log::object object2(
-		fcppt::log::parameters::with_context(
+		fcppt::log::parameters(
+			fcppt::io::clog(),
+			fcppt::log::level::debug
+		).context_location(
 			context1,
 			child_location
 		)
