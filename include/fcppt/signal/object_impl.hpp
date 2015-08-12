@@ -29,14 +29,14 @@ fcppt::signal::object<
 	Enable
 >::object(
 	combiner_function const &_combiner,
-	result_type const &_initial_result
+	initial_value const &_initial_result
 )
 :
 	combiner_(
 		_combiner
 	),
 	initial_result_(
-		_initial_result
+		_initial_result.get()
 	)
 {
 }
@@ -161,7 +161,9 @@ fcppt::signal::object<
 	);
 
 	for(
-		auto &item : cur_list
+		auto &item
+		:
+		cur_list
 	)
 		result =
 			combiner_(
@@ -175,7 +177,8 @@ fcppt::signal::object<
 				result
 			);
 
-	return result;
+	return
+		result;
 }
 
 template<

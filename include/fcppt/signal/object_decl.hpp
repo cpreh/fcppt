@@ -10,6 +10,7 @@
 
 #include <fcppt/function.hpp>
 #include <fcppt/noncopyable.hpp>
+#include <fcppt/strong_typedef.hpp>
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
@@ -87,12 +88,17 @@ public:
 	>
 	combiner_function;
 
+	FCPPT_MAKE_STRONG_TYPEDEF(
+		result_type,
+		initial_value
+	);
+
 	/**
 	\brief Construct a signal with a combiner and an initial result
 	*/
 	object(
 		combiner_function const &,
-		result_type const &initial_result
+		initial_value const &
 	);
 
 	object(

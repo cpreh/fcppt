@@ -47,7 +47,9 @@ int main()
 		int_signal::combiner_function(
 			&combiner
 		),
-		1 // initial value
+		int_signal::initial_value{
+			1
+		}
 	);
 
 	fcppt::signal::scoped_connection const connection1(
