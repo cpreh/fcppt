@@ -57,10 +57,12 @@ FCPPT_PP_POP_WARNING
 	{
 		fcppt::signal::scoped_connection const con1(
 			sig.connect(
-				std::bind(
-					add,
-					1
-				)
+				signal::function{
+					std::bind(
+						add,
+						1
+					)
+				}
 			)
 		);
 
@@ -76,10 +78,12 @@ FCPPT_PP_POP_WARNING
 
 		fcppt::signal::scoped_connection const con2(
 			sig.connect(
-				std::bind(
-					add,
-					2
-				)
+				signal::function{
+					std::bind(
+						add,
+						2
+					)
+				}
 			)
 		);
 
@@ -114,10 +118,12 @@ FCPPT_PP_POP_WARNING
 
 	fcppt::signal::scoped_connection const con1(
 		sig.connect(
-			[
-				&done
-			]{
-				done = true;
+			signal::function{
+				[
+					&done
+				]{
+					done = true;
+				}
 			}
 		)
 	);

@@ -28,7 +28,7 @@ fcppt::signal::object<
 	Base,
 	Enable
 >::object(
-	combiner_type const &_combiner,
+	combiner_function const &_combiner,
 	result_type const &_initial_result
 )
 :
@@ -104,7 +104,7 @@ fcppt::signal::object<
 	Base,
 	Enable
 >::combiner(
-	combiner_type const &_combiner
+	combiner_function const &_combiner
 )
 {
 	combiner_ = _combiner;

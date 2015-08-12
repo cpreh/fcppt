@@ -44,25 +44,33 @@ int main()
 
 	// Pass the combiner here - can also be changed later
 	int_signal signal(
-		&combiner,
+		int_signal::combiner_function(
+			&combiner
+		),
 		1 // initial value
 	);
 
 	fcppt::signal::scoped_connection const connection1(
 		signal.connect(
-			&first_callback
+			int_signal::function{
+				&first_callback
+			}
 		)
 	);
 
 	fcppt::signal::scoped_connection const connection2(
 		signal.connect(
-			&second_callback
+			int_signal::function{
+				&second_callback
+			}
 		)
 	);
 
 	fcppt::signal::scoped_connection const connection3(
 		signal.connect(
-			&third_callback
+			int_signal::function{
+				&third_callback
+			}
 		)
 	);
 

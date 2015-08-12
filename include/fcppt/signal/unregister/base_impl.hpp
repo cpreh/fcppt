@@ -25,7 +25,7 @@ fcppt::signal::auto_connection
 fcppt::signal::unregister::base<
 	T
 >::connect(
-	function_type const &_function,
+	function const &_function,
 	fcppt::signal::unregister::function const &_unregister
 )
 {
@@ -62,7 +62,8 @@ fcppt::signal::unregister::base<
 	T
 >::empty() const
 {
-	return connections().empty();
+	return
+		connections().empty();
 }
 
 template<
@@ -116,7 +117,8 @@ fcppt::signal::unregister::base<
 	T
 >::connections() const
 {
-	return connections_;
+	return
+		connections_;
 }
 
 #endif

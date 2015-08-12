@@ -41,14 +41,20 @@ other_callback(
 
 int main()
 {
-	typedef void function(int);
+	typedef
+	fcppt::signal::object<
+		void (int)
+	>
+	signal_type;
 
-	fcppt::signal::object<function> signal;
+	signal_type signal;
 
 	// Connect function "callback" to signal
 	fcppt::signal::scoped_connection connection(
 		signal.connect(
-			&callback
+			signal_type::function{
+				&callback
+			}
 		)
 	);
 
@@ -56,13 +62,19 @@ int main()
 	signal(3);
 
 	// Define another function
-	typedef void other_function(foo &);
+	typedef
+	fcppt::signal::object<
+		void (foo &)
+	>
+	signal2_type;
 
-	fcppt::signal::object<other_function> signal2;
+	signal2_type signal2;
 
 	fcppt::signal::scoped_connection connection2(
 		signal2.connect(
-			&other_callback
+			signal2_type::function{
+				&other_callback
+			}
 		)
 	);
 

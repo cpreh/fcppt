@@ -8,6 +8,7 @@
 #include <fcppt/signal/object.hpp>
 #include <fcppt/signal/scoped_connection.hpp>
 #include <fcppt/signal/unregister/base.hpp>
+#include <fcppt/signal/unregister/function.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <functional>
 #include <iostream>
@@ -65,7 +66,7 @@ remove_function(
 fcppt::signal::auto_connection
 register_named_signal(
 	std::string const &_name,
-	std::function<void()> const &_function
+	fcppt::signal::unregister::function const &_function
 )
 {
 	// If the signal doesn't exist, add it to the map.
@@ -89,10 +90,12 @@ register_named_signal(
 		)->second.connect(
 			_function,
 			// Add our remove function as the disconnect handler (see above)
-			std::bind(
-				&remove_function,
-				_name
-			)
+			fcppt::signal::unregister::function{
+				std::bind(
+					&remove_function,
+					_name
+				)
+			}
 		);
 }
 // ![register]
@@ -106,8 +109,10 @@ main()
 	fcppt::signal::scoped_connection const hello_connection(
 		register_named_signal(
 			"hello",
-			[]{
-				std::cout << "hello!\n";
+			fcppt::signal::unregister::function{
+				[]{
+					std::cout << "hello!\n";
+				}
 			}
 		)
 	);
@@ -121,8 +126,10 @@ main()
 		fcppt::signal::scoped_connection const goodbye_connection(
 			register_named_signal(
 				"goodbye",
-				[]{
-					std::cout << "goodbye!\n";
+				fcppt::signal::unregister::function{
+					[]{
+						std::cout << "goodbye!\n";
+					}
 				}
 			)
 		);

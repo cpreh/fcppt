@@ -8,6 +8,7 @@
 #ifndef FCPPT_SIGNAL_OBJECT_DECL_HPP_INCLUDED
 #define FCPPT_SIGNAL_OBJECT_DECL_HPP_INCLUDED
 
+#include <fcppt/function.hpp>
 #include <fcppt/noncopyable.hpp>
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
@@ -17,7 +18,6 @@
 #include <fcppt/signal/detail/enable_if_void.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/type_traits/function_traits.hpp>
-#include <functional>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -56,30 +56,42 @@ public:
 	/**
 	\brief A typedef for the signal's base class
 	*/
-	typedef Base<T> base;
+	typedef
+	Base<T>
+	base;
 
 	/**
 	\brief A typedef for the function's return type
 	*/
-	typedef typename boost::function_traits<
+	typedef
+	typename
+	boost::function_traits<
 		T
-	>::result_type result_type;
+	>::result_type
+	result_type;
+
+	typedef
+	typename
+	base::function
+	function;
 
 	/**
 	\brief Typedef to the combiner function
 	*/
-	typedef std::function<
+	typedef
+	fcppt::function<
 		result_type (
 			result_type,
 			result_type
 		)
-	> combiner_type;
+	>
+	combiner_function;
 
 	/**
 	\brief Construct a signal with a combiner and an initial result
 	*/
 	object(
-		combiner_type const &,
+		combiner_function const &,
 		result_type const &initial_result
 	);
 
@@ -99,7 +111,7 @@ public:
 	*/
 	void
 	combiner(
-		combiner_type const &
+		combiner_function const &
 	);
 
 	/**
@@ -123,7 +135,7 @@ public:
 
 	using base::connect;
 private:
-	combiner_type combiner_;
+	combiner_function combiner_;
 
 	result_type initial_result_;
 };
@@ -160,7 +172,14 @@ public:
 	/**
 	\brief A typedef for the signal's base class
 	*/
-	typedef Base<T> base;
+	typedef
+	Base<T>
+	base;
+
+	typedef
+	typename
+	base::function
+	function;
 
 	/**
 	\brief Construct an empty signal

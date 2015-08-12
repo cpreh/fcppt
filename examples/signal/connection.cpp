@@ -56,10 +56,8 @@ take_connection(
 int
 main()
 {
-	typedef void function();
-
 	typedef fcppt::signal::object<
-		function
+		void ()
 	> void_signal;
 
 	void_signal signal;
@@ -70,12 +68,16 @@ main()
 			fcppt::signal::auto_connection_container
 		>(
 			signal.connect(
-				::function1
+				void_signal::function{
+					::function1
+				}
 			)
 		)
 		(
 			signal.connect(
-				::function2
+				void_signal::function{
+					::function2
+				}
 			)
 		)
 	);
@@ -83,14 +85,18 @@ main()
 	// scoped_connection can also be used
 	fcppt::signal::scoped_connection const connection3(
 		signal.connect(
-			::function3
+			void_signal::function{
+				::function3
+			}
 		)
 	);
 
 	// or you can take the auto_connection and process it somehow
 	fcppt::signal::auto_connection connection4(
 		signal.connect(
-			::function4
+			void_signal::function{
+				::function4
+			}
 		)
 	);
 

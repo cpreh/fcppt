@@ -24,7 +24,7 @@ fcppt::signal::auto_connection
 fcppt::signal::base<
 	T
 >::connect(
-	function_type const &_function
+	function const &_function
 )
 {
 	fcppt::signal::auto_connection con(
@@ -59,7 +59,8 @@ fcppt::signal::base<
 	T
 >::empty() const
 {
-	return connections_.empty();
+	return
+		connections_.empty();
 }
 
 template<
@@ -113,7 +114,8 @@ fcppt::signal::base<
 	T
 >::connections() const
 {
-	return connections_;
+	return
+		connections_;
 }
 
 #endif

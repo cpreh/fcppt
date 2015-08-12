@@ -54,7 +54,11 @@ main()
 	for(std::size_t i = 0; i < max_iterations; ++i)
 		manager.push_back(
 			s.connect(
-				&f));
+				signal_type::function(
+					&f
+				)
+			)
+		);
 
 	s();
 #elif defined(FCPPT_EXAMPLES_SIGNAL_BENCHMARK_USE_BOOST_SIGNALS1)

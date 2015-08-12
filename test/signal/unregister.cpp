@@ -10,6 +10,7 @@
 #include <fcppt/signal/object.hpp>
 #include <fcppt/signal/scoped_connection.hpp>
 #include <fcppt/signal/unregister/base.hpp>
+#include <fcppt/signal/unregister/function.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/test/unit_test.hpp>
 #include <functional>
@@ -40,9 +41,9 @@ FCPPT_PP_POP_WARNING
 		int
 	> values;
 
-	auto const empty_function(
+	signal::function const empty_function{
 		[]{}
-	);
+	};
 
 	auto const unregister(
 		[
@@ -63,10 +64,12 @@ FCPPT_PP_POP_WARNING
 		fcppt::signal::scoped_connection const con1(
 			sig.connect(
 				empty_function,
-				std::bind(
-					unregister,
-					42
-				)
+				fcppt::signal::unregister::function{
+					std::bind(
+						unregister,
+						42
+					)
+				}
 			)
 		);
 	}
@@ -83,10 +86,12 @@ FCPPT_PP_POP_WARNING
 		fcppt::signal::scoped_connection const con2(
 			sig.connect(
 				empty_function,
-				std::bind(
-					unregister,
-					100
-				)
+				fcppt::signal::unregister::function{
+					std::bind(
+						unregister,
+						100
+					)
+				}
 			)
 		);
 	}
@@ -122,16 +127,20 @@ FCPPT_PP_POP_WARNING
 	{
 		fcppt::signal::scoped_connection const con1(
 			sig.connect(
-				[
-					&done
-				]{
-					done = true;
+				signal::function{
+					[
+						&done
+					]{
+						done = true;
+					}
 				},
-				[
-					&unregistered
-				]
-				{
-					unregistered = true;
+				fcppt::signal::unregister::function{
+					[
+						&unregistered
+					]
+					{
+						unregistered = true;
+					}
 				}
 			)
 		);
