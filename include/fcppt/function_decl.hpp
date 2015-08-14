@@ -36,6 +36,10 @@ class function<
 >
 {
 public:
+	typedef
+	Ret
+	result_type;
+
 	template<
 		typename F
 	>
