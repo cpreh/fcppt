@@ -100,6 +100,6 @@ FCPPT_PP_POP_WARNING
 			),
 			fcppt::exception,
 			check_exception
-		)
+		);
 	}
 }
