@@ -5,9 +5,9 @@
 
 
 #include <fcppt/const.hpp>
+#include <fcppt/from_optional.hpp>
 #include <fcppt/identity.hpp>
 #include <fcppt/make_ref.hpp>
-#include <fcppt/from_optional.hpp>
 #include <fcppt/io/ostream.hpp>
 #include <fcppt/log/level_stream.hpp>
 #include <fcppt/log/detail/temporary_output.hpp>

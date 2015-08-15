@@ -7,8 +7,8 @@
 #ifndef FCPPT_LOG_FORMAT_OPTIONAL_FUNCTION_FWD_HPP_INCLUDED
 #define FCPPT_LOG_FORMAT_OPTIONAL_FUNCTION_FWD_HPP_INCLUDED
 
-#include <fcppt/log/format/function_fwd.hpp>
 #include <fcppt/optional_fwd.hpp>
+#include <fcppt/log/format/function_fwd.hpp>
 
 
 namespace fcppt

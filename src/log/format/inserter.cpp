@@ -6,8 +6,8 @@
 
 #include <fcppt/format.hpp>
 #include <fcppt/string.hpp>
-#include <fcppt/log/format/inserter.hpp>
 #include <fcppt/log/format/function.hpp>
+#include <fcppt/log/format/inserter.hpp>
 
 
 fcppt::log::format::function

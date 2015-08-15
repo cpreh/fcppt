@@ -6,9 +6,9 @@
 
 #include <fcppt/string.hpp>
 #include <fcppt/text.hpp>
+#include <fcppt/log/format/function.hpp>
 #include <fcppt/log/format/inserter.hpp>
 #include <fcppt/log/format/prefix.hpp>
-#include <fcppt/log/format/function.hpp>
 
 
 fcppt::log::format::function
