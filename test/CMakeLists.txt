@@ -73,6 +73,10 @@ add_fcppt_test(
 )
 
 add_fcppt_test(
+	algorithm/find_opt
+)
+
+add_fcppt_test(
 	algorithm/fold
 )
 
@@ -636,6 +640,10 @@ add_fcppt_test(
 
 add_fcppt_test(
 	optional/compare
+)
+
+add_fcppt_test(
+	optional/deref
 )
 
 add_fcppt_test(

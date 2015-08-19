@@ -99,14 +99,15 @@ set(
 	src/log/detail/outer_context_node.cpp
 	src/log/detail/temporary_output.cpp
 	src/log/enabled_levels.cpp
-	src/log/find_inner_node.cpp
 	src/log/format/chain.cpp
 	src/log/format/default_level.cpp
 	src/log/format/inserter.cpp
 	src/log/format/prefix.cpp
 	src/log/format/time_stamp.cpp
+	src/log/impl/find_inner_node.cpp
 	src/log/impl/find_location.cpp
 	src/log/impl/find_logger_node.cpp
+	src/log/impl/inner_node_name.cpp
 	src/log/impl/level_strings.cpp
 	src/log/impl/print_locations_function.cpp
 	src/log/impl/set_levels.cpp
@@ -126,7 +127,6 @@ set(
 	src/log/include/fcppt/log/impl/set_levels.hpp
 	src/log/include/fcppt/log/impl/to_outer_node.hpp
 	src/log/include/fcppt/log/impl/tree_formatter.hpp
-	src/log/inner_node_name.cpp
 	src/log/level_from_string.cpp
 	src/log/level_stream.cpp
 	src/log/level_to_string.cpp

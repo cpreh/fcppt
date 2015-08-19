@@ -46,7 +46,9 @@ find_if_exn(
 	);
 
 	if(
-		ret == _end
+		ret
+		==
+		_end
 	)
 		throw
 			_make_exception();

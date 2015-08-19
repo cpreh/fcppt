@@ -204,6 +204,7 @@ set(
 	include/fcppt/algorithm/find_exn.hpp
 	include/fcppt/algorithm/find_if_exn.hpp
 	include/fcppt/algorithm/find_if_opt.hpp
+	include/fcppt/algorithm/find_opt.hpp
 	include/fcppt/algorithm/fold.hpp
 	include/fcppt/algorithm/impl/element_not_found.hpp
 	include/fcppt/algorithm/join.hpp
@@ -1014,6 +1015,7 @@ set(
 	include/fcppt/optional_combine.hpp
 	include/fcppt/optional_comparison.hpp
 	include/fcppt/optional_decl.hpp
+	include/fcppt/optional_deref.hpp
 	include/fcppt/optional_from_pointer.hpp
 	include/fcppt/optional_fwd.hpp
 	include/fcppt/optional_impl.hpp

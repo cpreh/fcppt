@@ -38,7 +38,7 @@ FCPPT_PP_POP_WARNING
 		opt_string
 	);
 
-	BOOST_CHECK(
+	BOOST_CHECK_EQUAL(
 		fcppt::optional_bind(
 			optional_string(
 				"test2"
@@ -52,8 +52,7 @@ FCPPT_PP_POP_WARNING
 				return
 					opt_string_ref;
 			}
-		).get_unsafe()
-		==
+		).get_unsafe(),
 		"test1"
 	);
 }

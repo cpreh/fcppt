@@ -4,8 +4,8 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_ALGORITHM_FIND_IF_OPT_HPP_INCLUDED
-#define FCPPT_ALGORITHM_FIND_IF_OPT_HPP_INCLUDED
+#ifndef FCPPT_ALGORITHM_FIND_OPT_HPP_INCLUDED
+#define FCPPT_ALGORITHM_FIND_OPT_HPP_INCLUDED
 
 #include <fcppt/optional_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
@@ -19,21 +19,21 @@ namespace algorithm
 {
 
 /**
-\brief Like std::find_if but returns an empty optional on failure
+\brief Like std::find but returns an empty optional on failure
 
 \ingroup fcpptalgorithm
 */
 template<
 	typename In,
-	typename Comp
+	typename T
 >
 fcppt::optional<
 	In
 >
-find_if_opt(
+find_opt(
 	In const _begin,
 	In const _end,
-	Comp const &_comp
+	T const &_value
 )
 {
 	typedef
@@ -43,10 +43,10 @@ find_if_opt(
 	result_type;
 
 	In const ret(
-		::std::find_if(
+		::std::find(
 			_begin,
 			_end,
-			_comp
+			_value
 		)
 	);
 
@@ -65,45 +65,45 @@ find_if_opt(
 
 template<
 	typename Container,
-	typename Comp
+	typename T
 >
 fcppt::optional<
 	typename
 	Container::iterator
 >
 inline
-find_if_opt(
+find_opt(
 	Container &_container,
-	Comp const &_comp
+	T const &_value
 )
 {
 	return
-		fcppt::algorithm::find_if_opt(
+		fcppt::algorithm::find_opt(
 			_container.begin(),
 			_container.end(),
-			_comp
+			_value
 		);
 }
 
 template<
 	typename Container,
-	typename Comp
+	typename T
 >
 fcppt::optional<
 	typename
 	Container::const_iterator
 >
 inline
-find_if_opt(
+find_opt(
 	Container const &_container,
-	Comp const &_comp
+	T const &_value
 )
 {
 	return
-		fcppt::algorithm::find_if_opt(
+		fcppt::algorithm::find_opt(
 			_container.begin(),
 			_container.end(),
-			_comp
+			_value
 		);
 }
 
