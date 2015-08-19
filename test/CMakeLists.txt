@@ -65,6 +65,10 @@ add_fcppt_test(
 )
 
 add_fcppt_test(
+	algorithm/find_exn
+)
+
+add_fcppt_test(
 	algorithm/find_if_exn
 )
 
