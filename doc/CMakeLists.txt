@@ -804,6 +804,7 @@ set(
 	include/fcppt/math/detail/has_size.hpp
 	include/fcppt/math/detail/index_at.hpp
 	include/fcppt/math/detail/init.hpp
+	include/fcppt/math/detail/init_function.hpp
 	include/fcppt/math/detail/init_storage.hpp
 	include/fcppt/math/detail/linear_access.hpp
 	include/fcppt/math/detail/make_asymmetric_binary_operator.hpp

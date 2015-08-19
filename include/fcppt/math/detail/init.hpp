@@ -8,10 +8,7 @@
 #define FCPPT_MATH_DETAIL_INIT_HPP_INCLUDED
 
 #include <fcppt/algorithm/array_fold.hpp>
-#include <fcppt/cast/size.hpp>
-#include <fcppt/config/external_begin.hpp>
-#include <cstddef>
-#include <fcppt/config/external_end.hpp>
+#include <fcppt/math/detail/init_function.hpp>
 
 
 namespace fcppt
@@ -37,22 +34,13 @@ init(
 				typename
 				Result::storage_type
 			>(
-				[
-					&_function
-				](
-					std::size_t const _index
+				fcppt::math::detail::init_function<
+					typename
+					Result::size_type,
+					Function
+				>(
+					_function
 				)
-				{
-					return
-						_function(
-							fcppt::cast::size<
-								typename
-								Result::size_type
-							>(
-								_index
-							)
-						);
-				}
 			)
 		);
 }

@@ -9,14 +9,13 @@
 
 #include <fcppt/homogenous_pair.hpp>
 #include <fcppt/algorithm/array_fold.hpp>
-#include <fcppt/cast/size.hpp>
 #include <fcppt/math/size_type.hpp>
 #include <fcppt/math/box/is_box.hpp>
+#include <fcppt/math/detail/init_function.hpp>
 #include <fcppt/math/dim/init.hpp>
 #include <fcppt/math/vector/init.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <array>
-#include <cstddef>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -57,22 +56,12 @@ init(
 		fcppt::algorithm::array_fold<
 			result_array
 		>(
-			// TODO: Make a function object for this
-			[
-				&_function
-			](
-				std::size_t const _index
+			fcppt::math::detail::init_function<
+				fcppt::math::size_type,
+				Function
+			>(
+				_function
 			)
-			{
-				return
-					_function(
-						fcppt::cast::size<
-							fcppt::math::size_type
-						>(
-							_index
-						)
-					);
-			}
 		)
 	);
 
