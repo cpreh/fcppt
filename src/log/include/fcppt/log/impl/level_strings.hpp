@@ -17,7 +17,7 @@ namespace log
 namespace impl
 {
 
-fcppt::log::impl::level_string_array
+fcppt::log::impl::level_string_array const &
 level_strings();
 
 }

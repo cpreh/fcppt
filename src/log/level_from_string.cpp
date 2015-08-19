@@ -21,7 +21,7 @@ fcppt::log::level_from_string(
 	fcppt::string const &_name
 )
 {
-	fcppt::log::impl::level_string_array const level_strings(
+	fcppt::log::impl::level_string_array const &level_strings(
 		fcppt::log::impl::level_strings()
 	);
 
@@ -41,14 +41,15 @@ fcppt::log::level_from_string(
 		?
 			fcppt::log::optional_level()
 		:
-		fcppt::log::optional_level(
-			fcppt::cast::int_to_enum<
-				fcppt::log::level
-			>(
-				std::distance(
-					level_strings.cbegin(),
-					it
+			fcppt::log::optional_level(
+				fcppt::cast::int_to_enum<
+					fcppt::log::level
+				>(
+					std::distance(
+						level_strings.cbegin(),
+						it
+					)
 				)
 			)
-		);
+		;
 }

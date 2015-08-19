@@ -50,6 +50,8 @@
 	<ul>
 	<li>Readded \link FCPPT_ASSERT_COMPLETE\endlink to \link
 	fcppt::default_deleter\endlink.</li>
+	<li>Add a missing <code>;</code> for <code>boost-1.59</code> in
+	<code>test/io/read_write.cpp</code>.</li>
 	</ul>
 </li>
 
