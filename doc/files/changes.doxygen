@@ -7,6 +7,22 @@
 
 <ul>
 
+<li>\ref fcpptalgorithm
+	<ul>
+	<li>Added \link fcppt::algorithm::find_opt\endlink.</li>
+	<li>Added \link fcppt::algorithm::index_of\endlink and \link
+	fcppt::algorithm::index_of_enum_array\endlink.</li>
+	</ul>
+</li>
+
+<li>\ref fcpptoptional
+	<ul>
+	<li>Added \link fcppt::optional_deref\endlink which returns the
+	dereferenced contents of the optional if is not empty. This is often
+	useful when optionals contain iterators or unique pointers.</li>
+	</ul>
+</li>
+
 <li>\ref fcpptvarious
 	<ul>
 	<li>Added \link fcppt::function\endlink which is a wrapper around
@@ -20,6 +36,14 @@
 \subsection changes_changed_functionality_to_150 Changed functionality
 
 <ul>
+
+<li>\ref fcpptalgorithm
+	<ul>
+	<li>Let \link fcppt::algorithm::find_if_opt\endlink return an optional
+	iterator to make it more consistent with the other similar
+	algorithms.</li>
+	</ul>
+</li>
 
 <li>\ref fcpptlog
 	<ul>
