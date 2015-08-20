@@ -18,8 +18,8 @@
 <li>\ref fcpptoptional
 	<ul>
 	<li>Added \link fcppt::optional_deref\endlink which returns the
-	dereferenced contents of the optional if is not empty. This is often
-	useful when optionals contain iterators or unique pointers.</li>
+	dereferenced contents of the optional iff it is not empty. This is
+	often useful when optionals contain iterators or unique pointers.</li>
 	</ul>
 </li>
 
@@ -74,10 +74,11 @@
 	<ul>
 	<li>Readded \link FCPPT_ASSERT_COMPLETE\endlink to \link
 	fcppt::default_deleter\endlink.</li>
-	<li>Add a missing <code>;</code> for <code>boost-1.59</code> in
-	<code>test/io/read_write.cpp</code>.</li>
 	</ul>
 </li>
+
+<li>Add a missing <code>;</code> for <code>boost-1.59</code> in
+<code>test/io/read_write.cpp</code>.</li>
 
 </ul>
 
