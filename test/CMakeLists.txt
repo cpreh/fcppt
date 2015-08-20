@@ -85,6 +85,14 @@ add_fcppt_test(
 )
 
 add_fcppt_test(
+	algorithm/index_of
+)
+
+add_fcppt_test(
+	algorithm/index_of_enum_array
+)
+
+add_fcppt_test(
 	algorithm/join
 )
 
