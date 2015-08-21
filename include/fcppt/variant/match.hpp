@@ -7,11 +7,11 @@
 #ifndef FCPPT_VARIANT_MATCH_HPP_INCLUDED
 #define FCPPT_VARIANT_MATCH_HPP_INCLUDED
 
+#include <fcppt/mpl/index_of.hpp>
 #include <fcppt/variant/apply_unary.hpp>
-#include <fcppt/variant/detail/match_result_type.hpp>
-#include <fcppt/variant/detail/match_visitor.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <tuple>
+#include <type_traits>
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
@@ -34,11 +34,9 @@ template<
 	typename... Functions
 >
 inline
-typename
-fcppt::variant::detail::match_result_type<
-	Variant,
-	Functions...
->::type
+decltype(
+	auto
+)
 match(
 	Variant &&_variant,
 	Functions const &... _functions
@@ -52,19 +50,42 @@ match(
 
 	return
 		fcppt::variant::apply_unary(
-			fcppt::variant::detail::match_visitor<
-				typename
-				fcppt::variant::detail::match_result_type<
-					Variant,
-					Functions...
-				>::type,
-				Variant,
-				decltype(
-					tuple
-				)
-			>(
-				tuple
-			),
+			[
+				&tuple
+			](
+				auto &&_arg
+			)
+			->
+			decltype(
+				auto
+			)
+			{
+				return
+					std::get<
+						fcppt::mpl::index_of<
+							typename
+							std::decay<
+								Variant
+							>::type::types,
+							typename
+							std::decay<
+								decltype(
+									_arg
+								)
+							>::type
+						>::value
+					>(
+						tuple
+					)(
+						std::forward<
+							decltype(
+								_arg
+							)
+						>(
+							_arg
+						)
+					);
+			},
 			std::forward<
 				Variant
 			>(

@@ -7,9 +7,14 @@
 #ifndef FCPPT_VARIANT_COMPARE_HPP_INCLUDED
 #define FCPPT_VARIANT_COMPARE_HPP_INCLUDED
 
+#include <fcppt/const.hpp>
+#include <fcppt/maybe.hpp>
 #include <fcppt/variant/apply_unary.hpp>
 #include <fcppt/variant/object_fwd.hpp>
-#include <fcppt/variant/detail/compare.hpp>
+#include <fcppt/variant/to_optional.hpp>
+#include <fcppt/config/external_begin.hpp>
+#include <type_traits>
+#include <fcppt/config/external_end.hpp>
 
 
 namespace fcppt
@@ -22,39 +27,71 @@ namespace variant
 
 \ingroup fcpptvariant
 
-Compares \a _a and \a _b using \a _compare. The two variants are equal if they
-hold the same type <code>T</code> and <code>_compare(_a.get<T>(),
-_b.get<T>())</code> holds.
+Compares \a _left and \a _right using \a _compare. The two variants are equal
+if they hold the same type <code>T</code> and <code>_compare(_left.get<T>(),
+_right.get<T>())</code> holds.
 
-\param _a The first variant
-\param _b The second variant
+\param _left The first variant
+\param _right The second variant
 \param _compare The function to use for comparison
 */
 template<
 	typename Types,
 	typename Compare
 >
+inline
 bool
 compare(
 	fcppt::variant::object<
 		Types
-	> const &_a,
+	> const &_left,
 	fcppt::variant::object<
 		Types
-	> const &_b,
+	> const &_right,
 	Compare const &_compare
 )
 {
 	return
 		fcppt::variant::apply_unary(
-			fcppt::variant::detail::compare<
-				Types,
-				Compare
-			>(
-				_a,
-				_compare
-			),
-			_b
+			[
+				&_compare,
+				&_left
+			](
+				auto const &_right_inner
+			)
+			-> bool
+			{
+				return
+					fcppt::maybe(
+						fcppt::variant::to_optional<
+							typename
+							std::decay<
+								decltype(
+									_right_inner
+								)
+							>::type
+						>(
+							_left
+						),
+						fcppt::const_(
+							false
+						),
+						[
+							&_right_inner,
+							&_compare
+						](
+							auto const &_left_inner
+						)
+						{
+							return
+								_compare(
+									_left_inner,
+									_right_inner
+								);
+						}
+					);
+			},
+			_right
 		);
 }
 

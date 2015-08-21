@@ -8,8 +8,11 @@
 #define FCPPT_VARIANT_LESS_HPP_INCLUDED
 
 #include <fcppt/variant/apply_unary.hpp>
+#include <fcppt/variant/get_unsafe.hpp>
 #include <fcppt/variant/object_fwd.hpp>
-#include <fcppt/variant/detail/less.hpp>
+#include <fcppt/config/external_begin.hpp>
+#include <type_traits>
+#include <fcppt/config/external_end.hpp>
 
 
 namespace fcppt
@@ -49,12 +52,27 @@ operator<(
 		==
 		_right.type_index()
 		?
+
 			fcppt::variant::apply_unary(
-				fcppt::variant::detail::less<
-					Types
-				>(
-					_left
-				),
+				[
+					&_left
+				](
+					auto const &_right_inner
+				){
+					return
+						fcppt::variant::get_unsafe<
+							typename
+							std::decay<
+								decltype(
+									_right_inner
+								)
+							>::type
+						>(
+							_left
+						)
+						<
+						_right_inner;
+				},
 				_right
 			)
 		:

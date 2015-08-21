@@ -1242,15 +1242,11 @@ set(
 	include/fcppt/variant/detail/assert_type.hpp
 	include/fcppt/variant/detail/assign_object.hpp
 	include/fcppt/variant/detail/assign_value.hpp
-	include/fcppt/variant/detail/compare.hpp
 	include/fcppt/variant/detail/construct.hpp
 	include/fcppt/variant/detail/copy.hpp
 	include/fcppt/variant/detail/disable_object.hpp
 	include/fcppt/variant/detail/get_impl.hpp
 	include/fcppt/variant/detail/index_of.hpp
-	include/fcppt/variant/detail/less.hpp
-	include/fcppt/variant/detail/match_result_type.hpp
-	include/fcppt/variant/detail/match_visitor.hpp
 	include/fcppt/variant/detail/move_assign_object.hpp
 	include/fcppt/variant/detail/move_assign_value.hpp
 	include/fcppt/variant/detail/move_construct.hpp
