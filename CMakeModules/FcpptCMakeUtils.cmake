@@ -250,7 +250,6 @@ set(
 	"Custom config installation directory"
 )
 
-# cmake-2.8.3 is required for this to work
 if(
 	${CMAKE_CXX_COMPILER_ID} STREQUAL "Clang"
 )
@@ -295,10 +294,29 @@ if(
 		FCPPT_UTILS_HAVE_GCC_VISIBILITY
 	)
 
+	CHECK_CXX_COMPILER_FLAG(
+		"-std=c++14"
+		FCPPT_UTILS_HAVE_CPP_14
+	)
+
+	if(
+		FCPPT_UTILS_HAVE_CPP_14
+	)
+		set(
+			FCPPT_UTILS_STD_FLAG
+			"-std=c++14"
+		)
+	else()
+		set(
+			FCPPT_UTILS_STD_FLAG
+			"-std=c++1y"
+		)
+	endif()
+
 	list(
 		APPEND
 		FCPPT_UTILS_COMPILE_OPTIONS
-		"-std=c++11"
+		${FCPPT_UTILS_STD_FLAG}
 		"-pedantic-errors"
 		"-Wall"
 		"-Wextra"
