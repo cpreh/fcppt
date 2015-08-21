@@ -9,9 +9,6 @@
 
 #include <fcppt/variant/apply_binary.hpp>
 #include <fcppt/variant/detail/ternary_unwrap.hpp>
-#include <fcppt/config/external_begin.hpp>
-#include <type_traits>
-#include <fcppt/config/external_end.hpp>
 
 
 namespace fcppt
@@ -47,9 +44,10 @@ template<
 	typename Variant2,
 	typename Variant3
 >
-typename std::remove_reference<
-	Operation
->::type::result_type
+inline
+decltype(
+	auto
+)
 apply_ternary(
 	Operation &&_op,
 	Variant1 &&_obj1,

@@ -9,9 +9,8 @@
 
 #include <fcppt/variant/apply_unary.hpp>
 #include <fcppt/variant/object_fwd.hpp>
-#include <fcppt/variant/detail/output.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <iosfwd>
+#include <ostream>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -39,6 +38,7 @@ template<
 	typename Ch,
 	typename Traits
 >
+inline
 std::basic_ostream<
 	Ch,
 	Traits
@@ -55,18 +55,25 @@ operator<<(
 {
 	return
 		fcppt::variant::apply_unary(
-			fcppt::variant::detail::output<
-				std::basic_ostream<
-					Ch,
-					Traits
-				>
-			>(
-				_stream
-			),
+			[
+				&_stream
+			](
+				auto const &_value
+			)
+			->
+			std::basic_ostream<
+				Ch,
+				Traits
+			> &
+			{
+				return
+					_stream
+					<<
+					_value;
+			},
 			_object
 		);
 }
-
 
 }
 }

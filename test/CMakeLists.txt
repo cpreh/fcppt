@@ -813,3 +813,7 @@ add_fcppt_test(
 add_fcppt_test(
 	variant/move
 )
+
+add_fcppt_test(
+	variant/output
+)

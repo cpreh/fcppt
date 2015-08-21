@@ -44,6 +44,7 @@ template<
 	typename Type,
 	typename Elements
 >
+inline
 bool
 holds_type(
 	fcppt::variant::object<

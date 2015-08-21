@@ -300,6 +300,7 @@ set(
 	include/fcppt/cyclic_iterator_decl.hpp
 	include/fcppt/cyclic_iterator_fwd.hpp
 	include/fcppt/cyclic_iterator_impl.hpp
+	include/fcppt/decltype_sink.hpp
 	include/fcppt/default_deleter.hpp
 	include/fcppt/default_deleter_fwd.hpp
 	include/fcppt/detail/char_type.hpp
@@ -308,6 +309,7 @@ set(
 	include/fcppt/detail/const.hpp
 	include/fcppt/detail/cyclic_iterator_base.hpp
 	include/fcppt/detail/cyclic_iterator_category.hpp
+	include/fcppt/detail/decltype_sink.hpp
 	include/fcppt/detail/enable_optional_ref_conv.hpp
 	include/fcppt/detail/enable_optional_value_conv.hpp
 	include/fcppt/detail/enum_iterator_base.hpp
@@ -934,7 +936,6 @@ set(
 	include/fcppt/variant/detail/move_construct.hpp
 	include/fcppt/variant/detail/nothrow_move_assignable.hpp
 	include/fcppt/variant/detail/nothrow_move_constructible.hpp
-	include/fcppt/variant/detail/output.hpp
 	include/fcppt/variant/detail/swap_unequal.hpp
 	include/fcppt/variant/detail/ternary_applier.hpp
 	include/fcppt/variant/detail/ternary_unwrap.hpp
