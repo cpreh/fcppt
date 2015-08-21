@@ -8,7 +8,6 @@
 #define FCPPT_VARIANT_APPLY_BINARY_HPP_INCLUDED
 
 #include <fcppt/variant/apply_unary.hpp>
-#include <fcppt/variant/detail/binary_unwrap.hpp>
 
 
 namespace fcppt
@@ -52,13 +51,39 @@ apply_binary(
 {
 	return
 		fcppt::variant::apply_unary(
-			fcppt::variant::detail::binary_unwrap<
-				Operation,
-				Variant1
-			>(
-				_op,
-				_obj1
-			),
+			[
+				&_obj1,
+				&_op
+			](
+				auto &_t2
+			)
+			->
+			decltype(
+				auto
+			)
+			{
+				return
+					fcppt::variant::apply_unary(
+						[
+							&_op,
+							&_t2
+						](
+							auto &_t1
+						)
+						->
+						decltype(
+							auto
+						)
+						{
+							return
+								_op(
+									_t1,
+									_t2
+								);
+						},
+						_obj1
+					);
+			},
 			_obj2
 		);
 }

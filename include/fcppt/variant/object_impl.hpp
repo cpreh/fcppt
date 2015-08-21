@@ -8,6 +8,7 @@
 #define FCPPT_VARIANT_OBJECT_IMPL_HPP_INCLUDED
 
 #include <fcppt/cast/from_void_ptr.hpp>
+#include <fcppt/detail/call_destructor.hpp>
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
@@ -21,7 +22,6 @@
 #include <fcppt/variant/detail/assign_value.hpp>
 #include <fcppt/variant/detail/construct.hpp>
 #include <fcppt/variant/detail/copy.hpp>
-#include <fcppt/variant/detail/destroy.hpp>
 #include <fcppt/variant/detail/disable_object.hpp>
 #include <fcppt/variant/detail/get_impl.hpp>
 #include <fcppt/variant/detail/index_of.hpp>
@@ -30,7 +30,6 @@
 #include <fcppt/variant/detail/move_construct.hpp>
 #include <fcppt/variant/detail/nothrow_move_assignable.hpp>
 #include <fcppt/variant/detail/nothrow_move_constructible.hpp>
-#include <fcppt/variant/detail/swap_unequal.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <new>
 #include <type_traits>
@@ -536,7 +535,14 @@ fcppt::variant::object<
 		return;
 
 	fcppt::variant::apply_unary(
-		fcppt::variant::detail::destroy(),
+		[](
+			auto &_value
+		)
+		{
+			fcppt::detail::call_destructor(
+				_value
+			);
+		},
 		*this
 	);
 
@@ -555,14 +561,30 @@ fcppt::variant::object<
 )
 {
 	fcppt::variant::apply_binary(
-		fcppt::variant::detail::swap_unequal<
-			fcppt::variant::object<
-				Types
-			>
-		>(
-			*this,
-			_other
-		),
+		[
+			&_other,
+			this
+		](
+			auto &_left,
+			auto &_right
+		)
+		{
+			auto temp(
+				std::move(
+					_left
+				)
+			);
+
+			*this =
+				std::move(
+					_right
+				);
+
+			_other =
+				std::move(
+					temp
+				);
+		},
 		*this,
 		_other
 	);

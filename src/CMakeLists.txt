@@ -303,6 +303,7 @@ set(
 	include/fcppt/decltype_sink.hpp
 	include/fcppt/default_deleter.hpp
 	include/fcppt/default_deleter_fwd.hpp
+	include/fcppt/detail/call_destructor.hpp
 	include/fcppt/detail/char_type.hpp
 	include/fcppt/detail/check_cpp.hpp
 	include/fcppt/detail/check_optional.hpp
@@ -919,12 +920,9 @@ set(
 	include/fcppt/variant/detail/assert_type.hpp
 	include/fcppt/variant/detail/assign_object.hpp
 	include/fcppt/variant/detail/assign_value.hpp
-	include/fcppt/variant/detail/binary_applier.hpp
-	include/fcppt/variant/detail/binary_unwrap.hpp
 	include/fcppt/variant/detail/compare.hpp
 	include/fcppt/variant/detail/construct.hpp
 	include/fcppt/variant/detail/copy.hpp
-	include/fcppt/variant/detail/destroy.hpp
 	include/fcppt/variant/detail/disable_object.hpp
 	include/fcppt/variant/detail/get_impl.hpp
 	include/fcppt/variant/detail/index_of.hpp
@@ -936,7 +934,6 @@ set(
 	include/fcppt/variant/detail/move_construct.hpp
 	include/fcppt/variant/detail/nothrow_move_assignable.hpp
 	include/fcppt/variant/detail/nothrow_move_constructible.hpp
-	include/fcppt/variant/detail/swap_unequal.hpp
 	include/fcppt/variant/detail/ternary_applier.hpp
 	include/fcppt/variant/detail/ternary_unwrap.hpp
 	include/fcppt/variant/detail/to_optional_result.hpp
