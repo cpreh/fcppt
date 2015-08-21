@@ -338,6 +338,7 @@ set(
 	include/fcppt/detail/strong_typedef/post_inc_dec_operator.hpp
 	include/fcppt/detail/strong_typedef/pre_inc_dec_operator.hpp
 	include/fcppt/detail/strong_typedef/unary_operator.hpp
+	include/fcppt/detail/tag_type.hpp
 	include/fcppt/detail/text.hpp
 	include/fcppt/detail/void.hpp
 	include/fcppt/dynamic_optional_cast.hpp
@@ -682,9 +683,7 @@ set(
 	include/fcppt/mpl/ceil_div.hpp
 	include/fcppt/mpl/contains_if.hpp
 	include/fcppt/mpl/detail/for_each.hpp
-	include/fcppt/mpl/detail/invoke_on_function.hpp
 	include/fcppt/mpl/detail/print.hpp
-	include/fcppt/mpl/detail/print_function.hpp
 	include/fcppt/mpl/detail/print_one.hpp
 	include/fcppt/mpl/detail/runtime_index.hpp
 	include/fcppt/mpl/exception.hpp
@@ -865,6 +864,7 @@ set(
 	include/fcppt/strong_typedef_std_hash.hpp
 	include/fcppt/tag.hpp
 	include/fcppt/tag_fwd.hpp
+	include/fcppt/tag_type.hpp
 	include/fcppt/text.hpp
 	include/fcppt/time/ctime.hpp
 	include/fcppt/time/exception.hpp
@@ -914,7 +914,6 @@ set(
 	include/fcppt/variant/apply_ternary.hpp
 	include/fcppt/variant/apply_unary.hpp
 	include/fcppt/variant/compare.hpp
-	include/fcppt/variant/detail/apply_function.hpp
 	include/fcppt/variant/detail/assert_type.hpp
 	include/fcppt/variant/detail/assign_object.hpp
 	include/fcppt/variant/detail/assign_value.hpp
@@ -925,7 +924,6 @@ set(
 	include/fcppt/variant/detail/copy.hpp
 	include/fcppt/variant/detail/destroy.hpp
 	include/fcppt/variant/detail/disable_object.hpp
-	include/fcppt/variant/detail/equal.hpp
 	include/fcppt/variant/detail/get_impl.hpp
 	include/fcppt/variant/detail/index_of.hpp
 	include/fcppt/variant/detail/less.hpp

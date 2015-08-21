@@ -8,9 +8,11 @@
 #define FCPPT_VARIANT_APPLY_UNARY_HPP_INCLUDED
 
 #include <fcppt/absurd.hpp>
+#include <fcppt/decltype_sink.hpp>
 #include <fcppt/mpl/runtime_index.hpp>
-#include <fcppt/variant/detail/apply_function.hpp>
 #include <fcppt/config/external_begin.hpp>
+#include <boost/mpl/at.hpp>
+#include <boost/mpl/front.hpp>
 #include <boost/mpl/size.hpp>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
@@ -41,15 +43,21 @@ template<
 	typename Operation,
 	typename Variant
 >
-typename
-std::decay<
-	Operation
->::type::result_type
+decltype(
+	auto
+)
 apply_unary(
 	Operation &&_op,
 	Variant &&_obj
 )
 {
+	typedef
+	typename
+	std::decay<
+		Variant
+	>::type::types
+	types;
+
 	return
 		fcppt::mpl::runtime_index<
 			typename
@@ -61,18 +69,41 @@ apply_unary(
 			>::type
 		>(
 			_obj.type_index(),
-			fcppt::variant::detail::apply_function<
-				Operation,
-				Variant
-			>(
-				_op,
-				_obj
-			),
+			[
+				&_op,
+				&_obj
+			](
+				auto const _index_value
+			)
+			->
+			decltype(
+				auto
+			)
+			{
+				return
+					_op(
+						_obj . template get_unsafe<
+							typename
+							boost::mpl::at<
+								types,
+								FCPPT_DECLTYPE_SINK(
+									_index_value
+								)
+							>::type
+						>()
+					);
+			},
 			&fcppt::absurd<
-				typename
-				std::decay<
-					Operation
-				>::type::result_type
+				decltype(
+					_op(
+						_obj . template get_unsafe<
+							typename
+							boost::mpl::front<
+								types
+							>::type
+						>()
+					)
+				)
 			>
 		);
 }

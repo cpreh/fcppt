@@ -25,6 +25,7 @@ namespace detail
 template<
 	typename Type
 >
+inline
 void
 print_one(
 	fcppt::io::ostream &_stream

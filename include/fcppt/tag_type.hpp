@@ -4,31 +4,30 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_TAG_HPP_INCLUDED
-#define FCPPT_TAG_HPP_INCLUDED
+#ifndef FCPPT_TAG_TYPE_HPP_INCLUDED
+#define FCPPT_TAG_TYPE_HPP_INCLUDED
 
-#include <fcppt/tag_fwd.hpp>
+#include <fcppt/detail/tag_type.hpp>
 
 
 namespace fcppt
 {
 
 /**
-\brief A value for a type name
+\brief Extracts the type of \link fcppt::tag\endlink
 
 \ingroup fcpptvarious
-
-This class can be used to pass the type \a Type as a value.
 */
 template<
 	typename Type
 >
-struct tag
-{
-	typedef
+using
+tag_type
+=
+typename
+fcppt::detail::tag_type<
 	Type
-	type;
-};
+>::type;
 
 }
 

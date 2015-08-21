@@ -42,8 +42,9 @@ template<
 	typename FailFunction
 >
 inline
-typename
-Function::result_type
+decltype(
+	auto
+)
 runtime_index(
 	Index const _index,
 	Function const &_function,

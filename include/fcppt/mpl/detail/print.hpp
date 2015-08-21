@@ -7,14 +7,17 @@
 #ifndef FCPPT_MPL_DETAIL_PRINT_HPP_INCLUDED
 #define FCPPT_MPL_DETAIL_PRINT_HPP_INCLUDED
 
+#include <fcppt/decltype_sink.hpp>
+#include <fcppt/tag_type.hpp>
+#include <fcppt/text.hpp>
 #include <fcppt/io/ostream.hpp>
 #include <fcppt/mpl/for_each.hpp>
-#include <fcppt/mpl/detail/print_function.hpp>
 #include <fcppt/mpl/detail/print_one.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/mpl/back.hpp>
 #include <boost/mpl/empty.hpp>
 #include <boost/mpl/pop_back.hpp>
+#include <ostream>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
@@ -57,17 +60,35 @@ print(
 )
 {
 	fcppt::mpl::for_each<
-		typename boost::mpl::pop_back<
+		typename
+		boost::mpl::pop_back<
 			Sequence
 		>::type
 	>(
-		fcppt::mpl::detail::print_function(
-			_stream
+		[
+			&_stream
+		](
+			auto const _type
 		)
+		{
+			fcppt::mpl::detail::print_one<
+				fcppt::tag_type<
+					FCPPT_DECLTYPE_SINK(
+						_type
+					)
+				>
+			>(
+				_stream
+			);
+
+			_stream
+				<< FCPPT_TEXT(',');
+		}
 	);
 
 	fcppt::mpl::detail::print_one<
-		typename boost::mpl::back<
+		typename
+		boost::mpl::back<
 			Sequence
 		>::type
 	>(

@@ -26,6 +26,7 @@ template<
 	typename Ret,
 	typename Variant
 >
+inline
 Ret &
 get_impl(
 	Variant &_variant

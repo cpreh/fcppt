@@ -53,8 +53,8 @@ The following platforms are tested by us:
 	<li>clang 3.6.1 (Gentoo Linux)</li>
 </ul>
 
-fcppt needs a C++11-conforming compiler which probably excludes everything
-older than gcc-4.8.1 and clang-3.4.
+fcppt needs a C++14-conforming compiler which probably excludes everything
+older than gcc-5.1 and clang-3.4.
 
 \section requirements_download_installation_download Download
 

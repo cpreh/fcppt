@@ -8,8 +8,10 @@
 #define FCPPT_MPL_INVOKE_ON_HPP_INCLUDED
 
 #include <fcppt/mpl/runtime_index.hpp>
-#include <fcppt/mpl/detail/invoke_on_function.hpp>
+#include <fcppt/tag.hpp>
+#include <fcppt/cast/to_void.hpp>
 #include <fcppt/config/external_begin.hpp>
+#include <boost/mpl/at.hpp>
 #include <boost/mpl/size.hpp>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
@@ -59,8 +61,9 @@ template<
 	typename Function,
 	typename FailFunction
 >
-typename
-Function::result_type
+decltype(
+	auto
+)
 invoke_on(
 	Index const &_index,
 	Function const &_function,
@@ -82,12 +85,34 @@ invoke_on(
 			>::type
 		>(
 			_index,
-			fcppt::mpl::detail::invoke_on_function<
-				Sequence,
-				Function
-			>(
-				_function
-			),
+			[
+				&_function
+			](
+				auto const _cur_index
+			)
+			->
+			decltype(
+				auto
+			)
+			{
+				// TODO: Can we get the type in a different way?
+				fcppt::cast::to_void(
+					_cur_index
+				);
+
+				return
+					_function(
+						fcppt::tag<
+							typename
+							boost::mpl::at<
+								Sequence,
+								decltype(
+									_cur_index
+								)
+							>::type
+						>()
+					);
+			},
 			_fail_function
 		);
 }

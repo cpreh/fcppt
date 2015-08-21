@@ -48,8 +48,9 @@ struct runtime_index<
 		typename FailFunction
 	>
 	static
-	typename
-	Function::result_type
+	decltype(
+		auto
+	)
 	execute(
 		Index,
 		Function const &,
@@ -82,8 +83,9 @@ struct runtime_index<
 		typename FailFunction
 	>
 	static
-	typename
-	Function::result_type
+	decltype(
+		auto
+	)
 	execute(
 		Index const _index,
 		Function const &_function,
