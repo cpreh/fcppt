@@ -22,38 +22,43 @@
 namespace
 {
 
-typedef fcppt::unique_ptr<
+typedef
+fcppt::unique_ptr<
 	int
-> int_unique_ptr;
+>
+int_unique_ptr;
 
-typedef fcppt::unique_ptr<
+typedef
+fcppt::unique_ptr<
 	std::string
-> string_unique_ptr;
+>
+string_unique_ptr;
 
-typedef fcppt::unique_ptr<
+typedef
+fcppt::unique_ptr<
 	bool
-> bool_unique_ptr;
+>
+bool_unique_ptr;
 
-struct functor
+struct function
 {
-	typedef bool result_type;
-
 	template<
 		typename T1,
 		typename T2,
 		typename T3
 	>
-	result_type
+	bool
 	operator()(
 		T1 &,
 		T2 &,
 		T3 &
 	) const
 	{
-		return false;
+		return
+			false;
 	}
 
-	result_type
+	bool
 	operator()(
 		int_unique_ptr &_int,
 		string_unique_ptr &_string,
@@ -62,8 +67,10 @@ struct functor
 	{
 		return
 			*_int == 42
-			&& *_string == "test"
-			&& *_bool == true;
+			&&
+			*_string == "test"
+			&&
+			*_bool == true;
 	}
 };
 
@@ -78,13 +85,15 @@ BOOST_AUTO_TEST_CASE(
 {
 FCPPT_PP_POP_WARNING
 
-	typedef fcppt::variant::object<
+	typedef
+	fcppt::variant::object<
 		boost::mpl::vector3<
 			int_unique_ptr,
 			string_unique_ptr,
 			bool_unique_ptr
 		>
-	> variant;
+	>
+	variant;
 
 	variant int_variant(
 		fcppt::make_unique_ptr_fcppt<
@@ -110,9 +119,9 @@ FCPPT_PP_POP_WARNING
 		)
 	);
 
-	functor const func{};
+	function const func{};
 
-	BOOST_REQUIRE(
+	BOOST_CHECK(
 		fcppt::variant::apply_ternary(
 			func,
 			int_variant,

@@ -15,79 +15,22 @@
 #include <boost/mpl/vector/vector10.hpp>
 #include <boost/test/unit_test.hpp>
 #include <string>
+#include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
 
 namespace
 {
 
-struct unary_functor
-{
-	typedef void result_type;
-
-	template<
-		typename T1
-	>
-	result_type
-	operator()(
-		T1 &_val
-	) const
-	{
-		_val = T1();
-	}
-};
-
-struct binary_functor
-{
-	typedef void result_type;
-
-	template<
-		typename T1,
-		typename T2
-	>
-	result_type
-	operator()(
-		T1 &_val1,
-		T2 &_val2
-	) const
-	{
-		_val1 = T1();
-
-		_val2 = T2();
-	}
-};
-
-struct ternary_functor
-{
-	typedef void result_type;
-
-	template<
-		typename T1,
-		typename T2,
-		typename T3
-	>
-	result_type
-	operator()(
-		T1 &_val1,
-		T2 &_val2,
-		T3 &_val3
-	) const
-	{
-		_val1 = T1();
-
-		_val2 = T2();
-
-		_val3 = T3();
-	}
-};
-
-typedef fcppt::variant::object<
+typedef
+fcppt::variant::object<
 	boost::mpl::vector3<
 		bool,
 		int,
 		std::string
 	>
-> variant;
+>
+variant;
 
 }
 
@@ -107,15 +50,26 @@ FCPPT_PP_POP_WARNING
 	);
 
 	fcppt::variant::apply_unary(
-		unary_functor(),
+		[](
+			auto &_val
+		)
+		{
+			_val =
+				typename
+				std::decay<
+					decltype(
+						_val
+					)
+				>::type{};
+		},
 		v1
 	);
 
-	BOOST_CHECK(
+	BOOST_CHECK_EQUAL(
 		v1.get_exn<
 			std::string
-		>()
-		== ""
+		>(),
+		std::string{}
 	);
 }
 
@@ -139,23 +93,43 @@ FCPPT_PP_POP_WARNING
 	);
 
 	fcppt::variant::apply_binary(
-		binary_functor(),
+		[](
+			auto &_val1,
+			auto &_val2
+		)
+		{
+			_val1 =
+				typename
+				std::decay<
+					decltype(
+						_val1
+					)
+				>::type{};
+
+			_val2 =
+				typename
+				std::decay<
+					decltype(
+						_val2
+					)
+				>::type{};
+		},
 		v1,
 		v2
 	);
 
-	BOOST_CHECK(
+	BOOST_CHECK_EQUAL(
 		v1.get_exn<
 			std::string
-		>()
-		== ""
+		>(),
+		std::string{}
 	);
 
-	BOOST_CHECK(
+	BOOST_CHECK_EQUAL(
 		v2.get_exn<
 			int
-		>()
-		== 0
+		>(),
+		0
 	);
 }
 
@@ -183,30 +157,59 @@ FCPPT_PP_POP_WARNING
 	);
 
 	fcppt::variant::apply_ternary(
-		ternary_functor(),
+		[](
+			auto &_val1,
+			auto &_val2,
+			auto &_val3
+		)
+		{
+			_val1 =
+				typename
+				std::decay<
+					decltype(
+						_val1
+					)
+				>::type{};
+
+			_val2 =
+				typename
+				std::decay<
+					decltype(
+						_val2
+					)
+				>::type{};
+
+			_val3 =
+				typename
+				std::decay<
+					decltype(
+						_val3
+					)
+				>::type{};
+		},
 		v1,
 		v2,
 		v3
 	);
 
-	BOOST_CHECK(
+	BOOST_CHECK_EQUAL(
 		v1.get_exn<
 			std::string
-		>()
-		== ""
+		>(),
+		std::string{}
 	);
 
-	BOOST_CHECK(
+	BOOST_CHECK_EQUAL(
 		v2.get_exn<
 			int
-		>()
-		== 0
+		>(),
+		0
 	);
 
-	BOOST_CHECK(
+	BOOST_CHECK_EQUAL(
 		v3.get_exn<
 			bool
-		>()
-		== false
+		>(),
+		false
 	);
 }

@@ -19,26 +19,25 @@
 namespace
 {
 
-struct functor
+struct function
 {
-	typedef bool result_type;
-
 	template<
 		typename T1,
 		typename T2,
 		typename T3
 	>
-	result_type
+	bool
 	operator()(
 		T1 const &,
 		T2 const &,
 		T3 const &
 	) const
 	{
-		return false;
+		return
+			false;
 	}
 
-	result_type
+	bool
 	operator()(
 		bool const _bool,
 		int const _int,
@@ -47,8 +46,10 @@ struct functor
 	{
 		return
 			_bool == false
-			&& _int == 42
-			&& _string == "foo";
+			&&
+			_int == 42
+			&&
+			_string == "foo";
 	}
 };
 
@@ -63,21 +64,23 @@ BOOST_AUTO_TEST_CASE(
 {
 FCPPT_PP_POP_WARNING
 
-	typedef fcppt::variant::object<
+	typedef
+	fcppt::variant::object<
 		boost::mpl::vector3<
 			bool,
 			int,
 			std::string
 		>
-	> variant;
+	>
+	variant;
 
 	std::string const string(
 		"foo"
 	);
 
-	BOOST_REQUIRE(
+	BOOST_CHECK(
 		fcppt::variant::apply_ternary(
-			functor(),
+			function(),
 			variant(
 				false
 			),

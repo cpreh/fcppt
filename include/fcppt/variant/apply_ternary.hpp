@@ -8,7 +8,7 @@
 #define FCPPT_VARIANT_APPLY_TERNARY_HPP_INCLUDED
 
 #include <fcppt/variant/apply_binary.hpp>
-#include <fcppt/variant/detail/ternary_unwrap.hpp>
+#include <fcppt/variant/apply_unary.hpp>
 
 
 namespace fcppt
@@ -57,13 +57,42 @@ apply_ternary(
 {
 	return
 		fcppt::variant::apply_binary(
-			fcppt::variant::detail::ternary_unwrap<
-				Operation,
-				Variant1
-			>(
-				_op,
-				_obj1
-			),
+			[
+				&_obj1,
+				&_op
+			](
+				auto &_t2_t,
+				auto &_t3
+			)
+			->
+			decltype(
+				auto
+			)
+			{
+				return
+					fcppt::variant::apply_unary(
+						[
+							&_t2_t,
+							&_t3,
+							&_op
+						](
+							auto &_t1
+						)
+						->
+						decltype(
+							auto
+						)
+						{
+							return
+								_op(
+									_t1,
+									_t2_t,
+									_t3
+								);
+						},
+						_obj1
+					);
+			},
 			_obj2,
 			_obj3
 		);

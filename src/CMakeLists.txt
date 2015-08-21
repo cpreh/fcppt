@@ -328,6 +328,7 @@ set(
 	include/fcppt/detail/nonassignable.hpp
 	include/fcppt/detail/noncopyable.hpp
 	include/fcppt/detail/optional_cast.hpp
+	include/fcppt/detail/placement_new.hpp
 	include/fcppt/detail/runtime_enum_function.hpp
 	include/fcppt/detail/strong_typedef/assignment_operator.hpp
 	include/fcppt/detail/strong_typedef/binary_operator.hpp
@@ -918,20 +919,11 @@ set(
 	include/fcppt/variant/apply_unary.hpp
 	include/fcppt/variant/compare.hpp
 	include/fcppt/variant/detail/assert_type.hpp
-	include/fcppt/variant/detail/assign_object.hpp
-	include/fcppt/variant/detail/assign_value.hpp
-	include/fcppt/variant/detail/construct.hpp
-	include/fcppt/variant/detail/copy.hpp
 	include/fcppt/variant/detail/disable_object.hpp
 	include/fcppt/variant/detail/get_impl.hpp
 	include/fcppt/variant/detail/index_of.hpp
-	include/fcppt/variant/detail/move_assign_object.hpp
-	include/fcppt/variant/detail/move_assign_value.hpp
-	include/fcppt/variant/detail/move_construct.hpp
 	include/fcppt/variant/detail/nothrow_move_assignable.hpp
 	include/fcppt/variant/detail/nothrow_move_constructible.hpp
-	include/fcppt/variant/detail/ternary_applier.hpp
-	include/fcppt/variant/detail/ternary_unwrap.hpp
 	include/fcppt/variant/detail/to_optional_result.hpp
 	include/fcppt/variant/detail/type_info.hpp
 	include/fcppt/variant/equal.hpp

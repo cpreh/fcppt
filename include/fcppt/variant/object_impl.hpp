@@ -9,25 +9,18 @@
 
 #include <fcppt/cast/from_void_ptr.hpp>
 #include <fcppt/detail/call_destructor.hpp>
+#include <fcppt/detail/placement_new.hpp>
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/variant/apply_binary.hpp>
 #include <fcppt/variant/apply_unary.hpp>
-#include <fcppt/variant/is_object.hpp>
 #include <fcppt/variant/object_decl.hpp>
 #include <fcppt/variant/size_type.hpp>
 #include <fcppt/variant/detail/assert_type.hpp>
-#include <fcppt/variant/detail/assign_object.hpp>
-#include <fcppt/variant/detail/assign_value.hpp>
-#include <fcppt/variant/detail/construct.hpp>
-#include <fcppt/variant/detail/copy.hpp>
 #include <fcppt/variant/detail/disable_object.hpp>
 #include <fcppt/variant/detail/get_impl.hpp>
 #include <fcppt/variant/detail/index_of.hpp>
-#include <fcppt/variant/detail/move_assign_object.hpp>
-#include <fcppt/variant/detail/move_assign_value.hpp>
-#include <fcppt/variant/detail/move_construct.hpp>
 #include <fcppt/variant/detail/nothrow_move_assignable.hpp>
 #include <fcppt/variant/detail/nothrow_move_constructible.hpp>
 #include <fcppt/config/external_begin.hpp>
@@ -102,9 +95,17 @@ fcppt::variant::object<
 	)
 {
 	fcppt::variant::apply_unary(
-		fcppt::variant::detail::copy(
-			this->raw_data()
-		),
+		[
+			this
+		](
+			auto const &_other_inner
+		)
+		{
+			fcppt::detail::placement_new(
+				this->raw_data(),
+				_other_inner
+			);
+		},
 		_other
 	);
 }
@@ -129,9 +130,19 @@ noexcept(
 	)
 {
 	fcppt::variant::apply_unary(
-		fcppt::variant::detail::move_construct(
-			this->raw_data()
-		),
+		[
+			this
+		](
+			auto &&_value
+		)
+		{
+			fcppt::detail::placement_new(
+				this->raw_data(),
+				std::move(
+					_value
+				)
+			);
+		},
 		std::move(
 			_other
 		)
@@ -161,14 +172,10 @@ fcppt::variant::object<
 		==
 		index_
 	)
-		fcppt::variant::apply_unary(
-			fcppt::variant::detail::assign_value<
-				U
-			>(
-				_other
-			),
-			*this
-		);
+		this->template get_unsafe<
+			U
+		>() =
+			_other;
 	else
 	{
 		this->destroy();
@@ -178,7 +185,8 @@ fcppt::variant::object<
 		);
 	}
 
-	return *this;
+	return
+		*this;
 }
 
 template<
@@ -207,16 +215,15 @@ fcppt::variant::object<
 		==
 		index_
 	)
-		fcppt::variant::apply_unary(
-			fcppt::variant::detail::move_assign_value<
+		this-> template get_unsafe<
+			typename
+			std::decay<
 				U
-			>(
-				std::move(
-					_other
-				)
-			),
-			*this
-		);
+			>::type
+		>() =
+			std::move(
+				_other
+			);
 	else
 	{
 		this->destroy();
@@ -228,7 +235,8 @@ fcppt::variant::object<
 		);
 	}
 
-	return *this;
+	return
+		*this;
 }
 
 template<
@@ -249,28 +257,40 @@ fcppt::variant::object<
 		_other.type_index()
 	)
 		fcppt::variant::apply_unary(
-			fcppt::variant::detail::assign_object<
-				fcppt::variant::object<
-					Types
-				>
-			>(
-				*this
-			),
+			[
+				this
+			](
+				auto const &_other_inner
+			)
+			{
+				this-> template get_unsafe<
+					typename
+					std::decay<
+						decltype(
+							_other_inner
+						)
+					>::type
+				>() =
+					_other_inner;
+			},
 			_other
 		);
 	else
 		fcppt::variant::apply_unary(
-			fcppt::variant::detail::construct<
-				fcppt::variant::object<
-					Types
-				>
-			>(
-				*this
-			),
+			[
+				this
+			](
+				auto const &_value
+			)
+			{
+				*this =
+					_value;
+			},
 			_other
 		);
 
-	return *this;
+	return
+		*this;
 }
 
 template<
@@ -296,13 +316,24 @@ noexcept(
 		_other.type_index()
 	)
 		fcppt::variant::apply_unary(
-			fcppt::variant::detail::move_assign_object<
-				fcppt::variant::object<
-					Types
-				>
-			>(
-				*this
-			),
+			[
+				this
+			](
+				auto &&_other_inner
+			)
+			{
+				this->template get_unsafe<
+					typename
+					std::decay<
+						decltype(
+							_other_inner
+						)
+					>::type
+				>() =
+					std::move(
+						_other_inner
+					);
+			},
 			std::move(
 				_other
 			)
@@ -312,7 +343,8 @@ noexcept(
 			_other
 		);
 
-	return *this;
+	return
+		*this;
 }
 
 template<
