@@ -74,9 +74,7 @@ operator==(
 						[
 							&_right_inner
 						](
-							decltype(
-								_right_inner
-							) const &_left_inner
+							auto const &_left_inner
 						)
 						{
 							return
