@@ -4,9 +4,10 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/exception.hpp>
-#include <fcppt/string.hpp>
-#include <fcppt/container/find_exn.hpp>
+#include <fcppt/optional_comparison.hpp>
+#include <fcppt/optional_impl.hpp>
+#include <fcppt/optional_output.hpp>
+#include <fcppt/container/find_opt_mapped.hpp>
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
@@ -49,43 +50,28 @@ FCPPT_PP_POP_WARNING
 		)
 	};
 
-	auto const throw_function(
-		[]
-		{
-			return
-				fcppt::exception{
-					fcppt::string()
-				};
-		}
+	typedef
+	fcppt::optional<
+		std::string
+	>
+	optional_string;
+
+	BOOST_CHECK_EQUAL(
+		optional_string(
+			fcppt::container::find_opt_mapped(
+				values,
+				42
+			)
+		),
+		optional_string(
+			"test"
+		)
 	);
 
 	BOOST_CHECK(
-		fcppt::container::find_exn(
+		!fcppt::container::find_opt_mapped(
 			values,
-			42,
-			throw_function
-		)
-		==
-		"test"
-	);
-
-	auto const check_exception(
-		[](
-			fcppt::exception const &
-		)
-		{
-			return
-				true;
-		}
-	);
-
-	BOOST_CHECK_EXCEPTION(
-		fcppt::container::find_exn(
-			values,
-			50,
-			throw_function
-		),
-		fcppt::exception,
-		check_exception
+			50
+		).has_value()
 	);
 }

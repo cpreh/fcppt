@@ -7,7 +7,6 @@
 #ifndef FCPPT_MATH_MATRIX_ROTATION_2D_HPP_INCLUDED
 #define FCPPT_MATH_MATRIX_ROTATION_2D_HPP_INCLUDED
 
-#include <fcppt/math/matrix/object_impl.hpp>
 #include <fcppt/math/matrix/static.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <cmath>
@@ -25,32 +24,45 @@ namespace matrix
 \brief Calculates a two dimensional rotation matrix
 \ingroup fcpptmathmatrix
 \tparam T The matrix's <code>value_type</code>
-\param angle The angle to rotate about
+\param _angle The angle to rotate about
 
 The resulting matrix will be a static one.
 */
 template<
 	typename T
 >
-fcppt::math::matrix::static_<T, 2, 2> const
+fcppt::math::matrix::static_<
+	T,
+	2,
+	2
+>
 rotation_2d(
-	T const angle
+	T const _angle
 )
 {
 	T const
-		sinx =
+		sinx{
 			std::sin(
-				angle),
-		cosx =
+				_angle
+			)
+		},
+		cosx{
 			std::cos(
-				angle);
+				_angle
+			)
+		};
 
 	return
-		fcppt::math::matrix::static_<T, 2, 2>(
+		fcppt::math::matrix::static_<
+			T,
+			2,
+			2
+		>{
 			cosx, -sinx,
 			sinx,  cosx
-		);
+		};
 }
+
 }
 }
 }

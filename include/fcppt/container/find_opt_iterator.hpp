@@ -25,9 +25,12 @@ found, the iterator is returned. Otherwise, and empty optional is returned.
 \ingroup fcpptcontainer
 
 \tparam Container Must be an associative container
+
+\tparam Key Must be a key that can be searched for
 */
 template<
-	typename Container
+	typename Container,
+	typename Key
 >
 fcppt::optional<
 	fcppt::container::to_iterator_type<
@@ -36,7 +39,7 @@ fcppt::optional<
 >
 find_opt_iterator(
 	Container &_container,
-	typename Container::key_type const &_key
+	Key const &_key
 )
 {
 	auto const it(

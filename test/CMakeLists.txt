@@ -197,7 +197,11 @@ add_fcppt_test(
 )
 
 add_fcppt_test(
-	container/find_exn
+	container/find_opt
+)
+
+add_fcppt_test(
+	container/find_opt_mapped
 )
 
 add_fcppt_test(

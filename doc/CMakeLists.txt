@@ -361,9 +361,9 @@ set(
 	include/fcppt/container/enum_array_fwd.hpp
 	include/fcppt/container/enum_array_impl.hpp
 	include/fcppt/container/exception.hpp
-	include/fcppt/container/find_exn.hpp
 	include/fcppt/container/find_opt.hpp
 	include/fcppt/container/find_opt_iterator.hpp
+	include/fcppt/container/find_opt_mapped.hpp
 	include/fcppt/container/get_or_insert.hpp
 	include/fcppt/container/get_or_insert_result.hpp
 	include/fcppt/container/get_or_insert_result_decl.hpp
@@ -481,6 +481,7 @@ set(
 	include/fcppt/container/to_mapped_type.hpp
 	include/fcppt/container/to_pointer_type.hpp
 	include/fcppt/container/to_reference_type.hpp
+	include/fcppt/container/to_value_type.hpp
 	include/fcppt/container/tree/comparison.hpp
 	include/fcppt/container/tree/depth.hpp
 	include/fcppt/container/tree/detail/copy_children.hpp

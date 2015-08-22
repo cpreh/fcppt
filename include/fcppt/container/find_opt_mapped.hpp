@@ -4,12 +4,13 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_CONTAINER_FIND_OPT_HPP_INCLUDED
-#define FCPPT_CONTAINER_FIND_OPT_HPP_INCLUDED
+#ifndef FCPPT_CONTAINER_FIND_OPT_MAPPED_HPP_INCLUDED
+#define FCPPT_CONTAINER_FIND_OPT_MAPPED_HPP_INCLUDED
 
-#include <fcppt/optional_deref.hpp>
+#include <fcppt/optional_bind_construct.hpp>
 #include <fcppt/optional_impl.hpp>
-#include <fcppt/container/find_opt_iterator.hpp>
+#include <fcppt/container/find_opt.hpp>
+#include <fcppt/container/to_mapped_type.hpp>
 #include <fcppt/container/to_value_type.hpp>
 
 
@@ -27,7 +28,7 @@ is returned.
 
 \ingroup fcpptcontainer
 
-\tparam Container Must be an associative container
+\tparam Container Must be an associative map container
 
 \tparam Key Must be a key that can be searched for
 */
@@ -37,21 +38,34 @@ template<
 >
 inline
 fcppt::optional<
-	fcppt::container::to_value_type<
+	fcppt::container::to_mapped_type<
 		Container
 	>
 >
-find_opt(
+find_opt_mapped(
 	Container &_container,
 	Key const &_key
 )
 {
 	return
-		fcppt::optional_deref(
-			fcppt::container::find_opt_iterator(
+		fcppt::optional_bind_construct(
+			fcppt::container::find_opt(
 				_container,
 				_key
+			),
+			[](
+				fcppt::container::to_value_type<
+					Container
+				> _value
 			)
+			->
+			fcppt::container::to_mapped_type<
+				Container
+			>
+			{
+				return
+					_value.second;
+			}
 		);
 }
 

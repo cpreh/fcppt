@@ -8,7 +8,7 @@
 #define FCPPT_CONTAINER_GET_OR_INSERT_WITH_RESULT_HPP_INCLUDED
 
 #include <fcppt/maybe.hpp>
-#include <fcppt/container/find_opt.hpp>
+#include <fcppt/container/find_opt_mapped.hpp>
 #include <fcppt/container/get_or_insert_result.hpp>
 
 
@@ -55,7 +55,7 @@ get_or_insert_with_result(
 
 	return
 		fcppt::maybe(
-			fcppt::container::find_opt(
+			fcppt::container::find_opt_mapped(
 				_container,
 				_key
 			),
