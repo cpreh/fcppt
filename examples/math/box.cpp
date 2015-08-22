@@ -22,12 +22,12 @@ int main()
 
 	box2i const box(
 		box2i::vector(
-			10,
-			20
+			10u,
+			20u
 		),
 		box2i::dim(
-			30,
-			30
+			30u,
+			30u
 		)
 	);
 

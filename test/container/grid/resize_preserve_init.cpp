@@ -42,8 +42,8 @@ FCPPT_PP_POP_WARNING
 
 	sz_pair_grid test(
 		sz_pair_grid::dim(
-			5,
-			10
+			5u,
+			10u
 		),
 		fcppt::no_init{}
 	);
@@ -76,8 +76,8 @@ FCPPT_PP_POP_WARNING
 	fcppt::container::grid::resize_preserve_init(
 		test,
 		sz_pair_grid::dim(
-			10,
-			15
+			10u,
+			15u
 		),
 		sz_pair_grid::value_type(
 			10u,
@@ -88,8 +88,8 @@ FCPPT_PP_POP_WARNING
 	BOOST_CHECK_EQUAL(
 		test.size(),
 		sz_pair_grid::dim(
-			10,
-			15
+			10u,
+			15u
 		)
 	);
 

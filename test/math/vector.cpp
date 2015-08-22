@@ -99,8 +99,8 @@ BOOST_AUTO_TEST_CASE(vector_angle_between_cast)
 FCPPT_PP_POP_WARNING
 
 	uivector2 const
-		vec1(1, 0),
-		vec2(0, 1);
+		vec1(1u, 0u),
+		vec2(0u, 1u);
 
 	BOOST_CHECK(
 		::compare(
@@ -145,8 +145,8 @@ BOOST_AUTO_TEST_CASE(vector_signed_angle_between_cast)
 FCPPT_PP_POP_WARNING
 
 	uivector2 const
-		vec1(2, 1),
-		vec2(2, 2);
+		vec1(2u, 1u),
+		vec2(2u, 2u);
 
 	BOOST_CHECK(
 		::compare(
@@ -169,8 +169,8 @@ BOOST_AUTO_TEST_CASE(vector_structure_cast)
 FCPPT_PP_POP_WARNING
 
 	uivector2 const vec(
-		1,
-		2
+		1u,
+		2u
 	);
 
 	BOOST_REQUIRE(

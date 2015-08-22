@@ -63,8 +63,8 @@ FCPPT_PP_POP_WARNING
 
 	dim2_grid grid(
 		dim2_grid::dim(
-			4,
-			6
+			4u,
+			6u
 		),
 		fcppt::no_init{}
 	);
@@ -96,8 +96,8 @@ FCPPT_PP_POP_WARNING
 	grid =
 		dim2_grid(
 			dim2_grid::dim(
-				4,
-				6
+				4u,
+				6U
 			),
 			dim::null()
 		);
@@ -109,14 +109,14 @@ FCPPT_PP_POP_WARNING
 			grid,
 			min{
 				pos(
-					1,
-					1
+					1u,
+					1U
 				)
 			},
 			sup{
 				pos(
-					3,
-					3
+					3u,
+					3u
 				)
 			}
 		)
@@ -132,14 +132,14 @@ FCPPT_PP_POP_WARNING
 			grid,
 			min{
 				pos(
-					1,
-					1
+					1u,
+					1u
 				)
 			},
 			sup{
 				pos(
-					3,
-					3
+					3u,
+					3u
 				)
 			}
 		)
@@ -184,8 +184,8 @@ FCPPT_PP_POP_WARNING
 			},
 			sup{
 				pos(
-					0,
-					1
+					0u,
+					1u
 				)
 			}
 		)
@@ -206,8 +206,8 @@ FCPPT_PP_POP_WARNING
 			},
 			sup{
 				pos(
-					1,
-					0
+					1u,
+					0u
 				)
 			}
 		)

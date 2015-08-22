@@ -32,8 +32,8 @@ FCPPT_PP_POP_WARNING
 
 	int2_grid grid(
 		int2_grid::dim{
-			2,
-			3
+			2u,
+			3u
 		},
 		0
 	);
@@ -42,8 +42,8 @@ FCPPT_PP_POP_WARNING
 		fcppt::container::grid::at_optional(
 			grid,
 			int2_grid::pos(
-				1,
-				2
+				1u,
+				2u
 			)
 		).has_value()
 	);
@@ -52,8 +52,8 @@ FCPPT_PP_POP_WARNING
 		!fcppt::container::grid::at_optional(
 			grid,
 			int2_grid::pos(
-				2,
-				2
+				2u,
+				2u
 			)
 		).has_value()
 	);
@@ -66,8 +66,8 @@ FCPPT_PP_POP_WARNING
 		fcppt::container::grid::at_optional(
 			const_grid,
 			int2_grid::pos(
-				1,
-				2
+				1u,
+				2u
 			)
 		).has_value()
 	);

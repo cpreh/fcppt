@@ -53,8 +53,8 @@ FCPPT_PP_POP_WARNING
 	BOOST_CHECK_EQUAL(
 		vec,
 		ui2_vector(
-			1,
-			2
+			1u,
+			2u
 		)
 	);
 

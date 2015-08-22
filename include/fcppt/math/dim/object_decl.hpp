@@ -13,8 +13,6 @@
 #include <fcppt/math/static_storage.hpp>
 #include <fcppt/math/detail/array_adapter.hpp>
 #include <fcppt/math/detail/make_op_decl.hpp>
-#include <fcppt/math/detail/make_variadic_constructor_decl.hpp>
-#include <fcppt/math/dim/max_ctor_params.hpp>
 #include <fcppt/math/dim/object_fwd.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <iterator>
@@ -128,6 +126,14 @@ public:
 		storage_type const &s
 	);
 
+	template<
+		typename ...Args
+	>
+	explicit
+	object(
+		Args const &...
+	);
+
 	/**
 	\brief Copy-construct the dim from another dim
 	*/
@@ -142,6 +148,7 @@ public:
 	template<
 		typename OtherStorage
 	>
+	explicit
 	object(
 		fcppt::math::dim::object<
 			T,
@@ -151,11 +158,6 @@ public:
 	);
 
 	FCPPT_MATH_DETAIL_ARRAY_ADAPTER(object)
-
-	FCPPT_MATH_DETAIL_MAKE_VARIADIC_CONSTRUCTOR_DECL(
-		FCPPT_MATH_DIM_MAX_CTOR_PARAMS,
-		object
-	)
 
 	/**
 	\brief Copy the values from a different dim

@@ -80,8 +80,8 @@ init()
 	// Initialize all cells to 42
 	int2d_grid const all_42(
 		int2d_grid::dim(
-			3,
-			2
+			3u,
+			2u
 		),
 		42
 	);
@@ -89,8 +89,8 @@ init()
 	// Initialize using a function
 	int2d_grid const init_function(
 		int2d_grid::dim(
-			3,
-			2
+			3u,
+			2u
 		),
 		[](
 			int2d_grid::pos const _pos
@@ -111,16 +111,16 @@ init()
 	// Don't initialize the grid
 	int2d_grid uninit(
 		int2d_grid::dim(
-			3,
-			4
+			3u,
+			4U
 		),
 		fcppt::no_init{}
 	);
 
 	uninit[
 		int2d_grid::pos(
-			3,
-			2
+			3u,
+			2u
 		)
 	] =
 		10;

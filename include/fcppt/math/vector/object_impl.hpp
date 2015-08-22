@@ -15,9 +15,7 @@
 #include <fcppt/math/detail/default_storage.hpp>
 #include <fcppt/math/detail/index_at.hpp>
 #include <fcppt/math/detail/make_op_def.hpp>
-#include <fcppt/math/detail/make_variadic_constructor.hpp>
 #include <fcppt/math/detail/null_storage.hpp>
-#include <fcppt/math/vector/max_ctor_params.hpp>
 #include <fcppt/math/vector/object_decl.hpp>
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
@@ -77,6 +75,36 @@ template<
 	typename N,
 	typename S
 >
+template<
+	typename ...Args
+>
+fcppt::math::vector::object<
+	T,
+	N,
+	S
+>::object(
+	Args const &..._args
+)
+:
+	storage_{{
+		_args...
+	}}
+{
+	static_assert(
+		sizeof...(
+			Args
+		)
+		==
+		N::value,
+		"Wrong number of parameters"
+	);
+}
+
+template<
+	typename T,
+	typename N,
+	typename S
+>
 fcppt::math::vector::object<
 	T,
 	N,
@@ -103,12 +131,7 @@ fcppt::math::vector::object<
 >::object(
 	object const &_other
 )
-:
-	storage_(
-		_other.storage_
-	)
-{
-}
+= default;
 
 FCPPT_PP_PUSH_WARNING
 FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
@@ -148,16 +171,6 @@ FCPPT_MATH_DETAIL_ARRAY_ADAPTER_IMPL(
 	(template<typename T, typename N, typename S>),
 	(fcppt::math::vector::object<T, N, S>)
 )
-
-FCPPT_PP_PUSH_WARNING
-FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
-
-FCPPT_MATH_DETAIL_MAKE_VARIADIC_CONSTRUCTOR(
-	FCPPT_MATH_VECTOR_MAX_CTOR_PARAMS,
-	(5, (template<typename T, typename N, typename S> fcppt::math::vector::object<T, N, S>::object))
-)
-
-FCPPT_PP_POP_WARNING
 
 template<
 	typename T,

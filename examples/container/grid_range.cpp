@@ -72,8 +72,8 @@ pos_ref_range()
 
 	uint2_grid const grid(
 		uint2_grid::dim{
-			2,
-			2
+			2u,
+			2u
 		},
 		[](
 			uint2_grid::pos const _pos
@@ -129,8 +129,8 @@ pos_ref_sub_range(
 {
 	uint2_grid const grid(
 		uint2_grid::dim{
-			2,
-			2
+			2u,
+			2u
 		},
 		42u
 	);

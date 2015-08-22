@@ -39,8 +39,8 @@ FCPPT_PP_POP_WARNING
 
 	int2_grid const grid(
 		int2_grid::dim(
-			2,
-			2
+			2u,
+			2u
 		),
 		fcppt::no_init{}
 	);
@@ -55,8 +55,8 @@ FCPPT_PP_POP_WARNING
 			it++
 		),
 		pos(
-			0,
-			0
+			0u,
+			0u
 		)
 	);
 
@@ -66,8 +66,8 @@ FCPPT_PP_POP_WARNING
 			it++
 		),
 		pos(
-			1,
-			0
+			1u,
+			0u
 		)
 	);
 
@@ -77,8 +77,8 @@ FCPPT_PP_POP_WARNING
 			it++
 		),
 		pos(
-			0,
-			1
+			0u,
+			1u
 		)
 	);
 
@@ -88,8 +88,8 @@ FCPPT_PP_POP_WARNING
 			it++
 		),
 		pos(
-			1,
-			1
+			1u,
+			1u
 		)
 	);
 }

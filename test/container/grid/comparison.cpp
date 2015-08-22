@@ -32,16 +32,16 @@ FCPPT_PP_POP_WARNING
 
 	int2_grid const test1(
 		int2_grid::dim(
-			5,
-			10
+			5u,
+			10u
 		),
 		0
 	);
 
 	int2_grid test2(
 		int2_grid::dim(
-			10,
-			2
+			10u,
+			2u
 		),
 		0
 	);

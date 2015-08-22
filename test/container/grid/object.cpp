@@ -81,8 +81,8 @@ FCPPT_PP_POP_WARNING
 
 	int2_grid const test(
 		int2_grid::dim(
-			10,
-			20
+			10u,
+			20u
 		),
 		42
 	);
@@ -108,8 +108,8 @@ FCPPT_PP_POP_WARNING
 
 	int2_grid test(
 		int2_grid::dim(
-			5,
-			10
+			5u,
+			10u
 		),
 		fcppt::no_init{}
 	);
@@ -174,9 +174,9 @@ FCPPT_PP_POP_WARNING
 
 	int3_grid test(
 		int3_grid::dim(
-			5,
-			10,
-			8
+			5u,
+			10u,
+			8u
 		),
 		fcppt::no_init{}
 	);
@@ -244,8 +244,8 @@ FCPPT_PP_POP_WARNING
 
 	int2_grid const test(
 		int2_grid::dim(
-			5,
-			2
+			5u,
+			2u
 		),
 		42
 	);
@@ -271,8 +271,8 @@ FCPPT_PP_POP_WARNING
 
 	int2_grid const test(
 		int2_grid::dim(
-			3,
-			2
+			3u,
+			2u
 		),
 		fcppt::no_init{}
 	);
@@ -301,8 +301,8 @@ FCPPT_PP_POP_WARNING
 
 	grid2_nonpod const test(
 		grid2_nonpod::dim(
-			5,
-			3
+			5u,
+			3u
 		),
 		nonpod()
 	);
@@ -329,16 +329,16 @@ FCPPT_PP_POP_WARNING
 
 	int2_grid test(
 		int2_grid::dim(
-			10,
-			5
+			10u,
+			5u
 		),
 		fcppt::no_init{}
 	);
 
 	test.resize(
 		int2_grid::dim(
-			5,
-			3
+			5u,
+			3u
 		),
 		fcppt::no_init{}
 	);
@@ -346,8 +346,8 @@ FCPPT_PP_POP_WARNING
 	BOOST_CHECK_EQUAL(
 		test.size(),
 		int2_grid::dim(
-			5,
-			3
+			5u,
+			3u
 		)
 	);
 
@@ -373,23 +373,23 @@ FCPPT_PP_POP_WARNING
 
 	int2_grid grid1(
 		int2_grid::dim(
-			2,
-			3
+			2u,
+			3u
 		),
 		fcppt::no_init{}
 	);
 
 	grid1[
 		int2_grid::pos(
-			0,
-			0
+			0u,
+			0u
 		)
 	] = 1;
 
 	grid1[
 		int2_grid::pos(
-			1,
-			1
+			1u,
+			1u
 		)
 	] = 2;
 
@@ -403,16 +403,16 @@ FCPPT_PP_POP_WARNING
 		grid2.size()
 		==
 		int2_grid::dim(
-			2,
-			3
+			2u,
+			3u
 		)
 	);
 
 	BOOST_CHECK(
 		grid2[
 			int2_grid::pos(
-				0,
-				0
+				0u,
+				0u
 			)
 		] == 1
 	);
@@ -420,8 +420,8 @@ FCPPT_PP_POP_WARNING
 	BOOST_CHECK(
 		grid2[
 			int2_grid::pos(
-				1,
-				1
+				1u,
+				1u
 			)
 		] == 2
 	);
@@ -443,16 +443,16 @@ FCPPT_PP_POP_WARNING
 		grid3.size()
 		==
 		int2_grid::dim(
-			2,
-			3
+			2u,
+			3u
 		)
 	);
 
 	BOOST_CHECK(
 		grid3[
 			int2_grid::pos(
-				0,
-				0
+				0u,
+				0u
 			)
 		] == 1
 	);
@@ -460,8 +460,8 @@ FCPPT_PP_POP_WARNING
 	BOOST_CHECK(
 		grid3[
 			int2_grid::pos(
-				1,
-				1
+				1u,
+				1u
 			)
 		] == 2
 	);
@@ -483,8 +483,8 @@ BOOST_AUTO_TEST_CASE(
 FCPPT_PP_POP_WARNING
 	int2_grid const grid(
 		int2_grid::dim(
-			2,
-			3
+			2u,
+			3u
 		),
 		[](
 			int2_grid::pos const _pos
@@ -520,8 +520,8 @@ FCPPT_PP_POP_WARNING
 	BOOST_CHECK_EQUAL(
 		grid[
 			pos(
-				0,
-				0
+				0u,
+				0u
 			)
 		],
 		0
@@ -530,8 +530,8 @@ FCPPT_PP_POP_WARNING
 	BOOST_CHECK_EQUAL(
 		grid[
 			pos(
-				1,
-				2
+				1u,
+				2u
 			)
 		],
 		2

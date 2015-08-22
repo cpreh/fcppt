@@ -32,8 +32,8 @@ FCPPT_PP_POP_WARNING
 
 	int2_grid const test(
 		int2_grid::dim(
-			3,
-			4
+			3u,
+			4u
 		),
 		0
 	);
@@ -46,8 +46,8 @@ FCPPT_PP_POP_WARNING
 		fcppt::container::grid::in_range(
 			test,
 			pos(
-				2,
-				2
+				2u,
+				2u
 			)
 		)
 	);
@@ -56,8 +56,8 @@ FCPPT_PP_POP_WARNING
 		!fcppt::container::grid::in_range(
 			test,
 			pos(
-				3,
-				2
+				3u,
+				2u
 			)
 		)
 	);
@@ -66,8 +66,8 @@ FCPPT_PP_POP_WARNING
 		!fcppt::container::grid::in_range(
 			test,
 			pos(
-				2,
-				4
+				2u,
+				4U
 			)
 		)
 	);

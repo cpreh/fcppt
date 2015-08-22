@@ -51,8 +51,8 @@ FCPPT_PP_POP_WARNING
 			},
 			sup{
 				pos(
-					3,
-					2
+					3u,
+					2u
 				)
 			}
 		).size(),
@@ -63,14 +63,14 @@ FCPPT_PP_POP_WARNING
 		fcppt::container::grid::make_pos_range_start_end(
 			min{
 				pos(
-					3,
-					2
+					3u,
+					2u
 				)
 			},
 			sup{
 				pos(
-					3,
-					1
+					3u,
+					1u
 				)
 			}
 		).size(),

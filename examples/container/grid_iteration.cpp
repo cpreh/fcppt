@@ -37,13 +37,13 @@ int
 main()
 {
 	int1d_grid one_dimensional(
-		int1d_grid::dim(3),
+		int1d_grid::dim(3u),
 		fcppt::no_init{}
 	);
 
-	one_dimensional[int1d_grid::pos(0)] = 0;
-	one_dimensional[int1d_grid::pos(1)] = 1;
-	one_dimensional[int1d_grid::pos(2)] = 2;
+	one_dimensional[int1d_grid::pos(0u)] = 0;
+	one_dimensional[int1d_grid::pos(1u)] = 1;
+	one_dimensional[int1d_grid::pos(2u)] = 2;
 
 	// Outputs 0, 1, 2
 	for(
@@ -56,16 +56,16 @@ main()
 	fcppt::io::cout() << FCPPT_TEXT('\n');
 
 	int2d_grid two_dimensional(
-		int2d_grid::dim(3,2),
+		int2d_grid::dim(3u,2u),
 		fcppt::no_init{}
 	);
 
-	two_dimensional[int2d_grid::pos(0,0)] = 0;
-	two_dimensional[int2d_grid::pos(1,0)] = 1;
-	two_dimensional[int2d_grid::pos(2,0)] = 2;
-	two_dimensional[int2d_grid::pos(0,1)] = 3;
-	two_dimensional[int2d_grid::pos(1,1)] = 4;
-	two_dimensional[int2d_grid::pos(2,1)] = 5;
+	two_dimensional[int2d_grid::pos(0u,0u)] = 0;
+	two_dimensional[int2d_grid::pos(1u,0u)] = 1;
+	two_dimensional[int2d_grid::pos(2u,0u)] = 2;
+	two_dimensional[int2d_grid::pos(0u,1u)] = 3;
+	two_dimensional[int2d_grid::pos(1u,1u)] = 4;
+	two_dimensional[int2d_grid::pos(2u,1u)] = 5;
 
 	// Outputs 0, 1, 2, 3, 4, 5
 	for(
