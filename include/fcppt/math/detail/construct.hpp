@@ -22,6 +22,7 @@ template<
 	typename Dest,
 	typename Src
 >
+inline
 Dest
 construct(
 	Src const &_src,

@@ -16,7 +16,6 @@
 #include <fcppt/math/detail/make_variadic_constructor_decl.hpp>
 #include <fcppt/math/vector/max_ctor_params.hpp>
 #include <fcppt/math/vector/object_fwd.hpp>
-#include <fcppt/type_traits/is_iterator.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <iterator>
 #include <type_traits>
@@ -153,25 +152,6 @@ public:
 			N,
 			OtherStorage
 		> const &
-	);
-
-	/**
-	\brief Create a vector and fill it with the contents of the given range
-	\tparam In A forward iterator pointing to elements of type <code>T</code>
-	\param beg The beginning of the range
-	\param end One past the end of the range
-	*/
-	template<
-		typename In
-	>
-	object(
-		In beg,
-		typename std::enable_if<
-			fcppt::type_traits::is_iterator<
-				In
-			>::value,
-			In
-		>::type end
 	);
 
 	FCPPT_MATH_DETAIL_ARRAY_ADAPTER(

@@ -20,7 +20,6 @@
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
-#include <fcppt/type_traits/is_iterator.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <algorithm>
 #include <type_traits>
@@ -127,38 +126,6 @@ fcppt::math::matrix::object<
 	);
 }
 
-template<
-	typename T,
-	typename N,
-	typename M,
-	typename S
->
-template<
-	typename In
->
-fcppt::math::matrix::object<
-	T,
-	N,
-	M,
-	S
->::object(
-	In const _begin,
-	typename std::enable_if<
-		fcppt::type_traits::is_iterator<
-			In
-		>::value,
-		In
-	>::type const _end
-)
-// Don't initialize storage_()
-{
-	std::copy(
-		_begin,
-		_end,
-		this->begin()
-	);
-}
-
 FCPPT_PP_POP_WARNING
 
 FCPPT_MATH_DETAIL_ARRAY_ADAPTER_IMPL(
@@ -195,13 +162,9 @@ fcppt::math::matrix::object<
 	M,
 	S
 >::operator=(
-	object const &_other
+	object const &
 )
-{
-	storage_ = _other.storage_;
-
-	return *this;
-}
+= default;
 
 template<
 	typename T,
@@ -276,17 +239,31 @@ template<
 	typename M,
 	typename S
 >
-fcppt::math::matrix::object<T, N, M, S> &
-fcppt::math::matrix::object<T, N, M, S>::operator*=(
+fcppt::math::matrix::object<
+	T,
+	N,
+	M,
+	S
+> &
+fcppt::math::matrix::object<
+	T,
+	N,
+	M,
+	S
+>::operator*=(
 	value_type const &_value
 )
 {
 	for(
-		auto &item : *this
+		auto &item
+		:
+		*this
 	)
-		item *= _value;
+		item *=
+			_value;
 
-	return *this;
+	return
+		*this;
 }
 
 template<
@@ -295,17 +272,31 @@ template<
 	typename M,
 	typename S
 >
-fcppt::math::matrix::object<T, N, M, S> &
-fcppt::math::matrix::object<T, N, M, S>::operator/=(
+fcppt::math::matrix::object<
+	T,
+	N,
+	M,
+	S
+> &
+fcppt::math::matrix::object<
+	T,
+	N,
+	M,
+	S
+>::operator/=(
 	value_type const &_value
 )
 {
 	for(
-		auto &item : *this
+		auto &item
+		:
+		*this
 	)
-		item /= _value;
+		item /=
+			_value;
 
-	return *this;
+	return
+		*this;
 }
 
 template<

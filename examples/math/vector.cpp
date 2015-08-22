@@ -79,15 +79,9 @@ init()
 		0.1f,
 		0.2f
 	);
-
-	// undefined if the size of v2 isn't 2
-	vector2f const v3(
-		v2.begin(),
-		v2.end()
-	);
 // ![init]
 
-	std::cout << v1 << ' ' << v2 << ' ' << v3 << '\n';
+	std::cout << v1 << ' ' << v2 << '\n';
 }
 
 void

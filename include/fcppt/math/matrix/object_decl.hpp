@@ -17,7 +17,6 @@
 #include <fcppt/math/matrix/static_storage.hpp>
 #include <fcppt/math/matrix/detail/row_view_fwd.hpp>
 #include <fcppt/math/vector/object_decl.hpp>
-#include <fcppt/type_traits/is_iterator.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/mpl/times.hpp>
 #include <iterator>
@@ -211,25 +210,6 @@ public:
 			M,
 			OtherStorage
 		> const &
-	);
-
-	/**
-	\brief Create a matrix and fill it with the contents of the given range
-	\tparam In A forward iterator pointing to elements of type <code>T</code>
-	\param beg The beginning of the range
-	\param end One past the end of the range
-	*/
-	template<
-		typename In
-	>
-	object(
-		In beg,
-		typename std::enable_if<
-			fcppt::type_traits::is_iterator<
-				In
-			>::value,
-			In
-		>::type end
 	);
 
 	FCPPT_MATH_DETAIL_ARRAY_ADAPTER(

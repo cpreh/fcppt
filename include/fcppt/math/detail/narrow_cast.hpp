@@ -7,6 +7,7 @@
 #ifndef FCPPT_MATH_DETAIL_NARROW_CAST_HPP_INCLUDED
 #define FCPPT_MATH_DETAIL_NARROW_CAST_HPP_INCLUDED
 
+#include <fcppt/math/detail/init.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/mpl/less.hpp>
 #include <type_traits>
@@ -24,6 +25,7 @@ template<
 	typename T,
 	typename U
 >
+inline
 T
 narrow_cast(
 	U const &_other
@@ -46,11 +48,20 @@ narrow_cast(
 	);
 
 	return
-		T(
-			_other.begin(),
-			_other.begin()
-			+
-			T::dim_wrapper::value
+		fcppt::math::detail::init<
+			T
+		>(
+			[
+				&_other
+			](
+				typename T::size_type const _index
+			)
+			{
+				return
+					_other[
+						_index
+					];
+			}
 		);
 }
 

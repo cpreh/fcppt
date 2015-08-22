@@ -23,7 +23,6 @@
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
-#include <fcppt/type_traits/is_iterator.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <algorithm>
 #include <functional>
@@ -144,36 +143,6 @@ fcppt::math::dim::object<
 	);
 }
 
-template<
-	typename T,
-	typename N,
-	typename S
->
-template<
-	typename In
->
-fcppt::math::dim::object<
-	T,
-	N,
-	S
->::object(
-	In const _begin,
-	typename std::enable_if<
-		fcppt::type_traits::is_iterator<
-			In
-		>::value,
-		In
-	>::type const _end
-)
-// Don't initialize storage_
-{
-	std::copy(
-		_begin,
-		_end,
-		this->begin()
-	);
-}
-
 FCPPT_PP_POP_WARNING
 
 FCPPT_MATH_DETAIL_ARRAY_ADAPTER_IMPL(
@@ -207,13 +176,9 @@ fcppt::math::dim::object<
 	N,
 	S
 >::operator=(
-	object const &_other
+	object const &
 )
-{
-	storage_ = _other.storage_;
-
-	return *this;
-}
+= default;
 
 template<
 	typename T,

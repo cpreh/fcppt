@@ -7,6 +7,8 @@
 #ifndef FCPPT_MATH_DETAIL_TO_DIFFERENT_HPP_INCLUDED
 #define FCPPT_MATH_DETAIL_TO_DIFFERENT_HPP_INCLUDED
 
+#include <fcppt/math/detail/init.hpp>
+
 
 namespace fcppt
 {
@@ -33,9 +35,20 @@ to_different(
 	);
 
 	return
-		Dest(
-			_source.begin(),
-			_source.end()
+		fcppt::math::detail::init<
+			Dest
+		>(
+			[
+				&_source
+			](
+				typename Dest::size_type const _index
+			)
+			{
+				return
+					_source[
+						_index
+					];
+			}
 		);
 }
 
