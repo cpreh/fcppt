@@ -13,10 +13,6 @@
 #include <fcppt/math/static_storage.hpp>
 #include <fcppt/math/detail/make_op_decl.hpp>
 #include <fcppt/math/dim/object_fwd.hpp>
-#include <fcppt/config/external_begin.hpp>
-#include <iterator>
-#include <type_traits>
-#include <fcppt/config/external_end.hpp>
 
 
 namespace fcppt
@@ -46,58 +42,57 @@ public:
 	/**
 	\brief A typedef for the \p N parameter
 	*/
-	typedef N dim_wrapper;
+	typedef
+	N
+	dim_wrapper;
 
-	typedef N static_size;
+	typedef
+	N
+	static_size;
+
 	/**
 	\brief A typedef for the \p S parameter
 	*/
-	typedef S storage_type;
+	typedef
+	S
+	storage_type;
 
 	/**
 	\brief A type that counts the number of elements in a dim.
 	*/
-	typedef fcppt::math::size_type size_type;
+	typedef
+	fcppt::math::size_type
+	size_type;
+
 	/**
 	\brief A type that provides the difference between the addresses of two elements in a dim.
 	*/
-	typedef fcppt::math::difference_type difference_type;
+	typedef
+	fcppt::math::difference_type
+	difference_type;
+
 	/**
 	\brief A type that represents the data type stored in a dim.
 	*/
-	typedef T value_type;
+	typedef
+	T
+	value_type;
+
 	/**
 	\brief A type that provides a reference to an element stored in a dim.
 	*/
-	typedef typename storage_type::reference reference;
+	typedef
+	typename
+	storage_type::reference
+	reference;
+
 	/**
 	\brief A type that provides a reference to a <code>const</code> element stored in a dim for reading and performing <code>const</code> operations.
 	*/
-	typedef typename storage_type::const_reference const_reference;
-	/**
-	\brief A type that provides a pointer to an element in a dim.
-	*/
-	typedef typename storage_type::pointer pointer;
-	/**
-	\brief A type that provides a pointer to a <code>const</code> element in a dim.
-	*/
-	typedef typename storage_type::const_pointer const_pointer;
-	/**
-	\brief A type that provides a random-access iterator that can read or modify any element in a dim.
-	*/
-	typedef typename storage_type::iterator iterator;
-	/**
-	\brief A type that provides a random-access iterator that can read a <code>const</code> element in a dim.
-	*/
-	typedef typename storage_type::const_iterator const_iterator;
-	/**
-	\brief A type that provides a random-access iterator that can read or modify any element in a reversed dim.
-	*/
-	typedef std::reverse_iterator<iterator> reverse_iterator;
-	/**
-	\brief A type that provides a random-access iterator that can read any <code>const</code> element in the dim.
-	*/
-	typedef std::reverse_iterator<const_iterator> const_reverse_iterator;
+	typedef
+	typename
+	storage_type::const_reference
+	const_reference;
 
 	/**
 	\brief Calls the default constructor for every element
@@ -294,33 +289,11 @@ FCPPT_MATH_DETAIL_MAKE_OP_DECL(\
 	> const
 	null();
 
-	/**
-	\brief Exchanges the elements of two dims.
-	*/
-	void
-	swap(
-		object &
-	);
-
 	S const &
 	storage() const;
 private:
 	S storage_;
 };
-
-/**
-\brief Exchanges the elements of two dims.
-*/
-template<
-	typename T,
-	typename N,
-	typename S
->
-void
-swap(
-	object<T, N, S> &,
-	object<T, N, S> &
-);
 
 }
 }

@@ -21,7 +21,6 @@
 #include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <algorithm>
-#include <utility>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -593,26 +592,6 @@ template<
 	typename N,
 	typename S
 >
-void
-fcppt::math::vector::object<
-	T,
-	N,
-	S
->::swap(
-	object &_other
-)
-{
-	std::swap(
-		storage_,
-		_other.storage_
-	);
-}
-
-template<
-	typename T,
-	typename N,
-	typename S
->
 S const &
 fcppt::math::vector::object<
 	T,
@@ -622,30 +601,6 @@ fcppt::math::vector::object<
 {
 	return
 		storage_;
-}
-
-template<
-	typename T,
-	typename N,
-	typename S
->
-void
-fcppt::math::vector::swap(
-	fcppt::math::vector::object<
-		T,
-		N,
-		S
-	> &_a,
-	fcppt::math::vector::object<
-		T,
-		N,
-		S
-	> &_b
-)
-{
-	_a.swap(
-		_b
-	);
 }
 
 #endif

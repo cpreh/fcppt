@@ -813,7 +813,8 @@ fcppt::container::grid::object<
 		_other.container_
 	);
 
-	size_.swap(
+	std::swap(
+		size_,
 		_other.size_
 	);
 }

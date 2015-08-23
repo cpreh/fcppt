@@ -320,41 +320,11 @@ FCPPT_MATH_DETAIL_MAKE_OP_DECL(\
 	const_reference
 	w() const;
 
-	/**
-	\brief Exchanges the elements of two vectors.
-	*/
-	void
-	swap(
-		object &
-	);
-
 	S const &
 	storage() const;
 private:
 	S storage_;
 };
-
-/**
-\brief Exchanges the elements of two vectors.
-*/
-template<
-	typename T,
-	typename N,
-	typename S
->
-void
-swap(
-	fcppt::math::vector::object<
-		T,
-		N,
-		S
-	> &,
-	fcppt::math::vector::object<
-		T,
-		N,
-		S
-	> &
-);
 
 }
 }

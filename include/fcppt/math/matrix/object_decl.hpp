@@ -310,44 +310,11 @@ FCPPT_MATH_DETAIL_MAKE_OP_DECL(\
 	> const
 	identity();
 
-	/**
-	\brief Exchanges the elements of two matrices.
-	*/
-	void
-	swap(
-		object &
-	);
-
 	S const &
 	storage() const;
 private:
 	S storage_;
 };
-
-/**
-\brief Exchanges the elements of two matrices.
-*/
-template<
-	typename T,
-	typename N,
-	typename M,
-	typename S
->
-void
-swap(
-	fcppt::math::matrix::object<
-		T,
-		N,
-		M,
-		S
-	> &,
-	fcppt::math::matrix::object<
-		T,
-		N,
-		M,
-		S
-	> &
-);
 
 }
 }
