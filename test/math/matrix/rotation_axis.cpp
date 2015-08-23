@@ -6,6 +6,7 @@
 
 #include <fcppt/math/pi.hpp>
 #include <fcppt/math/matrix/componentwise_equal.hpp>
+#include <fcppt/math/matrix/identity.hpp>
 #include <fcppt/math/matrix/output.hpp>
 #include <fcppt/math/matrix/rotation_axis.hpp>
 #include <fcppt/math/matrix/rotation_x.hpp>
@@ -110,7 +111,11 @@ FCPPT_PP_POP_WARNING
 					0.f,
 					0.f,
 					0.f)),
-			matrix_type::identity())));
+			fcppt::math::matrix::identity<
+				matrix_type
+			>()
+		)
+	));
 
 	float const angle =
 		fcppt::math::pi<float>()/2.0f;

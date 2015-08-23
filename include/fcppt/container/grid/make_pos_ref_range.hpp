@@ -12,6 +12,7 @@
 #include <fcppt/container/grid/pos_ref_range_impl.hpp>
 #include <fcppt/container/grid/sup_from_pos.hpp>
 #include <fcppt/math/dim/to_vector.hpp>
+#include <fcppt/math/vector/null.hpp>
 
 
 namespace fcppt
@@ -37,18 +38,23 @@ make_pos_ref_range(
 	Grid &_grid
 )
 {
+	typedef
+	typename
+	Grid::pos
+	pos;
+
 	return
 		fcppt::container::grid::make_pos_ref_range_start_end(
 			_grid,
 			fcppt::container::grid::min_from_pos<
-				typename
-				Grid::pos
+				pos
 			>(
-				Grid::pos::null()
+				fcppt::math::vector::null<
+					pos
+				>()
 			),
 			fcppt::container::grid::sup_from_pos<
-				typename
-				Grid::pos
+				pos
 			>(
 				fcppt::math::dim::to_vector(
 					_grid.size()

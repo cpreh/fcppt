@@ -6,7 +6,9 @@
 
 #include <fcppt/math/box/comparison.hpp>
 #include <fcppt/math/box/intersection.hpp>
+#include <fcppt/math/box/null.hpp>
 #include <fcppt/math/box/object_impl.hpp>
+#include <fcppt/math/box/output.hpp>
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
@@ -89,27 +91,31 @@ FCPPT_PP_POP_WARNING
 			)
 		);
 
-	BOOST_CHECK(
-		intersection1
-		== box1
+	BOOST_CHECK_EQUAL(
+		intersection1,
+		box1
 	);
 
-	BOOST_CHECK(
-		intersection2
-		== box_i2(
-			box_i2::vector(
-				2,
-				2
-			),
-			box_i2::dim(
-				1,
-				1
-			)
+	box_i2 const result2(
+		box_i2::vector(
+			2,
+			2
+		),
+		box_i2::dim(
+			1,
+			1
 		)
 	);
 
-	BOOST_CHECK(
-		intersection3
-		== box_i2::null()
+	BOOST_CHECK_EQUAL(
+		intersection2,
+		result2
+	);
+
+	BOOST_CHECK_EQUAL(
+		intersection3,
+		fcppt::math::box::null<
+			box_i2
+		>()
 	);
 }

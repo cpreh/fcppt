@@ -1,0 +1,65 @@
+//          Copyright Carl Philipp Reh 2009 - 2015.
+// Distributed under the Boost Software License, Version 1.0.
+//    (See accompanying file LICENSE_1_0.txt or copy at
+//          http://www.boost.org/LICENSE_1_0.txt)
+
+
+#ifndef FCPPT_MATH_VECTOR_NULL_HPP_INCLUDED
+#define FCPPT_MATH_VECTOR_NULL_HPP_INCLUDED
+
+#include <fcppt/math/detail/null_storage.hpp>
+#include <fcppt/math/vector/is_vector.hpp>
+#include <fcppt/math/vector/static.hpp>
+
+
+namespace fcppt
+{
+namespace math
+{
+namespace vector
+{
+
+/**
+\brief Returns the null vector
+
+\ingroup fcpptmathvector
+*/
+template<
+	typename Vector
+>
+fcppt::math::vector::static_<
+	typename
+	Vector::value_type,
+	Vector::static_size::value
+>
+null()
+{
+	static_assert(
+		fcppt::math::vector::is_vector<
+			Vector
+		>::value,
+		"Vector must be a vector"
+	);
+
+	typedef
+	fcppt::math::vector::static_<
+		typename
+		Vector::value_type,
+		Vector::static_size::value
+	>
+	result_type;
+
+	return
+		result_type(
+			fcppt::math::detail::null_storage<
+				typename
+				result_type::storage_type
+			>()
+		);
+}
+
+}
+}
+}
+
+#endif

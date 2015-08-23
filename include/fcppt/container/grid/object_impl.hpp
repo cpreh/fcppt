@@ -20,6 +20,7 @@
 #include <fcppt/container/grid/detail/resize.hpp>
 #include <fcppt/container/grid/detail/shrink_to_fit.hpp>
 #include <fcppt/math/dim/contents.hpp>
+#include <fcppt/math/dim/null.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <type_traits>
 #include <utility>
@@ -39,7 +40,9 @@ fcppt::container::grid::object<
 :
 	container_(),
 	size_(
-		dim::null()
+		fcppt::math::dim::null<
+			dim
+		>()
 	)
 {
 }

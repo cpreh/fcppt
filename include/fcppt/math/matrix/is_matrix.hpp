@@ -31,26 +31,23 @@ FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
 \ingroup fcpptmathmatrix
 \tparam T The type to test against
 */
-template
-<
+template<
 	typename T
 >
 struct is_matrix
 :
-	std::false_type
+std::false_type
 {
 };
 
 /// \cond FCPPT_DOXYGEN_DEBUG
-template
-<
+template<
 	typename T,
 	typename N,
 	typename M,
 	typename S
 >
-struct is_matrix
-<
+struct is_matrix<
 	fcppt::math::matrix::object<
 		T,
 		N,
@@ -59,7 +56,7 @@ struct is_matrix
 	>
 >
 :
-	std::true_type
+std::true_type
 {
 };
 /// \endcond

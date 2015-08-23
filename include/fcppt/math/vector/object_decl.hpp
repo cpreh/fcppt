@@ -10,7 +10,6 @@
 #include <fcppt/no_init_fwd.hpp>
 #include <fcppt/math/difference_type.hpp>
 #include <fcppt/math/size_type.hpp>
-#include <fcppt/math/static_storage.hpp>
 #include <fcppt/math/detail/make_op_decl.hpp>
 #include <fcppt/math/vector/object_fwd.hpp>
 
@@ -239,20 +238,6 @@ FCPPT_MATH_DETAIL_MAKE_OP_DECL(\
 	operator[](
 		size_type
 	);
-
-	/**
-	\brief Returns the vector filled with all zeroes
-	*/
-	static
-	fcppt::math::vector::object<
-		T,
-		N,
-		fcppt::math::static_storage<
-			T,
-			N
-		>
-	> const
-	null();
 
 	/**
 	\brief Returns a reference to the first element in the vector

@@ -5,6 +5,7 @@
 
 
 #include <fcppt/math/vector/comparison.hpp>
+#include <fcppt/math/vector/null.hpp>
 #include <fcppt/math/vector/output.hpp>
 #include <fcppt/math/vector/static.hpp>
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
@@ -32,7 +33,9 @@ FCPPT_PP_POP_WARNING
 	ui2_vector;
 
 	BOOST_CHECK_EQUAL(
-		ui2_vector::null(),
+		fcppt::math::vector::null<
+			ui2_vector
+		>(),
 		ui2_vector(
 			0u,
 			0u

@@ -11,6 +11,7 @@
 #include <fcppt/literal.hpp>
 #include <fcppt/cast/int_to_float.hpp>
 #include <fcppt/math/matrix/arithmetic.hpp>
+#include <fcppt/math/matrix/identity.hpp>
 #include <fcppt/math/matrix/infinity_norm.hpp>
 #include <fcppt/math/matrix/object_impl.hpp>
 #include <fcppt/math/matrix/sqrt.hpp>
@@ -36,7 +37,7 @@ template
 	typename DN,
 	typename S
 >
-fcppt::math::matrix::object<T,DN,DN,S> const
+fcppt::math::matrix::object<T,DN,DN,S>
 logarithm(
 	fcppt::math::matrix::object<T,DN,DN,S> A,
 	T const e1,
@@ -59,7 +60,17 @@ logarithm(
 	matrix_size_type k =
 		0u;
 
-	while(fcppt::math::matrix::infinity_norm(A - matrix_type::identity()) > e1)
+	while(
+		fcppt::math::matrix::infinity_norm(
+			A
+			-
+			fcppt::math::matrix::identity<
+				matrix_type
+			>()
+		)
+		>
+		e1
+	)
 	{
 		A =
 			fcppt::math::matrix::sqrt(
@@ -69,7 +80,9 @@ logarithm(
 	}
 
 	A -=
-		matrix_type::identity();
+		fcppt::math::matrix::identity<
+			matrix_type
+		>();
 
 	matrix_type
 		Z =

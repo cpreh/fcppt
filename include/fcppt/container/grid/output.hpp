@@ -10,6 +10,7 @@
 #include <fcppt/container/grid/object_impl.hpp>
 #include <fcppt/container/grid/size_type.hpp>
 #include <fcppt/container/grid/detail/print_recurse.hpp>
+#include <fcppt/math/vector/null.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <iosfwd>
 #include <fcppt/config/external_end.hpp>
@@ -68,14 +69,18 @@ operator<<(
 		T,
 		N,
 		A
-	> object;
+	>
+	object;
 
 	fcppt::container::grid::detail::print_recurse<
 		N
 	>(
 		_stream,
 		_object,
-		object::pos::null()
+		fcppt::math::vector::null<
+			typename
+			object::pos
+		>()
 	);
 
 	return

@@ -5,6 +5,7 @@
 
 
 #include <fcppt/math/matrix/determinant.hpp>
+#include <fcppt/math/matrix/identity.hpp>
 #include <fcppt/math/matrix/static.hpp>
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
@@ -13,10 +14,13 @@
 #include <boost/test/unit_test.hpp>
 #include <fcppt/config/external_end.hpp>
 
+
 FCPPT_PP_PUSH_WARNING
 FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
 
-BOOST_AUTO_TEST_CASE(determinant)
+BOOST_AUTO_TEST_CASE(
+	math_matrix_determinant
+)
 {
 FCPPT_PP_POP_WARNING
 
@@ -36,20 +40,33 @@ FCPPT_PP_POP_WARNING
 	>
 	small_matrix_type;
 
-	BOOST_CHECK((
+	BOOST_CHECK_EQUAL(
 		fcppt::math::matrix::determinant(
 			large_matrix_type(
 				1,2,3,
 				4,5,6,
-				7,8,9)) == 0));
+				7,8,9
+			)
+		),
+		0
+	);
 
-	BOOST_CHECK((
+	BOOST_CHECK_EQUAL(
 		fcppt::math::matrix::determinant(
 			small_matrix_type(
 				-3,-5,
-				-1,-2)) == 1));
+				-1,-2
+			)
+		),
+		1
+	);
 
-	BOOST_CHECK(
+	BOOST_CHECK_EQUAL(
 		fcppt::math::matrix::determinant(
-			large_matrix_type::identity()) == 1);
+			fcppt::math::matrix::identity<
+				large_matrix_type
+			>()
+		),
+		1
+	);
 }

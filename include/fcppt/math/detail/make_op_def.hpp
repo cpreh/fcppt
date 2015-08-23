@@ -13,6 +13,7 @@
 #include <boost/preprocessor/tuple/rem.hpp>
 #include <fcppt/config/external_end.hpp>
 
+// TODO: Get rid of the size() call here
 
 #define FCPPT_MATH_DETAIL_MAKE_OP_DEF(\
 	class_arity,\

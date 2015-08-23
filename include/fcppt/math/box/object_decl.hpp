@@ -76,6 +76,7 @@ public:
 		N
 	> dim;
 
+	// TODO: Remove this
 	/**
 	\brief Calls the default constructor for every element
 	*/
@@ -104,19 +105,6 @@ public:
 	);
 
 	/**
-	\brief Return a box at the origin with no exents
-	*/
-	static
-	object const
-	null();
-
-	/**
-	\brief Return the box's area (or volume or "content", generally speaking)
-	*/
-	value_type
-	content() const;
-
-	/**
 	\brief Return the box's width
 	*/
 	value_type
@@ -137,7 +125,7 @@ public:
 	/**
 	\brief Return the box's position
 	*/
-	vector const
+	vector
 	pos() const;
 
 	/**
@@ -147,13 +135,13 @@ public:
 	"top left" of the box, this would denote the "bottom right". Box,
 	however, doesn't impose any coordinate system.
 	*/
-	vector const
+	vector
 	max() const;
 
 	/**
 	\brief Return the box's size
 	*/
-	dim const
+	dim
 	size() const;
 
 	/**
@@ -313,25 +301,6 @@ private:
 
 	dim size_;
 };
-
-/**
-\brief Swap the box's representation with another box
-*/
-template<
-	typename T,
-	fcppt::math::size_type N
->
-void
-swap(
-	fcppt::math::box::object<
-		T,
-		N
-	> &,
-	fcppt::math::box::object<
-		T,
-		N
-	> &
-);
 
 }
 }

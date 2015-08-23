@@ -12,7 +12,6 @@
 #include <fcppt/math/size_type.hpp>
 #include <fcppt/math/detail/make_op_decl.hpp>
 #include <fcppt/math/matrix/object_fwd.hpp>
-#include <fcppt/math/matrix/static_storage.hpp>
 #include <fcppt/math/matrix/detail/row_view_fwd.hpp>
 #include <fcppt/math/vector/object_decl.hpp>
 #include <fcppt/config/external_begin.hpp>
@@ -59,14 +58,20 @@ public:
 	/**
 	\brief A typedef for the \p N parameter
 	*/
-	typedef N n_wrapper;
+	typedef
+	N
+	n_wrapper;
 
 	/**
 	\brief A typedef for the \p M parameter
 	*/
-	typedef M m_wrapper;
+	typedef
+	M
+	m_wrapper;
 
-	typedef N static_size;
+	typedef
+	N
+	static_size;
 
 	/**
 	\brief A typedef for the \p M and \p N parameters
@@ -293,22 +298,6 @@ FCPPT_MATH_DETAIL_MAKE_OP_DECL(\
 	static
 	size_type
 	columns();
-
-	/**
-	\brief Returns the identity matrix;
-	*/
-	static
-	fcppt::math::matrix::object<
-		T,
-		N,
-		M,
-		fcppt::math::matrix::static_storage<
-			T,
-			N,
-			M
-		>
-	> const
-	identity();
 
 	S const &
 	storage() const;

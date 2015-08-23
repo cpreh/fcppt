@@ -31,6 +31,7 @@ For other types, <code>abs(a-b)</code> is returned.
 template<
 	typename T
 >
+inline
 T
 diff(
 	T const &_a,

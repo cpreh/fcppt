@@ -8,6 +8,7 @@
 #include <fcppt/container/grid/min_from_pos.hpp>
 #include <fcppt/container/grid/pos.hpp>
 #include <fcppt/container/grid/sup_from_pos.hpp>
+#include <fcppt/math/vector/null.hpp>
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
@@ -47,7 +48,9 @@ FCPPT_PP_POP_WARNING
 	BOOST_CHECK_EQUAL(
 		fcppt::container::grid::make_pos_range_start_end(
 			min{
-				pos::null()
+				fcppt::math::vector::null<
+					pos
+				>()
 			},
 			sup{
 				pos(

@@ -14,6 +14,7 @@
 #include <fcppt/container/grid/pos.hpp>
 #include <fcppt/container/grid/sup_from_pos.hpp>
 #include <fcppt/math/vector/comparison.hpp>
+#include <fcppt/math/vector/null.hpp>
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
@@ -36,11 +37,11 @@ FCPPT_PP_POP_WARNING
 		std::size_t,
 		2
 	>
-	dim;
+	element;
 
 	typedef
 	fcppt::container::grid::object<
-		dim,
+		element,
 		2
 	>
 	dim2_grid;
@@ -99,7 +100,9 @@ FCPPT_PP_POP_WARNING
 				4u,
 				6U
 			),
-			dim::null()
+			fcppt::math::vector::null<
+				element
+			>()
 		);
 
 	for(
@@ -161,10 +164,14 @@ FCPPT_PP_POP_WARNING
 		fcppt::container::grid::make_pos_ref_range_start_end(
 			grid,
 			min{
-				pos::null()
+				fcppt::math::vector::null<
+					pos
+				>()
 			},
 			sup{
-				pos::null()
+				fcppt::math::vector::null<
+					pos
+				>()
 			}
 		)
 	)
@@ -180,7 +187,9 @@ FCPPT_PP_POP_WARNING
 		fcppt::container::grid::make_pos_ref_range_start_end(
 			grid,
 			min{
-				pos::null()
+				fcppt::math::vector::null<
+					pos
+				>()
 			},
 			sup{
 				pos(
@@ -202,7 +211,9 @@ FCPPT_PP_POP_WARNING
 		fcppt::container::grid::make_pos_ref_range_start_end(
 			grid,
 			min{
-				pos::null()
+				fcppt::math::vector::null<
+					pos
+				>()
 			},
 			sup{
 				pos(

@@ -14,7 +14,6 @@
 #include <fcppt/math/detail/default_storage.hpp>
 #include <fcppt/math/detail/index_at.hpp>
 #include <fcppt/math/detail/make_op_def.hpp>
-#include <fcppt/math/detail/null_storage.hpp>
 #include <fcppt/math/vector/object_decl.hpp>
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
@@ -354,36 +353,6 @@ fcppt::math::vector::object<
 		fcppt::math::detail::index_at(
 			storage_.begin(),
 			_index
-		);
-}
-
-template<
-	typename T,
-	typename N,
-	typename S
->
-fcppt::math::vector::object<
-	T,
-	N,
-	fcppt::math::static_storage<
-		T,
-		N
-	>
-> const
-fcppt::math::vector::object<
-	T,
-	N,
-	S
->::null()
-{
-	return
-		object(
-			fcppt::math::detail::null_storage<
-				fcppt::math::static_storage<
-					T,
-					N
-				>
-			>()
 		);
 }
 

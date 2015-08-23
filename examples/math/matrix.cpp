@@ -4,6 +4,7 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
+#include <fcppt/math/matrix/identity.hpp>
 #include <fcppt/math/matrix/output.hpp>
 #include <fcppt/math/matrix/static.hpp>
 #include <fcppt/math/matrix/vector.hpp>
@@ -52,7 +53,9 @@ void
 identity()
 {
 	auto const m(
-		int_matrix_3x3::identity()
+		fcppt::math::matrix::identity<
+			int_matrix_3x3
+		>()
 	);
 
 	std::cout << m << '\n';
@@ -64,7 +67,9 @@ void
 row_iterate()
 {
 	auto const m(
-		int_matrix_3x3::identity()
+		fcppt::math::matrix::identity<
+			int_matrix_3x3
+		>()
 	);
 
 	// Will output: (1,0,0),(0,1,0),(0,0,1),

@@ -14,6 +14,7 @@
 #include <fcppt/container/grid/pos_range_impl.hpp>
 #include <fcppt/container/grid/sup.hpp>
 #include <fcppt/math/dim/to_vector.hpp>
+#include <fcppt/math/vector/null.hpp>
 
 
 namespace fcppt
@@ -52,10 +53,12 @@ make_pos_range(
 				SizeType,
 				Size
 			>(
-				fcppt::container::grid::pos<
-					SizeType,
-					Size
-				>::null()
+				fcppt::math::vector::null<
+					fcppt::container::grid::pos<
+						SizeType,
+						Size
+					>
+				>()
 			),
 			fcppt::container::grid::sup<
 				SizeType,

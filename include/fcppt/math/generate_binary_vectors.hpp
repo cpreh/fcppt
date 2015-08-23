@@ -13,6 +13,7 @@
 #include <fcppt/algorithm/array_init.hpp>
 #include <fcppt/math/size_type.hpp>
 #include <fcppt/math/detail/generate_binary_vectors.hpp>
+#include <fcppt/math/vector/null.hpp>
 #include <fcppt/math/vector/object_impl.hpp>
 #include <fcppt/math/vector/static.hpp>
 #include <fcppt/config/external_begin.hpp>
@@ -106,7 +107,9 @@ generate_binary_vectors()
 		fcppt::algorithm::array_init<
 			result_type
 		>(
-			vector_type::null()
+			fcppt::math::vector::null<
+				vector_type
+			>()
 		)
 	);
 
@@ -119,7 +122,10 @@ generate_binary_vectors()
 		vector_type
 	>(
 		it,
-		vector_type::null());
+		fcppt::math::vector::null<
+			vector_type
+		>()
+	);
 
 	return result;
 }

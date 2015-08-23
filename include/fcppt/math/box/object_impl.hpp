@@ -74,43 +74,6 @@ template<
 	typename T,
 	fcppt::math::size_type N
 >
-fcppt::math::box::object<
-	T,
-	N
-> const
-fcppt::math::box::object<
-	T,
-	N
->::null()
-{
-	return
-		object(
-			vector::null(),
-			dim::null()
-		);
-}
-
-template<
-	typename T,
-	fcppt::math::size_type N
->
-typename fcppt::math::box::object<
-	T,
-	N
->::value_type
-fcppt::math::box::object<
-	T,
-	N
->::content() const
-{
-	return
-		size_.content();
-}
-
-template<
-	typename T,
-	fcppt::math::size_type N
->
 typename fcppt::math::box::object<
 	T,
 	N
@@ -164,7 +127,7 @@ template<
 typename fcppt::math::box::object<
 	T,
 	N
->::vector const
+>::vector
 fcppt::math::box::object<
 	T,
 	N
@@ -181,7 +144,7 @@ template<
 typename fcppt::math::box::object<
 	T,
 	N
->::vector const
+>::vector
 fcppt::math::box::object<
 	T,
 	N
@@ -200,7 +163,7 @@ template<
 typename fcppt::math::box::object<
 	T,
 	N
->::dim const
+>::dim
 fcppt::math::box::object<
 	T,
 	N
@@ -535,48 +498,6 @@ fcppt::math::box::object<
 )
 {
 	pos_.z() = _value;
-}
-
-template<
-	typename T,
-	fcppt::math::size_type N
->
-void
-fcppt::math::box::object<
-	T,
-	N
->::swap(
-	object &_other
-)
-{
-	pos_.swap(
-		_other.pos_
-	);
-
-	size_.swap(
-		_other.size_
-	);
-}
-
-template<
-	typename T,
-	fcppt::math::size_type N
->
-void
-fcppt::math::box::swap(
-	fcppt::math::box::object<
-		T,
-		N
-	> &_a,
-	fcppt::math::box::object<
-		T,
-		N
-	> &_b
-)
-{
-	_a.swap(
-		_b
-	);
 }
 
 #endif

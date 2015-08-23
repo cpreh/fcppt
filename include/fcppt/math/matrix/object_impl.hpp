@@ -7,12 +7,10 @@
 #ifndef FCPPT_MATH_MATRIX_OBJECT_IMPL_HPP_INCLUDED
 #define FCPPT_MATH_MATRIX_OBJECT_IMPL_HPP_INCLUDED
 
-#include <fcppt/literal.hpp>
-#include <fcppt/no_init.hpp>
+#include <fcppt/no_init_fwd.hpp>
 #include <fcppt/math/detail/assign.hpp>
 #include <fcppt/math/detail/make_op_def.hpp>
 #include <fcppt/math/matrix/object_decl.hpp>
-#include <fcppt/math/matrix/static_storage.hpp>
 #include <fcppt/math/matrix/detail/row_view_impl.hpp>
 #include <fcppt/math/vector/object_impl.hpp>
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
@@ -421,56 +419,6 @@ fcppt::math::matrix::object<
 {
 	return
 		N::value;
-}
-
-template<
-	typename T,
-	typename N,
-	typename M,
-	typename S
->
-fcppt::math::matrix::object<
-	T,
-	N,
-	M,
-	fcppt::math::matrix::static_storage<
-		T,
-		N,
-		M
-	>
-> const
-fcppt::math::matrix::object<
-	T,
-	N,
-	M,
-	S
->::identity()
-{
-	fcppt::math::matrix::object<
-		T,
-		N,
-		M,
-		fcppt::math::matrix::static_storage<
-			T,
-			N,
-			M
-		>
-	> ret{
-		fcppt::no_init()
-	};
-
-	for(
-		size_type i = 0; i < object::rows(); ++i
-	)
-		for(
-			size_type j = 0; j < object::columns(); ++j
-		)
-			ret[i][j] =
-				i == j
-				? fcppt::literal<T>(1)
-				: fcppt::literal<T>(0);
-
-	return ret;
 }
 
 template<

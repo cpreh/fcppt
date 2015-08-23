@@ -776,6 +776,7 @@ set(
 	include/fcppt/math/box/intersects.hpp
 	include/fcppt/math/box/interval.hpp
 	include/fcppt/math/box/is_box.hpp
+	include/fcppt/math/box/null.hpp
 	include/fcppt/math/box/object.hpp
 	include/fcppt/math/box/object_decl.hpp
 	include/fcppt/math/box/object_fwd.hpp
@@ -848,6 +849,7 @@ set(
 	include/fcppt/math/dim/is_quadratic.hpp
 	include/fcppt/math/dim/map.hpp
 	include/fcppt/math/dim/narrow_cast.hpp
+	include/fcppt/math/dim/null.hpp
 	include/fcppt/math/dim/object.hpp
 	include/fcppt/math/dim/object_decl.hpp
 	include/fcppt/math/dim/object_fwd.hpp
@@ -887,6 +889,7 @@ set(
 	include/fcppt/math/matrix/dim_fwd.hpp
 	include/fcppt/math/matrix/exponential_pade.hpp
 	include/fcppt/math/matrix/has_dim.hpp
+	include/fcppt/math/matrix/identity.hpp
 	include/fcppt/math/matrix/infinity_norm.hpp
 	include/fcppt/math/matrix/inverse.hpp
 	include/fcppt/math/matrix/is_matrix.hpp
@@ -956,6 +959,7 @@ set(
 	include/fcppt/math/vector/mod.hpp
 	include/fcppt/math/vector/narrow_cast.hpp
 	include/fcppt/math/vector/normalize.hpp
+	include/fcppt/math/vector/null.hpp
 	include/fcppt/math/vector/object.hpp
 	include/fcppt/math/vector/object_decl.hpp
 	include/fcppt/math/vector/object_fwd.hpp

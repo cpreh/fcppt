@@ -19,6 +19,7 @@ FCPPT_PP_POP_WARNING
 #include <fcppt/math/vector/construct.hpp>
 #include <fcppt/math/vector/length.hpp>
 #include <fcppt/math/vector/narrow_cast.hpp>
+#include <fcppt/math/vector/null.hpp>
 #include <fcppt/math/vector/object_impl.hpp>
 #include <fcppt/math/vector/output.hpp>
 #include <fcppt/math/vector/static.hpp>
@@ -155,7 +156,9 @@ null()
 {
 // ![null]
 	auto const n(
-		vector2f::null()
+		fcppt::math::vector::null<
+			vector2f
+		>()
 	);
 // ![null]
 	std::cout << n << '\n';
@@ -169,7 +172,7 @@ comparison()
 
 	vector2f const y(1.f,2.f);
 
-	std::cout << (x == y) << ',' << (x - y == vector2f::null()) << '\n';
+	std::cout << (x == y) << ',' << (x - y == fcppt::math::vector::null<vector2f>()) << '\n';
 // ![comparison]
 }
 

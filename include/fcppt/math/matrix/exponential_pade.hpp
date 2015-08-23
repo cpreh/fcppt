@@ -11,6 +11,7 @@
 #include <fcppt/literal.hpp>
 #include <fcppt/cast/int_to_float.hpp>
 #include <fcppt/math/matrix/arithmetic.hpp>
+#include <fcppt/math/matrix/identity.hpp>
 #include <fcppt/math/matrix/infinity_norm.hpp>
 #include <fcppt/math/matrix/inverse.hpp>
 #include <fcppt/math/matrix/object_impl.hpp>
@@ -90,12 +91,21 @@ exponential_pade(
 		_matrix;
 
 	matrix_type
-		D =
-			matrix_type::identity(),
-		N =
-			matrix_type::identity(),
-		X =
-			matrix_type::identity();
+		D(
+			fcppt::math::matrix::identity<
+				matrix_type
+			>()
+		),
+		N(
+			fcppt::math::matrix::identity<
+				matrix_type
+			>()
+		),
+		X(
+			fcppt::math::matrix::identity<
+				matrix_type
+			>()
+		);
 
 	T c =
 		fcppt::literal<T>(

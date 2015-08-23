@@ -12,6 +12,7 @@
 #include <fcppt/container/grid/min_less_sup.hpp>
 #include <fcppt/container/grid/size_type.hpp>
 #include <fcppt/container/grid/sup.hpp>
+#include <fcppt/math/dim/null.hpp>
 #include <fcppt/math/vector/arithmetic.hpp>
 #include <fcppt/math/vector/to_dim.hpp>
 
@@ -61,10 +62,12 @@ range_dim(
 				_min.get()
 			)
 		:
-			fcppt::container::grid::dim<
-				SizeType,
-				Size
-			>::null()
+			fcppt::math::dim::null<
+				fcppt::container::grid::dim<
+					SizeType,
+					Size
+				>
+			>()
 		;
 }
 

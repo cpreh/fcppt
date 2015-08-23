@@ -10,6 +10,7 @@
 
 #include <fcppt/literal.hpp>
 #include <fcppt/math/matrix/arithmetic.hpp>
+#include <fcppt/math/matrix/identity.hpp>
 #include <fcppt/math/matrix/infinity_norm.hpp>
 #include <fcppt/math/matrix/inverse.hpp>
 #include <fcppt/math/matrix/object_impl.hpp>
@@ -35,7 +36,8 @@ template
 	typename DN,
 	typename S
 >
-fcppt::math::matrix::object<T,DN,DN,S> const
+// FIXME: This return type is wrong
+fcppt::math::matrix::object<T,DN,DN,S>
 sqrt(
 	fcppt::math::matrix::object<T,DN,DN,S> const &_matrix,
 	T const epsilon)
@@ -50,10 +52,14 @@ sqrt(
 	matrix_type;
 
 	matrix_type
-		X =
-			_matrix,
-		Y =
-			matrix_type::identity();
+		X(
+			_matrix
+		),
+		Y(
+			fcppt::math::matrix::identity<
+				matrix_type
+			>()
+		);
 
 	while(fcppt::math::matrix::infinity_norm(X * X - _matrix) > epsilon)
 	{

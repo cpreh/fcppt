@@ -13,6 +13,7 @@
 #include <fcppt/math/size_type.hpp>
 #include <fcppt/math/box/init.hpp>
 #include <fcppt/math/box/intersects.hpp>
+#include <fcppt/math/box/null.hpp>
 #include <fcppt/math/box/object_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <algorithm>
@@ -104,7 +105,9 @@ intersection(
 				}
 			)
 		:
-			result_type::null()
+			fcppt::math::box::null<
+				result_type
+			>()
 		;
 }
 
