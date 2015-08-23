@@ -299,6 +299,9 @@ FCPPT_MATH_DETAIL_MAKE_OP_DECL(\
 	size_type
 	columns();
 
+	S &
+	storage();
+
 	S const &
 	storage() const;
 private:

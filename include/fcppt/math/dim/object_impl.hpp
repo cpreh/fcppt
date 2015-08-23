@@ -504,6 +504,22 @@ template<
 	typename N,
 	typename S
 >
+S &
+fcppt::math::dim::object<
+	T,
+	N,
+	S
+>::storage()
+{
+	return
+		storage_;
+}
+
+template<
+	typename T,
+	typename N,
+	typename S
+>
 S const &
 fcppt::math::dim::object<
 	T,

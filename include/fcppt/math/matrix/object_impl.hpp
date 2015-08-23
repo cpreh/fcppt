@@ -427,6 +427,24 @@ template<
 	typename M,
 	typename S
 >
+S &
+fcppt::math::matrix::object<
+	T,
+	N,
+	M,
+	S
+>::storage()
+{
+	return
+		storage_;
+}
+
+template<
+	typename T,
+	typename N,
+	typename M,
+	typename S
+>
 S const &
 fcppt::math::matrix::object<
 	T,

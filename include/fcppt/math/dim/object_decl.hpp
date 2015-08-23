@@ -274,6 +274,9 @@ FCPPT_MATH_DETAIL_MAKE_OP_DECL(\
 	const_reference
 	d() const;
 
+	S &
+	storage();
+
 	S const &
 	storage() const;
 private:
