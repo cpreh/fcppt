@@ -622,11 +622,13 @@ set(
 	include/fcppt/math/size_type.hpp
 	include/fcppt/math/sphere/circle.hpp
 	include/fcppt/math/sphere/circle_fwd.hpp
+	include/fcppt/math/sphere/comparison.hpp
 	include/fcppt/math/sphere/intersects.hpp
 	include/fcppt/math/sphere/object.hpp
 	include/fcppt/math/sphere/object_decl.hpp
 	include/fcppt/math/sphere/object_fwd.hpp
 	include/fcppt/math/sphere/object_impl.hpp
+	include/fcppt/math/sphere/output.hpp
 	include/fcppt/math/static_size.hpp
 	include/fcppt/math/static_storage.hpp
 	include/fcppt/math/step.hpp

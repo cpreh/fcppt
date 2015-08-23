@@ -5,8 +5,10 @@
 
 
 #include <fcppt/math/sphere/circle.hpp>
+#include <fcppt/math/sphere/comparison.hpp>
 #include <fcppt/math/sphere/intersects.hpp>
 #include <fcppt/math/sphere/object_impl.hpp>
+#include <fcppt/math/sphere/output.hpp>
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
@@ -24,9 +26,11 @@ BOOST_AUTO_TEST_CASE(
 {
 FCPPT_PP_POP_WARNING
 
-	typedef fcppt::math::sphere::circle<
+	typedef
+	fcppt::math::sphere::circle<
 		float
-	> circle_type;
+	>
+	circle_type;
 
 	BOOST_CHECK(
 		fcppt::math::sphere::intersects(
@@ -44,6 +48,39 @@ FCPPT_PP_POP_WARNING
 				),
 				1.f
 			)
+		)
+	);
+}
+
+FCPPT_PP_PUSH_WARNING
+FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
+
+BOOST_AUTO_TEST_CASE(
+	circle_comparison
+)
+{
+FCPPT_PP_POP_WARNING
+
+	typedef
+	fcppt::math::sphere::circle<
+		int
+	>
+	circle_type;
+
+	BOOST_CHECK_EQUAL(
+		circle_type(
+			circle_type::point_type(
+				1,
+				3
+			),
+			2
+		),
+		circle_type(
+			circle_type::point_type(
+				1,
+				3
+			),
+			2
 		)
 	);
 }

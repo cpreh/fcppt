@@ -73,36 +73,6 @@ private:
 	value_type radius_;
 };
 
-template<
-	typename T,
-	fcppt::math::size_type N
->
-bool
-operator==(
-	fcppt::math::sphere::object<T, N> const &,
-	fcppt::math::sphere::object<T, N> const &
-);
-
-template<
-	typename T,
-	fcppt::math::size_type N
->
-bool
-operator!=(
-	fcppt::math::sphere::object<T, N> const &,
-	fcppt::math::sphere::object<T, N> const &
-);
-
-template<
-	typename T,
-	fcppt::math::size_type N
->
-void
-swap(
-	fcppt::math::sphere::object<T, N> &,
-	fcppt::math::sphere::object<T, N> &
-);
-
 }
 }
 }
