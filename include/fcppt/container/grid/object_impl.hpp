@@ -19,6 +19,7 @@
 #include <fcppt/container/grid/detail/at.hpp>
 #include <fcppt/container/grid/detail/resize.hpp>
 #include <fcppt/container/grid/detail/shrink_to_fit.hpp>
+#include <fcppt/math/dim/contents.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <type_traits>
 #include <utility>
@@ -58,7 +59,9 @@ fcppt::container::grid::object<
 )
 :
 	container_(
-		_size.content()
+		fcppt::math::dim::contents(
+			_size
+		)
 	),
 	size_(
 		_size
@@ -81,7 +84,9 @@ fcppt::container::grid::object<
 )
 :
 	container_(
-		_size.content(),
+		fcppt::math::dim::contents(
+			_size
+		),
 		_value
 	),
 	size_(
@@ -376,7 +381,9 @@ fcppt::container::grid::object<
 >::content() const
 {
 	return
-		size_.content();
+		fcppt::math::dim::contents(
+			size_
+		);
 }
 
 template<
@@ -392,7 +399,9 @@ fcppt::container::grid::object<
 >::empty() const
 {
 	return
-		size_.empty();
+		this->content()
+		==
+		0u;
 }
 
 template<
@@ -435,7 +444,9 @@ fcppt::container::grid::object<
 )
 {
 	container_.resize(
-		_size.content(),
+		fcppt::math::dim::contents(
+			_size
+		),
 		_value
 	);
 

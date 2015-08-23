@@ -7,6 +7,7 @@
 #ifndef FCPPT_MATH_DETAIL_MAKE_OP_DEF_HPP_INCLUDED
 #define FCPPT_MATH_DETAIL_MAKE_OP_DEF_HPP_INCLUDED
 
+#include <fcppt/make_int_range_count.hpp>
 #include <fcppt/math/detail/linear_access.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/preprocessor/tuple/rem.hpp>
@@ -29,23 +30,24 @@ BOOST_PP_TUPLE_REM(class_arity)def_pre \
 ) \
 {\
 	for(\
-		size_type index(\
-			0u\
-		);\
-		index < this->size();\
-		++index\
+		auto const index\
+		:\
+		fcppt::make_int_range_count(\
+			storage_.size()\
+		)\
 	)\
 		fcppt::math::detail::linear_access(\
-			*this,\
+			storage_,\
 			index\
 		) \
 		op \
 		fcppt::math::detail::linear_access(\
-			expr,\
+			expr.storage(),\
 			index\
 		);\
 \
-	return *this;\
+	return \
+		*this;\
 }
 
 #endif

@@ -357,7 +357,7 @@ FCPPT_PP_POP_WARNING
 			test.data_end()
 		),
 		fcppt::cast::to_signed(
-			test.size().content()
+			test.content()
 		)
 	);
 }
@@ -509,7 +509,7 @@ FCPPT_PP_POP_WARNING
 
 	BOOST_CHECK_EQUAL(
 		fcppt::cast::to_signed(
-			grid.size().content()
+			grid.content()
 		),
 		std::distance(
 			grid.begin(),

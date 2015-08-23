@@ -7,14 +7,11 @@
 #ifndef FCPPT_CONTAINER_GRID_MIN_LESS_SUP_HPP_INCLUDED
 #define FCPPT_CONTAINER_GRID_MIN_LESS_SUP_HPP_INCLUDED
 
+#include <fcppt/make_int_range_count.hpp>
 #include <fcppt/algorithm/all_of.hpp>
 #include <fcppt/container/grid/min.hpp>
 #include <fcppt/container/grid/size_type.hpp>
 #include <fcppt/container/grid/sup.hpp>
-#include <fcppt/config/external_begin.hpp>
-#include <boost/range/combine.hpp>
-#include <boost/tuple/tuple.hpp>
-#include <fcppt/config/external_end.hpp>
 
 
 namespace fcppt
@@ -50,29 +47,24 @@ min_less_sup(
 {
 	return
 		fcppt::algorithm::all_of(
-			boost::range::combine(
-				_min.get(),
-				_sup.get()
+			fcppt::make_int_range_count(
+				Size
 			),
-			[](
-				boost::tuple<
-					fcppt::container::grid::size_type,
-					fcppt::container::grid::size_type
-				> const _val
+			[
+				&_min,
+				&_sup
+			](
+				fcppt::container::grid::size_type const _index
 			)
 			{
 				return
-					boost::get<
-						0
-					>(
-						_val
-					)
+					_min.get()[
+						_index
+					]
 					<
-					boost::get<
-						1
-					>(
-						_val
-					);
+					_sup.get()[
+						_index
+					];
 			}
 		);
 }

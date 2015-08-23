@@ -59,24 +59,6 @@ identity()
 }
 // ![identity]
 
-// ![iterate]
-void
-iterate()
-{
-	auto const m(
-		int_matrix_3x3::identity()
-	);
-
-	// Will output: 1,0,0,0,1,0,0,0,1,
-	for(
-		auto const &elem
-		:
-		m
-	)
-		std::cout << elem << ",";
-}
-// ![iterate]
-
 // ![row_iterate]
 void
 row_iterate()
@@ -103,8 +85,6 @@ main()
 	ctor();
 
 	identity();
-
-	iterate();
 
 	std::cout << '\n';
 

@@ -7,9 +7,12 @@
 #ifndef FCPPT_MATH_MATRIX_VECTOR_HPP_INCLUDED
 #define FCPPT_MATH_MATRIX_VECTOR_HPP_INCLUDED
 
+#include <fcppt/literal.hpp>
+#include <fcppt/make_int_range_count.hpp>
 #include <fcppt/math/static_storage.hpp>
 #include <fcppt/math/detail/binary_type.hpp>
 #include <fcppt/math/matrix/object_impl.hpp>
+#include <fcppt/math/vector/init.hpp>
 #include <fcppt/math/vector/object_impl.hpp>
 
 
@@ -51,38 +54,55 @@ operator *(
 	> const &_right
 )
 {
-	typedef fcppt::math::vector::object<
+	typedef
+	fcppt::math::vector::object<
 		FCPPT_MATH_DETAIL_BINARY_TYPE(L, *, R),
 		M,
 		fcppt::math::static_storage<
 			FCPPT_MATH_DETAIL_BINARY_TYPE(L, *, R),
 			M
 		>
-	> result_type;
+	>
+	result_type;
 
-	result_type result(
-		result_type::null()
-	);
+	return
+		fcppt::math::vector::init<
+			result_type
+		>(
+			[
+				&_left,
+				&_right
+			](
+				typename
+				result_type::size_type const _i
+			)
+			{
+				// TODO: fold?
+				auto cur(
+					fcppt::literal<
+						typename
+						result_type::value_type
+					>(
+						0
+					)
+				);
 
-	for(
-		typename result_type::size_type i = 0;
-		i < result.size();
-		++i
-	)
-		for(
-			typename
-			fcppt::math::matrix::object<
-				L,
-				N,
-				M,
-				S2
-			>::size_type j = 0;
-			j < _right.size();
-			++j
-		)
-			result[i] += _left[i][j] * _right[j];
+				for(
+					auto const j
+					:
+					fcppt::make_int_range_count(
+						N::value
+					)
+				)
+					cur +=
+						_left[_i][j]
+						*
+						_right[j];
 
-	return result;
+				return
+					cur;
+			}
+		);
 }
 
 }

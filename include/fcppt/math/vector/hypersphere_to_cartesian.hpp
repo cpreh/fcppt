@@ -9,7 +9,7 @@
 #define FCPPT_MATH_VECTOR_HYPERSPHERE_TO_CARTESIAN_HPP_INCLUDED
 
 #include <fcppt/literal.hpp>
-#include <fcppt/no_init.hpp>
+#include <fcppt/math/vector/init.hpp>
 #include <fcppt/math/vector/object.hpp>
 #include <fcppt/math/vector/static.hpp>
 #include <fcppt/config/external_begin.hpp>
@@ -29,7 +29,7 @@ namespace vector
 \tparam T The vector's <code>value_type</code>
 \tparam N The vector's dimension type
 \tparam S The vector's storage type
-\param angles An \p N-1 dimensional vector containing the angles in each dimension
+\param _angles An \p N-1 dimensional vector containing the angles in each dimension
 
 The formula is taken from:
 
@@ -98,49 +98,92 @@ Changing the inclination towards positive infinity results in a
 counterclockwise rotation around the z axis, assuming the viewer looks down
 the positive z axis.
 */
-template<typename T,typename N,typename S>
-fcppt::math::vector::static_<T,N::value+1> const
+template<
+	typename T,
+	typename N,
+	typename S
+>
+fcppt::math::vector::static_<
+	T,
+	N::value
+	+
+	1u
+>
 hypersphere_to_cartesian(
-	fcppt::math::vector::object<T,N,S> const &angles)
+	fcppt::math::vector::object<
+		T,
+		N,
+		S
+	> const &_angles
+)
 {
 	typedef
-	static_<T,N::value+1>
+	fcppt::math::vector::static_<
+		T,
+		N::value
+		+
+		1u
+	>
 	result_type;
 
-	typedef typename
+	typedef
+	typename
 	result_type::size_type
 	size_type;
 
-	typedef typename
+	typedef
+	typename
 	result_type::value_type
 	value_type;
 
-	result_type result{
-		fcppt::no_init()
-	};
+	return
+		fcppt::math::vector::init<
+			result_type
+		>(
+			[
+				&_angles
+			](
+				size_type const _index
+			)
+			{
+				// TODO: fold
+				value_type sins{
+					fcppt::literal<
+						value_type
+					>(
+						1
+					)
+				};
 
-	for(size_type i = 0; i < result.size(); ++i)
-	{
-		// Hehe..."sins"
-		value_type sins =
-			fcppt::literal<value_type>(
-				1);
-		for(size_type j = 0; j < i; ++j)
-			sins *=
-				std::sin(
-					angles[j]);
-		result[i] =
-			sins *
-			(
-			i >= angles.size()
-			?
-				fcppt::literal<value_type>(1)
-			:
-				std::cos(
-					angles[i]));
-	}
-	return result;
+				for(size_type j = 0; j < _index; ++j)
+					sins *=
+						std::sin(
+							_angles[j]
+						);
+
+				return
+					sins *
+					(
+						_index
+						>=
+						N::value
+						?
+							fcppt::literal<
+								value_type
+							>(
+								1
+							)
+						:
+							std::cos(
+								_angles[
+									_index
+								]
+							)
+					);
+			}
+		);
 }
+
 }
 }
 }

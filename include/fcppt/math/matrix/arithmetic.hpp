@@ -11,7 +11,6 @@
 #include <fcppt/math/binary_map.hpp>
 #include <fcppt/math/map.hpp>
 #include <fcppt/math/detail/binary_type.hpp>
-#include <fcppt/math/detail/linear_access.hpp>
 #include <fcppt/math/matrix/object_impl.hpp>
 #include <fcppt/math/matrix/static_storage.hpp>
 

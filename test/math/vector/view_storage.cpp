@@ -8,6 +8,7 @@
 #include <fcppt/math/size_type.hpp>
 #include <fcppt/math/vector/comparison.hpp>
 #include <fcppt/math/vector/object.hpp>
+#include <fcppt/math/vector/output.hpp>
 #include <fcppt/math/vector/static.hpp>
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
@@ -57,21 +58,35 @@ public:
 	}
 
 	iterator
+	begin()
+	{
+		return
+			data_;
+	}
+
+	const_iterator
 	begin() const
 	{
-		return data_;
+		return
+			data_;
 	}
 
-	pointer
-	data() const
+	iterator
+	end()
 	{
-		return data_;
+		return
+			data_
+			+
+			size_;
 	}
 
-	size_type
-	size() const
+	const_iterator
+	end() const
 	{
-		return size_;
+		return
+			data_
+			+
+			size_;
 	}
 private:
 	pointer data_;
@@ -128,7 +143,8 @@ FCPPT_PP_POP_WARNING
 		view
 	);
 
-	BOOST_REQUIRE(
-		vec == view
+	BOOST_CHECK_EQUAL(
+		vec,
+		view
 	);
 }

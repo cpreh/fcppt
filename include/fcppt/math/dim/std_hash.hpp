@@ -56,9 +56,10 @@ struct hash<
 	{
 		return
 			fcppt::range_hash<
-				type
+				typename
+				type::storage_type
 			>()(
-				_value
+				_value.storage()
 			);
 	}
 };

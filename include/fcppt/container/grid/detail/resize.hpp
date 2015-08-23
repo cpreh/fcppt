@@ -7,6 +7,7 @@
 #ifndef FCPPT_CONTAINER_GRID_DETAIL_RESIZE_HPP_INCLUDED
 #define FCPPT_CONTAINER_GRID_DETAIL_RESIZE_HPP_INCLUDED
 
+#include <fcppt/math/dim/contents.hpp>
 #include <fcppt/container/raw_vector_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <vector>
@@ -27,14 +28,20 @@ template<
 	typename A,
 	typename Dim
 >
+inline
 void
 resize(
-	std::vector<T, A> &_impl,
+	std::vector<
+		T,
+		A
+	> &_impl,
 	Dim const &_size
 )
 {
 	_impl.resize(
-		_size.content()
+		fcppt::math::dim::contents(
+			_size
+		)
 	);
 }
 
@@ -43,14 +50,20 @@ template<
 	typename A,
 	typename Dim
 >
+inline
 void
 resize(
-	fcppt::container::raw_vector<T, A> &_impl,
+	fcppt::container::raw_vector<
+		T,
+		A
+	> &_impl,
 	Dim const &_size
 )
 {
 	_impl.resize_uninitialized(
-		_size.content()
+		fcppt::math::dim::contents(
+			_size
+		)
 	);
 }
 

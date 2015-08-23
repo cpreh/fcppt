@@ -11,6 +11,7 @@
 #include <algorithm>
 #include <fcppt/config/external_end.hpp>
 
+
 namespace fcppt
 {
 namespace math
@@ -19,21 +20,34 @@ namespace detail
 {
 
 template<
-	typename T1,
-	typename T2
+	typename T
 >
+inline
 bool
 array_less(
-	T1 const &v1,
-	T2 const &v2
+	T const &_a,
+	T const &_b
 )
 {
+	typedef
+	typename
+	T::storage_type
+	storage_type;
+
+	storage_type const &storage_a(
+		_a.storage()
+	);
+
+	storage_type const &storage_b(
+		_b.storage()
+	);
+
 	return
 		std::lexicographical_compare(
-			v1.begin(),
-			v1.end(),
-			v2.begin(),
-			v2.end()
+			storage_a.begin(),
+			storage_a.end(),
+			storage_b.begin(),
+			storage_b.end()
 		);
 }
 

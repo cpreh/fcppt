@@ -6,9 +6,9 @@
 
 #include <fcppt/no_init.hpp>
 #include <fcppt/cast/int_to_float_fun.hpp>
-#include <fcppt/math/range_compare.hpp>
 #include <fcppt/math/size_type.hpp>
 #include <fcppt/math/vector/arithmetic.hpp>
+#include <fcppt/math/vector/componentwise_equal.hpp>
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
@@ -195,7 +195,7 @@ comparison_range()
 
 	float const epsilon(0.001f);
 
-	std::cout << fcppt::math::range_compare(x,y,epsilon) << '\n';
+	std::cout << fcppt::math::vector::componentwise_equal(x,y,epsilon) << '\n';
 // ![comparison_range]
 }
 

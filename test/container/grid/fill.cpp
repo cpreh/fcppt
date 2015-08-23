@@ -4,7 +4,11 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
+#include <fcppt/literal.hpp>
 #include <fcppt/no_init.hpp>
+#include <fcppt/algorithm/fold.hpp>
+#include <fcppt/cast/size.hpp>
+#include <fcppt/cast/to_signed.hpp>
 #include <fcppt/container/grid/fill.hpp>
 #include <fcppt/container/grid/object.hpp>
 #include <fcppt/math/vector/comparison.hpp>
@@ -13,7 +17,7 @@
 #include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/test/unit_test.hpp>
-#include <numeric>
+#include <functional>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -52,10 +56,22 @@ FCPPT_PP_POP_WARNING
 		)
 		{
 			return
-				std::accumulate(
-					_pos.begin(),
-					_pos.end(),
-					0
+				fcppt::cast::size<
+					int
+				>(
+					fcppt::cast::to_signed(
+						fcppt::algorithm::fold(
+							_pos.storage(),
+							fcppt::literal<
+								pos::value_type
+							>(
+								0
+							),
+							std::plus<
+								pos::value_type
+							>()
+						)
+					)
 				);
 		}
 	);

@@ -42,10 +42,11 @@ FCPPT_PP_POP_WARNING
 	small_matrix_type;
 
 	large_matrix_type const t(
-		1, 2, 3,
-		4, 5, 6,
-		7, 8, 9,
-		10,11,12);
+		1.f, 2.f, 3.f,
+		4.f, 5.f, 6.f,
+		7.f, 8.f, 9.f,
+		10.f,11.f,12.f
+	);
 
 	float const epsilon(
 		std::numeric_limits<
@@ -57,13 +58,21 @@ FCPPT_PP_POP_WARNING
 		fcppt::math::matrix::componentwise_equal(
 			fcppt::math::matrix::delete_row_and_column(
 				t,
-				fcppt::literal<large_matrix_type::size_type>(2),
-				fcppt::literal<large_matrix_type::size_type>(1)
+				fcppt::literal<
+					large_matrix_type::size_type
+				>(
+					2
+				),
+				fcppt::literal<
+					large_matrix_type::size_type
+				>(
+					1
+				)
 			),
 			small_matrix_type(
-				1,3,
-				4,6,
-				10,12
+				1.f, 3.f,
+				4.f, 6.f,
+				10.f, 12.f
 			),
 			epsilon
 		)
@@ -73,13 +82,21 @@ FCPPT_PP_POP_WARNING
 		fcppt::math::matrix::componentwise_equal(
 			fcppt::math::matrix::delete_row_and_column(
 				t,
-				fcppt::literal<large_matrix_type::size_type>(0),
-				fcppt::literal<large_matrix_type::size_type>(0)
+				fcppt::literal<
+					large_matrix_type::size_type
+				>(
+					0
+				),
+				fcppt::literal<
+					large_matrix_type::size_type
+				>(
+					0
+				)
 			),
 			small_matrix_type(
-				5, 6,
-				8, 9,
-				11,12
+				5.f, 6.f,
+				8.f, 9.f,
+				11.f, 12.f
 			),
 			epsilon
 		)

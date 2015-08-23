@@ -7,6 +7,8 @@
 #ifndef FCPPT_MATH_DETAIL_LINEAR_ACCESS_HPP_INCLUDED
 #define FCPPT_MATH_DETAIL_LINEAR_ACCESS_HPP_INCLUDED
 
+#include <fcppt/container/to_value_type.hpp>
+
 
 namespace fcppt
 {
@@ -18,29 +20,21 @@ namespace detail
 template<
 	typename Container
 >
-typename
-Container::value_type &
+inline
+fcppt::container::to_value_type<
+	Container
+>
 linear_access(
 	Container &_container,
 	typename Container::size_type const _index
 )
 {
 	return
-		*(_container.data() + _index);
-}
-
-template<
-	typename Container
->
-typename
-Container::value_type const &
-linear_access(
-	Container const &_container,
-	typename Container::size_type const _index
-)
-{
-	return
-		*(_container.data() + _index);
+		*(
+			_container.data()
+			+
+			_index
+		);
 }
 
 }

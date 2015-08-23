@@ -191,17 +191,9 @@ To get the identity matrix, use the static <code>identity</code> function:
 
 \section fcpptmathmatrixobject_iteration Iteration
 
-To iterate over all elements in the matrix, use an iterator together with begin/end:
-
-\snippet math/matrix.cpp iterate
-
-This code might puzzle you. Didn't I just say that matrix's
-<code>operator[]</code> returns a proxy vector representing one row of the
-matrix? Indeed, I did.
-
-When it comes to iteration, however, we do <em>not</em> use proxy vectors, but
-regular pointers to the individual matrix cells. If you want to iterate over
-all rows, use a loop using an index instead of an iterator:
+TODO
+If you want to iterate over all rows, use a loop using an index instead of an
+iterator:
 
 \snippet math/matrix.cpp row_iterate
 */

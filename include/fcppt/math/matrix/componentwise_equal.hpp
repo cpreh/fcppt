@@ -7,7 +7,7 @@
 #ifndef FCPPT_MATH_MATRIX_COMPONENTWISE_EQUAL_HPP_INCLUDED
 #define FCPPT_MATH_MATRIX_COMPONENTWISE_EQUAL_HPP_INCLUDED
 
-#include <fcppt/math/range_compare.hpp>
+#include <fcppt/math/detail/componentwise_equal.hpp>
 #include <fcppt/math/matrix/object_impl.hpp>
 
 
@@ -56,7 +56,7 @@ componentwise_equal(
 )
 {
 	return
-		fcppt::math::range_compare(
+		fcppt::math::detail::componentwise_equal(
 			_v1,
 			_v2,
 			_epsilon

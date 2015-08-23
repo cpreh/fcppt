@@ -7,9 +7,11 @@
 #ifndef FCPPT_MATH_DETAIL_ONE_DIMENSIONAL_OUTPUT_HPP_INCLUDED
 #define FCPPT_MATH_DETAIL_ONE_DIMENSIONAL_OUTPUT_HPP_INCLUDED
 
+#include <fcppt/make_int_range_count.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <ostream>
 #include <fcppt/config/external_end.hpp>
+
 
 namespace fcppt
 {
@@ -21,21 +23,50 @@ namespace detail
 template<
 	typename Ch,
 	typename Traits,
-	typename T
+	typename Type
 >
-std::basic_ostream<Ch, Traits> &
+std::basic_ostream<
+	Ch,
+	Traits
+> &
 one_dimensional_output(
-	std::basic_ostream<Ch, Traits> &s,
-	T const &v
+	std::basic_ostream<
+		Ch,
+		Traits
+	> &_stream,
+	Type const &_value
 )
 {
-	s << s.widen('(');
-	if(v.size() > 1)
-		for(typename T::size_type i = 0; i < v.size() - 1; ++i)
-			s << v[i] << s.widen(',');
-	if(!v.empty())
-		s << v.back();
-	return s << s.widen(')');
+	_stream <<
+		_stream.widen('(');
+
+	for(
+		auto const index
+		:
+		fcppt::make_int_range_count(
+			Type::static_size::value
+		)
+	)
+	{
+		_stream
+			<<
+			_value[
+				index
+			];
+
+		if(
+			index
+			!=
+			Type::static_size::value - 1u
+		)
+			_stream
+				<< _stream.widen(',');
+	}
+
+	return
+		_stream
+		<<
+		_stream.widen(')');
 }
 
 }

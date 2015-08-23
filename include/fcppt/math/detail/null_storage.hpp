@@ -20,7 +20,8 @@ namespace detail
 template<
 	typename Result
 >
-Result const
+inline
+Result
 null_storage()
 {
 	return

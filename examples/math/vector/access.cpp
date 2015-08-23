@@ -8,6 +8,7 @@
 #include <fcppt/exception.hpp>
 #include <fcppt/text.hpp>
 #include <fcppt/io/cout.hpp>
+#include <fcppt/math/at.hpp>
 #include <fcppt/math/vector/static.hpp>
 
 
@@ -33,7 +34,10 @@ int main()
 
 	try
 	{
-		obj.at(2);
+		fcppt::math::at(
+			obj,
+			2
+		);
 	}
 	catch(
 		fcppt::exception const &_error

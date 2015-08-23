@@ -9,7 +9,6 @@
 
 #include <fcppt/no_init_fwd.hpp>
 #include <fcppt/math/static_storage.hpp>
-#include <fcppt/math/detail/array_adapter_impl.hpp>
 #include <fcppt/math/detail/assign.hpp>
 #include <fcppt/math/detail/checked_access.hpp>
 #include <fcppt/math/detail/default_storage.hpp>
@@ -22,7 +21,6 @@
 #include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <algorithm>
-#include <type_traits>
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
@@ -157,20 +155,15 @@ fcppt::math::vector::object<
 )
 // Don't initialize storage_
 {
+	// TODO: Initialize storage_ directly
 	std::copy(
-		_other.begin(),
-		_other.end(),
-		this->begin()
+		_other.storage().begin(),
+		_other.storage().end(),
+		storage_.begin()
 	);
 }
 
 FCPPT_PP_POP_WARNING
-
-FCPPT_MATH_DETAIL_ARRAY_ADAPTER_IMPL(
-	3,
-	(template<typename T, typename N, typename S>),
-	(fcppt::math::vector::object<T, N, S>)
-)
 
 template<
 	typename T,
@@ -274,11 +267,15 @@ fcppt::math::vector::object<
 )
 {
 	for(
-		auto &item : *this
+		auto &item
+		:
+		storage_
 	)
-		item *= _value;
+		item *=
+			_value;
 
-	return *this;
+	return
+		*this;
 }
 
 template<
@@ -300,11 +297,15 @@ fcppt::math::vector::object<
 )
 {
 	for(
-		auto &item : *this
+		auto &item
+		:
+		storage_
 	)
-		item /= _value;
+		item /=
+			_value;
 
-	return *this;
+	return
+		*this;
 }
 
 template<
@@ -327,7 +328,7 @@ fcppt::math::vector::object<
 {
 	return
 		fcppt::math::detail::index_at(
-			this->begin(),
+			storage_.begin(),
 			_index
 		);
 }
@@ -352,7 +353,7 @@ fcppt::math::vector::object<
 {
 	return
 		fcppt::math::detail::index_at(
-			this->begin(),
+			storage_.begin(),
 			_index
 		);
 }
@@ -392,7 +393,8 @@ template<
 	typename N,
 	typename S
 >
-typename fcppt::math::vector::object<
+typename
+fcppt::math::vector::object<
 	T,
 	N,
 	S
@@ -416,7 +418,8 @@ template<
 	typename N,
 	typename S
 >
-typename fcppt::math::vector::object<
+typename
+fcppt::math::vector::object<
 	T,
 	N,
 	S
@@ -440,7 +443,8 @@ template<
 	typename N,
 	typename S
 >
-typename fcppt::math::vector::object<
+typename
+fcppt::math::vector::object<
 	T,
 	N,
 	S
@@ -464,7 +468,8 @@ template<
 	typename N,
 	typename S
 >
-typename fcppt::math::vector::object<
+typename
+fcppt::math::vector::object<
 	T,
 	N,
 	S
@@ -488,7 +493,8 @@ template<
 	typename N,
 	typename S
 >
-typename fcppt::math::vector::object<
+typename
+fcppt::math::vector::object<
 	T,
 	N,
 	S
@@ -512,7 +518,8 @@ template<
 	typename N,
 	typename S
 >
-typename fcppt::math::vector::object<
+typename
+fcppt::math::vector::object<
 	T,
 	N,
 	S
@@ -536,7 +543,8 @@ template<
 	typename N,
 	typename S
 >
-typename fcppt::math::vector::object<
+typename
+fcppt::math::vector::object<
 	T,
 	N,
 	S
@@ -560,7 +568,8 @@ template<
 	typename N,
 	typename S
 >
-typename fcppt::math::vector::object<
+typename
+fcppt::math::vector::object<
 	T,
 	N,
 	S
@@ -611,7 +620,8 @@ fcppt::math::vector::object<
 	S
 >::storage() const
 {
-	return storage_;
+	return
+		storage_;
 }
 
 template<

@@ -7,10 +7,8 @@
 #ifndef FCPPT_MATH_DIM_OBJECT_IMPL_HPP_INCLUDED
 #define FCPPT_MATH_DIM_OBJECT_IMPL_HPP_INCLUDED
 
-#include <fcppt/literal.hpp>
 #include <fcppt/no_init_fwd.hpp>
 #include <fcppt/math/static_storage.hpp>
-#include <fcppt/math/detail/array_adapter_impl.hpp>
 #include <fcppt/math/detail/assign.hpp>
 #include <fcppt/math/detail/checked_access.hpp>
 #include <fcppt/math/detail/default_storage.hpp>
@@ -23,8 +21,6 @@
 #include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <algorithm>
-#include <functional>
-#include <numeric>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
@@ -168,12 +164,6 @@ fcppt::math::dim::object<
 
 FCPPT_PP_POP_WARNING
 
-FCPPT_MATH_DETAIL_ARRAY_ADAPTER_IMPL(
-	3,
-	(template<typename T, typename N, typename S>),
-	(fcppt::math::dim::object<T, N, S>)
-)
-
 template<
 	typename T,
 	typename N,
@@ -276,11 +266,15 @@ fcppt::math::dim::object<
 )
 {
 	for(
-		auto &ref : *this
+		auto &ref
+		:
+		storage_
 	)
-		ref *= _value;
+		ref *=
+			_value;
 
-	return *this;
+	return
+		*this;
 }
 
 template<
@@ -302,11 +296,15 @@ fcppt::math::dim::object<
 )
 {
 	for(
-		auto &ref : *this
+		auto &ref
+		:
+		storage_
 	)
-		ref /= _value;
+		ref /=
+			_value;
 
-	return *this;
+	return
+		*this;
 }
 
 template<
@@ -329,7 +327,7 @@ fcppt::math::dim::object<
 {
 	return
 		fcppt::math::detail::index_at(
-			this->begin(),
+			storage_.begin(),
 			_index
 		);
 }
@@ -354,7 +352,7 @@ fcppt::math::dim::object<
 {
 	return
 		fcppt::math::detail::index_at(
-			this->begin(),
+			storage_.begin(),
 			_index
 		);
 }
@@ -500,37 +498,6 @@ fcppt::math::dim::object<
 			2
 		>(
 			*this
-		);
-}
-
-template<
-	typename T,
-	typename N,
-	typename S
->
-typename fcppt::math::dim::object<
-	T,
-	N,
-	S
->::value_type
-fcppt::math::dim::object<
-	T,
-	N,
-	S
->::content() const
-{
-	return
-		std::accumulate(
-			this->begin(),
-			this->end(),
-			fcppt::literal<
-				value_type
-			>(
-				1
-			),
-			std::multiplies<
-				value_type
-			>()
 		);
 }
 

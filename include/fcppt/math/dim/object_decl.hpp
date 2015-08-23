@@ -11,7 +11,6 @@
 #include <fcppt/math/difference_type.hpp>
 #include <fcppt/math/size_type.hpp>
 #include <fcppt/math/static_storage.hpp>
-#include <fcppt/math/detail/array_adapter.hpp>
 #include <fcppt/math/detail/make_op_decl.hpp>
 #include <fcppt/math/dim/object_fwd.hpp>
 #include <fcppt/config/external_begin.hpp>
@@ -157,8 +156,6 @@ public:
 		> const &
 	);
 
-	FCPPT_MATH_DETAIL_ARRAY_ADAPTER(object)
-
 	/**
 	\brief Copy the values from a different dim
 	*/
@@ -282,14 +279,6 @@ FCPPT_MATH_DETAIL_MAKE_OP_DECL(\
 	*/
 	const_reference
 	d() const;
-
-	/**
-	\brief Returns the area/volume of the dimension
-
-	This is equal to the product of all components of the dimension.
-	*/
-	value_type
-	content() const;
 
 	/**
 	\brief Returns the dim filled with all zeroes

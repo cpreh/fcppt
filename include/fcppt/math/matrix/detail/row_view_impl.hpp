@@ -14,7 +14,10 @@ template<
 	typename T,
 	typename N
 >
-fcppt::math::matrix::detail::row_view<T, N>::row_view(
+fcppt::math::matrix::detail::row_view<
+	T,
+	N
+>::row_view(
 	pointer const _data,
 	size_type const _index,
 	size_type const _stride,
@@ -22,7 +25,11 @@ fcppt::math::matrix::detail::row_view<T, N>::row_view(
 )
 :
 	rep_(
-		_data + _index * _stride
+		_data
+		+
+		_index
+		*
+		_stride
 	),
 	size_(
 		_size
@@ -34,7 +41,8 @@ template<
 	typename T,
 	typename N
 >
-typename fcppt::math::matrix::detail::row_view<
+typename
+fcppt::math::matrix::detail::row_view<
 	T,
 	N
 >::iterator
@@ -51,24 +59,28 @@ template<
 	typename T,
 	typename N
 >
-typename fcppt::math::matrix::detail::row_view<
-	T,
-	N
->::pointer
+typename
 fcppt::math::matrix::detail::row_view<
 	T,
 	N
->::data() const
+>::iterator
+fcppt::math::matrix::detail::row_view<
+	T,
+	N
+>::end() const
 {
 	return
-		rep_;
+		rep_
+		+
+		size_;
 }
 
 template<
 	typename T,
 	typename N
 >
-typename fcppt::math::matrix::detail::row_view<
+typename
+fcppt::math::matrix::detail::row_view<
 	T,
 	N
 >::size_type

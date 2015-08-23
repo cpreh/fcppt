@@ -4,11 +4,12 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_MATH_AT_C_HPP_INCLUDED
-#define FCPPT_MATH_AT_C_HPP_INCLUDED
+#ifndef FCPPT_MATH_AT_HPP_INCLUDED
+#define FCPPT_MATH_AT_HPP_INCLUDED
 
+#include <fcppt/text.hpp>
 #include <fcppt/container/to_reference_type.hpp>
-#include <fcppt/math/size_type.hpp>
+#include <fcppt/math/exception.hpp>
 
 
 namespace fcppt
@@ -17,32 +18,35 @@ namespace math
 {
 
 /**
-\brief Access an element using a compile-time constant
+\brief Throw an exception if the index is out of range
 
 \ingroup fcpptmath
 */
 template<
-	fcppt::math::size_type Index,
 	typename Type
 >
 inline
 fcppt::container::to_reference_type<
 	Type
 >
-at_c(
-	Type &_value
+at(
+	Type &_value,
+	typename Type::size_type const _index
 )
 {
-	static_assert(
-		Index
-		<
-		Type::static_size::value,
-		"at_c: out of range"
-	);
+	if(
+		_index
+		>=
+		Type::static_size::value
+	)
+		throw
+			fcppt::math::exception{
+				FCPPT_TEXT("Index out of range")
+			};
 
 	return
 		_value[
-			Index
+			_index
 		];
 }
 

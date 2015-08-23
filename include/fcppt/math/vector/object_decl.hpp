@@ -11,13 +11,8 @@
 #include <fcppt/math/difference_type.hpp>
 #include <fcppt/math/size_type.hpp>
 #include <fcppt/math/static_storage.hpp>
-#include <fcppt/math/detail/array_adapter.hpp>
 #include <fcppt/math/detail/make_op_decl.hpp>
 #include <fcppt/math/vector/object_fwd.hpp>
-#include <fcppt/config/external_begin.hpp>
-#include <iterator>
-#include <type_traits>
-#include <fcppt/config/external_end.hpp>
 
 
 namespace fcppt
@@ -47,59 +42,64 @@ public:
 	/**
 	\brief A typedef for the \p N parameter
 	*/
-	typedef N dim_wrapper;
+	typedef
+	N
+	dim_wrapper;
 
-	typedef N static_size;
+	/**
+	\brief The static size
+	*/
+	typedef
+	N
+	static_size;
 
 	/**
 	\brief A typedef for the \p S parameter
 	*/
-	typedef S storage_type;
+	typedef
+	S
+	storage_type;
 
 	/**
 	\brief A type that counts the number of elements in a vector.
 	*/
-	typedef fcppt::math::size_type size_type;
+	typedef
+	fcppt::math::size_type
+	size_type;
+
 	/**
-	\brief A type that provides the difference between the addresses of two elements in a vector.
+	\brief A type that provides the difference between the addresses of two
+	elements in a vector.
 	*/
-	typedef fcppt::math::difference_type difference_type;
+	typedef
+	fcppt::math::difference_type
+	difference_type;
+
 	/**
 	\brief A type that represents the data type stored in a vector.
 	*/
-	typedef T value_type;
+	typedef
+	T
+	value_type;
+
 	/**
-	\brief A type that provides a reference to an element stored in a vector.
+	\brief A type that provides a reference to an element stored in a
+	vector.
 	*/
-	typedef typename storage_type::reference reference;
+	typedef
+	typename
+	storage_type::reference
+	reference;
+
 	/**
-	\brief A type that provides a reference to a <code>const</code> element stored in a vector for reading and performing <code>const</code> operations.
+	\brief A type that provides a reference to a <code>const</code> element
+	stored in a vector for reading and performing <code>const</code>
+	operations.
 	*/
-	typedef typename storage_type::const_reference const_reference;
-	/**
-	\brief A type that provides a pointer to an element in a vector.
-	*/
-	typedef typename storage_type::pointer pointer;
-	/**
-	\brief A type that provides a pointer to a <code>const</code> element in a vector.
-	*/
-	typedef typename storage_type::const_pointer const_pointer;
-	/**
-	\brief A type that provides a random-access iterator that can read or modify any element in a vector.
-	*/
-	typedef typename storage_type::iterator iterator;
-	/**
-	\brief A type that provides a random-access iterator that can read a <code>const</code> element in a vector.
-	*/
-	typedef typename storage_type::const_iterator const_iterator;
-	/**
-	\brief A type that provides a random-access iterator that can read or modify any element in a reversed vector.
-	*/
-	typedef std::reverse_iterator<iterator> reverse_iterator;
-	/**
-	\brief A type that provides a random-access iterator that can read any <code>const</code> element in the vector.
-	*/
-	typedef std::reverse_iterator<const_iterator> const_reverse_iterator;
+	typedef
+	typename
+	storage_type::const_reference
+	const_reference;
 
 	/**
 	\brief Calls the default constructor for every element
@@ -120,12 +120,10 @@ public:
 
 	/**
 	\brief Construct a vector from a storage source
-
-	\param s The storage source to copy from
 	*/
 	explicit
 	object(
-		storage_type const &s
+		storage_type const &
 	);
 
 	template<
@@ -160,10 +158,6 @@ public:
 			OtherStorage
 		> const &
 	);
-
-	FCPPT_MATH_DETAIL_ARRAY_ADAPTER(
-		object
-	)
 
 	/**
 	\brief Copy the values from a different vector

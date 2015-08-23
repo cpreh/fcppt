@@ -11,6 +11,7 @@
 #include <fcppt/math/detail/array_less.hpp>
 #include <fcppt/math/vector/object_impl.hpp>
 
+
 namespace fcppt
 {
 namespace math
@@ -24,16 +25,25 @@ template<
 	typename S1,
 	typename S2
 >
+inline
 bool
 operator==(
-	object<T, N, S1> const &v1,
-	object<T, N, S2> const &v2
+	fcppt::math::vector::object<
+		T,
+		N,
+		S1
+	> const &_v1,
+	fcppt::math::vector::object<
+		T,
+		N,
+		S2
+	> const &_v2
 )
 {
 	return
 		fcppt::math::detail::array_equal(
-			v1,
-			v2
+			_v1,
+			_v2
 		);
 }
 
@@ -43,14 +53,23 @@ template<
 	typename S1,
 	typename S2
 >
+inline
 bool
 operator!=(
-	object<T, N, S1> const &v1,
-	object<T, N, S2> const &v2
+	fcppt::math::vector::object<
+		T,
+		N,
+		S1
+	> const &_v1,
+	fcppt::math::vector::object<
+		T,
+		N,
+		S2
+	> const &_v2
 )
 {
 	return
-		!(v1 == v2);
+		!(_v1 == _v2);
 }
 
 template<
@@ -59,16 +78,25 @@ template<
 	typename S1,
 	typename S2
 >
+inline
 bool
 operator<(
-	object<T, N, S1> const &v1,
-	object<T, N, S2> const &v2
+	fcppt::math::vector::object<
+		T,
+		N,
+		S1
+	> const &_v1,
+	fcppt::math::vector::object<
+		T,
+		N,
+		S2
+	> const &_v2
 )
 {
 	return
 		fcppt::math::detail::array_less(
-			v1,
-			v2
+			_v1,
+			_v2
 		);
 }
 
@@ -78,14 +106,23 @@ template<
 	typename S1,
 	typename S2
 >
+inline
 bool
 operator>(
-	object<T, N, S1> const &v1,
-	object<T, N, S2> const &v2
+	fcppt::math::vector::object<
+		T,
+		N,
+		S1
+	> const &_v1,
+	fcppt::math::vector::object<
+		T,
+		N,
+		S2
+	> const &_v2
 )
 {
 	return
-		v2 < v1;
+		_v2 < _v1;
 }
 
 template<
@@ -94,14 +131,23 @@ template<
 	typename S1,
 	typename S2
 >
+inline
 bool
 operator<=(
-	object<T, N, S1> const &v1,
-	object<T, N, S2> const &v2
+	fcppt::math::vector::object<
+		T,
+		N,
+		S1
+	> const &_v1,
+	fcppt::math::vector::object<
+		T,
+		N,
+		S2
+	> const &_v2
 )
 {
 	return
-		!(v2 < v1);
+		!(_v2 < _v1);
 }
 
 template<
@@ -110,14 +156,23 @@ template<
 	typename S1,
 	typename S2
 >
+inline
 bool
 operator>=(
-	object<T, N, S1> const &v1,
-	object<T, N, S2> const &v2
+	fcppt::math::vector::object<
+		T,
+		N,
+		S1
+	> const &_v1,
+	fcppt::math::vector::object<
+		T,
+		N,
+		S2
+	> const &_v2
 )
 {
 	return
-		!(v1 < v2);
+		!(_v1 < _v2);
 }
 
 }

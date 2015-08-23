@@ -73,7 +73,7 @@ iterator_position(
 		:
 		fcppt::make_int_range(
 			1u,
-			stacked_dim.size()
+			dim::static_size::value
 		)
 	)
 		stacked_dim[

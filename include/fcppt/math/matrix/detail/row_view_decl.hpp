@@ -26,6 +26,7 @@ template<
 class row_view
 {
 public:
+	// FIXME: What is N?
 	typedef T value_type;
 
 	typedef typename N::value_type size_type;
@@ -36,11 +37,7 @@ public:
 
 	typedef T *pointer;
 
-	typedef T const *const_pointer;
-
 	typedef pointer iterator;
-
-	typedef const_pointer const_iterator;
 
 	row_view(
 		pointer,
@@ -52,8 +49,8 @@ public:
 	iterator
 	begin() const;
 
-	pointer
-	data() const;
+	iterator
+	end() const;
 
 	size_type
 	size() const;

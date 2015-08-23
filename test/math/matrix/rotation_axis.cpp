@@ -5,44 +5,48 @@
 
 
 #include <fcppt/math/pi.hpp>
-#include <fcppt/math/range_compare.hpp>
-#include <fcppt/math/matrix/object_impl.hpp>
+#include <fcppt/math/matrix/componentwise_equal.hpp>
 #include <fcppt/math/matrix/output.hpp>
 #include <fcppt/math/matrix/rotation_axis.hpp>
 #include <fcppt/math/matrix/rotation_x.hpp>
 #include <fcppt/math/matrix/rotation_y.hpp>
 #include <fcppt/math/matrix/rotation_z.hpp>
+#include <fcppt/math/matrix/static.hpp>
 #include <fcppt/math/matrix/vector.hpp>
-#include <fcppt/math/vector/object_impl.hpp>
+#include <fcppt/math/vector/componentwise_equal.hpp>
+#include <fcppt/math/vector/static.hpp>
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/range/iterator_range.hpp>
 #include <boost/test/unit_test.hpp>
 #include <fcppt/config/external_end.hpp>
 
 
 namespace
 {
-float const epsilon = 0.001f;
 
-template<typename Matrix>
+float const epsilon{
+	0.001f
+};
+
+template<
+	typename Matrix
+>
 bool
 compare_matrices(
-	Matrix const &m1,
-	Matrix const &m2)
+	Matrix const &_m1,
+	Matrix const &_m2
+)
 {
 	return
-		fcppt::math::range_compare(
-			boost::make_iterator_range(
-				m1.data(),
-				m1.data() + m1.size()),
-			boost::make_iterator_range(
-				m2.data(),
-				m2.data() + m2.size()),
-			epsilon);
+		fcppt::math::matrix::componentwise_equal(
+			_m1,
+			_m2,
+			epsilon
+		);
 }
+
 }
 
 FCPPT_PP_PUSH_WARNING
@@ -86,8 +90,8 @@ FCPPT_PP_POP_WARNING
 		1.f
 	);
 
-	BOOST_REQUIRE(
-		fcppt::math::range_compare(
+	BOOST_CHECK(
+		fcppt::math::vector::componentwise_equal(
 			trans_ * vec_,
 			vector_type(
 				0.f,

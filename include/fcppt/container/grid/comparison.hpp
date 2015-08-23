@@ -9,7 +9,6 @@
 
 #include <fcppt/container/grid/object_impl.hpp>
 #include <fcppt/detail/equal.hpp>
-#include <fcppt/math/dim/before.hpp>
 #include <fcppt/math/dim/comparison.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <algorithm>
@@ -120,10 +119,9 @@ operator<(
 		!=
 		_b.size()
 		?
-			fcppt::math::dim::before(
-				_a.size(),
-				_b.size()
-			)
+			_a.size()
+			<
+			_b.size()
 		:
 			std::lexicographical_compare(
 				_a.begin(),

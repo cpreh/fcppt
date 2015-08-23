@@ -9,10 +9,8 @@
 
 #include <fcppt/literal.hpp>
 #include <fcppt/no_init.hpp>
-#include <fcppt/math/detail/array_adapter_impl.hpp>
 #include <fcppt/math/detail/assign.hpp>
 #include <fcppt/math/detail/make_op_def.hpp>
-#include <fcppt/math/detail/make_variadic_constructor.hpp>
 #include <fcppt/math/matrix/object_decl.hpp>
 #include <fcppt/math/matrix/static_storage.hpp>
 #include <fcppt/math/matrix/detail/row_view_impl.hpp>
@@ -56,6 +54,38 @@ template<
 	typename M,
 	typename S
 >
+template<
+	typename ...Args
+>
+fcppt::math::matrix::object<
+	T,
+	N,
+	M,
+	S
+>::object(
+	Args const &..._args
+)
+:
+	storage_{{
+		_args...
+	}}
+{
+	static_assert(
+		sizeof...(
+			Args
+		)
+		==
+		dim_wrapper::value,
+		"Wrong number of parameters"
+	);
+}
+
+template<
+	typename T,
+	typename N,
+	typename M,
+	typename S
+>
 fcppt::math::matrix::object<
 	T,
 	N,
@@ -85,12 +115,7 @@ fcppt::math::matrix::object<
 >::object(
 	object const &_other
 )
-:
-	storage_(
-		_other.storage_
-	)
-{
-}
+= default;
 
 FCPPT_PP_PUSH_WARNING
 FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
@@ -125,22 +150,6 @@ fcppt::math::matrix::object<
 		this->begin()
 	);
 }
-
-FCPPT_PP_POP_WARNING
-
-FCPPT_MATH_DETAIL_ARRAY_ADAPTER_IMPL(
-	4,
-	(template<typename T, typename N, typename M, typename S>),
-	(fcppt::math::matrix::object<T, N, M, S>)
-)
-
-FCPPT_PP_PUSH_WARNING
-FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
-
-FCPPT_MATH_DETAIL_MAKE_VARIADIC_CONSTRUCTOR(
-	FCPPT_MATH_MATRIX_MAX_CTOR_PARAMS,
-	(7, (template<typename T, typename N, typename M, typename S> fcppt::math::matrix::object<T, N, M, S>::object))
-)
 
 FCPPT_PP_POP_WARNING
 
@@ -257,7 +266,7 @@ fcppt::math::matrix::object<
 	for(
 		auto &item
 		:
-		*this
+		storage_
 	)
 		item *=
 			_value;
@@ -290,7 +299,7 @@ fcppt::math::matrix::object<
 	for(
 		auto &item
 		:
-		*this
+		storage_
 	)
 		item /=
 			_value;
@@ -323,8 +332,9 @@ fcppt::math::matrix::object<
 {
 	return
 		reference(
-			typename reference::storage_type(
-				this->data(),
+			typename
+			reference::storage_type(
+				storage_.data(),
 				_j,
 				this->columns(),
 				this->rows()
@@ -344,7 +354,7 @@ fcppt::math::matrix::object<
 	N,
 	M,
 	S
->::const_reference const
+>::const_reference
 fcppt::math::matrix::object<
 	T,
 	N,
@@ -356,8 +366,9 @@ fcppt::math::matrix::object<
 {
 	return
 		const_reference(
-			typename const_reference::storage_type(
-				this->data(),
+			typename
+			const_reference::storage_type(
+				storage_.data(),
 				_j,
 				this->columns(),
 				this->rows()
@@ -371,6 +382,7 @@ template<
 	typename M,
 	typename S
 >
+constexpr
 typename fcppt::math::matrix::object<
 	T,
 	N,
@@ -394,7 +406,9 @@ template<
 	typename M,
 	typename S
 >
-typename fcppt::math::matrix::object<
+constexpr
+typename
+fcppt::math::matrix::object<
 	T,
 	N,
 	M,

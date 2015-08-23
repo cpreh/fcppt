@@ -8,6 +8,8 @@
 #define FCPPT_MATH_VECTOR_MOD_HPP_INCLUDED
 
 #include <fcppt/math/mod.hpp>
+#include <fcppt/math/static_storage.hpp>
+#include <fcppt/math/vector/init.hpp>
 #include <fcppt/math/vector/object_impl.hpp>
 
 
@@ -17,51 +19,136 @@ namespace math
 {
 namespace vector
 {
+
 /**
 \brief Calculate vector modulo a scalar
+
+\ingroup fcpptmathvector
 */
-template<typename T,typename N,typename S>
-fcppt::math::vector::object<T,N,S> const
+template<
+	typename T,
+	typename N,
+	typename S
+>
+fcppt::math::vector::object<
+	T,
+	N,
+	fcppt::math::static_storage<
+		T,
+		N
+	>
+>
 mod(
-	fcppt::math::vector::object<T,N,S> v,
-	T const div)
+	fcppt::math::vector::object<
+		T,
+		N,
+		S
+	> const &_arg,
+	T const _div
+)
 {
-	for(
-		auto &item : v)
-		item =
-			fcppt::math::mod(
-				item,
-				div);
+	typedef
+	fcppt::math::vector::object<
+		T,
+		N,
+		fcppt::math::static_storage<
+			T,
+			N
+		>
+	>
+	result_type;
 
-	return v;
+	return
+		fcppt::math::vector::init<
+			result_type
+		>(
+			[
+				&_arg,
+				_div
+			](
+				typename
+				result_type::size_type const _index
+			)
+			{
+				return
+					fcppt::math::mod(
+						_arg[
+							_index
+						],
+						_div
+					);
+			}
+		);
 }
 
-template<typename T,typename N,typename S>
-fcppt::math::vector::object<T,N,S> const
+/**
+\brief Calculate vector modulo a vector
+
+\ingroup fcpptmathvector
+*/
+template<
+	typename T,
+	typename N,
+	typename S1,
+	typename S2
+>
+fcppt::math::vector::object<
+	T,
+	N,
+	fcppt::math::static_storage<
+		T,
+		N
+	>
+>
 mod(
-	fcppt::math::vector::object<T,N,S> v0,
-	fcppt::math::vector::object<T,N,S> const &v1)
+	fcppt::math::vector::object<
+		T,
+		N,
+		S1
+	> const &_v0,
+	fcppt::math::vector::object<
+		T,
+		N,
+		S2
+	> const &_v1
+)
 {
-	typedef typename
-	fcppt::math::vector::object<T,N,S>
-	vector;
+	typedef
+	fcppt::math::vector::object<
+		T,
+		N,
+		fcppt::math::static_storage<
+			T,
+			N
+		>
+	>
+	result_type;
 
-	typedef typename
-	vector::size_type
-	vector_size_type;
-
-	for(
-		vector_size_type i =
-			0;
-		i < v0.size();
-		++i)
-		v0[i] =
-			fcppt::math::mod(
-				v0[i],
-				v1[i]);
-
-	return v0;
+	return
+		fcppt::math::vector::init<
+			result_type
+		>(
+			[
+				&_v0,
+				&_v1
+			](
+				typename
+				result_type::size_type const _index
+			)
+			{
+				return
+					fcppt::math::mod(
+						_v0[
+							_index
+						],
+						_v1[
+							_index
+						]
+					);
+			}
+		);
 }
+
 }
 }
 }

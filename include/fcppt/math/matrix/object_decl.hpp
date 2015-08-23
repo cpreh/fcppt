@@ -11,15 +11,12 @@
 #include <fcppt/math/difference_type.hpp>
 #include <fcppt/math/size_type.hpp>
 #include <fcppt/math/detail/make_op_decl.hpp>
-#include <fcppt/math/detail/make_variadic_constructor_decl.hpp>
-#include <fcppt/math/matrix/max_ctor_params.hpp>
 #include <fcppt/math/matrix/object_fwd.hpp>
 #include <fcppt/math/matrix/static_storage.hpp>
 #include <fcppt/math/matrix/detail/row_view_fwd.hpp>
 #include <fcppt/math/vector/object_decl.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/mpl/times.hpp>
-#include <iterator>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
@@ -74,29 +71,41 @@ public:
 	/**
 	\brief A typedef for the \p M and \p N parameters
 	*/
-	typedef typename boost::mpl::times<
+	typedef
+	typename
+	boost::mpl::times<
 		N,
 		M
-	>::type dim_wrapper;
+	>::type
+	dim_wrapper;
 
 	/**
 	\brief A typedef for the \p S parameter
 	*/
-	typedef S storage_type;
+	typedef
+	S
+	storage_type;
 
 	/**
 	\brief A type that counts the number of elements in a matrix.
 	*/
-	typedef fcppt::math::size_type size_type;
+	typedef
+	fcppt::math::size_type
+	size_type;
+
 	/**
 	\brief A type that provides the difference between the addresses of two elements in a matrix.
 	*/
-	typedef fcppt::math::difference_type difference_type;
+	typedef
+	fcppt::math::difference_type
+	difference_type;
 
 	/**
 	\brief A type that represents the data type stored in a matrix.
 	*/
-	typedef T value_type;
+	typedef
+	T
+	value_type;
 
 	/**
 	\brief A type that provides a reference to an element stored in a matrix.
@@ -105,14 +114,16 @@ public:
 	typedef, as it's really a vector that models a row-view over the
 	matrix, see the explanation above.
 	*/
-	typedef fcppt::math::vector::object<
+	typedef
+	fcppt::math::vector::object<
 		T,
 		N,
 		fcppt::math::matrix::detail::row_view<
 			T,
 			N
 		>
-	> reference;
+	>
+	reference;
 
 	/**
 	\brief
@@ -123,50 +134,16 @@ public:
 	typedef, as it's really a vector that models a row-view over the
 	matrix, see the explanation above.
 	*/
-	typedef fcppt::math::vector::object<
+	typedef
+	fcppt::math::vector::object<
 		T,
 		N,
 		fcppt::math::matrix::detail::row_view<
 			T const,
 			N
 		>
-	> const_reference;
-
-	/**
-	\brief A type that provides a pointer to an element in a matrix.
-	*/
-	typedef typename storage_type::pointer pointer;
-
-	/**
-	\brief A type that provides a pointer to a <code>const</code> element in a matrix.
-	*/
-	typedef typename storage_type::const_pointer const_pointer;
-
-	/**
-	\brief A type that provides a random-access iterator that can read or modify any element in a matrix.
-
-	\warning
-	An "element" in this case is <em>not</em> a row, but a single cell. See the iteration section above.
-	*/
-	typedef typename storage_type::iterator iterator;
-
-	/**
-	\brief A type that provides a random-access iterator that can read or modify any element in a matrix.
-
-	\warning
-	An "element" in this case is <em>not</em> a row, but a single cell. See the iteration section above.
-	*/
-	typedef typename storage_type::const_iterator const_iterator;
-
-	/**
-	\brief A type that provides a random-access iterator that can read or modify any element in a reversed matrix.
-	*/
-	typedef std::reverse_iterator<iterator> reverse_iterator;
-
-	/**
-	\brief A type that provides a random-access iterator that can read any <code>const</code> element in the matrix.
-	*/
-	typedef std::reverse_iterator<const_iterator> const_reverse_iterator;
+	>
+	const_reference;
 
 	/**
 	\brief Construct an uninitialized matrix
@@ -182,11 +159,18 @@ public:
 
 	/**
 	\brief Construct a vector from a storage source
-	\param s The storage source to copy from
 	*/
 	explicit
 	object(
-		storage_type const &s
+		storage_type const &
+	);
+
+	template<
+		typename ...Args
+	>
+	explicit
+	object(
+		Args const &...
 	);
 
 	/**
@@ -203,6 +187,7 @@ public:
 	template<
 		typename OtherStorage
 	>
+	explicit
 	object(
 		fcppt::math::matrix::object<
 			T,
@@ -211,15 +196,6 @@ public:
 			OtherStorage
 		> const &
 	);
-
-	FCPPT_MATH_DETAIL_ARRAY_ADAPTER(
-		object
-	)
-
-	FCPPT_MATH_DETAIL_MAKE_VARIADIC_CONSTRUCTOR_DECL(
-		FCPPT_MATH_MATRIX_MAX_CTOR_PARAMS,
-		object
-	)
 
 	/**
 	\brief Copy the values from a different matrix
@@ -297,7 +273,7 @@ FCPPT_MATH_DETAIL_MAKE_OP_DECL(\
 	\warning
 	Behaviour is undefined if the index is out of range.
 	*/
-	const_reference const
+	const_reference
 	operator[](
 		size_type
 	) const;
@@ -305,6 +281,7 @@ FCPPT_MATH_DETAIL_MAKE_OP_DECL(\
 	/**
 	\brief Returns the number of rows in the matrix.
 	*/
+	constexpr
 	static
 	size_type
 	rows();
@@ -312,6 +289,7 @@ FCPPT_MATH_DETAIL_MAKE_OP_DECL(\
 	/**
 	\brief Returns the number of columns in the matrix.
 	*/
+	constexpr
 	static
 	size_type
 	columns();

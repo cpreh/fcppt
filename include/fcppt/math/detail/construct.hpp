@@ -29,6 +29,15 @@ construct(
 	typename Src::value_type const &_value
 )
 {
+	static_assert(
+		Dest::static_size::value
+		==
+		Src::static_size::value
+		+
+		1u,
+		""
+	);
+
 	Dest ret{
 		fcppt::no_init()
 	};
@@ -37,7 +46,7 @@ construct(
 		auto const index
 		:
 		fcppt::make_int_range_count(
-			_src.size()
+			Src::static_size::value
 		)
 	)
 		ret[
@@ -48,7 +57,7 @@ construct(
 			];
 
 	ret[
-		Src::dim_wrapper::value
+		Src::static_size::value
 	] =
 		_value;
 

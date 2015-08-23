@@ -6,7 +6,7 @@
 
 #include <fcppt/math/matrix/arithmetic.hpp>
 #include <fcppt/math/matrix/comparison.hpp>
-#include <fcppt/math/matrix/object_impl.hpp>
+#include <fcppt/math/matrix/output.hpp>
 #include <fcppt/math/matrix/static.hpp>
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
@@ -19,11 +19,13 @@
 namespace
 {
 
-typedef fcppt::math::matrix::static_<
+typedef
+fcppt::math::matrix::static_<
 	int,
 	2,
 	2
-> matrix_type;
+>
+matrix_type;
 
 }
 
@@ -48,9 +50,9 @@ FCPPT_PP_POP_WARNING
 
 	second += first;
 
-	BOOST_REQUIRE(
-		second
-		== matrix_type(
+	BOOST_CHECK_EQUAL(
+		second,
+		matrix_type(
 			3, 5,
 			7, 9
 		)
@@ -73,9 +75,9 @@ FCPPT_PP_POP_WARNING
 
 	first *= 3;
 
-	BOOST_REQUIRE(
-		first
-		== matrix_type(
+	BOOST_CHECK_EQUAL(
+		first,
+		matrix_type(
 			3, 6,
 			9, 12
 		)

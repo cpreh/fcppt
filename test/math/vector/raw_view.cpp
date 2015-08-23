@@ -305,17 +305,26 @@ public:
 	}
 
 	pointer
-	data() const
+	data()
 	{
 		return
 			data_;
 	}
 
 	iterator
-	begin() const
+	begin()
 	{
 		return
 			iterator(
+				data_
+			);
+	}
+
+	const_iterator
+	begin() const
+	{
+		return
+			const_iterator(
 				data_
 			);
 	}
@@ -342,6 +351,7 @@ BOOST_AUTO_TEST_CASE(
 )
 {
 FCPPT_PP_POP_WARNING
+
 	typedef unsigned value_type;
 
 	typedef raw_view<
@@ -365,7 +375,7 @@ FCPPT_PP_POP_WARNING
 		sizeof(value_type) * num_elements
 	> array_type;
 
-	array_type array = {{ 0 }};
+	array_type array = {{ 0, 0 }};
 
 	vector_raw vec(
 		value_raw_view(
@@ -374,31 +384,36 @@ FCPPT_PP_POP_WARNING
 		)
 	);
 
-	BOOST_CHECK(
-		vec.size() == 2
+	BOOST_CHECK_EQUAL(
+		vector_raw::static_size::value,
+		2u
 	);
 
 	vec[0] = 1u;
 
 	vec[1] = 2u;
 
-	BOOST_CHECK(
-		vec[0] == 1u
+	BOOST_CHECK_EQUAL(
+		vec[0],
+		1u
 	);
 
-	BOOST_CHECK(
-		vec[1] == 2u
+	BOOST_CHECK_EQUAL(
+		vec[1],
+		2u
 	);
 
 	vector_raw const copy(
 		vec
 	);
 
-	BOOST_CHECK(
-		copy[0] == 1u
+	BOOST_CHECK_EQUAL(
+		copy[0],
+		1u
 	);
 
-	BOOST_CHECK(
-		copy[1] == 2u
+	BOOST_CHECK_EQUAL(
+		copy[1],
+		2u
 	);
 }

@@ -11,6 +11,7 @@
 #include <fcppt/container/grid/range_dim.hpp>
 #include <fcppt/container/grid/size_type.hpp>
 #include <fcppt/container/grid/sup.hpp>
+#include <fcppt/math/dim/contents.hpp>
 
 
 namespace fcppt
@@ -45,10 +46,12 @@ range_size(
 )
 {
 	return
-		fcppt::container::grid::range_dim(
-			_min,
-			_sup
-		).content();
+		fcppt::math::dim::contents(
+			fcppt::container::grid::range_dim(
+				_min,
+				_sup
+			)
+		);
 }
 
 }

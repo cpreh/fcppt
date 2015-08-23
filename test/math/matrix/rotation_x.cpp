@@ -5,12 +5,10 @@
 
 
 #include <fcppt/math/pi.hpp>
-#include <fcppt/math/range_compare.hpp>
-#include <fcppt/math/matrix/object_impl.hpp>
 #include <fcppt/math/matrix/rotation_x.hpp>
 #include <fcppt/math/matrix/static.hpp>
 #include <fcppt/math/matrix/vector.hpp>
-#include <fcppt/math/vector/object_impl.hpp>
+#include <fcppt/math/vector/componentwise_equal.hpp>
 #include <fcppt/math/vector/static.hpp>
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
@@ -35,7 +33,7 @@ FCPPT_PP_POP_WARNING
 		4
 	> matrix_type;
 
-	matrix_type const trans_(
+	matrix_type const trans(
 		fcppt::math::matrix::rotation_x(
 			fcppt::math::pi<float>()
 		)
@@ -46,23 +44,27 @@ FCPPT_PP_POP_WARNING
 		4
 	> vector_type;
 
-	vector_type const vec_(
+	vector_type const vec(
 		0.f,
 		1.f,
 		0.f,
 		1.f
 	);
 
-	float const epsilon = 0.001f;
+	float const epsilon{
+		0.001f
+	};
 
-	BOOST_REQUIRE((
-		fcppt::math::range_compare(
-			trans_ * vec_,
+	BOOST_CHECK((
+		fcppt::math::vector::componentwise_equal(
+			trans * vec,
 			vector_type(
 				0.f,
 				-1.f,
 				0.f,
 				1.f
 			),
-			epsilon)));
+			epsilon
+		)
+	));
 }

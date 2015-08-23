@@ -25,7 +25,8 @@ template<
 	typename Iterator,
 	typename SizeType
 >
-typename std::iterator_traits<
+typename
+std::iterator_traits<
 	Iterator
 >::reference
 index_at(

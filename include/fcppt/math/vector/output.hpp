@@ -22,11 +22,12 @@ namespace vector
 {
 
 /**
-\brief Outputs a vector to \p s, in the format
+\brief Outputs a vector to a stream
 
+Uses the output format
 <pre>(a_1,a_2,...)</pre>
-
 where <code>a_i</code> are the vector's components.
+
 \ingroup fcpptmathvector
 */
 template<
@@ -36,16 +37,28 @@ template<
 	typename Ch,
 	typename Traits
 >
-std::basic_ostream<Ch, Traits> &
+inline
+std::basic_ostream<
+	Ch,
+	Traits
+> &
 operator<< (
-	std::basic_ostream<Ch, Traits> &s,
-	object<T, N, S> const &v
+	std::basic_ostream<
+		Ch,
+		Traits
+	> &_stream,
+	fcppt::math::vector::object<
+		T,
+		N,
+		S
+	> const &_vector
 )
 {
-	return math::detail::one_dimensional_output(
-		s,
-		v
-	);
+	return
+		fcppt::math::detail::one_dimensional_output(
+			_stream,
+			_vector
+		);
 }
 
 }

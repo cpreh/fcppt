@@ -8,6 +8,10 @@
 #define FCPPT_MATH_DETAIL_ARRAY_EQUAL_HPP_INCLUDED
 
 #include <fcppt/detail/equal.hpp>
+#include <fcppt/config/external_begin.hpp>
+#include <boost/mpl/equal_to.hpp>
+#include <boost/utility/enable_if.hpp>
+#include <fcppt/config/external_end.hpp>
 
 
 namespace fcppt
@@ -21,19 +25,31 @@ template<
 	typename T1,
 	typename T2
 >
-bool
+inline
+typename
+boost::enable_if<
+	boost::mpl::equal_to<
+		typename
+		T1::static_size,
+		typename
+		T2::static_size
+	>,
+	bool
+>::type
 array_equal(
 	T1 const &_v1,
 	T2 const &_v2
 )
 {
+	auto const &storage1(
+		_v1.storage()
+	);
+
 	return
-		_v1.size() == _v2.size()
-		&&
 		fcppt::detail::equal(
-			_v1.begin(),
-			_v1.end(),
-			_v2.begin()
+			storage1.begin(),
+			storage1.end(),
+			_v2.storage().begin()
 		);
 }
 
