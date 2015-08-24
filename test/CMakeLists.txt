@@ -591,6 +591,10 @@ add_fcppt_test(
 )
 
 add_fcppt_test(
+	math/vector/input
+)
+
+add_fcppt_test(
 	math/vector/map
 )
 

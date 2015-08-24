@@ -7,6 +7,7 @@
 #ifndef FCPPT_MATH_DETAIL_ONE_DIMENSIONAL_INPUT_HPP_INCLUDED
 #define FCPPT_MATH_DETAIL_ONE_DIMENSIONAL_INPUT_HPP_INCLUDED
 
+#include <fcppt/make_int_range_count.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <ios>
 #include <istream>
@@ -23,40 +24,99 @@ namespace detail
 template<
 	typename Ch,
 	typename Traits,
-	typename T
+	typename Type
 >
-std::basic_istream<Ch, Traits> &
+std::basic_istream<
+	Ch,
+	Traits
+> &
 one_dimensional_input(
-	std::basic_istream<Ch, Traits> &s,
-	T &v
+	std::basic_istream<
+		Ch,
+		Traits
+	> &_stream,
+	Type &_value
 )
 {
-	Ch c;
-	s >> c;
-	if(c != s.widen('('))
+	Ch temp;
+
+	_stream >>
+		temp;
+
+	if(
+		temp
+		!=
+		_stream.widen('(')
+	)
 	{
-		s.setstate(std::ios_base::failbit);
-		return s;
+		_stream.setstate(
+			std::ios_base::failbit
+		);
+
+		return
+			_stream;
 	}
 
-	for(typename T::size_type i = 0; i < v.size() - 1; ++i)
+	for(
+		auto const index
+		:
+		fcppt::make_int_range_count(
+			Type::static_size::value
+		)
+	)
 	{
-		s >> v[i];
-		s >> c;
-		if(c != s.widen(','))
+		if(
+			!(
+				_stream >>
+					_value[
+						index
+					]
+			)
+		)
+			return
+				_stream;
+
+		if(
+			index
+			!=
+			Type::static_size::value
+			-
+			1u
+		)
 		{
-			s.setstate(std::ios_base::failbit);
-			return s;
+			_stream >>
+				temp;
+
+			if(
+				temp
+				!=
+				_stream.widen(',')
+			)
+			{
+				_stream.setstate(
+					std::ios_base::failbit
+				);
+
+				return
+					_stream;
+			}
 		}
 	}
 
-	s >> v.back();
+	_stream >>
+		temp;
 
-	s >> c;
-	if(c != s.widen(')'))
-		s.setstate(std::ios_base::failbit);
+	if(
+		temp
+		!=
+		_stream.widen(')')
+	)
+		_stream.setstate(
+			std::ios_base::failbit
+		);
 
-	return s;
+	return
+		_stream;
 }
 
 }
