@@ -890,7 +890,12 @@ set(
 	include/fcppt/math/matrix/exponential_pade.hpp
 	include/fcppt/math/matrix/has_dim.hpp
 	include/fcppt/math/matrix/identity.hpp
+	include/fcppt/math/matrix/index.hpp
+	include/fcppt/math/matrix/index_decl.hpp
+	include/fcppt/math/matrix/index_fwd.hpp
+	include/fcppt/math/matrix/index_impl.hpp
 	include/fcppt/math/matrix/infinity_norm.hpp
+	include/fcppt/math/matrix/init.hpp
 	include/fcppt/math/matrix/inverse.hpp
 	include/fcppt/math/matrix/is_matrix.hpp
 	include/fcppt/math/matrix/logarithm.hpp

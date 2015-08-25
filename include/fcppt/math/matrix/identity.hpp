@@ -8,7 +8,8 @@
 #define FCPPT_MATH_MATRIX_IDENTITY_HPP_INCLUDED
 
 #include <fcppt/literal.hpp>
-#include <fcppt/no_init.hpp>
+#include <fcppt/math/matrix/index.hpp>
+#include <fcppt/math/matrix/init.hpp>
 #include <fcppt/math/matrix/is_matrix.hpp>
 #include <fcppt/math/matrix/static.hpp>
 
@@ -44,13 +45,9 @@ identity()
 	);
 
 	typedef
-	typename
-	Matrix::value_type
-	value_type;
-
-	typedef
 	fcppt::math::matrix::static_<
-		value_type,
+		typename
+		Matrix::value_type,
 		Matrix::n_wrapper::value,
 		Matrix::m_wrapper::value
 	>
@@ -58,38 +55,39 @@ identity()
 
 	typedef
 	typename
-	result_type::size_type
-	size_type;
-
-	result_type ret{
-		fcppt::no_init()
-	};
-
-	// TODO: Create an init function
-	for(
-		size_type i = 0; i < ret.rows(); ++i
-	)
-		for(
-			size_type j = 0; j < ret.columns(); ++j
-		)
-			ret[i][j] =
-				i == j
-				?
-					fcppt::literal<
-						value_type
-					>(
-						1
-					)
-				:
-					fcppt::literal<
-						value_type
-					>(
-						0
-					)
-				;
+	result_type::value_type
+	value_type;
 
 	return
-		ret;
+		fcppt::math::matrix::init<
+			result_type
+		>(
+			[](
+				fcppt::math::matrix::index<
+					typename
+					result_type::size_type
+				> const _index
+			)
+			{
+				return
+					_index.row()
+					==
+					_index.column()
+					?
+						fcppt::literal<
+							value_type
+						>(
+							1
+						)
+					:
+						fcppt::literal<
+							value_type
+						>(
+							0
+						)
+					;
+			}
+		);
 }
 
 }

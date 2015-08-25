@@ -154,7 +154,7 @@ public:
 	\brief Construct an uninitialized matrix
 
 	\warning
-	The content of the vector will be undefined (not null) after
+	The content of the matrix will be undefined (not null) after
 	initialization
 	*/
 	explicit
@@ -163,7 +163,7 @@ public:
 	);
 
 	/**
-	\brief Construct a vector from a storage source
+	\brief Construct a matrix from a storage source
 	*/
 	explicit
 	object(

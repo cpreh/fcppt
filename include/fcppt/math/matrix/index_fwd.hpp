@@ -4,8 +4,8 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_MATH_MATRIX_OBJECT_FWD_HPP_INCLUDED
-#define FCPPT_MATH_MATRIX_OBJECT_FWD_HPP_INCLUDED
+#ifndef FCPPT_MATH_MATRIX_INDEX_FWD_HPP_INCLUDED
+#define FCPPT_MATH_MATRIX_INDEX_FWD_HPP_INCLUDED
 
 
 namespace fcppt
@@ -16,12 +16,9 @@ namespace matrix
 {
 
 template<
-	typename T,
-	typename N,
-	typename M,
-	typename S
+	typename SizeType
 >
-class object;
+class index;
 
 }
 }
