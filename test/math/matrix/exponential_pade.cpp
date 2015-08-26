@@ -6,6 +6,7 @@
 
 #include <fcppt/math/matrix/componentwise_equal.hpp>
 #include <fcppt/math/matrix/exponential_pade.hpp>
+#include <fcppt/math/matrix/row.hpp>
 #include <fcppt/math/matrix/output.hpp>
 #include <fcppt/math/matrix/static.hpp>
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
@@ -34,9 +35,15 @@ FCPPT_PP_POP_WARNING
 	matrix_type;
 
 	matrix_type const t(
-		2.0, -1.0, 1.0,
-		0.0, 3.0, -1.0,
-		2.0, 1.0, 3.0
+		fcppt::math::matrix::row(
+			2.0, -1.0, 1.0
+		),
+		fcppt::math::matrix::row(
+			0.0, 3.0, -1.0
+		),
+		fcppt::math::matrix::row(
+			2.0, 1.0, 3.0
+		)
 	);
 
 	double const epsilon =
@@ -56,9 +63,15 @@ FCPPT_PP_POP_WARNING
 		fcppt::math::matrix::componentwise_equal(
 			result,
 			matrix_type(
-				23.6045,-7.38906,23.6045,
-				-16.2155,14.7781,-23.6045,
-				30.9936,7.38906,30.9936
+				fcppt::math::matrix::row(
+					23.6045,-7.38906,23.6045
+				),
+				fcppt::math::matrix::row(
+					-16.2155,14.7781,-23.6045
+				),
+				fcppt::math::matrix::row(
+					30.9936,7.38906,30.9936
+				)
 			),
 			epsilon
 		)

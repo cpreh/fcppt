@@ -21,15 +21,19 @@ namespace detail
 
 template<
 	typename T,
-	typename N
+	typename C
 >
 class row_view
 {
 public:
-	// FIXME: What is N?
-	typedef T value_type;
+	typedef
+	T
+	value_type;
 
-	typedef typename N::value_type size_type;
+	typedef
+	typename
+	C::value_type
+	size_type;
 
 	typedef T &reference;
 
@@ -42,8 +46,7 @@ public:
 	row_view(
 		pointer,
 		size_type index,
-		size_type stride,
-		size_type size
+		size_type columns
 	);
 
 	iterator
@@ -52,12 +55,11 @@ public:
 	iterator
 	end() const;
 
+	constexpr
 	size_type
 	size() const;
 private:
 	pointer rep_;
-
-	size_type size_;
 };
 
 }

@@ -9,6 +9,7 @@
 
 #include <fcppt/literal.hpp>
 #include <fcppt/math/matrix/object_impl.hpp>
+#include <fcppt/math/matrix/row.hpp>
 #include <fcppt/math/matrix/static.hpp>
 #include <fcppt/math/vector/has_dim.hpp>
 #include <fcppt/math/vector/object_impl.hpp>
@@ -34,7 +35,11 @@ The resulting matrix will be static.
 template<
 	typename T
 >
-fcppt::math::matrix::static_<T, 4, 4> const
+fcppt::math::matrix::static_<
+	T,
+	4,
+	4
+>
 translation(
 	T const _x,
 	T const _y,
@@ -42,20 +47,39 @@ translation(
 )
 {
 	T const
-		zero(
-			fcppt::literal<T>(0)
-		),
-		one(
-			fcppt::literal<T>(1)
-		);
+		zero{
+			fcppt::literal<
+				T
+			>(
+				0
+			)
+		},
+		one{
+			fcppt::literal<
+				T
+			>(
+				1
+			)
+		};
 
 	return
-		fcppt::math::matrix::static_<T, 4, 4>
-		(
-			one, zero, zero, _x,
-			zero, one, zero, _y,
-			zero, zero, one, _z,
-			zero, zero, zero, one
+		fcppt::math::matrix::static_<
+			T,
+			4,
+			4
+		>(
+			fcppt::math::matrix::row(
+				one, zero, zero, _x
+			),
+			fcppt::math::matrix::row(
+				zero, one, zero, _y
+			),
+			fcppt::math::matrix::row(
+				zero, zero, one, _z
+			),
+			fcppt::math::matrix::row(
+				zero, zero, zero, one
+			)
 		);
 }
 
@@ -70,15 +94,18 @@ The resulting matrix will be static.
 template<
 	typename Vector
 >
+inline
 fcppt::math::matrix::static_<
-	typename Vector::value_type,
+	typename
+	Vector::value_type,
 	4,
 	4
-> const
+>
 translation(
 	Vector const &_vec
 )
 {
+	// TODO: Match vector in a better way
 	static_assert(
 		fcppt::math::vector::has_dim<
 			Vector,

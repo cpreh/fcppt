@@ -7,6 +7,7 @@
 #ifndef FCPPT_MATH_MATRIX_ROTATION_2D_HPP_INCLUDED
 #define FCPPT_MATH_MATRIX_ROTATION_2D_HPP_INCLUDED
 
+#include <fcppt/math/matrix/row.hpp>
 #include <fcppt/math/matrix/static.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <cmath>
@@ -58,8 +59,12 @@ rotation_2d(
 			2,
 			2
 		>{
-			cosx, -sinx,
-			sinx,  cosx
+			fcppt::math::matrix::row(
+				cosx, -sinx
+			),
+			fcppt::math::matrix::row(
+				sinx,  cosx
+			)
 		};
 }
 

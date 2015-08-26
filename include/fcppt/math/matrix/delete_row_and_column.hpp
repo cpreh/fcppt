@@ -9,8 +9,8 @@
 #define FCPPT_MATH_MATRIX_DELETE_ROW_AND_COLUMN_HPP_INCLUDED
 
 #include <fcppt/literal.hpp>
-#include <fcppt/no_init.hpp>
-#include <fcppt/math/size_type.hpp>
+#include <fcppt/math/matrix/index.hpp>
+#include <fcppt/math/matrix/init.hpp>
 #include <fcppt/math/matrix/object_impl.hpp>
 #include <fcppt/math/matrix/static.hpp>
 
@@ -25,93 +25,122 @@ namespace matrix
 /**
 \brief Deletes a specific row and rolumn (a cross) from the matrix
 \ingroup fcpptmathmatrix
-\tparam T The matrix's <code>value_type</code>
-\tparam M The matrix's row dimension type
-\tparam N The matrix's column dimension type
-\tparam S The matrix's storage type
+
 \param _matrix The matrix (must be a static matrix)
+
 \param _row The row to delete
+
 \param _column The column to delete
+
 \return The result type will be <code>(N - 1, M - 1)</code>
 */
 template<
 	typename T,
-	typename N,
-	typename M,
+	typename R,
+	typename C,
 	typename S
 >
 fcppt::math::matrix::static_<
 	T,
-	N::value-1,
-	M::value-1
-> const
+	R::value
+	-
+	1u,
+	C::value
+	-
+	1u
+>
 delete_row_and_column(
-	fcppt::math::matrix::object<T, N, M, S> const &_matrix,
-	typename object<T, N, M, S>::size_type const _row,
-	typename object<T, N, M, S>::size_type const _column
+	fcppt::math::matrix::object<
+		T,
+		R,
+		C,
+		S
+	> const &_matrix,
+	typename
+	fcppt::math::matrix::object<
+		T,
+		R,
+		C,
+		S
+	>::size_type const _row,
+	typename
+	fcppt::math::matrix::object<
+		T,
+		R,
+		C,
+		S
+	>::size_type const _column
 )
 {
 	typedef
 	fcppt::math::matrix::static_<
 		T,
-		N::value
+		R::value
 		-
-		1,
-		M::value
+		1u,
+		C::value
 		-
-		1
+		1u
 	>
-	ret_type;
+	result_type;
 
-	typedef typename
-	ret_type::size_type
+	typedef
+	typename
+	result_type::size_type
 	size_type;
 
-	ret_type ret{
-		fcppt::no_init()
-	};
+	return
+		fcppt::math::matrix::init<
+			result_type
+		>(
+			[
+				&_matrix,
+				_row,
+				_column
+			](
+				fcppt::math::matrix::index<
+					size_type
+				> const _index
+			)
+			{
+				auto const clamp(
+					[](
+						size_type const _cur,
+						size_type const _rem
+					)
+					{
+						return
+							_cur
+							>=
+							_rem
+							?
+								_cur
+								+
+								fcppt::literal<
+									size_type
+								>(
+									1
+								)
+							:
+								_cur
+							;
+					}
+				);
 
-	for(
-		size_type i =
-			fcppt::literal<size_type>(0);
-		i < _matrix.rows();
-		++i
-	)
-	{
-		if (i == _row)
-			continue;
-
-		size_type const reali =
-			i > _row
-			?
-				i
-				-
-				fcppt::literal<size_type>(
-					1
-				)
-			: i;
-
-		for(
-			size_type j = fcppt::literal<size_type>(0);
-			j < _matrix.columns();
-			++j
-		)
-		{
-			if (j == _column)
-				continue;
-
-			size_type const realj =
-				j > _column
-				?
-					j - fcppt::literal<size_type>(1)
-				:
-					j;
-
-			ret[reali][realj] = _matrix[i][j];
-		}
-	}
-
-	return ret;
+				return
+					_matrix[
+						clamp(
+							_index.row(),
+							_row
+						)
+					][
+						clamp(
+							_index.column(),
+							_column
+						)
+					];
+			}
+		);
 }
 
 }

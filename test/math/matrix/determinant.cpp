@@ -6,6 +6,7 @@
 
 #include <fcppt/math/matrix/determinant.hpp>
 #include <fcppt/math/matrix/identity.hpp>
+#include <fcppt/math/matrix/row.hpp>
 #include <fcppt/math/matrix/static.hpp>
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
@@ -43,9 +44,15 @@ FCPPT_PP_POP_WARNING
 	BOOST_CHECK_EQUAL(
 		fcppt::math::matrix::determinant(
 			large_matrix_type(
-				1,2,3,
-				4,5,6,
-				7,8,9
+				fcppt::math::matrix::row(
+					1,2,3
+				),
+				fcppt::math::matrix::row(
+					4,5,6
+				),
+				fcppt::math::matrix::row(
+					7,8,9
+				)
 			)
 		),
 		0
@@ -54,8 +61,12 @@ FCPPT_PP_POP_WARNING
 	BOOST_CHECK_EQUAL(
 		fcppt::math::matrix::determinant(
 			small_matrix_type(
-				-3,-5,
-				-1,-2
+				fcppt::math::matrix::row(
+					-3,-5
+				),
+				fcppt::math::matrix::row(
+					-1,-2
+				)
 			)
 		),
 		1

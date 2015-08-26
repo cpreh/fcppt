@@ -29,11 +29,12 @@ namespace matrix
 template<
 	typename Matrix
 >
+// TODO: Make a typedef for this
 fcppt::math::matrix::static_<
 	typename
 	Matrix::value_type,
-	Matrix::n_wrapper::value,
-	Matrix::m_wrapper::value
+	Matrix::static_rows::value,
+	Matrix::static_columns::value
 >
 identity()
 {
@@ -48,8 +49,8 @@ identity()
 	fcppt::math::matrix::static_<
 		typename
 		Matrix::value_type,
-		Matrix::n_wrapper::value,
-		Matrix::m_wrapper::value
+		Matrix::static_rows::value,
+		Matrix::static_columns::value
 	>
 	result_type;
 

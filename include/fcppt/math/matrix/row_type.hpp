@@ -4,11 +4,12 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_MATH_DETAIL_ASSIGN_HPP_INCLUDED
-#define FCPPT_MATH_DETAIL_ASSIGN_HPP_INCLUDED
+#ifndef FCPPT_MATH_MATRIX_ROW_TYPE_HPP_INCLUDED
+#define FCPPT_MATH_MATRIX_ROW_TYPE_HPP_INCLUDED
 
 #include <fcppt/config/external_begin.hpp>
-#include <algorithm>
+#include <array>
+#include <cstddef>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -16,29 +17,20 @@ namespace fcppt
 {
 namespace math
 {
-namespace detail
+namespace matrix
 {
 
 template<
-	typename Dest,
-	typename Src
+	typename Type,
+	std::size_t Size
 >
-inline
-Dest &
-assign(
-	Dest &_dest,
-	Src const &_src
-)
-{
-	std::copy(
-		_src.begin(),
-		_src.end(),
-		_dest.begin()
-	);
-
-	return
-		_dest;
-}
+using
+row_type
+=
+std::array<
+	Type,
+	Size
+>;
 
 }
 }

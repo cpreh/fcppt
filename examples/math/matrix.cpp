@@ -6,6 +6,7 @@
 
 #include <fcppt/math/matrix/identity.hpp>
 #include <fcppt/math/matrix/output.hpp>
+#include <fcppt/math/matrix/row.hpp>
 #include <fcppt/math/matrix/static.hpp>
 #include <fcppt/math/matrix/vector.hpp>
 #include <fcppt/math/vector/output.hpp>
@@ -31,8 +32,12 @@ void
 ctor()
 {
 	int_matrix_2x3 const m(
-		1,2,3,
-		4,5,6
+		fcppt::math::matrix::row(
+			1,2,3
+		),
+		fcppt::math::matrix::row(
+			4,5,6
+		)
 	);
 
 	// Will print: ((1,2,3),(4,5,6))

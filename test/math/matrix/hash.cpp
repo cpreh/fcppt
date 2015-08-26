@@ -6,6 +6,7 @@
 
 #include <fcppt/math/matrix/comparison.hpp>
 #include <fcppt/math/matrix/object.hpp>
+#include <fcppt/math/matrix/row.hpp>
 #include <fcppt/math/matrix/static.hpp>
 #include <fcppt/math/matrix/std_hash.hpp>
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
@@ -26,11 +27,13 @@ BOOST_AUTO_TEST_CASE(
 {
 FCPPT_PP_POP_WARNING
 
-	typedef fcppt::math::matrix::static_<
+	typedef
+	fcppt::math::matrix::static_<
 		int,
 		2,
 		2
-	> int22_matrix;
+	>
+	int22_matrix;
 
 	typedef
 	std::unordered_set<
@@ -42,20 +45,28 @@ FCPPT_PP_POP_WARNING
 
 	set.insert(
 		int22_matrix(
-			1,
-			2,
-			3,
-			4
+			fcppt::math::matrix::row(
+				1,
+				2
+			),
+			fcppt::math::matrix::row(
+				3,
+				4
+			)
 		)
 	);
 
 	BOOST_CHECK(
 		set.count(
 			int22_matrix(
-				1,
-				2,
-				3,
-				4
+				fcppt::math::matrix::row(
+					1,
+					2
+				),
+				fcppt::math::matrix::row(
+					3,
+					4
+				)
 			)
 		)
 		== 1u
@@ -64,10 +75,14 @@ FCPPT_PP_POP_WARNING
 	BOOST_CHECK(
 		set.count(
 			int22_matrix(
-				4,
-				2,
-				3,
-				4
+				fcppt::math::matrix::row(
+					4,
+					2
+				),
+				fcppt::math::matrix::row(
+					3,
+					4
+				)
 			)
 		)
 		== 0u

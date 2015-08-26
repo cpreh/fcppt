@@ -17,8 +17,8 @@ namespace matrix
 
 template<
 	typename T,
-	typename N,
-	typename M,
+	typename R,
+	typename C,
 	typename S
 >
 class object;

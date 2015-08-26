@@ -8,6 +8,7 @@
 #include <fcppt/math/matrix/comparison.hpp>
 #include <fcppt/math/matrix/object_impl.hpp>
 #include <fcppt/math/matrix/output.hpp>
+#include <fcppt/math/matrix/row.hpp>
 #include <fcppt/math/matrix/static.hpp>
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
@@ -22,7 +23,9 @@
 FCPPT_PP_PUSH_WARNING
 FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
 
-BOOST_AUTO_TEST_CASE(adjugate)
+BOOST_AUTO_TEST_CASE(
+	math_matrix_adjugate
+)
 {
 FCPPT_PP_POP_WARNING
 
@@ -35,9 +38,15 @@ FCPPT_PP_POP_WARNING
 	matrix_type;
 
 	matrix_type const t(
-		-3, 2, -5,
-		-1, 0, -2,
-		3, -4, 1
+		fcppt::math::matrix::row(
+			-3, 2, -5
+		),
+		fcppt::math::matrix::row(
+			-1, 0, -2
+		),
+		fcppt::math::matrix::row(
+			3, -4, 1
+		)
 	);
 
 	matrix_type const result(
@@ -50,13 +59,18 @@ FCPPT_PP_POP_WARNING
 		<< result
 		<< '\n';
 
-	BOOST_CHECK(
-		result
-		==
+	BOOST_CHECK_EQUAL(
+		result,
 		matrix_type(
-			-8,18,-4,
-			-5,12,-1,
-			4,-6,2
+			fcppt::math::matrix::row(
+				-8,18,-4
+			),
+			fcppt::math::matrix::row(
+				-5,12,-1
+			),
+			fcppt::math::matrix::row(
+				4,-6,2
+			)
 		)
 	);
 }

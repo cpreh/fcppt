@@ -4,11 +4,10 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/math/matrix/object_impl.hpp>
-#include <fcppt/math/matrix/output.hpp>
+#include <fcppt/math/matrix/row.hpp>
 #include <fcppt/math/matrix/static.hpp>
 #include <fcppt/math/vector/comparison.hpp>
-#include <fcppt/math/vector/object_impl.hpp>
+#include <fcppt/math/vector/output.hpp>
 #include <fcppt/math/vector/static.hpp>
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
@@ -21,13 +20,15 @@
 FCPPT_PP_PUSH_WARNING
 FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
 
-BOOST_AUTO_TEST_CASE(math_matrix_view)
+BOOST_AUTO_TEST_CASE(
+	math_matrix_view
+)
 {
 FCPPT_PP_POP_WARNING
 
 	typedef int value_type;
 
-	std::size_t const size = 3;
+	constexpr std::size_t const size = 3;
 
 	typedef
 	fcppt::math::matrix::static_<
@@ -45,14 +46,20 @@ FCPPT_PP_POP_WARNING
 	vector_type;
 
 	matrix_type const t(
-		-3, 2, -5,
-		-1, 0, -2,
-		3, -4, 1
+		fcppt::math::matrix::row(
+			-3, 2, -5
+		),
+		fcppt::math::matrix::row(
+			-1, 0, -2
+		),
+		fcppt::math::matrix::row(
+			3, -4, 1
+		)
 	);
 
-	BOOST_CHECK(
-		t[0]
-		== vector_type(
+	BOOST_CHECK_EQUAL(
+		t[0],
+		vector_type(
 			-3,
 			2,
 			-5

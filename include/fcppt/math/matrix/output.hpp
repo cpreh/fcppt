@@ -7,10 +7,13 @@
 #ifndef FCPPT_MATH_MATRIX_OUTPUT_HPP_INCLUDED
 #define FCPPT_MATH_MATRIX_OUTPUT_HPP_INCLUDED
 
+#include <fcppt/math/detail/one_dimensional_output.hpp>
 #include <fcppt/math/matrix/object_impl.hpp>
+#include <fcppt/math/vector/output.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <ostream>
+#include <iosfwd>
 #include <fcppt/config/external_end.hpp>
+
 
 namespace fcppt
 {
@@ -21,12 +24,19 @@ namespace matrix
 
 /**
 \brief Outputs the matrix to a <code>basic_ostream</code>
+
 \ingroup fcpptmathmatrix
+
 \tparam T The matrix's <code>value_type</code>
+
 \tparam M The matrix's row dimension type
+
 \tparam N The matrix's column dimension type
+
 \tparam S The matrix's storage type
+
 \tparam Ch The stream's character type
+
 \tparam Traits The stream's character traits type
 
 The format will contain no new-lines and will be of the form:
@@ -46,29 +56,29 @@ template<
 	typename Ch,
 	typename Traits
 >
-std::basic_ostream<Ch,Traits> &
+inline
+std::basic_ostream<
+	Ch,
+	Traits
+> &
 operator<< (
-	std::basic_ostream<Ch,Traits> &s,
-	object<T, N, M, S> const &m
+	std::basic_ostream<
+		Ch,
+		Traits
+	> &_stream,
+	fcppt::math::matrix::object<
+		T,
+		N,
+		M,
+		S
+	> const &_matrix
 )
 {
-	typedef typename object<T, N, M, S>::size_type size_type;
-
-	s << s.widen('(');
-	for(size_type j = 0; j < m.rows(); ++j)
-	{
-		s << s.widen('(');
-		for(size_type i = 0; i < m.columns(); ++i)
-		{
-			s << m[j][i];
-			if(i != m.columns() - 1)
-				s << s.widen(',');
-		}
-		s << s.widen(')');
-		if(j != m.rows() - 1)
-			s << s.widen(',');
-	}
-	return s << s.widen(')');
+	return
+		fcppt::math::detail::one_dimensional_output(
+			_stream,
+			_matrix
+		);
 }
 
 }

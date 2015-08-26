@@ -4,11 +4,9 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/math/matrix/arithmetic.hpp>
 #include <fcppt/math/matrix/componentwise_equal.hpp>
 #include <fcppt/math/matrix/inverse.hpp>
-#include <fcppt/math/matrix/object_impl.hpp>
-#include <fcppt/math/matrix/output.hpp>
+#include <fcppt/math/matrix/row.hpp>
 #include <fcppt/math/matrix/static.hpp>
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
@@ -22,7 +20,9 @@
 FCPPT_PP_PUSH_WARNING
 FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
 
-BOOST_AUTO_TEST_CASE(delete_row_and_column_test)
+BOOST_AUTO_TEST_CASE(
+	math_matrix_inverse
+)
 {
 FCPPT_PP_POP_WARNING
 
@@ -38,15 +38,27 @@ FCPPT_PP_POP_WARNING
 		fcppt::math::matrix::componentwise_equal(
 			fcppt::math::matrix::inverse(
 				large_matrix_type(
-					0.,1.,2.,
-					1.,0.,3.,
-					4.,-3.,8.
+					fcppt::math::matrix::row(
+						0.,1.,2.
+					),
+					fcppt::math::matrix::row(
+						1.,0.,3.
+					),
+					fcppt::math::matrix::row(
+						4.,-3.,8.
+					)
 				)
 			),
 			large_matrix_type(
-				-9./2.,7.,-3./2.,
-				-2.,4.,-1.,
-				3./2.,-2.,1./2.
+				fcppt::math::matrix::row(
+					-9./2.,7.,-3./2.
+				),
+				fcppt::math::matrix::row(
+					-2.,4.,-1.
+				),
+				fcppt::math::matrix::row(
+					3./2.,-2.,1./2.
+				)
 			),
 			std::numeric_limits<
 				double

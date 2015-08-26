@@ -5,6 +5,7 @@
 
 
 #include <fcppt/math/matrix/object.hpp>
+#include <fcppt/math/matrix/row.hpp>
 #include <fcppt/math/matrix/static.hpp>
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
@@ -32,23 +33,31 @@ FCPPT_PP_POP_WARNING
 	matrix_type;
 
 	matrix_type const mat(
-		-3, 2,
-		-1, 0
+		fcppt::math::matrix::row(
+			-3, 2
+		),
+		fcppt::math::matrix::row(
+			-1, 0
+		)
 	);
 
-	BOOST_CHECK(
-		mat[0][0] == -3
+	BOOST_CHECK_EQUAL(
+		mat[0][0],
+		-3
 	);
 
-	BOOST_CHECK(
-		mat[0][1] == 2
+	BOOST_CHECK_EQUAL(
+		mat[0][1],
+		2
 	);
 
-	BOOST_CHECK(
-		mat[1][0] == -1
+	BOOST_CHECK_EQUAL(
+		mat[1][0],
+		-1
 	);
 
-	BOOST_CHECK(
-		mat[1][1] == 0
+	BOOST_CHECK_EQUAL(
+		mat[1][1],
+		0
 	);
 }

@@ -8,8 +8,8 @@
 #define FCPPT_MATH_MATRIX_INIT_HPP_INCLUDED
 
 #include <fcppt/math/detail/init.hpp>
-#include <fcppt/math/matrix/index.hpp>
 #include <fcppt/math/matrix/is_matrix.hpp>
+#include <fcppt/math/matrix/detail/index_absolute.hpp>
 
 
 namespace fcppt
@@ -48,6 +48,11 @@ init(
 		"Matrix must be a matrix"
 	);
 
+	typedef
+	typename
+	Matrix::size_type
+	size_type;
+
 	return
 		fcppt::math::detail::init<
 			Matrix
@@ -55,34 +60,17 @@ init(
 			[
 				&_function
 			](
-				typename
-				Matrix::size_type const _absolute
+				size_type const _absolute
 			)
 			{
-				typedef
-				fcppt::math::matrix::index<
-					typename
-					Matrix::size_type
-				>
-				index_type;
-
 				return
 					_function(
-						index_type{
-							typename
-							index_type::row_t{
-								_absolute
-								/
-								Matrix::m_wrapper::value
-							}
-							,
-							typename
-							index_type::column_t{
-								_absolute
-								%
-								Matrix::m_wrapper::value
-							}
-						}
+						fcppt::math::matrix::detail::index_absolute<
+							size_type,
+							Matrix::static_columns::value
+						>(
+							_absolute
+						)
 					);
 			}
 		);

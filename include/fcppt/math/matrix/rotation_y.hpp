@@ -8,7 +8,7 @@
 #define FCPPT_MATH_MATRIX_ROTATION_Y_HPP_INCLUDED
 
 #include <fcppt/literal.hpp>
-#include <fcppt/math/matrix/object_impl.hpp>
+#include <fcppt/math/matrix/row.hpp>
 #include <fcppt/math/matrix/static.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <cmath>
@@ -24,9 +24,12 @@ namespace matrix
 
 /**
 \brief Calculates a 4x4 rotation matrix around the y axis
+
 \ingroup fcpptmathmatrix
+
 \tparam T The matrix's <code>value_type</code>
-\param angle The angle to rotate about
+
+\param _angle The angle to rotate about
 
 The resulting matrix will be static.
 
@@ -45,23 +48,59 @@ fcppt::math::matrix::rotation_axis
 template<
 	typename T
 >
-static_<T, 4, 4> const
+fcppt::math::matrix::static_<
+	T,
+	4,
+	4
+>
 rotation_y(
-	T const angle
+	T const _angle
 )
 {
 	T const
-		sinx = std::sin(angle),
-		cosx = std::cos(angle),
-		one = fcppt::literal<T>(1),
-		zero = fcppt::literal<T>(0);
+		sinx{
+			std::sin(
+				_angle
+			)
+		},
+		cosx{
+			std::cos(
+				_angle
+			)
+		},
+		one{
+			fcppt::literal<
+				T
+			>(
+				1
+			)
+		},
+		zero{
+			fcppt::literal<
+				T
+			>(
+				0
+			)
+		};
 
 	return
-		static_<T, 4, 4>(
-			cosx, zero, sinx, zero,
-			zero,  one,  zero, zero,
-			-sinx, zero,  cosx, zero,
-			zero, zero,  zero,  one
+		fcppt::math::matrix::static_<
+			T,
+			4,
+			4
+		>(
+			fcppt::math::matrix::row(
+				cosx, zero, sinx, zero
+			),
+			fcppt::math::matrix::row(
+				zero,  one,  zero, zero
+			),
+			fcppt::math::matrix::row(
+				-sinx, zero,  cosx, zero
+			),
+			fcppt::math::matrix::row(
+				zero, zero,  zero,  one
+			)
 		);
 }
 

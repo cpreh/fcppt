@@ -5,7 +5,7 @@
 
 
 #include <fcppt/math/matrix/infinity_norm.hpp>
-#include <fcppt/math/matrix/object_impl.hpp>
+#include <fcppt/math/matrix/row.hpp>
 #include <fcppt/math/matrix/static.hpp>
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
@@ -31,12 +31,21 @@ FCPPT_PP_POP_WARNING
 	matrix_type;
 
 	matrix_type const t(
-		3, 5, 7,
-		2, 6, 4,
-		0, 2, 8);
+		fcppt::math::matrix::row(
+			3, 5, 7
+		),
+		fcppt::math::matrix::row(
+			2, 6, 4
+		),
+		fcppt::math::matrix::row(
+			0, 2, 8
+		)
+	);
 
-	BOOST_CHECK((
+	BOOST_CHECK_EQUAL(
 		fcppt::math::matrix::infinity_norm(
-			t) ==
-		15));
+			t
+		),
+		15
+	);
 }

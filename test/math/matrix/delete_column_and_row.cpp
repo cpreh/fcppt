@@ -5,100 +5,110 @@
 
 
 #include <fcppt/literal.hpp>
-#include <fcppt/math/matrix/componentwise_equal.hpp>
+#include <fcppt/math/matrix/comparison.hpp>
 #include <fcppt/math/matrix/delete_row_and_column.hpp>
-#include <fcppt/math/matrix/object_impl.hpp>
+#include <fcppt/math/matrix/output.hpp>
+#include <fcppt/math/matrix/row.hpp>
 #include <fcppt/math/matrix/static.hpp>
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/test/unit_test.hpp>
-#include <limits>
 #include <fcppt/config/external_end.hpp>
 
 
 FCPPT_PP_PUSH_WARNING
 FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
 
-BOOST_AUTO_TEST_CASE(delete_row_and_column)
+BOOST_AUTO_TEST_CASE(
+	math_matrix_delete_row_and_column
+)
 {
 FCPPT_PP_POP_WARNING
 
 	typedef
 	fcppt::math::matrix::static_<
-		float,
-		3,
-		4
+		int,
+		4,
+		3
 	>
 	large_matrix_type;
 
 	typedef
 	fcppt::math::matrix::static_<
-		float,
-		2,
-		3
+		int,
+		3,
+		2
 	>
 	small_matrix_type;
 
 	large_matrix_type const t(
-		1.f, 2.f, 3.f,
-		4.f, 5.f, 6.f,
-		7.f, 8.f, 9.f,
-		10.f,11.f,12.f
+		fcppt::math::matrix::row(
+			1, 2, 3
+		),
+		fcppt::math::matrix::row(
+			4, 5, 6
+		),
+		fcppt::math::matrix::row(
+			7, 8, 9
+		),
+		fcppt::math::matrix::row(
+			10, 11, 12
+		)
 	);
 
-	float const epsilon(
-		std::numeric_limits<
-			float
-		>::epsilon()
+	BOOST_CHECK_EQUAL(
+		fcppt::math::matrix::delete_row_and_column(
+			t,
+			fcppt::literal<
+				large_matrix_type::size_type
+			>(
+				2
+			),
+			fcppt::literal<
+				large_matrix_type::size_type
+			>(
+				1
+			)
+		),
+		small_matrix_type(
+			fcppt::math::matrix::row(
+				1, 3
+			),
+			fcppt::math::matrix::row(
+				4, 6
+			),
+			fcppt::math::matrix::row(
+				10, 12
+			)
+		)
 	);
 
-	BOOST_CHECK((
-		fcppt::math::matrix::componentwise_equal(
-			fcppt::math::matrix::delete_row_and_column(
-				t,
-				fcppt::literal<
-					large_matrix_type::size_type
-				>(
-					2
-				),
-				fcppt::literal<
-					large_matrix_type::size_type
-				>(
-					1
-				)
+	BOOST_CHECK_EQUAL(
+		fcppt::math::matrix::delete_row_and_column(
+			t,
+			fcppt::literal<
+				large_matrix_type::size_type
+			>(
+				0
 			),
-			small_matrix_type(
-				1.f, 3.f,
-				4.f, 6.f,
-				10.f, 12.f
+			fcppt::literal<
+				large_matrix_type::size_type
+			>(
+				0
+			)
+		),
+		small_matrix_type(
+			fcppt::math::matrix::row(
+				5, 6
 			),
-			epsilon
+			fcppt::math::matrix::row(
+				8, 9
+			),
+			fcppt::math::matrix::row(
+				11, 12
+			)
 		)
-	));
-
-	BOOST_CHECK((
-		fcppt::math::matrix::componentwise_equal(
-			fcppt::math::matrix::delete_row_and_column(
-				t,
-				fcppt::literal<
-					large_matrix_type::size_type
-				>(
-					0
-				),
-				fcppt::literal<
-					large_matrix_type::size_type
-				>(
-					0
-				)
-			),
-			small_matrix_type(
-				5.f, 6.f,
-				8.f, 9.f,
-				11.f, 12.f
-			),
-			epsilon
-		)
-	));
+	);
 }

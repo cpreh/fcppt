@@ -4,8 +4,8 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/math/matrix/arithmetic.hpp>
 #include <fcppt/math/matrix/comparison.hpp>
+#include <fcppt/math/matrix/row.hpp>
 #include <fcppt/math/matrix/output.hpp>
 #include <fcppt/math/matrix/static.hpp>
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
@@ -39,13 +39,21 @@ BOOST_AUTO_TEST_CASE(
 FCPPT_PP_POP_WARNING
 
 	matrix_type const first(
-		1, 2,
-		3, 4
+		fcppt::math::matrix::row(
+			1, 2
+		),
+		fcppt::math::matrix::row(
+			3, 4
+		)
 	);
 
 	matrix_type second(
-		2, 3,
-		4, 5
+		fcppt::math::matrix::row(
+			2, 3
+		),
+		fcppt::math::matrix::row(
+			4, 5
+		)
 	);
 
 	second += first;
@@ -53,8 +61,12 @@ FCPPT_PP_POP_WARNING
 	BOOST_CHECK_EQUAL(
 		second,
 		matrix_type(
-			3, 5,
-			7, 9
+			fcppt::math::matrix::row(
+				3, 5
+			),
+			fcppt::math::matrix::row(
+				7, 9
+			)
 		)
 	);
 }
@@ -69,8 +81,12 @@ BOOST_AUTO_TEST_CASE(
 FCPPT_PP_POP_WARNING
 
 	matrix_type first(
-		1, 2,
-		3, 4
+		fcppt::math::matrix::row(
+			1, 2
+		),
+		fcppt::math::matrix::row(
+			3, 4
+		)
 	);
 
 	first *= 3;
@@ -78,8 +94,12 @@ FCPPT_PP_POP_WARNING
 	BOOST_CHECK_EQUAL(
 		first,
 		matrix_type(
-			3, 6,
-			9, 12
+			fcppt::math::matrix::row(
+				3, 6
+			),
+			fcppt::math::matrix::row(
+				9, 12
+			)
 		)
 	);
 }

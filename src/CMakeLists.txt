@@ -577,6 +577,8 @@ set(
 	include/fcppt/math/matrix/componentwise_equal.hpp
 	include/fcppt/math/matrix/delete_row_and_column.hpp
 	include/fcppt/math/matrix/detail/determinant.hpp
+	include/fcppt/math/matrix/detail/index_absolute.hpp
+	include/fcppt/math/matrix/detail/init_storage.hpp
 	include/fcppt/math/matrix/detail/row_view_decl.hpp
 	include/fcppt/math/matrix/detail/row_view_fwd.hpp
 	include/fcppt/math/matrix/detail/row_view_impl.hpp
@@ -605,6 +607,8 @@ set(
 	include/fcppt/math/matrix/rotation_x.hpp
 	include/fcppt/math/matrix/rotation_y.hpp
 	include/fcppt/math/matrix/rotation_z.hpp
+	include/fcppt/math/matrix/row.hpp
+	include/fcppt/math/matrix/row_type.hpp
 	include/fcppt/math/matrix/scaling.hpp
 	include/fcppt/math/matrix/size.hpp
 	include/fcppt/math/matrix/sqrt.hpp

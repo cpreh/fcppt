@@ -9,10 +9,8 @@
 #include <fcppt/math/matrix/arithmetic.hpp>
 #include <fcppt/math/matrix/comparison.hpp>
 #include <fcppt/math/matrix/output.hpp>
+#include <fcppt/math/matrix/row.hpp>
 #include <fcppt/math/matrix/static.hpp>
-#include <fcppt/math/matrix/vector.hpp>
-#include <fcppt/math/vector/comparison.hpp>
-#include <fcppt/math/vector/output.hpp>
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
@@ -24,26 +22,42 @@
 FCPPT_PP_PUSH_WARNING
 FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
 
-BOOST_AUTO_TEST_CASE(multiply)
+BOOST_AUTO_TEST_CASE(
+	math_matrix_multiply
+)
 {
 FCPPT_PP_POP_WARNING
 
-	typedef fcppt::math::matrix::static_<
+	typedef
+	fcppt::math::matrix::static_<
 		int,
 		3,
 		3
-	> mat3;
+	>
+	mat3;
 
 	mat3 const
 		left(
-			1,2,3,
-			4,5,6,
-			7,8,9
+			fcppt::math::matrix::row(
+				1,2,3
+			),
+			fcppt::math::matrix::row(
+				4,5,6
+			),
+			fcppt::math::matrix::row(
+				7,8,9
+			)
 		),
 		right(
-			10,11,12,
-			13,14,15,
-			16,17,18
+			fcppt::math::matrix::row(
+				10,11,12
+			),
+			fcppt::math::matrix::row(
+				13,14,15
+			),
+			fcppt::math::matrix::row(
+				16,17,18
+			)
 		),
 		result(
 			left * right
@@ -53,13 +67,18 @@ FCPPT_PP_POP_WARNING
 		<< result
 		<< FCPPT_TEXT('\n');
 
-	BOOST_REQUIRE(
-		result
-		==
+	BOOST_CHECK_EQUAL(
+		result,
 		mat3(
-			84,90,96,
-			201,216,231,
-			318,342,366
+			fcppt::math::matrix::row(
+				84,90,96
+			),
+			fcppt::math::matrix::row(
+				201,216,231
+			),
+			fcppt::math::matrix::row(
+				318,342,366
+			)
 		)
 	);
 }

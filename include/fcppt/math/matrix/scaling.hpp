@@ -8,7 +8,7 @@
 #define FCPPT_MATH_MATRIX_SCALING_HPP_INCLUDED
 
 #include <fcppt/literal.hpp>
-#include <fcppt/math/matrix/object_impl.hpp>
+#include <fcppt/math/matrix/row.hpp>
 #include <fcppt/math/matrix/static.hpp>
 #include <fcppt/math/vector/has_dim.hpp>
 #include <fcppt/math/vector/object_impl.hpp>
@@ -23,10 +23,15 @@ namespace matrix
 
 /**
 \brief Calculates a 4x4 scaling matrix
+
 \ingroup fcpptmathmatrix
+
 \tparam T The matrix's <code>value_type</code>
+
 \param _x Scaling in x direction
+
 \param _y Scaling in y direction
+
 \param _z Scaling in z direction
 
 The resulting matrix will be static.
@@ -34,7 +39,11 @@ The resulting matrix will be static.
 template<
 	typename T
 >
-fcppt::math::matrix::static_<T, 4, 4> const
+fcppt::math::matrix::static_<
+	T,
+	4,
+	4
+>
 scaling(
 	T const _x,
 	T const _y,
@@ -42,16 +51,39 @@ scaling(
 )
 {
 	T const
-		zero = fcppt::literal<T>(0),
-		one = fcppt::literal<T>(1);
+		zero{
+			fcppt::literal<
+				T
+			>(
+				0
+			)
+		},
+		one{
+			fcppt::literal<
+				T
+			>(
+				1
+			)
+		};
 
 	return
-		fcppt::math::matrix::static_<T, 4, 4>
-		(
-			   _x, zero, zero, zero,
-			zero,     _y,zero, zero,
-			zero,  zero,   _z, zero,
-			zero,  zero, zero,  one
+		fcppt::math::matrix::static_<
+			T,
+			4,
+			4
+		>(
+			fcppt::math::matrix::row(
+				   _x, zero, zero, zero
+			),
+			fcppt::math::matrix::row(
+				zero,     _y,zero, zero
+			),
+			fcppt::math::matrix::row(
+				zero,  zero,   _z, zero
+			),
+			fcppt::math::matrix::row(
+				zero,  zero, zero,  one
+			)
 		);
 
 }
@@ -60,12 +92,15 @@ scaling(
 template<
 	typename Vector
 >
+inline
 fcppt::math::matrix::static_<
-	typename Vector::value_type,
+	typename
+	Vector::value_type,
 	4,
 	4
-> const
+>
 scaling(
+	// TODO: Use vector::static_
 	Vector const &_vec
 )
 {

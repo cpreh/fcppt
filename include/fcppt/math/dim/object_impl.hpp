@@ -153,6 +153,7 @@ fcppt::math::dim::object<
 )
 // Don't initialize storage_
 {
+	// FIXME: broken
 	std::copy(
 		_other.begin(),
 		_other.end(),
