@@ -7,7 +7,10 @@
 #ifndef FCPPT_MATH_DIM_IS_QUADRATIC_HPP_INCLUDED
 #define FCPPT_MATH_DIM_IS_QUADRATIC_HPP_INCLUDED
 
+#include <fcppt/algorithm/all_of.hpp>
+#include <fcppt/math/at_c.hpp>
 #include <fcppt/math/dim/object_impl.hpp>
+
 
 namespace fcppt
 {
@@ -18,11 +21,10 @@ namespace dim
 
 /**
 \brief Checks if all elements of the dim are the same
+
 \ingroup fcpptmathdim
-\tparam N The dim's dimension
-\tparam T The dim's <code>value_type</code>
-\tparam S The dim's storage type
-\param r The dimension to check
+
+\param _dim The dimension to check
 */
 template<
 	typename T,
@@ -31,16 +33,35 @@ template<
 >
 bool
 is_quadratic(
-	dim::object<T,N,S> const &r
+	fcppt::math::dim::object<
+		T,
+		N,
+		S
+	> const &_dim
 )
 {
-	for(
-		auto const &item : r
-	)
-		if(item != r[0])
-			return false;
-	return true;
+	return
+		fcppt::algorithm::all_of(
+			_dim.storage(),
+			[
+				_first =
+					fcppt::math::at_c<
+						0
+					>(
+						_dim
+					)
+			](
+				T const _value
+			)
+			{
+				return
+					_value
+					==
+					_first;
+			}
+		);
 }
+
 }
 }
 }

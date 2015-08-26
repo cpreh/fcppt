@@ -493,6 +493,10 @@ add_fcppt_test(
 )
 
 add_fcppt_test(
+	math/dim/is_quadratic
+)
+
+add_fcppt_test(
 	math/dim/map
 )
 
