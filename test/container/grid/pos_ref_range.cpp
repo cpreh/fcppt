@@ -37,11 +37,11 @@ FCPPT_PP_POP_WARNING
 		std::size_t,
 		2
 	>
-	element;
+	element_type;
 
 	typedef
 	fcppt::container::grid::object<
-		element,
+		element_type,
 		2
 	>
 	dim2_grid;
@@ -101,7 +101,7 @@ FCPPT_PP_POP_WARNING
 				6U
 			),
 			fcppt::math::vector::null<
-				element
+				element_type
 			>()
 		);
 
