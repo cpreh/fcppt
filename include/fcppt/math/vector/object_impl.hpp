@@ -8,9 +8,10 @@
 #define FCPPT_MATH_VECTOR_OBJECT_IMPL_HPP_INCLUDED
 
 #include <fcppt/no_init_fwd.hpp>
-#include <fcppt/math/static_storage.hpp>
+#include <fcppt/math/detail/assert_static_storage.hpp>
 #include <fcppt/math/detail/assign.hpp>
 #include <fcppt/math/detail/checked_access.hpp>
+#include <fcppt/math/detail/copy.hpp>
 #include <fcppt/math/detail/default_storage.hpp>
 #include <fcppt/math/detail/index_at.hpp>
 #include <fcppt/math/detail/make_op_def.hpp>
@@ -18,9 +19,6 @@
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
-#include <fcppt/config/external_begin.hpp>
-#include <algorithm>
-#include <fcppt/config/external_end.hpp>
 
 
 template<
@@ -36,10 +34,7 @@ fcppt::math::vector::object<
 :
 	storage_(
 		fcppt::math::detail::default_storage<
-			fcppt::math::static_storage<
-				T,
-				N
-			>
+			S
 		>()
 	)
 {
@@ -62,6 +57,9 @@ fcppt::math::vector::object<
 )
 // Don't initialize storage_
 {
+	FCPPT_MATH_DETAIL_ASSERT_STATIC_STORAGE(
+		S
+	);
 }
 
 FCPPT_PP_POP_WARNING
@@ -86,6 +84,10 @@ fcppt::math::vector::object<
 		_args...
 	}}
 {
+	FCPPT_MATH_DETAIL_ASSERT_STATIC_STORAGE(
+		S
+	);
+
 	static_assert(
 		sizeof...(
 			Args
@@ -129,9 +131,6 @@ fcppt::math::vector::object<
 )
 = default;
 
-FCPPT_PP_PUSH_WARNING
-FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
-
 template<
 	typename T,
 	typename N,
@@ -151,17 +150,16 @@ fcppt::math::vector::object<
 		OtherStorage
 	> const &_other
 )
-// Don't initialize storage_
+:
+	storage_(
+		fcppt::math::detail::copy<
+			S
+		>(
+			_other
+		)
+	)
 {
-	// TODO: Initialize storage_ directly
-	std::copy(
-		_other.storage().begin(),
-		_other.storage().end(),
-		storage_.begin()
-	);
 }
-
-FCPPT_PP_POP_WARNING
 
 template<
 	typename T,
@@ -326,7 +324,7 @@ fcppt::math::vector::object<
 {
 	return
 		fcppt::math::detail::index_at(
-			storage_.begin(),
+			storage_,
 			_index
 		);
 }
@@ -351,7 +349,7 @@ fcppt::math::vector::object<
 {
 	return
 		fcppt::math::detail::index_at(
-			storage_.begin(),
+			storage_,
 			_index
 		);
 }

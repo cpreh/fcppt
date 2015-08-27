@@ -8,7 +8,9 @@
 #define FCPPT_MATH_MATRIX_OBJECT_IMPL_HPP_INCLUDED
 
 #include <fcppt/no_init_fwd.hpp>
+#include <fcppt/math/detail/assert_static_storage.hpp>
 #include <fcppt/math/detail/assign.hpp>
+#include <fcppt/math/detail/copy.hpp>
 #include <fcppt/math/detail/make_op_def.hpp>
 #include <fcppt/math/matrix/object_decl.hpp>
 #include <fcppt/math/matrix/row_type.hpp>
@@ -19,7 +21,6 @@
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <algorithm>
 #include <array>
 #include <fcppt/config/external_end.hpp>
 
@@ -43,6 +44,9 @@ fcppt::math::matrix::object<
 )
 // Don't initialize storage_()
 {
+	FCPPT_MATH_DETAIL_ASSERT_STATIC_STORAGE(
+		S
+	);
 }
 
 FCPPT_PP_POP_WARNING
@@ -83,6 +87,11 @@ fcppt::math::matrix::object<
 		)
 	)
 {
+
+	FCPPT_MATH_DETAIL_ASSERT_STATIC_STORAGE(
+		S
+	);
+
 	static_assert(
 		sizeof...(
 			Args
@@ -130,9 +139,6 @@ fcppt::math::matrix::object<
 )
 = default;
 
-FCPPT_PP_PUSH_WARNING
-FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
-
 template<
 	typename T,
 	typename R,
@@ -155,17 +161,16 @@ fcppt::math::matrix::object<
 		OtherStorage
 	> const &_other
 )
-// Don't initialize storage_()
+:
+	storage_(
+		fcppt::math::detail::copy<
+			S
+		>(
+			_other
+		)
+	)
 {
-	// FIXCE: broken
-	std::copy(
-		_other.begin(),
-		_other.end(),
-		this->begin()
-	);
 }
-
-FCPPT_PP_POP_WARNING
 
 template<
 	typename T,

@@ -8,6 +8,7 @@
 #define FCPPT_MATH_DETAIL_INIT_STORAGE_HPP_INCLUDED
 
 #include <fcppt/algorithm/array_init.hpp>
+#include <fcppt/math/detail/assert_static_storage.hpp>
 
 
 namespace fcppt
@@ -20,11 +21,16 @@ namespace detail
 template<
 	typename Result
 >
+inline
 Result
 init_storage(
 	typename Result::value_type const &_value
 )
 {
+	FCPPT_MATH_DETAIL_ASSERT_STATIC_STORAGE(
+		Result
+	);
+
 	return
 		fcppt::algorithm::array_init<
 			Result

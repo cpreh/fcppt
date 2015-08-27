@@ -7,6 +7,7 @@
 #ifndef FCPPT_MATH_DETAIL_DEFAULT_STORAGE_HPP_INCLUDED
 #define FCPPT_MATH_DETAIL_DEFAULT_STORAGE_HPP_INCLUDED
 
+#include <fcppt/math/detail/assert_static_storage.hpp>
 #include <fcppt/math/detail/init_storage.hpp>
 
 
@@ -20,9 +21,14 @@ namespace detail
 template<
 	typename Result
 >
-Result const
+inline
+Result
 default_storage()
 {
+	FCPPT_MATH_DETAIL_ASSERT_STATIC_STORAGE(
+		Result
+	);
+
 	return
 		fcppt::math::detail::init_storage<
 			Result

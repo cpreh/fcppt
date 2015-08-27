@@ -9,9 +9,8 @@
 
 #include <fcppt/cast/size.hpp>
 #include <fcppt/cast/to_signed.hpp>
-#include <fcppt/config/external_begin.hpp>
-#include <iterator>
-#include <fcppt/config/external_end.hpp>
+#include <fcppt/container/to_iterator_type.hpp>
+#include <fcppt/container/to_reference_type.hpp>
 
 
 namespace fcppt
@@ -22,25 +21,28 @@ namespace detail
 {
 
 template<
-	typename Iterator,
+	typename Storage,
 	typename SizeType
 >
-typename
-std::iterator_traits<
-	Iterator
->::reference
+inline
+fcppt::container::to_reference_type<
+	Storage
+>
 index_at(
-	Iterator const _iterator,
+	Storage &_storage,
 	SizeType const _size
 )
 {
 	return
 		*(
-			_iterator
+			_storage.begin()
 			+
 			fcppt::cast::size<
-				typename std::iterator_traits<
-					Iterator
+				typename
+				std::iterator_traits<
+					fcppt::container::to_iterator_type<
+						Storage
+					>
 				>::difference_type
 			>(
 				fcppt::cast::to_signed(

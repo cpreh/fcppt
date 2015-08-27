@@ -11,6 +11,7 @@
 #include <fcppt/math/diff.hpp>
 #include <fcppt/math/detail/bresenham_thick.hpp>
 #include <fcppt/math/vector/object_impl.hpp>
+#include <fcppt/math/vector/static.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <algorithm>
 #include <type_traits>
@@ -126,13 +127,9 @@ bresenham_impl(
 		dy);
 
 	typedef
-	fcppt::math::vector::object<
+	fcppt::math::vector::static_<
 		T,
-		N,
-		fcppt::math::static_storage<
-			T,
-			N
-		>
+		N::value
 	>
 	vector_type;
 

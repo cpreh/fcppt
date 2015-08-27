@@ -797,6 +797,7 @@ set(
 	include/fcppt/math/deg_to_rad.hpp
 	include/fcppt/math/detail/array_equal.hpp
 	include/fcppt/math/detail/array_less.hpp
+	include/fcppt/math/detail/assert_static_storage.hpp
 	include/fcppt/math/detail/assign.hpp
 	include/fcppt/math/detail/binary_type.hpp
 	include/fcppt/math/detail/bresenham_impl.hpp
@@ -804,6 +805,7 @@ set(
 	include/fcppt/math/detail/checked_access.hpp
 	include/fcppt/math/detail/componentwise_equal.hpp
 	include/fcppt/math/detail/construct.hpp
+	include/fcppt/math/detail/copy.hpp
 	include/fcppt/math/detail/default_storage.hpp
 	include/fcppt/math/detail/diff.hpp
 	include/fcppt/math/detail/dim_matches.hpp
@@ -873,6 +875,7 @@ set(
 	include/fcppt/math/interpolation/trigonometric_functor.hpp
 	include/fcppt/math/interval_distance.hpp
 	include/fcppt/math/is_power_of_2.hpp
+	include/fcppt/math/is_static_storage.hpp
 	include/fcppt/math/log2.hpp
 	include/fcppt/math/map.hpp
 	include/fcppt/math/matrix/adjugate.hpp

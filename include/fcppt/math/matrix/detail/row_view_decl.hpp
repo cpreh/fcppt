@@ -41,7 +41,9 @@ public:
 
 	typedef T *pointer;
 
-	typedef pointer iterator;
+	typedef T *iterator;
+
+	typedef T const *const_iterator;
 
 	row_view(
 		pointer,
