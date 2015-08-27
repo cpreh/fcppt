@@ -65,4 +65,19 @@ FCPPT_PP_POP_WARNING
 			-5
 		)
 	);
+
+	vector_type vec(
+		t[0]
+	);
+
+	vec = t[1];
+
+	BOOST_CHECK_EQUAL(
+		vec,
+		vector_type(
+			-1,
+			0,
+			-2
+		)
+	);
 }

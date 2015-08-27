@@ -30,10 +30,14 @@ assign(
 	Src const &_src
 )
 {
+	auto const &src_storage(
+		_src.storage()
+	);
+
 	std::copy(
-		_src.begin(),
-		_src.end(),
-		_dest.begin()
+		src_storage.begin(),
+		src_storage.end(),
+		_dest.storage().begin()
 	);
 
 	return

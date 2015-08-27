@@ -125,7 +125,7 @@ fcppt::math::vector::object<
 	N,
 	S
 >::object(
-	object const &_other
+	object const &
 )
 = default;
 

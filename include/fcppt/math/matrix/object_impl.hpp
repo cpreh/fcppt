@@ -220,8 +220,8 @@ fcppt::math::matrix::object<
 {
 	return
 		fcppt::math::detail::assign(
-			storage_,
-			_other.storage()
+			*this,
+			_other
 		);
 }
 
