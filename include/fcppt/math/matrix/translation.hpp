@@ -8,10 +8,8 @@
 #define FCPPT_MATH_MATRIX_TRANSLATION_HPP_INCLUDED
 
 #include <fcppt/literal.hpp>
-#include <fcppt/math/matrix/object_impl.hpp>
 #include <fcppt/math/matrix/row.hpp>
 #include <fcppt/math/matrix/static.hpp>
-#include <fcppt/math/vector/has_dim.hpp>
 #include <fcppt/math/vector/object_impl.hpp>
 
 
@@ -24,13 +22,14 @@ namespace matrix
 
 /**
 \brief Calculates a 4x4 translation matrix from three coordinates
-\ingroup fcpptmathmatrix
-\tparam T The matrix's <code>value_type</code>
-\param _x The x translation
-\param _y The y translation
-\param _z The z translation
 
-The resulting matrix will be static.
+\ingroup fcpptmathmatrix
+
+\param _x The x translation
+
+\param _y The y translation
+
+\param _z The z translation
 */
 template<
 	typename T
@@ -85,35 +84,29 @@ translation(
 
 /**
 \brief Calculates a 4x4 translation matrix from a three-dimensional vector
-\ingroup fcpptmathmatrix
-\tparam Vector The Vector type to translate with
-\param _vec A three-dimensional vector
 
-The resulting matrix will be static.
+\ingroup fcpptmathmatrix
+
+\param _vec A three-dimensional vector
 */
 template<
-	typename Vector
+	typename T,
+	typename S
 >
 inline
 fcppt::math::matrix::static_<
-	typename
-	Vector::value_type,
+	T,
 	4,
 	4
 >
 translation(
-	Vector const &_vec
+	fcppt::math::vector::object<
+		T,
+		3,
+		S
+	> const &_vec
 )
 {
-	// TODO: Match vector in a better way
-	static_assert(
-		fcppt::math::vector::has_dim<
-			Vector,
-			3
-		>::value,
-		"matrix::translation can only be used on three-dimensional vectors"
-	);
-
 	return
 		fcppt::math::matrix::translation(
 			_vec.x(),

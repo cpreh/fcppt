@@ -10,7 +10,6 @@
 #include <fcppt/literal.hpp>
 #include <fcppt/math/matrix/row.hpp>
 #include <fcppt/math/matrix/static.hpp>
-#include <fcppt/math/vector/has_dim.hpp>
 #include <fcppt/math/vector/object_impl.hpp>
 
 
@@ -26,15 +25,11 @@ namespace matrix
 
 \ingroup fcpptmathmatrix
 
-\tparam T The matrix's <code>value_type</code>
-
 \param _x Scaling in x direction
 
 \param _y Scaling in y direction
 
 \param _z Scaling in z direction
-
-The resulting matrix will be static.
 */
 template<
 	typename T
@@ -90,28 +85,23 @@ scaling(
 
 /// Calculates a scaling matrix from a three dimensional vector
 template<
-	typename Vector
+	typename T,
+	typename S
 >
 inline
 fcppt::math::matrix::static_<
-	typename
-	Vector::value_type,
+	T,
 	4,
 	4
 >
 scaling(
-	// TODO: Use vector::static_
-	Vector const &_vec
+	fcppt::math::vector::object<
+		T,
+		3,
+		S
+	> const &_vec
 )
 {
-	static_assert(
-		fcppt::math::vector::has_dim<
-			Vector,
-			3
-		>::value,
-		"matrix::scaling can only be used on three-dimensional vectors"
-	);
-
 	return
 		fcppt::math::matrix::scaling(
 			_vec.x(),
