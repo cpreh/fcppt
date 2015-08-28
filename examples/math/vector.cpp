@@ -27,7 +27,6 @@ FCPPT_PP_POP_WARNING
 #include <fcppt/config/external_begin.hpp>
 #include <array>
 #include <iostream>
-#include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -40,10 +39,7 @@ namespace tmp
 typedef
 fcppt::math::vector::object<
 	float,
-	std::integral_constant<
-		fcppt::math::size_type,
-		2
-	>,
+	2,
 	std::array<
 		float,
 		2

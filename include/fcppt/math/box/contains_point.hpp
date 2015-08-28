@@ -24,30 +24,28 @@ namespace box
 
 /**
 \brief Test if a box contains a point
+
 \ingroup fcpptmathbox
-\tparam NBox The box's (and point's) dimension
-\tparam NPoint The point's dimension
-\tparam S The point's storage type
-\tparam T The box's (and point's) <code>value_type</code>
+
 \param _box The box to test
+
 \param _point The point to test
 */
 template<
 	typename T,
 	typename S,
-	fcppt::math::size_type NBox,
-	typename NPoint
+	fcppt::math::size_type N
 >
 inline
 bool
 contains_point(
 	fcppt::math::box::object<
 		T,
-		NBox
+		N
 	> const &_box,
 	fcppt::math::vector::object<
 		T,
-		NPoint,
+		N,
 		S
 	> const &_point
 )
@@ -55,7 +53,7 @@ contains_point(
 	return
 		fcppt::algorithm::all_of(
 			fcppt::make_int_range_count(
-				NBox
+				N
 			),
 			[
 				&_box,

@@ -66,7 +66,6 @@ init(
 				return
 					_function(
 						fcppt::math::matrix::detail::index_absolute<
-							size_type,
 							Matrix::static_columns::value
 						>(
 							_absolute

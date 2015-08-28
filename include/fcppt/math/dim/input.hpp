@@ -7,6 +7,7 @@
 #ifndef FCPPT_MATH_DIM_INPUT_HPP_INCLUDED
 #define FCPPT_MATH_DIM_INPUT_HPP_INCLUDED
 
+#include <fcppt/math/size_type.hpp>
 #include <fcppt/math/detail/one_dimensional_input.hpp>
 #include <fcppt/math/dim/object_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
@@ -27,25 +28,37 @@ namespace dim
 <pre>(a_1,a_2,...)</pre>
 
 where <code>a_i</code> are the components
+
 \ingroup fcpptmathdim
 */
 template<
 	typename T,
-	typename N,
+	fcppt::math::size_type N,
 	typename S,
 	typename Ch,
 	typename Traits
 >
-std::basic_istream<Ch, Traits> &
+inline
+std::basic_istream<
+	Ch,
+	Traits
+> &
 operator >> (
-	std::basic_istream<Ch, Traits> &s,
-	object<T, N, S> &v
+	std::basic_istream<
+		Ch,
+		Traits
+	> &_stream,
+	fcppt::math::dim::object<
+		T,
+		N,
+		S
+	> &_dim
 )
 {
 	return
-		math::detail::one_dimensional_input(
-			s,
-			v
+		fcppt::math::detail::one_dimensional_input(
+			_stream,
+			_dim
 		);
 }
 

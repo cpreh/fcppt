@@ -7,6 +7,8 @@
 #ifndef FCPPT_MATH_MATRIX_OBJECT_FWD_HPP_INCLUDED
 #define FCPPT_MATH_MATRIX_OBJECT_FWD_HPP_INCLUDED
 
+#include <fcppt/math/size_type.hpp>
+
 
 namespace fcppt
 {
@@ -17,8 +19,8 @@ namespace matrix
 
 template<
 	typename T,
-	typename R,
-	typename C,
+	fcppt::math::size_type R,
+	fcppt::math::size_type C,
 	typename S
 >
 class object;

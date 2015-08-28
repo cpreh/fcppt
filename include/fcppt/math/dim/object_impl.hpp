@@ -8,6 +8,7 @@
 #define FCPPT_MATH_DIM_OBJECT_IMPL_HPP_INCLUDED
 
 #include <fcppt/no_init_fwd.hpp>
+#include <fcppt/math/size_type.hpp>
 #include <fcppt/math/detail/assert_static_storage.hpp>
 #include <fcppt/math/detail/assign.hpp>
 #include <fcppt/math/detail/checked_access.hpp>
@@ -23,7 +24,7 @@
 
 template<
 	typename T,
-	typename N,
+	fcppt::math::size_type N,
 	typename S
 >
 fcppt::math::dim::object<
@@ -45,7 +46,7 @@ FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
 
 template<
 	typename T,
-	typename N,
+	fcppt::math::size_type N,
 	typename S
 >
 fcppt::math::dim::object<
@@ -66,7 +67,7 @@ FCPPT_PP_POP_WARNING
 
 template<
 	typename T,
-	typename N,
+	fcppt::math::size_type N,
 	typename S
 >
 template<
@@ -93,14 +94,14 @@ fcppt::math::dim::object<
 			Args
 		)
 		==
-		N::value,
+		N,
 		"Wrong number of parameters"
 	);
 }
 
 template<
 	typename T,
-	typename N,
+	fcppt::math::size_type N,
 	typename S
 >
 fcppt::math::dim::object<
@@ -119,7 +120,7 @@ fcppt::math::dim::object<
 
 template<
 	typename T,
-	typename N,
+	fcppt::math::size_type N,
 	typename S
 >
 fcppt::math::dim::object<
@@ -133,7 +134,7 @@ fcppt::math::dim::object<
 
 template<
 	typename T,
-	typename N,
+	fcppt::math::size_type N,
 	typename S
 >
 template<
@@ -163,7 +164,7 @@ fcppt::math::dim::object<
 
 template<
 	typename T,
-	typename N,
+	fcppt::math::size_type N,
 	typename S
 >
 fcppt::math::dim::object<
@@ -182,7 +183,7 @@ fcppt::math::dim::object<
 
 template<
 	typename T,
-	typename N,
+	fcppt::math::size_type N,
 	typename S
 >
 template<
@@ -214,7 +215,7 @@ fcppt::math::dim::object<
 
 template<
 	typename T,
-	typename N,
+	fcppt::math::size_type N,
 	typename S
 >
 fcppt::math::dim::object<
@@ -230,7 +231,7 @@ fcppt::math::dim::object<
 )\
 FCPPT_MATH_DETAIL_MAKE_OP_DEF(\
 	3,\
-	(template<typename T, typename N, typename S> template<typename OtherStorage>),\
+	(template<typename T, fcppt::math::size_type N, typename S> template<typename OtherStorage>),\
 	(fcppt::math::dim::object<T, N, S>),\
 	(fcppt::math::dim::object<T, N, OtherStorage>),\
 	op\
@@ -246,7 +247,7 @@ FCPPT_MATH_DIM_OBJECT_DEFINE_OPERATOR(%=)
 
 template<
 	typename T,
-	typename N,
+	fcppt::math::size_type N,
 	typename S
 >
 fcppt::math::dim::object<
@@ -276,7 +277,7 @@ fcppt::math::dim::object<
 
 template<
 	typename T,
-	typename N,
+	fcppt::math::size_type N,
 	typename S
 >
 fcppt::math::dim::object<
@@ -306,7 +307,7 @@ fcppt::math::dim::object<
 
 template<
 	typename T,
-	typename N,
+	fcppt::math::size_type N,
 	typename S
 >
 typename fcppt::math::dim::object<
@@ -331,7 +332,7 @@ fcppt::math::dim::object<
 
 template<
 	typename T,
-	typename N,
+	fcppt::math::size_type N,
 	typename S
 >
 typename fcppt::math::dim::object<
@@ -356,7 +357,7 @@ fcppt::math::dim::object<
 
 template<
 	typename T,
-	typename N,
+	fcppt::math::size_type N,
 	typename S
 >
 typename fcppt::math::dim::object<
@@ -380,7 +381,7 @@ fcppt::math::dim::object<
 
 template<
 	typename T,
-	typename N,
+	fcppt::math::size_type N,
 	typename S
 >
 typename fcppt::math::dim::object<
@@ -404,7 +405,7 @@ fcppt::math::dim::object<
 
 template<
 	typename T,
-	typename N,
+	fcppt::math::size_type N,
 	typename S
 >
 typename fcppt::math::dim::object<
@@ -428,7 +429,7 @@ fcppt::math::dim::object<
 
 template<
 	typename T,
-	typename N,
+	fcppt::math::size_type N,
 	typename S
 >
 typename fcppt::math::dim::object<
@@ -452,7 +453,7 @@ fcppt::math::dim::object<
 
 template<
 	typename T,
-	typename N,
+	fcppt::math::size_type N,
 	typename S
 >
 typename fcppt::math::dim::object<
@@ -476,7 +477,7 @@ fcppt::math::dim::object<
 
 template<
 	typename T,
-	typename N,
+	fcppt::math::size_type N,
 	typename S
 >
 typename fcppt::math::dim::object<
@@ -500,7 +501,7 @@ fcppt::math::dim::object<
 
 template<
 	typename T,
-	typename N,
+	fcppt::math::size_type N,
 	typename S
 >
 S &
@@ -516,7 +517,7 @@ fcppt::math::dim::object<
 
 template<
 	typename T,
-	typename N,
+	fcppt::math::size_type N,
 	typename S
 >
 S const &

@@ -7,12 +7,13 @@
 #ifndef FCPPT_MATH_MATRIX_DETAIL_ROW_VIEW_IMPL_HPP_INCLUDED
 #define FCPPT_MATH_MATRIX_DETAIL_ROW_VIEW_IMPL_HPP_INCLUDED
 
+#include <fcppt/math/size_type.hpp>
 #include <fcppt/math/matrix/detail/row_view_decl.hpp>
 
 
 template<
 	typename T,
-	typename C
+	fcppt::math::size_type C
 >
 fcppt::math::matrix::detail::row_view<
 	T,
@@ -35,7 +36,7 @@ fcppt::math::matrix::detail::row_view<
 
 template<
 	typename T,
-	typename C
+	fcppt::math::size_type C
 >
 typename
 fcppt::math::matrix::detail::row_view<
@@ -53,7 +54,7 @@ fcppt::math::matrix::detail::row_view<
 
 template<
 	typename T,
-	typename C
+	fcppt::math::size_type C
 >
 typename
 fcppt::math::matrix::detail::row_view<
@@ -73,7 +74,7 @@ fcppt::math::matrix::detail::row_view<
 
 template<
 	typename T,
-	typename C
+	fcppt::math::size_type C
 >
 constexpr
 typename
@@ -87,7 +88,7 @@ fcppt::math::matrix::detail::row_view<
 >::size() const
 {
 	return
-		C::value;
+		C;
 }
 
 #endif

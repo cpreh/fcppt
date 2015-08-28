@@ -7,6 +7,7 @@
 #ifndef FCPPT_MATH_MATRIX_DETAIL_INDEX_ABSOLUTE_HPP_INCLUDED
 #define FCPPT_MATH_MATRIX_DETAIL_INDEX_ABSOLUTE_HPP_INCLUDED
 
+#include <fcppt/math/size_type.hpp>
 #include <fcppt/math/matrix/index_impl.hpp>
 
 
@@ -20,34 +21,22 @@ namespace detail
 {
 
 template<
-	typename SizeType,
-	SizeType C
+	fcppt::math::size_type C
 >
 inline
-fcppt::math::matrix::index<
-	SizeType
->
+fcppt::math::matrix::index
 index_absolute(
-	SizeType const _absolute
+	fcppt::math::size_type const _absolute
 )
 {
-	typedef
-	fcppt::math::matrix::index<
-		SizeType
-	>
-	index_type;
-
 	return
-		index_type{
-			typename
-			index_type::row_t{
+		fcppt::math::matrix::index{
+			fcppt::math::matrix::index::row_t{
 				_absolute
 				/
 				C
-			}
-			,
-			typename
-			index_type::column_t{
+			},
+			fcppt::math::matrix::index::column_t{
 				_absolute
 				%
 				C

@@ -8,6 +8,7 @@
 #define FCPPT_MATH_MATRIX_STD_HASH_HPP_INCLUDED
 
 #include <fcppt/range_hash_impl.hpp>
+#include <fcppt/math/size_type.hpp>
 #include <fcppt/math/matrix/object_impl.hpp>
 #include <fcppt/config/compiler.hpp>
 #if defined(FCPPT_CONFIG_CLANG_COMPILER)
@@ -31,15 +32,15 @@ FCPPT_PP_DISABLE_GCC_WARNING(-Wmismatched-tags)
 
 template<
 	typename T,
-	typename N,
-	typename M,
+	fcppt::math::size_type R,
+	fcppt::math::size_type C,
 	typename S
 >
 struct hash<
 	fcppt::math::matrix::object<
 		T,
-		N,
-		M,
+		R,
+		C,
 		S
 	>
 >
@@ -47,8 +48,8 @@ struct hash<
 	typedef
 	fcppt::math::matrix::object<
 		T,
-		N,
-		M,
+		R,
+		C,
 		S
 	> type;
 

@@ -7,10 +7,8 @@
 #ifndef FCPPT_MATH_MATRIX_STATIC_STORAGE_HPP_INCLUDED
 #define FCPPT_MATH_MATRIX_STATIC_STORAGE_HPP_INCLUDED
 
+#include <fcppt/math/size_type.hpp>
 #include <fcppt/math/static_storage.hpp>
-#include <fcppt/config/external_begin.hpp>
-#include <boost/mpl/times.hpp>
-#include <fcppt/config/external_end.hpp>
 
 
 namespace fcppt
@@ -22,17 +20,14 @@ namespace matrix
 
 template<
 	typename T,
-	typename N,
-	typename M
+	fcppt::math::size_type R,
+	fcppt::math::size_type C
 >
 using static_storage
 =
 fcppt::math::static_storage<
 	T,
-	boost::mpl::times<
-		N,
-		M
-	>
+	R * C
 >;
 
 }

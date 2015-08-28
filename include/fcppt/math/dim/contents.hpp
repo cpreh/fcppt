@@ -9,6 +9,7 @@
 
 #include <fcppt/literal.hpp>
 #include <fcppt/algorithm/fold.hpp>
+#include <fcppt/math/size_type.hpp>
 #include <fcppt/math/dim/object_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <functional>
@@ -29,7 +30,7 @@ This is equal to the product of all components of the dimension.
 */
 template<
 	typename T,
-	typename N,
+	fcppt::math::size_type N,
 	typename S
 >
 T

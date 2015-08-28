@@ -24,10 +24,6 @@ namespace vector
 /**
 \brief Calculates the dot product of two vectors
 \ingroup fcpptmathvector
-\tparam T The vector's <code>value_type</code>
-\tparam N The vector's dimension type
-\tparam S1 The first vector's storage type
-\tparam S2 The first vector's storage type
 
 The dot product is defined here:
 
@@ -35,7 +31,7 @@ http://en.wikipedia.org/wiki/Dot_product
 */
 template<
 	typename T,
-	typename N,
+	fcppt::math::size_type N,
 	typename S1,
 	typename S2
 >
@@ -57,7 +53,7 @@ dot(
 	return
 		fcppt::algorithm::fold(
 			fcppt::make_int_range_count(
-				N::value
+				N
 			),
 			fcppt::literal<
 				T

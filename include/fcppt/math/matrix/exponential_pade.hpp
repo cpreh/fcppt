@@ -10,11 +10,13 @@
 
 #include <fcppt/literal.hpp>
 #include <fcppt/cast/int_to_float.hpp>
+#include <fcppt/math/size_type.hpp>
 #include <fcppt/math/matrix/arithmetic.hpp>
 #include <fcppt/math/matrix/identity.hpp>
 #include <fcppt/math/matrix/infinity_norm.hpp>
 #include <fcppt/math/matrix/inverse.hpp>
 #include <fcppt/math/matrix/object_impl.hpp>
+#include <fcppt/math/matrix/static.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <algorithm>
 #include <cmath>
@@ -28,36 +30,45 @@ namespace math
 {
 namespace matrix
 {
+
 /**
 \brief Calculates the matrix exponential e^A using a Pade approximation
+
 \ingroup fcpptmathmatrix
-\tparam T The matrix's <code>value_type</code>
-\tparam DN The matrix's row and column dimension type
-\tparam S The matrix's storage type
-\param _matrix The input matrix
 */
-template
-<
+template<
 	typename T,
-	typename DN,
+	fcppt::math::size_type DN,
 	typename S
 >
-fcppt::math::matrix::object<T,DN,DN,S> const
+fcppt::math::matrix::static_<
+	T,
+	DN,
+	DN
+>
 exponential_pade(
-	fcppt::math::matrix::object<T,DN,DN,S> _matrix)
+	fcppt::math::matrix::object<
+		T,
+		DN,
+		DN,
+		S
+	> _matrix
+)
 {
 	static_assert(
-		std::is_floating_point<T>::value,
+		std::is_floating_point<
+			T
+		>::value,
 		"exponential_pade can only be used on floating point types"
 	);
 
 	typedef
-	fcppt::math::matrix::object<T,DN,DN,S>
+	fcppt::math::matrix::static_<
+		T,
+		DN,
+		DN
+	>
 	matrix_type;
-
-	typedef typename
-	matrix_type::size_type
-	matrix_size_type;
 
 	T const
 		zero =
@@ -111,11 +122,11 @@ exponential_pade(
 		fcppt::literal<T>(
 			1);
 
-	matrix_size_type const q =
+	fcppt::math::size_type const q =
 		6u;
 
 	for(
-		matrix_size_type k =
+		fcppt::math::size_type k =
 			1u;
 		k < q;
 		++k)
@@ -154,7 +165,7 @@ exponential_pade(
 		X;
 
 	for(
-		matrix_size_type i = 0u;
+		fcppt::math::size_type i = 0u;
 		i < j;
 		++i)
 		result =

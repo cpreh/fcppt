@@ -24,17 +24,33 @@ namespace matrix
 namespace detail
 {
 
-template
-<
+template<
 	typename T,
-	typename N,
+	typename S
+>
+T
+determinant(
+	fcppt::math::matrix::object<
+		T,
+		1,
+		1,
+		S
+	> const &_matrix
+)
+{
+	return
+		_matrix[0][0];
+}
+
+/// Calculates the matrix determinant via the Laplace extension and delete_column_and_row
+template<
+	typename T,
+	fcppt::math::size_type N,
 	typename S
 >
 typename
-std::enable_if
-<
-	fcppt::math::matrix::has_dim
-	<
+std::enable_if<
+	!fcppt::math::matrix::has_dim<
 		fcppt::math::matrix::object<
 			T,
 			N,
@@ -52,42 +68,13 @@ determinant(
 		N,
 		N,
 		S
-	> const &t
+	> const &_matrix
 )
 {
-	return t[0][0];
-}
-
-/// Calculates the matrix determinant via the Laplace extension and delete_column_and_row
-template
-<
-	typename T,
-	typename N,
-	typename S
->
-typename
-std::enable_if
-<
-	!fcppt::math::matrix::has_dim
-	<
-		fcppt::math::matrix::object<
-			T,
-			N,
-			N,
-			S
-		>,
-		1,
-		1
-	>::value,
-	T
->::type
-determinant(
-	fcppt::math::matrix::object<T,N,N,S> const &t
-)
-{
+	// TODO: fold?
 	T sum = fcppt::literal<T>(0);
 
-	for (size_type i = 0; i < t.columns(); ++i)
+	for (size_type i = 0; i < _matrix.columns(); ++i)
 	{
 		T const coeff =
 			i % fcppt::literal<size_type>(2) == fcppt::literal<size_type>(0)
@@ -100,17 +87,18 @@ determinant(
 
 		sum +=
 			coeff *
-			t[i][0] *
+			_matrix[i][0] *
 			fcppt::math::matrix::detail::determinant(
 				fcppt::math::matrix::delete_row_and_column(
-					t,
+					_matrix,
 					i,
 					0
 				)
 			);
 	}
 
-	return sum;
+	return
+		sum;
 }
 
 }

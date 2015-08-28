@@ -9,6 +9,7 @@
 #define FCPPT_MATH_MATRIX_INVERSE_HPP_INCLUDED
 
 #include <fcppt/literal.hpp>
+#include <fcppt/math/size_type.hpp>
 #include <fcppt/math/matrix/adjugate.hpp>
 #include <fcppt/math/matrix/arithmetic.hpp>
 #include <fcppt/math/matrix/determinant.hpp>
@@ -22,39 +23,55 @@ namespace math
 {
 namespace matrix
 {
+
 /**
-\brief Calculates the inverse matrix, uses fcppt::math::matrix::adjugate and fcppt::math::matrix::determinant.
+\brief Calculates the inverse matrix, uses fcppt::math::matrix::adjugate and
+fcppt::math::matrix::determinant.
+
 \ingroup fcpptmathmatrix
-\tparam T The matrix's <code>value_type</code>
-\tparam N The matrix's row and column dimension type
-\tparam S The matrix's storage type
-\param t The matrix (must be a static matrix)
 
 \warning
 Consider this a slow operation
 */
-template
-<
+template<
 	typename T,
-	typename N,
+	fcppt::math::size_type N,
 	typename S
 >
 fcppt::math::matrix::static_<
 	T,
-	N::value,
-	N::value
-> const
+	N,
+	N
+>
 inverse(
-	fcppt::math::matrix::object<T,N,N,S> const &t
+	fcppt::math::matrix::object<
+		T,
+		N,
+		N,
+		S
+	> const &_matrix
 )
 {
-	T const det =
+	T const det{
 		fcppt::math::matrix::determinant(
-			t);
+			_matrix
+		)
+	};
+
 	return
-		(fcppt::literal<T>(1)/det) *
+		(
+			fcppt::literal<
+				T
+			>(
+				1
+			)
+			/
+			det
+		)
+		*
 		fcppt::math::matrix::adjugate(
-			t);
+			_matrix
+		);
 }
 
 }

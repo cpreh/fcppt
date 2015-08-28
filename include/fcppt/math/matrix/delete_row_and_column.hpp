@@ -9,6 +9,7 @@
 #define FCPPT_MATH_MATRIX_DELETE_ROW_AND_COLUMN_HPP_INCLUDED
 
 #include <fcppt/literal.hpp>
+#include <fcppt/math/size_type.hpp>
 #include <fcppt/math/matrix/index.hpp>
 #include <fcppt/math/matrix/init.hpp>
 #include <fcppt/math/matrix/object_impl.hpp>
@@ -36,16 +37,16 @@ namespace matrix
 */
 template<
 	typename T,
-	typename R,
-	typename C,
+	fcppt::math::size_type R,
+	fcppt::math::size_type C,
 	typename S
 >
 fcppt::math::matrix::static_<
 	T,
-	R::value
+	R
 	-
 	1u,
-	C::value
+	C
 	-
 	1u
 >
@@ -56,38 +57,21 @@ delete_row_and_column(
 		C,
 		S
 	> const &_matrix,
-	typename
-	fcppt::math::matrix::object<
-		T,
-		R,
-		C,
-		S
-	>::size_type const _row,
-	typename
-	fcppt::math::matrix::object<
-		T,
-		R,
-		C,
-		S
-	>::size_type const _column
+	fcppt::math::size_type const _row,
+	fcppt::math::size_type const _column
 )
 {
 	typedef
 	fcppt::math::matrix::static_<
 		T,
-		R::value
+		R
 		-
 		1u,
-		C::value
+		C
 		-
 		1u
 	>
 	result_type;
-
-	typedef
-	typename
-	result_type::size_type
-	size_type;
 
 	return
 		fcppt::math::matrix::init<
@@ -98,15 +82,13 @@ delete_row_and_column(
 				_row,
 				_column
 			](
-				fcppt::math::matrix::index<
-					size_type
-				> const _index
+				fcppt::math::matrix::index const _index
 			)
 			{
 				auto const clamp(
 					[](
-						size_type const _cur,
-						size_type const _rem
+						fcppt::math::size_type const _cur,
+						fcppt::math::size_type const _rem
 					)
 					{
 						return
@@ -117,7 +99,7 @@ delete_row_and_column(
 								_cur
 								+
 								fcppt::literal<
-									size_type
+									fcppt::math::size_type
 								>(
 									1
 								)

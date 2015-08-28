@@ -7,15 +7,12 @@
 #ifndef FCPPT_MATH_MATRIX_INDEX_IMPL_HPP_INCLUDED
 #define FCPPT_MATH_MATRIX_INDEX_IMPL_HPP_INCLUDED
 
+#include <fcppt/math/size_type.hpp>
 #include <fcppt/math/matrix/index_decl.hpp>
 
 
-template<
-	typename SizeType
->
-fcppt::math::matrix::index<
-	SizeType
->::index(
+inline
+fcppt::math::matrix::index::index(
 	row_t const _row,
 	column_t const _column
 )
@@ -29,31 +26,17 @@ fcppt::math::matrix::index<
 {
 }
 
-template<
-	typename SizeType
->
-typename
-fcppt::math::matrix::index<
-	SizeType
->::size_type
-fcppt::math::matrix::index<
-	SizeType
->::row() const
+inline
+fcppt::math::size_type
+fcppt::math::matrix::index::row() const
 {
 	return
 		row_.get();
 }
 
-template<
-	typename SizeType
->
-typename
-fcppt::math::matrix::index<
-	SizeType
->::size_type
-fcppt::math::matrix::index<
-	SizeType
->::column() const
+inline
+fcppt::math::size_type
+fcppt::math::matrix::index::column() const
 {
 	return
 		column_.get();

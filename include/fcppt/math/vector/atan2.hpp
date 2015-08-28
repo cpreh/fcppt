@@ -8,7 +8,6 @@
 #ifndef FCPPT_MATH_VECTOR_ATAN2_HPP_INCLUDED
 #define FCPPT_MATH_VECTOR_ATAN2_HPP_INCLUDED
 
-#include <fcppt/math/detail/has_size.hpp>
 #include <fcppt/math/vector/object_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <cmath>
@@ -27,7 +26,6 @@ namespace vector
 \brief Computes <code>atan2(y,x)</code>
 \ingroup fcpptmathvector
 \tparam T The vector's <code>value_type</code>. Must be a floating point type.
-\tparam N The vector's dimension type. Must be 2.
 \tparam S The vector's storage type
 
 The standard C++ function <code>std::%atan2</code>, defined in
@@ -45,13 +43,16 @@ of (x,y). This is what happens in fcppt's atan2 function.
 */
 template<
 	typename T,
-	typename N,
 	typename S
 >
 inline
 T
 atan2(
-	fcppt::math::vector::object<T, N, S> const &_vector
+	fcppt::math::vector::object<
+		T,
+		2,
+		S
+	> const &_vector
 )
 {
 	static_assert(
@@ -59,14 +60,6 @@ atan2(
 			T
 		>::value,
 		"atan2 can only be used on vectors of floating point type"
-	);
-
-	static_assert(
-		fcppt::math::detail::has_size<
-			N,
-			2
-		>::value,
-		"atan2 can only be used on two-dimensional vectors"
 	);
 
 	return

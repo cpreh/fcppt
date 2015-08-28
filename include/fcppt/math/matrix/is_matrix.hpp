@@ -7,6 +7,7 @@
 #ifndef FCPPT_MATH_MATRIX_IS_MATRIX_HPP_INCLUDED
 #define FCPPT_MATH_MATRIX_IS_MATRIX_HPP_INCLUDED
 
+#include <fcppt/math/size_type.hpp>
 #include <fcppt/math/matrix/object_fwd.hpp>
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
@@ -28,8 +29,8 @@ FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
 
 /**
 \brief Metafunction to test if a type is a matrix type
+
 \ingroup fcpptmathmatrix
-\tparam T The type to test against
 */
 template<
 	typename T
@@ -43,15 +44,15 @@ std::false_type
 /// \cond FCPPT_DOXYGEN_DEBUG
 template<
 	typename T,
-	typename N,
-	typename M,
+	fcppt::math::size_type R,
+	fcppt::math::size_type C,
 	typename S
 >
 struct is_matrix<
 	fcppt::math::matrix::object<
 		T,
-		N,
-		M,
+		R,
+		C,
 		S
 	>
 >

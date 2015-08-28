@@ -7,6 +7,7 @@
 #ifndef FCPPT_MATH_DIM_TO_VECTOR_HPP_INCLUDED
 #define FCPPT_MATH_DIM_TO_VECTOR_HPP_INCLUDED
 
+#include <fcppt/math/size_type.hpp>
 #include <fcppt/math/detail/to_different.hpp>
 #include <fcppt/math/dim/object_impl.hpp>
 #include <fcppt/math/vector/object_impl.hpp>
@@ -27,13 +28,13 @@ namespace dim
 */
 template<
 	typename T,
-	typename N,
+	fcppt::math::size_type N,
 	typename S
 >
 inline
 fcppt::math::vector::static_<
 	T,
-	N::value
+	N
 >
 to_vector(
 	fcppt::math::dim::object<
@@ -47,7 +48,7 @@ to_vector(
 		fcppt::math::detail::to_different<
 			fcppt::math::vector::static_<
 				T,
-				N::value
+				N
 			>
 		>(
 			_src

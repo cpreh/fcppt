@@ -27,7 +27,9 @@ template<
 using dim_matches
 =
 boost::mpl::bool_<
-	Desired == Current
+	Desired
+	==
+	Current
 >;
 
 }

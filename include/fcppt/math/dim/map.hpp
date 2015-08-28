@@ -8,8 +8,9 @@
 #define FCPPT_MATH_DIM_MAP_HPP_INCLUDED
 
 #include <fcppt/math/map.hpp>
-#include <fcppt/math/static_storage.hpp>
-#include <fcppt/math/dim/object_fwd.hpp>
+#include <fcppt/math/size_type.hpp>
+#include <fcppt/math/dim/object_impl.hpp>
+#include <fcppt/math/dim/static.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
@@ -29,28 +30,19 @@ namespace dim
 */
 template<
 	typename T,
-	typename N,
+	fcppt::math::size_type N,
 	typename S,
 	typename Function
 >
 inline
-fcppt::math::dim::object<
+fcppt::math::dim::static_<
 	typename
 	std::result_of<
 		Function(
 			T
 		)
 	>::type,
-	N,
-	fcppt::math::static_storage<
-		typename
-		std::result_of<
-			Function(
-				T
-			)
-		>::type,
-		N
-	>
+	N
 >
 map(
 	fcppt::math::dim::object<
@@ -63,23 +55,14 @@ map(
 {
 	return
 		fcppt::math::map<
-			fcppt::math::dim::object<
+			fcppt::math::dim::static_<
 				typename
 				std::result_of<
 					Function(
 						T
 					)
 				>::type,
-				N,
-				fcppt::math::static_storage<
-					typename
-					std::result_of<
-						Function(
-							T
-						)
-					>::type,
-					N
-				>
+				N
 			>
 		>(
 			_value,

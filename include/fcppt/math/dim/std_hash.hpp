@@ -8,6 +8,7 @@
 #define FCPPT_MATH_DIM_STD_HASH_HPP_INCLUDED
 
 #include <fcppt/range_hash_impl.hpp>
+#include <fcppt/math/size_type.hpp>
 #include <fcppt/math/dim/object_impl.hpp>
 #include <fcppt/config/compiler.hpp>
 #if defined(FCPPT_CONFIG_CLANG_COMPILER)
@@ -31,7 +32,7 @@ FCPPT_PP_DISABLE_GCC_WARNING(-Wmismatched-tags)
 
 template<
 	typename T,
-	typename N,
+	fcppt::math::size_type N,
 	typename S
 >
 struct hash<

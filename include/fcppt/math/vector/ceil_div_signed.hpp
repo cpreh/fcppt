@@ -9,8 +9,9 @@
 
 #include <fcppt/math/ceil_div_signed.hpp>
 #include <fcppt/math/map.hpp>
-#include <fcppt/math/static_storage.hpp>
+#include <fcppt/math/size_type.hpp>
 #include <fcppt/math/vector/object_impl.hpp>
+#include <fcppt/math/vector/static.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
@@ -25,17 +26,13 @@ namespace vector
 
 template<
 	typename T,
-	typename N,
+	fcppt::math::size_type N,
 	typename S
 >
-fcppt::math::vector::object<
+fcppt::math::vector::static_<
 	T,
-	N,
-	fcppt::math::static_storage<
-		T,
-		N
-	>
-> const
+	N
+>
 ceil_div_signed(
 	fcppt::math::vector::object<
 		T,
@@ -54,13 +51,9 @@ ceil_div_signed(
 
 	return
 		fcppt::math::map<
-			fcppt::math::vector::object<
+			fcppt::math::vector::static_<
 				T,
-				N,
-				fcppt::math::static_storage<
-					T,
-					N
-				>
+				N
 			>
 		>(
 			_vector,

@@ -13,9 +13,6 @@
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
-#include <fcppt/config/external_begin.hpp>
-#include <type_traits>
-#include <fcppt/config/external_end.hpp>
 
 
 namespace fcppt
@@ -35,16 +32,12 @@ template<
 	typename Dim,
 	fcppt::math::size_type Size
 >
-struct has_dim
-:
-std::false_type
-{
-};
+struct has_dim;
 
 /// \cond FCPPT_DOXYGEN_DEBUG
 template<
 	typename T,
-	typename N,
+	fcppt::math::size_type N,
 	typename S,
 	fcppt::math::size_type Size
 >
@@ -59,7 +52,7 @@ struct has_dim<
 :
 fcppt::math::detail::dim_matches<
 	Size,
-	N::value
+	N
 >
 {
 };

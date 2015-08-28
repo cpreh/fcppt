@@ -7,6 +7,8 @@
 #ifndef FCPPT_MATH_VECTOR_OBJECT_FWD_HPP_INCLUDED
 #define FCPPT_MATH_VECTOR_OBJECT_FWD_HPP_INCLUDED
 
+#include <fcppt/math/size_type.hpp>
+
 
 namespace fcppt
 {
@@ -17,7 +19,7 @@ namespace vector
 
 template<
 	typename T,
-	typename N,
+	fcppt::math::size_type N,
 	typename S
 >
 class object;

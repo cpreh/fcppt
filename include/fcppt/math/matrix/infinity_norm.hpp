@@ -9,6 +9,7 @@
 #define FCPPT_MATH_MATRIX_INFINITY_NORM_HPP_INCLUDED
 
 #include <fcppt/literal.hpp>
+#include <fcppt/math/size_type.hpp>
 #include <fcppt/math/matrix/object_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <algorithm>
@@ -23,39 +24,34 @@ namespace math
 {
 namespace matrix
 {
+
 /**
 \brief Calculates the infinity norm
+
 \ingroup fcpptmathmatrix
-\tparam T The matrix's <code>value_type</code>
-\tparam N The matrix's row dimension type
-\tparam M The matrix's column dimension type
-\tparam S The matrix's storage type
-\param _matrix The input matrix
 */
-template
-<
+template<
 	typename T,
-	typename N,
-	typename M,
+	fcppt::math::size_type R,
+	fcppt::math::size_type C,
 	typename S
 >
 T
 infinity_norm(
-	fcppt::math::matrix::object<T,N,M,S> const &_matrix)
+	fcppt::math::matrix::object<
+		T,
+		R,
+		C,
+		S
+	> const &_matrix
+)
 {
-	typedef
-	fcppt::math::matrix::object<T,N,M,S>
-	matrix_type;
-
-	typedef typename
-	matrix_type::size_type
-	matrix_size_type;
-
+	// TODO: algorithm
 	T maximum_row =
 		std::numeric_limits<T>::min();
 
 	for(
-		matrix_size_type row =
+		fcppt::math::size_type row =
 			0u;
 		row < _matrix.rows();
 		++row)
@@ -65,7 +61,7 @@ infinity_norm(
 				0);
 
 		for(
-			matrix_size_type column =
+			fcppt::math::size_type column =
 				0u;
 			column < _matrix.columns();
 			++column)
@@ -82,6 +78,7 @@ infinity_norm(
 	return
 		maximum_row;
 }
+
 }
 }
 }

@@ -9,6 +9,7 @@
 #define FCPPT_MATH_VECTOR_HYPERSPHERE_TO_CARTESIAN_HPP_INCLUDED
 
 #include <fcppt/literal.hpp>
+#include <fcppt/math/size_type.hpp>
 #include <fcppt/math/vector/init.hpp>
 #include <fcppt/math/vector/object.hpp>
 #include <fcppt/math/vector/static.hpp>
@@ -100,12 +101,12 @@ the positive z axis.
 */
 template<
 	typename T,
-	typename N,
+	fcppt::math::size_type N,
 	typename S
 >
 fcppt::math::vector::static_<
 	T,
-	N::value
+	N
 	+
 	1u
 >
@@ -120,16 +121,11 @@ hypersphere_to_cartesian(
 	typedef
 	fcppt::math::vector::static_<
 		T,
-		N::value
+		N
 		+
 		1u
 	>
 	result_type;
-
-	typedef
-	typename
-	result_type::size_type
-	size_type;
 
 	typedef
 	typename
@@ -143,7 +139,7 @@ hypersphere_to_cartesian(
 			[
 				&_angles
 			](
-				size_type const _index
+				fcppt::math::size_type const _index
 			)
 			{
 				// TODO: fold
@@ -155,7 +151,7 @@ hypersphere_to_cartesian(
 					)
 				};
 
-				for(size_type j = 0; j < _index; ++j)
+				for(fcppt::math::size_type j = 0; j < _index; ++j)
 					sins *=
 						std::sin(
 							_angles[j]
@@ -166,7 +162,7 @@ hypersphere_to_cartesian(
 					(
 						_index
 						>=
-						N::value
+						N
 						?
 							fcppt::literal<
 								value_type

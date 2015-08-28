@@ -10,6 +10,7 @@
 #include <fcppt/no_init_fwd.hpp>
 #include <fcppt/math/difference_type.hpp>
 #include <fcppt/math/size_type.hpp>
+#include <fcppt/math/static_size.hpp>
 #include <fcppt/math/detail/make_op_decl.hpp>
 #include <fcppt/math/dim/object_fwd.hpp>
 
@@ -32,7 +33,7 @@ See the \link fcpptmathdim module description \endlink for more information.
 */
 template<
 	typename T,
-	typename N,
+	fcppt::math::size_type N,
 	typename S
 >
 class object
@@ -42,11 +43,13 @@ public:
 	\brief A typedef for the \p N parameter
 	*/
 	typedef
-	N
+	fcppt::math::static_size<
+		N
+	>
 	dim_wrapper;
 
 	typedef
-	N
+	dim_wrapper
 	static_size;
 
 	/**

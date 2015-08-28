@@ -6,7 +6,6 @@
 
 #include <fcppt/text.hpp>
 #include <fcppt/io/cout.hpp>
-#include <fcppt/math/point_rotate.hpp>
 #include <fcppt/math/box/output.hpp>
 #include <fcppt/math/box/rect.hpp>
 #include <fcppt/math/vector/atan2.hpp>
@@ -14,6 +13,7 @@
 #include <fcppt/math/vector/length.hpp>
 #include <fcppt/math/vector/normalize.hpp>
 #include <fcppt/math/vector/output.hpp>
+#include <fcppt/math/vector/point_rotate.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <istream>
 #include <ostream>
@@ -44,7 +44,7 @@ main()
 		vecf
 	);
 
-	fcppt::math::point_rotate(
+	fcppt::math::vector::point_rotate(
 		vecf,
 		vecf,
 		3.f

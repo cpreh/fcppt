@@ -7,6 +7,7 @@
 #ifndef FCPPT_MATH_VECTOR_COMPARISON_HPP_INCLUDED
 #define FCPPT_MATH_VECTOR_COMPARISON_HPP_INCLUDED
 
+#include <fcppt/math/size_type.hpp>
 #include <fcppt/math/detail/array_equal.hpp>
 #include <fcppt/math/detail/array_less.hpp>
 #include <fcppt/math/vector/object_impl.hpp>
@@ -21,7 +22,7 @@ namespace vector
 
 template<
 	typename T,
-	typename N,
+	fcppt::math::size_type N,
 	typename S1,
 	typename S2
 >
@@ -49,7 +50,7 @@ operator==(
 
 template<
 	typename T,
-	typename N,
+	fcppt::math::size_type N,
 	typename S1,
 	typename S2
 >
@@ -74,7 +75,7 @@ operator!=(
 
 template<
 	typename T,
-	typename N,
+	fcppt::math::size_type N,
 	typename S1,
 	typename S2
 >
@@ -102,7 +103,7 @@ operator<(
 
 template<
 	typename T,
-	typename N,
+	fcppt::math::size_type N,
 	typename S1,
 	typename S2
 >
@@ -127,7 +128,7 @@ operator>(
 
 template<
 	typename T,
-	typename N,
+	fcppt::math::size_type N,
 	typename S1,
 	typename S2
 >
@@ -152,7 +153,7 @@ operator<=(
 
 template<
 	typename T,
-	typename N,
+	fcppt::math::size_type N,
 	typename S1,
 	typename S2
 >

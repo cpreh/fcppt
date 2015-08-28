@@ -8,6 +8,7 @@
 #define FCPPT_MATH_MATRIX_OBJECT_IMPL_HPP_INCLUDED
 
 #include <fcppt/no_init_fwd.hpp>
+#include <fcppt/math/size_type.hpp>
 #include <fcppt/math/detail/assert_static_storage.hpp>
 #include <fcppt/math/detail/assign.hpp>
 #include <fcppt/math/detail/copy.hpp>
@@ -30,8 +31,8 @@ FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
 
 template<
 	typename T,
-	typename R,
-	typename C,
+	fcppt::math::size_type R,
+	fcppt::math::size_type C,
 	typename S
 >
 fcppt::math::matrix::object<
@@ -53,8 +54,8 @@ FCPPT_PP_POP_WARNING
 
 template<
 	typename T,
-	typename R,
-	typename C,
+	fcppt::math::size_type R,
+	fcppt::math::size_type C,
 	typename S
 >
 template<
@@ -104,8 +105,8 @@ fcppt::math::matrix::object<
 
 template<
 	typename T,
-	typename R,
-	typename C,
+	fcppt::math::size_type R,
+	fcppt::math::size_type C,
 	typename S
 >
 fcppt::math::matrix::object<
@@ -125,8 +126,8 @@ fcppt::math::matrix::object<
 
 template<
 	typename T,
-	typename R,
-	typename C,
+	fcppt::math::size_type R,
+	fcppt::math::size_type C,
 	typename S
 >
 fcppt::math::matrix::object<
@@ -141,8 +142,8 @@ fcppt::math::matrix::object<
 
 template<
 	typename T,
-	typename R,
-	typename C,
+	fcppt::math::size_type R,
+	fcppt::math::size_type C,
 	typename S
 >
 template<
@@ -174,8 +175,8 @@ fcppt::math::matrix::object<
 
 template<
 	typename T,
-	typename R,
-	typename C,
+	fcppt::math::size_type R,
+	fcppt::math::size_type C,
 	typename S
 >
 fcppt::math::matrix::object<
@@ -196,8 +197,8 @@ fcppt::math::matrix::object<
 
 template<
 	typename T,
-	typename R,
-	typename C,
+	fcppt::math::size_type R,
+	fcppt::math::size_type C,
 	typename S
 >
 template<
@@ -232,8 +233,8 @@ fcppt::math::matrix::object<
 
 template<
 	typename T,
-	typename R,
-	typename C,
+	fcppt::math::size_type R,
+	fcppt::math::size_type C,
 	typename S
 >
 fcppt::math::matrix::object<
@@ -250,9 +251,9 @@ fcppt::math::matrix::object<
 )\
 FCPPT_MATH_DETAIL_MAKE_OP_DEF(\
 	4,\
-	(template<typename T, typename N, typename M, typename S> template<typename OtherStorage>),\
-	(fcppt::math::matrix::object<T, N, M, S>),\
-	(fcppt::math::matrix::object<T, N, M, OtherStorage>),\
+	(template<typename T, fcppt::math::size_type R, fcppt::math::size_type C, typename S> template<typename OtherStorage>),\
+	(fcppt::math::matrix::object<T, R, C, S>),\
+	(fcppt::math::matrix::object<T, R, C, OtherStorage>),\
 	op\
 )
 
@@ -263,8 +264,8 @@ FCPPT_MATH_MATRIX_OBJECT_DEFINE_OPERATOR(-=)
 
 template<
 	typename T,
-	typename R,
-	typename C,
+	fcppt::math::size_type R,
+	fcppt::math::size_type C,
 	typename S
 >
 fcppt::math::matrix::object<
@@ -296,8 +297,8 @@ fcppt::math::matrix::object<
 
 template<
 	typename T,
-	typename R,
-	typename C,
+	fcppt::math::size_type R,
+	fcppt::math::size_type C,
 	typename S
 >
 fcppt::math::matrix::object<
@@ -329,8 +330,8 @@ fcppt::math::matrix::object<
 
 template<
 	typename T,
-	typename R,
-	typename C,
+	fcppt::math::size_type R,
+	fcppt::math::size_type C,
 	typename S
 >
 typename
@@ -362,8 +363,8 @@ fcppt::math::matrix::object<
 
 template<
 	typename T,
-	typename R,
-	typename C,
+	fcppt::math::size_type R,
+	fcppt::math::size_type C,
 	typename S
 >
 typename
@@ -395,8 +396,8 @@ fcppt::math::matrix::object<
 
 template<
 	typename T,
-	typename R,
-	typename C,
+	fcppt::math::size_type R,
+	fcppt::math::size_type C,
 	typename S
 >
 constexpr
@@ -415,13 +416,13 @@ fcppt::math::matrix::object<
 >::rows()
 {
 	return
-		R::value;
+		R;
 }
 
 template<
 	typename T,
-	typename R,
-	typename C,
+	fcppt::math::size_type R,
+	fcppt::math::size_type C,
 	typename S
 >
 constexpr
@@ -440,13 +441,13 @@ fcppt::math::matrix::object<
 >::columns()
 {
 	return
-		C::value;
+		C;
 }
 
 template<
 	typename T,
-	typename R,
-	typename C,
+	fcppt::math::size_type R,
+	fcppt::math::size_type C,
 	typename S
 >
 S &
@@ -463,8 +464,8 @@ fcppt::math::matrix::object<
 
 template<
 	typename T,
-	typename R,
-	typename C,
+	fcppt::math::size_type R,
+	fcppt::math::size_type C,
 	typename S
 >
 S const &

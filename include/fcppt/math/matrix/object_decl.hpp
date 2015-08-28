@@ -16,7 +16,6 @@
 #include <fcppt/math/vector/object_decl.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/mpl/times.hpp>
-#include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -47,27 +46,23 @@ See the \link fcpptmathmatrix module documentation \endlink for more information
 */
 template<
 	typename T,
-	typename R,
-	typename C,
+	fcppt::math::size_type R,
+	fcppt::math::size_type C,
 	typename S
 >
 class object
 {
 public:
-	static_assert(
-		std::is_same<
-			typename R::value_type,
-			typename C::value_type
-		>::value,
-		"The value types of R and C must be the same"
-	);
-
 	typedef
-	R
+	fcppt::math::static_size<
+		R
+	>
 	static_rows;
 
 	typedef
-	C
+	fcppt::math::static_size<
+		C
+	>
 	static_columns;
 
 	typedef
@@ -77,8 +72,8 @@ public:
 	typedef
 	typename
 	boost::mpl::times<
-		R,
-		C
+		static_rows,
+		static_columns
 	>::type
 	dim_wrapper;
 

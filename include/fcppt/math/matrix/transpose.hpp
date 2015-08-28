@@ -7,8 +7,11 @@
 #ifndef FCPPT_MATH_MATRIX_TRANSPOSE_HPP_INCLUDED
 #define FCPPT_MATH_MATRIX_TRANSPOSE_HPP_INCLUDED
 
-#include <fcppt/no_init.hpp>
+#include <fcppt/math/size_type.hpp>
+#include <fcppt/math/matrix/index.hpp>
+#include <fcppt/math/matrix/init.hpp>
 #include <fcppt/math/matrix/object_impl.hpp>
+#include <fcppt/math/matrix/static.hpp>
 
 
 namespace fcppt
@@ -20,47 +23,51 @@ namespace matrix
 
 /**
 \brief Calculates a transposed matrix
+
 \ingroup fcpptmathmatrix
-\tparam T The matrix's <code>value_type</code>
-\tparam M The matrix's row dimension type
-\tparam N The matrix's column dimension type
-\tparam S The matrix's storage type
-\param t The matrix
 */
 template<
 	typename T,
-	typename N,
-	typename M,
+	fcppt::math::size_type R,
+	fcppt::math::size_type C,
 	typename S
 >
-fcppt::math::matrix::object<
+fcppt::math::matrix::static_<
 	T,
-	M,
-	N,
-	S
-> const
+	C,
+	R
+>
 transpose(
 	fcppt::math::matrix::object<
 		T,
-		N,
-		M,
+		R,
+		C,
 		S
-	> const &t
+	> const &_matrix
 )
 {
-	typedef object<T, M, N, S> ret_type;
-
-	ret_type ret{
-		fcppt::no_init()
-	};
-
-	typedef typename ret_type::size_type size_type;
-	for(size_type i = 0; i < t.rows(); ++i)
-		for(size_type j = 0; j < t.columns(); ++j)
-			if(j < t.rows() && i < t.columns())
-				ret[j][i] = t[i][j];
-	return ret;
-
+	return
+		fcppt::math::matrix::init<
+			fcppt::math::matrix::static_<
+				T,
+				C,
+				R
+			>
+		>(
+			[
+				&_matrix
+			](
+				fcppt::math::matrix::index const _index
+			)
+			{
+				return
+					_matrix[
+						_index.column()
+					][
+						_index.row()
+					];
+			}
+		);
 }
 
 }

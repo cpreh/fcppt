@@ -8,6 +8,7 @@
 #define FCPPT_MATH_VECTOR_LENGTH_HPP_INCLUDED
 
 #include <fcppt/cast/int_to_float.hpp>
+#include <fcppt/math/size_type.hpp>
 #include <fcppt/math/vector/length_square.hpp>
 #include <fcppt/math/vector/object_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
@@ -69,7 +70,7 @@ std::cout << (std::abs(vf_length - vi_length) < 0.001f);
 */
 template<
 	typename T,
-	typename N,
+	fcppt::math::size_type N,
 	typename S
 >
 inline
@@ -142,7 +143,7 @@ std::cout << (std::abs(vf_length - vi_length) < 0.001f);
 template<
 	typename Dest,
 	typename T,
-	typename N,
+	fcppt::math::size_type N,
 	typename S
 >
 inline

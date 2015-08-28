@@ -8,6 +8,7 @@
 #define FCPPT_MATH_DETAIL_MAKE_UNARY_OPERATOR_HPP_INCLUDED
 
 #include <fcppt/math/map.hpp>
+#include <fcppt/math/size_type.hpp>
 #include <fcppt/math/static_storage.hpp>
 #include <fcppt/math/detail/unary_type.hpp>
 
@@ -17,7 +18,7 @@
 )\
 template<\
 	typename T,\
-	typename N,\
+	fcppt::math::size_type N,\
 	typename S\
 >\
 object<\
@@ -27,7 +28,7 @@ object<\
 		FCPPT_MATH_DETAIL_UNARY_TYPE(T, op),\
 		N\
 	>\
-> const \
+> \
 operator op(\
 	object<\
 		T,\

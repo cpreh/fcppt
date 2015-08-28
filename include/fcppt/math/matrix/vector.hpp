@@ -9,11 +9,11 @@
 
 #include <fcppt/literal.hpp>
 #include <fcppt/make_int_range_count.hpp>
-#include <fcppt/math/static_storage.hpp>
 #include <fcppt/math/detail/binary_type.hpp>
 #include <fcppt/math/matrix/object_impl.hpp>
 #include <fcppt/math/vector/init.hpp>
 #include <fcppt/math/vector/object_impl.hpp>
+#include <fcppt/math/vector/static.hpp>
 
 
 namespace fcppt
@@ -25,43 +25,35 @@ namespace matrix
 
 /// Multiplies a matrix by a vector
 template<
-	typename L,
-	typename R,
-	typename N,
-	typename M,
+	typename Left,
+	typename Right,
+	fcppt::math::size_type R,
+	fcppt::math::size_type C,
 	typename S1,
 	typename S2
 >
-fcppt::math::vector::object<
-	FCPPT_MATH_DETAIL_BINARY_TYPE(L, *, R),
-	M,
-	fcppt::math::static_storage<
-		FCPPT_MATH_DETAIL_BINARY_TYPE(L, *, R),
-		M
-	>
+fcppt::math::vector::static_<
+	FCPPT_MATH_DETAIL_BINARY_TYPE(Left, *, Right),
+	C
 >
 operator *(
 	fcppt::math::matrix::object<
-		L,
-		N,
-		M,
+		Left,
+		R,
+		C,
 		S1
 	> const &_left,
 	fcppt::math::vector::object<
+		Right,
 		R,
-		N,
 		S2
 	> const &_right
 )
 {
 	typedef
-	fcppt::math::vector::object<
-		FCPPT_MATH_DETAIL_BINARY_TYPE(L, *, R),
-		M,
-		fcppt::math::static_storage<
-			FCPPT_MATH_DETAIL_BINARY_TYPE(L, *, R),
-			M
-		>
+	fcppt::math::vector::static_<
+		FCPPT_MATH_DETAIL_BINARY_TYPE(Left, *, Right),
+		C
 	>
 	result_type;
 
@@ -91,7 +83,7 @@ operator *(
 					auto const j
 					:
 					fcppt::make_int_range_count(
-						N::value
+						R
 					)
 				)
 					cur +=

@@ -8,6 +8,7 @@
 #ifndef FCPPT_MATH_MATRIX_DETERMINANT_HPP_INCLUDED
 #define FCPPT_MATH_MATRIX_DETERMINANT_HPP_INCLUDED
 
+#include <fcppt/math/size_type.hpp>
 #include <fcppt/math/matrix/object_impl.hpp>
 #include <fcppt/math/matrix/detail/determinant.hpp>
 
@@ -21,22 +22,21 @@ namespace matrix
 
 /**
 \brief Calculates the determinant of a matrix
+
 \ingroup fcpptmathmatrix
-\tparam T The matrix's <code>value_type</code>
-\tparam N The matrix's row (and column!) dimension type
-\tparam S The matrix's storage type
+
 \param _matrix The matrix
 
 This function uses the Laplace extension. Consider it slow (very slow!).
 
 \see fcppt::math::matrix::delete_row_and_column.
 */
-template
-<
+template<
 	typename T,
-	typename N,
+	fcppt::math::size_type N,
 	typename S
 >
+inline
 T
 determinant(
 	fcppt::math::matrix::object<

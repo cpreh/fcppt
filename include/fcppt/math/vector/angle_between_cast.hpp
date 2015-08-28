@@ -8,6 +8,7 @@
 #define FCPPT_MATH_VECTOR_ANGLE_BETWEEN_CAST_HPP_INCLUDED
 
 #include <fcppt/cast/int_to_float_fun.hpp>
+#include <fcppt/math/size_type.hpp>
 #include <fcppt/math/vector/angle_between.hpp>
 #include <fcppt/math/vector/object_impl.hpp>
 #include <fcppt/math/vector/static.hpp>
@@ -26,12 +27,10 @@ namespace vector
 
 /**
 \brief Calculates the angle between two arbitrary vector types
+
 \ingroup fcpptmathvector
+
 \tparam Dest The angle type. Must be a floating point type.
-\tparam T The vector's <code>value_type</code>
-\tparam N The vector's dimension type
-\tparam S1 The first vector's storage type
-\tparam S2 The first vector's storage type
 
 This function is a generalization of fcppt::math::vector::angle_between in that
 it calculates the angle between two arbitrary vectors, instead of two floating
@@ -45,7 +44,7 @@ The behaviour is undefined if \p _from or \p _to are very close to zero.
 template<
 	typename Dest,
 	typename T,
-	typename N,
+	fcppt::math::size_type N,
 	typename S1,
 	typename S2
 >
@@ -73,7 +72,7 @@ angle_between_cast(
 	typedef
 	fcppt::math::vector::static_<
 		Dest,
-		N::value
+		N
 	>
 	intermediate_type;
 

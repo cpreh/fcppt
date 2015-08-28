@@ -8,6 +8,7 @@
 #define FCPPT_MATH_DETAIL_STRUCTURE_CAST_HPP_INCLUDED
 
 #include <fcppt/cast/apply.hpp>
+#include <fcppt/math/detail/assert_static_storage.hpp>
 #include <fcppt/math/detail/init.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <type_traits>
@@ -32,6 +33,11 @@ structure_cast(
 	U const &_other
 )
 {
+	FCPPT_MATH_DETAIL_ASSERT_STATIC_STORAGE(
+		typename
+		T::storage_type
+	);
+
 	static_assert(
 		std::is_same<
 			typename

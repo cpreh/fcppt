@@ -7,8 +7,10 @@
 #ifndef FCPPT_MATH_MATRIX_COMPARISON_HPP_INCLUDED
 #define FCPPT_MATH_MATRIX_COMPARISON_HPP_INCLUDED
 
+#include <fcppt/math/size_type.hpp>
 #include <fcppt/math/detail/array_equal.hpp>
 #include <fcppt/math/matrix/object_impl.hpp>
+
 
 namespace fcppt
 {
@@ -19,14 +21,8 @@ namespace matrix
 
 /**
 \brief Compares two matrices component-wise
+
 \ingroup fcpptmathmatrix
-\tparam T The matrix's <code>value_type</code>
-\tparam M The matrix's row dimension type
-\tparam N The matrix's column dimension type
-\tparam S1 The first matrix's storage type
-\tparam S2 The second matrix's storage type
-\param v1 The first matrix
-\param v2 The second matrix
 
 \warning
 This uses <code>T</code>'s equality comparison operator, so be careful if you
@@ -34,34 +30,39 @@ want to compare floating point matrices.
 */
 template<
 	typename T,
-	typename N,
-	typename M,
+	fcppt::math::size_type R,
+	fcppt::math::size_type C,
 	typename S1,
 	typename S2
 >
+inline
 bool
 operator==(
-	object<T, N, M, S1> const &v1,
-	object<T, N, M, S2> const &v2
+	fcppt::math::matrix::object<
+		T,
+		R,
+		C,
+		S1
+	> const &_m1,
+	fcppt::math::matrix::object<
+		T,
+		R,
+		C,
+		S2
+	> const &_m2
 )
 {
 	return
 		fcppt::math::detail::array_equal(
-			v1,
-			v2
+			_m1,
+			_m2
 		);
 }
 
 /**
 \brief Compares two matrices component-wise
+
 \ingroup fcpptmathmatrix
-\tparam T The matrix's <code>value_type</code>
-\tparam M The matrix's row dimension type
-\tparam N The matrix's column dimension type
-\tparam S1 The first matrix's storage type
-\tparam S2 The second matrix's storage type
-\param v1 The first matrix
-\param v2 The second matrix
 
 \warning
 This uses <code>T</code>'s inequality comparison operator, so be careful if you
@@ -69,19 +70,30 @@ want to compare floating point matrices.
 */
 template<
 	typename T,
-	typename N,
-	typename M,
+	fcppt::math::size_type R,
+	fcppt::math::size_type C,
 	typename S1,
 	typename S2
 >
+inline
 bool
 operator!=(
-	object<T, N, M, S1> const &v1,
-	object<T, N, M, S2> const &v2
+	fcppt::math::matrix::object<
+		T,
+		R,
+		C,
+		S1
+	> const &_m1,
+	fcppt::math::matrix::object<
+		T,
+		R,
+		C,
+		S2
+	> const &_m2
 )
 {
 	return
-		!(v1 == v2);
+		!(_m1 == _m2);
 }
 
 }

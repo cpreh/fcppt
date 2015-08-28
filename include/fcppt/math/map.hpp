@@ -25,6 +25,7 @@ template<
 	typename Source,
 	typename Function
 >
+inline
 Dest
 map(
 	Source const &_source,

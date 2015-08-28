@@ -111,9 +111,7 @@ FCPPT_PP_POP_WARNING
 
 	typedef fcppt::math::vector::object<
 		unsigned,
-		fcppt::math::static_size<
-			2
-		>,
+		2,
 		view_storage<
 			unsigned
 		>

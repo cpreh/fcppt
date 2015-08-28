@@ -7,6 +7,7 @@
 #ifndef FCPPT_MATH_VECTOR_ANGLE_BETWEEN_HPP_INCLUDED
 #define FCPPT_MATH_VECTOR_ANGLE_BETWEEN_HPP_INCLUDED
 
+#include <fcppt/math/size_type.hpp>
 #include <fcppt/math/vector/arithmetic.hpp>
 #include <fcppt/math/vector/dot.hpp>
 #include <fcppt/math/vector/length.hpp>
@@ -27,10 +28,6 @@ namespace vector
 /**
 \brief Calculates the angle between two floating point vectors
 \ingroup fcpptmathvector
-\tparam T The vector's <code>value_type</code>. Must be a floating point type.
-\tparam N The vector's dimension type
-\tparam S1 The first vector's storage type
-\tparam S2 The second vector's storage type
 
 If you want to calculate the angle between two vectors whose value type is not
 a floating point type, see fcppt::math::vector::angle_between_cast.
@@ -47,14 +44,22 @@ The behaviour is undefined if \p _from or \p _to are very close to zero.
 */
 template<
 	typename T,
-	typename N,
+	fcppt::math::size_type N,
 	typename S1,
 	typename S2
 >
 T
 angle_between(
-	fcppt::math::vector::object<T, N, S1> const &_from,
-	fcppt::math::vector::object<T, N, S2> const &_to
+	fcppt::math::vector::object<
+		T,
+		N,
+		S1
+	> const &_from,
+	fcppt::math::vector::object<
+		T,
+		N,
+		S2
+	> const &_to
 )
 {
 	static_assert(

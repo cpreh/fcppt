@@ -9,6 +9,7 @@
 #define FCPPT_MATH_MATRIX_ADJUGATE_HPP_INCLUDED
 
 #include <fcppt/literal.hpp>
+#include <fcppt/math/size_type.hpp>
 #include <fcppt/math/matrix/delete_row_and_column.hpp>
 #include <fcppt/math/matrix/determinant.hpp>
 #include <fcppt/math/matrix/index.hpp>
@@ -37,13 +38,13 @@ You should consider this a slow operation.
 */
 template<
 	typename T,
-	typename N,
+	fcppt::math::size_type N,
 	typename S
 >
 fcppt::math::matrix::static_<
 	T,
-	N::value,
-	N::value
+	N,
+	N
 >
 adjugate(
 	fcppt::math::matrix::object<
@@ -57,21 +58,10 @@ adjugate(
 	typedef
 	fcppt::math::matrix::static_<
 		T,
-		N::value,
-		N::value
+		N,
+		N
 	>
 	result_type;
-
-	typedef
-	typename
-	result_type::size_type
-	size_type;
-
-	typedef
-	fcppt::math::matrix::index<
-		size_type
-	>
-	index_type;
 
 	return
 		fcppt::math::matrix::init<
@@ -80,7 +70,7 @@ adjugate(
 			[
 				&_matrix
 			](
-				index_type const _index
+				fcppt::math::matrix::index const _index
 			)
 			{
 				T const coeff{
@@ -91,13 +81,13 @@ adjugate(
 					)
 					%
 					fcppt::literal<
-						size_type
+						fcppt::math::size_type
 					>(
 						2
 					)
 					==
 					fcppt::literal<
-						size_type
+						fcppt::math::size_type
 					>(
 						0
 					)

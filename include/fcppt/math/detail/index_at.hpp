@@ -11,6 +11,9 @@
 #include <fcppt/cast/to_signed.hpp>
 #include <fcppt/container/to_iterator_type.hpp>
 #include <fcppt/container/to_reference_type.hpp>
+#include <fcppt/config/external_begin.hpp>
+#include <iterator>
+#include <fcppt/config/external_end.hpp>
 
 
 namespace fcppt

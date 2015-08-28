@@ -10,9 +10,10 @@
 #include <fcppt/no_init.hpp>
 #include <fcppt/math/binary_map.hpp>
 #include <fcppt/math/map.hpp>
+#include <fcppt/math/size_type.hpp>
 #include <fcppt/math/detail/binary_type.hpp>
 #include <fcppt/math/matrix/object_impl.hpp>
-#include <fcppt/math/matrix/static_storage.hpp>
+#include <fcppt/math/matrix/static.hpp>
 
 
 namespace fcppt
@@ -26,60 +27,50 @@ namespace matrix
 	op\
 )\
 template<\
-	typename L,\
-	typename R,\
-	typename N,\
-	typename M,\
+	typename Left,\
+	typename Right,\
+	fcppt::math::size_type R,\
+	fcppt::math::size_type C,\
 	typename S1,\
 	typename S2\
 >\
-fcppt::math::matrix::object<\
-	FCPPT_MATH_DETAIL_BINARY_TYPE(L, op, R),\
-	N,\
-	M,\
-	fcppt::math::matrix::static_storage<\
-		FCPPT_MATH_DETAIL_BINARY_TYPE(L, op, R),\
-		N,\
-		M\
-	>\
-> const \
+fcppt::math::matrix::static_<\
+	FCPPT_MATH_DETAIL_BINARY_TYPE(Left, op, Right),\
+	R,\
+	C \
+> \
 operator op(\
 	fcppt::math::matrix::object<\
-		L,\
-		N,\
-		M,\
+		Left,\
+		R,\
+		C,\
 		S1\
 	> const &_left,\
 	fcppt::math::matrix::object<\
+		Right,\
 		R,\
-		N,\
-		M,\
+		C,\
 		S2\
 	> const &_right\
 )\
 {\
 	typedef \
-	FCPPT_MATH_DETAIL_BINARY_TYPE(L, op, R)\
+	FCPPT_MATH_DETAIL_BINARY_TYPE(Left, op, Right)\
 	result_value_type;\
 \
 	return \
 		fcppt::math::binary_map<\
-			fcppt::math::matrix::object<\
+			fcppt::math::matrix::static_<\
 				result_value_type,\
-				N,\
-				M,\
-				fcppt::math::matrix::static_storage<\
-					result_value_type,\
-					N,\
-					M\
-				>\
+				R,\
+				C\
 			> \
 		>(\
 			_left,\
 			_right,\
 			[](\
-				L const &_left_elem,\
-				R const &_right_elem\
+				Left const &_left_elem,\
+				Right const &_right_elem\
 			)\
 			{\
 				return \
@@ -98,22 +89,17 @@ FCPPT_MATH_MAKE_FREE_MATRIX_FUNCTION(-)
 template<
 	typename L,
 	typename R,
-	typename N,
-	typename M1,
-	typename M2,
+	fcppt::math::size_type N,
+	fcppt::math::size_type M1,
+	fcppt::math::size_type M2,
 	typename S1,
 	typename S2
 >
-fcppt::math::matrix::object<
+fcppt::math::matrix::static_<
 	FCPPT_MATH_DETAIL_BINARY_TYPE(L, *, R),
 	M1,
-	M2,
-	fcppt::math::matrix::static_storage<
-		FCPPT_MATH_DETAIL_BINARY_TYPE(L, *, R),
-		M1,
-		M2
-	>
-> const
+	M2
+>
 operator *(
 	fcppt::math::matrix::object<
 		L,
@@ -129,40 +115,26 @@ operator *(
 	> const &_right
 )
 {
-	typedef fcppt::math::matrix::object<
+	// TODO: init
+	typedef
+	fcppt::math::matrix::static_<
 		FCPPT_MATH_DETAIL_BINARY_TYPE(L, *, R),
 		M1,
-		M2,
-		fcppt::math::matrix::static_storage<
-			FCPPT_MATH_DETAIL_BINARY_TYPE(L, *, R),
-			M1,
-			M2
-		>
-	> result_type;
+		M2
+	>
+	result_type;
 
 	result_type ret{
 		fcppt::no_init()
 	};
 
 	for(
-		typename
-		fcppt::math::matrix::object<
-			L,
-			M1,
-			N,
-			S1
-		>::size_type i = 0u;
+		fcppt::math::size_type i = 0u;
 		i < _left.rows();
 		++i
 	)
 		for(
-			typename
-			fcppt::math::matrix::object<
-				R,
-				N,
-				M2,
-				S2
-			>::size_type j = 0;
+			fcppt::math::size_type j = 0u;
 			j < _right.columns();
 			++j
 		)
@@ -170,8 +142,8 @@ operator *(
 			typename result_type::value_type v(0);
 
 			for(
-				typename result_type::size_type r = 0;
-				r < N::value;
+				fcppt::math::size_type r = 0;
+				r < N;
 				++r
 			)
 				v += _left[i][r] * _right[r][j];
@@ -185,54 +157,44 @@ operator *(
 	op\
 ) \
 template< \
-	typename L,\
-	typename R,\
-	typename N,\
-	typename M,\
+	typename Left,\
+	typename Right,\
+	fcppt::math::size_type R,\
+	fcppt::math::size_type C,\
 	typename S\
 >\
-fcppt::math::matrix::object<\
-	FCPPT_MATH_DETAIL_BINARY_TYPE(L, op, R),\
-	N,\
-	M,\
-	fcppt::math::matrix::static_storage<\
-		FCPPT_MATH_DETAIL_BINARY_TYPE(L, op, R),\
-		N,\
-		M\
-	>\
-> const \
+fcppt::math::matrix::static_<\
+	FCPPT_MATH_DETAIL_BINARY_TYPE(Left, op, Right),\
+	R,\
+	C\
+> \
 operator op(\
 	fcppt::math::matrix::object<\
-		L,\
-		N,\
-		M,\
+		Left,\
+		R,\
+		C,\
 		S\
 	> const &_left,\
-	R const &_right\
+	Right const &_right\
 )\
 {\
 	typedef \
-	FCPPT_MATH_DETAIL_BINARY_TYPE(L, op, R)\
+	FCPPT_MATH_DETAIL_BINARY_TYPE(Left, op, Right)\
 	result_value_type;\
 \
 	return \
 		fcppt::math::map<\
-			fcppt::math::matrix::object<\
+			fcppt::math::matrix::static_<\
 				result_value_type,\
-				N,\
-				M,\
-				fcppt::math::matrix::static_storage<\
-					result_value_type,\
-					N,\
-					M\
-				>\
+				R,\
+				C\
 			>\
 		>(\
 			_left,\
 			[\
 				&_right\
 			](\
-				L const &_left_element\
+				Left const &_left_element\
 			)\
 			{\
 				_left_element \
@@ -253,54 +215,44 @@ FCPPT_MATH_MAKE_FREE_SCALAR_MATRIX_FUNCTION(
 #undef FCPPT_MATH_MAKE_FREE_SCALAR_MATRIX_FUNCTION
 
 template<
-	typename L,
-	typename R,
-	typename N,
-	typename M,
+	typename Left,
+	typename Right,
+	fcppt::math::size_type R,
+	fcppt::math::size_type C,
 	typename S
 >
-fcppt::math::matrix::object<
-	FCPPT_MATH_DETAIL_BINARY_TYPE(L, *, R),
-	N,
-	M,
-	fcppt::math::matrix::static_storage<
-		FCPPT_MATH_DETAIL_BINARY_TYPE(L, *, R),
-		N,
-		M
-	>
-> const
+fcppt::math::matrix::static_<
+	FCPPT_MATH_DETAIL_BINARY_TYPE(Left, *, Right),
+	R,
+	C
+>
 operator *(
-	L const &_left,
+	Left const &_left,
 	fcppt::math::matrix::object<
+		Right,
 		R,
-		N,
-		M,
+		C,
 		S
 	> const &_right
 )
 {
 	typedef
-	FCPPT_MATH_DETAIL_BINARY_TYPE(L, *, R)
+	FCPPT_MATH_DETAIL_BINARY_TYPE(Left, *, Right)
 	result_value_type;
 
 	return
 		fcppt::math::map<
-			fcppt::math::matrix::object<
+			fcppt::math::matrix::static_<
 				result_value_type,
-				N,
-				M,
-				fcppt::math::matrix::static_storage<
-					result_value_type,
-					N,
-					M
-				>
+				R,
+				C
 			>
 		>(
 			_right,
 			[
 				&_left
 			](
-				R const &_right_elem
+				Right const &_right_elem
 			)
 			{
 				return

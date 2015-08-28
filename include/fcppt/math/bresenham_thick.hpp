@@ -21,28 +21,21 @@ namespace math
 
 template<
 	typename T,
-	typename N,
 	typename S1,
 	typename S2,
 	typename Callback
 >
 inline
-typename
-std::enable_if<
-	N::value
-	==
-	2,
-	bool
->::type
+bool
 bresenham_thick(
 	fcppt::math::vector::object<
 		T,
-		N,
+		2,
 		S1
 	> const _start,
 	fcppt::math::vector::object<
 		T,
-		N,
+		2,
 		S2
 	> const _end,
 	Callback const &_callback

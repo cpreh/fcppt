@@ -7,6 +7,7 @@
 #ifndef FCPPT_MATH_VECTOR_STRUCTURE_CAST_HPP_INCLUDED
 #define FCPPT_MATH_VECTOR_STRUCTURE_CAST_HPP_INCLUDED
 
+#include <fcppt/math/size_type.hpp>
 #include <fcppt/math/detail/structure_cast.hpp>
 #include <fcppt/math/vector/is_vector.hpp>
 #include <fcppt/math/vector/object_impl.hpp>
@@ -43,7 +44,7 @@ template<
 	typename Dest,
 	typename Conv,
 	typename T,
-	typename N,
+	fcppt::math::size_type N,
 	typename S
 >
 inline

@@ -22,34 +22,26 @@ namespace matrix
 
 /**
 \brief Typedef helper for static matrices
+
 \ingroup fcpptmathmatrix
+
 \tparam T The matrix's <code>value_type</code>
-See the introduction to fcppt::math::vector::object for more information on
-static matrices (and on this class).
 */
 template<
 	typename T,
-	fcppt::math::size_type N,
-	fcppt::math::size_type M
+	fcppt::math::size_type R,
+	fcppt::math::size_type C
 >
 using static_
 =
 fcppt::math::matrix::object<
 	T,
-	fcppt::math::static_size<
-		N
-	>,
-	fcppt::math::static_size<
-		M
-	>,
+	R,
+	C,
 	fcppt::math::matrix::static_storage<
 		T,
-		fcppt::math::static_size<
-			N
-		>,
-		fcppt::math::static_size<
-			M
-		>
+		R,
+		C
 	>
 >;
 

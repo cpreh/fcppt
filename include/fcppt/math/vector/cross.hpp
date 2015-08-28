@@ -7,9 +7,8 @@
 #ifndef FCPPT_MATH_VECTOR_CROSS_HPP_INCLUDED
 #define FCPPT_MATH_VECTOR_CROSS_HPP_INCLUDED
 
-#include <fcppt/math/static_storage.hpp>
-#include <fcppt/math/detail/has_size.hpp>
 #include <fcppt/math/vector/object_impl.hpp>
+#include <fcppt/math/vector/static.hpp>
 
 
 namespace fcppt
@@ -21,11 +20,8 @@ namespace vector
 
 /**
 \brief Calculates the cross product of two three-dimensional vectors
+
 \ingroup fcpptmathvector
-\tparam T The vector's <code>value_type</code>
-\tparam N The vector's dimension type (must be three-dimensional if it's a static vector).
-\tparam S1 The first vector's storage type
-\tparam S2 The first vector's storage type
 
 The cross product is defined here:
 
@@ -33,47 +29,30 @@ http://en.wikipedia.org/wiki/Cross_product
 */
 template<
 	typename T,
-	typename N,
 	typename S1,
 	typename S2
 >
-fcppt::math::vector::object<
+fcppt::math::vector::static_<
 	T,
-	N,
-	fcppt::math::static_storage<
-		T,
-		N
-	>
-> const
+	3
+>
 cross(
 	fcppt::math::vector::object<
 		T,
-		N,
+		3,
 		S1
 	> const &l,
 	fcppt::math::vector::object<
 		T,
-		N,
+		3,
 		S2
 	> const &r
 )
 {
-	static_assert(
-		fcppt::math::detail::has_size<
-			N,
-			3
-		>::value,
-		"cross can only be used on three-dimensional vectors"
-	);
-
 	return
-		fcppt::math::vector::object<
+		fcppt::math::vector::static_<
 			T,
-			N,
-			fcppt::math::static_storage<
-				T,
-				N
-			>
+			3
 		>(
 			l.y() * r.z() - l.z() * r.y(),
 			l.z() * r.x() - l.x() * r.z(),

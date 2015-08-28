@@ -485,11 +485,27 @@ add_fcppt_test(
 )
 
 add_fcppt_test(
+	math/dim/componentwise_equal
+)
+
+add_fcppt_test(
+	math/dim/construct
+)
+
+add_fcppt_test(
 	math/dim/fill
 )
 
 add_fcppt_test(
+	math/dim/has_dim
+)
+
+add_fcppt_test(
 	math/dim/hash
+)
+
+add_fcppt_test(
+	math/dim/input
 )
 
 add_fcppt_test(
@@ -498,6 +514,18 @@ add_fcppt_test(
 
 add_fcppt_test(
 	math/dim/map
+)
+
+add_fcppt_test(
+	math/dim/narrow_cast
+)
+
+add_fcppt_test(
+	math/dim/to_signed
+)
+
+add_fcppt_test(
+	math/dim/to_unsigned
 )
 
 add_fcppt_test(
@@ -567,7 +595,23 @@ add_fcppt_test(
 )
 
 add_fcppt_test(
+	math/matrix/structure_cast
+)
+
+add_fcppt_test(
+	math/matrix/transform_direction
+)
+
+add_fcppt_test(
+	math/matrix/transform_point
+)
+
+add_fcppt_test(
 	math/matrix/translation
+)
+
+add_fcppt_test(
+	math/matrix/transpose
 )
 
 add_fcppt_test(
@@ -576,6 +620,10 @@ add_fcppt_test(
 
 add_fcppt_test(
 	math/vector/arithmetic
+)
+
+add_fcppt_test(
+	math/vector/ceil_div_signed
 )
 
 add_fcppt_test(
@@ -611,7 +659,19 @@ add_fcppt_test(
 )
 
 add_fcppt_test(
+	math/vector/structure_cast
+)
+
+add_fcppt_test(
 	math/vector/swap
+)
+
+add_fcppt_test(
+	math/vector/to_signed
+)
+
+add_fcppt_test(
+	math/vector/to_unsigned
 )
 
 add_fcppt_test(

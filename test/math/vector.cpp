@@ -4,7 +4,6 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/cast/int_to_float_fun.hpp>
 #include <fcppt/math/diff.hpp>
 #include <fcppt/math/pi.hpp>
 #include <fcppt/math/vector/angle_between.hpp>
@@ -15,7 +14,6 @@
 #include <fcppt/math/vector/signed_angle_between.hpp>
 #include <fcppt/math/vector/signed_angle_between_cast.hpp>
 #include <fcppt/math/vector/static.hpp>
-#include <fcppt/math/vector/structure_cast.hpp>
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
@@ -157,35 +155,6 @@ FCPPT_PP_POP_WARNING
 				vec2
 			),
 			fcppt::math::pi<real>() / 2.f
-		)
-	);
-}
-
-FCPPT_PP_PUSH_WARNING
-FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
-
-BOOST_AUTO_TEST_CASE(vector_structure_cast)
-{
-FCPPT_PP_POP_WARNING
-
-	uivector2 const vec(
-		1u,
-		2u
-	);
-
-	BOOST_REQUIRE(
-		fcppt::math::vector::componentwise_equal(
-			fcppt::math::vector::structure_cast<
-				fvector2,
-				fcppt::cast::int_to_float_fun
-			>(
-				vec
-			),
-			fvector2(
-				1.f,
-				2.f
-			),
-			epsilon
 		)
 	);
 }

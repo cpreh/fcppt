@@ -7,6 +7,7 @@
 #ifndef FCPPT_MATH_DIM_IS_DIM_HPP_INCLUDED
 #define FCPPT_MATH_DIM_IS_DIM_HPP_INCLUDED
 
+#include <fcppt/math/size_type.hpp>
 #include <fcppt/math/dim/object_fwd.hpp>
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
@@ -36,14 +37,14 @@ template<
 >
 struct is_dim
 :
-	std::false_type
+std::false_type
 {
 };
 
 /// \cond FCPPT_DOXYGEN_DEBUG
 template<
 	typename T,
-	typename N,
+	fcppt::math::size_type N,
 	typename S
 >
 struct is_dim<
@@ -54,7 +55,7 @@ struct is_dim<
 	>
 >
 :
-	std::true_type
+std::true_type
 {
 };
 /// \endcond

@@ -8,6 +8,8 @@
 #define FCPPT_MATH_MATRIX_DETAIL_INIT_STORAGE_HPP_INCLUDED
 
 #include <fcppt/algorithm/array_fold.hpp>
+#include <fcppt/cast/size.hpp>
+#include <fcppt/math/matrix/index.hpp>
 #include <fcppt/math/matrix/row_type.hpp>
 #include <fcppt/math/matrix/detail/index_absolute.hpp>
 #include <fcppt/config/external_begin.hpp>
@@ -54,12 +56,19 @@ init_storage(
 				std::size_t const _index
 			)
 			{
-				auto const index(
+				fcppt::math::matrix::index const index(
 					fcppt::math::matrix::detail::index_absolute<
-						std::size_t,
-						C
+						fcppt::cast::size<
+							fcppt::math::size_type
+						>(
+							C
+						)
 					>(
-						_index
+						fcppt::cast::size<
+							fcppt::math::size_type
+						>(
+							_index
+						)
 					)
 				);
 

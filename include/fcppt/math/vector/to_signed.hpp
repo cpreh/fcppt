@@ -8,6 +8,7 @@
 #define FCPPT_MATH_VECTOR_TO_SIGNED_HPP_INCLUDED
 
 #include <fcppt/cast/to_signed_fun.hpp>
+#include <fcppt/math/size_type.hpp>
 #include <fcppt/math/vector/object_impl.hpp>
 #include <fcppt/math/vector/static.hpp>
 #include <fcppt/math/vector/structure_cast.hpp>
@@ -30,7 +31,7 @@ namespace vector
 */
 template<
 	typename T,
-	typename N,
+	fcppt::math::size_type N,
 	typename S
 >
 inline
@@ -39,7 +40,7 @@ fcppt::math::vector::static_<
 	std::make_signed<
 		T
 	>::type,
-	N::value
+	N
 >
 to_signed(
 	fcppt::math::vector::object<
@@ -56,7 +57,7 @@ to_signed(
 				std::make_signed<
 					T
 				>::type,
-				N::value
+				N
 			>,
 			fcppt::cast::to_signed_fun
 		>(

@@ -8,6 +8,7 @@
 #define FCPPT_MATH_VECTOR_DISTANCE_HPP_INCLUDED
 
 #include <fcppt/cast/int_to_float_fun.hpp>
+#include <fcppt/math/size_type.hpp>
 #include <fcppt/math/vector/arithmetic.hpp>
 #include <fcppt/math/vector/length.hpp>
 #include <fcppt/math/vector/object_impl.hpp>
@@ -27,7 +28,7 @@ namespace vector
 
 template<
 	typename T,
-	typename N,
+	fcppt::math::size_type N,
 	typename S1,
 	typename S2
 >
@@ -62,7 +63,7 @@ distance(
 template<
 	typename Dest,
 	typename T,
-	typename N,
+	fcppt::math::size_type N,
 	typename S1,
 	typename S2
 >
@@ -89,7 +90,7 @@ distance(
 	typedef
 	fcppt::math::vector::static_<
 		Dest,
-		N::value
+		N
 	>
 	result_vector;
 

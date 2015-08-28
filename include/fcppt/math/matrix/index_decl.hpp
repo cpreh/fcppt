@@ -9,6 +9,7 @@
 
 #include <fcppt/make_strong_typedef.hpp>
 #include <fcppt/strong_typedef_impl.hpp>
+#include <fcppt/math/size_type.hpp>
 #include <fcppt/math/matrix/index_fwd.hpp>
 
 
@@ -19,23 +20,16 @@ namespace math
 namespace matrix
 {
 
-template<
-	typename SizeType
->
 class index
 {
 public:
-	typedef
-	SizeType
-	size_type;
-
 	FCPPT_MAKE_STRONG_TYPEDEF(
-		size_type,
+		fcppt::math::size_type,
 		row_t
 	);
 
 	FCPPT_MAKE_STRONG_TYPEDEF(
-		size_type,
+		fcppt::math::size_type,
 		column_t
 	);
 
@@ -44,10 +38,10 @@ public:
 		column_t
 	);
 
-	size_type
+	fcppt::math::size_type
 	row() const;
 
-	size_type
+	fcppt::math::size_type
 	column() const;
 private:
 	row_t row_;

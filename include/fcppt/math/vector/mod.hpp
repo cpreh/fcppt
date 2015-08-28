@@ -8,9 +8,10 @@
 #define FCPPT_MATH_VECTOR_MOD_HPP_INCLUDED
 
 #include <fcppt/math/mod.hpp>
-#include <fcppt/math/static_storage.hpp>
+#include <fcppt/math/size_type.hpp>
 #include <fcppt/math/vector/init.hpp>
 #include <fcppt/math/vector/object_impl.hpp>
+#include <fcppt/math/vector/static.hpp>
 
 
 namespace fcppt
@@ -27,16 +28,12 @@ namespace vector
 */
 template<
 	typename T,
-	typename N,
+	fcppt::math::size_type N,
 	typename S
 >
-fcppt::math::vector::object<
+fcppt::math::vector::static_<
 	T,
-	N,
-	fcppt::math::static_storage<
-		T,
-		N
-	>
+	N
 >
 mod(
 	fcppt::math::vector::object<
@@ -48,13 +45,9 @@ mod(
 )
 {
 	typedef
-	fcppt::math::vector::object<
+	fcppt::math::vector::static_<
 		T,
-		N,
-		fcppt::math::static_storage<
-			T,
-			N
-		>
+		N
 	>
 	result_type;
 
@@ -88,17 +81,13 @@ mod(
 */
 template<
 	typename T,
-	typename N,
+	fcppt::math::size_type N,
 	typename S1,
 	typename S2
 >
-fcppt::math::vector::object<
+fcppt::math::vector::static_<
 	T,
-	N,
-	fcppt::math::static_storage<
-		T,
-		N
-	>
+	N
 >
 mod(
 	fcppt::math::vector::object<
@@ -114,13 +103,9 @@ mod(
 )
 {
 	typedef
-	fcppt::math::vector::object<
+	fcppt::math::vector::static_<
 		T,
-		N,
-		fcppt::math::static_storage<
-			T,
-			N
-		>
+		N
 	>
 	result_type;
 

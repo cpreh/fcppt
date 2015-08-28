@@ -28,27 +28,20 @@ namespace detail
 template<
 	bool Thick,
 	typename T,
-	typename N,
 	typename S1,
 	typename S2,
 	typename Callback
 >
-typename
-std::enable_if<
-	N::value
-	==
-	2,
-	bool
->::type
+bool
 bresenham_impl(
 	fcppt::math::vector::object<
 		T,
-		N,
+		2,
 		S1
 	> const _start,
 	fcppt::math::vector::object<
 		T,
-		N,
+		2,
 		S2
 	> const _end,
 	Callback const &_callback
@@ -129,7 +122,7 @@ bresenham_impl(
 	typedef
 	fcppt::math::vector::static_<
 		T,
-		N::value
+		2
 	>
 	vector_type;
 

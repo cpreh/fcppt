@@ -7,6 +7,7 @@
 #ifndef FCPPT_MATH_MATRIX_STRUCTURE_CAST_HPP_INCLUDED
 #define FCPPT_MATH_MATRIX_STRUCTURE_CAST_HPP_INCLUDED
 
+#include <fcppt/math/size_type.hpp>
 #include <fcppt/math/detail/structure_cast.hpp>
 #include <fcppt/math/matrix/is_matrix.hpp>
 #include <fcppt/math/matrix/object_impl.hpp>
@@ -21,28 +22,26 @@ namespace matrix
 
 /**
 \brief Converts a matrix into a different matrix of the same dimension using Conv
+
 \ingroup fcpptmathmatrix
+
 \tparam Dest The destination matrix's <code>value_type</code>
-\tparam T The matrix's <code>value_type</code>
-\tparam N The matrix's row dimension type
-\tparam M The matrix's column dimension type
-\tparam S The matrix's storage type
-\param src The source matrix
 */
 template<
 	typename Dest,
 	typename Conv,
 	typename T,
-	typename N,
-	typename M,
+	fcppt::math::size_type R,
+	fcppt::math::size_type C,
 	typename S
 >
-Dest const
+inline
+Dest
 structure_cast(
 	fcppt::math::matrix::object<
 		T,
-		N,
-		M,
+		R,
+		C,
 		S
 	> const &src
 )

@@ -7,9 +7,11 @@
 #ifndef FCPPT_MATH_VECTOR_NORMALIZE_HPP_INCLUDED
 #define FCPPT_MATH_VECTOR_NORMALIZE_HPP_INCLUDED
 
+#include <fcppt/math/size_type.hpp>
 #include <fcppt/math/vector/arithmetic.hpp>
 #include <fcppt/math/vector/length.hpp>
 #include <fcppt/math/vector/object_impl.hpp>
+#include <fcppt/math/vector/static.hpp>
 
 
 namespace fcppt
@@ -31,14 +33,13 @@ Behaviour is undefined if <code>length(v)</code> is close to zero.
 */
 template<
 	typename T,
-	typename N,
+	fcppt::math::size_type N,
 	typename S
 >
 inline
-fcppt::math::vector::object<
+fcppt::math::vector::static_<
 	T,
-	N,
-	S
+	N
 >
 normalize(
 	fcppt::math::vector::object<

@@ -890,8 +890,6 @@ set(
 	include/fcppt/math/matrix/detail/row_view_fwd.hpp
 	include/fcppt/math/matrix/detail/row_view_impl.hpp
 	include/fcppt/math/matrix/determinant.hpp
-	include/fcppt/math/matrix/dim.hpp
-	include/fcppt/math/matrix/dim_fwd.hpp
 	include/fcppt/math/matrix/exponential_pade.hpp
 	include/fcppt/math/matrix/has_dim.hpp
 	include/fcppt/math/matrix/identity.hpp
@@ -917,7 +915,6 @@ set(
 	include/fcppt/math/matrix/row.hpp
 	include/fcppt/math/matrix/row_type.hpp
 	include/fcppt/math/matrix/scaling.hpp
-	include/fcppt/math/matrix/size.hpp
 	include/fcppt/math/matrix/sqrt.hpp
 	include/fcppt/math/matrix/static.hpp
 	include/fcppt/math/matrix/static_fwd.hpp
@@ -933,7 +930,6 @@ set(
 	include/fcppt/math/mod_assign.hpp
 	include/fcppt/math/next_power_of_2.hpp
 	include/fcppt/math/pi.hpp
-	include/fcppt/math/point_rotate.hpp
 	include/fcppt/math/rad_to_deg.hpp
 	include/fcppt/math/size_type.hpp
 	include/fcppt/math/sphere/circle.hpp
@@ -980,6 +976,7 @@ set(
 	include/fcppt/math/vector/object_impl.hpp
 	include/fcppt/math/vector/orthogonalize.hpp
 	include/fcppt/math/vector/output.hpp
+	include/fcppt/math/vector/point_rotate.hpp
 	include/fcppt/math/vector/project.hpp
 	include/fcppt/math/vector/signed_angle_between.hpp
 	include/fcppt/math/vector/signed_angle_between_cast.hpp

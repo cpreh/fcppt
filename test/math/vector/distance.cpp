@@ -5,7 +5,6 @@
 
 
 #include <fcppt/math/vector/distance.hpp>
-#include <fcppt/math/vector/object.hpp>
 #include <fcppt/math/vector/static.hpp>
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>

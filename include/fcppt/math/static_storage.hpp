@@ -7,6 +7,7 @@
 #ifndef FCPPT_MATH_STATIC_STORAGE_HPP_INCLUDED
 #define FCPPT_MATH_STATIC_STORAGE_HPP_INCLUDED
 
+#include <fcppt/math/size_type.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <array>
 #include <fcppt/config/external_end.hpp>
@@ -19,13 +20,13 @@ namespace math
 
 template<
 	typename T,
-	typename N
+	fcppt::math::size_type N
 >
 using static_storage
 =
 std::array<
 	T,
-	N::value
+	N
 >;
 
 }

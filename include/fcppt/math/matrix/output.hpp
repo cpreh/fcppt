@@ -7,6 +7,7 @@
 #ifndef FCPPT_MATH_MATRIX_OUTPUT_HPP_INCLUDED
 #define FCPPT_MATH_MATRIX_OUTPUT_HPP_INCLUDED
 
+#include <fcppt/math/size_type.hpp>
 #include <fcppt/math/detail/one_dimensional_output.hpp>
 #include <fcppt/math/matrix/object_impl.hpp>
 #include <fcppt/math/vector/output.hpp>
@@ -27,14 +28,6 @@ namespace matrix
 
 \ingroup fcpptmathmatrix
 
-\tparam T The matrix's <code>value_type</code>
-
-\tparam M The matrix's row dimension type
-
-\tparam N The matrix's column dimension type
-
-\tparam S The matrix's storage type
-
 \tparam Ch The stream's character type
 
 \tparam Traits The stream's character traits type
@@ -50,8 +43,8 @@ So it'll be the same as if you output the column vectors using the according
 */
 template<
 	typename T,
-	typename N,
-	typename M,
+	fcppt::math::size_type R,
+	fcppt::math::size_type C,
 	typename S,
 	typename Ch,
 	typename Traits
@@ -68,8 +61,8 @@ operator<< (
 	> &_stream,
 	fcppt::math::matrix::object<
 		T,
-		N,
-		M,
+		R,
+		C,
 		S
 	> const &_matrix
 )

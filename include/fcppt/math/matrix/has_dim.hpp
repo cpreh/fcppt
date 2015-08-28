@@ -15,7 +15,6 @@
 #include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/mpl/and.hpp>
-#include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -31,50 +30,50 @@ FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
 
 /**
 \brief Metafunction to check if a static matrix has the specified dimensions
+
 \ingroup fcpptmathmatrix
+
 \tparam Matrix A fcppt::math::matrix::object type
-\tparam N The static row count
-\tparam M The static column count
+
+\tparam R The static row count
+
+\tparam C The static column count
 */
 template<
 	typename Matrix,
-	fcppt::math::size_type N,
-	fcppt::math::size_type M
+	fcppt::math::size_type R,
+	fcppt::math::size_type C
 >
-struct has_dim
-:
-std::false_type
-{
-};
+struct has_dim;
 
 /// \cond FCPPT_DOXYGEN_DEBUG
 template<
 	typename T,
-	typename N,
-	typename M,
+	fcppt::math::size_type R,
+	fcppt::math::size_type C,
 	typename S,
-	fcppt::math::size_type DN,
-	fcppt::math::size_type DM
+	fcppt::math::size_type DR,
+	fcppt::math::size_type DC
 >
 struct has_dim<
 	fcppt::math::matrix::object<
 		T,
-		N,
-		M,
+		R,
+		C,
 		S
 	>,
-	DN,
-	DM
+	DR,
+	DC
 >
 :
 boost::mpl::and_<
 	fcppt::math::detail::dim_matches<
-		DN,
-		N::value
+		DR,
+		R
 	>,
 	fcppt::math::detail::dim_matches<
-		DM,
-		M::value
+		DC,
+		C
 	>
 >
 {

@@ -8,10 +8,11 @@
 #define FCPPT_MATH_VECTOR_DIM_HPP_INCLUDED
 
 #include <fcppt/math/binary_map.hpp>
-#include <fcppt/math/static_storage.hpp>
+#include <fcppt/math/size_type.hpp>
 #include <fcppt/math/detail/binary_type.hpp>
 #include <fcppt/math/dim/object_impl.hpp>
 #include <fcppt/math/vector/object_impl.hpp>
+#include <fcppt/math/vector/static.hpp>
 
 
 namespace fcppt
@@ -27,18 +28,14 @@ namespace vector
 template<\
 	typename L,\
 	typename R,\
-	typename N,\
+	fcppt::math::size_type N,\
 	typename S1,\
 	typename S2\
 >\
-fcppt::math::vector::object<\
+fcppt::math::vector::static_<\
 	FCPPT_MATH_DETAIL_BINARY_TYPE(L, op, R),\
-	N,\
-	fcppt::math::static_storage<\
-		FCPPT_MATH_DETAIL_BINARY_TYPE(L, op, R),\
-		N\
-	>\
-> const \
+	N \
+> \
 operator op(\
 	fcppt::math::vector::object<\
 		L,\
@@ -58,13 +55,9 @@ operator op(\
 \
 	return \
 		fcppt::math::binary_map<\
-			fcppt::math::vector::object<\
+			fcppt::math::vector::static_<\
 				result_value_type,\
-				N,\
-				fcppt::math::static_storage<\
-					result_value_type,\
-					N\
-				>\
+				N\
 			>\
 		>(\
 			_left,\

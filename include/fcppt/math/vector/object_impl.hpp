@@ -8,6 +8,7 @@
 #define FCPPT_MATH_VECTOR_OBJECT_IMPL_HPP_INCLUDED
 
 #include <fcppt/no_init_fwd.hpp>
+#include <fcppt/math/size_type.hpp>
 #include <fcppt/math/detail/assert_static_storage.hpp>
 #include <fcppt/math/detail/assign.hpp>
 #include <fcppt/math/detail/checked_access.hpp>
@@ -23,7 +24,7 @@
 
 template<
 	typename T,
-	typename N,
+	fcppt::math::size_type N,
 	typename S
 >
 fcppt::math::vector::object<
@@ -45,7 +46,7 @@ FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
 
 template<
 	typename T,
-	typename N,
+	fcppt::math::size_type N,
 	typename S
 >
 fcppt::math::vector::object<
@@ -66,7 +67,7 @@ FCPPT_PP_POP_WARNING
 
 template<
 	typename T,
-	typename N,
+	fcppt::math::size_type N,
 	typename S
 >
 template<
@@ -93,14 +94,14 @@ fcppt::math::vector::object<
 			Args
 		)
 		==
-		N::value,
+		N,
 		"Wrong number of parameters"
 	);
 }
 
 template<
 	typename T,
-	typename N,
+	fcppt::math::size_type N,
 	typename S
 >
 fcppt::math::vector::object<
@@ -119,7 +120,7 @@ fcppt::math::vector::object<
 
 template<
 	typename T,
-	typename N,
+	fcppt::math::size_type N,
 	typename S
 >
 fcppt::math::vector::object<
@@ -133,7 +134,7 @@ fcppt::math::vector::object<
 
 template<
 	typename T,
-	typename N,
+	fcppt::math::size_type N,
 	typename S
 >
 template<
@@ -163,7 +164,7 @@ fcppt::math::vector::object<
 
 template<
 	typename T,
-	typename N,
+	fcppt::math::size_type N,
 	typename S
 >
 fcppt::math::vector::object<
@@ -182,7 +183,7 @@ fcppt::math::vector::object<
 
 template<
 	typename T,
-	typename N,
+	fcppt::math::size_type N,
 	typename S
 >
 template<
@@ -214,7 +215,7 @@ fcppt::math::vector::object<
 
 template<
 	typename T,
-	typename N,
+	fcppt::math::size_type N,
 	typename S
 >
 fcppt::math::vector::object<
@@ -230,7 +231,7 @@ fcppt::math::vector::object<
 )\
 FCPPT_MATH_DETAIL_MAKE_OP_DEF(\
 	3,\
-	(template<typename T, typename N, typename S> template<typename OtherStorage>),\
+	(template<typename T, fcppt::math::size_type N, typename S> template<typename OtherStorage>),\
 	(fcppt::math::vector::object<T, N, S>),\
 	(fcppt::math::vector::object<T, N, OtherStorage>),\
 	op\
@@ -246,7 +247,7 @@ FCPPT_MATH_VECTOR_OBJECT_DEFINE_OPERATOR(%=)
 
 template<
 	typename T,
-	typename N,
+	fcppt::math::size_type N,
 	typename S
 >
 fcppt::math::vector::object<
@@ -276,7 +277,7 @@ fcppt::math::vector::object<
 
 template<
 	typename T,
-	typename N,
+	fcppt::math::size_type N,
 	typename S
 >
 fcppt::math::vector::object<
@@ -306,7 +307,7 @@ fcppt::math::vector::object<
 
 template<
 	typename T,
-	typename N,
+	fcppt::math::size_type N,
 	typename S
 >
 typename fcppt::math::vector::object<
@@ -331,7 +332,7 @@ fcppt::math::vector::object<
 
 template<
 	typename T,
-	typename N,
+	fcppt::math::size_type N,
 	typename S
 >
 typename fcppt::math::vector::object<
@@ -356,7 +357,7 @@ fcppt::math::vector::object<
 
 template<
 	typename T,
-	typename N,
+	fcppt::math::size_type N,
 	typename S
 >
 typename
@@ -381,7 +382,7 @@ fcppt::math::vector::object<
 
 template<
 	typename T,
-	typename N,
+	fcppt::math::size_type N,
 	typename S
 >
 typename
@@ -406,7 +407,7 @@ fcppt::math::vector::object<
 
 template<
 	typename T,
-	typename N,
+	fcppt::math::size_type N,
 	typename S
 >
 typename
@@ -431,7 +432,7 @@ fcppt::math::vector::object<
 
 template<
 	typename T,
-	typename N,
+	fcppt::math::size_type N,
 	typename S
 >
 typename
@@ -456,7 +457,7 @@ fcppt::math::vector::object<
 
 template<
 	typename T,
-	typename N,
+	fcppt::math::size_type N,
 	typename S
 >
 typename
@@ -481,7 +482,7 @@ fcppt::math::vector::object<
 
 template<
 	typename T,
-	typename N,
+	fcppt::math::size_type N,
 	typename S
 >
 typename
@@ -506,7 +507,7 @@ fcppt::math::vector::object<
 
 template<
 	typename T,
-	typename N,
+	fcppt::math::size_type N,
 	typename S
 >
 typename
@@ -531,7 +532,7 @@ fcppt::math::vector::object<
 
 template<
 	typename T,
-	typename N,
+	fcppt::math::size_type N,
 	typename S
 >
 typename
@@ -556,7 +557,7 @@ fcppt::math::vector::object<
 
 template<
 	typename T,
-	typename N,
+	fcppt::math::size_type N,
 	typename S
 >
 S &
@@ -572,7 +573,7 @@ fcppt::math::vector::object<
 
 template<
 	typename T,
-	typename N,
+	fcppt::math::size_type N,
 	typename S
 >
 S const &

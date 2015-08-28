@@ -11,6 +11,7 @@
 #include <fcppt/math/detail/array_less.hpp>
 #include <fcppt/math/dim/object_impl.hpp>
 
+
 namespace fcppt
 {
 namespace math
@@ -20,104 +21,158 @@ namespace dim
 
 template<
 	typename T,
-	typename N,
+	fcppt::math::size_type N,
 	typename S1,
 	typename S2
 >
+inline
 bool
 operator==(
-	object<T, N, S1> const &v1,
-	object<T, N, S2> const &v2
+	fcppt::math::dim::object<
+		T,
+		N,
+		S1
+	> const &_v1,
+	fcppt::math::dim::object<
+		T,
+		N,
+		S2
+	> const &_v2
 )
 {
 	return
 		fcppt::math::detail::array_equal(
-			v1,
-			v2
+			_v1,
+			_v2
 		);
 }
 
 template<
 	typename T,
-	typename N,
+	fcppt::math::size_type N,
 	typename S1,
 	typename S2
 >
+inline
 bool
 operator!=(
-	object<T, N, S1> const &v1,
-	object<T, N, S2> const &v2
+	fcppt::math::dim::object<
+		T,
+		N,
+		S1
+	> const &_v1,
+	fcppt::math::dim::object<
+		T,
+		N,
+		S2
+	> const &_v2
 )
 {
 	return
-		!(v1 == v2);
+		!(_v1 == _v2);
 }
 
 template<
 	typename T,
-	typename N,
+	fcppt::math::size_type N,
 	typename S1,
 	typename S2
 >
+inline
 bool
 operator<(
-	object<T, N, S1> const &v1,
-	object<T, N, S2> const &v2
+	fcppt::math::dim::object<
+		T,
+		N,
+		S1
+	> const &_v1,
+	fcppt::math::dim::object<
+		T,
+		N,
+		S2
+	> const &_v2
 )
 {
 	return
 		fcppt::math::detail::array_less(
-			v1,
-			v2
+			_v1,
+			_v2
 		);
 }
 
 template<
 	typename T,
-	typename N,
+	fcppt::math::size_type N,
 	typename S1,
 	typename S2
 >
+inline
 bool
 operator>(
-	object<T, N, S1> const &v1,
-	object<T, N, S2> const &v2
+	fcppt::math::dim::object<
+		T,
+		N,
+		S1
+	> const &_v1,
+	fcppt::math::dim::object<
+		T,
+		N,
+		S2
+	> const &_v2
 )
 {
 	return
-		v2 < v1;
+		_v2 < _v1;
 }
 
 template<
 	typename T,
-	typename N,
+	fcppt::math::size_type N,
 	typename S1,
 	typename S2
 >
+inline
 bool
 operator<=(
-	object<T, N, S1> const &v1,
-	object<T, N, S2> const &v2
+	fcppt::math::dim::object<
+		T,
+		N,
+		S1
+	> const &_v1,
+	fcppt::math::dim::object<
+		T,
+		N,
+		S2
+	> const &_v2
 )
 {
 	return
-		!(v2 < v1);
+		!(_v2 < _v1);
 }
 
 template<
 	typename T,
-	typename N,
+	fcppt::math::size_type N,
 	typename S1,
 	typename S2
 >
+inline
 bool
 operator>=(
-	object<T, N, S1> const &v1,
-	object<T, N, S2> const &v2
+	fcppt::math::dim::object<
+		T,
+		N,
+		S1
+	> const &_v1,
+	fcppt::math::dim::object<
+		T,
+		N,
+		S2
+	> const &_v2
 )
 {
 	return
-		!(v1 < v2);
+		!(_v1 < _v2);
 }
 
 }

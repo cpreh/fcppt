@@ -7,6 +7,8 @@
 #ifndef FCPPT_MATH_MATRIX_DETAIL_ROW_VIEW_FWD_HPP_INCLUDED
 #define FCPPT_MATH_MATRIX_DETAIL_ROW_VIEW_FWD_HPP_INCLUDED
 
+#include <fcppt/math/size_type.hpp>
+
 
 namespace fcppt
 {
@@ -19,7 +21,7 @@ namespace detail
 
 template<
 	typename T,
-	typename N
+	fcppt::math::size_type C
 >
 class row_view;
 

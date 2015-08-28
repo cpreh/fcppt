@@ -7,6 +7,7 @@
 #ifndef FCPPT_MATH_DIM_NARROW_CAST_HPP_INCLUDED
 #define FCPPT_MATH_DIM_NARROW_CAST_HPP_INCLUDED
 
+#include <fcppt/math/size_type.hpp>
 #include <fcppt/math/detail/narrow_cast.hpp>
 #include <fcppt/math/dim/object_impl.hpp>
 
@@ -20,43 +21,16 @@ namespace dim
 
 /**
 \brief Shortens a dim to a smaller dimension
+
 \ingroup fcpptmathdim
-\tparam Dest Must be a dim with a smaller dimension
-\tparam N The dim's dimension
-\tparam T The dim's <code>value_type</code>
-\tparam S The dim's storage type
-\param _src The dim to shorten (narrow)
-
-The inverse operation is fcppt::math::dim::construct.
-
-\see fcppt::math::dim::construct
-
-Example:
-
-\code
-typedef
-fcppt::math::dim::static_<int,2>::type
-int2;
-
-typedef
-fcppt::math::dim::static_<int,3>::type
-int3;
-
-int3 wide_dim(1,2,3);
-int2 narrow_dim =
-	fcppt::math::dim::narrow_cast<int2>(
-		wide_dim);
-
-// Outputs: 1,2
-std::cout << narrow_dim;
-\endcode
 */
 template<
 	typename Dest,
 	typename T,
-	typename N,
+	fcppt::math::size_type N,
 	typename S
 >
+inline
 Dest
 narrow_cast(
 	fcppt::math::dim::object<

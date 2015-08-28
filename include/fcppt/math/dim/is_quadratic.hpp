@@ -9,6 +9,7 @@
 
 #include <fcppt/algorithm/all_of.hpp>
 #include <fcppt/math/at_c.hpp>
+#include <fcppt/math/size_type.hpp>
 #include <fcppt/math/dim/object_impl.hpp>
 
 
@@ -28,7 +29,7 @@ namespace dim
 */
 template<
 	typename T,
-	typename N,
+	fcppt::math::size_type N,
 	typename S
 >
 bool

@@ -8,6 +8,7 @@
 #define FCPPT_MATH_DIM_TO_UNSIGNED_HPP_INCLUDED
 
 #include <fcppt/cast/to_unsigned_fun.hpp>
+#include <fcppt/math/size_type.hpp>
 #include <fcppt/math/dim/object_impl.hpp>
 #include <fcppt/math/dim/static.hpp>
 #include <fcppt/math/dim/structure_cast.hpp>
@@ -30,7 +31,7 @@ namespace dim
 */
 template<
 	typename T,
-	typename N,
+	fcppt::math::size_type N,
 	typename S
 >
 inline
@@ -39,7 +40,7 @@ fcppt::math::dim::static_<
 	std::make_unsigned<
 		T
 	>::type,
-	N::value
+	N
 >
 to_unsigned(
 	fcppt::math::dim::object<
@@ -56,7 +57,7 @@ to_unsigned(
 				std::make_unsigned<
 					T
 				>::type,
-				N::value
+				N
 			>,
 			fcppt::cast::to_unsigned_fun
 		>(

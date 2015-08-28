@@ -8,6 +8,7 @@
 #define FCPPT_MATH_DETAIL_MAKE_ASYMMETRIC_BINARY_OPERATOR_HPP_INCLUDED
 
 #include <fcppt/math/map.hpp>
+#include <fcppt/math/size_type.hpp>
 #include <fcppt/math/static_storage.hpp>
 #include <fcppt/math/detail/binary_type.hpp>
 #include <fcppt/math/detail/make_asymmetric_binary_operator_right.hpp>
@@ -23,7 +24,7 @@ FCPPT_MATH_DETAIL_MAKE_ASYMMETRIC_BINARY_OPERATOR_RIGHT(\
 template<\
 	typename L,\
 	typename R,\
-	typename N,\
+	fcppt::math::size_type N,\
 	typename S\
 >\
 object<\
@@ -33,7 +34,7 @@ object<\
 		FCPPT_MATH_DETAIL_BINARY_TYPE(L, op, R),\
 		N\
 	>\
-> const \
+> \
 operator op(\
 	L const &_left,\
 	object<R, N, S> const &_right\

@@ -9,7 +9,6 @@
 #include <fcppt/cast/to_signed.hpp>
 #include <fcppt/math/difference_type.hpp>
 #include <fcppt/math/size_type.hpp>
-#include <fcppt/math/static_size.hpp>
 #include <fcppt/math/vector/object.hpp>
 #include <fcppt/math/vector/static.hpp>
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
@@ -364,9 +363,7 @@ FCPPT_PP_POP_WARNING
 
 	typedef fcppt::math::vector::object<
 		value_type,
-		fcppt::math::static_size<
-			num_elements
-		>::type,
+		num_elements,
 		value_raw_view
 	> vector_raw;
 

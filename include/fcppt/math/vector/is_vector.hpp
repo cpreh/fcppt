@@ -7,6 +7,7 @@
 #ifndef FCPPT_MATH_VECTOR_IS_VECTOR_HPP_INCLUDED
 #define FCPPT_MATH_VECTOR_IS_VECTOR_HPP_INCLUDED
 
+#include <fcppt/math/size_type.hpp>
 #include <fcppt/math/vector/object_fwd.hpp>
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
@@ -31,25 +32,22 @@ FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
 \ingroup fcpptmathvector
 \tparam T The type to test against
 */
-template
-<
+template<
 	typename T
 >
 struct is_vector
 :
-	std::false_type
+std::false_type
 {
 };
 
 /// \cond FCPPT_DOXYGEN_DEBUG
-template
-<
+template<
 	typename T,
-	typename N,
+	fcppt::math::size_type N,
 	typename S
 >
-struct is_vector
-<
+struct is_vector<
 	fcppt::math::vector::object<
 		T,
 		N,
@@ -57,7 +55,7 @@ struct is_vector
 	>
 >
 :
-	std::true_type
+std::true_type
 {
 };
 /// \endcond

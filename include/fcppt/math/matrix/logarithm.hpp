@@ -10,11 +10,13 @@
 
 #include <fcppt/literal.hpp>
 #include <fcppt/cast/int_to_float.hpp>
+#include <fcppt/math/size_type.hpp>
 #include <fcppt/math/matrix/arithmetic.hpp>
 #include <fcppt/math/matrix/identity.hpp>
 #include <fcppt/math/matrix/infinity_norm.hpp>
 #include <fcppt/math/matrix/object_impl.hpp>
 #include <fcppt/math/matrix/sqrt.hpp>
+#include <fcppt/math/matrix/static.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
@@ -26,20 +28,30 @@ namespace math
 {
 namespace matrix
 {
+
 /*
+\ingroup fcpptmathmatrix
 This function is intentionally undocumented as of yet. It needs to be tested
 more, and then possibly generalized a bit so e1, e2 and e3 have more meaning to
 users.
 */
-template
-<
+template<
 	typename T,
-	typename DN,
+	fcppt::math::size_type N,
 	typename S
 >
-fcppt::math::matrix::object<T,DN,DN,S>
+fcppt::math::matrix::static_<
+	T,
+	N,
+	N
+>
 logarithm(
-	fcppt::math::matrix::object<T,DN,DN,S> A,
+	fcppt::math::matrix::object<
+		T,
+		N,
+		N,
+		S
+	> A,
 	T const e1,
 	T const e2,
 	T const e3)
@@ -50,14 +62,14 @@ logarithm(
 	);
 
 	typedef
-	fcppt::math::matrix::object<T,DN,DN,S>
+	fcppt::math::matrix::static_<
+		T,
+		N,
+		N
+	>
 	matrix_type;
 
-	typedef typename
-	matrix_type::size_type
-	matrix_size_type;
-
-	matrix_size_type k =
+	fcppt::math::size_type k =
 		0u;
 
 	while(
@@ -90,7 +102,7 @@ logarithm(
 		X =
 			A;
 
-	matrix_size_type i =
+	fcppt::math::size_type i =
 		1u;
 
 	while(fcppt::math::matrix::infinity_norm(Z) > e2)
@@ -104,13 +116,13 @@ logarithm(
 			Z;
 	}
 
-	if(k != fcppt::literal<matrix_size_type>(0))
+	if(k != fcppt::literal<fcppt::math::size_type>(0))
 		X =
 			fcppt::cast::int_to_float<
 				T
 			>(
 				fcppt::literal<
-					matrix_size_type
+					fcppt::math::size_type
 				>(
 					1u
 				)

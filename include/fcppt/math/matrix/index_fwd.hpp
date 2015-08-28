@@ -15,9 +15,6 @@ namespace math
 namespace matrix
 {
 
-template<
-	typename SizeType
->
 class index;
 
 }

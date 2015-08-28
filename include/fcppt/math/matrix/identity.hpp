@@ -64,10 +64,7 @@ identity()
 			result_type
 		>(
 			[](
-				fcppt::math::matrix::index<
-					typename
-					result_type::size_type
-				> const _index
+				fcppt::math::matrix::index const _index
 			)
 			{
 				return
