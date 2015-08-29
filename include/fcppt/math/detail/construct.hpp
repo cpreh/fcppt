@@ -8,7 +8,11 @@
 #define FCPPT_MATH_DETAIL_CONSTRUCT_HPP_INCLUDED
 
 #include <fcppt/make_int_range_count.hpp>
-#include <fcppt/no_init.hpp>
+#include <fcppt/algorithm/array_fold_static.hpp>
+#include <fcppt/algorithm/array_push_back.hpp>
+#include <fcppt/math/at_c.hpp>
+#include <fcppt/math/static_storage.hpp>
+#include <fcppt/math/detail/assert_static_storage.hpp>
 
 
 namespace fcppt
@@ -38,31 +42,42 @@ construct(
 		""
 	);
 
-	Dest ret{
-		fcppt::no_init()
-	};
+	FCPPT_MATH_DETAIL_ASSERT_STATIC_STORAGE(
+		typename
+		Dest::storage_type
+	);
 
-	for(
-		auto const index
-		:
-		fcppt::make_int_range_count(
-			Src::static_size::value
-		)
-	)
-		ret[
-			index
-		] =
-			_src[
-				index
-			];
-
-	ret[
+	typedef
+	fcppt::math::static_storage<
+		typename
+		Src::value_type,
 		Src::static_size::value
-	] =
-		_value;
+	>
+	storage;
 
 	return
-		ret;
+		Dest(
+			fcppt::algorithm::array_push_back(
+				fcppt::algorithm::array_fold_static<
+					storage
+				>(
+					[
+						&_src
+					](
+						auto const _index
+					)
+					{
+						return
+							fcppt::math::at_c<
+								_index
+							>(
+								_src
+							);
+					}
+				),
+				_value
+			)
+		);
 }
 
 }

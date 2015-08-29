@@ -7,11 +7,15 @@
 #ifndef FCPPT_MATH_MATRIX_ARITHMETIC_HPP_INCLUDED
 #define FCPPT_MATH_MATRIX_ARITHMETIC_HPP_INCLUDED
 
-#include <fcppt/no_init.hpp>
+#include <fcppt/literal.hpp>
+#include <fcppt/make_int_range_count.hpp>
+#include <fcppt/algorithm/fold.hpp>
+#include <fcppt/math/at_c.hpp>
 #include <fcppt/math/binary_map.hpp>
 #include <fcppt/math/map.hpp>
 #include <fcppt/math/size_type.hpp>
 #include <fcppt/math/detail/binary_type.hpp>
+#include <fcppt/math/matrix/init.hpp>
 #include <fcppt/math/matrix/object_impl.hpp>
 #include <fcppt/math/matrix/static.hpp>
 
@@ -115,7 +119,6 @@ operator *(
 	> const &_right
 )
 {
-	// TODO: init
 	typedef
 	fcppt::math::matrix::static_<
 		FCPPT_MATH_DETAIL_BINARY_TYPE(L, *, R),
@@ -124,33 +127,64 @@ operator *(
 	>
 	result_type;
 
-	result_type ret{
-		fcppt::no_init()
-	};
+	typedef
+	typename
+	result_type::value_type
+	value_type;
 
-	for(
-		fcppt::math::size_type i = 0u;
-		i < _left.rows();
-		++i
-	)
-		for(
-			fcppt::math::size_type j = 0u;
-			j < _right.columns();
-			++j
-		)
-		{
-			typename result_type::value_type v(0);
-
-			for(
-				fcppt::math::size_type r = 0;
-				r < N;
-				++r
+	return
+		fcppt::math::matrix::init<
+			result_type
+		>(
+			[
+				&_left,
+				&_right
+			](
+				auto const _index
 			)
-				v += _left[i][r] * _right[r][j];
-			ret[i][j] = v;
-		}
-
-	return ret;
+			{
+				return
+					fcppt::algorithm::fold(
+						fcppt::make_int_range_count(
+							N
+						),
+						fcppt::literal<
+							value_type
+						>(
+							0
+						),
+						[
+							_index,
+							&_left,
+							&_right
+						](
+							fcppt::math::size_type const _r,
+							value_type const _sum
+						)
+						{
+							// TODO: Make _r a constant
+							return
+								_sum
+								+
+								fcppt::math::at_c<
+									_index.row()
+								>(
+									_left
+								)[
+									_r
+								]
+								*
+								fcppt::math::at_c<
+									_index.column()
+								>(
+									_right[
+										_r
+									]
+								);
+						}
+					);
+			}
+		);
 }
 
 #define FCPPT_MATH_MAKE_FREE_SCALAR_MATRIX_FUNCTION(\

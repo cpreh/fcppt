@@ -9,7 +9,6 @@
 #define FCPPT_MATH_BOX_INTERSECTION_HPP_INCLUDED
 
 #include <fcppt/make_homogenous_pair.hpp>
-#include <fcppt/no_init.hpp>
 #include <fcppt/math/size_type.hpp>
 #include <fcppt/math/box/init.hpp>
 #include <fcppt/math/box/intersects.hpp>

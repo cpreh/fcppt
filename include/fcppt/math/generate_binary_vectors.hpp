@@ -9,7 +9,6 @@
 #define FCPPT_MATH_GENERATE_BINARY_VECTORS_HPP_INCLUDED
 
 #include <fcppt/literal.hpp>
-#include <fcppt/no_init.hpp>
 #include <fcppt/algorithm/array_init.hpp>
 #include <fcppt/math/size_type.hpp>
 #include <fcppt/math/detail/generate_binary_vectors.hpp>
