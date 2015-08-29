@@ -7,9 +7,9 @@
 #ifndef FCPPT_MPL_INVOKE_ON_HPP_INCLUDED
 #define FCPPT_MPL_INVOKE_ON_HPP_INCLUDED
 
-#include <fcppt/mpl/runtime_index.hpp>
+#include <fcppt/decltype_sink.hpp>
 #include <fcppt/tag.hpp>
-#include <fcppt/cast/to_void.hpp>
+#include <fcppt/mpl/runtime_index.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/mpl/at.hpp>
 #include <boost/mpl/size.hpp>
@@ -95,18 +95,13 @@ invoke_on(
 				auto
 			)
 			{
-				// TODO: Can we get the type in a different way?
-				fcppt::cast::to_void(
-					_cur_index
-				);
-
 				return
 					_function(
 						fcppt::tag<
 							typename
 							boost::mpl::at<
 								Sequence,
-								decltype(
+								FCPPT_DECLTYPE_SINK(
 									_cur_index
 								)
 							>::type

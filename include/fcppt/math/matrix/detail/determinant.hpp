@@ -8,6 +8,8 @@
 #define FCPPT_MATH_MATRIX_DETAIL_DETERMINANT_HPP_INCLUDED
 
 #include <fcppt/literal.hpp>
+#include <fcppt/make_int_range_count.hpp>
+#include <fcppt/algorithm/fold.hpp>
 #include <fcppt/math/size_type.hpp>
 #include <fcppt/math/matrix/delete_row_and_column.hpp>
 #include <fcppt/math/matrix/has_dim.hpp>
@@ -71,34 +73,71 @@ determinant(
 	> const &_matrix
 )
 {
-	// TODO: fold?
-	T sum = fcppt::literal<T>(0);
-
-	for (size_type i = 0; i < _matrix.columns(); ++i)
-	{
-		T const coeff =
-			i % fcppt::literal<size_type>(2) == fcppt::literal<size_type>(0)
-			?
-				fcppt::literal<T>(
-					1)
-			:
-				fcppt::literal<T>(
-					-1);
-
-		sum +=
-			coeff *
-			_matrix[i][0] *
-			fcppt::math::matrix::detail::determinant(
-				fcppt::math::matrix::delete_row_and_column(
-					_matrix,
-					i,
-					0
-				)
-			);
-	}
-
 	return
-		sum;
+		fcppt::algorithm::fold(
+			fcppt::make_int_range_count(
+				N
+			),
+			fcppt::literal<
+				T
+			>(
+				0
+			),
+			[
+				&_matrix
+			](
+				fcppt::math::size_type const _row,
+				T const _sum
+			)
+			{
+				T const coeff{
+					_row
+					%
+					fcppt::literal<
+						fcppt::math::size_type
+					>(
+						2
+					)
+					==
+					fcppt::literal<
+						fcppt::math::size_type
+					>(
+						0
+					)
+					?
+						fcppt::literal<
+							T
+						>(
+							1
+						)
+					:
+						fcppt::literal<
+							T
+						>(
+							-1
+						)
+				};
+
+				return
+					_sum
+					+
+					coeff
+					*
+					_matrix[
+						_row
+					][
+						0
+					]
+					*
+					fcppt::math::matrix::detail::determinant(
+						fcppt::math::matrix::delete_row_and_column(
+							_matrix,
+							_row,
+							0
+						)
+					);
+			}
+		);
 }
 
 }

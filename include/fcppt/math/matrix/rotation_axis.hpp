@@ -10,7 +10,7 @@
 #include <fcppt/literal.hpp>
 #include <fcppt/math/matrix/row.hpp>
 #include <fcppt/math/matrix/static.hpp>
-#include <fcppt/math/vector/static.hpp>
+#include <fcppt/math/vector/object_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <cmath>
 #include <fcppt/config/external_end.hpp>
@@ -50,7 +50,8 @@ fcppt::math::matrix::rotation_z
 fcppt::math::matrix::rotation_axis
 */
 template<
-	typename T
+	typename T,
+	typename S
 >
 fcppt::math::matrix::static_<
 	T,
@@ -59,8 +60,11 @@ fcppt::math::matrix::static_<
 >
 rotation_axis(
 	T const _angle,
-	// TODO: Allow all storages here
-	fcppt::math::vector::static_<T,3> const &_vector
+	fcppt::math::vector::object<
+		T,
+		3,
+		S
+	> const &_vector
 )
 {
 	T const

@@ -9,6 +9,9 @@
 
 #include <fcppt/literal.hpp>
 #include <fcppt/make_int_range_count.hpp>
+#include <fcppt/algorithm/fold.hpp>
+#include <fcppt/math/at_c.hpp>
+#include <fcppt/math/size_type.hpp>
 #include <fcppt/math/detail/binary_type.hpp>
 #include <fcppt/math/matrix/object_impl.hpp>
 #include <fcppt/math/vector/init.hpp>
@@ -34,7 +37,7 @@ template<
 >
 fcppt::math::vector::static_<
 	FCPPT_MATH_DETAIL_BINARY_TYPE(Left, *, Right),
-	C
+	R
 >
 operator *(
 	fcppt::math::matrix::object<
@@ -45,7 +48,7 @@ operator *(
 	> const &_left,
 	fcppt::math::vector::object<
 		Right,
-		R,
+		C,
 		S2
 	> const &_right
 )
@@ -65,34 +68,50 @@ operator *(
 				&_left,
 				&_right
 			](
-				typename
-				result_type::size_type const _i
+				auto const _row
 			)
 			{
-				// TODO: fold?
-				auto cur(
-					fcppt::literal<
-						typename
-						result_type::value_type
-					>(
-						0
-					)
-				);
-
-				for(
-					auto const j
-					:
-					fcppt::make_int_range_count(
-						R
-					)
-				)
-					cur +=
-						_left[_i][j]
-						*
-						_right[j];
+				typedef
+				typename
+				result_type::value_type
+				value_type;
 
 				return
-					cur;
+					fcppt::algorithm::fold(
+						fcppt::make_int_range_count(
+							C
+						),
+						fcppt::literal<
+							value_type
+						>(
+							0
+						),
+						[
+							&_left,
+							&_right,
+							_row
+						](
+							fcppt::math::size_type const _column,
+							value_type const _sum
+						)
+						{
+							// TODO: Find a way to make _column a constant
+							return
+								_sum
+								+
+								fcppt::math::at_c<
+									_row
+								>(
+									_left
+								)[
+									_column
+								]
+								*
+								_right[
+									_column
+								];
+						}
+					);
 			}
 		);
 }
