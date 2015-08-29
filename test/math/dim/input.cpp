@@ -4,6 +4,7 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
+#include <fcppt/no_init.hpp>
 #include <fcppt/text.hpp>
 #include <fcppt/io/istringstream.hpp>
 #include <fcppt/math/dim/input.hpp>
@@ -37,7 +38,9 @@ FCPPT_PP_POP_WARNING
 			FCPPT_TEXT("(42, 3)")
 		);
 
-		ui2_dim result;
+		ui2_dim result(
+			fcppt::no_init{}
+		);
 
 		BOOST_CHECK(
 			stream
@@ -60,7 +63,9 @@ FCPPT_PP_POP_WARNING
 			FCPPT_TEXT("(42, 3")
 		);
 
-		ui2_dim result;
+		ui2_dim result(
+			fcppt::no_init{}
+		);
 
 		BOOST_CHECK(
 			!(

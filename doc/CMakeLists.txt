@@ -802,7 +802,6 @@ set(
 	include/fcppt/math/detail/componentwise_equal.hpp
 	include/fcppt/math/detail/construct.hpp
 	include/fcppt/math/detail/copy.hpp
-	include/fcppt/math/detail/default_storage.hpp
 	include/fcppt/math/detail/diff.hpp
 	include/fcppt/math/detail/dim_matches.hpp
 	include/fcppt/math/detail/fill.hpp

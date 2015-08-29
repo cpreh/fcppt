@@ -97,11 +97,6 @@ public:
 	const_reference;
 
 	/**
-	\brief Calls the default constructor for every element
-	*/
-	object();
-
-	/**
 	\brief Construct an uninitialized dim
 
 	\warning
