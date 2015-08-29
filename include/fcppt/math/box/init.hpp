@@ -8,8 +8,7 @@
 #define FCPPT_MATH_BOX_INIT_HPP_INCLUDED
 
 #include <fcppt/homogenous_pair.hpp>
-#include <fcppt/algorithm/array_fold.hpp>
-#include <fcppt/math/size_type.hpp>
+#include <fcppt/algorithm/array_fold_static.hpp>
 #include <fcppt/math/box/is_box.hpp>
 #include <fcppt/math/detail/init_function.hpp>
 #include <fcppt/math/dim/init.hpp>
@@ -53,11 +52,10 @@ init(
 	result_array;
 
 	result_array const results(
-		fcppt::algorithm::array_fold<
+		fcppt::algorithm::array_fold_static<
 			result_array
 		>(
 			fcppt::math::detail::init_function<
-				fcppt::math::size_type,
 				Function
 			>(
 				_function
@@ -74,13 +72,15 @@ init(
 				[
 					&results
 				](
-					fcppt::math::size_type const _index
+					auto const _index
 				)
 				{
 					return
-						results[
+						std::get<
 							_index
-						].first;
+						>(
+							results
+						).first;
 				}
 			),
 			fcppt::math::dim::init<
@@ -90,13 +90,15 @@ init(
 				[
 					&results
 				](
-					fcppt::math::size_type const _index
+					auto const _index
 				)
 				{
 					return
-						results[
+						std::get<
 							_index
-						].second;
+						>(
+							results
+						).second;
 				}
 			)
 		);

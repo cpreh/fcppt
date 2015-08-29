@@ -8,7 +8,6 @@
 #define FCPPT_MATH_MATRIX_IDENTITY_HPP_INCLUDED
 
 #include <fcppt/literal.hpp>
-#include <fcppt/math/matrix/index.hpp>
 #include <fcppt/math/matrix/init.hpp>
 #include <fcppt/math/matrix/is_matrix.hpp>
 #include <fcppt/math/matrix/static.hpp>
@@ -64,7 +63,7 @@ identity()
 			result_type
 		>(
 			[](
-				fcppt::math::matrix::index const _index
+				auto const _index
 			)
 			{
 				return

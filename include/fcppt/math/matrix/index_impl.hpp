@@ -11,35 +11,36 @@
 #include <fcppt/math/matrix/index_decl.hpp>
 
 
+template<
+	fcppt::math::size_type Row,
+	fcppt::math::size_type Column
+>
 inline
-fcppt::math::matrix::index::index(
-	row_t const _row,
-	column_t const _column
-)
-:
-	row_{
-		_row
-	},
-	column_{
-		_column
-	}
-{
-}
-
-inline
+constexpr
 fcppt::math::size_type
-fcppt::math::matrix::index::row() const
+fcppt::math::matrix::index<
+	Row,
+	Column
+>::row()
 {
 	return
-		row_.get();
+		Row;
 }
 
+template<
+	fcppt::math::size_type Row,
+	fcppt::math::size_type Column
+>
 inline
+constexpr
 fcppt::math::size_type
-fcppt::math::matrix::index::column() const
+fcppt::math::matrix::index<
+	Row,
+	Column
+>::column()
 {
 	return
-		column_.get();
+		Column;
 }
 
 #endif

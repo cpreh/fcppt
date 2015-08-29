@@ -8,11 +8,9 @@
 #define FCPPT_MATH_DETAIL_INIT_FUNCTION_HPP_INCLUDED
 
 #include <fcppt/nonassignable.hpp>
-#include <fcppt/cast/size.hpp>
-#include <fcppt/config/external_begin.hpp>
-#include <cstddef>
-#include <type_traits>
-#include <fcppt/config/external_end.hpp>
+#include <fcppt/cast/size_fun.hpp>
+#include <fcppt/math/size_type.hpp>
+#include <fcppt/mpl/integral_cast.hpp>
 
 
 namespace fcppt
@@ -23,7 +21,6 @@ namespace detail
 {
 
 template<
-	typename SizeType,
 	typename Function
 >
 class init_function
@@ -43,23 +40,23 @@ public:
 	{
 	}
 
-	typename
-	std::result_of<
-		Function(
-			SizeType
-		)
-	>::type
+	template<
+		typename T
+	>
+	decltype(
+		auto
+	)
 	operator()(
-		std::size_t const _index
+		T
 	) const
 	{
 		return
 			function_(
-				fcppt::cast::size<
-					SizeType
-				>(
-					_index
-				)
+				fcppt::mpl::integral_cast<
+					fcppt::math::size_type,
+					fcppt::cast::size_fun,
+					T
+				>{}
 			);
 	}
 private:

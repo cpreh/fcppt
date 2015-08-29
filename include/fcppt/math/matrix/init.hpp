@@ -48,11 +48,6 @@ init(
 		"Matrix must be a matrix"
 	);
 
-	typedef
-	typename
-	Matrix::size_type
-	size_type;
-
 	return
 		fcppt::math::detail::init<
 			Matrix
@@ -60,16 +55,15 @@ init(
 			[
 				&_function
 			](
-				size_type const _absolute
+				auto const _absolute
 			)
 			{
 				return
 					_function(
 						fcppt::math::matrix::detail::index_absolute<
-							Matrix::static_columns::value
-						>(
+							Matrix::static_columns::value,
 							_absolute
-						)
+						>{}
 					);
 			}
 		);

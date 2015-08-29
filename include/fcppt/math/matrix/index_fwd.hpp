@@ -7,6 +7,8 @@
 #ifndef FCPPT_MATH_MATRIX_INDEX_FWD_HPP_INCLUDED
 #define FCPPT_MATH_MATRIX_INDEX_FWD_HPP_INCLUDED
 
+#include <fcppt/math/size_type.hpp>
+
 
 namespace fcppt
 {
@@ -15,7 +17,11 @@ namespace math
 namespace matrix
 {
 
-class index;
+template<
+	fcppt::math::size_type Row,
+	fcppt::math::size_type Column
+>
+struct index;
 
 }
 }

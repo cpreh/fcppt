@@ -10,6 +10,7 @@
 #include <fcppt/container/to_reference_type.hpp>
 #include <fcppt/math/at_c.hpp>
 #include <fcppt/math/size_type.hpp>
+#include <fcppt/math/matrix/index_impl.hpp>
 #include <fcppt/math/matrix/is_matrix.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <type_traits>
@@ -29,9 +30,9 @@ namespace matrix
 \ingroup fcpptmathmatrix
 */
 template<
-	fcppt::math::size_type Row,
-	fcppt::math::size_type Column,
-	typename Matrix
+	typename Matrix,
+	fcppt::math::size_type R,
+	fcppt::math::size_type C
 >
 inline
 fcppt::container::to_reference_type<
@@ -43,7 +44,11 @@ fcppt::container::to_reference_type<
 	>
 >
 at_c(
-	Matrix &&_value
+	Matrix &&_value,
+	fcppt::math::matrix::index<
+		R,
+		C
+	>
 )
 {
 	static_assert(
@@ -58,10 +63,10 @@ at_c(
 
 	return
 		fcppt::math::at_c<
-			Column
+			C
 		>(
 			fcppt::math::at_c<
-				Row
+				R
 			>(
 				_value
 			)

@@ -7,8 +7,6 @@
 #ifndef FCPPT_MATH_MATRIX_INDEX_DECL_HPP_INCLUDED
 #define FCPPT_MATH_MATRIX_INDEX_DECL_HPP_INCLUDED
 
-#include <fcppt/make_strong_typedef.hpp>
-#include <fcppt/strong_typedef_impl.hpp>
 #include <fcppt/math/size_type.hpp>
 #include <fcppt/math/matrix/index_fwd.hpp>
 
@@ -20,33 +18,21 @@ namespace math
 namespace matrix
 {
 
-class index
+template<
+	fcppt::math::size_type Row,
+	fcppt::math::size_type Column
+>
+struct index
 {
-public:
-	FCPPT_MAKE_STRONG_TYPEDEF(
-		fcppt::math::size_type,
-		row_t
-	);
-
-	FCPPT_MAKE_STRONG_TYPEDEF(
-		fcppt::math::size_type,
-		column_t
-	);
-
-	index(
-		row_t,
-		column_t
-	);
-
+	static
+	constexpr
 	fcppt::math::size_type
-	row() const;
+	row();
 
+	static
+	constexpr
 	fcppt::math::size_type
-	column() const;
-private:
-	row_t row_;
-
-	column_t column_;
+	column();
 };
 
 }

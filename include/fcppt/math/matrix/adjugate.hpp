@@ -12,7 +12,6 @@
 #include <fcppt/math/size_type.hpp>
 #include <fcppt/math/matrix/delete_row_and_column.hpp>
 #include <fcppt/math/matrix/determinant.hpp>
-#include <fcppt/math/matrix/index.hpp>
 #include <fcppt/math/matrix/init.hpp>
 #include <fcppt/math/matrix/object_impl.hpp>
 #include <fcppt/math/matrix/static.hpp>
@@ -70,7 +69,7 @@ adjugate(
 			[
 				&_matrix
 			](
-				fcppt::math::matrix::index const _index
+				auto const _index
 			)
 			{
 				T const coeff{

@@ -5,6 +5,7 @@
 
 
 #include <fcppt/math/matrix/at_c.hpp>
+#include <fcppt/math/matrix/index.hpp>
 #include <fcppt/math/matrix/object.hpp>
 #include <fcppt/math/matrix/row.hpp>
 #include <fcppt/math/matrix/static.hpp>
@@ -43,49 +44,45 @@ FCPPT_PP_POP_WARNING
 	);
 
 	BOOST_CHECK_EQUAL(
-		(
-			fcppt::math::matrix::at_c<
+		fcppt::math::matrix::at_c(
+			mat,
+			fcppt::math::matrix::index<
 				0,
 				0
-			>(
-				mat
-			)
+			>()
 		),
 		-3
 	);
 
 	BOOST_CHECK_EQUAL(
-		(
-			fcppt::math::matrix::at_c<
+		fcppt::math::matrix::at_c(
+			mat,
+			fcppt::math::matrix::index<
 				0,
 				1
-			>(
-				mat
-			)
+			>()
 		),
 		2
 	);
 
 	BOOST_CHECK_EQUAL(
-		(
-			fcppt::math::matrix::at_c<
+		fcppt::math::matrix::at_c(
+			mat,
+			fcppt::math::matrix::index<
 				1,
 				0
-			>(
-				mat
-			)
+			>()
 		),
 		-1
 	);
 
 	BOOST_CHECK_EQUAL(
-		(
-			fcppt::math::matrix::at_c<
+		fcppt::math::matrix::at_c(
+			mat,
+			fcppt::math::matrix::index<
 				1,
 				1
-			>(
-				mat
-			)
+			>()
 		),
 		0
 	);

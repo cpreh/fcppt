@@ -21,28 +21,20 @@ namespace detail
 {
 
 template<
-	fcppt::math::size_type C
+	fcppt::math::size_type C,
+	fcppt::math::size_type Absolute
 >
-inline
-fcppt::math::matrix::index
-index_absolute(
-	fcppt::math::size_type const _absolute
-)
-{
-	return
-		fcppt::math::matrix::index{
-			fcppt::math::matrix::index::row_t{
-				_absolute
-				/
-				C
-			},
-			fcppt::math::matrix::index::column_t{
-				_absolute
-				%
-				C
-			}
-		};
-}
+using
+index_absolute
+=
+fcppt::math::matrix::index<
+	Absolute
+	/
+	C,
+	Absolute
+	%
+	C
+>;
 
 }
 }

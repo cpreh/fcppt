@@ -10,7 +10,6 @@
 
 #include <fcppt/literal.hpp>
 #include <fcppt/math/size_type.hpp>
-#include <fcppt/math/matrix/index.hpp>
 #include <fcppt/math/matrix/init.hpp>
 #include <fcppt/math/matrix/object_impl.hpp>
 #include <fcppt/math/matrix/static.hpp>
@@ -61,6 +60,7 @@ delete_row_and_column(
 	fcppt::math::size_type const _column
 )
 {
+	// TODO: Make a static version of this
 	typedef
 	fcppt::math::matrix::static_<
 		T,
@@ -82,7 +82,7 @@ delete_row_and_column(
 				_row,
 				_column
 			](
-				fcppt::math::matrix::index const _index
+				auto const _index
 			)
 			{
 				auto const clamp(
