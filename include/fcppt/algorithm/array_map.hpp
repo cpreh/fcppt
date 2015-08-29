@@ -8,7 +8,6 @@
 #define FCPPT_ALGORITHM_ARRAY_MAP_HPP_INCLUDED
 
 #include <fcppt/algorithm/array_fold_static.hpp>
-#include <fcppt/algorithm/detail/array_map_function.hpp>
 #include <fcppt/container/array_size.hpp>
 #include <fcppt/type_traits/is_std_array.hpp>
 #include <fcppt/config/external_begin.hpp>
@@ -78,17 +77,20 @@ array_map(
 		fcppt::algorithm::array_fold_static<
 			TargetArray
 		>(
-			fcppt::algorithm::detail::array_map_function<
-				Function,
-				typename TargetArray::value_type,
-				std::array<
-					SourceType,
-					SourceCount
-				>
-			>(
-				_function,
-				_source
+			[
+				&_source,
+				&_function
+			](
+				auto const _index
 			)
+			{
+				return
+					_function(
+						_source[
+							_index()
+						]
+					);
+			}
 		);
 }
 

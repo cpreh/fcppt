@@ -8,7 +8,10 @@
 #define FCPPT_ALGORITHM_ENUM_ARRAY_FOLD_STATIC_HPP_INCLUDED
 
 #include <fcppt/algorithm/array_fold_static.hpp>
-#include <fcppt/algorithm/detail/enum_array_fold_static_function.hpp>
+#include <fcppt/cast/int_to_enum.hpp>
+#include <fcppt/config/external_begin.hpp>
+#include <type_traits>
+#include <fcppt/config/external_end.hpp>
 
 
 namespace fcppt
@@ -25,6 +28,7 @@ template<
 	typename Array,
 	typename Function
 >
+inline
 Array
 enum_array_fold_static(
 	Function const &_function
@@ -36,12 +40,26 @@ enum_array_fold_static(
 				typename
 				Array::internal
 			>(
-				fcppt::algorithm::detail::enum_array_fold_static_function<
-					Array,
-					Function
-				>(
-					_function
+				[
+					&_function
+				](
+					auto const _index
 				)
+				{
+					return
+						_function(
+							std::integral_constant<
+								typename
+								Array::enum_type,
+								fcppt::cast::int_to_enum<
+									typename
+									Array::enum_type
+								>(
+									_index()
+								)
+							>{}
+						);
+				}
 			)
 		};
 }

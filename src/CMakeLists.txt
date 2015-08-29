@@ -12,12 +12,8 @@ set(
 	include/fcppt/algorithm/array_push_back.hpp
 	include/fcppt/algorithm/contains.hpp
 	include/fcppt/algorithm/contains_if.hpp
-	include/fcppt/algorithm/detail/array_fold_function.hpp
 	include/fcppt/algorithm/detail/array_fold_static.hpp
-	include/fcppt/algorithm/detail/array_init_function.hpp
-	include/fcppt/algorithm/detail/array_map_function.hpp
 	include/fcppt/algorithm/detail/array_push_back_function.hpp
-	include/fcppt/algorithm/detail/enum_array_fold_static_function.hpp
 	include/fcppt/algorithm/detail/find_by_result.hpp
 	include/fcppt/algorithm/detail/has_random_access_iterator.hpp
 	include/fcppt/algorithm/detail/has_reserve.hpp
@@ -576,6 +572,7 @@ set(
 	include/fcppt/math/map.hpp
 	include/fcppt/math/matrix/adjugate.hpp
 	include/fcppt/math/matrix/arithmetic.hpp
+	include/fcppt/math/matrix/at_c.hpp
 	include/fcppt/math/matrix/comparison.hpp
 	include/fcppt/math/matrix/componentwise_equal.hpp
 	include/fcppt/math/matrix/delete_row_and_column.hpp

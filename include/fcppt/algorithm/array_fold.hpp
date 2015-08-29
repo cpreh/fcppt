@@ -8,7 +8,6 @@
 #define FCPPT_ALGORITHM_ARRAY_FOLD_HPP_INCLUDED
 
 #include <fcppt/algorithm/array_fold_static.hpp>
-#include <fcppt/algorithm/detail/array_fold_function.hpp>
 #include <fcppt/type_traits/is_std_array.hpp>
 
 
@@ -53,12 +52,17 @@ array_fold(
 		fcppt::algorithm::array_fold_static<
 			Array
 		>(
-			fcppt::algorithm::detail::array_fold_function<
-				typename Array::value_type,
-				Function
-			>(
-				_function
+			[
+				&_function
+			](
+				auto const _index
 			)
+			{
+				return
+					_function(
+						_index()
+					);
+			}
 		);
 }
 

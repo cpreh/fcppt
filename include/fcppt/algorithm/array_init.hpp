@@ -8,7 +8,7 @@
 #define FCPPT_ALGORITHM_ARRAY_INIT_HPP_INCLUDED
 
 #include <fcppt/algorithm/array_fold_static.hpp>
-#include <fcppt/algorithm/detail/array_init_function.hpp>
+#include <fcppt/cast/to_void.hpp>
 #include <fcppt/type_traits/is_std_array.hpp>
 
 
@@ -48,11 +48,19 @@ array_init(
 		fcppt::algorithm::array_fold_static<
 			Array
 		>(
-			fcppt::algorithm::detail::array_init_function<
-				typename Array::value_type
-			>(
-				_value
+			[
+				&_value
+			](
+				auto const _index
 			)
+			{
+				fcppt::cast::to_void(
+					_index
+				);
+
+				return
+					_value;
+			}
 		);
 }
 
