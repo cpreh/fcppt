@@ -7,8 +7,8 @@
 #ifndef FCPPT_CONTAINER_GRID_DETAIL_RESIZE_HPP_INCLUDED
 #define FCPPT_CONTAINER_GRID_DETAIL_RESIZE_HPP_INCLUDED
 
-#include <fcppt/math/dim/contents.hpp>
 #include <fcppt/container/raw_vector_impl.hpp>
+#include <fcppt/math/dim/contents.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <vector>
 #include <fcppt/config/external_end.hpp>

@@ -6,8 +6,8 @@
 
 #include <fcppt/math/matrix/componentwise_equal.hpp>
 #include <fcppt/math/matrix/exponential_pade.hpp>
-#include <fcppt/math/matrix/row.hpp>
 #include <fcppt/math/matrix/output.hpp>
+#include <fcppt/math/matrix/row.hpp>
 #include <fcppt/math/matrix/static.hpp>
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
