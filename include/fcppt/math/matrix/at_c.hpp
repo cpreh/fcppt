@@ -4,11 +4,13 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_MATH_AT_C_HPP_INCLUDED
-#define FCPPT_MATH_AT_C_HPP_INCLUDED
+#ifndef FCPPT_MATH_MATRIX_AT_C_HPP_INCLUDED
+#define FCPPT_MATH_MATRIX_AT_C_HPP_INCLUDED
 
 #include <fcppt/container/to_reference_type.hpp>
+#include <fcppt/math/at_c.hpp>
 #include <fcppt/math/size_type.hpp>
+#include <fcppt/math/matrix/is_matrix.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
@@ -18,42 +20,55 @@ namespace fcppt
 {
 namespace math
 {
+namespace matrix
+{
 
 /**
 \brief Access an element using a compile-time constant
 
-\ingroup fcpptmath
+\ingroup fcpptmathmatrix
 */
 template<
-	fcppt::math::size_type Index,
-	typename Type
+	fcppt::math::size_type Row,
+	fcppt::math::size_type Column,
+	typename Matrix
 >
 inline
 fcppt::container::to_reference_type<
-	typename
-	std::remove_reference<
-		Type
-	>::type
+	fcppt::container::to_reference_type<
+		typename
+		std::remove_reference<
+			Matrix
+		>::type
+	>
 >
 at_c(
-	Type &&_value
+	Matrix &&_value
 )
 {
 	static_assert(
-		Index
-		<
-		std::decay<
-			Type
-		>::type::static_size::value,
-		"at_c: out of range"
+		fcppt::math::matrix::is_matrix<
+			typename
+			std::decay<
+				Matrix
+			>::type
+		>::value,
+		"Matrix must be a matrix"
 	);
 
 	return
-		_value[
-			Index
-		];
+		fcppt::math::at_c<
+			Column
+		>(
+			fcppt::math::at_c<
+				Row
+			>(
+				_value
+			)
+		);
 }
 
+}
 }
 }
 

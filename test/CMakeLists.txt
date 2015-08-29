@@ -537,6 +537,10 @@ add_fcppt_test(
 )
 
 add_fcppt_test(
+	math/matrix/at_c
+)
+
+add_fcppt_test(
 	math/matrix/delete_column_and_row
 )
 
