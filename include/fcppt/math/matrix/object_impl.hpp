@@ -71,9 +71,7 @@ fcppt::math::matrix::object<
 )
 :
 	storage_(
-		fcppt::math::matrix::detail::init_storage<
-			storage_type
-		>(
+		fcppt::math::matrix::detail::init_storage(
 			std::array<
 				fcppt::math::matrix::row_type<
 					T,

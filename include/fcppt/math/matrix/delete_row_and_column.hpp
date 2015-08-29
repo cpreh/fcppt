@@ -85,6 +85,7 @@ delete_row_and_column(
 				auto const _index
 			)
 			{
+				// TODO: _cur is a constant
 				auto const clamp(
 					[](
 						fcppt::math::size_type const _cur,

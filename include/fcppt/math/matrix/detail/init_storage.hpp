@@ -10,6 +10,7 @@
 #include <fcppt/algorithm/array_fold_static.hpp>
 #include <fcppt/cast/size.hpp>
 #include <fcppt/math/matrix/row_type.hpp>
+#include <fcppt/math/matrix/static_storage.hpp>
 #include <fcppt/math/matrix/detail/index_absolute.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <array>
@@ -27,14 +28,16 @@ namespace detail
 {
 
 template<
-	typename Storage,
 	typename Type,
 	std::size_t C,
 	std::size_t R
 >
 inline
-// TODO: Use matrix::static_storage here
-Storage
+fcppt::math::matrix::static_storage<
+	Type,
+	R,
+	C
+>
 init_storage(
 	std::array<
 		std::array<
@@ -47,7 +50,11 @@ init_storage(
 {
 	return
 		fcppt::algorithm::array_fold_static<
-			Storage
+			fcppt::math::matrix::static_storage<
+				Type,
+				R,
+				C
+			>
 		>(
 			[
 				&_value

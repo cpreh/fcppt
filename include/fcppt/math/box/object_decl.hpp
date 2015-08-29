@@ -76,12 +76,6 @@ public:
 		N
 	> dim;
 
-	// TODO: Remove this
-	/**
-	\brief Calls the default constructor for every element
-	*/
-	object();
-
 	/**
 	\brief Construct an uninitialized box
 

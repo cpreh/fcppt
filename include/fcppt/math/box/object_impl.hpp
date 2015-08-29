@@ -22,20 +22,6 @@ template<
 fcppt::math::box::object<
 	T,
 	N
->::object()
-:
-	pos_(),
-	size_()
-{
-}
-
-template<
-	typename T,
-	fcppt::math::size_type N
->
-fcppt::math::box::object<
-	T,
-	N
 >::object(
 	fcppt::no_init const &_no_init
 )
