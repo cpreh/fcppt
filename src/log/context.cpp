@@ -15,6 +15,7 @@
 #include <fcppt/algorithm/map_optional.hpp>
 #include <fcppt/assert/error.hpp>
 #include <fcppt/assert/pre.hpp>
+#include <fcppt/container/tree/child_position.hpp>
 #include <fcppt/container/tree/pre_order.hpp>
 #include <fcppt/log/context.hpp>
 #include <fcppt/log/location.hpp>
@@ -285,6 +286,7 @@ fcppt::log::context::remove(
 	fcppt::log::detail::context_tree &_tree
 )
 {
+	// TODO: This code is terrible
 	fcppt::log::detail::context_tree::optional_ref node(
 		_tree.parent()
 	);
@@ -294,7 +296,10 @@ fcppt::log::context::remove(
 	);
 
 	node.get_unsafe().erase(
-		_tree.child_position()
+		fcppt::container::tree::child_position(
+			node.get_unsafe(),
+			_tree
+		).get_unsafe()
 	);
 
 	while(
@@ -308,9 +313,13 @@ fcppt::log::context::remove(
 		);
 
 		parent.get_unsafe().erase(
-			node.get_unsafe().child_position()
+			fcppt::container::tree::child_position(
+				parent.get_unsafe(),
+				node.get_unsafe()
+			).get_unsafe()
 		);
 
-		node = parent;
+		node =
+			parent;
 	}
 }

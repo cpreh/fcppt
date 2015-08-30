@@ -253,7 +253,6 @@ set(
 	include/fcppt/container/grid/sup_fwd.hpp
 	include/fcppt/container/grid/sup_tag.hpp
 	include/fcppt/container/impl/exception.hpp
-	include/fcppt/container/impl/not_found.hpp
 	include/fcppt/container/impl/out_of_range.hpp
 	include/fcppt/container/index_map.hpp
 	include/fcppt/container/index_map_decl.hpp
@@ -263,7 +262,6 @@ set(
 	include/fcppt/container/is_std_vector.hpp
 	include/fcppt/container/maybe_back.hpp
 	include/fcppt/container/maybe_front.hpp
-	include/fcppt/container/not_found.hpp
 	include/fcppt/container/out_of_range.hpp
 	include/fcppt/container/raw_vector.hpp
 	include/fcppt/container/raw_vector_decl.hpp
@@ -274,6 +272,7 @@ set(
 	include/fcppt/container/to_pointer_type.hpp
 	include/fcppt/container/to_reference_type.hpp
 	include/fcppt/container/to_value_type.hpp
+	include/fcppt/container/tree/child_position.hpp
 	include/fcppt/container/tree/comparison.hpp
 	include/fcppt/container/tree/depth.hpp
 	include/fcppt/container/tree/detail/copy_children.hpp
@@ -694,10 +693,7 @@ set(
 	include/fcppt/mpl/detail/print.hpp
 	include/fcppt/mpl/detail/print_one.hpp
 	include/fcppt/mpl/detail/runtime_index.hpp
-	include/fcppt/mpl/exception.hpp
 	include/fcppt/mpl/for_each.hpp
-	include/fcppt/mpl/impl/exception.hpp
-	include/fcppt/mpl/impl/invalid_invoke.hpp
 	include/fcppt/mpl/implication.hpp
 	include/fcppt/mpl/index_of.hpp
 	include/fcppt/mpl/inner.hpp
@@ -936,7 +932,6 @@ set(
 	include/fcppt/variant/get_unsafe.hpp
 	include/fcppt/variant/holds_type.hpp
 	include/fcppt/variant/impl/exception.hpp
-	include/fcppt/variant/impl/invalid_apply.hpp
 	include/fcppt/variant/impl/invalid_get.hpp
 	include/fcppt/variant/invalid_get.hpp
 	include/fcppt/variant/is_object.hpp

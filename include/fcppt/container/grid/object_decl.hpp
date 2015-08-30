@@ -243,7 +243,7 @@ public:
 
 	/**
 	\brief Returns a reference to the element at a specified location in the vector.
-	\throws fcppt::container::out_of_range
+	\throws fcppt::container::grid::out_of_range
 	*/
 	reference
 	at(
@@ -252,7 +252,7 @@ public:
 
 	/**
 	\brief Returns a reference to the element at a specified location in the grid.
-	\throws fcppt::container::out_of_range
+	\throws fcppt::container::grid::out_of_range
 	*/
 	const_reference
 	at(

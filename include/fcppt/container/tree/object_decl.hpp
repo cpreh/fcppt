@@ -24,6 +24,7 @@ namespace tree
 
 /**
 \brief A tree data structure
+
 \ingroup fcpptcontainertree
 */
 template<
@@ -186,22 +187,6 @@ public:
 	release(
 		iterator
 	);
-
-	/**
-	\brief Returns an iterator pointing to the position in the parent's child container where this object resides.
-
-	Behaviour is undefined if \link fcppt::container::tree::object::has_parent has_parent \endlink is false
-	*/
-	iterator
-	child_position();
-
-	/**
-	\brief Returns an iterator pointing to the position in the parent's child container where this object resides.
-
-	Behaviour is undefined if \link fcppt::container::tree::object::has_parent has_parent \endlink is false
-	*/
-	const_iterator
-	child_position() const;
 
 	/**
 	\brief Sets a new value

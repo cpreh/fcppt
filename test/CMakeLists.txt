@@ -303,6 +303,10 @@ add_fcppt_test(
 )
 
 add_fcppt_test(
+	container/tree/child_position
+)
+
+add_fcppt_test(
 	container/tree/copy
 )
 

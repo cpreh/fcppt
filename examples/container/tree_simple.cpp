@@ -108,14 +108,6 @@ try
 		<< FCPPT_TEXT("First child has a parent: ")
 		<< first_child.has_parent()
 		<< FCPPT_TEXT('\n');
-
-	fcppt::io::cout()
-		<< FCPPT_TEXT("First child's position in the parent's child list: ")
-		<< std::distance(
-			first_child.parent().get_unsafe().begin(),
-			first_child.child_position()
-		)
-		<< FCPPT_TEXT('\n');
 //! [main]
 }
 catch(

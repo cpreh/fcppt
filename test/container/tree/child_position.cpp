@@ -4,9 +4,8 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/make_unique_ptr_fcppt.hpp>
-#include <fcppt/unique_ptr.hpp>
-#include <fcppt/container/tree/map.hpp>
+#include <fcppt/maybe.hpp>
+#include <fcppt/container/tree/child_position.hpp>
 #include <fcppt/container/tree/object_impl.hpp>
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
@@ -20,7 +19,7 @@ FCPPT_PP_PUSH_WARNING
 FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
 
 BOOST_AUTO_TEST_CASE(
-	container_tree_map
+	container_tree_child_position
 )
 {
 FCPPT_PP_POP_WARNING
@@ -31,52 +30,39 @@ FCPPT_PP_POP_WARNING
 	>
 	int_tree;
 
-	typedef
-	fcppt::unique_ptr<
-		int
-	>
-	int_unique_ptr;
-
-	typedef
-	fcppt::container::tree::object<
-		int_unique_ptr
-	>
-	int_unique_ptr_tree;
-
-	int_tree test(
-		42
-	);
-
-	test.push_back(
-		13
-	);
-
-	int_unique_ptr_tree const result(
-		fcppt::container::tree::map<
-			int_unique_ptr_tree
-		>(
-			test,
-			[](
-				int const _value
-			)
-			{
-				return
-					fcppt::make_unique_ptr_fcppt<
-						int
-					>(
-						_value
-					);
+	int_tree test{
+		42,
+		int_tree::child_list{
+			int_tree{
+				1
+			},
+			int_tree{
+				2
 			}
+		}
+	};
+
+	fcppt::maybe(
+		fcppt::container::tree::child_position(
+			test,
+			test.front()
+		),
+		[]{
+			BOOST_CHECK(
+				false
+			);
+		},
+		[
+			&test
+		](
+			int_tree::iterator const _pos
 		)
-	);
-
-	BOOST_CHECK_EQUAL(
-		*result.value(),
-		42
-	);
-
-	BOOST_CHECK_EQUAL(
-		*result.back().value(),
-		13
+		{
+			BOOST_CHECK(
+				_pos
+				==
+				test.begin()
+			);
+		}
 	);
 }
