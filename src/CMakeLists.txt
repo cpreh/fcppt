@@ -33,7 +33,6 @@ set(
 	include/fcppt/algorithm/find_if_opt.hpp
 	include/fcppt/algorithm/find_opt.hpp
 	include/fcppt/algorithm/fold.hpp
-	include/fcppt/algorithm/impl/element_not_found.hpp
 	include/fcppt/algorithm/index_of.hpp
 	include/fcppt/algorithm/index_of_enum_array.hpp
 	include/fcppt/algorithm/join.hpp

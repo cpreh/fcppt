@@ -18,11 +18,9 @@ namespace algorithm
 {
 
 /**
-\brief Like std::find but throws fcppt::algorithm::element_not_found on failure
+\brief Like std::find but throws an exception on failure
 
 \ingroup fcpptalgorithm
-
-\throws fcppt::algorithm::element_not_found If the element was not found
 */
 template<
 	typename In,

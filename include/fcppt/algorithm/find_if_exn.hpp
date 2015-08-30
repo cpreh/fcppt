@@ -18,9 +18,7 @@ namespace algorithm
 {
 
 /**
-\brief Like std::find_if but throws fcppt::algorithm::element_not_found
-
-\throws fcppt::algorithm::element_not_found If the element was not found
+\brief Like std::find_if but throws an exception on failure
 
 \ingroup fcpptalgorithm
 */
