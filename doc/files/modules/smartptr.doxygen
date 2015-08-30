@@ -348,10 +348,6 @@ allocated via <code>std::malloc</code>
 <td>Contains \link fcppt::make_shared_ptr\endlink.</td>
 </tr>
 <tr>
-<td><code>make_unique_ptr.hpp</code></td>
-<td>Contains \link fcppt::make_unique_ptr\endlink.</td>
-</tr>
-<tr>
 <td><code>make_unique_ptr_fcppt.hpp</code></td>
 <td>Contains \link fcppt::make_unique_ptr_fcppt\endlink.</td>
 </tr>

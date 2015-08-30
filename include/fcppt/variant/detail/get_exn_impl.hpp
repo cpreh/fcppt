@@ -4,11 +4,11 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_VARIANT_DETAIL_GET_IMPL_HPP_INCLUDED
-#define FCPPT_VARIANT_DETAIL_GET_IMPL_HPP_INCLUDED
+#ifndef FCPPT_VARIANT_DETAIL_GET_EXN_IMPL_HPP_INCLUDED
+#define FCPPT_VARIANT_DETAIL_GET_EXN_IMPL_HPP_INCLUDED
 
+#include <fcppt/variant/get_unsafe.hpp>
 #include <fcppt/variant/invalid_get.hpp>
-#include <fcppt/variant/size_type.hpp>
 #include <fcppt/variant/detail/index_of.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <type_traits>
@@ -28,7 +28,7 @@ template<
 >
 inline
 Ret &
-get_impl(
+get_exn_impl(
 	Variant &_variant
 )
 {
@@ -49,9 +49,11 @@ get_impl(
 		throw fcppt::variant::invalid_get();
 
 	return
-		_variant. template get_unsafe<
+		fcppt::variant::get_unsafe<
 			return_type
-		>();
+		>(
+			_variant
+		);
 }
 
 }

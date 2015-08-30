@@ -231,8 +231,7 @@ variant exception.</td>
 </tr>
 <tr>
 <td><code>get_exn.hpp</code></td>
-<td>Contains \link fcppt::variant::get_exn\endlink which does the same thing as
-the \link fcppt::variant::object::get_exn\endlink member function.</td>
+<td>Contains \link fcppt::variant::get_exn\endlink.</td>
 </tr>
 <tr>
 <td><code>get_unsafe.hpp</code></td>

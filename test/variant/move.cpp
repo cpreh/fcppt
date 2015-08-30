@@ -12,6 +12,7 @@
 #include <fcppt/variant/apply_binary.hpp>
 #include <fcppt/variant/apply_ternary.hpp>
 #include <fcppt/variant/apply_unary.hpp>
+#include <fcppt/variant/get_exn.hpp>
 #include <fcppt/variant/object_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/mpl/vector/vector10.hpp>
@@ -20,22 +21,6 @@
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
-
-namespace
-{
-
-typedef fcppt::unique_ptr<
-	int
-> int_unique_ptr;
-
-typedef fcppt::variant::object<
-	boost::mpl::vector2<
-		int_unique_ptr,
-		std::string
-	>
-> variant;
-
-}
 
 FCPPT_PP_PUSH_WARNING
 FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
@@ -46,6 +31,21 @@ BOOST_AUTO_TEST_CASE(
 {
 FCPPT_PP_POP_WARNING
 
+	typedef
+	fcppt::unique_ptr<
+		int
+	>
+	int_unique_ptr;
+
+	typedef
+	fcppt::variant::object<
+		boost::mpl::vector2<
+			int_unique_ptr,
+			std::string
+		>
+	>
+	variant;
+
 	variant test(
 		fcppt::make_unique_ptr_fcppt<
 			int
@@ -54,11 +54,13 @@ FCPPT_PP_POP_WARNING
 		)
 	);
 
-	BOOST_CHECK(
-		*test.get_exn<
+	BOOST_CHECK_EQUAL(
+		*fcppt::variant::get_exn<
 			int_unique_ptr
-		>()
-		== 42
+		>(
+			test
+		),
+		42
 	);
 
 	variant test2(
@@ -67,11 +69,13 @@ FCPPT_PP_POP_WARNING
 		)
 	);
 
-	BOOST_CHECK(
-		*test2.get_exn<
+	BOOST_CHECK_EQUAL(
+		*fcppt::variant::get_exn<
 			int_unique_ptr
-		>()
-		== 42
+		>(
+			test2
+		),
+		42
 	);
 
 	variant test3(
@@ -91,20 +95,26 @@ FCPPT_PP_POP_WARNING
 			test3
 		);
 
-	BOOST_CHECK(
-		test3.get_exn<
+	BOOST_CHECK_EQUAL(
+		fcppt::variant::get_exn<
 			std::string
-		>()
-		==
-		"test2"
+		>(
+			test3
+		),
+		std::string(
+			"test2"
+		)
 	);
 
-	BOOST_CHECK(
-		test4.get_exn<
+	BOOST_CHECK_EQUAL(
+		fcppt::variant::get_exn<
 			std::string
-		>()
-		==
-		"test"
+		>(
+			test4
+		),
+		std::string(
+			"test"
+		)
 	);
 
 	test4 =
@@ -112,18 +122,23 @@ FCPPT_PP_POP_WARNING
 			test2
 		);
 
-	BOOST_CHECK(
-		*test4.get_exn<
+	BOOST_CHECK_EQUAL(
+		*fcppt::variant::get_exn<
 			int_unique_ptr
-		>()
-		== 42
+		>(
+			test4
+		),
+		42
 	);
 
-	BOOST_CHECK(
-		test2.get_exn<
+	BOOST_CHECK_EQUAL(
+		fcppt::variant::get_exn<
 			std::string
-		>()
-		==
-		"test"
+		>(
+			test2
+		),
+		std::string(
+			"test"
+		)
 	);
 }

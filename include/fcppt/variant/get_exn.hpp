@@ -8,6 +8,7 @@
 #define FCPPT_VARIANT_GET_EXN_HPP_INCLUDED
 
 #include <fcppt/variant/object_impl.hpp>
+#include <fcppt/variant/detail/get_exn_impl.hpp>
 
 
 namespace fcppt
@@ -36,9 +37,11 @@ get_exn(
 )
 {
 	return
-		_object. template get_exn<
+		fcppt::variant::detail::get_exn_impl<
 			Type
-		>();
+		>(
+			_object
+		);
 }
 
 /**
@@ -62,9 +65,11 @@ get_exn(
 )
 {
 	return
-		_object. template get_exn<
-			Type
-		>();
+		fcppt::variant::detail::get_exn_impl<
+			Type const
+		>(
+			_object
+		);
 }
 
 }

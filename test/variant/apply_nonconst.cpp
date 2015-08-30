@@ -10,6 +10,7 @@
 #include <fcppt/variant/apply_binary.hpp>
 #include <fcppt/variant/apply_ternary.hpp>
 #include <fcppt/variant/apply_unary.hpp>
+#include <fcppt/variant/get_exn.hpp>
 #include <fcppt/variant/object_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/mpl/vector/vector10.hpp>
@@ -66,9 +67,11 @@ FCPPT_PP_POP_WARNING
 	);
 
 	BOOST_CHECK_EQUAL(
-		v1.get_exn<
+		fcppt::variant::get_exn<
 			std::string
-		>(),
+		>(
+			v1
+		),
 		std::string{}
 	);
 }
@@ -119,16 +122,20 @@ FCPPT_PP_POP_WARNING
 	);
 
 	BOOST_CHECK_EQUAL(
-		v1.get_exn<
+		fcppt::variant::get_exn<
 			std::string
-		>(),
+		>(
+			v1
+		),
 		std::string{}
 	);
 
 	BOOST_CHECK_EQUAL(
-		v2.get_exn<
+		fcppt::variant::get_exn<
 			int
-		>(),
+		>(
+			v2
+		),
 		0
 	);
 }
@@ -193,23 +200,29 @@ FCPPT_PP_POP_WARNING
 	);
 
 	BOOST_CHECK_EQUAL(
-		v1.get_exn<
+		fcppt::variant::get_exn<
 			std::string
-		>(),
+		>(
+			v1
+		),
 		std::string{}
 	);
 
 	BOOST_CHECK_EQUAL(
-		v2.get_exn<
+		fcppt::variant::get_exn<
 			int
-		>(),
+		>(
+			v2
+		),
 		0
 	);
 
 	BOOST_CHECK_EQUAL(
-		v3.get_exn<
+		fcppt::variant::get_exn<
 			bool
-		>(),
+		>(
+			v3
+		),
 		false
 	);
 }

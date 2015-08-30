@@ -7,6 +7,7 @@
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
+#include <fcppt/variant/get_exn.hpp>
 #include <fcppt/variant/holds_type.hpp>
 #include <fcppt/variant/object.hpp>
 #include <fcppt/config/external_begin.hpp>
@@ -44,7 +45,7 @@ FCPPT_PP_POP_WARNING
 
 	test1 = test2;
 
-	BOOST_REQUIRE(
+	BOOST_CHECK(
 		fcppt::variant::holds_type<
 			std::string
 		>(
@@ -52,16 +53,20 @@ FCPPT_PP_POP_WARNING
 		)
 	);
 
-	BOOST_REQUIRE(
-		test1.get_exn<
+	BOOST_CHECK_EQUAL(
+		fcppt::variant::get_exn<
 			std::string
-		>()
-		== "test"
+		>(
+			test1
+		),
+		std::string(
+			"test"
+		)
 	);
 
 	test1 = 42;
 
-	BOOST_REQUIRE(
+	BOOST_CHECK(
 		fcppt::variant::holds_type<
 			int
 		>(
@@ -69,10 +74,12 @@ FCPPT_PP_POP_WARNING
 		)
 	);
 
-	BOOST_REQUIRE(
-		test1.get_exn<
+	BOOST_CHECK_EQUAL(
+		fcppt::variant::get_exn<
 			int
-		>()
-		== 42
+		>(
+			test1
+		),
+		42
 	);
 }

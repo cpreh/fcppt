@@ -42,13 +42,6 @@ FCPPT_PP_POP_WARNING
 	);
 
 	BOOST_CHECK_EQUAL(
-		test.get_exn<
-			std::string
-		>(),
-		string
-	);
-
-	BOOST_CHECK_EQUAL(
 		fcppt::variant::get_exn<
 			std::string
 		>(

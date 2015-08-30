@@ -207,40 +207,6 @@ public:
 	~object();
 
 	/**
-	\brief Returns a const reference to the held type
-
-	If <code>fcppt::variant::holds_type<U>(*this)</code> is true, then a
-	const reference to currently held value is be returned.
-
-	\tparam U Must be a type among <code>types</code>
-
-	\throw fcppt::variant::invalid_get if
-	<code>fcppt::variant::holds_type<U>(*this)</code> is false
-	*/
-	template<
-		typename U
-	>
-	U const &
-	get_exn() const;
-
-	/**
-	\brief Returns a reference to the held type
-
-	If <code>fcppt::variant::holds_type<U>(*this)</code> is true, then a
-	reference to currently held value is be returned.
-
-	\tparam U Must be a type among <code>types</code>
-
-	\throw fcppt::variant::invalid_get if
-	<code>fcppt::variant::holds_type<U>(*this)</code> is false
-	*/
-	template<
-		typename U
-	>
-	U &
-	get_exn();
-
-	/**
 	\brief Returns a const reference to the held type without any checks
 
 	If <code>fcppt::mpl::index_of<types, U>::value ==

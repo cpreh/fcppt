@@ -871,7 +871,7 @@ add_fcppt_test(
 )
 
 add_fcppt_test(
-	variant/get
+	variant/get_exn
 )
 
 add_fcppt_test(

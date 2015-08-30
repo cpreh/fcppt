@@ -19,7 +19,6 @@
 #include <fcppt/variant/size_type.hpp>
 #include <fcppt/variant/detail/assert_type.hpp>
 #include <fcppt/variant/detail/disable_object.hpp>
-#include <fcppt/variant/detail/get_impl.hpp>
 #include <fcppt/variant/detail/index_of.hpp>
 #include <fcppt/variant/detail/nothrow_move_assignable.hpp>
 #include <fcppt/variant/detail/nothrow_move_constructible.hpp>
@@ -355,56 +354,6 @@ fcppt::variant::object<
 >::~object()
 {
 	this->destroy();
-}
-
-template<
-	typename Types
->
-template<
-	typename U
->
-U const &
-fcppt::variant::object<
-	Types
->::get_exn() const
-{
-	FCPPT_VARIANT_DETAIL_ASSERT_TYPE(
-		Types,
-		U,
-		elements
-	);
-
-	return
-		fcppt::variant::detail::get_impl<
-			U const
-		>(
-			*this
-		);
-}
-
-template<
-	typename Types
->
-template<
-	typename U
->
-U &
-fcppt::variant::object<
-	Types
->::get_exn()
-{
-	FCPPT_VARIANT_DETAIL_ASSERT_TYPE(
-		Types,
-		U,
-		elements
-	);
-
-	return
-		fcppt::variant::detail::get_impl<
-			U
-		>(
-			*this
-		);
 }
 
 template<

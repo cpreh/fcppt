@@ -925,7 +925,7 @@ set(
 	include/fcppt/variant/compare.hpp
 	include/fcppt/variant/detail/assert_type.hpp
 	include/fcppt/variant/detail/disable_object.hpp
-	include/fcppt/variant/detail/get_impl.hpp
+	include/fcppt/variant/detail/get_exn_impl.hpp
 	include/fcppt/variant/detail/index_of.hpp
 	include/fcppt/variant/detail/nothrow_move_assignable.hpp
 	include/fcppt/variant/detail/nothrow_move_constructible.hpp
