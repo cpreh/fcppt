@@ -28,6 +28,7 @@ template<
 	fcppt::math::size_type Index,
 	typename Type
 >
+// FIXME: This might return references to rvalues
 inline
 fcppt::container::to_reference_type<
 	typename

@@ -34,6 +34,7 @@ template<
 	fcppt::math::size_type R,
 	fcppt::math::size_type C
 >
+// FIXME: This might return references to rvalues
 inline
 fcppt::container::to_reference_type<
 	fcppt::container::to_reference_type<

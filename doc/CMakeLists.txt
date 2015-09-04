@@ -189,6 +189,7 @@ set(
 	include/fcppt/algorithm/detail/has_size.hpp
 	include/fcppt/algorithm/detail/join_all.hpp
 	include/fcppt/algorithm/detail/join_impl.hpp
+	include/fcppt/algorithm/detail/loop.hpp
 	include/fcppt/algorithm/detail/map_concat.hpp
 	include/fcppt/algorithm/detail/map_reserve.hpp
 	include/fcppt/algorithm/detail/optimize_map.hpp
@@ -208,6 +209,7 @@ set(
 	include/fcppt/algorithm/join_strings.hpp
 	include/fcppt/algorithm/key_set.hpp
 	include/fcppt/algorithm/levenshtein.hpp
+	include/fcppt/algorithm/loop.hpp
 	include/fcppt/algorithm/map.hpp
 	include/fcppt/algorithm/map_concat.hpp
 	include/fcppt/algorithm/map_iteration.hpp
@@ -859,6 +861,8 @@ set(
 	include/fcppt/math/exception.hpp
 	include/fcppt/math/generate_binary_vectors.hpp
 	include/fcppt/math/impl/exception.hpp
+	include/fcppt/math/int_range.hpp
+	include/fcppt/math/int_range_count.hpp
 	include/fcppt/math/interpolation/linear.hpp
 	include/fcppt/math/interpolation/linear_functor.hpp
 	include/fcppt/math/interpolation/perlin_fifth_degree.hpp
@@ -1178,6 +1182,7 @@ set(
 	include/fcppt/tag.hpp
 	include/fcppt/tag_fwd.hpp
 	include/fcppt/tag_type.hpp
+	include/fcppt/tag_value.hpp
 	include/fcppt/text.hpp
 	include/fcppt/time/ctime.hpp
 	include/fcppt/time/exception.hpp

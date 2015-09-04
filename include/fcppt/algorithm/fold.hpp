@@ -7,7 +7,7 @@
 #ifndef FCPPT_ALGORITHM_FOLD_HPP_INCLUDED
 #define FCPPT_ALGORITHM_FOLD_HPP_INCLUDED
 
-#include <fcppt/algorithm/range_element_type.hpp>
+#include <fcppt/algorithm/loop.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <utility>
 #include <fcppt/config/external_end.hpp>
@@ -47,20 +47,28 @@ fold(
 	Function _function
 )
 {
-	for(
-		fcppt::algorithm::range_element_type<
+	fcppt::algorithm::loop(
+		std::forward<
 			Container
-		> element
-		:
-		_container
-	)
-		_state =
-			_function(
-				element,
-				std::move(
-					_state
-				)
-			);
+		>(
+			_container
+		),
+		[
+			&_state,
+			&_function
+		](
+			auto &&_element
+		)
+		{
+			_state =
+				_function(
+					_element,
+					std::move(
+						_state
+					)
+				);
+		}
+	);
 
 	return
 		_state;
