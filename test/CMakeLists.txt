@@ -101,6 +101,10 @@ add_fcppt_test(
 )
 
 add_fcppt_test(
+	algorithm/loop
+)
+
+add_fcppt_test(
 	algorithm/map
 )
 
