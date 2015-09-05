@@ -34,18 +34,14 @@ template<
 	fcppt::math::size_type R,
 	fcppt::math::size_type C
 >
-// FIXME: This might return references to rvalues
 inline
 fcppt::container::to_reference_type<
 	fcppt::container::to_reference_type<
-		typename
-		std::remove_reference<
-			Matrix
-		>::type
+		Matrix
 	>
 >
 at_c(
-	Matrix &&_value,
+	Matrix &_value,
 	fcppt::math::matrix::index<
 		R,
 		C

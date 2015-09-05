@@ -21,6 +21,7 @@ namespace io
 
 /**
 \brief Converts the contents of a stream to a string
+
 \ingroup fcpptstring
 */
 template<
@@ -43,9 +44,11 @@ stream_to_string(
 		Traits
 	> string_stream;
 
-	string_stream << _stream.rdbuf();
+	string_stream <<
+		_stream.rdbuf();
 
-	return string_stream.str();
+	return
+		string_stream.str();
 }
 
 }

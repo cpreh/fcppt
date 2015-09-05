@@ -8,10 +8,13 @@
 #define FCPPT_MATH_MATRIX_DETAIL_DETERMINANT_HPP_INCLUDED
 
 #include <fcppt/literal.hpp>
-#include <fcppt/make_int_range_count.hpp>
+#include <fcppt/tag_value.hpp>
 #include <fcppt/algorithm/fold.hpp>
+#include <fcppt/math/int_range_count.hpp>
 #include <fcppt/math/size_type.hpp>
-#include <fcppt/math/matrix/delete_row_and_column.hpp>
+#include <fcppt/math/matrix/at_c.hpp>
+#include <fcppt/math/matrix/index.hpp>
+#include <fcppt/math/matrix/delete_row_and_column_static.hpp>
 #include <fcppt/math/matrix/has_dim.hpp>
 #include <fcppt/math/matrix/object_impl.hpp>
 #include <fcppt/math/matrix/static.hpp>
@@ -41,10 +44,15 @@ determinant(
 )
 {
 	return
-		_matrix[0][0];
+		fcppt::math::matrix::at_c(
+			_matrix,
+			fcppt::math::matrix::index<
+				0,
+				0
+			>{}
+		);
 }
 
-/// Calculates the matrix determinant via the Laplace extension and delete_column_and_row
 template<
 	typename T,
 	fcppt::math::size_type N,
@@ -75,9 +83,9 @@ determinant(
 {
 	return
 		fcppt::algorithm::fold(
-			fcppt::make_int_range_count(
+			fcppt::math::int_range_count<
 				N
-			),
+			>{},
 			fcppt::literal<
 				T
 			>(
@@ -86,12 +94,14 @@ determinant(
 			[
 				&_matrix
 			](
-				fcppt::math::size_type const _row,
+				auto const _row,
 				T const _sum
 			)
 			{
 				T const coeff{
-					_row
+					fcppt::tag_value(
+						_row
+					)
 					%
 					fcppt::literal<
 						fcppt::math::size_type
@@ -118,22 +128,27 @@ determinant(
 						)
 				};
 
+				fcppt::math::matrix::index<
+					fcppt::tag_value(
+						_row
+					),
+					0
+				> const index{};
+
 				return
 					_sum
 					+
 					coeff
 					*
-					_matrix[
-						_row
-					][
-						0
-					]
+					fcppt::math::matrix::at_c(
+						_matrix,
+						index
+					)
 					*
 					fcppt::math::matrix::detail::determinant(
-						fcppt::math::matrix::delete_row_and_column(
+						fcppt::math::matrix::delete_row_and_column_static(
 							_matrix,
-							_row,
-							0
+							index
 						)
 					);
 			}

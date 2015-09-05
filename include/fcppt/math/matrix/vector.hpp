@@ -8,11 +8,14 @@
 #define FCPPT_MATH_MATRIX_VECTOR_HPP_INCLUDED
 
 #include <fcppt/literal.hpp>
-#include <fcppt/make_int_range_count.hpp>
+#include <fcppt/tag_value.hpp>
 #include <fcppt/algorithm/fold.hpp>
 #include <fcppt/math/at_c.hpp>
+#include <fcppt/math/int_range_count.hpp>
 #include <fcppt/math/size_type.hpp>
 #include <fcppt/math/detail/binary_type.hpp>
+#include <fcppt/math/matrix/at_c.hpp>
+#include <fcppt/math/matrix/index.hpp>
 #include <fcppt/math/matrix/object_impl.hpp>
 #include <fcppt/math/vector/init.hpp>
 #include <fcppt/math/vector/object_impl.hpp>
@@ -78,9 +81,9 @@ operator *(
 
 				return
 					fcppt::algorithm::fold(
-						fcppt::make_int_range_count(
+						fcppt::math::int_range_count<
 							C
-						),
+						>{},
 						fcppt::literal<
 							value_type
 						>(
@@ -91,25 +94,30 @@ operator *(
 							&_right,
 							_row
 						](
-							fcppt::math::size_type const _column,
+							auto const _column,
 							value_type const _sum
 						)
 						{
-							// TODO: Find a way to make _column a constant
 							return
 								_sum
 								+
-								fcppt::math::at_c<
-									_row
-								>(
-									_left
-								)[
-									_column
-								]
+								fcppt::math::matrix::at_c(
+									_left,
+									fcppt::math::matrix::index<
+										_row,
+										fcppt::tag_value(
+											_column
+										)
+									>{}
+								)
 								*
-								_right[
-									_column
-								];
+								fcppt::math::at_c<
+									fcppt::tag_value(
+										_column
+									)
+								>(
+									_right
+								);
 						}
 					);
 			}

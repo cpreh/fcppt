@@ -576,6 +576,8 @@ set(
 	include/fcppt/math/matrix/comparison.hpp
 	include/fcppt/math/matrix/componentwise_equal.hpp
 	include/fcppt/math/matrix/delete_row_and_column.hpp
+	include/fcppt/math/matrix/delete_row_and_column_static.hpp
+	include/fcppt/math/matrix/detail/deleted_index.hpp
 	include/fcppt/math/matrix/detail/determinant.hpp
 	include/fcppt/math/matrix/detail/index_absolute.hpp
 	include/fcppt/math/matrix/detail/init_storage.hpp

@@ -7,9 +7,13 @@
 #ifndef FCPPT_MATH_DETAIL_ONE_DIMENSIONAL_INPUT_HPP_INCLUDED
 #define FCPPT_MATH_DETAIL_ONE_DIMENSIONAL_INPUT_HPP_INCLUDED
 
-#include <fcppt/make_int_range_count.hpp>
+#include <fcppt/tag_value.hpp>
+#include <fcppt/algorithm/loop.hpp>
+#include <fcppt/io/expect.hpp>
+#include <fcppt/math/at_c.hpp>
+#include <fcppt/math/int_range_count.hpp>
+#include <fcppt/math/detail/if_not_last_index.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <ios>
 #include <istream>
 #include <fcppt/config/external_end.hpp>
 
@@ -38,82 +42,55 @@ one_dimensional_input(
 	Type &_value
 )
 {
-	Ch temp;
-
-	_stream >>
-		temp;
-
-	if(
-		temp
-		!=
-		_stream.widen('(')
-	)
-	{
-		_stream.setstate(
-			std::ios_base::failbit
-		);
-
-		return
-			_stream;
-	}
-
-	for(
-		auto const index
-		:
-		fcppt::make_int_range_count(
-			Type::static_size::value
+	fcppt::io::expect(
+		_stream,
+		_stream.widen(
+			'('
 		)
-	)
-	{
-		if(
-			!(
-				_stream >>
-					_value[
-						index
-					]
-			)
-		)
-			return
-				_stream;
+	);
 
-		if(
-			index
-			!=
+	fcppt::algorithm::loop(
+		fcppt::math::int_range_count<
 			Type::static_size::value
-			-
-			1u
+		>{},
+		[
+			&_stream,
+			&_value
+		](
+			auto const _index
 		)
 		{
 			_stream >>
-				temp;
-
-			if(
-				temp
-				!=
-				_stream.widen(',')
-			)
-			{
-				_stream.setstate(
-					std::ios_base::failbit
+				fcppt::math::at_c<
+					fcppt::tag_value(
+						_index
+					)
+				>(
+					_value
 				);
 
-				return
-					_stream;
-			}
+			fcppt::math::detail::if_not_last_index(
+				fcppt::tag_value(
+					_index
+				),
+				typename
+				Type::static_size{},
+				[
+					&_stream
+				]{
+					fcppt::io::expect(
+						_stream,
+						_stream.widen(',')
+					);
+				}
+			);
 		}
-	}
+	);
 
-	_stream >>
-		temp;
-
-	if(
-		temp
-		!=
+	fcppt::io::expect(
+		_stream,
 		_stream.widen(')')
-	)
-		_stream.setstate(
-			std::ios_base::failbit
-		);
+	);
 
 	return
 		_stream;

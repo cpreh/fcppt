@@ -8,8 +8,10 @@
 #define FCPPT_MATH_VECTOR_DOT_HPP_INCLUDED
 
 #include <fcppt/literal.hpp>
-#include <fcppt/make_int_range_count.hpp>
+#include <fcppt/tag_value.hpp>
 #include <fcppt/algorithm/fold.hpp>
+#include <fcppt/math/at_c.hpp>
+#include <fcppt/math/int_range_count.hpp>
 #include <fcppt/math/size_type.hpp>
 #include <fcppt/math/vector/object_impl.hpp>
 
@@ -52,9 +54,9 @@ dot(
 {
 	return
 		fcppt::algorithm::fold(
-			fcppt::make_int_range_count(
+			fcppt::math::int_range_count<
 				N
-			),
+			>{},
 			fcppt::literal<
 				T
 			>(
@@ -64,20 +66,28 @@ dot(
 				&_left,
 				&_right
 			](
-				fcppt::math::size_type const _index,
+				auto const _index,
 				T const _state
 			)
 			{
 				return
 					_state
 					+
-					_left[
-						_index
-					]
+					fcppt::math::at_c<
+						fcppt::tag_value(
+							_index
+						)
+					>(
+						_left
+					)
 					*
-					_right[
-						_index
-					];
+					fcppt::math::at_c<
+						fcppt::tag_value(
+							_index
+						)
+					>(
+						_right
+					);
 			}
 		);
 }

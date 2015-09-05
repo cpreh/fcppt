@@ -7,7 +7,11 @@
 #ifndef FCPPT_MATH_DETAIL_ONE_DIMENSIONAL_OUTPUT_HPP_INCLUDED
 #define FCPPT_MATH_DETAIL_ONE_DIMENSIONAL_OUTPUT_HPP_INCLUDED
 
-#include <fcppt/make_int_range_count.hpp>
+#include <fcppt/tag_value.hpp>
+#include <fcppt/algorithm/loop.hpp>
+#include <fcppt/math/at_c.hpp>
+#include <fcppt/math/int_range_count.hpp>
+#include <fcppt/math/detail/if_not_last_index.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <ostream>
 #include <fcppt/config/external_end.hpp>
@@ -40,28 +44,42 @@ one_dimensional_output(
 	_stream <<
 		_stream.widen('(');
 
-	for(
-		auto const index
-		:
-		fcppt::make_int_range_count(
+	fcppt::algorithm::loop(
+		fcppt::math::int_range_count<
 			Type::static_size::value
+		>{},
+		[
+			&_stream,
+			&_value
+		](
+			auto const _index
 		)
-	)
-	{
-		_stream
-			<<
-			_value[
-				index
-			];
-
-		if(
-			index
-			!=
-			Type::static_size::value - 1u
-		)
+		{
 			_stream
-				<< _stream.widen(',');
-	}
+				<<
+				fcppt::math::at_c<
+					fcppt::tag_value(
+						_index
+					)
+				>(
+					_value
+				);
+
+			fcppt::math::detail::if_not_last_index(
+				fcppt::tag_value(
+					_index
+				),
+				typename
+				Type::static_size{},
+				[
+					&_stream
+				]{
+					_stream
+						<< _stream.widen(',');
+				}
+			);
+		}
+	);
 
 	return
 		_stream

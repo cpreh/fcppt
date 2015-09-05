@@ -29,6 +29,7 @@ template<
 	typename Type
 >
 // FIXME: This might return references to rvalues
+// It is currently needed to access rvalue vector views
 inline
 fcppt::container::to_reference_type<
 	typename

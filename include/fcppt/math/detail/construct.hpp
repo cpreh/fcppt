@@ -7,7 +7,6 @@
 #ifndef FCPPT_MATH_DETAIL_CONSTRUCT_HPP_INCLUDED
 #define FCPPT_MATH_DETAIL_CONSTRUCT_HPP_INCLUDED
 
-#include <fcppt/make_int_range_count.hpp>
 #include <fcppt/algorithm/array_fold_static.hpp>
 #include <fcppt/algorithm/array_push_back.hpp>
 #include <fcppt/math/at_c.hpp>
