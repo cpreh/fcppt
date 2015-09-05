@@ -86,10 +86,10 @@ offset(
 				std::pair<
 					result,
 					stacked_dim
-				> _state
+				> _sum
 			)
 			{
-				_state.second *=
+				_sum.second *=
 					stacked_dim{
 						fcppt::math::at_c<
 							fcppt::tag_value(
@@ -102,7 +102,7 @@ offset(
 						)
 					};
 
-				_state.first +=
+				_sum.first +=
 					result{
 						fcppt::math::at_c<
 							fcppt::tag_value(
@@ -112,11 +112,11 @@ offset(
 							_pos
 						)
 						*
-						_state.second.get()
+						_sum.second.get()
 					};
 
 				return
-					_state;
+					_sum;
 			}
 		).first.get();
 }

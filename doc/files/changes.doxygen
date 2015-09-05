@@ -260,8 +260,8 @@ can be omitted from <code>return</code> statements.</li>
 	<li>\link fcppt::container::grid::object\endlink uses \link
 	fcppt::no_init\endlink to make it more clear when elements might not be
 	initialized.</li>
-	<li>\link fcppt::container::grid::is_square\endlink now takes a
-	dimension instead of a grid object.</li>
+	<li>fcppt::container::grid::is_square now takes a dimension instead of
+	a grid object.</li>
 	</ul>
 </li>
 
