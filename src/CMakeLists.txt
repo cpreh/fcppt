@@ -191,7 +191,6 @@ set(
 	include/fcppt/container/grid/in_range_dim.hpp
 	include/fcppt/container/grid/interpolate.hpp
 	include/fcppt/container/grid/is_object.hpp
-	include/fcppt/container/grid/is_square.hpp
 	include/fcppt/container/grid/iterator_position.hpp
 	include/fcppt/container/grid/make_pos_range.hpp
 	include/fcppt/container/grid/make_pos_range_start_end.hpp
@@ -412,6 +411,7 @@ set(
 	include/fcppt/io/cin.hpp
 	include/fcppt/io/clog.hpp
 	include/fcppt/io/cout.hpp
+	include/fcppt/io/expect.hpp
 	include/fcppt/io/fstream.hpp
 	include/fcppt/io/ifstream.hpp
 	include/fcppt/io/istream.hpp
@@ -502,6 +502,7 @@ set(
 	include/fcppt/math/detail/fill.hpp
 	include/fcppt/math/detail/generate_binary_vectors.hpp
 	include/fcppt/math/detail/has_size.hpp
+	include/fcppt/math/detail/if_not_last_index.hpp
 	include/fcppt/math/detail/index_at.hpp
 	include/fcppt/math/detail/init.hpp
 	include/fcppt/math/detail/init_function.hpp

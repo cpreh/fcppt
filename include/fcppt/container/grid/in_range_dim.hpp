@@ -43,6 +43,7 @@ in_range_dim(
 	> const _pos
 )
 {
+	// TODO: all_of
 	for(
 		fcppt::container::grid::size_type const index
 		:

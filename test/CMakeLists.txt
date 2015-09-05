@@ -255,10 +255,6 @@ add_fcppt_test(
 )
 
 add_fcppt_test(
-	container/grid/is_square
-)
-
-add_fcppt_test(
 	container/grid/iterator_position
 )
 
