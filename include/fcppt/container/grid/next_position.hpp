@@ -7,12 +7,14 @@
 #ifndef FCPPT_CONTAINER_GRID_NEXT_POSITION_HPP_INCLUDED
 #define FCPPT_CONTAINER_GRID_NEXT_POSITION_HPP_INCLUDED
 
-#include <fcppt/literal.hpp>
-#include <fcppt/make_int_range_count.hpp>
+#include <fcppt/tag_value.hpp>
+#include <fcppt/algorithm/fold.hpp>
 #include <fcppt/container/grid/min.hpp>
 #include <fcppt/container/grid/pos.hpp>
 #include <fcppt/container/grid/size_type.hpp>
 #include <fcppt/container/grid/sup.hpp>
+#include <fcppt/math/at_c.hpp>
+#include <fcppt/math/int_range_count.hpp>
 
 
 namespace fcppt
@@ -53,58 +55,80 @@ next_position(
 	> const _sup
 )
 {
-	auto const one(
-		fcppt::literal<
-			fcppt::container::grid::size_type
-		>(
-			1
-		)
-	);
-
+	typedef
 	fcppt::container::grid::pos<
 		SizeType,
 		Size
-	> result{
+	>
+	result_type;
+
+	result_type result{
 		_current
 	};
 
 	++result.x();
 
-	for(
-		fcppt::container::grid::size_type const index
-		:
-		fcppt::make_int_range_count(
-			Size
-			-
-			one
-		)
-	)
-		if(
-			result[
-				index
-			]
-			==
-			_sup.get()[
-				index
-			]
-		)
-		{
-			result[
-				index
-			] =
-				_min.get()[
-					index
-				];
-
-			++result[
-				index
-				+
-				one
-			];
-		}
-
 	return
-		result;
+		fcppt::algorithm::fold(
+			fcppt::math::int_range_count<
+				Size
+				-
+				1u
+			>{},
+			result,
+			[
+				&_min,
+				&_sup
+			](
+				auto const _index,
+				result_type _result
+			)
+			{
+				auto const index(
+					fcppt::tag_value(
+						_index
+					)
+				);
+
+				if(
+					fcppt::math::at_c<
+						index
+					>(
+						_result
+					)
+					==
+					fcppt::math::at_c<
+						index
+					>(
+						_sup.get()
+					)
+				)
+				{
+					fcppt::math::at_c<
+						index
+					>(
+						_result
+					) =
+						fcppt::math::at_c<
+							index
+						>(
+							_min.get()
+						);
+
+					++
+					fcppt::math::at_c<
+						index
+						+
+						1u
+					>(
+						_result
+					);
+				}
+
+				return
+					_result;
+			}
+		);
 }
 
 }

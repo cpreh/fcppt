@@ -10,6 +10,7 @@
 #include <fcppt/make_int_range_count.hpp>
 #include <fcppt/algorithm/all_of.hpp>
 #include <fcppt/math/diff.hpp>
+#include <fcppt/math/detail/linear_access.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
@@ -27,6 +28,7 @@ template<
 	typename Range2,
 	typename T
 >
+inline
 bool
 componentwise_equal(
 	Range1 const &_r1,
@@ -47,6 +49,13 @@ componentwise_equal(
 		"componentwise_equal can only be used on ranges of floating point type"
 	);
 
+	static_assert(
+		Range1::dim_wrapper::value
+		==
+		Range2::dim_wrapper::value,
+		"Ranges of different size in componentwise_equal"
+	);
+
 	return
 		fcppt::algorithm::all_of(
 			fcppt::make_int_range_count(
@@ -62,12 +71,14 @@ componentwise_equal(
 			{
 				return
 					fcppt::math::diff(
-						_r1.storage()[
+						fcppt::math::detail::linear_access(
+							_r1.storage(),
 							_index
-						],
-						_r2.storage()[
+						),
+						fcppt::math::detail::linear_access(
+							_r2.storage(),
 							_index
-						]
+						)
 					)
 					<
 					_epsilon;

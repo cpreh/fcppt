@@ -10,7 +10,6 @@
 #include <fcppt/mpl/detail/for_each.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/mpl/begin.hpp>
-#include <boost/mpl/empty.hpp>
 #include <boost/mpl/end.hpp>
 #include <fcppt/config/external_end.hpp>
 
@@ -40,6 +39,7 @@ template<
 	typename Sequence,
 	typename Function
 >
+inline
 void
 for_each(
 	Function const &_function
@@ -47,14 +47,12 @@ for_each(
 {
 	return
 		fcppt::mpl::detail::for_each<
-			boost::mpl::empty<
-				Sequence
-			>::value
-		>:: template execute<
-			typename boost::mpl::begin<
+			typename
+			boost::mpl::begin<
 				Sequence
 			>::type,
-			typename boost::mpl::end<
+			typename
+			boost::mpl::end<
 				Sequence
 			>::type
 		>(

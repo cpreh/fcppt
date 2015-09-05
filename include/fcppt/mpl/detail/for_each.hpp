@@ -11,6 +11,7 @@
 #include <fcppt/config/external_begin.hpp>
 #include <boost/mpl/deref.hpp>
 #include <boost/mpl/next.hpp>
+#include <boost/utility/enable_if.hpp>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
@@ -23,72 +24,62 @@ namespace detail
 {
 
 template<
-	bool Done
+	typename Iterator,
+	typename LastIterator,
+	typename Fun
 >
-struct for_each;
-
-template<>
-struct for_each<
-	true
->
-{
-	template<
-		typename Iterator,
-		typename LastIterator,
-		typename Fun
-	>
-	static
+inline
+typename
+boost::enable_if<
+	std::is_same<
+		Iterator,
+		LastIterator
+	>,
 	void
-	execute(
-		Fun const &
-	)
-	{
-	}
-};
-
-template<>
-struct for_each<
-	false
->
+>::type
+for_each(
+	Fun const &
+)
 {
-	template<
-		typename Iterator,
-		typename LastIterator,
-		typename Fun
-	>
-	static
+}
+
+template<
+	typename Iterator,
+	typename LastIterator,
+	typename Fun
+>
+inline
+typename
+boost::disable_if<
+	std::is_same<
+		Iterator,
+		LastIterator
+	>,
 	void
-	execute(
-		Fun const &_func
-	)
-	{
-		typedef typename boost::mpl::deref<
+>::type
+for_each(
+	Fun const &_func
+)
+{
+	_func(
+		fcppt::tag<
+			typename
+			boost::mpl::deref<
+				Iterator
+			>::type
+		>()
+	);
+
+	fcppt::mpl::detail::for_each<
+		typename
+		boost::mpl::next<
 			Iterator
-		>::type item;
-
-		typedef typename boost::mpl::next<
-			Iterator
-		>::type iter;
-
-		_func(
-			fcppt::tag<
-				item
-			>()
-		);
-
-		fcppt::mpl::detail::for_each<
-			std::is_same<
-				iter,
-				LastIterator
-			>::value
-		>:: template execute<
-			iter,
-			LastIterator
-		>(
-			_func
-		);
-	}
-};
+		>::type,
+		LastIterator
+	>(
+		_func
+	);
+}
 
 }
 }

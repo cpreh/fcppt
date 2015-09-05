@@ -20,7 +20,7 @@ namespace math
 
 template<
 	fcppt::math::size_type Start,
-	fcppt::math::size_type Count
+	fcppt::math::size_type End
 >
 using
 int_range
@@ -28,9 +28,7 @@ int_range
 boost::mpl::range_c<
 	fcppt::math::size_type,
 	Start,
-	Start
-	+
-	Count
+	End
 >;
 
 }
