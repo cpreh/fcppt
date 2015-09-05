@@ -8,8 +8,10 @@
 #define FCPPT_ALGORITHM_FIND_IF_OPT_HPP_INCLUDED
 
 #include <fcppt/optional_impl.hpp>
+#include <fcppt/container/to_iterator_type.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <algorithm>
+#include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -24,28 +26,46 @@ namespace algorithm
 \ingroup fcpptalgorithm
 */
 template<
-	typename In,
+	typename Range,
 	typename Comp
 >
+inline
 fcppt::optional<
-	In
+	fcppt::container::to_iterator_type<
+		typename
+		std::remove_reference<
+			Range
+		>::type
+	>
 >
 find_if_opt(
-	In const _begin,
-	In const _end,
+	Range &&_range,
 	Comp const &_comp
 )
 {
 	typedef
+	fcppt::container::to_iterator_type<
+		typename
+		std::remove_reference<
+			Range
+		>::type
+	>
+	iterator_type;
+
+	typedef
 	fcppt::optional<
-		In
+		iterator_type
 	>
 	result_type;
 
-	In const ret(
+	iterator_type const end{
+		_range.end()
+	};
+
+	iterator_type const ret(
 		::std::find_if(
-			_begin,
-			_end,
+			_range.begin(),
+			end,
 			_comp
 		)
 	);
@@ -53,7 +73,7 @@ find_if_opt(
 	return
 		ret
 		==
-		_end
+		end
 		?
 			result_type()
 		:
@@ -61,50 +81,6 @@ find_if_opt(
 				ret
 			)
 		;
-}
-
-template<
-	typename Container,
-	typename Comp
->
-fcppt::optional<
-	typename
-	Container::iterator
->
-inline
-find_if_opt(
-	Container &_container,
-	Comp const &_comp
-)
-{
-	return
-		fcppt::algorithm::find_if_opt(
-			_container.begin(),
-			_container.end(),
-			_comp
-		);
-}
-
-template<
-	typename Container,
-	typename Comp
->
-fcppt::optional<
-	typename
-	Container::const_iterator
->
-inline
-find_if_opt(
-	Container const &_container,
-	Comp const &_comp
-)
-{
-	return
-		fcppt::algorithm::find_if_opt(
-			_container.begin(),
-			_container.end(),
-			_comp
-		);
 }
 
 }

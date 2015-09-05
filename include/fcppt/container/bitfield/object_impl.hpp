@@ -704,8 +704,7 @@ fcppt::container::bitfield::object<
 {
 	return
 		fcppt::algorithm::contains_if(
-			array_.begin(),
-			array_.end(),
+			array_,
 			[](
 				InternalType const _arg
 			)

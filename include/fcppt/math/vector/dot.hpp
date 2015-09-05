@@ -67,11 +67,11 @@ dot(
 				&_right
 			](
 				auto const _index,
-				T const _state
+				T const _sum
 			)
 			{
 				return
-					_state
+					_sum
 					+
 					fcppt::math::at_c<
 						fcppt::tag_value(

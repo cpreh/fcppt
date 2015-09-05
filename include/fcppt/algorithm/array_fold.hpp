@@ -36,6 +36,7 @@ template<
 	typename Array,
 	typename Function
 >
+inline
 Array
 array_fold(
 	Function const &_function

@@ -37,8 +37,7 @@ FCPPT_PP_POP_WARNING
 
 	BOOST_CHECK_EQUAL(
 		fcppt::algorithm::index_of(
-			vec.begin(),
-			vec.end(),
+			vec,
 			2
 		).get_unsafe(),
 		1

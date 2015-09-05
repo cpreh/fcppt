@@ -18,66 +18,31 @@ namespace algorithm
 {
 
 /**
-\brief Checks if a given value matches @a pred inside the range [\p beg \p end]
+\brief Checks if a given \p value is inside a range
+
 \ingroup fcpptalgorithm
-\tparam In A forward iterator
+
 \tparam Pred A predicate (a unary function returning a bool)
-
-This is equivalent to
-
-\code
-std::find_if(_beg, _end, _pred) != _end
-\endcode
 */
 template<
-	typename In,
+	typename Range,
 	typename Pred
 >
+inline
 bool
 contains_if(
-	In const _beg,
-	In const _end,
+	Range const &_range,
 	Pred const &_pred
 )
 {
 	return
 		std::find_if(
-			_beg,
-			_end,
+			_range.begin(),
+			_range.end(),
 			_pred
 		)
 		!=
-		_end;
-}
-
-/**
-\brief Checks if a given \p value is inside a range
-\ingroup fcpptalgorithm
-\tparam Container A container type having <code>begin</code> and
-<code>end</code> member functions
-\tparam Pred A predicate (a unary function returning a bool)
-
-This is equivalent to
-\code
-contains_if(_container.begin(), _container.end(), _pred)
-\endcode
-*/
-template<
-	typename Container,
-	typename Pred
->
-bool
-contains_if(
-	Container const &_container,
-	Pred const &_pred
-)
-{
-	return
-		fcppt::algorithm::contains_if(
-			_container.begin(),
-			_container.end(),
-			_pred
-		);
+		_range.end();
 }
 
 }

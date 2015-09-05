@@ -25,62 +25,100 @@
 FCPPT_PP_PUSH_WARNING
 FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
 
-BOOST_AUTO_TEST_CASE(test_corner_points)
+BOOST_AUTO_TEST_CASE(
+	math_box_corner_points
+)
 {
 FCPPT_PP_POP_WARNING
 
 	typedef
-	fcppt::math::box::object
-	<
+	fcppt::math::box::object<
 		int,
 		2
 	>
 	box_type;
 
 	box_type box(
-		box_type::vector(10,12),
-		box_type::dim(24,26));
+		box_type::vector(
+			10,
+			12
+		),
+		box_type::dim(24,26)
+	);
 
-	std::cout << "Checking border points of box: " << box << '\n';
+	std::cout
+		<<
+		"Checking border points of box: "
+		<<
+		box
+		<<
+		'\n';
 
-	typedef std::array<box_type::vector,4> vertex_array;
+	typedef
+	std::array<
+		box_type::vector,
+		4
+	>
+	vertex_array;
 
 	vertex_array const vertices(
 		fcppt::math::box::corner_points(
-			box));
+			box
+		)
+	);
 
-	std::cout << "Result: \n";
+	std::cout
+		<<
+		"Result: \n";
 
 	for(
 		auto const &elem
 		:
 		vertices
 	)
-		std::cout << elem << '\n';
-
-	std::cout << "Running checks now...\n";
-
-	BOOST_CHECK(
-		fcppt::algorithm::contains(
-			vertices.begin(),
-			vertices.end(),
-			box_type::vector(10,12)));
+		std::cout
+			<<
+			elem
+			<<
+			'\n';
 
 	BOOST_CHECK(
 		fcppt::algorithm::contains(
-			vertices.begin(),
-			vertices.end(),
-			box_type::vector(34,12)));
+			vertices,
+			box_type::vector(
+				10,
+				12
+			)
+		)
+	);
 
 	BOOST_CHECK(
 		fcppt::algorithm::contains(
-			vertices.begin(),
-			vertices.end(),
-			box_type::vector(10,38)));
+			vertices,
+			box_type::vector(
+				34,
+				12
+			)
+		)
+	);
 
 	BOOST_CHECK(
 		fcppt::algorithm::contains(
-			vertices.begin(),
-			vertices.end(),
-			box_type::vector(34,38)));
+			vertices,
+			box_type::vector(
+				10,
+				38
+			)
+		)
+	);
+
+	BOOST_CHECK(
+		fcppt::algorithm::contains(
+			vertices,
+			box_type::vector(
+				34,
+				38
+			)
+		)
+	);
 }

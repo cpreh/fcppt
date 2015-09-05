@@ -8,6 +8,7 @@
 #define FCPPT_CONTAINER_GRID_IN_RANGE_DIM_HPP_INCLUDED
 
 #include <fcppt/make_int_range_count.hpp>
+#include <fcppt/algorithm/all_of.hpp>
 #include <fcppt/container/grid/dim.hpp>
 #include <fcppt/container/grid/pos.hpp>
 #include <fcppt/container/grid/size_type.hpp>
@@ -31,6 +32,7 @@ template<
 	typename T,
 	fcppt::container::grid::size_type N
 >
+inline
 bool
 in_range_dim(
 	fcppt::container::grid::dim<
@@ -43,28 +45,28 @@ in_range_dim(
 	> const _pos
 )
 {
-	// TODO: all_of
-	for(
-		fcppt::container::grid::size_type const index
-		:
-		fcppt::make_int_range_count(
-			N
-		)
-	)
-		if(
-			_pos[
-				index
-			]
-			>=
-			_dim[
-				index
-			]
-		)
-			return
-				false;
-
 	return
-		true;
+		fcppt::algorithm::all_of(
+			fcppt::make_int_range_count(
+				N
+			),
+			[
+				&_dim,
+				&_pos
+			](
+				fcppt::container::grid::size_type const _index
+			)
+			{
+				return
+					_pos[
+						_index
+					]
+					<
+					_dim[
+						_index
+					];
+			}
+		);
 }
 
 }

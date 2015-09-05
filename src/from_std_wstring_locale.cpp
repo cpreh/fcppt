@@ -16,7 +16,6 @@
 #include <fcppt/config/external_end.hpp>
 
 
-
 fcppt::string
 fcppt::from_std_wstring_locale(
 	std::wstring const &_input,
@@ -34,6 +33,7 @@ fcppt::from_std_wstring_locale(
 			_locale
 		);
 #else
-	return _input;
+	return
+		_input;
 #endif
 }

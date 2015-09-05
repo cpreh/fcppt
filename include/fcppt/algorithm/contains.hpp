@@ -18,65 +18,31 @@ namespace algorithm
 {
 
 /**
-\brief Checks if a given \p value is inside the range [\p beg,\p end]
-\ingroup fcpptalgorithm
-\tparam In A forward iterator
-\tparam T A type compatible with the iterator's value type
+\brief Checks if a given \p value is inside a range
 
-This is equivalent to
-\code
-std::find(_beg, _end, _value) != end
-\endcode
+\ingroup fcpptalgorithm
+
+\tparam T Must be equality comparable to The range's value type
 */
 template<
-	typename In,
+	typename Range,
 	typename T
 >
+inline
 bool
 contains(
-	In const _beg,
-	In const _end,
+	Range const &_range,
 	T const &_value
 )
 {
 	return
 		::std::find(
-			_beg,
-			_end,
+			_range.begin(),
+			_range.end(),
 			_value
 		)
-		!= _end;
-}
-
-/**
-\brief Checks if a given \p value is inside a range
-\ingroup fcpptalgorithm
-
-\tparam Container A container type having <code>begin</code> and <code>end</code> member functions
-
-\tparam T The container's value type
-
-This is equivalent to
-\code
-contains(container.begin(), container.end(), value)
-\endcode
-*/
-template<
-	typename Container,
-	typename T
->
-bool
-contains(
-	Container const &_container,
-	T const &_value
-)
-{
-	return
-		fcppt::algorithm::contains(
-			_container.begin(),
-			_container.end(),
-			_value
-		);
+		!=
+		_range.end();
 }
 
 }

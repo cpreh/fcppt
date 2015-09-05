@@ -27,6 +27,7 @@ key_set(
 	Map const &_map
 )
 {
+	// TODO: map?
 	Set ret;
 
 	for(

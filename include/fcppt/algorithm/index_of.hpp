@@ -11,9 +11,6 @@
 #include <fcppt/optional_impl.hpp>
 #include <fcppt/algorithm/find_opt.hpp>
 #include <fcppt/cast/to_unsigned.hpp>
-#include <fcppt/config/external_begin.hpp>
-#include <iterator>
-#include <fcppt/config/external_end.hpp>
 
 
 namespace fcppt
@@ -26,81 +23,53 @@ namespace algorithm
 
 \ingroup fcpptalgorithm
 
-Searches for \a _value in the sequence <code>[_beg,_end)</code> and returns the
-index of the first occurrence iff there is any.
+Searches for \a _value in \a _range and returns the index of the first
+occurrence iff there is any.
 
-\tparam In A forward iterator
+\tparam Range A random access range
 
-\tparam T A type compatible with the iterator's value type
+\tparam T A type comparable to the iterator's value type
 */
 template<
-	typename In,
+	typename Range,
 	typename T
 >
 inline
 fcppt::optional<
 	typename
-	std::iterator_traits<
-		In
-	>::difference_type
+	Range::size_type
 >
 index_of(
-	In const _beg,
-	In const _end,
+	Range const &_range,
 	T const &_value
 )
 {
+	typedef
+	typename
+	Range::const_iterator
+	iterator_type;
+
+	iterator_type const beg(
+		_range.begin()
+	);
+
 	return
 		fcppt::optional_bind_construct(
 			fcppt::algorithm::find_opt(
-				_beg,
-				_end,
+				_range,
 				_value
 			),
 			[
-				_beg
+				beg
 			](
-				In const _it
-			)
-			{
-				return
-					std::distance(
-						_beg,
-						_it
-					);
-			}
-		);
-}
-
-template<
-	typename Container,
-	typename T
->
-inline
-fcppt::optional<
-	typename
-	Container::size_type
->
-index_of(
-	Container const &_container,
-	T const &_value
-)
-{
-	return
-		fcppt::optional_bind_construct(
-			fcppt::algorithm::index_of(
-				_container.begin(),
-				_container.end(),
-				_value
-			),
-			[](
-				typename
-				Container::difference_type const _diff
+				iterator_type const _it
 			)
 			{
 				return
 					fcppt::cast::to_unsigned(
-						_diff
+						_it
+						-
+						beg
 					);
 			}
 		);

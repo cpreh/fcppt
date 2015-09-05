@@ -24,9 +24,8 @@ namespace algorithm
 /**
 \brief Optionally finds an element and transforms it
 
-Returns the first element in [\a _begin, \a _end) for which \a _func doesn't
-return an empty optional, if there is any. Otherwise, returns the empty
-optional.
+Returns the first element in \a _range for which \a _func does not return an
+empty optional, if there is any. Otherwise, returns the empty optional.
 
 \ingroup fcpptalgorithm
 
@@ -34,22 +33,36 @@ optional.
 return an optional.
 */
 template<
-	typename In,
+	typename Range,
 	typename Func
 >
+inline
 fcppt::algorithm::detail::find_by_result<
-	In,
+	fcppt::container::to_iterator_type<
+		typename
+		std::remove_reference<
+			Range
+		>::type
+	>,
 	Func
 >
 find_by_opt(
-	In const _begin,
-	In const _end,
+	Range &&_range,
 	Func const &_func
 )
 {
 	typedef
+	fcppt::container::to_iterator_type<
+		typename
+		std::remove_reference<
+			Range
+		>::type
+	>
+	iterator_type;
+
+	typedef
 	fcppt::algorithm::detail::find_by_result<
-		In,
+		iterator_type,
 		Func
 	>
 	result_type;
@@ -64,11 +77,15 @@ find_by_opt(
 		"Func must return an optional"
 	);
 
+	iterator_type const end(
+		_range.end()
+	);
+
 	for(
-		In cur(
-			_begin
+		iterator_type cur(
+			_range.begin()
 		);
-		cur != _end;
+		cur != end;
 		++cur
 	)
 	{
@@ -87,33 +104,6 @@ find_by_opt(
 
 	return
 		result_type();
-}
-
-template<
-	typename Container,
-	typename Func
->
-inline
-fcppt::algorithm::detail::find_by_result<
-	fcppt::container::to_iterator_type<
-		typename
-		std::remove_reference<
-			Container
-		>::type
-	>,
-	Func
->
-find_by_opt(
-	Container &&_container,
-	Func const &_func
-)
-{
-	return
-		fcppt::algorithm::find_by_opt(
-			_container.begin(),
-			_container.end(),
-			_func
-		);
 }
 
 }

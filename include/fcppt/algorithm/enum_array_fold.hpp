@@ -28,6 +28,7 @@ template<
 	typename Array,
 	typename Function
 >
+inline
 Array
 enum_array_fold(
 	Function const &_function

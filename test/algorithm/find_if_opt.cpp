@@ -37,8 +37,7 @@ FCPPT_PP_POP_WARNING
 
 	BOOST_CHECK(
 		fcppt::algorithm::find_if_opt(
-			vec.begin(),
-			vec.end(),
+			vec,
 			[](
 				int const _i
 			)

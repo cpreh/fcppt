@@ -32,6 +32,7 @@ fcppt::from_std_string_locale(
 			_locale
 		);
 #else
-	return _input;
+	return
+		_input;
 #endif
 }

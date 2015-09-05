@@ -27,10 +27,7 @@ set(
 	include/fcppt/algorithm/detail/source_size.hpp
 	include/fcppt/algorithm/enum_array_fold.hpp
 	include/fcppt/algorithm/enum_array_fold_static.hpp
-	include/fcppt/algorithm/find_by_exn.hpp
 	include/fcppt/algorithm/find_by_opt.hpp
-	include/fcppt/algorithm/find_exn.hpp
-	include/fcppt/algorithm/find_if_exn.hpp
 	include/fcppt/algorithm/find_if_opt.hpp
 	include/fcppt/algorithm/find_opt.hpp
 	include/fcppt/algorithm/fold.hpp

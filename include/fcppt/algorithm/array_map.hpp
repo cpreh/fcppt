@@ -48,6 +48,7 @@ template<
 	std::size_t SourceCount,
 	typename Function
 >
+inline
 TargetArray
 array_map(
 	std::array<

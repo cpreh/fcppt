@@ -41,8 +41,7 @@ _source1 and element2 of \a _source2.
 \tparam Function Must be a function taking elements of source arrays 1 and 2
 and returning elements of the \a TargetArray
 **/
-template
-<
+template<
 	typename TargetArray,
 	typename SourceType1,
 	typename SourceType2,
@@ -91,6 +90,7 @@ array_binary_map(
 				std::size_t const _index
 			)
 			{
+				// TODO: static index
 				return
 					_function(
 						_source1[
