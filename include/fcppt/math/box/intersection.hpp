@@ -13,6 +13,7 @@
 #include <fcppt/math/size_type.hpp>
 #include <fcppt/math/box/init.hpp>
 #include <fcppt/math/box/intersects.hpp>
+#include <fcppt/math/box/max_at_c.hpp>
 #include <fcppt/math/box/null.hpp>
 #include <fcppt/math/box/object_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
@@ -96,12 +97,15 @@ intersection(
 						fcppt::make_homogenous_pair(
 							pos,
 							std::min(
-								// TODO: constant access
-								_a.max(
+								fcppt::math::box::max_at_c<
 									_index
+								>(
+									_a
 								),
-								_b.max(
+								fcppt::math::box::max_at_c<
 									_index
+								>(
+									_b
 								)
 							)
 							-

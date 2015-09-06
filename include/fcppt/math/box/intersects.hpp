@@ -11,6 +11,7 @@
 #include <fcppt/make_int_range_count.hpp>
 #include <fcppt/algorithm/all_of.hpp>
 #include <fcppt/math/size_type.hpp>
+#include <fcppt/math/box/max_at.hpp>
 #include <fcppt/math/box/object_impl.hpp>
 
 
@@ -61,7 +62,8 @@ intersects(
 						_index
 					]
 					<
-					_a.max(
+					fcppt::math::box::max_at(
+						_a,
 						_index
 					)
 					&&
@@ -69,7 +71,8 @@ intersects(
 						_index
 					]
 					<
-					_b.max(
+					fcppt::math::box::max_at(
+						_b,
 						_index
 					)
 					;

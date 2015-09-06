@@ -10,7 +10,6 @@
 #include <fcppt/no_init_fwd.hpp>
 #include <fcppt/math/size_type.hpp>
 #include <fcppt/math/box/object_decl.hpp>
-#include <fcppt/math/vector/dim.hpp>
 
 
 template<
@@ -58,7 +57,8 @@ template<
 	typename T,
 	fcppt::math::size_type N
 >
-typename fcppt::math::box::object<
+typename
+fcppt::math::box::object<
 	T,
 	N
 >::vector &
@@ -75,7 +75,8 @@ template<
 	typename T,
 	fcppt::math::size_type N
 >
-typename fcppt::math::box::object<
+typename
+fcppt::math::box::object<
 	T,
 	N
 >::vector const &
@@ -92,26 +93,8 @@ template<
 	typename T,
 	fcppt::math::size_type N
 >
-typename fcppt::math::box::object<
-	T,
-	N
->::vector
+typename
 fcppt::math::box::object<
-	T,
-	N
->::max() const
-{
-	return
-		pos_
-		+
-		size_;
-}
-
-template<
-	typename T,
-	fcppt::math::size_type N
->
-typename fcppt::math::box::object<
 	T,
 	N
 >::dim &
@@ -128,7 +111,8 @@ template<
 	typename T,
 	fcppt::math::size_type N
 >
-typename fcppt::math::box::object<
+typename
+fcppt::math::box::object<
 	T,
 	N
 >::dim const &
@@ -139,63 +123,6 @@ fcppt::math::box::object<
 {
 	return
 		size_;
-}
-
-template<
-	typename T,
-	fcppt::math::size_type N
->
-typename fcppt::math::box::object<
-	T,
-	N
->::value_type
-fcppt::math::box::object<
-	T,
-	N
->::max(
-	size_type const _index
-) const
-{
-	return
-		pos_[
-			_index
-		]
-		+
-		size_[
-			_index
-		];
-}
-
-template<
-	typename T,
-	fcppt::math::size_type N
->
-void
-fcppt::math::box::object<
-	T,
-	N
->::pos(
-	vector const &_pos
-)
-{
-	pos_ =
-		_pos;
-}
-
-template<
-	typename T,
-	fcppt::math::size_type N
->
-void
-fcppt::math::box::object<
-	T,
-	N
->::size(
-	dim const &_size
-)
-{
-	size_ =
-		_size;
 }
 
 #endif

@@ -57,18 +57,20 @@ distance(
 				&_box1,
 				&_box2
 			](
-				fcppt::math::size_type const _index
+				auto const _index
 			)
 			{
 				return
 					fcppt::math::interval_distance(
-						fcppt::math::box::interval(
-							_box1,
+						fcppt::math::box::interval<
 							_index
+						>(
+							_box1
 						),
-						fcppt::math::box::interval(
-							_box2,
+						fcppt::math::box::interval<
 							_index
+						>(
+							_box2
 						)
 					);
 			}

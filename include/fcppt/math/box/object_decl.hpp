@@ -126,16 +126,6 @@ public:
 	pos() const;
 
 	/**
-	\brief Return the box's position plus its size
-
-	In a 2D graphics coordinate system, where the position would denote the
-	"top left" of the box, this would denote the "bottom right". Box,
-	however, doesn't impose any coordinate system.
-	*/
-	vector
-	max() const;
-
-	/**
 	\brief Return the box's size
 	*/
 	dim &
@@ -146,31 +136,6 @@ public:
 	*/
 	dim const &
 	size() const;
-
-	/**
-	\brief Get a component of the box's "max position" (see fcppt::math::box::max())
-	\param s The component to extract from the max position
-	*/
-	value_type
-	max(
-		size_type s
-	) const;
-
-	/**
-	\brief Set the box's position
-	*/
-	void
-	pos(
-		vector const &
-	);
-
-	/**
-	\brief Set the box's size
-	*/
-	void
-	size(
-		dim const &
-	);
 private:
 	vector pos_;
 

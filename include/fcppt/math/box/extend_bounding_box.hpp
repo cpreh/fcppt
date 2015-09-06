@@ -13,6 +13,8 @@
 #include <fcppt/math/size_type.hpp>
 #include <fcppt/math/box/contains_point.hpp>
 #include <fcppt/math/box/init.hpp>
+#include <fcppt/math/box/max_at.hpp>
+#include <fcppt/math/box/max_at_c.hpp>
 #include <fcppt/math/box/object_impl.hpp>
 #include <fcppt/preprocessor/const.hpp>
 #include <fcppt/config/external_begin.hpp>
@@ -127,9 +129,10 @@ extend_bounding_box(
 									_pos
 								)
 								>
-								// TODO: constant access
-								_box.max(
+								fcppt::math::box::max_at_c<
 									_index
+								>(
+									_box
 								)
 								?
 									fcppt::math::at_c<
@@ -144,8 +147,10 @@ extend_bounding_box(
 										_pos
 									)
 									-
-									_box.max(
+									fcppt::math::box::max_at_c<
 										_index
+									>(
+										_box
 									)
 								:
 									fcppt::math::at_c<
@@ -219,10 +224,12 @@ extend_bounding_box(
 						pos,
 						std::max(
 							// TODO: constant max
-							_box1.max(
+							fcppt::math::box::max_at(
+								_box1,
 								_index
 							),
-							_box2.max(
+							fcppt::math::box::max_at(
+								_box2,
 								_index
 							)
 							-

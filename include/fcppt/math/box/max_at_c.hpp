@@ -4,14 +4,11 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_MATH_BOX_INTERVAL_HPP_INCLUDED
-#define FCPPT_MATH_BOX_INTERVAL_HPP_INCLUDED
+#ifndef FCPPT_MATH_BOX_MAX_AT_C_HPP_INCLUDED
+#define FCPPT_MATH_BOX_MAX_AT_C_HPP_INCLUDED
 
-#include <fcppt/homogenous_pair.hpp>
-#include <fcppt/make_homogenous_pair.hpp>
 #include <fcppt/math/at_c.hpp>
 #include <fcppt/math/size_type.hpp>
-#include <fcppt/math/box/max_at_c.hpp>
 #include <fcppt/math/box/object_impl.hpp>
 
 
@@ -23,38 +20,38 @@ namespace box
 {
 
 /**
-\brief Creates an interval from a box
+\brief Return the box's position plus its size at a static index
 
 \ingroup fcpptmathbox
+
+In a 2D graphics coordinate system, where the position would denote the
+"top left" of the box, this would denote the "bottom right". Box,
+however, doesn't impose any coordinate system.
 */
 template<
 	fcppt::math::size_type Index,
 	typename T,
-	fcppt::math::size_type N
+	fcppt::math::size_type Size
 >
-inline
-fcppt::homogenous_pair<
-	T
->
-interval(
+T
+max_at_c(
 	fcppt::math::box::object<
 		T,
-		N
+		Size
 	> const &_box
 )
 {
 	return
-		fcppt::make_homogenous_pair(
-			fcppt::math::at_c<
-				Index
-			>(
-				_box.pos()
-			),
-			fcppt::math::box::max_at_c<
-				Index
-			>(
-				_box
-			)
+		fcppt::math::at_c<
+			Index
+		>(
+			_box.pos()
+		)
+		+
+		fcppt::math::at_c<
+			Index
+		>(
+			_box.size()
 		);
 }
 

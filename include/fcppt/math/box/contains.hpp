@@ -11,6 +11,7 @@
 #include <fcppt/make_int_range_count.hpp>
 #include <fcppt/algorithm/all_of.hpp>
 #include <fcppt/math/size_type.hpp>
+#include <fcppt/math/box/max_at.hpp>
 #include <fcppt/math/box/object_impl.hpp>
 
 
@@ -68,11 +69,13 @@ contains(
 						_index
 					]
 					&&
-					_inner.max(
+					fcppt::math::box::max_at(
+						_inner,
 						_index
 					)
 					<=
-					_outer.max(
+					fcppt::math::box::max_at(
+						_outer,
 						_index
 					);
 			}

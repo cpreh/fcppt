@@ -464,6 +464,8 @@ set(
 	include/fcppt/math/box/intersects.hpp
 	include/fcppt/math/box/interval.hpp
 	include/fcppt/math/box/is_box.hpp
+	include/fcppt/math/box/max_at.hpp
+	include/fcppt/math/box/max_at_c.hpp
 	include/fcppt/math/box/null.hpp
 	include/fcppt/math/box/object.hpp
 	include/fcppt/math/box/object_decl.hpp
