@@ -25,6 +25,7 @@ template<
 	fcppt::math::size_type N,
 	typename T
 >
+inline
 fcppt::container::to_reference_type<
 	T
 >
@@ -32,10 +33,13 @@ checked_access(
 	T &_value
 )
 {
-	typedef typename T::dim_wrapper dim_wrapper;
+	typedef
+	typename
+	T::static_size
+	static_size;
 
 	static_assert(
-		N < dim_wrapper::value,
+		N < static_size::value,
 		"Out of bounds operator[] access to a math type"
 	);
 

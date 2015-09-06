@@ -60,13 +60,13 @@ contains(
 			)
 			{
 				return
-					_inner.pos(
+					_inner.pos()[
 						_index
-					)
+					]
 					>=
-					_outer.pos(
+					_outer.pos()[
 						_index
-					)
+					]
 					&&
 					_inner.max(
 						_index

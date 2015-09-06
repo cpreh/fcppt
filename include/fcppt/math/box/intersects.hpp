@@ -57,17 +57,17 @@ intersects(
 			)
 			{
 				return
-					_b.pos(
+					_b.pos()[
 						_index
-					)
+					]
 					<
 					_a.max(
 						_index
 					)
 					&&
-					_a.pos(
+					_a.pos()[
 						_index
-					)
+					]
 					<
 					_b.max(
 						_index

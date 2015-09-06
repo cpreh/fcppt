@@ -9,6 +9,7 @@
 #define FCPPT_MATH_BOX_EXTEND_BOUNDING_BOX_HPP_INCLUDED
 
 #include <fcppt/make_homogenous_pair.hpp>
+#include <fcppt/math/at_c.hpp>
 #include <fcppt/math/size_type.hpp>
 #include <fcppt/math/box/contains_point.hpp>
 #include <fcppt/math/box/init.hpp>
@@ -73,61 +74,84 @@ extend_bounding_box(
 					&_pos,
 					&_box
 				](
-					fcppt::math::size_type const _index
+					auto const _index
 				)
 				{
 					return
-						_pos[
+						fcppt::math::at_c<
 							_index
-						]
+						>(
+							_pos
+						)
 						<
-						_box.pos(
+						fcppt::math::at_c<
 							_index
+						>(
+							_box.pos()
 						)
 						?
 							fcppt::make_homogenous_pair(
-								_pos[
+								fcppt::math::at_c<
 									_index
-								],
-								_box.size(
+								>(
+									_pos
+								),
+								fcppt::math::at_c<
 									_index
+								>(
+									_box.size()
 								)
 								+
-								_box.pos(
+								fcppt::math::at_c<
 									_index
+								>(
+									_box.pos()
 								)
 								-
-								_pos[
+								fcppt::math::at_c<
 									_index
-								]
+								>(
+									_pos
+								)
 							)
 						:
 							fcppt::make_homogenous_pair(
-								_box.pos(
+								fcppt::math::at_c<
 									_index
+								>(
+									_box.pos()
 								),
-								_pos[
+								fcppt::math::at_c<
 									_index
-								]
+								>(
+									_pos
+								)
 								>
+								// TODO: constant access
 								_box.max(
 									_index
 								)
 								?
-									_box.size(
+									fcppt::math::at_c<
 										_index
+									>(
+										_box.size()
 									)
 									+
-									_pos[
+									fcppt::math::at_c<
 										_index
-									]
+									>(
+										_pos
+									)
 									-
 									_box.max(
 										_index
 									)
 								:
-									_box.size(
+									fcppt::math::at_c<
 										_index
+									>(
+										_box.size()
 									)
 							)
 						;
@@ -149,7 +173,7 @@ template<
 fcppt::math::box::object<
 	T,
 	N
-> const
+>
 extend_bounding_box(
 	fcppt::math::box::object<
 		T,
@@ -172,16 +196,20 @@ extend_bounding_box(
 				&_box1,
 				&_box2
 			](
-				fcppt::math::size_type const _index
+				auto const _index
 			)
 			{
 				T const pos(
 					std::min(
-						_box1.pos(
+						fcppt::math::at_c<
 							_index
+						>(
+							_box1.pos()
 						),
-						_box2.pos(
+						fcppt::math::at_c<
 							_index
+						>(
+							_box2.pos()
 						)
 					)
 				);
@@ -190,6 +218,7 @@ extend_bounding_box(
 					fcppt::make_homogenous_pair(
 						pos,
 						std::max(
+							// TODO: constant max
 							_box1.max(
 								_index
 							),

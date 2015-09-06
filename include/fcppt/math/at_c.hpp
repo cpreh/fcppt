@@ -9,6 +9,7 @@
 
 #include <fcppt/container/to_reference_type.hpp>
 #include <fcppt/math/size_type.hpp>
+#include <fcppt/math/detail/checked_access.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
@@ -28,8 +29,6 @@ template<
 	fcppt::math::size_type Index,
 	typename Type
 >
-// FIXME: This might return references to rvalues
-// It is currently needed to access rvalue vector views
 inline
 fcppt::container::to_reference_type<
 	typename
@@ -41,19 +40,12 @@ at_c(
 	Type &&_value
 )
 {
-	static_assert(
-		Index
-		<
-		std::decay<
-			Type
-		>::type::static_size::value,
-		"at_c: out of range"
-	);
-
 	return
-		_value[
+		fcppt::math::detail::checked_access<
 			Index
-		];
+		>(
+			_value
+		);
 }
 
 }

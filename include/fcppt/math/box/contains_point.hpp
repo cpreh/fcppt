@@ -67,9 +67,9 @@ contains_point(
 						_index
 					]
 					>=
-					_box.pos(
+					_box.pos()[
 						_index
-					)
+					]
 					&&
 					_point[
 						_index

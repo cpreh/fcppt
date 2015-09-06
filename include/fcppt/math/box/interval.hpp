@@ -41,11 +41,12 @@ interval(
 	fcppt::math::size_type const _index
 )
 {
+	// TODO: Use integral constants here
 	return
 		fcppt::make_homogenous_pair(
-			_box.pos(
+			_box.pos()[
 				_index
-			),
+			],
 			_box.max(
 				_index
 			)

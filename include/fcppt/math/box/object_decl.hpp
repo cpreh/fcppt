@@ -11,9 +11,7 @@
 #include <fcppt/math/size_type.hpp>
 #include <fcppt/math/static_size.hpp>
 #include <fcppt/math/box/object_fwd.hpp>
-#include <fcppt/math/dim/object_decl.hpp>
 #include <fcppt/math/dim/static.hpp>
-#include <fcppt/math/vector/object_decl.hpp>
 #include <fcppt/math/vector/static.hpp>
 
 
@@ -26,8 +24,11 @@ namespace box
 
 /**
 \brief A class representing axis aligned boxes, cubes, hypercubes, ...
+
 \tparam T The box's <code>value_type</code>
+
 \tparam N The box's (numeric) dimension
+
 \ingroup fcpptmathbox
 
 See the \link fcpptmathvector module documentation \endlink for more information.
@@ -42,7 +43,9 @@ public:
 	/**
 	\brief A type that represents the data type stored in a box's vector/dimension.
 	*/
-	typedef T value_type;
+	typedef
+	T
+	value_type;
 
 	typedef
 	fcppt::math::static_size<
@@ -51,30 +54,40 @@ public:
 	dim_wrapper;
 
 	/**
-	\brief A type that represents the data type stored in a box's vector/dimension (synonymous to value_type).
+	\brief A type that represents the data type stored in a box's
+	vector/dimension (synonymous to value_type).
 	*/
-	typedef value_type scalar;
+	typedef
+	value_type
+	scalar;
 
 	/**
-	\brief A type that counts the number of elements in a box's vector/dimension.
+	\brief A type that counts the number of elements in a box's
+	vector/dimension.
 	*/
-	typedef fcppt::math::size_type size_type;
+	typedef
+	fcppt::math::size_type
+	size_type;
 
 	/**
 	\brief A type represents a box's position.
 	*/
-	typedef fcppt::math::vector::static_<
+	typedef
+	fcppt::math::vector::static_<
 		T,
 		N
-	> vector;
+	>
+	vector;
 
 	/**
 	\brief A type represents a box's size.
 	*/
-	typedef fcppt::math::dim::static_<
+	typedef
+	fcppt::math::dim::static_<
 		T,
 		N
-	> dim;
+	>
+	dim;
 
 	/**
 	\brief Construct an uninitialized box
@@ -90,7 +103,9 @@ public:
 
 	/**
 	\brief Fully construct an box
+
 	\param v The box's position
+
 	\param s The box's size
 	*/
 	object(
@@ -99,31 +114,19 @@ public:
 	);
 
 	/**
-	\brief Return the box's width
+	\brief Return the box's position
 	*/
-	value_type
-	w() const;
-
-	/**
-	\brief Return the box's height
-	*/
-	value_type
-	h() const;
-
-	/**
-	\brief Return the box's depth (if available)
-	*/
-	value_type
-	d() const;
+	vector &
+	pos();
 
 	/**
 	\brief Return the box's position
 	*/
-	vector
+	vector const &
 	pos() const;
 
 	/**
-	\brief Return the box's position incremented by it's size
+	\brief Return the box's position plus its size
 
 	In a 2D graphics coordinate system, where the position would denote the
 	"top left" of the box, this would denote the "bottom right". Box,
@@ -135,17 +138,14 @@ public:
 	/**
 	\brief Return the box's size
 	*/
-	dim
-	size() const;
+	dim &
+	size();
 
 	/**
-	\brief Get a component of the box's position
-	\param s The component to extract from the position
+	\brief Return the box's size
 	*/
-	value_type
-	pos(
-		size_type s
-	) const;
+	dim const &
+	size() const;
 
 	/**
 	\brief Get a component of the box's "max position" (see fcppt::math::box::max())
@@ -155,75 +155,6 @@ public:
 	max(
 		size_type s
 	) const;
-
-	/**
-	\brief Get a component of the box's size
-	\param s The component to extract from the size
-	*/
-	value_type
-	size(
-		size_type s
-	) const;
-
-	/**
-	\brief Get the x coordinate of the box's position
-	*/
-	value_type
-	left() const;
-
-	/**
-	\brief Get the y coordinate of the box's position
-	*/
-	value_type
-	top() const;
-
-	/**
-	\brief Get the z coordinate of the box's position
-	*/
-	value_type
-	front() const;
-
-	/**
-	\brief Get the x coordinate of the box's "max position"
-	*/
-	value_type
-	right() const;
-
-	/**
-	\brief Get the y coordinate of the box's "max position"
-	*/
-	value_type
-	bottom() const;
-
-	/**
-	\brief Get the z coordinate of the box's "max position"
-	*/
-	value_type
-	back() const;
-
-	/**
-	\brief Set the x coordinate of the box's size
-	*/
-	void
-	w(
-		value_type
-	);
-
-	/**
-	\brief Set the y coordinate of the box's size
-	*/
-	void
-	h(
-		value_type
-	);
-
-	/**
-	\brief Set the z coordinate of the box's size
-	*/
-	void
-	d(
-		value_type
-	);
 
 	/**
 	\brief Set the box's position
@@ -239,56 +170,6 @@ public:
 	void
 	size(
 		dim const &
-	);
-
-	/**
-	\brief Set one coordinate of the box's position
-	*/
-	void
-	pos(
-		size_type index,
-		value_type
-	);
-
-	/**
-	\brief Set one coordinate of the box's size
-	*/
-	void
-	size(
-		size_type index,
-		value_type
-	);
-
-	/**
-	\brief Set the x coordinate of the box's position
-	*/
-	void
-	left(
-		value_type
-	);
-
-	/**
-	\brief Set the y coordinate of the box's position
-	*/
-	void
-	top(
-		value_type
-	);
-
-	/**
-	\brief Set the z coordinate of the box's position
-	*/
-	void
-	front(
-		value_type
-	);
-
-	/**
-	\brief Swap the box's representation with another box
-	*/
-	void
-	swap(
-		object &
 	);
 private:
 	vector pos_;

@@ -10,9 +10,7 @@
 #include <fcppt/no_init_fwd.hpp>
 #include <fcppt/math/size_type.hpp>
 #include <fcppt/math/box/object_decl.hpp>
-#include <fcppt/math/dim/object_impl.hpp>
 #include <fcppt/math/vector/dim.hpp>
-#include <fcppt/math/vector/object_impl.hpp>
 
 
 template<
@@ -63,14 +61,14 @@ template<
 typename fcppt::math::box::object<
 	T,
 	N
->::value_type
+>::vector &
 fcppt::math::box::object<
 	T,
 	N
->::w() const
+>::pos()
 {
 	return
-		size_.w();
+		pos_;
 }
 
 template<
@@ -80,40 +78,7 @@ template<
 typename fcppt::math::box::object<
 	T,
 	N
->::value_type
-fcppt::math::box::object<
-	T,
-	N
->::h() const
-{
-	return size_.h();
-}
-
-template<
-	typename T,
-	fcppt::math::size_type N
->
-typename fcppt::math::box::object<
-	T,
-	N
->::value_type
-fcppt::math::box::object<
-	T,
-	N
->::d() const
-{
-	return
-		size_.d();
-}
-
-template<
-	typename T,
-	fcppt::math::size_type N
->
-typename fcppt::math::box::object<
-	T,
-	N
->::vector
+>::vector const &
 fcppt::math::box::object<
 	T,
 	N
@@ -149,11 +114,11 @@ template<
 typename fcppt::math::box::object<
 	T,
 	N
->::dim
+>::dim &
 fcppt::math::box::object<
 	T,
 	N
->::size() const
+>::size()
 {
 	return
 		size_;
@@ -166,18 +131,14 @@ template<
 typename fcppt::math::box::object<
 	T,
 	N
->::value_type
+>::dim const &
 fcppt::math::box::object<
 	T,
 	N
->::pos(
-	size_type const _index
-) const
+>::size() const
 {
 	return
-		pos_[
-			_index
-		];
+		size_;
 }
 
 template<
@@ -209,180 +170,6 @@ template<
 	typename T,
 	fcppt::math::size_type N
 >
-typename fcppt::math::box::object<
-	T,
-	N
->::value_type
-fcppt::math::box::object<
-	T,
-	N
->::size(
-	size_type const _index
-) const
-{
-	return
-		size_[
-			_index
-		];
-}
-
-template<
-	typename T,
-	fcppt::math::size_type N
->
-typename fcppt::math::box::object<
-	T,
-	N
->::value_type
-fcppt::math::box::object<
-	T,
-	N
->::left() const
-{
-	return
-		pos_.x();
-}
-
-template<
-	typename T,
-	fcppt::math::size_type N
->
-typename fcppt::math::box::object<
-	T,
-	N
->::value_type
-fcppt::math::box::object<
-	T,
-	N
->::top() const
-{
-	return
-		pos_.y();
-}
-
-template<
-	typename T,
-	fcppt::math::size_type N
->
-typename fcppt::math::box::object<
-	T,
-	N
->::value_type
-fcppt::math::box::object<
-	T,
-	N
->::front() const
-{
-	return
-		pos_.z();
-}
-
-template<
-	typename T,
-	fcppt::math::size_type N
->
-typename fcppt::math::box::object<
-	T,
-	N
->::value_type
-fcppt::math::box::object<
-	T,
-	N
->::right() const
-{
-	return
-		pos_.x()
-		+
-		size_.w();
-}
-
-template<
-	typename T,
-	fcppt::math::size_type N
->
-typename fcppt::math::box::object<
-	T,
-	N
->::value_type
-fcppt::math::box::object<
-	T,
-	N
->::bottom() const
-{
-	return
-		pos_.y()
-		+
-		size_.h();
-}
-
-template<
-	typename T,
-	fcppt::math::size_type N
->
-typename fcppt::math::box::object<
-	T,
-	N
->::value_type
-fcppt::math::box::object<
-	T,
-	N
->::back() const
-{
-	return
-		pos_.z()
-		+
-		size_.d();
-}
-
-template<
-	typename T,
-	fcppt::math::size_type N
->
-void
-fcppt::math::box::object<
-	T,
-	N
->::w(
-	value_type const _w
-)
-{
-	size_.w() = _w;
-}
-
-template<
-	typename T,
-	fcppt::math::size_type N
->
-void
-fcppt::math::box::object<
-	T,
-	N
->::h(
-	value_type const _h
-)
-{
-	size_.h() = _h;
-}
-
-template<
-	typename T,
-	fcppt::math::size_type N
->
-void
-fcppt::math::box::object<
-	T,
-	N
->::d(
-	value_type const _d
-)
-{
-	size_.d() = _d;
-}
-
-template<
-	typename T,
-	fcppt::math::size_type N
->
 void
 fcppt::math::box::object<
 	T,
@@ -391,7 +178,8 @@ fcppt::math::box::object<
 	vector const &_pos
 )
 {
-	pos_ = _pos;
+	pos_ =
+		_pos;
 }
 
 template<
@@ -406,84 +194,8 @@ fcppt::math::box::object<
 	dim const &_size
 )
 {
-	size_ = _size;
-}
-
-template<
-	typename T,
-	fcppt::math::size_type N
->
-void
-fcppt::math::box::object<
-	T,
-	N
->::pos(
-	size_type const _index,
-	value_type const _value
-)
-{
-	pos_[_index] = _value;
-}
-
-template<
-	typename T,
-	fcppt::math::size_type N
->
-void
-fcppt::math::box::object<
-	T,
-	N
->::size(
-	size_type const _index,
-	value_type const _value
-)
-{
-	size_[_index] = _value;
-}
-
-template<
-	typename T,
-	fcppt::math::size_type N
->
-void
-fcppt::math::box::object<
-	T,
-	N
->::left(
-	value_type const _value
-)
-{
-	pos_.x() = _value;
-}
-
-template<
-	typename T,
-	fcppt::math::size_type N
->
-void
-fcppt::math::box::object<
-	T,
-	N
->::top(
-	value_type const _value
-)
-{
-	pos_.y() = _value;
-}
-
-template<
-	typename T,
-	fcppt::math::size_type N
->
-void
-fcppt::math::box::object<
-	T,
-	N
->::front(
-	value_type const _value
-)
-{
-	pos_.z() = _value;
+	size_ =
+		_size;
 }
 
 #endif
