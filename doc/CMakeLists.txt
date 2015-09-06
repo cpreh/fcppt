@@ -734,6 +734,8 @@ set(
 	include/fcppt/log/tree_function.hpp
 	include/fcppt/log/verbose.hpp
 	include/fcppt/log/warning.hpp
+	include/fcppt/loop.hpp
+	include/fcppt/loop_fwd.hpp
 	include/fcppt/major_version.hpp
 	include/fcppt/make_cref.hpp
 	include/fcppt/make_enum_range.hpp
@@ -999,11 +1001,12 @@ set(
 	include/fcppt/mpl/append.hpp
 	include/fcppt/mpl/ceil_div.hpp
 	include/fcppt/mpl/contains_if.hpp
-	include/fcppt/mpl/detail/for_each.hpp
+	include/fcppt/mpl/detail/for_each_break.hpp
 	include/fcppt/mpl/detail/print.hpp
 	include/fcppt/mpl/detail/print_one.hpp
 	include/fcppt/mpl/detail/runtime_index.hpp
 	include/fcppt/mpl/for_each.hpp
+	include/fcppt/mpl/for_each_break.hpp
 	include/fcppt/mpl/implication.hpp
 	include/fcppt/mpl/index_of.hpp
 	include/fcppt/mpl/inner.hpp

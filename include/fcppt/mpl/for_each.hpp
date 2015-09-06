@@ -7,11 +7,8 @@
 #ifndef FCPPT_MPL_FOR_EACH_HPP_INCLUDED
 #define FCPPT_MPL_FOR_EACH_HPP_INCLUDED
 
-#include <fcppt/mpl/detail/for_each.hpp>
-#include <fcppt/config/external_begin.hpp>
-#include <boost/mpl/begin.hpp>
-#include <boost/mpl/end.hpp>
-#include <fcppt/config/external_end.hpp>
+#include <fcppt/loop.hpp>
+#include <fcppt/mpl/for_each_break.hpp>
 
 
 namespace fcppt
@@ -33,7 +30,8 @@ be used with unconstructible types like abstract classes. Calls
 
 \tparam Sequence The MPL sequence
 
-\tparam Function The functor type which must be callable with every element
+\tparam Function The polymorphic function callable as <code>void
+(fcppt::tag<T>)</code> for every T in \a Sequence.
 */
 template<
 	typename Sequence,
@@ -45,19 +43,23 @@ for_each(
 	Function const &_function
 )
 {
-	return
-		fcppt::mpl::detail::for_each<
-			typename
-			boost::mpl::begin<
-				Sequence
-			>::type,
-			typename
-			boost::mpl::end<
-				Sequence
-			>::type
-		>(
-			_function
-		);
+	fcppt::mpl::for_each_break<
+		Sequence
+	>(
+		[
+			&_function
+		](
+			auto const _element
+		)
+		{
+			_function(
+				_element
+			);
+
+			return
+				fcppt::loop::continue_;
+		}
+	);
 }
 
 }

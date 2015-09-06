@@ -4,9 +4,10 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_MPL_DETAIL_FOR_EACH_HPP_INCLUDED
-#define FCPPT_MPL_DETAIL_FOR_EACH_HPP_INCLUDED
+#ifndef FCPPT_MPL_DETAIL_FOR_EACH_BREAK_HPP_INCLUDED
+#define FCPPT_MPL_DETAIL_FOR_EACH_BREAK_HPP_INCLUDED
 
+#include <fcppt/loop.hpp>
 #include <fcppt/tag.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/mpl/deref.hpp>
@@ -37,7 +38,7 @@ boost::enable_if<
 	>,
 	void
 >::type
-for_each(
+for_each_break(
 	Fun const &
 )
 {
@@ -57,28 +58,35 @@ boost::disable_if<
 	>,
 	void
 >::type
-for_each(
+for_each_break(
 	Fun const &_func
 )
 {
-	_func(
-		fcppt::tag<
+	switch(
+		_func(
+			fcppt::tag<
+				typename
+				boost::mpl::deref<
+					Iterator
+				>::type
+			>()
+		)
+	)
+	{
+	case fcppt::loop::continue_:
+		fcppt::mpl::detail::for_each_break<
 			typename
-			boost::mpl::deref<
+			boost::mpl::next<
 				Iterator
-			>::type
-		>()
-	);
-
-	fcppt::mpl::detail::for_each<
-		typename
-		boost::mpl::next<
-			Iterator
-		>::type,
-		LastIterator
-	>(
-		_func
-	);
+			>::type,
+			LastIterator
+		>(
+			_func
+		);
+		return;
+	case fcppt::loop::break_:
+		return;
+	}
 }
 
 }
