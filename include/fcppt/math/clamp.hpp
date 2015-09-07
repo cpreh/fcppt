@@ -13,6 +13,7 @@
 #include <algorithm>
 #include <fcppt/config/external_end.hpp>
 
+
 namespace fcppt
 {
 namespace math
@@ -20,8 +21,9 @@ namespace math
 
 /**
 \brief Clamps a value into a range
+
 \ingroup fcpptmath
-\tparam T A type that is <code>LessThanComparable</code> and <code>CopyConstructible</code>
+
 \pre \p _vmin <= \p _vmax
 */
 template<

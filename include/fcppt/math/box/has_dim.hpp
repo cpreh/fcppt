@@ -38,7 +38,8 @@ template<
 struct has_dim
 :
 std::false_type
-{};
+{
+};
 
 /// \cond FCPPT_DOXYGEN_DEBUG
 template<
@@ -58,7 +59,8 @@ fcppt::math::detail::dim_matches<
 	Dim,
 	N
 >
-{};
+{
+};
 /// \endcond
 
 FCPPT_PP_POP_WARNING

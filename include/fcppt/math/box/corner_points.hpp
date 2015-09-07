@@ -9,6 +9,7 @@
 #define FCPPT_MATH_BOX_CORNER_POINTS_HPP_INCLUDED
 
 #include <fcppt/literal.hpp>
+#include <fcppt/algorithm/array_fold_static.hpp>
 #include <fcppt/math/generate_binary_vectors.hpp>
 #include <fcppt/math/size_type.hpp>
 #include <fcppt/math/box/object_impl.hpp>
@@ -30,29 +31,36 @@ namespace box
 
 /**
 \brief Returns the 2^N corner points (vertices) of the given box.
+
 \ingroup fcpptmathbox
-\tparam N The box's dimension
-\tparam T The box's <code>value_type</code>
 */
 template<
 	typename T,
 	fcppt::math::size_type N
 >
-std::array
-<
-	fcppt::math::vector::static_<T,N>,
+std::array<
+	fcppt::math::vector::static_<
+		T,
+		N
+	>,
 	fcppt::literal<
 		std::size_t
 	>(
 		1u
 	) << N
-> const
+>
 corner_points(
-	fcppt::math::box::object<T,N> const &_box
+	fcppt::math::box::object<
+		T,
+		N
+	> const &_box
 )
 {
 	typedef
-	fcppt::math::vector::static_<T,N>
+	fcppt::math::vector::static_<
+		T,
+		N
+	>
 	vector_type;
 
 	typedef
@@ -67,26 +75,37 @@ corner_points(
 	>
 	result_type;
 
-	result_type result(
-		fcppt::math::generate_binary_vectors<T,N>()
+	result_type const corners(
+		fcppt::math::generate_binary_vectors<
+			T,
+			N
+		>()
 	);
 
-	for(
-		vector_type &item
-		:
-		result
-	)
-		item =
-			_box.pos()
-			+
-			item
-			*
-			fcppt::math::dim::to_vector(
-				_box.size()
-			);
-
 	return
-		result;
+		fcppt::algorithm::array_fold_static<
+			result_type
+		>(
+			[
+				&_box,
+				&corners
+			](
+				auto const _index
+			)
+			{
+				return
+					_box.pos()
+					+
+					// TODO: at_c
+					corners[
+						_index
+					]
+					*
+					fcppt::math::dim::to_vector(
+						_box.size()
+					);
+			}
+		);
 }
 
 }

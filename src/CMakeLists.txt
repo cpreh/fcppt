@@ -21,6 +21,7 @@ set(
 	include/fcppt/algorithm/detail/join_all.hpp
 	include/fcppt/algorithm/detail/join_impl.hpp
 	include/fcppt/algorithm/detail/loop.hpp
+	include/fcppt/algorithm/detail/loop_break.hpp
 	include/fcppt/algorithm/detail/map_concat.hpp
 	include/fcppt/algorithm/detail/map_reserve.hpp
 	include/fcppt/algorithm/detail/optimize_map.hpp
@@ -38,6 +39,7 @@ set(
 	include/fcppt/algorithm/key_set.hpp
 	include/fcppt/algorithm/levenshtein.hpp
 	include/fcppt/algorithm/loop.hpp
+	include/fcppt/algorithm/loop_break.hpp
 	include/fcppt/algorithm/map.hpp
 	include/fcppt/algorithm/map_concat.hpp
 	include/fcppt/algorithm/map_iteration.hpp
@@ -458,16 +460,14 @@ set(
 	include/fcppt/math/box/contains_point.hpp
 	include/fcppt/math/box/corner_points.hpp
 	include/fcppt/math/box/distance.hpp
-	include/fcppt/math/box/expand.hpp
 	include/fcppt/math/box/extend_bounding_box.hpp
 	include/fcppt/math/box/has_dim.hpp
-	include/fcppt/math/box/init.hpp
+	include/fcppt/math/box/init_dim.hpp
+	include/fcppt/math/box/init_max.hpp
 	include/fcppt/math/box/intersection.hpp
 	include/fcppt/math/box/intersects.hpp
 	include/fcppt/math/box/interval.hpp
 	include/fcppt/math/box/is_box.hpp
-	include/fcppt/math/box/max_at.hpp
-	include/fcppt/math/box/max_at_c.hpp
 	include/fcppt/math/box/null.hpp
 	include/fcppt/math/box/object.hpp
 	include/fcppt/math/box/object_decl.hpp
@@ -475,7 +475,6 @@ set(
 	include/fcppt/math/box/object_impl.hpp
 	include/fcppt/math/box/output.hpp
 	include/fcppt/math/box/rect.hpp
-	include/fcppt/math/box/rect_from_edges.hpp
 	include/fcppt/math/box/rect_fwd.hpp
 	include/fcppt/math/box/shrink.hpp
 	include/fcppt/math/box/stretch_absolute.hpp

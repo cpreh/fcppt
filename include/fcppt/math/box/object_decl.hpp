@@ -11,7 +11,7 @@
 #include <fcppt/math/size_type.hpp>
 #include <fcppt/math/static_size.hpp>
 #include <fcppt/math/box/object_fwd.hpp>
-#include <fcppt/math/dim/static.hpp>
+#include <fcppt/math/dim/static_fwd.hpp>
 #include <fcppt/math/vector/static.hpp>
 
 
@@ -102,15 +102,27 @@ public:
 	);
 
 	/**
-	\brief Fully construct an box
+	\brief Construct a box from position and size
 
-	\param v The box's position
+	\param pos The box's position
 
-	\param s The box's size
+	\param size The box's size
 	*/
 	object(
-		vector const &v,
-		dim const &s
+		vector const &pos,
+		dim const &size
+	);
+
+	/**
+	\brief Construct a box from position and size
+
+	\param min The box's min position
+
+	\param max The box's max position
+	*/
+	object(
+		vector const &min,
+		vector const &max
 	);
 
 	/**
@@ -119,27 +131,39 @@ public:
 	vector &
 	pos();
 
-	/**
-	\brief Return the box's position
-	*/
 	vector const &
 	pos() const;
 
-	/**
-	\brief Return the box's size
-	*/
-	dim &
-	size();
+	vector &
+	max();
 
-	/**
-	\brief Return the box's size
-	*/
-	dim const &
+	vector const &
+	max() const;
+
+	dim
 	size() const;
-private:
-	vector pos_;
 
-	dim size_;
+	value_type
+	left() const;
+
+	value_type
+	right() const;
+
+	value_type
+	top() const;
+
+	value_type
+	bottom() const;
+
+	value_type
+	front() const;
+
+	value_type
+	back() const;
+private:
+	vector min_;
+
+	vector max_;
 };
 
 }

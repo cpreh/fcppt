@@ -8,15 +8,10 @@
 #ifndef FCPPT_MATH_BOX_STRETCH_ABSOLUTE_HPP_INCLUDED
 #define FCPPT_MATH_BOX_STRETCH_ABSOLUTE_HPP_INCLUDED
 
-#include <fcppt/literal.hpp>
-#include <fcppt/math/box/center.hpp>
-#include <fcppt/math/dim/arithmetic.hpp>
+#include <fcppt/math/size_type.hpp>
+#include <fcppt/math/box/object_impl.hpp>
 #include <fcppt/math/vector/arithmetic.hpp>
 #include <fcppt/math/vector/object_impl.hpp>
-#include <fcppt/math/vector/to_dim.hpp>
-#include <fcppt/config/external_begin.hpp>
-#include <type_traits>
-#include <fcppt/config/external_end.hpp>
 
 
 namespace fcppt
@@ -28,19 +23,8 @@ namespace box
 
 /**
 \brief Stretch a box around its center using an absolute value
+
 \ingroup fcpptmathbox
-\tparam T The box's <code>value_type</code>
-\tparam N The box's dimension
-\see fcppt::math::box::stretch_relative
-\see fcppt::math::box::expand
-\see fcppt::math::box::shrink
-
-This function is only defined for signed types. For unsigned types,
-see fcppt::math::box::expand and fcppt::math::box::shrink instead.
-
-The function will expand the box if <code>absolute_values</code> is
-positive and shrink the box if <code>absolute_values</code> is
-negative.
 */
 template<
 	typename T,
@@ -62,13 +46,6 @@ stretch_absolute(
 	>::vector const &_absolute_values
 )
 {
-	static_assert(
-		std::is_signed<
-			T
-		>::value,
-		"stretch_absolute can only be used on signed boxes"
-	);
-
 	return
 		fcppt::math::box::object<
 			T,
@@ -78,17 +55,9 @@ stretch_absolute(
 			-
 			_absolute_values
 			,
-			_box.size()
+			_box.max()
 			+
-			fcppt::literal<
-				T
-			>(
-				2
-			)
-			*
-			fcppt::math::vector::to_dim(
-				_absolute_values
-			)
+			_absolute_values
 		);
 }
 

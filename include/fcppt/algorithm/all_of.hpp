@@ -7,9 +7,8 @@
 #ifndef FCPPT_ALGORITHM_ALL_OF_HPP_INCLUDED
 #define FCPPT_ALGORITHM_ALL_OF_HPP_INCLUDED
 
-#include <fcppt/config/external_begin.hpp>
-#include <algorithm>
-#include <fcppt/config/external_end.hpp>
+#include <fcppt/loop.hpp>
+#include <fcppt/algorithm/loop_break.hpp>
 
 
 namespace fcppt
@@ -35,14 +34,37 @@ all_of(
 	Pred const &_pred
 )
 {
-	return
-		std::find_if_not(
-			_container.begin(),
-			_container.end(),
-			_pred
+	bool result{
+		true
+	};
+
+	fcppt::algorithm::loop_break(
+		_container,
+		[
+			&_pred,
+			&result
+		](
+			auto const &_element
 		)
-		==
-		_container.end();
+		{
+			if(
+				_pred(
+					_element
+				)
+			)
+				return
+					fcppt::loop::continue_;
+
+			result =
+				false;
+
+			return
+				fcppt::loop::break_;
+		}
+	);
+
+	return
+		result;
 }
 
 }

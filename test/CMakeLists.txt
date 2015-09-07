@@ -451,6 +451,10 @@ add_fcppt_test(
 )
 
 add_fcppt_test(
+	math/box/contains_point
+)
+
+add_fcppt_test(
 	math/box/corner_points
 )
 
@@ -469,7 +473,15 @@ add_fcppt_test(
 )
 
 add_fcppt_test(
-	math/box/stretch
+	math/box/shrink
+)
+
+add_fcppt_test(
+	math/box/stretch_absolute
+)
+
+add_fcppt_test(
+	math/box/stretch_relative
 )
 
 add_fcppt_test(

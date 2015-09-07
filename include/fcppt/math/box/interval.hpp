@@ -11,7 +11,6 @@
 #include <fcppt/make_homogenous_pair.hpp>
 #include <fcppt/math/at_c.hpp>
 #include <fcppt/math/size_type.hpp>
-#include <fcppt/math/box/max_at_c.hpp>
 #include <fcppt/math/box/object_impl.hpp>
 
 
@@ -50,10 +49,10 @@ interval(
 			>(
 				_box.pos()
 			),
-			fcppt::math::box::max_at_c<
+			fcppt::math::at_c<
 				Index
 			>(
-				_box
+				_box.max()
 			)
 		);
 }

@@ -9,7 +9,6 @@
 
 #include <fcppt/math/size_type.hpp>
 #include <fcppt/math/box/object_impl.hpp>
-#include <fcppt/math/dim/componentwise_equal.hpp>
 #include <fcppt/math/vector/componentwise_equal.hpp>
 
 
@@ -22,9 +21,8 @@ namespace box
 
 /**
 \brief Compare two boxes component-wise using an epsilon
+
 \ingroup fcpptmathbox
-\tparam N The box's dimension
-\tparam T The box's <code>value_type</code>
 
 Componentwise in this context means: Compare the positions and the sizes
 component-wise. For each component of the position and the size, check if the
@@ -35,6 +33,7 @@ template<
 	typename T,
 	fcppt::math::size_type N
 >
+inline
 bool
 componentwise_equal(
 	fcppt::math::box::object<
@@ -55,9 +54,9 @@ componentwise_equal(
 			_epsilon
 		)
 		&&
-		fcppt::math::dim::componentwise_equal(
-			_v1.size(),
-			_v2.size(),
+		fcppt::math::vector::componentwise_equal(
+			_v1.max(),
+			_v2.max(),
 			_epsilon
 		);
 }

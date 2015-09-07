@@ -8,10 +8,11 @@
 #ifndef FCPPT_MATH_BOX_CONTAINS_HPP_INCLUDED
 #define FCPPT_MATH_BOX_CONTAINS_HPP_INCLUDED
 
-#include <fcppt/make_int_range_count.hpp>
+#include <fcppt/tag_value.hpp>
 #include <fcppt/algorithm/all_of.hpp>
+#include <fcppt/math/at_c.hpp>
+#include <fcppt/math/int_range_count.hpp>
 #include <fcppt/math/size_type.hpp>
-#include <fcppt/math/box/max_at.hpp>
 #include <fcppt/math/box/object_impl.hpp>
 
 
@@ -50,33 +51,45 @@ contains(
 {
 	return
 		fcppt::algorithm::all_of(
-			fcppt::make_int_range_count(
+			fcppt::math::int_range_count<
 				N
-			),
+			>{},
 			[
 				&_outer,
 				&_inner
 			](
-				fcppt::math::size_type const _index
+				auto const _index
 			)
 			{
-				return
-					_inner.pos()[
-						_index
-					]
-					>=
-					_outer.pos()[
-						_index
-					]
-					&&
-					fcppt::math::box::max_at(
-						_inner,
+				auto const index(
+					fcppt::tag_value(
 						_index
 					)
+				);
+
+				return
+					fcppt::math::at_c<
+						index
+					>(
+						_inner.pos()
+					)
+					>=
+					fcppt::math::at_c<
+						index
+					>(
+						_outer.pos()
+					)
+					&&
+					fcppt::math::at_c<
+						index
+					>(
+						_inner.max()
+					)
 					<=
-					fcppt::math::box::max_at(
-						_outer,
-						_index
+					fcppt::math::at_c<
+						index
+					>(
+						_outer.max()
 					);
 			}
 		);

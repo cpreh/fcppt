@@ -8,10 +8,11 @@
 #ifndef FCPPT_MATH_BOX_INTERSECTS_HPP_INCLUDED
 #define FCPPT_MATH_BOX_INTERSECTS_HPP_INCLUDED
 
-#include <fcppt/make_int_range_count.hpp>
+#include <fcppt/tag_value.hpp>
 #include <fcppt/algorithm/all_of.hpp>
+#include <fcppt/math/at_c.hpp>
+#include <fcppt/math/int_range_count.hpp>
 #include <fcppt/math/size_type.hpp>
-#include <fcppt/math/box/max_at.hpp>
 #include <fcppt/math/box/object_impl.hpp>
 
 
@@ -24,9 +25,8 @@ namespace box
 
 /**
 \brief Tests if two boxes intersect
+
 \ingroup fcpptmathbox
-\tparam N The box's dimension
-\tparam T The box's <code>value_type</code>
 */
 template<
 	typename T,
@@ -47,33 +47,45 @@ intersects(
 {
 	return
 		fcppt::algorithm::all_of(
-			fcppt::make_int_range_count(
+			fcppt::math::int_range_count<
 				N
-			),
+			>{},
 			[
 				&_a,
 				&_b
 			](
-				fcppt::math::size_type const _index
+				auto const _index
 			)
 			{
-				return
-					_b.pos()[
-						_index
-					]
-					<
-					fcppt::math::box::max_at(
-						_a,
+				auto const index(
+					fcppt::tag_value(
 						_index
 					)
-					&&
-					_a.pos()[
-						_index
-					]
+				);
+
+				return
+					fcppt::math::at_c<
+						index
+					>(
+						_b.pos()
+					)
 					<
-					fcppt::math::box::max_at(
-						_b,
-						_index
+					fcppt::math::at_c<
+						index
+					>(
+						_a.max()
+					)
+					&&
+					fcppt::math::at_c<
+						index
+					>(
+						_a.pos()
+					)
+					<
+					fcppt::math::at_c<
+						index
+					>(
+						_b.max()
 					)
 					;
 			}

@@ -4,14 +4,13 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_MATH_BOX_INIT_HPP_INCLUDED
-#define FCPPT_MATH_BOX_INIT_HPP_INCLUDED
+#ifndef FCPPT_MATH_BOX_INIT_MAX_HPP_INCLUDED
+#define FCPPT_MATH_BOX_INIT_MAX_HPP_INCLUDED
 
 #include <fcppt/homogenous_pair.hpp>
 #include <fcppt/algorithm/array_fold_static.hpp>
 #include <fcppt/math/box/is_box.hpp>
 #include <fcppt/math/detail/init_function.hpp>
-#include <fcppt/math/dim/init.hpp>
 #include <fcppt/math/vector/init.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <array>
@@ -25,12 +24,17 @@ namespace math
 namespace box
 {
 
+/**
+// TODO: Document this
+// TODO: Unify this with init_dim
+\ingroup fcpptmathbox
+*/
 template<
 	typename Box,
 	typename Function
 >
 Box
-init(
+init_max(
 	Function const &_function
 )
 {
@@ -83,9 +87,9 @@ init(
 						).first;
 				}
 			),
-			fcppt::math::dim::init<
+			fcppt::math::vector::init<
 				typename
-				Box::dim
+				Box::vector
 			>(
 				[
 					&results

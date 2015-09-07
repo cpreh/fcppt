@@ -21,7 +21,9 @@
 FCPPT_PP_PUSH_WARNING
 FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
 
-BOOST_AUTO_TEST_CASE(box_extend_bounding_box)
+BOOST_AUTO_TEST_CASE(
+	math_box_extend_bounding_box_vector
+)
 {
 FCPPT_PP_POP_WARNING
 
@@ -29,11 +31,19 @@ FCPPT_PP_POP_WARNING
 	fcppt::math::box::object<
 		int,
 		2
-	> box_type;
+	>
+	box_type;
 
 	box_type b(
-		box_type::vector(1,1),
-		box_type::dim(0,0));
+		box_type::vector(
+			1,
+			1
+		),
+		box_type::dim(
+			0,
+			0
+		)
+	);
 
 	fcppt::io::cerr()
 		<< FCPPT_TEXT("Original box: ")
@@ -44,24 +54,37 @@ FCPPT_PP_POP_WARNING
 		fcppt::math::box::extend_bounding_box(
 			b,
 			box_type::vector(
-				3,4));
+				3,
+				4
+			)
+		);
 
 	fcppt::io::cerr()
 		<< FCPPT_TEXT("Added (3,4), now: ")
 		<< b
 		<< FCPPT_TEXT('\n');
 
-	BOOST_CHECK(
-		b ==
+	BOOST_CHECK_EQUAL(
+		b,
 		box_type(
-			box_type::vector(1,1),
-			box_type::dim(2,3)));
+			box_type::vector(
+				1,
+				1
+			),
+			box_type::dim(
+				2,
+				3
+			)
+		)
+	);
 
 	b =
 		fcppt::math::box::extend_bounding_box(
 			b,
 			box_type::vector(
-				0,0));
+				0,0
+			)
+		);
 
 	fcppt::io::cerr()
 		<< FCPPT_TEXT("Added (0,0), now: ")
@@ -69,27 +92,112 @@ FCPPT_PP_POP_WARNING
 		<< FCPPT_TEXT('\n');
 
 	// The tests are incremental, so require is...required here
-	BOOST_REQUIRE(
-		b ==
+	BOOST_REQUIRE_EQUAL(
+		b,
 		box_type(
-			box_type::vector(0,0),
-			box_type::dim(3,4)));
+			box_type::vector(
+				0,
+				0
+			),
+			box_type::dim(
+				3,
+				4
+			)
+		)
+	);
 
 	// This point is inside the bounding box -> nothing should change
 	b =
 		fcppt::math::box::extend_bounding_box(
 			b,
 			box_type::vector(
-				1,1));
+				1,
+				1
+			)
+		);
 
 	fcppt::io::cerr()
 		<< FCPPT_TEXT("Added (1,1), now: ")
 		<< b
 		<< FCPPT_TEXT('\n');
 
-	BOOST_REQUIRE(
-		b ==
+	BOOST_REQUIRE_EQUAL(
+		b,
 		box_type(
-			box_type::vector(0,0),
-			box_type::dim(3,4)));
+			box_type::vector(
+				0,
+				0
+			),
+			box_type::dim(
+				3,
+				4
+			)
+		)
+	);
+}
+
+FCPPT_PP_PUSH_WARNING
+FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
+
+BOOST_AUTO_TEST_CASE(
+	math_box_extend_bounding_box_box
+)
+{
+FCPPT_PP_POP_WARNING
+
+	typedef
+	fcppt::math::box::object<
+		int,
+		2
+	>
+	box_type;
+
+	box_type const box1(
+		box_type::vector(
+			1,
+			2
+		),
+		box_type::dim(
+			2,
+			3
+		)
+	);
+
+	box_type const box2(
+		box_type::vector(
+			0,
+			1
+		),
+		box_type::dim(
+			2,
+			1
+		)
+	);
+
+	box_type const expected(
+		box_type::vector(
+			0,
+			1
+		),
+		box_type::dim(
+			3,
+			4
+		)
+	);
+
+	BOOST_CHECK_EQUAL(
+		fcppt::math::box::extend_bounding_box(
+			box1,
+			box2
+		),
+		expected
+	);
+
+	BOOST_CHECK_EQUAL(
+		fcppt::math::box::extend_bounding_box(
+			box2,
+			box1
+		),
+		expected
+	);
 }
