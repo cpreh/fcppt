@@ -55,6 +55,7 @@ exponential_pade(
 	> _matrix
 )
 {
+	// TODO: Improve this
 	static_assert(
 		std::is_floating_point<
 			T

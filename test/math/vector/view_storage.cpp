@@ -94,8 +94,6 @@ public:
 	}
 private:
 	pointer data_;
-
-	size_type size_;
 };
 
 }

@@ -115,9 +115,6 @@ Here is an example:
 
 \snippet container/grid_iteration.cpp grid_iteration
 
-To get the position of an iterator, use \link
-fcppt::container::grid::iterator_position\endlink.
-
 \section fcpptcontainergrid_resizing Resizing
 
 To resize a grid there are a couple of options. \link

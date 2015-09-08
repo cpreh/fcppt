@@ -7,12 +7,14 @@
 #ifndef FCPPT_MATH_DETAIL_STORAGE_SIZE_HPP_INCLUDED
 #define FCPPT_MATH_DETAIL_STORAGE_SIZE_HPP_INCLUDED
 
-#include <fcppt/math/size_type.hpp>
-#include <fcppt/math/static_size.hpp>
-#include <fcppt/math/static_storage.hpp>
+#include <fcppt/container/array_size.hpp>
+#include <fcppt/math/is_static_storage.hpp>
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
+#include <fcppt/config/external_begin.hpp>
+#include <boost/utility/enable_if.hpp>
+#include <fcppt/config/external_end.hpp>
 
 
 namespace fcppt
@@ -29,25 +31,40 @@ template<
 	typename T,
 	typename Enable = void
 >
-struct storage_size
+struct storage_size;
+
+template<
+	typename T
+>
+struct storage_size<
+	T,
+	typename
+	boost::disable_if<
+		fcppt::math::is_static_storage<
+			T
+		>
+	>::type
+>
 :
 T::static_size
 {
 };
 
 template<
-	typename T,
-	fcppt::math::size_type N
+	typename T
 >
 struct storage_size<
-	fcppt::math::static_storage<
-		T,
-		N
-	>
+	T,
+	typename
+	boost::enable_if<
+		fcppt::math::is_static_storage<
+			T
+		>
+	>::type
 >
 :
-fcppt::math::static_size<
-	N
+fcppt::container::array_size<
+	T
 >
 {
 };

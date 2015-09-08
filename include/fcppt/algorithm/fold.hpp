@@ -57,12 +57,12 @@ fold(
 			&_state,
 			&_function
 		](
-			auto &&_element
+			auto &&_fcppt_element
 		)
 		{
 			_state =
 				_function(
-					_element,
+					_fcppt_element,
 					std::move(
 						_state
 					)

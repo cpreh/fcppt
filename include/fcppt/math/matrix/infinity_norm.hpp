@@ -66,6 +66,12 @@ infinity_norm(
 				T const _maximum_row
 			)
 			{
+				constexpr auto const row(
+					fcppt::tag_value(
+						_row
+					)
+				);
+
 				return
 					std::max(
 						_maximum_row,
@@ -80,7 +86,7 @@ infinity_norm(
 							),
 							[
 								&_matrix,
-								_row
+								row
 							](
 								auto const _column,
 								T const _current_row_sum
@@ -93,9 +99,7 @@ infinity_norm(
 										fcppt::math::matrix::at_c(
 											_matrix,
 											fcppt::math::matrix::index<
-												fcppt::tag_value(
-													_row
-												),
+												row,
 												fcppt::tag_value(
 													_column
 												)

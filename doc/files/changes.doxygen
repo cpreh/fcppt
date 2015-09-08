@@ -152,8 +152,8 @@ can be omitted from <code>return</code> statements.</li>
 	using an integral constant as index.</li>
 	<li>Added \link fcppt::math::interval_distance\endlink.</li>
 	<li>Added \link fcppt::math::box::distance\endlink.</li>
-	<li>Added \link fcppt::math::vector::init\endlink, \link
-	fcppt::math::box::init\endlink and \link fcppt::math::dim::init
+	<li>Added \link fcppt::math::vector::init\endlink,
+	fcppt::math::box::init and \link fcppt::math::dim::init
 	\endlink.</li>
 	<li>Added \link fcppt::math::vector::map\endlink and \link
 	fcppt::math::dim::map\endlink.</li>
