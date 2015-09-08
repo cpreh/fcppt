@@ -7,11 +7,9 @@
 #ifndef FCPPT_ALGORITHM_ARRAY_INIT_MOVE_HPP_INCLUDED
 #define FCPPT_ALGORITHM_ARRAY_INIT_MOVE_HPP_INCLUDED
 
-#include <fcppt/algorithm/array_fold.hpp>
+#include <fcppt/algorithm/array_fold_static.hpp>
+#include <fcppt/cast/to_void.hpp>
 #include <fcppt/type_traits/is_std_array.hpp>
-#include <fcppt/config/external_begin.hpp>
-#include <cstddef>
-#include <fcppt/config/external_end.hpp>
 
 
 namespace fcppt
@@ -50,15 +48,19 @@ array_init_move(
 	);
 
 	return
-		fcppt::algorithm::array_fold<
+		fcppt::algorithm::array_fold_static<
 			Array
 		>(
 			[
 				&_function
 			](
-				std::size_t
+				auto const _index
 			)
 			{
+				fcppt::cast::to_void(
+					_index
+				);
+
 				return
 					_function();
 			}

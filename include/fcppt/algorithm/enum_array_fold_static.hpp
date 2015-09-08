@@ -48,6 +48,7 @@ enum_array_fold_static(
 				{
 					return
 						_function(
+							// TODO: integral_cast?
 							std::integral_constant<
 								typename
 								Array::enum_type,

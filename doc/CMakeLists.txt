@@ -173,7 +173,6 @@ set(
 	include/fcppt/algorithm/all_of.hpp
 	include/fcppt/algorithm/append.hpp
 	include/fcppt/algorithm/array_binary_map.hpp
-	include/fcppt/algorithm/array_fold.hpp
 	include/fcppt/algorithm/array_fold_static.hpp
 	include/fcppt/algorithm/array_init.hpp
 	include/fcppt/algorithm/array_init_move.hpp

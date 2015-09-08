@@ -7,7 +7,7 @@
 #ifndef FCPPT_ALGORITHM_ARRAY_BINARY_MAP_HPP_INCLUDED
 #define FCPPT_ALGORITHM_ARRAY_BINARY_MAP_HPP_INCLUDED
 
-#include <fcppt/algorithm/array_fold.hpp>
+#include <fcppt/algorithm/array_fold_static.hpp>
 #include <fcppt/container/array_size.hpp>
 #include <fcppt/type_traits/is_std_array.hpp>
 #include <fcppt/config/external_begin.hpp>
@@ -78,7 +78,7 @@ array_binary_map(
 	);
 
 	return
-		fcppt::algorithm::array_fold<
+		fcppt::algorithm::array_fold_static<
 			TargetArray
 		>(
 			[
@@ -87,18 +87,21 @@ array_binary_map(
 				&_function
 			]
 			(
-				std::size_t const _index
+				auto const _index
 			)
 			{
-				// TODO: static index
 				return
 					_function(
-						_source1[
+						std::get<
 							_index
-						],
-						_source2[
+						>(
+							_source1
+						),
+						std::get<
 							_index
-						]
+						>(
+							_source2
+						)
 					);
 			}
 		);

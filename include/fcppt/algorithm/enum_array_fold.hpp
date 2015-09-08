@@ -7,7 +7,7 @@
 #ifndef FCPPT_ALGORITHM_ENUM_ARRAY_FOLD_HPP_INCLUDED
 #define FCPPT_ALGORITHM_ENUM_ARRAY_FOLD_HPP_INCLUDED
 
-#include <fcppt/algorithm/array_fold.hpp>
+#include <fcppt/algorithm/array_fold_static.hpp>
 #include <fcppt/cast/int_to_enum.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <cstddef>
@@ -36,22 +36,23 @@ enum_array_fold(
 {
 	return
 		Array{
-			fcppt::algorithm::array_fold<
+			fcppt::algorithm::array_fold_static<
 				typename
 				Array::internal
 			>(
 				[
 					&_function
 				](
-					std::size_t const _index
+					auto const _index
 				)
 				{
 					return
 						_function(
 							fcppt::cast::int_to_enum<
-								typename Array::enum_type
+								typename
+								Array::enum_type
 							>(
-								_index
+								_index()
 							)
 						);
 				}

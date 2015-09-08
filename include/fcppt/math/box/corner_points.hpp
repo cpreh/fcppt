@@ -96,10 +96,11 @@ corner_points(
 				return
 					_box.pos()
 					+
-					// TODO: at_c
-					corners[
+					std::get<
 						_index
-					]
+					>(
+						corners
+					)
 					*
 					fcppt::math::dim::to_vector(
 						_box.size()

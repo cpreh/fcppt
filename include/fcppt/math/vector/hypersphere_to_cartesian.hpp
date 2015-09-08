@@ -9,7 +9,11 @@
 #define FCPPT_MATH_VECTOR_HYPERSPHERE_TO_CARTESIAN_HPP_INCLUDED
 
 #include <fcppt/literal.hpp>
+#include <fcppt/tag_value.hpp>
+#include <fcppt/algorithm/fold.hpp>
+#include <fcppt/math/int_range_count.hpp>
 #include <fcppt/math/size_type.hpp>
+#include <fcppt/math/vector/construct.hpp>
 #include <fcppt/math/vector/init.hpp>
 #include <fcppt/math/vector/object.hpp>
 #include <fcppt/math/vector/static.hpp>
@@ -24,12 +28,18 @@ namespace math
 {
 namespace vector
 {
+
 /**
 \brief Calculate the n dimensional polar coordinates, also called "hyperspherical coordinates"
+
 \ingroup fcpptmathvector
+
 \tparam T The vector's <code>value_type</code>
+
 \tparam N The vector's dimension type
+
 \tparam S The vector's storage type
+
 \param _angles An \p N-1 dimensional vector containing the angles in each dimension
 
 The formula is taken from:
@@ -139,42 +149,81 @@ hypersphere_to_cartesian(
 			[
 				&_angles
 			](
-				fcppt::math::size_type const _index
+				auto const _index
 			)
 			{
-				// TODO: fold
-				value_type sins{
-					fcppt::literal<
-						value_type
-					>(
-						1
+				value_type const sins(
+					fcppt::algorithm::fold(
+						fcppt::math::int_range_count<
+							_index
+						>{},
+						fcppt::literal<
+							value_type
+						>(
+							1
+						),
+						[
+							&_angles
+						](
+							auto const _inner_index,
+							value_type const _prod
+						)
+						{
+							return
+								_prod
+								*
+								std::sin(
+									fcppt::math::at_c<
+										fcppt::tag_value(
+											_inner_index
+										)
+									>(
+										_angles
+									)
+								);
+						}
 					)
-				};
+				);
 
-				for(fcppt::math::size_type j = 0; j < _index; ++j)
-					sins *=
-						std::sin(
-							_angles[j]
-						);
+				result_type const cos_angles(
+					fcppt::math::vector::construct(
+						fcppt::math::vector::init<
+							fcppt::math::vector::static_<
+								T,
+								N
+							>
+						>(
+							[
+								&_angles
+							](
+								auto const _inner_index
+							)
+							{
+								return
+									std::cos(
+										fcppt::math::at_c<
+											_inner_index
+										>(
+											_angles
+										)
+									);
+							}
+						),
+						fcppt::literal<
+							value_type
+						>(
+							1
+						)
+					)
+				);
 
 				return
-					sins *
-					(
+					sins
+					*
+					fcppt::math::at_c<
 						_index
-						>=
-						N
-						?
-							fcppt::literal<
-								value_type
-							>(
-								1
-							)
-						:
-							std::cos(
-								_angles[
-									_index
-								]
-							)
+					>(
+						cos_angles
 					);
 			}
 		);

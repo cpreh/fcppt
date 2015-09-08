@@ -7,9 +7,11 @@
 #ifndef FCPPT_MATH_DETAIL_COPY_HPP_INCLUDED
 #define FCPPT_MATH_DETAIL_COPY_HPP_INCLUDED
 
-#include <fcppt/algorithm/array_fold.hpp>
+#include <fcppt/algorithm/array_fold_static.hpp>
+#include <fcppt/cast/size.hpp>
+#include <fcppt/math/size_type.hpp>
 #include <fcppt/math/detail/assert_static_storage.hpp>
-#include <fcppt/math/detail/index_at.hpp>
+#include <fcppt/math/detail/linear_access.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <cstddef>
 #include <fcppt/config/external_end.hpp>
@@ -37,19 +39,24 @@ copy(
 	);
 
 	return
-		fcppt::algorithm::array_fold<
+		fcppt::algorithm::array_fold_static<
 			Result
 		>(
 			[
 				&_arg
 			](
-				std::size_t const _index
+				auto const _index
 			)
 			{
 				return
-					fcppt::math::detail::index_at(
-						_arg.storage(),
-						_index
+					fcppt::math::detail::linear_access<
+						fcppt::cast::size<
+							fcppt::math::size_type
+						>(
+							_index
+						)
+					>(
+						_arg.storage()
 					);
 			}
 		);

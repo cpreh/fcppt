@@ -4,8 +4,8 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/cast/size.hpp>
 #include <fcppt/math/size_type.hpp>
+#include <fcppt/math/static_size.hpp>
 #include <fcppt/math/vector/comparison.hpp>
 #include <fcppt/math/vector/object.hpp>
 #include <fcppt/math/vector/output.hpp>
@@ -22,7 +22,8 @@ namespace
 {
 
 template<
-	typename T
+	typename T,
+	fcppt::math::size_type N
 >
 class view_storage
 {
@@ -30,6 +31,12 @@ public:
 	typedef T value_type;
 
 	typedef fcppt::math::size_type size_type;
+
+	typedef
+	fcppt::math::static_size<
+		N
+	>
+	static_size;
 
 	typedef value_type *pointer;
 
@@ -43,16 +50,13 @@ public:
 
 	typedef const_pointer const_iterator;
 
+	explicit
 	view_storage(
-		pointer const _data,
-		size_type const _size
+		pointer const _data
 	)
 	:
 		data_(
 			_data
-		),
-		size_(
-			_size
 		)
 	{
 	}
@@ -77,7 +81,7 @@ public:
 		return
 			data_
 			+
-			size_;
+			N;
 	}
 
 	const_iterator
@@ -86,7 +90,7 @@ public:
 		return
 			data_
 			+
-			size_;
+			N;
 	}
 private:
 	pointer data_;
@@ -105,30 +109,28 @@ BOOST_AUTO_TEST_CASE(
 {
 FCPPT_PP_POP_WARNING
 
-	typedef view_storage<
-		unsigned
-	> unsigned_view_storage;
+	typedef
+	view_storage<
+		unsigned,
+		2
+	>
+	unsigned_view_storage;
 
-	typedef fcppt::math::vector::object<
+	typedef
+	fcppt::math::vector::object<
 		unsigned,
 		2,
-		view_storage<
-			unsigned
-		>
-	> view_vector;
+		unsigned_view_storage
+	>
+	view_vector;
 
 	unsigned data[] = { 1, 2 };
 
-	view_vector const view(
+	view_vector const view{
 		unsigned_view_storage(
-			data,
-			fcppt::cast::size<
-				unsigned_view_storage::size_type
-			>(
-				sizeof(data) / sizeof(unsigned)
-			)
+			data
 		)
-	);
+	};
 
 	typedef
 	fcppt::math::vector::static_<
