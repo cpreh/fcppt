@@ -69,25 +69,6 @@ fcppt::math::matrix::detail::row_view<
 	return
 		rep_
 		+
-		this->size();
-}
-
-template<
-	typename T,
-	fcppt::math::size_type C
->
-constexpr
-typename
-fcppt::math::matrix::detail::row_view<
-	T,
-	C
->::size_type
-fcppt::math::matrix::detail::row_view<
-	T,
-	C
->::size() const
-{
-	return
 		C;
 }
 

@@ -7,11 +7,13 @@
 #ifndef FCPPT_CONTAINER_GRID_IN_RANGE_DIM_HPP_INCLUDED
 #define FCPPT_CONTAINER_GRID_IN_RANGE_DIM_HPP_INCLUDED
 
-#include <fcppt/make_int_range_count.hpp>
+#include <fcppt/tag_value.hpp>
 #include <fcppt/algorithm/all_of.hpp>
 #include <fcppt/container/grid/dim.hpp>
 #include <fcppt/container/grid/pos.hpp>
 #include <fcppt/container/grid/size_type.hpp>
+#include <fcppt/math/at_c.hpp>
+#include <fcppt/math/int_range_count.hpp>
 
 
 namespace fcppt
@@ -47,24 +49,34 @@ in_range_dim(
 {
 	return
 		fcppt::algorithm::all_of(
-			fcppt::make_int_range_count(
+			fcppt::math::int_range_count<
 				N
-			),
+			>{},
 			[
 				&_dim,
 				&_pos
 			](
-				fcppt::container::grid::size_type const _index
+				auto const _index
 			)
 			{
+				auto const index(
+					fcppt::tag_value(
+						_index
+					)
+				);
+
 				return
-					_pos[
-						_index
-					]
+					fcppt::math::at_c<
+						index
+					>(
+						_pos
+					)
 					<
-					_dim[
-						_index
-					];
+					fcppt::math::at_c<
+						index
+					>(
+						_dim
+					);
 			}
 		);
 }

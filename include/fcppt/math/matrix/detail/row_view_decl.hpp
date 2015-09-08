@@ -8,6 +8,7 @@
 #define FCPPT_MATH_MATRIX_DETAIL_ROW_VIEW_DECL_HPP_INCLUDED
 
 #include <fcppt/math/size_type.hpp>
+#include <fcppt/math/static_size.hpp>
 #include <fcppt/math/matrix/detail/row_view_fwd.hpp>
 
 
@@ -30,6 +31,12 @@ public:
 	typedef
 	T
 	value_type;
+
+	typedef
+	fcppt::math::static_size<
+		C
+	>
+	static_size;
 
 	typedef
 	fcppt::math::size_type
@@ -56,10 +63,6 @@ public:
 
 	iterator
 	end() const;
-
-	constexpr
-	size_type
-	size() const;
 private:
 	pointer rep_;
 };

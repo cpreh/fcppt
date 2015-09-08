@@ -7,11 +7,13 @@
 #ifndef FCPPT_CONTAINER_GRID_MIN_LESS_SUP_HPP_INCLUDED
 #define FCPPT_CONTAINER_GRID_MIN_LESS_SUP_HPP_INCLUDED
 
-#include <fcppt/make_int_range_count.hpp>
+#include <fcppt/tag_value.hpp>
 #include <fcppt/algorithm/all_of.hpp>
 #include <fcppt/container/grid/min.hpp>
 #include <fcppt/container/grid/size_type.hpp>
 #include <fcppt/container/grid/sup.hpp>
+#include <fcppt/math/at_c.hpp>
+#include <fcppt/math/int_range_count.hpp>
 
 
 namespace fcppt
@@ -47,24 +49,34 @@ min_less_sup(
 {
 	return
 		fcppt::algorithm::all_of(
-			fcppt::make_int_range_count(
+			fcppt::math::int_range_count<
 				Size
-			),
+			>{},
 			[
 				&_min,
 				&_sup
 			](
-				fcppt::container::grid::size_type const _index
+				auto const _index
 			)
 			{
+				auto const index(
+					fcppt::tag_value(
+						_index
+					)
+				);
+
 				return
-					_min.get()[
-						_index
-					]
+					fcppt::math::at_c<
+						index
+					>(
+						_min.get()
+					)
 					<
-					_sup.get()[
-						_index
-					];
+					fcppt::math::at_c<
+						index
+					>(
+						_sup.get()
+					);
 			}
 		);
 }

@@ -7,9 +7,10 @@
 #ifndef FCPPT_MATH_DETAIL_COMPONENTWISE_EQUAL_HPP_INCLUDED
 #define FCPPT_MATH_DETAIL_COMPONENTWISE_EQUAL_HPP_INCLUDED
 
-#include <fcppt/make_int_range_count.hpp>
+#include <fcppt/tag_value.hpp>
 #include <fcppt/algorithm/all_of.hpp>
 #include <fcppt/math/diff.hpp>
+#include <fcppt/math/int_range_count.hpp>
 #include <fcppt/math/detail/linear_access.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <type_traits>
@@ -58,9 +59,9 @@ componentwise_equal(
 
 	return
 		fcppt::algorithm::all_of(
-			fcppt::make_int_range_count(
-				_r1.storage().size()
-			),
+			fcppt::math::int_range_count<
+				Range1::dim_wrapper::value
+			>{},
 			[
 				&_r1,
 				&_r2,
@@ -69,15 +70,23 @@ componentwise_equal(
 				auto const _index
 			)
 			{
+				auto const index(
+					fcppt::tag_value(
+						_index
+					)
+				);
+
 				return
 					fcppt::math::diff(
-						fcppt::math::detail::linear_access(
-							_r1.storage(),
-							_index
+						fcppt::math::detail::linear_access<
+							index
+						>(
+							_r1.storage()
 						),
-						fcppt::math::detail::linear_access(
-							_r2.storage(),
-							_index
+						fcppt::math::detail::linear_access<
+							index
+						>(
+							_r2.storage()
 						)
 					)
 					<

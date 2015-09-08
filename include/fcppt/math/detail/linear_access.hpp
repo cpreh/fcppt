@@ -7,7 +7,13 @@
 #ifndef FCPPT_MATH_DETAIL_LINEAR_ACCESS_HPP_INCLUDED
 #define FCPPT_MATH_DETAIL_LINEAR_ACCESS_HPP_INCLUDED
 
+#include <fcppt/cast/to_signed.hpp>
 #include <fcppt/container/to_value_type.hpp>
+#include <fcppt/math/size_type.hpp>
+#include <fcppt/math/detail/storage_size.hpp>
+#include <fcppt/config/external_begin.hpp>
+#include <type_traits>
+#include <fcppt/config/external_end.hpp>
 
 
 namespace fcppt
@@ -18,22 +24,36 @@ namespace detail
 {
 
 template<
-	typename Container
+	fcppt::math::size_type Index,
+	typename Storage
 >
 inline
 fcppt::container::to_value_type<
-	Container
+	Storage
 >
 linear_access(
-	Container &_container,
-	typename Container::size_type const _index
+	Storage &_storage
 )
 {
+	static_assert(
+		Index
+		<
+		fcppt::math::detail::storage_size<
+			typename
+			std::remove_const<
+				Storage
+			>::type
+		>::value,
+		"linear_access out of range"
+	);
+
 	return
 		*(
-			_container.data()
+			_storage.begin()
 			+
-			_index
+			fcppt::cast::to_signed(
+				Index
+			)
 		);
 }
 

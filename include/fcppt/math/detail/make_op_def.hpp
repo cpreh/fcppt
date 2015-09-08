@@ -7,13 +7,14 @@
 #ifndef FCPPT_MATH_DETAIL_MAKE_OP_DEF_HPP_INCLUDED
 #define FCPPT_MATH_DETAIL_MAKE_OP_DEF_HPP_INCLUDED
 
-#include <fcppt/make_int_range_count.hpp>
+#include <fcppt/tag_value.hpp>
+#include <fcppt/algorithm/loop.hpp>
+#include <fcppt/math/int_range_count.hpp>
 #include <fcppt/math/detail/linear_access.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/preprocessor/tuple/rem.hpp>
 #include <fcppt/config/external_end.hpp>
 
-// TODO: Get rid of the size() call here
 
 #define FCPPT_MATH_DETAIL_MAKE_OP_DEF(\
 	class_arity,\
@@ -30,23 +31,36 @@ BOOST_PP_TUPLE_REM(class_arity)def_pre \
 	BOOST_PP_TUPLE_REM(class_arity)arg const &expr\
 ) \
 {\
-	for(\
-		auto const index\
-		:\
-		fcppt::make_int_range_count(\
-			storage_.size()\
-		)\
-	)\
-		fcppt::math::detail::linear_access(\
-			storage_,\
-			index\
-		) \
-		op \
-		fcppt::math::detail::linear_access(\
-			expr.storage(),\
-			index\
-		);\
-\
+	fcppt::algorithm::loop(\
+		fcppt::math::int_range_count<\
+			dim_wrapper::value \
+		>{},\
+		[\
+			this,\
+			&expr\
+		](\
+			auto const _index\
+		){ \
+			auto const index(\
+				fcppt::tag_value(\
+					_index\
+				)\
+			);\
+			\
+			fcppt::math::detail::linear_access<\
+				index\
+			>(\
+				storage_\
+			) \
+			op \
+			fcppt::math::detail::linear_access<\
+				index\
+			>(\
+				expr.storage()\
+			);\
+		}\
+	);\
+	\
 	return \
 		*this;\
 }
