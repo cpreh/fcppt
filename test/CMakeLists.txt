@@ -469,6 +469,14 @@ add_fcppt_test(
 )
 
 add_fcppt_test(
+	math/box/init_dim
+)
+
+add_fcppt_test(
+	math/box/init_max
+)
+
+add_fcppt_test(
 	math/box/intersection
 )
 

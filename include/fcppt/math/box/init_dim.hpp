@@ -7,15 +7,8 @@
 #ifndef FCPPT_MATH_BOX_INIT_DIM_HPP_INCLUDED
 #define FCPPT_MATH_BOX_INIT_DIM_HPP_INCLUDED
 
-#include <fcppt/homogenous_pair.hpp>
-#include <fcppt/algorithm/array_fold_static.hpp>
-#include <fcppt/math/box/is_box.hpp>
-#include <fcppt/math/detail/init_function.hpp>
+#include <fcppt/math/box/detail/init.hpp>
 #include <fcppt/math/dim/init.hpp>
-#include <fcppt/math/vector/init.hpp>
-#include <fcppt/config/external_begin.hpp>
-#include <array>
-#include <fcppt/config/external_end.hpp>
 
 
 namespace fcppt
@@ -26,85 +19,46 @@ namespace box
 {
 
 /**
-// TODO: Document this
+\brief Initializes a box from pairs of positions and sizes
+
 \ingroup fcpptmathbox
+
+Initializes an object of type \a Box by calling \a _function for every index.
+The result \a _function must be a homogenous pair where <code>first</code> is
+the position and <code>second</code> is the size.
+
+\tparam Box Must be a box
+
+\tparam Function A (polymorphic) function of type
+<code>fcppt::homogenous_pair<Box::value_type> (Index)</code>
 */
 template<
 	typename Box,
 	typename Function
 >
+inline
 Box
 init_dim(
 	Function const &_function
 )
 {
-	static_assert(
-		fcppt::math::box::is_box<
-			Box
-		>::value,
-		"Box must be a box::object"
-	);
-
-	typedef
-	std::array<
-		fcppt::homogenous_pair<
-			typename
-			Box::value_type
-		>,
-		Box::dim_wrapper::value
-	>
-	result_array;
-
-	result_array const results(
-		fcppt::algorithm::array_fold_static<
-			result_array
-		>(
-			fcppt::math::detail::init_function<
-				Function
-			>(
-				_function
-			)
-		)
-	);
-
 	return
-		Box(
-			fcppt::math::vector::init<
-				typename
-				Box::vector
-			>(
-				[
-					&results
-				](
-					auto const _index
-				)
-				{
-					return
-						std::get<
-							_index
-						>(
-							results
-						).first;
-				}
-			),
-			fcppt::math::dim::init<
-				typename
-				Box::dim
-			>(
-				[
-					&results
-				](
-					auto const _index
-				)
-				{
-					return
-						std::get<
-							_index
-						>(
-							results
-						).second;
-				}
+		fcppt::math::box::detail::init<
+			Box
+		>(
+			[](
+				auto const &_init
 			)
+			{
+				return
+					fcppt::math::dim::init<
+						typename
+						Box::dim
+					>(
+						_init
+					);
+			},
+			_function
 		);
 }
 
