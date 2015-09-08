@@ -16,7 +16,6 @@
 #include <fcppt/container/grid/offset.hpp>
 #include <fcppt/container/grid/pos.hpp>
 #include <fcppt/container/grid/size_type.hpp>
-#include <fcppt/container/grid/detail/at.hpp>
 #include <fcppt/container/grid/detail/resize.hpp>
 #include <fcppt/container/grid/detail/shrink_to_fit.hpp>
 #include <fcppt/math/dim/contents.hpp>
@@ -293,58 +292,6 @@ fcppt::container::grid::object<
 				size_
 			)
 		];
-}
-
-template<
-	typename T,
-	fcppt::container::grid::size_type N,
-	typename A
->
-typename fcppt::container::grid::object<
-	T,
-	N,
-	A
->::reference
-fcppt::container::grid::object<
-	T,
-	N,
-	A
->::at(
-	pos const &_pos
-)
-{
-	return
-		fcppt::container::grid::detail::at(
-			*this,
-			size_,
-			_pos
-		);
-}
-
-template<
-	typename T,
-	fcppt::container::grid::size_type N,
-	typename A
->
-typename fcppt::container::grid::object<
-	T,
-	N,
-	A
->::const_reference
-fcppt::container::grid::object<
-	T,
-	N,
-	A
->::at(
-	pos const &_pos
-) const
-{
-	return
-		fcppt::container::grid::detail::at(
-			*this,
-			size_,
-			_pos
-		);
 }
 
 template<

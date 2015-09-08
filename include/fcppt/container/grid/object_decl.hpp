@@ -242,24 +242,6 @@ public:
 	) const;
 
 	/**
-	\brief Returns a reference to the element at a specified location in the vector.
-	\throws fcppt::container::grid::out_of_range
-	*/
-	reference
-	at(
-		pos const &
-	);
-
-	/**
-	\brief Returns a reference to the element at a specified location in the grid.
-	\throws fcppt::container::grid::out_of_range
-	*/
-	const_reference
-	at(
-		pos const &
-	) const;
-
-	/**
 	\brief Returns the grid's size
 	\warning
 	In contrast to the standard containers, this does not return a
