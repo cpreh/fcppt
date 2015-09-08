@@ -9,7 +9,12 @@
 #define FCPPT_MATH_MATRIX_INFINITY_NORM_HPP_INCLUDED
 
 #include <fcppt/literal.hpp>
+#include <fcppt/tag_value.hpp>
+#include <fcppt/algorithm/fold.hpp>
+#include <fcppt/math/int_range_count.hpp>
 #include <fcppt/math/size_type.hpp>
+#include <fcppt/math/matrix/at_c.hpp>
+#include <fcppt/math/matrix/index.hpp>
 #include <fcppt/math/matrix/object_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <algorithm>
@@ -46,37 +51,62 @@ infinity_norm(
 	> const &_matrix
 )
 {
-	// TODO: algorithm
-	T maximum_row =
-		std::numeric_limits<T>::min();
-
-	for(
-		fcppt::math::size_type row =
-			0u;
-		row < _matrix.rows();
-		++row)
-	{
-		T current_row_sum =
-			fcppt::literal<T>(
-				0);
-
-		for(
-			fcppt::math::size_type column =
-				0u;
-			column < _matrix.columns();
-			++column)
-			current_row_sum +=
-				std::abs(
-					_matrix[row][column]);
-
-		maximum_row =
-			std::max(
-				current_row_sum,
-				maximum_row);
-	}
-
 	return
-		maximum_row;
+		fcppt::algorithm::fold(
+			fcppt::math::int_range_count<
+				R
+			>{},
+			std::numeric_limits<
+				T
+			>::min(),
+			[
+				&_matrix
+			](
+				auto const _row,
+				T const _maximum_row
+			)
+			{
+				return
+					std::max(
+						_maximum_row,
+						fcppt::algorithm::fold(
+							fcppt::math::int_range_count<
+								C
+							>{},
+							fcppt::literal<
+								T
+							>(
+								0
+							),
+							[
+								&_matrix,
+								_row
+							](
+								auto const _column,
+								T const _current_row_sum
+							)
+							{
+								return
+									_current_row_sum
+									+
+									std::abs(
+										fcppt::math::matrix::at_c(
+											_matrix,
+											fcppt::math::matrix::index<
+												fcppt::tag_value(
+													_row
+												),
+												fcppt::tag_value(
+													_column
+												)
+											>{}
+										)
+									);
+							}
+						)
+					);
+			}
+		);
 }
 
 }
