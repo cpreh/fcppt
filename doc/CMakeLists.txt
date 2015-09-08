@@ -194,7 +194,6 @@ set(
 	include/fcppt/algorithm/detail/map_reserve.hpp
 	include/fcppt/algorithm/detail/optimize_map.hpp
 	include/fcppt/algorithm/detail/source_size.hpp
-	include/fcppt/algorithm/enum_array_fold.hpp
 	include/fcppt/algorithm/enum_array_fold_static.hpp
 	include/fcppt/algorithm/find_by_opt.hpp
 	include/fcppt/algorithm/find_if_opt.hpp
@@ -287,6 +286,7 @@ set(
 	include/fcppt/cast/impl/bad_dynamic.hpp
 	include/fcppt/cast/impl/bad_truncation_check.hpp
 	include/fcppt/cast/int_to_enum.hpp
+	include/fcppt/cast/int_to_enum_fun.hpp
 	include/fcppt/cast/int_to_float.hpp
 	include/fcppt/cast/int_to_float_fun.hpp
 	include/fcppt/cast/promote.hpp

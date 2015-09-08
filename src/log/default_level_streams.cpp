@@ -4,7 +4,7 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/algorithm/enum_array_fold.hpp>
+#include <fcppt/algorithm/enum_array_fold_static.hpp>
 #include <fcppt/io/ostream.hpp>
 #include <fcppt/log/default_level_streams.hpp>
 #include <fcppt/log/level.hpp>
@@ -20,7 +20,7 @@ fcppt::log::default_level_streams(
 )
 {
 	return
-		fcppt::algorithm::enum_array_fold<
+		fcppt::algorithm::enum_array_fold_static<
 			fcppt::log::level_stream_array
 		>(
 			[

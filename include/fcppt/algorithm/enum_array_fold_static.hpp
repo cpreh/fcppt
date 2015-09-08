@@ -7,11 +7,10 @@
 #ifndef FCPPT_ALGORITHM_ENUM_ARRAY_FOLD_STATIC_HPP_INCLUDED
 #define FCPPT_ALGORITHM_ENUM_ARRAY_FOLD_STATIC_HPP_INCLUDED
 
+#include <fcppt/decltype_sink.hpp>
 #include <fcppt/algorithm/array_fold_static.hpp>
-#include <fcppt/cast/int_to_enum.hpp>
-#include <fcppt/config/external_begin.hpp>
-#include <type_traits>
-#include <fcppt/config/external_end.hpp>
+#include <fcppt/cast/int_to_enum_fun.hpp>
+#include <fcppt/mpl/integral_cast.hpp>
 
 
 namespace fcppt
@@ -48,15 +47,12 @@ enum_array_fold_static(
 				{
 					return
 						_function(
-							// TODO: integral_cast?
-							std::integral_constant<
+							fcppt::mpl::integral_cast<
 								typename
 								Array::enum_type,
-								fcppt::cast::int_to_enum<
-									typename
-									Array::enum_type
-								>(
-									_index()
+								fcppt::cast::int_to_enum_fun,
+								FCPPT_DECLTYPE_SINK(
+									_index
 								)
 							>{}
 						);
