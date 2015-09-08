@@ -243,10 +243,6 @@ add_fcppt_test(
 )
 
 add_fcppt_test(
-	container/grid/iterator_position
-)
-
-add_fcppt_test(
 	container/grid/object
 	LINK_LIBS
 		"${fcppt_core_TARGET}"

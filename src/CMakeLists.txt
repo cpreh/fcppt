@@ -190,7 +190,6 @@ set(
 	include/fcppt/container/grid/in_range_dim.hpp
 	include/fcppt/container/grid/interpolate.hpp
 	include/fcppt/container/grid/is_object.hpp
-	include/fcppt/container/grid/iterator_position.hpp
 	include/fcppt/container/grid/make_pos_range.hpp
 	include/fcppt/container/grid/make_pos_range_start_end.hpp
 	include/fcppt/container/grid/make_pos_ref_crange.hpp
@@ -459,6 +458,7 @@ set(
 	include/fcppt/math/box/contains.hpp
 	include/fcppt/math/box/contains_point.hpp
 	include/fcppt/math/box/corner_points.hpp
+	include/fcppt/math/box/detail/init.hpp
 	include/fcppt/math/box/distance.hpp
 	include/fcppt/math/box/extend_bounding_box.hpp
 	include/fcppt/math/box/has_dim.hpp
@@ -523,6 +523,7 @@ set(
 	include/fcppt/math/detail/one_dimensional_input.hpp
 	include/fcppt/math/detail/one_dimensional_output.hpp
 	include/fcppt/math/detail/pi.hpp
+	include/fcppt/math/detail/storage_size.hpp
 	include/fcppt/math/detail/structure_cast.hpp
 	include/fcppt/math/detail/to_different.hpp
 	include/fcppt/math/detail/transform.hpp
