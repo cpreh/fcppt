@@ -7,6 +7,8 @@
 #ifndef FCPPT_ALGORITHM_KEY_SET_HPP_INCLUDED
 #define FCPPT_ALGORITHM_KEY_SET_HPP_INCLUDED
 
+#include <fcppt/algorithm/map.hpp>
+
 
 namespace fcppt
 {
@@ -22,25 +24,26 @@ template<
 	typename Set,
 	typename Map
 >
+inline
 Set
 key_set(
 	Map const &_map
 )
 {
-	// TODO: map?
-	Set ret;
-
-	for(
-		typename Map::const_reference item
-		:
-		_map
-	)
-		ret.insert(
-			item.first
-		);
-
 	return
-		ret;
+		fcppt::algorithm::map<
+			Set
+		>(
+			_map,
+			[](
+				typename
+				Map::const_reference _item
+			)
+			{
+				return
+					_item.first;
+			}
+		);
 }
 
 }

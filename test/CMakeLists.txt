@@ -85,6 +85,10 @@ add_fcppt_test(
 )
 
 add_fcppt_test(
+	algorithm/key_set
+)
+
+add_fcppt_test(
 	algorithm/levenshtein
 )
 

@@ -4,13 +4,15 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/algorithm/all_of.hpp>
+#include <fcppt/algorithm/key_set.hpp>
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/test/unit_test.hpp>
-#include <vector>
+#include <map>
+#include <set>
+#include <string>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -18,51 +20,53 @@ FCPPT_PP_PUSH_WARNING
 FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
 
 BOOST_AUTO_TEST_CASE(
-	algorithm_all_of
+	algorithm_key_set
 )
 {
 FCPPT_PP_POP_WARNING
 
 	typedef
-	std::vector<
+	std::set<
 		int
 	>
-	int_vector;
+	int_set;
 
-	BOOST_CHECK(
-		fcppt::algorithm::all_of(
-			int_vector{
-				2,
-				4,
-				6
-			},
-			[](
-				int const _val
+	typedef
+	std::map<
+		int,
+		std::string
+	>
+	int_string_map;
+
+	int_string_map const map{
+		std::make_pair(
+			42,
+			std::string(
+				"test"
 			)
-			{
-				return
-					_val % 2
-					== 0;
-			}
+		),
+		std::make_pair(
+			10,
+			std::string(
+				"test2"
+			)
+		)
+	};
+
+	int_set const keys(
+		fcppt::algorithm::key_set<
+			int_set
+		>(
+			map
 		)
 	);
 
-	BOOST_CHECK(
-		!fcppt::algorithm::all_of(
-			int_vector{
-				2,
-				3,
-				4,
-				6
-			},
-			[](
-				int const _val
-			)
-			{
-				return
-					_val % 2
-					== 0;
-			}
-		)
-	);
+	BOOST_CHECK((
+		keys
+		==
+		int_set{
+			10,
+			42
+		}
+	));
 }

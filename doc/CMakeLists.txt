@@ -372,7 +372,6 @@ set(
 	include/fcppt/container/grid/comparison.hpp
 	include/fcppt/container/grid/detail/assign_fill_recurse.hpp
 	include/fcppt/container/grid/detail/assign_recurse.hpp
-	include/fcppt/container/grid/detail/at.hpp
 	include/fcppt/container/grid/detail/fill.hpp
 	include/fcppt/container/grid/detail/interpolate.hpp
 	include/fcppt/container/grid/detail/pos_iterator_base.hpp
@@ -384,10 +383,7 @@ set(
 	include/fcppt/container/grid/dim.hpp
 	include/fcppt/container/grid/dim_fwd.hpp
 	include/fcppt/container/grid/end_position.hpp
-	include/fcppt/container/grid/exception.hpp
 	include/fcppt/container/grid/fill.hpp
-	include/fcppt/container/grid/impl/exception.hpp
-	include/fcppt/container/grid/impl/out_of_range.hpp
 	include/fcppt/container/grid/in_range.hpp
 	include/fcppt/container/grid/in_range_dim.hpp
 	include/fcppt/container/grid/interpolate.hpp
@@ -415,7 +411,6 @@ set(
 	include/fcppt/container/grid/object_fwd.hpp
 	include/fcppt/container/grid/object_impl.hpp
 	include/fcppt/container/grid/offset.hpp
-	include/fcppt/container/grid/out_of_range.hpp
 	include/fcppt/container/grid/output.hpp
 	include/fcppt/container/grid/pos.hpp
 	include/fcppt/container/grid/pos_fwd.hpp
