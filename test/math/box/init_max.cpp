@@ -8,8 +8,8 @@
 #include <fcppt/math/size_type.hpp>
 #include <fcppt/math/box/comparison.hpp>
 #include <fcppt/math/box/init_max.hpp>
-#include <fcppt/math/box/rect.hpp>
 #include <fcppt/math/box/output.hpp>
+#include <fcppt/math/box/rect.hpp>
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>

@@ -13,9 +13,9 @@
 #include <fcppt/math/int_range_count.hpp>
 #include <fcppt/math/size_type.hpp>
 #include <fcppt/math/matrix/at_c.hpp>
-#include <fcppt/math/matrix/index.hpp>
 #include <fcppt/math/matrix/delete_row_and_column_static.hpp>
 #include <fcppt/math/matrix/has_dim.hpp>
+#include <fcppt/math/matrix/index.hpp>
 #include <fcppt/math/matrix/object_impl.hpp>
 #include <fcppt/math/matrix/static.hpp>
 
