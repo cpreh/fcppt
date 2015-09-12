@@ -4,7 +4,7 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/make_unique_ptr_fcppt.hpp>
+#include <fcppt/make_unique_ptr.hpp>
 #include <fcppt/unique_ptr.hpp>
 #include <fcppt/assign/make_container.hpp>
 #include <fcppt/config/external_begin.hpp>
@@ -29,13 +29,13 @@ main()
 		fcppt::assign::make_container<
 			int_unique_ptr_vector
 		>(
-			fcppt::make_unique_ptr_fcppt<
+			fcppt::make_unique_ptr<
 				int
 			>(
 				1
 			)
 		)(
-			fcppt::make_unique_ptr_fcppt<
+			fcppt::make_unique_ptr<
 				int
 			>(
 				2

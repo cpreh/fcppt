@@ -8,7 +8,7 @@
 #ifndef FCPPT_SIGNAL_BASE_IMPL_HPP_INCLUDED
 #define FCPPT_SIGNAL_BASE_IMPL_HPP_INCLUDED
 
-#include <fcppt/make_unique_ptr_fcppt.hpp>
+#include <fcppt/make_unique_ptr.hpp>
 #include <fcppt/unique_ptr_to_base.hpp>
 #include <fcppt/cast/static_downcast.hpp>
 #include <fcppt/signal/auto_connection.hpp>
@@ -31,7 +31,7 @@ fcppt::signal::base<
 		fcppt::unique_ptr_to_base<
 			fcppt::signal::connection
 		>(
-			fcppt::make_unique_ptr_fcppt<
+			fcppt::make_unique_ptr<
 				concrete_connection
 			>(
 				_function

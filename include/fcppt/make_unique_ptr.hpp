@@ -23,7 +23,7 @@ template<
 fcppt::unique_ptr<
 	Res
 >
-make_unique_ptr_fcppt(
+make_unique_ptr(
 	Args && ..._args
 )
 {

@@ -441,7 +441,7 @@ set(
 	include/fcppt/make_ref.hpp
 	include/fcppt/make_shared_ptr.hpp
 	include/fcppt/make_strong_typedef.hpp
-	include/fcppt/make_unique_ptr_fcppt.hpp
+	include/fcppt/make_unique_ptr.hpp
 	include/fcppt/math/at.hpp
 	include/fcppt/math/at_c.hpp
 	include/fcppt/math/binary_map.hpp

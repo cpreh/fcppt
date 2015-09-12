@@ -4,7 +4,7 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/make_unique_ptr_fcppt.hpp>
+#include <fcppt/make_unique_ptr.hpp>
 #include <fcppt/optional_impl.hpp>
 #include <fcppt/unique_ptr.hpp>
 #include <fcppt/algorithm/map_optional.hpp>
@@ -68,7 +68,7 @@ FCPPT_PP_POP_WARNING
 					1
 					?
 						optional_ptr(
-							fcppt::make_unique_ptr_fcppt<
+							fcppt::make_unique_ptr<
 								int
 							>(
 								_value

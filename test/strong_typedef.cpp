@@ -4,7 +4,7 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/make_unique_ptr_fcppt.hpp>
+#include <fcppt/make_unique_ptr.hpp>
 #include <fcppt/strong_typedef.hpp>
 #include <fcppt/strong_typedef_input.hpp>
 #include <fcppt/strong_typedef_output.hpp>
@@ -341,7 +341,7 @@ FCPPT_PP_POP_WARNING
 	);
 
 	strong_int_ptr val(
-		fcppt::make_unique_ptr_fcppt<
+		fcppt::make_unique_ptr<
 			int
 		>(
 			42
@@ -361,7 +361,7 @@ FCPPT_PP_POP_WARNING
 	);
 
 	strong_int_ptr val3(
-		fcppt::make_unique_ptr_fcppt<
+		fcppt::make_unique_ptr<
 			int
 		>(
 			10

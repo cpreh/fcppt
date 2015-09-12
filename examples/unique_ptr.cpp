@@ -4,7 +4,7 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/make_unique_ptr_fcppt.hpp>
+#include <fcppt/make_unique_ptr.hpp>
 #include <fcppt/noncopyable.hpp>
 #include <fcppt/shared_ptr_impl.hpp>
 #include <fcppt/text.hpp>
@@ -29,10 +29,10 @@ typedef fcppt::unique_ptr<
 unique_int_ptr
 int_ptr_factory()
 {
-	// make_unique_ptr_fcppt is a factory function to make a unique_ptr An
+	// make_unique_ptr is a factory function to make a unique_ptr An
 	// rvalue is returned here, so no moving is necessary.
 	return
-		fcppt::make_unique_ptr_fcppt<
+		fcppt::make_unique_ptr<
 			int
 		>(
 			42
@@ -67,7 +67,7 @@ test2()
 {
 	// ptr is a named object
 	unique_int_ptr ptr(
-		fcppt::make_unique_ptr_fcppt<
+		fcppt::make_unique_ptr<
 			int
 		>(
 			42
@@ -85,7 +85,7 @@ void
 test3()
 {
 	unique_int_ptr ptr(
-		fcppt::make_unique_ptr_fcppt<
+		fcppt::make_unique_ptr<
 			int
 		>(
 			42
@@ -169,7 +169,7 @@ test4()
 		fcppt::unique_ptr_to_base<
 			base
 		>(
-			fcppt::make_unique_ptr_fcppt<
+			fcppt::make_unique_ptr<
 				dervied
 			>()
 		)
@@ -194,7 +194,7 @@ test5()
 
 	const_int_ptr foo(
 		fcppt::unique_ptr_to_const(
-			fcppt::make_unique_ptr_fcppt<
+			fcppt::make_unique_ptr<
 				int
 			>(
 				42
@@ -218,7 +218,7 @@ test6()
 	> const scoped_int_ptr;
 
 	scoped_int_ptr const ptr(
-		fcppt::make_unique_ptr_fcppt<
+		fcppt::make_unique_ptr<
 			int
 		>(
 			42
@@ -262,7 +262,7 @@ class foo_impl
 foo::foo()
 :
 	impl_(
-		fcppt::make_unique_ptr_fcppt<
+		fcppt::make_unique_ptr<
 			foo_impl
 		>()
 	)

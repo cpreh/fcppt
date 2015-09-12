@@ -4,7 +4,7 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/make_unique_ptr_fcppt.hpp>
+#include <fcppt/make_unique_ptr.hpp>
 #include <fcppt/unique_ptr.hpp>
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
@@ -47,7 +47,7 @@ FCPPT_PP_POP_WARNING
 	variant;
 
 	variant test(
-		fcppt::make_unique_ptr_fcppt<
+		fcppt::make_unique_ptr<
 			int
 		>(
 			42

@@ -4,7 +4,7 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/make_unique_ptr_fcppt.hpp>
+#include <fcppt/make_unique_ptr.hpp>
 #include <fcppt/unique_ptr.hpp>
 #include <fcppt/algorithm/join.hpp>
 #include <fcppt/assign/make_container.hpp>
@@ -86,13 +86,13 @@ FCPPT_PP_POP_WARNING
 			fcppt::assign::make_container<
 				int_unique_ptr_vector
 			>(
-				fcppt::make_unique_ptr_fcppt<
+				fcppt::make_unique_ptr<
 					int
 				>(
 					1
 				)
 			)(
-				fcppt::make_unique_ptr_fcppt<
+				fcppt::make_unique_ptr<
 					int
 				>(
 					2
@@ -101,13 +101,13 @@ FCPPT_PP_POP_WARNING
 			fcppt::assign::make_container<
 				int_unique_ptr_vector
 			>(
-				fcppt::make_unique_ptr_fcppt<
+				fcppt::make_unique_ptr<
 					int
 				>(
 					3
 				)
 			)(
-				fcppt::make_unique_ptr_fcppt<
+				fcppt::make_unique_ptr<
 					int
 				>(
 					4
@@ -116,13 +116,13 @@ FCPPT_PP_POP_WARNING
 			fcppt::assign::make_container<
 				int_unique_ptr_vector
 			>(
-				fcppt::make_unique_ptr_fcppt<
+				fcppt::make_unique_ptr<
 					int
 				>(
 					5
 				)
 			)(
-				fcppt::make_unique_ptr_fcppt<
+				fcppt::make_unique_ptr<
 					int
 				>(
 					6

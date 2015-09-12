@@ -4,7 +4,7 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/make_unique_ptr_fcppt.hpp>
+#include <fcppt/make_unique_ptr.hpp>
 #include <fcppt/move_if_rvalue.hpp>
 #include <fcppt/noncopyable.hpp>
 #include <fcppt/unique_ptr.hpp>
@@ -70,7 +70,7 @@ public:
 	container()
 	:
 		val_(
-			fcppt::make_unique_ptr_fcppt<
+			fcppt::make_unique_ptr<
 				int
 			>(
 				10

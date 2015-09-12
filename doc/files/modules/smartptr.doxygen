@@ -188,7 +188,7 @@ constructing, copying, assigning, destroying or dereferencing unique ptrs, the
 type of the pointed to object must usually be complete (this depends on the
 deleter used).</li>
 
-<li>\link fcppt::make_unique_ptr_fcppt\endlink should be used to construct
+<li>\link fcppt::make_unique_ptr\endlink should be used to construct
 unique ptrs. It is similar to \link fcppt::make_shared_ptr\endlink in the sense
 that it helps to avoid memory leaks, but it is not more efficient than normal
 construction of unique ptrs, because there is no shared count to keep track
@@ -205,7 +205,7 @@ desired. The following example shows how such a factory can be created.
 
 \snippet unique_ptr.cpp unique_ptr_factory
 
-The return of <code>make_unique_ptr_fcppt</code> doesn't require a move,
+The return of <code>make_unique_ptr</code> doesn't require a move,
 because it returns an rvalue.
 
 The factory can be used as follows:
@@ -348,8 +348,8 @@ allocated via <code>std::malloc</code>
 <td>Contains \link fcppt::make_shared_ptr\endlink.</td>
 </tr>
 <tr>
-<td><code>make_unique_ptr_fcppt.hpp</code></td>
-<td>Contains \link fcppt::make_unique_ptr_fcppt\endlink.</td>
+<td><code>make_unique_ptr.hpp</code></td>
+<td>Contains \link fcppt::make_unique_ptr\endlink.</td>
 </tr>
 <tr>
 <td><code>shared_ptr_fwd.hpp</code></td>

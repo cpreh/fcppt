@@ -5,7 +5,7 @@
 
 
 #include <fcppt/from_optional.hpp>
-#include <fcppt/make_unique_ptr_fcppt.hpp>
+#include <fcppt/make_unique_ptr.hpp>
 #include <fcppt/optional_impl.hpp>
 #include <fcppt/unique_ptr.hpp>
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
@@ -119,7 +119,7 @@ FCPPT_PP_POP_WARNING
 	optional_int_unique_ptr const ptr(
 		fcppt::from_optional(
 			optional_int_unique_ptr(
-				fcppt::make_unique_ptr_fcppt<
+				fcppt::make_unique_ptr<
 					int
 				>(
 					42
@@ -127,7 +127,7 @@ FCPPT_PP_POP_WARNING
 			),
 			[]{
 				return
-					fcppt::make_unique_ptr_fcppt<
+					fcppt::make_unique_ptr<
 						int
 					>(
 						10

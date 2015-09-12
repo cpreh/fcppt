@@ -4,7 +4,7 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/make_unique_ptr_fcppt.hpp>
+#include <fcppt/make_unique_ptr.hpp>
 #include <fcppt/optional_assign.hpp>
 #include <fcppt/optional_impl.hpp>
 #include <fcppt/unique_ptr_impl.hpp>
@@ -72,7 +72,7 @@ FCPPT_PP_POP_WARNING
 	int_unique_ptr const &result(
 		fcppt::optional_assign(
 			test,
-			fcppt::make_unique_ptr_fcppt<
+			fcppt::make_unique_ptr<
 				int
 			>(
 				42

@@ -5,7 +5,7 @@
 
 
 #include <fcppt/const.hpp>
-#include <fcppt/make_unique_ptr_fcppt.hpp>
+#include <fcppt/make_unique_ptr.hpp>
 #include <fcppt/maybe.hpp>
 #include <fcppt/optional_alternative.hpp>
 #include <fcppt/optional_comparison.hpp>
@@ -95,7 +95,7 @@ FCPPT_PP_POP_WARNING
 		fcppt::maybe(
 			fcppt::optional_alternative(
 				optional_int_unique_ptr(
-					fcppt::make_unique_ptr_fcppt<
+					fcppt::make_unique_ptr<
 						int
 					>(
 						42

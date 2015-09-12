@@ -5,7 +5,7 @@
 
 
 #include <fcppt/forward_optional_get.hpp>
-#include <fcppt/make_unique_ptr_fcppt.hpp>
+#include <fcppt/make_unique_ptr.hpp>
 #include <fcppt/optional_impl.hpp>
 #include <fcppt/unique_ptr.hpp>
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
@@ -82,7 +82,7 @@ FCPPT_PP_POP_WARNING
 	int_unique_ptr const result(
 		test_move(
 			optional_int_unique_ptr(
-				fcppt::make_unique_ptr_fcppt<
+				fcppt::make_unique_ptr<
 					int
 				>(
 					42
