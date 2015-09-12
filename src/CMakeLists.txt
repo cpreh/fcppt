@@ -53,6 +53,8 @@ set(
 	include/fcppt/algorithm/set_union.hpp
 	include/fcppt/algorithm/shift_compare.hpp
 	include/fcppt/algorithm/shortest_levenshtein.hpp
+	include/fcppt/algorithm/update_action.hpp
+	include/fcppt/algorithm/update_action_fwd.hpp
 	include/fcppt/assert/basic/conditional.hpp
 	include/fcppt/assert/basic/conditional_message.hpp
 	include/fcppt/assert/basic/default_message.hpp

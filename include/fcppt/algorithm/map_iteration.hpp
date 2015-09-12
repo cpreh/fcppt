@@ -7,6 +7,8 @@
 #ifndef FCPPT_ALGORITHM_MAP_ITERATION_HPP_INCLUDED
 #define FCPPT_ALGORITHM_MAP_ITERATION_HPP_INCLUDED
 
+#include <fcppt/algorithm/update_action.hpp>
+
 
 namespace fcppt
 {
@@ -19,7 +21,11 @@ namespace algorithm
 \ingroup fcpptalgorithm
 
 Iterates over \a _map, applying \a _update_action to each element. If \a
-_update_action returns true, the element is deleted from the map.
+_update_action returns \link fcppt::algorithm::update_action::remove\endlink,
+the element is deleted from the map.
+
+\tparam UpdateAction A function callable as
+<code>fcppt::algorithm::update_action (Map::value_type)</code>.
 */
 template<
 	typename Map,
@@ -44,14 +50,20 @@ map_iteration(
 	{
 		++next;
 
-		if(
+		switch(
 			_update_action(
 				*it
 			)
 		)
+		{
+		case fcppt::algorithm::update_action::remove:
 			_map.erase(
 				it
 			);
+			break;
+		case fcppt::algorithm::update_action::keep:
+			break;
+		}
 	}
 }
 

@@ -105,6 +105,14 @@ add_fcppt_test(
 )
 
 add_fcppt_test(
+	algorithm/map_iteration
+)
+
+add_fcppt_test(
+	algorithm/map_iteration_second
+)
+
+add_fcppt_test(
 	algorithm/map_optional
 )
 
