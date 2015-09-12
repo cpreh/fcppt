@@ -387,11 +387,11 @@ fcppt::shared_ptr<
 >::shared_ptr(
 	fcppt::detail::make_shared_wrapper<
 		Other
-	> const _other
+	> &&_other
 )
 :
 	impl_(
-		_other.get()
+		_other.release()
 	)
 {
 	static_assert(

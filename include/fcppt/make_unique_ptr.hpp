@@ -4,8 +4,8 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_MAKE_UNIQUE_PTR_FCPPT_HPP_INCLUDED
-#define FCPPT_MAKE_UNIQUE_PTR_FCPPT_HPP_INCLUDED
+#ifndef FCPPT_MAKE_UNIQUE_PTR_HPP_INCLUDED
+#define FCPPT_MAKE_UNIQUE_PTR_HPP_INCLUDED
 
 #include <fcppt/unique_ptr_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
@@ -16,10 +16,16 @@
 namespace fcppt
 {
 
+/**
+\brief Like <code>std::make_unique</code> for \link fcppt::unique_ptr\endlink
+
+\ingroup fcpptsmartptr
+*/
 template<
 	typename Res,
 	typename... Args
 >
+inline
 fcppt::unique_ptr<
 	Res
 >

@@ -10,6 +10,7 @@
 #include <fcppt/detail/make_shared_wrapper_fwd.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <memory>
+#include <utility>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -24,25 +25,32 @@ template<
 class make_shared_wrapper
 {
 public:
-	typedef std::shared_ptr<
+	typedef
+	std::shared_ptr<
 		T
-	> ptr_type;
+	>
+	ptr_type;
 
 	explicit
 	make_shared_wrapper(
-		ptr_type const _ptr
+		ptr_type &&_ptr
 	)
 	:
 		ptr_(
-			_ptr
+			std::move(
+				_ptr
+			)
 		)
 	{
 	}
 
-	ptr_type const
-	get() const
+	ptr_type
+	release()
 	{
-		return ptr_;
+		return
+			std::move(
+				ptr_
+			);
 	}
 private:
 	ptr_type ptr_;

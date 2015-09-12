@@ -358,7 +358,7 @@ public:
 	shared_ptr(
 		fcppt::detail::make_shared_wrapper<
 			Other
-		>
+		> &&
 	);
 // \endcond
 private:

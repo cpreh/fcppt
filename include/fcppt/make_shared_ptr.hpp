@@ -17,10 +17,16 @@
 namespace fcppt
 {
 
+/**
+\brief Like <code>std::make_shared</code> for \link fcppt::shared_ptr\endlink
+
+\ingroup fcpptsmartptr
+*/
 template<
 	typename Res,
 	typename... Args
 >
+inline
 fcppt::detail::make_shared_wrapper<
 	Res
 >
