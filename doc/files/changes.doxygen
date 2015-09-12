@@ -105,6 +105,16 @@
 \subsection changes_changed_functionality_to_200 Changed functionality
 
 <ul>
+<li>\ref fcpptalgorithm
+	<ul>
+	<li>\link fcppt::algorithm::sequence_iteration\endlink, \link
+	fcppt::algorithm::map_iteration\endlink and \link
+	fcppt::algorithm::map_iteration_second\endlink now expect their
+	function to return \link fcppt::algorithm::update_action\endlink
+	instead of a bool.</li>
+	</ul>
+</li>
+
 <li>\ref fcpptcontainer
 	<ul>
 	<li>Renamed <code>fcppt::container::find_opt</code> to \link
