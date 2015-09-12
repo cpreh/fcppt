@@ -19,39 +19,39 @@ namespace algorithm
 {
 
 /**
-\brief Folds a container into a value
+\brief Folds a range into a value
 
 \ingroup fcpptalgorithm
 
 Like fold_left a in functional programming language, this function starts with
 \a _state as <code>cur_state</code>, and calls <code> cur_state =
-_function(element, cur_state)</code> for every element of \a _container.
+_function(element, cur_state)</code> for every element of \a _range.
 
-\tparam Container Must be a sequence
+\tparam Range A forward range or an MPL range
 
 \tparam State Has to be movable or copyable
 
-\tparam Function Must be callable with elements of \a Container and \a State,
-returning a \a State
+\tparam Function Must be callable as <code>State (Range::value_type,
+State)</code>.
 **/
 template<
-	typename Container,
+	typename Range,
 	typename State,
 	typename Function
 >
 inline
 State
 fold(
-	Container &&_container,
+	Range &&_range,
 	State _state,
 	Function _function
 )
 {
 	fcppt::algorithm::loop(
 		std::forward<
-			Container
+			Range
 		>(
-			_container
+			_range
 		),
 		[
 			&_state,

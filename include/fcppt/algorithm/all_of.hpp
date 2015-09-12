@@ -17,11 +17,13 @@ namespace algorithm
 {
 
 /**
-\brief Checks if a given \p value is inside a range
+\brief Checks if a given predicate is true for all elements of a range
 
 \ingroup fcpptalgorithm
 
-\tparam Pred A predicate (a unary function returning a bool)
+\tparam Pred A function callable as <code>bool (Range::value_type)</code>.
+
+\tparam Range A forward range or an MPL range.
 */
 template<
 	typename Range,
@@ -30,7 +32,7 @@ template<
 inline
 bool
 all_of(
-	Range const &_container,
+	Range const &_range,
 	Pred const &_pred
 )
 {
@@ -39,7 +41,7 @@ all_of(
 	};
 
 	fcppt::algorithm::loop_break(
-		_container,
+		_range,
 		[
 			&_pred,
 			&result

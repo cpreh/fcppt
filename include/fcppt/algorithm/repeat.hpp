@@ -21,6 +21,10 @@ namespace algorithm
 \ingroup fcpptalgorithm
 
 Calls \a _function \a _count times.
+
+\tparam Count An integer type
+
+\tparam Function A function callable as <code>void ()</code>.
 */
 template<
 	typename Count,

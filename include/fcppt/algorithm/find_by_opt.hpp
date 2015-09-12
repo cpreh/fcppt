@@ -22,19 +22,19 @@ namespace algorithm
 {
 
 /**
-\brief Optionally finds an element and transforms it
+\brief Optionally finds an element and transforms it.
 
-Returns the first element in \a _range for which \a _func does not return an
-empty optional, if there is any. Otherwise, returns the empty optional.
+Returns the first element in \a _range for which \a _function does not return
+an empty optional, if there is any. Otherwise, returns the empty optional.
 
 \ingroup fcpptalgorithm
 
-\tparam Func A function callable with elements from the input sequence. It must
+\tparam Function A function callable with elements from the input sequence. It must
 return an optional.
 */
 template<
 	typename Range,
-	typename Func
+	typename Function
 >
 inline
 fcppt::algorithm::detail::find_by_result<
@@ -44,11 +44,11 @@ fcppt::algorithm::detail::find_by_result<
 			Range
 		>::type
 	>,
-	Func
+	Function
 >
 find_by_opt(
 	Range &&_range,
-	Func const &_func
+	Function const &_function
 )
 {
 	typedef
@@ -63,7 +63,7 @@ find_by_opt(
 	typedef
 	fcppt::algorithm::detail::find_by_result<
 		iterator_type,
-		Func
+		Function
 	>
 	result_type;
 
@@ -74,7 +74,7 @@ find_by_opt(
 				result_type
 			>::type
 		>::value,
-		"Func must return an optional"
+		"Function must return an optional"
 	);
 
 	iterator_type const end(
@@ -90,7 +90,7 @@ find_by_opt(
 	)
 	{
 		result_type result(
-			_func(
+			_function(
 				*cur
 			)
 		);

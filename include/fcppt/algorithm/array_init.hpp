@@ -26,12 +26,11 @@ Constructs an array of type \a Array by initializing every element with \a
 _value.
 
 \tparam Array Must be a std::array
-
-\param _value The value to initialize every element with
 */
 template<
 	typename Array
 >
+inline
 Array
 array_init(
 	typename Array::value_type const &_value

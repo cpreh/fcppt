@@ -18,11 +18,11 @@ namespace algorithm
 {
 
 /**
-\brief Checks if a given \p value is inside a range
+\brief Checks if a given \p value is inside a range.
 
 \ingroup fcpptalgorithm
 
-\tparam T Must be equality comparable to The range's value type
+\tparam T Must be equality comparable to the range's value type.
 */
 template<
 	typename Range,

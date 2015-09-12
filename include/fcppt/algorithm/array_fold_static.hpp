@@ -28,11 +28,8 @@ index.
 
 \tparam Array Must be a std::array
 
-\tparam Function Must be a function callable with
-<code>std::integral_constant<std::size_t, I></code>, returning elements of type
-<code>typename Array::value_type</code>
-
-\param _function The function to use for initialization
+\tparam Function Must be a function callable as <code>Array::value_type
+(std::integral_constant<std::size_t, I>)</code>.
 */
 template<
 	typename Array,

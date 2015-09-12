@@ -30,10 +30,8 @@ source range's size at the start, if possible. For this to work, the result
 container needs a <code>reserve</code> function, and the source range needs a
 <code>size</code> function or must be a random access range.
 
-\param _function A function accepting elements from \a _source and returning
-objects of the \a TargetContainer's element type.
-
-\param _source The range to be mapped.
+\tparam Function A function callable as <code>TargetContainer::value_type
+(SourceRange::value_type)</code>.
 */
 template<
 	typename TargetContainer,

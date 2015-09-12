@@ -16,15 +16,17 @@ namespace algorithm
 {
 
 /**
-\brief Tries to remove all elements from \p _container matching \p _element
+\brief Removes all elements from \p _container matching \p _element
 
 \ingroup fcpptalgorithm
 
-\return true if something has been removed, false otherwise
+\return <code>true</code> if something has been removed, <code>false</code>
+otherwise.
 */
 template<
 	typename Container
 >
+inline
 bool
 remove(
 	Container &_container,

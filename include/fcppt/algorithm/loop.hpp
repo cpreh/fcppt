@@ -18,6 +18,19 @@ namespace fcppt
 namespace algorithm
 {
 
+/**
+\brief Iterates through a normal range or an MPL range.
+
+\ingroup fcpptalgorithm
+
+Iterates through \a _range, calling \a _body for every element of the range.
+If \a Range is an MPL range, it is the same as \link
+fcppt::mpl::for_each\endlink.
+
+\tparam Range A forward range or an MPL range.
+
+\tparam Body A function callable as <code>void (Range::value_type)</code>
+*/
 template<
 	typename Range,
 	typename Body

@@ -24,23 +24,21 @@ namespace algorithm
 
 \ingroup fcpptalgorithm
 
-For every element in \a _source (a_1, ..., a_n), _function(a_1), ...,
-_function(a_n) is called, yielding (r_1, ..., r_n). The result is
-join(join(r_1, r_2), ..., r_n).
+For every element in \a _range <code>(a_1, ..., a_n), _function(a_1), ...,
+_function(a_n)</code> is called, yielding <code>(r_1, ..., r_n)</code>. The
+result is <code>join(r_1, r_2, ..., r_n)</code>.
 
-\param _function A function accepting elements from \a _source and returning an
-object of type \a TargetContainer.
-
-\param _source The range to be mapped.
+\tparam Function A function callable as <code>TargetContainer
+(Range::value_type)</code>.
 */
 template<
 	typename TargetContainer,
-	typename Source,
+	typename Range,
 	typename Function
 >
 TargetContainer
 map_concat(
-	Source &&_source,
+	Range &&_range,
 	Function const &_function
 )
 {
@@ -49,9 +47,9 @@ map_concat(
 			TargetContainer
 		>(
 			std::forward<
-				Source
+				Range
 			>(
-				_source
+				_range
 			),
 			_function,
 			[](

@@ -22,7 +22,7 @@ namespace algorithm
 
 \ingroup fcpptalgorithm
 
-\tparam Pred A predicate (a unary function returning a bool)
+\tparam Pred A function callable as <code>bool (Range::value_type)</code>.
 */
 template<
 	typename Range,

@@ -39,8 +39,8 @@ Example:
 
 \tparam SourceCount The number of elements in the source array
 
-\tparam Function Must be a function taking elements of the source array and
-returning elements of the \a TargetArray
+\tparam Function Must be a function callable as <code>TargetArray::value_type
+(SourceType)</code>.
 **/
 template<
 	typename TargetArray,

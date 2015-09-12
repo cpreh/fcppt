@@ -18,23 +18,22 @@ namespace algorithm
 {
 
 /**
-\brief Constructs an array by moving a function result
+\brief Constructs an array by calling a function for every element
 
 \ingroup fcpptalgorithm
 
 Constructs an array of type \a Array by initializing every element with
-<code>_function()</code>
+<code>_function()</code>.
 
 \tparam Array Must be a std::array
 
-\tparam Function Must return <code>typename Array::value_type</code>
-
-\param _function The function to call for each element
+\tparam Function A function callable as <code>Array::value_type ()</code>.
 */
 template<
 	typename Array,
 	typename Function
 >
+inline
 Array
 array_init_move(
 	Function const &_function

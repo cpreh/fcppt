@@ -18,11 +18,14 @@ namespace algorithm
 {
 
 /**
-\brief Tries to remove all elements from \p _container matching \p _predicate
+\brief Removes all elements from \p _container matching \p _predicate
 
 \ingroup fcpptalgorithm
 
-\return <code>true</code> if something has been removed, <code>false</code> otherwise
+\tparam Predicate A function callable as <code>bool (Container::value_type)</code>.
+
+\return <code>true</code> if something has been removed, <code>false</code>
+otherwise.
 */
 template<
 	typename Container,
