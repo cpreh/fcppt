@@ -125,7 +125,15 @@ add_fcppt_test(
 )
 
 add_fcppt_test(
+	algorithm/set_difference
+)
+
+add_fcppt_test(
 	algorithm/set_intersection
+)
+
+add_fcppt_test(
+	algorithm/set_union
 )
 
 add_fcppt_test(
