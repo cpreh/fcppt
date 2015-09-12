@@ -22,12 +22,12 @@ include(
 
 set(
 	FCPPT_MAJOR_VERSION
-	1
+	2
 )
 
 set(
 	FCPPT_MINOR_VERSION
-	5
+	0
 )
 
 set(
