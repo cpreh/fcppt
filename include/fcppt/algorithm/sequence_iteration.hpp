@@ -7,6 +7,8 @@
 #ifndef FCPPT_ALGORITHM_SEQUENCE_ITERATION_HPP_INCLUDED
 #define FCPPT_ALGORITHM_SEQUENCE_ITERATION_HPP_INCLUDED
 
+#include <fcppt/algorithm/update_action.hpp>
+
 
 namespace fcppt
 {
@@ -19,7 +21,11 @@ namespace algorithm
 \ingroup fcpptalgorithm
 
 Iterates over \a _sequence, applying \a _update_action to each element. If \a
-_update_action returns true, the element is deleted from the sequence.
+_update_action returns \link fcppt::algorithm::update_action::remove\endlink,
+the element is removed from the sequence.
+
+\tparam UpdateAction A function callable as
+<code>fcppt::algorithm::update_action (Sequence::value_type)</code>.
 */
 template<
 	typename Sequence,
@@ -38,17 +44,24 @@ sequence_iteration(
 		it != _sequence.end();
 	)
 	{
-		if(
+		switch(
 			_update_action(
 				*it
 			)
 		)
+		{
+		case fcppt::algorithm::update_action::remove:
 			it =
 				_sequence.erase(
 					it
 				);
-		else
+
+			break;
+		case fcppt::algorithm::update_action::keep:
 			++it;
+
+			break;
+		}
 	}
 }
 

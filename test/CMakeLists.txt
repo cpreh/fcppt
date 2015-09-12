@@ -121,6 +121,10 @@ add_fcppt_test(
 )
 
 add_fcppt_test(
+	algorithm/sequence_iteration
+)
+
+add_fcppt_test(
 	algorithm/set_intersection
 )
 
