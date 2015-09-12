@@ -1,334 +1,230 @@
 /**
 \page changes Changes
 
-\section changes_changes_to_150 Changes from 1.4.0 to 1.5.0
+\section changes_changes_to_200 Changes from 1.5.0 to 2.0.0
 
-\subsection changes_added_functionality_to_150 Added functionality
+\subsection changes_general_to_200 General changes
 
 <ul>
 
+<li>
+	<b><code>C++14</code> is now required.</b> This probably excludes compilers
+	older than <code>gcc-5.2</code> and <code>clang-3.4</code>. However, this
+	also leads to several improvements:
+	<ul>
+	<li>Polymorphic lambdas are now used to initialize arrays with static indices.
+	This improves the safety of several algorithms, e.g. <code>matrix *
+	vector</code>, <code>matrix * matrix</code> and so on, by checking for
+	out-of-bounds accesses at compile-time.</li>
+	<li>Heterogenous lookup is now supported. For example, you can search a
+	<code>std::set<unique_ptr<int>></code> given an <code>int *</code>.</li>
+	</ul>
+</li>
+
+<li>
+	\ref fcppt.algorithm has been cleaned up substantially:
+	<ul>
+	<li>
+	All <code>_exn</code> functions have been removed in favor of \link
+	fcppt::optional_to_exception\endlink.</li>
+	<li>All iterator-based versions have
+	been removed in favor of ranges.</li>
+	<li>All algorithms can now take rvalues to support views.</li>
+	</ul>
+</li>
+
+</ul>
+
+\subsection changes_added_functionality_to_200 Added functionality
+
+<ul>
 <li>\ref fcpptalgorithm
 	<ul>
-	<li>Added \link fcppt::algorithm::find_opt\endlink.</li>
-	<li>Added \link fcppt::algorithm::index_of\endlink and \link
-	fcppt::algorithm::index_of_enum_array\endlink.</li>
-	</ul>
-</li>
-
-<li>\ref fcpptoptional
-	<ul>
-	<li>Added \link fcppt::optional_deref\endlink which returns the
-	dereferenced contents of the optional iff it is not empty. This is
-	often useful when optionals contain iterators or unique pointers.</li>
-	</ul>
-</li>
-
-<li>\ref fcpptvarious
-	<ul>
-	<li>Added \link fcppt::function\endlink which is a wrapper around
-	<code>%std::function</code> that cannot be null and has an explicit
-	constructor.</li>
-	</ul>
-</li>
-
-</ul>
-
-\subsection changes_changed_functionality_to_150 Changed functionality
-
-<ul>
-
-<li>\ref fcpptalgorithm
-	<ul>
-	<li>Let \link fcppt::algorithm::find_if_opt\endlink return an optional
-	iterator to make it more consistent with the other similar
-	algorithms.</li>
-	</ul>
-</li>
-
-<li>\ref fcpptlog
-	<ul>
-	<li>Use \link fcppt::function\endlink for \link
-	fcppt::log::format::function\endlink.</li>
-	<li>Introduced \link fcppt::log::format::optional_function\endlink to
-	make it clear where a function can be missing.</li>
-	<li>Changed \link fcppt::log::parameters\endlink to only consist of a
-	single class.</li>
-	</ul>
-</li>
-
-<li>\ref fcpptsignal
-	<ul>
-	<li>Use \link fcppt::function\endlink instead of
-	<code>%std::function</code>.</li>
-	<li>Use a strong typedef for the initial value of a signal.</li>
-	</ul>
-</li>
-
-</ul>
-
-\subsection changes_bugfixes_to_150 Bugfixes
-
-<ul>
-
-<li>\ref fcpptsmartptr
-	<ul>
-	<li>Readded \link FCPPT_ASSERT_COMPLETE\endlink to \link
-	fcppt::default_deleter\endlink.</li>
-	</ul>
-</li>
-
-<li>Add a missing <code>;</code> for <code>boost-1.59</code> in
-<code>test/io/read_write.cpp</code>.</li>
-
-</ul>
-
-\section changes_changes_to_140 Changes from 1.3.0 to 1.4.0
-
-\subsection changes_general_to_140 General changes
-
-<ul>
-<li>At least <code>CMake-3.0</code> is now required.</li>
-<li>Fixed upcoming <code>clang-3.7</code> warnings when <code>std::move</code>
-can be omitted from <code>return</code> statements.</li>
-</ul>
-
-\subsection changes_added_functionality_to_140 Added functionality
-
-<ul>
-
-<li>\ref fcpptalgorithm
-	<ul>
-	<li>Added \link fcppt::algorithm::set_difference\endlink.</li>
-	<li>Added \link fcppt::algorithm::all_of\endlink.</li>
-	<li>Improve <code>reserve</code> optimization in \link
-	fcppt::algorithm::map \endlink by either using <code>%end() -
-	%begin()</code> or <code>%size()</code> of the source range.</li>
-	</ul>
-</li>
-
-<li>\ref fcpptcasts
-	<ul>
-	<li>Added \link fcppt::cast::to_void_ptr\endlink.</li>
+	<li>Added \link fcppt::algorithm::loop\endlink to express loops over
+	different ranges, including MPL ranges. Also added \link
+	fcppt::algorithm::loop_break\endlink which is similar to the former but
+	can break out of the loop early.</li>
 	</ul>
 </li>
 
 <li>\ref fcpptcontainer
 	<ul>
-	<li>Added \link fcppt::container::maybe_front\endlink.</li>
-	<li>Added \link fcppt::container::maybe_back\endlink.</li>
-	<li>Added <code>noexcept</code> to move constructors and assignment
-	operators of \link fcppt::container::raw_vector \endlink, \link
-	fcppt::container::tree::object \endlink and \link
-	fcppt::container::grid::object \endlink.
-	</li>
-	<li>Added \link fcppt::container::grid::at_optional\endlink.</li>
-	<li>Added \link fcppt::container::at_optional\endlink.</li>
-	<li>Added \link fcppt::container::grid::pos_range\endlink which is just
-	a range over positions without a grid object.</li>
-	<li>Added <code>%size</code> function to \link
-	fcppt::container::grid::pos_ref_range\endlink.</li>
-	<li>Removed default constructor of \link
-	fcppt::container::tree::object\endlink.</li>
+	<li>Added \link fcppt::container::find_opt\endlink which returns a
+	reference to <code> value_type</code> instead of
+	<code>mapped_type</code>.</li>
 	</ul>
 </li>
 
 <li>\ref fcpptconfig
 	<ul>
-	<li>Ignore clang's <code>-Wunused-local-typedef</code> in external
-	headers.  </li>
-	</ul>
-</li>
-
-<li>\ref fcpptenum
-	<ul>
-	<lI>Added <code>%size</code> function to \link
-	fcppt::enum_range\endlink.</li>
+	<li>Ignore <code>-Wsign-compare</code> in external headers.</li>
 	</ul>
 </li>
 
 <li>\ref fcpptmath
 	<ul>
-	<li>Added \link fcppt::math::at_c \endlink that accesses a container
-	using an integral constant as index.</li>
-	<li>Added \link fcppt::math::interval_distance\endlink.</li>
-	<li>Added \link fcppt::math::box::distance\endlink.</li>
-	<li>Added \link fcppt::math::vector::init\endlink,
-	fcppt::math::box::init and \link fcppt::math::dim::init
-	\endlink.</li>
-	<li>Added \link fcppt::math::vector::map\endlink and \link
-	fcppt::math::dim::map\endlink.</li>
-	</ul>
-</li>
-
-<li>\ref fcpptoptional
-	<ul>
-	<li>Added <code>noexcept</code> to the move constructor and assignment
-	operator.</li>
-	<li> Added \link fcppt::optional_assign\endlink which assigns to an
-	optional but returns the reference to the optional's content.
-	</li>
-	<li>Added \link fcppt::optional_from_pointer\endlink.</li>
-	<li>Added \link fcppt::optional_alternative\endlink.</li>
-	</ul>
-</li>
-
-<li>\ref fcpptrandom
-	<ul>
-	<li>Added \link fcppt::random::wrapper::uniform_container\endlink which
-	returns elements from a container using a uniform distribution.
-	</li>
-	<li>Added <code>SeedSeq</code> constructor to random number generators.</li>
-	</ul>
-</li>
-
-<li>\ref fcpptsmartptr
-	<ul>
-	<li>Added \link fcppt::unique_ptr\endlink which doesn't provide a
-	default constructor and is not supposed to hold a <code>nullptr</code>.</li>
-	<li>Added \link fcppt::unique_ptr_to_base\endlink and \link
-	fcppt::unique_ptr_to_const\endlink.</li>
-	<li>Added \link fcppt::default_deleter\endlink.</li>
-	</ul>
-</li>
-
-<li>\ref fcppttypeiso
-	<ul>
-	<li>New library that has been extracted from \ref fcpptrandom. It can
-	recursively pack and unpack types like strong typedefs, boost units,
-	enums, and more.</li>
-	</ul>
-</li>
-
-<li>\ref fcppttypetraits
-	<ul>
+	<li>Added \link fcppt::math::matrix::init\endlink.</li>
+	<li>Added \link fcppt::math::matrix::at_c\endlink.</li>
+	<li>Added <code>fcppt/math/sphere/output.hpp</code>.</li>
+	<li>Added \link fcppt::math::int_range\endlink and \link
+	fcppt::math::int_range_count\endlink.</li>
 	<li>Added \link
-	fcppt::type_traits::function_pointer_to_reference\endlink.</li>
-	</ul>
-</li>
-
-<li>\ref fcpptvariant
-	<ul>
-	<li>Added \link fcppt::variant::match \endlink function which often
-	makes code more readable that otherwise would have been written using a
-	unary visitation.</li>
-	<li>Added <code>noexcept</code> to the move constructor and assignment
-	operator.</li>
-	</ul>
-</li>
-
-<li>\ref fcpptvarious
-	<ul>
-	<li>Added \link fcppt::make_homogenous_pair\endlink.</li>
-	<li>Added <code>%size</code> function to \link
-	fcppt::int_range\endlink.</li>
-	<li>Added \link fcppt::tag\endlink.</li>
-	</ul>
-</li>
-
-</ul>
-
-\subsection changes_changed_functionality_to_140 Changed functionality
-
-<ul>
-
-<li>FcpptCMakeUtils
-	<ul>
-	<li>Set <code>CMAKE_{RUNTIME,LIBRARY_ARCHIVE}_OUTPUT_DIRECTORY</code> instead
-	of their deprecated versions.</li>
-	</ul>
-</li>
-
-<li>\ref fcpptalgorithm
-	<ul>
-	<li>\link fcppt::algorithm::join\endlink and
-	fcppt::algorithm::join_move have been merged.</li>
-	<li>\link fcppt::algorithm::map_concat\endlink and
-	fcppt::algorithm::map_concat_move have been merged.</li>
-	</ul>
-</li>
-
-<li>\ref fcpptcontainer
-	<ul>
-	<li>Use <code>emplace</code> instead of <code>insert</code> in
-	\link fcppt::container::get_or_insert\endlink.</li>
-	<li>Changed the constructors of \link
-	fcppt::container::grid::object\endlink. Instead of the unsafe range
-	and iterator constructors, there is now a constructor that calls a
-	function for every position that must be initialized.</li>
-	<li>Renamed <code>%fcppt::container::grid::pos_range</code> to
-	\link fcppt::container::grid::pos_ref_range\endlink.</li>
-	<li>\link fcppt::container::grid::object\endlink uses \link
-	fcppt::no_init\endlink to make it more clear when elements might not be
-	initialized.</li>
-	<li>fcppt::container::grid::is_square now takes a dimension instead of
-	a grid object.</li>
-	</ul>
-</li>
-
-<li>\ref fcpptliteral
-	<ul>
-	<li>Boost Units literals are now dimensionless.</li>
-	</ul>
-</li>
-
-<li>\ref fcpptmath
-	<ul>
-	<li>Moved \link fcppt::math::box::object \endlink comparison operators
-	to <code>fcppt/math/box/comparison.hpp</code>.</li>
-	<li>Removed default constructor of \link
-	fcppt::math::matrix::object\endlink.</li>
+	fcppt::math::matrix::delete_row_and_column_static\endlink.</li>
 	</ul>
 </li>
 
 <li>\ref fcpptmpl
 	<ul>
-	<li>Changed \link fcppt::mpl::for_each\endlink and \link
-	fcppt::mpl::invoke_on\endlink to use \link fcppt::tag\endlink to call
-	its function.</li>
+	<li>Added \link fcppt::mpl::for_each_break\endlink.</li>
 	</ul>
 </li>
 
-<li>\ref fcpptsmartptr
+<li>\ref fcpptio
 	<ul>
-	<li>Removed default constructor of \link
-	fcppt::shared_ptr\endlink.</li>
-	<li>\link fcppt::weak_ptr::lock\endlink now returns an optional shared
-	ptr.</li>
+	<li>Added \link fcppt::io::expect\endlink which fails a stream if it
+	cannot read the expected value.</li>
 	</ul>
 </li>
 
-<li>\ref fcpptrandom
+<li>\ref fcpptvarious
 	<ul>
-	<li>\link
-	fcppt::random::distribution::parameters::make_uniform_indices\endlink
-	now returns an optional distribution. This covers the case in which the
-	container is empty.</li>
-	</ul>
-</li>
-
-<li>\ref fcpptstrongtypedef
-	<ul>
-	<li>Removed <code>fcppt/strong_typedef_input.hpp</code> and
-	<code>fcppt/strong_typedef_output.hpp</code> from
-	<code>fcppt/strong_typedef.hpp</code>.</li>
-	</ul>
-</li>
-
-<li>\ref fcpptvariant
-	<ul>
-	<li>The constructor of \link fcppt::variant::object\endlink is now
-	<code>explicit</code>.</li>
+	<li>Added \link FCPPT_DECLTYPE_SINK\endlink which returns
+	<code>decltype</code> of an expression and also uses it. This is useful
+	in polymorphic lambdas where the argument is only used for its
+	type.</li>
+	<li>Added \link fcppt::tag_type\endlink which extracts the type of an
+	\link fcppt::tag\endlink.</li>
+	<li>Added \link fcppt::tag_value\endlink to extract a
+	default-constructed value of a tag, which is useful for integral
+	constants.</li>
 	</ul>
 </li>
 
 </ul>
 
-\subsection changes_bugfixes_to_140 Bugfixes
+\subsection changes_changed_functionality_to_200 Changed functionality
 
 <ul>
-<li>Use standard iterator categories instead of boost iterator categories. The
-latter do not derive from the former and generally break algorithms that test
-for them.</li>
-<li>Fix <code>std::swap</code> includes to conform to <code>C++11</code>.</li>
+<li>\ref fcpptcontainer
+	<ul>
+	<li>Renamed <code>fcppt::container::find_opt</code> to \link
+	fcppt::container::find_opt_mapped\endlink.</li>
+	</ul>
+</li>
+
+<li>\ref fcpptcontainertree
+	<ul>
+	<li>Made \link fcppt::container::tree::child_position\endlink a free
+	function and made its implementation safer.</li>
+	</ul>
+</li>
+
+<li>\ref fcpptmath
+	<ul>
+	<li>\link fcppt::math::box::object\endlink now uses a
+	<code>(pos,max)</code> representation instead of
+	<code>(pos,dim)</code>. This greatly simplifies a lot of algorithms on
+	boxes. It also changes the interface slightly.</li>
+	<li>Added \link fcppt::math::box::init_dim\endlink and \link
+	fcppt::math::box::init_max\endlink to replace the former
+	<code>fcppt::math::box::init</code>.</li>
+	<li>Use \link fcppt::math::size_type\endlink directly for static sizes,
+	instead of <code>std::integral_constant</code>. This greatly simplifies
+	matching of template arguments.</li>
+	<li>Use variadic constructors for \link
+	fcppt::math::vector::object\endlink and \link
+	fcppt::math::dim::object\endlink. Their implementation uses brace
+	initialization, so narrowing conversions are now errors.</li>
+	<li>Use a variadic constructors for \link
+	fcppt::math::matrix::object\endlink which takes a parameter pack of
+	\link fcppt::math::matrix::row\endlink. Again, narrowing conversions
+	are now errors.</li>
+	<li>Moved <code>null</code> of \link
+	fcppt::math::vector::object\endlink, \link
+	fcppt::math::dim::object\endlink and \link
+	fcppt::math::box::object\endlink into \link
+	fcppt::math::vector::null\endlink, \link fcppt::math::dim::null\endlink
+	and \link fcppt::math::box::null\endlink.</li>
+	<li>Moved <code>identity</code> of \link
+	fcppt::math::matrix::object\endlink into \link
+	fcppt::math::matrix::identity\endlink.</li>
+	<li>Moved comparison operators of \link
+	fcppt::math::sphere::object\endlink to
+	<code>fcppt/math/sphere/comparison.hpp</code>.</li>
+	</ul>
+</li>
+
+<li>\ref fcpptsmartptr
+	<ul>
+	<li>Renamed <code>fcppt::make_unique_ptr_fcppt</code> to \link
+	fcppt::make_unique_ptr\endlink.</li>
+	</ul>
+</li>
+
+</ul>
+
+\subsection changes_removed_functionality_to_200 Removed functionality
+
+<ul>
+<li><code>CMake</code>
+	<ul>
+	<li>Removed
+	<code>BOOST_THREAD_DONT_PROVIDE_DEPRECATED_FEATURES_SINCE_V3_0_0</code>
+	which has not been used for a long time.</li>
+	</ul>
+</li>
+
+<li>\ref fcpptalgorithm
+	<ul>
+	<li>Removed <code>fcppt::algorithm::array_fold</code> and
+	<code>fcppt::algorithm::enum_array_fold</code> which were only useful
+	in <code>C++11</code>. Use \link
+	fcppt::algorithm::array_fold_static\endlink and \link
+	fcppt::algorithm::enum_array_fold_static\endlink instead.</li>
+	</ul>
+</li>
+
+<li>\ref fcpptcontainer
+	<ul>
+	<li>Removed <code>fcppt::container::find_exn</code> in favor of \link
+	fcppt::optional_to_exception\endlink.</li>
+	<li>Removed <code>fcppt::container::grid::object::at</code> in favor of
+	\link fcppt::container::grid::at_optional\endlink.</li>
+	</ul>
+</li>
+
+<li>\ref fcpptcontainergrid
+	<ul>
+	<li>Removed <code>fcppt::container::grid::is_square</code> which is
+	covered by \link fcppt::math::dim::is_quadratic\endlink.</li>
+	<li>Removed <code>fcppt::container::grid::iterator_position</code>
+	which was unused and probably broken.</li>
+	</ul>
+</li>
+
+<li>\ref fcpptmath
+	<ul>
+	<li>Removed default constructors.</li>
+	<li>Removed container-like functionality, including iterator-based
+	constructors, <code>begin</code>/<code>end</code>, <code>front</code>/
+	<code>back</code>, etc, and so on.</li>
+	<li>Removed swap implementations because they gained nothing over
+	<code>std::swap</code>.</li>
+	</ul>
+</li>
+
+<li>\ref fcpptsmartptr
+	<ul>
+	<li>Removed <code>fcppt::make_unique_ptr</code> which used to create a
+	<code>std::unique_ptr</code>.</li>
+	</ul>
+</li>
+
+<li>\ref fcpptvariant
+	<ul>
+	<li>Removed <code>fcppt::variant::object::get_exn</code>. Use the free
+	function \link fcppt::variant::get_exn\endlink instead.</li>
+	</ul>
+</li>
 </ul>
 */

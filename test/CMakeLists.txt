@@ -553,7 +553,7 @@ add_fcppt_test(
 )
 
 add_fcppt_test(
-	math/matrix/delete_column_and_row
+	math/matrix/delete_row_and_column
 )
 
 add_fcppt_test(
