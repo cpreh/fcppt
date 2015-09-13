@@ -327,16 +327,12 @@ set(
 	include/fcppt/container/bitfield/array.hpp
 	include/fcppt/container/bitfield/default_internal_type.hpp
 	include/fcppt/container/bitfield/detail/element_bits.hpp
-	include/fcppt/container/bitfield/detail/iterator_type.hpp
+	include/fcppt/container/bitfield/detail/null_array.hpp
 	include/fcppt/container/bitfield/hash.hpp
 	include/fcppt/container/bitfield/hash_decl.hpp
 	include/fcppt/container/bitfield/hash_fwd.hpp
 	include/fcppt/container/bitfield/hash_impl.hpp
 	include/fcppt/container/bitfield/is_subset_eq.hpp
-	include/fcppt/container/bitfield/iterator.hpp
-	include/fcppt/container/bitfield/iterator_decl.hpp
-	include/fcppt/container/bitfield/iterator_fwd.hpp
-	include/fcppt/container/bitfield/iterator_impl.hpp
 	include/fcppt/container/bitfield/object.hpp
 	include/fcppt/container/bitfield/object_decl.hpp
 	include/fcppt/container/bitfield/object_from_enum.hpp

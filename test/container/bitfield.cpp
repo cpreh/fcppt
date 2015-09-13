@@ -72,7 +72,8 @@ typedef fcppt::container::bitfield::object_from_enum<
 	enum_,\
 	internal_\
 )\
-template class \
+template \
+class \
 fcppt::container::bitfield::object< \
 	enum_, \
 	fcppt::enum_size<\
@@ -80,44 +81,27 @@ fcppt::container::bitfield::object< \
 	>::type\
 >; \
 \
-template class fcppt::container::bitfield::proxy< \
+template \
+class \
+fcppt::container::bitfield::proxy< \
 	fcppt::container::bitfield::array< \
 		enum_, \
 		fcppt::enum_size<\
 			enum_\
 		>::type,\
 		internal_\
-	> & \
->; \
-\
-template class fcppt::container::bitfield::iterator< \
-	fcppt::container::bitfield::array< \
-		enum_, \
-		fcppt::enum_size<\
-			enum_\
-		>::type,\
-		internal_ \
-	>&, \
-	fcppt::container::bitfield::proxy< \
-		fcppt::container::bitfield::array< \
-			enum_, \
-			fcppt::enum_size<\
-				enum_\
-			>::type,\
-			internal_ \
-		> & \
 	> \
->;
+> \
 
 FCPPT_INSTANTIATE_BITFIELD(
 	test_enum,
 	fcppt::container::bitfield::default_internal_type
-)
+);
 
 FCPPT_INSTANTIATE_BITFIELD(
 	empty_enum,
 	fcppt::container::bitfield::default_internal_type
-)
+);
 
 #undef FCPPT_INSTANTIATE_BITFIELD
 
@@ -134,27 +118,17 @@ FCPPT_PP_POP_WARNING
 		bitfield::null()
 	);
 
-	BOOST_REQUIRE(
-		!field1
-	);
-
-	field1[test_enum::test1] = true;
-
-	BOOST_REQUIRE(
-		field1
-	);
+	field1[
+		test_enum::test1
+	] = true;
 
 	bitfield field2(
 		bitfield::null()
 	);
 
-	BOOST_REQUIRE(
+	BOOST_CHECK(
 		(field2 | test_enum::test2)
 		& test_enum::test2
-	);
-
-	BOOST_REQUIRE(
-		!field2
 	);
 
 	field2[test_enum::test3] = true;
@@ -164,15 +138,17 @@ FCPPT_PP_POP_WARNING
 			field1 | field2
 		);
 
-		BOOST_REQUIRE(
+		BOOST_CHECK(
 			bf_or[test_enum::test1]
 			&& !bf_or[test_enum::test2]
 			&& bf_or[test_enum::test3]
 		);
 	}
 
-	BOOST_REQUIRE(
-		!(field1 & field2)
+	BOOST_CHECK(
+		(field1 & field2)
+		==
+		bitfield::null()
 	);
 
 	{
@@ -187,18 +163,6 @@ FCPPT_PP_POP_WARNING
 			&& bf_xor[test_enum::test3]
 		);
 	}
-
-	bitfield::iterator it(
-		field1.begin()
-	);
-
-	bitfield::iterator it2;
-
-	it = it2;
-
-	BOOST_REQUIRE(
-		it == it2
-	);
 }
 
 FCPPT_PP_PUSH_WARNING
@@ -305,13 +269,9 @@ FCPPT_PP_POP_WARNING
 		fcppt::no_init()
 	};
 
-	BOOST_REQUIRE(
-		field.size() == 0u
-	);
-
-	BOOST_REQUIRE(
-		field.begin()
-		== field.end()
+	BOOST_CHECK_EQUAL(
+		empty_bitfield::static_size::value,
+		0u
 	);
 }
 

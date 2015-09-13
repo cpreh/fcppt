@@ -10,13 +10,11 @@
 #include <fcppt/no_init_fwd.hpp>
 #include <fcppt/container/array_size.hpp>
 #include <fcppt/container/bitfield/array.hpp>
-#include <fcppt/container/bitfield/iterator_fwd.hpp>
 #include <fcppt/container/bitfield/object_fwd.hpp>
 #include <fcppt/container/bitfield/proxy_fwd.hpp>
 #include <fcppt/container/bitfield/value_type.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <initializer_list>
-#include <iterator>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
@@ -78,37 +76,38 @@ public:
 	/**
 	\brief Typedef to <code>ElementType</code>
 	*/
-	typedef ElementType element_type;
+	typedef
+	ElementType
+	element_type;
 
 	/**
 	\brief The size type which is taken from <code>NumElements</code>
 	*/
-	typedef typename NumElements::value_type size_type;
+	typedef
+	typename
+	NumElements::value_type
+	size_type;
 
 	/**
 	\brief The value type, which is bool
 	*/
-	typedef fcppt::container::bitfield::value_type value_type;
+	typedef
+	fcppt::container::bitfield::value_type
+	value_type;
 
 	/**
 	\brief Typedef to <code>NumElements</code>
 	*/
-	typedef NumElements static_size;
+	typedef
+	NumElements
+	static_size;
 
 	/**
 	\brief Typedef to the internal storage type (template parameter <code>InternalType</code>
 	*/
-	typedef InternalType internal_type;
-
-	/**
-	\brief Typedef to a pointer to the internal storage type
-	*/
-	typedef typename array_type::pointer pointer;
-
-	/**
-	\brief Typedef to a pointer to the const internal storage type
-	*/
-	typedef typename array_type::const_pointer const_pointer;
+	typedef
+	InternalType
+	internal_type;
 
 	/**
 	\brief A type denoting a reference to a mask value (a reference to a
@@ -116,50 +115,22 @@ public:
 
 	Note that this is <em>not</em> a bool or internal_type, but a proxy class.
 	*/
-	typedef fcppt::container::bitfield::proxy<
-		array_type &
-	> reference;
+	typedef
+	fcppt::container::bitfield::proxy<
+		array_type
+	>
+	reference;
 
 	/**
 	\brief The bitfield's value type, when viewed as a container.
 
 	This forwards to fcppt::container::bitfield::value_type.
 	*/
-	typedef fcppt::container::bitfield::value_type const_reference;
-
-	/**
-	\brief A type that provides a random-access iterator that can read or
-	modify any element in a bitfield.
-	*/
-	typedef fcppt::container::bitfield::iterator<
-		array_type &,
-		reference
-	> iterator;
-
-	/**
-	\brief A type that provides a random-access iterator that can read a
-	<code>const</code> element in a bitfield.
-	*/
-	typedef fcppt::container::bitfield::iterator<
-		array_type const &,
-		const_reference
-	> const_iterator;
-
-	/**
-	\brief A type that provides a random-access iterator that can read or
-	modify any element in a reversed bitfield.
-	*/
-	typedef std::reverse_iterator<
-		iterator
-	> reverse_iterator;
-
-	/**
-	\brief A type that provides a random-access iterator that can read any
-	<code>const</code> element in the bitfield.
-	*/
-	typedef std::reverse_iterator<
-		const_iterator
-	> const_reverse_iterator;
+	typedef
+	fcppt::container::bitfield::proxy<
+		array_type const
+	>
+	const_reference;
 
 	/**
 	\brief Initializer list type used to initialize a bitfield
@@ -194,107 +165,6 @@ public:
 	object(
 		array_type const &
 	);
-
-	/**
-	\brief Constructs a bitfield where every bit is false except the right hand side bit.
-	\param e The bit that is <em>not</em> set to false
-	*/
-	object &
-	operator=(
-		ElementType e
-	);
-
-	/**
-	\brief Returns a pointer to the internal storage.
-	*/
-	pointer
-	data();
-
-	/**
-	\brief Returns a pointer to the const internal storage.
-	*/
-	const_pointer
-	data() const;
-
-	/**
-	\brief Returns a random-access iterator to the first element in the bitfield.
-	*/
-	iterator
-	begin();
-
-	/**
-	\brief Returns a random-access iterator to the first element in the bitfield.
-	*/
-	const_iterator
-	begin() const;
-
-	/**
-	\brief Returns a random-access iterator that points just beyond the end of the bitfield.
-	*/
-	iterator
-	end();
-
-	/**
-	\brief Returns a random-access iterator that points just beyond the end of the bitfield.
-	*/
-	const_iterator
-	end() const;
-
-	/**
-	\brief Returns an iterator to the first element in a reversed bitfield.
-	*/
-	reverse_iterator
-	rbegin();
-
-	/**
-	\brief Returns an iterator to the first element in a reversed bitfield.
-	*/
-	const_reverse_iterator
-	rbegin() const;
-
-	/**
-	\brief Returns an iterator to the end of a reversed bitfield.
-	*/
-	reverse_iterator
-	rend();
-
-	/**
-	\brief Returns an iterator to the end of a reversed bitfield.
-	*/
-	const_reverse_iterator
-	rend() const;
-
-	/**
-	\brief Returns a random-access const-iterator to the first element in the bitfield.
-	*/
-	const_iterator
-	cbegin() const;
-
-	/**
-	\brief Returns a random-access const-iterator that points just beyond the end of the bitfield.
-	*/
-	const_iterator
-	cend() const;
-
-	/**
-	\brief Returns a const-iterator to the first element in a reversed bitfield.
-	*/
-	const_reverse_iterator
-	crbegin() const;
-
-	/**
-	\brief Returns an iterator to the end of a reversed bitfield.
-	*/
-	const_reverse_iterator
-	crend() const;
-
-	/**
-	\brief Returns the number of elements in the bitfield.
-
-	This is the same as <code>NumElements::value</code>.
-	*/
-	size_type
-	size() const;
 
 	/**
 	\brief Returns a reference (see the reference member type) to the specified bit.
@@ -351,15 +221,6 @@ public:
 	operator~() const;
 
 	/**
-	\brief Checks if at least one bit is non zero
-
-	Return <code>false</code> if all bits are zero, <code>true</code> otherwise.
-	*/
-	explicit
-	operator
-	bool() const;
-
-	/**
 	\brief Checks if the specified bit is set.
 
 	\note
@@ -406,10 +267,10 @@ public:
 	) const;
 
 	/**
-	\brief Set all bits to zero.
+	\brief Accessor to the internal array
 	*/
-	void
-	clear();
+	array_type &
+	array();
 
 	/**
 	\brief Const accessor to the internal array
@@ -418,20 +279,18 @@ public:
 	array() const;
 
 	/**
-	\brief Exchanges the bits of two bitfields.
-	*/
-	void
-	swap(
-		object &
-	);
-
-	/**
 	\brief Returns the bitfield with all bits set to zero.
 	*/
 	static
-	object const
+	object
 	null();
 private:
+	static
+	size_type
+	to_index(
+		ElementType
+	);
+
 	array_type array_;
 };
 
@@ -554,28 +413,6 @@ operator~(
 		NumElements,
 		InternalType
 	>
-);
-
-/**
-\brief Exchanges the elements of two bitfields.
-*/
-template<
-	typename ElementType,
-	typename NumElements,
-	typename InternalType
->
-void
-swap(
-	fcppt::container::bitfield::object<
-		ElementType,
-		NumElements,
-		InternalType
-	> &,
-	fcppt::container::bitfield::object<
-		ElementType,
-		NumElements,
-		InternalType
-	> &
 );
 
 /**

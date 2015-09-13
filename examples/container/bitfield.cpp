@@ -72,15 +72,5 @@ int main()
 		<< FCPPT_TEXT("person is hungry: ")
 		<< field[person_status::hungry]
 		<< FCPPT_TEXT('\n');
-
-	// Iterate through the field
-	for(
-		auto const &elem
-		:
-		field
-	)
-		fcppt::io::cout()
-			<< elem
-			<< FCPPT_TEXT('\n');
 }
 //! [bitfield]

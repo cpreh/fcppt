@@ -8,10 +8,10 @@
 #define FCPPT_CONTAINER_BITFIELD_PROXY_DECL_HPP_INCLUDED
 
 #include <fcppt/nonassignable.hpp>
+#include <fcppt/container/bitfield/object_fwd.hpp>
 #include <fcppt/container/bitfield/proxy_fwd.hpp>
 #include <fcppt/container/bitfield/value_type.hpp>
 #include <fcppt/container/bitfield/detail/element_bits.hpp>
-#include <fcppt/type_traits/remove_cv_ref.hpp>
 
 
 namespace fcppt
@@ -37,17 +37,26 @@ class proxy
 		proxy
 	);
 
-	typedef typename fcppt::type_traits::remove_cv_ref<
+	typedef
+	typename
+	std::remove_const<
 		StoredType
-	>::type array_type;
+	>::type
+	array_type;
 
-	typedef typename array_type::size_type size_type;
+	typedef
+	typename
+	array_type::size_type
+	size_type;
 
-	typedef typename array_type::value_type internal_type;
+	typedef
+	typename
+	array_type::value_type
+	internal_type;
 
 	proxy(
-		StoredType array,
-		size_type pos
+		StoredType &,
+		size_type
 	);
 
 	static size_type const element_bits =
@@ -56,14 +65,17 @@ class proxy
 			internal_type
 		>::value;
 
-	StoredType array_;
+	StoredType &array_;
 
 	size_type const pos_;
 
 	template<
 		typename,
+		typename,
 		typename
-	> friend class iterator;
+	>
+	friend class
+	fcppt::container::bitfield::object;
 
 	static
 	size_type

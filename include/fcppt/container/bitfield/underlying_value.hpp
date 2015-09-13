@@ -8,6 +8,9 @@
 #define FCPPT_CONTAINER_BITFIELD_UNDERLYING_VALUE_HPP_INCLUDED
 
 #include <fcppt/container/bitfield/object_impl.hpp>
+#include <fcppt/config/external_begin.hpp>
+#include <array>
+#include <fcppt/config/external_end.hpp>
 
 
 namespace fcppt
@@ -52,12 +55,17 @@ underlying_value(
 			NumElements,
 			InternalType
 		>::array_size::value
-		== 1u,
+		==
+		1u,
 		"underlying_type can only be used on bitfields with a size of 1"
 	);
 
 	return
-		*_bitfield.data();
+		std::get<
+			0
+		>(
+			_bitfield.array()
+		);
 }
 
 }

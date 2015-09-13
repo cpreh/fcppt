@@ -8,18 +8,14 @@
 #define FCPPT_CONTAINER_BITFIELD_OBJECT_IMPL_HPP_INCLUDED
 
 #include <fcppt/no_init.hpp>
-#include <fcppt/algorithm/contains_if.hpp>
-#include <fcppt/cast/to_signed.hpp>
-#include <fcppt/container/bitfield/iterator_impl.hpp>
 #include <fcppt/container/bitfield/object_decl.hpp>
 #include <fcppt/container/bitfield/proxy_impl.hpp>
+#include <fcppt/container/bitfield/detail/null_array.hpp>
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <algorithm>
-#include <iterator>
-#include <utility>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -42,6 +38,8 @@ fcppt::container::bitfield::object<
 {
 }
 
+FCPPT_PP_POP_WARNING
+
 template<
 	typename ElementType,
 	typename NumElements,
@@ -54,10 +52,13 @@ fcppt::container::bitfield::object<
 >::object(
 	initializer_list_type const &_init
 )
-// Don't initialize array_
+:
+	array_(
+		fcppt::container::bitfield::detail::null_array<
+			array_type
+		>()
+	)
 {
-	this->clear();
-
 	for(
 		auto const &elem
 		:
@@ -68,8 +69,6 @@ fcppt::container::bitfield::object<
 			true
 		);
 }
-
-FCPPT_PP_POP_WARNING
 
 template<
 	typename ElementType,
@@ -95,357 +94,6 @@ template<
 	typename NumElements,
 	typename InternalType
 >
-fcppt::container::bitfield::object<
-	ElementType,
-	NumElements,
-	InternalType
-> &
-fcppt::container::bitfield::object<
-	ElementType,
-	NumElements,
-	InternalType
->::operator=(
-	ElementType const _index
-)
-{
-	this->clear();
-
-	this->set(
-		_index,
-		true
-	);
-
-	return *this;
-}
-
-template<
-	typename ElementType,
-	typename NumElements,
-	typename InternalType
->
-typename fcppt::container::bitfield::object<
-	ElementType,
-	NumElements,
-	InternalType
->::pointer
-fcppt::container::bitfield::object<
-	ElementType,
-	NumElements,
-	InternalType
->::data()
-{
-	return
-		array_.data();
-}
-
-template<
-	typename ElementType,
-	typename NumElements,
-	typename InternalType
->
-typename fcppt::container::bitfield::object<
-	ElementType,
-	NumElements,
-	InternalType
->::const_pointer
-fcppt::container::bitfield::object<
-	ElementType,
-	NumElements,
-	InternalType
->::data() const
-{
-	return
-		array_.data();
-}
-
-template<
-	typename ElementType,
-	typename NumElements,
-	typename InternalType
->
-typename fcppt::container::bitfield::object<
-	ElementType,
-	NumElements,
-	InternalType
->::iterator
-fcppt::container::bitfield::object<
-	ElementType,
-	NumElements,
-	InternalType
->::begin()
-{
-	return
-		iterator(
-			array_,
-			0
-		);
-}
-
-template<
-	typename ElementType,
-	typename NumElements,
-	typename InternalType
->
-typename fcppt::container::bitfield::object<
-	ElementType,
-	NumElements,
-	InternalType
->::const_iterator
-fcppt::container::bitfield::object<
-	ElementType,
-	NumElements,
-	InternalType
->::begin() const
-{
-	return
-		const_iterator(
-			array_,
-			0
-		);
-}
-
-template<
-	typename ElementType,
-	typename NumElements,
-	typename InternalType
->
-typename fcppt::container::bitfield::object<
-	ElementType,
-	NumElements,
-	InternalType
->::iterator
-fcppt::container::bitfield::object<
-	ElementType,
-	NumElements,
-	InternalType
->::end()
-{
-	return
-		iterator(
-			array_,
-			fcppt::cast::to_signed(
-				this->size()
-			)
-		);
-}
-
-template<
-	typename ElementType,
-	typename NumElements,
-	typename InternalType
->
-typename fcppt::container::bitfield::object<
-	ElementType,
-	NumElements,
-	InternalType
->::const_iterator
-fcppt::container::bitfield::object<
-	ElementType,
-	NumElements,
-	InternalType
->::end() const
-{
-	return
-		const_iterator(
-			array_,
-			fcppt::cast::to_signed(
-				this->size()
-			)
-		);
-}
-
-template<
-	typename ElementType,
-	typename NumElements,
-	typename InternalType
->
-typename fcppt::container::bitfield::object<
-	ElementType,
-	NumElements,
-	InternalType
->::reverse_iterator
-fcppt::container::bitfield::object<
-	ElementType,
-	NumElements,
-	InternalType
->::rbegin()
-{
-	return
-		reverse_iterator(
-			this->end()
-		);
-}
-
-template<
-	typename ElementType,
-	typename NumElements,
-	typename InternalType
->
-typename fcppt::container::bitfield::object<
-	ElementType,
-	NumElements,
-	InternalType
->::const_reverse_iterator
-fcppt::container::bitfield::object<
-	ElementType,
-	NumElements,
-	InternalType
->::rbegin() const
-{
-	return
-		const_reverse_iterator(
-			this->end()
-		);
-}
-
-template<
-	typename ElementType,
-	typename NumElements,
-	typename InternalType
->
-typename fcppt::container::bitfield::object<
-	ElementType,
-	NumElements,
-	InternalType
->::reverse_iterator
-fcppt::container::bitfield::object<
-	ElementType,
-	NumElements,
-	InternalType
->::rend()
-{
-	return
-		reverse_iterator(
-			this->begin()
-		);
-}
-
-template<
-	typename ElementType,
-	typename NumElements,
-	typename InternalType
->
-typename fcppt::container::bitfield::object<
-	ElementType,
-	NumElements,
-	InternalType
->::const_reverse_iterator
-fcppt::container::bitfield::object<
-	ElementType,
-	NumElements,
-	InternalType
->::rend() const
-{
-	return
-		const_reverse_iterator(
-			this->begin()
-		);
-}
-
-template<
-	typename ElementType,
-	typename NumElements,
-	typename InternalType
->
-typename fcppt::container::bitfield::object<
-	ElementType,
-	NumElements,
-	InternalType
->::const_iterator
-fcppt::container::bitfield::object<
-	ElementType,
-	NumElements,
-	InternalType
->::cbegin() const
-{
-	return
-		this->begin();
-}
-
-template<
-	typename ElementType,
-	typename NumElements,
-	typename InternalType
->
-typename fcppt::container::bitfield::object<
-	ElementType,
-	NumElements,
-	InternalType
->::const_iterator
-fcppt::container::bitfield::object<
-	ElementType,
-	NumElements,
-	InternalType
->::cend() const
-{
-	return
-		this->end();
-}
-
-template<
-	typename ElementType,
-	typename NumElements,
-	typename InternalType
->
-typename fcppt::container::bitfield::object<
-	ElementType,
-	NumElements,
-	InternalType
->::const_reverse_iterator
-fcppt::container::bitfield::object<
-	ElementType,
-	NumElements,
-	InternalType
->::crbegin() const
-{
-	return
-		this->rbegin();
-}
-
-template<
-	typename ElementType,
-	typename NumElements,
-	typename InternalType
->
-typename fcppt::container::bitfield::object<
-	ElementType,
-	NumElements,
-	InternalType
->::const_reverse_iterator
-fcppt::container::bitfield::object<
-	ElementType,
-	NumElements,
-	InternalType
->::crend() const
-{
-	return
-		this->rend();
-}
-
-template<
-	typename ElementType,
-	typename NumElements,
-	typename InternalType
->
-typename fcppt::container::bitfield::object<
-	ElementType,
-	NumElements,
-	InternalType
->::size_type
-fcppt::container::bitfield::object<
-	ElementType,
-	NumElements,
-	InternalType
->::size() const
-{
-	return static_size::value;
-}
-
-template<
-	typename ElementType,
-	typename NumElements,
-	typename InternalType
->
 typename fcppt::container::bitfield::object<
 	ElementType,
 	NumElements,
@@ -460,16 +108,9 @@ fcppt::container::bitfield::object<
 ) const
 {
 	return
-		*(
-			this->begin()
-			+
-			static_cast<
-				typename
-				std::iterator_traits<
-					typename
-					array_type::const_iterator
-				>::difference_type
-			>(
+		const_reference(
+			array_,
+			this->to_index(
 				_index
 			)
 		);
@@ -494,16 +135,9 @@ fcppt::container::bitfield::object<
 )
 {
 	return
-		*(
-			this->begin()
-			+
-			static_cast<
-				typename
-				std::iterator_traits<
-					typename
-					array_type::const_iterator
-				>::difference_type
-			>(
+		reference(
+			array_,
+			this->to_index(
 				_index
 			)
 		);
@@ -696,30 +330,6 @@ template<
 	typename NumElements,
 	typename InternalType
 >
-fcppt::container::bitfield::object<
-	ElementType,
-	NumElements,
-	InternalType
->::operator bool() const
-{
-	return
-		fcppt::algorithm::contains_if(
-			array_,
-			[](
-				InternalType const _arg
-			)
-			{
-				return
-					_arg != 0;
-			}
-		);
-}
-
-template<
-	typename ElementType,
-	typename NumElements,
-	typename InternalType
->
 bool
 fcppt::container::bitfield::object<
 	ElementType,
@@ -826,16 +436,20 @@ template<
 	typename NumElements,
 	typename InternalType
 >
-void
+typename
 fcppt::container::bitfield::object<
 	ElementType,
 	NumElements,
 	InternalType
->::clear()
+>::array_type &
+fcppt::container::bitfield::object<
+	ElementType,
+	NumElements,
+	InternalType
+>::array()
 {
-	array_.fill(
-		0
-	);
+	return
+		array_;
 }
 
 template<
@@ -864,19 +478,23 @@ template<
 	typename NumElements,
 	typename InternalType
 >
-void
 fcppt::container::bitfield::object<
 	ElementType,
 	NumElements,
 	InternalType
->::swap(
-	object &_other
-)
+>
+fcppt::container::bitfield::object<
+	ElementType,
+	NumElements,
+	InternalType
+>::null()
 {
-	std::swap(
-		array_,
-		_other.array_
-	);
+	return
+		object(
+			fcppt::container::bitfield::detail::null_array<
+				array_type
+			>()
+		);
 }
 
 template<
@@ -884,24 +502,26 @@ template<
 	typename NumElements,
 	typename InternalType
 >
+typename
 fcppt::container::bitfield::object<
 	ElementType,
 	NumElements,
 	InternalType
-> const
+>::size_type
 fcppt::container::bitfield::object<
 	ElementType,
 	NumElements,
 	InternalType
->::null()
+>::to_index(
+	ElementType const _index
+)
 {
-	object ret{
-		fcppt::no_init()
-	};
-
-	ret.clear();
-
-	return ret;
+	return
+		static_cast<
+			size_type
+		>(
+			_index
+		);
 }
 
 template<
@@ -1034,30 +654,6 @@ fcppt::container::bitfield::operator^(
 			_left
 		)
 		^= _right;
-}
-
-template<
-	typename ElementType,
-	typename NumElements,
-	typename InternalType
->
-void
-fcppt::container::bitfield::swap(
-	fcppt::container::bitfield::object<
-		ElementType,
-		NumElements,
-		InternalType
-	> &_left,
-	fcppt::container::bitfield::object<
-		ElementType,
-		NumElements,
-		InternalType
-	> &_right
-)
-{
-	_left.swap(
-		_right
-	);
 }
 
 template<

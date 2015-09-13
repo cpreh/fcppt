@@ -18,7 +18,7 @@ template<
 fcppt::container::bitfield::proxy<
 	StoredType
 >::proxy(
-	StoredType _array,
+	StoredType &_array,
 	size_type const _pos
 )
 :
@@ -43,7 +43,10 @@ fcppt::container::bitfield::proxy<
 	size_type const _pos
 )
 {
-	return _pos % element_bits;
+	return
+		_pos
+		%
+		element_bits;
 }
 
 template<
@@ -58,7 +61,10 @@ fcppt::container::bitfield::proxy<
 	size_type const _pos
 )
 {
-	return _pos / element_bits;
+	return
+		_pos
+		/
+		element_bits;
 }
 
 template<
@@ -97,18 +103,18 @@ fcppt::container::bitfield::proxy<
 {
 	size_type const
 		index(
-			proxy::array_offset(
+			this->array_offset(
 				pos_
 			)
 		),
 		bit(
-			proxy::bit_offset(
+			this->bit_offset(
 				pos_
 			)
 		);
 
 	internal_type const mask(
-		proxy::bit_mask(
+		this->bit_mask(
 			bit
 		)
 	);
@@ -140,18 +146,23 @@ fcppt::container::bitfield::value_type() const
 	return
 		(
 			array_[
-				proxy::array_offset(
+				this->array_offset(
 					pos_
 				)
 			]
 			&
-			proxy::bit_mask(
-				proxy::bit_offset(
+			this->bit_mask(
+				this->bit_offset(
 					pos_
 				)
 			)
 		)
-		!= 0u;
+		!=
+		fcppt::literal<
+			internal_type
+		>(
+			0u
+		);
 }
 
 #endif
