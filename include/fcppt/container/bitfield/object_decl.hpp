@@ -47,14 +47,14 @@ template<
 >
 class object
 {
-private:
+public:
 	static_assert(
 		std::is_unsigned<
 			InternalType
 		>::value,
 		"InternalType must be unsigned"
 	);
-public:
+
 	typedef
 	fcppt::container::bitfield::array<
 		ElementType,
@@ -232,22 +232,6 @@ public:
 	) const;
 
 	/**
-	\brief Compares two bitfields component-wise
-	*/
-	bool
-	operator==(
-		object const &
-	) const;
-
-	/**
-	\brief Compares two bitfields lexicographically bit by bit.
-	*/
-	bool
-	operator<(
-		object const &
-	) const;
-
-	/**
 	\brief Sets the specified bit to true/false
 	\param where Which bit to set
 	\param value The value to set the bit to
@@ -415,141 +399,8 @@ operator~(
 	>
 );
 
-/**
-\brief Compares two bitfields component-wise
-*/
-template<
-	typename ElementType,
-	typename NumElements,
-	typename InternalType
->
-bool
-operator==(
-	fcppt::container::bitfield::object<
-		ElementType,
-		NumElements,
-		InternalType
-	> const &,
-	fcppt::container::bitfield::object<
-		ElementType,
-		NumElements,
-		InternalType
-	> const &
-);
-
-/**
-\brief Compares two bitfields component-wise
-*/
-template<
-	typename ElementType,
-	typename NumElements,
-	typename InternalType
->
-bool
-operator!=(
-	fcppt::container::bitfield::object<
-		ElementType,
-		NumElements,
-		InternalType
-	> const &,
-	fcppt::container::bitfield::object<
-		ElementType,
-		NumElements,
-		InternalType
-	> const &
-);
-
-/**
-\brief Compares two bitfields lexicographically bit by bit.
-*/
-template<
-	typename ElementType,
-	typename NumElements,
-	typename InternalType
->
-bool
-operator<(
-	fcppt::container::bitfield::object<
-		ElementType,
-		NumElements,
-		InternalType
-	> const &,
-	fcppt::container::bitfield::object<
-		ElementType,
-		NumElements,
-		InternalType
-	> const &
-);
-
-/**
-\brief Compares two bitfields lexicographically bit by bit.
-*/
-template<
-	typename ElementType,
-	typename NumElements,
-	typename InternalType
->
-bool
-operator<=(
-	fcppt::container::bitfield::object<
-		ElementType,
-		NumElements,
-		InternalType
-	> const &,
-	fcppt::container::bitfield::object<
-		ElementType,
-		NumElements,
-		InternalType
-	> const &
-);
-
-/**
-\brief Compares two bitfields lexicographically bit by bit.
-*/
-template<
-	typename ElementType,
-	typename NumElements,
-	typename InternalType
->
-bool
-operator>(
-	fcppt::container::bitfield::object<
-		ElementType,
-		NumElements,
-		InternalType
-	> const &,
-	fcppt::container::bitfield::object<
-		ElementType,
-		NumElements,
-		InternalType
-	> const &
-);
-
-/**
-\brief Compares two bitfields lexicographically bit by bit.
-*/
-template<
-	typename ElementType,
-	typename NumElements,
-	typename InternalType
->
-bool
-operator>=(
-	fcppt::container::bitfield::object<
-		ElementType,
-		NumElements,
-		InternalType
-	> const &,
-	fcppt::container::bitfield::object<
-		ElementType,
-		NumElements,
-		InternalType
-	> const &
-);
-
 }
 }
 }
 
 #endif
-

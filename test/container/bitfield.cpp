@@ -8,6 +8,7 @@
 #include <fcppt/enum_size.hpp>
 #include <fcppt/literal.hpp>
 #include <fcppt/no_init.hpp>
+#include <fcppt/container/bitfield/comparison.hpp>
 #include <fcppt/container/bitfield/is_subset_eq.hpp>
 #include <fcppt/container/bitfield/object_from_enum.hpp>
 #include <fcppt/container/bitfield/object_impl.hpp>

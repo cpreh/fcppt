@@ -121,6 +121,7 @@ set(
 	include/fcppt/container/array_size.hpp
 	include/fcppt/container/at_optional.hpp
 	include/fcppt/container/bitfield/array.hpp
+	include/fcppt/container/bitfield/comparison.hpp
 	include/fcppt/container/bitfield/default_internal_type.hpp
 	include/fcppt/container/bitfield/detail/element_bits.hpp
 	include/fcppt/container/bitfield/detail/null_array.hpp
