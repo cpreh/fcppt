@@ -7,7 +7,9 @@
 #ifndef FCPPT_CONTAINER_BITFIELD_IS_SUBSET_EQ_HPP_INCLUDED
 #define FCPPT_CONTAINER_BITFIELD_IS_SUBSET_EQ_HPP_INCLUDED
 
+#include <fcppt/container/bitfield/comparison.hpp>
 #include <fcppt/container/bitfield/object_impl.hpp>
+#include <fcppt/container/bitfield/operators.hpp>
 
 
 namespace fcppt
@@ -20,9 +22,9 @@ namespace bitfield
 /**
 \brief Checks if one bitfield has all the bits of another bitfield set.
 
-\param left The "bigger" bitfield
+\param _left The "bigger" bitfield
 
-\param right The "smaller" bitfield
+\param _right The "smaller" bitfield
 */
 template<
 	typename ElementType,
@@ -35,17 +37,18 @@ is_subset_eq(
 		ElementType,
 		NumElements,
 		InternalType
-	> const &left,
+	> const &_left,
 	fcppt::container::bitfield::object<
 		ElementType,
 		NumElements,
 		InternalType
-	> const &right
+	> const &_right
 )
 {
 	return
-		(left & right)
-		== left;
+		(_left & _right)
+		==
+		_left;
 }
 
 }

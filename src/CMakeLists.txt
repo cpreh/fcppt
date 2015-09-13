@@ -135,6 +135,7 @@ set(
 	include/fcppt/container/bitfield/object_from_enum.hpp
 	include/fcppt/container/bitfield/object_fwd.hpp
 	include/fcppt/container/bitfield/object_impl.hpp
+	include/fcppt/container/bitfield/operators.hpp
 	include/fcppt/container/bitfield/proxy.hpp
 	include/fcppt/container/bitfield/proxy_decl.hpp
 	include/fcppt/container/bitfield/proxy_fwd.hpp

@@ -7,6 +7,7 @@
 #include <fcppt/text.hpp>
 #include <fcppt/container/bitfield/object_from_enum.hpp>
 #include <fcppt/container/bitfield/object_impl.hpp>
+#include <fcppt/container/bitfield/operators.hpp>
 #include <fcppt/io/cout.hpp>
 
 //! [bitfield]

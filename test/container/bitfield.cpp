@@ -12,6 +12,7 @@
 #include <fcppt/container/bitfield/is_subset_eq.hpp>
 #include <fcppt/container/bitfield/object_from_enum.hpp>
 #include <fcppt/container/bitfield/object_impl.hpp>
+#include <fcppt/container/bitfield/operators.hpp>
 #include <fcppt/container/bitfield/std_hash.hpp>
 #include <fcppt/container/bitfield/underlying_value.hpp>
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
