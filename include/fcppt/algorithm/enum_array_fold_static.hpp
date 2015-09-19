@@ -42,7 +42,7 @@ enum_array_fold_static(
 				[
 					&_function
 				](
-					auto const _index
+					auto const _fcppt_index
 				)
 				{
 					return
@@ -52,7 +52,7 @@ enum_array_fold_static(
 								Array::enum_type,
 								fcppt::cast::int_to_enum_fun,
 								FCPPT_DECLTYPE_SINK(
-									_index
+									_fcppt_index
 								)
 							>{}
 						);
