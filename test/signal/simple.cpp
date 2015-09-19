@@ -7,9 +7,9 @@
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
+#include <fcppt/signal/auto_connection.hpp>
 #include <fcppt/signal/base.hpp>
 #include <fcppt/signal/object.hpp>
-#include <fcppt/signal/auto_connection.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/test/unit_test.hpp>
 #include <functional>

@@ -7,8 +7,8 @@
 //! [signal_combine]
 #include <fcppt/text.hpp>
 #include <fcppt/io/cout.hpp>
-#include <fcppt/signal/object.hpp>
 #include <fcppt/signal/auto_connection.hpp>
+#include <fcppt/signal/object.hpp>
 
 
 namespace

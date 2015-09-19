@@ -6,7 +6,6 @@
 
 #include <fcppt/signal/auto_connection.hpp>
 #include <fcppt/signal/object.hpp>
-#include <fcppt/signal/auto_connection.hpp>
 #include <fcppt/signal/unregister/base.hpp>
 #include <fcppt/signal/unregister/function.hpp>
 #include <fcppt/config/external_begin.hpp>
