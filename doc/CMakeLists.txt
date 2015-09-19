@@ -1142,6 +1142,8 @@ set(
 	include/fcppt/signal/object_decl.hpp
 	include/fcppt/signal/object_fwd.hpp
 	include/fcppt/signal/object_impl.hpp
+	include/fcppt/signal/optional_auto_connection.hpp
+	include/fcppt/signal/optional_auto_connection_fwd.hpp
 	include/fcppt/signal/scoped_connection.hpp
 	include/fcppt/signal/unregister/base.hpp
 	include/fcppt/signal/unregister/base_decl.hpp
