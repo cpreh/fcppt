@@ -8,7 +8,7 @@
 #include <fcppt/text.hpp>
 #include <fcppt/io/cout.hpp>
 #include <fcppt/signal/object.hpp>
-#include <fcppt/signal/scoped_connection.hpp>
+#include <fcppt/signal/auto_connection.hpp>
 
 
 namespace
@@ -50,7 +50,7 @@ int main()
 	signal_type signal;
 
 	// Connect function "callback" to signal
-	fcppt::signal::scoped_connection connection(
+	fcppt::signal::auto_connection const connection(
 		signal.connect(
 			signal_type::function{
 				&callback
@@ -70,7 +70,7 @@ int main()
 
 	signal2_type signal2;
 
-	fcppt::signal::scoped_connection connection2(
+	fcppt::signal::auto_connection const connection2(
 		signal2.connect(
 			signal2_type::function{
 				&other_callback

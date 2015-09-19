@@ -6,7 +6,7 @@
 
 #include <fcppt/signal/auto_connection.hpp>
 #include <fcppt/signal/object.hpp>
-#include <fcppt/signal/scoped_connection.hpp>
+#include <fcppt/signal/auto_connection.hpp>
 #include <fcppt/signal/unregister/base.hpp>
 #include <fcppt/signal/unregister/function.hpp>
 #include <fcppt/config/external_begin.hpp>
@@ -106,7 +106,7 @@ register_named_signal(
 int
 main()
 {
-	fcppt::signal::scoped_connection const hello_connection(
+	fcppt::signal::auto_connection const hello_connection(
 		register_named_signal(
 			"hello",
 			fcppt::signal::unregister::function{
@@ -123,7 +123,7 @@ main()
 	)->second();
 
 	{
-		fcppt::signal::scoped_connection const goodbye_connection(
+		fcppt::signal::auto_connection const goodbye_connection(
 			register_named_signal(
 				"goodbye",
 				fcppt::signal::unregister::function{

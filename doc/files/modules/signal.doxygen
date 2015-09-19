@@ -155,15 +155,12 @@ more on that.
 To attach a callback function to the signal, you have to call the
 fcppt::signal::object::connect member function. Arbitrarily many attached
 functions are allowed. The <code>connect</code> function returns an \link
-fcppt::signal::auto_connection auto_connection\endlink. This is actually a
-typedef to <code>std::unique_ptr&lt;fcppt::signal::connection&gt;</code>.  The
-reason behind this is that connections may keep additional information that is
+fcppt::signal::auto_connection auto_connection\endlink which is a unique pointer
+to a connection.
+The reason behind this is that connections may keep additional information that is
 important when they are destroyed (see \ref signal_disconnect_callbacks).
-
 The callback function is disconnected from the signal when the connection
-object dies. There are typedefs to other smart pointers to connections, such as
-fcppt::signal::scoped_connection, so feel free to wrap <code>connect</code>'s
-result inside more adequate smart pointers.
+object dies.
 
 \note
 The "real" connection class, fcppt::signal::connection, is somewhat
@@ -226,11 +223,11 @@ class foo
 public:
 	// ...
 private:
-	fcppt::signal::scoped_connection a;
-	fcppt::signal::scoped_connection b;
-	fcppt::signal::scoped_connection c;
-	fcppt::signal::scoped_connection d;
-	fcppt::signal::scoped_connection e;
+	fcppt::signal::auto_connection const a;
+	fcppt::signal::auto_connection const b;
+	fcppt::signal::auto_connection const c;
+	fcppt::signal::auto_connection const d;
+	fcppt::signal::auto_connection const e;
 };
 \endcode
 

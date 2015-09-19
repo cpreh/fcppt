@@ -9,7 +9,7 @@
 #include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/signal/base.hpp>
 #include <fcppt/signal/object.hpp>
-#include <fcppt/signal/scoped_connection.hpp>
+#include <fcppt/signal/auto_connection.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/test/unit_test.hpp>
 #include <functional>
@@ -55,7 +55,7 @@ FCPPT_PP_POP_WARNING
 	signal sig;
 
 	{
-		fcppt::signal::scoped_connection const con1(
+		fcppt::signal::auto_connection const con1(
 			sig.connect(
 				signal::function{
 					std::bind(
@@ -76,7 +76,7 @@ FCPPT_PP_POP_WARNING
 			counter == 1
 		);
 
-		fcppt::signal::scoped_connection const con2(
+		fcppt::signal::auto_connection const con2(
 			sig.connect(
 				signal::function{
 					std::bind(
@@ -116,7 +116,7 @@ FCPPT_PP_POP_WARNING
 		false
 	};
 
-	fcppt::signal::scoped_connection const con1(
+	fcppt::signal::auto_connection const con1(
 		sig.connect(
 			signal::function{
 				[

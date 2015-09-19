@@ -7,8 +7,8 @@
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
+#include <fcppt/signal/auto_connection.hpp>
 #include <fcppt/signal/object.hpp>
-#include <fcppt/signal/scoped_connection.hpp>
 #include <fcppt/signal/unregister/base.hpp>
 #include <fcppt/signal/unregister/function.hpp>
 #include <fcppt/config/external_begin.hpp>
@@ -61,7 +61,7 @@ FCPPT_PP_POP_WARNING
 	signal sig;
 
 	{
-		fcppt::signal::scoped_connection const con1(
+		fcppt::signal::auto_connection const con1(
 			sig.connect(
 				empty_function,
 				fcppt::signal::unregister::function{
@@ -83,7 +83,7 @@ FCPPT_PP_POP_WARNING
 	);
 
 	{
-		fcppt::signal::scoped_connection const con2(
+		fcppt::signal::auto_connection const con2(
 			sig.connect(
 				empty_function,
 				fcppt::signal::unregister::function{
@@ -125,7 +125,7 @@ FCPPT_PP_POP_WARNING
 	};
 
 	{
-		fcppt::signal::scoped_connection const con1(
+		fcppt::signal::auto_connection const con1(
 			sig.connect(
 				signal::function{
 					[

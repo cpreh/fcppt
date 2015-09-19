@@ -9,7 +9,6 @@
 #include <fcppt/signal/auto_connection.hpp>
 #include <fcppt/signal/auto_connection_container.hpp>
 #include <fcppt/signal/object.hpp>
-#include <fcppt/signal/scoped_connection.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <utility>
 #include <fcppt/config/external_end.hpp>
@@ -30,11 +29,6 @@ function2()
 
 void
 function3()
-{
-}
-
-void
-function4()
 {
 }
 
@@ -82,20 +76,11 @@ main()
 		)
 	);
 
-	// scoped_connection can also be used
-	fcppt::signal::scoped_connection const connection3(
-		signal.connect(
-			void_signal::function{
-				::function3
-			}
-		)
-	);
-
 	// or you can take the auto_connection and process it somehow
 	fcppt::signal::auto_connection connection4(
 		signal.connect(
 			void_signal::function{
-				::function4
+				::function3
 			}
 		)
 	);
