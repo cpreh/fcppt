@@ -86,6 +86,13 @@
 	</ul>
 </li>
 
+<li>\ref fcpptsignal
+	<ul>
+	<li>Added \link fcppt::signal::optional_auto_connection\endlink
+	typedef.</li>
+	</ul>
+</li>
+
 <li>\ref fcpptvarious
 	<ul>
 	<li>Added \link FCPPT_DECLTYPE_SINK\endlink which returns
@@ -119,6 +126,18 @@
 	<ul>
 	<li>Renamed <code>fcppt::container::find_opt</code> to \link
 	fcppt::container::find_opt_mapped\endlink.</li>
+	</ul>
+</li>
+
+<li>\ref fcpptcontainerbitfield
+	<ul>
+	<li>Simplified \link fcppt::container::bitfield::object\endlink by
+	removing iterator-based functions, <code>operator bool</code>,
+	<code>swap</code> and <code>clear</code>.</li>
+	<li>Moved comparison operators into
+	<code>fcppt/container/bitfield/comparison.hpp</code>.</li>
+	<li>Moved all other operators into
+	<code>fcppt/container/bitfield/operators.hpp</code>.</li>
 	</ul>
 </li>
 
@@ -220,6 +239,13 @@
 	<code>back</code>, etc, and so on.</li>
 	<li>Removed swap implementations because they gained nothing over
 	<code>std::swap</code>.</li>
+	</ul>
+</li>
+
+<li>\ref fcpptsignal
+	<ul>
+	<li>Removed <code>fcppt::signal::scoped_connection</code> which was a
+	typedef to <code>fcppt::signal::auto_connection const</code>.</li>
 	</ul>
 </li>
 
