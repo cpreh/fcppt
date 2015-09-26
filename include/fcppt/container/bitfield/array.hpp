@@ -27,11 +27,12 @@ namespace bitfield
 \brief Meta function to retrieve the (quasi-internal) storage type used for
 fcppt::container::bitfield::object
 
+\ingroup fcpptcontainerbitfield
+
 This is currently just an array of as many <code>InternalTypes</code> values as
-necessary to hold all the specified bits.
+are necessary to hold all the specified bits.
 */
 template<
-	typename ElementType,
 	typename NumElements,
 	typename InternalType
 >

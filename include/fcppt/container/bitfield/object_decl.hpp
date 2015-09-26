@@ -57,7 +57,6 @@ public:
 
 	typedef
 	fcppt::container::bitfield::array<
-		ElementType,
 		NumElements,
 		InternalType
 	>

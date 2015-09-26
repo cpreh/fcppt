@@ -87,7 +87,6 @@ template \
 class \
 fcppt::container::bitfield::proxy< \
 	fcppt::container::bitfield::array< \
-		enum_, \
 		fcppt::enum_size<\
 			enum_\
 		>::type,\
