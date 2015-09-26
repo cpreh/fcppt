@@ -217,7 +217,31 @@ add_fcppt_test(
 )
 
 add_fcppt_test(
-	container/bitfield
+	container/bitfield/comparison
+)
+
+add_fcppt_test(
+	container/bitfield/empty
+)
+
+add_fcppt_test(
+	container/bitfield/hash
+)
+
+add_fcppt_test(
+	container/bitfield/is_subset_eq
+)
+
+add_fcppt_test(
+	container/bitfield/object
+)
+
+add_fcppt_test(
+	container/bitfield/operators
+)
+
+add_fcppt_test(
+	container/bitfield/underlying_value
 )
 
 add_fcppt_test(
