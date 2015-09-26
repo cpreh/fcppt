@@ -4,99 +4,44 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/no_init.hpp>
 #include <fcppt/math/matrix/has_dim.hpp>
-#include <fcppt/math/matrix/object_impl.hpp>
 #include <fcppt/math/matrix/static.hpp>
-#include <fcppt/preprocessor/disable_gcc_warning.hpp>
-#include <fcppt/preprocessor/pop_warning.hpp>
-#include <fcppt/preprocessor/push_warning.hpp>
-#include <fcppt/config/external_begin.hpp>
-#include <boost/test/unit_test.hpp>
-#include <type_traits>
-#include <fcppt/config/external_end.hpp>
 
 
-namespace
+int
+main()
 {
-
-// test overloaded functions
-
-template<
-	typename Matrix
->
-typename std::enable_if<
-	fcppt::math::matrix::has_dim<
-		Matrix,
-		1,
-		1
-	>::value,
-	bool
->::type
-is_1x1(
-	Matrix const &
-)
-{
-	return true;
-}
-
-template<
-	typename Matrix
->
-typename std::enable_if<
-	!fcppt::math::matrix::has_dim<
-		Matrix,
-		1,
-		1
-	>::value,
-	bool
->::type
-is_1x1(
-	Matrix const &
-)
-{
-	return false;
-}
-
-}
-
-FCPPT_PP_PUSH_WARNING
-FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
-
-BOOST_AUTO_TEST_CASE(math_matrix_has_dim)
-{
-FCPPT_PP_POP_WARNING
-
-	typedef fcppt::math::matrix::static_<
+	typedef
+	fcppt::math::matrix::static_<
 		float,
 		1,
 		1
-	> f1x1;
+	>
+	f1x1;
 
-	f1x1 const m1x1{
-		fcppt::no_init()
-	};
-
-	typedef fcppt::math::matrix::static_<
-		float,
-		2,
-		2
-	> f2x2;
-
-	f2x2 const m2x2{
-		fcppt::no_init()
-	};
-
-	BOOST_REQUIRE(
-		is_1x1(
-			m1x1
-		)
+	static_assert(
+		fcppt::math::matrix::has_dim<
+			f1x1,
+			1,
+			1
+		>::value,
+		""
 	);
 
+	typedef
+	fcppt::math::matrix::static_<
+		float,
+		2,
+		3
+	>
+	f2x3;
 
-	BOOST_REQUIRE(
-		!is_1x1(
-			m2x2
-		)
+	static_assert(
+		fcppt::math::matrix::has_dim<
+			f2x3,
+			2,
+			3
+		>::value,
+		""
 	);
 }

@@ -627,6 +627,7 @@ add_fcppt_test(
 
 add_fcppt_test(
 	math/matrix/has_dim
+	NO_CODE
 )
 
 add_fcppt_test(
