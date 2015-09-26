@@ -3,20 +3,35 @@ function(
 	PATHNAME
 )
 	set(
+		OPTION_ARGS
+		NO_CODE
+	)
+
+	set(
 		MULTI_ARGS
 		LINK_LIBS
 	)
 
 	cmake_parse_arguments(
 		""
-		""
+		"${OPTION_ARGS}"
 		""
 		"${MULTI_ARGS}"
 		${ARGN}
 	)
 
+	if(
+		_NO_CODE
+	)
+		set(
+			NO_CODE
+			"NO_CODE"
+		)
+	endif()
+
 	fcppt_utils_add_test(
 		"${PATHNAME}"
+		${NO_CODE}
 		LINK_LIBS
 			${_LINK_LIBS}
 	)
@@ -35,9 +50,9 @@ fcppt_utils_link_target(
 	fcppt_log
 )
 
-
 add_fcppt_test(
 	absurd
+	NO_CODE
 )
 
 add_fcppt_test(
@@ -118,6 +133,7 @@ add_fcppt_test(
 
 add_fcppt_test(
 	algorithm/optimize_map
+	NO_CODE
 )
 
 add_fcppt_test(
@@ -530,6 +546,7 @@ add_fcppt_test(
 
 add_fcppt_test(
 	math/dim/has_dim
+	NO_CODE
 )
 
 add_fcppt_test(

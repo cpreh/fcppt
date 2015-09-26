@@ -1150,6 +1150,11 @@ function(
 	PATH_NAME
 )
 	set(
+		OPTION_ARGS
+		NO_CODE
+	)
+
+	set(
 		MULTI_ARGS
 		LINK_LIBS
 		INCLUDE_DIRS
@@ -1157,7 +1162,7 @@ function(
 
 	cmake_parse_arguments(
 		""
-		""
+		"${OPTION_ARGS}"
 		""
 		"${MULTI_ARGS}"
 		${ARGN}
@@ -1185,28 +1190,6 @@ function(
 		${FULL_TEST_NAME}
 	)
 
-	target_compile_definitions(
-		${FULL_TEST_NAME}
-		PRIVATE
-		BOOST_TEST_MODULE=${TEST_NAME}
-	)
-
-	if(
-		Boost_USE_STATIC_LIBS
-	)
-		target_compile_definitions(
-			${FULL_TEST_NAME}
-			PRIVATE
-			BOOST_TEST_NO_LIB
-		)
-	else()
-		target_compile_definitions(
-			${FULL_TEST_NAME}
-			PRIVATE
-			BOOST_TEST_DYN_LINK
-		)
-	endif()
-
 	target_include_directories(
 		${FULL_TEST_NAME}
 		PRIVATE
@@ -1216,14 +1199,45 @@ function(
 	target_link_libraries(
 		${FULL_TEST_NAME}
 		PRIVATE
-		${Boost_UNIT_TEST_FRAMEWORK_LIBRARY}
 		${_LINK_LIBS}
 	)
 
-	add_test(
-		NAME
-		${TEST_NAME}
-		COMMAND
-		${FULL_TEST_NAME}
+	if(
+		NOT ${_NO_CODE}
 	)
+		target_compile_definitions(
+			${FULL_TEST_NAME}
+			PRIVATE
+			BOOST_TEST_MODULE=${TEST_NAME}
+		)
+
+		if(
+			Boost_USE_STATIC_LIBS
+		)
+			target_compile_definitions(
+				${FULL_TEST_NAME}
+				PRIVATE
+				BOOST_TEST_NO_LIB
+			)
+		else()
+			target_compile_definitions(
+				${FULL_TEST_NAME}
+				PRIVATE
+				BOOST_TEST_DYN_LINK
+			)
+		endif()
+
+		target_link_libraries(
+			${FULL_TEST_NAME}
+			PRIVATE
+			${Boost_UNIT_TEST_FRAMEWORK_LIBRARY}
+		)
+
+		add_test(
+			NAME
+			${TEST_NAME}
+			COMMAND
+			${FULL_TEST_NAME}
+		)
+	endif()
 endfunction()

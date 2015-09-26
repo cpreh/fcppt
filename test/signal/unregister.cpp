@@ -21,10 +21,12 @@
 namespace
 {
 
-typedef fcppt::signal::object<
+typedef
+fcppt::signal::object<
 	void (),
 	fcppt::signal::unregister::base
-> signal;
+>
+signal_type;
 
 }
 
@@ -41,7 +43,7 @@ FCPPT_PP_POP_WARNING
 		int
 	> values;
 
-	signal::function const empty_function{
+	signal_type::function const empty_function{
 		[]{}
 	};
 
@@ -58,7 +60,7 @@ FCPPT_PP_POP_WARNING
 		}
 	);
 
-	signal sig;
+	signal_type sig;
 
 	{
 		fcppt::signal::auto_connection const con1(
@@ -74,12 +76,14 @@ FCPPT_PP_POP_WARNING
 		);
 	}
 
-	BOOST_REQUIRE(
-		values.size() == 1
+	BOOST_CHECK_EQUAL(
+		values.size(),
+		1u
 	);
 
-	BOOST_REQUIRE(
-		values.back() == 42
+	BOOST_CHECK_EQUAL(
+		values.back(),
+		42
 	);
 
 	{
@@ -96,12 +100,14 @@ FCPPT_PP_POP_WARNING
 		);
 	}
 
-	BOOST_REQUIRE(
-		values.size() == 2
+	BOOST_CHECK_EQUAL(
+		values.size(),
+		2u
 	);
 
-	BOOST_REQUIRE(
-		values.back() == 100
+	BOOST_CHECK_EQUAL(
+		values.back(),
+		100
 	);
 }
 
@@ -114,7 +120,7 @@ BOOST_AUTO_TEST_CASE(
 {
 FCPPT_PP_POP_WARNING
 
-	signal sig;
+	signal_type sig;
 
 	bool done{
 		false
@@ -127,7 +133,7 @@ FCPPT_PP_POP_WARNING
 	{
 		fcppt::signal::auto_connection const con1(
 			sig.connect(
-				signal::function{
+				signal_type::function{
 					[
 						&done
 					]{
@@ -145,7 +151,7 @@ FCPPT_PP_POP_WARNING
 			)
 		);
 
-		signal sig2(
+		signal_type sig2(
 			std::move(
 				sig
 			)

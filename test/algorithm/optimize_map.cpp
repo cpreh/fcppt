@@ -17,7 +17,6 @@
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/test/unit_test.hpp>
 #include <list>
 #include <map>
 #include <vector>
@@ -33,12 +32,6 @@ std::vector<
 >
 int_vector;
 
-typedef
-std::map<
-	int,
-	int
->
-int_int_map;
 
 template<
 	typename Source
@@ -51,163 +44,164 @@ fcppt::algorithm::detail::optimize_map<
 	Source
 >;
 
-static_assert(
-	fcppt::algorithm::detail::optimize_map<
-		int_vector,
-		int_vector
-	>::value,
-	"map from vector to vector not optimized"
-);
+}
 
-static_assert(
-	fcppt::algorithm::detail::has_size<
-		int_vector
-	>::value,
-	"vector::size() not detected"
-);
-
-static_assert(
-	fcppt::algorithm::detail::has_reserve<
-		int_vector
-	>::value,
-	"vector::reserve() not detected"
-);
-
-static_assert(
-	!fcppt::algorithm::detail::has_reserve<
-		int_int_map
-	>::value,
-	"map does not have reserve"
-);
-
-static_assert(
-	fcppt::algorithm::detail::has_size<
-		int_int_map
-	>::value,
-	"map::size() not detected"
-);
-
-static_assert(
-	fcppt::algorithm::detail::optimize_map<
-		int_vector,
-		int_int_map
-	>::value,
-	"map from map to vector not optimized"
-);
-
-static_assert(
-	!fcppt::algorithm::detail::optimize_map<
-		int_int_map,
-		int_vector
-	>::value,
-	"map from vector to map cannot be optimized"
-);
-
-FCPPT_PP_PUSH_WARNING
-#if defined(FCPPT_CONFIG_CLANG_COMPILER)
-FCPPT_PP_DISABLE_GCC_WARNING(-Wunneeded-member-function)
-FCPPT_PP_DISABLE_GCC_WARNING(-Wunused-member-function)
-#endif
-
-struct ra_range
+int
+main()
 {
 	typedef
-	int_vector::iterator
-	iterator;
-
-	iterator
-	begin() const;
-
-	iterator
-	end() const;
-};
-
-static_assert(
-	source_optimized<
-		ra_range
-	>::value,
-	"random access iterator not detected"
-);
-
-struct bi_range
-{
-	typedef
-	std::list<
+	std::map<
+		int,
 		int
-	>::iterator
-	iterator;
+	>
+	int_int_map;
 
-	iterator
-	begin() const;
+	static_assert(
+		fcppt::algorithm::detail::optimize_map<
+			int_vector,
+			int_vector
+		>::value,
+		"map from vector to vector not optimized"
+	);
 
-	iterator
-	end() const;
-};
+	static_assert(
+		fcppt::algorithm::detail::has_size<
+			int_vector
+		>::value,
+		"vector::size() not detected"
+	);
 
-static_assert(
-	!source_optimized<
-		bi_range
-	>::value,
-	"random access iterator not detected"
-);
+	static_assert(
+		fcppt::algorithm::detail::has_reserve<
+			int_vector
+		>::value,
+		"vector::reserve() not detected"
+	);
 
-FCPPT_PP_POP_WARNING
+	static_assert(
+		!fcppt::algorithm::detail::has_reserve<
+			int_int_map
+		>::value,
+		"map does not have reserve"
+	);
 
-enum class test_enum
-{
-	test1,
-	fcppt_maximum = test1
-};
+	static_assert(
+		fcppt::algorithm::detail::has_size<
+			int_int_map
+		>::value,
+		"map::size() not detected"
+	);
 
-static_assert(
-	source_optimized<
-		fcppt::enum_range<
-			test_enum
-		>
-	>::value,
-	"enum range not optimized"
-);
+	static_assert(
+		fcppt::algorithm::detail::optimize_map<
+			int_vector,
+			int_int_map
+		>::value,
+		"map from map to vector not optimized"
+	);
 
-static_assert(
-	source_optimized<
-		fcppt::int_range<
+	static_assert(
+		!fcppt::algorithm::detail::optimize_map<
+			int_int_map,
+			int_vector
+		>::value,
+		"map from vector to map cannot be optimized"
+	);
+
+	FCPPT_PP_PUSH_WARNING
+	#if defined(FCPPT_CONFIG_CLANG_COMPILER)
+	FCPPT_PP_DISABLE_GCC_WARNING(-Wunneeded-member-function)
+	FCPPT_PP_DISABLE_GCC_WARNING(-Wunused-member-function)
+	#endif
+
+	struct ra_range
+	{
+		typedef
+		int_vector::iterator
+		iterator;
+
+		iterator
+		begin() const;
+
+		iterator
+		end() const;
+	};
+
+	static_assert(
+		source_optimized<
+			ra_range
+		>::value,
+		"random access iterator not detected"
+	);
+
+	struct bi_range
+	{
+		typedef
+		std::list<
 			int
-		>
-	>::value,
-	"int range not optimized"
-);
+		>::iterator
+		iterator;
 
-static_assert(
-	source_optimized<
-		fcppt::container::grid::pos_range<
-			unsigned,
-			2
-		>
-	>::value,
-	"grid::pos_range not optimized"
-);
+		iterator
+		begin() const;
 
-static_assert(
-	source_optimized<
-		fcppt::container::grid::pos_ref_range<
-			fcppt::container::grid::object<
+		iterator
+		end() const;
+	};
+
+	static_assert(
+		!source_optimized<
+			bi_range
+		>::value,
+		"random access iterator not detected"
+	);
+
+	FCPPT_PP_POP_WARNING
+
+	enum class test_enum
+	{
+		test1,
+		fcppt_maximum = test1
+	};
+
+	static_assert(
+		source_optimized<
+			fcppt::enum_range<
+				test_enum
+			>
+		>::value,
+		"enum range not optimized"
+	);
+
+	static_assert(
+		source_optimized<
+			fcppt::int_range<
+				int
+			>
+		>::value,
+		"int range not optimized"
+	);
+
+	static_assert(
+		source_optimized<
+			fcppt::container::grid::pos_range<
 				unsigned,
 				2
 			>
-		>
-	>::value,
-	"grid::pos_ref_range not optimized"
-);
+		>::value,
+		"grid::pos_range not optimized"
+	);
 
-}
-
-FCPPT_PP_PUSH_WARNING
-FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
-
-BOOST_AUTO_TEST_CASE(
-	algorithm_optimize_map
-)
-{
-FCPPT_PP_POP_WARNING
+	static_assert(
+		source_optimized<
+			fcppt::container::grid::pos_ref_range<
+				fcppt::container::grid::object<
+					unsigned,
+					2
+				>
+			>
+		>::value,
+		"grid::pos_ref_range not optimized"
+	);
 
 }
