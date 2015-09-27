@@ -189,6 +189,10 @@ add_fcppt_test(
 )
 
 add_fcppt_test(
+	bit
+)
+
+add_fcppt_test(
 	boost_units_value
 )
 

@@ -1,0 +1,14 @@
+/**
+\defgroup fcpptbit fcppt.bit
+\ingroup fcpptmain
+\brief Bit operations
+
+This module provides safer bit operations, namely generating a shifted bit mask
+and testing a bit mask against a value.
+*/
+
+namespace fcppt
+{
+/// Bit operations
+namespace bit {}
+}

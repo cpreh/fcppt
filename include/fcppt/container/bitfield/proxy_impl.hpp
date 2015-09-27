@@ -7,7 +7,11 @@
 #ifndef FCPPT_CONTAINER_BITFIELD_PROXY_IMPL_HPP_INCLUDED
 #define FCPPT_CONTAINER_BITFIELD_PROXY_IMPL_HPP_INCLUDED
 
-#include <fcppt/literal.hpp>
+#include <fcppt/bit/mask_impl.hpp>
+#include <fcppt/bit/shift_count.hpp>
+#include <fcppt/bit/shifted_mask.hpp>
+#include <fcppt/bit/test.hpp>
+#include <fcppt/cast/size.hpp>
 #include <fcppt/container/bitfield/proxy_decl.hpp>
 #include <fcppt/container/bitfield/value_type.hpp>
 
@@ -34,7 +38,8 @@ fcppt::container::bitfield::proxy<
 template<
 	typename StoredType
 >
-typename fcppt::container::bitfield::proxy<
+typename
+fcppt::container::bitfield::proxy<
 	StoredType
 >::size_type
 fcppt::container::bitfield::proxy<
@@ -52,7 +57,8 @@ fcppt::container::bitfield::proxy<
 template<
 	typename StoredType
 >
-typename fcppt::container::bitfield::proxy<
+typename
+fcppt::container::bitfield::proxy<
 	StoredType
 >::size_type
 fcppt::container::bitfield::proxy<
@@ -70,9 +76,10 @@ fcppt::container::bitfield::proxy<
 template<
 	typename StoredType
 >
-typename fcppt::container::bitfield::proxy<
+typename
+fcppt::container::bitfield::proxy<
 	StoredType
->::internal_type
+>::mask_type
 fcppt::container::bitfield::proxy<
 	StoredType
 >::bit_mask(
@@ -80,13 +87,15 @@ fcppt::container::bitfield::proxy<
 )
 {
 	return
-		fcppt::literal<
+		fcppt::bit::shifted_mask<
 			internal_type
 		>(
-			1u
-		)
-		<<
-		_pos;
+			fcppt::cast::size<
+				fcppt::bit::shift_count
+			>(
+				_pos
+			)
+		);
 }
 
 template<
@@ -113,7 +122,7 @@ fcppt::container::bitfield::proxy<
 			)
 		);
 
-	internal_type const mask(
+	mask_type const mask(
 		this->bit_mask(
 			bit
 		)
@@ -125,14 +134,15 @@ fcppt::container::bitfield::proxy<
 		array_[
 			index
 		] |=
-			mask;
+			mask.get();
         else
 		array_[
 			index
 		] &=
-			~mask;
+			~mask.get();
 
-	return *this;
+	return
+		*this;
 }
 
 template<
@@ -144,24 +154,17 @@ fcppt::container::bitfield::proxy<
 fcppt::container::bitfield::value_type() const
 {
 	return
-		(
+		fcppt::bit::test(
 			array_[
 				this->array_offset(
 					pos_
 				)
-			]
-			&
+			],
 			this->bit_mask(
 				this->bit_offset(
 					pos_
 				)
 			)
-		)
-		!=
-		fcppt::literal<
-			internal_type
-		>(
-			0u
 		);
 }
 

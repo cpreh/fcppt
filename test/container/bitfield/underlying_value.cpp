@@ -4,7 +4,9 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/literal.hpp>
+#include <fcppt/bit/shifted_mask.hpp>
+#include <fcppt/bit/shift_count.hpp>
+#include <fcppt/bit/test.hpp>
 #include <fcppt/cast/enum_to_int.hpp>
 #include <fcppt/container/bitfield/object_from_enum.hpp>
 #include <fcppt/container/bitfield/object.hpp>
@@ -48,28 +50,17 @@ FCPPT_PP_POP_WARNING
 		-> bool
 		{
 			return
-				(
-					_value
-					&
-					(
-						fcppt::literal<
-							bitfield::internal_type
-						>(
-							1
-						)
-						<<
+				fcppt::bit::test(
+					_value,
+					fcppt::bit::shifted_mask<
+						bitfield::internal_type
+					>(
 						fcppt::cast::enum_to_int<
-							bitfield::internal_type
+							fcppt::bit::shift_count
 						>(
 							_enum
 						)
 					)
-				)
-				!=
-				fcppt::literal<
-					bitfield::internal_type
-				>(
-					0
 				);
 		}
 	);

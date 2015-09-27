@@ -38,12 +38,30 @@
 \subsection changes_added_functionality_to_200 Added functionality
 
 <ul>
+
+<li><code>CMake</code>
+	<ul>
+	<li>Added <code>NO_CODE</code> flag to
+	<code>fcppt_utils_add_test</code> which can be used to generate test
+	cases that only consist of static asserts.</li>
+	</ul>
+</li>
+
 <li>\ref fcpptalgorithm
 	<ul>
 	<li>Added \link fcppt::algorithm::loop\endlink to express loops over
 	different ranges, including MPL ranges. Also added \link
 	fcppt::algorithm::loop_break\endlink which is similar to the former but
 	can break out of the loop early.</li>
+	</ul>
+</li>
+
+<li>\ref fcpptbit
+	<ul>
+	<li> New library that makes creating bit masks and testing them a bit
+	safer and less tedious. See for example \link
+	fcppt::bit::shifted_mask\endlink and \link
+	fcppt::bit::test\endlink.</li>
 	</ul>
 </li>
 

@@ -8,6 +8,7 @@
 #define FCPPT_CONTAINER_BITFIELD_PROXY_DECL_HPP_INCLUDED
 
 #include <fcppt/nonassignable.hpp>
+#include <fcppt/bit/mask_fwd.hpp>
 #include <fcppt/container/bitfield/object_fwd.hpp>
 #include <fcppt/container/bitfield/proxy_fwd.hpp>
 #include <fcppt/container/bitfield/value_type.hpp>
@@ -54,6 +55,12 @@ class proxy
 	array_type::value_type
 	internal_type;
 
+	typedef
+	fcppt::bit::mask<
+		internal_type
+	>
+	mask_type;
+
 	proxy(
 		StoredType &,
 		size_type
@@ -90,7 +97,7 @@ class proxy
 	);
 
 	static
-	internal_type
+	mask_type
 	bit_mask(
 		size_type
 	);

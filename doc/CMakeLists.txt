@@ -53,6 +53,7 @@ set(
 	doc/files/modules/algorithm.doxygen
 	doc/files/modules/assert.doxygen
 	doc/files/modules/assign.doxygen
+	doc/files/modules/bit.doxygen
 	doc/files/modules/casts.doxygen
 	doc/files/modules/config.doxygen
 	doc/files/modules/container/base.doxygen
@@ -270,6 +271,15 @@ set(
 	include/fcppt/backtrace/print_current_stack_frame.hpp
 	include/fcppt/backtrace/stack_frame.hpp
 	include/fcppt/backtrace/stack_limit.hpp
+	include/fcppt/bit/mask.hpp
+	include/fcppt/bit/mask_c.hpp
+	include/fcppt/bit/mask_decl.hpp
+	include/fcppt/bit/mask_fwd.hpp
+	include/fcppt/bit/mask_impl.hpp
+	include/fcppt/bit/shift_count.hpp
+	include/fcppt/bit/shifted_mask.hpp
+	include/fcppt/bit/shifted_mask_c.hpp
+	include/fcppt/bit/test.hpp
 	include/fcppt/boost_units_value.hpp
 	include/fcppt/c_deleter.hpp
 	include/fcppt/c_deleter_fwd.hpp
