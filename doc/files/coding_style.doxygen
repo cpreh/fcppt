@@ -6,381 +6,159 @@
 <td>
 
 <ul>
-	<li>\ref coding_types
+	<li>\ref coding_introduction
+	<li>\ref coding_asthetic</li>
 		<ul>
-			<li>\ref coding_using_enums</li>
-			<li>\ref coding_const</li>
+			<li>\ref coding_indentation</li>
+			<li>\ref coding_naming</li>
+			<li>\ref coding_partitioning</li>
+			<li>\ref coding_includes</li>
 		</ul>
-	</li>
-	<li>\ref coding_file_separation</li>
-	<li>\ref coding_identifiers</li>
-	<li>\ref coding_indentation
-		<ul>
-			<li>\ref coding_tabs</li>
-			<li>\ref coding_when_to_indent</li>
-		</ul>
-	</li>
-	<li>\ref coding_code_partitioning
-		<ul>
-			<li>\ref coding_file_extension</li>
-			<li>\ref coding_namespaces_and_directories</li>
-			<li>\ref coding_atomic_headers</li>
-			<li>\ref coding_minimal_includes</li>
-			<li>\ref coding_include_guards</li>
-		</ul>
-	</li>
-	<li>\ref coding_numerical_considerations
-		<ul>
-			<li>\ref coding_float_double_long_double</li>
-			<li>\ref coding_integral_types</li>
-		</ul>
-	</li>
+	<li>\ref coding_semantics</li>
 </ul>
 
 </td>
 </tr>
 </table>
 
-\section coding_types Types
+\section coding_introduction Introduction
 
-\subsection coding_using_enums Using enums
+The notion of coding style used in the following section roughly consists of
+two different aspects:
+<ul>
+<li>Asthetic aspects, including how code is indented, partitioned into
+files, identifiers are named, and so on.</li>
+<li>How semantics are expressed, including typing, usage of language constructs
+like loops, <code>const</code>, ownership, and so on.</li>
+</ul>
+In general, coding styles are somewhat arbitrary which is why this document
+tries to give a rationale for every one of them.
 
-C++03 enums have a lot of disadvantages like injecting their enumerators in the
-enclosing namespace and implicitly converting to other integral types.
-Therefore, we only use the new C++11 enum classes (strongly types enums).
+\section coding_asthetic Asthetic aspects
 
-\subsection coding_const Using const
+To start off, this document gives an overview over the asthetic aspects chosen
+in fcppt. Asthetic aspects are purely cosmetic and their only purpose is to
+yield code that is consistent and therefore easier to understand.
 
-We declare as many variables const as possible. This helps to reason about the
-code flow by knowing what values can change. In particular, function arguments
-should be const whenever possible:
+\subsection coding_indentation Indentation
 
+Indentation is a very controversal topic. Everyone has their own opinions on it
+and these are also subject to change over time. Fcppt uses a somewhat excessive
+indentation style whose purpose is not to be <em>identifier-dependant</em> and
+<em>tab-consistent</em>. The former means that changing identifiers should not
+lead to reindentation. Consider a rule that enforces lines that are no longer
+than, say, 80 characters. If you change a single identifier, it could lead to
+reindentation of a lot of lines. The latter means that tab width should not
+affect the indentation, therefore making it possible to use tabs, so that
+everyone can chose their favorite tab width.
+
+The coding style can best be given by a simple example:
 \code
-void f(T); // no const at the declaration which makes no sense
-
-void f(T const _arg)
+result_type
+my_function(
+	T1 _arg1,
+	T2 _arg2
+)
 {
-  // _arg can't change here
+	return
+		expression1(
+			expression2(
+				_arg1
+			),
+			_arg2
+		);
 }
 \endcode
 
-Making class members const is also often a good idea. The only problem with
-this is that a class with const members won't be assignable.
+\subsection coding_naming Naming
 
-\code
-class foo
-{
-  T const bar;
-};
-\endcode
-
-Consider using FCPPT_NONASSIGNABLE in this case.
-
-Making return types of functions const can prevent erroneous code that tries to
-modify the returned value.
-
-\code
-struct foo
-{
-};
-
-foo f();
-
-f() = foo();
-\endcode
-
-This actually compiles, although <code>foo</code> returns a prvalue. prvalues
-of class type can still be modified by calling member functions (like
-<code>operator=</code>) on them. In this case, it would probably (see below) a
-good idea to change the declaration to <code>foo const f();</code>
-
-However, making return types of functions const can have disadvantages:
-
+Fcppt uses C++-style naming conventions which include:
 <ul>
-
-<li>If the return type is fundamental (e.g. <code>int</code>), const won't do
-anything, and most compilers will generate a warning. If the return type is a
-template parameter, this can be a problem.</li>
-
-<li>A const return type prevents moving. For example, <code>std::vector<T>
-const foo();</code> will call the copy constructor of vector when the function
-is called.</li>
-
-\section coding_file_separation File separation
-
-Every function, typedef or class resides in its own header file. So, for
-example, if you want to use fcppt::to_std_string (which is a function) you have
-to <code>\verbatim #include <fcppt/to_std_string.hpp>\endverbatim</code>
-
-All classes have an additional fwd header, which only provides a declaration of
-the class. For example, <code><fcppt/type_info_fwd.hpp></code> provides the
-declaration of fcppt::type_info and <code><fcppt/type_info.hpp></code> provides
-the definition.
-
-Template classes are split into three files. In addition to the
-<code>_fwd</code> header there is a <code>_decl</code> header providing only
-the class definition, as well as an <code>_impl</code> header providing the
-method definitions. There is also a header with no suffix which includes the
-three aforementioned headers. For example, the
-fcppt::container::bitfield::object class consists of the following files:
-
-<ul>
-<li>
-	<code>
-		fcppt/container/bitfield/object_fwd.hpp
-	</code>
-</li>
-<li>
-	<code>
-		fcppt/container/bitfield/object_decl.hpp
-	</code>
-</li>
-<li>
-	<code>
-		fcppt/container/bitfield/object_impl.hpp
-	</code>
-</li>
-<li>
-	<code>
-		fcppt/container/bitfield/object.hpp
-	</code>
-</li>
+<li>Lowercase identifiers, including underscore, for example
+<code>fcppt::optional_bind</code></li>.
+<li>Uppercase identifiers for macros, for example
+<code>FCPPT_NONCOPYABLE</code>.</li>
 </ul>
 
-Using these separate headers might improve compile time, which is known to be a
-problem for more complex template classes. You can, of course, just use the
-non-suffixed header (<code>object.hpp</code> in the example above) if you're not
-concerned with compilation times.
-
-\attention
-If you forget to include the <code>_impl</code> header where the implementation
-of a template is needed, you will get undefined references when linking.
-
-\section coding_identifiers Identifiers
-
-We use the same naming scheme as the C++ standard library. This means no camel
-case, but all lowercase letters and underscores as separators
-(<code>foo_bar_baz()</code> instead of <code>fooBarBaz()</code>). This way,
-code which is mixed with boost and the standard library looks much more
-consistent.
-
-Macro names are <code>CAPTIALIZED</code> so they're not confused with normal
-functions.
-
-\note
-The C standard library's <code>assert</code> function is a source for confusion
-in this respect. You're not the only one if you tried to use it as:
+Members are named with a trailing underscore, while parameters are
+named with a leading underscore:
 \code
-std::assert(0 < 1);
-\endcode
-Macros have no namespace scope.
-
-\section coding_indentation Indentation
-
-\subsection coding_tabs Tabs
-
-We consistently use tabs instead of whitespaces for indentation. If you're
-interested, here's why we do that:
-
-Most coding guidelines just dismiss the tab issue by stating that you should
-just use 'n' whitespaces for indentation. The problem with this is: What are
-sensible values for 'n'? For example, vim's standard tab width is 8. But if you
-use a small terminal, you might run out of space if you, for example, nest 3
-<code>if</code> statements inside a function. So the code looks ugly on some
-machines.
-
-This is where tabs come in handy. They allow for a variable 'n', depending on
-what you specify in your text editor. But there are pitfalls. For example,
-consider your tab width is 4:
-
-\code
-int a = 3,
-    b = 4;
-\endcode
-
-You (or your automatically refactoring editor) might be tempted to write this
-as:
-
-\code
-int a = 3,
-\tb = 4;
-\endcode
-
-Which — with <em>n</em>=4 — <em>looks</em> the same. But the problem with this
-is obvious, if you set your tab width to 8, it looks like this:
-
-\code
-int a = 3,
-        b = 4;
-\endcode
-
-It's broken. There are two ways to prevent his: You could use whitespaces in
-this situation, which would work <em>if</em> you have a monospace font (which,
-of course, most people do use when programming). If you don't, the following
-happens:
-
-int a = 3,<br>
-&nbsp;&nbsp;&nbsp;&nbsp;b = 4;
-
-The second solution is to indent it like this
-
-\code
-int
-\ta=3,
-\tb=4;
-\endcode
-
-Which is tab-safe and doesn't look too ugly, so that's what we're doing.
-
-\subsection coding_when_to_indent When to indent
-
-When to indent is pretty much left to the individual programmer. Specifying
-more than a few encouragements would be pretty harsh. A rule of thumb for us is
-"indent as much as possible", which can be best explained by an example:
-
-\code
-template<
-    typename T,
-    typename U
->
-T
-cast_stuff(
-    U const &a,
-    U const &b)
+struct test
 {
-    run_other_function
-    (
-        run_yet_another_function
-        (
-            static_cast
-            <
-                T
-            >
-            (
-                a
-            );
-        )
-    );
-}
-\endcode
+	explicit
+	test(
+		int const _arg
+	)
+	:
+		value_(
+			_arg
+		)
+	{
+	}
 
-This, at first glance, might look pretty odd to you, but it is something you
-might encounter when reading fcppt code. This method of indentation is a bit
-extreme, but it is consistent: We insert a newline after every opening brace
-(curly brace, parentheses, whatever).
-
-\section coding_code_partitioning Code partitioning
-
-\subsection coding_file_extension File extension
-
-Many people use ".h" for their C++ header files. We encourage using ".hpp"
-because that way your favorite editor can deduce that you're writing C++ code
-and change, for example, the syntax highlighting accordingly.
-
-\subsection coding_namespaces_and_directories Namespaces and directories
-
-To avoid filename clashes we let the file system hierarchy follow the namespace
-hierarchy. So a namespace creates a new directory - with nesting of directories
-of course.
-
-\subsection coding_atomic_headers Atomic headers
-
-We encourage writing header files which contain only one "entity", so one
-typedef, one class, one constant only. This way, it's very easy to memorize
-which file you have to include to get a specific entity (for
-<code>foo::bar::baz</code> you need <code>foo/bar/baz.hpp</code>, see
-\ref coding_namespaces_and_directories above).
-
-\subsection coding_minimal_includes Minimal includes
-
-A header should only include what it needs so it can be included without
-causing errors by itself (this means it should produce no errors when compiling
-it with <code>-fsyntax-only</code>). If code from the header is used, however,
-additional includes may be needed.
-
-The main reason for this is that for function declarations, the argument and
-return types can be incomplete, as shown in the following example:
-
-\code
-#include <mylib/arg1_fwd.hpp>
-#include <mylib/arg2_fwd.hpp>
-#include <mylib/ret1_fwd.hpp>
-#include <mylib/ret2_fwd.hpp>
-
-struct mine
-{
-  mylib::ret1 foo1(mylib::arg1);
-  mylib::ret2 foo2(mylib::arg2);
+	int value_;
 };
-\endcode
 
-Depending on whether the user of <code>mine</code> intends to use
-<code>foo1</code> or <code>foo2</code>, they need to include the corresponding
-headers that provide the definitions of the argument and return types. A class
-like <code>mine</code> could be a huge interface of which a user might only use
-a small portion, so only declaring the argument and return types usually helps
-to reduce the number of includes needed.
-
-\subsection coding_include_guards Include guards
-
-It's extremely important for include guards to be unique. If they're not, you
-end up in a long debugging session to find missing declarations or even
-undefined references.
-
-So we devised a simple scheme for the names: We use the complete namespace
-hierarchy plus the suffix <code>_HPP_INCLUDED</code>, so consider this file:
-
-\code
-namespace sge
+test
+make_test(
+	int const _arg
+)
 {
-namespace gui
-{
-namespace buttons
-{
-class text
-{
-    ...
-};
-}
-}
+	return
+		test(
+			_arg
+		);
 }
 \endcode
 
-The corresponding include guard would be:
-<code>SGE_GUI_BUTTONS_TEXT_HPP_INCLUDED</code>.  This way, sensible behavior is
-guaranteed. This, of course, requires that header files are quite atomic (see
-\ref coding_atomic_headers above). If headers aren't really atomic, use the
-(converted) file name as the include guard.
+\subsection coding_partitioning Partitioning
 
-\section coding_numerical_considerations Numerical considerations
+There are multiple layers of code organization in C++:
+<ul>
+<li>Files, which include header files and implementation (cpp) files.</li>
+<li>Namespaces and prefixes for identifiers not in a namespace, like
+macros.</li>
+</ul>
+In fcppt, both aspects are made consistent: Every identifier in a namespace
+has a corresponding header path, likewise for macros and prefixes, for example:
+<code>fcppt::container::maybe_front</code> resides in
+<code>fcppt/container/maybe_front.hpp</code> and
+<code>FCPPT_CONFIG_EXTERNAL_BEGIN</code> resides in
+<code>fcppt/config/external_begin.hpp</code>.
 
-\subsection coding_float_double_long_double float/double/long double
+Because C++'s declarations and linkage are so complicated, there are several
+rules for where to declare and define different entities:
+<ul>
+<li>A function has a header and an implementation file, for example:
+<code>fcppt::widen</code> has its declaration in <code>fcppt/widen.hpp</code>
+and its implementation in <code>widen.cpp</code>.</li>
+<li>A class has a header for its declaration, a header for its definition and
+an implementation file for the definition of its functions, for example:
+<code>fcppt::log::object</code> has its declaration in
+<code>fcppt/log/object_fwd.hpp</code>, its definition in
+<code>fcppt/log/object.hpp</code> and the implementation of its functions in
+<code>log/object.cpp</code>. </li>
+<li>A macro has just a single header, for example
+<code>FCPPT_NONCOPYABLE</code> is defined in
+<code>fcppt/noncopyable.hpp</code></li>
+<li>An inline or template function only has a single header, for example
+<code>fcppt::container::maybe_front</code> resides in
+<code>fcppt/container/maybe_front.hpp</code>.</li>
+<li>A template class, like a normal class, is also partitioned into three
+files. However, all of them must be headers. For example,
+<code>fcppt::math::vector::object</code> has its declaration in
+<code>fcppt/math/vector/object_fwd.hpp</code>, its definition in
+<code>fcppt/math/vector/object_decl.hpp</code> and the implementation of its
+functions in <code>fcppt/math/vector/object_impl.hpp</code>.</li>
+<li>Typedefs can have a forward declaration but are not required to. For
+example, <code>fcppt::math::vector::static_</code> has its declaration in
+<code>fcppt/math/vector/static_fwd.hpp</code> and the header
+<code>fcppt/math/vector/static.hpp</code> includes
+<code>fcppt/math/vector/object_impl.hpp</code>, leaving out the step of
+including <code>fcppt/math/vector/object_decl.hpp</code>.</li>
+</ul>
 
-The C++ standard states that basically all operations regarding floats are
-implementation defined. This might lead to a "fatal error" in the following
-code:
+\subsection coding_includes Minimal includes
 
-\code
-float f = 1.0f;
-if (f == 1.0f)
-  do_something_safe();
-else
-  cause_fatal_error();
-\endcode
-
-float comparison is not only implementation defined, it's pretty "blurry" in
-most implementations. How to properly compare floats really depends on the
-situation. Sometimes you might want to test the relative error, sometimes the
-absolute error. In any case, comparing floats directly is almost always wrong.
-
-\subsection coding_integral_types Integral types
-
-The use of the signed types is discouraged. Of course, sometimes you need to
-use them to get negative numbers, but the signed types have a distinct
-disadvantage: Some operations are undefined or implementation defined.
-
-For example, the behavior of the % operator is partially implementation
-defined. Also, the value of <code>INT_MAX+1</code> is undefined, so you cannot
-use ints to "wrap around" the borders. The unsigned types have such guarantees,
-so use them if you really do not need negative numbers.
+\section coding_semantics Semantic aspects
 */
