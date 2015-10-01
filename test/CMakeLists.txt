@@ -766,14 +766,22 @@ add_fcppt_test(
 
 add_fcppt_test(
 	mpl/all_of
+	NO_CODE
 )
 
 add_fcppt_test(
 	mpl/append
+	NO_CODE
 )
 
 add_fcppt_test(
 	mpl/ceil_div
+	NO_CODE
+)
+
+add_fcppt_test(
+	mpl/enum_range
+	NO_CODE
 )
 
 add_fcppt_test(

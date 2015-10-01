@@ -4,40 +4,39 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/mpl/all_of.hpp>
+#ifndef FCPPT_MPL_COPY_HPP_INCLUDED
+#define FCPPT_MPL_COPY_HPP_INCLUDED
+
 #include <fcppt/config/external_begin.hpp>
+#include <boost/mpl/fold.hpp>
 #include <boost/mpl/placeholders.hpp>
+#include <boost/mpl/push_back.hpp>
 #include <boost/mpl/vector/vector10.hpp>
-#include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
 
-int
-main()
+namespace fcppt
 {
-	static_assert(
-		fcppt::mpl::all_of<
-			boost::mpl::vector2<
-				int,
-				long
-			>,
-			std::is_integral<
-				boost::mpl::_1
-			>
-		>::value,
-		""
-	);
+namespace mpl
+{
 
-	static_assert(
-		!fcppt::mpl::all_of<
-			boost::mpl::vector2<
-				float,
-				int
-			>,
-			std::is_integral<
-				boost::mpl::_1
-			>
-		>::value,
-		""
-	);
+template<
+	typename Source
+>
+struct copy
+:
+boost::mpl::fold<
+	Source,
+	boost::mpl::vector0<>,
+	boost::mpl::push_back<
+		boost::mpl::_,
+		boost::mpl::_
+	>
+>
+{
+};
+
 }
+}
+
+#endif

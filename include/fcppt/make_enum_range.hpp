@@ -25,6 +25,7 @@ Creates the enum range [static_cast<Enum>(0), enum_max_value<Enum>::value].
 template<
 	typename Enum
 >
+inline
 fcppt::enum_range<
 	Enum
 >

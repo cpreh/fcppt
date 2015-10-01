@@ -93,7 +93,11 @@
 
 <li>\ref fcpptmpl
 	<ul>
+	<li>Added \link fcppt::mpl::copy\endlink.</li>
 	<li>Added \link fcppt::mpl::for_each_break\endlink.</li>
+	<li>Added \link fcppt::mpl::integral_cast_tpl\endlink.</li>
+	<li>Added \link fcppt::mpl::enum_range\endlink and \link
+	fcppt::mpl::enum_range_start_end\endlink.</li>
 	</ul>
 </li>
 

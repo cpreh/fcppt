@@ -1009,6 +1009,8 @@ set(
 	include/fcppt/mpl/detail/print.hpp
 	include/fcppt/mpl/detail/print_one.hpp
 	include/fcppt/mpl/detail/runtime_index.hpp
+	include/fcppt/mpl/enum_range.hpp
+	include/fcppt/mpl/enum_range_start_end.hpp
 	include/fcppt/mpl/for_each.hpp
 	include/fcppt/mpl/for_each_break.hpp
 	include/fcppt/mpl/implication.hpp

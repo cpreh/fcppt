@@ -7,10 +7,7 @@
 #ifndef FCPPT_MPL_INTEGRAL_CAST_HPP_INCLUDED
 #define FCPPT_MPL_INTEGRAL_CAST_HPP_INCLUDED
 
-#include <fcppt/cast/apply.hpp>
-#include <fcppt/config/external_begin.hpp>
-#include <type_traits>
-#include <fcppt/config/external_end.hpp>
+#include <fcppt/mpl/integral_cast_tpl.hpp>
 
 
 namespace fcppt
@@ -41,15 +38,12 @@ template<
 >
 using integral_cast
 =
-std::integral_constant<
+typename
+fcppt::mpl::integral_cast_tpl<
 	IntegralType,
-	fcppt::cast::apply<
-		Conv,
-		IntegralType
-	>(
-		Integral::value
-	)
->;
+	Conv,
+	Integral
+>::type;
 
 }
 }

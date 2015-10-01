@@ -5,78 +5,78 @@
 
 
 #include <fcppt/mpl/append.hpp>
-#include <fcppt/preprocessor/disable_gcc_warning.hpp>
-#include <fcppt/preprocessor/pop_warning.hpp>
-#include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/mpl/at.hpp>
 #include <boost/mpl/vector/vector10.hpp>
-#include <boost/test/unit_test.hpp>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
 
-FCPPT_PP_PUSH_WARNING
-FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
-
-BOOST_AUTO_TEST_CASE(
-	mpl_append
-)
+int
+main()
 {
-FCPPT_PP_POP_WARNING
-
-	typedef boost::mpl::vector2<
+	typedef
+	boost::mpl::vector2<
 		int,
 		float
-	> vec1;
+	>
+	vec1;
 
-	typedef boost::mpl::vector2<
+	typedef
+	boost::mpl::vector2<
 		double,
 		bool
-	> vec2;
+	>
+	vec2;
 
-	typedef fcppt::mpl::append<
+	typedef
+	fcppt::mpl::append<
 		vec1,
 		vec2
-	>::type appended;
+	>::type
+	appended;
 
-	BOOST_REQUIRE((
+	static_assert(
 		std::is_same<
 			boost::mpl::at_c<
 				appended,
 				0
 			>::type,
 			int
-		>::value
-	));
+		>::value,
+		""
+	);
 
-	BOOST_REQUIRE((
+	static_assert(
 		std::is_same<
 			boost::mpl::at_c<
 				appended,
 				1
 			>::type,
 			float
-		>::value
-	));
+		>::value,
+		""
+	);
 
-	BOOST_REQUIRE((
+	static_assert(
 		std::is_same<
 			boost::mpl::at_c<
 				appended,
 				2
 			>::type,
 			double
-		>::value
-	));
+		>::value,
+		""
+	);
 
-	BOOST_REQUIRE((
+	static_assert(
 		std::is_same<
 			boost::mpl::at_c<
 				appended,
 				3
 			>::type,
 			bool
-		>::value
-	));
+		>::value,
+		""
+	);
 }
