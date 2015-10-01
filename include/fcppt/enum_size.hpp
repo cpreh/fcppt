@@ -7,8 +7,10 @@
 #ifndef FCPPT_ENUM_SIZE_HPP_INCLUDED
 #define FCPPT_ENUM_SIZE_HPP_INCLUDED
 
+#include <fcppt/enum_max_value.hpp>
 #include <fcppt/enum_size_fwd.hpp>
-#include <fcppt/detail/enum_size.hpp>
+#include <fcppt/enum_size_type.hpp>
+#include <fcppt/cast/enum_to_int.hpp>
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
@@ -42,8 +44,22 @@ template<
 >
 struct enum_size
 :
-fcppt::detail::enum_size<
-	Type
+std::integral_constant<
+	typename
+	fcppt::enum_size_type<
+		Type
+	>::type,
+	fcppt::cast::enum_to_int<
+		typename fcppt::enum_size_type<
+			Type
+		>::type
+	>(
+		fcppt::enum_max_value<
+			Type
+		>::value
+	)
+	+
+	1u
 >
 {
 	static_assert(
