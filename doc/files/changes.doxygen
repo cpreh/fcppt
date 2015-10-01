@@ -274,6 +274,13 @@
 	</ul>
 </li>
 
+<li>\ref fcppttime
+	<ul>
+	<li>Removed <code>fcppt::time::parse_time</code> and
+	<code>fcppt::time::parse_date</code>.</li>
+	</ul>
+</li>
+
 <li>\ref fcpptvariant
 	<ul>
 	<li>Removed <code>fcppt::variant::object::get_exn</code>. Use the free

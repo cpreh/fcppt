@@ -1200,8 +1200,6 @@ set(
 	include/fcppt/time/impl/exception.hpp
 	include/fcppt/time/localtime.hpp
 	include/fcppt/time/output_tm.hpp
-	include/fcppt/time/parse_date.hpp
-	include/fcppt/time/parse_time.hpp
 	include/fcppt/time/std_time.hpp
 	include/fcppt/to_std_string.hpp
 	include/fcppt/to_std_string_locale.hpp

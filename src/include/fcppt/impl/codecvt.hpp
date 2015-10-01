@@ -4,15 +4,15 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_SRC_CODECVT_HPP_INCLUDED
-#define FCPPT_SRC_CODECVT_HPP_INCLUDED
+#ifndef FCPPT_IMPL_CODECVT_HPP_INCLUDED
+#define FCPPT_IMPL_CODECVT_HPP_INCLUDED
 
 #include <fcppt/exception.hpp>
 #include <fcppt/text.hpp>
 #include <fcppt/assert/unreachable.hpp>
 #include <fcppt/container/data_end.hpp>
 #include <fcppt/container/raw_vector_impl.hpp>
-#include <fcppt/src/codecvt_type.hpp>
+#include <fcppt/impl/codecvt_type.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <cstring>
 #include <iterator>
@@ -23,15 +23,21 @@
 
 namespace fcppt
 {
+namespace impl
+{
 
 template<
 	typename Out,
 	typename In,
 	typename Function
 >
-std::basic_string<Out>
+std::basic_string<
+	Out
+>
 codecvt(
-	std::basic_string<In> const &_string,
+	std::basic_string<
+		In
+	> const &_string,
 	std::locale const &_locale,
 	Function const &_function
 )
@@ -49,9 +55,9 @@ codecvt(
 	)
 		return return_type();
 
-	fcppt::codecvt_type const &conv(
+	fcppt::impl::codecvt_type const &conv(
 		std::use_facet<
-			fcppt::codecvt_type
+			fcppt::impl::codecvt_type
 		>(
 			_locale
 		)
@@ -61,7 +67,7 @@ codecvt(
 		_string.size()
 	);
 
-	typedef fcppt::codecvt_type::state_type state_type;
+	typedef fcppt::impl::codecvt_type::state_type state_type;
 
 	state_type state;
 
@@ -140,6 +146,7 @@ codecvt(
 	}
 }
 
+}
 }
 
 #endif

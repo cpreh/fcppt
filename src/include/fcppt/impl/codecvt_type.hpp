@@ -4,22 +4,26 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_SRC_TIME_TIME_GET_HPP_INCLUDED
-#define FCPPT_SRC_TIME_TIME_GET_HPP_INCLUDED
+#ifndef FCPPT_IMPL_CODECVT_TYPE_HPP_INCLUDED
+#define FCPPT_IMPL_CODECVT_TYPE_HPP_INCLUDED
 
-#include <fcppt/char_type.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <locale>
 #include <fcppt/config/external_end.hpp>
 
+
 namespace fcppt
 {
-namespace time
+namespace impl
 {
 
-typedef std::time_get<
-	fcppt::char_type
-> time_get;
+typedef
+std::codecvt<
+	wchar_t,
+	char,
+	std::mbstate_t
+>
+codecvt_type;
 
 }
 }

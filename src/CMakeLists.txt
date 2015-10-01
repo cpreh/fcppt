@@ -880,8 +880,6 @@ set(
 	include/fcppt/time/impl/exception.hpp
 	include/fcppt/time/localtime.hpp
 	include/fcppt/time/output_tm.hpp
-	include/fcppt/time/parse_date.hpp
-	include/fcppt/time/parse_time.hpp
 	include/fcppt/time/std_time.hpp
 	include/fcppt/to_std_string.hpp
 	include/fcppt/to_std_string_locale.hpp
@@ -970,11 +968,9 @@ set(
 	src/from_std_string_locale.cpp
 	src/from_std_wstring.cpp
 	src/from_std_wstring_locale.cpp
-	src/include/fcppt/src/codecvt.hpp
-	src/include/fcppt/src/codecvt_type.hpp
-	src/include/fcppt/src/export_class_instantiation_impl.hpp
-	src/include/fcppt/src/time/time_get.hpp
-	src/include/fcppt/src/time/time_get_parse.hpp
+	src/include/fcppt/impl/codecvt.hpp
+	src/include/fcppt/impl/codecvt_type.hpp
+	src/include/fcppt/impl/export_class_instantiation.hpp
 	src/io/cerr.cpp
 	src/io/cin.cpp
 	src/io/clog.cpp
@@ -986,8 +982,6 @@ set(
 	src/time/gmtime.cpp
 	src/time/localtime.cpp
 	src/time/output_tm.cpp
-	src/time/parse_date.cpp
-	src/time/parse_time.cpp
 	src/time/std_time.cpp
 	src/to_std_string.cpp
 	src/to_std_string_locale.cpp

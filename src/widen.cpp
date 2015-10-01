@@ -5,8 +5,8 @@
 
 
 #include <fcppt/widen.hpp>
-#include <fcppt/src/codecvt.hpp>
-#include <fcppt/src/codecvt_type.hpp>
+#include <fcppt/impl/codecvt.hpp>
+#include <fcppt/impl/codecvt_type.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <locale>
 #include <string>
@@ -20,11 +20,11 @@ fcppt::widen(
 )
 {
 	return
-		fcppt::codecvt<
+		fcppt::impl::codecvt<
 			wchar_t
 		>(
 			_string,
 			_locale,
-			&fcppt::codecvt_type::in
+			&fcppt::impl::codecvt_type::in
 		);
 }

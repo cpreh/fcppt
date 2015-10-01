@@ -5,14 +5,14 @@
 
 
 #include <fcppt/char_type.hpp>
+#include <fcppt/impl/export_class_instantiation.hpp>
 #include <fcppt/io/basic_scoped_rdbuf_impl.hpp>
 #include <fcppt/io/scoped_rdbuf.hpp>
-#include <fcppt/src/export_class_instantiation_impl.hpp>
 
 
 template
 class
-FCPPT_EXPORT_CLASS_INSTANTIATION_IMPL
+FCPPT_IMPL_EXPORT_CLASS_INSTANTIATION
 fcppt::io::basic_scoped_rdbuf<
 	fcppt::char_type
 >;
