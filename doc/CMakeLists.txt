@@ -515,7 +515,6 @@ set(
 	include/fcppt/detail/enable_optional_ref_conv.hpp
 	include/fcppt/detail/enable_optional_value_conv.hpp
 	include/fcppt/detail/enum_iterator_base.hpp
-	include/fcppt/detail/enum_size.hpp
 	include/fcppt/detail/equal.hpp
 	include/fcppt/detail/equal_functor.hpp
 	include/fcppt/detail/forward_optional_get.hpp
@@ -559,13 +558,13 @@ set(
 	include/fcppt/endianness/reverse_mem.hpp
 	include/fcppt/endianness/size_type.hpp
 	include/fcppt/endianness/swap.hpp
-	include/fcppt/enum_is_empty.hpp
-	include/fcppt/enum_is_empty_fwd.hpp
 	include/fcppt/enum_iterator_decl.hpp
 	include/fcppt/enum_iterator_fwd.hpp
 	include/fcppt/enum_iterator_impl.hpp
 	include/fcppt/enum_max_value.hpp
 	include/fcppt/enum_max_value_fwd.hpp
+	include/fcppt/enum_min_value.hpp
+	include/fcppt/enum_min_value_fwd.hpp
 	include/fcppt/enum_range_decl.hpp
 	include/fcppt/enum_range_fwd.hpp
 	include/fcppt/enum_range_impl.hpp
@@ -1005,6 +1004,7 @@ set(
 	include/fcppt/mpl/append.hpp
 	include/fcppt/mpl/ceil_div.hpp
 	include/fcppt/mpl/contains_if.hpp
+	include/fcppt/mpl/copy.hpp
 	include/fcppt/mpl/detail/for_each_break.hpp
 	include/fcppt/mpl/detail/print.hpp
 	include/fcppt/mpl/detail/print_one.hpp
@@ -1017,6 +1017,7 @@ set(
 	include/fcppt/mpl/index_of.hpp
 	include/fcppt/mpl/inner.hpp
 	include/fcppt/mpl/integral_cast.hpp
+	include/fcppt/mpl/integral_cast_tpl.hpp
 	include/fcppt/mpl/invoke_on.hpp
 	include/fcppt/mpl/max_value.hpp
 	include/fcppt/mpl/partial_sums.hpp

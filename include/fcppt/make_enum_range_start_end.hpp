@@ -30,6 +30,7 @@ because there is no "one past the end" enum value.
 template<
 	typename Enum
 >
+inline
 fcppt::enum_range<
 	Enum
 >

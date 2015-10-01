@@ -7,9 +7,9 @@
 #ifndef FCPPT_MAKE_ENUM_RANGE_START_HPP_INCLUDED
 #define FCPPT_MAKE_ENUM_RANGE_START_HPP_INCLUDED
 
+#include <fcppt/enum_max_value.hpp>
 #include <fcppt/enum_range_impl.hpp>
-#include <fcppt/enum_size.hpp>
-#include <fcppt/cast/enum_to_int.hpp>
+#include <fcppt/make_enum_range_start_end.hpp>
 
 
 namespace fcppt
@@ -27,6 +27,7 @@ Creates the closed range [_start, enum_max_value<Enum>::value].
 template<
 	typename Enum
 >
+inline
 fcppt::enum_range<
 	Enum
 >
@@ -34,21 +35,10 @@ make_enum_range_start(
 	Enum const _start
 )
 {
-	typedef
-	fcppt::enum_range<
-		Enum
-	>
-	result_type;
-
 	return
-		result_type(
-			fcppt::cast::enum_to_int<
-				typename
-				result_type::size_type
-			>(
-				_start
-			),
-			fcppt::enum_size<
+		fcppt::make_enum_range_start_end(
+			_start,
+			fcppt::enum_max_value<
 				Enum
 			>::value
 		);

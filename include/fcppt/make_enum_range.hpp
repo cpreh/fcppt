@@ -7,9 +7,9 @@
 #ifndef FCPPT_MAKE_ENUM_RANGE_HPP_INCLUDED
 #define FCPPT_MAKE_ENUM_RANGE_HPP_INCLUDED
 
+#include <fcppt/enum_min_value.hpp>
 #include <fcppt/enum_range_impl.hpp>
-#include <fcppt/enum_size.hpp>
-#include <fcppt/literal.hpp>
+#include <fcppt/make_enum_range_start.hpp>
 
 
 namespace fcppt
@@ -31,21 +31,9 @@ fcppt::enum_range<
 >
 make_enum_range()
 {
-	typedef
-	fcppt::enum_range<
-		Enum
-	>
-	result_type;
-
 	return
-		result_type(
-			fcppt::literal<
-				typename
-				result_type::size_type
-			>(
-				0
-			),
-			fcppt::enum_size<
+		fcppt::make_enum_range_start(
+			fcppt::enum_min_value<
 				Enum
 			>::value
 		);

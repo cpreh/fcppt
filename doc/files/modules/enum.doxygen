@@ -44,9 +44,7 @@ inferring the maximum value from the special enumerator value
 
 Additionally, the trait class can also be specialized. Building on top of this,
 \ref fcppt::enum_size calculates the number of enumerators in an enum, setting
-it to <code>fcppt::enum_max_value<Enum> + 1</code> by default. \ref
-fcppt::enum_is_empty can be specialized to set this to zero because empty enums
-don't have a maximum element.
+it to <code>fcppt::enum_max_value<Enum> + 1</code> by default.
 
 \section fcpptenum_range Enum Ranges
 

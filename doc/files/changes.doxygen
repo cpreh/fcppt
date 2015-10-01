@@ -79,6 +79,13 @@
 	</ul>
 </li>
 
+<li>\ref fcpptenum
+	<ul>
+	<li>Added \link fcppt::mpl::enum_range\endlink and \link
+	fcppt::mpl::enum_range_start_end\endlink.</li>
+	</ul>
+</li>
+
 <li>\ref fcpptmath
 	<ul>
 	<li>Added \link fcppt::math::matrix::init\endlink.</li>
@@ -96,8 +103,6 @@
 	<li>Added \link fcppt::mpl::copy\endlink.</li>
 	<li>Added \link fcppt::mpl::for_each_break\endlink.</li>
 	<li>Added \link fcppt::mpl::integral_cast_tpl\endlink.</li>
-	<li>Added \link fcppt::mpl::enum_range\endlink and \link
-	fcppt::mpl::enum_range_start_end\endlink.</li>
 	</ul>
 </li>
 
@@ -167,6 +172,13 @@
 	<ul>
 	<li>Made \link fcppt::container::tree::child_position\endlink a free
 	function and made its implementation safer.</li>
+	</ul>
+</li>
+
+<li>\ref fcpptenum
+	<ul>
+	<li>Removed <code>fcppt::enum_is_empty</code>. All enum ranges are now
+	non-empty.</li>
 	</ul>
 </li>
 
