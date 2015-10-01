@@ -5,8 +5,8 @@
 
 
 #include <fcppt/container/bitfield/comparison.hpp>
-#include <fcppt/container/bitfield/object_from_enum.hpp>
 #include <fcppt/container/bitfield/object.hpp>
+#include <fcppt/container/bitfield/object_from_enum.hpp>
 #include <fcppt/container/bitfield/std_hash.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/test/unit_test.hpp>

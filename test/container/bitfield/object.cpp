@@ -7,8 +7,8 @@
 #include <fcppt/enum_size.hpp>
 #include <fcppt/container/bitfield/array.hpp>
 #include <fcppt/container/bitfield/default_internal_type.hpp>
-#include <fcppt/container/bitfield/object_from_enum.hpp>
 #include <fcppt/container/bitfield/object.hpp>
+#include <fcppt/container/bitfield/object_from_enum.hpp>
 #include <fcppt/container/bitfield/proxy.hpp>
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>

@@ -4,12 +4,12 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/bit/shifted_mask.hpp>
 #include <fcppt/bit/shift_count.hpp>
+#include <fcppt/bit/shifted_mask.hpp>
 #include <fcppt/bit/test.hpp>
 #include <fcppt/cast/enum_to_int.hpp>
-#include <fcppt/container/bitfield/object_from_enum.hpp>
 #include <fcppt/container/bitfield/object.hpp>
+#include <fcppt/container/bitfield/object_from_enum.hpp>
 #include <fcppt/container/bitfield/underlying_value.hpp>
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
