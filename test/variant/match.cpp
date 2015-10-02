@@ -5,6 +5,8 @@
 
 
 #include <fcppt/extract_from_string_exn.hpp>
+#include <fcppt/make_unique_ptr.hpp>
+#include <fcppt/unique_ptr.hpp>
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
@@ -26,7 +28,8 @@ BOOST_AUTO_TEST_CASE(
 {
 FCPPT_PP_POP_WARNING
 
-	typedef fcppt::variant::object<
+	typedef
+	fcppt::variant::object<
 		boost::mpl::vector2<
 			int,
 			std::string
@@ -60,9 +63,68 @@ FCPPT_PP_POP_WARNING
 		)
 	);
 
-	BOOST_CHECK(
-		result
-		==
+	BOOST_CHECK_EQUAL(
+		result,
+		42
+	);
+}
+
+FCPPT_PP_PUSH_WARNING
+FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
+
+BOOST_AUTO_TEST_CASE(
+	variant_match_move
+)
+{
+FCPPT_PP_POP_WARNING
+
+	typedef
+	fcppt::unique_ptr<
+		int
+	>
+	int_unique_ptr;
+
+	typedef
+	fcppt::variant::object<
+		boost::mpl::vector2<
+			int_unique_ptr,
+			std::string
+		>
+	>
+	variant;
+
+	int const result(
+		fcppt::variant::match(
+			variant(
+				fcppt::make_unique_ptr<
+					int
+				>(
+					42
+				)
+			),
+			[](
+				int_unique_ptr &&_value
+			)
+			{
+				return
+					*_value;
+			},
+			[](
+				std::string const &_value
+			)
+			{
+				return
+					fcppt::extract_from_string_exn<
+						int
+					>(
+						_value
+					);
+			}
+		)
+	);
+
+	BOOST_CHECK_EQUAL(
+		result,
 		42
 	);
 }

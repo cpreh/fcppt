@@ -7,6 +7,7 @@
 #ifndef FCPPT_VARIANT_MATCH_HPP_INCLUDED
 #define FCPPT_VARIANT_MATCH_HPP_INCLUDED
 
+#include <fcppt/move_if_rvalue.hpp>
 #include <fcppt/mpl/index_of.hpp>
 #include <fcppt/variant/apply_unary.hpp>
 #include <fcppt/config/external_begin.hpp>
@@ -77,10 +78,8 @@ match(
 					>(
 						tuple
 					)(
-						std::forward<
-							decltype(
-								_arg
-							)
+						fcppt::move_if_rvalue<
+							Variant
 						>(
 							_arg
 						)
