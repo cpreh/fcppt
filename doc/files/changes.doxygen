@@ -251,13 +251,13 @@
 	<ul>
 	<li>Removed <code>fcppt::container::find_exn</code> in favor of \link
 	fcppt::optional_to_exception\endlink.</li>
-	<li>Removed <code>fcppt::container::grid::object::at</code> in favor of
-	\link fcppt::container::grid::at_optional\endlink.</li>
 	</ul>
 </li>
 
 <li>\ref fcpptcontainergrid
 	<ul>
+	<li>Removed <code>fcppt::container::grid::object::at</code> in favor of
+	\link fcppt::container::grid::at_optional\endlink.</li>
 	<li>Removed <code>fcppt::container::grid::is_square</code> which is
 	covered by \link fcppt::math::dim::is_quadratic\endlink.</li>
 	<li>Removed <code>fcppt::container::grid::iterator_position</code>
