@@ -18,7 +18,7 @@ namespace log
 namespace impl
 {
 
-fcppt::log::impl::const_optional_outer_context_node const
+fcppt::log::impl::const_optional_outer_context_node
 find_logger_node(
 	fcppt::log::detail::context_tree const &
 );

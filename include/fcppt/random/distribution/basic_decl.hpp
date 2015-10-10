@@ -112,7 +112,7 @@ public:
 	/**
 	\brief Returns the parameters used to construct the distribution
 	*/
-	param_type const
+	param_type
 	param() const;
 
 	/**

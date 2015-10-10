@@ -41,7 +41,7 @@ public:
 	fcppt::log::optional_location
 	location() const;
 
-	fcppt::log::detail::optional_context_tree_ref const
+	fcppt::log::detail::optional_context_tree_ref
 	node() const;
 
 	void

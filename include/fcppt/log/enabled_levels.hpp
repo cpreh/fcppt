@@ -26,7 +26,7 @@ Creates an \link fcppt::log::enabled_level_array \endlink which has every entry
 set to true that is greater or equal to \a level.
 */
 FCPPT_LOG_DETAIL_SYMBOL
-fcppt::log::enabled_level_array const
+fcppt::log::enabled_level_array
 enabled_levels(
 	fcppt::log::level level
 );

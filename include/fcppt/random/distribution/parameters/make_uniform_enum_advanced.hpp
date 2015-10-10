@@ -30,11 +30,10 @@ template<
 	typename Distribution,
 	typename Enum
 >
-typename
 fcppt::random::distribution::parameters::uniform_int<
 	Enum,
 	Distribution
-> const
+>
 make_uniform_enum_advanced()
 {
 	static_assert(

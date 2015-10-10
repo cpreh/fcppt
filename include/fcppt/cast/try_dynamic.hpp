@@ -39,10 +39,9 @@ template<
 	typename Derived,
 	typename Base
 >
-typename
 fcppt::optional<
 	Derived
-> const
+>
 try_dynamic(
 	Base &_base
 )

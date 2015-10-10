@@ -32,7 +32,7 @@ template<
 >
 fcppt::optional<
 	Result &
-> const
+>
 const_optional_cast(
 	fcppt::optional<
 		Arg &

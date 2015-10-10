@@ -27,9 +27,10 @@ namespace parameters
 template<
 	typename Enum
 >
+inline
 fcppt::random::distribution::parameters::uniform_int<
 	Enum
-> const
+>
 make_uniform_enum()
 {
 	static_assert(

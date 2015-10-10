@@ -71,7 +71,7 @@ template
 	typename Vector,
 	typename Interpolator
 >
-typename Grid::value_type const
+typename Grid::value_type
 interpolate(
 	Grid const &grid,
 	Vector const &floating_point_position,

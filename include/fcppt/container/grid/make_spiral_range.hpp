@@ -20,9 +20,10 @@ namespace grid
 template<
 	typename Pos
 >
+inline
 fcppt::container::grid::spiral_range<
 	Pos
-> const
+>
 make_spiral_range(
 	Pos const _start,
 	typename Pos::value_type const _max_dist

@@ -64,7 +64,7 @@ struct create_functor
 	template<
 		typename ConcreteColor
 	>
-	result_type const
+	result_type
 	operator()(
 		fcppt::tag<
 			ConcreteColor
@@ -79,7 +79,7 @@ struct create_functor
 };
 
 // Transforms a color enum into a static color type using invoke_on
-color_variant const
+color_variant
 make_color_variant(
 	color_enum const _value
 )

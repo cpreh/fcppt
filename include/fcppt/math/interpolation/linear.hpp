@@ -20,10 +20,14 @@ namespace math
 {
 namespace interpolation
 {
+
 /// Interpolates between a and b (works only with a floating point
 /// parameter)
-template<typename Float,typename Value>
-Value const
+template<
+	typename Float,
+	typename Value
+>
+Value
 linear(
 	Float const &f,
 	Value const &v1,
@@ -36,6 +40,7 @@ linear(
 
 	return (fcppt::literal<Float>(1) - f) * v1 + f * v2;
 }
+
 }
 }
 }

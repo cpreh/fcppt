@@ -25,7 +25,7 @@ namespace interpolation
 /// Interpolates between a and b (works only with a floating point
 /// parameter)
 template<typename Float,typename Value>
-Value const
+Value
 trigonometric(
 	Float const &f,
 	Value const &v1,

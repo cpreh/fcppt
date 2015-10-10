@@ -12,7 +12,7 @@
 #include <fcppt/log/impl/find_location.hpp>
 
 
-fcppt::log::detail::optional_context_tree_ref const
+fcppt::log::detail::optional_context_tree_ref
 fcppt::log::impl::find_location(
 	fcppt::log::detail::context_tree &_tree,
 	fcppt::log::location const &_location

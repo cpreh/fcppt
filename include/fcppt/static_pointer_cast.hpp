@@ -40,7 +40,7 @@ template<
 >
 fcppt::shared_ptr<
 	Dest
-> const
+>
 static_pointer_cast(
 	fcppt::shared_ptr<
 		Source

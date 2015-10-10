@@ -21,9 +21,10 @@ namespace fcppt
 template<
 	typename Type
 >
+inline
 fcppt::reference_wrapper<
 	Type const
-> const
+>
 make_cref(
 	Type const &_ref
 )

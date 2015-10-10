@@ -38,7 +38,7 @@ template<
 fcppt::container::grid::sup<
 	Source,
 	Size
-> const
+>
 clamped_sup(
 	fcppt::container::grid::pos<
 		Source,

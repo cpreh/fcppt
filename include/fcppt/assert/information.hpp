@@ -62,7 +62,7 @@ public:
 	/**
 	\brief Returns the line of the current file
 	*/
-	fcppt::assert_::line const
+	fcppt::assert_::line
 	line() const;
 
 	/**

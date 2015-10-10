@@ -69,7 +69,7 @@ template<
 typename
 fcppt::random::distribution::basic<
 	Parameters
->::param_type const
+>::param_type
 fcppt::random::distribution::basic<
 	Parameters
 >::param() const

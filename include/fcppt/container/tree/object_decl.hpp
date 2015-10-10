@@ -157,13 +157,13 @@ public:
 	/**
 	\brief Returns a reference to the parent of this tree.
 	*/
-	optional_ref const
+	optional_ref
 	parent();
 
 	/**
 	\brief Returns a reference to the parent of this tree.
 	*/
-	const_optional_ref const
+	const_optional_ref
 	parent() const;
 
 	/**

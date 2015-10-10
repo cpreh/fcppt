@@ -42,7 +42,7 @@ fcppt::container::grid::min<
 		Source
 	>::type,
 	Size
-> const
+>
 clamped_min(
 	fcppt::container::grid::pos<
 		Source,

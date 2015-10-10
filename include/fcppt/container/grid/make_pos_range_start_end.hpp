@@ -34,7 +34,7 @@ inline
 fcppt::container::grid::pos_range<
 	SizeType,
 	Size
-> const
+>
 make_pos_range_start_end(
 	fcppt::container::grid::min<
 		SizeType,

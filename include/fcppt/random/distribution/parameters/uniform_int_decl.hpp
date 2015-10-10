@@ -86,11 +86,11 @@ public:
 		max _max
 	);
 
-	wrapped_param_type const
+	wrapped_param_type
 	convert_from() const;
 
 	static
-	uniform_int const
+	uniform_int
 	convert_to(
 		distribution const &
 	);

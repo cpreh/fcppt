@@ -13,7 +13,7 @@
 #include <fcppt/log/impl/inner_node_name.hpp>
 
 
-fcppt::log::detail::optional_context_tree_ref const
+fcppt::log::detail::optional_context_tree_ref
 fcppt::log::impl::find_inner_node(
 	fcppt::log::detail::context_tree &_tree,
 	fcppt::string const &_name

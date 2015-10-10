@@ -78,7 +78,7 @@ fcppt::log::detail::auto_context::location() const
 		);
 }
 
-fcppt::log::detail::optional_context_tree_ref const
+fcppt::log::detail::optional_context_tree_ref
 fcppt::log::detail::auto_context::node() const
 {
 	return

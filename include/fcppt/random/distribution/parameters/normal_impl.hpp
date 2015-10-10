@@ -37,7 +37,7 @@ template<
 typename
 fcppt::random::distribution::parameters::normal<
 	FloatType
->::wrapped_param_type const
+>::wrapped_param_type
 fcppt::random::distribution::parameters::normal<
 	FloatType
 >::convert_from() const
@@ -58,7 +58,7 @@ template<
 >
 fcppt::random::distribution::parameters::normal<
 	FloatType
-> const
+>
 fcppt::random::distribution::parameters::normal<
 	FloatType
 >::convert_to(

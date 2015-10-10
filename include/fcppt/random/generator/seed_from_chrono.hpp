@@ -37,7 +37,7 @@ must be an integral type.
 template<
 	typename Seed
 >
-Seed const
+Seed
 seed_from_chrono()
 {
 	static_assert(

@@ -262,7 +262,7 @@ FCPPT_PP_POP_WARNING
 	/**
 	\brief Return an iterator to the first tree in the traversal
 	*/
-	iterator const
+	iterator
 	begin() const
 	{
 		return
@@ -276,7 +276,7 @@ FCPPT_PP_POP_WARNING
 	/**
 	\brief Return a dummy iterator to stop the traversal
 	*/
-	iterator const
+	iterator
 	end() const
 	{
 		return

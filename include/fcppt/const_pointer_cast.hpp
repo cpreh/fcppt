@@ -36,7 +36,7 @@ template<
 >
 fcppt::shared_ptr<
 	Dest
-> const
+>
 const_pointer_cast(
 	fcppt::shared_ptr<
 		Source const

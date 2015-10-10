@@ -86,11 +86,11 @@ public:
 		sup _sup
 	);
 
-	wrapped_param_type const
+	wrapped_param_type
 	convert_from() const;
 
 	static
-	uniform_real const
+	uniform_real
 	convert_to(
 		distribution const &
 	);

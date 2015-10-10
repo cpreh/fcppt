@@ -21,9 +21,10 @@ namespace fcppt
 template<
 	typename Type
 >
+inline
 fcppt::reference_wrapper<
 	Type
-> const
+>
 make_ref(
 	Type &_ref
 )

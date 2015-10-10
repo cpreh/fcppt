@@ -69,7 +69,7 @@ public:
 	fcppt::log::optional_object will be returned.
 	*/
 	FCPPT_LOG_DETAIL_SYMBOL
-	fcppt::log::optional_object const
+	fcppt::log::optional_object
 	find(
 		fcppt::log::location const &location
 	);

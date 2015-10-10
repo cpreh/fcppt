@@ -29,7 +29,7 @@ template<
 inline
 fcppt::container::grid::pos_ref_range<
 	Grid const
-> const
+>
 make_pos_ref_crange(
 	Grid const &_grid
 )

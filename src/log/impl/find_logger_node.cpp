@@ -11,7 +11,7 @@
 #include <fcppt/log/impl/to_outer_node.hpp>
 
 
-fcppt::log::impl::const_optional_outer_context_node const
+fcppt::log::impl::const_optional_outer_context_node
 fcppt::log::impl::find_logger_node(
 	fcppt::log::detail::context_tree const &_tree
 )

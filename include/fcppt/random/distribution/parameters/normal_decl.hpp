@@ -86,11 +86,11 @@ public:
 		stddev _stddev
 	);
 
-	wrapped_param_type const
+	wrapped_param_type
 	convert_from() const;
 
 	static
-	normal const
+	normal
 	convert_to(
 		distribution const &
 	);

@@ -79,7 +79,7 @@ struct transform<
 
 	// A static function that converts from the base type
 	static
-	decorated_type const
+	decorated_type
 	decorated_value(
 		undecorated_type const &_value
 	)

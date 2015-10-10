@@ -28,7 +28,7 @@ Converts \a time to an <code>%std::tm</code> using <code>%std::gmtime</code>.
 \param time The time to convert
 */
 FCPPT_DETAIL_SYMBOL
-std::tm const
+std::tm
 gmtime(
 	std::time_t time
 );

@@ -19,12 +19,12 @@ namespace log
 namespace impl
 {
 
-fcppt::log::impl::optional_outer_context_node const
+fcppt::log::impl::optional_outer_context_node
 to_outer_node(
 	fcppt::log::detail::context_tree &
 );
 
-fcppt::log::impl::const_optional_outer_context_node const
+fcppt::log::impl::const_optional_outer_context_node
 to_outer_node(
 	fcppt::log::detail::context_tree const &
 );

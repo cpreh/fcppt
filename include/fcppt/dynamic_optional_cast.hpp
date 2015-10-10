@@ -34,7 +34,7 @@ template<
 >
 fcppt::optional<
 	Result &
-> const
+>
 dynamic_optional_cast(
 	fcppt::optional<
 		Arg &

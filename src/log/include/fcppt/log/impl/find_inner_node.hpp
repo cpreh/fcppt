@@ -19,10 +19,10 @@ namespace log
 namespace impl
 {
 
-fcppt::log::detail::optional_context_tree_ref const
+fcppt::log::detail::optional_context_tree_ref
 find_inner_node(
 	fcppt::log::detail::context_tree &,
-	fcppt::string const &name
+	fcppt::string const &
 );
 
 }

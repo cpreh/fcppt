@@ -9,7 +9,8 @@
 #include <ctime>
 #include <fcppt/config/external_end.hpp>
 
-std::tm const
+
+std::tm
 fcppt::time::localtime(
 	std::time_t const _time
 )

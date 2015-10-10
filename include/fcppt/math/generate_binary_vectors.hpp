@@ -82,12 +82,14 @@ std::cout << vs[1];
 // ...
 \endcode
 */
-template<typename T,fcppt::math::size_type N>
-std::array
-<
+template<
+	typename T,
+	fcppt::math::size_type N
+>
+std::array<
 	fcppt::math::vector::static_<T,N>,
 	fcppt::literal<std::size_t>(1u) << N
-> const
+>
 generate_binary_vectors()
 {
 	typedef

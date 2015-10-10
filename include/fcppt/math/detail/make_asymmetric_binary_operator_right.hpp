@@ -29,7 +29,7 @@ object<\
 		FCPPT_MATH_DETAIL_BINARY_TYPE(L, op, R),\
 		N\
 	>\
-> const \
+> \
 operator op(\
 	object<L, N, S> const &_left,\
 	R const &_right\

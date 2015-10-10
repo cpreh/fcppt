@@ -12,7 +12,7 @@
 #include <fcppt/variant/to_optional.hpp>
 
 
-fcppt::log::impl::optional_outer_context_node const
+fcppt::log::impl::optional_outer_context_node
 fcppt::log::impl::to_outer_node(
 	fcppt::log::detail::context_tree &_node
 )
@@ -25,7 +25,7 @@ fcppt::log::impl::to_outer_node(
 		);
 }
 
-fcppt::log::impl::const_optional_outer_context_node const
+fcppt::log::impl::const_optional_outer_context_node
 fcppt::log::impl::to_outer_node(
 	fcppt::log::detail::context_tree const &_node
 )

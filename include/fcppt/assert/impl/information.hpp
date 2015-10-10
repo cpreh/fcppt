@@ -13,13 +13,14 @@
 #include <fcppt/assert/line.hpp>
 #include <fcppt/assert/message.hpp>
 
+
 inline
 fcppt::assert_::information::information(
-	assert_::file const &_file,
-	assert_::line const _line,
-	assert_::function const &_function,
-	assert_::condition const &_condition,
-	assert_::message const &_message
+	fcppt::assert_::file const &_file,
+	fcppt::assert_::line const _line,
+	fcppt::assert_::function const &_function,
+	fcppt::assert_::condition const &_condition,
+	fcppt::assert_::message const &_message
 )
 :
 	file_(
@@ -44,35 +45,40 @@ inline
 fcppt::assert_::file const &
 fcppt::assert_::information::file() const
 {
-	return file_;
+	return
+		file_;
 }
 
 inline
-fcppt::assert_::line const
+fcppt::assert_::line
 fcppt::assert_::information::line() const
 {
-	return line_;
+	return
+		line_;
 }
 
 inline
 fcppt::assert_::function const &
 fcppt::assert_::information::function() const
 {
-	return function_;
+	return
+		function_;
 }
 
 inline
 fcppt::assert_::condition const &
 fcppt::assert_::information::condition() const
 {
-	return condition_;
+	return
+		condition_;
 }
 
 inline
 fcppt::assert_::message const &
 fcppt::assert_::information::message() const
 {
-	return message_;
+	return
+		message_;
 }
 
 #endif

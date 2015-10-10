@@ -10,7 +10,7 @@
 #include <fcppt/log/level.hpp>
 
 
-fcppt::log::enabled_level_array const
+fcppt::log::enabled_level_array
 fcppt::log::enabled_levels(
 	fcppt::log::level const _level
 )

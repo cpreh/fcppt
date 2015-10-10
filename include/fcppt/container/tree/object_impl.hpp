@@ -251,7 +251,7 @@ template<
 typename
 fcppt::container::tree::object<
 	T
->::optional_ref const
+>::optional_ref
 fcppt::container::tree::object<
 	T
 >::parent()
@@ -266,7 +266,7 @@ template<
 typename
 fcppt::container::tree::object<
 	T
->::const_optional_ref const
+>::const_optional_ref
 fcppt::container::tree::object<
 	T
 >::parent() const

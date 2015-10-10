@@ -41,7 +41,7 @@ typename
 fcppt::random::distribution::parameters::uniform_int<
 	IntType,
 	Distribution
->::wrapped_param_type const
+>::wrapped_param_type
 fcppt::random::distribution::parameters::uniform_int<
 	IntType,
 	Distribution
@@ -65,7 +65,7 @@ template<
 fcppt::random::distribution::parameters::uniform_int<
 	IntType,
 	Distribution
-> const
+>
 fcppt::random::distribution::parameters::uniform_int<
 	IntType,
 	Distribution

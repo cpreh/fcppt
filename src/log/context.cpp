@@ -61,7 +61,7 @@ fcppt::log::context::~context()
 		);
 }
 
-fcppt::log::optional_object const
+fcppt::log::optional_object
 fcppt::log::context::find(
 	fcppt::log::location const &_location
 )

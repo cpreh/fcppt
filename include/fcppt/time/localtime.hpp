@@ -28,7 +28,7 @@ Converts \a time to an <code>%std::tm</code> using
 \param time The time to convert
 */
 FCPPT_DETAIL_SYMBOL
-std::tm const
+std::tm
 localtime(
 	std::time_t time
 );
