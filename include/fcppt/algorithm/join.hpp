@@ -40,7 +40,7 @@ template<
 >
 inline
 typename
-std::remove_cv<
+std::decay<
 	Container
 >::type
 join(

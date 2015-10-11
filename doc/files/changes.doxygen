@@ -35,6 +35,17 @@
 
 </ul>
 
+\subsection changes_bugfixes_to_200 Bugfixes
+
+<ul>
+<li>\ref fcpptalgorithm
+	<ul>
+	<li>Fixed return type of \link fcppt::algorithm::join\endlink so it
+	never returns a reference.</li>
+	</ul>
+</li>
+</ul>
+
 \subsection changes_added_functionality_to_200 Added functionality
 
 <ul>
