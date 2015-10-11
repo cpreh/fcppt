@@ -30,13 +30,13 @@ class reference_wrapper
 	// Do not bind to temporary objects
 	reference_wrapper(
 		Type &&
-	);
+	) = delete;
 
 	// Do not assign from temporary objects
 	reference_wrapper &
 	operator=(
 		Type &&
-	);
+	) = delete;
 public:
 	typedef Type type;
 

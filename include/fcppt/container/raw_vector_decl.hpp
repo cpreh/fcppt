@@ -324,6 +324,7 @@ public:
 		A const &a = A()
 	);
 
+	explicit
 	raw_vector(
 		std::initializer_list<
 			value_type
