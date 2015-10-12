@@ -124,6 +124,12 @@
 	</ul>
 </li>
 
+<li>\ref fcpptoptional
+	<ul>
+	<li>Added \link fcppt::optional_join\endlink.</li>
+	</ul>
+</li>
+
 <li>\ref fcpptsignal
 	<ul>
 	<li>Added \link fcppt::signal::optional_auto_connection\endlink

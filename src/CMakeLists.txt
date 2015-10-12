@@ -726,6 +726,7 @@ set(
 	include/fcppt/optional_from_pointer.hpp
 	include/fcppt/optional_fwd.hpp
 	include/fcppt/optional_impl.hpp
+	include/fcppt/optional_join.hpp
 	include/fcppt/optional_output.hpp
 	include/fcppt/optional_ref_compare.hpp
 	include/fcppt/optional_string.hpp

@@ -837,6 +837,10 @@ add_fcppt_test(
 )
 
 add_fcppt_test(
+	optional/join
+)
+
+add_fcppt_test(
 	optional/maybe
 )
 
