@@ -24,7 +24,7 @@ namespace interpolation
 /// Interpolates between a and b (works only with a floating point
 /// parameter)
 template<typename Float,typename Value>
-Value const
+Value
 perlin_fifth_degree(
 	Float const &f,
 	Value const &v1,
