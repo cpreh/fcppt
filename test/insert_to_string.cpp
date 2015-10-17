@@ -25,10 +25,11 @@ BOOST_AUTO_TEST_CASE(
 {
 FCPPT_PP_POP_WARNING
 
-	BOOST_CHECK_EQUAL(
+	BOOST_CHECK(
 		fcppt::insert_to_fcppt_string(
 			42
-		),
+		)
+		==
 		FCPPT_TEXT("42")
 	);
 
