@@ -12,9 +12,14 @@
 			<li>\ref coding_indentation</li>
 			<li>\ref coding_naming</li>
 			<li>\ref coding_partitioning</li>
-			<li>\ref coding_includes</li>
 		</ul>
 	<li>\ref coding_semantics</li>
+		<ul>
+			<li>\ref coding_typing</li>
+			<li>\ref coding_total</li>
+			<li>\ref coding_loops</li>
+			<li>\ref coding_const_init</li>
+		</ul>
 </ul>
 
 </td>
@@ -158,12 +163,20 @@ example, <code>fcppt::math::vector::static_</code> has its declaration in
 including <code>fcppt/math/vector/object_decl.hpp</code>.</li>
 </ul>
 
+Partitioning code into multiple headers also brings up the question of where to
+include which header. Fcppt follows a rule of <em>minimal includes</em> which
+means that including declarations should be preferred over including
+definitions. For example, when a function <code>T f(U)</code> is declared, it
+is enough to include the declarations of <code>T</code> and <code>U</code>
+only.
+
 \section coding_semantics Semantic aspects
 
 Besides asthetic aspects, semantic aspects describe \em how semantics are
 expressed. The most important goal is to avoid mistakes, or more precisely, how
 choosing types and expressions carefully can narrow down the set of mistakes
-one can make.
+one can make. Improved typing, total functions, ranges, avoiding raw loops and
+making variables const all tie together in this respect.
 
 \subsection coding_typing Typing
 
@@ -221,6 +234,17 @@ avoided.
 
 \subsection coding_const_init Const and initialization
 
+Making an object <code>const</code> makes it immutable and therefore possible
+to reason about values. Obviously, a const object has to be initialized
+directly. Initialization can sometimes be hard to express, for example an array
+of arbitrary size, which is handled by \link
+fcppt::algorithm::array_fold_static\endlink, or a container, which is handled
+by \link fcppt::algorithm::map\endlink.
 
-\subsection coding_includes Minimal includes
+Initialization also brings up the point of default constructors. A default
+constructor is like pulling a value out of thin air and most of the time has
+undesired effects like creating a null pointer or a null function. This is also
+the reason why \link fcppt::unique_ptr\endlink and \link
+fcppt::function\endlink exist. Default constructors are error-prone and best
+avoided.
 */
