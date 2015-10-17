@@ -4,15 +4,14 @@
 \section main_introduction Introduction
 
 Freundlich's C++ Toolkit (fcppt) is a collection of libraries focusing on
-improving general C++ code by providing \link goals_types better types\endlink,
-a strong focus on \link goals_cpp11 C++11\endlink (non-conforming compilers are
-mostly not supported) and \link goals_fp functional programming\endlink (which
-is both efficient and syntactically affordable in C++11).
+improving general C++ code by providing better types and making use of
+functional programming. See the \link coding_semantics semantic aspects\endlink
+of our coding guide for more information.
 
 fcppt builds on and around Boost. Some Boost libraries like MPL are
 used and extended, while others are rewritten to provide better typing
 rules (\link fcppt.optional Optional\endlink and \link fcppt.variant
-Variant\endlink), C++11 features (\link fcppt.assign Assign\endlink)
+Variant\endlink), C++14 features (\link fcppt.assign Assign\endlink)
 or better performance (\link fcppt.signal Signals\endlink).
 
 \section main_sitemap Site map
@@ -37,9 +36,6 @@ The documentation is split into the following parts:
 			<li>\ref requirements_download_installation_using_fcppt</li>
 			<li>\ref requirements_download_installation_static_and_shared_builds</li>
 		</ul>
-	</li>
-	<li>
-		\subpage goals
 	</li>
 	<li>
 		\subpage code_style
