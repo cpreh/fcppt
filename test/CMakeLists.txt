@@ -983,3 +983,8 @@ add_fcppt_test(
 add_fcppt_test(
 	variant/output
 )
+
+add_fcppt_test(
+	variant/variadic
+	NO_CODE
+)

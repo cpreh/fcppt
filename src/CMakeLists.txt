@@ -952,6 +952,8 @@ set(
 	include/fcppt/variant/size_type.hpp
 	include/fcppt/variant/to_optional.hpp
 	include/fcppt/variant/type_info.hpp
+	include/fcppt/variant/variadic.hpp
+	include/fcppt/variant/variadic_fwd.hpp
 	include/fcppt/version_int.hpp
 	include/fcppt/version_integral_c.hpp
 	include/fcppt/version_string.hpp

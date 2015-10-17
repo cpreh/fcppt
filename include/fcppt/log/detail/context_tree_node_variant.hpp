@@ -10,7 +10,7 @@
 #include <fcppt/log/detail/context_tree_node_variant_fwd.hpp>
 #include <fcppt/log/detail/inner_context_node.hpp>
 #include <fcppt/log/detail/outer_context_node.hpp>
-#include <fcppt/variant/object_impl.hpp>
+#include <fcppt/variant/variadic.hpp>
 
 
 #endif

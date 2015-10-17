@@ -137,6 +137,12 @@
 	</ul>
 </li>
 
+<li>\ref fcpptvariant
+	<ul>
+	<li>Added \link fcppt::variant::variadic\endlink.</li>
+	</ul>
+</li>
+
 <li>\ref fcpptvarious
 	<ul>
 	<li>Added \link FCPPT_DECLTYPE_SINK\endlink which returns

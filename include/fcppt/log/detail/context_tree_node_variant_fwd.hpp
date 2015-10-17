@@ -9,10 +9,7 @@
 
 #include <fcppt/log/detail/inner_context_node_fwd.hpp>
 #include <fcppt/log/detail/outer_context_node_fwd.hpp>
-#include <fcppt/variant/object_fwd.hpp>
-#include <fcppt/config/external_begin.hpp>
-#include <boost/mpl/vector/vector10.hpp>
-#include <fcppt/config/external_end.hpp>
+#include <fcppt/variant/variadic_fwd.hpp>
 
 
 namespace fcppt
@@ -22,12 +19,12 @@ namespace log
 namespace detail
 {
 
-typedef fcppt::variant::object<
-	boost::mpl::vector2<
-		fcppt::log::detail::inner_context_node,
-		fcppt::log::detail::outer_context_node
-	>
-> context_tree_node_variant;
+typedef
+fcppt::variant::variadic<
+	fcppt::log::detail::inner_context_node,
+	fcppt::log::detail::outer_context_node
+>
+context_tree_node_variant;
 
 }
 }
