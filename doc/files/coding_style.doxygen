@@ -191,7 +191,7 @@ fcppt::shared_ptr<T></code>, <code>fcppt::reference_wrapper<T (const)></code>,
 no value? Use <code>fcppt::optional<T></code> in this case. Instead of <code>T
 (const) *</code>, use <code>fcppt::optional<T (const) &></code>.</li>
 <li>Express values that can be of either type: Use
-<code>fcppt::variant::object<boost::mpl::vector<T1,T2>></code> to express that
+<code>fcppt::variant::variadic<T1,T2></code> to express that
 a value can either be of type <code>T1</code> or of type <code>T2</code>.</li>
 <li>Wrap types as <em>strong typedefs</em>, e.g.
 <code>FCPPT_MAKE_STRONG_TYPEDEF(std::string,email_address)</code> to make their

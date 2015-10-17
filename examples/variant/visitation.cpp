@@ -6,7 +6,7 @@
 
 #include <fcppt/variant/apply_unary.hpp>
 #include <fcppt/variant/match.hpp>
-#include <fcppt/variant/object_impl.hpp>
+#include <fcppt/variant/variadic.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/mpl/vector/vector10.hpp>
 #include <iostream>
@@ -18,11 +18,9 @@ namespace
 {
 
 typedef
-fcppt::variant::object<
-	boost::mpl::vector2<
-		std::string,
-		int
-	>
+fcppt::variant::variadic<
+	std::string,
+	int
 >
 string_or_int;
 

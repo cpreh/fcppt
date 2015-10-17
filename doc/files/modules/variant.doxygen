@@ -103,7 +103,6 @@ visit two or three variants at the same time. In this case, the
 
 Here is a small example for defining a binary visitor:
 
-\snippet variant/binary_visitation.cpp variant_binary_visitor
 \snippet variant/binary_visitation.cpp variant_binary_visitation
 
 Non-const visitation, which means that the visited variant can be modified, is
@@ -264,6 +263,14 @@ by \link fcppt::variant::get_exn \endlink.</td>
 <tr>
 <td><code>to_optional.hpp</code></td>
 <td>Contains \link fcppt::variant::to_optional\endlink.</td>
+</tr>
+<tr>
+<td><code>variadic_fwd.hpp</code></td>
+<td>Contains \link fcppt::variant::variadic\endlink and declares \link fcppt::variant::object\endlink.</td>
+</tr>
+<tr>
+<td><code>variadic.hpp</code></td>
+<td>Includes <code>fcppt/variant/object_fwd.hpp</code> and defines \link fcppt::variant::object\endlink.</td>
 </tr>
 </table>
 */

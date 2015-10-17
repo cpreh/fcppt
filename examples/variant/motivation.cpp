@@ -66,14 +66,18 @@ void
 variant_example()
 {
 //! [variant_example]
-	// Note that an MPL sequence is used here to describe which types the variant
-	// can hold
-	typedef fcppt::variant::object<
+	// Note that an MPL sequence is used here to describe which types the
+	// variant can hold. Alternatively, fcppt::variant::variadic can be
+	// used.
+	typedef
+	fcppt::variant::object<
 		boost::mpl::vector2<
 			std::string,
 			int
 		>
-	> string_or_int;
+	>
+	string_or_int;
+
 
 	auto const print(
 		[](

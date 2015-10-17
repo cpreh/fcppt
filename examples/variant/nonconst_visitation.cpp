@@ -6,7 +6,7 @@
 
 #include <fcppt/variant/apply_unary.hpp>
 #include <fcppt/variant/get_exn.hpp>
-#include <fcppt/variant/object_impl.hpp>
+#include <fcppt/variant/variadic.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/mpl/vector/vector10.hpp>
 #include <iostream>
@@ -37,15 +37,16 @@ struct visitor
 //! [variant_nonconst_visitor]
 }
 
-int main()
+int
+main()
 {
 	// typedef a variant that can either hold a string or an int
-	typedef fcppt::variant::object<
-		boost::mpl::vector2<
-			std::string,
-			int
-		>
-	> string_or_int;
+	typedef
+	fcppt::variant::variadic<
+		std::string,
+		int
+	>
+	string_or_int;
 
 //! [variant_nonconst_visitation]
 	string_or_int v(
