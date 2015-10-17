@@ -40,7 +40,7 @@ FCPPT_PP_POP_WARNING
 		string
 	);
 
-	BOOST_REQUIRE(
+	BOOST_CHECK(
 		fcppt::variant::holds_type<
 			std::string
 		>(
@@ -48,7 +48,7 @@ FCPPT_PP_POP_WARNING
 		)
 	);
 
-	BOOST_REQUIRE(
+	BOOST_CHECK(
 		!fcppt::variant::holds_type<
 			int
 		>(
@@ -60,7 +60,7 @@ FCPPT_PP_POP_WARNING
 		42
 	);
 
-	BOOST_REQUIRE(
+	BOOST_CHECK(
 		!fcppt::variant::holds_type<
 			std::string
 		>(
@@ -68,7 +68,7 @@ FCPPT_PP_POP_WARNING
 		)
 	);
 
-	BOOST_REQUIRE(
+	BOOST_CHECK(
 		fcppt::variant::holds_type<
 			int
 		>(

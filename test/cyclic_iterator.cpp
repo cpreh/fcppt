@@ -31,8 +31,7 @@ FCPPT_PP_POP_WARNING
 	> int3_array;
 
 
-	int3_array const array =
-	{{
+	int3_array const array{{
 		1,
 		2,
 		3
@@ -48,50 +47,58 @@ FCPPT_PP_POP_WARNING
 		array.end()
 	);
 
-	BOOST_REQUIRE(
-		*test == 1
+	BOOST_REQUIRE_EQUAL(
+		*test,
+		1
 	);
 
 	++test;
 
-	BOOST_REQUIRE(
-		*test == 2
+	BOOST_REQUIRE_EQUAL(
+		*test,
+		2
 	);
 
 	++test;
 
-	BOOST_REQUIRE(
-		*test == 3
+	BOOST_REQUIRE_EQUAL(
+		*test,
+		3
 	);
 
 	++test;
 
-	BOOST_REQUIRE(
-		*test == 1
+	BOOST_REQUIRE_EQUAL(
+		*test,
+		1
 	);
 
 	BOOST_REQUIRE(
 		test.get()
-		== array.begin()
+		==
+		array.begin()
 	);
 
 	--test;
 
-	BOOST_REQUIRE(
-		*test == 3
+	BOOST_REQUIRE_EQUAL(
+		*test,
+		3
 	);
 
 	BOOST_REQUIRE(
 		test.get()
-		== std::prev(
+		==
+		std::prev(
 			array.end()
 		)
 	);
 
 	--test;
 
-	BOOST_REQUIRE(
-		*test == 2
+	BOOST_REQUIRE_EQUAL(
+		*test,
+		2
 	);
 }
 
@@ -122,8 +129,9 @@ FCPPT_PP_POP_WARNING
 
 	++test;
 
-	BOOST_REQUIRE(
+	BOOST_CHECK(
 		test.get()
-		== vector.end()
+		==
+		vector.end()
 	);
 }

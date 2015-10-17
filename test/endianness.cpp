@@ -27,7 +27,9 @@ BOOST_AUTO_TEST_CASE(
 {
 FCPPT_PP_POP_WARNING
 
-	int foo = 108;
+	int foo{
+		108
+	};
 
 	BOOST_CHECK((
 		(
@@ -53,35 +55,34 @@ FCPPT_PP_POP_WARNING
 		)
 	));
 
-	BOOST_CHECK(
+	BOOST_CHECK_EQUAL(
 		fcppt::endianness::swap(
 			fcppt::endianness::swap(
 				foo
 			)
-		)
-		==
+		),
 		foo
 	);
 
-	BOOST_CHECK((
+	BOOST_CHECK_EQUAL(
 		fcppt::endianness::convert(
 			fcppt::endianness::convert(
 				foo,
 				fcppt::endianness::format::big
 			),
 			fcppt::endianness::format::big
-		)
-		== 108
-	));
+		),
+		108
+	);
 
-	BOOST_CHECK((
+	BOOST_CHECK_EQUAL(
 		fcppt::endianness::convert(
 			fcppt::endianness::convert(
 				foo,
 				fcppt::endianness::format::little
 			),
 			fcppt::endianness::format::little
-		)
-		== 108
-	));
+		),
+		108
+	);
 }

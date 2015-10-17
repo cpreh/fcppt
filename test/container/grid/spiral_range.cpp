@@ -102,12 +102,12 @@ FCPPT_PP_POP_WARNING
 			result.begin()
 		);
 
-		BOOST_CHECK(
+		BOOST_CHECK_EQUAL(
 			manhattan_distance(
 				*it,
 				start
-			)
-			== 0
+			),
+			0
 		);
 
 		++it;
@@ -127,12 +127,12 @@ FCPPT_PP_POP_WARNING
 				i < count;
 				++i
 			)
-				BOOST_CHECK(
+				BOOST_CHECK_EQUAL(
 					manhattan_distance(
 						*it++,
 						start
-					)
-					== cur
+					),
+					cur
 				);
 		}
 	}

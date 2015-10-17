@@ -62,47 +62,57 @@ FCPPT_PP_POP_WARNING
 		trav.begin()
 	);
 
-	BOOST_REQUIRE(
-		it->value() == 1
+	BOOST_REQUIRE_EQUAL(
+		it->value(),
+		1
+	);
+
+	++it;
+
+	BOOST_REQUIRE_EQUAL(
+		it->value(),
+		2
+	);
+
+	++it;
+
+	BOOST_REQUIRE_EQUAL(
+		it->value(),
+		3
+	);
+
+	++it;
+
+	BOOST_REQUIRE_EQUAL(
+		it->value(),
+		4
+	);
+
+	++it;
+
+	BOOST_REQUIRE_EQUAL(
+		it->value(),
+		5
+	);
+
+	++it;
+
+	BOOST_REQUIRE_EQUAL(
+		it->value(),
+		6
 	);
 
 	++it;
 
 	BOOST_REQUIRE(
-		it->value() == 2
-	);
-
-	++it;
-
-	BOOST_REQUIRE(
-		it->value() == 3
-	);
-
-	++it;
-
-	BOOST_REQUIRE(
-		it->value() == 4
-	);
-
-	++it;
-
-	BOOST_REQUIRE(
-		it->value() == 5
-	);
-
-	++it;
-
-	BOOST_REQUIRE(
-		it->value() == 6
-	);
-
-	++it;
-
-	BOOST_REQUIRE(
-		it == trav.end()
+		it
+		==
+		trav.end()
 	);
 }
 
-template class fcppt::container::tree::object<
+template
+class
+fcppt::container::tree::object<
 	unsigned
 >;

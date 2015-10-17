@@ -37,11 +37,18 @@ FCPPT_PP_POP_WARNING
 		)
 	);
 
-	BOOST_REQUIRE(
-		vec[0] == 0
-		&&
-		vec[1] == 0
-		&&
-		vec[2] == 1
+	BOOST_CHECK_EQUAL(
+		vec[0],
+		0
+	);
+
+	BOOST_CHECK_EQUAL(
+		vec[1],
+		0
+	);
+
+	BOOST_CHECK_EQUAL(
+		vec[2],
+		1
 	);
 }

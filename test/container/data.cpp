@@ -55,7 +55,7 @@ FCPPT_PP_POP_WARNING
 		2
 	);
 
-	BOOST_CHECK(
+	BOOST_CHECK_EQUAL(
 		std::distance(
 			fcppt::container::data(
 				container
@@ -63,8 +63,7 @@ FCPPT_PP_POP_WARNING
 			fcppt::container::data_end(
 				container
 			)
-		)
-		==
+		),
 		2
 	);
 }

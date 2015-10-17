@@ -4,7 +4,6 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/literal.hpp>
 #include <fcppt/assign/make_container.hpp>
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
@@ -21,72 +20,154 @@ FCPPT_PP_PUSH_WARNING
 FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
 
 BOOST_AUTO_TEST_CASE(
-	assign_make_container
+	assign_make_container_vector
 )
 {
 FCPPT_PP_POP_WARNING
 
-	{
 	typedef
-	std::vector<int>
+	std::vector<
+		int
+	>
 	sequence;
 
-	sequence c(
-		fcppt::assign::make_container<sequence>
-			(
-				3)
-			(
-				4)
-			(
-				5));
+	sequence const c(
+		fcppt::assign::make_container<
+			sequence
+		>(
+			3
+		)(
+			4
+		)(
+			5
+		)
+	);
 
-	BOOST_REQUIRE(
-		c.size() == fcppt::literal<sequence::size_type>(3) &&
-		c[0] == 3 &&
-		c[1] == 4 &&
-		c[2] == 5);
-	}
+	BOOST_REQUIRE_EQUAL(
+		c.size(),
+		3
+	);
 
-	{
+	BOOST_CHECK_EQUAL(
+		c[0],
+		3
+	);
+
+	BOOST_CHECK_EQUAL(
+		c[1],
+		4
+	);
+
+	BOOST_CHECK_EQUAL(
+		c[2],
+		5
+	);
+}
+
+FCPPT_PP_PUSH_WARNING
+FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
+
+BOOST_AUTO_TEST_CASE(
+	assign_make_container_set
+)
+{
+FCPPT_PP_POP_WARNING
+
 	typedef
-	std::set<int>
+	std::set<
+		int
+	>
 	set;
 
-	set c(
-		fcppt::assign::make_container<set>
-			(
-				3)
-			(
-				4)
-			(
-				5));
+	set const c(
+		fcppt::assign::make_container<
+			set
+		>(
+			3
+		)(
+			4
+		)(
+			5
+		)
+	);
 
-	BOOST_REQUIRE(
-		c.size() == fcppt::literal<set::size_type>(3) &&
-		c.find(3) != c.end() &&
-		c.find(4) != c.end() &&
-		c.find(5) != c.end());
-	}
+	BOOST_CHECK_EQUAL(
+		c.size(),
+		3
+	);
 
-	{
+	BOOST_CHECK_EQUAL(
+		c.count(3),
+		1u
+	);
+
+	BOOST_CHECK_EQUAL(
+		c.count(4),
+		1u
+	);
+
+	BOOST_CHECK_EQUAL(
+		c.count(5),
+		1u
+	);
+}
+
+FCPPT_PP_PUSH_WARNING
+FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
+
+BOOST_AUTO_TEST_CASE(
+	assign_make_container_map
+)
+{
+FCPPT_PP_POP_WARNING
+
 	typedef
-	std::map<int,int>
+	std::map<
+		int,
+		int
+	>
 	map;
 
-	map m(
-		fcppt::assign::make_container<map>
-			(std::make_pair(
+	map const m(
+		fcppt::assign::make_container<
+			map
+		>(
+			std::make_pair(
 				3,
-				2))
-			(std::make_pair(
+				2
+			)
+		)(
+			std::make_pair(
 				4,
-				5)));
+				5
+			)
+		)
+	);
+
+	BOOST_CHECK_EQUAL(
+		m.size(),
+		2
+	);
 
 	BOOST_REQUIRE(
-		m.size() == fcppt::literal<map::size_type>(2) &&
-		m.find(3) != m.end() &&
-		m.find(3)->second == 2 &&
-		m.find(4) != m.end() &&
-		m.find(4)->second == 5);
-	}
+		m.find(3)
+		!=
+		m.end()
+	);
+
+	BOOST_CHECK_EQUAL(
+		m.find(3)->second,
+		2
+	);
+
+	BOOST_REQUIRE(
+		m.find(4)
+		!=
+		m.end()
+	);
+
+	BOOST_CHECK_EQUAL(
+		m.find(4)->second,
+		5
+	);
 }

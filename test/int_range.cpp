@@ -44,7 +44,7 @@ test(
 	int_vector values;
 
 	for(
-		Int value
+		Int const value
 		:
 		_range
 	)

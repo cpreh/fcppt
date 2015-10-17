@@ -46,7 +46,7 @@ FCPPT_PP_POP_WARNING
 		string
 	);
 
-	BOOST_REQUIRE(
+	BOOST_CHECK(
 		v1 == v2
 	);
 
@@ -54,11 +54,11 @@ FCPPT_PP_POP_WARNING
 		42
 	);
 
-	BOOST_REQUIRE(
+	BOOST_CHECK(
 		v1 != v3
 	);
 
-	BOOST_REQUIRE(
+	BOOST_CHECK(
 		fcppt::variant::type_info(
 			v1
 		)

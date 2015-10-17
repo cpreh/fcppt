@@ -15,6 +15,7 @@
 #include <boost/test/unit_test.hpp>
 #include <fcppt/config/external_end.hpp>
 
+
 FCPPT_PP_PUSH_WARNING
 FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
 
@@ -24,23 +25,21 @@ BOOST_AUTO_TEST_CASE(
 {
 FCPPT_PP_POP_WARNING
 
-	BOOST_REQUIRE(
+	BOOST_CHECK_EQUAL(
 		fcppt::insert_to_fcppt_string(
 			42
-		)
-		==
+		),
 		FCPPT_TEXT("42")
 	);
 
-	BOOST_REQUIRE(
+	BOOST_CHECK_EQUAL(
 		fcppt::insert_to_std_string(
 			42
-		)
-		==
+		),
 		"42"
 	);
 
-	BOOST_REQUIRE(
+	BOOST_CHECK(
 		fcppt::insert_to_std_wstring(
 			42
 		)

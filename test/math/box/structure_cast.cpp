@@ -7,6 +7,7 @@
 #include <fcppt/cast/float_to_int_fun.hpp>
 #include <fcppt/math/box/comparison.hpp>
 #include <fcppt/math/box/object_impl.hpp>
+#include <fcppt/math/box/output.hpp>
 #include <fcppt/math/box/structure_cast.hpp>
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
@@ -46,14 +47,17 @@ FCPPT_PP_POP_WARNING
 		)
 	);
 
-	BOOST_REQUIRE((
+	box_i2 const result(
 		fcppt::math::box::structure_cast<
 			box_i2,
 			fcppt::cast::float_to_int_fun
 		>(
 			box1
 		)
-		==
+	);
+
+	BOOST_CHECK_EQUAL(
+		result,
 		box_i2(
 			box_i2::vector(
 				1,
@@ -64,5 +68,5 @@ FCPPT_PP_POP_WARNING
 				4
 			)
 		)
-	));
+	);
 }

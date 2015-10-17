@@ -104,9 +104,9 @@ FCPPT_PP_POP_WARNING
 		derived_ref.has_value()
 	);
 
-	BOOST_CHECK(
-		&derived_ref.get_unsafe()
-		== &derived_object
+	BOOST_CHECK_EQUAL(
+		&derived_ref.get_unsafe(),
+		&derived_object
 	);
 }
 
@@ -151,9 +151,9 @@ FCPPT_PP_POP_WARNING
 		derived_ref.has_value()
 	);
 
-	BOOST_CHECK(
-		&derived_ref.get_unsafe()
-		== &derived_object
+	BOOST_CHECK_EQUAL(
+		&derived_ref.get_unsafe(),
+		&derived_object
 	);
 }
 
@@ -188,8 +188,8 @@ FCPPT_PP_POP_WARNING
 		nonconst_ref.has_value()
 	);
 
-	BOOST_CHECK(
-		&nonconst_ref.get_unsafe()
-		== &object
+	BOOST_CHECK_EQUAL(
+		&nonconst_ref.get_unsafe(),
+		&object
 	);
 }

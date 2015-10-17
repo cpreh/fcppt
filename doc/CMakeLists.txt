@@ -528,7 +528,6 @@ set(
 	include/fcppt/detail/noncopyable.hpp
 	include/fcppt/detail/optional_cast.hpp
 	include/fcppt/detail/placement_new.hpp
-	include/fcppt/detail/runtime_enum_function.hpp
 	include/fcppt/detail/strong_typedef/assignment_operator.hpp
 	include/fcppt/detail/strong_typedef/binary_operator.hpp
 	include/fcppt/detail/strong_typedef/cast.hpp

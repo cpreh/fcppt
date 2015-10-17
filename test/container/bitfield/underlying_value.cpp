@@ -79,21 +79,21 @@ FCPPT_PP_POP_WARNING
 		)
 	);
 
-	BOOST_REQUIRE(
+	BOOST_CHECK(
 		!check_bit(
 			value,
 			test_enum::test1
 		)
 	);
 
-	BOOST_REQUIRE(
+	BOOST_CHECK(
 		check_bit(
 			value,
 			test_enum::test2
 		)
 	);
 
-	BOOST_REQUIRE(
+	BOOST_CHECK(
 		!check_bit(
 			value,
 			test_enum::test3

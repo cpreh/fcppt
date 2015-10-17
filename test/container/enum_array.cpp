@@ -52,11 +52,10 @@ FCPPT_PP_POP_WARNING
 		3
 	}}};
 
-	BOOST_CHECK(
+	BOOST_CHECK_EQUAL(
 		test1[
 			my_enum::val1
-		]
-		==
+		],
 		1
 	);
 

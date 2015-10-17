@@ -60,9 +60,8 @@ FCPPT_PP_POP_WARNING
 		<< oss.str()
 		<< '\n';
 
-	BOOST_REQUIRE(
-		oss.str()
-		==
+	BOOST_CHECK_EQUAL(
+		oss.str(),
 		"a\n"
 			"\tb\n"
 				"\t\tc\n"

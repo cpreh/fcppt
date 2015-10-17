@@ -47,25 +47,25 @@ FCPPT_PP_POP_WARNING
 		)
 	);
 
-	BOOST_CHECK(
+	BOOST_CHECK_EQUAL(
 		set.count(
 			int3_vector(
 				1,
 				2,
 				3
 			)
-		)
-		== 1u
+		),
+		1u
 	);
 
-	BOOST_CHECK(
+	BOOST_CHECK_EQUAL(
 		set.count(
 			int3_vector(
 				4,
 				2,
 				3
 			)
-		)
-		== 0u
+		),
+		0u
 	);
 }

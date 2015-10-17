@@ -4,31 +4,27 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/math/matrix/is_matrix.hpp>
-#include <fcppt/math/matrix/static.hpp>
+#include <fcppt/type_traits/is_iterable.hpp>
+#include <fcppt/config/external_begin.hpp>
+#include <vector>
+#include <fcppt/config/external_end.hpp>
 
 
 int
 main()
 {
-	typedef
-	fcppt::math::matrix::static_<
-		double,
-		3,
-		3
-	>
-	large_matrix_type;
-
 	static_assert(
-		fcppt::math::matrix::is_matrix<
-			large_matrix_type
+		!fcppt::type_traits::is_iterable<
+			int
 		>::value,
 		""
 	);
 
 	static_assert(
-		!fcppt::math::matrix::is_matrix<
-			int
+		fcppt::type_traits::is_iterable<
+			std::vector<
+				int
+			>
 		>::value,
 		""
 	);

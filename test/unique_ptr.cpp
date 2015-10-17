@@ -35,7 +35,8 @@ FCPPT_PP_POP_WARNING
 		)
 	);
 
-	BOOST_REQUIRE(
-		*test1 == 42
+	BOOST_CHECK_EQUAL(
+		*test1,
+		42
 	);
 }

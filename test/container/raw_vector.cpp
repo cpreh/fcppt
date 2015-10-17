@@ -20,13 +20,17 @@
 namespace
 {
 
-typedef fcppt::container::raw_vector<
+typedef
+fcppt::container::raw_vector<
 	int
-> container_type;
+>
+container_type;
 
 }
 
-template class fcppt::container::raw_vector<
+template
+class
+fcppt::container::raw_vector<
 	int
 >;
 
@@ -49,18 +53,20 @@ FCPPT_PP_POP_WARNING
 		1000u
 	);
 
-	BOOST_REQUIRE(
+	BOOST_CHECK(
 		test.capacity() >= 1000u
 	);
 
 	test.shrink_to_fit();
 
-	BOOST_REQUIRE(
-		test.capacity() == 100u
+	BOOST_CHECK_EQUAL(
+		test.capacity(),
+		100u
 	);
 
-	BOOST_REQUIRE(
-		test.size() == 100u
+	BOOST_CHECK_EQUAL(
+		test.size(),
+		100u
 	);
 }
 
@@ -80,16 +86,18 @@ FCPPT_PP_POP_WARNING
 		42
 	);
 
-	BOOST_REQUIRE(
-		test.size() == 10u
+	BOOST_CHECK_EQUAL(
+		test.size(),
+		10u
 	);
 
 	test.resize_uninitialized(
 		5u
 	);
 
-	BOOST_REQUIRE(
-		test.size() == 5u
+	BOOST_CHECK_EQUAL(
+		test.size(),
+		5u
 	);
 }
 
@@ -107,8 +115,9 @@ FCPPT_PP_POP_WARNING
 	test.push_back(10);
 	test.push_back(20);
 
-	BOOST_REQUIRE(
-		test.size() == 2u
+	BOOST_CHECK_EQUAL(
+		test.size(),
+		2u
 	);
 
 	test.insert(
@@ -116,11 +125,24 @@ FCPPT_PP_POP_WARNING
 		30
 	);
 
-	BOOST_REQUIRE(
-		test.size() == 3u
-		&& test[0] == 10
-		&& test[1] == 30
-		&& test[2] == 20
+	BOOST_REQUIRE_EQUAL(
+		test.size(),
+		3u
+	);
+
+	BOOST_CHECK_EQUAL(
+		test[0],
+		10
+	);
+
+	BOOST_CHECK_EQUAL(
+		test[1],
+		30
+	);
+
+	BOOST_CHECK_EQUAL(
+		test[2],
+		20
 	);
 
 	test.insert(
@@ -129,13 +151,34 @@ FCPPT_PP_POP_WARNING
 		40
 	);
 
-	BOOST_REQUIRE(
-		test.size() == 5u
-		&& test[0] == 10
-		&& test[1] == 30
-		&& test[2] == 40
-		&& test[3] == 40
-		&& test[4] == 20
+	BOOST_REQUIRE_EQUAL(
+		test.size(),
+		5u
+	);
+
+	BOOST_CHECK_EQUAL(
+		test[0],
+		10
+	);
+
+	BOOST_CHECK_EQUAL(
+		test[1],
+		30
+	);
+
+	BOOST_CHECK_EQUAL(
+		test[2],
+		40
+	);
+
+	BOOST_CHECK_EQUAL(
+		test[3],
+		40
+	);
+
+	BOOST_CHECK_EQUAL(
+		test[4],
+		20
 	);
 }
 
@@ -155,7 +198,7 @@ FCPPT_PP_POP_WARNING
 		5
 	> int_array;
 
-	int_array const array = {{
+	int_array const array{{
 		0, 1, 2, 3, 4
 	}};
 
@@ -165,13 +208,34 @@ FCPPT_PP_POP_WARNING
 		array.end()
 	);
 
-	BOOST_REQUIRE(
-		test.size() == 5u
-		&& test[0] == 0
-		&& test[1] == 1
-		&& test[2] == 2
-		&& test[3] == 3
-		&& test[4] == 4
+	BOOST_REQUIRE_EQUAL(
+		test.size(),
+		5u
+	);
+
+	BOOST_CHECK_EQUAL(
+		test[0],
+		0
+	);
+
+	BOOST_CHECK_EQUAL(
+		test[1],
+		1
+	);
+
+	BOOST_CHECK_EQUAL(
+		test[2],
+		2
+	);
+
+	BOOST_CHECK_EQUAL(
+		test[3],
+		3
+	);
+
+	BOOST_CHECK_EQUAL(
+		test[4],
+		4
 	);
 
 	std::stringstream stream;
@@ -195,17 +259,38 @@ FCPPT_PP_POP_WARNING
 		>()
 	);
 
-	BOOST_REQUIRE(
+	BOOST_CHECK(
 		stream.eof()
 	);
 
-	BOOST_REQUIRE(
-		test.size() == 10
-		&& test[5] == 10
-		&& test[6] == 20
-		&& test[7] == 30
-		&& test[8] == 40
-		&& test[9] == 50
+	BOOST_REQUIRE_EQUAL(
+		test.size(),
+		10u
+	);
+
+	BOOST_CHECK_EQUAL(
+		test[5],
+		10
+	);
+
+	BOOST_CHECK_EQUAL(
+		test[6],
+		20
+	);
+
+	BOOST_CHECK_EQUAL(
+		test[7],
+		30
+	);
+
+	BOOST_CHECK_EQUAL(
+		test[8],
+		40
+	);
+
+	BOOST_CHECK_EQUAL(
+		test[9],
+		50
 	);
 }
 
@@ -236,9 +321,9 @@ FCPPT_PP_POP_WARNING
 		i < test.size();
 		++i
 	)
-		BOOST_REQUIRE(
-			test[i]
-			== static_cast<
+		BOOST_CHECK_EQUAL(
+			test[i],
+			static_cast<
 				container_type::value_type
 			>(i)
 		);
@@ -270,12 +355,29 @@ FCPPT_PP_POP_WARNING
 		test.begin() + 3
 	);
 
-	BOOST_REQUIRE(
-		test.size() == 4u
-		&& test[0] == 0
-		&& test[1] == 1
-		&& test[2] == 2
-		&& test[3] == 4
+	BOOST_REQUIRE_EQUAL(
+		test.size(),
+		4u
+	);
+
+	BOOST_CHECK_EQUAL(
+		test[0],
+		0
+	);
+
+	BOOST_CHECK_EQUAL(
+		test[1],
+		1
+	);
+
+	BOOST_CHECK_EQUAL(
+		test[2],
+		2
+	);
+
+	BOOST_CHECK_EQUAL(
+		test[3],
+		4
 	);
 
 	test.erase(
@@ -283,10 +385,19 @@ FCPPT_PP_POP_WARNING
 		test.begin() + 3
 	);
 
-	BOOST_REQUIRE(
-		test.size() == 2u
-		&& test[0] == 0
-		&& test[1] == 4
+	BOOST_REQUIRE_EQUAL(
+		test.size(),
+		2u
+	);
+
+	BOOST_CHECK_EQUAL(
+		test[0],
+		0
+	);
+
+	BOOST_CHECK_EQUAL(
+		test[1],
+		4
 	);
 
 	test.clear();
@@ -320,16 +431,20 @@ FCPPT_PP_POP_WARNING
 
 	container_type test2(test);
 
-	BOOST_REQUIRE(
-		test == test2
+	BOOST_CHECK(
+		test
+		==
+		test2
 	);
 
 	container_type test3;
 
 	test3 = test;
 
-	BOOST_REQUIRE(
-		test == test3
+	BOOST_CHECK(
+		test
+		==
+		test3
 	);
 }
 
@@ -346,7 +461,7 @@ FCPPT_PP_POP_WARNING
 
 	container_type test2(test);
 
-	BOOST_REQUIRE(
+	BOOST_CHECK(
 		test2.empty()
 	);
 }
@@ -372,13 +487,13 @@ FCPPT_PP_POP_WARNING
 		)
 	);
 
-	BOOST_CHECK(
-		test2.size()
-		==
-		100
-		&&
-		test2[0]
-		==
+	BOOST_REQUIRE_EQUAL(
+		test2.size(),
+		100u
+	);
+
+	BOOST_CHECK_EQUAL(
+		test2[0],
 		500
 	);
 
@@ -393,13 +508,13 @@ FCPPT_PP_POP_WARNING
 			test2
 		);
 
-	BOOST_CHECK(
-		test3.size()
-		==
-		100
-		&&
-		test3[0]
-		==
+	BOOST_REQUIRE_EQUAL(
+		test3.size(),
+		100u
+	);
+
+	BOOST_CHECK_EQUAL(
+		test3[0],
 		500
 	);
 
@@ -423,15 +538,23 @@ FCPPT_PP_POP_WARNING
 		3
 	};
 
-	BOOST_REQUIRE(
-		test1.size() == 3u
+	BOOST_REQUIRE_EQUAL(
+		test1.size(),
+		3u
 	);
 
-	BOOST_CHECK(
-		test1[0] == 1
-		&&
-		test1[1] == 2
-		&&
-		test1[2] == 3
+	BOOST_CHECK_EQUAL(
+		test1[0],
+		1
+	);
+
+	BOOST_CHECK_EQUAL(
+		test1[1],
+		2
+	);
+
+	BOOST_CHECK_EQUAL(
+		test1[2],
+		3
 	);
 }

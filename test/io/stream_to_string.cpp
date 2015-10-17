@@ -34,7 +34,8 @@ FCPPT_PP_POP_WARNING
 		)
 	);
 
-	BOOST_CHECK(
-		result == "TEST abcd"
+	BOOST_CHECK_EQUAL(
+		result,
+		"TEST abcd"
 	);
 }

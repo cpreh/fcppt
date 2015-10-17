@@ -7,6 +7,7 @@
 #include <fcppt/exception.hpp>
 #include <fcppt/optional_comparison.hpp>
 #include <fcppt/optional_impl.hpp>
+#include <fcppt/optional_output.hpp>
 #include <fcppt/endianness/format.hpp>
 #include <fcppt/io/read.hpp>
 #include <fcppt/io/read_exn.hpp>
@@ -51,9 +52,8 @@ test_read_write(
 		)
 	);
 
-	BOOST_CHECK(
-		result
-		==
+	BOOST_CHECK_EQUAL(
+		result,
 		optional_int(
 			42
 		)
@@ -65,7 +65,8 @@ check_exception(
 	fcppt::exception const &
 )
 {
-	return true;
+	return
+		true;
 }
 
 }

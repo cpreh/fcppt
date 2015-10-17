@@ -4,32 +4,44 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/math/matrix/is_matrix.hpp>
-#include <fcppt/math/matrix/static.hpp>
+#include <fcppt/type_traits/generate_has_type.hpp>
 
+
+namespace
+{
+
+FCPPT_TYPE_TRAITS_GENERATE_HAS_TYPE(
+	size_type
+);
+
+struct foo
+{
+};
+
+struct bar
+{
+	typedef
+	int
+	size_type;
+};
+
+}
 
 int
 main()
 {
-	typedef
-	fcppt::math::matrix::static_<
-		double,
-		3,
-		3
-	>
-	large_matrix_type;
-
 	static_assert(
-		fcppt::math::matrix::is_matrix<
-			large_matrix_type
+		!has_size_type<
+			foo
 		>::value,
 		""
 	);
 
 	static_assert(
-		!fcppt::math::matrix::is_matrix<
-			int
+		has_size_type<
+			bar
 		>::value,
 		""
 	);
 }
+

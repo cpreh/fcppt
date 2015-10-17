@@ -12,6 +12,7 @@
 #include <fcppt/config/external_begin.hpp>
 #include <boost/iostreams/stream.hpp>
 #include <boost/test/unit_test.hpp>
+#include <array>
 #include <vector>
 #include <fcppt/config/external_end.hpp>
 
@@ -26,63 +27,102 @@ BOOST_AUTO_TEST_CASE(
 FCPPT_PP_POP_WARNING
 
 	typedef
-	fcppt::container::raw_vector<char>
+	fcppt::container::raw_vector<
+		char
+	>
 	raw_container;
 
 	typedef
-	fcppt::io::raw_container_source<raw_container>
+	fcppt::io::raw_container_source<
+		raw_container
+	>
 	raw_source;
 
 	typedef
-	boost::iostreams::stream<raw_source>
+	boost::iostreams::stream<
+		raw_source
+	>
 	stream_type;
 
 	typedef
-	std::vector<char>
+	std::vector<
+		char
+	>
 	other_container;
 
-	other_container other;
-	other.push_back('a');
-	other.push_back('b');
-	other.push_back('c');
+	other_container const other{
+		'a',
+		'b',
+		'c'
+	};
 
 	stream_type stream(
 		other.begin(),
 		other.end());
 
-	char bytes[3];
+	std::array<
+		char,
+		3
+	> bytes{{
+		0,0,0
+	}};
+
 	stream.read(
-		bytes,
-		std::ios_base::binary);
+		bytes.data(),
+		std::ios_base::binary
+	);
+
+	BOOST_CHECK_EQUAL(
+		bytes[0],
+		'a'
+	);
+
+	BOOST_CHECK_EQUAL(
+		bytes[1],
+		'b'
+	);
+
+	BOOST_CHECK_EQUAL(
+		bytes[2],
+		'c'
+	);
 
 	BOOST_CHECK(
-		bytes[0] == 'a');
-	BOOST_CHECK(
-		bytes[1] == 'b');
-	BOOST_CHECK(
-		bytes[2] == 'c');
-	BOOST_CHECK(
-		stream.eof());
+		stream.eof()
+	);
 
 	stream.clear();
 
 	stream.seekg(
 		0,
-		std::ios_base::beg);
+		std::ios_base::beg
+	);
 
 	BOOST_CHECK(
-		!stream.eof());
+		!stream.eof()
+	);
 
 	stream.read(
-		bytes,
-		std::ios_base::binary);
+		bytes.data(),
+		std::ios_base::binary
+	);
+
+	BOOST_CHECK_EQUAL(
+		bytes[0],
+		'a'
+	);
+
+	BOOST_CHECK_EQUAL(
+		bytes[1],
+		'b'
+	);
+
+	BOOST_CHECK_EQUAL(
+		bytes[2],
+		'c'
+	);
 
 	BOOST_CHECK(
-		bytes[0] == 'a');
-	BOOST_CHECK(
-		bytes[1] == 'b');
-	BOOST_CHECK(
-		bytes[2] == 'c');
-	BOOST_CHECK(
-		stream.eof());
+		stream.eof()
+	);
 }

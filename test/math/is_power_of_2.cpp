@@ -12,6 +12,7 @@
 #include <boost/test/unit_test.hpp>
 #include <fcppt/config/external_end.hpp>
 
+
 FCPPT_PP_PUSH_WARNING
 FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
 

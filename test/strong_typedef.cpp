@@ -57,69 +57,69 @@ FCPPT_PP_POP_WARNING
 			4
 		);
 
-	BOOST_REQUIRE(
-		test1 + test2
-		== strong_int(6)
+	BOOST_CHECK_EQUAL(
+		test1 + test2,
+		strong_int(6)
 	);
 
-	BOOST_REQUIRE(
-		test2 - test1
-		== strong_int(2)
+	BOOST_CHECK_EQUAL(
+		test2 - test1,
+		strong_int(2)
 	);
 
-	BOOST_REQUIRE(
-		test1 * test2
-		== strong_int(8)
+	BOOST_CHECK_EQUAL(
+		test1 * test2,
+		strong_int(8)
 	);
 
-	BOOST_REQUIRE(
-		test2 / test1
-		== strong_int(2)
+	BOOST_CHECK_EQUAL(
+		test2 / test1,
+		strong_int(2)
 	);
 
-	BOOST_REQUIRE(
-		test2 % test1
-		== strong_int(0)
+	BOOST_CHECK_EQUAL(
+		test2 % test1,
+		strong_int(0)
 	);
 
-	BOOST_REQUIRE(
-		+test1
-		== strong_int(2)
+	BOOST_CHECK_EQUAL(
+		+test1,
+		strong_int(2)
 	);
 
-	BOOST_REQUIRE(
-		-test1
-		== strong_int(-2)
+	BOOST_CHECK_EQUAL(
+		-test1,
+		strong_int(-2)
 	);
 
-	BOOST_REQUIRE(
-		test1++
-		== strong_int(2)
+	BOOST_CHECK_EQUAL(
+		test1++,
+		strong_int(2)
 	);
 
-	BOOST_REQUIRE(
-		test1
-		== strong_int(3)
+	BOOST_CHECK_EQUAL(
+		test1,
+		strong_int(3)
 	);
 
-	BOOST_REQUIRE(
-		test1--
-		== strong_int(3)
+	BOOST_CHECK_EQUAL(
+		test1--,
+		strong_int(3)
 	);
 
-	BOOST_REQUIRE(
-		test1
-		== strong_int(2)
+	BOOST_CHECK_EQUAL(
+		test1,
+		strong_int(2)
 	);
 
-	BOOST_REQUIRE(
-		++test1
-		== strong_int(3)
+	BOOST_CHECK_EQUAL(
+		++test1,
+		strong_int(3)
 	);
 
-	BOOST_REQUIRE(
-		--test1
-		== strong_int(2)
+	BOOST_CHECK_EQUAL(
+		--test1,
+		strong_int(2)
 	);
 }
 
@@ -138,16 +138,16 @@ FCPPT_PP_POP_WARNING
 
 	test += strong_int(2);
 
-	BOOST_REQUIRE(
-		test
-		== strong_int(3)
+	BOOST_CHECK_EQUAL(
+		test,
+		strong_int(3)
 	);
 
 	test -= strong_int(1);
 
-	BOOST_REQUIRE(
-		test
-		== strong_int(2)
+	BOOST_CHECK_EQUAL(
+		test,
+		strong_int(2)
 	);
 }
 
@@ -171,27 +171,27 @@ FCPPT_PP_POP_WARNING
 			2
 		);
 
-	BOOST_REQUIRE(
+	BOOST_CHECK(
 		test1 == test2
 	);
 
-	BOOST_REQUIRE(
+	BOOST_CHECK(
 		test1 != test3
 	);
 
-	BOOST_REQUIRE(
+	BOOST_CHECK(
 		test1 <= test2
 	);
 
-	BOOST_REQUIRE(
+	BOOST_CHECK(
 		test1 >= test2
 	);
 
-	BOOST_REQUIRE(
+	BOOST_CHECK(
 		test1 < test3
 	);
 
-	BOOST_REQUIRE(
+	BOOST_CHECK(
 		test3 > test1
 	);
 }
@@ -221,8 +221,9 @@ FCPPT_PP_POP_WARNING
 		stream >> result
 	);
 
-	BOOST_REQUIRE(
-		test == result
+	BOOST_CHECK_EQUAL(
+		test,
+		result
 	);
 }
 
@@ -243,14 +244,14 @@ FCPPT_PP_POP_WARNING
 		test
 	);
 
-	BOOST_REQUIRE(
-		&int_ref.get()
-		== &test
+	BOOST_CHECK_EQUAL(
+		&int_ref.get(),
+		&test
 	);
 
-	BOOST_REQUIRE(
-		int_ref.get()
-		== test
+	BOOST_CHECK_EQUAL(
+		int_ref.get(),
+		test
 	);
 }
 
@@ -271,14 +272,14 @@ FCPPT_PP_POP_WARNING
 		test
 	);
 
-	BOOST_REQUIRE(
-		&int_ref.get()
-		== &test
+	BOOST_CHECK_EQUAL(
+		&int_ref.get(),
+		&test
 	);
 
-	BOOST_REQUIRE(
-		int_ref.get()
-		== test
+	BOOST_CHECK_EQUAL(
+		int_ref.get(),
+		test
 	);
 }
 
@@ -305,18 +306,18 @@ FCPPT_PP_POP_WARNING
 		strong_int(2)
 	);
 
-	BOOST_CHECK(
+	BOOST_CHECK_EQUAL(
 		elements.count(
 			strong_int(1)
-		)
-		== 1
+		),
+		1u
 	);
 
-	BOOST_CHECK(
+	BOOST_CHECK_EQUAL(
 		elements.count(
 			strong_int(2)
-		)
-		== 1
+		),
+		1u
 	);
 }
 
@@ -354,9 +355,8 @@ FCPPT_PP_POP_WARNING
 		)
 	);
 
-	BOOST_REQUIRE(
-		*val2.get()
-		==
+	BOOST_CHECK_EQUAL(
+		*val2.get(),
 		42
 	);
 
@@ -373,9 +373,8 @@ FCPPT_PP_POP_WARNING
 			val2
 		);
 
-	BOOST_REQUIRE(
-		*val3.get()
-		==
+	BOOST_CHECK_EQUAL(
+		*val3.get(),
 		42
 	);
 }

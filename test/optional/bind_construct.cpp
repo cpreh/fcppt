@@ -7,6 +7,8 @@
 #include <fcppt/noncopyable.hpp>
 #include <fcppt/optional.hpp>
 #include <fcppt/optional_bind_construct.hpp>
+#include <fcppt/optional_comparison.hpp>
+#include <fcppt/optional_output.hpp>
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
@@ -47,23 +49,21 @@ FCPPT_PP_POP_WARNING
 		}
 	);
 
-	BOOST_CHECK(
+	BOOST_CHECK_EQUAL(
 		fcppt::optional_bind_construct(
 			optional_string(),
 			conversion
-		)
-		==
+		),
 		optional_size()
 	);
 
-	BOOST_CHECK(
+	BOOST_CHECK_EQUAL(
 		fcppt::optional_bind_construct(
 			optional_string(
 				"test"
 			),
 			conversion
-		).get_unsafe()
-		==
+		).get_unsafe(),
 		4u
 	);
 }
@@ -104,7 +104,7 @@ FCPPT_PP_POP_WARNING
 
 	noncopyable test{};
 
-	BOOST_CHECK(
+	BOOST_CHECK_EQUAL(
 		&fcppt::optional_bind_construct(
 			optional_string(
 				"42"
@@ -119,8 +119,7 @@ FCPPT_PP_POP_WARNING
 				return
 					test;
 			}
-		).get_unsafe()
-		==
+		).get_unsafe(),
 		&test
 	);
 }

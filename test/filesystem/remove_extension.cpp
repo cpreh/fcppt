@@ -34,8 +34,8 @@ FCPPT_PP_POP_WARNING
 		)
 	);
 
-	BOOST_CHECK(
-		path1 ==
+	BOOST_CHECK_EQUAL(
+		path1,
 		fcppt::filesystem::remove_extension(
 			path1
 		)
@@ -46,12 +46,12 @@ FCPPT_PP_POP_WARNING
 		/ FCPPT_TEXT("baz.txt")
 	);
 
-	BOOST_CHECK(
+	BOOST_CHECK_EQUAL(
 		fcppt::filesystem::remove_extension(
 			path2
-		)
-		==
+		),
 		path1
-		/ FCPPT_TEXT("baz")
+		/
+		FCPPT_TEXT("baz")
 	);
 }

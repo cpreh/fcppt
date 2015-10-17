@@ -13,6 +13,7 @@
 #include <string>
 #include <fcppt/config/external_end.hpp>
 
+
 FCPPT_PP_PUSH_WARNING
 FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
 
@@ -23,7 +24,9 @@ BOOST_AUTO_TEST_CASE(
 FCPPT_PP_POP_WARNING
 
 	// shouldn't need any multi byte characters
-	char const *const input = "foobar";
+	char const *const input(
+		"foobar"
+	);
 
 	// test this multiple times
 	// because there was a corruption issue
@@ -39,8 +42,9 @@ FCPPT_PP_POP_WARNING
 			)
 		);
 
-		BOOST_REQUIRE(
-			output.size() == 6
+		BOOST_CHECK_EQUAL(
+			output.size(),
+			6u
 		);
 	}
 }

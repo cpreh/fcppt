@@ -11,7 +11,6 @@
 #include <fcppt/config/external_begin.hpp>
 #include <boost/test/unit_test.hpp>
 #include <string>
-#include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -36,7 +35,7 @@ FCPPT_PP_POP_WARNING
 
 	optional_string test;
 
-	BOOST_REQUIRE(
+	BOOST_CHECK(
 		!test.has_value()
 	);
 
@@ -49,85 +48,15 @@ FCPPT_PP_POP_WARNING
 		test.has_value()
 	);
 
-	BOOST_REQUIRE(
-		test.get_unsafe() == "test"
+	BOOST_CHECK_EQUAL(
+		test.get_unsafe(),
+		"test"
 	);
 
 	test =
 		optional_string();
 
-	BOOST_REQUIRE(
+	BOOST_CHECK(
 		!test.has_value()
 	);
-}
-
-FCPPT_PP_PUSH_WARNING
-FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
-
-BOOST_AUTO_TEST_CASE(
-	optional_types
-)
-{
-FCPPT_PP_POP_WARNING
-
-	typedef fcppt::optional<
-		int
-	> optional_int;
-
-	BOOST_CHECK((
-		std::is_same<
-			optional_int::value_type,
-			int
-		>::value
-	));
-
-	BOOST_CHECK((
-		std::is_same<
-			optional_int::reference,
-			int &
-		>::value
-	));
-
-	BOOST_CHECK((
-		std::is_same<
-			optional_int::const_reference,
-			int const &
-		>::value
-	));
-
-	typedef fcppt::optional<
-		int &
-	> optional_int_ref;
-
-	BOOST_CHECK((
-		std::is_same<
-			optional_int_ref::value_type,
-			int
-		>::value
-	));
-
-	BOOST_CHECK((
-		std::is_same<
-			optional_int_ref::reference,
-			int &
-		>::value
-	));
-
-	typedef fcppt::optional<
-		int const &
-	> optional_const_int_ref;
-
-	BOOST_CHECK((
-		std::is_same<
-			optional_const_int_ref::value_type,
-			int
-		>::value
-	));
-
-	BOOST_CHECK((
-		std::is_same<
-			optional_const_int_ref::reference,
-			int const &
-		>::value
-	));
 }

@@ -29,7 +29,8 @@ check_function(
 	fcppt::exception const &
 )
 {
-	return true;
+	return
+		true;
 }
 
 }

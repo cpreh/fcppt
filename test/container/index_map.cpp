@@ -32,13 +32,23 @@ FCPPT_PP_POP_WARNING
 		2
 	] = 42;
 
-	BOOST_REQUIRE(
-		map.size() == 3u
+	BOOST_REQUIRE_EQUAL(
+		map.size(),
+		3u
 	);
 
-	BOOST_REQUIRE(
-		map[0] == 0
-		&& map[1] == 0
-		&& map[2] == 42
+	BOOST_CHECK_EQUAL(
+		map[0],
+		0
+	);
+
+	BOOST_CHECK_EQUAL(
+		map[1],
+		0
+	);
+
+	BOOST_CHECK_EQUAL(
+		map[2],
+		42
 	);
 }

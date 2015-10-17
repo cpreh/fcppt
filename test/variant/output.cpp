@@ -42,9 +42,8 @@ FCPPT_PP_POP_WARNING
 			42
 		};
 
-	BOOST_CHECK(
-		stream.str()
-		==
+	BOOST_CHECK_EQUAL(
+		stream.str(),
 		fcppt::string{
 			FCPPT_TEXT("42")
 		}

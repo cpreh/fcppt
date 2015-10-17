@@ -4,7 +4,6 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/literal.hpp>
 #include <fcppt/assign/make_map.hpp>
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
@@ -20,7 +19,7 @@ FCPPT_PP_PUSH_WARNING
 FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
 
 BOOST_AUTO_TEST_CASE(
-	assign_make_container
+	assign_make_map
 )
 {
 FCPPT_PP_POP_WARNING
@@ -40,7 +39,7 @@ FCPPT_PP_POP_WARNING
 		"baz"
 	};
 
-	map m(
+	map const m(
 		fcppt::assign::make_map<
 			map
 		>
@@ -56,13 +55,41 @@ FCPPT_PP_POP_WARNING
 		)
 	);
 
+	BOOST_CHECK_EQUAL(
+		m.size(),
+		3
+	);
+
 	BOOST_REQUIRE(
-		m.size() == fcppt::literal<map::size_type>(3) &&
-		m.find(3) != m.end() &&
-		m.find(3)->second == "foo" &&
-		m.find(4) != m.end() &&
-		m.find(4)->second == "bar" &&
-		m.find(5) != m.end() &&
-		m.find(5)->second == "baz"
+		m.find(3)
+		!=
+		m.end()
+	);
+
+	BOOST_CHECK_EQUAL(
+		m.find(3)->second,
+		"foo"
+	);
+
+	BOOST_REQUIRE(
+		m.find(4)
+		!=
+		m.end()
+	);
+
+	BOOST_CHECK_EQUAL(
+		m.find(4)->second,
+		"bar"
+	);
+
+	BOOST_REQUIRE(
+		m.find(5)
+		!=
+		m.end()
+	);
+
+	BOOST_CHECK_EQUAL(
+		m.find(5)->second,
+		"baz"
 	);
 }

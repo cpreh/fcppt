@@ -8,8 +8,11 @@
 #define FCPPT_RUNTIME_ENUM_HPP_INCLUDED
 
 #include <fcppt/absurd.hpp>
+#include <fcppt/decltype_sink.hpp>
+#include <fcppt/enum_max_value.hpp>
 #include <fcppt/enum_size.hpp>
-#include <fcppt/detail/runtime_enum_function.hpp>
+#include <fcppt/cast/enum_to_int.hpp>
+#include <fcppt/cast/static_cast_fun.hpp>
 #include <fcppt/mpl/integral_cast.hpp>
 #include <fcppt/mpl/runtime_index.hpp>
 #include <fcppt/config/external_begin.hpp>
@@ -31,8 +34,9 @@ template<
 	typename Function
 >
 inline
-typename
-Function::result_type
+decltype(
+	auto
+)
 runtime_enum(
 	Enum const _enum,
 	Function const &_function
@@ -58,20 +62,36 @@ runtime_enum(
 				Enum
 			>
 		>(
-			static_cast<
+			fcppt::cast::enum_to_int<
 				int_type
 			>(
 				_enum
 			),
-			fcppt::detail::runtime_enum_function<
-				Enum,
-				Function
-			>(
-				_function
-			),
+			[
+				&_function
+			](
+				auto const _fcppt_index
+			)
+			{
+				return
+					_function(
+						fcppt::mpl::integral_cast<
+							Enum,
+							fcppt::cast::static_cast_fun,
+							FCPPT_DECLTYPE_SINK(
+								_fcppt_index
+							)
+						>{}
+					);
+			},
 			&fcppt::absurd<
-				typename
-				Function::result_type
+				decltype(
+					_function(
+						fcppt::enum_max_value<
+							Enum
+						>{}
+					)
+				)
 			>
 		);
 

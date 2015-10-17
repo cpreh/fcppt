@@ -37,8 +37,7 @@ FCPPT_PP_POP_WARNING
 	>
 	optional_int_ref;
 
-
-	BOOST_CHECK(
+	BOOST_CHECK_EQUAL(
 		fcppt::from_optional(
 			optional_int(),
 			[]
@@ -46,12 +45,11 @@ FCPPT_PP_POP_WARNING
 				return
 					42;
 			}
-		)
-		==
+		),
 		42
 	);
 
-	BOOST_CHECK(
+	BOOST_CHECK_EQUAL(
 		fcppt::from_optional(
 			optional_int(
 				100
@@ -61,8 +59,7 @@ FCPPT_PP_POP_WARNING
 				return
 					42;
 			}
-		)
-		==
+		),
 		100
 	);
 
@@ -88,9 +85,8 @@ FCPPT_PP_POP_WARNING
 		}
 	) = 100;
 
-	BOOST_CHECK(
-		x
-		==
+	BOOST_CHECK_EQUAL(
+		x,
 		100
 	);
 }

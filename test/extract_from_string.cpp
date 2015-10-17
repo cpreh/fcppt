@@ -9,6 +9,7 @@
 #include <fcppt/extract_from_string_exn.hpp>
 #include <fcppt/optional_comparison.hpp>
 #include <fcppt/optional_impl.hpp>
+#include <fcppt/optional_output.hpp>
 #include <fcppt/string.hpp>
 #include <fcppt/text.hpp>
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
@@ -42,9 +43,11 @@ BOOST_AUTO_TEST_CASE(
 {
 FCPPT_PP_POP_WARNING
 
-	typedef fcppt::optional<
+	typedef
+	fcppt::optional<
 		int
-	> opt_int;
+	>
+	opt_int;
 
 	opt_int const int_val(
 		fcppt::extract_from_string<
@@ -56,9 +59,8 @@ FCPPT_PP_POP_WARNING
 		)
 	);
 
-	BOOST_REQUIRE(
-		int_val
-		==
+	BOOST_CHECK_EQUAL(
+		int_val,
 		opt_int(
 			42
 		)

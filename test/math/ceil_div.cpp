@@ -23,36 +23,36 @@ BOOST_AUTO_TEST_CASE(
 {
 FCPPT_PP_POP_WARNING
 
-	BOOST_CHECK(
+	BOOST_CHECK_EQUAL(
 		fcppt::math::ceil_div(
 			0u,
 			1u
-		)
-		== 0u
+		),
+		0u
 	);
 
-	BOOST_CHECK(
+	BOOST_CHECK_EQUAL(
 		fcppt::math::ceil_div(
 			1u,
 			1u
-		)
-		== 1u
+		),
+		1u
 	);
 
-	BOOST_CHECK(
+	BOOST_CHECK_EQUAL(
 		fcppt::math::ceil_div(
 			5u,
 			3u
-		)
-		== 2u
+		),
+		2u
 	);
 
-	BOOST_CHECK(
+	BOOST_CHECK_EQUAL(
 		fcppt::math::ceil_div(
 			6u,
 			3u
-		)
-		== 2u
+		),
+		2u
 	);
 }
 
@@ -65,20 +65,19 @@ BOOST_AUTO_TEST_CASE(
 {
 FCPPT_PP_POP_WARNING
 
-	BOOST_CHECK(
+	BOOST_CHECK_EQUAL(
 		fcppt::math::ceil_div_signed(
 			-3,
 			2
-		)
-		==
+		),
 		-1
 	);
 
-	BOOST_CHECK(
+	BOOST_CHECK_EQUAL(
 		fcppt::math::ceil_div_signed(
 			5,
 			3
-		)
-		== 2
+		),
+		2
 	);
 }

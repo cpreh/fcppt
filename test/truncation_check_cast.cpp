@@ -99,33 +99,30 @@ FCPPT_PP_POP_WARNING
 		check_exception
 	);
 #endif
-	BOOST_CHECK(
+	BOOST_CHECK_EQUAL(
 		fcppt::cast::truncation_check<
 			unsigned
 		>(
 			10u
-		)
-		==
+		),
 		10u
 	);
 
-	BOOST_CHECK(
+	BOOST_CHECK_EQUAL(
 		fcppt::cast::truncation_check<
 			unsigned long
 		>(
 			42u
-		)
-		==
+		),
 		42ul
 	);
 
-	BOOST_CHECK(
+	BOOST_CHECK_EQUAL(
 		fcppt::cast::truncation_check<
 			long
 		>(
 			-1
-		)
-		==
+		),
 		-1l
 	);
 }

@@ -43,10 +43,22 @@ FCPPT_PP_POP_WARNING
 		tree2
 	);
 
+	BOOST_CHECK_EQUAL(
+		tree1.value(),
+		30
+	);
+
+	BOOST_CHECK_EQUAL(
+		tree2.value(),
+		10
+	);
+
 	BOOST_REQUIRE(
-		tree1.value() == 30
-		&& tree2.value() == 10
-		&& !tree2.empty()
-		&& tree2.front().value() == 20
+		!tree2.empty()
+	);
+
+	BOOST_CHECK_EQUAL(
+		tree2.front().value(),
+		20
 	);
 }

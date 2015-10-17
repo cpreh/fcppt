@@ -45,7 +45,7 @@ test(
 	enum_vector values;
 
 	for(
-		test_enum value
+		test_enum const value
 		:
 		_range
 	)

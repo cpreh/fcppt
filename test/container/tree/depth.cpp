@@ -48,6 +48,8 @@ FCPPT_PP_POP_WARNING
 
 	BOOST_CHECK_EQUAL(
 		fcppt::container::tree::depth(
-			tree),
-		3u);
+			tree
+		),
+		3u
+	);
 }

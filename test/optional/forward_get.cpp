@@ -20,6 +20,7 @@
 
 namespace
 {
+
 typedef
 fcppt::unique_ptr<
 	int

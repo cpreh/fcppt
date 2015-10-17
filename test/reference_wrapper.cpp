@@ -47,9 +47,8 @@ FCPPT_PP_POP_WARNING
 		x
 	);
 
-	BOOST_CHECK(
-		&ref.get()
-		==
+	BOOST_CHECK_EQUAL(
+		&ref.get(),
 		&x
 	);
 
@@ -57,25 +56,22 @@ FCPPT_PP_POP_WARNING
 		x
 	);
 
-	BOOST_CHECK(
-		&cref.get()
-		==
+	BOOST_CHECK_EQUAL(
+		&cref.get(),
 		&x
 	);
 
-	BOOST_CHECK(
+	BOOST_CHECK_EQUAL(
 		&fcppt::make_ref(
 			x
-		).get()
-		==
+		).get(),
 		&x
 	);
 
-	BOOST_CHECK(
+	BOOST_CHECK_EQUAL(
 		&fcppt::make_cref(
 			x
-		).get()
-		==
+		).get(),
 		&x
 	);
 
@@ -83,17 +79,15 @@ FCPPT_PP_POP_WARNING
 		ref
 	);
 
-	BOOST_CHECK(
-		&other_ref.get()
-		==
+	BOOST_CHECK_EQUAL(
+		&other_ref.get(),
 		&ref.get()
 	);
 
 	ref = other_ref;
 
-	BOOST_CHECK(
-		&other_ref.get()
-		==
+	BOOST_CHECK_EQUAL(
+		&other_ref.get(),
 		&ref.get()
 	);
 }
@@ -141,9 +135,8 @@ FCPPT_PP_POP_WARNING
 			set.end()
 		);
 
-		BOOST_CHECK(
-			&it->get()
-			==
+		BOOST_CHECK_EQUAL(
+			&it->get(),
 			&x
 		);
 	}
@@ -181,9 +174,8 @@ FCPPT_PP_POP_WARNING
 			const_set.end()
 		);
 
-		BOOST_CHECK(
-			&it->get()
-			==
+		BOOST_CHECK_EQUAL(
+			&it->get(),
 			&y
 		);
 	}

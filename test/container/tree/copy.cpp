@@ -42,35 +42,41 @@ FCPPT_PP_POP_WARNING
 		head
 	);
 
-	BOOST_REQUIRE(
-		head2.value() == 10
+	BOOST_CHECK_EQUAL(
+		head2.value(),
+		10
 	);
 
-	BOOST_REQUIRE(
-		head2.children().size() == 2u
+	BOOST_REQUIRE_EQUAL(
+		head2.children().size(),
+		2u
 	);
 
-	BOOST_REQUIRE(
-		head2.front().value() == 20
+	BOOST_CHECK_EQUAL(
+		head2.front().value(),
+		20
 	);
 
-	BOOST_REQUIRE(
-		head2.back().value() == 30
+	BOOST_CHECK_EQUAL(
+		head2.back().value(),
+		30
 	);
 
 	BOOST_REQUIRE(
 		head2.front().has_parent()
-		&&
-		&head2.front().parent().get_unsafe()
-		==
+	);
+
+	BOOST_CHECK_EQUAL(
+		&head2.front().parent().get_unsafe(),
 		&head2
 	);
 
 	BOOST_REQUIRE(
 		head2.back().has_parent()
-		&&
-		&head2.back().parent().get_unsafe()
-		==
+	);
+
+	BOOST_CHECK_EQUAL(
+		&head2.back().parent().get_unsafe(),
 		&head2
 	);
 }

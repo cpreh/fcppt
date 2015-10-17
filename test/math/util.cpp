@@ -5,7 +5,6 @@
 
 
 #include <fcppt/math/diff.hpp>
-#include <fcppt/math/is_power_of_2.hpp>
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
@@ -13,52 +12,29 @@
 #include <boost/test/unit_test.hpp>
 #include <fcppt/config/external_end.hpp>
 
+
 FCPPT_PP_PUSH_WARNING
 FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
 
-BOOST_AUTO_TEST_CASE(math_diff)
+BOOST_AUTO_TEST_CASE(
+	math_diff
+)
 {
 FCPPT_PP_POP_WARNING
 
-	BOOST_CHECK(
+	BOOST_CHECK_EQUAL(
 		fcppt::math::diff(
 			10u,
 			20u
-		)
-		== 10u
+		),
+		10u
 	);
 
-	BOOST_CHECK(
+	BOOST_CHECK_EQUAL(
 		fcppt::math::diff(
 			-1,
 			1
-		)
-		== 2
-	);
-}
-
-FCPPT_PP_PUSH_WARNING
-FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
-
-BOOST_AUTO_TEST_CASE(math_is_power_of_2)
-{
-FCPPT_PP_POP_WARNING
-
-	BOOST_CHECK(
-		fcppt::math::is_power_of_2(
-			1024u
-		)
-	);
-
-	BOOST_CHECK(
-		!fcppt::math::is_power_of_2(
-			0u
-		)
-	);
-
-	BOOST_CHECK(
-		!fcppt::math::is_power_of_2(
-			3u
-		)
+		),
+		2
 	);
 }

@@ -648,6 +648,7 @@ add_fcppt_test(
 
 add_fcppt_test(
 	math/matrix/is_matrix
+	NO_CODE
 )
 
 add_fcppt_test(
@@ -873,6 +874,11 @@ add_fcppt_test(
 )
 
 add_fcppt_test(
+	optional/types
+	NO_CODE
+)
+
+add_fcppt_test(
 	random/wrapper/uniform_container
 	LINK_LIBS
 		"${fcppt_core_TARGET}"
@@ -918,14 +924,32 @@ add_fcppt_test(
 
 add_fcppt_test(
 	type_traits/function_pointer_to_reference
+	NO_CODE
+)
+
+add_fcppt_test(
+	type_traits/generate_has_member_function
+	NO_CODE
+)
+
+add_fcppt_test(
+	type_traits/generate_has_type
+	NO_CODE
+)
+
+add_fcppt_test(
+	type_traits/is_iterable
+	NO_CODE
 )
 
 add_fcppt_test(
 	type_traits/is_iterator
+	NO_CODE
 )
 
 add_fcppt_test(
-	type_traits/members
+	type_traits/iterator_category
+	NO_CODE
 )
 
 add_fcppt_test(

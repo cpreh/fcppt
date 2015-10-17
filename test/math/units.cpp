@@ -23,7 +23,7 @@ FCPPT_PP_PUSH_WARNING
 FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
 
 BOOST_AUTO_TEST_CASE(
-	units
+	math_units
 )
 {
 FCPPT_PP_POP_WARNING
@@ -59,8 +59,7 @@ FCPPT_PP_POP_WARNING
 		2
 	> velocity2;
 
-
-	length2 l1(
+	length2 const l1(
 		length(
 			-100
 			*
@@ -73,7 +72,7 @@ FCPPT_PP_POP_WARNING
 		)
 	);
 
-	time2 t1(
+	time2 const t1(
 		time(
 			4
 			*
@@ -86,15 +85,19 @@ FCPPT_PP_POP_WARNING
 		)
 	);
 
-	velocity2 v1(
+	velocity2 const v1(
 		l1
 		/
 		t1
 	);
 
-	BOOST_CHECK(
-		v1.x().value() == -25
-		&&
-		v1.y().value() == 100
+	BOOST_CHECK_EQUAL(
+		v1.x().value(),
+		-25
+	);
+
+	BOOST_CHECK_EQUAL(
+		v1.y().value(),
+		100
 	);
 }

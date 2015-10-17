@@ -61,29 +61,26 @@ FCPPT_PP_POP_WARNING
 		map.end()
 	);
 
-	BOOST_CHECK(
-		&inserted
-		==
+	BOOST_CHECK_EQUAL(
+		&inserted,
 		&map.find(
 			42
 		)->second
 	);
 
-	BOOST_CHECK(
+	BOOST_CHECK_EQUAL(
 		map.find(
 			42
-		)->second
-		==
+		)->second,
 		"42"
 	);
 
-	BOOST_CHECK(
+	BOOST_CHECK_EQUAL(
 		fcppt::container::get_or_insert(
 			map,
 			42,
 			inserter
-		)
-		==
+		),
 		map.find(
 			42
 		)->second

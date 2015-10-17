@@ -43,7 +43,7 @@ FCPPT_PP_POP_WARNING
 		100
 	);
 
-	BOOST_REQUIRE(
+	BOOST_CHECK(
 		tree1 == tree2
 	);
 
@@ -51,7 +51,7 @@ FCPPT_PP_POP_WARNING
 		200
 	);
 
-	BOOST_REQUIRE(
+	BOOST_CHECK(
 		tree1 != tree2
 	);
 }
