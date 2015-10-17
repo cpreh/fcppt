@@ -49,14 +49,39 @@ FCPPT_PP_POP_WARNING
 		)
 	);
 
-	BOOST_REQUIRE(
-		result.size() == 6u
-		&& result[0] == 1
-		&& result[1] == 2
-		&& result[2] == 3
-		&& result[3] == 4
-		&& result[4] == 5
-		&& result[5] == 6
+	BOOST_REQUIRE_EQUAL(
+		result.size(),
+		6u
+	);
+
+	BOOST_CHECK_EQUAL(
+		result[0],
+		1
+	);
+
+	BOOST_CHECK_EQUAL(
+		result[1],
+		2
+	);
+
+	BOOST_CHECK_EQUAL(
+		result[2],
+		3
+	);
+
+	BOOST_CHECK_EQUAL(
+		result[3],
+		4
+	);
+
+	BOOST_CHECK_EQUAL(
+		result[4],
+		5
+	);
+
+	BOOST_CHECK_EQUAL(
+		result[5],
+		6
 	);
 }
 
@@ -131,13 +156,38 @@ FCPPT_PP_POP_WARNING
 		)
 	);
 
-	BOOST_REQUIRE(
-		result.size() == 6u
-		&& *result[0] == 1
-		&& *result[1] == 2
-		&& *result[2] == 3
-		&& *result[3] == 4
-		&& *result[4] == 5
-		&& *result[5] == 6
+	BOOST_REQUIRE_EQUAL(
+		result.size(),
+		6u
+	);
+
+	BOOST_CHECK_EQUAL(
+		*result[0],
+		1
+	);
+
+	BOOST_CHECK_EQUAL(
+		*result[1],
+		2
+	);
+
+	BOOST_CHECK_EQUAL(
+		*result[2],
+		3
+	);
+
+	BOOST_CHECK_EQUAL(
+		*result[3],
+		4
+	);
+
+	BOOST_CHECK_EQUAL(
+		*result[4],
+		5
+	);
+
+	BOOST_CHECK_EQUAL(
+		*result[5],
+		6
 	);
 }

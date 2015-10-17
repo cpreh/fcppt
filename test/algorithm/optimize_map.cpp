@@ -32,7 +32,6 @@ std::vector<
 >
 int_vector;
 
-
 template<
 	typename Source
 >

@@ -23,15 +23,14 @@ BOOST_AUTO_TEST_CASE(
 {
 FCPPT_PP_POP_WARNING
 
-	BOOST_CHECK(
+	BOOST_CHECK_EQUAL(
 		fcppt::cast::promote(
 			'c'
-		)
-		==
+		),
 		'c'
 	);
 
-	BOOST_CHECK((
+	static_assert(
 		std::is_same<
 			decltype(
 				fcppt::cast::promote(
@@ -41,6 +40,7 @@ FCPPT_PP_POP_WARNING
 			decltype(
 				+'c'
 			)
-		>::value
-	));
+		>::value,
+		""
+	);
 }

@@ -43,13 +43,12 @@ FCPPT_PP_POP_WARNING
 	>
 	optional_int_unique_ptr;
 
-	BOOST_CHECK(
+	BOOST_CHECK_EQUAL(
 		FCPPT_ASSERT_OPTIONAL_ERROR(
 			optional_int(
 				42
 			)
-		)
-		==
+		),
 		42
 	);
 

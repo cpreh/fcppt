@@ -90,9 +90,13 @@ FCPPT_PP_POP_WARNING
 		)
 	);
 
-	BOOST_CHECK(
-		inited[0].value() == 0
-		&&
-		inited[1].value() == 1
+	BOOST_CHECK_EQUAL(
+		inited[0].value(),
+		0
+	);
+
+	BOOST_CHECK_EQUAL(
+		inited[1].value(),
+		1
 	);
 }

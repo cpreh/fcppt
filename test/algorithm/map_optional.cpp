@@ -25,6 +25,7 @@ BOOST_AUTO_TEST_CASE(
 )
 {
 FCPPT_PP_POP_WARNING
+
 	typedef
 	std::vector<
 		int
@@ -81,15 +82,13 @@ FCPPT_PP_POP_WARNING
 		)
 	);
 
-	BOOST_REQUIRE(
-		result.size()
-		==
+	BOOST_REQUIRE_EQUAL(
+		result.size(),
 		1u
 	);
 
-	BOOST_CHECK(
-		*result[0]
-		==
+	BOOST_CHECK_EQUAL(
+		*result[0],
 		1
 	);
 }

@@ -15,49 +15,6 @@
 #include <fcppt/config/external_end.hpp>
 
 
-namespace
-{
-
-enum class my_enum
-{
-	test1,
-	test2,
-	test3,
-	fcppt_maximum = test3
-};
-
-typedef
-fcppt::container::enum_array<
-	my_enum,
-	int
->
-my_array;
-
-struct fold_function
-{
-	typedef
-	int
-	result_type;
-
-	template<
-		typename Enum
-	>
-	result_type
-	operator()(
-		Enum
-	) const
-	{
-		return
-			fcppt::cast::enum_to_int<
-				result_type
-			>(
-				Enum::value
-			);
-	}
-};
-
-}
-
 FCPPT_PP_PUSH_WARNING
 FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
 
@@ -67,25 +24,50 @@ BOOST_AUTO_TEST_CASE(
 {
 FCPPT_PP_POP_WARNING
 
+	enum class my_enum
+	{
+		test1,
+		test2,
+		test3,
+		fcppt_maximum = test3
+	};
+
+	typedef
+	fcppt::container::enum_array<
+		my_enum,
+		int
+	>
+	my_array;
+
 	my_array const array(
 		fcppt::algorithm::enum_array_fold_static<
 			my_array
 		>(
-			fold_function{}
+			[](
+				auto const _enum
+			)
+			{
+				return
+					fcppt::cast::enum_to_int<
+						int
+					>(
+						_enum()
+					);
+			}
 		)
 	);
 
-	BOOST_CHECK(
+	BOOST_CHECK_EQUAL(
 		array[
 			my_enum::test1
-		]
-		== 0
+		],
+		0
 	);
 
-	BOOST_CHECK(
+	BOOST_CHECK_EQUAL(
 		array[
 			my_enum::test3
-		]
-		== 2
+		],
+		2
 	);
 }

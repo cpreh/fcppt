@@ -48,19 +48,23 @@ FCPPT_PP_POP_WARNING
 		)
 	);
 
-	BOOST_CHECK(
-		result[0] == 1
+	BOOST_CHECK_EQUAL(
+		result[0],
+		1
 	);
 
-	BOOST_CHECK(
-		result[1] == 2
+	BOOST_CHECK_EQUAL(
+		result[1],
+		2
 	);
 
-	BOOST_CHECK(
-		result[2] == 3
+	BOOST_CHECK_EQUAL(
+		result[2],
+		3
 	);
 
-	BOOST_CHECK(
-		result[3] == 4
+	BOOST_CHECK_EQUAL(
+		result[3],
+		4
 	);
 }

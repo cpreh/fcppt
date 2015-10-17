@@ -13,6 +13,7 @@
 #include <vector>
 #include <fcppt/config/external_end.hpp>
 
+
 FCPPT_PP_PUSH_WARNING
 FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
 
@@ -22,15 +23,17 @@ BOOST_AUTO_TEST_CASE(
 {
 FCPPT_PP_POP_WARNING
 
-	typedef std::vector<
+	typedef
+	std::vector<
 		int
-	> int_vector;
+	>
+	int_vector;
 
-	int_vector vec;
-
-	vec.push_back(1);
-	vec.push_back(2);
-	vec.push_back(3);
+	int_vector vec{
+		1,
+		2,
+		3
+	};
 
 	BOOST_REQUIRE(
 		fcppt::algorithm::remove(
@@ -39,9 +42,18 @@ FCPPT_PP_POP_WARNING
 		)
 	);
 
-	BOOST_REQUIRE(
-		vec.size() == 2u
-		&& vec[0] == 1
-		&& vec[1] == 3
+	BOOST_REQUIRE_EQUAL(
+		vec.size(),
+		2u
+	);
+
+	BOOST_CHECK_EQUAL(
+		vec[0],
+		1
+	);
+
+	BOOST_CHECK_EQUAL(
+		vec[1],
+		3
 	);
 }

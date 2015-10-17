@@ -68,9 +68,8 @@ FCPPT_PP_POP_WARNING
 		)
 	);
 
-	BOOST_CHECK(
-		sum
-		==
+	BOOST_CHECK_EQUAL(
+		sum,
 		10
 	);
 }
