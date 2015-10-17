@@ -49,7 +49,7 @@ yield code that is consistent and therefore easier to understand.
 
 Indentation is a very controversal topic. Everyone has their own opinions on it
 and these are also subject to change over time. Fcppt uses a somewhat excessive
-indentation style whose purpose is not to be <em>identifier-dependant</em> and
+indentation style whose purpose is not to be <em>identifier-dependent</em> and
 <em>tab-consistent</em>. The former means that changing identifiers should not
 lead to reindentation. Consider a rule that enforces lines that are no longer
 than, say, 80 characters. If you change a single identifier, it could lead to
@@ -181,7 +181,7 @@ making variables const all tie together in this respect.
 \subsection coding_typing Typing
 
 A (mostly) statically typed language like C++ has the advantage to forbid
-programs to even run that are not well typed. Making the most out of the type
+programs to even run if they are not well typed. Making the most out of the type
 system can catch a lot of mistakes at compile-time. We can use types to
 <ul>
 <li>Express ownership: Choose between <code>fcppt::unique_ptr<T></code>, <code>
@@ -224,7 +224,7 @@ Loops are inherently imperative: On the one hand a loop uses and updates one or
 more loop conditions and one or more variables that are the loop's result.
 This is usually better expressed as a function: Instead of a loop condition, we
 can usually use ranges. The simplest form a range is a container, but other
-ranges like \link fcppt::int_range\endlink are also common. Unlinke iterators,
+ranges like \link fcppt::int_range\endlink are also common. Unlike iterators,
 ranges have the great advantage of being composable, for example two ranges can
 be joined (taking their product) or appended. How the loop's result is formed
 out of a range can then be expressed by another function. The most basic form
