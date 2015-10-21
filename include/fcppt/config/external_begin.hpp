@@ -86,6 +86,7 @@ FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
 FCPPT_PP_DISABLE_GCC_WARNING(-Wnon-virtual-dtor)
 FCPPT_PP_DISABLE_GCC_WARNING(-Wold-style-cast)
 FCPPT_PP_DISABLE_GCC_WARNING(-Woverloaded-virtual)
+FCPPT_PP_DISABLE_GCC_WARNING(-Wsign-promo)
 
 #endif
 
