@@ -60,8 +60,9 @@ fcppt::make_enum_range_start and fcppt::make_enum_range_start_end.
 \section fcpptenum_array Array indexed with an enum
 
 A contiguous enum is also a finite range, making it suitable as an index for a
-std::array. fcppt::container::enum_array is a class that wraps std::array,
-replacing all indices by Enums, for example:
+<code>std::array</code>. \link fcppt::container::enum_array\endlink is a class
+that wraps <code>std::array</code>, replacing all indices by Enums, for
+example:
 
 \snippet enum.cpp enum_array
 

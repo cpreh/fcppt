@@ -23,54 +23,6 @@ fcppt::container::enum_array<
 fcppt::container::enum_array<
 	Enum,
 	Value
->::at(
-	Enum const _index
-)
-{
-	return
-		impl_.at(
-			this->to_index(
-				_index
-			)
-		);
-}
-
-template<
-	typename Enum,
-	typename Value
->
-typename
-fcppt::container::enum_array<
-	Enum,
-	Value
->::const_reference
-fcppt::container::enum_array<
-	Enum,
-	Value
->::at(
-	Enum const _index
-) const
-{
-	return
-		impl_.at(
-			this->to_index(
-				_index
-			)
-		);
-}
-
-template<
-	typename Enum,
-	typename Value
->
-typename
-fcppt::container::enum_array<
-	Enum,
-	Value
->::reference
-fcppt::container::enum_array<
-	Enum,
-	Value
 >::operator[](
 	Enum const _index
 )
@@ -435,20 +387,7 @@ template<
 	typename Enum,
 	typename Value
 >
-bool
-fcppt::container::enum_array<
-	Enum,
-	Value
->::empty() const
-{
-	return
-		impl_.empty();
-}
-
-template<
-	typename Enum,
-	typename Value
->
+constexpr
 typename
 fcppt::container::enum_array<
 	Enum,
@@ -461,24 +400,6 @@ fcppt::container::enum_array<
 {
 	return
 		impl_.size();
-}
-
-template<
-	typename Enum,
-	typename Value
->
-typename
-fcppt::container::enum_array<
-	Enum,
-	Value
->::size_type
-fcppt::container::enum_array<
-	Enum,
-	Value
->::max_size() const
-{
-	return
-		impl_.max_size();
 }
 
 template<

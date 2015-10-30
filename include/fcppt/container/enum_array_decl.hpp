@@ -29,9 +29,9 @@ FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
 \brief An array indexed with an enum
 \ingroup fcpptenum
 
-This class is like std::array, except that <code>operator[]</code> and
-<code>at</code> take parameters of type \a Enum. This class is meant to be used
-with contiguous enums.
+This class is like <code>std::array</code>, except that <code>operator[]</code>
+takes a parameter of type \a Enum. This class is meant to be used with
+contiguous enums.
 
 \tparam Enum The enum type to use as an index which also determines the array's size
 
@@ -117,16 +117,6 @@ public:
 	const_reverse_iterator;
 
 	reference
-	at(
-		Enum
-	);
-
-	const_reference
-	at(
-		Enum
-	) const;
-
-	reference
 	operator[](
 		Enum
 	);
@@ -190,14 +180,9 @@ public:
 	const_reverse_iterator
 	rend() const;
 
-	bool
-	empty() const;
-
+	constexpr
 	size_type
 	size() const;
-
-	size_type
-	max_size() const;
 
 	void
 	fill(

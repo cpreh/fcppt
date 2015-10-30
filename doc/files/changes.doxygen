@@ -288,6 +288,13 @@
 	</ul>
 </li>
 
+<li>\ref fcpptenum
+	<ul>
+	<li>Removed <code>%at()</code> and <code>empty()</code> from \link
+	fcppt::container::enum_array\endlink.</li>
+	</ul>
+</li>
+
 <li>\ref fcpptmath
 	<ul>
 	<li>Removed default constructors.</li>
