@@ -44,7 +44,7 @@ tries to give a rationale for every one of them.
 Besides asthetic aspects, semantic aspects describe \em how semantics are
 expressed. The most important goal is to avoid mistakes, or more precisely, how
 choosing types and expressions carefully can narrow down the set of mistakes
-one can make. Improved typing, total functions, ranges, avoiding raw loops and
+one can make. Typing, total functions, ranges, avoiding raw loops and
 making variables const all tie together in this respect.
 
 \subsection coding_typing Typing
@@ -54,7 +54,7 @@ programs to even run if they are not well typed. Making the most out of the type
 system can catch a lot of mistakes at compile-time. We can use types to
 <ul>
 <li>Express ownership: Choose between <code>fcppt::unique_ptr<T></code>, <code>
-fcppt::shared_ptr<T></code>, <code>fcppt::reference_wrapper<T (const)></code>,
+fcppt::shared_ptr<T></code>, <code>fcppt::reference_wrapper<T></code>,
 <code>T &&</code> and <code>T</code>.
 <ul>
 <li>\link fcppt::unique_ptr\endlink expresses unique ownership and should be
@@ -64,9 +64,8 @@ the default class to use for non-copyable objects.</li>
 to make their use more explicit.</li>
 </ul>
 <li>Express optional values: Can a function take or, more importantly, return
-no value? Use <code>fcppt::optional<T></code> in this case. Instead of <code>T
-(const) *</code>, use <code>fcppt::optional<T (const) &></code>. See \ref
-fcpptoptional.</li>
+no value? Use <code>fcppt::optional<T></code> in this case. Instead of <code>T *</code>,
+use <code>%fcppt::optional<T &></code>. See \ref fcpptoptional.</li>
 <li>Express values that can be of either type: Use
 <code>%fcppt::variant::variadic<T1,T2></code> to express that
 a value can either be of type <code>T1</code> or of type <code>T2</code>.
@@ -84,13 +83,14 @@ undefined for some. This includes everything that is not expressed by the type
 system: undefined behavior, aborting the program or even throwing an exception.
 An example of a partial function is dereferencing a pointer. The pointer might
 be a null pointer, it might be uninitialized or it might point to 'one past the
-end'. Calling partial functions is error-prone because the programmer always
-has to remember each case where the function might not return. Consequently,
+end'. Calling partial functions is error-prone because the programmer has to
+remember which parameters make the function terminate abnormally. Consequently,
 partial functions are best avoided but cannot always be:
 <ul>
-<li>Prefer to use \ref fcpptoptional as a return type in case a
-function may not return anything, for example \link
-fcppt::container::maybe_back\endlink. This usually makes a function total.</li>
+<li>Prefer to use \ref fcpptoptional as a return type in case a function may
+not return anything. See \link fcppt::container::maybe_back\endlink for an
+example, which returns an empty optional in case a container is empty. This
+usually makes a function total.</li>
 <li>Throw exceptions in case resource allocation fails.</li>
 <li>Only abort the program or leave a case as undefined behavior as a last
 resort.</li>
@@ -100,22 +100,34 @@ functions.
 
 \subsection coding_loops Loops
 
-Loops are inherently imperative: On the one hand a loop uses and updates one or
-more loop conditions. On the other hand it updates one or more variables that
-are the loop's result. This is usually better expressed as a function: Instead
-of a loop condition, we can usually use ranges. The simplest form of a range is
-a container, but other ranges like \link fcppt::int_range\endlink or \link
-fcppt::enum_range\endlink are also common. Unlike iterators, ranges have the
-great advantage of being composable, for example two ranges can be joined
-(taking their product) or appended, which is implemented by the
-<a href="http://www.boost.org/doc/libs/1_59_0/libs/range/doc/html/index.html">Boost.Range</a>
-library.
+Loops can be broken down into two separate concerns: Updating the loop
+condition and updating the loop's result. For example, a loop that sums integers
+from <code>1</code> to <code>n-1</code> can be written as:
+\code
+int result{0};
+for(int i{1}; i < n; ++i) result += i;
+\endcode
+Here, updating the loop condition is done by incrementing <code>i</code> and
+updating the result by <code>result += i</code>. Instead of the loop condition
+we can use \link fcppt::int_range\endlink. Updating the loop's result can be
+decoupled from the loop itself using an algorithm, in this case \link
+fcppt::algorithm::fold\endlink.
+\code
+fcppt::algorithm::fold(
+	fcppt::make_int_range(1,n),
+	0,
+	[](int i, int result) { return i + result; }
+)
+\endcode
 
-How the loop's result is formed out of a range can then be expressed by another
-function. The most basic form of this is \link fcppt::algorithm::fold\endlink.
+Unlike iterators, ranges have the great advantage of being composable, for
+example two ranges can be joined (taking their product) or appended, which is
+implemented by the <a
+href="http://www.boost.org/doc/libs/1_59_0/libs/range/doc/html/index.html">Boost.Range</a>
+library.
+For a collection of algorithms that replace loops, see \ref fcpptalgorithm.
 Because imperative loops, especially ones using iterators, are so error-prone,
-raw loops are best avoided. See \ref fcpptalgorithm for a collection of
-functions that work on ranges.
+raw loops are best avoided
 
 \subsection coding_const_init Const and initialization
 
