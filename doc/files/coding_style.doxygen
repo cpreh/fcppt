@@ -125,23 +125,38 @@ example two ranges can be joined (taking their product) or appended, which is
 implemented by the <a
 href="http://www.boost.org/doc/libs/1_59_0/libs/range/doc/html/index.html">Boost.Range</a>
 library.
-For a collection of algorithms that replace loops, see \ref fcpptalgorithm.
+For a collection of algorithms that replace loops see \ref fcpptalgorithm.
 Because imperative loops, especially ones using iterators, are so error-prone,
 raw loops are best avoided
 
 \subsection coding_const_init Const and initialization
 
-Making an object <code>const</code> makes it immutable and therefore possible
-to reason about values. Obviously, a const object has to be initialized
-directly. Initialization can sometimes be hard to express, for example an array
-of arbitrary size, which is handled by \link
-fcppt::algorithm::array_fold_static\endlink, or a container, which is handled
-by \link fcppt::algorithm::map\endlink.
+Declaring an object <code>const</code> makes it immutable and therefore easier
+to reason about. Obviously, a const object has to be initialized directly which
+can sometimes be hard to express. Consider an array of arbitrary size in a template:
+\code
+template<typename T, std::size_t N>
+std::array<T,N> make_array() { ... }
+\endcode
+This case is handled by \link fcppt::algorithm::array_fold_static\endlink, for example:
+\code
+return fcppt::algorithm::array_fold_static<std::array<T,N>>(
+	[](std::size_t i) { return from_int<T>(i);
+}
+\endcode
+Another common case is container initialization which usually consists of a
+series of <code>push_back</code> or <code>insert</code> operations. This is
+handled by \link fcppt::algorithm::map\endlink.
 
-Initialization also brings up the point of default constructors. A default
-constructor is like pulling a value out of thin air and most of the time has
-undesired effects like creating a null pointer or a null function. This is also
-the reason why \link fcppt::unique_ptr\endlink and \link
-fcppt::function\endlink exist. Default constructors are error-prone and best
-avoided.
+Initialization also brings up the point of default constructors. Calling a
+default constructor is like pulling a value out of thin air, for example
+<code>int i{};</code>. Even worse, providing default constructors can lead to
+more complicated classes that might also have to distinguish the
+default-constructed case from others. For example, <code>%std::function</code>
+initializes to an empty function that throws an exception when called. Another
+example is <code>%boost::variant</code> that default constructs an object of
+the first type. Default constructors can also have undesired effects like
+constructing a null <code>std::unique_ptr</code> or an uninitialized regular
+pointer. \link fcppt::unique_ptr\endlink,  \link fcppt::function\endlink and
+\link fcppt::variant::object\endlink do not provide default constructors.
 */
