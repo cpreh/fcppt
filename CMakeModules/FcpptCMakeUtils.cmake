@@ -294,29 +294,10 @@ if(
 		FCPPT_UTILS_HAVE_GCC_VISIBILITY
 	)
 
-	CHECK_CXX_COMPILER_FLAG(
-		"-std=c++14"
-		FCPPT_UTILS_HAVE_CPP_14
-	)
-
-	if(
-		FCPPT_UTILS_HAVE_CPP_14
-	)
-		set(
-			FCPPT_UTILS_STD_FLAG
-			"-std=c++14"
-		)
-	else()
-		set(
-			FCPPT_UTILS_STD_FLAG
-			"-std=c++1y"
-		)
-	endif()
-
 	list(
 		APPEND
 		FCPPT_UTILS_COMPILE_OPTIONS
-		${FCPPT_UTILS_STD_FLAG}
+		"-std=c++14"
 		"-pedantic-errors"
 		"-Wall"
 		"-Wextra"
