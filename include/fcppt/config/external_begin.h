@@ -17,6 +17,7 @@ FCPPT_PP_PUSH_WARNING
 
 #if defined(FCPPT_CONFIG_GCC_COMPILER)
 
+#include <fcppt/config/gcc_version_at_least.h>
 #include <fcppt/preprocessor/disable_gcc_warning.h>
 
 #if defined(FCPPT_CONFIG_CLANG_COMPILER)
@@ -36,9 +37,7 @@ FCPPT_PP_DISABLE_GCC_WARNING(-Wlogical-op)
 FCPPT_PP_DISABLE_GCC_WARNING(-Wmaybe-uninitialized)
 FCPPT_PP_DISABLE_GCC_WARNING(-Wunused-local-typedefs)
 
-#include <fcppt/config/gcc_version_at_least.h>
-
-#if FCPPT_CONFIG_GCC_VERSION_AT_LEAST(4, 9)
+#if !FCPPT_CONFIG_GCC_VERSION_AT_LEAST(6, 0)
 FCPPT_PP_DISABLE_GCC_WARNING(-Wfloat-conversion)
 #endif
 
@@ -57,16 +56,19 @@ FCPPT_PP_DISABLE_GCC_WARNING(-Wmissing-field-initializers)
 FCPPT_PP_DISABLE_GCC_WARNING(-Wredundant-decls)
 FCPPT_PP_DISABLE_GCC_WARNING(-Wshadow)
 FCPPT_PP_DISABLE_GCC_WARNING(-Wsign-compare)
-FCPPT_PP_DISABLE_GCC_WARNING(-Wsign-conversion)
 FCPPT_PP_DISABLE_GCC_WARNING(-Wstrict-aliasing)
 FCPPT_PP_DISABLE_GCC_WARNING(-Wtype-limits)
 FCPPT_PP_DISABLE_GCC_WARNING(-Wundef)
 FCPPT_PP_DISABLE_GCC_WARNING(-Wuninitialized)
 FCPPT_PP_DISABLE_GCC_WARNING(-Wunknown-pragmas)
-FCPPT_PP_DISABLE_GCC_WARNING(-Wunreachable-code)
 FCPPT_PP_DISABLE_GCC_WARNING(-Wunused-function)
 FCPPT_PP_DISABLE_GCC_WARNING(-Wunused-parameter)
 FCPPT_PP_DISABLE_GCC_WARNING(-Wunused-variable)
+
+#if !FCPPT_CONFIG_GCC_VERSION_AT_LEAST(6, 0)
+FCPPT_PP_DISABLE_GCC_WARNING(-Wsign-conversion)
+FCPPT_PP_DISABLE_GCC_WARNING(-Wunreachable-code)
+#endif
 
 #endif
 
