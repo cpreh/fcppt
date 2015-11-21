@@ -148,15 +148,24 @@ Another common case is container initialization which usually consists of a
 series of <code>push_back</code> or <code>insert</code> operations. This is
 handled by \link fcppt::algorithm::map\endlink.
 
-Initialization also brings up the point of default constructors. Calling a
-default constructor is like pulling a value out of thin air, for example
-<code>int i{};</code>. Even worse, providing default constructors can lead to
-more complicated classes that might also have to distinguish the
-default-constructed case from others. For example, <code>%std::function</code>
-initializes to an empty function that throws an exception when called. Another
-example is <code>%boost::variant</code> that default constructs an object of
-the first type. Default constructors can also have undesired effects like
-constructing a null <code>std::unique_ptr</code> or an uninitialized regular
-pointer. \link fcppt::unique_ptr\endlink,  \link fcppt::function\endlink and
-\link fcppt::variant::object\endlink do not provide default constructors.
+Initialization also brings up the point of default constructors, which for
+historical reasons all fundamental types have. Instead of <code>int
+i{0};</code> the default constructor <code>int i{};</code> can be used. This is
+like pulling a value out of thin air and makes code less readable.
+
+Default constructors become worse when classes are more complex.
+<ul>
+<li>They can make the representation of a class more complicated, for example
+<code>%std::function</code> initializes to an empty function that throws an
+exception when called. Another example are singular iterators that have to
+distinguish between pointing to a sequence and pointing to nothing.</li>
+<li>They can lead to very obscure behavior to get a default-constructed value,
+for example <code>%boost::variant</code> default constructs an object of its
+first type.</li>
+<li>They can have undesired effects like constructing a null
+<code>std::unique_ptr</code>.</li>
+</ul>
+Alternatives to the classes mentioned above are \link
+fcppt::unique_ptr\endlink, \link fcppt::function\endlink and \link
+fcppt::variant::object\endlink, which do not provide default constructors.
 */
