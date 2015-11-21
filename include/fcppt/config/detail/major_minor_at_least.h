@@ -14,9 +14,11 @@
 	minor_ref,\
 	minor\
 ) \
+(\
 (major) > (major_ref) \
 || \
-((major) == (major_ref) && (minor) >= (minor_ref))
+((major) == (major_ref) && (minor) >= (minor_ref))\
+)
 
 
 #endif
