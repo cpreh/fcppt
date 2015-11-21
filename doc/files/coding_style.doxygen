@@ -31,8 +31,8 @@
 The notion of coding style used in the following section roughly consists of
 two different aspects:
 <ul>
-<li>Asthetic aspects, including how code is indented, partitioned into
-files, identifiers are named, and so on.</li>
+<li>\link coding_asthetic Asthetic aspects\endlink, including how code is
+indented, partitioned into files, identifiers are named, and so on.</li>
 <li>How semantics are expressed, including typing, usage of language constructs
 like loops, <code>const</code>, ownership, and so on.</li>
 </ul>
@@ -55,16 +55,25 @@ system can catch a lot of mistakes at compile-time. We can use types to
 <ul>
 <li>Express ownership: Choose between <code>fcppt::unique_ptr<T></code>, <code>
 fcppt::shared_ptr<T></code>, <code>fcppt::reference_wrapper<T (const)></code>,
-<code>T &&</code> and <code>T</code>.</li>
+<code>T &&</code> and <code>T</code>.
+<ul>
+<li>\link fcppt::unique_ptr\endlink expresses unique ownership and should be
+the default class to use for non-copyable objects.</li>
+<li>\link fcppt::shared_ptr\endlink expresses shared ownership.</li>
+<li>\link fcppt::reference_wrapper\endlink should be prefered to raw references
+to make their use more explicit.</li>
+</ul>
 <li>Express optional values: Can a function take or, more importantly, return
 no value? Use <code>fcppt::optional<T></code> in this case. Instead of <code>T
-(const) *</code>, use <code>fcppt::optional<T (const) &></code>.</li>
+(const) *</code>, use <code>fcppt::optional<T (const) &></code>. See \ref
+fcpptoptional.</li>
 <li>Express values that can be of either type: Use
-<code>fcppt::variant::variadic<T1,T2></code> to express that
-a value can either be of type <code>T1</code> or of type <code>T2</code>.</li>
+<code>%fcppt::variant::variadic<T1,T2></code> to express that
+a value can either be of type <code>T1</code> or of type <code>T2</code>.
+See \ref fcpptvariant.</li>
 <li>Wrap types as <em>strong typedefs</em>, e.g.
-<code>FCPPT_MAKE_STRONG_TYPEDEF(std::string,email_address)</code> to make their
-use clearer.</li>
+<code>%FCPPT_MAKE_STRONG_TYPEDEF(std::string,email_address)</code> to make their
+use clearer. See \ref fcpptstrongtypedef.</li>
 </ul>
 
 \subsection coding_total Total functions
@@ -79,27 +88,34 @@ end'. Calling partial functions is error-prone because the programmer always
 has to remember each case where the function might not return. Consequently,
 partial functions are best avoided but cannot always be:
 <ul>
-<li>Prefer to use <code>fcppt::optional</code> as a return type in case a
+<li>Prefer to use \ref fcpptoptional as a return type in case a
 function may not return anything, for example \link
 fcppt::container::maybe_back\endlink. This usually makes a function total.</li>
 <li>Throw exceptions in case resource allocation fails.</li>
 <li>Only abort the program or leave a case as undefined behavior as a last
 resort.</li>
 </ul>
+See \ref fcpptassert on how to systematically handle partial
+functions.
 
 \subsection coding_loops Loops
 
 Loops are inherently imperative: On the one hand a loop uses and updates one or
-more loop conditions and one or more variables that are the loop's result.
-This is usually better expressed as a function: Instead of a loop condition, we
-can usually use ranges. The simplest form a range is a container, but other
-ranges like \link fcppt::int_range\endlink are also common. Unlike iterators,
-ranges have the great advantage of being composable, for example two ranges can
-be joined (taking their product) or appended. How the loop's result is formed
-out of a range can then be expressed by another function. The most basic form
-of this is \link fcppt::algorithm::fold\endlink. Because imperative loops,
-especially ones using iterators, are so error-prone, raw loops are best
-avoided.
+more loop conditions. On the other hand it updates one or more variables that
+are the loop's result. This is usually better expressed as a function: Instead
+of a loop condition, we can usually use ranges. The simplest form of a range is
+a container, but other ranges like \link fcppt::int_range\endlink or \link
+fcppt::enum_range\endlink are also common. Unlike iterators, ranges have the
+great advantage of being composable, for example two ranges can be joined
+(taking their product) or appended, which is implemented by the
+<a href="http://www.boost.org/doc/libs/1_59_0/libs/range/doc/html/index.html">Boost.Range</a>
+library.
+
+How the loop's result is formed out of a range can then be expressed by another
+function. The most basic form of this is \link fcppt::algorithm::fold\endlink.
+Because imperative loops, especially ones using iterators, are so error-prone,
+raw loops are best avoided. See \ref fcpptalgorithm for a collection of
+functions that work on ranges.
 
 \subsection coding_const_init Const and initialization
 
