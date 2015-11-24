@@ -49,27 +49,6 @@ struct nonpod
 
 }
 
-template
-class
-fcppt::container::grid::object<
-	int,
-	2
->;
-
-template
-class
-fcppt::container::grid::object<
-	int,
-	3
->;
-
-template
-class
-fcppt::container::grid::object<
-	nonpod,
-	2
->;
-
 FCPPT_PP_PUSH_WARNING
 FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
 

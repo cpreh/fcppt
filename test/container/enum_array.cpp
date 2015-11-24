@@ -23,13 +23,6 @@ enum class my_enum
 
 }
 
-template
-class
-fcppt::container::enum_array<
-	my_enum,
-	bool
->;
-
 FCPPT_PP_PUSH_WARNING
 FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
 
