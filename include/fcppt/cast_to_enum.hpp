@@ -12,6 +12,7 @@
 #include <fcppt/insert_to_fcppt_string.hpp>
 #include <fcppt/text.hpp>
 #include <fcppt/type_name_from_info.hpp>
+#include <fcppt/cast/int_to_enum.hpp>
 #include <fcppt/cast/size.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <type_traits>
@@ -100,7 +101,7 @@ cast_to_enum(
 		);
 
 	return
-		static_cast<
+		fcppt::cast::int_to_enum<
 			Enum
 		>(
 			_value
@@ -110,4 +111,3 @@ cast_to_enum(
 }
 
 #endif
-
