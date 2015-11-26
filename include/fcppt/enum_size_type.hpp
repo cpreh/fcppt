@@ -9,7 +9,6 @@
 
 #include <fcppt/enum_size_type_fwd.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <cstddef>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
@@ -18,13 +17,11 @@ namespace fcppt
 {
 
 /**
-\brief The size typed used to count the number of enumerators in an enum
+\brief The size type used to count the number of enumerators in an enum
 
 \ingroup fcpptenum
 
-The size type used to count the number of enumerators in \a Type. The size type
-can be different from the enum's underlying type because not size might not fit
-into the enum's range.
+The size type used to count the number of enumerators in \a Type.
 
 \tparam Type Must be an enum type
 */
@@ -40,10 +37,15 @@ struct enum_size_type
 		"Type must be an enum type"
 	);
 
-	// TODO: We should replace this when constexpr for std::numeric_limits
-	// is supported
-
-	typedef std::size_t type;
+	typedef
+	typename
+	std::make_unsigned<
+		typename
+		std::underlying_type<
+			Type
+		>::type
+	>::type
+	type;
 };
 
 }

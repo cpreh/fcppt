@@ -34,6 +34,7 @@ namespace matrix
 
 \section fcpptmathmatrixobject_motivation Motivation
 
+TODO: This is out of date!
 Matrices are ubiquituous in mathematics and computer science. Often, matrices
 represent linear operations and are applied to accordingly-sized vectors. Since
 fcppt already provides a vector class, there's the need for a complementary
@@ -191,7 +192,6 @@ To get the identity matrix, use the static <code>identity</code> function:
 
 \section fcpptmathmatrixobject_iteration Iteration
 
-TODO
 If you want to iterate over all rows, use a loop using an index instead of an
 iterator:
 
