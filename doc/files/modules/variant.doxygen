@@ -49,7 +49,7 @@ you have to do yourself.</li>
 
 \snippet variant/motivation.cpp variant_union
 
-fcppt::variant fixes the aforementioned problems in the following way:
+<code>%fcppt::variant</code> fixes the aforementioned problems in the following way:
 
 <ul>
 
@@ -83,13 +83,11 @@ possible types in a set and operates on them is called a visitor.
 
 To define a visitor, it must have function call operators so that for all types
 in the set exactly one of them matches. The function call operators must also
-be <code>const</code>. The visitor must have a typedef <code>result_type</code>
-which must be the result type of every function call operator it provides.
+be <code>const</code>.
 
 \snippet variant/visitation.cpp variant_visit_simple
 
-In this case, it is possible to employ templates to make the visitor a lot
-easier.
+In this case, it is possible to use a polymorphic lambda instead.
 
 \snippet variant/visitation.cpp variant_visit_template
 
@@ -148,22 +146,22 @@ provides its own variant type.
 The key differences to <code>%boost::variant</code> are
 <ul>
 
-<li><code>fcppt::variant</code> does not provide a default constructor.
+<li><code>%fcppt::variant</code> does not provide a default constructor.
 <code>%boost::variant</code> default contructs the first type of all possible
 types instead, which does not make any sense.</li>
 
-<li><code>fcppt::variant</code>'s constructor is explicit.</li>
+<li><code>%fcppt::variant</code>'s constructor is explicit.</li>
 
-<li><code>fcppt::variant</code> does not allow any implicit conversions in its
+<li><code>%fcppt::variant</code> does not allow any implicit conversions in its
 constructors.</li>
 
-<li><code>fcppt::variant</code> allows non const visitation and visitation of
+<li><code>%fcppt::variant</code> allows non const visitation and visitation of
 rvalues. <code>%boost::variant</code> only supports visitation of
 lvalues.</li>
 
-<li><code>fcppt::variant</code> provides ternary visitation</li>
+<li><code>%fcppt::variant</code> provides ternary visitation</li>
 
-<li><code>fcppt::variant</code> reuses MPL instead of generating the template
+<li><code>%fcppt::variant</code> reuses MPL instead of generating the template
 over and over for every number of possible types. It is therefore as extensible
 as MPL is.</li>
 
@@ -176,15 +174,14 @@ has to destroy the object that is being held to make the store available for
 the new object. Then, if copy construction of the new object fails, there is no
 way to recover from that. <code>%boost::variant</code> circumvents that by
 heap-allocating the new object which can then safely be moved after destroying
-the old object. fcppt::variant instead allows this corner case to leave the
-variant in an unspecified state which can only be used to destroy the variant
-or to assign a new object.</li>
+the old object. <code>%fcppt::variant</code> instead allows this corner case to
+leave the variant in an unspecified state which can only be used to destroy the
+variant or to assign a new object.</li>
 
-<li><code>fcppt::variant</code> uses alignment support from the compiler
-instead of relying on the hacky
-<code>%boost::detail::aligned_storage</code></li>
+<li><code>%fcppt::variant</code> uses alignment support from the compiler
+instead of relying on <code>%boost::detail::aligned_storage</code></li>
 
-<li><code>fcppt::variant</code> has properly separated headers and resides in
+<li><code>%fcppt::variant</code> has properly separated headers and resides in
 its own namespace.</li>
 
 </ul>

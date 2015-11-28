@@ -30,11 +30,7 @@ visit_simple()
 // ![variant_visit_simple]
 	struct print_visitor
 	{
-		typedef
 		void
-		result_type;
-
-		result_type
 		operator()(
 			std::string const &_string
 		) const
@@ -44,7 +40,7 @@ visit_simple()
 				<< '\n';
 		}
 
-		result_type
+		void
 		operator()(
 			int const _value
 		) const
@@ -77,25 +73,16 @@ visit_simple()
 
 
 // ![variant_visit_template]
-struct print_visitor2
-{
-	typedef
-	void
-	result_type;
-
-	template<
-		typename T
-	>
-	result_type
-	operator()(
-		T const &_arg
-	) const
+auto const print_visitor2(
+	[](
+		auto const &_arg
+	)
 	{
 		std::cout
 			<< _arg
 			<< '\n';
 	}
-};
+);
 // ![variant_visit_template]
 
 // ![variant_match]
@@ -135,7 +122,7 @@ main()
 {
 	visit_simple();
 
-	print_visitor2()(
+	print_visitor2(
 		42
 	);
 

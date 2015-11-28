@@ -12,14 +12,14 @@ namespace bitfield
 /**
 \defgroup fcpptcontainerbitfield fcppt.container.bitfield
 \ingroup fcpptcontainer
-\brief A wrapper around a bitfield using an enum
+\brief A statically sized bitfield
 
 \section bitfield_motivation Motivation
 
-Sometimes you want an enumeration which can take multiple values at once - for
-orthogonal options like "a person can be hungry and tired, not hungry and
-tired, hungry and not tired or not hungry and not tired". An obvious solution
-is using the bit representation of an enumeration:
+Consider the states "a person can be hungry and tired, not hungry and tired,
+hungry and not tired or not hungry and not tired". Being hungry and being tired
+are orthogonal states which can be implmented using the bit representation of
+an enumeration:
 
 \code
 enum person_status
