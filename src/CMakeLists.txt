@@ -608,6 +608,8 @@ set(
 	include/fcppt/math/matrix/static_storage.hpp
 	include/fcppt/math/matrix/std_hash.hpp
 	include/fcppt/math/matrix/structure_cast.hpp
+	include/fcppt/math/matrix/to_static.hpp
+	include/fcppt/math/matrix/to_static_fwd.hpp
 	include/fcppt/math/matrix/transform_direction.hpp
 	include/fcppt/math/matrix/transform_point.hpp
 	include/fcppt/math/matrix/translation.hpp

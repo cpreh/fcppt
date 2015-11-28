@@ -10,7 +10,7 @@
 #include <fcppt/literal.hpp>
 #include <fcppt/math/matrix/init.hpp>
 #include <fcppt/math/matrix/is_matrix.hpp>
-#include <fcppt/math/matrix/static.hpp>
+#include <fcppt/math/matrix/to_static.hpp>
 
 
 namespace fcppt
@@ -28,12 +28,8 @@ namespace matrix
 template<
 	typename Matrix
 >
-// TODO: Make a typedef for this
-fcppt::math::matrix::static_<
-	typename
-	Matrix::value_type,
-	Matrix::static_rows::value,
-	Matrix::static_columns::value
+fcppt::math::matrix::to_static<
+	Matrix
 >
 identity()
 {
@@ -45,11 +41,8 @@ identity()
 	);
 
 	typedef
-	fcppt::math::matrix::static_<
-		typename
-		Matrix::value_type,
-		Matrix::static_rows::value,
-		Matrix::static_columns::value
+	fcppt::math::matrix::to_static<
+		Matrix
 	>
 	result_type;
 
