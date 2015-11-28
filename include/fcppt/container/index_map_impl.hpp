@@ -9,11 +9,15 @@
 
 #include <fcppt/container/index_map_decl.hpp>
 
+
 template<
 	typename T,
 	typename A
 >
-fcppt::container::index_map<T, A>::index_map()
+fcppt::container::index_map<
+	T,
+	A
+>::index_map()
 :
 	impl_()
 {
@@ -23,8 +27,15 @@ template<
 	typename T,
 	typename A
 >
-typename fcppt::container::index_map<T, A>::reference
-fcppt::container::index_map<T, A>::operator[](
+typename
+fcppt::container::index_map<
+	T,
+	A
+>::reference
+fcppt::container::index_map<
+	T,
+	A
+>::operator[](
 	size_type const _index
 )
 {
@@ -39,8 +50,15 @@ template<
 	typename T,
 	typename A
 >
-typename fcppt::container::index_map<T, A>::reference
-fcppt::container::index_map<T, A>::get_default(
+typename
+fcppt::container::index_map<
+	T,
+	A
+>::reference
+fcppt::container::index_map<
+	T,
+	A
+>::get_default(
 	size_type const _index,
 	const_reference _ref
 )
@@ -63,10 +81,18 @@ template<
 	typename T,
 	typename A
 >
-typename fcppt::container::index_map<T, A>::size_type
-fcppt::container::index_map<T, A>::size() const
+typename
+fcppt::container::index_map<
+	T,
+	A
+>::size_type
+fcppt::container::index_map<
+	T,
+	A
+>::size() const
 {
-	return impl_.size();
+	return
+		impl_.size();
 }
 
 #endif

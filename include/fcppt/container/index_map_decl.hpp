@@ -19,8 +19,13 @@ namespace container
 {
 
 /**
-TODO: Document this?
+\brief An index-based container that grows on demand
+
 \ingroup fcpptcontainer
+
+This container is a wrapper around a vector that grows on demand. If the
+container is accessed with an out-of-bounds index, it inserts a new element
+first. This is most useful with \link fcppt::optional\endlink.
 */
 template<
 	typename T,
@@ -29,32 +34,59 @@ template<
 class index_map
 {
 public:
-	typedef std::vector<
+	typedef
+	std::vector<
 		T,
 		A
-	> internal_type;
+	>
+	internal_type;
 
-	typedef A allocator_type;
+	typedef
+	A
+	allocator_type;
 
-	typedef T value_type;
+	typedef
+	T
+	value_type;
 
-	typedef typename internal_type::size_type size_type;
+	typedef
+	typename
+	internal_type::size_type
+	size_type;
 
-	typedef typename internal_type::reference reference;
+	typedef
+	typename
+	internal_type::reference
+	reference;
 
-	typedef typename internal_type::const_reference const_reference;
+	typedef
+	typename
+	internal_type::const_reference
+	const_reference;
 
 	index_map();
 
+	/**
+	\brief Returns the element at an index or inserts a default-constructed one
+
+	Returns the element at \a index. If there is no such element,
+	<code>T()</code> is inserted.
+	*/
 	reference
 	operator[](
-		size_type
+		size_type index
 	);
 
+	/**
+	\brief Returns the element at an index or inserts its parameter
+
+	Returns the element at \a index. If there is no such element,
+	\a ref is inserted.
+	*/
 	reference
 	get_default(
-		size_type,
-		const_reference
+		size_type index,
+		const_reference ref
 	);
 
 	size_type
