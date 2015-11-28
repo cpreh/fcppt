@@ -33,7 +33,7 @@ FCPPT_PP_POP_WARNING
 	] = 42;
 
 	BOOST_REQUIRE_EQUAL(
-		map.size(),
+		map.impl().size(),
 		3u
 	);
 

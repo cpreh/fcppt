@@ -7,6 +7,7 @@
 #ifndef FCPPT_CONTAINER_INDEX_MAP_IMPL_HPP_INCLUDED
 #define FCPPT_CONTAINER_INDEX_MAP_IMPL_HPP_INCLUDED
 
+#include <fcppt/function_impl.hpp>
 #include <fcppt/container/index_map_decl.hpp>
 
 
@@ -35,41 +36,36 @@ fcppt::container::index_map<
 fcppt::container::index_map<
 	T,
 	A
->::operator[](
-	size_type const _index
-)
-{
-	return
-		(*this).get_default(
-			_index,
-			T()
-		);
-}
-
-template<
-	typename T,
-	typename A
->
-typename
-fcppt::container::index_map<
-	T,
-	A
->::reference
-fcppt::container::index_map<
-	T,
-	A
->::get_default(
+>::get(
 	size_type const _index,
-	const_reference _ref
+	insert_function const _insert
 )
 {
 	if(
-		_index >= size()
+		_index
+		>=
+		impl_.size()
 	)
-		impl_.resize(
-			_index + 1u,
-			_ref
+	{
+		size_type const needed_size{
+			_index
+			+
+			1u
+		};
+
+		impl_.reserve(
+			needed_size
 		);
+
+		while(
+			impl_.size()
+			<
+			needed_size
+		)
+			impl_.push_back(
+				_insert()
+			);
+	}
 
 	return
 		impl_[
@@ -85,14 +81,42 @@ typename
 fcppt::container::index_map<
 	T,
 	A
->::size_type
+>::reference
 fcppt::container::index_map<
 	T,
 	A
->::size() const
+>::operator[](
+	size_type const _index
+)
 {
 	return
-		impl_.size();
+		this->get(
+			_index,
+			insert_function{
+				[]{
+					return
+						T();
+				}
+			}
+		);
+}
+
+template<
+	typename T,
+	typename A
+>
+typename
+fcppt::container::index_map<
+	T,
+	A
+>::internal_type const &
+fcppt::container::index_map<
+	T,
+	A
+>::impl() const
+{
+	return
+		impl_;
 }
 
 #endif

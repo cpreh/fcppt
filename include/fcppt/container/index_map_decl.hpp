@@ -7,6 +7,7 @@
 #ifndef FCPPT_CONTAINER_INDEX_MAP_DECL_HPP_INCLUDED
 #define FCPPT_CONTAINER_INDEX_MAP_DECL_HPP_INCLUDED
 
+#include <fcppt/function_fwd.hpp>
 #include <fcppt/container/index_map_fwd.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <vector>
@@ -42,14 +43,6 @@ public:
 	internal_type;
 
 	typedef
-	A
-	allocator_type;
-
-	typedef
-	T
-	value_type;
-
-	typedef
 	typename
 	internal_type::size_type
 	size_type;
@@ -59,15 +52,29 @@ public:
 	internal_type::reference
 	reference;
 
-	typedef
-	typename
-	internal_type::const_reference
-	const_reference;
-
 	index_map();
 
+	typedef
+	fcppt::function<
+		T ()
+	>
+	insert_function;
+
 	/**
-	\brief Returns the element at an index or inserts a default-constructed one
+	\brief Returns the element at an index or inserts new ones using a function
+
+	Returns the element at \a index. If there is no such element, the
+	result of <code>insert()</code> is inserted. Note that \a insert might
+	be called multiple times.
+	*/
+	reference
+	get(
+		size_type index,
+		insert_function insert
+	);
+
+	/**
+	\brief Returns the element at an index or inserts new default-constructed ones
 
 	Returns the element at \a index. If there is no such element,
 	<code>T()</code> is inserted.
@@ -77,20 +84,8 @@ public:
 		size_type index
 	);
 
-	/**
-	\brief Returns the element at an index or inserts its parameter
-
-	Returns the element at \a index. If there is no such element,
-	\a ref is inserted.
-	*/
-	reference
-	get_default(
-		size_type index,
-		const_reference ref
-	);
-
-	size_type
-	size() const;
+	internal_type const &
+	impl() const;
 private:
 	internal_type impl_;
 };
