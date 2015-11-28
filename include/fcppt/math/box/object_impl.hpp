@@ -166,7 +166,6 @@ fcppt::math::box::object<
 	N
 >::size() const
 {
-	// TODO: Put this into a separate function?
 	return
 		fcppt::math::vector::to_dim(
 			max_

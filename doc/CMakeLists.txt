@@ -828,7 +828,6 @@ set(
 	include/fcppt/math/detail/null_storage.hpp
 	include/fcppt/math/detail/one_dimensional_input.hpp
 	include/fcppt/math/detail/one_dimensional_output.hpp
-	include/fcppt/math/detail/pi.hpp
 	include/fcppt/math/detail/storage_size.hpp
 	include/fcppt/math/detail/structure_cast.hpp
 	include/fcppt/math/detail/to_different.hpp

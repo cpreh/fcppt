@@ -7,8 +7,9 @@
 #ifndef FCPPT_MATH_PI_HPP_INCLUDED
 #define FCPPT_MATH_PI_HPP_INCLUDED
 
-#include <fcppt/math/detail/pi.hpp>
+#include <fcppt/literal.hpp>
 #include <fcppt/config/external_begin.hpp>
+#include <cmath>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
@@ -38,9 +39,13 @@ pi()
 	);
 
 	return
-		fcppt::math::detail::pi<
-			T
-		>::get();
+		std::acos(
+			fcppt::literal<
+				T
+			>(
+				-1
+			)
+		);
 }
 
 }
