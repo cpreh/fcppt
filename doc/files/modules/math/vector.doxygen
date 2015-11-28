@@ -36,22 +36,22 @@ namespace vector
 
 \section fcpptmathvector_introduction Introduction
 
-fcppt::math::vector::object is a statically sized n-dimensional array with the
-usual vector operations like addition, scalar multiplication, and so on.
-The signature consists of three template parameters:
+\link fcppt::math::vector::object\endlink is a statically sized n-dimensional
+array with the usual vector operations like addition, scalar multiplication,
+and so on. The signature consists of three template parameters:
 \code
 template<
 	typename T,
-	typename N,
+	fcppt::math::size_type N,
 	typename S
 >
 class vector;
 \endcode
 The first template parameter is the element type, while the second parameter is
-an integral constant (like std::integral_constant) defining the vector's static
-size. The third template parameter is the so called storage which usually is an
-array of size <code>N::value</code>. However, S can be used to implement
-various kinds of vectors, e.g. views with <code>S=T*</code>.
+the vector's static size. The third template parameter is the so called storage
+which usually is an array of size <code>N</code>. However, <code>S</code> can
+be used to implement various kinds of vectors, e.g. views with
+<code>S=T*</code>.
 
 \section fcpptmathvector_declaring_vectors Declaring vectors
 
@@ -65,12 +65,12 @@ This is abbreviated by a template alias:
 
 \section fcpptmathvector_init Initialization
 
-An fcppt::math::vector::object<T,N,S> can be initialized by either:
+An <code>fcppt::math::vector::object<T,N,S></code> can be initialized by
+either:
 <ul>
-<li>fcppt::no_init,</li>
-<li>N values of type T (up to the limit of FCPPT_MATH_VECTOR_MAX_CTOR_PARAMS),</li>
-<li>a pair of iterators over an input range of type T and length N or</li>
-<li>a value of type S.</li>
+<li>\link fcppt::no_init\endlink,</li>
+<li><code>N</code> values of type <code>T</code>,</li>
+<li>or a value of type <code>S</code>.</li>
 </ul>
 
 \snippet math/vector.cpp init
@@ -79,40 +79,25 @@ Initializing by a value of type S is important for view vectors.
 
 \section fcpptmathvector_conversions Conversions
 
-fcppt::math::vector::object mostly behaves like the numeric type it
-encapsulates. Conversions, however, must be done explicitly, e.g.  the
-following code will not compile:
-\code
-fcppt::math::vector::static_<
-	int,
-	1
-> const i(
-	10
-);
-
-fcppt::math::vector::static_<
-	float,
-	1
-> const f(
-	i
-);
-\endcode
-
-fcppt::math::vector::structure_cast is a function that converts between vector
-types of the same dimension but which may differ in their value types. How
-the value types are converted is specified by a function object.
+\link fcppt::math::vector::object\endlink mostly behaves like the numeric type it
+encapsulates. Conversions, however, must be done explicitly.
+\link fcppt::math::vector::structure_cast\endlink is a function that converts
+between vector types of the same dimension but which may differ in their value
+types. How the value types are converted is specified by a function object.
 
 \snippet math/vector.cpp convert
 
-fcppt::math::vector::construct creates a vector of dimension N+1 from a vector
-of dimension N. fcppt::math::vector::narrow_cast creates a vector of dimension
-N-1 from a vector of dimension N by discarding the last element.
+\link fcppt::math::vector::construct\endlink creates a vector of dimension
+<code>N+1</code> from a vector of dimension <codE>N</code>. \link
+fcppt::math::vector::narrow_cast\endlink creates a vector of dimension
+<codE>N-1</code> from a vector of dimension <code>N</code> by discarding the
+last element.
 
 \snippet math/vector.cpp construct_narrow
 
 \section fcpptmathvector_null_vectors_and_comparisons Null vectors and comparisons
 
-To get a vector with all zeroes, use the static member function <code>::%null()</code>:
+To get a vector with all zeroes, use \link fcppt::math::vector::null\endlink:
 
 \snippet math/vector.cpp null
 
@@ -124,37 +109,19 @@ This will use the float comparison operator. However, since floating point
 values are inherently inaccurate, an exact comparison is almost <em>never</em>
 what you want to do. Instead, you should use a different method for comparison.
 For example, you could check if the Euclidean distance is small enough, using
-fcppt::math::vector::length:
+\link fcppt::math::vector::length\endlink:
 
 \snippet math/vector.cpp comparison_length
 
 Or, you could test if none of the components exceeds the given epsilon, using
-fcppt::math::range_compare:
+\link fcppt::math::vector::componentwise_equal\endlink:
 
 \snippet math/vector.cpp comparison_range
 
 \section fcpptmathvector_operators Operators
 
-Including <strong><code>fcppt/math/vector/object_decl.hpp</code></strong> you
-will get the following operators (<code>S2</code> defines some other storage
-type):
-
-<ul>
-	<li><code>operator+=(vector::object<T,N,S2>)</code></li>
-	<li><code>operator-=(vector::object<T,N,S2>)</code></li>
-	<li><code>operator*=(vector::object<T,N,S2>)</code></li>
-	<li><code>operator/=(vector::object<T,N,S2>)</code></li>
-	<li><code>operator%=(vector::object<T,N,S2>)</code></li>
-	<li><code>operator*=(T)</code> (multiply by a scalar)</li>
-	<li><code>operator/=(T)</code> (divide by a scalar)</li>
-	<li><code>operator=(dim::object const &)</code> (regular assignment operator)</li>
-	<li><code>operator=(dim::object<T,N,S2> const &)</code></li>
-	<li><code>operator[](size_type)</code></li>
-</ul>
-
-The arithmetic operators all work component-wise.
-
-Including <strong><code>fcppt/math/vector/comparison.hpp</code></strong> you get all the comparison operators:
+<strong><code>fcppt/math/vector/comparison.hpp</code></strong> defines the
+following comparison operators:
 
 <ul>
 	<li><code>operator==</code></li>
@@ -176,6 +143,13 @@ Including <strong><code>fcppt/math/vector/arithmetic.hpp</code></strong> gives
 you the following operators:
 
 <ul>
+	<li><code>operator+=(vector::object<T,N,S>)</code></li>
+	<li><code>operator-=(vector::object<T,N,S>)</code></li>
+	<li><code>operator*=(vector::object<T,N,S>)</code></li>
+	<li><code>operator/=(vector::object<T,N,S>)</code></li>
+	<li><code>operator%=(vector::object<T,N,S>)</code></li>
+	<li><code>operator*=(T)</code> (multiply by a scalar)</li>
+	<li><code>operator/=(T)</code> (divide by a scalar)</li>
 	<li><code>operator+(vector::object<T1,N,S>,vector::object<T2,N,S>)</code></li>
 	<li><code>operator-(vector::object<T1,N,S>,vector::object<T2,N,S>)</code></li>
 	<li><code>operator*(vector::object<T1,N,S>,vector::object<T2,N,S>)</code></li>
@@ -188,8 +162,8 @@ you the following operators:
 
 The arithmetic operators all work component-wise. Note that
 <code>operator*</code> does not denote the dot or cross product, but the
-component-wise product. See fcppt::math::vector::dot and
-fcppt::math::vector::cross.
+component-wise product. See \link fcppt::math::vector::dot\endlink and
+\link fcppt::math::vector::cross\endlink.
 
 It is important to note that all of the free operators support that the value
 types of their arguments differ. Suppose we can divide meters by seconds to get
@@ -202,15 +176,12 @@ obtain vectors of speeds.
 
 \snippet math/vector.cpp asymmetric_div
 
-Including <strong><code>fcppt/math/vector/input.hpp</code></strong> gives
-you an <code>operator>></code> for reading input from standard streams.
-Conversely, including
-<strong><code>fcppt/math/vector/output.hpp</code></strong> gives you an inverse
-<code>operator<<</code>.
+<strong><code>fcppt/math/vector/input.hpp</code></strong> defines
+<code>operator>></code> for reading input from standard streams.
+Conversely, <strong><code>fcppt/math/vector/output.hpp</code></strong> defines
+an inverse <code>operator<<</code>.
 
-Including <strong><code>fcppt/math/vector/dim.hpp</code></strong> gives you the
-following operators:
-
+<strong><code>fcppt/math/vector/dim.hpp</code></strong> defines:
 <ul>
 	<li><code>operator+(vector::object<T1,N,S1>,dim::object<T2,N,S2>)</code></li>
 	<li><code>operator-(vector::object<T1,N,S1>,dim::object<T2,N,S2>)</code></li>
@@ -222,10 +193,6 @@ following operators:
 Again, these work component-wise and have support for asymmetric argument types.
 
 \section fcpptmathvector_headers Header files
-
-fcppt::math::vector is spread out across various header files. There's one
-header per free function. fcppt::math::vector::object itself is split into
-various headers, too. Here's an exhaustive list:
 
 <table>
 <tr>
@@ -258,15 +225,15 @@ various headers, too. Here's an exhaustive list:
 </tr>
 <tr>
 <td><code>input.hpp</code></td>
-<td>Contains an <code>operator>></code> for the standard input streams (wide and narrow) which expects vectors to be input in the format: <code>(v1,v2,v3,...)</code></td>
+<td>Contains an <code>operator>></code> for the standard input streams (wide and narrow) which expects vectors to be input in the format: <code>(v1,v2,...)</code></td>
 </tr>
 <tr>
 <td><code>output.hpp</code></td>
-<td>Contains an <code>operator<<</code> for the standard input streams (wide and narrow) which outputs vectors in the format: <code>(v1,v2,v3,...)</code></td>
+<td>Contains an <code>operator<<</code> for the standard input streams (wide and narrow) which outputs vectors in the format: <code>(v1,v2,...)</code></td>
 </tr>
 <tr>
 <td><code>dim.hpp</code></td>
-<td>Contains arithmetic operators to interoperate with the fcppt::math::dim::object class (see this class for more information)</td>
+<td>Contains arithmetic operators to interoperate with the \link fcppt::math::dim::object\endlink class (see this class for more information)</td>
 </tr>
 </table>
 */

@@ -178,15 +178,16 @@ an <code>operator<<</code>.
 Including <strong><code>fcppt/math/matrix/vector.hpp</code></strong> gives you:
 
 <pre>
-vector::object<T,M,S2>
+vector::object<T,M>
 operator*(
-	matrix::object<T,N,M,S1> const &,
-	vector::object<T,N,S2> const &);
+	matrix::object<T,N,M> const &,
+	vector::object<T,N> const &
+);
 </pre>
 
 \section fcpptmathmatrixobject_identity Identity
 
-To get the identity matrix, use the static <code>identity</code> function:
+To get the identity matrix, use \link fcppt::math::matrix::identity\endlink function:
 
 \snippet math/matrix.cpp identity
 

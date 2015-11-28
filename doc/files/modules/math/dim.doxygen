@@ -35,14 +35,15 @@ namespace dim
 
 When writing code that deals with geometry, you need a type to denote the size
 (or extent) of the geometry for each dimension. You also need such a class when
-writing multi-dimensional containers (like fcppt::container::grid::object).
+writing multi-dimensional containers (like \link
+fcppt::container::grid::object\endlink).
 
-Conceptually, you could just use fcppt::math::vector::object, and we (the
-authors of fcppt) have thought about going that way. However, a vector just
-isn't a dimension type. You have operations you can apply to a vector (like the
-dot product) that make no sense in the context of a dimension. Conversely, you
-have operations like "take the area of the dimension" that make no sense for
-vectors. Also, the lower-dimensional getters for vector (meaning
+Conceptually, you could just use \link fcppt::math::vector::object\endlink, and
+we (the authors of fcppt) have thought about going that way. However, a vector
+just isn't a dimension type. You have operations you can apply to a vector
+(like the dot product) that make no sense in the context of a dimension.
+Conversely, you have operations like "take the area of the dimension" that make
+no sense for vectors. Also, the lower-dimensional getters for vector (meaning
 <code>x(),y(),z(),w()</code>) are not mixed with the lower-dimensional getters
 for dim (meaning <code>w(),h(),d()</code>).
 
@@ -52,11 +53,11 @@ parameters), but not the same member and free functions.
 
 \section fcpptmathdimobject_converting_from_and_to_vectors Converting from and to vectors
 
-To convert a dimension to a vector, use fcppt::math::dim::to_vector:
+To convert a dimension to a vector, use \link fcppt::math::dim::to_vector\endlink:
 
 \snippet math/dim.cpp conversion_to_vector
 
-Conversely, use fcppt::math::vector::structure_cast to convert a vector to a dim:
+Conversely, use \link fcppt::math::vector::structure_cast\endlink to convert a vector to a dim:
 
 \snippet math/dim.cpp conversion_from_vector
 
@@ -64,16 +65,16 @@ If you include the fcppt/math/vector/dim.hpp header, you get the operators
 <code>+-*%/</code> which all have the signature
 
 <pre>
-vector::object<T,N,S> operator(vector::object<T,N,S> left,dim::object<T,N,S>)
+vector::static_<T,N> operator(vector::object<T,N,S1> left,dim::object<T,N,S2>)
 </pre>
 
 This way, you can add a dimension to a vector, for example.
 
 \section fcpptmathdimobject_operators Operators
 
-Including <strong><code>fcppt/math/dim/object_decl.hpp</code></strong> you
-will get the following operators (<code>S2</code> defines some other storage
-type):
+The arithmetic operators all work component-wise.
+
+Including <strong><code>fcppt/math/dim/comparison.hpp</code></strong> you get all the comparison operators:
 
 <ul>
 	<li><code>operator+=(dim::object<T,N,S2>)</code></li>
@@ -83,16 +84,6 @@ type):
 	<li><code>operator%=(dim::object<T,N,S2>)</code></li>
 	<li><code>operator*=(T)</code> (multiply by a scalar)</li>
 	<li><code>operator/=(T)</code> (divide by a scalar)</li>
-	<li><code>operator=(dim::object const &)</code> (regular assignment operator)</li>
-	<li><code>operator=(dim::object<T,N,S2> const &)</code></li>
-	<li><code>operator[](size_type>)</code></li>
-</ul>
-
-The arithmetic operators all work component-wise.
-
-Including <strong><code>fcppt/math/dim/comparison.hpp</code></strong> you get all the comparison operators:
-
-<ul>
 	<li><code>operator==</code></li>
 	<li><code>operator!=</code></li>
 	<li><code>operator<=</code></li>
@@ -132,10 +123,6 @@ Conversely, including
 
 \section fcpptmathdimobject_headers Header files
 
-fcppt::math::dim is spread out across various header files. There's one
-header per free function. fcppt::math::dim::object itself is split into
-various headers, too. Here's an exhaustive list:
-
 <table>
 <tr>
 <th>Header file</th>
@@ -167,11 +154,11 @@ various headers, too. Here's an exhaustive list:
 </tr>
 <tr>
 <td><code>input.hpp</code></td>
-<td>Contains an <code>operator>></code> for the standard input streams (wide and narrow) which expects dims to be input in the format: <code>(v1,v2,v3,...)</code></td>
+<td>Contains an <code>operator>></code> for the standard input streams (wide and narrow) which expects dims to be input in the format: <code>(v1,v2,...)</code></td>
 </tr>
 <tr>
 <td><code>output.hpp</code></td>
-<td>Contains an <code>operator<<</code> for the standard input streams (wide and narrow) which outputs dims in the format: <code>(v1,v2,v3,...)</code></td>
+<td>Contains an <code>operator<<</code> for the standard input streams (wide and narrow) which outputs dims in the format: <code>(v1,v2,...)</code></td>
 </tr>
 </table>
 */
