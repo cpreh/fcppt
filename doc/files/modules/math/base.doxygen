@@ -2,6 +2,20 @@
 \defgroup fcpptmath fcppt.math
 \ingroup fcpptmain
 \brief Everything math-related goes in here
+
+<table id="toc">
+<tr>
+<td>
+
+<ul>
+	<li>\ref fcpptmath_classes</li>
+</ul>
+
+</td>
+</tr>
+</table>
+
+\section fcpptmath_classes Math Classes
 */
 
 namespace fcppt

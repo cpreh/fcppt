@@ -440,7 +440,6 @@ set(
 	include/fcppt/make_shared_ptr.hpp
 	include/fcppt/make_strong_typedef.hpp
 	include/fcppt/make_unique_ptr.hpp
-	include/fcppt/math/at.hpp
 	include/fcppt/math/at_c.hpp
 	include/fcppt/math/binary_map.hpp
 	include/fcppt/math/box/center.hpp
@@ -546,9 +545,7 @@ set(
 	include/fcppt/math/dim/to_signed.hpp
 	include/fcppt/math/dim/to_unsigned.hpp
 	include/fcppt/math/dim/to_vector.hpp
-	include/fcppt/math/exception.hpp
 	include/fcppt/math/generate_binary_vectors.hpp
-	include/fcppt/math/impl/exception.hpp
 	include/fcppt/math/int_range.hpp
 	include/fcppt/math/int_range_count.hpp
 	include/fcppt/math/interpolation/linear.hpp

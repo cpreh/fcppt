@@ -5,14 +5,13 @@
 
 
 //[vectoraccess
-#include <fcppt/exception.hpp>
 #include <fcppt/text.hpp>
 #include <fcppt/io/cout.hpp>
-#include <fcppt/math/at.hpp>
 #include <fcppt/math/vector/static.hpp>
 
 
-int main()
+int
+main()
 {
 	typedef fcppt::math::vector::static_<
 		float,
@@ -31,21 +30,5 @@ int main()
 		<< ' '
 		<< obj.y()
 		<< FCPPT_TEXT('\n');
-
-	try
-	{
-		fcppt::math::at(
-			obj,
-			2
-		);
-	}
-	catch(
-		fcppt::exception const &_error
-	)
-	{
-		fcppt::io::cout()
-			<< _error.string()
-			<< FCPPT_TEXT('\n');
-	}
 }
 //]
