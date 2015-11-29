@@ -8,6 +8,11 @@ set(
 	"${CMAKE_BINARY_DIR}/doc_generated"
 )
 
+set(
+	DOC_INCLUDE_DIRS
+	"${FCPPT_UTILS_PROJECT_SOURCE_DIR}/include"
+)
+
 configure_file(
 	Doxyfile.in
 	"${DOC_OUTPUT}/Doxyfile"

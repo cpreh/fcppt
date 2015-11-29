@@ -228,9 +228,7 @@ TAB_SIZE               = 8
 # "Side Effects:". You can put \n's in the value part of an alias to insert
 # newlines.
 
-ALIASES                = "virtualdtor=\brief Virtual dummy destructor to make it a class to safely derive from. \details Note that this destructor is pure virtual, but has an implementation. Strictly speaking, that's redundant. But it's safer for classes which otherwise don't have any pure virtual functions, yet should be abstract." \
-                         "protectedctor=\brief Dummy constructor so no instances of this base class can be created" \
-                         "enum_policy{2}=\brief Holds the \link \2 %\1 \endlink enum \details See <strong>Insert fcppt enum policy link here</strong> for more details on how we handle enumerations"
+ALIASES                =
 
 # This tag can be used to specify a number of word-keyword mappings (TCL only).
 # A mapping has the form "name=value". For example adding "class=itcl::class"
@@ -811,7 +809,7 @@ EXCLUDE_SYMLINKS       = NO
 
 EXCLUDE_PATTERNS       = */detail/* \
                          */impl/* \
-			*_impl.hpp
+                         *_impl.hpp
 
 # The EXCLUDE_SYMBOLS tag can be used to specify one or more symbol names
 # (namespaces, classes, functions, etc.) that should be excluded from the
@@ -1944,7 +1942,7 @@ SEARCH_INCLUDES        = YES
 # preprocessor.
 # This tag requires that the tag SEARCH_INCLUDES is set to YES.
 
-INCLUDE_PATH           =
+INCLUDE_PATH           = @DOC_INCLUDE_DIRS@
 
 # You can use the INCLUDE_FILE_PATTERNS tag to specify one or more wildcard
 # patterns (like *.h and *.hpp) to filter out the header-files in the
@@ -1963,12 +1961,7 @@ INCLUDE_FILE_PATTERNS  =
 # This tag requires that the tag ENABLE_PREPROCESSING is set to YES.
 
 PREDEFINED             = "FCPPT_SYMBOL=" \
-                         "FCPPT_CLASS_SYMBOL=" \
-                         "FCPPT_NONCOPYABLE(a)=" \
-                         "FCPPT_NONASSIGNABLE(a)=" \
-                         "FCPPT_MAKE_STRONG_TYPEDEF(a,b)=typedef a b;" \
-                         "FCPPT_SAFE_BOOL(a)=" \
-                         "BOOST_PP_REPEAT(a,b,c)="
+                         "FCPPT_CLASS_SYMBOL="
 
 # If the MACRO_EXPANSION and EXPAND_ONLY_PREDEF tags are set to YES then this
 # tag can be used to specify a list of macro names that should be expanded. The
@@ -1977,7 +1970,14 @@ PREDEFINED             = "FCPPT_SYMBOL=" \
 # definition found in the source code.
 # This tag requires that the tag ENABLE_PREPROCESSING is set to YES.
 
-EXPAND_AS_DEFINED      =
+EXPAND_AS_DEFINED      = "FCPPT_NONCOPYABLE" \
+                         "FCPPT_NONASSIGNABLE" \
+                         "FCPPT_MATH_DETAIL_MAKE_SYMMETRIC_BINARY_OPERATOR" \
+                         "FCPPT_MATH_DETAIL_MAKE_UNARY_OPERATOR" \
+                         "FCPPT_MATH_DETAIL_MAKE_ASYMMETRIC_BINARY_OPERATOR" \
+                         "FCPPT_MATH_DETAIL_MAKE_ASYMMETRIC_BINARY_OPERATOR_RIGHT" \
+                         "FCPPT_MATH_MAKE_FREE_MATRIX_FUNCTION" \
+                         "FCPPT_MATH_MAKE_FREE_SCALAR_MATRIX_FUNCTION"
 
 # If the SKIP_FUNCTION_MACROS tag is set to YES then doxygen's preprocessor will
 # remove all references to function-like macros that are alone on a line, have

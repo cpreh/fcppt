@@ -168,7 +168,7 @@ comparison()
 
 	vector2f const y(1.f,2.f);
 
-	std::cout << (x == y) << ',' << (x - y == fcppt::math::vector::null<vector2f>()) << '\n';
+	std::cout << (x == y) << ',' << (x - y == vector2f{0.f,0.f}) << '\n';
 // ![comparison]
 }
 
@@ -250,11 +250,13 @@ asymmetric_div()
 
 	speed2 const s(
 		meter2(
-			fcppt::no_init{}
+			meter{},
+			meter{}
 		)
 		/
 		second2(
-			fcppt::no_init{}
+			second{},
+			second{}
 		)
 	);
 // ![asymmetric_div]

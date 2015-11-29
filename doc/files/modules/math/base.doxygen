@@ -9,6 +9,16 @@
 
 <ul>
 	<li>\ref fcpptmath_classes</li>
+		<ul>
+		<li>\ref fcpptmath_declaring</li>
+		<li>\ref fcpptmath_initialization</li>
+		<li>\ref fcpptmath_conversions</li>
+		<li>\ref fcpptmath_comparison</li>
+		<li>\ref fcpptmath_arithmetic</li>
+		<li>\ref fcpptmath_null</li>
+		<li>\ref fcpptmath_inoutput</li>
+		</ul>
+	</li>
 </ul>
 
 </td>
@@ -16,6 +26,121 @@
 </table>
 
 \section fcpptmath_classes Math Classes
+
+The three array-like classes in fcppt.math are:
+<ul>
+<li>\ref fcpptmathvector</li>,
+<li>\ref fcpptmathdim</li> and
+<li>\ref fcpptmathmatrix.</li>
+</ul>
+Vector and dim are one-dimensional statically sized arrays, while matrix is a
+two-dimensional statically sized array. Although vector and dim are very
+similar, they do not provide the same operations. Vectors should be used for
+points or arrows, while dims should be used for sizes. The three classes follow
+a common base design which will be explained using vectors.
+
+There are two classes that build on top of vector and dim:
+<ul>
+<li>\ref fcppt.math.box and</li>
+<li>\ref fcppt.math.sphere.</li>
+</ul>
+
+\subsection fcpptmath_declaring Declarations
+
+Vector, dim and matrix are statically sized arrays. The declaration of vector
+uses the template parameters <code>typename T</code>,
+<code>fcppt::math::size_type N</code> and <code>typename S</code>.  Here,
+<code>T</code> is the element type, <code>N</code> the number of elements and
+<code>S</code> the storage type. The latter requires further explanation: For a
+normal vector that owns its elements, <code>S</code> can be
+<code>std::array<T,N></code>.
+
+\snippet math/vector.cpp vector2f
+
+This is exactly what \link fcppt::math::vector::static_\endlink does.
+
+\snippet math/vector.cpp vector2f_short
+
+If we want a view vector, for example a vector that represents a row of a
+matrix, we could use <code>S=T*</code> instead.
+
+\subsection fcpptmath_initialization Initialization
+
+Vector and dim are initialized in the same way: An
+<code>fcppt::math::vector::object<T,N,S></code> can be initialized by either:
+<ul>
+<li>\link fcppt::no_init\endlink,</li>
+<li><code>N</code> values of type <code>T</code>,</li>
+<li>or a value of type <code>S</code>.</li>
+</ul>
+
+\snippet math/vector.cpp init
+
+\subsection fcpptmath_conversions Conversions
+
+<code>vector</code>, <code>dim</code> and <code>matrix</code> each have a
+<code>structure_cast</code> function. Structure casts perserve dimensions but
+convert the underlying value type. How this is done is specified by a function
+object.
+
+\snippet math/vector.cpp convert
+
+<code>vector</code> and <code>dim</code> have functions <code>construct</code>,
+which increases the dimension by one, and <code>narrow_cast</code>, which
+decreases the dimension.
+
+\snippet math/vector.cpp construct_narrow
+
+\subsection fcpptmath_comparison Comparison
+
+All math classes can be compared using <code>operator==</code>, for example:
+
+\snippet math/vector.cpp comparison
+
+<code>operator==</code> uses the underlying comparison operator of the value
+type, which is error-prone for floats. The <code>componentwise_equal</code>
+compare using an epsilon:
+
+\snippet math/vector.cpp comparison_range
+
+For <code>vector</code>, <code>dim</code> and <code>matrix</code>, the
+following comparison operators are defined:
+<ul>
+	<li><code>operator==</code></li>
+	<li><code>operator!=</code></li>
+	<li><code>operator<=</code></li>
+	<li><code>operator<</code></li>
+	<li><code>operator>=</code></li>
+	<li><code>operator></code></li>
+</ul>
+
+\subsection fcpptmath_arithmetic Arithmetic
+
+<code>vector</code>, <code>dim</code> and <code>matrix</code> define different
+arithmetic operators. See their individual documentations for more information.
+
+It is important to note that all of the free operators support that the value
+types of their arguments differ. Suppose we can divide meters by seconds to get
+speed.
+
+\snippet math/vector.cpp asymmetric_div_decl
+
+This can now be used to divide vectors of meters by vectors of seconds to
+obtain vectors of speeds.
+
+\snippet math/vector.cpp asymmetric_div
+
+\subsection fcpptmath_null Null
+
+<code>vector</code>, <code>dim</code> and <code>box</code> provide
+<code>null</code> functions that return an object consisting of zeroes.
+
+\snippet math/vector.cpp null
+
+\subsection fcpptmath_inoutput Input and output
+
+All classes provide an output operator <code>operator<< </code>, some
+also provide an input operator <code>operator>> </code>.
 */
 
 namespace fcppt

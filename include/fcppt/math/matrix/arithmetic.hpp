@@ -87,11 +87,20 @@ operator op(\
 		);\
 }
 
+/** \addtogroup fcpptmathmatrix
+*  @{
+*/
 FCPPT_MATH_MAKE_FREE_MATRIX_FUNCTION(+)
 FCPPT_MATH_MAKE_FREE_MATRIX_FUNCTION(-)
+/** @}*/
 
 #undef FCPPT_MATH_MAKE_FREE_MATRIX_FUNCTION
 
+/**
+\brief Multiplies two matrices
+
+\ingroup fcpptmathmatrix
+*/
 template<
 	typename L,
 	typename R,
@@ -243,6 +252,9 @@ operator op(\
 		);\
 }
 
+/** \addtogroup fcpptmathmatrix
+*  @{
+*/
 FCPPT_MATH_MAKE_FREE_SCALAR_MATRIX_FUNCTION(
 	*
 )
@@ -250,9 +262,15 @@ FCPPT_MATH_MAKE_FREE_SCALAR_MATRIX_FUNCTION(
 FCPPT_MATH_MAKE_FREE_SCALAR_MATRIX_FUNCTION(
 	/
 )
+/** @}*/
 
 #undef FCPPT_MATH_MAKE_FREE_SCALAR_MATRIX_FUNCTION
 
+/**
+\brief Multiplies a scalar by a matrix
+
+\ingroup fcpptmathmatrix
+*/
 template<
 	typename Left,
 	typename Right,
