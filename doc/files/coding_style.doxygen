@@ -103,22 +103,16 @@ functions.
 Loops can be broken down into two separate concerns: Updating the loop
 condition and updating the loop's result. For example, a loop that sums integers
 from <code>1</code> to <code>n-1</code> can be written as:
-\code
-int result{0};
-for(int i{1}; i < n; ++i) result += i;
-\endcode
+
+\snippet coding_style.cpp coding_style_loop
+
 Here, updating the loop condition is done by incrementing <code>i</code> and
 updating the result by <code>result += i</code>. Instead of the loop condition
 we can use \link fcppt::int_range\endlink. Updating the loop's result can be
 decoupled from the loop itself using an algorithm, in this case \link
 fcppt::algorithm::fold\endlink.
-\code
-fcppt::algorithm::fold(
-	fcppt::make_int_range(1,n),
-	0,
-	[](int i, int result) { return i + result; }
-)
-\endcode
+
+\snippet coding_style.cpp coding_style_fold
 
 Unlike iterators, ranges have the great advantage of being composable, for
 example two ranges can be joined (taking their product) or appended, which is
@@ -134,16 +128,13 @@ raw loops are best avoided
 Declaring an object <code>const</code> makes it immutable and therefore easier
 to reason about. Obviously, a const object has to be initialized directly which
 can sometimes be hard to express. Consider an array of arbitrary size in a template:
-\code
-template<typename T, std::size_t N>
-std::array<T,N> make_array() { ... }
-\endcode
+
+\snippet coding_style.cpp coding_style_make_array
+
 This case is handled by \link fcppt::algorithm::array_fold_static\endlink, for example:
-\code
-return fcppt::algorithm::array_fold_static<std::array<T,N>>(
-	[](std::size_t i) { return from_int<T>(i);
-}
-\endcode
+
+\snippet coding_style.cpp coding_style_array_fold
+
 Another common case is container initialization which usually consists of a
 series of <code>push_back</code> or <code>insert</code> operations. This is
 handled by \link fcppt::algorithm::map\endlink.

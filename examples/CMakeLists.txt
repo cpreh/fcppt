@@ -139,6 +139,14 @@ add_fcppt_example(
 )
 
 add_fcppt_example(
+	coding_style
+)
+
+add_fcppt_example(
+	coding_style_asthetic
+)
+
+add_fcppt_example(
 	cyclic_iterator
 )
 
