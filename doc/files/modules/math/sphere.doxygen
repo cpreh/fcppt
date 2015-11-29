@@ -1,0 +1,18 @@
+namespace fcppt
+{
+namespace math
+{
+/**
+\brief Contains \link fcppt::math::sphere::object sphere::object \endlink and helper functions, classes and types for it
+*/
+namespace sphere
+{
+}
+}
+}
+
+/**
+\defgroup fcpptmathsphere fcppt.math.sphere
+\ingroup fcpptmath
+\brief A class representing circles, spheres, ...
+*/

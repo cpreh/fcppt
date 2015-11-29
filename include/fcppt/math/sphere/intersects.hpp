@@ -21,20 +21,37 @@ namespace math
 namespace sphere
 {
 
-/// Checks if spheres @a a and @a b intersect
+/**
+\brief Checks if two spheres intersect
+
+\ingroup fcpptmathsphere
+*/
 template<
 	typename T,
-	size_type N
+	fcppt::math::size_type N
 >
 bool
 intersects(
-	object<T, N> const &a,
-	object<T, N> const &b
+	fcppt::math::sphere::object<
+		T,
+		N
+	> const &_a,
+	fcppt::math::sphere::object<
+		T,
+		N
+	> const &_b
 )
 {
 	return
-		fcppt::math::vector::length(a.origin() - b.origin())
-		< a.radius() + b.radius();
+		fcppt::math::vector::length(
+			_a.origin()
+			-
+			_b.origin()
+		)
+		<
+		_a.radius()
+		+
+		_b.radius();
 }
 
 }

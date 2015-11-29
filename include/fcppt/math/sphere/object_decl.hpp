@@ -24,7 +24,10 @@ namespace sphere
 \brief The object sphere class
 
 \tparam T The value type to hold
+
 \tparam N The static size of the sphere
+
+\ingroup fcpptmathsphere
 */
 template<
 	typename T,
@@ -62,11 +65,6 @@ public:
 
 	const_reference
 	radius() const;
-
-	void
-	swap(
-		object &
-	);
 private:
 	point_type origin_;
 

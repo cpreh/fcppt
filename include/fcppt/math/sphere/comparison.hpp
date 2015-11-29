@@ -18,7 +18,11 @@ namespace math
 namespace sphere
 {
 
+/**
+\brief Compares two spheres for equality
 
+\ingroup fcpptmathsphere
+*/
 template<
 	typename T,
 	fcppt::math::size_type N
@@ -45,6 +49,11 @@ operator==(
 		_b.radius();
 }
 
+/**
+\brief Compares two spheres for inequality
+
+\ingroup fcpptmathsphere
+*/
 template<
 	typename T,
 	fcppt::math::size_type N

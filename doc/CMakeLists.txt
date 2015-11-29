@@ -72,6 +72,7 @@ set(
 	doc/files/modules/math/box.doxygen
 	doc/files/modules/math/dim.doxygen
 	doc/files/modules/math/matrix.doxygen
+	doc/files/modules/math/sphere.doxygen
 	doc/files/modules/math/vector.doxygen
 	doc/files/modules/mpl.doxygen
 	doc/files/modules/optional.doxygen

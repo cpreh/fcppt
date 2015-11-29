@@ -30,8 +30,6 @@ namespace box
 \tparam N The box's (numeric) dimension
 
 \ingroup fcpptmathbox
-
-See the \link fcpptmathvector module documentation \endlink for more information.
 */
 template<
 	typename T,
