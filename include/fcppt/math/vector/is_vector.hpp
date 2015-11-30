@@ -28,8 +28,10 @@ FCPPT_PP_PUSH_WARNING
 FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
 
 /**
-\brief Metafunction to test if a type is a vector type
+\brief Checks if a type is a vector type
+
 \ingroup fcpptmathvector
+
 \tparam T The type to test against
 */
 template<

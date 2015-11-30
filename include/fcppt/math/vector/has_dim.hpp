@@ -26,7 +26,9 @@ FCPPT_PP_PUSH_WARNING
 FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
 
 /**
-\brief Metafunction to check the dimension of a static vector
+\brief Checks the dimension of a vector
+
+\ingroup fcpptmathvector
 */
 template<
 	typename Vector,

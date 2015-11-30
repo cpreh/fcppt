@@ -21,8 +21,11 @@ namespace vector
 
 /**
 \brief Typedef helper for static vectors
+
 \ingroup fcpptmathvector
+
 \tparam T The vector's <code>value_type</code>
+
 See the introduction to fcppt::math::vector::object for more information on
 static vectors (and on this class).
 */

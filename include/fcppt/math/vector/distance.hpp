@@ -26,6 +26,11 @@ namespace math
 namespace vector
 {
 
+/**
+\brief Computes the distance between two floating-point vectors
+
+\ingroup fcpptmathvector
+*/
 template<
 	typename T,
 	fcppt::math::size_type N,
@@ -60,6 +65,11 @@ distance(
 		);
 }
 
+/**
+\brief Computes the distance between two non floating-point vectors
+
+\ingroup fcpptmathvector
+*/
 template<
 	typename Dest,
 	typename T,

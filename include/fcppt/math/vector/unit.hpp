@@ -21,8 +21,11 @@ namespace vector
 
 /**
 \brief Returns the n-th basis vector of the canonical basis.
+
 \ingroup fcpptmathvector
+
 \tparam Vec The destination vector type.
+
 \param _axis The basis axis
 
 Creates a vector of type \p Vec with all components set to 0 expect for component \p _axis which is set to 1:

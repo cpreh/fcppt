@@ -10,6 +10,7 @@
 
 #include <fcppt/math/vector/dot.hpp>
 
+
 namespace fcppt
 {
 namespace math
@@ -34,6 +35,7 @@ for an explanation.
 \see fcppt::math::vector::orthogonalize
 */
 template<typename Vector>
+// TODO: Remove?
 Vector const
 project(
 	Vector const &u,

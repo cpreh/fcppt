@@ -24,9 +24,13 @@ namespace vector
 
 /**
 \brief A class representing static n-dimensional vectors
+
 \tparam T The vector's <code>value_type</code>
-\tparam N The vector's dimension type
+
+\tparam N The vector's dimension
+
 \tparam S The vector's storage type
+
 \ingroup fcpptmathvector
 
 See the \link fcpptmathvector module documentation \endlink for more information.

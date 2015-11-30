@@ -20,8 +20,11 @@ namespace vector
 
 /**
 \brief Constructs a static vector with all components set to a given value
+
 \ingroup fcpptmathvector
+
 \tparam Vector Must be a vector
+
 \param _value The value to fill the vector with
 */
 template<

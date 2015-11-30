@@ -113,6 +113,8 @@ set(
 	examples/cast/safe_numeric.cpp
 	examples/cast/truncation_check.cpp
 	examples/codecvt.cpp
+	examples/coding_style.cpp
+	examples/coding_style_asthetic.cpp
 	examples/config.cpp
 	examples/container/bitfield.cpp
 	examples/container/grid.cpp

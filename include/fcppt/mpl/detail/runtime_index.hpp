@@ -20,6 +20,8 @@ namespace mpl
 namespace detail
 {
 
+/// \cond
+
 template<
 	typename MaxIndex,
 	typename CurrentIndex,
@@ -115,6 +117,8 @@ struct runtime_index<
 			;
 	}
 };
+
+/// \endcond
 
 }
 }

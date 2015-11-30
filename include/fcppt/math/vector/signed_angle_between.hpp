@@ -24,6 +24,7 @@ namespace vector
 
 /**
 \brief Calculates the signed angle between two 2D vectors
+
 \ingroup fcpptmathvector
 
 This just uses fcppt::math::vector::atan2 on the difference between the two

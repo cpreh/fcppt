@@ -25,11 +25,10 @@ namespace vector
 /**
 \brief Outputs a vector to a stream
 
-Uses the output format
-<pre>(a_1,a_2,...)</pre>
-where <code>a_i</code> are the vector's components.
-
 \ingroup fcpptmathvector
+
+Uses the output format <pre>(a_1,a_2,...)</pre> where <code>a_i</code> are the
+vector's components.
 */
 template<
 	typename T,

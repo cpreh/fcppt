@@ -25,6 +25,7 @@ namespace vector
 
 /**
 \brief Calculates the dot product of two vectors
+
 \ingroup fcpptmathvector
 
 The dot product is defined here:

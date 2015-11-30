@@ -20,6 +20,11 @@ namespace math
 namespace vector
 {
 
+/**
+\brief Compares two vectors for equality
+
+\ingroup fcpptmathvector
+*/
 template<
 	typename T,
 	fcppt::math::size_type N,
@@ -48,6 +53,11 @@ operator==(
 		);
 }
 
+/**
+\brief Compares two vectors for disequality
+
+\ingroup fcpptmathvector
+*/
 template<
 	typename T,
 	fcppt::math::size_type N,
@@ -73,6 +83,11 @@ operator!=(
 		!(_v1 == _v2);
 }
 
+/**
+\brief Compares two vectors lexicographically
+
+\ingroup fcpptmathvector
+*/
 template<
 	typename T,
 	fcppt::math::size_type N,
@@ -101,6 +116,11 @@ operator<(
 		);
 }
 
+/**
+\brief Compares two vectors lexicographically
+
+\ingroup fcpptmathvector
+*/
 template<
 	typename T,
 	fcppt::math::size_type N,
@@ -126,6 +146,11 @@ operator>(
 		_v2 < _v1;
 }
 
+/**
+\brief Compares two vectors lexicographically
+
+\ingroup fcpptmathvector
+*/
 template<
 	typename T,
 	fcppt::math::size_type N,
@@ -151,6 +176,11 @@ operator<=(
 		!(_v2 < _v1);
 }
 
+/**
+\brief Compares two vectors lexicographically
+
+\ingroup fcpptmathvector
+*/
 template<
 	typename T,
 	fcppt::math::size_type N,

@@ -24,6 +24,11 @@ namespace math
 namespace vector
 {
 
+/**
+\brief Division rounded up for signed vectors
+
+\ingroup fcpptmathvector
+*/
 template<
 	typename T,
 	fcppt::math::size_type N,

@@ -69,6 +69,7 @@ std::cout << vectors[0] << "\n";
 std::cout << vectors[1] << "\n";
 \endcode
 
+// TODO: Move this to fruitcut?
 \see fcppt::math::vector::project
 */
 template<typename Iterator,typename EndIterator>

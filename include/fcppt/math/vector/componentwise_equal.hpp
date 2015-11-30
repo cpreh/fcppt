@@ -19,6 +19,11 @@ namespace math
 namespace vector
 {
 
+/**
+\brief Compares two vectors for equality using an epsilon
+
+\ingroup fcpptmathvector
+*/
 template<
 	typename T,
 	fcppt::math::size_type N,
