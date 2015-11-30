@@ -9,12 +9,19 @@
 
 #include <fcppt/strong_typedef_fwd.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <iosfwd>
+#include <istream>
+#include <utility>
 #include <fcppt/config/external_end.hpp>
+
 
 namespace fcppt
 {
 
+/**
+\brief Input operator for strong typedefs
+
+\ingroup fcpptstrongtypedef
+*/
 template<
 	typename Ch,
 	typename Traits,
@@ -30,7 +37,7 @@ operator>>(
 		Ch,
 		Traits
 	> &_stream,
-	strong_typedef<
+	fcppt::strong_typedef<
 		T,
 		Tag
 	> &_value
@@ -41,9 +48,18 @@ operator>>(
 	if(
 		_stream >> in
 	)
-		_value = in;
+		_value =
+			fcppt::strong_typedef<
+				T,
+				Tag
+			>(
+				std::move(
+					in
+				)
+			);
 
-	return _stream;
+	return
+		_stream;
 }
 
 }

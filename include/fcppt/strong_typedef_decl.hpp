@@ -17,12 +17,15 @@ namespace fcppt
 
 /**
 \brief Used to create strong typedefs
+
 \ingroup fcpptstrongtypedef
+
 \tparam T The underlying type to be wrapped.
+
 \tparam Tag A unique tag type
 
-strong_typedef has an explicit construct and explicit get member functions.
-Almost all operators are overloaded and found in their respective header.
+A strong typedef is a wrapper around a type. It has an explicit constructor and
+a get member function.
 */
 template<
 	typename T,
@@ -61,17 +64,6 @@ public:
 	);
 
 	/**
-	\brief Assigns a new value to the strong typedef using fcppt::safe_cast.
-	*/
-	template<
-		typename U
-	>
-	strong_typedef &
-	operator=(
-		U const &
-	);
-
-	/**
 	\brief Return the strong typedef's value.
 	*/
 	T const &
@@ -90,6 +82,11 @@ private:
 	T value_;
 };
 
+/**
+\brief Strong typedef reference
+
+\ingroup fcpptstrongtypedef
+*/
 template<
 	typename T,
 	typename Tag
@@ -125,7 +122,9 @@ private:
 
 /**
 \brief Swap the contents of two strong typedefs
+
 \tparam T The underlying type to be wrapped.
+
 \tparam Tag A unique tag type
 */
 template<
@@ -134,8 +133,14 @@ template<
 >
 void
 swap(
-	fcppt::strong_typedef<T, Tag> &,
-	fcppt::strong_typedef<T, Tag> &
+	fcppt::strong_typedef<
+		T,
+		Tag
+	> &,
+	fcppt::strong_typedef<
+		T,
+		Tag
+	> &
 );
 
 }

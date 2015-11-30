@@ -320,6 +320,12 @@
 	</ul>
 </li>
 
+<li>\ref fcpptstrongtypedef
+	<ul>
+	<li>Removed implicit assignment from the underlying type.</li>
+	</ul>
+</li>
+
 <li>\ref fcppttime
 	<ul>
 	<li>Removed <code>fcppt::time::parse_time</code> and

@@ -15,9 +15,13 @@
 namespace fcppt
 {
 
+/** \addtogroup fcpptstrongtypedef
+*  @{
+*/
 FCPPT_DETAIL_STRONG_TYPEDEF_FOREACH_ASSIGNMENT_OPERATOR(
 	FCPPT_DETAIL_STRONG_TYPEDEF_ASSIGNMENT_OPERATOR
 )
+/** @}*/
 
 }
 

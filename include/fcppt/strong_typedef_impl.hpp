@@ -61,41 +61,14 @@ template<
 	typename T,
 	typename Tag
 >
-template<
-	typename U
->
-fcppt::strong_typedef<
-	T,
-	Tag
-> &
-fcppt::strong_typedef<
-	T,
-	Tag
->::operator=(
-	U const &_other
-)
-{
-	value_ =
-		fcppt::detail::strong_typedef_cast<
-			T
-		>(
-			_other
-		);
-
-	return *this;
-}
-
-template<
-	typename T,
-	typename Tag
->
 T const &
 fcppt::strong_typedef<
 	T,
 	Tag
 >::get() const
 {
-	return value_;
+	return
+		value_;
 }
 
 template<

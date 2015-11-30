@@ -9,12 +9,18 @@
 
 #include <fcppt/strong_typedef_fwd.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <iosfwd>
+#include <ostream>
 #include <fcppt/config/external_end.hpp>
+
 
 namespace fcppt
 {
 
+/**
+\brief Output operator for strong typedefs
+
+\ingroup fcpptstrongtypedef
+*/
 template<
 	typename Ch,
 	typename Traits,
@@ -37,7 +43,9 @@ operator<<(
 )
 {
 	return
-		_stream << _value.get();
+		_stream
+		<<
+		_value.get();
 }
 
 }
