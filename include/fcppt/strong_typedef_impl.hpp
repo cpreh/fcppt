@@ -98,39 +98,6 @@ template<
 	typename T,
 	typename Tag
 >
-fcppt::strong_typedef<
-	T &,
-	Tag
->::strong_typedef(
-	reference _value
-)
-:
-	value_(
-		_value
-	)
-{
-}
-
-template<
-	typename T,
-	typename Tag
->
-typename fcppt::strong_typedef<
-	T &,
-	Tag
->::reference
-fcppt::strong_typedef<
-	T &,
-	Tag
->::get() const
-{
-	return value_;
-}
-
-template<
-	typename T,
-	typename Tag
->
 void
 fcppt::swap(
 	fcppt::strong_typedef<

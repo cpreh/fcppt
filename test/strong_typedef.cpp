@@ -231,62 +231,6 @@ FCPPT_PP_PUSH_WARNING
 FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
 
 BOOST_AUTO_TEST_CASE(
-	strong_typedef_const_reference
-)
-{
-FCPPT_PP_POP_WARNING
-
-	int const test(
-		42
-	);
-
-	strong_int_const_ref const int_ref(
-		test
-	);
-
-	BOOST_CHECK_EQUAL(
-		&int_ref.get(),
-		&test
-	);
-
-	BOOST_CHECK_EQUAL(
-		int_ref.get(),
-		test
-	);
-}
-
-FCPPT_PP_PUSH_WARNING
-FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
-
-BOOST_AUTO_TEST_CASE(
-	strong_typedef_reference
-)
-{
-FCPPT_PP_POP_WARNING
-
-	int test(
-		42
-	);
-
-	strong_int_ref const int_ref(
-		test
-	);
-
-	BOOST_CHECK_EQUAL(
-		&int_ref.get(),
-		&test
-	);
-
-	BOOST_CHECK_EQUAL(
-		int_ref.get(),
-		test
-	);
-}
-
-FCPPT_PP_PUSH_WARNING
-FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
-
-BOOST_AUTO_TEST_CASE(
 	strong_typedef_hash
 )
 {

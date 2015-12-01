@@ -7,9 +7,11 @@
 #ifndef FCPPT_STRONG_TYPEDEF_DECL_HPP_INCLUDED
 #define FCPPT_STRONG_TYPEDEF_DECL_HPP_INCLUDED
 
-#include <fcppt/nonassignable.hpp>
 #include <fcppt/strong_typedef_fwd.hpp>
 #include <fcppt/detail/strong_typedef/friend_operators.hpp>
+#include <fcppt/config/external_begin.hpp>
+#include <type_traits>
+#include <fcppt/config/external_end.hpp>
 
 
 namespace fcppt
@@ -34,6 +36,13 @@ template<
 class strong_typedef
 {
 public:
+	static_assert(
+		!std::is_reference<
+			T
+		>::value,
+		"T must be a non-reference type"
+	);
+
 	/**
 	\brief A type that represents the data stored in the strong typedef
 	*/
@@ -81,44 +90,6 @@ private:
 
 	T value_;
 };
-
-/**
-\brief Strong typedef reference
-
-\ingroup fcpptstrongtypedef
-*/
-template<
-	typename T,
-	typename Tag
->
-class strong_typedef<
-	T &,
-	Tag
->
-{
-	FCPPT_NONASSIGNABLE(
-		strong_typedef
-	);
-public:
-	typedef T value_type;
-
-	typedef T &reference;
-
-	typedef Tag tag_type;
-
-	explicit
-	strong_typedef(
-		reference
-	);
-
-	reference
-	get() const;
-private:
-	FCPPT_DETAIL_STRONG_TYPEDEF_FRIEND_OPERATORS
-
-	reference value_;
-};
-
 
 /**
 \brief Swap the contents of two strong typedefs

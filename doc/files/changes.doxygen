@@ -323,6 +323,7 @@
 <li>\ref fcpptstrongtypedef
 	<ul>
 	<li>Removed implicit assignment from the underlying type.</li>
+	<li>Removed strong typedef references.</li>
 	</ul>
 </li>
 
