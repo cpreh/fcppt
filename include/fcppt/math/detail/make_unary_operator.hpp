@@ -9,7 +9,6 @@
 
 #include <fcppt/math/map.hpp>
 #include <fcppt/math/size_type.hpp>
-#include <fcppt/math/static_storage.hpp>
 #include <fcppt/math/detail/unary_type.hpp>
 
 
@@ -21,13 +20,9 @@ template<\
 	fcppt::math::size_type N,\
 	typename S\
 >\
-object<\
+static_<\
 	FCPPT_MATH_DETAIL_UNARY_TYPE(T, op),\
-	N,\
-	fcppt::math::static_storage<\
-		FCPPT_MATH_DETAIL_UNARY_TYPE(T, op),\
-		N\
-	>\
+	N\
 > \
 operator op(\
 	object<\
@@ -37,19 +32,11 @@ operator op(\
 	> const &_arg\
 )\
 {\
-	typedef \
-	FCPPT_MATH_DETAIL_UNARY_TYPE(T, op) \
-	result_value_type;\
-\
 	return \
 		fcppt::math::map<\
-			object<\
-				result_value_type,\
-				N,\
-				fcppt::math::static_storage<\
-					result_value_type,\
-					N\
-				>\
+			static_<\
+				FCPPT_MATH_DETAIL_UNARY_TYPE(T, op), \
+				N\
 			>\
 		>(\
 			_arg,\

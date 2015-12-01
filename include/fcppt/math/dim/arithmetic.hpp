@@ -12,6 +12,7 @@
 #include <fcppt/math/detail/make_symmetric_binary_operator.hpp>
 #include <fcppt/math/detail/make_unary_operator.hpp>
 #include <fcppt/math/dim/object_impl.hpp>
+#include <fcppt/math/dim/static.hpp>
 
 
 namespace fcppt

@@ -9,7 +9,6 @@
 
 #include <fcppt/math/binary_map.hpp>
 #include <fcppt/math/size_type.hpp>
-#include <fcppt/math/static_storage.hpp>
 #include <fcppt/math/detail/binary_type.hpp>
 
 
@@ -23,32 +22,20 @@ template<\
 	typename S1,\
 	typename S2\
 >\
-object<\
+static_<\
 	FCPPT_MATH_DETAIL_BINARY_TYPE(L, op, R),\
-	N,\
-	fcppt::math::static_storage<\
-		FCPPT_MATH_DETAIL_BINARY_TYPE(L, op, R),\
-		N\
-	>\
+	N\
 > \
 operator op(\
 	object<L, N, S1> const &_left,\
 	object<R, N, S2> const &_right\
 )\
 {\
-	typedef \
-	FCPPT_MATH_DETAIL_BINARY_TYPE(L, op, R)\
-	result_value_type; \
-\
 	return \
 		fcppt::math::binary_map<\
-			object<\
-				result_value_type,\
-				N,\
-				fcppt::math::static_storage<\
-					result_value_type,\
-					N\
-				>\
+			static_<\
+				FCPPT_MATH_DETAIL_BINARY_TYPE(L, op, R),\
+				N\
 			>\
 		>(\
 			_left,\
