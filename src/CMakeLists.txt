@@ -504,8 +504,6 @@ set(
 	include/fcppt/math/detail/make_op_def.hpp
 	include/fcppt/math/detail/make_symmetric_binary_operator.hpp
 	include/fcppt/math/detail/make_unary_operator.hpp
-	include/fcppt/math/detail/make_variadic_constructor.hpp
-	include/fcppt/math/detail/make_variadic_constructor_decl.hpp
 	include/fcppt/math/detail/mod.hpp
 	include/fcppt/math/detail/mod_assign.hpp
 	include/fcppt/math/detail/narrow_cast.hpp
