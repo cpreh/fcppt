@@ -24,6 +24,8 @@ namespace box
 
 /**
 \brief Compare two boxes componentwise using <code>value_type</code>'s <code>operator==</code>
+
+\ingroup fcpptmathbox
 */
 template<
 	typename T,
@@ -50,6 +52,8 @@ operator==(
 
 /**
 \brief Compare two boxes componentwise using <code>value_type</code>'s <code>operator!=</code>
+
+\ingroup fcpptmathbox
 */
 template<
 	typename T,
@@ -74,6 +78,8 @@ operator!=(
 
 /**
 \brief Compare two boxes lexicographically
+
+\ingroup fcpptmathbox
 */
 template<
 	typename T,

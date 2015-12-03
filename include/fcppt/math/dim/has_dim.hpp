@@ -27,6 +27,8 @@ FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
 
 /**
 \brief Metafunction to check the dimension of a static dim
+
+\ingroup fcpptmathdim
 */
 template<
 	typename Dim,

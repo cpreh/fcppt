@@ -18,6 +18,11 @@ namespace fcppt
 namespace math
 {
 
+/**
+\brief The static storage type
+
+\ingroup fcpptmath
+*/
 template<
 	typename T,
 	fcppt::math::size_type N

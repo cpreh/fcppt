@@ -7,14 +7,14 @@
 #ifndef FCPPT_MATH_DETAIL_ASSERT_STATIC_STORAGE_HPP_INCLUDED
 #define FCPPT_MATH_DETAIL_ASSERT_STATIC_STORAGE_HPP_INCLUDED
 
-#include <fcppt/math/is_static_storage.hpp>
+#include <fcppt/math/detail/is_static_storage.hpp>
 
 
 #define FCPPT_MATH_DETAIL_ASSERT_STATIC_STORAGE(\
 	storage\
 )\
 static_assert(\
-	fcppt::math::is_static_storage<\
+	fcppt::math::detail::is_static_storage<\
 		storage\
 	>::value,\
 	"S must be a static storage"\

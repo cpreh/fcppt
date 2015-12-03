@@ -20,6 +20,11 @@ namespace math
 namespace matrix
 {
 
+/**
+\brief The type to initialize a row with
+
+\ingroup fcpptmathmatrix
+*/
 template<
 	typename Type,
 	std::size_t Size

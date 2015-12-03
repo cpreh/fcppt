@@ -18,6 +18,11 @@ namespace math
 namespace matrix
 {
 
+/**
+\brief A static matrix index
+
+\ingroup fcpptmathmatrix
+*/
 template<
 	fcppt::math::size_type Row,
 	fcppt::math::size_type Column

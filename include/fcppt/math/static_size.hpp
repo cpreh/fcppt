@@ -20,6 +20,8 @@ namespace math
 
 /**
 \brief An mpl integral_c for math::size_type
+
+\ingroup fcpptmath
 */
 template<
 	fcppt::math::size_type N

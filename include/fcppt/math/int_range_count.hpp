@@ -17,6 +17,11 @@ namespace fcppt
 namespace math
 {
 
+/**
+\brief A static int range starting at 0
+
+\ingroup fcpptmath
+*/
 template<
 	fcppt::math::size_type Count
 >

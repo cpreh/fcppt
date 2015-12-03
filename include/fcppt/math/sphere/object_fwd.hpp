@@ -9,6 +9,7 @@
 
 #include <fcppt/math/size_type.hpp>
 
+
 namespace fcppt
 {
 namespace math
@@ -18,7 +19,7 @@ namespace sphere
 
 template<
 	typename T,
-	size_type N
+	fcppt::math::size_type N
 >
 class object;
 

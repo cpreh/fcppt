@@ -18,6 +18,11 @@ namespace fcppt
 namespace math
 {
 
+/**
+\brief A static int range
+
+\ingroup fcpptmath
+*/
 template<
 	fcppt::math::size_type Start,
 	fcppt::math::size_type End

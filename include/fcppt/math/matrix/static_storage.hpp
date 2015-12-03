@@ -18,6 +18,11 @@ namespace math
 namespace matrix
 {
 
+/**
+\brief Static storage type of a matrix
+
+\ingroup fcpptmathmatrix
+*/
 template<
 	typename T,
 	fcppt::math::size_type R,

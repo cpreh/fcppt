@@ -19,6 +19,19 @@ namespace fcppt
 namespace math
 {
 
+/**
+\brief Thick version of the bresenham algorithm
+
+\ingroup fcpptmath
+
+Plots points using bresenham between \a _start and \a _end. For each point in
+the set, \a _callback is called. If \a _callback returns <code>false</code>
+the algorithm stops.
+
+\tparam Callback A function callable as <code>bool (fcppt::math::vector::static_<T,2>)</code>
+
+\return <code>true</code> iff every call to \a _callback returns <code>true</code>
+*/
 template<
 	typename T,
 	typename S1,

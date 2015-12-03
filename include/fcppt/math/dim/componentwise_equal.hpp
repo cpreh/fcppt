@@ -19,6 +19,11 @@ namespace math
 namespace dim
 {
 
+/**
+\brief Compares two dims for equality using an epsilon
+
+\ingroup fcpptmathdim
+*/
 template<
 	typename T,
 	fcppt::math::size_type N,

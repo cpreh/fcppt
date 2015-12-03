@@ -9,16 +9,19 @@
 
 #include <fcppt/math/detail/mod_assign.hpp>
 
+
 namespace fcppt
 {
 namespace math
 {
 
-/// Assigns the result of @a l mod @a r to l
 /**
- * It uses std::fmod for floating point types.
- * Otherwise %= is used.
- * The behaviour will, of course, be undefined if r is 0.
+\brief Assigns the result of @a l mod @a r to l
+
+\ingroup fcpptmath
+
+It uses std::fmod for floating point types. Otherwise %= is used. The
+behaviour will, of course, be undefined if r is 0.
 */
 template<
 	typename T

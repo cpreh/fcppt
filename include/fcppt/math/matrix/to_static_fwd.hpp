@@ -17,6 +17,11 @@ namespace math
 namespace matrix
 {
 
+/**
+\brief The static type of a matrix
+
+\ingroup fcpptmathmatrix
+*/
 template<
 	typename Matrix
 >

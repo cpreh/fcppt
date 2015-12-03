@@ -29,7 +29,11 @@ namespace math
 namespace matrix
 {
 
-/// Multiplies a matrix by a vector
+/**
+\brief Multiplies a matrix by a vector
+
+\ingroup fcpptmathmatrix
+*/
 template<
 	typename Left,
 	typename Right,

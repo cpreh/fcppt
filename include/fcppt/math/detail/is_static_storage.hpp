@@ -4,8 +4,8 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_MATH_IS_STATIC_STORAGE_HPP_INCLUDED
-#define FCPPT_MATH_IS_STATIC_STORAGE_HPP_INCLUDED
+#ifndef FCPPT_MATH_DETAIL_IS_STATIC_STORAGE_HPP_INCLUDED
+#define FCPPT_MATH_DETAIL_IS_STATIC_STORAGE_HPP_INCLUDED
 
 #include <fcppt/type_traits/is_std_array.hpp>
 
@@ -13,6 +13,8 @@
 namespace fcppt
 {
 namespace math
+{
+namespace detail
 {
 
 template<
@@ -25,6 +27,7 @@ fcppt::type_traits::is_std_array<
 	Type
 >;
 
+}
 }
 }
 

@@ -497,6 +497,7 @@ set(
 	include/fcppt/math/detail/init.hpp
 	include/fcppt/math/detail/init_function.hpp
 	include/fcppt/math/detail/init_storage.hpp
+	include/fcppt/math/detail/is_static_storage.hpp
 	include/fcppt/math/detail/linear_access.hpp
 	include/fcppt/math/detail/make_asymmetric_binary_operator.hpp
 	include/fcppt/math/detail/make_asymmetric_binary_operator_right.hpp
@@ -554,7 +555,6 @@ set(
 	include/fcppt/math/interpolation/trigonometric_functor.hpp
 	include/fcppt/math/interval_distance.hpp
 	include/fcppt/math/is_power_of_2.hpp
-	include/fcppt/math/is_static_storage.hpp
 	include/fcppt/math/log2.hpp
 	include/fcppt/math/map.hpp
 	include/fcppt/math/matrix/adjugate.hpp

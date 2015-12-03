@@ -15,6 +15,7 @@ namespace fcppt
 {
 namespace math
 {
+
 /**
 \brief Implements a step function returning either zero or one
 \ingroup fcpptmath
@@ -46,6 +47,7 @@ step(
 				0
 			);
 }
+
 }
 }
 

@@ -17,7 +17,11 @@ namespace math
 namespace sphere
 {
 
-/// Typedefs a sphere with a dimension of 2 (a circle)
+/**
+\brief Typedefs a sphere with a dimension of 2 (a circle)
+
+\ingroup fcpptmathsphere
+*/
 template<
 	typename T
 >

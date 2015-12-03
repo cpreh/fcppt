@@ -30,6 +30,8 @@ FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
 
 /**
 \brief Metafunction to check the dimension of a box
+
+\ingroup fcpptmathbox
 */
 template<
 	typename Box,

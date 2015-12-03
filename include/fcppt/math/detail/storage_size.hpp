@@ -8,7 +8,7 @@
 #define FCPPT_MATH_DETAIL_STORAGE_SIZE_HPP_INCLUDED
 
 #include <fcppt/container/array_size.hpp>
-#include <fcppt/math/is_static_storage.hpp>
+#include <fcppt/math/detail/is_static_storage.hpp>
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
@@ -40,7 +40,7 @@ struct storage_size<
 	T,
 	typename
 	boost::disable_if<
-		fcppt::math::is_static_storage<
+		fcppt::math::detail::is_static_storage<
 			T
 		>
 	>::type
@@ -57,7 +57,7 @@ struct storage_size<
 	T,
 	typename
 	boost::enable_if<
-		fcppt::math::is_static_storage<
+		fcppt::math::detail::is_static_storage<
 			T
 		>
 	>::type

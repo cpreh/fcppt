@@ -19,6 +19,11 @@ namespace math
 namespace dim
 {
 
+/**
+\brief Compares two dims for equality
+
+\ingroup fcpptmathdim
+*/
 template<
 	typename T,
 	fcppt::math::size_type N,
@@ -47,6 +52,11 @@ operator==(
 		);
 }
 
+/**
+\brief Compares two dims for disequality
+
+\ingroup fcpptmathdim
+*/
 template<
 	typename T,
 	fcppt::math::size_type N,
@@ -72,6 +82,11 @@ operator!=(
 		!(_v1 == _v2);
 }
 
+/**
+\brief Compares two dims lexicographically
+
+\ingroup fcpptmathdim
+*/
 template<
 	typename T,
 	fcppt::math::size_type N,
@@ -100,6 +115,11 @@ operator<(
 		);
 }
 
+/**
+\brief Compares two dims lexicographically
+
+\ingroup fcpptmathdim
+*/
 template<
 	typename T,
 	fcppt::math::size_type N,
@@ -125,6 +145,11 @@ operator>(
 		_v2 < _v1;
 }
 
+/**
+\brief Compares two dims lexicographically
+
+\ingroup fcpptmathdim
+*/
 template<
 	typename T,
 	fcppt::math::size_type N,
@@ -150,6 +175,11 @@ operator<=(
 		!(_v2 < _v1);
 }
 
+/**
+\brief Compares two dims lexicographically
+
+\ingroup fcpptmathdim
+*/
 template<
 	typename T,
 	fcppt::math::size_type N,

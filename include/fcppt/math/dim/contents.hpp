@@ -26,6 +26,8 @@ namespace dim
 /**
 \brief Returns the area/volume of the dimension
 
+\ingroup fcpptmathdim
+
 This is equal to the product of all components of the dimension.
 */
 template<
