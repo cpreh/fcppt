@@ -29,6 +29,9 @@ namespace fcppt
 namespace mpl
 {
 
+FCPPT_PP_PUSH_WARNING
+FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
+
 /**
 \brief An MPL range over enums from a minimum to a maximum
 
