@@ -48,6 +48,8 @@ std::integral_constant<
 {
 };
 
+FCPPT_PP_POP_WARNING
+
 }
 }
 
