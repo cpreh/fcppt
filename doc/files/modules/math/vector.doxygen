@@ -21,8 +21,8 @@ namespace vector
 <td>
 
 <ul>
-	<li>\ref fcpptmathvector_special</li>
-	<li>\ref fcpptmathvector_operators</li>
+	<li>\ref fcpptmathvector_main</li>
+	<li>\ref fcpptmathvector_dim</li>
 	<li>\ref fcpptmathvector_headers</li>
 </ul>
 
@@ -30,18 +30,25 @@ namespace vector
 </tr>
 </table>
 
-\section fcpptmathvector_special Special operations
+\section fcpptmathvector_main Vector overview
 
-\link fcppt::math::vector::length\endlink:
+A vector is a one-dimensional statically sized array, useful for representing
+points and directions. For a general introduction on vectors, see \ref
+fcpptmath_classes. For vector's interoperation with \link
+fcppt::math::matrix::object\endlink, see \ref fcpptmathmatrix_operators.
 
-\snippet math/vector.cpp comparison_length
+\section fcpptmathvector_dim Vector and dim
 
-See \link fcppt::math::vector::dot\endlink and \link
-fcppt::math::vector::cross\endlink.
+A dimension is very similar to a vector, see \ref fcpptmathdim_motivation.
+Vectors and dims can be converted into each other, see \ref
+fcpptmathdim_converting_from_and_to_vectors.
 
-\section fcpptmathvector_operators Operators
+Additionally, there are arithmetic operators that take a vector on the
+left-hand side and a dim on the right-hand side. These are defined in
+<code>fcppt/math/vector/dim.hpp</code>.
 
-<code>fcppt/math/vector/dim.hpp</code>
+\snippet math/vector/arithmetic.cpp vector_dim_decl
+\snippet math/vector/arithmetic.cpp vector_dim
 
 \section fcpptmathvector_headers Header files
 
@@ -52,27 +59,27 @@ fcppt::math::vector::cross\endlink.
 </tr>
 <tr>
 <td><code>object_fwd.hpp</code></td>
-<td>Contains \link fcppt::math::vector::object object's \endlink declaration. Include this if you pass a vector by reference, for example.</td>
+<td>Contains \link fcppt::math::vector::object\endlink's declaration.</td>
 </tr>
 <tr>
 <td><code>object_decl.hpp</code></td>
-<td>Contains \link fcppt::math::vector::object object's \endlink definition.</td>
+<td>Contains \link fcppt::math::vector::object\endlink's definition.</td>
 </tr>
 <tr>
 <td><code>object_impl.hpp</code></td>
-<td>Contains the definition of \link fcppt::math::vector::object object's \endlink member functions.</td>
+<td>Contains the definition of \link fcppt::math::vector::object\endlink's member functions.</td>
 </tr>
 <tr>
 <td><code>object.hpp</code></td>
-<td>Includes <code>object_fwd.hpp</code>, <code>object_decl.hpp</code> and <code>object_impl.hpp</code></td>
+<td>Includes <code>object_fwd.hpp</code>, <code>object_decl.hpp</code> and <code>object_impl.hpp</code>.</td>
 </tr>
 <tr>
 <td><code>arithmetic.hpp</code></td>
-<td>Contains \link fcppt::math::vector::object object's \endlink arithmetic operators.</td>
+<td>Contains symmetric and scalar arithmetic operators.</td>
 </tr>
 <tr>
 <td><code>comparison.hpp</code></td>
-<td>Contains \link fcppt::math::vector::object object's \endlink comparison operators.</td>
+<td>Contains all comparison operators.</td>
 </tr>
 <tr>
 <td><code>input.hpp</code></td>
@@ -84,7 +91,7 @@ fcppt::math::vector::cross\endlink.
 </tr>
 <tr>
 <td><code>dim.hpp</code></td>
-<td>Contains arithmetic operators to interoperate with the \link fcppt::math::dim::object\endlink class.</td>
+<td>Contains arithmetic operators to interoperate with \link fcppt::math::dim::object\endlink.</td>
 </tr>
 </table>
 */

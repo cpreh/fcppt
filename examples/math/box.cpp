@@ -4,33 +4,58 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-//[mathbox
 #include <fcppt/math/box/object_impl.hpp>
 #include <fcppt/math/box/output.hpp>
+#include <fcppt/math/dim/output.hpp>
+#include <fcppt/math/vector/output.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <iostream>
-#include <ostream>
 #include <fcppt/config/external_end.hpp>
 
-int main()
+int
+main()
 {
-	// declare a two dimensional box (a rect)
-	typedef fcppt::math::box::object<
+// ![init_points]
+	typedef
+	fcppt::math::box::object<
 		unsigned,
 		2
-	> box2i;
+	>
+	box2i;
 
 	box2i const box(
 		box2i::vector(
-			10u,
-			20u
+			1u,
+			2u
 		),
-		box2i::dim(
-			30u,
-			30u
+		box2i::vector(
+			2u,
+			3u
 		)
 	);
+// ![init_points]
+
+// ![init_size]
+	box2i const box2(
+		box2i::vector(
+			1u,
+			2u
+		),
+		box2i::dim(
+			1u,
+			1u
+		)
+	);
+// ![init_size]
 
 	std::cout << box << '\n';
+
+	std::cout << box2 << '\n';
+
+// ![getters]
+	std::cout << box.pos() << ", " << box.max() << '\n';
+	std::cout << box.pos() << ", " << box.size() << '\n';
+// ![getters]
+
 }
 //]

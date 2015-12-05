@@ -21,12 +21,8 @@ namespace box
 <td>
 
 <ul>
-	<li>\ref fcpptmathbox_motivation</li>
-	<li>\ref fcpptmathbox_declaring_boxes</li>
+	<li>\ref fcpptmathbox_overview</li>
 	<li>\ref fcpptmathbox_constructors_and_getters</li>
-	<li>\ref fcpptmathbox_coordinate_systems</li>
-	<li>\ref fcpptmathbox_null_boxes_and_comparisons</li>
-	<li>\ref fcpptmathbox_operators</li>
 	<li>\ref fcpptmathbox_headers</li>
 </ul>
 
@@ -34,122 +30,36 @@ namespace box
 </tr>
 </table>
 
-\section fcpptmathbox_motivation Motivation
+\section fcpptmathbox_overview Overview
 
-In your code, you might need a class representing a rectangle, for example, to
-specify the position and size of a window on the screen. Or, you might want to
-store the bounding box of an object in your 3D world. To do that,
-fcppt::math::box::object was invented.
-
-Note that this class only represents axis-aligned boxes, so they do not have a
-rotation. It's more of a wrapper around a <code>(vector,dim)</code> pair than a
-fully-fledged geometry primitive class.
-
-\section fcpptmathbox_declaring_boxes Declaring boxes
-
-fcppt::math::box::object is declared like this:
-
-\code
-template<typename T,fcppt::math::size_type N>
-class object;
-\endcode
-
-Notice that you do not have to specify a storage type. A box always stores the
-dimension and the position <em>statically</em>.
+A box is defined by two n-dimensional points. For example, a rectangle has a
+dimension of 2. The two points give a minimum bound and a non-inclusive maximum
+bound. More precisely, let a box be given by <code>p = (x_1,...,x_n)</code> and
+<code>q = (y_1,...,y_n)</code>. A point <code>r = (z_1,...,z_n)</code> is
+inside the box iff for all <code>1 <= i <= n</code> it holds that <code>x_i <=
+z_i < y_i</code>. This representation makes it easy to specify empty boxes: For
+example, a rectangle defined by <code>(1,2), (1,2)</code> is empty.
 
 \section fcpptmathbox_constructors_and_getters Constructors and getters
 
-To construct a box, you have to specify the position and the size:
+A box can be constructed in two ways:
+<ul>
+<li>A minimum point and a non-inclusive maximum point:
 
-\code
-typedef
-fcppt::math::box::object<int,2>
-int_box;
+\snippet math/box.cpp init_points
 
-int_box my_box(
-	int_box::vector(
-		0,
-		0),
-	int_box::dim(
-		1,
-		2));
-\endcode
+</li>
+<li>A minimum point and a size:
 
-A box has getters and setters for the position and size, but it also has
-specialized getters and setters for the dimensions 2 and 3. You can, for
-example, query the x coordinate of a box using <code>my_box.left()</code>. This
-is for convenience only.
+\snippet math/box.cpp init_size
 
-\section fcpptmathbox_coordinate_systems Coordinate systems
+</li>
+</ul>
+There are getters and setters for both representations as well:
 
-All your calculations and positions assume a certain <em>coordinate
-system</em>. In the two-dimensional computer graphics world, for example, the
-coordinate system origin is at the <em>top left</em>, with the x axis extending
-<em>rightwards</em> and the y axis extending <em>downwards</em>. In this
-coordinate system, the "top" coordinate must be smaller than the bottom
-coordinate (and the left coordinate smaller than the right coordinate).
-
-fcppt::math::box::object doesn't enforce those constraints, and thus is useful
-in arbitrary coordinate systems. However, some of the getter functions are
-suggestive: There's fcppt::math::box::object::top which returns the y coordinate
-of the box's position. This, of course, assumes that the top coordinate is
-really given by the position, not the position plus the size.
-
-However, those functions are just there for convenience, so just don't use them
-if your coordinate system isn't compatible with them.
-
-\section fcpptmathbox_null_boxes_and_comparisons Null boxes and comparisons
-
-To get a box with all zeroes, use the static member function <code>::%null()</code>:
-
-\code
-int main()
-{
-	typedef
-	fcppt::math::box::object<float,2>
-	box2f;
-
-	box2f n = box2f::null();
-}
-\endcode
-
-To compare two boxes, you <em>can</em> use the comparison operator(s):
-
-\code
-int main()
-{
-	typedef
-	fcppt::math::box::object<float,2>::type
-	box2f;
-
-	box2f x(box2f::vector(1.0f,2.0f),box2f::size(1.0f,1.0f));
-	box2f y(box2f::vector(1.0f,2.0f),box2f::size(10.0f,10.0f));
-
-	std::cout << (x == y) << "\n";
-}
-\endcode
-
-This will use the float comparison operator. However, since floating point
-values are inherently inaccurate, an exact comparison is almost <em>never</em>
-what you want to do. Instead, you should use a different method for comparison.
-fcppt::math::box provides the \link fcppt::math::box::componentwise_equal
-componentwise_equal \endlink method which takes two boxes and an epsilon. If
-one of the components of the difference is larger than the given epsilon, this
-function returns <code>false</code>. Apart from that, there are currently no
-other metrics defined for a box (you are, of course, free to implement your
-own).
-
-\section fcpptmathbox_operators Operators
-
-fcppt::math::box::object defines no operators other than <code>operator==</code>
-and <code>operator!=</code> for comparison (see above) and
-<code>operator<<</code> to output a box to the standard output.
+\snippet math/box.cpp getters
 
 \section fcpptmathbox_headers Header files
-
-fcppt::math::box is spread out across various header files. There's one
-header per free function. fcppt::math::box::object itself is split into
-various headers, too. Here's an exhaustive list:
 
 <table>
 <tr>
@@ -158,23 +68,27 @@ various headers, too. Here's an exhaustive list:
 </tr>
 <tr>
 <td><code>object_fwd.hpp</code></td>
-<td>Contains \link fcppt::math::box::object object's \endlink declaration. Include this if you pass a box by reference, for example.</td>
+<td>Contains \link fcppt::math::box::object\endlink's declaration.</td>
 </tr>
 <tr>
 <td><code>object_decl.hpp</code></td>
-<td>Contains \link fcppt::math::box::object object's \endlink definition.</td>
+<td>Contains \link fcppt::math::box::object\endlink's definition.</td>
 </tr>
 <tr>
 <td><code>object_impl.hpp</code></td>
-<td>Contains the definition of \link fcppt::math::box::object object's \endlink member functions.</td>
+<td>Contains the definition of \link fcppt::math::box::object\endlink's member functions.</td>
 </tr>
 <tr>
 <td><code>object.hpp</code></td>
-<td>Includes <code>object_fwd.hpp</code>, <code>object_decl.hpp</code> and <code>object_impl.hpp</code></td>
+<td>Includes <code>object_fwd.hpp</code>, <code>object_decl.hpp</code> and <code>object_impl.hpp</code>.</td>
+</tr>
+<tr>
+<td><code>comparison.hpp</code></td>
+<td>Contains all comparison operators.</td>
 </tr>
 <tr>
 <td><code>output.hpp</code></td>
-<td>Contains an <code>operator<<</code> for the standard input streams (wide and narrow) which outputs boxes in the format: <code>(v1,v2,v3,...)</code></td>
+<td>Contains <code>operator<<</code>.</td>
 </tr>
 </table>
 */

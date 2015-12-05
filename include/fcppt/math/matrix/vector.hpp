@@ -63,7 +63,7 @@ operator *(
 	typedef
 	fcppt::math::vector::static_<
 		FCPPT_MATH_DETAIL_BINARY_TYPE(Left, *, Right),
-		C
+		R
 	>
 	result_type;
 

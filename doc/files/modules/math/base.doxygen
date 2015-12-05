@@ -19,6 +19,11 @@
 		<li>\ref fcpptmath_inoutput</li>
 		</ul>
 	</li>
+	<li>\ref fcpptmathvector</li>
+	<li>\ref fcpptmathdim</li>
+	<li>\ref fcpptmathmatrix</li>
+	<li>\ref fcpptmathbox</li>
+	<li>\ref fcpptmathsphere</li>
 </ul>
 
 </td>
@@ -41,8 +46,8 @@ a common base design which will be explained using vectors.
 
 There are two classes that build on top of vector and dim:
 <ul>
-<li>\ref fcppt.math.box and</li>
-<li>\ref fcppt.math.sphere.</li>
+<li>\ref fcpptmathbox and</li>
+<li>\ref fcpptmathsphere.</li>
 </ul>
 
 \subsection fcpptmath_declaring Declarations

@@ -5,6 +5,7 @@
 
 \section fcpptstrongtypedef_motivation Motivation
 
+TODO: Clean this up
 C++ offers <strong>typedefs</strong> to provide aliases (different names) for a
 type. This is helpful in some situations, but many times, a different name is
 not enough. You want a new type that encapsulates the old type (if you know

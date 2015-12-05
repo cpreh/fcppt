@@ -21,37 +21,27 @@ namespace dim
 <td>
 
 <ul>
-	<li>\ref fcpptmathdimobject_motivation</li>
-	<li>\ref fcpptmathdimobject_converting_from_and_to_vectors</li>
-	<li>\ref fcpptmathdimobject_operators</li>
-	<li>\ref fcpptmathdimobject_headers</li>
+	<li>\ref fcpptmathdim_motivation</li>
+	<li>\ref fcpptmathdim_converting_from_and_to_vectors</li>
+	<li>\ref fcpptmathdim_headers</li>
 </ul>
 
 </td>
 </tr>
 </table>
 
-\section fcpptmathdimobject_motivation Motivation
+\section fcpptmathdim_motivation Motivation
 
-When writing code that deals with geometry, you need a type to denote the size
-(or extent) of the geometry for each dimension. You also need such a class when
-writing multi-dimensional containers (like \link
-fcppt::container::grid::object\endlink).
+Conceptually, a dimension is very similar to an \link
+fcppt::math::vector::object\endlink. However, it is often useful to distinguish
+the two on the type level. For example, there are operations that apply to
+vectors (like the dot product) that make no sense in the context of a
+dimension.  Conversely, there are operations like "take the area of the
+dimension" that make no sense for vectors. Also, the lower-dimensional getters
+for vector (<code>x(),y(),z(),w()</code>) have different names than the
+lower-dimensional getters for dim (<code>w(),h(),d()</code>).
 
-Conceptually, you could just use \link fcppt::math::vector::object\endlink, and
-we (the authors of fcppt) have thought about going that way. However, a vector
-just isn't a dimension type. You have operations you can apply to a vector
-(like the dot product) that make no sense in the context of a dimension.
-Conversely, you have operations like "take the area of the dimension" that make
-no sense for vectors. Also, the lower-dimensional getters for vector (meaning
-<code>x(),y(),z(),w()</code>) are not mixed with the lower-dimensional getters
-for dim (meaning <code>w(),h(),d()</code>).
-
-So don't be confused, vector and dim are distinct types, not (strong) typedefs
-of another. They have a very similar interface (and the same template
-parameters), but not the same member and free functions.
-
-\section fcpptmathdimobject_converting_from_and_to_vectors Converting from and to vectors
+\section fcpptmathdim_converting_from_and_to_vectors Converting from and to vectors
 
 To convert a dimension to a vector, use \link fcppt::math::dim::to_vector\endlink:
 
@@ -61,67 +51,7 @@ Conversely, use \link fcppt::math::vector::structure_cast\endlink to convert a v
 
 \snippet math/dim.cpp conversion_from_vector
 
-If you include the fcppt/math/vector/dim.hpp header, you get the operators
-<code>+-*%/</code> which all have the signature
-
-<pre>
-vector::static_<T,N> operator(vector::object<T,N,S1> left,dim::object<T,N,S2>)
-</pre>
-
-This way, you can add a dimension to a vector, for example.
-
-\section fcpptmathdimobject_operators Operators
-
-The arithmetic operators all work component-wise.
-
-Including <strong><code>fcppt/math/dim/comparison.hpp</code></strong> you get all the comparison operators:
-
-<ul>
-	<li><code>operator+=(dim::object<T,N,S2>)</code></li>
-	<li><code>operator-=(dim::object<T,N,S2>)</code></li>
-	<li><code>operator*=(dim::object<T,N,S2>)</code></li>
-	<li><code>operator/=(dim::object<T,N,S2>)</code></li>
-	<li><code>operator%=(dim::object<T,N,S2>)</code></li>
-	<li><code>operator*=(T)</code> (multiply by a scalar)</li>
-	<li><code>operator/=(T)</code> (divide by a scalar)</li>
-	<li><code>operator==</code></li>
-	<li><code>operator!=</code></li>
-	<li><code>operator<=</code></li>
-	<li><code>operator<</code></li>
-	<li><code>operator>=</code></li>
-	<li><code>operator></code></li>
-</ul>
-
-All of these work component-wise and forward to the <code>value_type</code>'s
-operators. The ordering is lexicographic. This means that you can use a dim
-with associative containers like <code>std::%set,std::%map,...</code>. Keep in
-mind that the equality comparison operators do <em>not</em> use an epsilon so
-you <em>will</em> get exact floating point comparisons (be sure that you really
-want that!).
-
-Including <strong><code>fcppt/math/dim/arithmetic.hpp</code></strong> gives
-you the following operators:
-
-<ul>
-	<li><code>operator+(dim::object<T,N,S>,dim::object<T,N,S>)</code></li>
-	<li><code>operator-(dim::object<T,N,S>,dim::object<T,N,S>)</code></li>
-	<li><code>operator*(dim::object<T,N,S>,dim::object<T,N,S>)</code></li>
-	<li><code>operator/(dim::object<T,N,S>,dim::object<T,N,S>)</code></li>
-	<li><code>operator%(dim::object<T,N,S>,dim::object<T,N,S>)</code></li>
-	<li><code>operator*(T,dim::object<T,N,S>)</code> (scalar multiplication)</li>
-	<li><code>operator/(T,dim::object<T,N,S>)</code> (scalar division)</li>
-	<li>Unary minus for dims</li>
-</ul>
-
-The arithmetic operators all work component-wise.
-
-Including <strong><code>fcppt/math/dim/input.hpp</code></strong> gives
-you an <code>operator>></code> for reading input from standard streams.
-Conversely, including
-<strong><code>fcppt/math/dim/output.hpp</code></strong> gives you an inverse
-<code>operator<<</code>.
-
-\section fcpptmathdimobject_headers Header files
+\section fcpptmathdim_headers Header files
 
 <table>
 <tr>
@@ -130,35 +60,35 @@ Conversely, including
 </tr>
 <tr>
 <td><code>object_fwd.hpp</code></td>
-<td>Contains \link fcppt::math::dim::object object's \endlink declaration. Include this if you pass a dim by reference, for example.</td>
+<td>Contains \link fcppt::math::dim::object\endlink's declaration.</td>
 </tr>
 <tr>
 <td><code>object_decl.hpp</code></td>
-<td>Contains \link fcppt::math::dim::object object's \endlink definition.</td>
+<td>Contains \link fcppt::math::dim::object\endlink's definition.</td>
 </tr>
 <tr>
 <td><code>object_impl.hpp</code></td>
-<td>Contains the definition of \link fcppt::math::dim::object object's \endlink member functions.</td>
+<td>Contains the definition of \link fcppt::math::dim::object\endlink's member functions.</td>
 </tr>
 <tr>
 <td><code>object.hpp</code></td>
-<td>Includes <code>object_fwd.hpp</code>, <code>object_decl.hpp</code> and <code>object_impl.hpp</code></td>
+<td>Includes <code>object_fwd.hpp</code>, <code>object_decl.hpp</code> and <code>object_impl.hpp</code>.</td>
 </tr>
 <tr>
 <td><code>arithmetic.hpp</code></td>
-<td>Contains \link fcppt::math::dim::object object's \endlink arithmetic operators.</td>
+<td>Contains symmetric and scalar arithmetic operators.</td>
 </tr>
 <tr>
 <td><code>comparison.hpp</code></td>
-<td>Contains \link fcppt::math::dim::object object's \endlink comparison operators.</td>
+<td>Contains all comparison operators.</td>
 </tr>
 <tr>
 <td><code>input.hpp</code></td>
-<td>Contains an <code>operator>></code> for the standard input streams (wide and narrow) which expects dims to be input in the format: <code>(v1,v2,...)</code></td>
+<td>Contains <code>operator>></code>.</td>
 </tr>
 <tr>
 <td><code>output.hpp</code></td>
-<td>Contains an <code>operator<<</code> for the standard input streams (wide and narrow) which outputs dims in the format: <code>(v1,v2,...)</code></td>
+<td>Contains <code>operator<<</code>.</td>
 </tr>
 </table>
 */

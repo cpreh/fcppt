@@ -15,4 +15,55 @@ namespace sphere
 \defgroup fcpptmathsphere fcppt.math.sphere
 \ingroup fcpptmath
 \brief A class representing circles, spheres, ...
+
+<table id="toc">
+<tr>
+<td>
+
+<ul>
+	<li>\ref fcpptmathsphere_main</li>
+	<li>\ref fcpptmathsphere_headers</li>
+</ul>
+
+</td>
+</tr>
+</table>
+
+\section fcpptmathsphere_main Sphere overview
+
+An n-dimensional sphere is an object defined by an n-dimensional center that is
+represented as an \link fcppt::math::vector::object\endlink and a radius.
+
+\section fcpptmathsphere_headers Header files
+
+<table>
+<tr>
+<th>Header file</th>
+<th>Description</th>
+</tr>
+<tr>
+<td><code>object_fwd.hpp</code></td>
+<td>Contains \link fcppt::math::sphere::object\endlink's declaration.</td>
+</tr>
+<tr>
+<td><code>object_decl.hpp</code></td>
+<td>Contains \link fcppt::math::sphere::object\endlink's definition.</td>
+</tr>
+<tr>
+<td><code>object_impl.hpp</code></td>
+<td>Contains the definition of \link fcppt::math::sphere::object\endlink's member functions.</td>
+</tr>
+<tr>
+<td><code>object.hpp</code></td>
+<td>Includes <code>object_fwd.hpp</code>, <code>object_decl.hpp</code> and <code>object_impl.hpp</code>.</td>
+</tr>
+<tr>
+<td><code>comparison.hpp</code></td>
+<td>Contains all comparison operators.</td>
+</tr>
+<tr>
+<td><code>output.hpp</code></td>
+<td>Contains <code>operator<<</code>.</td>
+</tr>
+</table>
 */

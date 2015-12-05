@@ -21,33 +21,24 @@ namespace matrix
 <td>
 
 <ul>
-	<li>\ref fcpptmathmatrixobject_motivation</li>
-	<li>\ref fcpptmathmatrixobject_operators</li>
-	<li>\ref fcpptmathmatrixobject_accessing_elements</li>
-	<li>\ref fcpptmathmatrixobject_identity</li>
-	<li>\ref fcpptmathmatrixobject_iteration</li>
+	<li>\ref fcpptmathmatrix_motivation</li>
+	<li>\ref fcpptmathmatrix_constructor</li>
+	<li>\ref fcpptmathmatrix_operators</li>
+	<li>\ref fcpptmathmatrix_representation</li>
+	<li>\ref fcpptmathmatrix_identity</li>
+	<li>\ref fcpptmathmatrix_headers</li>
 </ul>
 
 </td>
 </tr>
 </table>
 
-\section fcpptmathmatrixobject_motivation Motivation
+\section fcpptmathmatrix_motivation Motivation
 
-TODO: This is out of date!
 Matrices are ubiquituous in mathematics and computer science. Often, matrices
-represent linear operations and are applied to accordingly-sized vectors. Since
-fcppt already provides a vector class, there's the need for a complementary
-matrix class and operations.
+represent linear operations and are applied to accordingly-sized vectors.
 
-The meaning of fcppt::math::matrix::object's template parameters is the same as
-for vector and dim, so it'll not be explained in detail here. We will only
-touch the differences between a vector and a matrix, so you should read the
-documentation for fcppt::math::vector::object before reading this introduction.
-
-Of course, a matrix has two dimension parameters instead of one. Again, we have
-the metafunction \link fcppt::math::matrix::static_ static_ \endlink to typedef
-a static matrix.
+\section fcpptmathmatrix_constructor Constructor
 
 A matrix can be constructed using a variadic constructor which takes the matrix
 components in row-major order. This way, you can arrange the matrix's
@@ -55,146 +46,78 @@ components nicely in the source code, as seen in the following example:
 
 \snippet math/matrix.cpp decl
 
-To cast between matrices of different value and storage types, you have
-fcppt::math::matrix::structure_cast. There are, however, no functions to
-"expand" or "narrow" a matrix. You have to do that yourself.
+\section fcpptmathmatrix_operators Operators
 
-\section fcpptmathmatrixobject_accessing_elements Accessing elements
+Matrix defines addition, subtraction, multiplication, scalar multiplication and
+multiplication by a vector.
 
-The <code>operator[]</code> in C++ only takes one argument. This is fine for
-one-dimensional data structures like an array (or a vector). For
-multi-dimensional structures, you have to work around it, for example:
+Multiplication of two matrices is special: An <code>M1</code> by <code>N</code>
+matrix multiplied by an <code>N</code> by <code>M2</code> matrix results in an
+<code>M1</code> by <code>M2</code> matrix.
 
-<ul>
-	<li>
-		Use a function instead of an operator to access the elements.
-		Functions can, of course, take two arguments:
-		<code>matrix.at(x,y) = 10;</code>
-	</li>
-	<li>
-		Use <code>operator()</code> (the function call operator)
-		instead of the array access operator: <code>matrix(x,y) =
-		10;</code>
-	</li>
-	<li>
-		Nest two <code>operator[]</code> expressions:
-		<code>matrix[x][y] = 10;</code>.
-	</li>
-</ul>
+\snippet math/matrix.cpp arithmetic_mul
 
-fcppt chose to implement the latter. In the statement
-<code>matrix[x][y]</code>, matrix::object's <code>operator[]</code> is invoked and
-returns a <em>proxy vector</em> representing the x-th row in the matrix. You
-can then do all the things you could do with a normal vector (for example, take
-the dot product, add it to another vector and so on).
+Matrices can also be multiplied by a vector: An <code>R</code> by
+<code>C</code> matrix multiplied by a <code>C</code> vector yields an
+<code>R</code> vector. This operation is defined in
+<code>fcppt/math/matrix/vector.hpp</code>.
 
-\note
-This functionality is not (yet) available to access the y-th <em>row</em> of a
-matrix. You'd have to transpose the matrix and then take the y-th row do
-achieve that.
+\snippet math/matrix.cpp arithmetic_vector
 
-\section fcpptmathmatrixobject_grid Grid
+\section fcpptmathmatrix_representation Representation
 
-The astute documentation reader might have noticed that there already is a
-multi-dimensional data structure included in fcppt:
-fcppt::container::grid::object. This is not an accident. The grid class is, by
-definition, n-dimensional and dynamic in size. Also, it is able to hold
-arbitrary (copyable) elements, not just numbers. Defining mathematical
-operators on it doesn't make any sense. Conversely, some operations like linear
-interpolation don't make any sense in the context of a matrix. So defining two
-classes for these different use cases is well-justified (until we are proven
-wrong by a cleverly written hybrid class!).
+The matrix's internal representation is row-major, which means that a row is
+represented as a contiguous chunk of memory. Consequently,
+<code>operator[]</code> takes the <em>row number</em> and returns a row,
+which is represented as an \link fcppt::math::vector::object\endlink using a
+view as storage type. Here is an example:
 
-There are subtle differences and similarities between the classes:
+\snippet math/matrix.cpp row_iterate
 
-<ul>
-	<li>
-		Both matrix::object and grid, store their data in linear
-		(one-dimensional) form and calculate the linear index from the
-		n-dimensional tuple.
-	</li>
-	<li>
-		Accessing individual elements from a vector is done with a
-		proxy vector class for matrices (see above), the grid wants a
-		<code>dim</code> to denote positions.
-	</li>
-	<li>
-		The grid doesn't define any mathematical operators.
-	</li>
-	<li>
-		The grid doesn't have a storage type.
-	</li>
-</ul>
-
-\section fcpptmathmatrixobject_operators Operators
-
-Including <strong><code>fcppt/math/matrix/object_decl.hpp</code></strong> you
-will get the following operators (<code>S2</code> defines some other storage
-type):
-
-<ul>
-	<li><code>operator+=(matrix::object<T,M,N,S2>)</code></li>
-	<li><code>operator-=(matrix::object<T,M,N,S2>)</code></li>
-	<li><code>operator*=(T)</code> (multiply by a scalar)</li>
-	<li><code>operator/=(T)</code> (divide by a scalar)</li>
-	<li><code>operator=(matrix::object const &)</code> (regular assignment operator)</li>
-	<li><code>operator=(dim::object<T,M,N,S2> const &)</code></li>
-	<li><code>operator[](size_type)</code> (see above)</li>
-</ul>
-
-The arithmetic operators all work component-wise.
-
-Including <strong><code>fcppt/math/matrix/comparison.hpp</code></strong> you
-get all the comparison operators:
-
-<ul>
-	<li><code>operator==</code></li>
-	<li><code>operator!=</code></li>
-</ul>
-
-All of these work component-wise and forward to the <code>value_type</code>'s
-operators. Keep in mind that the equality comparison operators do <em>not</em>
-use an epsilon so you <em>will</em> get exact floating point comparisons (be
-sure that you really want that!).
-
-Including <strong><code>fcppt/math/matrix/arithmetic.hpp</code></strong> gives
-you the following operators:
-
-<ul>
-	<li><code>operator+(matrix::matrix<T,M,N,S1>,matrix::object<T,M,N,S2>)</code></li>
-	<li><code>operator-(matrix::matrix<T,M,N,S1>,matrix::object<T,M,N,S2>)</code></li>
-	<li><code>operator*(matrix::object<T,M,N,S>,matrix::object<T,N,M2,S>)</code> (matrix multiplication - will return a <code>matrix::object<T,M1,M2,?></code> where <code>?</code> is determined by fcppt::math::matrix::normal_storage.)</li>
-	<li><code>operator*(matrix::object<T,M,N,S>,T)</code> (scalar multiplication)</li>
-	<li><code>operator/(matrix::object<T,M,N,S>,T)</code> (scalar division)</li>
-</ul>
-
-<code>operator+</code> and <code>operator-</code> work component-wise. The
-matrix multiplication operator currently uses no sophisticated multiplication
-technique, just the regular text-book matrix multiplication.
-
-Including <strong><code>fcppt/math/matrix/output.hpp</code></strong> gives you
-an <code>operator<<</code>.
-
-Including <strong><code>fcppt/math/matrix/vector.hpp</code></strong> gives you:
-
-<pre>
-vector::object<T,M>
-operator*(
-	matrix::object<T,N,M> const &,
-	vector::object<T,N> const &
-);
-</pre>
-
-\section fcpptmathmatrixobject_identity Identity
+\section fcpptmathmatrix_identity Identity
 
 To get the identity matrix, use \link fcppt::math::matrix::identity\endlink function:
 
 \snippet math/matrix.cpp identity
 
-\section fcpptmathmatrixobject_iteration Iteration
+\section fcpptmathmatrix_headers Header files
 
-If you want to iterate over all rows, use a loop using an index instead of an
-iterator:
-
-\snippet math/matrix.cpp row_iterate
+<table>
+<tr>
+<th>Header file</th>
+<th>Description</th>
+</tr>
+<tr>
+<td><code>object_fwd.hpp</code></td>
+<td>Contains \link fcppt::math::matrix::object\endlink's declaration.</td>
+</tr>
+<tr>
+<td><code>object_decl.hpp</code></td>
+<td>Contains \link fcppt::math::matrix::object\endlink's definition.</td>
+</tr>
+<tr>
+<td><code>object_impl.hpp</code></td>
+<td>Contains the definition of \link fcppt::math::matrix::object\endlink's member functions.</td>
+</tr>
+<tr>
+<td><code>object.hpp</code></td>
+<td>Includes <code>object_fwd.hpp</code>, <code>object_decl.hpp</code> and <code>object_impl.hpp</code>.</td>
+</tr>
+<tr>
+<td><code>arithmetic.hpp</code></td>
+<td>Contains symmetric and scalar arithmetic operators.</td>
+</tr>
+<tr>
+<td><code>comparison.hpp</code></td>
+<td>Contains all comparison operators.</td>
+</tr>
+<tr>
+<td><code>output.hpp</code></td>
+<td>Contains <code>operator<<</code>.</td>
+</tr>
+<tr>
+<td><code>vector.hpp</code></td>
+<td>Contains <code>operator*</code> for \link fcppt::math::vector::object\endlink.</td>
+</tr>
+</table>
 */
