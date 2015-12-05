@@ -7,7 +7,7 @@
 #ifndef FCPPT_ALGORITHM_ARRAY_MAP_HPP_INCLUDED
 #define FCPPT_ALGORITHM_ARRAY_MAP_HPP_INCLUDED
 
-#include <fcppt/algorithm/array_fold_static.hpp>
+#include <fcppt/algorithm/array_init.hpp>
 #include <fcppt/container/array_size.hpp>
 #include <fcppt/type_traits/is_std_array.hpp>
 #include <fcppt/config/external_begin.hpp>
@@ -75,7 +75,7 @@ array_map(
 	);
 
 	return
-		fcppt::algorithm::array_fold_static<
+		fcppt::algorithm::array_init<
 			TargetArray
 		>(
 			[

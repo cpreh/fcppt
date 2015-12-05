@@ -68,7 +68,7 @@ add_fcppt_test(
 )
 
 add_fcppt_test(
-	algorithm/enum_array_fold
+	algorithm/enum_array_init
 )
 
 add_fcppt_test(

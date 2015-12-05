@@ -4,7 +4,7 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/algorithm/enum_array_fold_static.hpp>
+#include <fcppt/algorithm/enum_array_init.hpp>
 #include <fcppt/log/enabled_level_array.hpp>
 #include <fcppt/log/enabled_levels.hpp>
 #include <fcppt/log/level.hpp>
@@ -16,7 +16,7 @@ fcppt::log::enabled_levels(
 )
 {
 	return
-		fcppt::algorithm::enum_array_fold_static<
+		fcppt::algorithm::enum_array_init<
 			fcppt::log::enabled_level_array
 		>(
 			[

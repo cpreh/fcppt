@@ -182,14 +182,14 @@ set(
 	include/fcppt/algorithm/all_of.hpp
 	include/fcppt/algorithm/append.hpp
 	include/fcppt/algorithm/array_binary_map.hpp
-	include/fcppt/algorithm/array_fold_static.hpp
 	include/fcppt/algorithm/array_init.hpp
+	include/fcppt/algorithm/array_init_const.hpp
 	include/fcppt/algorithm/array_init_move.hpp
 	include/fcppt/algorithm/array_map.hpp
 	include/fcppt/algorithm/array_push_back.hpp
 	include/fcppt/algorithm/contains.hpp
 	include/fcppt/algorithm/contains_if.hpp
-	include/fcppt/algorithm/detail/array_fold_static.hpp
+	include/fcppt/algorithm/detail/array_init.hpp
 	include/fcppt/algorithm/detail/array_push_back_function.hpp
 	include/fcppt/algorithm/detail/find_by_result.hpp
 	include/fcppt/algorithm/detail/has_random_access_iterator.hpp
@@ -203,7 +203,7 @@ set(
 	include/fcppt/algorithm/detail/map_reserve.hpp
 	include/fcppt/algorithm/detail/optimize_map.hpp
 	include/fcppt/algorithm/detail/source_size.hpp
-	include/fcppt/algorithm/enum_array_fold_static.hpp
+	include/fcppt/algorithm/enum_array_init.hpp
 	include/fcppt/algorithm/find_by_opt.hpp
 	include/fcppt/algorithm/find_if_opt.hpp
 	include/fcppt/algorithm/find_opt.hpp

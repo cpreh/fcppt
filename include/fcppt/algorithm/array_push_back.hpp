@@ -7,7 +7,7 @@
 #ifndef FCPPT_ALGORITHM_ARRAY_PUSH_BACK_HPP_INCLUDED
 #define FCPPT_ALGORITHM_ARRAY_PUSH_BACK_HPP_INCLUDED
 
-#include <fcppt/algorithm/array_fold_static.hpp>
+#include <fcppt/algorithm/array_init.hpp>
 #include <fcppt/algorithm/detail/array_push_back_function.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <array>
@@ -58,7 +58,7 @@ array_push_back(
 	dest_array;
 
 	return
-		fcppt::algorithm::array_fold_static<
+		fcppt::algorithm::array_init<
 			dest_array
 		>(
 			fcppt::algorithm::detail::array_push_back_function<

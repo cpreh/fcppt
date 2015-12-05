@@ -7,7 +7,7 @@
 #ifndef FCPPT_MATH_MATRIX_DETAIL_INIT_STORAGE_HPP_INCLUDED
 #define FCPPT_MATH_MATRIX_DETAIL_INIT_STORAGE_HPP_INCLUDED
 
-#include <fcppt/algorithm/array_fold_static.hpp>
+#include <fcppt/algorithm/array_init.hpp>
 #include <fcppt/cast/size.hpp>
 #include <fcppt/math/matrix/row_type.hpp>
 #include <fcppt/math/matrix/static_storage.hpp>
@@ -49,7 +49,7 @@ init_storage(
 )
 {
 	return
-		fcppt::algorithm::array_fold_static<
+		fcppt::algorithm::array_init<
 			fcppt::math::matrix::static_storage<
 				Type,
 				R,

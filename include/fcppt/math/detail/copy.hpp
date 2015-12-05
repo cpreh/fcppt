@@ -7,7 +7,7 @@
 #ifndef FCPPT_MATH_DETAIL_COPY_HPP_INCLUDED
 #define FCPPT_MATH_DETAIL_COPY_HPP_INCLUDED
 
-#include <fcppt/algorithm/array_fold_static.hpp>
+#include <fcppt/algorithm/array_init.hpp>
 #include <fcppt/cast/size.hpp>
 #include <fcppt/math/size_type.hpp>
 #include <fcppt/math/detail/assert_static_storage.hpp>
@@ -39,7 +39,7 @@ copy(
 	);
 
 	return
-		fcppt::algorithm::array_fold_static<
+		fcppt::algorithm::array_init<
 			Result
 		>(
 			[

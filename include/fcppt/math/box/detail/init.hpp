@@ -8,7 +8,7 @@
 #define FCPPT_MATH_BOX_DETAIL_INIT_HPP_INCLUDED
 
 #include <fcppt/homogenous_pair.hpp>
-#include <fcppt/algorithm/array_fold_static.hpp>
+#include <fcppt/algorithm/array_init.hpp>
 #include <fcppt/math/box/is_box.hpp>
 #include <fcppt/math/detail/init_function.hpp>
 #include <fcppt/math/vector/init.hpp>
@@ -55,7 +55,7 @@ init(
 	result_array;
 
 	result_array const results(
-		fcppt::algorithm::array_fold_static<
+		fcppt::algorithm::array_init<
 			result_array
 		>(
 			fcppt::math::detail::init_function<

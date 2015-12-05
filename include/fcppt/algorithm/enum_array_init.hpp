@@ -4,11 +4,11 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_ALGORITHM_ENUM_ARRAY_FOLD_STATIC_HPP_INCLUDED
-#define FCPPT_ALGORITHM_ENUM_ARRAY_FOLD_STATIC_HPP_INCLUDED
+#ifndef FCPPT_ALGORITHM_ENUM_ARRAY_INIT_HPP_INCLUDED
+#define FCPPT_ALGORITHM_ENUM_ARRAY_INIT_HPP_INCLUDED
 
 #include <fcppt/decltype_sink.hpp>
-#include <fcppt/algorithm/array_fold_static.hpp>
+#include <fcppt/algorithm/array_init.hpp>
 #include <fcppt/cast/int_to_enum_fun.hpp>
 #include <fcppt/mpl/integral_cast.hpp>
 
@@ -21,7 +21,7 @@ namespace algorithm
 /**
 \ingroup fcpptenum
 
-\see fcppt::algorithm::array_fold_static
+\see fcppt::algorithm::array_init
 */
 template<
 	typename Array,
@@ -29,13 +29,13 @@ template<
 >
 inline
 Array
-enum_array_fold_static(
+enum_array_init(
 	Function const &_function
 )
 {
 	return
 		Array{
-			fcppt::algorithm::array_fold_static<
+			fcppt::algorithm::array_init<
 				typename
 				Array::internal
 			>(

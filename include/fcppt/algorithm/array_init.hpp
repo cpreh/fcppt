@@ -7,8 +7,8 @@
 #ifndef FCPPT_ALGORITHM_ARRAY_INIT_HPP_INCLUDED
 #define FCPPT_ALGORITHM_ARRAY_INIT_HPP_INCLUDED
 
-#include <fcppt/algorithm/array_fold_static.hpp>
-#include <fcppt/cast/to_void.hpp>
+#include <fcppt/algorithm/detail/array_init.hpp>
+#include <fcppt/container/array_size.hpp>
 #include <fcppt/type_traits/is_std_array.hpp>
 
 
@@ -18,22 +18,27 @@ namespace algorithm
 {
 
 /**
-\brief Constructs an array from a value
+\brief Constructs an array from a function object with static indices
 
 \ingroup fcpptalgorithm
 
-Constructs an array of type \a Array by initializing every element with \a
-_value.
+Constructs an array of type \a Array by calling
+<code>_function(std::integral_constant<std::size_t, Index>)</code> for every
+index.
 
 \tparam Array Must be a std::array
+
+\tparam Function Must be a function callable as <code>Array::value_type
+(std::integral_constant<std::size_t, I>)</code>.
 */
 template<
-	typename Array
+	typename Array,
+	typename Function
 >
 inline
 Array
 array_init(
-	typename Array::value_type const &_value
+	Function const &_function
 )
 {
 	static_assert(
@@ -44,22 +49,14 @@ array_init(
 	);
 
 	return
-		fcppt::algorithm::array_fold_static<
-			Array
+		fcppt::algorithm::detail::array_init<
+			0u,
+			typename Array::value_type,
+			fcppt::container::array_size<
+				Array
+			>::value
 		>(
-			[
-				&_value
-			](
-				auto const _index
-			)
-			{
-				fcppt::cast::to_void(
-					_index
-				);
-
-				return
-					_value;
-			}
+			_function
 		);
 }
 

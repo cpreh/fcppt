@@ -7,7 +7,7 @@
 #ifndef FCPPT_MATH_DETAIL_CONSTRUCT_HPP_INCLUDED
 #define FCPPT_MATH_DETAIL_CONSTRUCT_HPP_INCLUDED
 
-#include <fcppt/algorithm/array_fold_static.hpp>
+#include <fcppt/algorithm/array_init.hpp>
 #include <fcppt/algorithm/array_push_back.hpp>
 #include <fcppt/math/at_c.hpp>
 #include <fcppt/math/static_storage.hpp>
@@ -57,7 +57,7 @@ construct(
 	return
 		Dest(
 			fcppt::algorithm::array_push_back(
-				fcppt::algorithm::array_fold_static<
+				fcppt::algorithm::array_init<
 					storage
 				>(
 					[

@@ -7,7 +7,7 @@
 #ifndef FCPPT_MATH_DETAIL_INIT_STORAGE_HPP_INCLUDED
 #define FCPPT_MATH_DETAIL_INIT_STORAGE_HPP_INCLUDED
 
-#include <fcppt/algorithm/array_init.hpp>
+#include <fcppt/algorithm/array_init_const.hpp>
 #include <fcppt/math/detail/assert_static_storage.hpp>
 
 
@@ -32,7 +32,7 @@ init_storage(
 	);
 
 	return
-		fcppt::algorithm::array_init<
+		fcppt::algorithm::array_init_const<
 			Result
 		>(
 			_value

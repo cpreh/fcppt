@@ -7,7 +7,7 @@
 #ifndef FCPPT_MATH_DETAIL_INIT_HPP_INCLUDED
 #define FCPPT_MATH_DETAIL_INIT_HPP_INCLUDED
 
-#include <fcppt/algorithm/array_fold_static.hpp>
+#include <fcppt/algorithm/array_init.hpp>
 #include <fcppt/math/detail/init_function.hpp>
 
 
@@ -30,7 +30,7 @@ init(
 {
 	return
 		Result(
-			fcppt::algorithm::array_fold_static<
+			fcppt::algorithm::array_init<
 				typename
 				Result::storage_type
 			>(

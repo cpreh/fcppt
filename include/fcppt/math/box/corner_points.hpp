@@ -9,7 +9,7 @@
 #define FCPPT_MATH_BOX_CORNER_POINTS_HPP_INCLUDED
 
 #include <fcppt/literal.hpp>
-#include <fcppt/algorithm/array_fold_static.hpp>
+#include <fcppt/algorithm/array_init.hpp>
 #include <fcppt/math/generate_binary_vectors.hpp>
 #include <fcppt/math/size_type.hpp>
 #include <fcppt/math/box/object_impl.hpp>
@@ -83,7 +83,7 @@ corner_points(
 	);
 
 	return
-		fcppt::algorithm::array_fold_static<
+		fcppt::algorithm::array_init<
 			result_type
 		>(
 			[

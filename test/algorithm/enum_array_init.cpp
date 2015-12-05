@@ -4,7 +4,7 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/algorithm/enum_array_fold_static.hpp>
+#include <fcppt/algorithm/enum_array_init.hpp>
 #include <fcppt/cast/enum_to_int.hpp>
 #include <fcppt/container/enum_array.hpp>
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
@@ -19,7 +19,7 @@ FCPPT_PP_PUSH_WARNING
 FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
 
 BOOST_AUTO_TEST_CASE(
-	algorithm_enum_array_fold_static
+	algorithm_enum_array_init
 )
 {
 FCPPT_PP_POP_WARNING
@@ -40,7 +40,7 @@ FCPPT_PP_POP_WARNING
 	my_array;
 
 	my_array const array(
-		fcppt::algorithm::enum_array_fold_static<
+		fcppt::algorithm::enum_array_init<
 			my_array
 		>(
 			[](

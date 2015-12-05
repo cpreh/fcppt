@@ -169,6 +169,12 @@
 	fcppt::algorithm::map_iteration_second\endlink now expect their
 	function to return \link fcppt::algorithm::update_action\endlink
 	instead of a bool.</li>
+	<li>Renamed <code>%fcppt::algorithm::array_fold_static</code> to \link
+	fcppt::algorithm::array_init\endlink,
+	<code>%fcppt::algorithm::enum_array_fold_static</code> to \link
+	fcppt::algorithm::enum_array_init\endlink and
+	<code>%fcppt::algorithm::array_init</code> to \link
+	fcppt::algorithm::array_init_const\endlink.</li>
 	</ul>
 </li>
 
@@ -264,9 +270,7 @@
 	<ul>
 	<li>Removed <code>fcppt::algorithm::array_fold</code> and
 	<code>fcppt::algorithm::enum_array_fold</code> which were only useful
-	in <code>C++11</code>. Use \link
-	fcppt::algorithm::array_fold_static\endlink and \link
-	fcppt::algorithm::enum_array_fold_static\endlink instead.</li>
+	in <code>C++11</code>.
 	</ul>
 </li>
 
