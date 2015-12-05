@@ -658,10 +658,8 @@ set(
 	include/fcppt/math/vector/object_decl.hpp
 	include/fcppt/math/vector/object_fwd.hpp
 	include/fcppt/math/vector/object_impl.hpp
-	include/fcppt/math/vector/orthogonalize.hpp
 	include/fcppt/math/vector/output.hpp
 	include/fcppt/math/vector/point_rotate.hpp
-	include/fcppt/math/vector/project.hpp
 	include/fcppt/math/vector/signed_angle_between.hpp
 	include/fcppt/math/vector/signed_angle_between_cast.hpp
 	include/fcppt/math/vector/static.hpp

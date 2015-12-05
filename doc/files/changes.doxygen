@@ -303,6 +303,8 @@
 	<code>back</code>, etc, and so on.</li>
 	<li>Removed swap implementations because they gained nothing over
 	<code>std::swap</code>.</li>
+	<li>Removed <code>%fcppt::math::vector::project</code> and
+	<code>%fcppt::math::vector::orthogonalize</code>.</li>
 	</ul>
 </li>
 
