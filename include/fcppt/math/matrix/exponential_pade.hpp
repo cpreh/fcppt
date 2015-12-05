@@ -9,6 +9,8 @@
 #define FCPPT_MATH_MATRIX_EXPONENTIAL_PADE_HPP_INCLUDED
 
 #include <fcppt/literal.hpp>
+#include <fcppt/make_int_range.hpp>
+#include <fcppt/algorithm/repeat.hpp>
 #include <fcppt/cast/int_to_float.hpp>
 #include <fcppt/math/size_type.hpp>
 #include <fcppt/math/matrix/arithmetic.hpp>
@@ -52,10 +54,9 @@ exponential_pade(
 		DN,
 		DN,
 		S
-	> _matrix
+	> const &_matrix
 )
 {
-	// TODO: Improve this
 	static_assert(
 		std::is_floating_point<
 			T
@@ -72,27 +73,45 @@ exponential_pade(
 	matrix_type;
 
 	T const
-		zero =
-			fcppt::literal<T>(
-				0),
-		one =
-			fcppt::literal<T>(
-				1),
-		two =
-			fcppt::literal<T>(
-				2);
+		zero{
+			fcppt::literal<
+				T
+			>(
+				0
+			)
+		},
+		one{
+			fcppt::literal<
+				T
+			>(
+				1
+			)
+		},
+		two{
+			fcppt::literal<
+				T
+			>(
+				2
+			)
+		};
 
-	T const j(
+	T const j{
 		std::max(
 			zero,
 			one +
 			std::log(
 				fcppt::math::matrix::infinity_norm(
-					_matrix)) /
+					_matrix
+				)
+			)
+			/
 			std::log(
-				two)));
+				two
+			)
+		)
+	};
 
-	_matrix =
+	matrix_type const temp(
 		std::pow(
 			two,
 			std::floor(
@@ -100,7 +119,8 @@ exponential_pade(
 			)
 		)
 		*
-		_matrix;
+		_matrix
+	);
 
 	matrix_type
 		D(
@@ -119,62 +139,107 @@ exponential_pade(
 			>()
 		);
 
-	T c =
-		fcppt::literal<T>(
-			1);
+	T c{
+		fcppt::literal<
+			T
+		>(
+			1
+		)
+	};
 
-	fcppt::math::size_type const q =
-		6u;
+	fcppt::math::size_type const q{
+		6u
+	};
 
 	for(
-		fcppt::math::size_type k =
-			1u;
-		k < q;
-		++k)
+		fcppt::math::size_type const k
+		:
+		fcppt::make_int_range(
+			fcppt::literal<
+				fcppt::math::size_type
+			>(
+				1u
+			),
+			q
+		)
+	)
 	{
 		T const
-			qf =
-				fcppt::cast::int_to_float<T>(
-					q),
-			kf =
-				fcppt::cast::int_to_float<T>(
-					k);
+			qf{
+				fcppt::cast::int_to_float<
+					T
+				>(
+					q
+				)
+			},
+			kf{
+				fcppt::cast::int_to_float<
+					T
+				>(
+					k
+				)
+			};
+
 		c =
-			(c*(qf-kf+one))/
-			(kf*(two*qf-kf+one));
+			(c * (qf - kf + one))
+			/
+			(kf * (two * qf -kf + one));
 
 		X =
-			_matrix * X;
+			temp * X;
 
-		matrix_type const cX =
-			c * X;
+		matrix_type const cX(
+			c * X
+		);
 
 		N +=
 			cX;
 
 		D +=
-			(k % 2u == 0u ? fcppt::literal<T>(1) : fcppt::literal<T>(-1)) *
+			(
+				k % 2u == 0u
+				?
+					fcppt::literal<
+						T
+					>(
+						1
+					)
+				:
+					fcppt::literal<
+						T
+					>(
+						-1
+					)
+			)
+			*
 			cX;
 	}
 
 	X =
 		fcppt::math::matrix::inverse(
-			D) *
+			D
+		)
+		*
 		N;
 
-	matrix_type result =
-		X;
+	matrix_type result(
+		X
+	);
 
-	for(
-		fcppt::math::size_type i = 0u;
-		i < j;
-		++i)
-		result =
-			result * result;
+	fcppt::algorithm::repeat(
+		j,
+		[
+			&result
+		]{
+			result =
+				result * result;
+		}
+	);
 
 	return
 		result;
 }
+
 }
 }
 }
