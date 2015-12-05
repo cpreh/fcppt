@@ -44,6 +44,7 @@
 	never returns a reference.</li>
 	</ul>
 </li>
+
 </ul>
 
 \subsection changes_added_functionality_to_200 Added functionality
@@ -99,13 +100,23 @@
 
 <li>\ref fcpptmath
 	<ul>
-	<li>Added \link fcppt::math::matrix::init\endlink.</li>
-	<li>Added \link fcppt::math::matrix::at_c\endlink.</li>
-	<li>Added <code>fcppt/math/sphere/output.hpp</code>.</li>
 	<li>Added \link fcppt::math::int_range\endlink and \link
 	fcppt::math::int_range_count\endlink.</li>
+	</ul>
+</li>
+
+<li>\ref fcpptmathmatrix
+	<ul>
+	<li>Added \link fcppt::math::matrix::init\endlink.</li>
+	<li>Added \link fcppt::math::matrix::at_c\endlink.</li>
 	<li>Added \link
 	fcppt::math::matrix::delete_row_and_column_static\endlink.</li>
+	</ul>
+</li>
+
+<li>\ref fcpptmathsphere
+	<ul>
+	<li>Added <code>fcppt/math/sphere/output.hpp</code>.</li>
 	</ul>
 </li>
 
@@ -213,6 +224,14 @@
 
 <li>\ref fcpptmath
 	<ul>
+	<li>Use \link fcppt::math::size_type\endlink directly for static sizes,
+	instead of <code>std::integral_constant</code>. This greatly simplifies
+	matching of template arguments.</li>
+	</ul>
+</li>
+
+<li>\ref fcpptmathbox
+	<ul>
 	<li>\link fcppt::math::box::object\endlink now uses a
 	<code>(pos,max)</code> representation instead of
 	<code>(pos,dim)</code>. This greatly simplifies a lot of algorithms on
@@ -220,29 +239,45 @@
 	<li>Added \link fcppt::math::box::init_dim\endlink and \link
 	fcppt::math::box::init_max\endlink to replace the former
 	<code>fcppt::math::box::init</code>.</li>
-	<li>Use \link fcppt::math::size_type\endlink directly for static sizes,
-	instead of <code>std::integral_constant</code>. This greatly simplifies
-	matching of template arguments.</li>
+	<li>Moved <code>null</code> of \link fcppt::math::box::object\endlink
+	to \link fcppt::math::box::null\endlink.</li>
+	</ul>
+</li>
+
+<li>\ref fcpptmathdim
+	<ul>
 	<li>Use variadic constructors for \link
-	fcppt::math::vector::object\endlink and \link
-	fcppt::math::dim::object\endlink. Their implementation uses brace
-	initialization, so narrowing conversions are now errors.</li>
-	<li>Use a variadic constructors for \link
+	fcppt::math::dim::object\endlink.</li>
+	<li>Moved <code>null</code> of \link fcppt::math::dim::object\endlink
+	to \link fcppt::math::dim::null\endlink.</li>
+	</ul>
+</li>
+
+<li>\ref fcpptmathmatrix
+	<ul>
+	<li>Use variadic constructors for \link
 	fcppt::math::matrix::object\endlink which takes a parameter pack of
-	\link fcppt::math::matrix::row\endlink. Again, narrowing conversions
-	are now errors.</li>
-	<li>Moved <code>null</code> of \link
-	fcppt::math::vector::object\endlink, \link
-	fcppt::math::dim::object\endlink and \link
-	fcppt::math::box::object\endlink into \link
-	fcppt::math::vector::null\endlink, \link fcppt::math::dim::null\endlink
-	and \link fcppt::math::box::null\endlink.</li>
+	\link fcppt::math::matrix::row\endlink.</li>
 	<li>Moved <code>identity</code> of \link
-	fcppt::math::matrix::object\endlink into \link
+	fcppt::math::matrix::object\endlink to \link
 	fcppt::math::matrix::identity\endlink.</li>
+	</ul>
+</li>
+
+<li>\ref fcpptmathsphere
+	<ul>
 	<li>Moved comparison operators of \link
 	fcppt::math::sphere::object\endlink to
 	<code>fcppt/math/sphere/comparison.hpp</code>.</li>
+	</ul>
+</li>
+
+<li>\ref fcpptmathvector
+	<ul>
+	<li>Use variadic constructors for \link
+	fcppt::math::vector::object\endlink.</li>
+	<li>Moved <code>null</code> of \link fcppt::math::vector::object\endlink
+	to \link fcppt::math::vector::null\endlink.</li>
 	</ul>
 </li>
 
@@ -307,6 +342,11 @@
 	<code>back</code>, etc, and so on.</li>
 	<li>Removed swap implementations because they gained nothing over
 	<code>std::swap</code>.</li>
+	</ul>
+</li>
+
+<li>\ref fcpptmathvector
+	<ul>
 	<li>Removed <code>%fcppt::math::vector::project</code> and
 	<code>%fcppt::math::vector::orthogonalize</code>.</li>
 	</ul>
@@ -346,5 +386,6 @@
 	function \link fcppt::variant::get_exn\endlink instead.</li>
 	</ul>
 </li>
+
 </ul>
 */
