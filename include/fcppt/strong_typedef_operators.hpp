@@ -11,7 +11,6 @@
 #include <fcppt/strong_typedef_assignment.hpp>
 #include <fcppt/strong_typedef_bitwise.hpp>
 #include <fcppt/strong_typedef_comparison.hpp>
-#include <fcppt/strong_typedef_impl.hpp>
 
 
 #endif
