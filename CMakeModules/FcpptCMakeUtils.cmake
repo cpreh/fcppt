@@ -390,6 +390,7 @@ elseif(
 		/wd4714
 		/wd4738
 		/wd4820
+		/wd5031
 	)
 
 	# /W4 warnings
@@ -407,6 +408,7 @@ elseif(
 	#4714 - function marked as __forceinline not inlined
 	#4738 - storing 32-bit float result in memory
 	#4820 - byte padding after data members
+	#5031 - warning(pop) in different file
 endif()
 
 # setup platform specific flags
