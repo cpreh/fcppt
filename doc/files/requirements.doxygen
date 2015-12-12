@@ -47,8 +47,8 @@ doxygen-1.7.5</a>.
 The following platforms are tested by us:
 
 <ul>
-	<li>gcc-5.2 (Gentoo Linux)</li>
-	<li>gcc-5.1 (MinGW)</li>
+	<li>gcc-5.3 (Gentoo Linux)</li>
+	<li>gcc-5.2 (MinGW)</li>
 	<li>clang 3.7 (Gentoo Linux)</li>
 </ul>
 
