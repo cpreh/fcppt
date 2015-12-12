@@ -76,7 +76,7 @@ view as storage type. Here is an example:
 
 \section fcpptmathmatrix_identity Identity
 
-To get the identity matrix, use \link fcppt::math::matrix::identity\endlink function:
+To get the identity matrix, use the \link fcppt::math::matrix::identity\endlink function:
 
 \snippet math/matrix.cpp identity
 

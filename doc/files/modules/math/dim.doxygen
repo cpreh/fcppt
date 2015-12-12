@@ -47,7 +47,7 @@ To convert a dimension to a vector, use \link fcppt::math::dim::to_vector\endlin
 
 \snippet math/dim.cpp conversion_to_vector
 
-Conversely, use \link fcppt::math::vector::structure_cast\endlink to convert a vector to a dim:
+Conversely, use \link fcppt::math::vector::to_dim\endlink to convert a vector to a dim:
 
 \snippet math/dim.cpp conversion_from_vector
 
