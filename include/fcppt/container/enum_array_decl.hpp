@@ -10,6 +10,7 @@
 #include <fcppt/enum_size.hpp>
 #include <fcppt/container/enum_array_fwd.hpp>
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
+#include <fcppt/preprocessor/disable_vc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/config/external_begin.hpp>
@@ -24,6 +25,7 @@ namespace container
 
 FCPPT_PP_PUSH_WARNING
 FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
+FCPPT_PP_DISABLE_VC_WARNING(4623)
 
 /**
 \brief An array indexed with an enum
