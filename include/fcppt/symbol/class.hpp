@@ -21,7 +21,7 @@
 /**
 \brief Tells that a classes's vtable should be exported
 
-\ingroup fcpptsymbol
+\ingroup fcpptexport
 
 This macro marks a classes's vtable to be exported, so it can be shared across
 dynamic libraries. There are several cases in which this is necessary:

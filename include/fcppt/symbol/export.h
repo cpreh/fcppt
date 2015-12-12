@@ -21,7 +21,7 @@
 /**
 \brief Tells that a symbol should be exported
 
-\ingroup fcpptsymbol
+\ingroup fcpptexport
 
 This macro marks a symbol to be exported, so it can be used by other libraries
 or programs.

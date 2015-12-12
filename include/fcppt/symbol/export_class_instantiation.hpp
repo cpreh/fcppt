@@ -23,7 +23,7 @@
 /**
 \brief Tells that an explicit class instantiation should be exported
 
-\ingroup fcpptsymbol
+\ingroup fcpptexport
 
 This macro marks an explicitly instantiated template class to be exported, so
 it can be used by other libraries or programs.

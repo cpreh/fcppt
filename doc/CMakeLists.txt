@@ -68,6 +68,7 @@ set(
 	doc/files/modules/container/tree.doxygen
 	doc/files/modules/endianness.doxygen
 	doc/files/modules/enum.doxygen
+	doc/files/modules/export.doxygen
 	doc/files/modules/fcppt.doxygen
 	doc/files/modules/filesystem.doxygen
 	doc/files/modules/io.doxygen
@@ -88,7 +89,6 @@ set(
 	doc/files/modules/smartptr.doxygen
 	doc/files/modules/string.doxygen
 	doc/files/modules/strong_typedef.doxygen
-	doc/files/modules/symbol.doxygen
 	doc/files/modules/time.doxygen
 	doc/files/modules/type_iso.doxygen
 	doc/files/modules/type_traits.doxygen

@@ -20,7 +20,7 @@
 /**
 \brief Tells that a symbol should be imported
 
-\ingroup fcpptsymbol
+\ingroup fcpptexport
 
 This macro marks a symbol to be imported, so it can be used from another
 library.
