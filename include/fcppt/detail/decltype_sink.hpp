@@ -16,15 +16,10 @@ namespace detail
 template<
 	typename Type
 >
-inline
 Type
 decltype_sink(
-	Type const &_value
-)
-{
-	return
-		_value;
-}
+	Type const &
+);
 
 }
 }
