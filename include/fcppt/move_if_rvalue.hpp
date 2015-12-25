@@ -7,7 +7,7 @@
 #ifndef FCPPT_MOVE_IF_RVALUE_HPP_INCLUDED
 #define FCPPT_MOVE_IF_RVALUE_HPP_INCLUDED
 
-#include <fcppt/detail/move_if_rvalue.hpp>
+#include <fcppt/move_if.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
@@ -32,21 +32,17 @@ template<
 >
 inline
 decltype(
-	fcppt::detail::move_if_rvalue<
-		Type
-	>(
-		std::declval<
-			Arg &
-		>()
-	)
+	auto
 )
 move_if_rvalue(
 	Arg &_arg
 )
 {
 	return
-		fcppt::detail::move_if_rvalue<
-			Type
+		fcppt::move_if<
+			!std::is_lvalue_reference<
+				Type
+			>::value
 		>(
 			_arg
 		);

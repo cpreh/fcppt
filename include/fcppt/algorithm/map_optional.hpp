@@ -73,7 +73,6 @@ map_optional(
 			"map_optional requires a function that returns an optional"
 		);
 
-
 		if(
 			result_element.has_value()
 		)

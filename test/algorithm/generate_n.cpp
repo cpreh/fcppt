@@ -23,7 +23,6 @@ BOOST_AUTO_TEST_CASE(
 {
 FCPPT_PP_POP_WARNING
 
-
 	typedef
 	std::vector<
 		int

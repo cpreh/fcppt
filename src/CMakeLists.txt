@@ -310,6 +310,7 @@ set(
 	include/fcppt/detail/is_optional_reference.hpp
 	include/fcppt/detail/make_shared_wrapper.hpp
 	include/fcppt/detail/make_shared_wrapper_fwd.hpp
+	include/fcppt/detail/move_if.hpp
 	include/fcppt/detail/move_if_rvalue.hpp
 	include/fcppt/detail/move_iterator_if_rvalue.hpp
 	include/fcppt/detail/nonassignable.hpp
@@ -677,6 +678,7 @@ set(
 	include/fcppt/maybe_void_multi.hpp
 	include/fcppt/micro_version.hpp
 	include/fcppt/minor_version.hpp
+	include/fcppt/move_if.hpp
 	include/fcppt/move_if_rvalue.hpp
 	include/fcppt/move_iterator_if_rvalue.hpp
 	include/fcppt/mpl/all_of.hpp
