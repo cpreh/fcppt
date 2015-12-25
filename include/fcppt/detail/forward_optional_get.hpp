@@ -7,8 +7,8 @@
 #ifndef FCPPT_DETAIL_FORWARD_OPTIONAL_GET_HPP_INCLUDED
 #define FCPPT_DETAIL_FORWARD_OPTIONAL_GET_HPP_INCLUDED
 
+#include <fcppt/is_optional_reference.hpp>
 #include <fcppt/move_if_rvalue.hpp>
-#include <fcppt/detail/is_optional_reference.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/utility/enable_if.hpp>
 #include <type_traits>
@@ -27,7 +27,7 @@ template<
 inline
 typename
 boost::enable_if<
-	fcppt::detail::is_optional_reference<
+	fcppt::is_optional_reference<
 		Optional
 	>,
 	Arg &
@@ -47,7 +47,7 @@ template<
 inline
 typename
 boost::disable_if<
-	fcppt::detail::is_optional_reference<
+	fcppt::is_optional_reference<
 		Optional
 	>,
 	decltype(

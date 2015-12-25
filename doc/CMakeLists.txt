@@ -529,7 +529,6 @@ set(
 	include/fcppt/detail/forward_optional_get.hpp
 	include/fcppt/detail/has_value_all.hpp
 	include/fcppt/detail/int_iterator_base.hpp
-	include/fcppt/detail/is_optional_reference.hpp
 	include/fcppt/detail/make_shared_wrapper.hpp
 	include/fcppt/detail/make_shared_wrapper_fwd.hpp
 	include/fcppt/detail/move_if.hpp
@@ -661,6 +660,7 @@ set(
 	include/fcppt/io/stringstream.hpp
 	include/fcppt/io/write.hpp
 	include/fcppt/is_optional.hpp
+	include/fcppt/is_optional_reference.hpp
 	include/fcppt/is_strong_typedef.hpp
 	include/fcppt/literal.hpp
 	include/fcppt/log/_.hpp

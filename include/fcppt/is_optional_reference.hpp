@@ -4,8 +4,8 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_DETAIL_IS_OPTIONAL_REFERENCE_HPP_INCLUDED
-#define FCPPT_DETAIL_IS_OPTIONAL_REFERENCE_HPP_INCLUDED
+#ifndef FCPPT_IS_OPTIONAL_REFERENCE_HPP_INCLUDED
+#define FCPPT_IS_OPTIONAL_REFERENCE_HPP_INCLUDED
 
 #include <fcppt/config/external_begin.hpp>
 #include <type_traits>
@@ -13,8 +13,6 @@
 
 
 namespace fcppt
-{
-namespace detail
 {
 
 template<
@@ -33,7 +31,6 @@ std::is_lvalue_reference<
 	>::type::element_type
 >;
 
-}
 }
 
 #endif
