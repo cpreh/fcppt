@@ -124,13 +124,6 @@ FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
 		public iterator_base
 	{
 	public:
-		iterator()
-		:
-			current_(),
-			positions_()
-		{
-		}
-
 		explicit
 		iterator(
 			tree_ref const _current
@@ -140,35 +133,6 @@ FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
 				_current
 			),
 			positions_()
-		{
-		}
-
-		iterator(
-			iterator const &_other
-		)
-		:
-			current_(
-				_other.current_
-			),
-			positions_(
-				_other.positions_
-			)
-		{
-		}
-
-		iterator &
-		operator=(
-			iterator const &_other
-		)
-		{
-			current_ = _other.current_;
-
-			positions_ = _other.positions_;
-
-			return *this;
-		}
-
-		~iterator()
 		{
 		}
 
