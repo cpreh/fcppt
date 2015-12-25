@@ -67,6 +67,10 @@ add_fcppt_test(
 )
 
 add_fcppt_test(
+	algorithm/generate_n
+)
+
+add_fcppt_test(
 	algorithm/join
 )
 
