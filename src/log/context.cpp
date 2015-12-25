@@ -198,7 +198,7 @@ fcppt::log::context::apply_to(
 			[
 				&_function
 			](
-				fcppt::log::detail::outer_context_node &_node
+				fcppt::log::detail::outer_context_node const _node
 			)
 			{
 				_function(

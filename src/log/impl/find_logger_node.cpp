@@ -6,12 +6,12 @@
 
 #include <fcppt/algorithm/find_by_opt.hpp>
 #include <fcppt/log/detail/context_tree.hpp>
-#include <fcppt/log/impl/const_optional_outer_context_node.hpp>
+#include <fcppt/log/impl/optional_outer_context_node.hpp>
 #include <fcppt/log/impl/find_logger_node.hpp>
 #include <fcppt/log/impl/to_outer_node.hpp>
 
 
-fcppt::log::impl::const_optional_outer_context_node
+fcppt::log::impl::optional_outer_context_node
 fcppt::log::impl::find_logger_node(
 	fcppt::log::detail::context_tree const &_tree
 )

@@ -20,7 +20,7 @@ namespace impl
 
 typedef
 fcppt::optional<
-	fcppt::log::detail::outer_context_node &
+	fcppt::log::detail::outer_context_node
 >
 optional_outer_context_node;
 

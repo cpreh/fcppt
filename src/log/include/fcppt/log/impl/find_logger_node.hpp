@@ -8,7 +8,7 @@
 #define FCPPT_LOG_IMPL_FIND_LOGGER_NODE_HPP_INCLUDED
 
 #include <fcppt/log/detail/context_tree.hpp>
-#include <fcppt/log/impl/const_optional_outer_context_node.hpp>
+#include <fcppt/log/impl/optional_outer_context_node.hpp>
 
 
 namespace fcppt
@@ -18,7 +18,7 @@ namespace log
 namespace impl
 {
 
-fcppt::log::impl::const_optional_outer_context_node
+fcppt::log::impl::optional_outer_context_node
 find_logger_node(
 	fcppt::log::detail::context_tree const &
 );

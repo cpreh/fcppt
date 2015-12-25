@@ -113,8 +113,6 @@ set(
 	src/log/impl/set_levels.cpp
 	src/log/impl/to_outer_node.cpp
 	src/log/impl/tree_formatter.cpp
-	src/log/include/fcppt/log/impl/const_optional_outer_context_node.hpp
-	src/log/include/fcppt/log/impl/const_optional_outer_context_node_fwd.hpp
 	src/log/include/fcppt/log/impl/find_inner_node.hpp
 	src/log/include/fcppt/log/impl/find_location.hpp
 	src/log/include/fcppt/log/impl/find_logger_node.hpp

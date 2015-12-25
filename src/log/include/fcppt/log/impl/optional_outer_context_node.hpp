@@ -8,6 +8,7 @@
 #define FCPPT_LOG_IMPL_OPTIONAL_OUTER_CONTEXT_NODE_HPP_INCLUDED
 
 #include <fcppt/optional_impl.hpp>
+#include <fcppt/log/detail/outer_context_node.hpp>
 #include <fcppt/log/impl/optional_outer_context_node_fwd.hpp>
 
 
