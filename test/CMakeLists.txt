@@ -39,6 +39,10 @@ add_fcppt_test(
 )
 
 add_fcppt_test(
+	algorithm/cat_optionals
+)
+
+add_fcppt_test(
 	algorithm/enum_array_init
 )
 

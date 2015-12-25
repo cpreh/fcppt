@@ -4,8 +4,8 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_DETAIL_MOVE_IF_RVALUE_HPP_INCLUDED
-#define FCPPT_DETAIL_MOVE_IF_RVALUE_HPP_INCLUDED
+#ifndef FCPPT_DETAIL_MOVE_IF_HPP_INCLUDED
+#define FCPPT_DETAIL_MOVE_IF_HPP_INCLUDED
 
 #include <fcppt/config/external_begin.hpp>
 #include <utility>
