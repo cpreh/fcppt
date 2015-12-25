@@ -717,6 +717,7 @@ set(
 	include/fcppt/optional_comparison.hpp
 	include/fcppt/optional_decl.hpp
 	include/fcppt/optional_deref.hpp
+	include/fcppt/optional_filter.hpp
 	include/fcppt/optional_from_pointer.hpp
 	include/fcppt/optional_fwd.hpp
 	include/fcppt/optional_impl.hpp
