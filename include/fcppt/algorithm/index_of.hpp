@@ -7,8 +7,8 @@
 #ifndef FCPPT_ALGORITHM_INDEX_OF_HPP_INCLUDED
 #define FCPPT_ALGORITHM_INDEX_OF_HPP_INCLUDED
 
-#include <fcppt/optional_map.hpp>
 #include <fcppt/optional_impl.hpp>
+#include <fcppt/optional_map.hpp>
 #include <fcppt/algorithm/find_opt.hpp>
 #include <fcppt/cast/to_unsigned.hpp>
 

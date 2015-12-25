@@ -5,8 +5,8 @@
 
 
 #include <fcppt/maybe_void.hpp>
-#include <fcppt/optional_map.hpp>
 #include <fcppt/optional_impl.hpp>
+#include <fcppt/optional_map.hpp>
 #include <fcppt/assert/optional_error.hpp>
 #include <fcppt/log/context.hpp>
 #include <fcppt/log/context_location.hpp>

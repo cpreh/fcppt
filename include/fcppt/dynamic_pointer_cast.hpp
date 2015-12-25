@@ -7,8 +7,8 @@
 #ifndef FCPPT_DYNAMIC_POINTER_CAST_HPP_INCLUDED
 #define FCPPT_DYNAMIC_POINTER_CAST_HPP_INCLUDED
 
-#include <fcppt/optional_map.hpp>
 #include <fcppt/optional_impl.hpp>
+#include <fcppt/optional_map.hpp>
 #include <fcppt/shared_ptr_impl.hpp>
 #include <fcppt/cast/try_dynamic.hpp>
 #include <fcppt/config/external_begin.hpp>

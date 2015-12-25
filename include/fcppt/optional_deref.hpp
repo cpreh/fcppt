@@ -7,8 +7,8 @@
 #ifndef FCPPT_OPTIONAL_DEREF_HPP_INCLUDED
 #define FCPPT_OPTIONAL_DEREF_HPP_INCLUDED
 
-#include <fcppt/optional_map.hpp>
 #include <fcppt/optional_impl.hpp>
+#include <fcppt/optional_map.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>

@@ -7,9 +7,9 @@
 #include <fcppt/from_optional.hpp>
 #include <fcppt/maybe.hpp>
 #include <fcppt/optional_bind.hpp>
-#include <fcppt/optional_map.hpp>
 #include <fcppt/optional_comparison.hpp>
 #include <fcppt/optional_impl.hpp>
+#include <fcppt/optional_map.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <iostream>
 #include <string>

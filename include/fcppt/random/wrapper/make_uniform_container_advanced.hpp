@@ -7,8 +7,8 @@
 #ifndef FCPPT_RANDOM_WRAPPER_MAKE_UNIFORM_CONTAINER_ADVANCED_HPP_INCLUDED
 #define FCPPT_RANDOM_WRAPPER_MAKE_UNIFORM_CONTAINER_ADVANCED_HPP_INCLUDED
 
-#include <fcppt/optional_map.hpp>
 #include <fcppt/optional_impl.hpp>
+#include <fcppt/optional_map.hpp>
 #include <fcppt/random/distribution/parameters/make_uniform_indices_advanced.hpp>
 #include <fcppt/random/wrapper/uniform_container_impl.hpp>
 

@@ -8,8 +8,8 @@
 #define FCPPT_ALGORITHM_CAT_OPTIONALS_HPP_INCLUDED
 
 #include <fcppt/is_optional_reference.hpp>
-#include <fcppt/move_if.hpp>
 #include <fcppt/maybe_void.hpp>
+#include <fcppt/move_if.hpp>
 #include <fcppt/algorithm/range_element_type.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <type_traits>

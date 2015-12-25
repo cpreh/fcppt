@@ -6,8 +6,8 @@
 
 #include <fcppt/noncopyable.hpp>
 #include <fcppt/optional.hpp>
-#include <fcppt/optional_map.hpp>
 #include <fcppt/optional_comparison.hpp>
+#include <fcppt/optional_map.hpp>
 #include <fcppt/optional_output.hpp>
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>

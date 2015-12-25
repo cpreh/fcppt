@@ -6,8 +6,8 @@
 
 #include <fcppt/algorithm/find_by_opt.hpp>
 #include <fcppt/log/detail/context_tree.hpp>
-#include <fcppt/log/impl/optional_outer_context_node.hpp>
 #include <fcppt/log/impl/find_logger_node.hpp>
+#include <fcppt/log/impl/optional_outer_context_node.hpp>
 #include <fcppt/log/impl/to_outer_node.hpp>
 
 
