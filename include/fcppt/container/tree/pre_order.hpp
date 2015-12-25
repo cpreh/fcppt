@@ -9,6 +9,7 @@
 
 #include <fcppt/noncopyable.hpp>
 #include <fcppt/optional_ref_compare.hpp>
+#include <fcppt/reference_wrapper_impl.hpp>
 #include <fcppt/container/tree/is_object.hpp>
 #include <fcppt/container/tree/optional_ref_impl.hpp>
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
@@ -89,10 +90,16 @@ private:
 	tree_iterator;
 
 	typedef
-	fcppt::container::tree::optional_ref<
+	fcppt::reference_wrapper<
 		Tree
 	>
 	tree_ref;
+
+	typedef
+	fcppt::container::tree::optional_ref<
+		Tree
+	>
+	optional_tree_ref;
 
 	typedef
 	std::stack<
@@ -126,7 +133,7 @@ FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
 	public:
 		explicit
 		iterator(
-			tree_ref const _current
+			optional_tree_ref const _current
 		)
 		:
 			current_(
@@ -176,18 +183,22 @@ FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
 					);
 
 				current_ =
-					tree_ref(
+					optional_tree_ref(
 						cur_deref.front()
 					);
 			}
 			else if(
 				positions_.empty()
 			)
-				current_ = tree_ref();
+				current_ =
+					optional_tree_ref();
 			else
 			{
 
-				current_ = positions_.top();
+				current_ =
+					optional_tree_ref(
+						positions_.top().get()
+					);
 
 				positions_.pop();
 			}
@@ -212,7 +223,7 @@ FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
 				);
 		}
 
-		tree_ref current_;
+		optional_tree_ref current_;
 
 		stack_type positions_;
 	};
@@ -231,7 +242,7 @@ FCPPT_PP_POP_WARNING
 	{
 		return
 			iterator(
-				tree_ref(
+				optional_tree_ref(
 					tree_
 				)
 			);
@@ -245,7 +256,7 @@ FCPPT_PP_POP_WARNING
 	{
 		return
 			iterator(
-				tree_ref()
+				optional_tree_ref()
 			);
 	}
 private:
