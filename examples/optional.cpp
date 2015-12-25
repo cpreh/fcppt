@@ -7,7 +7,7 @@
 #include <fcppt/from_optional.hpp>
 #include <fcppt/maybe.hpp>
 #include <fcppt/optional_bind.hpp>
-#include <fcppt/optional_bind_construct.hpp>
+#include <fcppt/optional_map.hpp>
 #include <fcppt/optional_comparison.hpp>
 #include <fcppt/optional_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
@@ -121,9 +121,9 @@ optional_bind()
 	std::cout << (value == optional_string{"3"}) << '\n';
 //! [optional_bind]
 
-//! [optional_bind_construct]
+//! [optional_map]
 	optional_string const value2{
-		fcppt::optional_bind_construct(
+		fcppt::optional_map(
 			optional_uint{3u},
 			[](
 				unsigned const _val
@@ -138,7 +138,7 @@ optional_bind()
 	};
 
 	std::cout << (value == optional_string{"3"}) << '\n';
-//! [optional_bind_construct]
+//! [optional_map]
 }
 
 void

@@ -97,9 +97,9 @@ an optional and creates a new one by preserving empty optionals.
 \snippet optional.cpp optional_bind
 
 There is also a shortcut for optional binds that always return a non empty
-optional, called \link fcppt::optional_bind_construct\endlink.
+optional, called \link fcppt::optional_map\endlink.
 
-\snippet optional.cpp optional_bind_construct
+\snippet optional.cpp optional_map
 
 Another commonly used function is \link fcppt::from_optional\endlink. It
 deconstructs an optional by either taking its value or returning a default
@@ -159,10 +159,6 @@ value.
 <td>Contains \link fcppt::optional_bind \endlink.</td>
 </tr>
 <tr>
-<td><code>optional_bind_construct.hpp</code></td>
-<td>Contains \link fcppt::optional_bind_construct \endlink.</td>
-</tr>
-<tr>
 <td><code>optional_combine.hpp</code></td>
 <td>Contains \link fcppt::optional_combine \endlink.</td>
 </tr>
@@ -173,6 +169,10 @@ value.
 <tr>
 <td><code>optional_from_pointer.hpp</code></td>
 <td>Contains \link fcppt::optional_from_pointer \endlink.</td>
+</tr>
+<tr>
+<td><code>optional_map.hpp</code></td>
+<td>Contains \link fcppt::optional_map \endlink.</td>
 </tr>
 <tr>
 <td><code>optional_ref_compare.hpp</code></td>

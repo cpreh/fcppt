@@ -5,7 +5,7 @@
 
 
 #include <fcppt/maybe_void.hpp>
-#include <fcppt/optional_bind_construct.hpp>
+#include <fcppt/optional_map.hpp>
 #include <fcppt/optional_impl.hpp>
 #include <fcppt/assert/optional_error.hpp>
 #include <fcppt/log/context.hpp>
@@ -25,7 +25,7 @@ fcppt::log::detail::auto_context::auto_context(
 )
 :
 	rep_(
-		fcppt::optional_bind_construct(
+		fcppt::optional_map(
 			_context_location,
 			[
 				&_object
@@ -66,7 +66,7 @@ fcppt::log::optional_location
 fcppt::log::detail::auto_context::location() const
 {
 	return
-		fcppt::optional_bind_construct(
+		fcppt::optional_map(
 			rep_,
 			[](
 				fcppt::log::detail::auto_context_rep const &_rep
@@ -82,7 +82,7 @@ fcppt::log::detail::optional_context_tree_ref
 fcppt::log::detail::auto_context::node() const
 {
 	return
-		fcppt::optional_bind_construct(
+		fcppt::optional_map(
 			rep_,
 			[](
 				fcppt::log::detail::auto_context_rep const &_rep

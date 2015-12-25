@@ -7,7 +7,7 @@
 #ifndef FCPPT_OPTIONAL_DEREF_HPP_INCLUDED
 #define FCPPT_OPTIONAL_DEREF_HPP_INCLUDED
 
-#include <fcppt/optional_bind_construct.hpp>
+#include <fcppt/optional_map.hpp>
 #include <fcppt/optional_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <type_traits>
@@ -44,7 +44,7 @@ optional_deref(
 )
 {
 	return
-		fcppt::optional_bind_construct(
+		fcppt::optional_map(
 			_optional,
 			[](
 				Element const &_element

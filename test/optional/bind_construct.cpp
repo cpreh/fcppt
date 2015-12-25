@@ -6,7 +6,7 @@
 
 #include <fcppt/noncopyable.hpp>
 #include <fcppt/optional.hpp>
-#include <fcppt/optional_bind_construct.hpp>
+#include <fcppt/optional_map.hpp>
 #include <fcppt/optional_comparison.hpp>
 #include <fcppt/optional_output.hpp>
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
@@ -22,7 +22,7 @@ FCPPT_PP_PUSH_WARNING
 FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
 
 BOOST_AUTO_TEST_CASE(
-	optional_bind_construct
+	optional_map
 )
 {
 FCPPT_PP_POP_WARNING
@@ -50,7 +50,7 @@ FCPPT_PP_POP_WARNING
 	);
 
 	BOOST_CHECK_EQUAL(
-		fcppt::optional_bind_construct(
+		fcppt::optional_map(
 			optional_string(),
 			conversion
 		),
@@ -58,7 +58,7 @@ FCPPT_PP_POP_WARNING
 	);
 
 	BOOST_CHECK_EQUAL(
-		fcppt::optional_bind_construct(
+		fcppt::optional_map(
 			optional_string(
 				"test"
 			),
@@ -105,7 +105,7 @@ FCPPT_PP_POP_WARNING
 	noncopyable test{};
 
 	BOOST_CHECK_EQUAL(
-		&fcppt::optional_bind_construct(
+		&fcppt::optional_map(
 			optional_string(
 				"42"
 			),

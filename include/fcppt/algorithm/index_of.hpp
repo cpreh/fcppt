@@ -7,7 +7,7 @@
 #ifndef FCPPT_ALGORITHM_INDEX_OF_HPP_INCLUDED
 #define FCPPT_ALGORITHM_INDEX_OF_HPP_INCLUDED
 
-#include <fcppt/optional_bind_construct.hpp>
+#include <fcppt/optional_map.hpp>
 #include <fcppt/optional_impl.hpp>
 #include <fcppt/algorithm/find_opt.hpp>
 #include <fcppt/cast/to_unsigned.hpp>
@@ -54,7 +54,7 @@ index_of(
 	);
 
 	return
-		fcppt::optional_bind_construct(
+		fcppt::optional_map(
 			fcppt::algorithm::find_opt(
 				_range,
 				_value

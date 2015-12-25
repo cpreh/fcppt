@@ -1038,7 +1038,6 @@ set(
 	include/fcppt/optional_alternative.hpp
 	include/fcppt/optional_assign.hpp
 	include/fcppt/optional_bind.hpp
-	include/fcppt/optional_bind_construct.hpp
 	include/fcppt/optional_combine.hpp
 	include/fcppt/optional_comparison.hpp
 	include/fcppt/optional_decl.hpp
@@ -1048,6 +1047,7 @@ set(
 	include/fcppt/optional_fwd.hpp
 	include/fcppt/optional_impl.hpp
 	include/fcppt/optional_join.hpp
+	include/fcppt/optional_map.hpp
 	include/fcppt/optional_output.hpp
 	include/fcppt/optional_ref_compare.hpp
 	include/fcppt/optional_string.hpp

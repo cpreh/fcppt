@@ -7,7 +7,7 @@
 #ifndef FCPPT_ALGORITHM_INDEX_OF_ENUM_ARRAY_HPP_INCLUDED
 #define FCPPT_ALGORITHM_INDEX_OF_ENUM_ARRAY_HPP_INCLUDED
 
-#include <fcppt/optional_bind_construct.hpp>
+#include <fcppt/optional_map.hpp>
 #include <fcppt/optional_impl.hpp>
 #include <fcppt/algorithm/index_of.hpp>
 #include <fcppt/cast/int_to_enum.hpp>
@@ -44,7 +44,7 @@ index_of_enum_array(
 )
 {
 	return
-		fcppt::optional_bind_construct(
+		fcppt::optional_map(
 			fcppt::algorithm::index_of(
 				_array,
 				_value

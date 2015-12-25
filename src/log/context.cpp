@@ -8,7 +8,7 @@
 #include <fcppt/maybe.hpp>
 #include <fcppt/maybe_void.hpp>
 #include <fcppt/optional_bind.hpp>
-#include <fcppt/optional_bind_construct.hpp>
+#include <fcppt/optional_map.hpp>
 #include <fcppt/optional_to_exception.hpp>
 #include <fcppt/reference_wrapper_impl.hpp>
 #include <fcppt/string.hpp>
@@ -77,7 +77,7 @@ fcppt::log::context::find(
 			)
 			{
 				return
-					fcppt::optional_bind_construct(
+					fcppt::optional_map(
 						fcppt::log::impl::find_logger_node(
 							_tree_location
 						),

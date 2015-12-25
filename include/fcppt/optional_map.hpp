@@ -4,8 +4,8 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_OPTIONAL_BIND_CONSTRUCT_HPP_INCLUDED
-#define FCPPT_OPTIONAL_BIND_CONSTRUCT_HPP_INCLUDED
+#ifndef FCPPT_OPTIONAL_MAP_HPP_INCLUDED
+#define FCPPT_OPTIONAL_MAP_HPP_INCLUDED
 
 #include <fcppt/optional_bind.hpp>
 #include <fcppt/optional_impl.hpp>
@@ -19,12 +19,16 @@ namespace fcppt
 {
 
 /**
-\brief Converts an optional of one type to another and applies the optional
-constructor
+\brief Maps over an optional using a function
 
 \ingroup fcpptoptional
 
-\see fcppt::optional_bind
+If \a _source is set to <code>x</code>, then
+<code>optional(_function(x))</code> is returned. Otherwise, the empty optional
+is returned.
+
+\tparam Function A function callable as <code>R (Optional::value_type)</code>
+where <code>R</code> is the result type
 */
 template<
 	typename Optional,
@@ -32,7 +36,7 @@ template<
 >
 inline
 auto
-optional_bind_construct(
+optional_map(
 	Optional &&_source,
 	Function const &_function
 )

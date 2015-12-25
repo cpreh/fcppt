@@ -7,7 +7,7 @@
 #ifndef FCPPT_DYNAMIC_POINTER_CAST_HPP_INCLUDED
 #define FCPPT_DYNAMIC_POINTER_CAST_HPP_INCLUDED
 
-#include <fcppt/optional_bind_construct.hpp>
+#include <fcppt/optional_map.hpp>
 #include <fcppt/optional_impl.hpp>
 #include <fcppt/shared_ptr_impl.hpp>
 #include <fcppt/cast/try_dynamic.hpp>
@@ -52,7 +52,7 @@ dynamic_pointer_cast(
 )
 {
 	return
-		fcppt::optional_bind_construct(
+		fcppt::optional_map(
 			fcppt::cast::try_dynamic<
 				typename
 				std::remove_pointer<

@@ -7,7 +7,7 @@
 #ifndef FCPPT_CONTAINER_FIND_OPT_MAPPED_HPP_INCLUDED
 #define FCPPT_CONTAINER_FIND_OPT_MAPPED_HPP_INCLUDED
 
-#include <fcppt/optional_bind_construct.hpp>
+#include <fcppt/optional_map.hpp>
 #include <fcppt/optional_impl.hpp>
 #include <fcppt/container/find_opt.hpp>
 #include <fcppt/container/to_mapped_type.hpp>
@@ -48,7 +48,7 @@ find_opt_mapped(
 )
 {
 	return
-		fcppt::optional_bind_construct(
+		fcppt::optional_map(
 			fcppt::container::find_opt(
 				_container,
 				_key
