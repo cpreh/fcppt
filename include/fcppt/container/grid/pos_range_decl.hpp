@@ -7,7 +7,6 @@
 #ifndef FCPPT_CONTAINER_GRID_POS_RANGE_DECL_HPP_INCLUDED
 #define FCPPT_CONTAINER_GRID_POS_RANGE_DECL_HPP_INCLUDED
 
-#include <fcppt/nonassignable.hpp>
 #include <fcppt/container/grid/pos.hpp>
 #include <fcppt/container/grid/pos_iterator_fwd.hpp>
 #include <fcppt/container/grid/pos_range_fwd.hpp>
@@ -35,9 +34,6 @@ template<
 >
 class pos_range
 {
-	FCPPT_NONASSIGNABLE(
-		pos_range
-	);
 public:
 	typedef
 	fcppt::container::grid::pos_iterator<
@@ -98,9 +94,9 @@ private:
 		pos
 	) const;
 
-	min_type const min_;
+	min_type min_;
 
-	sup_type const sup_;
+	sup_type sup_;
 };
 
 }

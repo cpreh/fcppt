@@ -7,7 +7,7 @@
 #ifndef FCPPT_CONTAINER_GRID_POS_REF_RANGE_DECL_HPP_INCLUDED
 #define FCPPT_CONTAINER_GRID_POS_REF_RANGE_DECL_HPP_INCLUDED
 
-#include <fcppt/nonassignable.hpp>
+#include <fcppt/reference_wrapper_impl.hpp>
 #include <fcppt/container/grid/object_decl.hpp>
 #include <fcppt/container/grid/pos_range_impl.hpp>
 #include <fcppt/container/grid/pos_ref_iterator_fwd.hpp>
@@ -31,9 +31,6 @@ template<
 >
 class pos_ref_range
 {
-	FCPPT_NONASSIGNABLE(
-		pos_ref_range
-	);
 public:
 	typedef
 	fcppt::container::grid::pos_ref_iterator<
@@ -99,9 +96,11 @@ private:
 		pos_iterator
 	) const;
 
-	Grid &grid_;
+	fcppt::reference_wrapper<
+		Grid
+	> grid_;
 
-	pos_range const pos_range_;
+	pos_range pos_range_;
 };
 
 }

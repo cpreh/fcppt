@@ -127,9 +127,9 @@ fcppt::container::grid::pos_ref_range<
 {
 	return
 		iterator(
-			grid_.begin(),
+			grid_.get().begin(),
 			_pos_iterator,
-			grid_.size()
+			grid_.get().size()
 		);
 }
 
