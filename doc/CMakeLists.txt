@@ -417,6 +417,7 @@ set(
 	include/fcppt/container/grid/make_pos_ref_range_start_end.hpp
 	include/fcppt/container/grid/make_spiral_range.hpp
 	include/fcppt/container/grid/make_sup.hpp
+	include/fcppt/container/grid/map.hpp
 	include/fcppt/container/grid/min.hpp
 	include/fcppt/container/grid/min_from_pos.hpp
 	include/fcppt/container/grid/min_from_pos_fwd.hpp

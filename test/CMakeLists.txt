@@ -282,6 +282,12 @@ add_fcppt_test(
 )
 
 add_fcppt_test(
+	container/grid/map
+	LINK_LIBS
+		"${fcppt_core_TARGET}"
+)
+
+add_fcppt_test(
 	container/grid/moore_neighbors
 )
 
