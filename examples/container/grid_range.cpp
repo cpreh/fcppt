@@ -7,14 +7,16 @@
 #include <fcppt/cast/size.hpp>
 #include <fcppt/container/grid/clamped_sup.hpp>
 #include <fcppt/container/grid/dim.hpp>
+#include <fcppt/container/grid/make_min.hpp>
 #include <fcppt/container/grid/make_pos_range.hpp>
 #include <fcppt/container/grid/make_pos_ref_crange.hpp>
 #include <fcppt/container/grid/make_pos_ref_crange_start_end.hpp>
-#include <fcppt/container/grid/min_from_pos.hpp>
+#include <fcppt/container/grid/make_sup.hpp>
 #include <fcppt/container/grid/object.hpp>
 #include <fcppt/container/grid/pos.hpp>
 #include <fcppt/container/grid/pos_reference.hpp>
 #include <fcppt/container/grid/size_type.hpp>
+#include <fcppt/strong_typedef_output.hpp>
 #include <fcppt/math/vector/output.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <iostream>
@@ -147,11 +149,9 @@ pos_ref_sub_range(
 		fcppt::container::grid::make_pos_ref_crange_start_end(
 			grid,
 			// unsigned positions cannot underflow
-			fcppt::container::grid::min_from_pos<
-				uint2_grid::pos
-			>{
+			fcppt::container::grid::make_min(
 				_min
-			},
+			),
 			fcppt::container::grid::clamped_sup(
 				_sup,
 				grid.size()
@@ -186,4 +186,14 @@ main()
 			3u
 		)
 	);
+
+	std::cout
+		<<
+		fcppt::container::grid::make_sup(
+			uint2_grid::pos{
+				1u,
+				2u
+			}
+		)
+		<< '\n';
 }
