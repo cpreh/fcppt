@@ -31,27 +31,41 @@ For every element <code>x</code> at position <code>p</code> in \a _source, the
 result of <code>_function(x)</code> is inserted at <code>p</code> into the
 result.
 
-\tparam Function A function callable as <code>Result::value_type (Source::value_type)</code>
+\tparam Function A function callable as <code>R (Source::value_type)</code> where
+<code>R</code> is the result type
 */
 template<
-	// TODO: We don't need Result here
-	typename Result,
 	typename Source,
 	typename Function
 >
-Result
+auto
 map(
 	Source &&_source,
 	Function const &_function
 )
+->
+fcppt::container::grid::object<
+	decltype(
+		_function(
+			fcppt::move_if_rvalue<
+				Source
+			>(
+				_source[
+					std::declval<
+						typename
+						std::decay<
+							Source
+						>::type::pos
+					>()
+				]
+			)
+		)
+	),
+	std::decay<
+		Source
+	>::type::static_size::value
+>
 {
-	static_assert(
-		fcppt::container::grid::is_object<
-			Result
-		>::value,
-		"Result must be a grid"
-	);
-
 	typedef
 	typename
 	std::decay<
@@ -66,8 +80,28 @@ map(
 		"Source must be a grid"
 	);
 
+	typedef
+	fcppt::container::grid::object<
+		decltype(
+			_function(
+				fcppt::move_if_rvalue<
+					Source
+				>(
+					_source[
+						std::declval<
+							typename
+							source_type::pos
+						>()
+					]
+				)
+			)
+		),
+		source_type::static_size::value
+	>
+	result_type;
+
 	return
-		Result(
+		result_type(
 			_source.size(),
 			[
 				&_source,

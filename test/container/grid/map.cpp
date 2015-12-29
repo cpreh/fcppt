@@ -75,9 +75,7 @@ FCPPT_PP_POP_WARNING
 	);
 
 	string_grid const result(
-		fcppt::container::grid::map<
-			string_grid
-		>(
+		fcppt::container::grid::map(
 			grid,
 			[](
 				unsigned const _value
@@ -157,9 +155,7 @@ FCPPT_PP_POP_WARNING
 
 
 	strong_grid const result(
-		fcppt::container::grid::map<
-			strong_grid
-		>(
+		fcppt::container::grid::map(
 			unique_ptr_grid(
 				unique_ptr_grid::dim{
 					3u,
