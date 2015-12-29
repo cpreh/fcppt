@@ -716,6 +716,7 @@ set(
 	include/fcppt/noncopyable.hpp
 	include/fcppt/optional.hpp
 	include/fcppt/optional_alternative.hpp
+	include/fcppt/optional_apply.hpp
 	include/fcppt/optional_assign.hpp
 	include/fcppt/optional_bind.hpp
 	include/fcppt/optional_combine.hpp

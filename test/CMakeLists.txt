@@ -779,6 +779,10 @@ add_fcppt_test(
 )
 
 add_fcppt_test(
+	optional/apply
+)
+
+add_fcppt_test(
 	optional/assign
 )
 
