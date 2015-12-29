@@ -34,6 +34,7 @@ result.
 \tparam Function A function callable as <code>Result::value_type (Source::value_type)</code>
 */
 template<
+	// TODO: We don't need Result here
 	typename Result,
 	typename Source,
 	typename Function

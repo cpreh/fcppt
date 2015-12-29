@@ -15,6 +15,7 @@ namespace fcppt
 namespace detail
 {
 
+// TODO: Express this using ranges and algorithms
 inline
 bool
 has_value_all()

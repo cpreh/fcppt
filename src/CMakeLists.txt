@@ -163,6 +163,7 @@ set(
 	include/fcppt/container/get_or_insert_result_fwd.hpp
 	include/fcppt/container/get_or_insert_result_impl.hpp
 	include/fcppt/container/get_or_insert_with_result.hpp
+	include/fcppt/container/grid/apply.hpp
 	include/fcppt/container/grid/at_optional.hpp
 	include/fcppt/container/grid/clamped_min.hpp
 	include/fcppt/container/grid/clamped_sup.hpp
@@ -176,6 +177,7 @@ set(
 	include/fcppt/container/grid/detail/pos_ref_iterator_base.hpp
 	include/fcppt/container/grid/detail/print_recurse.hpp
 	include/fcppt/container/grid/detail/resize.hpp
+	include/fcppt/container/grid/detail/same_sizes.hpp
 	include/fcppt/container/grid/detail/shrink_to_fit.hpp
 	include/fcppt/container/grid/detail/spiral_iterator_base.hpp
 	include/fcppt/container/grid/dim.hpp
