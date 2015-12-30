@@ -562,7 +562,10 @@ set(
 	include/fcppt/detail/void.hpp
 	include/fcppt/dynamic_optional_cast.hpp
 	include/fcppt/dynamic_pointer_cast.hpp
+	include/fcppt/either/apply.hpp
 	include/fcppt/either/bind.hpp
+	include/fcppt/either/detail/all_success.hpp
+	include/fcppt/either/detail/first_failure.hpp
 	include/fcppt/either/is_object.hpp
 	include/fcppt/either/map.hpp
 	include/fcppt/either/match.hpp

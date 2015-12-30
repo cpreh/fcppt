@@ -390,6 +390,10 @@ add_fcppt_test(
 )
 
 add_fcppt_test(
+	either/apply
+)
+
+add_fcppt_test(
 	either/bind
 )
 
