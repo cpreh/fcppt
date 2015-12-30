@@ -66,6 +66,7 @@ set(
 	doc/files/modules/container/grid.doxygen
 	doc/files/modules/container/raw_vector.doxygen
 	doc/files/modules/container/tree.doxygen
+	doc/files/modules/either.doxygen
 	doc/files/modules/endianness.doxygen
 	doc/files/modules/enum.doxygen
 	doc/files/modules/export.doxygen
@@ -561,6 +562,15 @@ set(
 	include/fcppt/detail/void.hpp
 	include/fcppt/dynamic_optional_cast.hpp
 	include/fcppt/dynamic_pointer_cast.hpp
+	include/fcppt/either/bind.hpp
+	include/fcppt/either/is_object.hpp
+	include/fcppt/either/map.hpp
+	include/fcppt/either/match.hpp
+	include/fcppt/either/object.hpp
+	include/fcppt/either/object_decl.hpp
+	include/fcppt/either/object_fwd.hpp
+	include/fcppt/either/object_impl.hpp
+	include/fcppt/either/success_opt.hpp
 	include/fcppt/endianness/convert.hpp
 	include/fcppt/endianness/format.hpp
 	include/fcppt/endianness/format_fwd.hpp

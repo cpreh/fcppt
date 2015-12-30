@@ -1,0 +1,21 @@
+/**
+\defgroup fcppteither fcppt.either
+\ingroup fcpptmain
+\brief An optional with an error type
+
+<table id="toc">
+<tr>
+<td>
+
+<ul>
+	<li>\ref either_motivation</li>
+</ul>
+
+</td>
+</tr>
+</table>
+
+\section either_motivation Motivation
+
+TODO
+*/

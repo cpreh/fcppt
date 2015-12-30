@@ -390,6 +390,26 @@ add_fcppt_test(
 )
 
 add_fcppt_test(
+	either/bind
+)
+
+add_fcppt_test(
+	either/map
+)
+
+add_fcppt_test(
+	either/match
+)
+
+add_fcppt_test(
+	either/object
+)
+
+add_fcppt_test(
+	either/success_opt
+)
+
+add_fcppt_test(
 	endianness
 	LINK_LIBS
 		"${fcppt_core_TARGET}"
