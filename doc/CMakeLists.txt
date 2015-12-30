@@ -567,6 +567,7 @@ set(
 	include/fcppt/either/comparison.hpp
 	include/fcppt/either/detail/all_success.hpp
 	include/fcppt/either/detail/first_failure.hpp
+	include/fcppt/either/from_optional.hpp
 	include/fcppt/either/is_object.hpp
 	include/fcppt/either/map.hpp
 	include/fcppt/either/match.hpp
