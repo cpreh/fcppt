@@ -564,6 +564,7 @@ set(
 	include/fcppt/dynamic_pointer_cast.hpp
 	include/fcppt/either/apply.hpp
 	include/fcppt/either/bind.hpp
+	include/fcppt/either/comparison.hpp
 	include/fcppt/either/detail/all_success.hpp
 	include/fcppt/either/detail/first_failure.hpp
 	include/fcppt/either/is_object.hpp
@@ -573,6 +574,7 @@ set(
 	include/fcppt/either/object_decl.hpp
 	include/fcppt/either/object_fwd.hpp
 	include/fcppt/either/object_impl.hpp
+	include/fcppt/either/output.hpp
 	include/fcppt/either/success_opt.hpp
 	include/fcppt/endianness/convert.hpp
 	include/fcppt/endianness/format.hpp

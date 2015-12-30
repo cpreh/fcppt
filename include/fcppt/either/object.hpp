@@ -7,6 +7,7 @@
 #ifndef FCPPT_EITHER_OBJECT_HPP_INCLUDED
 #define FCPPT_EITHER_OBJECT_HPP_INCLUDED
 
+#include <fcppt/either/comparison.hpp>
 #include <fcppt/either/object_decl.hpp>
 #include <fcppt/either/object_fwd.hpp>
 #include <fcppt/either/object_impl.hpp>

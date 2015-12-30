@@ -6,6 +6,7 @@
 
 #include <fcppt/either/bind.hpp>
 #include <fcppt/either/object.hpp>
+#include <fcppt/either/output.hpp>
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
@@ -74,25 +75,19 @@ FCPPT_PP_POP_WARNING
 		)
 	);
 
-	either_bool const result_success(
+	BOOST_CHECK_EQUAL(
 		fcppt::either::bind(
 			either_int(
 				20
 			),
 			bind_function
+		),
+		either_bool(
+			true
 		)
 	);
 
-	BOOST_REQUIRE(
-		result_success.has_success()
-	);
-
 	BOOST_CHECK_EQUAL(
-		result_success.get_success_unsafe(),
-		true
-	);
-
-	either_bool const result3(
 		fcppt::either::bind(
 			either_int(
 				20
@@ -108,17 +103,11 @@ FCPPT_PP_POP_WARNING
 						)
 					);
 			}
-		)
-	);
-
-	BOOST_REQUIRE(
-		result3.has_failure()
-	);
-
-	BOOST_CHECK_EQUAL(
-		result3.get_failure_unsafe(),
-		std::string(
-			"failure"
+		),
+		either_bool(
+			std::string(
+				"failure"
+			)
 		)
 	);
 }

@@ -6,6 +6,7 @@
 
 #include <fcppt/either/apply.hpp>
 #include <fcppt/either/object.hpp>
+#include <fcppt/either/output.hpp>
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
@@ -62,82 +63,58 @@ FCPPT_PP_POP_WARNING
 		}
 	);
 
-	{
-		either_bool const result_failure(
-			fcppt::either::apply(
-				apply_function,
-				either_int(
-					std::string(
-						"test"
-					)
-				),
-				either_uint(
-					std::string(
-						"test2"
-					)
+	BOOST_CHECK_EQUAL(
+		fcppt::either::apply(
+			apply_function,
+			either_int(
+				std::string(
+					"test"
+				)
+			),
+			either_uint(
+				std::string(
+					"test2"
 				)
 			)
-		);
-
-		BOOST_REQUIRE(
-			result_failure.has_failure()
-		);
-
-		BOOST_CHECK_EQUAL(
-			result_failure.get_failure_unsafe(),
+		),
+		either_bool(
 			std::string(
 				"test"
 			)
-		);
-	}
+		)
+	);
 
-	{
-		either_bool const result_failure(
-			fcppt::either::apply(
-				apply_function,
-				either_int(
-					42
-				),
-				either_uint(
-					std::string(
-						"test2"
-					)
+	BOOST_CHECK_EQUAL(
+		fcppt::either::apply(
+			apply_function,
+			either_int(
+				42
+			),
+			either_uint(
+				std::string(
+					"test2"
 				)
 			)
-		);
-
-		BOOST_REQUIRE(
-			result_failure.has_failure()
-		);
-
-		BOOST_CHECK_EQUAL(
-			result_failure.get_failure_unsafe(),
+		),
+		either_bool(
 			std::string(
 				"test2"
 			)
-		);
-	}
+		)
+	);
 
-	{
-		either_bool const result_success(
-			fcppt::either::apply(
-				apply_function,
-				either_int(
-					20
-				),
-				either_uint(
-					100u
-				)
+	BOOST_CHECK_EQUAL(
+		fcppt::either::apply(
+			apply_function,
+			either_int(
+				20
+			),
+			either_uint(
+				100u
 			)
-		);
-
-		BOOST_REQUIRE(
-			result_success.has_success()
-		);
-
-		BOOST_CHECK_EQUAL(
-			result_success.get_success_unsafe(),
+		),
+		either_bool(
 			false
-		);
-	}
+		)
+	);
 }
