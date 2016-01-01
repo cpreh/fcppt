@@ -7,8 +7,8 @@
 #ifndef FCPPT_OPTIONAL_STRING_HPP_INCLUDED
 #define FCPPT_OPTIONAL_STRING_HPP_INCLUDED
 
-#include <fcppt/optional_impl.hpp>
 #include <fcppt/optional_string_fwd.hpp>
+#include <fcppt/optional/object_impl.hpp>
 
 
 #endif

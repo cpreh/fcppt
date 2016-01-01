@@ -7,10 +7,10 @@
 #ifndef FCPPT_ALGORITHM_FIND_BY_OPT_HPP_INCLUDED
 #define FCPPT_ALGORITHM_FIND_BY_OPT_HPP_INCLUDED
 
-#include <fcppt/is_optional.hpp>
-#include <fcppt/optional_impl.hpp>
 #include <fcppt/algorithm/detail/find_by_result.hpp>
 #include <fcppt/container/to_iterator_type.hpp>
+#include <fcppt/optional/is_object.hpp>
+#include <fcppt/optional/object_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
@@ -68,7 +68,7 @@ find_by_opt(
 	result_type;
 
 	static_assert(
-		fcppt::is_optional<
+		fcppt::optional::is_object<
 			typename
 			std::remove_const<
 				result_type

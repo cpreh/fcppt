@@ -7,7 +7,7 @@
 #ifndef FCPPT_RANDOM_DISTRIBUTION_PARAMETERS_MAKE_UNIFORM_INDICES_ADVANCED_HPP_INCLUDED
 #define FCPPT_RANDOM_DISTRIBUTION_PARAMETERS_MAKE_UNIFORM_INDICES_ADVANCED_HPP_INCLUDED
 
-#include <fcppt/optional_impl.hpp>
+#include <fcppt/optional/object_impl.hpp>
 #include <fcppt/random/distribution/parameters/uniform_int.hpp>
 #include <fcppt/random/distribution/parameters/uniform_int_wrapper_fwd.hpp>
 
@@ -25,7 +25,7 @@ template<
 	typename Distribution,
 	typename Container
 >
-fcppt::optional<
+fcppt::optional::object<
 	fcppt::random::distribution::parameters::uniform_int<
 		typename
 		Container::size_type,
@@ -45,7 +45,7 @@ make_uniform_indices_advanced(
 	param_type;
 
 	typedef
-	fcppt::optional<
+	fcppt::optional::object<
 		param_type
 	>
 	result_type;

@@ -156,7 +156,7 @@ right()
 }
 
 #include <fcppt/dynamic_pointer_cast.hpp>
-#include <fcppt/optional_impl.hpp>
+#include <fcppt/optional/object_impl.hpp>
 
 namespace
 {
@@ -193,7 +193,7 @@ cast()
 	>
 	derived_ptr;
 
-	fcppt::optional<
+	fcppt::optional::object<
 		derived_ptr
 	> dptr(
 		fcppt::dynamic_pointer_cast<
@@ -213,7 +213,8 @@ cast()
 
 }
 
-int main()
+int
+main()
 {
 	shared_ptr_example();
 

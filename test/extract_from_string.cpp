@@ -7,11 +7,11 @@
 #include <fcppt/extract_from_string.hpp>
 #include <fcppt/extract_from_string_error.hpp>
 #include <fcppt/extract_from_string_exn.hpp>
-#include <fcppt/optional_comparison.hpp>
-#include <fcppt/optional_impl.hpp>
-#include <fcppt/optional_output.hpp>
 #include <fcppt/string.hpp>
 #include <fcppt/text.hpp>
+#include <fcppt/optional/comparison.hpp>
+#include <fcppt/optional/object_impl.hpp>
+#include <fcppt/optional/output.hpp>
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
@@ -44,7 +44,7 @@ BOOST_AUTO_TEST_CASE(
 FCPPT_PP_POP_WARNING
 
 	typedef
-	fcppt::optional<
+	fcppt::optional::object<
 		int
 	>
 	opt_int;

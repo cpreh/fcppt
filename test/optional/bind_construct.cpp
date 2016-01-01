@@ -5,10 +5,10 @@
 
 
 #include <fcppt/noncopyable.hpp>
-#include <fcppt/optional.hpp>
-#include <fcppt/optional_comparison.hpp>
-#include <fcppt/optional_map.hpp>
-#include <fcppt/optional_output.hpp>
+#include <fcppt/optional/comparison.hpp>
+#include <fcppt/optional/map.hpp>
+#include <fcppt/optional/object.hpp>
+#include <fcppt/optional/output.hpp>
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
@@ -28,13 +28,13 @@ BOOST_AUTO_TEST_CASE(
 FCPPT_PP_POP_WARNING
 
 	typedef
-	fcppt::optional<
+	fcppt::optional::object<
 		std::string::size_type
 	>
 	optional_size;
 
 	typedef
-	fcppt::optional<
+	fcppt::optional::object<
 		std::string
 	>
 	optional_string;
@@ -50,7 +50,7 @@ FCPPT_PP_POP_WARNING
 	);
 
 	BOOST_CHECK_EQUAL(
-		fcppt::optional_map(
+		fcppt::optional::map(
 			optional_string(),
 			conversion
 		),
@@ -58,7 +58,7 @@ FCPPT_PP_POP_WARNING
 	);
 
 	BOOST_CHECK_EQUAL(
-		fcppt::optional_map(
+		fcppt::optional::map(
 			optional_string(
 				"test"
 			),
@@ -97,7 +97,7 @@ BOOST_AUTO_TEST_CASE(
 {
 FCPPT_PP_POP_WARNING
 	typedef
-	fcppt::optional<
+	fcppt::optional::object<
 		std::string
 	>
 	optional_string;
@@ -105,7 +105,7 @@ FCPPT_PP_POP_WARNING
 	noncopyable test{};
 
 	BOOST_CHECK_EQUAL(
-		&fcppt::optional_map(
+		&fcppt::optional::map(
 			optional_string(
 				"42"
 			),

@@ -5,8 +5,8 @@
 
 
 #include <fcppt/noncopyable.hpp>
-#include <fcppt/optional_impl.hpp>
 #include <fcppt/assign/make_container_opt.hpp>
+#include <fcppt/optional/object_impl.hpp>
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
@@ -57,7 +57,7 @@ FCPPT_PP_POP_WARNING
 	int_vector;
 
 	typedef
-	fcppt::optional<
+	fcppt::optional::object<
 		int
 	>
 	optional_int;
@@ -112,7 +112,7 @@ FCPPT_PP_POP_WARNING
 	movable_vector;
 
 	typedef
-	fcppt::optional<
+	fcppt::optional::object<
 		movable
 	>
 	optional_movable;

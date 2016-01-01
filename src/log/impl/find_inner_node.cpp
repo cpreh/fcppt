@@ -4,13 +4,13 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/optional_deref.hpp>
 #include <fcppt/string.hpp>
 #include <fcppt/algorithm/find_if_opt.hpp>
 #include <fcppt/log/detail/context_tree.hpp>
 #include <fcppt/log/detail/optional_context_tree_ref.hpp>
 #include <fcppt/log/impl/find_inner_node.hpp>
 #include <fcppt/log/impl/inner_node_name.hpp>
+#include <fcppt/optional/deref.hpp>
 
 
 fcppt::log::detail::optional_context_tree_ref
@@ -20,7 +20,7 @@ fcppt::log::impl::find_inner_node(
 )
 {
 	return
-		fcppt::optional_deref(
+		fcppt::optional::deref(
 			fcppt::algorithm::find_if_opt(
 				_tree,
 				fcppt::log::impl::inner_node_name(

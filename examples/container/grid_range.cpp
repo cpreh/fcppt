@@ -4,6 +4,7 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
+#include <fcppt/strong_typedef_output.hpp>
 #include <fcppt/cast/size.hpp>
 #include <fcppt/container/grid/clamped_sup.hpp>
 #include <fcppt/container/grid/dim.hpp>
@@ -16,7 +17,6 @@
 #include <fcppt/container/grid/pos.hpp>
 #include <fcppt/container/grid/pos_reference.hpp>
 #include <fcppt/container/grid/size_type.hpp>
-#include <fcppt/strong_typedef_output.hpp>
 #include <fcppt/math/vector/output.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <iostream>

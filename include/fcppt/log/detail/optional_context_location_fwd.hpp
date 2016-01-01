@@ -7,8 +7,8 @@
 #ifndef FCPPT_LOG_DETAIL_OPTIONAL_CONTEXT_LOCATION_FWD_HPP_INCLUDED
 #define FCPPT_LOG_DETAIL_OPTIONAL_CONTEXT_LOCATION_FWD_HPP_INCLUDED
 
-#include <fcppt/optional_fwd.hpp>
 #include <fcppt/log/context_location_fwd.hpp>
+#include <fcppt/optional/object_fwd.hpp>
 
 
 namespace fcppt
@@ -18,9 +18,11 @@ namespace log
 namespace detail
 {
 
-typedef fcppt::optional<
+typedef
+fcppt::optional::object<
 	fcppt::log::context_location
-> optional_context_location;
+>
+optional_context_location;
 
 }
 }

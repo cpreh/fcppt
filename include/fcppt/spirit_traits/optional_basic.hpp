@@ -7,7 +7,7 @@
 #ifndef FCPPT_SPIRIT_TRAITS_OPTIONAL_BASIC_HPP_INCLUDED
 #define FCPPT_SPIRIT_TRAITS_OPTIONAL_BASIC_HPP_INCLUDED
 
-#include <fcppt/optional_fwd.hpp>
+#include <fcppt/optional/object_fwd.hpp>
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
@@ -32,7 +32,7 @@ template<
 	typename Domain
 >
 struct not_is_optional<
-	fcppt::optional<
+	fcppt::optional::object<
 		Type
 	>,
 	Domain

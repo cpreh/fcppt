@@ -5,10 +5,10 @@
 
 
 #include <fcppt/make_unique_ptr.hpp>
-#include <fcppt/optional_deref.hpp>
-#include <fcppt/optional_impl.hpp>
-#include <fcppt/optional_ref_compare.hpp>
 #include <fcppt/unique_ptr_impl.hpp>
+#include <fcppt/optional/deref.hpp>
+#include <fcppt/optional/object_impl.hpp>
+#include <fcppt/optional/ref_compare.hpp>
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
@@ -34,7 +34,7 @@ FCPPT_PP_POP_WARNING
 	int_unique_ptr;
 
 	typedef
-	fcppt::optional<
+	fcppt::optional::object<
 		int_unique_ptr const &
 	>
 	optional_int_unique_ptr;
@@ -48,13 +48,13 @@ FCPPT_PP_POP_WARNING
 	);
 
 	BOOST_CHECK(
-		fcppt::optional_ref_compare(
-			fcppt::optional_deref(
+		fcppt::optional::ref_compare(
+			fcppt::optional::deref(
 				optional_int_unique_ptr{
 					ptr
 				}
 			),
-			fcppt::optional<
+			fcppt::optional::object<
 				int &
 			>(
 				*ptr
@@ -85,15 +85,15 @@ FCPPT_PP_POP_WARNING
 	};
 
 	BOOST_CHECK(
-		fcppt::optional_ref_compare(
-			fcppt::optional_deref(
-				fcppt::optional<
+		fcppt::optional::ref_compare(
+			fcppt::optional::deref(
+				fcppt::optional::object<
 					int_vector::iterator
 				>(
 					ints.begin()
 				)
 			),
-			fcppt::optional<
+			fcppt::optional::object<
 				int &
 			>(
 				ints.front()
@@ -106,15 +106,15 @@ FCPPT_PP_POP_WARNING
 	);
 
 	BOOST_CHECK(
-		fcppt::optional_ref_compare(
-			fcppt::optional_deref(
-				fcppt::optional<
+		fcppt::optional::ref_compare(
+			fcppt::optional::deref(
+				fcppt::optional::object<
 					int_vector::const_iterator
 				>(
 					ints.cbegin()
 				)
 			),
-			fcppt::optional<
+			fcppt::optional::object<
 				int const &
 			>(
 				const_front

@@ -8,7 +8,6 @@
 #define FCPPT_LOG_DETAIL_AUTO_CONTEXT_HPP_INCLUDED
 
 #include <fcppt/noncopyable.hpp>
-#include <fcppt/optional_decl.hpp>
 #include <fcppt/log/context_fwd.hpp>
 #include <fcppt/log/object_fwd.hpp>
 #include <fcppt/log/optional_location.hpp>
@@ -16,6 +15,7 @@
 #include <fcppt/log/detail/auto_context_rep.hpp>
 #include <fcppt/log/detail/optional_context_location.hpp>
 #include <fcppt/log/detail/optional_context_tree_ref.hpp>
+#include <fcppt/optional/object_decl.hpp>
 
 
 namespace fcppt
@@ -51,7 +51,7 @@ public:
 	);
 private:
 	typedef
-	fcppt::optional<
+	fcppt::optional::object<
 		fcppt::log::detail::auto_context_rep
 	>
 	optional_auto_context_rep;

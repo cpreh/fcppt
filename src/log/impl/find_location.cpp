@@ -4,12 +4,12 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/optional_bind.hpp>
 #include <fcppt/log/location.hpp>
 #include <fcppt/log/detail/context_tree.hpp>
 #include <fcppt/log/detail/optional_context_tree_ref.hpp>
 #include <fcppt/log/impl/find_inner_node.hpp>
 #include <fcppt/log/impl/find_location.hpp>
+#include <fcppt/optional/bind.hpp>
 
 
 fcppt::log::detail::optional_context_tree_ref
@@ -29,7 +29,7 @@ fcppt::log::impl::find_location(
 	)
 	{
 		cur =
-			fcppt::optional_bind(
+			fcppt::optional::bind(
 				cur,
 				[
 					&item

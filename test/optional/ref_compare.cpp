@@ -4,8 +4,8 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/optional_impl.hpp>
-#include <fcppt/optional_ref_compare.hpp>
+#include <fcppt/optional/object_impl.hpp>
+#include <fcppt/optional/ref_compare.hpp>
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
@@ -23,7 +23,7 @@ BOOST_AUTO_TEST_CASE(
 {
 FCPPT_PP_POP_WARNING
 
-	typedef fcppt::optional<
+	typedef fcppt::optional::object<
 		int &
 	> optional_int_ref;
 
@@ -40,7 +40,7 @@ FCPPT_PP_POP_WARNING
 	);
 
 	BOOST_CHECK(
-		fcppt::optional_ref_compare(
+		fcppt::optional::ref_compare(
 			opt_a,
 			optional_int_ref(
 				a
@@ -49,14 +49,14 @@ FCPPT_PP_POP_WARNING
 	);
 
 	BOOST_CHECK(
-		!fcppt::optional_ref_compare(
+		!fcppt::optional::ref_compare(
 			opt_a,
 			opt_b
 		)
 	);
 
 	BOOST_CHECK(
-		!fcppt::optional_ref_compare(
+		!fcppt::optional::ref_compare(
 			opt_a,
 			optional_int_ref()
 		)

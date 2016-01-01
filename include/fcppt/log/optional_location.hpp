@@ -7,9 +7,9 @@
 #ifndef FCPPT_LOG_OPTIONAL_LOCATION_HPP_INCLUDED
 #define FCPPT_LOG_OPTIONAL_LOCATION_HPP_INCLUDED
 
-#include <fcppt/optional_impl.hpp>
 #include <fcppt/log/location.hpp>
 #include <fcppt/log/optional_location_fwd.hpp>
+#include <fcppt/optional/object_impl.hpp>
 
 
 #endif

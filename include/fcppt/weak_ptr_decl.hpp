@@ -7,9 +7,9 @@
 #ifndef FCPPT_WEAK_PTR_DECL_HPP_INCLUDED
 #define FCPPT_WEAK_PTR_DECL_HPP_INCLUDED
 
-#include <fcppt/optional_fwd.hpp>
 #include <fcppt/shared_ptr_fwd.hpp>
 #include <fcppt/weak_ptr_fwd.hpp>
+#include <fcppt/optional/object_fwd.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <memory>
 #include <fcppt/config/external_end.hpp>
@@ -122,7 +122,7 @@ public:
 	that object will be returned. If all shared_ptrs have been destroyed,
 	then an empty optional will be returned.
 	*/
-	fcppt::optional<
+	fcppt::optional::object<
 		shared_ptr
 	>
 	lock() const;

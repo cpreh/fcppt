@@ -7,10 +7,10 @@
 #ifndef FCPPT_ASSERT_OPTIONAL_ERROR_HPP_INCLUDED
 #define FCPPT_ASSERT_OPTIONAL_ERROR_HPP_INCLUDED
 
-#include <fcppt/forward_optional_get.hpp>
 #include <fcppt/identity.hpp>
-#include <fcppt/optional_impl.hpp>
 #include <fcppt/assert/pre.hpp>
+#include <fcppt/optional/forward_get.hpp>
+#include <fcppt/optional/object_impl.hpp>
 
 
 /**
@@ -34,7 +34,7 @@ result of the macro is <code>opt.get_unsafe()</code>.
 ) \
 -> \
 decltype(\
-	fcppt::forward_optional_get<\
+	fcppt::optional::forward_get<\
 		decltype(\
 			fcppt::identity{}(\
 				opt\
@@ -50,7 +50,7 @@ decltype(\
 	);\
 \
 	return \
-		fcppt::forward_optional_get<\
+		fcppt::optional::forward_get<\
 			decltype(\
 				_arg\
 			)\

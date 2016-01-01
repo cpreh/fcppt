@@ -4,9 +4,9 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/maybe_void_multi.hpp>
-#include <fcppt/optional_impl.hpp>
 #include <fcppt/cast/to_signed.hpp>
+#include <fcppt/optional/maybe_void_multi.hpp>
+#include <fcppt/optional/object_impl.hpp>
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
@@ -25,13 +25,13 @@ BOOST_AUTO_TEST_CASE(
 FCPPT_PP_POP_WARNING
 
 	typedef
-	fcppt::optional<
+	fcppt::optional::object<
 		int
 	>
 	optional_int;
 
 	typedef
-	fcppt::optional<
+	fcppt::optional::object<
 		unsigned
 	>
 	optional_unsigned;
@@ -40,7 +40,7 @@ FCPPT_PP_POP_WARNING
 		0
 	};
 
-	fcppt::maybe_void_multi(
+	fcppt::optional::maybe_void_multi(
 		[
 			&result
 		](

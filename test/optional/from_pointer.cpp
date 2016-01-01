@@ -4,8 +4,8 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/optional_from_pointer.hpp>
-#include <fcppt/optional_impl.hpp>
+#include <fcppt/optional/from_pointer.hpp>
+#include <fcppt/optional/object_impl.hpp>
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
@@ -39,7 +39,7 @@ FCPPT_PP_POP_WARNING
 	void (*fun_ptr)(int);
 
 	BOOST_CHECK(
-		fcppt::optional_from_pointer(
+		fcppt::optional::from_pointer(
 			&test_function
 		).has_value()
 	);
@@ -49,7 +49,7 @@ FCPPT_PP_POP_WARNING
 	);
 
 	BOOST_CHECK(
-		!fcppt::optional_from_pointer(
+		!fcppt::optional::from_pointer(
 			ptr
 		).has_value()
 	);

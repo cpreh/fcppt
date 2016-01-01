@@ -4,8 +4,8 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/optional_bind.hpp>
-#include <fcppt/optional_impl.hpp>
+#include <fcppt/optional/bind.hpp>
+#include <fcppt/optional/object_impl.hpp>
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
@@ -25,7 +25,7 @@ BOOST_AUTO_TEST_CASE(
 FCPPT_PP_POP_WARNING
 
 	typedef
-	fcppt::optional<
+	fcppt::optional::object<
 		std::string
 	>
 	optional_string;
@@ -39,7 +39,7 @@ FCPPT_PP_POP_WARNING
 	);
 
 	BOOST_CHECK_EQUAL(
-		fcppt::optional_bind(
+		fcppt::optional::bind(
 			optional_string(
 				"test2"
 			),

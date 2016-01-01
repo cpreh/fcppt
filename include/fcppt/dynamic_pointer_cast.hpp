@@ -7,10 +7,10 @@
 #ifndef FCPPT_DYNAMIC_POINTER_CAST_HPP_INCLUDED
 #define FCPPT_DYNAMIC_POINTER_CAST_HPP_INCLUDED
 
-#include <fcppt/optional_impl.hpp>
-#include <fcppt/optional_map.hpp>
 #include <fcppt/shared_ptr_impl.hpp>
 #include <fcppt/cast/try_dynamic.hpp>
+#include <fcppt/optional/map.hpp>
+#include <fcppt/optional/object_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
@@ -40,7 +40,7 @@ template<
 	typename Dest,
 	typename Source
 >
-fcppt::optional<
+fcppt::optional::object<
 	fcppt::shared_ptr<
 		Dest
 	>
@@ -52,7 +52,7 @@ dynamic_pointer_cast(
 )
 {
 	return
-		fcppt::optional_map(
+		fcppt::optional::map(
 			fcppt::cast::try_dynamic<
 				typename
 				std::remove_pointer<

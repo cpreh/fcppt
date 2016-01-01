@@ -9,7 +9,7 @@
 
 #include <fcppt/extract_from_string.hpp>
 #include <fcppt/extract_from_string_error.hpp>
-#include <fcppt/optional_to_exception.hpp>
+#include <fcppt/optional/to_exception.hpp>
 #include <fcppt/type_traits/is_string.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <locale>
@@ -62,7 +62,7 @@ extract_from_string_exn(
 	);
 
 	return
-		fcppt::optional_to_exception(
+		fcppt::optional::to_exception(
 			fcppt::extract_from_string<
 				Dest
 			>(

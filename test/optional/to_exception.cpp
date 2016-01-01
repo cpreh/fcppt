@@ -5,9 +5,9 @@
 
 
 #include <fcppt/exception.hpp>
-#include <fcppt/optional_impl.hpp>
-#include <fcppt/optional_to_exception.hpp>
 #include <fcppt/text.hpp>
+#include <fcppt/optional/object_impl.hpp>
+#include <fcppt/optional/to_exception.hpp>
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
@@ -41,7 +41,7 @@ BOOST_AUTO_TEST_CASE(
 {
 FCPPT_PP_POP_WARNING
 	typedef
-	fcppt::optional<
+	fcppt::optional::object<
 		int
 	>
 	optional_int;
@@ -56,7 +56,7 @@ FCPPT_PP_POP_WARNING
 	);
 
 	BOOST_CHECK(
-		fcppt::optional_to_exception(
+		fcppt::optional::to_exception(
 			optional_int(
 				3
 			),
@@ -67,7 +67,7 @@ FCPPT_PP_POP_WARNING
 	);
 
 	BOOST_CHECK_EXCEPTION(
-		fcppt::optional_to_exception(
+		fcppt::optional::to_exception(
 			optional_int(),
 			make_exception
 		),

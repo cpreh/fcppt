@@ -8,11 +8,11 @@
 #define FCPPT_CAST_DETAIL_TRUNCATION_CHECK_HPP_INCLUDED
 
 #include <fcppt/literal.hpp>
-#include <fcppt/optional_bind.hpp>
-#include <fcppt/optional_impl.hpp>
 #include <fcppt/cast/size.hpp>
 #include <fcppt/cast/to_signed.hpp>
 #include <fcppt/cast/to_unsigned.hpp>
+#include <fcppt/optional/bind.hpp>
+#include <fcppt/optional/object_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <limits>
 #include <type_traits>
@@ -47,7 +47,7 @@ std::enable_if<
 	sizeof(
 		Source
 	),
-	fcppt::optional<
+	fcppt::optional::object<
 		Dest
 	>
 >::type
@@ -56,7 +56,7 @@ truncation_check(
 )
 {
 	return
-		fcppt::optional<
+		fcppt::optional::object<
 			Dest
 		>(
 			_source
@@ -84,7 +84,7 @@ std::enable_if<
 	sizeof(
 		Source
 	),
-	fcppt::optional<
+	fcppt::optional::object<
 		Dest
 	>
 >::type
@@ -93,7 +93,7 @@ truncation_check(
 )
 {
 	typedef
-	fcppt::optional<
+	fcppt::optional::object<
 		Dest
 	>
 	dest_type;
@@ -142,7 +142,7 @@ std::enable_if<
 	sizeof(
 		Source
 	),
-	fcppt::optional<
+	fcppt::optional::object<
 		Dest
 	>
 >::type
@@ -150,7 +150,7 @@ truncation_check(
 	Source const _source
 )
 {
-	typedef fcppt::optional<
+	typedef fcppt::optional::object<
 		Dest
 	> dest_type;
 
@@ -200,7 +200,7 @@ std::enable_if<
 	std::is_signed<
 		Source
 	>::value,
-	fcppt::optional<
+	fcppt::optional::object<
 		Dest
 	>
 >::type
@@ -208,7 +208,7 @@ truncation_check(
 	Source const _source
 )
 {
-	typedef fcppt::optional<
+	typedef fcppt::optional::object<
 		Dest
 	> dest_type;
 
@@ -245,7 +245,7 @@ std::enable_if<
 	std::is_unsigned<
 		Source
 	>::value,
-	fcppt::optional<
+	fcppt::optional::object<
 		Dest
 	>
 >::type
@@ -253,7 +253,7 @@ truncation_check(
 	Source const _source
 )
 {
-	typedef fcppt::optional<
+	typedef fcppt::optional::object<
 		Dest
 	> dest_type;
 
@@ -261,7 +261,7 @@ truncation_check(
 		Dest
 	>::type intermediate_type;
 
-	typedef fcppt::optional<
+	typedef fcppt::optional::object<
 		intermediate_type
 	> intermediate_dest;
 
@@ -274,7 +274,7 @@ truncation_check(
 	);
 
 	return
-		fcppt::optional_bind(
+		fcppt::optional::bind(
 			dest,
 			[
 				_source

@@ -8,7 +8,7 @@
 #ifndef FCPPT_SIGNAL_OPTIONAL_AUTO_CONNECTION_FWD_HPP_INCLUDED
 #define FCPPT_SIGNAL_OPTIONAL_AUTO_CONNECTION_FWD_HPP_INCLUDED
 
-#include <fcppt/optional_fwd.hpp>
+#include <fcppt/optional/object_fwd.hpp>
 #include <fcppt/signal/auto_connection_fwd.hpp>
 
 
@@ -23,7 +23,7 @@ namespace signal
 \ingroup fcpptsignal
 */
 typedef
-fcppt::optional<
+fcppt::optional::object<
 	fcppt::signal::auto_connection
 >
 optional_auto_connection;

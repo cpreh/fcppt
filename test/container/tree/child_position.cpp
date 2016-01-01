@@ -4,9 +4,9 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/maybe.hpp>
 #include <fcppt/container/tree/child_position.hpp>
 #include <fcppt/container/tree/object_impl.hpp>
+#include <fcppt/optional/maybe.hpp>
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
@@ -42,7 +42,7 @@ FCPPT_PP_POP_WARNING
 		}
 	};
 
-	fcppt::maybe(
+	fcppt::optional::maybe(
 		fcppt::container::tree::child_position(
 			test,
 			test.front()

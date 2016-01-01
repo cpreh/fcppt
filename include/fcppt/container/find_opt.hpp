@@ -7,10 +7,10 @@
 #ifndef FCPPT_CONTAINER_FIND_OPT_HPP_INCLUDED
 #define FCPPT_CONTAINER_FIND_OPT_HPP_INCLUDED
 
-#include <fcppt/optional_deref.hpp>
-#include <fcppt/optional_impl.hpp>
 #include <fcppt/container/find_opt_iterator.hpp>
 #include <fcppt/container/to_value_type.hpp>
+#include <fcppt/optional/deref.hpp>
+#include <fcppt/optional/object_impl.hpp>
 
 
 namespace fcppt
@@ -36,7 +36,7 @@ template<
 	typename Key
 >
 inline
-fcppt::optional<
+fcppt::optional::object<
 	fcppt::container::to_value_type<
 		Container
 	>
@@ -47,7 +47,7 @@ find_opt(
 )
 {
 	return
-		fcppt::optional_deref(
+		fcppt::optional::deref(
 			fcppt::container::find_opt_iterator(
 				_container,
 				_key

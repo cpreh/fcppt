@@ -7,7 +7,7 @@
 #ifndef FCPPT_CAST_TRY_DYNAMIC_HPP_INCLUDED
 #define FCPPT_CAST_TRY_DYNAMIC_HPP_INCLUDED
 
-#include <fcppt/optional_impl.hpp>
+#include <fcppt/optional/object_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
@@ -39,7 +39,7 @@ template<
 	typename Derived,
 	typename Base
 >
-fcppt::optional<
+fcppt::optional::object<
 	Derived
 >
 try_dynamic(
@@ -69,7 +69,7 @@ try_dynamic(
 	};
 
 	typedef
-	fcppt::optional<
+	fcppt::optional::object<
 		Derived
 	>
 	result_type;

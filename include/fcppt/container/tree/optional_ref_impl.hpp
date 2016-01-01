@@ -7,8 +7,8 @@
 #ifndef FCPPT_CONTAINER_TREE_OPTIONAL_REF_IMPL_HPP_INCLUDED
 #define FCPPT_CONTAINER_TREE_OPTIONAL_REF_IMPL_HPP_INCLUDED
 
-#include <fcppt/optional_impl.hpp>
 #include <fcppt/container/tree/optional_ref_fwd.hpp>
+#include <fcppt/optional/object_impl.hpp>
 
 
 #endif

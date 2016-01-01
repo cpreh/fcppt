@@ -7,9 +7,9 @@
 #ifndef FCPPT_LOG_FORMAT_OPTIONAL_FUNCTION_HPP_INCLUDED
 #define FCPPT_LOG_FORMAT_OPTIONAL_FUNCTION_HPP_INCLUDED
 
-#include <fcppt/optional_impl.hpp>
 #include <fcppt/log/format/function.hpp>
 #include <fcppt/log/format/optional_function_fwd.hpp>
+#include <fcppt/optional/object_impl.hpp>
 
 
 #endif

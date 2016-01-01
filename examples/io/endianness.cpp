@@ -4,12 +4,12 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/maybe_void.hpp>
 #include <fcppt/text.hpp>
 #include <fcppt/endianness/format.hpp>
 #include <fcppt/io/cout.hpp>
 #include <fcppt/io/read.hpp>
 #include <fcppt/io/write.hpp>
+#include <fcppt/optional/maybe_void.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <sstream>
 #include <fcppt/config/external_end.hpp>
@@ -29,7 +29,7 @@ main()
 	);
 
 	// Read the written unsigned int back
-	fcppt::maybe_void(
+	fcppt::optional::maybe_void(
 		fcppt::io::read<
 			unsigned
 		>(

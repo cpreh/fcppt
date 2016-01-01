@@ -7,9 +7,9 @@
 #ifndef FCPPT_WEAK_PTR_IMPL_HPP_INCLUDED
 #define FCPPT_WEAK_PTR_IMPL_HPP_INCLUDED
 
-#include <fcppt/optional_impl.hpp>
 #include <fcppt/shared_ptr_fwd.hpp>
 #include <fcppt/weak_ptr_decl.hpp>
+#include <fcppt/optional/object_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <utility>
 #include <fcppt/config/external_end.hpp>
@@ -78,7 +78,7 @@ template<
 	typename Type,
 	typename Deleter
 >
-fcppt::optional<
+fcppt::optional::object<
 	typename
 	fcppt::weak_ptr<
 		Type,
@@ -96,7 +96,7 @@ fcppt::weak_ptr<
 	);
 
 	typedef
-	fcppt::optional<
+	fcppt::optional::object<
 		shared_ptr
 	>
 	result_type;

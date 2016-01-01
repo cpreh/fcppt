@@ -7,8 +7,8 @@
 #ifndef FCPPT_CONTAINER_FIND_OPT_ITERATOR_HPP_INCLUDED
 #define FCPPT_CONTAINER_FIND_OPT_ITERATOR_HPP_INCLUDED
 
-#include <fcppt/optional_impl.hpp>
 #include <fcppt/container/to_iterator_type.hpp>
+#include <fcppt/optional/object_impl.hpp>
 
 
 namespace fcppt
@@ -32,7 +32,7 @@ template<
 	typename Container,
 	typename Key
 >
-fcppt::optional<
+fcppt::optional::object<
 	fcppt::container::to_iterator_type<
 		Container
 	>
@@ -49,7 +49,7 @@ find_opt_iterator(
 	);
 
 	typedef
-	fcppt::optional<
+	fcppt::optional::object<
 		fcppt::container::to_iterator_type<
 			Container
 		>

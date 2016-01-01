@@ -7,9 +7,9 @@
 #ifndef FCPPT_CONTAINER_GRID_AT_OPTIONAL_HPP_INCLUDED
 #define FCPPT_CONTAINER_GRID_AT_OPTIONAL_HPP_INCLUDED
 
-#include <fcppt/optional_impl.hpp>
 #include <fcppt/container/to_reference_type.hpp>
 #include <fcppt/container/grid/in_range.hpp>
+#include <fcppt/optional/object_impl.hpp>
 
 
 namespace fcppt
@@ -30,7 +30,7 @@ Otherwise, the result is an empty optional.
 template<
 	typename Grid
 >
-fcppt::optional<
+fcppt::optional::object<
 	fcppt::container::to_reference_type<
 		Grid
 	>
@@ -41,7 +41,7 @@ at_optional(
 )
 {
 	typedef
-	fcppt::optional<
+	fcppt::optional::object<
 		fcppt::container::to_reference_type<
 			Grid
 		>

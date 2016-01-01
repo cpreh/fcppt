@@ -5,7 +5,6 @@
 
 
 #include <fcppt/const.hpp>
-#include <fcppt/from_optional.hpp>
 #include <fcppt/identity.hpp>
 #include <fcppt/make_ref.hpp>
 #include <fcppt/io/ostream.hpp>
@@ -13,6 +12,7 @@
 #include <fcppt/log/detail/temporary_output.hpp>
 #include <fcppt/log/format/chain.hpp>
 #include <fcppt/log/format/optional_function.hpp>
+#include <fcppt/optional/from.hpp>
 
 
 fcppt::log::level_stream::level_stream(
@@ -37,7 +37,7 @@ fcppt::log::level_stream::log(
 {
 	dest_.get()
 		<<
-		fcppt::from_optional(
+		fcppt::optional::from(
 			fcppt::log::format::chain(
 				_additional_formatter,
 				this->formatter()

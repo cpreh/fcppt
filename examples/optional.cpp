@@ -4,12 +4,11 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/from_optional.hpp>
-#include <fcppt/maybe.hpp>
-#include <fcppt/optional_bind.hpp>
-#include <fcppt/optional_comparison.hpp>
-#include <fcppt/optional_impl.hpp>
-#include <fcppt/optional_map.hpp>
+#include <fcppt/optional/bind.hpp>
+#include <fcppt/optional/from.hpp>
+#include <fcppt/optional/map.hpp>
+#include <fcppt/optional/maybe.hpp>
+#include <fcppt/optional/object.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <iostream>
 #include <string>
@@ -22,7 +21,7 @@ namespace
 //! [optional_example_bad]
 void
 optional_example_bad(
-	fcppt::optional<
+	fcppt::optional::object<
 		unsigned
 	> const _opt
 )
@@ -42,12 +41,12 @@ optional_example_bad(
 //! [optional_example_good]
 void
 optional_example_good(
-	fcppt::optional<
+	fcppt::optional::object<
 		unsigned
 	> const _opt
 )
 {
-	fcppt::maybe(
+	fcppt::optional::maybe(
 		_opt,
 		[]{
 			std::cout
@@ -69,7 +68,7 @@ void
 optional_copy()
 {
 //! [optional_copy]
-	typedef fcppt::optional<
+	typedef fcppt::optional::object<
 		unsigned
 	> optional_uint;
 
@@ -93,16 +92,16 @@ void
 optional_bind()
 {
 //! [optional_bind]
-	typedef fcppt::optional<
+	typedef fcppt::optional::object<
 		unsigned
 	> optional_uint;
 
-	typedef fcppt::optional<
+	typedef fcppt::optional::object<
 		std::string
 	> optional_string;
 
 	optional_string const value{
-		fcppt::optional_bind(
+		fcppt::optional::bind(
 			optional_uint{3u},
 			[](
 				unsigned const _val
@@ -123,7 +122,7 @@ optional_bind()
 
 //! [optional_map]
 	optional_string const value2{
-		fcppt::optional_map(
+		fcppt::optional::map(
 			optional_uint{3u},
 			[](
 				unsigned const _val
@@ -146,13 +145,13 @@ from_optional()
 {
 //! [from_optional]
 	typedef
-	fcppt::optional<
+	fcppt::optional::object<
 		unsigned
 	>
 	optional_uint;
 
 	unsigned const value{
-		fcppt::from_optional(
+		fcppt::optional::from(
 			optional_uint(),
 			[]{
 				return
@@ -171,7 +170,7 @@ int
 main()
 {
 	optional_example_bad(
-		fcppt::optional<
+		fcppt::optional::object<
 			unsigned
 		>(
 			0
@@ -179,7 +178,7 @@ main()
 	);
 
 	optional_example_good(
-		fcppt::optional<
+		fcppt::optional::object<
 			unsigned
 		>(
 			0

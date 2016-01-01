@@ -7,8 +7,8 @@
 #ifndef FCPPT_LOG_OPTIONAL_LOCATION_FWD_HPP_INCLUDED
 #define FCPPT_LOG_OPTIONAL_LOCATION_FWD_HPP_INCLUDED
 
-#include <fcppt/optional_fwd.hpp>
 #include <fcppt/log/location_fwd.hpp>
+#include <fcppt/optional/object_fwd.hpp>
 
 
 namespace fcppt
@@ -22,7 +22,7 @@ namespace log
 \ingroup fcpptlog
 */
 typedef
-fcppt::optional<
+fcppt::optional::object<
 	fcppt::log::location
 >
 optional_location;

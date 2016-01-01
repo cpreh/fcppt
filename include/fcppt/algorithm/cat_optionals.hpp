@@ -7,10 +7,10 @@
 #ifndef FCPPT_ALGORITHM_CAT_OPTIONALS_HPP_INCLUDED
 #define FCPPT_ALGORITHM_CAT_OPTIONALS_HPP_INCLUDED
 
-#include <fcppt/is_optional_reference.hpp>
-#include <fcppt/maybe_void.hpp>
 #include <fcppt/move_if.hpp>
 #include <fcppt/algorithm/range_element_type.hpp>
+#include <fcppt/optional/is_object_reference.hpp>
+#include <fcppt/optional/maybe_void.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
@@ -52,7 +52,7 @@ cat_optionals(
 		:
 		_source
 	)
-		fcppt::maybe_void(
+		fcppt::optional::maybe_void(
 			element,
 			[
 				&result
@@ -63,7 +63,7 @@ cat_optionals(
 				result.insert(
 					result.end(),
 					fcppt::move_if<
-						!fcppt::is_optional_reference<
+						!fcppt::optional::is_object_reference<
 							decltype(
 								element
 							)

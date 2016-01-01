@@ -8,10 +8,10 @@
 #define FCPPT_IO_READ_EXN_HPP_INCLUDED
 
 #include <fcppt/exception.hpp>
-#include <fcppt/optional_to_exception.hpp>
 #include <fcppt/text.hpp>
 #include <fcppt/endianness/format_fwd.hpp>
 #include <fcppt/io/read.hpp>
+#include <fcppt/optional/to_exception.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <iosfwd>
 #include <type_traits>
@@ -59,7 +59,7 @@ read_exn(
 	);
 
 	return
-		fcppt::optional_to_exception(
+		fcppt::optional::to_exception(
 			fcppt::io::read<
 				Type
 			>(

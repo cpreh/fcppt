@@ -7,12 +7,12 @@
 #ifndef FCPPT_IO_READ_HPP_INCLUDED
 #define FCPPT_IO_READ_HPP_INCLUDED
 
-#include <fcppt/optional_impl.hpp>
 #include <fcppt/cast/size.hpp>
 #include <fcppt/cast/to_char_ptr.hpp>
 #include <fcppt/cast/to_signed.hpp>
 #include <fcppt/endianness/convert.hpp>
 #include <fcppt/endianness/format_fwd.hpp>
+#include <fcppt/optional/object_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <iosfwd>
 #include <istream>
@@ -46,7 +46,7 @@ be returned. Otherwise an empty optional will be returned.
 template<
 	typename Type
 >
-fcppt::optional<
+fcppt::optional::object<
 	Type
 >
 read(
@@ -61,7 +61,7 @@ read(
 		"io::read must return a fundamental type"
 	);
 
-	typedef fcppt::optional<
+	typedef fcppt::optional::object<
 		Type
 	> result_type;
 

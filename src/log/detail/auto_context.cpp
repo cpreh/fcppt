@@ -4,9 +4,6 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/maybe_void.hpp>
-#include <fcppt/optional_impl.hpp>
-#include <fcppt/optional_map.hpp>
 #include <fcppt/assert/optional_error.hpp>
 #include <fcppt/log/context.hpp>
 #include <fcppt/log/context_location.hpp>
@@ -17,6 +14,9 @@
 #include <fcppt/log/detail/context_tree.hpp>
 #include <fcppt/log/detail/optional_context_location.hpp>
 #include <fcppt/log/detail/optional_context_tree_ref.hpp>
+#include <fcppt/optional/map.hpp>
+#include <fcppt/optional/maybe_void.hpp>
+#include <fcppt/optional/object_impl.hpp>
 
 
 fcppt::log::detail::auto_context::auto_context(
@@ -25,7 +25,7 @@ fcppt::log::detail::auto_context::auto_context(
 )
 :
 	rep_(
-		fcppt::optional_map(
+		fcppt::optional::map(
 			_context_location,
 			[
 				&_object
@@ -49,7 +49,7 @@ fcppt::log::detail::auto_context::auto_context(
 
 fcppt::log::detail::auto_context::~auto_context()
 {
-	fcppt::maybe_void(
+	fcppt::optional::maybe_void(
 		rep_,
 		[](
 			fcppt::log::detail::auto_context_rep &_rep
@@ -66,7 +66,7 @@ fcppt::log::optional_location
 fcppt::log::detail::auto_context::location() const
 {
 	return
-		fcppt::optional_map(
+		fcppt::optional::map(
 			rep_,
 			[](
 				fcppt::log::detail::auto_context_rep const &_rep
@@ -82,7 +82,7 @@ fcppt::log::detail::optional_context_tree_ref
 fcppt::log::detail::auto_context::node() const
 {
 	return
-		fcppt::optional_map(
+		fcppt::optional::map(
 			rep_,
 			[](
 				fcppt::log::detail::auto_context_rep const &_rep

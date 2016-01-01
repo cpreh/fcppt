@@ -4,11 +4,11 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/optional_combine.hpp>
 #include <fcppt/string.hpp>
 #include <fcppt/log/format/chain.hpp>
 #include <fcppt/log/format/function.hpp>
 #include <fcppt/log/format/optional_function.hpp>
+#include <fcppt/optional/combine.hpp>
 
 
 fcppt::log::format::optional_function
@@ -18,7 +18,7 @@ fcppt::log::format::chain(
 )
 {
 	return
-		fcppt::optional_combine(
+		fcppt::optional::combine(
 			_parent,
 			_child,
 			[](

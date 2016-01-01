@@ -4,7 +4,7 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/optional_impl.hpp>
+#include <fcppt/optional/object_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
@@ -14,7 +14,7 @@ int
 main()
 {
 	typedef
-	fcppt::optional<
+	fcppt::optional::object<
 		int
 	>
 	optional_int;
@@ -44,7 +44,7 @@ main()
 	);
 
 	typedef
-	fcppt::optional<
+	fcppt::optional::object<
 		int &
 	>
 	optional_int_ref;
@@ -66,7 +66,7 @@ main()
 	);
 
 	typedef
-	fcppt::optional<
+	fcppt::optional::object<
 		int const &
 	>
 	optional_const_int_ref;

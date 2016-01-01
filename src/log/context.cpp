@@ -5,11 +5,6 @@
 
 
 #include <fcppt/make_ref.hpp>
-#include <fcppt/maybe.hpp>
-#include <fcppt/maybe_void.hpp>
-#include <fcppt/optional_bind.hpp>
-#include <fcppt/optional_map.hpp>
-#include <fcppt/optional_to_exception.hpp>
 #include <fcppt/reference_wrapper_impl.hpp>
 #include <fcppt/string.hpp>
 #include <fcppt/algorithm/map_optional.hpp>
@@ -31,6 +26,11 @@
 #include <fcppt/log/impl/find_location.hpp>
 #include <fcppt/log/impl/find_logger_node.hpp>
 #include <fcppt/log/impl/to_outer_node.hpp>
+#include <fcppt/optional/bind.hpp>
+#include <fcppt/optional/map.hpp>
+#include <fcppt/optional/maybe.hpp>
+#include <fcppt/optional/maybe_void.hpp>
+#include <fcppt/optional/to_exception.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <exception>
 #include <vector>
@@ -67,7 +67,7 @@ fcppt::log::context::find(
 )
 {
 	return
-		fcppt::optional_bind(
+		fcppt::optional::bind(
 			fcppt::log::impl::find_location(
 				tree_,
 				_location
@@ -77,7 +77,7 @@ fcppt::log::context::find(
 			)
 			{
 				return
-					fcppt::optional_map(
+					fcppt::optional::map(
 						fcppt::log::impl::find_logger_node(
 							_tree_location
 						),
@@ -102,7 +102,7 @@ fcppt::log::context::apply(
 {
 	this->apply_to(
 		_function,
-		fcppt::optional_to_exception(
+		fcppt::optional::to_exception(
 			fcppt::log::impl::find_location(
 				tree_,
 				_location
@@ -191,7 +191,7 @@ fcppt::log::context::apply_to(
 			_tree
 		)
 	)
-		fcppt::maybe_void(
+		fcppt::optional::maybe_void(
 			fcppt::log::impl::to_outer_node(
 				elem
 			),
@@ -226,7 +226,7 @@ fcppt::log::context::add(
 		_location
 	)
 		cur =
-			fcppt::maybe(
+			fcppt::optional::maybe(
 				fcppt::log::impl::find_inner_node(
 					cur.get(),
 					item

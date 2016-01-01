@@ -7,7 +7,7 @@
 #ifndef FCPPT_EXTRACT_FROM_STRING_HPP_INCLUDED
 #define FCPPT_EXTRACT_FROM_STRING_HPP_INCLUDED
 
-#include <fcppt/optional_impl.hpp>
+#include <fcppt/optional/object_impl.hpp>
 #include <fcppt/type_traits/is_string.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <locale>
@@ -43,7 +43,7 @@ template<
 	typename Dest,
 	typename Source
 >
-fcppt::optional<
+fcppt::optional::object<
 	Dest
 >
 extract_from_string(
@@ -74,7 +74,7 @@ extract_from_string(
 
 	Dest dest;
 
-	typedef fcppt::optional<
+	typedef fcppt::optional::object<
 		Dest
 	> dest_opt;
 

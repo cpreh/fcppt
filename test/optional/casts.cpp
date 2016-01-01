@@ -4,11 +4,11 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/const_optional_cast.hpp>
-#include <fcppt/dynamic_optional_cast.hpp>
 #include <fcppt/noncopyable.hpp>
-#include <fcppt/optional_impl.hpp>
-#include <fcppt/static_optional_cast.hpp>
+#include <fcppt/optional/const_cast.hpp>
+#include <fcppt/optional/dynamic_cast.hpp>
+#include <fcppt/optional/object_impl.hpp>
+#include <fcppt/optional/static_cast.hpp>
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
@@ -53,11 +53,11 @@ public:
 	}
 };
 
-typedef fcppt::optional<
+typedef fcppt::optional::object<
 	base &
 > optional_base_ref;
 
-typedef fcppt::optional<
+typedef fcppt::optional::object<
 	derived &
 > optional_derived_ref;
 
@@ -75,7 +75,7 @@ FCPPT_PP_POP_WARNING
 	optional_base_ref empty_base;
 
 	optional_derived_ref empty_derived(
-		fcppt::dynamic_optional_cast<
+		fcppt::optional::dynamic_cast_<
 			derived
 		>(
 			empty_base
@@ -93,7 +93,7 @@ FCPPT_PP_POP_WARNING
 	);
 
 	optional_derived_ref derived_ref(
-		fcppt::dynamic_optional_cast<
+		fcppt::optional::dynamic_cast_<
 			derived
 		>(
 			base_ref
@@ -122,7 +122,7 @@ FCPPT_PP_POP_WARNING
 	optional_base_ref empty_base;
 
 	optional_derived_ref empty_derived(
-		fcppt::static_optional_cast<
+		fcppt::optional::static_cast_<
 			derived
 		>(
 			empty_base
@@ -140,7 +140,7 @@ FCPPT_PP_POP_WARNING
 	);
 
 	optional_derived_ref derived_ref(
-		fcppt::static_optional_cast<
+		fcppt::optional::static_cast_<
 			derived
 		>(
 			base_ref
@@ -166,7 +166,7 @@ BOOST_AUTO_TEST_CASE(
 {
 FCPPT_PP_POP_WARNING
 
-	typedef fcppt::optional<
+	typedef fcppt::optional::object<
 		base const &
 	> optional_const_base_ref;
 
@@ -177,7 +177,7 @@ FCPPT_PP_POP_WARNING
 	);
 
 	optional_base_ref const nonconst_ref(
-		fcppt::const_optional_cast<
+		fcppt::optional::const_cast_<
 			base
 		>(
 			ref

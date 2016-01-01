@@ -5,11 +5,11 @@
 
 
 #include <fcppt/make_unique_ptr.hpp>
-#include <fcppt/optional_comparison.hpp>
-#include <fcppt/optional_impl.hpp>
-#include <fcppt/optional_join.hpp>
-#include <fcppt/optional_output.hpp>
 #include <fcppt/unique_ptr_impl.hpp>
+#include <fcppt/optional/comparison.hpp>
+#include <fcppt/optional/join.hpp>
+#include <fcppt/optional/object_impl.hpp>
+#include <fcppt/optional/output.hpp>
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
@@ -29,19 +29,19 @@ BOOST_AUTO_TEST_CASE(
 FCPPT_PP_POP_WARNING
 
 	typedef
-	fcppt::optional<
+	fcppt::optional::object<
 		std::string
 	>
 	optional_string;
 
 	typedef
-	fcppt::optional<
+	fcppt::optional::object<
 		optional_string
 	>
 	optional_optional_string;
 
 	BOOST_CHECK_EQUAL(
-		fcppt::optional_join(
+		fcppt::optional::join(
 			optional_optional_string(
 				optional_string(
 					"test2"
@@ -54,7 +54,7 @@ FCPPT_PP_POP_WARNING
 	);
 
 	BOOST_CHECK_EQUAL(
-		fcppt::optional_join(
+		fcppt::optional::join(
 			optional_optional_string()
 		),
 		optional_string()
@@ -71,7 +71,7 @@ BOOST_AUTO_TEST_CASE(
 FCPPT_PP_POP_WARNING
 
 	typedef
-	fcppt::optional<
+	fcppt::optional::object<
 		fcppt::unique_ptr<
 			int
 		>
@@ -79,13 +79,13 @@ FCPPT_PP_POP_WARNING
 	optional_ptr;
 
 	typedef
-	fcppt::optional<
+	fcppt::optional::object<
 		optional_ptr
 	>
 	optional_optional_ptr;
 
 	BOOST_CHECK_EQUAL(
-		*fcppt::optional_join(
+		*fcppt::optional::join(
 			optional_optional_ptr(
 				optional_ptr(
 					fcppt::make_unique_ptr<

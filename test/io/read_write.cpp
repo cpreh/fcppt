@@ -5,13 +5,13 @@
 
 
 #include <fcppt/exception.hpp>
-#include <fcppt/optional_comparison.hpp>
-#include <fcppt/optional_impl.hpp>
-#include <fcppt/optional_output.hpp>
 #include <fcppt/endianness/format.hpp>
 #include <fcppt/io/read.hpp>
 #include <fcppt/io/read_exn.hpp>
 #include <fcppt/io/write.hpp>
+#include <fcppt/optional/comparison.hpp>
+#include <fcppt/optional/object_impl.hpp>
+#include <fcppt/optional/output.hpp>
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
@@ -39,7 +39,7 @@ test_read_write(
 		_endianness
 	);
 
-	typedef fcppt::optional<
+	typedef fcppt::optional::object<
 		int
 	> optional_int;
 

@@ -4,10 +4,10 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/from_optional.hpp>
 #include <fcppt/make_unique_ptr.hpp>
-#include <fcppt/optional_impl.hpp>
 #include <fcppt/unique_ptr.hpp>
+#include <fcppt/optional/from.hpp>
+#include <fcppt/optional/object_impl.hpp>
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
@@ -26,19 +26,19 @@ BOOST_AUTO_TEST_CASE(
 FCPPT_PP_POP_WARNING
 
 	typedef
-	fcppt::optional<
+	fcppt::optional::object<
 		int
 	>
 	optional_int;
 
 	typedef
-	fcppt::optional<
+	fcppt::optional::object<
 		int &
 	>
 	optional_int_ref;
 
 	BOOST_CHECK_EQUAL(
-		fcppt::from_optional(
+		fcppt::optional::from(
 			optional_int(),
 			[]
 			{
@@ -50,7 +50,7 @@ FCPPT_PP_POP_WARNING
 	);
 
 	BOOST_CHECK_EQUAL(
-		fcppt::from_optional(
+		fcppt::optional::from(
 			optional_int(
 				100
 			),
@@ -71,7 +71,7 @@ FCPPT_PP_POP_WARNING
 		0
 	};
 
-	fcppt::from_optional(
+	fcppt::optional::from(
 		optional_int_ref{
 			x
 		},
@@ -107,13 +107,13 @@ FCPPT_PP_POP_WARNING
 	int_unique_ptr;
 
 	typedef
-	fcppt::optional<
+	fcppt::optional::object<
 		int_unique_ptr
 	>
 	optional_int_unique_ptr;
 
 	optional_int_unique_ptr const ptr(
-		fcppt::from_optional(
+		fcppt::optional::from(
 			optional_int_unique_ptr(
 				fcppt::make_unique_ptr<
 					int

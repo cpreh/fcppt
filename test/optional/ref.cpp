@@ -4,7 +4,7 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/optional_impl.hpp>
+#include <fcppt/optional/object_impl.hpp>
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
@@ -22,7 +22,7 @@ BOOST_AUTO_TEST_CASE(
 {
 FCPPT_PP_POP_WARNING
 
-	typedef fcppt::optional<
+	typedef fcppt::optional::object<
 		int &
 	> optional_int_ref;
 
@@ -62,7 +62,7 @@ BOOST_AUTO_TEST_CASE(
 {
 FCPPT_PP_POP_WARNING
 
-	typedef fcppt::optional<
+	typedef fcppt::optional::object<
 		int const &
 	> optional_int_ref_const;
 
@@ -115,13 +115,13 @@ BOOST_AUTO_TEST_CASE(
 )
 {
 FCPPT_PP_POP_WARNING
-	typedef fcppt::optional<
+	typedef fcppt::optional::object<
 		int &
 	> optional_int_ref;
 
 	optional_int_ref opt_ref;
 
-	typedef fcppt::optional<
+	typedef fcppt::optional::object<
 		int const &
 	> optional_int_ref_const;
 
@@ -153,7 +153,7 @@ FCPPT_PP_POP_WARNING
 		&const_opt_ref.get_unsafe() == &val
 	);
 
-	typedef fcppt::optional<
+	typedef fcppt::optional::object<
 		int
 	> optional_int;
 

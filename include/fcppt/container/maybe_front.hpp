@@ -7,8 +7,8 @@
 #ifndef FCPPT_CONTAINER_MAYBE_FRONT_HPP_INCLUDED
 #define FCPPT_CONTAINER_MAYBE_FRONT_HPP_INCLUDED
 
-#include <fcppt/optional_impl.hpp>
 #include <fcppt/container/to_reference_type.hpp>
+#include <fcppt/optional/object_impl.hpp>
 
 
 namespace fcppt
@@ -24,7 +24,7 @@ namespace container
 template<
 	typename Container
 >
-fcppt::optional<
+fcppt::optional::object<
 	fcppt::container::to_reference_type<
 		Container
 	>
@@ -34,7 +34,7 @@ maybe_front(
 )
 {
 	typedef
-	fcppt::optional<
+	fcppt::optional::object<
 		fcppt::container::to_reference_type<
 			Container
 		>

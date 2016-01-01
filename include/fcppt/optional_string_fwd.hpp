@@ -7,8 +7,8 @@
 #ifndef FCPPT_OPTIONAL_STRING_FWD_HPP_INCLUDED
 #define FCPPT_OPTIONAL_STRING_FWD_HPP_INCLUDED
 
-#include <fcppt/optional_fwd.hpp>
 #include <fcppt/string.hpp>
+#include <fcppt/optional/object_fwd.hpp>
 
 
 namespace fcppt
@@ -19,9 +19,11 @@ namespace fcppt
 
 \ingroup fcpptstring
 */
-typedef fcppt::optional<
+typedef
+fcppt::optional::object<
 	fcppt::string
-> optional_string;
+>
+optional_string;
 
 }
 

@@ -341,7 +341,6 @@ set(
 	include/fcppt/config/gcc_version_at_least.hpp
 	include/fcppt/config/platform.hpp
 	include/fcppt/const.hpp
-	include/fcppt/const_optional_cast.hpp
 	include/fcppt/const_pointer_cast.hpp
 	include/fcppt/container/array_size.hpp
 	include/fcppt/container/at_optional.hpp
@@ -523,18 +522,13 @@ set(
 	include/fcppt/detail/call_destructor.hpp
 	include/fcppt/detail/char_type.hpp
 	include/fcppt/detail/check_cpp.hpp
-	include/fcppt/detail/check_optional.hpp
 	include/fcppt/detail/const.hpp
 	include/fcppt/detail/cyclic_iterator_base.hpp
 	include/fcppt/detail/cyclic_iterator_category.hpp
 	include/fcppt/detail/decltype_sink.hpp
-	include/fcppt/detail/enable_optional_ref_conv.hpp
-	include/fcppt/detail/enable_optional_value_conv.hpp
 	include/fcppt/detail/enum_iterator_base.hpp
 	include/fcppt/detail/equal.hpp
 	include/fcppt/detail/equal_functor.hpp
-	include/fcppt/detail/forward_optional_get.hpp
-	include/fcppt/detail/has_value_all.hpp
 	include/fcppt/detail/int_iterator_base.hpp
 	include/fcppt/detail/make_shared_wrapper.hpp
 	include/fcppt/detail/make_shared_wrapper_fwd.hpp
@@ -543,7 +537,6 @@ set(
 	include/fcppt/detail/move_iterator_if_rvalue.hpp
 	include/fcppt/detail/nonassignable.hpp
 	include/fcppt/detail/noncopyable.hpp
-	include/fcppt/detail/optional_cast.hpp
 	include/fcppt/detail/placement_new.hpp
 	include/fcppt/detail/strong_typedef/assignment_operator.hpp
 	include/fcppt/detail/strong_typedef/binary_operator.hpp
@@ -560,7 +553,6 @@ set(
 	include/fcppt/detail/tag_type.hpp
 	include/fcppt/detail/text.hpp
 	include/fcppt/detail/void.hpp
-	include/fcppt/dynamic_optional_cast.hpp
 	include/fcppt/dynamic_pointer_cast.hpp
 	include/fcppt/either/apply.hpp
 	include/fcppt/either/bind.hpp
@@ -626,8 +618,6 @@ set(
 	include/fcppt/filesystem/stem.hpp
 	include/fcppt/filesystem/strip_prefix.hpp
 	include/fcppt/format.hpp
-	include/fcppt/forward_optional_get.hpp
-	include/fcppt/from_optional.hpp
 	include/fcppt/from_std_string.hpp
 	include/fcppt/from_std_string_locale.hpp
 	include/fcppt/from_std_wstring.hpp
@@ -681,8 +671,6 @@ set(
 	include/fcppt/io/stream_to_string.hpp
 	include/fcppt/io/stringstream.hpp
 	include/fcppt/io/write.hpp
-	include/fcppt/is_optional.hpp
-	include/fcppt/is_optional_reference.hpp
 	include/fcppt/is_strong_typedef.hpp
 	include/fcppt/literal.hpp
 	include/fcppt/log/_.hpp
@@ -1017,10 +1005,6 @@ set(
 	include/fcppt/math/vector/to_signed.hpp
 	include/fcppt/math/vector/to_unsigned.hpp
 	include/fcppt/math/vector/unit.hpp
-	include/fcppt/maybe.hpp
-	include/fcppt/maybe_multi.hpp
-	include/fcppt/maybe_void.hpp
-	include/fcppt/maybe_void_multi.hpp
 	include/fcppt/micro_version.hpp
 	include/fcppt/minor_version.hpp
 	include/fcppt/move_if.hpp
@@ -1055,26 +1039,43 @@ set(
 	include/fcppt/no_init_fwd.hpp
 	include/fcppt/nonassignable.hpp
 	include/fcppt/noncopyable.hpp
-	include/fcppt/optional.hpp
-	include/fcppt/optional_alternative.hpp
-	include/fcppt/optional_apply.hpp
-	include/fcppt/optional_assign.hpp
-	include/fcppt/optional_bind.hpp
-	include/fcppt/optional_combine.hpp
-	include/fcppt/optional_comparison.hpp
-	include/fcppt/optional_decl.hpp
-	include/fcppt/optional_deref.hpp
-	include/fcppt/optional_filter.hpp
-	include/fcppt/optional_from_pointer.hpp
-	include/fcppt/optional_fwd.hpp
-	include/fcppt/optional_impl.hpp
-	include/fcppt/optional_join.hpp
-	include/fcppt/optional_map.hpp
-	include/fcppt/optional_output.hpp
-	include/fcppt/optional_ref_compare.hpp
+	include/fcppt/optional/alternative.hpp
+	include/fcppt/optional/apply.hpp
+	include/fcppt/optional/assign.hpp
+	include/fcppt/optional/bind.hpp
+	include/fcppt/optional/combine.hpp
+	include/fcppt/optional/comparison.hpp
+	include/fcppt/optional/const_cast.hpp
+	include/fcppt/optional/deref.hpp
+	include/fcppt/optional/detail/cast.hpp
+	include/fcppt/optional/detail/check.hpp
+	include/fcppt/optional/detail/enable_ref_conv.hpp
+	include/fcppt/optional/detail/enable_value_conv.hpp
+	include/fcppt/optional/detail/forward_get.hpp
+	include/fcppt/optional/detail/has_value_all.hpp
+	include/fcppt/optional/dynamic_cast.hpp
+	include/fcppt/optional/filter.hpp
+	include/fcppt/optional/forward_get.hpp
+	include/fcppt/optional/from.hpp
+	include/fcppt/optional/from_pointer.hpp
+	include/fcppt/optional/is_object.hpp
+	include/fcppt/optional/is_object_reference.hpp
+	include/fcppt/optional/join.hpp
+	include/fcppt/optional/map.hpp
+	include/fcppt/optional/maybe.hpp
+	include/fcppt/optional/maybe_multi.hpp
+	include/fcppt/optional/maybe_void.hpp
+	include/fcppt/optional/maybe_void_multi.hpp
+	include/fcppt/optional/object.hpp
+	include/fcppt/optional/object_decl.hpp
+	include/fcppt/optional/object_fwd.hpp
+	include/fcppt/optional/object_impl.hpp
+	include/fcppt/optional/output.hpp
+	include/fcppt/optional/ref_compare.hpp
+	include/fcppt/optional/static_cast.hpp
+	include/fcppt/optional/to_exception.hpp
 	include/fcppt/optional_string.hpp
 	include/fcppt/optional_string_fwd.hpp
-	include/fcppt/optional_to_exception.hpp
 	include/fcppt/preprocessor/const.hpp
 	include/fcppt/preprocessor/detail/disable_vc_warning.hpp
 	include/fcppt/preprocessor/detail/function.hpp
@@ -1195,7 +1196,6 @@ set(
 	include/fcppt/signal/unregister/function.hpp
 	include/fcppt/spirit_traits/optional_basic.hpp
 	include/fcppt/spirit_traits/variant_basic.hpp
-	include/fcppt/static_optional_cast.hpp
 	include/fcppt/static_pointer_cast.hpp
 	include/fcppt/string.hpp
 	include/fcppt/string_conv_locale.hpp

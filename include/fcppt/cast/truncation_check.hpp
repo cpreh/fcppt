@@ -8,9 +8,9 @@
 #define FCPPT_CAST_TRUNCATION_CHECK_HPP_INCLUDED
 
 #include <fcppt/insert_to_fcppt_string.hpp>
-#include <fcppt/optional_to_exception.hpp>
 #include <fcppt/cast/bad_truncation_check.hpp>
 #include <fcppt/cast/detail/truncation_check.hpp>
+#include <fcppt/optional/to_exception.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <type_traits>
 #include <typeindex>
@@ -65,7 +65,7 @@ truncation_check(
 	);
 
 	return
-		fcppt::optional_to_exception(
+		fcppt::optional::to_exception(
 			fcppt::cast::detail::truncation_check<
 				Dest
 			>(

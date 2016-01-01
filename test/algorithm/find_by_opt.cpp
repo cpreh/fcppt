@@ -4,9 +4,9 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/optional_comparison.hpp>
-#include <fcppt/optional_impl.hpp>
 #include <fcppt/algorithm/find_by_opt.hpp>
+#include <fcppt/optional/comparison.hpp>
+#include <fcppt/optional/object_impl.hpp>
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
@@ -39,7 +39,7 @@ FCPPT_PP_POP_WARNING
 	};
 
 	typedef
-	fcppt::optional<
+	fcppt::optional::object<
 		std::string
 	>
 	result_type;

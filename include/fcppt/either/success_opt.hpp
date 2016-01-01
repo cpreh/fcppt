@@ -8,9 +8,9 @@
 #define FCPPT_EITHER_SUCCESS_OPT_HPP_INCLUDED
 
 #include <fcppt/move_if_rvalue.hpp>
-#include <fcppt/optional_impl.hpp>
 #include <fcppt/either/is_object.hpp>
 #include <fcppt/either/object_impl.hpp>
+#include <fcppt/optional/object_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
@@ -29,7 +29,7 @@ namespace either
 template<
 	typename Either
 >
-fcppt::optional<
+fcppt::optional::object<
 	typename
 	std::decay<
 		Either
@@ -54,7 +54,7 @@ success_opt(
 	);
 
 	typedef
-	fcppt::optional<
+	fcppt::optional::object<
 		typename
 		either::success
 	>

@@ -7,8 +7,8 @@
 #ifndef FCPPT_ALGORITHM_MAP_OPTIONAL_HPP_INCLUDED
 #define FCPPT_ALGORITHM_MAP_OPTIONAL_HPP_INCLUDED
 
-#include <fcppt/is_optional.hpp>
 #include <fcppt/algorithm/range_element_type.hpp>
+#include <fcppt/optional/is_object.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <type_traits>
 #include <utility>
@@ -62,7 +62,7 @@ map_optional(
 		);
 
 		static_assert(
-			fcppt::is_optional<
+			fcppt::optional::is_object<
 				typename
 				std::decay<
 					decltype(

@@ -7,9 +7,9 @@
 #ifndef FCPPT_LOG_OPTIONAL_LEVEL_HPP_INCLUDED
 #define FCPPT_LOG_OPTIONAL_LEVEL_HPP_INCLUDED
 
-#include <fcppt/optional_impl.hpp>
 #include <fcppt/log/level.hpp>
 #include <fcppt/log/optional_level_fwd.hpp>
+#include <fcppt/optional/object_impl.hpp>
 
 
 #endif

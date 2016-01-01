@@ -4,7 +4,6 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/maybe.hpp>
 #include <fcppt/io/ostream.hpp>
 #include <fcppt/log/context.hpp>
 #include <fcppt/log/enabled_level_array.hpp>
@@ -18,6 +17,7 @@
 #include <fcppt/log/detail/temporary_output_fwd.hpp>
 #include <fcppt/log/format/optional_function.hpp>
 #include <fcppt/log/impl/tree_formatter.hpp>
+#include <fcppt/optional/maybe.hpp>
 #include <fcppt/preprocessor/disable_vc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
@@ -35,7 +35,7 @@ fcppt::log::object::object(
 		*this
 	),
 	formatter_(
-		fcppt::maybe(
+		fcppt::optional::maybe(
 			auto_context_.node(),
 			[
 				&_param

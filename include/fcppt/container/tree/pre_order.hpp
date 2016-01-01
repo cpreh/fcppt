@@ -8,10 +8,10 @@
 #define FCPPT_CONTAINER_TREE_PRE_ORDER_HPP_INCLUDED
 
 #include <fcppt/noncopyable.hpp>
-#include <fcppt/optional_ref_compare.hpp>
 #include <fcppt/reference_wrapper_impl.hpp>
 #include <fcppt/container/tree/is_object.hpp>
 #include <fcppt/container/tree/optional_ref_impl.hpp>
+#include <fcppt/optional/ref_compare.hpp>
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
@@ -217,7 +217,7 @@ FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
 		) const
 		{
 			return
-				fcppt::optional_ref_compare(
+				fcppt::optional::ref_compare(
 					current_,
 					_other.current_
 				);

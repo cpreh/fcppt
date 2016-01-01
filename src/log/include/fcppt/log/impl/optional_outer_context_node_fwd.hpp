@@ -7,8 +7,8 @@
 #ifndef FCPPT_LOG_IMPL_OPTIONAL_OUTER_CONTEXT_NODE_FWD_HPP_INCLUDED
 #define FCPPT_LOG_IMPL_OPTIONAL_OUTER_CONTEXT_NODE_FWD_HPP_INCLUDED
 
-#include <fcppt/optional_fwd.hpp>
 #include <fcppt/log/detail/outer_context_node_fwd.hpp>
+#include <fcppt/optional/object_fwd.hpp>
 
 
 namespace fcppt
@@ -19,7 +19,7 @@ namespace impl
 {
 
 typedef
-fcppt::optional<
+fcppt::optional::object<
 	fcppt::log::detail::outer_context_node
 >
 optional_outer_context_node;

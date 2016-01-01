@@ -4,8 +4,8 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/maybe_multi.hpp>
-#include <fcppt/optional_impl.hpp>
+#include <fcppt/optional/maybe_multi.hpp>
+#include <fcppt/optional/object_impl.hpp>
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
@@ -24,19 +24,19 @@ BOOST_AUTO_TEST_CASE(
 {
 FCPPT_PP_POP_WARNING
 	typedef
-	fcppt::optional<
+	fcppt::optional::object<
 		int
 	>
 	optional_int;
 
 	typedef
-	fcppt::optional<
+	fcppt::optional::object<
 		unsigned
 	>
 	optional_unsigned;
 
 	BOOST_CHECK(
-		fcppt::maybe_multi(
+		fcppt::optional::maybe_multi(
 			[]
 			{
 				return
@@ -68,7 +68,7 @@ FCPPT_PP_POP_WARNING
 	);
 
 	BOOST_CHECK(
-		fcppt::maybe_multi(
+		fcppt::optional::maybe_multi(
 			[]
 			{
 				return

@@ -8,7 +8,7 @@
 #define FCPPT_VARIANT_TO_OPTIONAL_HPP_INCLUDED
 
 #include <fcppt/move_if_rvalue.hpp>
-#include <fcppt/optional_impl.hpp>
+#include <fcppt/optional/object_impl.hpp>
 #include <fcppt/variant/holds_type.hpp>
 #include <fcppt/variant/object_impl.hpp>
 #include <fcppt/variant/detail/to_optional_result.hpp>
@@ -28,7 +28,7 @@ template<
 	typename Type,
 	typename Variant
 >
-fcppt::optional<
+fcppt::optional::object<
 	fcppt::variant::detail::to_optional_result<
 		Type,
 		Variant
@@ -39,7 +39,7 @@ to_optional(
 )
 {
 	typedef
-	fcppt::optional<
+	fcppt::optional::object<
 		fcppt::variant::detail::to_optional_result<
 			Type,
 			Variant

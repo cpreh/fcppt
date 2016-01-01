@@ -7,10 +7,10 @@
 #include <fcppt/const_pointer_cast.hpp>
 #include <fcppt/dynamic_pointer_cast.hpp>
 #include <fcppt/make_shared_ptr.hpp>
-#include <fcppt/maybe.hpp>
-#include <fcppt/optional_impl.hpp>
 #include <fcppt/shared_ptr_impl.hpp>
 #include <fcppt/static_pointer_cast.hpp>
+#include <fcppt/optional/maybe.hpp>
+#include <fcppt/optional/object_impl.hpp>
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
@@ -66,7 +66,7 @@ FCPPT_PP_POP_WARNING
 	);
 
 	{
-		fcppt::optional<
+		fcppt::optional::object<
 			derived_ptr
 		> const ptr2(
 			fcppt::dynamic_pointer_cast<
@@ -80,7 +80,7 @@ FCPPT_PP_POP_WARNING
 			ptr2.has_value()
 		);
 
-		fcppt::maybe(
+		fcppt::optional::maybe(
 			ptr2,
 			[]{
 				BOOST_CHECK(

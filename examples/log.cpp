@@ -5,7 +5,6 @@
 
 
 #include <fcppt/exception.hpp>
-#include <fcppt/optional_impl.hpp>
 #include <fcppt/text.hpp>
 #include <fcppt/assert/error.hpp>
 #include <fcppt/io/cerr.hpp>
@@ -19,6 +18,7 @@
 #include <fcppt/log/parameters.hpp>
 #include <fcppt/log/tree_function.hpp>
 #include <fcppt/log/format/time_stamp.hpp>
+#include <fcppt/optional/object_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <cstdlib>
 #include <functional>

@@ -104,7 +104,7 @@ f()
 		d1
 	);
 
-	fcppt::optional<
+	fcppt::optional::object<
 		derived2 &
 	> to_d2{
 		fcppt::cast::try_dynamic<
@@ -118,7 +118,7 @@ f()
 		!to_d2.has_value()
 	);
 
-	fcppt::optional<
+	fcppt::optional::object<
 		derived1 &
 	> to_d1{
 		fcppt::cast::try_dynamic<

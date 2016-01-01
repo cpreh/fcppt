@@ -4,10 +4,10 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/forward_optional_get.hpp>
 #include <fcppt/make_unique_ptr.hpp>
-#include <fcppt/optional_impl.hpp>
 #include <fcppt/unique_ptr.hpp>
+#include <fcppt/optional/forward_get.hpp>
+#include <fcppt/optional/object_impl.hpp>
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
@@ -28,7 +28,7 @@ fcppt::unique_ptr<
 int_unique_ptr;
 
 typedef
-fcppt::optional<
+fcppt::optional::object<
 	int_unique_ptr
 >
 optional_int_unique_ptr;
@@ -36,7 +36,7 @@ optional_int_unique_ptr;
 static_assert(
 	std::is_same<
 		decltype(
-			fcppt::forward_optional_get<
+			fcppt::optional::forward_get<
 				optional_int_unique_ptr
 			>(
 				std::declval<
@@ -61,7 +61,7 @@ test_move(
 {
 	return
 		_function(
-			fcppt::forward_optional_get<
+			fcppt::optional::forward_get<
 				Optional
 			>(
 				_arg.get_unsafe()

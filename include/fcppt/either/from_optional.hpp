@@ -7,11 +7,11 @@
 #ifndef FCPPT_EITHER_FROM_OPTIONAL_HPP_INCLUDED
 #define FCPPT_EITHER_FROM_OPTIONAL_HPP_INCLUDED
 
-#include <fcppt/is_optional.hpp>
-#include <fcppt/is_optional_reference.hpp>
-#include <fcppt/maybe.hpp>
 #include <fcppt/move_if_rvalue.hpp>
 #include <fcppt/either/object_impl.hpp>
+#include <fcppt/optional/is_object.hpp>
+#include <fcppt/optional/is_object_reference.hpp>
+#include <fcppt/optional/maybe.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <type_traits>
 #include <utility>
@@ -56,14 +56,14 @@ fcppt::either::object<
 >
 {
 	static_assert(
-		fcppt::is_optional<
+		fcppt::optional::is_object<
 			Optional
 		>::value,
 		"Optional must be an optional"
 	);
 
 	static_assert(
-		!fcppt::is_optional_reference<
+		!fcppt::optional::is_object_reference<
 			Optional
 		>::value,
 		"Optional must not be an optional reference"
@@ -82,7 +82,7 @@ fcppt::either::object<
 	result_type;
 
 	return
-		fcppt::maybe(
+		fcppt::optional::maybe(
 			std::forward<
 				Optional
 			>(

@@ -5,9 +5,9 @@
 
 
 #include <fcppt/make_unique_ptr.hpp>
-#include <fcppt/optional_impl.hpp>
 #include <fcppt/unique_ptr.hpp>
 #include <fcppt/assert/optional_error.hpp>
+#include <fcppt/optional/object_impl.hpp>
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
@@ -26,7 +26,7 @@ BOOST_AUTO_TEST_CASE(
 FCPPT_PP_POP_WARNING
 
 	typedef
-	fcppt::optional<
+	fcppt::optional::object<
 		int
 	>
 	optional_int;
@@ -38,7 +38,7 @@ FCPPT_PP_POP_WARNING
 	int_unique_ptr;
 
 	typedef
-	fcppt::optional<
+	fcppt::optional::object<
 		int_unique_ptr
 	>
 	optional_int_unique_ptr;

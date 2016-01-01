@@ -5,9 +5,9 @@
 
 
 #include <fcppt/make_unique_ptr.hpp>
-#include <fcppt/optional_filter.hpp>
-#include <fcppt/optional_impl.hpp>
 #include <fcppt/unique_ptr_impl.hpp>
+#include <fcppt/optional/filter.hpp>
+#include <fcppt/optional/object_impl.hpp>
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
@@ -26,7 +26,7 @@ BOOST_AUTO_TEST_CASE(
 FCPPT_PP_POP_WARNING
 
 	typedef
-	fcppt::optional<
+	fcppt::optional::object<
 		int
 	>
 	optional_int;
@@ -44,7 +44,7 @@ FCPPT_PP_POP_WARNING
 	);
 
 	optional_int const result1(
-		fcppt::optional_filter(
+		fcppt::optional::filter(
 			optional_int(
 				42
 			),
@@ -62,7 +62,7 @@ FCPPT_PP_POP_WARNING
 	);
 
 	optional_int const result2(
-		fcppt::optional_filter(
+		fcppt::optional::filter(
 			optional_int(
 				10
 			),
@@ -75,7 +75,7 @@ FCPPT_PP_POP_WARNING
 	);
 
 	optional_int const result3(
-		fcppt::optional_filter(
+		fcppt::optional::filter(
 			optional_int(),
 			function
 		)
@@ -102,13 +102,13 @@ FCPPT_PP_POP_WARNING
 	int_unique_ptr;
 
 	typedef
-	fcppt::optional<
+	fcppt::optional::object<
 		int_unique_ptr
 	>
 	optional_int_unique_ptr;
 
 	optional_int_unique_ptr const result(
-		fcppt::optional_filter(
+		fcppt::optional::filter(
 			optional_int_unique_ptr(
 				fcppt::make_unique_ptr<
 					int

@@ -8,8 +8,8 @@
 #ifndef FCPPT_ASSIGN_DETAIL_MAKE_OPT_HPP_INCLUDED
 #define FCPPT_ASSIGN_DETAIL_MAKE_OPT_HPP_INCLUDED
 
-#include <fcppt/is_optional.hpp>
-#include <fcppt/optional_impl.hpp>
+#include <fcppt/optional/is_object.hpp>
+#include <fcppt/optional/object_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <type_traits>
 #include <utility>
@@ -30,7 +30,7 @@ template<
 inline
 typename
 std::enable_if<
-	!fcppt::is_optional<
+	!fcppt::optional::is_object<
 		typename
 		std::decay<
 			Arg
@@ -65,7 +65,7 @@ template<
 inline
 typename
 std::enable_if<
-	fcppt::is_optional<
+	fcppt::optional::is_object<
 		typename
 		std::decay<
 			Arg
@@ -103,7 +103,7 @@ template<
 inline
 typename
 std::enable_if<
-	fcppt::is_optional<
+	fcppt::optional::is_object<
 		typename
 		std::decay<
 			Arg

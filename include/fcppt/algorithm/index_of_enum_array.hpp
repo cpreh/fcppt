@@ -7,11 +7,11 @@
 #ifndef FCPPT_ALGORITHM_INDEX_OF_ENUM_ARRAY_HPP_INCLUDED
 #define FCPPT_ALGORITHM_INDEX_OF_ENUM_ARRAY_HPP_INCLUDED
 
-#include <fcppt/optional_impl.hpp>
-#include <fcppt/optional_map.hpp>
 #include <fcppt/algorithm/index_of.hpp>
 #include <fcppt/cast/int_to_enum.hpp>
 #include <fcppt/container/enum_array_impl.hpp>
+#include <fcppt/optional/map.hpp>
+#include <fcppt/optional/object_impl.hpp>
 
 
 namespace fcppt
@@ -32,7 +32,7 @@ template<
 	typename Value
 >
 inline
-fcppt::optional<
+fcppt::optional::object<
 	Enum
 >
 index_of_enum_array(
@@ -44,7 +44,7 @@ index_of_enum_array(
 )
 {
 	return
-		fcppt::optional_map(
+		fcppt::optional::map(
 			fcppt::algorithm::index_of(
 				_array,
 				_value

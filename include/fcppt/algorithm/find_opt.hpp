@@ -7,8 +7,8 @@
 #ifndef FCPPT_ALGORITHM_FIND_OPT_HPP_INCLUDED
 #define FCPPT_ALGORITHM_FIND_OPT_HPP_INCLUDED
 
-#include <fcppt/optional_impl.hpp>
 #include <fcppt/container/to_iterator_type.hpp>
+#include <fcppt/optional/object_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <algorithm>
 #include <type_traits>
@@ -29,7 +29,7 @@ template<
 	typename Range,
 	typename T
 >
-fcppt::optional<
+fcppt::optional::object<
 	fcppt::container::to_iterator_type<
 		typename
 		std::remove_reference<
@@ -52,7 +52,7 @@ find_opt(
 	iterator_type;
 
 	typedef
-	fcppt::optional<
+	fcppt::optional::object<
 		iterator_type
 	>
 	result_type;

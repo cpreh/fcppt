@@ -8,7 +8,7 @@
 #define FCPPT_VARIANT_EQUAL_HPP_INCLUDED
 
 #include <fcppt/const.hpp>
-#include <fcppt/maybe.hpp>
+#include <fcppt/optional/maybe.hpp>
 #include <fcppt/variant/apply_unary.hpp>
 #include <fcppt/variant/object_impl.hpp>
 #include <fcppt/variant/to_optional.hpp>
@@ -57,7 +57,7 @@ operator==(
 			-> bool
 			{
 				return
-					fcppt::maybe(
+					fcppt::optional::maybe(
 						fcppt::variant::to_optional<
 							typename
 							std::decay<

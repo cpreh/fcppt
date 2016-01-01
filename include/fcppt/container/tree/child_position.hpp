@@ -7,10 +7,10 @@
 #ifndef FCPPT_CONTAINER_TREE_CHILD_POSITION_HPP_INCLUDED
 #define FCPPT_CONTAINER_TREE_CHILD_POSITION_HPP_INCLUDED
 
-#include <fcppt/optional_impl.hpp>
 #include <fcppt/algorithm/find_if_opt.hpp>
 #include <fcppt/container/to_iterator_type.hpp>
 #include <fcppt/container/tree/is_object.hpp>
+#include <fcppt/optional/object_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
@@ -36,7 +36,7 @@ container where this object resides.
 template<
 	typename T
 >
-fcppt::optional<
+fcppt::optional::object<
 	fcppt::container::to_iterator_type<
 		T
 	>
