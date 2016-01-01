@@ -15,6 +15,8 @@
 
 namespace fcppt
 {
+namespace optional
+{
 
 /**
 \brief Filters an optional
@@ -34,7 +36,7 @@ typename
 std::decay<
 	Optional
 >::type
-optional_filter(
+filter(
 	Optional &&_source,
 	Function const &_function
 )
@@ -59,6 +61,7 @@ optional_filter(
 		;
 }
 
+}
 }
 
 #endif

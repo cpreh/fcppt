@@ -845,6 +845,10 @@ add_fcppt_test(
 )
 
 add_fcppt_test(
+	optional/filter
+)
+
+add_fcppt_test(
 	optional/forward_get
 )
 

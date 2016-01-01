@@ -49,22 +49,24 @@ optional.
 
 \section optional_value Values
 
-<code>fcppt::optional<T></code> is an optional value iff <code>T</code> is not
-a reference type. Optional values copy or move their contents, which means that
-<code>T</code> has to support copying or moving as well. Here is a small
-example:
+<code>fcppt::optional::object<T></code> is an optional value iff <code>T</code>
+is not a reference type. Optional values copy or move their contents, which
+means that <code>T</code> has to support copying or moving as well. Here is a
+small example:
 
 \snippet optional.cpp optional_copy
 
-An optional value, <code>fcppt::optional<T></code>, has some special semantics,
-in contrast to optional references:
+An optional value, <code>fcppt::optional::object<T></code>, has some special
+semantics, in contrast to optional references:
 <ul>
-<li>It can be constructed from an <code>%fcppt::optional<T &></code> or an
-<code>%fcppt::optional<T const &></code>. This has the same semantics as
-constructing a <code>T</code> from a <code>T &</code> or <code>T const &</code>
-with the addition that <code>has_value</code> will be preserved.</li>
-<li>It can also be assigned from an <code>%fcppt::optional<T &></code> or an
-<code>%fcppt::optional<T const &></code> with the same semantics.</li>
+<li>It can be constructed from an <code>%fcppt::optional::object<T &></code> or
+an <code>%fcppt::optional::object<T const &></code>. This has the same
+semantics as constructing a <code>T</code> from a <code>T &</code> or <code>T
+const &</code> with the addition that <code>has_value</code> will be
+preserved.</li>
+<li>It can also be assigned from an <code>%fcppt::optional::object<T &></code>
+or an <code>%fcppt::optional::object<T const &></code> with the same
+semantics.</li>
 <li>Its own constness determines if it can be modified.</li>
 </ul>
 
@@ -76,20 +78,21 @@ The goal of <code>%fcppt::optional</code>, in contrast to
 <code>%boost::optional</code>, is to be as explicit as possible and to avoid
 pointer semantics. The key differences include:
 <ul>
-<li><code>%fcppt::optional</code> does not have <code>operator-></code>,
-<code>operator*</code> nor <code>operator bool</code>, so that it does not
-mimic pointers.</li>
-<li><code>%fcppt::optional</code> uses alignment support from the compiler
-instead of relying on <code>%boost::detail::aligned_storage</code>.</li>
-<li><code>fcppt::optional<T></code> does not have an implicit constructor, nor
-assignment operator from <code>T</code>.</li>
-<li><code>%fcppt::optional<T &></code> does not allow implicit conversions for
-assignment.</li>
+<li><code>%fcppt::optional::object</code> does not have
+<code>operator-></code>, <code>operator*</code> nor <code>operator bool</code>,
+so that it does not mimic pointers.</li>
+<li><code>%fcppt::optional::object</code> uses alignment support from the
+compiler instead of relying on
+<code>%boost::detail::aligned_storage</code>.</li>
+<li><code>fcppt::optional::object<T></code> does not have an implicit
+constructor, nor assignment operator from <code>T</code>.</li>
+<li><code>%fcppt::optional::object<T &></code> does not allow implicit
+conversions for assignment.</li>
 </ul>
 
 \section optional_operations Common Operations
 
-\link fcppt::maybe\endlink is the most basic function that operates on
+\link fcppt::optional::maybe\endlink is the most basic function that operates on
 optionals, However, some commonly needed operations arise as well. Perhaps the
 most prominent operation would be the so called bind function which decomposes
 an optional and creates a new one by preserving empty optionals.
@@ -97,11 +100,11 @@ an optional and creates a new one by preserving empty optionals.
 \snippet optional.cpp optional_bind
 
 There is also a shortcut for optional binds that always return a non empty
-optional, called \link fcppt::optional_map\endlink.
+optional, called \link fcppt::optional::map\endlink.
 
 \snippet optional.cpp optional_map
 
-Another commonly used function is \link fcppt::from_optional\endlink. It
+Another commonly used function is \link fcppt::optional::from\endlink. It
 deconstructs an optional by either taking its value or returning a default
 value.
 
@@ -115,88 +118,96 @@ value.
 <th>Description</th>
 </tr>
 <tr>
-<td><code>optional_fwd.hpp</code></td>
-<td>Contains \link fcppt::optional optional's \endlink declaration.</td>
+<td><code>object_fwd.hpp</code></td>
+<td>Contains \link fcppt::optional::object optional's \endlink declaration.</td>
 </tr>
 <tr>
-<td><code>optional_decl.hpp</code></td>
-<td>Contains \link fcppt::optional optional's \endlink definition.</td>
+<td><code>object_decl.hpp</code></td>
+<td>Contains \link fcppt::optional::object optional's \endlink definition.</td>
 </tr>
 <tr>
-<td><code>optional_impl.hpp</code></td>
-<td>Contains the definition of \link fcppt::optional optional's \endlink member functions.</td>
+<td><code>object_impl.hpp</code></td>
+<td>Contains the definition of \link fcppt::optional::object optional's \endlink member functions.</td>
 </tr>
 <tr>
-<td><code>from_optional.hpp</code></td>
-<td>Contains \link fcppt::from_optional \endlink.</td>
+<td><code>alternative.hpp</code></td>
+<td>Contains \link fcppt::optional::alternative \endlink.</td>
 </tr>
 <tr>
-<td><code>maybe.hpp</code></td>
-<td>Contains \link fcppt::maybe \endlink.</td>
+<td><code>apply.hpp</code></td>
+<td>Contains \link fcppt::optional::apply \endlink.</td>
 </tr>
 <tr>
-<td><code>maybe_multi.hpp</code></td>
-<td>Contains \link fcppt::maybe_multi \endlink.</td>
+<td><code>assign.hpp</code></td>
+<td>Contains \link fcppt::optional::assign \endlink.</td>
 </tr>
 <tr>
-<td><code>maybe_void.hpp</code></td>
-<td>Contains \link fcppt::maybe_void \endlink.</td>
+<td><code>bind.hpp</code></td>
+<td>Contains \link fcppt::optional::bind \endlink.</td>
 </tr>
 <tr>
-<td><code>maybe_void_multi.hpp</code></td>
-<td>Contains \link fcppt::maybe_void_multi \endlink.</td>
+<td><code>combine.hpp</code></td>
+<td>Contains \link fcppt::optional::combine \endlink.</td>
 </tr>
 <tr>
-<td><code>optional_alternative.hpp</code></td>
-<td>Contains \link fcppt::optional_alternative \endlink.</td>
-</tr>
-<tr>
-<td><code>optional_assign.hpp</code></td>
-<td>Contains \link fcppt::optional_assign \endlink.</td>
-</tr>
-<tr>
-<td><code>optional_bind.hpp</code></td>
-<td>Contains \link fcppt::optional_bind \endlink.</td>
-</tr>
-<tr>
-<td><code>optional_combine.hpp</code></td>
-<td>Contains \link fcppt::optional_combine \endlink.</td>
-</tr>
-<tr>
-<td><code>optional_comparison.hpp</code></td>
+<td><code>comparison.hpp</code></td>
 <td>Contains <code>operator==</code>, <code>operator!=</code> and <code>operator< </code></td>
 </tr>
 <tr>
-<td><code>optional_from_pointer.hpp</code></td>
-<td>Contains \link fcppt::optional_from_pointer \endlink.</td>
+<td><code>const_cast.hpp</code></td>
+<td>Contains \link fcppt::optional::const_cast_ \endlink.</td>
 </tr>
 <tr>
-<td><code>optional_map.hpp</code></td>
-<td>Contains \link fcppt::optional_map \endlink.</td>
+<td><code>dynamic_cast.hpp</code></td>
+<td>Contains \link fcppt::optional::dynamic_cast_ \endlink.</td>
 </tr>
 <tr>
-<td><code>optional_ref_compare.hpp</code></td>
-<td>Contains \link fcppt::optional_ref_compare \endlink.</td>
+<td><code>filter.hpp</code></td>
+<td>Contains \link fcppt::optional::filter \endlink.</td>
 </tr>
 <tr>
-<td><code>optional_to_exception.hpp</code></td>
-<td>Contains \link fcppt::optional_to_exception \endlink.</td>
+<td><code>from.hpp</code></td>
+<td>Contains \link fcppt::optional::from \endlink.</td>
 </tr>
 <tr>
-<td><code>const_optional_cast.hpp</code></td>
-<td>Contains \link fcppt::const_optional_cast \endlink.</td>
+<td><code>from_pointer.hpp</code></td>
+<td>Contains \link fcppt::optional::from_pointer \endlink.</td>
 </tr>
 <tr>
-<td><code>dynamic_optional_cast.hpp</code></td>
-<td>Contains \link fcppt::dynamic_optional_cast \endlink.</td>
+<td><code>maybe.hpp</code></td>
+<td>Contains \link fcppt::optional::maybe \endlink.</td>
 </tr>
 <tr>
-<td><code>static_optional_cast.hpp</code></td>
-<td>Contains \link fcppt::static_optional_cast \endlink.</td>
+<td><code>maybe_multi.hpp</code></td>
+<td>Contains \link fcppt::optional::maybe_multi \endlink.</td>
 </tr>
 <tr>
-<td><code>optional.hpp</code></td>
-<td>Includes <code>optional_impl.hpp</code> and <code>optional_comparison.hpp</code></td>
+<td><code>maybe_void.hpp</code></td>
+<td>Contains \link fcppt::optional::maybe_void \endlink.</td>
+</tr>
+<tr>
+<td><code>maybe_void_multi.hpp</code></td>
+<td>Contains \link fcppt::optional::maybe_void_multi \endlink.</td>
+</tr>
+<tr>
+<td><code>map.hpp</code></td>
+<td>Contains \link fcppt::optional::map \endlink.</td>
+</tr>
+<tr>
+<td><code>ref_compare.hpp</code></td>
+<td>Contains \link fcppt::optional::ref_compare \endlink.</td>
+</tr>
+<tr>
+<td><code>static_cast.hpp</code></td>
+<td>Contains \link fcppt::optional::static_cast_ \endlink.</td>
+</tr>
+<tr>
+<td><code>to_exception.hpp</code></td>
+<td>Contains \link fcppt::optional::to_exception \endlink.</td>
+</tr>
+<tr>
+<td><code>object.hpp</code></td>
+<td>Includes <code>object_impl.hpp</code> and <code>comparison.hpp</code></td>
 </tr>
 </table>
 */

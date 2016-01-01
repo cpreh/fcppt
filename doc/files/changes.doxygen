@@ -25,8 +25,8 @@
 	\ref fcppt.algorithm has been cleaned up substantially:
 	<ul>
 	<li>
-	All <code>_exn</code> functions have been removed in favor of \link
-	fcppt::optional_to_exception\endlink.</li>
+	All <code>_exn</code> functions have been removed in favor of
+	<code>%fcppt::optional_to_exception</code>.</li>
 	<li>All iterator-based versions have
 	been removed in favor of ranges.</li>
 	<li>All algorithms can now take rvalues to support views.</li>
@@ -137,7 +137,7 @@
 
 <li>\ref fcpptoptional
 	<ul>
-	<li>Added \link fcppt::optional_join\endlink.</li>
+	<li>Added <code>fcppt::optional_join</code>.</li>
 	</ul>
 </li>
 
@@ -311,8 +311,8 @@
 
 <li>\ref fcpptcontainer
 	<ul>
-	<li>Removed <code>fcppt::container::find_exn</code> in favor of \link
-	fcppt::optional_to_exception\endlink.</li>
+	<li>Removed <code>fcppt::container::find_exn</code> in favor of
+	<code>%fcppt::optional_to_exception</code>.</li>
 	</ul>
 </li>
 

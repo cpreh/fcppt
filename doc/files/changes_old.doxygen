@@ -17,7 +17,7 @@
 
 <li>\ref fcpptoptional
 	<ul>
-	<li>Added \link fcppt::optional_deref\endlink which returns the
+	<li>Added <code>%fcppt::optional_deref</code> which returns the
 	dereferenced contents of the optional iff it is not empty. This is
 	often useful when optionals contain iterators or unique pointers.</li>
 	</ul>
@@ -164,11 +164,11 @@ can be omitted from <code>return</code> statements.</li>
 	<ul>
 	<li>Added <code>noexcept</code> to the move constructor and assignment
 	operator.</li>
-	<li> Added \link fcppt::optional_assign\endlink which assigns to an
+	<li> Added <code>%fcppt::optional_assign</code> which assigns to an
 	optional but returns the reference to the optional's content.
 	</li>
-	<li>Added \link fcppt::optional_from_pointer\endlink.</li>
-	<li>Added \link fcppt::optional_alternative\endlink.</li>
+	<li>Added <code>%fcppt::optional_from_pointer</code>.</li>
+	<li>Added <code>%fcppt::optional_alternative</code>.</li>
 	</ul>
 </li>
 
@@ -375,13 +375,13 @@ for them.</li>
 	<ul>
 	<li>Most functions operating on optionals have been extended to accept
 	nonconst lvalues and rvalues.</li>
-	<li>Added \link fcppt::forward_optional_get \endlink which can be used
+	<li>Added <code>%fcppt::forward_optional_get</code> which can be used
 	to forward the contents of an optional if the optional itself is an
 	rvalue.</li>
-	<li>Added \link fcppt::optional_combine \endlink which either chooses
+	<li>Added <code>%fcppt::optional_combine</code> which either chooses
 	one of two optionals or combines both.</li>
 	<li>Added output operator to optional.</li>
-	<li>Added \link fcppt::maybe_multi \endlink and \link fcppt::maybe_void_multi \endlink
+	<li>Added <code>%fcppt::maybe_multi</code> and <code>%fcppt::maybe_void_multi</code>
 	which accept multiple optionals.</li>
 	</ul>
 </li>
@@ -447,11 +447,11 @@ operators in external headers. This goes towards supporting VC++ again, but the
 
 <ul>
 
-<li>Added fcppt::algorithm::find_by_opt and fcppt::algorithm::find_by_exn.</li>
+<li>Added \link fcppt::algorithm::find_by_opt \endlink and <code>%fcppt::algorithm::find_by_exn</code>.</li>
 
-<li>Added fcppt::optional_to_exception.</li>
+<li>Added <code>%fcppt::optional_to_exception</code>.</li>
 
-<li>Added element_type typedef to fcppt::optional.</li>
+<li>Added element_type typedef to <code>%fcppt::optional</code>.</li>
 
 </ul>
 
