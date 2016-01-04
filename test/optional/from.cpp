@@ -4,10 +4,12 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
+#include <fcppt/make_ref.hpp>
 #include <fcppt/make_unique_ptr.hpp>
 #include <fcppt/unique_ptr.hpp>
 #include <fcppt/optional/from.hpp>
 #include <fcppt/optional/object_impl.hpp>
+#include <fcppt/optional/reference.hpp>
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
@@ -32,8 +34,8 @@ FCPPT_PP_POP_WARNING
 	optional_int;
 
 	typedef
-	fcppt::optional::object<
-		int &
+	fcppt::optional::reference<
+		int
 	>
 	optional_int_ref;
 
@@ -73,17 +75,21 @@ FCPPT_PP_POP_WARNING
 
 	fcppt::optional::from(
 		optional_int_ref{
-			x
+			fcppt::make_ref(
+				x
+			)
 		},
 		[
 			&y
 		]()
-		-> int &
 		{
 			return
-				y;
+				fcppt::make_ref(
+					y
+				);
 		}
-	) = 100;
+	).get() =
+		100;
 
 	BOOST_CHECK_EQUAL(
 		x,

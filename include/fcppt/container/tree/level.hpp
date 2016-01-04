@@ -50,6 +50,7 @@ level(
 		0u
 	};
 
+	// TODO: This code is terrible!
 	for(
 		typename
 		tree::const_optional_ref cur{
@@ -57,7 +58,7 @@ level(
 		};
 		cur.has_value();
 		cur =
-			cur.get_unsafe().parent(),
+			cur.get_unsafe().get().parent(),
 		++result
 	)
 		;

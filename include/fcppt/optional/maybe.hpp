@@ -7,7 +7,7 @@
 #ifndef FCPPT_OPTIONAL_MAYBE_HPP_INCLUDED
 #define FCPPT_OPTIONAL_MAYBE_HPP_INCLUDED
 
-#include <fcppt/optional/forward_get.hpp>
+#include <fcppt/move_if_rvalue.hpp>
 #include <fcppt/optional/object_impl.hpp>
 #include <fcppt/optional/detail/check.hpp>
 #include <fcppt/config/external_begin.hpp>
@@ -65,7 +65,7 @@ maybe(
 			),
 			decltype(
 				_transform(
-					fcppt::optional::forward_get<
+					fcppt::move_if_rvalue<
 						Optional
 					>(
 						_optional.get_unsafe()
@@ -80,7 +80,7 @@ maybe(
 		_optional.has_value()
 		?
 			_transform(
-				fcppt::optional::forward_get<
+				fcppt::move_if_rvalue<
 					Optional
 				>(
 					_optional.get_unsafe()

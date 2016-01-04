@@ -8,7 +8,7 @@
 #define FCPPT_LOG_OPTIONAL_OBJECT_FWD_HPP_INCLUDED
 
 #include <fcppt/log/object_fwd.hpp>
-#include <fcppt/optional/object_fwd.hpp>
+#include <fcppt/optional/reference_fwd.hpp>
 
 
 namespace fcppt
@@ -22,8 +22,8 @@ namespace log
 \ingroup fcpptlog
 */
 typedef
-fcppt::optional::object<
-	fcppt::log::object &
+fcppt::optional::reference<
+	fcppt::log::object
 >
 optional_object;
 

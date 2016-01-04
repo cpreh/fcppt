@@ -7,13 +7,11 @@
 #ifndef FCPPT_DYNAMIC_POINTER_CAST_HPP_INCLUDED
 #define FCPPT_DYNAMIC_POINTER_CAST_HPP_INCLUDED
 
+#include <fcppt/reference_wrapper_impl.hpp>
 #include <fcppt/shared_ptr_impl.hpp>
 #include <fcppt/cast/try_dynamic.hpp>
 #include <fcppt/optional/map.hpp>
 #include <fcppt/optional/object_impl.hpp>
-#include <fcppt/config/external_begin.hpp>
-#include <type_traits>
-#include <fcppt/config/external_end.hpp>
 
 
 namespace fcppt
@@ -54,17 +52,16 @@ dynamic_pointer_cast(
 	return
 		fcppt::optional::map(
 			fcppt::cast::try_dynamic<
-				typename
-				std::remove_pointer<
-					Dest
-				>::type &
+				Dest
 			>(
 				*_ptr
 			),
 			[
 				&_ptr
 			](
-				Dest &_dest
+				fcppt::reference_wrapper<
+					Dest
+				> const _dest
 			)
 			{
 				return
@@ -72,7 +69,7 @@ dynamic_pointer_cast(
 						Dest
 					>(
 						_ptr,
-						&_dest
+						_dest.get_pointer()
 					);
 			}
 		);

@@ -7,8 +7,9 @@
 #ifndef FCPPT_CONTAINER_AT_OPTIONAL_HPP_INCLUDED
 #define FCPPT_CONTAINER_AT_OPTIONAL_HPP_INCLUDED
 
-#include <fcppt/container/to_reference_type.hpp>
-#include <fcppt/optional/object_impl.hpp>
+#include <fcppt/make_ref.hpp>
+#include <fcppt/container/to_value_type.hpp>
+#include <fcppt/optional/reference.hpp>
 
 
 namespace fcppt
@@ -27,8 +28,8 @@ returned.  Otherwise, the result is an empty optional.
 template<
 	typename Container
 >
-fcppt::optional::object<
-	fcppt::container::to_reference_type<
+fcppt::optional::reference<
+	fcppt::container::to_value_type<
 		Container
 	>
 >
@@ -38,8 +39,8 @@ at_optional(
 )
 {
 	typedef
-	fcppt::optional::object<
-		fcppt::container::to_reference_type<
+	fcppt::optional::reference<
+		fcppt::container::to_value_type<
 			Container
 		>
 	>
@@ -50,11 +51,13 @@ at_optional(
 		<
 		_container.size()
 		?
-			result_type(
-				_container[
-					_index
-				]
-			)
+			result_type{
+				fcppt::make_ref(
+					_container[
+						_index
+					]
+				)
+			}
 		:
 			result_type()
 		;

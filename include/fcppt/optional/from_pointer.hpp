@@ -7,10 +7,8 @@
 #ifndef FCPPT_OPTIONAL_FROM_POINTER_HPP_INCLUDED
 #define FCPPT_OPTIONAL_FROM_POINTER_HPP_INCLUDED
 
-#include <fcppt/optional/object_impl.hpp>
-#include <fcppt/config/external_begin.hpp>
-#include <type_traits>
-#include <fcppt/config/external_end.hpp>
+#include <fcppt/make_ref.hpp>
+#include <fcppt/optional/reference.hpp>
 
 
 namespace fcppt
@@ -30,22 +28,16 @@ reference to <code>*_pointer</code>.
 template<
 	typename T
 >
-fcppt::optional::object<
-	typename
-	std::add_lvalue_reference<
-		T
-	>::type
+fcppt::optional::reference<
+	T
 >
 from_pointer(
 	T *const _pointer
 )
 {
 	typedef
-	fcppt::optional::object<
-		typename
-		std::add_lvalue_reference<
-			T
-		>::type
+	fcppt::optional::reference<
+		T
 	>
 	result_type;
 
@@ -54,11 +46,13 @@ from_pointer(
 		!=
 		nullptr
 		?
-			result_type(
-				*_pointer
-			)
+			result_type{
+				fcppt::make_ref(
+					*_pointer
+				)
+			}
 		:
-			result_type()
+			result_type{}
 		;
 }
 

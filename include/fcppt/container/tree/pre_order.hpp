@@ -8,10 +8,11 @@
 #define FCPPT_CONTAINER_TREE_PRE_ORDER_HPP_INCLUDED
 
 #include <fcppt/noncopyable.hpp>
+#include <fcppt/reference_wrapper_comparison.hpp>
 #include <fcppt/reference_wrapper_impl.hpp>
 #include <fcppt/container/tree/is_object.hpp>
 #include <fcppt/container/tree/optional_ref_impl.hpp>
-#include <fcppt/optional/ref_compare.hpp>
+#include <fcppt/optional/comparison.hpp>
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
@@ -184,7 +185,9 @@ FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
 
 				current_ =
 					optional_tree_ref(
-						cur_deref.front()
+						tree_ref(
+							cur_deref.front()
+						)
 					);
 			}
 			else if(
@@ -197,7 +200,7 @@ FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
 
 				current_ =
 					optional_tree_ref(
-						positions_.top().get()
+						positions_.top()
 					);
 
 				positions_.pop();
@@ -208,7 +211,7 @@ FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
 		dereference() const
 		{
 			return
-				current_.get_unsafe();
+				current_.get_unsafe().get();
 		}
 
 		bool
@@ -217,10 +220,9 @@ FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
 		) const
 		{
 			return
-				fcppt::optional::ref_compare(
-					current_,
-					_other.current_
-				);
+				current_
+				==
+				_other.current_;
 		}
 
 		optional_tree_ref current_;
@@ -243,7 +245,9 @@ FCPPT_PP_POP_WARNING
 		return
 			iterator(
 				optional_tree_ref(
-					tree_
+					tree_ref(
+						tree_
+					)
 				)
 			);
 	}

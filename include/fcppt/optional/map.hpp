@@ -7,6 +7,7 @@
 #ifndef FCPPT_OPTIONAL_MAP_HPP_INCLUDED
 #define FCPPT_OPTIONAL_MAP_HPP_INCLUDED
 
+#include <fcppt/move_if_rvalue.hpp>
 #include <fcppt/optional/bind.hpp>
 #include <fcppt/optional/object_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
@@ -48,7 +49,7 @@ fcppt::optional::object<
 	std::remove_cv<
 		decltype(
 			_function(
-				fcppt::optional::forward_get<
+				fcppt::move_if_rvalue<
 					Optional
 				>(
 					_source.get_unsafe()
@@ -60,7 +61,7 @@ fcppt::optional::object<
 {
 	typedef
 	decltype(
-		fcppt::optional::forward_get<
+		fcppt::move_if_rvalue<
 			Optional
 		>(
 			_source.get_unsafe()

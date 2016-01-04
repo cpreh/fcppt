@@ -7,6 +7,7 @@
 #ifndef FCPPT_CONTAINER_TREE_DETAIL_MOVE_CHILDREN_HPP_INCLUDED
 #define FCPPT_CONTAINER_TREE_DETAIL_MOVE_CHILDREN_HPP_INCLUDED
 
+#include <fcppt/make_ref.hpp>
 #include <fcppt/container/tree/object_fwd.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <utility>
@@ -25,7 +26,8 @@ namespace detail
 template<
 	typename T
 >
-typename fcppt::container::tree::object<
+typename
+fcppt::container::tree::object<
 	T
 >::child_list
 move_children(
@@ -54,8 +56,11 @@ move_children(
 		result
 	)
 		child.parent(
-			typename object::optional_ref(
-				_parent
+			typename
+			object::optional_ref(
+				fcppt::make_ref(
+					_parent
+				)
 			)
 		);
 

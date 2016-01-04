@@ -7,7 +7,7 @@
 #ifndef FCPPT_OPTIONAL_JOIN_HPP_INCLUDED
 #define FCPPT_OPTIONAL_JOIN_HPP_INCLUDED
 
-#include <fcppt/optional/forward_get.hpp>
+#include <fcppt/move_if_rvalue.hpp>
 #include <fcppt/optional/object_impl.hpp>
 #include <fcppt/optional/detail/check.hpp>
 #include <fcppt/config/external_begin.hpp>
@@ -68,7 +68,7 @@ join(
 	return
 		_source.has_value()
 		?
-			fcppt::optional::forward_get<
+			fcppt::move_if_rvalue<
 				Optional
 			>(
 				_source.get_unsafe()

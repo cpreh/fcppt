@@ -4,9 +4,13 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
+#include <fcppt/make_cref.hpp>
+#include <fcppt/reference_wrapper_comparison.hpp>
+#include <fcppt/reference_wrapper_output.hpp>
 #include <fcppt/container/maybe_front.hpp>
-#include <fcppt/optional/object.hpp>
+#include <fcppt/optional/comparison.hpp>
 #include <fcppt/optional/output.hpp>
+#include <fcppt/optional/reference.hpp>
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
@@ -32,10 +36,10 @@ FCPPT_PP_POP_WARNING
 	int_vector;
 
 	typedef
-	fcppt::optional::object<
-		int
+	fcppt::optional::reference<
+		int const
 	>
-	optional_int;
+	optional_int_ref;
 
 	int_vector const empty{};
 
@@ -51,13 +55,13 @@ FCPPT_PP_POP_WARNING
 	};
 
 	BOOST_CHECK_EQUAL(
-		optional_int(
-			fcppt::container::maybe_front(
-				vec12
-			)
+		fcppt::container::maybe_front(
+			vec12
 		),
-		optional_int(
-			1
+		optional_int_ref(
+			fcppt::make_cref(
+				vec12.front()
+			)
 		)
 	);
 }

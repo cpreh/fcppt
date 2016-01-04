@@ -8,7 +8,7 @@
 #define FCPPT_OPTIONAL_STATIC_CAST_HPP_INCLUDED
 
 #include <fcppt/cast/static_downcast.hpp>
-#include <fcppt/optional/object_fwd.hpp>
+#include <fcppt/optional/reference.hpp>
 #include <fcppt/optional/detail/cast.hpp>
 
 
@@ -36,12 +36,12 @@ template<
 	typename Result,
 	typename Arg
 >
-fcppt::optional::object<
-	Result &
+fcppt::optional::reference<
+	Result
 >
 static_cast_(
-	fcppt::optional::object<
-		Arg &
+	fcppt::optional::reference<
+		Arg
 	> const &_optional
 )
 {

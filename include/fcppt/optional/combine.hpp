@@ -7,7 +7,7 @@
 #ifndef FCPPT_OPTIONAL_COMBINE_HPP_INCLUDED
 #define FCPPT_OPTIONAL_COMBINE_HPP_INCLUDED
 
-#include <fcppt/optional/forward_get.hpp>
+#include <fcppt/move_if_rvalue.hpp>
 #include <fcppt/optional/object_impl.hpp>
 #include <fcppt/optional/detail/check.hpp>
 #include <fcppt/config/external_begin.hpp>
@@ -43,12 +43,12 @@ combine(
 fcppt::optional::object<
 	decltype(
 		_function(
-			fcppt::optional::forward_get<
+			fcppt::move_if_rvalue<
 				Optional
 			>(
 				_optional1.get_unsafe()
 			),
-			fcppt::optional::forward_get<
+			fcppt::move_if_rvalue<
 				Optional
 			>(
 				_optional2.get_unsafe()
@@ -61,12 +61,12 @@ fcppt::optional::object<
 	fcppt::optional::object<
 		decltype(
 			_function(
-				fcppt::optional::forward_get<
+				fcppt::move_if_rvalue<
 					Optional
 				>(
 					_optional1.get_unsafe()
 				),
-				fcppt::optional::forward_get<
+				fcppt::move_if_rvalue<
 					Optional
 				>(
 					_optional2.get_unsafe()
@@ -110,12 +110,12 @@ fcppt::optional::object<
 	return
 		result_type{
 			_function(
-				fcppt::optional::forward_get<
+				fcppt::move_if_rvalue<
 					Optional
 				>(
 					_optional1.get_unsafe()
 				),
-				fcppt::optional::forward_get<
+				fcppt::move_if_rvalue<
 					Optional
 				>(
 					_optional2.get_unsafe()

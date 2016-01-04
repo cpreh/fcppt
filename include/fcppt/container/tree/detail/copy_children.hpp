@@ -7,6 +7,7 @@
 #ifndef FCPPT_CONTAINER_TREE_DETAIL_COPY_CHILDREN_HPP_INCLUDED
 #define FCPPT_CONTAINER_TREE_DETAIL_COPY_CHILDREN_HPP_INCLUDED
 
+#include <fcppt/make_ref.hpp>
 #include <fcppt/container/tree/object_fwd.hpp>
 
 
@@ -52,8 +53,11 @@ copy_children(
 		);
 
 		result.back().parent(
-			typename object::optional_ref(
-				_parent
+			typename
+			object::optional_ref(
+				fcppt::make_ref(
+					_parent
+				)
 			)
 		);
 	}

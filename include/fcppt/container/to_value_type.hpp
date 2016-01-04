@@ -29,9 +29,9 @@ std::conditional<
 		Container
 	>::value,
 	typename
-	Container::value_type const &,
+	Container::value_type const,
 	typename
-	Container::value_type &
+	Container::value_type
 >::type;
 
 }

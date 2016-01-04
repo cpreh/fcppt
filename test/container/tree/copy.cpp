@@ -67,7 +67,7 @@ FCPPT_PP_POP_WARNING
 	);
 
 	BOOST_CHECK_EQUAL(
-		&head2.front().parent().get_unsafe(),
+		&head2.front().parent().get_unsafe().get(),
 		&head2
 	);
 
@@ -76,7 +76,7 @@ FCPPT_PP_POP_WARNING
 	);
 
 	BOOST_CHECK_EQUAL(
-		&head2.back().parent().get_unsafe(),
+		&head2.back().parent().get_unsafe().get(),
 		&head2
 	);
 }

@@ -7,7 +7,7 @@
 #ifndef FCPPT_OPTIONAL_DYNAMIC_CAST_HPP_INCLUDED
 #define FCPPT_OPTIONAL_DYNAMIC_CAST_HPP_INCLUDED
 
-#include <fcppt/optional/object_fwd.hpp>
+#include <fcppt/optional/reference.hpp>
 #include <fcppt/optional/detail/cast.hpp>
 
 
@@ -34,12 +34,12 @@ template<
 	typename Result,
 	typename Arg
 >
-fcppt::optional::object<
-	Result &
+fcppt::optional::reference<
+	Result
 >
 dynamic_cast_(
-	fcppt::optional::object<
-		Arg &
+	fcppt::optional::reference<
+		Arg
 	> const &_optional
 )
 {

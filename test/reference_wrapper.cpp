@@ -19,13 +19,17 @@
 namespace
 {
 
-typedef fcppt::reference_wrapper<
+typedef
+fcppt::reference_wrapper<
 	int
-> int_ref;
+>
+int_ref;
 
-typedef fcppt::reference_wrapper<
+typedef
+fcppt::reference_wrapper<
 	int const
-> const_int_ref;
+>
+const_int_ref;
 
 }
 

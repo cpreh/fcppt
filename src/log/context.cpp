@@ -27,8 +27,8 @@
 #include <fcppt/log/impl/find_logger_node.hpp>
 #include <fcppt/log/impl/to_outer_node.hpp>
 #include <fcppt/optional/bind.hpp>
+#include <fcppt/optional/from.hpp>
 #include <fcppt/optional/map.hpp>
-#include <fcppt/optional/maybe.hpp>
 #include <fcppt/optional/maybe_void.hpp>
 #include <fcppt/optional/to_exception.hpp>
 #include <fcppt/config/external_begin.hpp>
@@ -73,21 +73,24 @@ fcppt::log::context::find(
 				_location
 			),
 			[](
-				fcppt::log::detail::context_tree const &_tree_location
+				fcppt::reference_wrapper<
+					fcppt::log::detail::context_tree
+				> const _tree_location
 			)
 			{
 				return
 					fcppt::optional::map(
 						fcppt::log::impl::find_logger_node(
-							_tree_location
+							_tree_location.get()
 						),
 						[](
 							fcppt::log::detail::outer_context_node const &_node
 						)
-						-> fcppt::log::object &
 						{
 							return
-								_node.object();
+								fcppt::make_ref(
+									_node.object()
+								);
 						}
 					);
 			}
@@ -115,7 +118,7 @@ fcppt::log::context::apply(
 						_location
 					);
 			}
-		)
+		).get()
 	);
 }
 
@@ -226,7 +229,7 @@ fcppt::log::context::add(
 		_location
 	)
 		cur =
-			fcppt::optional::maybe(
+			fcppt::optional::from(
 				fcppt::log::impl::find_inner_node(
 					cur.get(),
 					item
@@ -248,15 +251,6 @@ fcppt::log::context::add(
 					return
 						fcppt::make_ref(
 							cur.get().back()
-						);
-				},
-				[](
-					fcppt::log::detail::context_tree &_node
-				)
-				{
-					return
-						fcppt::make_ref(
-							_node
 						);
 				}
 			);
@@ -295,27 +289,27 @@ fcppt::log::context::remove(
 		node.has_value()
 	);
 
-	node.get_unsafe().erase(
+	node.get_unsafe().get().erase(
 		fcppt::container::tree::child_position(
-			node.get_unsafe(),
+			node.get_unsafe().get(),
 			_tree
 		).get_unsafe()
 	);
 
 	while(
-		node.get_unsafe().parent().has_value()
+		node.get_unsafe().get().parent().has_value()
 		&&
-		node.get_unsafe().empty()
+		node.get_unsafe().get().empty()
 	)
 	{
 		fcppt::log::detail::context_tree::optional_ref const parent(
-			node.get_unsafe().parent()
+			node.get_unsafe().get().parent()
 		);
 
-		parent.get_unsafe().erase(
+		parent.get_unsafe().get().erase(
 			fcppt::container::tree::child_position(
-				parent.get_unsafe(),
-				node.get_unsafe()
+				parent.get_unsafe().get(),
+				node.get_unsafe().get()
 			).get_unsafe()
 		);
 

@@ -1046,20 +1046,16 @@ set(
 	include/fcppt/optional/combine.hpp
 	include/fcppt/optional/comparison.hpp
 	include/fcppt/optional/const_cast.hpp
+	include/fcppt/optional/copy_value.hpp
 	include/fcppt/optional/deref.hpp
 	include/fcppt/optional/detail/cast.hpp
 	include/fcppt/optional/detail/check.hpp
-	include/fcppt/optional/detail/enable_ref_conv.hpp
-	include/fcppt/optional/detail/enable_value_conv.hpp
-	include/fcppt/optional/detail/forward_get.hpp
 	include/fcppt/optional/detail/has_value_all.hpp
 	include/fcppt/optional/dynamic_cast.hpp
 	include/fcppt/optional/filter.hpp
-	include/fcppt/optional/forward_get.hpp
 	include/fcppt/optional/from.hpp
 	include/fcppt/optional/from_pointer.hpp
 	include/fcppt/optional/is_object.hpp
-	include/fcppt/optional/is_object_reference.hpp
 	include/fcppt/optional/join.hpp
 	include/fcppt/optional/map.hpp
 	include/fcppt/optional/maybe.hpp
@@ -1071,7 +1067,8 @@ set(
 	include/fcppt/optional/object_fwd.hpp
 	include/fcppt/optional/object_impl.hpp
 	include/fcppt/optional/output.hpp
-	include/fcppt/optional/ref_compare.hpp
+	include/fcppt/optional/reference.hpp
+	include/fcppt/optional/reference_fwd.hpp
 	include/fcppt/optional/static_cast.hpp
 	include/fcppt/optional/to_exception.hpp
 	include/fcppt/optional_string.hpp
@@ -1157,7 +1154,9 @@ set(
 	include/fcppt/reference_wrapper_hash_fwd.hpp
 	include/fcppt/reference_wrapper_hash_impl.hpp
 	include/fcppt/reference_wrapper_impl.hpp
+	include/fcppt/reference_wrapper_output.hpp
 	include/fcppt/reference_wrapper_std_hash.hpp
+	include/fcppt/reference_wrapper_to_base.hpp
 	include/fcppt/runtime_enum.hpp
 	include/fcppt/scoped_state_machine.hpp
 	include/fcppt/scoped_state_machine_decl.hpp
@@ -1291,7 +1290,6 @@ set(
 	include/fcppt/variant/detail/index_of.hpp
 	include/fcppt/variant/detail/nothrow_move_assignable.hpp
 	include/fcppt/variant/detail/nothrow_move_constructible.hpp
-	include/fcppt/variant/detail/to_optional_result.hpp
 	include/fcppt/variant/detail/type_info.hpp
 	include/fcppt/variant/equal.hpp
 	include/fcppt/variant/exception.hpp
@@ -1312,6 +1310,7 @@ set(
 	include/fcppt/variant/output.hpp
 	include/fcppt/variant/size_type.hpp
 	include/fcppt/variant/to_optional.hpp
+	include/fcppt/variant/to_optional_ref.hpp
 	include/fcppt/variant/type_info.hpp
 	include/fcppt/variant/variadic.hpp
 	include/fcppt/variant/variadic_fwd.hpp

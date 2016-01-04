@@ -4,10 +4,14 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
+#include <fcppt/make_ref.hpp>
 #include <fcppt/make_unique_ptr.hpp>
+#include <fcppt/reference_wrapper_impl.hpp>
 #include <fcppt/unique_ptr.hpp>
 #include <fcppt/optional/maybe_void.hpp>
-#include <fcppt/optional/object_impl.hpp>
+#include <fcppt/optional/object.hpp>
+#include <fcppt/optional/output.hpp>
+#include <fcppt/optional/reference.hpp>
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
@@ -50,9 +54,8 @@ FCPPT_PP_POP_WARNING
 		}
 	);
 
-	BOOST_CHECK(
-		result
-		==
+	BOOST_CHECK_EQUAL(
+		result,
 		10
 	);
 
@@ -69,9 +72,8 @@ FCPPT_PP_POP_WARNING
 		}
 	);
 
-	BOOST_CHECK(
-		result
-		==
+	BOOST_CHECK_EQUAL(
+		result,
 		10
 	);
 
@@ -89,10 +91,11 @@ FCPPT_PP_POP_WARNING
 		}
 	);
 
-	BOOST_CHECK(
-		temp.get_unsafe()
-		==
-		30
+	BOOST_CHECK_EQUAL(
+		temp,
+		optional_int(
+			30
+		)
 	);
 }
 
@@ -110,26 +113,29 @@ FCPPT_PP_POP_WARNING
 	};
 
 	typedef
-	fcppt::optional::object<
-		int &
+	fcppt::optional::reference<
+		int
 	>
 	optional_int_ref;
 
 	fcppt::optional::maybe_void(
-		optional_int_ref(
-			result
-		),
+		optional_int_ref{
+			fcppt::make_ref(
+				result
+			)
+		},
 		[](
-			int &_val
+			fcppt::reference_wrapper<
+				int
+			> const _val
 		)
 		{
-			_val = 42;
+			_val.get() = 42;
 		}
 	);
 
-	BOOST_CHECK(
-		result
-		==
+	BOOST_CHECK_EQUAL(
+		result,
 		42
 	);
 }

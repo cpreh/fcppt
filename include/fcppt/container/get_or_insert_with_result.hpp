@@ -81,12 +81,15 @@ get_or_insert_with_result(
 					);
 			},
 			[](
-				typename Container::mapped_type &_element
+				fcppt::reference_wrapper<
+					typename
+					Container::mapped_type
+				> const _element
 			)
 			{
 				return
 					result_type(
-						_element,
+						_element.get(),
 						false
 					);
 			}

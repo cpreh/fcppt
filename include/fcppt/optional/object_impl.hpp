@@ -9,8 +9,6 @@
 
 #include <fcppt/cast/from_void_ptr.hpp>
 #include <fcppt/optional/object_decl.hpp>
-#include <fcppt/optional/detail/enable_ref_conv.hpp>
-#include <fcppt/optional/detail/enable_value_conv.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <new>
 #include <type_traits>
@@ -69,35 +67,6 @@ fcppt::optional::object<
 		std::move(
 			_other
 		)
-	);
-}
-
-template<
-	typename T
->
-template<
-	typename Other
->
-fcppt::optional::object<
-	T
->::object(
-	fcppt::optional::object<
-		Other
-	> const &_other,
-	fcppt::optional::detail::enable_value_conv<
-		T,
-		Other,
-		void
-	> const *
-)
-:
-	storage_(),
-	initialized_(
-		_other.has_value()
-	)
-{
-	this->construct(
-		_other
 	);
 }
 
@@ -190,33 +159,6 @@ noexcept(
 			std::move(
 				_other
 			)
-		);
-}
-
-template<
-	typename T
->
-template<
-	typename Other
->
-fcppt::optional::detail::enable_value_conv<
-	T,
-	Other,
-	fcppt::optional::object<
-		T
-	> &
->
-fcppt::optional::object<
-	T
->::operator=(
-	fcppt::optional::object<
-		Other
-	> const &_other
-)
-{
-	return
-		this->assign(
-			_other
 		);
 }
 
@@ -583,192 +525,6 @@ fcppt::optional::object<
 		this->has_value()
 	)
 		this->data()->~T();
-}
-
-template<
-	typename T
->
-fcppt::optional::object<
-	T &
->::object()
-:
-	data_(
-		nullptr
-	)
-{
-}
-
-template<
-	typename T
->
-fcppt::optional::object<
-	T &
->::object(
-	reference _other
-)
-:
-	data_(
-		&_other
-	)
-{
-}
-
-template<
-	typename T
->
-template<
-	typename Other
->
-fcppt::optional::object<
-	T &
->::object(
-	fcppt::optional::object<
-		Other &
-	> const &_other,
-	fcppt::optional::detail::enable_ref_conv<
-		T,
-		Other
-	> *
-)
-:
-	data_(
-		_other.has_value()
-		?
-			&_other.get_unsafe()
-		:
-			nullptr
-	)
-{
-}
-
-template<
-	typename T
->
-fcppt::optional::object<
-	T &
->::object(
-	object const &_other
-)
-noexcept
-:
-	data_(
-		_other.data_
-	)
-{
-}
-
-template<
-	typename T
->
-fcppt::optional::object<
-	T &
->::object(
-	object &&_other
-)
-noexcept
-:
-	data_(
-		_other.data_
-	)
-{
-	_other.data_ =
-		nullptr;
-}
-
-template<
-	typename T
->
-fcppt::optional::object<
-	T &
-> &
-fcppt::optional::object<
-	T &
->::operator=(
-	object const &_other
-)
-noexcept
-{
-	data_ =
-		_other.data_;
-
-	return
-		*this;
-}
-
-template<
-	typename T
->
-fcppt::optional::object<
-	T &
-> &
-fcppt::optional::object<
-	T &
->::operator=(
-	object &&_other
-)
-noexcept
-{
-	data_ =
-		_other.data_;
-
-	_other.data_ =
-		nullptr;
-
-	return
-		*this;
-}
-
-template<
-	typename T
->
-fcppt::optional::object<
-	T &
->::~object()
-{
-}
-
-template<
-	typename T
->
-typename
-fcppt::optional::object<
-	T &
->::reference
-fcppt::optional::object<
-	T &
->::get_unsafe() const
-{
-	return
-		*data_;
-}
-
-template<
-	typename T
->
-typename
-fcppt::optional::object<
-	T &
->::pointer
-fcppt::optional::object<
-	T &
->::data() const
-{
-	return
-		data_;
-}
-
-template<
-	typename T
->
-bool
-fcppt::optional::object<
-	T &
->::has_value() const
-{
-	return
-		data_
-		!=
-		nullptr;
 }
 
 #endif

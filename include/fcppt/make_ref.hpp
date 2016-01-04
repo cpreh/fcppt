@@ -28,6 +28,7 @@ fcppt::reference_wrapper<
 make_ref(
 	Type &_ref
 )
+noexcept
 {
 	return
 		fcppt::reference_wrapper<

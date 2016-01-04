@@ -89,7 +89,7 @@ try
 	);
 
 	FCPPT_LOG_INFO(
-		ref.get_unsafe(),
+		ref.get_unsafe().get(),
 		fcppt::log::_
 			<< FCPPT_TEXT("test output!")
 	);
@@ -105,7 +105,7 @@ try
 	);
 
 	FCPPT_LOG_INFO(
-		child_ref.get_unsafe(),
+		child_ref.get_unsafe().get(),
 		fcppt::log::_
 			<< FCPPT_TEXT("child output!")
 	);
@@ -122,7 +122,7 @@ try
 	);
 
 	FCPPT_LOG_INFO(
-		child_ref.get_unsafe(),
+		child_ref.get_unsafe().get(),
 		fcppt::log::_
 			<< FCPPT_TEXT("shouldn't be shown!")
 	);

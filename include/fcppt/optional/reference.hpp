@@ -4,11 +4,12 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_LOG_OPTIONAL_OBJECT_HPP_INCLUDED
-#define FCPPT_LOG_OPTIONAL_OBJECT_HPP_INCLUDED
+#ifndef FCPPT_OPTIONAL_REFERENCE_HPP_INCLUDED
+#define FCPPT_OPTIONAL_REFERENCE_HPP_INCLUDED
 
-#include <fcppt/log/optional_object_fwd.hpp>
-#include <fcppt/optional/reference.hpp>
+#include <fcppt/reference_wrapper_impl.hpp>
+#include <fcppt/optional/object_impl.hpp>
+#include <fcppt/optional/reference_fwd.hpp>
 
 
 #endif

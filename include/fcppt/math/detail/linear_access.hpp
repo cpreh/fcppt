@@ -30,7 +30,7 @@ template<
 inline
 fcppt::container::to_value_type<
 	Storage
->
+> &
 linear_access(
 	Storage &_storage
 )

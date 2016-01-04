@@ -825,10 +825,6 @@ add_fcppt_test(
 )
 
 add_fcppt_test(
-	optional/bind_construct
-)
-
-add_fcppt_test(
 	optional/casts
 )
 
@@ -841,15 +837,15 @@ add_fcppt_test(
 )
 
 add_fcppt_test(
+	optional/copy_value
+)
+
+add_fcppt_test(
 	optional/deref
 )
 
 add_fcppt_test(
 	optional/filter
-)
-
-add_fcppt_test(
-	optional/forward_get
 )
 
 add_fcppt_test(
@@ -866,6 +862,10 @@ add_fcppt_test(
 
 add_fcppt_test(
 	optional/join
+)
+
+add_fcppt_test(
+	optional/map
 )
 
 add_fcppt_test(
@@ -889,20 +889,11 @@ add_fcppt_test(
 )
 
 add_fcppt_test(
-	optional/ref
-)
-
-add_fcppt_test(
-	optional/ref_compare
+	optional/reference
 )
 
 add_fcppt_test(
 	optional/to_exception
-)
-
-add_fcppt_test(
-	optional/types
-	NO_CODE
 )
 
 add_fcppt_test(
@@ -913,6 +904,10 @@ add_fcppt_test(
 
 add_fcppt_test(
 	reference_wrapper
+)
+
+add_fcppt_test(
+	reference_wrapper_to_base
 )
 
 add_fcppt_test(
@@ -1033,6 +1028,14 @@ add_fcppt_test(
 
 add_fcppt_test(
 	variant/output
+)
+
+add_fcppt_test(
+	variant/to_optional
+)
+
+add_fcppt_test(
+	variant/to_optional_ref
 )
 
 add_fcppt_test(

@@ -7,7 +7,7 @@
 #ifndef FCPPT_OPTIONAL_BIND_HPP_INCLUDED
 #define FCPPT_OPTIONAL_BIND_HPP_INCLUDED
 
-#include <fcppt/optional/forward_get.hpp>
+#include <fcppt/move_if_rvalue.hpp>
 #include <fcppt/optional/object_impl.hpp>
 #include <fcppt/optional/detail/check.hpp>
 #include <fcppt/config/external_begin.hpp>
@@ -49,7 +49,7 @@ typename
 std::remove_reference<
 	decltype(
 		_function(
-			fcppt::optional::forward_get<
+			fcppt::move_if_rvalue<
 				Optional
 			>(
 				_source.get_unsafe()
@@ -65,7 +65,7 @@ std::remove_reference<
 		std::remove_reference<
 			decltype(
 				_function(
-					fcppt::optional::forward_get<
+					fcppt::move_if_rvalue<
 						Optional
 					>(
 						_source.get_unsafe()
@@ -87,7 +87,7 @@ std::remove_reference<
 		_source.has_value()
 		?
 			_function(
-				fcppt::optional::forward_get<
+				fcppt::move_if_rvalue<
 					Optional
 				>(
 					_source.get_unsafe()

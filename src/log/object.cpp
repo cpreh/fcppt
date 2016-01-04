@@ -4,6 +4,7 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
+#include <fcppt/reference_wrapper_impl.hpp>
 #include <fcppt/io/ostream.hpp>
 #include <fcppt/log/context.hpp>
 #include <fcppt/log/enabled_level_array.hpp>
@@ -46,12 +47,14 @@ fcppt::log::object::object(
 			[
 				&_param
 			](
-				fcppt::log::detail::context_tree &_node
+				fcppt::reference_wrapper<
+					fcppt::log::detail::context_tree
+				> const _node
 			)
 			{
 				return
 					fcppt::log::impl::tree_formatter(
-						_node,
+						_node.get(),
 						_param.formatter()
 					);
 			}

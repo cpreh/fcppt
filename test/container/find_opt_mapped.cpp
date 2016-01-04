@@ -4,6 +4,10 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
+#include <fcppt/make_cref.hpp>
+#include <fcppt/reference_wrapper_comparison.hpp>
+#include <fcppt/reference_wrapper_impl.hpp>
+#include <fcppt/reference_wrapper_output.hpp>
 #include <fcppt/container/find_opt_mapped.hpp>
 #include <fcppt/optional/comparison.hpp>
 #include <fcppt/optional/object_impl.hpp>
@@ -52,7 +56,9 @@ FCPPT_PP_POP_WARNING
 
 	typedef
 	fcppt::optional::object<
-		std::string
+		fcppt::reference_wrapper<
+			std::string const
+		>
 	>
 	optional_string;
 
@@ -64,7 +70,11 @@ FCPPT_PP_POP_WARNING
 			)
 		),
 		optional_string(
-			"test"
+			fcppt::make_cref(
+				values.at(
+					42
+				)
+			)
 		)
 	);
 

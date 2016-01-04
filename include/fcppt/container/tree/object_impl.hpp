@@ -7,10 +7,14 @@
 #ifndef FCPPT_CONTAINER_TREE_OBJECT_IMPL_HPP_INCLUDED
 #define FCPPT_CONTAINER_TREE_OBJECT_IMPL_HPP_INCLUDED
 
+#include <fcppt/make_cref.hpp>
+#include <fcppt/make_ref.hpp>
+#include <fcppt/reference_wrapper_impl.hpp>
 #include <fcppt/container/tree/object_decl.hpp>
 #include <fcppt/container/tree/optional_ref_impl.hpp>
 #include <fcppt/container/tree/detail/copy_children.hpp>
 #include <fcppt/container/tree/detail/move_children.hpp>
+#include <fcppt/optional/map.hpp>
 #include <fcppt/preprocessor/disable_vc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
@@ -272,8 +276,19 @@ fcppt::container::tree::object<
 >::parent() const
 {
 	return
-		const_optional_ref(
-			parent_
+		fcppt::optional::map(
+			parent_,
+			[](
+				fcppt::reference_wrapper<
+					object
+				> const _val
+			)
+			{
+				return
+					fcppt::make_cref(
+						_val.get()
+					);
+			}
 		);
 }
 
@@ -782,7 +797,9 @@ fcppt::container::tree::object<
 		)
 	)->parent(
 		optional_ref(
-			*this
+			fcppt::make_ref(
+				*this
+			)
 		)
 	);
 }

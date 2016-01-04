@@ -69,7 +69,7 @@ FCPPT_PP_POP_WARNING
 	);
 
 	BOOST_CHECK_EQUAL(
-		tree2.front().parent().data(),
+		&tree2.front().parent().get_unsafe().get(),
 		&tree2
 	);
 
@@ -105,7 +105,7 @@ FCPPT_PP_POP_WARNING
 	);
 
 	BOOST_CHECK_EQUAL(
-		tree3.front().parent().data(),
+		&tree3.front().parent().get_unsafe().get(),
 		&tree3
 	);
 }

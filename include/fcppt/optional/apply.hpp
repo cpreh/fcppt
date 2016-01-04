@@ -7,7 +7,7 @@
 #ifndef FCPPT_OPTIONAL_APPLY_HPP_INCLUDED
 #define FCPPT_OPTIONAL_APPLY_HPP_INCLUDED
 
-#include <fcppt/optional/forward_get.hpp>
+#include <fcppt/move_if_rvalue.hpp>
 #include <fcppt/optional/object_impl.hpp>
 #include <fcppt/optional/detail/has_value_all.hpp>
 #include <fcppt/config/external_begin.hpp>
@@ -48,7 +48,7 @@ apply(
 fcppt::optional::object<
 	decltype(
 		_function(
-			fcppt::optional::forward_get<
+			fcppt::move_if_rvalue<
 				Optionals
 			>(
 				_optionals.get_unsafe()
@@ -61,7 +61,7 @@ fcppt::optional::object<
 	fcppt::optional::object<
 		decltype(
 			_function(
-				fcppt::optional::forward_get<
+				fcppt::move_if_rvalue<
 					Optionals
 				>(
 					_optionals.get_unsafe()
@@ -78,7 +78,7 @@ fcppt::optional::object<
 		?
 			result_type(
 				_function(
-					fcppt::optional::forward_get<
+					fcppt::move_if_rvalue<
 						Optionals
 					>(
 						_optionals.get_unsafe()

@@ -4,6 +4,8 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
+#include <fcppt/make_ref.hpp>
+#include <fcppt/reference_wrapper_impl.hpp>
 #include <fcppt/log/location.hpp>
 #include <fcppt/log/detail/context_tree.hpp>
 #include <fcppt/log/detail/optional_context_tree_ref.hpp>
@@ -19,7 +21,9 @@ fcppt::log::impl::find_location(
 )
 {
 	fcppt::log::detail::optional_context_tree_ref cur(
-		_tree
+		fcppt::make_ref(
+			_tree
+		)
 	);
 
 	for(
@@ -34,12 +38,14 @@ fcppt::log::impl::find_location(
 				[
 					&item
 				](
-					fcppt::log::detail::context_tree &_next_tree
+					fcppt::reference_wrapper<
+						fcppt::log::detail::context_tree
+					> const _next_tree
 				)
 				{
 					return
 						fcppt::log::impl::find_inner_node(
-							_next_tree,
+							_next_tree.get(),
 							item
 						);
 

@@ -7,7 +7,7 @@
 #ifndef FCPPT_OPTIONAL_TO_EXCEPTION_HPP_INCLUDED
 #define FCPPT_OPTIONAL_TO_EXCEPTION_HPP_INCLUDED
 
-#include <fcppt/optional/forward_get.hpp>
+#include <fcppt/move_if_rvalue.hpp>
 #include <fcppt/optional/object_impl.hpp>
 #include <fcppt/optional/detail/check.hpp>
 
@@ -32,18 +32,18 @@ template<
 	typename MakeException
 >
 inline
-decltype(
-	fcppt::optional::forward_get<
-		Optional
-	>(
-		std::declval<
-			Optional
-		>().get_unsafe()
-	)
-)
+auto
 to_exception(
 	Optional &&_optional,
 	MakeException const _make_exception
+)
+->
+decltype(
+	fcppt::move_if_rvalue<
+		Optional
+	>(
+		_optional.get_unsafe()
+	)
 )
 {
 	static_assert(
@@ -58,7 +58,7 @@ to_exception(
 		_optional.has_value()
 	)
 		return
-			fcppt::optional::forward_get<
+			fcppt::move_if_rvalue<
 				Optional
 			>(
 				_optional.get_unsafe()

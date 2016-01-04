@@ -8,8 +8,8 @@
 #define FCPPT_ASSERT_OPTIONAL_ERROR_HPP_INCLUDED
 
 #include <fcppt/identity.hpp>
+#include <fcppt/move_if_rvalue.hpp>
 #include <fcppt/assert/pre.hpp>
-#include <fcppt/optional/forward_get.hpp>
 #include <fcppt/optional/object_impl.hpp>
 
 
@@ -34,7 +34,7 @@ result of the macro is <code>opt.get_unsafe()</code>.
 ) \
 -> \
 decltype(\
-	fcppt::optional::forward_get<\
+	fcppt::move_if_rvalue<\
 		decltype(\
 			fcppt::identity{}(\
 				opt\
@@ -50,7 +50,7 @@ decltype(\
 	);\
 \
 	return \
-		fcppt::optional::forward_get<\
+		fcppt::move_if_rvalue<\
 			decltype(\
 				_arg\
 			)\

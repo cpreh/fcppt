@@ -4,11 +4,15 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
+#include <fcppt/make_ref.hpp>
 #include <fcppt/noncopyable.hpp>
+#include <fcppt/reference_wrapper_comparison.hpp>
+#include <fcppt/reference_wrapper_output.hpp>
 #include <fcppt/optional/comparison.hpp>
 #include <fcppt/optional/map.hpp>
 #include <fcppt/optional/object.hpp>
 #include <fcppt/optional/output.hpp>
+#include <fcppt/optional/reference.hpp>
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
@@ -63,8 +67,10 @@ FCPPT_PP_POP_WARNING
 				"test"
 			),
 			conversion
-		).get_unsafe(),
-		4u
+		),
+		optional_size(
+			4u
+		)
 	);
 }
 
@@ -92,10 +98,11 @@ FCPPT_PP_PUSH_WARNING
 FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
 
 BOOST_AUTO_TEST_CASE(
-	optional_bind_ref
+	optional_map_ref
 )
 {
 FCPPT_PP_POP_WARNING
+
 	typedef
 	fcppt::optional::object<
 		std::string
@@ -104,8 +111,14 @@ FCPPT_PP_POP_WARNING
 
 	noncopyable test{};
 
+	typedef
+	fcppt::optional::reference<
+		noncopyable
+	>
+	optional_noncopyable_ref;
+
 	BOOST_CHECK_EQUAL(
-		&fcppt::optional::map(
+		fcppt::optional::map(
 			optional_string(
 				"42"
 			),
@@ -114,12 +127,17 @@ FCPPT_PP_POP_WARNING
 			](
 				std::string
 			)
-			-> noncopyable &
 			{
 				return
-					test;
+					fcppt::make_ref(
+						test
+					);
 			}
-		).get_unsafe(),
-		&test
+		),
+		optional_noncopyable_ref{
+			fcppt::make_ref(
+				test
+			)
+		}
 	);
 }

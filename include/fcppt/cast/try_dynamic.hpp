@@ -7,10 +7,8 @@
 #ifndef FCPPT_CAST_TRY_DYNAMIC_HPP_INCLUDED
 #define FCPPT_CAST_TRY_DYNAMIC_HPP_INCLUDED
 
-#include <fcppt/optional/object_impl.hpp>
-#include <fcppt/config/external_begin.hpp>
-#include <type_traits>
-#include <fcppt/config/external_end.hpp>
+#include <fcppt/make_ref.hpp>
+#include <fcppt/optional/reference.hpp>
 
 
 namespace fcppt
@@ -39,46 +37,36 @@ template<
 	typename Derived,
 	typename Base
 >
-fcppt::optional::object<
+fcppt::optional::reference<
 	Derived
 >
 try_dynamic(
 	Base &_base
 )
 {
-	static_assert(
-		std::is_reference<
-			Derived
-		>::value,
-		"try_dynamic can only cast to reference types"
-	);
-
-	typedef
-	typename
-	std::remove_reference<
-		Derived
-	>::type
-	derived_no_reference;
-
-	derived_no_reference * const derived_ptr{
+	Derived *const derived_ptr{
 		dynamic_cast<
-			derived_no_reference *
+			Derived *
 		>(
 			&_base
 		)
 	};
 
 	typedef
-	fcppt::optional::object<
+	fcppt::optional::reference<
 		Derived
 	>
 	result_type;
 
 	return
 		derived_ptr
+		!=
+		nullptr
 		?
 			result_type{
-				*derived_ptr
+				fcppt::make_ref(
+					*derived_ptr
+				)
 			}
 		:
 			result_type{}

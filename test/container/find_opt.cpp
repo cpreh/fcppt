@@ -4,10 +4,13 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
+#include <fcppt/make_cref.hpp>
+#include <fcppt/reference_wrapper_comparison.hpp>
+#include <fcppt/reference_wrapper_output.hpp>
 #include <fcppt/strong_typedef.hpp>
 #include <fcppt/container/find_opt.hpp>
 #include <fcppt/optional/comparison.hpp>
-#include <fcppt/optional/object_impl.hpp>
+#include <fcppt/optional/reference.hpp>
 #include <fcppt/optional/output.hpp>
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
@@ -90,22 +93,24 @@ FCPPT_PP_POP_WARNING
 	};
 
 	typedef
-	fcppt::optional::object<
-		int
+	fcppt::optional::reference<
+		int const
 	>
-	optional_int;
+	optional_int_ref;
 
 	BOOST_CHECK_EQUAL(
-		optional_int{
-			fcppt::container::find_opt(
-				set,
-				strong_int(
+		fcppt::container::find_opt(
+			set,
+			strong_int(
+				3
+			)
+		),
+		optional_int_ref(
+			fcppt::make_cref(
+				*set.find(
 					3
 				)
 			)
-		},
-		optional_int(
-			3
 		)
 	);
 

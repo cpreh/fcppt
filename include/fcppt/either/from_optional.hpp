@@ -9,9 +9,8 @@
 
 #include <fcppt/move_if_rvalue.hpp>
 #include <fcppt/either/object_impl.hpp>
-#include <fcppt/optional/is_object.hpp>
-#include <fcppt/optional/is_object_reference.hpp>
 #include <fcppt/optional/maybe.hpp>
+#include <fcppt/optional/detail/check.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <type_traits>
 #include <utility>
@@ -56,17 +55,10 @@ fcppt::either::object<
 >
 {
 	static_assert(
-		fcppt::optional::is_object<
+		fcppt::optional::detail::check<
 			Optional
 		>::value,
 		"Optional must be an optional"
-	);
-
-	static_assert(
-		!fcppt::optional::is_object_reference<
-			Optional
-		>::value,
-		"Optional must not be an optional reference"
 	);
 
 	typedef

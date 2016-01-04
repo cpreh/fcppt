@@ -4,13 +4,18 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
+#include <fcppt/make_cref.hpp>
+#include <fcppt/optional/comparison.hpp>
+#include <fcppt/optional/copy_value.hpp>
 #include <fcppt/optional/object_impl.hpp>
-#include <fcppt/optional/ref_compare.hpp>
+#include <fcppt/optional/output.hpp>
+#include <fcppt/optional/reference.hpp>
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/test/unit_test.hpp>
+#include <string>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -18,47 +23,35 @@ FCPPT_PP_PUSH_WARNING
 FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
 
 BOOST_AUTO_TEST_CASE(
-	optional_ref_compare
+	optional_copy_value
 )
 {
 FCPPT_PP_POP_WARNING
 
-	typedef fcppt::optional::object<
-		int &
-	> optional_int_ref;
+	typedef
+	fcppt::optional::reference<
+		std::string const
+	>
+	optional_string_ref;
 
-	int a = 0;
-
-	int b = 0;
-
-	optional_int_ref const opt_a(
-		a
+	std::string const test(
+		"test1"
 	);
 
-	optional_int_ref const opt_b(
-		b
-	);
-
-	BOOST_CHECK(
-		fcppt::optional::ref_compare(
-			opt_a,
-			optional_int_ref(
-				a
+	BOOST_CHECK_EQUAL(
+		fcppt::optional::copy_value(
+			optional_string_ref{
+				fcppt::make_cref(
+					test
+				)
+			}
+		),
+		fcppt::optional::object<
+			std::string
+		>(
+			std::string(
+				"test1"
 			)
-		)
-	);
-
-	BOOST_CHECK(
-		!fcppt::optional::ref_compare(
-			opt_a,
-			opt_b
-		)
-	);
-
-	BOOST_CHECK(
-		!fcppt::optional::ref_compare(
-			opt_a,
-			optional_int_ref()
 		)
 	);
 }

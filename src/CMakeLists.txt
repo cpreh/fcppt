@@ -783,7 +783,9 @@ set(
 	include/fcppt/reference_wrapper_hash_fwd.hpp
 	include/fcppt/reference_wrapper_hash_impl.hpp
 	include/fcppt/reference_wrapper_impl.hpp
+	include/fcppt/reference_wrapper_output.hpp
 	include/fcppt/reference_wrapper_std_hash.hpp
+	include/fcppt/reference_wrapper_to_base.hpp
 	include/fcppt/runtime_enum.hpp
 	include/fcppt/scoped_state_machine.hpp
 	include/fcppt/scoped_state_machine_decl.hpp
@@ -899,7 +901,6 @@ set(
 	include/fcppt/variant/detail/index_of.hpp
 	include/fcppt/variant/detail/nothrow_move_assignable.hpp
 	include/fcppt/variant/detail/nothrow_move_constructible.hpp
-	include/fcppt/variant/detail/to_optional_result.hpp
 	include/fcppt/variant/detail/type_info.hpp
 	include/fcppt/variant/equal.hpp
 	include/fcppt/variant/exception.hpp
@@ -920,6 +921,7 @@ set(
 	include/fcppt/variant/output.hpp
 	include/fcppt/variant/size_type.hpp
 	include/fcppt/variant/to_optional.hpp
+	include/fcppt/variant/to_optional_ref.hpp
 	include/fcppt/variant/type_info.hpp
 	include/fcppt/variant/variadic.hpp
 	include/fcppt/variant/variadic_fwd.hpp

@@ -7,7 +7,8 @@
 #ifndef FCPPT_OPTIONAL_DETAIL_CAST_HPP_INCLUDED
 #define FCPPT_OPTIONAL_DETAIL_CAST_HPP_INCLUDED
 
-#include <fcppt/optional/object_impl.hpp>
+#include <fcppt/make_ref.hpp>
+#include <fcppt/optional/reference.hpp>
 
 
 #define FCPPT_OPTIONAL_DETAIL_CAST(\
@@ -15,18 +16,20 @@
 )\
 _optional.has_value() \
 ? \
-	fcppt::optional::object< \
-		Result & \
+	fcppt::optional::reference< \
+		Result \
 	>( \
-		cast_type< \
-			Result & \
-		>( \
-			_optional.get_unsafe() \
+		fcppt::make_ref( \
+			cast_type< \
+				Result & \
+			>( \
+				_optional.get_unsafe().get() \
+			) \
 		) \
 	) \
 : \
-	fcppt::optional::object< \
-		Result & \
+	fcppt::optional::reference< \
+		Result \
 	>()
 
 #endif

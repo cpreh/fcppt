@@ -7,7 +7,7 @@
 #ifndef FCPPT_CONTAINER_TREE_OPTIONAL_REF_FWD_HPP_INCLUDED
 #define FCPPT_CONTAINER_TREE_OPTIONAL_REF_FWD_HPP_INCLUDED
 
-#include <fcppt/optional/object_fwd.hpp>
+#include <fcppt/optional/reference_fwd.hpp>
 
 
 namespace fcppt
@@ -22,8 +22,8 @@ template<
 >
 using optional_ref
 =
-fcppt::optional::object<
-	Tree &
+fcppt::optional::reference<
+	Tree
 >;
 
 }

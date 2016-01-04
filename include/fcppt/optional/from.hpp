@@ -7,7 +7,7 @@
 #ifndef FCPPT_OPTIONAL_FROM_HPP_INCLUDED
 #define FCPPT_OPTIONAL_FROM_HPP_INCLUDED
 
-#include <fcppt/optional/forward_get.hpp>
+#include <fcppt/move_if_rvalue.hpp>
 #include <fcppt/optional/object_impl.hpp>
 #include <fcppt/optional/detail/check.hpp>
 #include <fcppt/config/external_begin.hpp>
@@ -53,7 +53,7 @@ from(
 	return
 		_optional.has_value()
 		?
-			fcppt::optional::forward_get<
+			fcppt::move_if_rvalue<
 				Optional
 			>(
 				_optional.get_unsafe()

@@ -8,8 +8,6 @@
 #define FCPPT_OPTIONAL_OBJECT_DECL_HPP_INCLUDED
 
 #include <fcppt/optional/object_fwd.hpp>
-#include <fcppt/optional/detail/enable_ref_conv.hpp>
-#include <fcppt/optional/detail/enable_value_conv.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
@@ -41,38 +39,36 @@ public:
 		!std::is_const<
 			T
 		>::value,
-		"optionals can't hold const types"
+		"optionals cannot hold const types"
+	);
+
+	static_assert(
+		!std::is_reference<
+			T
+		>::value,
+		"optionals cannot hold reference types"
 	);
 
 	/**
 	\brief The value type
 	*/
-	typedef T value_type;
-
-	/**
-	\brief The type of the template parameter
-	*/
-	typedef T element_type;
+	typedef
+	T
+	value_type;
 
 	/**
 	\brief The non const reference type to <code>value_type</code>
 	*/
-	typedef T &reference;
+	typedef
+	T
+	&reference;
 
 	/**
 	\brief The const reference type to <code>value_type</code>
 	*/
-	typedef T const &const_reference;
-
-	/**
-	\brief The non const pointer type to <code>value_type</code>
-	*/
-	typedef T *pointer;
-
-	/**
-	\brief The const pointer type to <code>value_type</code>
-	*/
-	typedef T const *const_pointer;
+	typedef
+	T const &
+	const_reference;
 
 	/**
 	\brief Constructs an empty optional
@@ -107,31 +103,6 @@ public:
 	explicit
 	object(
 		T &&ref
-	);
-
-	/**
-	\brief Constructs an optional from an optional to a reference
-
-	Construct an optional by copying from \a other if
-	<code>other.has_value()</code> is true. Otherwise, the new optional
-	will have no value. This is a special constructor to make constructing
-	an optional value from an optional reference possible.
-
-	\param other The optional to copy from
-	*/
-	template<
-		typename Other
-	>
-	explicit
-	object(
-		fcppt::optional::object<
-			Other
-		> const &other,
-		fcppt::optional::detail::enable_value_conv<
-			T,
-			Other,
-			void
-		> const * = nullptr
 	);
 
 	/**
@@ -212,29 +183,6 @@ public:
 	);
 
 	/**
-	\brief Assigns from an optional reference
-
-	This is a special assignment operator to make assignment from optional
-	references possible. It is otherwise identical to the normal assignment
-	operator.
-
-	\see fcppt::optional::operator=(optional const &)
-	*/
-	template<
-		typename Other
-	>
-	fcppt::optional::detail::enable_value_conv<
-		T,
-		Other,
-		object &
-	>
-	operator=(
-		fcppt::optional::object<
-			Other
-		> const &
-	);
-
-	/**
 	\brief Destroys the value, if any
 
 	If <code>has_value()</code> is true then the current value will be
@@ -264,6 +212,10 @@ public:
 	bool
 	has_value() const;
 private:
+	typedef T *pointer;
+
+	typedef T const *const_pointer;
+
 	pointer
 	data();
 
@@ -344,222 +296,6 @@ private:
 	storage_type storage_;
 
 	bool initialized_;
-};
-
-/**
-\brief A specialization for optional references
-
-\ingroup fcpptoptional
-
-\tparam T The reference type to make optional, which doesn't have to be
-CopyConstructible, Assignable or even complete.
-
-\section optional_reference Optional references
-
-Optional references are somewhat similar to pointers. However, pointers are a
-much broader concept: In addition to making references optional (by using the
-null pointer), they can be used to manage dynamically allocated memory using
-new and delete or other allocation and deallocation functions, or they can be
-used to address static or dynamic arrays using pointer arithmetic. Therefore,
-pointers are too broad a concept. fcppt::optional::object<T &> only focuses on
-one thing: Making a reference optional. As a benefit, it also
-default-initializes to the empty optional, where an uninitialized pointer would
-be undefined.
-
-See \ref optional_motivation for a general explanation of optionals and \ref
-optional_value for optional values.
-
-If fcppt::optional::object<T> is used and T is a reference type (either T = U &
-or T = U const &), the optional will be an optional reference. An optional
-reference holds its value by reference and has therefore no ownership over it.
-Here is a small example:
-
-// TODO: Fix this code
-\code
-typedef fcppt::optional::object<
-	unsigned &
-> optional_uint;
-
-unsigned int1(5u);
-
-// opt takes int1 by reference
-optional_uint opt(int1);
-
-int1 = 10u;
-
-// The value of opt will also be 10u
-assert(
-	*opt == int1
-);
-\endcode
-
-Optional references, denoted by fcppt::optional::object<T &> or
-fcppt::optional::object<T const &>, have some special semantics, in contrast to
-optional values:
-<ul>
-<li>They cannot be assigned from expressions of type T & or T const &. Assign
-a new optional instead: <code>my_value = optional_ref(other_ref)</code></li>
-<li>It is possible to construct an fcppt::optional::object<T const &> from an
-fcppt::optional::object<T &>.</li>
-</ul>
-
-*/
-template<
-	typename T
->
-class object<
-	T &
->
-{
-public:
-	/**
-	\brief The value type of the optional reference
-
-	The value type of the optional reference is always non const.
-	*/
-	typedef
-	typename
-	std::remove_const<
-		T
-	>::type
-	value_type;
-
-	/**
-	\brief The type of the template parameter
-	*/
-	typedef T &element_type;
-
-	/**
-	\brief The reference type
-
-	The reference type the optional reference holds. If this is a const
-	reference or not depends on the template parameter
-	*/
-	typedef T &reference;
-
-	/**
-	\brief The pointer type
-
-	The pointer type corresponding to the reference type the optional
-	reference holds. If this is const or not depends on the template
-	parameter.
-	*/
-	typedef T *pointer;
-
-	/**
-	\brief Constructs an empty optional
-
-	\post <code>has_value()</code> will be false
-	*/
-	object();
-
-	/**
-	\brief Constructs an optional reference from a reference
-
-	Stores \a ref inside the optional. This will not copy anything.
-
-	\param ref The reference to store in the optional
-
-	\post <code>has_value()</code> will be true
-	*/
-	explicit
-	object(
-		reference ref
-	);
-
-	/**
-	\brief Constructs an fcppt::optional::object<T const &> from an
-	fcppt::optional::object<T &>
-
-	Constructs an optional reference by taking the reference from \a other
-	if <code>other.has_value()</code> is true. Otherwise, the new optional
-	will have no value. This is a special constructor to allow conversion
-	between an <code>fcppt::optional::object<T &></code> to
-	<code>fcppt::optional::object<T const &></code>
-
-	\param other The optional to copy from
-	*/
-	template<
-		typename Other
-	>
-	explicit
-	object(
-		fcppt::optional::object<
-			Other &
-		> const &other,
-		fcppt::optional::detail::enable_ref_conv<
-			T,
-			Other
-		> * = nullptr
-	);
-
-	/**
-	\brief Copy constructs an optional reference
-
-	Constructs an optional by taking the reference from \a other if
-	<code>other.has_value()</code> is true. Otherwise, the new optional
-	will have no value.
-	*/
-	object(
-		object const &other
-	)
-	noexcept;
-
-	/**
-	\brief Moves from an optional and empties it
-	*/
-	object(
-		object &&
-	)
-	noexcept;
-
-	/**
-	\brief Assigns from an optional reference
-
-	Assigns the reference from \a other if <code>other.has_value()</code>
-	is true. Otherwise, the optional reference will have no value.
-	*/
-	object &
-	operator=(
-		object const &
-	)
-	noexcept;
-
-	/**
-	\brief Moves from an optional and empties it
-	*/
-	object &
-	operator=(
-		object &&
-	)
-	noexcept;
-
-	~object();
-
-	/**
-	\brief Returns the current reference
-
-	\warning The behaviour is undefined if <code>has_value()</code> is false
-	*/
-	reference
-	get_unsafe() const;
-
-	/**
-	\brief Returns a pointer to the current reference
-
-	\return If<code>has_value()</code> is true, returns the pointer to the
-	current reference, otherwise return nullptr.
-	*/
-	pointer
-	data() const;
-
-	/**
-	\brief Returns whether the optional holds a reference
-	*/
-	bool
-	has_value() const;
-private:
-	pointer data_;
 };
 
 }

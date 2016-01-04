@@ -7,13 +7,9 @@
 #ifndef FCPPT_ALGORITHM_CAT_OPTIONALS_HPP_INCLUDED
 #define FCPPT_ALGORITHM_CAT_OPTIONALS_HPP_INCLUDED
 
-#include <fcppt/move_if.hpp>
+#include <fcppt/move_if_rvalue.hpp>
 #include <fcppt/algorithm/range_element_type.hpp>
-#include <fcppt/optional/is_object_reference.hpp>
 #include <fcppt/optional/maybe_void.hpp>
-#include <fcppt/config/external_begin.hpp>
-#include <type_traits>
-#include <fcppt/config/external_end.hpp>
 
 
 namespace fcppt
@@ -62,16 +58,8 @@ cat_optionals(
 			{
 				result.insert(
 					result.end(),
-					fcppt::move_if<
-						!fcppt::optional::is_object_reference<
-							decltype(
-								element
-							)
-						>::value
-						&&
-						!std::is_lvalue_reference<
-							Source
-						>::value
+					fcppt::move_if_rvalue<
+						Source
 					>(
 						_element
 					)

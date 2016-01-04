@@ -1,7 +1,7 @@
 /**
 \defgroup fcpptoptional fcppt.optional
 \ingroup fcpptmain
-\brief A class that makes values or references optional.
+\brief A class that makes values optional.
 
 <table id="toc">
 <tr>
@@ -9,8 +9,6 @@
 
 <ul>
 	<li>\ref optional_motivation</li>
-	<li>\ref optional_value</li>
-	<li>\ref optional_reference</li>
 	<li>\ref optional_design</li>
 	<li>\ref optional_operations</li>
 	<li>\ref optional_headers</li>
@@ -46,31 +44,6 @@ cases.
 As you can see, the second lambda function gets the already dereferenced
 optional value as a parameter, freeing the user from dereferencing the
 optional.
-
-\section optional_value Values
-
-<code>fcppt::optional::object<T></code> is an optional value iff <code>T</code>
-is not a reference type. Optional values copy or move their contents, which
-means that <code>T</code> has to support copying or moving as well. Here is a
-small example:
-
-\snippet optional.cpp optional_copy
-
-An optional value, <code>fcppt::optional::object<T></code>, has some special
-semantics, in contrast to optional references:
-<ul>
-<li>It can be constructed from an <code>%fcppt::optional::object<T &></code> or
-an <code>%fcppt::optional::object<T const &></code>. This has the same
-semantics as constructing a <code>T</code> from a <code>T &</code> or <code>T
-const &</code> with the addition that <code>has_value</code> will be
-preserved.</li>
-<li>It can also be assigned from an <code>%fcppt::optional::object<T &></code>
-or an <code>%fcppt::optional::object<T const &></code> with the same
-semantics.</li>
-<li>Its own constness determines if it can be modified.</li>
-</ul>
-
-For optional references, see \ref optional_reference
 
 \section optional_design Design
 
@@ -192,10 +165,6 @@ value.
 <tr>
 <td><code>map.hpp</code></td>
 <td>Contains \link fcppt::optional::map \endlink.</td>
-</tr>
-<tr>
-<td><code>ref_compare.hpp</code></td>
-<td>Contains \link fcppt::optional::ref_compare \endlink.</td>
 </tr>
 <tr>
 <td><code>static_cast.hpp</code></td>

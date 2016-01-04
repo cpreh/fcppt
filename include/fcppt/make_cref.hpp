@@ -28,6 +28,7 @@ fcppt::reference_wrapper<
 make_cref(
 	Type const &_ref
 )
+noexcept
 {
 	return
 		fcppt::reference_wrapper<

@@ -4,6 +4,7 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
+#include <fcppt/make_ref.hpp>
 #include <fcppt/assert/optional_error.hpp>
 #include <fcppt/log/context.hpp>
 #include <fcppt/log/context_location.hpp>
@@ -87,10 +88,11 @@ fcppt::log::detail::auto_context::node() const
 			[](
 				fcppt::log::detail::auto_context_rep const &_rep
 			)
-			-> fcppt::log::detail::context_tree &
 			{
 				return
-					_rep.node();
+					fcppt::make_ref(
+						_rep.node()
+					);
 			}
 		);
 }

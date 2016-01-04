@@ -32,10 +32,11 @@ fcppt::log::impl::tree_formatter(
 
 	fcppt::log::format::optional_function ret;
 
+	// TODO: This code is terrible.
 	for(
 		;
-		cur.get_unsafe().parent().has_value();
-		cur = cur.get_unsafe().parent()
+		cur.get_unsafe().get().parent().has_value();
+		cur = cur.get_unsafe().get().parent()
 	)
 		ret =
 			fcppt::log::format::optional_function(
@@ -45,7 +46,7 @@ fcppt::log::impl::tree_formatter(
 							fcppt::variant::get_exn<
 								fcppt::log::detail::inner_context_node
 							>(
-								cur.get_unsafe().value().get()
+								cur.get_unsafe().get().value().get()
 							).name()
 						)
 					),

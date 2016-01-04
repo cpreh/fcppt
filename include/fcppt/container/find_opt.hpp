@@ -10,7 +10,7 @@
 #include <fcppt/container/find_opt_iterator.hpp>
 #include <fcppt/container/to_value_type.hpp>
 #include <fcppt/optional/deref.hpp>
-#include <fcppt/optional/object_impl.hpp>
+#include <fcppt/optional/reference.hpp>
 
 
 namespace fcppt
@@ -36,7 +36,7 @@ template<
 	typename Key
 >
 inline
-fcppt::optional::object<
+fcppt::optional::reference<
 	fcppt::container::to_value_type<
 		Container
 	>

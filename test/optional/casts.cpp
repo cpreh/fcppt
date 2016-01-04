@@ -4,10 +4,17 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
+#include <fcppt/make_cref.hpp>
+#include <fcppt/make_ref.hpp>
 #include <fcppt/noncopyable.hpp>
+#include <fcppt/reference_wrapper_comparison.hpp>
+#include <fcppt/reference_wrapper_impl.hpp>
+#include <fcppt/reference_wrapper_output.hpp>
+#include <fcppt/optional/comparison.hpp>
 #include <fcppt/optional/const_cast.hpp>
 #include <fcppt/optional/dynamic_cast.hpp>
-#include <fcppt/optional/object_impl.hpp>
+#include <fcppt/optional/output.hpp>
+#include <fcppt/optional/reference.hpp>
 #include <fcppt/optional/static_cast.hpp>
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
@@ -53,13 +60,17 @@ public:
 	}
 };
 
-typedef fcppt::optional::object<
-	base &
-> optional_base_ref;
+typedef
+fcppt::optional::reference<
+	base
+>
+optional_base_ref;
 
-typedef fcppt::optional::object<
-	derived &
-> optional_derived_ref;
+typedef
+fcppt::optional::reference<
+	derived
+>
+optional_derived_ref;
 
 }
 
@@ -72,9 +83,9 @@ BOOST_AUTO_TEST_CASE(
 {
 FCPPT_PP_POP_WARNING
 
-	optional_base_ref empty_base;
+	optional_base_ref const empty_base{};
 
-	optional_derived_ref empty_derived(
+	optional_derived_ref const empty_derived(
 		fcppt::optional::dynamic_cast_<
 			derived
 		>(
@@ -88,11 +99,15 @@ FCPPT_PP_POP_WARNING
 
 	derived derived_object;
 
-	optional_base_ref base_ref(
-		derived_object
-	);
+	optional_base_ref const base_ref{
+		fcppt::reference_wrapper<
+			base
+		>(
+			derived_object
+		)
+	};
 
-	optional_derived_ref derived_ref(
+	optional_derived_ref const derived_ref(
 		fcppt::optional::dynamic_cast_<
 			derived
 		>(
@@ -100,13 +115,13 @@ FCPPT_PP_POP_WARNING
 		)
 	);
 
-	BOOST_CHECK(
-		derived_ref.has_value()
-	);
-
 	BOOST_CHECK_EQUAL(
-		&derived_ref.get_unsafe(),
-		&derived_object
+		derived_ref,
+		optional_derived_ref{
+			fcppt::make_ref(
+				derived_object
+			)
+		}
 	);
 }
 
@@ -119,9 +134,9 @@ BOOST_AUTO_TEST_CASE(
 {
 FCPPT_PP_POP_WARNING
 
-	optional_base_ref empty_base;
+	optional_base_ref const empty_base{};
 
-	optional_derived_ref empty_derived(
+	optional_derived_ref const empty_derived(
 		fcppt::optional::static_cast_<
 			derived
 		>(
@@ -135,11 +150,15 @@ FCPPT_PP_POP_WARNING
 
 	derived derived_object;
 
-	optional_base_ref base_ref(
-		derived_object
-	);
+	optional_base_ref const base_ref{
+		fcppt::reference_wrapper<
+			base
+		>(
+			derived_object
+		)
+	};
 
-	optional_derived_ref derived_ref(
+	optional_derived_ref const derived_ref(
 		fcppt::optional::static_cast_<
 			derived
 		>(
@@ -147,13 +166,13 @@ FCPPT_PP_POP_WARNING
 		)
 	);
 
-	BOOST_CHECK(
-		derived_ref.has_value()
-	);
-
 	BOOST_CHECK_EQUAL(
-		&derived_ref.get_unsafe(),
-		&derived_object
+		derived_ref,
+		optional_derived_ref(
+			fcppt::make_ref(
+				derived_object
+			)
+		)
 	);
 }
 
@@ -166,14 +185,18 @@ BOOST_AUTO_TEST_CASE(
 {
 FCPPT_PP_POP_WARNING
 
-	typedef fcppt::optional::object<
-		base const &
-	> optional_const_base_ref;
+	typedef
+	fcppt::optional::reference<
+		base const
+	>
+	optional_const_base_ref;
 
 	base object;
 
 	optional_const_base_ref const ref(
-		object
+		fcppt::make_cref(
+			object
+		)
 	);
 
 	optional_base_ref const nonconst_ref(
@@ -184,12 +207,12 @@ FCPPT_PP_POP_WARNING
 		)
 	);
 
-	BOOST_CHECK(
-		nonconst_ref.has_value()
-	);
-
 	BOOST_CHECK_EQUAL(
-		&nonconst_ref.get_unsafe(),
-		&object
+		nonconst_ref,
+		optional_base_ref(
+			fcppt::make_ref(
+				object
+			)
+		)
 	);
 }

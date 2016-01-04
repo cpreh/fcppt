@@ -7,6 +7,7 @@
 #ifndef FCPPT_OPTIONAL_DEREF_HPP_INCLUDED
 #define FCPPT_OPTIONAL_DEREF_HPP_INCLUDED
 
+#include <fcppt/reference_wrapper_impl.hpp>
 #include <fcppt/optional/map.hpp>
 #include <fcppt/optional/object_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
@@ -24,20 +25,25 @@ namespace optional
 
 \ingroup fcpptoptional
 
-If the optional is set to <code>x</code>, <code>*x</code> is returned.
-For example, this is useful as a shortcut for optionals containing iterators or
-unique pointers.
+If the optional is set to <code>x</code>, <code>make_(c)ref(*x)</code> is
+returned.  For example, this is useful as a shortcut for optionals containing
+iterators or unique pointers.
 */
 template<
 	typename Element
 >
 inline
 fcppt::optional::object<
-	decltype(
-		*std::declval<
-			Element
-		>()
-	)
+	fcppt::reference_wrapper<
+		typename
+		std::remove_reference<
+			decltype(
+				*std::declval<
+					Element
+				>()
+			)
+		>::type
+	>
 >
 deref(
 	fcppt::optional::object<
@@ -51,15 +57,20 @@ deref(
 			[](
 				Element const &_element
 			)
-			->
-			decltype(
-				*std::declval<
-					Element
-				>()
-			)
 			{
 				return
-					*_element;
+					fcppt::reference_wrapper<
+						typename
+						std::remove_reference<
+							decltype(
+								*std::declval<
+									Element
+								>()
+							)
+						>::type
+					>(
+						*_element
+					);
 			}
 		);
 }
