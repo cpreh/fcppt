@@ -10,8 +10,8 @@
 #include <fcppt/strong_typedef.hpp>
 #include <fcppt/container/find_opt.hpp>
 #include <fcppt/optional/comparison.hpp>
-#include <fcppt/optional/reference.hpp>
 #include <fcppt/optional/output.hpp>
+#include <fcppt/optional/reference.hpp>
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>

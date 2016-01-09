@@ -4,10 +4,10 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/optional/reference.hpp>
 #include <fcppt/cast/float_to_int.hpp>
 #include <fcppt/cast/to_unsigned.hpp>
 #include <fcppt/cast/try_dynamic.hpp>
+#include <fcppt/optional/reference.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <cassert>
 #include <iostream>

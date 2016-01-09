@@ -8,8 +8,8 @@
 #define FCPPT_EITHER_CAT_HPP_INCLUDED
 
 #include <fcppt/move_if_rvalue.hpp>
-#include <fcppt/algorithm/map.hpp>
 #include <fcppt/algorithm/find_if_opt.hpp>
+#include <fcppt/algorithm/map.hpp>
 #include <fcppt/container/to_iterator_type.hpp>
 #include <fcppt/either/is_object.hpp>
 #include <fcppt/either/object_impl.hpp>
