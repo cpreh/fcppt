@@ -398,6 +398,10 @@ add_fcppt_test(
 )
 
 add_fcppt_test(
+	either/cat
+)
+
+add_fcppt_test(
 	either/from_optional
 )
 

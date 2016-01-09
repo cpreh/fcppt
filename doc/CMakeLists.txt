@@ -556,6 +556,7 @@ set(
 	include/fcppt/dynamic_pointer_cast.hpp
 	include/fcppt/either/apply.hpp
 	include/fcppt/either/bind.hpp
+	include/fcppt/either/cat.hpp
 	include/fcppt/either/comparison.hpp
 	include/fcppt/either/detail/all_success.hpp
 	include/fcppt/either/detail/first_failure.hpp
