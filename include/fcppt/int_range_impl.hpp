@@ -87,12 +87,16 @@ fcppt::int_range<
 >::size() const
 {
 	return
-		fcppt::type_iso::undecorate(
-			end_
-		)
-		-
-		fcppt::type_iso::undecorate(
-			begin_
+		static_cast<
+			size_type
+		>(
+			fcppt::type_iso::undecorate(
+				end_
+			)
+			-
+			fcppt::type_iso::undecorate(
+				begin_
+			)
 		);
 }
 
