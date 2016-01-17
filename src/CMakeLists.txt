@@ -774,18 +774,18 @@ set(
 	include/fcppt/range_hash_decl.hpp
 	include/fcppt/range_hash_fwd.hpp
 	include/fcppt/range_hash_impl.hpp
-	include/fcppt/reference_wrapper.hpp
-	include/fcppt/reference_wrapper_comparison.hpp
-	include/fcppt/reference_wrapper_decl.hpp
-	include/fcppt/reference_wrapper_fwd.hpp
-	include/fcppt/reference_wrapper_hash.hpp
-	include/fcppt/reference_wrapper_hash_decl.hpp
-	include/fcppt/reference_wrapper_hash_fwd.hpp
-	include/fcppt/reference_wrapper_hash_impl.hpp
-	include/fcppt/reference_wrapper_impl.hpp
-	include/fcppt/reference_wrapper_output.hpp
-	include/fcppt/reference_wrapper_std_hash.hpp
-	include/fcppt/reference_wrapper_to_base.hpp
+	include/fcppt/reference.hpp
+	include/fcppt/reference_comparison.hpp
+	include/fcppt/reference_decl.hpp
+	include/fcppt/reference_fwd.hpp
+	include/fcppt/reference_hash.hpp
+	include/fcppt/reference_hash_decl.hpp
+	include/fcppt/reference_hash_fwd.hpp
+	include/fcppt/reference_hash_impl.hpp
+	include/fcppt/reference_impl.hpp
+	include/fcppt/reference_output.hpp
+	include/fcppt/reference_std_hash.hpp
+	include/fcppt/reference_to_base.hpp
 	include/fcppt/runtime_enum.hpp
 	include/fcppt/scoped_state_machine.hpp
 	include/fcppt/scoped_state_machine_decl.hpp

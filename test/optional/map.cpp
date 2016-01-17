@@ -6,8 +6,8 @@
 
 #include <fcppt/make_ref.hpp>
 #include <fcppt/noncopyable.hpp>
-#include <fcppt/reference_wrapper_comparison.hpp>
-#include <fcppt/reference_wrapper_output.hpp>
+#include <fcppt/reference_comparison.hpp>
+#include <fcppt/reference_output.hpp>
 #include <fcppt/optional/comparison.hpp>
 #include <fcppt/optional/map.hpp>
 #include <fcppt/optional/object.hpp>

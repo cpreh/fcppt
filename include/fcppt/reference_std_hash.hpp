@@ -7,8 +7,8 @@
 #ifndef FCPPT_REFERENCE_WRAPPER_STD_HASH_HPP_INCLUDED
 #define FCPPT_REFERENCE_WRAPPER_STD_HASH_HPP_INCLUDED
 
-#include <fcppt/reference_wrapper_fwd.hpp>
-#include <fcppt/reference_wrapper_hash_impl.hpp>
+#include <fcppt/reference_fwd.hpp>
+#include <fcppt/reference_hash_impl.hpp>
 #include <fcppt/config/compiler.hpp>
 #if defined(FCPPT_CONFIG_CLANG_COMPILER)
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
@@ -33,12 +33,12 @@ template<
 	typename Type
 >
 struct hash<
-	fcppt::reference_wrapper<
+	fcppt::reference<
 		Type
 	>
 >
 {
-	typedef fcppt::reference_wrapper<
+	typedef fcppt::reference<
 		Type
 	> type;
 
@@ -48,7 +48,7 @@ struct hash<
 	) const
 	{
 		return
-			fcppt::reference_wrapper_hash<
+			fcppt::reference_hash<
 				type
 			>()(
 				_value

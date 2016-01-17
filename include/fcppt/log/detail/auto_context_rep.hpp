@@ -7,7 +7,7 @@
 #ifndef FCPPT_LOG_DETAIL_AUTO_CONTEXT_REP_HPP_INCLUDED
 #define FCPPT_LOG_DETAIL_AUTO_CONTEXT_REP_HPP_INCLUDED
 
-#include <fcppt/reference_wrapper_impl.hpp>
+#include <fcppt/reference_impl.hpp>
 #include <fcppt/log/context_fwd.hpp>
 #include <fcppt/log/context_location_fwd.hpp>
 #include <fcppt/log/location.hpp>
@@ -51,7 +51,7 @@ public:
 	location() const;
 private:
 	typedef
-	fcppt::reference_wrapper<
+	fcppt::reference<
 		fcppt::log::context
 	>
 	context_ref;
@@ -61,7 +61,7 @@ private:
 	fcppt::log::location location_;
 
 	typedef
-	fcppt::reference_wrapper<
+	fcppt::reference<
 		fcppt::log::detail::context_tree
 	>
 	context_tree_ref;

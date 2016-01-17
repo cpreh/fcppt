@@ -8,7 +8,7 @@
 #define FCPPT_CONTAINER_FIND_OPT_MAPPED_HPP_INCLUDED
 
 #include <fcppt/make_ref.hpp>
-#include <fcppt/reference_wrapper_impl.hpp>
+#include <fcppt/reference_impl.hpp>
 #include <fcppt/container/find_opt.hpp>
 #include <fcppt/container/to_mapped_type.hpp>
 #include <fcppt/container/to_value_type.hpp>
@@ -40,7 +40,7 @@ template<
 >
 inline
 fcppt::optional::object<
-	fcppt::reference_wrapper<
+	fcppt::reference<
 		fcppt::container::to_mapped_type<
 			Container
 		>
@@ -58,7 +58,7 @@ find_opt_mapped(
 				_key
 			),
 			[](
-				fcppt::reference_wrapper<
+				fcppt::reference<
 					fcppt::container::to_value_type<
 						Container
 					>

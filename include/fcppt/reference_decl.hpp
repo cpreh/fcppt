@@ -7,7 +7,7 @@
 #ifndef FCPPT_REFERENCE_WRAPPER_DECL_HPP_INCLUDED
 #define FCPPT_REFERENCE_WRAPPER_DECL_HPP_INCLUDED
 
-#include <fcppt/reference_wrapper_fwd.hpp>
+#include <fcppt/reference_fwd.hpp>
 
 
 namespace fcppt
@@ -18,22 +18,22 @@ namespace fcppt
 
 \ingroup fcpptref
 
-C++11's reference_wrapper is also a function call wrapper, which implies that
+C++11's reference is also a function call wrapper, which implies that
 the type it holds must be complete. This class's purpose is to allow objects of
 incomplete type to be stored as references in containers instead of pointers.
 */
 template<
 	typename Type
 >
-class reference_wrapper
+class reference
 {
 	// Do not bind to temporary objects
-	reference_wrapper(
+	reference(
 		Type &&
 	) = delete;
 
 	// Do not assign from temporary objects
-	reference_wrapper &
+	reference &
 	operator=(
 		Type &&
 	) = delete;
@@ -41,20 +41,20 @@ public:
 	typedef Type type;
 
 	explicit
-	reference_wrapper(
+	reference(
 		type &
 	);
 
-	reference_wrapper(
-		reference_wrapper const &
+	reference(
+		reference const &
 	);
 
-	reference_wrapper &
+	reference &
 	operator=(
-		reference_wrapper const &
+		reference const &
 	);
 
-	~reference_wrapper();
+	~reference();
 
 	type &
 	get() const;

@@ -4,7 +4,7 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/reference_wrapper_impl.hpp>
+#include <fcppt/reference_impl.hpp>
 #include <fcppt/io/ostream.hpp>
 #include <fcppt/log/context.hpp>
 #include <fcppt/log/enabled_level_array.hpp>
@@ -47,7 +47,7 @@ fcppt::log::object::object(
 			[
 				&_param
 			](
-				fcppt::reference_wrapper<
+				fcppt::reference<
 					fcppt::log::detail::context_tree
 				> const _node
 			)

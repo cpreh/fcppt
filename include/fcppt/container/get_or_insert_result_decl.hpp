@@ -7,7 +7,7 @@
 #ifndef FCPPT_CONTAINER_GET_OR_INSERT_RESULT_DECL_HPP_INCLUDED
 #define FCPPT_CONTAINER_GET_OR_INSERT_RESULT_DECL_HPP_INCLUDED
 
-#include <fcppt/reference_wrapper_impl.hpp>
+#include <fcppt/reference_impl.hpp>
 #include <fcppt/container/get_or_insert_result_fwd.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <type_traits>
@@ -52,7 +52,7 @@ public:
 	bool
 	inserted() const;
 private:
-	fcppt::reference_wrapper<
+	fcppt::reference<
 		typename
 		std::remove_reference<
 			Reference

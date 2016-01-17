@@ -7,7 +7,7 @@
 #ifndef FCPPT_OPTIONAL_REFERENCE_HPP_INCLUDED
 #define FCPPT_OPTIONAL_REFERENCE_HPP_INCLUDED
 
-#include <fcppt/reference_wrapper_impl.hpp>
+#include <fcppt/reference_impl.hpp>
 #include <fcppt/optional/object_impl.hpp>
 #include <fcppt/optional/reference_fwd.hpp>
 

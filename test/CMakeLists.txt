@@ -907,11 +907,11 @@ add_fcppt_test(
 )
 
 add_fcppt_test(
-	reference_wrapper
+	reference
 )
 
 add_fcppt_test(
-	reference_wrapper_to_base
+	reference_to_base
 )
 
 add_fcppt_test(

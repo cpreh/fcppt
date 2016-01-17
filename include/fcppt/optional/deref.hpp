@@ -7,7 +7,7 @@
 #ifndef FCPPT_OPTIONAL_DEREF_HPP_INCLUDED
 #define FCPPT_OPTIONAL_DEREF_HPP_INCLUDED
 
-#include <fcppt/reference_wrapper_impl.hpp>
+#include <fcppt/reference_impl.hpp>
 #include <fcppt/optional/map.hpp>
 #include <fcppt/optional/object_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
@@ -34,7 +34,7 @@ template<
 >
 inline
 fcppt::optional::object<
-	fcppt::reference_wrapper<
+	fcppt::reference<
 		typename
 		std::remove_reference<
 			decltype(
@@ -59,7 +59,7 @@ deref(
 			)
 			{
 				return
-					fcppt::reference_wrapper<
+					fcppt::reference<
 						typename
 						std::remove_reference<
 							decltype(

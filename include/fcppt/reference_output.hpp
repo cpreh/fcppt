@@ -7,7 +7,7 @@
 #ifndef FCPPT_REFERENCE_WRAPPER_OUTPUT_HPP_INCLUDED
 #define FCPPT_REFERENCE_WRAPPER_OUTPUT_HPP_INCLUDED
 
-#include <fcppt/reference_wrapper_impl.hpp>
+#include <fcppt/reference_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <ostream>
 #include <fcppt/config/external_end.hpp>
@@ -35,7 +35,7 @@ operator<<(
 		Ch,
 		Traits
 	> &_stream,
-	fcppt::reference_wrapper<
+	fcppt::reference<
 		T
 	> const &_ref
 )

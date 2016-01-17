@@ -8,8 +8,8 @@
 #define FCPPT_CONTAINER_TREE_PRE_ORDER_HPP_INCLUDED
 
 #include <fcppt/noncopyable.hpp>
-#include <fcppt/reference_wrapper_comparison.hpp>
-#include <fcppt/reference_wrapper_impl.hpp>
+#include <fcppt/reference_comparison.hpp>
+#include <fcppt/reference_impl.hpp>
 #include <fcppt/container/tree/is_object.hpp>
 #include <fcppt/container/tree/optional_ref_impl.hpp>
 #include <fcppt/optional/comparison.hpp>
@@ -91,7 +91,7 @@ private:
 	tree_iterator;
 
 	typedef
-	fcppt::reference_wrapper<
+	fcppt::reference<
 		Tree
 	>
 	tree_ref;

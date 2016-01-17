@@ -5,9 +5,9 @@
 
 
 #include <fcppt/make_cref.hpp>
-#include <fcppt/reference_wrapper_comparison.hpp>
-#include <fcppt/reference_wrapper_impl.hpp>
-#include <fcppt/reference_wrapper_output.hpp>
+#include <fcppt/reference_comparison.hpp>
+#include <fcppt/reference_impl.hpp>
+#include <fcppt/reference_output.hpp>
 #include <fcppt/container/find_opt_mapped.hpp>
 #include <fcppt/optional/comparison.hpp>
 #include <fcppt/optional/object_impl.hpp>
@@ -56,7 +56,7 @@ FCPPT_PP_POP_WARNING
 
 	typedef
 	fcppt::optional::object<
-		fcppt::reference_wrapper<
+		fcppt::reference<
 			std::string const
 		>
 	>

@@ -7,7 +7,7 @@
 #ifndef FCPPT_CONTAINER_GRID_POS_REF_RANGE_DECL_HPP_INCLUDED
 #define FCPPT_CONTAINER_GRID_POS_REF_RANGE_DECL_HPP_INCLUDED
 
-#include <fcppt/reference_wrapper_impl.hpp>
+#include <fcppt/reference_impl.hpp>
 #include <fcppt/container/grid/object_decl.hpp>
 #include <fcppt/container/grid/pos_range_impl.hpp>
 #include <fcppt/container/grid/pos_ref_iterator_fwd.hpp>
@@ -96,7 +96,7 @@ private:
 		pos_iterator
 	) const;
 
-	fcppt::reference_wrapper<
+	fcppt::reference<
 		Grid
 	> grid_;
 

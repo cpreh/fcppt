@@ -81,7 +81,7 @@ get_or_insert_with_result(
 					);
 			},
 			[](
-				fcppt::reference_wrapper<
+				fcppt::reference<
 					typename
 					Container::mapped_type
 				> const _element

@@ -7,7 +7,7 @@
 #ifndef FCPPT_OPTIONAL_COPY_VALUE_HPP_INCLUDED
 #define FCPPT_OPTIONAL_COPY_VALUE_HPP_INCLUDED
 
-#include <fcppt/reference_wrapper_impl.hpp>
+#include <fcppt/reference_impl.hpp>
 #include <fcppt/optional/map.hpp>
 #include <fcppt/optional/object_impl.hpp>
 #include <fcppt/optional/reference.hpp>
@@ -45,7 +45,7 @@ copy_value(
 		fcppt::optional::map(
 			_opt,
 			[](
-				fcppt::reference_wrapper<
+				fcppt::reference<
 					Type
 				> const _ref
 			)

@@ -14,7 +14,7 @@ namespace fcppt
 template<
 	typename Type
 >
-struct reference_wrapper_hash;
+struct reference_hash;
 
 }
 

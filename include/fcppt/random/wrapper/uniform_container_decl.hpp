@@ -7,7 +7,7 @@
 #ifndef FCPPT_RANDOM_WRAPPER_UNIFORM_CONTAINER_DECL_HPP_INCLUDED
 #define FCPPT_RANDOM_WRAPPER_UNIFORM_CONTAINER_DECL_HPP_INCLUDED
 
-#include <fcppt/reference_wrapper_impl.hpp>
+#include <fcppt/reference_impl.hpp>
 #include <fcppt/container/to_reference_type.hpp>
 #include <fcppt/random/distribution/basic.hpp>
 #include <fcppt/random/distribution/parameters/uniform_int.hpp>
@@ -55,7 +55,7 @@ public:
 		Generator &
 	);
 private:
-	fcppt::reference_wrapper<
+	fcppt::reference<
 		Container
 	>
 	container_;

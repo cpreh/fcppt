@@ -5,7 +5,7 @@
 
 
 #include <fcppt/make_ref.hpp>
-#include <fcppt/reference_wrapper_impl.hpp>
+#include <fcppt/reference_impl.hpp>
 #include <fcppt/log/location.hpp>
 #include <fcppt/log/detail/context_tree.hpp>
 #include <fcppt/log/detail/optional_context_tree_ref.hpp>
@@ -38,7 +38,7 @@ fcppt::log::impl::find_location(
 				[
 					&item
 				](
-					fcppt::reference_wrapper<
+					fcppt::reference<
 						fcppt::log::detail::context_tree
 					> const _next_tree
 				)

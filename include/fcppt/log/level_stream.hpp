@@ -7,7 +7,7 @@
 #ifndef FCPPT_LOG_LEVEL_STREAM_HPP_INCLUDED
 #define FCPPT_LOG_LEVEL_STREAM_HPP_INCLUDED
 
-#include <fcppt/reference_wrapper_impl.hpp>
+#include <fcppt/reference_impl.hpp>
 #include <fcppt/io/ostream.hpp>
 #include <fcppt/log/level_stream_fwd.hpp>
 #include <fcppt/log/detail/symbol.hpp>
@@ -87,7 +87,7 @@ public:
 	fcppt::log::format::optional_function const &
 	formatter() const;
 private:
-	fcppt::reference_wrapper<
+	fcppt::reference<
 		fcppt::io::ostream
 	>
 	dest_;

@@ -7,7 +7,7 @@
 #ifndef FCPPT_OPTIONAL_REFERENCE_FWD_HPP_INCLUDED
 #define FCPPT_OPTIONAL_REFERENCE_FWD_HPP_INCLUDED
 
-#include <fcppt/reference_wrapper_fwd.hpp>
+#include <fcppt/reference_fwd.hpp>
 #include <fcppt/optional/object_fwd.hpp>
 
 
@@ -28,7 +28,7 @@ using
 reference
 =
 fcppt::optional::object<
-	fcppt::reference_wrapper<
+	fcppt::reference<
 		T
 	>
 >;

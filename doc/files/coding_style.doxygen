@@ -54,13 +54,13 @@ programs to even run if they are not well typed. Making the most out of the type
 system can catch a lot of mistakes at compile-time. We can use types to
 <ul>
 <li>Express ownership: Choose between <code>fcppt::unique_ptr<T></code>, <code>
-fcppt::shared_ptr<T></code>, <code>fcppt::reference_wrapper<T></code>,
+fcppt::shared_ptr<T></code>, <code>fcppt::reference<T></code>,
 <code>T &&</code> and <code>T</code>.
 <ul>
 <li>\link fcppt::unique_ptr\endlink expresses unique ownership and should be
 the default class to use for non-copyable objects.</li>
 <li>\link fcppt::shared_ptr\endlink expresses shared ownership.</li>
-<li>\link fcppt::reference_wrapper\endlink should be prefered to raw references
+<li>\link fcppt::reference\endlink should be prefered to raw references
 to make their use more explicit.</li>
 </ul>
 <li>Express optional values: Can a function take or, more importantly, return

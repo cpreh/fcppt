@@ -9,7 +9,7 @@
 
 #include <fcppt/make_cref.hpp>
 #include <fcppt/make_ref.hpp>
-#include <fcppt/reference_wrapper_impl.hpp>
+#include <fcppt/reference_impl.hpp>
 #include <fcppt/container/tree/object_decl.hpp>
 #include <fcppt/container/tree/optional_ref_impl.hpp>
 #include <fcppt/container/tree/detail/copy_children.hpp>
@@ -279,7 +279,7 @@ fcppt::container::tree::object<
 		fcppt::optional::map(
 			parent_,
 			[](
-				fcppt::reference_wrapper<
+				fcppt::reference<
 					object
 				> const _val
 			)

@@ -7,9 +7,9 @@
 #include <fcppt/make_cref.hpp>
 #include <fcppt/make_ref.hpp>
 #include <fcppt/noncopyable.hpp>
-#include <fcppt/reference_wrapper_comparison.hpp>
-#include <fcppt/reference_wrapper_impl.hpp>
-#include <fcppt/reference_wrapper_output.hpp>
+#include <fcppt/reference_comparison.hpp>
+#include <fcppt/reference_impl.hpp>
+#include <fcppt/reference_output.hpp>
 #include <fcppt/optional/comparison.hpp>
 #include <fcppt/optional/const_cast.hpp>
 #include <fcppt/optional/dynamic_cast.hpp>
@@ -100,7 +100,7 @@ FCPPT_PP_POP_WARNING
 	derived derived_object;
 
 	optional_base_ref const base_ref{
-		fcppt::reference_wrapper<
+		fcppt::reference<
 			base
 		>(
 			derived_object
@@ -151,7 +151,7 @@ FCPPT_PP_POP_WARNING
 	derived derived_object;
 
 	optional_base_ref const base_ref{
-		fcppt::reference_wrapper<
+		fcppt::reference<
 			base
 		>(
 			derived_object

@@ -14,7 +14,7 @@ namespace fcppt
 template<
 	typename Type
 >
-class reference_wrapper;
+class reference;
 
 }
 

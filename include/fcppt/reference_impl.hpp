@@ -7,15 +7,15 @@
 #ifndef FCPPT_REFERENCE_WRAPPER_IMPL_HPP_INCLUDED
 #define FCPPT_REFERENCE_WRAPPER_IMPL_HPP_INCLUDED
 
-#include <fcppt/reference_wrapper_decl.hpp>
+#include <fcppt/reference_decl.hpp>
 
 
 template<
 	typename Type
 >
-fcppt::reference_wrapper<
+fcppt::reference<
 	Type
->::reference_wrapper(
+>::reference(
 	type &_ref
 )
 :
@@ -28,10 +28,10 @@ fcppt::reference_wrapper<
 template<
 	typename Type
 >
-fcppt::reference_wrapper<
+fcppt::reference<
 	Type
->::reference_wrapper(
-	reference_wrapper const &_other
+>::reference(
+	reference const &_other
 )
 :
 	impl_(
@@ -43,13 +43,13 @@ fcppt::reference_wrapper<
 template<
 	typename Type
 >
-fcppt::reference_wrapper<
+fcppt::reference<
 	Type
 > &
-fcppt::reference_wrapper<
+fcppt::reference<
 	Type
 >::operator=(
-	reference_wrapper const &_other
+	reference const &_other
 )
 {
 	impl_ = _other.impl_;
@@ -60,19 +60,19 @@ fcppt::reference_wrapper<
 template<
 	typename Type
 >
-fcppt::reference_wrapper<
+fcppt::reference<
 	Type
->::~reference_wrapper()
+>::~reference()
 {
 }
 
 template<
 	typename Type
 >
-typename fcppt::reference_wrapper<
+typename fcppt::reference<
 	Type
 >::type &
-fcppt::reference_wrapper<
+fcppt::reference<
 	Type
 >::get() const
 {
@@ -83,10 +83,10 @@ fcppt::reference_wrapper<
 template<
 	typename Type
 >
-typename fcppt::reference_wrapper<
+typename fcppt::reference<
 	Type
 >::type *
-fcppt::reference_wrapper<
+fcppt::reference<
 	Type
 >::get_pointer() const
 {

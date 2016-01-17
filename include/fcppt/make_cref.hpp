@@ -7,14 +7,14 @@
 #ifndef FCPPT_MAKE_CREF_HPP_INCLUDED
 #define FCPPT_MAKE_CREF_HPP_INCLUDED
 
-#include <fcppt/reference_wrapper_impl.hpp>
+#include <fcppt/reference_impl.hpp>
 
 
 namespace fcppt
 {
 
 /**
-\brief Convenience function to create const reference_wrappers
+\brief Convenience function to create const references
 
 \ingroup fcpptref
 */
@@ -22,7 +22,7 @@ template<
 	typename Type
 >
 inline
-fcppt::reference_wrapper<
+fcppt::reference<
 	Type const
 >
 make_cref(
@@ -31,7 +31,7 @@ make_cref(
 noexcept
 {
 	return
-		fcppt::reference_wrapper<
+		fcppt::reference<
 			Type const
 		>(
 			_ref

@@ -6,7 +6,7 @@
 
 #include <fcppt/make_ref.hpp>
 #include <fcppt/make_unique_ptr.hpp>
-#include <fcppt/reference_wrapper_impl.hpp>
+#include <fcppt/reference_impl.hpp>
 #include <fcppt/unique_ptr.hpp>
 #include <fcppt/optional/maybe_void.hpp>
 #include <fcppt/optional/object.hpp>
@@ -125,7 +125,7 @@ FCPPT_PP_POP_WARNING
 			)
 		},
 		[](
-			fcppt::reference_wrapper<
+			fcppt::reference<
 				int
 			> const _val
 		)

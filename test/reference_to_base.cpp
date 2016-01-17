@@ -7,8 +7,8 @@
 #include <fcppt/make_cref.hpp>
 #include <fcppt/make_ref.hpp>
 #include <fcppt/noncopyable.hpp>
-#include <fcppt/reference_wrapper_impl.hpp>
-#include <fcppt/reference_wrapper_to_base.hpp>
+#include <fcppt/reference_impl.hpp>
+#include <fcppt/reference_to_base.hpp>
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
@@ -21,7 +21,7 @@ FCPPT_PP_PUSH_WARNING
 FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
 
 BOOST_AUTO_TEST_CASE(
-	reference_wrapper_to_base
+	reference_to_base
 )
 {
 
@@ -65,10 +65,10 @@ FCPPT_PP_POP_WARNING
 	{
 		derived nonconst_derived;
 
-		fcppt::reference_wrapper<
+		fcppt::reference<
 			base
 		> const nonconst_base(
-			fcppt::reference_wrapper_to_base<
+			fcppt::reference_to_base<
 				base
 			>(
 				fcppt::make_ref(
@@ -86,10 +86,10 @@ FCPPT_PP_POP_WARNING
 	{
 		derived const const_derived{};
 
-		fcppt::reference_wrapper<
+		fcppt::reference<
 			base const
 		> const const_base(
-			fcppt::reference_wrapper_to_base<
+			fcppt::reference_to_base<
 				base const
 			>(
 				fcppt::make_cref(

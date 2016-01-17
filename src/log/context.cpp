@@ -5,7 +5,7 @@
 
 
 #include <fcppt/make_ref.hpp>
-#include <fcppt/reference_wrapper_impl.hpp>
+#include <fcppt/reference_impl.hpp>
 #include <fcppt/string.hpp>
 #include <fcppt/algorithm/map_optional.hpp>
 #include <fcppt/assert/error.hpp>
@@ -73,7 +73,7 @@ fcppt::log::context::find(
 				_location
 			),
 			[](
-				fcppt::reference_wrapper<
+				fcppt::reference<
 					fcppt::log::detail::context_tree
 				> const _tree_location
 			)
@@ -217,7 +217,7 @@ fcppt::log::context::add(
 	fcppt::log::object &_object
 )
 {
-	fcppt::reference_wrapper<
+	fcppt::reference<
 		fcppt::log::detail::context_tree
 	> cur(
 		tree_

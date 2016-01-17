@@ -5,8 +5,8 @@
 
 
 #include <fcppt/make_cref.hpp>
-#include <fcppt/reference_wrapper_comparison.hpp>
-#include <fcppt/reference_wrapper_output.hpp>
+#include <fcppt/reference_comparison.hpp>
+#include <fcppt/reference_output.hpp>
 #include <fcppt/container/at_optional.hpp>
 #include <fcppt/optional/comparison.hpp>
 #include <fcppt/optional/output.hpp>

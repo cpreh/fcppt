@@ -7,7 +7,7 @@
 #ifndef FCPPT_DYNAMIC_POINTER_CAST_HPP_INCLUDED
 #define FCPPT_DYNAMIC_POINTER_CAST_HPP_INCLUDED
 
-#include <fcppt/reference_wrapper_impl.hpp>
+#include <fcppt/reference_impl.hpp>
 #include <fcppt/shared_ptr_impl.hpp>
 #include <fcppt/cast/try_dynamic.hpp>
 #include <fcppt/optional/map.hpp>
@@ -59,7 +59,7 @@ dynamic_pointer_cast(
 			[
 				&_ptr
 			](
-				fcppt::reference_wrapper<
+				fcppt::reference<
 					Dest
 				> const _dest
 			)

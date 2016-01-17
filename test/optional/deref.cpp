@@ -7,8 +7,8 @@
 #include <fcppt/make_cref.hpp>
 #include <fcppt/make_ref.hpp>
 #include <fcppt/make_unique_ptr.hpp>
-#include <fcppt/reference_wrapper_comparison.hpp>
-#include <fcppt/reference_wrapper_output.hpp>
+#include <fcppt/reference_comparison.hpp>
+#include <fcppt/reference_output.hpp>
 #include <fcppt/unique_ptr_impl.hpp>
 #include <fcppt/optional/comparison.hpp>
 #include <fcppt/optional/deref.hpp>

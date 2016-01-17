@@ -7,7 +7,7 @@
 #ifndef FCPPT_REFERENCE_WRAPPER_COMPARISON_HPP_INCLUDED
 #define FCPPT_REFERENCE_WRAPPER_COMPARISON_HPP_INCLUDED
 
-#include <fcppt/reference_wrapper_impl.hpp>
+#include <fcppt/reference_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <functional>
 #include <fcppt/config/external_end.hpp>
@@ -17,23 +17,23 @@ namespace fcppt
 {
 
 /**
-\brief Compares two reference_wrappers for equality
+\brief Compares two references for equality
 
 \ingroup fcpptref
 
-Compares \a _a and \a _b for equality. Two reference_wrappers are equal if they
+Compares \a _a and \a _b for equality. Two references are equal if they
 refer to the same object.
 
-\param _a The first reference_wrapper
-\param _b The second reference_wrapper
+\param _a The first reference
+\param _b The second reference
 */
 template<
 	typename T
 >
 bool
 operator==(
-	fcppt::reference_wrapper<T> const &_a,
-	fcppt::reference_wrapper<T> const &_b
+	fcppt::reference<T> const &_a,
+	fcppt::reference<T> const &_b
 )
 {
 	return
@@ -43,22 +43,22 @@ operator==(
 }
 
 /**
-\brief Compares two reference_wrappers for inequality
+\brief Compares two references for inequality
 
 \ingroup fcpptref
 
 Compares \a _a and \a _b for inequality. Equal to <code>!(_a == _b)</code>.
 
-\param _a The first reference_wrapper
-\param _b The second reference_wrapper
+\param _a The first reference
+\param _b The second reference
 */
 template<
 	typename T
 >
 bool
 operator!=(
-	fcppt::reference_wrapper<T> const &_a,
-	fcppt::reference_wrapper<T> const &_b
+	fcppt::reference<T> const &_a,
+	fcppt::reference<T> const &_b
 )
 {
 	return
@@ -66,23 +66,23 @@ operator!=(
 }
 
 /**
-\brief Compares two reference_wrappers lexicographically
+\brief Compares two references lexicographically
 
 \ingroup fcpptref
 
 Compares \a _a and \a _b lexicographically by comparing the stored pointers via
 <code>std::less</code>.
 
-\param _a The first reference_wrapper
-\param _b The second reference_wrapper
+\param _a The first reference
+\param _b The second reference
 */
 template<
 	typename T
 >
 bool
 operator<(
-	fcppt::reference_wrapper<T> const &_a,
-	fcppt::reference_wrapper<T> const &_b
+	fcppt::reference<T> const &_a,
+	fcppt::reference<T> const &_b
 )
 {
 	return

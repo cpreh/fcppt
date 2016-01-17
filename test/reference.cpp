@@ -6,7 +6,7 @@
 
 #include <fcppt/make_cref.hpp>
 #include <fcppt/make_ref.hpp>
-#include <fcppt/reference_wrapper.hpp>
+#include <fcppt/reference.hpp>
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
@@ -20,13 +20,13 @@ namespace
 {
 
 typedef
-fcppt::reference_wrapper<
+fcppt::reference<
 	int
 >
 int_ref;
 
 typedef
-fcppt::reference_wrapper<
+fcppt::reference<
 	int const
 >
 const_int_ref;
@@ -37,7 +37,7 @@ FCPPT_PP_PUSH_WARNING
 FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
 
 BOOST_AUTO_TEST_CASE(
-	reference_wrapper
+	reference
 )
 {
 
@@ -100,7 +100,7 @@ FCPPT_PP_PUSH_WARNING
 FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
 
 BOOST_AUTO_TEST_CASE(
-	reference_wrapper_hash
+	reference_hash
 )
 {
 

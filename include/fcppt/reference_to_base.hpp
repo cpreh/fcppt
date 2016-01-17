@@ -7,7 +7,7 @@
 #ifndef FCPPT_REFERENCE_WRAPPER_TO_BASE_HPP_INCLUDED
 #define FCPPT_REFERENCE_WRAPPER_TO_BASE_HPP_INCLUDED
 
-#include <fcppt/reference_wrapper_impl.hpp>
+#include <fcppt/reference_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
@@ -28,11 +28,11 @@ template<
 	typename Type
 >
 inline
-fcppt::reference_wrapper<
+fcppt::reference<
 	Base
 >
-reference_wrapper_to_base(
-	fcppt::reference_wrapper<
+reference_to_base(
+	fcppt::reference<
 		Type
 	> const _ref
 )
@@ -52,7 +52,7 @@ reference_wrapper_to_base(
 	);
 
 	return
-		fcppt::reference_wrapper<
+		fcppt::reference<
 			Base
 		>(
 			_ref.get()
