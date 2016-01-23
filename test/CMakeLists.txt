@@ -809,6 +809,11 @@ add_fcppt_test(
 )
 
 add_fcppt_test(
+	mpl/flatten
+	NO_CODE
+)
+
+add_fcppt_test(
 	move_if_rvalue
 )
 
