@@ -4,8 +4,8 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_REFERENCE_WRAPPER_OUTPUT_HPP_INCLUDED
-#define FCPPT_REFERENCE_WRAPPER_OUTPUT_HPP_INCLUDED
+#ifndef FCPPT_REFERENCE_OUTPUT_HPP_INCLUDED
+#define FCPPT_REFERENCE_OUTPUT_HPP_INCLUDED
 
 #include <fcppt/reference_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
