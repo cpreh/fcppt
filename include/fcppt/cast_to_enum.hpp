@@ -8,15 +8,12 @@
 #define FCPPT_CAST_TO_ENUM_HPP_INCLUDED
 
 #include <fcppt/enum_size.hpp>
-#include <fcppt/exception.hpp>
-#include <fcppt/insert_to_fcppt_string.hpp>
-#include <fcppt/text.hpp>
-#include <fcppt/type_name_from_info.hpp>
+#include <fcppt/enum_size_type.hpp>
+#include <fcppt/optional/object_impl.hpp>
 #include <fcppt/cast/int_to_enum.hpp>
 #include <fcppt/cast/size.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <type_traits>
-#include <typeinfo>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -28,27 +25,22 @@ namespace fcppt
 
 \ingroup fcpptenum
 
-Casts the unsigned value \a _value to \a Enum, throwing an exception if the
-value is out of range.
+Casts the unsigned value \a _value to \a Enum. Returns an empty optional if the
+cast fails.
 
 \param _value The value to cast from
 
 \tparam Enum Must be an enum type
 
 \tparam Value Must be an unsigned type
-
-\see fcppt::enum_size
-
-\throws fcppt::exception if \a _value is greater or equal to the enum's max
-size
-
-\return The casted value if it fits into the enum's range
 */
 template<
 	typename Enum,
 	typename Value
 >
-Enum
+fcppt::optional::object<
+	Enum
+>
 cast_to_enum(
 	Value const &_value
 )
@@ -64,7 +56,13 @@ cast_to_enum(
 		"cast_to_enum can only cast from unsigned types to enumeration types"
 	);
 
-	if(
+	typedef
+	fcppt::optional::object<
+		Enum
+	>
+	result_type;
+
+	return
 		fcppt::cast::size<
 			typename
 			fcppt::enum_size_type<
@@ -77,35 +75,17 @@ cast_to_enum(
 		fcppt::enum_size<
 			Enum
 		>::value
-	)
-		throw fcppt::exception(
-			FCPPT_TEXT("Tried to cast value ")
-			+
-			fcppt::insert_to_fcppt_string(
-				fcppt::cast::size<
-					unsigned long long
+		?
+			result_type{}
+		:
+			result_type{
+				fcppt::cast::int_to_enum<
+					Enum
 				>(
 					_value
 				)
-			)
-			+
-			FCPPT_TEXT(" to an enum of type ")
-			+
-			fcppt::type_name_from_info(
-				typeid(
-					Enum
-				)
-			)
-			+
-			FCPPT_TEXT(" which doesn't fit into the enum's range!")
-		);
-
-	return
-		fcppt::cast::int_to_enum<
-			Enum
-		>(
-			_value
-		);
+			}
+		;
 }
 
 }

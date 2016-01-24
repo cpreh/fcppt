@@ -330,6 +330,7 @@ set(
 	include/fcppt/cast/truncation_check.hpp
 	include/fcppt/cast/try_dynamic.hpp
 	include/fcppt/cast_to_enum.hpp
+	include/fcppt/cast_to_enum_exn.hpp
 	include/fcppt/char_type.hpp
 	include/fcppt/check_literal_conversion.hpp
 	include/fcppt/com_deleter.hpp

@@ -4,7 +4,7 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/cast_to_enum.hpp>
+#include <fcppt/cast_to_enum_exn.hpp>
 #include <fcppt/exception.hpp>
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
@@ -45,7 +45,7 @@ BOOST_AUTO_TEST_CASE(
 FCPPT_PP_POP_WARNING
 
 	BOOST_CHECK(
-		fcppt::cast_to_enum<
+		fcppt::cast_to_enum_exn<
 			testenum
 		>(
 			1u
