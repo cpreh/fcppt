@@ -33,13 +33,10 @@ FCPPT_PP_DISABLE_GCC_WARNING(-Wunused-local-typedef)
 #else
 
 FCPPT_PP_DISABLE_GCC_WARNING(-Wdouble-promotion)
+FCPPT_PP_DISABLE_GCC_WARNING(-Wfloat-conversion)
 FCPPT_PP_DISABLE_GCC_WARNING(-Wlogical-op)
 FCPPT_PP_DISABLE_GCC_WARNING(-Wmaybe-uninitialized)
 FCPPT_PP_DISABLE_GCC_WARNING(-Wunused-local-typedefs)
-
-#if !FCPPT_CONFIG_GCC_VERSION_AT_LEAST(6, 0)
-FCPPT_PP_DISABLE_GCC_WARNING(-Wfloat-conversion)
-#endif
 
 #endif
 
@@ -56,6 +53,7 @@ FCPPT_PP_DISABLE_GCC_WARNING(-Wmissing-field-initializers)
 FCPPT_PP_DISABLE_GCC_WARNING(-Wredundant-decls)
 FCPPT_PP_DISABLE_GCC_WARNING(-Wshadow)
 FCPPT_PP_DISABLE_GCC_WARNING(-Wsign-compare)
+FCPPT_PP_DISABLE_GCC_WARNING(-Wsign-conversion)
 FCPPT_PP_DISABLE_GCC_WARNING(-Wstrict-aliasing)
 FCPPT_PP_DISABLE_GCC_WARNING(-Wtype-limits)
 FCPPT_PP_DISABLE_GCC_WARNING(-Wundef)
@@ -66,7 +64,6 @@ FCPPT_PP_DISABLE_GCC_WARNING(-Wunused-parameter)
 FCPPT_PP_DISABLE_GCC_WARNING(-Wunused-variable)
 
 #if !FCPPT_CONFIG_GCC_VERSION_AT_LEAST(6, 0)
-FCPPT_PP_DISABLE_GCC_WARNING(-Wsign-conversion)
 FCPPT_PP_DISABLE_GCC_WARNING(-Wunreachable-code)
 #endif
 
