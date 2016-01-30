@@ -22,6 +22,8 @@ FCPPT_PP_PUSH_WARNING
 
 #if defined(FCPPT_CONFIG_CLANG_COMPILER)
 
+#include <fcppt/config/clang_version_at_least.h>
+
 FCPPT_PP_DISABLE_GCC_WARNING(-Wtautological-compare)
 FCPPT_PP_DISABLE_GCC_WARNING(-Wconditional-uninitialized)
 FCPPT_PP_DISABLE_GCC_WARNING(-Wdocumentation)
@@ -29,6 +31,10 @@ FCPPT_PP_DISABLE_GCC_WARNING(-Wextra-semi)
 FCPPT_PP_DISABLE_GCC_WARNING(-Wimplicit-fallthrough)
 FCPPT_PP_DISABLE_GCC_WARNING(-Wnewline-eof)
 FCPPT_PP_DISABLE_GCC_WARNING(-Wunused-local-typedef)
+
+#if FCPPT_CONFIG_CLANG_VERSION_AT_LEAST(3, 9)
+FCPPT_PP_DISABLE_GCC_WARNING(-Wexpansion-to-defined)
+#endif
 
 #else
 
