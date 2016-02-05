@@ -55,7 +55,7 @@ FCPPT_PP_POP_WARNING
 	);
 
 	BOOST_CHECK_EXCEPTION(
-		fcppt::cast_to_enum<
+		fcppt::cast_to_enum_exn<
 			testenum
 		>(
 			2u
