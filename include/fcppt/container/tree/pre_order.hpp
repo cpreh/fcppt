@@ -7,7 +7,6 @@
 #ifndef FCPPT_CONTAINER_TREE_PRE_ORDER_HPP_INCLUDED
 #define FCPPT_CONTAINER_TREE_PRE_ORDER_HPP_INCLUDED
 
-#include <fcppt/noncopyable.hpp>
 #include <fcppt/reference_comparison.hpp>
 #include <fcppt/reference_impl.hpp>
 #include <fcppt/container/tree/is_object.hpp>
@@ -55,10 +54,6 @@ class pre_order
 			>::type
 		>::value,
 		"pre_order can only be used with trees"
-	);
-
-	FCPPT_NONCOPYABLE(
-		pre_order
 	);
 public:
 	/**
@@ -245,9 +240,7 @@ FCPPT_PP_POP_WARNING
 		return
 			iterator(
 				optional_tree_ref(
-					tree_ref(
-						tree_
-					)
+					tree_
 				)
 			);
 	}
@@ -264,7 +257,7 @@ FCPPT_PP_POP_WARNING
 			);
 	}
 private:
-	Tree &tree_;
+	tree_ref tree_;
 };
 
 }
