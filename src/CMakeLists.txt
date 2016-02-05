@@ -26,6 +26,7 @@ set(
 	include/fcppt/algorithm/detail/map_reserve.hpp
 	include/fcppt/algorithm/detail/optimize_map.hpp
 	include/fcppt/algorithm/detail/source_size.hpp
+	include/fcppt/algorithm/detail/vararg_map.hpp
 	include/fcppt/algorithm/enum_array_init.hpp
 	include/fcppt/algorithm/find_by_opt.hpp
 	include/fcppt/algorithm/find_if_opt.hpp
@@ -57,6 +58,7 @@ set(
 	include/fcppt/algorithm/shortest_levenshtein.hpp
 	include/fcppt/algorithm/update_action.hpp
 	include/fcppt/algorithm/update_action_fwd.hpp
+	include/fcppt/algorithm/vararg_map.hpp
 	include/fcppt/assert/basic/conditional.hpp
 	include/fcppt/assert/basic/conditional_message.hpp
 	include/fcppt/assert/basic/default_message.hpp

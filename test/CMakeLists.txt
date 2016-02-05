@@ -144,6 +144,10 @@ add_fcppt_test(
 )
 
 add_fcppt_test(
+	algorithm/vararg_map
+)
+
+add_fcppt_test(
 	assert
 	LINK_LIBS
 		"${fcppt_core_TARGET}"

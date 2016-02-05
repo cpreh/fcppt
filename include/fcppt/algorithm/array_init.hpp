@@ -7,9 +7,15 @@
 #ifndef FCPPT_ALGORITHM_ARRAY_INIT_HPP_INCLUDED
 #define FCPPT_ALGORITHM_ARRAY_INIT_HPP_INCLUDED
 
-#include <fcppt/algorithm/detail/array_init.hpp>
+#include <fcppt/tag_value.hpp>
+#include <fcppt/algorithm/vararg_map.hpp>
 #include <fcppt/container/array_size.hpp>
 #include <fcppt/type_traits/is_std_array.hpp>
+#include <fcppt/config/external_begin.hpp>
+#include <boost/mpl/range_c.hpp>
+#include <cstddef>
+#include <utility>
+#include <fcppt/config/external_end.hpp>
 
 
 namespace fcppt
@@ -49,14 +55,46 @@ array_init(
 	);
 
 	return
-		fcppt::algorithm::detail::array_init<
-			0u,
-			typename Array::value_type,
-			fcppt::container::array_size<
-				Array
-			>::value
+		fcppt::algorithm::vararg_map<
+			boost::mpl::range_c<
+				std::size_t,
+				0,
+				fcppt::container::array_size<
+					Array
+				>::value
+			>
 		>(
-			_function
+			[](
+				auto &&... _args_array
+			)
+			{
+				return
+					Array{{
+						std::forward<
+							decltype(
+								_args_array
+							)
+						>(
+							_args_array
+						)...
+					}};
+			},
+			[
+				&_function
+			](
+				auto const _tag
+			)
+			{
+				return
+					_function(
+						std::integral_constant<
+							std::size_t,
+							fcppt::tag_value(
+								_tag
+							).value
+						>{}
+					);
+			}
 		);
 }
 
