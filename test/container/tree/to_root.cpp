@@ -5,7 +5,7 @@
 
 
 #include <fcppt/container/tree/object_impl.hpp>
-#include <fcppt/container/tree/pre_order.hpp>
+#include <fcppt/container/tree/to_root.hpp>
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
@@ -18,7 +18,7 @@ FCPPT_PP_PUSH_WARNING
 FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
 
 BOOST_AUTO_TEST_CASE(
-	container_tree_pre_order
+	container_tree_to_root
 )
 {
 FCPPT_PP_POP_WARNING
@@ -41,26 +41,14 @@ FCPPT_PP_POP_WARNING
 		3
 	);
 
-	tree.front().push_back(
-		4
-	);
-
-	tree.push_back(
-		5
-	);
-
-	tree.push_back(
-		6
-	);
-
 	typedef
-	fcppt::container::tree::pre_order<
+	fcppt::container::tree::to_root<
 		ui_tree const
 	>
 	traversal_type;
 
 	traversal_type const trav(
-		tree
+		tree.front().front()
 	);
 
 	traversal_type::iterator it(
@@ -69,7 +57,7 @@ FCPPT_PP_POP_WARNING
 
 	BOOST_REQUIRE_EQUAL(
 		it->value(),
-		1
+		3
 	);
 
 	++it;
@@ -83,28 +71,7 @@ FCPPT_PP_POP_WARNING
 
 	BOOST_REQUIRE_EQUAL(
 		it->value(),
-		3
-	);
-
-	++it;
-
-	BOOST_REQUIRE_EQUAL(
-		it->value(),
-		4
-	);
-
-	++it;
-
-	BOOST_REQUIRE_EQUAL(
-		it->value(),
-		5
-	);
-
-	++it;
-
-	BOOST_REQUIRE_EQUAL(
-		it->value(),
-		6
+		1
 	);
 
 	++it;
@@ -115,9 +82,3 @@ FCPPT_PP_POP_WARNING
 		trav.end()
 	);
 }
-
-template
-class
-fcppt::container::tree::object<
-	unsigned
->;

@@ -390,6 +390,10 @@ add_fcppt_test(
 )
 
 add_fcppt_test(
+	container/tree/to_root
+)
+
+add_fcppt_test(
 	cyclic_iterator
 )
 

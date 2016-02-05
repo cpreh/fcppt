@@ -291,6 +291,7 @@ set(
 	include/fcppt/container/tree/optional_ref_impl.hpp
 	include/fcppt/container/tree/pre_order.hpp
 	include/fcppt/container/tree/print.hpp
+	include/fcppt/container/tree/to_root.hpp
 	include/fcppt/cyclic_iterator.hpp
 	include/fcppt/cyclic_iterator_decl.hpp
 	include/fcppt/cyclic_iterator_fwd.hpp

@@ -4,8 +4,8 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_CONTAINER_TREE_PRE_ORDER_HPP_INCLUDED
-#define FCPPT_CONTAINER_TREE_PRE_ORDER_HPP_INCLUDED
+#ifndef FCPPT_CONTAINER_TREE_TO_ROOT_HPP_INCLUDED
+#define FCPPT_CONTAINER_TREE_TO_ROOT_HPP_INCLUDED
 
 #include <fcppt/reference_comparison.hpp>
 #include <fcppt/reference_impl.hpp>
@@ -19,7 +19,6 @@
 #include <boost/iterator/iterator_facade.hpp>
 #include <boost/range/iterator_range_core.hpp>
 #include <iterator>
-#include <stack>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
@@ -31,37 +30,30 @@ namespace container
 namespace tree
 {
 
-/**
-\brief Wraps a tree to make it iterable in a pre-order fashion.
-\ingroup fcpptcontainertree
-
-Internally, this class manages a stack, losely imitating the runtime stack in a
-recursive implementation.
-
-<strong>Example:</strong>
-
-\snippet container/tree_traversal.cpp main
-*/
 template<
 	typename Tree
 >
-class pre_order
+class to_root
 {
+	typedef
+	typename
+	std::remove_cv<
+		Tree
+	>::type
+	tree_value_type;
+
 	static_assert(
 		fcppt::container::tree::is_object<
-			typename
-			std::remove_cv<
-				Tree
-			>::type
+			tree_value_type
 		>::value,
-		"pre_order can only be used with trees"
+		"to_root can only be used with trees"
 	);
 public:
 	/**
-	\brief Construct a pre-order traversal from a tree (which can be const or nonconst)
+	\brief Construct a to-root traversal from a tree (which can be const or nonconst)
 	*/
 	explicit
-	pre_order(
+	to_root(
 		Tree &_tree
 	)
 	:
@@ -73,19 +65,6 @@ public:
 
 	class iterator;
 private:
-	typedef
-	typename
-	std::conditional<
-		std::is_const<
-			Tree
-		>::value,
-		typename
-		Tree::const_reverse_iterator,
-		typename
-		Tree::reverse_iterator
-	>::type
-	tree_iterator;
-
 	typedef
 	fcppt::reference<
 		Tree
@@ -99,19 +78,11 @@ private:
 	optional_tree_ref;
 
 	typedef
-	std::stack<
-		tree_ref
-	>
-	stack_type;
-
-	typedef
 	boost::iterator_facade<
 		iterator,
-		typename
-		tree_iterator::value_type,
+		tree_value_type,
 		std::forward_iterator_tag,
-		typename
-		tree_iterator::reference
+		Tree &
 	>
 	iterator_base;
 public:
@@ -131,8 +102,7 @@ FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
 		:
 			current_(
 				_current
-			),
-			positions_()
+			)
 		{
 		}
 
@@ -166,52 +136,8 @@ FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
 		void
 		increment()
 		{
-			reference cur_deref(
-				this->dereference()
-			);
-
-			if(
-				!cur_deref.empty()
-			)
-			{
-				for(
-					reference element
-					:
-					boost::make_iterator_range(
-						cur_deref.rbegin(),
-						std::prev(
-							cur_deref.rend()
-						)
-					)
-				)
-					positions_.push(
-						tree_ref(
-							element
-						)
-					);
-
-				current_ =
-					optional_tree_ref(
-						tree_ref(
-							cur_deref.front()
-						)
-					);
-			}
-			else if(
-				positions_.empty()
-			)
-				current_ =
-					optional_tree_ref();
-			else
-			{
-
-				current_ =
-					optional_tree_ref(
-						positions_.top()
-					);
-
-				positions_.pop();
-			}
+			current_ =
+				this->dereference().parent();
 		}
 
 		reference
@@ -233,8 +159,6 @@ FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
 		}
 
 		optional_tree_ref current_;
-
-		stack_type positions_;
 	};
 
 FCPPT_PP_POP_WARNING

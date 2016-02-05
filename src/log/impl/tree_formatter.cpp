@@ -4,10 +4,10 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/assert/error.hpp>
-#include <fcppt/log/detail/const_optional_context_tree_ref.hpp>
+#include <fcppt/algorithm/fold.hpp>
+#include <fcppt/assert/optional_error.hpp>
+#include <fcppt/container/tree/to_root.hpp>
 #include <fcppt/log/detail/context_tree.hpp>
-#include <fcppt/log/detail/context_tree_node.hpp>
 #include <fcppt/log/detail/inner_context_node.hpp>
 #include <fcppt/log/format/chain.hpp>
 #include <fcppt/log/format/optional_function.hpp>
@@ -22,41 +22,48 @@ fcppt::log::impl::tree_formatter(
 	fcppt::log::format::optional_function const &_formatter
 )
 {
-	fcppt::log::detail::const_optional_context_tree_ref cur(
-		_node.parent()
-	);
-
-	FCPPT_ASSERT_ERROR(
-		cur.has_value()
-	);
-
-	fcppt::log::format::optional_function ret;
-
-	// TODO: This code is terrible.
-	for(
-		;
-		cur.get_unsafe().get().parent().has_value();
-		cur = cur.get_unsafe().get().parent()
-	)
-		ret =
-			fcppt::log::format::optional_function(
-				fcppt::log::format::chain(
-					fcppt::log::format::optional_function(
-						fcppt::log::format::prefix(
-							fcppt::variant::get_exn<
-								fcppt::log::detail::inner_context_node
-							>(
-								cur.get_unsafe().get().value().get()
-							).name()
-						)
-					),
-					ret
-				)
-			);
-
 	return
 		fcppt::log::format::chain(
 			_formatter,
-			ret
+			fcppt::algorithm::fold(
+				fcppt::container::tree::to_root<
+					fcppt::log::detail::context_tree const
+				>(
+					FCPPT_ASSERT_OPTIONAL_ERROR(
+						_node.parent()
+					).get()
+				),
+				fcppt::log::format::optional_function{},
+				[](
+					fcppt::log::detail::context_tree const &_cur,
+					fcppt::log::format::optional_function const &_state
+				)
+				{
+					fcppt::string const &name(
+						fcppt::variant::get_exn<
+							fcppt::log::detail::inner_context_node
+						>(
+							_cur.value().get()
+						).name()
+					);
+
+					return
+						name.empty()
+						?
+							_state
+						:
+							fcppt::log::format::optional_function(
+								fcppt::log::format::chain(
+									fcppt::log::format::optional_function(
+										fcppt::log::format::prefix(
+											name
+										)
+									),
+									_state
+								)
+							)
+						;
+				}
+			)
 		);
 }
