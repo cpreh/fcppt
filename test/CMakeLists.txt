@@ -822,6 +822,11 @@ add_fcppt_test(
 )
 
 add_fcppt_test(
+	mpl/numeric_max
+	NO_CODE
+)
+
+add_fcppt_test(
 	move_if_rvalue
 )
 

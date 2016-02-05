@@ -1037,6 +1037,7 @@ set(
 	include/fcppt/mpl/integral_cast_tpl.hpp
 	include/fcppt/mpl/invoke_on.hpp
 	include/fcppt/mpl/max_value.hpp
+	include/fcppt/mpl/numeric_max.hpp
 	include/fcppt/mpl/partial_sums.hpp
 	include/fcppt/mpl/print.hpp
 	include/fcppt/mpl/runtime_index.hpp
