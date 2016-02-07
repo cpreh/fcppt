@@ -396,6 +396,8 @@ set(
 	include/fcppt/io/basic_scoped_rdbuf_decl.hpp
 	include/fcppt/io/basic_scoped_rdbuf_fwd.hpp
 	include/fcppt/io/basic_scoped_rdbuf_impl.hpp
+	include/fcppt/io/buffer.hpp
+	include/fcppt/io/buffer_fwd.hpp
 	include/fcppt/io/cerr.hpp
 	include/fcppt/io/cin.hpp
 	include/fcppt/io/clog.hpp
@@ -406,6 +408,8 @@ set(
 	include/fcppt/io/istream.hpp
 	include/fcppt/io/istringstream.hpp
 	include/fcppt/io/ofstream.hpp
+	include/fcppt/io/optional_buffer.hpp
+	include/fcppt/io/optional_buffer_fwd.hpp
 	include/fcppt/io/ostream.hpp
 	include/fcppt/io/ostringstream.hpp
 	include/fcppt/io/raw_container_source.hpp
@@ -413,6 +417,7 @@ set(
 	include/fcppt/io/raw_container_source_fwd.hpp
 	include/fcppt/io/raw_container_source_impl.hpp
 	include/fcppt/io/read.hpp
+	include/fcppt/io/read_chars.hpp
 	include/fcppt/io/read_exn.hpp
 	include/fcppt/io/scoped_rdbuf.hpp
 	include/fcppt/io/scoped_rdbuf_fwd.hpp
@@ -959,6 +964,7 @@ set(
 	src/io/cin.cpp
 	src/io/clog.cpp
 	src/io/cout.cpp
+	src/io/read_chars.cpp
 	src/io/scoped_rdbuf.cpp
 	src/narrow.cpp
 	src/string_conv_locale.cpp
