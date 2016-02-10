@@ -7,7 +7,8 @@
 #ifndef FCPPT_ALGORITHM_LOOP_HPP_INCLUDED
 #define FCPPT_ALGORITHM_LOOP_HPP_INCLUDED
 
-#include <fcppt/algorithm/detail/loop.hpp>
+#include <fcppt/loop.hpp>
+#include <fcppt/algorithm/loop_break.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <utility>
 #include <fcppt/config/external_end.hpp>
@@ -42,13 +43,31 @@ loop(
 	Body const &_body
 )
 {
-	fcppt::algorithm::detail::loop(
+	fcppt::algorithm::loop_break(
 		std::forward<
 			Range
 		>(
 			_range
 		),
-		_body
+		[
+			&_body
+		](
+			auto &&_loop_element
+		)
+		{
+			_body(
+				std::forward<
+					decltype(
+						_loop_element
+					)
+				>(
+					_loop_element
+				)
+			);
+
+			return
+				fcppt::loop::continue_;
+		}
 	);
 }
 

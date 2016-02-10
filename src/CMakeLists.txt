@@ -19,7 +19,6 @@ set(
 	include/fcppt/algorithm/detail/has_size.hpp
 	include/fcppt/algorithm/detail/join_all.hpp
 	include/fcppt/algorithm/detail/join_impl.hpp
-	include/fcppt/algorithm/detail/loop.hpp
 	include/fcppt/algorithm/detail/loop_break.hpp
 	include/fcppt/algorithm/detail/map_concat.hpp
 	include/fcppt/algorithm/detail/map_reserve.hpp
