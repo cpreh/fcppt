@@ -7,7 +7,11 @@
 #ifndef FCPPT_OPTIONAL_DETAIL_HAS_VALUE_ALL_HPP_INCLUDED
 #define FCPPT_OPTIONAL_DETAIL_HAS_VALUE_ALL_HPP_INCLUDED
 
-#include <fcppt/optional/detail/check.hpp>
+#include <fcppt/identity.hpp>
+#include <fcppt/algorithm/all_of.hpp>
+#include <fcppt/config/external_begin.hpp>
+#include <array>
+#include <fcppt/config/external_end.hpp>
 
 
 namespace fcppt
@@ -17,38 +21,26 @@ namespace optional
 namespace detail
 {
 
-// TODO: Express this using ranges and algorithms
-inline
-bool
-has_value_all()
-{
-	return
-		true;
-}
-
 template<
-	typename Optional,
 	typename... Optionals
 >
 inline
 bool
 has_value_all(
-	Optional const &_optional,
 	Optionals const &... _optionals
 )
 {
-	static_assert(
-		fcppt::optional::detail::check<
-			Optional
-		>::value,
-		"Optional must be an optional"
-	);
-
 	return
-		_optional.has_value()
-		&&
-		fcppt::optional::detail::has_value_all(
-			_optionals...
+		fcppt::algorithm::all_of(
+			std::array<
+				bool,
+				sizeof...(
+					Optionals
+				)
+			>{{
+				_optionals.has_value()...
+			}},
+			fcppt::identity{}
 		);
 }
 
