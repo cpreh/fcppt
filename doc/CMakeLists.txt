@@ -562,7 +562,6 @@ set(
 	include/fcppt/either/bind.hpp
 	include/fcppt/either/cat.hpp
 	include/fcppt/either/comparison.hpp
-	include/fcppt/either/detail/all_success.hpp
 	include/fcppt/either/detail/first_failure.hpp
 	include/fcppt/either/from_optional.hpp
 	include/fcppt/either/is_object.hpp
