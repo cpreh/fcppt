@@ -7,6 +7,7 @@
 #include <fcppt/make_int_range_count.hpp>
 #include <fcppt/tag_value.hpp>
 #include <fcppt/algorithm/loop.hpp>
+#include <fcppt/algorithm/loop_break_mpl.hpp>
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>

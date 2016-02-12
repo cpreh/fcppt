@@ -7,7 +7,7 @@
 #ifndef FCPPT_ALGORITHM_LOOP_BREAK_HPP_INCLUDED
 #define FCPPT_ALGORITHM_LOOP_BREAK_HPP_INCLUDED
 
-#include <fcppt/algorithm/detail/loop_break.hpp>
+#include <fcppt/algorithm/loop_break_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <utility>
 #include <fcppt/config/external_end.hpp>
@@ -19,18 +19,17 @@ namespace algorithm
 {
 
 /**
-\brief Iterates through a normal range or an MPL range with the ability to
-break out of the loop.
+\brief Iterates through a range with the ability to break out of the loop.
 
 \ingroup fcpptalgorithm
 
 Iterates through \a _range, calling \a _body for every element of the range as
-long as \a _function returns \link fcppt::loop::continue_\endlink. If \a Range
-is an MPL range, it is the same as \link fcppt::mpl::for_each_break\endlink.
+long as \a _function returns \link fcppt::loop::continue_\endlink. The
+implementation for a specific range type is handled by \link
+fcppt::algorithm::loop_break_impl\endlink.
 
-\tparam Range A forward range or an MPL range.
-
-\tparam Body A function callable as <code>fcppt::loop (Range::value_type)</code>
+\tparam Body A function callable as <code>fcppt::loop (T)</code> for every type
+<code>T</code> in \a Range
 */
 template<
 	typename Range,
@@ -43,7 +42,9 @@ loop_break(
 	Body const &_body
 )
 {
-	fcppt::algorithm::detail::loop_break(
+	fcppt::algorithm::loop_break_impl<
+		Range
+	>::execute(
 		std::forward<
 			Range
 		>(

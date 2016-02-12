@@ -198,7 +198,6 @@ set(
 	include/fcppt/algorithm/detail/has_size.hpp
 	include/fcppt/algorithm/detail/join_all.hpp
 	include/fcppt/algorithm/detail/join_impl.hpp
-	include/fcppt/algorithm/detail/loop_break.hpp
 	include/fcppt/algorithm/detail/map_concat.hpp
 	include/fcppt/algorithm/detail/map_reserve.hpp
 	include/fcppt/algorithm/detail/optimize_map.hpp
@@ -218,6 +217,9 @@ set(
 	include/fcppt/algorithm/levenshtein.hpp
 	include/fcppt/algorithm/loop.hpp
 	include/fcppt/algorithm/loop_break.hpp
+	include/fcppt/algorithm/loop_break_impl.hpp
+	include/fcppt/algorithm/loop_break_impl_fwd.hpp
+	include/fcppt/algorithm/loop_break_mpl.hpp
 	include/fcppt/algorithm/map.hpp
 	include/fcppt/algorithm/map_concat.hpp
 	include/fcppt/algorithm/map_iteration.hpp
