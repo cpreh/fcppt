@@ -8,6 +8,10 @@
 #define FCPPT_CONTAINER_TREE_LEVEL_HPP_INCLUDED
 
 #include <fcppt/container/tree/object_impl.hpp>
+#include <fcppt/container/tree/to_root.hpp>
+#include <fcppt/config/external_begin.hpp>
+#include <boost/range/size.hpp>
+#include <fcppt/config/external_end.hpp>
 
 
 namespace fcppt
@@ -38,33 +42,18 @@ level(
 	> const &_tree
 )
 {
-	typedef
-	typename
-	fcppt::container::tree::object<
-		Value
-	>
-	tree;
-
-	typename
-	tree::size_type result{
-		0u
-	};
-
-	// TODO: This code is terrible!
-	for(
-		typename
-		tree::const_optional_ref cur{
-			_tree.parent()
-		};
-		cur.has_value();
-		cur =
-			cur.get_unsafe().get().parent(),
-		++result
-	)
-		;
-
 	return
-		result;
+		boost::size(
+			fcppt::container::tree::to_root<
+				fcppt::container::tree::object<
+					Value
+				> const
+			>(
+				_tree
+			)
+		)
+		-
+		1u;
 }
 
 }
