@@ -34,11 +34,11 @@ namespace either
 \ingroup fcppteither
 
 For eithers <code>e_1 = _either1</code> and <code>e_2, ..., e_n =
-_eithers</code>, if <code>e_1, ...., e_n</code> are set to successes
-<code>s_1,...,s_n</code>, then <code>r = _function(s_1,...,s_n)</code> is
-called and the result is <code>either<Either1::failure,decltype(r)>(r)</code>.
-Otherwise, the first failure is returned. (TODO: Use LaTeX to give a proper
-definition of this.
+_eithers</code>, let <code>i</code> be the smallest number such that
+<code>e_i</code> is set to failure <code>f</code>. If such an <code>i</code>
+exists, <code>f</code> is returned. Otherwise, <code>e_1, ...., e_n</code> are
+set to successes <code>s_1,...,s_n</code> and the result is
+<code>_function(s_1,...,s_n)</code>.
 */
 template<
 	typename Function,
