@@ -13,7 +13,10 @@
 #include <fcppt/either/is_object.hpp>
 #include <fcppt/either/object_impl.hpp>
 #include <fcppt/either/detail/first_failure.hpp>
+#include <fcppt/mpl/all_of.hpp>
 #include <fcppt/config/external_begin.hpp>
+#include <boost/mpl/placeholders.hpp>
+#include <boost/mpl/vector.hpp>
 #include <array>
 #include <type_traits>
 #include <utility>
@@ -84,6 +87,21 @@ fcppt::either::object<
 		"Either1 must be an either"
 	);
 
+	static_assert(
+		fcppt::mpl::all_of<
+			boost::mpl::vector<
+				typename
+				std::decay<
+					Eithers
+				>::type...
+			>,
+			fcppt::either::is_object<
+				boost::mpl::_1
+			>
+		>::value,
+		"Eithers must all be eithers"
+	);
+
 	typedef
 	typename
 	either1::failure
@@ -109,7 +127,6 @@ fcppt::either::object<
 	>
 	result_type;
 
-	// TODO: Check for proper types
 	return
 		fcppt::algorithm::all_of(
 			std::array<
