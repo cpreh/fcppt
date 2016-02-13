@@ -8,13 +8,14 @@
 #define FCPPT_CONTAINER_GRID_APPLY_HPP_INCLUDED
 
 #include <fcppt/move_if_rvalue.hpp>
+#include <fcppt/algorithm/all_of.hpp>
 #include <fcppt/container/grid/is_object.hpp>
 #include <fcppt/container/grid/object_impl.hpp>
-#include <fcppt/container/grid/detail/same_sizes.hpp>
 #include <fcppt/mpl/all_of.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/mpl/placeholders.hpp>
 #include <boost/mpl/vector.hpp>
+#include <array>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
@@ -113,6 +114,11 @@ fcppt::container::grid::object<
 	);
 
 	typedef
+	typename
+	grid1::pos
+	pos_type;
+
+	typedef
 	fcppt::container::grid::object<
 		decltype(
 			_function(
@@ -121,8 +127,7 @@ fcppt::container::grid::object<
 				>(
 					_grid1[
 						std::declval<
-							typename
-							grid1::pos
+							pos_type
 						>()
 					]
 				),
@@ -131,8 +136,7 @@ fcppt::container::grid::object<
 				>(
 					_grids[
 						std::declval<
-							typename
-							grid1::pos
+							pos_type
 						>()
 					]
 				)...
@@ -142,10 +146,32 @@ fcppt::container::grid::object<
 	>
 	result_type;
 
+	typedef
+	typename
+	grid1::dim
+	dim_type;
+
 	return
-		fcppt::container::grid::detail::same_sizes(
-			_grid1,
-			_grids...
+		fcppt::algorithm::all_of(
+			std::array<
+				dim_type,
+				sizeof...(
+					Grids
+				)
+			>{{
+				_grids.size()...
+			}},
+			[
+				&_grid1
+			](
+				dim_type const _dim
+			)
+			{
+				return
+					_dim
+					==
+					_grid1.size();
+			}
 		)
 		?
 			result_type(
@@ -155,8 +181,7 @@ fcppt::container::grid::object<
 					&_grid1,
 					&_grids...
 				](
-					typename
-					grid1::pos const _pos
+					pos_type const _pos
 				)
 				{
 					return

@@ -402,7 +402,6 @@ set(
 	include/fcppt/container/grid/detail/pos_ref_iterator_base.hpp
 	include/fcppt/container/grid/detail/print_recurse.hpp
 	include/fcppt/container/grid/detail/resize.hpp
-	include/fcppt/container/grid/detail/same_sizes.hpp
 	include/fcppt/container/grid/detail/shrink_to_fit.hpp
 	include/fcppt/container/grid/detail/spiral_iterator_base.hpp
 	include/fcppt/container/grid/dim.hpp
