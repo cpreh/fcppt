@@ -11,7 +11,10 @@
 #include <fcppt/container/grid/is_object.hpp>
 #include <fcppt/container/grid/object_impl.hpp>
 #include <fcppt/container/grid/detail/same_sizes.hpp>
+#include <fcppt/mpl/all_of.hpp>
 #include <fcppt/config/external_begin.hpp>
+#include <boost/mpl/placeholders.hpp>
+#include <boost/mpl/vector.hpp>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
@@ -94,7 +97,20 @@ fcppt::container::grid::object<
 		"Grid1 must be a grid"
 	);
 
-	// TODO: Check if Grids... are all grids
+	static_assert(
+		fcppt::mpl::all_of<
+			boost::mpl::vector<
+				typename
+				std::decay<
+					Grids
+				>::type...
+			>,
+			fcppt::container::grid::is_object<
+				boost::mpl::_1
+			>
+		>::value,
+		"Grids must all be grids"
+	);
 
 	typedef
 	fcppt::container::grid::object<
