@@ -91,6 +91,10 @@ add_fcppt_test(
 )
 
 add_fcppt_test(
+	algorithm/loop_break
+)
+
+add_fcppt_test(
 	algorithm/map
 )
 

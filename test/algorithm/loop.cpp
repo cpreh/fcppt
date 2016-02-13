@@ -21,7 +21,7 @@ FCPPT_PP_PUSH_WARNING
 FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
 
 BOOST_AUTO_TEST_CASE(
-	algorithm_loop_static
+	algorithm_loop_mpl
 )
 {
 FCPPT_PP_POP_WARNING
@@ -68,7 +68,7 @@ FCPPT_PP_PUSH_WARNING
 FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
 
 BOOST_AUTO_TEST_CASE(
-	algorithm_loop_dynamic
+	algorithm_loop_range
 )
 {
 FCPPT_PP_POP_WARNING
