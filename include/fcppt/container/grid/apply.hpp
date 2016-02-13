@@ -11,6 +11,7 @@
 #include <fcppt/algorithm/all_of.hpp>
 #include <fcppt/container/grid/is_object.hpp>
 #include <fcppt/container/grid/object_impl.hpp>
+#include <fcppt/math/dim/comparison.hpp>
 #include <fcppt/mpl/all_of.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/mpl/placeholders.hpp>
