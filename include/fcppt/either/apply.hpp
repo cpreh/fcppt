@@ -128,14 +128,13 @@ fcppt::either::object<
 	result_type;
 
 	return
+		_either1.has_success()
+		&&
 		fcppt::algorithm::all_of(
 			std::array<
 				bool,
 				sizeof...(Eithers)
-				+
-				1u
 			>{{
-				_either1.has_success(),
 				_eithers.has_success()...
 			}},
 			fcppt::identity{}
