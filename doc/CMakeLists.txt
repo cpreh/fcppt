@@ -202,6 +202,7 @@ set(
 	include/fcppt/algorithm/detail/map_reserve.hpp
 	include/fcppt/algorithm/detail/optimize_map.hpp
 	include/fcppt/algorithm/detail/source_size.hpp
+	include/fcppt/algorithm/detail/tuple_loop_break.hpp
 	include/fcppt/algorithm/detail/vararg_map.hpp
 	include/fcppt/algorithm/enum_array_init.hpp
 	include/fcppt/algorithm/find_by_opt.hpp
@@ -220,6 +221,7 @@ set(
 	include/fcppt/algorithm/loop_break_impl.hpp
 	include/fcppt/algorithm/loop_break_impl_fwd.hpp
 	include/fcppt/algorithm/loop_break_mpl.hpp
+	include/fcppt/algorithm/loop_break_tuple.hpp
 	include/fcppt/algorithm/map.hpp
 	include/fcppt/algorithm/map_concat.hpp
 	include/fcppt/algorithm/map_iteration.hpp
@@ -233,7 +235,6 @@ set(
 	include/fcppt/algorithm/set_difference.hpp
 	include/fcppt/algorithm/set_intersection.hpp
 	include/fcppt/algorithm/set_union.hpp
-	include/fcppt/algorithm/shift_compare.hpp
 	include/fcppt/algorithm/shortest_levenshtein.hpp
 	include/fcppt/algorithm/update_action.hpp
 	include/fcppt/algorithm/update_action_fwd.hpp
@@ -1284,6 +1285,7 @@ set(
 	include/fcppt/type_traits/is_random_access_iterator.hpp
 	include/fcppt/type_traits/is_raw_pointer.hpp
 	include/fcppt/type_traits/is_std_array.hpp
+	include/fcppt/type_traits/is_std_tuple.hpp
 	include/fcppt/type_traits/is_string.hpp
 	include/fcppt/type_traits/remove_cv_ref.hpp
 	include/fcppt/unique_ptr.hpp

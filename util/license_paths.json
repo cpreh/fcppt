@@ -7,7 +7,6 @@
 			"files" : [
 				"include/fcppt/algorithm/join_strings.hpp",
 				"include/fcppt/algorithm/levenshtein.hpp",
-				"include/fcppt/algorithm/shift_compare.hpp",
 				"include/fcppt/algorithm/shortest_levenshtein.hpp",
 				"include/fcppt/homogenous_pair.*",
 				"test/math/box/stretch.cpp",

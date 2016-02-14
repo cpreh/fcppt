@@ -144,10 +144,6 @@ add_fcppt_test(
 )
 
 add_fcppt_test(
-	algorithm/shift_compare
-)
-
-add_fcppt_test(
 	algorithm/vararg_map
 )
 

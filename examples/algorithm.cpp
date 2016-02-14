@@ -8,10 +8,8 @@
 #include <fcppt/algorithm/array_map.hpp>
 #include <fcppt/algorithm/join_strings.hpp>
 #include <fcppt/algorithm/levenshtein.hpp>
-#include <fcppt/algorithm/shift_compare.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <array>
-#include <functional>
 #include <iostream>
 #include <ostream>
 #include <string>
@@ -91,33 +89,4 @@ std::cout << result << "\n";
 //! [levenshtein]
 }
 
-{
-//! [shift_compare]
-std::vector<int> const a{1,2,3};
-std::vector<int> const b{3,1,2};
-std::vector<int> const c{1,3,2};
-
-bool const first_result{
-	fcppt::algorithm::shift_compare(
-		a,
-		b,
-		::std::equal_to<int>()
-	)
-};
-
-bool const second_result{
-	fcppt::algorithm::shift_compare(
-		a,
-		c,
-		::std::equal_to<int>()
-	)
-};
-
-// Outputs true
-std::cout << "first_result: " << first_result << "\n";
-
-// Outputs false
-std::cout << "second_result: " << second_result << "\n";
-//! [shift_compare]
-}
 }
