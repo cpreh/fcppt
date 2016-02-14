@@ -23,11 +23,9 @@ namespace algorithm
 
 \ingroup fcpptalgorithm
 
-Like fold_left a in functional programming language, this function starts with
-\a _state as <code>cur_state</code>, and calls <code> cur_state =
+Like <code>fold_left</code> in a functional programming language, this function
+starts with \a _state as <code>cur_state</code>, and calls <code> cur_state =
 _function(element, cur_state)</code> for every element of \a _range.
-
-\tparam Range A forward range or an MPL range
 
 \tparam State Has to be movable or copyable
 

@@ -22,8 +22,6 @@ namespace algorithm
 \ingroup fcpptalgorithm
 
 \tparam Pred A function callable as <code>bool (Range::value_type)</code>.
-
-\tparam Range A forward range or an MPL range.
 */
 template<
 	typename Range,
