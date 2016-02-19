@@ -7,8 +7,8 @@
 #include <fcppt/cast/size.hpp>
 #include <fcppt/cast/to_signed.hpp>
 #include <fcppt/io/buffer.hpp>
-#include <fcppt/io/read_chars.hpp>
 #include <fcppt/io/optional_buffer.hpp>
+#include <fcppt/io/read_chars.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <cstddef>
 #include <istream>
