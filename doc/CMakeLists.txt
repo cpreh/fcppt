@@ -239,6 +239,8 @@ set(
 	include/fcppt/algorithm/update_action.hpp
 	include/fcppt/algorithm/update_action_fwd.hpp
 	include/fcppt/algorithm/vararg_map.hpp
+	include/fcppt/args.hpp
+	include/fcppt/args_vector.hpp
 	include/fcppt/assert/basic/conditional.hpp
 	include/fcppt/assert/basic/conditional_message.hpp
 	include/fcppt/assert/basic/default_message.hpp

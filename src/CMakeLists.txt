@@ -60,6 +60,8 @@ set(
 	include/fcppt/algorithm/update_action.hpp
 	include/fcppt/algorithm/update_action_fwd.hpp
 	include/fcppt/algorithm/vararg_map.hpp
+	include/fcppt/args.hpp
+	include/fcppt/args_vector.hpp
 	include/fcppt/assert/basic/conditional.hpp
 	include/fcppt/assert/basic/conditional_message.hpp
 	include/fcppt/assert/basic/default_message.hpp
@@ -948,6 +950,7 @@ set(
 	include/fcppt/weak_ptr_fwd.hpp
 	include/fcppt/weak_ptr_impl.hpp
 	include/fcppt/widen.hpp
+	src/args.cpp
 	src/backtrace/current_stack_frame.cpp
 	src/backtrace/print_current_stack_frame.cpp
 	src/endianness/host_format.cpp
