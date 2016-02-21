@@ -466,6 +466,10 @@ add_fcppt_test(
 )
 
 add_fcppt_test(
+	io/get
+)
+
+add_fcppt_test(
 	io/read_write
 	LINK_LIBS
 		"${fcppt_core_TARGET}"

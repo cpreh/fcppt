@@ -405,6 +405,7 @@ set(
 	include/fcppt/io/cout.hpp
 	include/fcppt/io/expect.hpp
 	include/fcppt/io/fstream.hpp
+	include/fcppt/io/get.hpp
 	include/fcppt/io/ifstream.hpp
 	include/fcppt/io/istream.hpp
 	include/fcppt/io/istringstream.hpp
