@@ -430,6 +430,10 @@ add_fcppt_test(
 )
 
 add_fcppt_test(
+	either/to_exception
+)
+
+add_fcppt_test(
 	endianness
 	LINK_LIBS
 		"${fcppt_core_TARGET}"

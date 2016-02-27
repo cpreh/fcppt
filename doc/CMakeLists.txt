@@ -575,6 +575,7 @@ set(
 	include/fcppt/either/object_impl.hpp
 	include/fcppt/either/output.hpp
 	include/fcppt/either/success_opt.hpp
+	include/fcppt/either/to_exception.hpp
 	include/fcppt/endianness/convert.hpp
 	include/fcppt/endianness/format.hpp
 	include/fcppt/endianness/format_fwd.hpp

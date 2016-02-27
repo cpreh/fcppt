@@ -5,9 +5,10 @@
 
 
 #include <fcppt/exception.hpp>
+#include <fcppt/string.hpp>
 #include <fcppt/text.hpp>
-#include <fcppt/optional/object_impl.hpp>
-#include <fcppt/optional/to_exception.hpp>
+#include <fcppt/either/object_impl.hpp>
+#include <fcppt/either/to_exception.hpp>
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
@@ -36,39 +37,46 @@ FCPPT_PP_PUSH_WARNING
 FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
 
 BOOST_AUTO_TEST_CASE(
-	optional_to_exception
+	either_to_exception
 )
 {
 FCPPT_PP_POP_WARNING
 
 	typedef
-	fcppt::optional::object<
+	fcppt::either::object<
+		fcppt::string,
 		int
 	>
-	optional_int;
+	either_int;
 
 	auto const make_exception(
-		[]{
+		[](
+			fcppt::string const &_error
+		){
 			return
 				fcppt::exception(
-					FCPPT_TEXT("Invalid")
+					_error
 				);
 		}
 	);
 
 	BOOST_CHECK_EQUAL(
-		fcppt::optional::to_exception(
-			optional_int(
+		fcppt::either::to_exception(
+			either_int{
 				3
-			),
+			},
 			make_exception
 		),
 		3
 	);
 
 	BOOST_CHECK_EXCEPTION(
-		fcppt::optional::to_exception(
-			optional_int(),
+		fcppt::either::to_exception(
+			either_int{
+				fcppt::string(
+					FCPPT_TEXT("Invalid")
+				)
+			},
 			make_exception
 		),
 		fcppt::exception,
