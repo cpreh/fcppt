@@ -1,6 +1,138 @@
 /**
 \page changes Changes
 
+\section changes_changes_to_210 Changes from 2.0.0 to 2.1.0
+
+\subsection changes_added_functionality_to_210 Added functionality
+
+<ul>
+
+<li>\ref fcpptalgorithm
+	<ul>
+	<li>Added \link fcppt::algorithm::generate_n\endlink.</li>
+	<li>Added \link fcppt::algorithm::cat_optionals\endlink.</li>
+	<li>Allow different implementations for ranges via \link
+	fcppt::algorithm::loop_break_impl\endlink.</li>
+	<li>Support <code>std::tuple</code> as a range.</li>
+	</ul>
+</li>
+
+<li>\ref fcpptconfig
+	<ul>
+	<li>Ignore <code>-Wfloat-conversion</code> and
+	<code>-Wsign-conversion</code> for <code>gcc-6</code> in external
+	headers again.</li>
+	<li>Ignore <code>-Wexpansion-to-defined</code> for
+	<code>clang-3.9</code> in external headers.</li>
+	</ul>
+</li>
+
+<li>\ref fcpptcontainergrid
+	<ul>
+	<li>Added \link fcppt::container::grid::make_min\endlink and \link
+	fcppt::container::grid::make_sup\endlink.</li>
+	<li>Added \link fcppt::container::grid::map\endlink.</li>
+	<li>Made \link fcppt::container::grid::pos_range\endlink and \link
+	fcppt::container::grid::pos_ref_range\endlink assignable.</li>
+	<li>Added \link fcppt::container::grid::apply\endlink.</li>
+	</ul>
+</li>
+
+<li>\ref fcpptcontainertree
+	<ul>
+	<li>\link fcppt::container::tree::pre_order\endlink is now
+	copyable.</li>
+	<li>Added \link fcppt::container::tree::to_root\endlink.</li>
+	</ul>
+</li>
+
+<li>\ref fcppteither
+	<p>
+	New library similar that represents sum types of <em>failure</em> and
+	<em>success</em>.
+	</p>
+</li>
+
+<li>\ref fcpptenum
+	<ul>
+	<li>Added \link fcppt::cast_to_enum_exn\endlink.</li>
+	</ul>
+</li>
+
+<li>\ref fcpptio
+	<ul>
+	<li>Added \link fcppt::io::read_chars\endlink.</li>
+	<li>Added \link fcppt::io::get\endlink.</li>
+	</ul>
+</li>
+
+<li>\ref fcpptmpl
+	<ul>
+	<li>Added \link fcppt::mpl::flatten\endlink.</li>
+	<li>Added \link fcppt::mpl::numeric_max\endlink.</li>
+	</ul>
+</li>
+
+<li>\ref fcpptoptional
+	<ul>
+	<li>Added \link fcppt::optional::filter\endlink.</li>
+	<li>Added \link fcppt::optional::apply\endlink.</li>
+	</ul>
+</li>
+
+<li>\ref fcpptvarious
+	<ul>
+	<li>Added \link fcppt::move_if\endlink.</li>
+	<li>Added \link fcppt::args\endlink.</li>
+	</ul>
+</li>
+
+</ul>
+
+\subsection changes_changed_functionality_to_210 Changed functionality
+
+<ul>
+
+<li>\ref fcpptenum
+	<ul>
+	<li>\link fcppt::cast_to_enum\endlink now returns an optional.</li>
+	</ul>
+</li>
+
+<li>\ref fcpptoptional
+	<ul>
+	<li>Moved everything to the \link fcppt::optional\endlink
+	namespace.</li>
+	<li>Removed optional references and replaced them with optionals to
+	\link fcppt::reference\endlink.</li>
+	<li>Renamed <code>optional_bind_construct</code> to \link
+	fcppt::optional::map\endlink.</li>
+	</ul>
+</li>
+
+<li>\ref fcpptref
+	<ul>
+	<li>Renamed <code>fcppt::reference_wrapper</code> to \link
+	fcppt::reference\endlink.</li>
+	</ul>
+</li>
+
+</ul>
+
+\subsection changes_removed_functionality_to_201 Removed functionality
+
+<ul>
+
+<li>\ref fcpptalgorithm
+	<ul>
+	<li>Removed <code>fcppt::algorithm::shift_compare</code>.</li>
+	</ul>
+</li>
+
+</ul>
+
+
+
 \section changes_changes_to_200 Changes from 1.5.0 to 2.0.0
 
 \subsection changes_general_to_200 General changes
