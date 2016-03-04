@@ -9,6 +9,7 @@
 
 <ul>
 	<li>\ref either_motivation</li>
+	<li>\ref either_operations</li>
 </ul>
 
 </td>
@@ -17,5 +18,41 @@
 
 \section either_motivation Motivation
 
-TODO
+Either is a sum of a <em>failure</em> and a <em>success</em> type. As an
+example, consider reading a series of values from a stream. The following code
+tries to read an int followed by a stream. If either of them fails, an
+exception is thrown.
+
+\snippet either.cpp either_read_raw
+
+Instead of throwing an exception, we can store the exception in an either.
+
+\snippet either.cpp either_read
+
+This can then be used to chain both reading operations together. \link
+fcppt::either::apply\endlink takes several eithers and combines them iff all
+contain successes. Otherwise it returns the first error.
+
+\snippet either.cpp either_read_apply
+
+Both \link fcpptoptional\endlink and \link fcpptvariant\endlink are closely
+related to either. An optional can be thought of as an either with an empty
+failure type, while a variant generalizes sum types but assigns their
+components no special meaning.
+
+\section either_operations Operations
+
+As seen in the introduction, multiple eithers can be combined together using
+\link fcppt::either::apply\endlink. The more basic function \link
+fcppt::either::map\endlink operates on a single either.
+
+Notice that the example given in the introduction makes use of the fact that an
+<code>istream</code> can enter the <code>fail</code> state in which all future
+operations will fail as well. Thefefore, it is possible to read multiple
+eithers from a stream and then combine them together. Imagine this was not
+possible and it would be an error to continue reading from a failed stream.  We
+would need an operation that not only chains eithers together but also dictates
+how they are procuded. This is done by \link fcppt::either::bind\endlink:
+
+\snippet either.cpp either_read_bind
 */

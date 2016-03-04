@@ -161,6 +161,10 @@ add_fcppt_example(
 )
 
 add_fcppt_example(
+	either
+)
+
+add_fcppt_example(
 	homogenous_pair
 	LINK_LIBS
 		${fcppt_core_TARGET}
