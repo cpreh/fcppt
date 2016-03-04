@@ -48,7 +48,7 @@
 
 <li>\ref fcppteither
 	<p>
-	New library similar that represents sum types of <em>failure</em> and
+	New library that represents sum types of <em>failure</em> and
 	<em>success</em>.
 	</p>
 </li>
