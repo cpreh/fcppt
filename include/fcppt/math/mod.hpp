@@ -26,16 +26,17 @@ The behaviour will, of course, be undefined if r is 0.
 template<
 	typename T
 >
+inline
 T
 mod(
-	T const &a,
-	T const &b
+	T const &_a,
+	T const &_b
 )
 {
 	return
-		detail::mod(
-			a,
-			b
+		fcppt::math::detail::mod(
+			_a,
+			_b
 		);
 }
 

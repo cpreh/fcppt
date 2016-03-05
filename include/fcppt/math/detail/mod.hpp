@@ -23,40 +23,48 @@ namespace detail
 template<
 	typename T
 >
-typename std::enable_if<
+inline
+typename
+std::enable_if<
 	std::is_floating_point<
 		T
 	>::value,
 	T
 >::type
 mod(
-	T const &a,
-	T const &b
+	T const &_a,
+	T const &_b
 )
 {
-	return std::fmod(a, b);
+	return
+		std::fmod(
+			_a,
+			_b
+		);
 }
 
 template<
 	typename T
 >
-typename std::enable_if<
+inline
+typename
+std::enable_if<
 	std::is_unsigned<
 		T
 	>::value,
 	T
 >::type
 mod(
-	T const &a,
-	T const &b
+	T const &_a,
+	T const &_b
 )
 {
-	return a % b;
+	return
+		_a % _b;
 }
 
 }
 }
 }
-
 
 #endif
