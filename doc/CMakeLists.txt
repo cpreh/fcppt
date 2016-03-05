@@ -125,6 +125,7 @@ set(
 	examples/container/tree_simple.cpp
 	examples/container/tree_traversal.cpp
 	examples/cyclic_iterator.cpp
+	examples/either.cpp
 	examples/endianness.cpp
 	examples/enum.cpp
 	examples/homogenous_pair.cpp
@@ -188,7 +189,6 @@ set(
 	include/fcppt/algorithm/array_init_move.hpp
 	include/fcppt/algorithm/array_map.hpp
 	include/fcppt/algorithm/array_push_back.hpp
-	include/fcppt/algorithm/cat_optionals.hpp
 	include/fcppt/algorithm/contains.hpp
 	include/fcppt/algorithm/contains_if.hpp
 	include/fcppt/algorithm/detail/array_push_back_function.hpp
@@ -562,7 +562,6 @@ set(
 	include/fcppt/dynamic_pointer_cast.hpp
 	include/fcppt/either/apply.hpp
 	include/fcppt/either/bind.hpp
-	include/fcppt/either/cat.hpp
 	include/fcppt/either/comparison.hpp
 	include/fcppt/either/detail/first_failure.hpp
 	include/fcppt/either/from_optional.hpp
@@ -574,6 +573,7 @@ set(
 	include/fcppt/either/object_fwd.hpp
 	include/fcppt/either/object_impl.hpp
 	include/fcppt/either/output.hpp
+	include/fcppt/either/sequence.hpp
 	include/fcppt/either/success_opt.hpp
 	include/fcppt/either/to_exception.hpp
 	include/fcppt/endianness/convert.hpp
@@ -1060,6 +1060,7 @@ set(
 	include/fcppt/optional/apply.hpp
 	include/fcppt/optional/assign.hpp
 	include/fcppt/optional/bind.hpp
+	include/fcppt/optional/cat.hpp
 	include/fcppt/optional/combine.hpp
 	include/fcppt/optional/comparison.hpp
 	include/fcppt/optional/const_cast.hpp

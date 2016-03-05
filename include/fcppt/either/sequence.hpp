@@ -4,8 +4,8 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_EITHER_CAT_HPP_INCLUDED
-#define FCPPT_EITHER_CAT_HPP_INCLUDED
+#ifndef FCPPT_EITHER_SEQUENCE_HPP_INCLUDED
+#define FCPPT_EITHER_SEQUENCE_HPP_INCLUDED
 
 #include <fcppt/move_if_rvalue.hpp>
 #include <fcppt/algorithm/find_if_opt.hpp>
@@ -26,7 +26,7 @@ namespace either
 {
 
 /**
-\brief Cats a container of eithers
+\brief Sequences a container of eithers
 
 \ingroup fcppteither
 
@@ -54,7 +54,7 @@ fcppt::either::object<
 	>::type::value_type::failure,
 	ResultContainer
 >
-cat(
+sequence(
 	Source &&_source
 )
 {

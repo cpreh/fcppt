@@ -7,7 +7,7 @@
 #include <fcppt/make_unique_ptr.hpp>
 #include <fcppt/unique_ptr_impl.hpp>
 #include <fcppt/assign/make_container.hpp>
-#include <fcppt/either/cat.hpp>
+#include <fcppt/either/sequence.hpp>
 #include <fcppt/either/object.hpp>
 #include <fcppt/either/output.hpp>
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
@@ -24,7 +24,7 @@ FCPPT_PP_PUSH_WARNING
 FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
 
 BOOST_AUTO_TEST_CASE(
-	either_cat
+	either_sequence
 )
 {
 FCPPT_PP_POP_WARNING
@@ -75,7 +75,7 @@ FCPPT_PP_POP_WARNING
 	};
 
 	BOOST_CHECK(
-		fcppt::either::cat<
+		fcppt::either::sequence<
 			int_vector
 		>(
 			eithers1
@@ -98,7 +98,7 @@ FCPPT_PP_POP_WARNING
 	};
 
 	result_type const result(
-		fcppt::either::cat<
+		fcppt::either::sequence<
 			int_vector
 		>(
 			eithers2
@@ -121,7 +121,7 @@ FCPPT_PP_PUSH_WARNING
 FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
 
 BOOST_AUTO_TEST_CASE(
-	either_cat_move
+	either_sequence_move
 )
 {
 FCPPT_PP_POP_WARNING
@@ -159,7 +159,7 @@ FCPPT_PP_POP_WARNING
 	result_type;
 
 	result_type const result(
-		fcppt::either::cat<
+		fcppt::either::sequence<
 			int_vector
 		>(
 			fcppt::assign::make_container<

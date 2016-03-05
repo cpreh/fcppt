@@ -9,7 +9,6 @@ set(
 	include/fcppt/algorithm/array_init_move.hpp
 	include/fcppt/algorithm/array_map.hpp
 	include/fcppt/algorithm/array_push_back.hpp
-	include/fcppt/algorithm/cat_optionals.hpp
 	include/fcppt/algorithm/contains.hpp
 	include/fcppt/algorithm/contains_if.hpp
 	include/fcppt/algorithm/detail/array_push_back_function.hpp

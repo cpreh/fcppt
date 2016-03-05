@@ -6,8 +6,8 @@
 
 #include <fcppt/make_unique_ptr.hpp>
 #include <fcppt/unique_ptr_impl.hpp>
-#include <fcppt/algorithm/cat_optionals.hpp>
 #include <fcppt/assign/make_container.hpp>
+#include <fcppt/optional/cat.hpp>
 #include <fcppt/optional/object_impl.hpp>
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
@@ -46,7 +46,7 @@ FCPPT_PP_POP_WARNING
 	int_vector;
 
 	int_vector const result(
-		fcppt::algorithm::cat_optionals<
+		fcppt::optional::cat<
 			int_vector
 		>(
 			optional_int_vector{
@@ -103,7 +103,7 @@ FCPPT_PP_POP_WARNING
 	int_unique_ptr_vector;
 
 	int_unique_ptr_vector const result(
-		fcppt::algorithm::cat_optionals<
+		fcppt::optional::cat<
 			int_unique_ptr_vector
 		>(
 			fcppt::assign::make_container<

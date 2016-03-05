@@ -10,7 +10,6 @@
 <li>\ref fcpptalgorithm
 	<ul>
 	<li>Added \link fcppt::algorithm::generate_n\endlink.</li>
-	<li>Added \link fcppt::algorithm::cat_optionals\endlink.</li>
 	<li>Allow different implementations for ranges via \link
 	fcppt::algorithm::loop_break_impl\endlink.</li>
 	<li>Support <code>std::tuple</code> as a range.</li>
@@ -77,6 +76,7 @@
 	<ul>
 	<li>Added \link fcppt::optional::filter\endlink.</li>
 	<li>Added \link fcppt::optional::apply\endlink.</li>
+	<li>Added \link fcppt::optional::cat\endlink.</li>
 	</ul>
 </li>
 

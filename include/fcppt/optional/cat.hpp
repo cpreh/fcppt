@@ -4,8 +4,8 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_ALGORITHM_CAT_OPTIONALS_HPP_INCLUDED
-#define FCPPT_ALGORITHM_CAT_OPTIONALS_HPP_INCLUDED
+#ifndef FCPPT_OPTIONAL_CAT_HPP_INCLUDED
+#define FCPPT_OPTIONAL_CAT_HPP_INCLUDED
 
 #include <fcppt/move_if_rvalue.hpp>
 #include <fcppt/algorithm/range_element_type.hpp>
@@ -14,13 +14,13 @@
 
 namespace fcppt
 {
-namespace algorithm
+namespace optional
 {
 
 /**
 \brief Removes empty optionals from a range
 
-\ingroup fcpptalgorithm
+\ingroup fcpptoptional
 
 For every element \em e in \a _source, if \em e is set to <code>x</code>, then
 <code>x</code> is inserted into the target container.
@@ -35,7 +35,7 @@ template<
 	typename Source
 >
 TargetContainer
-cat_optionals(
+cat(
 	Source &&_source
 )
 {

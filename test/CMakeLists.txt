@@ -39,10 +39,6 @@ add_fcppt_test(
 )
 
 add_fcppt_test(
-	algorithm/cat_optionals
-)
-
-add_fcppt_test(
 	algorithm/enum_array_init
 )
 
@@ -406,10 +402,6 @@ add_fcppt_test(
 )
 
 add_fcppt_test(
-	either/cat
-)
-
-add_fcppt_test(
 	either/from_optional
 )
 
@@ -423,6 +415,10 @@ add_fcppt_test(
 
 add_fcppt_test(
 	either/object
+)
+
+add_fcppt_test(
+	either/sequence
 )
 
 add_fcppt_test(
@@ -856,6 +852,10 @@ add_fcppt_test(
 
 add_fcppt_test(
 	optional/casts
+)
+
+add_fcppt_test(
+	optional/cat
 )
 
 add_fcppt_test(
