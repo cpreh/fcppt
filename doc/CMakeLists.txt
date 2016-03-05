@@ -852,7 +852,6 @@ set(
 	include/fcppt/math/detail/make_symmetric_binary_operator.hpp
 	include/fcppt/math/detail/make_unary_operator.hpp
 	include/fcppt/math/detail/mod.hpp
-	include/fcppt/math/detail/mod_assign.hpp
 	include/fcppt/math/detail/narrow_cast.hpp
 	include/fcppt/math/detail/null_storage.hpp
 	include/fcppt/math/detail/one_dimensional_input.hpp
@@ -956,7 +955,6 @@ set(
 	include/fcppt/math/matrix/transpose.hpp
 	include/fcppt/math/matrix/vector.hpp
 	include/fcppt/math/mod.hpp
-	include/fcppt/math/mod_assign.hpp
 	include/fcppt/math/next_power_of_2.hpp
 	include/fcppt/math/pi.hpp
 	include/fcppt/math/rad_to_deg.hpp

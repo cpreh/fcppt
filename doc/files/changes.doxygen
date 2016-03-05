@@ -138,6 +138,12 @@
 	</ul>
 </li>
 
+<li>\ref fcpptmath
+	<ul>
+	<li>Removed <code>fcppt::math::mod_assign</code>.</li>
+	</ul>
+</li>
+
 </ul>
 
 
