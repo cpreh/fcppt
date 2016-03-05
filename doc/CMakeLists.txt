@@ -860,7 +860,6 @@ set(
 	include/fcppt/math/detail/storage_size.hpp
 	include/fcppt/math/detail/structure_cast.hpp
 	include/fcppt/math/detail/to_different.hpp
-	include/fcppt/math/detail/transform.hpp
 	include/fcppt/math/detail/unary_type.hpp
 	include/fcppt/math/diff.hpp
 	include/fcppt/math/difference_type.hpp
