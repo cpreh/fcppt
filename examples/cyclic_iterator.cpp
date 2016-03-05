@@ -5,44 +5,53 @@
 
 
 #include <fcppt/cyclic_iterator.hpp>
+#include <fcppt/algorithm/repeat.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <iostream>
 #include <ostream>
 #include <vector>
 #include <fcppt/config/external_end.hpp>
 
-int main()
+int
+main()
 {
 //! [cyclic_iterator]
-	typedef std::vector<
+	typedef
+	std::vector<
 		int
-	> int_vector;
+	>
+	int_vector;
 
 	// typedef a cyclic_iterator over int_vector::const_iterator
-	typedef fcppt::cyclic_iterator<
+	typedef
+	fcppt::cyclic_iterator<
 		int_vector::const_iterator
-	> const_cyclic_iterator;
+	>
+	const_cyclic_iterator;
 
-	int_vector ints;
-
-	ints.push_back(1);
-	ints.push_back(2);
+	int_vector const ints{{
+		1, 2
+	}};
 
 	const_cyclic_iterator it(
 		ints.begin(), // start position of the iterator
-		ints.begin(), // start of the container
-		ints.end() // end of the container
+		const_cyclic_iterator::boundary{
+			ints.begin(), // start of the container
+			ints.end() // end of the container
+		}
 	);
 
-	for(
-		unsigned i = 0;
-		i < 6;
-		++i
-	)
-		// prints 1, 2, 1, 2, 1, 2,
-		std::cout
-			<< *it++
-			<< ", ";
+	// prints 1, 2, 1, 2, 1, 2,
+	fcppt::algorithm::repeat(
+		6,
+		[
+			&it
+		]{
+			std::cout
+				<< *it++
+				<< ", ";
+		}
+	);
 
 	std::cout << '\n';
 //! [cyclic_iterator]

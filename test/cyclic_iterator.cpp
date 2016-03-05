@@ -43,8 +43,10 @@ FCPPT_PP_POP_WARNING
 
 	iterator test(
 		array.begin(),
-		array.begin(),
-		array.end()
+		iterator::boundary{
+			array.begin(),
+			array.end()
+		}
 	);
 
 	BOOST_REQUIRE_EQUAL(
@@ -100,38 +102,25 @@ FCPPT_PP_POP_WARNING
 		*test,
 		2
 	);
-}
 
-FCPPT_PP_PUSH_WARNING
-FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
+	test += 2;
 
-BOOST_AUTO_TEST_CASE(
-	cyclic_iterator_empty
-)
-{
-FCPPT_PP_POP_WARNING
-
-	typedef std::vector<
-		int
-	> int_vector;
-
-	int_vector vector;
-
-	typedef fcppt::cyclic_iterator<
-		int_vector::iterator
-	> iterator;
-
-	iterator test(
-		vector.begin(),
-		vector.begin(),
-		vector.end()
+	BOOST_REQUIRE_EQUAL(
+		*test,
+		1
 	);
 
-	++test;
+	test -= 1;
 
-	BOOST_CHECK(
-		test.get()
-		==
-		vector.end()
+	BOOST_REQUIRE_EQUAL(
+		*test,
+		3
+	);
+
+	test -= 300;
+
+	BOOST_REQUIRE_EQUAL(
+		*test,
+		3
 	);
 }

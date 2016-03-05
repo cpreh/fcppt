@@ -9,6 +9,7 @@
 #define FCPPT_CYCLIC_ITERATOR_DECL_HPP_INCLUDED
 
 #include <fcppt/cyclic_iterator_fwd.hpp>
+#include <fcppt/homogenous_pair_impl.hpp>
 #include <fcppt/detail/cyclic_iterator_base.hpp>
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
@@ -37,11 +38,6 @@ become <code>begin()</code> again. For example, imagine a cycling through a
 list of items which means if you skip over the last, you will return to the
 first one.
 
-This class can only increment or decrement its underlying iterator, random
-access is not supported. The iterator category will be at most bidirectional.
-It inherits all capabilities from <code>boost::iterator_facade</code> which
-means that it will have the usual iterator operations with their semantics.
-
 Here is a short example demonstrating its use.
 
 \snippet cyclic_iterator.cpp cyclic_iterator
@@ -69,37 +65,55 @@ public:
 	/**
 	\brief The underlying iterator type
 	*/
-	typedef ContainerIterator container_iterator_type;
+	typedef
+	ContainerIterator
+	container_iterator_type;
 
 	/**
 	\brief The value type adapted from \a ContainerIterator
 	*/
-	typedef typename base_type::value_type value_type;
+	typedef
+	typename
+	base_type::value_type
+	value_type;
 
 	/**
 	\brief The reference type adapted from \a ContainerIterator
 	*/
-	typedef typename base_type::reference reference;
+	typedef
+	typename
+	base_type::reference
+	reference;
 
 	/**
 	\brief The pointer type adapted from \a ContainerIterator
 	*/
-	typedef typename base_type::pointer pointer;
+	typedef
+	typename
+	base_type::pointer
+	pointer;
 
 	/**
 	\brief The difference type adapted from \a ContainerIterator
 	*/
-	typedef typename base_type::difference_type difference_type;
+	typedef
+	typename
+	base_type::difference_type
+	difference_type;
 
 	/**
 	\brief The iterator category, either Forward or Bidirectional
 	*/
-	typedef typename base_type::iterator_category iterator_category;
+	typedef
+	typename
+	base_type::iterator_category
+	iterator_category;
 
-	/**
-	\brief Creates a singular iterator
-	*/
-	cyclic_iterator();
+	typedef
+	fcppt::homogenous_pair<
+		container_iterator_type
+	>
+	boundary;
 
 	/**
 	\brief Copy constructs from another cyclic iterator
@@ -114,27 +128,20 @@ public:
 	>
 	explicit
 	cyclic_iterator(
-		cyclic_iterator<OtherIterator> const &other
+		cyclic_iterator<
+			OtherIterator
+		> const &other
 	);
 
 	/**
 	\brief Constructs a new cyclic iterator
 
-	Constructs a new cyclic iterator, starting at \a it, inside
-	a range from \a begin to \a end.
-
-	\param pos The start of the iterator
-	\param begin The beginning of the range
-	\param end The end of the range
-
-	\warning The behaviour is undefined if \a pos isn't between \a begin
-	and \a end. Also, the behaviour is undefined, if \a begin and \a end
-	don't form a valid range.
+	Constructs a new cyclic iterator, starting at \a it, inside a range of
+	\a boundary.
 	*/
 	cyclic_iterator(
 		container_iterator_type const &pos,
-		container_iterator_type const &begin,
-		container_iterator_type const &end
+		boundary const &boundary
 	);
 
 	/**
@@ -150,22 +157,18 @@ public:
 	template<
 		typename OtherIterator
 	>
-	cyclic_iterator<ContainerIterator> &
+	cyclic_iterator &
 	operator=(
-		cyclic_iterator<OtherIterator> const &other
+		cyclic_iterator<
+			OtherIterator
+		> const &other
 	);
 
 	/**
-	\brief Returns the beginning of the range
+	\brief Returns the boundary
 	*/
-	container_iterator_type
-	begin() const;
-
-	/**
-	\brief Returns the end of the range
-	*/
-	container_iterator_type
-	end() const;
+	boundary const &
+	get_boundary() const;
 
 	/**
 	\brief Returns the underlying iterator
@@ -174,6 +177,11 @@ public:
 	get() const;
 private:
 	friend class boost::iterator_core_access;
+
+	void
+	advance(
+		difference_type
+	);
 
 	void
 	increment();
@@ -194,10 +202,9 @@ private:
 		cyclic_iterator const &
 	) const;
 private:
-	container_iterator_type
-		it_,
-		begin_,
-		end_;
+	container_iterator_type it_;
+
+	boundary boundary_;
 };
 
 FCPPT_PP_POP_WARNING

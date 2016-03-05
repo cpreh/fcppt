@@ -84,6 +84,8 @@
 	<ul>
 	<li>Added \link fcppt::move_if\endlink.</li>
 	<li>Added \link fcppt::args\endlink.</li>
+	<li>\link fcppt::cyclic_iterator\endlink can now be a random-access
+	iterator.</li>
 	</ul>
 </li>
 
@@ -114,6 +116,13 @@
 	<ul>
 	<li>Renamed <code>fcppt::reference_wrapper</code> to \link
 	fcppt::reference\endlink.</li>
+	</ul>
+</li>
+
+<li>\ref fcpptvarious
+	<ul>
+	<li>\link fcppt::cyclic_iterator\endlink now uses a pair to construct
+	its boundaries.</li>
 	</ul>
 </li>
 

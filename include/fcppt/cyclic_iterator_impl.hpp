@@ -17,19 +17,6 @@
 template<
 	typename ContainerIterator
 >
-fcppt::cyclic_iterator<
-	ContainerIterator
->::cyclic_iterator()
-:
-	it_(),
-	begin_(),
-	end_()
-{
-}
-
-template<
-	typename ContainerIterator
->
 template<
 	typename OtherIterator
 >
@@ -44,11 +31,8 @@ fcppt::cyclic_iterator<
 	it_(
 		_other.it_
 	),
-	begin_(
-		_other.begin_
-	),
-	end_(
-		_other.end_
+	boundary_(
+		_other.boundary_
 	)
 {
 }
@@ -60,18 +44,14 @@ fcppt::cyclic_iterator<
 	ContainerIterator
 >::cyclic_iterator(
 	container_iterator_type const &_it,
-	container_iterator_type const &_begin,
-	container_iterator_type const &_end
+	boundary const &_boundary
 )
 :
 	it_(
 		_it
 	),
-	begin_(
-		_begin
-	),
-	end_(
-		_end
+	boundary_(
+		_boundary
 	)
 {
 }
@@ -93,52 +73,90 @@ fcppt::cyclic_iterator<
 	> const &_other
 )
 {
-	it_ = _other.it_;
+	it_ =
+		_other.it_;
 
-	begin_ = _other.begin_;
+	boundary_ =
+		_other._boundary;
 
-	end_ = _other.end_;
-
-	return *this;
+	return
+		*this;
 }
 
 template<
 	typename ContainerIterator
 >
-typename fcppt::cyclic_iterator<
-	ContainerIterator
->::container_iterator_type
+typename
 fcppt::cyclic_iterator<
 	ContainerIterator
->::begin() const
-{
-	return begin_;
-}
-
-template<
-	typename ContainerIterator
->
-typename fcppt::cyclic_iterator<
-	ContainerIterator
->::container_iterator_type
+>::boundary const &
 fcppt::cyclic_iterator<
 	ContainerIterator
->::end() const
+>::get_boundary() const
 {
-	return end_;
+	return
+		boundary_;
 }
 
 template<
 	typename ContainerIterator
 >
-typename fcppt::cyclic_iterator<
+typename
+fcppt::cyclic_iterator<
 	ContainerIterator
 >::container_iterator_type
 fcppt::cyclic_iterator<
 	ContainerIterator
 >::get() const
 {
-	return it_;
+	return
+		it_;
+}
+
+template<
+	typename ContainerIterator
+>
+void
+fcppt::cyclic_iterator<
+	ContainerIterator
+>::advance(
+	difference_type const _diff
+)
+{
+	difference_type const size{
+		std::distance(
+			boundary_.first,
+			boundary_.second
+		)
+	};
+
+	difference_type const diff{
+		(
+			std::distance(
+				boundary_.first,
+				it_
+			)
+			+
+			_diff
+		)
+		%
+		size
+	};
+
+	it_ =
+		boundary_.first
+		+
+		(
+			diff
+			<
+			0
+			?
+				diff
+				+
+				size
+			:
+				diff
+		);
 }
 
 template<
@@ -150,10 +168,12 @@ fcppt::cyclic_iterator<
 >::increment()
 {
 	if(
-		begin_ != end_
-		&& ++it_ == end_
+		++it_
+		==
+		boundary_.second
 	)
-		it_ = begin_;
+		it_ =
+			boundary_.first;
 }
 
 template<
@@ -165,16 +185,13 @@ fcppt::cyclic_iterator<
 >::decrement()
 {
 	if(
-		begin_ == end_
-	)
-		return;
-
-	if(
-		it_ == begin_
+		it_
+		==
+		boundary_.first
 	)
 		it_ =
 			std::prev(
-				end_
+				boundary_.second
 			);
 	else
 		--it_;
@@ -190,26 +207,32 @@ fcppt::cyclic_iterator<
 	cyclic_iterator const &_other
 ) const
 {
-	return it_ == _other.it;
+	return
+		it_
+		==
+		_other.it;
 }
 
 template<
 	typename ContainerIterator
 >
-typename fcppt::cyclic_iterator<
+typename
+fcppt::cyclic_iterator<
 	ContainerIterator
 >::reference
 fcppt::cyclic_iterator<
 	ContainerIterator
 >::dereference() const
 {
-	return *it_;
+	return
+		*it_;
 }
 
 template<
 	typename ContainerIterator
 >
-typename fcppt::cyclic_iterator<
+typename
+fcppt::cyclic_iterator<
 	ContainerIterator
 >::difference_type
 fcppt::cyclic_iterator<
@@ -218,7 +241,11 @@ fcppt::cyclic_iterator<
 	cyclic_iterator const &_other
 ) const
 {
-	return _other.it_ - it_;
+	return
+		std::distance(
+			it_,
+			_other.it_
+		);
 }
 
 #endif

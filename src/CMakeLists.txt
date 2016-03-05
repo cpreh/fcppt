@@ -305,7 +305,6 @@ set(
 	include/fcppt/detail/check_cpp.hpp
 	include/fcppt/detail/const.hpp
 	include/fcppt/detail/cyclic_iterator_base.hpp
-	include/fcppt/detail/cyclic_iterator_category.hpp
 	include/fcppt/detail/decltype_sink.hpp
 	include/fcppt/detail/enum_iterator_base.hpp
 	include/fcppt/detail/equal.hpp

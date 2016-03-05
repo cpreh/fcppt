@@ -8,7 +8,6 @@
 #define FCPPT_DETAIL_CYCLIC_ITERATOR_BASE_HPP_INCLUDED
 
 #include <fcppt/cyclic_iterator_fwd.hpp>
-#include <fcppt/detail/cyclic_iterator_category.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/iterator/iterator_facade.hpp>
 #include <iterator>
@@ -29,17 +28,22 @@ boost::iterator_facade<
 	fcppt::cyclic_iterator<
 		ContainerIterator
 	>,
-	typename std::iterator_traits<
+	typename
+	std::iterator_traits<
 		ContainerIterator
 	>::value_type,
-	typename fcppt::detail::cyclic_iterator_category<
-		typename std::iterator_traits<
-			ContainerIterator
-		>::iterator_category
-	>::type,
-	typename std::iterator_traits<
+	typename
+	std::iterator_traits<
 		ContainerIterator
-	>::reference
+	>::iterator_category,
+	typename
+	std::iterator_traits<
+		ContainerIterator
+	>::reference,
+	typename
+	std::iterator_traits<
+		ContainerIterator
+	>::difference_type
 >;
 
 }
