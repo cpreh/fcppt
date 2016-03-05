@@ -192,7 +192,6 @@ set(
 	include/fcppt/algorithm/contains.hpp
 	include/fcppt/algorithm/contains_if.hpp
 	include/fcppt/algorithm/detail/array_push_back_function.hpp
-	include/fcppt/algorithm/detail/find_by_result.hpp
 	include/fcppt/algorithm/detail/has_random_access_iterator.hpp
 	include/fcppt/algorithm/detail/has_reserve.hpp
 	include/fcppt/algorithm/detail/has_size.hpp

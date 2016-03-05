@@ -7,7 +7,6 @@
 #ifndef FCPPT_ALGORITHM_FIND_BY_OPT_HPP_INCLUDED
 #define FCPPT_ALGORITHM_FIND_BY_OPT_HPP_INCLUDED
 
-#include <fcppt/algorithm/detail/find_by_result.hpp>
 #include <fcppt/container/to_iterator_type.hpp>
 #include <fcppt/optional/is_object.hpp>
 #include <fcppt/optional/object_impl.hpp>
@@ -37,18 +36,16 @@ template<
 	typename Function
 >
 inline
-fcppt::algorithm::detail::find_by_result<
-	fcppt::container::to_iterator_type<
-		typename
-		std::remove_reference<
-			Range
-		>::type
-	>,
-	Function
->
+auto
 find_by_opt(
 	Range &&_range,
 	Function const &_function
+)
+->
+decltype(
+	_function(
+		*_range.begin()
+	)
 )
 {
 	typedef
@@ -61,10 +58,11 @@ find_by_opt(
 	iterator_type;
 
 	typedef
-	fcppt::algorithm::detail::find_by_result<
-		iterator_type,
-		Function
-	>
+	decltype(
+		_function(
+			*_range.begin()
+		)
+	)
 	result_type;
 
 	static_assert(
