@@ -4,10 +4,8 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/exception.hpp>
 #include <fcppt/endianness/format.hpp>
 #include <fcppt/io/read.hpp>
-#include <fcppt/io/read_exn.hpp>
 #include <fcppt/io/write.hpp>
 #include <fcppt/optional/comparison.hpp>
 #include <fcppt/optional/object_impl.hpp>
@@ -29,7 +27,9 @@ test_read_write(
 	fcppt::endianness::format const _endianness
 )
 {
-	int const foo = 42;
+	int const foo{
+		42
+	};
 
 	std::stringstream stream;
 
@@ -39,9 +39,11 @@ test_read_write(
 		_endianness
 	);
 
-	typedef fcppt::optional::object<
+	typedef
+	fcppt::optional::object<
 		int
-	> optional_int;
+	>
+	optional_int;
 
 	optional_int const result(
 		fcppt::io::read<
@@ -58,15 +60,6 @@ test_read_write(
 			42
 		)
 	);
-}
-
-bool
-check_exception(
-	fcppt::exception const &
-)
-{
-	return
-		true;
 }
 
 }
@@ -92,15 +85,13 @@ FCPPT_PP_POP_WARNING
 	{
 		std::stringstream stream;
 
-		BOOST_CHECK_EXCEPTION(
-			fcppt::io::read_exn<
+		BOOST_CHECK(
+			!fcppt::io::read<
 				int
 			>(
 				stream,
 				fcppt::endianness::format::little
-			),
-			fcppt::exception,
-			check_exception
+			).has_value()
 		);
 	}
 }

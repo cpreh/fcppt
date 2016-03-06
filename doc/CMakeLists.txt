@@ -673,7 +673,6 @@ set(
 	include/fcppt/io/raw_container_source_impl.hpp
 	include/fcppt/io/read.hpp
 	include/fcppt/io/read_chars.hpp
-	include/fcppt/io/read_exn.hpp
 	include/fcppt/io/scoped_rdbuf.hpp
 	include/fcppt/io/scoped_rdbuf_fwd.hpp
 	include/fcppt/io/stream_to_string.hpp
