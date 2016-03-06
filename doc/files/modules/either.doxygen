@@ -1,3 +1,13 @@
+namespace fcppt
+{
+/**
+\brief Contains fcppt::either::object and helper types/functions for it
+*/
+namespace either
+{
+}
+}
+
 /**
 \defgroup fcppteither fcppt.either
 \ingroup fcpptmain
@@ -10,6 +20,7 @@
 <ul>
 	<li>\ref either_motivation</li>
 	<li>\ref either_operations</li>
+	<li>\ref either_headers</li>
 </ul>
 
 </td>
@@ -20,7 +31,7 @@
 
 Either is a sum of a <em>failure</em> and a <em>success</em> type. As an
 example, consider reading a series of values from a stream. The following code
-tries to read an int followed by a stream. If either of them fails, an
+tries to read an int followed by a string. If either of them fails, an
 exception is thrown.
 
 \snippet either.cpp either_read_raw
@@ -67,4 +78,69 @@ fcppt::either::to_exception\endlink that throws an exception in case of an
 error:
 
 \snippet either.cpp either_to_exception
+
+\section either_headers Header files
+
+<table>
+<tr>
+<th>Header file</th>
+<th>Description</th>
+</tr>
+<tr>
+<td><code>object_fwd.hpp</code></td>
+<td>Contains \link fcppt::either::object either's \endlink declaration.</td>
+</tr>
+<tr>
+<td><code>object_decl.hpp</code></td>
+<td>Contains \link fcppt::either::object either's \endlink definition.</td>
+</tr>
+<tr>
+<td><code>object_impl.hpp</code></td>
+<td>Contains the definition of \link fcppt::either::object either's \endlink member functions.</td>
+</tr>
+<tr>
+<td><code>object.hpp</code></td>
+<td>Includes <code>object_impl.hpp</code> and <code>comparison.hpp</code>.</td>
+</tr>
+<tr>
+<td><code>apply.hpp</code></td>
+<td>Contains \link fcppt::either::apply\endlink.</td>
+</tr>
+<tr>
+<td><code>bind.hpp</code></td>
+<td>Contains \link fcppt::either::bind\endlink.</td>
+</tr>
+<tr>
+<td><code>comparison.hpp</code></td>
+<td>Contains <code>operator==</code> and <code>operator!=</code>.</td>
+</tr>
+<tr>
+<td><code>from_optional.hpp</code></td>
+<td>Contains \link fcppt::either::from_optional\endlink.</td>
+</tr>
+<tr>
+<td><code>map.hpp</code></td>
+<td>Contains \link fcppt::either::map\endlink.</td>
+</tr>
+<tr>
+<td><code>match.hpp</code></td>
+<td>Contains \link fcppt::either::match\endlink.</td>
+</tr>
+<tr>
+<td><code>output.hpp</code></td>
+<td>Contains <code>operator<<</code>.</td>
+</tr>
+<tr>
+<td><code>sequence.hpp</code></td>
+<td>Contains \link fcppt::either::sequence\endlink.</td>
+</tr>
+<tr>
+<td><code>success_opt.hpp</code></td>
+<td>Contains \link fcppt::either::success_opt\endlink.</td>
+</tr>
+<tr>
+<td><code>to_exception.hpp</code></td>
+<td>Contains \link fcppt::either::to_exception\endlink.</td>
+</tr>
+</table>
 */

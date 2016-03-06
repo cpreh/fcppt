@@ -205,6 +205,10 @@ its own namespace.</li>
 <td>Contains the definition of \link fcppt::variant::object variants's \endlink member functions.</td>
 </tr>
 <tr>
+<td><code>object.hpp</code></td>
+<td>The same as <code>object_impl.hpp</code>.</td>
+</tr>
+<tr>
 <td><code>apply_unary.hpp</code></td>
 <td>Contains \link fcppt::variant::apply_unary \endlink for unary visitation.</td>
 </tr>
@@ -217,6 +221,10 @@ its own namespace.</li>
 <td>Contains \link fcppt::variant::apply_ternary \endlink for ternary visitation.</td>
 </tr>
 <tr>
+<td><code>compare.hpp</code></td>
+<td>Contains \link fcppt::variant::compare \endlink.</td>
+</tr>
+<tr>
 <td><code>equal.hpp</code></td>
 <td>Contains <code>operator==</code>.</td>
 </tr>
@@ -227,7 +235,7 @@ variant exception.</td>
 </tr>
 <tr>
 <td><code>get_exn.hpp</code></td>
-<td>Contains \link fcppt::variant::get_exn\endlink.</td>
+<td>Contains \link fcppt::variant::get_exn \endlink.</td>
 </tr>
 <tr>
 <td><code>get_unsafe.hpp</code></td>
@@ -246,6 +254,10 @@ a type is held by the variant.</td>
 by \link fcppt::variant::get_exn \endlink.</td>
 </tr>
 <tr>
+<td><code>less.hpp</code></td>
+<td>Contains <code>operator<</code>.</td>
+</tr>
+<tr>
 <td><code>match.hpp</code></td>
 <td>Contains \link fcppt::variant::match\endlink.</td>
 </tr>
@@ -260,6 +272,14 @@ by \link fcppt::variant::get_exn \endlink.</td>
 <tr>
 <td><code>to_optional.hpp</code></td>
 <td>Contains \link fcppt::variant::to_optional\endlink.</td>
+</tr>
+<tr>
+<td><code>to_optional_ref.hpp</code></td>
+<td>Contains \link fcppt::variant::to_optional_ref\endlink.</td>
+</tr>
+<tr>
+<td><code>type_info.hpp</code></td>
+<td>Contains \link fcppt::variant::type_info\endlink.</td>
 </tr>
 <tr>
 <td><code>variadic_fwd.hpp</code></td>

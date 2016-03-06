@@ -103,6 +103,10 @@ value.
 <td>Contains the definition of \link fcppt::optional::object optional's \endlink member functions.</td>
 </tr>
 <tr>
+<td><code>object.hpp</code></td>
+<td>Includes <code>object_impl.hpp</code> and <code>comparison.hpp</code></td>
+</tr>
+<tr>
 <td><code>alternative.hpp</code></td>
 <td>Contains \link fcppt::optional::alternative \endlink.</td>
 </tr>
@@ -119,6 +123,10 @@ value.
 <td>Contains \link fcppt::optional::bind \endlink.</td>
 </tr>
 <tr>
+<td><code>cat.hpp</code></td>
+<td>Contains \link fcppt::optional::cat \endlink.</td>
+</tr>
+<tr>
 <td><code>combine.hpp</code></td>
 <td>Contains \link fcppt::optional::combine \endlink.</td>
 </tr>
@@ -129,6 +137,14 @@ value.
 <tr>
 <td><code>const_cast.hpp</code></td>
 <td>Contains \link fcppt::optional::const_cast_ \endlink.</td>
+</tr>
+<tr>
+<td><code>copy_value.hpp</code></td>
+<td>Contains \link fcppt::optional::copy_value \endlink.</td>
+</tr>
+<tr>
+<td><code>deref.hpp</code></td>
+<td>Contains \link fcppt::optional::deref \endlink.</td>
 </tr>
 <tr>
 <td><code>dynamic_cast.hpp</code></td>
@@ -147,6 +163,14 @@ value.
 <td>Contains \link fcppt::optional::from_pointer \endlink.</td>
 </tr>
 <tr>
+<td><code>join.hpp</code></td>
+<td>Contains \link fcppt::optional::join \endlink.</td>
+</tr>
+<tr>
+<td><code>map.hpp</code></td>
+<td>Contains \link fcppt::optional::map \endlink.</td>
+</tr>
+<tr>
 <td><code>maybe.hpp</code></td>
 <td>Contains \link fcppt::optional::maybe \endlink.</td>
 </tr>
@@ -163,8 +187,16 @@ value.
 <td>Contains \link fcppt::optional::maybe_void_multi \endlink.</td>
 </tr>
 <tr>
-<td><code>map.hpp</code></td>
-<td>Contains \link fcppt::optional::map \endlink.</td>
+<td><code>output.hpp</code></td>
+<td>Contains <code>operator<< </code>.</td>
+</tr>
+<tr>
+<td><code>reference_fwd.hpp</code></td>
+<td>Contains the \link fcppt::optional::reference \endlink typedef.</td>
+</tr>
+<tr>
+<td><code>reference.hpp</code></td>
+<td>Includes <code>reference_fwd.hpp</code> and <code>object_impl.hpp</code>.</td>
 </tr>
 <tr>
 <td><code>static_cast.hpp</code></td>
@@ -173,10 +205,6 @@ value.
 <tr>
 <td><code>to_exception.hpp</code></td>
 <td>Contains \link fcppt::optional::to_exception \endlink.</td>
-</tr>
-<tr>
-<td><code>object.hpp</code></td>
-<td>Includes <code>object_impl.hpp</code> and <code>comparison.hpp</code></td>
 </tr>
 </table>
 */
