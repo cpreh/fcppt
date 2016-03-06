@@ -17,7 +17,8 @@
 #include <fcppt/config/external_end.hpp>
 
 
-int main()
+int
+main()
 {
 	fcppt::string const s(
 		FCPPT_TEXT("test")

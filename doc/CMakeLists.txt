@@ -168,6 +168,7 @@ set(
 	examples/signal/simple.cpp
 	examples/signal/unregister.cpp
 	examples/smart_ptr_deleter.cpp
+	examples/string.cpp
 	examples/string_conversion.cpp
 	examples/strong_typedef.cpp
 	examples/type_iso.cpp

@@ -11,7 +11,8 @@
 	<li>\ref fcpptstring_motivation</li>
 	<li>\ref fcpptstring_conversions</li>
 	<li>\ref fcpptstring_streams</li>
-	<li>\ref fcpptstring_lexical_casts</li>
+	<li>\ref fcpptstring_lexical_conversions</li>
+	<li>\ref fcpptstring_exception</li>
 </ul>
 
 </td>
@@ -20,19 +21,16 @@
 
 \section fcpptstring_motivation Motivation
 
-In C++, there are two character types: <code>char</code> and
+In C++ there are two main character types: <code>char</code> and
 <code>wchar_t</code>. <code>char</code> is always 1 byte long, the size of
 <code>wchar_t</code> is implementation-defined. In Windows, it's 2, in Linux,
 it's often 4.  Consequently, there are two types of character literals: narrow
 and wide literals, as such:
 
-\code
-char const [] chars = "foobar";
-wchar_t const [] wchars = L"foobar";
-\endcode
+\snippet string.cpp literals
 
 Depending on the operating system, one of these character types is the "native"
-one.  System functions like <code>CreateFile</code> in Windows accept
+one. System functions like <code>CreateFile</code> in Windows accept
 <code>wchar_t</code>. In Linux, calls like <code>open</code> accept
 <code>char</code>. Along with the different types go different
 <em>encodings</em>. Windows uses UTF-16 for (<code>wchar_t</code>) strings such
@@ -42,37 +40,33 @@ the current <em>locale</em> specifies. On most systems, this is UTF-8 for
 
 When you're designing a library that frequently calls system functions, it's
 most efficient to use a string format that suits the current operating system.
-With that in mind, fcppt has a typedef called fcppt::char_type. This typedef is
-<code>wchar_t</code> on Windows systems and <code>char</code> on POSIX systems.
-It's configurable, however, so using <code>wchar_t</code> on POSIX is possible,
-too (see the <code>ENABLE_NARROW_STRING</code> cmake option). Based on that,
-there's fcppt::string which is a <code>std::%basic_string</code>.
+With that in mind, fcppt has a typedef called \link fcppt::char_type\endlink.
+This typedef is <code>wchar_t</code> on Windows systems and <code>char</code>
+on POSIX systems. It's configurable, however, so using <code>wchar_t</code> on
+POSIX is possible, too (see the <code>ENABLE_NARROW_STRING</code> cmake
+option). Based on that, there's \link fcppt::string\endlink which is a
+<code>std::%basic_string</code>.
 
 Unfortunately, making the character type configurable has some ramifications.
 For example, you cannot simply write:
 
 \code
-fcppt::string s = "foo";
+fcppt::string s("foo");
 \endcode
 
-This will break on Windows, because <code>"foo"</code> is a narrow-string
-literal and fcppt::string will be a wide string. To portably wrap literals, use
-the <code>FCPPT_TEXT</code> macro:
+This will break if \link fcppt::string\endlink is a wide string.  To portably
+wrap literals, use the \link FCPPT_TEXT\endlink macro:
 
-\code
-fcppt::string s = FCPPT_TEXT("foo");
-\endcode
+\snippet string.cpp text_literal
 
 There are other standard library structures such as <code>cout,clog,cin</code>
-which you cannot reliably use together with fcppt::string. fcppt provides
-alternatives for these (see the members of the string module in the
+which you cannot reliably use together with \link fcppt::string\endlink. fcppt
+provides alternatives for these (see the members of the string module in the
 documentation for a list of all related functions and structures).
 
 \section fcpptstring_conversions Conversions
 
-Of course, you would like to "pack" and "unpack" fcppt::string to std::string
-and std::wstring, respectively. The following functions do just that (see below
-for the description of fcppt::string_conv_locale):
+The following functions can be used to convert from and to strings:
 
 <table>
 <tr>
@@ -80,28 +74,28 @@ for the description of fcppt::string_conv_locale):
 <th>Conversion description</th>
 </tr>
 <tr>
-<td>fcppt::from_std_string</td>
-<td>std::string → fcppt::string using fcppt::string_conv_locale</td>
+<td>\link fcppt::from_std_string\endlink</td>
+<td><code>std::string → fcppt::string</code> using \link fcppt::string_conv_locale\endlink</td>
 </tr>
 <tr>
-<td>fcppt::from_std_string_locale</td>
-<td>std::string → fcppt::string using the specified locale</td>
+<td>\link fcppt::from_std_string_locale\endlink</td>
+<td><code>std::string → fcppt::string</code> using the specified locale</td>
 </tr>
 <tr>
-<td>fcppt::from_std_wstring</td>
-<td>std::wstring → fcppt::string using fcppt::string_conv_locale</td>
+<td>\link fcppt::from_std_wstring\endlink</td>
+<td><code>std::wstring → fcppt::string</code> using \link fcppt::string_conv_locale \endlink</td>
 </tr>
 <tr>
-<td>fcppt::from_std_wstring_locale</td>
-<td>std::wstring → fcppt::string using the specified locale</td>
+<td>\link fcppt::from_std_wstring_locale\endlink</td>
+<td><code>std::wstring → fcppt::string</code> using the specified locale</td>
 </tr>
 <tr>
-<td>fcppt::to_std_string</td>
-<td>fcppt::string → std::string using fcppt::string_conv_locale</td>
+<td>\link fcppt::to_std_string\endlink</td>
+<td><code>fcppt::string → std::string</code> using \link fcppt::string_conv_locale\endlink</td>
 </tr>
 <tr>
-<td>fcppt::to_std_wstring</td>
-<td>fcppt::string → std::string using fcppt::string_conv_locale</td>
+<td>\link fcppt::to_std_wstring\endlink</td>
+<td><codE>fcppt::string → std::string</codE> using \link fcppt::string_conv_locale\endlink</td>
 </tr>
 </table>
 
@@ -116,10 +110,10 @@ to std::wstring on a typical Linux machine means converting UTF-8 to UTF-32.
 The C locale, however, has no information about these encodings, so it cannot
 work properly.
 
-Note that fcppt::string is <strong>not</strong> intended to be used "between"
-platforms. Writing an fcppt::string to a file (see below) on a Linux machine
-and reading it back in on a Windows machine will, probably does not work! Use
-the string for internal stuff, only.
+Note that \link fcppt::string\endlink is <strong>not</strong> intended to be
+used "between" platforms. Writing an \link fcppt::string\endlink to a file (see
+below) on a Linux machine and reading it back in on a Windows machine probably
+does not work.
 
 Here is a small exmaple:
 
@@ -128,67 +122,24 @@ Here is a small exmaple:
 \section fcpptstring_streams IO streams and other adaptors
 
 To read in or write out files using the system's native character type, you can
-use the typedefs in the fcppt::io namespace, namely fcppt::io::ifstream,
-fcppt::io::ofstream, and so on. Note that these are not typedefs to the
-standard library streams, but to boost::filesystem streams. These streams take
-a filesystem path object in the constructor instead of a <code>const char *</code>.
-A filesystem path can be converted to a fcppt::string, so you don't have to
-worry about conversions here.
+use the typedefs in the \link fcppt::io\endlink namespace, namely \link
+fcppt::io::ifstream\endlink, \link fcppt::io::ofstream \endlink, and so on.
+Note that these are not typedefs to the standard library streams, but to
+<code>boost::filesystem</code> streams. These streams take a filesystem path
+object in the constructor instead of a <code>const char *</code>.
 
-There are also preprocessor macros, currently <code>FCPPT_PP_STRINGIZE</code>
-and <code>FCPPT_PP_FILE</code> to provide compatibility with fcppt::string.
-<code>FCPPT_PP_STRINGIZE</code> stringizes its argument to a fcppt::string
-literal (so either wide or narrow). In the same fashion,
-<code>FCPPT_PP_FILE</code> adapts the standard macro
-<code>__FILE__</code> to return a fcppt::string literal.
+There are also preprocessor macros, currently \link FCPPT_PP_STRINGIZE\endlink
+and \link FCPPT_PP_FILE\endlink to provide compatibility with \link
+fcppt::string\endlink. \link FCPPT_PP_STRINGIZE\endlink stringizes its
+argument to an \link fcppt::string\endlink literal. In the same fashion, \link
+FCPPT_PP_FILE\endlink adapts the standard macro <code>__FILE__</code> to return
+an \link fcppt::string\endlink literal.
 
-\section fcpptstring_lexical_casts Lexical casts
+\section fcpptstring_lexical_conversions Lexical Conversions
 
-Often, you want to convert something (a number, for example) to a string. Or,
-you want to extract a number from a string. This is what's called "lexical
-casting". boost provides <a
-href="http://www.boost.org/doc/libs/1_49_0/doc/html/boost_lexical_cast.html">boost.lexical_cast</a>,
-which can symmetrically cast in ways:
-
-\code
-#include <boost/lexical_cast.hpp>
-
-int main()
-{
-	std::string s = "1.0";
-	double d = boost::lexical_cast<double>(s);
-	s = boost::lexical_cast<std::string>(d);
-}
-\endcode
-
-It uses <code>operator&lt;&lt;</code> and <code>operator&gt;&gt;</code> to do
-the conversions, which is convenient.
-
-Casting both ways is also not a real problem per se. However,
-<code>lexical_cast</code> allows too many conversions. For example,
-
-\code
-boost::lexical_cast<float>(3)
-\endcode
-
-is valid, so you can misuse <code>lexical_cast</code> as a numeric cast. Also, the following
-
-\code
-std::cout << boost::lexical_cast<char *>(std::string("foobar"));
-\endcode
-
-compiles, but at runtime fails with an exception. So there's much room for
-errors with lexical cast. Also, throwing an exception on a bad conversion
-really should be optional. Maybe you've proven that a conversion is definitely
-safe, so you don't want any overhead because of exception throwing and
-handling. That's not possible with <code>lexical_cast</code>.
-
-For these reasons, we felt the need to create something that's both
-unidirectional (meaning you have "from string" and "to string" functions
-separately), safer and a little bit more flexible. This resulted in the
-following functions (where <code>T</code> is a type with an
-<code>operator&lt;&lt;</code> or <code>operator&gt;&gt;</code>,
-respectively, and <code>CharT</code> is <code>char</code> or <code>wchar_t</code>):
+Lexical conversions deal with conversions from and to strings. In C++ this is
+done using <code>operator<<</code> and <code>operator>></code>. Fcppt wraps
+these into the following functions:
 
 <table>
 <tr>
@@ -196,24 +147,36 @@ respectively, and <code>CharT</code> is <code>char</code> or <code>wchar_t</code
 <th>Description</th>
 </tr>
 <tr>
-<td>fcppt::extract_from_string</td>
-<td><code>basic_string<CharT></code> → <code>fcppt::optional<T></code></td>
+<td>\link fcppt::extract_from_string\endlink</td>
+<td><code>basic_string<CharT> → fcppt::optional::object<T></code></td>
 </tr>
 <tr>
-<td>fcppt::insert_to_std_string</td>
-<td><code>T</code> → <code>std::string</code></td>
+<td>\link fcppt::insert_to_std_string\endlink</td>
+<td><code>T → std::string</code></td>
 </tr>
 <tr>
-<td>fcppt::insert_to_std_wstring</td>
-<td><code>T</code> → <code>std::wstring</code></td>
+<td>\link fcppt::insert_to_std_wstring\endlink</td>
+<td><code>T → std::wstring</code></td>
 </tr>
 <tr>
-<td>fcppt::insert_to_fcppt_string</td>
-<td><code>T</code> → <code>fcppt::string</code></td>
+<td>\link fcppt::insert_to_fcppt_string\endlink</td>
+<td><code>T → fcppt::string</code></td>
 </tr>
 <tr>
-<td>fcppt::insert_to_string</td>
-<td><code>T</code> → <code>basic_string<CharT></code></td>
+<td>\link fcppt::insert_to_string\endlink</td>
+<td><code>T → basic_string<CharT></code></td>
 </tr>
 </table>
+
+\section fcpptstring_exception Exceptions
+
+C++ offers standard exceptions in the <code>\<stdexcept\></code> header. All of
+them use <code>std::string</code> which does not go well together with \link
+fcppt::string\endlink. Fcppt instead defines its own exception base class:
+\link fcppt::exception\endlink. Although it derives from
+<code>std::exception</code>, its <code>what()</code> function returns a default
+message only. To get the error message of an \link fcppt::exception\endlink,
+use \link fcppt::exception::string\endlink.
+
+\snippet string.cpp exception
 */
