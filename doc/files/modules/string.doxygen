@@ -200,10 +200,6 @@ respectively, and <code>CharT</code> is <code>char</code> or <code>wchar_t</code
 <td><code>basic_string<CharT></code> → <code>fcppt::optional<T></code></td>
 </tr>
 <tr>
-<td>fcppt::extract_from_string_exn</td>
-<td><code>basic_string<CharT></code> → <code>T</code>, failure results in a fcppt::extract_from_string_error exception</td>
-</tr>
-<tr>
 <td>fcppt::insert_to_std_string</td>
 <td><code>T</code> → <code>std::string</code></td>
 </tr>

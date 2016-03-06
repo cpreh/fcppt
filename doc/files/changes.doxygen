@@ -144,6 +144,12 @@
 	</ul>
 </li>
 
+<li>\ref fcpptstring
+	<ul>
+	<li>Removed <code>fcppt::extract_from_string_exn</code>.</li>
+	</ul>
+</li>
+
 </ul>
 
 

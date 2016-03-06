@@ -4,7 +4,6 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/extract_from_string_exn.hpp>
 #include <fcppt/make_unique_ptr.hpp>
 #include <fcppt/unique_ptr.hpp>
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
@@ -37,7 +36,7 @@ FCPPT_PP_POP_WARNING
 	>
 	variant;
 
-	int const result(
+	std::string const result(
 		fcppt::variant::match(
 			variant(
 				42
@@ -47,25 +46,23 @@ FCPPT_PP_POP_WARNING
 			)
 			{
 				return
-					_value;
+					std::to_string(
+						_value
+					);
 			},
 			[](
 				std::string const &_value
 			)
 			{
 				return
-					fcppt::extract_from_string_exn<
-						int
-					>(
-						_value
-					);
+					_value;
 			}
 		)
 	);
 
 	BOOST_CHECK_EQUAL(
 		result,
-		42
+		"42"
 	);
 }
 
@@ -93,7 +90,7 @@ FCPPT_PP_POP_WARNING
 	>
 	variant;
 
-	int const result(
+	std::string const result(
 		fcppt::variant::match(
 			variant(
 				fcppt::make_unique_ptr<
@@ -107,24 +104,22 @@ FCPPT_PP_POP_WARNING
 			)
 			{
 				return
-					*_value;
+					std::to_string(
+						*_value
+					);
 			},
 			[](
 				std::string const &_value
 			)
 			{
 				return
-					fcppt::extract_from_string_exn<
-						int
-					>(
-						_value
-					);
+					_value;
 			}
 		)
 	);
 
 	BOOST_CHECK_EQUAL(
 		result,
-		42
+		"42"
 	);
 }

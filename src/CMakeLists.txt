@@ -363,8 +363,6 @@ set(
 	include/fcppt/error/strerror.hpp
 	include/fcppt/exception.hpp
 	include/fcppt/extract_from_string.hpp
-	include/fcppt/extract_from_string_error.hpp
-	include/fcppt/extract_from_string_exn.hpp
 	include/fcppt/format.hpp
 	include/fcppt/from_std_string.hpp
 	include/fcppt/from_std_string_locale.hpp
@@ -382,7 +380,6 @@ set(
 	include/fcppt/homogenous_pair_output.hpp
 	include/fcppt/identity.hpp
 	include/fcppt/impl/exception.hpp
-	include/fcppt/impl/extract_from_string_error.hpp
 	include/fcppt/insert_to_fcppt_string.hpp
 	include/fcppt/insert_to_std_string.hpp
 	include/fcppt/insert_to_std_wstring.hpp

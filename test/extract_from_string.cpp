@@ -5,8 +5,6 @@
 
 
 #include <fcppt/extract_from_string.hpp>
-#include <fcppt/extract_from_string_error.hpp>
-#include <fcppt/extract_from_string_exn.hpp>
 #include <fcppt/string.hpp>
 #include <fcppt/text.hpp>
 #include <fcppt/optional/comparison.hpp>
@@ -19,20 +17,6 @@
 #include <boost/test/unit_test.hpp>
 #include <fcppt/config/external_end.hpp>
 
-
-namespace
-{
-
-bool
-check_exception(
-	fcppt::extract_from_string_error const &
-)
-{
-	return
-		true;
-}
-
-}
 
 FCPPT_PP_PUSH_WARNING
 FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
@@ -66,15 +50,14 @@ FCPPT_PP_POP_WARNING
 		)
 	);
 
-	BOOST_REQUIRE_EXCEPTION(
-		fcppt::extract_from_string_exn<
+	BOOST_CHECK_EQUAL(
+		fcppt::extract_from_string<
 			int
 		>(
 			fcppt::string(
 				FCPPT_TEXT("abc")
 			)
 		),
-		fcppt::extract_from_string_error,
-		check_exception
+		opt_int{}
 	);
 }
