@@ -5,7 +5,7 @@ function(
 	make_fcppt_example(
 		${MAINNAME}
 		SUBNAME
-			mathvector
+			math_vector
 		${ARGN}
 	)
 endfunction()
