@@ -210,7 +210,7 @@ fcppt::cyclic_iterator<
 	return
 		it_
 		==
-		_other.it;
+		_other.it_;
 }
 
 template<

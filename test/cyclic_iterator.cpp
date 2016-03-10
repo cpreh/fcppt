@@ -41,12 +41,16 @@ FCPPT_PP_POP_WARNING
 		int3_array::const_iterator
 	> iterator;
 
-	iterator test(
+	iterator const start(
 		array.begin(),
 		iterator::boundary{
 			array.begin(),
 			array.end()
 		}
+	);
+
+	iterator test(
+		start
 	);
 
 	BOOST_REQUIRE_EQUAL(
@@ -122,5 +126,13 @@ FCPPT_PP_POP_WARNING
 	BOOST_REQUIRE_EQUAL(
 		*test,
 		3
+	);
+
+	++test;
+
+	BOOST_CHECK(
+		test
+		==
+		start
 	);
 }
