@@ -7,9 +7,9 @@
 #include <fcppt/make_unique_ptr.hpp>
 #include <fcppt/unique_ptr_impl.hpp>
 #include <fcppt/assign/make_container.hpp>
-#include <fcppt/either/sequence.hpp>
 #include <fcppt/either/object.hpp>
 #include <fcppt/either/output.hpp>
+#include <fcppt/either/sequence.hpp>
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
