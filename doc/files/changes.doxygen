@@ -141,6 +141,7 @@
 <li>\ref fcpptio
 	<ul>
 	<li>Removed <code>fcppt::io::read_exn</code>.</li>
+	<li>Removed <code>fcppt::io::raw_container_source</code>.</li>
 	</ul>
 </li>
 

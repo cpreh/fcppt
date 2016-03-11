@@ -480,10 +480,6 @@ add_fcppt_test(
 )
 
 add_fcppt_test(
-	io/raw_container_source
-)
-
-add_fcppt_test(
 	literal
 )
 

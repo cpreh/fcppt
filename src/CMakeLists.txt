@@ -410,10 +410,6 @@ set(
 	include/fcppt/io/optional_buffer_fwd.hpp
 	include/fcppt/io/ostream.hpp
 	include/fcppt/io/ostringstream.hpp
-	include/fcppt/io/raw_container_source.hpp
-	include/fcppt/io/raw_container_source_decl.hpp
-	include/fcppt/io/raw_container_source_fwd.hpp
-	include/fcppt/io/raw_container_source_impl.hpp
 	include/fcppt/io/read.hpp
 	include/fcppt/io/read_chars.hpp
 	include/fcppt/io/scoped_rdbuf.hpp
