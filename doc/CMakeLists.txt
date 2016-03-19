@@ -630,6 +630,7 @@ set(
 	include/fcppt/function_decl.hpp
 	include/fcppt/function_fwd.hpp
 	include/fcppt/function_impl.hpp
+	include/fcppt/getenv.hpp
 	include/fcppt/homogenous_pair.hpp
 	include/fcppt/homogenous_pair_comparison.hpp
 	include/fcppt/homogenous_pair_decl.hpp
@@ -1077,6 +1078,8 @@ set(
 	include/fcppt/optional/reference_fwd.hpp
 	include/fcppt/optional/static_cast.hpp
 	include/fcppt/optional/to_exception.hpp
+	include/fcppt/optional_std_string.hpp
+	include/fcppt/optional_std_string_fwd.hpp
 	include/fcppt/optional_string.hpp
 	include/fcppt/optional_string_fwd.hpp
 	include/fcppt/preprocessor/const.hpp

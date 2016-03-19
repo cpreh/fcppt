@@ -86,6 +86,7 @@
 	<li>Added \link fcppt::args\endlink.</li>
 	<li>\link fcppt::cyclic_iterator\endlink can now be a random-access
 	iterator.</li>
+	<li>Added \link fcppt::getenv\endlink.</li>
 	</ul>
 </li>
 

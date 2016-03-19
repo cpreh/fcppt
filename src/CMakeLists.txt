@@ -372,6 +372,7 @@ set(
 	include/fcppt/function_decl.hpp
 	include/fcppt/function_fwd.hpp
 	include/fcppt/function_impl.hpp
+	include/fcppt/getenv.hpp
 	include/fcppt/homogenous_pair.hpp
 	include/fcppt/homogenous_pair_comparison.hpp
 	include/fcppt/homogenous_pair_decl.hpp
@@ -702,6 +703,8 @@ set(
 	include/fcppt/no_init_fwd.hpp
 	include/fcppt/nonassignable.hpp
 	include/fcppt/noncopyable.hpp
+	include/fcppt/optional_std_string.hpp
+	include/fcppt/optional_std_string_fwd.hpp
 	include/fcppt/optional_string.hpp
 	include/fcppt/optional_string_fwd.hpp
 	include/fcppt/preprocessor/const.hpp
@@ -949,6 +952,7 @@ set(
 	src/from_std_string_locale.cpp
 	src/from_std_wstring.cpp
 	src/from_std_wstring_locale.cpp
+	src/getenv.cpp
 	src/include/fcppt/impl/codecvt.hpp
 	src/include/fcppt/impl/codecvt_type.hpp
 	src/include/fcppt/impl/export_class_instantiation.hpp
