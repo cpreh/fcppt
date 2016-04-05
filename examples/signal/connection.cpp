@@ -65,9 +65,7 @@ main()
 				void_signal::function{
 					::function1
 				}
-			)
-		)
-		(
+			),
 			signal.connect(
 				void_signal::function{
 					::function2

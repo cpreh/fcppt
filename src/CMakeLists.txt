@@ -95,13 +95,7 @@ set(
 	include/fcppt/assert/unreachable.hpp
 	include/fcppt/assert/unreachable_message.hpp
 	include/fcppt/assert_complete.hpp
-	include/fcppt/assign/detail/make_container_opt.hpp
-	include/fcppt/assign/detail/make_opt.hpp
-	include/fcppt/assign/impl/make_container.hpp
-	include/fcppt/assign/impl/make_map.hpp
 	include/fcppt/assign/make_container.hpp
-	include/fcppt/assign/make_container_opt.hpp
-	include/fcppt/assign/make_map.hpp
 	include/fcppt/backtrace/current_stack_frame.hpp
 	include/fcppt/backtrace/print_current_stack_frame.hpp
 	include/fcppt/backtrace/stack_frame.hpp

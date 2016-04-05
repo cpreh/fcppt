@@ -1,5 +1,4 @@
-//          Copyright Carl Philipp Reh 2009 - 2015.
-//          Copyright Philipp Middendorf 2009 - 2015.
+//          Copyright Carl Philipp Reh 2009 - 2016.
 // Distributed under the Boost Software License, Version 1.0.
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
@@ -8,6 +7,13 @@
 #ifndef FCPPT_ASSIGN_MAKE_CONTAINER_HPP_INCLUDED
 #define FCPPT_ASSIGN_MAKE_CONTAINER_HPP_INCLUDED
 
+#include <fcppt/reference_impl.hpp>
+#include <fcppt/algorithm/map.hpp>
+#include <fcppt/config/external_begin.hpp>
+#include <array>
+#include <utility>
+#include <fcppt/config/external_end.hpp>
+
 
 namespace fcppt
 {
@@ -15,41 +21,54 @@ namespace assign
 {
 
 /**
-\brief Creates a container using <code>operator()</code> syntax.
+\brief Creates a container from variadic arguments by moving.
 
 \ingroup fcpptassign
 */
 template<
-	typename Container
+	typename Container,
+	typename... Args
 >
-class make_container
+inline
+Container
+make_container(
+	Args &&... _args
+)
 {
-public:
 	typedef
-	Container
-	container_type;
+	fcppt::reference<
+		typename
+		Container::value_type
+	>
+	reference_type;
 
-	explicit
-	make_container(
-		typename container_type::value_type &&
-	);
-
-	make_container &
-	operator()(
-		typename container_type::value_type &&
-	);
-
-	operator Container &&();
-
-	container_type &&
-	move_container();
-private:
-	container_type container_;
-};
+	return
+		fcppt::algorithm::map<
+			Container
+		>(
+			std::array<
+				reference_type,
+				sizeof...(
+					Args
+				)
+			>{{
+				reference_type(
+					_args
+				)...
+			}},
+			[](
+				reference_type const _ref
+			)
+			{
+				return
+					std::move(
+						_ref.get()
+					);
+			}
+		);
+}
 
 }
 }
-
-#include <fcppt/assign/impl/make_container.hpp>
 
 #endif

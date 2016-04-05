@@ -139,6 +139,13 @@
 	</ul>
 </li>
 
+<li>\ref fcpptassign
+	<ul>
+	<li>Removed <code>fcppt::assign::make_container_opt</code>.</li>
+	<li>Removed <code>fcppt::assign::make_map</code>.</li>
+	</ul>
+</li>
+
 <li>\ref fcpptio
 	<ul>
 	<li>Removed <code>fcppt::io::read_exn</code>.</li>

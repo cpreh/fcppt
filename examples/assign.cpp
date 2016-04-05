@@ -33,8 +33,7 @@ main()
 				int
 			>(
 				1
-			)
-		)(
+			),
 			fcppt::make_unique_ptr<
 				int
 			>(

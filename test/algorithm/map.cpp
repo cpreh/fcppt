@@ -57,15 +57,13 @@ FCPPT_PP_POP_WARNING
 				int
 			>(
 				1
-			)
-		)(
+			),
 			fcppt::make_unique_ptr<
 				int
 			>(
 				2
 			)
 		)
-		.move_container()
 	};
 
 	int_vector const result(

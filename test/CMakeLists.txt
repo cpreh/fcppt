@@ -160,14 +160,6 @@ add_fcppt_test(
 )
 
 add_fcppt_test(
-	assign/make_container_opt
-)
-
-add_fcppt_test(
-	assign/make_map
-)
-
-add_fcppt_test(
 	bit
 )
 

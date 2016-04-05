@@ -115,14 +115,13 @@ FCPPT_PP_POP_WARNING
 					int
 				>(
 					1
-				)
-			)(
+				),
 				fcppt::make_unique_ptr<
 					int
 				>(
 					2
 				)
-			).move_container(),
+			),
 			fcppt::assign::make_container<
 				int_unique_ptr_vector
 			>(
@@ -130,14 +129,13 @@ FCPPT_PP_POP_WARNING
 					int
 				>(
 					3
-				)
-			)(
+				),
 				fcppt::make_unique_ptr<
 					int
 				>(
 					4
 				)
-			).move_container(),
+			),
 			fcppt::assign::make_container<
 				int_unique_ptr_vector
 			>(
@@ -145,14 +143,13 @@ FCPPT_PP_POP_WARNING
 					int
 				>(
 					5
-				)
-			)(
+				),
 				fcppt::make_unique_ptr<
 					int
 				>(
 					6
 				)
-			).move_container()
+			)
 		)
 	);
 

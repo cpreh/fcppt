@@ -13,7 +13,6 @@
 				"include/fcppt/cyclic_iterator.*",
 				"include/fcppt/signal/.*",
 				"src/signal/.*",
-				"include/fcppt/assign/.*",
 				"include/fcppt/scoped_state_machine.*",
 				"include/fcppt/math/clamp.hpp",
 				"include/fcppt/math/step.hpp",

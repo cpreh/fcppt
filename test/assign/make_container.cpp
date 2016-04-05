@@ -35,10 +35,8 @@ FCPPT_PP_POP_WARNING
 		fcppt::assign::make_container<
 			sequence
 		>(
-			3
-		)(
-			4
-		)(
+			3,
+			4,
 			5
 		)
 	);
@@ -83,10 +81,8 @@ FCPPT_PP_POP_WARNING
 		fcppt::assign::make_container<
 			set
 		>(
-			3
-		)(
-			4
-		)(
+			3,
+			4,
 			5
 		)
 	);
@@ -132,12 +128,11 @@ FCPPT_PP_POP_WARNING
 		fcppt::assign::make_container<
 			map
 		>(
-			std::make_pair(
+			map::value_type(
 				3,
 				2
-			)
-		)(
-			std::make_pair(
+			),
+			map::value_type(
 				4,
 				5
 			)

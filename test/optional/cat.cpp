@@ -115,11 +115,9 @@ FCPPT_PP_POP_WARNING
 					>(
 						42
 					)
-				)
-			)(
+				),
 				optional_int_unique_ptr()
 			)
-			.move_container()
 		)
 	);
 

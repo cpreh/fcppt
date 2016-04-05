@@ -171,8 +171,7 @@ FCPPT_PP_POP_WARNING
 					>(
 						10
 					)
-				}
-			)(
+				},
 				either_int{
 					fcppt::make_unique_ptr<
 						int
@@ -181,7 +180,6 @@ FCPPT_PP_POP_WARNING
 					)
 				}
 			)
-			.move_container()
 		)
 	);
 
