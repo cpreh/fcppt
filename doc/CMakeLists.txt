@@ -516,7 +516,6 @@ set(
 	include/fcppt/cyclic_iterator_decl.hpp
 	include/fcppt/cyclic_iterator_fwd.hpp
 	include/fcppt/cyclic_iterator_impl.hpp
-	include/fcppt/decltype_sink.hpp
 	include/fcppt/default_deleter.hpp
 	include/fcppt/default_deleter_fwd.hpp
 	include/fcppt/detail/call_destructor.hpp
@@ -524,7 +523,6 @@ set(
 	include/fcppt/detail/check_cpp.hpp
 	include/fcppt/detail/const.hpp
 	include/fcppt/detail/cyclic_iterator_base.hpp
-	include/fcppt/detail/decltype_sink.hpp
 	include/fcppt/detail/enum_iterator_base.hpp
 	include/fcppt/detail/equal.hpp
 	include/fcppt/detail/equal_functor.hpp
@@ -1225,7 +1223,6 @@ set(
 	include/fcppt/tag.hpp
 	include/fcppt/tag_fwd.hpp
 	include/fcppt/tag_type.hpp
-	include/fcppt/tag_value.hpp
 	include/fcppt/text.hpp
 	include/fcppt/time/ctime.hpp
 	include/fcppt/time/exception.hpp

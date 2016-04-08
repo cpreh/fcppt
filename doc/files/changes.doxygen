@@ -3,6 +3,14 @@
 
 \section changes_changes_to_210 Changes from 2.0.0 to 2.1.0
 
+\subsection changes_general_to_210 General changes
+
+<ul>
+<li>
+	<b>VC++ from Visual Studio 2015 Update 2</b> is now supported.
+</li>
+</ul>
+
 \subsection changes_added_functionality_to_210 Added functionality
 
 <ul>
@@ -87,6 +95,7 @@
 	<li>\link fcppt::cyclic_iterator\endlink can now be a random-access
 	iterator.</li>
 	<li>Added \link fcppt::getenv\endlink.</li>
+	<li>ADded \link FCPPT_USE\endlink.</li>
 	</ul>
 </li>
 
@@ -162,6 +171,13 @@
 <li>\ref fcpptstring
 	<ul>
 	<li>Removed <code>fcppt::extract_from_string_exn</code>.</li>
+	</ul>
+</li>
+
+<li>\ref fcpptvarious
+	<ul>
+	<li>Removed <code>FCPPT_DECLTYPE_SINK</code>.</li>
+	<li>Removed <code>fcppt::tag_value</code>.</li>
 	</ul>
 </li>
 
@@ -324,13 +340,13 @@
 
 <li>\ref fcpptvarious
 	<ul>
-	<li>Added \link FCPPT_DECLTYPE_SINK\endlink which returns
+	<li>Added <code>FCPPT_DECLTYPE_SINK</code> which returns
 	<code>decltype</code> of an expression and also uses it. This is useful
 	in polymorphic lambdas where the argument is only used for its
 	type.</li>
 	<li>Added \link fcppt::tag_type\endlink which extracts the type of an
 	\link fcppt::tag\endlink.</li>
-	<li>Added \link fcppt::tag_value\endlink to extract a
+	<li>Added <code>fcppt::tag_value</code> to extract a
 	default-constructed value of a tag, which is useful for integral
 	constants.</li>
 	</ul>
