@@ -4,6 +4,7 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
+#include <fcppt/algorithm/contains.hpp>
 #include <fcppt/container/grid/moore_neighbor_array.hpp>
 #include <fcppt/container/grid/moore_neighbors.hpp>
 #include <fcppt/container/grid/pos.hpp>
@@ -40,9 +41,8 @@ contains_element(
 )
 {
 	return
-		std::find(
-			_result.begin(),
-			_result.end(),
+		fcppt::algorithm::contains(
+			_result,
 			_pos
 		);
 }

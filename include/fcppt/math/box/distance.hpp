@@ -7,6 +7,7 @@
 #ifndef FCPPT_MATH_BOX_DISTANCE_HPP_INCLUDED
 #define FCPPT_MATH_BOX_DISTANCE_HPP_INCLUDED
 
+#include <fcppt/use.hpp>
 #include <fcppt/math/interval_distance.hpp>
 #include <fcppt/math/size_type.hpp>
 #include <fcppt/math/box/interval.hpp>
@@ -60,15 +61,19 @@ distance(
 				auto const _index
 			)
 			{
+				FCPPT_USE(
+					_index
+				);
+
 				return
 					fcppt::math::interval_distance(
 						fcppt::math::box::interval<
-							_index
+							_index()
 						>(
 							_box1
 						),
 						fcppt::math::box::interval<
-							_index
+							_index()
 						>(
 							_box2
 						)

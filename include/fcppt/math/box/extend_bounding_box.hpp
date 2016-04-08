@@ -9,6 +9,7 @@
 #define FCPPT_MATH_BOX_EXTEND_BOUNDING_BOX_HPP_INCLUDED
 
 #include <fcppt/make_homogenous_pair.hpp>
+#include <fcppt/use.hpp>
 #include <fcppt/math/at_c.hpp>
 #include <fcppt/math/size_type.hpp>
 #include <fcppt/math/box/init_max.hpp>
@@ -68,28 +69,32 @@ extend_bounding_box(
 				auto const _index
 			)
 			{
+				FCPPT_USE(
+					_index
+				);
+
 				return
 					fcppt::make_homogenous_pair(
 						std::min(
 							fcppt::math::at_c<
-								_index
+								_index()
 							>(
 								_pos
 							),
 							fcppt::math::at_c<
-								_index
+								_index()
 							>(
 								_box.pos()
 							)
 						),
 						std::max(
 							fcppt::math::at_c<
-								_index
+								_index()
 							>(
 								_pos
 							),
 							fcppt::math::at_c<
-								_index
+								_index()
 							>(
 								_box.max()
 							)
@@ -137,28 +142,32 @@ extend_bounding_box(
 				auto const _index
 			)
 			{
+				FCPPT_USE(
+					_index
+				);
+
 				return
 					fcppt::make_homogenous_pair(
 						std::min(
 							fcppt::math::at_c<
-								_index
+								_index()
 							>(
 								_box1.pos()
 							),
 							fcppt::math::at_c<
-								_index
+								_index()
 							>(
 								_box2.pos()
 							)
 						),
 						std::max(
 							fcppt::math::at_c<
-								_index
+								_index()
 							>(
 								_box1.max()
 							),
 							fcppt::math::at_c<
-								_index
+								_index()
 							>(
 								_box2.max()
 							)

@@ -87,7 +87,7 @@ function(
 	target_link_libraries(
 		${FCPPT_EXAMPLE_NAME}
 		PRIVATE
-		"${_LINK_LIBS}"
+		${_LINK_LIBS}
 	)
 endfunction()
 

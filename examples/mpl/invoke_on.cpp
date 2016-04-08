@@ -55,9 +55,9 @@ fcppt::variant::object<
 >
 color_variant;
 
-// Transforms a concrete color type into a color_variant. This functor will be
+// Transforms a concrete color type into a color_variant. This function will be
 // used with invoke_on.
-struct create_functor
+struct create_function
 {
 	typedef color_variant result_type;
 
@@ -93,7 +93,7 @@ make_color_variant(
 					_value
 				)
 			),
-			create_functor(),
+			create_function(),
 			[]()
 			-> color_variant
 			{

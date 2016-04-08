@@ -25,11 +25,11 @@ FCPPT_PP_POP_WARNING
 
 	typedef
 	fcppt::container::tree::object<
-		unsigned
+		int
 	>
-	ui_tree;
+	i_tree;
 
-	ui_tree tree(
+	i_tree tree(
 		1
 	);
 
@@ -43,7 +43,7 @@ FCPPT_PP_POP_WARNING
 
 	typedef
 	fcppt::container::tree::to_root<
-		ui_tree const
+		i_tree const
 	>
 	traversal_type;
 

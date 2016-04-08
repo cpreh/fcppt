@@ -7,7 +7,8 @@
 #ifndef FCPPT_MATH_DETAIL_COMPONENTWISE_EQUAL_HPP_INCLUDED
 #define FCPPT_MATH_DETAIL_COMPONENTWISE_EQUAL_HPP_INCLUDED
 
-#include <fcppt/tag_value.hpp>
+#include <fcppt/tag_type.hpp>
+#include <fcppt/use.hpp>
 #include <fcppt/algorithm/all_of.hpp>
 #include <fcppt/math/diff.hpp>
 #include <fcppt/math/int_range_count.hpp>
@@ -70,21 +71,27 @@ componentwise_equal(
 				auto const _index
 			)
 			{
-				auto const index(
-					fcppt::tag_value(
+				FCPPT_USE(
+					_index
+				);
+
+				typedef
+				fcppt::tag_type<
+					decltype(
 						_index
 					)
-				);
+				>
+				index;
 
 				return
 					fcppt::math::diff(
 						fcppt::math::detail::linear_access<
-							index
+							index::value
 						>(
 							_r1.storage()
 						),
 						fcppt::math::detail::linear_access<
-							index
+							index::value
 						>(
 							_r2.storage()
 						)

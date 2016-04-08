@@ -8,7 +8,7 @@
 #define FCPPT_MATH_MATRIX_DETAIL_INDEX_ABSOLUTE_HPP_INCLUDED
 
 #include <fcppt/math/size_type.hpp>
-#include <fcppt/math/matrix/index_impl.hpp>
+#include <fcppt/math/matrix/index.hpp>
 
 
 namespace fcppt

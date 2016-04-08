@@ -46,6 +46,7 @@ FCPPT_PP_DISABLE_VC_WARNING(4548) // expression before comma has no effect
 FCPPT_PP_DISABLE_VC_WARNING(4555) // expression has no effect
 FCPPT_PP_DISABLE_VC_WARNING(4610) // T can never be instantiated because of private ctors
 FCPPT_PP_DISABLE_VC_WARNING(4619) // invalid pragma warning
+FCPPT_PP_DISABLE_VC_WARNING(4623) // default constructor implicitly deleted
 FCPPT_PP_DISABLE_VC_WARNING(4625) // copy constructor could not be generated because of a base class
 FCPPT_PP_DISABLE_VC_WARNING(4626) // assignment operator could not be generated because of a base class
 FCPPT_PP_DISABLE_VC_WARNING(4640) // local static object

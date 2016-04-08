@@ -9,6 +9,7 @@
 #define FCPPT_MATH_MATRIX_ADJUGATE_HPP_INCLUDED
 
 #include <fcppt/literal.hpp>
+#include <fcppt/use.hpp>
 #include <fcppt/math/size_type.hpp>
 #include <fcppt/math/matrix/delete_row_and_column_static.hpp>
 #include <fcppt/math/matrix/determinant.hpp>
@@ -73,11 +74,15 @@ adjugate(
 				auto const _index
 			)
 			{
+				FCPPT_USE(
+					_index
+				);
+
 				T const coeff{
 					(
-						_index.row()
+						_index.row
 						+
-						_index.column()
+						_index.column
 					)
 					%
 					fcppt::literal<
@@ -114,8 +119,8 @@ adjugate(
 						fcppt::math::matrix::delete_row_and_column_static(
 							_matrix,
 							fcppt::math::matrix::index<
-								_index.column(),
-								_index.row()
+								_index.column,
+								_index.row
 							>{}
 						)
 					);

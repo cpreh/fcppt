@@ -7,7 +7,7 @@
 #ifndef FCPPT_MPL_INTEGRAL_CAST_TPL_HPP_INCLUDED
 #define FCPPT_MPL_INTEGRAL_CAST_TPL_HPP_INCLUDED
 
-#include <fcppt/cast/apply.hpp>
+#include <fcppt/mpl/detail/integral_cast_value.hpp>
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
@@ -38,12 +38,11 @@ struct integral_cast_tpl
 :
 std::integral_constant<
 	IntegralType,
-	fcppt::cast::apply<
+	fcppt::mpl::detail::integral_cast_value<
+		IntegralType,
 		Conv,
-		IntegralType
-	>(
-		Integral::value
-	)
+		Integral
+	>::value
 >
 {
 };

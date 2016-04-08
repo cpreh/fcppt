@@ -7,7 +7,8 @@
 #ifndef FCPPT_CONTAINER_GRID_MIN_LESS_SUP_HPP_INCLUDED
 #define FCPPT_CONTAINER_GRID_MIN_LESS_SUP_HPP_INCLUDED
 
-#include <fcppt/tag_value.hpp>
+#include <fcppt/tag_type.hpp>
+#include <fcppt/use.hpp>
 #include <fcppt/algorithm/all_of.hpp>
 #include <fcppt/container/grid/min.hpp>
 #include <fcppt/container/grid/size_type.hpp>
@@ -59,21 +60,27 @@ min_less_sup(
 				auto const _index
 			)
 			{
-				auto const index(
-					fcppt::tag_value(
+				FCPPT_USE(
+					_index
+				);
+
+				typedef
+				fcppt::tag_type<
+					decltype(
 						_index
 					)
-				);
+				>
+				index;
 
 				return
 					fcppt::math::at_c<
-						index
+						index::value
 					>(
 						_min.get()
 					)
 					<
 					fcppt::math::at_c<
-						index
+						index::value
 					>(
 						_sup.get()
 					);

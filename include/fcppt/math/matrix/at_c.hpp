@@ -10,7 +10,7 @@
 #include <fcppt/container/to_reference_type.hpp>
 #include <fcppt/math/at_c.hpp>
 #include <fcppt/math/size_type.hpp>
-#include <fcppt/math/matrix/index_impl.hpp>
+#include <fcppt/math/matrix/index.hpp>
 #include <fcppt/math/matrix/is_matrix.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <type_traits>

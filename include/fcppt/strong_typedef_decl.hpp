@@ -9,6 +9,9 @@
 
 #include <fcppt/strong_typedef_fwd.hpp>
 #include <fcppt/detail/strong_typedef/friend_operators.hpp>
+#include <fcppt/preprocessor/disable_vc_warning.hpp>
+#include <fcppt/preprocessor/pop_warning.hpp>
+#include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
@@ -16,6 +19,10 @@
 
 namespace fcppt
 {
+
+FCPPT_PP_PUSH_WARNING
+FCPPT_PP_DISABLE_VC_WARNING(4625)
+FCPPT_PP_DISABLE_VC_WARNING(4626)
 
 /**
 \brief Used to create strong typedefs
@@ -90,6 +97,8 @@ private:
 
 	T value_;
 };
+
+FCPPT_PP_POP_WARNING
 
 /**
 \brief Swap the contents of two strong typedefs

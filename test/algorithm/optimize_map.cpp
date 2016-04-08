@@ -14,6 +14,7 @@
 #include <fcppt/container/grid/pos_range.hpp>
 #include <fcppt/container/grid/pos_ref_range.hpp>
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
+#include <fcppt/preprocessor/disable_vc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/config/external_begin.hpp>
@@ -112,6 +113,7 @@ main()
 	FCPPT_PP_DISABLE_GCC_WARNING(-Wunneeded-member-function)
 	FCPPT_PP_DISABLE_GCC_WARNING(-Wunused-member-function)
 	#endif
+	FCPPT_PP_DISABLE_VC_WARNING(4822)
 
 	struct ra_range
 	{

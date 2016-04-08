@@ -566,9 +566,7 @@ set(
 	include/fcppt/math/matrix/has_dim.hpp
 	include/fcppt/math/matrix/identity.hpp
 	include/fcppt/math/matrix/index.hpp
-	include/fcppt/math/matrix/index_decl.hpp
 	include/fcppt/math/matrix/index_fwd.hpp
-	include/fcppt/math/matrix/index_impl.hpp
 	include/fcppt/math/matrix/infinity_norm.hpp
 	include/fcppt/math/matrix/init.hpp
 	include/fcppt/math/matrix/inverse.hpp
@@ -671,6 +669,7 @@ set(
 	include/fcppt/mpl/copy.hpp
 	include/fcppt/mpl/detail/flatten.hpp
 	include/fcppt/mpl/detail/for_each_break.hpp
+	include/fcppt/mpl/detail/integral_cast_value.hpp
 	include/fcppt/mpl/detail/print.hpp
 	include/fcppt/mpl/detail/print_one.hpp
 	include/fcppt/mpl/detail/runtime_index.hpp

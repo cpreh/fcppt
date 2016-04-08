@@ -15,6 +15,20 @@
 #include <fcppt/config/external_end.hpp>
 
 
+namespace
+{
+
+enum class my_enum
+{
+	test1,
+	test2,
+	test3,
+	fcppt_maximum = test3
+};
+
+}
+
+
 FCPPT_PP_PUSH_WARNING
 FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
 
@@ -23,14 +37,6 @@ BOOST_AUTO_TEST_CASE(
 )
 {
 FCPPT_PP_POP_WARNING
-
-	enum class my_enum
-	{
-		test1,
-		test2,
-		test3,
-		fcppt_maximum = test3
-	};
 
 	typedef
 	fcppt::container::enum_array<

@@ -8,7 +8,8 @@
 #define FCPPT_MATH_VECTOR_DOT_HPP_INCLUDED
 
 #include <fcppt/literal.hpp>
-#include <fcppt/tag_value.hpp>
+#include <fcppt/tag_type.hpp>
+#include <fcppt/use.hpp>
 #include <fcppt/algorithm/fold.hpp>
 #include <fcppt/math/at_c.hpp>
 #include <fcppt/math/int_range_count.hpp>
@@ -71,21 +72,29 @@ dot(
 				T const _sum
 			)
 			{
+				FCPPT_USE(
+					_index
+				);
+
+				typedef
+				fcppt::tag_type<
+					decltype(
+						_index
+					)
+				>
+				index;
+
 				return
 					_sum
 					+
 					fcppt::math::at_c<
-						fcppt::tag_value(
-							_index
-						)
+						index::value
 					>(
 						_left
 					)
 					*
 					fcppt::math::at_c<
-						fcppt::tag_value(
-							_index
-						)
+						index::value
 					>(
 						_right
 					);

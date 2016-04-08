@@ -7,7 +7,8 @@
 #ifndef FCPPT_CONTAINER_GRID_NEXT_POSITION_HPP_INCLUDED
 #define FCPPT_CONTAINER_GRID_NEXT_POSITION_HPP_INCLUDED
 
-#include <fcppt/tag_value.hpp>
+#include <fcppt/tag_type.hpp>
+#include <fcppt/use.hpp>
 #include <fcppt/algorithm/fold.hpp>
 #include <fcppt/container/grid/min.hpp>
 #include <fcppt/container/grid/pos.hpp>
@@ -84,40 +85,46 @@ next_position(
 				result_type _result
 			)
 			{
-				auto const index(
-					fcppt::tag_value(
+				FCPPT_USE(
+					_index
+				);
+
+				typedef
+				fcppt::tag_type<
+					decltype(
 						_index
 					)
-				);
+				>
+				index;
 
 				if(
 					fcppt::math::at_c<
-						index
+						index::value
 					>(
 						_result
 					)
 					==
 					fcppt::math::at_c<
-						index
+						index::value
 					>(
 						_sup.get()
 					)
 				)
 				{
 					fcppt::math::at_c<
-						index
+						index::value
 					>(
 						_result
 					) =
 						fcppt::math::at_c<
-							index
+							index::value
 						>(
 							_min.get()
 						);
 
 					++
 					fcppt::math::at_c<
-						index
+						index::value
 						+
 						1u
 					>(

@@ -7,6 +7,7 @@
 #ifndef FCPPT_MATH_MATRIX_INIT_HPP_INCLUDED
 #define FCPPT_MATH_MATRIX_INIT_HPP_INCLUDED
 
+#include <fcppt/use.hpp>
 #include <fcppt/math/detail/init.hpp>
 #include <fcppt/math/matrix/is_matrix.hpp>
 #include <fcppt/math/matrix/detail/index_absolute.hpp>
@@ -58,11 +59,17 @@ init(
 				auto const _absolute
 			)
 			{
+				FCPPT_USE(
+					_absolute
+				);
+
 				return
 					_function(
 						fcppt::math::matrix::detail::index_absolute<
 							Matrix::static_columns::value,
-							_absolute
+							decltype(
+								_absolute
+							)::value
 						>{}
 					);
 			}

@@ -97,7 +97,7 @@ corner_points(
 					_box.pos()
 					+
 					std::get<
-						_index
+						_index()
 					>(
 						corners
 					)

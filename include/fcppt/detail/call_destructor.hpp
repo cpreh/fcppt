@@ -7,6 +7,8 @@
 #ifndef FCPPT_DETAIL_CALL_DESTRUCTOR_HPP_INCLUDED
 #define FCPPT_DETAIL_CALL_DESTRUCTOR_HPP_INCLUDED
 
+#include <fcppt/use.hpp>
+
 
 namespace fcppt
 {
@@ -22,6 +24,10 @@ call_destructor(
 	Type const &_value
 )
 {
+	FCPPT_USE(
+		_value
+	);
+
 	_value.~Type();
 }
 

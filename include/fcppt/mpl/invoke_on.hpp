@@ -7,8 +7,8 @@
 #ifndef FCPPT_MPL_INVOKE_ON_HPP_INCLUDED
 #define FCPPT_MPL_INVOKE_ON_HPP_INCLUDED
 
-#include <fcppt/decltype_sink.hpp>
 #include <fcppt/tag.hpp>
+#include <fcppt/use.hpp>
 #include <fcppt/mpl/runtime_index.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/mpl/at.hpp>
@@ -95,15 +95,19 @@ invoke_on(
 				auto
 			)
 			{
+				FCPPT_USE(
+					_cur_index
+				);
+
 				return
 					_function(
 						fcppt::tag<
 							typename
-							boost::mpl::at<
+							boost::mpl::at_c<
 								Sequence,
-								FCPPT_DECLTYPE_SINK(
+								decltype(
 									_cur_index
-								)
+								)::value
 							>::type
 						>()
 					);

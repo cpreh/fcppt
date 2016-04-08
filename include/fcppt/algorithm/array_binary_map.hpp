@@ -7,6 +7,7 @@
 #ifndef FCPPT_ALGORITHM_ARRAY_BINARY_MAP_HPP_INCLUDED
 #define FCPPT_ALGORITHM_ARRAY_BINARY_MAP_HPP_INCLUDED
 
+#include <fcppt/use.hpp>
 #include <fcppt/algorithm/array_init.hpp>
 #include <fcppt/container/array_size.hpp>
 #include <fcppt/type_traits/is_std_array.hpp>
@@ -90,15 +91,25 @@ array_binary_map(
 				auto const _index
 			)
 			{
+				FCPPT_USE(
+					_index
+				);
+
+				typedef
+				decltype(
+					_index
+				)
+				index;
+
 				return
 					_function(
 						std::get<
-							_index
+							index::value
 						>(
 							_source1
 						),
 						std::get<
-							_index
+							index::value
 						>(
 							_source2
 						)

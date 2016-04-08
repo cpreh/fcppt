@@ -8,7 +8,8 @@
 #ifndef FCPPT_MATH_BOX_INTERSECTS_HPP_INCLUDED
 #define FCPPT_MATH_BOX_INTERSECTS_HPP_INCLUDED
 
-#include <fcppt/tag_value.hpp>
+#include <fcppt/tag_type.hpp>
+#include <fcppt/use.hpp>
 #include <fcppt/algorithm/all_of.hpp>
 #include <fcppt/math/at_c.hpp>
 #include <fcppt/math/int_range_count.hpp>
@@ -57,33 +58,39 @@ intersects(
 				auto const _index
 			)
 			{
-				auto const index(
-					fcppt::tag_value(
+				FCPPT_USE(
+					_index
+				);
+
+				typedef
+				fcppt::tag_type<
+					decltype(
 						_index
 					)
-				);
+				>
+				index;
 
 				return
 					fcppt::math::at_c<
-						index
+						index::value
 					>(
 						_b.pos()
 					)
 					<
 					fcppt::math::at_c<
-						index
+						index::value
 					>(
 						_a.max()
 					)
 					&&
 					fcppt::math::at_c<
-						index
+						index::value
 					>(
 						_a.pos()
 					)
 					<
 					fcppt::math::at_c<
-						index
+						index::value
 					>(
 						_b.max()
 					)

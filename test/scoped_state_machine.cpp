@@ -58,7 +58,6 @@ public:
 	}
 
 	~state()
-	override
 	{
 	}
 };

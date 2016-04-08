@@ -8,7 +8,8 @@
 #define FCPPT_MATH_MATRIX_DETAIL_DETERMINANT_HPP_INCLUDED
 
 #include <fcppt/literal.hpp>
-#include <fcppt/tag_value.hpp>
+#include <fcppt/tag_type.hpp>
+#include <fcppt/use.hpp>
 #include <fcppt/algorithm/fold.hpp>
 #include <fcppt/math/int_range_count.hpp>
 #include <fcppt/math/size_type.hpp>
@@ -98,10 +99,20 @@ determinant(
 				T const _sum
 			)
 			{
-				T const coeff{
-					fcppt::tag_value(
+				FCPPT_USE(
+					_row
+				);
+
+				typedef
+				fcppt::tag_type<
+					decltype(
 						_row
 					)
+				>
+				row;
+
+				T const coeff{
+					row::value
 					%
 					fcppt::literal<
 						fcppt::math::size_type
@@ -129,9 +140,7 @@ determinant(
 				};
 
 				fcppt::math::matrix::index<
-					fcppt::tag_value(
-						_row
-					),
+					row::value,
 					0
 				> const index{};
 

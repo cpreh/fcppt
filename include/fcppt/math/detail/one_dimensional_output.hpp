@@ -7,7 +7,8 @@
 #ifndef FCPPT_MATH_DETAIL_ONE_DIMENSIONAL_OUTPUT_HPP_INCLUDED
 #define FCPPT_MATH_DETAIL_ONE_DIMENSIONAL_OUTPUT_HPP_INCLUDED
 
-#include <fcppt/tag_value.hpp>
+#include <fcppt/tag_type.hpp>
+#include <fcppt/use.hpp>
 #include <fcppt/algorithm/loop.hpp>
 #include <fcppt/math/at_c.hpp>
 #include <fcppt/math/int_range_count.hpp>
@@ -55,20 +56,28 @@ one_dimensional_output(
 			auto const _index
 		)
 		{
+			FCPPT_USE(
+				_index
+			);
+
+			typedef
+			fcppt::tag_type<
+				decltype(
+					_index
+					)
+			>
+			index;
+
 			_stream
 				<<
 				fcppt::math::at_c<
-					fcppt::tag_value(
-						_index
-					)
+					index::value
 				>(
 					_value
 				);
 
 			fcppt::math::detail::if_not_last_index(
-				fcppt::tag_value(
-					_index
-				),
+				index{},
 				typename
 				Type::static_size{},
 				[

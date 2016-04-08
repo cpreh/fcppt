@@ -13,6 +13,7 @@
 namespace fcppt
 {
 
+// TODO: Remove this
 /**
 \brief Extracts the value of \link fcppt::tag\endlink
 

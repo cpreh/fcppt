@@ -8,7 +8,8 @@
 #define FCPPT_MATH_MATRIX_VECTOR_HPP_INCLUDED
 
 #include <fcppt/literal.hpp>
-#include <fcppt/tag_value.hpp>
+#include <fcppt/tag_type.hpp>
+#include <fcppt/use.hpp>
 #include <fcppt/algorithm/fold.hpp>
 #include <fcppt/math/at_c.hpp>
 #include <fcppt/math/int_range_count.hpp>
@@ -102,23 +103,41 @@ operator *(
 							value_type const _sum
 						)
 						{
+							FCPPT_USE(
+								_column
+							);
+
+							FCPPT_USE(
+								_row
+							);
+
+							typedef
+							fcppt::tag_type<
+								decltype(
+									_column
+								)
+							>
+							column;
+
+							typedef
+							decltype(
+								_row
+							)
+							row;
+
 							return
 								_sum
 								+
 								fcppt::math::matrix::at_c(
 									_left,
 									fcppt::math::matrix::index<
-										_row,
-										fcppt::tag_value(
-											_column
-										)
+										row::value,
+										column::value
 									>{}
 								)
 								*
 								fcppt::math::at_c<
-									fcppt::tag_value(
-										_column
-									)
+									column::value
 								>(
 									_right
 								);

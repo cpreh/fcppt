@@ -10,7 +10,8 @@
 #include <fcppt/literal.hpp>
 #include <fcppt/make_strong_typedef.hpp>
 #include <fcppt/strong_typedef_impl.hpp>
-#include <fcppt/tag_value.hpp>
+#include <fcppt/tag_type.hpp>
+#include <fcppt/use.hpp>
 #include <fcppt/algorithm/fold.hpp>
 #include <fcppt/container/grid/dim.hpp>
 #include <fcppt/container/grid/pos.hpp>
@@ -89,12 +90,22 @@ offset(
 				> _sum
 			)
 			{
+				FCPPT_USE(
+					_index
+				);
+
+				typedef
+				fcppt::tag_type<
+					decltype(
+						_index
+					)
+				>
+				index;
+
 				_sum.second *=
 					stacked_dim{
 						fcppt::math::at_c<
-							fcppt::tag_value(
-								_index
-							)
+							index::value
 							-
 							1u
 						>(
@@ -105,9 +116,7 @@ offset(
 				_sum.first +=
 					result{
 						fcppt::math::at_c<
-							fcppt::tag_value(
-								_index
-							)
+							index::value
 						>(
 							_pos
 						)

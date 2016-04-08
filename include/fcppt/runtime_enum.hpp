@@ -8,9 +8,9 @@
 #define FCPPT_RUNTIME_ENUM_HPP_INCLUDED
 
 #include <fcppt/absurd.hpp>
-#include <fcppt/decltype_sink.hpp>
 #include <fcppt/enum_max_value.hpp>
 #include <fcppt/enum_size.hpp>
+#include <fcppt/use.hpp>
 #include <fcppt/cast/enum_to_int.hpp>
 #include <fcppt/cast/static_cast_fun.hpp>
 #include <fcppt/mpl/integral_cast.hpp>
@@ -73,12 +73,16 @@ runtime_enum(
 				auto const _fcppt_index
 			)
 			{
+				FCPPT_USE(
+					_fcppt_index
+				);
+
 				return
 					_function(
 						fcppt::mpl::integral_cast<
 							Enum,
 							fcppt::cast::static_cast_fun,
-							FCPPT_DECLTYPE_SINK(
+							decltype(
 								_fcppt_index
 							)
 						>{}

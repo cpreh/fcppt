@@ -7,6 +7,7 @@
 #ifndef FCPPT_MATH_DETAIL_CONSTRUCT_HPP_INCLUDED
 #define FCPPT_MATH_DETAIL_CONSTRUCT_HPP_INCLUDED
 
+#include <fcppt/use.hpp>
 #include <fcppt/algorithm/array_init.hpp>
 #include <fcppt/algorithm/array_push_back.hpp>
 #include <fcppt/math/at_c.hpp>
@@ -66,9 +67,13 @@ construct(
 						auto const _index
 					)
 					{
+						FCPPT_USE(
+							_index
+						);
+
 						return
 							fcppt::math::at_c<
-								_index
+								_index()
 							>(
 								_src
 							);

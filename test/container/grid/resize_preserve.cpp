@@ -103,6 +103,7 @@ FCPPT_PP_POP_WARNING
 				test.size()[0]
 			)
 		)
+		{
 			BOOST_CHECK(
 				test[
 					sz_pair_grid::pos(
@@ -124,4 +125,5 @@ FCPPT_PP_POP_WARNING
 					)
 				)
 			);
+		}
 }

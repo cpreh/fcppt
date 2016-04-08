@@ -4,10 +4,10 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/decltype_sink.hpp>
 #include <fcppt/literal.hpp>
 #include <fcppt/noncopyable.hpp>
 #include <fcppt/tag_type.hpp>
+#include <fcppt/use.hpp>
 #include <fcppt/algorithm/vararg_map.hpp>
 #include <fcppt/cast/to_unsigned.hpp>
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
@@ -52,11 +52,15 @@ FCPPT_PP_POP_WARNING
 				auto const _tag
 			)
 			{
+				FCPPT_USE(
+					_tag
+				);
+
 				return
 					fcppt::cast::to_unsigned(
 						fcppt::literal<
 							fcppt::tag_type<
-								FCPPT_DECLTYPE_SINK(
+								decltype(
 									_tag
 								)
 							>
@@ -160,9 +164,13 @@ FCPPT_PP_POP_WARNING
 				auto const _tag
 			)
 			{
+				FCPPT_USE(
+					_tag
+				);
+
 				return
 					fcppt::tag_type<
-						FCPPT_DECLTYPE_SINK(
+						decltype(
 							_tag
 						)
 					>(

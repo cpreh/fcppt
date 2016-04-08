@@ -10,6 +10,7 @@
 #include <fcppt/detail/decltype_sink.hpp>
 
 
+// TODO: Remove this
 /**
 \brief Return <code>decltype</code> of an argument and use it
 

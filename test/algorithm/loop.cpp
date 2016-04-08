@@ -5,7 +5,8 @@
 
 
 #include <fcppt/make_int_range_count.hpp>
-#include <fcppt/tag_value.hpp>
+#include <fcppt/tag_type.hpp>
+#include <fcppt/use.hpp>
 #include <fcppt/algorithm/loop.hpp>
 #include <fcppt/algorithm/loop_break_mpl.hpp>
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
@@ -42,19 +43,27 @@ FCPPT_PP_POP_WARNING
 			auto const _index
 		)
 		{
-			static_assert(
-				fcppt::tag_value(
+			FCPPT_USE(
+				_index
+			);
+
+			typedef
+			fcppt::tag_type<
+				decltype(
 					_index
 				)
+			>
+			index;
+
+			static_assert(
+				index::value
 				<
 				5,
 				""
 			);
 
 			value +=
-				fcppt::tag_value(
-					_index
-				);
+				index::value;
 		}
 	);
 

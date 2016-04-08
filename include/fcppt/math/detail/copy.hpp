@@ -7,6 +7,7 @@
 #ifndef FCPPT_MATH_DETAIL_COPY_HPP_INCLUDED
 #define FCPPT_MATH_DETAIL_COPY_HPP_INCLUDED
 
+#include <fcppt/use.hpp>
 #include <fcppt/algorithm/array_init.hpp>
 #include <fcppt/cast/size.hpp>
 #include <fcppt/math/size_type.hpp>
@@ -48,12 +49,16 @@ copy(
 				auto const _index
 			)
 			{
+				FCPPT_USE(
+					_index
+				);
+
 				return
 					fcppt::math::detail::linear_access<
 						fcppt::cast::size<
 							fcppt::math::size_type
 						>(
-							_index
+							_index()
 						)
 					>(
 						_arg.storage()

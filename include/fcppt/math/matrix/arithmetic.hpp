@@ -8,7 +8,8 @@
 #define FCPPT_MATH_MATRIX_ARITHMETIC_HPP_INCLUDED
 
 #include <fcppt/literal.hpp>
-#include <fcppt/tag_value.hpp>
+#include <fcppt/tag_type.hpp>
+#include <fcppt/use.hpp>
 #include <fcppt/algorithm/fold.hpp>
 #include <fcppt/math/binary_map.hpp>
 #include <fcppt/math/int_range_count.hpp>
@@ -169,30 +170,38 @@ operator *(
 							&_left,
 							&_right
 						](
-							auto const _r,
+							auto const _pos,
 							value_type const _sum
 						)
 						{
+							FCPPT_USE(
+								_pos
+							);
+
+							typedef
+							fcppt::tag_type<
+								decltype(
+									_pos
+								)
+							>
+							pos;
+
 							return
 								_sum
 								+
 								fcppt::math::matrix::at_c(
 									_left,
 									fcppt::math::matrix::index<
-										_index.row(),
-										fcppt::tag_value(
-											_r
-										)
+										_index.row,
+										pos::value
 									>{}
 								)
 								*
 								fcppt::math::matrix::at_c(
 									_right,
 									fcppt::math::matrix::index<
-										fcppt::tag_value(
-											_r
-										),
-										_index.column()
+										pos::value,
+										_index.column
 									>{}
 								);
 						}

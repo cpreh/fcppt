@@ -7,7 +7,8 @@
 #ifndef FCPPT_MATH_DETAIL_MAKE_OP_DEF_HPP_INCLUDED
 #define FCPPT_MATH_DETAIL_MAKE_OP_DEF_HPP_INCLUDED
 
-#include <fcppt/tag_value.hpp>
+#include <fcppt/tag_type.hpp>
+#include <fcppt/use.hpp>
 #include <fcppt/algorithm/loop.hpp>
 #include <fcppt/math/int_range_count.hpp>
 #include <fcppt/math/detail/linear_access.hpp>
@@ -41,20 +42,26 @@ BOOST_PP_TUPLE_REM(class_arity)def_pre \
 		](\
 			auto const _index\
 		){ \
-			auto const index(\
-				fcppt::tag_value(\
-					_index\
-				)\
+			FCPPT_USE(\
+				_index\
 			);\
 			\
+			typedef \
+			fcppt::tag_type<\
+				decltype(\
+					_index\
+				)\
+			>\
+			index;\
+			\
 			fcppt::math::detail::linear_access<\
-				index\
+				index::value\
 			>(\
 				storage_\
 			) \
 			op \
 			fcppt::math::detail::linear_access<\
-				index\
+				index::value\
 			>(\
 				expr.storage()\
 			);\

@@ -7,6 +7,7 @@
 #ifndef FCPPT_MATH_MATRIX_DETAIL_INIT_STORAGE_HPP_INCLUDED
 #define FCPPT_MATH_MATRIX_DETAIL_INIT_STORAGE_HPP_INCLUDED
 
+#include <fcppt/use.hpp>
 #include <fcppt/algorithm/array_init.hpp>
 #include <fcppt/cast/size.hpp>
 #include <fcppt/math/matrix/row_type.hpp>
@@ -62,6 +63,10 @@ init_storage(
 				auto const _index
 			)
 			{
+				FCPPT_USE(
+					_index
+				);
+
 				typedef
 				fcppt::math::matrix::detail::index_absolute<
 					fcppt::cast::size<
@@ -79,10 +84,10 @@ init_storage(
 
 				return
 					std::get<
-						index::column()
+						index::column
 					>(
 						std::get<
-							index::row()
+							index::row
 						>(
 							_value
 						)

@@ -9,7 +9,8 @@
 #define FCPPT_MATH_MATRIX_INFINITY_NORM_HPP_INCLUDED
 
 #include <fcppt/literal.hpp>
-#include <fcppt/tag_value.hpp>
+#include <fcppt/tag_type.hpp>
+#include <fcppt/use.hpp>
 #include <fcppt/algorithm/fold.hpp>
 #include <fcppt/math/int_range_count.hpp>
 #include <fcppt/math/size_type.hpp>
@@ -66,11 +67,17 @@ infinity_norm(
 				T const _maximum_row
 			)
 			{
-				constexpr auto const row(
-					fcppt::tag_value(
+				FCPPT_USE(
+					_row
+				);
+
+				typedef
+				fcppt::tag_type<
+					decltype(
 						_row
 					)
-				);
+				>
+				row;
 
 				return
 					std::max(
@@ -85,13 +92,24 @@ infinity_norm(
 								0
 							),
 							[
-								&_matrix,
-								row
+								&_matrix
 							](
 								auto const _column,
 								T const _current_row_sum
 							)
 							{
+								FCPPT_USE(
+									_column
+								);
+
+								typedef
+								fcppt::tag_type<
+									decltype(
+										_column
+									)
+								>
+								column;
+
 								return
 									_current_row_sum
 									+
@@ -99,10 +117,8 @@ infinity_norm(
 										fcppt::math::matrix::at_c(
 											_matrix,
 											fcppt::math::matrix::index<
-												row,
-												fcppt::tag_value(
-													_column
-												)
+												row::value,
+												column::value
 											>{}
 										)
 									);

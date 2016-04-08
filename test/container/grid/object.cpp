@@ -111,13 +111,14 @@ FCPPT_PP_POP_WARNING
 			test.size()[1]
 		)
 	)
-		for(
+		for (
 			auto const x
 			:
 			fcppt::make_int_range_count(
 				test.size()[0]
 			)
 		)
+		{
 			BOOST_REQUIRE_EQUAL(
 				test[
 					int2_grid::pos(
@@ -126,13 +127,14 @@ FCPPT_PP_POP_WARNING
 					)
 				],
 				fcppt::cast::size<
-					int2_grid::value_type
+						int2_grid::value_type
 				>(
 					fcppt::cast::to_signed(
 						x + y * 5
 					)
 				)
 			);
+		}
 }
 
 FCPPT_PP_PUSH_WARNING
@@ -194,6 +196,7 @@ FCPPT_PP_POP_WARNING
 					test.size()[0]
 				)
 			)
+			{
 				BOOST_CHECK_EQUAL(
 					test[
 						int3_grid::pos(
@@ -210,6 +213,7 @@ FCPPT_PP_POP_WARNING
 						)
 					)
 				);
+			}
 }
 
 FCPPT_PP_PUSH_WARNING

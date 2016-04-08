@@ -7,7 +7,7 @@
 #ifndef FCPPT_ALGORITHM_ENUM_ARRAY_INIT_HPP_INCLUDED
 #define FCPPT_ALGORITHM_ENUM_ARRAY_INIT_HPP_INCLUDED
 
-#include <fcppt/decltype_sink.hpp>
+#include <fcppt/use.hpp>
 #include <fcppt/algorithm/array_init.hpp>
 #include <fcppt/cast/int_to_enum_fun.hpp>
 #include <fcppt/mpl/integral_cast.hpp>
@@ -45,13 +45,17 @@ enum_array_init(
 					auto const _fcppt_index
 				)
 				{
+					FCPPT_USE(
+						_fcppt_index
+					);
+
 					return
 						_function(
 							fcppt::mpl::integral_cast<
 								typename
 								Array::enum_type,
 								fcppt::cast::int_to_enum_fun,
-								FCPPT_DECLTYPE_SINK(
+								decltype(
 									_fcppt_index
 								)
 							>{}

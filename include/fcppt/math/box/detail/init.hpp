@@ -80,7 +80,7 @@ init(
 				{
 					return
 						std::get<
-							_index
+							_index()
 						>(
 							results
 						).first;
@@ -95,7 +95,7 @@ init(
 				{
 					return
 						std::get<
-							_index
+							_index()
 						>(
 							results
 						).second;

@@ -7,9 +7,47 @@
 #ifndef FCPPT_MATH_MATRIX_INDEX_HPP_INCLUDED
 #define FCPPT_MATH_MATRIX_INDEX_HPP_INCLUDED
 
-#include <fcppt/math/matrix/index_decl.hpp>
+#include <fcppt/math/size_type.hpp>
 #include <fcppt/math/matrix/index_fwd.hpp>
-#include <fcppt/math/matrix/index_impl.hpp>
 
+
+namespace fcppt
+{
+namespace math
+{
+namespace matrix
+{
+
+/**
+\brief A static matrix index
+
+\ingroup fcpptmathmatrix
+*/
+template<
+	fcppt::math::size_type Row,
+	fcppt::math::size_type Column
+>
+struct index
+{
+	static
+	constexpr
+	fcppt::math::size_type
+	const
+	row{
+		Row
+	};
+
+	static
+	constexpr
+	fcppt::math::size_type
+	const
+	column{
+		Column
+	};
+};
+
+}
+}
+}
 
 #endif

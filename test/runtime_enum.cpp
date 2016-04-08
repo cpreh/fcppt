@@ -13,6 +13,18 @@
 #include <fcppt/config/external_end.hpp>
 
 
+namespace
+{
+enum class my_enum
+{
+	test1,
+	test2,
+	test3,
+	fcppt_maximum = test3
+};
+}
+
+
 FCPPT_PP_PUSH_WARNING
 FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
 
@@ -22,14 +34,6 @@ BOOST_AUTO_TEST_CASE(
 {
 FCPPT_PP_POP_WARNING
 
-	enum class my_enum
-	{
-		test1,
-		test2,
-		test3,
-		fcppt_maximum = test3
-	};
-
 	BOOST_CHECK(
 		fcppt::runtime_enum(
 			my_enum::test3,
@@ -37,8 +41,18 @@ FCPPT_PP_POP_WARNING
 				auto const _value
 			)
 			{
+				FCPPT_USE(
+					_value
+				);
+
+				typedef
+				decltype(
+					_value
+				)
+				val;
+
 				return
-					_value()
+					val::value
 					==
 					my_enum::test3;
 			}

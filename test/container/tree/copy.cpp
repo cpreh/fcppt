@@ -22,11 +22,13 @@ BOOST_AUTO_TEST_CASE(
 {
 FCPPT_PP_POP_WARNING
 
-	typedef fcppt::container::tree::object<
-		unsigned
-	> ui_tree;
+	typedef
+	fcppt::container::tree::object<
+		int
+	>
+	i_tree;
 
-	ui_tree head(
+	i_tree head(
 		10
 	);
 
@@ -38,7 +40,7 @@ FCPPT_PP_POP_WARNING
 		30
 	);
 
-	ui_tree const head2(
+	i_tree const head2(
 		head
 	);
 

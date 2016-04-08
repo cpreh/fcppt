@@ -9,7 +9,8 @@
 #define FCPPT_MATH_VECTOR_HYPERSPHERE_TO_CARTESIAN_HPP_INCLUDED
 
 #include <fcppt/literal.hpp>
-#include <fcppt/tag_value.hpp>
+#include <fcppt/tag_type.hpp>
+#include <fcppt/use.hpp>
 #include <fcppt/algorithm/fold.hpp>
 #include <fcppt/math/int_range_count.hpp>
 #include <fcppt/math/size_type.hpp>
@@ -152,10 +153,14 @@ hypersphere_to_cartesian(
 				auto const _index
 			)
 			{
+				FCPPT_USE(
+					_index
+				);
+
 				value_type const sins(
 					fcppt::algorithm::fold(
 						fcppt::math::int_range_count<
-							_index
+							_index()
 						>{},
 						fcppt::literal<
 							value_type
@@ -169,14 +174,24 @@ hypersphere_to_cartesian(
 							value_type const _prod
 						)
 						{
+							FCPPT_USE(
+								_inner_index
+							);
+
+							typedef
+							fcppt::tag_type<
+								decltype(
+									_inner_index
+								)
+							>
+							inner_index;
+
 							return
 								_prod
 								*
 								std::sin(
 									fcppt::math::at_c<
-										fcppt::tag_value(
-											_inner_index
-										)
+										inner_index::value
 									>(
 										_angles
 									)
@@ -199,10 +214,14 @@ hypersphere_to_cartesian(
 								auto const _inner_index
 							)
 							{
+								FCPPT_USE(
+									_inner_index
+								);
+
 								return
 									std::cos(
 										fcppt::math::at_c<
-											_inner_index
+											_inner_index()
 										>(
 											_angles
 										)
@@ -221,7 +240,7 @@ hypersphere_to_cartesian(
 					sins
 					*
 					fcppt::math::at_c<
-						_index
+						_index()
 					>(
 						cos_angles
 					);

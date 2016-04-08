@@ -9,6 +9,7 @@
 #define FCPPT_MATH_BOX_INTERSECTION_HPP_INCLUDED
 
 #include <fcppt/make_homogenous_pair.hpp>
+#include <fcppt/use.hpp>
 #include <fcppt/math/at_c.hpp>
 #include <fcppt/math/size_type.hpp>
 #include <fcppt/math/box/init_max.hpp>
@@ -76,28 +77,32 @@ intersection(
 					auto const _index
 				)
 				{
+					FCPPT_USE(
+						_index
+					);
+
 					return
 						fcppt::make_homogenous_pair(
 							std::max(
 								fcppt::math::at_c<
-									_index
+									_index()
 								>(
 									_a.pos()
 								),
 								fcppt::math::at_c<
-									_index
+									_index()
 								>(
 									_b.pos()
 								)
 							),
 							std::min(
 								fcppt::math::at_c<
-									_index
+									_index()
 								>(
 									_a.max()
 								),
 								fcppt::math::at_c<
-									_index
+									_index()
 								>(
 									_b.max()
 								)

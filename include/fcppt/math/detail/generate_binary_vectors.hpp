@@ -27,9 +27,8 @@ template<
 	typename Vector
 >
 typename
-std::enable_if
-<
-	N == fcppt::literal<fcppt::math::size_type>(0),
+std::enable_if<
+	N == 0u,
 	void
 >::type
 generate_binary_vectors(
@@ -54,14 +53,14 @@ template<
 	typename Vector
 >
 typename
-std::enable_if
-<
-	N != fcppt::literal<fcppt::math::size_type>(0),
+std::enable_if<
+	N != 0u,
 	void
 >::type
 generate_binary_vectors(
 	ForwardIterator &it,
-	Vector v)
+	Vector v
+)
 {
 	v[N] =
 		fcppt::literal<typename Vector::value_type>(

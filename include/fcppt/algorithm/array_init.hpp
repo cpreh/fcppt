@@ -7,7 +7,8 @@
 #ifndef FCPPT_ALGORITHM_ARRAY_INIT_HPP_INCLUDED
 #define FCPPT_ALGORITHM_ARRAY_INIT_HPP_INCLUDED
 
-#include <fcppt/tag_value.hpp>
+#include <fcppt/use.hpp>
+#include <fcppt/tag_type.hpp>
 #include <fcppt/algorithm/vararg_map.hpp>
 #include <fcppt/container/array_size.hpp>
 #include <fcppt/type_traits/is_std_array.hpp>
@@ -85,13 +86,19 @@ array_init(
 				auto const _tag
 			)
 			{
+				FCPPT_USE(
+					_tag
+				);
+
 				return
 					_function(
 						std::integral_constant<
 							std::size_t,
-							fcppt::tag_value(
-								_tag
-							).value
+							fcppt::tag_type<
+								decltype(
+									_tag
+								)
+							>::value
 						>{}
 					);
 			}

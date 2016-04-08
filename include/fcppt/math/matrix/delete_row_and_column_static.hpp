@@ -7,6 +7,7 @@
 #ifndef FCPPT_MATH_MATRIX_DELETE_ROW_AND_COLUMN_STATIC_HPP_INCLUDED
 #define FCPPT_MATH_MATRIX_DELETE_ROW_AND_COLUMN_STATIC_HPP_INCLUDED
 
+#include <fcppt/use.hpp>
 #include <fcppt/math/size_type.hpp>
 #include <fcppt/math/matrix/at_c.hpp>
 #include <fcppt/math/matrix/index.hpp>
@@ -82,16 +83,20 @@ delete_row_and_column_static(
 				auto const _index
 			)
 			{
+				FCPPT_USE(
+					_index
+				);
+
 				return
 					fcppt::math::matrix::at_c(
 						_matrix,
 						fcppt::math::matrix::index<
 							fcppt::math::matrix::detail::deleted_index(
-								_index.row(),
+								_index.row,
 								Row
 							),
 							fcppt::math::matrix::detail::deleted_index(
-								_index.column(),
+								_index.column,
 								Column
 							)
 						>{}

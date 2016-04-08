@@ -43,7 +43,7 @@ FCPPT_PP_POP_WARNING
 
 	BOOST_REQUIRE_EQUAL(
 		c.size(),
-		3
+		3u
 	);
 
 	BOOST_CHECK_EQUAL(
@@ -89,7 +89,7 @@ FCPPT_PP_POP_WARNING
 
 	BOOST_CHECK_EQUAL(
 		c.size(),
-		3
+		3u
 	);
 
 	BOOST_CHECK_EQUAL(
@@ -141,7 +141,7 @@ FCPPT_PP_POP_WARNING
 
 	BOOST_CHECK_EQUAL(
 		m.size(),
-		2
+		2u
 	);
 
 	BOOST_REQUIRE(
