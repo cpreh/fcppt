@@ -1284,6 +1284,7 @@ set(
 	include/fcppt/unique_ptr_impl.hpp
 	include/fcppt/unique_ptr_to_base.hpp
 	include/fcppt/unique_ptr_to_const.hpp
+	include/fcppt/use.hpp
 	include/fcppt/variant/apply_binary.hpp
 	include/fcppt/variant/apply_ternary.hpp
 	include/fcppt/variant/apply_unary.hpp

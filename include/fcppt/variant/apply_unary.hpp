@@ -8,7 +8,7 @@
 #define FCPPT_VARIANT_APPLY_UNARY_HPP_INCLUDED
 
 #include <fcppt/absurd.hpp>
-#include <fcppt/decltype_sink.hpp>
+#include <fcppt/use.hpp>
 #include <fcppt/mpl/runtime_index.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/mpl/at.hpp>
@@ -62,10 +62,7 @@ apply_unary(
 		fcppt::mpl::runtime_index<
 			typename
 			boost::mpl::size<
-				typename
-				std::decay<
-					Variant
-				>::type::types
+				types
 			>::type
 		>(
 			_obj.type_index(),
@@ -80,15 +77,17 @@ apply_unary(
 				auto
 			)
 			{
+				FCPPT_USE(
+					_index_value
+				);
+
 				return
 					_op(
 						_obj . template get_unsafe<
 							typename
-							boost::mpl::at<
+							boost::mpl::at_c<
 								types,
-								FCPPT_DECLTYPE_SINK(
-									_index_value
-								)
+								_index_value.value
 							>::type
 						>()
 					);
