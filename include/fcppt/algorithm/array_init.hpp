@@ -7,8 +7,8 @@
 #ifndef FCPPT_ALGORITHM_ARRAY_INIT_HPP_INCLUDED
 #define FCPPT_ALGORITHM_ARRAY_INIT_HPP_INCLUDED
 
-#include <fcppt/use.hpp>
 #include <fcppt/tag_type.hpp>
+#include <fcppt/use.hpp>
 #include <fcppt/algorithm/vararg_map.hpp>
 #include <fcppt/container/array_size.hpp>
 #include <fcppt/type_traits/is_std_array.hpp>
