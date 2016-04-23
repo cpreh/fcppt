@@ -39,7 +39,9 @@ FCPPT_PP_DISABLE_VC_WARNING(4265) // destructor not virtual
 FCPPT_PP_DISABLE_VC_WARNING(4266) // no override available for virtual member function from base
 FCPPT_PP_DISABLE_VC_WARNING(4302) // type cast truncation
 FCPPT_PP_DISABLE_VC_WARNING(4324) // structure was padded due to __declspec(align())
+FCPPT_PP_DISABLE_VC_WARNING(4348) // redefinition of default parameter
 FCPPT_PP_DISABLE_VC_WARNING(4365) // signed/unsigned mismatch in action
+FCPPT_PP_DISABLE_VC_WARNING(4459) // declaration hides global declaration
 FCPPT_PP_DISABLE_VC_WARNING(4510) // default constructor could not be generated
 FCPPT_PP_DISABLE_VC_WARNING(4512) // assignment operator could not be generated
 FCPPT_PP_DISABLE_VC_WARNING(4548) // expression before comma has no effect
