@@ -51,6 +51,7 @@ FCPPT_PP_DISABLE_VC_WARNING(4619) // invalid pragma warning
 FCPPT_PP_DISABLE_VC_WARNING(4623) // default constructor implicitly deleted
 FCPPT_PP_DISABLE_VC_WARNING(4625) // copy constructor could not be generated because of a base class
 FCPPT_PP_DISABLE_VC_WARNING(4626) // assignment operator could not be generated because of a base class
+FCPPT_PP_DISABLE_VC_WARNING(4628) // digraphs not supported
 FCPPT_PP_DISABLE_VC_WARNING(4640) // local static object
 FCPPT_PP_DISABLE_VC_WARNING(4668) // #if with an undefined macro
 FCPPT_PP_DISABLE_VC_WARNING(4702) // unreachable code
