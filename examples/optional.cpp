@@ -4,11 +4,14 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
+#include <fcppt/reference.hpp>
 #include <fcppt/optional/bind.hpp>
 #include <fcppt/optional/from.hpp>
 #include <fcppt/optional/map.hpp>
 #include <fcppt/optional/maybe.hpp>
+#include <fcppt/optional/maybe_void.hpp>
 #include <fcppt/optional/object.hpp>
+#include <fcppt/optional/reference.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <iostream>
 #include <string>
@@ -92,13 +95,17 @@ void
 optional_bind()
 {
 //! [optional_bind]
-	typedef fcppt::optional::object<
+	typedef
+	fcppt::optional::object<
 		unsigned
-	> optional_uint;
+	>
+	optional_uint;
 
-	typedef fcppt::optional::object<
+	typedef
+	fcppt::optional::object<
 		std::string
-	> optional_string;
+	>
+	optional_string;
 
 	optional_string const value{
 		fcppt::optional::bind(
@@ -164,6 +171,56 @@ from_optional()
 //! [from_optional]
 }
 
+//! [optional_reference]
+typedef
+fcppt::optional::object<
+	int
+>
+optional_int;
+
+void
+set_ref(
+	optional_int _opt_ref
+)
+{
+	fcppt::optional::maybe_void(
+		_opt_ref,
+		[](
+			int &_ref
+		)
+		{
+			_ref = 42;
+		}
+	);
+}
+//! [optional_reference]
+
+//! [optional_reference_2]
+typedef
+fcppt::optional::reference<
+	int
+>
+optional_int_ref;
+
+void
+set_ref2(
+	optional_int_ref const _opt_ref
+)
+{
+	fcppt::optional::maybe_void(
+		_opt_ref,
+		[](
+			fcppt::reference<
+				int
+			> const _ref
+		)
+		{
+			_ref.get() = 42;
+		}
+	);
+}
+//! [optional_reference_2]
+
 }
 
 int
@@ -190,4 +247,12 @@ main()
 	optional_bind();
 
 	from_optional();
+
+	set_ref(
+		optional_int{}
+	);
+
+	set_ref2(
+		optional_int_ref{}
+	);
 }

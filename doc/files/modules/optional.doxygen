@@ -10,6 +10,7 @@
 <ul>
 	<li>\ref optional_motivation</li>
 	<li>\ref optional_design</li>
+	<li>\ref optional_reference</li>
 	<li>\ref optional_operations</li>
 	<li>\ref optional_headers</li>
 </ul>
@@ -47,9 +48,9 @@ optional.
 
 \section optional_design Design
 
-The goal of <code>%fcppt::optional</code>, in contrast to
-<code>%boost::optional</code>, is to be as explicit as possible and to avoid
-pointer semantics. The key differences include:
+The goal of \ref fcppt.optional, in contrast to <code>%boost::optional</code>,
+is to be as explicit as possible and to avoid pointer semantics. The key
+differences include:
 <ul>
 <li><code>%fcppt::optional::object</code> does not have
 <code>operator-></code>, <code>operator*</code> nor <code>operator bool</code>,
@@ -57,11 +58,34 @@ so that it does not mimic pointers.</li>
 <li><code>%fcppt::optional::object</code> uses alignment support from the
 compiler instead of relying on
 <code>%boost::detail::aligned_storage</code>.</li>
-<li><code>fcppt::optional::object<T></code> does not have an implicit
+<li><code>%fcppt::optional::object\<T></code> does not have an implicit
 constructor, nor assignment operator from <code>T</code>.</li>
-<li><code>%fcppt::optional::object<T &></code> does not allow implicit
-conversions for assignment.</li>
+<li><code>%fcppt::optional::object</code> does not implement optional
+references directly (so <code>%fcppt::optional::object<T &></code> is not
+allowed). <code>%boost::optional</code> mimics the semantics of ordinary
+references. For example it allows implicit conversions for assignment.</li>
 </ul>
+
+\section optional_reference Optional References
+
+Instead of implementing optional references directly, fcppt offers \link
+fcppt::optional::reference\endlink which is a typedef to
+<code>%fcppt::optional::object<fcppt::reference<T>></code>. The reason behind
+this is that code that acts on optional references might make use of references
+itself. For example it is not uncommon to pass the object held by an optional
+to functions like \link fcppt::optional::maybe_void\endlink by (const)
+reference, which can be used to change the object or to pass its address along.
+
+\snippet optional.cpp optional_reference
+
+On the other hand, if an optional holds a reference it does not hold the actual
+object, so changing the object behind the reference or passing the reference
+along has different semantics.
+
+\snippet optional.cpp optional_reference_2
+
+Using \link fcppt::reference\endlink for optional references clearly
+distinguishes these two cases.
 
 \section optional_operations Common Operations
 
