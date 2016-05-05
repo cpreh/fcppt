@@ -64,8 +64,8 @@ the default class to use for non-copyable objects.</li>
 to make their use more explicit.</li>
 </ul>
 <li>Express optional values: Can a function take or, more importantly, return
-no value? Use <code>fcppt::optional<T></code> in this case. Instead of <code>T *</code>,
-use <code>%fcppt::optional<T &></code>. See \ref fcpptoptional.</li>
+no value? Use <code>%fcppt::optional::object\<T></code> in this case. Instead of
+<code>T *</code>, use <code>%fcppt::optional::reference\<T></code>. See \ref fcpptoptional.</li>
 <li>Express values that can be of either type: Use
 <code>%fcppt::variant::variadic<T1,T2></code> to express that
 a value can either be of type <code>T1</code> or of type <code>T2</code>.
