@@ -71,7 +71,7 @@ references. For example it allows implicit conversions for assignment.</li>
 Instead of implementing optional references directly, fcppt offers \link
 fcppt::optional::reference\endlink which is a typedef to
 <code>%fcppt::optional::object<fcppt::reference<T>></code>. The reason behind
-this is that code that acts on optional references might make use of references
+this is that code that acts on optionals might make use of references
 itself. For example it is not uncommon to pass the object held by an optional
 to functions like \link fcppt::optional::maybe_void\endlink by (const)
 reference, which can be used to change the object or to pass its address along.

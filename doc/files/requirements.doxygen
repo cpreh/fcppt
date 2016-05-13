@@ -73,14 +73,14 @@ a project applies: First, download and extract the tarball or clone the git
 repository. Create a new directory that will be used as build directory, which
 we refer to as <code>$build</code>. Change directory into
 <code>$build</code>. Assuming fcppt is in <code>$fcpptpath</code>, call
-<pre>cmake <code>$build</code></pre> and pass all relevant arguments, e.g.
+<pre>cmake <code>$fcpptpath</code></pre> and pass all relevant arguments, e.g.
 <code>-G Ninja</code>, to CMake.
 
 fcppt does not need to be installed in order to be used. After fcppt has been
 built you can directly use it from its source directory. If you want to install
 don't forget to set <code>CMAKE_INSTALL_PREFIX</code>.
 
-There are other customizable paths that you can use to fine tune the
+There are other customizable paths that you can use to fine-tune the
 installation of different components:
 
 <ul>

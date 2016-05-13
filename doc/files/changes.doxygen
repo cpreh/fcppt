@@ -155,6 +155,12 @@
 	</ul>
 </li>
 
+<li>\ref fcpptcasts
+	<ul>
+	<li>Removed <code>fcppt::cast::dynamic_</code> for pointers.</li>
+	</ul>
+</li>
+
 <li>\ref fcpptio
 	<ul>
 	<li>Removed <code>fcppt::io::read_exn</code>.</li>

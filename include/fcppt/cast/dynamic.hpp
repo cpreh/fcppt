@@ -87,43 +87,6 @@ dynamic(
 	}
 }
 
-/**
-\brief Converts between pointers using <code>dynamic_cast</code>
-
-\ingroup fcpptcasts
-
-This function is the complement to the version of
-<code>fcppt::cast::dynamic</code> taking references. It doesn't do anything
-special, which is to convert \a _src to \a Dest using <code>dynamic_cast</code>.
-Both \a Dest and the type of \a _src are pointer types.
-
-\param _src The source pointer to cast from
-
-\return <code>dynamic_cast<Dest>(_src)</code>
-*/
-template<
-	typename Dest,
-	typename Src
->
-typename
-std::enable_if<
-	std::is_pointer<
-		Dest
-	>::value,
-	Dest
->::type
-dynamic(
-	Src *const _src
-)
-{
-	return
-		dynamic_cast<
-			Dest
-		>(
-			_src
-		);
-}
-
 }
 }
 
