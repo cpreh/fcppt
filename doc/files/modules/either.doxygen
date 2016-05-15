@@ -115,6 +115,10 @@ error:
 <td>Contains <code>operator==</code> and <code>operator!=</code>.</td>
 </tr>
 <tr>
+<td><code>first_success.hpp</code></td>
+<td>Contains \link fcppt::either::first_success\endlink.</td>
+</tr>
+<tr>
 <td><code>from_optional.hpp</code></td>
 <td>Contains \link fcppt::either::from_optional\endlink.</td>
 </tr>
@@ -141,6 +145,10 @@ error:
 <tr>
 <td><code>to_exception.hpp</code></td>
 <td>Contains \link fcppt::either::to_exception\endlink.</td>
+</tr>
+<tr>
+<td><code>try_call.hpp</code></td>
+<td>Contains \link fcppt::either::try_call\endlink.</td>
 </tr>
 </table>
 */
