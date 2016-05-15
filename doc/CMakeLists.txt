@@ -567,6 +567,7 @@ set(
 	include/fcppt/either/sequence.hpp
 	include/fcppt/either/success_opt.hpp
 	include/fcppt/either/to_exception.hpp
+	include/fcppt/either/try_call.hpp
 	include/fcppt/endianness/convert.hpp
 	include/fcppt/endianness/format.hpp
 	include/fcppt/endianness/format_fwd.hpp
