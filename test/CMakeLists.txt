@@ -324,6 +324,10 @@ add_fcppt_test(
 )
 
 add_fcppt_test(
+	container/make_array
+)
+
+add_fcppt_test(
 	container/maybe_back
 )
 

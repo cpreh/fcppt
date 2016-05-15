@@ -480,6 +480,7 @@ set(
 	include/fcppt/container/index_map_impl.hpp
 	include/fcppt/container/is_raw_vector.hpp
 	include/fcppt/container/is_std_vector.hpp
+	include/fcppt/container/make_array.hpp
 	include/fcppt/container/maybe_back.hpp
 	include/fcppt/container/maybe_front.hpp
 	include/fcppt/container/out_of_range.hpp
