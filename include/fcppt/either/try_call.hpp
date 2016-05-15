@@ -8,6 +8,9 @@
 #define FCPPT_EITHER_TRY_CALL_HPP_INCLUDED
 
 #include <fcppt/either/object_impl.hpp>
+#include <fcppt/config/external_begin.hpp>
+#include <type_traits>
+#include <fcppt/config/external_end.hpp>
 
 
 namespace fcppt
@@ -45,7 +48,9 @@ try_call(
 fcppt::either::object<
 	decltype(
 		_to_exception(
-			Exception{}
+			std::declval<
+				Exception
+			>()
 		)
 	),
 	decltype(
@@ -57,7 +62,9 @@ fcppt::either::object<
 	fcppt::either::object<
 		decltype(
 			_to_exception(
-				Exception{}
+				std::declval<
+					Exception
+				>()
 			)
 		),
 		decltype(
