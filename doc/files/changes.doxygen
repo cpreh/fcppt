@@ -34,6 +34,12 @@
 	</ul>
 </li>
 
+<li>\ref fcpptcontainer
+	<ul>
+	<li>Added \link fcppt::container::make_array\endlink.</li>
+	</ul>
+</li>
+
 <li>\ref fcpptcontainergrid
 	<ul>
 	<li>Added \link fcppt::container::grid::make_min\endlink and \link
@@ -95,7 +101,7 @@
 	<li>\link fcppt::cyclic_iterator\endlink can now be a random-access
 	iterator.</li>
 	<li>Added \link fcppt::getenv\endlink.</li>
-	<li>ADded \link FCPPT_USE\endlink.</li>
+	<li>Added \link FCPPT_USE\endlink.</li>
 	</ul>
 </li>
 
