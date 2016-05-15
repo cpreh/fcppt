@@ -556,6 +556,7 @@ set(
 	include/fcppt/either/bind.hpp
 	include/fcppt/either/comparison.hpp
 	include/fcppt/either/detail/first_failure.hpp
+	include/fcppt/either/first_success.hpp
 	include/fcppt/either/from_optional.hpp
 	include/fcppt/either/is_object.hpp
 	include/fcppt/either/map.hpp
