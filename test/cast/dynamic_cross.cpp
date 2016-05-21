@@ -40,10 +40,6 @@ struct derived2
 		derived2
 	);
 public:
-	derived2()
-	{
-	}
-
 	virtual
 	~derived2()
 	{

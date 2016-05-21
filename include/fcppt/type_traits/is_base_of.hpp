@@ -8,6 +8,9 @@
 #define FCPPT_TYPE_TRAITS_IS_BASE_OF_HPP_INCLUDED
 
 #include <fcppt/assert_complete.hpp>
+#include <fcppt/preprocessor/disable_gcc_warning.hpp>
+#include <fcppt/preprocessor/pop_warning.hpp>
+#include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
@@ -17,6 +20,9 @@ namespace fcppt
 {
 namespace type_traits
 {
+
+FCPPT_PP_PUSH_WARNING
+FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
 
 /**
 \brief Like <code>std::is_base_of</code>, but only works on complete types
@@ -50,6 +56,8 @@ std::is_base_of<
 		Derived
 	);
 };
+
+FCPPT_PP_POP_WARNING
 
 }
 }
