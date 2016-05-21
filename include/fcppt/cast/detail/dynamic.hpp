@@ -4,8 +4,8 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_CAST_TRY_DYNAMIC_HPP_INCLUDED
-#define FCPPT_CAST_TRY_DYNAMIC_HPP_INCLUDED
+#ifndef FCPPT_CAST_DETAIL_DYNAMIC_HPP_INCLUDED
+#define FCPPT_CAST_DETAIL_DYNAMIC_HPP_INCLUDED
 
 #include <fcppt/make_ref.hpp>
 #include <fcppt/optional/reference.hpp>
@@ -15,24 +15,9 @@ namespace fcppt
 {
 namespace cast
 {
+namespace detail
+{
 
-/**
-\brief Tries a <code>dynamic_cast</code>, returning an empty optional value if
-it failed
-
-\ingroup fcpptcasts
-
-\tparam Derived The type to cast to. This has to be a reference type (see the
-example below)
-
-\tparam Base The type to cast from (must not be a reference)
-
-This cast is basically the same as <code>dynamic_cast</code> with pointers, but
-with optional references. Note that you can only cast to a reference type (be
-that const or nonconst). Here's a usage example:
-
-\snippet cast.cpp try_dynamic
-*/
 template<
 	typename Derived,
 	typename Base
@@ -40,7 +25,7 @@ template<
 fcppt::optional::reference<
 	Derived
 >
-try_dynamic(
+dynamic(
 	Base &_base
 )
 {
@@ -73,6 +58,7 @@ try_dynamic(
 		;
 }
 
+}
 }
 }
 

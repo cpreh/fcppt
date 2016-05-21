@@ -5,18 +5,19 @@
 
 
 //! [dynamic_cast]
-
 #include <fcppt/text.hpp>
 #include <fcppt/cast/bad_dynamic.hpp>
-#include <fcppt/cast/dynamic.hpp>
+#include <fcppt/cast/dynamic_cross_exn.hpp>
 #include <fcppt/io/cout.hpp>
+
 
 namespace
 {
 
 struct base
 {
-	virtual ~base()
+	virtual
+	~base()
 	{}
 };
 
@@ -41,7 +42,7 @@ f()
 	{
 		// try to cast d1 into a d2, which will fail
 		derived2 &d2(
-			fcppt::cast::dynamic<
+			fcppt::cast::dynamic_cross_exn<
 				derived2 &
 			>(
 				d1

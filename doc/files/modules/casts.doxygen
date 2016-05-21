@@ -162,9 +162,9 @@ destination types.
 \snippet cast/dynamic.cpp dynamic_cast
 
 In case dynamic casts are expected to fail, it is more convenient to return an
-optional instead. This is done by fcppt::cast::try_dynamic.
+optional instead. This is done by \link fcppt::cast::dynamic\endlink.
 
-\snippet cast.cpp try_dynamic
+\snippet cast.cpp dynamic
 
 \section fcpptcasts_structure_cast Casting user-defined types
 

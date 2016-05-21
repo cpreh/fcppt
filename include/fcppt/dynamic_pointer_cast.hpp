@@ -9,7 +9,7 @@
 
 #include <fcppt/reference_impl.hpp>
 #include <fcppt/shared_ptr_impl.hpp>
-#include <fcppt/cast/try_dynamic.hpp>
+#include <fcppt/cast/dynamic.hpp>
 #include <fcppt/optional/map.hpp>
 #include <fcppt/optional/object_impl.hpp>
 
@@ -51,7 +51,7 @@ dynamic_pointer_cast(
 {
 	return
 		fcppt::optional::map(
-			fcppt::cast::try_dynamic<
+			fcppt::cast::dynamic<
 				Dest
 			>(
 				*_ptr

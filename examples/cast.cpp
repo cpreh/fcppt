@@ -4,9 +4,9 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
+#include <fcppt/cast/dynamic.hpp>
 #include <fcppt/cast/float_to_int.hpp>
 #include <fcppt/cast/to_unsigned.hpp>
-#include <fcppt/cast/try_dynamic.hpp>
 #include <fcppt/optional/reference.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <cassert>
@@ -73,7 +73,7 @@ g()
 }
 // ![to_unsigned]
 
-//! [try_dynamic]
+//! [dynamic]
 
 namespace
 {
@@ -108,7 +108,7 @@ f()
 	fcppt::optional::reference<
 		derived2
 	> const to_d2{
-		fcppt::cast::try_dynamic<
+		fcppt::cast::dynamic<
 			derived2
 		>(
 			base_ref
@@ -122,7 +122,7 @@ f()
 	fcppt::optional::reference<
 		derived1
 	> const to_d1{
-		fcppt::cast::try_dynamic<
+		fcppt::cast::dynamic<
 			derived1
 		>(
 			base_ref
@@ -135,7 +135,7 @@ f()
 }
 
 }
-//! [try_dynamic]
+//! [dynamic]
 
 }
 

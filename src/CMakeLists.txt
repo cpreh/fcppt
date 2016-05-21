@@ -868,6 +868,7 @@ set(
 	include/fcppt/type_traits/generate_has_type.hpp
 	include/fcppt/type_traits/has_const_iterator.hpp
 	include/fcppt/type_traits/has_iterator.hpp
+	include/fcppt/type_traits/is_base_of.hpp
 	include/fcppt/type_traits/is_bidirectional_iterator.hpp
 	include/fcppt/type_traits/is_float_or_double.hpp
 	include/fcppt/type_traits/is_forward_iterator.hpp

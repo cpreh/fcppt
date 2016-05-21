@@ -4,8 +4,8 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_CAST_DYNAMIC_HPP_INCLUDED
-#define FCPPT_CAST_DYNAMIC_HPP_INCLUDED
+#ifndef FCPPT_CAST_DYNAMIC_CROSS_HPP_INCLUDED
+#define FCPPT_CAST_DYNAMIC_CROSS_HPP_INCLUDED
 
 #include <fcppt/cast/detail/dynamic.hpp>
 #include <fcppt/optional/reference.hpp>
@@ -21,21 +21,13 @@ namespace cast
 {
 
 /**
-\brief Tries a <code>dynamic_cast</code>, returning an empty optional value if
-it failed
+\brief Tries a <code>dynamic_cast</code> on unrelated types, returning an empty
+optional value if it failed
 
 \ingroup fcpptcasts
 
-\tparam Derived The type to cast to. This has to be a reference type (see the
-example below)
-
-\tparam Base The type to cast from (must not be a reference)
-
-This cast is basically the same as <code>dynamic_cast</code> with pointers, but
-with optional references. Note that you can only cast to a reference type (be
-that const or nonconst). Here's a usage example:
-
-\snippet cast.cpp dynamic
+This cast is the same as \link fcppt::cast::dynamic \endlink but only works
+on unrelated types.
 */
 template<
 	typename Derived,
@@ -45,12 +37,12 @@ inline
 fcppt::optional::reference<
 	Derived
 >
-dynamic(
+dynamic_cross(
 	Base &_base
 )
 {
 	static_assert(
-		fcppt::type_traits::is_base_of<
+		!fcppt::type_traits::is_base_of<
 			typename
 			std::remove_cv<
 				Base
@@ -60,7 +52,7 @@ dynamic(
 				Derived
 			>::type
 		>::value,
-		"dynamic can only cast from references to base classes to references to derived classes"
+		"dynamic_cross can only be used on unrelated types"
 	);
 
 	return

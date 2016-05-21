@@ -174,6 +174,18 @@ add_fcppt_test(
 )
 
 add_fcppt_test(
+	cast/dynamic
+	LINK_LIBS
+		"${fcppt_core_TARGET}"
+)
+
+add_fcppt_test(
+	cast/dynamic_cross
+	LINK_LIBS
+		"${fcppt_core_TARGET}"
+)
+
+add_fcppt_test(
 	cast/promote
 )
 

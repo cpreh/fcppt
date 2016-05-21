@@ -297,9 +297,14 @@ set(
 	include/fcppt/cast/apply_fun.hpp
 	include/fcppt/cast/bad_dynamic.hpp
 	include/fcppt/cast/bad_truncation_check.hpp
+	include/fcppt/cast/detail/dynamic.hpp
+	include/fcppt/cast/detail/dynamic_exn.hpp
 	include/fcppt/cast/detail/safe.hpp
 	include/fcppt/cast/detail/truncation_check.hpp
 	include/fcppt/cast/dynamic.hpp
+	include/fcppt/cast/dynamic_cross.hpp
+	include/fcppt/cast/dynamic_cross_exn.hpp
+	include/fcppt/cast/dynamic_exn.hpp
 	include/fcppt/cast/enum_to_int.hpp
 	include/fcppt/cast/enum_to_underlying.hpp
 	include/fcppt/cast/float_to_int.hpp
@@ -327,7 +332,6 @@ set(
 	include/fcppt/cast/to_void.hpp
 	include/fcppt/cast/to_void_ptr.hpp
 	include/fcppt/cast/truncation_check.hpp
-	include/fcppt/cast/try_dynamic.hpp
 	include/fcppt/cast_to_enum.hpp
 	include/fcppt/cast_to_enum_exn.hpp
 	include/fcppt/char_type.hpp
@@ -1263,6 +1267,7 @@ set(
 	include/fcppt/type_traits/generate_has_type.hpp
 	include/fcppt/type_traits/has_const_iterator.hpp
 	include/fcppt/type_traits/has_iterator.hpp
+	include/fcppt/type_traits/is_base_of.hpp
 	include/fcppt/type_traits/is_bidirectional_iterator.hpp
 	include/fcppt/type_traits/is_float_or_double.hpp
 	include/fcppt/type_traits/is_forward_iterator.hpp

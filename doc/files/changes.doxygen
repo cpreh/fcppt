@@ -24,6 +24,13 @@
 	</ul>
 </li>
 
+<li>\ref fcpptcasts
+	<ul>
+	<li>Added \link fcppt::cast::dynamic_cross\endlink and \link
+	fcppt::cast::dynamic_cross_exn\endlink.</li>
+	</ul>
+</li>
+
 <li>\ref fcpptconfig
 	<ul>
 	<li>Ignore <code>-Wfloat-conversion</code> and
@@ -117,6 +124,17 @@
 \subsection changes_changed_functionality_to_210 Changed functionality
 
 <ul>
+
+<li>\ref fcpptcasts
+	<ul>
+	<li>Renamed <code>fcppt::cast::try_dynamic</code> to \link
+	fcppt::cast::dynamic\endlink, and renamed
+	<code>%fcppt::cast::dynamic</code> to \link
+	fcppt::cast::dynamic_exn\endlink.</li>
+	<li>\link fcppt::cast::dynamic\endlink and \link
+	fcppt::cast::dynamic_exn\endlink only work on related types now.</li>
+	</ul>
+</li>
 
 <li>\ref fcpptenum
 	<ul>
