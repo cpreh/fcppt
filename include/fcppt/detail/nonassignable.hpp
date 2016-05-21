@@ -7,23 +7,10 @@
 #ifndef FCPPT_DETAIL_NONASSIGNABLE_HPP_INCLUDED
 #define FCPPT_DETAIL_NONASSIGNABLE_HPP_INCLUDED
 
-#include <fcppt/config/compiler.hpp>
-
-
-#if defined(FCPPT_CONFIG_GCC_COMPILER)
-
 #define FCPPT_DETAIL_NONASSIGNABLE(\
 	classname\
 )\
 classname &operator=(classname const &) = delete
 
-#else
-
-#define FCPPT_DETAIL_NONASSIGNABLE(\
-	classname\
-)\
-classname &operator=(classname const &)
-
-#endif
 
 #endif

@@ -164,6 +164,9 @@
 	<ul>
 	<li>\link fcppt::cyclic_iterator\endlink now uses a pair to construct
 	its boundaries.</li>
+	<li>\link FCPPT_NONCOPYABLE\endlink and \link
+	FCPPT_NONASSIGNABLE\endlink now simply use <code>=delete</code> instead
+	of <code>private:</code></li>
 	</ul>
 </li>
 

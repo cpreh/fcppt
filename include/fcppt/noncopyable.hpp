@@ -17,8 +17,7 @@
 
 Makes the class called \a classname noncopyable. The macro must be placed
 inside the class definition and called with the name of the class. It deletes
-the copy constructor and the assignment operator if that is supported.
-Otherwise, it makes them inaccessible.
+the copy constructor and the assignment operator.
 
 By default, C++ generates a copy constructor and assignment operator for every
 class where this is possible (when its elements can all be copy constructed and
@@ -28,7 +27,7 @@ can be dangerous to copy an object:
 <ul>
 <li>If a class has already a non trivial constructor or destructor, for example
 when it has to manage dynamic resources or it implements some scoped behaviour,
-like for example a scoped_lock.</li>
+like for example a <code>scoped_lock</code>.</li>
 
 <li>If an object of a class in a hierarchy gets copied, the object will be
 <em>sliced</em> and not cloned. Therefore, it is often advisable to make all
@@ -44,7 +43,6 @@ classes in a hierarchy noncopyable.</li>
 #define FCPPT_NONCOPYABLE(\
 	classname\
 ) \
-private: \
 FCPPT_DETAIL_NONCOPYABLE(\
 	classname\
 )

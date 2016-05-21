@@ -17,13 +17,12 @@
 
 Makes the class called \a classname nonassignable. The macro must be placed
 inside the class definition and called with the name of the class. It deletes
-the assignment operator if that is supported. Otherwise, it makes it
-inaccessible.
+the assignment operator.
 
 Often, classes are not assignable but copyable, for example when they contain
 constant elements or references. To make it clear to the compiler and to the
-users of the class that it should not be possible to assign it, this macro
-should be used.
+users that it should not be possible to assign objects of this class, this
+macro should be used.
 
 \snippet examples/noncopyable.cpp nonassignable
 
@@ -34,7 +33,6 @@ should be used.
 #define FCPPT_NONASSIGNABLE(\
 	classname\
 ) \
-private: \
 FCPPT_DETAIL_NONASSIGNABLE(\
 	classname\
 )
