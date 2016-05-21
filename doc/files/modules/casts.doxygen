@@ -48,15 +48,15 @@ Special casts are used to replace <code>static_cast</code> and
 	Casting between signed and unsigned integers
 	</td>
 	<td>
-	fcppt::cast::to_signed, fcppt::cast::to_unsigned
+	\link fcppt::cast::to_signed\endlink, \link fcppt::cast::to_unsigned\endlink
 	</td>
 </tr>
 <tr>
 	<td>
-	Casting between similar types of different sizes
+	Casting between types of the same signedness but different sizes
 	</td>
 	<td>
-	fcppt::cast::size
+	\link fcppt::cast::size\endlink
 	</td>
 </tr>
 <tr>
@@ -64,7 +64,7 @@ Special casts are used to replace <code>static_cast</code> and
 	Casting between floats and integers
 	</td>
 	<td>
-	fcppt::cast::int_to_float, fcppt::cast::float_to_int
+	\link fcppt::cast::int_to_float\endlink, \link fcppt::cast::float_to_int\endlink
 	</td>
 </tr>
 <tr>
@@ -72,7 +72,7 @@ Special casts are used to replace <code>static_cast</code> and
 	Casting between enums and integers
 	</td>
 	<td>
-	fcppt::cast::int_to_enum, fcppt::cast::enum_to_int, fcppt::cast::enum_to_underlying
+	\link fcppt::cast::int_to_enum\endlink, \link fcppt::cast::enum_to_int\endlink, \link fcppt::cast::enum_to_underlying\endlink
 	</td>
 </tr>
 <tr>
@@ -80,7 +80,15 @@ Special casts are used to replace <code>static_cast</code> and
 	Casting between objects in a class hierarchy
 	</td>
 	<td>
-	fcppt::cast::static_downcast, fcppt::cast::static_downcast_ptr
+	\link fcppt::cast::static_downcast\endlink, \link fcppt::cast::static_downcast_ptr\endlink, \link fcppt::cast::dynamic\endlink, \link fcppt::cast::dynamic_exn\endlink
+	</td>
+</tr>
+<tr>
+	<td>
+	Casting between unrelated types
+	</td>
+	<td>
+	\link fcppt::cast::dynamic_cross\endlink, \link fcppt::cast::dynamic_cross_exn\endlink
 	</td>
 </tr>
 <tr>
@@ -88,7 +96,7 @@ Special casts are used to replace <code>static_cast</code> and
 	Casting from pointers to void
 	</td>
 	<td>
-	fcppt::cast::from_void_ptr
+	\link fcppt::cast::from_void_ptr\endlink
 	</td>
 </tr>
 <tr>
@@ -96,7 +104,7 @@ Special casts are used to replace <code>static_cast</code> and
 	Casting to a byte array
 	</td>
 	<td>
-	fcppt::cast::to_char_ptr
+	\link fcppt::cast::to_char_ptr\endlink
 	</td>
 </tr>
 </table>
@@ -112,14 +120,14 @@ types on accident:
 
 \section fcpptcasts_safe Safe conversions
 
-fcppt::cast::safe_numeric is a cast that doesn't do any runtime checking (as
-opposed to fcppt::cast::truncation_check). Instead, it checks at compile time
+\link fcppt::cast::safe_numeric\endlink is a cast that doesn't do any runtime checking (as
+opposed to \link fcppt::cast::truncation_check\endlink). Instead, it checks at compile time
 which conversions between arithmetic types are safe. See
-fcppt::cast::safe_numeric for a detailed description on which conditions must
+\link fcppt::cast::safe_numeric\endlink for a detailed description on which conditions must
 hold in order for the cast to compile.
 
 The following example shows how a class's constructor can be strengthened by
-fcppt::cast::safe_numeric:
+\link fcppt::cast::safe_numeric\endlink:
 
 \snippet cast/safe_numeric.cpp safe_numeric_cast_class
 
@@ -127,9 +135,9 @@ Here are some examples of how the constructor can and can't be called:
 
 \snippet cast/safe_numeric.cpp safe_numeric_cast_objects
 
-fcppt::cast::safe is another cast that extends the set of types that
-fcppt::cast::safe_numeric can cast. If the types are both arithmetic types,
-then they will be converted using fcppt::cast::safe_numeric, otherwise they
+\link fcppt::cast::safe\endlink is another cast that extends the set of types that
+\link fcppt::cast::safe_numeric\endlink can cast. If the types are both arithmetic types,
+then they will be converted using \link fcppt::cast::safe_numeric\endlink, otherwise they
 must be implicitly convertible. This is used for constructing strong typedefs,
 see
 \link
@@ -137,8 +145,9 @@ fcpptstrongtypedef strong typedefs\endlink.
 
 \section fcpptcasts_truncation_check Checking truncation
 
-fcppt::cast::truncation_check complements fcppt::cast::safe_numeric by checking
-at runtime if a conversion truncates.
+\link fcppt::cast::truncation_check\endlink complements \link
+fcppt::cast::safe_numeric\endlink by checking at runtime if a conversion
+truncates.
 
 In the following example, it is tested if the biggest <code>unsigned
 long</code> value fits into an <code>unsigned int</code>. This might be true,
@@ -155,7 +164,7 @@ Truncating conversions of negative values are also detected.
 <code>dynamic_cast</code> can cast between pointers or references to objects in
 a class hierarchy. The cast can fail at runtime in which case the null pointer
 is returned for pointers and <code>bad_cast</code> is thrown for references.
-fcppt::cast::dynamic improves the latter case by throwing an exception that
+\link fcppt::cast::dynamic\endlink improves the latter case by throwing an exception that
 encapsulates the <code>std::type_index</code> objects of the source and
 destination types.
 
@@ -175,7 +184,7 @@ vectors, dims and matrices. To incorporate cast functions from fcppt::cast, an
 additional template argument has to be added to the function's signature which
 then will be used to cast each element of the user-defined structure. For this
 purpose, this module defines several function objects suffixed with _fun, for
-example fcppt::cast::float_to_int_fun.
+example \link fcppt::cast::float_to_int_fun\endlink.
 
 \snippet math/casts.cpp float_to_int_fun
 */
