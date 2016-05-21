@@ -8,6 +8,7 @@
 #define FCPPT_REFERENCE_TO_BASE_HPP_INCLUDED
 
 #include <fcppt/reference_impl.hpp>
+#include <fcppt/type_traits/is_base_of.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
@@ -38,7 +39,7 @@ reference_to_base(
 )
 {
 	static_assert(
-		std::is_base_of<
+		fcppt::type_traits::is_base_of<
 			typename
 			std::remove_cv<
 				Base

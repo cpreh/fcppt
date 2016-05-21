@@ -7,6 +7,7 @@
 #ifndef FCPPT_CAST_STATIC_DOWNCAST_HPP_INCLUDED
 #define FCPPT_CAST_STATIC_DOWNCAST_HPP_INCLUDED
 
+#include <fcppt/type_traits/is_base_of.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
@@ -39,7 +40,7 @@ static_downcast(
 )
 {
 	static_assert(
-		std::is_base_of<
+		fcppt::type_traits::is_base_of<
 			typename
 			std::remove_cv<
 				Source

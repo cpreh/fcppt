@@ -94,6 +94,13 @@
 	</ul>
 </li>
 
+<li>\ref fcppttypetraits
+	<ul>
+	<li>Added \link fcppt::type_traits::is_base_of\endlink that only works
+	on complete types.</li>
+	</ul>
+</li>
+
 <li>\ref fcpptvarious
 	<ul>
 	<li>Added \link fcppt::move_if\endlink.</li>

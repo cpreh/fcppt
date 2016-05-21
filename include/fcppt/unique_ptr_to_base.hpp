@@ -8,9 +8,7 @@
 #define FCPPT_UNIQUE_PTR_TO_BASE_HPP_INCLUDED
 
 #include <fcppt/unique_ptr_impl.hpp>
-#include <fcppt/config/external_begin.hpp>
-#include <type_traits>
-#include <fcppt/config/external_end.hpp>
+#include <fcppt/type_traits/is_base_of.hpp>
 
 
 namespace fcppt
@@ -39,7 +37,7 @@ unique_ptr_to_base(
 )
 {
 	static_assert(
-		std::is_base_of<
+		fcppt::type_traits::is_base_of<
 			Base,
 			Derived
 		>::value,

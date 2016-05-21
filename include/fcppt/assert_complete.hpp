@@ -7,8 +7,6 @@
 #ifndef FCPPT_ASSERT_COMPLETE_HPP_INCLUDED
 #define FCPPT_ASSERT_COMPLETE_HPP_INCLUDED
 
-#include <fcppt/cast/to_void.hpp>
-
 
 /**
 \brief Assert at compile time that a type is complete
@@ -28,8 +26,9 @@ of its usage is shown below.
 #define FCPPT_ASSERT_COMPLETE(\
 	type\
 )\
-fcppt::cast::to_void(\
-	sizeof(type)\
+static_assert(\
+	sizeof(type) > 0,\
+	"Type must be complete" \
 )
 
 #endif

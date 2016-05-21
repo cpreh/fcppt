@@ -990,6 +990,11 @@ add_fcppt_test(
 )
 
 add_fcppt_test(
+	type_traits/is_base_of
+	NO_CODE
+)
+
+add_fcppt_test(
 	type_traits/is_iterable
 	NO_CODE
 )
