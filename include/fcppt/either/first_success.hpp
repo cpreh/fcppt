@@ -10,8 +10,8 @@
 #include <fcppt/either/object_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <type_traits>
-#include <vector>
 #include <utility>
+#include <vector>
 #include <fcppt/config/external_end.hpp>
 
 
