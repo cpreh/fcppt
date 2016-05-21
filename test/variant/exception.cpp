@@ -57,15 +57,6 @@ struct throw_cctor
 	) = default;
 };
 
-bool
-is_exception(
-	fcppt::exception const &
-)
-{
-	return
-		true;
-}
-
 }
 
 FCPPT_PP_PUSH_WARNING
@@ -94,22 +85,20 @@ FCPPT_PP_POP_WARNING
 
 	throw_cctor const test_cctor{};
 
-	BOOST_CHECK_EXCEPTION(
+	BOOST_CHECK_THROW(
 		test =
 			test_cctor,
-		fcppt::exception,
-		is_exception
+		fcppt::exception
 	);
 
 	BOOST_CHECK(
 		test.is_invalid()
 	);
 
-	BOOST_CHECK_EXCEPTION(
+	BOOST_CHECK_THROW(
 		test =
 			throw_cctor(),
-		fcppt::exception,
-		is_exception
+		fcppt::exception
 	);
 
 	BOOST_CHECK(

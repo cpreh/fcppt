@@ -16,20 +16,6 @@
 #include <fcppt/config/external_end.hpp>
 
 
-namespace
-{
-
-bool
-check_exception(
-	fcppt::cast::bad_truncation_check const &
-)
-{
-	return
-		true;
-}
-
-}
-
 FCPPT_PP_PUSH_WARNING
 FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
 
@@ -40,7 +26,7 @@ BOOST_AUTO_TEST_CASE(
 FCPPT_PP_POP_WARNING
 
 #if SHRT_MAX < LONG_MAX
-	BOOST_CHECK_EXCEPTION(
+	BOOST_CHECK_THROW(
 		fcppt::cast::truncation_check<
 			short
 		>(
@@ -48,11 +34,10 @@ FCPPT_PP_POP_WARNING
 				long
 			>::max()
 		),
-		fcppt::cast::bad_truncation_check,
-		check_exception
+		fcppt::cast::bad_truncation_check
 	);
 
-	BOOST_CHECK_EXCEPTION(
+	BOOST_CHECK_THROW(
 		fcppt::cast::truncation_check<
 			short
 		>(
@@ -60,11 +45,10 @@ FCPPT_PP_POP_WARNING
 				long
 			>::min()
 		),
-		fcppt::cast::bad_truncation_check,
-		check_exception
+		fcppt::cast::bad_truncation_check
 	);
 #endif
-	BOOST_CHECK_EXCEPTION(
+	BOOST_CHECK_THROW(
 		fcppt::cast::truncation_check<
 			long
 		>(
@@ -72,22 +56,20 @@ FCPPT_PP_POP_WARNING
 				unsigned long
 			>::max()
 		),
-		fcppt::cast::bad_truncation_check,
-		check_exception
+		fcppt::cast::bad_truncation_check
 	);
 
-	BOOST_CHECK_EXCEPTION(
+	BOOST_CHECK_THROW(
 		fcppt::cast::truncation_check<
 			unsigned long
 		>(
 			-1
 		),
-		fcppt::cast::bad_truncation_check,
-		check_exception
+		fcppt::cast::bad_truncation_check
 	);
 
 #if USHRT_MAX < ULONG_MAX
-	BOOST_CHECK_EXCEPTION(
+	BOOST_CHECK_THROW(
 		fcppt::cast::truncation_check<
 			unsigned short
 		>(
@@ -95,8 +77,7 @@ FCPPT_PP_POP_WARNING
 				unsigned long
 			>::max()
 		),
-		fcppt::cast::bad_truncation_check,
-		check_exception
+		fcppt::cast::bad_truncation_check
 	);
 #endif
 	BOOST_CHECK_EQUAL(

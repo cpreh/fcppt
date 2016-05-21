@@ -24,15 +24,6 @@ enum class testenum
 	fcppt_maximum = enum2
 };
 
-bool
-check_function(
-	fcppt::exception const &
-)
-{
-	return
-		true;
-}
-
 }
 
 FCPPT_PP_PUSH_WARNING
@@ -54,13 +45,12 @@ FCPPT_PP_POP_WARNING
 		testenum::enum2
 	);
 
-	BOOST_CHECK_EXCEPTION(
+	BOOST_CHECK_THROW(
 		fcppt::cast_to_enum_exn<
 			testenum
 		>(
 			2u
 		),
-		fcppt::exception,
-		check_function
+		fcppt::exception
 	);
 }
