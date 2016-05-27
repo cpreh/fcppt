@@ -191,7 +191,7 @@
 
 <li>\ref fcpptcasts
 	<ul>
-	<li>Removed <code>fcppt::cast::dynamic_</code> for pointers.</li>
+	<li>Removed <code>%fcppt::cast::dynamic</code> for pointers.</li>
 	</ul>
 </li>
 
