@@ -99,10 +99,6 @@ if(
 	)
 endif()
 
-include_directories(
-	${FCPPT_UTILS_PROJECT_SOURCE_DIR}/include
-)
-
 set(
 	SIGNALS_BENCHMARK_BACKEND
 	"fcppt"
@@ -160,10 +156,6 @@ unset(
 	NEEDED_BOOST_LIBS
 )
 
-include_directories(
-	${Boost_INCLUDE_DIRS}
-)
-
 link_directories(
 	${Boost_LIBRARY_DIRS}
 )
@@ -205,11 +197,6 @@ configure_fcppt_file(
 configure_file(
 	${FCPPT_UTILS_PROJECT_SOURCE_DIR}/src/private_config.hpp.in
 	${FCPPT_UTILS_PROJECT_BINARY_DIR}/src/include/fcppt/private_config.hpp
-)
-
-include_directories(
-	${FCPPT_UTILS_PROJECT_BINARY_DIR}/include
-	${FCPPT_UTILS_PROJECT_BINARY_DIR}/src/include
 )
 
 include(
@@ -275,9 +262,13 @@ function(
 
 	target_include_directories(
 		${TARGETNAME}
-		INTERFACE
+		PUBLIC
+		"$<BUILD_INTERFACE:${FCPPT_UTILS_PROJECT_BINARY_DIR}/include>"
+		"$<BUILD_INTERFACE:${FCPPT_UTILS_PROJECT_SOURCE_DIR}/include>"
+		"$<INSTALL_INTERFACE:${INSTALL_INCLUDE_DIR}>"
 		${Boost_INCLUDE_DIRS}
 		PRIVATE
+		"$<BUILD_INTERFACE:${FCPPT_UTILS_PROJECT_BINARY_DIR}/src/include>"
 		${_INCLUDE_DIRS}
 	)
 

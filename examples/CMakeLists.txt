@@ -76,6 +76,14 @@ function(
 		"${_COMPILE_DEFINITIONS}"
 	)
 
+	target_include_directories(
+		${FCPPT_EXAMPLE_NAME}
+		PRIVATE
+		${Boost_INCLUDE_DIRS}
+		${FCPPT_UTILS_PROJECT_BINARY_DIR}/include
+		${FCPPT_UTILS_PROJECT_SOURCE_DIR}/include
+	)
+
 	if(
 		NOT _IS_C
 	)
