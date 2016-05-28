@@ -911,6 +911,10 @@ add_fcppt_test(
 )
 
 add_fcppt_test(
+	optional/make
+)
+
+add_fcppt_test(
 	optional/map
 )
 

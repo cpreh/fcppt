@@ -191,6 +191,10 @@ value.
 <td>Contains \link fcppt::optional::join \endlink.</td>
 </tr>
 <tr>
+<td><code>make.hpp</code></td>
+<td>Contains \link fcppt::optional::make \endlink.</td>
+</tr>
+<tr>
 <td><code>map.hpp</code></td>
 <td>Contains \link fcppt::optional::map \endlink.</td>
 </tr>

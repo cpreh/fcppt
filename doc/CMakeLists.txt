@@ -1062,6 +1062,7 @@ set(
 	include/fcppt/optional/from_pointer.hpp
 	include/fcppt/optional/is_object.hpp
 	include/fcppt/optional/join.hpp
+	include/fcppt/optional/make.hpp
 	include/fcppt/optional/map.hpp
 	include/fcppt/optional/maybe.hpp
 	include/fcppt/optional/maybe_multi.hpp

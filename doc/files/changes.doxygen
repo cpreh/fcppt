@@ -98,6 +98,7 @@
 	<li>Added \link fcppt::optional::filter\endlink.</li>
 	<li>Added \link fcppt::optional::apply\endlink.</li>
 	<li>Added \link fcppt::optional::cat\endlink.</li>
+	<li>Added \link fcppt::optional::make\endlink.</li>
 	</ul>
 </li>
 
