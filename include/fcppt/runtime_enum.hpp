@@ -72,6 +72,10 @@ runtime_enum(
 			](
 				auto const _fcppt_index
 			)
+			->
+			decltype(
+				auto
+			)
 			{
 				FCPPT_USE(
 					_fcppt_index
