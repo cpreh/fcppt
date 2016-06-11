@@ -78,6 +78,10 @@ FCPPT_PP_DISABLE_GCC_WARNING(-Wunused-member-function)
 FCPPT_PP_DISABLE_GCC_WARNING(-Winconsistent-missing-override)
 #endif
 
+#if FCPPT_CONFIG_CLANG_VERSION_AT_LEAST(3, 9)
+FCPPT_PP_DISABLE_GCC_WARNING(-Wundefined-var-template)
+#endif
+
 #else
 
 FCPPT_PP_DISABLE_GCC_WARNING(-Wliteral-suffix)
