@@ -446,7 +446,7 @@ if(
 endif()
 
 fcppt_utils_generate_config(
-	TRUE
+	HAS_BUILDDIR
 )
 
 install(

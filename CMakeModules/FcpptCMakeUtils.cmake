@@ -734,8 +734,37 @@ set(
 
 function(
 	fcppt_utils_generate_config
-	HAS_BUILDDIR
 )
+	set(
+		OPTION_ARGS
+		HAS_BUILDDIR
+	)
+
+	set(
+		SINGLE_ARGS
+		CONFIG_PATH
+	)
+
+	cmake_parse_arguments(
+		""
+		"${OPTION_ARGS}"
+		"${SINGLE_ARGS}"
+		""
+		${ARGN}
+	)
+
+	if(
+		NOT
+		"${_UNPARSED_ARGUMENTS}"
+		STREQUAL
+		""
+	)
+		message(
+			FATAL_ERROR
+			"Invalid parameters ${_UNPARSED_ARGUMENTS}"
+		)
+	endif()
+
 	fcppt_utils_install_cmakeconfig_dir(
 		INSTALL_CMAKECONFIG_DIR
 	)
@@ -764,7 +793,7 @@ function(
 	)
 
 	if(
-		HAS_BUILDDIR
+		_HAS_BUILDDIR
 	)
 		list(
 			APPEND
@@ -773,9 +802,25 @@ function(
 		)
 	endif()
 
+	if(
+		"${_CONFIG_PATH}"
+		STREQUAL
+		""
+	)
+		set(
+			CONFIG_FILE_PATH
+			${FCPPT_UTILS_PROJECT_SOURCE_DIR}
+		)
+	else()
+		set(
+			CONFIG_FILE_PATH
+			${_CONFIG_PATH}
+		)
+	endif()
+
 	set(
 		CONFIG_IN_FILE
-		"${FCPPT_UTILS_PROJECT_SOURCE_DIR}/${CONFIG_NAME}.in"
+		"${CONFIG_FILE_PATH}/${CONFIG_NAME}.in"
 	)
 
 	configure_file(
@@ -994,6 +1039,7 @@ function(
 	)
 endfunction()
 
+# TODO: Get rid of this
 function(
 	fcppt_utils_add_target_include_dir
 	TARGET_NAME
