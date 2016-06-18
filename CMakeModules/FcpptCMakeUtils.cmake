@@ -878,6 +878,33 @@ function(
 	TARGET_FILES
 )
 	set(
+		MULTI_ARGS
+		INCLUDE_DIRS
+		LINK_LIBS
+	)
+
+	cmake_parse_arguments(
+		""
+		""
+		""
+		"${MULTI_ARGS}"
+		${ARGN}
+	)
+
+	if(
+		NOT
+		"${_UNPARSED_ARGUMENTS}"
+		STREQUAL
+		""
+	)
+		message(
+			FATAL_ERROR
+			"Invalid parameters ${_UNPARSED_ARGUMENTS}"
+		)
+	endif()
+
+
+	set(
 		LIBNAME
 		"${TARGET_NAME}_dummy"
 	)
@@ -893,6 +920,18 @@ function(
 		PROPERTIES
 		LINKER_LANGUAGE
 		"CXX"
+	)
+
+	target_include_directories(
+		${LIBNAME}
+		PRIVATE
+		${_INCLUDE_DIRS}
+	)
+
+	target_link_libraries(
+		${LIBNAME}
+		PRIVATE
+		${_LINK_LIBS}
 	)
 endfunction()
 
