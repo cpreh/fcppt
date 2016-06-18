@@ -239,20 +239,38 @@ function(
 		FCPPT_${TARGETNAME}_FILES
 	)
 
-	add_library(
-		${TARGETNAME}
+	if(
 		${_VARIANT}
-		${FCPPT_${TARGETNAME}_FILES}
+		STREQUAL
+		INTERFACE
 	)
+		add_library(
+			${TARGETNAME}
+			${_VARIANT}
+		)
+	else()
+		add_library(
+			${TARGETNAME}
+			${_VARIANT}
+			${FCPPT_${TARGETNAME}_FILES}
+		)
+	endif()
 
-	fcppt_utils_set_so_version(
-		${TARGETNAME}
-		${FCPPT_USED_SO_VERSION}
+	if(
+		NOT
+		${_VARIANT}
+		STREQUAL
+		INTERFACE
 	)
+		fcppt_utils_set_so_version(
+			${TARGETNAME}
+			${FCPPT_USED_SO_VERSION}
+		)
 
-	fcppt_utils_set_target_compiler_flags(
-		${TARGETNAME}
-	)
+		fcppt_utils_set_target_compiler_flags(
+			${TARGETNAME}
+		)
+	endif()
 
 	fcppt_utils_interface_static_link(
 		${TARGETNAME}
@@ -260,28 +278,51 @@ function(
 		${FCPPT_STATIC_LINK_FLAG}
 	)
 
-	target_include_directories(
-		${TARGETNAME}
-		PUBLIC
+	set(
+		PUBLIC_INCLUDES
 		"$<BUILD_INTERFACE:${FCPPT_UTILS_PROJECT_BINARY_DIR}/include>"
 		"$<BUILD_INTERFACE:${FCPPT_UTILS_PROJECT_SOURCE_DIR}/include>"
-		"$<INSTALL_INTERFACE:${INSTALL_INCLUDE_DIR}>"
 		${Boost_INCLUDE_DIRS}
-		PRIVATE
-		"$<BUILD_INTERFACE:${FCPPT_UTILS_PROJECT_BINARY_DIR}/src/include>"
-		${_INCLUDE_DIRS}
 	)
 
-	fcppt_utils_add_target_include_dir(
-		${TARGETNAME}
-		TRUE
+	if(
+		NOT
+		${_VARIANT}
+		STREQUAL
+		INTERFACE
 	)
+		target_include_directories(
+			${TARGETNAME}
+			PRIVATE
+			${PUBLIC_INCLUDES}
+			"$<BUILD_INTERFACE:${FCPPT_UTILS_PROJECT_BINARY_DIR}/src/include>"
+			${_INCLUDE_DIRS}
+		)
+	endif()
+
+	target_include_directories(
+		${TARGETNAME}
+		INTERFACE
+		${PUBLIC_INCLUDES}
+		"$<INSTALL_INTERFACE:${INSTALL_INCLUDE_DIR}>"
+	)
+
+	if(
+		NOT
+		${_VARIANT}
+		STREQUAL
+		INTERFACE
+	)
+		target_link_libraries(
+			${TARGETNAME}
+			PRIVATE
+			${_FCPPT_DEPS}
+			${_OTHER_DEPS}
+		)
+	endif()
 
 	target_link_libraries(
 		${TARGETNAME}
-		PRIVATE
-		${_FCPPT_DEPS}
-		${_OTHER_DEPS}
 		INTERFACE
 		${_TRANSITIVE_DEPS}
 	)
@@ -346,6 +387,19 @@ function(
 			"${_SYMBOL_NAME}_DETAIL"
 		STATIC_LINK_FLAG
 			"${FCPPT_STATIC_LINK_FLAG}"
+	)
+
+	fcppt_utils_interface_link_name(
+		${FULL_NAME}
+		INTERFACE_NAME
+	)
+
+	make_fcppt_library_base(
+		"${INTERFACE_NAME}"
+		""
+		VARIANT
+			"INTERFACE"
+		${ARGN}
 	)
 
 	if(
@@ -445,9 +499,7 @@ if(
 	)
 endif()
 
-fcppt_utils_generate_config(
-	HAS_BUILDDIR
-)
+fcppt_utils_generate_config()
 
 install(
 	DIRECTORY

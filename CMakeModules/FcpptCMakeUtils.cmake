@@ -732,18 +732,13 @@ function(
 	fcppt_utils_generate_config
 )
 	set(
-		OPTION_ARGS
-		HAS_BUILDDIR
-	)
-
-	set(
 		SINGLE_ARGS
 		CONFIG_PATH
 	)
 
 	cmake_parse_arguments(
 		""
-		"${OPTION_ARGS}"
+		""
 		"${SINGLE_ARGS}"
 		""
 		${ARGN}
@@ -766,37 +761,9 @@ function(
 	)
 
 	set(
-		INCLUDE_DIR_VAR
-		${PROJECT_NAME}_INCLUDE_DIR
-	)
-
-	set(
 		CONFIG_NAME
 		"${PROJECT_NAME}-config.cmake"
 	)
-
-	# Make build dir config
-	list(
-		APPEND
-		${INCLUDE_DIR_VAR}
-		"$<INSTALL_INTERFACE:${INSTALL_INCLUDE_DIR}>"
-	)
-
-	list(
-		APPEND
-		${INCLUDE_DIR_VAR}
-		"$<BUILD_INTERFACE:${FCPPT_UTILS_SOURCE_INCLUDE_DIR}>"
-	)
-
-	if(
-		_HAS_BUILDDIR
-	)
-		list(
-			APPEND
-			${INCLUDE_DIR_VAR}
-			"$<BUILD_INTERFACE:${FCPPT_UTILS_BINARY_INCLUDE_DIR}>"
-		)
-	endif()
 
 	if(
 		"${_CONFIG_PATH}"
@@ -819,26 +786,14 @@ function(
 		"${CONFIG_FILE_PATH}/${CONFIG_NAME}.in"
 	)
 
-	configure_file(
-		${CONFIG_IN_FILE}
-		"${FCPPT_UTILS_BUILD_CONFIG_DIR}/${CONFIG_NAME}"
-		@ONLY
-	)
-
-	# Make installable config
-	set(
-		${INCLUDE_DIR_VAR}
-		"${INSTALL_INCLUDE_DIR}"
-	)
-
 	set(
 		CONFIG_DEST
-		"${FCPPT_UTILS_BUILD_CONFIG_DIR}/install-config/${CONFIG_NAME}"
+		"${FCPPT_UTILS_BUILD_CONFIG_DIR}/${CONFIG_NAME}"
 	)
 
 	configure_file(
 		${CONFIG_IN_FILE}
-		"${CONFIG_DEST}"
+		${CONFIG_DEST}
 		@ONLY
 	)
 
@@ -849,25 +804,21 @@ function(
 		"${INSTALL_CMAKECONFIG_DIR}"
 	)
 
-	if(
-		NOT FCPPT_UTILS_NO_TARGETS
+	export(
+		EXPORT
+		"${FCPPT_UTILS_EXPORT_NAME}"
+		FILE
+		"${FCPPT_UTILS_BUILD_CONFIG}"
 	)
-		export(
-			EXPORT
-			"${FCPPT_UTILS_EXPORT_NAME}"
-			FILE
-			"${FCPPT_UTILS_BUILD_CONFIG}"
-		)
 
-		install(
-			EXPORT
-			"${FCPPT_UTILS_EXPORT_NAME}"
-			FILE
-			"${FCPPT_UTILS_TARGETS_CONFIG}"
-			DESTINATION
-			"${INSTALL_CMAKECONFIG_DIR}"
-		)
-	endif()
+	install(
+		EXPORT
+		"${FCPPT_UTILS_EXPORT_NAME}"
+		FILE
+		"${FCPPT_UTILS_TARGETS_CONFIG}"
+		DESTINATION
+		"${INSTALL_CMAKECONFIG_DIR}"
+	)
 endfunction()
 
 function(
@@ -1035,36 +986,6 @@ function(
 	)
 endfunction()
 
-# TODO: Get rid of this
-function(
-	fcppt_utils_add_target_include_dir
-	TARGET_NAME
-	HAS_BUILDDIR
-)
-	list(
-		APPEND
-		DIRECTORIES
-		"$<INSTALL_INTERFACE:${INSTALL_INCLUDE_DIR}>"
-		"$<BUILD_INTERFACE:${FCPPT_UTILS_SOURCE_INCLUDE_DIR}>"
-	)
-
-	if(
-		HAS_BUILDDIR
-	)
-		list(
-			APPEND
-			DIRECTORIES
-			"$<BUILD_INTERFACE:${FCPPT_UTILS_BINARY_INCLUDE_DIR}>"
-		)
-	endif()
-
-	target_include_directories(
-		${TARGET_NAME}
-		INTERFACE
-		${DIRECTORIES}
-	)
-endfunction()
-
 function(
 	fcppt_utils_static_shared
 )
@@ -1119,6 +1040,18 @@ function(
 	set(
 		${RESULT}
 		${LIBNAME}_static
+		PARENT_SCOPE
+	)
+endfunction()
+
+function(
+	fcppt_utils_interface_link_name
+	LIBNAME
+	RESULT
+)
+	set(
+		${RESULT}
+		${LIBNAME}_interface
 		PARENT_SCOPE
 	)
 endfunction()

@@ -7,29 +7,24 @@ function(
 	fcppt_export_init
 	PROJECT_NAME
 )
-	if(
-		NOT FCPPT_DONT_EXPORT
+	get_filename_component(
+		FCPPT_EXPORT_DIR
+		"${CMAKE_CURRENT_LIST_FILE}"
+		PATH
 	)
-		get_filename_component(
-			FCPPT_EXPORT_DIR
-			"${CMAKE_CURRENT_LIST_FILE}"
-			PATH
-		)
 
-		include(
-			"${FCPPT_EXPORT_DIR}/${PROJECT_NAME}Targets.cmake"
-		)
-	endif()
+	include(
+		"${FCPPT_EXPORT_DIR}/${PROJECT_NAME}Targets.cmake"
+	)
 endfunction()
 
 function(
 	fcppt_export_generate_targets
-	TARGETS
 	USE_STATIC_LIBS
 )
 	foreach(
 		TARGET
-		${TARGETS}
+		${ARGN}
 	)
 		set(
 			TARGET_NAME
