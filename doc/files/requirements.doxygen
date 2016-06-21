@@ -47,7 +47,7 @@ doxygen-1.7.5</a>.
 The following platforms are tested by us:
 
 <ul>
-	<li>gcc-5.3 (Gentoo Linux)</li>
+	<li>gcc-5.4 (Gentoo Linux)</li>
 	<li>gcc-5.2 (MinGW)</li>
 	<li>clang 3.8 (Gentoo Linux)</li>
 	<li>VC++ from Visual Studio 2015 Update 2</li>
