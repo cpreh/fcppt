@@ -4,6 +4,7 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
+#include <fcppt/log/context_fwd.hpp>
 #include <fcppt/log/enabled_level_array.hpp>
 #include <fcppt/log/level.hpp>
 #include <fcppt/log/level_stream.hpp>
@@ -129,4 +130,11 @@ fcppt::log::object::setting() const
 {
 	return
 		auto_context_.node().value().setting();
+}
+
+fcppt::log::context &
+fcppt::log::object::context() const
+{
+	return
+		auto_context_.context();
 }

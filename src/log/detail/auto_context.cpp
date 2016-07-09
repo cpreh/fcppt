@@ -33,6 +33,13 @@ fcppt::log::detail::auto_context::~auto_context()
 	);
 }
 
+fcppt::log::context &
+fcppt::log::detail::auto_context::context() const
+{
+	return
+		context_;
+}
+
 fcppt::log::detail::context_tree const &
 fcppt::log::detail::auto_context::node() const
 {

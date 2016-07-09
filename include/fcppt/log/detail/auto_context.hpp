@@ -34,6 +34,9 @@ public:
 
 	~auto_context();
 
+	fcppt::log::context &
+	context() const;
+
 	fcppt::log::detail::context_tree const &
 	node() const;
 private:

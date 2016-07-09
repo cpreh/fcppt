@@ -8,6 +8,7 @@
 #define FCPPT_LOG_OBJECT_HPP_INCLUDED
 
 #include <fcppt/noncopyable.hpp>
+#include <fcppt/log/context_fwd.hpp>
 #include <fcppt/log/enabled_level_array.hpp>
 #include <fcppt/log/level_fwd.hpp>
 #include <fcppt/log/level_stream_array.hpp>
@@ -145,6 +146,13 @@ public:
 	FCPPT_LOG_DETAIL_SYMBOL
 	fcppt::log::setting const &
 	setting() const;
+
+	/**
+	\brief Returns the context this object is part of
+	*/
+	FCPPT_LOG_DETAIL_SYMBOL
+	fcppt::log::context &
+	context() const;
 private:
 	fcppt::log::detail::auto_context auto_context_;
 
