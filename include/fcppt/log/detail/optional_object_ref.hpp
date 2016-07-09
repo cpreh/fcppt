@@ -4,21 +4,11 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_LOG_DETAIL_AUTO_CONTEXT_REP_FWD_HPP_INCLUDED
-#define FCPPT_LOG_DETAIL_AUTO_CONTEXT_REP_FWD_HPP_INCLUDED
+#ifndef FCPPT_LOG_DETAIL_OPTIONAL_OBJECT_REF_HPP_INCLUDED
+#define FCPPT_LOG_DETAIL_OPTIONAL_OBJECT_REF_HPP_INCLUDED
 
+#include <fcppt/log/detail/optional_object_ref_fwd.hpp>
+#include <fcppt/optional/reference.hpp>
 
-namespace fcppt
-{
-namespace log
-{
-namespace detail
-{
-
-class auto_context_rep;
-
-}
-}
-}
 
 #endif

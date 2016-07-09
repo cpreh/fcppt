@@ -9,6 +9,7 @@
 #include <fcppt/log/location.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <numeric>
+#include <utility>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -31,26 +32,31 @@ fcppt::log::location::location(
 
 fcppt::log::location &
 fcppt::log::location::operator /=(
-	fcppt::string const &_string
+	fcppt::string _string
 )
 {
 	entries_.push_back(
-		_string
+		std::move(
+			_string
+		)
 	);
 
-	return *this;
+	return
+		*this;
 }
 
 fcppt::log::location::const_iterator
 fcppt::log::location::begin() const
 {
-	return entries_.begin();
+	return
+		entries_.begin();
 }
 
 fcppt::log::location::const_iterator
 fcppt::log::location::end() const
 {
-	return entries_.end();
+	return
+		entries_.end();
 }
 
 fcppt::string
@@ -58,8 +64,8 @@ fcppt::log::location::string() const
 {
 	return
 		std::accumulate(
-			begin(),
-			end(),
+			this->begin(),
+			this->end(),
 			fcppt::string(),
 			[](
 				fcppt::string const &_state,
@@ -80,9 +86,12 @@ fcppt::log::location::string() const
 fcppt::log::location
 fcppt::log::operator /(
 	log::location _location,
-	fcppt::string const &_string
+	fcppt::string _string
 )
 {
 	return
-		_location /= _string;
+		_location /=
+			std::move(
+				_string
+			);
 }

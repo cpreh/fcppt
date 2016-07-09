@@ -4,16 +4,14 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
+#include <fcppt/string.hpp>
 #include <fcppt/algorithm/fold.hpp>
-#include <fcppt/assert/optional_error.hpp>
 #include <fcppt/container/tree/to_root.hpp>
 #include <fcppt/log/detail/context_tree.hpp>
-#include <fcppt/log/detail/inner_context_node.hpp>
 #include <fcppt/log/format/chain.hpp>
 #include <fcppt/log/format/optional_function.hpp>
 #include <fcppt/log/format/prefix.hpp>
 #include <fcppt/log/impl/tree_formatter.hpp>
-#include <fcppt/variant/get_exn.hpp>
 
 
 fcppt::log::format::optional_function
@@ -29,9 +27,7 @@ fcppt::log::impl::tree_formatter(
 				fcppt::container::tree::to_root<
 					fcppt::log::detail::context_tree const
 				>(
-					FCPPT_ASSERT_OPTIONAL_ERROR(
-						_node.parent()
-					).get()
+					_node
 				),
 				fcppt::log::format::optional_function{},
 				[](
@@ -40,11 +36,7 @@ fcppt::log::impl::tree_formatter(
 				)
 				{
 					fcppt::string const &name(
-						fcppt::variant::get_exn<
-							fcppt::log::detail::inner_context_node
-						>(
-							_cur.value().get()
-						).name()
+						_cur.value().location_string()
 					);
 
 					return

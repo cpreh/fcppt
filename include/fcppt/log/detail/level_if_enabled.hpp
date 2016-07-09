@@ -19,7 +19,7 @@
 )\
 {\
 	if(\
-		(stream).enabled_and_activated(\
+		(stream).enabled(\
 			(level)\
 		)\
 	)\

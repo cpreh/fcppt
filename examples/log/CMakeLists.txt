@@ -13,10 +13,6 @@ function(
 endfunction()
 
 add_fcppt_log_example(
-	complex
-)
-
-add_fcppt_log_example(
 	context
 )
 

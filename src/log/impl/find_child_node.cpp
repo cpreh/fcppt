@@ -7,14 +7,13 @@
 #include <fcppt/string.hpp>
 #include <fcppt/algorithm/find_if_opt.hpp>
 #include <fcppt/log/detail/context_tree.hpp>
-#include <fcppt/log/detail/optional_context_tree_ref.hpp>
-#include <fcppt/log/impl/find_inner_node.hpp>
-#include <fcppt/log/impl/inner_node_name.hpp>
+#include <fcppt/log/impl/find_child_node.hpp>
+#include <fcppt/log/impl/optional_context_tree_ref.hpp>
 #include <fcppt/optional/deref.hpp>
 
 
-fcppt::log::detail::optional_context_tree_ref
-fcppt::log::impl::find_inner_node(
+fcppt::log::impl::optional_context_tree_ref
+fcppt::log::impl::find_child_node(
 	fcppt::log::detail::context_tree &_tree,
 	fcppt::string const &_name
 )
@@ -23,9 +22,17 @@ fcppt::log::impl::find_inner_node(
 		fcppt::optional::deref(
 			fcppt::algorithm::find_if_opt(
 				_tree,
-				fcppt::log::impl::inner_node_name(
-					_name
+				[
+					&_name
+				](
+					fcppt::log::detail::context_tree const &_child
 				)
+				{
+					return
+						_child.value().location_string()
+						==
+						_name;
+				}
 			)
 		);
 }

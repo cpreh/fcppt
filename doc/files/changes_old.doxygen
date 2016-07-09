@@ -780,7 +780,7 @@ longer supported.</li>
 <li>\ref fcpptlog
 	<ul>
 
-	<li>Added \link FCPPT_LOG_DEFINE_OBJECT \endlink.</li>
+	<li>Added FCPPT_LOG_DEFINE_OBJECT.</li>
 
 	<li>Added fcppt::log::activate_levels_recursive.</li>
 

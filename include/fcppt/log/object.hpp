@@ -8,14 +8,13 @@
 #define FCPPT_LOG_OBJECT_HPP_INCLUDED
 
 #include <fcppt/noncopyable.hpp>
-#include <fcppt/log/context_fwd.hpp>
 #include <fcppt/log/enabled_level_array.hpp>
 #include <fcppt/log/level_fwd.hpp>
 #include <fcppt/log/level_stream_array.hpp>
 #include <fcppt/log/level_stream_fwd.hpp>
 #include <fcppt/log/object_fwd.hpp>
-#include <fcppt/log/optional_location_fwd.hpp>
 #include <fcppt/log/parameters_fwd.hpp>
+#include <fcppt/log/setting_fwd.hpp>
 #include <fcppt/log/detail/auto_context.hpp>
 #include <fcppt/log/detail/symbol.hpp>
 #include <fcppt/log/detail/temporary_output_fwd.hpp>
@@ -54,12 +53,6 @@ public:
 		fcppt::log::parameters const &parameters
 	);
 
-	/**
-	\brief Destroys a logger object
-
-	It is important the logger object is destroyed before its context is
-	destroyed, if it has one.
-	*/
 	FCPPT_LOG_DETAIL_SYMBOL
 	~object();
 
@@ -113,32 +106,6 @@ public:
 	) const;
 
 	/**
-	\brief Activates a log level
-
-	Activates the log level given by \a level
-
-	\param level The log level to activate
-	*/
-	FCPPT_LOG_DETAIL_SYMBOL
-	void
-	activate(
-		fcppt::log::level level
-	);
-
-	/**
-	\brief Deactivates a log level
-
-	Deactivates the log level given by \a level
-
-	\param level The log level to deactivate
-	*/
-	FCPPT_LOG_DETAIL_SYMBOL
-	void
-	deactivate(
-		fcppt::log::level level
-	);
-
-	/**
 	\brief Returns if a level is activated
 
 	Returns if \a level is activated.
@@ -147,43 +114,9 @@ public:
 	*/
 	FCPPT_LOG_DETAIL_SYMBOL
 	bool
-	activated(
+	enabled(
 		fcppt::log::level level
 	) const;
-
-	/**
-	\brief Returns if a level is activated and the logger is enabled
-
-	Returns if \a level is activated and the logger is enabled.
-	Equivalent to <code>activated(level) && enabled()</code>.
-
-	\param level The log level to query the activated state for
-	*/
-	FCPPT_LOG_DETAIL_SYMBOL
-	bool
-	enabled_and_activated(
-		fcppt::log::level level
-	) const;
-
-	/**
-	\brief Sets the logger's enabled state
-
-	Sets the logger's enabled state to \a enabled
-
-	\param enabled The new enabled state
-	*/
-	FCPPT_LOG_DETAIL_SYMBOL
-	void
-	enable(
-		bool enabled
-	);
-
-	/**
-	\brief Returns if the logger is enabled
-	*/
-	FCPPT_LOG_DETAIL_SYMBOL
-	bool
-	enabled() const;
 
 	/**
 	\brief Returns the associated formatter
@@ -207,29 +140,17 @@ public:
 	enabled_levels() const;
 
 	/**
-	\brief Returns the location if any
-
-	\return Returns the loggers location if it has any or
-	<code>fcppt::log::optional_location()</code>
+	\brief Returns the current setting
 	*/
 	FCPPT_LOG_DETAIL_SYMBOL
-	fcppt::log::optional_location
-	location() const;
-
-	void
-	transfer(
-		fcppt::log::context &
-	);
+	fcppt::log::setting const &
+	setting() const;
 private:
 	fcppt::log::detail::auto_context auto_context_;
 
 	fcppt::log::format::optional_function const formatter_;
 
 	fcppt::log::level_stream_array level_streams_;
-
-	fcppt::log::enabled_level_array enabled_levels_;
-
-	bool enabled_;
 };
 
 }

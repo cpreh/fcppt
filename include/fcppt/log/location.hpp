@@ -56,7 +56,9 @@ public:
 
 	A typedef to an iterator type over \link fcppt::string \endlink
 	*/
-	typedef fcppt::log::detail::location_vector::const_iterator const_iterator;
+	typedef
+	fcppt::log::detail::location_vector::const_iterator
+	const_iterator;
 
 	/**
 	\brief Adds a new element to this location
@@ -68,7 +70,7 @@ public:
 	FCPPT_LOG_DETAIL_SYMBOL
 	fcppt::log::location &
 	operator /=(
-		fcppt::string const &element
+		fcppt::string element
 	);
 
 	/**
@@ -111,7 +113,7 @@ FCPPT_LOG_DETAIL_SYMBOL
 fcppt::log::location
 operator /(
 	fcppt::log::location location,
-	fcppt::string const &element
+	fcppt::string element
 );
 
 }

@@ -4,12 +4,12 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_LOG_IMPL_FIND_INNER_NODE_HPP_INCLUDED
-#define FCPPT_LOG_IMPL_FIND_INNER_NODE_HPP_INCLUDED
+#ifndef FCPPT_LOG_IMPL_FIND_CHILD_NODE_HPP_INCLUDED
+#define FCPPT_LOG_IMPL_FIND_CHILD_NODE_HPP_INCLUDED
 
 #include <fcppt/string.hpp>
 #include <fcppt/log/detail/context_tree_fwd.hpp>
-#include <fcppt/log/detail/optional_context_tree_ref.hpp>
+#include <fcppt/log/impl/optional_context_tree_ref.hpp>
 
 
 namespace fcppt
@@ -19,8 +19,8 @@ namespace log
 namespace impl
 {
 
-fcppt::log::detail::optional_context_tree_ref
-find_inner_node(
+fcppt::log::impl::optional_context_tree_ref
+find_child_node(
 	fcppt::log::detail::context_tree &,
 	fcppt::string const &
 );

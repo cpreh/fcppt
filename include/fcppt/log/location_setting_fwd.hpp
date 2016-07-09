@@ -4,12 +4,18 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_LOG_OPTIONAL_LOCATION_HPP_INCLUDED
-#define FCPPT_LOG_OPTIONAL_LOCATION_HPP_INCLUDED
+#ifndef FCPPT_LOG_LOCATION_SETTING_FWD_HPP_INCLUDED
+#define FCPPT_LOG_LOCATION_SETTING_FWD_HPP_INCLUDED
 
-#include <fcppt/log/location.hpp>
-#include <fcppt/log/optional_location_fwd.hpp>
-#include <fcppt/optional/object_impl.hpp>
 
+namespace fcppt
+{
+namespace log
+{
+
+class location_setting;
+
+}
+}
 
 #endif

@@ -18,7 +18,7 @@ namespace log
 {
 
 /**
-\brief Creates an array with enabled levels including and above a levle
+\brief Creates an array with enabled levels including and above a level
 
 \ingroup fcpptlog
 

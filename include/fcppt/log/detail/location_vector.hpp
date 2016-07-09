@@ -20,9 +20,11 @@ namespace log
 namespace detail
 {
 
-typedef std::vector<
+typedef
+std::vector<
 	fcppt::string
-> location_vector;
+>
+location_vector;
 
 }
 }

@@ -7,8 +7,9 @@
 #ifndef FCPPT_LOG_DETAIL_CONTEXT_TREE_NODE_HPP_INCLUDED
 #define FCPPT_LOG_DETAIL_CONTEXT_TREE_NODE_HPP_INCLUDED
 
+#include <fcppt/string.hpp>
+#include <fcppt/log/setting.hpp>
 #include <fcppt/log/detail/context_tree_node_fwd.hpp>
-#include <fcppt/log/detail/context_tree_node_variant.hpp>
 
 
 namespace fcppt
@@ -21,18 +22,25 @@ namespace detail
 class context_tree_node
 {
 public:
-	explicit
 	context_tree_node(
-		fcppt::log::detail::context_tree_node_variant const &
+		fcppt::string,
+		fcppt::log::setting const &
 	);
 
-	fcppt::log::detail::context_tree_node_variant &
-	get();
+	fcppt::string const &
+	location_string() const;
 
-	fcppt::log::detail::context_tree_node_variant const &
-	get() const;
+	fcppt::log::setting const &
+	setting() const;
+
+	void
+	setting(
+		fcppt::log::setting const &
+	);
 private:
-	fcppt::log::detail::context_tree_node_variant variant_;
+	fcppt::string location_string_;
+
+	fcppt::log::setting setting_;
 };
 
 }

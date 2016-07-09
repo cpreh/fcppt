@@ -4,8 +4,8 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_LOG_OPTIONAL_OBJECT_FWD_HPP_INCLUDED
-#define FCPPT_LOG_OPTIONAL_OBJECT_FWD_HPP_INCLUDED
+#ifndef FCPPT_LOG_DETAIL_OPTIONAL_OBJECT_REF_FWD_HPP_INCLUDED
+#define FCPPT_LOG_DETAIL_OPTIONAL_OBJECT_REF_FWD_HPP_INCLUDED
 
 #include <fcppt/log/object_fwd.hpp>
 #include <fcppt/optional/reference_fwd.hpp>
@@ -14,6 +14,8 @@
 namespace fcppt
 {
 namespace log
+{
+namespace detail
 {
 
 /**
@@ -25,8 +27,9 @@ typedef
 fcppt::optional::reference<
 	fcppt::log::object
 >
-optional_object;
+optional_object_ref;
 
+}
 }
 }
 

@@ -10,9 +10,7 @@
 #include <fcppt/noncopyable.hpp>
 #include <fcppt/log/context_fwd.hpp>
 #include <fcppt/log/location_fwd.hpp>
-#include <fcppt/log/object_fwd.hpp>
-#include <fcppt/log/optional_object_fwd.hpp>
-#include <fcppt/log/tree_function.hpp>
+#include <fcppt/log/location_setting_fwd.hpp>
 #include <fcppt/log/detail/auto_context_fwd.hpp>
 #include <fcppt/log/detail/context_tree.hpp>
 #include <fcppt/log/detail/symbol.hpp>
@@ -24,15 +22,9 @@ namespace log
 {
 
 /**
-\brief The logger context class is used for finding loggers at runtime.
+\brief A logger context manages log settings
 
 \ingroup fcpptlog
-
-An object of this class should be declared as static inside a function. This
-ensures that it is available before every global logger gets constructed. The
-context object can be passed using
-fcppt::log::parameters::object::context_location. Logger objects can then later
-be queried providing their location using this class.
 */
 class context
 {
@@ -41,93 +33,47 @@ class context
 	);
 public:
 	/**
-	\brief Constructs a context with no locations
+	\brief Constructs a context using a container of location settings
+
+	\param root The root setting which will be the default
 	*/
+	explicit
 	FCPPT_LOG_DETAIL_SYMBOL
-	context();
+	context(
+		fcppt::log::setting const &root
+	);
 
-	/**
-	\brief Destroys a context
-
-	It is important that all the logger objects that are associated with
-	this context are already destroyed.
-
-	\warning The behaviour is undefined if this context still has
-	associated logger objects.
-	*/
 	FCPPT_LOG_DETAIL_SYMBOL
 	~context();
 
 	/**
-	\brief Searches for a logger with a given location.
+	\brief Updates a location setting
 
-	Searches for a logger whose location is \a location.
-
-	\param location The location to search
-
-	\return If the logger is found, it will be returned, otherwise an empty
-	fcppt::log::optional_object will be returned.
-	*/
-	FCPPT_LOG_DETAIL_SYMBOL
-	fcppt::log::optional_object
-	find(
-		fcppt::log::location const &location
-	);
-
-	/**
-	\brief Applies a function to all logers given a location recursively
-
-	Applies \a function to the loggers at \a location and below.
-
-	\throw fcppt::log::no_such_location if the location doesn't exist
+	Updates the setting at a location, both provided by \a
+	location_setting. Note that every location below is also updated.
 	*/
 	FCPPT_LOG_DETAIL_SYMBOL
 	void
-	apply(
-		fcppt::log::location const &location,
-		fcppt::log::tree_function const &function
-	);
-
-	/**
-	\brief Applies a function to all logers recursively
-
-	Applies \a function to all loggers.
-	*/
-	FCPPT_LOG_DETAIL_SYMBOL
-	void
-	apply_all(
-		fcppt::log::tree_function const &function
-	);
-
-	/**
-	\brief Transfers all locations to another context
-
-	Transfers all locations of this context to \a other
-	*/
-	FCPPT_LOG_DETAIL_SYMBOL
-	void
-	transfer_to(
-		fcppt::log::context &other
+	set(
+		fcppt::log::location_setting const &location_setting
 	);
 private:
-	void
-	apply_to(
-		fcppt::log::tree_function const &,
-		fcppt::log::detail::context_tree &
-	);
-
-	friend class fcppt::log::detail::auto_context;
-
 	fcppt::log::detail::context_tree &
 	add(
-		fcppt::log::location const &,
-		fcppt::log::object &
+		fcppt::log::location const &
 	);
 
 	void
 	remove(
 		fcppt::log::detail::context_tree &
 	);
+
+	fcppt::log::detail::context_tree &
+	find_or_create(
+		fcppt::log::location const &
+	);
+
+	friend class fcppt::log::detail::auto_context;
 
 	fcppt::log::detail::context_tree tree_;
 };

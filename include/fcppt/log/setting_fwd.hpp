@@ -4,11 +4,18 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_LOG_OPTIONAL_OBJECT_HPP_INCLUDED
-#define FCPPT_LOG_OPTIONAL_OBJECT_HPP_INCLUDED
+#ifndef FCPPT_LOG_SETTING_FWD_HPP_INCLUDED
+#define FCPPT_LOG_SETTING_FWD_HPP_INCLUDED
 
-#include <fcppt/log/optional_object_fwd.hpp>
-#include <fcppt/optional/reference.hpp>
 
+namespace fcppt
+{
+namespace log
+{
+
+class setting;
+
+}
+}
 
 #endif

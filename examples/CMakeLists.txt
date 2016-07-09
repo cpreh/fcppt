@@ -183,13 +183,6 @@ add_fcppt_example(
 )
 
 add_fcppt_example(
-	log
-	LINK_LIBS
-		${fcppt_core_TARGET}
-		${fcppt_log_TARGET}
-)
-
-add_fcppt_example(
 	no_cpp
 	IS_C
 		TRUE

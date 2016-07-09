@@ -4,11 +4,11 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_LOG_IMPL_TO_OUTER_NODE_HPP_INCLUDED
-#define FCPPT_LOG_IMPL_TO_OUTER_NODE_HPP_INCLUDED
+#ifndef FCPPT_LOG_IMPL_OPTIONAL_CONTEXT_TREE_REF_FWD_HPP_INCLUDED
+#define FCPPT_LOG_IMPL_OPTIONAL_CONTEXT_TREE_REF_FWD_HPP_INCLUDED
 
+#include <fcppt/container/tree/optional_ref_fwd.hpp>
 #include <fcppt/log/detail/context_tree_fwd.hpp>
-#include <fcppt/log/impl/optional_outer_context_node.hpp>
 
 
 namespace fcppt
@@ -18,10 +18,11 @@ namespace log
 namespace impl
 {
 
-fcppt::log::impl::optional_outer_context_node
-to_outer_node(
-	fcppt::log::detail::context_tree const &
-);
+typedef
+fcppt::container::tree::optional_ref<
+	fcppt::log::detail::context_tree
+>
+optional_context_tree_ref;
 
 }
 }

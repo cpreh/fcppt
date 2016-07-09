@@ -9,13 +9,9 @@
 
 #include <fcppt/noncopyable.hpp>
 #include <fcppt/log/context_fwd.hpp>
-#include <fcppt/log/object_fwd.hpp>
-#include <fcppt/log/optional_location.hpp>
+#include <fcppt/log/location_fwd.hpp>
 #include <fcppt/log/detail/auto_context_fwd.hpp>
-#include <fcppt/log/detail/auto_context_rep.hpp>
-#include <fcppt/log/detail/optional_context_location.hpp>
-#include <fcppt/log/detail/optional_context_tree_ref.hpp>
-#include <fcppt/optional/object_decl.hpp>
+#include <fcppt/log/detail/context_tree_fwd.hpp>
 
 
 namespace fcppt
@@ -32,31 +28,18 @@ class auto_context
 	);
 public:
 	auto_context(
-		fcppt::log::detail::optional_context_location const &,
-		fcppt::log::object &
+		fcppt::log::context &,
+		fcppt::log::location const &
 	);
 
 	~auto_context();
 
-	fcppt::log::optional_location
-	location() const;
-
-	fcppt::log::detail::optional_context_tree_ref
+	fcppt::log::detail::context_tree const &
 	node() const;
-
-	void
-	transfer(
-		fcppt::log::context &,
-		fcppt::log::object &
-	);
 private:
-	typedef
-	fcppt::optional::object<
-		fcppt::log::detail::auto_context_rep
-	>
-	optional_auto_context_rep;
+	fcppt::log::context &context_;
 
-	optional_auto_context_rep rep_;
+	fcppt::log::detail::context_tree &node_;
 };
 
 }

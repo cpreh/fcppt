@@ -4,31 +4,46 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
+#include <fcppt/string.hpp>
+#include <fcppt/log/setting.hpp>
 #include <fcppt/log/detail/context_tree_node.hpp>
-#include <fcppt/log/detail/context_tree_node_variant.hpp>
-#include <fcppt/variant/object_impl.hpp>
 
 
 fcppt::log::detail::context_tree_node::context_tree_node(
-	fcppt::log::detail::context_tree_node_variant const &_variant
+	fcppt::string _location_string,
+	fcppt::log::setting const &_setting
 )
 :
-	variant_(
-		_variant
-	)
+	location_string_{
+		std::move(
+			_location_string
+		)
+	},
+	setting_{
+		_setting
+	}
 {
 }
 
-fcppt::log::detail::context_tree_node_variant &
-fcppt::log::detail::context_tree_node::get()
+fcppt::string const &
+fcppt::log::detail::context_tree_node::location_string() const
 {
 	return
-		variant_;
+		location_string_;
 }
 
-fcppt::log::detail::context_tree_node_variant const &
-fcppt::log::detail::context_tree_node::get() const
+fcppt::log::setting const &
+fcppt::log::detail::context_tree_node::setting() const
 {
 	return
-		variant_;
+		setting_;
+}
+
+void
+fcppt::log::detail::context_tree_node::setting(
+	fcppt::log::setting const &_setting
+)
+{
+	setting_ =
+		_setting;
 }

@@ -7,32 +7,49 @@
 #include <fcppt/text.hpp>
 #include <fcppt/io/cout.hpp>
 #include <fcppt/log/_.hpp>
+#include <fcppt/log/context.hpp>
 #include <fcppt/log/debug.hpp>
+#include <fcppt/log/default_level_streams.hpp>
+#include <fcppt/log/enabled_levels.hpp>
 #include <fcppt/log/level.hpp>
+#include <fcppt/log/location.hpp>
 #include <fcppt/log/object.hpp>
 #include <fcppt/log/parameters.hpp>
+#include <fcppt/log/setting.hpp>
 #include <fcppt/log/verbose.hpp>
+#include <fcppt/log/format/optional_function.hpp>
 
 
 int
 main()
 {
 //! [helloworld]
-	// Create a logger that logs to cout, has level debug and "below"
-	// enabled and is enabled itself.
-	fcppt::log::object logger(
-		fcppt::log::parameters(
-			fcppt::io::cout(),
-			fcppt::log::level::debug
-		)
-		.enabled(
-			true
-		)
-	);
+	// Create a logger context that has debug and every level above enabled
+	fcppt::log::context context{
+		fcppt::log::setting{
+			fcppt::log::enabled_levels(
+				fcppt::log::level::debug
+			)
+		}
+	};
+
+	// Create a logger that logs to cout
+	fcppt::log::object logger{
+		fcppt::log::parameters{
+			context,
+			fcppt::log::location{
+				FCPPT_TEXT("fcppt")
+			},
+			fcppt::log::default_level_streams(
+				fcppt::io::cout()
+			),
+			fcppt::log::format::optional_function{}
+		}
+	};
 
 	// Outputs: "debug: Hello World"
 	if(
-		logger.activated(
+		logger.enabled(
 			fcppt::log::level::debug
 		)
 	)

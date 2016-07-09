@@ -502,12 +502,6 @@ add_fcppt_test(
 )
 
 add_fcppt_test(
-	log/context_transfer
-	LINK_LIBS
-		 "${fcppt_core_TARGET};${fcppt_log_TARGET}"
-)
-
-add_fcppt_test(
 	math/at_c
 )
 

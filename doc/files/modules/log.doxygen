@@ -18,10 +18,6 @@
 			<li>\ref log_formatting_example</li>
 		</ul>
 	<li>\ref log_controlling</li>
-		<ul>
-			<li>\ref log_context_example</li>
-			<li>\ref log_context_complex</li>
-		</ul>
 	<li>\ref log_headers</li>
 </ul>
 
@@ -62,9 +58,9 @@ be printed.</dd>
 
 \subsection log_simple_example A simple example
 
-In fcppt, the central class for logging is a so called logger object. It
-stores where it logs to, which log levels are active, and if it is itself
-enabled. It also controls how log messages are formatted.
+In fcppt, the two central classes for logging are \link fcppt::log::object\endlink, which
+stores where it logs to and how log messages are formatted, and \link fcppt::log::context\endlink,
+which stores the active <em>locations</em>.
 
 The following example illustrates the construction of a simple logger object
 with some defaults and logs to it.
@@ -72,35 +68,36 @@ with some defaults and logs to it.
 \snippet log/helloworld.cpp helloworld
 
 Logging is done via the \link fcppt::log::object::log \endlink element
-function. The macro <code>FCPPT_LOG_DEBUG</code> is a short hand for logging
+function. The macro \link FCPPT_LOG_DEBUG\endlink is a short-hand for logging
 only if the debug log level is enabled. This is important because the
 construction of the log message is avoided altogether when debug is not
 enabled.
 
-\link fcppt::log::_ \endlink is a trampoline object that constructs something
-that can be written to like an <code>std::basic_ostream</code>. This is used to
+\link fcppt::log::_ \endlink is an object that basically acts like
+a <code>std::basic_ostream</code>. This is used to
 create a whole message in a thread-safe manner. If you log in multiple pieces
 instead, the log message might end up interleaved with other messages.
 
 The constructor of \link fcppt::log::parameters \endlink tells the logger to
-enable all log levels for a given log level and above. It also gets a stream
-that all levels will log to, using default formatting.
+use <code>fcppt</code> as its log location and to use \link fcppt::io::cout\endlink
+for all levels.
 
 \section log_formatting_and_sinks Formatting and sinks
 
 \subsection log_design General design
 
-Here is a more detailed explanation of fcppt::log's design, regarding where
-output is directed and how it is formatted.
+Here is a more detailed explanation of fcppt::log's design,
+regarding where output is directed and how it is formatted.
 
 <ul>
 <li>
-Each logger object contains a sink for every log level. Such a sink controls
-where output is written to and how it is formatted.
+Each logger object contains an \link fcppt::log::level_stream\endlink for every
+log level. Each of them controls where output is written to and how it is
+formatted.
 </li>
 <li>
-Each sink uses an <code>std::basic_ostream</code> as its log destination.
-Where output actually ends up is decided by its streambuf.
+Each level stream uses an <code>std::basic_ostream</code> as its log
+destination.  Where output actually ends up is decided by its streambuf.
 </li>
 <li>
 The following log levels, declared in \link fcppt::log::level \endlink, are
@@ -109,8 +106,8 @@ fatal</code>. The lower the level, the less serious the message.
 </li>
 <li>
 Formatting is done through \link fcppt::log::format::function \endlink objects
-which can be naturally chained together. Every logger object and every sink for
-each log level can have their own formatters.
+which can be naturally chained together. Every logger object and every level stream
+can have their own formatters.
 </ul>
 
 \subsection log_formatting_example Formatting and sinks example
@@ -125,15 +122,18 @@ implemented as follows:
 \snippet log/formatting.cpp logger_formatter_declaration
 
 We are also going to create another formatting function for the <em>error</em>
-output sink.
+output sink that logs to \link fcppt::io::cerr\endlink.
 
 \snippet log/formatting.cpp error_formatter_declaration
 
-We can then specify our logger formatting function for the logger, using \link
-fcppt::log::parameters::formatter \endlink. We also change the level
-for the <em>error</em> log level, redirecting it to \link fcppt::io::cerr
-\endlink and giving it a different formatting function, using \link
-fcppt::log::parameters::level_stream \endlink.
+We then create the level streams using the error function for the error level.
+Every other level logs to \link fcppt::io::cout\endlink using the default
+formatting function.
+
+\snippet log/formatting.cpp logger_streams
+
+Finally, we create the logger object that uses the aforementioned formatting
+function and the created level streams:
 
 \snippet log/formatting.cpp logger_declaration
 
@@ -145,27 +145,20 @@ The following code shows what is printed:
 
 Controlling at runtime which messages are logged is very important. Under
 normal circumstances, you probably want to only log serious problems, while in
-a debugging scenario a lot more should be logged. Which messages are logged
-can be controlled for every individual logger object. The major problem is how
-to <em>access</em> them at runtime.
+a debugging scenario a lot more should be logged. Which messages are logged can
+be controlled for every individual <em>location</em>. A location is list of
+strings, e.g. <code>{ "my_lib", "my_subsystem" }</code>.  \link
+fcppt::log::context \endlink stores locations in a tree, together with \link
+fcppt::log::setting\endlink objects.  It gets a single \link
+fcppt::log::setting\endlink as its parameter, which be used as a default for
+every location.
 
-\link fcppt::log::context \endlink is a class that refers to logger objects in
-a hierarchy. This hierarchy is formed by \link fcppt::log::location \endlink
-objects, which simply wrap a vector of strings which we use as a path along the
-tree.
-
-\subsection log_context_example An example using contexts
-
-First, we are going to see how logger objects, contexts and locations can be
-used together.
-
-A logger context is a class that can be passed to other loggers, while also
-giving them a corresponding location in the context. Until the logger object is
-destroyed, it will be part of the context.
+The next example shows how logger objects, contexts and locations can be used
+together.
 
 \snippet log/context.cpp declare_context
 
-The root logger gets the location <code>"::root"</code>
+We declare a root logger with location <code>"::root"</code>
 
 \snippet log/context.cpp declare_root_logger
 
@@ -173,107 +166,31 @@ The child logger gets the location <code>"::root::child"</code>
 
 \snippet log/context.cpp declare_child_logger
 
-We can now manipulate the loggers through the context using their locations.
-The \link fcppt::log::context::apply \endlink function can be used to
-recursively manipulate loggers starting at a given location. If we pass the
-location <code>"::root"</code> then the root and the child logger will both be
-manipulated. It is also possible to manipulate a single logger, though this is
-rarely needed.
+As mentioned earlier, the locations inherit the root setting of the context, so
+every logger currently has the debug level and all levels above enabled: The
+log location given to a logger implicitly changes how its output is formatted:
 
-\snippet log/context.cpp enable_loggers
-
-The log location given to a logger implicitly changes how its output is
-formatted.
-
-\snippet log/context.cpp print
+\snippet log/context.cpp log_debug
 
 The first statement will print <code>root: warning: Print from root.</code> and
 the second statement will print <code>root: child: warning: Print from
 child.</code>
 
-\subsection log_context_complex A real world approach
+The \link fcppt::log::context::set\endlink can be used to change the settings
+of a location at runtime.
 
-Usually, loggers are declared globally (in a namespace), so that they
-are local to a subsystem or even a translation unit.
+\snippet log/context.cpp context_set
 
-The reason why the context stores logger objects only through locations is
-C++'s weak guarantees of global initialization. If loggers would refer to each
-other instead, then we would have a problem, because the order in which global
-objects are constructed is unspecified. The context, however, is the only thing
-the logger objects refer to during their construction. Therefore, it must be
-treated with special care. Using a context and global loggers generally works
-as follows:
+Here we change the <code>child_location</code> to only have the warning level
+and every level above enabled, so the following output is not printed:
 
-<ul>
-<li>Construct a global function with a static context in it, which returns the
-context. In this example, this function is called
-<code>log_context()</code></li>
+\snippet log/context.cpp log_info
 
-<li>Globally declare all loggers which only refer to <code>log_context()</code>
-and a location in their constructors, thereby adding themselves to the
-context.</li>
+Note that changing the settings at a location also changes the settings below
+it. We can change the root level back to debug which will also affect the child
+level:
 
-<li>Manipulate the desired log object(s) using <code>log_context()</code> and a
-location.</li>
-</ul>
-
-In the following example, our engine should get several loggers for its
-subsystems.
-
-First, we declare the logger context function.
-
-\snippet log/complex.cpp context_declaration
-
-Using a macro provided by fcppt, we can define the logger context function
-declared above. This macro creates a function embedding a static logger
-context.
-
-\snippet log/complex.cpp context_definition
-
-The next thing we are going to do is to make a helper function that constructs
-logger parameters given a logger location. This is only to avoid duplicated
-code and could be omitted.
-
-\snippet log/complex.cpp logger_parameters
-
-We are also going to abstract the log location of the main namespace using a
-function, again to avoid code duplication. Note that this cannot be a constant
-with external linkage, because this would again create the global
-initialization order problem we are trying to avoid.
-
-\snippet log/complex.cpp engine_location
-
-The engine's root logger should be accessible through a function.
-
-\snippet log/complex.cpp declare_engine_root_logger
-
-The definition should be done in a separate translation unit.
-
-\snippet log/complex.cpp define_engine_root_logger
-
-We are also going to create two more loggers, one for the renderer subsystem
-and one for the audio subsystem.
-
-\snippet log/complex.cpp declare_subsystem_loggers
-
-Finally, we also define the subsystem loggers.
-
-\snippet log/complex.cpp define_subsystem_renderer
-
-To encapsulate this somewhat verbose code, fcppt provides a macro called \ref
-FCPPT_LOG_DEFINE_OBJECT which is used to define the audio subsystem's logger.
-
-\snippet log/complex.cpp define_subsystem_audio
-
-The following program illustrates how the different loggers can be manipulated
-at runtime by only using the log context. The program activates every subsystem
-whose name is passed in <code>argv</code>.
-
-\snippet log/complex.cpp main
-
-We can also print which loggers are available in a logger context.
-
-\snippet log/complex.cpp print_locations
+\snippet log/context.cpp context_set2
 
 \section log_headers Header files
 All headers are relative to the log subdirectory.
@@ -286,7 +203,7 @@ All headers are relative to the log subdirectory.
 </tr>
 <tr>
 <td><code>_.hpp</code></td>
-<td>Contains the necessary things to use \link fcppt::log::_ \endlink.</td>
+<td>Contains \link fcppt::log::_ \endlink.</td>
 </tr>
 <tr>
 <td><code>context_fwd.hpp</code></td>
@@ -298,23 +215,19 @@ All headers are relative to the log subdirectory.
 </tr>
 <tr>
 <td><code>debug.hpp</code></td>
-<td>Contains the <code>FCPPT_LOG_DEBUG</code> macro.</td>
-</tr>
-<tr>
-<td><code>define_context.hpp</code></td>
-<td>Contains the <code>FCPPT_LOG_DEFINE_CONTEXT</code> macro for defining \link fcppt::log::context \endlink getter functions.</td>
+<td>Contains the \link FCPPT_LOG_DEBUG\endlink macro.</td>
 </tr>
 <tr>
 <td><code>error.hpp</code></td>
-<td>Contains the <code>FCPPT_LOG_ERROR</code> macro.</td>
+<td>Contains the \link FCPPT_LOG_ERROR\endlink macro.</td>
 </tr>
 <tr>
 <td><code>fatal.hpp</code></td>
-<td>Contains the <code>FCPPT_LOG_FATAL</code> macro.</td>
+<td>Contains the \link FCPPT_LOG_FATAL\endlink macro.</td>
 </tr>
 <tr>
 <td><code>info.hpp</code></td>
-<td>Contains the <code>FCPPT_LOG_INFO</code> macro.</td>
+<td>Contains the \link FCPPT_LOG_INFO\endlink macro.</td>
 </tr>
 <tr>
 <td><code>level.hpp</code></td>
@@ -329,6 +242,14 @@ All headers are relative to the log subdirectory.
 <td>Contains \link fcppt::log::location \endlink's definition.</td>
 </tr>
 <tr>
+<td><code>location_setting_fwd.hpp</code></td>
+<td>Contains \link fcppt::log::location_setting \endlink's declaration.</td>
+</tr>
+<tr>
+<td><code>location_setting.hpp</code></td>
+<td>Contains \link fcppt::log::location_setting \endlink's definition.</td>
+</tr>
+<tr>
 <td><code>object_fwd.hpp</code></td>
 <td>Contains \link fcppt::log::object \endlink's declaration.</td>
 </tr>
@@ -337,7 +258,7 @@ All headers are relative to the log subdirectory.
 <td>Contains \link fcppt::log::object \endlink's defintiion.</td>
 </tr>
 <tr>
-<td><code>parameters.hpp</code></td>
+<td><code>parameters_fwd.hpp</code></td>
 <td>Contains \link fcppt::log::parameters \endlink's declaration.</td>
 </tr>
 <tr>
@@ -345,12 +266,20 @@ All headers are relative to the log subdirectory.
 <td>Contains \link fcppt::log::parameters \endlink's definition.</td>
 </tr>
 <tr>
+<td><code>setting_fwd.hpp</code></td>
+<td>Contains \link fcppt::log::setting \endlink's declaration.</td>
+</tr>
+<tr>
+<td><code>setting.hpp</code></td>
+<td>Contains \link fcppt::log::setting \endlink's definition.</td>
+</tr>
+<tr>
 <td><code>verbose.hpp</code></td>
-<td>Contains the <code>FCPPT_LOG_VERBOSE</code> macro.</td>
+<td>Contains the \link FCPPT_LOG_VERBOSE\endlink macro.</td>
 </tr>
 <tr>
 <td><code>warning.hpp</code></td>
-<td>Contains the <code>FCPPT_LOG_WARNING</code> macro.</td>
+<td>Contains the \link FCPPT_LOG_WARNING\endlink macro.</td>
 </tr>
 </table>
 
@@ -362,30 +291,6 @@ All headers are relative to the log subdirectory.
 <th>Description</th>
 </tr>
 <tr>
-<td><code>activate_levels.hpp</code></td>
-<td>Contains \link fcppt::log::activate_levels \endlink which can enable multiple log levels.</td>
-</tr>
-<tr>
-<td><code>activate_levels_recursive.hpp</code></td>
-<td>Contains \link fcppt::log::activate_levels_recursive \endlink which can enable multiple log levels on multiple loggers.</td>
-</tr>
-<tr>
-<td><code>context_location_fwd.hpp</code></td>
-<td>Contains \link fcppt::log::context_location \endlink's declaration.</td>
-</tr>
-<tr>
-<td><code>context_location.hpp</code></td>
-<td>Contains \link fcppt::log::context_location \endlink's definition.</td>
-</tr>
-<tr>
-<td><code>deactivate_levels.hpp</code></td>
-<td>Contains \link fcppt::log::deactivate_levels \endlink which can disable multiple log levels.</td>
-</tr>
-<tr>
-<td><code>deactivate_levels_recursive.hpp</code></td>
-<td>Contains \link fcppt::log::deactivate_levels_recursive \endlink which can disable multiple log levels on multiple loggers.</td>
-</tr>
-<tr>
 <td><code>default_level_streams.hpp</code></td>
 <td>Contains \link fcppt::log::default_level_streams \endlink for construction of all level stream defaults.</td>
 </tr>
@@ -395,15 +300,8 @@ All headers are relative to the log subdirectory.
 </tr>
 <tr>
 <td><code>enabled_levels.hpp</code></td>
-<td>Contains the \link fcppt::log::enabled_levels \endlink helper function to create an array of certain enabled levels.</td>
-</tr>
-<tr>
-<td><code>exception.hpp</code></td>
-<td>Contains \link fcppt::log::exception \endlink.</td>
-</tr>
-<tr>
-<td><code>global.hpp</code></td>
-<td>Contains fcppt's global logger.</td>
+<td>Contains the \link fcppt::log::enabled_levels \endlink helper function to create an array of enabled levels equal
+or greater to a certain level.</td>
 </tr>
 <tr>
 <td><code>level_from_string.hpp</code></td>
@@ -426,36 +324,12 @@ All headers are relative to the log subdirectory.
 <td>Contains \link fcppt::log::level_to_string \endlink.</td>
 </tr>
 <tr>
-<td><code>make_location.hpp</code></td>
-<td>Contains \link fcppt::log::make_location \endlink.</td>
+<td><code>optional_level_fwd.hpp</code></td>
+<td>Contains the \link fcppt::log::optional_level \endlink typedef.</td>
 </tr>
 <tr>
-<td><code>no_such_location.hpp</code></td>
-<td>Contains the \link fcppt::log::no_such_location \endlink exception.</td>
-</tr>
-<tr>
-<td><code>optional_object_fwd.hpp</code></td>
-<td>Contains the \link fcppt::log::optional_object \endlink typedef.</td>
-</tr>
-<tr>
-<td><code>optional_object.hpp</code></td>
-<td>Includes <code>optional_object_fwd.hpp</code> and optional headers.</td>
-</tr>
-<tr>
-<td><code>optional_location_fwd.hpp</code></td>
-<td>Contains the \link fcppt::log::optional_location \endlink typedef.</td>
-</tr>
-<tr>
-<td><code>optional_location.hpp</code></td>
-<td>Includes <code>optional_location_fwd.hpp</code> and optional headers.</td>
-</tr>
-<tr>
-<td><code>print_locations.hpp</code></td>
-<td>Contains \link fcppt::log::print_locations \endlink.</td>
-</tr>
-<tr>
-<td><code>tree_function.hpp</code></td>
-<td>Contains the \link fcppt::log::tree_function \endlink typedef.</td>
+<td><code>optional_level.hpp</code></td>
+<td>Includes <code>optional_level_fwd.hpp</code> and optional headers.</td>
 </tr>
 <tr>
 <td><code>format/chain.hpp</code></td>

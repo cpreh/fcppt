@@ -132,8 +132,6 @@ set(
 	examples/io/endianness.cpp
 	examples/io/scoped_rdbuf.cpp
 	examples/literal.cpp
-	examples/log.cpp
-	examples/log/complex.cpp
 	examples/log/context.cpp
 	examples/log/formatting.cpp
 	examples/log/helloworld.cpp
@@ -678,40 +676,22 @@ set(
 	include/fcppt/is_strong_typedef.hpp
 	include/fcppt/literal.hpp
 	include/fcppt/log/_.hpp
-	include/fcppt/log/activate_levels.hpp
-	include/fcppt/log/activate_levels_recursive.hpp
 	include/fcppt/log/context.hpp
 	include/fcppt/log/context_fwd.hpp
-	include/fcppt/log/context_location.hpp
-	include/fcppt/log/context_location_fwd.hpp
-	include/fcppt/log/deactivate_levels.hpp
-	include/fcppt/log/deactivate_levels_recursive.hpp
 	include/fcppt/log/debug.hpp
 	include/fcppt/log/default_level_streams.hpp
-	include/fcppt/log/define_context.hpp
-	include/fcppt/log/define_object.hpp
 	include/fcppt/log/detail/auto_context.hpp
 	include/fcppt/log/detail/auto_context_fwd.hpp
-	include/fcppt/log/detail/auto_context_rep.hpp
-	include/fcppt/log/detail/auto_context_rep_fwd.hpp
 	include/fcppt/log/detail/const_optional_context_tree_ref.hpp
 	include/fcppt/log/detail/const_optional_context_tree_ref_fwd.hpp
 	include/fcppt/log/detail/context_tree.hpp
 	include/fcppt/log/detail/context_tree_fwd.hpp
 	include/fcppt/log/detail/context_tree_node.hpp
 	include/fcppt/log/detail/context_tree_node_fwd.hpp
-	include/fcppt/log/detail/context_tree_node_variant.hpp
-	include/fcppt/log/detail/context_tree_node_variant_fwd.hpp
-	include/fcppt/log/detail/inner_context_node.hpp
-	include/fcppt/log/detail/inner_context_node_fwd.hpp
 	include/fcppt/log/detail/level_if_enabled.hpp
 	include/fcppt/log/detail/location_vector.hpp
-	include/fcppt/log/detail/optional_context_location.hpp
-	include/fcppt/log/detail/optional_context_location_fwd.hpp
-	include/fcppt/log/detail/optional_context_tree_ref.hpp
-	include/fcppt/log/detail/optional_context_tree_ref_fwd.hpp
-	include/fcppt/log/detail/outer_context_node.hpp
-	include/fcppt/log/detail/outer_context_node_fwd.hpp
+	include/fcppt/log/detail/optional_object_ref.hpp
+	include/fcppt/log/detail/optional_object_ref_fwd.hpp
 	include/fcppt/log/detail/output_helper.hpp
 	include/fcppt/log/detail/temporary_output.hpp
 	include/fcppt/log/detail/temporary_output_fwd.hpp
@@ -719,7 +699,6 @@ set(
 	include/fcppt/log/enabled_level_array_fwd.hpp
 	include/fcppt/log/enabled_levels.hpp
 	include/fcppt/log/error.hpp
-	include/fcppt/log/exception.hpp
 	include/fcppt/log/fatal.hpp
 	include/fcppt/log/format/chain.hpp
 	include/fcppt/log/format/default_level.hpp
@@ -730,8 +709,6 @@ set(
 	include/fcppt/log/format/optional_function_fwd.hpp
 	include/fcppt/log/format/prefix.hpp
 	include/fcppt/log/format/time_stamp.hpp
-	include/fcppt/log/impl/exception.hpp
-	include/fcppt/log/impl/no_such_location.hpp
 	include/fcppt/log/info.hpp
 	include/fcppt/log/level.hpp
 	include/fcppt/log/level_from_string.hpp
@@ -743,22 +720,17 @@ set(
 	include/fcppt/log/level_to_string.hpp
 	include/fcppt/log/location.hpp
 	include/fcppt/log/location_fwd.hpp
-	include/fcppt/log/make_location.hpp
+	include/fcppt/log/location_setting.hpp
+	include/fcppt/log/location_setting_fwd.hpp
 	include/fcppt/log/new_sink.hpp
-	include/fcppt/log/no_such_location.hpp
 	include/fcppt/log/object.hpp
 	include/fcppt/log/object_fwd.hpp
 	include/fcppt/log/optional_level.hpp
 	include/fcppt/log/optional_level_fwd.hpp
-	include/fcppt/log/optional_location.hpp
-	include/fcppt/log/optional_location_fwd.hpp
-	include/fcppt/log/optional_object.hpp
-	include/fcppt/log/optional_object_fwd.hpp
 	include/fcppt/log/parameters.hpp
 	include/fcppt/log/parameters_fwd.hpp
-	include/fcppt/log/print_all_locations.hpp
-	include/fcppt/log/print_locations.hpp
-	include/fcppt/log/tree_function.hpp
+	include/fcppt/log/setting.hpp
+	include/fcppt/log/setting_fwd.hpp
 	include/fcppt/log/verbose.hpp
 	include/fcppt/log/warning.hpp
 	include/fcppt/loop.hpp

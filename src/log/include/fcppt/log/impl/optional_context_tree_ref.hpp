@@ -4,11 +4,11 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_LOG_DETAIL_OPTIONAL_CONTEXT_TREE_REF_HPP_INCLUDED
-#define FCPPT_LOG_DETAIL_OPTIONAL_CONTEXT_TREE_REF_HPP_INCLUDED
+#ifndef FCPPT_LOG_IMPL_OPTIONAL_CONTEXT_TREE_REF_HPP_INCLUDED
+#define FCPPT_LOG_IMPL_OPTIONAL_CONTEXT_TREE_REF_HPP_INCLUDED
 
 #include <fcppt/container/tree/optional_ref_impl.hpp>
-#include <fcppt/log/detail/optional_context_tree_ref_fwd.hpp>
+#include <fcppt/log/impl/optional_context_tree_ref_fwd.hpp>
 
 
 #endif
