@@ -17,8 +17,7 @@
 #include <fcppt/log/level.hpp>
 #include <fcppt/log/level_stream.hpp>
 #include <fcppt/log/level_stream_array.hpp>
-#include <fcppt/log/location.hpp>
-#include <fcppt/log/location_setting.hpp>
+#include <fcppt/log/name.hpp>
 #include <fcppt/log/object.hpp>
 #include <fcppt/log/parameters.hpp>
 #include <fcppt/log/setting.hpp>
@@ -116,9 +115,9 @@ main()
 
 //! [logger_declaration]
 	fcppt::log::object logger{
+		context,
 		fcppt::log::parameters{
-			context,
-			fcppt::log::location{
+			fcppt::log::name{
 				FCPPT_TEXT("fcppt")
 			},
 			level_streams,

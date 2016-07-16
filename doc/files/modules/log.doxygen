@@ -14,10 +14,14 @@
 		</ul>
 	<li>\ref log_formatting_and_sinks</li>
 		<ul>
-			<li>\ref log_design</li>
+			<li>\ref log_formatting_design</li>
 			<li>\ref log_formatting_example</li>
 		</ul>
-	<li>\ref log_controlling</li>
+	<li>\ref log_hierarchy</li>
+		<ul>
+			<li>\ref log_hierarchy_design</li>
+			<li>\ref log_hierarchy_example</li>
+		</ul>
 	<li>\ref log_headers</li>
 </ul>
 
@@ -27,42 +31,29 @@
 
 \section log_introduction Introduction
 
-Logging in general means that information describing aspects of a program's
-execution is printed out, for example to a file that can be examined later.
-Such log messages usually contain information about what went wrong, what might
-possibly have lead to that, or even general information about which functions
-were executed. There are usually several aspects to consider:
+The following list highlights the main features of fcppt's logging library:
 
 <dl>
-<dt>Where the output is written to</dt>
+<dt>Configuration of enabled output:</dt>
 
-<dd>This can include the standard output streams
-(<code>std::cout</code>,<code>std::cerr</code> and so on), a file, a console,
-etc.</dd>
+<dd>The library assigns <em>log levels</em> to <em>log locations</em>, which is
+stored by a <em>log context</em>. Log levels are, for example, <code>debug,
+warning, error</code> and log locations are lists of strings.
+</dd>
 
-<dt>Which messages get written</dt>
+<dt>Formatting and direction of messages:</dt>
 
-<dd>This is usually controlled through so called <em>log levels</em>, for
-example: debug, info, warning, error. Also, you might want to enable output
-from certain subsystems while you disable output from others. Therefore, there
-must exist a mechanism that allows for easy enabling and disabling of loggers
-at runtime.</dd>
-
-<dt>How messages are formatted</dt>
-
-<dd>There should be a way of describing where the log message originated from,
-which means which class or function emitted it. Also, the logging level should
-be printed.</dd>
+<dd><em>Log objects</em> refer to a <em>log context</em> and a <em>log
+location</em>. They also  store output sinks and formatting functions for every
+<em>log level</em>, e.g. <code>std::clog</code> for debug info and
+<code>std::cerr</code> for errors.
+</dd>
 
 </dl>
 
 \subsection log_simple_example A simple example
 
-In fcppt, the two central classes for logging are \link fcppt::log::object\endlink, which
-stores where it logs to and how log messages are formatted, and \link fcppt::log::context\endlink,
-which stores the active <em>locations</em>.
-
-The following example illustrates the construction of a simple logger object
+The following example illustrates the construction of a simple log object
 with some defaults and logs to it.
 
 \snippet log/helloworld.cpp helloworld
@@ -78,20 +69,20 @@ a <code>std::basic_ostream</code>. This is used to
 create a whole message in a thread-safe manner. If you log in multiple pieces
 instead, the log message might end up interleaved with other messages.
 
-The constructor of \link fcppt::log::parameters \endlink tells the logger to
-use <code>fcppt</code> as its log location and to use \link fcppt::io::cout\endlink
-for all levels.
+The constructor of \link fcppt::log::parameters \endlink tells the log object to
+use <code>fcppt</code> as its name and to use \link
+fcppt::io::cout\endlink for all levels.
 
 \section log_formatting_and_sinks Formatting and sinks
 
-\subsection log_design General design
+\subsection log_formatting_design Formatting design
 
-Here is a more detailed explanation of fcppt::log's design,
-regarding where output is directed and how it is formatted.
+Here is a more detailed explanation of how log messages are formatted and where
+they are written to:
 
 <ul>
 <li>
-Each logger object contains an \link fcppt::log::level_stream\endlink for every
+Each log object contains an \link fcppt::log::level_stream\endlink for every
 log level. Each of them controls where output is written to and how it is
 formatted.
 </li>
@@ -106,13 +97,13 @@ fatal</code>. The lower the level, the less serious the message.
 </li>
 <li>
 Formatting is done through \link fcppt::log::format::function \endlink objects
-which can be naturally chained together. Every logger object and every level stream
+which can be naturally chained together. Every lo object and every level stream
 can have their own formatters.
 </ul>
 
 \subsection log_formatting_example Formatting and sinks example
 
-In the following example, we are going to give our logger object a special
+In the following example, we are going to give our log object a special
 formatting function that prints <code>This is a formatting test: </code> in
 front of every log message.
 
@@ -132,7 +123,7 @@ formatting function.
 
 \snippet log/formatting.cpp logger_streams
 
-Finally, we create the logger object that uses the aforementioned formatting
+Finally, we create the log object that uses the aforementioned formatting
 function and the created level streams:
 
 \snippet log/formatting.cpp logger_declaration
@@ -141,34 +132,52 @@ The following code shows what is printed:
 
 \snippet log/formatting.cpp log_print
 
-\section log_controlling Controlling loggers
+\section log_hierarchy Log hierarchy
 
 Controlling at runtime which messages are logged is very important. Under
 normal circumstances, you probably want to only log serious problems, while in
-a debugging scenario a lot more should be logged. Which messages are logged can
-be controlled for every individual <em>location</em>. A location is list of
-strings, e.g. <code>{ "my_lib", "my_subsystem" }</code>.  \link
-fcppt::log::context \endlink stores locations in a tree, together with \link
-fcppt::log::setting\endlink objects.  It gets a single \link
-fcppt::log::setting\endlink as its parameter, which be used as a default for
-every location.
+a debugging scenario a lot of debugging messages should be logged.
 
-The next example shows how logger objects, contexts and locations can be used
+\subsection log_hierarchy_design Log hierarchy design
+
+A location is a list of <code>fcppt::log::name</code> values, e.g.
+<code>{"my_lib", "my_subsystem"}</code>.
+An \link fcppt::log::context \endlink associations locations with
+\link fcppt::log::setting\endlink objects. These can be configured through
+the \link fcppt::log::context::set\endlink function, even before any log objects
+are created. This is useful, for example, for specifying log settings on the
+command line.
+
+Each log object refers to a location of a given context.
+In its constructor, it gets a name, and in addition to that, it gets either
+<ul>
+<li>a log context, in which case its location is its name, or</li>
+<li>a parent log object, in which case its location is the parent's name plus its own name.</li>
+</ul>
+
+\subsection log_hierarchy_example Log hierarchy example
+
+The next example shows how log objects, contexts and locations can be used
 together.
+
+The log context gets a single \link fcppt::log::setting\endlink as its
+parameter, which is used as a default for every location, unless changed.
 
 \snippet log/context.cpp declare_context
 
-We declare a root logger with location <code>"::root"</code>
+We declare a root object with name <code>"root"</code>. Its location will be
+<code>{"root"}</code>.
 
 \snippet log/context.cpp declare_root_logger
 
-The child logger gets the location <code>"::root::child"</code>
+The child object gets the name <code>"child"</code> and the root object passed
+to its constructor, thus its location is <code>{"root", "child"}</code>.
 
 \snippet log/context.cpp declare_child_logger
 
 As mentioned earlier, the locations inherit the root setting of the context, so
-every logger currently has the debug level and all levels above enabled: The
-log location given to a logger implicitly changes how its output is formatted:
+every log object currently has the debug level and all levels above enabled: The
+log location given to a log object implicitly changes how its output is formatted:
 
 \snippet log/context.cpp log_debug
 
@@ -176,13 +185,13 @@ The first statement will print <code>root: warning: Print from root.</code> and
 the second statement will print <code>root: child: warning: Print from
 child.</code>
 
-The \link fcppt::log::context::set\endlink can be used to change the settings
-of a location at runtime.
+The \link fcppt::log::context::set\endlink function can be used to change the
+settings of a location at runtime.
 
 \snippet log/context.cpp context_set
 
-Here we change the <code>child_location</code> to only have the warning level
-and every level above enabled, so the following output is not printed:
+Here we change the child location to only have the warning level and every
+level above enabled, so the following output is not printed:
 
 \snippet log/context.cpp log_info
 
@@ -248,6 +257,14 @@ All headers are relative to the log subdirectory.
 <tr>
 <td><code>location_setting.hpp</code></td>
 <td>Contains \link fcppt::log::location_setting \endlink's definition.</td>
+</tr>
+<tr>
+<td><code>name_fwd.hpp</code></td>
+<td>Contains <code>fcppt::log::name</code>'s declaration.</td>
+</tr>
+<tr>
+<td><code>name.hpp</code></td>
+<td>Contains <code>fcppt::log::name</code>'s definition.</td>
 </tr>
 <tr>
 <td><code>object_fwd.hpp</code></td>

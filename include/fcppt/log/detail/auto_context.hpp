@@ -8,8 +8,7 @@
 #define FCPPT_LOG_DETAIL_AUTO_CONTEXT_HPP_INCLUDED
 
 #include <fcppt/noncopyable.hpp>
-#include <fcppt/log/context_fwd.hpp>
-#include <fcppt/log/location_fwd.hpp>
+#include <fcppt/log/name_fwd.hpp>
 #include <fcppt/log/detail/auto_context_fwd.hpp>
 #include <fcppt/log/detail/context_tree_fwd.hpp>
 
@@ -28,20 +27,18 @@ class auto_context
 	);
 public:
 	auto_context(
-		fcppt::log::context &,
-		fcppt::log::location const &
+		fcppt::log::detail::context_tree &,
+		fcppt::log::name const &
 	);
 
 	~auto_context();
 
-	fcppt::log::context &
-	context() const;
+	fcppt::log::detail::context_tree &
+	node();
 
 	fcppt::log::detail::context_tree const &
 	node() const;
 private:
-	fcppt::log::context &context_;
-
 	fcppt::log::detail::context_tree &node_;
 };
 

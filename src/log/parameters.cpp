@@ -4,9 +4,8 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/log/context_fwd.hpp>
 #include <fcppt/log/level_stream_array.hpp>
-#include <fcppt/log/location.hpp>
+#include <fcppt/log/name.hpp>
 #include <fcppt/log/parameters.hpp>
 #include <fcppt/log/format/optional_function.hpp>
 #include <fcppt/config/external_begin.hpp>
@@ -15,18 +14,14 @@
 
 
 fcppt::log::parameters::parameters(
-	fcppt::log::context &_context,
-	fcppt::log::location _location,
+	fcppt::log::name _name,
 	fcppt::log::level_stream_array const &_level_streams,
 	fcppt::log::format::optional_function const &_formatter
 )
 :
-	context_{
-		_context
-	},
-	location_{
+	name_{
 		std::move(
-			_location
+			_name
 		)
 	},
 	level_streams_(
@@ -38,18 +33,11 @@ fcppt::log::parameters::parameters(
 {
 }
 
-fcppt::log::context &
-fcppt::log::parameters::context() const
+fcppt::log::name const &
+fcppt::log::parameters::name() const
 {
 	return
-		context_.get();
-}
-
-fcppt::log::location const &
-fcppt::log::parameters::location() const
-{
-	return
-		location_;
+		name_;
 }
 
 fcppt::log::level_stream_array const &

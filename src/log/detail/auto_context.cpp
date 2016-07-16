@@ -4,23 +4,21 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/log/context.hpp>
-#include <fcppt/log/location_fwd.hpp>
+#include <fcppt/log/name_fwd.hpp>
 #include <fcppt/log/detail/auto_context.hpp>
 #include <fcppt/log/detail/context_tree_fwd.hpp>
+#include <fcppt/log/impl/find_or_create_child.hpp>
 
 
 fcppt::log::detail::auto_context::auto_context(
-	fcppt::log::context &_context,
-	fcppt::log::location const &_location
+	fcppt::log::detail::context_tree &_node,
+	fcppt::log::name const &_name
 )
 :
-	context_{
-		_context
-	},
 	node_{
-		_context.add(
-			_location
+		fcppt::log::impl::find_or_create_child(
+			_node,
+			_name
 		)
 	}
 {
@@ -28,16 +26,14 @@ fcppt::log::detail::auto_context::auto_context(
 
 fcppt::log::detail::auto_context::~auto_context()
 {
-	context_.remove(
-		node_
-	);
+	// TODO: Cleanup nodes that are no longer needed
 }
 
-fcppt::log::context &
-fcppt::log::detail::auto_context::context() const
+fcppt::log::detail::context_tree &
+fcppt::log::detail::auto_context::node()
 {
 	return
-		context_;
+		node_;
 }
 
 fcppt::log::detail::context_tree const &

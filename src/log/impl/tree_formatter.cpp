@@ -4,9 +4,9 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/string.hpp>
 #include <fcppt/algorithm/fold.hpp>
 #include <fcppt/container/tree/to_root.hpp>
+#include <fcppt/log/name.hpp>
 #include <fcppt/log/detail/context_tree.hpp>
 #include <fcppt/log/format/chain.hpp>
 #include <fcppt/log/format/optional_function.hpp>
@@ -16,46 +16,43 @@
 
 fcppt::log::format::optional_function
 fcppt::log::impl::tree_formatter(
-	fcppt::log::detail::context_tree const &_node,
-	fcppt::log::format::optional_function const &_formatter
+	fcppt::log::detail::context_tree const &_node
 )
 {
 	return
-		fcppt::log::format::chain(
-			_formatter,
-			fcppt::algorithm::fold(
-				fcppt::container::tree::to_root<
-					fcppt::log::detail::context_tree const
-				>(
-					_node
-				),
-				fcppt::log::format::optional_function{},
-				[](
-					fcppt::log::detail::context_tree const &_cur,
-					fcppt::log::format::optional_function const &_state
-				)
-				{
-					fcppt::string const &name(
-						_cur.value().location_string()
-					);
-
-					return
-						name.empty()
-						?
-							_state
-						:
-							fcppt::log::format::optional_function(
-								fcppt::log::format::chain(
-									fcppt::log::format::optional_function(
-										fcppt::log::format::prefix(
-											name
-										)
-									),
-									_state
-								)
-							)
-						;
-				}
+		fcppt::algorithm::fold(
+			// TODO: add make_to_root
+			fcppt::container::tree::to_root<
+				fcppt::log::detail::context_tree const
+			>(
+				_node
+			),
+			fcppt::log::format::optional_function{},
+			[](
+				fcppt::log::detail::context_tree const &_cur,
+				fcppt::log::format::optional_function const &_state
 			)
+			{
+				fcppt::log::name const &name(
+					_cur.value().name()
+				);
+
+				return
+					name.get().empty()
+					?
+						_state
+					:
+						fcppt::log::format::optional_function(
+							fcppt::log::format::chain(
+								fcppt::log::format::optional_function(
+									fcppt::log::format::prefix(
+										name.get()
+									)
+								),
+								_state
+							)
+						)
+					;
+			}
 		);
 }

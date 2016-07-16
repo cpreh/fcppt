@@ -8,6 +8,7 @@
 #define FCPPT_LOG_LOCATION_HPP_INCLUDED
 
 #include <fcppt/string.hpp>
+#include <fcppt/log/name_fwd.hpp>
 #include <fcppt/log/location_fwd.hpp>
 #include <fcppt/log/detail/location_vector.hpp>
 #include <fcppt/log/detail/symbol.hpp>
@@ -48,7 +49,7 @@ public:
 	FCPPT_LOG_DETAIL_SYMBOL
 	explicit
 	location(
-		fcppt::string const &root
+		fcppt::log::name const &root
 	);
 
 	/**
@@ -63,14 +64,12 @@ public:
 	/**
 	\brief Adds a new element to this location
 
-	Adds \a element to this location
-
-	\param element The new element
+	Adds \a name to this location
 	*/
 	FCPPT_LOG_DETAIL_SYMBOL
 	fcppt::log::location &
 	operator /=(
-		fcppt::string element
+		fcppt::log::name name
 	);
 
 	/**
@@ -99,21 +98,15 @@ private:
 };
 
 /**
-\brief Concatenates a location and an element
+\brief Forms a new location by appending a name
 
-Concatenates \a location and \a element.
-
-\param location The location to concatenate to
-
-\param element The element to concatenate
-
-\return A new location that is the concatenation of \a location and \a element
+Forms a new location from \a location and \a name.
 */
 FCPPT_LOG_DETAIL_SYMBOL
 fcppt::log::location
 operator /(
 	fcppt::log::location location,
-	fcppt::string element
+	fcppt::log::name element
 );
 
 }

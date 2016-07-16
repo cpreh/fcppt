@@ -4,7 +4,7 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/log/context_fwd.hpp>
+#include <fcppt/log/context.hpp>
 #include <fcppt/log/enabled_level_array.hpp>
 #include <fcppt/log/level.hpp>
 #include <fcppt/log/level_stream.hpp>
@@ -14,37 +14,34 @@
 #include <fcppt/log/setting.hpp>
 #include <fcppt/log/detail/context_tree.hpp>
 #include <fcppt/log/detail/temporary_output_fwd.hpp>
+#include <fcppt/log/format/chain.hpp>
 #include <fcppt/log/format/optional_function.hpp>
 #include <fcppt/log/impl/tree_formatter.hpp>
-#include <fcppt/preprocessor/disable_vc_warning.hpp>
-#include <fcppt/preprocessor/pop_warning.hpp>
-#include <fcppt/preprocessor/push_warning.hpp>
 
-
-FCPPT_PP_PUSH_WARNING
-FCPPT_PP_DISABLE_VC_WARNING(4355)
 
 fcppt::log::object::object(
-	fcppt::log::parameters const &_param
+	fcppt::log::context &_context,
+	fcppt::log::parameters const &_parameters
 )
 :
-	auto_context_(
-		_param.context(),
-		_param.location()
-	),
-	formatter_(
-		fcppt::log::impl::tree_formatter(
-			auto_context_.node(),
-			_param.formatter()
-		)
-	),
-	level_streams_(
-		_param.level_streams()
+	object(
+		_context.root(),
+		_parameters
 	)
 {
 }
 
-FCPPT_PP_POP_WARNING
+fcppt::log::object::object(
+	fcppt::log::object &_parent,
+	fcppt::log::parameters const &_parameters
+)
+:
+	object(
+		_parent.auto_context_.node(),
+		_parameters
+	)
+{
+}
 
 fcppt::log::object::~object()
 {
@@ -132,9 +129,25 @@ fcppt::log::object::setting() const
 		auto_context_.node().value().setting();
 }
 
-fcppt::log::context &
-fcppt::log::object::context() const
+fcppt::log::object::object(
+	fcppt::log::detail::context_tree &_node,
+	fcppt::log::parameters const &_parameters
+)
+:
+	auto_context_{
+		_node,
+		_parameters.name()
+	},
+	formatter_(
+		fcppt::log::format::chain(
+			_parameters.formatter(),
+			fcppt::log::impl::tree_formatter(
+				auto_context_.node()
+			)
+		)
+	),
+	level_streams_(
+		_parameters.level_streams()
+	)
 {
-	return
-		auto_context_.context();
 }

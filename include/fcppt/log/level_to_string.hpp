@@ -23,15 +23,11 @@ namespace log
 \ingroup fcpptlog
 
 Converts a log level given by \a level to its enumerator name as a string.
-
-\return The log level as a string
-
-\warning The behaviour is undefined if fcppt::log::level::size is passed.
 */
 FCPPT_LOG_DETAIL_SYMBOL
 fcppt::string
 level_to_string(
-	fcppt::log::level level
+	fcppt::log::level
 );
 
 }

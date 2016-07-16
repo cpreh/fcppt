@@ -6,9 +6,10 @@
 
 #include <fcppt/string.hpp>
 #include <fcppt/text.hpp>
+#include <fcppt/algorithm/fold.hpp>
 #include <fcppt/log/location.hpp>
+#include <fcppt/log/name.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <numeric>
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
@@ -20,24 +21,24 @@ fcppt::log::location::location()
 }
 
 fcppt::log::location::location(
-	fcppt::string const &_initial
+	fcppt::log::name const &_initial
 )
 :
 	entries_(
 		1u,
-		_initial
+		_initial.get()
 	)
 {
 }
 
 fcppt::log::location &
 fcppt::log::location::operator /=(
-	fcppt::string _string
+	fcppt::log::name _string
 )
 {
 	entries_.push_back(
 		std::move(
-			_string
+			_string.get()
 		)
 	);
 
@@ -63,9 +64,8 @@ fcppt::string
 fcppt::log::location::string() const
 {
 	return
-		std::accumulate(
-			this->begin(),
-			this->end(),
+		fcppt::algorithm::fold(
+			*this,
 			fcppt::string(),
 			[](
 				fcppt::string const &_state,
@@ -86,7 +86,7 @@ fcppt::log::location::string() const
 fcppt::log::location
 fcppt::log::operator /(
 	log::location _location,
-	fcppt::string _string
+	fcppt::log::name _string
 )
 {
 	return

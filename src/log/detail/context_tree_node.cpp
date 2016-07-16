@@ -4,19 +4,19 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/string.hpp>
+#include <fcppt/log/name.hpp>
 #include <fcppt/log/setting.hpp>
 #include <fcppt/log/detail/context_tree_node.hpp>
 
 
 fcppt::log::detail::context_tree_node::context_tree_node(
-	fcppt::string _location_string,
+	fcppt::log::name _name,
 	fcppt::log::setting const &_setting
 )
 :
-	location_string_{
+	name_{
 		std::move(
-			_location_string
+			_name
 		)
 	},
 	setting_{
@@ -25,11 +25,11 @@ fcppt::log::detail::context_tree_node::context_tree_node(
 {
 }
 
-fcppt::string const &
-fcppt::log::detail::context_tree_node::location_string() const
+fcppt::log::name const &
+fcppt::log::detail::context_tree_node::name() const
 {
 	return
-		location_string_;
+		name_;
 }
 
 fcppt::log::setting const &

@@ -47,6 +47,8 @@ set(
 	include/fcppt/log/location_fwd.hpp
 	include/fcppt/log/location_setting.hpp
 	include/fcppt/log/location_setting_fwd.hpp
+	include/fcppt/log/name.hpp
+	include/fcppt/log/name_fwd.hpp
 	include/fcppt/log/new_sink.hpp
 	include/fcppt/log/object.hpp
 	include/fcppt/log/object_fwd.hpp
@@ -71,9 +73,11 @@ set(
 	src/log/format/prefix.cpp
 	src/log/format/time_stamp.cpp
 	src/log/impl/find_child_node.cpp
+	src/log/impl/find_or_create_child.cpp
 	src/log/impl/level_strings.cpp
 	src/log/impl/tree_formatter.cpp
 	src/log/include/fcppt/log/impl/find_child_node.hpp
+	src/log/include/fcppt/log/impl/find_or_create_child.hpp
 	src/log/include/fcppt/log/impl/level_string_array.hpp
 	src/log/include/fcppt/log/impl/level_strings.hpp
 	src/log/include/fcppt/log/impl/optional_context_tree_ref.hpp

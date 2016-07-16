@@ -12,7 +12,7 @@
 #include <fcppt/log/default_level_streams.hpp>
 #include <fcppt/log/enabled_levels.hpp>
 #include <fcppt/log/level.hpp>
-#include <fcppt/log/location.hpp>
+#include <fcppt/log/name.hpp>
 #include <fcppt/log/object.hpp>
 #include <fcppt/log/parameters.hpp>
 #include <fcppt/log/setting.hpp>
@@ -35,9 +35,9 @@ main()
 
 	// Create a logger that logs to cout
 	fcppt::log::object logger{
+		context,
 		fcppt::log::parameters{
-			context,
-			fcppt::log::location{
+			fcppt::log::name{
 				FCPPT_TEXT("fcppt")
 			},
 			fcppt::log::default_level_streams(

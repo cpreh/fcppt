@@ -16,6 +16,7 @@
 #include <fcppt/log/level.hpp>
 #include <fcppt/log/location.hpp>
 #include <fcppt/log/location_setting.hpp>
+#include <fcppt/log/name.hpp>
 #include <fcppt/log/object.hpp>
 #include <fcppt/log/parameters.hpp>
 #include <fcppt/log/setting.hpp>
@@ -39,14 +40,14 @@ try
 // ![declare_context]
 
 // ![declare_root_logger]
-	fcppt::log::location const root_location{
+	fcppt::log::name const root_name{
 		FCPPT_TEXT("root")
 	};
 
-	fcppt::log::object logger{
+	fcppt::log::object root_logger{
+		context,
 		fcppt::log::parameters(
-			context,
-			root_location,
+			root_name,
 			fcppt::log::default_level_streams(
 				fcppt::io::cout()
 			),
@@ -56,16 +57,14 @@ try
 // ![declare_root_logger]
 
 // ![declare_child_logger]
-	fcppt::log::location const child_location{
-		root_location
-		/
+	fcppt::log::name const child_name{
 		FCPPT_TEXT("child")
 	};
 
 	fcppt::log::object child_logger{
+		root_logger,
 		fcppt::log::parameters(
-			context,
-			child_location,
+			child_name,
 			fcppt::log::default_level_streams(
 				fcppt::io::cout()
 			),
@@ -76,7 +75,7 @@ try
 
 // ![log_debug]
 	FCPPT_LOG_INFO(
-		logger,
+		root_logger,
 		fcppt::log::_
 			<< FCPPT_TEXT("Print from root!")
 	);
@@ -91,7 +90,11 @@ try
 // ![context_set]
 	context.set(
 		fcppt::log::location_setting{
-			child_location,
+			fcppt::log::location{
+				root_name
+			}
+			/
+			child_name,
 			fcppt::log::setting{
 				fcppt::log::enabled_levels(
 					fcppt::log::level::warning
@@ -112,7 +115,9 @@ try
 // ![context_set2]
 	context.set(
 		fcppt::log::location_setting{
-			root_location,
+			fcppt::log::location{
+				root_name
+			},
 			fcppt::log::setting{
 				fcppt::log::enabled_levels(
 					fcppt::log::level::debug

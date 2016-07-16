@@ -9,9 +9,8 @@
 
 #include <fcppt/noncopyable.hpp>
 #include <fcppt/log/context_fwd.hpp>
-#include <fcppt/log/location_fwd.hpp>
+#include <fcppt/log/object_fwd.hpp>
 #include <fcppt/log/location_setting_fwd.hpp>
-#include <fcppt/log/detail/auto_context_fwd.hpp>
 #include <fcppt/log/detail/context_tree.hpp>
 #include <fcppt/log/detail/symbol.hpp>
 
@@ -33,12 +32,12 @@ class context
 	);
 public:
 	/**
-	\brief Constructs a context using a container of location settings
+	\brief Constructs a context
 
 	\param root The root setting which will be the default
 	*/
-	explicit
 	FCPPT_LOG_DETAIL_SYMBOL
+	explicit
 	context(
 		fcppt::log::setting const &root
 	);
@@ -59,21 +58,9 @@ public:
 	);
 private:
 	fcppt::log::detail::context_tree &
-	add(
-		fcppt::log::location const &
-	);
+	root();
 
-	void
-	remove(
-		fcppt::log::detail::context_tree &
-	);
-
-	fcppt::log::detail::context_tree &
-	find_or_create(
-		fcppt::log::location const &
-	);
-
-	friend class fcppt::log::detail::auto_context;
+	friend class fcppt::log::object;
 
 	fcppt::log::detail::context_tree tree_;
 };

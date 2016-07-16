@@ -20,8 +20,7 @@ namespace impl
 
 fcppt::log::format::optional_function
 tree_formatter(
-	fcppt::log::detail::context_tree const &,
-	fcppt::log::format::optional_function const &
+	fcppt::log::detail::context_tree const &
 );
 
 }

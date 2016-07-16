@@ -7,7 +7,7 @@
 #ifndef FCPPT_LOG_DETAIL_CONTEXT_TREE_NODE_HPP_INCLUDED
 #define FCPPT_LOG_DETAIL_CONTEXT_TREE_NODE_HPP_INCLUDED
 
-#include <fcppt/string.hpp>
+#include <fcppt/log/name.hpp>
 #include <fcppt/log/setting.hpp>
 #include <fcppt/log/detail/context_tree_node_fwd.hpp>
 
@@ -23,12 +23,12 @@ class context_tree_node
 {
 public:
 	context_tree_node(
-		fcppt::string,
+		fcppt::log::name,
 		fcppt::log::setting const &
 	);
 
-	fcppt::string const &
-	location_string() const;
+	fcppt::log::name const &
+	name() const;
 
 	fcppt::log::setting const &
 	setting() const;
@@ -38,7 +38,7 @@ public:
 		fcppt::log::setting const &
 	);
 private:
-	fcppt::string location_string_;
+	fcppt::log::name name_;
 
 	fcppt::log::setting setting_;
 };

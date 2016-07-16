@@ -4,8 +4,8 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/string.hpp>
 #include <fcppt/algorithm/find_if_opt.hpp>
+#include <fcppt/log/name.hpp>
 #include <fcppt/log/detail/context_tree.hpp>
 #include <fcppt/log/impl/find_child_node.hpp>
 #include <fcppt/log/impl/optional_context_tree_ref.hpp>
@@ -15,7 +15,7 @@
 fcppt::log::impl::optional_context_tree_ref
 fcppt::log::impl::find_child_node(
 	fcppt::log::detail::context_tree &_tree,
-	fcppt::string const &_name
+	fcppt::log::name const &_name
 )
 {
 	return
@@ -29,7 +29,7 @@ fcppt::log::impl::find_child_node(
 				)
 				{
 					return
-						_child.value().location_string()
+						_child.value().name()
 						==
 						_name;
 				}

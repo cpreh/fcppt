@@ -17,6 +17,7 @@
 #include <fcppt/log/parameters_fwd.hpp>
 #include <fcppt/log/setting_fwd.hpp>
 #include <fcppt/log/detail/auto_context.hpp>
+#include <fcppt/log/detail/context_tree_fwd.hpp>
 #include <fcppt/log/detail/symbol.hpp>
 #include <fcppt/log/detail/temporary_output_fwd.hpp>
 #include <fcppt/log/format/optional_function.hpp>
@@ -44,14 +45,21 @@ class object
 	);
 public:
 	/**
-	\brief Constructs a logger object
-
-	Constructs a logger object given the parameters \a parameters
+	\brief Constructs a root logger object
 	*/
 	FCPPT_LOG_DETAIL_SYMBOL
-	explicit
 	object(
-		fcppt::log::parameters const &parameters
+		fcppt::log::context &,
+		fcppt::log::parameters const &
+	);
+
+	/**
+	\brief Constructs a child logger object
+	*/
+	FCPPT_LOG_DETAIL_SYMBOL
+	object(
+		fcppt::log::object &,
+		fcppt::log::parameters const &
 	);
 
 	FCPPT_LOG_DETAIL_SYMBOL
@@ -146,14 +154,12 @@ public:
 	FCPPT_LOG_DETAIL_SYMBOL
 	fcppt::log::setting const &
 	setting() const;
-
-	/**
-	\brief Returns the context this object is part of
-	*/
-	FCPPT_LOG_DETAIL_SYMBOL
-	fcppt::log::context &
-	context() const;
 private:
+	object(
+		fcppt::log::detail::context_tree &,
+		fcppt::log::parameters const &
+	);
+
 	fcppt::log::detail::auto_context auto_context_;
 
 	fcppt::log::format::optional_function const formatter_;

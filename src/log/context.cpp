@@ -8,16 +8,14 @@
 #include <fcppt/reference_impl.hpp>
 #include <fcppt/string.hpp>
 #include <fcppt/algorithm/fold.hpp>
-#include <fcppt/assert/pre.hpp>
 #include <fcppt/container/tree/pre_order.hpp>
 #include <fcppt/log/context.hpp>
-#include <fcppt/log/location.hpp>
 #include <fcppt/log/location_setting.hpp>
+#include <fcppt/log/name.hpp>
 #include <fcppt/log/setting.hpp>
 #include <fcppt/log/detail/context_tree.hpp>
 #include <fcppt/log/detail/context_tree_node.hpp>
-#include <fcppt/log/impl/find_child_node.hpp>
-#include <fcppt/optional/from.hpp>
+#include <fcppt/log/impl/find_or_create_child.hpp>
 
 
 fcppt::log::context::context(
@@ -26,7 +24,9 @@ fcppt::log::context::context(
 :
 	tree_(
 		fcppt::log::detail::context_tree_node(
-			fcppt::string(),
+			fcppt::log::name{
+				fcppt::string()
+			},
 			_root_setting
 		)
 	)
@@ -37,25 +37,6 @@ fcppt::log::context::~context()
 {
 }
 
-fcppt::log::detail::context_tree &
-fcppt::log::context::add(
-	fcppt::log::location const &_location
-)
-{
-	return
-		this->find_or_create(
-			_location
-		);
-}
-
-void
-fcppt::log::context::remove(
-	fcppt::log::detail::context_tree &
-)
-{
-	// TODO: Add a reference counter and remove nodes that are no longer needed
-}
-
 void
 fcppt::log::context::set(
 	fcppt::log::location_setting const &_location_setting
@@ -64,12 +45,33 @@ fcppt::log::context::set(
 	for(
 		fcppt::log::detail::context_tree &node
 		:
+		// TODO: Add make_pre_order
 		fcppt::container::tree::pre_order<
 			fcppt::log::detail::context_tree
 		>(
-			this->find_or_create(
-				_location_setting.location()
-			)
+			fcppt::algorithm::fold(
+				_location_setting.location(),
+				fcppt::make_ref(
+					tree_
+				),
+				[](
+					fcppt::string const &_item,
+					fcppt::reference<
+						fcppt::log::detail::context_tree
+					> const _cur
+				)
+				{
+					return
+						fcppt::make_ref(
+							fcppt::log::impl::find_or_create_child(
+								_cur.get(),
+								fcppt::log::name{
+									_item
+								}
+							)
+						);
+				}
+			).get()
 		)
 	)
 		node.value().setting(
@@ -78,46 +80,8 @@ fcppt::log::context::set(
 }
 
 fcppt::log::detail::context_tree &
-fcppt::log::context::find_or_create(
-	fcppt::log::location const &_location
-)
+fcppt::log::context::root()
 {
 	return
-		fcppt::algorithm::fold(
-			_location,
-			fcppt::make_ref(
-				tree_
-			),
-			[](
-				fcppt::string const &_item,
-				fcppt::reference<
-					fcppt::log::detail::context_tree
-				> const _cur
-			)
-			{
-				return
-					fcppt::optional::from(
-						fcppt::log::impl::find_child_node(
-							_cur.get(),
-							_item
-						),
-						[
-							_cur,
-							&_item
-						]{
-							_cur.get().push_back(
-								fcppt::log::detail::context_tree_node{
-									_item,
-									_cur.get().value().setting()
-								}
-							);
-
-							return
-								fcppt::make_ref(
-									_cur.get().back()
-								);
-						}
-					);
-			}
-		).get();
+		tree_;
 }

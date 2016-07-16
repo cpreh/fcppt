@@ -722,6 +722,8 @@ set(
 	include/fcppt/log/location_fwd.hpp
 	include/fcppt/log/location_setting.hpp
 	include/fcppt/log/location_setting_fwd.hpp
+	include/fcppt/log/name.hpp
+	include/fcppt/log/name_fwd.hpp
 	include/fcppt/log/new_sink.hpp
 	include/fcppt/log/object.hpp
 	include/fcppt/log/object_fwd.hpp
