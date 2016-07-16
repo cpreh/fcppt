@@ -9,6 +9,7 @@
 #include <fcppt/log/level.hpp>
 #include <fcppt/log/level_stream.hpp>
 #include <fcppt/log/level_stream_array.hpp>
+#include <fcppt/log/location_fwd.hpp>
 #include <fcppt/log/object.hpp>
 #include <fcppt/log/parameters.hpp>
 #include <fcppt/log/setting.hpp>
@@ -38,6 +39,21 @@ fcppt::log::object::object(
 :
 	object(
 		_parent.auto_context_.node(),
+		_parameters
+	)
+{
+}
+
+fcppt::log::object::object(
+	fcppt::log::context &_context,
+	fcppt::log::location const &_location,
+	fcppt::log::parameters const &_parameters
+)
+:
+	object(
+		_context.find_location(
+			_location
+		),
 		_parameters
 	)
 {

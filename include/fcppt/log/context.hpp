@@ -9,6 +9,7 @@
 
 #include <fcppt/noncopyable.hpp>
 #include <fcppt/log/context_fwd.hpp>
+#include <fcppt/log/location_fwd.hpp>
 #include <fcppt/log/object_fwd.hpp>
 #include <fcppt/log/location_setting_fwd.hpp>
 #include <fcppt/log/detail/context_tree.hpp>
@@ -59,6 +60,11 @@ public:
 private:
 	fcppt::log::detail::context_tree &
 	root();
+
+	fcppt::log::detail::context_tree &
+	find_location(
+		fcppt::log::location const &
+	);
 
 	friend class fcppt::log::object;
 

@@ -13,6 +13,7 @@
 #include <fcppt/log/level_fwd.hpp>
 #include <fcppt/log/level_stream_array.hpp>
 #include <fcppt/log/level_stream_fwd.hpp>
+#include <fcppt/log/location_fwd.hpp>
 #include <fcppt/log/object_fwd.hpp>
 #include <fcppt/log/parameters_fwd.hpp>
 #include <fcppt/log/setting_fwd.hpp>
@@ -59,6 +60,16 @@ public:
 	FCPPT_LOG_DETAIL_SYMBOL
 	object(
 		fcppt::log::object &,
+		fcppt::log::parameters const &
+	);
+
+	/**
+	\brief Constructs a log at a specific location
+	*/
+	FCPPT_LOG_DETAIL_SYMBOL
+	object(
+		fcppt::log::context &,
+		fcppt::log::location const &,
 		fcppt::log::parameters const &
 	);
 
