@@ -25,6 +25,21 @@ fcppt::log::detail::context_tree_node::context_tree_node(
 {
 }
 
+fcppt::log::detail::context_tree_node::context_tree_node(
+	context_tree_node &&
+)
+= default;
+
+fcppt::log::detail::context_tree_node &
+fcppt::log::detail::context_tree_node::operator=(
+	context_tree_node &&
+)
+= default;
+
+fcppt::log::detail::context_tree_node::~context_tree_node()
+{
+}
+
 fcppt::log::name const &
 fcppt::log::detail::context_tree_node::name() const
 {

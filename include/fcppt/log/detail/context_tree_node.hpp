@@ -7,6 +7,7 @@
 #ifndef FCPPT_LOG_DETAIL_CONTEXT_TREE_NODE_HPP_INCLUDED
 #define FCPPT_LOG_DETAIL_CONTEXT_TREE_NODE_HPP_INCLUDED
 
+#include <fcppt/noncopyable.hpp>
 #include <fcppt/log/name.hpp>
 #include <fcppt/log/setting.hpp>
 #include <fcppt/log/detail/context_tree_node_fwd.hpp>
@@ -21,11 +22,25 @@ namespace detail
 
 class context_tree_node
 {
+	FCPPT_NONCOPYABLE(
+		context_tree_node
+	);
 public:
 	context_tree_node(
 		fcppt::log::name,
 		fcppt::log::setting const &
 	);
+
+	context_tree_node(
+		context_tree_node &&
+	);
+
+	context_tree_node &
+	operator=(
+		context_tree_node &&
+	);
+
+	~context_tree_node();
 
 	fcppt::log::name const &
 	name() const;
