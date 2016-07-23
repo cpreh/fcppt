@@ -7,13 +7,13 @@
 #include <fcppt/algorithm/find_if_opt.hpp>
 #include <fcppt/log/name.hpp>
 #include <fcppt/log/detail/context_tree.hpp>
-#include <fcppt/log/impl/find_child_node.hpp>
+#include <fcppt/log/impl/find_child.hpp>
 #include <fcppt/log/impl/optional_context_tree_ref.hpp>
 #include <fcppt/optional/deref.hpp>
 
 
 fcppt::log::impl::optional_context_tree_ref
-fcppt::log::impl::find_child_node(
+fcppt::log::impl::find_child(
 	fcppt::log::detail::context_tree &_tree,
 	fcppt::log::name const &_name
 )

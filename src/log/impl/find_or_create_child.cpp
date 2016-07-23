@@ -6,7 +6,7 @@
 
 #include <fcppt/make_ref.hpp>
 #include <fcppt/log/name_fwd.hpp>
-#include <fcppt/log/impl/find_child_node.hpp>
+#include <fcppt/log/impl/find_child.hpp>
 #include <fcppt/log/impl/find_or_create_child.hpp>
 #include <fcppt/log/detail/context_tree.hpp>
 #include <fcppt/log/detail/context_tree_node.hpp>
@@ -21,7 +21,7 @@ fcppt::log::impl::find_or_create_child(
 {
 	return
 		fcppt::optional::from(
-			fcppt::log::impl::find_child_node(
+			fcppt::log::impl::find_child(
 				_node,
 				_name
 			),

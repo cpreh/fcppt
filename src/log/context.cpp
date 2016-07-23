@@ -4,6 +4,7 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
+#include <fcppt/make_cref.hpp>
 #include <fcppt/make_ref.hpp>
 #include <fcppt/reference_impl.hpp>
 #include <fcppt/string.hpp>
@@ -16,7 +17,9 @@
 #include <fcppt/log/setting.hpp>
 #include <fcppt/log/detail/context_tree.hpp>
 #include <fcppt/log/detail/context_tree_node.hpp>
+#include <fcppt/log/impl/find_child.hpp>
 #include <fcppt/log/impl/find_or_create_child.hpp>
+#include <fcppt/optional/maybe_void.hpp>
 
 
 fcppt::log::context::context(
@@ -58,6 +61,67 @@ fcppt::log::context::set(
 		node.value().setting(
 			_location_setting.setting()
 		);
+}
+
+fcppt::log::setting const &
+fcppt::log::context::get(
+	fcppt::log::location const &_location
+) const
+{
+	// TODO: We need something like fold_break
+	fcppt::reference<
+		fcppt::log::detail::context_tree const
+	> cur{
+		fcppt::make_cref(
+			tree_
+		)
+	};
+
+	for(
+		fcppt::string const &item
+		:
+		_location
+	)
+	{
+		fcppt::log::impl::optional_context_tree_ref const result{
+			fcppt::log::impl::find_child(
+				// TODO: Make find_child more generic
+				const_cast<
+					fcppt::log::detail::context_tree &
+				>(
+					cur.get()
+				),
+				fcppt::log::name{
+					item
+				}
+			)
+		};
+
+		if(
+			!result.has_value()
+		)
+			break;
+
+		fcppt::optional::maybe_void(
+			result,
+			[
+				&cur
+			](
+				fcppt::reference<
+					fcppt::log::detail::context_tree
+				> const _cur
+			)
+			{
+				cur =
+					fcppt::make_cref(
+						_cur.get()
+					);
+			}
+		);
+	}
+
+	return
+		cur.get().value().setting();
 }
 
 fcppt::log::detail::context_tree &

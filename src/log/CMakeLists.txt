@@ -72,11 +72,11 @@ set(
 	src/log/format/inserter.cpp
 	src/log/format/prefix.cpp
 	src/log/format/time_stamp.cpp
-	src/log/impl/find_child_node.cpp
+	src/log/impl/find_child.cpp
 	src/log/impl/find_or_create_child.cpp
 	src/log/impl/level_strings.cpp
 	src/log/impl/tree_formatter.cpp
-	src/log/include/fcppt/log/impl/find_child_node.hpp
+	src/log/include/fcppt/log/impl/find_child.hpp
 	src/log/include/fcppt/log/impl/find_or_create_child.hpp
 	src/log/include/fcppt/log/impl/level_string_array.hpp
 	src/log/include/fcppt/log/impl/level_strings.hpp

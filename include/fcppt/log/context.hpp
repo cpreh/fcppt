@@ -11,7 +11,9 @@
 #include <fcppt/log/context_fwd.hpp>
 #include <fcppt/log/location_fwd.hpp>
 #include <fcppt/log/object_fwd.hpp>
+#include <fcppt/log/location_fwd.hpp>
 #include <fcppt/log/location_setting_fwd.hpp>
+#include <fcppt/log/setting_fwd.hpp>
 #include <fcppt/log/detail/context_tree.hpp>
 #include <fcppt/log/detail/symbol.hpp>
 
@@ -57,6 +59,15 @@ public:
 	set(
 		fcppt::log::location_setting const &location_setting
 	);
+
+	/**
+	\brief Gets the current setting for a location
+	*/
+	FCPPT_LOG_DETAIL_SYMBOL
+	fcppt::log::setting const &
+	get(
+		fcppt::log::location const &
+	) const;
 private:
 	fcppt::log::detail::context_tree &
 	root();
