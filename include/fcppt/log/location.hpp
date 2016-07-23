@@ -8,8 +8,8 @@
 #define FCPPT_LOG_LOCATION_HPP_INCLUDED
 
 #include <fcppt/string.hpp>
-#include <fcppt/log/name_fwd.hpp>
 #include <fcppt/log/location_fwd.hpp>
+#include <fcppt/log/name_fwd.hpp>
 #include <fcppt/log/detail/location_vector.hpp>
 #include <fcppt/log/detail/symbol.hpp>
 

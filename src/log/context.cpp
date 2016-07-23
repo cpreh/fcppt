@@ -11,8 +11,8 @@
 #include <fcppt/algorithm/fold.hpp>
 #include <fcppt/container/tree/pre_order.hpp>
 #include <fcppt/log/context.hpp>
-#include <fcppt/log/location_setting.hpp>
 #include <fcppt/log/location.hpp>
+#include <fcppt/log/location_setting.hpp>
 #include <fcppt/log/name.hpp>
 #include <fcppt/log/setting.hpp>
 #include <fcppt/log/detail/context_tree.hpp>

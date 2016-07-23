@@ -6,10 +6,10 @@
 
 #include <fcppt/make_ref.hpp>
 #include <fcppt/log/name_fwd.hpp>
-#include <fcppt/log/impl/find_child.hpp>
-#include <fcppt/log/impl/find_or_create_child.hpp>
 #include <fcppt/log/detail/context_tree.hpp>
 #include <fcppt/log/detail/context_tree_node.hpp>
+#include <fcppt/log/impl/find_child.hpp>
+#include <fcppt/log/impl/find_or_create_child.hpp>
 #include <fcppt/optional/from.hpp>
 
 

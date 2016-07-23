@@ -10,9 +10,8 @@
 #include <fcppt/noncopyable.hpp>
 #include <fcppt/log/context_fwd.hpp>
 #include <fcppt/log/location_fwd.hpp>
-#include <fcppt/log/object_fwd.hpp>
-#include <fcppt/log/location_fwd.hpp>
 #include <fcppt/log/location_setting_fwd.hpp>
+#include <fcppt/log/object_fwd.hpp>
 #include <fcppt/log/setting_fwd.hpp>
 #include <fcppt/log/detail/context_tree.hpp>
 #include <fcppt/log/detail/symbol.hpp>
