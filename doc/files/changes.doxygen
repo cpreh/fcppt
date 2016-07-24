@@ -28,6 +28,7 @@
 <li>\ref fcpptcontainertree
 	<ul>
 	<li>Added \link fcppt::container::tree::make_pre_order\endlink.</li>
+	<li>Added \link fcppt::container::tree::make_to_root\endlink.</li>
 	</ul>
 </li>
 

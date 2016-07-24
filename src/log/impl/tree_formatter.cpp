@@ -5,7 +5,7 @@
 
 
 #include <fcppt/algorithm/fold.hpp>
-#include <fcppt/container/tree/to_root.hpp>
+#include <fcppt/container/tree/make_to_root.hpp>
 #include <fcppt/log/name.hpp>
 #include <fcppt/log/detail/context_tree.hpp>
 #include <fcppt/log/format/chain.hpp>
@@ -21,10 +21,7 @@ fcppt::log::impl::tree_formatter(
 {
 	return
 		fcppt::algorithm::fold(
-			// TODO: add make_to_root
-			fcppt::container::tree::to_root<
-				fcppt::log::detail::context_tree const
-			>(
+			fcppt::container::tree::make_to_root(
 				_node
 			),
 			fcppt::log::format::optional_function{},

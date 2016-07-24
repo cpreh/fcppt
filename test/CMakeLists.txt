@@ -381,6 +381,11 @@ add_fcppt_test(
 )
 
 add_fcppt_test(
+	container/tree/make_to_root
+	NO_CODE
+)
+
+add_fcppt_test(
 	container/tree/map
 )
 
