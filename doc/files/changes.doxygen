@@ -1,6 +1,57 @@
 /**
 \page changes Changes
 
+\section changes_changes_to_220 Changes from 2.1.0 to 2.2.0
+
+\subsection changes_added_functionality_to_220 Added functionality
+
+<ul>
+
+<li><code>CMake</code>
+	<ul>
+	<li>Added <em>interface libraries</em> to fcppt's exported targets. For
+	example, <code>fcppt_core_interface</code> can be used to inherit the
+	include paths and compile definitions from <code>fcppt_core</code>
+	without linking to the library.</li>
+	<li>Added <code>INCLUDE_DIRS</code> and <code>LINK_LIBS</code> to
+	<code>fcppt_utils_add_dummy_target</code>.</li>
+	</ul>
+</li>
+
+<li>\ref fcpptconfig
+	<ul>
+	<li>Ignore <code>-Wundefined-var-template</code> for
+	<code>clang-3.9</code> in external headers.</li>
+	</ul>
+</li>
+
+</ul>
+
+\subsection changes_changed_functionality_to_220 Changed functionality
+
+<ul>
+<li><code>CMake</code>
+	<ul>
+	<li>Use named arguments in <code>fcppt_utils_generate_config</code></li>
+	</ul>
+</li>
+
+<li>\ref fcpptlog
+	<p>
+	The logging library went through a major rewrite, with the purpose
+	to remove global objects.</p>
+	<ul>
+	<li>\link fcppt::log::object\endlink now always refers to an \link
+	fcppt::log::context\endlink.</li>
+	<li>Log levels are stored in \link fcppt::log::context\endlink objects
+	only. This way, they can be set before any log locations are
+	created.</li>
+	</ul>
+</li>
+</ul>
+
+\subsection changes_removed_functionality_to_220 Removed functionality
+
 \section changes_changes_to_210 Changes from 2.0.0 to 2.1.0
 
 \subsection changes_general_to_210 General changes
@@ -173,7 +224,7 @@
 
 </ul>
 
-\subsection changes_removed_functionality_to_201 Removed functionality
+\subsection changes_removed_functionality_to_210 Removed functionality
 
 <ul>
 
