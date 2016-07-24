@@ -606,6 +606,8 @@ set(
 	include/fcppt/filesystem/create_directories_recursive_exn.hpp
 	include/fcppt/filesystem/create_directory_exn.hpp
 	include/fcppt/filesystem/create_directory_failed.hpp
+	include/fcppt/filesystem/directory_range.hpp
+	include/fcppt/filesystem/directory_range_fwd.hpp
 	include/fcppt/filesystem/exception.hpp
 	include/fcppt/filesystem/extension.hpp
 	include/fcppt/filesystem/extension_without_dot.hpp

@@ -32,6 +32,11 @@
 	</ul>
 </li>
 
+<li>\ref fcpptfilesystem
+</li>
+	<ul>
+	<li>Added \link fcppt::filesystem::directory_range\endlink.</li>
+	</ul>
 </ul>
 
 \subsection changes_changed_functionality_to_220 Changed functionality
@@ -39,7 +44,7 @@
 <ul>
 <li><code>CMake</code>
 	<ul>
-	<li>Use named arguments in <code>fcppt_utils_generate_config</code></li>
+	<li>Use named arguments in <code>fcppt_utils_generate_config</code>.</li>
 	</ul>
 </li>
 

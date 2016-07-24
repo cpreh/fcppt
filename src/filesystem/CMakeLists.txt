@@ -3,6 +3,8 @@ set(
 	include/fcppt/filesystem/create_directories_recursive_exn.hpp
 	include/fcppt/filesystem/create_directory_exn.hpp
 	include/fcppt/filesystem/create_directory_failed.hpp
+	include/fcppt/filesystem/directory_range.hpp
+	include/fcppt/filesystem/directory_range_fwd.hpp
 	include/fcppt/filesystem/exception.hpp
 	include/fcppt/filesystem/extension.hpp
 	include/fcppt/filesystem/extension_without_dot.hpp
@@ -19,6 +21,7 @@ set(
 	include/fcppt/filesystem/strip_prefix.hpp
 	src/filesystem/create_directories_recursive_exn.cpp
 	src/filesystem/create_directory_exn.cpp
+	src/filesystem/directory_range.cpp
 	src/filesystem/extension.cpp
 	src/filesystem/extension_without_dot.cpp
 	src/filesystem/file_to_string.cpp
