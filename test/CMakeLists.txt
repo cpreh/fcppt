@@ -376,6 +376,11 @@ add_fcppt_test(
 )
 
 add_fcppt_test(
+	container/tree/make_pre_order
+	NO_CODE
+)
+
+add_fcppt_test(
 	container/tree/map
 )
 

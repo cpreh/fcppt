@@ -33,6 +33,7 @@ namespace tree
 
 /**
 \brief Wraps a tree to make it iterable in a pre-order fashion.
+
 \ingroup fcpptcontainertree
 
 Internally, this class manages a stack, losely imitating the runtime stack in a

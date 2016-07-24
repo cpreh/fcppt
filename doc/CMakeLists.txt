@@ -503,6 +503,7 @@ set(
 	include/fcppt/container/tree/detail/print.hpp
 	include/fcppt/container/tree/is_object.hpp
 	include/fcppt/container/tree/level.hpp
+	include/fcppt/container/tree/make_pre_order.hpp
 	include/fcppt/container/tree/map.hpp
 	include/fcppt/container/tree/object.hpp
 	include/fcppt/container/tree/object_decl.hpp

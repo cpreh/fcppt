@@ -9,7 +9,7 @@
 #include <fcppt/reference_impl.hpp>
 #include <fcppt/string.hpp>
 #include <fcppt/algorithm/fold.hpp>
-#include <fcppt/container/tree/pre_order.hpp>
+#include <fcppt/container/tree/make_pre_order.hpp>
 #include <fcppt/log/context.hpp>
 #include <fcppt/log/location.hpp>
 #include <fcppt/log/location_setting.hpp>
@@ -49,10 +49,7 @@ fcppt::log::context::set(
 	for(
 		fcppt::log::detail::context_tree &node
 		:
-		// TODO: Add make_pre_order
-		fcppt::container::tree::pre_order<
-			fcppt::log::detail::context_tree
-		>(
+		fcppt::container::tree::make_pre_order(
 			this->find_location(
 				_location_setting.location()
 			)
