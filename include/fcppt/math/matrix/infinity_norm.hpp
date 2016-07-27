@@ -20,6 +20,7 @@
 #include <fcppt/config/external_begin.hpp>
 #include <algorithm>
 #include <cmath>
+#include <cstdlib>
 #include <limits>
 #include <fcppt/config/external_end.hpp>
 
