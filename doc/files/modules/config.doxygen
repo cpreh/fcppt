@@ -44,6 +44,10 @@ identify the current compiler:
 <td>FCPPT_CONFIG_CLANG_COMPILER</td>
 <td>Defined when the compiler is clang.</td>
 </tr>
+<tr>
+<td>FCPPT_CONFIG_APPLE_CLANG_COMPILER</td>
+<td>Defined when the compiler is the Apple clang compiler (XCode).</td>
+</tr>
 </table>
 
 \subsection fcpptconfig_os_detection OS Detection
