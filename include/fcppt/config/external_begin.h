@@ -33,7 +33,9 @@ FCPPT_PP_DISABLE_GCC_WARNING(-Wnewline-eof)
 FCPPT_PP_DISABLE_GCC_WARNING(-Wunused-local-typedef)
 
 #if FCPPT_CONFIG_CLANG_VERSION_AT_LEAST(3, 9)
-FCPPT_PP_DISABLE_GCC_WARNING(-Wexpansion-to-defined)
+#if !defined(FCPPT_CONFIG_APPLE_CLANG_COMPILER)
+    FCPPT_PP_DISABLE_GCC_WARNING(-Wexpansion-to-defined)
+#endif
 #endif
 
 #else
