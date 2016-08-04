@@ -5,7 +5,6 @@
 
 
 #include <fcppt/text.hpp>
-#include <fcppt/io/cout.hpp>
 #include <fcppt/log/_.hpp>
 #include <fcppt/log/context.hpp>
 #include <fcppt/log/debug.hpp>
@@ -24,36 +23,34 @@ int
 main()
 {
 //! [helloworld]
-	// Create a logger context that has debug and every level above enabled
+	// Create a log context that has debug and every level above enabled
 	fcppt::log::context context{
 		fcppt::log::setting{
 			fcppt::log::enabled_levels(
 				fcppt::log::level::debug
 			)
-		}
+		},
+		fcppt::log::default_level_streams()
 	};
 
-	// Create a logger that logs to cout
-	fcppt::log::object logger{
+	// Create a log object
+	fcppt::log::object log{
 		context,
 		fcppt::log::parameters{
 			fcppt::log::name{
 				FCPPT_TEXT("fcppt")
 			},
-			fcppt::log::default_level_streams(
-				fcppt::io::cout()
-			),
 			fcppt::log::format::optional_function{}
 		}
 	};
 
 	// Outputs: "debug: Hello World"
 	if(
-		logger.enabled(
+		log.enabled(
 			fcppt::log::level::debug
 		)
 	)
-		logger.log(
+		log.log(
 			fcppt::log::level::debug,
 			fcppt::log::_
 				<< FCPPT_TEXT("Hello World")
@@ -61,14 +58,14 @@ main()
 
 	// The same as above using a shorthand macro
 	FCPPT_LOG_DEBUG(
-		logger,
+		log,
 		fcppt::log::_
 			<< FCPPT_TEXT("Hello World")
 	);
 
 	// This is not printed because the verbose level is not enabled
 	FCPPT_LOG_VERBOSE(
-		logger,
+		log,
 		fcppt::log::_
 			<< FCPPT_TEXT("Very verbose message")
 	);

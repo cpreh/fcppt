@@ -5,8 +5,8 @@
 
 
 #include <fcppt/algorithm/enum_array_init.hpp>
-#include <fcppt/io/ostream.hpp>
 #include <fcppt/log/default_level_streams.hpp>
+#include <fcppt/log/default_stream.hpp>
 #include <fcppt/log/level.hpp>
 #include <fcppt/log/level_stream.hpp>
 #include <fcppt/log/level_stream_array.hpp>
@@ -15,26 +15,24 @@
 
 
 fcppt::log::level_stream_array
-fcppt::log::default_level_streams(
-	fcppt::io::ostream &_sink
-)
+fcppt::log::default_level_streams()
 {
 	return
 		fcppt::algorithm::enum_array_init<
 			fcppt::log::level_stream_array
 		>(
-			[
-				&_sink
-			](
-				fcppt::log::level const _index
+			[](
+				fcppt::log::level const _level
 			)
 			{
 				return
 					fcppt::log::level_stream(
-						_sink,
+						fcppt::log::default_stream(
+							_level
+						),
 						fcppt::log::format::optional_function(
 							fcppt::log::format::default_level(
-								_index
+								_level
 							)
 						)
 					);

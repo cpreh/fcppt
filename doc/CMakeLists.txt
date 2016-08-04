@@ -680,10 +680,12 @@ set(
 	include/fcppt/is_strong_typedef.hpp
 	include/fcppt/literal.hpp
 	include/fcppt/log/_.hpp
+	include/fcppt/log/const_level_stream_array_ref.hpp
 	include/fcppt/log/context.hpp
 	include/fcppt/log/context_fwd.hpp
 	include/fcppt/log/debug.hpp
 	include/fcppt/log/default_level_streams.hpp
+	include/fcppt/log/default_stream.hpp
 	include/fcppt/log/detail/auto_context.hpp
 	include/fcppt/log/detail/auto_context_fwd.hpp
 	include/fcppt/log/detail/const_optional_context_tree_ref.hpp
@@ -724,11 +726,8 @@ set(
 	include/fcppt/log/level_to_string.hpp
 	include/fcppt/log/location.hpp
 	include/fcppt/log/location_fwd.hpp
-	include/fcppt/log/location_setting.hpp
-	include/fcppt/log/location_setting_fwd.hpp
 	include/fcppt/log/name.hpp
 	include/fcppt/log/name_fwd.hpp
-	include/fcppt/log/new_sink.hpp
 	include/fcppt/log/object.hpp
 	include/fcppt/log/object_fwd.hpp
 	include/fcppt/log/optional_level.hpp

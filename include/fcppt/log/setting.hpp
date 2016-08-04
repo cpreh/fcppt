@@ -31,6 +31,7 @@ public:
 		fcppt::log::enabled_level_array const &
 	);
 
+	FCPPT_LOG_DETAIL_SYMBOL
 	fcppt::log::enabled_level_array const &
 	enabled_levels() const;
 private:

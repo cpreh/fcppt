@@ -1,10 +1,12 @@
 set(
 	FCPPT_LOG_FILES
 	include/fcppt/log/_.hpp
+	include/fcppt/log/const_level_stream_array_ref.hpp
 	include/fcppt/log/context.hpp
 	include/fcppt/log/context_fwd.hpp
 	include/fcppt/log/debug.hpp
 	include/fcppt/log/default_level_streams.hpp
+	include/fcppt/log/default_stream.hpp
 	include/fcppt/log/detail/auto_context.hpp
 	include/fcppt/log/detail/auto_context_fwd.hpp
 	include/fcppt/log/detail/const_optional_context_tree_ref.hpp
@@ -45,11 +47,8 @@ set(
 	include/fcppt/log/level_to_string.hpp
 	include/fcppt/log/location.hpp
 	include/fcppt/log/location_fwd.hpp
-	include/fcppt/log/location_setting.hpp
-	include/fcppt/log/location_setting_fwd.hpp
 	include/fcppt/log/name.hpp
 	include/fcppt/log/name_fwd.hpp
-	include/fcppt/log/new_sink.hpp
 	include/fcppt/log/object.hpp
 	include/fcppt/log/object_fwd.hpp
 	include/fcppt/log/optional_level.hpp
@@ -63,6 +62,7 @@ set(
 	src/log/_.cpp
 	src/log/context.cpp
 	src/log/default_level_streams.cpp
+	src/log/default_stream.cpp
 	src/log/detail/auto_context.cpp
 	src/log/detail/context_tree_node.cpp
 	src/log/detail/temporary_output.cpp
@@ -87,8 +87,6 @@ set(
 	src/log/level_stream.cpp
 	src/log/level_to_string.cpp
 	src/log/location.cpp
-	src/log/location_setting.cpp
-	src/log/new_sink.cpp
 	src/log/object.cpp
 	src/log/parameters.cpp
 	src/log/setting.cpp

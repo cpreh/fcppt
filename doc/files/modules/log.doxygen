@@ -38,23 +38,24 @@ The following list highlights the main features of fcppt's logging library:
 
 <dd>The library assigns <em>log levels</em> to <em>log locations</em>, which is
 stored by a <em>log context</em>. Log levels are, for example, <code>debug,
-warning, error</code> and log locations are lists of strings.
+warning, error</code> and log locations are lists of strings. For each location,
+every level can either be enabled or disabled.
 </dd>
 
 <dt>Formatting and direction of messages:</dt>
 
-<dd><em>Log objects</em> refer to a <em>log context</em> and a <em>log
-location</em>. They also  store output sinks and formatting functions for every
-<em>log level</em>, e.g. <code>std::clog</code> for debug info and
-<code>std::cerr</code> for errors.
+<dd>A <em>log context</em> also assigns to each <em>log level</em> a <em>level
+stream</em>, which dictactes where to log to, e.g. to <code>std::clog</code>,
+and how messages are formatted.
 </dd>
 
 </dl>
 
 \subsection log_simple_example A simple example
 
-The following example illustrates the construction of a simple log object
-with some defaults and logs to it.
+The class that does actual logging is called \link fcppt::log::object\endlink. It
+refers to an \link fcppt::log::location\endlink in a \link fcppt::log::context\endlink.
+The following example illustrates the use of a simple log object:
 
 \snippet log/helloworld.cpp helloworld
 
@@ -69,10 +70,6 @@ a <code>std::basic_ostream</code>. This is used to
 create a whole message in a thread-safe manner. If you log in multiple pieces
 instead, the log message might end up interleaved with other messages.
 
-The constructor of \link fcppt::log::parameters \endlink tells the log object to
-use <code>fcppt</code> as its name and to use \link
-fcppt::io::cout\endlink for all levels.
-
 \section log_formatting_and_sinks Formatting and sinks
 
 \subsection log_formatting_design Formatting design
@@ -82,22 +79,17 @@ they are written to:
 
 <ul>
 <li>
-Each log object contains an \link fcppt::log::level_stream\endlink for every
+A log context contains an \link fcppt::log::level_stream\endlink for every
 log level. Each of them controls where output is written to and how it is
 formatted.
 </li>
 <li>
 Each level stream uses an <code>std::basic_ostream</code> as its log
-destination.  Where output actually ends up is decided by its streambuf.
-</li>
-<li>
-The following log levels, declared in \link fcppt::log::level \endlink, are
-provided in ascending order: <code>verbose, debug, info, warning, error,
-fatal</code>. The lower the level, the less serious the message.
+destination. Where output actually ends up is decided by its streambuf.
 </li>
 <li>
 Formatting is done through \link fcppt::log::format::function \endlink objects
-which can be naturally chained together. Every lo object and every level stream
+which can be naturally chained together. Every log object and every level stream
 can have their own formatters.
 </ul>
 
@@ -113,7 +105,7 @@ implemented as follows:
 \snippet log/formatting.cpp logger_formatter_declaration
 
 We are also going to create another formatting function for the <em>error</em>
-output sink that logs to \link fcppt::io::cerr\endlink.
+level stream that logs to \link fcppt::io::cerr\endlink.
 
 \snippet log/formatting.cpp error_formatter_declaration
 
@@ -123,8 +115,14 @@ formatting function.
 
 \snippet log/formatting.cpp logger_streams
 
+The log context we are going to use again has the debug level and every level
+above enabled. Instead of \link fcppt::log::default_level_streams\endlink we
+give it the level streams we just created.
+
+\snippet log/formatting.cpp logger_context
+
 Finally, we create the log object that uses the aforementioned formatting
-function and the created level streams:
+function:
 
 \snippet log/formatting.cpp logger_declaration
 
@@ -151,8 +149,9 @@ command line.
 Each log object refers to a location of a given context.
 In its constructor, it gets a name, and in addition to that, it gets either
 <ul>
-<li>a log context, in which case its location is its name, or</li>
-<li>a parent log object, in which case its location is the parent's name plus its own name.</li>
+<li>a log context, in which case its location is its name,</li>
+<li>a log context and a location, in which case its location is the given location plus its name, or</li>
+<li>a parent log object, in which case its location is the parent's location plus its own name.</li>
 </ul>
 
 \subsection log_hierarchy_example Log hierarchy example
@@ -251,14 +250,6 @@ All headers are relative to the log subdirectory.
 <td>Contains \link fcppt::log::location \endlink's definition.</td>
 </tr>
 <tr>
-<td><code>location_setting_fwd.hpp</code></td>
-<td>Contains \link fcppt::log::location_setting \endlink's declaration.</td>
-</tr>
-<tr>
-<td><code>location_setting.hpp</code></td>
-<td>Contains \link fcppt::log::location_setting \endlink's definition.</td>
-</tr>
-<tr>
 <td><code>name_fwd.hpp</code></td>
 <td>Contains <code>fcppt::log::name</code>'s declaration.</td>
 </tr>
@@ -310,6 +301,10 @@ All headers are relative to the log subdirectory.
 <tr>
 <td><code>default_level_streams.hpp</code></td>
 <td>Contains \link fcppt::log::default_level_streams \endlink for construction of all level stream defaults.</td>
+</tr>
+<tr>
+<td><code>default_stream.hpp</code></td>
+<td>Contains the \link fcppt::log::default_stream \endlink function.</td>
 </tr>
 <tr>
 <td><code>enabled_level_array.hpp</code></td>

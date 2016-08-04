@@ -7,7 +7,6 @@
 #include <fcppt/exception.hpp>
 #include <fcppt/text.hpp>
 #include <fcppt/io/cerr.hpp>
-#include <fcppt/io/cout.hpp>
 #include <fcppt/log/_.hpp>
 #include <fcppt/log/context.hpp>
 #include <fcppt/log/default_level_streams.hpp>
@@ -15,7 +14,6 @@
 #include <fcppt/log/info.hpp>
 #include <fcppt/log/level.hpp>
 #include <fcppt/log/location.hpp>
-#include <fcppt/log/location_setting.hpp>
 #include <fcppt/log/name.hpp>
 #include <fcppt/log/object.hpp>
 #include <fcppt/log/parameters.hpp>
@@ -35,7 +33,8 @@ try
 			fcppt::log::enabled_levels(
 				fcppt::log::level::debug
 			)
-		)
+		),
+		fcppt::log::default_level_streams()
 	};
 // ![declare_context]
 
@@ -44,13 +43,10 @@ try
 		FCPPT_TEXT("root")
 	};
 
-	fcppt::log::object root_logger{
+	fcppt::log::object root_log{
 		context,
 		fcppt::log::parameters(
 			root_name,
-			fcppt::log::default_level_streams(
-				fcppt::io::cout()
-			),
 			fcppt::log::format::optional_function{}
 		)
 	};
@@ -61,13 +57,10 @@ try
 		FCPPT_TEXT("child")
 	};
 
-	fcppt::log::object child_logger{
-		root_logger,
+	fcppt::log::object child_log{
+		root_log,
 		fcppt::log::parameters(
 			child_name,
-			fcppt::log::default_level_streams(
-				fcppt::io::cout()
-			),
 			fcppt::log::format::optional_function{}
 		)
 	};
@@ -75,13 +68,13 @@ try
 
 // ![log_debug]
 	FCPPT_LOG_INFO(
-		root_logger,
+		root_log,
 		fcppt::log::_
 			<< FCPPT_TEXT("Print from root!")
 	);
 
 	FCPPT_LOG_INFO(
-		child_logger,
+		child_log,
 		fcppt::log::_
 			<< FCPPT_TEXT("Print from child!")
 	);
@@ -89,24 +82,22 @@ try
 
 // ![context_set]
 	context.set(
-		fcppt::log::location_setting{
-			fcppt::log::location{
-				root_name
-			}
-			/
-			child_name,
-			fcppt::log::setting{
-				fcppt::log::enabled_levels(
-					fcppt::log::level::warning
-				)
-			}
+		fcppt::log::location{
+			root_name
+		}
+		/
+		child_name,
+		fcppt::log::setting{
+			fcppt::log::enabled_levels(
+				fcppt::log::level::warning
+			)
 		}
 	);
 // ![context_set]
 
 // ![log_info]
 	FCPPT_LOG_INFO(
-		child_logger,
+		child_log,
 		fcppt::log::_
 			<< FCPPT_TEXT("shouldn't be shown!")
 	);
@@ -114,20 +105,18 @@ try
 
 // ![context_set2]
 	context.set(
-		fcppt::log::location_setting{
-			fcppt::log::location{
-				root_name
-			},
-			fcppt::log::setting{
-				fcppt::log::enabled_levels(
-					fcppt::log::level::debug
-				)
-			}
+		fcppt::log::location{
+			root_name
+		},
+		fcppt::log::setting{
+			fcppt::log::enabled_levels(
+				fcppt::log::level::debug
+			)
 		}
 	);
 
 	FCPPT_LOG_INFO(
-		child_logger,
+		child_log,
 		fcppt::log::_
 			<< FCPPT_TEXT("This is now shown!")
 	);

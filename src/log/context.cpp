@@ -10,9 +10,10 @@
 #include <fcppt/string.hpp>
 #include <fcppt/algorithm/fold.hpp>
 #include <fcppt/container/tree/make_pre_order.hpp>
+#include <fcppt/log/const_level_stream_array_ref.hpp>
 #include <fcppt/log/context.hpp>
+#include <fcppt/log/level_stream_array.hpp>
 #include <fcppt/log/location.hpp>
-#include <fcppt/log/location_setting.hpp>
 #include <fcppt/log/name.hpp>
 #include <fcppt/log/setting.hpp>
 #include <fcppt/log/detail/context_tree.hpp>
@@ -23,7 +24,8 @@
 
 
 fcppt::log::context::context(
-	fcppt::log::setting const &_root_setting
+	fcppt::log::setting const &_root_setting,
+	fcppt::log::level_stream_array const &_streams
 )
 :
 	tree_(
@@ -33,6 +35,9 @@ fcppt::log::context::context(
 			},
 			_root_setting
 		)
+	),
+	streams_(
+		_streams
 	)
 {
 }
@@ -43,7 +48,8 @@ fcppt::log::context::~context()
 
 void
 fcppt::log::context::set(
-	fcppt::log::location_setting const &_location_setting
+	fcppt::log::location const &_location,
+	fcppt::log::setting const &_setting
 )
 {
 	for(
@@ -51,12 +57,12 @@ fcppt::log::context::set(
 		:
 		fcppt::container::tree::make_pre_order(
 			this->find_location(
-				_location_setting.location()
+				_location
 			)
 		)
 	)
 		node.value().setting(
-			_location_setting.setting()
+			_setting
 		);
 }
 
@@ -119,6 +125,15 @@ fcppt::log::context::get(
 
 	return
 		cur.get().value().setting();
+}
+
+fcppt::log::const_level_stream_array_ref
+fcppt::log::context::level_streams() const
+{
+	return
+		fcppt::make_cref(
+			streams_
+		);
 }
 
 fcppt::log::detail::context_tree &

@@ -33,7 +33,7 @@ void
 fcppt::log::level_stream::log(
 	fcppt::log::detail::temporary_output const &_output,
 	fcppt::log::format::optional_function const &_additional_formatter
-)
+) const
 {
 	dest_.get()
 		<<

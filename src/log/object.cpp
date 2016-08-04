@@ -4,6 +4,7 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
+#include <fcppt/log/const_level_stream_array_ref.hpp>
 #include <fcppt/log/context.hpp>
 #include <fcppt/log/enabled_level_array.hpp>
 #include <fcppt/log/level.hpp>
@@ -26,6 +27,7 @@ fcppt::log::object::object(
 )
 :
 	object(
+		_context.level_streams(),
 		_context.root(),
 		_parameters
 	)
@@ -38,6 +40,7 @@ fcppt::log::object::object(
 )
 :
 	object(
+		_parent.level_streams_,
 		_parent.auto_context_.node(),
 		_parameters
 	)
@@ -51,6 +54,7 @@ fcppt::log::object::object(
 )
 :
 	object(
+		_context.level_streams(),
 		_context.find_location(
 			_location
 		),
@@ -84,24 +88,13 @@ fcppt::log::object::log(
 	);
 }
 
-fcppt::log::level_stream &
-fcppt::log::object::level_sink(
-	fcppt::log::level const _level
-)
-{
-	return
-		level_streams_[
-			_level
-		];
-}
-
 fcppt::log::level_stream const &
 fcppt::log::object::level_sink(
 	fcppt::log::level const _level
 ) const
 {
 	return
-		level_streams_[
+		this->level_streams()[
 			_level
 		];
 }
@@ -128,7 +121,7 @@ fcppt::log::level_stream_array const &
 fcppt::log::object::level_streams() const
 {
 	return
-		level_streams_;
+		level_streams_.get();
 }
 
 fcppt::log::enabled_level_array const &
@@ -146,6 +139,7 @@ fcppt::log::object::setting() const
 }
 
 fcppt::log::object::object(
+	fcppt::log::const_level_stream_array_ref const &_level_streams,
 	fcppt::log::detail::context_tree &_node,
 	fcppt::log::parameters const &_parameters
 )
@@ -163,7 +157,7 @@ fcppt::log::object::object(
 		)
 	),
 	level_streams_(
-		_parameters.level_streams()
+		_level_streams
 	)
 {
 }

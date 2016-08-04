@@ -67,7 +67,7 @@ public:
 	log(
 		fcppt::log::detail::temporary_output const &output,
 		fcppt::log::format::optional_function const &additional_formatter
-	);
+	) const;
 
 	/**
 	\brief Sets a new sink

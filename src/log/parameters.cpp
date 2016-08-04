@@ -4,7 +4,6 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/log/level_stream_array.hpp>
 #include <fcppt/log/name.hpp>
 #include <fcppt/log/parameters.hpp>
 #include <fcppt/log/format/optional_function.hpp>
@@ -15,7 +14,6 @@
 
 fcppt::log::parameters::parameters(
 	fcppt::log::name _name,
-	fcppt::log::level_stream_array const &_level_streams,
 	fcppt::log::format::optional_function const &_formatter
 )
 :
@@ -24,9 +22,6 @@ fcppt::log::parameters::parameters(
 			_name
 		)
 	},
-	level_streams_(
-		_level_streams
-	),
 	formatter_{
 		_formatter
 	}
@@ -38,13 +33,6 @@ fcppt::log::parameters::name() const
 {
 	return
 		name_;
-}
-
-fcppt::log::level_stream_array const &
-fcppt::log::parameters::level_streams() const
-{
-	return
-		level_streams_;
 }
 
 fcppt::log::format::optional_function const &

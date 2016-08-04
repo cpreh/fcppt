@@ -31,7 +31,7 @@ namespace
 
 //! [logger_formatter_declaration]
 fcppt::string
-logger_formatter(
+log_formatter(
 	fcppt::string const &_text
 )
 {
@@ -66,14 +66,6 @@ error_formatter(
 int
 main()
 {
-	fcppt::log::context context{
-		fcppt::log::setting{
-			fcppt::log::enabled_levels(
-				fcppt::log::level::debug
-			)
-		}
-	};
-
 //! [logger_streams]
 	fcppt::log::level_stream_array const level_streams(
 		fcppt::algorithm::enum_array_init<
@@ -113,18 +105,28 @@ main()
 	);
 //! [logger_streams]
 
+//! [logger_context]
+	fcppt::log::context context{
+		fcppt::log::setting{
+			fcppt::log::enabled_levels(
+				fcppt::log::level::debug
+			)
+		},
+		level_streams
+	};
+//! [logger_context]
+
 //! [logger_declaration]
-	fcppt::log::object logger{
+	fcppt::log::object log{
 		context,
 		fcppt::log::parameters{
 			fcppt::log::name{
 				FCPPT_TEXT("fcppt")
 			},
-			level_streams,
-			// Create a special formatter for the whole logger
+			// Create a special formatter for the whole log
 			fcppt::log::format::optional_function{
 				fcppt::log::format::function{
-					logger_formatter
+					log_formatter
 				}
 			}
 		}
@@ -136,7 +138,7 @@ main()
 	// 'This is a formatting test: debug: test'
 	// to cout.
 	FCPPT_LOG_DEBUG(
-		logger,
+		log,
 		fcppt::log::_
 			<< FCPPT_TEXT("test")
 	);
@@ -145,7 +147,7 @@ main()
 	// 'This is a formatting test: Horrible error, please fix: some error'
 	// to cerr.
 	FCPPT_LOG_ERROR(
-		logger,
+		log,
 		fcppt::log::_
 			<< FCPPT_TEXT("some error")
 	);
