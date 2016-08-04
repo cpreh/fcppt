@@ -81,6 +81,13 @@ public:
 	);
 
 	/**
+	\brief Gets the current stream
+	*/
+	FCPPT_LOG_DETAIL_SYMBOL
+	fcppt::io::ostream &
+	get();
+
+	/**
 	\brief Returns the associated formatter
 	*/
 	FCPPT_LOG_DETAIL_SYMBOL

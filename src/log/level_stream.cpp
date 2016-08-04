@@ -65,6 +65,13 @@ fcppt::log::level_stream::sink(
 		);
 }
 
+fcppt::io::ostream &
+fcppt::log::level_stream::get()
+{
+	return
+		dest_.get();
+}
+
 fcppt::log::format::optional_function const &
 fcppt::log::level_stream::formatter() const
 {
