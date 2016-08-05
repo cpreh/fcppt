@@ -80,6 +80,7 @@ set(
 	src/log/include/fcppt/log/impl/const_optional_context_tree_ref_fwd.hpp
 	src/log/include/fcppt/log/impl/find_child.hpp
 	src/log/include/fcppt/log/impl/find_child_const.hpp
+	src/log/include/fcppt/log/impl/find_child_tpl.hpp
 	src/log/include/fcppt/log/impl/find_or_create_child.hpp
 	src/log/include/fcppt/log/impl/level_string_array.hpp
 	src/log/include/fcppt/log/impl/level_strings.hpp
