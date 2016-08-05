@@ -6,9 +6,9 @@
 
 #include <fcppt/log/name.hpp>
 #include <fcppt/log/detail/context_tree.hpp>
+#include <fcppt/log/impl/const_optional_context_tree_ref.hpp>
 #include <fcppt/log/impl/find_child_const.hpp>
 #include <fcppt/log/impl/find_child_tpl.hpp>
-#include <fcppt/log/impl/const_optional_context_tree_ref.hpp>
 
 
 fcppt::log::impl::const_optional_context_tree_ref
