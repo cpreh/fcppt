@@ -689,8 +689,6 @@ set(
 	include/fcppt/log/default_stream.hpp
 	include/fcppt/log/detail/auto_context.hpp
 	include/fcppt/log/detail/auto_context_fwd.hpp
-	include/fcppt/log/detail/const_optional_context_tree_ref.hpp
-	include/fcppt/log/detail/const_optional_context_tree_ref_fwd.hpp
 	include/fcppt/log/detail/context_tree.hpp
 	include/fcppt/log/detail/context_tree_fwd.hpp
 	include/fcppt/log/detail/context_tree_node.hpp

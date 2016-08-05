@@ -7,6 +7,9 @@
 #include <fcppt/log/name.hpp>
 #include <fcppt/log/setting.hpp>
 #include <fcppt/log/detail/context_tree_node.hpp>
+#include <fcppt/config/external_begin.hpp>
+#include <cstddef>
+#include <fcppt/config/external_end.hpp>
 
 
 fcppt::log::detail::context_tree_node::context_tree_node(
@@ -21,6 +24,9 @@ fcppt::log::detail::context_tree_node::context_tree_node(
 	},
 	setting_{
 		_setting
+	},
+	count_{
+		0u
 	}
 {
 }
@@ -61,4 +67,26 @@ fcppt::log::detail::context_tree_node::setting(
 {
 	setting_ =
 		_setting;
+}
+
+void
+fcppt::log::detail::context_tree_node::add_ref()
+{
+	++count_;
+}
+
+bool
+fcppt::log::detail::context_tree_node::remove_ref()
+{
+	return
+		--count_
+		==
+		0u;
+}
+
+std::size_t
+fcppt::log::detail::context_tree_node::ref_count() const
+{
+	return
+		count_;
 }

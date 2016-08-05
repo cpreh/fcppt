@@ -11,6 +11,9 @@
 #include <fcppt/log/name.hpp>
 #include <fcppt/log/setting.hpp>
 #include <fcppt/log/detail/context_tree_node_fwd.hpp>
+#include <fcppt/config/external_begin.hpp>
+#include <cstddef>
+#include <fcppt/config/external_end.hpp>
 
 
 namespace fcppt
@@ -52,10 +55,21 @@ public:
 	setting(
 		fcppt::log::setting const &
 	);
+
+	void
+	add_ref();
+
+	bool
+	remove_ref();
+
+	std::size_t
+	ref_count() const;
 private:
 	fcppt::log::name name_;
 
 	fcppt::log::setting setting_;
+
+	std::size_t count_;
 };
 
 }

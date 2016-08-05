@@ -11,6 +11,7 @@
 #include <fcppt/string.hpp>
 #include <fcppt/algorithm/fold.hpp>
 #include <fcppt/algorithm/fold_break.hpp>
+#include <fcppt/assert/error.hpp>
 #include <fcppt/container/tree/make_pre_order.hpp>
 #include <fcppt/log/const_level_stream_array_ref.hpp>
 #include <fcppt/log/context.hpp>
@@ -49,6 +50,9 @@ fcppt::log::context::context(
 
 fcppt::log::context::~context()
 {
+	FCPPT_ASSERT_ERROR(
+		tree_.empty()
+	);
 }
 
 void

@@ -9,8 +9,6 @@ set(
 	include/fcppt/log/default_stream.hpp
 	include/fcppt/log/detail/auto_context.hpp
 	include/fcppt/log/detail/auto_context_fwd.hpp
-	include/fcppt/log/detail/const_optional_context_tree_ref.hpp
-	include/fcppt/log/detail/const_optional_context_tree_ref_fwd.hpp
 	include/fcppt/log/detail/context_tree.hpp
 	include/fcppt/log/detail/context_tree_fwd.hpp
 	include/fcppt/log/detail/context_tree_node.hpp
@@ -76,6 +74,7 @@ set(
 	src/log/impl/find_child_const.cpp
 	src/log/impl/find_or_create_child.cpp
 	src/log/impl/level_strings.cpp
+	src/log/impl/remove_node.cpp
 	src/log/impl/tree_formatter.cpp
 	src/log/include/fcppt/log/impl/const_optional_context_tree_ref.hpp
 	src/log/include/fcppt/log/impl/const_optional_context_tree_ref_fwd.hpp
@@ -86,6 +85,7 @@ set(
 	src/log/include/fcppt/log/impl/level_strings.hpp
 	src/log/include/fcppt/log/impl/optional_context_tree_ref.hpp
 	src/log/include/fcppt/log/impl/optional_context_tree_ref_fwd.hpp
+	src/log/include/fcppt/log/impl/remove_node.hpp
 	src/log/include/fcppt/log/impl/tree_formatter.hpp
 	src/log/level_from_string.cpp
 	src/log/level_stream.cpp

@@ -4,12 +4,10 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_LOG_IMPL_FIND_CHILD_CONST_HPP_INCLUDED
-#define FCPPT_LOG_IMPL_FIND_CHILD_CONST_HPP_INCLUDED
+#ifndef FCPPT_LOG_IMPL_REMOVE_NODE_HPP_INCLUDED
+#define FCPPT_LOG_IMPL_REMOVE_NODE_HPP_INCLUDED
 
-#include <fcppt/log/name_fwd.hpp>
 #include <fcppt/log/detail/context_tree_fwd.hpp>
-#include <fcppt/log/impl/const_optional_context_tree_ref.hpp>
 
 
 namespace fcppt
@@ -19,10 +17,9 @@ namespace log
 namespace impl
 {
 
-fcppt::log::impl::const_optional_context_tree_ref
-find_child_const(
-	fcppt::log::detail::context_tree const &,
-	fcppt::log::name const &
+void
+remove_node(
+	fcppt::log::detail::context_tree &
 );
 
 }
