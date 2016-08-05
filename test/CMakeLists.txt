@@ -61,6 +61,10 @@ add_fcppt_test(
 )
 
 add_fcppt_test(
+	algorithm/fold_break
+)
+
+add_fcppt_test(
 	algorithm/index_of
 )
 

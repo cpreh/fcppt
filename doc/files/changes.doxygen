@@ -18,6 +18,12 @@
 	</ul>
 </li>
 
+<li>\ref fcpptalgorithm
+	<ul>
+	<li>Added \link fcppt::algorithm::fold_break\endlink.</li>
+	</ul>
+</li>
+
 <li>\ref fcpptconfig
 	<ul>
 	<li>Ignore <code>-Wundefined-var-template</code> for

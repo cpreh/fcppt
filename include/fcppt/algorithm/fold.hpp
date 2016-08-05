@@ -27,7 +27,7 @@ Like <code>fold_left</code> in a functional programming language, this function
 starts with \a _state as <code>cur_state</code>, and calls <code> cur_state =
 _function(element, cur_state)</code> for every element of \a _range.
 
-\tparam State Has to be movable or copyable
+\tparam State Has to be movable
 
 \tparam Function Must be callable as <code>State (Range::value_type,
 State)</code>.
