@@ -185,8 +185,8 @@ endfunction()
 
 fcppt_utils_is_path_prefix_of(
 	FCPPT_UTILS_INSTALL_PREFIX_IS_PREFIX_OF_CMAKE_ROOT
-	${CMAKE_INSTALL_PREFIX}
-	${CMAKE_ROOT}
+	"${CMAKE_INSTALL_PREFIX}"
+	"${CMAKE_ROOT}"
 )
 
 if(
