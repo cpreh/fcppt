@@ -1053,6 +1053,7 @@ set(
 	include/fcppt/optional/reference_fwd.hpp
 	include/fcppt/optional/static_cast.hpp
 	include/fcppt/optional/to_exception.hpp
+	include/fcppt/optional/to_pointer.hpp
 	include/fcppt/optional_std_string.hpp
 	include/fcppt/optional_std_string_fwd.hpp
 	include/fcppt/optional_string.hpp

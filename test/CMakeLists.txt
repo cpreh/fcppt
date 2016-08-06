@@ -953,6 +953,10 @@ add_fcppt_test(
 )
 
 add_fcppt_test(
+	optional/to_pointer
+)
+
+add_fcppt_test(
 	random/wrapper/uniform_container
 	LINK_LIBS
 		"${fcppt_core_TARGET}"
