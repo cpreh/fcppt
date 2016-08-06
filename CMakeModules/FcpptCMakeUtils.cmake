@@ -130,28 +130,31 @@ set(
 )
 
 function(
-	fcppt_utils_get_install_prefix_is_prefix_of_cmake_root
+	fcppt_utils_is_path_prefix_of
+	RESULT
+	PREFIX_STRING
+	PATH_STRING
 )
 	set(
-		FCPPT_UTILS_INSTALL_PREFIX_IS_PREFIX_OF_CMAKE_ROOT
-		PARENT_SCOPE
+		${RESULT}
 		FALSE
+		PARENT_SCOPE
 	)
 
 	set(
-		FCPPT_UTILS_LOOP_VAR
-		TRUE
+		CURRENT_DIRECTORY
+		"${PATH_STRING}"
 	)
 
 	while(
-		FCPPT_UTILS_LOOP_VAR
+		TRUE
 	)
 		if(
-			"${CMAKE_INSTALL_PREFIX}"
-			STREQUAL "${FCPPT_UTILS_CURRENT_DIRECTORY}"
+			"${PREFIX_STRING}"
+			STREQUAL "${CURRENT_DIRECTORY}"
 		)
 			set(
-				FCPPT_UTILS_INSTALL_PREFIX_IS_PREFIX_OF_CMAKE_ROOT
+				${RESULT}
 				TRUE
 				PARENT_SCOPE
 			)
@@ -160,27 +163,31 @@ function(
 		endif()
 
 		get_filename_component(
-			FCPPT_UTILS_NEW_CURRENT_DIRECTORY
-			"${FCPPT_UTILS_CURRENT_DIRECTORY}"
+			NEW_CURRENT_DIRECTORY
+			"${CURRENT_DIRECTORY}"
 			PATH
 		)
 
 		if(
-			"${FCPPT_UTILS_NEW_CURRENT_DIRECTORY}"
+			"${NEW_CURRENT_DIRECTORY}"
 			STREQUAL
-			"${FCPPT_UTILS_CURRENT_DIRECTORY}"
+			"${CURRENT_DIRECTORY}"
 		)
 			break()
 		endif()
 
 		set(
-			FCPPT_UTILS_CURRENT_DIRECTORY
-			"${FCPPT_UTILS_NEW_CURRENT_DIRECTORY}"
+			CURRENT_DIRECTORY
+			"${NEW_CURRENT_DIRECTORY}"
 		)
 	endwhile()
 endfunction()
 
-fcppt_utils_get_install_prefix_is_prefix_of_cmake_root()
+fcppt_utils_is_path_prefix_of(
+	FCPPT_UTILS_INSTALL_PREFIX_IS_PREFIX_OF_CMAKE_ROOT
+	${CMAKE_INSTALL_PREFIX}
+	${CMAKE_ROOT}
+)
 
 if(
 	FCPPT_UTILS_INSTALL_PREFIX_IS_PREFIX_OF_CMAKE_ROOT

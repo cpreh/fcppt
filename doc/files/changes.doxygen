@@ -15,6 +15,7 @@
 	without linking to the library.</li>
 	<li>Added <code>INCLUDE_DIRS</code> and <code>LINK_LIBS</code> to
 	<code>fcppt_utils_add_dummy_target</code>.</li>
+	<li>Added <code>fcppt_utils_is_path_prefix_of</code>.</li>
 	</ul>
 </li>
 
