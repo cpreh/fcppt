@@ -22,21 +22,6 @@ include(
 	CMakeParseArguments
 )
 
-if(
-	FCPPT_WINE_TOOLCHAIN
-)
-	# TODO: Put this somewhere else! It doesn't work in toolchain files.
-	set(
-		FCPPT_UTILS_SHARED_LIBRARY_SUFFIX
-		".dll.so"
-	)
-
-	set(
-		WIN32
-		TRUE
-	)
-endif()
-
 # Define locations for installations
 # These don't have an FCPPT_ prefix because they have to be set by the user
 
@@ -861,17 +846,12 @@ function(
 	TARGET
 	VERSION
 )
-	if(
-		# TODO: How do we know we are building with wine?
-		NOT FCPPT_WINE_TOOLCHAIN
+	set_target_properties(
+		${TARGET}
+		PROPERTIES
+		VERSION
+		${VERSION}
 	)
-		set_target_properties(
-			${TARGET}
-			PROPERTIES
-			VERSION
-			${VERSION}
-		)
-	endif()
 endfunction()
 
 function(
