@@ -109,7 +109,8 @@ level stream that logs to \link fcppt::io::cerr\endlink.
 
 \snippet log/formatting.cpp error_formatter_declaration
 
-We then create the level streams using the error function for the error level.
+We then create the level streams, such that the <code>error</code> level logs
+to \link fcppt::io::cerr\endlink using the error function we just created.
 Every other level logs to \link fcppt::io::cout\endlink using the default
 formatting function.
 
@@ -140,7 +141,7 @@ a debugging scenario a lot of debugging messages should be logged.
 
 A location is a list of <code>fcppt::log::name</code> values, e.g.
 <code>{"my_lib", "my_subsystem"}</code>.
-An \link fcppt::log::context \endlink associations locations with
+An \link fcppt::log::context \endlink associates locations with
 \link fcppt::log::setting\endlink objects. These can be configured through
 the \link fcppt::log::context::set\endlink function, even before any log objects
 are created. This is useful, for example, for specifying log settings on the
