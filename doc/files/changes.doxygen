@@ -78,6 +78,14 @@
 
 \subsection changes_removed_functionality_to_220 Removed functionality
 
+<ul>
+<li>\ref fcpptcasts
+	<ul>
+	<li>Removed <code>fcppt::cast::static_downcast_ptr</code>.</li>
+	</ul>
+</li>
+</ul>
+
 \section changes_changes_to_210 Changes from 2.0.0 to 2.1.0
 
 \subsection changes_general_to_210 General changes

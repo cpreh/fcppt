@@ -80,7 +80,7 @@ Special casts are used to replace <code>static_cast</code> and
 	Casting between objects in a class hierarchy
 	</td>
 	<td>
-	\link fcppt::cast::static_downcast\endlink, \link fcppt::cast::static_downcast_ptr\endlink, \link fcppt::cast::dynamic\endlink, \link fcppt::cast::dynamic_exn\endlink
+	\link fcppt::cast::static_downcast\endlink, \link fcppt::cast::dynamic\endlink, \link fcppt::cast::dynamic_exn\endlink
 	</td>
 </tr>
 <tr>

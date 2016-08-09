@@ -111,6 +111,8 @@ set(
 	examples/backtrace.cpp
 	examples/cast.cpp
 	examples/cast/dynamic.cpp
+	examples/cast/dynamic_cross.cpp
+	examples/cast/dynamic_exn.cpp
 	examples/cast/safe_numeric.cpp
 	examples/cast/truncation_check.cpp
 	examples/codecvt.cpp
@@ -322,7 +324,6 @@ set(
 	include/fcppt/cast/size_fun.hpp
 	include/fcppt/cast/static_cast_fun.hpp
 	include/fcppt/cast/static_downcast.hpp
-	include/fcppt/cast/static_downcast_ptr.hpp
 	include/fcppt/cast/to_char_ptr.hpp
 	include/fcppt/cast/to_signed.hpp
 	include/fcppt/cast/to_signed_fun.hpp
