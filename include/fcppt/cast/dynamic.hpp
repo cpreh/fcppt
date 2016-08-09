@@ -21,21 +21,25 @@ namespace cast
 {
 
 /**
-\brief Tries a <code>dynamic_cast</code>, returning an empty optional value if
-it failed
+\brief Converts between references of related types using
+<code>dynamic_cast</code>, returning an empty optional on failure
 
 \ingroup fcpptcasts
 
-\tparam Derived The type to cast to. This has to be a reference type (see the
-example below)
+Tries to cast \a _src to \a Dest using <code>dynamic_cast</code>. On failure,
+an empty optional is returned. To catch more mistakes, \a Base must be a
+base class of \a Derived. In case you need a cross cast, use \link
+fcppt::cast::dynamic_cross \endlink.
 
-\tparam Base The type to cast from (must not be a reference)
+Here is an example:
 
-This cast is basically the same as <code>dynamic_cast</code> with pointers, but
-with optional references. Note that you can only cast to a reference type (be
-that const or nonconst). Here's a usage example:
+\snippet cast/dynamic.cpp dynamic
 
-\snippet cast.cpp dynamic
+\tparam Derived The type to cast to. Can be cv-qualified. Must inherit from \a Base.
+
+\tparam Base A cv-qualified non-reference type.
+
+\see \link fcppt::cast::dynamic_cross \endlink
 */
 template<
 	typename Derived,

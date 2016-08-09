@@ -22,10 +22,10 @@ namespace cast
 
 \ingroup fcpptcasts
 
-Converts \a _source to an integer. The type signature ensures that only signed
+Converts \a _source to an integer. The function ensures that only signed
 integers can be used as destination types. If you need to cast to unsigned
-integers, use fcppt::casts::to_unsigned in addition. This cast is unsafe and
-should be used with care.
+integers, use \link fcppt::cast::to_unsigned \endlink in addition. This cast is
+unsafe and should be used with care.
 
 \tparam Source Must be a floating point type
 

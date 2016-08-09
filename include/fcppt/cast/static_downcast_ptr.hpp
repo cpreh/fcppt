@@ -24,32 +24,35 @@ class
 
 \ingroup fcpptcasts
 
-Converts \a _source to the pointer type specified by \a Dest. This cast is
-unsafe and should only be used if the \a _source has a dynamic type which is a
-subtype of \a Dest. Consider using fcppt::cast::dynamic instead.
+Converts \a _source to the pointer type specified by \a Derived. Null pointers
+are preserved. This cast is unsafe and should only be used if the \a _source
+has a dynamic type which is a subtype of \a Derived. Consider using \link
+fcppt::cast::dynamic \endlink instead.
 
-Dest must be a pointer to a class type derived from Source.
+\tparam Derived The type to cast to. Must be a pointer type. Must inherit from \a Base.
+
+\tparam Base A cv-qualified non-reference type.
 */
 template<
-	typename Dest,
-	typename Source
+	typename Derived,
+	typename Base
 >
-Dest
+Derived
 static_downcast_ptr(
-	Source *const _source
+	Base *const _source
 )
 {
 	static_assert(
 		fcppt::type_traits::is_base_of<
 			typename
 			std::remove_cv<
-				Source
+				Base
 			>::type,
 			typename
 			std::remove_cv<
 				typename
 				std::remove_pointer<
-					Dest
+					Derived
 				>::type
 			>::type
 		>::value,
@@ -58,7 +61,7 @@ static_downcast_ptr(
 
 	return
 		static_cast<
-			Dest
+			Derived
 		>(
 			_source
 		);

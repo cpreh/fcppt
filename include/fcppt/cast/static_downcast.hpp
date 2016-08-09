@@ -24,30 +24,34 @@ derived class
 
 \ingroup fcpptcasts
 
-Converts \a _source to the reference type specified by \a Dest. This cast is
+Converts \a _source to the reference type specified by \a Derived. This cast is
 unsafe and should only be used if the \a _source has a dynamic type which is a
-subtype of \a Dest. Consider using fcppt::cast::dynamic instead.
+subtype of \a Derived. Consider using \link fcppt::cast::dynamic \endlink instead.
 
-Dest must be a reference to a class type derived from Source.
+Derived must be a reference to a class type derived from Base.
+
+\tparam Derived The type to cast to. Must be a reference type. Must inherit from \a Base.
+
+\tparam Base A cv-qualified non-reference type.
 */
 template<
-	typename Dest,
-	typename Source
+	typename Derived,
+	typename Base
 >
-Dest
+Derived
 static_downcast(
-	Source &_source
+	Base &_source
 )
 {
 	static_assert(
 		fcppt::type_traits::is_base_of<
 			typename
 			std::remove_cv<
-				Source
+				Base
 			>::type,
 			typename
 			std::decay<
-				Dest
+				Derived
 			>::type
 		>::value,
 		"static_downcast can only cast from references to base classes to references to derived classes"
@@ -55,7 +59,7 @@ static_downcast(
 
 	return
 		static_cast<
-			Dest
+			Derived
 		>(
 			_source
 		);

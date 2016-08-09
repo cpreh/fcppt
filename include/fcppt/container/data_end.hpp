@@ -18,11 +18,14 @@ namespace container
 {
 
 /**
-\brief Returns a pointer one past the end of a random access container
+\brief Returns a pointer one past the end of a random-access container
 
 \ingroup fcpptcontainer
 
-\param _container The container to return the pointer for
+Returns a pointer to one past the end of \a _container, or the null pointer if
+\a _container is empty.
+
+\tparam Container Must be a random-access container
 */
 template<
 	typename Container

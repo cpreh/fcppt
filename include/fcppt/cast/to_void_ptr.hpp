@@ -32,7 +32,7 @@ to_void_ptr(
 }
 
 /**
-\brief Converts a pointer to const to a pointer to const void
+\brief Converts a pointer to a pointer to void
 
 \ingroup fcpptcasts
 */

@@ -23,7 +23,7 @@ namespace container
 Returns a pointer the beginning of \a _container, or the null pointer if \a
 _container is empty.
 
-\param _container The container to return the pointer for
+\tparam Container Must be a random-access container
 */
 template<
 	typename Container

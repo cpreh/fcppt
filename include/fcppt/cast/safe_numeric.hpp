@@ -18,12 +18,12 @@ namespace cast
 {
 
 /**
-\brief Safe numeric cast is a safer static_cast that forbids lossy conversions
+\brief Safe numeric cast is a safer <code>static_cast</code> that forbids lossy conversions
 
 \ingroup fcpptcasts
 
-This cast implicitly converts one arithmetic type to another, where the size of
-the destination type must be at least the size of the source type.
+This cast converts one arithmetic type to another, where the size of the
+destination type must be at least the size of the source type.
 
 Furthermore, the conversion is only allowed if and only if one of the following
 cases hold true:
@@ -40,11 +40,7 @@ cases hold true:
 
 \tparam Dest The destination type of the conversion
 
-\tparam Source the source type of the conversion
-
-\param _source The source of the conversion
-
-\return The implicitly converted value
+\tparam Source The source type of the conversion
 */
 template<
 	typename Dest,

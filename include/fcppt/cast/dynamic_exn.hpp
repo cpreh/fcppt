@@ -25,48 +25,47 @@ namespace cast
 
 \ingroup fcpptcasts
 
-Tries to cast \a _src to \a Dest using <code>dynamic_cast</code>. Both
-<code>Dest</code> and the type of \a _src must be reference types. If the
-<code>dynamic_cast</code> fails an \link fcppt::cast::bad_dynamic \endlink will
-be thrown that includes additional information about the types involved. To
-catch more mistakes, \a Src must be a base class of \a Derived. In case you
-need a cross cast, use \link fcppt::cast::dynamic_cross_exn \endlink.
+Tries to cast \a _src to \a Derived using <code>dynamic_cast</code>. On failure,
+an \link fcppt::cast::bad_dynamic \endlink is thrown that includes additional
+information about the types involved. To catch more mistakes, \a Base must be a
+base class of \a Derived. In case you need a cross cast, use \link
+fcppt::cast::dynamic_cross_exn \endlink.
 
-The following example shows how this function can be used:
+Here is an example:
 
-\snippet cast/dynamic.cpp dynamic_cast
+\snippet cast/dynamic_exn.cpp dynamic_exn
 
-\param _src The source reference to cast from
+\tparam Derived The type to cast to. Must be a reference type. Must inherit from \a Base.
 
-\tparam Dest Must be a reference type
+\tparam Base A cv-qualified non-reference type.
 
 \throws fcppt::cast::bad_dynamic on failure
 */
 template<
-	typename Dest,
-	typename Src
+	typename Derived,
+	typename Base
 >
 inline
 typename
 std::enable_if<
 	std::is_reference<
-		Dest
+		Derived
 	>::value,
-	Dest
+	Derived
 >::type
 dynamic_exn(
-	Src &_src
+	Base &_src
 )
 {
 	static_assert(
 		fcppt::type_traits::is_base_of<
 			typename
 			std::remove_cv<
-				Src
+				Base
 			>::type,
 			typename
 			std::decay<
-				Dest
+				Derived
 			>::type
 		>::value,
 		"dynamic_exn can only cast from references to base classes to references to derived classes"
@@ -74,7 +73,7 @@ dynamic_exn(
 
 	return
 		fcppt::cast::detail::dynamic_exn<
-			Dest
+			Derived
 		>(
 			_src
 		);

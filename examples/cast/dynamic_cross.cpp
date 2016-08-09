@@ -4,21 +4,21 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/text.hpp>
-#include <fcppt/cast/dynamic.hpp>
+#include <fcppt/cast/dynamic_cross.hpp>
 #include <fcppt/optional/reference.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <iostream>
 #include <fcppt/config/external_end.hpp>
 
 
-//! [dynamic]
+//! [dynamic_cross]
 namespace
 {
 
 struct base
 {
-	virtual ~base()
+	virtual
+	~base()
 	{}
 };
 
@@ -36,38 +36,26 @@ struct derived2
 
 void
 f(
-	base &_base
+	derived1 &_d1
 )
 {
 	fcppt::optional::reference<
 		derived2
-	> const to_d2{
-		fcppt::cast::dynamic<
+	> const to_d2(
+		fcppt::cast::dynamic_cross<
 			derived2
 		>(
-			_base
+			_d1
 		)
-	};
-
-	fcppt::optional::reference<
-		derived1
-	> const to_d1{
-		fcppt::cast::dynamic<
-			derived1
-		>(
-			_base
-		)
-	};
+	);
 
 	std::cout
 		<< to_d2.has_value()
-		<< ' '
-		<< to_d1.has_value()
 		<< '\n';
 }
 
 }
-//! [dynamic]
+//! [dynamic_cross]
 
 int
 main()

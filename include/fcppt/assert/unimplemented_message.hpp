@@ -16,7 +16,7 @@
 \ingroup fcpptassert
 
 Terminates the program, printing \a message. This assertion should be used when
-an implemented feature is reached.
+an unimplemented feature is reached.
 
 \param message The message to print
 */

@@ -20,19 +20,15 @@ namespace cast
 
 \ingroup fcpptcasts
 
-This cast implicitly converts arithmetic types like fcppt::cast::safe_numeric
-does. For every other type the conversion is also done implicitly but without
-any further restrictions. In general, this means that either the restrictions
-of fcppt::cast::safe_numeric must hold or \a Source must be implicitly
-convertible to \a Dest.
+This cast converts arithmetic types like \link fcppt::cast::safe_numeric
+\endlink does. For every other type the conversion is done implicitly. More
+specifically, this means that for arithmetic types the restrictions of \link
+fcppt::cast::safe_numeric \endlink must hold, and for every other type \a
+Source must be implicitly convertible to \a Dest.
 
 \tparam Dest Can be any type
 
 \tparam Source Can be any type
-
-\param _source The source of the conversion
-
-\return The implicitly converted value
 */
 template<
 	typename Dest,

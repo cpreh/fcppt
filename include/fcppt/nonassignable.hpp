@@ -27,8 +27,6 @@ macro should be used.
 \snippet examples/noncopyable.cpp nonassignable
 
 \param classname The name of the class
-
-\note The macro leaves a private scope behind.
 */
 #define FCPPT_NONASSIGNABLE(\
 	classname\

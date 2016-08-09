@@ -16,13 +16,13 @@ namespace container
 {
 
 /**
-\brief Defines the size of an array
+\brief Gets the size of an array
 
 \ingroup fcpptcontainer
 
-Defines the size of \a Array by deriving from an integral constant.
+Derives from an integral constant that contains the size of \a Array.
 
-\tparam Array Must be a std::array
+\tparam Array Must be a <code>std::array</code>
 */
 template<
 	typename Array

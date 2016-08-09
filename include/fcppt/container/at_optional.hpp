@@ -18,12 +18,14 @@ namespace container
 {
 
 /**
-\brief Returns an element as an optional
+\brief Returns an element as an optional at a given position
 
 \ingroup fcpptcontainer
 
 If \a _index is in the range of \a _container, the element at \a _index is
 returned.  Otherwise, the result is an empty optional.
+
+\tparam Container Must be a random-access container
 */
 template<
 	typename Container

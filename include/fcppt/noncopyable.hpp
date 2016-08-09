@@ -37,8 +37,6 @@ classes in a hierarchy noncopyable.</li>
 \snippet examples/noncopyable.cpp noncopyable
 
 \param classname The name of the class
-
-\note The macro leaves a private scope behind.
 */
 #define FCPPT_NONCOPYABLE(\
 	classname\

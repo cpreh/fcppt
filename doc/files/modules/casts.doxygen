@@ -164,16 +164,23 @@ Truncating conversions of negative values are also detected.
 <code>dynamic_cast</code> can cast between pointers or references to objects in
 a class hierarchy. The cast can fail at runtime in which case the null pointer
 is returned for pointers and <code>bad_cast</code> is thrown for references.
-\link fcppt::cast::dynamic\endlink improves the latter case by throwing an exception that
-encapsulates the <code>std::type_index</code> objects of the source and
-destination types.
+\link fcppt::cast::dynamic\endlink returns an empty optional on failure instead:
 
-\snippet cast/dynamic.cpp dynamic_cast
+\snippet cast/dynamic.cpp dynamic
 
-In case dynamic casts are expected to fail, it is more convenient to return an
-optional instead. This is done by \link fcppt::cast::dynamic\endlink.
+In case an exception is preferred, \link fcppt::cast::dynamic_exn\endlink can
+be used. The exception thrown includes <code>std::type_index</code> objects of
+the source and destination types.
 
-\snippet cast.cpp dynamic
+\snippet cast/dynamic_exn.cpp dynamic_exn
+
+To catch more mistakes, \link fcppt::cast::dynamic \endlink and \link
+fcppt::cast::dynamic_exn\endlink only work on related types: The type to cast
+to must inherit from the source type. In case you need to cast between
+unrelated types, \link fcppt::cast::dynamic_cross\endlink and \link
+fcppt::cast::dynamic_cross_exn\endlink can be used:
+
+\snippet cast/dynamic_cross.cpp dynamic_cross
 
 \section fcpptcasts_structure_cast Casting user-defined types
 

@@ -22,7 +22,7 @@ namespace cast
 
 \ingroup fcpptcasts
 
-Converts \a _enum to its underlying integer type.
+Converts \a _enum to its underlying integer type. This cast is safe.
 
 \tparam Enum Must be an enumeration type
 */

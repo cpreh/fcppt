@@ -32,10 +32,9 @@ Error handling in C++ can be done using different mechanisms:
 <li>Checking return values of functions, acting appropriately when an error has
 occurred.</li>
 
-<li>Throwing an exception, which may be caught during the stack unwinding
-process.</li>
+<li>Throwing an exception, which may be caught later.</li>
 
-<li>Calling <code>std::terminate</code></li>
+<li>Calling <code>std::terminate</code>.</li>
 
 <li>Using other mechanisms like C's <code>assert</code> macro, which might call
 <code>std::abort</code></li>

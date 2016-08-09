@@ -22,34 +22,44 @@ namespace cast
 
 /**
 \brief Tries a <code>dynamic_cast</code> on unrelated types, returning an empty
-optional value if it failed
+optional on failure
 
 \ingroup fcpptcasts
 
 This cast is the same as \link fcppt::cast::dynamic \endlink but only works
 on unrelated types.
+
+Here is an example:
+
+\snippet cast/dynamic_cross.cpp dynamic_cross
+
+\tparam Dest The type to cast to. Can be cv-qualified. Must not inherit from \a Base.
+
+\tparam Src A cv-qualified non-reference type.
+
+\see \link fcppt::cast::dynamic \endlink
 */
 template<
-	typename Derived,
-	typename Base
+	typename Dest,
+	typename Src
 >
 inline
 fcppt::optional::reference<
-	Derived
+	Dest
 >
 dynamic_cross(
-	Base &_base
+	Src &_src
 )
 {
 	static_assert(
 		!fcppt::type_traits::is_base_of<
 			typename
 			std::remove_cv<
-				Base
+				Src
 			>::type,
 			typename
 			std::decay<
-				Derived
+				Dest
 			>::type
 		>::value,
 		"dynamic_cross can only be used on unrelated types"
@@ -57,9 +67,9 @@ dynamic_cross(
 
 	return
 		fcppt::cast::detail::dynamic<
-			Derived
+			Dest
 		>(
-			_base
+			_src
 		);
 }
 

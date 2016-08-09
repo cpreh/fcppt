@@ -12,6 +12,14 @@ endfunction()
 
 add_fcppt_cast_example(
 	dynamic
+)
+
+add_fcppt_cast_example(
+	dynamic_cross
+)
+
+add_fcppt_cast_example(
+	dynamic_exn
 	LINK_LIBS
 		${fcppt_core_TARGET}
 )

@@ -4,12 +4,9 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/cast/dynamic.hpp>
 #include <fcppt/cast/float_to_int.hpp>
 #include <fcppt/cast/to_unsigned.hpp>
-#include <fcppt/optional/reference.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <cassert>
 #include <iostream>
 #include <ostream>
 #include <fcppt/config/external_end.hpp>
@@ -73,78 +70,12 @@ g()
 }
 // ![to_unsigned]
 
-//! [dynamic]
-
-namespace
-{
-
-struct base
-{
-	virtual ~base()
-	{}
-};
-
-struct derived1
-:
-	base
-{
-};
-
-struct derived2
-:
-	base
-{
-};
-
-void
-f()
-{
-	derived1 d1;
-
-	base &base_ref(
-		d1
-	);
-
-	fcppt::optional::reference<
-		derived2
-	> const to_d2{
-		fcppt::cast::dynamic<
-			derived2
-		>(
-			base_ref
-		)
-	};
-
-	assert(
-		!to_d2.has_value()
-	);
-
-	fcppt::optional::reference<
-		derived1
-	> const to_d1{
-		fcppt::cast::dynamic<
-			derived1
-		>(
-			base_ref
-		)
-	};
-
-	assert(
-		to_d1.has_value()
-	);
-}
-
-}
-//! [dynamic]
-
 }
 
 int
 main()
 {
 	float_to_int();
-
-	f();
 
 	g();
 }
