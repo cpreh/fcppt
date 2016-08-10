@@ -4,7 +4,7 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/algorithm/find_opt.hpp>
+#include <fcppt/algorithm/equal_range.hpp>
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
@@ -19,7 +19,7 @@ FCPPT_PP_PUSH_WARNING
 FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
 
 BOOST_AUTO_TEST_CASE(
-	algorithm_find_opt
+	algorithm_equal_range
 )
 {
 FCPPT_PP_POP_WARNING
@@ -31,27 +31,54 @@ FCPPT_PP_POP_WARNING
 	int_vector;
 
 	int_vector const vec{
-		1,
 		2,
-		3
+		5,
+		7
 	};
 
-	BOOST_CHECK(
-		fcppt::algorithm::find_opt(
-			vec,
-			2
-		).get_unsafe()
-		==
-		std::next(
-			vec.begin(),
-			1
-		)
-	);
+	{
+		auto const result(
+			fcppt::algorithm::equal_range(
+				vec,
+				3
+			)
+		);
 
-	BOOST_CHECK(
-		!fcppt::algorithm::find_opt(
-			vec,
-			4
-		).has_value()
-	);
+		BOOST_CHECK_EQUAL(
+			result.size(),
+			0
+		);
+	}
+
+	{
+		auto const result(
+			fcppt::algorithm::equal_range(
+				vec,
+				5
+			)
+		);
+
+		BOOST_REQUIRE_EQUAL(
+			result.size(),
+			1
+		);
+
+		BOOST_CHECK(
+			result.begin()
+			==
+			std::next(
+				vec.begin(),
+				1
+			)
+		);
+
+		BOOST_CHECK(
+			result.end()
+			==
+			std::next(
+				vec.begin(),
+				2
+			)
+		);
+	}
 }

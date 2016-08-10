@@ -22,6 +22,7 @@
 <li>\ref fcpptalgorithm
 	<ul>
 	<li>Added \link fcppt::algorithm::fold_break\endlink.</li>
+	<li>Added \link fcppt::algorithm::equal_range\endlink.</li>
 	</ul>
 </li>
 

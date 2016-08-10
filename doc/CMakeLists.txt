@@ -205,6 +205,7 @@ set(
 	include/fcppt/algorithm/detail/tuple_loop_break.hpp
 	include/fcppt/algorithm/detail/vararg_map.hpp
 	include/fcppt/algorithm/enum_array_init.hpp
+	include/fcppt/algorithm/equal_range.hpp
 	include/fcppt/algorithm/find_by_opt.hpp
 	include/fcppt/algorithm/find_if_opt.hpp
 	include/fcppt/algorithm/find_opt.hpp

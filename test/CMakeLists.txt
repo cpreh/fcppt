@@ -45,6 +45,10 @@ add_fcppt_test(
 )
 
 add_fcppt_test(
+	algorithm/equal_range
+)
+
+add_fcppt_test(
 	algorithm/find_by_opt
 )
 

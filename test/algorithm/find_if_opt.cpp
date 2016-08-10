@@ -10,6 +10,7 @@
 #include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/test/unit_test.hpp>
+#include <iterator>
 #include <vector>
 #include <fcppt/config/external_end.hpp>
 
