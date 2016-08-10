@@ -41,6 +41,10 @@ add_fcppt_test(
 )
 
 add_fcppt_test(
+	algorithm/binary_search
+)
+
+add_fcppt_test(
 	algorithm/enum_array_init
 )
 
