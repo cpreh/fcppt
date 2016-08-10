@@ -21,7 +21,7 @@ namespace bitfield
 {
 
 /**
-\brief Compares two bitfields for equality
+\brief Compares two bitfields for equality.
 
 \ingroup fcpptcontainerbitfield
 */
@@ -53,7 +53,7 @@ operator==(
 }
 
 /**
-\brief Compares two bitfields for disequality
+\brief Compares two bitfields for inequality.
 
 \ingroup fcpptcontainerbitfield
 */

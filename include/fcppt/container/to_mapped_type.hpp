@@ -17,6 +17,17 @@ namespace fcppt
 namespace container
 {
 
+/**
+\brief Gets the mapped type of an associative container.
+
+\ingroup fcpptcontainer
+
+If \a Container is <code>const</code>, the result is
+<code>Container::mapped_type const</code>. Otherwise, it is
+<code>Container::mapped_type</code>.
+
+\tparam Container An associative container.
+*/
 template<
 	typename Container
 >

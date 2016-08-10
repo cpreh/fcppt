@@ -25,7 +25,7 @@ namespace algorithm
 {
 
 /**
-\brief Constructs an array from a function object with static indices
+\brief Constructs an array by calling a function with static indices.
 
 \ingroup fcpptalgorithm
 
@@ -33,7 +33,7 @@ Constructs an array of type \a Array by calling
 <code>_function(std::integral_constant<std::size_t, Index>)</code> for every
 index.
 
-\tparam Array Must be a std::array
+\tparam Array Must be a <code>std::array</code>
 
 \tparam Function Must be a function callable as <code>Array::value_type
 (std::integral_constant<std::size_t, I>)</code>.

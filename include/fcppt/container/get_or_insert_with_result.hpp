@@ -18,7 +18,7 @@ namespace container
 {
 
 /**
-\brief Gets from or inserts an element into a map and returns a flag
+\brief Gets from or inserts an element into a map and returns if it was inserted.
 
 \ingroup fcpptcontainer
 
@@ -27,10 +27,9 @@ returned and <code>inserted</code> is true.  Otherwise, \a _create is called
 with _a key to create a new mapped object which is then inserted into \a
 _container and returned along with <code>inserted</code> as false.
 
-\tparam Container An associative container
+\tparam Container An associative container>
 
-\tparam Create A function of type <code>Container::mapped_type &
-(Container::key_type)</code>
+\tparam Create A function of type <code>Container::mapped_type (Container::key_type)</code>.
 */
 template<
 	typename Container,

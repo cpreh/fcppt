@@ -20,7 +20,7 @@ namespace algorithm
 {
 
 /**
-\brief Folds a range into a value, can break out early
+\brief Folds a range into a value, can break out early.
 
 \ingroup fcpptalgorithm
 

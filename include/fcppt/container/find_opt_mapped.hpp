@@ -22,17 +22,17 @@ namespace container
 {
 
 /**
-\brief Returns an element from a find operation or an empty optional
+\brief Returns an element from a find operation or an empty optional.
 
 Searches for \a _key in the associative container \a _container. If \a _key is
-found, the corresponding mapped type is returned. Otherwise, an empty optional
+found, the corresponding mapped object is returned. Otherwise, the empty optional
 is returned.
 
 \ingroup fcpptcontainer
 
-\tparam Container Must be an associative map container
+\tparam Container Must be an associative container.
 
-\tparam Key Must be a key that can be searched for
+\tparam Key Must be a key that can be searched for.
 */
 template<
 	typename Container,

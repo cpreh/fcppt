@@ -1,12 +1,12 @@
 /**
-\brief Various containers complementing the standard library and boost.
+\brief Various containers and utility functions.
 \defgroup fcpptcontainer fcppt.container
 \ingroup fcpptmain
 */
 
 namespace fcppt
 {
-/// Various containers complementing the standard library and boost.
+/// Various containers and utility functions.
 namespace container
 {
 }

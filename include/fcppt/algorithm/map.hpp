@@ -22,8 +22,8 @@ element.
 
 \ingroup fcpptalgorithm
 
-For every element \em e in \a _source, _function(e) is inserted into the result
-container.
+For every element \em e in \a _source, <code>_function(e)</code> is inserted
+into the result container.
 
 \note As an optimization the result container has its capacity set to the
 source range's size at the start, if possible. For this to work, the result

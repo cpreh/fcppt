@@ -20,13 +20,14 @@ namespace algorithm
 {
 
 /**
-\brief Maps a range to other sequences and joins them
+\brief Maps a range to other sequences and joins them.
 
 \ingroup fcpptalgorithm
 
-For every element in \a _range <code>(a_1, ..., a_n), _function(a_1), ...,
-_function(a_n)</code> is called, yielding <code>(r_1, ..., r_n)</code>. The
-result is <code>join(r_1, r_2, ..., r_n)</code>.
+For every element in \a _range <code>(a_1, ..., a_n)</code>,
+<code>_function(a_1), ..., _function(a_n)</code> is called, yielding
+<code>(r_1, ..., r_n)</code>. The result is <code>join(r_1, r_2, ...,
+r_n)</code>.
 
 \tparam Function A function callable as <code>TargetContainer
 (Range::value_type)</code>.

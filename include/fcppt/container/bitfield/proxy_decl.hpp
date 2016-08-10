@@ -23,11 +23,12 @@ namespace bitfield
 {
 
 /**
-\brief The proxy class referencing a single bit in a bitfield
+\brief The proxy class referencing a single bit in a bitfield.
 
-This class is used as a reference type for fcppt::container::bitfield::iterator
+This class is used as a reference type for \link
+fcppt::container::bitfield::object\endlink.
 
-\tparam StoredType The internal container type for the bitfield
+\tparam StoredType The internal container type for the bitfield.
 */
 template<
 	typename StoredType
@@ -103,11 +104,9 @@ class proxy
 	);
 public:
 	/**
-	\brief Assigns a new value to the bit
+	\brief Assigns a new value to the bit.
 
 	Assign \a rhs to the bit referenced by this proxy.
-
-	\param rhs The new boolean value
 	*/
 	proxy &
 	operator=(

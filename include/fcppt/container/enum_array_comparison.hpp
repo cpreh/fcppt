@@ -18,6 +18,13 @@ namespace fcppt
 namespace container
 {
 
+/**
+\brief Compares two enum arrays for equality.
+
+\ingroup fcpptenum
+
+\tparam Value Must be equality-comparable.
+*/
 template<
 	typename Enum,
 	typename Value
@@ -42,6 +49,13 @@ operator==(
 		);
 }
 
+/**
+\brief Compares two enum arrays for inequality.
+
+\ingroup fcpptenum
+
+\tparam Value Must be equality-comparable.
+*/
 template<
 	typename Enum,
 	typename Value

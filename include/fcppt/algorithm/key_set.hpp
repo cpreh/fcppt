@@ -16,9 +16,13 @@ namespace algorithm
 {
 
 /**
-\brief Creates a set of keys from a map
+\brief Creates a set of keys from a map.
 
-Inserts every key from \a map into the resulting set.
+Inserts every key from \a _map into the resulting set.
+
+\tparam Map A map-like container.
+
+\tparam Set A set-like container.
 */
 template<
 	typename Set,

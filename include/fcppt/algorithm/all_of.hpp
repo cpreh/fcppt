@@ -17,7 +17,7 @@ namespace algorithm
 {
 
 /**
-\brief Checks if a given predicate is true for all elements of a range
+\brief Checks if a given predicate is true for all elements of a range.
 
 \ingroup fcpptalgorithm
 

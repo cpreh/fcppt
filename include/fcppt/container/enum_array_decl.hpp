@@ -29,15 +29,14 @@ FCPPT_PP_DISABLE_VC_WARNING(4623)
 
 /**
 \brief An array indexed with an enum
+
 \ingroup fcpptenum
 
 This class is like <code>std::array</code>, except that <code>operator[]</code>
 takes a parameter of type \a Enum. This class is meant to be used with
 contiguous enums.
 
-\tparam Enum The enum type to use as an index which also determines the array's size
-
-\tparam Value The value_type of the array
+\tparam Enum The enum type to use as an index which also determines the array's size.
 */
 template<
 	typename Enum,

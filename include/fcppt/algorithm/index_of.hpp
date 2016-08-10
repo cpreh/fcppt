@@ -19,16 +19,16 @@ namespace algorithm
 {
 
 /**
-\brief Returns the index of the first element found in a sequence
+\brief Returns the index of the first element found in a sequence.
 
 \ingroup fcpptalgorithm
 
 Searches for \a _value in \a _range and returns the index of the first
-occurrence iff there is any.
+occurrence if there is any, otherwise returns the empty optional.
 
-\tparam Range A random access range
+\tparam Range A random access range.
 
-\tparam T A type comparable to the iterator's value type
+\tparam T A type equality-comparable to the ranges's value type.
 */
 template<
 	typename Range,

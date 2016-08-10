@@ -15,9 +15,20 @@ namespace fcppt
 namespace algorithm
 {
 
+/**
+\brief Update action for container iteration
+
+\ingroup fcpptalgorithm
+*/
 enum class update_action
 {
+	/**
+	\brief Keep the element
+	*/
 	keep,
+	/**
+	\brief Remove the element
+	*/
 	remove
 };
 

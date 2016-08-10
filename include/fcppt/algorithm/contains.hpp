@@ -18,7 +18,7 @@ namespace algorithm
 {
 
 /**
-\brief Checks if a given \p value is inside a range.
+\brief Checks if a given value is inside a range.
 
 \ingroup fcpptalgorithm
 

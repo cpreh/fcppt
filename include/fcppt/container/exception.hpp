@@ -17,7 +17,7 @@ namespace container
 {
 
 /**
-\brief An exception thrown by some container functions
+\brief The base type of exceptions thrown by container functions.
 
 \ingroup fcpptcontainer
 */

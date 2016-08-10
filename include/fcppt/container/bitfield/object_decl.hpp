@@ -27,16 +27,16 @@ namespace bitfield
 {
 
 /**
-\brief A statically sized bitfield
+\brief A statically sized bitfield.
 
 \ingroup fcpptcontainerbitfield
 
-\tparam ElementType An integral or enumeration type
+\tparam ElementType An integral or enumeration type.
 
-\tparam NumElements An integral constant wrapper specifying the number of bits
+\tparam NumElements An integral constant wrapper specifying the number of bits.
 
 \tparam InternalType The internal storage type. Must be unsigned. This is
-fcppt::container::bitfield::default_internal_type by default
+\link fcppt::container::bitfield::default_internal_type\endlink by default.
 
 See the \link fcpptcontainerbitfield module description \endlink for more information.
 */
@@ -55,6 +55,9 @@ public:
 		"InternalType must be unsigned"
 	);
 
+	/**
+	\brief The internal array type.
+	*/
 	typedef
 	fcppt::container::bitfield::array<
 		NumElements,
@@ -63,7 +66,7 @@ public:
 	array_type;
 
 	/**
-	\brief The size of the underlying array
+	\brief The size of the underlying array.
 	*/
 	typedef
 	typename
@@ -73,14 +76,14 @@ public:
 	array_size;
 
 	/**
-	\brief Typedef to <code>ElementType</code>
+	\brief Typedef to <code>ElementType</code>.
 	*/
 	typedef
 	ElementType
 	element_type;
 
 	/**
-	\brief The size type which is taken from <code>NumElements</code>
+	\brief The size type which is taken from <code>NumElements</code>.
 	*/
 	typedef
 	typename
@@ -88,14 +91,14 @@ public:
 	size_type;
 
 	/**
-	\brief The value type, which is bool
+	\brief The value type, which is bool.
 	*/
 	typedef
 	fcppt::container::bitfield::value_type
 	value_type;
 
 	/**
-	\brief Typedef to <code>NumElements</code>
+	\brief Typedef to <code>NumElements</code>.
 	*/
 	typedef
 	NumElements
@@ -112,7 +115,8 @@ public:
 	\brief A type denoting a reference to a mask value (a reference to a
 	boolean, basically).
 
-	Note that this is <em>not</em> a bool or internal_type, but a proxy class.
+	Note that this is <em>not</em> a <code>bool</code> nor an
+	<code>internal_type</code>, but a proxy class.
 	*/
 	typedef
 	fcppt::container::bitfield::proxy<
@@ -121,9 +125,11 @@ public:
 	reference;
 
 	/**
-	\brief The bitfield's value type, when viewed as a container.
+	\brief A type denoting a const reference to a mask value (a reference to a
+	boolean, basically).
 
-	This forwards to fcppt::container::bitfield::value_type.
+	Note that this is <em>not</em> a <code>bool</code> nor an
+	<code>internal_type</code>, but a proxy class.
 	*/
 	typedef
 	fcppt::container::bitfield::proxy<
@@ -132,7 +138,7 @@ public:
 	const_reference;
 
 	/**
-	\brief Initializer list type used to initialize a bitfield
+	\brief Initializer list type used to initialize a bitfield.
 	*/
 	typedef
 	std::initializer_list<
@@ -141,7 +147,7 @@ public:
 	initializer_list_type;
 
 	/**
-	\brief Constructs an uninitialized bitfield
+	\brief Constructs an uninitialized bitfield.
 	*/
 	explicit
 	object(
@@ -150,7 +156,7 @@ public:
 
 	/**
 	\brief Constructs a bitfield using an initializer list, setting every
-	bit from the list to true
+	bit from the list to true.
 	*/
 	explicit
 	object(
@@ -158,7 +164,7 @@ public:
 	);
 
 	/**
-	\brief Constructs a bitfield from its internal array type
+	\brief Constructs a bitfield from its internal array type.
 	*/
 	explicit
 	object(
@@ -166,7 +172,7 @@ public:
 	);
 
 	/**
-	\brief Returns a reference (see the reference member type) to the specified bit.
+	\brief Returns a const reference to the specified bit.
 	*/
 	const_reference
 	operator[](
@@ -174,7 +180,7 @@ public:
 	) const;
 
 	/**
-	\brief Returns a reference (see the reference member type) to the specified bit.
+	\brief Returns a reference to the specified bit.
 	*/
 	reference
 	operator[](
@@ -182,9 +188,11 @@ public:
 	);
 
 	/**
-	\brief Sets the specified bit to true/false
-	\param where Which bit to set
-	\param value The value to set the bit to
+	\brief Sets the specified bit to true/false.
+
+	\param where Which bit to set.
+
+	\param value The value to set the bit to.
 	*/
 	void
 	set(
@@ -193,7 +201,7 @@ public:
 	);
 
 	/**
-	\brief Returns if the specified bit is set
+	\brief Returns if the specified bit is set.
 	*/
 	value_type
 	get(
@@ -201,13 +209,13 @@ public:
 	) const;
 
 	/**
-	\brief Accessor to the internal array
+	\brief Accessor to the internal array.
 	*/
 	array_type &
 	array();
 
 	/**
-	\brief Const accessor to the internal array
+	\brief Const accessor to the internal array.
 	*/
 	array_type const &
 	array() const;

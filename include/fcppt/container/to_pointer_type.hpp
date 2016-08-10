@@ -17,6 +17,17 @@ namespace fcppt
 namespace container
 {
 
+/**
+\brief Gets the pointer type of a container.
+
+\ingroup fcpptcontainer
+
+If \a Container is <code>const</code>, the result is
+<code>Container::const_pointer</code>. Otherwise, it is
+<code>Container::pointer</code>.
+
+\tparam Container A range type.
+*/
 template<
 	typename Container
 >

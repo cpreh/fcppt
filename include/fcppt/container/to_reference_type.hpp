@@ -17,6 +17,17 @@ namespace fcppt
 namespace container
 {
 
+/**
+\brief Gets the reference type of a container.
+
+\ingroup fcpptcontainer
+
+If \a Container is <code>const</code>, the result is
+<code>Container::const_reference</code>. Otherwise, it is
+<code>Container::reference</code>.
+
+\tparam Container A range type.
+*/
 template<
 	typename Container
 >

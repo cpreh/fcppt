@@ -17,16 +17,16 @@ namespace container
 {
 
 /**
-\brief Returns an iterator from a find operation or an empty optional
+\brief Returns an iterator from a find operation or an empty optional.
 
 Searches for \a _key in the associative container \a _container. If \a _key is
-found, the iterator is returned. Otherwise, and empty optional is returned.
+found, its iterator is returned. Otherwise, the empty optional is returned.
 
 \ingroup fcpptcontainer
 
-\tparam Container Must be an associative container
+\tparam Container Must be an associative container.
 
-\tparam Key Must be a key that can be searched for
+\tparam Key Must be a key that can be searched for.
 */
 template<
 	typename Container,

@@ -21,7 +21,7 @@ namespace algorithm
 {
 
 /**
-\brief Returns the equal range of a given range and a value
+\brief Returns the equal range of a given range and a value.
 
 \ingroup fcpptalgorithm
 

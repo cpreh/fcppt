@@ -18,14 +18,14 @@ namespace algorithm
 {
 
 /**
-\brief Constructs an array from a value
+\brief Constructs an array from a value.
 
 \ingroup fcpptalgorithm
 
 Constructs an array of type \a Array by initializing every element with \a
 _value.
 
-\tparam Array Must be a std::array
+\tparam Array Must be a <code>std::array</code>.
 */
 template<
 	typename Array

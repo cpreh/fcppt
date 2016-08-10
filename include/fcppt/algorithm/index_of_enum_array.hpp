@@ -20,12 +20,12 @@ namespace algorithm
 {
 
 /**
-\brief Returns the enum of the first element found in an enum array
+\brief Returns the enum of the first element found in an enum array.
 
 \ingroup fcpptalgorithm
 
 Searches for \a _value in \a _array and returns the index of the first
-occurrence as an enum iff there is any.
+occurrence as an enum if there is any, otherwise returns the empty optional.
 */
 template<
 	typename Enum,

@@ -20,13 +20,17 @@ namespace container
 {
 
 /**
-\brief An index-based container that grows on demand
+\brief An index-based container that grows on demand.
 
 \ingroup fcpptcontainer
 
 This container is a wrapper around a vector that grows on demand. If the
 container is accessed with an out-of-bounds index, it inserts a new element
-first. This is most useful with \link fcppt::optional\endlink.
+first. This is most useful with \link fcppt::optional::object\endlink.
+
+\tparam T The element type.
+
+\tparam A The allocator type.
 */
 template<
 	typename T,
@@ -61,7 +65,7 @@ public:
 	insert_function;
 
 	/**
-	\brief Returns the element at an index or inserts new ones using a function
+	\brief Returns the element at an index or inserts new ones using a function.
 
 	Returns the element at \a index. If there is no such element, the
 	result of <code>insert()</code> is inserted. Note that \a insert might
@@ -74,7 +78,7 @@ public:
 	);
 
 	/**
-	\brief Returns the element at an index or inserts new default-constructed ones
+	\brief Returns the element at an index or inserts new default-constructed one.
 
 	Returns the element at \a index. If there is no such element,
 	<code>T()</code> is inserted.

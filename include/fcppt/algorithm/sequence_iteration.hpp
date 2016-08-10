@@ -16,7 +16,7 @@ namespace algorithm
 {
 
 /**
-\brief Iterates over a sequence with the possibility of erasing elements
+\brief Iterates over a sequence with the possibility of erasing elements.
 
 \ingroup fcpptalgorithm
 

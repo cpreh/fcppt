@@ -21,7 +21,7 @@ namespace bitfield
 {
 
 /**
-\brief Returns the underlying value of a bitfield
+\brief Returns the underlying value of a bitfield.
 
 \ingroup fcpptcontainerbitfield
 
@@ -29,7 +29,7 @@ Returns the underlying value of \a _bitfield. This function can only be called
 if the bitfield consists of exactly one underlying value (which means that
 <code>_bitfield::array_size::value == 1u</code>).
 
-\param _bitfield The bitfield to retrieve the underlying value from
+\tparam NumElements Must fit into exactly one object of type \a InternalType.
 */
 template<
 	typename ElementType,

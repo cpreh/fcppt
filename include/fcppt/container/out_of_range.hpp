@@ -10,18 +10,20 @@
 #include <fcppt/container/exception.hpp>
 #include <fcppt/string.hpp>
 
+
 namespace fcppt
 {
 namespace container
 {
 
 /**
-\brief An exception thrown by some containers if an index is out of bounds
+\brief An exception thrown by some containers if an index is out of bounds.
+
 \ingroup fcpptcontainer
 */
 class out_of_range
 :
-	public container::exception
+	public fcppt::container::exception
 {
 public:
 	out_of_range();

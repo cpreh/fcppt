@@ -13,6 +13,11 @@ namespace fcppt
 namespace algorithm
 {
 
+/**
+\brief Customization point for ranges.
+
+\ingroup fcpptalgorithm
+*/
 template<
 	typename Range,
 	typename Enable = void

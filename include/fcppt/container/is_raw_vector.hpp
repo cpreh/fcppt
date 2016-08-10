@@ -25,7 +25,8 @@ FCPPT_PP_PUSH_WARNING
 FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
 
 /**
-\brief Metafunction to test if a container is a fcppt::container::raw_vector
+\brief Metafunction to test if a container is an \link fcppt::container::raw_vector\endlink.
+
 \ingroup fcpptcontainer
 */
 template<
@@ -34,9 +35,9 @@ template<
 struct is_raw_vector
 :
 std::false_type
-{};
+{
+};
 
-// Without this, doxygen generates another raw_vector type (wtf?)
 /// \cond FCPPT_DOXYGEN_DEBUG
 template<
 	typename T,
@@ -50,7 +51,8 @@ struct is_raw_vector<
 >
 :
 std::true_type
-{};
+{
+};
 /// \endcond
 
 FCPPT_PP_POP_WARNING

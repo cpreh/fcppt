@@ -19,6 +19,11 @@ namespace fcppt
 namespace container
 {
 
+/**
+\brief The result type of \link fcppt::container::get_or_insert_with_result \endlink
+
+\ingroup fcpptcontainer
+*/
 template<
 	typename Reference
 >
@@ -46,9 +51,17 @@ public:
 		> const &
 	);
 
+	/**
+	\brief A reference to the element in the container
+	*/
 	Reference
 	element() const;
 
+	/**
+	\brief Tells if the element was inserted
+
+	\return <code>true</code> if the element was inserted, <code>false</code> if it was found.
+	*/
 	bool
 	inserted() const;
 private:

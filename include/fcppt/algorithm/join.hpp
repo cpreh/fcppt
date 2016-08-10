@@ -20,19 +20,19 @@ namespace algorithm
 {
 
 /**
-\brief Joins two containers
+\brief Joins two containers.
+
+\ingroup fcpptalgorithm
 
 Joins containers \a _first and all containers from \a _args, by inserting the
 containers from \a _args into \a _first.
 
-\ingroup fcpptalgorithm
-
-\param _first The left container
+\param _first The left container.
 
 \param _args The other containers, which will be inserted into the left
-container
+container.
 
-\tparam Container A container class that supports insert of iterator ranges
+\tparam Container A container class that supports insert of iterator ranges.
 */
 template<
 	typename Container,

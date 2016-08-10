@@ -17,6 +17,17 @@ namespace fcppt
 namespace container
 {
 
+/**
+\brief Gets the value type of a container.
+
+\ingroup fcpptcontainer
+
+If \a Container is <code>const</code>, the result is
+<code>Container::value_type const</code>. Otherwise, it is
+<code>Container::value_type</code>.
+
+\tparam Container A range type.
+*/
 template<
 	typename Container
 >

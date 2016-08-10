@@ -16,13 +16,15 @@ namespace algorithm
 {
 
 /**
-\brief Iterates over a map with the possibility of erasing elements
+\brief Iterates over a map with the possibility of erasing elements.
 
 \ingroup fcpptalgorithm
 
 Iterates over \a _map, applying \a _update_action to each element. If \a
 _update_action returns \link fcppt::algorithm::update_action::remove\endlink,
 the element is deleted from the map.
+
+\tparam Map A map-like container.
 
 \tparam UpdateAction A function callable as
 <code>fcppt::algorithm::update_action (Map::value_type)</code>.

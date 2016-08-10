@@ -18,7 +18,7 @@ namespace container
 {
 
 /**
-\brief Returns the back of a container as an optional
+\brief Returns the back of a container as an optional.
 
 \ingroup fcpptcontainer
 */

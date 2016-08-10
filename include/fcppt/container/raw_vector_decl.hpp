@@ -16,21 +16,22 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
+
 namespace fcppt
 {
 namespace container
 {
 
 /**
-\brief A special vector class for pod types
+\brief A special vector class for pod types.
 
 \ingroup fcpptcontainerraw_vector
 
-\tparam T Container's <code>value_type</code>. Has to be a POD type; see <a
+\tparam T The value type, which has to be a POD type; see <a
 href="http://www.boost.org/doc/libs/1_40_0/libs/type_traits/doc/html/boost_typetraits/reference/is_pod.html">here</a>
 for what this means.
 
-\tparam A The allocator.
+\tparam A The allocator type.
 
 See the \link fcpptcontainerraw_vector module documentation \endlink for more
 information.

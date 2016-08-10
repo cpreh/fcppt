@@ -53,7 +53,8 @@ codecvt(
 	if(
 		_string.empty()
 	)
-		return return_type();
+		return
+			return_type();
 
 	fcppt::impl::codecvt_type const &conv(
 		std::use_facet<
@@ -115,9 +116,10 @@ codecvt(
 					_string.end()
 				);
 		case std::codecvt_base::error:
-			throw fcppt::exception(
-				FCPPT_TEXT("codecvt: error!")
-			);
+			throw
+				fcppt::exception(
+					FCPPT_TEXT("codecvt: error!")
+				);
 		case std::codecvt_base::partial:
 			{
 				typename buffer_type::difference_type const diff(

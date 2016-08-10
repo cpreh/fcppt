@@ -21,7 +21,7 @@ namespace bitfield
 {
 
 /**
-\brief Set a bit to true
+\brief Set a bit to true.
 
 \ingroup fcpptcontainerbitfield
 */
@@ -195,7 +195,7 @@ operator^=(
 }
 
 /**
-\brief Do a bit-wise "not" for all bits (inverts all bits)
+\brief Do a bit-wise "not" for all bits (inverts all bits).
 
 \ingroup fcpptcontainerbitfield
 */
@@ -261,7 +261,7 @@ operator&(
 }
 
 /**
-\brief Set the specified bit to true
+\brief Set the specified bit to true.
 
 \ingroup fcpptcontainerbitfield
 */

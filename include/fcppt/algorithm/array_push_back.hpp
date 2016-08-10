@@ -21,7 +21,7 @@ namespace algorithm
 {
 
 /**
-\brief Pushes a new element to the back of an array
+\brief Pushes a new element to the back of an array.
 
 \ingroup fcpptalgorithm
 

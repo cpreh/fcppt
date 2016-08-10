@@ -15,6 +15,7 @@
 #include <vector>
 #include <fcppt/config/external_end.hpp>
 
+
 namespace fcppt
 {
 namespace container
@@ -24,7 +25,8 @@ FCPPT_PP_PUSH_WARNING
 FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
 
 /**
-\brief Metafunction to test if a container is a <code>std::%vector</code>
+\brief Metafunction to test if a container is a <code>std::%vector</code>.
+
 \ingroup fcpptcontainer
 */
 template<
@@ -33,9 +35,9 @@ template<
 struct is_std_vector
 :
 std::false_type
-{};
+{
+};
 
-// Without this, doxygen generates another raw_vector type (wtf?)
 /// \cond FCPPT_DOXYGEN_DEBUG
 template<
 	typename T,
@@ -49,7 +51,8 @@ struct is_std_vector<
 >
 :
 std::true_type
-{};
+{
+};
 /// \endcond
 
 FCPPT_PP_POP_WARNING

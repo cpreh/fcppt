@@ -22,9 +22,7 @@ namespace bitfield
 /**
 \brief Checks if one bitfield has all the bits of another bitfield set.
 
-\param _left The "bigger" bitfield
-
-\param _right The "smaller" bitfield
+Checks if all bits set in \a _left are also set in \a _right.
 */
 template<
 	typename ElementType,

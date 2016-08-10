@@ -19,17 +19,17 @@ namespace algorithm
 {
 
 /**
-\brief Joins a range of items delimited by \p delim
+\brief Joins a range of strings, using a delimiter
+
+\ingroup fcpptalgorithm
+
+Joins \a _range, inserting \a _delim between every pair of consecutive elements.
 
 Example:
 
 \snippet algorithm.cpp join_strings
 
-\param _range A forward-iterable range. The range's value_type must have an <code>operator+=</code>
-
-\param _delim The delimiting value
-
-\ingroup fcpptalgorithm
+\tparam Range A range of strings.
 */
 template<
 	typename Range
@@ -61,7 +61,8 @@ join_strings(
 			result += _delim;
 	}
 
-	return result;
+	return
+		result;
 }
 }
 }

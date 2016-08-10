@@ -21,9 +21,11 @@ namespace algorithm
 {
 
 /**
-\brief Like std::find_if but returns an empty optional on failure
+\brief Like <code>std::find_if</code> but returns an empty optional on failure.
 
 \ingroup fcpptalgorithm
+
+\tparam Comp Must be a function callable as <code>bool (Range::value_type)</code>.
 */
 template<
 	typename Range,

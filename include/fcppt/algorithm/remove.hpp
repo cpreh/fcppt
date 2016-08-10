@@ -16,7 +16,9 @@ namespace algorithm
 {
 
 /**
-\brief Removes all elements from \p _container matching \p _element
+\brief Removes all occurrences of a value from a container
+
+Removes all elements from a \p _container equal to \p _element.
 
 \ingroup fcpptalgorithm
 

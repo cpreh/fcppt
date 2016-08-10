@@ -18,9 +18,11 @@ namespace algorithm
 {
 
 /**
-\brief Removes all elements from \p _container matching \p _predicate
+\brief Removes all elements from a container matching a predicate.
 
 \ingroup fcpptalgorithm
+
+Removes all elements from \p _container matching \p _predicate.
 
 \tparam Predicate A function callable as <code>bool (Container::value_type)</code>.
 

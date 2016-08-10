@@ -21,11 +21,11 @@ namespace algorithm
 {
 
 /**
-\brief Finds an element by binary search
+\brief Finds an element by binary search.
 
 \ingroup fcpptalgorithm
 
-If there is a single element that is uncomparable to \a _value, returns an
+If there is exactly one element that is uncomparable to \a _value, returns an
 iterator to that element. Otherwise, returns the empty optional.
 
 \tparam T Must be less-than comparable to the range's value type.

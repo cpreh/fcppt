@@ -24,12 +24,14 @@ namespace container
 {
 
 /**
-\brief Make an array out of a parameter pack
+\brief Make an array out of a parameter pack.
 
-Creates an array out of \a _args.
+Let \a _args be <code>(a_1,...,a_n)</code>. All elements of \a _args must be of
+the same type <code>T</code>. The result is
+<code>std::array<T,n>{a_1,...,a_n}</code>.
 
 \tparam Args A parameter pack <code>t_1,...,t_n</code> such that
-<code>std::decay<t_1> = ... = std::decay<t_n></code>
+<code>std::decay<t_1> = ... = std::decay<t_n></code>.
 */
 template<
 	typename... Args

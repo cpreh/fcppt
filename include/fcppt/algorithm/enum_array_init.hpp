@@ -19,7 +19,18 @@ namespace algorithm
 {
 
 /**
+\brief Constructs an array by calling a function with static enumerators.
+
 \ingroup fcpptenum
+
+Constructs an enum array of type \a Array by calling
+<code>_function(std::integral_constant<Array::enum_type,E>)</code> for every
+enumerator <code>E</code>.
+
+\tparam Array Must be an \link fcppt::container::enum_array\endlink.
+
+\tparam Function Must be a function callable as <code>Array::value_type
+(std::integral_constant<Array::enum_type,E>)</code>.
 
 \see fcppt::algorithm::array_init
 */

@@ -20,13 +20,13 @@ namespace bitfield
 {
 
 /**
-\brief Declare a bitfield from an enum
+\brief Declare a bitfield from an enum.
 
 \ingroup fcpptcontainerbitfield
 
-\tparam Enum Must be an enum type
+\tparam Enum Must be an enum type.
 
-\tparam InternalType The internal type to use for the bitfield
+\tparam InternalType The internal type to use for the bitfield.
 */
 template<
 	typename Enum,

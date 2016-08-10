@@ -20,15 +20,15 @@ namespace algorithm
 {
 
 /**
-\brief Map an MPL sequence to variadic arguments
+\brief Map an MPL sequence to variadic arguments.
+
+\ingroup fcpptalgorithm
 
 Let \a Sequence be <code>(T_1,...,T_n)</code>. For each <code>T_i</code> in
 <code>i = 1,...,n</code> let <code>t_i = _element(fcppt::tag<T_i>)</code>.  The
 result is <code>_anchor(t_1,...,t_n)</code>.
 
-\ingroup fcpptalgorithm
-
-\tparam Sequence An MPL sequence
+\tparam Sequence An MPL sequence.
 */
 template<
 	typename Sequence,

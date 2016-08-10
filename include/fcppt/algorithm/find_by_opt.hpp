@@ -28,8 +28,8 @@ an empty optional, if there is any. Otherwise, returns the empty optional.
 
 \ingroup fcpptalgorithm
 
-\tparam Function A function callable with elements from the input sequence. It must
-return an optional.
+\tparam Function A function callable as <code>fcppt::optional::object<R>
+(Range::value_type)</code>, where <code>R</code> is the result type.
 */
 template<
 	typename Range,

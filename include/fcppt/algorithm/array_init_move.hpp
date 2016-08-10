@@ -18,7 +18,7 @@ namespace algorithm
 {
 
 /**
-\brief Constructs an array by calling a function for every element
+\brief Constructs an array by calling a function for every element.
 
 \ingroup fcpptalgorithm
 

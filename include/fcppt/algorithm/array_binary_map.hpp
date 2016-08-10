@@ -31,16 +31,11 @@ array containing the results.
 Calls <code>_function(element1, element2)</code> for every element1 of \a
 _source1 and element2 of \a _source2.
 
-\tparam TargetArray Must be a std::array
+\tparam TargetArray Must be a <code>std::array</code>.
 
-\tparam SourceType1 Can be any type
+\tparam SourceCount The number of elements in the source arrays.
 
-\tparam SourceType2 Can be any type
-
-\tparam SourceCount The number of elements in the source array
-
-\tparam Function Must be a function taking elements of source arrays 1 and 2
-and returning elements of the \a TargetArray
+\tparam Function Must be a function callable as <code>TargetArray::value_type (SourceType1, SourceType2)</code>.
 **/
 template<
 	typename TargetArray,

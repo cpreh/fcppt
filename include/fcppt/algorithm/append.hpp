@@ -18,15 +18,13 @@ namespace algorithm
 
 \ingroup fcpptalgorithm
 
-\tparam DestContainer Must have an insert function taking three integers (like the std containers all do).
-
-\tparam Source Must have a <code>begin</code> and <code>end</code> member function.
-
 Appends the sequence \a _src to \a _dest.
 
 Example:
 
 \snippet algorithm.cpp append
+
+\tparam DestContainer Must have an insert function taking three iterators (like the std containers all do).
 **/
 template<
 	typename DestContainer,

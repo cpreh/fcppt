@@ -19,7 +19,7 @@ namespace algorithm
 {
 
 /**
-\brief Folds a range into a value
+\brief Folds a range into a value.
 
 \ingroup fcpptalgorithm
 

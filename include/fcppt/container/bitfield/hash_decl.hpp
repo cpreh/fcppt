@@ -20,6 +20,11 @@ namespace container
 namespace bitfield
 {
 
+/**
+\brief A hash function for bitfields.
+
+\ingroup fcpptcontainerbitfield
+*/
 template<
 	typename Bitfield
 >

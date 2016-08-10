@@ -16,7 +16,7 @@ namespace container
 {
 
 /**
-\brief Gets the size of an array
+\brief Gets the size of an array.
 
 \ingroup fcpptcontainer
 

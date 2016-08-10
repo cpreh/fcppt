@@ -20,7 +20,7 @@ namespace algorithm
 {
 
 /**
-\brief Iterates through a range
+\brief Iterates through a range.
 
 \ingroup fcpptalgorithm
 
@@ -29,7 +29,7 @@ The implementation for a specific range type is handled by \link
 fcppt::algorithm::loop_break_impl\endlink.
 
 \tparam Body A function callable as <code>void (T)</code> for every type
-<code>T</code> in \a Range
+<code>T</code> in \a Range.
 */
 template<
 	typename Range,

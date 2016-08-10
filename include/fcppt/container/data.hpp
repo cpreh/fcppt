@@ -16,14 +16,14 @@ namespace container
 {
 
 /**
-\brief Returns a pointer the beginning of a random access container
+\brief Returns a pointer the beginning of a random access container.
 
 \ingroup fcpptcontainer
 
 Returns a pointer the beginning of \a _container, or the null pointer if \a
 _container is empty.
 
-\tparam Container Must be a random-access container
+\tparam Container Must be a random-access container.
 */
 template<
 	typename Container

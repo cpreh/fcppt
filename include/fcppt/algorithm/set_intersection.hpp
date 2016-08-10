@@ -22,6 +22,8 @@ namespace algorithm
 \brief Returns the intersection of two sets
 
 \ingroup fcpptalgorithm
+
+\tparam Set Must be an associative container
 */
 template<
 	typename Set

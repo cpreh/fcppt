@@ -20,7 +20,7 @@ namespace algorithm
 {
 
 /**
-\brief Generates a container by calling a function a number of times
+\brief Generates a container by calling a function a number of times.
 
 \ingroup fcpptalgorithm
 

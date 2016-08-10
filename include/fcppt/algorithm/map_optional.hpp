@@ -26,13 +26,12 @@ every element, only inserting the results that are not empty optionals.
 
 \ingroup fcpptalgorithm
 
-For every element \em e in \a _source, _function(e) is called. If the result is
-not an empty optional, it is inserted into the result container.
+For every element \em e in \a _source, <code>_function(e)</code> is called. If
+the result is not an empty optional, it is inserted into the result container.
 
-\param _function A function accepting elements from \a _source and returning
-optional objects of the \a TargetContainer's element type.
-
-\param _source The range to be mapped.
+\tparam Function A function callable as
+<code>fcppt::optional::object<TargetContainer::value_type>
+(Source::value_type)</code>.
 */
 template<
 	typename TargetContainer,
