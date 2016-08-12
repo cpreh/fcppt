@@ -126,11 +126,13 @@ set(
 	include/fcppt/container/bitfield/comparison.hpp
 	include/fcppt/container/bitfield/default_internal_type.hpp
 	include/fcppt/container/bitfield/detail/element_bits.hpp
+	include/fcppt/container/bitfield/detail/make_range.hpp
 	include/fcppt/container/bitfield/detail/null_array.hpp
 	include/fcppt/container/bitfield/hash.hpp
 	include/fcppt/container/bitfield/hash_decl.hpp
 	include/fcppt/container/bitfield/hash_fwd.hpp
 	include/fcppt/container/bitfield/hash_impl.hpp
+	include/fcppt/container/bitfield/init.hpp
 	include/fcppt/container/bitfield/is_subset_eq.hpp
 	include/fcppt/container/bitfield/object.hpp
 	include/fcppt/container/bitfield/object_decl.hpp

@@ -34,6 +34,12 @@
 	</ul>
 </li>
 
+<li>\ref fcpptcontainerbitfield
+	<ul>
+	<li>Added \link fcppt::container::bitfield::init\endlink.</li>
+	</ul>
+</li>
+
 <li>\ref fcpptcontainertree
 	<ul>
 	<li>Added \link fcppt::container::tree::make_pre_order\endlink.</li>

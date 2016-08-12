@@ -230,6 +230,10 @@ add_fcppt_test(
 )
 
 add_fcppt_test(
+	container/bitfield/init
+)
+
+add_fcppt_test(
 	container/bitfield/is_subset_eq
 )
 
