@@ -128,6 +128,8 @@ set(
 	include/fcppt/container/bitfield/detail/element_bits.hpp
 	include/fcppt/container/bitfield/detail/make_range.hpp
 	include/fcppt/container/bitfield/detail/null_array.hpp
+	include/fcppt/container/bitfield/enum_object.hpp
+	include/fcppt/container/bitfield/enum_object_fwd.hpp
 	include/fcppt/container/bitfield/hash.hpp
 	include/fcppt/container/bitfield/hash_decl.hpp
 	include/fcppt/container/bitfield/hash_fwd.hpp
@@ -136,7 +138,6 @@ set(
 	include/fcppt/container/bitfield/is_subset_eq.hpp
 	include/fcppt/container/bitfield/object.hpp
 	include/fcppt/container/bitfield/object_decl.hpp
-	include/fcppt/container/bitfield/object_from_enum.hpp
 	include/fcppt/container/bitfield/object_fwd.hpp
 	include/fcppt/container/bitfield/object_impl.hpp
 	include/fcppt/container/bitfield/operators.hpp

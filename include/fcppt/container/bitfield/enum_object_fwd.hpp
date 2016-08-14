@@ -4,8 +4,8 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_CONTAINER_BITFIELD_OBJECT_FROM_ENUM_HPP_INCLUDED
-#define FCPPT_CONTAINER_BITFIELD_OBJECT_FROM_ENUM_HPP_INCLUDED
+#ifndef FCPPT_CONTAINER_BITFIELD_ENUM_OBJECT_FWD_HPP_INCLUDED
+#define FCPPT_CONTAINER_BITFIELD_ENUM_OBJECT_FWD_HPP_INCLUDED
 
 #include <fcppt/enum_size.hpp>
 #include <fcppt/container/bitfield/default_internal_type.hpp>
@@ -33,7 +33,7 @@ template<
 	typename InternalType
 		= fcppt::container::bitfield::default_internal_type
 >
-using object_from_enum
+using enum_object
 =
 fcppt::container::bitfield::object<
 	Enum,

@@ -59,7 +59,7 @@ InternalType></code> has the following requirements:
 \section bitfield_example Example
 
 Bitfields are mostly used with enums, see \ref fcpptenum and \link
-fcppt::container::bitfield::object_from_enum\endlink.
+fcppt::container::bitfield::enum_object\endlink.
 
 Here's a small example:
 

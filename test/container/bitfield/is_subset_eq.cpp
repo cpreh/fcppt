@@ -4,9 +4,8 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
+#include <fcppt/container/bitfield/enum_object.hpp>
 #include <fcppt/container/bitfield/is_subset_eq.hpp>
-#include <fcppt/container/bitfield/object.hpp>
-#include <fcppt/container/bitfield/object_from_enum.hpp>
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
@@ -33,7 +32,7 @@ FCPPT_PP_POP_WARNING
 	};
 
 	typedef
-	fcppt::container::bitfield::object_from_enum<
+	fcppt::container::bitfield::enum_object<
 		test_enum
 	>
 	bitfield;

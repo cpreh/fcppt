@@ -8,8 +8,7 @@
 #include <fcppt/bit/shifted_mask.hpp>
 #include <fcppt/bit/test.hpp>
 #include <fcppt/cast/enum_to_int.hpp>
-#include <fcppt/container/bitfield/object.hpp>
-#include <fcppt/container/bitfield/object_from_enum.hpp>
+#include <fcppt/container/bitfield/enum_object.hpp>
 #include <fcppt/container/bitfield/underlying_value.hpp>
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
@@ -37,7 +36,7 @@ FCPPT_PP_POP_WARNING
 	};
 
 	typedef
-	fcppt::container::bitfield::object_from_enum<
+	fcppt::container::bitfield::enum_object<
 		test_enum
 	>
 	bitfield;

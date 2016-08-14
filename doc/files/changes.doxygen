@@ -82,16 +82,27 @@
 	created.</li>
 	</ul>
 </li>
+
+<li>\ref fcpptcontainerbitfield
+	<ul>
+	<li>Renamed <code>fcppt::container::bitfield::object_from_enum</code>
+	to \link fcppt::container::bitfield::enum_object\endlink and introduced
+	an <code>_fwd</code> header.</li>
+	</ul>
+</li>
+
 </ul>
 
 \subsection changes_removed_functionality_to_220 Removed functionality
 
 <ul>
+
 <li>\ref fcpptcasts
 	<ul>
 	<li>Removed <code>fcppt::cast::static_downcast_ptr</code>.</li>
 	</ul>
 </li>
+
 </ul>
 
 \section changes_changes_to_210 Changes from 2.0.0 to 2.1.0

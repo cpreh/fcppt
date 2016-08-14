@@ -5,8 +5,7 @@
 
 
 #include <fcppt/container/bitfield/comparison.hpp>
-#include <fcppt/container/bitfield/object.hpp>
-#include <fcppt/container/bitfield/object_from_enum.hpp>
+#include <fcppt/container/bitfield/enum_object.hpp>
 #include <fcppt/container/bitfield/operators.hpp>
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
@@ -34,7 +33,7 @@ FCPPT_PP_POP_WARNING
 	};
 
 	typedef
-	fcppt::container::bitfield::object_from_enum<
+	fcppt::container::bitfield::enum_object<
 		test_enum
 	>
 	bitfield;
