@@ -536,7 +536,6 @@ set(
 	include/fcppt/detail/cyclic_iterator_base.hpp
 	include/fcppt/detail/enum_iterator_base.hpp
 	include/fcppt/detail/equal.hpp
-	include/fcppt/detail/equal_functor.hpp
 	include/fcppt/detail/int_iterator_base.hpp
 	include/fcppt/detail/make_shared_wrapper.hpp
 	include/fcppt/detail/make_shared_wrapper_fwd.hpp

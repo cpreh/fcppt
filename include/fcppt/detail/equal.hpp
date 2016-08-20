@@ -7,7 +7,6 @@
 #ifndef FCPPT_DETAIL_EQUAL_HPP_INCLUDED
 #define FCPPT_DETAIL_EQUAL_HPP_INCLUDED
 
-#include <fcppt/detail/equal_functor.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <algorithm>
 #include <fcppt/config/external_end.hpp>
@@ -22,6 +21,7 @@ template<
 	typename Iterator1,
 	typename Iterator2
 >
+inline
 bool
 equal(
 	Iterator1 const _beg1,
@@ -34,7 +34,16 @@ equal(
 			_beg1,
 			_end1,
 			_beg2,
-			fcppt::detail::equal_functor()
+			[](
+				auto const &_t1,
+				auto const &_t2
+			)
+			{
+				return
+					_t1
+					==
+					_t2;
+			}
 		);
 }
 
