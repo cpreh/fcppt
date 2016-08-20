@@ -7,8 +7,8 @@
 #ifndef FCPPT_CONTAINER_BITFIELD_INIT_HPP_INCLUDED
 #define FCPPT_CONTAINER_BITFIELD_INIT_HPP_INCLUDED
 
-#include <fcppt/container/bitfield/detail/make_range.hpp>
 #include <fcppt/container/bitfield/object_impl.hpp>
+#include <fcppt/container/bitfield/detail/make_range.hpp>
 
 
 namespace fcppt

@@ -406,13 +406,21 @@ private:
 
 template<
 	typename T,
-	size_type N,
+	fcppt::container::grid::size_type N,
 	typename A
 >
 void
 swap(
-	object<T, N, A> &,
-	object<T, N, A> &
+	fcppt::container::grid::object<
+		T,
+		N,
+		A
+	> &,
+	fcppt::container::grid::object<
+		T,
+		N,
+		A
+	> &
 );
 
 }

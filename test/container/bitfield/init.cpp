@@ -4,10 +4,10 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
+#include <fcppt/assert/unreachable.hpp>
 #include <fcppt/container/bitfield/enum_object.hpp>
 #include <fcppt/container/bitfield/init.hpp>
 #include <fcppt/container/bitfield/operators.hpp>
-#include <fcppt/assert/unreachable.hpp>
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>

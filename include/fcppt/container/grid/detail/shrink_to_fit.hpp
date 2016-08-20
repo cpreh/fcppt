@@ -12,6 +12,7 @@
 #include <vector>
 #include <fcppt/config/external_end.hpp>
 
+
 namespace fcppt
 {
 namespace container
@@ -25,12 +26,19 @@ template<
 	typename T,
 	typename A
 >
+inline
 void
 shrink_to_fit(
-	std::vector<T, A> &_impl
+	std::vector<
+		T,
+		A
+	> &_impl
 )
 {
-	std::vector<T, A> new_vec(
+	std::vector<
+		T,
+		A
+	> new_vec(
 		_impl
 	);
 
@@ -43,9 +51,13 @@ template<
 	typename T,
 	typename A
 >
+inline
 void
 shrink_to_fit(
-	fcppt::container::raw_vector<T, A> &_impl
+	fcppt::container::raw_vector<
+		T,
+		A
+	> &_impl
 )
 {
 	_impl.shrink_to_fit();

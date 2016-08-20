@@ -174,7 +174,6 @@ set(
 	include/fcppt/container/grid/comparison.hpp
 	include/fcppt/container/grid/detail/assign_fill_recurse.hpp
 	include/fcppt/container/grid/detail/assign_recurse.hpp
-	include/fcppt/container/grid/detail/fill.hpp
 	include/fcppt/container/grid/detail/interpolate.hpp
 	include/fcppt/container/grid/detail/pos_iterator_base.hpp
 	include/fcppt/container/grid/detail/pos_ref_iterator_base.hpp

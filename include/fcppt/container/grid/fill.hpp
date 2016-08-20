@@ -7,10 +7,9 @@
 #ifndef FCPPT_CONTAINER_GRID_FILL_HPP_INCLUDED
 #define FCPPT_CONTAINER_GRID_FILL_HPP_INCLUDED
 
+#include <fcppt/container/grid/make_pos_ref_range.hpp>
 #include <fcppt/container/grid/object_impl.hpp>
 #include <fcppt/container/grid/size_type.hpp>
-#include <fcppt/container/grid/detail/fill.hpp>
-#include <fcppt/math/vector/null.hpp>
 
 
 namespace fcppt
@@ -21,15 +20,17 @@ namespace grid
 {
 
 /**
-\brief Fills a grid using a functor
+\brief Fills a grid using a function
+
 \ingroup fcpptcontainergrid
-\tparam Fn A functor with the signature: <code>grid::value_type(grid::dim)</code>
+
+\tparam Function A function callable as <code>T (dim<size_type, N>)</code>.
 */
 template<
 	typename T,
 	fcppt::container::grid::size_type N,
 	typename A,
-	typename Fn
+	typename Function
 >
 void
 fill(
@@ -38,31 +39,20 @@ fill(
 		N,
 		A
 	> &_grid,
-	Fn const &_function
+	Function const &_function
 )
 {
-	typedef
-	typename
-	fcppt::container::grid::object<
-		T,
-		N,
-		A
-	>::pos
-	pos_type;
-
-	pos_type position{
-		fcppt::math::vector::null<
-			pos_type
-		>()
-	};
-
-	fcppt::container::grid::detail::fill<
-		0
-	>(
-		_grid,
-		_function,
-		position
-	);
+	for(
+		auto const &element
+		:
+		fcppt::container::grid::make_pos_ref_range(
+			_grid
+		)
+	)
+		element.value() =
+			_function(
+				element.pos()
+			);
 }
 
 }
