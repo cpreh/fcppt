@@ -17,7 +17,6 @@
 #include <boost/mpl/back.hpp>
 #include <boost/mpl/empty.hpp>
 #include <boost/mpl/pop_back.hpp>
-#include <ostream>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 

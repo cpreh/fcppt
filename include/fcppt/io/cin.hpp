@@ -9,9 +9,6 @@
 
 #include <fcppt/detail/symbol.hpp>
 #include <fcppt/io/istream.hpp>
-#include <fcppt/config/external_begin.hpp>
-#include <istream>
-#include <fcppt/config/external_end.hpp>
 
 
 namespace fcppt

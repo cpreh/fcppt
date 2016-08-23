@@ -70,6 +70,14 @@
 	</ul>
 </li>
 
+<li>\ref fcpptio
+	<ul>
+	<li>Added <code>_fwd</code> headers to \link fcppt::io::istream\endlink,
+	\link fcppt::io::ostream\endlink, \link fcppt::io::istringstream\endlink,
+	\link fcppt::io::ostringstream\endlink and \link fcppt::io::stringstream\endlink.</li>
+	</ul>
+</li>
+
 <li>\ref fcpptlog
 	<p>
 	The logging library went through a major rewrite, with the purpose

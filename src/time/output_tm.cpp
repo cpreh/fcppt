@@ -10,7 +10,6 @@
 #include <ctime>
 #include <iterator>
 #include <locale>
-#include <ostream>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -20,14 +19,15 @@ fcppt::time::output_tm(
 	std::tm const &_tm
 )
 {
-	io::ostream::sentry cerberos(
+	fcppt::io::ostream::sentry cerberos(
 		_stream
 	);
 
 	if(
 		!cerberos
 	)
-		return _stream;
+		return
+			_stream;
 
 	std::use_facet<
 		std::time_put<
@@ -47,5 +47,6 @@ fcppt::time::output_tm(
 		'c'
 	);
 
-	return _stream;
+	return
+		_stream;
 }

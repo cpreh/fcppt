@@ -7,7 +7,7 @@
 #include <fcppt/assert/unreachable.hpp>
 #include <fcppt/io/cerr.hpp>
 #include <fcppt/io/clog.hpp>
-#include <fcppt/io/ostream.hpp>
+#include <fcppt/io/ostream_fwd.hpp>
 #include <fcppt/log/default_stream.hpp>
 #include <fcppt/log/level.hpp>
 

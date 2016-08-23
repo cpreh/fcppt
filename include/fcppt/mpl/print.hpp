@@ -10,9 +10,6 @@
 #include <fcppt/text.hpp>
 #include <fcppt/io/ostream.hpp>
 #include <fcppt/mpl/detail/print.hpp>
-#include <fcppt/config/external_begin.hpp>
-#include <ostream>
-#include <fcppt/config/external_end.hpp>
 
 
 namespace fcppt

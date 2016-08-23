@@ -7,7 +7,7 @@
 #ifndef FCPPT_LOG_DEFAULT_STREAM_HPP_INCLUDED
 #define FCPPT_LOG_DEFAULT_STREAM_HPP_INCLUDED
 
-#include <fcppt/io/ostream.hpp>
+#include <fcppt/io/ostream_fwd.hpp>
 #include <fcppt/log/level_fwd.hpp>
 #include <fcppt/log/detail/symbol.hpp>
 

@@ -4,12 +4,12 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_IO_OFSTREAM_HPP_INCLUDED
-#define FCPPT_IO_OFSTREAM_HPP_INCLUDED
+#ifndef FCPPT_IO_STRINGSTREAM_FWD_HPP_INCLUDED
+#define FCPPT_IO_STRINGSTREAM_FWD_HPP_INCLUDED
 
 #include <fcppt/char_type.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/filesystem/fstream.hpp>
+#include <iosfwd>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -19,7 +19,7 @@ namespace io
 {
 
 /**
-\brief Typedef to either boost::filesystem::ofstream or boost::filesystem::wofstream, depending on fcppt::char_type
+\brief Typedef to either std::stringstream or std::wstringstream, depending on fcppt::char_type
 \ingroup fcpptstring
 
 
@@ -27,10 +27,10 @@ See the \link fcpptstring string module documentation \endlink for a motivation
 for this.
 */
 typedef
-boost::filesystem::basic_ofstream<
+std::basic_stringstream<
 	fcppt::char_type
 >
-ofstream;
+stringstream;
 
 }
 }

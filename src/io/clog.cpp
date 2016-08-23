@@ -6,7 +6,7 @@
 
 #include <fcppt/public_config.hpp>
 #include <fcppt/io/clog.hpp>
-#include <fcppt/io/ostream.hpp>
+#include <fcppt/io/ostream_fwd.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <iostream>
 #include <fcppt/config/external_end.hpp>

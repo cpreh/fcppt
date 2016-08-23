@@ -10,7 +10,6 @@
 #include <fcppt/type_name.hpp>
 #include <fcppt/io/ostream.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <ostream>
 #include <typeinfo>
 #include <fcppt/config/external_end.hpp>
 

@@ -7,7 +7,7 @@
 #include <fcppt/const.hpp>
 #include <fcppt/identity.hpp>
 #include <fcppt/make_ref.hpp>
-#include <fcppt/io/ostream.hpp>
+#include <fcppt/io/ostream_fwd.hpp>
 #include <fcppt/log/level_stream.hpp>
 #include <fcppt/log/detail/temporary_output.hpp>
 #include <fcppt/log/format/chain.hpp>

@@ -15,7 +15,6 @@
 #include <fcppt/log/detail/symbol.hpp>
 #include <fcppt/log/detail/temporary_output_fwd.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <ostream>
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 

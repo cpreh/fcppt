@@ -26,9 +26,11 @@ namespace io
 See the \link fcpptstring string module documentation \endlink for a motivation
 for this.
 */
-typedef boost::filesystem::basic_ifstream<
+typedef
+boost::filesystem::basic_ifstream<
 	fcppt::char_type
-> ifstream;
+>
+ifstream;
 
 }
 }

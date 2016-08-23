@@ -669,18 +669,23 @@ set(
 	include/fcppt/io/get.hpp
 	include/fcppt/io/ifstream.hpp
 	include/fcppt/io/istream.hpp
+	include/fcppt/io/istream_fwd.hpp
 	include/fcppt/io/istringstream.hpp
+	include/fcppt/io/istringstream_fwd.hpp
 	include/fcppt/io/ofstream.hpp
 	include/fcppt/io/optional_buffer.hpp
 	include/fcppt/io/optional_buffer_fwd.hpp
 	include/fcppt/io/ostream.hpp
+	include/fcppt/io/ostream_fwd.hpp
 	include/fcppt/io/ostringstream.hpp
+	include/fcppt/io/ostringstream_fwd.hpp
 	include/fcppt/io/read.hpp
 	include/fcppt/io/read_chars.hpp
 	include/fcppt/io/scoped_rdbuf.hpp
 	include/fcppt/io/scoped_rdbuf_fwd.hpp
 	include/fcppt/io/stream_to_string.hpp
 	include/fcppt/io/stringstream.hpp
+	include/fcppt/io/stringstream_fwd.hpp
 	include/fcppt/io/write.hpp
 	include/fcppt/is_strong_typedef.hpp
 	include/fcppt/literal.hpp

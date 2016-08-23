@@ -8,7 +8,7 @@
 #define FCPPT_TIME_OUTPUT_TM_HPP_INCLUDED
 
 #include <fcppt/detail/symbol.hpp>
-#include <fcppt/io/ostream.hpp>
+#include <fcppt/io/ostream_fwd.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <ctime>
 #include <fcppt/config/external_end.hpp>

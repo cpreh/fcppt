@@ -7,30 +7,10 @@
 #ifndef FCPPT_IO_OSTREAM_HPP_INCLUDED
 #define FCPPT_IO_OSTREAM_HPP_INCLUDED
 
-#include <fcppt/char_type.hpp>
+#include <fcppt/io/ostream_fwd.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <iosfwd>
+#include <ostream>
 #include <fcppt/config/external_end.hpp>
 
-
-namespace fcppt
-{
-namespace io
-{
-
-/**
-\brief Typedef to either std::ostream or std::wostream, depending on fcppt::char_type
-\ingroup fcpptstring
-
-
-See the \link fcpptstring string module documentation \endlink for a motivation
-for this.
-*/
-typedef std::basic_ostream<
-	fcppt::char_type
-> ostream;
-
-}
-}
 
 #endif
