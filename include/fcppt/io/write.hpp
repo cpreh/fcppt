@@ -11,9 +11,9 @@
 #include <fcppt/cast/to_char_ptr.hpp>
 #include <fcppt/cast/to_signed.hpp>
 #include <fcppt/endianness/convert.hpp>
-#include <fcppt/endianness/format_fwd.hpp>
+#include <fcppt/endianness/format.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <iosfwd>
+#include <ios>
 #include <ostream>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>

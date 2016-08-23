@@ -9,13 +9,9 @@
 #include <fcppt/cast/to_char_ptr.hpp>
 #include <fcppt/cast/to_signed.hpp>
 #include <fcppt/container/raw_vector.hpp>
-#include <fcppt/container/bitfield/object.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <fstream>
-#include <iosfwd>
-#include <iostream>
-#include <ostream>
-#include <vector>
+#include <ios>
 #include <fcppt/config/external_end.hpp>
 
 

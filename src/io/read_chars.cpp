@@ -11,6 +11,7 @@
 #include <fcppt/io/read_chars.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <cstddef>
+#include <ios>
 #include <istream>
 #include <utility>
 #include <fcppt/config/external_end.hpp>
