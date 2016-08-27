@@ -4,95 +4,19 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
+#include <fcppt/private_config.hpp>
 #include <fcppt/endianness/format.hpp>
 #include <fcppt/endianness/host_format.hpp>
-#include <fcppt/noncopyable.hpp>
 
-#if defined(FCPPT_LITTLE_ENDIAN) && defined(FCPPT_BIG_ENDIAN)
-#error "FCPPT_LITTLE_ENDIAN and FCPPT_BIG_ENDIAN defined!"
-#endif
-
-#if !(defined(FCPPT_LITTLE_ENDIAN) || defined(FCPPT_BIG_ENDIAN))
-#include <fcppt/cast/to_char_ptr.hpp>
-#include <fcppt/config/external_begin.hpp>
-#include <algorithm>
-#include <array>
-#include <fcppt/config/external_end.hpp>
-
-
-namespace
-{
-
-fcppt::endianness::format
-compute_endianness()
-{
-	typedef unsigned long int_type;
-
-	int_type const int_value(
-		1u
-	);
-
-	typedef std::array<
-		unsigned char,
-		sizeof(int_type)
-	> array_type;
-
-	array_type array;
-
-	std::copy_n(
-		fcppt::cast::to_char_ptr<
-			unsigned char const *
-		>(
-			&int_value
-		),
-		sizeof(int_type),
-		array.data()
-	);
-
-	return
-		array[0] == int_value
-		?
-			fcppt::endianness::format::little
-		:
-			fcppt::endianness::format::big;
-}
-
-struct init
-{
-	FCPPT_NONCOPYABLE(
-		init
-	);
-public:
-	init();
-
-	~init();
-
-	fcppt::endianness::format const endianness_;
-} instance;
-
-init::init()
-:
-	endianness_(
-		compute_endianness()
-	)
-{
-}
-
-}
-
-init::~init()
-{
-}
-#endif
 
 fcppt::endianness::format
 fcppt::endianness::host_format()
 {
-#if   defined(FCPPT_LITTLE_ENDIAN)
-	return format::little;
-#elif defined(FCPPT_BIG_ENDIAN)
-	return format::big;
+#if defined(FCPPT_IS_BIG_ENDIAN)
+	return
+		fcppt::endianness::format::big;
 #else
-	return instance.endianness_;
+	return
+		fcppt::endianness::format::little;
 #endif
 }

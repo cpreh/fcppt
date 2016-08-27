@@ -10,6 +10,7 @@
 // gcc capabilities
 #cmakedefine FCPPT_HAVE_BACKTRACE
 #cmakedefine FCPPT_HAVE_GCC_DEMANGLE
+#cmakedefine FCPPT_IS_BIG_ENDIAN
 
 
 #endif

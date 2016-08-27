@@ -176,6 +176,14 @@ CHECK_CXX_SOURCE_COMPILES(
 	FCPPT_HAVE_BACKTRACE
 )
 
+include(
+	TestBigEndian
+)
+
+test_big_endian(
+	FCPPT_IS_BIG_ENDIAN
+)
+
 function(
 	configure_fcppt_file
 	FILE_RELPATH
