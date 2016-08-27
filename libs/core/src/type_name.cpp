@@ -7,7 +7,7 @@
 #include <fcppt/from_std_string.hpp>
 #include <fcppt/string.hpp>
 #include <fcppt/type_name.hpp>
-#include <fcppt/private_config.hpp>
+#include <fcppt/impl/private_config.hpp>
 #if defined(FCPPT_HAVE_GCC_DEMANGLE)
 #include <fcppt/c_deleter.hpp>
 #include <fcppt/unique_ptr.hpp>

@@ -4,25 +4,34 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/filesystem/create_directory_exn.hpp>
-#include <fcppt/filesystem/create_directory_failed.hpp>
+#include <fcppt/string.hpp>
+#include <fcppt/text.hpp>
+#include <fcppt/filesystem/extension.hpp>
+#include <fcppt/filesystem/extension_without_dot.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/filesystem/operations.hpp>
 #include <boost/filesystem/path.hpp>
 #include <fcppt/config/external_end.hpp>
 
 
-void
-fcppt::filesystem::create_directory_exn(
+fcppt::string
+fcppt::filesystem::extension_without_dot(
 	boost::filesystem::path const &_path
 )
 {
-	if(
-		!boost::filesystem::create_directory(
+	fcppt::string ret(
+		fcppt::filesystem::extension(
 			_path
 		)
+	);
+
+	if(
+		!ret.empty()
+		&& ret[0] == FCPPT_TEXT('.')
 	)
-		throw fcppt::filesystem::create_directory_failed(
-			_path
+		ret.erase(
+			ret.begin()
 		);
+
+	return
+		ret;
 }

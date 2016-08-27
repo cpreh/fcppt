@@ -22,7 +22,8 @@ fcppt::filesystem::create_directories_recursive_exn(
 			_path
 		)
 	)
-		throw fcppt::filesystem::create_directory_failed(
-			_path
-		);
+		throw
+			fcppt::filesystem::create_directory_failed(
+				_path
+			);
 }

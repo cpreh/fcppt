@@ -18,4 +18,6 @@ add_fcppt_preprocessor_example(
 
 add_fcppt_preprocessor_example(
 	warning
+	LINK_LIBS
+		fcppt_core_interface
 )

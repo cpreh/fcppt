@@ -16,6 +16,7 @@ if(
 	add_fcppt_signal_example(
 		benchmark
 		LINK_LIBS
+			fcppt_core_interface
 			${Boost_SIGNALS_LIBRARY}
 		COMPILE_DEFINITIONS
 			FCPPT_EXAMPLES_SIGNAL_BENCHMARK_USE_BOOST_SIGNALS1
@@ -25,12 +26,16 @@ elseif(
 )
 	add_fcppt_signal_example(
 		benchmark
+		LINK_LIBS
+			fcppt_core_interface
 		COMPILE_DEFINITIONS
 			FCPPT_EXAMPLES_SIGNAL_BENCHMARK_USE_BOOST_SIGNALS2
 	)
 else()
 	add_fcppt_signal_example(
 		benchmark
+		LINK_LIBS
+			fcppt_core_interface
 		COMPILE_DEFINITIONS
 			FCPPT_EXAMPLES_SIGNAL_BENCHMARK_USE_FCPPT
 	)
@@ -44,6 +49,8 @@ add_fcppt_signal_example(
 
 add_fcppt_signal_example(
 	connection
+	LINK_LIBS
+		fcppt_core_interface
 )
 
 add_fcppt_signal_example(

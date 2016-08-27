@@ -11,9 +11,13 @@ function(
 	MAINNAME
 )
 	set(
+		OPTION_ARGS
+		IS_C
+	)
+
+	set(
 		SINGLE_ARGS
 		SUBNAME
-		IS_C
 	)
 
 	set(
@@ -24,7 +28,7 @@ function(
 
 	cmake_parse_arguments(
 		""
-		""
+		"${OPTION_ARGS}"
 		"${SINGLE_ARGS}"
 		"${MULTI_ARGS}"
 		${ARGN}
@@ -52,7 +56,7 @@ function(
 	)
 
 	if(
-		_IS_C
+		${_IS_C}
 	)
 		set(
 			SUFFIX
@@ -109,6 +113,8 @@ endfunction()
 
 add_fcppt_example(
 	algorithm
+	LINK_LIBS
+		fcppt_core_interface
 )
 
 add_fcppt_example(
@@ -119,21 +125,26 @@ add_fcppt_example(
 
 add_fcppt_example(
 	assert_complete
+	LINK_LIBS
+		fcppt_core_interface
 )
 
 add_fcppt_example(
 	assign
+	LINK_LIBS
+		fcppt_core_interface
 )
 
 add_fcppt_example(
 	backtrace
 	LINK_LIBS
 		${fcppt_core_TARGET}
-		${Boost_SYSTEM_LIBRARY}
 )
 
 add_fcppt_example(
 	cast
+	LINK_LIBS
+		fcppt_core_interface
 )
 
 add_fcppt_example(
@@ -144,18 +155,26 @@ add_fcppt_example(
 
 add_fcppt_example(
 	config
+	LINK_LIBS
+		fcppt_core_interface
 )
 
 add_fcppt_example(
 	coding_style
+	LINK_LIBS
+		fcppt_core_interface
 )
 
 add_fcppt_example(
 	coding_style_asthetic
+	LINK_LIBS
+		fcppt_core_interface
 )
 
 add_fcppt_example(
 	cyclic_iterator
+	LINK_LIBS
+		fcppt_core_interface
 )
 
 add_fcppt_example(
@@ -166,10 +185,14 @@ add_fcppt_example(
 
 add_fcppt_example(
 	enum
+	LINK_LIBS
+		fcppt_core_interface
 )
 
 add_fcppt_example(
 	either
+	LINK_LIBS
+		fcppt_core_interface
 )
 
 add_fcppt_example(
@@ -180,16 +203,21 @@ add_fcppt_example(
 
 add_fcppt_example(
 	literal
+	LINK_LIBS
+		fcppt_core_interface
 )
 
 add_fcppt_example(
 	no_cpp
 	IS_C
-		TRUE
+	LINK_LIBS
+		fcppt_core_interface
 )
 
 add_fcppt_example(
 	noncopyable
+	LINK_LIBS
+		fcppt_core_interface
 )
 
 add_fcppt_example(
@@ -230,14 +258,20 @@ add_fcppt_example(
 
 add_fcppt_example(
 	strong_typedef
+	LINK_LIBS
+		fcppt_core_interface
 )
 
 add_fcppt_example(
 	type_iso
+	LINK_LIBS
+		fcppt_core_interface
 )
 
 add_fcppt_example(
 	type_traits
+	LINK_LIBS
+		fcppt_core_interface
 )
 
 add_fcppt_example(
@@ -254,6 +288,8 @@ add_fcppt_example(
 
 add_fcppt_example(
 	visibility
+	LINK_LIBS
+		fcppt_core_interface
 )
 
 add_fcppt_example(

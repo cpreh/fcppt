@@ -15,9 +15,13 @@ fcppt_utils_link_target(
 	fcppt_core
 )
 
-fcppt_utils_link_target(
-	fcppt_filesystem
+if(
+	ENABLE_FILESYSTEM
 )
+	fcppt_utils_link_target(
+		fcppt_filesystem
+	)
+endif()
 
 fcppt_utils_link_target(
 	fcppt_log
@@ -489,11 +493,15 @@ add_fcppt_test(
 	extract_from_string
 )
 
-add_fcppt_test(
-	filesystem/remove_extension
-	LINK_LIBS
-		"${fcppt_filesystem_TARGET}"
+if(
+	ENABLE_FILESYSTEM
 )
+	add_fcppt_test(
+		filesystem/remove_extension
+		LINK_LIBS
+			"${fcppt_filesystem_TARGET}"
+	)
+endif()
 
 add_fcppt_test(
 	function

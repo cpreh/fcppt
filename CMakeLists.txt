@@ -7,9 +7,10 @@ project(
 	fcppt
 )
 
-set(
+list(
+	APPEND
 	CMAKE_MODULE_PATH
-	"${CMAKE_CURRENT_SOURCE_DIR}/CMakeModules;${CMAKE_MODULE_PATH}"
+	"${CMAKE_CURRENT_SOURCE_DIR}/cmake/modules"
 )
 
 include(
@@ -88,7 +89,9 @@ set(
 )
 
 if(
-	CMAKE_COMPILER_IS_GNUCXX OR FCPPT_UTILS_COMPILER_IS_CLANGPP
+	CMAKE_COMPILER_IS_GNUCXX
+	OR
+	FCPPT_UTILS_COMPILER_IS_CLANGPP
 )
 	CHECK_CXX_SOURCE_COMPILES(
 		"#include <cxxabi.h>
@@ -107,11 +110,21 @@ set(
 	"Which backend to use for the signal benchmark example (fcppt/boostsignals/boostsignals2)"
 )
 
-set(
-	NEEDED_BOOST_LIBS
-	filesystem
-	system
+option(
+	ENABLE_FILESYSTEM
+	"Build the filesystem library"
+	ON
 )
+
+if(
+	ENABLE_FILESYSTEM
+)
+	set(
+		NEEDED_BOOST_LIBS
+		filesystem
+		system
+	)
+endif()
 
 if(
 	${SIGNALS_BENCHMARK_BACKEND}
@@ -148,7 +161,10 @@ if(
 endif()
 
 find_package(
-	Boost 1.47.0 REQUIRED COMPONENTS
+	Boost
+	1.47.0
+	REQUIRED
+	COMPONENTS
 	"${NEEDED_BOOST_LIBS}"
 )
 
@@ -184,27 +200,19 @@ test_big_endian(
 	FCPPT_IS_BIG_ENDIAN
 )
 
-function(
-	configure_fcppt_file
-	FILE_RELPATH
-)
-	configure_file(
-		${FCPPT_UTILS_PROJECT_SOURCE_DIR}/src/${FILE_RELPATH}.in
-		${FCPPT_UTILS_PROJECT_BINARY_DIR}/include/fcppt/${FILE_RELPATH}
-	)
-endfunction()
-
-configure_fcppt_file(
-	public_config.hpp
-)
-
-configure_fcppt_file(
-	version.hpp
+configure_file(
+	${FCPPT_UTILS_PROJECT_SOURCE_DIR}/cmake/version.hpp.in
+	${FCPPT_UTILS_PROJECT_BINARY_DIR}/include/fcppt/version.hpp
 )
 
 configure_file(
-	${FCPPT_UTILS_PROJECT_SOURCE_DIR}/src/private_config.hpp.in
-	${FCPPT_UTILS_PROJECT_BINARY_DIR}/src/include/fcppt/private_config.hpp
+	${FCPPT_UTILS_PROJECT_SOURCE_DIR}/cmake/public_config.hpp.in
+	${FCPPT_UTILS_PROJECT_BINARY_DIR}/include/fcppt/public_config.hpp
+)
+
+configure_file(
+	${FCPPT_UTILS_PROJECT_SOURCE_DIR}/cmake/private_config.hpp.in
+	${FCPPT_UTILS_PROJECT_BINARY_DIR}/impl/include/fcppt/impl/private_config.hpp
 )
 
 include(
@@ -222,6 +230,11 @@ function(
 	CUR_FILES
 )
 	set(
+		OPTION_ARGS
+		HAS_IMPL_DIR
+	)
+
+	set(
 		SINGLE_ARGS
 		VARIANT
 	)
@@ -231,12 +244,11 @@ function(
 		FCPPT_DEPS
 		OTHER_DEPS
 		TRANSITIVE_DEPS
-		INCLUDE_DIRS
 	)
 
 	cmake_parse_arguments(
 		""
-		""
+		"${HAS_IMPL_DIR}"
 		"${SINGLE_ARGS}"
 		"${MULTI_ARGS}"
 		${ARGN}
@@ -288,8 +300,8 @@ function(
 
 	set(
 		PUBLIC_INCLUDES
+		"$<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>"
 		"$<BUILD_INTERFACE:${FCPPT_UTILS_PROJECT_BINARY_DIR}/include>"
-		"$<BUILD_INTERFACE:${FCPPT_UTILS_PROJECT_SOURCE_DIR}/include>"
 		${Boost_INCLUDE_DIRS}
 	)
 
@@ -301,11 +313,21 @@ function(
 	)
 		target_include_directories(
 			${TARGETNAME}
-			PRIVATE
+			PUBLIC
 			${PUBLIC_INCLUDES}
-			"$<BUILD_INTERFACE:${FCPPT_UTILS_PROJECT_BINARY_DIR}/src/include>"
-			${_INCLUDE_DIRS}
+			PRIVATE
+			"$<BUILD_INTERFACE:${FCPPT_UTILS_PROJECT_BINARY_DIR}/impl/include>"
 		)
+
+		if(
+			${_HAS_IMPL_DIR}
+		)
+			target_include_directories(
+				${TARGETNAME}
+				PRIVATE
+				"$<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/impl/include>"
+			)
+		endif()
 	endif()
 
 	target_include_directories(
@@ -346,6 +368,11 @@ function(
 	CUR_FILES
 )
 	set(
+		OPTION_ARGS
+		HAS_IMPL_DIR
+	)
+
+	set(
 		SINGLE_ARGS
 		SYMBOL_NAME
 	)
@@ -355,7 +382,6 @@ function(
 		FCPPT_DEPS
 		OTHER_DEPS
 		TRANSITIVE_DEPS
-		INCLUDE_DIRS
 	)
 
 	set(
@@ -365,7 +391,7 @@ function(
 
 	cmake_parse_arguments(
 		""
-		""
+		"${OPTION_ARGS}"
 		"${SINGLE_ARGS}"
 		"${MULTI_ARGS}"
 		${ARGN}
@@ -457,22 +483,19 @@ function(
 				${_OTHER_DEPS}
 			TRANSITIVE_DEPS
 				${_TRANSITIVE_DEPS}
-			INCLUDE_DIRS
-				${_INCLUDE_DIRS}
 		)
 	endif()
+
+	install(
+		DIRECTORY
+		${CMAKE_CURRENT_SOURCE_DIR}/include/
+		DESTINATION
+		${INSTALL_INCLUDE_DIR}
+	)
 endfunction()
 
 add_subdirectory(
-	src
-)
-
-add_subdirectory(
-	src/filesystem
-)
-
-add_subdirectory(
-	src/log
+	libs
 )
 
 if(
@@ -507,13 +530,9 @@ if(
 	)
 endif()
 
-fcppt_utils_generate_config()
-
-install(
-	DIRECTORY
-	${FCPPT_UTILS_PROJECT_SOURCE_DIR}/include/
-	DESTINATION
-	${INSTALL_INCLUDE_DIR}
+fcppt_utils_generate_config(
+	CONFIG_PATH
+	${FCPPT_UTILS_PROJECT_SOURCE_DIR}/cmake
 )
 
 install(
@@ -523,12 +542,17 @@ install(
 	${INSTALL_INCLUDE_DIR}
 )
 
+set(
+	FCPPT_CMAKE_MODULES_DIR
+	${FCPPT_UTILS_PROJECT_SOURCE_DIR}/cmake/modules
+)
+
 install(
 	FILES
-	${FCPPT_UTILS_PROJECT_SOURCE_DIR}/CMakeModules/FindFcpptThreads.cmake
-	${FCPPT_UTILS_PROJECT_SOURCE_DIR}/CMakeModules/FcpptCMakeUtils.cmake
-	${FCPPT_UTILS_PROJECT_SOURCE_DIR}/CMakeModules/FcpptExport.cmake
-	${FCPPT_UTILS_PROJECT_SOURCE_DIR}/CMakeModules/FcpptSymbol.cmake
+	${FCPPT_CMAKE_MODULES_DIR}/FindFcpptThreads.cmake
+	${FCPPT_CMAKE_MODULES_DIR}/FcpptCMakeUtils.cmake
+	${FCPPT_CMAKE_MODULES_DIR}/FcpptExport.cmake
+	${FCPPT_CMAKE_MODULES_DIR}/FcpptSymbol.cmake
 	DESTINATION
 	${INSTALL_CMAKEMODULES_DIR}
 )

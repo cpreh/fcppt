@@ -4,9 +4,9 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/private_config.hpp>
 #include <fcppt/endianness/format.hpp>
 #include <fcppt/endianness/host_format.hpp>
+#include <fcppt/impl/private_config.hpp>
 
 
 fcppt::endianness::format

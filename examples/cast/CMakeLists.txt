@@ -12,10 +12,14 @@ endfunction()
 
 add_fcppt_cast_example(
 	dynamic
+	LINK_LIBS
+		fcppt_core_interface
 )
 
 add_fcppt_cast_example(
 	dynamic_cross
+	LINK_LIBS
+		fcppt_core_interface
 )
 
 add_fcppt_cast_example(
@@ -26,6 +30,8 @@ add_fcppt_cast_example(
 
 add_fcppt_cast_example(
 	safe_numeric
+	LINK_LIBS
+		fcppt_core_interface
 )
 
 add_fcppt_cast_example(

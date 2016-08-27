@@ -1,186 +1,8 @@
-find_package(
-	Doxygen
-	REQUIRED
-)
-
 set(
-	DOC_OUTPUT
-	"${CMAKE_BINARY_DIR}/doc_generated"
-)
-
-set(
-	DOC_INCLUDE_DIRS
-	"${FCPPT_UTILS_PROJECT_SOURCE_DIR}/include"
-)
-
-configure_file(
-	Doxyfile.in
-	"${DOC_OUTPUT}/Doxyfile"
-)
-
-# For now, use COPYONLY (since I don't know which escape sequences are in the
-# html/css files that cmake might accidentally replace. Could be changed in
-# the future.
-configure_file(
-	header.html
-	"${DOC_OUTPUT}/header.html"
-	COPYONLY
-)
-
-configure_file(
-	footer.html
-	"${DOC_OUTPUT}/footer.html"
-	COPYONLY
-)
-
-configure_file(
-	stylesheet.css
-	"${DOC_OUTPUT}/stylesheet.css"
-	COPYONLY
-)
-
-configure_file(
-	layout.xml
-	"${DOC_OUTPUT}/layout.xml"
-	COPYONLY
-)
-
-set(
-	FCPPT_DOC_FILES
-	doc/CMakeLists.txt
-	doc/Doxyfile.in
-	doc/files/changes.doxygen
-	doc/files/changes_old.doxygen
-	doc/files/coding_style.doxygen
-	doc/files/coding_style_asthetic.doxygen
-	doc/files/logo.svg
-	doc/files/main.doxygen
-	doc/files/modules/algorithm.doxygen
-	doc/files/modules/assert.doxygen
-	doc/files/modules/assign.doxygen
-	doc/files/modules/bit.doxygen
-	doc/files/modules/casts.doxygen
-	doc/files/modules/config.doxygen
-	doc/files/modules/container/base.doxygen
-	doc/files/modules/container/bitfield.doxygen
-	doc/files/modules/container/grid.doxygen
-	doc/files/modules/container/raw_vector.doxygen
-	doc/files/modules/container/tree.doxygen
-	doc/files/modules/either.doxygen
-	doc/files/modules/endianness.doxygen
-	doc/files/modules/enum.doxygen
-	doc/files/modules/export.doxygen
-	doc/files/modules/fcppt.doxygen
-	doc/files/modules/filesystem.doxygen
-	doc/files/modules/io.doxygen
-	doc/files/modules/literal.doxygen
-	doc/files/modules/log.doxygen
-	doc/files/modules/math/base.doxygen
-	doc/files/modules/math/box.doxygen
-	doc/files/modules/math/dim.doxygen
-	doc/files/modules/math/matrix.doxygen
-	doc/files/modules/math/sphere.doxygen
-	doc/files/modules/math/vector.doxygen
-	doc/files/modules/mpl.doxygen
-	doc/files/modules/optional.doxygen
-	doc/files/modules/preprocessor.doxygen
-	doc/files/modules/random.doxygen
-	doc/files/modules/ref.doxygen
-	doc/files/modules/signal.doxygen
-	doc/files/modules/smartptr.doxygen
-	doc/files/modules/string.doxygen
-	doc/files/modules/strong_typedef.doxygen
-	doc/files/modules/time.doxygen
-	doc/files/modules/type_iso.doxygen
-	doc/files/modules/type_traits.doxygen
-	doc/files/modules/variant.doxygen
-	doc/files/modules/various.doxygen
-	doc/files/requirements.doxygen
-	doc/files/types_injected_from_boost.hpp
-	doc/footer.html
-	doc/header.html
-	doc/images/grid_row_major.svg
-	doc/images/logo.svg
-	doc/images/signal_benchmark.svg
-	doc/layout.xml
-	doc/stylesheet.css
-	examples/algorithm.cpp
-	examples/assert.cpp
-	examples/assert_complete.cpp
-	examples/assign.cpp
-	examples/backtrace.cpp
-	examples/cast.cpp
-	examples/cast/dynamic.cpp
-	examples/cast/dynamic_cross.cpp
-	examples/cast/dynamic_exn.cpp
-	examples/cast/safe_numeric.cpp
-	examples/cast/truncation_check.cpp
-	examples/codecvt.cpp
-	examples/coding_style.cpp
-	examples/coding_style_asthetic.cpp
-	examples/config.cpp
-	examples/container/bitfield.cpp
-	examples/container/grid.cpp
-	examples/container/grid_iteration.cpp
-	examples/container/grid_range.cpp
-	examples/container/raw_vector.cpp
-	examples/container/tree_simple.cpp
-	examples/container/tree_traversal.cpp
-	examples/cyclic_iterator.cpp
-	examples/either.cpp
-	examples/endianness.cpp
-	examples/enum.cpp
-	examples/homogenous_pair.cpp
-	examples/io/endianness.cpp
-	examples/io/scoped_rdbuf.cpp
-	examples/literal.cpp
-	examples/log/context.cpp
-	examples/log/formatting.cpp
-	examples/log/helloworld.cpp
-	examples/math/box.cpp
-	examples/math/casts.cpp
-	examples/math/dim.cpp
-	examples/math/matrix.cpp
-	examples/math/utility.cpp
-	examples/math/vector.cpp
-	examples/math/vector/access.cpp
-	examples/math/vector/arithmetic.cpp
-	examples/math/vector/basic.cpp
-	examples/math/vector/convert.cpp
-	examples/math/vector/various.cpp
-	examples/mpl/for_each.cpp
-	examples/mpl/invoke_on.cpp
-	examples/mpl/various.cpp
-	examples/noncopyable.cpp
-	examples/optional.cpp
-	examples/output_tm.cpp
-	examples/preprocessor/printing.cpp
-	examples/preprocessor/warning.cpp
-	examples/random/complex.cpp
-	examples/random/enum.cpp
-	examples/random/simple.cpp
-	examples/random/strong_typedef.cpp
-	examples/random/transform.cpp
-	examples/shared_ptr.cpp
-	examples/signal/benchmark.cpp
-	examples/signal/combine.cpp
-	examples/signal/connection.cpp
-	examples/signal/simple.cpp
-	examples/signal/unregister.cpp
-	examples/smart_ptr_deleter.cpp
-	examples/string.cpp
-	examples/string_conversion.cpp
-	examples/strong_typedef.cpp
-	examples/type_iso.cpp
-	examples/type_traits.cpp
-	examples/unique_ptr.cpp
-	examples/variant/binary_visitation.cpp
-	examples/variant/motivation.cpp
-	examples/variant/nonconst_visitation.cpp
-	examples/variant/visitation.cpp
-	examples/version.cpp
-	examples/visibility.cpp
-	examples/weak_ptr.cpp
+	FCPPT_CORE_FILES
+	libs/core/impl/include/fcppt/impl/codecvt.hpp
+	libs/core/impl/include/fcppt/impl/codecvt_type.hpp
+	libs/core/impl/include/fcppt/impl/export_class_instantiation.hpp
 	libs/core/include/fcppt/absurd.hpp
 	libs/core/include/fcppt/algorithm/all_of.hpp
 	libs/core/include/fcppt/algorithm/append.hpp
@@ -1242,116 +1064,48 @@ set(
 	libs/core/include/fcppt/weak_ptr_fwd.hpp
 	libs/core/include/fcppt/weak_ptr_impl.hpp
 	libs/core/include/fcppt/widen.hpp
-	libs/filesystem/include/fcppt/filesystem/create_directories_recursive_exn.hpp
-	libs/filesystem/include/fcppt/filesystem/create_directory_exn.hpp
-	libs/filesystem/include/fcppt/filesystem/create_directory_failed.hpp
-	libs/filesystem/include/fcppt/filesystem/directory_range.hpp
-	libs/filesystem/include/fcppt/filesystem/directory_range_fwd.hpp
-	libs/filesystem/include/fcppt/filesystem/exception.hpp
-	libs/filesystem/include/fcppt/filesystem/extension.hpp
-	libs/filesystem/include/fcppt/filesystem/extension_without_dot.hpp
-	libs/filesystem/include/fcppt/filesystem/file_to_string.hpp
-	libs/filesystem/include/fcppt/filesystem/impl/create_directory_failed.hpp
-	libs/filesystem/include/fcppt/filesystem/impl/exception.hpp
-	libs/filesystem/include/fcppt/filesystem/is_executable.hpp
-	libs/filesystem/include/fcppt/filesystem/normalize.hpp
-	libs/filesystem/include/fcppt/filesystem/num_subpaths.hpp
-	libs/filesystem/include/fcppt/filesystem/path_to_string.hpp
-	libs/filesystem/include/fcppt/filesystem/remove_extension.hpp
-	libs/filesystem/include/fcppt/filesystem/replace_extension.hpp
-	libs/filesystem/include/fcppt/filesystem/stem.hpp
-	libs/filesystem/include/fcppt/filesystem/strip_prefix.hpp
-	libs/log/include/fcppt/log/_.hpp
-	libs/log/include/fcppt/log/const_level_stream_array_ref.hpp
-	libs/log/include/fcppt/log/context.hpp
-	libs/log/include/fcppt/log/context_fwd.hpp
-	libs/log/include/fcppt/log/debug.hpp
-	libs/log/include/fcppt/log/default_level_streams.hpp
-	libs/log/include/fcppt/log/default_stream.hpp
-	libs/log/include/fcppt/log/detail/auto_context.hpp
-	libs/log/include/fcppt/log/detail/auto_context_fwd.hpp
-	libs/log/include/fcppt/log/detail/context_tree.hpp
-	libs/log/include/fcppt/log/detail/context_tree_fwd.hpp
-	libs/log/include/fcppt/log/detail/context_tree_node.hpp
-	libs/log/include/fcppt/log/detail/context_tree_node_fwd.hpp
-	libs/log/include/fcppt/log/detail/level_if_enabled.hpp
-	libs/log/include/fcppt/log/detail/location_vector.hpp
-	libs/log/include/fcppt/log/detail/optional_object_ref.hpp
-	libs/log/include/fcppt/log/detail/optional_object_ref_fwd.hpp
-	libs/log/include/fcppt/log/detail/output_helper.hpp
-	libs/log/include/fcppt/log/detail/temporary_output.hpp
-	libs/log/include/fcppt/log/detail/temporary_output_fwd.hpp
-	libs/log/include/fcppt/log/enabled_level_array.hpp
-	libs/log/include/fcppt/log/enabled_level_array_fwd.hpp
-	libs/log/include/fcppt/log/enabled_levels.hpp
-	libs/log/include/fcppt/log/error.hpp
-	libs/log/include/fcppt/log/fatal.hpp
-	libs/log/include/fcppt/log/format/chain.hpp
-	libs/log/include/fcppt/log/format/default_level.hpp
-	libs/log/include/fcppt/log/format/function.hpp
-	libs/log/include/fcppt/log/format/function_fwd.hpp
-	libs/log/include/fcppt/log/format/inserter.hpp
-	libs/log/include/fcppt/log/format/optional_function.hpp
-	libs/log/include/fcppt/log/format/optional_function_fwd.hpp
-	libs/log/include/fcppt/log/format/prefix.hpp
-	libs/log/include/fcppt/log/format/time_stamp.hpp
-	libs/log/include/fcppt/log/info.hpp
-	libs/log/include/fcppt/log/level.hpp
-	libs/log/include/fcppt/log/level_from_string.hpp
-	libs/log/include/fcppt/log/level_fwd.hpp
-	libs/log/include/fcppt/log/level_stream.hpp
-	libs/log/include/fcppt/log/level_stream_array.hpp
-	libs/log/include/fcppt/log/level_stream_array_fwd.hpp
-	libs/log/include/fcppt/log/level_stream_fwd.hpp
-	libs/log/include/fcppt/log/level_to_string.hpp
-	libs/log/include/fcppt/log/location.hpp
-	libs/log/include/fcppt/log/location_fwd.hpp
-	libs/log/include/fcppt/log/name.hpp
-	libs/log/include/fcppt/log/name_fwd.hpp
-	libs/log/include/fcppt/log/object.hpp
-	libs/log/include/fcppt/log/object_fwd.hpp
-	libs/log/include/fcppt/log/optional_level.hpp
-	libs/log/include/fcppt/log/optional_level_fwd.hpp
-	libs/log/include/fcppt/log/parameters.hpp
-	libs/log/include/fcppt/log/parameters_fwd.hpp
-	libs/log/include/fcppt/log/setting.hpp
-	libs/log/include/fcppt/log/setting_fwd.hpp
-	libs/log/include/fcppt/log/verbose.hpp
-	libs/log/include/fcppt/log/warning.hpp
+	libs/core/src/args.cpp
+	libs/core/src/backtrace/current_stack_frame.cpp
+	libs/core/src/backtrace/print_current_stack_frame.cpp
+	libs/core/src/endianness/host_format.cpp
+	libs/core/src/endianness/is_big_endian.cpp
+	libs/core/src/endianness/is_little_endian.cpp
+	libs/core/src/endianness/reverse_mem.cpp
+	libs/core/src/error/strerrno.cpp
+	libs/core/src/error/strerror.cpp
+	libs/core/src/from_std_string.cpp
+	libs/core/src/from_std_string_locale.cpp
+	libs/core/src/from_std_wstring.cpp
+	libs/core/src/from_std_wstring_locale.cpp
+	libs/core/src/getenv.cpp
+	libs/core/src/io/cerr.cpp
+	libs/core/src/io/cin.cpp
+	libs/core/src/io/clog.cpp
+	libs/core/src/io/cout.cpp
+	libs/core/src/io/read_chars.cpp
+	libs/core/src/io/scoped_rdbuf.cpp
+	libs/core/src/narrow.cpp
+	libs/core/src/string_conv_locale.cpp
+	libs/core/src/time/ctime.cpp
+	libs/core/src/time/gmtime.cpp
+	libs/core/src/time/localtime.cpp
+	libs/core/src/time/output_tm.cpp
+	libs/core/src/time/std_time.cpp
+	libs/core/src/to_std_string.cpp
+	libs/core/src/to_std_string_locale.cpp
+	libs/core/src/to_std_wstring.cpp
+	libs/core/src/to_std_wstring_locale.cpp
+	libs/core/src/type_name.cpp
+	libs/core/src/type_name_from_index.cpp
+	libs/core/src/type_name_from_info.cpp
+	libs/core/src/version_string.cpp
+	libs/core/src/widen.cpp
 )
 
-fcppt_utils_append_source_dir(
-	"${FCPPT_DOC_FILES}"
-	FCPPT_DOC_FILES_ABS
-)
-
-set(
-	HTML_INDEX_OUTPUT
-	${DOC_OUTPUT}/html/index.html
-)
-
-add_custom_command(
-	OUTPUT "${HTML_INDEX_OUTPUT}"
-	COMMAND ${DOXYGEN_EXECUTABLE}
-	DEPENDS
-	${FCPPT_DOC_FILES_ABS}
-	WORKING_DIRECTORY "${DOC_OUTPUT}"
-)
-
-add_custom_target(
-	doc
-	ALL
-	SOURCES
-	${HTML_INDEX_OUTPUT}
-)
-
-fcppt_utils_install_doc_dir(
-	INSTALL_DOC_DIR
-)
-
-install(
-	DIRECTORY
-	"${DOC_OUTPUT}/html"
-	DESTINATION
-	"${INSTALL_DOC_DIR}"
+make_fcppt_library(
+	core
+	"${FCPPT_CORE_FILES}"
+	HAS_IMPL_DIR
+	SYMBOL_NAME
+		FCPPT
 )

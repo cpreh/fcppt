@@ -7,7 +7,7 @@
 #include <fcppt/backtrace/current_stack_frame.hpp>
 #include <fcppt/backtrace/stack_frame.hpp>
 #include <fcppt/backtrace/stack_limit.hpp>
-#include <fcppt/private_config.hpp>
+#include <fcppt/impl/private_config.hpp>
 #if defined(FCPPT_HAVE_BACKTRACE)
 #include <fcppt/make_int_range_count.hpp>
 #include <fcppt/unique_ptr.hpp>

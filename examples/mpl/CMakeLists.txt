@@ -18,6 +18,8 @@ add_fcppt_mpl_example(
 
 add_fcppt_mpl_example(
 	invoke_on
+	LINK_LIBS
+		fcppt_core_interface
 )
 
 add_fcppt_mpl_example(
