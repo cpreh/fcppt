@@ -25,11 +25,14 @@ fcppt::time::ctime(
 	);
 
 	if(
-		ret == nullptr
+		ret
+		==
+		nullptr
 	)
-		throw fcppt::time::exception(
-			FCPPT_TEXT("std::ctime() failed!")
-		);
+		throw
+			fcppt::time::exception{
+				FCPPT_TEXT("std::ctime() failed!")
+			};
 
 	return
 		fcppt::from_std_string(

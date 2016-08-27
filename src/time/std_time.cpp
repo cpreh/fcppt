@@ -31,9 +31,11 @@ fcppt::time::std_time()
 			-1
 		)
 	)
-		throw fcppt::time::exception(
-			FCPPT_TEXT("std_time() failed!")
-		);
+		throw
+			fcppt::time::exception{
+				FCPPT_TEXT("std_time() failed!")
+			};
 
-	return ret;
+	return
+		ret;
 }

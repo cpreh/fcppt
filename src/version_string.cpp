@@ -20,12 +20,16 @@ fcppt::version_string()
 		fcppt::insert_to_fcppt_string(
 			fcppt::major_version::value
 		)
-		+ FCPPT_TEXT('.')
-		+ fcppt::insert_to_fcppt_string(
+		+
+		FCPPT_TEXT('.')
+		+
+		fcppt::insert_to_fcppt_string(
 			fcppt::minor_version::value
 		)
-		+ FCPPT_TEXT('.')
-		+ fcppt::insert_to_fcppt_string(
+		+
+		FCPPT_TEXT('.')
+		+
+		fcppt::insert_to_fcppt_string(
 			fcppt::micro_version::value
 		);
 }

@@ -18,22 +18,18 @@
 #include <fcppt/config/external_end.hpp>
 #endif
 
-#if defined(FCPPT_HAVE_BACKTRACE)
-namespace
-{
-
-std::size_t const max_stacktrace_size = 128;
-
-}
-#endif
 
 void
 fcppt::backtrace::print_current_stack_frame()
 {
 #if defined(FCPPT_HAVE_BACKTRACE)
+
+	constexpr std::size_t const max_stacktrace_size{
+		128u
+	};
+
 	typedef
-	std::array
-	<
+	std::array<
 		void *,
 		max_stacktrace_size
 	>
