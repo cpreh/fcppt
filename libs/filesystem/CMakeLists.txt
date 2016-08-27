@@ -9,11 +9,14 @@ set(
 	libs/filesystem/include/fcppt/filesystem/extension.hpp
 	libs/filesystem/include/fcppt/filesystem/extension_without_dot.hpp
 	libs/filesystem/include/fcppt/filesystem/file_to_string.hpp
+	libs/filesystem/include/fcppt/filesystem/fstream.hpp
+	libs/filesystem/include/fcppt/filesystem/ifstream.hpp
 	libs/filesystem/include/fcppt/filesystem/impl/create_directory_failed.hpp
 	libs/filesystem/include/fcppt/filesystem/impl/exception.hpp
 	libs/filesystem/include/fcppt/filesystem/is_executable.hpp
 	libs/filesystem/include/fcppt/filesystem/normalize.hpp
 	libs/filesystem/include/fcppt/filesystem/num_subpaths.hpp
+	libs/filesystem/include/fcppt/filesystem/ofstream.hpp
 	libs/filesystem/include/fcppt/filesystem/path_to_string.hpp
 	libs/filesystem/include/fcppt/filesystem/remove_extension.hpp
 	libs/filesystem/include/fcppt/filesystem/replace_extension.hpp

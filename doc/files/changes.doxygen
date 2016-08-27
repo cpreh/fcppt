@@ -75,6 +75,9 @@
 	<li>Added <code>_fwd</code> headers to \link fcppt::io::istream\endlink,
 	\link fcppt::io::ostream\endlink, \link fcppt::io::istringstream\endlink,
 	\link fcppt::io::ostringstream\endlink and \link fcppt::io::stringstream\endlink.</li>
+	<li>Moved <code>fcppt::io::ifstream</code>, <code>fcppt::io::ofstream</code> and
+	<code>fcppt::io::fstream</code> to \link fcppt::filesystem::ifstream\endlink,
+	\link fcppt::filesystem::ofstream\endlink and \link fcppt::filesystem::fstream\endlink.</li>
 	</ul>
 </li>
 

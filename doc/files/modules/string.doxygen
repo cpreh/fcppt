@@ -123,7 +123,7 @@ Here is a small exmaple:
 
 To read in or write out files using the system's native character type, you can
 use the typedefs in the \link fcppt::io\endlink namespace, namely \link
-fcppt::io::ifstream\endlink, \link fcppt::io::ofstream \endlink, and so on.
+fcppt::filesystem::ifstream\endlink, \link fcppt::filesystem::ofstream \endlink, and so on.
 Note that these are not typedefs to the standard library streams, but to
 <code>boost::filesystem</code> streams. These streams take a filesystem path
 object in the constructor instead of a <code>const char *</code>.

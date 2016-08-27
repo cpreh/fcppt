@@ -51,7 +51,7 @@ PROJECT_BRIEF          = "Freundlich's C++ toolkit"
 # and the maximum width should not exceed 200 pixels. Doxygen will copy the logo
 # to the output directory.
 
-PROJECT_LOGO           = @CMAKE_SOURCE_DIR@/doc/files/logo.svg
+PROJECT_LOGO           = @FCPPT_UTILS_PROJECT_SOURCE_DIR@/doc/files/logo.svg
 
 # The OUTPUT_DIRECTORY tag is used to specify the (relative or absolute) path
 # into which the generated documentation will be written. If a relative path is
@@ -753,8 +753,10 @@ WARN_LOGFILE           =
 # spaces.
 # Note: If this tag is empty the current directory is searched.
 
-INPUT                  = @CMAKE_SOURCE_DIR@/include/fcppt \
-                         @CMAKE_SOURCE_DIR@/doc/files
+INPUT                  = @FCPPT_UTILS_PROJECT_SOURCE_DIR@/libs/core/include \
+                         @FCPPT_UTILS_PROJECT_SOURCE_DIR@/libs/filesystem/include \
+                         @FCPPT_UTILS_PROJECT_SOURCE_DIR@/libs/log/include \
+                         @FCPPT_UTILS_PROJECT_SOURCE_DIR@/doc/files
 
 # This tag can be used to specify the character encoding of the source files
 # that doxygen parses. Internally doxygen uses the UTF-8 encoding. Doxygen uses
@@ -829,7 +831,7 @@ EXCLUDE_SYMBOLS        = *DETAIL* \
 # that contain example code fragments that are included (see the \include
 # command).
 
-EXAMPLE_PATH           = @CMAKE_SOURCE_DIR@/examples
+EXAMPLE_PATH           = @FCPPT_UTILS_PROJECT_SOURCE_DIR@/examples
 
 # If the value of the EXAMPLE_PATH tag contains directories, you can use the
 # EXAMPLE_PATTERNS tag to specify one or more wildcard pattern (like *.cpp and
@@ -849,7 +851,7 @@ EXAMPLE_RECURSIVE      = YES
 # that contain images that are to be included in the documentation (see the
 # \image command).
 
-IMAGE_PATH             = @CMAKE_SOURCE_DIR@/doc/images
+IMAGE_PATH             = @FCPPT_UTILS_PROJECT_SOURCE_DIR@/doc/images
 
 # The INPUT_FILTER tag can be used to specify a program that doxygen should
 # invoke to filter for each input file. Doxygen will invoke the filter program
@@ -1944,7 +1946,7 @@ SEARCH_INCLUDES        = YES
 # preprocessor.
 # This tag requires that the tag SEARCH_INCLUDES is set to YES.
 
-INCLUDE_PATH           = @DOC_INCLUDE_DIRS@
+INCLUDE_PATH           =
 
 # You can use the INCLUDE_FILE_PATTERNS tag to specify one or more wildcard
 # patterns (like *.h and *.hpp) to filter out the header-files in the

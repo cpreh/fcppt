@@ -4,8 +4,8 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_IO_IFSTREAM_HPP_INCLUDED
-#define FCPPT_IO_IFSTREAM_HPP_INCLUDED
+#ifndef FCPPT_FILESYSTEM_IFSTREAM_HPP_INCLUDED
+#define FCPPT_FILESYSTEM_IFSTREAM_HPP_INCLUDED
 
 #include <fcppt/char_type.hpp>
 #include <fcppt/config/external_begin.hpp>
@@ -15,7 +15,7 @@
 
 namespace fcppt
 {
-namespace io
+namespace filesystem
 {
 
 /**

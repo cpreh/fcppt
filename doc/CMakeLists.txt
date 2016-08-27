@@ -5,22 +5,15 @@ find_package(
 
 set(
 	DOC_OUTPUT
-	"${CMAKE_BINARY_DIR}/doc_generated"
-)
-
-set(
-	DOC_INCLUDE_DIRS
-	"${FCPPT_UTILS_PROJECT_SOURCE_DIR}/include"
+	"${FCPPT_UTILS_PROJECT_BINARY_DIR}/doc_generated"
 )
 
 configure_file(
 	Doxyfile.in
 	"${DOC_OUTPUT}/Doxyfile"
+	@ONLY
 )
 
-# For now, use COPYONLY (since I don't know which escape sequences are in the
-# html/css files that cmake might accidentally replace. Could be changed in
-# the future.
 configure_file(
 	header.html
 	"${DOC_OUTPUT}/header.html"
@@ -646,14 +639,11 @@ set(
 	libs/core/include/fcppt/io/clog.hpp
 	libs/core/include/fcppt/io/cout.hpp
 	libs/core/include/fcppt/io/expect.hpp
-	libs/core/include/fcppt/io/fstream.hpp
 	libs/core/include/fcppt/io/get.hpp
-	libs/core/include/fcppt/io/ifstream.hpp
 	libs/core/include/fcppt/io/istream.hpp
 	libs/core/include/fcppt/io/istream_fwd.hpp
 	libs/core/include/fcppt/io/istringstream.hpp
 	libs/core/include/fcppt/io/istringstream_fwd.hpp
-	libs/core/include/fcppt/io/ofstream.hpp
 	libs/core/include/fcppt/io/optional_buffer.hpp
 	libs/core/include/fcppt/io/optional_buffer_fwd.hpp
 	libs/core/include/fcppt/io/ostream.hpp
@@ -1251,11 +1241,14 @@ set(
 	libs/filesystem/include/fcppt/filesystem/extension.hpp
 	libs/filesystem/include/fcppt/filesystem/extension_without_dot.hpp
 	libs/filesystem/include/fcppt/filesystem/file_to_string.hpp
+	libs/filesystem/include/fcppt/filesystem/fstream.hpp
+	libs/filesystem/include/fcppt/filesystem/ifstream.hpp
 	libs/filesystem/include/fcppt/filesystem/impl/create_directory_failed.hpp
 	libs/filesystem/include/fcppt/filesystem/impl/exception.hpp
 	libs/filesystem/include/fcppt/filesystem/is_executable.hpp
 	libs/filesystem/include/fcppt/filesystem/normalize.hpp
 	libs/filesystem/include/fcppt/filesystem/num_subpaths.hpp
+	libs/filesystem/include/fcppt/filesystem/ofstream.hpp
 	libs/filesystem/include/fcppt/filesystem/path_to_string.hpp
 	libs/filesystem/include/fcppt/filesystem/remove_extension.hpp
 	libs/filesystem/include/fcppt/filesystem/replace_extension.hpp

@@ -468,14 +468,11 @@ set(
 	libs/core/include/fcppt/io/clog.hpp
 	libs/core/include/fcppt/io/cout.hpp
 	libs/core/include/fcppt/io/expect.hpp
-	libs/core/include/fcppt/io/fstream.hpp
 	libs/core/include/fcppt/io/get.hpp
-	libs/core/include/fcppt/io/ifstream.hpp
 	libs/core/include/fcppt/io/istream.hpp
 	libs/core/include/fcppt/io/istream_fwd.hpp
 	libs/core/include/fcppt/io/istringstream.hpp
 	libs/core/include/fcppt/io/istringstream_fwd.hpp
-	libs/core/include/fcppt/io/ofstream.hpp
 	libs/core/include/fcppt/io/optional_buffer.hpp
 	libs/core/include/fcppt/io/optional_buffer_fwd.hpp
 	libs/core/include/fcppt/io/ostream.hpp
