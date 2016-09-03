@@ -1,12 +1,44 @@
+include(
+	CMakeParseArguments
+)
+
 function(
 	add_fcppt_test
 	PATHNAME
 )
+	set(
+		OPTION_ARGS
+		NO_CODE
+	)
+
+	set(
+		MULTI_ARGS
+		LINK_LIBS
+	)
+
+	cmake_parse_arguments(
+		""
+		"${OPTION_ARGS}"
+		""
+		"${MULTI_ARGS}"
+		${ARGN}
+	)
+
+	if(
+		_NO_CODE
+	)
+		set(
+			NO_CODE
+			NO_CODE
+		)
+	endif()
+
 	fcppt_utils_add_test(
 		"${PATHNAME}"
+		${NO_CODE}
 		LINK_LIBS
+			${_LINK_LIBS}
 			fcppt_core_interface
-		${ARGN}
 	)
 endfunction()
 
