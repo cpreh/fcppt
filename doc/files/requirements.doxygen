@@ -137,8 +137,8 @@ target_link_libraries(
 )
 </pre>
 Linking to a specific target, e.g. <code>${fcppt_core_TARGET}</code>, directly
-inherits all includes directories and build flags as needed.If you use headers
-only, you can link to <code>fcppt_core_interface</code> instead:
+inherits all includes directories and build flags as needed. If you use headers from
+fcppt core only, you can link to <code>fcppt_core_interface</code> instead:
 <pre>
 target_link_libraries(
 	mytarget

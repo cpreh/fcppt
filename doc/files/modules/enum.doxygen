@@ -70,5 +70,5 @@ for example:
 
 Casting an integral value to an enum might be needed when deserializing data.
 It is important, however, that the value must not fall outside of the enum's
-range. \ref fcppt::cast_to_enum throws an exception in this case.
+range. \ref fcppt::cast_to_enum returns an empty optional in this case.
 */
