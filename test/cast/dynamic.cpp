@@ -24,7 +24,7 @@ struct base
 	FCPPT_NONCOPYABLE(
 		base
 	);
-public:
+
 	base()
 	{
 	}
@@ -39,7 +39,16 @@ struct derived1
 :
 base
 {
+	FCPPT_NONCOPYABLE(
+		derived1
+	);
+
 	derived1()
+	{
+	}
+
+	~derived1()
+	override
 	{
 	}
 };
@@ -48,7 +57,16 @@ struct derived2
 :
 base
 {
+	FCPPT_NONCOPYABLE(
+		derived2
+	);
+
 	derived2()
+	{
+	}
+
+	~derived2()
+	override
 	{
 	}
 };

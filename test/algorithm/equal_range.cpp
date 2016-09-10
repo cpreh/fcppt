@@ -46,7 +46,7 @@ FCPPT_PP_POP_WARNING
 
 		BOOST_CHECK_EQUAL(
 			result.size(),
-			0
+			0u
 		);
 	}
 
@@ -60,7 +60,7 @@ FCPPT_PP_POP_WARNING
 
 		BOOST_REQUIRE_EQUAL(
 			result.size(),
-			1
+			1u
 		);
 
 		BOOST_CHECK(

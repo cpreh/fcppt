@@ -40,7 +40,7 @@ FCPPT_PP_POP_WARNING
 			vec,
 			2
 		).get_unsafe(),
-		1
+		1u
 	);
 
 	BOOST_CHECK_EQUAL(

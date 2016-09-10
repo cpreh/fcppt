@@ -9,6 +9,7 @@
 #define FCPPT_MATH_BOX_CORNER_POINTS_HPP_INCLUDED
 
 #include <fcppt/literal.hpp>
+#include <fcppt/use.hpp>
 #include <fcppt/algorithm/array_init.hpp>
 #include <fcppt/math/generate_binary_vectors.hpp>
 #include <fcppt/math/size_type.hpp>
@@ -93,6 +94,10 @@ corner_points(
 				auto const _index
 			)
 			{
+				FCPPT_USE(
+					_index
+				);
+
 				return
 					_box.pos()
 					+

@@ -154,7 +154,7 @@ FCPPT_PP_POP_WARNING
 
 	BOOST_REQUIRE_EQUAL(
 		result.size(),
-		4
+		4u
 	);
 
 	BOOST_CHECK_EQUAL(

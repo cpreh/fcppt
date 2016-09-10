@@ -8,6 +8,7 @@
 #define FCPPT_MATH_BOX_DETAIL_INIT_HPP_INCLUDED
 
 #include <fcppt/homogenous_pair.hpp>
+#include <fcppt/use.hpp>
 #include <fcppt/algorithm/array_init.hpp>
 #include <fcppt/math/box/is_box.hpp>
 #include <fcppt/math/detail/init_function.hpp>
@@ -78,6 +79,10 @@ init(
 					auto const _index
 				)
 				{
+					FCPPT_USE(
+						_index
+					);
+
 					return
 						std::get<
 							_index()
@@ -93,6 +98,10 @@ init(
 					auto const _index
 				)
 				{
+					FCPPT_USE(
+						_index
+					);
+
 					return
 						std::get<
 							_index()
