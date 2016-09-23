@@ -29,6 +29,7 @@
 
 <li>\ref fcpptconfig
 	<ul>
+	<li>Added <code>FCPPT_CONFIG_GNU_GCC_COMPILER</code> to distinguish gcc from clang.</li>
 	<li>Ignore <code>-Wundefined-var-template</code> for
 	<code>clang-3.9</code> in external headers.</li>
 	</ul>
