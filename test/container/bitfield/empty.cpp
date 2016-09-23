@@ -18,34 +18,6 @@
 #include <fcppt/config/external_end.hpp>
 
 
-namespace
-{
-
-typedef
-std::integral_constant<
-	unsigned,
-	0
->
-static_size;
-
-}
-
-template
-class
-fcppt::container::bitfield::object<
-	unsigned,
-	static_size
->;
-
-template
-class
-fcppt::container::bitfield::proxy<
-	fcppt::container::bitfield::array<
-		static_size,
-		fcppt::container::bitfield::default_internal_type
-	>
->;
-
 FCPPT_PP_PUSH_WARNING
 FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
 
@@ -54,6 +26,13 @@ BOOST_AUTO_TEST_CASE(
 )
 {
 FCPPT_PP_POP_WARNING
+
+	typedef
+	std::integral_constant<
+		unsigned,
+		0
+	>
+	static_size;
 
 	typedef
 	fcppt::container::bitfield::object<

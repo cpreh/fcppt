@@ -85,7 +85,6 @@ function(
 		PRIVATE
 		${Boost_INCLUDE_DIRS}
 		${FCPPT_UTILS_PROJECT_BINARY_DIR}/include
-		${FCPPT_UTILS_PROJECT_SOURCE_DIR}/include
 	)
 
 	if(

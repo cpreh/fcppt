@@ -288,6 +288,7 @@ if(
 		APPEND
 		FCPPT_UTILS_COMPILE_OPTIONS
 		"-std=c++14"
+		"-pedantic"
 		"-pedantic-errors"
 		"-Wall"
 		"-Wextra"
@@ -335,8 +336,24 @@ if(
 			"-Wdouble-promotion"
 			"-Wlogical-op"
 			"-Wmaybe-uninitialized"
+			"-Wmissing-include-dirs"
+			"-Wsuggest-override"
 			"-Wunused-local-typedefs"
+			"-Wzero-as-null-pointer-constant"
 		)
+
+		if(
+			CMAKE_CXX_COMPILER_VERSION
+			VERSION_GREATER
+			6.0
+		)
+			list(
+				APPEND
+				FCPPT_UTILS_COMPILE_OPTIONS
+				"-Wduplicated-cond"
+				"-Wnull-dereference"
+			)
+		endif()
 	endif()
 
 	if(

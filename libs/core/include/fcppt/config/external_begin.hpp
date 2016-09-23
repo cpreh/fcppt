@@ -73,7 +73,7 @@ FCPPT_PP_DISABLE_GCC_WARNING(-Wmismatched-tags)
 FCPPT_PP_DISABLE_GCC_WARNING(-Wunneeded-member-function)
 FCPPT_PP_DISABLE_GCC_WARNING(-Wunused-member-function)
 
-#include <fcppt/config/clang_version_at_least.h>
+#include <fcppt/config/clang_version_at_least.hpp>
 
 #if FCPPT_CONFIG_CLANG_VERSION_AT_LEAST(3, 6)
 FCPPT_PP_DISABLE_GCC_WARNING(-Winconsistent-missing-override)
@@ -86,7 +86,14 @@ FCPPT_PP_DISABLE_GCC_WARNING(-Wundefined-var-template)
 #else
 
 FCPPT_PP_DISABLE_GCC_WARNING(-Wliteral-suffix)
+FCPPT_PP_DISABLE_GCC_WARNING(-Wsuggest-override)
 FCPPT_PP_DISABLE_GCC_WARNING(-Wzero-as-null-pointer-constant)
+
+#include <fcppt/config/gcc_version_at_least.hpp>
+
+#if FCPPT_CONFIG_GCC_VERSION_AT_LEAST(6, 0)
+FCPPT_PP_DISABLE_GCC_WARNING(-Wnull-dereference)
+#endif
 
 #endif
 
