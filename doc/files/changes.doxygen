@@ -8,11 +8,13 @@
 <ul>
 
 <li><code>CMake</code>
-	<ul>
-	<li>Added <em>interface libraries</em> to fcppt's exported targets. For
+	<p>
+	Added <em>interface libraries</em> to fcppt's exported targets. For
 	example, <code>fcppt_core_interface</code> can be used to inherit the
 	include paths and compile definitions from <code>fcppt_core</code>
-	without linking to the library.</li>
+	without linking to the library.
+	</p>
+	<ul>
 	<li>Added <code>INCLUDE_DIRS</code> and <code>LINK_LIBS</code> to
 	<code>fcppt_utils_add_dummy_target</code>.</li>
 	<li>Added <code>fcppt_utils_is_path_prefix_of</code>.</li>
@@ -32,6 +34,8 @@
 	<li>Added <code>FCPPT_CONFIG_GNU_GCC_COMPILER</code> to distinguish gcc from clang.</li>
 	<li>Ignore <code>-Wundefined-var-template</code> for
 	<code>clang-3.9</code> in external headers.</li>
+	<li>Ignore <code>-Wsuggest-override</code> in external headers.</li>
+	<li>Ignore <code>-Wnull-dereference</code> for <code>gcc-6</code> in external headers.</li>
 	</ul>
 </li>
 
