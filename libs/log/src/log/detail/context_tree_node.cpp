@@ -9,8 +9,8 @@
 #include <fcppt/enum_size.hpp>
 #include <fcppt/cast/enum_to_int.hpp>
 #include <fcppt/cast/size.hpp>
-#include <fcppt/log/name.hpp>
 #include <fcppt/log/level.hpp>
+#include <fcppt/log/name.hpp>
 #include <fcppt/log/optional_level.hpp>
 #include <fcppt/log/detail/active_level_int.hpp>
 #include <fcppt/log/detail/context_tree_node.hpp>
