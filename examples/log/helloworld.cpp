@@ -9,12 +9,11 @@
 #include <fcppt/log/context.hpp>
 #include <fcppt/log/debug.hpp>
 #include <fcppt/log/default_level_streams.hpp>
-#include <fcppt/log/enabled_levels.hpp>
 #include <fcppt/log/level.hpp>
 #include <fcppt/log/name.hpp>
 #include <fcppt/log/object.hpp>
+#include <fcppt/log/optional_level.hpp>
 #include <fcppt/log/parameters.hpp>
-#include <fcppt/log/setting.hpp>
 #include <fcppt/log/verbose.hpp>
 #include <fcppt/log/format/optional_function.hpp>
 
@@ -25,15 +24,13 @@ main()
 //! [helloworld]
 	// Create a log context that has debug and every level above enabled
 	fcppt::log::context context{
-		fcppt::log::setting{
-			fcppt::log::enabled_levels(
-				fcppt::log::level::debug
-			)
+		fcppt::log::optional_level{
+			fcppt::log::level::debug
 		},
 		fcppt::log::default_level_streams()
 	};
 
-	// Create a log object
+	// Create a log object at location "{ fcppt }"
 	fcppt::log::object log{
 		context,
 		fcppt::log::parameters{
@@ -44,7 +41,7 @@ main()
 		}
 	};
 
-	// Outputs: "debug: Hello World"
+	// Outputs "fcppt: debug: Hello World"
 	if(
 		log.enabled(
 			fcppt::log::level::debug

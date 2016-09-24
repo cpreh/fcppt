@@ -22,6 +22,7 @@
 			<li>\ref log_hierarchy_design</li>
 			<li>\ref log_hierarchy_example</li>
 		</ul>
+	<li>\ref log_threads</li>
 	<li>\ref log_headers</li>
 </ul>
 
@@ -38,8 +39,7 @@ The following list highlights the main features of fcppt's logging library:
 
 <dd>The library assigns <em>log levels</em> to <em>log locations</em>, which is
 stored by a <em>log context</em>. Log levels are, for example, <code>debug,
-warning, error</code> and log locations are lists of strings. For each location,
-every level can either be enabled or disabled.
+warning, error</code> and log locations are lists of strings.
 </dd>
 
 <dt>Formatting and direction of messages:</dt>
@@ -135,16 +135,16 @@ The following code shows what is printed:
 
 Controlling at runtime which messages are logged is very important. Under
 normal circumstances, you probably want to only log serious problems, while in
-a debugging scenario a lot of debugging messages should be logged.
+a debug scenario a lot of debug messages should be logged.
 
 \subsection log_hierarchy_design Log hierarchy design
 
 A location is a list of <code>fcppt::log::name</code> values, e.g.
 <code>{"my_lib", "my_subsystem"}</code>.
 An \link fcppt::log::context \endlink associates locations with
-\link fcppt::log::setting\endlink objects. These can be configured through
+\link fcppt::log::optional_level\endlink values. These can be configured through
 the \link fcppt::log::context::set\endlink function, even before any log objects
-are created. This is useful, for example, for specifying log settings on the
+are created. This is useful, for example, for specifying log levels on the
 command line.
 
 Each log object refers to a location of a given context.
@@ -160,7 +160,7 @@ In its constructor, it gets a name, and in addition to that, it gets either
 The next example shows how log objects, contexts and locations can be used
 together.
 
-The log context gets a single \link fcppt::log::setting\endlink as its
+The log context gets a single \link fcppt::log::optional_level\endlink as its
 parameter, which is used as a default for every location, unless changed.
 
 \snippet log/context.cpp declare_context
@@ -175,7 +175,7 @@ to its constructor, thus its location is <code>{"root", "child"}</code>.
 
 \snippet log/context.cpp declare_child_logger
 
-As mentioned earlier, the locations inherit the root setting of the context, so
+As mentioned earlier, the locations inherit the root level of the context, so
 every log object currently has the debug level and all levels above enabled: The
 log location given to a log object implicitly changes how its output is formatted:
 
@@ -186,7 +186,7 @@ the second statement will print <code>root: child: warning: Print from
 child.</code>
 
 The \link fcppt::log::context::set\endlink function can be used to change the
-settings of a location at runtime.
+level of a location at runtime.
 
 \snippet log/context.cpp context_set
 
@@ -195,11 +195,20 @@ level above enabled, so the following output is not printed:
 
 \snippet log/context.cpp log_info
 
-Note that changing the settings at a location also changes the settings below
+Note that changing the level at a location also changes the levels below
 it. We can change the root level back to debug which will also affect the child
 level:
 
 \snippet log/context.cpp context_set2
+
+Passing an empty optional log level disables all levels.
+
+\section log_threads Thread safety
+
+The log context contains a mutex to protect its internal structure from race conditions.
+Therefore, calling element functions of a log context from multiple threads is safe.
+Log objects can be used in different threads than the log context. However, sharing
+a log object between different threads is not safe.
 
 \section log_headers Header files
 All headers are relative to the log subdirectory.
@@ -275,14 +284,6 @@ All headers are relative to the log subdirectory.
 <td>Contains \link fcppt::log::parameters \endlink's definition.</td>
 </tr>
 <tr>
-<td><code>setting_fwd.hpp</code></td>
-<td>Contains \link fcppt::log::setting \endlink's declaration.</td>
-</tr>
-<tr>
-<td><code>setting.hpp</code></td>
-<td>Contains \link fcppt::log::setting \endlink's definition.</td>
-</tr>
-<tr>
 <td><code>verbose.hpp</code></td>
 <td>Contains the \link FCPPT_LOG_VERBOSE\endlink macro.</td>
 </tr>
@@ -306,15 +307,6 @@ All headers are relative to the log subdirectory.
 <tr>
 <td><code>default_stream.hpp</code></td>
 <td>Contains the \link fcppt::log::default_stream \endlink function.</td>
-</tr>
-<tr>
-<td><code>enabled_level_array.hpp</code></td>
-<td>Contains the \link fcppt::log::enabled_level_array \endlink typedef.</td>
-</tr>
-<tr>
-<td><code>enabled_levels.hpp</code></td>
-<td>Contains the \link fcppt::log::enabled_levels \endlink helper function to create an array of enabled levels equal
-or greater to a certain level.</td>
 </tr>
 <tr>
 <td><code>level_from_string.hpp</code></td>

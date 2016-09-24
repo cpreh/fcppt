@@ -12,15 +12,14 @@
 #include <fcppt/log/_.hpp>
 #include <fcppt/log/context.hpp>
 #include <fcppt/log/debug.hpp>
-#include <fcppt/log/enabled_levels.hpp>
 #include <fcppt/log/error.hpp>
 #include <fcppt/log/level.hpp>
 #include <fcppt/log/level_stream.hpp>
 #include <fcppt/log/level_stream_array.hpp>
 #include <fcppt/log/name.hpp>
 #include <fcppt/log/object.hpp>
+#include <fcppt/log/optional_level.hpp>
 #include <fcppt/log/parameters.hpp>
-#include <fcppt/log/setting.hpp>
 #include <fcppt/log/format/default_level.hpp>
 #include <fcppt/log/format/function.hpp>
 #include <fcppt/log/format/optional_function.hpp>
@@ -107,10 +106,8 @@ main()
 
 //! [logger_context]
 	fcppt::log::context context{
-		fcppt::log::setting{
-			fcppt::log::enabled_levels(
-				fcppt::log::level::debug
-			)
+		fcppt::log::optional_level{
+			fcppt::log::level::debug
 		},
 		level_streams
 	};
@@ -135,7 +132,7 @@ main()
 
 //! [log_print]
 	// Prints:
-	// 'This is a formatting test: debug: test'
+	// 'This is a formatting test: fcppt: debug: test'
 	// to cout.
 	FCPPT_LOG_DEBUG(
 		log,
@@ -144,7 +141,7 @@ main()
 	);
 
 	// Prints:
-	// 'This is a formatting test: Horrible error, please fix: some error'
+	// 'This is a formatting test: fcppt: Horrible error, please fix: some error'
 	// to cerr.
 	FCPPT_LOG_ERROR(
 		log,

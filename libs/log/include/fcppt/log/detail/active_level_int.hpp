@@ -4,23 +4,20 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_LOG_IMPL_REMOVE_NODE_HPP_INCLUDED
-#define FCPPT_LOG_IMPL_REMOVE_NODE_HPP_INCLUDED
-
-#include <fcppt/log/detail/context_tree_fwd.hpp>
+#ifndef FCPPT_LOG_DETAIL_ACTIVE_LEVEL_INT_HPP_INCLUDED
+#define FCPPT_LOG_DETAIL_ACTIVE_LEVEL_INT_HPP_INCLUDED
 
 
 namespace fcppt
 {
 namespace log
 {
-namespace impl
+namespace detail
 {
 
-void
-remove_node(
-	fcppt::log::detail::context_tree &
-);
+typedef
+unsigned
+active_level_int;
 
 }
 }

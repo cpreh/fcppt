@@ -10,14 +10,13 @@
 #include <fcppt/log/_.hpp>
 #include <fcppt/log/context.hpp>
 #include <fcppt/log/default_level_streams.hpp>
-#include <fcppt/log/enabled_levels.hpp>
 #include <fcppt/log/info.hpp>
 #include <fcppt/log/level.hpp>
 #include <fcppt/log/location.hpp>
 #include <fcppt/log/name.hpp>
 #include <fcppt/log/object.hpp>
+#include <fcppt/log/optional_level.hpp>
 #include <fcppt/log/parameters.hpp>
-#include <fcppt/log/setting.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <cstdlib>
 #include <fcppt/config/external_end.hpp>
@@ -29,11 +28,9 @@ try
 {
 // ![declare_context]
 	fcppt::log::context context{
-		fcppt::log::setting(
-			fcppt::log::enabled_levels(
-				fcppt::log::level::debug
-			)
-		),
+		fcppt::log::optional_level{
+			fcppt::log::level::debug
+		},
 		fcppt::log::default_level_streams()
 	};
 // ![declare_context]
@@ -87,10 +84,8 @@ try
 		}
 		/
 		child_name,
-		fcppt::log::setting{
-			fcppt::log::enabled_levels(
-				fcppt::log::level::warning
-			)
+		fcppt::log::optional_level{
+			fcppt::log::level::warning
 		}
 	);
 // ![context_set]
@@ -108,10 +103,8 @@ try
 		fcppt::log::location{
 			root_name
 		},
-		fcppt::log::setting{
-			fcppt::log::enabled_levels(
-				fcppt::log::level::debug
-			)
+		fcppt::log::optional_level{
+			fcppt::log::level::debug
 		}
 	);
 

@@ -1261,8 +1261,7 @@ set(
 	libs/log/include/fcppt/log/debug.hpp
 	libs/log/include/fcppt/log/default_level_streams.hpp
 	libs/log/include/fcppt/log/default_stream.hpp
-	libs/log/include/fcppt/log/detail/auto_context.hpp
-	libs/log/include/fcppt/log/detail/auto_context_fwd.hpp
+	libs/log/include/fcppt/log/detail/active_level_int.hpp
 	libs/log/include/fcppt/log/detail/context_tree.hpp
 	libs/log/include/fcppt/log/detail/context_tree_fwd.hpp
 	libs/log/include/fcppt/log/detail/context_tree_node.hpp
@@ -1274,9 +1273,6 @@ set(
 	libs/log/include/fcppt/log/detail/output_helper.hpp
 	libs/log/include/fcppt/log/detail/temporary_output.hpp
 	libs/log/include/fcppt/log/detail/temporary_output_fwd.hpp
-	libs/log/include/fcppt/log/enabled_level_array.hpp
-	libs/log/include/fcppt/log/enabled_level_array_fwd.hpp
-	libs/log/include/fcppt/log/enabled_levels.hpp
 	libs/log/include/fcppt/log/error.hpp
 	libs/log/include/fcppt/log/fatal.hpp
 	libs/log/include/fcppt/log/format/chain.hpp
@@ -1307,8 +1303,6 @@ set(
 	libs/log/include/fcppt/log/optional_level_fwd.hpp
 	libs/log/include/fcppt/log/parameters.hpp
 	libs/log/include/fcppt/log/parameters_fwd.hpp
-	libs/log/include/fcppt/log/setting.hpp
-	libs/log/include/fcppt/log/setting_fwd.hpp
 	libs/log/include/fcppt/log/verbose.hpp
 	libs/log/include/fcppt/log/warning.hpp
 )

@@ -32,7 +32,7 @@ fcppt::log::impl::find_or_create_child(
 				_node.push_back(
 					fcppt::log::detail::context_tree_node{
 						_name,
-						_node.value().setting()
+						_node.value().level()
 					}
 				);
 

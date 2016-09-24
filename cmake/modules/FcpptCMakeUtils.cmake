@@ -339,8 +339,9 @@ if(
 			"-Wmissing-include-dirs"
 			"-Wsuggest-override"
 			"-Wunused-local-typedefs"
-			"-Wzero-as-null-pointer-constant"
 		)
+
+		#"-Wzero-as-null-pointer-constant" - too many warnings from boost that cannot be disabled
 
 		if(
 			CMAKE_CXX_COMPILER_VERSION

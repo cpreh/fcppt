@@ -10,13 +10,11 @@ set(
 	libs/log/impl/include/fcppt/log/impl/level_strings.hpp
 	libs/log/impl/include/fcppt/log/impl/optional_context_tree_ref.hpp
 	libs/log/impl/include/fcppt/log/impl/optional_context_tree_ref_fwd.hpp
-	libs/log/impl/include/fcppt/log/impl/remove_node.hpp
 	libs/log/impl/include/fcppt/log/impl/tree_formatter.hpp
 	libs/log/impl/src/log/impl/find_child.cpp
 	libs/log/impl/src/log/impl/find_child_const.cpp
 	libs/log/impl/src/log/impl/find_or_create_child.cpp
 	libs/log/impl/src/log/impl/level_strings.cpp
-	libs/log/impl/src/log/impl/remove_node.cpp
 	libs/log/impl/src/log/impl/tree_formatter.cpp
 	libs/log/include/fcppt/log/_.hpp
 	libs/log/include/fcppt/log/const_level_stream_array_ref.hpp
@@ -25,8 +23,7 @@ set(
 	libs/log/include/fcppt/log/debug.hpp
 	libs/log/include/fcppt/log/default_level_streams.hpp
 	libs/log/include/fcppt/log/default_stream.hpp
-	libs/log/include/fcppt/log/detail/auto_context.hpp
-	libs/log/include/fcppt/log/detail/auto_context_fwd.hpp
+	libs/log/include/fcppt/log/detail/active_level_int.hpp
 	libs/log/include/fcppt/log/detail/context_tree.hpp
 	libs/log/include/fcppt/log/detail/context_tree_fwd.hpp
 	libs/log/include/fcppt/log/detail/context_tree_node.hpp
@@ -38,9 +35,6 @@ set(
 	libs/log/include/fcppt/log/detail/output_helper.hpp
 	libs/log/include/fcppt/log/detail/temporary_output.hpp
 	libs/log/include/fcppt/log/detail/temporary_output_fwd.hpp
-	libs/log/include/fcppt/log/enabled_level_array.hpp
-	libs/log/include/fcppt/log/enabled_level_array_fwd.hpp
-	libs/log/include/fcppt/log/enabled_levels.hpp
 	libs/log/include/fcppt/log/error.hpp
 	libs/log/include/fcppt/log/fatal.hpp
 	libs/log/include/fcppt/log/format/chain.hpp
@@ -71,18 +65,14 @@ set(
 	libs/log/include/fcppt/log/optional_level_fwd.hpp
 	libs/log/include/fcppt/log/parameters.hpp
 	libs/log/include/fcppt/log/parameters_fwd.hpp
-	libs/log/include/fcppt/log/setting.hpp
-	libs/log/include/fcppt/log/setting_fwd.hpp
 	libs/log/include/fcppt/log/verbose.hpp
 	libs/log/include/fcppt/log/warning.hpp
 	libs/log/src/log/_.cpp
 	libs/log/src/log/context.cpp
 	libs/log/src/log/default_level_streams.cpp
 	libs/log/src/log/default_stream.cpp
-	libs/log/src/log/detail/auto_context.cpp
 	libs/log/src/log/detail/context_tree_node.cpp
 	libs/log/src/log/detail/temporary_output.cpp
-	libs/log/src/log/enabled_levels.cpp
 	libs/log/src/log/format/chain.cpp
 	libs/log/src/log/format/default_level.cpp
 	libs/log/src/log/format/inserter.cpp
@@ -94,7 +84,6 @@ set(
 	libs/log/src/log/location.cpp
 	libs/log/src/log/object.cpp
 	libs/log/src/log/parameters.cpp
-	libs/log/src/log/setting.cpp
 )
 
 make_fcppt_library(

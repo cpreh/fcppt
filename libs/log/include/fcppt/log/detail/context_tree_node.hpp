@@ -9,10 +9,11 @@
 
 #include <fcppt/noncopyable.hpp>
 #include <fcppt/log/name.hpp>
-#include <fcppt/log/setting.hpp>
+#include <fcppt/log/optional_level_fwd.hpp>
+#include <fcppt/log/detail/active_level_int.hpp>
 #include <fcppt/log/detail/context_tree_node_fwd.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <cstddef>
+#include <atomic>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -31,15 +32,10 @@ class context_tree_node
 public:
 	context_tree_node(
 		fcppt::log::name,
-		fcppt::log::setting const &
+		fcppt::log::optional_level const &
 	);
 
 	context_tree_node(
-		context_tree_node &&
-	);
-
-	context_tree_node &
-	operator=(
 		context_tree_node &&
 	);
 
@@ -48,28 +44,20 @@ public:
 	fcppt::log::name const &
 	name() const;
 
-	fcppt::log::setting const &
-	setting() const;
+	fcppt::log::optional_level
+	level() const;
 
 	void
-	setting(
-		fcppt::log::setting const &
+	level(
+		fcppt::log::optional_level const &
 	);
-
-	void
-	add_ref();
-
-	bool
-	remove_ref();
-
-	std::size_t
-	ref_count() const;
 private:
 	fcppt::log::name name_;
 
-	fcppt::log::setting setting_;
-
-	std::size_t count_;
+	std::atomic<
+		fcppt::log::detail::active_level_int
+	>
+	atomic_level_;
 };
 
 }

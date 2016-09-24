@@ -4,21 +4,23 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/log/const_level_stream_array_ref.hpp>
+#include <fcppt/const.hpp>
+#include <fcppt/make_cref.hpp>
+#include <fcppt/reference_impl.hpp>
 #include <fcppt/log/context.hpp>
-#include <fcppt/log/enabled_level_array.hpp>
 #include <fcppt/log/level.hpp>
 #include <fcppt/log/level_stream.hpp>
 #include <fcppt/log/level_stream_array.hpp>
 #include <fcppt/log/location_fwd.hpp>
 #include <fcppt/log/object.hpp>
+#include <fcppt/log/optional_level.hpp>
 #include <fcppt/log/parameters.hpp>
-#include <fcppt/log/setting.hpp>
 #include <fcppt/log/detail/context_tree.hpp>
 #include <fcppt/log/detail/temporary_output_fwd.hpp>
 #include <fcppt/log/format/chain.hpp>
 #include <fcppt/log/format/optional_function.hpp>
 #include <fcppt/log/impl/tree_formatter.hpp>
+#include <fcppt/optional/maybe.hpp>
 
 
 fcppt::log::object::object(
@@ -26,11 +28,13 @@ fcppt::log::object::object(
 	fcppt::log::parameters const &_parameters
 )
 :
-	object(
-		_context.level_streams(),
-		_context.root(),
+	object{
+		_context,
+		fcppt::make_cref(
+			_context.root()
+		),
 		_parameters
-	)
+	}
 {
 }
 
@@ -39,11 +43,11 @@ fcppt::log::object::object(
 	fcppt::log::parameters const &_parameters
 )
 :
-	object(
-		_parent.level_streams_,
-		_parent.auto_context_.node(),
+	object{
+		_parent.context_,
+		_parent.node_,
 		_parameters
-	)
+	}
 {
 }
 
@@ -53,13 +57,15 @@ fcppt::log::object::object(
 	fcppt::log::parameters const &_parameters
 )
 :
-	object(
-		_context.level_streams(),
-		_context.find_location(
-			_location
+	object{
+		_context,
+		fcppt::make_cref(
+			_context.find_location(
+				_location
+			)
 		),
 		_parameters
-	)
+	}
 {
 }
 
@@ -74,18 +80,16 @@ fcppt::log::object::log(
 )
 {
 	if(
-		!this->enabled(
+		this->enabled(
 			_level
 		)
 	)
-		return;
-
-	this->level_sink(
-		_level
-	).log(
-		_helper,
-		formatter_
-	);
+		this->level_sink(
+			_level
+		).log(
+			_helper,
+			formatter_
+		);
 }
 
 fcppt::log::level_stream const &
@@ -105,9 +109,23 @@ fcppt::log::object::enabled(
 ) const
 {
 	return
-		this->enabled_levels()[
-			_level
-		];
+		fcppt::optional::maybe(
+			this->level(),
+			fcppt::const_(
+				false
+			),
+			[
+				_level
+			](
+				fcppt::log::level const _enabled_level
+			)
+			{
+				return
+					_level
+					>=
+					_enabled_level;
+			}
+		);
 }
 
 fcppt::log::format::optional_function const &
@@ -121,43 +139,38 @@ fcppt::log::level_stream_array const &
 fcppt::log::object::level_streams() const
 {
 	return
-		level_streams_.get();
+		context_.level_streams().get();
 }
 
-fcppt::log::enabled_level_array const &
-fcppt::log::object::enabled_levels() const
+fcppt::log::optional_level
+fcppt::log::object::level() const
 {
 	return
-		this->setting().enabled_levels();
-}
-
-fcppt::log::setting const &
-fcppt::log::object::setting() const
-{
-	return
-		auto_context_.node().value().setting();
+		node_.get().value().level();
 }
 
 fcppt::log::object::object(
-	fcppt::log::const_level_stream_array_ref const &_level_streams,
-	fcppt::log::detail::context_tree &_node,
+	fcppt::log::context &_context,
+	context_tree_ref const _node,
 	fcppt::log::parameters const &_parameters
 )
 :
-	auto_context_{
-		_node,
-		_parameters.name()
+	context_{
+		_context
+	},
+	node_{
+		_context.find_child(
+			_node.get(),
+			_parameters.name()
+		)
 	},
 	formatter_(
 		fcppt::log::format::chain(
 			_parameters.formatter(),
 			fcppt::log::impl::tree_formatter(
-				auto_context_.node()
+				node_.get()
 			)
 		)
-	),
-	level_streams_(
-		_level_streams
 	)
 {
 }

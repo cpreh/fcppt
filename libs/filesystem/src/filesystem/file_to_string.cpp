@@ -11,8 +11,8 @@
 #include <fcppt/assert/post.hpp>
 #include <fcppt/cast/size.hpp>
 #include <fcppt/filesystem/exception.hpp>
-#include <fcppt/filesystem/ifstream.hpp>
 #include <fcppt/filesystem/file_to_string.hpp>
+#include <fcppt/filesystem/ifstream.hpp>
 #include <fcppt/filesystem/path_to_string.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/cstdint.hpp>

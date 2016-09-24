@@ -4,17 +4,62 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
+#include <fcppt/cast_to_enum.hpp>
+#include <fcppt/const.hpp>
+#include <fcppt/enum_size.hpp>
+#include <fcppt/cast/enum_to_int.hpp>
+#include <fcppt/cast/size.hpp>
 #include <fcppt/log/name.hpp>
-#include <fcppt/log/setting.hpp>
+#include <fcppt/log/level.hpp>
+#include <fcppt/log/optional_level.hpp>
+#include <fcppt/log/detail/active_level_int.hpp>
 #include <fcppt/log/detail/context_tree_node.hpp>
+#include <fcppt/optional/maybe.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <cstddef>
+#include <utility>
 #include <fcppt/config/external_end.hpp>
 
 
+// TODO: Move this
+namespace
+{
+
+fcppt::log::detail::active_level_int
+convert_level(
+	fcppt::log::optional_level const &_opt_level
+)
+{
+	return
+		fcppt::optional::maybe(
+			_opt_level,
+			fcppt::const_(
+				fcppt::cast::size<
+					fcppt::log::detail::active_level_int
+				>(
+					fcppt::enum_size<
+						fcppt::log::level
+					>::value
+				)
+			),
+			[](
+				fcppt::log::level const _level
+			)
+			{
+				return
+					fcppt::cast::enum_to_int<
+						fcppt::log::detail::active_level_int
+					>(
+						_level
+					);
+			}
+		);
+}
+
+}
+
 fcppt::log::detail::context_tree_node::context_tree_node(
 	fcppt::log::name _name,
-	fcppt::log::setting const &_setting
+	fcppt::log::optional_level const &_level
 )
 :
 	name_{
@@ -22,25 +67,28 @@ fcppt::log::detail::context_tree_node::context_tree_node(
 			_name
 		)
 	},
-	setting_{
-		_setting
-	},
-	count_{
-		0u
+	atomic_level_{
+		convert_level(
+			_level
+		)
 	}
 {
 }
 
 fcppt::log::detail::context_tree_node::context_tree_node(
-	context_tree_node &&
+	context_tree_node &&_other
 )
-= default;
-
-fcppt::log::detail::context_tree_node &
-fcppt::log::detail::context_tree_node::operator=(
-	context_tree_node &&
-)
-= default;
+:
+	name_{
+		std::move(
+			_other.name_
+		)
+	},
+	atomic_level_{
+		_other.atomic_level_.load()
+	}
+{
+}
 
 fcppt::log::detail::context_tree_node::~context_tree_node()
 {
@@ -53,40 +101,24 @@ fcppt::log::detail::context_tree_node::name() const
 		name_;
 }
 
-fcppt::log::setting const &
-fcppt::log::detail::context_tree_node::setting() const
+fcppt::log::optional_level
+fcppt::log::detail::context_tree_node::level() const
 {
 	return
-		setting_;
+		fcppt::cast_to_enum<
+			fcppt::log::level
+		>(
+			atomic_level_.load()
+		);
 }
 
 void
-fcppt::log::detail::context_tree_node::setting(
-	fcppt::log::setting const &_setting
+fcppt::log::detail::context_tree_node::level(
+	fcppt::log::optional_level const &_level
 )
 {
-	setting_ =
-		_setting;
-}
-
-void
-fcppt::log::detail::context_tree_node::add_ref()
-{
-	++count_;
-}
-
-bool
-fcppt::log::detail::context_tree_node::remove_ref()
-{
-	return
-		--count_
-		==
-		0u;
-}
-
-std::size_t
-fcppt::log::detail::context_tree_node::ref_count() const
-{
-	return
-		count_;
+	atomic_level_ =
+		convert_level(
+			_level
+		);
 }

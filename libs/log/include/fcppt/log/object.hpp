@@ -8,17 +8,15 @@
 #define FCPPT_LOG_OBJECT_HPP_INCLUDED
 
 #include <fcppt/noncopyable.hpp>
-#include <fcppt/log/const_level_stream_array_ref.hpp>
+#include <fcppt/reference_decl.hpp>
 #include <fcppt/log/context_fwd.hpp>
-#include <fcppt/log/enabled_level_array_fwd.hpp>
 #include <fcppt/log/level_fwd.hpp>
 #include <fcppt/log/level_stream_array_fwd.hpp>
 #include <fcppt/log/level_stream_fwd.hpp>
 #include <fcppt/log/location_fwd.hpp>
 #include <fcppt/log/object_fwd.hpp>
+#include <fcppt/log/optional_level_fwd.hpp>
 #include <fcppt/log/parameters_fwd.hpp>
-#include <fcppt/log/setting_fwd.hpp>
-#include <fcppt/log/detail/auto_context.hpp>
 #include <fcppt/log/detail/context_tree_fwd.hpp>
 #include <fcppt/log/detail/symbol.hpp>
 #include <fcppt/log/detail/temporary_output_fwd.hpp>
@@ -36,7 +34,7 @@ namespace log
 \ingroup fcpptlog
 
 Logging is done through objects of this class. In the constructor, it gets a
-log context and a log location, providing it with log settings and level
+log context and a log location, providing it with a log level and level
 streams.
 */
 class object
@@ -136,30 +134,29 @@ public:
 	level_streams() const;
 
 	/**
-	\brief Returns which levels are enabled
+	\brief Returns the current log level
 	*/
 	FCPPT_LOG_DETAIL_SYMBOL
-	fcppt::log::enabled_level_array const &
-	enabled_levels() const;
-
-	/**
-	\brief Returns the current setting
-	*/
-	FCPPT_LOG_DETAIL_SYMBOL
-	fcppt::log::setting const &
-	setting() const;
+	fcppt::log::optional_level
+	level() const;
 private:
+	typedef
+	fcppt::reference<
+		fcppt::log::detail::context_tree const
+	>
+	context_tree_ref;
+
 	object(
-		fcppt::log::const_level_stream_array_ref const &,
-		fcppt::log::detail::context_tree &,
+		fcppt::log::context &,
+		context_tree_ref,
 		fcppt::log::parameters const &
 	);
 
-	fcppt::log::detail::auto_context auto_context_;
+	fcppt::log::context &context_;
+
+	context_tree_ref const node_;
 
 	fcppt::log::format::optional_function const formatter_;
-
-	fcppt::log::const_level_stream_array_ref const level_streams_;
 };
 
 }
