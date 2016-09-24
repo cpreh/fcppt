@@ -54,6 +54,12 @@
 	</ul>
 </li>
 
+<li>\ref fcpptmpl
+	<ul>
+	<li>The type of the first zero in \link fcppt::mpl::partial_sums\endlink can now be specified.</li>
+	</ul>
+</li>
+
 <li>\ref fcpptoptional
 	<ul>
 	<li>Added \link fcppt::optional::to_pointer\endlink.</li>

@@ -39,17 +39,20 @@ sequence will consist of the values (0, c_1, c_1 + c_2, ..., c_1 + ... c_n)
 \snippet mpl/various.cpp mpl_partial_sums
 
 \tparam Sequence An MPL sequence of integral constant types
+
+\tparam IntType The integer type to use for the first zero
 */
 template<
-	typename Sequence
+	typename Sequence,
+	// mpl::plus<> converts its operands, so int is most conservative
+	typename IntType = int
 >
 struct partial_sums
 :
 boost::mpl::fold<
 	Sequence,
-	// mpl::plus<> converts its operands, so int is most conservative
 	boost::mpl::vector_c<
-		int,
+		IntType,
 		0
 	>,
 	boost::mpl::push_back<
