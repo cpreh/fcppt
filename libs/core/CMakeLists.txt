@@ -756,6 +756,7 @@ set(
 	libs/core/include/fcppt/mpl/for_each_break.hpp
 	libs/core/include/fcppt/mpl/implication.hpp
 	libs/core/include/fcppt/mpl/index_of.hpp
+	libs/core/include/fcppt/mpl/index_of_iterator.hpp
 	libs/core/include/fcppt/mpl/inner.hpp
 	libs/core/include/fcppt/mpl/integral_cast.hpp
 	libs/core/include/fcppt/mpl/integral_cast_tpl.hpp
@@ -882,6 +883,44 @@ set(
 	libs/core/include/fcppt/range_hash_decl.hpp
 	libs/core/include/fcppt/range_hash_fwd.hpp
 	libs/core/include/fcppt/range_hash_impl.hpp
+	libs/core/include/fcppt/record/comparison.hpp
+	libs/core/include/fcppt/record/detail/all_initializers.hpp
+	libs/core/include/fcppt/record/detail/contains_initializer.hpp
+	libs/core/include/fcppt/record/detail/find_element.hpp
+	libs/core/include/fcppt/record/detail/find_element_deref.hpp
+	libs/core/include/fcppt/record/detail/is_tag.hpp
+	libs/core/include/fcppt/record/detail/label_is_same.hpp
+	libs/core/include/fcppt/record/detail/make_tag.hpp
+	libs/core/include/fcppt/record/detail/tag_base.hpp
+	libs/core/include/fcppt/record/detail/tag_name.hpp
+	libs/core/include/fcppt/record/element.hpp
+	libs/core/include/fcppt/record/element_fwd.hpp
+	libs/core/include/fcppt/record/element_init_decl.hpp
+	libs/core/include/fcppt/record/element_init_fwd.hpp
+	libs/core/include/fcppt/record/element_init_impl.hpp
+	libs/core/include/fcppt/record/element_to_label.hpp
+	libs/core/include/fcppt/record/element_to_label_tpl.hpp
+	libs/core/include/fcppt/record/element_to_type.hpp
+	libs/core/include/fcppt/record/element_to_type_tpl.hpp
+	libs/core/include/fcppt/record/get.hpp
+	libs/core/include/fcppt/record/init.hpp
+	libs/core/include/fcppt/record/is_element.hpp
+	libs/core/include/fcppt/record/is_label.hpp
+	libs/core/include/fcppt/record/label.hpp
+	libs/core/include/fcppt/record/label_decl.hpp
+	libs/core/include/fcppt/record/label_fwd.hpp
+	libs/core/include/fcppt/record/label_impl.hpp
+	libs/core/include/fcppt/record/label_value_type.hpp
+	libs/core/include/fcppt/record/make_label.hpp
+	libs/core/include/fcppt/record/make_label_arg.hpp
+	libs/core/include/fcppt/record/make_label_arg_fwd.hpp
+	libs/core/include/fcppt/record/make_label_fwd.hpp
+	libs/core/include/fcppt/record/object.hpp
+	libs/core/include/fcppt/record/object_decl.hpp
+	libs/core/include/fcppt/record/object_fwd.hpp
+	libs/core/include/fcppt/record/object_impl.hpp
+	libs/core/include/fcppt/record/output.hpp
+	libs/core/include/fcppt/record/set.hpp
 	libs/core/include/fcppt/reference.hpp
 	libs/core/include/fcppt/reference_comparison.hpp
 	libs/core/include/fcppt/reference_decl.hpp

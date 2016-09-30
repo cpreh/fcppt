@@ -7,13 +7,12 @@
 #ifndef FCPPT_MPL_INDEX_OF_HPP_INCLUDED
 #define FCPPT_MPL_INDEX_OF_HPP_INCLUDED
 
+#include <fcppt/mpl/index_of_iterator.hpp>
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/mpl/begin.hpp>
 #include <boost/mpl/contains.hpp>
-#include <boost/mpl/distance.hpp>
 #include <boost/mpl/find.hpp>
 #include <fcppt/config/external_end.hpp>
 
@@ -45,11 +44,10 @@ template<
 >
 struct index_of
 :
-boost::mpl::distance<
-	typename boost::mpl::begin<
-		Sequence
-	>::type,
-	typename boost::mpl::find<
+fcppt::mpl::index_of_iterator<
+	Sequence,
+	typename
+	boost::mpl::find<
 		Sequence,
 		Element
 	>::type
