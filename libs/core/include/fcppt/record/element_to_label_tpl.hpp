@@ -15,8 +15,15 @@ namespace fcppt
 namespace record
 {
 
+/**
+\brief Extracts the type of an element and provides a type typedef to it
+
+\ingroup fcpptrecord
+
+\tparam Element Must be an \link fcppt::record::element\endlink.
+*/
 template<
-	typename
+	typename Element
 >
 struct element_to_label_tpl;
 

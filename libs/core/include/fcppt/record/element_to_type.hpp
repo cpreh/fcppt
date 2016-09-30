@@ -15,15 +15,22 @@ namespace fcppt
 namespace record
 {
 
+/**
+\brief Extracts the label of an element
+
+\ingroup fcpptrecord
+
+\tparam Element Must be an \link fcppt::record::element\endlink.
+*/
 template<
-	typename Type
+	typename Element
 >
 using
 element_to_type
 =
 typename
 fcppt::record::element_to_type_tpl<
-	Type
+	Element
 >::type;
 
 }

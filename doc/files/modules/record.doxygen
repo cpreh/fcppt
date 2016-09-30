@@ -1,0 +1,31 @@
+/**
+\defgroup fcpptrecord fcppt.record
+\ingroup fcpptmain
+\brief A record class that holds named elements in a generic way.
+
+<table id="toc">
+<tr>
+<td>
+
+<ul>
+	<li>\ref record_motivation</li>
+	<li>\ref record_headers</li>
+</ul>
+
+\section record_motivation Motivation
+
+TODO...
+
+\section record_headers Header files
+
+<table>
+<tr>
+<th>Header file</th>
+<th>Description</th>
+</tr>
+<tr>
+<td><code>object_fwd.hpp</code></td>
+<td>Contains \link fcppt::record::object record's \endlink declaration.</td>
+</tr>
+</table>
+*/

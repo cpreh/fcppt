@@ -886,6 +886,9 @@ set(
 	libs/core/include/fcppt/record/comparison.hpp
 	libs/core/include/fcppt/record/detail/all_initializers.hpp
 	libs/core/include/fcppt/record/detail/contains_initializer.hpp
+	libs/core/include/fcppt/record/detail/element_init_decl.hpp
+	libs/core/include/fcppt/record/detail/element_init_fwd.hpp
+	libs/core/include/fcppt/record/detail/element_init_impl.hpp
 	libs/core/include/fcppt/record/detail/find_element.hpp
 	libs/core/include/fcppt/record/detail/find_element_deref.hpp
 	libs/core/include/fcppt/record/detail/is_tag.hpp
@@ -895,9 +898,6 @@ set(
 	libs/core/include/fcppt/record/detail/tag_name.hpp
 	libs/core/include/fcppt/record/element.hpp
 	libs/core/include/fcppt/record/element_fwd.hpp
-	libs/core/include/fcppt/record/element_init_decl.hpp
-	libs/core/include/fcppt/record/element_init_fwd.hpp
-	libs/core/include/fcppt/record/element_init_impl.hpp
 	libs/core/include/fcppt/record/element_to_label.hpp
 	libs/core/include/fcppt/record/element_to_label_tpl.hpp
 	libs/core/include/fcppt/record/element_to_type.hpp
@@ -906,6 +906,7 @@ set(
 	libs/core/include/fcppt/record/init.hpp
 	libs/core/include/fcppt/record/is_element.hpp
 	libs/core/include/fcppt/record/is_label.hpp
+	libs/core/include/fcppt/record/is_object.hpp
 	libs/core/include/fcppt/record/label.hpp
 	libs/core/include/fcppt/record/label_decl.hpp
 	libs/core/include/fcppt/record/label_fwd.hpp

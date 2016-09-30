@@ -7,8 +7,8 @@
 #ifndef FCPPT_RECORD_LABEL_DECL_HPP_INCLUDED
 #define FCPPT_RECORD_LABEL_DECL_HPP_INCLUDED
 
-#include <fcppt/record/element_init_fwd.hpp>
 #include <fcppt/record/label_fwd.hpp>
+#include <fcppt/record/detail/element_init_fwd.hpp>
 #include <fcppt/record/detail/is_tag.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <type_traits>
@@ -39,7 +39,7 @@ struct label
 	template<
 		typename Arg
 	>
-	fcppt::record::element_init<
+	fcppt::record::detail::element_init<
 		Tag,
 		typename
 		std::decay<

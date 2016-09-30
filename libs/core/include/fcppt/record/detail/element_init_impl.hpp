@@ -4,10 +4,10 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_RECORD_ELEMENT_INIT_IMPL_HPP_INCLUDED
-#define FCPPT_RECORD_ELEMENT_INIT_IMPL_HPP_INCLUDED
+#ifndef FCPPT_RECORD_DETAIL_ELEMENT_INIT_IMPL_HPP_INCLUDED
+#define FCPPT_RECORD_DETAIL_ELEMENT_INIT_IMPL_HPP_INCLUDED
 
-#include <fcppt/record/element_init_decl.hpp>
+#include <fcppt/record/detail/element_init_decl.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <utility>
 #include <fcppt/config/external_end.hpp>
@@ -17,7 +17,7 @@ template<
 	typename Tag,
 	typename Type
 >
-fcppt::record::element_init<
+fcppt::record::detail::element_init<
 	Tag,
 	Type
 >::element_init(
@@ -36,7 +36,7 @@ template<
 	typename Tag,
 	typename Type
 >
-fcppt::record::element_init<
+fcppt::record::detail::element_init<
 	Tag,
 	Type
 >::element_init(
@@ -54,11 +54,11 @@ template<
 	typename Type
 >
 typename
-fcppt::record::element_init<
+fcppt::record::detail::element_init<
 	Tag,
 	Type
 >::value_type &
-fcppt::record::element_init<
+fcppt::record::detail::element_init<
 	Tag,
 	Type
 >::value()

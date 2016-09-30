@@ -7,8 +7,8 @@
 #ifndef FCPPT_RECORD_DETAIL_LABEL_IS_SAME_HPP_INCLUDED
 #define FCPPT_RECORD_DETAIL_LABEL_IS_SAME_HPP_INCLUDED
 
-#include <fcppt/record/element_init_fwd.hpp>
 #include <fcppt/record/label_fwd.hpp>
+#include <fcppt/record/detail/element_init_fwd.hpp>
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
@@ -42,7 +42,7 @@ struct label_is_same<
 	fcppt::record::label<
 		Tag1
 	>,
-	fcppt::record::element_init<
+	fcppt::record::detail::element_init<
 		Tag2,
 		Type
 	>

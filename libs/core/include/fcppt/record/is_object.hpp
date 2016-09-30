@@ -4,57 +4,51 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_RECORD_LABEL_IMPL_HPP_INCLUDED
-#define FCPPT_RECORD_LABEL_IMPL_HPP_INCLUDED
+#ifndef FCPPT_RECORD_IS_OBJECT_HPP_INCLUDED
+#define FCPPT_RECORD_IS_OBJECT_HPP_INCLUDED
 
-#include <fcppt/record/label_decl.hpp>
-#include <fcppt/record/detail/element_init_impl.hpp>
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
+#include <fcppt/record/object_fwd.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <utility>
+#include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
+
+namespace fcppt
+{
+namespace record
+{
 
 FCPPT_PP_PUSH_WARNING
 FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
 
 template<
-	typename Tag
+	typename T
 >
-template<
-	typename Arg
->
-fcppt::record::detail::element_init<
-	Tag,
-	typename
-	std::decay<
-		Arg
-	>::type
->
-fcppt::record::label<
-	Tag
->::operator=(
-	Arg &&_arg
-)
+struct is_object
+:
+std::false_type
 {
-	return
-		fcppt::record::detail::element_init<
-			Tag,
-			typename
-			std::decay<
-				Arg
-			>::type
-		>(
-			std::forward<
-				Arg
-			>(
-				_arg
-			)
-		);
-}
+};
+
+template<
+	typename Types
+>
+struct is_object<
+	fcppt::record::object<
+		Types
+	>
+>
+:
+std::true_type
+{
+};
 
 FCPPT_PP_POP_WARNING
+
+}
+}
 
 #endif

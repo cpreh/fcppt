@@ -4,10 +4,10 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_RECORD_ELEMENT_INIT_DECL_HPP_INCLUDED
-#define FCPPT_RECORD_ELEMENT_INIT_DECL_HPP_INCLUDED
+#ifndef FCPPT_RECORD_DETAIL_ELEMENT_INIT_DECL_HPP_INCLUDED
+#define FCPPT_RECORD_DETAIL_ELEMENT_INIT_DECL_HPP_INCLUDED
 
-#include <fcppt/record/element_init_fwd.hpp>
+#include <fcppt/record/detail/element_init_fwd.hpp>
 #include <fcppt/record/detail/is_tag.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <type_traits>
@@ -17,6 +17,8 @@
 namespace fcppt
 {
 namespace record
+{
+namespace detail
 {
 
 template<
@@ -64,6 +66,7 @@ private:
 	value_type value_;
 };
 
+}
 }
 }
 

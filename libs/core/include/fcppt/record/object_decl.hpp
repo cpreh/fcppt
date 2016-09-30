@@ -46,7 +46,6 @@ public:
 		"Types of record::object must all be fcppt::record::element<>"
 	);
 
-	// TODO: CHeck if Types are all record::element
 	typedef
 	fcppt::record::object<
 		Types

@@ -11,6 +11,7 @@
 #include <fcppt/use.hpp>
 #include <fcppt/algorithm/vararg_map.hpp>
 #include <fcppt/record/element_to_label.hpp>
+#include <fcppt/record/is_object.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <utility>
 #include <fcppt/config/external_end.hpp>
@@ -21,6 +22,20 @@ namespace fcppt
 namespace record
 {
 
+/**
+\brief Initializes a record using a function
+
+Let <code>element<L_1,T_1>, ..., element<L_n,T_n></code> be the elements of \a Result.
+\a _function is then called as <code>(element<L_i,T_i>)</code> for <code>i = 1,..,n</code>.
+
+\ingroup fcpptrecord
+
+\tparam Result Must be an \link fcppt::record::object\endlink.
+
+\tparam Function A polymorphic function callable as
+<code>fcppt::record::label_value_type<Result, L> (fcppt::record::element<L,T>)</code>
+for every <code>element<L,T></code> in \a Result.
+*/
 template<
 	typename Result,
 	typename Function
@@ -31,6 +46,13 @@ init(
 	Function const &_function
 )
 {
+	static_assert(
+		fcppt::record::is_object<
+			Result
+		>::value,
+		"Result must be a record::object"
+	);
+
 	return
 		fcppt::algorithm::vararg_map<
 			typename

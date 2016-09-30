@@ -16,6 +16,17 @@ namespace fcppt
 namespace record
 {
 
+/**
+\brief An element of a record
+
+A record is declared using an MPL sequence of <em>element</em> types.
+
+\ingroup fcpptrecord
+
+\tparam Label Must be an \link fcppt::record::label\endlink.
+
+\tparam Type The value type of the label.
+*/
 template<
 	typename Label,
 	typename Type
