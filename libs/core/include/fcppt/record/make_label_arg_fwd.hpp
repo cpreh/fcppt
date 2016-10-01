@@ -1,4 +1,4 @@
-//          Copyright Carl Philipp Reh 2014 - 2016.
+//          Copyright Carl Philipp Reh 2009 - 2016.
 // Distributed under the Boost Software License, Version 1.0.
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
@@ -13,9 +13,18 @@
 
 
 /**
-\brief Creates a label that takes an argument
+\brief Creates a parametrized \link fcppt::record::label\endlink.
 
 \ingroup fcpptrecord
+
+Creates an \link fcppt::record::label\endlink, passing it a unique,
+implementation-defined tag type that depends on a template parameter.
+The result is a template alias that still takes a parameter of type
+\a arg.
+
+\param name The name of the label type.
+
+\param arg The type of the template parameter.
 */
 #define FCPPT_RECORD_MAKE_LABEL_ARG(\
 	name,\

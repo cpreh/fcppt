@@ -1,4 +1,4 @@
-//          Copyright Carl Philipp Reh 2014 - 2016.
+//          Copyright Carl Philipp Reh 2009 - 2016.
 // Distributed under the Boost Software License, Version 1.0.
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
@@ -20,6 +20,13 @@ namespace fcppt
 namespace record
 {
 
+/**
+\brief A type identifying an element of a record.
+
+\ingroup fcpptrecord
+
+\tparam Tag An implementation-defined type, passed by \link FCPPT_RECORD_MAKE_LABEL\endlink.
+*/
 template<
 	typename Tag
 >
@@ -36,6 +43,9 @@ struct label
 		"Tag must be a tag"
 	);
 
+	/**
+	\brief Creates a value used to initialize an element of a record.
+	*/
 	template<
 		typename Arg
 	>

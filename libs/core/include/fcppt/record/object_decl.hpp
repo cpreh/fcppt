@@ -1,4 +1,4 @@
-//          Copyright Carl Philipp Reh 2014 - 2016.
+//          Copyright Carl Philipp Reh 2009 - 2016.
 // Distributed under the Boost Software License, Version 1.0.
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
@@ -26,9 +26,16 @@ namespace record
 {
 
 /**
-\brief TODO...
+\brief A generic struct that identifies elements by types.
 
 \ingroup fcpptrecord
+
+A record of an MPL sequence \link fcppt::record::element\endlink
+<code>element<L_1,T_1>,...,element<L_n,T_n></code> contains an object
+of type <code>T_i</code>, accessible by <code>L_i</code>,
+for every <code>i = 1,...,n</code>.
+
+\tparam Types An MPL sequence of \link fcppt::record::element\endlink.
 */
 template<
 	typename Types
@@ -56,6 +63,9 @@ public:
 	Types
 	all_types;
 
+	/**
+	\brief The tuple type <code>(T_1,...,T_n)</code>.
+	*/
 	typedef
 	typename
 	boost::fusion::result_of::as_vector<
@@ -68,24 +78,53 @@ public:
 	>::type
 	tuple;
 
+	/**
+	\brief Constructor for empty records
+
+	Calling this if \a Types is not empty, a compile-time error occurs.
+	*/
 	object();
 
+	/**
+	\brief An uninitialized record
+
+	Calls only default constructors for its elements. Use this with care.
+	*/
 	explicit
 	object(
 		fcppt::no_init const &
 	);
 
+	/**
+	\brief An uninitialized record
+
+	Calls only default constructors for its elements. Use this with care.
+	*/
 	explicit
 	object(
 		fcppt::no_init &&
 	);
 
+	/**
+	\brief Generic constructor.
+
+	Initializing an <code>element<L_i,T_i></code> is done by calling
+	<code>L_i{} = v_i</code> where <code>v_i</code> is of type <code>T_i</code>.
+
+	The constructor checks that each <code>L_i</code> appears exactly once in \a Args.
+
+	\param _args A parameter pack, obtained by assignment to \link
+	fcppt::record::label\endlink.
+
+	\tparam Args Implementation-defined init types, obtained by assignment
+	to \link fcppt::record::label\endlink.
+	*/
 	template<
 		typename ...Args
 	>
 	explicit
 	object(
-		Args && ...
+		Args && ..._args
 	);
 
 	object(
@@ -112,6 +151,11 @@ public:
 
 	~object();
 
+	/**
+	\brief Sets an element by copy.
+
+	\see \link fcppt::record::set\endlink.
+	*/
 	template<
 		typename Label
 	>
@@ -123,6 +167,11 @@ public:
 		> const &
 	);
 
+	/**
+	\brief Sets an element by move.
+
+	\see \link fcppt::record::set\endlink.
+	*/
 	template<
 		typename Label
 	>
@@ -134,6 +183,11 @@ public:
 		> &&
 	);
 
+	/**
+	\brief Gets an element.
+
+	\see \link fcppt::record::get\endlink.
+	*/
 	template<
 		typename Label
 	>

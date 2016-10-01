@@ -1,4 +1,4 @@
-//          Copyright Carl Philipp Reh 2014 - 2016.
+//          Copyright Carl Philipp Reh 2009 - 2016.
 // Distributed under the Boost Software License, Version 1.0.
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
@@ -8,11 +8,11 @@
 #define FCPPT_RECORD_DETAIL_CONTAINS_INITIALIZER_HPP_INCLUDED
 
 #include <fcppt/mpl/contains_if.hpp>
-#include <fcppt/record/element_to_label.hpp>
-#include <fcppt/record/detail/label_is_same.hpp>
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
+#include <fcppt/record/element_to_label.hpp>
+#include <fcppt/record/detail/label_is_same.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/mpl/placeholders.hpp>
 #include <fcppt/config/external_end.hpp>
