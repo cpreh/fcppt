@@ -4,12 +4,12 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_RECORD_ELEMENT_TO_TYPE_HPP_INCLUDED
-#define FCPPT_RECORD_ELEMENT_TO_TYPE_HPP_INCLUDED
+#ifndef FCPPT_RECORD_VARIADIC_FWD_HPP_INCLUDED
+#define FCPPT_RECORD_VARIADIC_FWD_HPP_INCLUDED
 
-#include <fcppt/record/element_to_type_tpl.hpp>
+#include <fcppt/record/object_fwd.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <type_traits>
+#include <boost/mpl/vector.hpp>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -19,25 +19,21 @@ namespace record
 {
 
 /**
-\brief Extracts the label of an element
+\brief Declares a record using a parameter pack.
 
 \ingroup fcpptrecord
-
-\tparam Element Must be an \link fcppt::record::element\endlink.
 */
 template<
-	typename Element
+	typename... Types
 >
 using
-element_to_type
+variadic
 =
-typename
-fcppt::record::element_to_type_tpl<
-	typename
-	std::decay<
-		Element
-	>::type
->::type;
+fcppt::record::object<
+	boost::mpl::vector<
+		Types...
+	>
+>;
 
 }
 }

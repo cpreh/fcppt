@@ -232,6 +232,12 @@ add_fcppt_example(
 )
 
 add_fcppt_example(
+	record
+	LINK_LIBS
+		${fcppt_core_TARGET}
+)
+
+add_fcppt_example(
 	smart_ptr_deleter
 	LINK_LIBS
 		${fcppt_core_TARGET}

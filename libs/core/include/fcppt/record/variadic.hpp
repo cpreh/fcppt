@@ -4,13 +4,11 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_RECORD_OBJECT_HPP_INCLUDED
-#define FCPPT_RECORD_OBJECT_HPP_INCLUDED
+#ifndef FCPPT_RECORD_VARIADIC_HPP_INCLUDED
+#define FCPPT_RECORD_VARIADIC_HPP_INCLUDED
 
-#include <fcppt/record/comparison.hpp>
-#include <fcppt/record/object_decl.hpp>
-#include <fcppt/record/object_fwd.hpp>
 #include <fcppt/record/object_impl.hpp>
+#include <fcppt/record/variadic_fwd.hpp>
 
 
 #endif

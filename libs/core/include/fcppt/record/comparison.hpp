@@ -39,7 +39,6 @@ operator==(
 	> const &_record2
 )
 {
-	// TODO: Add a zip function
 	return
 		fcppt::algorithm::all_of(
 			Types{},

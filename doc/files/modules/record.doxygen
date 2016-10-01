@@ -9,12 +9,137 @@
 
 <ul>
 	<li>\ref record_motivation</li>
+	<li>\ref record_init</li>
+	<li>\ref record_label_arg</li>
 	<li>\ref record_headers</li>
 </ul>
 
 \section record_motivation Motivation
 
-TODO...
+A record data type generally refers to a set of named elements, e.g.
+<code>{ age : int, name : string }</code>. In C++, these are usually declared using
+classes or structs:
+
+\snippet record.cpp record_struct_person
+
+The shortcoming, however, is that such a struct provides no generic structure.
+Imagine you would like to write a generic function that prints such a struct,
+given you already know how to print ints and strings. A concrete implementation
+would look like this:
+
+\snippet record.cpp record_struct_person_print
+
+This, however, only works for the concrete type <code>person</code>. To abstract this,
+we need to specify which elements a struct has in a generic way. To this end, we first
+of all need to create unique types that represent <em>element names</em> which we
+call <em>labels</em>. Such a label together with a unique tag type is created by
+\link FCPPT_RECORD_MAKE_LABEL\endlink:
+
+\snippet record.cpp record_make_label
+
+A record <em>element</em> is represented by \link fcppt::record::element\endlink. It
+gets a label together with a type as its template parameters:
+
+\snippet record.cpp record_elements
+
+Finally, a <em>record object</em> consists of an MPL sequence of elements:
+
+\snippet record.cpp record_object
+
+A shorthand, which omits the MPL sequence, is \link fcppt::record::variadic\endlink.
+
+\snippet record.cpp record_variadic
+
+Before we continue, here is a small example of how to use such a record:
+
+\snippet record.cpp record_get_set
+
+The initialization syntax is further explained in \ref record_init. The
+functions \link fcppt::record::get\endlink and \link fcppt::record::set\endlink
+are used to read and write elements.
+
+To return to our goal of creating a generic output function, we first create a
+function <code>print_label</code> that given a record and a label prints the
+element for the given label to a stream:
+
+\snippet record.cpp record_output_label
+
+Remember that a record is declared by giving it an MPL sequence of elements. Such
+an MPL sequence can be used by \link fcppt::algorithm::loop\endlink, which will
+call a function for every type in the sequence. We use this to call <code>print_label</code>
+for every element of the record:
+
+\snippet record.cpp record_output
+
+Now, if we were to add another member to the person record, say <code>address</code>, we
+wouldn't have to change our <code>print</code> function.
+
+\section record_init Initialization
+
+There are two ways to initialize a record: First, we can initialize every
+element separately. This is done by the special syntax
+\code
+record{label_1{} = value_1, ..., label_n{} = value_n}
+\endcode
+Here, it is important that all labels of the record appear exactly once. Also,
+the types of the values have to match the types of the record.
+
+\code
+person const test_person{
+	age{} = 42
+	// error: forgotten name
+};
+
+person const test_person{
+	// error: age specified twice
+	age{} = 42,
+	age{} = 10
+};
+
+person const test_person{
+	age{} = 42,
+	name{} = 10 // error: wrong type for name
+};
+\endcode
+
+The second way to initialize a record is via the \link fcppt::record::init\endlink
+function. It is a generic function that calls a function for every element of the
+record (from first to last), which can be used to initialize a record in
+a generic way. Assume that we have the values for our record in a stream:
+
+\snippet record.cpp record_init_stream
+
+We then read the corresponding elements of the record from the stream:
+
+\snippet record.cpp record_init_generic
+
+The lambda is first called for <code>age_element</code> and second for <code>name_element</code>
+because of the order they appear in the declaration. So, in the example, <code>age</code> will be
+<code>42</code> and <code>name</code> will be <code>"test"</code>.
+
+\section record_label_arg Labels with an argument
+
+Unlike normal labels, there are also labels that take an additional argument. Consider
+a sprite that can have a fixed number of textures <code>t_1,...,t_n</code> which will
+be rendered in order. To create a label that is parametrized, we use
+\link FCPPT_RECORD_MAKE_LABEL_ARG\endlink:
+
+\snippet record.cpp make_label_arg
+
+Next, we create a type function that takes an unsigned integer <code>I</code>
+to the <code>I</code>'th texture element:
+
+\snippet record.cpp sprite_element
+
+Finally, to declare our sprite with N textures, we use
+<code>boost::mpl::transform</code> to transform a sequence of integers
+<code>0,...,N-1</code> to <code>sprite_element<0>, ..., sprite_element<N-1></code>.
+
+\snippet record.cpp sprite_generic
+
+Here is an example that shows how such a sprite can be initialized:
+
+\snippet record.cpp sprite_example
 
 \section record_headers Header files
 
@@ -26,6 +151,111 @@ TODO...
 <tr>
 <td><code>object_fwd.hpp</code></td>
 <td>Contains \link fcppt::record::object record's \endlink declaration.</td>
+</tr>
+<tr>
+<td><code>object_decl.hpp</code></td>
+<td>Contains \link fcppt::record::object record's \endlink definition.</td>
+</tr>
+<tr>
+<td><code>object_impl.hpp</code></td>
+<td>Contains the definition of \link fcppt::record::object record's \endlink member functions.</td>
+</tr>
+<tr>
+<td><code>object.hpp</code></td>
+<td>Includes <code>object_impl.hpp</code> and <code>comparison.hpp</code>.</td>
+</tr>
+<tr>
+<td><code>comparison.hpp</code></td>
+<td>Contains <code>operator==</code> and <code>operator!=</code>.</td>
+</tr>
+<tr>
+<td><code>element_fwd.hpp</code></td>
+<td>Contains \link fcppt::record::element element's \endlink declaration.</td>
+</tr>
+<tr>
+<td><code>element.hpp</code></td>
+<td>Contains \link fcppt::record::element element's \endlink definition.</td>
+</tr>
+<tr>
+<td><code>element_to_label.hpp</code></td>
+<td>Contains \link fcppt::record::element_to_label\endlink.</td>
+</tr>
+<tr>
+<td><code>element_to_label_tpl.hpp</code></td>
+<td>Contains \link fcppt::record::element_to_label_tpl\endlink.</td>
+</tr>
+<tr>
+<td><code>element_to_type.hpp</code></td>
+<td>Contains \link fcppt::record::element_to_type\endlink.</td>
+</tr>
+<tr>
+<td><code>element_to_type_tpl.hpp</code></td>
+<td>Contains \link fcppt::record::element_to_type_tpl\endlink.</td>
+</tr>
+<tr>
+<td><code>get.hpp</code></td>
+<td>Contains \link fcppt::record::get\endlink.</td>
+</tr>
+<tr>
+<td><code>init.hpp</code></td>
+<td>Contains \link fcppt::record::init\endlink.</td>
+</tr>
+<tr>
+<td><code>label_fwd.hpp</code></td>
+<td>Contains \link fcppt::record::label label's \endlink declaration.</td>
+</tr>
+<tr>
+<td><code>label_decl.hpp</code></td>
+<td>Contains \link fcppt::record::label label's \endlink definition.</td>
+</tr>
+<tr>
+<td><code>label_impl.hpp</code></td>
+<td>Contains the definition of \link fcppt::record::label label's \endlink member functions.</td>
+</tr>
+<tr>
+<td><code>label.hpp</code></td>
+<td>Includes <code>label_impl.hpp</code>.</td>
+</tr>
+<tr>
+<td><code>label_name.hpp</code></td>
+<td>Contains \link fcppt::record::label_name\endlink.</td>
+</tr>
+<tr>
+<td><code>label_value_type.hpp</code></td>
+<td>Contains \link fcppt::record::label_value_type\endlink.</td>
+</tr>
+<tr>
+<td><code>make_label_fwd.hpp</code></td>
+<td>Contains \link FCPPT_RECORD_MAKE_LABEL\endlink and includes <code>label_fwd.hpp</code>.</td>
+</tr>
+<tr>
+<td><code>make_label.hpp</code></td>
+<td>Includes <code>make_label_fwd.hpp</code> and <code>label_impl.hpp</code>.</td>
+</tr>
+<tr>
+<td><code>make_label_arg_fwd.hpp</code></td>
+<td>Contains \link FCPPT_RECORD_MAKE_LABEL_ARG\endlink and includes <code>label_fwd.hpp</code>.</td>
+</tr>
+<tr>
+<td><code>make_label_arg.hpp</code></td>
+<td>Includes <code>make_label_arg_fwd.hpp</code> and <code>label_impl.hpp</code>.</td>
+</tr>
+<tr>
+<td><code>output.hpp</code></td>
+<td>Contains <code>operator<< </code>.</td>
+</tr>
+<tr>
+<td><code>set.hpp</code></td>
+<td>Contains \link fcppt::record::set\endlink.</td>
+</tr>
+</tr>
+<tr>
+<td><code>variadic_fwd.hpp</code></td>
+<td>Contains \link fcppt::record::variadic\endlink and declares \link fcppt::record::object\endlink.</td>
+</tr>
+<tr>
+<td><code>variadic.hpp</code></td>
+<td>Includes <code>fcppt/record/object_fwd.hpp</code> and defines \link fcppt::record::object\endlink.</td>
 </tr>
 </table>
 */

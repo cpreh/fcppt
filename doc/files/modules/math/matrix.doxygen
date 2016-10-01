@@ -14,7 +14,7 @@ namespace matrix
 /**
 \defgroup fcpptmathmatrix fcppt.math.matrix
 \ingroup fcpptmath
-\brief A class representing static n-dimensional matrices
+\brief A class representing static n times m-dimensional matrices
 
 <table id="toc">
 <tr>

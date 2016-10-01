@@ -566,6 +566,10 @@ add_fcppt_test(
 )
 
 add_fcppt_test(
+	io/widen_string
+)
+
+add_fcppt_test(
 	literal
 )
 

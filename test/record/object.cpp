@@ -12,8 +12,8 @@
 #include <fcppt/record/element.hpp>
 #include <fcppt/record/get.hpp>
 #include <fcppt/record/make_label.hpp>
-#include <fcppt/record/object.hpp>
 #include <fcppt/record/set.hpp>
+#include <fcppt/record/variadic.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/mpl/vector/vector10.hpp>
 #include <boost/test/unit_test.hpp>
@@ -109,28 +109,26 @@ FCPPT_PP_POP_WARNING
 	);
 
 	typedef
-	fcppt::record::object<
-		boost::mpl::vector5<
-			fcppt::record::element<
-				int_label,
-				int
-			>,
-			fcppt::record::element<
-				bool_label,
-				bool
-			>,
-			fcppt::record::element<
-				nodefault_label,
-				nodefault
-			>,
-			fcppt::record::element<
-				copy_only_label,
-				copy_only
-			>,
-			fcppt::record::element<
-				move_only_label,
-				int_unique_ptr
-			>
+	fcppt::record::variadic<
+		fcppt::record::element<
+			int_label,
+			int
+		>,
+		fcppt::record::element<
+			bool_label,
+			bool
+		>,
+		fcppt::record::element<
+			nodefault_label,
+			nodefault
+		>,
+		fcppt::record::element<
+			copy_only_label,
+			copy_only
+		>,
+		fcppt::record::element<
+			move_only_label,
+			int_unique_ptr
 		>
 	>
 	my_record;

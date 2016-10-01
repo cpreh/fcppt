@@ -1,7 +1,7 @@
 /**
 \defgroup fcpptmath fcppt.math
 \ingroup fcpptmain
-\brief Everything math-related goes in here
+\brief Math utility classes and functions
 
 <table id="toc">
 <tr>

@@ -8,6 +8,9 @@
 #define FCPPT_RECORD_ELEMENT_TO_LABEL_HPP_INCLUDED
 
 #include <fcppt/record/element_to_label_tpl.hpp>
+#include <fcppt/config/external_begin.hpp>
+#include <type_traits>
+#include <fcppt/config/external_end.hpp>
 
 
 namespace fcppt
@@ -30,7 +33,10 @@ element_to_label
 =
 typename
 fcppt::record::element_to_label_tpl<
-	Element
+	typename
+	std::decay<
+		Element
+	>::type
 >::type;
 
 }

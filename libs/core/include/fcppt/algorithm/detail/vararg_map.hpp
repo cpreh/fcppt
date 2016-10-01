@@ -102,7 +102,7 @@ struct vararg_map<
 	)
 	execute(
 		AnchorFunction const &_anchor,
-		ElementFunction const &_element,
+		ElementFunction const &_fcppt_element,
 		Args &&... _args
 	)
 	{
@@ -115,13 +115,13 @@ struct vararg_map<
 				EndIterator
 			>::execute(
 				_anchor,
-				_element,
+				_fcppt_element,
 				std::forward<
 					Args
 				>(
 					_args
 				)...,
-				_element(
+				_fcppt_element(
 					fcppt::tag<
 						typename
 						boost::mpl::deref<

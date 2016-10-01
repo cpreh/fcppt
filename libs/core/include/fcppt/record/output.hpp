@@ -8,13 +8,13 @@
 #define FCPPT_RECORD_OUTPUT_HPP_INCLUDED
 
 #include <fcppt/tag_type.hpp>
-#include <fcppt/to_std_string.hpp>
-#include <fcppt/type_name_from_info.hpp>
 #include <fcppt/use.hpp>
 #include <fcppt/algorithm/loop.hpp>
 #include <fcppt/algorithm/loop_break_mpl.hpp>
+#include <fcppt/io/widen_string.hpp>
 #include <fcppt/record/element_to_label.hpp>
 #include <fcppt/record/get.hpp>
+#include <fcppt/record/label_name.hpp>
 #include <fcppt/record/object_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <ostream>
@@ -81,26 +81,12 @@ operator<<(
 
 			_stream
 				<<
-				fcppt::to_std_string(
-					fcppt::type_name_from_info(
-						typeid(
-							typename
-							label::tag
-						)
-					)
-				)
-				// TODO: Simplify this!
+				fcppt::record::label_name<
+					label
+				>()
 				<<
-				_stream.widen(
-					' '
-				)
-				<<
-				_stream.widen(
-					'='
-				)
-				<<
-				_stream.widen(
-					' '
+				fcppt::io::widen_string(
+					" = "
 				)
 				<<
 				fcppt::record::get<
@@ -109,12 +95,8 @@ operator<<(
 					_record
 				)
 				<<
-				_stream.widen(
-					','
-				)
-				<<
-				_stream.widen(
-					' '
+				fcppt::io::widen_string(
+					", "
 				);
 		}
 	);

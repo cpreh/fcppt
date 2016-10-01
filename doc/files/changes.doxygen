@@ -1,6 +1,32 @@
 /**
 \page changes Changes
 
+\section changes_changes_to_230 Changes from 2.2.0 to 2.3.0
+
+\subsection changes_added_functionality_to_230 Added functionality
+
+<ul>
+
+<li>\ref fcpptio
+	<ul>
+	<li>Added \link fcppt::io::widen_string\endlink.</li>
+	</ul>
+</li>
+
+<li>\ref fcpptmpl
+	<ul>
+	<li>Added \link fcppt::mpl::index_of_iterator\endlink.</li>
+	</ul>
+</li>
+
+<li>\ref fcpptrecord
+	<p>
+	New library that implements <em>generic records</em>, whose elements are accessed by unique label types.
+	</p>
+</li>
+
+</ul>
+
 \section changes_changes_to_220 Changes from 2.1.0 to 2.2.0
 
 \subsection changes_added_functionality_to_220 Added functionality

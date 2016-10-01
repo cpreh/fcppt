@@ -154,7 +154,7 @@ public:
 	/**
 	\brief Sets an element by copy.
 
-	\see \link fcppt::record::set\endlink.
+	\see fcppt::record::set.
 	*/
 	template<
 		typename Label
@@ -170,7 +170,7 @@ public:
 	/**
 	\brief Sets an element by move.
 
-	\see \link fcppt::record::set\endlink.
+	\see fcppt::record::set.
 	*/
 	template<
 		typename Label
@@ -186,7 +186,7 @@ public:
 	/**
 	\brief Gets an element.
 
-	\see \link fcppt::record::get\endlink.
+	\see fcppt::record::get.
 	*/
 	template<
 		typename Label

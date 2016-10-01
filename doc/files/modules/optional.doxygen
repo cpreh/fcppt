@@ -128,7 +128,7 @@ value.
 </tr>
 <tr>
 <td><code>object.hpp</code></td>
-<td>Includes <code>object_impl.hpp</code> and <code>comparison.hpp</code></td>
+<td>Includes <code>object_impl.hpp</code> and <code>comparison.hpp</code>.</td>
 </tr>
 <tr>
 <td><code>alternative.hpp</code></td>
@@ -156,7 +156,7 @@ value.
 </tr>
 <tr>
 <td><code>comparison.hpp</code></td>
-<td>Contains <code>operator==</code>, <code>operator!=</code> and <code>operator< </code></td>
+<td>Contains <code>operator==</code>, <code>operator!=</code> and <code>operator< </code>.</td>
 </tr>
 <tr>
 <td><code>const_cast.hpp</code></td>

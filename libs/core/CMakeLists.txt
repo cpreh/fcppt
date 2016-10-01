@@ -467,6 +467,7 @@ set(
 	libs/core/include/fcppt/io/cin.hpp
 	libs/core/include/fcppt/io/clog.hpp
 	libs/core/include/fcppt/io/cout.hpp
+	libs/core/include/fcppt/io/detail/widen_string.hpp
 	libs/core/include/fcppt/io/expect.hpp
 	libs/core/include/fcppt/io/get.hpp
 	libs/core/include/fcppt/io/istream.hpp
@@ -486,6 +487,7 @@ set(
 	libs/core/include/fcppt/io/stream_to_string.hpp
 	libs/core/include/fcppt/io/stringstream.hpp
 	libs/core/include/fcppt/io/stringstream_fwd.hpp
+	libs/core/include/fcppt/io/widen_string.hpp
 	libs/core/include/fcppt/io/write.hpp
 	libs/core/include/fcppt/is_strong_typedef.hpp
 	libs/core/include/fcppt/literal.hpp
