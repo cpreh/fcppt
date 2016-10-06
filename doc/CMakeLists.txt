@@ -1086,6 +1086,7 @@ set(
 	libs/core/include/fcppt/record/label_decl.hpp
 	libs/core/include/fcppt/record/label_fwd.hpp
 	libs/core/include/fcppt/record/label_impl.hpp
+	libs/core/include/fcppt/record/label_name.hpp
 	libs/core/include/fcppt/record/label_value_type.hpp
 	libs/core/include/fcppt/record/make_label.hpp
 	libs/core/include/fcppt/record/make_label_arg.hpp
@@ -1097,6 +1098,8 @@ set(
 	libs/core/include/fcppt/record/object_impl.hpp
 	libs/core/include/fcppt/record/output.hpp
 	libs/core/include/fcppt/record/set.hpp
+	libs/core/include/fcppt/record/variadic.hpp
+	libs/core/include/fcppt/record/variadic_fwd.hpp
 	libs/core/include/fcppt/reference.hpp
 	libs/core/include/fcppt/reference_comparison.hpp
 	libs/core/include/fcppt/reference_decl.hpp
@@ -1233,6 +1236,8 @@ set(
 	libs/core/include/fcppt/unique_ptr_impl.hpp
 	libs/core/include/fcppt/unique_ptr_to_base.hpp
 	libs/core/include/fcppt/unique_ptr_to_const.hpp
+	libs/core/include/fcppt/unit.hpp
+	libs/core/include/fcppt/unit_fwd.hpp
 	libs/core/include/fcppt/use.hpp
 	libs/core/include/fcppt/variant/apply_binary.hpp
 	libs/core/include/fcppt/variant/apply_ternary.hpp

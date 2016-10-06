@@ -25,6 +25,12 @@
 	</p>
 </li>
 
+<li>\ref fcpptvarious
+	<ul>
+	<li>Added \link fcppt::unit\endlink.</li>
+	</ul>
+</li>
+
 </ul>
 
 \section changes_changes_to_220 Changes from 2.1.0 to 2.2.0

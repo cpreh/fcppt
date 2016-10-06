@@ -1112,6 +1112,11 @@ add_fcppt_test(
 )
 
 add_fcppt_test(
+	unit
+	NO_CODE
+)
+
+add_fcppt_test(
 	variant/apply_movable
 )
 
