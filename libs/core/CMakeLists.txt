@@ -1072,6 +1072,7 @@ set(
 	libs/core/include/fcppt/variant/apply_ternary.hpp
 	libs/core/include/fcppt/variant/apply_unary.hpp
 	libs/core/include/fcppt/variant/compare.hpp
+	libs/core/include/fcppt/variant/comparison.hpp
 	libs/core/include/fcppt/variant/detail/assert_type.hpp
 	libs/core/include/fcppt/variant/detail/disable_object.hpp
 	libs/core/include/fcppt/variant/detail/get_exn_impl.hpp

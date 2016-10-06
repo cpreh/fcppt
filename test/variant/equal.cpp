@@ -7,8 +7,7 @@
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
-#include <fcppt/variant/equal.hpp>
-#include <fcppt/variant/not_equal.hpp>
+#include <fcppt/variant/comparison.hpp>
 #include <fcppt/variant/object.hpp>
 #include <fcppt/variant/type_info.hpp>
 #include <fcppt/config/external_begin.hpp>

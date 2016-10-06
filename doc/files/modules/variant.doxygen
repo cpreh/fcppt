@@ -225,6 +225,10 @@ its own namespace.</li>
 <td>Contains \link fcppt::variant::compare \endlink.</td>
 </tr>
 <tr>
+<td><code>comparison.hpp</code></td>
+<td>Includes <code>equal.hpp</code> and <code>not_equal.hpp</code>.</td>
+</tr>
+<tr>
 <td><code>equal.hpp</code></td>
 <td>Contains <code>operator==</code>.</td>
 </tr>

@@ -31,6 +31,12 @@
 	</p>
 </li>
 
+<li>\ref fcpptvariant
+	<ul>
+	<li>Added <code>fcppt/variant/comparison.hpp</code>.</li>
+	</ul>
+</li>
+
 <li>\ref fcpptvarious
 	<ul>
 	<li>Added \link fcppt::unit\endlink.</li>
