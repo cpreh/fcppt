@@ -484,6 +484,14 @@ add_fcppt_test(
 )
 
 add_fcppt_test(
+	either/make_failure
+)
+
+add_fcppt_test(
+	either/make_success
+)
+
+add_fcppt_test(
 	either/map
 )
 

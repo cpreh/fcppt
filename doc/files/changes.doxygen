@@ -7,6 +7,12 @@
 
 <ul>
 
+<li>\ref fcppteither
+	<ul>
+	<li>Added \link fcppt::either::make_success\endlink and \link fcppt::either::make_failure\endlink.</li>
+	</ul>
+</li>
+
 <li>\ref fcpptio
 	<ul>
 	<li>Added \link fcppt::io::widen_string\endlink.</li>
