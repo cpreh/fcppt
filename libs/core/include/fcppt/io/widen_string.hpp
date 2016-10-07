@@ -20,7 +20,7 @@ namespace io
 {
 
 /**
-\brief Creates a string that Outputs each character by widening
+\brief Creates a string that outputs each character by widening
 
 \ingroup fcpptio
 */
