@@ -4,8 +4,7 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/make_unique_ptr.hpp>
-#include <fcppt/unique_ptr.hpp>
+#include <fcppt/noncopyable.hpp>
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
@@ -29,30 +28,6 @@ BOOST_AUTO_TEST_CASE(
 )
 {
 FCPPT_PP_POP_WARNING
-
-	class nodefault
-	{
-	public:
-		explicit
-		nodefault(
-			int const _value
-		)
-		:
-			value_(
-				_value
-			)
-		{
-		}
-
-		int
-		value() const
-		{
-			return
-				value_;
-		}
-	private:
-		int value_;
-	};
 
 	class copy_only
 	{
@@ -82,11 +57,78 @@ FCPPT_PP_POP_WARNING
 		int value_;
 	};
 
-	typedef
-	fcppt::unique_ptr<
+	class move_only
+	{
+		FCPPT_NONCOPYABLE(
+			move_only
+		);
+	public:
+		explicit
+		move_only(
+			int const _value
+		)
+		:
+			value_{
+				_value
+			},
+			valid_{
+				true
+			}
+		{
+		}
+
+		move_only(
+			move_only &&_other
+		)
+		:
+			value_{
+				_other.value_
+			},
+			valid_{
+				_other.valid_
+			}
+		{
+			_other.valid_ =
+				false;
+		}
+
+		move_only &
+		operator=(
+			move_only &&_other
+		)
+		{
+			value_ =
+				_other.value_;
+
+			valid_ =
+				_other.valid_;
+
+			_other.valid_ =
+				false;
+
+			return
+				*this;
+		}
+
+		~move_only()
+		{
+		}
+
 		int
-	>
-	int_unique_ptr;
+		value() const
+		{
+			BOOST_CHECK(
+				valid_
+			);
+
+			return
+				value_;
+		}
+	private:
+		int value_;
+
+		bool valid_;
+	};
 
 	FCPPT_RECORD_MAKE_LABEL(
 		int_label
@@ -94,10 +136,6 @@ FCPPT_PP_POP_WARNING
 
 	FCPPT_RECORD_MAKE_LABEL(
 		bool_label
-	);
-
-	FCPPT_RECORD_MAKE_LABEL(
-		nodefault_label
 	);
 
 	FCPPT_RECORD_MAKE_LABEL(
@@ -119,16 +157,12 @@ FCPPT_PP_POP_WARNING
 			bool
 		>,
 		fcppt::record::element<
-			nodefault_label,
-			nodefault
-		>,
-		fcppt::record::element<
 			copy_only_label,
 			copy_only
 		>,
 		fcppt::record::element<
 			move_only_label,
-			int_unique_ptr
+			move_only
 		>
 	>
 	my_record;
@@ -146,16 +180,10 @@ FCPPT_PP_POP_WARNING
 			copy_only(
 				42
 			),
-		nodefault_label{} =
-			nodefault{
-				42
-			},
 		move_only_label{} =
-			fcppt::make_unique_ptr<
-				int
-			>(
-				42
-			)
+			move_only{
+				10
+			}
 	);
 
 	BOOST_CHECK_EQUAL(
@@ -177,15 +205,6 @@ FCPPT_PP_POP_WARNING
 
 	BOOST_CHECK_EQUAL(
 		fcppt::record::get<
-			nodefault_label
-		>(
-			test
-		).value(),
-		42
-	);
-
-	BOOST_CHECK_EQUAL(
-		fcppt::record::get<
 			copy_only_label
 		>(
 			test
@@ -194,12 +213,12 @@ FCPPT_PP_POP_WARNING
 	);
 
 	BOOST_CHECK_EQUAL(
-		*fcppt::record::get<
+		fcppt::record::get<
 			move_only_label
 		>(
 			test
-		),
-		42
+		).value(),
+		10
 	);
 
 	my_record test2(
@@ -226,12 +245,12 @@ FCPPT_PP_POP_WARNING
 	);
 
 	BOOST_CHECK_EQUAL(
-		*fcppt::record::get<
+		fcppt::record::get<
 			move_only_label
 		>(
 			test2
-		),
-		42
+		).value(),
+		10
 	);
 
 	fcppt::record::set<
@@ -253,19 +272,17 @@ FCPPT_PP_POP_WARNING
 		move_only_label
 	>(
 		test2,
-		fcppt::make_unique_ptr<
-			int
-		>(
+		move_only{
 			100
-		)
+		}
 	);
 
 	BOOST_CHECK_EQUAL(
-		*fcppt::record::get<
+		fcppt::record::get<
 			move_only_label
 		>(
 			test2
-		),
+		).value(),
 		100
 	);
 }
