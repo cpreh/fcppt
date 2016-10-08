@@ -7,6 +7,12 @@
 
 <ul>
 
+<li>\ref fcpptcontainer
+	<ul>
+	<li>Added \link fcppt::container::untuple\endlink.</li>
+	</ul>
+</li>
+
 <li>\ref fcppteither
 	<ul>
 	<li>Added \link fcppt::either::make_success\endlink and \link fcppt::either::make_failure\endlink.</li>

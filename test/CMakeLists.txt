@@ -464,6 +464,10 @@ add_fcppt_test(
 )
 
 add_fcppt_test(
+	container/untuple
+)
+
+add_fcppt_test(
 	cyclic_iterator
 )
 
