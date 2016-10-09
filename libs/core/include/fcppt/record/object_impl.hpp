@@ -8,7 +8,6 @@
 #define FCPPT_RECORD_OBJECT_IMPL_HPP_INCLUDED
 
 #include <fcppt/no_init_fwd.hpp>
-#include <fcppt/tag_type.hpp>
 #include <fcppt/use.hpp>
 #include <fcppt/algorithm/vararg_map.hpp>
 #include <fcppt/mpl/index_of_iterator.hpp>
@@ -108,9 +107,8 @@ fcppt::record::object<
 			);
 
 			return
-				fcppt::algorithm::vararg_map<
-					all_types
-				>(
+				fcppt::algorithm::vararg_map(
+					all_types{},
 					[](
 						auto &&... _args_inner
 					)
@@ -129,19 +127,17 @@ fcppt::record::object<
 					[
 						&arguments
 					](
-						auto const _tag
+						auto const _fcppt_element
 					)
 					{
 						FCPPT_USE(
-							_tag
+							_fcppt_element
 						);
 
 						typedef
-						fcppt::tag_type<
-							decltype(
-								_tag
-							)
-						>
+						decltype(
+							_fcppt_element
+						)
 						role;
 
 						typedef

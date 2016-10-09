@@ -7,12 +7,12 @@
 #ifndef FCPPT_RECORD_INIT_HPP_INCLUDED
 #define FCPPT_RECORD_INIT_HPP_INCLUDED
 
-#include <fcppt/tag_type.hpp>
 #include <fcppt/use.hpp>
 #include <fcppt/algorithm/vararg_map.hpp>
 #include <fcppt/record/element_to_label.hpp>
 #include <fcppt/record/is_object.hpp>
 #include <fcppt/config/external_begin.hpp>
+#include <boost/fusion/adapted/mpl.hpp>
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
@@ -54,10 +54,9 @@ init(
 	);
 
 	return
-		fcppt::algorithm::vararg_map<
+		fcppt::algorithm::vararg_map(
 			typename
-			Result::all_types
-		>(
+			Result::all_types{},
 			[](
 				auto &&... _args
 			){
@@ -75,27 +74,25 @@ init(
 			[
 				&_function
 			](
-				auto const _tag
+				auto const _fcppt_element
 			)
 			{
 				FCPPT_USE(
-					_tag
+					_fcppt_element
 				);
 
 				typedef
-				fcppt::tag_type<
-					decltype(
-						_tag
-					)
-				>
-				element;
+				decltype(
+					_fcppt_element
+				)
+				fcppt_element;
 
 				return
 					fcppt::record::element_to_label<
-						element
+						fcppt_element
 					>{} =
 						_function(
-							element{}
+							fcppt_element{}
 						);
 			}
 		);

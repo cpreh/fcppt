@@ -6,7 +6,6 @@
 
 #include <fcppt/literal.hpp>
 #include <fcppt/noncopyable.hpp>
-#include <fcppt/tag_type.hpp>
 #include <fcppt/use.hpp>
 #include <fcppt/algorithm/vararg_map.hpp>
 #include <fcppt/cast/to_unsigned.hpp>
@@ -14,6 +13,8 @@
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/config/external_begin.hpp>
+#include <boost/fusion/adapted/mpl.hpp>
+#include <boost/fusion/adapted/std_tuple.hpp>
 #include <boost/mpl/vector/vector10.hpp>
 #include <boost/test/unit_test.hpp>
 #include <tuple>
@@ -34,12 +35,11 @@ FCPPT_PP_POP_WARNING
 		unsigned,
 		unsigned long
 	> const result(
-		fcppt::algorithm::vararg_map<
+		fcppt::algorithm::vararg_map(
 			boost::mpl::vector2<
 				int,
 				long
-			>
-		>(
+			>{},
 			[](
 				auto const &... _args
 			){
@@ -59,11 +59,9 @@ FCPPT_PP_POP_WARNING
 				return
 					fcppt::cast::to_unsigned(
 						fcppt::literal<
-							fcppt::tag_type<
-								decltype(
-									_tag
-								)
-							>
+							decltype(
+								_tag
+							)
 						>(
 							42
 						)
@@ -141,40 +139,35 @@ BOOST_AUTO_TEST_CASE(
 FCPPT_PP_POP_WARNING
 
 	movable const result{
-		fcppt::algorithm::vararg_map<
-			boost::mpl::vector1<
-				movable
-			>
-		>(
+		fcppt::algorithm::vararg_map(
+			std::make_tuple(
+				movable{
+					42
+				}
+			),
 			[](
 				auto && _args
 			){
 				return
-					movable(
-						std::forward<
-							decltype(
-								_args
-							)
-						>(
+					std::forward<
+						decltype(
 							_args
 						)
+					>(
+						_args
 					);
 			},
 			[](
-				auto const _tag
+				auto &&_arg
 			)
 			{
-				FCPPT_USE(
-					_tag
-				);
-
 				return
-					fcppt::tag_type<
+					std::forward<
 						decltype(
-							_tag
+							_arg
 						)
 					>(
-						42
+						_arg
 					);
 			}
 		)

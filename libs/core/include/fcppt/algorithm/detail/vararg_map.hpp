@@ -7,10 +7,10 @@
 #ifndef FCPPT_ALGORITHM_DETAIL_VARARG_MAP_HPP_INCLUDED
 #define FCPPT_ALGORITHM_DETAIL_VARARG_MAP_HPP_INCLUDED
 
-#include <fcppt/tag.hpp>
+#include <fcppt/move_if.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/mpl/deref.hpp>
-#include <boost/mpl/next.hpp>
+#include <boost/fusion/iterator/deref.hpp>
+#include <boost/fusion/iterator/next.hpp>
 #include <boost/utility/enable_if.hpp>
 #include <type_traits>
 #include <utility>
@@ -25,6 +25,7 @@ namespace detail
 {
 
 template<
+	bool Move,
 	typename Iterator,
 	typename EndIterator,
 	typename Enable = void
@@ -32,10 +33,12 @@ template<
 struct vararg_map;
 
 template<
+	bool Move,
 	typename Iterator,
 	typename EndIterator
 >
 struct vararg_map<
+	Move,
 	Iterator,
 	EndIterator,
 	typename
@@ -58,6 +61,8 @@ struct vararg_map<
 		auto
 	)
 	execute(
+		Iterator,
+		EndIterator,
 		AnchorFunction const &_anchor,
 		ElementFunction const &,
 		Args &&... _args_vararg
@@ -75,10 +80,12 @@ struct vararg_map<
 };
 
 template<
+	bool Move,
 	typename Iterator,
 	typename EndIterator
 >
 struct vararg_map<
+	Move,
 	Iterator,
 	EndIterator,
 	typename
@@ -101,33 +108,41 @@ struct vararg_map<
 		auto
 	)
 	execute(
-		AnchorFunction const &_anchor,
-		ElementFunction const &_fcppt_element,
+		Iterator const _cur,
+		EndIterator const _end,
+		AnchorFunction const &_fcppt_anchor_function,
+		ElementFunction const &_fcppt_element_function,
 		Args &&... _args
 	)
 	{
 		return
 			fcppt::algorithm::detail::vararg_map<
+				Move,
 				typename
-				boost::mpl::next<
+				boost::fusion::result_of::next<
 					Iterator
 				>::type,
 				EndIterator
 			>::execute(
-				_anchor,
-				_fcppt_element,
+				boost::fusion::next(
+					_cur
+				),
+				_end,
+				_fcppt_anchor_function,
+				_fcppt_element_function,
 				std::forward<
 					Args
 				>(
 					_args
 				)...,
-				_fcppt_element(
-					fcppt::tag<
-						typename
-						boost::mpl::deref<
-							Iterator
-						>::type
-					>{}
+				_fcppt_element_function(
+					fcppt::move_if<
+						Move
+					>(
+						boost::fusion::deref(
+							_cur
+						)
+					)
 				)
 			);
 	}

@@ -7,12 +7,12 @@
 #ifndef FCPPT_ALGORITHM_ARRAY_INIT_HPP_INCLUDED
 #define FCPPT_ALGORITHM_ARRAY_INIT_HPP_INCLUDED
 
-#include <fcppt/tag_type.hpp>
 #include <fcppt/use.hpp>
 #include <fcppt/algorithm/vararg_map.hpp>
 #include <fcppt/container/array_size.hpp>
 #include <fcppt/type_traits/is_std_array.hpp>
 #include <fcppt/config/external_begin.hpp>
+#include <boost/fusion/adapted/mpl.hpp>
 #include <boost/mpl/range_c.hpp>
 #include <cstddef>
 #include <utility>
@@ -56,15 +56,14 @@ array_init(
 	);
 
 	return
-		fcppt::algorithm::vararg_map<
+		fcppt::algorithm::vararg_map(
 			boost::mpl::range_c<
 				std::size_t,
 				0,
 				fcppt::container::array_size<
 					Array
 				>::value
-			>
-		>(
+			>{},
 			[](
 				auto &&... _args_array
 			)
@@ -83,22 +82,20 @@ array_init(
 			[
 				&_function
 			](
-				auto const _tag
+				auto const _fcppt_init_index
 			)
 			{
 				FCPPT_USE(
-					_tag
+					_fcppt_init_index
 				);
 
 				return
 					_function(
 						std::integral_constant<
 							std::size_t,
-							fcppt::tag_type<
-								decltype(
-									_tag
-								)
-							>::value
+							decltype(
+								_fcppt_init_index
+							)::value
 						>{}
 					);
 			}
