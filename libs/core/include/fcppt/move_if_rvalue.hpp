@@ -10,6 +10,7 @@
 #include <fcppt/move_if.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <type_traits>
+#include <utility>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -21,10 +22,10 @@ namespace fcppt
 
 \ingroup fcpptvarious
 
-Moves \a _arg iff \a Type is an rvalue. The behavior is similar to
-<code>std::forward</code> except that this function depends on two types
-instead of one. This can be useful in situations where you want to move a
-member if the surrounding object is an rvalue.
+Moves \a _arg if \a Type is an rvalue or if \a Arg is an rvalue. The behavior
+is similar to <code>std::forward</code> except that this function depends on
+two types instead of one. This can be useful in situations where you want to
+move a member if the surrounding object is an rvalue.
 */
 template<
 	typename Type,
@@ -35,7 +36,7 @@ decltype(
 	auto
 )
 move_if_rvalue(
-	Arg &_arg
+	Arg &&_arg
 )
 {
 	return
@@ -44,7 +45,11 @@ move_if_rvalue(
 				Type
 			>::value
 		>(
-			_arg
+			std::forward<
+				Arg
+			>(
+				_arg
+			)
 		);
 }
 

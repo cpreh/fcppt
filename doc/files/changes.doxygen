@@ -40,6 +40,7 @@
 <li>\ref fcpptvarious
 	<ul>
 	<li>Added \link fcppt::unit\endlink.</li>
+	<li>\link fcppt::move_if\endlink and \link fcppt::move_if_rvalue\endlink now also work on rvalues.</li>
 	</ul>
 </li>
 

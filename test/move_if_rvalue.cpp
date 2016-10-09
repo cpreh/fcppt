@@ -61,6 +61,22 @@ static_assert(
 	""
 );
 
+static_assert(
+	std::is_same<
+		decltype(
+			fcppt::move_if_rvalue<
+				int &
+			>(
+				std::declval<
+					int
+				>()
+			)
+		),
+		int &&
+	>::value,
+	""
+);
+
 class container
 {
 	FCPPT_NONCOPYABLE(
