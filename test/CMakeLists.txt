@@ -4,7 +4,7 @@ include(
 
 function(
 	add_fcppt_test
-	PATHNAME
+	PATH_NAME
 )
 	set(
 		OPTION_ARGS
@@ -34,7 +34,8 @@ function(
 	endif()
 
 	fcppt_utils_add_test(
-		"${PATHNAME}"
+		${FCPPT_UTILS_PROJECT_SOURCE_DIR}/test
+		"${PATH_NAME}"
 		${NO_CODE}
 		LINK_LIBS
 			${_LINK_LIBS}

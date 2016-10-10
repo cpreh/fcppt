@@ -1153,6 +1153,7 @@ endfunction()
 
 function(
 	fcppt_utils_add_test
+	TEST_DIR
 	PATH_NAME
 )
 	set(
@@ -1189,7 +1190,7 @@ function(
 
 	add_executable(
 		${FULL_TEST_NAME}
-		${PATH_NAME}.cpp
+		${TEST_DIR}/${PATH_NAME}.cpp
 	)
 
 	string(
