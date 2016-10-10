@@ -100,6 +100,33 @@ function(
 		PRIVATE
 		${_LINK_LIBS}
 	)
+
+	string(
+		REPLACE
+		"_"
+		"/"
+		FOLDER_NAME
+		"${_SUBNAME}"
+	)
+
+	if(
+		NOT
+		"${FOLDER_NAME}"
+		STREQUAL
+		""
+	)
+		set(
+			FOLDER_NAME
+			"/${FOLDER_NAME}"
+		)
+	endif()
+
+	set_target_properties(
+		${FCPPT_EXAMPLE_NAME}
+		PROPERTIES
+		FOLDER
+		"fcppt/examples${FOLDER_NAME}"
+	)
 endfunction()
 
 function(

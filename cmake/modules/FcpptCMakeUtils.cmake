@@ -1192,6 +1192,41 @@ function(
 		${PATH_NAME}.cpp
 	)
 
+	string(
+		FIND
+		${PATH_NAME}
+		"/"
+		LAST_PART
+		REVERSE
+	)
+
+	if(
+		NOT
+		LAST_PART
+		EQUAL
+		-1
+	)
+		string(
+			SUBSTRING
+			${PATH_NAME}
+			0
+			${LAST_PART}
+			FOLDER_NAME
+		)
+
+		set(
+			FOLDER_NAME
+			"/${FOLDER_NAME}"
+		)
+	endif()
+
+	set_target_properties(
+		${FULL_TEST_NAME}
+		PROPERTIES
+		FOLDER
+		${PROJECT_NAME}/tests${FOLDER_NAME}
+	)
+
 	fcppt_utils_set_target_compiler_flags(
 		${FULL_TEST_NAME}
 	)

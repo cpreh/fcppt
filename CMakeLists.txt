@@ -7,6 +7,13 @@ project(
 	fcppt
 )
 
+set_property(
+	GLOBAL
+	PROPERTY
+	USE_FOLDERS
+	ON
+)
+
 list(
 	APPEND
 	CMAKE_MODULE_PATH
@@ -289,6 +296,13 @@ function(
 
 		fcppt_utils_set_target_compiler_flags(
 			${TARGETNAME}
+		)
+
+		set_target_properties(
+			${TARGETNAME}
+			PROPERTIES
+			FOLDER
+			fcppt
 		)
 	endif()
 
