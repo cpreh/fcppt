@@ -1,11 +1,9 @@
 function(
 	add_fcppt_container_example
-	MAINNAME
+	EXAMPLE_NAME
 )
-	make_fcppt_example(
-		${MAINNAME}
-		SUBNAME
-			container
+	add_fcppt_example(
+		container/${EXAMPLE_NAME}
 		${ARGN}
 	)
 endfunction()

@@ -1,11 +1,9 @@
 function(
 	add_fcppt_signal_example
-	MAINNAME
+	EXAMPLE_NAME
 )
-	make_fcppt_example(
-		${MAINNAME}
-		SUBNAME
-			signal
+	add_fcppt_example(
+		signal/${EXAMPLE_NAME}
 		${ARGN}
 	)
 endfunction()

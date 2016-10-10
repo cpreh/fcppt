@@ -1,11 +1,9 @@
 function(
 	add_fcppt_random_example
-	MAINNAME
+	EXAMPLE_NAME
 )
-	make_fcppt_example(
-		${MAINNAME}
-		SUBNAME
-			random
+	add_fcppt_example(
+		random/${EXAMPLE_NAME}
 		${ARGN}
 	)
 endfunction()

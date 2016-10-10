@@ -1,11 +1,9 @@
 function(
 	add_fcppt_log_example
-	MAINNAME
+	EXAMPLE_NAME
 )
-	make_fcppt_example(
-		${MAINNAME}
-		SUBNAME
-			log
+	add_fcppt_example(
+		log/${EXAMPLE_NAME}
 		LINK_LIBS
 			${fcppt_core_TARGET}
 			${fcppt_log_TARGET}

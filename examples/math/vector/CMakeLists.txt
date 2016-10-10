@@ -1,11 +1,9 @@
 function(
 	add_fcppt_math_vector_example
-	MAINNAME
+	EXAMPLE_NAME
 )
-	make_fcppt_example(
-		${MAINNAME}
-		SUBNAME
-			math_vector
+	add_fcppt_math_example(
+		vector/${EXAMPLE_NAME}
 		${ARGN}
 	)
 endfunction()

@@ -1,11 +1,9 @@
 function(
 	add_fcppt_cast_example
-	MAINNAME
+	EXAMPLE_NAME
 )
-	make_fcppt_example(
-		${MAINNAME}
-		SUBNAME
-			cast
+	add_fcppt_example(
+		cast/${EXAMPLE_NAME}
 		${ARGN}
 	)
 endfunction()

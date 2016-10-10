@@ -1,11 +1,9 @@
 function(
 	add_fcppt_preprocessor_example
-	MAINNAME
+	EXAMPLE_NAME
 )
-	make_fcppt_example(
-		${MAINNAME}
-		SUBNAME
-			preprocessor
+	add_fcppt_example(
+		preprocessor/${EXAMPLE_NAME}
 		${ARGN}
 	)
 endfunction()

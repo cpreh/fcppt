@@ -1,11 +1,9 @@
 function(
 	add_fcppt_mpl_example
-	MAINNAME
+	EXAMPLE_NAME
 )
-	make_fcppt_example(
-		${MAINNAME}
-		SUBNAME
-			mpl
+	add_fcppt_example(
+		mpl/${EXAMPLE_NAME}
 		${ARGN}
 	)
 endfunction()

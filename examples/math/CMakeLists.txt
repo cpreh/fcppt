@@ -1,11 +1,9 @@
 function(
 	add_fcppt_math_example
-	MAINNAME
+	PATH_NAME
 )
-	make_fcppt_example(
-		${MAINNAME}
-		SUBNAME
-			math
+	add_fcppt_example(
+		math/${PATH_NAME}
 		${ARGN}
 	)
 endfunction()

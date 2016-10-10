@@ -1282,3 +1282,122 @@ function(
 		)
 	endif()
 endfunction()
+
+function(
+	fcppt_utils_add_example
+	EXAMPLE_DIR
+	PATH_NAME
+)
+	set(
+		OPTION_ARGS
+		IS_C
+	)
+
+	set(
+		MULTI_ARGS
+		LINK_LIBS
+		INCLUDE_DIRS
+		COMPILE_DEFINITIONS
+	)
+
+	cmake_parse_arguments(
+		""
+		"${OPTION_ARGS}"
+		""
+		"${MULTI_ARGS}"
+		${ARGN}
+	)
+
+	string(
+		REPLACE
+		"/"
+		"_"
+		EXAMPLE_NAME
+		${PATH_NAME}
+	)
+
+	set(
+		FULL_EXAMPLE_NAME
+		${PROJECT_NAME}_example_${EXAMPLE_NAME}
+	)
+
+	if(
+		${_IS_C}
+	)
+		set(
+			SUFFIX
+			"c"
+		)
+	else()
+		set(
+			SUFFIX
+			"cpp"
+		)
+	endif()
+
+	add_executable(
+		${FULL_EXAMPLE_NAME}
+		${EXAMPLE_DIR}/${PATH_NAME}.${SUFFIX}
+	)
+
+	string(
+		FIND
+		${PATH_NAME}
+		"/"
+		LAST_PART
+		REVERSE
+	)
+
+	if(
+		NOT
+		LAST_PART
+		EQUAL
+		-1
+	)
+		string(
+			SUBSTRING
+			${PATH_NAME}
+			0
+			${LAST_PART}
+			FOLDER_NAME
+		)
+
+		set(
+			FOLDER_NAME
+			"/${FOLDER_NAME}"
+		)
+	endif()
+
+	set_target_properties(
+		${FULL_EXAMPLE_NAME}
+		PROPERTIES
+		FOLDER
+		${PROJECT_NAME}/examples${FOLDER_NAME}
+	)
+
+	target_compile_definitions(
+		${FULL_EXAMPLE_NAME}
+		PRIVATE
+		"${_COMPILE_DEFINITIONS}"
+	)
+
+	target_include_directories(
+		${FULL_EXAMPLE_NAME}
+		PRIVATE
+		${_INCLUDE_DIRS}
+	)
+
+	if(
+		NOT _IS_C
+	)
+		fcppt_utils_set_target_compiler_flags(
+			${FULL_EXAMPLE_NAME}
+		)
+	endif()
+
+	target_link_libraries(
+		${FULL_EXAMPLE_NAME}
+		PRIVATE
+		${_LINK_LIBS}
+	)
+endfunction()

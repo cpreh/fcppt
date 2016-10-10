@@ -7,17 +7,12 @@ fcppt_utils_link_target(
 )
 
 function(
-	make_fcppt_example
-	MAINNAME
+	add_fcppt_example
+	PATH_NAME
 )
 	set(
 		OPTION_ARGS
 		IS_C
-	)
-
-	set(
-		SINGLE_ARGS
-		SUBNAME
 	)
 
 	set(
@@ -29,111 +24,31 @@ function(
 	cmake_parse_arguments(
 		""
 		"${OPTION_ARGS}"
-		"${SINGLE_ARGS}"
+		""
 		"${MULTI_ARGS}"
 		${ARGN}
 	)
 
 	if(
-		"${_SUBNAME}"
-		STREQUAL
-		""
+		_IS_C
 	)
 		set(
-			FCPPT_EXAMPLE_NAME_SUFFIX
-			${MAINNAME}
-		)
-	else()
-		set(
-			FCPPT_EXAMPLE_NAME_SUFFIX
-			${_SUBNAME}_${MAINNAME}
+			IS_C
+			IS_C
 		)
 	endif()
 
-	set(
-		FCPPT_EXAMPLE_NAME
-		fcppt_example_${FCPPT_EXAMPLE_NAME_SUFFIX}
-	)
-
-	if(
-		${_IS_C}
-	)
-		set(
-			SUFFIX
-			"c"
-		)
-	else()
-		set(
-			SUFFIX
-			"cpp"
-		)
-	endif()
-
-	add_executable(
-		${FCPPT_EXAMPLE_NAME}
-		${MAINNAME}.${SUFFIX}
-	)
-
-	target_compile_definitions(
-		${FCPPT_EXAMPLE_NAME}
-		PRIVATE
-		"${_COMPILE_DEFINITIONS}"
-	)
-
-	target_include_directories(
-		${FCPPT_EXAMPLE_NAME}
-		PRIVATE
-		${Boost_INCLUDE_DIRS}
-		${FCPPT_UTILS_PROJECT_BINARY_DIR}/include
-	)
-
-	if(
-		NOT _IS_C
-	)
-		fcppt_utils_set_target_compiler_flags(
-			${FCPPT_EXAMPLE_NAME}
-		)
-	endif()
-
-	target_link_libraries(
-		${FCPPT_EXAMPLE_NAME}
-		PRIVATE
-		${_LINK_LIBS}
-	)
-
-	string(
-		REPLACE
-		"_"
-		"/"
-		FOLDER_NAME
-		"${_SUBNAME}"
-	)
-
-	if(
-		NOT
-		"${FOLDER_NAME}"
-		STREQUAL
-		""
-	)
-		set(
-			FOLDER_NAME
-			"/${FOLDER_NAME}"
-		)
-	endif()
-
-	set_target_properties(
-		${FCPPT_EXAMPLE_NAME}
-		PROPERTIES
-		FOLDER
-		"fcppt/examples${FOLDER_NAME}"
-	)
-endfunction()
-
-function(
-	add_fcppt_example
-)
-	make_fcppt_example(
-		${ARGN}
+	fcppt_utils_add_example(
+		${FCPPT_UTILS_PROJECT_SOURCE_DIR}/examples
+		${PATH_NAME}
+		${IS_C}
+		LINK_LIBS
+			${_LINK_LIBS}
+		COMPILE_DEFINITIONS
+			${_COMPILE_DEFINITIONS}
+		INCLUDE_DIRS
+			${Boost_INCLUDE_DIRS}
+			${FCPPT_UTILS_PROJECT_BINARY_DIR}/include
 	)
 endfunction()
 
