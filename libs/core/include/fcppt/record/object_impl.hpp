@@ -92,9 +92,9 @@ fcppt::record::object<
 )
 :
 	elements_(
-		[
-			&_args...
-		]{
+		[](
+			auto &&... _args2
+		){
 			std::tuple<
 				typename
 				std::decay<
@@ -102,7 +102,7 @@ fcppt::record::object<
 				>::type...
 			> arguments(
 				std::move(
-					_args
+					_args2
 				)...
 			);
 
@@ -175,7 +175,13 @@ fcppt::record::object<
 							);
 					}
 				);
-		}()
+		}(
+			std::forward<
+				Args
+			>(
+				_args
+			)...
+		)
 	)
 {
 	static_assert(

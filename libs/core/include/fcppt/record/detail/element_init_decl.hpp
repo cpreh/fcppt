@@ -7,6 +7,7 @@
 #ifndef FCPPT_RECORD_DETAIL_ELEMENT_INIT_DECL_HPP_INCLUDED
 #define FCPPT_RECORD_DETAIL_ELEMENT_INIT_DECL_HPP_INCLUDED
 
+#include <fcppt/noncopyable.hpp>
 #include <fcppt/record/detail/element_init_fwd.hpp>
 #include <fcppt/record/detail/is_tag.hpp>
 #include <fcppt/config/external_begin.hpp>
@@ -27,6 +28,9 @@ template<
 >
 class element_init
 {
+	FCPPT_NONCOPYABLE(
+		element_init
+	);
 public:
 	typedef
 	Tag
@@ -59,6 +63,17 @@ public:
 	element_init(
 		value_type const &
 	);
+
+	element_init(
+		element_init &&
+	);
+
+	element_init &
+	operator=(
+		element_init &&
+	);
+
+	~element_init();
 
 	value_type &
 	value();

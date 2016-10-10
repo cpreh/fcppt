@@ -53,6 +53,45 @@ template<
 	typename Tag,
 	typename Type
 >
+fcppt::record::detail::element_init<
+	Tag,
+	Type
+>::element_init(
+	element_init &&
+)
+= default;
+
+template<
+	typename Tag,
+	typename Type
+>
+fcppt::record::detail::element_init<
+	Tag,
+	Type
+> &
+fcppt::record::detail::element_init<
+	Tag,
+	Type
+>::operator=(
+	element_init &&
+)
+= default;
+
+template<
+	typename Tag,
+	typename Type
+>
+fcppt::record::detail::element_init<
+	Tag,
+	Type
+>::~element_init()
+{
+}
+
+template<
+	typename Tag,
+	typename Type
+>
 typename
 fcppt::record::detail::element_init<
 	Tag,

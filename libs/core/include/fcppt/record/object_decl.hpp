@@ -9,6 +9,9 @@
 
 #include <fcppt/no_init_fwd.hpp>
 #include <fcppt/mpl/all_of.hpp>
+#include <fcppt/preprocessor/disable_vc_warning.hpp>
+#include <fcppt/preprocessor/pop_warning.hpp>
+#include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/record/element_to_type_tpl.hpp>
 #include <fcppt/record/is_element.hpp>
 #include <fcppt/record/label_value_type.hpp>
@@ -24,6 +27,9 @@ namespace fcppt
 {
 namespace record
 {
+
+FCPPT_PP_PUSH_WARNING
+FCPPT_PP_DISABLE_VC_WARNING(4521)
 
 /**
 \brief A generic struct that identifies elements by types.
@@ -202,6 +208,8 @@ public:
 private:
 	tuple elements_;
 };
+
+FCPPT_PP_POP_WARNING
 
 }
 }
