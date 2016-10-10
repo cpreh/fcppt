@@ -65,133 +65,8 @@ add_fcppt_test(
 	NO_CODE
 )
 
-add_fcppt_test(
-	algorithm/all_of
-)
-
-add_fcppt_test(
-	algorithm/array_init_move
-)
-
-add_fcppt_test(
-	algorithm/array_push_back
-)
-
-add_fcppt_test(
-	algorithm/binary_search
-)
-
-add_fcppt_test(
-	algorithm/enum_array_init
-)
-
-add_fcppt_test(
-	algorithm/equal_range
-)
-
-add_fcppt_test(
-	algorithm/find_by_opt
-)
-
-add_fcppt_test(
-	algorithm/find_if_opt
-)
-
-add_fcppt_test(
-	algorithm/find_opt
-)
-
-add_fcppt_test(
-	algorithm/fold
-)
-
-add_fcppt_test(
-	algorithm/fold_break
-)
-
-add_fcppt_test(
-	algorithm/index_of
-)
-
-add_fcppt_test(
-	algorithm/index_of_enum_array
-)
-
-add_fcppt_test(
-	algorithm/generate_n
-)
-
-add_fcppt_test(
-	algorithm/join
-)
-
-add_fcppt_test(
-	algorithm/key_set
-)
-
-add_fcppt_test(
-	algorithm/levenshtein
-)
-
-add_fcppt_test(
-	algorithm/loop
-)
-
-add_fcppt_test(
-	algorithm/loop_break
-)
-
-add_fcppt_test(
-	algorithm/map
-)
-
-add_fcppt_test(
-	algorithm/map_concat
-)
-
-add_fcppt_test(
-	algorithm/map_iteration
-)
-
-add_fcppt_test(
-	algorithm/map_iteration_second
-)
-
-add_fcppt_test(
-	algorithm/map_optional
-)
-
-add_fcppt_test(
-	algorithm/optimize_map
-	NO_CODE
-)
-
-add_fcppt_test(
-	algorithm/remove
-)
-
-add_fcppt_test(
-	algorithm/repeat
-)
-
-add_fcppt_test(
-	algorithm/sequence_iteration
-)
-
-add_fcppt_test(
-	algorithm/set_difference
-)
-
-add_fcppt_test(
-	algorithm/set_intersection
-)
-
-add_fcppt_test(
-	algorithm/set_union
-)
-
-add_fcppt_test(
-	algorithm/vararg_map
+add_subdirectory(
+	algorithm
 )
 
 add_fcppt_test(
@@ -218,26 +93,14 @@ add_fcppt_test(
 	boost_units_value
 )
 
+add_subdirectory(
+	cast
+)
+
 add_fcppt_test(
 	cast_to_enum
 	LINK_LIBS
 		"${fcppt_core_TARGET}"
-)
-
-add_fcppt_test(
-	cast/dynamic
-	LINK_LIBS
-		"${fcppt_core_TARGET}"
-)
-
-add_fcppt_test(
-	cast/dynamic_cross
-	LINK_LIBS
-		"${fcppt_core_TARGET}"
-)
-
-add_fcppt_test(
-	cast/promote
 )
 
 add_fcppt_test(
