@@ -24,4 +24,8 @@ add_fcppt_cast_test(
 	promote
 )
 
-
+add_fcppt_cast_test(
+	truncation_check
+	LINK_LIBS
+		"${fcppt_core_TARGET}"
+)

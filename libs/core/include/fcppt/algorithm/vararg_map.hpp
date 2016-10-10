@@ -21,7 +21,7 @@ namespace algorithm
 {
 
 /**
-\brief Map an MPL sequence to variadic arguments.
+\brief Map a fusion sequence to variadic arguments.
 
 \ingroup fcpptalgorithm
 
