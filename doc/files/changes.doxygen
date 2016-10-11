@@ -7,6 +7,20 @@
 
 <ul>
 
+<li><code>CMake</code>
+	<ul>
+	<li>Set <code>FOLDER</code> properties on targets.</li>
+	<li>Added <code>fcppt_utils_set_target_folder</code>.</li>
+	<li>Added <code>fcppt_utils_add_example</code>.</li>
+	</ul>
+</li>
+
+<li>\ref fcpptconfig
+	<ul>
+	<li>Ignore VC++ warning <code>4309</code> (overflow of a constant) in external headers.</li>
+	</ul>
+</li>
+
 <li>\ref fcpptcontainer
 	<ul>
 	<li>Added \link fcppt::container::untuple\endlink.</li>
@@ -55,6 +69,12 @@
 \subsection changes_changed_functionality_to_230 Changed functionality
 
 <ul>
+
+<li><code>CMake</code>
+	<ul>
+	<li><code>fcppt_utils_add_test</code> now gets the test directory as argument as well.</li>
+	</ul>
+</li>
 
 <li>\ref fcpptalgorithm
 	<ul>
