@@ -1249,6 +1249,7 @@ function(
 		${FULL_TEST_NAME}
 		PRIVATE
 		${_INCLUDE_DIRS}
+		${Boost_INCLUDE_DIRS}
 	)
 
 	target_link_libraries(
