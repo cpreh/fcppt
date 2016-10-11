@@ -51,16 +51,12 @@ decltype(
 	)
 )
 {
-	typedef
-	typename
-	std::decay<
-		Either
-	>::type
-	either_type;
-
 	static_assert(
 		fcppt::either::is_object<
-			either_type
+			typename
+			std::decay<
+				Either
+			>::type
 		>::value,
 		"Either must be an either"
 	);
