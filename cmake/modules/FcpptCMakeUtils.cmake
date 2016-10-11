@@ -1152,6 +1152,48 @@ function(
 endfunction()
 
 function(
+	fcppt_utils_set_target_folder
+	TARGET_NAME
+	PREFIX
+	PATH_NAME
+)
+	string(
+		FIND
+		${PATH_NAME}
+		"/"
+		LAST_PART
+		REVERSE
+	)
+
+	if(
+		NOT
+		LAST_PART
+		EQUAL
+		-1
+	)
+		string(
+			SUBSTRING
+			${PATH_NAME}
+			0
+			${LAST_PART}
+			FOLDER_NAME
+		)
+
+		set(
+			FOLDER_NAME
+			"/${FOLDER_NAME}"
+		)
+	endif()
+
+	set_target_properties(
+		${TARGET_NAME}
+		PROPERTIES
+		FOLDER
+		${PROJECT_NAME}/${PREFIX}${FOLDER_NAME}
+	)
+endfunction()
+
+function(
 	fcppt_utils_add_test
 	TEST_DIR
 	PATH_NAME
@@ -1193,39 +1235,10 @@ function(
 		${TEST_DIR}/${PATH_NAME}.cpp
 	)
 
-	string(
-		FIND
-		${PATH_NAME}
-		"/"
-		LAST_PART
-		REVERSE
-	)
-
-	if(
-		NOT
-		LAST_PART
-		EQUAL
-		-1
-	)
-		string(
-			SUBSTRING
-			${PATH_NAME}
-			0
-			${LAST_PART}
-			FOLDER_NAME
-		)
-
-		set(
-			FOLDER_NAME
-			"/${FOLDER_NAME}"
-		)
-	endif()
-
-	set_target_properties(
+	fcppt_utils_set_target_folder(
 		${FULL_TEST_NAME}
-		PROPERTIES
-		FOLDER
-		${PROJECT_NAME}/tests${FOLDER_NAME}
+		tests
+		${PATH_NAME}
 	)
 
 	fcppt_utils_set_target_compiler_flags(
@@ -1341,39 +1354,10 @@ function(
 		${EXAMPLE_DIR}/${PATH_NAME}.${SUFFIX}
 	)
 
-	string(
-		FIND
-		${PATH_NAME}
-		"/"
-		LAST_PART
-		REVERSE
-	)
-
-	if(
-		NOT
-		LAST_PART
-		EQUAL
-		-1
-	)
-		string(
-			SUBSTRING
-			${PATH_NAME}
-			0
-			${LAST_PART}
-			FOLDER_NAME
-		)
-
-		set(
-			FOLDER_NAME
-			"/${FOLDER_NAME}"
-		)
-	endif()
-
-	set_target_properties(
+	fcppt_utils_set_target_folder(
 		${FULL_EXAMPLE_NAME}
-		PROPERTIES
-		FOLDER
-		${PROJECT_NAME}/examples${FOLDER_NAME}
+		examples
+		${PATH_NAME}
 	)
 
 	target_compile_definitions(
