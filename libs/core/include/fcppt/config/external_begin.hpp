@@ -39,6 +39,7 @@ FCPPT_PP_DISABLE_VC_WARNING(4265) // destructor not virtual
 FCPPT_PP_DISABLE_VC_WARNING(4266) // no override available for virtual member function from base
 FCPPT_PP_DISABLE_VC_WARNING(4302) // type cast truncation
 FCPPT_PP_DISABLE_VC_WARNING(4307) // integral constant overflow
+FCPPT_PP_DISABLE_VC_WARNING(4309) // truncation of constant value
 FCPPT_PP_DISABLE_VC_WARNING(4324) // structure was padded due to __declspec(align())
 FCPPT_PP_DISABLE_VC_WARNING(4348) // redefinition of default parameter
 FCPPT_PP_DISABLE_VC_WARNING(4365) // signed/unsigned mismatch in action
