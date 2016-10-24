@@ -10,6 +10,7 @@
 #include <fcppt/use.hpp>
 #include <fcppt/algorithm/array_init.hpp>
 #include <fcppt/cast/size.hpp>
+#include <fcppt/math/size_type.hpp>
 #include <fcppt/math/matrix/row_type.hpp>
 #include <fcppt/math/matrix/static_storage.hpp>
 #include <fcppt/math/matrix/detail/index_absolute.hpp>
@@ -36,8 +37,16 @@ template<
 inline
 fcppt::math::matrix::static_storage<
 	Type,
-	R,
-	C
+	fcppt::cast::size<
+		fcppt::math::size_type
+	>(
+		R
+	),
+	fcppt::cast::size<
+		fcppt::math::size_type
+	>(
+		C
+	)
 >
 init_storage(
 	std::array<
@@ -53,8 +62,16 @@ init_storage(
 		fcppt::algorithm::array_init<
 			fcppt::math::matrix::static_storage<
 				Type,
-				R,
-				C
+				fcppt::cast::size<
+					fcppt::math::size_type
+				>(
+					R
+				),
+				fcppt::cast::size<
+					fcppt::math::size_type
+				>(
+					C
+				)
 			>
 		>(
 			[
