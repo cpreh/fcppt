@@ -512,7 +512,6 @@ set(
 	libs/core/include/fcppt/make_shared_ptr.hpp
 	libs/core/include/fcppt/make_strong_typedef.hpp
 	libs/core/include/fcppt/make_unique_ptr.hpp
-	libs/core/include/fcppt/make_xvalue.hpp
 	libs/core/include/fcppt/math/at_c.hpp
 	libs/core/include/fcppt/math/binary_map.hpp
 	libs/core/include/fcppt/math/box/center.hpp
@@ -1114,10 +1113,6 @@ set(
 	libs/core/include/fcppt/weak_ptr_fwd.hpp
 	libs/core/include/fcppt/weak_ptr_impl.hpp
 	libs/core/include/fcppt/widen.hpp
-	libs/core/include/fcppt/xvalue.hpp
-	libs/core/include/fcppt/xvalue_decl.hpp
-	libs/core/include/fcppt/xvalue_fwd.hpp
-	libs/core/include/fcppt/xvalue_impl.hpp
 	libs/core/src/args.cpp
 	libs/core/src/backtrace/current_stack_frame.cpp
 	libs/core/src/backtrace/print_current_stack_frame.cpp
