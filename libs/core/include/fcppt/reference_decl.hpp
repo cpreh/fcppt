@@ -39,10 +39,12 @@ public:
 	explicit
 	reference(
 		type &
-	);
+	)
+	noexcept;
 
 	type &
-	get() const;
+	get() const
+	noexcept;
 private:
 	type *impl_;
 };

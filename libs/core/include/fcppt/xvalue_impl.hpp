@@ -19,6 +19,7 @@ fcppt::xvalue<
 >::xvalue(
 	type &_ref
 )
+noexcept
 :
 	impl_(
 		&_ref
@@ -37,6 +38,7 @@ fcppt::xvalue<
 fcppt::xvalue<
 	Type
 >::get() const
+noexcept
 {
 	return
 		*impl_;
