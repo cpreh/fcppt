@@ -13,6 +13,7 @@
 template<
 	typename Type
 >
+inline
 fcppt::reference<
 	Type
 >::reference(
@@ -28,41 +29,9 @@ fcppt::reference<
 template<
 	typename Type
 >
+inline
+typename
 fcppt::reference<
-	Type
->::reference(
-	reference const &_other
-)
-=
-default;
-
-template<
-	typename Type
->
-fcppt::reference<
-	Type
-> &
-fcppt::reference<
-	Type
->::operator=(
-	reference const &_other
-)
-=
-default;
-
-template<
-	typename Type
->
-fcppt::reference<
-	Type
->::~reference()
-{
-}
-
-template<
-	typename Type
->
-typename fcppt::reference<
 	Type
 >::type &
 fcppt::reference<

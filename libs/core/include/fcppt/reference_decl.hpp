@@ -31,30 +31,15 @@ class reference
 	reference(
 		Type &&
 	) = delete;
-
-	// Do not assign from temporary objects
-	reference &
-	operator=(
-		Type &&
-	) = delete;
 public:
-	typedef Type type;
+	typedef
+	Type
+	type;
 
 	explicit
 	reference(
 		type &
 	);
-
-	reference(
-		reference const &
-	);
-
-	reference &
-	operator=(
-		reference const &
-	);
-
-	~reference();
 
 	type &
 	get() const;
