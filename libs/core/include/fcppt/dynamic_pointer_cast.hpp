@@ -69,7 +69,7 @@ dynamic_pointer_cast(
 						Dest
 					>(
 						_ptr,
-						_dest.get_pointer()
+						&_dest.get()
 					);
 			}
 		);

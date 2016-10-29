@@ -31,7 +31,7 @@ fcppt::reference_hash<
 		std::hash<
 			Type *
 		>()(
-			_value.get_pointer()
+			&_value.get()
 		);
 }
 

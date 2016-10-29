@@ -32,14 +32,18 @@ template<
 >
 bool
 operator==(
-	fcppt::reference<T> const &_a,
-	fcppt::reference<T> const &_b
+	fcppt::reference<
+		T
+	> const &_a,
+	fcppt::reference<
+		T
+	> const &_b
 )
 {
 	return
-		_a.get_pointer()
+		&_a.get()
 		==
-		_b.get_pointer();
+		&_b.get();
 }
 
 /**
@@ -57,8 +61,12 @@ template<
 >
 bool
 operator!=(
-	fcppt::reference<T> const &_a,
-	fcppt::reference<T> const &_b
+	fcppt::reference<
+		T
+	> const &_a,
+	fcppt::reference<
+		T
+	> const &_b
 )
 {
 	return
@@ -81,16 +89,20 @@ template<
 >
 bool
 operator<(
-	fcppt::reference<T> const &_a,
-	fcppt::reference<T> const &_b
+	fcppt::reference<
+		T
+	> const &_a,
+	fcppt::reference<
+		T
+	> const &_b
 )
 {
 	return
 		std::less<
 			T *
 		>()(
-			_a.get_pointer(),
-			_b.get_pointer()
+			&_a.get(),
+			&_b.get()
 		);
 }
 

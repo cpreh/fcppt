@@ -79,7 +79,7 @@ FCPPT_PP_POP_WARNING
 
 		BOOST_CHECK_EQUAL(
 			&nonconst_derived,
-			nonconst_base.get_pointer()
+			&nonconst_base.get()
 		);
 	}
 
@@ -100,7 +100,7 @@ FCPPT_PP_POP_WARNING
 
 		BOOST_CHECK_EQUAL(
 			&const_derived,
-			const_base.get_pointer()
+			&const_base.get()
 		);
 	}
 }

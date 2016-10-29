@@ -52,7 +52,7 @@ to_pointer(
 			)
 			{
 				return
-					_ref.get_pointer();
+					&_ref.get();
 			}
 		);
 }

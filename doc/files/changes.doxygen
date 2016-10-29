@@ -1,6 +1,20 @@
 /**
 \page changes Changes
 
+\section changes_changes_to_240 Changes from 2.3.0 to 2.4.0
+
+\subsection changes_removed_functionality_to_240 Removed functionality
+
+<ul>
+
+<li>\ref fcpptref
+	<ul>
+	<li>Removed <code>fcppt::reference<T>::get_pointer</code>.</li>
+	</ul>
+</li>
+
+</ul>
+
 \section changes_changes_to_230 Changes from 2.2.0 to 2.3.0
 
 \subsection changes_added_functionality_to_230 Added functionality

@@ -33,12 +33,8 @@ fcppt::reference<
 >::reference(
 	reference const &_other
 )
-:
-	impl_(
-		_other.impl_
-	)
-{
-}
+=
+default;
 
 template<
 	typename Type
@@ -51,11 +47,8 @@ fcppt::reference<
 >::operator=(
 	reference const &_other
 )
-{
-	impl_ = _other.impl_;
-
-	return *this;
-}
+=
+default;
 
 template<
 	typename Type
@@ -77,21 +70,7 @@ fcppt::reference<
 >::get() const
 {
 	return
-		*this->get_pointer();
-}
-
-template<
-	typename Type
->
-typename fcppt::reference<
-	Type
->::type *
-fcppt::reference<
-	Type
->::get_pointer() const
-{
-	return
-		impl_;
+		*impl_;
 }
 
 #endif
