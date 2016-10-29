@@ -17,6 +17,10 @@ add_fcppt_either_test(
 )
 
 add_fcppt_either_test(
+	failure_opt
+)
+
+add_fcppt_either_test(
 	first_success
 )
 

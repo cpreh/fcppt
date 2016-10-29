@@ -7,6 +7,12 @@
 
 <ul>
 
+<li>\ref fcppteither
+	<ul>
+	<li>Added \link fcppt::either::failure_opt\endlink.</li>
+	</ul>
+</li>
+
 <li>\ref fcpptref
 	<ul>
 	<li>Added \link fcppt::reference_to_const\endlink.</li>
