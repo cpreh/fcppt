@@ -16,21 +16,21 @@
 
 \section record_motivation Motivation
 
-A record data type generally refers to a set of named elements, e.g.
-<code>{ age : int, name : string }</code>. In C++, these are usually declared using
-classes or structs:
+A set of name-type pairs, for example <code>{ age : int, name : string
+}</code>, is generally called a <em>record</em>. In C++, these are usually
+declared using classes or structs:
 
 \snippet record.cpp record_struct_person
 
-The shortcoming, however, is that such a struct provides no generic structure.
+The shortcoming is that such a struct provides no generic structure.
 Imagine you would like to write a generic function that prints such a struct,
 given you already know how to print ints and strings. A concrete implementation
 would look like this:
 
 \snippet record.cpp record_struct_person_print
 
-This, however, only works for the concrete type <code>person</code>. To abstract this,
-we need to specify which elements a struct has in a generic way. To this end, we first
+This, however, only works for the concrete type <code>person</code>. To find a more abstract
+representation, we need to specify which elements a struct has in a generic way. To this end, we first
 of all need to create unique types that represent <em>element names</em> which we
 call <em>labels</em>. Such a label together with a unique tag type is created by
 \link FCPPT_RECORD_MAKE_LABEL\endlink:
