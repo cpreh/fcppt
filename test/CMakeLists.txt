@@ -235,3 +235,7 @@ add_fcppt_test(
 add_subdirectory(
 	variant
 )
+
+add_fcppt_test(
+	xvalue
+)

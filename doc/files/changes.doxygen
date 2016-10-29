@@ -10,6 +10,7 @@
 <li>\ref fcpptref
 	<ul>
 	<li>Added \link fcppt::reference_to_const\endlink.</li>
+	<li>Added \link fcppt::xvalue\endlink to denote xvalues, and \link fcppt::make_xvalue\endlink.</li>
 	</ul>
 </li>
 
