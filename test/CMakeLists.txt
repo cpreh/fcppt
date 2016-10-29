@@ -196,6 +196,10 @@ add_fcppt_test(
 )
 
 add_fcppt_test(
+	reference_to_const
+)
+
+add_fcppt_test(
 	runtime_enum
 )
 

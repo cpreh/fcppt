@@ -1115,6 +1115,7 @@ set(
 	libs/core/include/fcppt/reference_output.hpp
 	libs/core/include/fcppt/reference_std_hash.hpp
 	libs/core/include/fcppt/reference_to_base.hpp
+	libs/core/include/fcppt/reference_to_const.hpp
 	libs/core/include/fcppt/runtime_enum.hpp
 	libs/core/include/fcppt/scoped_state_machine.hpp
 	libs/core/include/fcppt/scoped_state_machine_decl.hpp

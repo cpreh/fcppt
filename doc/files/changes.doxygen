@@ -3,6 +3,18 @@
 
 \section changes_changes_to_240 Changes from 2.3.0 to 2.4.0
 
+\subsection changes_added_functionality_to_240 Added functionality
+
+<ul>
+
+<li>\ref fcpptref
+	<ul>
+	<li>Added \link fcppt::reference_to_const\endlink.</li>
+	</ul>
+</li>
+
+</ul>
+
 \subsection changes_removed_functionality_to_240 Removed functionality
 
 <ul>
