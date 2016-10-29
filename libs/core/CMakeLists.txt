@@ -387,7 +387,7 @@ set(
 	libs/core/include/fcppt/either/apply.hpp
 	libs/core/include/fcppt/either/bind.hpp
 	libs/core/include/fcppt/either/comparison.hpp
-	libs/core/include/fcppt/either/detail/first_failure.hpp
+	libs/core/include/fcppt/either/failure_opt.hpp
 	libs/core/include/fcppt/either/first_success.hpp
 	libs/core/include/fcppt/either/from_optional.hpp
 	libs/core/include/fcppt/either/is_object.hpp

@@ -7,17 +7,21 @@
 #ifndef FCPPT_EITHER_APPLY_HPP_INCLUDED
 #define FCPPT_EITHER_APPLY_HPP_INCLUDED
 
+#include <fcppt/absurd.hpp>
 #include <fcppt/identity.hpp>
 #include <fcppt/move_if_rvalue.hpp>
 #include <fcppt/algorithm/all_of.hpp>
+#include <fcppt/algorithm/find_if_opt.hpp>
+#include <fcppt/either/failure_opt.hpp>
 #include <fcppt/either/is_object.hpp>
 #include <fcppt/either/object_impl.hpp>
-#include <fcppt/either/detail/first_failure.hpp>
 #include <fcppt/mpl/all_of.hpp>
+#include <fcppt/optional/object_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/mpl/placeholders.hpp>
 #include <boost/mpl/vector.hpp>
 #include <array>
+#include <cstddef>
 #include <type_traits>
 #include <utility>
 #include <fcppt/config/external_end.hpp>
@@ -127,14 +131,30 @@ fcppt::either::object<
 	>
 	result_type;
 
+	typedef
+	fcppt::optional::object<
+		failure
+	>
+	optional_failure;
+
+	constexpr std::size_t const num_eithers{
+		sizeof...(Eithers) + 1u
+	};
+
+	typedef
+	std::array<
+		optional_failure,
+		num_eithers
+	>
+	failure_array;
+
 	return
-		_either1.has_success()
-		&&
 		fcppt::algorithm::all_of(
 			std::array<
 				bool,
-				sizeof...(Eithers)
+				num_eithers
 			>{{
+				_either1.has_success(),
 				_eithers.has_success()...
 			}},
 			fcppt::identity{}
@@ -155,22 +175,66 @@ fcppt::either::object<
 				)
 			)
 		:
-			result_type(
-				fcppt::either::detail::first_failure<
-					failure
-				>(
-					std::forward<
-						Either1
-					>(
-						_either1
-					),
-					std::forward<
-						Eithers
-					>(
-						_eithers
-					)...
+			result_type{
+				[](
+					failure_array &&_failures
 				)
-			)
+				{
+					fcppt::optional::object<
+						typename
+						failure_array::iterator
+					> const failure_opt{
+						fcppt::algorithm::find_if_opt(
+							_failures,
+							[](
+								optional_failure const &_failure
+							)
+							{
+								return
+									_failure.has_value();
+							}
+						)
+					};
+
+					typedef
+					typename
+					failure_array::iterator
+					iterator;
+
+					// Silence -Wnull-dereference warning
+					iterator const failure_it{
+						failure_opt.has_value()
+						?
+							failure_opt.get_unsafe()
+						:
+							fcppt::absurd<
+								iterator
+							>()
+					};
+
+					return
+						std::move(
+							failure_it->get_unsafe()
+						);
+				}(
+					failure_array{{
+						fcppt::either::failure_opt(
+							std::forward<
+								Either1
+							>(
+								_either1
+							)
+						),
+						fcppt::either::failure_opt(
+							std::forward<
+								Eithers
+							>(
+								_eithers
+							)
+						)...
+					}}
+				)
+			}
 		;
 }
 
