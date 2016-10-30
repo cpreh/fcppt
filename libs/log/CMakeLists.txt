@@ -2,6 +2,7 @@ set(
 	FCPPT_LOG_FILES
 	libs/log/impl/include/fcppt/log/impl/const_optional_context_tree_ref.hpp
 	libs/log/impl/include/fcppt/log/impl/const_optional_context_tree_ref_fwd.hpp
+	libs/log/impl/include/fcppt/log/impl/convert_level.hpp
 	libs/log/impl/include/fcppt/log/impl/find_child.hpp
 	libs/log/impl/include/fcppt/log/impl/find_child_const.hpp
 	libs/log/impl/include/fcppt/log/impl/find_child_tpl.hpp
@@ -11,6 +12,7 @@ set(
 	libs/log/impl/include/fcppt/log/impl/optional_context_tree_ref.hpp
 	libs/log/impl/include/fcppt/log/impl/optional_context_tree_ref_fwd.hpp
 	libs/log/impl/include/fcppt/log/impl/tree_formatter.hpp
+	libs/log/impl/src/log/impl/convert_level.cpp
 	libs/log/impl/src/log/impl/find_child.cpp
 	libs/log/impl/src/log/impl/find_child_const.cpp
 	libs/log/impl/src/log/impl/find_or_create_child.cpp
