@@ -28,6 +28,7 @@
 <li>\ref fcpptmath
 	<ul>
 	<li>Removed <code>fcppt::math::step</code>.</li>
+	<li>Removed <code>fcppt::math::bresenham</code> and <code>fcppt::math::bresenham_thick</code>.</li>
 	</ul>
 </li>
 

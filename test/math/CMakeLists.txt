@@ -21,10 +21,6 @@ add_subdirectory(
 )
 
 add_fcppt_math_test(
-	bresenham
-)
-
-add_fcppt_math_test(
 	ceil_div
 )
 

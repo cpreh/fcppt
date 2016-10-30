@@ -715,8 +715,6 @@ set(
 	libs/core/include/fcppt/math/box/stretch_absolute.hpp
 	libs/core/include/fcppt/math/box/stretch_relative.hpp
 	libs/core/include/fcppt/math/box/structure_cast.hpp
-	libs/core/include/fcppt/math/bresenham.hpp
-	libs/core/include/fcppt/math/bresenham_thick.hpp
 	libs/core/include/fcppt/math/ceil_div.hpp
 	libs/core/include/fcppt/math/ceil_div_signed.hpp
 	libs/core/include/fcppt/math/clamp.hpp
@@ -726,8 +724,6 @@ set(
 	libs/core/include/fcppt/math/detail/assert_static_storage.hpp
 	libs/core/include/fcppt/math/detail/assign.hpp
 	libs/core/include/fcppt/math/detail/binary_type.hpp
-	libs/core/include/fcppt/math/detail/bresenham_impl.hpp
-	libs/core/include/fcppt/math/detail/bresenham_thick.hpp
 	libs/core/include/fcppt/math/detail/checked_access.hpp
 	libs/core/include/fcppt/math/detail/componentwise_equal.hpp
 	libs/core/include/fcppt/math/detail/construct.hpp
