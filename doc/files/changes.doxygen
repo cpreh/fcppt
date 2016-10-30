@@ -25,6 +25,12 @@
 
 <ul>
 
+<li>\ref fcpptmath
+	<ul>
+	<li>Removed <code>fcppt::math::step</code>.</li>
+	</ul>
+</li>
+
 <li>\ref fcpptref
 	<ul>
 	<li>Removed <code>fcppt::reference<T>::get_pointer</code>.</li>

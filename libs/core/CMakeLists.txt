@@ -694,7 +694,6 @@ set(
 	libs/core/include/fcppt/math/sphere/output.hpp
 	libs/core/include/fcppt/math/static_size.hpp
 	libs/core/include/fcppt/math/static_storage.hpp
-	libs/core/include/fcppt/math/step.hpp
 	libs/core/include/fcppt/math/twopi.hpp
 	libs/core/include/fcppt/math/vector/angle_between.hpp
 	libs/core/include/fcppt/math/vector/angle_between_cast.hpp

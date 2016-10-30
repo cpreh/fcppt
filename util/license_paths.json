@@ -15,7 +15,6 @@
 				"libs/core/include/fcppt/container/grid/interpolate.hpp",
 				"libs/core/include/fcppt/math/clamp.hpp",
 				"libs/core/include/fcppt/math/generate_binary_vectors.hpp",
-				"libs/core/include/fcppt/math/step.hpp",
 				"libs/core/include/fcppt/math/box/center.hpp",
 				"libs/core/include/fcppt/math/box/contains.hpp",
 				"libs/core/include/fcppt/math/box/contains_point.hpp",
