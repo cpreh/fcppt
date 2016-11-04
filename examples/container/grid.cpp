@@ -8,11 +8,10 @@
 #include <fcppt/text.hpp>
 #include <fcppt/container/grid/interpolate.hpp>
 #include <fcppt/container/grid/object.hpp>
+#include <fcppt/container/grid/output.hpp>
+#include <fcppt/container/grid/resize.hpp>
 #include <fcppt/io/cout.hpp>
 #include <fcppt/math/interpolation/linear_functor.hpp>
-#include <fcppt/config/external_begin.hpp>
-#include <iostream>
-#include <fcppt/config/external_end.hpp>
 
 
 namespace
@@ -131,14 +130,6 @@ init()
 }
 
 //! [grid_resize]
-#include <fcppt/no_init.hpp>
-#include <fcppt/container/grid/output.hpp>
-#include <fcppt/container/grid/resize_preserve_init.hpp>
-#include <fcppt/config/external_begin.hpp>
-#include <algorithm>
-#include <fcppt/config/external_end.hpp>
-
-
 namespace
 {
 
@@ -150,45 +141,45 @@ typedef fcppt::container::grid::object<
 void
 resize_grid()
 {
-	int2d_grid grid(
+	int2d_grid const grid(
 		int2d_grid::dim(
 			2u,
 			3u
 		),
-		fcppt::no_init{}
+		// Initialize the grid with numbers 0 to 5
+		[](
+			int2d_grid::pos
+		)
+		{
+			static int count{
+				0
+			};
+
+			return
+				count++;
+		}
 	);
-
-	{
-		int count = 0;
-
-		// Initialize the grid with numbers from 0 to 5.
-		// Note, that a grid will always be laid out in memory such that
-		// the lower dimensions are closer together.
-		std::generate(
-			grid.begin(),
-			grid.end(),
-			[
-				&count
-			]()
-			{
-				return
-					count++;
-			}
-		);
-	}
 
 	fcppt::io::cout()
 		<< grid
 		<< FCPPT_TEXT('\n');
 
-	// Give the grid one more row and column and initialize those with 42.
-	fcppt::container::grid::resize_preserve_init(
-		grid,
-		int2d_grid::dim(
-			3u,
-			4u
-		),
-		42
+	int2d_grid const new_grid(
+		// Give the grid one more row and column and initialize those with 42.
+		fcppt::container::grid::resize(
+			grid,
+			int2d_grid::dim(
+				3u,
+				4u
+			),
+			[](
+				int2d_grid::pos
+			)
+			{
+				return
+					42;
+			}
+		)
 	);
 
 	fcppt::io::cout()
@@ -233,7 +224,9 @@ interpolate_grid()
 
 	// Will bilinearly interpolate ALL the grid points and return something
 	// inbetween (too lazy to calculate)
-	std::cout << result << '\n';
+	fcppt::io::cout()
+		<< result
+		<< FCPPT_TEXT('\n');
 }
 //! [grid_interpolate]
 }

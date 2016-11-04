@@ -117,20 +117,7 @@ Here is an example:
 
 \section fcpptcontainergrid_resizing Resizing
 
-To resize a grid there are a couple of options. \link
-fcppt::container::grid::object::resize resize \endlink will resize the
-underlying container but leave the elements of the grid in an unspecific state.
-
-There are two functions to preserve the current elements that will still fit
-into the grid after the resize: \link fcppt::container::grid::resize_preserve
-resize_preserve \endlink and \link fcppt::container::grid::resize_preserve_init
-resize_preserve_init \endlink.
-
-<code>resize_preserve</code> only preserves the elements that still fit but
-doesn't initialize new elements.  <code>resize_preserve_init</code> is like
-<code>resize_preserve</code> but will give all new elements a default value.
-
+To resize a grid, we can use \link fcppt::container::grid::resize\endlink.
 Here's an example:
-
 \snippet container/grid.cpp grid_resize
 */

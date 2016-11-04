@@ -85,37 +85,36 @@ BOOST_AUTO_TEST_CASE(
 {
 FCPPT_PP_POP_WARNING
 
-	int2_grid test(
+	int2_grid const test(
 		int2_grid::dim(
 			5u,
 			10u
 		),
-		fcppt::no_init{}
-	);
-
-	{
-		int entry = 0;
-
-		for(
-			int2_grid::pointer ptr = test.data();
-			ptr != test.data_end();
-			++ptr
+		[](
+			int2_grid::pos
 		)
-			*ptr = entry++;
-	}
+		{
+			static int entry{
+				0
+			};
+
+			return
+				entry++;
+		}
+	);
 
 	for(
 		auto const y
 		:
 		fcppt::make_int_range_count(
-			test.size()[1]
+			test.size().h()
 		)
 	)
-		for (
+		for(
 			auto const x
 			:
 			fcppt::make_int_range_count(
-				test.size()[0]
+				test.size().w()
 			)
 		)
 		{
@@ -127,7 +126,7 @@ FCPPT_PP_POP_WARNING
 					)
 				],
 				fcppt::cast::size<
-						int2_grid::value_type
+					int2_grid::value_type
 				>(
 					fcppt::cast::to_signed(
 						x + y * 5
@@ -153,47 +152,44 @@ FCPPT_PP_POP_WARNING
 	>
 	int3_grid;
 
-	int3_grid test(
+	int3_grid const test(
 		int3_grid::dim(
 			5u,
 			10u,
 			8u
 		),
-		fcppt::no_init{}
-	);
-
-	{
-		int entry{
-			0
-		};
-
-		for(
-			int3_grid::pointer ptr = test.data();
-			ptr != test.data_end();
-			++ptr
+		[](
+			int3_grid::pos
 		)
-			*ptr = entry++;
-	}
+		{
+			static int entry{
+				0
+			};
+
+			return
+				entry++;
+		}
+	);
 
 	for(
 		auto const z
 		:
 		fcppt::make_int_range_count(
-			test.size()[2]
+			test.size().d()
 		)
 	)
 		for(
 			auto const y
 			:
 			fcppt::make_int_range_count(
-				test.size()[1]
+				test.size().h()
 			)
 		)
 			for(
 				auto const x
 				:
 				fcppt::make_int_range_count(
-					test.size()[0]
+					test.size().w()
 				)
 			)
 			{
@@ -235,8 +231,8 @@ FCPPT_PP_POP_WARNING
 
 	BOOST_CHECK_EQUAL(
 		std::count(
-			test.data(),
-			test.data_end(),
+			test.begin(),
+			test.end(),
 			42
 		),
 		10
@@ -299,50 +295,6 @@ FCPPT_PP_POP_WARNING
 			element.member_,
 			42
 		);
-}
-
-FCPPT_PP_PUSH_WARNING
-FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
-
-BOOST_AUTO_TEST_CASE(
-	container_grid_resize
-)
-{
-FCPPT_PP_POP_WARNING
-
-	int2_grid test(
-		int2_grid::dim(
-			10u,
-			5u
-		),
-		fcppt::no_init{}
-	);
-
-	test.resize(
-		int2_grid::dim(
-			5u,
-			3u
-		),
-		fcppt::no_init{}
-	);
-
-	BOOST_CHECK_EQUAL(
-		test.size(),
-		int2_grid::dim(
-			5u,
-			3u
-		)
-	);
-
-	BOOST_CHECK_EQUAL(
-		std::distance(
-			test.data(),
-			test.data_end()
-		),
-		fcppt::cast::to_signed(
-			test.content()
-		)
-	);
 }
 
 FCPPT_PP_PUSH_WARNING

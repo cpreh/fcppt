@@ -77,11 +77,7 @@ add_fcppt_container_grid_test(
 )
 
 add_fcppt_container_grid_test(
-	resize_preserve
-)
-
-add_fcppt_container_grid_test(
-	resize_preserve_init
+	resize
 )
 
 add_fcppt_container_grid_test(

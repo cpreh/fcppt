@@ -41,7 +41,7 @@ template<
 >
 class object
 {
-// \cond  FCPPT_DOXYGEN_DEBUG
+// \cond
 	static_assert(
 		N >= 1u,
 		"The dimensions of a grid cannot be zero"
@@ -72,89 +72,73 @@ public:
 	>
 	static_size;
 
-	/**
-	\brief A type that represents the allocator class for the grid's storage.
-	*/
-	typedef A allocator_type;
+	typedef
+	A
+	allocator_type;
 
-	/**
-	\brief A type that represents the data type stored in a grid.
-	*/
-	typedef T value_type;
+	typedef
+	T
+	value_type;
 
-	/**
-	\brief A type that counts the number of elements in a grid.
-	*/
-	typedef typename A::size_type size_type;
+	typedef
+	typename
+	A::size_type
+	size_type;
 
-	/**
-	\brief A type that provides the difference between the addresses of two elements in a grid.
-	*/
-	typedef typename A::difference_type difference_type;
+	typedef
+	typename
+	A::difference_type
+	difference_type;
 
-	/**
-	\brief A type that provides a reference to an element stored in a grid.
-	*/
-	typedef typename A::reference reference;
+	typedef
+	typename
+	A::reference
+	reference;
 
-	/**
-	\brief A type that provides a reference to a <code>const</code> element stored in a grid for reading and performing <code>const</code> operations.
-	*/
-	typedef typename A::const_reference const_reference;
+	typedef
+	typename
+	A::const_reference
+	const_reference;
 
-	/**
-	\brief A type that provides a pointer to an element in a grid.
-	*/
-	typedef typename A::pointer pointer;
+	typedef
+	typename
+	container::iterator
+	iterator;
 
-	/**
-	\brief A type that provides a pointer to a <code>const</code> element in a grid.
-	*/
-	typedef typename A::const_pointer const_pointer;
-
-	/**
-	\brief A type that provides a random-access iterator that can read or modify any element in a grid.
-	*/
-	typedef typename container::iterator iterator;
-
-	/**
-	\brief A type that provides a random-access iterator that can read a <code>const</code> element in a grid.
-	*/
-	typedef typename container::const_iterator const_iterator;
-
-	/**
-	\brief A type that provides a random-access iterator that can read or modify any element in a reversed grid.
-	*/
-	typedef typename container::reverse_iterator reverse_iterator;
-
-	/**
-	\brief A type that provides a random-access iterator that can read any <code>const</code> element in the grid.
-	*/
-	typedef typename container::const_reverse_iterator const_reverse_iterator;
+	typedef
+	typename
+	container::const_iterator
+	const_iterator;
 
 	/**
 	\brief A type representing the dimension of the grid
 	*/
-	typedef fcppt::container::grid::dim<
+	typedef
+	fcppt::container::grid::dim<
 		size_type,
 		N
-	> dim;
+	>
+	dim;
 
 	/**
 	\brief A type representing a position in the grid
 	*/
-	typedef fcppt::container::grid::pos<
+	typedef
+	fcppt::container::grid::pos<
 		size_type,
 		N
-	> pos;
+	>
+	pos;
 
 	/**
 	\brief A signed version of pos
 	*/
-	typedef fcppt::container::grid::pos<
+	typedef
+	fcppt::container::grid::pos<
 		difference_type,
 		N
-	> signed_pos;
+	>
+	signed_pos;
 
 	/**
 	\brief An empty grid.
@@ -263,133 +247,17 @@ public:
 	bool
 	empty() const;
 
-	/**
-	\brief Resizes the grid leaving its internal elements in an unspecific state
-	\param d The new dimensions of the grid
-	*/
-	void
-	resize(
-		dim const &d,
-		fcppt::no_init const &
-	);
-
-	/**
-	\brief Resizes the grid leaving its internal elements in an unspecific
-	state
-	\param d The new dimensions of the grid
-	\param v The value to initialize new elements with
-	*/
-	void
-	resize_init(
-		dim const &d,
-		T const &v
-	);
-
-	/**
-	\brief Tries to shrink capacity() to fit size()
-	*/
-	void
-	shrink_to_fit();
-
-	/**
-	\brief Returns the pointer to the store.
-	*/
-	pointer
-	data();
-
-	/**
-	\brief Returns the pointer to the store.
-	*/
-	const_pointer
-	data() const;
-
-	/**
-	\brief Returns the pointer to the end of the store.
-
-	Equal to <code>data() + size()</code>.
-	*/
-	pointer
-	data_end();
-
-	/**
-	\brief Returns the pointer to the end of the store.
-
-	Equal to <code>data() + size()</code>.
-	*/
-	const_pointer
-	data_end() const;
-
-	/**
-	\brief Returns a random-access iterator to the first element in the container.
-	*/
 	iterator
 	begin();
 
-	/**
-	\brief Returns a random-access iterator to the first element in the container.
-	*/
-	const_iterator
-	begin() const;
-
-	/**
-	\brief Returns a random-access const-iterator to the first element in the container.
-	*/
-	const_iterator
-	cbegin() const;
-
-	/**
-	\brief Returns a random-access iterator that points just beyond the end of the grid.
-	*/
 	iterator
 	end();
 
-	/**
-	\brief Returns a random-access iterator that points just beyond the end of the grid.
-	*/
+	const_iterator
+	begin() const;
+
 	const_iterator
 	end() const;
-
-	/**
-	\brief Returns a random-access const-iterator that points just beyond the end of the grid.
-	*/
-	const_iterator
-	cend() const;
-
-	/**
-	\brief Returns an iterator to the first element in a reversed grid.
-	*/
-	reverse_iterator
-	rbegin();
-
-	/**
-	\brief Returns an iterator to the first element in a reversed grid.
-	*/
-	const_reverse_iterator
-	rbegin() const;
-
-	/**
-	\brief Returns a const-iterator to the first element in a reversed grid.
-	*/
-	const_reverse_iterator
-	crbegin() const;
-
-	/**
-	\brief Returns an iterator to the end of a reversed grid.
-	*/
-	reverse_iterator
-	rend();
-
-	/**
-	\brief Returns an iterator to the end of a reversed grid.
-	*/
-	const_reverse_iterator
-	rend() const;
-
-	/**
-	\brief Returns an iterator to the end of a reversed grid.
-	*/
-	const_reverse_iterator
-	crend() const;
 
 	/**
 	\brief Exchanges the elements of two grids.

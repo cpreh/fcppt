@@ -222,14 +222,10 @@ set(
 	libs/core/include/fcppt/container/grid/clamped_sup.hpp
 	libs/core/include/fcppt/container/grid/clamped_sup_signed.hpp
 	libs/core/include/fcppt/container/grid/comparison.hpp
-	libs/core/include/fcppt/container/grid/detail/assign_fill_recurse.hpp
-	libs/core/include/fcppt/container/grid/detail/assign_recurse.hpp
 	libs/core/include/fcppt/container/grid/detail/interpolate.hpp
 	libs/core/include/fcppt/container/grid/detail/pos_iterator_base.hpp
 	libs/core/include/fcppt/container/grid/detail/pos_ref_iterator_base.hpp
 	libs/core/include/fcppt/container/grid/detail/print_recurse.hpp
-	libs/core/include/fcppt/container/grid/detail/resize.hpp
-	libs/core/include/fcppt/container/grid/detail/shrink_to_fit.hpp
 	libs/core/include/fcppt/container/grid/detail/spiral_iterator_base.hpp
 	libs/core/include/fcppt/container/grid/dim.hpp
 	libs/core/include/fcppt/container/grid/dim_fwd.hpp
@@ -288,8 +284,7 @@ set(
 	libs/core/include/fcppt/container/grid/pos_reference_impl.hpp
 	libs/core/include/fcppt/container/grid/range_dim.hpp
 	libs/core/include/fcppt/container/grid/range_size.hpp
-	libs/core/include/fcppt/container/grid/resize_preserve.hpp
-	libs/core/include/fcppt/container/grid/resize_preserve_init.hpp
+	libs/core/include/fcppt/container/grid/resize.hpp
 	libs/core/include/fcppt/container/grid/size_type.hpp
 	libs/core/include/fcppt/container/grid/spiral_iterator_decl.hpp
 	libs/core/include/fcppt/container/grid/spiral_iterator_fwd.hpp

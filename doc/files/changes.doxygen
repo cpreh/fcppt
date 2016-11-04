@@ -7,6 +7,12 @@
 
 <ul>
 
+<li>\ref fcpptcontainergrid
+	<ul>
+	<li>Added \link fcppt::container::grid::resize\endlink.</li>
+	</ul>
+</li>
+
 <li>\ref fcppteither
 	<ul>
 	<li>Added \link fcppt::either::failure_opt\endlink.</li>
@@ -24,6 +30,14 @@
 \subsection changes_removed_functionality_to_240 Removed functionality
 
 <ul>
+
+<li>\ref fcpptcontainergrid
+	<ul>
+	<li>Removed <code>%fcppt::container::grid::object::{rbegin, rend, cbegin, cend, crbegin, crend}</code>.</li>
+	<li>Removed <code>fcppt::container::grid::object::resize</code> and <code>fcppt::container::grid::object::resize_init</code>.</li>
+	<li>Removed <code>fcppt::container::grid::resize_preserve</code> and <code>fcppt::container::grid::resize_preserve_init</code>.</li>
+	</ul>
+</li>
 
 <li>\ref fcpptmath
 	<ul>
