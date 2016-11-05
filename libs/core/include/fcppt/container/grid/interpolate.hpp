@@ -11,9 +11,11 @@
 #include <fcppt/literal.hpp>
 #include <fcppt/cast/float_to_int_fun.hpp>
 #include <fcppt/container/grid/object_impl.hpp>
+#include <fcppt/container/grid/size_type.hpp>
 #include <fcppt/container/grid/detail/interpolate.hpp>
 #include <fcppt/math/vector/bit_strings.hpp>
 #include <fcppt/math/vector/mod.hpp>
+#include <fcppt/math/vector/static.hpp>
 #include <fcppt/math/vector/structure_cast.hpp>
 #include <fcppt/math/vector/to_unsigned.hpp>
 #include <fcppt/config/external_begin.hpp>
@@ -28,9 +30,11 @@ namespace container
 {
 namespace grid
 {
+
 /**
-\ingroup fcpptcontainergrid
 \brief Interpolates a value inside the grid cells
+
+\ingroup fcpptcontainergrid
 
 With \link fcppt::container::grid::object grid::object \endlink alone, you can
 only access values at discrete points (since the \link
@@ -42,86 +46,94 @@ about a magnifying filter for textures, or drawing a line from one plot point
 to the next (in a one-dimensional grid). This is called <em>interpolation</em>,
 and it works in all dimensions.
 
-To interpolate, you specify the \p grid, the \p floating_point_position and an
-\p interpolator. The latter will determine what kind of interpolation is used
+To interpolate, you specify the \p _grid, the \p _floating_point_position and an
+\p _interpolator. The latter will determine what kind of interpolation is used
 (linear, trigonometric, ...). You can choose one of the classes in
 fcppt::math::interpolation (the ones ending in <code>_functor</code>) or you
-can write your own interpolator class. It just needs an <code>operator()</code>
-looking like this:
+can write your own interpolator function.
 
-\code
-Grid::value_type
-operator()(
-	Vector::value_type,
-	Grid::value_type,
-	Grid::value_type) const
-{
-	// ...
-}
-\endcode
-
-The <code>Vector</code> template parameter determines which floating point type
-is used for calculations. Here's an example:
+Here's an example:
 
 \snippet container/grid.cpp grid_interpolate
+
+\tparam F The floating point type used for calculations.
+
+\tparam Interpolator A function callable as <code>T (F, T, T)</code>.
+
 */
-template
-<
-	typename Grid,
-	typename Vector,
+template<
+	typename T,
+	fcppt::container::grid::size_type N,
+	typename A,
+	typename F,
 	typename Interpolator
 >
-typename Grid::value_type
+T
 interpolate(
-	Grid const &grid,
-	Vector const &floating_point_position,
-	Interpolator const &interpolator)
+	fcppt::container::grid::object<
+		T,
+		N,
+		A
+	> const &_grid,
+	fcppt::math::vector::static_<
+		F,
+		N
+	> const &_floating_point_position,
+	Interpolator const &_interpolator
+)
 {
 	typedef
+	fcppt::container::grid::object<
+		T,
+		N,
+		A
+	>
+	grid_type;
+
+	typedef
 	typename
-	Grid::pos
+	grid_type::pos
 	integer_vector_type;
 
 	typedef
-	std::array
-	<
+	std::array<
 		integer_vector_type,
-		fcppt::literal<
+		fcppt::math::power_of_2<
 			std::size_t
 		>(
-			1u
+			N
 		)
-		<<
-		integer_vector_type::dim_wrapper::value
 	>
 	binary_vector_array_type;
 
-	typedef typename
+	typedef
+	typename
 	binary_vector_array_type::size_type
 	binary_vector_array_type_size_type;
 
-	typedef typename
-	Vector::value_type
+	typedef
+	F
 	vector_value_type;
 
 	integer_vector_type const floored(
 		fcppt::math::vector::to_unsigned(
 			fcppt::math::vector::structure_cast<
 				typename
-				Grid::signed_pos,
+				grid_type::signed_pos,
 				fcppt::cast::float_to_int_fun
 			>(
-				floating_point_position
+				_floating_point_position
 			)
 		)
 	);
 
 	binary_vector_array_type binary_vectors(
-		fcppt::math::vector::bit_strings
-		<
-			typename integer_vector_type::value_type,
-			integer_vector_type::dim_wrapper::value
-		>());
+		fcppt::math::vector::bit_strings<
+			typename
+			integer_vector_type::value_type,
+			N
+		>()
+	);
 
 	for(
 		integer_vector_type &i : binary_vectors
@@ -132,7 +144,7 @@ interpolate(
 		fcppt::container::grid::detail::interpolate<
 			integer_vector_type::dim_wrapper::value
 		>(
-			grid,
+			_grid,
 			binary_vectors,
 			fcppt::literal<
 				binary_vector_array_type_size_type
@@ -140,14 +152,14 @@ interpolate(
 				0
 			),
 			fcppt::math::vector::mod(
-				floating_point_position,
+				_floating_point_position,
 				fcppt::literal<
 					vector_value_type
 				>(
 					1
 				)
 			),
-			interpolator
+			_interpolator
 		);
 }
 
