@@ -8,10 +8,10 @@
 #ifndef FCPPT_MATH_BOX_CORNER_POINTS_HPP_INCLUDED
 #define FCPPT_MATH_BOX_CORNER_POINTS_HPP_INCLUDED
 
-#include <fcppt/literal.hpp>
 #include <fcppt/use.hpp>
 #include <fcppt/algorithm/array_init.hpp>
 #include <fcppt/math/generate_binary_vectors.hpp>
+#include <fcppt/math/power_of_2.hpp>
 #include <fcppt/math/size_type.hpp>
 #include <fcppt/math/box/object_impl.hpp>
 #include <fcppt/math/dim/to_vector.hpp>
@@ -44,11 +44,11 @@ std::array<
 		T,
 		N
 	>,
-	fcppt::literal<
+	fcppt::math::power_of_2<
 		std::size_t
 	>(
-		1u
-	) << N
+		N
+	)
 >
 corner_points(
 	fcppt::math::box::object<
@@ -67,12 +67,11 @@ corner_points(
 	typedef
 	std::array<
 		vector_type,
-		fcppt::literal<
+		fcppt::math::power_of_2<
 			std::size_t
 		>(
-			1u
+			N
 		)
-		<< N
 	>
 	result_type;
 

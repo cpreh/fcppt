@@ -7,9 +7,9 @@
 #ifndef FCPPT_BIT_SHIFTED_MASK_HPP_INCLUDED
 #define FCPPT_BIT_SHIFTED_MASK_HPP_INCLUDED
 
-#include <fcppt/literal.hpp>
 #include <fcppt/bit/mask.hpp>
 #include <fcppt/bit/shift_count.hpp>
+#include <fcppt/math/power_of_2.hpp>
 
 
 namespace fcppt
@@ -38,13 +38,11 @@ shifted_mask(
 		fcppt::bit::mask<
 			Type
 		>(
-			fcppt::literal<
+			fcppt::math::power_of_2<
 				Type
 			>(
-				1
+				_bits
 			)
-			<<
-			_bits
 		);
 }
 

@@ -845,6 +845,7 @@ set(
 	libs/core/include/fcppt/math/mod.hpp
 	libs/core/include/fcppt/math/next_power_of_2.hpp
 	libs/core/include/fcppt/math/pi.hpp
+	libs/core/include/fcppt/math/power_of_2.hpp
 	libs/core/include/fcppt/math/rad_to_deg.hpp
 	libs/core/include/fcppt/math/size_type.hpp
 	libs/core/include/fcppt/math/sphere/circle.hpp

@@ -19,6 +19,12 @@
 	</ul>
 </li>
 
+<li>\ref fcpptmath
+	<ul>
+	<li>Added \link fcppt::math::power_of_2\endlink.</li>
+	</ul>
+</li>
+
 <li>\ref fcpptref
 	<ul>
 	<li>Added \link fcppt::reference_to_const\endlink.</li>
