@@ -48,9 +48,8 @@ and it works in all dimensions.
 
 To interpolate, you specify the \p _grid, the \p _floating_point_position and an
 \p _interpolator. The latter will determine what kind of interpolation is used
-(linear, trigonometric, ...). You can choose one of the classes in
-fcppt::math::interpolation (the ones ending in <code>_functor</code>) or you
-can write your own interpolator function.
+(linear, trigonometric, ...). You can choose one of the functions in
+fcppt::math::interpolation or you can write your own interpolator function.
 
 Here's an example:
 

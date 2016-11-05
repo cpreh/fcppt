@@ -781,11 +781,8 @@ set(
 	libs/core/include/fcppt/math/int_range.hpp
 	libs/core/include/fcppt/math/int_range_count.hpp
 	libs/core/include/fcppt/math/interpolation/linear.hpp
-	libs/core/include/fcppt/math/interpolation/linear_functor.hpp
 	libs/core/include/fcppt/math/interpolation/perlin_fifth_degree.hpp
-	libs/core/include/fcppt/math/interpolation/perlin_fifth_degree_functor.hpp
 	libs/core/include/fcppt/math/interpolation/trigonometric.hpp
-	libs/core/include/fcppt/math/interpolation/trigonometric_functor.hpp
 	libs/core/include/fcppt/math/interval_distance.hpp
 	libs/core/include/fcppt/math/is_power_of_2.hpp
 	libs/core/include/fcppt/math/log2.hpp

@@ -6,12 +6,13 @@
 
 #include <fcppt/no_init.hpp>
 #include <fcppt/text.hpp>
+#include <fcppt/cast/int_to_float.hpp>
 #include <fcppt/container/grid/interpolate.hpp>
 #include <fcppt/container/grid/object.hpp>
 #include <fcppt/container/grid/output.hpp>
 #include <fcppt/container/grid/resize.hpp>
 #include <fcppt/io/cout.hpp>
-#include <fcppt/math/interpolation/linear_functor.hpp>
+#include <fcppt/math/interpolation/linear.hpp>
 
 
 namespace
@@ -193,34 +194,67 @@ resize_grid()
 namespace
 {
 //! [grid_interpolate]
-typedef fcppt::container::grid::object<
+typedef
+fcppt::container::grid::object<
 	float,
 	2
-> float2d_grid;
+>
+float2d_grid;
 
-typedef fcppt::math::vector::static_<float,2> float2d_vector;
+typedef
+fcppt::math::vector::static_<
+	float,
+	2
+>
+float2d_vector;
 
 void
 interpolate_grid()
 {
-	float2d_grid grid(
+	float2d_grid const grid(
 		float2d_grid::dim(
 			2u,
 			2u
 		),
-		fcppt::no_init{}
+		[](
+			float2d_grid::pos
+		)
+		{
+			static int value{
+				0
+			};
+
+			return
+				fcppt::cast::int_to_float<
+					float
+				>(
+					value++
+				);
+		}
 	);
 
-	grid[float2d_grid::pos( 0u, 0u)] = 0.0f;
-	grid[float2d_grid::pos( 0u, 1u)] = 1.0f;
-	grid[float2d_grid::pos( 1u, 0u)] = 2.0f;
-	grid[float2d_grid::pos( 1u, 1u)] = 3.0f;
-
-	float const result =
+	float const result{
 		fcppt::container::grid::interpolate(
 			grid,
-			float2d_vector(0.5f,0.5f),
-			fcppt::math::interpolation::linear_functor());
+			float2d_vector{
+				0.5f,
+				0.5f
+			},
+			[](
+				auto const _f,
+				auto const _v1,
+				auto const _v2
+			)
+			{
+				return
+					fcppt::math::interpolation::linear(
+						_f,
+						_v1,
+						_v2
+					);
+			}
+		)
+	};
 
 	// Will bilinearly interpolate ALL the grid points and return something
 	// inbetween (too lazy to calculate)
