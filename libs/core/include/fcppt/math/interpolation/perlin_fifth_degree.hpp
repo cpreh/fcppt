@@ -21,26 +21,50 @@ namespace math
 {
 namespace interpolation
 {
-/// Interpolates between a and b (works only with a floating point
-/// parameter)
-template<typename Float,typename Value>
+
+/**
+\brief Interpolates between two values using perlin fifth degree
+
+\ingroup fcpptmath
+
+\tparam Float Must be a floating point type
+
+\tparam Value Must support scalar multiplication with \a Float and addition
+*/
+template<
+	typename Float,
+	typename Value
+>
 Value
 perlin_fifth_degree(
-	Float const &f,
-	Value const &v1,
-	Value const &v2)
+	Float const &_f,
+	Value const &_v1,
+	Value const &_v2
+)
 {
 	static_assert(
-		std::is_floating_point<Float>::value,
+		std::is_floating_point<
+			Float
+		>::value,
 		"perlin_fifth_degree can only be used on floating point types"
 	);
 
 	return
 		fcppt::math::interpolation::linear(
-			f * f * f * (f * (fcppt::literal<Float>(6.0f) * f - fcppt::literal<Float>(15.0f)) + fcppt::literal<Float>(10.0f)),
-			v1,
-			v2);
+			_f * _f * _f * (
+				_f *
+				(
+					fcppt::literal<Float>(6.0f) * _f
+					-
+					fcppt::literal<Float>(15.0f)
+				)
+				+ fcppt::literal<Float>(10.0f)
+			),
+			_v1,
+			_v2
+		);
 }
+
 }
 }
 }

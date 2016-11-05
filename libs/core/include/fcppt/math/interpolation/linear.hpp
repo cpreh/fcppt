@@ -21,24 +21,35 @@ namespace math
 namespace interpolation
 {
 
-/// Interpolates between a and b (works only with a floating point
-/// parameter)
+/**
+\brief Interpolates between two values linearly
+
+\ingroup fcpptmath
+
+\tparam Float Must be a floating point type
+
+\tparam Value Must support scalar multiplication with \a Float and addition
+*/
 template<
 	typename Float,
 	typename Value
 >
 Value
 linear(
-	Float const &f,
-	Value const &v1,
-	Value const &v2)
+	Float const &_f,
+	Value const &_v1,
+	Value const &_v2
+)
 {
 	static_assert(
-		std::is_floating_point<Float>::value,
+		std::is_floating_point<
+			Float
+		>::value,
 		"interpolation::linear can only be used on floating point types"
 	);
 
-	return (fcppt::literal<Float>(1) - f) * v1 + f * v2;
+	return
+		(fcppt::literal<Float>(1) - _f) * _v1 + _f * _v2;
 }
 
 }
