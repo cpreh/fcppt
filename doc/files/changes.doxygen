@@ -33,6 +33,18 @@
 
 </ul>
 
+\subsection changes_changed_functionality_to_240 Changed functionality
+
+<ul>
+
+<li>\ref fcpptmath
+	<ul>
+	<li>Renamed <code>fcppt::math::generate_binary_vectors</code> to \link fcppt::math::vector::bit_strings\endlink.</li>
+	</ul>
+</li>
+
+</ul>
+
 \subsection changes_removed_functionality_to_240 Removed functionality
 
 <ul>

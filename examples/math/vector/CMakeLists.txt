@@ -27,6 +27,12 @@ add_fcppt_math_vector_example(
 )
 
 add_fcppt_math_vector_example(
+	bit_strings
+	LINK_LIBS
+		fcppt_core_interface
+)
+
+add_fcppt_math_vector_example(
 	convert
 	LINK_LIBS
 		fcppt_core_interface

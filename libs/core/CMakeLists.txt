@@ -553,7 +553,6 @@ set(
 	libs/core/include/fcppt/math/detail/diff.hpp
 	libs/core/include/fcppt/math/detail/dim_matches.hpp
 	libs/core/include/fcppt/math/detail/fill.hpp
-	libs/core/include/fcppt/math/detail/generate_binary_vectors.hpp
 	libs/core/include/fcppt/math/detail/has_size.hpp
 	libs/core/include/fcppt/math/detail/if_not_last_index.hpp
 	libs/core/include/fcppt/math/detail/index_at.hpp
@@ -605,7 +604,6 @@ set(
 	libs/core/include/fcppt/math/dim/to_signed.hpp
 	libs/core/include/fcppt/math/dim/to_unsigned.hpp
 	libs/core/include/fcppt/math/dim/to_vector.hpp
-	libs/core/include/fcppt/math/generate_binary_vectors.hpp
 	libs/core/include/fcppt/math/int_range.hpp
 	libs/core/include/fcppt/math/int_range_count.hpp
 	libs/core/include/fcppt/math/interpolation/linear.hpp
@@ -691,11 +689,13 @@ set(
 	libs/core/include/fcppt/math/vector/angle_between_cast.hpp
 	libs/core/include/fcppt/math/vector/arithmetic.hpp
 	libs/core/include/fcppt/math/vector/atan2.hpp
+	libs/core/include/fcppt/math/vector/bit_strings.hpp
 	libs/core/include/fcppt/math/vector/ceil_div_signed.hpp
 	libs/core/include/fcppt/math/vector/comparison.hpp
 	libs/core/include/fcppt/math/vector/componentwise_equal.hpp
 	libs/core/include/fcppt/math/vector/construct.hpp
 	libs/core/include/fcppt/math/vector/cross.hpp
+	libs/core/include/fcppt/math/vector/detail/bit_strings.hpp
 	libs/core/include/fcppt/math/vector/dim.hpp
 	libs/core/include/fcppt/math/vector/distance.hpp
 	libs/core/include/fcppt/math/vector/dot.hpp

@@ -4,8 +4,8 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_MATH_DETAIL_GENERATE_BINARY_VECTORS_HPP_INCLUDED
-#define FCPPT_MATH_DETAIL_GENERATE_BINARY_VECTORS_HPP_INCLUDED
+#ifndef FCPPT_MATH_VECTOR_DETAIL_BIT_STRINGS_HPP_INCLUDED
+#define FCPPT_MATH_VECTOR_DETAIL_BIT_STRINGS_HPP_INCLUDED
 
 #include <fcppt/literal.hpp>
 #include <fcppt/math/size_type.hpp>
@@ -17,6 +17,8 @@
 namespace fcppt
 {
 namespace math
+{
+namespace vector
 {
 namespace detail
 {
@@ -31,7 +33,7 @@ std::enable_if<
 	N == 0u,
 	void
 >::type
-generate_binary_vectors(
+bit_strings(
 	ForwardIterator &it,
 	Vector v)
 {
@@ -57,7 +59,7 @@ std::enable_if<
 	N != 0u,
 	void
 >::type
-generate_binary_vectors(
+bit_strings(
 	ForwardIterator &it,
 	Vector v
 )
@@ -66,7 +68,7 @@ generate_binary_vectors(
 		fcppt::literal<typename Vector::value_type>(
 			0);
 
-	fcppt::math::detail::generate_binary_vectors<
+	fcppt::math::vector::detail::bit_strings<
 		N - fcppt::literal<fcppt::math::size_type>(1)
 	>(
 		it,
@@ -77,7 +79,7 @@ generate_binary_vectors(
 		fcppt::literal<typename Vector::value_type>(
 			1);
 
-	fcppt::math::detail::generate_binary_vectors<
+	fcppt::math::vector::detail::bit_strings<
 		N - fcppt::literal<fcppt::math::size_type>(1)
 	>(
 		it,
@@ -85,6 +87,7 @@ generate_binary_vectors(
 	);
 }
 
+}
 }
 }
 }

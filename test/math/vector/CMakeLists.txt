@@ -13,6 +13,10 @@ add_fcppt_math_vector_test(
 )
 
 add_fcppt_math_vector_test(
+	bit_strings
+)
+
+add_fcppt_math_vector_test(
 	ceil_div_signed
 )
 

@@ -10,12 +10,12 @@
 
 #include <fcppt/use.hpp>
 #include <fcppt/algorithm/array_init.hpp>
-#include <fcppt/math/generate_binary_vectors.hpp>
 #include <fcppt/math/power_of_2.hpp>
 #include <fcppt/math/size_type.hpp>
 #include <fcppt/math/box/object_impl.hpp>
 #include <fcppt/math/dim/to_vector.hpp>
 #include <fcppt/math/vector/arithmetic.hpp>
+#include <fcppt/math/vector/bit_strings.hpp>
 #include <fcppt/math/vector/object_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <array>
@@ -76,7 +76,7 @@ corner_points(
 	result_type;
 
 	result_type const corners(
-		fcppt::math::generate_binary_vectors<
+		fcppt::math::vector::bit_strings<
 			T,
 			N
 		>()

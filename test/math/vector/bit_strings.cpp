@@ -4,7 +4,7 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/math/generate_binary_vectors.hpp>
+#include <fcppt/math/vector/bit_strings.hpp>
 #include <fcppt/math/vector/comparison.hpp>
 #include <fcppt/math/vector/object_impl.hpp>
 #include <fcppt/math/vector/output.hpp>
@@ -26,7 +26,7 @@ FCPPT_PP_PUSH_WARNING
 FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
 
 BOOST_AUTO_TEST_CASE(
-	math_binary_vectors
+	math_vector_bit_strings
 )
 {
 FCPPT_PP_POP_WARNING
@@ -59,10 +59,8 @@ FCPPT_PP_POP_WARNING
 	>
 	vector3_container;
 
-	std::cout << "Generating 2D binary vectors...\n";
-
 	vector2_container const result2(
-		fcppt::math::generate_binary_vectors<
+		fcppt::math::vector::bit_strings<
 			int,
 			2
 		>()
@@ -104,10 +102,8 @@ FCPPT_PP_POP_WARNING
 		vector2(1,1)
 	);
 
-	std::cout << "Generating 3D binary vectors...\n";
-
 	vector3_container const result3(
-		fcppt::math::generate_binary_vectors<
+		fcppt::math::vector::bit_strings<
 			int,
 			3
 		>()
@@ -121,8 +117,6 @@ FCPPT_PP_POP_WARNING
 		result3
 	)
 		std::cout << element << '\n';
-
-	std::cout << "Now checking...\n";
 
 	BOOST_REQUIRE_EQUAL(
 		result3.size(),

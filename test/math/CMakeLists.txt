@@ -12,10 +12,6 @@ add_fcppt_math_test(
 	at_c
 )
 
-add_fcppt_math_test(
-	binary_vectors
-)
-
 add_subdirectory(
 	box
 )

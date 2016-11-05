@@ -12,7 +12,7 @@
 #include <fcppt/cast/float_to_int_fun.hpp>
 #include <fcppt/container/grid/object_impl.hpp>
 #include <fcppt/container/grid/detail/interpolate.hpp>
-#include <fcppt/math/generate_binary_vectors.hpp>
+#include <fcppt/math/vector/bit_strings.hpp>
 #include <fcppt/math/vector/mod.hpp>
 #include <fcppt/math/vector/structure_cast.hpp>
 #include <fcppt/math/vector/to_unsigned.hpp>
@@ -117,7 +117,7 @@ interpolate(
 	);
 
 	binary_vector_array_type binary_vectors(
-		fcppt::math::generate_binary_vectors
+		fcppt::math::vector::bit_strings
 		<
 			typename integer_vector_type::value_type,
 			integer_vector_type::dim_wrapper::value
