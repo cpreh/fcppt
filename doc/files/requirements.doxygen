@@ -59,13 +59,11 @@ older than gcc-5.1 and clang-3.4.
 
 \section requirements_download_installation_download Download
 
-The latest fcppt release is 2.3.0. Get it <a
-href="http://fcppt.org/downloads/fcppt-2.3.0.tar.xz">here</a> (<a
-href="http://fcppt.org/downloads/fcppt-2.3.0.tar.xz.digest">SHA1</a>).
+fcppt is on <a href="https://github.com/freundlich/fcppt">Github</a>.
 
-fcppt is on <a href="https://github.com/freundlich/fcppt">Github</a>
+For releases, head over to <a href="https://github.com/freundlich/fcppt/releases">Github's download page</a>.
 
-Gentoo ebuilds are available in <a href="https://github.com/freundlich/freundlich-gentoo">Freundlich's overlay</a>
+Gentoo ebuilds are available in <a href="https://github.com/freundlich/freundlich-gentoo">Freundlich's overlay</a>.
 
 \section requirements_download_installation_building_and_installation Building and Installation
 
