@@ -126,6 +126,8 @@ set(
 	libs/core/include/fcppt/cast/detail/safe.hpp
 	libs/core/include/fcppt/cast/detail/truncation_check.hpp
 	libs/core/include/fcppt/cast/dynamic.hpp
+	libs/core/include/fcppt/cast/dynamic_any.hpp
+	libs/core/include/fcppt/cast/dynamic_any_fun.hpp
 	libs/core/include/fcppt/cast/dynamic_cross.hpp
 	libs/core/include/fcppt/cast/dynamic_cross_exn.hpp
 	libs/core/include/fcppt/cast/dynamic_cross_fun.hpp

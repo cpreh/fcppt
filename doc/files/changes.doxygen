@@ -11,6 +11,7 @@
 	<ul>
 	<li>Allow nonconst references and arbitrary return types in \link fcppt::cast::apply\endlink.</li>
 	<li>Added \link fcppt::cast::dynamic_fun\endlink and \link fcppt::cast::dynamic_cross_fun\endlink.</li>
+	<li>Added \link fcppt::cast::dynamic_any\endlink and \link fcppt::cast::dynamic_any_fun\endlink.</li>
 	</ul>
 </li>
 

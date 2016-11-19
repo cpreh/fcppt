@@ -15,6 +15,10 @@ add_fcppt_cast_test(
 )
 
 add_fcppt_cast_test(
+	dynamic_any
+)
+
+add_fcppt_cast_test(
 	dynamic_cross
 	LINK_LIBS
 		"${fcppt_core_TARGET}"
