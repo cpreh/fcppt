@@ -18,8 +18,8 @@
 #include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/variant/comparison.hpp>
 #include <fcppt/variant/dynamic_cast.hpp>
-#include <fcppt/variant/output.hpp>
 #include <fcppt/variant/object_impl.hpp>
+#include <fcppt/variant/output.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/mpl/vector/vector10.hpp>
 #include <boost/test/unit_test.hpp>
