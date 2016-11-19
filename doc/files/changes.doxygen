@@ -9,7 +9,8 @@
 
 <li>\ref fcpptcasts
 	<ul>
-	<li>Allow nonconst references in \link fcppt::cast::apply\endlink.</li>
+	<li>Allow nonconst references and arbitrary return types in \link fcppt::cast::apply\endlink.</li>
+	<li>Added \link fcppt::cast::dynamic_fun\endlink and \link fcppt::cast::dynamic_cross_fun\endlink.</li>
 	</ul>
 </li>
 

@@ -5,9 +5,11 @@
 
 
 #include <fcppt/noncopyable.hpp>
+#include <fcppt/cast/apply.hpp>
 #include <fcppt/cast/bad_dynamic.hpp>
 #include <fcppt/cast/dynamic.hpp>
 #include <fcppt/cast/dynamic_exn.hpp>
+#include <fcppt/cast/dynamic_fun.hpp>
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
@@ -101,6 +103,15 @@ FCPPT_PP_POP_WARNING
 			b1
 		).has_value()
 	);
+
+	BOOST_CHECK((
+		fcppt::cast::apply<
+			fcppt::cast::dynamic_fun,
+			derived1
+		>(
+			b1
+		).has_value()
+	));
 
 	BOOST_CHECK(
 		!fcppt::cast::dynamic<

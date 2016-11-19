@@ -24,7 +24,9 @@ template<
 	typename Src
 >
 constexpr
-Res
+decltype(
+	auto
+)
 apply(
 	Src &&_src
 )

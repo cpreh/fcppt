@@ -128,7 +128,9 @@ set(
 	libs/core/include/fcppt/cast/dynamic.hpp
 	libs/core/include/fcppt/cast/dynamic_cross.hpp
 	libs/core/include/fcppt/cast/dynamic_cross_exn.hpp
+	libs/core/include/fcppt/cast/dynamic_cross_fun.hpp
 	libs/core/include/fcppt/cast/dynamic_exn.hpp
+	libs/core/include/fcppt/cast/dynamic_fun.hpp
 	libs/core/include/fcppt/cast/enum_to_int.hpp
 	libs/core/include/fcppt/cast/enum_to_underlying.hpp
 	libs/core/include/fcppt/cast/float_to_int.hpp
