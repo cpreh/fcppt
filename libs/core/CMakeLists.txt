@@ -1071,6 +1071,7 @@ set(
 	libs/core/include/fcppt/variant/detail/nothrow_move_assignable.hpp
 	libs/core/include/fcppt/variant/detail/nothrow_move_constructible.hpp
 	libs/core/include/fcppt/variant/detail/type_info.hpp
+	libs/core/include/fcppt/variant/dynamic_cast.hpp
 	libs/core/include/fcppt/variant/equal.hpp
 	libs/core/include/fcppt/variant/exception.hpp
 	libs/core/include/fcppt/variant/get_exn.hpp
