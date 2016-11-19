@@ -7,6 +7,12 @@
 
 <ul>
 
+<li>\ref fcpptcasts
+	<ul>
+	<li>Allow nonconst references in \link fcppt::cast::apply\endlink.</li>
+	</ul>
+</li>
+
 <li>\ref fcpptcontainergrid
 	<ul>
 	<li>Added \link fcppt::container::grid::resize\endlink.</li>
@@ -48,6 +54,12 @@
 \subsection changes_removed_functionality_to_240 Removed functionality
 
 <ul>
+
+<li>\ref fcpptcasts
+	<ul>
+	<li>Removed unused <code>fcppt::cast::apply_fun</code>.</li>
+	</ul>
+</li>
 
 <li>\ref fcpptcontainergrid
 	<ul>

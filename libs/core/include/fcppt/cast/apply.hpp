@@ -26,7 +26,7 @@ template<
 constexpr
 Res
 apply(
-	Src const &_src
+	Src &&_src
 )
 {
 	return

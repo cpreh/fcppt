@@ -293,7 +293,6 @@ set(
 	libs/core/include/fcppt/c_deleter.hpp
 	libs/core/include/fcppt/c_deleter_fwd.hpp
 	libs/core/include/fcppt/cast/apply.hpp
-	libs/core/include/fcppt/cast/apply_fun.hpp
 	libs/core/include/fcppt/cast/bad_dynamic.hpp
 	libs/core/include/fcppt/cast/bad_truncation_check.hpp
 	libs/core/include/fcppt/cast/detail/dynamic.hpp
