@@ -72,6 +72,10 @@ dynamic_cast_(
 				result_type const &_result
 			)
 			{
+				FCPPT_USE(
+					_type
+				);
+
 				return
 					_result.has_value()
 					?
