@@ -6,51 +6,26 @@
 <td>
 
 <ul>
-	<li>\ref coding_introduction
-	<li>\ref coding_semantics</li>
-		<ul>
-			<li>\ref coding_typing</li>
-			<li>\ref coding_total</li>
-			<li>\ref coding_loops</li>
-			<li>\ref coding_const_init</li>
-		</ul>
+	<li>\ref coding_typing</li>
+	<li>\ref coding_total</li>
+	<li>\ref coding_loops</li>
+	<li>\ref coding_const_init</li>
 	<li>\ref coding_asthetic</li>
-		<ul>
-			<li>\ref coding_indentation</li>
-			<li>\ref coding_naming</li>
-			<li>\ref coding_partitioning</li>
-		</ul>
+	<ul>
+		<li>\ref coding_indentation</li>
+		<li>\ref coding_naming</li>
+		<li>\ref coding_partitioning</li>
+	</ul>
 </ul>
 
 </td>
 </tr>
 </table>
 
-\section coding_introduction Introduction
-
-The notion of coding style used in the following section roughly consists of
-two different aspects:
-<ul>
-<li>\link coding_asthetic Asthetic aspects\endlink, including how code is
-indented, partitioned into files, identifiers are named, and so on.</li>
-<li>How semantics are expressed, including typing, usage of language constructs
-like loops, <code>const</code>, ownership, and so on.</li>
-</ul>
-In general, coding styles are somewhat arbitrary which is why this document
-tries to give a rationale for every one of them.
-
-\section coding_semantics Semantic aspects
-
-Besides asthetic aspects, semantic aspects describe \em how semantics are
-expressed. The most important goal is to avoid mistakes, or more precisely, how
-choosing types and expressions carefully can narrow down the set of mistakes
-one can make. Typing, total functions, ranges, avoiding raw loops and
-making variables const all tie together in this respect.
-
-\subsection coding_typing Typing
+\section coding_typing Typing
 
 A (mostly) statically typed language like C++ has the advantage to forbid
-programs to even run if they are not well typed. Making the most out of the type
+programs to even run if they are not well-typed. Making the most out of the type
 system can catch a lot of mistakes at compile-time. We can use types to
 <ul>
 <li>Express ownership: Choose between <code>fcppt::unique_ptr<T></code>, <code>
@@ -75,7 +50,7 @@ See \ref fcpptvariant.</li>
 use clearer. See \ref fcpptstrongtypedef.</li>
 </ul>
 
-\subsection coding_total Total functions
+\section coding_total Total functions
 
 A total function is a function that is well-defined for every possible
 combination of parameters. A partial function on the other hand can be
@@ -84,7 +59,7 @@ system: undefined behavior, aborting the program or even throwing an exception.
 An example of a partial function is dereferencing a pointer. The pointer might
 be a null pointer, it might be uninitialized or it might point to 'one past the
 end'. Calling partial functions is error-prone because the programmer has to
-remember which parameters make the function terminate abnormally. Consequently,
+remember for which parameters the function is undefined. Consequently,
 partial functions are best avoided but cannot always be:
 <ul>
 <li>Prefer to use \ref fcpptoptional as a return type in case a function may
@@ -98,7 +73,7 @@ resort.</li>
 See \ref fcpptassert on how to systematically handle partial
 functions.
 
-\subsection coding_loops Loops
+\section coding_loops Loops
 
 Loops can be broken down into two separate concerns: Updating the loop
 condition and updating the loop's result. For example, a loop that sums integers
@@ -123,7 +98,7 @@ For a collection of algorithms that replace loops see \ref fcpptalgorithm.
 Because imperative loops, especially ones using iterators, are so error-prone,
 raw loops are best avoided
 
-\subsection coding_const_init Const and initialization
+\section coding_const_init Const and initialization
 
 Declaring an object <code>const</code> makes it immutable and therefore easier
 to reason about. Obviously, a const object has to be initialized directly which

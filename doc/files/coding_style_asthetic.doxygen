@@ -4,20 +4,18 @@
 \section coding_asthetic Asthetic aspects
 
 This document gives an overview over the asthetic aspects chosen in fcppt.
-Asthetic aspects are purely cosmetic and their only purpose is to yield code
-that is consistent.
 
 \subsection coding_indentation Indentation
 
 Indentation is a very controversal topic. Everyone has their own opinions on it
-and these are also subject to change over time. Fcppt uses a somewhat excessive
+which are also subject to change over time. Fcppt uses a somewhat excessive
 indentation style whose purpose is not to be <em>identifier-dependent</em> and
 <em>tab-consistent</em>. The former means that changing identifiers should not
 lead to reindentation. Consider a rule that enforces lines that are no longer
 than, say, 80 characters. If you change a single identifier, it could lead to
 reindentation of a lot of lines. The latter means that tab width should not
 affect the indentation, therefore making it possible to use tabs, so that
-everyone can chose their favorite tab width.
+everyone can choose their favorite tab width.
 
 The indentation style can best be given by a simple example:
 

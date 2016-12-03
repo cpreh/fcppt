@@ -5,8 +5,8 @@
 
 Freundlich's C++ Toolkit (fcppt) is a collection of libraries focusing on
 improving general C++ code by providing better types and making use of
-functional programming. See the \link coding_semantics semantic aspects\endlink
-of our coding guide for more information.
+functional programming. See our \link code_style Coding style \endlink page
+for more information.
 
 fcppt builds on and around Boost. Some Boost libraries like MPL are
 used and extended, while others are rewritten to provide better typing
