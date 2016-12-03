@@ -26,13 +26,13 @@ main()
 	string_or_int;
 
 //! [variant_binary_visitation]
-	string_or_int v(
+	string_or_int const v(
 		std::string(
 			"Hello World"
 		)
 	);
 
-	string_or_int u(
+	string_or_int const u(
 		42
 	);
 

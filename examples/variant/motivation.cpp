@@ -4,9 +4,8 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/variant/get_unsafe.hpp>
-#include <fcppt/variant/holds_type.hpp>
-#include <fcppt/variant/object.hpp>
+#include <fcppt/variant/match.hpp>
+#include <fcppt/variant/variadic.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/mpl/vector/vector10.hpp>
 #include <iostream>
@@ -50,15 +49,6 @@ variant_union()
 	print(
 		var
 	);
-
-	/*
-	// Doesn't work in C++03
-	union string_or_int
-	{
-		std::string s;
-		int i;
-	};*/
-
 //! [variant_union]
 }
 
@@ -66,38 +56,43 @@ void
 variant_example()
 {
 //! [variant_example]
-	// Note that an MPL sequence is used here to describe which types the
-	// variant can hold. Alternatively, fcppt::variant::variadic can be
-	// used.
 	typedef
-	fcppt::variant::object<
-		boost::mpl::vector2<
-			std::string,
-			int
-		>
+	fcppt::variant::variadic<
+		std::string,
+		int
 	>
 	string_or_int;
 
-
 	auto const print(
 		[](
-			string_or_int x
+			string_or_int const &_v
 		)
 		{
-			// fcppt::variant::holds_type queries if the type is held by the
-			// variant
-			if(
-				fcppt::variant::holds_type<std::string>(x)
-			)
-				std::cout << fcppt::variant::get_unsafe<std::string>(x) << '\n';
-			else if(
-				fcppt::variant::holds_type<int>(x)
-			)
-				std::cout << fcppt::variant::get_unsafe<int>(x) << '\n';
+			fcppt::variant::match(
+				_v,
+				[](
+					std::string const &_str
+				)
+				{
+					std::cout
+						<< "We have a string "
+						<< _str
+						<< '\n';
+				},
+				[](
+					int const _i
+				)
+				{
+					std::cout
+						<< "We have an int "
+						<< _i
+						<< '\n';
+				}
+			);
 		}
 	);
 
-	string_or_int var(
+	string_or_int const var(
 		std::string(
 			"Hello World"
 		)

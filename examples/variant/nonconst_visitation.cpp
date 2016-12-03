@@ -19,13 +19,11 @@ namespace
 //! [variant_nonconst_visitor]
 struct visitor
 {
-	typedef void result_type;
-
 	// operator() takes T as non const ref
 	template<
 		typename T
 	>
-	result_type
+	void
 	operator()(
 		T &_val
 	) const
@@ -61,6 +59,12 @@ main()
 	);
 
 	// only prints a newline because the string contains nothing anymore
-	std::cout << fcppt::variant::get_exn<std::string>(v) << '\n';
+	std::cout
+		<<
+		fcppt::variant::get_exn<
+			std::string
+		>(
+			v
+		) << '\n';
 //! [variant_nonconst_visitation]
 }
