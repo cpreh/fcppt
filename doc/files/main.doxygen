@@ -10,9 +10,8 @@ for more information.
 
 fcppt builds on and around Boost. Some Boost libraries like MPL are
 used and extended, while others are rewritten to provide better typing
-rules (\link fcppt.optional Optional\endlink and \link fcppt.variant
-Variant\endlink), C++14 features (\link fcppt.assign Assign\endlink)
-or better performance (\link fcppt.signal Signals\endlink).
+rules (\ref fcpptoptional and \ref fcpptvariant),
+C++14 features (\ref fcpptassign) or better performance (\ref fcpptsignal).
 
 \section main_sitemap Site map
 
