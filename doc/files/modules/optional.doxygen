@@ -33,24 +33,23 @@ following example:
 \snippet optional.cpp optional_example_bad
 
 First of all, the example makes it clear that the function can deal with an
-<code>unsigned int</code> or nothing at all. However, using optionals this way
-makes them no safer than using pointers that may be null. To improve the
-situation, we must avoid calling <code>get_unsafe</code> at all, which will
-lead to undefined behavior if the optional has no value. To do this, the most
-basic operation is called <code>maybe</code> which acts upon the two different
-cases.
+<code>unsigned int</code> or nothing at all. However, using optionals in this way
+makes them no safer than using pointers that may be null. In order to fix this,
+we must avoid calling <code>get_unsafe</code> at all.
+The most basic operation is called <code>maybe</code> which acts on the two
+different cases.
 
 \snippet optional.cpp optional_example_good
 
-As you can see, the second lambda function gets the already dereferenced
-optional value as a parameter, freeing the user from dereferencing the
-optional.
+Notice that by using <code>maybe</code>, the code checking if the optional has
+a value and the code dereferencing the optional are both gone.
 
 \section optional_design Design
 
-The goal of \ref fcppt.optional, in contrast to <code>%boost::optional</code>,
-is to be as explicit as possible and to avoid pointer semantics. The key
-differences include:
+The goal of \ref fcppt.optional, in contrast to <code>%boost::optional</code>
+(and sadly C++17's <code>std::optional</code>), is to avoid pointer semantics
+and use explicit conversions only.
+The key differences include:
 <ul>
 <li><code>%fcppt::optional::object</code> does not have
 <code>operator-></code>, <code>operator*</code> nor <code>operator bool</code>,
@@ -89,21 +88,20 @@ distinguishes these two cases.
 
 \section optional_operations Common Operations
 
-\link fcppt::optional::maybe\endlink is the most basic function that operates on
-optionals, However, some commonly needed operations arise as well. Perhaps the
-most prominent operation would be the so called bind function which decomposes
-an optional and creates a new one by preserving empty optionals.
+\link fcppt::optional::maybe\endlink is the most basic function that operates
+on optionals.
 
-\snippet optional.cpp optional_bind
-
-There is also a shortcut for optional binds that always return a non empty
-optional, called \link fcppt::optional::map\endlink.
+\link fcppt::optional::map\endlink lifts a function to a function
+on optionals:
 
 \snippet optional.cpp optional_map
 
-Another commonly used function is \link fcppt::optional::from\endlink. It
-deconstructs an optional by either taking its value or returning a default
-value.
+The more general \link fcppt::optional::bind\endlink returns the function's
+result directly:
+
+\snippet optional.cpp optional_bind
+
+Another commonly used function is \link fcppt::optional::from\endlink:
 
 \snippet optional.cpp from_optional
 
