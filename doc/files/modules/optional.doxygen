@@ -36,7 +36,7 @@ First of all, the example makes it clear that the function can deal with an
 <code>unsigned int</code> or nothing at all. However, using optionals in this way
 makes them no safer than using pointers that may be null. In order to fix this,
 we must avoid calling <code>get_unsafe</code> at all.
-The most basic operation is called <code>maybe</code> which acts on the two
+The most basic operation that does this is called <code>maybe</code> which acts on the two
 different cases.
 
 \snippet optional.cpp optional_example_good

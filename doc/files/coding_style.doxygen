@@ -33,7 +33,7 @@ fcppt::shared_ptr<T></code>, <code>fcppt::reference<T></code>,
 <code>T &&</code> and <code>T</code>.
 <ul>
 <li>\link fcppt::unique_ptr\endlink expresses unique ownership and should be
-the default class to use for non-copyable objects.</li>
+the default class to use for non-copyable types.</li>
 <li>\link fcppt::shared_ptr\endlink expresses shared ownership.</li>
 <li>\link fcppt::reference\endlink should be prefered to raw references
 to make their use more explicit.</li>
@@ -96,7 +96,7 @@ href="http://www.boost.org/doc/libs/1_59_0/libs/range/doc/html/index.html">Boost
 library.
 For a collection of algorithms that replace loops see \ref fcpptalgorithm.
 Because imperative loops, especially ones using iterators, are so error-prone,
-raw loops are best avoided
+raw loops are best avoided.
 
 \section coding_const_init Const and initialization
 
