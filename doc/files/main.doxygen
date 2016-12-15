@@ -42,6 +42,7 @@ The documentation is split into the following parts:
 	<li>
 		\subpage changes
 		<ul>
+			<li>\ref changes_changes_to_241</li>
 			<li>\ref changes_changes_to_240</li>
 			<li>\ref changes_changes_to_230</li>
 			<li>\ref changes_changes_to_220</li>

@@ -1,6 +1,20 @@
 /**
 \page changes Changes
 
+\section changes_changes_to_241 2.4.1
+
+\subsection changes_bugfixes_to_241 Bugfixes
+
+<ul>
+
+<li><code>CMake</code>
+	<ul>
+	<li>Set <code>CMAKE_CXX_STANDARD</code> to <code>14</code> in order to fix a bug with imported Qt targets.</li>
+	</ul>
+</li>
+
+</ul>
+
 \section changes_changes_to_240 2.4.0
 
 \subsection changes_added_functionality_to_240 Added functionality
