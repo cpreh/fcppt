@@ -287,7 +287,6 @@ if(
 	list(
 		APPEND
 		FCPPT_UTILS_COMPILE_OPTIONS
-		"-std=c++14"
 		"-pedantic"
 		"-pedantic-errors"
 		"-Wall"
@@ -974,10 +973,16 @@ function(
 	set_target_properties(
 		${TARGET_NAME}
 		PROPERTIES
+		CXX_EXTENSIONS
+			FALSE
+		CXX_STANDARD
+			14
+		CXX_STANDARD_REQUIRED
+			14
 		COMPILE_OPTIONS
-		"${COMPILE_OPTIONS}"
+			"${COMPILE_OPTIONS}"
 		NO_SYSTEM_FROM_IMPORTED
-		TRUE
+			TRUE
 	)
 
 	get_target_property(
