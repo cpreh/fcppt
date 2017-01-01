@@ -73,6 +73,10 @@ add_fcppt_optional_test(
 )
 
 add_fcppt_optional_test(
+	make_if
+)
+
+add_fcppt_optional_test(
 	map
 )
 

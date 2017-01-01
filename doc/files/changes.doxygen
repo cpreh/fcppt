@@ -1,6 +1,20 @@
 /**
 \page changes Changes
 
+\section changes_changes_to_250 2.5.0
+
+\subsection changes_added_functionality_to_250 Added functionality
+
+<ul>
+
+<li>\ref fcpptoptional
+	<ul>
+	<li>Added \link fcppt::optional::make_if\endlink.</li>
+	</ul>
+</li>
+
+</ul>
+
 \section changes_changes_to_241 2.4.1
 
 \subsection changes_bugfixes_to_241 Bugfixes
