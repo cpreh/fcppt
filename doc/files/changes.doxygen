@@ -10,6 +10,7 @@
 <li>\ref fcpptoptional
 	<ul>
 	<li>Added \link fcppt::optional::make_if\endlink.</li>
+	<li>Added \link fcppt::optional::nothing\endlink.</li>
 	</ul>
 </li>
 

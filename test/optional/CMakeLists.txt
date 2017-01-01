@@ -101,6 +101,10 @@ add_fcppt_optional_test(
 )
 
 add_fcppt_optional_test(
+	nothing
+)
+
+add_fcppt_optional_test(
 	reference
 )
 

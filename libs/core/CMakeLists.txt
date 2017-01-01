@@ -788,11 +788,16 @@ set(
 	libs/core/include/fcppt/optional/is_object.hpp
 	libs/core/include/fcppt/optional/join.hpp
 	libs/core/include/fcppt/optional/make.hpp
+	libs/core/include/fcppt/optional/make_if.hpp
 	libs/core/include/fcppt/optional/map.hpp
 	libs/core/include/fcppt/optional/maybe.hpp
 	libs/core/include/fcppt/optional/maybe_multi.hpp
 	libs/core/include/fcppt/optional/maybe_void.hpp
 	libs/core/include/fcppt/optional/maybe_void_multi.hpp
+	libs/core/include/fcppt/optional/nothing.hpp
+	libs/core/include/fcppt/optional/nothing_decl.hpp
+	libs/core/include/fcppt/optional/nothing_fwd.hpp
+	libs/core/include/fcppt/optional/nothing_impl.hpp
 	libs/core/include/fcppt/optional/object.hpp
 	libs/core/include/fcppt/optional/object_decl.hpp
 	libs/core/include/fcppt/optional/object_fwd.hpp
