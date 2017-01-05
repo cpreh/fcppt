@@ -40,8 +40,10 @@ FCPPT_PP_POP_WARNING
 			optional_int(
 				42
 			),
-			optional_int(
-				10
+			fcppt::const_(
+				optional_int(
+					10
+				)
 			)
 		),
 		optional_int(
@@ -52,8 +54,10 @@ FCPPT_PP_POP_WARNING
 	BOOST_CHECK_EQUAL(
 		fcppt::optional::alternative(
 			optional_int(),
-			optional_int(
-				10
+			fcppt::const_(
+				optional_int(
+					10
+				)
 			)
 		),
 		optional_int(
@@ -64,9 +68,27 @@ FCPPT_PP_POP_WARNING
 	BOOST_CHECK_EQUAL(
 		fcppt::optional::alternative(
 			optional_int(),
-			optional_int()
+			fcppt::const_(
+				optional_int()
+			)
 		),
 		optional_int()
+	);
+
+	optional_int const value{};
+
+	BOOST_CHECK_EQUAL(
+		fcppt::optional::alternative(
+			value,
+			fcppt::const_(
+				optional_int{
+					42
+				}
+			)
+		),
+		optional_int{
+			42
+		}
 	);
 }
 
@@ -101,7 +123,10 @@ FCPPT_PP_POP_WARNING
 						42
 					)
 				),
-				optional_int_unique_ptr()
+				[]{
+					return
+						optional_int_unique_ptr();
+				}
 			),
 			fcppt::const_(
 				false

@@ -9,6 +9,7 @@
 
 #include <fcppt/optional/detail/check.hpp>
 #include <fcppt/config/external_begin.hpp>
+#include <type_traits>
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
@@ -23,15 +24,22 @@ namespace optional
 
 \ingroup fcpptoptional
 
-If \a _optional1 is not nothing, it returns \a _optional1, otherweise \a _optional2.
+If \a _optional1 is not nothing, the result is \a _optional1, otherwise
+the result of \a _optional2 is returned.
+
+\tparam Function A function callable as <code>Optional ()</code>.
 */
 template<
-	typename Optional
+	typename Optional,
+	typename Function
 >
-Optional
+typename
+std::remove_reference<
+	Optional
+>::type
 alternative(
 	Optional &&_optional1,
-	Optional &&_optional2
+	Function const &_optional2
 )
 {
 	static_assert(
@@ -41,16 +49,27 @@ alternative(
 		"optional_alternative must return an optional"
 	);
 
+	static_assert(
+		fcppt::optional::detail::check<
+			typename
+			std::result_of<
+				Function()
+			>::type
+		>::value,
+		"Function must return an optional"
+	);
+
 	return
-		std::forward<
-			Optional
-		>(
-			_optional1.has_value()
-			?
+		_optional1.has_value()
+		?
+			std::forward<
+				Optional
+			>(
 				_optional1
-			:
-				_optional2
-		);
+			)
+		:
+			_optional2()
+		;
 }
 
 }
