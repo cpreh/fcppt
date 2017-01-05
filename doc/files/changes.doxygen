@@ -40,6 +40,24 @@
 	</ul>
 </li>
 
+<li>\ref fcpptvarious
+	<ul>
+	<li>Added \link fcppt::args_from_second\endlink.</li>
+	</ul>
+</li>
+
+</ul>
+
+\subsection changes_bugfixes_to_250 Bugfixes
+
+<ul>
+
+<li>\ref fcpptrecord
+	<ul>
+	<li>Fixed output of records to wide streams.</li>
+	</ul>
+</li>
+
 </ul>
 
 \section changes_changes_to_241 2.4.1

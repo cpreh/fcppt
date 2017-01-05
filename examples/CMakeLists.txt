@@ -6,6 +6,10 @@ fcppt_utils_link_target(
 	fcppt_log
 )
 
+fcppt_utils_link_target(
+	fcppt_options
+)
+
 function(
 	add_fcppt_example
 	PATH_NAME
@@ -267,6 +271,10 @@ add_subdirectory(
 
 add_subdirectory(
 	mpl
+)
+
+add_subdirectory(
+	options
 )
 
 add_subdirectory(

@@ -148,6 +148,7 @@ set(
 	examples/mpl/various.cpp
 	examples/noncopyable.cpp
 	examples/optional.cpp
+	examples/options/simple.cpp
 	examples/output_tm.cpp
 	examples/preprocessor/printing.cpp
 	examples/preprocessor/warning.cpp
@@ -241,6 +242,7 @@ set(
 	libs/core/include/fcppt/algorithm/update_action_fwd.hpp
 	libs/core/include/fcppt/algorithm/vararg_map.hpp
 	libs/core/include/fcppt/args.hpp
+	libs/core/include/fcppt/args_from_second.hpp
 	libs/core/include/fcppt/args_vector.hpp
 	libs/core/include/fcppt/assert/basic/conditional.hpp
 	libs/core/include/fcppt/assert/basic/conditional_message.hpp
