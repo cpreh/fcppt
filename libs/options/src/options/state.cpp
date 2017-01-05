@@ -82,7 +82,8 @@ fcppt::options::state::pop_arg()
 
 bool
 fcppt::options::state::pop_flag(
-	std::string const &_name
+	std::string const &_name,
+	is_short const _is_short
 )
 {
 	return
@@ -90,7 +91,10 @@ fcppt::options::state::pop_flag(
 			fcppt::optional::map(
 				fcppt::container::find_opt_mapped(
 					flags_,
-					_name
+					std::make_pair(
+						_name,
+						_is_short
+					)
 				),
 				[](
 					fcppt::reference<
@@ -119,14 +123,18 @@ fcppt::options::state::pop_flag(
 
 fcppt::optional_std_string
 fcppt::options::state::pop_option(
-	std::string const &_name
+	std::string const &_name,
+	is_short const _is_short
 )
 {
 	return
 		fcppt::optional::bind(
 			fcppt::container::find_opt_mapped(
 				options_,
-				_name
+				std::make_pair(
+					_name,
+					_is_short
+				)
 			),
 			[](
 				fcppt::reference<

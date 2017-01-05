@@ -28,7 +28,7 @@ FCPPT_PP_POP_WARNING
 	fcppt::options::state result{
 		fcppt::options::state_from_args(
 			fcppt::args_vector{
-				"--bar",
+				"-bar",
 				"-bar",
 				"-flag",
 				"arg1",
@@ -36,7 +36,8 @@ FCPPT_PP_POP_WARNING
 				"parameter1",
 				"-notflag",
 				"parameter2",
-				"arg2"
+				"arg2",
+				"--long-flag"
 			},
 			fcppt::options::has_parameter_set{
 				"notflag"
@@ -65,43 +66,72 @@ FCPPT_PP_POP_WARNING
 
 	BOOST_CHECK(
 		result.pop_flag(
-			"bar"
+			"bar",
+			fcppt::options::state::is_short{
+				true
+			}
+		)
+	);
+	BOOST_CHECK(
+		!result.pop_flag(
+			"bar",
+			fcppt::options::state::is_short{
+				false
+			}
 		)
 	);
 
 	BOOST_CHECK(
 		result.pop_flag(
-			"bar"
+			"bar",
+			fcppt::options::state::is_short{
+				true
+			}
 		)
 	);
 
 	BOOST_CHECK(
 		!result.pop_flag(
-			"bar"
+			"bar",
+			fcppt::options::state::is_short{
+				true
+			}
 		)
 	);
 
 	BOOST_CHECK(
 		result.pop_flag(
-			"flag"
+			"flag",
+			fcppt::options::state::is_short{
+				true
+			}
 		)
 	);
 
 	BOOST_CHECK(
 		!result.pop_flag(
-			"flag"
+			"flag",
+			fcppt::options::state::is_short{
+				true
+			}
 		)
 	);
 
 	BOOST_CHECK(
 		!result.pop_flag(
-			"something"
+			"something",
+			fcppt::options::state::is_short{
+				true
+			}
 		)
 	);
 
 	BOOST_CHECK_EQUAL(
 		result.pop_option(
-			"notflag"
+			"notflag",
+			fcppt::options::state::is_short{
+				true
+			}
 		),
 		fcppt::optional_std_string{
 			"parameter1"
@@ -110,7 +140,10 @@ FCPPT_PP_POP_WARNING
 
 	BOOST_CHECK_EQUAL(
 		result.pop_option(
-			"notflag"
+			"notflag",
+			fcppt::options::state::is_short{
+				true
+			}
 		),
 		fcppt::optional_std_string{
 			"parameter2"
@@ -119,8 +152,20 @@ FCPPT_PP_POP_WARNING
 
 	BOOST_CHECK_EQUAL(
 		result.pop_option(
-			"notflag"
+			"notflag",
+			fcppt::options::state::is_short{
+				true
+			}
 		),
 		fcppt::optional_std_string{}
+	);
+
+	BOOST_CHECK(
+		result.pop_flag(
+			"long-flag",
+			fcppt::options::state::is_short{
+				false
+			}
+		)
 	);
 }

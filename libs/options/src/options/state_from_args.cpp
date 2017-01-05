@@ -13,16 +13,82 @@
 #include <fcppt/optional/copy_value.hpp>
 #include <fcppt/optional/make.hpp>
 #include <fcppt/optional/make_if.hpp>
-#include <fcppt/optional/maybe.hpp>
 #include <fcppt/optional/maybe_void.hpp>
 #include <fcppt/options/has_parameter_set.hpp>
 #include <fcppt/options/state.hpp>
 #include <fcppt/options/state_from_args.hpp>
+#include <fcppt/variant/match.hpp>
+#include <fcppt/variant/variadic.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <iterator>
 #include <string>
 #include <fcppt/config/external_end.hpp>
 
+
+namespace
+{
+
+typedef
+fcppt::variant::variadic<
+	std::string,
+	fcppt::options::state::name_pair
+>
+variant;
+
+variant
+get_type(
+	std::string const &_value
+)
+{
+	return
+		fcppt::optional::copy_value(
+			fcppt::container::maybe_front(
+				_value
+			)
+		)
+		==
+		fcppt::optional::make(
+			'-'
+		)
+		?
+			variant{
+				fcppt::optional::copy_value(
+					fcppt::container::at_optional(
+						_value,
+						1u
+					)
+				)
+				==
+				fcppt::optional::make(
+					'-'
+				)
+				?
+					std::make_pair(
+						_value.substr(
+							2u
+						),
+						fcppt::options::state::is_short{
+							false
+						}
+					)
+				:
+					std::make_pair(
+						_value.substr(
+							1u
+						),
+						fcppt::options::state::is_short{
+							true
+						}
+					)
+			}
+		:
+			variant{
+				_value
+			}
+		;
+}
+
+}
 
 fcppt::options::state
 fcppt::options::state_from_args(
@@ -36,7 +102,7 @@ fcppt::options::state_from_args(
 
 	fcppt::options::state::options_map options;
 
-	// TODO: Separate this code
+	// TODO: Find a better way than iterators
 	for(
 		fcppt::args_vector::const_iterator it{
 			_args.begin()
@@ -50,48 +116,18 @@ fcppt::options::state_from_args(
 			*it
 		};
 
-		fcppt::optional::maybe(
-			fcppt::optional::make_if(
-				fcppt::optional::copy_value(
-					fcppt::container::maybe_front(
-						cur
-					)
-				)
-				==
-				fcppt::optional::make(
-					'-'
-				),
-				[
-					&cur
-				]{
-					return
-						fcppt::optional::copy_value(
-							fcppt::container::at_optional(
-								cur,
-								1u
-							)
-						)
-						==
-						fcppt::optional::make(
-							'-'
-						)
-						?
-							cur.substr(
-								2u
-							)
-						:
-							cur.substr(
-								1u
-							)
-						;
-				}
+		fcppt::variant::match(
+			get_type(
+				cur
 			),
 			[
-				&cur,
 				&args
-			]{
+			](
+				std::string const &_arg
+			)
+			{
 				args.push_back(
-					cur
+					_arg
 				);
 			},
 			[
@@ -101,18 +137,18 @@ fcppt::options::state_from_args(
 				&flags,
 				&options
 			](
-				std::string const &_name
+				fcppt::options::state::name_pair const &_name
 			){
 				if(
 					!_parameters.count(
-						_name
+						_name.first
 					)
 				)
 					++flags[
 						_name
 					];
 				else
-					// TODO: What do we do in this case?
+					// TODO: What do we do in the nothing case?
 					fcppt::optional::maybe_void(
 						fcppt::optional::make_if(
 							std::next(

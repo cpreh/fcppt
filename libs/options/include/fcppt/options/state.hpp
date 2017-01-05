@@ -8,12 +8,14 @@
 #define FCPPT_OPTIONS_STATE_HPP_INCLUDED
 
 #include <fcppt/args_vector.hpp>
+#include <fcppt/strong_typedef.hpp>
 #include <fcppt/optional_std_string_fwd.hpp>
 #include <fcppt/options/detail/symbol.hpp>
 #include <fcppt/options/state_fwd.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <string>
-#include <unordered_map>
+#include <map>
+#include <utility>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -29,16 +31,29 @@ public:
 	unsigned
 	flag_count;
 
+	// TODO: Should we use fcppt::string here?
+	FCPPT_MAKE_STRONG_TYPEDEF(
+		bool,
+		is_short
+	);
+
 	typedef
-	std::unordered_map<
+	std::pair<
 		std::string,
+		is_short
+	>
+	name_pair;
+
+	typedef
+	std::map<
+		name_pair,
 		flag_count
 	>
 	flag_map;
 
 	typedef
-	std::unordered_map<
-		std::string,
+	std::map<
+		name_pair,
 		fcppt::args_vector
 	>
 	options_map;
@@ -57,13 +72,15 @@ public:
 	FCPPT_OPTIONS_DETAIL_SYMBOL
 	bool
 	pop_flag(
-		std::string const &
+		std::string const &,
+		is_short
 	);
 
 	FCPPT_OPTIONS_DETAIL_SYMBOL
 	fcppt::optional_std_string
 	pop_option(
-		std::string const &
+		std::string const &,
+		is_short
 	);
 private:
 	fcppt::args_vector args_;
