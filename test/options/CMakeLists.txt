@@ -19,5 +19,9 @@ add_fcppt_options_test(
 )
 
 add_fcppt_options_test(
+	option
+)
+
+add_fcppt_options_test(
 	state_from_args
 )

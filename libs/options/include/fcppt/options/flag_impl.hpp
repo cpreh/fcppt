@@ -141,6 +141,7 @@ fcppt::options::flag<
 	Type
 >::usage() const
 {
+	// TODO: Better usage text
 	return
 		FCPPT_TEXT("[ --")
 		+
