@@ -81,9 +81,11 @@ operator<<(
 
 			_stream
 				<<
-				fcppt::record::label_name<
-					label
-				>()
+				fcppt::io::widen_string(
+					fcppt::record::label_name<
+						label
+					>()
+				)
 				<<
 				fcppt::io::widen_string(
 					" = "
