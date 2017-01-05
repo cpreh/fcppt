@@ -13,3 +13,7 @@ endfunction()
 add_fcppt_options_test(
 	argument
 )
+
+add_fcppt_options_test(
+	state_from_args
+)

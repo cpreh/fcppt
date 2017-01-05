@@ -4,8 +4,11 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_OPTIONS_ARGUMENT_FWD_HPP_INCLUDED
-#define FCPPT_OPTIONS_ARGUMENT_FWD_HPP_INCLUDED
+#ifndef FCPPT_OPTIONS_LONG_NAME_FWD_HPP_INCLUDED
+#define FCPPT_OPTIONS_LONG_NAME_FWD_HPP_INCLUDED
+
+#include <fcppt/make_strong_typedef.hpp>
+#include <fcppt/string.hpp>
 
 
 namespace fcppt
@@ -13,11 +16,10 @@ namespace fcppt
 namespace options
 {
 
-template<
-	typename Label,
-	typename Type
->
-class argument;
+FCPPT_MAKE_STRONG_TYPEDEF(
+	fcppt::string,
+	long_name
+);
 
 }
 }

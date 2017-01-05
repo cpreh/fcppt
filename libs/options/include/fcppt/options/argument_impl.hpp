@@ -9,6 +9,7 @@
 
 #include <fcppt/extract_from_string.hpp>
 #include <fcppt/from_std_string.hpp>
+#include <fcppt/string.hpp>
 #include <fcppt/text.hpp>
 #include <fcppt/type_name_from_info.hpp>
 #include <fcppt/either/bind.hpp>
@@ -16,6 +17,8 @@
 #include <fcppt/optional/map.hpp>
 #include <fcppt/options/argument_decl.hpp>
 #include <fcppt/options/error.hpp>
+#include <fcppt/options/has_parameter_set.hpp>
+#include <fcppt/options/long_name.hpp>
 #include <fcppt/options/result.hpp>
 #include <fcppt/options/state.hpp>
 #include <fcppt/record/element.hpp>
@@ -32,19 +35,36 @@ template<
 	typename Label,
 	typename Type
 >
+fcppt::options::argument<
+	Label,
+	Type
+>::argument(
+	fcppt::options::long_name const &_long_name
+)
+:
+	long_name_(
+		_long_name
+	)
+{
+}
+
+template<
+	typename Label,
+	typename Type
+>
 fcppt::options::result<
 	typename
 	fcppt::options::argument<
 		Label,
 		Type
-	>::record_type
+	>::result_type
 >
 fcppt::options::argument<
 	Label,
 	Type
 >::parse(
 	fcppt::options::state &_state
-)
+) const
 {
 	return
 		fcppt::either::bind(
@@ -55,9 +75,11 @@ fcppt::options::argument<
 						fcppt::options::error{
 							FCPPT_TEXT("Missing argument ")
 							+
-							fcppt::record::label_name<
-								Label
-							>()
+							fcppt::from_std_string(
+								fcppt::record::label_name<
+									Label
+								>()
+							)
 						};
 				}
 			),
@@ -78,7 +100,7 @@ fcppt::options::argument<
 							)
 							{
 								return
-									record_type{
+									result_type{
 										Label{} =
 											std::move(
 												_value
@@ -107,13 +129,51 @@ fcppt::options::argument<
 									+
 									FCPPT_TEXT(" for argument ")
 									+
-									fcppt::record::label_name<
-										Label
-									>()
+									fcppt::from_std_string(
+										fcppt::record::label_name<
+											Label
+										>()
+									)
 								};
 						}
 					);
 			}
+		);
+}
+
+template<
+	typename Label,
+	typename Type
+>
+fcppt::options::has_parameter_set
+fcppt::options::argument<
+	Label,
+	Type
+>::parameters() const
+{
+	return
+		fcppt::options::has_parameter_set();
+}
+
+template<
+	typename Label,
+	typename Type
+>
+fcppt::string
+fcppt::options::argument<
+	Label,
+	Type
+>::usage() const
+{
+	return
+		long_name_.get()
+		+
+		FCPPT_TEXT(" :: ")
+		+
+		fcppt::type_name_from_info(
+			typeid(
+				Type
+			)
 		);
 }
 

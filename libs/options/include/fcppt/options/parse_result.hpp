@@ -4,22 +4,10 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_OPTIONS_ARGUMENT_FWD_HPP_INCLUDED
-#define FCPPT_OPTIONS_ARGUMENT_FWD_HPP_INCLUDED
+#ifndef FCPPT_OPTIONS_PARSE_RESULT_HPP_INCLUDED
+#define FCPPT_OPTIONS_PARSE_RESULT_HPP_INCLUDED
 
+#include <fcppt/options/parse_result_impl.hpp>
 
-namespace fcppt
-{
-namespace options
-{
-
-template<
-	typename Label,
-	typename Type
->
-class argument;
-
-}
-}
 
 #endif

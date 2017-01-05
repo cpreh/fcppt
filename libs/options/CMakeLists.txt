@@ -6,17 +6,29 @@ set(
 	libs/options/include/fcppt/options/argument_impl.hpp
 	libs/options/include/fcppt/options/error.hpp
 	libs/options/include/fcppt/options/error_fwd.hpp
+	libs/options/include/fcppt/options/has_parameter_set.hpp
+	libs/options/include/fcppt/options/long_name.hpp
+	libs/options/include/fcppt/options/long_name_fwd.hpp
+	libs/options/include/fcppt/options/parse.hpp
+	libs/options/include/fcppt/options/parse_result.hpp
+	libs/options/include/fcppt/options/parse_result_decl.hpp
+	libs/options/include/fcppt/options/parse_result_fwd.hpp
+	libs/options/include/fcppt/options/parse_result_impl.hpp
+	libs/options/include/fcppt/options/parse_with_leftover.hpp
 	libs/options/include/fcppt/options/result.hpp
 	libs/options/include/fcppt/options/result_fwd.hpp
 	libs/options/include/fcppt/options/state.hpp
 	libs/options/include/fcppt/options/state_from_args.hpp
 	libs/options/include/fcppt/options/state_fwd.hpp
 	libs/options/src/options/state.cpp
+	libs/options/src/options/state_from_args.cpp
 )
 
 make_fcppt_library(
 	options
 	"${FCPPT_OPTIONS_FILES}"
 	FCPPT_DEPS
+		fcppt_core
+	TRANSITIVE_FCPPT_DEPS
 		fcppt_core
 )

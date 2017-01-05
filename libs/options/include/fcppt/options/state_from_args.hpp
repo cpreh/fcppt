@@ -8,6 +8,7 @@
 #define FCPPT_OPTIONS_STATE_FROM_ARGS_HPP_INCLUDED
 
 #include <fcppt/args_vector.hpp>
+#include <fcppt/options/has_parameter_set.hpp>
 #include <fcppt/options/state.hpp>
 #include <fcppt/options/detail/symbol.hpp>
 
@@ -20,7 +21,8 @@ namespace options
 FCPPT_OPTIONS_DETAIL_SYMBOL
 fcppt::options::state
 state_from_args(
-	fcppt::args_vector const &
+	fcppt::args_vector const &,
+	fcppt::options::has_parameter_set const &
 );
 
 }
