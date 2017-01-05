@@ -57,6 +57,14 @@ add_fcppt_container_test(
 )
 
 add_fcppt_container_test(
+	move_range
+)
+
+add_fcppt_container_test(
+	pop_back
+)
+
+add_fcppt_container_test(
 	raw_vector
 	LINK_LIBS
 		"${fcppt_core_TARGET}"

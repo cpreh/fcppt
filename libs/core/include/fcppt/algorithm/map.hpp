@@ -7,6 +7,7 @@
 #ifndef FCPPT_ALGORITHM_MAP_HPP_INCLUDED
 #define FCPPT_ALGORITHM_MAP_HPP_INCLUDED
 
+#include <fcppt/move_if_rvalue.hpp>
 #include <fcppt/algorithm/range_element_type.hpp>
 #include <fcppt/algorithm/detail/map_reserve.hpp>
 
@@ -61,7 +62,13 @@ map(
 		result.insert(
 			result.end(),
 			_function(
-				element
+				fcppt::move_if_rvalue<
+					decltype(
+						element
+					)
+				>(
+					element
+				)
 			)
 		);
 

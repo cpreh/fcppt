@@ -1,0 +1,22 @@
+set(
+	FCPPT_OPTIONS_FILES
+	libs/options/include/fcppt/options/argument.hpp
+	libs/options/include/fcppt/options/argument_decl.hpp
+	libs/options/include/fcppt/options/argument_fwd.hpp
+	libs/options/include/fcppt/options/argument_impl.hpp
+	libs/options/include/fcppt/options/error.hpp
+	libs/options/include/fcppt/options/error_fwd.hpp
+	libs/options/include/fcppt/options/result.hpp
+	libs/options/include/fcppt/options/result_fwd.hpp
+	libs/options/include/fcppt/options/state.hpp
+	libs/options/include/fcppt/options/state_from_args.hpp
+	libs/options/include/fcppt/options/state_fwd.hpp
+	libs/options/src/options/state.cpp
+)
+
+make_fcppt_library(
+	options
+	"${FCPPT_OPTIONS_FILES}"
+	FCPPT_DEPS
+		fcppt_core
+)

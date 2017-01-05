@@ -60,6 +60,10 @@ fcppt_utils_link_target(
 	fcppt_log
 )
 
+fcppt_utils_link_target(
+	fcppt_options
+)
+
 add_fcppt_test(
 	absurd
 	NO_CODE
@@ -177,6 +181,10 @@ add_fcppt_test(
 
 add_subdirectory(
 	optional
+)
+
+add_subdirectory(
+	options
 )
 
 add_subdirectory(

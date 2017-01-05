@@ -118,6 +118,10 @@ add_fcppt_algorithm_test(
 )
 
 add_fcppt_algorithm_test(
+	reverse
+)
+
+add_fcppt_algorithm_test(
 	sequence_iteration
 )
 

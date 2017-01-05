@@ -20,11 +20,16 @@ update_sublibrary()
 		"${libdir}"
 }
 
-update_sublibrary core
+LIBS=(
+	core
+	filesystem
+	log
+	options
+)
 
-update_sublibrary filesystem
-
-update_sublibrary log
+for lib in ${LIBS[@]} ; do
+	update_sublibrary $lib
+done
 
 update_cmake \
 	doc/CMakeLists.txt \

@@ -7,6 +7,20 @@
 
 <ul>
 
+<li>\ref fcpptalgorithm
+	<ul>
+	<li>Added \link fcppt::algorithm::reverse\endlink.</li>
+	<li>Move rvalues in \link fcppt::algorithm::map\endlink.</li>
+	</ul>
+</li>
+
+<li>\ref fcpptcontainer
+	<ul>
+	<li>Added \link fcppt::container::move_range\endlink and \link fcppt::container::make_move_range\endlink.</li>
+	<li>Added \link fcppt::container::pop_back\endlink.</li>
+	</ul>
+</li>
+
 <li>\ref fcpptoptional
 	<ul>
 	<li>Added \link fcppt::optional::make_if\endlink.</li>

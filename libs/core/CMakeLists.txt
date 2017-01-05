@@ -24,6 +24,7 @@ set(
 	libs/core/include/fcppt/algorithm/detail/map_concat.hpp
 	libs/core/include/fcppt/algorithm/detail/map_reserve.hpp
 	libs/core/include/fcppt/algorithm/detail/optimize_map.hpp
+	libs/core/include/fcppt/algorithm/detail/reverse.hpp
 	libs/core/include/fcppt/algorithm/detail/source_size.hpp
 	libs/core/include/fcppt/algorithm/detail/tuple_loop_break.hpp
 	libs/core/include/fcppt/algorithm/detail/vararg_map.hpp
@@ -56,6 +57,7 @@ set(
 	libs/core/include/fcppt/algorithm/remove.hpp
 	libs/core/include/fcppt/algorithm/remove_if.hpp
 	libs/core/include/fcppt/algorithm/repeat.hpp
+	libs/core/include/fcppt/algorithm/reverse.hpp
 	libs/core/include/fcppt/algorithm/sequence_iteration.hpp
 	libs/core/include/fcppt/algorithm/set_difference.hpp
 	libs/core/include/fcppt/algorithm/set_intersection.hpp
@@ -309,9 +311,14 @@ set(
 	libs/core/include/fcppt/container/is_raw_vector.hpp
 	libs/core/include/fcppt/container/is_std_vector.hpp
 	libs/core/include/fcppt/container/make_array.hpp
+	libs/core/include/fcppt/container/make_move_range.hpp
 	libs/core/include/fcppt/container/maybe_back.hpp
 	libs/core/include/fcppt/container/maybe_front.hpp
+	libs/core/include/fcppt/container/move_range_decl.hpp
+	libs/core/include/fcppt/container/move_range_fwd.hpp
+	libs/core/include/fcppt/container/move_range_impl.hpp
 	libs/core/include/fcppt/container/out_of_range.hpp
+	libs/core/include/fcppt/container/pop_back.hpp
 	libs/core/include/fcppt/container/raw_vector.hpp
 	libs/core/include/fcppt/container/raw_vector_decl.hpp
 	libs/core/include/fcppt/container/raw_vector_fwd.hpp
