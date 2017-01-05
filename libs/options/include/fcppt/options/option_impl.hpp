@@ -17,7 +17,6 @@
 #include <fcppt/either/from_optional.hpp>
 #include <fcppt/optional/alternative.hpp>
 #include <fcppt/optional/bind.hpp>
-#include <fcppt/optional/make.hpp>
 #include <fcppt/optional/map.hpp>
 #include <fcppt/optional/maybe.hpp>
 #include <fcppt/optional/maybe_void.hpp>
@@ -83,8 +82,7 @@ fcppt::options::option<
 {
 	return
 		fcppt::optional::maybe(
-			// TODO: Make a function for this, e.g. a lazy alternative
-			fcppt::optional::maybe(
+			fcppt::optional::alternative(
 				_state.pop_option(
 					fcppt::to_std_string(
 						long_name_.get()
@@ -116,17 +114,6 @@ fcppt::options::option<
 										}
 									);
 							}
-						);
-				},
-				[](
-					std::string &&_value
-				)
-				{
-					return
-						fcppt::optional::make(
-							std::move(
-								_value
-							)
 						);
 				}
 			),
