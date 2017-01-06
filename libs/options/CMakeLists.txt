@@ -25,6 +25,9 @@ set(
 	libs/options/include/fcppt/options/parse_result_fwd.hpp
 	libs/options/include/fcppt/options/parse_result_impl.hpp
 	libs/options/include/fcppt/options/parse_with_leftover.hpp
+	libs/options/include/fcppt/options/product_decl.hpp
+	libs/options/include/fcppt/options/product_fwd.hpp
+	libs/options/include/fcppt/options/product_impl.hpp
 	libs/options/include/fcppt/options/result.hpp
 	libs/options/include/fcppt/options/result_fwd.hpp
 	libs/options/include/fcppt/options/short_name.hpp

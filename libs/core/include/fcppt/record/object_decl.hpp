@@ -203,6 +203,20 @@ public:
 	> const &
 	get() const;
 
+	/**
+	\brief Gets an element.
+
+	\see fcppt::record::get.
+	*/
+	template<
+		typename Label
+	>
+	fcppt::record::label_value_type<
+		this_type,
+		Label
+	> &
+	get();
+
 	tuple const &
 	impl() const;
 private:

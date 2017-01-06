@@ -21,10 +21,32 @@
 	</ul>
 </li>
 
+<li>\ref fcpptmpl
+	<ul>
+	<li>Added \link fcppt::mpl::set_intersection\endlink.</li>
+	</ul>
+</li>
+
 <li>\ref fcpptoptional
 	<ul>
 	<li>Added \link fcppt::optional::make_if\endlink.</li>
 	<li>Added \link fcppt::optional::nothing\endlink.</li>
+	</ul>
+</li>
+
+<li>\ref fcpptrecord
+	<ul>
+	<li>Added \link fcppt::record::label_set\endlink and \link fcppt::record::label_set_tpl\endlink.</li>
+	<li>Added \link fcppt::record::are_disjoint\endlink.</li>
+	<li>Added \link fcppt::record::disjoint_product\endlink and \link fcppt::record::disjoint_product_tpl\endlink.</li>
+	<li>Added \link fcppt::record::multiply_disjoint\endlink.</li>
+	<li>Added nonconst \link fcppt::record::get\endlink and \link fcppt::record::object::get\endlink.</li>
+	</ul>
+</li>
+
+<li>\ref fcpptvarious
+	<ul>
+	<li>Added \link fcppt::args_from_second\endlink.</li>
 	</ul>
 </li>
 
@@ -37,12 +59,6 @@
 <li>\ref fcpptoptional
 	<ul>
 	<li>\link fcppt::optional::alternative\endlink now evaluates its second argument only if the first is nothing.</li>
-	</ul>
-</li>
-
-<li>\ref fcpptvarious
-	<ul>
-	<li>Added \link fcppt::args_from_second\endlink.</li>
 	</ul>
 </li>
 

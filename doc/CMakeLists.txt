@@ -945,6 +945,7 @@ set(
 	libs/core/include/fcppt/mpl/partial_sums.hpp
 	libs/core/include/fcppt/mpl/print.hpp
 	libs/core/include/fcppt/mpl/runtime_index.hpp
+	libs/core/include/fcppt/mpl/set_intersection.hpp
 	libs/core/include/fcppt/mpl/value_type.hpp
 	libs/core/include/fcppt/narrow.hpp
 	libs/core/include/fcppt/no_init.hpp
@@ -1067,6 +1068,7 @@ set(
 	libs/core/include/fcppt/range_hash_decl.hpp
 	libs/core/include/fcppt/range_hash_fwd.hpp
 	libs/core/include/fcppt/range_hash_impl.hpp
+	libs/core/include/fcppt/record/are_disjoint.hpp
 	libs/core/include/fcppt/record/comparison.hpp
 	libs/core/include/fcppt/record/detail/all_initializers.hpp
 	libs/core/include/fcppt/record/detail/contains_initializer.hpp
@@ -1075,11 +1077,14 @@ set(
 	libs/core/include/fcppt/record/detail/element_init_impl.hpp
 	libs/core/include/fcppt/record/detail/find_element.hpp
 	libs/core/include/fcppt/record/detail/find_element_deref.hpp
+	libs/core/include/fcppt/record/detail/get_either.hpp
 	libs/core/include/fcppt/record/detail/is_tag.hpp
 	libs/core/include/fcppt/record/detail/label_is_same.hpp
 	libs/core/include/fcppt/record/detail/make_tag.hpp
 	libs/core/include/fcppt/record/detail/tag_base.hpp
 	libs/core/include/fcppt/record/detail/tag_name.hpp
+	libs/core/include/fcppt/record/disjoint_product.hpp
+	libs/core/include/fcppt/record/disjoint_product_tpl.hpp
 	libs/core/include/fcppt/record/element.hpp
 	libs/core/include/fcppt/record/element_fwd.hpp
 	libs/core/include/fcppt/record/element_to_label.hpp
@@ -1096,11 +1101,14 @@ set(
 	libs/core/include/fcppt/record/label_fwd.hpp
 	libs/core/include/fcppt/record/label_impl.hpp
 	libs/core/include/fcppt/record/label_name.hpp
+	libs/core/include/fcppt/record/label_set.hpp
+	libs/core/include/fcppt/record/label_set_tpl.hpp
 	libs/core/include/fcppt/record/label_value_type.hpp
 	libs/core/include/fcppt/record/make_label.hpp
 	libs/core/include/fcppt/record/make_label_arg.hpp
 	libs/core/include/fcppt/record/make_label_arg_fwd.hpp
 	libs/core/include/fcppt/record/make_label_fwd.hpp
+	libs/core/include/fcppt/record/multiply_disjoint.hpp
 	libs/core/include/fcppt/record/object.hpp
 	libs/core/include/fcppt/record/object_decl.hpp
 	libs/core/include/fcppt/record/object_fwd.hpp

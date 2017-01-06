@@ -296,6 +296,7 @@ fcppt::record::object<
 		_value;
 }
 
+// TODO: Simplify this
 template<
 	typename Types
 >
@@ -343,6 +344,37 @@ fcppt::record::label_value_type<
 fcppt::record::object<
 	Types
 >::get() const
+{
+	return
+		boost::fusion::at<
+			fcppt::mpl::index_of_iterator<
+				all_types,
+				fcppt::record::detail::find_element<
+					all_types,
+					Role
+				>
+			>
+		>(
+			elements_
+		);
+}
+
+// TODO: Simplify this
+template<
+	typename Types
+>
+template<
+	typename Role
+>
+fcppt::record::label_value_type<
+	fcppt::record::object<
+		Types
+	>,
+	Role
+> &
+fcppt::record::object<
+	Types
+>::get()
 {
 	return
 		boost::fusion::at<

@@ -46,6 +46,36 @@ get(
 		>();
 }
 
+/**
+\brief Gets an element from a record
+
+\ingroup fcpptrecord
+
+Returns the element identified by \a Label from \a _arg.
+*/
+template<
+	typename Label,
+	typename Types
+>
+inline
+fcppt::record::label_value_type<
+	fcppt::record::object<
+		Types
+	>,
+	Label
+> &
+get(
+	fcppt::record::object<
+		Types
+	> &_arg
+)
+{
+	return
+		_arg. template get<
+			Label
+		>();
+}
+
 }
 }
 

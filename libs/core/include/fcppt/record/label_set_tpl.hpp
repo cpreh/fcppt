@@ -4,55 +4,60 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_MPL_APPEND_HPP_INCLUDED
-#define FCPPT_MPL_APPEND_HPP_INCLUDED
+#ifndef FCPPT_RECORD_LABEL_SET_TPL_HPP_INCLUDED
+#define FCPPT_RECORD_LABEL_SET_TPL_HPP_INCLUDED
 
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
+#include <fcppt/record/element_to_label_tpl.hpp>
+#include <fcppt/record/is_object.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/mpl/fold.hpp>
+#include <boost/mpl/insert.hpp>
 #include <boost/mpl/placeholders.hpp>
-#include <boost/mpl/push_back.hpp>
+#include <boost/mpl/set/set10.hpp>
 #include <fcppt/config/external_end.hpp>
 
 
 namespace fcppt
 {
-namespace mpl
+namespace record
 {
 
 FCPPT_PP_PUSH_WARNING
 FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
 
 /**
-\brief Appends two MPL sequences
+\brief A metafunction computing the set of labels of a record
 
-\ingroup fcpptmpl
+\ingroup fcpptrecord
 
-Appends \a Sequence2 to \a Sequence1
-
-\snippet mpl/various.cpp mpl_append
-
-\tparam Sequence1 The MPL sequence to append to
-
-\tparam Sequence2 The MPL sequence to append
+\tparam Record Must be an \link fcppt::record::object\endlink.
 */
 template<
-	typename Sequence1,
-	typename Sequence2
+	typename Record
 >
-struct append
+struct label_set_tpl
 :
 boost::mpl::fold<
-	Sequence2,
-	Sequence1,
-	boost::mpl::push_back<
+	typename
+	Record::all_types,
+	boost::mpl::set0<>,
+	boost::mpl::insert<
 		boost::mpl::_1,
-		boost::mpl::_2
+		fcppt::record::element_to_label_tpl<
+			boost::mpl::_2
+		>
 	>
 >
 {
+	static_assert(
+		fcppt::record::is_object<
+			Record
+		>::value,
+		"Record must be an fcppt::record::object"
+	);
 };
 
 FCPPT_PP_POP_WARNING

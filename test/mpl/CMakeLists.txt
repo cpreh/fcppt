@@ -37,3 +37,8 @@ add_fcppt_mpl_test(
 	numeric_max
 	NO_CODE
 )
+
+add_fcppt_mpl_test(
+	set_intersection
+	NO_CODE
+)

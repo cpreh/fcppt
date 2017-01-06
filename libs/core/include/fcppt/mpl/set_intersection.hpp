@@ -4,17 +4,21 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_MPL_APPEND_HPP_INCLUDED
-#define FCPPT_MPL_APPEND_HPP_INCLUDED
+#ifndef FCPPT_MPL_SET_INTERSECTION_HPP_INCLUDED
+#define FCPPT_MPL_SET_INTERSECTION_HPP_INCLUDED
 
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/mpl/fold.hpp>
+#include <boost/mpl/copy_if.hpp>
+#include <boost/mpl/has_key.hpp>
+#include <boost/mpl/insert.hpp>
+#include <boost/mpl/inserter.hpp>
 #include <boost/mpl/placeholders.hpp>
-#include <boost/mpl/push_back.hpp>
+#include <boost/mpl/set/set10.hpp>
 #include <fcppt/config/external_end.hpp>
+
 
 
 namespace fcppt
@@ -26,30 +30,29 @@ FCPPT_PP_PUSH_WARNING
 FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
 
 /**
-\brief Appends two MPL sequences
+\brief The intersection of two sets
 
-\ingroup fcpptmpl
-
-Appends \a Sequence2 to \a Sequence1
-
-\snippet mpl/various.cpp mpl_append
-
-\tparam Sequence1 The MPL sequence to append to
-
-\tparam Sequence2 The MPL sequence to append
+\tparam Set1 Must be an mpl set
+\tparam Set2 Must be an mpl set
 */
 template<
-	typename Sequence1,
-	typename Sequence2
+	typename Set1,
+	typename Set2
 >
-struct append
+struct set_intersection
 :
-boost::mpl::fold<
-	Sequence2,
-	Sequence1,
-	boost::mpl::push_back<
-		boost::mpl::_1,
-		boost::mpl::_2
+boost::mpl::copy_if<
+	Set1,
+	boost::mpl::has_key<
+		Set2,
+		boost::mpl::_1
+	>,
+	boost::mpl::inserter<
+		boost::mpl::set0<>,
+		boost::mpl::insert<
+			boost::mpl::_1,
+			boost::mpl::_2
+		>
 	>
 >
 {

@@ -6,10 +6,10 @@
 
 #include <fcppt/assert_complete.hpp>
 
-//! [assert_complete]
 namespace
 {
 
+//! [assert_complete]
 template<
 	typename T
 >

@@ -9,9 +9,28 @@ function(
 endfunction()
 
 add_fcppt_record_test(
+	are_disjoint
+	NO_CODE
+)
+
+add_fcppt_record_test(
+	disjoint_product
+	NO_CODE
+)
+
+add_fcppt_record_test(
 	init
 	LINK_LIBS
 		"${fcppt_core_TARGET}"
+)
+
+add_fcppt_record_test(
+	multiply_disjoint
+)
+
+add_fcppt_record_test(
+	label_set
+	NO_CODE
 )
 
 add_fcppt_record_test(
