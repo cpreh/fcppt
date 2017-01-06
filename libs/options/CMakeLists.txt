@@ -13,6 +13,7 @@ set(
 	libs/options/include/fcppt/options/has_parameter_set.hpp
 	libs/options/include/fcppt/options/long_name.hpp
 	libs/options/include/fcppt/options/long_name_fwd.hpp
+	libs/options/include/fcppt/options/multiply.hpp
 	libs/options/include/fcppt/options/option.hpp
 	libs/options/include/fcppt/options/option_decl.hpp
 	libs/options/include/fcppt/options/option_fwd.hpp

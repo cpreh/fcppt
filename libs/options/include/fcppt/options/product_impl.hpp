@@ -17,6 +17,9 @@
 #include <fcppt/options/result.hpp>
 #include <fcppt/options/state_fwd.hpp>
 #include <fcppt/record/multiply_disjoint.hpp>
+#include <fcppt/config/external_begin.hpp>
+#include <utility>
+#include <fcppt/config/external_end.hpp>
 
 
 template<
@@ -45,7 +48,11 @@ template<
 	typename Right
 >
 fcppt::options::result<
-	result_type
+	typename
+	fcppt::options::product<
+		Left,
+		Right
+	>::result_type
 >
 fcppt::options::product<
 	Left,
@@ -59,7 +66,10 @@ fcppt::options::product<
 			left_.parse(
 				_state
 			),
-			[](
+			[
+				&_state,
+				this
+			](
 				typename
 				Left::result_type &&_left_result
 			)
@@ -69,15 +79,21 @@ fcppt::options::product<
 						right_.parse(
 							_state
 						),
-						[](
+						[
+							&_left_result
+						](
 							typename
 							Right::result_type &&_right_result
 						)
 						{
 							return
 								fcppt::record::multiply_disjoint(
-									_left_result,
-									_right_result
+									std::move(
+										_left_result
+									),
+									std::move(
+										_right_result
+									)
 								);
 						}
 					);

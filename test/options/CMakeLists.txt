@@ -19,6 +19,12 @@ add_fcppt_options_test(
 )
 
 add_fcppt_options_test(
+	multiply
+	LINK_LIBS
+		${fcppt_core_TARGET}
+)
+
+add_fcppt_options_test(
 	option
 )
 
