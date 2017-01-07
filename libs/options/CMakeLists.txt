@@ -4,6 +4,7 @@ set(
 	libs/options/include/fcppt/options/argument_decl.hpp
 	libs/options/include/fcppt/options/argument_fwd.hpp
 	libs/options/include/fcppt/options/argument_impl.hpp
+	libs/options/include/fcppt/options/detail/multiply.hpp
 	libs/options/include/fcppt/options/error.hpp
 	libs/options/include/fcppt/options/error_fwd.hpp
 	libs/options/include/fcppt/options/flag.hpp

@@ -7,7 +7,7 @@
 #ifndef FCPPT_OPTIONS_MULTIPLY_HPP_INCLUDED
 #define FCPPT_OPTIONS_MULTIPLY_HPP_INCLUDED
 
-#include <fcppt/options/product_impl.hpp>
+#include <fcppt/options/detail/multiply.hpp>
 
 
 namespace fcppt
@@ -16,52 +16,24 @@ namespace options
 {
 
 /**
-\brief The identity of multiplication
-
-\ingroup fcpptoptions
-*/
-template<
-	typename Parser1
->
-inline
-Parser1
-multiply(
-	Parser1 const &_parser1
-)
-{
-	return
-		_parser1;
-}
-
-/**
 \brief Multiplies parsers
 
 \ingroup fcpptoptions
+
+\tparam Parsers Must be at least two parsers.
 */
 template<
-	typename Parser1,
 	typename... Parsers
 >
 inline
 auto
 multiply(
-	Parser1 const &_parser1,
 	Parsers const &..._parsers
 )
 {
 	return
-		fcppt::options::product<
-			Parser1,
-			decltype(
-				fcppt::options::multiply(
-					_parsers...
-				)
-			)
-		>(
-			_parser1,
-			fcppt::options::multiply(
-				_parsers...
-			)
+		fcppt::options::detail::multiply(
+			_parsers...
 		);
 }
 
