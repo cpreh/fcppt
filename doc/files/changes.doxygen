@@ -24,6 +24,9 @@
 <li>\ref fcpptmpl
 	<ul>
 	<li>Added \link fcppt::mpl::set_intersection\endlink.</li>
+	<li>Added \link fcppt::mpl::set_union\endlink.</li>
+	<li>Added \link fcppt::mpl::set_difference\endlink.</li>
+	<li>Added \link fcppt::mpl::set_symmetric_difference\endlink.</li>
 	</ul>
 </li>
 
@@ -41,6 +44,12 @@
 	<li>Added \link fcppt::record::disjoint_product\endlink and \link fcppt::record::disjoint_product_tpl\endlink.</li>
 	<li>Added \link fcppt::record::multiply_disjoint\endlink.</li>
 	<li>Added nonconst \link fcppt::record::get\endlink and \link fcppt::record::object::get\endlink.</li>
+	<li>Added \link fcppt::record::has_label\endlink.</li>
+	<li>Added \link fcppt::record::label_value_type_tpl\endlink.</li>
+	<li>Added \link fcppt::record::are_equivalent\endlink.</li>
+	<li>Added \link fcppt::record::element_map\endlink and \link fcppt::record::element_map_tpl\endlink.</li>
+	<li>Allow <code>==</code> and <code>!=</code> comparison for equivalent records.</li>
+	<li>Added \link fcppt::record::permute\endlink.</li>
 	</ul>
 </li>
 

@@ -11,6 +11,7 @@
 #include <fcppt/use.hpp>
 #include <fcppt/algorithm/all_of.hpp>
 #include <fcppt/algorithm/loop_break_mpl.hpp>
+#include <fcppt/record/are_equivalent.hpp>
 #include <fcppt/record/element_to_label.hpp>
 #include <fcppt/record/get.hpp>
 #include <fcppt/record/object_impl.hpp>
@@ -25,23 +26,39 @@ namespace record
 \brief Compares two records for equality
 
 \ingroup fcpptrecord
+
+\tparam Types1 Must be equivalent to Types2
+\tparam Types2 Must be equivalent to Types1
 */
 template<
-	typename Types
+	typename Types1,
+	typename Types2
 >
 bool
 operator==(
 	fcppt::record::object<
-		Types
+		Types1
 	> const &_record1,
 	fcppt::record::object<
-		Types
+		Types2
 	> const &_record2
 )
 {
+	static_assert(
+		fcppt::record::are_equivalent<
+			fcppt::record::object<
+				Types1
+			>,
+			fcppt::record::object<
+				Types2
+			>
+		>::value,
+		"Both records must be equivalent"
+	);
+
 	return
 		fcppt::algorithm::all_of(
-			Types{},
+			Types1{},
 			[
 				&_record1,
 				&_record2
@@ -83,18 +100,22 @@ operator==(
 \brief Compares two records for inequality
 
 \ingroup fcpptrecord
+
+\tparam Types1 Must be equivalent to Types2
+\tparam Types2 Must be equivalent to Types1
 */
 template<
-	typename Types
+	typename Types1,
+	typename Types2
 >
 inline
 bool
 operator!=(
 	fcppt::record::object<
-		Types
+		Types1
 	> const &_record1,
 	fcppt::record::object<
-		Types
+		Types2
 	> const &_record2
 )
 {

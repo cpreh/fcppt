@@ -14,7 +14,23 @@ add_fcppt_record_test(
 )
 
 add_fcppt_record_test(
+	are_equivalent
+	NO_CODE
+)
+
+add_fcppt_record_test(
+	comparison
+	LINK_LIBS
+		"${fcppt_core_TARGET}"
+)
+
+add_fcppt_record_test(
 	disjoint_product
+	NO_CODE
+)
+
+add_fcppt_record_test(
+	element_map
 	NO_CODE
 )
 
@@ -35,4 +51,8 @@ add_fcppt_record_test(
 
 add_fcppt_record_test(
 	object
+)
+
+add_fcppt_record_test(
+	permute
 )

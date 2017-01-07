@@ -770,7 +770,10 @@ set(
 	libs/core/include/fcppt/mpl/partial_sums.hpp
 	libs/core/include/fcppt/mpl/print.hpp
 	libs/core/include/fcppt/mpl/runtime_index.hpp
+	libs/core/include/fcppt/mpl/set_difference.hpp
 	libs/core/include/fcppt/mpl/set_intersection.hpp
+	libs/core/include/fcppt/mpl/set_symmetric_difference.hpp
+	libs/core/include/fcppt/mpl/set_union.hpp
 	libs/core/include/fcppt/mpl/value_type.hpp
 	libs/core/include/fcppt/narrow.hpp
 	libs/core/include/fcppt/no_init.hpp
@@ -894,6 +897,7 @@ set(
 	libs/core/include/fcppt/range_hash_fwd.hpp
 	libs/core/include/fcppt/range_hash_impl.hpp
 	libs/core/include/fcppt/record/are_disjoint.hpp
+	libs/core/include/fcppt/record/are_equivalent.hpp
 	libs/core/include/fcppt/record/comparison.hpp
 	libs/core/include/fcppt/record/detail/all_initializers.hpp
 	libs/core/include/fcppt/record/detail/contains_initializer.hpp
@@ -913,11 +917,14 @@ set(
 	libs/core/include/fcppt/record/disjoint_product_tpl.hpp
 	libs/core/include/fcppt/record/element.hpp
 	libs/core/include/fcppt/record/element_fwd.hpp
+	libs/core/include/fcppt/record/element_map.hpp
+	libs/core/include/fcppt/record/element_map_tpl.hpp
 	libs/core/include/fcppt/record/element_to_label.hpp
 	libs/core/include/fcppt/record/element_to_label_tpl.hpp
 	libs/core/include/fcppt/record/element_to_type.hpp
 	libs/core/include/fcppt/record/element_to_type_tpl.hpp
 	libs/core/include/fcppt/record/get.hpp
+	libs/core/include/fcppt/record/has_label.hpp
 	libs/core/include/fcppt/record/init.hpp
 	libs/core/include/fcppt/record/is_element.hpp
 	libs/core/include/fcppt/record/is_label.hpp
@@ -930,6 +937,7 @@ set(
 	libs/core/include/fcppt/record/label_set.hpp
 	libs/core/include/fcppt/record/label_set_tpl.hpp
 	libs/core/include/fcppt/record/label_value_type.hpp
+	libs/core/include/fcppt/record/label_value_type_tpl.hpp
 	libs/core/include/fcppt/record/make_label.hpp
 	libs/core/include/fcppt/record/make_label_arg.hpp
 	libs/core/include/fcppt/record/make_label_arg_fwd.hpp
@@ -940,6 +948,7 @@ set(
 	libs/core/include/fcppt/record/object_fwd.hpp
 	libs/core/include/fcppt/record/object_impl.hpp
 	libs/core/include/fcppt/record/output.hpp
+	libs/core/include/fcppt/record/permute.hpp
 	libs/core/include/fcppt/record/set.hpp
 	libs/core/include/fcppt/record/variadic.hpp
 	libs/core/include/fcppt/record/variadic_fwd.hpp

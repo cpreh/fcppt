@@ -14,7 +14,6 @@
 #include <fcppt/record/set.hpp>
 #include <fcppt/record/variadic.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/mpl/vector/vector10.hpp>
 #include <boost/test/unit_test.hpp>
 #include <utility>
 #include <fcppt/config/external_end.hpp>

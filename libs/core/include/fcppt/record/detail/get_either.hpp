@@ -8,8 +8,13 @@
 #define FCPPT_RECORD_DETAIL_GET_EITHER_HPP_INCLUDED
 
 #include <fcppt/move_if.hpp>
-#include <fcppt/record/label_value_type.hpp>
+#include <fcppt/record/label_value_type_tpl.hpp>
 #include <fcppt/record/get.hpp>
+#include <fcppt/record/has_label.hpp>
+#include <fcppt/config/external_begin.hpp>
+#include <boost/utility/enable_if.hpp>
+#include <type_traits>
+#include <fcppt/config/external_end.hpp>
 
 
 namespace fcppt
@@ -27,10 +32,23 @@ template<
 	typename Record2
 >
 inline
-fcppt::record::label_value_type<
-	Record1,
-	Label
->
+typename
+boost::enable_if<
+	fcppt::record::has_label<
+		typename
+		std::decay<
+			Record1
+		>::type,
+		Label
+	>,
+	fcppt::record::label_value_type_tpl<
+		typename
+		std::decay<
+			Record1
+		>::type,
+		Label
+	>
+>::type::type
 get_either(
 	Record1 &_record1,
 	Record2 &
@@ -56,10 +74,23 @@ template<
 	typename Record2
 >
 inline
-fcppt::record::label_value_type<
-	Record2,
-	Label
->
+typename
+boost::enable_if<
+	fcppt::record::has_label<
+		typename
+		std::decay<
+			Record2
+		>::type,
+		Label
+	>,
+	fcppt::record::label_value_type_tpl<
+		typename
+		std::decay<
+			Record2
+		>::type,
+		Label
+	>
+>::type::type
 get_either(
 	Record1 &,
 	Record2 &_record2

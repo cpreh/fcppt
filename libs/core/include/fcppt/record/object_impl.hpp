@@ -77,7 +77,6 @@ fcppt::record::object<
 
 FCPPT_PP_POP_WARNING
 
-
 template<
 	typename Types
 >
@@ -134,12 +133,6 @@ fcppt::record::object<
 						);
 
 						typedef
-						decltype(
-							_fcppt_element
-						)
-						role;
-
-						typedef
 						boost::mpl::vector<
 							typename
 							std::decay<
@@ -156,7 +149,9 @@ fcppt::record::object<
 								vector_type,
 								fcppt::record::detail::label_is_same<
 									fcppt::record::element_to_label<
-										role
+										decltype(
+											_fcppt_element
+										)
 									>,
 									boost::mpl::_1
 								>

@@ -7,8 +7,7 @@
 #ifndef FCPPT_RECORD_LABEL_VALUE_TYPE_HPP_INCLUDED
 #define FCPPT_RECORD_LABEL_VALUE_TYPE_HPP_INCLUDED
 
-#include <fcppt/record/element_to_type.hpp>
-#include <fcppt/record/detail/find_element_deref.hpp>
+#include <fcppt/record/label_value_type_tpl.hpp>
 
 
 namespace fcppt
@@ -29,13 +28,11 @@ template<
 >
 using label_value_type
 =
-fcppt::record::element_to_type<
-	fcppt::record::detail::find_element_deref<
-		typename
-		Record::all_types,
-		Label
-	>
->;
+typename
+fcppt::record::label_value_type_tpl<
+	Record,
+	Label
+>::type;
 
 }
 }

@@ -39,6 +39,21 @@ add_fcppt_mpl_test(
 )
 
 add_fcppt_mpl_test(
+	set_difference
+	NO_CODE
+)
+
+add_fcppt_mpl_test(
 	set_intersection
+	NO_CODE
+)
+
+add_fcppt_mpl_test(
+	set_symmetric_difference
+	NO_CODE
+)
+
+add_fcppt_mpl_test(
+	set_union
 	NO_CODE
 )
