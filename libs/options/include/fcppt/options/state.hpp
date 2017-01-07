@@ -8,11 +8,11 @@
 #define FCPPT_OPTIONS_STATE_HPP_INCLUDED
 
 #include <fcppt/args_vector.hpp>
+#include <fcppt/optional_string_fwd.hpp>
 #include <fcppt/string.hpp>
 #include <fcppt/strong_typedef.hpp>
-#include <fcppt/optional_string_fwd.hpp>
-#include <fcppt/options/detail/symbol.hpp>
 #include <fcppt/options/state_fwd.hpp>
+#include <fcppt/options/detail/symbol.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <map>
 #include <utility>

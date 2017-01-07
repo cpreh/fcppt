@@ -8,8 +8,8 @@
 #define FCPPT_OPTIONS_PRODUCT_DECL_HPP_INCLUDED
 
 #include <fcppt/string.hpp>
-#include <fcppt/options/product_fwd.hpp>
 #include <fcppt/options/has_parameter_set.hpp>
+#include <fcppt/options/product_fwd.hpp>
 #include <fcppt/options/result_fwd.hpp>
 #include <fcppt/options/state_fwd.hpp>
 #include <fcppt/record/disjoint_product.hpp>

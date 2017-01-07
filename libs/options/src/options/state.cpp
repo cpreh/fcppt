@@ -7,14 +7,13 @@
 #include <fcppt/args_vector.hpp>
 #include <fcppt/const.hpp>
 #include <fcppt/optional_string.hpp>
-#include <fcppt/string.hpp>
 #include <fcppt/reference_impl.hpp>
+#include <fcppt/string.hpp>
 #include <fcppt/algorithm/map.hpp>
 #include <fcppt/algorithm/reverse.hpp>
 #include <fcppt/container/find_opt_mapped.hpp>
 #include <fcppt/container/make_move_range.hpp>
 #include <fcppt/container/pop_back.hpp>
-#include <fcppt/optional_string.hpp>
 #include <fcppt/optional/bind.hpp>
 #include <fcppt/optional/from.hpp>
 #include <fcppt/optional/map.hpp>

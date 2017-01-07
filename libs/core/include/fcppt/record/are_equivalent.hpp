@@ -12,8 +12,8 @@
 #include <fcppt/record/element_map.hpp>
 #include <fcppt/record/label_set.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/mpl/at.hpp>
 #include <boost/mpl/and.hpp>
+#include <boost/mpl/at.hpp>
 #include <boost/mpl/empty.hpp>
 #include <boost/mpl/placeholders.hpp>
 #include <type_traits>

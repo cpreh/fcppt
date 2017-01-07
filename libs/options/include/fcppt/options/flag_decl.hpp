@@ -7,8 +7,8 @@
 #ifndef FCPPT_OPTIONS_FLAG_DECL_HPP_INCLUDED
 #define FCPPT_OPTIONS_FLAG_DECL_HPP_INCLUDED
 
-#include <fcppt/strong_typedef.hpp>
 #include <fcppt/string.hpp>
+#include <fcppt/strong_typedef.hpp>
 #include <fcppt/options/flag_fwd.hpp>
 #include <fcppt/options/has_parameter_set.hpp>
 #include <fcppt/options/long_name.hpp>

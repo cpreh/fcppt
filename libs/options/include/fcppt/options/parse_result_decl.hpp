@@ -7,8 +7,8 @@
 #ifndef FCPPT_OPTIONS_PARSE_RESULT_DECL_HPP_INCLUDED
 #define FCPPT_OPTIONS_PARSE_RESULT_DECL_HPP_INCLUDED
 
-#include <fcppt/options/state.hpp>
 #include <fcppt/options/parse_result_fwd.hpp>
+#include <fcppt/options/state.hpp>
 
 
 namespace fcppt

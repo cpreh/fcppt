@@ -9,8 +9,8 @@
 
 #include <fcppt/algorithm/detail/reverse.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <utility>
 #include <type_traits>
+#include <utility>
 #include <fcppt/config/external_end.hpp>
 
 

@@ -5,8 +5,8 @@
 
 
 #include <fcppt/args_vector.hpp>
-#include <fcppt/text.hpp>
 #include <fcppt/optional_string.hpp>
+#include <fcppt/text.hpp>
 #include <fcppt/optional/comparison.hpp>
 #include <fcppt/optional/output.hpp>
 #include <fcppt/options/has_parameter_set.hpp>

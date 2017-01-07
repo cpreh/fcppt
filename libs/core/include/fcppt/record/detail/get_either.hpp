@@ -8,9 +8,9 @@
 #define FCPPT_RECORD_DETAIL_GET_EITHER_HPP_INCLUDED
 
 #include <fcppt/move_if.hpp>
-#include <fcppt/record/label_value_type_tpl.hpp>
 #include <fcppt/record/get.hpp>
 #include <fcppt/record/has_label.hpp>
+#include <fcppt/record/label_value_type_tpl.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/utility/enable_if.hpp>
 #include <type_traits>

@@ -7,13 +7,13 @@
 #ifndef FCPPT_OPTIONS_PRODUCT_IMPL_HPP_INCLUDED
 #define FCPPT_OPTIONS_PRODUCT_IMPL_HPP_INCLUDED
 
-#include <fcppt/text.hpp>
 #include <fcppt/string.hpp>
+#include <fcppt/text.hpp>
 #include <fcppt/algorithm/set_union.hpp>
 #include <fcppt/either/bind.hpp>
 #include <fcppt/either/map.hpp>
-#include <fcppt/options/product_decl.hpp>
 #include <fcppt/options/has_parameter_set.hpp>
+#include <fcppt/options/product_decl.hpp>
 #include <fcppt/options/result.hpp>
 #include <fcppt/options/state_fwd.hpp>
 #include <fcppt/record/multiply_disjoint.hpp>
