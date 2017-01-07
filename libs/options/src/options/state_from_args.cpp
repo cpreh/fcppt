@@ -7,6 +7,8 @@
 #include <fcppt/args_vector.hpp>
 #include <fcppt/make_cref.hpp>
 #include <fcppt/reference_impl.hpp>
+#include <fcppt/string.hpp>
+#include <fcppt/text.hpp>
 #include <fcppt/container/at_optional.hpp>
 #include <fcppt/container/maybe_front.hpp>
 #include <fcppt/optional/comparison.hpp>
@@ -21,7 +23,6 @@
 #include <fcppt/variant/variadic.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <iterator>
-#include <string>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -30,14 +31,14 @@ namespace
 
 typedef
 fcppt::variant::variadic<
-	std::string,
+	fcppt::string,
 	fcppt::options::state::name_pair
 >
 variant;
 
 variant
 get_type(
-	std::string const &_value
+	fcppt::string const &_value
 )
 {
 	return
@@ -48,7 +49,7 @@ get_type(
 		)
 		==
 		fcppt::optional::make(
-			'-'
+			FCPPT_TEXT('-')
 		)
 		?
 			variant{
@@ -60,7 +61,7 @@ get_type(
 				)
 				==
 				fcppt::optional::make(
-					'-'
+					FCPPT_TEXT('-')
 				)
 				?
 					std::make_pair(
@@ -112,7 +113,7 @@ fcppt::options::state_from_args(
 		++it
 	)
 	{
-		std::string const &cur{
+		fcppt::string const &cur{
 			*it
 		};
 
@@ -123,7 +124,7 @@ fcppt::options::state_from_args(
 			[
 				&args
 			](
-				std::string const &_arg
+				fcppt::string const &_arg
 			)
 			{
 				args.push_back(
@@ -173,7 +174,7 @@ fcppt::options::state_from_args(
 							&options
 						](
 							fcppt::reference<
-								std::string const
+								fcppt::string const
 							> const _value
 						)
 						{

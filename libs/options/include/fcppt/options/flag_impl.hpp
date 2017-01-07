@@ -10,7 +10,6 @@
 #include <fcppt/const.hpp>
 #include <fcppt/string.hpp>
 #include <fcppt/text.hpp>
-#include <fcppt/to_std_string.hpp>
 #include <fcppt/either/make_success.hpp>
 #include <fcppt/optional/maybe.hpp>
 #include <fcppt/options/flag_decl.hpp>
@@ -79,9 +78,7 @@ fcppt::options::flag<
 			result_type{
 				Label{} =
 					_state.pop_flag(
-						fcppt::to_std_string(
-							long_name_.get()
-						),
+						long_name_.get(),
 						fcppt::options::state::is_short{
 							false
 						}
@@ -100,9 +97,7 @@ fcppt::options::flag<
 						{
 							return
 								_state.pop_flag(
-									fcppt::to_std_string(
-										_short_name.get()
-									),
+									_short_name.get(),
 									fcppt::options::state::is_short{
 										true
 									}

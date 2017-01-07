@@ -62,6 +62,12 @@
 	</ul>
 </li>
 
+<li>\ref fcpptvarious
+	<ul>
+	<li>\link fcppt::args_vector\endlink now uses \link fcppt::string\endlink instead of <code>std::string</code>.</li>
+	</ul>
+</li>
+
 </ul>
 
 \subsection changes_bugfixes_to_250 Bugfixes

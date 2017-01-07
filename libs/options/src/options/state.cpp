@@ -6,19 +6,20 @@
 
 #include <fcppt/args_vector.hpp>
 #include <fcppt/const.hpp>
+#include <fcppt/optional_string.hpp>
+#include <fcppt/string.hpp>
 #include <fcppt/reference_impl.hpp>
 #include <fcppt/algorithm/map.hpp>
 #include <fcppt/algorithm/reverse.hpp>
 #include <fcppt/container/find_opt_mapped.hpp>
 #include <fcppt/container/make_move_range.hpp>
 #include <fcppt/container/pop_back.hpp>
-#include <fcppt/optional_std_string.hpp>
+#include <fcppt/optional_string.hpp>
 #include <fcppt/optional/bind.hpp>
 #include <fcppt/optional/from.hpp>
 #include <fcppt/optional/map.hpp>
 #include <fcppt/options/state.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <string>
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
@@ -71,7 +72,7 @@ fcppt::options::state::state(
 {
 }
 
-fcppt::optional_std_string
+fcppt::optional_string
 fcppt::options::state::pop_arg()
 {
 	return
@@ -82,7 +83,7 @@ fcppt::options::state::pop_arg()
 
 bool
 fcppt::options::state::pop_flag(
-	std::string const &_name,
+	fcppt::string const &_name,
 	is_short const _is_short
 )
 {
@@ -121,9 +122,9 @@ fcppt::options::state::pop_flag(
 		);
 }
 
-fcppt::optional_std_string
+fcppt::optional_string
 fcppt::options::state::pop_option(
-	std::string const &_name,
+	fcppt::string const &_name,
 	is_short const _is_short
 )
 {

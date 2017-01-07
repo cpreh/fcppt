@@ -7,8 +7,8 @@
 #ifndef FCPPT_OPTIONS_HAS_PARAMETER_SET_HPP_INCLUDED
 #define FCPPT_OPTIONS_HAS_PARAMETER_SET_HPP_INCLUDED
 
+#include <fcppt/string.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <string>
 #include <unordered_set>
 #include <fcppt/config/external_end.hpp>
 
@@ -20,7 +20,7 @@ namespace options
 
 typedef
 std::unordered_set<
-	std::string
+	fcppt::string
 >
 has_parameter_set;
 

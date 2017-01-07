@@ -11,7 +11,6 @@
 #include <fcppt/from_std_string.hpp>
 #include <fcppt/string.hpp>
 #include <fcppt/text.hpp>
-#include <fcppt/to_std_string.hpp>
 #include <fcppt/type_name_from_info.hpp>
 #include <fcppt/either/bind.hpp>
 #include <fcppt/either/from_optional.hpp>
@@ -32,7 +31,6 @@
 #include <fcppt/record/label_name.hpp>
 #include <fcppt/record/variadic.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <string>
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
@@ -84,9 +82,7 @@ fcppt::options::option<
 		fcppt::optional::maybe(
 			fcppt::optional::alternative(
 				_state.pop_option(
-					fcppt::to_std_string(
-						long_name_.get()
-					),
+					long_name_.get(),
 					fcppt::options::state::is_short{
 						false
 					}
@@ -106,9 +102,7 @@ fcppt::options::option<
 							{
 								return
 									_state.pop_option(
-										fcppt::to_std_string(
-											_short_name.get()
-										),
+										_short_name.get(),
 										fcppt::options::state::is_short{
 											true
 										}
@@ -153,7 +147,7 @@ fcppt::options::option<
 					);
 			},
 			[](
-				std::string const &_string
+				fcppt::string const &_string
 			)
 			{
 				return
@@ -184,9 +178,7 @@ fcppt::options::option<
 								fcppt::options::error{
 									FCPPT_TEXT("Failed to convert \"")
 									+
-									fcppt::from_std_string(
-										_string
-									)
+									_string
 									+
 									FCPPT_TEXT("\" to ")
 									+
@@ -220,11 +212,8 @@ fcppt::options::option<
 	Type
 >::parameters() const
 {
-	// TODO: Use fcppt::string?
 	fcppt::options::has_parameter_set result{
-		fcppt::to_std_string(
-			long_name_.get()
-		)
+		long_name_.get()
 	};
 
 	// TODO: Make a function for this?
@@ -237,9 +226,7 @@ fcppt::options::option<
 		)
 		{
 			result.insert(
-				fcppt::to_std_string(
-					_short_name.get()
-				)
+				_short_name.get()
 			);
 		}
 	);

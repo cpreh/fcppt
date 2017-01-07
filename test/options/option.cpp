@@ -5,6 +5,7 @@
 
 
 #include <fcppt/args_vector.hpp>
+#include <fcppt/text.hpp>
 #include <fcppt/either/comparison.hpp>
 #include <fcppt/either/make_success.hpp>
 #include <fcppt/optional/make.hpp>
@@ -60,8 +61,8 @@ FCPPT_PP_POP_WARNING
 		fcppt::options::parse(
 			int_option,
 			fcppt::args_vector{
-				"-f",
-				"42"
+				FCPPT_TEXT("-f"),
+				FCPPT_TEXT("42")
 			}
 		)
 		==
@@ -79,8 +80,8 @@ FCPPT_PP_POP_WARNING
 		fcppt::options::parse(
 			int_option,
 			fcppt::args_vector{
-				"--option",
-				"42"
+				FCPPT_TEXT("--option"),
+				FCPPT_TEXT("42")
 			}
 		)
 		==
@@ -98,8 +99,8 @@ FCPPT_PP_POP_WARNING
 		fcppt::options::parse(
 			int_option,
 			fcppt::args_vector{
-				"-something",
-				"42"
+				FCPPT_TEXT("-something"),
+				FCPPT_TEXT("42")
 			}
 		).has_failure()
 	);
@@ -108,7 +109,7 @@ FCPPT_PP_POP_WARNING
 		fcppt::options::parse(
 			int_option,
 			fcppt::args_vector{
-				"--flag"
+				FCPPT_TEXT("--flag")
 			}
 		).has_failure()
 	);
@@ -133,8 +134,8 @@ FCPPT_PP_POP_WARNING
 		fcppt::options::parse(
 			int_option_with_default,
 			fcppt::args_vector{
-				"-f",
-				"42"
+				FCPPT_TEXT("-f"),
+				FCPPT_TEXT("42")
 			}
 		)
 		==

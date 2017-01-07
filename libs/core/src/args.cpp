@@ -6,6 +6,7 @@
 
 #include <fcppt/args.hpp>
 #include <fcppt/args_vector.hpp>
+#include <fcppt/from_std_string.hpp>
 #include <fcppt/algorithm/map.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/range/iterator_range_core.hpp>
@@ -32,8 +33,10 @@ fcppt::args(
 			)
 			{
 				return
-					std::string(
-						_arg
+					fcppt::from_std_string(
+						std::string(
+							_arg
+						)
 					);
 			}
 		);

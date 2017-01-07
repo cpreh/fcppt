@@ -7,8 +7,8 @@
 #ifndef FCPPT_ARGS_VECTOR_HPP_INCLUDED
 #define FCPPT_ARGS_VECTOR_HPP_INCLUDED
 
+#include <fcppt/string.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <string>
 #include <vector>
 #include <fcppt/config/external_end.hpp>
 
@@ -16,9 +16,14 @@
 namespace fcppt
 {
 
+/**
+\brief A vector of command line arguments
+
+\ingroup fcpptvarious
+*/
 typedef
 std::vector<
-	std::string
+	fcppt::string
 >
 args_vector;
 

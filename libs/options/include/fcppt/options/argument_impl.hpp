@@ -25,7 +25,6 @@
 #include <fcppt/record/label_name.hpp>
 #include <fcppt/record/variadic.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <string>
 #include <typeinfo>
 #include <utility>
 #include <fcppt/config/external_end.hpp>
@@ -84,7 +83,7 @@ fcppt::options::argument<
 				}
 			),
 			[](
-				std::string const &_string
+				fcppt::string const &_string
 			)
 			{
 				return
@@ -115,9 +114,7 @@ fcppt::options::argument<
 								fcppt::options::error{
 									FCPPT_TEXT("Failed to convert \"")
 									+
-									fcppt::from_std_string(
-										_string
-									)
+									_string
 									+
 									FCPPT_TEXT("\" to ")
 									+

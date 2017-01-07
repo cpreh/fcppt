@@ -17,6 +17,10 @@ namespace fcppt
 /**
 \brief Copy main arguments into a container
 
+This function is only useful for command line arguments received in
+<code>main</code>. To handle Windows arguments, see the
+<code>GetCommandLine</code> function.
+
 \ingroup fcpptvarious
 */
 FCPPT_DETAIL_SYMBOL

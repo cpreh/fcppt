@@ -5,12 +5,9 @@
 
 
 #include <fcppt/args_vector.hpp>
-#include <fcppt/strong_typedef_output.hpp>
 #include <fcppt/text.hpp>
 #include <fcppt/either/comparison.hpp>
 #include <fcppt/either/make_success.hpp>
-#include <fcppt/either/output.hpp>
-#include <fcppt/io/cout.hpp>
 #include <fcppt/options/argument.hpp>
 #include <fcppt/options/error.hpp>
 #include <fcppt/options/flag.hpp>
@@ -21,7 +18,6 @@
 #include <fcppt/options/short_name.hpp>
 #include <fcppt/record/comparison.hpp>
 #include <fcppt/record/make_label.hpp>
-#include <fcppt/record/output.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/test/unit_test.hpp>
 #include <fcppt/config/external_end.hpp>
@@ -88,17 +84,11 @@ FCPPT_PP_POP_WARNING
 		fcppt::options::parse(
 			mult_parser,
 			fcppt::args_vector{
-				"--flag",
-				"123"
+				FCPPT_TEXT("--flag"),
+				FCPPT_TEXT("123")
 			}
 		)
 	);
-
-	fcppt::io::cout()
-		<<
-		result
-		<<
-		FCPPT_TEXT('\n');
 
 	BOOST_CHECK(
 		result

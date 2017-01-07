@@ -5,6 +5,7 @@
 
 
 #include <fcppt/args_vector.hpp>
+#include <fcppt/text.hpp>
 #include <fcppt/either/comparison.hpp>
 #include <fcppt/either/make_success.hpp>
 #include <fcppt/options/argument.hpp>
@@ -48,7 +49,7 @@ FCPPT_PP_POP_WARNING
 		fcppt::options::parse(
 			int_arg,
 			fcppt::args_vector{
-				"123"
+				FCPPT_TEXT("123")
 			}
 		)
 		==
@@ -66,7 +67,7 @@ FCPPT_PP_POP_WARNING
 		fcppt::options::parse(
 			int_arg,
 			fcppt::args_vector{
-				"test"
+				FCPPT_TEXT("test")
 			}
 		).has_failure()
 	);
