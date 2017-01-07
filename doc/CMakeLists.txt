@@ -1072,6 +1072,7 @@ set(
 	libs/core/include/fcppt/record/comparison.hpp
 	libs/core/include/fcppt/record/detail/all_initializers.hpp
 	libs/core/include/fcppt/record/detail/contains_initializer.hpp
+	libs/core/include/fcppt/record/detail/element_at.hpp
 	libs/core/include/fcppt/record/detail/element_init_decl.hpp
 	libs/core/include/fcppt/record/detail/element_init_fwd.hpp
 	libs/core/include/fcppt/record/detail/element_init_impl.hpp

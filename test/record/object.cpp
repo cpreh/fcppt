@@ -285,4 +285,20 @@ FCPPT_PP_POP_WARNING
 		).value(),
 		100
 	);
+
+	fcppt::record::get<
+		int_label
+	>(
+		test2
+	) =
+		42;
+
+	BOOST_CHECK_EQUAL(
+		fcppt::record::get<
+			int_label
+		>(
+			test2
+		),
+		42
+	);
 }

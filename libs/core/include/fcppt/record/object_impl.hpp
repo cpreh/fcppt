@@ -18,11 +18,10 @@
 #include <fcppt/record/label_value_type.hpp>
 #include <fcppt/record/object_decl.hpp>
 #include <fcppt/record/detail/all_initializers.hpp>
-#include <fcppt/record/detail/find_element.hpp>
+#include <fcppt/record/detail/element_at.hpp>
 #include <fcppt/record/detail/label_is_same.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/fusion/adapted/mpl.hpp>
-#include <boost/fusion/sequence/intrinsic/at.hpp>
 #include <boost/mpl/empty.hpp>
 #include <boost/mpl/find_if.hpp>
 #include <boost/mpl/placeholders.hpp>
@@ -270,7 +269,7 @@ template<
 	typename Types
 >
 template<
-	typename Role
+	typename Label
 >
 void
 fcppt::record::object<
@@ -278,30 +277,24 @@ fcppt::record::object<
 >::set(
 	fcppt::record::label_value_type<
 		this_type,
-		Role
+		Label
 	> const &_value
 )
 {
-	boost::fusion::at<
-		fcppt::mpl::index_of_iterator<
-			all_types,
-			fcppt::record::detail::find_element<
-				all_types,
-				Role
-			>
-		>
+	fcppt::record::detail::element_at<
+		all_types,
+		Label
 	>(
 		elements_
 	) =
 		_value;
 }
 
-// TODO: Simplify this
 template<
 	typename Types
 >
 template<
-	typename Role
+	typename Label
 >
 void
 fcppt::record::object<
@@ -309,18 +302,13 @@ fcppt::record::object<
 >::set(
 	fcppt::record::label_value_type<
 		this_type,
-		Role
+		Label
 	> &&_value
 )
 {
-	boost::fusion::at<
-		fcppt::mpl::index_of_iterator<
-			all_types,
-			fcppt::record::detail::find_element<
-				all_types,
-				Role
-			>
-		>
+	fcppt::record::detail::element_at<
+		all_types,
+		Label
 	>(
 		elements_
 	) =
@@ -333,58 +321,47 @@ template<
 	typename Types
 >
 template<
-	typename Role
+	typename Label
 >
 fcppt::record::label_value_type<
 	fcppt::record::object<
 		Types
 	>,
-	Role
+	Label
 > const &
 fcppt::record::object<
 	Types
 >::get() const
 {
 	return
-		boost::fusion::at<
-			fcppt::mpl::index_of_iterator<
-				all_types,
-				fcppt::record::detail::find_element<
-					all_types,
-					Role
-				>
-			>
+		fcppt::record::detail::element_at<
+			all_types,
+			Label
 		>(
 			elements_
 		);
 }
 
-// TODO: Simplify this
 template<
 	typename Types
 >
 template<
-	typename Role
+	typename Label
 >
 fcppt::record::label_value_type<
 	fcppt::record::object<
 		Types
 	>,
-	Role
+	Label
 > &
 fcppt::record::object<
 	Types
 >::get()
 {
 	return
-		boost::fusion::at<
-			fcppt::mpl::index_of_iterator<
-				all_types,
-				fcppt::record::detail::find_element<
-					all_types,
-					Role
-				>
-			>
+		fcppt::record::detail::element_at<
+			all_types,
+			Label
 		>(
 			elements_
 		);
