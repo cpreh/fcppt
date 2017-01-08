@@ -148,6 +148,7 @@ set(
 	examples/mpl/various.cpp
 	examples/noncopyable.cpp
 	examples/optional.cpp
+	examples/options/complex.cpp
 	examples/options/simple.cpp
 	examples/output_tm.cpp
 	examples/preprocessor/printing.cpp

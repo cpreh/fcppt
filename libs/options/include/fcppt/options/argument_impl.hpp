@@ -8,7 +8,6 @@
 #define FCPPT_OPTIONS_ARGUMENT_IMPL_HPP_INCLUDED
 
 #include <fcppt/extract_from_string.hpp>
-#include <fcppt/from_std_string.hpp>
 #include <fcppt/string.hpp>
 #include <fcppt/text.hpp>
 #include <fcppt/type_name_from_info.hpp>
@@ -22,7 +21,6 @@
 #include <fcppt/options/result.hpp>
 #include <fcppt/options/state.hpp>
 #include <fcppt/record/element.hpp>
-#include <fcppt/record/label_name.hpp>
 #include <fcppt/record/variadic.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <typeinfo>
@@ -69,20 +67,22 @@ fcppt::options::argument<
 		fcppt::either::bind(
 			fcppt::either::from_optional(
 				_state.pop_arg(),
-				[]{
+				[
+					this
+				]{
 					return
 						fcppt::options::error{
-							FCPPT_TEXT("Missing argument ")
+							FCPPT_TEXT("Missing argument \"")
 							+
-							fcppt::from_std_string(
-								fcppt::record::label_name<
-									Label
-								>()
-							)
+							long_name_.get()
+							+
+							FCPPT_TEXT('"')
 						};
 				}
 			),
-			[](
+			[
+				this
+			](
 				fcppt::string const &_string
 			)
 			{
@@ -108,6 +108,7 @@ fcppt::options::argument<
 							}
 						),
 						[
+							this,
 							&_string
 						]{
 							return
@@ -124,13 +125,11 @@ fcppt::options::argument<
 										)
 									)
 									+
-									FCPPT_TEXT(" for argument ")
+									FCPPT_TEXT(" for argument \"")
 									+
-									fcppt::from_std_string(
-										fcppt::record::label_name<
-											Label
-										>()
-									)
+									long_name_.get()
+									+
+									FCPPT_TEXT('"')
 								};
 						}
 					);

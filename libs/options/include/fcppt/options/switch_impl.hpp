@@ -12,8 +12,8 @@
 #include <fcppt/options/long_name.hpp>
 #include <fcppt/options/optional_short_name.hpp>
 #include <fcppt/options/result.hpp>
-#include <fcppt/options/switch_decl.hpp>
 #include <fcppt/options/state_fwd.hpp>
+#include <fcppt/options/switch_decl.hpp>
 
 
 template<

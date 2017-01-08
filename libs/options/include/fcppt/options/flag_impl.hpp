@@ -8,6 +8,7 @@
 #define FCPPT_OPTIONS_FLAG_IMPL_HPP_INCLUDED
 
 #include <fcppt/const.hpp>
+#include <fcppt/insert_to_fcppt_string.hpp>
 #include <fcppt/string.hpp>
 #include <fcppt/text.hpp>
 #include <fcppt/either/make_success.hpp>
@@ -136,7 +137,6 @@ fcppt::options::flag<
 	Type
 >::usage() const
 {
-	// TODO: Better usage text
 	return
 		FCPPT_TEXT("[ --")
 		+
@@ -159,7 +159,19 @@ fcppt::options::flag<
 			}
 		)
 		+
-		FCPPT_TEXT(" ]");
+		FCPPT_TEXT(" (inactive: ")
+		+
+		fcppt::insert_to_fcppt_string(
+			inactive_value_.get()
+		)
+		+
+		FCPPT_TEXT(", active: ")
+		+
+		fcppt::insert_to_fcppt_string(
+			active_value_.get()
+		)
+		+
+		FCPPT_TEXT(")]");
 }
 
 #endif
