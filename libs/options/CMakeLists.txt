@@ -37,6 +37,10 @@ set(
 	libs/options/include/fcppt/options/state.hpp
 	libs/options/include/fcppt/options/state_from_args.hpp
 	libs/options/include/fcppt/options/state_fwd.hpp
+	libs/options/include/fcppt/options/switch.hpp
+	libs/options/include/fcppt/options/switch_decl.hpp
+	libs/options/include/fcppt/options/switch_fwd.hpp
+	libs/options/include/fcppt/options/switch_impl.hpp
 	libs/options/src/options/state.cpp
 	libs/options/src/options/state_from_args.cpp
 )
