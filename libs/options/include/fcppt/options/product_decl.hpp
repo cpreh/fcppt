@@ -20,13 +20,6 @@ namespace fcppt
 namespace options
 {
 
-/**
-\brief A product of two parsers
-
-\ingroup fcpptoptions
-
-TODO...
-*/
 template<
 	typename Left,
 	typename Right

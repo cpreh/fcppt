@@ -21,6 +21,7 @@
 #include <fcppt/options/result.hpp>
 #include <fcppt/options/short_name.hpp>
 #include <fcppt/options/state.hpp>
+#include <fcppt/options/detail/long_or_short_name.hpp>
 #include <fcppt/record/element.hpp>
 #include <fcppt/record/variadic.hpp>
 
@@ -138,40 +139,26 @@ fcppt::options::flag<
 >::usage() const
 {
 	return
-		FCPPT_TEXT("[ --")
+		FCPPT_TEXT("[ ")
 		+
-		long_name_.get()
-		+
-		fcppt::optional::maybe(
-			short_name_,
-			[]{
-				return
-					fcppt::string();
-			},
-			[](
-				fcppt::options::short_name const &_short_name
-			)
-			{
-				return
-					FCPPT_TEXT(" | -")
-					+
-					_short_name.get();
-			}
+		fcppt::options::detail::long_or_short_name(
+			long_name_,
+			short_name_
 		)
 		+
-		FCPPT_TEXT(" (inactive: ")
-		+
-		fcppt::insert_to_fcppt_string(
-			inactive_value_.get()
-		)
-		+
-		FCPPT_TEXT(", active: ")
+		FCPPT_TEXT('(')
 		+
 		fcppt::insert_to_fcppt_string(
 			active_value_.get()
 		)
 		+
-		FCPPT_TEXT(")]");
+		FCPPT_TEXT(") / ")
+		+
+		fcppt::insert_to_fcppt_string(
+			inactive_value_.get()
+		)
+		+
+		FCPPT_TEXT(" ]");
 }
 
 #endif

@@ -8,7 +8,7 @@
 #define FCPPT_OPTIONS_OPTION_IMPL_HPP_INCLUDED
 
 #include <fcppt/extract_from_string.hpp>
-#include <fcppt/from_std_string.hpp>
+#include <fcppt/insert_to_fcppt_string.hpp>
 #include <fcppt/string.hpp>
 #include <fcppt/text.hpp>
 #include <fcppt/either/bind.hpp>
@@ -27,8 +27,8 @@
 #include <fcppt/options/result.hpp>
 #include <fcppt/options/short_name.hpp>
 #include <fcppt/options/state.hpp>
+#include <fcppt/options/detail/long_or_short_name.hpp>
 #include <fcppt/record/element.hpp>
-#include <fcppt/record/label_name.hpp>
 #include <fcppt/record/variadic.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <utility>
@@ -133,20 +133,20 @@ fcppt::options::option<
 							this
 						]{
 							return
-								// TODO: Include short_name/long_name here
 								fcppt::options::error{
 									FCPPT_TEXT("Missing option ")
 									+
-									fcppt::from_std_string(
-										fcppt::record::label_name<
-											Label
-										>()
+									fcppt::options::detail::long_or_short_name(
+										long_name_,
+										short_name_
 									)
 								};
 						}
 					);
 			},
-			[](
+			[
+				this
+			](
 				fcppt::string const &_string
 			)
 			{
@@ -172,6 +172,7 @@ fcppt::options::option<
 							}
 						),
 						[
+							this,
 							&_string
 						]{
 							return
@@ -188,10 +189,9 @@ fcppt::options::option<
 									+
 									FCPPT_TEXT(" for option ")
 									+
-									fcppt::from_std_string(
-										fcppt::record::label_name<
-											Label
-										>()
+									fcppt::options::detail::long_or_short_name(
+										long_name_,
+										short_name_
 									)
 								};
 						}
@@ -243,15 +243,54 @@ fcppt::options::option<
 	Type
 >::usage() const
 {
-	// TODO: Better usage
 	return
-		long_name_.get()
+		(
+			default_value_.get().has_value()
+			?
+				FCPPT_TEXT("[ ")
+			:
+				FCPPT_TEXT("")
+		)
+		+
+		fcppt::options::detail::long_or_short_name(
+			long_name_,
+			short_name_
+		)
 		+
 		FCPPT_TEXT(" :: ")
 		+
 		fcppt::options::pretty_type<
 			Type
-		>();
+		>()
+		+
+		(
+			fcppt::optional::maybe(
+				default_value_.get(),
+				[]{
+					return
+						fcppt::string{};
+				},
+				[](
+					Type const &_value
+				)
+				{
+					return
+						FCPPT_TEXT(" / ")
+						+
+						fcppt::insert_to_fcppt_string(
+							_value
+						);
+				}
+			)
+		)
+		+
+		(
+			default_value_.get().has_value()
+			?
+				FCPPT_TEXT(" ]")
+			:
+				FCPPT_TEXT("")
+		);
 }
 
 #endif
