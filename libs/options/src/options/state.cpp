@@ -149,3 +149,24 @@ fcppt::options::state::pop_option(
 			}
 		);
 }
+
+fcppt::args_vector const &
+fcppt::options::state::leftover_args() const
+{
+	return
+		args_;
+}
+
+fcppt::options::state::flag_map const &
+fcppt::options::state::leftover_flags() const
+{
+	return
+		flags_;
+}
+
+fcppt::options::state::options_map const &
+fcppt::options::state::leftover_options() const
+{
+	return
+		options_;
+}

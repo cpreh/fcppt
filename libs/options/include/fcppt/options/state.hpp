@@ -81,6 +81,18 @@ public:
 		fcppt::string const &,
 		is_short
 	);
+
+	FCPPT_OPTIONS_DETAIL_SYMBOL
+	fcppt::args_vector const &
+	leftover_args() const;
+
+	FCPPT_OPTIONS_DETAIL_SYMBOL
+	flag_map const &
+	leftover_flags() const;
+
+	FCPPT_OPTIONS_DETAIL_SYMBOL
+	options_map const &
+	leftover_options() const;
 private:
 	fcppt::args_vector args_;
 
