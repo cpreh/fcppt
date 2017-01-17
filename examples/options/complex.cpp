@@ -106,14 +106,6 @@ main(
 		)
 	);
 
-	fcppt::io::cout()
-		<<
-		FCPPT_TEXT("Usage: ")
-		<<
-		parser.usage()
-		<<
-		FCPPT_TEXT('\n');
-
 	return
 		fcppt::either::match(
 			fcppt::options::parse(
@@ -123,11 +115,19 @@ main(
 					argv
 				)
 			),
-			[](
+			[
+				&parser
+			](
 				fcppt::options::error const &_error
 			)
 			{
 				fcppt::io::cerr()
+					<<
+					FCPPT_TEXT("Usage: ")
+					<<
+					parser.usage()
+					<<
+					FCPPT_TEXT('\n')
 					<<
 					_error
 					<<

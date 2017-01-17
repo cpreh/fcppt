@@ -44,14 +44,6 @@ main(
 		}
 	};
 
-	fcppt::io::cout()
-		<<
-		FCPPT_TEXT("Usage: ")
-		<<
-		arg.usage()
-		<<
-		FCPPT_TEXT('\n');
-
 	return
 		fcppt::either::match(
 			fcppt::options::parse(
@@ -61,13 +53,21 @@ main(
 					argv
 				)
 			),
-			[](
+			[
+				&arg
+			](
 				fcppt::options::error const &_error
 			)
 			{
 				fcppt::io::cerr()
 					<<
 					_error
+					<<
+					FCPPT_TEXT('\n')
+					<<
+					FCPPT_TEXT("Usage: ")
+					<<
+					arg.usage()
 					<<
 					FCPPT_TEXT('\n');
 
