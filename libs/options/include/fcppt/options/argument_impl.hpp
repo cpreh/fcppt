@@ -10,7 +10,6 @@
 #include <fcppt/extract_from_string.hpp>
 #include <fcppt/string.hpp>
 #include <fcppt/text.hpp>
-#include <fcppt/type_name_from_info.hpp>
 #include <fcppt/either/bind.hpp>
 #include <fcppt/either/from_optional.hpp>
 #include <fcppt/optional/map.hpp>
@@ -18,12 +17,12 @@
 #include <fcppt/options/error.hpp>
 #include <fcppt/options/has_parameter_set.hpp>
 #include <fcppt/options/long_name.hpp>
+#include <fcppt/options/pretty_type.hpp>
 #include <fcppt/options/result.hpp>
 #include <fcppt/options/state.hpp>
 #include <fcppt/record/element.hpp>
 #include <fcppt/record/variadic.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <typeinfo>
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
@@ -119,11 +118,9 @@ fcppt::options::argument<
 									+
 									FCPPT_TEXT("\" to ")
 									+
-									fcppt::type_name_from_info(
-										typeid(
-											Type
-										)
-									)
+									fcppt::options::pretty_type<
+										Type
+									>()
 									+
 									FCPPT_TEXT(" for argument \"")
 									+
@@ -166,11 +163,9 @@ fcppt::options::argument<
 		+
 		FCPPT_TEXT(" :: ")
 		+
-		fcppt::type_name_from_info(
-			typeid(
-				Type
-			)
-		);
+		fcppt::options::pretty_type<
+			Type
+		>();
 }
 
 #endif

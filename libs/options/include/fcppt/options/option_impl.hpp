@@ -11,7 +11,6 @@
 #include <fcppt/from_std_string.hpp>
 #include <fcppt/string.hpp>
 #include <fcppt/text.hpp>
-#include <fcppt/type_name_from_info.hpp>
 #include <fcppt/either/bind.hpp>
 #include <fcppt/either/from_optional.hpp>
 #include <fcppt/optional/alternative.hpp>
@@ -24,6 +23,7 @@
 #include <fcppt/options/long_name.hpp>
 #include <fcppt/options/option_decl.hpp>
 #include <fcppt/options/optional_short_name.hpp>
+#include <fcppt/options/pretty_type.hpp>
 #include <fcppt/options/result.hpp>
 #include <fcppt/options/short_name.hpp>
 #include <fcppt/options/state.hpp>
@@ -182,11 +182,9 @@ fcppt::options::option<
 									+
 									FCPPT_TEXT("\" to ")
 									+
-									fcppt::type_name_from_info(
-										typeid(
-											Type
-										)
-									)
+									fcppt::options::pretty_type<
+										Type
+									>()
 									+
 									FCPPT_TEXT(" for option ")
 									+
@@ -251,11 +249,9 @@ fcppt::options::option<
 		+
 		FCPPT_TEXT(" :: ")
 		+
-		fcppt::type_name_from_info(
-			typeid(
-				Type
-			)
-		);
+		fcppt::options::pretty_type<
+			Type
+		>();
 }
 
 #endif

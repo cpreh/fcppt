@@ -27,6 +27,8 @@ set(
 	libs/options/include/fcppt/options/parse_result_fwd.hpp
 	libs/options/include/fcppt/options/parse_result_impl.hpp
 	libs/options/include/fcppt/options/parse_with_leftover.hpp
+	libs/options/include/fcppt/options/pretty_type.hpp
+	libs/options/include/fcppt/options/pretty_type_impl.hpp
 	libs/options/include/fcppt/options/product_decl.hpp
 	libs/options/include/fcppt/options/product_fwd.hpp
 	libs/options/include/fcppt/options/product_impl.hpp
@@ -41,6 +43,7 @@ set(
 	libs/options/include/fcppt/options/switch_decl.hpp
 	libs/options/include/fcppt/options/switch_fwd.hpp
 	libs/options/include/fcppt/options/switch_impl.hpp
+	libs/options/src/options/pretty_type_impl.cpp
 	libs/options/src/options/state.cpp
 	libs/options/src/options/state_from_args.cpp
 )
