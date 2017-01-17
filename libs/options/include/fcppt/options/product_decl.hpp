@@ -39,6 +39,11 @@ public:
 		Right const &_right
 	);
 
+	product(
+		Left &&_left,
+		Right &&_right
+	);
+
 	typedef
 	fcppt::record::disjoint_product<
 		typename

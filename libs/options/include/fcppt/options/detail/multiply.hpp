@@ -8,6 +8,10 @@
 #define FCPPT_OPTIONS_DETAIL_MULTIPLY_HPP_INCLUDED
 
 #include <fcppt/options/product_impl.hpp>
+#include <fcppt/config/external_begin.hpp>
+#include <type_traits>
+#include <utility>
+#include <fcppt/config/external_end.hpp>
 
 
 namespace fcppt
@@ -23,11 +27,15 @@ template<
 inline
 Parser1
 multiply(
-	Parser1 const &_parser1
+	Parser1 &&_parser1
 )
 {
 	return
-		_parser1;
+		std::forward<
+			Parser1
+		>(
+			_parser1
+		);
 }
 
 template<
@@ -37,22 +45,37 @@ template<
 inline
 auto
 multiply(
-	Parser1 const &_parser1,
-	Parsers const &..._parsers
+	Parser1 &&_parser1,
+	Parsers &&..._parsers
 )
 {
 	return
 		fcppt::options::product<
-			Parser1,
+			typename
+			std::decay<
+				Parser1
+			>::type,
 			decltype(
 				fcppt::options::detail::multiply(
-					_parsers...
+					std::forward<
+						Parsers
+					>(
+						_parsers
+					)...
 				)
 			)
 		>(
-			_parser1,
+			std::forward<
+				Parser1
+			>(
+				_parser1
+			),
 			fcppt::options::detail::multiply(
-				_parsers...
+				std::forward<
+					Parsers
+				>(
+					_parsers
+				)...
 			)
 		);
 }

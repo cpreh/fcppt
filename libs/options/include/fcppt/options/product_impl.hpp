@@ -47,6 +47,31 @@ template<
 	typename Left,
 	typename Right
 >
+fcppt::options::product<
+	Left,
+	Right
+>::product(
+	Left &&_left,
+	Right &&_right
+)
+:
+	left_(
+		std::move(
+			_left
+		)
+	),
+	right_(
+		std::move(
+			_right
+		)
+	)
+{
+}
+
+template<
+	typename Left,
+	typename Right
+>
 fcppt::options::result<
 	typename
 	fcppt::options::product<

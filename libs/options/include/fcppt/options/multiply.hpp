@@ -8,6 +8,9 @@
 #define FCPPT_OPTIONS_MULTIPLY_HPP_INCLUDED
 
 #include <fcppt/options/detail/multiply.hpp>
+#include <fcppt/config/external_begin.hpp>
+#include <utility>
+#include <fcppt/config/external_end.hpp>
 
 
 namespace fcppt
@@ -28,12 +31,16 @@ template<
 inline
 auto
 multiply(
-	Parsers const &..._parsers
+	Parsers &&..._parsers
 )
 {
 	return
 		fcppt::options::detail::multiply(
-			_parsers...
+			std::forward<
+				Parsers
+			>(
+				_parsers
+			)...
 		);
 }
 

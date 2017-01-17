@@ -49,11 +49,15 @@ public:
 	);
 
 	typedef
+	fcppt::record::element<
+		Label,
+		Type
+	>
+	element_type;
+
+	typedef
 	fcppt::record::variadic<
-		fcppt::record::element<
-			Label,
-			Type
-		>
+		element_type
 	>
 	result_type;
 
