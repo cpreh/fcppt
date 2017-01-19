@@ -16,6 +16,7 @@
 #include <fcppt/options/switch.hpp>
 #include <fcppt/record/comparison.hpp>
 #include <fcppt/record/make_label.hpp>
+#include <fcppt/variant/comparison.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/test/unit_test.hpp>
 #include <fcppt/config/external_end.hpp>
@@ -90,9 +91,7 @@ FCPPT_PP_POP_WARNING
 	BOOST_CHECK(
 		fcppt::options::parse(
 			switch_,
-			fcppt::args_vector{
-				FCPPT_TEXT("-something")
-			}
+			fcppt::args_vector{}
 		)
 		==
 		fcppt::either::make_success<

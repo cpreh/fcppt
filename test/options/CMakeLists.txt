@@ -27,6 +27,10 @@ add_fcppt_options_test(
 )
 
 add_fcppt_options_test(
+	optional
+)
+
+add_fcppt_options_test(
 	state_from_args
 )
 

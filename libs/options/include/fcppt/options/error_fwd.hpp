@@ -7,8 +7,9 @@
 #ifndef FCPPT_OPTIONS_ERROR_FWD_HPP_INCLUDED
 #define FCPPT_OPTIONS_ERROR_FWD_HPP_INCLUDED
 
-#include <fcppt/make_strong_typedef.hpp>
-#include <fcppt/string.hpp>
+#include <fcppt/options/missing_error_fwd.hpp>
+#include <fcppt/options/other_error_fwd.hpp>
+#include <fcppt/variant/variadic_fwd.hpp>
 
 
 namespace fcppt
@@ -16,10 +17,12 @@ namespace fcppt
 namespace options
 {
 
-FCPPT_MAKE_STRONG_TYPEDEF(
-	fcppt::string,
-	error
-);
+typedef
+fcppt::variant::variadic<
+	fcppt::options::missing_error,
+	fcppt::options::other_error
+>
+error;
 
 }
 }

@@ -9,6 +9,7 @@
 
 #include <fcppt/either/bind.hpp>
 #include <fcppt/options/error.hpp>
+#include <fcppt/options/other_error.hpp>
 #include <fcppt/options/parse_result.hpp>
 #include <fcppt/options/parse_with_leftover.hpp>
 #include <fcppt/options/state.hpp>
@@ -79,9 +80,11 @@ parse(
 					:
 						return_type{
 							fcppt::options::error{
-								fcppt::options::detail::leftover_error(
-									state
-								)
+								fcppt::options::other_error{
+									fcppt::options::detail::leftover_error(
+										state
+									)
+								}
 							}
 						}
 					;

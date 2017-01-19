@@ -6,7 +6,6 @@
 
 #include <fcppt/args_from_second.hpp>
 #include <fcppt/string.hpp>
-#include <fcppt/strong_typedef_output.hpp>
 #include <fcppt/text.hpp>
 #include <fcppt/either/match.hpp>
 #include <fcppt/io/cerr.hpp>
@@ -14,6 +13,7 @@
 #include <fcppt/optional/make.hpp>
 #include <fcppt/options/argument.hpp>
 #include <fcppt/options/error.hpp>
+#include <fcppt/options/error_output.hpp>
 #include <fcppt/options/flag.hpp>
 #include <fcppt/options/long_name.hpp>
 #include <fcppt/options/multiply.hpp>

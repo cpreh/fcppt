@@ -17,6 +17,8 @@
 #include <fcppt/options/error.hpp>
 #include <fcppt/options/has_parameter_set.hpp>
 #include <fcppt/options/long_name.hpp>
+#include <fcppt/options/missing_error.hpp>
+#include <fcppt/options/other_error.hpp>
 #include <fcppt/options/pretty_type.hpp>
 #include <fcppt/options/result.hpp>
 #include <fcppt/options/state.hpp>
@@ -71,11 +73,13 @@ fcppt::options::argument<
 				]{
 					return
 						fcppt::options::error{
-							FCPPT_TEXT("Missing argument \"")
-							+
-							long_name_.get()
-							+
-							FCPPT_TEXT('"')
+							fcppt::options::missing_error{
+								FCPPT_TEXT("Missing argument \"")
+								+
+								long_name_.get()
+								+
+								FCPPT_TEXT('"')
+							}
 						};
 				}
 			),
@@ -112,21 +116,23 @@ fcppt::options::argument<
 						]{
 							return
 								fcppt::options::error{
-									FCPPT_TEXT("Failed to convert \"")
-									+
-									_string
-									+
-									FCPPT_TEXT("\" to ")
-									+
-									fcppt::options::pretty_type<
-										Type
-									>()
-									+
-									FCPPT_TEXT(" for argument \"")
-									+
-									long_name_.get()
-									+
-									FCPPT_TEXT('"')
+									fcppt::options::other_error{
+										FCPPT_TEXT("Failed to convert \"")
+										+
+										_string
+										+
+										FCPPT_TEXT("\" to ")
+										+
+										fcppt::options::pretty_type<
+											Type
+										>()
+										+
+										FCPPT_TEXT(" for argument \"")
+										+
+										long_name_.get()
+										+
+										FCPPT_TEXT('"')
+									}
 								};
 						}
 					);

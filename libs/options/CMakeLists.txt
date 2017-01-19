@@ -9,6 +9,7 @@ set(
 	libs/options/include/fcppt/options/detail/multiply.hpp
 	libs/options/include/fcppt/options/error.hpp
 	libs/options/include/fcppt/options/error_fwd.hpp
+	libs/options/include/fcppt/options/error_output.hpp
 	libs/options/include/fcppt/options/flag.hpp
 	libs/options/include/fcppt/options/flag_decl.hpp
 	libs/options/include/fcppt/options/flag_fwd.hpp
@@ -16,13 +17,21 @@ set(
 	libs/options/include/fcppt/options/has_parameter_set.hpp
 	libs/options/include/fcppt/options/long_name.hpp
 	libs/options/include/fcppt/options/long_name_fwd.hpp
+	libs/options/include/fcppt/options/make_optional.hpp
+	libs/options/include/fcppt/options/missing_error.hpp
+	libs/options/include/fcppt/options/missing_error_fwd.hpp
 	libs/options/include/fcppt/options/multiply.hpp
 	libs/options/include/fcppt/options/option.hpp
 	libs/options/include/fcppt/options/option_decl.hpp
 	libs/options/include/fcppt/options/option_fwd.hpp
 	libs/options/include/fcppt/options/option_impl.hpp
+	libs/options/include/fcppt/options/optional_decl.hpp
+	libs/options/include/fcppt/options/optional_fwd.hpp
+	libs/options/include/fcppt/options/optional_impl.hpp
 	libs/options/include/fcppt/options/optional_short_name.hpp
 	libs/options/include/fcppt/options/optional_short_name_fwd.hpp
+	libs/options/include/fcppt/options/other_error.hpp
+	libs/options/include/fcppt/options/other_error_fwd.hpp
 	libs/options/include/fcppt/options/parse.hpp
 	libs/options/include/fcppt/options/parse_result.hpp
 	libs/options/include/fcppt/options/parse_result_decl.hpp

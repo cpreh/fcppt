@@ -21,8 +21,10 @@
 #include <fcppt/options/error.hpp>
 #include <fcppt/options/has_parameter_set.hpp>
 #include <fcppt/options/long_name.hpp>
+#include <fcppt/options/missing_error.hpp>
 #include <fcppt/options/option_decl.hpp>
 #include <fcppt/options/optional_short_name.hpp>
+#include <fcppt/options/other_error.hpp>
 #include <fcppt/options/pretty_type.hpp>
 #include <fcppt/options/result.hpp>
 #include <fcppt/options/short_name.hpp>
@@ -134,12 +136,14 @@ fcppt::options::option<
 						]{
 							return
 								fcppt::options::error{
-									FCPPT_TEXT("Missing option ")
-									+
-									fcppt::options::detail::long_or_short_name(
-										long_name_,
-										short_name_
-									)
+									fcppt::options::missing_error{
+										FCPPT_TEXT("Missing option ")
+										+
+										fcppt::options::detail::long_or_short_name(
+											long_name_,
+											short_name_
+										)
+									}
 								};
 						}
 					);
@@ -177,22 +181,24 @@ fcppt::options::option<
 						]{
 							return
 								fcppt::options::error{
-									FCPPT_TEXT("Failed to convert \"")
-									+
-									_string
-									+
-									FCPPT_TEXT("\" to ")
-									+
-									fcppt::options::pretty_type<
-										Type
-									>()
-									+
-									FCPPT_TEXT(" for option ")
-									+
-									fcppt::options::detail::long_or_short_name(
-										long_name_,
-										short_name_
-									)
+									fcppt::options::other_error{
+										FCPPT_TEXT("Failed to convert \"")
+										+
+										_string
+										+
+										FCPPT_TEXT("\" to ")
+										+
+										fcppt::options::pretty_type<
+											Type
+										>()
+										+
+										FCPPT_TEXT(" for option ")
+										+
+										fcppt::options::detail::long_or_short_name(
+											long_name_,
+											short_name_
+										)
+									}
 								};
 						}
 					);

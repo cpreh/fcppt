@@ -8,12 +8,13 @@
 #include <fcppt/text.hpp>
 #include <fcppt/either/comparison.hpp>
 #include <fcppt/either/make_success.hpp>
+#include <fcppt/optional/comparison.hpp>
+#include <fcppt/optional/make.hpp>
+#include <fcppt/options/argument.hpp>
 #include <fcppt/options/error.hpp>
-#include <fcppt/options/flag.hpp>
 #include <fcppt/options/long_name.hpp>
-#include <fcppt/options/optional_short_name.hpp>
+#include <fcppt/options/make_optional.hpp>
 #include <fcppt/options/parse.hpp>
-#include <fcppt/options/short_name.hpp>
 #include <fcppt/record/comparison.hpp>
 #include <fcppt/record/make_label.hpp>
 #include <fcppt/variant/comparison.hpp>
@@ -26,7 +27,7 @@ FCPPT_PP_PUSH_WARNING
 FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
 
 BOOST_AUTO_TEST_CASE(
-	options_flag
+	options_optional
 )
 {
 FCPPT_PP_POP_WARNING
@@ -36,78 +37,63 @@ FCPPT_PP_POP_WARNING
 	);
 
 	typedef
-	fcppt::options::flag<
+	fcppt::options::argument<
 		arg_label,
 		int
 	>
-	int_flag_type;
+	int_arg_type;
 
-	int_flag_type const int_flag{
-		fcppt::options::optional_short_name{
-			fcppt::options::short_name{
-				FCPPT_TEXT("f")
+	auto const parser{
+		fcppt::options::make_optional(
+			int_arg_type{
+				fcppt::options::long_name{
+					FCPPT_TEXT("arg1")
+				}
 			}
-		},
-		fcppt::options::long_name{
-			FCPPT_TEXT("flag")
-		},
-		int_flag_type::active_value{
-			42
-		},
-		int_flag_type::inactive_value{
-			10
-		}
+		)
 	};
 
 	BOOST_CHECK(
 		fcppt::options::parse(
-			int_flag,
+			parser,
 			fcppt::args_vector{
-				FCPPT_TEXT("-f")
+				FCPPT_TEXT("123")
 			}
 		)
 		==
 		fcppt::either::make_success<
 			fcppt::options::error
 		>(
-			int_flag_type::result_type{
-				arg_label{}
-					= 42
-			}
+			fcppt::optional::make(
+				int_arg_type::result_type{
+					arg_label{}
+						= 123
+				}
+			)
 		)
 	);
 
 	BOOST_CHECK(
 		fcppt::options::parse(
-			int_flag,
+			parser,
 			fcppt::args_vector{
-				FCPPT_TEXT("--flag")
+				FCPPT_TEXT("test")
 			}
-		)
-		==
-		fcppt::either::make_success<
-			fcppt::options::error
-		>(
-			int_flag_type::result_type{
-				arg_label{}
-					= 42
-			}
-		)
+		).has_failure()
 	);
 
 	BOOST_CHECK(
 		fcppt::options::parse(
-			int_flag,
+			parser,
 			fcppt::args_vector{}
 		)
 		==
 		fcppt::either::make_success<
 			fcppt::options::error
 		>(
-			int_flag_type::result_type{
-				arg_label{}
-					= 10
-			}
+			decltype(
+				parser
+			)::result_type{}
 		)
 	);
 }

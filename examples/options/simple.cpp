@@ -5,13 +5,13 @@
 
 
 #include <fcppt/args_from_second.hpp>
-#include <fcppt/strong_typedef_output.hpp>
 #include <fcppt/text.hpp>
 #include <fcppt/either/match.hpp>
 #include <fcppt/io/cerr.hpp>
 #include <fcppt/io/cout.hpp>
 #include <fcppt/options/argument.hpp>
 #include <fcppt/options/error.hpp>
+#include <fcppt/options/error_output.hpp>
 #include <fcppt/options/long_name.hpp>
 #include <fcppt/options/parse.hpp>
 #include <fcppt/record/make_label.hpp>

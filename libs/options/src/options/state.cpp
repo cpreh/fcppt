@@ -7,11 +7,10 @@
 #include <fcppt/args_vector.hpp>
 #include <fcppt/const.hpp>
 #include <fcppt/optional_string.hpp>
-#include <fcppt/reference_impl.hpp>
 #include <fcppt/string.hpp>
 #include <fcppt/algorithm/map.hpp>
 #include <fcppt/algorithm/reverse.hpp>
-#include <fcppt/container/find_opt_mapped.hpp>
+#include <fcppt/container/find_opt_iterator.hpp>
 #include <fcppt/container/make_move_range.hpp>
 #include <fcppt/container/pop_back.hpp>
 #include <fcppt/optional/bind.hpp>
@@ -89,30 +88,46 @@ fcppt::options::state::pop_flag(
 	return
 		fcppt::optional::from(
 			fcppt::optional::map(
-				fcppt::container::find_opt_mapped(
+				fcppt::container::find_opt_iterator(
 					flags_,
 					std::make_pair(
 						_name,
 						_is_short
 					)
 				),
-				[](
-					fcppt::reference<
-						flag_count
-					> const _count
+				[
+					this
+				](
+					flag_map::iterator const _it
 				)
 				{
+					// TODO: This is ugly
+					flag_count &count{
+						_it->second
+					};
+
+					bool const has_flag{
+						count
+						>
+						0u
+					};
+
 					if(
-						_count.get()
+						has_flag
+					)
+						--count;
+
+					if(
+						count
 						==
 						0u
 					)
-						return
-							false;
-					--_count.get();
+						flags_.erase(
+							_it
+						);
 
 					return
-						true;
+						has_flag;
 				}
 			),
 			fcppt::const_(
@@ -129,23 +144,35 @@ fcppt::options::state::pop_option(
 {
 	return
 		fcppt::optional::bind(
-			fcppt::container::find_opt_mapped(
+			fcppt::container::find_opt_iterator(
 				options_,
 				std::make_pair(
 					_name,
 					_is_short
 				)
 			),
-			[](
-				fcppt::reference<
-					fcppt::args_vector
-				> const _args
+			[
+				this
+			](
+				options_map::iterator const _it
 			)
 			{
-				return
+				// TODO: This is ugly
+				auto result{
 					fcppt::container::pop_back(
-						_args.get()
+						_it->second
+					)
+				};
+
+				if(
+					_it->second.empty()
+				)
+					options_.erase(
+						_it
 					);
+
+				return
+					result;
 			}
 		);
 }
