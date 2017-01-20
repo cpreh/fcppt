@@ -10,6 +10,7 @@
 #include <fcppt/either/make_success.hpp>
 #include <fcppt/optional/comparison.hpp>
 #include <fcppt/optional/make.hpp>
+#include <fcppt/optional/nothing.hpp>
 #include <fcppt/options/argument.hpp>
 #include <fcppt/options/error.hpp>
 #include <fcppt/options/long_name.hpp>
@@ -43,8 +44,14 @@ FCPPT_PP_POP_WARNING
 	>
 	int_arg_type;
 
+	FCPPT_RECORD_MAKE_LABEL(
+		optional_label
+	);
+
 	auto const parser{
-		fcppt::options::make_optional(
+		fcppt::options::make_optional<
+			optional_label
+		>(
 			int_arg_type{
 				fcppt::options::long_name{
 					FCPPT_TEXT("arg1")
@@ -52,6 +59,12 @@ FCPPT_PP_POP_WARNING
 			}
 		)
 	};
+
+	typedef
+	decltype(
+		parser
+	)
+	parser_type;
 
 	BOOST_CHECK(
 		fcppt::options::parse(
@@ -64,12 +77,15 @@ FCPPT_PP_POP_WARNING
 		fcppt::either::make_success<
 			fcppt::options::error
 		>(
-			fcppt::optional::make(
-				int_arg_type::result_type{
-					arg_label{}
-						= 123
-				}
-			)
+			parser_type::result_type{
+				optional_label{} =
+					fcppt::optional::make(
+						int_arg_type::result_type{
+							arg_label{}
+								= 123
+						}
+					)
+			}
 		)
 	);
 
@@ -91,9 +107,10 @@ FCPPT_PP_POP_WARNING
 		fcppt::either::make_success<
 			fcppt::options::error
 		>(
-			decltype(
-				parser
-			)::result_type{}
+			parser_type::result_type{
+				optional_label{} =
+					fcppt::optional::nothing{}
+			}
 		)
 	);
 }

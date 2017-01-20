@@ -13,6 +13,8 @@
 #include <fcppt/options/has_parameter_set.hpp>
 #include <fcppt/options/result_fwd.hpp>
 #include <fcppt/options/state_fwd.hpp>
+#include <fcppt/record/element_fwd.hpp>
+#include <fcppt/record/variadic_fwd.hpp>
 
 
 namespace fcppt
@@ -21,6 +23,7 @@ namespace options
 {
 
 template<
+	typename Label,
 	typename Parser
 >
 class optional
@@ -40,6 +43,19 @@ public:
 	fcppt::optional::object<
 		typename
 		Parser::result_type
+	>
+	optional_result_type;
+
+	typedef
+	fcppt::record::element<
+		Label,
+		optional_result_type
+	>
+	element_type;
+
+	typedef
+	fcppt::record::variadic<
+		element_type
 	>
 	result_type;
 

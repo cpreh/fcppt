@@ -20,10 +20,12 @@ namespace options
 {
 
 template<
+	typename Label,
 	typename Parser
 >
 inline
 fcppt::options::optional<
+	Label,
 	typename
 	std::decay<
 		Parser
@@ -35,6 +37,7 @@ make_optional(
 {
 	return
 		fcppt::options::optional<
+			Label,
 			typename
 			std::decay<
 				Parser

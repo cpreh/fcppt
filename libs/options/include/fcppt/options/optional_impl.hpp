@@ -21,6 +21,8 @@
 #include <fcppt/options/has_parameter_set.hpp>
 #include <fcppt/options/result.hpp>
 #include <fcppt/options/state_fwd.hpp>
+#include <fcppt/record/element.hpp>
+#include <fcppt/record/variadic.hpp>
 #include <fcppt/variant/match.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <utility>
@@ -28,9 +30,11 @@
 
 
 template<
+	typename Label,
 	typename Parser
 >
 fcppt::options::optional<
+	Label,
 	Parser
 >::optional(
 	Parser const &_parser
@@ -43,9 +47,11 @@ fcppt::options::optional<
 }
 
 template<
+	typename Label,
 	typename Parser
 >
 fcppt::options::optional<
+	Label,
 	Parser
 >::optional(
 	Parser &&_parser
@@ -60,15 +66,18 @@ fcppt::options::optional<
 }
 
 template<
+	typename Label,
 	typename Parser
 >
 fcppt::options::result<
 	typename
 	fcppt::options::optional<
+		Label,
 		Parser
 	>::result_type
 >
 fcppt::options::optional<
+	Label,
 	Parser
 >::parse(
 	fcppt::options::state &_state
@@ -96,7 +105,10 @@ fcppt::options::optional<
 								fcppt::either::make_success<
 									fcppt::options::error
 								>(
-									result_type{}
+									result_type{
+										Label{} =
+											optional_result_type{}
+									}
 								);
 						},
 						[](
@@ -125,21 +137,26 @@ fcppt::options::optional<
 					fcppt::either::make_success<
 						fcppt::options::error
 					>(
-						fcppt::optional::make(
-							std::move(
-								_result
-							)
-						)
+						result_type{
+							Label{} =
+								fcppt::optional::make(
+									std::move(
+										_result
+									)
+								)
+						}
 					);
 			}
 		);
 }
 
 template<
+	typename Label,
 	typename Parser
 >
 fcppt::options::has_parameter_set
 fcppt::options::optional<
+	Label,
 	Parser
 >::parameters() const
 {
@@ -148,10 +165,12 @@ fcppt::options::optional<
 }
 
 template<
+	typename Label,
 	typename Parser
 >
 fcppt::string
 fcppt::options::optional<
+	Label,
 	Parser
 >::usage() const
 {
