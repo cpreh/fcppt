@@ -197,3 +197,14 @@ fcppt::options::state::leftover_options() const
 	return
 		options_;
 }
+
+bool
+fcppt::options::state::empty() const
+{
+	return
+		this->leftover_args().empty()
+		&&
+		this->leftover_flags().empty()
+		&&
+		this->leftover_options().empty();
+}

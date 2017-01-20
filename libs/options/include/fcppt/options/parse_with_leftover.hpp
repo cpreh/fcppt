@@ -7,6 +7,7 @@
 #ifndef FCPPT_OPTIONS_PARSE_WITH_LEFTOVER_HPP_INCLUDED
 #define FCPPT_OPTIONS_PARSE_WITH_LEFTOVER_HPP_INCLUDED
 
+#include <fcppt/args_vector.hpp>
 #include <fcppt/either/map.hpp>
 #include <fcppt/options/parse_result.hpp>
 #include <fcppt/options/result.hpp>

@@ -4,6 +4,8 @@ set(
 	libs/options/include/fcppt/options/argument_decl.hpp
 	libs/options/include/fcppt/options/argument_fwd.hpp
 	libs/options/include/fcppt/options/argument_impl.hpp
+	libs/options/include/fcppt/options/default_help_switch.hpp
+	libs/options/include/fcppt/options/detail/help_label.hpp
 	libs/options/include/fcppt/options/detail/leftover_error.hpp
 	libs/options/include/fcppt/options/detail/long_or_short_name.hpp
 	libs/options/include/fcppt/options/detail/multiply.hpp
@@ -15,6 +17,12 @@ set(
 	libs/options/include/fcppt/options/flag_fwd.hpp
 	libs/options/include/fcppt/options/flag_impl.hpp
 	libs/options/include/fcppt/options/has_parameter_set.hpp
+	libs/options/include/fcppt/options/help_result.hpp
+	libs/options/include/fcppt/options/help_result_fwd.hpp
+	libs/options/include/fcppt/options/help_switch.hpp
+	libs/options/include/fcppt/options/help_switch_fwd.hpp
+	libs/options/include/fcppt/options/help_text.hpp
+	libs/options/include/fcppt/options/help_text_fwd.hpp
 	libs/options/include/fcppt/options/long_name.hpp
 	libs/options/include/fcppt/options/long_name_fwd.hpp
 	libs/options/include/fcppt/options/make_optional.hpp
@@ -27,12 +35,15 @@ set(
 	libs/options/include/fcppt/options/option_impl.hpp
 	libs/options/include/fcppt/options/optional_decl.hpp
 	libs/options/include/fcppt/options/optional_fwd.hpp
+	libs/options/include/fcppt/options/optional_help_text.hpp
+	libs/options/include/fcppt/options/optional_help_text_fwd.hpp
 	libs/options/include/fcppt/options/optional_impl.hpp
 	libs/options/include/fcppt/options/optional_short_name.hpp
 	libs/options/include/fcppt/options/optional_short_name_fwd.hpp
 	libs/options/include/fcppt/options/other_error.hpp
 	libs/options/include/fcppt/options/other_error_fwd.hpp
 	libs/options/include/fcppt/options/parse.hpp
+	libs/options/include/fcppt/options/parse_help.hpp
 	libs/options/include/fcppt/options/parse_result.hpp
 	libs/options/include/fcppt/options/parse_result_decl.hpp
 	libs/options/include/fcppt/options/parse_result_fwd.hpp
@@ -54,6 +65,7 @@ set(
 	libs/options/include/fcppt/options/switch_decl.hpp
 	libs/options/include/fcppt/options/switch_fwd.hpp
 	libs/options/include/fcppt/options/switch_impl.hpp
+	libs/options/src/options/default_help_switch.cpp
 	libs/options/src/options/detail/leftover_error.cpp
 	libs/options/src/options/detail/long_or_short_name.cpp
 	libs/options/src/options/pretty_type_impl.cpp

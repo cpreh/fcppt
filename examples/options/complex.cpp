@@ -12,17 +12,21 @@
 #include <fcppt/io/cout.hpp>
 #include <fcppt/optional/make.hpp>
 #include <fcppt/options/argument.hpp>
+#include <fcppt/options/default_help_switch.hpp>
 #include <fcppt/options/error.hpp>
 #include <fcppt/options/error_output.hpp>
 #include <fcppt/options/flag.hpp>
+#include <fcppt/options/help_text.hpp>
 #include <fcppt/options/long_name.hpp>
 #include <fcppt/options/multiply.hpp>
 #include <fcppt/options/option.hpp>
 #include <fcppt/options/optional_short_name.hpp>
-#include <fcppt/options/parse.hpp>
+#include <fcppt/options/parse_help.hpp>
 #include <fcppt/options/short_name.hpp>
+#include <fcppt/options/result.hpp>
 #include <fcppt/record/make_label.hpp>
 #include <fcppt/record/output.hpp>
+#include <fcppt/variant/match.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <cstdlib>
 #include <fcppt/config/external_end.hpp>
@@ -106,47 +110,68 @@ main(
 		)
 	);
 
+	typedef
+	decltype(
+		parser
+	)::result_type
+	result_type;
+
 	return
-		fcppt::either::match(
-			fcppt::options::parse(
+		fcppt::variant::match(
+			fcppt::options::parse_help(
+				fcppt::options::default_help_switch(),
 				parser,
 				fcppt::args_from_second(
 					argc,
 					argv
 				)
 			),
-			[
-				&parser
-			](
-				fcppt::options::error const &_error
+			[](
+				fcppt::options::result<
+					result_type
+				> const &_result
 			)
 			{
-				fcppt::io::cerr()
-					<<
-					FCPPT_TEXT("Usage: ")
-					<<
-					parser.usage()
-					<<
-					FCPPT_TEXT('\n')
-					<<
-					_error
-					<<
-					FCPPT_TEXT('\n');
-
 				return
-					EXIT_FAILURE;
+					fcppt::either::match(
+						_result,
+						[](
+							fcppt::options::error const &_error
+						)
+						{
+							fcppt::io::cerr()
+								<<
+								_error
+								<<
+								FCPPT_TEXT('\n');
+
+							return
+								EXIT_FAILURE;
+						},
+						[](
+							result_type const &_options
+						)
+						{
+							fcppt::io::cout()
+								<<
+								FCPPT_TEXT("The result is ")
+								<<
+								_options
+								<<
+								FCPPT_TEXT('\n');
+
+							return
+								EXIT_SUCCESS;
+						}
+					);
 			},
 			[](
-				decltype(
-					parser
-				)::result_type const &_result
+				fcppt::options::help_text const &_help_text
 			)
 			{
 				fcppt::io::cout()
 					<<
-					FCPPT_TEXT("The result is ")
-					<<
-					_result
+					_help_text
 					<<
 					FCPPT_TEXT('\n');
 

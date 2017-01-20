@@ -7,6 +7,7 @@
 #ifndef FCPPT_OPTIONS_PARSE_HPP_INCLUDED
 #define FCPPT_OPTIONS_PARSE_HPP_INCLUDED
 
+#include <fcppt/args_vector.hpp>
 #include <fcppt/either/bind.hpp>
 #include <fcppt/options/error.hpp>
 #include <fcppt/options/other_error.hpp>
@@ -66,11 +67,7 @@ parse(
 				};
 
 				return
-					state.leftover_args().empty()
-					&&
-					state.leftover_flags().empty()
-					&&
-					state.leftover_options().empty()
+					state.empty()
 					?
 						return_type{
 							std::move(

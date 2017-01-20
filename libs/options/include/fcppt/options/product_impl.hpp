@@ -156,7 +156,7 @@ fcppt::options::product<
 	return
 		left_.usage()
 		+
-		FCPPT_TEXT(' ')
+		FCPPT_TEXT('\n')
 		+
 		right_.usage();
 }

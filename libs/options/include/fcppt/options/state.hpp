@@ -93,6 +93,10 @@ public:
 	FCPPT_OPTIONS_DETAIL_SYMBOL
 	options_map const &
 	leftover_options() const;
+
+	FCPPT_OPTIONS_DETAIL_SYMBOL
+	bool
+	empty() const;
 private:
 	fcppt::args_vector args_;
 
