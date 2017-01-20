@@ -175,11 +175,11 @@ fcppt::options::optional<
 >::usage() const
 {
 	return
-		FCPPT_TEXT('[')
+		FCPPT_TEXT("[ ")
 		+
 		parser_.usage()
 		+
-		FCPPT_TEXT(']');
+		FCPPT_TEXT(" ]");
 }
 
 #endif

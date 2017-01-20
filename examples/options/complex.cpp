@@ -11,6 +11,7 @@
 #include <fcppt/io/cerr.hpp>
 #include <fcppt/io/cout.hpp>
 #include <fcppt/optional/make.hpp>
+#include <fcppt/optional/output.hpp>
 #include <fcppt/options/argument.hpp>
 #include <fcppt/options/default_help_switch.hpp>
 #include <fcppt/options/error.hpp>
@@ -18,6 +19,7 @@
 #include <fcppt/options/flag.hpp>
 #include <fcppt/options/help_text.hpp>
 #include <fcppt/options/long_name.hpp>
+#include <fcppt/options/make_optional.hpp>
 #include <fcppt/options/multiply.hpp>
 #include <fcppt/options/option.hpp>
 #include <fcppt/options/optional_help_text.hpp>
@@ -51,6 +53,10 @@ main(
 		option_label
 	);
 
+	FCPPT_RECORD_MAKE_LABEL(
+		arg2_label
+	);
+
 	typedef
 	fcppt::options::argument<
 		arg_label,
@@ -72,6 +78,13 @@ main(
 	>
 	option_type;
 
+	typedef
+	fcppt::options::argument<
+		arg2_label,
+		int
+	>
+	arg2_type;
+
 	auto const parser(
 		fcppt::options::multiply(
 			arg_type{
@@ -84,6 +97,20 @@ main(
 					}
 				}
 			},
+			fcppt::options::make_optional<
+				arg2_label
+			>(
+				arg2_type{
+					fcppt::options::long_name{
+						FCPPT_TEXT("extra arg")
+					},
+					fcppt::options::optional_help_text{
+						fcppt::options::help_text{
+							FCPPT_TEXT("An extra argument")
+						}
+					}
+				}
+			),
 			flag_type{
 				fcppt::options::optional_short_name{},
 				fcppt::options::long_name{
