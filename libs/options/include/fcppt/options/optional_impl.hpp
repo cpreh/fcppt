@@ -15,10 +15,10 @@
 #include <fcppt/optional/make.hpp>
 #include <fcppt/optional/object_impl.hpp>
 #include <fcppt/options/error.hpp>
+#include <fcppt/options/has_parameter_set.hpp>
 #include <fcppt/options/missing_error.hpp>
 #include <fcppt/options/optional_decl.hpp>
 #include <fcppt/options/other_error.hpp>
-#include <fcppt/options/has_parameter_set.hpp>
 #include <fcppt/options/result.hpp>
 #include <fcppt/options/state_fwd.hpp>
 #include <fcppt/record/element.hpp>

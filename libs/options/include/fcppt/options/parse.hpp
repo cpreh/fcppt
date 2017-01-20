@@ -13,8 +13,8 @@
 #include <fcppt/options/other_error.hpp>
 #include <fcppt/options/parse_result.hpp>
 #include <fcppt/options/parse_with_leftover.hpp>
-#include <fcppt/options/state.hpp>
 #include <fcppt/options/result.hpp>
+#include <fcppt/options/state.hpp>
 #include <fcppt/options/detail/leftover_error.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <utility>

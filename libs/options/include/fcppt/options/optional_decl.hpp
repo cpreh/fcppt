@@ -9,8 +9,8 @@
 
 #include <fcppt/string.hpp>
 #include <fcppt/optional/object_fwd.hpp>
-#include <fcppt/options/optional_fwd.hpp>
 #include <fcppt/options/has_parameter_set.hpp>
+#include <fcppt/options/optional_fwd.hpp>
 #include <fcppt/options/result_fwd.hpp>
 #include <fcppt/options/state_fwd.hpp>
 #include <fcppt/record/element_fwd.hpp>

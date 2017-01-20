@@ -23,8 +23,8 @@
 #include <fcppt/options/optional_help_text.hpp>
 #include <fcppt/options/optional_short_name.hpp>
 #include <fcppt/options/parse_help.hpp>
-#include <fcppt/options/short_name.hpp>
 #include <fcppt/options/result.hpp>
+#include <fcppt/options/short_name.hpp>
 #include <fcppt/record/make_label.hpp>
 #include <fcppt/record/output.hpp>
 #include <fcppt/variant/match.hpp>
