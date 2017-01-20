@@ -9,8 +9,9 @@
 
 #include <fcppt/string.hpp>
 #include <fcppt/options/has_parameter_set.hpp>
-#include <fcppt/options/long_name.hpp>
-#include <fcppt/options/optional_short_name.hpp>
+#include <fcppt/options/long_name_fwd.hpp>
+#include <fcppt/options/optional_help_text_fwd.hpp>
+#include <fcppt/options/optional_short_name_fwd.hpp>
 #include <fcppt/options/result.hpp>
 #include <fcppt/options/state_fwd.hpp>
 #include <fcppt/options/switch_decl.hpp>
@@ -23,7 +24,8 @@ fcppt::options::switch_<
 	Label
 >::switch_(
 	fcppt::options::optional_short_name const &_short_name,
-	fcppt::options::long_name const &_long_name
+	fcppt::options::long_name const &_long_name,
+	fcppt::options::optional_help_text const &_help_text
 )
 :
 	impl_{
@@ -36,7 +38,8 @@ fcppt::options::switch_<
 		typename
 		impl::inactive_value{
 			false
-		}
+		},
+		_help_text
 	}
 {
 }

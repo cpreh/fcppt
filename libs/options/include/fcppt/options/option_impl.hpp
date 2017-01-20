@@ -23,13 +23,16 @@
 #include <fcppt/options/long_name.hpp>
 #include <fcppt/options/missing_error.hpp>
 #include <fcppt/options/option_decl.hpp>
+#include <fcppt/options/optional_help_text.hpp>
 #include <fcppt/options/optional_short_name.hpp>
 #include <fcppt/options/other_error.hpp>
 #include <fcppt/options/pretty_type.hpp>
 #include <fcppt/options/result.hpp>
 #include <fcppt/options/short_name.hpp>
 #include <fcppt/options/state.hpp>
+#include <fcppt/options/detail/help_text.hpp>
 #include <fcppt/options/detail/long_or_short_name.hpp>
+#include <fcppt/options/detail/type_annotation.hpp>
 #include <fcppt/record/element.hpp>
 #include <fcppt/record/variadic.hpp>
 #include <fcppt/config/external_begin.hpp>
@@ -47,7 +50,8 @@ fcppt::options::option<
 >::option(
 	fcppt::options::optional_short_name const &_short_name,
 	fcppt::options::long_name const &_long_name,
-	optional_default_value const &_default_value
+	optional_default_value const &_default_value,
+	fcppt::options::optional_help_text const &_help_text
 )
 :
 	short_name_(
@@ -58,7 +62,10 @@ fcppt::options::option<
 	),
 	default_value_(
 		_default_value
-	)
+	),
+	help_text_{
+		_help_text
+	}
 {
 }
 
@@ -263,9 +270,7 @@ fcppt::options::option<
 			short_name_
 		)
 		+
-		FCPPT_TEXT(" :: ")
-		+
-		fcppt::options::pretty_type<
+		fcppt::options::detail::type_annotation<
 			Type
 		>()
 		+
@@ -296,6 +301,10 @@ fcppt::options::option<
 				FCPPT_TEXT(" ]")
 			:
 				FCPPT_TEXT("")
+		)
+		+
+		fcppt::options::detail::help_text(
+			help_text_
 		);
 }
 

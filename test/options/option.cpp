@@ -13,6 +13,7 @@
 #include <fcppt/options/error.hpp>
 #include <fcppt/options/long_name.hpp>
 #include <fcppt/options/option.hpp>
+#include <fcppt/options/optional_help_text.hpp>
 #include <fcppt/options/optional_short_name.hpp>
 #include <fcppt/options/parse.hpp>
 #include <fcppt/options/short_name.hpp>
@@ -55,7 +56,8 @@ FCPPT_PP_POP_WARNING
 		},
 		int_option_type::optional_default_value{
 			fcppt::optional::nothing{}
-		}
+		},
+		fcppt::options::optional_help_text{}
 	};
 
 	BOOST_CHECK(
@@ -128,7 +130,8 @@ FCPPT_PP_POP_WARNING
 			fcppt::optional::make(
 				100
 			)
-		}
+		},
+		fcppt::options::optional_help_text{}
 	};
 
 	BOOST_CHECK(

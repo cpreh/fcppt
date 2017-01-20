@@ -18,10 +18,13 @@
 #include <fcppt/options/has_parameter_set.hpp>
 #include <fcppt/options/long_name.hpp>
 #include <fcppt/options/missing_error.hpp>
+#include <fcppt/options/optional_help_text.hpp>
 #include <fcppt/options/other_error.hpp>
 #include <fcppt/options/pretty_type.hpp>
 #include <fcppt/options/result.hpp>
 #include <fcppt/options/state.hpp>
+#include <fcppt/options/detail/help_text.hpp>
+#include <fcppt/options/detail/type_annotation.hpp>
 #include <fcppt/record/element.hpp>
 #include <fcppt/record/variadic.hpp>
 #include <fcppt/config/external_begin.hpp>
@@ -37,12 +40,16 @@ fcppt::options::argument<
 	Label,
 	Type
 >::argument(
-	fcppt::options::long_name const &_long_name
+	fcppt::options::long_name const &_long_name,
+	fcppt::options::optional_help_text const &_help_text
 )
 :
 	long_name_(
 		_long_name
-	)
+	),
+	help_text_{
+		_help_text
+	}
 {
 }
 
@@ -167,11 +174,13 @@ fcppt::options::argument<
 	return
 		long_name_.get()
 		+
-		FCPPT_TEXT(" :: ")
-		+
-		fcppt::options::pretty_type<
+		fcppt::options::detail::type_annotation<
 			Type
-		>();
+		>()
+		+
+		fcppt::options::detail::help_text(
+			help_text_
+		);
 }
 
 #endif

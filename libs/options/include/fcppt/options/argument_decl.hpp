@@ -11,6 +11,7 @@
 #include <fcppt/options/argument_fwd.hpp>
 #include <fcppt/options/has_parameter_set.hpp>
 #include <fcppt/options/long_name.hpp>
+#include <fcppt/options/optional_help_text.hpp>
 #include <fcppt/options/result_fwd.hpp>
 #include <fcppt/options/state_fwd.hpp>
 #include <fcppt/record/element_fwd.hpp>
@@ -29,9 +30,9 @@ template<
 class argument
 {
 public:
-	explicit
 	argument(
-		fcppt::options::long_name const &
+		fcppt::options::long_name const &,
+		fcppt::options::optional_help_text const &
 	);
 
 	typedef
@@ -61,6 +62,8 @@ public:
 	usage() const;
 private:
 	fcppt::options::long_name long_name_;
+
+	fcppt::options::optional_help_text help_text_;
 };
 
 }

@@ -17,10 +17,12 @@
 #include <fcppt/options/flag_decl.hpp>
 #include <fcppt/options/has_parameter_set.hpp>
 #include <fcppt/options/long_name.hpp>
+#include <fcppt/options/optional_help_text.hpp>
 #include <fcppt/options/optional_short_name.hpp>
 #include <fcppt/options/result.hpp>
 #include <fcppt/options/short_name.hpp>
 #include <fcppt/options/state.hpp>
+#include <fcppt/options/detail/help_text.hpp>
 #include <fcppt/options/detail/long_or_short_name.hpp>
 #include <fcppt/record/element.hpp>
 #include <fcppt/record/variadic.hpp>
@@ -37,7 +39,8 @@ fcppt::options::flag<
 	fcppt::options::optional_short_name const &_short_name,
 	fcppt::options::long_name const &_long_name,
 	active_value const &_active_value,
-	inactive_value const &_inactive_value
+	inactive_value const &_inactive_value,
+	fcppt::options::optional_help_text const &_help_text
 )
 :
 	short_name_{
@@ -51,7 +54,10 @@ fcppt::options::flag<
 	},
 	inactive_value_{
 		_inactive_value
-	}
+	},
+	help_text_(
+		_help_text
+	)
 {
 }
 
@@ -158,7 +164,11 @@ fcppt::options::flag<
 			inactive_value_.get()
 		)
 		+
-		FCPPT_TEXT(" ]");
+		FCPPT_TEXT(" ]")
+		+
+		fcppt::options::detail::help_text(
+			help_text_
+		);
 }
 
 #endif

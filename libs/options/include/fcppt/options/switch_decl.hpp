@@ -10,8 +10,9 @@
 #include <fcppt/string.hpp>
 #include <fcppt/options/flag_impl.hpp>
 #include <fcppt/options/has_parameter_set.hpp>
-#include <fcppt/options/long_name.hpp>
-#include <fcppt/options/optional_short_name.hpp>
+#include <fcppt/options/long_name_fwd.hpp>
+#include <fcppt/options/optional_help_text_fwd.hpp>
+#include <fcppt/options/optional_short_name_fwd.hpp>
 #include <fcppt/options/result_fwd.hpp>
 #include <fcppt/options/state_fwd.hpp>
 #include <fcppt/options/switch_fwd.hpp>
@@ -36,7 +37,8 @@ class switch_
 public:
 	switch_(
 		fcppt::options::optional_short_name const &,
-		fcppt::options::long_name const &
+		fcppt::options::long_name const &,
+		fcppt::options::optional_help_text const &
 	);
 
 	typedef

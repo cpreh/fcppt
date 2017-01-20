@@ -13,6 +13,7 @@
 #include <fcppt/options/has_parameter_set.hpp>
 #include <fcppt/options/long_name.hpp>
 #include <fcppt/options/option_fwd.hpp>
+#include <fcppt/options/optional_help_text.hpp>
 #include <fcppt/options/optional_short_name.hpp>
 #include <fcppt/options/result_fwd.hpp>
 #include <fcppt/options/state_fwd.hpp>
@@ -42,7 +43,8 @@ public:
 	option(
 		fcppt::options::optional_short_name const &,
 		fcppt::options::long_name const &,
-		optional_default_value const &
+		optional_default_value const &,
+		fcppt::options::optional_help_text const &
 	);
 
 	typedef
@@ -76,6 +78,8 @@ private:
 	fcppt::options::long_name long_name_;
 
 	optional_default_value default_value_;
+
+	fcppt::options::optional_help_text help_text_;
 };
 
 }

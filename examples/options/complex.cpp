@@ -20,6 +20,7 @@
 #include <fcppt/options/long_name.hpp>
 #include <fcppt/options/multiply.hpp>
 #include <fcppt/options/option.hpp>
+#include <fcppt/options/optional_help_text.hpp>
 #include <fcppt/options/optional_short_name.hpp>
 #include <fcppt/options/parse_help.hpp>
 #include <fcppt/options/short_name.hpp>
@@ -76,6 +77,11 @@ main(
 			arg_type{
 				fcppt::options::long_name{
 					FCPPT_TEXT("arg")
+				},
+				fcppt::options::optional_help_text{
+					fcppt::options::help_text{
+						FCPPT_TEXT("The main argument")
+					}
 				}
 			},
 			flag_type{
@@ -88,6 +94,11 @@ main(
 				},
 				flag_type::inactive_value{
 					0
+				},
+				fcppt::options::optional_help_text{
+					fcppt::options::help_text{
+						FCPPT_TEXT("Some flag")
+					}
 				}
 			},
 			option_type{
@@ -105,6 +116,11 @@ main(
 							FCPPT_TEXT("default")
 						}
 					)
+				},
+				fcppt::options::optional_help_text{
+					fcppt::options::help_text{
+						FCPPT_TEXT("Some option")
+					}
 				}
 			}
 		)

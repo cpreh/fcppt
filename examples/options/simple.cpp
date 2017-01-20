@@ -13,6 +13,7 @@
 #include <fcppt/options/error.hpp>
 #include <fcppt/options/error_output.hpp>
 #include <fcppt/options/long_name.hpp>
+#include <fcppt/options/optional_help_text.hpp>
 #include <fcppt/options/parse.hpp>
 #include <fcppt/record/make_label.hpp>
 #include <fcppt/record/output.hpp>
@@ -41,7 +42,8 @@ main(
 	arg_type const arg{
 		fcppt::options::long_name{
 			FCPPT_TEXT("arg1")
-		}
+		},
+		fcppt::options::optional_help_text{}
 	};
 
 	return

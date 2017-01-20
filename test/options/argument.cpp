@@ -11,6 +11,7 @@
 #include <fcppt/options/argument.hpp>
 #include <fcppt/options/error.hpp>
 #include <fcppt/options/long_name.hpp>
+#include <fcppt/options/optional_help_text.hpp>
 #include <fcppt/options/parse.hpp>
 #include <fcppt/record/comparison.hpp>
 #include <fcppt/record/make_label.hpp>
@@ -43,7 +44,8 @@ FCPPT_PP_POP_WARNING
 	int_arg_type const int_arg{
 		fcppt::options::long_name{
 			FCPPT_TEXT("arg1")
-		}
+		},
+		fcppt::options::optional_help_text{}
 	};
 
 	BOOST_CHECK(

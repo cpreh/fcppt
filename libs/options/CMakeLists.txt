@@ -6,9 +6,11 @@ set(
 	libs/options/include/fcppt/options/argument_impl.hpp
 	libs/options/include/fcppt/options/default_help_switch.hpp
 	libs/options/include/fcppt/options/detail/help_label.hpp
+	libs/options/include/fcppt/options/detail/help_text.hpp
 	libs/options/include/fcppt/options/detail/leftover_error.hpp
 	libs/options/include/fcppt/options/detail/long_or_short_name.hpp
 	libs/options/include/fcppt/options/detail/multiply.hpp
+	libs/options/include/fcppt/options/detail/type_annotation.hpp
 	libs/options/include/fcppt/options/error.hpp
 	libs/options/include/fcppt/options/error_fwd.hpp
 	libs/options/include/fcppt/options/error_output.hpp
@@ -66,6 +68,7 @@ set(
 	libs/options/include/fcppt/options/switch_fwd.hpp
 	libs/options/include/fcppt/options/switch_impl.hpp
 	libs/options/src/options/default_help_switch.cpp
+	libs/options/src/options/detail/help_text.cpp
 	libs/options/src/options/detail/leftover_error.cpp
 	libs/options/src/options/detail/long_or_short_name.cpp
 	libs/options/src/options/pretty_type_impl.cpp

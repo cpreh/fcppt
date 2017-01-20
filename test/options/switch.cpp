@@ -10,6 +10,7 @@
 #include <fcppt/either/make_success.hpp>
 #include <fcppt/options/error.hpp>
 #include <fcppt/options/long_name.hpp>
+#include <fcppt/options/optional_help_text.hpp>
 #include <fcppt/options/optional_short_name.hpp>
 #include <fcppt/options/parse.hpp>
 #include <fcppt/options/short_name.hpp>
@@ -49,7 +50,8 @@ FCPPT_PP_POP_WARNING
 		},
 		fcppt::options::long_name{
 			FCPPT_TEXT("flag")
-		}
+		},
+		fcppt::options::optional_help_text{}
 	};
 
 	BOOST_CHECK(

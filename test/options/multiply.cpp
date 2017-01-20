@@ -13,6 +13,7 @@
 #include <fcppt/options/flag.hpp>
 #include <fcppt/options/long_name.hpp>
 #include <fcppt/options/multiply.hpp>
+#include <fcppt/options/optional_help_text.hpp>
 #include <fcppt/options/optional_short_name.hpp>
 #include <fcppt/options/parse.hpp>
 #include <fcppt/options/short_name.hpp>
@@ -60,7 +61,8 @@ FCPPT_PP_POP_WARNING
 			int_arg_type{
 				fcppt::options::long_name{
 					FCPPT_TEXT("arg1")
-				}
+				},
+				fcppt::options::optional_help_text{}
 			},
 			int_flag_type{
 				fcppt::options::optional_short_name{
@@ -76,7 +78,8 @@ FCPPT_PP_POP_WARNING
 				},
 				int_flag_type::inactive_value{
 					10
-				}
+				},
+				fcppt::options::optional_help_text{}
 			}
 		)
 	);
