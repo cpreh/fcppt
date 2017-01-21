@@ -79,6 +79,14 @@ multiply_disjoint(
 
 				return
 					fcppt::record::detail::get_either<
+						fcppt::record::element_to_label<
+							decltype(
+								_element
+							)
+						>,
+						Record1,
+						Record2
+					>:: template get<
 						typename
 						std::is_lvalue_reference<
 							Record1
@@ -86,12 +94,7 @@ multiply_disjoint(
 						typename
 						std::is_lvalue_reference<
 							Record2
-						>::type,
-						fcppt::record::element_to_label<
-							decltype(
-								_element
-							)
-						>
+						>::type
 					>(
 						_record1,
 						_record2

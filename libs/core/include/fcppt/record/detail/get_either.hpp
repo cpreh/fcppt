@@ -10,7 +10,7 @@
 #include <fcppt/move_if.hpp>
 #include <fcppt/record/get.hpp>
 #include <fcppt/record/has_label.hpp>
-#include <fcppt/record/label_value_type_tpl.hpp>
+#include <fcppt/record/label_value_type.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/utility/enable_if.hpp>
 #include <type_traits>
@@ -25,88 +25,114 @@ namespace detail
 {
 
 template<
-	typename LeftRef,
-	typename RightRef,
 	typename Label,
 	typename Record1,
-	typename Record2
+	typename Record2,
+	typename Enable = void
 >
-inline
-typename
-boost::enable_if<
-	fcppt::record::has_label<
-		typename
-		std::decay<
-			Record1
-		>::type,
-		Label
-	>,
-	fcppt::record::label_value_type_tpl<
-		typename
-		std::decay<
-			Record1
-		>::type,
-		Label
-	>
->::type::type
-get_either(
-	Record1 &_record1,
-	Record2 &
-)
-{
-	return
-		fcppt::move_if<
-			!LeftRef::value
-		>(
-			fcppt::record::get<
-				Label
-			>(
-				_record1
-			)
-		);
-}
+struct get_either;
 
 template<
-	typename LeftRef,
-	typename RightRef,
 	typename Label,
 	typename Record1,
 	typename Record2
 >
-inline
-typename
-boost::enable_if<
-	fcppt::record::has_label<
+struct get_either<
+	Label,
+	Record1,
+	Record2,
+	typename
+	boost::enable_if<
+		fcppt::record::has_label<
+			typename
+			std::decay<
+				Record1
+			>::type,
+			Label
+		>
+	>::type
+>
+{
+	template<
+		typename LeftRef,
+		typename RightRef
+	>
+	static
+	fcppt::record::label_value_type<
 		typename
 		std::decay<
-			Record2
+			Record1
 		>::type,
 		Label
-	>,
-	fcppt::record::label_value_type_tpl<
+	>
+	get(
+		Record1 &_record1,
+		Record2 &
+	)
+	{
+		return
+			fcppt::move_if<
+				!LeftRef::value
+			>(
+				fcppt::record::get<
+					Label
+				>(
+					_record1
+				)
+			);
+	}
+};
+
+template<
+	typename Label,
+	typename Record1,
+	typename Record2
+>
+struct get_either<
+	Label,
+	Record1,
+	Record2,
+	typename
+	boost::enable_if<
+		fcppt::record::has_label<
+			typename
+			std::decay<
+				Record2
+			>::type,
+			Label
+		>
+	>::type
+>
+{
+	template<
+		typename LeftRef,
+		typename RightRef
+	>
+	static
+	fcppt::record::label_value_type<
 		typename
 		std::decay<
 			Record2
 		>::type,
 		Label
 	>
->::type::type
-get_either(
-	Record1 &,
-	Record2 &_record2
-)
-{
-	return
-		fcppt::move_if<
-			!RightRef::value
-		>(
-			fcppt::record::get<
-				Label
+	get(
+		Record1 &,
+		Record2 &_record2
+	)
+	{
+		return
+			fcppt::move_if<
+				!RightRef::value
 			>(
-				_record2
-			)
-		);
-}
+				fcppt::record::get<
+					Label
+				>(
+					_record2
+				)
+			);
+	}
+};
 
 }
 }
