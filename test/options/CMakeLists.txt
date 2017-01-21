@@ -19,6 +19,10 @@ add_fcppt_options_test(
 )
 
 add_fcppt_options_test(
+	base
+)
+
+add_fcppt_options_test(
 	flag
 )
 

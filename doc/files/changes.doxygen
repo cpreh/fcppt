@@ -37,6 +37,12 @@
 	</ul>
 </li>
 
+<li>\ref fcpptoptions
+	<p>
+	New library for parsing command-line options, similar to Haskell's optparse-applicative.
+	</p>
+</li>
+
 <li>\ref fcpptrecord
 	<ul>
 	<li>Added \link fcppt::record::label_set\endlink and \link fcppt::record::label_set_tpl\endlink.</li>

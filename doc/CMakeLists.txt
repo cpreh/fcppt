@@ -1395,9 +1395,16 @@ set(
 	libs/options/include/fcppt/options/argument_decl.hpp
 	libs/options/include/fcppt/options/argument_fwd.hpp
 	libs/options/include/fcppt/options/argument_impl.hpp
+	libs/options/include/fcppt/options/base_decl.hpp
+	libs/options/include/fcppt/options/base_fwd.hpp
+	libs/options/include/fcppt/options/base_impl.hpp
+	libs/options/include/fcppt/options/base_unique_ptr.hpp
 	libs/options/include/fcppt/options/custom_pretty_type.hpp
 	libs/options/include/fcppt/options/default_help_switch.hpp
 	libs/options/include/fcppt/options/detail/apply.hpp
+	libs/options/include/fcppt/options/detail/concrete_decl.hpp
+	libs/options/include/fcppt/options/detail/concrete_fwd.hpp
+	libs/options/include/fcppt/options/detail/concrete_impl.hpp
 	libs/options/include/fcppt/options/detail/help_label.hpp
 	libs/options/include/fcppt/options/detail/help_text.hpp
 	libs/options/include/fcppt/options/detail/leftover_error.hpp
@@ -1419,6 +1426,7 @@ set(
 	libs/options/include/fcppt/options/help_text_fwd.hpp
 	libs/options/include/fcppt/options/long_name.hpp
 	libs/options/include/fcppt/options/long_name_fwd.hpp
+	libs/options/include/fcppt/options/make_base.hpp
 	libs/options/include/fcppt/options/make_optional.hpp
 	libs/options/include/fcppt/options/missing_error.hpp
 	libs/options/include/fcppt/options/missing_error_fwd.hpp
