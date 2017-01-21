@@ -41,6 +41,15 @@ add_fcppt_record_test(
 )
 
 add_fcppt_record_test(
+	map
+)
+
+add_fcppt_record_test(
+	map_elements
+	NO_CODE
+)
+
+add_fcppt_record_test(
 	multiply_disjoint
 )
 

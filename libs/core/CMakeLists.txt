@@ -911,6 +911,7 @@ set(
 	libs/core/include/fcppt/record/detail/is_tag.hpp
 	libs/core/include/fcppt/record/detail/label_is_same.hpp
 	libs/core/include/fcppt/record/detail/make_tag.hpp
+	libs/core/include/fcppt/record/detail/map_result.hpp
 	libs/core/include/fcppt/record/detail/tag_base.hpp
 	libs/core/include/fcppt/record/detail/tag_name.hpp
 	libs/core/include/fcppt/record/disjoint_product.hpp
@@ -942,6 +943,9 @@ set(
 	libs/core/include/fcppt/record/make_label_arg.hpp
 	libs/core/include/fcppt/record/make_label_arg_fwd.hpp
 	libs/core/include/fcppt/record/make_label_fwd.hpp
+	libs/core/include/fcppt/record/map.hpp
+	libs/core/include/fcppt/record/map_elements.hpp
+	libs/core/include/fcppt/record/map_result.hpp
 	libs/core/include/fcppt/record/multiply_disjoint.hpp
 	libs/core/include/fcppt/record/object.hpp
 	libs/core/include/fcppt/record/object_decl.hpp

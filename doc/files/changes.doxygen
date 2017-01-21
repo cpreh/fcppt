@@ -50,6 +50,7 @@
 	<li>Added \link fcppt::record::element_map\endlink and \link fcppt::record::element_map_tpl\endlink.</li>
 	<li>Allow <code>==</code> and <code>!=</code> comparison for equivalent records.</li>
 	<li>Added \link fcppt::record::permute\endlink.</li>
+	<li>Added \link fcppt::record::map_elements\endlink and \link fcppt::record::map\endlink.</li>
 	</ul>
 </li>
 
