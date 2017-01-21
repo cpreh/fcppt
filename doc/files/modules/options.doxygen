@@ -1,0 +1,25 @@
+/**
+\defgroup fcpptoptions fcppt.options
+\ingroup fcpptmain
+\brief Library for command-line options
+
+<table id="toc">
+<tr>
+<td>
+
+<ul>
+	<li>\ref fcpptoptions_introduction</li>
+</ul>
+
+</td>
+</tr>
+</table>
+
+\section fcpptoptions_introduction Introduction
+*/
+
+namespace fcppt
+{
+/// Library for command-line options
+namespace options{}
+}

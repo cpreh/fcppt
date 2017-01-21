@@ -16,6 +16,11 @@ namespace fcppt
 namespace options
 {
 
+/**
+\brief A string type representing a help text.
+
+\ingroup fcpptoptions
+*/
 FCPPT_MAKE_STRONG_TYPEDEF(
 	fcppt::string,
 	help_text

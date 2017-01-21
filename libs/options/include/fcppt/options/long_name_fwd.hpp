@@ -16,6 +16,14 @@ namespace fcppt
 namespace options
 {
 
+/**
+\brief A string type representing a long name.
+
+\ingroup fcpptoptions
+
+A long name is the name of an argument, e.g. "arg", or the long name of an
+option or flag, e.g. "--foo".
+*/
 FCPPT_MAKE_STRONG_TYPEDEF(
 	fcppt::string,
 	long_name

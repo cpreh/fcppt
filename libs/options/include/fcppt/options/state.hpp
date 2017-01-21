@@ -24,6 +24,13 @@ namespace fcppt
 namespace options
 {
 
+/**
+\brief A parse state.
+
+\ingroup fcpptoptions
+
+A parse state contains a list of unconsumed arguments, flags and options.
+*/
 class state
 {
 public:

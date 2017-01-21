@@ -19,6 +19,18 @@ namespace fcppt
 namespace options
 {
 
+/**
+\brief Turns a parser into an optional parser.
+
+\ingroup fcpptoptions
+
+Normally, a parser can fail, for example in case an argument has not been
+specified. This function turns a parser into a parser that instead of failing
+returns an optional result. \a Label is used to store the optional result in a
+record.
+
+\tparam Label An \link fcppt::record::label\endlink.
+*/
 template<
 	typename Label,
 	typename Parser

@@ -756,6 +756,7 @@ WARN_LOGFILE           =
 INPUT                  = @FCPPT_UTILS_PROJECT_SOURCE_DIR@/libs/core/include \
                          @FCPPT_UTILS_PROJECT_SOURCE_DIR@/libs/filesystem/include \
                          @FCPPT_UTILS_PROJECT_SOURCE_DIR@/libs/log/include \
+                         @FCPPT_UTILS_PROJECT_SOURCE_DIR@/libs/options/include \
                          @FCPPT_UTILS_PROJECT_SOURCE_DIR@/doc/files
 
 # This tag can be used to specify the character encoding of the source files
@@ -1965,7 +1966,8 @@ INCLUDE_FILE_PATTERNS  =
 # This tag requires that the tag ENABLE_PREPROCESSING is set to YES.
 
 PREDEFINED             = "FCPPT_DETAIL_SYMBOL=" \
-                         "FCPPT_CLASS_SYMBOL="
+                         "FCPPT_CLASS_SYMBOL=" \
+                         "FCPPT_MAKE_STRONG_TYPEDEF(T,N)= typedef fcppt::strong_typedef<T,_> N"
 
 # If the MACRO_EXPANSION and EXPAND_ONLY_PREDEF tags are set to YES then this
 # tag can be used to specify a list of macro names that should be expanded. The
@@ -1984,7 +1986,6 @@ EXPAND_AS_DEFINED      = FCPPT_NONCOPYABLE \
                          FCPPT_DETAIL_STRONG_TYPEDEF_POST_INC_DEC_OPERATOR \
                          FCPPT_DETAIL_STRONG_TYPEDEF_PRE_INC_DEC_OPERATOR \
                          FCPPT_DETAIL_STRONG_TYPEDEF_UNARY_OPERATOR \
-                         FCPPT_MAKE_STRONG_TYPEDEF \
                          FCPPT_MATH_DETAIL_MAKE_SYMMETRIC_BINARY_OPERATOR \
                          FCPPT_MATH_DETAIL_MAKE_UNARY_OPERATOR \
                          FCPPT_MATH_DETAIL_MAKE_ASYMMETRIC_BINARY_OPERATOR \

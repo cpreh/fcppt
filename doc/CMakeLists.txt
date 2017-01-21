@@ -76,6 +76,7 @@ set(
 	doc/files/modules/math/vector.doxygen
 	doc/files/modules/mpl.doxygen
 	doc/files/modules/optional.doxygen
+	doc/files/modules/options.doxygen
 	doc/files/modules/preprocessor.doxygen
 	doc/files/modules/random.doxygen
 	doc/files/modules/record.doxygen
@@ -1385,6 +1386,73 @@ set(
 	libs/log/include/fcppt/log/parameters_fwd.hpp
 	libs/log/include/fcppt/log/verbose.hpp
 	libs/log/include/fcppt/log/warning.hpp
+	libs/options/include/fcppt/options/apply.hpp
+	libs/options/include/fcppt/options/argument.hpp
+	libs/options/include/fcppt/options/argument_decl.hpp
+	libs/options/include/fcppt/options/argument_fwd.hpp
+	libs/options/include/fcppt/options/argument_impl.hpp
+	libs/options/include/fcppt/options/custom_pretty_type.hpp
+	libs/options/include/fcppt/options/default_help_switch.hpp
+	libs/options/include/fcppt/options/detail/apply.hpp
+	libs/options/include/fcppt/options/detail/help_label.hpp
+	libs/options/include/fcppt/options/detail/help_text.hpp
+	libs/options/include/fcppt/options/detail/leftover_error.hpp
+	libs/options/include/fcppt/options/detail/long_or_short_name.hpp
+	libs/options/include/fcppt/options/detail/type_annotation.hpp
+	libs/options/include/fcppt/options/error.hpp
+	libs/options/include/fcppt/options/error_fwd.hpp
+	libs/options/include/fcppt/options/error_output.hpp
+	libs/options/include/fcppt/options/flag.hpp
+	libs/options/include/fcppt/options/flag_decl.hpp
+	libs/options/include/fcppt/options/flag_fwd.hpp
+	libs/options/include/fcppt/options/flag_impl.hpp
+	libs/options/include/fcppt/options/has_parameter_set.hpp
+	libs/options/include/fcppt/options/help_result.hpp
+	libs/options/include/fcppt/options/help_result_fwd.hpp
+	libs/options/include/fcppt/options/help_switch.hpp
+	libs/options/include/fcppt/options/help_switch_fwd.hpp
+	libs/options/include/fcppt/options/help_text.hpp
+	libs/options/include/fcppt/options/help_text_fwd.hpp
+	libs/options/include/fcppt/options/long_name.hpp
+	libs/options/include/fcppt/options/long_name_fwd.hpp
+	libs/options/include/fcppt/options/make_optional.hpp
+	libs/options/include/fcppt/options/missing_error.hpp
+	libs/options/include/fcppt/options/missing_error_fwd.hpp
+	libs/options/include/fcppt/options/option.hpp
+	libs/options/include/fcppt/options/option_decl.hpp
+	libs/options/include/fcppt/options/option_fwd.hpp
+	libs/options/include/fcppt/options/option_impl.hpp
+	libs/options/include/fcppt/options/optional_decl.hpp
+	libs/options/include/fcppt/options/optional_fwd.hpp
+	libs/options/include/fcppt/options/optional_help_text.hpp
+	libs/options/include/fcppt/options/optional_help_text_fwd.hpp
+	libs/options/include/fcppt/options/optional_impl.hpp
+	libs/options/include/fcppt/options/optional_short_name.hpp
+	libs/options/include/fcppt/options/optional_short_name_fwd.hpp
+	libs/options/include/fcppt/options/other_error.hpp
+	libs/options/include/fcppt/options/other_error_fwd.hpp
+	libs/options/include/fcppt/options/parse.hpp
+	libs/options/include/fcppt/options/parse_help.hpp
+	libs/options/include/fcppt/options/parse_result.hpp
+	libs/options/include/fcppt/options/parse_result_decl.hpp
+	libs/options/include/fcppt/options/parse_result_fwd.hpp
+	libs/options/include/fcppt/options/parse_result_impl.hpp
+	libs/options/include/fcppt/options/parse_with_leftover.hpp
+	libs/options/include/fcppt/options/pretty_type.hpp
+	libs/options/include/fcppt/options/product_decl.hpp
+	libs/options/include/fcppt/options/product_fwd.hpp
+	libs/options/include/fcppt/options/product_impl.hpp
+	libs/options/include/fcppt/options/result.hpp
+	libs/options/include/fcppt/options/result_fwd.hpp
+	libs/options/include/fcppt/options/short_name.hpp
+	libs/options/include/fcppt/options/short_name_fwd.hpp
+	libs/options/include/fcppt/options/state.hpp
+	libs/options/include/fcppt/options/state_from_args.hpp
+	libs/options/include/fcppt/options/state_fwd.hpp
+	libs/options/include/fcppt/options/switch.hpp
+	libs/options/include/fcppt/options/switch_decl.hpp
+	libs/options/include/fcppt/options/switch_fwd.hpp
+	libs/options/include/fcppt/options/switch_impl.hpp
 )
 
 fcppt_utils_append_source_dir(

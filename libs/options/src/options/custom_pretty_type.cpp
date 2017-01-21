@@ -6,14 +6,14 @@
 
 #include <fcppt/string.hpp>
 #include <fcppt/text.hpp>
-#include <fcppt/options/pretty_type_impl.hpp>
+#include <fcppt/options/custom_pretty_type.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <string>
 #include <fcppt/config/external_end.hpp>
 
 
 fcppt::string
-fcppt::options::pretty_type_impl<
+fcppt::options::custom_pretty_type<
 	std::string
 >::get()
 {
@@ -22,7 +22,7 @@ fcppt::options::pretty_type_impl<
 }
 
 fcppt::string
-fcppt::options::pretty_type_impl<
+fcppt::options::custom_pretty_type<
 	std::wstring
 >::get()
 {

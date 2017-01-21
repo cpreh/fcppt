@@ -26,6 +26,22 @@ namespace fcppt
 namespace options
 {
 
+/**
+\brief An option parser
+
+\ingroup fcpptoptions
+
+An option parser matches the next command-line parameter that <em>follows after</em>
+its short name ("-o") or its long name ("--option"), for example "--output log.txt".
+If there is no such pair of command-line parameters, then the option will use its
+<em>default value</em> if is has one. Otherwise, it will fail.
+The result of an option is a record that has a single element with label \a Label and
+type \a Type. In case reading the value into \a Type fails, the parser also fails.
+
+\tparam Label An \link fcppt::record::label\endlink.
+
+\tparam Type The type of the flag's value.
+*/
 template<
 	typename Label,
 	typename Type
@@ -40,11 +56,22 @@ public:
 		optional_default_value
 	);
 
+	/**
+	\brief Constructs an option parser.
+
+	\param short_name An optional short name ("-o") this parser will match.
+
+	\param long_name The long name ("--option") this parser will match.
+
+	\param default_value An optional default value for this parser.
+
+	\param help_text Optional help text for this flag.
+	*/
 	option(
-		fcppt::options::optional_short_name const &,
-		fcppt::options::long_name const &,
-		optional_default_value const &,
-		fcppt::options::optional_help_text const &
+		fcppt::options::optional_short_name const &short_name,
+		fcppt::options::long_name const &long_name,
+		optional_default_value const &default_value,
+		fcppt::options::optional_help_text const &help_text
 	);
 
 	typedef

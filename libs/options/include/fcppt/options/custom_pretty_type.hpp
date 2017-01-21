@@ -4,8 +4,8 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_OPTIONS_PRETTY_TYPE_IMPL_HPP_INCLUDED
-#define FCPPT_OPTIONS_PRETTY_TYPE_IMPL_HPP_INCLUDED
+#ifndef FCPPT_OPTIONS_CUSTOM_PRETTY_TYPE_HPP_INCLUDED
+#define FCPPT_OPTIONS_CUSTOM_PRETTY_TYPE_HPP_INCLUDED
 
 #include <fcppt/string.hpp>
 #include <fcppt/type_name_from_info.hpp>
@@ -21,10 +21,18 @@ namespace fcppt
 namespace options
 {
 
+/**
+\brief The specialization point for pretty type names.
+
+\ingroup fcpptoptions
+
+Specialize this struct with a static <code>fcppt::string get()</code> method in
+order to override how types are printed.
+*/
 template<
 	typename Type
 >
-struct pretty_type_impl
+struct custom_pretty_type
 {
 	static
 	fcppt::string
@@ -40,7 +48,7 @@ struct pretty_type_impl
 };
 
 template<>
-struct pretty_type_impl<
+struct custom_pretty_type<
 	std::string
 >
 {
@@ -51,7 +59,7 @@ struct pretty_type_impl<
 };
 
 template<>
-struct pretty_type_impl<
+struct custom_pretty_type<
 	std::wstring
 >
 {

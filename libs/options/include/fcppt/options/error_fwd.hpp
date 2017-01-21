@@ -17,6 +17,14 @@ namespace fcppt
 namespace options
 {
 
+/**
+\brief The error type returned by parsers.
+
+\ingroup fcpptoptions
+
+An error can either be caused by a missing argument or option, or by something
+else like a failed conversion.
+*/
 typedef
 fcppt::variant::variadic<
 	fcppt::options::missing_error,

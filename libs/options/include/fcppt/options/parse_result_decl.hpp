@@ -16,6 +16,11 @@ namespace fcppt
 namespace options
 {
 
+/**
+\brief The result of a parse, including the remaining state.
+
+\ingroup fcpptoptions
+*/
 template<
 	typename Result
 >
@@ -30,6 +35,12 @@ public:
 	Result const &
 	value() const;
 
+	/**
+	\brief The remaining state after the parse.
+
+	Each argument, flag and option that has not been consumed by the parse
+	remains in this object.
+	*/
 	fcppt::options::state &
 	remaining_state();
 private:

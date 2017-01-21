@@ -16,6 +16,13 @@ namespace fcppt
 namespace options
 {
 
+/**
+\brief The default help switch.
+
+\ingroup fcpptoptions
+
+The default help switch that use "-h" or "--help".
+*/
 FCPPT_OPTIONS_DETAIL_SYMBOL
 fcppt::options::help_switch
 default_help_switch();

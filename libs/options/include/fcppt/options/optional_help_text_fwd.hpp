@@ -16,6 +16,11 @@ namespace fcppt
 namespace options
 {
 
+/**
+\brief An optional help text.
+
+\ingroup fcpptoptions
+*/
 typedef
 fcppt::optional::object<
 	fcppt::options::help_text

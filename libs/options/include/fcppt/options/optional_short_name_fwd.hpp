@@ -16,6 +16,11 @@ namespace fcppt
 namespace options
 {
 
+/**
+\brief An optional short name.
+
+\ingroup fcpptoptions
+*/
 typedef
 fcppt::optional::object<
 	fcppt::options::short_name

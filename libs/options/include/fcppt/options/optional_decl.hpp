@@ -22,6 +22,19 @@ namespace fcppt
 namespace options
 {
 
+/**
+\brief An optional parser.
+
+\ingroup fcpptoptions
+
+Wraps a parser such that it may fail. The result is stored in a record that has
+a single element with label \a Label that stores
+<code>Parser::result_type</code> as an optional.
+
+\see fcppt::options::make_optional
+
+\tparam Label An \link fcppt::record::label\endlink.
+*/
 template<
 	typename Label,
 	typename Parser

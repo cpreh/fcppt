@@ -23,6 +23,15 @@ namespace fcppt
 namespace options
 {
 
+/**
+\brief A switch parser.
+
+\ingroup fcpptoptions
+
+A switch parser is similar to \link fcppt::options::flag\endlink, but its value
+type is fixed to <code>bool</code>, where its active value is <code>true</code>
+and its inactive value is <code>false</code>.
+*/
 template<
 	typename Label
 >
@@ -35,10 +44,19 @@ class switch_
 	>
 	impl;
 public:
+	/**
+	\brief Constructs a switch parser.
+
+	\param short_name An optional short name ("-f") this parser will match.
+
+	\param long_name The long name ("--flag") this parser will match.
+
+	\param help_text Optional help text for this flag.
+	*/
 	switch_(
-		fcppt::options::optional_short_name const &,
-		fcppt::options::long_name const &,
-		fcppt::options::optional_help_text const &
+		fcppt::options::optional_short_name const &short_name,
+		fcppt::options::long_name const &long_name,
+		fcppt::options::optional_help_text const &help_text
 	);
 
 	typedef

@@ -19,9 +19,14 @@ namespace options
 {
 
 /**
-\brief Multiplies parsers
+\brief Combines two or more parsers.
 
 \ingroup fcpptoptions
+
+Combines two or more parsers into a single one that parses everything the
+individual parsers do. Because the resulting parser produces a record that
+contains <em>all</em> labels of the individual parsers, the label sets of
+the individual parsers must be pairwise disjoint.
 
 \tparam Parsers Must be at least two parsers.
 */

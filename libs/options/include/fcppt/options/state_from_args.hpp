@@ -18,6 +18,11 @@ namespace fcppt
 namespace options
 {
 
+/**
+\brief Produces a parse state from a command-line.
+
+\ingroup fcpptoptions
+*/
 FCPPT_OPTIONS_DETAIL_SYMBOL
 fcppt::options::state
 state_from_args(

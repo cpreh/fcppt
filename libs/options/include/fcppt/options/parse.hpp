@@ -26,6 +26,13 @@ namespace fcppt
 namespace options
 {
 
+/**
+\brief Parse a command-line.
+
+\ingroup fcpptoptions
+
+Applies \a _parser to \a _args.
+*/
 template<
 	typename Parser
 >

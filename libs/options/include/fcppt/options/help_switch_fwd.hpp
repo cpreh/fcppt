@@ -16,6 +16,13 @@ namespace fcppt
 namespace options
 {
 
+/**
+\brief The type of a help parser.
+
+\ingroup fcpptoptions
+
+A help parser is a switch used to display a help message.
+*/
 typedef
 fcppt::options::switch_<
 	fcppt::options::detail::help_label

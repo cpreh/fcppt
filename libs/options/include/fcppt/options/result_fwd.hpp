@@ -16,6 +16,13 @@ namespace fcppt
 namespace options
 {
 
+/**
+\brief The result of a parse.
+
+\ingroup fcpptoptions
+
+The result of a parse is either \a T or an \link fcppt::options::error\endlink.
+*/
 template<
 	typename T
 >

@@ -18,6 +18,14 @@ namespace fcppt
 namespace options
 {
 
+/**
+\brief The set of option names
+
+\ingroup fcpptoptions
+
+Each string in this set is expected to be followed by a value,
+e.g. "--foo bar".
+*/
 typedef
 std::unordered_set<
 	fcppt::string

@@ -16,6 +16,13 @@ namespace fcppt
 namespace options
 {
 
+/**
+\brief A string type representing a short name.
+
+\ingroup fcpptoptions
+
+A short name is the short name of an option or flag, e.g. "-f".
+*/
 FCPPT_MAKE_STRONG_TYPEDEF(
 	fcppt::string,
 	short_name

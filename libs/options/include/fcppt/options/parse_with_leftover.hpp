@@ -23,6 +23,14 @@ namespace fcppt
 namespace options
 {
 
+/**
+\brief Parse a command-line and return the leftover state.
+
+\ingroup fcpptoptions
+
+Applies \a _parser to \a _args. If that succeeds, then the result plus the
+leftover state is returned. Otherwise, the error of the parse is returned.
+*/
 template<
 	typename Parser
 >

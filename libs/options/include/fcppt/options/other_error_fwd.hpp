@@ -16,6 +16,15 @@ namespace fcppt
 namespace options
 {
 
+/**
+\brief A string type representing other errors.
+
+\ingroup fcpptoptions
+
+Errors that are not \link fcppt::options::missing_error\endlink, for example
+failed conversion. Such errors make even \link
+fcppt::options::optional\endlink parsers fail.
+*/
 FCPPT_MAKE_STRONG_TYPEDEF(
 	fcppt::string,
 	other_error

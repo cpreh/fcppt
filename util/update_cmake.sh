@@ -37,6 +37,7 @@ update_cmake \
 	libs/core/include \
 	libs/filesystem/include \
 	libs/log/include \
+	libs/options/include \
 	examples \
 	-e ".*" \
 	doc

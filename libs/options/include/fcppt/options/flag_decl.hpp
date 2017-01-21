@@ -25,6 +25,22 @@ namespace fcppt
 namespace options
 {
 
+/**
+\brief A flag parser.
+
+\ingroup fcpptoptions
+
+A flag parser matches the next command-line parameter that is equal to its
+short name ("-f") or its long name ("--flag"). If there is such a command-line
+parameter, then the flag is <em>on</em>, otherwise it is <em>off</em>. The
+result of a flag is a record that has a single element with label \a Label and
+type \a Type.  In case the flag is off, the result will be the flag's inactive
+value, otherwise it will be that flag's active value.
+
+\tparam Label An \link fcppt::record::label\endlink.
+
+\tparam Type The type of the flag's value.
+*/
 template<
 	typename Label,
 	typename Type
@@ -42,12 +58,25 @@ public:
 		inactive_value
 	);
 
+	/**
+	\brief Constructs a flag parser.
+
+	\param short_name An optional short name ("-f") this parser will match.
+
+	\param long_name The long name ("--flag") this parser will match.
+
+	\param active The value of the parser in case its flag is encountered.
+
+	\param inactive The value of the parser in case its flag is <em>not</em> encountered.
+
+	\param help_text Optional help text for this flag.
+	*/
 	flag(
-		fcppt::options::optional_short_name const &,
-		fcppt::options::long_name const &,
-		active_value const &,
-		inactive_value const &,
-		fcppt::options::optional_help_text const &
+		fcppt::options::optional_short_name const &short_name,
+		fcppt::options::long_name const &long_name,
+		active_value const &active,
+		inactive_value const &inactive,
+		fcppt::options::optional_help_text const &help_text
 	);
 
 	typedef

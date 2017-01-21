@@ -23,6 +23,15 @@ namespace fcppt
 namespace options
 {
 
+/**
+\brief Parse a command-line with a help parser.
+
+\ingroup fcpptoptions
+
+First, the parser \a _help is applied to \a _args. If it matches, the
+<code>usage</code> string is gathered from \a _parser and returned. If \a _help
+fails, then the result of applying \a _parser to \a _args is returned.
+*/
 template<
 	typename Parser
 >

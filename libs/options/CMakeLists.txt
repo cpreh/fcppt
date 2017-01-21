@@ -5,6 +5,7 @@ set(
 	libs/options/include/fcppt/options/argument_decl.hpp
 	libs/options/include/fcppt/options/argument_fwd.hpp
 	libs/options/include/fcppt/options/argument_impl.hpp
+	libs/options/include/fcppt/options/custom_pretty_type.hpp
 	libs/options/include/fcppt/options/default_help_switch.hpp
 	libs/options/include/fcppt/options/detail/apply.hpp
 	libs/options/include/fcppt/options/detail/help_label.hpp
@@ -52,7 +53,6 @@ set(
 	libs/options/include/fcppt/options/parse_result_impl.hpp
 	libs/options/include/fcppt/options/parse_with_leftover.hpp
 	libs/options/include/fcppt/options/pretty_type.hpp
-	libs/options/include/fcppt/options/pretty_type_impl.hpp
 	libs/options/include/fcppt/options/product_decl.hpp
 	libs/options/include/fcppt/options/product_fwd.hpp
 	libs/options/include/fcppt/options/product_impl.hpp
@@ -67,11 +67,11 @@ set(
 	libs/options/include/fcppt/options/switch_decl.hpp
 	libs/options/include/fcppt/options/switch_fwd.hpp
 	libs/options/include/fcppt/options/switch_impl.hpp
+	libs/options/src/options/custom_pretty_type.cpp
 	libs/options/src/options/default_help_switch.cpp
 	libs/options/src/options/detail/help_text.cpp
 	libs/options/src/options/detail/leftover_error.cpp
 	libs/options/src/options/detail/long_or_short_name.cpp
-	libs/options/src/options/pretty_type_impl.cpp
 	libs/options/src/options/state.cpp
 	libs/options/src/options/state_from_args.cpp
 )
