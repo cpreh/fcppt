@@ -4,8 +4,8 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_OPTIONS_DETAIL_MULTIPLY_HPP_INCLUDED
-#define FCPPT_OPTIONS_DETAIL_MULTIPLY_HPP_INCLUDED
+#ifndef FCPPT_OPTIONS_DETAIL_APPLY_HPP_INCLUDED
+#define FCPPT_OPTIONS_DETAIL_APPLY_HPP_INCLUDED
 
 #include <fcppt/options/product_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
@@ -26,7 +26,7 @@ template<
 >
 inline
 Parser1
-multiply(
+apply(
 	Parser1 &&_parser1
 )
 {
@@ -44,7 +44,7 @@ template<
 >
 inline
 auto
-multiply(
+apply(
 	Parser1 &&_parser1,
 	Parsers &&..._parsers
 )
@@ -56,7 +56,7 @@ multiply(
 				Parser1
 			>::type,
 			decltype(
-				fcppt::options::detail::multiply(
+				fcppt::options::detail::apply(
 					std::forward<
 						Parsers
 					>(
@@ -70,7 +70,7 @@ multiply(
 			>(
 				_parser1
 			),
-			fcppt::options::detail::multiply(
+			fcppt::options::detail::apply(
 				std::forward<
 					Parsers
 				>(

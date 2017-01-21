@@ -11,15 +11,15 @@ function(
 endfunction()
 
 add_fcppt_options_test(
+	apply
+)
+
+add_fcppt_options_test(
 	argument
 )
 
 add_fcppt_options_test(
 	flag
-)
-
-add_fcppt_options_test(
-	multiply
 )
 
 add_fcppt_options_test(

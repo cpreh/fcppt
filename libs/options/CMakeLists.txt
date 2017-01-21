@@ -1,15 +1,16 @@
 set(
 	FCPPT_OPTIONS_FILES
+	libs/options/include/fcppt/options/apply.hpp
 	libs/options/include/fcppt/options/argument.hpp
 	libs/options/include/fcppt/options/argument_decl.hpp
 	libs/options/include/fcppt/options/argument_fwd.hpp
 	libs/options/include/fcppt/options/argument_impl.hpp
 	libs/options/include/fcppt/options/default_help_switch.hpp
+	libs/options/include/fcppt/options/detail/apply.hpp
 	libs/options/include/fcppt/options/detail/help_label.hpp
 	libs/options/include/fcppt/options/detail/help_text.hpp
 	libs/options/include/fcppt/options/detail/leftover_error.hpp
 	libs/options/include/fcppt/options/detail/long_or_short_name.hpp
-	libs/options/include/fcppt/options/detail/multiply.hpp
 	libs/options/include/fcppt/options/detail/type_annotation.hpp
 	libs/options/include/fcppt/options/error.hpp
 	libs/options/include/fcppt/options/error_fwd.hpp
@@ -30,7 +31,6 @@ set(
 	libs/options/include/fcppt/options/make_optional.hpp
 	libs/options/include/fcppt/options/missing_error.hpp
 	libs/options/include/fcppt/options/missing_error_fwd.hpp
-	libs/options/include/fcppt/options/multiply.hpp
 	libs/options/include/fcppt/options/option.hpp
 	libs/options/include/fcppt/options/option_decl.hpp
 	libs/options/include/fcppt/options/option_fwd.hpp

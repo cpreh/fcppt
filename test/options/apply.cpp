@@ -12,7 +12,7 @@
 #include <fcppt/options/error.hpp>
 #include <fcppt/options/flag.hpp>
 #include <fcppt/options/long_name.hpp>
-#include <fcppt/options/multiply.hpp>
+#include <fcppt/options/apply.hpp>
 #include <fcppt/options/optional_help_text.hpp>
 #include <fcppt/options/optional_short_name.hpp>
 #include <fcppt/options/parse.hpp>
@@ -29,7 +29,7 @@ FCPPT_PP_PUSH_WARNING
 FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
 
 BOOST_AUTO_TEST_CASE(
-	options_multiply
+	options_apply
 )
 {
 FCPPT_PP_POP_WARNING
@@ -57,7 +57,7 @@ FCPPT_PP_POP_WARNING
 	int_flag_type;
 
 	auto const mult_parser(
-		fcppt::options::multiply(
+		fcppt::options::apply(
 			int_arg_type{
 				fcppt::options::long_name{
 					FCPPT_TEXT("arg1")

@@ -20,7 +20,7 @@
 #include <fcppt/options/help_text.hpp>
 #include <fcppt/options/long_name.hpp>
 #include <fcppt/options/make_optional.hpp>
-#include <fcppt/options/multiply.hpp>
+#include <fcppt/options/apply.hpp>
 #include <fcppt/options/option.hpp>
 #include <fcppt/options/optional_help_text.hpp>
 #include <fcppt/options/optional_short_name.hpp>
@@ -86,7 +86,7 @@ main(
 	arg2_type;
 
 	auto const parser(
-		fcppt::options::multiply(
+		fcppt::options::apply(
 			arg_type{
 				fcppt::options::long_name{
 					FCPPT_TEXT("arg")
