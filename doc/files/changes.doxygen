@@ -21,6 +21,18 @@
 	</ul>
 </li>
 
+<li>\ref fcpptio
+	<ul>
+	<li>Added \link fcppt::io::extract\endlink.</li>
+	</ul>
+</li>
+
+<li>\ref fcpptlog
+	<ul>
+	<li>Added <code>operator<<</code> and <code>operator>></code> for \link fcppt::log::level\endlink.</li>
+	</ul>
+</li>
+
 <li>\ref fcpptmpl
 	<ul>
 	<li>Added \link fcppt::mpl::set_intersection\endlink.</li>

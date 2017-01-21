@@ -478,6 +478,7 @@ set(
 	libs/core/include/fcppt/io/cout.hpp
 	libs/core/include/fcppt/io/detail/widen_string.hpp
 	libs/core/include/fcppt/io/expect.hpp
+	libs/core/include/fcppt/io/extract.hpp
 	libs/core/include/fcppt/io/get.hpp
 	libs/core/include/fcppt/io/istream.hpp
 	libs/core/include/fcppt/io/istream_fwd.hpp

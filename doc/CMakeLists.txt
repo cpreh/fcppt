@@ -655,6 +655,7 @@ set(
 	libs/core/include/fcppt/io/cout.hpp
 	libs/core/include/fcppt/io/detail/widen_string.hpp
 	libs/core/include/fcppt/io/expect.hpp
+	libs/core/include/fcppt/io/extract.hpp
 	libs/core/include/fcppt/io/get.hpp
 	libs/core/include/fcppt/io/istream.hpp
 	libs/core/include/fcppt/io/istream_fwd.hpp
@@ -1373,6 +1374,8 @@ set(
 	libs/log/include/fcppt/log/level.hpp
 	libs/log/include/fcppt/log/level_from_string.hpp
 	libs/log/include/fcppt/log/level_fwd.hpp
+	libs/log/include/fcppt/log/level_input.hpp
+	libs/log/include/fcppt/log/level_output.hpp
 	libs/log/include/fcppt/log/level_stream.hpp
 	libs/log/include/fcppt/log/level_stream_array.hpp
 	libs/log/include/fcppt/log/level_stream_array_fwd.hpp

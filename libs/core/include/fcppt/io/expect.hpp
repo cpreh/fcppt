@@ -7,6 +7,8 @@
 #ifndef FCPPT_IO_EXPECT_HPP_INCLUDED
 #define FCPPT_IO_EXPECT_HPP_INCLUDED
 
+#include <fcppt/io/extract.hpp>
+#include <fcppt/optional/maybe_void.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <ios>
 #include <istream>
@@ -19,7 +21,7 @@ namespace io
 {
 
 /**
-\brief Fails a stream if it does not read the expected value
+\brief Fails a stream if it does not read the expected value.
 
 \ingroup fcpptio
 
@@ -46,19 +48,29 @@ expect(
 	Type const &_value
 )
 {
-	Type temp;
-
-	if(
-		_stream
-			>> temp
-		&&
-		temp
-		!=
-		_value
-	)
-		_stream.setstate(
-			std::ios_base::failbit
-		);
+	fcppt::optional::maybe_void(
+		fcppt::io::extract<
+			Type
+		>(
+			_stream
+		),
+		[
+			&_stream,
+			&_value
+		](
+			Type const &_read_value
+		)
+		{
+			if(
+				_read_value
+				!=
+				_value
+			)
+				_stream.setstate(
+					std::ios_base::failbit
+				);
+		}
+	);
 
 	return
 		_stream;

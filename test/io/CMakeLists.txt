@@ -9,6 +9,14 @@ function(
 endfunction()
 
 add_fcppt_io_test(
+	expect
+)
+
+add_fcppt_io_test(
+	extract
+)
+
+add_fcppt_io_test(
 	get
 )
 
