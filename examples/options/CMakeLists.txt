@@ -12,6 +12,8 @@ add_fcppt_options_example(
 	complex
 	LINK_LIBS
 		${fcppt_core_TARGET}
+		${fcppt_filesystem_TARGET}
+		${fcppt_log_TARGET}
 		${fcppt_options_TARGET}
 )
 

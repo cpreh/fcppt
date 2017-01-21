@@ -4,12 +4,33 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
+#include <fcppt/preprocessor/disable_gcc_warning.hpp>
+#include <fcppt/preprocessor/pop_warning.hpp>
+#include <fcppt/preprocessor/push_warning.hpp>
+
+// TODO: Output openmode properly
+FCPPT_PP_PUSH_WARNING
+FCPPT_PP_DISABLE_GCC_WARNING(-Wsign-promo)
+
 #include <fcppt/args_from_second.hpp>
 #include <fcppt/string.hpp>
 #include <fcppt/text.hpp>
 #include <fcppt/either/match.hpp>
+#include <fcppt/filesystem/ifstream.hpp>
+#include <fcppt/filesystem/ofstream.hpp>
 #include <fcppt/io/cerr.hpp>
 #include <fcppt/io/cout.hpp>
+#include <fcppt/log/context.hpp>
+#include <fcppt/log/default_level_streams.hpp>
+#include <fcppt/log/level.hpp>
+#include <fcppt/log/level_input.hpp>
+#include <fcppt/log/level_output.hpp>
+#include <fcppt/log/name.hpp>
+#include <fcppt/log/object.hpp>
+#include <fcppt/log/parameters.hpp>
+#include <fcppt/log/optional_level.hpp>
+#include <fcppt/log/format/optional_function.hpp>
+#include <fcppt/optional/from.hpp>
 #include <fcppt/optional/make.hpp>
 #include <fcppt/optional/output.hpp>
 #include <fcppt/options/argument.hpp>
@@ -27,11 +48,14 @@
 #include <fcppt/options/parse_help.hpp>
 #include <fcppt/options/result.hpp>
 #include <fcppt/options/short_name.hpp>
+#include <fcppt/options/switch.hpp>
+#include <fcppt/record/get.hpp>
 #include <fcppt/record/make_label.hpp>
 #include <fcppt/record/output.hpp>
 #include <fcppt/variant/match.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <cstdlib>
+#include <ios>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -42,109 +66,132 @@ main(
 )
 {
 	FCPPT_RECORD_MAKE_LABEL(
-		arg_label
+		input_file_label
 	);
 
 	FCPPT_RECORD_MAKE_LABEL(
-		flag_label
+		output_file_label
 	);
 
 	FCPPT_RECORD_MAKE_LABEL(
-		option_label
+		execute_label
 	);
 
 	FCPPT_RECORD_MAKE_LABEL(
-		arg2_label
+		openmode_label
+	);
+
+	FCPPT_RECORD_MAKE_LABEL(
+		log_level_label
 	);
 
 	typedef
 	fcppt::options::argument<
-		arg_label,
+		input_file_label,
 		fcppt::string
 	>
-	arg_type;
+	input_file_option;
+
+	typedef
+	fcppt::options::argument<
+		output_file_label,
+		fcppt::string
+	>
+	output_file_option;
+
+	typedef
+	fcppt::options::switch_<
+		execute_label
+	>
+	execute_switch;
 
 	typedef
 	fcppt::options::flag<
-		flag_label,
-		int
+		openmode_label,
+		std::ios_base::openmode
 	>
-	flag_type;
+	openmode_option;
 
 	typedef
 	fcppt::options::option<
-		option_label,
-		fcppt::string
+		log_level_label,
+		fcppt::log::level
 	>
-	option_type;
-
-	typedef
-	fcppt::options::argument<
-		arg2_label,
-		int
-	>
-	arg2_type;
+	log_level_option;
 
 	auto const parser(
 		fcppt::options::apply(
-			arg_type{
+			input_file_option{
 				fcppt::options::long_name{
-					FCPPT_TEXT("arg")
+					FCPPT_TEXT("Input filename")
 				},
 				fcppt::options::optional_help_text{
 					fcppt::options::help_text{
-						FCPPT_TEXT("The main argument")
+						FCPPT_TEXT("The name of the input file to copy")
 					}
 				}
 			},
 			fcppt::options::make_optional(
-				arg2_type{
+				output_file_option{
 					fcppt::options::long_name{
-						FCPPT_TEXT("extra arg")
+						FCPPT_TEXT("Output filename")
 					},
 					fcppt::options::optional_help_text{
 						fcppt::options::help_text{
-							FCPPT_TEXT("An extra argument")
+							FCPPT_TEXT("The name of the output file. Defaults to input_file.bak")
 						}
 					}
 				}
 			),
-			flag_type{
-				fcppt::options::optional_short_name{},
+			execute_switch{
+				fcppt::options::optional_short_name{
+					fcppt::options::short_name{
+						FCPPT_TEXT("e")
+					}
+				},
 				fcppt::options::long_name{
-					FCPPT_TEXT("flag")
-				},
-				flag_type::active_value{
-					42
-				},
-				flag_type::inactive_value{
-					0
+					FCPPT_TEXT("execute")
 				},
 				fcppt::options::optional_help_text{
 					fcppt::options::help_text{
-						FCPPT_TEXT("Some flag")
+						FCPPT_TEXT("Whether to actually execute the actions")
 					}
 				}
 			},
-			option_type{
+			openmode_option{
+				fcppt::options::optional_short_name{},
+				fcppt::options::long_name{
+					FCPPT_TEXT("trunc")
+				},
+				openmode_option::active_value{
+					std::ios_base::trunc
+				},
+				openmode_option::inactive_value{
+					std::ios_base::openmode{}
+				},
+				fcppt::options::optional_help_text{
+					fcppt::options::help_text{
+						FCPPT_TEXT("Whether to truncate the output file")
+					}
+				}
+			},
+			log_level_option{
 				fcppt::options::optional_short_name{
 					fcppt::options::short_name{
-						FCPPT_TEXT("o")
+						FCPPT_TEXT("l")
 					}
 				},
 				fcppt::options::long_name{
-					FCPPT_TEXT("option")
+					FCPPT_TEXT("loglevel")
 				},
-				option_type::optional_default_value{
+				log_level_option::optional_default_value{
 					fcppt::optional::make(
-						fcppt::string{
-							FCPPT_TEXT("default")
-						}
+						fcppt::log::level::warning
 					)
 				},
 				fcppt::options::optional_help_text{
 					fcppt::options::help_text{
-						FCPPT_TEXT("Some option")
+						FCPPT_TEXT("The log level to use")
 					}
 				}
 			}
@@ -157,6 +204,71 @@ main(
 	)::result_type
 	result_type;
 
+	auto const main_program(
+		[](
+			result_type const &_result
+		)
+		{
+			fcppt::log::context log_context{
+				fcppt::log::optional_level{
+					fcppt::record::get<
+						log_level_label
+					>(
+						_result
+					)
+				},
+				fcppt::log::default_level_streams()
+			};
+
+			fcppt::log::object logger{
+				log_context,
+				fcppt::log::parameters{
+					fcppt::log::name{
+						FCPPT_TEXT("options")
+					},
+					fcppt::log::format::optional_function{}
+				}
+			};
+
+			fcppt::filesystem::ifstream input{
+				fcppt::record::get<
+					input_file_label
+				>(
+					_result
+				)
+			};
+
+			fcppt::filesystem::ofstream output{
+				fcppt::optional::from(
+					fcppt::record::get<
+						output_file_label
+					>(
+						_result
+					),
+					[
+						&_result
+					]{
+						return
+							fcppt::record::get<
+								input_file_label
+							>(
+								_result
+							)
+							+
+							FCPPT_TEXT(".bak");
+					}
+				),
+				fcppt::record::get<
+					openmode_label
+				>(
+					_result
+				)
+			};
+
+			// ...
+		}
+	);
+
 	return
 		fcppt::variant::match(
 			fcppt::options::parse_help(
@@ -167,7 +279,9 @@ main(
 					argv
 				)
 			),
-			[](
+			[
+				main_program
+			](
 				fcppt::options::result<
 					result_type
 				> const &_result
@@ -189,17 +303,30 @@ main(
 							return
 								EXIT_FAILURE;
 						},
-						[](
+						[
+							main_program
+						](
 							result_type const &_options
 						)
 						{
-							fcppt::io::cout()
-								<<
-								FCPPT_TEXT("The result is ")
-								<<
-								_options
-								<<
-								FCPPT_TEXT('\n');
+							if(
+								fcppt::record::get<
+									execute_label
+								>(
+									_options
+								)
+							)
+								main_program(
+									_options
+								);
+							else
+								fcppt::io::cout()
+									<<
+									FCPPT_TEXT("The result is:\n")
+									<<
+									_options
+									<<
+									FCPPT_TEXT('\n');
 
 							return
 								EXIT_SUCCESS;
@@ -210,6 +337,7 @@ main(
 				fcppt::options::help_text const &_help_text
 			)
 			{
+				// TODO: Make it possible to use boolalpha
 				fcppt::io::cout()
 					<<
 					_help_text
@@ -220,4 +348,7 @@ main(
 					EXIT_SUCCESS;
 			}
 		);
+
 }
+
+FCPPT_PP_POP_WARNING
