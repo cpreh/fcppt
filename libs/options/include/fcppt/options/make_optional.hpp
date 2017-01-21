@@ -26,18 +26,13 @@ namespace options
 
 Normally, a parser can fail, for example in case an argument has not been
 specified. This function turns a parser into a parser that instead of failing
-returns an optional result. \a Label is used to store the optional result in a
-record.
-
-\tparam Label An \link fcppt::record::label\endlink.
+returns optional results.
 */
 template<
-	typename Label,
 	typename Parser
 >
 inline
 fcppt::options::optional<
-	Label,
 	typename
 	std::decay<
 		Parser
@@ -49,7 +44,6 @@ make_optional(
 {
 	return
 		fcppt::options::optional<
-			Label,
 			typename
 			std::decay<
 				Parser

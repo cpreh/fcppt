@@ -13,8 +13,11 @@
 #include <fcppt/options/optional_fwd.hpp>
 #include <fcppt/options/result_fwd.hpp>
 #include <fcppt/options/state_fwd.hpp>
-#include <fcppt/record/element_fwd.hpp>
-#include <fcppt/record/variadic_fwd.hpp>
+#include <fcppt/record/element_to_type_tpl.hpp>
+#include <fcppt/record/map_elements.hpp>
+#include <fcppt/config/external_begin.hpp>
+#include <boost/mpl/placeholders.hpp>
+#include <fcppt/config/external_end.hpp>
 
 
 namespace fcppt
@@ -27,16 +30,13 @@ namespace options
 
 \ingroup fcpptoptions
 
-Wraps a parser such that it may fail. The result is stored in a record that has
-a single element with label \a Label that stores
-<code>Parser::result_type</code> as an optional.
+Wraps a parser such that it may fail. The result type is a record that adds one
+layer of \link fcppt::optional::object\endlink to the elements of the result
+type of \a Parser.
 
 \see fcppt::options::make_optional
-
-\tparam Label An \link fcppt::record::label\endlink.
 */
 template<
-	typename Label,
 	typename Parser
 >
 class optional
@@ -53,22 +53,14 @@ public:
 	);
 
 	typedef
-	fcppt::optional::object<
+	fcppt::record::map_elements<
 		typename
-		Parser::result_type
-	>
-	optional_result_type;
-
-	typedef
-	fcppt::record::element<
-		Label,
-		optional_result_type
-	>
-	element_type;
-
-	typedef
-	fcppt::record::variadic<
-		element_type
+		Parser::result_type,
+		fcppt::optional::object<
+			fcppt::record::element_to_type_tpl<
+				boost::mpl::_
+			>
+		>
 	>
 	result_type;
 

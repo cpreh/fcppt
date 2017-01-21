@@ -38,22 +38,12 @@ FCPPT_PP_POP_WARNING
 		arg_label
 	);
 
-	typedef
-	fcppt::options::argument<
-		arg_label,
-		int
-	>
-	int_arg_type;
-
-	FCPPT_RECORD_MAKE_LABEL(
-		optional_label
-	);
-
 	auto const parser{
-		fcppt::options::make_optional<
-			optional_label
-		>(
-			int_arg_type{
+		fcppt::options::make_optional(
+			fcppt::options::argument<
+				arg_label,
+				int
+			>{
 				fcppt::options::long_name{
 					FCPPT_TEXT("arg1")
 				},
@@ -80,12 +70,9 @@ FCPPT_PP_POP_WARNING
 			fcppt::options::error
 		>(
 			parser_type::result_type{
-				optional_label{} =
+				arg_label{} =
 					fcppt::optional::make(
-						int_arg_type::result_type{
-							arg_label{}
-								= 123
-						}
+						123
 					)
 			}
 		)
@@ -110,7 +97,7 @@ FCPPT_PP_POP_WARNING
 			fcppt::options::error
 		>(
 			parser_type::result_type{
-				optional_label{} =
+				arg_label{} =
 					fcppt::optional::nothing{}
 			}
 		)

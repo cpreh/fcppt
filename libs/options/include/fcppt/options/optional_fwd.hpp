@@ -14,7 +14,6 @@ namespace options
 {
 
 template<
-	typename Label,
 	typename Parser
 >
 class optional;

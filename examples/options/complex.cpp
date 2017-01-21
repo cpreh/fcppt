@@ -97,9 +97,7 @@ main(
 					}
 				}
 			},
-			fcppt::options::make_optional<
-				arg2_label
-			>(
+			fcppt::options::make_optional(
 				arg2_type{
 					fcppt::options::long_name{
 						FCPPT_TEXT("extra arg")
