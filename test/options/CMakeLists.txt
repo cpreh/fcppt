@@ -27,6 +27,10 @@ add_fcppt_options_test(
 )
 
 add_fcppt_options_test(
+	many
+)
+
+add_fcppt_options_test(
 	option
 )
 

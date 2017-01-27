@@ -1430,7 +1430,11 @@ set(
 	libs/options/include/fcppt/options/long_name.hpp
 	libs/options/include/fcppt/options/long_name_fwd.hpp
 	libs/options/include/fcppt/options/make_base.hpp
+	libs/options/include/fcppt/options/make_many.hpp
 	libs/options/include/fcppt/options/make_optional.hpp
+	libs/options/include/fcppt/options/many_decl.hpp
+	libs/options/include/fcppt/options/many_fwd.hpp
+	libs/options/include/fcppt/options/many_impl.hpp
 	libs/options/include/fcppt/options/missing_error.hpp
 	libs/options/include/fcppt/options/missing_error_fwd.hpp
 	libs/options/include/fcppt/options/option.hpp
