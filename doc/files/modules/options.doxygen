@@ -9,6 +9,12 @@
 
 <ul>
 	<li>\ref fcpptoptions_introduction</li>
+	<li>\ref fcpptoptions_simple</li>
+	<li>\ref fcpptoptions_parsers</li>
+	<li>\ref fcpptoptions_complex</li>
+	<li>\ref fcpptoptions_help</li>
+	<li>\ref fcpptoptions_base</li>
+	<li>\ref fcpptoptions_sub</li>
 </ul>
 
 </td>
@@ -16,6 +22,295 @@
 </table>
 
 \section fcpptoptions_introduction Introduction
+
+In C++, the main function receives an array of strings in the form of
+<code>(int argc, char **argv)</code>, which is most of the time not immediately
+usable in a program. Consider a program that expects a single integer
+argument. We not only have to check if <code>argc</code> has the right value
+but we also have to convert the first string into an integer. Although this
+example is as simple as it can get, using <code>argc</code> and <code>argv</code>
+directly is already troublesome. In more complicated examples that involve
+optional arguments, flags, or even arbitrary many arguments, this process gets
+even more error-prone.
+
+<code>fcppt.options</code> features a declarative style using <em>argument
+parsers</em> that carry attributes of the right type. The main attribute of a
+parser is always an \link fcppt::record::object\endlink, so that attributes can
+be accessed by <em>labels</em> in order to make their purpose clearer.  For
+example, a parser that expects a single integer with label name <code>L</code>
+has type <code>{ L : int }</code>. Parsers can be combined to yield more
+complicated parses, so for example a parser that expects zero or more strings
+with label name <code>S</code> has type <code>{ S : std::vector<std::string>
+}</code>. Combining these two parsers yields <code>{ L : int, S :
+std::vector<std::string> }</code>.
+
+\section fcpptoptions_simple A simple example
+
+To start off, let us look at a simple example that expects a single argument of
+type <code>int</code>. First, we need to declare the label that is being used:
+
+\snippet options/simple.cpp options_label
+
+Next, we declare the parser type that uses <code>arg_label</code> to produce
+a single value of type <code>int</code>.
+
+\snippet options/simple.cpp options_arg_type
+
+Such a parser parses a command-line like <code>./program "123"</code>, yielding
+the record <code>{ arg_label = 123 }</code>, which is of type
+<code>parser::result_type = { arg_label : int }</code>. Next, we define the
+actual parser:
+
+\snippet options/simple.cpp options_arg_object
+
+Here, we see that it gets two parameters:
+<ul>
+<li>The <em>long name</em> which is used as a placeholder in help messages and</li>
+<li>a text called <code>help_text</code> which can be used to explain the argument's purpose
+to the user.</li>
+</ul>
+As you can see, the long name is mandatory, while the help text is optional.
+
+Instead of using <code>argc</code> and <code>argv</code> directly, we first use the
+helper function \link fcppt::args_from_second\endlink which copies every argument except the
+first (which usually hold's the program's name but isn't required to) into a container:
+
+\snippet options/simple.cpp options_args_from_second
+
+Parsing the arguments using a parser is done by calling the \link
+fcppt::options::parse\endlink function. Its result is an \link
+fcppt::options::result\endlink which is an \link fcppt::either::object\endlink
+that encapsulates the fact that a parser can fail.
+
+\snippet options/simple.cpp options_parse
+
+Now, all that needs to be done is to inspect <code>result</code>: First, we
+define a function called <code>on_success</code> that receives <code>result_type</code>
+(remember, this is a record of type <code>{ arg_label : int }</code>) and prints it.
+
+\snippet options/simple.cpp options_on_success
+
+In case of failure we get an \link fcppt::options::error\endlink, containing a message
+of what went wrong. In addition to that, we also print <code>parser.usage()</code> which
+tells the user what the expected format is:
+
+\snippet options/simple.cpp options_on_failure
+
+Finally, we use \link fcppt::either::match\endlink to call one of these functions:
+
+\snippet options/simple.cpp options_match
+
+
+\section fcpptoptions_parsers Parser types
+
+Parser types are split into basic and combinator parsers.
+
+\subsection fcpptoptions_parsers_basic Basic parser types
+
+There are three different types of basic parsers:
+<table>
+<tr>
+<th>
+Type:
+</th>
+<th>
+Description:
+</th>
+</tr>
+<tr>
+<td>
+\link fcppt::options::argument\endlink
+</td>
+<td>
+Parses a single argument, e.g. <code>"arg"</code>. If there is no argument or
+it cannot be converted to the parser's result type, an error occurs.
+</td>
+</tr>
+<tr>
+<td>
+\link fcppt::options::flag\endlink
+</td>
+<td>
+Parses a flag, e.g. <code>"-f"</code> or <code>"--flag"</code>. Depending on
+whether the flag was specified or not, the result type is either its
+<em>inactive value</em> or its <em>active value</em>. Flags never produce an
+error.
+</td>
+</tr>
+<tr>
+<td>
+\link fcppt::options::option\endlink
+</td>
+<td>
+Parses an option, e.g. <code>"-o val"</code> or <code>"--opt val"</code>.
+Option parsers can have an optional <em>default value</em> which is used in
+case the option has not been specified. If there is no such option and no
+default value has been specified or the option's value cannot be converted to
+the parser's result type, an error occurs.
+</td>
+</tr>
+</table>
+
+As a shortcut, \link fcppt::options::switch_\endlink is a short-hand for a flag
+of type <code>bool</code>.
+
+
+\subsection fcpptoptions_parsers_combinators Combinator parser types
+
+The following parsers can be used to create more advanced parsers:
+<table>
+<tr>
+<th>
+Type:
+</th>
+<th>
+Description:
+</th>
+</tr>
+<tr>
+<td>
+\link fcppt::options::product\endlink
+</td>
+<td>
+A parser of type <code>fcppt::options::product<Left,Right></code> combines two
+parsers of type <code>Left</code> and <code>Right</code>, which must have
+<em>disjoint</em> records. The product parser first tries the left parser and
+then the right parser. It only succeeds if both succeed. Its result type is the
+<em> disjoint union</em> (see \link fcppt::record::multiply_disjoint\endlink)
+of Left's and Right's result types. To combine two or more parsers at once, use
+\link fcppt::options::apply\endlink.
+<tr>
+<td>
+\link fcppt::options::optional\endlink
+</td>
+<td>
+A parser of type <code>fcppt::options::optional<Parser></code> turns a parser
+of type <code>Parser</code> into a parser that may fail. Its result type has
+the same labels as Parser's result type, but with an extra \link
+fcppt::optional::object\endlink layer added on top. See \link
+fcppt::options::make_optional\endlink.
+</td>
+</tr>
+<tr>
+<td>
+\link fcppt::options::many\endlink
+</td>
+<td>
+A parser of type <code>fcppt::options::many<Parser></code> turns a parser of
+type <code>Parser</code> into a parser that parsers zero or more occurrences.
+Its result type has the same labels as Parser's result type, but with an extra
+<code>std::vector</code> layer added on top. See \link
+fcppt::options::make_many\endlink.
+</td>
+</tr>
+</table>
+
+
+\section fcpptoptions_complex A more complex example
+
+Imagine a program that copies an input file to an output file, but with some
+additional twists:
+<ul>
+<li>
+The input filename always needs to be specified.
+</li>
+<li>
+The output filename is optional. If it is not specified, it defaults to the
+name of the input file plus <code>".bak"</code>.
+</li>
+<li>
+The program should by default be in <em>pretend mode</em> in which it does
+nothing. Actually executing the copy operation requires to specify a flag.
+</li>
+<li>
+It should have the ability to append to the result file instead of overwriting
+it. The append behavior will be activated using a flag.
+</li>
+<li>
+It uses a log framework to output certain messages during its run. The log
+level, which dictactes which log messages get printed, should be an optional
+option to the program. If it is not specified, a default log level is used.
+</li>
+</ul>
+
+We first start by declaring the labels the parsers are going to use:
+
+\snippet options/complex.cpp options_labels
+
+The input filename is an argument parser of type \link fcppt::string\endlink.
+
+\snippet options/complex.cpp options_input_file_option
+
+The output filename is an <em>optional</em> argument parser. Its type is
+<code>fcppt::optional::object<fcppt::string></code>.
+
+\snippet options/complex.cpp options_output_file_option
+
+The execute flag is just a switch. It can be activated using <code>-e</code> or
+<code>--execute</code>.
+
+\snippet options/complex.cpp options_execute_switch
+
+To handle whether to append to the output file, we use a flag parser of type
+<code>std::ios_base::openmode</code>. Its inactive value is the empty openmode,
+while its active value is <code>std::ios_base::trunc</code>.
+
+\snippet options/complex.cpp options_openmode_option
+
+The log level is an option parser of type \link fcppt::log::level\endlink.
+It can be set using <code>-l level</code> or <code>--loglevel level</code>, where
+<code>level</code> has to be one of \link fcppt::log::level\endlink's values.
+The parser also gets a default value of \link fcppt::log::level::warning\endlink.
+
+\snippet options/complex.cpp options_log_level_option
+
+Finally, the actual parser is created using \link
+fcppt::options::apply\endlink. Its type is complicated, so it is shortened
+using <code>auto</code> here. See \ref fcpptoptions_base on how to hide a
+parser's actual type.
+
+\snippet options/complex.cpp options_parser
+
+The main program is a lambda function that gets <code>result_type</code> as its
+parameter. This is a record that contains all the options of the parsers
+combined.
+
+\snippet options/complex.cpp options_main_program
+
+First, we check if the execute flag has been specified. If not, the executing stops.
+
+\snippet options/complex.cpp options_read_execute
+
+Next, we create a log context that uses the log-level specified. Notice how the
+string specified on the command-line has already been converted to a value of
+\link fcppt::log::level\endlink.
+
+\snippet options/complex.cpp options_log_context
+
+We then open the input file using the input filename.
+
+\snippet options/complex.cpp options_open_input
+
+Opening the output file consists of two things: First, we need to check whether
+the output filename has been specified. If not, we use the default of
+<code>input_file.bak</code>.
+
+\snippet options/complex.cpp options_output_filename
+
+Second, the openmode needs to be passed as well.
+
+\snippet options/complex.cpp options_open_output
+
+\section fcpptoptions_help Help text
+
+TODO...
+\section fcpptoptions_base Hiding parser implementation
+
+TODO...
+
+\section fcpptoptions_sub Sub parsers
+
+TODO...
 */
 
 namespace fcppt

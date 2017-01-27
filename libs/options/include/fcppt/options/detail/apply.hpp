@@ -25,7 +25,10 @@ template<
 	typename Parser1
 >
 inline
-Parser1
+typename
+std::decay<
+	Parser1
+>::type
 apply(
 	Parser1 &&_parser1
 )
