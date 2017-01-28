@@ -14,6 +14,11 @@
 namespace fcppt
 {
 
+/**
+\brief fcppt's version as a string
+
+\ingroup fcpptvarious
+*/
 FCPPT_DETAIL_SYMBOL
 fcppt::string
 version_string();

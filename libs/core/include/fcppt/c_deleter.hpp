@@ -20,7 +20,6 @@ namespace fcppt
 \brief A deleter that uses <code>std::free</code> to destroy an object.
 
 \ingroup fcpptsmartptr
-
 */
 struct c_deleter
 {

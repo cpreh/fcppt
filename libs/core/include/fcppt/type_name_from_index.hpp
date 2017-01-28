@@ -19,6 +19,8 @@ namespace fcppt
 
 /**
 \brief Returns a demangled type name if possible
+
+\ingroup fcpptvarious
 */
 FCPPT_DETAIL_SYMBOL
 fcppt::string

@@ -14,6 +14,10 @@
 namespace fcppt
 {
 
+/**
+\brief fcppt's minor version
+\ingroup fcpptvarious
+*/
 typedef fcppt::version_integral_c<
 	(FCPPT_VERSION / 1000) % 1000
 > minor_version;

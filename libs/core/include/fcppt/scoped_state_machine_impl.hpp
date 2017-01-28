@@ -10,11 +10,13 @@
 
 #include <fcppt/scoped_state_machine_decl.hpp>
 
-template
-<
+
+template<
 	typename Machine
 >
-fcppt::scoped_state_machine<Machine>::scoped_state_machine(
+fcppt::scoped_state_machine<
+	Machine
+>::scoped_state_machine(
 	Machine &_machine
 )
 :
@@ -25,11 +27,12 @@ fcppt::scoped_state_machine<Machine>::scoped_state_machine(
 	machine_.initiate();
 }
 
-template
-<
+template<
 	typename Machine
 >
-fcppt::scoped_state_machine<Machine>::~scoped_state_machine()
+fcppt::scoped_state_machine<
+	Machine
+>::~scoped_state_machine()
 {
 	machine_.terminate();
 }

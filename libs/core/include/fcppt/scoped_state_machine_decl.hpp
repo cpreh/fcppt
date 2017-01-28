@@ -15,8 +15,16 @@
 namespace fcppt
 {
 
-template
-<
+/**
+\brief Scopes a boost state machine
+
+\ingroup fcpptvarious
+
+Calls initiate in the constructor and terminate in the destructor.
+
+\tparam Machine Must be a boost::statechart::state_machine
+*/
+template<
 	typename Machine
 >
 class scoped_state_machine

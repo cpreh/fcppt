@@ -16,6 +16,11 @@
 namespace fcppt
 {
 
+/**
+\brief An integral constant for a version component
+
+\ingroup fcpptvarious
+*/
 template<
 	fcppt::version_int Value
 >

@@ -12,6 +12,14 @@
 #include <fcppt/config/external_end.hpp>
 
 
+/**
+\brief Checks if a literal conversion is safe
+
+\ingroup fcpptvarious
+
+\a source must not be a <code>bool</code> or if \a dest is integral, then \a
+source must not be floating-point.
+*/
 #define FCPPT_CHECK_LITERAL_CONVERSION(\
 	dest,\
 	source\

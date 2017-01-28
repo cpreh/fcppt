@@ -8,11 +8,11 @@
 #ifndef FCPPT_SCOPED_STATE_MACHINE_FWD_HPP_INCLUDED
 #define FCPPT_SCOPED_STATE_MACHINE_FWD_HPP_INCLUDED
 
+
 namespace fcppt
 {
 
-template
-<
+template<
 	typename Machine
 >
 class scoped_state_machine;

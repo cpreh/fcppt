@@ -21,6 +21,8 @@ namespace fcppt
 /**
 \brief Writes a pair to an ostream
 
+\ingroup fcpptvarious
+
 Writes the pair \a _pair to \a _stream, using the formatting
 <code>(_pair.first, _pair.second)</code>.
 

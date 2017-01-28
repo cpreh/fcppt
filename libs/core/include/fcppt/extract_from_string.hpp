@@ -24,7 +24,10 @@ namespace fcppt
 /**
 \brief Convert a string to a different type using a locale
 
-\tparam Dest The destination type, has to have an <code>operator<<</code> defined
+\ingroup fcpptstring
+
+\tparam Dest The destination type, has to have an <code>operator>></code> defined. Must
+have either a default constructor or must be constructible from \link fcppt::no_init\endlink.
 
 \tparam Source A string type (see \link fcppt::type_traits::is_string\endlink)
 

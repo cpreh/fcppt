@@ -11,6 +11,11 @@
 namespace fcppt
 {
 
+/**
+\brief The int type to use for a version component
+
+\ingroup fcpptvarious
+*/
 typedef unsigned long version_int;
 
 }

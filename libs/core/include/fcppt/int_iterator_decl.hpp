@@ -24,7 +24,7 @@ FCPPT_PP_PUSH_WARNING
 FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
 
 /**
-\ingroup fcpptint
+\ingroup fcpptvarious
 */
 template<
 	typename Int

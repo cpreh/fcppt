@@ -22,6 +22,11 @@ namespace fcppt
 FCPPT_PP_PUSH_WARNING
 FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
 
+/**
+\brief Tests if a type is a strong typedef
+
+\ingroup fcpptstrongtypedef
+*/
 template<
 	typename T
 >

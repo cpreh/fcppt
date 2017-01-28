@@ -25,7 +25,7 @@ namespace fcppt
 \ingroup fcpptstring
 
 Note that the default locale for this function is the C locale. This is
-consistent with the fcppt::extract_from_string function. See this function to
+consistent with the \link fcppt::extract_from_string\endlink function. See this function to
 see why this locale was chosen.
 
 \see fcppt::extract_from_string

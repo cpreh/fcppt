@@ -16,7 +16,11 @@
 namespace fcppt
 {
 
-/// Returns the default locale to use when converting strings
+/**
+\brief Returns the default locale to use when converting strings
+
+\ingroup fcpptstring
+*/
 FCPPT_DETAIL_SYMBOL
 std::locale
 string_conv_locale();

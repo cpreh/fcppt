@@ -17,6 +17,8 @@ namespace fcppt
 /**
 \brief Compares two homogenous pairs lexicographically
 
+\ingroup fcpptvarious
+
 Compares the two pairs \a _left and \a _right lexicographically.  If
 <code>_left.first</code> and <code>_right.first</code> are equal, which is
 tested by using <code>!(_left.first < _right.first) && !(_right.first <
@@ -30,14 +32,17 @@ _right.first</code>.
 
 \return If \a _left is lexicographically less than \a _right
 */
-template
-<
+template<
 	typename T
 >
 bool
 operator<(
-	fcppt::homogenous_pair<T> const &_left,
-	fcppt::homogenous_pair<T> const &_right
+	fcppt::homogenous_pair<
+		T
+	> const &_left,
+	fcppt::homogenous_pair<
+		T
+	> const &_right
 )
 {
 	if(
@@ -63,6 +68,8 @@ operator<(
 /**
 \brief Compares two homogenous pairs for equality
 
+\ingroup fcpptvarious
+
 Compares the two pairs \a _left and \a _right for equality, using
 <code>_left.first == _right.first && _left.second == _right.second</code>.
 
@@ -72,23 +79,30 @@ Compares the two pairs \a _left and \a _right for equality, using
 
 \return If both pairs are equal
 */
-template
-<
+template<
 	typename T
 >
+inline
 bool
 operator==(
-	fcppt::homogenous_pair<T> const &_left,
-	fcppt::homogenous_pair<T> const &_right
+	fcppt::homogenous_pair<
+		T
+	> const &_left,
+	fcppt::homogenous_pair<
+		T
+	> const &_right
 )
 {
 	return
 		_left.first == _right.first
-		&& _left.second == _right.second;
+		&&
+		_left.second == _right.second;
 }
 
 /**
 \brief Compares two homogenous pairs for equality
+
+\ingroup fcpptvarious
 
 Compares the two pairs \a _left and \a _right for equality, using
 <code>!(_left == _right)</code>.
@@ -99,14 +113,18 @@ Compares the two pairs \a _left and \a _right for equality, using
 
 \return If both pairs are not equal
 */
-template
-<
+template<
 	typename T
 >
+inline
 bool
 operator!=(
-	fcppt::homogenous_pair<T> const &_left,
-	fcppt::homogenous_pair<T> const &_right
+	fcppt::homogenous_pair<
+		T
+	> const &_left,
+	fcppt::homogenous_pair<
+		T
+	> const &_right
 )
 {
 	return
