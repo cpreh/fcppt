@@ -476,6 +476,8 @@ set(
 	libs/core/include/fcppt/io/cin.hpp
 	libs/core/include/fcppt/io/clog.hpp
 	libs/core/include/fcppt/io/cout.hpp
+	libs/core/include/fcppt/io/detail/extract.hpp
+	libs/core/include/fcppt/io/detail/extract_impl.hpp
 	libs/core/include/fcppt/io/detail/widen_string.hpp
 	libs/core/include/fcppt/io/expect.hpp
 	libs/core/include/fcppt/io/extract.hpp
@@ -1064,6 +1066,8 @@ set(
 	libs/core/include/fcppt/type_name.hpp
 	libs/core/include/fcppt/type_name_from_index.hpp
 	libs/core/include/fcppt/type_name_from_info.hpp
+	libs/core/include/fcppt/type_traits/constructible_from.hpp
+	libs/core/include/fcppt/type_traits/detail/constructible_from.hpp
 	libs/core/include/fcppt/type_traits/detail/function_pointer_to_reference.hpp
 	libs/core/include/fcppt/type_traits/detail/has_const_iterator.hpp
 	libs/core/include/fcppt/type_traits/detail/has_iterator.hpp

@@ -4,13 +4,16 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_IO_EXTRACT_HPP_INCLUDED
-#define FCPPT_IO_EXTRACT_HPP_INCLUDED
+#ifndef FCPPT_IO_DETAIL_EXTRACT_IMPL_HPP_INCLUDED
+#define FCPPT_IO_DETAIL_EXTRACT_IMPL_HPP_INCLUDED
 
-#include <fcppt/io/detail/extract.hpp>
+#include <fcppt/reference_impl.hpp>
+#include <fcppt/optional/make.hpp>
+#include <fcppt/optional/nothing.hpp>
 #include <fcppt/optional/object_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <iosfwd>
+#include <istream>
+#include <utility>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -18,17 +21,9 @@ namespace fcppt
 {
 namespace io
 {
+namespace detail
+{
 
-/**
-\brief Reads a value from a stream, returning an optional.
-
-\ingroup fcpptio
-
-Uses <code>operator>></code> to extract a value of type \a Type from \a
-_stream. If extracting the value fails, an empty optional is returned.
-
-\tparam Type Must have a default constructor or a constructor for \link fcppt::no_init\endlink.
-*/
 template<
 	typename Type,
 	typename Ch,
@@ -38,21 +33,32 @@ inline
 fcppt::optional::object<
 	Type
 >
-extract(
+extract_impl(
 	std::basic_istream<
 		Ch,
 		Traits
-	> &_stream
+	> &_stream,
+	fcppt::reference<
+		Type
+	> const _result
 )
 {
 	return
-		fcppt::io::detail::extract<
-			Type
-		>(
-			_stream
-		);
+		_stream
+		>>
+		_result.get()
+		?
+			fcppt::optional::make(
+				std::move(
+					_result.get()
+				)
+			)
+		:
+			fcppt::optional::nothing{}
+		;
 }
 
+}
 }
 }
 

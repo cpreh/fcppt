@@ -7,9 +7,11 @@
 #ifndef FCPPT_STRONG_TYPEDEF_INPUT_HPP_INCLUDED
 #define FCPPT_STRONG_TYPEDEF_INPUT_HPP_INCLUDED
 
-#include <fcppt/strong_typedef_fwd.hpp>
+#include <fcppt/strong_typedef_impl.hpp>
+#include <fcppt/io/extract.hpp>
+#include <fcppt/optional/maybe_void.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <istream>
+#include <iosfwd>
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
@@ -43,21 +45,29 @@ operator>>(
 	> &_value
 )
 {
-	// TODO: Make it possible to use no_init here
-	T in;
-
-	if(
-		_stream >> in
-	)
-		_value =
-			fcppt::strong_typedef<
-				T,
-				Tag
-			>(
-				std::move(
-					in
-				)
-			);
+	fcppt::optional::maybe_void(
+		fcppt::io::extract<
+			T
+		>(
+			_stream
+		),
+		[
+			&_value
+		](
+			T &&_result
+		)
+		{
+			_value =
+				fcppt::strong_typedef<
+					T,
+					Tag
+				>(
+					std::move(
+						_result
+					)
+				);
+		}
+	);
 
 	return
 		_stream;

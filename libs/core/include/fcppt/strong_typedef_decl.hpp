@@ -7,6 +7,7 @@
 #ifndef FCPPT_STRONG_TYPEDEF_DECL_HPP_INCLUDED
 #define FCPPT_STRONG_TYPEDEF_DECL_HPP_INCLUDED
 
+#include <fcppt/no_init_fwd.hpp>
 #include <fcppt/strong_typedef_fwd.hpp>
 #include <fcppt/detail/strong_typedef/friend_operators.hpp>
 #include <fcppt/preprocessor/disable_vc_warning.hpp>
@@ -53,12 +54,16 @@ public:
 	/**
 	\brief A type that represents the data stored in the strong typedef
 	*/
-	typedef T value_type;
+	typedef
+	T
+	value_type;
 
 	/**
 	\brief typedef for the <code>Tag</code> template parameter
 	*/
-	typedef Tag tag_type;
+	typedef
+	Tag
+	tag_type;
 
 	/**
 	\brief Constructs the strong typedef from a given value using fcppt::safe_cast.
@@ -69,6 +74,14 @@ public:
 	explicit
 	strong_typedef(
 		U const &
+	);
+
+	/**
+	\brief Creates an uninitialized strong typedef.
+	*/
+	explicit
+	strong_typedef(
+		fcppt::no_init const &
 	);
 
 	/**

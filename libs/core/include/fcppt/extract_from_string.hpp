@@ -7,6 +7,8 @@
 #ifndef FCPPT_EXTRACT_FROM_STRING_HPP_INCLUDED
 #define FCPPT_EXTRACT_FROM_STRING_HPP_INCLUDED
 
+#include <fcppt/io/extract.hpp>
+#include <fcppt/optional/nothing.hpp>
 #include <fcppt/optional/object_impl.hpp>
 #include <fcppt/type_traits/is_string.hpp>
 #include <fcppt/config/external_begin.hpp>
@@ -58,10 +60,14 @@ extract_from_string(
 		"extract_from_string can only be used on strings"
 	);
 
-	typedef std::basic_istringstream<
-		typename Source::value_type,
-		typename Source::traits_type
-	> istringstream;
+	typedef
+	std::basic_istringstream<
+		typename
+		Source::value_type,
+		typename
+		Source::traits_type
+	>
+	istringstream;
 
 	istringstream iss(
 		_source
@@ -71,23 +77,24 @@ extract_from_string(
 		_locale
 	);
 
-	Dest dest;
-
-	typedef fcppt::optional::object<
+	fcppt::optional::object<
 		Dest
-	> dest_opt;
+	> result{
+		fcppt::io::extract<
+			Dest
+		>(
+			iss
+		)
+	};
 
 	return
-		(
-			!(iss >> dest)
-			|| !iss.eof()
-		)
+		iss.eof()
 		?
-			dest_opt()
-		:
-			dest_opt(
-				dest
+			std::move(
+				result
 			)
+		:
+			fcppt::optional::nothing{}
 		;
 }
 

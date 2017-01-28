@@ -23,7 +23,7 @@
 
 <li>\ref fcpptio
 	<ul>
-	<li>Added \link fcppt::io::extract\endlink.</li>
+	<li>Added \link fcppt::io::extract\endlink which can also read objects of types that take \link fcppt::no_init\endlink.</li>
 	</ul>
 </li>
 
@@ -69,6 +69,12 @@
 	<li>Allow <code>==</code> and <code>!=</code> comparison for equivalent records.</li>
 	<li>Added \link fcppt::record::permute\endlink.</li>
 	<li>Added \link fcppt::record::map_elements\endlink and \link fcppt::record::map\endlink.</li>
+	</ul>
+</li>
+
+<li>\ref fcpptstrongtypedef
+	<ul>
+	<li>Added \link fcppt::no_init\endlink constructor to \link fcppt::strong_typedef\endlink.</li>
 	</ul>
 </li>
 
