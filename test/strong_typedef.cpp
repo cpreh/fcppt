@@ -9,6 +9,10 @@
 #include <fcppt/strong_typedef_input.hpp>
 #include <fcppt/strong_typedef_output.hpp>
 #include <fcppt/unique_ptr.hpp>
+#include <fcppt/io/extract.hpp>
+#include <fcppt/optional/make.hpp>
+#include <fcppt/optional/object.hpp>
+#include <fcppt/optional/output.hpp>
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
@@ -205,26 +209,53 @@ BOOST_AUTO_TEST_CASE(
 {
 FCPPT_PP_POP_WARNING
 
-	std::stringstream stream;
+	{
+		std::stringstream stream;
 
-	strong_int const test(
-		42
-	);
+		strong_int const test(
+			42
+		);
 
-	stream << test;
+		stream << test;
 
-	strong_int result(
-		0
-	);
+		strong_int result(
+			0
+		);
 
-	BOOST_REQUIRE(
-		stream >> result
-	);
+		BOOST_REQUIRE(
+			stream >> result
+		);
 
-	BOOST_CHECK_EQUAL(
-		test,
-		result
-	);
+		BOOST_CHECK_EQUAL(
+			test,
+			result
+		);
+	}
+
+	{
+		std::stringstream stream;
+
+		stream << 42;
+
+		fcppt::optional::object<
+			strong_int
+		> const result2{
+			fcppt::io::extract<
+				strong_int
+			>(
+				stream
+			)
+		};
+
+		BOOST_CHECK_EQUAL(
+			fcppt::optional::make(
+				strong_int{
+					42
+				}
+			),
+			result2
+		);
+	}
 }
 
 FCPPT_PP_PUSH_WARNING
