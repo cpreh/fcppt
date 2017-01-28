@@ -53,6 +53,26 @@ public:
 		Parser &&
 	);
 
+	many(
+		many const &
+	);
+
+	many(
+		many &&
+	);
+
+	many &
+	operator=(
+		many const &
+	);
+
+	many &
+	operator=(
+		many &&
+	);
+
+	~many();
+
 	typedef
 	fcppt::record::map_elements<
 		fcppt::options::result_of<

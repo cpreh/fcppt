@@ -74,6 +74,73 @@ template<
 	typename Left,
 	typename Right
 >
+fcppt::options::product<
+	Left,
+	Right
+>::product(
+	product const &
+)
+= default;
+
+template<
+	typename Left,
+	typename Right
+>
+fcppt::options::product<
+	Left,
+	Right
+>::product(
+	product &&
+)
+= default;
+
+template<
+	typename Left,
+	typename Right
+>
+fcppt::options::product<
+	Left,
+	Right
+> &
+fcppt::options::product<
+	Left,
+	Right
+>::operator=(
+	product const &
+)
+= default;
+
+template<
+	typename Left,
+	typename Right
+>
+fcppt::options::product<
+	Left,
+	Right
+> &
+fcppt::options::product<
+	Left,
+	Right
+>::operator=(
+	product &&
+)
+= default;
+
+template<
+	typename Left,
+	typename Right
+>
+fcppt::options::product<
+	Left,
+	Right
+>::~product()
+{
+}
+
+template<
+	typename Left,
+	typename Right
+>
 fcppt::options::result<
 	typename
 	fcppt::options::product<

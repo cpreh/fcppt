@@ -69,6 +69,61 @@ fcppt::options::many<
 template<
 	typename Parser
 >
+fcppt::options::many<
+	Parser
+>::many(
+	many const &
+)
+= default;
+
+template<
+	typename Parser
+>
+fcppt::options::many<
+	Parser
+>::many(
+	many &&
+)
+= default;
+
+template<
+	typename Parser
+>
+fcppt::options::many<
+	Parser
+> &
+fcppt::options::many<
+	Parser
+>::operator=(
+	many const &
+)
+= default;
+
+template<
+	typename Parser
+>
+fcppt::options::many<
+	Parser
+> &
+fcppt::options::many<
+	Parser
+>::operator=(
+	many &&
+)
+= default;
+
+template<
+	typename Parser
+>
+fcppt::options::many<
+	Parser
+>::~many()
+{
+}
+
+template<
+	typename Parser
+>
 fcppt::options::result<
 	typename
 	fcppt::options::many<
