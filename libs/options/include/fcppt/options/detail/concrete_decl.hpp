@@ -11,8 +11,8 @@
 #include <fcppt/string.hpp>
 #include <fcppt/options/base_decl.hpp>
 #include <fcppt/options/has_parameter_set.hpp>
-#include <fcppt/options/state_fwd.hpp>
 #include <fcppt/options/result_fwd.hpp>
+#include <fcppt/options/state_fwd.hpp>
 #include <fcppt/options/detail/concrete_fwd.hpp>
 
 

@@ -11,6 +11,7 @@
 #include <fcppt/options/has_parameter_set.hpp>
 #include <fcppt/options/many_fwd.hpp>
 #include <fcppt/options/result_fwd.hpp>
+#include <fcppt/options/result_of.hpp>
 #include <fcppt/options/state_fwd.hpp>
 #include <fcppt/record/element_to_type_tpl.hpp>
 #include <fcppt/record/map_elements.hpp>
@@ -54,8 +55,9 @@ public:
 
 	typedef
 	fcppt::record::map_elements<
-		typename
-		Parser::result_type,
+		fcppt::options::result_of<
+			Parser
+		>,
 		std::vector<
 			fcppt::record::element_to_type_tpl<
 				boost::mpl::_

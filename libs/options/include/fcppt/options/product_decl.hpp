@@ -11,6 +11,7 @@
 #include <fcppt/options/has_parameter_set.hpp>
 #include <fcppt/options/product_fwd.hpp>
 #include <fcppt/options/result_fwd.hpp>
+#include <fcppt/options/result_of.hpp>
 #include <fcppt/options/state_fwd.hpp>
 #include <fcppt/record/disjoint_product.hpp>
 
@@ -52,10 +53,12 @@ public:
 
 	typedef
 	fcppt::record::disjoint_product<
-		typename
-		Left::result_type,
-		typename
-		Right::result_type
+		fcppt::options::result_of<
+			Left
+		>,
+		fcppt::options::result_of<
+			Right
+		>
 	>
 	result_type;
 

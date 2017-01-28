@@ -10,8 +10,8 @@
 #include <fcppt/string.hpp>
 #include <fcppt/either/map.hpp>
 #include <fcppt/options/has_parameter_set.hpp>
-#include <fcppt/options/state_fwd.hpp>
 #include <fcppt/options/result.hpp>
+#include <fcppt/options/state_fwd.hpp>
 #include <fcppt/options/detail/concrete_decl.hpp>
 #include <fcppt/record/permute.hpp>
 #include <fcppt/config/external_begin.hpp>

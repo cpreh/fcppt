@@ -17,11 +17,13 @@
 #include <fcppt/optional/object_impl.hpp>
 #include <fcppt/options/error.hpp>
 #include <fcppt/options/has_parameter_set.hpp>
-#include <fcppt/options/missing_error.hpp>
 #include <fcppt/options/many_decl.hpp>
+#include <fcppt/options/missing_error.hpp>
 #include <fcppt/options/other_error.hpp>
 #include <fcppt/options/result.hpp>
+#include <fcppt/options/result_of.hpp>
 #include <fcppt/options/state_fwd.hpp>
+#include <fcppt/options/detail/deref.hpp>
 #include <fcppt/record/element_to_label.hpp>
 #include <fcppt/record/element_to_type.hpp>
 #include <fcppt/record/get.hpp>
@@ -111,7 +113,9 @@ fcppt::options::many<
 		!optional_error.has_value()
 	)
 		fcppt::either::match(
-			parser_.parse(
+			fcppt::options::detail::deref(
+				parser_
+			).parse(
 				_state
 			),
 			[
@@ -130,8 +134,9 @@ fcppt::options::many<
 			[
 				&result
 			](
-				typename
-				Parser::result_type &&_inner
+				fcppt::options::result_of<
+					Parser
+				> &&_inner
 			)
 			{
 				result =
@@ -237,7 +242,9 @@ fcppt::options::many<
 >::parameters() const
 {
 	return
-		parser_.parameters();
+		fcppt::options::detail::deref(
+			parser_
+		).parameters();
 }
 
 template<
@@ -251,7 +258,9 @@ fcppt::options::many<
 	return
 		FCPPT_TEXT("[ ")
 		+
-		parser_.usage()
+		fcppt::options::detail::deref(
+			parser_
+		).usage()
 		+
 		FCPPT_TEXT(" ]*");
 }

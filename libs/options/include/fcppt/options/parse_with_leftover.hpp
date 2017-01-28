@@ -8,14 +8,10 @@
 #define FCPPT_OPTIONS_PARSE_WITH_LEFTOVER_HPP_INCLUDED
 
 #include <fcppt/args_vector.hpp>
-#include <fcppt/either/map.hpp>
+#include <fcppt/options/parse_from_state.hpp>
 #include <fcppt/options/parse_result.hpp>
 #include <fcppt/options/result.hpp>
-#include <fcppt/options/state.hpp>
 #include <fcppt/options/state_from_args.hpp>
-#include <fcppt/config/external_begin.hpp>
-#include <utility>
-#include <fcppt/config/external_end.hpp>
 
 
 namespace fcppt
@@ -34,6 +30,7 @@ leftover state is returned. Otherwise, the error of the parse is returned.
 template<
 	typename Parser
 >
+inline
 fcppt::options::result<
 	fcppt::options::parse_result<
 		typename
@@ -45,41 +42,13 @@ parse_with_leftover(
 	fcppt::args_vector const &_args
 )
 {
-	fcppt::options::state state{
-		fcppt::options::state_from_args(
-			_args,
-			_parser.parameters()
-		)
-	};
-
-	typedef
-	typename
-	Parser::result_type
-	result_type;
-
 	return
-		fcppt::either::map(
-			_parser.parse(
-				state
-			),
-			[
-				&state
-			](
-				result_type &&_result
+		fcppt::options::parse_from_state(
+			_parser,
+			fcppt::options::state_from_args(
+				_args,
+				_parser.parameters()
 			)
-			{
-				return
-					fcppt::options::parse_result<
-						result_type
-					>{
-						std::move(
-							_result
-						),
-						std::move(
-							state
-						)
-					};
-			}
 		);
 }
 

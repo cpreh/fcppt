@@ -15,7 +15,9 @@
 #include <fcppt/options/has_parameter_set.hpp>
 #include <fcppt/options/product_decl.hpp>
 #include <fcppt/options/result.hpp>
+#include <fcppt/options/result_of.hpp>
 #include <fcppt/options/state_fwd.hpp>
+#include <fcppt/options/detail/deref.hpp>
 #include <fcppt/record/multiply_disjoint.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <utility>
@@ -88,27 +90,33 @@ fcppt::options::product<
 {
 	return
 		fcppt::either::bind(
-			left_.parse(
+			fcppt::options::detail::deref(
+				left_
+			).parse(
 				_state
 			),
 			[
 				&_state,
 				this
 			](
-				typename
-				Left::result_type &&_left_result
+				fcppt::options::result_of<
+					Left
+				> &&_left_result
 			)
 			{
 				return
 					fcppt::either::map(
-						right_.parse(
+						fcppt::options::detail::deref(
+							right_
+						).parse(
 							_state
 						),
 						[
 							&_left_result
 						](
-							typename
-							Right::result_type &&_right_result
+							fcppt::options::result_of<
+								Right
+							> &&_right_result
 						)
 						{
 							return
@@ -138,8 +146,12 @@ fcppt::options::product<
 {
 	return
 		fcppt::algorithm::set_union(
-			left_.parameters(),
-			right_.parameters()
+			fcppt::options::detail::deref(
+				left_
+			).parameters(),
+			fcppt::options::detail::deref(
+				right_
+			).parameters()
 		);
 }
 
@@ -154,11 +166,15 @@ fcppt::options::product<
 >::usage() const
 {
 	return
-		left_.usage()
+		fcppt::options::detail::deref(
+			left_
+		).usage()
 		+
 		FCPPT_TEXT('\n')
 		+
-		right_.usage();
+		fcppt::options::detail::deref(
+			right_
+		).usage();
 }
 
 #endif

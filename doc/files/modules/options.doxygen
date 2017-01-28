@@ -14,7 +14,7 @@
 	<li>\ref fcpptoptions_complex</li>
 	<li>\ref fcpptoptions_help</li>
 	<li>\ref fcpptoptions_base</li>
-	<li>\ref fcpptoptions_sub</li>
+	<li>\ref fcpptoptions_state</li>
 </ul>
 
 </td>
@@ -246,8 +246,8 @@ The output filename is an <em>optional</em> argument parser. Its type is
 
 \snippet options/complex.cpp options_output_file_option
 
-The execute flag is just a switch. It can be activated using <code>-e</code> or
-<code>--execute</code>.
+The execute flag is just a switch. It can be activated using <code>"-e"</code>
+or <code>"--execute"</code>.
 
 \snippet options/complex.cpp options_execute_switch
 
@@ -257,10 +257,11 @@ while its active value is <code>std::ios_base::trunc</code>.
 
 \snippet options/complex.cpp options_openmode_option
 
-The log level is an option parser of type \link fcppt::log::level\endlink.
-It can be set using <code>-l level</code> or <code>--loglevel level</code>, where
-<code>level</code> has to be one of \link fcppt::log::level\endlink's values.
-The parser also gets a default value of \link fcppt::log::level::warning\endlink.
+The log level is an option parser of type \link fcppt::log::level\endlink. It
+can be set using <code>"-l level"</code> or <code>"--loglevel level"</code>,
+where <code>level</code> has to be one of \link fcppt::log::level\endlink's
+values. The parser also gets a default value of \link
+fcppt::log::level::warning\endlink.
 
 \snippet options/complex.cpp options_log_level_option
 
@@ -301,16 +302,59 @@ Second, the openmode needs to be passed as well.
 
 \snippet options/complex.cpp options_open_output
 
-\section fcpptoptions_help Help text
+\section fcpptoptions_help Help option
 
-TODO...
+A help option is a special flag like <code>"--help"</code>. If specified, the
+program should print its help text and not accept any other arguments. This
+layering of two parsers is implemented by \link
+fcppt::options::parse_help\endlink. It gets a parser of type \link
+fcppt::options::help_switch\endlink as its first argument, and a regular parser
+as its second argument. \link fcppt::options::default_help_switch\endlink is
+a switch that accepts both <code>"-h"</code> and <code>"--help"</code>:
+
+\snippet options/help.cpp options_parse_help
+
+If the help switch matches, the function returns an \link
+fcppt::options::help_text\endlink, otherwise it returns a regular \link
+fcppt::options::result\endlink.
+
+\snippet options/help.cpp options_help_match
+
 \section fcpptoptions_base Hiding parser implementation
 
-TODO...
+As seen in \ref fcpptoptions_complex, the type of a parser can get very
+complex, because it carries the exact types of all the parsers used to build
+it. In order to hide this, the base class \link fcppt::options::base\endlink
+can be used. Its only type parameter is the parser's result type, which means
+that we need to know the result type in advance. In the following example,
+we are going to expect a parser that returns an int and a bool:
 
-\section fcpptoptions_sub Sub parsers
+\snippet options/base.cpp options_base_record
 
-TODO...
+Next, we define a function that creates such a parser. In a real program, this
+can be hidden away inside another translation unit:
+
+\snippet options/base.cpp options_create_base
+
+The parser can then be used like any other parser:
+
+\snippet options/base.cpp options_use_base
+
+It is also possible to use such an \link
+fcppt::options::base_unique_ptr\endlink as an argument to another parser:
+
+\snippet options/base.cpp options_base_combine
+
+\section fcpptoptions_state Parser state
+
+The parser state, \link fcppt::options::state\endlink, is a class that contains
+unconsumed arguments, flags and options. It can be obtained from
+\link fcppt::options::state_from_args\endlink. Usually, the state is hidden
+away in functions like \link fcppt::options::parse\endlink, but it can also
+be used explicitly: \link fcppt::options::parse_from_state\endlink takes an
+\link fcppt::options::state\endlink instead of \link fcppt::args_vector\endlink,
+and \link fcppt::options::parse_with_leftover\endlink returns either an error
+or a result plus a state.
 */
 
 namespace fcppt

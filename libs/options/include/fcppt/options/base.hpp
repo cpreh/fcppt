@@ -4,11 +4,10 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_OPTIONS_BASE_UNIQUE_PTR_HPP_INCLUDED
-#define FCPPT_OPTIONS_BASE_UNIQUE_PTR_HPP_INCLUDED
+#ifndef FCPPT_OPTIONS_BASE_HPP_INCLUDED
+#define FCPPT_OPTIONS_BASE_HPP_INCLUDED
 
-#include <fcppt/unique_ptr_impl.hpp>
-#include <fcppt/options/base_unique_ptr_fwd.hpp>
+#include <fcppt/options/base_impl.hpp>
 
 
 #endif

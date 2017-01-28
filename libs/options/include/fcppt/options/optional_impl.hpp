@@ -21,7 +21,9 @@
 #include <fcppt/options/optional_decl.hpp>
 #include <fcppt/options/other_error.hpp>
 #include <fcppt/options/result.hpp>
+#include <fcppt/options/result_of.hpp>
 #include <fcppt/options/state_fwd.hpp>
+#include <fcppt/options/detail/deref.hpp>
 #include <fcppt/record/init.hpp>
 #include <fcppt/record/map.hpp>
 #include <fcppt/record/permute.hpp>
@@ -80,7 +82,9 @@ fcppt::options::optional<
 {
 	return
 		fcppt::either::match(
-			parser_.parse(
+			fcppt::options::detail::deref(
+				parser_
+			).parse(
 				_state
 			),
 			[](
@@ -135,8 +139,9 @@ fcppt::options::optional<
 					);
 			},
 			[](
-				typename
-				Parser::result_type &&_result
+				fcppt::options::result_of<
+					Parser
+				> &&_result
 			)
 			{
 				return
@@ -177,7 +182,9 @@ fcppt::options::optional<
 >::parameters() const
 {
 	return
-		parser_.parameters();
+		fcppt::options::detail::deref(
+			parser_
+		).parameters();
 }
 
 template<
@@ -191,7 +198,9 @@ fcppt::options::optional<
 	return
 		FCPPT_TEXT("[ ")
 		+
-		parser_.usage()
+		fcppt::options::detail::deref(
+			parser_
+		).usage()
 		+
 		FCPPT_TEXT(" ]");
 }

@@ -8,8 +8,8 @@
 #include <fcppt/io/extract.hpp>
 #include <fcppt/io/istream_fwd.hpp>
 #include <fcppt/log/level.hpp>
-#include <fcppt/log/level_input.hpp>
 #include <fcppt/log/level_from_string.hpp>
+#include <fcppt/log/level_input.hpp>
 #include <fcppt/optional/maybe.hpp>
 #include <fcppt/optional/maybe_void.hpp>
 #include <fcppt/config/external_begin.hpp>
