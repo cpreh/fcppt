@@ -72,6 +72,12 @@
 	</ul>
 </li>
 
+<li>\ref fcppttypetraits
+	<ul>
+	<li>Added \link fcppt::type_traits::constructible_from\endlink.</li>
+	</ul>
+</li>
+
 <li>\ref fcpptvarious
 	<ul>
 	<li>Added \link fcppt::args_from_second\endlink.</li>

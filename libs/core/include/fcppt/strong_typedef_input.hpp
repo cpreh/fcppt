@@ -43,6 +43,7 @@ operator>>(
 	> &_value
 )
 {
+	// TODO: Make it possible to use no_init here
 	T in;
 
 	if(
