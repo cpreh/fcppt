@@ -11,4 +11,5 @@ fcppt_export_generate_targets(
 	"fcppt_core"
 	"fcppt_filesystem"
 	"fcppt_log"
+	"fcppt_options"
 )
