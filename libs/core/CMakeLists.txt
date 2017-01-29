@@ -927,6 +927,8 @@ set(
 	libs/core/include/fcppt/record/element_to_label_tpl.hpp
 	libs/core/include/fcppt/record/element_to_type.hpp
 	libs/core/include/fcppt/record/element_to_type_tpl.hpp
+	libs/core/include/fcppt/record/element_vector.hpp
+	libs/core/include/fcppt/record/element_vector_tpl.hpp
 	libs/core/include/fcppt/record/get.hpp
 	libs/core/include/fcppt/record/has_label.hpp
 	libs/core/include/fcppt/record/init.hpp

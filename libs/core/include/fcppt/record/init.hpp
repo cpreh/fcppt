@@ -10,6 +10,7 @@
 #include <fcppt/use.hpp>
 #include <fcppt/algorithm/vararg_map.hpp>
 #include <fcppt/record/element_to_label.hpp>
+#include <fcppt/record/element_vector.hpp>
 #include <fcppt/record/is_object.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/fusion/adapted/mpl.hpp>
@@ -55,8 +56,9 @@ init(
 
 	return
 		fcppt::algorithm::vararg_map(
-			typename
-			Result::all_types{},
+			fcppt::record::element_vector<
+				Result
+			>{},
 			[](
 				auto &&... _args
 			){

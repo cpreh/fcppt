@@ -11,6 +11,7 @@
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/record/element_to_type_tpl.hpp>
+#include <fcppt/record/element_vector.hpp>
 #include <fcppt/record/is_object.hpp>
 #include <fcppt/record/detail/find_element_deref.hpp>
 
@@ -38,8 +39,9 @@ struct label_value_type_tpl
 :
 fcppt::record::element_to_type_tpl<
 	fcppt::record::detail::find_element_deref<
-		typename
-		Record::all_types,
+		fcppt::record::element_vector<
+			Record
+		>,
 		Label
 	>
 >

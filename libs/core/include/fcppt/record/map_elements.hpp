@@ -9,6 +9,7 @@
 
 #include <fcppt/record/element.hpp>
 #include <fcppt/record/element_to_label_tpl.hpp>
+#include <fcppt/record/element_vector.hpp>
 #include <fcppt/record/object_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/mpl/bind.hpp>
@@ -43,8 +44,9 @@ map_elements
 fcppt::record::object<
 	typename
 	boost::mpl::transform<
-		typename
-		Record::all_types,
+		fcppt::record::element_vector<
+			Record
+		>,
 		fcppt::record::element<
 			fcppt::record::element_to_label_tpl<
 				boost::mpl::_1

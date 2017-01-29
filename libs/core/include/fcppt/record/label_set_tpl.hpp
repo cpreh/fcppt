@@ -11,6 +11,7 @@
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/record/element_to_label_tpl.hpp>
+#include <fcppt/record/element_vector.hpp>
 #include <fcppt/record/is_object.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/mpl/fold.hpp>
@@ -41,8 +42,9 @@ template<
 struct label_set_tpl
 :
 boost::mpl::fold<
-	typename
-	Record::all_types,
+	fcppt::record::element_vector<
+		Record
+	>,
 	boost::mpl::set0<>,
 	boost::mpl::insert<
 		boost::mpl::_1,
