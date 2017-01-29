@@ -7,6 +7,7 @@
 #include <fcppt/string.hpp>
 #include <fcppt/text.hpp>
 #include <fcppt/algorithm/join_strings.hpp>
+#include <fcppt/algorithm/reverse.hpp>
 #include <fcppt/algorithm/map.hpp>
 #include <fcppt/options/state.hpp>
 #include <fcppt/options/detail/leftover_error.hpp>
@@ -32,7 +33,9 @@ fcppt::options::detail::leftover_error(
 			FCPPT_TEXT("Too many arguments: ")
 			+
 			fcppt::algorithm::join_strings(
-				_state.leftover_args(),
+				fcppt::algorithm::reverse(
+					_state.leftover_args()
+				),
 				fcppt::string{
 					FCPPT_TEXT(",")
 				}
