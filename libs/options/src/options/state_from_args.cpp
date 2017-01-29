@@ -149,8 +149,8 @@ fcppt::options::state_from_args(
 						_name
 					];
 				else
-					// TODO: What do we do in the nothing case?
-					fcppt::optional::maybe_void(
+					// TODO: Does this make sense?
+					fcppt::optional::maybe(
 						fcppt::optional::make_if(
 							std::next(
 								it
@@ -168,6 +168,16 @@ fcppt::options::state_from_args(
 									);
 							}
 						),
+						[
+							&_name,
+							&options
+						]{
+							options[
+								_name
+							].push_back(
+								fcppt::string{}
+							);
+						},
 						[
 							&_name,
 							&it,

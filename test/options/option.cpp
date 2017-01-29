@@ -112,6 +112,15 @@ FCPPT_PP_POP_WARNING
 		fcppt::options::parse(
 			int_option,
 			fcppt::args_vector{
+				FCPPT_TEXT("--option")
+			}
+		).has_failure()
+	);
+
+	BOOST_CHECK(
+		fcppt::options::parse(
+			int_option,
+			fcppt::args_vector{
 				FCPPT_TEXT("--flag")
 			}
 		).has_failure()
@@ -151,6 +160,15 @@ FCPPT_PP_POP_WARNING
 					= 42
 			}
 		)
+	);
+
+	BOOST_CHECK(
+		fcppt::options::parse(
+			int_option_with_default,
+			fcppt::args_vector{
+				FCPPT_TEXT("--option")
+			}
+		).has_failure()
 	);
 
 	BOOST_CHECK(
