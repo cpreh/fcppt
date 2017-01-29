@@ -32,14 +32,14 @@ main(
 {
 // ![options_label]
 	FCPPT_RECORD_MAKE_LABEL(
-		arg_label
+		age_label
 	);
 // ![options_label]
 
 // ![options_arg_type]
 	typedef
 	fcppt::options::argument<
-		arg_label,
+		age_label,
 		int
 	>
 	parser_type;
@@ -52,11 +52,11 @@ main(
 // ![options_arg_object]
 	parser_type const parser{
 		fcppt::options::long_name{
-			FCPPT_TEXT("arg1")
+			FCPPT_TEXT("age")
 		},
 		fcppt::options::optional_help_text{
 			fcppt::options::help_text{
-				FCPPT_TEXT("The main argument")
+				FCPPT_TEXT("Your age")
 			}
 		}
 	};
@@ -90,10 +90,10 @@ main(
 		{
 			fcppt::io::cout()
 				<<
-				FCPPT_TEXT("The resulting int is ")
+				FCPPT_TEXT("Your age is ")
 				<<
 				fcppt::record::get<
-					arg_label
+					age_label
 				>(
 					_result
 				)

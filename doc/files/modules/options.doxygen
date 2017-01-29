@@ -29,20 +29,20 @@ usable in a program. Consider a program that expects a single integer
 argument. We not only have to check if <code>argc</code> has the right value
 but we also have to convert the first string into an integer. Although this
 example is as simple as it can get, using <code>argc</code> and <code>argv</code>
-directly is already troublesome. In more complicated examples that involve
+directly is already difficult. In more complicated examples that involve
 optional arguments, flags, or even arbitrary many arguments, this process gets
 even more error-prone.
 
-<code>fcppt.options</code> features a declarative style using <em>argument
-parsers</em> that carry attributes of the right type. The main attribute of a
-parser is always an \link fcppt::record::object\endlink, so that attributes can
-be accessed by <em>labels</em> in order to make their purpose clearer.  For
-example, a parser that expects a single integer with label name <code>L</code>
-has type <code>{ L : int }</code>. Parsers can be combined to yield more
-complicated parses, so for example a parser that expects zero or more strings
-with label name <code>S</code> has type <code>{ S : std::vector<std::string>
-}</code>. Combining these two parsers yields <code>{ L : int, S :
-std::vector<std::string> }</code>.
+<code>fcppt.options</code> features declarative <em>parsers</em> that carry
+attributes of the right type, similar to optparse-applicative in Haskell, though here
+the attribute of a parser is always an \link fcppt::record::object\endlink, so
+that accessing individual parts is done by <em>labels</em> in order to make their
+purpose clearer. For example, a parser that expects a single integer with label
+name <code>age</code> has type <code>{ age : int }</code>. Parsers can be combined
+to yield more complicated parsers, so for example a parser that expects zero or
+more strings with label name <code>first_names</code> has type <code>{ first_names :
+std::vector<std::string> }</code>. Combining these two parsers yields <code>{ age
+: int, first_names : std::vector<std::string> }</code>.
 
 \section fcpptoptions_simple A simple example
 
@@ -51,14 +51,14 @@ type <code>int</code>. First, we need to declare the label that is being used:
 
 \snippet options/simple.cpp options_label
 
-Next, we declare the parser type that uses <code>arg_label</code> to produce
+Next, we declare the parser type that uses <code>age_label</code> to produce
 a single value of type <code>int</code>.
 
 \snippet options/simple.cpp options_arg_type
 
 Such a parser parses a command-line like <code>./program "123"</code>, yielding
-the record <code>{ arg_label = 123 }</code>, which is of type
-<code>parser::result_type = { arg_label : int }</code>. Next, we define the
+the record <code>{ age_label = 123 }</code>, which is of type
+<code>parser::result_type = { age_label : int }</code>. Next, we define the
 actual parser:
 
 \snippet options/simple.cpp options_arg_object
@@ -86,7 +86,7 @@ that encapsulates the fact that a parser can fail.
 
 Now, all that needs to be done is to inspect <code>result</code>: First, we
 define a function called <code>on_success</code> that receives <code>result_type</code>
-(remember, this is a record of type <code>{ arg_label : int }</code>) and prints it.
+(remember, this is a record of type <code>{ age_label : int }</code>) and prints it.
 
 \snippet options/simple.cpp options_on_success
 
@@ -228,7 +228,7 @@ it. The append behavior will be activated using a flag.
 </li>
 <li>
 It uses a log framework to output certain messages during its run. The log
-level, which dictactes which log messages get printed, should be an optional
+level, which dictates which log messages get printed, should be an optional
 option to the program. If it is not specified, a default log level is used.
 </li>
 </ul>
