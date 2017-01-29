@@ -63,7 +63,7 @@ actual parser:
 
 \snippet options/simple.cpp options_arg_object
 
-Here, we see that it gets two parameters:
+Here, we see that an \link fcppt::options::argument\endlink gets two parameters:
 <ul>
 <li>The <em>long name</em> which is used as a placeholder in help messages and</li>
 <li>a text called <code>help_text</code> which can be used to explain the argument's purpose
