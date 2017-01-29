@@ -17,7 +17,7 @@
 fcppt::args_vector
 fcppt::args(
 	int const _argc,
-	char **_argv
+	char const *const *const _argv
 )
 {
 	return
@@ -29,7 +29,7 @@ fcppt::args(
 				_argv + _argc
 			),
 			[](
-				char *const _arg
+				char const *const _arg
 			)
 			{
 				return

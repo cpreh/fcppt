@@ -23,7 +23,7 @@ FCPPT_DETAIL_SYMBOL
 fcppt::args_vector
 args_from_second(
 	int argc,
-	char **argv
+	char const *const *argv
 );
 
 }

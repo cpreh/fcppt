@@ -12,7 +12,7 @@
 fcppt::args_vector
 fcppt::args_from_second(
 	int const _argc,
-	char **_argv
+	char const *const *const _argv
 )
 {
 	return
@@ -26,7 +26,9 @@ fcppt::args_from_second(
 				_argc
 				-
 				1,
-				++_argv
+				_argv
+				+
+				1
 			)
 		;
 }
