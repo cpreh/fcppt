@@ -9,9 +9,10 @@
 #include <fcppt/either/comparison.hpp>
 #include <fcppt/either/make_success.hpp>
 #include <fcppt/optional/make.hpp>
-#include <fcppt/optional/nothing.hpp>
 #include <fcppt/options/error.hpp>
 #include <fcppt/options/long_name.hpp>
+#include <fcppt/options/make_default_value.hpp>
+#include <fcppt/options/no_default_value.hpp>
 #include <fcppt/options/option.hpp>
 #include <fcppt/options/optional_help_text.hpp>
 #include <fcppt/options/optional_short_name.hpp>
@@ -54,9 +55,9 @@ FCPPT_PP_POP_WARNING
 		fcppt::options::long_name{
 			FCPPT_TEXT("option")
 		},
-		int_option_type::optional_default_value{
-			fcppt::optional::nothing{}
-		},
+		fcppt::options::no_default_value<
+			int
+		>(),
 		fcppt::options::optional_help_text{}
 	};
 
@@ -135,11 +136,11 @@ FCPPT_PP_POP_WARNING
 		fcppt::options::long_name{
 			FCPPT_TEXT("option")
 		},
-		int_option_type::optional_default_value{
+		fcppt::options::make_default_value(
 			fcppt::optional::make(
 				100
 			)
-		},
+		),
 		fcppt::options::optional_help_text{}
 	};
 

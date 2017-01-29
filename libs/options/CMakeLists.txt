@@ -13,6 +13,9 @@ set(
 	libs/options/include/fcppt/options/base_unique_ptr_fwd.hpp
 	libs/options/include/fcppt/options/custom_pretty_type.hpp
 	libs/options/include/fcppt/options/default_help_switch.hpp
+	libs/options/include/fcppt/options/default_value.hpp
+	libs/options/include/fcppt/options/default_value_fwd.hpp
+	libs/options/include/fcppt/options/default_value_tag.hpp
 	libs/options/include/fcppt/options/detail/apply.hpp
 	libs/options/include/fcppt/options/detail/concrete_decl.hpp
 	libs/options/include/fcppt/options/detail/concrete_fwd.hpp
@@ -41,6 +44,7 @@ set(
 	libs/options/include/fcppt/options/long_name.hpp
 	libs/options/include/fcppt/options/long_name_fwd.hpp
 	libs/options/include/fcppt/options/make_base.hpp
+	libs/options/include/fcppt/options/make_default_value.hpp
 	libs/options/include/fcppt/options/make_many.hpp
 	libs/options/include/fcppt/options/make_optional.hpp
 	libs/options/include/fcppt/options/many_decl.hpp
@@ -48,6 +52,7 @@ set(
 	libs/options/include/fcppt/options/many_impl.hpp
 	libs/options/include/fcppt/options/missing_error.hpp
 	libs/options/include/fcppt/options/missing_error_fwd.hpp
+	libs/options/include/fcppt/options/no_default_value.hpp
 	libs/options/include/fcppt/options/option.hpp
 	libs/options/include/fcppt/options/option_decl.hpp
 	libs/options/include/fcppt/options/option_fwd.hpp

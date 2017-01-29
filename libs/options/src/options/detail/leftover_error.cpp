@@ -7,8 +7,8 @@
 #include <fcppt/string.hpp>
 #include <fcppt/text.hpp>
 #include <fcppt/algorithm/join_strings.hpp>
-#include <fcppt/algorithm/reverse.hpp>
 #include <fcppt/algorithm/map.hpp>
+#include <fcppt/algorithm/reverse.hpp>
 #include <fcppt/options/state.hpp>
 #include <fcppt/options/detail/leftover_error.hpp>
 #include <fcppt/config/external_begin.hpp>
