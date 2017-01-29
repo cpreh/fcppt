@@ -9,6 +9,7 @@
 
 #include <fcppt/mpl/append.hpp>
 #include <fcppt/record/are_disjoint.hpp>
+#include <fcppt/record/element_vector.hpp>
 #include <fcppt/record/object_impl.hpp>
 
 
@@ -38,10 +39,12 @@ struct disjoint_product_tpl
 	fcppt::record::object<
 		typename
 		fcppt::mpl::append<
-			typename
-			RecordL::all_types,
-			typename
-			RecordR::all_types
+			fcppt::record::element_vector<
+				RecordL
+			>,
+			fcppt::record::element_vector<
+				RecordR
+			>
 		>::type
 	>
 	type;
