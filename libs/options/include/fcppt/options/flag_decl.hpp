@@ -8,9 +8,10 @@
 #define FCPPT_OPTIONS_FLAG_DECL_HPP_INCLUDED
 
 #include <fcppt/string.hpp>
-#include <fcppt/strong_typedef.hpp>
+#include <fcppt/options/active_value.hpp>
 #include <fcppt/options/flag_fwd.hpp>
 #include <fcppt/options/has_parameter_set.hpp>
+#include <fcppt/options/inactive_value.hpp>
 #include <fcppt/options/long_name.hpp>
 #include <fcppt/options/optional_help_text.hpp>
 #include <fcppt/options/optional_short_name.hpp>
@@ -48,15 +49,17 @@ template<
 class flag
 {
 public:
-	FCPPT_MAKE_STRONG_TYPEDEF(
-		Type,
-		active_value
-	);
+	typedef
+	fcppt::options::active_value<
+		Type
+	>
+	active_value;
 
-	FCPPT_MAKE_STRONG_TYPEDEF(
-		Type,
-		inactive_value
-	);
+	typedef
+	fcppt::options::inactive_value<
+		Type
+	>
+	inactive_value;
 
 	/**
 	\brief Constructs a flag parser.

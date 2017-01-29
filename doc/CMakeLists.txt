@@ -1401,6 +1401,9 @@ set(
 	libs/log/include/fcppt/log/parameters_fwd.hpp
 	libs/log/include/fcppt/log/verbose.hpp
 	libs/log/include/fcppt/log/warning.hpp
+	libs/options/include/fcppt/options/active_value.hpp
+	libs/options/include/fcppt/options/active_value_fwd.hpp
+	libs/options/include/fcppt/options/active_value_tag.hpp
 	libs/options/include/fcppt/options/apply.hpp
 	libs/options/include/fcppt/options/argument.hpp
 	libs/options/include/fcppt/options/argument_decl.hpp
@@ -1442,10 +1445,15 @@ set(
 	libs/options/include/fcppt/options/help_switch_fwd.hpp
 	libs/options/include/fcppt/options/help_text.hpp
 	libs/options/include/fcppt/options/help_text_fwd.hpp
+	libs/options/include/fcppt/options/inactive_value.hpp
+	libs/options/include/fcppt/options/inactive_value_fwd.hpp
+	libs/options/include/fcppt/options/inactive_value_tag.hpp
 	libs/options/include/fcppt/options/long_name.hpp
 	libs/options/include/fcppt/options/long_name_fwd.hpp
+	libs/options/include/fcppt/options/make_active_value.hpp
 	libs/options/include/fcppt/options/make_base.hpp
 	libs/options/include/fcppt/options/make_default_value.hpp
+	libs/options/include/fcppt/options/make_inactive_value.hpp
 	libs/options/include/fcppt/options/make_many.hpp
 	libs/options/include/fcppt/options/make_optional.hpp
 	libs/options/include/fcppt/options/many_decl.hpp

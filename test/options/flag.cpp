@@ -11,6 +11,8 @@
 #include <fcppt/options/error.hpp>
 #include <fcppt/options/flag.hpp>
 #include <fcppt/options/long_name.hpp>
+#include <fcppt/options/make_active_value.hpp>
+#include <fcppt/options/make_inactive_value.hpp>
 #include <fcppt/options/optional_help_text.hpp>
 #include <fcppt/options/optional_short_name.hpp>
 #include <fcppt/options/parse.hpp>
@@ -52,12 +54,12 @@ FCPPT_PP_POP_WARNING
 		fcppt::options::long_name{
 			FCPPT_TEXT("flag")
 		},
-		int_flag_type::active_value{
+		fcppt::options::make_active_value(
 			42
-		},
-		int_flag_type::inactive_value{
+		),
+		fcppt::options::make_inactive_value(
 			10
-		},
+		),
 		fcppt::options::optional_help_text{}
 	};
 
