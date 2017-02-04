@@ -795,7 +795,9 @@ set(
 	libs/core/include/fcppt/math/dim/object_impl.hpp
 	libs/core/include/fcppt/math/dim/output.hpp
 	libs/core/include/fcppt/math/dim/static.hpp
+	libs/core/include/fcppt/math/dim/static_decl.hpp
 	libs/core/include/fcppt/math/dim/static_fwd.hpp
+	libs/core/include/fcppt/math/dim/static_impl.hpp
 	libs/core/include/fcppt/math/dim/std_hash.hpp
 	libs/core/include/fcppt/math/dim/structure_cast.hpp
 	libs/core/include/fcppt/math/dim/to_signed.hpp
@@ -852,7 +854,9 @@ set(
 	libs/core/include/fcppt/math/matrix/scaling.hpp
 	libs/core/include/fcppt/math/matrix/sqrt.hpp
 	libs/core/include/fcppt/math/matrix/static.hpp
+	libs/core/include/fcppt/math/matrix/static_decl.hpp
 	libs/core/include/fcppt/math/matrix/static_fwd.hpp
+	libs/core/include/fcppt/math/matrix/static_impl.hpp
 	libs/core/include/fcppt/math/matrix/std_hash.hpp
 	libs/core/include/fcppt/math/matrix/structure_cast.hpp
 	libs/core/include/fcppt/math/matrix/to_static.hpp
@@ -918,7 +922,9 @@ set(
 	libs/core/include/fcppt/math/vector/signed_angle_between.hpp
 	libs/core/include/fcppt/math/vector/signed_angle_between_cast.hpp
 	libs/core/include/fcppt/math/vector/static.hpp
+	libs/core/include/fcppt/math/vector/static_decl.hpp
 	libs/core/include/fcppt/math/vector/static_fwd.hpp
+	libs/core/include/fcppt/math/vector/static_impl.hpp
 	libs/core/include/fcppt/math/vector/std_hash.hpp
 	libs/core/include/fcppt/math/vector/structure_cast.hpp
 	libs/core/include/fcppt/math/vector/to_dim.hpp

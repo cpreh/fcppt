@@ -4,10 +4,12 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_MATH_DIM_STATIC_HPP_INCLUDED
-#define FCPPT_MATH_DIM_STATIC_HPP_INCLUDED
+#ifndef FCPPT_MATH_DIM_STATIC_DECL_HPP_INCLUDED
+#define FCPPT_MATH_DIM_STATIC_DECL_HPP_INCLUDED
 
-#include <fcppt/math/dim/static_impl.hpp>
+#include <fcppt/math/detail/static_storage_decl.hpp>
+#include <fcppt/math/dim/object_decl.hpp>
+#include <fcppt/math/dim/static_fwd.hpp>
 
 
 #endif

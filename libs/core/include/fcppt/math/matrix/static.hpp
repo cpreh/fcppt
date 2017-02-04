@@ -7,9 +7,7 @@
 #ifndef FCPPT_MATH_MATRIX_STATIC_HPP_INCLUDED
 #define FCPPT_MATH_MATRIX_STATIC_HPP_INCLUDED
 
-#include <fcppt/math/matrix/object_impl.hpp>
-#include <fcppt/math/matrix/static_fwd.hpp>
-#include <fcppt/math/matrix/detail/static_storage.hpp>
+#include <fcppt/math/matrix/static_impl.hpp>
 
 
 #endif
