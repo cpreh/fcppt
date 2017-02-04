@@ -53,6 +53,10 @@ add_fcppt_math_vector_test(
 )
 
 add_fcppt_math_vector_test(
+	static
+)
+
+add_fcppt_math_vector_test(
 	structure_cast
 )
 
