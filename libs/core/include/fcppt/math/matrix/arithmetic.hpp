@@ -12,10 +12,10 @@
 #include <fcppt/use.hpp>
 #include <fcppt/algorithm/fold.hpp>
 #include <fcppt/math/int_range_count.hpp>
-#include <fcppt/math/detail/binary_map.hpp>
-#include <fcppt/math/detail/map.hpp>
 #include <fcppt/math/size_type.hpp>
+#include <fcppt/math/detail/binary_map.hpp>
 #include <fcppt/math/detail/binary_type.hpp>
+#include <fcppt/math/detail/map.hpp>
 #include <fcppt/math/matrix/at_c.hpp>
 #include <fcppt/math/matrix/index.hpp>
 #include <fcppt/math/matrix/init.hpp>
