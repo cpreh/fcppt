@@ -64,7 +64,8 @@ struct storage_size<
 >
 :
 fcppt::container::array_size<
-	T
+	typename
+	T::array_type
 >
 {
 };

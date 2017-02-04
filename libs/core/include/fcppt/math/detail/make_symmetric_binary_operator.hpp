@@ -7,8 +7,8 @@
 #ifndef FCPPT_MATH_DETAIL_MAKE_SYMMETRIC_BINARY_OPERATOR_HPP_INCLUDED
 #define FCPPT_MATH_DETAIL_MAKE_SYMMETRIC_BINARY_OPERATOR_HPP_INCLUDED
 
-#include <fcppt/math/binary_map.hpp>
 #include <fcppt/math/size_type.hpp>
+#include <fcppt/math/detail/binary_map.hpp>
 #include <fcppt/math/detail/binary_type.hpp>
 
 
@@ -22,6 +22,7 @@ template<\
 	typename S1,\
 	typename S2\
 >\
+inline \
 static_<\
 	FCPPT_MATH_DETAIL_BINARY_TYPE(L, op, R),\
 	N\
@@ -32,7 +33,7 @@ operator op(\
 )\
 {\
 	return \
-		fcppt::math::binary_map<\
+		fcppt::math::detail::binary_map<\
 			static_<\
 				FCPPT_MATH_DETAIL_BINARY_TYPE(L, op, R),\
 				N\

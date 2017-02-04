@@ -61,9 +61,9 @@ fcppt::math::dim::object<
 	Args const &..._args
 )
 :
-	storage_{{
+	storage_(
 		_args...
-	}}
+	)
 {
 	FCPPT_MATH_DETAIL_ASSERT_STATIC_STORAGE(
 		S

@@ -33,6 +33,12 @@
 	</ul>
 </li>
 
+<li>\ref fcpptmath
+	<ul>
+	<li>Added \link fcppt::math::to_array_type\endlink, \link fcppt::math::to_array_type_tpl\endlink, \link fcppt::math::from_array\endlink and \link fcppt::math::to_array\endlink.</li>
+	</ul>
+</li>
+
 <li>\ref fcpptmpl
 	<ul>
 	<li>Added \link fcppt::mpl::set_intersection\endlink.</li>
@@ -96,6 +102,15 @@
 \subsection changes_changed_functionality_to_250 Changed functionality
 
 <ul>
+
+<li>\ref fcpptmath
+	<ul>
+	<li>Moved <code>fcppt::math::static_storage</code>,
+	<code>fcppt::math::matrix::static_storage</code>,
+	<code>fcppt::math::map</code> and <code>fcppt::math::binary_map</code>
+	to detail.</li>
+	</ul>
+</li>
 
 <li>\ref fcpptoptional
 	<ul>

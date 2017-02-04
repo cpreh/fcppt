@@ -7,8 +7,8 @@
 #ifndef FCPPT_MATH_DETAIL_MAKE_UNARY_OPERATOR_HPP_INCLUDED
 #define FCPPT_MATH_DETAIL_MAKE_UNARY_OPERATOR_HPP_INCLUDED
 
-#include <fcppt/math/map.hpp>
 #include <fcppt/math/size_type.hpp>
+#include <fcppt/math/detail/map.hpp>
 #include <fcppt/math/detail/unary_type.hpp>
 
 
@@ -20,6 +20,7 @@ template<\
 	fcppt::math::size_type N,\
 	typename S\
 >\
+inline \
 static_<\
 	FCPPT_MATH_DETAIL_UNARY_TYPE(T, op),\
 	N\
@@ -33,7 +34,7 @@ operator op(\
 )\
 {\
 	return \
-		fcppt::math::map<\
+		fcppt::math::detail::map<\
 			static_<\
 				FCPPT_MATH_DETAIL_UNARY_TYPE(T, op), \
 				N\

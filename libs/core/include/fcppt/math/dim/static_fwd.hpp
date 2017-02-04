@@ -8,7 +8,7 @@
 #define FCPPT_MATH_DIM_STATIC_FWD_HPP_INCLUDED
 
 #include <fcppt/math/size_type.hpp>
-#include <fcppt/math/static_storage.hpp>
+#include <fcppt/math/detail/static_storage_fwd.hpp>
 #include <fcppt/math/dim/object_fwd.hpp>
 
 
@@ -34,7 +34,7 @@ using static_
 fcppt::math::dim::object<
 	T,
 	N,
-	fcppt::math::static_storage<
+	fcppt::math::detail::static_storage<
 		T,
 		N
 	>

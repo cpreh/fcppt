@@ -11,9 +11,9 @@
 #include <fcppt/tag_type.hpp>
 #include <fcppt/use.hpp>
 #include <fcppt/algorithm/fold.hpp>
-#include <fcppt/math/binary_map.hpp>
 #include <fcppt/math/int_range_count.hpp>
-#include <fcppt/math/map.hpp>
+#include <fcppt/math/detail/binary_map.hpp>
+#include <fcppt/math/detail/map.hpp>
 #include <fcppt/math/size_type.hpp>
 #include <fcppt/math/detail/binary_type.hpp>
 #include <fcppt/math/matrix/at_c.hpp>
@@ -41,6 +41,7 @@ template<\
 	typename S1,\
 	typename S2\
 >\
+inline \
 fcppt::math::matrix::static_<\
 	FCPPT_MATH_DETAIL_BINARY_TYPE(Left, op, Right),\
 	R,\
@@ -66,7 +67,7 @@ operator op(\
 	result_value_type;\
 \
 	return \
-		fcppt::math::binary_map<\
+		fcppt::math::detail::binary_map<\
 			fcppt::math::matrix::static_<\
 				result_value_type,\
 				R,\
@@ -111,6 +112,7 @@ template<
 	typename S1,
 	typename S2
 >
+inline
 fcppt::math::matrix::static_<
 	FCPPT_MATH_DETAIL_BINARY_TYPE(L, *, R),
 	M1,
@@ -220,6 +222,7 @@ template< \
 	fcppt::math::size_type C,\
 	typename S\
 >\
+inline \
 fcppt::math::matrix::static_<\
 	FCPPT_MATH_DETAIL_BINARY_TYPE(Left, op, Right),\
 	R,\
@@ -240,7 +243,7 @@ operator op(\
 	result_value_type;\
 \
 	return \
-		fcppt::math::map<\
+		fcppt::math::detail::map<\
 			fcppt::math::matrix::static_<\
 				result_value_type,\
 				R,\
@@ -287,6 +290,7 @@ template<
 	fcppt::math::size_type C,
 	typename S
 >
+inline
 fcppt::math::matrix::static_<
 	FCPPT_MATH_DETAIL_BINARY_TYPE(Left, *, Right),
 	R,
@@ -307,7 +311,7 @@ operator *(
 	result_value_type;
 
 	return
-		fcppt::math::map<
+		fcppt::math::detail::map<
 			fcppt::math::matrix::static_<
 				result_value_type,
 				R,

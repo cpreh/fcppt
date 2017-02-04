@@ -32,11 +32,14 @@ init_storage(
 	);
 
 	return
-		fcppt::algorithm::array_init_const<
-			Result
-		>(
-			_value
-		);
+		Result{
+			fcppt::algorithm::array_init_const<
+				typename
+				Result::array_type
+			>(
+				_value
+			)
+		};
 }
 
 }

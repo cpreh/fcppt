@@ -11,8 +11,9 @@
 #include <fcppt/algorithm/array_init.hpp>
 #include <fcppt/algorithm/array_push_back.hpp>
 #include <fcppt/math/at_c.hpp>
-#include <fcppt/math/static_storage.hpp>
+#include <fcppt/math/from_array.hpp>
 #include <fcppt/math/detail/assert_static_storage.hpp>
+#include <fcppt/math/detail/static_storage_impl.hpp>
 
 
 namespace fcppt
@@ -48,18 +49,21 @@ construct(
 	);
 
 	typedef
-	fcppt::math::static_storage<
+	fcppt::math::detail::static_storage<
 		typename
 		Src::value_type,
 		Src::static_size::value
 	>
-	storage;
+	src_storage;
 
 	return
-		Dest(
+		fcppt::math::from_array<
+			Dest
+		>(
 			fcppt::algorithm::array_push_back(
 				fcppt::algorithm::array_init<
-					storage
+					typename
+					src_storage::array_type
 				>(
 					[
 						&_src

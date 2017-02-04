@@ -8,8 +8,8 @@
 #define FCPPT_MATH_VECTOR_CEIL_DIV_SIGNED_HPP_INCLUDED
 
 #include <fcppt/math/ceil_div_signed.hpp>
-#include <fcppt/math/map.hpp>
 #include <fcppt/math/size_type.hpp>
+#include <fcppt/math/vector/map.hpp>
 #include <fcppt/math/vector/object_impl.hpp>
 #include <fcppt/math/vector/static.hpp>
 #include <fcppt/config/external_begin.hpp>
@@ -55,11 +55,9 @@ ceil_div_signed(
 	);
 
 	return
-		fcppt::math::map<
-			fcppt::math::vector::static_<
-				T,
-				N
-			>
+		fcppt::math::vector::map<
+			T,
+			N
 		>(
 			_vector,
 			[

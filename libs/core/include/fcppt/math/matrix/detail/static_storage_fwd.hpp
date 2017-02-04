@@ -4,11 +4,11 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_MATH_MATRIX_STATIC_STORAGE_HPP_INCLUDED
-#define FCPPT_MATH_MATRIX_STATIC_STORAGE_HPP_INCLUDED
+#ifndef FCPPT_MATH_MATRIX_DETAIL_STATIC_STORAGE_FWD_HPP_INCLUDED
+#define FCPPT_MATH_MATRIX_DETAIL_STATIC_STORAGE_FWD_HPP_INCLUDED
 
 #include <fcppt/math/size_type.hpp>
-#include <fcppt/math/static_storage.hpp>
+#include <fcppt/math/detail/static_storage_fwd.hpp>
 
 
 namespace fcppt
@@ -17,12 +17,9 @@ namespace math
 {
 namespace matrix
 {
+namespace detail
+{
 
-/**
-\brief Static storage type of a matrix
-
-\ingroup fcpptmathmatrix
-*/
 template<
 	typename T,
 	fcppt::math::size_type R,
@@ -30,11 +27,12 @@ template<
 >
 using static_storage
 =
-fcppt::math::static_storage<
+fcppt::math::detail::static_storage<
 	T,
 	R * C
 >;
 
+}
 }
 }
 }

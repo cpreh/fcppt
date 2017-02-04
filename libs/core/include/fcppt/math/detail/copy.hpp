@@ -40,31 +40,34 @@ copy(
 	);
 
 	return
-		fcppt::algorithm::array_init<
-			Result
-		>(
-			[
-				&_arg
-			](
-				auto const _index
-			)
-			{
-				FCPPT_USE(
-					_index
-				);
-
-				return
-					fcppt::math::detail::linear_access<
-						fcppt::cast::size<
-							fcppt::math::size_type
-						>(
-							_index()
-						)
-					>(
-						_arg.storage()
+		Result{
+			fcppt::algorithm::array_init<
+				typename
+				Result::array_type
+			>(
+				[
+					&_arg
+				](
+					auto const _index
+				)
+				{
+					FCPPT_USE(
+						_index
 					);
-			}
-		);
+
+					return
+						fcppt::math::detail::linear_access<
+							fcppt::cast::size<
+								fcppt::math::size_type
+							>(
+								_index()
+							)
+						>(
+							_arg.storage()
+						);
+				}
+			)
+		};
 }
 
 }

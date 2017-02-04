@@ -7,8 +7,8 @@
 #ifndef FCPPT_MATH_VECTOR_DIM_HPP_INCLUDED
 #define FCPPT_MATH_VECTOR_DIM_HPP_INCLUDED
 
-#include <fcppt/math/binary_map.hpp>
 #include <fcppt/math/size_type.hpp>
+#include <fcppt/math/detail/binary_map.hpp>
 #include <fcppt/math/detail/binary_type.hpp>
 #include <fcppt/math/dim/object_impl.hpp>
 #include <fcppt/math/vector/object_impl.hpp>
@@ -32,6 +32,7 @@ template<\
 	typename S1,\
 	typename S2\
 >\
+inline \
 fcppt::math::vector::static_<\
 	FCPPT_MATH_DETAIL_BINARY_TYPE(L, op, R),\
 	N \
@@ -54,7 +55,7 @@ operator op(\
 	result_value_type; \
 \
 	return \
-		fcppt::math::binary_map<\
+		fcppt::math::detail::binary_map<\
 			fcppt::math::vector::static_<\
 				result_value_type,\
 				N\

@@ -9,6 +9,7 @@
 
 #include <fcppt/math/matrix/object_impl.hpp>
 #include <fcppt/math/matrix/static_fwd.hpp>
+#include <fcppt/math/matrix/detail/static_storage.hpp>
 
 
 #endif

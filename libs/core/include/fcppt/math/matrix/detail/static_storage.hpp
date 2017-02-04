@@ -4,12 +4,11 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_MATH_VECTOR_STATIC_HPP_INCLUDED
-#define FCPPT_MATH_VECTOR_STATIC_HPP_INCLUDED
+#ifndef FCPPT_MATH_MATRIX_DETAIL_STATIC_STORAGE_HPP_INCLUDED
+#define FCPPT_MATH_MATRIX_DETAIL_STATIC_STORAGE_HPP_INCLUDED
 
 #include <fcppt/math/detail/static_storage_impl.hpp>
-#include <fcppt/math/vector/object_impl.hpp>
-#include <fcppt/math/vector/static_fwd.hpp>
+#include <fcppt/math/matrix/detail/static_storage_fwd.hpp>
 
 
 #endif

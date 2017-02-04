@@ -4,22 +4,22 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_MATH_MAP_HPP_INCLUDED
-#define FCPPT_MATH_MAP_HPP_INCLUDED
+#ifndef FCPPT_MATH_DETAIL_MAP_HPP_INCLUDED
+#define FCPPT_MATH_DETAIL_MAP_HPP_INCLUDED
 
 #include <fcppt/algorithm/array_map.hpp>
+#include <fcppt/math/from_array.hpp>
+#include <fcppt/math/to_array.hpp>
+#include <fcppt/math/to_array_type.hpp>
 
 
 namespace fcppt
 {
 namespace math
 {
+namespace detail
+{
 
-/**
-\brief Convenience wrapper for fcppt::algorithm::array_map
-
-\ingroup fcpptmath
-*/
 template<
 	typename Dest,
 	typename Source,
@@ -33,16 +33,23 @@ map(
 )
 {
 	return
-		Dest(
+		fcppt::math::from_array<
+			Dest
+		>(
 			fcppt::algorithm::array_map<
-				typename Dest::storage_type
+				fcppt::math::to_array_type<
+					Dest
+				>
 			>(
-				_source.storage(),
+				fcppt::math::to_array(
+					_source
+				),
 				_function
 			)
 		);
 }
 
+}
 }
 }
 

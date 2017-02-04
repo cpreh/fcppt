@@ -12,8 +12,8 @@
 #include <fcppt/cast/size.hpp>
 #include <fcppt/math/size_type.hpp>
 #include <fcppt/math/matrix/row_type.hpp>
-#include <fcppt/math/matrix/static_storage.hpp>
 #include <fcppt/math/matrix/detail/index_absolute.hpp>
+#include <fcppt/math/matrix/detail/static_storage.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <array>
 #include <cstddef>
@@ -35,7 +35,7 @@ template<
 	std::size_t R
 >
 inline
-fcppt::math::matrix::static_storage<
+fcppt::math::matrix::detail::static_storage<
 	Type,
 	fcppt::cast::size<
 		fcppt::math::size_type
@@ -58,59 +58,66 @@ init_storage(
 	> const &_value
 )
 {
-	return
-		fcppt::algorithm::array_init<
-			fcppt::math::matrix::static_storage<
-				Type,
-				fcppt::cast::size<
-					fcppt::math::size_type
-				>(
-					R
-				),
-				fcppt::cast::size<
-					fcppt::math::size_type
-				>(
-					C
-				)
-			>
+	typedef
+	fcppt::math::matrix::detail::static_storage<
+		Type,
+		fcppt::cast::size<
+			fcppt::math::size_type
 		>(
-			[
-				&_value
-			](
-				auto const _index
-			)
-			{
-				FCPPT_USE(
-					_index
-				);
+			R
+		),
+		fcppt::cast::size<
+			fcppt::math::size_type
+		>(
+			C
+		)
+	>
+	result_type;
 
-				typedef
-				fcppt::math::matrix::detail::index_absolute<
-					fcppt::cast::size<
-						fcppt::math::size_type
-					>(
-						C
-					),
-					fcppt::cast::size<
-						fcppt::math::size_type
-					>(
-						_index()
-					)
-				>
-				index;
-
-				return
-					std::get<
-						index::column
-					>(
-						std::get<
-							index::row
-						>(
-							_value
-						)
+	return
+		result_type{
+			fcppt::algorithm::array_init<
+				typename
+				result_type::array_type
+			>(
+				[
+					&_value
+				](
+					auto const _index
+				)
+				{
+					FCPPT_USE(
+						_index
 					);
-			}
-		);
+
+					typedef
+					fcppt::math::matrix::detail::index_absolute<
+						fcppt::cast::size<
+							fcppt::math::size_type
+						>(
+							C
+						),
+						fcppt::cast::size<
+							fcppt::math::size_type
+						>(
+							_index()
+						)
+					>
+					index;
+
+					return
+						std::get<
+							index::column
+						>(
+							std::get<
+								index::row
+							>(
+								_value
+							)
+						);
+				}
+			)
+		};
 }
 
 }

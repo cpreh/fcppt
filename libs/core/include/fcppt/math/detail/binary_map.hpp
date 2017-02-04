@@ -4,22 +4,22 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_MATH_BINARY_MAP_HPP_INCLUDED
-#define FCPPT_MATH_BINARY_MAP_HPP_INCLUDED
+#ifndef FCPPT_MATH_DETAIL_BINARY_MAP_HPP_INCLUDED
+#define FCPPT_MATH_DETAIL_BINARY_MAP_HPP_INCLUDED
 
 #include <fcppt/algorithm/array_binary_map.hpp>
+#include <fcppt/math/from_array.hpp>
+#include <fcppt/math/to_array.hpp>
+#include <fcppt/math/to_array_type.hpp>
 
 
 namespace fcppt
 {
 namespace math
 {
+namespace detail
+{
 
-/**
-\brief Convenience wrapper for fcppt::algorithm::array_binary_map
-
-\ingroup fcpptmath
-*/
 template<
 	typename Dest,
 	typename Source1,
@@ -35,17 +35,26 @@ binary_map(
 )
 {
 	return
-		Dest(
+		fcppt::math::from_array<
+			Dest
+		>(
 			fcppt::algorithm::array_binary_map<
-				typename Dest::storage_type
+				fcppt::math::to_array_type<
+					Dest
+				>
 			>(
-				_source1.storage(),
-				_source2.storage(),
+				fcppt::math::to_array(
+					_source1
+				),
+				fcppt::math::to_array(
+					_source2
+				),
 				_function
 			)
 		);
 }
 
+}
 }
 }
 

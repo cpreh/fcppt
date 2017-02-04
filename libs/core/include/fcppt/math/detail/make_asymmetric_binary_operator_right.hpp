@@ -7,9 +7,9 @@
 #ifndef FCPPT_MATH_DETAIL_MAKE_ASYMMETRIC_BINARY_OPERATOR_RIGHT_HPP_INCLUDED
 #define FCPPT_MATH_DETAIL_MAKE_ASYMMETRIC_BINARY_OPERATOR_RIGHT_HPP_INCLUDED
 
-#include <fcppt/math/map.hpp>
 #include <fcppt/math/size_type.hpp>
 #include <fcppt/math/detail/binary_type.hpp>
+#include <fcppt/math/detail/map.hpp>
 
 
 #define FCPPT_MATH_DETAIL_MAKE_ASYMMETRIC_BINARY_OPERATOR_RIGHT(\
@@ -21,6 +21,7 @@ template<\
 	fcppt::math::size_type N,\
 	typename S\
 >\
+inline \
 static_<\
 	FCPPT_MATH_DETAIL_BINARY_TYPE(L, op, R),\
 	N\
@@ -31,7 +32,7 @@ operator op(\
 )\
 {\
 	return \
-		fcppt::math::map<\
+		fcppt::math::detail::map<\
 			static_<\
 				FCPPT_MATH_DETAIL_BINARY_TYPE(L, op, R),\
 				N\

@@ -25,6 +25,7 @@
 	op\
 )\
 BOOST_PP_TUPLE_REM(class_arity)template_pre \
+inline \
 BOOST_PP_TUPLE_REM(class_arity)def_pre \
 & \
 BOOST_PP_TUPLE_REM(class_arity)def_pre \

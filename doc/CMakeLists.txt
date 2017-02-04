@@ -701,7 +701,6 @@ set(
 	libs/core/include/fcppt/make_strong_typedef.hpp
 	libs/core/include/fcppt/make_unique_ptr.hpp
 	libs/core/include/fcppt/math/at_c.hpp
-	libs/core/include/fcppt/math/binary_map.hpp
 	libs/core/include/fcppt/math/box/center.hpp
 	libs/core/include/fcppt/math/box/comparison.hpp
 	libs/core/include/fcppt/math/box/componentwise_equal.hpp
@@ -738,6 +737,7 @@ set(
 	libs/core/include/fcppt/math/detail/array_less.hpp
 	libs/core/include/fcppt/math/detail/assert_static_storage.hpp
 	libs/core/include/fcppt/math/detail/assign.hpp
+	libs/core/include/fcppt/math/detail/binary_map.hpp
 	libs/core/include/fcppt/math/detail/binary_type.hpp
 	libs/core/include/fcppt/math/detail/checked_access.hpp
 	libs/core/include/fcppt/math/detail/componentwise_equal.hpp
@@ -760,11 +760,15 @@ set(
 	libs/core/include/fcppt/math/detail/make_op_def.hpp
 	libs/core/include/fcppt/math/detail/make_symmetric_binary_operator.hpp
 	libs/core/include/fcppt/math/detail/make_unary_operator.hpp
+	libs/core/include/fcppt/math/detail/map.hpp
 	libs/core/include/fcppt/math/detail/mod.hpp
 	libs/core/include/fcppt/math/detail/narrow_cast.hpp
 	libs/core/include/fcppt/math/detail/null_storage.hpp
 	libs/core/include/fcppt/math/detail/one_dimensional_input.hpp
 	libs/core/include/fcppt/math/detail/one_dimensional_output.hpp
+	libs/core/include/fcppt/math/detail/static_storage_decl.hpp
+	libs/core/include/fcppt/math/detail/static_storage_fwd.hpp
+	libs/core/include/fcppt/math/detail/static_storage_impl.hpp
 	libs/core/include/fcppt/math/detail/storage_size.hpp
 	libs/core/include/fcppt/math/detail/structure_cast.hpp
 	libs/core/include/fcppt/math/detail/to_different.hpp
@@ -797,6 +801,7 @@ set(
 	libs/core/include/fcppt/math/dim/to_signed.hpp
 	libs/core/include/fcppt/math/dim/to_unsigned.hpp
 	libs/core/include/fcppt/math/dim/to_vector.hpp
+	libs/core/include/fcppt/math/from_array.hpp
 	libs/core/include/fcppt/math/int_range.hpp
 	libs/core/include/fcppt/math/int_range_count.hpp
 	libs/core/include/fcppt/math/interpolation/linear.hpp
@@ -805,7 +810,6 @@ set(
 	libs/core/include/fcppt/math/interval_distance.hpp
 	libs/core/include/fcppt/math/is_power_of_2.hpp
 	libs/core/include/fcppt/math/log2.hpp
-	libs/core/include/fcppt/math/map.hpp
 	libs/core/include/fcppt/math/matrix/adjugate.hpp
 	libs/core/include/fcppt/math/matrix/arithmetic.hpp
 	libs/core/include/fcppt/math/matrix/at_c.hpp
@@ -820,6 +824,8 @@ set(
 	libs/core/include/fcppt/math/matrix/detail/row_view_decl.hpp
 	libs/core/include/fcppt/math/matrix/detail/row_view_fwd.hpp
 	libs/core/include/fcppt/math/matrix/detail/row_view_impl.hpp
+	libs/core/include/fcppt/math/matrix/detail/static_storage.hpp
+	libs/core/include/fcppt/math/matrix/detail/static_storage_fwd.hpp
 	libs/core/include/fcppt/math/matrix/determinant.hpp
 	libs/core/include/fcppt/math/matrix/exponential_pade.hpp
 	libs/core/include/fcppt/math/matrix/has_dim.hpp
@@ -847,7 +853,6 @@ set(
 	libs/core/include/fcppt/math/matrix/sqrt.hpp
 	libs/core/include/fcppt/math/matrix/static.hpp
 	libs/core/include/fcppt/math/matrix/static_fwd.hpp
-	libs/core/include/fcppt/math/matrix/static_storage.hpp
 	libs/core/include/fcppt/math/matrix/std_hash.hpp
 	libs/core/include/fcppt/math/matrix/structure_cast.hpp
 	libs/core/include/fcppt/math/matrix/to_static.hpp
@@ -873,7 +878,9 @@ set(
 	libs/core/include/fcppt/math/sphere/object_impl.hpp
 	libs/core/include/fcppt/math/sphere/output.hpp
 	libs/core/include/fcppt/math/static_size.hpp
-	libs/core/include/fcppt/math/static_storage.hpp
+	libs/core/include/fcppt/math/to_array.hpp
+	libs/core/include/fcppt/math/to_array_type.hpp
+	libs/core/include/fcppt/math/to_array_type_tpl.hpp
 	libs/core/include/fcppt/math/twopi.hpp
 	libs/core/include/fcppt/math/vector/angle_between.hpp
 	libs/core/include/fcppt/math/vector/angle_between_cast.hpp
