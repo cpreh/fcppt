@@ -11,8 +11,10 @@
 #include <fcppt/either/map.hpp>
 #include <fcppt/options/has_parameter_set.hpp>
 #include <fcppt/options/result.hpp>
+#include <fcppt/options/result_of.hpp>
 #include <fcppt/options/state_fwd.hpp>
 #include <fcppt/options/detail/concrete_decl.hpp>
+#include <fcppt/options/detail/deref.hpp>
 #include <fcppt/record/permute.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <utility>
@@ -88,12 +90,15 @@ fcppt::options::detail::concrete<
 {
 	return
 		fcppt::either::map(
-			parser_.parse(
+			fcppt::options::detail::deref(
+				parser_
+			).parse(
 				_state
 			),
 			[](
-				typename
-				Parser::result_type &&_result
+				fcppt::options::result_of<
+					Parser
+				> &&_result
 			)
 			{
 				return
@@ -119,7 +124,9 @@ fcppt::options::detail::concrete<
 >::parameters() const
 {
 	return
-		parser_.parameters();
+		fcppt::options::detail::deref(
+			parser_
+		).parameters();
 }
 
 template<
@@ -133,7 +140,9 @@ fcppt::options::detail::concrete<
 >::usage() const
 {
 	return
-		parser_.usage();
+		fcppt::options::detail::deref(
+			parser_
+		).usage();
 }
 
 #endif
