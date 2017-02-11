@@ -4,11 +4,11 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_OPTIONS_PARSE_RESULT_IMPL_HPP_INCLUDED
-#define FCPPT_OPTIONS_PARSE_RESULT_IMPL_HPP_INCLUDED
+#ifndef FCPPT_OPTIONS_DETAIL_PARSE_RESULT_IMPL_HPP_INCLUDED
+#define FCPPT_OPTIONS_DETAIL_PARSE_RESULT_IMPL_HPP_INCLUDED
 
-#include <fcppt/options/parse_result_decl.hpp>
 #include <fcppt/options/state.hpp>
+#include <fcppt/options/detail/parse_result_decl.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <utility>
 #include <fcppt/config/external_end.hpp>
@@ -17,7 +17,7 @@
 template<
 	typename Result
 >
-fcppt::options::parse_result<
+fcppt::options::detail::parse_result<
 	Result
 >::parse_result(
 	Result &&_value,
@@ -41,7 +41,7 @@ template<
 	typename Result
 >
 Result const &
-fcppt::options::parse_result<
+fcppt::options::detail::parse_result<
 	Result
 >::value() const
 {
@@ -53,7 +53,7 @@ template<
 	typename Result
 >
 fcppt::options::state &
-fcppt::options::parse_result<
+fcppt::options::detail::parse_result<
 	Result
 >::remaining_state()
 {

@@ -1442,7 +1442,13 @@ set(
 	libs/options/include/fcppt/options/detail/help_text.hpp
 	libs/options/include/fcppt/options/detail/leftover_error.hpp
 	libs/options/include/fcppt/options/detail/long_or_short_name.hpp
+	libs/options/include/fcppt/options/detail/parse_from_state.hpp
+	libs/options/include/fcppt/options/detail/parse_result.hpp
+	libs/options/include/fcppt/options/detail/parse_result_decl.hpp
+	libs/options/include/fcppt/options/detail/parse_result_fwd.hpp
+	libs/options/include/fcppt/options/detail/parse_result_impl.hpp
 	libs/options/include/fcppt/options/detail/result_of.hpp
+	libs/options/include/fcppt/options/detail/state_from_args.hpp
 	libs/options/include/fcppt/options/detail/type_annotation.hpp
 	libs/options/include/fcppt/options/error.hpp
 	libs/options/include/fcppt/options/error_fwd.hpp
@@ -1490,13 +1496,7 @@ set(
 	libs/options/include/fcppt/options/other_error.hpp
 	libs/options/include/fcppt/options/other_error_fwd.hpp
 	libs/options/include/fcppt/options/parse.hpp
-	libs/options/include/fcppt/options/parse_from_state.hpp
 	libs/options/include/fcppt/options/parse_help.hpp
-	libs/options/include/fcppt/options/parse_result.hpp
-	libs/options/include/fcppt/options/parse_result_decl.hpp
-	libs/options/include/fcppt/options/parse_result_fwd.hpp
-	libs/options/include/fcppt/options/parse_result_impl.hpp
-	libs/options/include/fcppt/options/parse_with_leftover.hpp
 	libs/options/include/fcppt/options/pretty_type.hpp
 	libs/options/include/fcppt/options/product_decl.hpp
 	libs/options/include/fcppt/options/product_fwd.hpp
@@ -1507,7 +1507,6 @@ set(
 	libs/options/include/fcppt/options/short_name.hpp
 	libs/options/include/fcppt/options/short_name_fwd.hpp
 	libs/options/include/fcppt/options/state.hpp
-	libs/options/include/fcppt/options/state_from_args.hpp
 	libs/options/include/fcppt/options/state_fwd.hpp
 	libs/options/include/fcppt/options/switch.hpp
 	libs/options/include/fcppt/options/switch_decl.hpp

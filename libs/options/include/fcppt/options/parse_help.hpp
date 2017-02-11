@@ -31,6 +31,8 @@ namespace options
 First, the parser \a _help is applied to \a _args. If it matches, the
 <code>usage</code> string is gathered from \a _parser and returned. If \a _help
 fails, then the result of applying \a _parser to \a _args is returned.
+
+\warning Do not include any short or long names in \a _parser that \a _help is using.
 */
 template<
 	typename Parser

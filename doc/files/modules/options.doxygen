@@ -14,7 +14,6 @@
 	<li>\ref fcpptoptions_complex</li>
 	<li>\ref fcpptoptions_help</li>
 	<li>\ref fcpptoptions_base</li>
-	<li>\ref fcpptoptions_state</li>
 </ul>
 
 </td>
@@ -344,17 +343,6 @@ It is also possible to use such an \link
 fcppt::options::base_unique_ptr\endlink as an argument to another parser:
 
 \snippet options/base.cpp options_base_combine
-
-\section fcpptoptions_state Parser state
-
-The parser state, \link fcppt::options::state\endlink, is a class that contains
-unconsumed arguments, flags and options. It can be obtained from
-\link fcppt::options::state_from_args\endlink. Usually, the state is hidden
-away in functions like \link fcppt::options::parse\endlink, but it can also
-be used explicitly: \link fcppt::options::parse_from_state\endlink takes an
-\link fcppt::options::state\endlink instead of \link fcppt::args_vector\endlink,
-and \link fcppt::options::parse_with_leftover\endlink returns either an error
-or a result plus a state.
 */
 
 namespace fcppt

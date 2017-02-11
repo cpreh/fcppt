@@ -18,7 +18,7 @@
 #include <fcppt/options/has_parameter_set.hpp>
 #include <fcppt/options/is_option.hpp>
 #include <fcppt/options/state.hpp>
-#include <fcppt/options/state_from_args.hpp>
+#include <fcppt/options/detail/state_from_args.hpp>
 #include <fcppt/variant/match.hpp>
 #include <fcppt/variant/variadic.hpp>
 #include <fcppt/config/external_begin.hpp>
@@ -87,7 +87,7 @@ get_type(
 }
 
 fcppt::options::state
-fcppt::options::state_from_args(
+fcppt::options::detail::state_from_args(
 	fcppt::args_vector const &_args,
 	fcppt::options::has_parameter_set const &_parameters
 )

@@ -4,8 +4,8 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_OPTIONS_STATE_FROM_ARGS_HPP_INCLUDED
-#define FCPPT_OPTIONS_STATE_FROM_ARGS_HPP_INCLUDED
+#ifndef FCPPT_OPTIONS_DETAIL_STATE_FROM_ARGS_HPP_INCLUDED
+#define FCPPT_OPTIONS_DETAIL_STATE_FROM_ARGS_HPP_INCLUDED
 
 #include <fcppt/args_vector.hpp>
 #include <fcppt/options/has_parameter_set.hpp>
@@ -17,12 +17,9 @@ namespace fcppt
 {
 namespace options
 {
+namespace detail
+{
 
-/**
-\brief Produces a parse state from a command-line.
-
-\ingroup fcpptoptions
-*/
 FCPPT_OPTIONS_DETAIL_SYMBOL
 fcppt::options::state
 state_from_args(
@@ -30,6 +27,7 @@ state_from_args(
 	fcppt::options::has_parameter_set const &
 );
 
+}
 }
 }
 

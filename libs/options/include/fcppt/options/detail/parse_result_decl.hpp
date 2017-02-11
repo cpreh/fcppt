@@ -4,23 +4,20 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_OPTIONS_PARSE_RESULT_DECL_HPP_INCLUDED
-#define FCPPT_OPTIONS_PARSE_RESULT_DECL_HPP_INCLUDED
+#ifndef FCPPT_OPTIONS_DETAIL_PARSE_RESULT_DECL_HPP_INCLUDED
+#define FCPPT_OPTIONS_DETAIL_PARSE_RESULT_DECL_HPP_INCLUDED
 
-#include <fcppt/options/parse_result_fwd.hpp>
 #include <fcppt/options/state.hpp>
+#include <fcppt/options/detail/parse_result_fwd.hpp>
 
 
 namespace fcppt
 {
 namespace options
 {
+namespace detail
+{
 
-/**
-\brief The result of a parse, including the remaining state.
-
-\ingroup fcpptoptions
-*/
 template<
 	typename Result
 >
@@ -35,12 +32,6 @@ public:
 	Result const &
 	value() const;
 
-	/**
-	\brief The remaining state after the parse.
-
-	Each argument, flag and option that has not been consumed by the parse
-	remains in this object.
-	*/
 	fcppt::options::state &
 	remaining_state();
 private:
@@ -49,6 +40,7 @@ private:
 	fcppt::options::state state_;
 };
 
+}
 }
 }
 

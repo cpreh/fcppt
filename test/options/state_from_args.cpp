@@ -11,7 +11,7 @@
 #include <fcppt/optional/output.hpp>
 #include <fcppt/options/has_parameter_set.hpp>
 #include <fcppt/options/state.hpp>
-#include <fcppt/options/state_from_args.hpp>
+#include <fcppt/options/detail/state_from_args.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/test/unit_test.hpp>
 #include <fcppt/config/external_end.hpp>
@@ -27,7 +27,7 @@ BOOST_AUTO_TEST_CASE(
 FCPPT_PP_POP_WARNING
 
 	fcppt::options::state result{
-		fcppt::options::state_from_args(
+		fcppt::options::detail::state_from_args(
 			fcppt::args_vector{
 				FCPPT_TEXT("-bar"),
 				FCPPT_TEXT("-bar"),

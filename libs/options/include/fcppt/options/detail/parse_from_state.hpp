@@ -4,13 +4,13 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_OPTIONS_PARSE_FROM_STATE_HPP_INCLUDED
-#define FCPPT_OPTIONS_PARSE_FROM_STATE_HPP_INCLUDED
+#ifndef FCPPT_OPTIONS_DETAIL_PARSE_FROM_STATE_HPP_INCLUDED
+#define FCPPT_OPTIONS_DETAIL_PARSE_FROM_STATE_HPP_INCLUDED
 
 #include <fcppt/either/map.hpp>
-#include <fcppt/options/parse_result.hpp>
-#include <fcppt/options/result.hpp>
 #include <fcppt/options/state.hpp>
+#include <fcppt/options/result.hpp>
+#include <fcppt/options/detail/parse_result.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <utility>
 #include <fcppt/config/external_end.hpp>
@@ -20,21 +20,15 @@ namespace fcppt
 {
 namespace options
 {
+namespace detail
+{
 
-/**
-\brief Parse from a state and return the leftover state.
-
-\ingroup fcpptoptions
-
-Applies \a _parser to \a _state. If that succeeds, then the result plus the
-leftover state is returned. Otherwise, the error of the parse is returned.
-*/
 template<
 	typename Parser
 >
 inline
 fcppt::options::result<
-	fcppt::options::parse_result<
+	fcppt::options::detail::parse_result<
 		typename
 		Parser::result_type
 	>
@@ -61,7 +55,7 @@ parse_from_state(
 			)
 			{
 				return
-					fcppt::options::parse_result<
+					fcppt::options::detail::parse_result<
 						result_type
 					>{
 						std::move(
@@ -75,6 +69,7 @@ parse_from_state(
 		);
 }
 
+}
 }
 }
 
