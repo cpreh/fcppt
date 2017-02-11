@@ -141,15 +141,16 @@ fcppt::options::state_from_args(
 				fcppt::options::state::name_pair const &_name
 			){
 				if(
-					!_parameters.count(
+					_parameters.count(
 						_name.first
 					)
+					==
+					0u
 				)
 					++flags[
 						_name
 					];
 				else
-					// TODO: Does this make sense?
 					fcppt::optional::maybe(
 						fcppt::optional::make_if(
 							std::next(
