@@ -8,6 +8,7 @@
 #define FCPPT_OPTIONS_CUSTOM_PRETTY_TYPE_HPP_INCLUDED
 
 #include <fcppt/string.hpp>
+#include <fcppt/strong_typedef_fwd.hpp>
 #include <fcppt/type_name_from_info.hpp>
 #include <fcppt/options/detail/symbol.hpp>
 #include <fcppt/config/external_begin.hpp>
@@ -67,6 +68,28 @@ struct custom_pretty_type<
 	static
 	fcppt::string
 	get();
+};
+
+template<
+	typename Type,
+	typename Tag
+>
+struct custom_pretty_type<
+	fcppt::strong_typedef<
+		Type,
+		Tag
+	>
+>
+{
+	static
+	fcppt::string
+	get()
+	{
+		return
+			fcppt::options::custom_pretty_type<
+				Type
+			>::get();
+	}
 };
 
 }
