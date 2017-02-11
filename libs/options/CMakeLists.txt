@@ -47,6 +47,7 @@ set(
 	libs/options/include/fcppt/options/inactive_value.hpp
 	libs/options/include/fcppt/options/inactive_value_fwd.hpp
 	libs/options/include/fcppt/options/inactive_value_tag.hpp
+	libs/options/include/fcppt/options/is_option.hpp
 	libs/options/include/fcppt/options/long_name.hpp
 	libs/options/include/fcppt/options/long_name_fwd.hpp
 	libs/options/include/fcppt/options/make_active_value.hpp
@@ -103,6 +104,7 @@ set(
 	libs/options/src/options/detail/help_text.cpp
 	libs/options/src/options/detail/leftover_error.cpp
 	libs/options/src/options/detail/long_or_short_name.cpp
+	libs/options/src/options/is_option.cpp
 	libs/options/src/options/state.cpp
 	libs/options/src/options/state_from_args.cpp
 )

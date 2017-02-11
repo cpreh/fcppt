@@ -10,19 +10,20 @@
 #include <fcppt/string.hpp>
 #include <fcppt/text.hpp>
 #include <fcppt/container/at_optional.hpp>
-#include <fcppt/container/maybe_front.hpp>
 #include <fcppt/optional/comparison.hpp>
 #include <fcppt/optional/copy_value.hpp>
 #include <fcppt/optional/make.hpp>
 #include <fcppt/optional/make_if.hpp>
-#include <fcppt/optional/maybe_void.hpp>
+#include <fcppt/optional/maybe.hpp>
 #include <fcppt/options/has_parameter_set.hpp>
+#include <fcppt/options/is_option.hpp>
 #include <fcppt/options/state.hpp>
 #include <fcppt/options/state_from_args.hpp>
 #include <fcppt/variant/match.hpp>
 #include <fcppt/variant/variadic.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <iterator>
+#include <utility>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -42,14 +43,8 @@ get_type(
 )
 {
 	return
-		fcppt::optional::copy_value(
-			fcppt::container::maybe_front(
-				_value
-			)
-		)
-		==
-		fcppt::optional::make(
-			FCPPT_TEXT('-')
+		fcppt::options::is_option(
+			_value
 		)
 		?
 			variant{

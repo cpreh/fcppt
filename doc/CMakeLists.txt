@@ -1461,6 +1461,7 @@ set(
 	libs/options/include/fcppt/options/inactive_value.hpp
 	libs/options/include/fcppt/options/inactive_value_fwd.hpp
 	libs/options/include/fcppt/options/inactive_value_tag.hpp
+	libs/options/include/fcppt/options/is_option.hpp
 	libs/options/include/fcppt/options/long_name.hpp
 	libs/options/include/fcppt/options/long_name_fwd.hpp
 	libs/options/include/fcppt/options/make_active_value.hpp
