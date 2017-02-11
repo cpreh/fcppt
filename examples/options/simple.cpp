@@ -17,6 +17,7 @@
 #include <fcppt/options/optional_help_text.hpp>
 #include <fcppt/options/parse.hpp>
 #include <fcppt/options/result.hpp>
+#include <fcppt/options/result_of.hpp>
 #include <fcppt/record/get.hpp>
 #include <fcppt/record/make_label.hpp>
 #include <fcppt/config/external_begin.hpp>
@@ -45,7 +46,9 @@ main(
 	parser_type;
 
 	typedef
-	parser_type::result_type
+	fcppt::options::result_of<
+		parser_type
+	>
 	result_type;
 // ![options_arg_type]
 

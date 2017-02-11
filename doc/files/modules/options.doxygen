@@ -309,7 +309,7 @@ layering of two parsers is implemented by \link
 fcppt::options::parse_help\endlink. It gets a parser of type \link
 fcppt::options::help_switch\endlink as its first argument, and a regular parser
 as its second argument. \link fcppt::options::default_help_switch\endlink is
-a switch that accepts both <code>"-h"</code> and <code>"--help"</code>:
+a switch that accepts <code>"--help"</code>:
 
 \snippet options/help.cpp options_parse_help
 

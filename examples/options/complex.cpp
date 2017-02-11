@@ -47,6 +47,7 @@ FCPPT_PP_DISABLE_GCC_WARNING(-Wsign-promo)
 #include <fcppt/options/optional_short_name.hpp>
 #include <fcppt/options/parse_help.hpp>
 #include <fcppt/options/result.hpp>
+#include <fcppt/options/result_of.hpp>
 #include <fcppt/options/short_name.hpp>
 #include <fcppt/options/switch.hpp>
 #include <fcppt/record/get.hpp>
@@ -230,9 +231,11 @@ main(
 	);
 
 	typedef
-	decltype(
-		parser
-	)::result_type
+	fcppt::options::result_of<
+		decltype(
+			parser
+		)
+	>
 	result_type;
 // ![options_parser]
 

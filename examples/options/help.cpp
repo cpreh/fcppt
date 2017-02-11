@@ -16,6 +16,7 @@
 #include <fcppt/options/optional_help_text.hpp>
 #include <fcppt/options/parse_help.hpp>
 #include <fcppt/options/result.hpp>
+#include <fcppt/options/result_of.hpp>
 #include <fcppt/record/make_label.hpp>
 #include <fcppt/variant/match.hpp>
 #include <fcppt/config/external_begin.hpp>
@@ -53,7 +54,9 @@ main(
 
 	// ![options_parse_help]
 	fcppt::options::help_result<
-		parser_type::result_type
+		fcppt::options::result_of<
+			parser_type
+		>
 	> const result{
 		fcppt::options::parse_help(
 			fcppt::options::default_help_switch(),
@@ -71,7 +74,9 @@ main(
 		result,
 		[](
 			fcppt::options::result<
-				parser_type::result_type
+				fcppt::options::result_of<
+					parser_type
+				>
 			> const &
 		)
 		{
