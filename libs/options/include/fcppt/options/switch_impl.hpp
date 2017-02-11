@@ -89,4 +89,28 @@ fcppt::options::switch_<
 		impl_.usage();
 }
 
+template<
+	typename Label
+>
+fcppt::options::optional_short_name const &
+fcppt::options::switch_<
+	Label
+>::short_name() const
+{
+	return
+		impl_.short_name();
+}
+
+template<
+	typename Label
+>
+fcppt::options::long_name const &
+fcppt::options::switch_<
+	Label
+>::long_name() const
+{
+	return
+		impl_.long_name();
+}
+
 #endif

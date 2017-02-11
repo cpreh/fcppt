@@ -107,6 +107,12 @@ public:
 
 	fcppt::string
 	usage() const;
+
+	fcppt::options::optional_short_name const &
+	short_name() const;
+
+	fcppt::options::long_name const &
+	long_name() const;
 private:
 	fcppt::options::optional_short_name short_name_;
 

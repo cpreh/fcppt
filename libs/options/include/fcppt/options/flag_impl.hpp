@@ -171,4 +171,32 @@ fcppt::options::flag<
 		);
 }
 
+template<
+	typename Label,
+	typename Type
+>
+fcppt::options::optional_short_name const &
+fcppt::options::flag<
+	Label,
+	Type
+>::short_name() const
+{
+	return
+		short_name_;
+}
+
+template<
+	typename Label,
+	typename Type
+>
+fcppt::options::long_name const &
+fcppt::options::flag<
+	Label,
+	Type
+>::long_name() const
+{
+	return
+		long_name_;
+}
+
 #endif

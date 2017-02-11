@@ -8,14 +8,26 @@
 #define FCPPT_OPTIONS_PARSE_HELP_HPP_INCLUDED
 
 #include <fcppt/args_vector.hpp>
+#include <fcppt/text.hpp>
+#include <fcppt/either/make_failure.hpp>
 #include <fcppt/either/match.hpp>
 #include <fcppt/options/error.hpp>
 #include <fcppt/options/help_result.hpp>
 #include <fcppt/options/help_switch.hpp>
 #include <fcppt/options/help_text.hpp>
-#include <fcppt/options/parse.hpp>
+#include <fcppt/options/other_error.hpp>
+#include <fcppt/options/result_of.hpp>
+#include <fcppt/options/detail/deref.hpp>
 #include <fcppt/options/detail/help_label.hpp>
+#include <fcppt/options/detail/long_or_short_name.hpp>
+#include <fcppt/options/detail/parse.hpp>
+#include <fcppt/options/detail/parse_result.hpp>
+#include <fcppt/options/detail/parse_to_empty.hpp>
+#include <fcppt/options/detail/state_from_args.hpp>
 #include <fcppt/record/get.hpp>
+#include <fcppt/config/external_begin.hpp>
+#include <utility>
+#include <fcppt/config/external_end.hpp>
 
 
 namespace fcppt
@@ -28,9 +40,10 @@ namespace options
 
 \ingroup fcpptoptions
 
-First, the parser \a _help is applied to \a _args. If it matches, the
-<code>usage</code> string is gathered from \a _parser and returned. If \a _help
-fails, then the result of applying \a _parser to \a _args is returned.
+First, the switch parser \a _help is applied to \a _args. If its switch <b>and
+nothing else</b> is specified, the <code>usage</code> string is gathered from
+\a _parser and returned.  Otherwise, if the switch of \a _help was not
+specified, then the result of applying \a _parser to \a _args is returned.
 
 \warning Do not include any short or long names in \a _parser that \a _help is using.
 */
@@ -38,8 +51,9 @@ template<
 	typename Parser
 >
 fcppt::options::help_result<
-	typename
-	Parser::result_type
+	fcppt::options::result_of<
+		Parser
+	>
 >
 parse_help(
 	fcppt::options::help_switch const &_help,
@@ -48,58 +62,94 @@ parse_help(
 )
 {
 	typedef
-	fcppt::options::help_result<
-		typename
-		Parser::result_type
+	fcppt::options::result_of<
+		Parser
 	>
 	result_type;
 
-	// TODO: Can we optimize this?
+	typedef
+	fcppt::options::help_result<
+		result_type
+	>
+	return_type;
+
 	return
 		fcppt::either::match(
-			fcppt::options::parse(
+			fcppt::options::detail::parse(
 				_help,
-				_args
+				fcppt::options::detail::state_from_args(
+					_args,
+					fcppt::options::detail::deref(
+						_parser
+					).parameters()
+				)
 			),
-			[
-				&_parser,
-				&_args
-			](
-				fcppt::options::error const &
+			[](
+				fcppt::options::error const &_error
 			)
 			{
 				return
-					result_type{
-						fcppt::options::parse(
-							_parser,
-							_args
+					return_type{
+						fcppt::either::make_failure<
+							result_type
+						>(
+							_error
 						)
 					};
 			},
 			[
 				&_parser,
-				&_args
+				&_help
 			](
-				fcppt::options::help_switch::result_type const &_value
+				fcppt::options::detail::parse_result<
+					fcppt::options::result_of<
+						fcppt::options::help_switch
+					>
+				> &&_result
 			)
 			{
 				return
 					fcppt::record::get<
 						fcppt::options::detail::help_label
 					>(
-						_value
+						_result.value()
 					)
 					?
-						result_type{
-							fcppt::options::help_text{
-								_parser.usage()
+						_result.remaining_state().empty()
+						?
+							return_type{
+								fcppt::options::help_text{
+									fcppt::options::detail::deref(
+										_parser
+									).usage()
+								}
 							}
-						}
+						:
+							return_type{
+								fcppt::either::make_failure<
+									result_type
+								>(
+									fcppt::options::error{
+										fcppt::options::other_error{
+											FCPPT_TEXT("The help option ")
+											+
+											fcppt::options::detail::long_or_short_name(
+												_help.long_name(),
+												_help.short_name()
+											)
+											+
+											FCPPT_TEXT(" cannot be specified with other options at the same time")
+										}
+									}
+								)
+							}
 					:
-						result_type{
-							fcppt::options::parse(
+						return_type{
+							fcppt::options::detail::parse_to_empty(
 								_parser,
-								_args
+								std::move(
+									_result.remaining_state()
+								)
 							)
 						}
 					;

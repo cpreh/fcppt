@@ -8,8 +8,8 @@
 #include <fcppt/const.hpp>
 #include <fcppt/make_ref.hpp>
 #include <fcppt/optional_string.hpp>
-#include <fcppt/string.hpp>
 #include <fcppt/reference_impl.hpp>
+#include <fcppt/string.hpp>
 #include <fcppt/algorithm/map.hpp>
 #include <fcppt/algorithm/reverse.hpp>
 #include <fcppt/container/find_opt_iterator.hpp>

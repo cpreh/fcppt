@@ -1442,11 +1442,12 @@ set(
 	libs/options/include/fcppt/options/detail/help_text.hpp
 	libs/options/include/fcppt/options/detail/leftover_error.hpp
 	libs/options/include/fcppt/options/detail/long_or_short_name.hpp
-	libs/options/include/fcppt/options/detail/parse_from_state.hpp
+	libs/options/include/fcppt/options/detail/parse.hpp
 	libs/options/include/fcppt/options/detail/parse_result.hpp
 	libs/options/include/fcppt/options/detail/parse_result_decl.hpp
 	libs/options/include/fcppt/options/detail/parse_result_fwd.hpp
 	libs/options/include/fcppt/options/detail/parse_result_impl.hpp
+	libs/options/include/fcppt/options/detail/parse_to_empty.hpp
 	libs/options/include/fcppt/options/detail/result_of.hpp
 	libs/options/include/fcppt/options/detail/state_from_args.hpp
 	libs/options/include/fcppt/options/detail/type_annotation.hpp

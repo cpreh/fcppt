@@ -4,12 +4,14 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_OPTIONS_DETAIL_PARSE_FROM_STATE_HPP_INCLUDED
-#define FCPPT_OPTIONS_DETAIL_PARSE_FROM_STATE_HPP_INCLUDED
+#ifndef FCPPT_OPTIONS_DETAIL_PARSE_HPP_INCLUDED
+#define FCPPT_OPTIONS_DETAIL_PARSE_HPP_INCLUDED
 
 #include <fcppt/either/map.hpp>
-#include <fcppt/options/state.hpp>
 #include <fcppt/options/result.hpp>
+#include <fcppt/options/result_of.hpp>
+#include <fcppt/options/state.hpp>
+#include <fcppt/options/detail/deref.hpp>
 #include <fcppt/options/detail/parse_result.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <utility>
@@ -29,23 +31,27 @@ template<
 inline
 fcppt::options::result<
 	fcppt::options::detail::parse_result<
-		typename
-		Parser::result_type
+		fcppt::options::result_of<
+			Parser
+		>
 	>
 >
-parse_from_state(
+parse(
 	Parser const &_parser,
 	fcppt::options::state &&_state
 )
 {
 	typedef
-	typename
-	Parser::result_type
+	fcppt::options::result_of<
+		Parser
+	>
 	result_type;
 
 	return
 		fcppt::either::map(
-			_parser.parse(
+			fcppt::options::detail::deref(
+				_parser
+			).parse(
 				_state
 			),
 			[

@@ -7,8 +7,8 @@
 #include <fcppt/string.hpp>
 #include <fcppt/text.hpp>
 #include <fcppt/container/maybe_front.hpp>
-#include <fcppt/optional/copy_value.hpp>
 #include <fcppt/optional/comparison.hpp>
+#include <fcppt/optional/copy_value.hpp>
 #include <fcppt/optional/make.hpp>
 #include <fcppt/options/is_option.hpp>
 
