@@ -10,7 +10,6 @@
 #include <fcppt/options/long_name.hpp>
 #include <fcppt/options/optional_help_text.hpp>
 #include <fcppt/options/optional_short_name.hpp>
-#include <fcppt/options/short_name.hpp>
 
 
 fcppt::options::help_switch
@@ -18,11 +17,7 @@ fcppt::options::default_help_switch()
 {
 	return
 		fcppt::options::help_switch{
-			fcppt::options::optional_short_name{
-				fcppt::options::short_name{
-					FCPPT_TEXT("h")
-				}
-			},
+			fcppt::options::optional_short_name{},
 			fcppt::options::long_name{
 				FCPPT_TEXT("help")
 			},
