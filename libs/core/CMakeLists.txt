@@ -1150,6 +1150,8 @@ set(
 	libs/core/include/fcppt/variant/to_optional.hpp
 	libs/core/include/fcppt/variant/to_optional_ref.hpp
 	libs/core/include/fcppt/variant/type_info.hpp
+	libs/core/include/fcppt/variant/types_of.hpp
+	libs/core/include/fcppt/variant/types_of_tpl.hpp
 	libs/core/include/fcppt/variant/variadic.hpp
 	libs/core/include/fcppt/variant/variadic_fwd.hpp
 	libs/core/include/fcppt/version_int.hpp

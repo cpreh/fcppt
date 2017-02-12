@@ -8,6 +8,11 @@
 #define FCPPT_VARIANT_APPLY_BINARY_HPP_INCLUDED
 
 #include <fcppt/variant/apply_unary.hpp>
+#include <fcppt/variant/is_object.hpp>
+#include <fcppt/config/external_begin.hpp>
+#include <type_traits>
+#include <utility>
+#include <fcppt/config/external_end.hpp>
 
 
 namespace fcppt
@@ -16,23 +21,17 @@ namespace variant
 {
 
 /**
-\brief Does a binary visitation
+\brief Passes the contents of two variants to a polymorphic function.
 
 \ingroup fcpptvariant
 
-Visits \a _obj1 and \a _obj2 with the visitor \a _op. <code>_op.operator()(T,
-U)</code> will be called where <code>T</code> is the type held by \a _obj1 and
-<code>U</code> is the type held by \a _obj2.
+Calls <code>_op.operator()(T,U)</code> where <code>T</code> is the type held by
+\a _obj1 and <code>U</code> is the type held by \a _obj2.
 
-\tparam Operation The visitor type
-\tparam Variant1 The first variant
-\tparam Variant2 The second variant
+\tparam Operation A polymorphic binary function
 
-\param _op The visitor to execute
-\param _obj1 The first variant to visit
-\param _obj2 The second variant to visit
-
-\return The result of <code>_op.operator()(T, U)</code>
+\tparam Variant1 Must be an fcppt::variant::object
+\tparam Variant2 Must be an fcppt::variant::object
 */
 template<
 	typename Operation,
@@ -49,13 +48,33 @@ apply_binary(
 	Variant2 &&_obj2
 )
 {
+	static_assert(
+		fcppt::variant::is_object<
+			typename
+			std::decay<
+				Variant1
+			>::type
+		>::value,
+		"Variant1 must be a variant::object"
+	);
+
+	static_assert(
+		fcppt::variant::is_object<
+			typename
+			std::decay<
+				Variant2
+			>::type
+		>::value,
+		"Variant2 must be a variant::object"
+	);
+
 	return
 		fcppt::variant::apply_unary(
 			[
 				&_obj1,
 				&_op
 			](
-				auto &_t2
+				auto &&_t2
 			)
 			->
 			decltype(
@@ -68,7 +87,7 @@ apply_binary(
 							&_op,
 							&_t2
 						](
-							auto &_t1
+							auto &&_t1
 						)
 						->
 						decltype(
@@ -77,14 +96,34 @@ apply_binary(
 						{
 							return
 								_op(
-									_t1,
-									_t2
+									std::forward<
+										decltype(
+											_t1
+										)
+									>(
+										_t1
+									),
+									std::forward<
+										decltype(
+											_t2
+										)
+									>(
+										_t2
+									)
 								);
 						},
-						_obj1
+						std::forward<
+							Variant1
+						>(
+							_obj1
+						)
 					);
 			},
-			_obj2
+			std::forward<
+				Variant2
+			>(
+				_obj2
+			)
 		);
 }
 

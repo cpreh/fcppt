@@ -1,6 +1,21 @@
 /**
 \page changes Changes
 
+\section changes_changes_to_260 2.6.0
+
+\subsection changes_added_functionality_to_260 Added functionality
+
+<ul>
+
+<li>\ref fcpptvariant
+	<ul>
+	<li>Added \link fcppt::variant::types_of\endlink and \link fcppt::variant::types_of_tpl\endlink.</li>
+	<li>Added move semantics to \link fcppt::variant::apply_unary\endlink, \link fcppt::variant::apply_binary\endlink and \link fcppt::variant::apply_ternary\endlink.</li>
+	</ul>
+</li>
+
+</ul>
+
 \section changes_changes_to_250 2.5.0
 
 \subsection changes_added_functionality_to_250 Added functionality

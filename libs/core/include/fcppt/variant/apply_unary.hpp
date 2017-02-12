@@ -8,8 +8,11 @@
 #define FCPPT_VARIANT_APPLY_UNARY_HPP_INCLUDED
 
 #include <fcppt/absurd.hpp>
+#include <fcppt/move_if_rvalue.hpp>
 #include <fcppt/use.hpp>
 #include <fcppt/mpl/runtime_index.hpp>
+#include <fcppt/variant/is_object.hpp>
+#include <fcppt/variant/types_of.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/mpl/at.hpp>
 #include <boost/mpl/front.hpp>
@@ -24,20 +27,15 @@ namespace variant
 {
 
 /**
-\brief Does a unary visitation
+\brief Passes the contents of a variant to a polymorphic function.
 
 \ingroup fcpptvariant
 
-Visits \a _obj with the visitor \a _op. <code>_op.operator()(T)</code> will be
-called where <code>T</code> is the type held \a _obj.
+Calls <code>_op.operator()(T)</code> where <code>T</code> is the type held \a _obj.
 
-\tparam Operation The visitor type
-\tparam Variant The variant type
+\tparam Operation A polymorphic function that can accept any type of \a Variant
 
-\param _op The visitor to execute
-\param _obj The variant to visit
-
-\return The result of <code>_op.operator()(T)</code>
+\tparam Variant Must be an fcppt::variant::object
 */
 template<
 	typename Operation,
@@ -55,7 +53,20 @@ apply_unary(
 	typename
 	std::decay<
 		Variant
-	>::type::types
+	>::type
+	variant_type;
+
+	static_assert(
+		fcppt::variant::is_object<
+			variant_type
+		>::value,
+		"Variant must be a variant::object"
+	);
+
+	typedef
+	fcppt::variant::types_of<
+		variant_type
+	>
 	types;
 
 	return
@@ -83,24 +94,32 @@ apply_unary(
 
 				return
 					_op(
-						_obj . template get_unsafe<
-							typename
-							boost::mpl::at_c<
-								types,
-								_index_value.value
-							>::type
-						>()
+						fcppt::move_if_rvalue<
+							Variant
+						>(
+							_obj . template get_unsafe<
+								typename
+								boost::mpl::at_c<
+									types,
+									_index_value.value
+								>::type
+							>()
+						)
 					);
 			},
 			&fcppt::absurd<
 				decltype(
 					_op(
-						_obj . template get_unsafe<
-							typename
-							boost::mpl::front<
-								types
-							>::type
-						>()
+						fcppt::move_if_rvalue<
+							Variant
+						>(
+							_obj . template get_unsafe<
+								typename
+								boost::mpl::front<
+									types
+								>::type
+							>()
+						)
 					)
 				)
 			>
