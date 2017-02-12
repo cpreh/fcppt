@@ -24,6 +24,7 @@ set(
 	libs/options/include/fcppt/options/detail/concrete_fwd.hpp
 	libs/options/include/fcppt/options/detail/concrete_impl.hpp
 	libs/options/include/fcppt/options/detail/deref.hpp
+	libs/options/include/fcppt/options/detail/help_error.hpp
 	libs/options/include/fcppt/options/detail/help_label.hpp
 	libs/options/include/fcppt/options/detail/help_text.hpp
 	libs/options/include/fcppt/options/detail/leftover_error.hpp
@@ -101,6 +102,7 @@ set(
 	libs/options/include/fcppt/options/switch_impl.hpp
 	libs/options/src/options/custom_pretty_type.cpp
 	libs/options/src/options/default_help_switch.cpp
+	libs/options/src/options/detail/help_error.cpp
 	libs/options/src/options/detail/help_text.cpp
 	libs/options/src/options/detail/leftover_error.cpp
 	libs/options/src/options/detail/long_or_short_name.cpp

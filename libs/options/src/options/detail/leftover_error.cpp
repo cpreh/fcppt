@@ -39,7 +39,9 @@ fcppt::options::detail::leftover_error(
 				fcppt::string{
 					FCPPT_TEXT(",")
 				}
-			);
+			)
+			+
+			FCPPT_TEXT('.');
 
 	auto const get_key_names(
 		[](
@@ -91,7 +93,8 @@ fcppt::options::detail::leftover_error(
 		if(
 			!result.empty()
 		)
-			result += FCPPT_TEXT(" ; ");
+			result +=
+				FCPPT_TEXT(' ');
 
 		result
 			+=
@@ -104,7 +107,9 @@ fcppt::options::detail::leftover_error(
 				fcppt::string{
 					FCPPT_TEXT(',')
 				}
-			);
+			)
+			+
+			FCPPT_TEXT('.');
 	}
 
 	if(
@@ -114,7 +119,8 @@ fcppt::options::detail::leftover_error(
 		if(
 			!result.empty()
 		)
-			result += FCPPT_TEXT(" ; ");
+			result +=
+				FCPPT_TEXT(' ');
 
 		result
 			+=
@@ -127,7 +133,9 @@ fcppt::options::detail::leftover_error(
 				fcppt::string{
 					FCPPT_TEXT(',')
 				}
-			);
+			)
+			+
+			FCPPT_TEXT('.');
 	}
 
 	return

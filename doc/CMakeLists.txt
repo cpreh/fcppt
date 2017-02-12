@@ -1438,6 +1438,7 @@ set(
 	libs/options/include/fcppt/options/detail/concrete_fwd.hpp
 	libs/options/include/fcppt/options/detail/concrete_impl.hpp
 	libs/options/include/fcppt/options/detail/deref.hpp
+	libs/options/include/fcppt/options/detail/help_error.hpp
 	libs/options/include/fcppt/options/detail/help_label.hpp
 	libs/options/include/fcppt/options/detail/help_text.hpp
 	libs/options/include/fcppt/options/detail/leftover_error.hpp

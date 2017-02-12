@@ -85,7 +85,7 @@ fcppt::options::argument<
 								+
 								long_name_.get()
 								+
-								FCPPT_TEXT('"')
+								FCPPT_TEXT("\".")
 							}
 						};
 				}
@@ -138,7 +138,7 @@ fcppt::options::argument<
 										+
 										long_name_.get()
 										+
-										FCPPT_TEXT('"')
+										FCPPT_TEXT("\".")
 									}
 								};
 						}

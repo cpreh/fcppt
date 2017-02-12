@@ -10,6 +10,7 @@
 #include <fcppt/args_vector.hpp>
 #include <fcppt/text.hpp>
 #include <fcppt/either/make_failure.hpp>
+#include <fcppt/either/make_success.hpp>
 #include <fcppt/either/match.hpp>
 #include <fcppt/options/error.hpp>
 #include <fcppt/options/help_result.hpp>
@@ -18,6 +19,7 @@
 #include <fcppt/options/other_error.hpp>
 #include <fcppt/options/result_of.hpp>
 #include <fcppt/options/detail/deref.hpp>
+#include <fcppt/options/detail/help_error.hpp>
 #include <fcppt/options/detail/help_label.hpp>
 #include <fcppt/options/detail/long_or_short_name.hpp>
 #include <fcppt/options/detail/parse.hpp>
@@ -85,7 +87,7 @@ parse_help(
 				)
 			),
 			[](
-				fcppt::options::error const &_error
+				fcppt::options::error &&_error
 			)
 			{
 				return
@@ -93,7 +95,9 @@ parse_help(
 						fcppt::either::make_failure<
 							result_type
 						>(
-							_error
+							std::move(
+								_error
+							)
 						)
 					};
 			},
@@ -138,18 +142,51 @@ parse_help(
 												_help.short_name()
 											)
 											+
-											FCPPT_TEXT(" cannot be specified with other options at the same time")
+											FCPPT_TEXT(" cannot be specified with other options at the same time.")
 										}
 									}
 								)
 							}
 					:
 						return_type{
-							fcppt::options::detail::parse_to_empty(
-								_parser,
-								std::move(
-									_result.remaining_state()
+							fcppt::either::match(
+								fcppt::options::detail::parse_to_empty(
+									_parser,
+									std::move(
+										_result.remaining_state()
+									)
+								),
+								[
+									&_help
+								](
+									fcppt::options::error &&_error
 								)
+								{
+									return
+										fcppt::either::make_failure<
+											result_type
+										>(
+											fcppt::options::detail::help_error(
+												_help,
+												std::move(
+													_error
+												)
+											)
+										);
+								},
+								[](
+									result_type &&_inner_result
+								)
+								{
+									return
+										fcppt::either::make_success<
+											fcppt::options::error
+										>(
+											std::move(
+												_inner_result
+											)
+										);
+								}
 							)
 						}
 					;

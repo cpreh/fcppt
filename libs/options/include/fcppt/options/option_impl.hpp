@@ -150,6 +150,8 @@ fcppt::options::option<
 											long_name_,
 											short_name_
 										)
+										+
+										FCPPT_TEXT('.')
 									}
 								};
 						}
@@ -205,6 +207,8 @@ fcppt::options::option<
 											long_name_,
 											short_name_
 										)
+										+
+										FCPPT_TEXT('.')
 									}
 								};
 						}
