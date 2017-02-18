@@ -7,14 +7,20 @@
 #ifndef FCPPT_VARIANT_IMPL_INVALID_GET_HPP_INCLUDED
 #define FCPPT_VARIANT_IMPL_INVALID_GET_HPP_INCLUDED
 
+#include <fcppt/string.hpp>
 #include <fcppt/text.hpp>
+#include <fcppt/variant/exception.hpp>
+
 
 inline
-fcppt::variant::invalid_get::invalid_get()
+fcppt::variant::invalid_get::invalid_get(
+	fcppt::string const &_error
+)
 :
-	exception(
-		FCPPT_TEXT("Invalid get in variant!")
+	fcppt::variant::exception(
+		_error
 	)
-{}
+{
+}
 
 #endif

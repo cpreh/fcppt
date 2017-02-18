@@ -16,6 +16,8 @@ add_fcppt_variant_test(
 
 add_fcppt_variant_test(
 	apply_nonconst
+	LINK_LIBS
+		${fcppt_core_TARGET}
 )
 
 add_fcppt_variant_test(
@@ -24,6 +26,8 @@ add_fcppt_variant_test(
 
 add_fcppt_variant_test(
 	assign
+	LINK_LIBS
+		${fcppt_core_TARGET}
 )
 
 add_fcppt_variant_test(
@@ -44,6 +48,8 @@ add_fcppt_variant_test(
 
 add_fcppt_variant_test(
 	get_exn
+	LINK_LIBS
+		${fcppt_core_TARGET}
 )
 
 add_fcppt_variant_test(
@@ -60,6 +66,8 @@ add_fcppt_variant_test(
 
 add_fcppt_variant_test(
 	move
+	LINK_LIBS
+		${fcppt_core_TARGET}
 )
 
 add_fcppt_variant_test(

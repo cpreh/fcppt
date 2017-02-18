@@ -965,6 +965,7 @@ set(
 	libs/core/include/fcppt/mpl/partial_sums.hpp
 	libs/core/include/fcppt/mpl/print.hpp
 	libs/core/include/fcppt/mpl/runtime_index.hpp
+	libs/core/include/fcppt/mpl/sequence_to_string.hpp
 	libs/core/include/fcppt/mpl/set_difference.hpp
 	libs/core/include/fcppt/mpl/set_intersection.hpp
 	libs/core/include/fcppt/mpl/set_symmetric_difference.hpp
@@ -1300,6 +1301,7 @@ set(
 	libs/core/include/fcppt/variant/apply_unary.hpp
 	libs/core/include/fcppt/variant/compare.hpp
 	libs/core/include/fcppt/variant/comparison.hpp
+	libs/core/include/fcppt/variant/current_type_name.hpp
 	libs/core/include/fcppt/variant/detail/assert_type.hpp
 	libs/core/include/fcppt/variant/detail/disable_object.hpp
 	libs/core/include/fcppt/variant/detail/get_exn_impl.hpp
@@ -1331,6 +1333,7 @@ set(
 	libs/core/include/fcppt/variant/type_info.hpp
 	libs/core/include/fcppt/variant/types_of.hpp
 	libs/core/include/fcppt/variant/types_of_tpl.hpp
+	libs/core/include/fcppt/variant/types_string.hpp
 	libs/core/include/fcppt/variant/variadic.hpp
 	libs/core/include/fcppt/variant/variadic_fwd.hpp
 	libs/core/include/fcppt/version_int.hpp

@@ -20,6 +20,13 @@ namespace fcppt
 namespace mpl
 {
 
+/**
+\brief Copies an MPL sequence into an <code>mpl::vector</code>.
+
+\ingroup fcpptmpl
+
+\tparam Source Must be an MPL sequence
+*/
 template<
 	typename Source
 >

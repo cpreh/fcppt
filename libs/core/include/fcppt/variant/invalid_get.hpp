@@ -7,6 +7,7 @@
 #ifndef FCPPT_VARIANT_INVALID_GET_HPP_INCLUDED
 #define FCPPT_VARIANT_INVALID_GET_HPP_INCLUDED
 
+#include <fcppt/string.hpp>
 #include <fcppt/variant/exception.hpp>
 
 
@@ -16,7 +17,7 @@ namespace variant
 {
 
 /**
-\brief Thrown if an invalid get<T> is called
+\brief Thrown by \link fcppt::variant::get_exn\endlink.
 
 \ingroup fcpptvariant
 */
@@ -25,7 +26,10 @@ class invalid_get
 	public fcppt::variant::exception
 {
 public:
-	invalid_get();
+	explicit
+	invalid_get(
+		fcppt::string const &
+	);
 };
 
 }

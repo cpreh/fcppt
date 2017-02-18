@@ -7,10 +7,19 @@
 
 <ul>
 
+<li>\ref fcpptmpl
+	<ul>
+	<li>Added \link fcppt::mpl::sequence_to_string\endlink.</li>
+	</ul>
+</li>
+
 <li>\ref fcpptvariant
 	<ul>
 	<li>Added \link fcppt::variant::types_of\endlink and \link fcppt::variant::types_of_tpl\endlink.</li>
 	<li>Added move semantics to \link fcppt::variant::apply_unary\endlink, \link fcppt::variant::apply_binary\endlink and \link fcppt::variant::apply_ternary\endlink.</li>
+	<li>Improved the error message of \link fcppt::variant::invalid_get\endlink.</li>
+	<li>Added \link fcppt::variant::types_string\endlink.</li>
+	<li>Added \link fcppt::variant::current_type_name\endlink.</li>
 	</ul>
 </li>
 

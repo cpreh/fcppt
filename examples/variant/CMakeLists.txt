@@ -23,7 +23,7 @@ add_fcppt_variant_example(
 add_fcppt_variant_example(
 	nonconst_visitation
 	LINK_LIBS
-		fcppt_core_interface
+		${fcppt_core_TARGET}
 )
 
 add_fcppt_variant_example(
