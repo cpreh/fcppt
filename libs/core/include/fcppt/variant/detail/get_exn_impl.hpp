@@ -64,7 +64,10 @@ get_exn_impl(
 				FCPPT_TEXT("\" from variant with types \"")
 				+
 				fcppt::variant::types_string<
-					Variant
+					typename
+					std::remove_const<
+						Variant
+					>::type
 				>()
 				+
 				FCPPT_TEXT("\". Current type was \"")
