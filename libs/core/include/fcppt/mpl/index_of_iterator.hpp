@@ -25,13 +25,13 @@ FCPPT_PP_PUSH_WARNING
 FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
 
 /**
-\brief Calculates the index of an iterator in a sequence
+\brief Calculates the index of an iterator in a sequence.
 
 \ingroup fcpptmpl
 
-\tparam Sequence The MPL sequence
+\tparam Sequence Must be an MPL sequence.
 
-\tparam Iterator The element to calculate the index of
+\tparam Iterator The iterator to calculate the index of. Must point to \a Sequence.
 */
 template<
 	typename Sequence,

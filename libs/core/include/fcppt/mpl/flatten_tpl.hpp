@@ -22,9 +22,13 @@ FCPPT_PP_PUSH_WARNING
 FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
 
 /**
-\brief Flattens an MPL sequence
+\brief Flattens an MPL sequence.
 
 \ingroup fcpptmpl
+
+If \a Type is a sequence <code>[t_1,...,t_n]</code>, then
+the result is <code>flatten(t_1) + ... + flatten(t_n)</code>.
+Otherwise, the result is <code>[Type]</code>.
 */
 template<
 	typename Type

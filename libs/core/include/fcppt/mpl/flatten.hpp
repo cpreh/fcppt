@@ -16,9 +16,11 @@ namespace mpl
 {
 
 /**
-\brief Flattens an MPL sequence
+\brief Flattens an MPL sequence.
 
 \ingroup fcpptmpl
+
+\see fcppt::mpl::flatten_tpl
 */
 template<
 	typename Type

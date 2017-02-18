@@ -28,6 +28,8 @@ FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
 \brief Does an integral cast on an integral constant
 
 \ingroup fcpptmpl
+
+\see fcppt::mpl::integral_cast
 */
 template<
 	typename IntegralType,

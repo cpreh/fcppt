@@ -7,6 +7,7 @@
 #ifndef FCPPT_MPL_VALUE_TYPE_HPP_INCLUDED
 #define FCPPT_MPL_VALUE_TYPE_HPP_INCLUDED
 
+
 namespace fcppt
 {
 namespace mpl
@@ -26,7 +27,10 @@ template<
 >
 struct value_type
 {
-	typedef typename Type::value_type type;
+	typedef
+	typename
+	Type::value_type
+	type;
 };
 
 }

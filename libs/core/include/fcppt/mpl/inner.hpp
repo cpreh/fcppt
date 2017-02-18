@@ -7,6 +7,7 @@
 #ifndef FCPPT_MPL_INNER_HPP_INCLUDED
 #define FCPPT_MPL_INNER_HPP_INCLUDED
 
+
 namespace fcppt
 {
 namespace mpl
@@ -17,7 +18,7 @@ namespace mpl
 
 \ingroup fcpptmpl
 
-Extracts the type contained withing \a Type. The result is the same type as
+Extracts the type contained within \a Type. The result is the same type as
 <code>typename Type::type</code>.
 
 \snippet mpl/various.cpp mpl_inner
@@ -29,7 +30,10 @@ template<
 >
 struct inner
 {
-	typedef typename Type::type type;
+	typedef
+	typename
+	Type::type
+	type;
 };
 
 }
