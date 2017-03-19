@@ -93,7 +93,7 @@ If you want to change them later, you can do that as well.
 
 \subsection requirements_download_installation_modify_cmakelists Modify your CMakeLists.txt
 
-fcppt comes with a CMake find module that exports all of fcppt's targets, which currently
+fcppt comes with an exported CMake file that defines all of fcppt's targets, which currently
 are core, filesystem, log and options.
 The following code provides a small example in which the target <code>mytarget</code>
 links to core and log:
@@ -116,7 +116,7 @@ target_link_libraries(
 )
 </pre>
 Linking to a specific target, e.g. <code>${fcppt_core_TARGET}</code>, directly
-inherits all includes directories and build flags as needed. If only you use
+inherits all includes directories and build flags as needed. If you only use
 headers from a specific target, e.g. fcppt core, you can link to its interface
 library instead:
 <pre>
