@@ -8,7 +8,7 @@ This document gives an overview over the asthetic aspects chosen in fcppt.
 \subsection coding_indentation Indentation
 
 Indentation is a very controversal topic. Everyone has their own opinions on it
-which are also subject to change over time. Fcppt uses a somewhat excessive
+which are also subject to change over time. fcppt uses a somewhat excessive
 indentation style whose purpose is not to be <em>identifier-dependent</em> and
 <em>tab-consistent</em>. The former means that changing identifiers should not
 lead to reindentation. Consider a rule that enforces lines that are no longer
@@ -23,7 +23,7 @@ The indentation style can best be given by a simple example:
 
 \subsection coding_naming Naming
 
-Fcppt uses C++-style naming conventions which include:
+fcppt uses C++-style naming conventions which include:
 <ul>
 <li>Lowercase identifiers, including underscore, for example
 <code>fcppt::optional_bind</code></li>.
@@ -84,7 +84,7 @@ including <code>fcppt/math/vector/object_decl.hpp</code>.</li>
 </ul>
 
 Partitioning code into multiple headers also brings up the question of where to
-include which header. Fcppt follows a rule of <em>minimal includes</em> which
+include which header. fcppt follows a rule of <em>minimal includes</em> which
 means that including declarations should be preferred over including
 definitions. For example, when a function <code>T f(U)</code> is declared, it
 is enough to include the declarations of <code>T</code> and <code>U</code>

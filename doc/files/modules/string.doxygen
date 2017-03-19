@@ -138,7 +138,7 @@ an \link fcppt::string\endlink literal.
 \section fcpptstring_lexical_conversions Lexical Conversions
 
 Lexical conversions deal with conversions from and to strings. In C++ this is
-done using <code>operator<<</code> and <code>operator>></code>. Fcppt wraps
+done using <code>operator<<</code> and <code>operator>></code>. fcppt wraps
 these into the following functions:
 
 <table>
@@ -172,7 +172,7 @@ these into the following functions:
 
 C++ offers standard exceptions in the <code>\<stdexcept\></code> header. All of
 them use <code>std::string</code> which does not go well together with \link
-fcppt::string\endlink. Fcppt instead defines its own exception base class:
+fcppt::string\endlink. fcppt instead defines its own exception base class:
 \link fcppt::exception\endlink. Although it derives from
 <code>std::exception</code>, its <code>what()</code> function returns a default
 message only. To get the error message of an \link fcppt::exception\endlink,

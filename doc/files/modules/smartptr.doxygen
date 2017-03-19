@@ -241,7 +241,7 @@ unique pointer to a const object.
 
 \subsection smartptr_unique_ptr_const Const Unique Pointers
 
-Fcppt used to provide a scoped_ptr class similar to
+fcppt used to provide a scoped_ptr class similar to
 <code>boost::scoped_ptr</code> that additionally took a deleter. This class
 has been removed in favor of const unique ptrs.
 
@@ -275,7 +275,7 @@ For some smart pointer over type <code>Type</code> the deleter must be callable
 with an expression of type <code>Type *</code>. The deleter must ensure to
 destroy the object if it is not a null pointer.
 
-\subsection smartptr_deleter_predef Fcppt's Deleters
+\subsection smartptr_deleter_predef fcppt's Deleters
 
 fcppt predefines several deleters:
 

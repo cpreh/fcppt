@@ -62,7 +62,7 @@ Gentoo ebuilds are available in <a href="https://github.com/freundlich/freundlic
 
 \section requirements_download_installation_building_and_installation Building and Installation
 
-Fcppt uses CMake as its build system, so the standard CMake procedure to build
+fcppt uses CMake as its build system, so the standard CMake procedure to build
 a project applies: First, download and extract the tarball or clone the git
 repository. Create a new directory that will be used as build directory, which
 we refer to as <code>$build</code>. Change directory into
@@ -93,7 +93,7 @@ If you want to change them later, you can do that as well.
 
 \subsection requirements_download_installation_modify_cmakelists Modify your CMakeLists.txt
 
-Fcppt comes with a CMake find module that exports all of fcppt's targets, which currently
+fcppt comes with a CMake find module that exports all of fcppt's targets, which currently
 are core, filesystem, log and options.
 The following code provides a small example in which the target <code>mytarget</code>
 links to core and log:
