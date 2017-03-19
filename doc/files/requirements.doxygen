@@ -45,7 +45,7 @@ The following platforms are tested by us:
 <ul>
 	<li>gcc-6.3 (Gentoo Linux)</li>
 	<li>gcc-5.2 (MinGW)</li>
-	<li>clang 3.9.1 (Gentoo Linux)</li>
+	<li>clang 4.0 (Gentoo Linux)</li>
 	<li>VC++ from Visual Studio 2015 Update 3</li>
 </ul>
 
