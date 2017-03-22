@@ -1,3 +1,9 @@
+list(
+	APPEND
+	CMAKE_MODULE_PATH
+	@ADDITIONAL_MODULE_PATH@
+)
+
 include(
 	FcpptExport
 )

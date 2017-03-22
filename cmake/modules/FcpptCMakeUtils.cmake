@@ -10,6 +10,21 @@ if(
 	)
 endif()
 
+if(
+	NOT
+	${PROJECT_NAME}
+	STREQUAL
+	"fcppt"
+	AND
+	NOT
+	fcppt_FOUND
+)
+	message(
+		FATAL_ERROR
+		"FcpptCMakeUtils included without prior find_package(fcppt)"
+	)
+endif()
+
 include(
 	CMakeDetermineCXXCompiler
 )
@@ -22,101 +37,8 @@ include(
 	CMakeParseArguments
 )
 
-# Define locations for installations
-# These don't have an FCPPT_ prefix because they have to be set by the user
-
-set(
-	INSTALL_BINARY_DIR
-	"${CMAKE_INSTALL_PREFIX}/bin"
-	CACHE
-	STRING
-	"Custom binary installation directory"
-)
-
-# Some distributions set CMAKE_INSTALL_LIBDIR to handle multilib. Also, some of
-# them use an absolute path, some use a relative path. We have chosen an
-# absolute path here, so please change it in the build if your distribution is
-# using relative paths.
-if(
-	DEFINED
-	CMAKE_INSTALL_LIBDIR
-)
-	set(
-		FCPPT_UTILS_DEFAULT_INSTALL_LIB_DIR
-		"${CMAKE_INSTALL_LIBDIR}"
-	)
-else()
-	set(
-		FCPPT_UTILS_DEFAULT_INSTALL_LIB_DIR
-		"${CMAKE_INSTALL_PREFIX}/lib"
-	)
-endif()
-
-set(
-	INSTALL_LIBRARY_DIR
-	"${FCPPT_UTILS_DEFAULT_INSTALL_LIB_DIR}"
-	CACHE
-	STRING
-	"Custom library installation directory"
-)
-
-set(
-	INSTALL_INCLUDE_DIR
-	"${CMAKE_INSTALL_PREFIX}/include"
-	CACHE
-	STRING
-	"Custom include installation directory"
-)
-
-set(
-	INSTALL_DATA_DIR_BASE
-	"${CMAKE_INSTALL_PREFIX}/share"
-	CACHE
-	STRING
-	"Custom data installation directory without suffixes"
-)
-
-function(
-	fcppt_utils_install_data_dir
-	VAR_NAME
-)
-	set(
-		${VAR_NAME}
-		"${INSTALL_DATA_DIR_BASE}/${PROJECT_NAME}"
-		PARENT_SCOPE
-	)
-endfunction()
-
-set(
-	INSTALL_DOC_DIR_BASE
-	"${INSTALL_DATA_DIR_BASE}/doc"
-	CACHE
-	STRING
-	"Custom doc installation directory without suffixes"
-)
-
-function(
-	fcppt_utils_install_doc_dir
-	VAR_NAME
-)
-	set(
-		${VAR_NAME}
-		"${INSTALL_DOC_DIR_BASE}/${PROJECT_NAME}"
-		PARENT_SCOPE
-	)
-endfunction()
-
-set(
-	INSTALL_PKGCONFIG_DIR
-	"${INSTALL_LIBRARY_DIR}/pkgconfig"
-	CACHE
-	STRING
-	"Custom pkgconfig installation directory"
-)
-
-set(
-	FCPPT_UTILS_CURRENT_DIRECTORY
-	"${CMAKE_ROOT}"
+include(
+	GNUInstallDirs
 )
 
 set(
@@ -129,114 +51,38 @@ set(
 	"${${PROJECT_NAME}_BINARY_DIR}"
 )
 
-function(
-	fcppt_utils_is_path_prefix_of
-	RESULT
-	PREFIX_STRING
-	PATH_STRING
-)
-	set(
-		${RESULT}
-		FALSE
-		PARENT_SCOPE
-	)
-
-	set(
-		CURRENT_DIRECTORY
-		"${PATH_STRING}"
-	)
-
-	while(
-		TRUE
-	)
-		if(
-			"${PREFIX_STRING}"
-			STREQUAL "${CURRENT_DIRECTORY}"
-		)
-			set(
-				${RESULT}
-				TRUE
-				PARENT_SCOPE
-			)
-
-			break()
-		endif()
-
-		get_filename_component(
-			NEW_CURRENT_DIRECTORY
-			"${CURRENT_DIRECTORY}"
-			PATH
-		)
-
-		if(
-			"${NEW_CURRENT_DIRECTORY}"
-			STREQUAL
-			"${CURRENT_DIRECTORY}"
-		)
-			break()
-		endif()
-
-		set(
-			CURRENT_DIRECTORY
-			"${NEW_CURRENT_DIRECTORY}"
-		)
-	endwhile()
-endfunction()
-
-fcppt_utils_is_path_prefix_of(
-	FCPPT_UTILS_INSTALL_PREFIX_IS_PREFIX_OF_CMAKE_ROOT
-	"${CMAKE_INSTALL_PREFIX}"
-	"${CMAKE_ROOT}"
-)
-
-if(
-	FCPPT_UTILS_INSTALL_PREFIX_IS_PREFIX_OF_CMAKE_ROOT
-)
-	set(
-		FCPPT_UTILS_CMAKE_MODULE_DIR
-		"${CMAKE_ROOT}/Modules"
-	)
-else()
-	set(
-		FCPPT_UTILS_CMAKE_MODULE_DIR
-		"${INSTALL_DATA_DIR_BASE}/cmake/Modules"
-	)
-endif()
-
 set(
-	INSTALL_CMAKEMODULES_DIR
-	"${FCPPT_UTILS_CMAKE_MODULE_DIR}"
-	CACHE
-	STRING
-	"Custom cmake module installation directory"
+	FCPPT_UTILS_INSTALL_DATA_DIR
+	"${CMAKE_INSTALL_DATAROOTDIR}/${PROJECT_NAME}"
 )
 
 set(
-	INSTALL_CMAKECONFIG_DIR_BASE
-	"${INSTALL_LIBRARY_DIR}/cmake"
-	CACHE
-	STRING
-	"Custom cmake config installation directory without suffixes"
+	FCPPT_UTILS_INSTALL_CMAKEMODULES_DIR
+	"${FCPPT_UTILS_INSTALL_DATA_DIR}/cmake"
 )
-
-function(
-	fcppt_utils_install_cmakeconfig_dir
-	VAR_NAME
-)
-	set(
-		${VAR_NAME}
-		"${INSTALL_CMAKECONFIG_DIR_BASE}/${PROJECT_NAME}"
-		PARENT_SCOPE
-	)
-endfunction()
 
 set(
-	INSTALL_SYSCONFIG_DIR_BASE
-	"${CMAKE_INSTALL_PREFIX}/etc"
-	CACHE
-	STRING
-	"Custom config installation directory"
+	FCPPT_UTILS_INSTALL_CMAKECONFIG_DIR_BASE
+	"${CMAKE_INSTALL_LIBDIR}/cmake"
 )
+
+set(
+	FCPPT_UTILS_INSTALL_CMAKECONFIG_DIR
+	"${FCPPT_UTILS_INSTALL_CMAKECONFIG_DIR_BASE}/${PROJECT_NAME}"
+)
+
+foreach(
+	curdir
+	DATA_DIR
+	CMAKEMODULES_DIR
+	CMAKECONFIG_DIR_BASE
+	CMAKECONFIG_DIR
+)
+	GNUInstallDirs_get_absolute_install_dir(
+		FCPPT_UTILS_INSTALL_FULL_${curdir}
+		FCPPT_UTILS_INSTALL_${curdir}
+	)
+endforeach()
 
 if(
 	${CMAKE_CXX_COMPILER_ID} STREQUAL "Clang"
@@ -259,7 +105,6 @@ if(
 endif()
 
 # Setup default compiler flags
-
 if(
 	CMAKE_COMPILER_IS_GNUCXX OR FCPPT_UTILS_COMPILER_IS_CLANGPP
 )
@@ -696,21 +541,6 @@ function(
 endfunction()
 
 set(
-	FCPPT_UTILS_TARGETS_CONFIG
-	"${PROJECT_NAME}Targets.cmake"
-)
-
-set(
-	FCPPT_UTILS_BUILD_CONFIG_DIR
-	"${FCPPT_UTILS_PROJECT_BINARY_DIR}/config"
-)
-
-set(
-	FCPPT_UTILS_BUILD_CONFIG
-	"${FCPPT_UTILS_BUILD_CONFIG_DIR}/${FCPPT_UTILS_TARGETS_CONFIG}"
-)
-
-set(
 	FCPPT_UTILS_EXPORT_NAME
 	"${PROJECT_NAME}Export"
 )
@@ -723,28 +553,23 @@ function(
 		TARGETS
 		${TARGETNAME}
 		DESTINATION
-		"${INSTALL_LIBRARY_DIR}"
+		"${CMAKE_INSTALL_LIBDIR}"
 		EXPORT
 		"${FCPPT_UTILS_EXPORT_NAME}"
 	)
 endfunction()
 
-set(
-	FCPPT_UTILS_SOURCE_INCLUDE_DIR
-	${FCPPT_UTILS_PROJECT_SOURCE_DIR}/include
-)
-
-set(
-	FCPPT_UTILS_BINARY_INCLUDE_DIR
-	${FCPPT_UTILS_PROJECT_BINARY_DIR}/include
-)
-
+# CONFIG_PATH : PATH
+# - The path where the ${PROJECT_NAME}-config.cmake.in resides.
+# [MODULES_PATH : PATH]
+# - The path that is appended to CMAKE_MODULE_PATH.
 function(
 	fcppt_utils_generate_config
 )
 	set(
 		SINGLE_ARGS
 		CONFIG_PATH
+		MODULES_PATH
 	)
 
 	cmake_parse_arguments(
@@ -767,68 +592,87 @@ function(
 		)
 	endif()
 
-	fcppt_utils_install_cmakeconfig_dir(
-		INSTALL_CMAKECONFIG_DIR
+	if(
+		"${_CONFIG_PATH}"
+		STREQUAL
+		""
 	)
+		message(
+			FATAL_ERROR
+			"Missing CONFIG_PATH argument."
+		)
+	endif()
 
 	set(
 		CONFIG_NAME
 		"${PROJECT_NAME}-config.cmake"
 	)
 
-	if(
-		"${_CONFIG_PATH}"
-		STREQUAL
-		""
-	)
-		set(
-			CONFIG_FILE_PATH
-			${FCPPT_UTILS_PROJECT_SOURCE_DIR}
-		)
-	else()
-		set(
-			CONFIG_FILE_PATH
-			${_CONFIG_PATH}
-		)
-	endif()
-
 	set(
 		CONFIG_IN_FILE
-		"${CONFIG_FILE_PATH}/${CONFIG_NAME}.in"
+		"${_CONFIG_PATH}/${CONFIG_NAME}.in"
 	)
 
 	set(
-		CONFIG_DEST
-		"${FCPPT_UTILS_BUILD_CONFIG_DIR}/${CONFIG_NAME}"
+		BUILD_CONFIG_DIR
+		"${FCPPT_UTILS_PROJECT_BINARY_DIR}/config"
+	)
+
+	set(
+		TARGETS_FILE_NAME
+		"${PROJECT_NAME}Targets.cmake"
+	)
+
+	#Build config
+	set(
+		ADDITIONAL_MODULE_PATH
+		${_MODULES_PATH}
 	)
 
 	configure_file(
 		${CONFIG_IN_FILE}
-		${CONFIG_DEST}
+		"${BUILD_CONFIG_DIR}/${CONFIG_NAME}"
 		@ONLY
-	)
-
-	install(
-		FILES
-		"${CONFIG_DEST}"
-		DESTINATION
-		"${INSTALL_CMAKECONFIG_DIR}"
 	)
 
 	export(
 		EXPORT
 		"${FCPPT_UTILS_EXPORT_NAME}"
 		FILE
-		"${FCPPT_UTILS_BUILD_CONFIG}"
+		"${BUILD_CONFIG_DIR}/${TARGETS_FILE_NAME}"
+	)
+
+	#Install config
+	set(
+		ADDITIONAL_MODULE_PATH
+		${FCPPT_UTILS_INSTALL_FULL_CMAKEMODULES_DIR}
+	)
+
+	set(
+		CONFIG_DEST_INSTALL
+		"${BUILD_CONFIG_DIR}_install/${CONFIG_NAME}"
+	)
+
+	configure_file(
+		${CONFIG_IN_FILE}
+		${CONFIG_DEST_INSTALL}
+		@ONLY
+	)
+
+	install(
+		FILES
+		"${CONFIG_DEST_INSTALL}"
+		DESTINATION
+		"${FCPPT_UTILS_INSTALL_CMAKECONFIG_DIR}"
 	)
 
 	install(
 		EXPORT
 		"${FCPPT_UTILS_EXPORT_NAME}"
 		FILE
-		"${FCPPT_UTILS_TARGETS_CONFIG}"
+		"${TARGETS_FILE_NAME}"
 		DESTINATION
-		"${INSTALL_CMAKECONFIG_DIR}"
+		"${FCPPT_UTILS_INSTALL_CMAKECONFIG_DIR}"
 	)
 endfunction()
 
@@ -863,19 +707,6 @@ function(
 			PARENT_SCOPE
 		)
 	endif()
-endfunction()
-
-function(
-	fcppt_utils_set_so_version
-	TARGET
-	VERSION
-)
-	set_target_properties(
-		${TARGET}
-		PROPERTIES
-		VERSION
-		${VERSION}
-	)
 endfunction()
 
 function(

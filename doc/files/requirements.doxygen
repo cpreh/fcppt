@@ -74,21 +74,6 @@ fcppt does not need to be installed in order to be used. After fcppt has been
 built you can directly use it from its source directory. If you want to install
 don't forget to set <code>CMAKE_INSTALL_PREFIX</code>.
 
-There are other customizable paths that you can use to fine-tune the
-installation of different components:
-
-<ul>
-	<li><strong>INSTALL_INCLUDE_DIR</strong>: Path where the fcppt include directory is installed</li>
-	<li><strong>INSTALL_LIBRARY_DIR</strong>: Path where the libraries are installed</li>
-	<li><strong>INSTALL_DOC_DIR</strong>: Path where the documentation is installed</li>
-	<li><strong>INSTALL_CMAKEMODULES_DIR</strong>: Path where the CMake modules are installed</li>
-	<li><strong>INSTALL_CMAKECONFIG_DIR</strong>: Path where the CMake config files are installed</li>
-</ul>
-
-All of these will have default values depending on what you specified as
-<code>CMAKE_INSTALL_PREFIX</code> the first time you called <code>cmake</code>.
-If you want to change them later, you can do that as well.
-
 \section requirements_download_installation_using_fcppt Using fcppt
 
 \subsection requirements_download_installation_modify_cmakelists Modify your CMakeLists.txt
