@@ -46,6 +46,7 @@ struct hash<
 	operator()(
 		type const &_value
 	) const
+	noexcept
 	{
 		return
 			fcppt::reference_hash<

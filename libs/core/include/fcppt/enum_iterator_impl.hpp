@@ -17,6 +17,7 @@ template<
 fcppt::enum_iterator<
 	Enum
 >::enum_iterator()
+noexcept
 :
 	value_{}
 {
@@ -30,6 +31,7 @@ fcppt::enum_iterator<
 >::enum_iterator(
 	size_type const _value
 )
+noexcept
 :
 	value_(
 		_value
@@ -44,6 +46,7 @@ void
 fcppt::enum_iterator<
 	Enum
 >::increment()
+noexcept
 {
 	++value_;
 }
@@ -57,6 +60,7 @@ fcppt::enum_iterator<
 >::equal(
 	enum_iterator const _other
 ) const
+noexcept
 {
 	return
 		value_
@@ -71,6 +75,7 @@ Enum
 fcppt::enum_iterator<
 	Enum
 >::dereference() const
+noexcept
 {
 	return
 		fcppt::cast::int_to_enum<

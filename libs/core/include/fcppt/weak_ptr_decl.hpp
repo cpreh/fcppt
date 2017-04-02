@@ -137,7 +137,8 @@ public:
 	<code>boost::shared_ptr</code> also uses <code>long</code>.
 	*/
 	long
-	use_count() const;
+	use_count() const
+	noexcept;
 
 	/**
 	\brief Returns if the weak_ptr still points to a shared object
@@ -146,7 +147,8 @@ public:
 	shared count is still greater than zero, true will be returned.
 	*/
 	bool
-	expired() const;
+	expired() const
+	noexcept;
 
 	/**
 	\brief Swaps the weak_ptr
@@ -158,7 +160,8 @@ public:
 	void
 	swap(
 		weak_ptr &other
-	);
+	)
+	noexcept;
 
 	/**
 	\brief Returns the underlying <code>boost::weak_ptr</code> object
@@ -199,7 +202,8 @@ operator<(
 		Type2,
 		Deleter
 	> const &right
-);
+)
+noexcept;
 
 /**
 \brief Swaps two weak pointers
@@ -226,7 +230,8 @@ swap(
 		Type,
 		Deleter
 	> &right
-);
+)
+noexcept;
 
 }
 

@@ -45,25 +45,30 @@ public:
 	>::type
 	size_type;
 
-	enum_iterator();
+	enum_iterator()
+	noexcept;
 
 	explicit
 	enum_iterator(
 		size_type
-	);
+	)
+	noexcept;
 private:
 	friend class boost::iterator_core_access;
 
 	void
-	increment();
+	increment()
+	noexcept;
 
 	bool
 	equal(
 		enum_iterator
-	) const;
+	) const
+	noexcept;
 
 	Enum
-	dereference() const;
+	dereference() const
+	noexcept;
 
 	size_type value_;
 };

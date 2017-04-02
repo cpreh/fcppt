@@ -35,6 +35,7 @@ reference_to_const(
 		Type
 	> const _ref
 )
+noexcept
 {
 	static_assert(
 		!std::is_const<

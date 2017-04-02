@@ -39,6 +39,7 @@ operator==(
 		T
 	> const &_b
 )
+noexcept
 {
 	return
 		&_a.get()
@@ -68,6 +69,7 @@ operator!=(
 		T
 	> const &_b
 )
+noexcept
 {
 	return
 		!(_a == _b);
@@ -96,6 +98,7 @@ operator<(
 		T
 	> const &_b
 )
+noexcept
 {
 	return
 		std::less<

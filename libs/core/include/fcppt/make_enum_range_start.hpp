@@ -34,6 +34,7 @@ fcppt::enum_range<
 make_enum_range_start(
 	Enum const _start
 )
+noexcept
 {
 	return
 		fcppt::make_enum_range_start_end(

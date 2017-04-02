@@ -37,6 +37,7 @@ reference_to_base(
 		Type
 	> const _ref
 )
+noexcept
 {
 	static_assert(
 		fcppt::type_traits::is_base_of<

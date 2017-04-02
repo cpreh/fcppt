@@ -30,6 +30,7 @@ fcppt::enum_range<
 	Enum
 >
 make_enum_range()
+noexcept
 {
 	return
 		fcppt::make_enum_range_start(

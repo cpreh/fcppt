@@ -35,6 +35,7 @@ unique_ptr_to_base(
 		Deleter
 	> &&_other
 )
+noexcept
 {
 	static_assert(
 		fcppt::type_traits::is_base_of<

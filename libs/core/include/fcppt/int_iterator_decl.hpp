@@ -24,6 +24,8 @@ FCPPT_PP_PUSH_WARNING
 FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
 
 /**
+\brief An iterator over integers.
+
 \ingroup fcpptvarious
 */
 template<

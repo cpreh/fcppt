@@ -38,6 +38,7 @@ make_enum_range_start_end(
 	Enum const _start,
 	Enum const _end
 )
+noexcept
 {
 	typedef
 	fcppt::enum_range<

@@ -40,6 +40,7 @@ struct c_deleter
 	operator()(
 		T *const _ptr
 	) const
+	noexcept
 	{
 		std::free(
 			_ptr

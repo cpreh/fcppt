@@ -40,7 +40,8 @@ struct reference_hash<
 	std::size_t
 	operator()(
 		type const &
-	) const;
+	) const
+	noexcept;
 };
 
 }

@@ -21,6 +21,7 @@ fcppt::enum_range<
 	size_type const _begin,
 	size_type const _end
 )
+noexcept
 :
 	begin_{
 		_begin
@@ -42,6 +43,7 @@ fcppt::enum_range<
 fcppt::enum_range<
 	Enum
 >::begin() const
+noexcept
 {
 	return
 		iterator(
@@ -60,6 +62,7 @@ fcppt::enum_range<
 fcppt::enum_range<
 	Enum
 >::end() const
+noexcept
 {
 	return
 		iterator(
@@ -78,6 +81,7 @@ fcppt::enum_range<
 fcppt::enum_range<
 	Enum
 >::size() const
+noexcept
 {
 	return
 		end_

@@ -125,6 +125,7 @@ fcppt::weak_ptr<
 	Type,
 	Deleter
 >::use_count() const
+noexcept
 {
 	return
 		impl_.use_count();
@@ -139,6 +140,7 @@ fcppt::weak_ptr<
 	Type,
 	Deleter
 >::expired() const
+noexcept
 {
 	return
 		impl_.expired();
@@ -155,6 +157,7 @@ fcppt::weak_ptr<
 >::swap(
 	weak_ptr &_other
 )
+noexcept
 {
 	impl_.swap(
 		_other.impl_
@@ -194,6 +197,7 @@ fcppt::operator<(
 		Deleter
 	> const &_right
 )
+noexcept
 {
 	return
 		_left.std_ptr()
@@ -216,6 +220,7 @@ fcppt::swap(
 		Deleter
 	> &_right
 )
+noexcept
 {
 	_left.swap(
 		_right

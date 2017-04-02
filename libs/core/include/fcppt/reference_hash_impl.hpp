@@ -26,6 +26,7 @@ fcppt::reference_hash<
 >::operator()(
 	type const &_value
 ) const
+noexcept
 {
 	return
 		std::hash<

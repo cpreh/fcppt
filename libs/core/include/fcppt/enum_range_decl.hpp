@@ -58,19 +58,23 @@ public:
 	enum_range(
 		size_type begin,
 		size_type end
-	);
+	)
+	noexcept;
 
 	constexpr
 	iterator
-	begin() const;
+	begin() const
+	noexcept;
 
 	constexpr
 	iterator
-	end() const;
+	end() const
+	noexcept;
 
 	constexpr
 	size_type
-	size() const;
+	size() const
+	noexcept;
 private:
 	size_type begin_;
 

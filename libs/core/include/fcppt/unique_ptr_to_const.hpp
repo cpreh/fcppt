@@ -33,6 +33,7 @@ unique_ptr_to_const(
 		Deleter
 	> &&_other
 )
+noexcept
 {
 	return
 		fcppt::unique_ptr<

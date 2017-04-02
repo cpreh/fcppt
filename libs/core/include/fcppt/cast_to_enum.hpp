@@ -11,6 +11,7 @@
 #include <fcppt/enum_size_type.hpp>
 #include <fcppt/cast/int_to_enum.hpp>
 #include <fcppt/cast/size.hpp>
+#include <fcppt/optional/make_if.hpp>
 #include <fcppt/optional/object_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <type_traits>
@@ -44,6 +45,7 @@ fcppt::optional::object<
 cast_to_enum(
 	Value const &_value
 )
+noexcept
 {
 	static_assert(
 		std::is_unsigned<
@@ -56,36 +58,31 @@ cast_to_enum(
 		"cast_to_enum can only cast from unsigned types to enumeration types"
 	);
 
-	typedef
-	fcppt::optional::object<
-		Enum
-	>
-	result_type;
-
 	return
-		fcppt::cast::size<
-			typename
-			fcppt::enum_size_type<
-				Enum
-			>::type
-		>(
-			_value
-		)
-		>=
-		fcppt::enum_size<
-			Enum
-		>::value
-		?
-			result_type{}
-		:
-			result_type{
-				fcppt::cast::int_to_enum<
+		fcppt::optional::make_if(
+			fcppt::cast::size<
+				typename
+				fcppt::enum_size_type<
 					Enum
-				>(
-					_value
-				)
+				>::type
+			>(
+				_value
+			)
+			<
+			fcppt::enum_size<
+				Enum
+			>::value,
+			[
+				&_value
+			]{
+				return
+					fcppt::cast::int_to_enum<
+						Enum
+					>(
+						_value
+					);
 			}
-		;
+		);
 }
 
 }
