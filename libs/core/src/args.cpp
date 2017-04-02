@@ -5,6 +5,7 @@
 
 
 #include <fcppt/args.hpp>
+#include <fcppt/args_char.hpp>
 #include <fcppt/args_vector.hpp>
 #include <fcppt/from_std_string.hpp>
 #include <fcppt/algorithm/map.hpp>
@@ -17,7 +18,7 @@
 fcppt::args_vector
 fcppt::args(
 	int const _argc,
-	char const *const *const _argv
+	fcppt::args_char const *const *const _argv
 )
 {
 	return
@@ -29,7 +30,7 @@ fcppt::args(
 				_argv + _argc
 			),
 			[](
-				char const *const _arg
+				fcppt::args_char const *const _arg
 			)
 			{
 				return

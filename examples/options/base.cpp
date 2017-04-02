@@ -4,7 +4,9 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
+#include <fcppt/args_char.hpp>
 #include <fcppt/args_from_second.hpp>
+#include <fcppt/main.hpp>
 #include <fcppt/strong_typedef_output.hpp>
 #include <fcppt/text.hpp>
 #include <fcppt/either/output.hpp>
@@ -32,9 +34,9 @@
 
 
 int
-main(
+FCPPT_MAIN(
 	int argc,
-	char **argv
+	fcppt::args_char **argv
 )
 {
 // ![options_base_record]

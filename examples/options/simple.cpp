@@ -4,7 +4,9 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
+#include <fcppt/args_char.hpp>
 #include <fcppt/args_from_second.hpp>
+#include <fcppt/main.hpp>
 #include <fcppt/text.hpp>
 #include <fcppt/either/match.hpp>
 #include <fcppt/io/cerr.hpp>
@@ -26,9 +28,9 @@
 
 
 int
-main(
+FCPPT_MAIN(
 	int argc,
-	char **argv
+	fcppt::args_char **argv
 )
 {
 // ![options_label]

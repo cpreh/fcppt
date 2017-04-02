@@ -7,6 +7,7 @@
 #ifndef FCPPT_ARGS_FROM_SECOND_HPP_INCLUDED
 #define FCPPT_ARGS_FROM_SECOND_HPP_INCLUDED
 
+#include <fcppt/args_char.hpp>
 #include <fcppt/args_vector.hpp>
 #include <fcppt/detail/symbol.hpp>
 
@@ -23,7 +24,7 @@ FCPPT_DETAIL_SYMBOL
 fcppt::args_vector
 args_from_second(
 	int argc,
-	char const *const *argv
+	fcppt::args_char const *const *argv
 );
 
 }

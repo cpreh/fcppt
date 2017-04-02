@@ -67,6 +67,7 @@ set(
 	libs/core/include/fcppt/algorithm/update_action_fwd.hpp
 	libs/core/include/fcppt/algorithm/vararg_map.hpp
 	libs/core/include/fcppt/args.hpp
+	libs/core/include/fcppt/args_char.hpp
 	libs/core/include/fcppt/args_from_second.hpp
 	libs/core/include/fcppt/args_vector.hpp
 	libs/core/include/fcppt/assert/basic/conditional.hpp
@@ -366,6 +367,8 @@ set(
 	libs/core/include/fcppt/detail/enum_iterator_base.hpp
 	libs/core/include/fcppt/detail/equal.hpp
 	libs/core/include/fcppt/detail/int_iterator_base.hpp
+	libs/core/include/fcppt/detail/main.hpp
+	libs/core/include/fcppt/detail/main_wchar.hpp
 	libs/core/include/fcppt/detail/make_shared_wrapper.hpp
 	libs/core/include/fcppt/detail/make_shared_wrapper_fwd.hpp
 	libs/core/include/fcppt/detail/move_if.hpp
@@ -505,6 +508,7 @@ set(
 	libs/core/include/fcppt/literal.hpp
 	libs/core/include/fcppt/loop.hpp
 	libs/core/include/fcppt/loop_fwd.hpp
+	libs/core/include/fcppt/main.hpp
 	libs/core/include/fcppt/major_version.hpp
 	libs/core/include/fcppt/make_cref.hpp
 	libs/core/include/fcppt/make_enum_range.hpp

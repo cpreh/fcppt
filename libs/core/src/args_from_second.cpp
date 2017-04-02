@@ -5,6 +5,7 @@
 
 
 #include <fcppt/args.hpp>
+#include <fcppt/args_char.hpp>
 #include <fcppt/args_from_second.hpp>
 #include <fcppt/args_vector.hpp>
 
@@ -12,7 +13,7 @@
 fcppt::args_vector
 fcppt::args_from_second(
 	int const _argc,
-	char const *const *const _argv
+	fcppt::args_char const *const *const _argv
 )
 {
 	return

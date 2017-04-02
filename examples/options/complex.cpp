@@ -12,7 +12,9 @@
 FCPPT_PP_PUSH_WARNING
 FCPPT_PP_DISABLE_GCC_WARNING(-Wsign-promo)
 
+#include <fcppt/args_char.hpp>
 #include <fcppt/args_from_second.hpp>
+#include <fcppt/main.hpp>
 #include <fcppt/string.hpp>
 #include <fcppt/text.hpp>
 #include <fcppt/either/match.hpp>
@@ -61,9 +63,9 @@ FCPPT_PP_DISABLE_GCC_WARNING(-Wsign-promo)
 
 
 int
-main(
+FCPPT_MAIN(
 	int argc,
-	char **argv
+	fcppt::args_char **argv
 )
 {
 // ![options_labels]
