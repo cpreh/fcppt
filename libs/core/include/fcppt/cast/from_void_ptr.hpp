@@ -38,6 +38,7 @@ Dest
 from_void_ptr(
 	Source *const _ptr
 )
+noexcept
 {
 	static_assert(
 		std::is_pointer<

@@ -38,6 +38,7 @@ std::underlying_type<
 enum_to_underlying(
 	Enum const _enum
 )
+noexcept
 {
 	static_assert(
 		std::is_enum<

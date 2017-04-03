@@ -52,6 +52,7 @@ fcppt::optional::reference<
 dynamic(
 	Base &_base
 )
+noexcept
 {
 	static_assert(
 		fcppt::type_traits::is_base_of<

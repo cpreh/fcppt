@@ -40,6 +40,7 @@ Enum
 int_to_enum(
 	Source const _source
 )
+noexcept
 {
 	static_assert(
 		std::is_enum<

@@ -65,6 +65,7 @@ std::enable_if<
 safe(
 	U const &_other
 )
+noexcept
 {
 	return
 		fcppt::cast::safe_numeric<

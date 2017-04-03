@@ -32,6 +32,7 @@ struct int_to_enum_fun
 	execute(
 		Source const &_source
 	)
+	noexcept
 	{
 		return
 			fcppt::cast::int_to_enum<

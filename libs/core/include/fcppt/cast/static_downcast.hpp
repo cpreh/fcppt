@@ -42,6 +42,7 @@ Derived
 static_downcast(
 	Base &_source
 )
+noexcept
 {
 	static_assert(
 		fcppt::type_traits::is_base_of<

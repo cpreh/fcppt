@@ -30,6 +30,7 @@ struct static_cast_fun
 	execute(
 		Source const &_source
 	)
+	noexcept
 	{
 		return
 			static_cast<

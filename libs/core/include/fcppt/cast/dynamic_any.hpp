@@ -39,6 +39,7 @@ fcppt::optional::reference<
 dynamic_any(
 	Base &_base
 )
+noexcept
 {
 	return
 		fcppt::cast::detail::dynamic<

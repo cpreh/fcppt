@@ -39,6 +39,7 @@ Dest
 int_to_float(
 	Source const _source
 )
+noexcept
 {
 	static_assert(
 		std::is_integral<

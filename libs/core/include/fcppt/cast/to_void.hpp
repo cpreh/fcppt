@@ -34,6 +34,7 @@ void
 to_void(
 	Type const &_value
 )
+noexcept
 {
 	static_cast<
 		void

@@ -33,6 +33,7 @@ fcppt::bit::mask<
 shifted_mask(
 	fcppt::bit::shift_count const _bits
 )
+noexcept
 {
 	return
 		fcppt::bit::mask<

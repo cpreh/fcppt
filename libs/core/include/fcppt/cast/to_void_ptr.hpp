@@ -26,6 +26,7 @@ void const *
 to_void_ptr(
 	Source const *const _ptr
 )
+noexcept
 {
 	return
 		_ptr;
@@ -44,6 +45,7 @@ void *
 to_void_ptr(
 	Source *const _ptr
 )
+noexcept
 {
 	return
 		_ptr;

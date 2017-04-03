@@ -32,6 +32,7 @@ struct size_fun
 	execute(
 		Source const &_source
 	)
+	noexcept
 	{
 		return
 			fcppt::cast::size<

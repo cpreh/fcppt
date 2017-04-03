@@ -35,6 +35,7 @@ struct to_unsigned_fun
 	execute(
 		Source const &_source
 	)
+	noexcept
 	{
 		static_assert(
 			std::is_same<

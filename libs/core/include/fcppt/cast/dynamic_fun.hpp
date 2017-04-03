@@ -34,6 +34,7 @@ struct dynamic_fun
 	execute(
 		Source &_source
 	)
+	noexcept
 	{
 		return
 			fcppt::cast::dynamic<

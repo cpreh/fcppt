@@ -40,6 +40,7 @@ Dest
 float_to_int(
 	Source const _source
 )
+noexcept
 {
 	static_assert(
 		std::is_floating_point<

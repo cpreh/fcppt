@@ -39,6 +39,7 @@ std::make_signed<
 to_signed(
 	Type const _value
 )
+noexcept
 {
 	static_assert(
 		std::is_unsigned<

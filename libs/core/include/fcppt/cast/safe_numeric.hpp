@@ -51,6 +51,7 @@ Dest
 safe_numeric(
 	Source const &_source
 )
+noexcept
 {
 	static_assert(
 		sizeof(

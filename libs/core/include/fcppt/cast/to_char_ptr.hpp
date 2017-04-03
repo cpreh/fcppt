@@ -35,6 +35,7 @@ Dest
 to_char_ptr(
 	Source *const _source
 )
+noexcept
 {
 	static_assert(
 		fcppt::type_traits::is_raw_pointer<

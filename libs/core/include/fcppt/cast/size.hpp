@@ -45,6 +45,7 @@ Dest
 size(
 	Source const _source
 )
+noexcept
 {
 	static_assert(
 		std::is_floating_point<

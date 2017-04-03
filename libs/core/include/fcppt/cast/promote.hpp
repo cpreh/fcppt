@@ -40,6 +40,7 @@ boost::promote<
 promote(
 	Type const _value
 )
+noexcept
 {
 	static_assert(
 		std::is_fundamental<

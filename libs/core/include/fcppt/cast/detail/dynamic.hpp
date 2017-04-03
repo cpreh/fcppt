@@ -28,6 +28,7 @@ fcppt::optional::reference<
 dynamic(
 	Base &_base
 )
+noexcept
 {
 	Derived *const derived_ptr{
 		dynamic_cast<

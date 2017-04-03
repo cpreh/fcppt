@@ -34,6 +34,7 @@ bool
 is_power_of_2(
 	T const x
 )
+noexcept
 {
 	static_assert(
 		std::is_unsigned<

@@ -32,6 +32,7 @@ test(
 		Type
 	> const _mask
 )
+noexcept
 {
 	return
 		(

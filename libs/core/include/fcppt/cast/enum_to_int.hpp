@@ -40,6 +40,7 @@ Dest
 enum_to_int(
 	Enum const _enum
 )
+noexcept
 {
 	static_assert(
 		std::is_integral<

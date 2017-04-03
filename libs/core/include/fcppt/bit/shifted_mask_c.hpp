@@ -35,6 +35,7 @@ fcppt::bit::mask<
 	Type
 >
 shifted_mask_c()
+noexcept
 {
 	static_assert(
 		Bits

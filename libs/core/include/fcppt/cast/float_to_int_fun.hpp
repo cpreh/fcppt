@@ -31,6 +31,7 @@ struct float_to_int_fun
 	execute(
 		Source const &_source
 	)
+	noexcept
 	{
 		return
 			fcppt::cast::float_to_int<

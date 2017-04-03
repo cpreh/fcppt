@@ -20,6 +20,7 @@ fcppt::bit::mask<
 >::mask(
 	Type const _value
 )
+noexcept
 :
 	value_(
 		_value
@@ -36,6 +37,7 @@ Type
 fcppt::bit::mask<
 	Type
 >::get() const
+noexcept
 {
 	return
 		value_;

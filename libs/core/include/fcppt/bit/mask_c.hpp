@@ -30,6 +30,7 @@ fcppt::bit::mask<
 	Type
 >
 mask_c()
+noexcept
 {
 	return
 		fcppt::bit::mask<

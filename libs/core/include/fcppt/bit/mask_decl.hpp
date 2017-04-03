@@ -40,11 +40,13 @@ public:
 	explicit
 	mask(
 		Type
-	);
+	)
+	noexcept;
 
 	constexpr
 	Type
-	get() const;
+	get() const
+	noexcept;
 private:
 	Type value_;
 };
