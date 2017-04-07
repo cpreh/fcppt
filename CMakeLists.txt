@@ -252,6 +252,7 @@ function(
 		TRANSITIVE_FCPPT_DEPS
 		OTHER_DEPS
 		TRANSITIVE_DEPS
+		COMPILE_DEFINITIONS_PUBLIC
 	)
 
 	cmake_parse_arguments(
@@ -374,6 +375,25 @@ function(
 		${_TRANSITIVE_DEPS}
 		${_TRANSITIVE_FCPPT_DEPS}
 	)
+
+	if(
+		NOT
+		${_VARIANT}
+		STREQUAL
+		INTERFACE
+	)
+		target_compile_options(
+			${TARGETNAME}
+			PUBLIC
+			${_COMPILE_DEFINITIONS_PUBLIC}
+		)
+	else()
+		target_compile_options(
+			${TARGETNAME}
+			INTERFACE
+			${_COMPILE_DEFINITIONS_PUBLIC}
+		)
+	endif()
 
 	fcppt_utils_export_install_target(
 		${TARGETNAME}

@@ -7,12 +7,18 @@
 #include <fcppt/args.hpp>
 #include <fcppt/args_char.hpp>
 #include <fcppt/args_vector.hpp>
-#include <fcppt/from_std_string.hpp>
 #include <fcppt/algorithm/map.hpp>
+#include <fcppt/detail/main_wchar.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/range/iterator_range_core.hpp>
 #include <string>
 #include <fcppt/config/external_end.hpp>
+
+#if defined(FCPPT_DETAIL_MAIN_WCHAR)
+#include <fcppt/from_std_wstring.hpp>
+#else
+#include <fcppt/from_std_string.hpp>
+#endif
 
 
 fcppt::args_vector
@@ -33,11 +39,21 @@ fcppt::args(
 				fcppt::args_char const *const _arg
 			)
 			{
+				typedef
+				std::basic_string<
+					fcppt::args_char
+				>
+				args_string;
+
 				return
+#if defined(FCPPT_DETAIL_MAIN_WCHAR)
+					fcppt::from_std_wstring(
+#else
 					fcppt::from_std_string(
-						std::string(
+#endif
+						args_string{
 							_arg
-						)
+						}
 					);
 			}
 		);
