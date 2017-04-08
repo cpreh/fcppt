@@ -20,12 +20,18 @@
 #include <fcppt/options/parse.hpp>
 #include <fcppt/options/result.hpp>
 #include <fcppt/options/result_of.hpp>
+#include <fcppt/preprocessor/disable_gcc_warning.hpp>
+#include <fcppt/preprocessor/pop_warning.hpp>
+#include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/record/get.hpp>
 #include <fcppt/record/make_label.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <cstdlib>
 #include <fcppt/config/external_end.hpp>
 
+
+FCPPT_PP_PUSH_WARNING
+FCPPT_PP_DISABLE_GCC_WARNING(-Wmissing-declarations)
 
 int
 FCPPT_MAIN(
@@ -146,3 +152,5 @@ FCPPT_MAIN(
 		);
 // ![options_match]
 }
+
+FCPPT_PP_POP_WARNING

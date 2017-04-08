@@ -7,7 +7,11 @@
 #ifndef FCPPT_DETAIL_MAIN_WCHAR_HPP_INCLUDED
 #define FCPPT_DETAIL_MAIN_WCHAR_HPP_INCLUDED
 
-#if defined(_WIN32) && defined(UNICODE)
+#include <fcppt/public_config.hpp>
+#include <fcppt/config/platform.hpp>
+
+
+#if defined(FCPPT_CONFIG_WINDOWS_PLATFORM) && !defined(FCPPT_NARROW_STRING)
 #define FCPPT_DETAIL_MAIN_WCHAR
 #endif
 

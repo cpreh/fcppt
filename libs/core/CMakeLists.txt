@@ -1208,27 +1208,10 @@ set(
 	libs/core/src/widen.cpp
 )
 
-# FIXME: Check for -municode flag
-if(
-	NOT
-	ENABLE_NARROW_STRING
-	AND
-	WIN32
-	AND
-	CMAKE_COMPILER_IS_GNUCXX
-)
-	set(
-		CORE_COMPILE_DEFINITIONS
-		"-municode"
-	)
-endif()
-
 make_fcppt_library(
 	core
 	"${FCPPT_CORE_FILES}"
 	HAS_IMPL_DIR
 	SYMBOL_NAME
 		FCPPT
-	COMPILE_DEFINITIONS_PUBLIC
-		${CORE_COMPILE_DEFINITIONS}
 )

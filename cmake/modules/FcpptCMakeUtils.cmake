@@ -265,6 +265,26 @@ elseif(
 	#5031 - warning(pop) in different file
 endif()
 
+# FIXME: Check for -municode flag
+if(
+	NOT
+	ENABLE_NARROW_STRING
+	AND
+	WIN32
+	AND
+	CMAKE_COMPILER_IS_GNUCXX
+)
+	set(
+		FCPPT_UTILS_MAIN_COMPILE_OPTIONS
+		"-municode"
+	)
+
+	set(
+		FCPPT_UTILS_MAIN_LINK_LIBS
+		"-municode"
+	)
+endif()
+
 # setup platform specific flags
 if(
 	UNIX
@@ -313,31 +333,36 @@ if(
 	if(
 		FCPPT_UTILS_HAVE_AS_NEEDED_LINKER_FLAG
 	)
-		set(
+		list(
+			APPEND
 			FCPPT_UTILS_SHARED_LINKER_FLAGS
-			"-Wl,--as-needed ${FCPPT_UTILS_SHARED_LINKER_FLAGS}"
+			"-Wl,--as-needed"
 		)
 	endif()
 
 	if(
 		FCPPT_UTILS_HAVE_NO_UNDEFINED_LINKER_FLAG
 	)
-		set(
+		list(
+			APPEND
 			FCPPT_UTILS_SHARED_LINKER_FLAGS
-			"-Wl,--no-undefined ${FCPPT_UTILS_SHARED_LINKER_FLAGS}"
+			"-Wl,--no-undefined"
 		)
 	endif()
 
 	if(
 		FCPPT_UTILS_HAVE_NO_COPY_DT_NEEDED_ENTRIES_LINKER_FLAG
 	)
-		set(
+		list(
+			APPEND
 			FCPPT_UTILS_SHARED_LINKER_FLAGS
-			"-Wl,--no-copy-dt-needed-entries ${FCPPT_UTILS_SHARED_LINKER_FLAGS}"
+			"-Wl,--no-copy-dt-needed-entries"
 		)
-		set(
+
+		list(
+			APPEND
 			FCPPT_UTILS_EXE_LINKER_FLAGS
-			"-Wl,--no-copy-dt-needed-entries ${FCPPT_UTILS_EXE_LINKER_FLAGS}"
+			"-Wl,--no-copy-dt-needed-entries"
 		)
 	endif()
 endif()
@@ -795,8 +820,9 @@ function(
 		${FCPPT_UTILS_COMPILE_DEFINITIONS}
 	)
 
-	set(
-		COMPILE_OPTIONS
+	target_compile_options(
+		${TARGET_NAME}
+		PRIVATE
 		${FCPPT_UTILS_COMPILE_OPTIONS}
 		${_ADDITIONAL_FLAGS}
 	)
@@ -810,8 +836,6 @@ function(
 			14
 		CXX_STANDARD_REQUIRED
 			14
-		COMPILE_OPTIONS
-			"${COMPILE_OPTIONS}"
 		NO_SYSTEM_FROM_IMPORTED
 			TRUE
 	)
@@ -822,30 +846,15 @@ function(
 		TYPE
 	)
 
-	get_target_property(
-		TEMP_LINK_FLAGS
-		${TARGET_NAME}
-		LINK_FLAGS
-	)
-
-	if(
-		TEMP_LINK_FLAGS
-		STREQUAL
-		"TEMP_LINK_FLAGS-NOTFOUND"
-	)
-		unset(
-			TEMP_LINK_FLAGS
-		)
-	endif()
-
 	if(
 		${TARGET_TYPE}
 		STREQUAL
 		"SHARED_LIBRARY"
 	)
-		set(
-			TEMP_LINK_FLAGS
-			"${FCPPT_UTILS_SHARED_LINKER_FLAGS} ${OLD_LINK_FLAGS}"
+		target_link_libraries(
+			${TARGET_NAME}
+			PRIVATE
+			${FCPPT_UTILS_SHARED_LINKER_FLAGS}
 		)
 	endif()
 
@@ -854,18 +863,12 @@ function(
 		STREQUAL
 		"EXECUTABLE"
 	)
-		set(
-			TEMP_LINK_FLAGS
-			"${FCPPT_UTILS_EXE_LINKER_FLAGS} ${OLD_LINK_FLAGS}"
+		target_link_libraries(
+			${TARGET_NAME}
+			PRIVATE
+			${FCPPT_UTILS_EXE_LINKER_FLAGS}
 		)
 	endif()
-
-	set_target_properties(
-		${TARGET_NAME}
-		PROPERTIES
-		LINK_FLAGS
-		"${TEMP_LINK_FLAGS}"
-	)
 endfunction()
 
 function(
@@ -1149,6 +1152,7 @@ function(
 		LINK_LIBS
 		INCLUDE_DIRS
 		COMPILE_DEFINITIONS
+		COMPILE_OPTIONS
 	)
 
 	cmake_parse_arguments(
@@ -1200,7 +1204,13 @@ function(
 	target_compile_definitions(
 		${FULL_EXAMPLE_NAME}
 		PRIVATE
-		"${_COMPILE_DEFINITIONS}"
+		${_COMPILE_DEFINITIONS}
+	)
+
+	target_compile_options(
+		${FULL_EXAMPLE_NAME}
+		PRIVATE
+		${_COMPILE_OPTIONS}
 	)
 
 	target_include_directories(

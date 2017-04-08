@@ -62,6 +62,9 @@ FCPPT_PP_DISABLE_GCC_WARNING(-Wsign-promo)
 #include <fcppt/config/external_end.hpp>
 
 
+FCPPT_PP_PUSH_WARNING
+FCPPT_PP_DISABLE_GCC_WARNING(-Wmissing-declarations)
+
 int
 FCPPT_MAIN(
 	int argc,
@@ -413,4 +416,5 @@ FCPPT_MAIN(
 
 }
 
+FCPPT_PP_POP_WARNING
 FCPPT_PP_POP_WARNING
