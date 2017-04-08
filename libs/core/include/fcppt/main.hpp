@@ -17,6 +17,9 @@
 
 Windows uses <code>wmain</code> instead of <code>main</code> for Unicode applications.
 The type of this function is <code>int (int,fcppt::args_char **)</code>.
+
+\note This must be used together with <code>FCPPT_UTILS_MAIN_COMPILE_OPTIONS</code> and
+<code>FCPPT_UTILS_MAIN_LINK_LIBS</code>.
 */
 #define FCPPT_MAIN FCPPT_DETAIL_MAIN
 

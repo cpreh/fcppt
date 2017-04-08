@@ -7,6 +7,12 @@
 
 <ul>
 
+<li>\ref fcpptconfig
+	<ul>
+	<li>Added \link FCPPT_CONFIG_MSVC_VERSION_AT_LEAST\endlink.</li>
+	</ul>
+</li>
+
 <li>\ref fcpptvarious
 	<ul>
 	<li>Added \link FCPPT_MAIN\endlink as a name for the <code>main</code> function to support unicode arguments in Windows.</li>
