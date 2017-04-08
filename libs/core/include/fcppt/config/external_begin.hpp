@@ -64,6 +64,12 @@ FCPPT_PP_DISABLE_VC_WARNING(4987) // non standard throw(...)
 FCPPT_PP_DISABLE_VC_WARNING(5026) // move constructor could not be generated
 FCPPT_PP_DISABLE_VC_WARNING(5027) // move assignment operator could not be generated
 
+#include <fcppt/config/msvc_version_at_least.hpp>
+
+#if FCPPT_CONFIG_MSVC_VERSION_AT_LEAST(1910)
+FCPPT_PP_DISABLE_VC_WARNING(4774) // format string expected
+#endif
+
 #elif defined(FCPPT_CONFIG_GCC_COMPILER)
 
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>

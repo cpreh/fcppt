@@ -171,9 +171,11 @@ set(
 	libs/core/include/fcppt/com_deleter_fwd.hpp
 	libs/core/include/fcppt/config/clang_version_at_least.hpp
 	libs/core/include/fcppt/config/compiler.hpp
+	libs/core/include/fcppt/config/detail/msvc_version_at_least.hpp
 	libs/core/include/fcppt/config/external_begin.hpp
 	libs/core/include/fcppt/config/external_end.hpp
 	libs/core/include/fcppt/config/gcc_version_at_least.hpp
+	libs/core/include/fcppt/config/msvc_version_at_least.hpp
 	libs/core/include/fcppt/config/platform.hpp
 	libs/core/include/fcppt/const.hpp
 	libs/core/include/fcppt/const_pointer_cast.hpp
