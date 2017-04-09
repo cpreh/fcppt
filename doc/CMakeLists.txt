@@ -1527,6 +1527,12 @@ set(
 	libs/options/include/fcppt/options/switch_impl.hpp
 )
 
+list(
+	APPEND
+	FCPPT_DOC_FILES
+	CMakeLists.txt
+)
+
 fcppt_utils_append_source_dir(
 	"${FCPPT_DOC_FILES}"
 	FCPPT_DOC_FILES_ABS
