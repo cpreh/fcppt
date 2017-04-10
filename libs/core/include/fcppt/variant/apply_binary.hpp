@@ -7,6 +7,9 @@
 #ifndef FCPPT_VARIANT_APPLY_BINARY_HPP_INCLUDED
 #define FCPPT_VARIANT_APPLY_BINARY_HPP_INCLUDED
 
+#include <fcppt/preprocessor/disable_gcc_warning.hpp>
+#include <fcppt/preprocessor/pop_warning.hpp>
+#include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/variant/apply_unary.hpp>
 #include <fcppt/variant/is_object.hpp>
 #include <fcppt/config/external_begin.hpp>
@@ -81,6 +84,8 @@ apply_binary(
 				auto
 			)
 			{
+FCPPT_PP_PUSH_WARNING
+FCPPT_PP_DISABLE_GCC_WARNING(-Wattributes)
 				return
 					fcppt::variant::apply_unary(
 						[
@@ -118,6 +123,7 @@ apply_binary(
 							_obj1
 						)
 					);
+FCPPT_PP_POP_WARNING
 			},
 			std::forward<
 				Variant2

@@ -21,6 +21,9 @@
 #include <fcppt/math/vector/init.hpp>
 #include <fcppt/math/vector/object_impl.hpp>
 #include <fcppt/math/vector/static.hpp>
+#include <fcppt/preprocessor/disable_gcc_warning.hpp>
+#include <fcppt/preprocessor/pop_warning.hpp>
+#include <fcppt/preprocessor/push_warning.hpp>
 
 
 namespace fcppt
@@ -84,6 +87,8 @@ operator *(
 				result_type::value_type
 				value_type;
 
+FCPPT_PP_PUSH_WARNING
+FCPPT_PP_DISABLE_GCC_WARNING(-Wattributes)
 				return
 					fcppt::algorithm::fold(
 						fcppt::math::int_range_count<
@@ -143,6 +148,7 @@ operator *(
 								);
 						}
 					);
+FCPPT_PP_POP_WARNING
 			}
 		);
 }
