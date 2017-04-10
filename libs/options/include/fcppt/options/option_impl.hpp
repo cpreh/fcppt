@@ -33,6 +33,9 @@
 #include <fcppt/options/detail/help_text.hpp>
 #include <fcppt/options/detail/long_or_short_name.hpp>
 #include <fcppt/options/detail/type_annotation.hpp>
+#include <fcppt/preprocessor/disable_gcc_warning.hpp>
+#include <fcppt/preprocessor/pop_warning.hpp>
+#include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/record/element.hpp>
 #include <fcppt/record/variadic.hpp>
 #include <fcppt/config/external_begin.hpp>
@@ -100,6 +103,8 @@ fcppt::options::option<
 					&_state,
 					this
 				]{
+FCPPT_PP_PUSH_WARNING
+FCPPT_PP_DISABLE_GCC_WARNING(-Wattributes)
 					return
 						fcppt::optional::bind(
 							short_name_,
@@ -118,11 +123,14 @@ fcppt::options::option<
 									);
 							}
 						);
+FCPPT_PP_POP_WARNING
 				}
 			),
 			[
 				this
 			]{
+FCPPT_PP_PUSH_WARNING
+FCPPT_PP_DISABLE_GCC_WARNING(-Wattributes)
 				return
 					fcppt::either::from_optional(
 						fcppt::optional::map(
@@ -156,6 +164,7 @@ fcppt::options::option<
 								};
 						}
 					);
+FCPPT_PP_POP_WARNING
 			},
 			[
 				this
@@ -163,6 +172,8 @@ fcppt::options::option<
 				fcppt::string const &_string
 			)
 			{
+FCPPT_PP_PUSH_WARNING
+FCPPT_PP_DISABLE_GCC_WARNING(-Wattributes)
 				return
 					fcppt::either::from_optional(
 						fcppt::optional::map(
@@ -213,6 +224,7 @@ fcppt::options::option<
 								};
 						}
 					);
+FCPPT_PP_POP_WARNING
 			}
 		);
 }

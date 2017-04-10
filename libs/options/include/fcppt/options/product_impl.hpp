@@ -18,6 +18,9 @@
 #include <fcppt/options/result_of.hpp>
 #include <fcppt/options/state_fwd.hpp>
 #include <fcppt/options/detail/deref.hpp>
+#include <fcppt/preprocessor/disable_gcc_warning.hpp>
+#include <fcppt/preprocessor/pop_warning.hpp>
+#include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/record/multiply_disjoint.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <utility>
@@ -155,6 +158,8 @@ fcppt::options::product<
 	fcppt::options::state &_state
 ) const
 {
+FCPPT_PP_PUSH_WARNING
+FCPPT_PP_DISABLE_GCC_WARNING(-Wattributes)
 	return
 		fcppt::either::bind(
 			fcppt::options::detail::deref(
@@ -199,6 +204,7 @@ fcppt::options::product<
 					);
 			}
 		);
+FCPPT_PP_POP_WARNING
 }
 
 template<

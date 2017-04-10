@@ -26,6 +26,9 @@
 #include <fcppt/options/detail/parse_result.hpp>
 #include <fcppt/options/detail/parse_to_empty.hpp>
 #include <fcppt/options/detail/state_from_args.hpp>
+#include <fcppt/preprocessor/disable_gcc_warning.hpp>
+#include <fcppt/preprocessor/pop_warning.hpp>
+#include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/record/get.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <utility>
@@ -112,6 +115,8 @@ parse_help(
 				> &&_result
 			)
 			{
+FCPPT_PP_PUSH_WARNING
+FCPPT_PP_DISABLE_GCC_WARNING(-Wattributes)
 				return
 					fcppt::record::get<
 						fcppt::options::detail::help_label
@@ -190,6 +195,7 @@ parse_help(
 							)
 						}
 					;
+FCPPT_PP_POP_WARNING
 			}
 		);
 }
