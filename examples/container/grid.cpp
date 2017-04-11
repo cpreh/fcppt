@@ -4,7 +4,6 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/no_init.hpp>
 #include <fcppt/text.hpp>
 #include <fcppt/cast/int_to_float.hpp>
 #include <fcppt/container/grid/interpolate.hpp>
@@ -107,24 +106,6 @@ init()
 				;
 		}
 	);
-
-	// Don't initialize the grid
-	int2d_grid uninit(
-		int2d_grid::dim(
-			3u,
-			4U
-		),
-		fcppt::no_init{}
-	);
-
-	uninit[
-		int2d_grid::pos(
-			3u,
-			2u
-		)
-	] =
-		10;
-
 //! [grid_init]
 }
 

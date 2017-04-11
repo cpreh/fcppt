@@ -5,7 +5,6 @@
 
 
 #include <fcppt/literal.hpp>
-#include <fcppt/no_init.hpp>
 #include <fcppt/algorithm/fold.hpp>
 #include <fcppt/cast/size.hpp>
 #include <fcppt/cast/to_signed.hpp>
@@ -42,7 +41,7 @@ FCPPT_PP_POP_WARNING
 			2u,
 			2u
 		),
-		fcppt::no_init{}
+		0
 	);
 
 	typedef

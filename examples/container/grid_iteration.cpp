@@ -4,7 +4,6 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/no_init.hpp>
 #include <fcppt/text.hpp>
 #include <fcppt/container/grid/object.hpp>
 #include <fcppt/io/cout.hpp>
@@ -38,7 +37,7 @@ main()
 {
 	int1d_grid one_dimensional(
 		int1d_grid::dim(3u),
-		fcppt::no_init{}
+		0
 	);
 
 	one_dimensional[int1d_grid::pos(0u)] = 0;
@@ -57,7 +56,7 @@ main()
 
 	int2d_grid two_dimensional(
 		int2d_grid::dim(3u,2u),
-		fcppt::no_init{}
+		0
 	);
 
 	two_dimensional[int2d_grid::pos(0u,0u)] = 0;

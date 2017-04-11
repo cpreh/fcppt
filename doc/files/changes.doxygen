@@ -40,6 +40,18 @@
 
 </ul>
 
+\subsection changes_removed_functionality_to_260 Removed functionality
+
+<ul>
+
+<li>\ref fcpptcontainergrid
+	<ul>
+	<li>Removed constructor taking \link fcppt::no_init\endlink. The underlying container is now always a <code>std::vector</code>.</li>
+	</ul>
+</li>
+
+</ul>
+
 \section changes_changes_to_251 2.5.1
 
 \subsection changes_added_functionality_to_251 Added functionality

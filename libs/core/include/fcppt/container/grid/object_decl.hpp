@@ -7,8 +7,6 @@
 #ifndef FCPPT_CONTAINER_GRID_OBJECT_DECL_HPP_INCLUDED
 #define FCPPT_CONTAINER_GRID_OBJECT_DECL_HPP_INCLUDED
 
-#include <fcppt/no_init_fwd.hpp>
-#include <fcppt/container/raw_vector_decl.hpp>
 #include <fcppt/container/grid/dim_fwd.hpp>
 #include <fcppt/container/grid/object_fwd.hpp>
 #include <fcppt/container/grid/pos_fwd.hpp>
@@ -48,20 +46,10 @@ class object
 	);
 
 	typedef
-	typename
-	std::conditional<
-		std::is_pod<
-			T
-		>::value,
-		fcppt::container::raw_vector<
-			T,
-			A
-		>,
-		std::vector<
-			T,
-			A
-		>
-	>::type
+	std::vector<
+		T,
+		A
+	>
 	container;
 // \endcond
 public:
@@ -82,22 +70,22 @@ public:
 
 	typedef
 	typename
-	A::size_type
+	container::size_type
 	size_type;
 
 	typedef
 	typename
-	A::difference_type
+	container::difference_type
 	difference_type;
 
 	typedef
 	typename
-	A::reference
+	container::reference
 	reference;
 
 	typedef
 	typename
-	A::const_reference
+	container::const_reference
 	const_reference;
 
 	typedef
@@ -146,22 +134,13 @@ public:
 	object();
 
 	/**
-	\brief The grid will have an initial size but the elements might not be initialized
-	\param d The initial size of the grid
-	*/
-	object(
-		dim const &d,
-		fcppt::no_init const &
-	);
-
-	/**
 	\brief Initialize the grid to a size and fill every cell with the same value
 	\param d The size of the grid
 	\param r The value to assign to each element of the grid
 	*/
 	object(
 		dim const &d,
-		const_reference r
+		value_type const &r
 	);
 
 	/**
