@@ -29,6 +29,10 @@ add_fcppt_algorithm_test(
 )
 
 add_fcppt_algorithm_test(
+	equal
+)
+
+add_fcppt_algorithm_test(
 	equal_range
 )
 

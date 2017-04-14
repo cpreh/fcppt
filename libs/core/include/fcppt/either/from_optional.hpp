@@ -28,8 +28,8 @@ namespace either
 \ingroup fcppteither
 
 If \a _optional is set to <code>x</code>, then <code>x</code> is returned as
-the success value, otherwise <code>_failure_function()</code> is returned the
-failure value.
+the success value, otherwise <code>_failure_function()</code> is returned as
+the failure value.
 
 \tparam FailureFunction Must be a function callable as <code>R ()</code> where
 <code>R</code> is the failure type

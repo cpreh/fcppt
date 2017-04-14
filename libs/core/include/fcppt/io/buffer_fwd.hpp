@@ -7,7 +7,7 @@
 #ifndef FCPPT_IO_BUFFER_FWD_HPP_INCLUDED
 #define FCPPT_IO_BUFFER_FWD_HPP_INCLUDED
 
-#include <fcppt/container/raw_vector_fwd.hpp>
+#include <fcppt/container/raw_vector/object_fwd.hpp>
 
 
 namespace fcppt
@@ -16,7 +16,7 @@ namespace io
 {
 
 typedef
-fcppt::container::raw_vector<
+fcppt::container::raw_vector::object<
 	char
 >
 buffer;

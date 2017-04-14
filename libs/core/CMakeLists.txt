@@ -29,6 +29,7 @@ set(
 	libs/core/include/fcppt/algorithm/detail/tuple_loop_break.hpp
 	libs/core/include/fcppt/algorithm/detail/vararg_map.hpp
 	libs/core/include/fcppt/algorithm/enum_array_init.hpp
+	libs/core/include/fcppt/algorithm/equal.hpp
 	libs/core/include/fcppt/algorithm/equal_range.hpp
 	libs/core/include/fcppt/algorithm/find_by_opt.hpp
 	libs/core/include/fcppt/algorithm/find_if_opt.hpp
@@ -207,15 +208,26 @@ set(
 	libs/core/include/fcppt/container/bitfield/std_hash.hpp
 	libs/core/include/fcppt/container/bitfield/underlying_value.hpp
 	libs/core/include/fcppt/container/bitfield/value_type.hpp
+	libs/core/include/fcppt/container/buffer/object.hpp
+	libs/core/include/fcppt/container/buffer/object_decl.hpp
+	libs/core/include/fcppt/container/buffer/object_fwd.hpp
+	libs/core/include/fcppt/container/buffer/object_impl.hpp
+	libs/core/include/fcppt/container/buffer/read_from.hpp
+	libs/core/include/fcppt/container/buffer/read_from_opt.hpp
+	libs/core/include/fcppt/container/buffer/resize_write_area.hpp
+	libs/core/include/fcppt/container/buffer/to_raw_vector.hpp
 	libs/core/include/fcppt/container/data.hpp
 	libs/core/include/fcppt/container/data_end.hpp
 	libs/core/include/fcppt/container/detail/array_size.hpp
+	libs/core/include/fcppt/container/dynamic_array.hpp
+	libs/core/include/fcppt/container/dynamic_array_decl.hpp
+	libs/core/include/fcppt/container/dynamic_array_fwd.hpp
+	libs/core/include/fcppt/container/dynamic_array_impl.hpp
 	libs/core/include/fcppt/container/enum_array.hpp
 	libs/core/include/fcppt/container/enum_array_comparison.hpp
 	libs/core/include/fcppt/container/enum_array_decl.hpp
 	libs/core/include/fcppt/container/enum_array_fwd.hpp
 	libs/core/include/fcppt/container/enum_array_impl.hpp
-	libs/core/include/fcppt/container/exception.hpp
 	libs/core/include/fcppt/container/find_opt.hpp
 	libs/core/include/fcppt/container/find_opt_iterator.hpp
 	libs/core/include/fcppt/container/find_opt_mapped.hpp
@@ -306,14 +318,10 @@ set(
 	libs/core/include/fcppt/container/grid/sup_from_pos_fwd.hpp
 	libs/core/include/fcppt/container/grid/sup_fwd.hpp
 	libs/core/include/fcppt/container/grid/sup_tag.hpp
-	libs/core/include/fcppt/container/impl/exception.hpp
-	libs/core/include/fcppt/container/impl/out_of_range.hpp
 	libs/core/include/fcppt/container/index_map.hpp
 	libs/core/include/fcppt/container/index_map_decl.hpp
 	libs/core/include/fcppt/container/index_map_fwd.hpp
 	libs/core/include/fcppt/container/index_map_impl.hpp
-	libs/core/include/fcppt/container/is_raw_vector.hpp
-	libs/core/include/fcppt/container/is_std_vector.hpp
 	libs/core/include/fcppt/container/make_array.hpp
 	libs/core/include/fcppt/container/make_move_range.hpp
 	libs/core/include/fcppt/container/maybe_back.hpp
@@ -321,12 +329,12 @@ set(
 	libs/core/include/fcppt/container/move_range_decl.hpp
 	libs/core/include/fcppt/container/move_range_fwd.hpp
 	libs/core/include/fcppt/container/move_range_impl.hpp
-	libs/core/include/fcppt/container/out_of_range.hpp
 	libs/core/include/fcppt/container/pop_back.hpp
-	libs/core/include/fcppt/container/raw_vector.hpp
-	libs/core/include/fcppt/container/raw_vector_decl.hpp
-	libs/core/include/fcppt/container/raw_vector_fwd.hpp
-	libs/core/include/fcppt/container/raw_vector_impl.hpp
+	libs/core/include/fcppt/container/raw_vector/comparison.hpp
+	libs/core/include/fcppt/container/raw_vector/object.hpp
+	libs/core/include/fcppt/container/raw_vector/object_decl.hpp
+	libs/core/include/fcppt/container/raw_vector/object_fwd.hpp
+	libs/core/include/fcppt/container/raw_vector/object_impl.hpp
 	libs/core/include/fcppt/container/to_iterator_type.hpp
 	libs/core/include/fcppt/container/to_mapped_type.hpp
 	libs/core/include/fcppt/container/to_pointer_type.hpp

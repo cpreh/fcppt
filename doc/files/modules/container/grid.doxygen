@@ -86,11 +86,10 @@ fcppt::container::grid::clamped_sup_signed\endlink. An unsigned
 
 \section fcpptcontainergrid_layout Layout
 
-Internally, the grid uses a <code>std::vector</code> or a \link
-fcppt::container::raw_vector\endlink to linearly represent the grid. The
-iterators returned by the grid are iterators over that internal storage array,
-so they're not special in any way (other than begin random-access). This also
-means that iteration is...
+Internally, the grid uses a <code>std::vector</code> to linearly represent the
+grid. The iterators returned by the grid are iterators over that internal
+storage array, so they're not special in any way (other than begin
+random-access). This also means that iteration is...
 <ul>
 <li>
 ...<em>linear</em> for <em>one-dimensional</em> grids (from left to right)

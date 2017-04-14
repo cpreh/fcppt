@@ -10,11 +10,12 @@
 #include <fcppt/exception.hpp>
 #include <fcppt/text.hpp>
 #include <fcppt/assert/unreachable.hpp>
+#include <fcppt/cast/to_unsigned.hpp>
 #include <fcppt/container/data_end.hpp>
-#include <fcppt/container/raw_vector_impl.hpp>
+#include <fcppt/container/buffer/object.hpp>
+#include <fcppt/container/buffer/resize_write_area.hpp>
 #include <fcppt/impl/codecvt_type.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <cstring>
 #include <iterator>
 #include <locale>
 #include <string>
@@ -42,13 +43,17 @@ codecvt(
 	Function const &_function
 )
 {
-	typedef std::basic_string<
+	typedef
+	std::basic_string<
 		Out
-	> return_type;
+	>
+	return_type;
 
-	typedef fcppt::container::raw_vector<
+	typedef
+	fcppt::container::buffer::object<
 		Out
-	> buffer_type;
+	>
+	buffer_type;
 
 	if(
 		_string.empty()
@@ -64,21 +69,15 @@ codecvt(
 		)
 	);
 
-	buffer_type buf(
+	buffer_type buf{
 		_string.size()
-	);
+	};
 
-	typedef fcppt::impl::codecvt_type::state_type state_type;
+	typedef
+	fcppt::impl::codecvt_type::state_type
+	state_type;
 
-	state_type state;
-
-	std::memset(
-		&state,
-		0,
-		sizeof(state_type)
-	);
-
-	Out *to = buf.data();
+	state_type state{};
 
 	for(
 		In const *from = _string.data(),
@@ -87,7 +86,9 @@ codecvt(
 		from = from_next
 	)
 	{
-		Out *to_next;
+		Out *to_next{
+			nullptr
+		};
 
 		std::codecvt_base::result const result(
 			(
@@ -99,11 +100,25 @@ codecvt(
 					_string
 				),
 				from_next,
-				to,
-				buf.data_end(),
+				buf.write_data(),
+				buf.write_data_end(),
 				to_next
 			)
 		);
+
+		if(
+			to_next
+			!=
+			nullptr
+		)
+			buf.written(
+				fcppt::cast::to_unsigned(
+					std::distance(
+						buf.write_data(),
+						to_next
+					)
+				)
+			);
 
 		switch(
 			result
@@ -117,30 +132,23 @@ codecvt(
 				);
 		case std::codecvt_base::error:
 			throw
-				fcppt::exception(
+				fcppt::exception{
 					FCPPT_TEXT("codecvt: error!")
-				);
+				};
 		case std::codecvt_base::partial:
-			{
-				typename buffer_type::difference_type const diff(
-					std::distance(
-						buf.data(),
-						to_next
-					)
+			buf =
+				fcppt::container::buffer::resize_write_area(
+					buf,
+					buf.read_size()
+					*
+					2u
 				);
-
-				buf.resize(
-					buf.size() * 2
-				);
-
-				to = buf.data() + diff;
-			}
 			continue;
 		case std::codecvt_base::ok:
 			return
 				return_type(
-					buf.data(),
-					to_next
+					buf.begin(),
+					buf.end()
 				);
 		}
 

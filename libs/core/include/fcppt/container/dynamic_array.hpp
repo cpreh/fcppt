@@ -4,10 +4,10 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_CONTAINER_RAW_VECTOR_HPP_INCLUDED
-#define FCPPT_CONTAINER_RAW_VECTOR_HPP_INCLUDED
+#ifndef FCPPT_CONTAINER_DYNAMIC_ARRAY_HPP_INCLUDED
+#define FCPPT_CONTAINER_DYNAMIC_ARRAY_HPP_INCLUDED
 
-#include <fcppt/container/raw_vector_decl.hpp>
-#include <fcppt/container/raw_vector_impl.hpp>
+#include <fcppt/container/dynamic_array_impl.hpp>
+
 
 #endif

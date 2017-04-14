@@ -4,60 +4,66 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_CONTAINER_IS_STD_VECTOR_HPP_INCLUDED
-#define FCPPT_CONTAINER_IS_STD_VECTOR_HPP_INCLUDED
-
+#include <fcppt/container/raw_vector/object.hpp>
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <type_traits>
-#include <vector>
+#include <boost/test/unit_test.hpp>
 #include <fcppt/config/external_end.hpp>
 
-
-namespace fcppt
-{
-namespace container
-{
 
 FCPPT_PP_PUSH_WARNING
 FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
 
-/**
-\brief Metafunction to test if a container is a <code>std::%vector</code>.
-
-\ingroup fcpptcontainer
-*/
-template<
-	typename T
->
-struct is_std_vector
-:
-std::false_type
+BOOST_AUTO_TEST_CASE(
+	container_raw_vector_comparison
+)
 {
-};
-
-/// \cond FCPPT_DOXYGEN_DEBUG
-template<
-	typename T,
-	typename A
->
-struct is_std_vector<
-	std::vector<
-		T,
-		A
-	>
->
-:
-std::true_type
-{
-};
-/// \endcond
-
 FCPPT_PP_POP_WARNING
 
-}
-}
+	typedef
+	fcppt::container::raw_vector::object<
+		int
+	>
+	container_type;
 
-#endif
+	container_type const test1{
+		1,
+		2
+	};
+
+	container_type const test2{
+		2,
+		3
+	};
+
+	container_type const test3{
+		1,
+		2
+	};
+
+	BOOST_CHECK(
+		test1
+		==
+		test3
+	);
+
+	BOOST_CHECK(
+		test1
+		!=
+		test2
+	);
+
+	BOOST_CHECK(
+		test1
+		<
+		test2
+	);
+
+	BOOST_CHECK(
+		test2
+		>
+		test1
+	);
+}

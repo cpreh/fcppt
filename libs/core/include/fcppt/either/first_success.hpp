@@ -24,6 +24,8 @@ namespace either
 \brief Call a container of functions, returning their first success or a
 container of failures
 
+\ingroup fcppteither
+
 For <code>_functions = (f_1,...,f_n)</code>, let <code>i</code> be the smallest
 index such that <code>f_i()</code> returns success <code>s</code>, in which
 case the result is <code>s</code>. If there is no such index, then all

@@ -16,8 +16,16 @@ add_subdirectory(
 	bitfield
 )
 
+add_subdirectory(
+	buffer
+)
+
 add_fcppt_container_test(
 	data
+)
+
+add_fcppt_container_test(
+	dynamic_array
 )
 
 add_fcppt_container_test(
@@ -64,10 +72,8 @@ add_fcppt_container_test(
 	pop_back
 )
 
-add_fcppt_container_test(
+add_subdirectory(
 	raw_vector
-	LINK_LIBS
-		"${fcppt_core_TARGET}"
 )
 
 add_subdirectory(

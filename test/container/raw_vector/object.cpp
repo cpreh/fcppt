@@ -4,7 +4,8 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/container/raw_vector.hpp>
+#include <fcppt/no_init.hpp>
+#include <fcppt/container/raw_vector/object_impl.hpp>
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
@@ -21,7 +22,7 @@ namespace
 {
 
 typedef
-fcppt::container::raw_vector<
+fcppt::container::raw_vector::object<
 	int
 >
 container_type;
@@ -30,7 +31,7 @@ container_type;
 
 template
 class
-fcppt::container::raw_vector<
+fcppt::container::raw_vector::object<
 	int
 >;
 
@@ -79,12 +80,10 @@ BOOST_AUTO_TEST_CASE(
 {
 FCPPT_PP_POP_WARNING
 
-	container_type test;
-
-	test.assign(
+	container_type test{
 		10u,
-		42
-	);
+		fcppt::no_init{}
+	};
 
 	BOOST_CHECK_EQUAL(
 		test.size(),
@@ -411,72 +410,14 @@ FCPPT_PP_PUSH_WARNING
 FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
 
 BOOST_AUTO_TEST_CASE(
-	container_raw_vector_copy
-)
-{
-FCPPT_PP_POP_WARNING
-
-	container_type test;
-
-	for(
-		container_type::size_type i(0);
-		i < 1000u;
-		++i
-	)
-		test.push_back(
-			static_cast<
-				container_type::value_type
-			>(i)
-		);
-
-	container_type test2(test);
-
-	BOOST_CHECK(
-		test
-		==
-		test2
-	);
-
-	container_type test3;
-
-	test3 = test;
-
-	BOOST_CHECK(
-		test
-		==
-		test3
-	);
-}
-
-FCPPT_PP_PUSH_WARNING
-FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
-
-BOOST_AUTO_TEST_CASE(
-	container_raw_vector_empty_copy
-)
-{
-FCPPT_PP_POP_WARNING
-
-	container_type test;
-
-	container_type test2(test);
-
-	BOOST_CHECK(
-		test2.empty()
-	);
-}
-
-FCPPT_PP_PUSH_WARNING
-FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
-
-BOOST_AUTO_TEST_CASE(
 	container_raw_vector_move
 )
 {
 FCPPT_PP_POP_WARNING
 
 	container_type test1(
-		100
+		100,
+		fcppt::no_init{}
 	);
 
 	test1[0] = 500;

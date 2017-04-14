@@ -117,7 +117,7 @@ can be omitted from <code>return</code> statements.</li>
 	<li>Added \link fcppt::container::maybe_front\endlink.</li>
 	<li>Added \link fcppt::container::maybe_back\endlink.</li>
 	<li>Added <code>noexcept</code> to move constructors and assignment
-	operators of \link fcppt::container::raw_vector \endlink, \link
+	operators of <code>fcppt::container::raw_vector</code>, \link
 	fcppt::container::tree::object \endlink and \link
 	fcppt::container::grid::object \endlink.
 	</li>

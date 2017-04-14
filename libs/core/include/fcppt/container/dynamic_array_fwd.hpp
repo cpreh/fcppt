@@ -4,8 +4,8 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_CONTAINER_RAW_VECTOR_FWD_HPP_INCLUDED
-#define FCPPT_CONTAINER_RAW_VECTOR_FWD_HPP_INCLUDED
+#ifndef FCPPT_CONTAINER_DYNAMIC_ARRAY_FWD_HPP_INCLUDED
+#define FCPPT_CONTAINER_DYNAMIC_ARRAY_FWD_HPP_INCLUDED
 
 #include <fcppt/config/external_begin.hpp>
 #include <memory>
@@ -21,7 +21,7 @@ template<
 	typename T,
 	typename A = std::allocator<T>
 >
-class raw_vector;
+class dynamic_array;
 
 }
 }

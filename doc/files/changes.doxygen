@@ -7,6 +7,20 @@
 
 <ul>
 
+<li>\ref fcpptalgorithm
+	<ul>
+	<li>Added \link fcppt::algorithm::equal\endlink.</li>
+	</ul>
+</li>
+
+<li>\ref fcpptcontainer
+	<ul>
+	<li>Added \link fcppt::container::dynamic_array\endlink which is a simple array for uninitialized, dynamically-sized storage.</li>
+	<li>Added \link fcppt::container::buffer::object\endlink which can be used to provide a buffer to external functions that write into raw memory. It contains a read and a write area.</li>
+	<li>Added constructor to \link fcppt::container::raw_vector\endlink that takes a \link fcppt::container::buffer::object\endlink.</li>
+	</ul>
+</li>
+
 <li>\ref fcpptconfig
 	<ul>
 	<li>Added \link FCPPT_CONFIG_MSVC_VERSION_AT_LEAST\endlink.</li>
@@ -32,6 +46,14 @@
 	</ul>
 </li>
 
+<li>\ref fcpptcontainer
+	<ul>
+	<li>Renamed <code>fcppt::container::raw_vector</code> to \link fcppt::container::raw_vector::object\endlink.</li>
+	<li>Moved comparison functions of \link fcppt::container::raw_vector::object\endlink to <code>fcppt/container/raw_vector/comparison.hpp</code>.</li>
+	<li>Redesigned \link fcppt::container::raw_vector::object\endlink. It now only exposes essential functions and is no longer being meant as a replacement for <code>std::vector</code>.</li>
+	</ul>
+</li>
+
 <li>\ref fcpptvarious
 	<ul>
 	<li>\link fcppt::args\endlink and \link fcppt::args_from_second\endlink now use \link fcppt::args_char\endlink instead of <code>char</code>.</li>
@@ -44,9 +66,28 @@
 
 <ul>
 
+<li>\ref fcpptcontainer
+	<ul>
+	<li>Removed <code>fcppt::container::is_std_vector</code>.</li>
+	<li>Removed <code>fcppt::container::is_raw_vector</code>.</li>
+	</ul>
+</li>
+
 <li>\ref fcpptcontainergrid
 	<ul>
 	<li>Removed constructor taking \link fcppt::no_init\endlink. The underlying container is now always a <code>std::vector</code>.</li>
+	</ul>
+</li>
+
+</ul>
+
+\subsection changes_bugfixes_to_260 Bugfixes
+
+<ul>
+
+<li>\ref fcpptstring
+	<ul>
+	<li>Fixed initialization of <code>std::mbstate_t</code> when doing character conversions.</li>
 	</ul>
 </li>
 

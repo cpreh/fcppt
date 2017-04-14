@@ -4,11 +4,10 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_IO_BUFFER_HPP_INCLUDED
-#define FCPPT_IO_BUFFER_HPP_INCLUDED
+#ifndef FCPPT_CONTAINER_BUFFER_OBJECT_HPP_INCLUDED
+#define FCPPT_CONTAINER_BUFFER_OBJECT_HPP_INCLUDED
 
-#include <fcppt/container/raw_vector/object_impl.hpp>
-#include <fcppt/io/buffer_fwd.hpp>
+#include <fcppt/container/buffer/object_impl.hpp>
 
 
 #endif

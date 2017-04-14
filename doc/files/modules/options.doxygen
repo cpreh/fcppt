@@ -57,7 +57,7 @@ a single value of type <code>int</code>.
 
 Such a parser parses a command-line like <code>./program "123"</code>, yielding
 the record <code>{ age_label = 123 }</code>, which is of type
-<code>parser::result_type = { age_label : int }</code>. Next, we define the
+<code>result_type = { age_label : int }</code>. Next, we define the
 actual parser:
 
 \snippet options/simple.cpp options_arg_object

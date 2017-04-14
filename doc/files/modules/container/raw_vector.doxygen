@@ -1,21 +1,7 @@
 /**
 \defgroup fcpptcontainerraw_vector fcppt.container.raw_vector
 \ingroup fcpptcontainer
-\brief A special vector class for uninitialized memory
+\brief A container for POD types that can hold uninitialized memory.
 
-Ordinary arrays in C++ are not default-initialized, which is mostly for
-performance reasons. This helps in situations where it is impossible to
-directly initialize the array, e.g. when reading from a file. If you need a
-dynamically sized array instead, you could use a <code>std::%vector</code>.
-However, <code>std::%vector</code> default-initializes its values!
-
-To get the non-initializing behavior back, you can use \link
-fcppt::container::raw_vector\endlink. It has a special constructor and a
-special resize function that do not initialize its memory. It can also only be
-used for POD types. Other than that, it is mostly the same as
-<code>std::%vector</code>.
-
-Here is a small example:
-
-\snippet container/raw_vector.cpp raw_vector
+TODO...
 */

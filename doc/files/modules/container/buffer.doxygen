@@ -1,0 +1,26 @@
+/**
+\defgroup fcpptcontainerbuffer fcppt.container.buffer
+\ingroup fcpptcontainer
+\brief A special buffer class for uninitialized memory
+
+Ordinary arrays in C++ are not default-initialized, which is mostly for
+performance reasons. This helps in situations where you have to call functions
+that write into a buffer handed to them, e.g. when reading from a file. If you need a
+dynamically sized array instead, you could use a <code>std::%vector</code>.
+However, <code>std::%vector</code> default-initializes its values.
+
+\link fcppt::container::buffer::object\endlink instead manages a partially uninitialized
+block of memory: It contains
+<ul>
+<li>a <em>write area</em>, which is uninitialized, and</li>
+<li>a <em>read area</em> that has already been written.</li>
+</ul>
+
+Consider the following example in which the user wants to read 1024 integers
+from a file stream, using binary I/O. We have to hand a raw buffer to the
+<code>ifstream::read</code> function that counts <code>sizeof(int) *
+1024</code> bytes. After reading has been done, we check if it succeeded and if it
+has, we increase the read area size appropriately.
+
+\snippet container/buffer.cpp buffer
+*/

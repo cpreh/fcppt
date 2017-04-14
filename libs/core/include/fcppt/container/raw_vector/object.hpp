@@ -4,17 +4,10 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_CONTAINER_IMPL_EXCEPTION_HPP_INCLUDED
-#define FCPPT_CONTAINER_IMPL_EXCEPTION_HPP_INCLUDED
+#ifndef FCPPT_CONTAINER_RAW_VECTOR_OBJECT_HPP_INCLUDED
+#define FCPPT_CONTAINER_RAW_VECTOR_OBJECT_HPP_INCLUDED
 
-inline
-fcppt::container::exception::exception(
-	fcppt::string const &_string
-)
-:
-	fcppt::exception(
-		_string
-	)
-{}
+#include <fcppt/container/raw_vector/comparison.hpp>
+#include <fcppt/container/raw_vector/object_impl.hpp>
 
 #endif

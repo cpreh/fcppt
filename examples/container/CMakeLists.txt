@@ -15,6 +15,12 @@ add_fcppt_container_example(
 )
 
 add_fcppt_container_example(
+	buffer
+	LINK_LIBS
+		fcppt_core_interface
+)
+
+add_fcppt_container_example(
 	grid
 	LINK_LIBS
 		${fcppt_core_TARGET}
@@ -40,12 +46,6 @@ add_fcppt_container_example(
 
 add_fcppt_container_example(
 	tree_traversal
-	LINK_LIBS
-		${fcppt_core_TARGET}
-)
-
-add_fcppt_container_example(
-	raw_vector
 	LINK_LIBS
 		${fcppt_core_TARGET}
 )
