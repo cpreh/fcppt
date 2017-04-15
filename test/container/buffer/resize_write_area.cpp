@@ -62,7 +62,7 @@ FCPPT_PP_POP_WARNING
 
 	BOOST_CHECK_EQUAL(
 		container.write_size(),
-		5u
+		3u
 	);
 
 	BOOST_CHECK_EQUAL(
