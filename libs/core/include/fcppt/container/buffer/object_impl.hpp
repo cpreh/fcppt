@@ -27,19 +27,11 @@ fcppt::container::buffer::object<
 )
 :
 	impl_{
-		_alloc
-		,
-		_size
-		==
-		0u
-		?
+		_alloc,
+		_alloc.allocate(
+			_size,
 			nullptr
-		:
-			_alloc.allocate(
-				_size,
-				nullptr
-			)
-		,
+		),
 		_size
 	}
 {
@@ -63,14 +55,7 @@ noexcept
 		)
 	}
 {
-	_other.impl_.first_ =
-		nullptr;
-
-	_other.impl_.read_ =
-		nullptr;
-
-	_other.impl_.write_ =
-		nullptr;
+	_other.release_internal();
 }
 
 template<

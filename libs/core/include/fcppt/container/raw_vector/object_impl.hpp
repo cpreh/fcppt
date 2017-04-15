@@ -1289,9 +1289,9 @@ fcppt::container::raw_vector::object<
 noexcept
 {
 	if(
-		this->capacity()
+		impl_.first_
 		!=
-		0u
+		nullptr
 	)
 		impl_.alloc_.deallocate(
 			impl_.first_,
@@ -1400,16 +1400,10 @@ fcppt::container::raw_vector::object<
 		_alloc
 	),
 	first_(
-		_size
-		==
-		0u
-		?
+		alloc_.allocate(
+			_size,
 			nullptr
-		:
-			alloc_.allocate(
-				_size,
-				nullptr
-			)
+		)
 	),
 	last_(
 		first_
