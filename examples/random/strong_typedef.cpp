@@ -7,6 +7,7 @@
 #include <fcppt/strong_typedef.hpp>
 #include <fcppt/strong_typedef_output.hpp>
 #include <fcppt/text.hpp>
+#include <fcppt/algorithm/repeat.hpp>
 #include <fcppt/io/cout.hpp>
 #include <fcppt/random/variate.hpp>
 #include <fcppt/random/distribution/basic.hpp>
@@ -68,15 +69,17 @@ main()
 //![random_strong_typedef_variate]
 
 //![random_strong_typedef_output]
-	for(
-		unsigned i = 0;
-		i < 10;
-		++i
-	)
-		fcppt::io::cout()
-			// Outputs objects of type my_type
-			<< rng()
-			<< FCPPT_TEXT(' ');
+	fcppt::algorithm::repeat(
+		10u,
+		[
+			&rng
+		]{
+			fcppt::io::cout()
+				// Outputs objects of type my_type
+				<< rng()
+				<< FCPPT_TEXT(' ');
+		}
+	);
 //![random_strong_typedef_output]
 
 	fcppt::io::cout()

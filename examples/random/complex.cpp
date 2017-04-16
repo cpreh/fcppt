@@ -6,6 +6,7 @@
 
 #include <fcppt/strong_typedef.hpp>
 #include <fcppt/text.hpp>
+#include <fcppt/algorithm/repeat.hpp>
 #include <fcppt/io/cout.hpp>
 #include <fcppt/random/variate.hpp>
 #include <fcppt/random/distribution/basic.hpp>
@@ -54,10 +55,12 @@ main()
 		>()
 	);
 
-	typedef fcppt::random::variate<
+	typedef
+	fcppt::random::variate<
 		generator_type,
 		distribution
-	> variate;
+	>
+	variate;
 
 //![random_complex_variate]
 	variate rng(
@@ -78,14 +81,16 @@ main()
 //![random_complex_variate]
 
 //![random_complex_output]
-	for(
-		unsigned i = 0;
-		i < 10;
-		++i
-	)
-		fcppt::io::cout()
-			<< rng().get().value()
-			<< FCPPT_TEXT(' ');
+	fcppt::algorithm::repeat(
+		10u,
+		[
+			&rng
+		]{
+			fcppt::io::cout()
+				<< rng().get().value()
+				<< FCPPT_TEXT(' ');
+		}
+	);
 //![random_complex_output]
 
 	fcppt::io::cout()
@@ -99,10 +104,12 @@ main()
 	>
 	meter_distribution;
 
-	typedef fcppt::random::variate<
+	typedef
+	fcppt::random::variate<
 		generator_type,
 		meter_distribution
-	> meter_variate;
+	>
+	meter_variate;
 
 	meter_variate meter_rng(
 		generator,
@@ -116,14 +123,16 @@ main()
 		)
 	);
 
-	for(
-		unsigned i = 0;
-		i < 10;
-		++i
-	)
-		fcppt::io::cout()
-			<< meter_rng().value()
-			<< FCPPT_TEXT(' ');
+	fcppt::algorithm::repeat(
+		10u,
+		[
+			&meter_rng
+		]{
+			fcppt::io::cout()
+				<< meter_rng().value()
+				<< FCPPT_TEXT(' ');
+		}
+	);
 
 	fcppt::io::cout()
 		<< FCPPT_TEXT('\n');

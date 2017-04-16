@@ -5,6 +5,7 @@
 
 
 #include <fcppt/text.hpp>
+#include <fcppt/algorithm/repeat.hpp>
 #include <fcppt/io/cout.hpp>
 #include <fcppt/random/variate.hpp>
 #include <fcppt/random/distribution/basic.hpp>
@@ -27,14 +28,16 @@ print_values(
 	Rng &rng
 )
 {
-	for(
-		unsigned i = 0;
-		i < 20;
-		++i
-	)
-		fcppt::io::cout()
-			<< rng()
-			<< FCPPT_TEXT(' ');
+	fcppt::algorithm::repeat(
+		20u,
+		[
+			&rng
+		]{
+			fcppt::io::cout()
+				<< rng()
+				<< FCPPT_TEXT(' ');
+		}
+	);
 
 	fcppt::io::cout()
 		<< FCPPT_TEXT('\n');
