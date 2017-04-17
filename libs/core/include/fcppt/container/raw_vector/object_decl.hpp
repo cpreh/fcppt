@@ -267,15 +267,6 @@ public:
 	)
 	noexcept;
 
-	// TODO: Remove this?
-	/**
-	\brief The same as resize but doesn't initialize the newly created elements (if any).
-	*/
-	void
-	resize_uninitialized(
-		size_type sz
-	);
-
 	void
 	resize(
 		size_type sz,

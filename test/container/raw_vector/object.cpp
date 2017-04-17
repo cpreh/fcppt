@@ -46,8 +46,9 @@ FCPPT_PP_POP_WARNING
 
 	container_type test;
 
-	test.resize_uninitialized(
-		100u
+	test.resize(
+		100u,
+		0
 	);
 
 	test.reserve(
@@ -90,8 +91,9 @@ FCPPT_PP_POP_WARNING
 		10u
 	);
 
-	test.resize_uninitialized(
-		5u
+	test.resize(
+		5u,
+		0
 	);
 
 	BOOST_CHECK_EQUAL(

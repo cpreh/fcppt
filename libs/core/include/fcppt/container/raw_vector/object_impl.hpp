@@ -631,43 +631,6 @@ void
 fcppt::container::raw_vector::object<
 	T,
 	A
->::resize_uninitialized(
-	size_type const _size
-)
-{
-	if(
-		_size
-		>
-		this->size()
-	)
-	{
-		this->reserve(
-			_size
-		);
-
-		impl_.last_ =
-			impl_.first_
-			+ _size;
-	}
-	else if(
-		_size
-		<
-		this->size()
-	)
-		this->erase(
-			this->begin() + _size,
-			this->end()
-		);
-}
-
-template<
-	typename T,
-	typename A
->
-void
-fcppt::container::raw_vector::object<
-	T,
-	A
 >::resize(
 	size_type const _size,
 	T const &_value
