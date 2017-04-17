@@ -462,7 +462,7 @@ function(
 			"/"
 			"\\"
 			GROUPFOLDER
-			${REL_PATH}
+			"${REL_PATH}"
 		)
 
 		source_group(
