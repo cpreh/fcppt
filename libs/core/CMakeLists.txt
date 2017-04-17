@@ -220,6 +220,7 @@ set(
 	libs/core/include/fcppt/container/data.hpp
 	libs/core/include/fcppt/container/data_end.hpp
 	libs/core/include/fcppt/container/detail/array_size.hpp
+	libs/core/include/fcppt/container/detail/output.hpp
 	libs/core/include/fcppt/container/dynamic_array.hpp
 	libs/core/include/fcppt/container/dynamic_array_decl.hpp
 	libs/core/include/fcppt/container/dynamic_array_fwd.hpp
@@ -330,6 +331,7 @@ set(
 	libs/core/include/fcppt/container/move_range_decl.hpp
 	libs/core/include/fcppt/container/move_range_fwd.hpp
 	libs/core/include/fcppt/container/move_range_impl.hpp
+	libs/core/include/fcppt/container/output.hpp
 	libs/core/include/fcppt/container/pop_back.hpp
 	libs/core/include/fcppt/container/raw_vector/comparison.hpp
 	libs/core/include/fcppt/container/raw_vector/object.hpp

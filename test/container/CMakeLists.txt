@@ -69,6 +69,10 @@ add_fcppt_container_test(
 )
 
 add_fcppt_container_test(
+	output
+)
+
+add_fcppt_container_test(
 	pop_back
 )
 

@@ -16,14 +16,26 @@
 <li>\ref fcpptcontainer
 	<ul>
 	<li>Added \link fcppt::container::dynamic_array\endlink which is a simple array for uninitialized, dynamically-sized storage.</li>
-	<li>Added \link fcppt::container::buffer::object\endlink which can be used to provide a buffer to external functions that write into raw memory. It contains a read and a write area.</li>
-	<li>Added constructor to \link fcppt::container::raw_vector\endlink that takes a \link fcppt::container::buffer::object\endlink.</li>
+	<li>Added \link fcppt::container::output\endlink that outputs a container to a stream.</li>
 	</ul>
+</li>
+
+<li>\ref fcpptcontainerbuffer
+	<p>
+	This sub-library adds \link fcppt::container::buffer::object\endlink and utility functions which can be used to provide a buffer to external functions that write into raw memory.
+	The buffer contains a read and a write area.
+	</p>
 </li>
 
 <li>\ref fcpptconfig
 	<ul>
 	<li>Added \link FCPPT_CONFIG_MSVC_VERSION_AT_LEAST\endlink.</li>
+	</ul>
+</li>
+
+<li>\ref fcpptoptions
+	<ul>
+	<li>Output errors from the second argument as well in \link fcppt::options::product\endlink.</li>
 	</ul>
 </li>
 
