@@ -39,30 +39,13 @@ to_raw_vector(
 )
 noexcept
 {
-	typedef
-	fcppt::container::raw_vector::object<
-		T,
-		A
-	>
-	result_type;
-
-	// TODO: This is really ugly.
-	result_type result{
-		_buffer.get_allocator(),
-		const_cast<
-			typename
-			result_type::pointer
-		>(
-			_buffer.read_data()
-		),
-		_buffer.write_data(),
-		_buffer.write_data_end()
-	};
-
-	_buffer.release_internal();
-
 	return
-		result;
+		fcppt::container::raw_vector::object<
+			T,
+			A
+		>{
+			_buffer.release()
+		};
 }
 
 }

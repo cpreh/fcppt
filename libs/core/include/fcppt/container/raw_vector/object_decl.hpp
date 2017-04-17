@@ -10,6 +10,7 @@
 #include <fcppt/no_init_fwd.hpp>
 #include <fcppt/noncopyable.hpp>
 #include <fcppt/container/raw_vector/object_fwd.hpp>
+#include <fcppt/container/raw_vector/rep_fwd.hpp>
 #include <fcppt/type_traits/is_input_iterator.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <initializer_list>
@@ -204,15 +205,14 @@ public:
 
 	/**
 	\brief Reuse the storage of another container.
-
-	This constructor is currently only for internal use.
 	*/
+	explicit
 	object(
-		A const &,
-		pointer first,
-		pointer last,
-		pointer cap
-	);
+		fcppt::container::raw_vector::rep<
+			A
+		> const &
+	)
+	noexcept;
 
 	explicit
 	object(
@@ -388,11 +388,11 @@ private:
 		)
 		noexcept;
 
+		explicit
 		impl(
-			A const &,
-			pointer first,
-			pointer last,
-			pointer cap
+			fcppt::container::raw_vector::rep<
+				A
+			> const &
 		)
 		noexcept;
 

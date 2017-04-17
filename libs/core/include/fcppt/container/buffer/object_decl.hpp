@@ -9,6 +9,7 @@
 
 #include <fcppt/noncopyable.hpp>
 #include <fcppt/container/buffer/object_fwd.hpp>
+#include <fcppt/container/raw_vector/rep_fwd.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
@@ -196,11 +197,18 @@ public:
 	/**
 	\brief Releases the storage.
 
-	Only for internal use.
+	\see fcppt::container::buffer::to_raw_vector
 	*/
-	void
-	release_internal();
+	fcppt::container::raw_vector::rep<
+		A
+	>
+	release()
+	noexcept;
 private:
+	void
+	release_internal()
+	noexcept;
+
 /// \cond
 	struct impl
 	{

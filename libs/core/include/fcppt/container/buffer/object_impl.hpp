@@ -9,6 +9,7 @@
 
 #include <fcppt/cast/to_unsigned.hpp>
 #include <fcppt/container/buffer/object_decl.hpp>
+#include <fcppt/container/raw_vector/rep_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <utility>
 #include <fcppt/config/external_end.hpp>
@@ -324,6 +325,35 @@ noexcept
 	);
 }
 
+
+template<
+	typename T,
+	typename A
+>
+fcppt::container::raw_vector::rep<
+	A
+>
+fcppt::container::buffer::object<
+	T,
+	A
+>::release()
+noexcept
+{
+	fcppt::container::raw_vector::rep<
+		A
+	> const result{
+		this->get_allocator(),
+		impl_.first_,
+		impl_.read_,
+		impl_.write_
+	};
+
+	this->release_internal();
+
+	return
+		result;
+}
+
 template<
 	typename T,
 	typename A
@@ -333,6 +363,7 @@ fcppt::container::buffer::object<
 	T,
 	A
 >::release_internal()
+noexcept
 {
 	impl_.first_ =
 		nullptr;

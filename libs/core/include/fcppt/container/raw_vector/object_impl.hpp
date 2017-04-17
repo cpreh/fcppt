@@ -10,6 +10,7 @@
 #include <fcppt/no_init_fwd.hpp>
 #include <fcppt/cast/to_unsigned.hpp>
 #include <fcppt/container/raw_vector/object_decl.hpp>
+#include <fcppt/container/raw_vector/rep_impl.hpp>
 #include <fcppt/type_traits/is_input_iterator.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <algorithm>
@@ -379,17 +380,14 @@ fcppt::container::raw_vector::object<
 	T,
 	A
 >::object(
-	A const &_alloc,
-	pointer const _first,
-	pointer const _last,
-	pointer const _cap
+	fcppt::container::raw_vector::rep<
+		A
+	> const &_rep
 )
+noexcept
 :
 	impl_{
-		_alloc,
-		_first,
-		_last,
-		_cap
+		_rep
 	}
 {
 }
@@ -1297,24 +1295,23 @@ fcppt::container::raw_vector::object<
 	T,
 	A
 >::impl::impl(
-	A const &_alloc,
-	pointer const _first,
-	pointer const _last,
-	pointer const _cap
+	fcppt::container::raw_vector::rep<
+		A
+	> const &_rep
 )
 noexcept
 :
 	alloc_{
-		_alloc
+		_rep.alloc()
 	},
 	first_{
-		_first
+		_rep.first()
 	},
 	last_{
-		_last
+		_rep.last()
 	},
 	cap_{
-		_cap
+		_rep.cap()
 	}
 {
 }
