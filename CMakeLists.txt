@@ -486,22 +486,6 @@ function(
 			)
 		endforeach()
 
-		foreach(
-			FCPPTDEP
-			${_TRANSITIVE_FCPPT_DEPS}
-		)
-			fcppt_utils_static_link_name(
-				${FCPPTDEP}
-				STATIC_NAME
-			)
-
-			list(
-				APPEND
-				REAL_TRANSITIVE_FCPPT_DEPS
-				${STATIC_NAME}
-			)
-		endforeach()
-
 		fcppt_utils_static_link_name(
 			${FULL_NAME}
 			STATIC_NAME
@@ -515,7 +499,7 @@ function(
 			FCPPT_DEPS
 				${REAL_FCPPT_DEPS}
 			TRANSITIVE_FCPPT_DEPS
-				${REAL_TRANSITIVE_FCPPT_DEPS}
+				${_TRANSITIVE_FCPPT_DEPS}
 			OTHER_DEPS
 				${_OTHER_DEPS}
 			TRANSITIVE_DEPS

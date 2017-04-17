@@ -117,5 +117,5 @@ make_fcppt_library(
 	FCPPT_DEPS
 		fcppt_core
 	TRANSITIVE_FCPPT_DEPS
-		fcppt_core
+		fcppt_core_interface
 )

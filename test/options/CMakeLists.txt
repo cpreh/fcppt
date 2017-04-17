@@ -5,6 +5,7 @@ function(
 	add_fcppt_test(
 		options/${TEST_NAME}
 		LINK_LIBS
+			"${fcppt_core_TARGET}"
 			"${fcppt_options_TARGET}"
 		${ARGN}
 	)

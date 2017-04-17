@@ -43,6 +43,8 @@ make_fcppt_library(
 	"${FCPPT_FILESYSTEM_FILES}"
 	FCPPT_DEPS
 		fcppt_core
+	TRANSITIVE_FCPPT_DEPS
+		fcppt_core_interface
 	OTHER_DEPS
 		${Boost_FILESYSTEM_LIBRARY}
 		${Boost_SYSTEM_LIBRARY}
