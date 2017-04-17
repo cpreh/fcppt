@@ -1458,6 +1458,7 @@ set(
 	libs/options/include/fcppt/options/default_value_fwd.hpp
 	libs/options/include/fcppt/options/default_value_tag.hpp
 	libs/options/include/fcppt/options/detail/apply.hpp
+	libs/options/include/fcppt/options/detail/combine_errors.hpp
 	libs/options/include/fcppt/options/detail/concrete_decl.hpp
 	libs/options/include/fcppt/options/detail/concrete_fwd.hpp
 	libs/options/include/fcppt/options/detail/concrete_impl.hpp

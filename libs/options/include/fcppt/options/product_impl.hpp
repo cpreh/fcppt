@@ -10,13 +10,17 @@
 #include <fcppt/string.hpp>
 #include <fcppt/text.hpp>
 #include <fcppt/algorithm/set_union.hpp>
-#include <fcppt/either/bind.hpp>
+#include <fcppt/either/failure_opt.hpp>
 #include <fcppt/either/map.hpp>
+#include <fcppt/either/match.hpp>
+#include <fcppt/optional/maybe.hpp>
+#include <fcppt/options/error.hpp>
 #include <fcppt/options/has_parameter_set.hpp>
 #include <fcppt/options/product_decl.hpp>
 #include <fcppt/options/result.hpp>
 #include <fcppt/options/result_of.hpp>
 #include <fcppt/options/state_fwd.hpp>
+#include <fcppt/options/detail/combine_errors.hpp>
 #include <fcppt/options/detail/deref.hpp>
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
@@ -161,12 +165,63 @@ fcppt::options::product<
 FCPPT_PP_PUSH_WARNING
 FCPPT_PP_DISABLE_GCC_WARNING(-Wattributes)
 	return
-		fcppt::either::bind(
+		fcppt::either::match(
 			fcppt::options::detail::deref(
 				left_
 			).parse(
 				_state
 			),
+			[
+				&_state,
+				this
+			](
+				fcppt::options::error &&_error
+			)
+			{
+				return
+					fcppt::options::result<
+						result_type
+					>{
+						fcppt::optional::maybe(
+							fcppt::either::failure_opt(
+								fcppt::options::detail::deref(
+									right_
+								).parse(
+									_state
+								)
+							),
+							[
+								&_error
+							]()
+							->
+							fcppt::options::error
+							{
+								return
+									std::move(
+										_error
+									);
+							},
+							[
+								&_error
+							](
+								fcppt::options::error &&_other_error
+							)
+							->
+							fcppt::options::error
+							{
+								return
+									fcppt::options::detail::combine_errors(
+										std::move(
+											_error
+										),
+										std::move(
+											_other_error
+										)
+									);
+							}
+						)
+					};
+			},
 			[
 				&_state,
 				this

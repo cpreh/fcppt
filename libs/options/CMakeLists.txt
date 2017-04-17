@@ -20,6 +20,7 @@ set(
 	libs/options/include/fcppt/options/default_value_fwd.hpp
 	libs/options/include/fcppt/options/default_value_tag.hpp
 	libs/options/include/fcppt/options/detail/apply.hpp
+	libs/options/include/fcppt/options/detail/combine_errors.hpp
 	libs/options/include/fcppt/options/detail/concrete_decl.hpp
 	libs/options/include/fcppt/options/detail/concrete_fwd.hpp
 	libs/options/include/fcppt/options/detail/concrete_impl.hpp
@@ -102,6 +103,7 @@ set(
 	libs/options/include/fcppt/options/switch_impl.hpp
 	libs/options/src/options/custom_pretty_type.cpp
 	libs/options/src/options/default_help_switch.cpp
+	libs/options/src/options/detail/combine_errors.cpp
 	libs/options/src/options/detail/help_error.cpp
 	libs/options/src/options/detail/help_text.cpp
 	libs/options/src/options/detail/leftover_error.cpp
