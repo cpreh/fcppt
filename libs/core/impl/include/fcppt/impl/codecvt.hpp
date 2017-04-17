@@ -13,7 +13,6 @@
 #include <fcppt/cast/to_unsigned.hpp>
 #include <fcppt/container/data_end.hpp>
 #include <fcppt/container/buffer/object.hpp>
-#include <fcppt/container/buffer/resize_write_area.hpp>
 #include <fcppt/impl/codecvt_type.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <iterator>
@@ -136,13 +135,11 @@ codecvt(
 					FCPPT_TEXT("codecvt: error!")
 				};
 		case std::codecvt_base::partial:
-			buf =
-				fcppt::container::buffer::resize_write_area(
-					buf,
-					buf.read_size()
-					*
-					2u
-				);
+			buf.resize_write_area(
+				buf.read_size()
+				*
+				2u
+			);
 			continue;
 		case std::codecvt_base::ok:
 			return

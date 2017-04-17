@@ -174,7 +174,7 @@ public:
 	noexcept;
 
 	/**
-	\brief Resizes the read area.
+	\brief Adds to the read area.
 
 	Adds \a sz elements to the read area. This function should be
 	called after data has been read into the write area.
@@ -184,6 +184,16 @@ public:
 		size_type sz
 	)
 	noexcept;
+
+	/**
+	\brief Resizes the write area.
+
+	Sets the size of the write area to \a sz.
+	*/
+	void
+	resize_write_area(
+		size_type sz
+	);
 
 	allocator_type
 	get_allocator() const;
@@ -236,12 +246,17 @@ private:
 		~impl()
 		noexcept;
 
+		void
+		deallocate()
+		noexcept;
+
 		A alloc_;
 
 		pointer
 			first_,
-			read_,
-			write_;
+			read_end_,
+			write_end_,
+			cap_;
 	};
 
 	impl impl_;

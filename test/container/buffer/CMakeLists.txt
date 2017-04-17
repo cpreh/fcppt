@@ -21,9 +21,5 @@ add_fcppt_container_buffer_test(
 )
 
 add_fcppt_container_buffer_test(
-	resize_write_area
-)
-
-add_fcppt_container_buffer_test(
 	to_raw_vector
 )

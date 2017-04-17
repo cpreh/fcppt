@@ -46,7 +46,7 @@ fcppt::backtrace::current_stack_frame(
 
 	symbol_sequence const symbols{
 		fcppt::container::buffer::read_from<
-			element_type
+			symbol_sequence
 		>(
 			fcppt::cast::size<
 				symbol_sequence::size_type

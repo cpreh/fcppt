@@ -388,13 +388,14 @@ set(
 	libs/core/include/fcppt/container/bitfield/std_hash.hpp
 	libs/core/include/fcppt/container/bitfield/underlying_value.hpp
 	libs/core/include/fcppt/container/bitfield/value_type.hpp
+	libs/core/include/fcppt/container/buffer/append_from.hpp
+	libs/core/include/fcppt/container/buffer/append_from_opt.hpp
 	libs/core/include/fcppt/container/buffer/object.hpp
 	libs/core/include/fcppt/container/buffer/object_decl.hpp
 	libs/core/include/fcppt/container/buffer/object_fwd.hpp
 	libs/core/include/fcppt/container/buffer/object_impl.hpp
 	libs/core/include/fcppt/container/buffer/read_from.hpp
 	libs/core/include/fcppt/container/buffer/read_from_opt.hpp
-	libs/core/include/fcppt/container/buffer/resize_write_area.hpp
 	libs/core/include/fcppt/container/buffer/to_raw_vector.hpp
 	libs/core/include/fcppt/container/data.hpp
 	libs/core/include/fcppt/container/data_end.hpp

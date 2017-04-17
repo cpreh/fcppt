@@ -7,8 +7,7 @@
 #ifndef FCPPT_CONTAINER_BUFFER_READ_FROM_OPT_HPP_INCLUDED
 #define FCPPT_CONTAINER_BUFFER_READ_FROM_OPT_HPP_INCLUDED
 
-#include <fcppt/container/buffer/object_impl.hpp>
-#include <fcppt/optional/map.hpp>
+#include <fcppt/container/buffer/append_from_opt.hpp>
 #include <fcppt/optional/object_impl.hpp>
 
 
@@ -29,57 +28,30 @@ Allocates a buffer <code>buf</code> of size \a _size and then calls
 is nothing, then nothing is returned. Otherwise, The result of the function is
 used to set <code>buf</code>'s read area size.
 
+\tparam Buffer An \link fcppt::container::buffer::object\endlink.
+
 \tparam Function A function callable as <code>fcppt::optional::object<size_type> (pointer, size_type)</code>.
 */
 template<
-	typename ValueType,
+	typename Buffer,
 	typename Function
 >
 fcppt::optional::object<
-	fcppt::container::buffer::object<
-		ValueType
-	>
+	Buffer
 >
 read_from_opt(
 	typename
-	fcppt::container::buffer::object<
-		ValueType
-	>::size_type const _size,
+	Buffer::size_type const _size,
 	Function const &_function
 )
 {
-	typedef
-	fcppt::container::buffer::object<
-		ValueType
-	>
-	result_type;
-
-	result_type result{
-		_size
-	};
-
 	return
-		fcppt::optional::map(
-			_function(
-				result.write_data(),
-				_size
-			),
-			[
-				&result
-			](
-				typename
-				result_type::size_type const _new_size
-			)
-			{
-				result.written(
-					_new_size
-				);
-
-				return
-					std::move(
-						result
-					);
-			}
+		fcppt::container::buffer::append_from_opt(
+			Buffer{
+				0u
+			},
+			_size,
+			_function
 		);
 }
 

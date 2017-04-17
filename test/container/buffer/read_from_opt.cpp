@@ -40,7 +40,7 @@ FCPPT_PP_POP_WARNING
 
 	optional_buffer_type const result1{
 		fcppt::container::buffer::read_from_opt<
-			int
+			buffer_type
 		>(
 			10u,
 			[](
@@ -62,7 +62,7 @@ FCPPT_PP_POP_WARNING
 
 	optional_buffer_type const result2{
 		fcppt::container::buffer::read_from_opt<
-			int
+			buffer_type
 		>(
 			10u,
 			[](

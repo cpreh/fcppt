@@ -7,10 +7,14 @@
 #ifndef FCPPT_CONTAINER_BUFFER_OBJECT_IMPL_HPP_INCLUDED
 #define FCPPT_CONTAINER_BUFFER_OBJECT_IMPL_HPP_INCLUDED
 
+#include <fcppt/cast/size.hpp>
+#include <fcppt/cast/to_signed.hpp>
 #include <fcppt/cast/to_unsigned.hpp>
 #include <fcppt/container/buffer/object_decl.hpp>
 #include <fcppt/container/raw_vector/rep_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
+#include <algorithm>
+#include <memory>
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
@@ -93,15 +97,7 @@ fcppt::container::buffer::object<
 >::~object()
 noexcept
 {
-	if(
-		impl_.first_
-		!=
-		nullptr
-	)
-		impl_.alloc_.deallocate(
-			impl_.first_,
-			this->write_size()
-		);
+	impl_.deallocate();
 }
 
 template<
@@ -202,7 +198,7 @@ fcppt::container::buffer::object<
 noexcept
 {
 	return
-		impl_.read_;
+		impl_.read_end_;
 }
 
 template<
@@ -221,7 +217,7 @@ fcppt::container::buffer::object<
 noexcept
 {
 	return
-		impl_.read_;
+		impl_.read_end_;
 }
 
 template<
@@ -240,7 +236,7 @@ fcppt::container::buffer::object<
 noexcept
 {
 	return
-		impl_.write_;
+		impl_.write_end_;
 }
 
 template<
@@ -260,7 +256,7 @@ noexcept
 {
 	return
 		fcppt::cast::to_unsigned(
-			impl_.read_
+			impl_.read_end_
 			-
 			impl_.first_
 		);
@@ -283,9 +279,9 @@ noexcept
 {
 	return
 		fcppt::cast::to_unsigned(
-			impl_.write_
+			impl_.write_end_
 			-
-			impl_.read_
+			impl_.read_end_
 		);
 }
 
@@ -302,8 +298,95 @@ fcppt::container::buffer::object<
 )
 noexcept
 {
-	impl_.read_ +=
+	impl_.read_end_ +=
 		_sz;
+}
+
+template<
+	typename T,
+	typename A
+>
+void
+fcppt::container::buffer::object<
+	T,
+	A
+>::resize_write_area(
+	size_type const _sz
+)
+{
+	if(
+		fcppt::cast::to_unsigned(
+			impl_.cap_
+			-
+			impl_.read_end_
+		)
+		>=
+		_sz
+	)
+	{
+		impl_.write_end_ =
+			impl_.read_end_
+			+
+			fcppt::cast::to_signed(
+				_sz
+			);
+
+		return;
+	}
+
+	size_type const new_size{
+		std::max(
+			fcppt::cast::size<
+				size_type
+			>(
+				fcppt::cast::to_unsigned(
+					impl_.cap_
+					-
+					impl_.first_
+				)
+				*
+				2u
+			),
+			_sz
+			+
+			this->read_size()
+		)
+	};
+
+	impl new_impl{
+		impl_.alloc_,
+		impl_.alloc_.allocate(
+			new_size
+		),
+		new_size
+	};
+
+	std::uninitialized_copy(
+		this->read_data(),
+		this->read_data_end(),
+		new_impl.first_
+	);
+
+	new_impl.read_end_ =
+		new_impl.first_
+		+
+		fcppt::cast::to_signed(
+			this->read_size()
+		);
+
+	new_impl.write_end_ =
+		new_impl.read_end_
+		+
+		fcppt::cast::to_signed(
+			_sz
+		);
+
+	impl_.deallocate();
+
+	impl_ =
+		std::move(
+			new_impl
+		);
 }
 
 template<
@@ -344,8 +427,8 @@ noexcept
 	> const result{
 		this->get_allocator(),
 		impl_.first_,
-		impl_.read_,
-		impl_.write_
+		impl_.read_end_,
+		impl_.cap_
 	};
 
 	this->release_internal();
@@ -368,10 +451,13 @@ noexcept
 	impl_.first_ =
 		nullptr;
 
-	impl_.read_ =
+	impl_.read_end_ =
 		nullptr;
 
-	impl_.write_ =
+	impl_.write_end_ =
+		nullptr;
+
+	impl_.cap_ =
 		nullptr;
 }
 
@@ -412,10 +498,10 @@ fcppt::container::buffer::object<
 	first_{
 		_first
 	},
-	read_{
+	read_end_{
 		first_
 	},
-	write_{
+	write_end_{
 		_first
 		==
 		nullptr
@@ -425,6 +511,9 @@ fcppt::container::buffer::object<
 			_first
 			+
 			_size
+	},
+	cap_{
+		write_end_
 	}
 {
 }
@@ -470,6 +559,33 @@ fcppt::container::buffer::object<
 >::impl::~impl()
 noexcept
 {
+}
+
+
+template<
+	typename T,
+	typename A
+>
+void
+fcppt::container::buffer::object<
+	T,
+	A
+>::impl::deallocate()
+noexcept
+{
+	if(
+		first_
+		!=
+		nullptr
+	)
+		alloc_.deallocate(
+			first_,
+			fcppt::cast::to_unsigned(
+				cap_
+				-
+				first_
+			)
+		);
 }
 
 template<

@@ -7,7 +7,7 @@
 #ifndef FCPPT_CONTAINER_BUFFER_READ_FROM_HPP_INCLUDED
 #define FCPPT_CONTAINER_BUFFER_READ_FROM_HPP_INCLUDED
 
-#include <fcppt/container/buffer/object_impl.hpp>
+#include <fcppt/container/buffer/append_from.hpp>
 
 
 namespace fcppt
@@ -26,38 +26,30 @@ Allocates a buffer <code>buf</code> of size \a _size and then calls
 <code>_function(buf.write_data(),_size)</code>. The result of the function
 is used to set <code>buf</code>'s read area size.
 
+\tparam Buffer An \link fcppt::container::buffer::object\endlink.
+
 \tparam Function A function callable as <code>size_type (pointer, size_type)</code>.
 */
 template<
-	typename ValueType,
+	typename Buffer,
 	typename Function
 >
-fcppt::container::buffer::object<
-	ValueType
->
+inline
+Buffer
 read_from(
 	typename
-	fcppt::container::buffer::object<
-		ValueType
-	>::size_type const _size,
+	Buffer::size_type const _size,
 	Function const &_function
 )
 {
-	fcppt::container::buffer::object<
-		ValueType
-	> result{
-		_size
-	};
-
-	result.written(
-		_function(
-			result.write_data(),
-			_size
-		)
-	);
-
 	return
-		result;
+		fcppt::container::buffer::append_from(
+			Buffer{
+				0u
+			},
+			_size,
+			_function
+		);
 }
 
 }

@@ -32,7 +32,9 @@ fcppt::io::read_chars(
 	return
 		fcppt::optional::map(
 			fcppt::container::buffer::read_from_opt<
-				fcppt::io::buffer::value_type
+				fcppt::container::buffer::object<
+					fcppt::io::buffer::value_type
+				>
 			>(
 				_count,
 				[

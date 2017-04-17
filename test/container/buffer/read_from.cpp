@@ -31,7 +31,7 @@ FCPPT_PP_POP_WARNING
 
 	buffer_type const result{
 		fcppt::container::buffer::read_from<
-			int
+			buffer_type
 		>(
 			10u,
 			[](
