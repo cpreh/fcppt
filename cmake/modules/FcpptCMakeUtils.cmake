@@ -526,7 +526,7 @@ function(
 		get_filename_component(
 			REL_PATH
 			${CUR_FILE}
-			PATH
+			DIRECTORY
 		)
 
 		string(
@@ -534,7 +534,7 @@ function(
 			"/"
 			"\\"
 			GROUPFOLDER
-			${REL_PATH}
+			"${REL_PATH}"
 		)
 
 		source_group(
