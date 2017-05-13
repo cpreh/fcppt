@@ -4,6 +4,8 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
+#include <fcppt/strong_typedef.hpp>
+#include <fcppt/strong_typedef_output.hpp>
 #include <fcppt/either/map_failure.hpp>
 #include <fcppt/either/object.hpp>
 #include <fcppt/either/output.hpp>
@@ -25,17 +27,22 @@ BOOST_AUTO_TEST_CASE(
 {
 FCPPT_PP_POP_WARNING
 
+	FCPPT_MAKE_STRONG_TYPEDEF(
+		int,
+		int_strong
+	);
+
 	typedef
 	fcppt::either::object<
 		std::string,
-		int
+		int_strong
 	>
 	either_string;
 
 	typedef
 	fcppt::either::object<
 		char,
-		int
+		int_strong
 	>
 	either_char;
 
@@ -46,10 +53,18 @@ FCPPT_PP_POP_WARNING
 		{
 			return
 				std::string{
-					1u,
 					_value
 				};
 		}
+	);
+
+	BOOST_CHECK(
+		fcppt::either::map_failure(
+			either_char(
+				'0'
+			),
+			map_function
+		).has_failure()
 	);
 
 	BOOST_CHECK_EQUAL(
@@ -69,12 +84,16 @@ FCPPT_PP_POP_WARNING
 	BOOST_CHECK_EQUAL(
 		fcppt::either::map_failure(
 			either_char(
-				10
+				int_strong{
+					10
+				}
 			),
 			map_function
 		),
 		either_string(
-			10
+			int_strong{
+				10
+			}
 		)
 	);
 }
