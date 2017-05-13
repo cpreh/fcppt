@@ -4,8 +4,8 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_EITHER_MAP_HPP_INCLUDED
-#define FCPPT_EITHER_MAP_HPP_INCLUDED
+#ifndef FCPPT_EITHER_MAP_FAILURE_HPP_INCLUDED
+#define FCPPT_EITHER_MAP_FAILURE_HPP_INCLUDED
 
 #include <fcppt/move_if_rvalue.hpp>
 #include <fcppt/either/is_object.hpp>
@@ -21,16 +21,16 @@ namespace either
 {
 
 /**
-\brief Maps over the success type of an either.
+\brief Maps over the failure type of an either.
 
 \ingroup fcppteither
 
-If \a _either is set to success <code>s</code>, <code>r = _function(s)</code>
+If \a _either is set to failure <code>f</code>, <code>r = _function(f)</code>
 is called and the result is
-<code>either<Either::failure,decltype(r)>(r)</code>.  Otherwise, the failure in
+<code>either<decltype(r),Either::success>(r)</code>.  Otherwise, the success in
 \a _either is returned.
 
-\tparam Function A function callable as <code>R (Either::success)</code> where
+\tparam Function A function callable as <code>R (Either::failure)</code> where
 <code>R</code> is the result type
 */
 template<
@@ -38,25 +38,25 @@ template<
 	typename Function
 >
 auto
-map(
+map_failure(
 	Either &&_either,
 	Function const &_function
 )
 ->
 fcppt::either::object<
-	typename
-	std::decay<
-		Either
-	>::type::failure,
 	decltype(
 		_function(
 			fcppt::move_if_rvalue<
 				Either
 			>(
-				_either.get_success_unsafe()
+				_either.get_failure_unsafe()
 			)
 		)
-	)
+	),
+	typename
+	std::decay<
+		Either
+	>::type::success
 >
 {
 	typedef
@@ -75,31 +75,31 @@ fcppt::either::object<
 
 	typedef
 	fcppt::either::object<
-		typename
-		std::decay<
-			Either
-		>::type::failure,
 		decltype(
 			_function(
 				fcppt::move_if_rvalue<
 					Either
 				>(
-					_either.get_success_unsafe()
+					_either.get_failure_unsafe()
 				)
 			)
-		)
+		),
+		typename
+		std::decay<
+			Either
+		>::type::success
 	>
 	result_type;
 
 	return
-		_either.has_success()
+		_either.has_failure()
 		?
 			result_type(
 				_function(
 					fcppt::move_if_rvalue<
 						Either
 					>(
-						_either.get_success_unsafe()
+						_either.get_failure_unsafe()
 					)
 				)
 			)
@@ -108,7 +108,7 @@ fcppt::either::object<
 				fcppt::move_if_rvalue<
 					Either
 				>(
-					_either.get_failure_unsafe()
+					_either.get_success_unsafe()
 				)
 			)
 		;

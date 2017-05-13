@@ -419,6 +419,7 @@ set(
 	libs/core/include/fcppt/either/make_failure.hpp
 	libs/core/include/fcppt/either/make_success.hpp
 	libs/core/include/fcppt/either/map.hpp
+	libs/core/include/fcppt/either/map_failure.hpp
 	libs/core/include/fcppt/either/match.hpp
 	libs/core/include/fcppt/either/object.hpp
 	libs/core/include/fcppt/either/object_decl.hpp

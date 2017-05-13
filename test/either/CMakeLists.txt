@@ -41,6 +41,10 @@ add_fcppt_either_test(
 )
 
 add_fcppt_either_test(
+	map_failure
+)
+
+add_fcppt_either_test(
 	match
 )
 
