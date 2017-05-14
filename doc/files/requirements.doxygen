@@ -43,6 +43,7 @@ To build the documentation you also need
 The following platforms are tested by us:
 
 <ul>
+	<li>gcc-7.1 (Gentoo Linux)</li>
 	<li>gcc-6.3 (Gentoo Linux)</li>
 	<li>gcc-6.3 (MinGW)</li>
 	<li>clang 4.0 (Gentoo Linux)</li>

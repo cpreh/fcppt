@@ -86,6 +86,7 @@ set(
 	doc/files/modules/smartptr.doxygen
 	doc/files/modules/string.doxygen
 	doc/files/modules/strong_typedef.doxygen
+	doc/files/modules/system.doxygen
 	doc/files/modules/time.doxygen
 	doc/files/modules/type_iso.doxygen
 	doc/files/modules/type_traits.doxygen
@@ -1366,7 +1367,9 @@ set(
 	libs/core/include/fcppt/weak_ptr_fwd.hpp
 	libs/core/include/fcppt/weak_ptr_impl.hpp
 	libs/core/include/fcppt/widen.hpp
+	libs/filesystem/include/fcppt/filesystem/create_directories_recursive.hpp
 	libs/filesystem/include/fcppt/filesystem/create_directories_recursive_exn.hpp
+	libs/filesystem/include/fcppt/filesystem/create_directory.hpp
 	libs/filesystem/include/fcppt/filesystem/create_directory_exn.hpp
 	libs/filesystem/include/fcppt/filesystem/create_directory_failed.hpp
 	libs/filesystem/include/fcppt/filesystem/directory_range.hpp
@@ -1542,6 +1545,10 @@ set(
 	libs/options/include/fcppt/options/switch_decl.hpp
 	libs/options/include/fcppt/options/switch_fwd.hpp
 	libs/options/include/fcppt/options/switch_impl.hpp
+	libs/system/include/fcppt/system/error_code_to_string.hpp
+	libs/system/include/fcppt/system/make_optional_error_code.hpp
+	libs/system/include/fcppt/system/optional_error_code.hpp
+	libs/system/include/fcppt/system/optional_error_code_fwd.hpp
 )
 
 list(

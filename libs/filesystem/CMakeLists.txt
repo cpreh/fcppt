@@ -1,6 +1,8 @@
 set(
 	FCPPT_FILESYSTEM_FILES
+	libs/filesystem/include/fcppt/filesystem/create_directories_recursive.hpp
 	libs/filesystem/include/fcppt/filesystem/create_directories_recursive_exn.hpp
+	libs/filesystem/include/fcppt/filesystem/create_directory.hpp
 	libs/filesystem/include/fcppt/filesystem/create_directory_exn.hpp
 	libs/filesystem/include/fcppt/filesystem/create_directory_failed.hpp
 	libs/filesystem/include/fcppt/filesystem/directory_range.hpp
@@ -22,7 +24,9 @@ set(
 	libs/filesystem/include/fcppt/filesystem/replace_extension.hpp
 	libs/filesystem/include/fcppt/filesystem/stem.hpp
 	libs/filesystem/include/fcppt/filesystem/strip_prefix.hpp
+	libs/filesystem/src/filesystem/create_directories_recursive.cpp
 	libs/filesystem/src/filesystem/create_directories_recursive_exn.cpp
+	libs/filesystem/src/filesystem/create_directory.cpp
 	libs/filesystem/src/filesystem/create_directory_exn.cpp
 	libs/filesystem/src/filesystem/directory_range.cpp
 	libs/filesystem/src/filesystem/extension.cpp
@@ -43,8 +47,10 @@ make_fcppt_library(
 	"${FCPPT_FILESYSTEM_FILES}"
 	FCPPT_DEPS
 		fcppt_core
+		fcppt_system
 	TRANSITIVE_FCPPT_DEPS
 		fcppt_core_interface
+		fcppt_system_interface
 	OTHER_DEPS
 		${Boost_FILESYSTEM_LIBRARY}
 		${Boost_SYSTEM_LIBRARY}

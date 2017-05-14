@@ -25,6 +25,7 @@ LIBS=(
 	filesystem
 	log
 	options
+	system
 )
 
 for lib in ${LIBS[@]} ; do
@@ -38,6 +39,7 @@ update_cmake \
 	libs/filesystem/include \
 	libs/log/include \
 	libs/options/include \
+	libs/system/include \
 	examples \
 	-e ".*" \
 	doc

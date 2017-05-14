@@ -19,14 +19,11 @@ namespace filesystem
 {
 
 /**
-\brief Tries to creates directories recursively
+\brief Tries to creates directories recursively.
 
 \ingroup fcpptfilesystem
 
-For each nonexistant sub directory of \a path, it is tried to create that
-directory.
-
-\param path The path to create directories recursively
+Tries to create each nonexistant sub directory of \a path.
 
 \throw fcppt::filesystem::create_directory_failed if creating one of the
 directories is not successful

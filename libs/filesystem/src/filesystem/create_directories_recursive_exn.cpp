@@ -17,6 +17,7 @@ fcppt::filesystem::create_directories_recursive_exn(
 	boost::filesystem::path const &_path
 )
 {
+	// TODO: Use create_directories_recursive
 	if(
 		!boost::filesystem::create_directories(
 			_path

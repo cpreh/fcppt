@@ -123,12 +123,32 @@ option(
 	ON
 )
 
+option(
+	ENABLE_SYSTEM
+	"Build the system library"
+	ON
+)
+
 if(
 	ENABLE_FILESYSTEM
 )
-	set(
+	list(
+		APPEND
 		NEEDED_BOOST_LIBS
 		filesystem
+		system
+	)
+endif()
+
+if(
+	ENABLE_SYSTEM
+	AND
+	NOT
+	ENABLE_FILESYSTEM
+)
+	list(
+		APPEND
+		NEEDED_BOOST_LIBS
 		system
 	)
 endif()
