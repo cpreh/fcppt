@@ -36,7 +36,7 @@
 <li>\ref fcppteither
 	<ul>
 	<li>Added \link fcppt::either::map_failure\endlink.</li>
-	<li>Added \link fcppt::either::error\endlink, \link fcppt::either::no_error\endlink and \link fcppt::either::error_from_optional\endlink.</li>
+	<li>Added \link fcppt::either::error\endlink, \link fcppt::either::no_error\endlink, \link fcppt::either::fold_error\endlink and \link fcppt::either::error_from_optional\endlink.</li>
 	</ul>
 </li>
 

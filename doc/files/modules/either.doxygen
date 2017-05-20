@@ -141,6 +141,10 @@ is an either with a failure type and a success type with only one value, which i
 <td>Contains \link fcppt::either::first_success\endlink.</td>
 </tr>
 <tr>
+<td><code>fold_error.hpp</code></td>
+<td>Contains \link fcppt::either::fold_error\endlink.</td>
+</tr>
+<tr>
 <td><code>from_optional.hpp</code></td>
 <td>Contains \link fcppt::either::from_optional\endlink.</td>
 </tr>

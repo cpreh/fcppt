@@ -29,6 +29,10 @@ add_fcppt_either_test(
 )
 
 add_fcppt_either_test(
+	fold_error
+)
+
+add_fcppt_either_test(
 	from_optional
 )
 

@@ -417,6 +417,7 @@ set(
 	libs/core/include/fcppt/either/error_fwd.hpp
 	libs/core/include/fcppt/either/failure_opt.hpp
 	libs/core/include/fcppt/either/first_success.hpp
+	libs/core/include/fcppt/either/fold_error.hpp
 	libs/core/include/fcppt/either/from_optional.hpp
 	libs/core/include/fcppt/either/is_object.hpp
 	libs/core/include/fcppt/either/make_failure.hpp
