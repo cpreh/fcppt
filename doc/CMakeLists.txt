@@ -1382,7 +1382,6 @@ set(
 	libs/filesystem/include/fcppt/filesystem/ifstream.hpp
 	libs/filesystem/include/fcppt/filesystem/impl/create_directory_failed.hpp
 	libs/filesystem/include/fcppt/filesystem/impl/exception.hpp
-	libs/filesystem/include/fcppt/filesystem/is_executable.hpp
 	libs/filesystem/include/fcppt/filesystem/normalize.hpp
 	libs/filesystem/include/fcppt/filesystem/num_subpaths.hpp
 	libs/filesystem/include/fcppt/filesystem/ofstream.hpp

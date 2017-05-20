@@ -15,7 +15,6 @@ set(
 	libs/filesystem/include/fcppt/filesystem/ifstream.hpp
 	libs/filesystem/include/fcppt/filesystem/impl/create_directory_failed.hpp
 	libs/filesystem/include/fcppt/filesystem/impl/exception.hpp
-	libs/filesystem/include/fcppt/filesystem/is_executable.hpp
 	libs/filesystem/include/fcppt/filesystem/normalize.hpp
 	libs/filesystem/include/fcppt/filesystem/num_subpaths.hpp
 	libs/filesystem/include/fcppt/filesystem/ofstream.hpp
@@ -32,7 +31,6 @@ set(
 	libs/filesystem/src/filesystem/extension.cpp
 	libs/filesystem/src/filesystem/extension_without_dot.cpp
 	libs/filesystem/src/filesystem/file_to_string.cpp
-	libs/filesystem/src/filesystem/is_executable.cpp
 	libs/filesystem/src/filesystem/normalize.cpp
 	libs/filesystem/src/filesystem/num_subpaths.cpp
 	libs/filesystem/src/filesystem/path_to_string.cpp

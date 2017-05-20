@@ -110,6 +110,12 @@
 	</ul>
 </li>
 
+<li>\ref fcpptfilesystem
+	<ul>
+	<li>Removed <code>fcppt::filesystem::is_executable</code> which is covered by <code>boost.filesystem</code>.</li>
+	</ul>
+</li>
+
 </ul>
 
 \subsection changes_bugfixes_to_260 Bugfixes
