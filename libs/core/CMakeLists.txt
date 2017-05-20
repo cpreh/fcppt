@@ -412,6 +412,9 @@ set(
 	libs/core/include/fcppt/either/apply.hpp
 	libs/core/include/fcppt/either/bind.hpp
 	libs/core/include/fcppt/either/comparison.hpp
+	libs/core/include/fcppt/either/error.hpp
+	libs/core/include/fcppt/either/error_from_optional.hpp
+	libs/core/include/fcppt/either/error_fwd.hpp
 	libs/core/include/fcppt/either/failure_opt.hpp
 	libs/core/include/fcppt/either/first_success.hpp
 	libs/core/include/fcppt/either/from_optional.hpp
@@ -421,6 +424,8 @@ set(
 	libs/core/include/fcppt/either/map.hpp
 	libs/core/include/fcppt/either/map_failure.hpp
 	libs/core/include/fcppt/either/match.hpp
+	libs/core/include/fcppt/either/no_error.hpp
+	libs/core/include/fcppt/either/no_error_fwd.hpp
 	libs/core/include/fcppt/either/object.hpp
 	libs/core/include/fcppt/either/object_decl.hpp
 	libs/core/include/fcppt/either/object_fwd.hpp
@@ -1136,7 +1141,9 @@ set(
 	libs/core/include/fcppt/unique_ptr_to_base.hpp
 	libs/core/include/fcppt/unique_ptr_to_const.hpp
 	libs/core/include/fcppt/unit.hpp
+	libs/core/include/fcppt/unit_comparison.hpp
 	libs/core/include/fcppt/unit_fwd.hpp
+	libs/core/include/fcppt/unit_output.hpp
 	libs/core/include/fcppt/use.hpp
 	libs/core/include/fcppt/variant/apply_binary.hpp
 	libs/core/include/fcppt/variant/apply_ternary.hpp

@@ -4,9 +4,14 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/unit.hpp>
 #include <fcppt/unit_comparison.hpp>
 #include <fcppt/unit_output.hpp>
+#include <fcppt/either/comparison.hpp>
+#include <fcppt/either/error.hpp>
+#include <fcppt/either/error_from_optional.hpp>
+#include <fcppt/either/no_error.hpp>
+#include <fcppt/either/output.hpp>
+#include <fcppt/optional/object.hpp>
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
@@ -19,30 +24,40 @@ FCPPT_PP_PUSH_WARNING
 FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
 
 BOOST_AUTO_TEST_CASE(
-	unit
+	either_error_from_optional
 )
 {
 FCPPT_PP_POP_WARNING
 
-	static_assert(
-		sizeof(
-			fcppt::unit
-		)
-		==
-		1u,
-		""
+	typedef
+	fcppt::optional::object<
+		int
+	>
+	optional_int;
+
+	typedef
+	fcppt::either::error<
+		int
+	>
+	either_int;
+
+	BOOST_CHECK_EQUAL(
+		fcppt::either::error_from_optional(
+			optional_int{
+				42
+			}
+		),
+		either_int{
+			42
+		}
 	);
 
 	BOOST_CHECK_EQUAL(
-		fcppt::unit{},
-		fcppt::unit{}
-	);
-
-	BOOST_CHECK(
-		!(
-			fcppt::unit{}
-			!=
-			fcppt::unit{}
-		)
+		fcppt::either::error_from_optional(
+			optional_int()
+		),
+		either_int{
+			fcppt::either::no_error{}
+		}
 	);
 }

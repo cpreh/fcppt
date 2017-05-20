@@ -36,13 +36,16 @@
 <li>\ref fcppteither
 	<ul>
 	<li>Added \link fcppt::either::map_failure\endlink.</li>
+	<li>Added \link fcppt::either::error\endlink, \link fcppt::either::no_error\endlink and \link fcppt::either::error_from_optional\endlink.</li>
 	</ul>
 </li>
 
 <li>\ref fcpptfilesystem
 	<ul>
 	<li>Added \link fcppt::filesystem::create_directory\endlink.</li>
+	<li>Added \link fcppt::filesystem::create_directory_error\endlink.</li>
 	<li>Added \link fcppt::filesystem::create_directories_recursive\endlink.</li>
+	<li>Added \link fcppt::filesystem::file_size\endlink.</li>
 	</ul>
 </li>
 
@@ -61,6 +64,7 @@
 <li>\ref fcpptvarious
 	<ul>
 	<li>Added \link FCPPT_MAIN\endlink as a name for the <code>main</code> function to support unicode arguments in Windows.</li>
+	<li>Added <code>operator==</code>, <code>operator!=</code> and <code>operator<< </code> for \link fcppt::unit\endlink.</li>
 	</ul>
 </li>
 
@@ -82,6 +86,12 @@
 	<li>Renamed <code>fcppt::container::raw_vector</code> to \link fcppt::container::raw_vector::object\endlink.</li>
 	<li>Moved comparison functions of \link fcppt::container::raw_vector::object\endlink to <code>fcppt/container/raw_vector/comparison.hpp</code>.</li>
 	<li>Redesigned \link fcppt::container::raw_vector::object\endlink. It now only exposes essential functions and is no longer being meant as a replacement for <code>std::vector</code>.</li>
+	</ul>
+</li>
+
+<li>\ref fcpptfilesystem
+	<ul>
+	<li>\link fcppt::filesystem::file_to_string\endlink now returns \link fcppt::optional_string\endlink for most errors.</li>
 	</ul>
 </li>
 
@@ -112,6 +122,8 @@
 
 <li>\ref fcpptfilesystem
 	<ul>
+	<li>Removed <code>fcppt::filesystem::exception</code>.</li>
+	<li>Removed <code>fcppt::filesystem::create_directories_recursive_exn</code> and <code>fcppt::filesystem::create_directory_exn</code>.</li>
 	<li>Removed <code>fcppt::filesystem::is_executable</code> which is covered by <code>boost.filesystem</code>.</li>
 	</ul>
 </li>

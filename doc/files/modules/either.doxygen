@@ -20,6 +20,7 @@ namespace either
 <ul>
 	<li>\ref either_motivation</li>
 	<li>\ref either_operations</li>
+	<li>\ref either_error</li>
 	<li>\ref either_headers</li>
 </ul>
 
@@ -79,6 +80,15 @@ error:
 
 \snippet either.cpp either_to_exception
 
+\section either_error Errors
+
+When functions return optional errors but <em>no success</em> values, it is more
+convenient to handle such cases as eithers. An \link fcppt::either::error\endlink
+is an either with a failure type and a success type with only one value, which is
+\link fcppt::unit\endlink. For example:
+
+\snippet either.cpp either_error
+
 \section either_headers Header files
 
 <table>
@@ -115,6 +125,18 @@ error:
 <td>Contains <code>operator==</code> and <code>operator!=</code>.</td>
 </tr>
 <tr>
+<td><code>error_fwd.hpp</code></td>
+<td>Contains \link fcppt::either::error error's \endlink declaration.</td>
+</tr>
+<tr>
+<td><code>error.hpp</code></td>
+<td>Contains \link fcppt::either::error error's \endlink definition.</td>
+</tr>
+<tr>
+<td><code>error_from_optional.hpp</code></td>
+<td>Contains \link fcppt::either::error_from_optional\endlink.</td>
+</tr>
+<tr>
 <td><code>first_success.hpp</code></td>
 <td>Contains \link fcppt::either::first_success\endlink.</td>
 </tr>
@@ -129,6 +151,14 @@ error:
 <tr>
 <td><code>match.hpp</code></td>
 <td>Contains \link fcppt::either::match\endlink.</td>
+</tr>
+<tr>
+<td><code>no_error_fwd.hpp</code></td>
+<td>Contains \link fcppt::either::no_error no_error's \endlink declaration.</td>
+</tr>
+<tr>
+<td><code>no_error.hpp</code></td>
+<td>Contains \link fcppt::either::no_error no_error's \endlink definition.</td>
 </tr>
 <tr>
 <td><code>output.hpp</code></td>

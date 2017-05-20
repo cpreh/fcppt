@@ -6,10 +6,15 @@
 
 #include <fcppt/either/apply.hpp>
 #include <fcppt/either/bind.hpp>
+#include <fcppt/either/error.hpp>
+#include <fcppt/either/error_from_optional.hpp>
 #include <fcppt/either/map.hpp>
 #include <fcppt/either/match.hpp>
+#include <fcppt/either/no_error.hpp>
 #include <fcppt/either/object.hpp>
 #include <fcppt/either/to_exception.hpp>
+#include <fcppt/optional/make.hpp>
+#include <fcppt/optional/object_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <iostream>
 #include <istream>
@@ -267,6 +272,49 @@ either_to_exception(
 }
 //! [either_to_exception]
 
+int
+do_something()
+{
+	return
+		42;
+}
+
+enum class error_code
+{
+	failure1
+};
+
+//! [either_error]
+auto
+either_error(
+	fcppt::optional::object<
+		error_code
+	> const _error
+)
+{
+	fcppt::either::error<
+		error_code
+	> const either_error{
+		fcppt::either::error_from_optional(
+			_error
+		)
+	};
+
+	return
+		fcppt::either::map(
+			either_error,
+			[](
+				fcppt::either::no_error
+			)
+			{
+				// Do something in case of no error.
+				return
+					do_something();
+			}
+		);
+}
+//! [either_error]
+
 }
 
 int
@@ -333,4 +381,10 @@ main()
 			stream
 		);
 	}
+
+	either_error(
+		fcppt::optional::make(
+			error_code::failure1
+		)
+	);
 }

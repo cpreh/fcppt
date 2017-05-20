@@ -4,12 +4,14 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_FILESYSTEM_CREATE_DIRECTORY_EXN_HPP_INCLUDED
-#define FCPPT_FILESYSTEM_CREATE_DIRECTORY_EXN_HPP_INCLUDED
+#ifndef FCPPT_FILESYSTEM_CREATE_DIRECTORY_ERROR_HPP_INCLUDED
+#define FCPPT_FILESYSTEM_CREATE_DIRECTORY_ERROR_HPP_INCLUDED
 
+#include <fcppt/string.hpp>
 #include <fcppt/filesystem/detail/symbol.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/filesystem/path.hpp>
+#include <boost/system/error_code.hpp>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -19,19 +21,15 @@ namespace filesystem
 {
 
 /**
-\brief Tries to create a directory
+\brief Returns an error string for a failed create directory operation.
 
 \ingroup fcpptfilesystem
-
-Tries to create the last component of \a path as a directory.
-
-\throw fcppt::filesystem::create_directory_failed if creating the directory is
-not successful
 */
 FCPPT_FILESYSTEM_DETAIL_SYMBOL
-void
-create_directory_exn(
-	boost::filesystem::path const &path
+fcppt::string
+create_directory_error(
+	boost::filesystem::path const &path,
+	boost::system::error_code error
 );
 
 }

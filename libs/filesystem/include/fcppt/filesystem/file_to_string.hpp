@@ -7,7 +7,7 @@
 #ifndef FCPPT_FILESYSTEM_FILE_TO_STRING_HPP_INCLUDED
 #define FCPPT_FILESYSTEM_FILE_TO_STRING_HPP_INCLUDED
 
-#include <fcppt/string.hpp>
+#include <fcppt/optional_string.hpp>
 #include <fcppt/filesystem/detail/symbol.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/filesystem/path.hpp>
@@ -24,16 +24,15 @@ namespace filesystem
 
 \ingroup fcpptfilesystem
 
-Returns the contents of the file denoted by \a path as string.
+Returns the contents of the file denoted by \a path as string if the file
+exists and can be read, otherwise returns the empty optional.
 
-\param path The file to turn into a string
-
-\return The contents of the file as s string
-
-\throw fcppt::filesystem::exception if anything goes wrong
+\throw fcppt::exception if the file is too large. This can happen
+if <code>std::size_t</code> is too small (e.g. on a 32bit system) to hold all
+file sizes.
 */
 FCPPT_FILESYSTEM_DETAIL_SYMBOL
-fcppt::string
+fcppt::optional_string
 file_to_string(
 	boost::filesystem::path const &path
 );

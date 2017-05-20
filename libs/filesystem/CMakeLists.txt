@@ -1,35 +1,33 @@
 set(
 	FCPPT_FILESYSTEM_FILES
 	libs/filesystem/include/fcppt/filesystem/create_directories_recursive.hpp
-	libs/filesystem/include/fcppt/filesystem/create_directories_recursive_exn.hpp
 	libs/filesystem/include/fcppt/filesystem/create_directory.hpp
-	libs/filesystem/include/fcppt/filesystem/create_directory_exn.hpp
-	libs/filesystem/include/fcppt/filesystem/create_directory_failed.hpp
+	libs/filesystem/include/fcppt/filesystem/create_directory_error.hpp
 	libs/filesystem/include/fcppt/filesystem/directory_range.hpp
 	libs/filesystem/include/fcppt/filesystem/directory_range_fwd.hpp
-	libs/filesystem/include/fcppt/filesystem/exception.hpp
 	libs/filesystem/include/fcppt/filesystem/extension.hpp
 	libs/filesystem/include/fcppt/filesystem/extension_without_dot.hpp
+	libs/filesystem/include/fcppt/filesystem/file_size.hpp
 	libs/filesystem/include/fcppt/filesystem/file_to_string.hpp
 	libs/filesystem/include/fcppt/filesystem/fstream.hpp
 	libs/filesystem/include/fcppt/filesystem/ifstream.hpp
-	libs/filesystem/include/fcppt/filesystem/impl/create_directory_failed.hpp
-	libs/filesystem/include/fcppt/filesystem/impl/exception.hpp
 	libs/filesystem/include/fcppt/filesystem/normalize.hpp
 	libs/filesystem/include/fcppt/filesystem/num_subpaths.hpp
 	libs/filesystem/include/fcppt/filesystem/ofstream.hpp
+	libs/filesystem/include/fcppt/filesystem/optional_size.hpp
+	libs/filesystem/include/fcppt/filesystem/optional_size_fwd.hpp
 	libs/filesystem/include/fcppt/filesystem/path_to_string.hpp
 	libs/filesystem/include/fcppt/filesystem/remove_extension.hpp
 	libs/filesystem/include/fcppt/filesystem/replace_extension.hpp
 	libs/filesystem/include/fcppt/filesystem/stem.hpp
 	libs/filesystem/include/fcppt/filesystem/strip_prefix.hpp
 	libs/filesystem/src/filesystem/create_directories_recursive.cpp
-	libs/filesystem/src/filesystem/create_directories_recursive_exn.cpp
 	libs/filesystem/src/filesystem/create_directory.cpp
-	libs/filesystem/src/filesystem/create_directory_exn.cpp
+	libs/filesystem/src/filesystem/create_directory_error.cpp
 	libs/filesystem/src/filesystem/directory_range.cpp
 	libs/filesystem/src/filesystem/extension.cpp
 	libs/filesystem/src/filesystem/extension_without_dot.cpp
+	libs/filesystem/src/filesystem/file_size.cpp
 	libs/filesystem/src/filesystem/file_to_string.cpp
 	libs/filesystem/src/filesystem/normalize.cpp
 	libs/filesystem/src/filesystem/num_subpaths.cpp

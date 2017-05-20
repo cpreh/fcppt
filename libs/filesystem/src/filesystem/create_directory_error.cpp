@@ -4,30 +4,33 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_FILESYSTEM_IMPL_CREATE_DIRECTORY_FAILED_HPP_INCLUDED
-#define FCPPT_FILESYSTEM_IMPL_CREATE_DIRECTORY_FAILED_HPP_INCLUDED
-
+#include <fcppt/string.hpp>
 #include <fcppt/text.hpp>
+#include <fcppt/filesystem/create_directory_error.hpp>
 #include <fcppt/filesystem/path_to_string.hpp>
+#include <fcppt/system/error_code_to_string.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/filesystem/path.hpp>
+#include <boost/system/error_code.hpp>
 #include <fcppt/config/external_end.hpp>
 
 
-inline
-fcppt::filesystem::create_directory_failed::create_directory_failed(
-	boost::filesystem::path const &_what
+fcppt::string
+fcppt::filesystem::create_directory_error(
+	boost::filesystem::path const &_path,
+	boost::system::error_code const _error
 )
-:
-	fcppt::filesystem::exception(
-		FCPPT_TEXT("Failed to create directory \"")
+{
+	return
+		FCPPT_TEXT("Failed to create ")
 		+
 		fcppt::filesystem::path_to_string(
-			_what
+			_path
 		)
-		+ FCPPT_TEXT('"')
-	)
-{
+		+
+		FCPPT_TEXT(". Reason: ")
+		+
+		fcppt::system::error_code_to_string(
+			_error
+		);
 }
-
-#endif

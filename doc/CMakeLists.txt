@@ -593,6 +593,9 @@ set(
 	libs/core/include/fcppt/either/apply.hpp
 	libs/core/include/fcppt/either/bind.hpp
 	libs/core/include/fcppt/either/comparison.hpp
+	libs/core/include/fcppt/either/error.hpp
+	libs/core/include/fcppt/either/error_from_optional.hpp
+	libs/core/include/fcppt/either/error_fwd.hpp
 	libs/core/include/fcppt/either/failure_opt.hpp
 	libs/core/include/fcppt/either/first_success.hpp
 	libs/core/include/fcppt/either/from_optional.hpp
@@ -602,6 +605,8 @@ set(
 	libs/core/include/fcppt/either/map.hpp
 	libs/core/include/fcppt/either/map_failure.hpp
 	libs/core/include/fcppt/either/match.hpp
+	libs/core/include/fcppt/either/no_error.hpp
+	libs/core/include/fcppt/either/no_error_fwd.hpp
 	libs/core/include/fcppt/either/object.hpp
 	libs/core/include/fcppt/either/object_decl.hpp
 	libs/core/include/fcppt/either/object_fwd.hpp
@@ -1317,7 +1322,9 @@ set(
 	libs/core/include/fcppt/unique_ptr_to_base.hpp
 	libs/core/include/fcppt/unique_ptr_to_const.hpp
 	libs/core/include/fcppt/unit.hpp
+	libs/core/include/fcppt/unit_comparison.hpp
 	libs/core/include/fcppt/unit_fwd.hpp
+	libs/core/include/fcppt/unit_output.hpp
 	libs/core/include/fcppt/use.hpp
 	libs/core/include/fcppt/variant/apply_binary.hpp
 	libs/core/include/fcppt/variant/apply_ternary.hpp
@@ -1368,23 +1375,21 @@ set(
 	libs/core/include/fcppt/weak_ptr_impl.hpp
 	libs/core/include/fcppt/widen.hpp
 	libs/filesystem/include/fcppt/filesystem/create_directories_recursive.hpp
-	libs/filesystem/include/fcppt/filesystem/create_directories_recursive_exn.hpp
 	libs/filesystem/include/fcppt/filesystem/create_directory.hpp
-	libs/filesystem/include/fcppt/filesystem/create_directory_exn.hpp
-	libs/filesystem/include/fcppt/filesystem/create_directory_failed.hpp
+	libs/filesystem/include/fcppt/filesystem/create_directory_error.hpp
 	libs/filesystem/include/fcppt/filesystem/directory_range.hpp
 	libs/filesystem/include/fcppt/filesystem/directory_range_fwd.hpp
-	libs/filesystem/include/fcppt/filesystem/exception.hpp
 	libs/filesystem/include/fcppt/filesystem/extension.hpp
 	libs/filesystem/include/fcppt/filesystem/extension_without_dot.hpp
+	libs/filesystem/include/fcppt/filesystem/file_size.hpp
 	libs/filesystem/include/fcppt/filesystem/file_to_string.hpp
 	libs/filesystem/include/fcppt/filesystem/fstream.hpp
 	libs/filesystem/include/fcppt/filesystem/ifstream.hpp
-	libs/filesystem/include/fcppt/filesystem/impl/create_directory_failed.hpp
-	libs/filesystem/include/fcppt/filesystem/impl/exception.hpp
 	libs/filesystem/include/fcppt/filesystem/normalize.hpp
 	libs/filesystem/include/fcppt/filesystem/num_subpaths.hpp
 	libs/filesystem/include/fcppt/filesystem/ofstream.hpp
+	libs/filesystem/include/fcppt/filesystem/optional_size.hpp
+	libs/filesystem/include/fcppt/filesystem/optional_size_fwd.hpp
 	libs/filesystem/include/fcppt/filesystem/path_to_string.hpp
 	libs/filesystem/include/fcppt/filesystem/remove_extension.hpp
 	libs/filesystem/include/fcppt/filesystem/replace_extension.hpp

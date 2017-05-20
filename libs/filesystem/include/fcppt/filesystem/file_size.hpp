@@ -4,9 +4,10 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_FILESYSTEM_CREATE_DIRECTORIES_RECURSIVE_EXN_HPP_INCLUDED
-#define FCPPT_FILESYSTEM_CREATE_DIRECTORIES_RECURSIVE_EXN_HPP_INCLUDED
+#ifndef FCPPT_FILESYSTEM_FILE_SIZE_HPP_INCLUDED
+#define FCPPT_FILESYSTEM_FILE_SIZE_HPP_INCLUDED
 
+#include <fcppt/filesystem/optional_size.hpp>
 #include <fcppt/filesystem/detail/symbol.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/filesystem/path.hpp>
@@ -19,18 +20,16 @@ namespace filesystem
 {
 
 /**
-\brief Tries to creates directories recursively.
+\brief Returns the size of a file.
 
 \ingroup fcpptfilesystem
 
-Tries to create each nonexistant sub directory of \a path.
-
-\throw fcppt::filesystem::create_directory_failed if creating one of the
-directories is not successful
+Returns the size of \a path if it exists and its size can be obtained,
+otherwise returns the empty optional.
 */
 FCPPT_FILESYSTEM_DETAIL_SYMBOL
-void
-create_directories_recursive_exn(
+fcppt::filesystem::optional_size
+file_size(
 	boost::filesystem::path const &path
 );
 

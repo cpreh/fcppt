@@ -5,21 +5,24 @@
 
 
 #include <fcppt/char_type.hpp>
+#include <fcppt/exception.hpp>
+#include <fcppt/insert_to_fcppt_string.hpp>
+#include <fcppt/optional_string.hpp>
 #include <fcppt/string.hpp>
 #include <fcppt/text.hpp>
-#include <fcppt/assert/exception.hpp>
-#include <fcppt/assert/post.hpp>
 #include <fcppt/cast/size.hpp>
-#include <fcppt/filesystem/exception.hpp>
+#include <fcppt/filesystem/file_size.hpp>
 #include <fcppt/filesystem/file_to_string.hpp>
 #include <fcppt/filesystem/ifstream.hpp>
 #include <fcppt/filesystem/path_to_string.hpp>
+#include <fcppt/optional/bind.hpp>
+#include <fcppt/optional/make_if.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/cstdint.hpp>
-#include <boost/filesystem/operations.hpp>
 #include <boost/filesystem/path.hpp>
 #include <iterator>
 #include <type_traits>
+#include <utility>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -82,71 +85,87 @@ check_size(
 
 }
 
-fcppt::string
+fcppt::optional_string
 fcppt::filesystem::file_to_string(
 	boost::filesystem::path const &_path
 )
 {
-	fcppt::filesystem::ifstream stream(
-		_path
-	);
-
-	if(
-		!stream.is_open()
-	)
-		throw fcppt::filesystem::exception(
-			FCPPT_TEXT("Unable to open file ")
-			+ fcppt::filesystem::path_to_string(
-				_path
-			)
-		);
-
-	boost::uintmax_t const size(
-		boost::filesystem::file_size(
-			_path
-		)
-	);
-
-	if(
-		!check_size<
-			fcppt::string::size_type
-		>(
-			size
-		)
-	)
-		throw fcppt::filesystem::exception(
-			fcppt::filesystem::path_to_string(
-				_path
-			)
-			+ FCPPT_TEXT(" is too large for a string to store!")
-		);
-
-	fcppt::string ret;
-
-	ret.reserve(
-		fcppt::cast::size<
-			fcppt::string::size_type
-		>(
-			size
-		)
-	);
-
-	ret.assign(
-		std::istreambuf_iterator<
-			fcppt::char_type
-		>(
-			stream
-		),
-		std::istreambuf_iterator<
-			fcppt::char_type
-		>()
-	);
-
-	FCPPT_ASSERT_POST(
-		stream.eof(),
-		fcppt::assert_::exception
-	);
-
 	return
-		ret;
+		fcppt::optional::bind(
+			fcppt::filesystem::file_size(
+				_path
+			),
+			[
+				&_path
+			](
+				boost::uintmax_t const _size
+			)
+			{
+				if(
+					!check_size<
+						fcppt::string::size_type
+					>(
+						_size
+					)
+				)
+					throw
+						fcppt::exception{
+							fcppt::filesystem::path_to_string(
+								_path
+							)
+							+
+							FCPPT_TEXT(" of size ")
+							+
+							fcppt::insert_to_fcppt_string(
+								_size
+							)
+							+
+							FCPPT_TEXT(" is too large for a string to store!")
+						};
+
+				fcppt::filesystem::ifstream stream(
+					_path
+				);
+
+				if(
+					!stream.is_open()
+				)
+					return
+						fcppt::optional_string{};
+
+				fcppt::string ret;
+
+				ret.reserve(
+					fcppt::cast::size<
+						fcppt::string::size_type
+					>(
+						_size
+					)
+				);
+
+				ret.assign(
+					std::istreambuf_iterator<
+						fcppt::char_type
+					>(
+						stream
+					),
+					std::istreambuf_iterator<
+						fcppt::char_type
+					>()
+				);
+
+				return
+					fcppt::optional::make_if(
+						stream.eof(),
+						[
+							&ret
+						]{
+							return
+								std::move(
+									ret
+								);
+						}
+					);
+			}
+		);
 }
