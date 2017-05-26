@@ -1137,6 +1137,7 @@ set(
 	libs/core/include/fcppt/type_traits/remove_cv_ref.hpp
 	libs/core/include/fcppt/unique_ptr.hpp
 	libs/core/include/fcppt/unique_ptr_decl.hpp
+	libs/core/include/fcppt/unique_ptr_from_std.hpp
 	libs/core/include/fcppt/unique_ptr_fwd.hpp
 	libs/core/include/fcppt/unique_ptr_impl.hpp
 	libs/core/include/fcppt/unique_ptr_to_base.hpp

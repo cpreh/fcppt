@@ -167,6 +167,10 @@ add_fcppt_test(
 	literal
 )
 
+add_fcppt_test(
+	make_unique_ptr
+)
+
 add_subdirectory(
 	math
 )
@@ -232,7 +236,7 @@ add_subdirectory(
 )
 
 add_fcppt_test(
-	unique_ptr
+	unique_ptr_from_std
 )
 
 add_fcppt_test(

@@ -55,6 +55,12 @@
 	</ul>
 </li>
 
+<li>\ref fcpptsmartptr
+	<ul>
+	<li>Added \link fcppt::unique_ptr_from_std\endlink.</li>
+	</ul>
+</li>
+
 <li>\ref fcpptsystem
 	<p>
 	New library that wraps some functionality from <code>boost.system</code>.
