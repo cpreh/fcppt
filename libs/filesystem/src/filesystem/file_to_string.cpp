@@ -10,80 +10,22 @@
 #include <fcppt/optional_string.hpp>
 #include <fcppt/string.hpp>
 #include <fcppt/text.hpp>
-#include <fcppt/cast/size.hpp>
 #include <fcppt/filesystem/file_size.hpp>
 #include <fcppt/filesystem/file_to_string.hpp>
 #include <fcppt/filesystem/ifstream.hpp>
 #include <fcppt/filesystem/path_to_string.hpp>
+#include <fcppt/filesystem/size_to_size_t.hpp>
 #include <fcppt/optional/bind.hpp>
 #include <fcppt/optional/make_if.hpp>
+#include <fcppt/optional/to_exception.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/cstdint.hpp>
 #include <boost/filesystem/path.hpp>
+#include <cstddef>
 #include <iterator>
-#include <type_traits>
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
-
-namespace
-{
-
-template<
-	typename Size
->
-typename
-std::enable_if<
-	sizeof(
-		Size
-	)
-	>=
-	sizeof(
-		boost::uintmax_t
-	),
-	bool
->::type
-check_size(
-	boost::uintmax_t
-)
-{
-	return
-		true;
-}
-
-template<
-	typename Size
->
-typename
-std::enable_if<
-	sizeof(
-		Size
-	)
-	<
-	sizeof(
-		boost::uintmax_t
-	),
-	bool
->::type
-check_size(
-	boost::uintmax_t const _size
-)
-{
-	return
-		fcppt::cast::size<
-			Size
-		>(
-			fcppt::cast::size<
-				boost::uintmax_t
-			>(
-				_size
-			)
-		)
-		==
-		_size;
-}
-
-}
 
 fcppt::optional_string
 fcppt::filesystem::file_to_string(
@@ -101,27 +43,32 @@ fcppt::filesystem::file_to_string(
 				boost::uintmax_t const _size
 			)
 			{
-				if(
-					!check_size<
-						fcppt::string::size_type
-					>(
-						_size
+				std::size_t const size{
+					fcppt::optional::to_exception(
+						fcppt::filesystem::size_to_size_t(
+							_size
+						),
+						[
+							&_path,
+							_size
+						]{
+							return
+								fcppt::exception{
+									fcppt::filesystem::path_to_string(
+										_path
+									)
+									+
+									FCPPT_TEXT(" of size ")
+									+
+									fcppt::insert_to_fcppt_string(
+										_size
+									)
+									+
+									FCPPT_TEXT(" is too large for a string to store!")
+								};
+						}
 					)
-				)
-					throw
-						fcppt::exception{
-							fcppt::filesystem::path_to_string(
-								_path
-							)
-							+
-							FCPPT_TEXT(" of size ")
-							+
-							fcppt::insert_to_fcppt_string(
-								_size
-							)
-							+
-							FCPPT_TEXT(" is too large for a string to store!")
-						};
+				};
 
 				fcppt::filesystem::ifstream stream(
 					_path
@@ -136,11 +83,7 @@ fcppt::filesystem::file_to_string(
 				fcppt::string ret;
 
 				ret.reserve(
-					fcppt::cast::size<
-						fcppt::string::size_type
-					>(
-						_size
-					)
+					size
 				);
 
 				ret.assign(

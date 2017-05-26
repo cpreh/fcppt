@@ -1045,6 +1045,8 @@ set(
 	libs/core/include/fcppt/optional/static_cast.hpp
 	libs/core/include/fcppt/optional/to_exception.hpp
 	libs/core/include/fcppt/optional/to_pointer.hpp
+	libs/core/include/fcppt/optional_size_t.hpp
+	libs/core/include/fcppt/optional_size_t_fwd.hpp
 	libs/core/include/fcppt/optional_std_string.hpp
 	libs/core/include/fcppt/optional_std_string_fwd.hpp
 	libs/core/include/fcppt/optional_string.hpp
@@ -1395,6 +1397,7 @@ set(
 	libs/filesystem/include/fcppt/filesystem/path_to_string.hpp
 	libs/filesystem/include/fcppt/filesystem/remove_extension.hpp
 	libs/filesystem/include/fcppt/filesystem/replace_extension.hpp
+	libs/filesystem/include/fcppt/filesystem/size_to_size_t.hpp
 	libs/filesystem/include/fcppt/filesystem/stem.hpp
 	libs/filesystem/include/fcppt/filesystem/strip_prefix.hpp
 	libs/log/include/fcppt/log/_.hpp

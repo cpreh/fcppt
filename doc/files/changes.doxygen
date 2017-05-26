@@ -46,6 +46,7 @@
 	<li>Added \link fcppt::filesystem::create_directory_error\endlink.</li>
 	<li>Added \link fcppt::filesystem::create_directories_recursive\endlink.</li>
 	<li>Added \link fcppt::filesystem::file_size\endlink.</li>
+	<li>Added \link fcppt::filesystem::size_to_size_t\endlink.</li>
 	</ul>
 </li>
 
