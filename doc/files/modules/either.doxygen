@@ -84,7 +84,7 @@ error:
 
 When functions return optional errors but <em>no success</em> values, it is more
 convenient to handle such cases as eithers. An \link fcppt::either::error\endlink
-is an either with a failure type and a success type with only one value, which is
+is an either with a success type that only has one value, which is
 \link fcppt::unit\endlink. For example:
 
 \snippet either.cpp either_error
@@ -137,6 +137,10 @@ is an either with a failure type and a success type with only one value, which i
 <td>Contains \link fcppt::either::error_from_optional\endlink.</td>
 </tr>
 <tr>
+<td><code>failure_opt.hpp</code></td>
+<td>Contains \link fcppt::either::failure_opt\endlink.</td>
+</tr>
+<tr>
 <td><code>first_success.hpp</code></td>
 <td>Contains \link fcppt::either::first_success\endlink.</td>
 </tr>
@@ -149,8 +153,20 @@ is an either with a failure type and a success type with only one value, which i
 <td>Contains \link fcppt::either::from_optional\endlink.</td>
 </tr>
 <tr>
+<td><code>make_failure.hpp</code></td>
+<td>Contains \link fcppt::either::make_failure\endlink.</td>
+</tr>
+<tr>
+<td><code>make_success.hpp</code></td>
+<td>Contains \link fcppt::either::make_success\endlink.</td>
+</tr>
+<tr>
 <td><code>map.hpp</code></td>
 <td>Contains \link fcppt::either::map\endlink.</td>
+</tr>
+<tr>
+<td><code>map_failure.hpp</code></td>
+<td>Contains \link fcppt::either::map_failure\endlink.</td>
 </tr>
 <tr>
 <td><code>match.hpp</code></td>
