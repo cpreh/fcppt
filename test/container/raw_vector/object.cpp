@@ -4,7 +4,6 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/no_init.hpp>
 #include <fcppt/container/raw_vector/object_impl.hpp>
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
@@ -81,10 +80,12 @@ BOOST_AUTO_TEST_CASE(
 {
 FCPPT_PP_POP_WARNING
 
-	container_type test{
+	container_type test{};
+
+	test.resize(
 		10u,
-		fcppt::no_init{}
-	};
+		0
+	);
 
 	BOOST_CHECK_EQUAL(
 		test.size(),
@@ -417,9 +418,11 @@ BOOST_AUTO_TEST_CASE(
 {
 FCPPT_PP_POP_WARNING
 
-	container_type test1(
-		100,
-		fcppt::no_init{}
+	container_type test1{};
+
+	test1.resize(
+		100u,
+		0
 	);
 
 	test1[0] = 500;

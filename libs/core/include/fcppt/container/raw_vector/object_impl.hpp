@@ -7,7 +7,6 @@
 #ifndef FCPPT_CONTAINER_RAW_VECTOR_OBJECT_IMPL_HPP_INCLUDED
 #define FCPPT_CONTAINER_RAW_VECTOR_OBJECT_IMPL_HPP_INCLUDED
 
-#include <fcppt/no_init_fwd.hpp>
 #include <fcppt/cast/to_unsigned.hpp>
 #include <fcppt/container/raw_vector/object_decl.hpp>
 #include <fcppt/container/raw_vector/rep_impl.hpp>
@@ -321,26 +320,6 @@ fcppt::container::raw_vector::object<
 :
 	impl_{
 		_alloc
-	}
-{
-}
-
-template<
-	typename T,
-	typename A
->
-fcppt::container::raw_vector::object<
-	T,
-	A
->::object(
-	size_type const _size,
-	fcppt::no_init const &,
-	A const &_alloc
-)
-:
-	impl_{
-		_alloc,
-		_size
 	}
 {
 }
@@ -1342,38 +1321,6 @@ noexcept
 	)
 {
 	_other.reset_pointers();
-}
-
-template<
-	typename T,
-	typename A
->
-fcppt::container::raw_vector::object<
-	T,
-	A
->::impl::impl(
-	A const &_alloc,
-	size_type const _size
-)
-:
-	alloc_(
-		_alloc
-	),
-	first_(
-		alloc_.allocate(
-			_size,
-			nullptr
-		)
-	),
-	last_(
-		first_
-		+
-		_size
-	),
-	cap_(
-		last_
-	)
-{
 }
 
 template<

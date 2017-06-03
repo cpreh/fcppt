@@ -7,7 +7,6 @@
 #ifndef FCPPT_CONTAINER_RAW_VECTOR_OBJECT_DECL_HPP_INCLUDED
 #define FCPPT_CONTAINER_RAW_VECTOR_OBJECT_DECL_HPP_INCLUDED
 
-#include <fcppt/no_init_fwd.hpp>
 #include <fcppt/noncopyable.hpp>
 #include <fcppt/container/raw_vector/object_fwd.hpp>
 #include <fcppt/container/raw_vector/rep_fwd.hpp>
@@ -178,19 +177,6 @@ public:
 
 	explicit
 	object(
-		A const &a = A()
-	);
-
-	/**
-	\brief Constructs an uninitialized vector.
-
-	All of the elements will have indeterminate values and must be written
-	before being read.
-	*/
-	explicit
-	object(
-		size_type sz,
-		fcppt::no_init const &,
 		A const &a = A()
 	);
 
@@ -400,11 +386,6 @@ private:
 			impl &&
 		)
 		noexcept;
-
-		impl(
-			A const &,
-			size_type
-		);
 
 		impl &
 		operator=(
