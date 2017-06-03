@@ -641,7 +641,7 @@ fcppt::container::raw_vector::object<
 	)
 		this->insert(
 			this->end(),
-			_size - size(),
+			_size - this->size(),
 			_value
 		);
 	else if(

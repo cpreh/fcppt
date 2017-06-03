@@ -182,7 +182,7 @@ public:
 	);
 
 	/**
-	\brief Constructs an uninitialized vector>
+	\brief Constructs an uninitialized vector.
 
 	All of the elements will have indeterminate values and must be written
 	before being read.
