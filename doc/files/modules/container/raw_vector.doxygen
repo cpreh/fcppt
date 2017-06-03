@@ -3,5 +3,9 @@
 \ingroup fcpptcontainer
 \brief A container for POD types that can be initialized from a buffer.
 
-TODO...
+An \link fcppt::container::raw_vector::object\endlink is similar to a <code>std::vector</code>,
+except that it only holds POD types. The main purpose of this container is to be initialized
+from an \link fcppt::container::buffer::object\endlink. It can, however, also be initialized in
+regular ways like \link fcppt::algorithm::map\endlink or by using one of its constructors that are
+similar to the constructors of <code>std::%vector</code>.
 */
