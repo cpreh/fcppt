@@ -328,6 +328,30 @@ template<
 	typename T,
 	typename A
 >
+fcppt::container::raw_vector::object<
+	T,
+	A
+>::object(
+	size_type const _sz,
+	T const &_value,
+	A const &_alloc
+)
+:
+	impl_{
+		_alloc
+	}
+{
+	this->insert(
+		this->end(),
+		_sz,
+		_value
+	);
+}
+
+template<
+	typename T,
+	typename A
+>
 template<
 	typename In
 >
@@ -758,7 +782,9 @@ fcppt::container::raw_vector::object<
 			std::copy_backward(
 				_position,
 				this->end(),
-				data_end() + 1u
+				std::next(
+					this->data_end()
+				)
 			);
 
 		*_position = _value;
@@ -946,7 +972,8 @@ noexcept
 	)
 	{
 		std::uninitialized_copy(
-			_right, end(),
+			_right,
+			this->end(),
 			_left
 		);
 

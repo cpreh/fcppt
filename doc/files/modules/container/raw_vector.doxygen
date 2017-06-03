@@ -1,7 +1,7 @@
 /**
 \defgroup fcpptcontainerraw_vector fcppt.container.raw_vector
 \ingroup fcpptcontainer
-\brief A container for POD types that can hold uninitialized memory.
+\brief A container for POD types that can be initialized from a buffer.
 
 TODO...
 */

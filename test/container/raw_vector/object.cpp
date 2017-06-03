@@ -80,9 +80,7 @@ BOOST_AUTO_TEST_CASE(
 {
 FCPPT_PP_POP_WARNING
 
-	container_type test{};
-
-	test.resize(
+	container_type test(
 		10u,
 		0
 	);
@@ -418,9 +416,7 @@ BOOST_AUTO_TEST_CASE(
 {
 FCPPT_PP_POP_WARNING
 
-	container_type test1{};
-
-	test1.resize(
+	container_type test1(
 		100u,
 		0
 	);

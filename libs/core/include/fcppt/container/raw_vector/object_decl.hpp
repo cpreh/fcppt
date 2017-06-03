@@ -180,6 +180,12 @@ public:
 		A const &a = A()
 	);
 
+	object(
+		size_type sz,
+		T const &value,
+		A const &a = A()
+	);
+
 	template<
 		typename In
 	>
