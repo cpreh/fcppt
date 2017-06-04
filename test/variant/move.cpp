@@ -14,6 +14,7 @@
 #include <fcppt/variant/apply_unary.hpp>
 #include <fcppt/variant/get_exn.hpp>
 #include <fcppt/variant/object_impl.hpp>
+#include <fcppt/variant/variadic.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/mpl/vector/vector10.hpp>
 #include <boost/test/unit_test.hpp>
@@ -116,6 +117,85 @@ FCPPT_PP_POP_WARNING
 			int_unique_ptr
 		>(
 			test4
+		),
+		42
+	);
+}
+
+FCPPT_PP_PUSH_WARNING
+FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
+
+BOOST_AUTO_TEST_CASE(
+	variant_move_nested
+)
+{
+FCPPT_PP_POP_WARNING
+
+	typedef
+	fcppt::variant::variadic<
+		fcppt::unique_ptr<
+			int
+		>
+	>
+	variant_unique_ptr;
+
+	typedef
+	fcppt::variant::variadic<
+		variant_unique_ptr
+	>
+	nested;
+
+	nested test{
+		variant_unique_ptr{
+			fcppt::make_unique_ptr<
+				int
+			>(
+				42
+			)
+		}
+	};
+
+	BOOST_CHECK_EQUAL(
+		*fcppt::variant::get_exn<
+			fcppt::unique_ptr<
+				int
+			>
+		>(
+			fcppt::variant::get_exn<
+				variant_unique_ptr
+			>(
+				test
+			)
+		),
+		42
+	);
+
+	nested test2{
+		variant_unique_ptr{
+			fcppt::make_unique_ptr<
+				int
+			>(
+				10
+			)
+		}
+	};
+
+	test2 =
+		std::move(
+			test
+		);
+
+	BOOST_CHECK_EQUAL(
+		*fcppt::variant::get_exn<
+			fcppt::unique_ptr<
+				int
+			>
+		>(
+			fcppt::variant::get_exn<
+				variant_unique_ptr
+			>(
+				test2
+			)
 		),
 		42
 	);

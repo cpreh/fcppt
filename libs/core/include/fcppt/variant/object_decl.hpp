@@ -52,14 +52,9 @@ public:
 	/**
 	\brief Constructs the variant from a value
 
-	Constructs the variant from \a value. This constructor is intentionally
-	not explicit.
+	Constructs the variant from \a value.
 
 	\tparam U Must be a type among <code>types</code>
-
-	\param value The value to construct the variant from
-
-	\post <code>fcppt::variant::holds_type<U>(*this)</code> is true
 	*/
 	template<
 		typename U
@@ -72,14 +67,9 @@ public:
 	/**
 	\brief Move constructs the variant from a value
 
-	Move constructs the variant from \a value. This constructor is
-	intentionally not explicit.
+	Move constructs the variant from \a value.
 
 	\tparam U Must be a type among <code>types</code>
-
-	\param value The value to move construct the variant from
-
-	\post <code>fcppt::variant::holds_type<U>(*this)</code> is true
 	*/
 	template<
 		typename U
@@ -88,7 +78,8 @@ public:
 	object(
 		U &&value,
 		fcppt::variant::detail::disable_object<
-			U
+			U,
+			object
 		> * = nullptr
 	);
 
@@ -96,10 +87,6 @@ public:
 	\brief Copy constructs a variant
 
 	Copy constructs the value held by \a other into the variant.
-
-	\param other The variant to copy from
-
-	\post <code>this->type_index() == other.type_index()</code>
 	*/
 	object(
 		object const &other
@@ -109,10 +96,6 @@ public:
 	\brief Move constructs a variant
 
 	Move constructs the value held by \a other into the variant.
-
-	\param other The variant to move from
-
-	\post <code>this->type_index() == other.type_index()</code>
 	*/
 	object(
 		object &&other
@@ -130,10 +113,6 @@ public:
 	held type when possible.
 
 	\tparam U Must be a type among <code>types</code>
-
-	\param value The value to assign the variant from
-
-	\post <code>fcppt::variant::holds_type<U>(*this)</code> is true
 	*/
 	template<
 		typename U
@@ -148,20 +127,14 @@ public:
 
 	Move assigns \a value to the variant. Calls the move assignment
 	operator of the held type when possible.
-
-	\tparam U Must be a type among <code>types</code>
-
-	\param value The value to assign the variant from
-
-	\post <code>fcppt::variant::holds_type<U>(*this)</code> is true
 	*/
 	template<
 		typename U
 	>
 	fcppt::variant::detail::disable_object<
 		U,
-		object &
-	>
+		object
+	> &
 	operator=(
 		U &&value
 	);
@@ -171,10 +144,6 @@ public:
 
 	Assigns the value from \a other to the variant. Calls the assignment
 	operator of the held type when possible.
-
-	\param other The variant to assign from
-
-	\post <code>this->type_index() == other.type_index()</code>
 	*/
 	object &
 	operator=(
@@ -186,8 +155,6 @@ public:
 
 	Move assigns the value from \a other to the variant. Calls the
 	move assignment operator of the held type when possible.
-
-	\param other The variant to assign from
 	*/
 	object &
 	operator=(
@@ -257,8 +224,8 @@ public:
 
 	This can only happen if an assignment of a different type throws an
 	exception. There is no way to recover from that, except for falling
-	back to heap allocation. An invalid variant should only be used
-	destroyed or assigned to.
+	back to heap allocation. An invalid variant should only be destroyed or
+	assigned to.
 	*/
 	bool
 	is_invalid() const;

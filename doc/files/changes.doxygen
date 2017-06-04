@@ -147,6 +147,12 @@
 	</ul>
 </li>
 
+<li>\ref fcpptvariant
+	<ul>
+	<li>Fixed moving of nested variants.</li>
+	</ul>
+</li>
+
 </ul>
 
 \section changes_changes_to_251 2.5.1

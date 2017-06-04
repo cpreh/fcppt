@@ -63,7 +63,8 @@ fcppt::variant::object<
 >::object(
 	U &&_other,
 	fcppt::variant::detail::disable_object<
-		U
+		U,
+		object
 	> *
 )
 :
@@ -198,8 +199,8 @@ fcppt::variant::detail::disable_object<
 	U,
 	fcppt::variant::object<
 		Types
-	> &
->
+	>
+> &
 fcppt::variant::object<
 	Types
 >::operator=(
