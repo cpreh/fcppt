@@ -9,7 +9,7 @@
 
 #include <fcppt/char_type.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/filesystem/fstream.hpp>
+#include <fstream>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -19,15 +19,12 @@ namespace filesystem
 {
 
 /**
-\brief Typedef to either boost::filesystem::ofstream or boost::filesystem::wofstream, depending on fcppt::char_type
+\brief Typedef to <code>basic_ofstream</code>, depending on fcppt::char_type.
+
 \ingroup fcpptstring
-
-
-See the \link fcpptstring string module documentation \endlink for a motivation
-for this.
 */
 typedef
-boost::filesystem::basic_ofstream<
+std::basic_ofstream<
 	fcppt::char_type
 >
 ofstream;

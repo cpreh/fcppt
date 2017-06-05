@@ -1392,6 +1392,8 @@ set(
 	libs/filesystem/include/fcppt/filesystem/normalize.hpp
 	libs/filesystem/include/fcppt/filesystem/num_subpaths.hpp
 	libs/filesystem/include/fcppt/filesystem/ofstream.hpp
+	libs/filesystem/include/fcppt/filesystem/open.hpp
+	libs/filesystem/include/fcppt/filesystem/open_exn.hpp
 	libs/filesystem/include/fcppt/filesystem/optional_size.hpp
 	libs/filesystem/include/fcppt/filesystem/optional_size_fwd.hpp
 	libs/filesystem/include/fcppt/filesystem/path_to_string.hpp

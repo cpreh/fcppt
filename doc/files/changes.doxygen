@@ -42,11 +42,10 @@
 
 <li>\ref fcpptfilesystem
 	<ul>
-	<li>Added \link fcppt::filesystem::create_directory\endlink.</li>
-	<li>Added \link fcppt::filesystem::create_directory_error\endlink.</li>
-	<li>Added \link fcppt::filesystem::create_directories_recursive\endlink.</li>
+	<li>Added \link fcppt::filesystem::create_directory\endlink, \link fcppt::filesystem::create_directory_error\endlink and \link fcppt::filesystem::create_directories_recursive\endlink.</li>
 	<li>Added \link fcppt::filesystem::file_size\endlink.</li>
 	<li>Added \link fcppt::filesystem::size_to_size_t\endlink.</li>
+	<li>Added \link fcppt::filesystem::open\endlink and \link fcppt::filesystem::open_exn\endlink.</li>
 	</ul>
 </li>
 
@@ -99,6 +98,8 @@
 <li>\ref fcpptfilesystem
 	<ul>
 	<li>\link fcppt::filesystem::file_to_string\endlink now returns \link fcppt::optional_string\endlink for most errors.</li>
+	<li>\link fcppt::filesystem::ifstream\endlink, \link fcppt::filesystem::ofstream\endlink and \link fcppt::filesystem::fstream\endlink now use <code>std::basic_ifstream</code>,
+	<code>std::basic_ofstream</code> and <code>std::basic_fstream</code> instead of the boost variants.</li>
 	</ul>
 </li>
 

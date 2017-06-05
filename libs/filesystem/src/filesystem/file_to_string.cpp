@@ -13,6 +13,7 @@
 #include <fcppt/filesystem/file_size.hpp>
 #include <fcppt/filesystem/file_to_string.hpp>
 #include <fcppt/filesystem/ifstream.hpp>
+#include <fcppt/filesystem/open.hpp>
 #include <fcppt/filesystem/path_to_string.hpp>
 #include <fcppt/filesystem/size_to_size_t.hpp>
 #include <fcppt/optional/bind.hpp>
@@ -70,42 +71,48 @@ fcppt::filesystem::file_to_string(
 					)
 				};
 
-				fcppt::filesystem::ifstream stream(
-					_path
-				);
-
-				if(
-					!stream.is_open()
-				)
-					return
-						fcppt::optional_string{};
-
-				fcppt::string ret;
-
-				ret.reserve(
-					size
-				);
-
-				ret.assign(
-					std::istreambuf_iterator<
-						fcppt::char_type
-					>(
-						stream
-					),
-					std::istreambuf_iterator<
-						fcppt::char_type
-					>()
-				);
-
 				return
-					fcppt::optional::make_if(
-						stream.eof(),
+					fcppt::optional::bind(
+						fcppt::filesystem::open<
+							fcppt::filesystem::ifstream
+						>(
+							_path,
+							std::ios_base::openmode{}
+						),
 						[
-							&ret
-						]{
+							size
+						](
+							fcppt::filesystem::ifstream &&_stream
+						)
+						{
+							fcppt::string ret;
+
+							ret.reserve(
+								size
+							);
+
+							ret.assign(
+								std::istreambuf_iterator<
+									fcppt::char_type
+								>(
+									_stream
+								),
+								std::istreambuf_iterator<
+									fcppt::char_type
+								>()
+							);
+
 							return
-								std::move(
-									ret
+								fcppt::optional::make_if(
+									_stream.eof(),
+									[
+										&ret
+									]{
+										return
+											std::move(
+												ret
+											);
+									}
 								);
 						}
 					);

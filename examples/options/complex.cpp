@@ -14,12 +14,14 @@ FCPPT_PP_DISABLE_GCC_WARNING(-Wsign-promo)
 
 #include <fcppt/args_char.hpp>
 #include <fcppt/args_from_second.hpp>
+#include <fcppt/exception.hpp>
 #include <fcppt/main.hpp>
 #include <fcppt/string.hpp>
 #include <fcppt/text.hpp>
 #include <fcppt/either/match.hpp>
 #include <fcppt/filesystem/ifstream.hpp>
 #include <fcppt/filesystem/ofstream.hpp>
+#include <fcppt/filesystem/open_exn.hpp>
 #include <fcppt/io/cerr.hpp>
 #include <fcppt/io/cout.hpp>
 #include <fcppt/log/context.hpp>
@@ -70,6 +72,7 @@ FCPPT_MAIN(
 	int argc,
 	fcppt::args_char **argv
 )
+try
 {
 // ![options_labels]
 	FCPPT_RECORD_MAKE_LABEL(
@@ -290,10 +293,15 @@ FCPPT_MAIN(
 
 // ![options_open_input]
 			fcppt::filesystem::ifstream input{
-				fcppt::record::get<
-					input_file_label
+				fcppt::filesystem::open_exn<
+					fcppt::filesystem::ifstream
 				>(
-					_result
+					fcppt::record::get<
+						input_file_label
+					>(
+						_result
+					),
+					std::ios_base::openmode{}
 				)
 			};
 // ![options_open_input]
@@ -324,11 +332,15 @@ FCPPT_MAIN(
 
 // ![options_open_output]
 			fcppt::filesystem::ofstream output{
-				output_filename,
-				fcppt::record::get<
-					openmode_label
+				fcppt::filesystem::open_exn<
+					fcppt::filesystem::ofstream
 				>(
-					_result
+					output_filename,
+					fcppt::record::get<
+						openmode_label
+					>(
+						_result
+					)
 				)
 			};
 // ![options_open_output]
@@ -414,6 +426,19 @@ FCPPT_MAIN(
 			}
 		);
 
+}
+catch(
+	fcppt::exception const &_exception
+)
+{
+	fcppt::io::cerr()
+		<<
+		_exception.string()
+		<<
+		FCPPT_TEXT('\n');
+
+	return
+		EXIT_FAILURE;
 }
 
 FCPPT_PP_POP_WARNING
