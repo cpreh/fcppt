@@ -708,6 +708,7 @@ set(
 	libs/core/include/fcppt/io/stringstream_fwd.hpp
 	libs/core/include/fcppt/io/widen_string.hpp
 	libs/core/include/fcppt/io/write.hpp
+	libs/core/include/fcppt/io/write_chars.hpp
 	libs/core/include/fcppt/is_strong_typedef.hpp
 	libs/core/include/fcppt/literal.hpp
 	libs/core/include/fcppt/loop.hpp

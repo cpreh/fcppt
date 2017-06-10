@@ -49,6 +49,12 @@
 	</ul>
 </li>
 
+<li>\ref fcpptio
+	<ul>
+	<li>Added \link fcppt::io::write_chars\endlink.</li>
+	</ul>
+</li>
+
 <li>\ref fcpptoptions
 	<ul>
 	<li>Output errors from the second argument as well in \link fcppt::options::product\endlink.</li>

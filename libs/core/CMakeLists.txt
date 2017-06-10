@@ -527,6 +527,7 @@ set(
 	libs/core/include/fcppt/io/stringstream_fwd.hpp
 	libs/core/include/fcppt/io/widen_string.hpp
 	libs/core/include/fcppt/io/write.hpp
+	libs/core/include/fcppt/io/write_chars.hpp
 	libs/core/include/fcppt/is_strong_typedef.hpp
 	libs/core/include/fcppt/literal.hpp
 	libs/core/include/fcppt/loop.hpp
@@ -1218,6 +1219,7 @@ set(
 	libs/core/src/io/cout.cpp
 	libs/core/src/io/read_chars.cpp
 	libs/core/src/io/scoped_rdbuf.cpp
+	libs/core/src/io/write_chars.cpp
 	libs/core/src/narrow.cpp
 	libs/core/src/string_conv_locale.cpp
 	libs/core/src/time/ctime.cpp
