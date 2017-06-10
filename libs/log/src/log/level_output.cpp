@@ -4,10 +4,11 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/io/ostream.hpp>
+#include <fcppt/enum_output.hpp>
+#include <fcppt/io/ostream_fwd.hpp>
 #include <fcppt/log/level.hpp>
 #include <fcppt/log/level_output.hpp>
-#include <fcppt/log/level_to_string.hpp>
+#include <fcppt/log/impl/level_strings.hpp>
 
 
 fcppt::io::ostream &
@@ -17,9 +18,8 @@ fcppt::log::operator<<(
 )
 {
 	return
-		_stream
-		<<
-		fcppt::log::level_to_string(
+		fcppt::enum_output(
+			_stream,
 			_level
 		);
 }

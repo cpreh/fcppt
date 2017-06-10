@@ -8,7 +8,7 @@
 #define FCPPT_OPTIONS_PRETTY_TYPE_HPP_INCLUDED
 
 #include <fcppt/string.hpp>
-#include <fcppt/options/custom_pretty_type.hpp>
+#include <fcppt/options/pretty_type_impl.hpp>
 
 
 namespace fcppt
@@ -21,7 +21,7 @@ namespace options
 
 \ingroup fcpptoptions
 
-Using \link fcppt::options::custom_pretty_type\endlink, one can specialize how a
+Using \link fcppt::options::pretty_type_impl\endlink, one can specialize how a
 type name is represented as a string. For example, the pretty name of
 <code>std::string</code> is simply <code>string</code> instead of
 <code>std::basic_string<char,std::char_traits<char>,std::allocator<char>></code>.
@@ -34,7 +34,7 @@ fcppt::string
 pretty_type()
 {
 	return
-		fcppt::options::custom_pretty_type<
+		fcppt::options::pretty_type_impl<
 			Type
 		>::get();
 }

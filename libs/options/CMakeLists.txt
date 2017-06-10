@@ -14,7 +14,6 @@ set(
 	libs/options/include/fcppt/options/base_impl.hpp
 	libs/options/include/fcppt/options/base_unique_ptr.hpp
 	libs/options/include/fcppt/options/base_unique_ptr_fwd.hpp
-	libs/options/include/fcppt/options/custom_pretty_type.hpp
 	libs/options/include/fcppt/options/default_help_switch.hpp
 	libs/options/include/fcppt/options/default_value.hpp
 	libs/options/include/fcppt/options/default_value_fwd.hpp
@@ -87,6 +86,8 @@ set(
 	libs/options/include/fcppt/options/parse.hpp
 	libs/options/include/fcppt/options/parse_help.hpp
 	libs/options/include/fcppt/options/pretty_type.hpp
+	libs/options/include/fcppt/options/pretty_type_impl.hpp
+	libs/options/include/fcppt/options/pretty_type_impl_fwd.hpp
 	libs/options/include/fcppt/options/product_decl.hpp
 	libs/options/include/fcppt/options/product_fwd.hpp
 	libs/options/include/fcppt/options/product_impl.hpp
@@ -101,7 +102,6 @@ set(
 	libs/options/include/fcppt/options/switch_decl.hpp
 	libs/options/include/fcppt/options/switch_fwd.hpp
 	libs/options/include/fcppt/options/switch_impl.hpp
-	libs/options/src/options/custom_pretty_type.cpp
 	libs/options/src/options/default_help_switch.cpp
 	libs/options/src/options/detail/combine_errors.cpp
 	libs/options/src/options/detail/help_error.cpp
@@ -110,6 +110,7 @@ set(
 	libs/options/src/options/detail/long_or_short_name.cpp
 	libs/options/src/options/detail/state_from_args.cpp
 	libs/options/src/options/is_option.cpp
+	libs/options/src/options/pretty_type_impl.cpp
 	libs/options/src/options/state.cpp
 )
 

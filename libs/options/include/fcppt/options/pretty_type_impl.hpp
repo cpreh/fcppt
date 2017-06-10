@@ -4,12 +4,13 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_OPTIONS_CUSTOM_PRETTY_TYPE_HPP_INCLUDED
-#define FCPPT_OPTIONS_CUSTOM_PRETTY_TYPE_HPP_INCLUDED
+#ifndef FCPPT_OPTIONS_PRETTY_TYPE_IMPL_HPP_INCLUDED
+#define FCPPT_OPTIONS_PRETTY_TYPE_IMPL_HPP_INCLUDED
 
 #include <fcppt/string.hpp>
 #include <fcppt/strong_typedef_fwd.hpp>
 #include <fcppt/type_name_from_info.hpp>
+#include <fcppt/options/pretty_type_impl_fwd.hpp>
 #include <fcppt/options/detail/symbol.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <string>
@@ -31,9 +32,10 @@ Specialize this struct with a static <code>fcppt::string get()</code> method in
 order to override how types are printed.
 */
 template<
-	typename Type
+	typename Type,
+	typename Enable
 >
-struct custom_pretty_type
+struct pretty_type_impl
 {
 	static
 	fcppt::string
@@ -49,7 +51,7 @@ struct custom_pretty_type
 };
 
 template<>
-struct custom_pretty_type<
+struct pretty_type_impl<
 	std::string
 >
 {
@@ -60,7 +62,7 @@ struct custom_pretty_type<
 };
 
 template<>
-struct custom_pretty_type<
+struct pretty_type_impl<
 	std::wstring
 >
 {
@@ -74,7 +76,7 @@ template<
 	typename Type,
 	typename Tag
 >
-struct custom_pretty_type<
+struct pretty_type_impl<
 	fcppt::strong_typedef<
 		Type,
 		Tag
@@ -86,7 +88,7 @@ struct custom_pretty_type<
 	get()
 	{
 		return
-			fcppt::options::custom_pretty_type<
+			fcppt::options::pretty_type_impl<
 				Type
 			>::get();
 	}

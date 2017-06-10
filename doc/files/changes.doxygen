@@ -45,6 +45,7 @@
 	<li>Added \link fcppt::enum_names\endlink and \link fcppt::enum_names_impl\endlink.
 	<li>Added \link fcppt::enum_from_string\endlink and \link fcppt::enum_from_string_impl\endlink.
 	<li>Added \link fcppt::enum_to_string\endlink and \link fcppt::enum_to_string_impl\endlink.
+	<li>Added \link fcppt::enum_input\endlink and \link fcppt::enum_output\endlink.
 	</ul>
 </li>
 
@@ -114,6 +115,12 @@
 	<li>\link fcppt::filesystem::file_to_string\endlink now returns \link fcppt::optional_string\endlink for most errors.</li>
 	<li>\link fcppt::filesystem::ifstream\endlink, \link fcppt::filesystem::ofstream\endlink and \link fcppt::filesystem::fstream\endlink now use <code>std::basic_ifstream</code>,
 	<code>std::basic_ofstream</code> and <code>std::basic_fstream</code> instead of the boost variants.</li>
+	</ul>
+</li>
+
+<li>\ref fcpptoptions
+	<ul>
+	<li>Renamed <code>fcppt::options::custom_pretty_type</code> to \link fcppt::options::pretty_type_impl\endlink.</li>
 	</ul>
 </li>
 

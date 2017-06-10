@@ -631,6 +631,7 @@ set(
 	libs/core/include/fcppt/enum_from_string.hpp
 	libs/core/include/fcppt/enum_from_string_impl.hpp
 	libs/core/include/fcppt/enum_from_string_impl_fwd.hpp
+	libs/core/include/fcppt/enum_input.hpp
 	libs/core/include/fcppt/enum_iterator_decl.hpp
 	libs/core/include/fcppt/enum_iterator_fwd.hpp
 	libs/core/include/fcppt/enum_iterator_impl.hpp
@@ -642,6 +643,7 @@ set(
 	libs/core/include/fcppt/enum_names_array.hpp
 	libs/core/include/fcppt/enum_names_array_fwd.hpp
 	libs/core/include/fcppt/enum_names_impl_fwd.hpp
+	libs/core/include/fcppt/enum_output.hpp
 	libs/core/include/fcppt/enum_range_decl.hpp
 	libs/core/include/fcppt/enum_range_fwd.hpp
 	libs/core/include/fcppt/enum_range_impl.hpp
@@ -1480,7 +1482,6 @@ set(
 	libs/options/include/fcppt/options/base_impl.hpp
 	libs/options/include/fcppt/options/base_unique_ptr.hpp
 	libs/options/include/fcppt/options/base_unique_ptr_fwd.hpp
-	libs/options/include/fcppt/options/custom_pretty_type.hpp
 	libs/options/include/fcppt/options/default_help_switch.hpp
 	libs/options/include/fcppt/options/default_value.hpp
 	libs/options/include/fcppt/options/default_value_fwd.hpp
@@ -1553,6 +1554,8 @@ set(
 	libs/options/include/fcppt/options/parse.hpp
 	libs/options/include/fcppt/options/parse_help.hpp
 	libs/options/include/fcppt/options/pretty_type.hpp
+	libs/options/include/fcppt/options/pretty_type_impl.hpp
+	libs/options/include/fcppt/options/pretty_type_impl_fwd.hpp
 	libs/options/include/fcppt/options/product_decl.hpp
 	libs/options/include/fcppt/options/product_fwd.hpp
 	libs/options/include/fcppt/options/product_impl.hpp

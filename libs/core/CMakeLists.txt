@@ -450,6 +450,7 @@ set(
 	libs/core/include/fcppt/enum_from_string.hpp
 	libs/core/include/fcppt/enum_from_string_impl.hpp
 	libs/core/include/fcppt/enum_from_string_impl_fwd.hpp
+	libs/core/include/fcppt/enum_input.hpp
 	libs/core/include/fcppt/enum_iterator_decl.hpp
 	libs/core/include/fcppt/enum_iterator_fwd.hpp
 	libs/core/include/fcppt/enum_iterator_impl.hpp
@@ -461,6 +462,7 @@ set(
 	libs/core/include/fcppt/enum_names_array.hpp
 	libs/core/include/fcppt/enum_names_array_fwd.hpp
 	libs/core/include/fcppt/enum_names_impl_fwd.hpp
+	libs/core/include/fcppt/enum_output.hpp
 	libs/core/include/fcppt/enum_range_decl.hpp
 	libs/core/include/fcppt/enum_range_fwd.hpp
 	libs/core/include/fcppt/enum_range_impl.hpp

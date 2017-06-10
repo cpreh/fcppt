@@ -95,4 +95,9 @@ Similarly, we can also try to convert a string to an enum: \link fcppt::enum_fro
 In case the conversion fails, an empty optional is returned:
 
 \snippet enum.cpp enum_from_string
+
+The functions \link fcppt::enum_input\endlink and \link
+fcppt::enum_output\endlink make use of \link fcppt::enum_from_string\endlink
+and \link fcppt::enum_to_string\endlink respectively. They can be used to implement <code>operator>></code> and
+<code>operator<<</code>.
 */
