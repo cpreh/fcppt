@@ -4,12 +4,13 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_LOG_IMPL_LEVEL_STRINGS_HPP_INCLUDED
-#define FCPPT_LOG_IMPL_LEVEL_STRINGS_HPP_INCLUDED
+#ifndef FCPPT_LOG_LEVEL_STRINGS_HPP_INCLUDED
+#define FCPPT_LOG_LEVEL_STRINGS_HPP_INCLUDED
 
 #include <fcppt/enum_names_array_fwd.hpp>
 #include <fcppt/enum_names_impl_fwd.hpp>
 #include <fcppt/log/level_fwd.hpp>
+#include <fcppt/log/detail/symbol.hpp>
 
 
 namespace fcppt
@@ -20,6 +21,7 @@ struct enum_names_impl<
 	fcppt::log::level
 >
 {
+	FCPPT_LOG_DETAIL_SYMBOL
 	static
 	fcppt::enum_names_array<
 		fcppt::log::level

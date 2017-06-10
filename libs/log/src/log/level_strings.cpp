@@ -8,7 +8,7 @@
 #include <fcppt/enum_names_impl_fwd.hpp>
 #include <fcppt/text.hpp>
 #include <fcppt/log/level.hpp>
-#include <fcppt/log/impl/level_strings.hpp>
+#include <fcppt/log/level_strings.hpp>
 
 
 namespace

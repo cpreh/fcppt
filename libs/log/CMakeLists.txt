@@ -7,7 +7,6 @@ set(
 	libs/log/impl/include/fcppt/log/impl/find_child_const.hpp
 	libs/log/impl/include/fcppt/log/impl/find_child_tpl.hpp
 	libs/log/impl/include/fcppt/log/impl/find_or_create_child.hpp
-	libs/log/impl/include/fcppt/log/impl/level_strings.hpp
 	libs/log/impl/include/fcppt/log/impl/optional_context_tree_ref.hpp
 	libs/log/impl/include/fcppt/log/impl/optional_context_tree_ref_fwd.hpp
 	libs/log/impl/include/fcppt/log/impl/tree_formatter.hpp
@@ -15,7 +14,6 @@ set(
 	libs/log/impl/src/log/impl/find_child.cpp
 	libs/log/impl/src/log/impl/find_child_const.cpp
 	libs/log/impl/src/log/impl/find_or_create_child.cpp
-	libs/log/impl/src/log/impl/level_strings.cpp
 	libs/log/impl/src/log/impl/tree_formatter.cpp
 	libs/log/include/fcppt/log/_.hpp
 	libs/log/include/fcppt/log/const_level_stream_array_ref.hpp
@@ -57,6 +55,7 @@ set(
 	libs/log/include/fcppt/log/level_stream_array.hpp
 	libs/log/include/fcppt/log/level_stream_array_fwd.hpp
 	libs/log/include/fcppt/log/level_stream_fwd.hpp
+	libs/log/include/fcppt/log/level_strings.hpp
 	libs/log/include/fcppt/log/level_to_string.hpp
 	libs/log/include/fcppt/log/location.hpp
 	libs/log/include/fcppt/log/location_fwd.hpp
@@ -85,6 +84,7 @@ set(
 	libs/log/src/log/level_input.cpp
 	libs/log/src/log/level_output.cpp
 	libs/log/src/log/level_stream.cpp
+	libs/log/src/log/level_strings.cpp
 	libs/log/src/log/level_to_string.cpp
 	libs/log/src/log/location.cpp
 	libs/log/src/log/object.cpp

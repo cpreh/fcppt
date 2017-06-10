@@ -28,6 +28,7 @@ FCPPT_PP_DISABLE_GCC_WARNING(-Wsign-promo)
 #include <fcppt/log/default_level_streams.hpp>
 #include <fcppt/log/level.hpp>
 #include <fcppt/log/level_input.hpp>
+#include <fcppt/log/level_strings.hpp>
 #include <fcppt/log/level_output.hpp>
 #include <fcppt/log/name.hpp>
 #include <fcppt/log/object.hpp>
@@ -50,6 +51,7 @@ FCPPT_PP_DISABLE_GCC_WARNING(-Wsign-promo)
 #include <fcppt/options/optional_help_text.hpp>
 #include <fcppt/options/optional_short_name.hpp>
 #include <fcppt/options/parse_help.hpp>
+#include <fcppt/options/pretty_type_enum.hpp>
 #include <fcppt/options/result.hpp>
 #include <fcppt/options/result_of.hpp>
 #include <fcppt/options/short_name.hpp>

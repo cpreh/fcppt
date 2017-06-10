@@ -1455,6 +1455,7 @@ set(
 	libs/log/include/fcppt/log/level_stream_array.hpp
 	libs/log/include/fcppt/log/level_stream_array_fwd.hpp
 	libs/log/include/fcppt/log/level_stream_fwd.hpp
+	libs/log/include/fcppt/log/level_strings.hpp
 	libs/log/include/fcppt/log/level_to_string.hpp
 	libs/log/include/fcppt/log/location.hpp
 	libs/log/include/fcppt/log/location_fwd.hpp
@@ -1554,6 +1555,7 @@ set(
 	libs/options/include/fcppt/options/parse.hpp
 	libs/options/include/fcppt/options/parse_help.hpp
 	libs/options/include/fcppt/options/pretty_type.hpp
+	libs/options/include/fcppt/options/pretty_type_enum.hpp
 	libs/options/include/fcppt/options/pretty_type_impl.hpp
 	libs/options/include/fcppt/options/pretty_type_impl_fwd.hpp
 	libs/options/include/fcppt/options/product_decl.hpp

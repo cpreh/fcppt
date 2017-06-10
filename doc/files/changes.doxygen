@@ -67,6 +67,7 @@
 <li>\ref fcpptoptions
 	<ul>
 	<li>Output errors from the second argument as well in \link fcppt::options::product\endlink.</li>
+	<li>Added <code>fcppt/options/pretty_type_enum.hpp</code> that outputs all possible enumerators via \link fcppt::enum_names\endlink.</li>
 	</ul>
 </li>
 
@@ -121,6 +122,7 @@
 <li>\ref fcpptoptions
 	<ul>
 	<li>Renamed <code>fcppt::options::custom_pretty_type</code> to \link fcppt::options::pretty_type_impl\endlink.</li>
+	<li>Don't output values of flags. Output operators are usually not defined or their results are meaningless to the user.</li>
 	</ul>
 </li>
 

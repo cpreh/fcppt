@@ -8,7 +8,7 @@
 #include <fcppt/io/ostream_fwd.hpp>
 #include <fcppt/log/level.hpp>
 #include <fcppt/log/level_output.hpp>
-#include <fcppt/log/impl/level_strings.hpp>
+#include <fcppt/log/level_strings.hpp>
 
 
 fcppt::io::ostream &
