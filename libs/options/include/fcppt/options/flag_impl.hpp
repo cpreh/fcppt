@@ -8,7 +8,6 @@
 #define FCPPT_OPTIONS_FLAG_IMPL_HPP_INCLUDED
 
 #include <fcppt/const.hpp>
-#include <fcppt/insert_to_fcppt_string.hpp>
 #include <fcppt/string.hpp>
 #include <fcppt/text.hpp>
 #include <fcppt/either/make_success.hpp>
@@ -150,18 +149,6 @@ fcppt::options::flag<
 		fcppt::options::detail::long_or_short_name(
 			long_name_,
 			short_name_
-		)
-		+
-		FCPPT_TEXT('(')
-		+
-		fcppt::insert_to_fcppt_string(
-			active_value_.get()
-		)
-		+
-		FCPPT_TEXT(") / ")
-		+
-		fcppt::insert_to_fcppt_string(
-			inactive_value_.get()
 		)
 		+
 		FCPPT_TEXT(" ]")

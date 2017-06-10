@@ -414,7 +414,6 @@ try
 				fcppt::options::help_text const &_help_text
 			)
 			{
-				// TODO: Make it possible to use boolalpha
 				fcppt::io::cout()
 					<<
 					_help_text
