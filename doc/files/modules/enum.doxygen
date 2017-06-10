@@ -12,6 +12,7 @@
 	<li>\ref fcpptenum_range</li>
 	<li>\ref fcpptenum_array</li>
 	<li>\ref fcpptenum_cast_to</li>
+	<li>\ref fcpptenum_string</li>
 </ul>
 
 </td>
@@ -53,9 +54,9 @@ range that iterates over an enum.
 
 \snippet enum.cpp enum_range
 
-fcppt::make_enum_range creates an fcppt::enum_range which uses
-fcppt::enum_iterator. To create subranges of enums, there are
-fcppt::make_enum_range_start and fcppt::make_enum_range_start_end.
+\link fcppt::make_enum_range\endlink creates an \link fcppt::enum_range\endlink which uses
+\link fcppt::enum_iterator\endlink. To create subranges of enums, there are
+\link fcppt::make_enum_range_start\endlink and \link fcppt::make_enum_range_start_end\endlink.
 
 \section fcpptenum_array Array indexed with an enum
 
@@ -71,4 +72,27 @@ for example:
 Casting an integral value to an enum might be needed when deserializing data.
 It is important, however, that the value must not fall outside of the enum's
 range. \ref fcppt::cast_to_enum returns an empty optional in this case.
+
+\section fcpptenum_string String conversion
+
+Converting enums from and to strings is also often needed. Unfortunately, because
+C++ offers no introspection of any kind for enums, we have to provide our own mapping
+from enums to strings. The function that does this is called \link fcppt::enum_names\endlink
+which returns an \link fcppt::enum_names_array\endlink. The implementation uses the
+customization point \link fcppt::enum_names_impl\endlink which needs to be provided for
+every enum you wish to use this function with, for example:
+
+\snippet enum.cpp enum_names
+
+The enum names can then be used to convert enums from and to strings. \link fcppt::enum_to_string\endlink
+uses \link fcppt::enum_to_string_impl\endlink, which by default makes use of \link fcppt::enum_names\endlink.
+Since we just provided the enum names for <code>myenum</code>, we can convert it to a string:
+
+\snippet enum.cpp enum_to_string
+
+Similarly, we can also try to convert a string to an enum: \link fcppt::enum_from_string\endlink uses
+\link fcppt::enum_from_string_impl\endlink, which, again, makes use of \link fcppt::enum_names\endlink by default.
+In case the conversion fails, an empty optional is returned:
+
+\snippet enum.cpp enum_from_string
 */

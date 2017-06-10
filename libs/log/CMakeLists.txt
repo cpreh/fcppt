@@ -7,7 +7,6 @@ set(
 	libs/log/impl/include/fcppt/log/impl/find_child_const.hpp
 	libs/log/impl/include/fcppt/log/impl/find_child_tpl.hpp
 	libs/log/impl/include/fcppt/log/impl/find_or_create_child.hpp
-	libs/log/impl/include/fcppt/log/impl/level_string_array.hpp
 	libs/log/impl/include/fcppt/log/impl/level_strings.hpp
 	libs/log/impl/include/fcppt/log/impl/optional_context_tree_ref.hpp
 	libs/log/impl/include/fcppt/log/impl/optional_context_tree_ref_fwd.hpp

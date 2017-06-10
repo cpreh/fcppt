@@ -447,6 +447,9 @@ set(
 	libs/core/include/fcppt/endianness/reverse_mem.hpp
 	libs/core/include/fcppt/endianness/size_type.hpp
 	libs/core/include/fcppt/endianness/swap.hpp
+	libs/core/include/fcppt/enum_from_string.hpp
+	libs/core/include/fcppt/enum_from_string_impl.hpp
+	libs/core/include/fcppt/enum_from_string_impl_fwd.hpp
 	libs/core/include/fcppt/enum_iterator_decl.hpp
 	libs/core/include/fcppt/enum_iterator_fwd.hpp
 	libs/core/include/fcppt/enum_iterator_impl.hpp
@@ -454,6 +457,10 @@ set(
 	libs/core/include/fcppt/enum_max_value_fwd.hpp
 	libs/core/include/fcppt/enum_min_value.hpp
 	libs/core/include/fcppt/enum_min_value_fwd.hpp
+	libs/core/include/fcppt/enum_names.hpp
+	libs/core/include/fcppt/enum_names_array.hpp
+	libs/core/include/fcppt/enum_names_array_fwd.hpp
+	libs/core/include/fcppt/enum_names_impl_fwd.hpp
 	libs/core/include/fcppt/enum_range_decl.hpp
 	libs/core/include/fcppt/enum_range_fwd.hpp
 	libs/core/include/fcppt/enum_range_impl.hpp
@@ -461,6 +468,9 @@ set(
 	libs/core/include/fcppt/enum_size_fwd.hpp
 	libs/core/include/fcppt/enum_size_type.hpp
 	libs/core/include/fcppt/enum_size_type_fwd.hpp
+	libs/core/include/fcppt/enum_to_string.hpp
+	libs/core/include/fcppt/enum_to_string_impl.hpp
+	libs/core/include/fcppt/enum_to_string_impl_fwd.hpp
 	libs/core/include/fcppt/error/strerrno.hpp
 	libs/core/include/fcppt/error/strerror.hpp
 	libs/core/include/fcppt/exception.hpp

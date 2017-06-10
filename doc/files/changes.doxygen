@@ -40,6 +40,14 @@
 	</ul>
 </li>
 
+<li>\ref fcpptenum
+	<ul>
+	<li>Added \link fcppt::enum_names\endlink and \link fcppt::enum_names_impl\endlink.
+	<li>Added \link fcppt::enum_from_string\endlink and \link fcppt::enum_from_string_impl\endlink.
+	<li>Added \link fcppt::enum_to_string\endlink and \link fcppt::enum_to_string_impl\endlink.
+	</ul>
+</li>
+
 <li>\ref fcpptfilesystem
 	<ul>
 	<li>Added \link fcppt::filesystem::create_directory\endlink, \link fcppt::filesystem::create_directory_error\endlink and \link fcppt::filesystem::create_directories_recursive\endlink.</li>

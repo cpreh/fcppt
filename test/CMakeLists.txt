@@ -132,6 +132,10 @@ add_fcppt_test(
 )
 
 add_fcppt_test(
+	enum_string
+)
+
+add_fcppt_test(
 	extract_from_string
 )
 

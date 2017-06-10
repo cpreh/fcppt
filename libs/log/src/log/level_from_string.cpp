@@ -4,8 +4,8 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
+#include <fcppt/enum_from_string.hpp>
 #include <fcppt/string.hpp>
-#include <fcppt/algorithm/index_of_enum_array.hpp>
 #include <fcppt/log/level_from_string.hpp>
 #include <fcppt/log/optional_level.hpp>
 #include <fcppt/log/impl/level_strings.hpp>
@@ -17,8 +17,9 @@ fcppt::log::level_from_string(
 )
 {
 	return
-		fcppt::algorithm::index_of_enum_array(
-			fcppt::log::impl::level_strings(),
+		fcppt::enum_from_string<
+			fcppt::log::level
+		>(
 			_name
 		);
 }

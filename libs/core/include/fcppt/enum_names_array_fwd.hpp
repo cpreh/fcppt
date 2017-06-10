@@ -4,30 +4,34 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_LOG_IMPL_LEVEL_STRING_ARRAY_HPP_INCLUDED
-#define FCPPT_LOG_IMPL_LEVEL_STRING_ARRAY_HPP_INCLUDED
+#ifndef FCPPT_ENUM_NAMES_ARRAY_FWD_HPP_INCLUDED
+#define FCPPT_ENUM_NAMES_ARRAY_FWD_HPP_INCLUDED
 
 #include <fcppt/string.hpp>
-#include <fcppt/container/enum_array_impl.hpp>
-#include <fcppt/log/level.hpp>
+#include <fcppt/container/enum_array_fwd.hpp>
 
 
 namespace fcppt
 {
-namespace log
-{
-namespace impl
-{
 
-typedef
-fcppt::container::enum_array<
-	fcppt::log::level,
-	fcppt::string
+/**
+\brief Array type for The names of an enum.
+
+\ingroup fcpptenum
+
+\tparam Enum Must be an enum type
+*/
+template<
+	typename Enum
 >
-level_string_array;
+using
+enum_names_array
+=
+fcppt::container::enum_array<
+	Enum,
+	fcppt::string
+>;
 
-}
-}
 }
 
 #endif

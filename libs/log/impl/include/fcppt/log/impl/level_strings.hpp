@@ -7,21 +7,26 @@
 #ifndef FCPPT_LOG_IMPL_LEVEL_STRINGS_HPP_INCLUDED
 #define FCPPT_LOG_IMPL_LEVEL_STRINGS_HPP_INCLUDED
 
-#include <fcppt/log/impl/level_string_array.hpp>
+#include <fcppt/enum_names_array_fwd.hpp>
+#include <fcppt/enum_names_impl_fwd.hpp>
+#include <fcppt/log/level_fwd.hpp>
 
 
 namespace fcppt
 {
-namespace log
-{
-namespace impl
-{
 
-fcppt::log::impl::level_string_array const &
-level_strings();
+template<>
+struct enum_names_impl<
+	fcppt::log::level
+>
+{
+	static
+	fcppt::enum_names_array<
+		fcppt::log::level
+	> const &
+	get();
+};
 
-}
-}
 }
 
 #endif

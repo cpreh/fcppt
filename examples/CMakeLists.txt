@@ -135,7 +135,7 @@ add_fcppt_example(
 add_fcppt_example(
 	enum
 	LINK_LIBS
-		fcppt_core_interface
+		${fcppt_core_TARGET}
 )
 
 add_fcppt_example(

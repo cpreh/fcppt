@@ -4,15 +4,19 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
+#include <fcppt/enum_names_array.hpp>
+#include <fcppt/enum_names_impl_fwd.hpp>
 #include <fcppt/text.hpp>
-#include <fcppt/log/impl/level_string_array.hpp>
+#include <fcppt/log/level.hpp>
 #include <fcppt/log/impl/level_strings.hpp>
 
 
 namespace
 {
 
-fcppt::log::impl::level_string_array const strings{{{
+fcppt::enum_names_array<
+	fcppt::log::level
+> const strings{{{
 	FCPPT_TEXT("verbose"),
 	FCPPT_TEXT("debug"),
 	FCPPT_TEXT("info"),
@@ -23,8 +27,12 @@ fcppt::log::impl::level_string_array const strings{{{
 
 }
 
-fcppt::log::impl::level_string_array const &
-fcppt::log::impl::level_strings()
+fcppt::enum_names_array<
+	fcppt::log::level
+> const &
+fcppt::enum_names_impl<
+	fcppt::log::level
+>::get()
 {
 	return
 		strings;
