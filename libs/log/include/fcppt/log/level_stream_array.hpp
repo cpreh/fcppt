@@ -7,7 +7,7 @@
 #ifndef FCPPT_LOG_LEVEL_STREAM_ARRAY_HPP_INCLUDED
 #define FCPPT_LOG_LEVEL_STREAM_ARRAY_HPP_INCLUDED
 
-#include <fcppt/container/enum_array_impl.hpp>
+#include <fcppt/enum/array_impl.hpp>
 #include <fcppt/log/level.hpp>
 #include <fcppt/log/level_stream.hpp>
 #include <fcppt/log/level_stream_array_fwd.hpp>

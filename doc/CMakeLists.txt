@@ -209,7 +209,6 @@ set(
 	libs/core/include/fcppt/algorithm/detail/source_size.hpp
 	libs/core/include/fcppt/algorithm/detail/tuple_loop_break.hpp
 	libs/core/include/fcppt/algorithm/detail/vararg_map.hpp
-	libs/core/include/fcppt/algorithm/enum_array_init.hpp
 	libs/core/include/fcppt/algorithm/equal.hpp
 	libs/core/include/fcppt/algorithm/equal_range.hpp
 	libs/core/include/fcppt/algorithm/find_by_opt.hpp
@@ -219,7 +218,6 @@ set(
 	libs/core/include/fcppt/algorithm/fold_break.hpp
 	libs/core/include/fcppt/algorithm/generate_n.hpp
 	libs/core/include/fcppt/algorithm/index_of.hpp
-	libs/core/include/fcppt/algorithm/index_of_enum_array.hpp
 	libs/core/include/fcppt/algorithm/join.hpp
 	libs/core/include/fcppt/algorithm/join_strings.hpp
 	libs/core/include/fcppt/algorithm/key_set.hpp
@@ -345,8 +343,6 @@ set(
 	libs/core/include/fcppt/cast/to_void.hpp
 	libs/core/include/fcppt/cast/to_void_ptr.hpp
 	libs/core/include/fcppt/cast/truncation_check.hpp
-	libs/core/include/fcppt/cast_to_enum.hpp
-	libs/core/include/fcppt/cast_to_enum_exn.hpp
 	libs/core/include/fcppt/char_type.hpp
 	libs/core/include/fcppt/check_literal_conversion.hpp
 	libs/core/include/fcppt/com_deleter.hpp
@@ -406,11 +402,6 @@ set(
 	libs/core/include/fcppt/container/dynamic_array_decl.hpp
 	libs/core/include/fcppt/container/dynamic_array_fwd.hpp
 	libs/core/include/fcppt/container/dynamic_array_impl.hpp
-	libs/core/include/fcppt/container/enum_array.hpp
-	libs/core/include/fcppt/container/enum_array_comparison.hpp
-	libs/core/include/fcppt/container/enum_array_decl.hpp
-	libs/core/include/fcppt/container/enum_array_fwd.hpp
-	libs/core/include/fcppt/container/enum_array_impl.hpp
 	libs/core/include/fcppt/container/find_opt.hpp
 	libs/core/include/fcppt/container/find_opt_iterator.hpp
 	libs/core/include/fcppt/container/find_opt_mapped.hpp
@@ -561,7 +552,6 @@ set(
 	libs/core/include/fcppt/detail/check_cpp.hpp
 	libs/core/include/fcppt/detail/const.hpp
 	libs/core/include/fcppt/detail/cyclic_iterator_base.hpp
-	libs/core/include/fcppt/detail/enum_iterator_base.hpp
 	libs/core/include/fcppt/detail/equal.hpp
 	libs/core/include/fcppt/detail/int_iterator_base.hpp
 	libs/core/include/fcppt/detail/main.hpp
@@ -628,32 +618,47 @@ set(
 	libs/core/include/fcppt/endianness/reverse_mem.hpp
 	libs/core/include/fcppt/endianness/size_type.hpp
 	libs/core/include/fcppt/endianness/swap.hpp
-	libs/core/include/fcppt/enum_from_string.hpp
-	libs/core/include/fcppt/enum_from_string_impl.hpp
-	libs/core/include/fcppt/enum_from_string_impl_fwd.hpp
-	libs/core/include/fcppt/enum_input.hpp
-	libs/core/include/fcppt/enum_iterator_decl.hpp
-	libs/core/include/fcppt/enum_iterator_fwd.hpp
-	libs/core/include/fcppt/enum_iterator_impl.hpp
-	libs/core/include/fcppt/enum_max_value.hpp
-	libs/core/include/fcppt/enum_max_value_fwd.hpp
-	libs/core/include/fcppt/enum_min_value.hpp
-	libs/core/include/fcppt/enum_min_value_fwd.hpp
-	libs/core/include/fcppt/enum_names.hpp
-	libs/core/include/fcppt/enum_names_array.hpp
-	libs/core/include/fcppt/enum_names_array_fwd.hpp
-	libs/core/include/fcppt/enum_names_impl_fwd.hpp
-	libs/core/include/fcppt/enum_output.hpp
-	libs/core/include/fcppt/enum_range_decl.hpp
-	libs/core/include/fcppt/enum_range_fwd.hpp
-	libs/core/include/fcppt/enum_range_impl.hpp
-	libs/core/include/fcppt/enum_size.hpp
-	libs/core/include/fcppt/enum_size_fwd.hpp
-	libs/core/include/fcppt/enum_size_type.hpp
-	libs/core/include/fcppt/enum_size_type_fwd.hpp
-	libs/core/include/fcppt/enum_to_string.hpp
-	libs/core/include/fcppt/enum_to_string_impl.hpp
-	libs/core/include/fcppt/enum_to_string_impl_fwd.hpp
+	libs/core/include/fcppt/enum/array.hpp
+	libs/core/include/fcppt/enum/array_comparison.hpp
+	libs/core/include/fcppt/enum/array_decl.hpp
+	libs/core/include/fcppt/enum/array_fwd.hpp
+	libs/core/include/fcppt/enum/array_impl.hpp
+	libs/core/include/fcppt/enum/array_init.hpp
+	libs/core/include/fcppt/enum/detail/iterator_base.hpp
+	libs/core/include/fcppt/enum/from_int.hpp
+	libs/core/include/fcppt/enum/from_int_exn.hpp
+	libs/core/include/fcppt/enum/from_string.hpp
+	libs/core/include/fcppt/enum/from_string_impl.hpp
+	libs/core/include/fcppt/enum/from_string_impl_fwd.hpp
+	libs/core/include/fcppt/enum/index_of_array.hpp
+	libs/core/include/fcppt/enum/input.hpp
+	libs/core/include/fcppt/enum/iterator_decl.hpp
+	libs/core/include/fcppt/enum/iterator_fwd.hpp
+	libs/core/include/fcppt/enum/iterator_impl.hpp
+	libs/core/include/fcppt/enum/make_range.hpp
+	libs/core/include/fcppt/enum/make_range_start.hpp
+	libs/core/include/fcppt/enum/make_range_start_end.hpp
+	libs/core/include/fcppt/enum/max_value.hpp
+	libs/core/include/fcppt/enum/max_value_fwd.hpp
+	libs/core/include/fcppt/enum/min_value.hpp
+	libs/core/include/fcppt/enum/min_value_fwd.hpp
+	libs/core/include/fcppt/enum/names.hpp
+	libs/core/include/fcppt/enum/names_array.hpp
+	libs/core/include/fcppt/enum/names_array_fwd.hpp
+	libs/core/include/fcppt/enum/names_impl_fwd.hpp
+	libs/core/include/fcppt/enum/output.hpp
+	libs/core/include/fcppt/enum/range_decl.hpp
+	libs/core/include/fcppt/enum/range_fwd.hpp
+	libs/core/include/fcppt/enum/range_impl.hpp
+	libs/core/include/fcppt/enum/size.hpp
+	libs/core/include/fcppt/enum/size_fwd.hpp
+	libs/core/include/fcppt/enum/size_type.hpp
+	libs/core/include/fcppt/enum/size_type_impl.hpp
+	libs/core/include/fcppt/enum/size_type_impl_fwd.hpp
+	libs/core/include/fcppt/enum/to_static.hpp
+	libs/core/include/fcppt/enum/to_string.hpp
+	libs/core/include/fcppt/enum/to_string_impl.hpp
+	libs/core/include/fcppt/enum/to_string_impl_fwd.hpp
 	libs/core/include/fcppt/error/strerrno.hpp
 	libs/core/include/fcppt/error/strerror.hpp
 	libs/core/include/fcppt/exception.hpp
@@ -728,9 +733,6 @@ set(
 	libs/core/include/fcppt/main.hpp
 	libs/core/include/fcppt/major_version.hpp
 	libs/core/include/fcppt/make_cref.hpp
-	libs/core/include/fcppt/make_enum_range.hpp
-	libs/core/include/fcppt/make_enum_range_start.hpp
-	libs/core/include/fcppt/make_enum_range_start_end.hpp
 	libs/core/include/fcppt/make_homogenous_pair.hpp
 	libs/core/include/fcppt/make_int_range.hpp
 	libs/core/include/fcppt/make_int_range_count.hpp
@@ -1211,7 +1213,6 @@ set(
 	libs/core/include/fcppt/reference_std_hash.hpp
 	libs/core/include/fcppt/reference_to_base.hpp
 	libs/core/include/fcppt/reference_to_const.hpp
-	libs/core/include/fcppt/runtime_enum.hpp
 	libs/core/include/fcppt/scoped_state_machine.hpp
 	libs/core/include/fcppt/scoped_state_machine_decl.hpp
 	libs/core/include/fcppt/scoped_state_machine_fwd.hpp

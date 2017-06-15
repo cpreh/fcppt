@@ -4,16 +4,16 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/enum_from_string.hpp>
-#include <fcppt/enum_max_value.hpp>
-#include <fcppt/enum_names_array.hpp>
-#include <fcppt/enum_names_impl_fwd.hpp>
-#include <fcppt/enum_to_string.hpp>
-#include <fcppt/make_enum_range.hpp>
 #include <fcppt/string.hpp>
 #include <fcppt/text.hpp>
 #include <fcppt/cast/enum_to_underlying.hpp>
-#include <fcppt/container/enum_array.hpp>
+#include <fcppt/enum/array.hpp>
+#include <fcppt/enum/from_string.hpp>
+#include <fcppt/enum/make_range.hpp>
+#include <fcppt/enum/max_value.hpp>
+#include <fcppt/enum/names_array.hpp>
+#include <fcppt/enum/names_impl_fwd.hpp>
+#include <fcppt/enum/to_string.hpp>
 #include <fcppt/io/cout.hpp>
 #include <fcppt/optional/object_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
@@ -51,7 +51,7 @@ void
 print()
 {
 	print_enum(
-		fcppt::enum_max_value<
+		fcppt::enum_::max_value<
 			myenum
 		>::value
 	);
@@ -66,7 +66,7 @@ iterate()
 	for(
 		myenum const value
 		:
-		fcppt::make_enum_range<
+		fcppt::enum_::make_range<
 			myenum
 		>()
 	)
@@ -81,7 +81,7 @@ enum_array()
 {
 // ![enum_array]
 	typedef
-	fcppt::container::enum_array<
+	fcppt::enum_::array<
 		myenum,
 		bool
 	>
@@ -108,7 +108,7 @@ enum_array()
 namespace
 {
 
-fcppt::enum_names_array<
+fcppt::enum_::names_array<
 	myenum
 > const names{{{
 	FCPPT_TEXT("val1"),
@@ -119,23 +119,26 @@ fcppt::enum_names_array<
 
 namespace fcppt
 {
+namespace enum_
+{
 
 template<>
-struct enum_names_impl<
+struct names_impl<
 	myenum
 >
 {
 	static
-	fcppt::enum_names_array<
+	fcppt::enum_::names_array<
 		myenum
 	> const &
 	get()
 	{
 		return
-			names;
+			::names;
 	}
 };
 
+}
 }
 // ![enum_names]
 
@@ -151,7 +154,7 @@ enum_to_string()
 	};
 
 	fcppt::string const converted{
-		fcppt::enum_to_string(
+		fcppt::enum_::to_string(
 			test
 		)
 	};
@@ -171,7 +174,7 @@ enum_from_string()
 	fcppt::optional::object<
 		myenum
 	> const enum1{
-		fcppt::enum_from_string<
+		fcppt::enum_::from_string<
 			myenum
 		>(
 			FCPPT_TEXT("test")
@@ -182,7 +185,7 @@ enum_from_string()
 	fcppt::optional::object<
 		myenum
 	> const enum2{
-		fcppt::enum_from_string<
+		fcppt::enum_::from_string<
 			myenum
 		>(
 			FCPPT_TEXT("val1")

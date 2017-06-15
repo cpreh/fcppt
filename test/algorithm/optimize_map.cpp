@@ -4,7 +4,6 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/enum_range_impl.hpp>
 #include <fcppt/int_range_impl.hpp>
 #include <fcppt/algorithm/detail/has_reserve.hpp>
 #include <fcppt/algorithm/detail/has_size.hpp>
@@ -13,6 +12,7 @@
 #include <fcppt/container/grid/object.hpp>
 #include <fcppt/container/grid/pos_range.hpp>
 #include <fcppt/container/grid/pos_ref_range.hpp>
+#include <fcppt/enum/range_impl.hpp>
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 #include <fcppt/preprocessor/disable_vc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
@@ -167,7 +167,7 @@ main()
 
 	static_assert(
 		source_optimized<
-			fcppt::enum_range<
+			fcppt::enum_::range<
 				test_enum
 			>
 		>::value,

@@ -7,10 +7,10 @@
 #ifndef FCPPT_CONTAINER_BITFIELD_DETAIL_MAKE_RANGE_HPP_INCLUDED
 #define FCPPT_CONTAINER_BITFIELD_DETAIL_MAKE_RANGE_HPP_INCLUDED
 
-#include <fcppt/enum_range_impl.hpp>
 #include <fcppt/int_range_impl.hpp>
-#include <fcppt/make_enum_range.hpp>
 #include <fcppt/make_int_range_count.hpp>
+#include <fcppt/enum/make_range.hpp>
+#include <fcppt/enum/range_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/utility/enable_if.hpp>
 #include <type_traits>
@@ -36,14 +36,14 @@ boost::enable_if<
 	std::is_enum<
 		Element
 	>,
-	fcppt::enum_range<
+	fcppt::enum_::range<
 		Element
 	>
 >::type
 make_range()
 {
 	return
-		fcppt::make_enum_range<
+		fcppt::enum_::make_range<
 			Element
 		>();
 }

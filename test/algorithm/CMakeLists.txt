@@ -25,10 +25,6 @@ add_fcppt_algorithm_test(
 )
 
 add_fcppt_algorithm_test(
-	enum_array_init
-)
-
-add_fcppt_algorithm_test(
 	equal
 )
 
@@ -58,10 +54,6 @@ add_fcppt_algorithm_test(
 
 add_fcppt_algorithm_test(
 	index_of
-)
-
-add_fcppt_algorithm_test(
-	index_of_enum_array
 )
 
 add_fcppt_algorithm_test(

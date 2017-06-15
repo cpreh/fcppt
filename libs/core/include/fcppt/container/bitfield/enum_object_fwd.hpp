@@ -7,7 +7,7 @@
 #ifndef FCPPT_CONTAINER_BITFIELD_ENUM_OBJECT_FWD_HPP_INCLUDED
 #define FCPPT_CONTAINER_BITFIELD_ENUM_OBJECT_FWD_HPP_INCLUDED
 
-#include <fcppt/enum_size.hpp>
+#include <fcppt/enum/size.hpp>
 #include <fcppt/container/bitfield/default_internal_type.hpp>
 #include <fcppt/container/bitfield/object_fwd.hpp>
 
@@ -37,7 +37,8 @@ using enum_object
 =
 fcppt::container::bitfield::object<
 	Enum,
-	typename fcppt::enum_size<
+	typename
+	fcppt::enum_::size<
 		Enum
 	>::type,
 	InternalType

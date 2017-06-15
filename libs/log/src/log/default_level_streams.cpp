@@ -4,7 +4,7 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/algorithm/enum_array_init.hpp>
+#include <fcppt/enum/array_init.hpp>
 #include <fcppt/log/default_level_streams.hpp>
 #include <fcppt/log/default_stream.hpp>
 #include <fcppt/log/level.hpp>
@@ -18,7 +18,7 @@ fcppt::log::level_stream_array
 fcppt::log::default_level_streams()
 {
 	return
-		fcppt::algorithm::enum_array_init<
+		fcppt::enum_::array_init<
 			fcppt::log::level_stream_array
 		>(
 			[](

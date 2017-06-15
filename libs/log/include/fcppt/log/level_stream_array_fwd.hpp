@@ -7,7 +7,7 @@
 #ifndef FCPPT_LOG_LEVEL_STREAM_ARRAY_FWD_HPP_INCLUDED
 #define FCPPT_LOG_LEVEL_STREAM_ARRAY_FWD_HPP_INCLUDED
 
-#include <fcppt/container/enum_array_fwd.hpp>
+#include <fcppt/enum/array_fwd.hpp>
 #include <fcppt/log/level_fwd.hpp>
 #include <fcppt/log/level_stream_fwd.hpp>
 
@@ -27,7 +27,7 @@ fcppt::log::level \endlink. Each entry corresponds to an enumerator from \link
 fcppt::log::level \endlink.
 */
 typedef
-fcppt::container::enum_array<
+fcppt::enum_::array<
 	fcppt::log::level,
 	fcppt::log::level_stream
 >

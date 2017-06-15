@@ -4,8 +4,8 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/enum_to_string.hpp>
 #include <fcppt/string.hpp>
+#include <fcppt/enum/to_string.hpp>
 #include <fcppt/log/level.hpp>
 #include <fcppt/log/level_strings.hpp>
 #include <fcppt/log/level_to_string.hpp>
@@ -17,7 +17,7 @@ fcppt::log::level_to_string(
 )
 {
 	return
-		fcppt::enum_to_string(
+		fcppt::enum_::to_string(
 			_level
 		);
 }

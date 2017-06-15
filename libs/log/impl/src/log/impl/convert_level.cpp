@@ -5,9 +5,9 @@
 
 
 #include <fcppt/const.hpp>
-#include <fcppt/enum_size.hpp>
 #include <fcppt/cast/enum_to_int.hpp>
 #include <fcppt/cast/size.hpp>
+#include <fcppt/enum/size.hpp>
 #include <fcppt/log/level.hpp>
 #include <fcppt/log/optional_level.hpp>
 #include <fcppt/log/detail/active_level_int.hpp>
@@ -27,7 +27,7 @@ fcppt::log::impl::convert_level(
 				fcppt::cast::size<
 					fcppt::log::detail::active_level_int
 				>(
-					fcppt::enum_size<
+					fcppt::enum_::size<
 						fcppt::log::level
 					>::value
 				)

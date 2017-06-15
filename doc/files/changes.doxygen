@@ -42,10 +42,10 @@
 
 <li>\ref fcpptenum
 	<ul>
-	<li>Added \link fcppt::enum_names\endlink and \link fcppt::enum_names_impl\endlink.
-	<li>Added \link fcppt::enum_from_string\endlink and \link fcppt::enum_from_string_impl\endlink.
-	<li>Added \link fcppt::enum_to_string\endlink and \link fcppt::enum_to_string_impl\endlink.
-	<li>Added \link fcppt::enum_input\endlink and \link fcppt::enum_output\endlink.
+	<li>Added \link fcppt::enum_::names\endlink and \link fcppt::enum_::names_impl\endlink.
+	<li>Added \link fcppt::enum_::from_string\endlink and \link fcppt::enum_::from_string_impl\endlink.
+	<li>Added \link fcppt::enum_::to_string\endlink and \link fcppt::enum_::to_string_impl\endlink.
+	<li>Added \link fcppt::enum_::input\endlink and \link fcppt::enum_::output\endlink.
 	</ul>
 </li>
 
@@ -67,7 +67,7 @@
 <li>\ref fcpptoptions
 	<ul>
 	<li>Output errors from the second argument as well in \link fcppt::options::product\endlink.</li>
-	<li>Added <code>fcppt/options/pretty_type_enum.hpp</code> that outputs all possible enumerators via \link fcppt::enum_names\endlink.</li>
+	<li>Added <code>fcppt/options/pretty_type_enum.hpp</code> that outputs all possible enumerators via \link fcppt::enum_::names\endlink.</li>
 	</ul>
 </li>
 
@@ -109,6 +109,12 @@
 	<li>Moved comparison functions of \link fcppt::container::raw_vector::object\endlink to <code>fcppt/container/raw_vector/comparison.hpp</code>.</li>
 	<li>Redesigned \link fcppt::container::raw_vector::object\endlink. It now only exposes essential functions and is no longer being meant as a replacement for <code>std::vector</code>.</li>
 	</ul>
+</li>
+
+<li>\ref fcpptenum
+	<p>
+	Moved most functionality that is related to contiguous enums to the \link fcppt::enum_\endlink namespace.
+	</p>
 </li>
 
 <li>\ref fcpptfilesystem

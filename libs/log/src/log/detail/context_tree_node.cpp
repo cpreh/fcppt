@@ -4,7 +4,7 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/cast_to_enum.hpp>
+#include <fcppt/enum/from_int.hpp>
 #include <fcppt/log/level.hpp>
 #include <fcppt/log/name.hpp>
 #include <fcppt/log/optional_level.hpp>
@@ -63,7 +63,7 @@ fcppt::log::optional_level
 fcppt::log::detail::context_tree_node::level() const
 {
 	return
-		fcppt::cast_to_enum<
+		fcppt::enum_::from_int<
 			fcppt::log::level
 		>(
 			atomic_level_.load()

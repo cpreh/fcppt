@@ -6,7 +6,7 @@
 
 #include <fcppt/string.hpp>
 #include <fcppt/text.hpp>
-#include <fcppt/algorithm/enum_array_init.hpp>
+#include <fcppt/enum/array_init.hpp>
 #include <fcppt/io/cerr.hpp>
 #include <fcppt/io/cout.hpp>
 #include <fcppt/log/_.hpp>
@@ -67,7 +67,7 @@ main()
 {
 //! [logger_streams]
 	fcppt::log::level_stream_array const level_streams(
-		fcppt::algorithm::enum_array_init<
+		fcppt::enum_::array_init<
 			fcppt::log::level_stream_array
 		>(
 			[](

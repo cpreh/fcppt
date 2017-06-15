@@ -94,12 +94,6 @@ add_subdirectory(
 )
 
 add_fcppt_test(
-	cast_to_enum
-	LINK_LIBS
-		"${fcppt_core_TARGET}"
-)
-
-add_fcppt_test(
 	codecvt
 	LINK_LIBS
 		"${fcppt_core_TARGET}"
@@ -127,12 +121,8 @@ add_fcppt_test(
 		"${fcppt_core_TARGET}"
 )
 
-add_fcppt_test(
-	enum_range
-)
-
-add_fcppt_test(
-	enum_string
+add_subdirectory(
+	enum
 )
 
 add_fcppt_test(
@@ -213,10 +203,6 @@ add_fcppt_test(
 
 add_fcppt_test(
 	reference_to_const
-)
-
-add_fcppt_test(
-	runtime_enum
 )
 
 add_fcppt_test(

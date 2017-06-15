@@ -7,9 +7,9 @@
 #ifndef FCPPT_OPTIONS_PRETTY_TYPE_ENUM_HPP_INCLUDED
 #define FCPPT_OPTIONS_PRETTY_TYPE_ENUM_HPP_INCLUDED
 
-#include <fcppt/enum_names.hpp>
 #include <fcppt/insert_to_fcppt_string.hpp>
 #include <fcppt/container/output.hpp>
+#include <fcppt/enum/names.hpp>
 #include <fcppt/options/pretty_type_impl_fwd.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/utility/enable_if.hpp>
@@ -23,7 +23,7 @@ namespace options
 {
 
 /**
-\brief Specialization for enums that uses \link fcppt::enum_names\endlink.
+\brief Specialization for enums that uses \link fcppt::enum_::names\endlink.
 
 \ingroup fcpptoptions
 */
@@ -47,7 +47,7 @@ struct pretty_type_impl<
 		return
 			fcppt::insert_to_fcppt_string(
 				fcppt::container::output(
-					fcppt::enum_names<
+					fcppt::enum_::names<
 						Enum
 					>()
 				)

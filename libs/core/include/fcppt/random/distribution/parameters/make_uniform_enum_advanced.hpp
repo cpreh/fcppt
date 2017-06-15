@@ -7,8 +7,8 @@
 #ifndef FCPPT_RANDOM_DISTRIBUTION_PARAMETERS_MAKE_UNIFORM_ENUM_ADVANCED_HPP_INCLUDED
 #define FCPPT_RANDOM_DISTRIBUTION_PARAMETERS_MAKE_UNIFORM_ENUM_ADVANCED_HPP_INCLUDED
 
-#include <fcppt/enum_max_value.hpp>
 #include <fcppt/cast/int_to_enum.hpp>
+#include <fcppt/enum/max_value.hpp>
 #include <fcppt/random/distribution/parameters/uniform_int.hpp>
 #include <fcppt/random/distribution/parameters/uniform_int_wrapper.hpp>
 #include <fcppt/type_iso/enum.hpp>
@@ -60,7 +60,7 @@ make_uniform_enum_advanced()
 				)
 			),
 			typename param_type::max(
-				fcppt::enum_max_value<
+				fcppt::enum_::max_value<
 					Enum
 				>::value
 			)

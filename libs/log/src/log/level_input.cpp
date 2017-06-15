@@ -4,7 +4,7 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/enum_input.hpp>
+#include <fcppt/enum/input.hpp>
 #include <fcppt/io/istream_fwd.hpp>
 #include <fcppt/log/level.hpp>
 #include <fcppt/log/level_input.hpp>
@@ -18,7 +18,7 @@ fcppt::log::operator>>(
 )
 {
 	return
-		fcppt::enum_input(
+		fcppt::enum_::input(
 			_stream,
 			_level
 		);

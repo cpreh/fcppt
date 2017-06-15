@@ -7,8 +7,8 @@
 #ifndef FCPPT_MPL_ENUM_RANGE_HPP_INCLUDED
 #define FCPPT_MPL_ENUM_RANGE_HPP_INCLUDED
 
-#include <fcppt/enum_max_value.hpp>
-#include <fcppt/enum_min_value.hpp>
+#include <fcppt/enum/max_value.hpp>
+#include <fcppt/enum/min_value.hpp>
 #include <fcppt/mpl/enum_range_start_end.hpp>
 
 
@@ -29,10 +29,10 @@ using enum_range
 =
 fcppt::mpl::enum_range_start_end<
 	Enum,
-	fcppt::enum_min_value<
+	fcppt::enum_::min_value<
 		Enum
 	>::value,
-	fcppt::enum_max_value<
+	fcppt::enum_::max_value<
 		Enum
 	>::value
 >;

@@ -29,10 +29,6 @@ add_fcppt_container_test(
 )
 
 add_fcppt_container_test(
-	enum_array
-)
-
-add_fcppt_container_test(
 	find_opt
 )
 
