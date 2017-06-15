@@ -734,7 +734,7 @@
 
 <li>\ref fcpptenum
 	<ul>
-	<li>Added \link fcppt::cast_to_enum_exn\endlink.</li>
+	<li>Added <code>%fcppt::cast_to_enum_exn</code>.</li>
 	</ul>
 </li>
 
@@ -798,7 +798,7 @@
 
 <li>\ref fcpptenum
 	<ul>
-	<li>\link fcppt::cast_to_enum\endlink now returns an optional.</li>
+	<li><code>%fcppt::cast_to_enum</code> now returns an optional.</li>
 	</ul>
 </li>
 
@@ -1066,8 +1066,8 @@
 	instead of a bool.</li>
 	<li>Renamed <code>%fcppt::algorithm::array_fold_static</code> to \link
 	fcppt::algorithm::array_init\endlink,
-	<code>%fcppt::algorithm::enum_array_fold_static</code> to \link
-	fcppt::algorithm::enum_array_init\endlink and
+	<code>%fcppt::algorithm::enum_array_fold_static</code> to
+	<code>%fcppt::algorithm::enum_array_init</code> and
 	<code>%fcppt::algorithm::array_init</code> to \link
 	fcppt::algorithm::array_init_const\endlink.</li>
 	</ul>
@@ -1213,8 +1213,8 @@
 
 <li>\ref fcpptenum
 	<ul>
-	<li>Removed <code>%at()</code> and <code>empty()</code> from \link
-	fcppt::container::enum_array\endlink.</li>
+	<li>Removed <code>%at()</code> and <code>empty()</code> from
+	<code>%fcppt::container::enum_array</code>.</li>
 	</ul>
 </li>
 

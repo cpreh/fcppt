@@ -10,8 +10,8 @@
 <li>\ref fcpptalgorithm
 	<ul>
 	<li>Added \link fcppt::algorithm::find_opt\endlink.</li>
-	<li>Added \link fcppt::algorithm::index_of\endlink and \link
-	fcppt::algorithm::index_of_enum_array\endlink.</li>
+	<li>Added \link fcppt::algorithm::index_of\endlink and
+	<code>%fcppt::algorithm::index_of_enum_array</code>.</li>
 	</ul>
 </li>
 
@@ -141,8 +141,8 @@ can be omitted from <code>return</code> statements.</li>
 
 <li>\ref fcpptenum
 	<ul>
-	<lI>Added <code>%size</code> function to \link
-	fcppt::enum_range\endlink.</li>
+	<lI>Added <code>%size</code> function to
+	<code>fcppt::enum_range</code>.</li>
 	</ul>
 </li>
 
