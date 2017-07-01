@@ -38,17 +38,17 @@ FCPPT_PP_POP_WARNING
 	);
 
 	BOOST_CHECK_EQUAL(
-		vec[0],
+		vec.x(),
 		0
 	);
 
 	BOOST_CHECK_EQUAL(
-		vec[1],
+		vec.y(),
 		0
 	);
 
 	BOOST_CHECK_EQUAL(
-		vec[2],
+		vec.z(),
 		1
 	);
 }

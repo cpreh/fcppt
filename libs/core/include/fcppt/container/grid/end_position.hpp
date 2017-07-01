@@ -7,12 +7,13 @@
 #ifndef FCPPT_CONTAINER_GRID_END_POSITION_HPP_INCLUDED
 #define FCPPT_CONTAINER_GRID_END_POSITION_HPP_INCLUDED
 
+#include <fcppt/use.hpp>
 #include <fcppt/container/grid/min.hpp>
 #include <fcppt/container/grid/min_less_sup.hpp>
 #include <fcppt/container/grid/pos.hpp>
 #include <fcppt/container/grid/size_type.hpp>
 #include <fcppt/container/grid/sup.hpp>
-#include <fcppt/math/size_type.hpp>
+#include <fcppt/math/vector/at_c.hpp>
 #include <fcppt/math/vector/init.hpp>
 
 
@@ -66,21 +67,29 @@ end_position(
 					_min,
 					_sup
 				](
-					fcppt::math::size_type const _index
+					auto const _index
 				)
 				{
+					FCPPT_USE(
+						_index
+					);
+
 					return
 						_index
 						<
 						Size - 1
 						?
-							_min.get()[
+							fcppt::math::vector::at_c<
 								_index
-							]
+							>(
+								_min.get()
+							)
 						:
-							_sup.get()[
+							fcppt::math::vector::at_c<
 								_index
-							]
+							>(
+								_sup.get()
+							)
 						;
 				}
 			)

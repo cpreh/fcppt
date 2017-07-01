@@ -4,7 +4,11 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/make_int_range_count.hpp>
+#include <fcppt/tag_type.hpp>
+#include <fcppt/use.hpp>
+#include <fcppt/algorithm/loop.hpp>
+#include <fcppt/math/int_range_count.hpp>
+#include <fcppt/math/matrix/at_c.hpp>
 #include <fcppt/math/matrix/arithmetic.hpp>
 #include <fcppt/math/matrix/identity.hpp>
 #include <fcppt/math/matrix/output.hpp>
@@ -80,14 +84,38 @@ row_iterate()
 	);
 
 	// Will output: (1,0,0),(0,1,0),(0,0,1),
-	for(
-		auto const row
-		:
-		fcppt::make_int_range_count(
+	fcppt::algorithm::loop(
+		fcppt::math::int_range_count<
 			m.rows()
+		>{},
+		[
+			&m
+		](
+			auto const _row
 		)
-	)
-		std::cout << m[row] << ",";
+		{
+			FCPPT_USE(
+				_row
+			);
+
+			typedef
+			fcppt::tag_type<
+				decltype(
+					_row
+				)
+			>
+			row;
+
+			std::cout
+				<<
+				fcppt::math::matrix::at_c<
+					row::value
+				>(
+					m
+				)
+				<< ",";
+		}
+	);
 }
 // ![row_iterate]
 

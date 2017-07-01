@@ -8,10 +8,6 @@ function(
 	)
 endfunction()
 
-add_fcppt_math_test(
-	at_c
-)
-
 add_subdirectory(
 	box
 )

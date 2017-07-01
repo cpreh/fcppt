@@ -4,6 +4,7 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
+#include <fcppt/math/matrix/at_c.hpp>
 #include <fcppt/math/matrix/row.hpp>
 #include <fcppt/math/matrix/static.hpp>
 #include <fcppt/math/vector/comparison.hpp>
@@ -45,7 +46,7 @@ FCPPT_PP_POP_WARNING
 	>
 	vector_type;
 
-	matrix_type const t(
+	matrix_type const matrix(
 		fcppt::math::matrix::row(
 			-3, 2, -5
 		),
@@ -58,7 +59,11 @@ FCPPT_PP_POP_WARNING
 	);
 
 	BOOST_CHECK_EQUAL(
-		t[0],
+		fcppt::math::matrix::at_c<
+			0
+		>(
+			matrix
+		),
 		vector_type(
 			-3,
 			2,
@@ -67,10 +72,19 @@ FCPPT_PP_POP_WARNING
 	);
 
 	vector_type vec(
-		t[0]
+		fcppt::math::matrix::at_c<
+			0
+		>(
+			matrix
+		)
 	);
 
-	vec = t[1];
+	vec =
+		fcppt::math::matrix::at_c<
+			1
+		>(
+			matrix
+		);
 
 	BOOST_CHECK_EQUAL(
 		vec,

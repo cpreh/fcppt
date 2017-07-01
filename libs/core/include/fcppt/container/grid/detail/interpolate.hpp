@@ -9,6 +9,7 @@
 
 #include <fcppt/literal.hpp>
 #include <fcppt/cast/size.hpp>
+#include <fcppt/math/vector/at_c.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <cstddef>
 #include <type_traits>
@@ -47,9 +48,7 @@ interpolate(
 {
 	return
 		interpolator(
-			p[
-				0
-			],
+			p.x(),
 			grid.get_unsafe(
 				indices[
 					value_index
@@ -94,7 +93,7 @@ interpolate(
 	IndexSequence::size_type
 	index_sequence_size_type;
 
-	std::size_t const next_n(
+	constexpr std::size_t const next_n(
 		N
 		-
 		fcppt::literal<
@@ -106,13 +105,15 @@ interpolate(
 
 	return
 		interpolator(
-			p[
+			fcppt::math::vector::at_c<
 				fcppt::cast::size<
 					float_vector_size_type
 				>(
 					next_n
 				)
-			],
+			>(
+				p
+			),
 			fcppt::container::grid::detail::interpolate<
 				next_n
 			>(

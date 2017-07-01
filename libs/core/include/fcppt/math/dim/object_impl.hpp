@@ -299,7 +299,7 @@ fcppt::math::dim::object<
 	T,
 	N,
 	S
->::operator[](
+>::get_unsafe(
 	size_type const _index
 )
 {
@@ -324,7 +324,7 @@ fcppt::math::dim::object<
 	T,
 	N,
 	S
->::operator[](
+>::get_unsafe(
 	size_type const _index
 ) const
 {

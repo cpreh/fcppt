@@ -4,8 +4,8 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/math/at_c.hpp>
-#include <fcppt/math/dim/static.hpp>
+#include <fcppt/math/vector/at_c.hpp>
+#include <fcppt/math/vector/static.hpp>
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
@@ -15,57 +15,57 @@
 
 
 BOOST_AUTO_TEST_CASE(
-	math_at_c
+	math_vector_at_c
 )
 {
 	typedef
-	fcppt::math::dim::static_<
+	fcppt::math::vector::static_<
 		int,
 		2
 	>
-	dim2;
+	vector2;
 
-	dim2 const dim_c(
+	vector2 const vector_c(
 		1,
 		2
 	);
 
 	BOOST_CHECK_EQUAL(
-		fcppt::math::at_c<
+		fcppt::math::vector::at_c<
 			0
 		>(
-			dim_c
+			vector_c
 		),
 		1
 	);
 
 	BOOST_CHECK_EQUAL(
-		fcppt::math::at_c<
+		fcppt::math::vector::at_c<
 			1
 		>(
-			dim_c
+			vector_c
 		),
 		2
 	);
 
 
-	dim2 dim_m(
+	vector2 vector_m(
 		1,
 		2
 	);
 
-	fcppt::math::at_c<
+	fcppt::math::vector::at_c<
 		1
 	>(
-		dim_m
+		vector_m
 	) =
 		42;
 
 	BOOST_CHECK_EQUAL(
-		fcppt::math::at_c<
+		fcppt::math::vector::at_c<
 			1
 		>(
-			dim_m
+			vector_m
 		),
 		42
 	);

@@ -386,17 +386,17 @@ FCPPT_PP_POP_WARNING
 		2u
 	);
 
-	vec[0] = 1u;
+	vec.x() = 1u;
 
-	vec[1] = 2u;
+	vec.y() = 2u;
 
 	BOOST_CHECK_EQUAL(
-		vec[0],
+		vec.x(),
 		1u
 	);
 
 	BOOST_CHECK_EQUAL(
-		vec[1],
+		vec.y(),
 		2u
 	);
 
@@ -405,12 +405,12 @@ FCPPT_PP_POP_WARNING
 	);
 
 	BOOST_CHECK_EQUAL(
-		copy[0],
+		copy.x(),
 		1u
 	);
 
 	BOOST_CHECK_EQUAL(
-		copy[1],
+		copy.y(),
 		2u
 	);
 }

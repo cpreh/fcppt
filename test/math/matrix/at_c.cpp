@@ -5,10 +5,10 @@
 
 
 #include <fcppt/math/matrix/at_c.hpp>
-#include <fcppt/math/matrix/index.hpp>
 #include <fcppt/math/matrix/object.hpp>
 #include <fcppt/math/matrix/row.hpp>
 #include <fcppt/math/matrix/static.hpp>
+#include <fcppt/math/vector/at_c.hpp>
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
@@ -21,7 +21,7 @@ FCPPT_PP_PUSH_WARNING
 FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
 
 BOOST_AUTO_TEST_CASE(
-	math_matrix_at_ac
+	math_matrix_at_c
 )
 {
 FCPPT_PP_POP_WARNING
@@ -44,45 +44,53 @@ FCPPT_PP_POP_WARNING
 	);
 
 	BOOST_CHECK_EQUAL(
-		fcppt::math::matrix::at_c(
-			mat,
-			fcppt::math::matrix::index<
-				0,
+		fcppt::math::vector::at_c<
+			0
+		>(
+			fcppt::math::matrix::at_c(
 				0
-			>()
+			>(
+				mat
+			)
 		),
 		-3
 	);
 
 	BOOST_CHECK_EQUAL(
-		fcppt::math::matrix::at_c(
-			mat,
-			fcppt::math::matrix::index<
-				0,
-				1
-			>()
+		fcppt::math::vector::at_c<
+			1
+		>(
+			fcppt::math::matrix::at_c(
+				0
+			>(
+				mat
+			)
 		),
 		2
 	);
 
 	BOOST_CHECK_EQUAL(
-		fcppt::math::matrix::at_c(
-			mat,
-			fcppt::math::matrix::index<
-				1,
-				0
-			>()
+		fcppt::math::vector::at_c<
+			0
+		>(
+			fcppt::math::matrix::at_c(
+				1
+			>(
+				mat
+			)
 		),
 		-1
 	);
 
 	BOOST_CHECK_EQUAL(
-		fcppt::math::matrix::at_c(
-			mat,
-			fcppt::math::matrix::index<
-				1,
+		fcppt::math::vector::at_c<
+			1
+		>(
+			fcppt::math::matrix::at_c(
 				1
-			>()
+			>(
+				mat
+			)
 		),
 		0
 	);

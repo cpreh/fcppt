@@ -10,12 +10,12 @@
 
 #include <fcppt/make_homogenous_pair.hpp>
 #include <fcppt/use.hpp>
-#include <fcppt/math/at_c.hpp>
 #include <fcppt/math/size_type.hpp>
 #include <fcppt/math/box/init_max.hpp>
 #include <fcppt/math/box/intersects.hpp>
 #include <fcppt/math/box/null.hpp>
 #include <fcppt/math/box/object_impl.hpp>
+#include <fcppt/math/vector/at_c.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <algorithm>
 #include <fcppt/config/external_end.hpp>
@@ -84,24 +84,24 @@ intersection(
 					return
 						fcppt::make_homogenous_pair(
 							std::max(
-								fcppt::math::at_c<
+								fcppt::math::vector::at_c<
 									_index()
 								>(
 									_a.pos()
 								),
-								fcppt::math::at_c<
+								fcppt::math::vector::at_c<
 									_index()
 								>(
 									_b.pos()
 								)
 							),
 							std::min(
-								fcppt::math::at_c<
+								fcppt::math::vector::at_c<
 									_index()
 								>(
 									_a.max()
 								),
-								fcppt::math::at_c<
+								fcppt::math::vector::at_c<
 									_index()
 								>(
 									_b.max()

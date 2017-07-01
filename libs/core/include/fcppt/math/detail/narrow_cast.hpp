@@ -7,6 +7,8 @@
 #ifndef FCPPT_MATH_DETAIL_NARROW_CAST_HPP_INCLUDED
 #define FCPPT_MATH_DETAIL_NARROW_CAST_HPP_INCLUDED
 
+#include <fcppt/use.hpp>
+#include <fcppt/math/detail/checked_access.hpp>
 #include <fcppt/math/detail/init.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/mpl/less.hpp>
@@ -54,13 +56,19 @@ narrow_cast(
 			[
 				&_other
 			](
-				typename T::size_type const _index
+				auto const _index
 			)
 			{
+				FCPPT_USE(
+					_index
+				);
+
 				return
-					_other[
+					fcppt::math::detail::checked_access<
 						_index
-					];
+					>(
+						_other
+					);
 			}
 		);
 }

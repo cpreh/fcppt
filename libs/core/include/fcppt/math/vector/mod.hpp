@@ -7,8 +7,10 @@
 #ifndef FCPPT_MATH_VECTOR_MOD_HPP_INCLUDED
 #define FCPPT_MATH_VECTOR_MOD_HPP_INCLUDED
 
+#include <fcppt/use.hpp>
 #include <fcppt/math/mod.hpp>
 #include <fcppt/math/size_type.hpp>
+#include <fcppt/math/vector/at_c.hpp>
 #include <fcppt/math/vector/init.hpp>
 #include <fcppt/math/vector/object_impl.hpp>
 #include <fcppt/math/vector/static.hpp>
@@ -59,15 +61,20 @@ mod(
 				&_arg,
 				_div
 			](
-				typename
-				result_type::size_type const _index
+				auto const _index
 			)
 			{
+				FCPPT_USE(
+					_index
+				);
+
 				return
 					fcppt::math::mod(
-						_arg[
+						fcppt::math::vector::at_c<
 							_index
-						],
+						>(
+							_arg
+						),
 						_div
 					);
 			}
@@ -117,18 +124,25 @@ mod(
 				&_v0,
 				&_v1
 			](
-				typename
-				result_type::size_type const _index
+				auto const _index
 			)
 			{
+				FCPPT_USE(
+					_index
+				);
+
 				return
 					fcppt::math::mod(
-						_v0[
+						fcppt::math::vector::at_c<
 							_index
-						],
-						_v1[
+						>(
+							_v0
+						),
+						fcppt::math::vector::at_c<
 							_index
-						]
+						>(
+							_index
+						)
 					);
 			}
 		);

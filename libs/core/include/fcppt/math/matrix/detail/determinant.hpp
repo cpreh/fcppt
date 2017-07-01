@@ -13,8 +13,8 @@
 #include <fcppt/algorithm/fold.hpp>
 #include <fcppt/math/int_range_count.hpp>
 #include <fcppt/math/size_type.hpp>
-#include <fcppt/math/matrix/at_c.hpp>
-#include <fcppt/math/matrix/delete_row_and_column_static.hpp>
+#include <fcppt/math/matrix/at_index_c.hpp>
+#include <fcppt/math/matrix/delete_row_and_column.hpp>
 #include <fcppt/math/matrix/has_dim.hpp>
 #include <fcppt/math/matrix/index.hpp>
 #include <fcppt/math/matrix/object_impl.hpp>
@@ -45,7 +45,7 @@ determinant(
 )
 {
 	return
-		fcppt::math::matrix::at_c(
+		fcppt::math::matrix::at_index_c(
 			_matrix,
 			fcppt::math::matrix::index<
 				0,
@@ -149,13 +149,13 @@ determinant(
 					+
 					coeff
 					*
-					fcppt::math::matrix::at_c(
+					fcppt::math::matrix::at_index_c(
 						_matrix,
 						index
 					)
 					*
 					fcppt::math::matrix::detail::determinant(
-						fcppt::math::matrix::delete_row_and_column_static(
+						fcppt::math::matrix::delete_row_and_column(
 							_matrix,
 							index
 						)

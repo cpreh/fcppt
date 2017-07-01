@@ -9,9 +9,9 @@
 
 #include <fcppt/homogenous_pair.hpp>
 #include <fcppt/make_homogenous_pair.hpp>
-#include <fcppt/math/at_c.hpp>
 #include <fcppt/math/size_type.hpp>
 #include <fcppt/math/box/object_impl.hpp>
+#include <fcppt/math/vector/at_c.hpp>
 
 
 namespace fcppt
@@ -44,12 +44,12 @@ interval(
 {
 	return
 		fcppt::make_homogenous_pair(
-			fcppt::math::at_c<
+			fcppt::math::vector::at_c<
 				Index
 			>(
 				_box.pos()
 			),
-			fcppt::math::at_c<
+			fcppt::math::vector::at_c<
 				Index
 			>(
 				_box.max()

@@ -11,7 +11,8 @@
 #include <fcppt/container/grid/pos.hpp>
 #include <fcppt/container/grid/size_type.hpp>
 #include <fcppt/container/grid/sup.hpp>
-#include <fcppt/math/size_type.hpp>
+#include <fcppt/math/dim/at_c.hpp>
+#include <fcppt/math/vector/at_c.hpp>
 #include <fcppt/math/vector/init.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <algorithm>
@@ -72,17 +73,25 @@ clamped_sup(
 					&_pos,
 					&_size
 				](
-					fcppt::math::size_type const _index
+					auto const _index
 				)
 				{
+					FCPPT_USE(
+						_index
+					);
+
 					return
 						std::min(
-							_pos[
+							fcppt::math::vector::at_c<
 								_index
-							],
-							_size[
+							>(
+								_pos
+							),
+							fcppt::math::dim::at_c<
 								_index
-							]
+							>(
+								_size
+							)
 						);
 				}
 			)

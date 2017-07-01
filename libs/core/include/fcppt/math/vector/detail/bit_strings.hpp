@@ -9,6 +9,7 @@
 
 #include <fcppt/literal.hpp>
 #include <fcppt/math/size_type.hpp>
+#include <fcppt/math/vector/at_c.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
@@ -35,18 +36,38 @@ std::enable_if<
 >::type
 bit_strings(
 	ForwardIterator &it,
-	Vector v)
+	Vector _vector
+)
 {
-	v[N] =
-		fcppt::literal<typename Vector::value_type>(
-			0);
+	fcppt::math::vector::at_c<
+		N
+	>(
+		_vector
+	) =
+		fcppt::literal<
+			typename
+			Vector::value_type
+		>(
+			0
+		);
+
 	*it++ =
-		v;
-	v[N] =
-		fcppt::literal<typename Vector::value_type>(
-			1);
+		_vector;
+
+	fcppt::math::vector::at_c<
+		N
+	>(
+		_vector
+	) =
+		fcppt::literal<
+			typename
+			Vector::value_type
+		>(
+			1
+		);
+
 	*it++ =
-		v;
+		_vector;
 }
 
 template<
@@ -61,29 +82,49 @@ std::enable_if<
 >::type
 bit_strings(
 	ForwardIterator &it,
-	Vector v
+	Vector _vector
 )
 {
-	v[N] =
-		fcppt::literal<typename Vector::value_type>(
-			0);
+	fcppt::math::vector::at_c<
+		N
+	>(
+		_vector
+	) =
+		fcppt::literal<
+			typename
+			Vector::value_type
+		>(
+			0
+		);
 
 	fcppt::math::vector::detail::bit_strings<
-		N - fcppt::literal<fcppt::math::size_type>(1)
+		N
+		-
+		1u
 	>(
 		it,
-		v
+		_vector
 	);
 
-	v[N] =
-		fcppt::literal<typename Vector::value_type>(
-			1);
+	fcppt::math::vector::at_c<
+		N
+	>(
+		_vector
+	) =
+		fcppt::literal<
+			typename
+			Vector::value_type
+		>(
+			1
+		);
 
 	fcppt::math::vector::detail::bit_strings<
-		N - fcppt::literal<fcppt::math::size_type>(1)
+		N
+		-
+		1u
 	>(
 		it,
-		v
+		_vector
 	);
 }
 

@@ -131,6 +131,32 @@
 	</ul>
 </li>
 
+<li>\ref fcpptmath
+	<ul>
+	<li>Split <code>fcppt::math::at_c</code> into \link fcppt::math::vector::at_c\endlink, \link fcppt::math::dim::at_c\endlink and \link fcppt::math::matrix::at_c\endlink.</li>
+	</ul>
+</li>
+
+<li>\ref fcpptmathdim
+	<ul>
+	<li>Renamed <code>operator[]</code> of \link fcppt::math::dim::object\endlink to \link fcppt::math::dim::object::get_unsafe\endlink.</li>
+	</ul>
+</li>
+
+<li>\ref fcpptmathmatrix
+	<ul>
+	<li>Renamed <code>operator[]</code> of \link fcppt::math::matrix::object\endlink to \link fcppt::math::matrix::object::get_unsafe\endlink.</li>
+	<li>Renamed <code>fcppt::math::matrix::at_c</code> to \link fcppt::math::matrix::at_index_c\endlink.</li>
+	<li>Renamed <code>fcppt::math::matrix::delete_row_and_column_static</code> to \link fcppt::math::matrix::delete_row_and_column\endlink.</li>
+	</ul>
+</li>
+
+<li>\ref fcpptmathvector
+	<ul>
+	<li>Renamed <code>operator[]</code> of \link fcppt::math::vector::object\endlink to \link fcppt::math::vector::object::get_unsafe\endlink.</li>
+	</ul>
+</li>
+
 <li>\ref fcpptoptions
 	<ul>
 	<li>Renamed <code>fcppt::options::custom_pretty_type</code> to \link fcppt::options::pretty_type_impl\endlink.</li>
@@ -171,6 +197,10 @@
 	</ul>
 </li>
 
+<li>\ref fcpptmathmatrix
+	<ul>
+	<li>Removed the dynamic version of <code>fcppt::math::matrix::delete_row_and_column</code>.</li>
+	</ul>
 </ul>
 
 \subsection changes_bugfixes_to_260 Bugfixes
@@ -999,8 +1029,8 @@
 	<ul>
 	<li>Added \link fcppt::math::matrix::init\endlink.</li>
 	<li>Added \link fcppt::math::matrix::at_c\endlink.</li>
-	<li>Added \link
-	fcppt::math::matrix::delete_row_and_column_static\endlink.</li>
+	<li>Added <code>
+	fcppt::math::matrix::delete_row_and_column_static</code>.</li>
 	</ul>
 </li>
 

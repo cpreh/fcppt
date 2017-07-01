@@ -10,9 +10,9 @@
 #include <fcppt/cast/size.hpp>
 #include <fcppt/container/grid/map.hpp>
 #include <fcppt/container/grid/object.hpp>
-#include <fcppt/math/at_c.hpp>
 #include <fcppt/math/dim/comparison.hpp>
 #include <fcppt/math/dim/output.hpp>
+#include <fcppt/math/vector/at_c.hpp>
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
@@ -59,13 +59,13 @@ FCPPT_PP_POP_WARNING
 				fcppt::cast::size<
 					unsigned
 				>(
-					fcppt::math::at_c<
+					fcppt::math::vector::at_c<
 						0
 					>(
 						_pos
 					)
 					+
-					fcppt::math::at_c<
+					fcppt::math::vector::at_c<
 						1
 					>(
 						_pos
@@ -172,13 +172,13 @@ FCPPT_PP_POP_WARNING
 							fcppt::cast::size<
 								unsigned
 							>(
-								fcppt::math::at_c<
+								fcppt::math::vector::at_c<
 									0
 								>(
 									_pos
 								)
 								+
-								fcppt::math::at_c<
+								fcppt::math::vector::at_c<
 									1
 								>(
 									_pos

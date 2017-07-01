@@ -11,10 +11,10 @@
 #include <fcppt/tag_type.hpp>
 #include <fcppt/use.hpp>
 #include <fcppt/algorithm/all_of.hpp>
-#include <fcppt/math/at_c.hpp>
 #include <fcppt/math/int_range_count.hpp>
 #include <fcppt/math/size_type.hpp>
 #include <fcppt/math/box/object_impl.hpp>
+#include <fcppt/math/vector/at_c.hpp>
 
 
 namespace fcppt
@@ -75,25 +75,25 @@ contains(
 				index;
 
 				return
-					fcppt::math::at_c<
+					fcppt::math::vector::at_c<
 						index::value
 					>(
 						_inner.pos()
 					)
 					>=
-					fcppt::math::at_c<
+					fcppt::math::vector::at_c<
 						index::value
 					>(
 						_outer.pos()
 					)
 					&&
-					fcppt::math::at_c<
+					fcppt::math::vector::at_c<
 						index::value
 					>(
 						_inner.max()
 					)
 					<=
-					fcppt::math::at_c<
+					fcppt::math::vector::at_c<
 						index::value
 					>(
 						_outer.max()

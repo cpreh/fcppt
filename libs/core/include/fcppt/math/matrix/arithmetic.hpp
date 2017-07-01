@@ -16,7 +16,7 @@
 #include <fcppt/math/detail/binary_map.hpp>
 #include <fcppt/math/detail/binary_type.hpp>
 #include <fcppt/math/detail/map.hpp>
-#include <fcppt/math/matrix/at_c.hpp>
+#include <fcppt/math/matrix/at_index_c.hpp>
 #include <fcppt/math/matrix/index.hpp>
 #include <fcppt/math/matrix/init.hpp>
 #include <fcppt/math/matrix/object_impl.hpp>
@@ -191,7 +191,7 @@ operator *(
 							return
 								_sum
 								+
-								fcppt::math::matrix::at_c(
+								fcppt::math::matrix::at_index_c(
 									_left,
 									fcppt::math::matrix::index<
 										_index.row,
@@ -199,7 +199,7 @@ operator *(
 									>{}
 								)
 								*
-								fcppt::math::matrix::at_c(
+								fcppt::math::matrix::at_index_c(
 									_right,
 									fcppt::math::matrix::index<
 										pos::value,

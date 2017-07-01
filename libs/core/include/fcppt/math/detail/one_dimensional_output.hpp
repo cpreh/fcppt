@@ -10,8 +10,8 @@
 #include <fcppt/tag_type.hpp>
 #include <fcppt/use.hpp>
 #include <fcppt/algorithm/loop.hpp>
-#include <fcppt/math/at_c.hpp>
 #include <fcppt/math/int_range_count.hpp>
+#include <fcppt/math/detail/checked_access.hpp>
 #include <fcppt/math/detail/if_not_last_index.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <ostream>
@@ -70,7 +70,7 @@ one_dimensional_output(
 
 			_stream
 				<<
-				fcppt::math::at_c<
+				fcppt::math::detail::checked_access<
 					index::value
 				>(
 					_value

@@ -1,5 +1,4 @@
 //          Copyright Carl Philipp Reh 2009 - 2017.
-//          Copyright Philipp Middendorf 2009 - 2017.
 // Distributed under the Boost Software License, Version 1.0.
 //    (See accompanying file LICENSE_1_0.txt or copy at
 //          http://www.boost.org/LICENSE_1_0.txt)
@@ -10,6 +9,8 @@
 
 #include <fcppt/use.hpp>
 #include <fcppt/math/size_type.hpp>
+#include <fcppt/math/matrix/at_index_c.hpp>
+#include <fcppt/math/matrix/index.hpp>
 #include <fcppt/math/matrix/init.hpp>
 #include <fcppt/math/matrix/object_impl.hpp>
 #include <fcppt/math/matrix/static.hpp>
@@ -34,7 +35,9 @@ template<
 	typename T,
 	fcppt::math::size_type R,
 	fcppt::math::size_type C,
-	typename S
+	typename S,
+	fcppt::math::size_type Row,
+	fcppt::math::size_type Column
 >
 fcppt::math::matrix::static_<
 	T,
@@ -52,8 +55,10 @@ delete_row_and_column(
 		C,
 		S
 	> const &_matrix,
-	fcppt::math::size_type const _row,
-	fcppt::math::size_type const _column
+	fcppt::math::matrix::index<
+		Row,
+		Column
+	>
 )
 {
 	typedef
@@ -73,9 +78,7 @@ delete_row_and_column(
 			result_type
 		>(
 			[
-				&_matrix,
-				_row,
-				_column
+				&_matrix
 			](
 				auto const _index
 			)
@@ -85,17 +88,19 @@ delete_row_and_column(
 				);
 
 				return
-					_matrix[
-						fcppt::math::matrix::detail::deleted_index(
-							_index.row,
-							_row
-						)
-					][
-						fcppt::math::matrix::detail::deleted_index(
-							_index.column,
-							_column
-						)
-					];
+					fcppt::math::matrix::at_index_c(
+						_matrix,
+						fcppt::math::matrix::index<
+							fcppt::math::matrix::detail::deleted_index(
+								_index.row,
+								Row
+							),
+							fcppt::math::matrix::detail::deleted_index(
+								_index.column,
+								Column
+							)
+						>{}
+					);
 			}
 		);
 }

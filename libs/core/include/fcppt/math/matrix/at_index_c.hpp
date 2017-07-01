@@ -4,13 +4,15 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_MATH_MATRIX_AT_C_HPP_INCLUDED
-#define FCPPT_MATH_MATRIX_AT_C_HPP_INCLUDED
+#ifndef FCPPT_MATH_MATRIX_AT_INDEX_C_HPP_INCLUDED
+#define FCPPT_MATH_MATRIX_AT_INDEX_C_HPP_INCLUDED
 
 #include <fcppt/container/to_reference_type.hpp>
 #include <fcppt/math/size_type.hpp>
-#include <fcppt/math/detail/checked_access.hpp>
+#include <fcppt/math/matrix/at_c.hpp>
+#include <fcppt/math/matrix/index.hpp>
 #include <fcppt/math/matrix/is_matrix.hpp>
+#include <fcppt/math/vector/at_c.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
@@ -24,25 +26,32 @@ namespace matrix
 {
 
 /**
-\brief Access an element using a compile-time constant
+\brief Access an element using a compile-time constant for both coordinates
 
 \ingroup fcpptmathmatrix
 
 \tparam Matrix Must be an \link fcppt::math::matrix::object\endlink.
 */
 template<
-	fcppt::math::size_type Index,
-	typename Matrix
+	typename Matrix,
+	fcppt::math::size_type R,
+	fcppt::math::size_type C
 >
 inline
 fcppt::container::to_reference_type<
-	typename
-	std::remove_reference<
-		Matrix
-	>::type
+	fcppt::container::to_reference_type<
+		typename
+		std::remove_reference<
+			Matrix
+		>::type
+	>
 >
-at_c(
-	Matrix &_value
+at_index_c(
+	Matrix &_value,
+	fcppt::math::matrix::index<
+		R,
+		C
+	>
 )
 {
 	static_assert(
@@ -55,11 +64,19 @@ at_c(
 		"Matrix must be a matrix"
 	);
 
-	return
-		fcppt::math::detail::checked_access<
-			Index
+	auto const view(
+		fcppt::math::matrix::at_c<
+			R
 		>(
 			_value
+		)
+	);
+
+	return
+		fcppt::math::vector::at_c<
+			C
+		>(
+			view
 		);
 }
 

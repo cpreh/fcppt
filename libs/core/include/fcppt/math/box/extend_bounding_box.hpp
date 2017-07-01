@@ -10,10 +10,10 @@
 
 #include <fcppt/make_homogenous_pair.hpp>
 #include <fcppt/use.hpp>
-#include <fcppt/math/at_c.hpp>
 #include <fcppt/math/size_type.hpp>
 #include <fcppt/math/box/init_max.hpp>
 #include <fcppt/math/box/object_impl.hpp>
+#include <fcppt/math/vector/at_c.hpp>
 #include <fcppt/preprocessor/const.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <algorithm>
@@ -76,24 +76,24 @@ extend_bounding_box(
 				return
 					fcppt::make_homogenous_pair(
 						std::min(
-							fcppt::math::at_c<
+							fcppt::math::vector::at_c<
 								_index()
 							>(
 								_pos
 							),
-							fcppt::math::at_c<
+							fcppt::math::vector::at_c<
 								_index()
 							>(
 								_box.pos()
 							)
 						),
 						std::max(
-							fcppt::math::at_c<
+							fcppt::math::vector::at_c<
 								_index()
 							>(
 								_pos
 							),
-							fcppt::math::at_c<
+							fcppt::math::vector::at_c<
 								_index()
 							>(
 								_box.max()
@@ -149,24 +149,24 @@ extend_bounding_box(
 				return
 					fcppt::make_homogenous_pair(
 						std::min(
-							fcppt::math::at_c<
+							fcppt::math::vector::at_c<
 								_index()
 							>(
 								_box1.pos()
 							),
-							fcppt::math::at_c<
+							fcppt::math::vector::at_c<
 								_index()
 							>(
 								_box2.pos()
 							)
 						),
 						std::max(
-							fcppt::math::at_c<
+							fcppt::math::vector::at_c<
 								_index()
 							>(
 								_box1.max()
 							),
-							fcppt::math::at_c<
+							fcppt::math::vector::at_c<
 								_index()
 							>(
 								_box2.max()

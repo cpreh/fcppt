@@ -4,6 +4,8 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
+#include <fcppt/math/matrix/at_index_c.hpp>
+#include <fcppt/math/matrix/index.hpp>
 #include <fcppt/math/matrix/object.hpp>
 #include <fcppt/math/matrix/row.hpp>
 #include <fcppt/math/matrix/static.hpp>
@@ -19,7 +21,7 @@ FCPPT_PP_PUSH_WARNING
 FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
 
 BOOST_AUTO_TEST_CASE(
-	math_matrix_access
+	math_matrix_at_index_c
 )
 {
 FCPPT_PP_POP_WARNING
@@ -42,22 +44,46 @@ FCPPT_PP_POP_WARNING
 	);
 
 	BOOST_CHECK_EQUAL(
-		mat[0][0],
+		fcppt::math::matrix::at_index_c(
+			mat,
+			fcppt::math::matrix::index<
+				0,
+				0
+			>()
+		),
 		-3
 	);
 
 	BOOST_CHECK_EQUAL(
-		mat[0][1],
+		fcppt::math::matrix::at_index_c(
+			mat,
+			fcppt::math::matrix::index<
+				0,
+				1
+			>()
+		),
 		2
 	);
 
 	BOOST_CHECK_EQUAL(
-		mat[1][0],
+		fcppt::math::matrix::at_index_c(
+			mat,
+			fcppt::math::matrix::index<
+				1,
+				0
+			>()
+		),
 		-1
 	);
 
 	BOOST_CHECK_EQUAL(
-		mat[1][1],
+		fcppt::math::matrix::at_index_c(
+			mat,
+			fcppt::math::matrix::index<
+				1,
+				1
+			>()
+		),
 		0
 	);
 }

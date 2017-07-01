@@ -344,7 +344,7 @@ fcppt::math::matrix::object<
 	R,
 	C,
 	S
->::operator[](
+>::get_unsafe(
 	size_type const _j
 )
 {
@@ -377,7 +377,7 @@ fcppt::math::matrix::object<
 	R,
 	C,
 	S
->::operator[](
+>::get_unsafe(
 	size_type const _j
 ) const
 {

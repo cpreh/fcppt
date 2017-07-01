@@ -148,7 +148,7 @@ can be omitted from <code>return</code> statements.</li>
 
 <li>\ref fcpptmath
 	<ul>
-	<li>Added \link fcppt::math::at_c \endlink that accesses a container
+	<li>Added <code>fcppt::math::at_c</code> that accesses a container
 	using an integral constant as index.</li>
 	<li>Added \link fcppt::math::interval_distance\endlink.</li>
 	<li>Added \link fcppt::math::box::distance\endlink.</li>

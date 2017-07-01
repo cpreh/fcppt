@@ -214,7 +214,7 @@ FCPPT_MATH_DETAIL_MAKE_OP_DECL(\
 	Behaviour is undefined if the index is out of range.
 	*/
 	reference
-	operator[](
+	get_unsafe(
 		size_type
 	);
 
@@ -225,7 +225,7 @@ FCPPT_MATH_DETAIL_MAKE_OP_DECL(\
 	Behaviour is undefined if the index is out of range.
 	*/
 	const_reference
-	operator[](
+	get_unsafe(
 		size_type
 	) const;
 

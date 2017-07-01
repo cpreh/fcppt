@@ -44,9 +44,9 @@ checked_access(
 	);
 
 	return
-		_value[
+		_value.get_unsafe(
 			N
-		];
+		);
 }
 
 }

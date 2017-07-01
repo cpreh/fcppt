@@ -68,8 +68,8 @@ init()
 		fcppt::no_init{}
 	);
 
-	v1[0] = 0.1f;
-	v1[1] = 0.2f;
+	v1.x() = 0.1f;
+	v1.y() = 0.2f;
 
 	// same as v1
 	vector2f const v2(

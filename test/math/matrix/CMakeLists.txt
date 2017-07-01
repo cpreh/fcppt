@@ -9,15 +9,11 @@ function(
 endfunction()
 
 add_fcppt_math_matrix_test(
-	access
-)
-
-add_fcppt_math_matrix_test(
 	adjugate
 )
 
 add_fcppt_math_matrix_test(
-	at_c
+	at_index_c
 )
 
 add_fcppt_math_matrix_test(

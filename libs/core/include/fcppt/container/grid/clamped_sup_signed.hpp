@@ -7,6 +7,7 @@
 #ifndef FCPPT_CONTAINER_GRID_CLAMPED_SUP_SIGNED_HPP_INCLUDED
 #define FCPPT_CONTAINER_GRID_CLAMPED_SUP_SIGNED_HPP_INCLUDED
 
+#include <fcppt/use.hpp>
 #include <fcppt/cast/to_signed.hpp>
 #include <fcppt/cast/to_unsigned.hpp>
 #include <fcppt/container/grid/dim.hpp>
@@ -14,7 +15,8 @@
 #include <fcppt/container/grid/size_type.hpp>
 #include <fcppt/container/grid/sup.hpp>
 #include <fcppt/math/clamp.hpp>
-#include <fcppt/math/size_type.hpp>
+#include <fcppt/math/dim/at_c.hpp>
+#include <fcppt/math/vector/at_c.hpp>
 #include <fcppt/math/vector/init.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <type_traits>
@@ -82,24 +84,32 @@ clamped_sup_signed(
 					&_pos,
 					&_size
 				](
-					fcppt::math::size_type const _index
+					auto const _index
 				)
 				{
+					FCPPT_USE(
+						_index
+					);
+
 					return
 						fcppt::cast::to_unsigned(
 							fcppt::math::clamp(
-								_pos[
+								fcppt::math::vector::at_c<
 									_index
-								],
+								>(
+									_pos
+								),
 								fcppt::literal<
 									Source
 								>(
 									0
 								),
 								fcppt::cast::to_signed(
-									_size[
+									fcppt::math::dim::at_c<
 										_index
-									]
+									>(
+										_size
+									)
 								)
 							)
 						);

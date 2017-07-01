@@ -11,13 +11,13 @@
 #include <fcppt/tag_type.hpp>
 #include <fcppt/use.hpp>
 #include <fcppt/algorithm/fold.hpp>
-#include <fcppt/math/at_c.hpp>
 #include <fcppt/math/int_range_count.hpp>
 #include <fcppt/math/size_type.hpp>
 #include <fcppt/math/detail/binary_type.hpp>
-#include <fcppt/math/matrix/at_c.hpp>
+#include <fcppt/math/matrix/at_index_c.hpp>
 #include <fcppt/math/matrix/index.hpp>
 #include <fcppt/math/matrix/object_impl.hpp>
+#include <fcppt/math/vector/at_c.hpp>
 #include <fcppt/math/vector/init.hpp>
 #include <fcppt/math/vector/object_impl.hpp>
 #include <fcppt/math/vector/static.hpp>
@@ -133,7 +133,7 @@ FCPPT_PP_DISABLE_GCC_WARNING(-Wattributes)
 							return
 								_sum
 								+
-								fcppt::math::matrix::at_c(
+								fcppt::math::matrix::at_index_c(
 									_left,
 									fcppt::math::matrix::index<
 										row::value,
@@ -141,7 +141,7 @@ FCPPT_PP_DISABLE_GCC_WARNING(-Wattributes)
 									>{}
 								)
 								*
-								fcppt::math::at_c<
+								fcppt::math::vector::at_c<
 									column::value
 								>(
 									_right

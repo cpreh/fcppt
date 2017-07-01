@@ -10,7 +10,8 @@
 #include <fcppt/make_int_range_count.hpp>
 #include <fcppt/container/grid/object_impl.hpp>
 #include <fcppt/container/grid/size_type.hpp>
-#include <fcppt/math/at_c.hpp>
+#include <fcppt/math/dim/at_c.hpp>
+#include <fcppt/math/vector/at_c.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <ostream>
 #include <type_traits>
@@ -112,7 +113,7 @@ print_recurse(
 	dim_value_type;
 
 	dim_value_type const sz{
-		fcppt::math::at_c<
+		fcppt::math::dim::at_c<
 			index
 		>(
 			_object.size()
@@ -127,7 +128,7 @@ print_recurse(
 		)
 	)
 	{
-		fcppt::math::at_c<
+		fcppt::math::vector::at_c<
 			index
 		>(
 			_pos

@@ -9,6 +9,10 @@ function(
 endfunction()
 
 add_fcppt_math_vector_test(
+	at_c
+)
+
+add_fcppt_math_vector_test(
 	arithmetic
 )
 

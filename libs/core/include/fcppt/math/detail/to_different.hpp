@@ -7,6 +7,8 @@
 #ifndef FCPPT_MATH_DETAIL_TO_DIFFERENT_HPP_INCLUDED
 #define FCPPT_MATH_DETAIL_TO_DIFFERENT_HPP_INCLUDED
 
+#include <fcppt/use.hpp>
+#include <fcppt/math/detail/checked_access.hpp>
 #include <fcppt/math/detail/init.hpp>
 
 
@@ -41,13 +43,19 @@ to_different(
 			[
 				&_source
 			](
-				typename Dest::size_type const _index
+				auto const _index
 			)
 			{
+				FCPPT_USE(
+					_index
+				);
+
 				return
-					_source[
+					fcppt::math::detail::checked_access<
 						_index
-					];
+					>(
+						_source
+					);
 			}
 		);
 }
