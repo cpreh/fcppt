@@ -108,10 +108,10 @@ levenshtein(
 	// Step 2
 
 	for (size_type i = 0; i <= n; i++)
-		matrix[pos(i,0u)] = i;
+		matrix.get_unsafe(pos(i,0u)) = i;
 
 	for (size_type j = 0; j <= m; j++)
-		matrix[pos(0u,j)] = j;
+		matrix.get_unsafe(pos(0u,j)) = j;
 
 	for (difference_type i = 1; i <= fcppt::cast::to_signed(n); i++)
 	{
@@ -139,26 +139,38 @@ levenshtein(
 
 			size_type const
 				above =
-					matrix[
+					matrix.get_unsafe(
 						pos(
 							fcppt::cast::to_unsigned(
-								i-1),
+								i-1
+							),
 							fcppt::cast::to_unsigned(
-								j))],
+								j
+							)
+						)
+					),
 				left =
-					matrix[
+					matrix.get_unsafe(
 						pos(
 							fcppt::cast::to_unsigned(
-								i),
+								i
+							),
 							fcppt::cast::to_unsigned(
-								j-1))],
+								j-1
+							)
+						)
+					),
 				diag =
-					matrix[
+					matrix.get_unsafe(
 						pos(
 							fcppt::cast::to_unsigned(
-								i-1),
+								i-1
+							),
 							fcppt::cast::to_unsigned(
-								j-1))];
+								j-1
+							)
+						)
+					);
 
 			size_type cell =
 				::std::min(
@@ -175,13 +187,13 @@ levenshtein(
 			if(i>fcppt::literal<difference_type>(2) && j>fcppt::literal<difference_type>(2))
 			{
 				size_type trans =
-					matrix[
+					matrix.get_unsafe(
 						pos(
 							fcppt::cast::to_unsigned(
 								i-2),
 							fcppt::cast::to_unsigned(
 								j-2))
-					] +
+					) +
 						1u;
 
 				if(*(boost::begin(source) + i-2) != t_j)
@@ -194,23 +206,27 @@ levenshtein(
 					cell = trans;
 			}
 
-			matrix[
+			matrix.get_unsafe(
 				pos(
 					fcppt::cast::to_unsigned(
-						i),
+						i
+					),
 					fcppt::cast::to_unsigned(
-						j))] =
+						j
+					)
+				)
+			) =
 				cell;
 		}
 	}
 
 	return
-		matrix[
+		matrix.get_unsafe(
 			pos(
 				n,
 				m
 			)
-		];
+		);
 }
 
 }

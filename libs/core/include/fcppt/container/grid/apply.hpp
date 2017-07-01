@@ -57,26 +57,26 @@ fcppt::container::grid::object<
 			fcppt::move_if_rvalue<
 				Grid1
 			>(
-				_grid1[
+				_grid1.get_unsafe(
 					std::declval<
 						typename
 						std::decay<
 							Grid1
 						>::type::pos
 					>()
-				]
+				)
 			),
 			fcppt::move_if_rvalue<
 				Grids
 			>(
-				_grids[
+				_grids.get_unsafe(
 					std::declval<
 						typename
 						std::decay<
 							Grid1
 						>::type::pos
 					>()
-				]
+				)
 			)...
 		)
 	),
@@ -126,20 +126,20 @@ fcppt::container::grid::object<
 				fcppt::move_if_rvalue<
 					Grid1
 				>(
-					_grid1[
+					_grid1.get_unsafe(
 						std::declval<
 							pos_type
 						>()
-					]
+					)
 				),
 				fcppt::move_if_rvalue<
 					Grids
 				>(
-					_grids[
+					_grids.get_unsafe(
 						std::declval<
 							pos_type
 						>()
-					]
+					)
 				)...
 			)
 		),
@@ -190,16 +190,16 @@ fcppt::container::grid::object<
 							fcppt::move_if_rvalue<
 								Grid1
 							>(
-								_grid1[
+								_grid1.get_unsafe(
 									_pos
-								]
+								)
 							),
 							fcppt::move_if_rvalue<
 								Grids
 							>(
-								_grids[
+								_grids.get_unsafe(
 									_pos
-								]
+								)
 							)...
 						);
 				}

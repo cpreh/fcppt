@@ -33,19 +33,6 @@ fcppt::container::grid::object<
 >
 int2_grid;
 
-struct nonpod
-{
-	nonpod()
-	:
-		member_(
-			42
-		)
-	{
-	}
-
-	int member_;
-};
-
 }
 
 FCPPT_PP_PUSH_WARNING
@@ -118,12 +105,12 @@ FCPPT_PP_POP_WARNING
 		)
 		{
 			BOOST_REQUIRE_EQUAL(
-				test[
+				test.get_unsafe(
 					int2_grid::pos(
 						x,
 						y
 					)
-				],
+				),
 				fcppt::cast::size<
 					int2_grid::value_type
 				>(
@@ -193,13 +180,13 @@ FCPPT_PP_POP_WARNING
 			)
 			{
 				BOOST_CHECK_EQUAL(
-					test[
+					test.get_unsafe(
 						int3_grid::pos(
 							x,
 							y,
 							z
 						)
-					],
+					),
 					fcppt::cast::size<
 						int3_grid::value_type
 					>(
@@ -265,41 +252,6 @@ FCPPT_PP_PUSH_WARNING
 FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
 
 BOOST_AUTO_TEST_CASE(
-	container_grid_non_pod
-)
-{
-FCPPT_PP_POP_WARNING
-
-	typedef
-	fcppt::container::grid::object<
-		nonpod,
-		2
-	>
-	grid2_nonpod;
-
-	grid2_nonpod const test(
-		grid2_nonpod::dim(
-			5u,
-			3u
-		),
-		nonpod()
-	);
-
-	for(
-		auto const &element
-		:
-		test
-	)
-		BOOST_CHECK_EQUAL(
-			element.member_,
-			42
-		);
-}
-
-FCPPT_PP_PUSH_WARNING
-FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
-
-BOOST_AUTO_TEST_CASE(
 	container_grid_move
 )
 {
@@ -313,19 +265,21 @@ FCPPT_PP_POP_WARNING
 		0
 	);
 
-	grid1[
+	grid1.get_unsafe(
 		int2_grid::pos(
 			0u,
 			0u
 		)
-	] = 1;
+	)
+		= 1;
 
-	grid1[
+	grid1.get_unsafe(
 		int2_grid::pos(
 			1u,
 			1u
 		)
-	] = 2;
+	)
+		= 2;
 
 	int2_grid grid2(
 		std::move(
@@ -333,31 +287,32 @@ FCPPT_PP_POP_WARNING
 		)
 	);
 
-	BOOST_CHECK(
-		grid2.size()
-		==
+	BOOST_CHECK_EQUAL(
+		grid2.size(),
 		int2_grid::dim(
 			2u,
 			3u
 		)
 	);
 
-	BOOST_CHECK(
-		grid2[
+	BOOST_CHECK_EQUAL(
+		grid2.get_unsafe(
 			int2_grid::pos(
 				0u,
 				0u
 			)
-		] == 1
+		),
+		1
 	);
 
-	BOOST_CHECK(
-		grid2[
+	BOOST_CHECK_EQUAL(
+		grid2.get_unsafe(
 			int2_grid::pos(
 				1u,
 				1u
 			)
-		] == 2
+		),
+		2
 	);
 
 	BOOST_CHECK(
@@ -373,31 +328,32 @@ FCPPT_PP_POP_WARNING
 			grid2
 		);
 
-	BOOST_CHECK(
-		grid3.size()
-		==
+	BOOST_CHECK_EQUAL(
+		grid3.size(),
 		int2_grid::dim(
 			2u,
 			3u
 		)
 	);
 
-	BOOST_CHECK(
-		grid3[
+	BOOST_CHECK_EQUAL(
+		grid3.get_unsafe(
 			int2_grid::pos(
 				0u,
 				0u
 			)
-		] == 1
+		),
+		1
 	);
 
-	BOOST_CHECK(
-		grid3[
+	BOOST_CHECK_EQUAL(
+		grid3.get_unsafe(
 			int2_grid::pos(
 				1u,
 				1u
 			)
-		] == 2
+		),
+		2
 	);
 
 	BOOST_CHECK(
@@ -452,22 +408,22 @@ FCPPT_PP_POP_WARNING
 	);
 
 	BOOST_CHECK_EQUAL(
-		grid[
+		grid.get_unsafe(
 			pos(
 				0u,
 				0u
 			)
-		],
+		),
 		0
 	);
 
 	BOOST_CHECK_EQUAL(
-		grid[
+		grid.get_unsafe(
 			pos(
 				1u,
 				2u
 			)
-		],
+		),
 		2
 	);
 }

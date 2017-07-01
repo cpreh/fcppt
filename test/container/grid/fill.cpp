@@ -76,42 +76,42 @@ FCPPT_PP_POP_WARNING
 	);
 
 	BOOST_CHECK_EQUAL(
-		test[
+		test.get_unsafe(
 			pos(
 				0u,
 				0u
 			)
-		],
+		),
 		0
 	);
 
 	BOOST_CHECK_EQUAL(
-		test[
+		test.get_unsafe(
 			pos(
 				1u,
 				0u
 			)
-		],
+		),
 		1
 	);
 
 	BOOST_CHECK_EQUAL(
-		test[
+		test.get_unsafe(
 			pos(
 				0u,
 				1u
 			)
-		],
+		),
 		1
 	);
 
 	BOOST_CHECK_EQUAL(
-		test[
+		test.get_unsafe(
 			pos(
 				1u,
 				1u
 			)
-		],
+		),
 		2
 	);
 }

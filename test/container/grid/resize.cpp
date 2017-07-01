@@ -111,12 +111,12 @@ FCPPT_PP_POP_WARNING
 				x < 5 && y < 10
 			)
 				BOOST_CHECK(
-					test[
+					test.get_unsafe(
 						sz_pair_grid::pos(
 							x,
 							y
 						)
-					]
+					)
 					==
 					std::make_pair(
 						fcppt::cast::size<
@@ -133,12 +133,12 @@ FCPPT_PP_POP_WARNING
 				);
 			else
 				BOOST_CHECK(
-					test[
+					test.get_unsafe(
 						sz_pair_grid::pos(
 							x,
 							y
 						)
-					]
+					)
 					==
 					sz_pair_grid::value_type(
 						10u,
@@ -227,23 +227,23 @@ FCPPT_PP_POP_WARNING
 				x < 5 && y < 10
 			)
 				BOOST_CHECK(
-					*test[
+					*test.get_unsafe(
 						unique_ptr_grid::pos(
 							x,
 							y
 						)
-					]
+					)
 					==
 					x + y
 				);
 			else
 				BOOST_CHECK(
-					*test[
+					*test.get_unsafe(
 						unique_ptr_grid::pos(
 							x,
 							y
 						)
-					]
+					)
 					==
 					100u
 				);

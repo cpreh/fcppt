@@ -95,24 +95,24 @@ FCPPT_PP_POP_WARNING
 	);
 
 	BOOST_CHECK_EQUAL(
-		result[
+		result.get_unsafe(
 			string_grid::pos(
 				0u,
 				0u
 			)
-		],
+		),
 		std::string(
 			"0"
 		)
 	);
 
 	BOOST_CHECK_EQUAL(
-		result[
+		result.get_unsafe(
 			string_grid::pos(
 				1u,
 				2u
 			)
-		],
+		),
 		std::string(
 			"3"
 		)
@@ -210,22 +210,22 @@ FCPPT_PP_POP_WARNING
 	);
 
 	BOOST_CHECK_EQUAL(
-		*result[
+		*result.get_unsafe(
 			strong_grid::pos(
 				0u,
 				0u
 			)
-		].get(),
+		).get(),
 		0u
 	);
 
 	BOOST_CHECK_EQUAL(
-		*result[
+		*result.get_unsafe(
 			strong_grid::pos(
 				2u,
 				1u
 			)
-		].get(),
+		).get(),
 		3u
 	);
 }

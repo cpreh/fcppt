@@ -7,9 +7,6 @@
 #include <fcppt/text.hpp>
 #include <fcppt/container/grid/object.hpp>
 #include <fcppt/io/cout.hpp>
-#include <fcppt/config/external_begin.hpp>
-#include <iostream>
-#include <fcppt/config/external_end.hpp>
 
 
 //! [grid_iteration]
@@ -40,9 +37,9 @@ main()
 		0
 	);
 
-	one_dimensional[int1d_grid::pos(0u)] = 0;
-	one_dimensional[int1d_grid::pos(1u)] = 1;
-	one_dimensional[int1d_grid::pos(2u)] = 2;
+	one_dimensional.get_unsafe(int1d_grid::pos(0u)) = 0;
+	one_dimensional.get_unsafe(int1d_grid::pos(1u)) = 1;
+	one_dimensional.get_unsafe(int1d_grid::pos(2u)) = 2;
 
 	// Outputs 0, 1, 2
 	for(
@@ -59,12 +56,12 @@ main()
 		0
 	);
 
-	two_dimensional[int2d_grid::pos(0u,0u)] = 0;
-	two_dimensional[int2d_grid::pos(1u,0u)] = 1;
-	two_dimensional[int2d_grid::pos(2u,0u)] = 2;
-	two_dimensional[int2d_grid::pos(0u,1u)] = 3;
-	two_dimensional[int2d_grid::pos(1u,1u)] = 4;
-	two_dimensional[int2d_grid::pos(2u,1u)] = 5;
+	two_dimensional.get_unsafe(int2d_grid::pos(0u,0u)) = 0;
+	two_dimensional.get_unsafe(int2d_grid::pos(1u,0u)) = 1;
+	two_dimensional.get_unsafe(int2d_grid::pos(2u,0u)) = 2;
+	two_dimensional.get_unsafe(int2d_grid::pos(0u,1u)) = 3;
+	two_dimensional.get_unsafe(int2d_grid::pos(1u,1u)) = 4;
+	two_dimensional.get_unsafe(int2d_grid::pos(2u,1u)) = 5;
 
 	// Outputs 0, 1, 2, 3, 4, 5
 	for(

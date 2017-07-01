@@ -50,18 +50,18 @@ interpolate(
 			p[
 				0
 			],
-			grid[
+			grid.get_unsafe(
 				indices[
 					value_index
 				]
-			],
-			grid[
+			),
+			grid.get_unsafe(
 				indices[
 					value_index
 					+
 					1u
 				]
-			]
+			)
 		);
 }
 

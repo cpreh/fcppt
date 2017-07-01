@@ -190,23 +190,27 @@ public:
 
 	/**
 	\brief Returns a reference to the grid element at a specified position.
+
+	\warning Behaviour is undefined if the position is out of range.
 	*/
 	reference
-	operator[](
+	get_unsafe(
 		pos const &
 	);
 
 	/**
 	\brief Returns a reference to the grid element at a specified position.
+
+	\warning Behaviour is undefined if the position is out of range.
 	*/
 	const_reference
-	operator[](
+	get_unsafe(
 		pos const &
 	) const;
 
 	/**
 	\brief Returns the grid's size
-	\warning
+	\note
 	In contrast to the standard containers, this does not return a
 	<code>size_type</code> value, but the dimension. Use content() to get
 	the number of elements

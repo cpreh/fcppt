@@ -50,14 +50,14 @@ fcppt::container::grid::object<
 			fcppt::move_if_rvalue<
 				Source
 			>(
-				_source[
+				_source.get_unsafe(
 					std::declval<
 						typename
 						std::decay<
 							Source
 						>::type::pos
 					>()
-				]
+				)
 			)
 		)
 	),
@@ -87,12 +87,12 @@ fcppt::container::grid::object<
 				fcppt::move_if_rvalue<
 					Source
 				>(
-					_source[
+					_source.get_unsafe(
 						std::declval<
 							typename
 							source_type::pos
 						>()
-					]
+					)
 				)
 			)
 		),
@@ -116,9 +116,9 @@ fcppt::container::grid::object<
 						fcppt::move_if_rvalue<
 							Source
 						>(
-							_source[
+							_source.get_unsafe(
 								_pos
-							]
+							)
 						)
 					);
 			}

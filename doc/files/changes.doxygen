@@ -111,6 +111,12 @@
 	</ul>
 </li>
 
+<li>\ref fcpptcontainergrid
+	<ul>
+	<li>Renamed <code>operator[]</code> of \link fcppt::container::grid::object\endlink to \link fcppt::container::grid::object::get_unsafe\endlink.</li>
+	</ul>
+</li>
+
 <li>\ref fcpptenum
 	<p>
 	Moved most functionality that is related to contiguous enums to the \link fcppt::enum_\endlink namespace.

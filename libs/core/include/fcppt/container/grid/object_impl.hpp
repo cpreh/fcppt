@@ -225,7 +225,7 @@ fcppt::container::grid::object<
 	T,
 	N,
 	A
->::operator[](
+>::get_unsafe(
 	pos const &_pos
 )
 {
@@ -252,7 +252,7 @@ fcppt::container::grid::object<
 	T,
 	N,
 	A
->::operator[](
+>::get_unsafe(
 	pos const &_pos
 ) const
 {

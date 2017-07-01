@@ -57,9 +57,9 @@ at_optional(
 		?
 			result_type{
 				fcppt::make_ref(
-					_grid[
+					_grid.get_unsafe(
 						_pos
-					]
+					)
 				)
 			}
 		:

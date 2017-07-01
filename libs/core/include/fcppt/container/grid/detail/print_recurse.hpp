@@ -7,7 +7,10 @@
 #ifndef FCPPT_CONTAINER_GRID_DETAIL_PRINT_RECURSE_HPP_INCLUDED
 #define FCPPT_CONTAINER_GRID_DETAIL_PRINT_RECURSE_HPP_INCLUDED
 
+#include <fcppt/make_int_range_count.hpp>
+#include <fcppt/container/grid/object_impl.hpp>
 #include <fcppt/container/grid/size_type.hpp>
+#include <fcppt/math/at_c.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <ostream>
 #include <type_traits>
@@ -25,58 +28,111 @@ namespace detail
 
 template<
 	fcppt::container::grid::size_type Level,
-	typename Stream,
-	typename Object
+	typename Ch,
+	typename Traits,
+	typename Type,
+	fcppt::container::grid::size_type Size,
+	typename Alloc
 >
-typename std::enable_if<
+typename
+std::enable_if<
 	Level == 0,
 	void
 >::type
 print_recurse(
-	Stream &_stream,
-	Object const &_object,
-	typename Object::pos const _pos
+	std::basic_ostream<
+		Ch,
+		Traits
+	> &_stream,
+	fcppt::container::grid::object<
+		Type,
+		Size,
+		Alloc
+	> const &_object,
+	typename
+	fcppt::container::grid::object<
+		Type,
+		Size,
+		Alloc
+	>::pos const _pos
 )
 {
 	_stream
-		<< _object[
+		<<
+		_object.get_unsafe(
 			_pos
-		];
+		);
 }
 
 template<
 	fcppt::container::grid::size_type Level,
-	typename Stream,
-	typename Object
+	typename Ch,
+	typename Traits,
+	typename Type,
+	fcppt::container::grid::size_type Size,
+	typename Alloc
 >
-typename std::enable_if<
+typename
+std::enable_if<
 	Level != 0,
 	void
 >::type
 print_recurse(
-	Stream &_stream,
-	Object const &_object,
-	typename Object::pos _pos
+	std::basic_ostream<
+		Ch,
+		Traits
+	> &_stream,
+	fcppt::container::grid::object<
+		Type,
+		Size,
+		Alloc
+	> const &_object,
+	typename
+	fcppt::container::grid::object<
+		Type,
+		Size,
+		Alloc
+	>::pos _pos
 )
 {
-	size_type const index(
+	constexpr size_type const index(
 		Level - 1u
 	);
 
 	_stream
 		<< _stream.widen('(');
 
-	typename Object::dim::value_type sz(
-		_object.size()[index]
-	);
+	typedef
+	typename
+	fcppt::container::grid::object<
+		Type,
+		Size,
+		Alloc
+	>::dim::value_type
+	dim_value_type;
+
+	dim_value_type const sz{
+		fcppt::math::at_c<
+			index
+		>(
+			_object.size()
+		)
+	};
 
 	for(
-		typename Object::dim::size_type i = 0;
-		i < sz;
-		++i
+		dim_value_type const i
+		:
+		fcppt::make_int_range_count(
+			sz
+		)
 	)
 	{
-		_pos[index] = i;
+		fcppt::math::at_c<
+			index
+		>(
+			_pos
+		) =
+			i;
 
 		fcppt::container::grid::detail::print_recurse<
 			index

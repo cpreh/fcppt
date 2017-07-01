@@ -40,22 +40,22 @@ use_grid()
 	);
 
 	// Set the value on position (1,2,3) to 42
-	grid[
+	grid.get_unsafe(
 		int3d_grid::pos(
 			1u,
 			2u,
 			3u
 		)
-	] = 42;
+	) = 42;
 
 	fcppt::io::cout()
-		<< grid[
+		<< grid.get_unsafe(
 			int3d_grid::pos(
 				1u,
 				2u,
 				3u
 			)
-		]
+		)
 		<< FCPPT_TEXT('\n');
 }
 //! [grid_simple]
@@ -222,9 +222,9 @@ interpolate_grid()
 				0.5f
 			},
 			[](
-				auto const _f,
-				auto const _v1,
-				auto const _v2
+				float const _f,
+				float const _v1,
+				float const _v2
 			)
 			{
 				return

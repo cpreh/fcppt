@@ -126,24 +126,24 @@ FCPPT_PP_POP_WARNING
 	);
 
 	BOOST_CHECK_EQUAL(
-		result[
+		result.get_unsafe(
 			string_grid::pos(
 				0u,
 				0u
 			)
-		],
+		),
 		std::string(
 			"00"
 		)
 	);
 
 	BOOST_CHECK_EQUAL(
-		result[
+		result.get_unsafe(
 			string_grid::pos(
 				1u,
 				2u
 			)
-		],
+		),
 		std::string(
 			"33"
 		)
