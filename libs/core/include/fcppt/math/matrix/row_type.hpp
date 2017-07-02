@@ -7,38 +7,8 @@
 #ifndef FCPPT_MATH_MATRIX_ROW_TYPE_HPP_INCLUDED
 #define FCPPT_MATH_MATRIX_ROW_TYPE_HPP_INCLUDED
 
-#include <fcppt/config/external_begin.hpp>
-#include <array>
-#include <cstddef>
-#include <fcppt/config/external_end.hpp>
+#include <fcppt/math/matrix/row_type_fwd.hpp>
+#include <fcppt/math/vector/static.hpp>
 
-
-namespace fcppt
-{
-namespace math
-{
-namespace matrix
-{
-
-/**
-\brief The type to initialize a row with
-
-\ingroup fcpptmathmatrix
-*/
-template<
-	typename Type,
-	std::size_t Size
->
-using
-row_type
-=
-std::array<
-	Type,
-	Size
->;
-
-}
-}
-}
 
 #endif

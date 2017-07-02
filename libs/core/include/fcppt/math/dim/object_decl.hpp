@@ -234,40 +234,33 @@ FCPPT_MATH_DETAIL_MAKE_OP_DECL(\
 	*/
 	reference
 	w();
+
 	/**
 	\brief Returns a reference to the first element in the dim
 	*/
 	const_reference
 	w() const;
+
 	/**
 	\brief Returns a reference to the second element in the dim
-
-	\warning
-	This will fail at compile-time if <code>N <= 1</code>
 	*/
 	reference
 	h();
+
 	/**
 	\brief Returns a reference to the second element in the dim
-
-	\warning
-	This will fail at compile-time if <code>N <= 1</code>
 	*/
 	const_reference
 	h() const;
+
 	/**
 	\brief Returns a reference to the third element in the dim
-
-	\warning
-	This will fail at compile-time if <code>N <= 2</code>
 	*/
 	reference
 	d();
+
 	/**
 	\brief Returns a reference to the third element in the dim
-
-	\warning
-	This will fail at compile-time if <code>N <= 2</code>
 	*/
 	const_reference
 	d() const;

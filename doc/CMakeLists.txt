@@ -895,6 +895,7 @@ set(
 	libs/core/include/fcppt/math/matrix/rotation_z.hpp
 	libs/core/include/fcppt/math/matrix/row.hpp
 	libs/core/include/fcppt/math/matrix/row_type.hpp
+	libs/core/include/fcppt/math/matrix/row_type_fwd.hpp
 	libs/core/include/fcppt/math/matrix/scaling.hpp
 	libs/core/include/fcppt/math/matrix/sqrt.hpp
 	libs/core/include/fcppt/math/matrix/static.hpp

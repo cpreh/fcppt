@@ -73,10 +73,7 @@ fcppt::math::matrix::object<
 	storage_(
 		fcppt::math::matrix::detail::init_storage(
 			std::array<
-				fcppt::math::matrix::row_type<
-					T,
-					static_columns::value
-				>,
+				row_type,
 				sizeof...(
 					Args
 				)

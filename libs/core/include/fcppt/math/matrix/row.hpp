@@ -7,6 +7,8 @@
 #ifndef FCPPT_MATH_MATRIX_ROW_HPP_INCLUDED
 #define FCPPT_MATH_MATRIX_ROW_HPP_INCLUDED
 
+#include <fcppt/cast/size.hpp>
+#include <fcppt/math/size_type.hpp>
 #include <fcppt/math/matrix/row_type.hpp>
 
 
@@ -36,15 +38,19 @@ row(
 	return
 		fcppt::math::matrix::row_type<
 			Type,
-			sizeof...(
-				Args
+			fcppt::cast::size<
+				fcppt::math::size_type
+			>(
+				sizeof...(
+					Args
+				)
+				+
+				1u
 			)
-			+
-			1u
-		>{{
+		>{
 			_value,
 			_args...
-		}};
+		};
 }
 
 }

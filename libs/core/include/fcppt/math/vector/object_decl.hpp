@@ -255,54 +255,36 @@ FCPPT_MATH_DETAIL_MAKE_OP_DECL(\
 
 	/**
 	\brief Returns a reference to the second element in the vector
-
-	\warning
-	This will fail at compile-time if <code>N <= 1</code>
 	*/
 	reference
 	y();
 
 	/**
 	\brief Returns a reference to the second element in the vector
-
-	\warning
-	This will fail at compile-time if <code>N <= 1</code>
 	*/
 	const_reference
 	y() const;
 
 	/**
 	\brief Returns a reference to the third element in the vector
-
-	\warning
-	This will fail at compile-time if <code>N <= 2</code>
 	*/
 	reference
 	z();
 
 	/**
 	\brief Returns a reference to the third element in the vector
-
-	\warning
-	This will fail at compile-time if <code>N <= 2</code>
 	*/
 	const_reference
 	z() const;
 
 	/**
 	\brief Returns a reference to the fourth element in the vector
-
-	\warning
-	This will fail at compile-time if <code>N <= 3</code>
 	*/
 	reference
 	w();
 
 	/**
 	\brief Returns a reference to the fourth element in the vector
-
-	\warning
-	This will fail at compile-time if <code>N <= 3</code>
 	*/
 	const_reference
 	w() const;

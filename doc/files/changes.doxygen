@@ -148,6 +148,7 @@
 	<li>Renamed <code>operator[]</code> of \link fcppt::math::matrix::object\endlink to \link fcppt::math::matrix::object::get_unsafe\endlink.</li>
 	<li>Renamed <code>fcppt::math::matrix::at_c</code> to \link fcppt::math::matrix::at_index_c\endlink.</li>
 	<li>Renamed <code>fcppt::math::matrix::delete_row_and_column_static</code> to \link fcppt::math::matrix::delete_row_and_column\endlink.</li>
+	<li>\link fcppt::math::matrix::row_type\endlink is now an \link fcppt::math::vector::static_\endlink instead of a <code>std::array</code>.</li>
 	</ul>
 </li>
 

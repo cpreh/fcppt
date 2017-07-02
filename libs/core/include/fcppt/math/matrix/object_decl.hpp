@@ -11,6 +11,7 @@
 #include <fcppt/math/difference_type.hpp>
 #include <fcppt/math/size_type.hpp>
 #include <fcppt/math/detail/make_op_decl.hpp>
+#include <fcppt/math/matrix/row_type_fwd.hpp>
 #include <fcppt/math/matrix/object_fwd.hpp>
 #include <fcppt/math/matrix/detail/row_view_fwd.hpp>
 #include <fcppt/math/vector/object_decl.hpp>
@@ -145,6 +146,16 @@ public:
 	const_reference;
 
 	/**
+	\brief The type of a row, which is a vector of <code>C</code> elements.
+	*/
+	typedef
+	fcppt::math::matrix::row_type<
+		T,
+		C
+	>
+	row_type;
+
+	/**
 	\brief Construct an uninitialized matrix
 
 	\warning
@@ -168,8 +179,8 @@ public:
 	\brief Constructs a matrix from <code>R</code> rows
 
 	Constructs a matrix by using <code>R</code> arguments of type \link
-	fcppt::math::matrix::row_type\endlink of size <code>C</code>. Use \link
-	fcppt::math::matrix::row\endlink to initialize them.
+	fcppt::math::matrix::object::row_type\endlink. You can use
+	\link fcppt::math::matrix::row\endlink to create them.
 	*/
 	template<
 		typename ...Args

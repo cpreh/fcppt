@@ -11,6 +11,7 @@
 #include <fcppt/algorithm/array_init.hpp>
 #include <fcppt/cast/size.hpp>
 #include <fcppt/math/size_type.hpp>
+#include <fcppt/math/detail/checked_access.hpp>
 #include <fcppt/math/matrix/row_type.hpp>
 #include <fcppt/math/matrix/detail/index_absolute.hpp>
 #include <fcppt/math/matrix/detail/static_storage.hpp>
@@ -31,7 +32,7 @@ namespace detail
 
 template<
 	typename Type,
-	std::size_t C,
+	fcppt::math::size_type C,
 	std::size_t R
 >
 inline
@@ -42,15 +43,11 @@ fcppt::math::matrix::detail::static_storage<
 	>(
 		R
 	),
-	fcppt::cast::size<
-		fcppt::math::size_type
-	>(
-		C
-	)
+	C
 >
 init_storage(
 	std::array<
-		std::array<
+		fcppt::math::matrix::row_type<
 			Type,
 			C
 		>,
@@ -66,11 +63,7 @@ init_storage(
 		>(
 			R
 		),
-		fcppt::cast::size<
-			fcppt::math::size_type
-		>(
-			C
-		)
+		C
 	>
 	result_type;
 
@@ -92,11 +85,7 @@ init_storage(
 
 					typedef
 					fcppt::math::matrix::detail::index_absolute<
-						fcppt::cast::size<
-							fcppt::math::size_type
-						>(
-							C
-						),
+						C,
 						fcppt::cast::size<
 							fcppt::math::size_type
 						>(
@@ -106,7 +95,7 @@ init_storage(
 					index;
 
 					return
-						std::get<
+						fcppt::math::detail::checked_access<
 							index::column
 						>(
 							std::get<
