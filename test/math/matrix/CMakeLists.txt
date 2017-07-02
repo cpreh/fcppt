@@ -13,7 +13,11 @@ add_fcppt_math_matrix_test(
 )
 
 add_fcppt_math_matrix_test(
-	at_index_c
+	at_r
+)
+
+add_fcppt_math_matrix_test(
+	at_r_c
 )
 
 add_fcppt_math_matrix_test(

@@ -819,7 +819,7 @@ set(
 	libs/core/include/fcppt/math/diff.hpp
 	libs/core/include/fcppt/math/difference_type.hpp
 	libs/core/include/fcppt/math/dim/arithmetic.hpp
-	libs/core/include/fcppt/math/dim/at_c.hpp
+	libs/core/include/fcppt/math/dim/at.hpp
 	libs/core/include/fcppt/math/dim/comparison.hpp
 	libs/core/include/fcppt/math/dim/componentwise_equal.hpp
 	libs/core/include/fcppt/math/dim/construct.hpp
@@ -858,8 +858,8 @@ set(
 	libs/core/include/fcppt/math/log2.hpp
 	libs/core/include/fcppt/math/matrix/adjugate.hpp
 	libs/core/include/fcppt/math/matrix/arithmetic.hpp
-	libs/core/include/fcppt/math/matrix/at_c.hpp
-	libs/core/include/fcppt/math/matrix/at_index_c.hpp
+	libs/core/include/fcppt/math/matrix/at_r.hpp
+	libs/core/include/fcppt/math/matrix/at_r_c.hpp
 	libs/core/include/fcppt/math/matrix/comparison.hpp
 	libs/core/include/fcppt/math/matrix/componentwise_equal.hpp
 	libs/core/include/fcppt/math/matrix/delete_row_and_column.hpp
@@ -934,7 +934,7 @@ set(
 	libs/core/include/fcppt/math/vector/angle_between.hpp
 	libs/core/include/fcppt/math/vector/angle_between_cast.hpp
 	libs/core/include/fcppt/math/vector/arithmetic.hpp
-	libs/core/include/fcppt/math/vector/at_c.hpp
+	libs/core/include/fcppt/math/vector/at.hpp
 	libs/core/include/fcppt/math/vector/atan2.hpp
 	libs/core/include/fcppt/math/vector/bit_strings.hpp
 	libs/core/include/fcppt/math/vector/ceil_div_signed.hpp

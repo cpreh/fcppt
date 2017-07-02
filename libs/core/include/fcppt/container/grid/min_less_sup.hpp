@@ -14,7 +14,7 @@
 #include <fcppt/container/grid/size_type.hpp>
 #include <fcppt/container/grid/sup.hpp>
 #include <fcppt/math/int_range_count.hpp>
-#include <fcppt/math/vector/at_c.hpp>
+#include <fcppt/math/vector/at.hpp>
 
 
 namespace fcppt
@@ -73,13 +73,13 @@ min_less_sup(
 				index;
 
 				return
-					fcppt::math::vector::at_c<
+					fcppt::math::vector::at<
 						index::value
 					>(
 						_min.get()
 					)
 					<
-					fcppt::math::vector::at_c<
+					fcppt::math::vector::at<
 						index::value
 					>(
 						_sup.get()

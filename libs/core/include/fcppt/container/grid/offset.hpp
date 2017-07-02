@@ -17,8 +17,8 @@
 #include <fcppt/container/grid/pos.hpp>
 #include <fcppt/container/grid/size_type.hpp>
 #include <fcppt/math/int_range.hpp>
-#include <fcppt/math/dim/at_c.hpp>
-#include <fcppt/math/vector/at_c.hpp>
+#include <fcppt/math/dim/at.hpp>
+#include <fcppt/math/vector/at.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <utility>
 #include <fcppt/config/external_end.hpp>
@@ -105,7 +105,7 @@ offset(
 
 				_sum.second *=
 					stacked_dim{
-						fcppt::math::dim::at_c<
+						fcppt::math::dim::at<
 							index::value
 							-
 							1u
@@ -116,7 +116,7 @@ offset(
 
 				_sum.first +=
 					result{
-						fcppt::math::vector::at_c<
+						fcppt::math::vector::at<
 							index::value
 						>(
 							_pos

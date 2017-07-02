@@ -15,7 +15,7 @@
 #include <fcppt/container/grid/size_type.hpp>
 #include <fcppt/container/grid/sup.hpp>
 #include <fcppt/math/int_range_count.hpp>
-#include <fcppt/math/vector/at_c.hpp>
+#include <fcppt/math/vector/at.hpp>
 
 
 namespace fcppt
@@ -98,32 +98,32 @@ next_position(
 				index;
 
 				if(
-					fcppt::math::vector::at_c<
+					fcppt::math::vector::at<
 						index::value
 					>(
 						_result
 					)
 					==
-					fcppt::math::vector::at_c<
+					fcppt::math::vector::at<
 						index::value
 					>(
 						_sup.get()
 					)
 				)
 				{
-					fcppt::math::vector::at_c<
+					fcppt::math::vector::at<
 						index::value
 					>(
 						_result
 					) =
-						fcppt::math::vector::at_c<
+						fcppt::math::vector::at<
 							index::value
 						>(
 							_min.get()
 						);
 
 					++
-					fcppt::math::vector::at_c<
+					fcppt::math::vector::at<
 						index::value
 						+
 						1u

@@ -14,8 +14,8 @@
 #include <fcppt/container/grid/pos.hpp>
 #include <fcppt/container/grid/size_type.hpp>
 #include <fcppt/math/int_range_count.hpp>
-#include <fcppt/math/dim/at_c.hpp>
-#include <fcppt/math/vector/at_c.hpp>
+#include <fcppt/math/dim/at.hpp>
+#include <fcppt/math/vector/at.hpp>
 
 
 namespace fcppt
@@ -74,13 +74,13 @@ in_range_dim(
 				index;
 
 				return
-					fcppt::math::vector::at_c<
+					fcppt::math::vector::at<
 						index::value
 					>(
 						_pos
 					)
 					<
-					fcppt::math::dim::at_c<
+					fcppt::math::dim::at<
 						index::value
 					>(
 						_dim

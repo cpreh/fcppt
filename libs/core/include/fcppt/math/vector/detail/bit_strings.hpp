@@ -9,7 +9,7 @@
 
 #include <fcppt/literal.hpp>
 #include <fcppt/math/size_type.hpp>
-#include <fcppt/math/vector/at_c.hpp>
+#include <fcppt/math/vector/at.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
@@ -39,7 +39,7 @@ bit_strings(
 	Vector _vector
 )
 {
-	fcppt::math::vector::at_c<
+	fcppt::math::vector::at<
 		N
 	>(
 		_vector
@@ -54,7 +54,7 @@ bit_strings(
 	*it++ =
 		_vector;
 
-	fcppt::math::vector::at_c<
+	fcppt::math::vector::at<
 		N
 	>(
 		_vector
@@ -85,7 +85,7 @@ bit_strings(
 	Vector _vector
 )
 {
-	fcppt::math::vector::at_c<
+	fcppt::math::vector::at<
 		N
 	>(
 		_vector
@@ -106,7 +106,7 @@ bit_strings(
 		_vector
 	);
 
-	fcppt::math::vector::at_c<
+	fcppt::math::vector::at<
 		N
 	>(
 		_vector

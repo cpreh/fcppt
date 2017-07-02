@@ -9,8 +9,7 @@
 
 #include <fcppt/use.hpp>
 #include <fcppt/math/size_type.hpp>
-#include <fcppt/math/matrix/at_index_c.hpp>
-#include <fcppt/math/matrix/index.hpp>
+#include <fcppt/math/matrix/at_r_c.hpp>
 #include <fcppt/math/matrix/init.hpp>
 #include <fcppt/math/matrix/object_impl.hpp>
 #include <fcppt/math/matrix/static.hpp>
@@ -30,14 +29,17 @@ namespace matrix
 \ingroup fcpptmathmatrix
 
 \return The result type will be <code>(N - 1, M - 1)</code>
+
+\tparam DR The index of the row to delete
+\tparam DC The index of the column to delete
 */
 template<
+	fcppt::math::size_type DR,
+	fcppt::math::size_type DC,
 	typename T,
-	fcppt::math::size_type R,
-	fcppt::math::size_type C,
 	typename S,
-	fcppt::math::size_type Row,
-	fcppt::math::size_type Column
+	fcppt::math::size_type R,
+	fcppt::math::size_type C
 >
 fcppt::math::matrix::static_<
 	T,
@@ -54,11 +56,7 @@ delete_row_and_column(
 		R,
 		C,
 		S
-	> const &_matrix,
-	fcppt::math::matrix::index<
-		Row,
-		Column
-	>
+	> const &_matrix
 )
 {
 	typedef
@@ -88,18 +86,17 @@ delete_row_and_column(
 				);
 
 				return
-					fcppt::math::matrix::at_index_c(
-						_matrix,
-						fcppt::math::matrix::index<
-							fcppt::math::matrix::detail::deleted_index(
-								_index.row,
-								Row
-							),
-							fcppt::math::matrix::detail::deleted_index(
-								_index.column,
-								Column
-							)
-						>{}
+					fcppt::math::matrix::at_r_c<
+						fcppt::math::matrix::detail::deleted_index(
+							_index.row,
+							DR
+						),
+						fcppt::math::matrix::detail::deleted_index(
+							_index.column,
+							DC
+						)
+					>(
+						_matrix
 					);
 			}
 		);

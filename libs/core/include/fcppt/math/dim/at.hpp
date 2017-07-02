@@ -4,8 +4,8 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_MATH_DIM_AT_C_HPP_INCLUDED
-#define FCPPT_MATH_DIM_AT_C_HPP_INCLUDED
+#ifndef FCPPT_MATH_DIM_AT_HPP_INCLUDED
+#define FCPPT_MATH_DIM_AT_HPP_INCLUDED
 
 #include <fcppt/container/to_reference_type.hpp>
 #include <fcppt/math/size_type.hpp>
@@ -41,7 +41,7 @@ fcppt::container::to_reference_type<
 		Dim
 	>::type
 >
-at_c(
+at(
 	Dim &_value
 )
 {

@@ -13,7 +13,6 @@
 #include <fcppt/math/size_type.hpp>
 #include <fcppt/math/matrix/delete_row_and_column.hpp>
 #include <fcppt/math/matrix/determinant.hpp>
-#include <fcppt/math/matrix/index.hpp>
 #include <fcppt/math/matrix/init.hpp>
 #include <fcppt/math/matrix/object_impl.hpp>
 #include <fcppt/math/matrix/static.hpp>
@@ -116,12 +115,11 @@ adjugate(
 					coeff
 					*
 					fcppt::math::matrix::determinant(
-						fcppt::math::matrix::delete_row_and_column(
-							_matrix,
-							fcppt::math::matrix::index<
-								_index.column,
-								_index.row
-							>{}
+						fcppt::math::matrix::delete_row_and_column<
+							_index.column,
+							_index.row
+						>(
+							_matrix
 						)
 					);
 			}

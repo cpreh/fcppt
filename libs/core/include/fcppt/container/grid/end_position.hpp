@@ -13,7 +13,7 @@
 #include <fcppt/container/grid/pos.hpp>
 #include <fcppt/container/grid/size_type.hpp>
 #include <fcppt/container/grid/sup.hpp>
-#include <fcppt/math/vector/at_c.hpp>
+#include <fcppt/math/vector/at.hpp>
 #include <fcppt/math/vector/init.hpp>
 
 
@@ -79,13 +79,13 @@ end_position(
 						<
 						Size - 1
 						?
-							fcppt::math::vector::at_c<
+							fcppt::math::vector::at<
 								_index
 							>(
 								_min.get()
 							)
 						:
-							fcppt::math::vector::at_c<
+							fcppt::math::vector::at<
 								_index
 							>(
 								_sup.get()

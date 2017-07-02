@@ -14,7 +14,7 @@
 #include <fcppt/algorithm/fold.hpp>
 #include <fcppt/math/int_range_count.hpp>
 #include <fcppt/math/size_type.hpp>
-#include <fcppt/math/vector/at_c.hpp>
+#include <fcppt/math/vector/at.hpp>
 #include <fcppt/math/vector/construct.hpp>
 #include <fcppt/math/vector/init.hpp>
 #include <fcppt/math/vector/object.hpp>
@@ -196,7 +196,7 @@ FCPPT_PP_DISABLE_GCC_WARNING(-Wattributes)
 								_prod
 								*
 								std::sin(
-									fcppt::math::vector::at_c<
+									fcppt::math::vector::at<
 										inner_index::value
 									>(
 										_angles
@@ -226,7 +226,7 @@ FCPPT_PP_DISABLE_GCC_WARNING(-Wattributes)
 
 								return
 									std::cos(
-										fcppt::math::vector::at_c<
+										fcppt::math::vector::at<
 											_inner_index()
 										>(
 											_angles
@@ -246,7 +246,7 @@ FCPPT_PP_POP_WARNING
 				return
 					sins
 					*
-					fcppt::math::vector::at_c<
+					fcppt::math::vector::at<
 						_index()
 					>(
 						cos_angles

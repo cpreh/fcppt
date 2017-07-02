@@ -4,8 +4,7 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/math/matrix/at_index_c.hpp>
-#include <fcppt/math/matrix/index.hpp>
+#include <fcppt/math/matrix/at_r_c.hpp>
 #include <fcppt/math/matrix/object.hpp>
 #include <fcppt/math/matrix/row.hpp>
 #include <fcppt/math/matrix/static.hpp>
@@ -21,7 +20,7 @@ FCPPT_PP_PUSH_WARNING
 FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
 
 BOOST_AUTO_TEST_CASE(
-	math_matrix_at_index_c
+	math_matrix_at_r_c
 )
 {
 FCPPT_PP_POP_WARNING
@@ -43,47 +42,67 @@ FCPPT_PP_POP_WARNING
 		)
 	);
 
-	BOOST_CHECK_EQUAL(
-		fcppt::math::matrix::at_index_c(
-			mat,
-			fcppt::math::matrix::index<
+	{
+		int const result{
+			fcppt::math::matrix::at_r_c<
 				0,
 				0
-			>()
-		),
-		-3
-	);
+			>(
+				mat
+			)
+		};
 
-	BOOST_CHECK_EQUAL(
-		fcppt::math::matrix::at_index_c(
-			mat,
-			fcppt::math::matrix::index<
+		BOOST_CHECK_EQUAL(
+			result,
+			-3
+		);
+	}
+
+	{
+		int const result{
+			fcppt::math::matrix::at_r_c<
 				0,
 				1
-			>()
-		),
-		2
-	);
+			>(
+				mat
+			)
+		};
 
-	BOOST_CHECK_EQUAL(
-		fcppt::math::matrix::at_index_c(
-			mat,
-			fcppt::math::matrix::index<
+		BOOST_CHECK_EQUAL(
+			result,
+			2
+		);
+	}
+
+	{
+		int const result{
+			fcppt::math::matrix::at_r_c<
 				1,
 				0
-			>()
-		),
-		-1
-	);
+			>(
+				mat
+			)
+		};
 
-	BOOST_CHECK_EQUAL(
-		fcppt::math::matrix::at_index_c(
-			mat,
-			fcppt::math::matrix::index<
+		BOOST_CHECK_EQUAL(
+			result,
+			-1
+		);
+	}
+
+	{
+		int const result{
+			fcppt::math::matrix::at_r_c<
 				1,
 				1
-			>()
-		),
-		0
-	);
+			>(
+				mat
+			)
+		};
+
+		BOOST_CHECK_EQUAL(
+			result,
+			0
+		);
+	}
 }

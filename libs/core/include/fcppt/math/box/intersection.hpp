@@ -15,7 +15,7 @@
 #include <fcppt/math/box/intersects.hpp>
 #include <fcppt/math/box/null.hpp>
 #include <fcppt/math/box/object_impl.hpp>
-#include <fcppt/math/vector/at_c.hpp>
+#include <fcppt/math/vector/at.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <algorithm>
 #include <fcppt/config/external_end.hpp>
@@ -84,24 +84,24 @@ intersection(
 					return
 						fcppt::make_homogenous_pair(
 							std::max(
-								fcppt::math::vector::at_c<
+								fcppt::math::vector::at<
 									_index()
 								>(
 									_a.pos()
 								),
-								fcppt::math::vector::at_c<
+								fcppt::math::vector::at<
 									_index()
 								>(
 									_b.pos()
 								)
 							),
 							std::min(
-								fcppt::math::vector::at_c<
+								fcppt::math::vector::at<
 									_index()
 								>(
 									_a.max()
 								),
-								fcppt::math::vector::at_c<
+								fcppt::math::vector::at<
 									_index()
 								>(
 									_b.max()

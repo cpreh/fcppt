@@ -14,7 +14,7 @@
 #include <fcppt/algorithm/fold.hpp>
 #include <fcppt/math/int_range_count.hpp>
 #include <fcppt/math/size_type.hpp>
-#include <fcppt/math/matrix/at_index_c.hpp>
+#include <fcppt/math/matrix/at_r_c.hpp>
 #include <fcppt/math/matrix/index.hpp>
 #include <fcppt/math/matrix/object_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
@@ -115,12 +115,11 @@ infinity_norm(
 									_current_row_sum
 									+
 									std::abs(
-										fcppt::math::matrix::at_index_c(
-											_matrix,
-											fcppt::math::matrix::index<
-												row::value,
-												column::value
-											>{}
+										fcppt::math::matrix::at_r_c<
+											row::value,
+											column::value
+										>(
+											_matrix
 										)
 									);
 							}

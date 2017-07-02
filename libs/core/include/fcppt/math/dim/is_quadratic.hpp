@@ -9,7 +9,7 @@
 
 #include <fcppt/algorithm/all_of.hpp>
 #include <fcppt/math/size_type.hpp>
-#include <fcppt/math/dim/at_c.hpp>
+#include <fcppt/math/dim/at.hpp>
 #include <fcppt/math/dim/object_impl.hpp>
 
 
@@ -46,7 +46,7 @@ is_quadratic(
 			_dim.storage(),
 			[
 				_first =
-					fcppt::math::dim::at_c<
+					fcppt::math::dim::at<
 						0
 					>(
 						_dim

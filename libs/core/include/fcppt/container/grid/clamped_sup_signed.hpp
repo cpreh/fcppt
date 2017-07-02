@@ -15,8 +15,8 @@
 #include <fcppt/container/grid/size_type.hpp>
 #include <fcppt/container/grid/sup.hpp>
 #include <fcppt/math/clamp.hpp>
-#include <fcppt/math/dim/at_c.hpp>
-#include <fcppt/math/vector/at_c.hpp>
+#include <fcppt/math/dim/at.hpp>
+#include <fcppt/math/vector/at.hpp>
 #include <fcppt/math/vector/init.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <type_traits>
@@ -94,7 +94,7 @@ clamped_sup_signed(
 					return
 						fcppt::cast::to_unsigned(
 							fcppt::math::clamp(
-								fcppt::math::vector::at_c<
+								fcppt::math::vector::at<
 									_index
 								>(
 									_pos
@@ -105,7 +105,7 @@ clamped_sup_signed(
 									0
 								),
 								fcppt::cast::to_signed(
-									fcppt::math::dim::at_c<
+									fcppt::math::dim::at<
 										_index
 									>(
 										_size

@@ -4,7 +4,7 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/math/matrix/at_c.hpp>
+#include <fcppt/math/matrix/at_r.hpp>
 #include <fcppt/math/matrix/row.hpp>
 #include <fcppt/math/matrix/static.hpp>
 #include <fcppt/math/vector/comparison.hpp>
@@ -59,7 +59,7 @@ FCPPT_PP_POP_WARNING
 	);
 
 	BOOST_CHECK_EQUAL(
-		fcppt::math::matrix::at_c<
+		fcppt::math::matrix::at_r<
 			0
 		>(
 			matrix
@@ -72,7 +72,7 @@ FCPPT_PP_POP_WARNING
 	);
 
 	vector_type vec(
-		fcppt::math::matrix::at_c<
+		fcppt::math::matrix::at_r<
 			0
 		>(
 			matrix
@@ -80,7 +80,7 @@ FCPPT_PP_POP_WARNING
 	);
 
 	vec =
-		fcppt::math::matrix::at_c<
+		fcppt::math::matrix::at_r<
 			1
 		>(
 			matrix

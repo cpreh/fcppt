@@ -133,7 +133,7 @@
 
 <li>\ref fcpptmath
 	<ul>
-	<li>Split <code>fcppt::math::at_c</code> into \link fcppt::math::vector::at_c\endlink, \link fcppt::math::dim::at_c\endlink and \link fcppt::math::matrix::at_c\endlink.</li>
+	<li>Split <code>fcppt::math::at_c</code> into \link fcppt::math::vector::at\endlink, \link fcppt::math::dim::at\endlink and \link fcppt::math::matrix::at_r\endlink.</li>
 	</ul>
 </li>
 
@@ -146,7 +146,7 @@
 <li>\ref fcpptmathmatrix
 	<ul>
 	<li>Renamed <code>operator[]</code> of \link fcppt::math::matrix::object\endlink to \link fcppt::math::matrix::object::get_unsafe\endlink.</li>
-	<li>Renamed <code>fcppt::math::matrix::at_c</code> to \link fcppt::math::matrix::at_index_c\endlink.</li>
+	<li>Renamed <code>fcppt::math::matrix::at_c</code> to \link fcppt::math::matrix::at_r_c\endlink.</li>
 	<li>Renamed <code>fcppt::math::matrix::delete_row_and_column_static</code> to \link fcppt::math::matrix::delete_row_and_column\endlink.</li>
 	<li>\link fcppt::math::matrix::row_type\endlink is now an \link fcppt::math::vector::static_\endlink instead of a <code>std::array</code>.</li>
 	</ul>
@@ -1029,7 +1029,7 @@
 <li>\ref fcpptmathmatrix
 	<ul>
 	<li>Added \link fcppt::math::matrix::init\endlink.</li>
-	<li>Added \link fcppt::math::matrix::at_c\endlink.</li>
+	<li>Added <code>fcppt::math::matrix::at_c</code>.</li>
 	<li>Added <code>
 	fcppt::math::matrix::delete_row_and_column_static</code>.</li>
 	</ul>

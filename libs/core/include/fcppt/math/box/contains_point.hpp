@@ -14,7 +14,7 @@
 #include <fcppt/math/int_range_count.hpp>
 #include <fcppt/math/size_type.hpp>
 #include <fcppt/math/box/object_impl.hpp>
-#include <fcppt/math/vector/at_c.hpp>
+#include <fcppt/math/vector/at.hpp>
 #include <fcppt/math/vector/object_impl.hpp>
 
 
@@ -74,25 +74,25 @@ contains_point(
 				index;
 
 				return
-					fcppt::math::vector::at_c<
+					fcppt::math::vector::at<
 						index::value
 					>(
 						_point
 					)
 					>=
-					fcppt::math::vector::at_c<
+					fcppt::math::vector::at<
 						index::value
 					>(
 						_box.pos()
 					)
 					&&
-					fcppt::math::vector::at_c<
+					fcppt::math::vector::at<
 						index::value
 					>(
 						_point
 					)
 					<
-					fcppt::math::vector::at_c<
+					fcppt::math::vector::at<
 						index::value
 					>(
 						_box.max()

@@ -13,7 +13,7 @@
 #include <fcppt/container/grid/min.hpp>
 #include <fcppt/container/grid/pos.hpp>
 #include <fcppt/container/grid/size_type.hpp>
-#include <fcppt/math/vector/at_c.hpp>
+#include <fcppt/math/vector/at.hpp>
 #include <fcppt/math/vector/init.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <algorithm>
@@ -89,7 +89,7 @@ clamped_min(
 					return
 						fcppt::cast::to_unsigned(
 							std::max(
-								fcppt::math::vector::at_c<
+								fcppt::math::vector::at<
 									_index
 								>(
 									_pos

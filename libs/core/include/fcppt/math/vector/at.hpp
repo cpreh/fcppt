@@ -4,13 +4,13 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_MATH_MATRIX_AT_C_HPP_INCLUDED
-#define FCPPT_MATH_MATRIX_AT_C_HPP_INCLUDED
+#ifndef FCPPT_MATH_VECTOR_AT_HPP_INCLUDED
+#define FCPPT_MATH_VECTOR_AT_HPP_INCLUDED
 
 #include <fcppt/container/to_reference_type.hpp>
 #include <fcppt/math/size_type.hpp>
 #include <fcppt/math/detail/checked_access.hpp>
-#include <fcppt/math/matrix/is_matrix.hpp>
+#include <fcppt/math/vector/is_vector.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
@@ -20,39 +20,39 @@ namespace fcppt
 {
 namespace math
 {
-namespace matrix
+namespace vector
 {
 
 /**
 \brief Access an element using a compile-time constant
 
-\ingroup fcpptmathmatrix
+\ingroup fcpptmathvector
 
-\tparam Matrix Must be an \link fcppt::math::matrix::object\endlink.
+\tparam Vector Must be an \link fcppt::math::vector::object\endlink.
 */
 template<
 	fcppt::math::size_type Index,
-	typename Matrix
+	typename Vector
 >
 inline
 fcppt::container::to_reference_type<
 	typename
 	std::remove_reference<
-		Matrix
+		Vector
 	>::type
 >
-at_c(
-	Matrix &_value
+at(
+	Vector &_value
 )
 {
 	static_assert(
-		fcppt::math::matrix::is_matrix<
+		fcppt::math::vector::is_vector<
 			typename
 			std::decay<
-				Matrix
+				Vector
 			>::type
 		>::value,
-		"Matrix must be a matrix"
+		"Vector must be a vector"
 	);
 
 	return

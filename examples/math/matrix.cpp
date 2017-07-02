@@ -8,7 +8,7 @@
 #include <fcppt/use.hpp>
 #include <fcppt/algorithm/loop.hpp>
 #include <fcppt/math/int_range_count.hpp>
-#include <fcppt/math/matrix/at_c.hpp>
+#include <fcppt/math/matrix/at_r.hpp>
 #include <fcppt/math/matrix/arithmetic.hpp>
 #include <fcppt/math/matrix/identity.hpp>
 #include <fcppt/math/matrix/output.hpp>
@@ -108,7 +108,7 @@ row_iterate()
 
 			std::cout
 				<<
-				fcppt::math::matrix::at_c<
+				fcppt::math::matrix::at_r<
 					row::value
 				>(
 					m

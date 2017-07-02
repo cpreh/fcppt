@@ -9,8 +9,7 @@
 
 #include <fcppt/use.hpp>
 #include <fcppt/math/size_type.hpp>
-#include <fcppt/math/matrix/at_index_c.hpp>
-#include <fcppt/math/matrix/index.hpp>
+#include <fcppt/math/matrix/at_r_c.hpp>
 #include <fcppt/math/matrix/init.hpp>
 #include <fcppt/math/matrix/object_impl.hpp>
 #include <fcppt/math/matrix/static.hpp>
@@ -67,12 +66,11 @@ transpose(
 				);
 
 				return
-					fcppt::math::matrix::at_index_c(
-						_matrix,
-						fcppt::math::matrix::index<
-							_index.column,
-							_index.row
-						>()
+					fcppt::math::matrix::at_r_c<
+						_index.column,
+						_index.row
+					>(
+						_matrix
 					);
 			}
 		);

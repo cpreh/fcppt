@@ -7,7 +7,6 @@
 #include <fcppt/literal.hpp>
 #include <fcppt/math/matrix/comparison.hpp>
 #include <fcppt/math/matrix/delete_row_and_column.hpp>
-#include <fcppt/math/matrix/index.hpp>
 #include <fcppt/math/matrix/output.hpp>
 #include <fcppt/math/matrix/row.hpp>
 #include <fcppt/math/matrix/static.hpp>
@@ -59,45 +58,55 @@ FCPPT_PP_POP_WARNING
 		)
 	);
 
-	BOOST_CHECK_EQUAL(
-		fcppt::math::matrix::delete_row_and_column(
-			t,
-			fcppt::math::matrix::index<
+	{
+		small_matrix_type const result{
+			fcppt::math::matrix::delete_row_and_column<
 				2,
 				1
-			>{}
-		),
-		small_matrix_type(
-			fcppt::math::matrix::row(
-				1, 3
-			),
-			fcppt::math::matrix::row(
-				4, 6
-			),
-			fcppt::math::matrix::row(
-				10, 12
+			>(
+				t
 			)
-		)
-	);
+		};
 
-	BOOST_CHECK_EQUAL(
-		fcppt::math::matrix::delete_row_and_column(
-			t,
-			fcppt::math::matrix::index<
+		BOOST_CHECK_EQUAL(
+			result,
+			small_matrix_type(
+				fcppt::math::matrix::row(
+					1, 3
+				),
+				fcppt::math::matrix::row(
+					4, 6
+				),
+				fcppt::math::matrix::row(
+					10, 12
+				)
+			)
+		);
+	}
+
+	{
+		small_matrix_type const result{
+			fcppt::math::matrix::delete_row_and_column<
 				0,
 				0
-			>{}
-		),
-		small_matrix_type(
-			fcppt::math::matrix::row(
-				5, 6
-			),
-			fcppt::math::matrix::row(
-				8, 9
-			),
-			fcppt::math::matrix::row(
-				11, 12
+			>(
+				t
 			)
-		)
-	);
+		};
+
+		BOOST_CHECK_EQUAL(
+			result,
+			small_matrix_type(
+				fcppt::math::matrix::row(
+					5, 6
+				),
+				fcppt::math::matrix::row(
+					8, 9
+				),
+				fcppt::math::matrix::row(
+					11, 12
+				)
+			)
+		);
+	}
 }

@@ -9,7 +9,7 @@
 
 #include <fcppt/literal.hpp>
 #include <fcppt/cast/size.hpp>
-#include <fcppt/math/vector/at_c.hpp>
+#include <fcppt/math/vector/at.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <cstddef>
 #include <type_traits>
@@ -105,7 +105,7 @@ interpolate(
 
 	return
 		interpolator(
-			fcppt::math::vector::at_c<
+			fcppt::math::vector::at<
 				fcppt::cast::size<
 					float_vector_size_type
 				>(

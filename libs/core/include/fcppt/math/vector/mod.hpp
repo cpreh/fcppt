@@ -10,7 +10,7 @@
 #include <fcppt/use.hpp>
 #include <fcppt/math/mod.hpp>
 #include <fcppt/math/size_type.hpp>
-#include <fcppt/math/vector/at_c.hpp>
+#include <fcppt/math/vector/at.hpp>
 #include <fcppt/math/vector/init.hpp>
 #include <fcppt/math/vector/object_impl.hpp>
 #include <fcppt/math/vector/static.hpp>
@@ -70,7 +70,7 @@ mod(
 
 				return
 					fcppt::math::mod(
-						fcppt::math::vector::at_c<
+						fcppt::math::vector::at<
 							_index
 						>(
 							_arg
@@ -133,12 +133,12 @@ mod(
 
 				return
 					fcppt::math::mod(
-						fcppt::math::vector::at_c<
+						fcppt::math::vector::at<
 							_index
 						>(
 							_v0
 						),
-						fcppt::math::vector::at_c<
+						fcppt::math::vector::at<
 							_index
 						>(
 							_index

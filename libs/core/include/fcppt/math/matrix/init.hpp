@@ -29,8 +29,8 @@ Calls <code>_function</code> for every index of the matrix.
 
 \tparam Matrix Must be a matrix
 
-\tparam Function Must be a function of type <code>Matrix::value_type
-(fcppt::math::matrix::index<Matrix::size_type>)</code>
+\tparam Function Must be a polymorphic function of type <code>Matrix::value_type
+(fcppt::math::matrix::index<R,C>)</code>
 */
 template<
 	typename Matrix,
