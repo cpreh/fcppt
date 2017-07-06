@@ -202,7 +202,7 @@
 	<ul>
 	<li>Removed the dynamic version of <code>fcppt::math::matrix::delete_row_and_column</code>.</li>
 	</ul>
-</ul>
+</li>
 
 \subsection changes_bugfixes_to_260 Bugfixes
 
