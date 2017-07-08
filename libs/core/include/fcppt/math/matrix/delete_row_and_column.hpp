@@ -88,11 +88,11 @@ delete_row_and_column(
 				return
 					fcppt::math::matrix::at_r_c<
 						fcppt::math::matrix::detail::deleted_index(
-							_index.row,
+							_index.row(),
 							DR
 						),
 						fcppt::math::matrix::detail::deleted_index(
-							_index.column,
+							_index.column(),
 							DC
 						)
 					>(

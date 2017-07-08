@@ -27,20 +27,25 @@ template<
 >
 inline
 fcppt::container::to_reference_type<
-	T
+	typename
+	std::remove_reference<
+		T
+	>::type
 >
 checked_access(
-	T &_value
+	T &&_value
 )
 {
 	typedef
 	typename
-	T::static_size
+	std::remove_reference<
+		T
+	>::type::static_size
 	static_size;
 
 	static_assert(
 		N < static_size::value,
-		"Out of bounds operator[] access to a math type"
+		"Out of bounds access to a math type"
 	);
 
 	return

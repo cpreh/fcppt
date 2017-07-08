@@ -107,12 +107,7 @@ public:
 	value_type;
 
 	/**
-	\brief A type that provides a reference to an element stored in a
-	matrix.
-
-	This is one of the few non-trivial implementations of the reference
-	typedef, as it's really a vector that models a row-view over the
-	matrix.
+	\brief A reference to a row of the matrix.
 	*/
 	typedef
 	fcppt::math::vector::object<
@@ -126,13 +121,15 @@ public:
 	reference;
 
 	/**
-	\brief
-	A type that provides a reference to a <code>const</code> element stored
-	in a vector for reading and performing <code>const</code> operations.
+	\brief A reference to an element of the matrix.
+	*/
+	typedef
+	typename
+	reference::reference
+	inner_reference;
 
-	This is one of the few non-trivial implementations of the reference
-	typedef, as it's really a vector that models a row-view over the
-	matrix.
+	/**
+	\brief A const reference to a row of the matrix.
 	*/
 	typedef
 	fcppt::math::vector::object<
@@ -144,6 +141,14 @@ public:
 		>
 	>
 	const_reference;
+
+	/**
+	\brief A const reference to an element of the matrix.
+	*/
+	typedef
+	typename
+	const_reference::const_reference
+	const_inner_reference;
 
 	/**
 	\brief The type of a row, which is a vector of <code>C</code> elements.
@@ -320,6 +325,102 @@ FCPPT_MATH_DETAIL_MAKE_OP_DECL(\
 
 	S const &
 	storage() const;
+
+	inner_reference
+	m00();
+
+	const_inner_reference
+	m00() const;
+
+	inner_reference
+	m01();
+
+	const_inner_reference
+	m01() const;
+
+	inner_reference
+	m02();
+
+	const_inner_reference
+	m02() const;
+
+	inner_reference
+	m03();
+
+	const_inner_reference
+	m03() const;
+
+	inner_reference
+	m10();
+
+	const_inner_reference
+	m10() const;
+
+	inner_reference
+	m11();
+
+	const_inner_reference
+	m11() const;
+
+	inner_reference
+	m12();
+
+	const_inner_reference
+	m12() const;
+
+	inner_reference
+	m13();
+
+	const_inner_reference
+	m13() const;
+
+	inner_reference
+	m20();
+
+	const_inner_reference
+	m20() const;
+
+	inner_reference
+	m21();
+
+	const_inner_reference
+	m21() const;
+
+	inner_reference
+	m22();
+
+	const_inner_reference
+	m22() const;
+
+	inner_reference
+	m23();
+
+	const_inner_reference
+	m23() const;
+
+	inner_reference
+	m30();
+
+	const_inner_reference
+	m30() const;
+
+	inner_reference
+	m31();
+
+	const_inner_reference
+	m31() const;
+
+	inner_reference
+	m32();
+
+	const_inner_reference
+	m32() const;
+
+	inner_reference
+	m33();
+
+	const_inner_reference
+	m33() const;
 private:
 	S storage_;
 };

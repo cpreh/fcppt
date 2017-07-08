@@ -64,6 +64,12 @@
 	</ul>
 </li>
 
+<li>\ref fcpptmathmatrix
+	<ul>
+	<li>Added safe accessors for matrices up to a size of <code>4 x 4</code>.</li>
+	</ul>
+</li>
+
 <li>\ref fcpptoptions
 	<ul>
 	<li>Output errors from the second argument as well in \link fcppt::options::product\endlink.</li>
@@ -149,6 +155,7 @@
 	<li>Renamed <code>fcppt::math::matrix::at_c</code> to \link fcppt::math::matrix::at_r_c\endlink.</li>
 	<li>Renamed <code>fcppt::math::matrix::delete_row_and_column_static</code> to \link fcppt::math::matrix::delete_row_and_column\endlink.</li>
 	<li>\link fcppt::math::matrix::row_type\endlink is now an \link fcppt::math::vector::static_\endlink instead of a <code>std::array</code>.</li>
+	<li>\link fcppt::math::matrix::index\endlink now uses functions that return its row and column instead of static constants.</li>
 	</ul>
 </li>
 

@@ -191,7 +191,7 @@ operator *(
 								_sum
 								+
 								fcppt::math::matrix::at_r_c<
-									_index.row,
+									_index.row(),
 									pos::value
 								>(
 									_left
@@ -199,7 +199,7 @@ operator *(
 								*
 								fcppt::math::matrix::at_r_c<
 									pos::value,
-									_index.column
+									_index.column()
 								>(
 									_right
 								);

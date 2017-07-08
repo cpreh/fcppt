@@ -32,18 +32,20 @@ struct index
 	static
 	constexpr
 	fcppt::math::size_type
-	const
-	row{
-		Row
-	};
+	row()
+	{
+		return
+			Row;
+	}
 
 	static
 	constexpr
 	fcppt::math::size_type
-	const
-	column{
-		Column
-	};
+	column()
+	{
+		return
+			Column;
+	}
 };
 
 }

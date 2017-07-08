@@ -7,7 +7,6 @@
 #ifndef FCPPT_MATH_MATRIX_TRANSPOSE_HPP_INCLUDED
 #define FCPPT_MATH_MATRIX_TRANSPOSE_HPP_INCLUDED
 
-#include <fcppt/use.hpp>
 #include <fcppt/math/size_type.hpp>
 #include <fcppt/math/matrix/at_r_c.hpp>
 #include <fcppt/math/matrix/init.hpp>
@@ -61,14 +60,10 @@ transpose(
 				auto const _index
 			)
 			{
-				FCPPT_USE(
-					_index
-				);
-
 				return
 					fcppt::math::matrix::at_r_c<
-						_index.column,
-						_index.row
+						_index.column(),
+						_index.row()
 					>(
 						_matrix
 					);

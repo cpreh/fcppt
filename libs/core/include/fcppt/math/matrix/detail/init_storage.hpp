@@ -96,10 +96,10 @@ init_storage(
 
 					return
 						fcppt::math::detail::checked_access<
-							index::column
+							index::column()
 						>(
 							std::get<
-								index::row
+								index::row()
 							>(
 								_value
 							)

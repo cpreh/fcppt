@@ -9,6 +9,10 @@ function(
 endfunction()
 
 add_fcppt_math_matrix_test(
+	access
+)
+
+add_fcppt_math_matrix_test(
 	adjugate
 )
 
