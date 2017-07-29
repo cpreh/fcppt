@@ -11,7 +11,7 @@ Here are a few quick examples that illustrate what we mean by that:
 Avoiding partial functions (functions that do not terminate, i.e. crash, on certain inputs)
 is one of fcppt's main goals. These are, unfortunately, all over the place in common C or C++ code:
 <code>std::unique_ptr</code> can be null, <code>operator[]</code> of <code>std::vector</code>
-can be used for out-of-bounds access, Iterators can be incremented past their end, and so on.
+can be used for out-of-bounds access, iterators can be incremented past their end, and so on.
 Partial functions place a huge burden on the programmer since they have to ensure that
 no code path is taken that actually calls a function with invalid arguments.
 Consider the following function:

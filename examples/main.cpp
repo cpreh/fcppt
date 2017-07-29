@@ -65,7 +65,7 @@ std::array<unsigned int, N>
 init_array()
 {
 	return fcppt::algorithm::array_init<std::array<unsigned int,N>>(
-		[](auto const _index) { return make_value<_index>(); }
+		[](auto const _index) { return make_value<_index>::value; }
 	);
 }
 // ![init_array]
@@ -77,4 +77,6 @@ main()
 	print_at_2(std::vector<int>{});
 
 	vec_to_string(std::vector<int>{});
+
+	init_array<4u>();
 }
