@@ -134,6 +134,7 @@ set(
 	examples/log/context.cpp
 	examples/log/formatting.cpp
 	examples/log/helloworld.cpp
+	examples/main.cpp
 	examples/math/box.cpp
 	examples/math/casts.cpp
 	examples/math/dim.cpp

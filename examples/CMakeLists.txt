@@ -157,6 +157,12 @@ add_fcppt_example(
 )
 
 add_fcppt_example(
+        main
+	LINK_LIBS
+		fcppt_core_interface
+)
+
+add_fcppt_example(
 	no_cpp
 	IS_C
 	LINK_LIBS
