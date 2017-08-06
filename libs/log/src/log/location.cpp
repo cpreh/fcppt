@@ -21,12 +21,14 @@ fcppt::log::location::location()
 }
 
 fcppt::log::location::location(
-	fcppt::log::name const &_initial
+	fcppt::log::name _initial
 )
 :
 	entries_(
 		1u,
-		_initial.get()
+		std::move(
+			_initial.get()
+		)
 	)
 {
 }

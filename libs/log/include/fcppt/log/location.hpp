@@ -49,7 +49,7 @@ public:
 	FCPPT_LOG_DETAIL_SYMBOL
 	explicit
 	location(
-		fcppt::log::name const &root
+		fcppt::log::name root
 	);
 
 	/**
