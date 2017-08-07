@@ -13,6 +13,10 @@ add_fcppt_algorithm_test(
 )
 
 add_fcppt_algorithm_test(
+	append
+)
+
+add_fcppt_algorithm_test(
 	array_init_move
 )
 

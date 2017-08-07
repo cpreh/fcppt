@@ -7,6 +7,8 @@
 #ifndef FCPPT_ALGORITHM_APPEND_HPP_INCLUDED
 #define FCPPT_ALGORITHM_APPEND_HPP_INCLUDED
 
+#include <fcppt/move_iterator_if_rvalue.hpp>
+
 
 namespace fcppt
 {
@@ -34,13 +36,21 @@ inline
 void
 append(
 	DestContainer &_dest,
-	Source const &_src
+	Source &&_src
 )
 {
 	_dest.insert(
 		_dest.end(),
-		_src.begin(),
-		_src.end()
+		fcppt::move_iterator_if_rvalue<
+			Source
+		>(
+			_src.begin()
+		),
+		fcppt::move_iterator_if_rvalue<
+			Source
+		>(
+			_src.end()
+		)
 	);
 }
 

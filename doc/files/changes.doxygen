@@ -10,6 +10,7 @@
 <li>\ref fcpptalgorithm
 	<ul>
 	<li>Added \link fcppt::algorithm::equal\endlink.</li>
+	<li>\link fcppt::algorithm::append\endlink now also works on rvalues.</li>
 	</ul>
 </li>
 
