@@ -95,6 +95,12 @@ public:
 	/**
 	\brief Return the strong typedef's value.
 	*/
+	T &
+	get();
+
+	/**
+	\brief Return the strong typedef's value.
+	*/
 	T const &
 	get() const;
 

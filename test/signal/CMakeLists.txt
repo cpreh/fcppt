@@ -9,6 +9,12 @@ function(
 endfunction()
 
 add_fcppt_signal_test(
+        move
+	LINK_LIBS
+		"${fcppt_core_TARGET}"
+)
+
+add_fcppt_signal_test(
 	simple
 	LINK_LIBS
 		"${fcppt_core_TARGET}"

@@ -85,6 +85,12 @@
 	</ul>
 </li>
 
+<li>\ref fcpptstrongtypedef
+	<ul>
+	<li>Added nonconst get function.</li>
+	</ul>
+</li>
+
 <li>\ref fcpptsystem
 	<p>
 	New library that wraps some functionality from <code>boost.system</code>.
