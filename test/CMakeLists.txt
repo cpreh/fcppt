@@ -226,6 +226,10 @@ add_subdirectory(
 )
 
 add_fcppt_test(
+	unique_ptr_dynamic_cast
+)
+
+add_fcppt_test(
 	unique_ptr_from_std
 )
 

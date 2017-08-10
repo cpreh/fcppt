@@ -81,6 +81,7 @@
 <li>\ref fcpptsmartptr
 	<ul>
 	<li>Added \link fcppt::unique_ptr_from_std\endlink.</li>
+	<li>Added \link fcppt::unique_ptr_dynamic_cast\endlink.</li>
 	</ul>
 </li>
 
