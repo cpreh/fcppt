@@ -8,6 +8,7 @@
 #ifndef FCPPT_SIGNAL_OBJECT_IMPL_HPP_INCLUDED
 #define FCPPT_SIGNAL_OBJECT_IMPL_HPP_INCLUDED
 
+#include <fcppt/algorithm/fold.hpp>
 #include <fcppt/signal/base_impl.hpp>
 #include <fcppt/signal/object_decl.hpp>
 #include <fcppt/signal/detail/enable_if_void.hpp>
@@ -28,15 +29,13 @@ fcppt::signal::object<
 	Base,
 	Enable
 >::object(
-	combiner_function const &_combiner,
-	initial_value const &_initial_result
+	combiner_function &&_combiner
 )
 :
 	combiner_(
-		_combiner
-	),
-	initial_result_(
-		_initial_result.get()
+		std::move(
+			_combiner
+		)
 	)
 {
 }
@@ -98,44 +97,6 @@ template<
 	> class Base,
 	typename Enable
 >
-void
-fcppt::signal::object<
-	T,
-	Base,
-	Enable
->::combiner(
-	combiner_function const &_combiner
-)
-{
-	combiner_ = _combiner;
-}
-
-template<
-	typename T,
-	template<
-		typename
-	> class Base,
-	typename Enable
->
-void
-fcppt::signal::object<
-	T,
-	Base,
-	Enable
->::initial_result(
-	result_type const &_initial_result
-)
-{
-	initial_result_ = _initial_result;
-}
-
-template<
-	typename T,
-	template<
-		typename
-	> class Base,
-	typename Enable
->
 template<
 	typename... Args
 >
@@ -149,36 +110,35 @@ fcppt::signal::object<
 	Base,
 	Enable
 >::operator()(
-	Args && ..._args
+	initial_value &&_initial,
+	Args &&..._args
 )
 {
-	result_type result(
-		initial_result_
-	);
-
-	typename base::connection_list &cur_list(
-		base::connections()
-	);
-
-	for(
-		auto &item
-		:
-		cur_list
-	)
-		result =
-			combiner_(
-				item.function()(
-					std::forward<
-						Args
-					>(
-						_args
-					)...
-				),
-				result
-			);
-
 	return
-		result;
+		fcppt::algorithm::fold(
+			base::connections(),
+			std::move(
+				_initial.get()
+			),
+			[
+				this,
+				&_args...
+			](
+				auto &_item,
+				result_type &&_state
+			)
+			{
+				return
+					combiner_(
+						std::move(
+							_state
+						),
+						_item.function()(
+							_args...
+						)
+					);
+			}
+		);
 }
 
 template<
@@ -210,7 +170,7 @@ fcppt::signal::object<
 		T
 	>::type
 >::object(
-	object  &&
+	object &&
 ) = default;
 
 template<
@@ -233,7 +193,7 @@ fcppt::signal::object<
 		T
 	>::type
 >::operator=(
-	object  &&
+	object &&
 ) = default;
 
 template<
@@ -275,22 +235,16 @@ fcppt::signal::object<
 		T
 	>::type
 >::operator()(
-	Args && ..._args
+	Args &&..._args
 )
 {
-	typename base::connection_list &cur_list(
-		base::connections()
-	);
-
 	for(
-		auto &item : cur_list
+		auto &item
+		:
+		base::connections()
 	)
 		item.function()(
-			std::forward<
-				Args
-			>(
-				_args
-			)...
+			_args...
 		);
 }
 

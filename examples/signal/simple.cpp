@@ -5,6 +5,7 @@
 
 
 //! [signal_simple]
+#include <fcppt/make_ref.hpp>
 #include <fcppt/text.hpp>
 #include <fcppt/io/cout.hpp>
 #include <fcppt/signal/auto_connection.hpp>
@@ -14,23 +15,23 @@
 namespace
 {
 
-struct foo
+struct test_struct
 {};
 
 void
 callback(
-	int const i
+	int const _value
 )
 {
 	fcppt::io::cout()
 		<< FCPPT_TEXT("\"callback\" called with ")
-		<< i
+		<< _value
 		<< FCPPT_TEXT("!\n");
 }
 
 void
 other_callback(
-	foo &
+	test_struct &
 )
 {
 	fcppt::io::cout()
@@ -39,7 +40,8 @@ other_callback(
 
 }
 
-int main()
+int
+main()
 {
 	typedef
 	fcppt::signal::object<
@@ -64,7 +66,9 @@ int main()
 	// Define another function
 	typedef
 	fcppt::signal::object<
-		void (foo &)
+		void(
+			test_struct &
+		)
 	>
 	signal2_type;
 
@@ -78,11 +82,10 @@ int main()
 		)
 	);
 
-	foo my_foo;
-	// Note the use of fcppt::ref because the signal gets a non-const reference
+	test_struct foo;
 	// Outputs: "other_callback" called
 	signal2(
-		my_foo
+		foo
 	);
 }
 //! [signal_simple]

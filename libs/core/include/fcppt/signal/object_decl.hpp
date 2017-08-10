@@ -48,7 +48,10 @@ template<
 >
 class object
 :
-	private Base<T>
+private
+	Base<
+		T
+	>
 {
 	FCPPT_NONCOPYABLE(
 		object
@@ -58,7 +61,9 @@ public:
 	\brief A typedef for the signal's base class
 	*/
 	typedef
-	Base<T>
+	Base<
+		T
+	>
 	base;
 
 	/**
@@ -94,11 +99,11 @@ public:
 	);
 
 	/**
-	\brief Construct a signal with a combiner and an initial result
+	\brief Construct a signal with a combiner
 	*/
+	explicit
 	object(
-		combiner_function const &,
-		initial_value const &
+		combiner_function &&
 	);
 
 	object(
@@ -113,22 +118,6 @@ public:
 	~object();
 
 	/**
-	\brief Set a new combiner
-	*/
-	void
-	combiner(
-		combiner_function const &
-	);
-
-	/**
-	\brief Set a new initial result
-	*/
-	void
-	initial_result(
-		result_type const &
-	);
-
-	/**
 	\brief Call the signal
 	*/
 	template<
@@ -136,14 +125,13 @@ public:
 	>
 	result_type
 	operator()(
-		Args && ...
+		initial_value &&,
+		Args &&...
 	);
 
 	using base::connect;
 private:
 	combiner_function combiner_;
-
-	result_type initial_result_;
 };
 
 
@@ -164,12 +152,16 @@ template<
 class object<
 	T,
 	Base,
-	typename fcppt::signal::detail::enable_if_void<
+	typename
+	fcppt::signal::detail::enable_if_void<
 		T
 	>::type
 >
 :
-	private Base<T>
+private
+	Base<
+		T
+	>
 {
 	FCPPT_NONCOPYABLE(
 		object
@@ -179,7 +171,9 @@ public:
 	\brief A typedef for the signal's base class
 	*/
 	typedef
-	Base<T>
+	Base<
+		T
+	>
 	base;
 
 	typedef
@@ -206,7 +200,9 @@ public:
 	/**
 	\brief Typedef to the function's return type
 	*/
-	typedef void result_type;
+	typedef
+	void
+	result_type;
 
 	/**
 	\brief Call the signal
@@ -216,7 +212,7 @@ public:
 	>
 	result_type
 	operator()(
-		Args && ...
+		Args &&...
 	);
 
 	using base::connect;

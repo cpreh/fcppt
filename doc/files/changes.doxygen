@@ -174,6 +174,12 @@
 	</ul>
 </li>
 
+<li>\ref fcpptsignal
+	<ul>
+	<li>Signals with a result now get the initial value when called instead of at construction time, which allows rvalues to be used.</li>
+	</ul>
+</li>
+
 <li>\ref fcpptvarious
 	<ul>
 	<li>\link fcppt::args\endlink and \link fcppt::args_from_second\endlink now use \link fcppt::args_char\endlink instead of <code>char</code>.</li>
@@ -216,6 +222,12 @@
 \subsection changes_bugfixes_to_260 Bugfixes
 
 <ul>
+
+<li>\ref fcpptsignal
+	<ul>
+	<li>Don't forward arguments into signal because they have to be used multiple times.</li>
+	</ul>
+</li>
 
 <li>\ref fcpptstring
 	<ul>
