@@ -7,7 +7,7 @@
 #include <fcppt/make_cref.hpp>
 #include <fcppt/make_ref.hpp>
 #include <fcppt/noncopyable.hpp>
-#include <fcppt/reference.hpp>
+#include <fcppt/reference_comparison.hpp>
 #include <fcppt/reference_output.hpp>
 #include <fcppt/cast/dynamic_fun.hpp>
 #include <fcppt/optional/comparison.hpp>
@@ -112,18 +112,16 @@ FCPPT_PP_POP_WARNING
 
 	typedef
 	boost::mpl::vector2<
-		fcppt::reference<
-			derived1
-		>,
-		fcppt::reference<
-			derived2
-		>
+		derived1,
+		derived2
 	>
 	derived_types;
 
 	typedef
 	fcppt::variant::object<
-		derived_types
+		fcppt::variant::dynamic_cast_types<
+			derived_types
+		>
 	>
 	result_variant;
 
@@ -195,18 +193,16 @@ FCPPT_PP_POP_WARNING
 
 	typedef
 	boost::mpl::vector2<
-		fcppt::reference<
-			derived1 const
-		>,
-		fcppt::reference<
-			derived2 const
-		>
+		derived1 const,
+		derived2 const
 	>
 	derived_types;
 
 	typedef
 	fcppt::variant::object<
-		derived_types
+		fcppt::variant::dynamic_cast_types<
+			derived_types
+		>
 	>
 	result_variant;
 

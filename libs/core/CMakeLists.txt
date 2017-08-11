@@ -4,6 +4,7 @@ set(
 	libs/core/impl/include/fcppt/impl/codecvt_type.hpp
 	libs/core/impl/include/fcppt/impl/export_class_instantiation.hpp
 	libs/core/include/fcppt/absurd.hpp
+	libs/core/include/fcppt/add_reference.hpp
 	libs/core/include/fcppt/algorithm/all_of.hpp
 	libs/core/include/fcppt/algorithm/append.hpp
 	libs/core/include/fcppt/algorithm/array_binary_map.hpp
@@ -1180,6 +1181,7 @@ set(
 	libs/core/include/fcppt/variant/detail/nothrow_move_constructible.hpp
 	libs/core/include/fcppt/variant/detail/type_info.hpp
 	libs/core/include/fcppt/variant/dynamic_cast.hpp
+	libs/core/include/fcppt/variant/dynamic_cast_types.hpp
 	libs/core/include/fcppt/variant/equal.hpp
 	libs/core/include/fcppt/variant/exception.hpp
 	libs/core/include/fcppt/variant/get_exn.hpp

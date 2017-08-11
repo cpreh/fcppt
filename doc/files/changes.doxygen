@@ -78,6 +78,12 @@
 	</ul>
 </li>
 
+<li>\ref fcpptref
+	<ul>
+	<li>Added \link fcppt::add_reference\endlink.</li>
+	</ul>
+</li>
+
 <li>\ref fcpptsmartptr
 	<ul>
 	<li>Added \link fcppt::unique_ptr_from_std\endlink.</li>
@@ -183,6 +189,12 @@
 <li>\ref fcpptsignal
 	<ul>
 	<li>Signals with a result now get the initial value when called instead of at construction time, which allows rvalues to be used.</li>
+	</ul>
+</li>
+
+<li>\ref fcpptvariant
+	<ul>
+	<li>Changed \link fcppt::variant::dynamic_cast_\endlink to take an MPL sequence of the types to cast instead of an MPL sequence of references.</li>
 	</ul>
 </li>
 

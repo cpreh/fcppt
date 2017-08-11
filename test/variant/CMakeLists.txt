@@ -39,6 +39,11 @@ add_fcppt_variant_test(
 )
 
 add_fcppt_variant_test(
+	dynamic_cast_types
+        NO_CODE
+)
+
+add_fcppt_variant_test(
 	equal
 )
 
