@@ -514,29 +514,4 @@ fcppt::swap(
 	);
 }
 
-template<
-	typename Ch,
-	typename Traits,
-	typename Type,
-	typename Deleter
->
-std::basic_ostream<
-	Ch,
-	Traits
-> &
-fcppt::operator<< (
-	std::basic_ostream<
-		Ch,
-		Traits
-	> &_os,
-	fcppt::shared_ptr<
-		Type,
-		Deleter
-	> const &_ptr
-)
-{
-	return
-		_os << _ptr.get();
-}
-
 #endif

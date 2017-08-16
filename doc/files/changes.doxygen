@@ -88,6 +88,7 @@
 	<ul>
 	<li>Added \link fcppt::unique_ptr_from_std\endlink.</li>
 	<li>Added \link fcppt::unique_ptr_dynamic_cast\endlink.</li>
+	<li>Added \link fcppt::shared_ptr_hash\endlink and the corresponding <code>std::hash</code> specialization.</li>
 	</ul>
 </li>
 
@@ -189,6 +190,12 @@
 <li>\ref fcpptsignal
 	<ul>
 	<li>Signals with a result now get the initial value when called instead of at construction time, which allows rvalues to be used.</li>
+	</ul>
+</li>
+
+<li>\ref fcpptsmartptr
+	<ul>
+	<li>Moved output operator of \link fcppt::shared_ptr\endlink to <code>fcppt/shared_ptr_output.hpp</code>.</li>
 	</ul>
 </li>
 

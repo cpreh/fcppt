@@ -12,7 +12,6 @@
 #include <fcppt/weak_ptr_fwd.hpp>
 #include <fcppt/detail/make_shared_wrapper_fwd.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <iosfwd>
 #include <memory>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
@@ -502,40 +501,6 @@ swap(
 		Type,
 		Deleter
 	> &right
-);
-
-/**
-\brief Outputs a shared pointer
-
-\ingroup fcpptsmartptr
-
-Outputs \a ptr to \a stream.
-
-\param stream The stream to write to
-
-\param ptr The shared pointer to output
-
-\return \a stream
-*/
-template<
-	typename Ch,
-	typename Traits,
-	typename Type,
-	typename Deleter
->
-std::basic_ostream<
-	Ch,
-	Traits
-> &
-operator<< (
-	std::basic_ostream<
-		Ch,
-		Traits
-	> &stream,
-	fcppt::shared_ptr<
-		Type,
-		Deleter
-	> const &ptr
 );
 
 }

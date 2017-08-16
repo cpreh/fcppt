@@ -1224,7 +1224,12 @@ set(
 	libs/core/include/fcppt/shared_ptr.hpp
 	libs/core/include/fcppt/shared_ptr_decl.hpp
 	libs/core/include/fcppt/shared_ptr_fwd.hpp
+	libs/core/include/fcppt/shared_ptr_hash_decl.hpp
+	libs/core/include/fcppt/shared_ptr_hash_fwd.hpp
+	libs/core/include/fcppt/shared_ptr_hash_impl.hpp
 	libs/core/include/fcppt/shared_ptr_impl.hpp
+	libs/core/include/fcppt/shared_ptr_output.hpp
+	libs/core/include/fcppt/shared_ptr_std_hash.hpp
 	libs/core/include/fcppt/signal/auto_connection.hpp
 	libs/core/include/fcppt/signal/auto_connection_container.hpp
 	libs/core/include/fcppt/signal/auto_connection_fwd.hpp
