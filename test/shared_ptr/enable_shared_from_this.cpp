@@ -33,6 +33,9 @@ fcppt::shared_ptr<
 >
 const_test_shared_ptr;
 
+FCPPT_PP_PUSH_WARNING
+FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
+
 class test_class
 :
 public
@@ -55,6 +58,8 @@ public:
 			this->fcppt_shared_from_this();
 	}
 };
+
+FCPPT_PP_POP_WARNING
 
 }
 
