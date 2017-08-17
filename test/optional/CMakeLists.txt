@@ -109,6 +109,10 @@ add_fcppt_optional_test(
 )
 
 add_fcppt_optional_test(
+	to_container
+)
+
+add_fcppt_optional_test(
 	to_exception
 )
 

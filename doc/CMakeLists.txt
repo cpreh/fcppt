@@ -1066,6 +1066,7 @@ set(
 	libs/core/include/fcppt/optional/reference.hpp
 	libs/core/include/fcppt/optional/reference_fwd.hpp
 	libs/core/include/fcppt/optional/static_cast.hpp
+	libs/core/include/fcppt/optional/to_container.hpp
 	libs/core/include/fcppt/optional/to_exception.hpp
 	libs/core/include/fcppt/optional/to_pointer.hpp
 	libs/core/include/fcppt/optional_size_t.hpp
