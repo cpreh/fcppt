@@ -427,6 +427,10 @@ set(
 	libs/core/include/fcppt/either/success_opt.hpp
 	libs/core/include/fcppt/either/to_exception.hpp
 	libs/core/include/fcppt/either/try_call.hpp
+	libs/core/include/fcppt/enable_shared_from_this.hpp
+	libs/core/include/fcppt/enable_shared_from_this_decl.hpp
+	libs/core/include/fcppt/enable_shared_from_this_fwd.hpp
+	libs/core/include/fcppt/enable_shared_from_this_impl.hpp
 	libs/core/include/fcppt/endianness/convert.hpp
 	libs/core/include/fcppt/endianness/format.hpp
 	libs/core/include/fcppt/endianness/format_fwd.hpp

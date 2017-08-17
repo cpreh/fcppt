@@ -89,6 +89,7 @@
 	<li>Added \link fcppt::unique_ptr_from_std\endlink.</li>
 	<li>Added \link fcppt::unique_ptr_dynamic_cast\endlink.</li>
 	<li>Added \link fcppt::shared_ptr_hash\endlink and the corresponding <code>std::hash</code> specialization.</li>
+	<li>Added \link fcppt::enable_shared_from_this\endlink.</li>
 	</ul>
 </li>
 

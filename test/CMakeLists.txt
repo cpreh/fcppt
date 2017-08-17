@@ -209,7 +209,7 @@ add_fcppt_test(
 	scoped_state_machine
 )
 
-add_fcppt_test(
+add_subdirectory(
 	shared_ptr
 )
 

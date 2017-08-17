@@ -351,6 +351,7 @@ public:
 	std_ptr() const;
 
 // \cond
+	// Intentionally not explicit
 	template<
 		typename Other
 	>
