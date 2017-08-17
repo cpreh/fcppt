@@ -130,6 +130,8 @@ public:
 	);
 
 	using base::connect;
+
+	using base::empty;
 private:
 	combiner_function combiner_;
 };
