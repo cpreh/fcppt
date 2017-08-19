@@ -11,8 +11,8 @@
 #include <fcppt/math/difference_type.hpp>
 #include <fcppt/math/size_type.hpp>
 #include <fcppt/math/detail/make_op_decl.hpp>
-#include <fcppt/math/matrix/row_type_fwd.hpp>
 #include <fcppt/math/matrix/object_fwd.hpp>
+#include <fcppt/math/matrix/row_type_fwd.hpp>
 #include <fcppt/math/matrix/detail/row_view_fwd.hpp>
 #include <fcppt/math/vector/object_decl.hpp>
 #include <fcppt/config/external_begin.hpp>
