@@ -9,9 +9,12 @@
 
 #include <fcppt/algorithm/detail/has_random_access_iterator.hpp>
 #include <fcppt/algorithm/detail/has_size.hpp>
+#include <fcppt/algorithm/detail/mpl_size_type.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/mpl/and.hpp>
+#include <boost/mpl/is_sequence.hpp>
 #include <boost/mpl/not.hpp>
+#include <boost/mpl/size.hpp>
 #include <boost/utility/enable_if.hpp>
 #include <iterator>
 #include <fcppt/config/external_end.hpp>
@@ -74,6 +77,30 @@ source_size(
 {
 	return
 		_source.size();
+}
+
+template<
+	typename Source
+>
+inline
+typename
+boost::enable_if<
+	boost::mpl::is_sequence<
+		Source
+	>,
+	typename
+	fcppt::algorithm::detail::mpl_size_type<
+		Source
+	>::type
+>::type
+source_size(
+	Source const &
+)
+{
+	return
+		boost::mpl::size<
+			Source
+		>::value;
 }
 
 }

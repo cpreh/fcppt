@@ -18,6 +18,7 @@
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/config/external_begin.hpp>
+#include <boost/mpl/vector/vector10.hpp>
 #include <list>
 #include <map>
 #include <vector>
@@ -205,4 +206,12 @@ main()
 		"grid::pos_ref_range not optimized"
 	);
 
+	static_assert(
+		source_optimized<
+			boost::mpl::vector1<
+				int
+			>
+		>::value,
+		"mpl vector not optimized"
+	);
 }

@@ -12,6 +12,7 @@
 #include <fcppt/algorithm/detail/has_size.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/mpl/and.hpp>
+#include <boost/mpl/is_sequence.hpp>
 #include <boost/mpl/or.hpp>
 #include <fcppt/config/external_end.hpp>
 
@@ -38,6 +39,9 @@ boost::mpl::and_<
 			Source
 		>,
 		fcppt::algorithm::detail::has_size<
+			Source
+		>,
+		boost::mpl::is_sequence<
 			Source
 		>
 	>

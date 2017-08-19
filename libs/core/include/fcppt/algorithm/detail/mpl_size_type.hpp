@@ -4,16 +4,16 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_ALGORITHM_DETAIL_HAS_RANDOM_ACCESS_ITERATOR_HPP_INCLUDED
-#define FCPPT_ALGORITHM_DETAIL_HAS_RANDOM_ACCESS_ITERATOR_HPP_INCLUDED
+#ifndef FCPPT_ALGORITHM_DETAIL_MPL_SIZE_TYPE_HPP_INCLUDED
+#define FCPPT_ALGORITHM_DETAIL_MPL_SIZE_TYPE_HPP_INCLUDED
 
-#include <fcppt/detail/void.hpp>
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
-#include <fcppt/type_traits/is_random_access_iterator.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <type_traits>
+#include <boost/mpl/is_sequence.hpp>
+#include <boost/mpl/size.hpp>
+#include <boost/utility/enable_if.hpp>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -31,34 +31,32 @@ template<
 	typename Type,
 	typename Test = void
 >
-struct has_random_access_iterator
-:
-std::false_type
+struct mpl_size_type
 {
+	typedef
+	void
+	type;
 };
 
 template<
 	typename Type
 >
-struct has_random_access_iterator<
+struct mpl_size_type<
 	Type,
-	decltype(
-		fcppt::detail::void_(
-			std::declval<
-				Type
-			>().begin()
-		)
-	)
->
-:
-fcppt::type_traits::is_random_access_iterator<
-	decltype(
-		std::declval<
+	typename
+	boost::enable_if<
+		boost::mpl::is_sequence<
 			Type
-		>().begin()
-	)
+		>
+	>::type
 >
 {
+	typedef
+	typename
+	boost::mpl::size<
+		Type
+	>::value_type
+	type;
 };
 
 FCPPT_PP_POP_WARNING

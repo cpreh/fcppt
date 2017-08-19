@@ -8,8 +8,11 @@
 #define FCPPT_ALGORITHM_MAP_HPP_INCLUDED
 
 #include <fcppt/move_if_rvalue.hpp>
-#include <fcppt/algorithm/range_element_type.hpp>
+#include <fcppt/algorithm/loop.hpp>
 #include <fcppt/algorithm/detail/map_reserve.hpp>
+#include <fcppt/config/external_begin.hpp>
+#include <utility>
+#include <fcppt/config/external_end.hpp>
 
 
 namespace fcppt
@@ -52,25 +55,31 @@ map(
 		_source
 	);
 
-	for(
-		fcppt::algorithm::range_element_type<
+	fcppt::algorithm::loop(
+		std::forward<
 			SourceRange
-		> element
-		:
-		_source
-	)
-		result.insert(
-			result.end(),
-			_function(
-				fcppt::move_if_rvalue<
-					decltype(
-						element
+		>(
+			_source
+		),
+		[
+			&_function,
+			&result
+		](
+			auto &&_map_element
+		)
+		{
+			result.insert(
+				result.end(),
+				_function(
+					fcppt::move_if_rvalue<
+						SourceRange
+					>(
+						_map_element
 					)
-				>(
-					element
 				)
-			)
-		);
+			);
+		}
+	);
 
 	return
 		result;

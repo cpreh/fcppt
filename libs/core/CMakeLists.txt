@@ -24,6 +24,7 @@ set(
 	libs/core/include/fcppt/algorithm/detail/join_impl.hpp
 	libs/core/include/fcppt/algorithm/detail/map_concat.hpp
 	libs/core/include/fcppt/algorithm/detail/map_reserve.hpp
+	libs/core/include/fcppt/algorithm/detail/mpl_size_type.hpp
 	libs/core/include/fcppt/algorithm/detail/optimize_map.hpp
 	libs/core/include/fcppt/algorithm/detail/reverse.hpp
 	libs/core/include/fcppt/algorithm/detail/source_size.hpp
