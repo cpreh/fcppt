@@ -12,6 +12,7 @@
 	<li>Added \link fcppt::algorithm::equal\endlink.</li>
 	<li>\link fcppt::algorithm::append\endlink now also works on rvalues.</li>
 	<li>\link fcppt::algorithm::map\endlink now uses \link fcppt::algorithm::loop\endlink, so it works on different ranges.</li>
+	<li>Allow \link fcppt::algorithm::join\endlink to join maps and sets.</li>
 	</ul>
 </li>
 

@@ -199,11 +199,13 @@ set(
 	libs/core/include/fcppt/algorithm/contains.hpp
 	libs/core/include/fcppt/algorithm/contains_if.hpp
 	libs/core/include/fcppt/algorithm/detail/array_push_back_function.hpp
+	libs/core/include/fcppt/algorithm/detail/has_insert_range.hpp
 	libs/core/include/fcppt/algorithm/detail/has_random_access_iterator.hpp
 	libs/core/include/fcppt/algorithm/detail/has_reserve.hpp
 	libs/core/include/fcppt/algorithm/detail/has_size.hpp
 	libs/core/include/fcppt/algorithm/detail/join_all.hpp
 	libs/core/include/fcppt/algorithm/detail/join_impl.hpp
+	libs/core/include/fcppt/algorithm/detail/join_insert.hpp
 	libs/core/include/fcppt/algorithm/detail/map_concat.hpp
 	libs/core/include/fcppt/algorithm/detail/map_reserve.hpp
 	libs/core/include/fcppt/algorithm/detail/mpl_size_type.hpp

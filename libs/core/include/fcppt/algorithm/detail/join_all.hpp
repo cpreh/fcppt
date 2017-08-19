@@ -8,6 +8,7 @@
 #define FCPPT_ALGORITHM_DETAIL_JOIN_ALL_HPP_INCLUDED
 
 #include <fcppt/move_iterator_if_rvalue.hpp>
+#include <fcppt/algorithm/detail/join_insert.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <type_traits>
 #include <utility>
@@ -53,8 +54,8 @@ join_all(
 	Args &&... _args
 )
 {
-	_result.insert(
-		_result.end(),
+	fcppt::algorithm::detail::join_insert(
+		_result,
 		fcppt::move_iterator_if_rvalue<
 			Container
 		>(

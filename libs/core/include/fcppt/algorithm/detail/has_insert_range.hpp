@@ -4,10 +4,9 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_ALGORITHM_DETAIL_HAS_SIZE_HPP_INCLUDED
-#define FCPPT_ALGORITHM_DETAIL_HAS_SIZE_HPP_INCLUDED
+#ifndef FCPPT_ALGORITHM_DETAIL_HAS_INSERT_RANGE_HPP_INCLUDED
+#define FCPPT_ALGORITHM_DETAIL_HAS_INSERT_RANGE_HPP_INCLUDED
 
-#include <fcppt/detail/void.hpp>
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
@@ -30,7 +29,7 @@ template<
 	typename Type,
 	typename Test = void
 >
-struct has_size
+struct has_insert_range
 :
 std::false_type
 {
@@ -39,13 +38,20 @@ std::false_type
 template<
 	typename Type
 >
-struct has_size<
+struct has_insert_range<
 	Type,
 	decltype(
-		fcppt::detail::void_(
+		std::declval<
+			Type
+		>().insert(
 			std::declval<
-				Type
-			>().size()
+				typename
+				Type::iterator
+			>(),
+			std::declval<
+				typename
+				Type::iterator
+			>()
 		)
 	)
 >

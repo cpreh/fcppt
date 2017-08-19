@@ -13,6 +13,7 @@
 #include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/test/unit_test.hpp>
+#include <map>
 #include <vector>
 #include <fcppt/config/external_end.hpp>
 
@@ -186,5 +187,70 @@ FCPPT_PP_POP_WARNING
 	BOOST_CHECK_EQUAL(
 		*result[5],
 		6
+	);
+}
+
+FCPPT_PP_PUSH_WARNING
+FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
+
+BOOST_AUTO_TEST_CASE(
+	algorithm_join_map
+)
+{
+FCPPT_PP_POP_WARNING
+
+	typedef
+	std::map<
+		int,
+		char
+	>
+	int_map;
+
+	int_map result(
+		fcppt::algorithm::join(
+			int_map{
+				std::make_pair(
+					1,
+					'a'
+				),
+				std::make_pair(
+					2,
+					'b'
+				)
+			},
+			int_map{
+				std::make_pair(
+					2,
+					'c'
+				),
+				std::make_pair(
+					3,
+					'd'
+				)
+			}
+		)
+	);
+
+	BOOST_CHECK(
+		result.find(
+			4
+		)
+		==
+		result.end()
+	);
+
+	BOOST_CHECK_EQUAL(
+		result[1],
+		'a'
+	);
+
+	BOOST_CHECK_EQUAL(
+		result[2],
+		'b'
+	);
+
+	BOOST_CHECK_EQUAL(
+		result[3],
+		'd'
 	);
 }
