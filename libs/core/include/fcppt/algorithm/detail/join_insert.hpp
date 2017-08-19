@@ -8,6 +8,9 @@
 #define FCPPT_ALGORITHM_DETAIL_JOIN_INSERT_HPP_INCLUDED
 
 #include <fcppt/algorithm/detail/has_insert_range.hpp>
+#include <fcppt/config/external_begin.hpp>
+#include <boost/utility/enable_if.hpp>
+#include <fcppt/config/external_end.hpp>
 
 
 namespace fcppt
