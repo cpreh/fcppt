@@ -124,16 +124,16 @@ fcppt::signal::object<
 				this,
 				&_args...
 			](
-				auto &_item,
-				result_type &&_state
+				auto &_fcppt_item,
+				result_type &&_fcppt_state
 			)
 			{
 				return
 					combiner_(
 						std::move(
-							_state
+							_fcppt_state
 						),
-						_item.function()(
+						_fcppt_item.function()(
 							_args...
 						)
 					);
