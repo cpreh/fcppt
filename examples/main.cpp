@@ -45,7 +45,7 @@ print_at_2(
 
 // ![vec_to_string]
 std::vector<std::string>
-vec_to_string(
+int_vec_to_string_vec(
 	std::vector<int> &&_vec
 )
 {
@@ -76,7 +76,7 @@ main()
 {
 	print_at_2(std::vector<int>{});
 
-	vec_to_string(std::vector<int>{});
+	int_vec_to_string_vec(std::vector<int>{});
 
 	init_array<4u>();
 }

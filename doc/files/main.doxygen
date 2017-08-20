@@ -14,20 +14,21 @@ is one of fcppt's main goals. These are, unfortunately, all over the place in co
 can be used for out-of-bounds access, iterators can be incremented past their end, and so on.
 Partial functions place a huge burden on the programmer since they have to ensure that
 no code path is taken that actually calls a function with invalid arguments.
-Consider the following function:
+Consider the following example, where we avoid partial functions:
 
 \snippet main.cpp print_at_2
 
 The \link fcppt::container::at_optional\endlink function returns an optional reference
 into the container, which the \link fcppt::optional::maybe\endlink function uses to either
 print the value or print that no element at position <code>2</code> exists.
-Notice that we, at no point, call a partial function: We do not ask explicitly if the
-optional has a value or dereference it (which can crash if the value is null).
+Notice we do not ask explicitly if the optional has a value or dereference it
+(which can crash if the value is null).
 
 Explicit loops are another source of mistakes: The loop not only specifies what
 to loop over but also how the result is formed. What to loop over is best expressed
 using ranges, while forming the result can be expressed using
-special algorithms. A very common operation is mapping one container into another:
+special algorithms. A very common operation is mapping one container into another,
+which can be expressed like this:
 
 \snippet main.cpp vec_to_string
 
@@ -40,7 +41,7 @@ This also brings us to the next point, which is initialization. It is important 
 initialize objects and declare them as <code>const</code> as often as you can.
 Obviously you cannot do that with loops that change their result in each iteration, like by
 calling <code>push_back</code>. There are, however, even more complicated cases in which
-direct initializtion becomes hard to express: Consider a <code>std::array</code> that
+direct initialization becomes hard to express: Consider a <code>std::array</code> that
 should be initialized <em>depending on its size</em>. For simplicity, let us initialize
 each element with its index:
 
@@ -55,17 +56,16 @@ and \link fcppt::variant::object\endlink.
 
 Following is a list of a few other libraries (for a complete list, see the modules page at the top):
 <ul>
-<li>\ref fcppteither is an extension of Optional, since it either carries a success or an error value, while
-\ref fcpptoptional either carries a success value or nothing.
-\ref fcpptvariant is an arbitrary sum type (which carries a value of one type out
-of a fixed set of types).</li>
-<li>\ref fcpptrecord allows to create record types, which map static element names to types.</li>
+<li>\ref fcppteither carries a success or an error value. In comparison, \ref fcpptoptional only
+has a single error value.</li>
+<li>\ref fcpptrecord allows to create record types, which are a collection of statically named elements.</li>
 <li>\ref fcpptoptions provides declarative command-line option parsers, similar to Haskell's <code>optparse-applicative</code> library.</li>
-<li>\ref fcpptenum gives enumerations more structure, so you can for example iterate over them, convert them from
+<li>\ref fcpptenum allows, for example, to iterate over enums, convert enums from
 and to strings, create arrays that are indexed by enums, and so on.</li>
+<li>\ref fcpptcasts replaces the standard casts with more explicit ones.</li>
 </ul>
 
-For more techincal details, you can also take a look at our \ref code_style.
+For more technical details, you can also take a look at our \ref code_style.
 
 \section main_sitemap Site map
 
