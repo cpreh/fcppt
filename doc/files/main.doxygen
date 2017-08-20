@@ -41,7 +41,7 @@ initialize objects and declare them as <code>const</code> as often as you can.
 Obviously you cannot do that with loops that change their result in each iteration, like by
 calling <code>push_back</code>. There are, however, even more complicated cases in which
 direct initializtion becomes hard to express: Consider a <code>std::array</code> that
-should be initialized <em>depending on its size</em>. For simplicity, lets initialize
+should be initialized <em>depending on its size</em>. For simplicity, let us initialize
 each element with its index:
 
 \snippet main.cpp init_array
@@ -49,13 +49,19 @@ each element with its index:
 Notice that the parameter <em>_index</em> is actually an integral constant, which we
 use to access the <code>make_value</code> template.
 
-This concludes the introduction, but there is a lot more to explore. Here are a few examples:
+To force initialization, fcppt also replaces certain standard types with types that have no
+default constructor, for example \link fcppt::unique_ptr\endlink, \link fcppt::function\endlink
+and \link fcppt::variant::object\endlink.
+
+Following is a list of a few other libraries (for a complete list, see the modules page at the top):
 <ul>
-<li>\ref fcppteither and \ref fcpptvariant. Either is an extension of Optional, since it either carries a success or an error value,
-while optional either carries a success value or nothing. Variant is an arbitrary sum type (which carries a value of one type out
+<li>\ref fcppteither is an extension of Optional, since it either carries a success or an error value, while
+\ref fcpptoptional either carries a success value or nothing.
+\ref fcpptvariant is an arbitrary sum type (which carries a value of one type out
 of a fixed set of types).</li>
+<li>\ref fcpptrecord allows to create record types, which map static element names to types.</li>
 <li>\ref fcpptoptions provides declarative command-line option parsers, similar to Haskell's <code>optparse-applicative</code> library.</li>
-<li>\ref fcpptenum is an extensive library to deal with enumerations, for example to iterate over them, convert them from
+<li>\ref fcpptenum gives enumerations more structure, so you can for example iterate over them, convert them from
 and to strings, create arrays that are indexed by enums, and so on.</li>
 </ul>
 
