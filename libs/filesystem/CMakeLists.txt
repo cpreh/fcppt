@@ -52,9 +52,9 @@ make_fcppt_library(
 		fcppt_core_interface
 		fcppt_system_interface
 	OTHER_DEPS
-		${Boost_FILESYSTEM_LIBRARY}
-		${Boost_SYSTEM_LIBRARY}
+		${Boost_FILESYSTEM_LIBRARIES}
+		${Boost_SYSTEM_LIBRARIES}
 	TRANSITIVE_DEPS
-		${Boost_FILESYSTEM_LIBRARY}
-		${Boost_SYSTEM_LIBRARY}
+		${Boost_FILESYSTEM_LIBRARIES}
+		${Boost_SYSTEM_LIBRARIES}
 )
