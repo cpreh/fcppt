@@ -27,8 +27,10 @@ Notice we do not ask explicitly if the optional has a value or dereference it
 Explicit loops are another source of mistakes: The loop not only specifies what
 to loop over but also how the result is formed. What to loop over is best expressed
 using ranges, while forming the result can be expressed using
-special algorithms. A very common operation is mapping one container into another,
-which can be expressed like this:
+special algorithms. A very common operation is mapping one container into another.
+Here, we want to convert a container of integers into a container of strings by
+using \link fcppt::insert_to_string\endlink, which converts any type into a string
+that has an output operator defined:
 
 \snippet main.cpp vec_to_string
 
@@ -38,7 +40,7 @@ the first <code>push_back</code>. All of this is nicely encapsulated in \link fc
 so that you only have to focus on how to transform <em>a single element</em> into another.
 
 This also brings us to the next point, which is initialization. It is important to directly
-initialize objects and declare them as <code>const</code> as often as you can.
+initialize objects and declare them as <code>const</code> whenever possible.
 Obviously you cannot do that with loops that change their result in each iteration, like by
 calling <code>push_back</code>. There are, however, even more complicated cases in which
 direct initialization becomes hard to express: Consider a <code>std::array</code> that
