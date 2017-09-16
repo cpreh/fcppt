@@ -1,6 +1,27 @@
 /**
 \page changes Changes
 
+\section changes_changes_to_270 2.7.0
+
+\subsection changes_added_functionality_to_270 Added functionality
+
+<ul>
+
+<li>\ref fcpptcontainer
+	<ul>
+	<li>Added \link fcppt::container::map_values_ref\endlink and \link fcppt::container::map_values_copy\endlink.</li>
+	</ul>
+</li>
+
+<li>\ref fcpptref
+	<ul>
+	<li>Added \link fcppt::is_reference\endlink.</li>
+	</ul>
+</li>
+
+</ul>
+
+
 \section changes_changes_to_260 2.6.0
 
 \subsection changes_added_functionality_to_260 Added functionality

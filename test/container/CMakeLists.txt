@@ -61,6 +61,14 @@ add_fcppt_container_test(
 )
 
 add_fcppt_container_test(
+	map_values_copy
+)
+
+add_fcppt_container_test(
+	map_values_ref
+)
+
+add_fcppt_container_test(
 	move_range
 )
 

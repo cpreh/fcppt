@@ -4,10 +4,10 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_IS_STRONG_TYPEDEF_HPP_INCLUDED
-#define FCPPT_IS_STRONG_TYPEDEF_HPP_INCLUDED
+#ifndef FCPPT_IS_REFERENCE_HPP_INCLUDED
+#define FCPPT_IS_REFERENCE_HPP_INCLUDED
 
-#include <fcppt/strong_typedef_fwd.hpp>
+#include <fcppt/reference_fwd.hpp>
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
@@ -23,27 +23,25 @@ FCPPT_PP_PUSH_WARNING
 FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
 
 /**
-\brief Tests if a type is an \link fcppt::strong_typedef\endlink.
+\brief Tests if a type is an \link fcppt::reference\endlink.
 
-\ingroup fcpptstrongtypedef
+\ingroup fcpptref
 */
 template<
-	typename T
+	typename Type
 >
-struct is_strong_typedef
+struct is_reference
 :
 std::false_type
 {
 };
 
 template<
-	typename Type,
-	typename Tag
+	typename Type
 >
-struct is_strong_typedef<
-	fcppt::strong_typedef<
-		Type,
-		Tag
+struct is_reference<
+	fcppt::reference<
+		Type
 	>
 >
 :
