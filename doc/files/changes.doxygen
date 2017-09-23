@@ -10,6 +10,7 @@
 <li>\ref fcpptcontainer
 	<ul>
 	<li>Added \link fcppt::container::map_values_ref\endlink and \link fcppt::container::map_values_copy\endlink.</li>
+	<li>Added \link fcppt::container::insert\endlink.</li>
 	</ul>
 </li>
 

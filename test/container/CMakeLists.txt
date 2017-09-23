@@ -49,6 +49,10 @@ add_fcppt_container_test(
 )
 
 add_fcppt_container_test(
+	insert
+)
+
+add_fcppt_container_test(
 	make_array
 )
 
