@@ -174,6 +174,10 @@ add_subdirectory(
 )
 
 add_fcppt_test(
+	move_clear
+)
+
+add_fcppt_test(
 	move_if_rvalue
 )
 

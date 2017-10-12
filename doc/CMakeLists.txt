@@ -501,8 +501,11 @@ set(
 	libs/core/include/fcppt/container/index_map_decl.hpp
 	libs/core/include/fcppt/container/index_map_fwd.hpp
 	libs/core/include/fcppt/container/index_map_impl.hpp
+	libs/core/include/fcppt/container/insert.hpp
 	libs/core/include/fcppt/container/make_array.hpp
 	libs/core/include/fcppt/container/make_move_range.hpp
+	libs/core/include/fcppt/container/map_values_copy.hpp
+	libs/core/include/fcppt/container/map_values_ref.hpp
 	libs/core/include/fcppt/container/maybe_back.hpp
 	libs/core/include/fcppt/container/maybe_front.hpp
 	libs/core/include/fcppt/container/move_range_decl.hpp
@@ -735,6 +738,7 @@ set(
 	libs/core/include/fcppt/io/widen_string.hpp
 	libs/core/include/fcppt/io/write.hpp
 	libs/core/include/fcppt/io/write_chars.hpp
+	libs/core/include/fcppt/is_reference.hpp
 	libs/core/include/fcppt/is_strong_typedef.hpp
 	libs/core/include/fcppt/literal.hpp
 	libs/core/include/fcppt/loop.hpp
@@ -988,6 +992,7 @@ set(
 	libs/core/include/fcppt/math/vector/unit.hpp
 	libs/core/include/fcppt/micro_version.hpp
 	libs/core/include/fcppt/minor_version.hpp
+	libs/core/include/fcppt/move_clear.hpp
 	libs/core/include/fcppt/move_if.hpp
 	libs/core/include/fcppt/move_if_rvalue.hpp
 	libs/core/include/fcppt/move_iterator_if_rvalue.hpp
