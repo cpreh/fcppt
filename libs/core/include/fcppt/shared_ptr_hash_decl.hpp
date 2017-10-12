@@ -20,7 +20,7 @@ namespace fcppt
 /**
 \brief A hash for fcppt::shared_ptr that hashes pointers
 
-\ingroup fcpptref
+\ingroup fcpptsmartptr
 */
 template<
 	typename Type
