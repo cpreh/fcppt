@@ -10,6 +10,9 @@
 #include <fcppt/container/to_value_type.hpp>
 #include <fcppt/optional/make_if.hpp>
 #include <fcppt/optional/object_impl.hpp>
+#include <fcppt/config/external_begin.hpp>
+#include <utility>
+#include <fcppt/config/external_end.hpp>
 
 
 namespace fcppt
@@ -47,7 +50,9 @@ pop_back(
 				&_container
 			]{
 				value_type result{
-					_container.back()
+					std::move(
+						_container.back()
+					)
 				};
 
 				_container.pop_back();

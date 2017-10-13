@@ -12,6 +12,7 @@
 	<li>Added \link fcppt::container::map_values_ref\endlink and \link fcppt::container::map_values_copy\endlink.</li>
 	<li>Added \link fcppt::container::insert\endlink.</li>
 	<li>Added \link fcppt::container::pop_front\endlink.</li>
+	<li>Allow move-only types in \link fcppt::container::pop_front\endlink and \link fcppt::container::pop_back\endlink.</li>
 	</ul>
 </li>
 

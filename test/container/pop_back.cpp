@@ -4,9 +4,13 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
+#include <fcppt/make_unique_ptr.hpp>
+#include <fcppt/unique_ptr_impl.hpp>
+#include <fcppt/assign/make_container.hpp>
 #include <fcppt/container/pop_back.hpp>
 #include <fcppt/optional/comparison.hpp>
 #include <fcppt/optional/make.hpp>
+#include <fcppt/optional/maybe.hpp>
 #include <fcppt/optional/output.hpp>
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
@@ -62,5 +66,63 @@ FCPPT_PP_POP_WARNING
 		vec12
 		==
 		expected
+	);
+}
+
+FCPPT_PP_PUSH_WARNING
+FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
+
+BOOST_AUTO_TEST_CASE(
+	container_pop_back_move
+)
+{
+FCPPT_PP_POP_WARNING
+
+	typedef
+	fcppt::unique_ptr<
+		int
+	>
+	int_ptr;
+
+	typedef
+	std::vector<
+		int_ptr
+	>
+	int_ptr_vector;
+
+	int_ptr_vector vector(
+		fcppt::assign::make_container<
+			int_ptr_vector
+		>(
+			fcppt::make_unique_ptr<
+				int
+			>(
+				42
+			)
+		)
+	);
+
+	fcppt::optional::maybe(
+		fcppt::container::pop_back(
+			vector
+		),
+		[]{
+			BOOST_CHECK(
+				false
+			);
+		},
+		[](
+			int_ptr &&_ptr
+		)
+		{
+			BOOST_CHECK_EQUAL(
+				*_ptr,
+				42
+			);
+		}
+	);
+
+	BOOST_CHECK(
+		vector.empty()
 	);
 }
