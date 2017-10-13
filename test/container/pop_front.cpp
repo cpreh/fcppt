@@ -4,7 +4,7 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/container/pop_back.hpp>
+#include <fcppt/container/pop_front.hpp>
 #include <fcppt/optional/comparison.hpp>
 #include <fcppt/optional/make.hpp>
 #include <fcppt/optional/output.hpp>
@@ -13,7 +13,7 @@
 #include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/test/unit_test.hpp>
-#include <vector>
+#include <deque>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -21,41 +21,41 @@ FCPPT_PP_PUSH_WARNING
 FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
 
 BOOST_AUTO_TEST_CASE(
-	container_pop_back
+	container_pop_front
 )
 {
 FCPPT_PP_POP_WARNING
 
 	typedef
-	std::vector<
+	std::deque<
 		int
 	>
-	int_vector;
+	int_queue;
 
-	int_vector empty{};
+	int_queue empty{};
 
 	BOOST_CHECK(
-		!fcppt::container::pop_back(
+		!fcppt::container::pop_front(
 			empty
 		).has_value()
 	);
 
-	int_vector vec12{
+	int_queue vec12{
 		1,
 		2
 	};
 
 	BOOST_CHECK_EQUAL(
-		fcppt::container::pop_back(
+		fcppt::container::pop_front(
 			vec12
 		),
 		fcppt::optional::make(
-			2
+			1
 		)
 	);
 
-	int_vector const expected{
-		1
+	int_queue const expected{
+		2
 	};
 
 	BOOST_CHECK(

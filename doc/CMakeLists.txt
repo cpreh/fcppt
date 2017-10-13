@@ -513,6 +513,7 @@ set(
 	libs/core/include/fcppt/container/move_range_impl.hpp
 	libs/core/include/fcppt/container/output.hpp
 	libs/core/include/fcppt/container/pop_back.hpp
+	libs/core/include/fcppt/container/pop_front.hpp
 	libs/core/include/fcppt/container/raw_vector/comparison.hpp
 	libs/core/include/fcppt/container/raw_vector/object.hpp
 	libs/core/include/fcppt/container/raw_vector/object_decl.hpp

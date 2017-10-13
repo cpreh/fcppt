@@ -84,6 +84,10 @@ add_fcppt_container_test(
 	pop_back
 )
 
+add_fcppt_container_test(
+	pop_front
+)
+
 add_subdirectory(
 	raw_vector
 )
