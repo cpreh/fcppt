@@ -29,6 +29,10 @@ add_fcppt_cast_test(
 )
 
 add_fcppt_cast_test(
+	to_uint_ptr
+)
+
+add_fcppt_cast_test(
 	truncation_check
 	LINK_LIBS
 		"${fcppt_core_TARGET}"

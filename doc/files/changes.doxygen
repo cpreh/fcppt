@@ -7,6 +7,12 @@
 
 <ul>
 
+<li>\ref fcpptcasts
+	<ul>
+	<li>Added \link fcppt::cast::to_uint_ptr\endlink.</li>
+	</ul>
+</li>
+
 <li>\ref fcpptcontainer
 	<ul>
 	<li>Added \link fcppt::container::map_values_ref\endlink and \link fcppt::container::map_values_copy\endlink.</li>
