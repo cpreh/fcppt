@@ -9,9 +9,11 @@
 
 #include <fcppt/math/ceil_div_signed.hpp>
 #include <fcppt/math/size_type.hpp>
+#include <fcppt/math/detail/sequence.hpp>
 #include <fcppt/math/vector/map.hpp>
 #include <fcppt/math/vector/object_impl.hpp>
 #include <fcppt/math/vector/static.hpp>
+#include <fcppt/optional/object_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
@@ -25,7 +27,10 @@ namespace vector
 {
 
 /**
-\brief Division rounded up for signed vectors
+\brief Division rounded up for signed vectors.
+
+Applies \link fcppt::math::ceil_div_signed\endlink to each component. Returns
+nothing in case _divisor is zero.
 
 \ingroup fcpptmathvector
 */
@@ -34,9 +39,11 @@ template<
 	fcppt::math::size_type N,
 	typename S
 >
-fcppt::math::vector::static_<
-	T,
-	N
+fcppt::optional::object<
+	fcppt::math::vector::static_<
+		T,
+		N
+	>
 >
 ceil_div_signed(
 	fcppt::math::vector::object<
@@ -44,7 +51,7 @@ ceil_div_signed(
 		N,
 		S
 	> const _vector,
-	T const _factor
+	T const _divisor
 )
 {
 	static_assert(
@@ -55,23 +62,27 @@ ceil_div_signed(
 	);
 
 	return
-		fcppt::math::vector::map<
-			T,
-			N
+		fcppt::math::detail::sequence<
+			fcppt::math::vector::static_<
+				T,
+				N
+			>
 		>(
-			_vector,
-			[
-				_factor
-			](
-				T const _value
+			fcppt::math::vector::map(
+				_vector,
+				[
+					_divisor
+				](
+					T const _value
+				)
+				{
+					return
+						fcppt::math::ceil_div_signed(
+							_value,
+							_divisor
+						);
+				}
 			)
-			{
-				return
-					fcppt::math::ceil_div_signed(
-						_value,
-						_factor
-					);
-			}
 		);
 }
 

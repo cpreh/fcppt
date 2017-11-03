@@ -7,6 +7,13 @@
 
 <ul>
 
+<li>\ref fcpptalgorithm
+	<ul>
+	<li>Allow <code>std::array</code> in \link fcppt::algorithm::map\endlink.</li>
+	<li>Allow rvalues in \link fcppt::algorithm::array_map\endlink.</li>
+	</ul>
+</li>
+
 <li>\ref fcpptcasts
 	<ul>
 	<li>Added \link fcppt::cast::to_uint_ptr\endlink.</li>
@@ -22,6 +29,12 @@
 	</ul>
 </li>
 
+<li>\ref fcpptoptional
+	<ul>
+	<li>Added \link fcppt::optional::sequence\endlink.</li>
+	</ul>
+</li>
+
 <li>\ref fcpptref
 	<ul>
 	<li>Added \link fcppt::is_reference\endlink.</li>
@@ -31,6 +44,24 @@
 <li>\ref fcpptvarious
 	<ul>
 	<li>Added \link fcppt::move_clear\endlink.</li>
+	</ul>
+</li>
+
+</ul>
+
+\subsection changes_changed_functionality_to_270 Changed functionality
+
+<ul>
+
+<li>\ref fcpptmath
+	<ul>
+	<li>\link fcppt::math::ceil_div\endlink and \link fcppt::math::ceil_div_signed\endlink now return optionals.</li>
+	</ul>
+</li>
+
+<li>\ref fcpptmathvector
+	<ul>
+	<li>\link fcppt::math::vector::ceil_div_signed\endlink now returns an optional.</li>
 	</ul>
 </li>
 

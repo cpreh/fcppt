@@ -7,12 +7,12 @@
 #ifndef FCPPT_ALGORITHM_ARRAY_MAP_HPP_INCLUDED
 #define FCPPT_ALGORITHM_ARRAY_MAP_HPP_INCLUDED
 
+#include <fcppt/move_if_rvalue.hpp>
 #include <fcppt/algorithm/array_init.hpp>
 #include <fcppt/container/array_size.hpp>
 #include <fcppt/type_traits/is_std_array.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <array>
-#include <cstddef>
+#include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -35,26 +35,20 @@ Example:
 
 \tparam TargetArray Must be a std::array
 
-\tparam SourceType Can be any type
-
-\tparam SourceCount The number of elements in the source array
+\tparam SourceArray Must be a std::array
 
 \tparam Function Must be a function callable as <code>TargetArray::value_type
-(SourceType)</code>.
+(SourceArray::value_type)</code>.
 **/
 template<
 	typename TargetArray,
-	typename SourceType,
-	std::size_t SourceCount,
+	typename SourceArray,
 	typename Function
 >
 inline
 TargetArray
 array_map(
-	std::array<
-		SourceType,
-		SourceCount
-	> const &_source,
+	SourceArray &&_source,
 	Function const &_function
 )
 {
@@ -65,12 +59,28 @@ array_map(
 		"TargetArray must be a std::array"
 	);
 
+	typedef
+	typename
+	std::decay<
+		SourceArray
+	>::type
+	source_array;
+
+	static_assert(
+		fcppt::type_traits::is_std_array<
+			source_array
+		>::value,
+		"SourceArray must be a std::array"
+	);
+
 	static_assert(
 		fcppt::container::array_size<
 			TargetArray
 		>::value
 		==
-		SourceCount,
+		fcppt::container::array_size<
+			source_array
+		>::value,
 		"All arrays must have the same number of elements"
 	);
 
@@ -87,9 +97,13 @@ array_map(
 			{
 				return
 					_function(
-						_source[
-							_index()
-						]
+						fcppt::move_if_rvalue<
+							SourceArray
+						>(
+							_source[
+								_index()
+							]
+						)
 					);
 			}
 		);

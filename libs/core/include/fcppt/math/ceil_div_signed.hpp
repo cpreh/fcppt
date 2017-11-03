@@ -7,8 +7,12 @@
 #ifndef FCPPT_MATH_CEIL_DIV_SIGNED_HPP_INCLUDED
 #define FCPPT_MATH_CEIL_DIV_SIGNED_HPP_INCLUDED
 
+#include <fcppt/literal.hpp>
 #include <fcppt/cast/to_signed.hpp>
 #include <fcppt/cast/to_unsigned.hpp>
+#include <fcppt/optional/map.hpp>
+#include <fcppt/optional/make_if.hpp>
+#include <fcppt/optional/object_impl.hpp>
 #include <fcppt/math/ceil_div.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <type_traits>
@@ -21,16 +25,21 @@ namespace math
 {
 
 /**
-\brief Calculates dividend / divisor rounded towards infinity
-\tparam T A signed type
+\brief Calculates dividend / divisor rounded towards infinity.
+
 \ingroup fcpptmath
-\param _dividend The dividend
-\param _divisor The divisor
+
+The same as \link fcppt::math::ceil_div\endlink, except in case where dividend
+is negative, dividend / divisor is returned.
+
+\tparam T A signed type
 */
 template<
 	typename T
 >
-T
+fcppt::optional::object<
+	T
+>
 ceil_div_signed(
 	T const &_dividend,
 	T const &_divisor
@@ -43,22 +52,38 @@ ceil_div_signed(
 		"ceil_div_signed can only be used on signed types"
 	);
 
+	T const zero{
+		fcppt::literal<
+			T
+		>(
+			0
+		)
+	};
+
 	return
 		(
 			_dividend
 			<
-			fcppt::literal<
-				T
-			>(
-				0
-			)
+			zero
 		)
 		?
-			_dividend
-			/
-			_divisor
+			fcppt::optional::make_if(
+				_divisor
+				!=
+				zero,
+				[
+					_dividend,
+					_divisor
+				]{
+					return
+						_dividend
+						/
+						_divisor
+						;
+				}
+			)
 		:
-			fcppt::cast::to_signed(
+			fcppt::optional::map(
 				fcppt::math::ceil_div(
 					fcppt::cast::to_unsigned(
 						_dividend
@@ -66,7 +91,19 @@ ceil_div_signed(
 					fcppt::cast::to_unsigned(
 						_divisor
 					)
+				),
+				[](
+					typename
+					std::make_unsigned<
+						T
+					>::type const _result
 				)
+				{
+					return
+						fcppt::cast::to_signed(
+							_result
+						);
+				}
 			)
 		;
 }

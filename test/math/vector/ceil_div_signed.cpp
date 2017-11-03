@@ -8,6 +8,8 @@
 #include <fcppt/math/vector/comparison.hpp>
 #include <fcppt/math/vector/output.hpp>
 #include <fcppt/math/vector/static.hpp>
+#include <fcppt/optional/object.hpp>
+#include <fcppt/optional/output.hpp>
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
@@ -32,17 +34,29 @@ FCPPT_PP_POP_WARNING
 	>
 	i2_vector;
 
-	BOOST_CHECK_EQUAL(
+	typedef
+	fcppt::optional::object<
+		i2_vector
+	>
+	result_type;
+
+	result_type const result{
 		fcppt::math::vector::ceil_div_signed(
 			i2_vector{
 				1,
 				5
 			},
 			2
-		),
-		i2_vector(
-			1,
-			3
 		)
+	};
+
+	BOOST_CHECK_EQUAL(
+		result,
+		result_type{
+			i2_vector(
+				1,
+				3
+			)
+		}
 	);
 }

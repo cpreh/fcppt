@@ -7,7 +7,7 @@
 #include <fcppt/make_unique_ptr.hpp>
 #include <fcppt/unique_ptr_impl.hpp>
 #include <fcppt/assign/make_container.hpp>
-#include <fcppt/optional/cat.hpp>
+#include <fcppt/optional/sequence.hpp>
 #include <fcppt/optional/object_impl.hpp>
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
@@ -22,7 +22,7 @@ FCPPT_PP_PUSH_WARNING
 FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
 
 BOOST_AUTO_TEST_CASE(
-	optional_cat
+	optional_sequence
 )
 {
 FCPPT_PP_POP_WARNING
@@ -45,35 +45,68 @@ FCPPT_PP_POP_WARNING
 	>
 	int_vector;
 
-	int_vector const result(
-		fcppt::optional::cat<
-			int_vector
-		>(
-			optional_int_vector{
-				optional_int{
-					42
-				},
-				optional_int{}
-			}
-		)
-	);
+	typedef
+	fcppt::optional::object<
+		int_vector
+	>
+	result_type;
 
-	BOOST_REQUIRE_EQUAL(
-		result.size(),
-		1u
-	);
+	{
+		result_type const result(
+			fcppt::optional::sequence<
+				int_vector
+			>(
+				optional_int_vector{
+					optional_int{
+						10
+					},
+					optional_int{
+						20
+					}
+				}
+			)
+		);
 
-	BOOST_CHECK_EQUAL(
-		result[0],
-		42
-	);
+		BOOST_REQUIRE(
+			result.has_value()
+		);
+
+		BOOST_REQUIRE_EQUAL(
+			result.get_unsafe()[0],
+			10
+		);
+
+		BOOST_REQUIRE_EQUAL(
+			result.get_unsafe()[1],
+			20
+		);
+	}
+
+	{
+		result_type const result2(
+			fcppt::optional::sequence<
+				int_vector
+			>(
+				optional_int_vector{
+					optional_int{
+						10
+					},
+					optional_int{}
+				}
+			)
+		);
+
+		BOOST_REQUIRE(
+			!result2.has_value()
+		);
+	}
 }
 
 FCPPT_PP_PUSH_WARNING
 FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
 
 BOOST_AUTO_TEST_CASE(
-	cat_optionals_move
+	optional_sequence_move
 )
 {
 FCPPT_PP_POP_WARNING
@@ -102,8 +135,15 @@ FCPPT_PP_POP_WARNING
 	>
 	int_unique_ptr_vector;
 
-	int_unique_ptr_vector const result(
-		fcppt::optional::cat<
+
+	typedef
+	fcppt::optional::object<
+		int_unique_ptr_vector
+	>
+	result_type;
+
+	result_type const result(
+		fcppt::optional::sequence<
 			int_unique_ptr_vector
 		>(
 			fcppt::assign::make_container<
@@ -115,19 +155,17 @@ FCPPT_PP_POP_WARNING
 					>(
 						42
 					)
-				),
-				optional_int_unique_ptr()
+				)
 			)
 		)
 	);
 
-	BOOST_REQUIRE_EQUAL(
-		result.size(),
-		1u
+	BOOST_REQUIRE(
+		result.has_value()
 	);
 
 	BOOST_CHECK_EQUAL(
-		*result[0],
+		*result.get_unsafe()[0],
 		42
 	);
 }

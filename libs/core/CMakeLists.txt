@@ -24,6 +24,7 @@ set(
 	libs/core/include/fcppt/algorithm/detail/join_all.hpp
 	libs/core/include/fcppt/algorithm/detail/join_impl.hpp
 	libs/core/include/fcppt/algorithm/detail/join_insert.hpp
+	libs/core/include/fcppt/algorithm/detail/map.hpp
 	libs/core/include/fcppt/algorithm/detail/map_concat.hpp
 	libs/core/include/fcppt/algorithm/detail/map_reserve.hpp
 	libs/core/include/fcppt/algorithm/detail/mpl_size_type.hpp
@@ -161,6 +162,7 @@ set(
 	libs/core/include/fcppt/cast/to_char_ptr.hpp
 	libs/core/include/fcppt/cast/to_signed.hpp
 	libs/core/include/fcppt/cast/to_signed_fun.hpp
+	libs/core/include/fcppt/cast/to_uint_ptr.hpp
 	libs/core/include/fcppt/cast/to_unsigned.hpp
 	libs/core/include/fcppt/cast/to_unsigned_fun.hpp
 	libs/core/include/fcppt/cast/to_void.hpp
@@ -641,6 +643,7 @@ set(
 	libs/core/include/fcppt/math/detail/null_storage.hpp
 	libs/core/include/fcppt/math/detail/one_dimensional_input.hpp
 	libs/core/include/fcppt/math/detail/one_dimensional_output.hpp
+	libs/core/include/fcppt/math/detail/sequence.hpp
 	libs/core/include/fcppt/math/detail/static_storage_decl.hpp
 	libs/core/include/fcppt/math/detail/static_storage_fwd.hpp
 	libs/core/include/fcppt/math/detail/static_storage_impl.hpp
@@ -892,10 +895,13 @@ set(
 	libs/core/include/fcppt/optional/output.hpp
 	libs/core/include/fcppt/optional/reference.hpp
 	libs/core/include/fcppt/optional/reference_fwd.hpp
+	libs/core/include/fcppt/optional/sequence.hpp
 	libs/core/include/fcppt/optional/static_cast.hpp
 	libs/core/include/fcppt/optional/to_container.hpp
 	libs/core/include/fcppt/optional/to_exception.hpp
 	libs/core/include/fcppt/optional/to_pointer.hpp
+	libs/core/include/fcppt/optional/value_type.hpp
+	libs/core/include/fcppt/optional/value_type_tpl.hpp
 	libs/core/include/fcppt/optional_size_t.hpp
 	libs/core/include/fcppt/optional_size_t_fwd.hpp
 	libs/core/include/fcppt/optional_std_string.hpp

@@ -54,6 +54,11 @@ public:
 		array_type &&
 	);
 
+	explicit
+	static_storage(
+		array_type const &
+	);
+
 	array_type const &
 	get() const;
 };

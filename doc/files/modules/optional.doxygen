@@ -225,6 +225,10 @@ Another commonly used function is \link fcppt::optional::from\endlink:
 <td>Includes <code>reference_fwd.hpp</code> and <code>object_impl.hpp</code>.</td>
 </tr>
 <tr>
+<td><code>sequence.hpp</code></td>
+<td>Contains \link fcppt::optional::sequence \endlink.</td>
+</tr>
+<tr>
 <td><code>static_cast.hpp</code></td>
 <td>Contains \link fcppt::optional::static_cast_ \endlink.</td>
 </tr>

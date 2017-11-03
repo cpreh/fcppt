@@ -24,6 +24,11 @@ namespace optional
 FCPPT_PP_PUSH_WARNING
 FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
 
+/**
+\brief Checks if a given type is an \link fcppt::optional::object\endlink.
+
+\ingroup fcpptoptional
+*/
 template<
 	typename T
 >

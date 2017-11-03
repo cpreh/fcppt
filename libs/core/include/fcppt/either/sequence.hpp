@@ -74,7 +74,7 @@ sequence(
 		fcppt::either::is_object<
 			source_either
 		>::value,
-		"The source must be a container of eithrs"
+		"The source must be a container of eithers"
 	);
 
 	typedef

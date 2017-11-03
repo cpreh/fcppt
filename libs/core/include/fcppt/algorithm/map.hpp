@@ -7,9 +7,7 @@
 #ifndef FCPPT_ALGORITHM_MAP_HPP_INCLUDED
 #define FCPPT_ALGORITHM_MAP_HPP_INCLUDED
 
-#include <fcppt/move_if_rvalue.hpp>
-#include <fcppt/algorithm/loop.hpp>
-#include <fcppt/algorithm/detail/map_reserve.hpp>
+#include <fcppt/algorithm/detail/map.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <utility>
 #include <fcppt/config/external_end.hpp>
@@ -34,6 +32,13 @@ source range's size at the start, if possible. For this to work, the result
 container needs a <code>reserve</code> function, and the source range needs a
 <code>size</code> function or must be a random access range.
 
+\tparam TargetContainer Either a container that supports
+<code>insert(iterator,value_type)</code> or a <code>std::array</code>.
+
+\tparam SourceRange A range usable with \link fcppt::algorithm::loop\endlink
+or in case \a TargetContainer is a <code>std::array</code> then \a SourceRange
+must also be a <code>std::array</code> of the same size.
+
 \tparam Function A function callable as <code>TargetContainer::value_type
 (SourceRange::value_type)</code>.
 */
@@ -48,41 +53,17 @@ map(
 	Function const &_function
 )
 {
-	TargetContainer result;
-
-	fcppt::algorithm::detail::map_reserve(
-		result,
-		_source
-	);
-
-	fcppt::algorithm::loop(
-		std::forward<
-			SourceRange
-		>(
-			_source
-		),
-		[
-			&_function,
-			&result
-		](
-			auto &&_map_element
-		)
-		{
-			result.insert(
-				result.end(),
-				_function(
-					fcppt::move_if_rvalue<
-						SourceRange
-					>(
-						_map_element
-					)
-				)
-			);
-		}
-	);
-
 	return
-		result;
+		fcppt::algorithm::detail::map<
+			TargetContainer
+		>(
+			std::forward<
+				SourceRange
+			>(
+				_source
+			),
+			_function
+		);
 }
 
 }

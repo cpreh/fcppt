@@ -109,6 +109,10 @@ add_fcppt_optional_test(
 )
 
 add_fcppt_optional_test(
+	sequence
+)
+
+add_fcppt_optional_test(
 	to_container
 )
 
@@ -118,4 +122,9 @@ add_fcppt_optional_test(
 
 add_fcppt_optional_test(
 	to_pointer
+)
+
+add_fcppt_optional_test(
+	value_type
+	NO_CODE
 )

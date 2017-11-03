@@ -7,6 +7,7 @@
 #ifndef FCPPT_MPL_CEIL_DIV_HPP_INCLUDED
 #define FCPPT_MPL_CEIL_DIV_HPP_INCLUDED
 
+#include <fcppt/literal.hpp>
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
@@ -54,7 +55,8 @@ boost::mpl::integral_c<
 	Divisor
 	+
 	(
-		Dividend %
+		Dividend
+		%
 		Divisor
 		?
 			1u
@@ -63,6 +65,17 @@ boost::mpl::integral_c<
 	)
 >
 {
+	static_assert(
+		Divisor
+		!=
+		fcppt::literal<
+			Type
+		>(
+			0
+		),
+		"Divisor cannot be zero"
+	);
+
 	static_assert(
 		std::is_unsigned<
 			Type

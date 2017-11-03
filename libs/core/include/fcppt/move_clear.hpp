@@ -22,7 +22,7 @@ namespace fcppt
 
 Certain types can be moved out of but are then left in an unspecific state
 that only allows them to be destroyed or assigned. This function first
-moves out of the value and the assigns a default constructed value.
+moves out of the value and then assigns a default constructed value.
 For example, this function can be used to move out of a container
 and leave an empty container behind.
 

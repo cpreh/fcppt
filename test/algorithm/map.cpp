@@ -5,12 +5,14 @@
 
 
 #include <fcppt/make_unique_ptr.hpp>
+#include <fcppt/strong_typedef.hpp>
 #include <fcppt/tag_type.hpp>
 #include <fcppt/unique_ptr.hpp>
 #include <fcppt/use.hpp>
 #include <fcppt/algorithm/loop_break_mpl.hpp>
 #include <fcppt/algorithm/map.hpp>
 #include <fcppt/assign/make_container.hpp>
+#include <fcppt/insert_to_std_string.hpp>
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
@@ -18,6 +20,8 @@
 #include <boost/mpl/int.hpp>
 #include <boost/mpl/vector/vector10.hpp>
 #include <boost/test/unit_test.hpp>
+#include <array>
+#include <string>
 #include <vector>
 #include <fcppt/config/external_end.hpp>
 
@@ -210,6 +214,147 @@ FCPPT_PP_POP_WARNING
 
 	BOOST_CHECK_EQUAL(
 		ints[1],
+		2
+	);
+}
+
+FCPPT_PP_PUSH_WARNING
+FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
+
+BOOST_AUTO_TEST_CASE(
+	algorithm_map_array
+)
+{
+FCPPT_PP_POP_WARNING
+
+	typedef
+	std::array<
+		int,
+		2
+	>
+	source_array;
+
+	typedef
+	std::array<
+		std::string,
+		2
+	>
+	dest_array;
+
+	dest_array const result(
+		fcppt::algorithm::map<
+			dest_array
+		>(
+			source_array{{
+				1,
+				2
+			}},
+			[](
+				int const _value
+			)
+			-> std::string
+			{
+				return
+					fcppt::insert_to_std_string(
+						_value
+					);
+			}
+		)
+	);
+
+	BOOST_CHECK_EQUAL(
+		std::get<
+			0
+		>(
+			result
+		),
+		"1"
+	);
+
+	BOOST_CHECK_EQUAL(
+		std::get<
+			1
+		>(
+			result
+		),
+		"2"
+	);
+}
+
+FCPPT_PP_PUSH_WARNING
+FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
+
+BOOST_AUTO_TEST_CASE(
+	algorithm_map_array_move
+)
+{
+FCPPT_PP_POP_WARNING
+
+	FCPPT_MAKE_STRONG_TYPEDEF(
+		int_unique_ptr,
+		strong_ptr
+	);
+
+	typedef
+	std::array<
+		int_unique_ptr,
+		2
+	>
+	source_array;
+
+	typedef
+	std::array<
+		strong_ptr,
+		2
+	>
+	dest_array;
+
+	dest_array const result(
+		fcppt::algorithm::map<
+			dest_array
+		>(
+			source_array{{
+				fcppt::make_unique_ptr<
+					int
+				>(
+					1
+				),
+				fcppt::make_unique_ptr<
+					int
+				>(
+					2
+				)
+			}},
+			[](
+				int_unique_ptr &&_value
+			)
+			-> strong_ptr
+			{
+				return
+					strong_ptr{
+						std::move(
+							_value
+						)
+					};
+			}
+		)
+	);
+
+	BOOST_CHECK_EQUAL(
+		*std::get<
+			0
+		>(
+			result
+		).get(),
+		1
+	);
+
+	BOOST_CHECK_EQUAL(
+		*std::get<
+			1
+		>(
+			result
+		).get(),
 		2
 	);
 }
