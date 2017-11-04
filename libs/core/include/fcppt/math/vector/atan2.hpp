@@ -77,7 +77,7 @@ atan2(
 				fcppt::math::is_zero(
 					_vector.x()
 				)
-				||
+				&&
 				fcppt::math::is_zero(
 					_vector.y()
 				)

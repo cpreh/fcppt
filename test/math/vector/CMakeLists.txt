@@ -13,11 +13,15 @@ add_fcppt_math_vector_test(
 )
 
 add_fcppt_math_vector_test(
+	arithmetic
+)
+
+add_fcppt_math_vector_test(
 	at
 )
 
 add_fcppt_math_vector_test(
-	arithmetic
+	atan2
 )
 
 add_fcppt_math_vector_test(

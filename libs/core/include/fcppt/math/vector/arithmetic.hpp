@@ -26,9 +26,6 @@ namespace math
 namespace vector
 {
 
-/** \addtogroup fcpptmathvector
-*  @{
-*/
 FCPPT_MATH_DETAIL_MAKE_SYMMETRIC_BINARY_OPERATOR(
 	+
 )
@@ -52,7 +49,6 @@ FCPPT_MATH_DETAIL_MAKE_ASYMMETRIC_BINARY_OPERATOR(
 FCPPT_MATH_DETAIL_MAKE_ASYMMETRIC_BINARY_OPERATOR(
 	*
 )
-/** @}*/
 
 /**
 \brief Divides a vector by a vector.
