@@ -864,6 +864,7 @@ set(
 	libs/core/include/fcppt/math/dim/to_signed.hpp
 	libs/core/include/fcppt/math/dim/to_unsigned.hpp
 	libs/core/include/fcppt/math/dim/to_vector.hpp
+	libs/core/include/fcppt/math/div.hpp
 	libs/core/include/fcppt/math/from_array.hpp
 	libs/core/include/fcppt/math/int_range.hpp
 	libs/core/include/fcppt/math/int_range_count.hpp
@@ -872,6 +873,7 @@ set(
 	libs/core/include/fcppt/math/interpolation/trigonometric.hpp
 	libs/core/include/fcppt/math/interval_distance.hpp
 	libs/core/include/fcppt/math/is_power_of_2.hpp
+	libs/core/include/fcppt/math/is_zero.hpp
 	libs/core/include/fcppt/math/log2.hpp
 	libs/core/include/fcppt/math/matrix/adjugate.hpp
 	libs/core/include/fcppt/math/matrix/arithmetic.hpp

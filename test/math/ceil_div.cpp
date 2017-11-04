@@ -8,7 +8,6 @@
 #include <fcppt/math/ceil_div_signed.hpp>
 #include <fcppt/optional/comparison.hpp>
 #include <fcppt/optional/make.hpp>
-#include <fcppt/optional/object_impl.hpp>
 #include <fcppt/optional/output.hpp>
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
@@ -67,14 +66,11 @@ FCPPT_PP_POP_WARNING
 		)
 	);
 
-	BOOST_CHECK_EQUAL(
-		fcppt::math::ceil_div(
+	BOOST_CHECK(
+		!fcppt::math::ceil_div(
 			2u,
 			0u
-		),
-		fcppt::optional::object<
-			unsigned
-		>{}
+		).has_value()
 	);
 }
 
@@ -107,13 +103,10 @@ FCPPT_PP_POP_WARNING
 		)
 	);
 
-	BOOST_CHECK_EQUAL(
-		fcppt::math::ceil_div_signed(
+	BOOST_CHECK(
+		!fcppt::math::ceil_div_signed(
 			5,
 			0
-		),
-		fcppt::optional::object<
-			int
-		>{}
+		).has_value()
 	);
 }

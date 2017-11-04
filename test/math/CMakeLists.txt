@@ -25,6 +25,10 @@ add_subdirectory(
 )
 
 add_fcppt_math_test(
+	div
+)
+
+add_fcppt_math_test(
 	interpolation
 )
 
@@ -34,6 +38,10 @@ add_fcppt_math_test(
 
 add_fcppt_math_test(
 	is_power_of_2
+)
+
+add_fcppt_math_test(
+	is_zero
 )
 
 add_subdirectory(

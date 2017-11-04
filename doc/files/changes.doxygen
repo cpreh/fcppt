@@ -29,6 +29,13 @@
 	</ul>
 </li>
 
+<li>\ref fcpptmath
+	<ul>
+	<li>Added \link fcppt::math::div\endlink.</li>
+	<li>Added \link fcppt::math::is_zero\endlink.</li>
+	</ul>
+</li>
+
 <li>\ref fcpptoptional
 	<ul>
 	<li>Added \link fcppt::optional::sequence\endlink.</li>
