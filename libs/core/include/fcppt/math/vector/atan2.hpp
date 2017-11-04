@@ -8,7 +8,10 @@
 #ifndef FCPPT_MATH_VECTOR_ATAN2_HPP_INCLUDED
 #define FCPPT_MATH_VECTOR_ATAN2_HPP_INCLUDED
 
+#include <fcppt/math/is_zero.hpp>
 #include <fcppt/math/vector/object_impl.hpp>
+#include <fcppt/optional/make_if.hpp>
+#include <fcppt/optional/object_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <cmath>
 #include <type_traits>
@@ -23,13 +26,15 @@ namespace vector
 {
 
 /**
-\brief Computes <code>atan2(y,x)</code>
-\ingroup fcpptmathvector
-\tparam T The vector's <code>value_type</code>. Must be a floating point type.
-\tparam S The vector's storage type
+\brief Computes atan2 of a vector.
 
-The standard C++ function <code>std::%atan2</code>, defined in
-<code>cmath</code>, has the signature:
+\ingroup fcpptmathvector
+
+Computes <code>atan2(_vector.y(),_vector.x())</code>. In case
+x or y is zero, nothing is returned.
+
+The standard C++ functions <code>std::%atan2</code>, defined in
+<code>cmath</code>, have the signature:
 
 <pre>
 float atan2(float y,float x)
@@ -37,16 +42,20 @@ double atan2(double y,double x)
 long double atan2(long double y,long double x)
 </pre>
 
-This function can be expressed more intuitively as taking a vector (of a
-floating point type), since you don't have to remember to pass in (y,x) instead
+These functions can be expressed more intuitively as taking a vector (of a
+floating-point type), since you don't have to remember to pass in (y,x) instead
 of (x,y). This is what happens in fcppt's atan2 function.
+
+\tparam T Must be a floating-point type.
 */
 template<
 	typename T,
 	typename S
 >
 inline
-T
+fcppt::optional::object<
+	T
+>
 atan2(
 	fcppt::math::vector::object<
 		T,
@@ -63,9 +72,25 @@ atan2(
 	);
 
 	return
-		std::atan2(
-			_vector.y(),
-			_vector.x()
+		fcppt::optional::make_if(
+			!(
+				fcppt::math::is_zero(
+					_vector.x()
+				)
+				||
+				fcppt::math::is_zero(
+					_vector.y()
+				)
+			),
+			[
+				&_vector
+			]{
+				return
+					std::atan2(
+						_vector.y(),
+						_vector.x()
+					);
+			}
 		);
 }
 

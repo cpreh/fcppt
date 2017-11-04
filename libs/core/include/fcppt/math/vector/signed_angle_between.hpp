@@ -10,6 +10,7 @@
 #include <fcppt/math/vector/arithmetic.hpp>
 #include <fcppt/math/vector/atan2.hpp>
 #include <fcppt/math/vector/object_impl.hpp>
+#include <fcppt/optional/object_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
@@ -23,32 +24,34 @@ namespace vector
 {
 
 /**
-\brief Calculates the signed angle between two 2D vectors
+\brief Calculates the signed angle between two 2D vectors.
 
 \ingroup fcpptmathvector
 
-This just uses fcppt::math::vector::atan2 on the difference between the two
-vectors.
+Uses \link fcppt::math::vector::atan2\endlink on the difference between the two
+vectors. In case this fails, nothing is returned.
 
 If you want to calculate the angle between two vectors whose value type is not
-a floating point type, see fcppt::math::vector::signed_angle_between_cast.
+a floating-point type, see \link fcppt::math::vector::signed_angle_between_cast\endlink.
 
 If you want to calculate the (unsigned) angle between two vectors of higher
-dimensions, use fcppt::math::vector::angle_between or fcppt::math::vector::angle_between_cast.
+dimensions, use \link fcppt::math::vector::angle_between\endlink or
+\link fcppt::math::vector::angle_between_cast\endlink.
 
 \see fcppt::math::vector::signed_angle_between_cast
 \see fcppt::math::vector::angle_between
 \see fcppt::math::vector::angle_between_cast
 
-\warning
-Behaviour is undefined if \p _from and \p _to are nearly identical.
+\tparam T Must be a floating-point type.
 */
 template<
 	typename T,
 	typename S1,
 	typename S2
 >
-T
+fcppt::optional::object<
+	T
+>
 signed_angle_between(
 	fcppt::math::vector::object<
 		T,
@@ -66,7 +69,7 @@ signed_angle_between(
 		std::is_floating_point<
 			T
 		>::value,
-		"signed_angle_between can only be used on floating point vector types"
+		"signed_angle_between can only be used on floating-point vector types"
 	);
 
 	return

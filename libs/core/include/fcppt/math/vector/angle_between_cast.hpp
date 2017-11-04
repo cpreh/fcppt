@@ -13,6 +13,7 @@
 #include <fcppt/math/vector/object_impl.hpp>
 #include <fcppt/math/vector/static.hpp>
 #include <fcppt/math/vector/structure_cast.hpp>
+#include <fcppt/optional/object_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
@@ -48,7 +49,9 @@ template<
 	typename S1,
 	typename S2
 >
-Dest
+fcppt::optional::object<
+	Dest
+>
 angle_between_cast(
 	fcppt::math::vector::object<
 		T,
@@ -66,7 +69,7 @@ angle_between_cast(
 		std::is_floating_point<
 			Dest
 		>::value,
-		"angle_between_cast must return a floating point type"
+		"angle_between_cast must return a floating-point type"
 	);
 
 	typedef

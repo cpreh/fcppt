@@ -7,11 +7,14 @@
 #ifndef FCPPT_MATH_VECTOR_ANGLE_BETWEEN_HPP_INCLUDED
 #define FCPPT_MATH_VECTOR_ANGLE_BETWEEN_HPP_INCLUDED
 
+#include <fcppt/math/div.hpp>
 #include <fcppt/math/size_type.hpp>
 #include <fcppt/math/vector/arithmetic.hpp>
 #include <fcppt/math/vector/dot.hpp>
 #include <fcppt/math/vector/length.hpp>
 #include <fcppt/math/vector/object_impl.hpp>
+#include <fcppt/optional/map.hpp>
+#include <fcppt/optional/object_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <cmath>
 #include <type_traits>
@@ -27,13 +30,17 @@ namespace vector
 
 /**
 \brief Calculates the angle between two floating point vectors
+
 \ingroup fcpptmathvector
 
+The function returns nothing if any of the two vectors have length zero.
+
 If you want to calculate the angle between two vectors whose value type is not
-a floating point type, see fcppt::math::vector::angle_between_cast.
+a floating point type, see \link fcppt::math::vector::angle_between_cast \endlink.
 
 If you want to calculate the signed angle between two 2D vectors, use
-fcppt::math::vector::signed_angle_between or fcppt::math::vector::signed_angle_between_cast.
+\link fcppt::math::vector::signed_angle_between \endlink or
+\link fcppt::math::vector::signed_angle_between_cast \endlink.
 
 \see fcppt::math::vector::angle_between_cast
 \see fcppt::math::vector::signed_angle_between
@@ -48,7 +55,9 @@ template<
 	typename S1,
 	typename S2
 >
-T
+fcppt::optional::object<
+	T
+>
 angle_between(
 	fcppt::math::vector::object<
 		T,
@@ -66,17 +75,16 @@ angle_between(
 		std::is_floating_point<
 			T
 		>::value,
-		"angle_between can only be used on vectors of floating point type"
+		"angle_between can only be used on vectors of floating-point type"
 	);
 
 	return
-		std::acos(
-			fcppt::math::vector::dot(
-				_from,
-				_to
-			)
-			/
-			(
+		fcppt::optional::map(
+			fcppt::math::div(
+				fcppt::math::vector::dot(
+					_from,
+					_to
+				),
 				fcppt::math::vector::length(
 					_from
 				)
@@ -84,7 +92,16 @@ angle_between(
 				fcppt::math::vector::length(
 					_to
 				)
+			),
+			[](
+				T const _angle
 			)
+			{
+				return
+					std::acos(
+						_angle
+					);
+			}
 		);
 }
 

@@ -4,6 +4,7 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
+#include <fcppt/const.hpp>
 #include <fcppt/math/diff.hpp>
 #include <fcppt/math/pi.hpp>
 #include <fcppt/math/vector/static.hpp>
@@ -11,6 +12,9 @@
 #include <fcppt/math/vector/angle_between_cast.hpp>
 #include <fcppt/math/vector/signed_angle_between.hpp>
 #include <fcppt/math/vector/signed_angle_between_cast.hpp>
+#include <fcppt/optional/make.hpp>
+#include <fcppt/optional/maybe_multi.hpp>
+#include <fcppt/optional/object_impl.hpp>
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
@@ -44,17 +48,35 @@ auto const half_pi{
 inline
 bool
 compare(
-	real const _t1,
-	real const _t2
+	fcppt::optional::object<
+		real
+	> const _o1,
+	fcppt::optional::object<
+		real
+	> const _o2
 )
 {
 	return
-		fcppt::math::diff(
-			_t1,
-			_t2
-		)
-		<
-		epsilon;
+		fcppt::optional::maybe_multi(
+			fcppt::const_(
+				true
+			),
+			[](
+				real const _t1,
+				real const _t2
+			)
+			{
+				return
+					fcppt::math::diff(
+						_t1,
+						_t2
+					)
+					<
+					epsilon;
+			},
+			_o1,
+			_o2
+		);
 }
 
 typedef
@@ -82,18 +104,35 @@ BOOST_AUTO_TEST_CASE(
 {
 FCPPT_PP_POP_WARNING
 
-	fvector2 const
-		vec1{1.f, 0.f},
-		vec2{0.f, 1.f};
-
 	BOOST_CHECK(
 		::compare(
 			fcppt::math::vector::angle_between(
-				vec1,
-				vec2
+				fvector2{
+					1.f,
+					0.f
+				},
+				fvector2{
+					0.f,
+					1.f
+				}
 			),
-			half_pi
+			fcppt::optional::make(
+				half_pi
+			)
 		)
+	);
+
+	BOOST_CHECK(
+		!fcppt::math::vector::angle_between(
+			fvector2{
+				1.f,
+				0.f
+			},
+			fvector2{
+				0.f,
+				0.f
+			}
+		).has_value()
 	);
 }
 
@@ -106,19 +145,23 @@ BOOST_AUTO_TEST_CASE(
 {
 FCPPT_PP_POP_WARNING
 
-	uivector2 const
-		vec1{1u, 0u},
-		vec2{0u, 1u};
-
 	BOOST_CHECK(
 		::compare(
 			fcppt::math::vector::angle_between_cast<
 				real
 			>(
-				vec1,
-				vec2
+				uivector2{
+					1u,
+					0u
+				},
+				uivector2{
+					0u,
+					1u
+				}
 			),
-			half_pi
+			fcppt::optional::make(
+				half_pi
+			)
 		)
 	);
 }
@@ -132,17 +175,21 @@ BOOST_AUTO_TEST_CASE(
 {
 FCPPT_PP_POP_WARNING
 
-	fvector2 const
-		vec1{2.f, 1.f},
-		vec2{2.f, 2.f};
-
 	BOOST_CHECK(
 		::compare(
 			fcppt::math::vector::signed_angle_between(
-				vec1,
-				vec2
+				fvector2{
+					2.f,
+					1.f
+				},
+				fvector2{
+					2.f,
+					2.f
+				}
 			),
-			half_pi
+			fcppt::optional::make(
+				half_pi
+			)
 		)
 	);
 }
@@ -156,19 +203,38 @@ BOOST_AUTO_TEST_CASE(
 {
 FCPPT_PP_POP_WARNING
 
-	uivector2 const
-		vec1{2u, 1u},
-		vec2{2u, 2u};
-
 	BOOST_CHECK(
 		::compare(
 			fcppt::math::vector::signed_angle_between_cast<
 				real
 			>(
-				vec1,
-				vec2
+				uivector2{
+					2u,
+					1u
+				},
+				uivector2{
+					2u,
+					2u
+				}
 			),
-			half_pi
+			fcppt::optional::make(
+				half_pi
+			)
 		)
+	);
+
+	BOOST_CHECK(
+		!fcppt::math::vector::signed_angle_between_cast<
+			real
+		>(
+			uivector2{
+				2u,
+				2u
+			},
+			uivector2{
+				2u,
+				2u
+			}
+		).has_value()
 	);
 }

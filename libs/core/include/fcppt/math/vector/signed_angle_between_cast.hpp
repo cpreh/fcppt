@@ -12,6 +12,7 @@
 #include <fcppt/math/vector/signed_angle_between.hpp>
 #include <fcppt/math/vector/static.hpp>
 #include <fcppt/math/vector/structure_cast.hpp>
+#include <fcppt/optional/object_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
@@ -25,20 +26,18 @@ namespace vector
 {
 
 /**
-\brief Calculates the signed angle between two arbitrary 2D vector types
+\brief Calculates the signed angle between two arbitrary 2D vector types.
 
 \ingroup fcpptmathvector
 
-\tparam Dest The angle type. Must be a floating point type.
-
-This function is a generalization of fcppt::math::vector::signed_angle_between in that
-it calculates the angle between two arbitrary vectors, instead of two floating
-point vectors.
+This function is a generalization of \link
+fcppt::math::vector::signed_angle_between \endlink since it calculates the
+angle between two arbitrary vectors, instead of two floating-point vectors.
+In case of an error, nothing is returned.
 
 \see fcppt::math::vector::signed_angle_between
 
-\warning
-The behaviour is undefined if \p _from or \p _to are nearly identical.
+\tparam Dest The angle type. Must be a floating-point type.
 */
 template<
 	typename Dest,
@@ -46,7 +45,9 @@ template<
 	typename S1,
 	typename S2
 >
-Dest
+fcppt::optional::object<
+	Dest
+>
 signed_angle_between_cast(
 	fcppt::math::vector::object<
 		T,
@@ -64,7 +65,7 @@ signed_angle_between_cast(
 		std::is_floating_point<
 			Dest
 		>::value,
-		"signed_angle_between_cast can only be used on vectors of floating point type"
+		"signed_angle_between_cast can only be used on vectors of floating-point type"
 	);
 
 	typedef
