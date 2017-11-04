@@ -63,12 +63,14 @@
 <li>\ref fcpptmath
 	<ul>
 	<li>\link fcppt::math::ceil_div\endlink and \link fcppt::math::ceil_div_signed\endlink now return optionals.</li>
+	<li>\link fcppt::math::mod\endlink now returns an optional.</li>
 	</ul>
 </li>
 
 <li>\ref fcpptmathvector
 	<ul>
 	<li>\link fcppt::math::vector::ceil_div_signed\endlink now returns an optional.</li>
+	<li>\link fcppt::math::vector::mod\endlink now returns an optional.</li>
 	</ul>
 </li>
 

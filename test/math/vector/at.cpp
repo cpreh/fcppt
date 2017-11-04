@@ -14,10 +14,15 @@
 #include <fcppt/config/external_end.hpp>
 
 
+FCPPT_PP_PUSH_WARNING
+FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
+
 BOOST_AUTO_TEST_CASE(
 	math_vector_at
 )
 {
+FCPPT_PP_POP_WARNING
+
 	typedef
 	fcppt::math::vector::static_<
 		int,

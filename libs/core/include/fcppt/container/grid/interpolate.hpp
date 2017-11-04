@@ -157,7 +157,7 @@ interpolate(
 				>(
 					1
 				)
-			),
+			).get_unsafe(),
 			_interpolator
 		);
 }

@@ -7,7 +7,10 @@
 #ifndef FCPPT_MATH_MOD_HPP_INCLUDED
 #define FCPPT_MATH_MOD_HPP_INCLUDED
 
+#include <fcppt/math/is_zero.hpp>
 #include <fcppt/math/detail/mod.hpp>
+#include <fcppt/optional/make_if.hpp>
+#include <fcppt/optional/object_impl.hpp>
 
 
 namespace fcppt
@@ -16,27 +19,42 @@ namespace math
 {
 
 /**
-\brief Wraps the integral modulo operator and the floating point modulo functions
-\ingroup fcpptmath
-\tparam T Any numeric type
+\brief Wraps the integral modulo operator and the floating point modulo functions.
 
 It uses std::%fmod for floating point types. Otherwise % is used.
-The behaviour will, of course, be undefined if r is 0.
+Returns nothing if \a _divisor is zero.
+
+\ingroup fcpptmath
+
+\tparam T A floating-point type of an unsigned type.
 */
 template<
 	typename T
 >
 inline
-T
+fcppt::optional::object<
+	T
+>
 mod(
-	T const &_a,
-	T const &_b
+	T const &_dividend,
+	T const &_divisor
 )
 {
 	return
-		fcppt::math::detail::mod(
-			_a,
-			_b
+		fcppt::optional::make_if(
+			!fcppt::math::is_zero(
+				_divisor
+			),
+			[
+				_dividend,
+				_divisor
+			]{
+				return
+					fcppt::math::detail::mod(
+						_dividend,
+						_divisor
+					);
+			}
 		);
 }
 

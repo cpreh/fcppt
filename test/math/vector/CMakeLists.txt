@@ -49,6 +49,10 @@ add_fcppt_math_vector_test(
 )
 
 add_fcppt_math_vector_test(
+	mod
+)
+
+add_fcppt_math_vector_test(
 	null
 )
 
