@@ -9,6 +9,10 @@ function(
 endfunction()
 
 add_fcppt_math_vector_test(
+	angle_between
+)
+
+add_fcppt_math_vector_test(
 	at
 )
 
@@ -38,6 +42,10 @@ add_fcppt_math_vector_test(
 
 add_fcppt_math_vector_test(
 	hash
+)
+
+add_fcppt_math_vector_test(
+	hypersphere_to_cartesian
 )
 
 add_fcppt_math_vector_test(

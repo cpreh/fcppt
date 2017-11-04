@@ -48,10 +48,6 @@ add_subdirectory(
 	matrix
 )
 
-add_fcppt_math_test(
-	vector
-)
-
 add_subdirectory(
 	vector
 )
