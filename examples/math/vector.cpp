@@ -4,7 +4,9 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
+#include <fcppt/make_literal_fwd.hpp>
 #include <fcppt/no_init.hpp>
+#include <fcppt/use.hpp>
 #include <fcppt/cast/int_to_float_fun.hpp>
 #include <fcppt/math/size_type.hpp>
 #include <fcppt/math/vector/arithmetic.hpp>
@@ -24,6 +26,7 @@ FCPPT_PP_POP_WARNING
 #include <fcppt/math/vector/output.hpp>
 #include <fcppt/math/vector/static.hpp>
 #include <fcppt/math/vector/structure_cast.hpp>
+#include <fcppt/optional/object_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <array>
 #include <iostream>
@@ -211,7 +214,48 @@ struct second
 struct speed
 {
 };
+// ![asymmetric_div_decl]
 
+bool
+operator==(
+	second,
+	second
+)
+{
+	return
+		true;
+}
+
+}
+
+namespace fcppt
+{
+template<>
+struct make_literal<
+	second
+>
+{
+	typedef
+	second
+	decorated_type;
+
+	static
+	decorated_type
+	get(
+		int
+	)
+	{
+		return
+			second{};
+	}
+};
+
+}
+
+namespace
+{
+
+// ![asymmetric_div_decl2]
 speed
 operator/(
 	meter,
@@ -221,7 +265,7 @@ operator/(
 	return
 		speed{};
 }
-// ![asymmetric_div_decl]
+// ![asymmetric_div_decl2]
 
 void
 asymmetric_div()
@@ -248,7 +292,9 @@ asymmetric_div()
 	>
 	speed2;
 
-	speed2 const s(
+	fcppt::optional::object<
+		speed2
+	> const s{
 		meter2(
 			meter{},
 			meter{}
@@ -258,10 +304,12 @@ asymmetric_div()
 			second{},
 			second{}
 		)
-	);
+	};
 // ![asymmetric_div]
 
-	static_cast<void>(s);
+	FCPPT_USE(
+		s
+	);
 }
 
 }

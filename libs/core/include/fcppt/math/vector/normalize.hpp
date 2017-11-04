@@ -12,6 +12,7 @@
 #include <fcppt/math/vector/length.hpp>
 #include <fcppt/math/vector/object_impl.hpp>
 #include <fcppt/math/vector/static.hpp>
+#include <fcppt/optional/object_impl.hpp>
 
 
 namespace fcppt
@@ -22,14 +23,13 @@ namespace vector
 {
 
 /**
-\brief Normalizes a vector and returns a copy.
+\brief Normalizes a vector.
 
 \ingroup fcpptmathvector
 
-\param _vec The vector to normalize
+Returns nothing in case the length of \a _vec is zero.
 
-\warning
-Behaviour is undefined if <code>length(v)</code> is close to zero.
+\tparam T Must be a floating-point type.
 */
 template<
 	typename T,
@@ -37,9 +37,11 @@ template<
 	typename S
 >
 inline
-fcppt::math::vector::static_<
-	T,
-	N
+fcppt::optional::object<
+	fcppt::math::vector::static_<
+		T,
+		N
+	>
 >
 normalize(
 	fcppt::math::vector::object<

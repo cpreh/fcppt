@@ -9,6 +9,10 @@ function(
 endfunction()
 
 add_fcppt_math_dim_test(
+	arithmetic
+)
+
+add_fcppt_math_dim_test(
 	at
 )
 

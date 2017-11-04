@@ -26,7 +26,7 @@ Returns nothing if \a _divisor is zero.
 
 \ingroup fcpptmath
 
-\tparam T A floating-point type of an unsigned type.
+\tparam T A floating-point type or an unsigned type.
 */
 template<
 	typename T

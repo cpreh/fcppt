@@ -66,15 +66,17 @@ stretch_relative(
 				_box
 			)
 			-
-			fcppt::math::dim::to_vector(
-				dim
-			)
-			/
-			fcppt::literal<
-				T
-			>(
-				2
-			)
+			(
+				fcppt::math::dim::to_vector(
+					dim
+				)
+				/
+				fcppt::literal<
+					T
+				>(
+					2
+				)
+			).get_unsafe()
 			,
 			dim
 		);

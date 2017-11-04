@@ -220,8 +220,6 @@ FCPPT_MATH_DETAIL_MAKE_OP_DEF(\
 FCPPT_MATH_DIM_OBJECT_DEFINE_OPERATOR(+=)
 FCPPT_MATH_DIM_OBJECT_DEFINE_OPERATOR(-=)
 FCPPT_MATH_DIM_OBJECT_DEFINE_OPERATOR(*=)
-FCPPT_MATH_DIM_OBJECT_DEFINE_OPERATOR(/=)
-FCPPT_MATH_DIM_OBJECT_DEFINE_OPERATOR(%=)
 
 #undef FCPPT_MATH_DIM_OBJECT_DEFINE_OPERATOR
 
@@ -249,36 +247,6 @@ fcppt::math::dim::object<
 		storage_
 	)
 		ref *=
-			_value;
-
-	return
-		*this;
-}
-
-template<
-	typename T,
-	fcppt::math::size_type N,
-	typename S
->
-fcppt::math::dim::object<
-	T,
-	N,
-	S
-> &
-fcppt::math::dim::object<
-	T,
-	N,
-	S
->::operator/=(
-	value_type const &_value
-)
-{
-	for(
-		auto &ref
-		:
-		storage_
-	)
-		ref /=
 			_value;
 
 	return

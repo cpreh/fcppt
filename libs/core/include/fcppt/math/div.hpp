@@ -8,6 +8,7 @@
 #define FCPPT_MATH_DIV_HPP_INCLUDED
 
 #include <fcppt/math/is_zero.hpp>
+#include <fcppt/math/detail/binary_type.hpp>
 #include <fcppt/optional/make_if.hpp>
 #include <fcppt/optional/object_impl.hpp>
 
@@ -24,17 +25,18 @@ namespace math
 
 In case divisor is 0, nothing is returned.
 
-\tparam T Any type that works with \link fcppt::math::is_zero\endlink.
+\tparam R Any type that works with \link fcppt::math::is_zero\endlink.
 */
 template<
-	typename T
+	typename L,
+	typename R
 >
 fcppt::optional::object<
-	T
+	FCPPT_MATH_DETAIL_BINARY_TYPE(L, /, R)
 >
 div(
-	T const &_dividend,
-	T const &_divisor
+	L const &_dividend,
+	R const &_divisor
 )
 {
 	return

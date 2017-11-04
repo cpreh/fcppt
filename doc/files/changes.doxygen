@@ -67,6 +67,12 @@
 	</ul>
 </li>
 
+<li>\ref fcpptmathdim
+	<ul>
+	<li>All versions of <code>operator/</code> now return optionals.</li>
+	</ul>
+</li>
+
 <li>\ref fcpptmathvector
 	<ul>
 	<li>\link fcppt::math::vector::ceil_div_signed\endlink now returns an optional.</li>
@@ -75,6 +81,26 @@
 	<li>\link fcppt::math::vector::angle_between\endlink, \link fcppt::math::vector::angle_between_cast\endlink,
 	\link fcppt::math::vector::signed_angle_between\endlink and \link fcppt::math::vector::signed_angle_between_cast\endlink
 	now return optionals.</li>
+	<li>All versions of <code>operator/</code> now return optionals.</li>
+	</ul>
+</li>
+
+</ul>
+
+\subsection changes_removed_functionality_to_270 Removed functionality
+
+<ul>
+
+<li>\ref fcpptmathdim
+	<ul>
+	<li>Removed <code>operator%</code> and <code>operator/=</code>.</li>
+	</ul>
+</li>
+
+<li>\ref fcpptmathvector
+	<ul>
+	<li>Removed <code>operator%</code> and <code>operator/=</code>.</li>
+	<li>Removed unary <code>operator+</code>.</li>
 	</ul>
 </li>
 

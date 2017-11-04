@@ -4,10 +4,10 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/math/vector/arithmetic.hpp>
-#include <fcppt/math/vector/comparison.hpp>
-#include <fcppt/math/vector/output.hpp>
-#include <fcppt/math/vector/static.hpp>
+#include <fcppt/math/dim/arithmetic.hpp>
+#include <fcppt/math/dim/comparison.hpp>
+#include <fcppt/math/dim/output.hpp>
+#include <fcppt/math/dim/static.hpp>
 #include <fcppt/optional/comparison.hpp>
 #include <fcppt/optional/make.hpp>
 #include <fcppt/optional/output.hpp>
@@ -23,64 +23,64 @@ FCPPT_PP_PUSH_WARNING
 FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
 
 BOOST_AUTO_TEST_CASE(
-	vector_arithmetic_self
+	dim_arithmetic_self
 )
 {
 FCPPT_PP_POP_WARNING
 
 	typedef
-	fcppt::math::vector::static_<
+	fcppt::math::dim::static_<
 		unsigned,
 		2
 	>
-	ui2_vector;
+	ui2_dim;
 
 	typedef
-	fcppt::math::vector::static_<
+	fcppt::math::dim::static_<
 		int,
 		2
 	>
-	i2_vector;
+	i2_dim;
 
-	ui2_vector vec(
+	ui2_dim dim(
 		0u,
 		0u
 	);
 
-	vec +=
-		ui2_vector(
+	dim +=
+		ui2_dim(
 			1u,
 			2u
 		);
 
 	BOOST_CHECK_EQUAL(
-		vec,
-		ui2_vector(
+		dim,
+		ui2_dim(
 			1u,
 			2u
 		)
 	);
 
-	vec *= 2u;
+	dim *= 2u;
 
 	BOOST_CHECK_EQUAL(
-		vec,
-		ui2_vector(
+		dim,
+		ui2_dim(
 			2u,
 			4u
 		)
 	);
 
-	i2_vector veci(
+	i2_dim dimi(
 		1,
 		2
 	);
 
-	veci = -veci;
+	dimi = -dimi;
 
 	BOOST_CHECK_EQUAL(
-		veci,
-		i2_vector(
+		dimi,
+		i2_dim(
 			-1,
 			-2
 		)
@@ -91,125 +91,125 @@ FCPPT_PP_PUSH_WARNING
 FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
 
 BOOST_AUTO_TEST_CASE(
-	vector_arithmetic_free
+	dim_arithmetic_free
 )
 {
 FCPPT_PP_POP_WARNING
 
 	typedef
-	fcppt::math::vector::static_<
+	fcppt::math::dim::static_<
 		int,
 		2
 	>
-	i2_vector;
+	i2_dim;
 
 	BOOST_CHECK_EQUAL(
-		i2_vector(
+		i2_dim(
 			1,
 			2
 		)
 		+
-		i2_vector(
+		i2_dim(
 			3,
 			4
 		),
-		i2_vector(
+		i2_dim(
 			4,
 			6
 		)
 	);
 
 	BOOST_CHECK_EQUAL(
-		i2_vector(
+		i2_dim(
 			5,
 			2
 		)
 		-
-		i2_vector(
+		i2_dim(
 			3,
 			4
 		),
-		i2_vector(
+		i2_dim(
 			2,
 			-2
 		)
 	);
 
 	BOOST_CHECK_EQUAL(
-		i2_vector(
+		i2_dim(
 			2,
 			3
 		)
 		*
-		i2_vector(
+		i2_dim(
 			3,
 			4
 		),
-		i2_vector(
+		i2_dim(
 			6,
 			12
 		)
 	);
 
 	BOOST_CHECK_EQUAL(
-		-i2_vector(
+		-i2_dim(
 			2,
 			3
 		),
-		i2_vector(
+		i2_dim(
 			-2,
 			-3
 		)
 	);
 
 	BOOST_CHECK_EQUAL(
-		i2_vector(
+		i2_dim(
 			2,
 			3
 		)
 		+
 		3,
-		i2_vector(
+		i2_dim(
 			5,
 			6
 		)
 	);
 
 	BOOST_CHECK_EQUAL(
-		i2_vector(
+		i2_dim(
 			2,
 			3
 		)
 		-
 		3,
-		i2_vector(
+		i2_dim(
 			-1,
 			0
 		)
 	);
 
 	BOOST_CHECK_EQUAL(
-		i2_vector(
+		i2_dim(
 			2,
 			3
 		)
 		*
 		2,
-		i2_vector(
+		i2_dim(
 			4,
 			6
 		)
 	);
 
 	BOOST_CHECK_EQUAL(
-		i2_vector(
+		i2_dim(
 			4,
 			6
 		)
 		/
 		2,
 		fcppt::optional::make(
-			i2_vector(
+			i2_dim(
 				2,
 				3
 			)
@@ -217,17 +217,17 @@ FCPPT_PP_POP_WARNING
 	);
 
 	BOOST_CHECK_EQUAL(
-		i2_vector(
+		i2_dim(
 			6,
 			6
 		)
 		/
-		i2_vector(
+		i2_dim(
 			2,
 			3
 		),
 		fcppt::optional::make(
-			i2_vector(
+			i2_dim(
 				3,
 				2
 			)
@@ -236,12 +236,12 @@ FCPPT_PP_POP_WARNING
 
 	BOOST_CHECK(
 		!(
-			i2_vector(
+			i2_dim(
 				6,
 				6
 			)
 			/
-			i2_vector(
+			i2_dim(
 				2,
 				0
 			)

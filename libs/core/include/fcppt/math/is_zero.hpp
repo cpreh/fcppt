@@ -7,10 +7,8 @@
 #ifndef FCPPT_MATH_IS_ZERO_HPP_INCLUDED
 #define FCPPT_MATH_IS_ZERO_HPP_INCLUDED
 
-#include <fcppt/preprocessor/disable_gcc_warning.hpp>
-#include <fcppt/preprocessor/pop_warning.hpp>
-#include <fcppt/preprocessor/push_warning.hpp>
-#include <fcppt/literal.hpp>
+#include <fcppt/math/is_zero_literal.hpp>
+#include <fcppt/math/is_zero_impl_fwd.hpp>
 
 
 namespace fcppt
@@ -38,17 +36,12 @@ is_zero(
 	T const &_value
 )
 {
-FCPPT_PP_PUSH_WARNING
-FCPPT_PP_DISABLE_GCC_WARNING(-Wfloat-equal)
 	return
-		_value
-		==
-		fcppt::literal<
+		fcppt::math::is_zero_impl<
 			T
-		>(
-			0
+		>::get(
+			_value
 		);
-FCPPT_PP_POP_WARNING
 }
 
 }

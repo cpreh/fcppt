@@ -187,8 +187,6 @@ FCPPT_MATH_DETAIL_MAKE_OP_DECL(\
 	FCPPT_MATH_DIM_OBJECT_DECLARE_OPERATOR(+=)
 	FCPPT_MATH_DIM_OBJECT_DECLARE_OPERATOR(-=)
 	FCPPT_MATH_DIM_OBJECT_DECLARE_OPERATOR(*=)
-	FCPPT_MATH_DIM_OBJECT_DECLARE_OPERATOR(/=)
-	FCPPT_MATH_DIM_OBJECT_DECLARE_OPERATOR(%=)
 #undef FCPPT_MATH_DIM_OBJECT_DECLARE_OPERATOR
 
 	/**
@@ -196,14 +194,6 @@ FCPPT_MATH_DETAIL_MAKE_OP_DECL(\
 	*/
 	object &
 	operator*=(
-		value_type const &
-	);
-
-	/**
-	\brief Divide a dim by a scalar
-	*/
-	object &
-	operator/=(
 		value_type const &
 	);
 

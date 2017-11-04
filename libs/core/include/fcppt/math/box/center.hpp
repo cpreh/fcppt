@@ -54,15 +54,17 @@ center(
 	return
 		_box.pos()
 		+
-		fcppt::math::dim::to_vector(
-			_box.size()
-		)
-		/
-		fcppt::literal<
-			T
-		>(
-			2
-		);
+		(
+			fcppt::math::dim::to_vector(
+				_box.size()
+			)
+			/
+			fcppt::literal<
+				T
+			>(
+				2
+			)
+		).get_unsafe();
 }
 
 }

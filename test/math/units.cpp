@@ -4,9 +4,11 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
+#include <fcppt/math/is_zero_boost_units.hpp>
 #include <fcppt/math/vector/arithmetic.hpp>
 #include <fcppt/math/vector/object_impl.hpp>
 #include <fcppt/math/vector/static.hpp>
+#include <fcppt/optional/object_impl.hpp>
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
@@ -85,19 +87,21 @@ FCPPT_PP_POP_WARNING
 		)
 	);
 
-	velocity2 const v1(
+	fcppt::optional::object<
+		velocity2
+	> const v1(
 		l1
 		/
 		t1
 	);
 
 	BOOST_CHECK_EQUAL(
-		v1.x().value(),
+		v1.get_unsafe().x().value(),
 		-25
 	);
 
 	BOOST_CHECK_EQUAL(
-		v1.y().value(),
+		v1.get_unsafe().y().value(),
 		100
 	);
 }

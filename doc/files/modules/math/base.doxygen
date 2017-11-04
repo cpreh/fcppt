@@ -129,6 +129,7 @@ types of their arguments differ. Suppose we can divide meters by seconds to get
 speed.
 
 \snippet math/vector.cpp asymmetric_div_decl
+\snippet math/vector.cpp asymmetric_div_decl2
 
 This can now be used to divide vectors of meters by vectors of seconds to
 obtain vectors of speeds.

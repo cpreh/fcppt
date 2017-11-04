@@ -4,8 +4,9 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/math/vector/arithmetic.hpp>
+#include <fcppt/math/dim/static.hpp>
 #include <fcppt/math/vector/comparison.hpp>
+#include <fcppt/math/vector/dim.hpp>
 #include <fcppt/math/vector/output.hpp>
 #include <fcppt/math/vector/static.hpp>
 #include <fcppt/optional/comparison.hpp>
@@ -23,75 +24,7 @@ FCPPT_PP_PUSH_WARNING
 FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
 
 BOOST_AUTO_TEST_CASE(
-	vector_arithmetic_self
-)
-{
-FCPPT_PP_POP_WARNING
-
-	typedef
-	fcppt::math::vector::static_<
-		unsigned,
-		2
-	>
-	ui2_vector;
-
-	typedef
-	fcppt::math::vector::static_<
-		int,
-		2
-	>
-	i2_vector;
-
-	ui2_vector vec(
-		0u,
-		0u
-	);
-
-	vec +=
-		ui2_vector(
-			1u,
-			2u
-		);
-
-	BOOST_CHECK_EQUAL(
-		vec,
-		ui2_vector(
-			1u,
-			2u
-		)
-	);
-
-	vec *= 2u;
-
-	BOOST_CHECK_EQUAL(
-		vec,
-		ui2_vector(
-			2u,
-			4u
-		)
-	);
-
-	i2_vector veci(
-		1,
-		2
-	);
-
-	veci = -veci;
-
-	BOOST_CHECK_EQUAL(
-		veci,
-		i2_vector(
-			-1,
-			-2
-		)
-	);
-}
-
-FCPPT_PP_PUSH_WARNING
-FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
-
-BOOST_AUTO_TEST_CASE(
-	vector_arithmetic_free
+	vector_dim
 )
 {
 FCPPT_PP_POP_WARNING
@@ -102,6 +35,13 @@ FCPPT_PP_POP_WARNING
 		2
 	>
 	i2_vector;
+
+	typedef
+	fcppt::math::dim::static_<
+		int,
+		2
+	>
+	i2_dim;
 
 	BOOST_CHECK_EQUAL(
 		i2_vector(
@@ -109,7 +49,7 @@ FCPPT_PP_POP_WARNING
 			2
 		)
 		+
-		i2_vector(
+		i2_dim(
 			3,
 			4
 		),
@@ -125,7 +65,7 @@ FCPPT_PP_POP_WARNING
 			2
 		)
 		-
-		i2_vector(
+		i2_dim(
 			3,
 			4
 		),
@@ -141,7 +81,7 @@ FCPPT_PP_POP_WARNING
 			3
 		)
 		*
-		i2_vector(
+		i2_dim(
 			3,
 			4
 		),
@@ -152,77 +92,12 @@ FCPPT_PP_POP_WARNING
 	);
 
 	BOOST_CHECK_EQUAL(
-		-i2_vector(
-			2,
-			3
-		),
-		i2_vector(
-			-2,
-			-3
-		)
-	);
-
-	BOOST_CHECK_EQUAL(
-		i2_vector(
-			2,
-			3
-		)
-		+
-		3,
-		i2_vector(
-			5,
-			6
-		)
-	);
-
-	BOOST_CHECK_EQUAL(
-		i2_vector(
-			2,
-			3
-		)
-		-
-		3,
-		i2_vector(
-			-1,
-			0
-		)
-	);
-
-	BOOST_CHECK_EQUAL(
-		i2_vector(
-			2,
-			3
-		)
-		*
-		2,
-		i2_vector(
-			4,
-			6
-		)
-	);
-
-	BOOST_CHECK_EQUAL(
-		i2_vector(
-			4,
-			6
-		)
-		/
-		2,
-		fcppt::optional::make(
-			i2_vector(
-				2,
-				3
-			)
-		)
-	);
-
-	BOOST_CHECK_EQUAL(
 		i2_vector(
 			6,
 			6
 		)
 		/
-		i2_vector(
+		i2_dim(
 			2,
 			3
 		),
@@ -241,7 +116,7 @@ FCPPT_PP_POP_WARNING
 				6
 			)
 			/
-			i2_vector(
+			i2_dim(
 				2,
 				0
 			)

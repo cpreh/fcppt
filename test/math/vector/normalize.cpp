@@ -4,10 +4,8 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/math/div.hpp>
-#include <fcppt/optional/comparison.hpp>
-#include <fcppt/optional/make.hpp>
-#include <fcppt/optional/output.hpp>
+#include <fcppt/math/vector/normalize.hpp>
+#include <fcppt/math/vector/static.hpp>
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
@@ -20,51 +18,33 @@ FCPPT_PP_PUSH_WARNING
 FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
 
 BOOST_AUTO_TEST_CASE(
-	math_div
+	math_vector_normalize
 )
 {
 FCPPT_PP_POP_WARNING
 
+	typedef
+	fcppt::math::vector::static_<
+		float,
+		2
+	>
+	float2_vec;
+
 	BOOST_CHECK(
-		!fcppt::math::div(
-			2,
-			0
+		fcppt::math::vector::normalize(
+			float2_vec{
+				2.f,
+				0.f
+			}
 		).has_value()
 	);
 
-	BOOST_CHECK_EQUAL(
-		fcppt::math::div(
-			6,
-			2
-		),
-		fcppt::optional::make(
-			3
-		)
-	);
-
 	BOOST_CHECK(
-		!fcppt::math::div(
-			2.f,
-			0.f
+		!fcppt::math::vector::normalize(
+			float2_vec{
+				0.f,
+				0.f
+			}
 		).has_value()
 	);
-
-	{
-		auto const result(
-			fcppt::math::div<
-				long,
-				int
-			>(
-				4l,
-				2
-			)
-		);
-
-		BOOST_CHECK_EQUAL(
-			result,
-			fcppt::optional::make(
-				2l
-			)
-		);
-	}
 }

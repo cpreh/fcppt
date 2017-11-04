@@ -874,6 +874,9 @@ set(
 	libs/core/include/fcppt/math/interval_distance.hpp
 	libs/core/include/fcppt/math/is_power_of_2.hpp
 	libs/core/include/fcppt/math/is_zero.hpp
+	libs/core/include/fcppt/math/is_zero_boost_units.hpp
+	libs/core/include/fcppt/math/is_zero_impl_fwd.hpp
+	libs/core/include/fcppt/math/is_zero_literal.hpp
 	libs/core/include/fcppt/math/log2.hpp
 	libs/core/include/fcppt/math/matrix/adjugate.hpp
 	libs/core/include/fcppt/math/matrix/arithmetic.hpp
