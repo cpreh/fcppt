@@ -14,7 +14,7 @@
 #include <fcppt/math/detail/checked_access.hpp>
 #include <fcppt/math/detail/copy.hpp>
 #include <fcppt/math/detail/index_at.hpp>
-#include <fcppt/math/detail/make_op_def.hpp>
+#include <fcppt/math/detail/member_operator.hpp>
 #include <fcppt/math/vector/object_decl.hpp>
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
@@ -206,22 +206,125 @@ fcppt::math::vector::object<
 {
 }
 
-#define FCPPT_MATH_VECTOR_OBJECT_DEFINE_OPERATOR(\
-	op\
-)\
-FCPPT_MATH_DETAIL_MAKE_OP_DEF(\
-	3,\
-	(template<typename T, fcppt::math::size_type N, typename S> template<typename OtherStorage>),\
-	(fcppt::math::vector::object<T, N, S>),\
-	(fcppt::math::vector::object<T, N, OtherStorage>),\
-	op\
+template<
+	typename T,
+	fcppt::math::size_type N,
+	typename S
+>
+template<
+	typename S2
+>
+fcppt::math::vector::object<
+	T,
+	N,
+	S
+> &
+fcppt::math::vector::object<
+	T,
+	N,
+	S
+>::operator+=(
+	object<
+		T,
+		N,
+		S2
+	> const &_right
 )
+{
+	return
+		fcppt::math::detail::member_operator(
+			*this,
+			_right,
+			[](
+				T &_left_elem,
+				T const &_right_elem
+			)
+			{
+				_left_elem +=
+					_right_elem;
+			}
+		);
+}
 
-FCPPT_MATH_VECTOR_OBJECT_DEFINE_OPERATOR(+=)
-FCPPT_MATH_VECTOR_OBJECT_DEFINE_OPERATOR(-=)
-FCPPT_MATH_VECTOR_OBJECT_DEFINE_OPERATOR(*=)
+template<
+	typename T,
+	fcppt::math::size_type N,
+	typename S
+>
+template<
+	typename S2
+>
+fcppt::math::vector::object<
+	T,
+	N,
+	S
+> &
+fcppt::math::vector::object<
+	T,
+	N,
+	S
+>::operator-=(
+	object<
+		T,
+		N,
+		S2
+	> const &_right
+)
+{
+	return
+		fcppt::math::detail::member_operator(
+			*this,
+			_right,
+			[](
+				T &_left_elem,
+				T const &_right_elem
+			)
+			{
+				_left_elem -=
+					_right_elem;
+			}
+		);
+}
 
-#undef FCPPT_MATH_VECTOR_OBJECT_DEFINE_OPERATOR
+template<
+	typename T,
+	fcppt::math::size_type N,
+	typename S
+>
+template<
+	typename S2
+>
+fcppt::math::vector::object<
+	T,
+	N,
+	S
+> &
+fcppt::math::vector::object<
+	T,
+	N,
+	S
+>::operator*=(
+	object<
+		T,
+		N,
+		S2
+	> const &_right
+)
+{
+	return
+		fcppt::math::detail::member_operator(
+			*this,
+			_right,
+			[](
+				T &_left_elem,
+				T const &_right_elem
+			)
+			{
+				_left_elem *=
+					_right_elem;
+			}
+		);
+}
 
 template<
 	typename T,

@@ -10,7 +10,6 @@
 #include <fcppt/no_init_fwd.hpp>
 #include <fcppt/math/difference_type.hpp>
 #include <fcppt/math/size_type.hpp>
-#include <fcppt/math/detail/make_op_decl.hpp>
 #include <fcppt/math/matrix/object_fwd.hpp>
 #include <fcppt/math/matrix/row_type_fwd.hpp>
 #include <fcppt/math/matrix/detail/row_view_fwd.hpp>
@@ -250,35 +249,37 @@ public:
 
 	~object();
 
-// \cond FCPPT_DOXYGEN_DEBUG
-#define FCPPT_MATH_MATRIX_OBJECT_DECLARE_OPERATOR(op)\
-FCPPT_MATH_DETAIL_MAKE_OP_DECL(\
-	template<\
-		typename OtherStorage\
-	>, \
-	(object<T, R, C, OtherStorage>),\
-	4,\
-	op \
-)
-// \endcond
+	template<
+		typename S2
+	>
+	object &
+	operator+=(
+		object<
+			T,
+			R,
+			C,
+			S2
+		> const &
+	);
 
-	FCPPT_MATH_MATRIX_OBJECT_DECLARE_OPERATOR(+=)
-	FCPPT_MATH_MATRIX_OBJECT_DECLARE_OPERATOR(-=)
-#undef FCPPT_MATH_MATRIX_OBJECT_DECLARE_OPERATOR
+	template<
+		typename S2
+	>
+	object &
+	operator-=(
+		object<
+			T,
+			R,
+			C,
+			S2
+		> const &
+	);
 
 	/**
 	\brief Multiply a matrix by a scalar
 	*/
 	object &
 	operator*=(
-		value_type const &
-	);
-
-	/**
-	\brief Divide a matrix by a scalar
-	*/
-	object &
-	operator/=(
 		value_type const &
 	);
 

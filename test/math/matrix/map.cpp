@@ -5,10 +5,11 @@
 
 
 #include <fcppt/cast/to_signed.hpp>
-#include <fcppt/math/vector/binary_map.hpp>
-#include <fcppt/math/vector/comparison.hpp>
-#include <fcppt/math/vector/output.hpp>
-#include <fcppt/math/vector/static.hpp>
+#include <fcppt/math/matrix/comparison.hpp>
+#include <fcppt/math/matrix/map.hpp>
+#include <fcppt/math/matrix/output.hpp>
+#include <fcppt/math/matrix/row.hpp>
+#include <fcppt/math/matrix/static.hpp>
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
@@ -21,51 +22,54 @@ FCPPT_PP_PUSH_WARNING
 FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
 
 BOOST_AUTO_TEST_CASE(
-	vector_binary_map
+	matrix_map
 )
 {
 FCPPT_PP_POP_WARNING
 
 	typedef
-	fcppt::math::vector::static_<
+	fcppt::math::matrix::static_<
 		unsigned,
+		2,
 		2
 	>
-	ui2_vector;
+	uimat2;
 
 	typedef
-	fcppt::math::vector::static_<
+	fcppt::math::matrix::static_<
 		int,
+		2,
 		2
 	>
-	i2_vector;
+	imat2;
 
 	BOOST_CHECK_EQUAL(
-		fcppt::math::vector::binary_map(
-			ui2_vector{
-				10u,
-				20u
-			},
-			i2_vector{
-				3,
-				5
+		fcppt::math::matrix::map(
+			uimat2{
+				fcppt::math::matrix::row(
+					1u,2u
+				),
+				fcppt::math::matrix::row(
+					3u,4u
+				)
 			},
 			[](
-				unsigned const _val1,
-				int const _val2
+				unsigned const _val
 			)
 			{
 				return
 					fcppt::cast::to_signed(
-						_val1
-					)
-					+
-					_val2;
+						_val
+					);
 			}
 		),
-		i2_vector(
-			13,
-			25
+		imat2(
+			fcppt::math::matrix::row(
+				1,2
+			),
+			fcppt::math::matrix::row(
+				3,4
+			)
 		)
 	);
 }

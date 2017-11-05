@@ -163,28 +163,15 @@ FCPPT_PP_POP_WARNING
 	);
 
 	BOOST_CHECK_EQUAL(
+		2
+		*
 		i2_vector(
 			2,
 			3
-		)
-		+
-		3,
+		),
 		i2_vector(
-			5,
+			4,
 			6
-		)
-	);
-
-	BOOST_CHECK_EQUAL(
-		i2_vector(
-			2,
-			3
-		)
-		-
-		3,
-		i2_vector(
-			-1,
-			0
 		)
 	);
 

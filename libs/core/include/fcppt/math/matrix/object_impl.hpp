@@ -13,7 +13,7 @@
 #include <fcppt/math/detail/assign.hpp>
 #include <fcppt/math/detail/checked_access.hpp>
 #include <fcppt/math/detail/copy.hpp>
-#include <fcppt/math/detail/make_op_def.hpp>
+#include <fcppt/math/detail/member_operator.hpp>
 #include <fcppt/math/matrix/object_decl.hpp>
 #include <fcppt/math/matrix/row_type.hpp>
 #include <fcppt/math/matrix/detail/init_storage.hpp>
@@ -242,21 +242,93 @@ fcppt::math::matrix::object<
 {
 }
 
-#define FCPPT_MATH_MATRIX_OBJECT_DEFINE_OPERATOR(\
-	op\
-)\
-FCPPT_MATH_DETAIL_MAKE_OP_DEF(\
-	4,\
-	(template<typename T, fcppt::math::size_type R, fcppt::math::size_type C, typename S> template<typename OtherStorage>),\
-	(fcppt::math::matrix::object<T, R, C, S>),\
-	(fcppt::math::matrix::object<T, R, C, OtherStorage>),\
-	op\
+template<
+	typename T,
+	fcppt::math::size_type R,
+	fcppt::math::size_type C,
+	typename S
+>
+template<
+	typename S2
+>
+fcppt::math::matrix::object<
+	T,
+	R,
+	C,
+	S
+> &
+fcppt::math::matrix::object<
+	T,
+	R,
+	C,
+	S
+>::operator+=(
+	object<
+		T,
+		R,
+		C,
+		S2
+	> const &_right
 )
+{
+	return
+		fcppt::math::detail::member_operator(
+			*this,
+			_right,
+			[](
+				T &_left_elem,
+				T const &_right_elem
+			)
+			{
+				_left_elem +=
+					_right_elem;
+			}
+		);
+}
 
-FCPPT_MATH_MATRIX_OBJECT_DEFINE_OPERATOR(+=)
-FCPPT_MATH_MATRIX_OBJECT_DEFINE_OPERATOR(-=)
-
-#undef FCPPT_MATH_MATRIX_OBJECT_DEFINE_OPERATOR
+template<
+	typename T,
+	fcppt::math::size_type R,
+	fcppt::math::size_type C,
+	typename S
+>
+template<
+	typename S2
+>
+fcppt::math::matrix::object<
+	T,
+	R,
+	C,
+	S
+> &
+fcppt::math::matrix::object<
+	T,
+	R,
+	C,
+	S
+>::operator-=(
+	object<
+		T,
+		R,
+		C,
+		S2
+	> const &_right
+)
+{
+	return
+		fcppt::math::detail::member_operator(
+			*this,
+			_right,
+			[](
+				T &_left_elem,
+				T const &_right_elem
+			)
+			{
+				_left_elem -=
+					_right_elem;
+			}
+		);
+}
 
 template<
 	typename T,
@@ -285,39 +357,6 @@ fcppt::math::matrix::object<
 		storage_
 	)
 		item *=
-			_value;
-
-	return
-		*this;
-}
-
-template<
-	typename T,
-	fcppt::math::size_type R,
-	fcppt::math::size_type C,
-	typename S
->
-fcppt::math::matrix::object<
-	T,
-	R,
-	C,
-	S
-> &
-fcppt::math::matrix::object<
-	T,
-	R,
-	C,
-	S
->::operator/=(
-	value_type const &_value
-)
-{
-	for(
-		auto &item
-		:
-		storage_
-	)
-		item /=
 			_value;
 
 	return

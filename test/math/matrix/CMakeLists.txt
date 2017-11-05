@@ -17,11 +17,19 @@ add_fcppt_math_matrix_test(
 )
 
 add_fcppt_math_matrix_test(
+	arithmetic
+)
+
+add_fcppt_math_matrix_test(
 	at_r
 )
 
 add_fcppt_math_matrix_test(
 	at_r_c
+)
+
+add_fcppt_math_matrix_test(
+	binary_map
 )
 
 add_fcppt_math_matrix_test(
@@ -63,13 +71,11 @@ add_fcppt_math_matrix_test(
 )
 
 add_fcppt_math_matrix_test(
-	multiply
-	LINK_LIBS
-		"${fcppt_core_TARGET}"
+	map
 )
 
 add_fcppt_math_matrix_test(
-	operators
+	multiply
 )
 
 add_fcppt_math_matrix_test(

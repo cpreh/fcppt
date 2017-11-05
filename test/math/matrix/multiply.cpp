@@ -4,8 +4,6 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/text.hpp>
-#include <fcppt/io/cout.hpp>
 #include <fcppt/math/matrix/arithmetic.hpp>
 #include <fcppt/math/matrix/comparison.hpp>
 #include <fcppt/math/matrix/output.hpp>
@@ -62,10 +60,6 @@ FCPPT_PP_POP_WARNING
 		result(
 			left * right
 		);
-
-	fcppt::io::cout()
-		<< result
-		<< FCPPT_TEXT('\n');
 
 	BOOST_CHECK_EQUAL(
 		result,

@@ -1986,14 +1986,7 @@ EXPAND_AS_DEFINED      = FCPPT_NONCOPYABLE \
                          FCPPT_DETAIL_STRONG_TYPEDEF_FOREACH_INC_DEC_OPERATOR \
                          FCPPT_DETAIL_STRONG_TYPEDEF_POST_INC_DEC_OPERATOR \
                          FCPPT_DETAIL_STRONG_TYPEDEF_PRE_INC_DEC_OPERATOR \
-                         FCPPT_DETAIL_STRONG_TYPEDEF_UNARY_OPERATOR \
-                         FCPPT_MATH_DETAIL_MAKE_SYMMETRIC_BINARY_OPERATOR \
-                         FCPPT_MATH_DETAIL_MAKE_UNARY_OPERATOR \
-                         FCPPT_MATH_DETAIL_MAKE_ASYMMETRIC_BINARY_OPERATOR \
-                         FCPPT_MATH_DETAIL_MAKE_ASYMMETRIC_BINARY_OPERATOR_RIGHT \
-                         FCPPT_MATH_MAKE_FREE_MATRIX_FUNCTION \
-                         FCPPT_MATH_MAKE_FREE_SCALAR_MATRIX_FUNCTION \
-                         FCPPT_MATH_MAKE_FREE_VECTOR_DIM_FUNCTION
+                         FCPPT_DETAIL_STRONG_TYPEDEF_UNARY_OPERATOR
 
 # If the SKIP_FUNCTION_MACROS tag is set to YES then doxygen's preprocessor will
 # remove all references to function-like macros that are alone on a line, have

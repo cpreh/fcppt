@@ -813,13 +813,8 @@ set(
 	libs/core/include/fcppt/math/detail/init_storage.hpp
 	libs/core/include/fcppt/math/detail/is_static_storage.hpp
 	libs/core/include/fcppt/math/detail/linear_access.hpp
-	libs/core/include/fcppt/math/detail/make_asymmetric_binary_operator.hpp
-	libs/core/include/fcppt/math/detail/make_asymmetric_binary_operator_right.hpp
-	libs/core/include/fcppt/math/detail/make_op_decl.hpp
-	libs/core/include/fcppt/math/detail/make_op_def.hpp
-	libs/core/include/fcppt/math/detail/make_symmetric_binary_operator.hpp
-	libs/core/include/fcppt/math/detail/make_unary_operator.hpp
 	libs/core/include/fcppt/math/detail/map.hpp
+	libs/core/include/fcppt/math/detail/member_operator.hpp
 	libs/core/include/fcppt/math/detail/mod.hpp
 	libs/core/include/fcppt/math/detail/narrow_cast.hpp
 	libs/core/include/fcppt/math/detail/null_storage.hpp
@@ -837,6 +832,7 @@ set(
 	libs/core/include/fcppt/math/difference_type.hpp
 	libs/core/include/fcppt/math/dim/arithmetic.hpp
 	libs/core/include/fcppt/math/dim/at.hpp
+	libs/core/include/fcppt/math/dim/binary_map.hpp
 	libs/core/include/fcppt/math/dim/comparison.hpp
 	libs/core/include/fcppt/math/dim/componentwise_equal.hpp
 	libs/core/include/fcppt/math/dim/construct.hpp
@@ -855,6 +851,7 @@ set(
 	libs/core/include/fcppt/math/dim/object_fwd.hpp
 	libs/core/include/fcppt/math/dim/object_impl.hpp
 	libs/core/include/fcppt/math/dim/output.hpp
+	libs/core/include/fcppt/math/dim/sequence.hpp
 	libs/core/include/fcppt/math/dim/static.hpp
 	libs/core/include/fcppt/math/dim/static_decl.hpp
 	libs/core/include/fcppt/math/dim/static_fwd.hpp
@@ -882,6 +879,7 @@ set(
 	libs/core/include/fcppt/math/matrix/arithmetic.hpp
 	libs/core/include/fcppt/math/matrix/at_r.hpp
 	libs/core/include/fcppt/math/matrix/at_r_c.hpp
+	libs/core/include/fcppt/math/matrix/binary_map.hpp
 	libs/core/include/fcppt/math/matrix/comparison.hpp
 	libs/core/include/fcppt/math/matrix/componentwise_equal.hpp
 	libs/core/include/fcppt/math/matrix/delete_row_and_column.hpp
@@ -905,6 +903,7 @@ set(
 	libs/core/include/fcppt/math/matrix/inverse.hpp
 	libs/core/include/fcppt/math/matrix/is_matrix.hpp
 	libs/core/include/fcppt/math/matrix/logarithm.hpp
+	libs/core/include/fcppt/math/matrix/map.hpp
 	libs/core/include/fcppt/math/matrix/object.hpp
 	libs/core/include/fcppt/math/matrix/object_decl.hpp
 	libs/core/include/fcppt/math/matrix/object_fwd.hpp
@@ -966,6 +965,7 @@ set(
 	libs/core/include/fcppt/math/vector/construct.hpp
 	libs/core/include/fcppt/math/vector/cross.hpp
 	libs/core/include/fcppt/math/vector/detail/bit_strings.hpp
+	libs/core/include/fcppt/math/vector/detail/dim_map.hpp
 	libs/core/include/fcppt/math/vector/dim.hpp
 	libs/core/include/fcppt/math/vector/distance.hpp
 	libs/core/include/fcppt/math/vector/dot.hpp

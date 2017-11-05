@@ -17,6 +17,10 @@ add_fcppt_math_dim_test(
 )
 
 add_fcppt_math_dim_test(
+	binary_map
+)
+
+add_fcppt_math_dim_test(
 	componentwise_equal
 )
 
@@ -51,6 +55,10 @@ add_fcppt_math_dim_test(
 
 add_fcppt_math_dim_test(
 	narrow_cast
+)
+
+add_fcppt_math_dim_test(
+	sequence
 )
 
 add_fcppt_math_dim_test(

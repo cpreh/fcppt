@@ -13,11 +13,11 @@
 #include <fcppt/algorithm/fold.hpp>
 #include <fcppt/math/int_range_count.hpp>
 #include <fcppt/math/size_type.hpp>
-#include <fcppt/math/detail/binary_map.hpp>
 #include <fcppt/math/detail/binary_type.hpp>
-#include <fcppt/math/detail/map.hpp>
 #include <fcppt/math/matrix/at_r_c.hpp>
+#include <fcppt/math/matrix/binary_map.hpp>
 #include <fcppt/math/matrix/init.hpp>
+#include <fcppt/math/matrix/map.hpp>
 #include <fcppt/math/matrix/object_impl.hpp>
 #include <fcppt/math/matrix/static.hpp>
 
@@ -29,76 +29,110 @@ namespace math
 namespace matrix
 {
 
-#define FCPPT_MATH_MAKE_FREE_MATRIX_FUNCTION(\
-	op\
-)\
-template<\
-	typename Left,\
-	typename Right,\
-	fcppt::math::size_type R,\
-	fcppt::math::size_type C,\
-	typename S1,\
-	typename S2\
->\
-inline \
-fcppt::math::matrix::static_<\
-	FCPPT_MATH_DETAIL_BINARY_TYPE(Left, op, Right),\
-	R,\
-	C \
-> \
-operator op(\
-	fcppt::math::matrix::object<\
-		Left,\
-		R,\
-		C,\
-		S1\
-	> const &_left,\
-	fcppt::math::matrix::object<\
-		Right,\
-		R,\
-		C,\
-		S2\
-	> const &_right\
-)\
-{\
-	typedef \
-	FCPPT_MATH_DETAIL_BINARY_TYPE(Left, op, Right)\
-	result_value_type;\
-\
-	return \
-		fcppt::math::detail::binary_map<\
-			fcppt::math::matrix::static_<\
-				result_value_type,\
-				R,\
-				C\
-			> \
-		>(\
-			_left,\
-			_right,\
-			[](\
-				Left const &_left_elem,\
-				Right const &_right_elem\
-			)\
-			{\
-				return \
-					_left_elem \
-					op \
-					_right_elem;\
-			}\
-		);\
+/**
+\brief Adds two matrices.
+
+\ingroup fcpptmathmatrix
+*/
+template<
+	typename Left,
+	typename Right,
+	fcppt::math::size_type R,
+	fcppt::math::size_type C,
+	typename S1,
+	typename S2
+>
+inline
+fcppt::math::matrix::static_<
+	FCPPT_MATH_DETAIL_BINARY_TYPE(Left, +, Right),
+	R,
+	C
+>
+operator +(
+	fcppt::math::matrix::object<
+		Left,
+		R,
+		C,
+		S1
+	> const &_left,
+	fcppt::math::matrix::object<
+		Right,
+		R,
+		C,
+		S2
+	> const &_right
+)
+{
+	return
+		fcppt::math::matrix::binary_map(
+			_left,
+			_right,
+			[](
+				Left const &_left_elem,
+				Right const &_right_elem
+			)
+			{
+				return
+					_left_elem
+					+
+					_right_elem;
+			}
+		);
 }
 
-/** \addtogroup fcpptmathmatrix
-*  @{
-*/
-FCPPT_MATH_MAKE_FREE_MATRIX_FUNCTION(+)
-FCPPT_MATH_MAKE_FREE_MATRIX_FUNCTION(-)
-/** @}*/
+/**
+\brief Subtracts one matrix from another.
 
-#undef FCPPT_MATH_MAKE_FREE_MATRIX_FUNCTION
+\ingroup fcpptmathmatrix
+*/
+template<
+	typename Left,
+	typename Right,
+	fcppt::math::size_type R,
+	fcppt::math::size_type C,
+	typename S1,
+	typename S2
+>
+inline
+fcppt::math::matrix::static_<
+	FCPPT_MATH_DETAIL_BINARY_TYPE(Left, -, Right),
+	R,
+	C
+>
+operator -(
+	fcppt::math::matrix::object<
+		Left,
+		R,
+		C,
+		S1
+	> const &_left,
+	fcppt::math::matrix::object<
+		Right,
+		R,
+		C,
+		S2
+	> const &_right
+)
+{
+	return
+		fcppt::math::matrix::binary_map(
+			_left,
+			_right,
+			[](
+				Left const &_left_elem,
+				Right const &_right_elem
+			)
+			{
+				return
+					_left_elem
+					-
+					_right_elem;
+			}
+		);
+}
 
 /**
-\brief Multiplies two matrices
+\brief Multiplies two matrices.
 
 \ingroup fcpptmathmatrix
 */
@@ -209,74 +243,53 @@ operator *(
 		);
 }
 
-#define FCPPT_MATH_MAKE_FREE_SCALAR_MATRIX_FUNCTION(\
-	op\
-) \
-template< \
-	typename Left,\
-	typename Right,\
-	fcppt::math::size_type R,\
-	fcppt::math::size_type C,\
-	typename S\
->\
-inline \
-fcppt::math::matrix::static_<\
-	FCPPT_MATH_DETAIL_BINARY_TYPE(Left, op, Right),\
-	R,\
-	C\
-> \
-operator op(\
-	fcppt::math::matrix::object<\
-		Left,\
-		R,\
-		C,\
-		S\
-	> const &_left,\
-	Right const &_right\
-)\
-{\
-	typedef \
-	FCPPT_MATH_DETAIL_BINARY_TYPE(Left, op, Right)\
-	result_value_type;\
-\
-	return \
-		fcppt::math::detail::map<\
-			fcppt::math::matrix::static_<\
-				result_value_type,\
-				R,\
-				C\
-			>\
-		>(\
-			_left,\
-			[\
-				&_right\
-			](\
-				Left const &_left_element\
-			)\
-			{\
-				_left_element \
-				op \
-				_right;\
-			}\
-		);\
+/**
+\brief Multiplies a matrix by a scalar.
+
+\ingroup fcpptmathmatrix
+*/
+template<
+	typename Left,
+	typename Right,
+	fcppt::math::size_type R,
+	fcppt::math::size_type C,
+	typename S
+>
+inline
+fcppt::math::matrix::static_<
+	FCPPT_MATH_DETAIL_BINARY_TYPE(Left, *, Right),
+	R,
+	C
+>
+operator *(
+	fcppt::math::matrix::object<
+		Left,
+		R,
+		C,
+		S
+	> const &_left,
+	Right const &_right
+)
+{
+	return
+		fcppt::math::matrix::map(
+			_left,
+			[
+				&_right
+			](
+				Left const &_left_element
+			)
+			{
+				return
+					_left_element
+					*
+					_right;
+			}
+		);
 }
 
-/** \addtogroup fcpptmathmatrix
-*  @{
-*/
-FCPPT_MATH_MAKE_FREE_SCALAR_MATRIX_FUNCTION(
-	*
-)
-
-FCPPT_MATH_MAKE_FREE_SCALAR_MATRIX_FUNCTION(
-	/
-)
-/** @}*/
-
-#undef FCPPT_MATH_MAKE_FREE_SCALAR_MATRIX_FUNCTION
-
 /**
-\brief Multiplies a scalar by a matrix
+\brief Multiplies a matrix by a scalar.
 
 \ingroup fcpptmathmatrix
 */
@@ -303,29 +316,19 @@ operator *(
 	> const &_right
 )
 {
-	typedef
-	FCPPT_MATH_DETAIL_BINARY_TYPE(Left, *, Right)
-	result_value_type;
-
 	return
-		fcppt::math::detail::map<
-			fcppt::math::matrix::static_<
-				result_value_type,
-				R,
-				C
-			>
-		>(
+		fcppt::math::matrix::map(
 			_right,
 			[
 				&_left
 			](
-				Right const &_right_elem
+				Right const &_right_element
 			)
 			{
 				return
 					_left
 					*
-					_right_elem;
+					_right_element;
 			}
 		);
 }

@@ -4,6 +4,8 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
+#include <fcppt/cast/to_signed.hpp>
+#include <fcppt/math/matrix/binary_map.hpp>
 #include <fcppt/math/matrix/comparison.hpp>
 #include <fcppt/math/matrix/output.hpp>
 #include <fcppt/math/matrix/row.hpp>
@@ -16,89 +18,68 @@
 #include <fcppt/config/external_end.hpp>
 
 
-namespace
-{
-
-typedef
-fcppt::math::matrix::static_<
-	int,
-	2,
-	2
->
-matrix_type;
-
-}
-
 FCPPT_PP_PUSH_WARNING
 FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
 
 BOOST_AUTO_TEST_CASE(
-	math_matrix_operators_add
+	matrix_binary_map
 )
 {
 FCPPT_PP_POP_WARNING
 
-	matrix_type const first(
-		fcppt::math::matrix::row(
-			1, 2
-		),
-		fcppt::math::matrix::row(
-			3, 4
-		)
-	);
+	typedef
+	fcppt::math::matrix::static_<
+		unsigned,
+		2,
+		2
+	>
+	ui2_matrix;
 
-	matrix_type second(
-		fcppt::math::matrix::row(
-			2, 3
-		),
-		fcppt::math::matrix::row(
-			4, 5
-		)
-	);
-
-	second += first;
+	typedef
+	fcppt::math::matrix::static_<
+		int,
+		2,
+		2
+	>
+	i2_matrix;
 
 	BOOST_CHECK_EQUAL(
-		second,
-		matrix_type(
-			fcppt::math::matrix::row(
-				3, 5
-			),
-			fcppt::math::matrix::row(
-				7, 9
+		fcppt::math::matrix::binary_map(
+			ui2_matrix{
+				fcppt::math::matrix::row(
+					5u,10u
+				),
+				fcppt::math::matrix::row(
+					15u,20u
+				)
+			},
+			i2_matrix{
+				fcppt::math::matrix::row(
+					1,2
+				),
+				fcppt::math::matrix::row(
+					3,4
+				)
+			},
+			[](
+				unsigned const _val1,
+				int const _val2
 			)
-		)
-	);
-}
-
-FCPPT_PP_PUSH_WARNING
-FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
-
-BOOST_AUTO_TEST_CASE(
-	math_matrix_operators_scalar
-)
-{
-FCPPT_PP_POP_WARNING
-
-	matrix_type first(
-		fcppt::math::matrix::row(
-			1, 2
+			{
+				return
+					fcppt::cast::to_signed(
+						_val1
+					)
+					+
+					_val2;
+			}
 		),
-		fcppt::math::matrix::row(
-			3, 4
-		)
-	);
-
-	first *= 3;
-
-	BOOST_CHECK_EQUAL(
-		first,
-		matrix_type(
+		i2_matrix(
 			fcppt::math::matrix::row(
-				3, 6
+				6,12
 			),
 			fcppt::math::matrix::row(
-				9, 12
+				18,24
 			)
 		)
 	);

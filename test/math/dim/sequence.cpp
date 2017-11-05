@@ -4,11 +4,13 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/cast/to_signed.hpp>
 #include <fcppt/math/dim/comparison.hpp>
-#include <fcppt/math/dim/map.hpp>
 #include <fcppt/math/dim/output.hpp>
+#include <fcppt/math/dim/sequence.hpp>
 #include <fcppt/math/dim/static.hpp>
+#include <fcppt/optional/make.hpp>
+#include <fcppt/optional/object.hpp>
+#include <fcppt/optional/output.hpp>
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
@@ -21,7 +23,7 @@ FCPPT_PP_PUSH_WARNING
 FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
 
 BOOST_AUTO_TEST_CASE(
-	dim_map
+	dim_sequence
 )
 {
 FCPPT_PP_POP_WARNING
@@ -35,30 +37,46 @@ FCPPT_PP_POP_WARNING
 
 	typedef
 	fcppt::math::dim::static_<
-		int,
+		fcppt::optional::object<
+			unsigned
+		>,
 		2
 	>
-	i2_dim;
+	ui2_dim_opt;
 
 	BOOST_CHECK_EQUAL(
-		fcppt::math::dim::map(
-			ui2_dim(
-				10u,
-				20u
-			),
-			[](
-				unsigned const _val
-			)
-			{
-				return
-					fcppt::cast::to_signed(
-						_val
-					);
+		fcppt::math::dim::sequence(
+			ui2_dim_opt{
+				fcppt::optional::make(
+					10u
+				),
+				fcppt::optional::make(
+					20u
+				)
 			}
 		),
-		i2_dim(
-			10,
-			20
+		fcppt::optional::make(
+			ui2_dim{
+				10u,
+				20u
+			}
 		)
 	);
+
+	BOOST_CHECK_EQUAL(
+		fcppt::math::dim::sequence(
+			ui2_dim_opt{
+				fcppt::optional::object<
+					unsigned
+				>{},
+				fcppt::optional::make(
+					20u
+				)
+			}
+		),
+		fcppt::optional::object<
+			ui2_dim
+		>{}
+	);
+
 }

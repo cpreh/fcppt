@@ -167,34 +167,21 @@ FCPPT_PP_POP_WARNING
 			2,
 			3
 		)
-		+
-		3,
+		*
+		2,
 		i2_dim(
-			5,
+			4,
 			6
 		)
 	);
 
 	BOOST_CHECK_EQUAL(
-		i2_dim(
-			2,
-			3
-		)
-		-
-		3,
-		i2_dim(
-			-1,
-			0
-		)
-	);
-
-	BOOST_CHECK_EQUAL(
-		i2_dim(
-			2,
-			3
-		)
+		2
 		*
-		2,
+		i2_dim(
+			2,
+			3
+		),
 		i2_dim(
 			4,
 			6

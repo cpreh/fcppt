@@ -9,13 +9,12 @@
 
 #include <fcppt/math/div.hpp>
 #include <fcppt/math/size_type.hpp>
-#include <fcppt/math/detail/binary_map.hpp>
-#include <fcppt/math/detail/make_asymmetric_binary_operator.hpp>
-#include <fcppt/math/detail/make_asymmetric_binary_operator_right.hpp>
-#include <fcppt/math/detail/make_symmetric_binary_operator.hpp>
-#include <fcppt/math/detail/make_unary_operator.hpp>
-#include <fcppt/math/detail/sequence.hpp>
+#include <fcppt/math/detail/binary_type.hpp>
+#include <fcppt/math/detail/unary_type.hpp>
+#include <fcppt/math/dim/binary_map.hpp>
+#include <fcppt/math/dim/map.hpp>
 #include <fcppt/math/dim/object_impl.hpp>
+#include <fcppt/math/dim/sequence.hpp>
 #include <fcppt/math/dim/static.hpp>
 #include <fcppt/optional/object_impl.hpp>
 
@@ -27,21 +26,179 @@ namespace math
 namespace dim
 {
 
-/** \addtogroup fcpptmathdim
-*  @{
+/**
+\brief Negates a dim.
+
+\ingroup fcpptmathdim
 */
-FCPPT_MATH_DETAIL_MAKE_SYMMETRIC_BINARY_OPERATOR(+)
-FCPPT_MATH_DETAIL_MAKE_SYMMETRIC_BINARY_OPERATOR(-)
-FCPPT_MATH_DETAIL_MAKE_SYMMETRIC_BINARY_OPERATOR(*)
+template<
+	typename T,
+	fcppt::math::size_type N,
+	typename S
+>
+inline
+fcppt::math::dim::static_<
+	FCPPT_MATH_DETAIL_UNARY_TYPE(T, -),
+	N
+>
+operator -(
+	fcppt::math::dim::object<
+		T,
+		N,
+		S
+	> const &_left
+)
+{
+	return
+		fcppt::math::dim::map(
+			_left,
+			[](
+				T const &_elem
+			){
+				return
+					-
+					_elem;
+			}
+		);
+}
 
-FCPPT_MATH_DETAIL_MAKE_UNARY_OPERATOR(+)
-FCPPT_MATH_DETAIL_MAKE_UNARY_OPERATOR(-)
+/**
+\brief Adds a dim to a dim.
 
-FCPPT_MATH_DETAIL_MAKE_ASYMMETRIC_BINARY_OPERATOR(+)
-FCPPT_MATH_DETAIL_MAKE_ASYMMETRIC_BINARY_OPERATOR(-)
-FCPPT_MATH_DETAIL_MAKE_ASYMMETRIC_BINARY_OPERATOR(*)
+\ingroup fcpptmathdim
+*/
+template<
+	typename L,
+	typename R,
+	fcppt::math::size_type N,
+	typename S1,
+	typename S2
+>
+inline
+fcppt::math::dim::static_<
+	FCPPT_MATH_DETAIL_BINARY_TYPE(L, +, R),
+	N
+>
+operator +(
+	fcppt::math::dim::object<
+		L,
+		N,
+		S1
+	> const &_left,
+	fcppt::math::dim::object<
+		R,
+		N,
+		S2
+	> const &_right
+)
+{
+	return
+		fcppt::math::dim::binary_map(
+			_left,
+			_right,
+			[](
+				L const &_left_elem,
+				R const &_right_elem
+			){
+				return
+					_left_elem
+					+
+					_right_elem;
+			}
+		);
+}
 
-/** @}*/
+/**
+\brief Subtracts a dim from a dim.
+
+\ingroup fcpptmathdim
+*/
+template<
+	typename L,
+	typename R,
+	fcppt::math::size_type N,
+	typename S1,
+	typename S2
+>
+inline
+fcppt::math::dim::static_<
+	FCPPT_MATH_DETAIL_BINARY_TYPE(L, -, R),
+	N
+>
+operator -(
+	fcppt::math::dim::object<
+		L,
+		N,
+		S1
+	> const &_left,
+	fcppt::math::dim::object<
+		R,
+		N,
+		S2
+	> const &_right
+)
+{
+	return
+		fcppt::math::dim::binary_map(
+			_left,
+			_right,
+			[](
+				L const &_left_elem,
+				R const &_right_elem
+			){
+				return
+					_left_elem
+					-
+					_right_elem;
+			}
+		);
+}
+
+/**
+\brief Multiplies a dim by a dim.
+
+\ingroup fcpptmathdim
+*/
+template<
+	typename L,
+	typename R,
+	fcppt::math::size_type N,
+	typename S1,
+	typename S2
+>
+inline
+fcppt::math::dim::static_<
+	FCPPT_MATH_DETAIL_BINARY_TYPE(L, *, R),
+	N
+>
+operator *(
+	fcppt::math::dim::object<
+		L,
+		N,
+		S1
+	> const &_left,
+	fcppt::math::dim::object<
+		R,
+		N,
+		S2
+	> const &_right
+)
+{
+	return
+		fcppt::math::dim::binary_map(
+			_left,
+			_right,
+			[](
+				L const &_left_elem,
+				R const &_right_elem
+			){
+				return
+					_left_elem
+					*
+					_right_elem;
+			}
+		);
+}
 
 /**
 \brief Divides a dim by a dim.
@@ -75,33 +232,15 @@ operator /(
 	> const &_right
 )
 {
-	// TODO: Simplify this
 	return
-		fcppt::math::detail::sequence<
-			fcppt::math::dim::static_<
-				FCPPT_MATH_DETAIL_BINARY_TYPE(L, /, R),
-				N
-			>
-		>(
-			fcppt::math::detail::binary_map<
-				fcppt::math::dim::static_<
-					fcppt::optional::object<
-						FCPPT_MATH_DETAIL_BINARY_TYPE(L, /, R)
-					>,
-					N
-				>
-			>(
+		fcppt::math::dim::sequence(
+			fcppt::math::dim::binary_map(
 				_left,
 				_right,
 				[](
 					L const &_left_elem,
 					R const &_right_elem
-				)
-				->
-				fcppt::optional::object<
-					FCPPT_MATH_DETAIL_BINARY_TYPE(L, /, R)
-				>
-				{
+				){
 					return
 						fcppt::math::div(
 							_left_elem,
@@ -109,6 +248,90 @@ operator /(
 						);
 				}
 			)
+		);
+}
+
+/**
+\brief Multiplies a dim by a scalar on the right.
+
+\ingroup fcpptmathdim
+*/
+template<
+	typename L,
+	typename R,
+	fcppt::math::size_type N,
+	typename S
+>
+inline
+fcppt::math::dim::static_<
+	FCPPT_MATH_DETAIL_BINARY_TYPE(L, *, R),
+	N
+>
+operator *(
+	fcppt::math::dim::object<
+		L,
+		N,
+		S
+	> const &_left,
+	R const &_right
+)
+{
+	return
+		fcppt::math::dim::map(
+			_left,
+			[
+				&_right
+			](
+				L const &_left_elem
+			)
+			{
+				return
+					_left_elem
+					*
+					_right;
+			}
+		);
+}
+
+/**
+\brief Multiplies a dim by a scalar on the left.
+
+\ingroup fcpptmathdim
+*/
+template<
+	typename L,
+	typename R,
+	fcppt::math::size_type N,
+	typename S
+>
+inline
+fcppt::math::dim::static_<
+	FCPPT_MATH_DETAIL_BINARY_TYPE(L, *, R),
+	N
+>
+operator *(
+	L const &_left,
+	fcppt::math::dim::object<
+		R,
+		N,
+		S
+	> const &_right
+)
+{
+	return
+		fcppt::math::dim::map(
+			_right,
+			[
+				&_left
+			](
+				R const &_right_elem
+			)
+			{
+				return
+					_left
+					*
+					_right_elem;
+			}
 		);
 }
 
@@ -140,20 +363,8 @@ operator /(
 )
 {
 	return
-		fcppt::math::detail::sequence<
-			fcppt::math::dim::static_<
-				FCPPT_MATH_DETAIL_BINARY_TYPE(L, /, R),
-				N
-			>
-		>(
-			fcppt::math::detail::map<
-				fcppt::math::dim::static_<
-					fcppt::optional::object<
-						FCPPT_MATH_DETAIL_BINARY_TYPE(L, /, R)
-					>,
-					N
-				>
-			>(
+		fcppt::math::dim::sequence(
+			fcppt::math::dim::map(
 				_left,
 				[
 					&_right

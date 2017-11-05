@@ -5,7 +5,9 @@
 
 
 #include <fcppt/cast/to_signed.hpp>
+#include <fcppt/math/vector/comparison.hpp>
 #include <fcppt/math/vector/map.hpp>
+#include <fcppt/math/vector/output.hpp>
 #include <fcppt/math/vector/static.hpp>
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
@@ -26,19 +28,24 @@ FCPPT_PP_POP_WARNING
 
 	typedef
 	fcppt::math::vector::static_<
+		int,
+		2
+	>
+	i2_vector;
+
+	typedef
+	fcppt::math::vector::static_<
 		unsigned,
 		2
 	>
 	ui2_vector;
 
-	ui2_vector const vector{
-		10u,
-		20u
-	};
-
-	auto const result(
+	BOOST_CHECK_EQUAL(
 		fcppt::math::vector::map(
-			vector,
+			ui2_vector{
+				10u,
+				20u
+			},
 			[](
 				unsigned const _val
 			)
@@ -48,16 +55,10 @@ FCPPT_PP_POP_WARNING
 						_val
 					);
 			}
+		),
+		i2_vector(
+			10,
+			20
 		)
-	);
-
-	BOOST_CHECK_EQUAL(
-		result.x(),
-		10
-	);
-
-	BOOST_CHECK_EQUAL(
-		result.y(),
-		20
 	);
 }

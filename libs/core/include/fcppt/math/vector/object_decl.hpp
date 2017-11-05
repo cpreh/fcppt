@@ -11,7 +11,6 @@
 #include <fcppt/math/difference_type.hpp>
 #include <fcppt/math/size_type.hpp>
 #include <fcppt/math/static_size.hpp>
-#include <fcppt/math/detail/make_op_decl.hpp>
 #include <fcppt/math/vector/object_fwd.hpp>
 
 
@@ -186,23 +185,53 @@ public:
 
 	~object();
 
-#define FCPPT_MATH_VECTOR_OBJECT_DECLARE_OPERATOR(op)\
-FCPPT_MATH_DETAIL_MAKE_OP_DECL(\
-	template<\
-		typename OtherStorage\
-	>, \
-	(object<T, N, OtherStorage>),\
-	3,\
-	op \
-)
-
-	FCPPT_MATH_VECTOR_OBJECT_DECLARE_OPERATOR(+=)
-	FCPPT_MATH_VECTOR_OBJECT_DECLARE_OPERATOR(-=)
-	FCPPT_MATH_VECTOR_OBJECT_DECLARE_OPERATOR(*=)
-#undef FCPPT_MATH_VECTOR_OBJECT_DECLARE_OPERATOR
+	/**
+	\brief Add a vector.
+	*/
+	template<
+		typename S2
+	>
+	object &
+	operator+=(
+		object<
+			T,
+			N,
+			S2
+		> const &
+	);
 
 	/**
-	\brief Multiply a vector by a scalar
+	\brief Subtract a vector.
+	*/
+	template<
+		typename S2
+	>
+	object &
+	operator-=(
+		object<
+			T,
+			N,
+			S2
+		> const &
+	);
+
+	/**
+	\brief Multiply by a vector.
+	*/
+	template<
+		typename S2
+	>
+	object &
+	operator*=(
+		object<
+			T,
+			N,
+			S2
+		> const &
+	);
+
+	/**
+	\brief Multiply a vector by a scalar.
 	*/
 	object &
 	operator*=(
