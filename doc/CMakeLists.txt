@@ -958,6 +958,7 @@ set(
 	libs/core/include/fcppt/math/vector/arithmetic.hpp
 	libs/core/include/fcppt/math/vector/at.hpp
 	libs/core/include/fcppt/math/vector/atan2.hpp
+	libs/core/include/fcppt/math/vector/binary_map.hpp
 	libs/core/include/fcppt/math/vector/bit_strings.hpp
 	libs/core/include/fcppt/math/vector/ceil_div_signed.hpp
 	libs/core/include/fcppt/math/vector/comparison.hpp
@@ -987,6 +988,7 @@ set(
 	libs/core/include/fcppt/math/vector/object_impl.hpp
 	libs/core/include/fcppt/math/vector/output.hpp
 	libs/core/include/fcppt/math/vector/point_rotate.hpp
+	libs/core/include/fcppt/math/vector/sequence.hpp
 	libs/core/include/fcppt/math/vector/signed_angle_between.hpp
 	libs/core/include/fcppt/math/vector/signed_angle_between_cast.hpp
 	libs/core/include/fcppt/math/vector/static.hpp

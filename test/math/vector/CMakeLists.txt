@@ -25,6 +25,10 @@ add_fcppt_math_vector_test(
 )
 
 add_fcppt_math_vector_test(
+	binary_map
+)
+
+add_fcppt_math_vector_test(
 	bit_strings
 )
 
@@ -78,6 +82,10 @@ add_fcppt_math_vector_test(
 
 add_fcppt_math_vector_test(
 	raw_view
+)
+
+add_fcppt_math_vector_test(
+	sequence
 )
 
 add_fcppt_math_vector_test(

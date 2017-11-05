@@ -9,12 +9,13 @@
 
 #include <fcppt/math/div.hpp>
 #include <fcppt/math/size_type.hpp>
-#include <fcppt/math/detail/binary_map.hpp>
 #include <fcppt/math/detail/make_asymmetric_binary_operator.hpp>
 #include <fcppt/math/detail/make_symmetric_binary_operator.hpp>
 #include <fcppt/math/detail/make_unary_operator.hpp>
-#include <fcppt/math/detail/sequence.hpp>
+#include <fcppt/math/vector/binary_map.hpp>
+#include <fcppt/math/vector/map.hpp>
 #include <fcppt/math/vector/object_impl.hpp>
+#include <fcppt/math/vector/sequence.hpp>
 #include <fcppt/math/vector/static.hpp>
 #include <fcppt/optional/object_impl.hpp>
 
@@ -82,33 +83,15 @@ operator /(
 	> const &_right
 )
 {
-	// TODO: Simplify this
 	return
-		fcppt::math::detail::sequence<
-			fcppt::math::vector::static_<
-				FCPPT_MATH_DETAIL_BINARY_TYPE(L, /, R),
-				N
-			>
-		>(
-			fcppt::math::detail::binary_map<
-				fcppt::math::vector::static_<
-					fcppt::optional::object<
-						FCPPT_MATH_DETAIL_BINARY_TYPE(L, /, R)
-					>,
-					N
-				>
-			>(
+		fcppt::math::vector::sequence(
+			fcppt::math::vector::binary_map(
 				_left,
 				_right,
 				[](
 					L const &_left_elem,
 					R const &_right_elem
-				)
-				->
-				fcppt::optional::object<
-					FCPPT_MATH_DETAIL_BINARY_TYPE(L, /, R)
-				>
-				{
+				){
 					return
 						fcppt::math::div(
 							_left_elem,
@@ -147,20 +130,8 @@ operator /(
 )
 {
 	return
-		fcppt::math::detail::sequence<
-			fcppt::math::vector::static_<
-				FCPPT_MATH_DETAIL_BINARY_TYPE(L, /, R),
-				N
-			>
-		>(
-			fcppt::math::detail::map<
-				fcppt::math::vector::static_<
-					fcppt::optional::object<
-						FCPPT_MATH_DETAIL_BINARY_TYPE(L, /, R)
-					>,
-					N
-				>
-			>(
+		fcppt::math::vector::sequence(
+			fcppt::math::vector::map(
 				_left,
 				[
 					&_right

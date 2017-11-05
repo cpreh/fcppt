@@ -4,16 +4,14 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_MATH_VECTOR_MAP_HPP_INCLUDED
-#define FCPPT_MATH_VECTOR_MAP_HPP_INCLUDED
+#ifndef FCPPT_MATH_VECTOR_SEQUENCE_HPP_INCLUDED
+#define FCPPT_MATH_VECTOR_SEQUENCE_HPP_INCLUDED
 
 #include <fcppt/math/size_type.hpp>
-#include <fcppt/math/detail/map.hpp>
+#include <fcppt/math/detail/sequence.hpp>
 #include <fcppt/math/vector/object_impl.hpp>
 #include <fcppt/math/vector/static.hpp>
-#include <fcppt/config/external_begin.hpp>
-#include <type_traits>
-#include <fcppt/config/external_end.hpp>
+#include <fcppt/optional/object_impl.hpp>
 
 
 namespace fcppt
@@ -24,49 +22,42 @@ namespace vector
 {
 
 /**
-\brief Maps over the elements of a vector.
+\brief Sequence for a vector.
 
 \ingroup fcpptmathvector
+
+Uses \link fcppt::optional::sequence\endlink.
 */
 template<
 	typename T,
 	fcppt::math::size_type N,
-	typename S,
-	typename Function
+	typename S
 >
 inline
-fcppt::math::vector::static_<
-	typename
-	std::result_of<
-		Function(
-			T
-		)
-	>::type,
-	N
->
-map(
-	fcppt::math::vector::object<
+fcppt::optional::object<
+	fcppt::math::vector::static_<
 		T,
+		N
+	>
+>
+sequence(
+	fcppt::math::vector::object<
+		fcppt::optional::object<
+			T
+		>,
 		N,
 		S
-	> const &_value,
-	Function const &_function
+	> const &_value
 )
 {
 	return
-		fcppt::math::detail::map<
+		fcppt::math::detail::sequence<
 			fcppt::math::vector::static_<
-				typename
-				std::result_of<
-					Function(
-						T
-					)
-				>::type,
+				T,
 				N
 			>
 		>(
-			_value,
-			_function
+			_value
 		);
 }
 

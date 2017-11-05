@@ -4,11 +4,11 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_MATH_VECTOR_MAP_HPP_INCLUDED
-#define FCPPT_MATH_VECTOR_MAP_HPP_INCLUDED
+#ifndef FCPPT_MATH_VECTOR_BINARY_MAP_HPP_INCLUDED
+#define FCPPT_MATH_VECTOR_BINARY_MAP_HPP_INCLUDED
 
 #include <fcppt/math/size_type.hpp>
-#include <fcppt/math/detail/map.hpp>
+#include <fcppt/math/detail/binary_map.hpp>
 #include <fcppt/math/vector/object_impl.hpp>
 #include <fcppt/math/vector/static.hpp>
 #include <fcppt/config/external_begin.hpp>
@@ -24,14 +24,16 @@ namespace vector
 {
 
 /**
-\brief Maps over the elements of a vector.
+\brief Maps over two vectors.
 
 \ingroup fcpptmathvector
 */
 template<
-	typename T,
+	typename T1,
+	typename T2,
 	fcppt::math::size_type N,
-	typename S,
+	typename S1,
+	typename S2,
 	typename Function
 >
 inline
@@ -39,33 +41,41 @@ fcppt::math::vector::static_<
 	typename
 	std::result_of<
 		Function(
-			T
+			T1,
+			T2
 		)
 	>::type,
 	N
 >
-map(
+binary_map(
 	fcppt::math::vector::object<
-		T,
+		T1,
 		N,
-		S
-	> const &_value,
+		S1
+	> const &_left,
+	fcppt::math::vector::object<
+		T2,
+		N,
+		S2
+	> const &_right,
 	Function const &_function
 )
 {
 	return
-		fcppt::math::detail::map<
+		fcppt::math::detail::binary_map<
 			fcppt::math::vector::static_<
 				typename
 				std::result_of<
 					Function(
-						T
+						T1,
+						T2
 					)
 				>::type,
 				N
 			>
 		>(
-			_value,
+			_left,
+			_right,
 			_function
 		);
 }

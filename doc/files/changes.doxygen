@@ -36,6 +36,13 @@
 	</ul>
 </li>
 
+<li>\ref fcpptmathvector
+	<ul>
+	<li>Added \link fcppt::math::vector::binary_map\endlink.</li>
+	<li>Added \link fcppt::math::vector::sequence\endlink.</li>
+	</ul>
+</li>
+
 <li>\ref fcpptoptional
 	<ul>
 	<li>Added \link fcppt::optional::sequence\endlink.</li>
