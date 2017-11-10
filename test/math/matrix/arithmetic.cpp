@@ -96,10 +96,10 @@ FCPPT_PP_POP_WARNING
 			left,
 			mat2(
 				fcppt::math::matrix::row(
-					-1,-1
+					-1,-2
 				),
 				fcppt::math::matrix::row(
-					2,3
+					2,2
 				)
 			)
 		);
@@ -179,7 +179,7 @@ FCPPT_PP_POP_WARNING
 				7,8
 			)
 		)
-		+
+		-
 		mat2(
 			fcppt::math::matrix::row(
 				4,3
