@@ -575,18 +575,7 @@ set(
 	libs/core/include/fcppt/detail/nonassignable.hpp
 	libs/core/include/fcppt/detail/noncopyable.hpp
 	libs/core/include/fcppt/detail/placement_new.hpp
-	libs/core/include/fcppt/detail/strong_typedef/assignment_operator.hpp
-	libs/core/include/fcppt/detail/strong_typedef/binary_operator.hpp
-	libs/core/include/fcppt/detail/strong_typedef/cast.hpp
-	libs/core/include/fcppt/detail/strong_typedef/comparison_operator.hpp
-	libs/core/include/fcppt/detail/strong_typedef/foreach_assignment_operator.hpp
-	libs/core/include/fcppt/detail/strong_typedef/foreach_inc_dec_operator.hpp
-	libs/core/include/fcppt/detail/strong_typedef/friend_assignment_operator.hpp
-	libs/core/include/fcppt/detail/strong_typedef/friend_operators.hpp
-	libs/core/include/fcppt/detail/strong_typedef/friend_pre_inc_dec_operator.hpp
-	libs/core/include/fcppt/detail/strong_typedef/post_inc_dec_operator.hpp
-	libs/core/include/fcppt/detail/strong_typedef/pre_inc_dec_operator.hpp
-	libs/core/include/fcppt/detail/strong_typedef/unary_operator.hpp
+	libs/core/include/fcppt/detail/strong_typedef_cast.hpp
 	libs/core/include/fcppt/detail/tag_type.hpp
 	libs/core/include/fcppt/detail/text.hpp
 	libs/core/include/fcppt/detail/void.hpp

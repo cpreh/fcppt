@@ -8,35 +8,272 @@
 #define FCPPT_STRONG_TYPEDEF_ARITHMETIC_HPP_INCLUDED
 
 #include <fcppt/strong_typedef_impl.hpp>
-#include <fcppt/detail/strong_typedef/binary_operator.hpp>
-#include <fcppt/detail/strong_typedef/foreach_inc_dec_operator.hpp>
-#include <fcppt/detail/strong_typedef/post_inc_dec_operator.hpp>
-#include <fcppt/detail/strong_typedef/pre_inc_dec_operator.hpp>
-#include <fcppt/detail/strong_typedef/unary_operator.hpp>
 
 
 namespace fcppt
 {
 
-/** \addtogroup fcpptstrongtypedef
-*  @{
+/**
+\brief Add two strong typedefs.
+
+\ingroup fcpptstrongtypedef
 */
-FCPPT_DETAIL_STRONG_TYPEDEF_BINARY_OPERATOR(+)
-FCPPT_DETAIL_STRONG_TYPEDEF_BINARY_OPERATOR(-)
-FCPPT_DETAIL_STRONG_TYPEDEF_BINARY_OPERATOR(*)
-FCPPT_DETAIL_STRONG_TYPEDEF_BINARY_OPERATOR(/)
-FCPPT_DETAIL_STRONG_TYPEDEF_BINARY_OPERATOR(%)
-
-FCPPT_DETAIL_STRONG_TYPEDEF_UNARY_OPERATOR(+)
-FCPPT_DETAIL_STRONG_TYPEDEF_UNARY_OPERATOR(-)
-
-FCPPT_DETAIL_STRONG_TYPEDEF_FOREACH_INC_DEC_OPERATOR(
-	FCPPT_DETAIL_STRONG_TYPEDEF_PRE_INC_DEC_OPERATOR
+template<
+	typename T,
+	typename Tag
+>
+inline
+fcppt::strong_typedef<
+	T,
+	Tag
+>
+operator+(
+	fcppt::strong_typedef<
+		T,
+		Tag
+	> const &_left,
+	fcppt::strong_typedef<
+		T,
+		Tag
+	> const &_right
 )
+{
+	return
+		fcppt::strong_typedef<
+			T,
+			Tag
+		>{
+			_left.get()
+			+
+			_right.get()
+		};
+}
 
-FCPPT_DETAIL_STRONG_TYPEDEF_POST_INC_DEC_OPERATOR(++)
-FCPPT_DETAIL_STRONG_TYPEDEF_POST_INC_DEC_OPERATOR(--)
-/** @}*/
+/**
+\brief Subtract two strong typedefs.
+
+\ingroup fcpptstrongtypedef
+*/
+template<
+	typename T,
+	typename Tag
+>
+inline
+fcppt::strong_typedef<
+	T,
+	Tag
+>
+operator-(
+	fcppt::strong_typedef<
+		T,
+		Tag
+	> const &_left,
+	fcppt::strong_typedef<
+		T,
+		Tag
+	> const &_right
+)
+{
+	return
+		fcppt::strong_typedef<
+			T,
+			Tag
+		>{
+			_left.get()
+			-
+			_right.get()
+		};
+}
+
+/**
+\brief Multiply two strong typedefs.
+
+\ingroup fcpptstrongtypedef
+*/
+template<
+	typename T,
+	typename Tag
+>
+inline
+fcppt::strong_typedef<
+	T,
+	Tag
+>
+operator*(
+	fcppt::strong_typedef<
+		T,
+		Tag
+	> const &_left,
+	fcppt::strong_typedef<
+		T,
+		Tag
+	> const &_right
+)
+{
+	return
+		fcppt::strong_typedef<
+			T,
+			Tag
+		>{
+			_left.get()
+			*
+			_right.get()
+		};
+}
+
+/**
+\brief Unary minus.
+
+\ingroup fcpptstrongtypedef
+*/
+template<
+	typename T,
+	typename Tag
+>
+inline
+fcppt::strong_typedef<
+	T,
+	Tag
+>
+operator -(
+	fcppt::strong_typedef<
+		T,
+		Tag
+	> const &_value
+)
+{
+	return
+		fcppt::strong_typedef<
+			T,
+			Tag
+		>{
+			-_value.get()
+		};
+}
+
+/**
+\brief Preincrement operator.
+
+\ingroup fcpptstrongtypedef
+*/
+template<
+	typename T,
+	typename Tag
+>
+inline
+fcppt::strong_typedef<
+	T,
+	Tag
+> &
+operator ++(
+	fcppt::strong_typedef<
+		T,
+		Tag
+	> &_value
+)
+{
+	++_value.get();
+
+	return
+		_value;
+}
+
+/**
+\brief Predecrement operator.
+
+\ingroup fcpptstrongtypedef
+*/
+template<
+	typename T,
+	typename Tag
+>
+inline
+fcppt::strong_typedef<
+	T,
+	Tag
+> &
+operator --(
+	fcppt::strong_typedef<
+		T,
+		Tag
+	> &_value
+)
+{
+	--_value.get();
+
+	return
+		_value;
+}
+
+/**
+\brief Postincrement operator.
+
+\ingroup fcpptstrongtypedef
+*/
+template<
+	typename T,
+	typename Tag
+>
+inline
+fcppt::strong_typedef<
+	T,
+	Tag
+>
+operator ++(
+	fcppt::strong_typedef<
+		T,
+		Tag
+	> &_value,
+	int
+)
+{
+	fcppt::strong_typedef<
+		T,
+		Tag
+	> const temp{
+		_value
+	};
+
+	++_value;
+
+	return
+		temp;
+}
+
+/**
+\brief Postdecrement operator.
+
+\ingroup fcpptstrongtypedef
+*/
+template<
+	typename T,
+	typename Tag
+>
+inline
+fcppt::strong_typedef<
+	T,
+	Tag
+>
+operator --(
+	fcppt::strong_typedef<
+		T,
+		Tag
+	> &_value,
+	int
+)
+{
+	fcppt::strong_typedef<
+		T,
+		Tag
+	> const temp{
+		_value
+	};
+
+	--_value;
+
+	return
+		temp;
+}
 
 }
 

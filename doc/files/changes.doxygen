@@ -134,6 +134,14 @@
 	</ul>
 </li>
 
+<li>\ref fcpptstrongtypedef
+	<ul>
+	<li>Removed <code>operator/</code>, <code>operator/=</code>, <code>operator%</code> and <code>operator%=</code>.</li>
+	<li>Removed the unary <code>operator+</code>.</li>
+	<li>Removed the shift operators <code>operator<<</code>, <code>operator<<=</code>, <code>operator>></code> and <code>operator>>=</code>.</li>
+	</ul>
+</li>
+
 </ul>
 
 

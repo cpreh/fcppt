@@ -9,7 +9,7 @@
 
 #include <fcppt/no_init_fwd.hpp>
 #include <fcppt/strong_typedef_decl.hpp>
-#include <fcppt/detail/strong_typedef/cast.hpp>
+#include <fcppt/detail/strong_typedef_cast.hpp>
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>

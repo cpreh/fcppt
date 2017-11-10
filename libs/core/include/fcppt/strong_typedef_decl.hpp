@@ -9,7 +9,6 @@
 
 #include <fcppt/no_init_fwd.hpp>
 #include <fcppt/strong_typedef_fwd.hpp>
-#include <fcppt/detail/strong_typedef/friend_operators.hpp>
 #include <fcppt/preprocessor/disable_vc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
@@ -112,8 +111,6 @@ public:
 		strong_typedef &
 	);
 private:
-	FCPPT_DETAIL_STRONG_TYPEDEF_FRIEND_OPERATORS
-
 	T value_;
 };
 

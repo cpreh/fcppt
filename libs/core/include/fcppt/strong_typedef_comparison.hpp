@@ -8,22 +8,178 @@
 #define FCPPT_STRONG_TYPEDEF_COMPARISON_HPP_INCLUDED
 
 #include <fcppt/strong_typedef_impl.hpp>
-#include <fcppt/detail/strong_typedef/comparison_operator.hpp>
 
 
 namespace fcppt
 {
 
-/** \addtogroup fcpptstrongtypedef
-*  @{
+/**
+\brief Operator less.
+
+\ingroup fcpptstrongtypedef
 */
-FCPPT_DETAIL_STRONG_TYPEDEF_COMPARISON_OPERATOR(<)
-FCPPT_DETAIL_STRONG_TYPEDEF_COMPARISON_OPERATOR(<=)
-FCPPT_DETAIL_STRONG_TYPEDEF_COMPARISON_OPERATOR(>)
-FCPPT_DETAIL_STRONG_TYPEDEF_COMPARISON_OPERATOR(>=)
-FCPPT_DETAIL_STRONG_TYPEDEF_COMPARISON_OPERATOR(==)
-FCPPT_DETAIL_STRONG_TYPEDEF_COMPARISON_OPERATOR(!=)
-/** @}*/
+template<
+	typename T,
+	typename Tag
+>
+inline
+bool
+operator<(
+	fcppt::strong_typedef<
+		T,
+		Tag
+	> const &_left,
+	fcppt::strong_typedef<
+		T,
+		Tag
+	> const &_right
+)
+{
+	return
+		_left.get()
+		<
+		_right.get();
+}
+
+/**
+\brief Operator less equal.
+
+\ingroup fcpptstrongtypedef
+*/
+template<
+	typename T,
+	typename Tag
+>
+inline
+bool
+operator<=(
+	fcppt::strong_typedef<
+		T,
+		Tag
+	> const &_left,
+	fcppt::strong_typedef<
+		T,
+		Tag
+	> const &_right
+)
+{
+	return
+		_left.get()
+		<=
+		_right.get();
+}
+
+/**
+\brief Operator greater.
+
+\ingroup fcpptstrongtypedef
+*/
+template<
+	typename T,
+	typename Tag
+>
+inline
+bool
+operator>(
+	fcppt::strong_typedef<
+		T,
+		Tag
+	> const &_left,
+	fcppt::strong_typedef<
+		T,
+		Tag
+	> const &_right
+)
+{
+	return
+		_left.get()
+		>
+		_right.get();
+}
+
+/**
+\brief Operator greater equal.
+
+\ingroup fcpptstrongtypedef
+*/
+template<
+	typename T,
+	typename Tag
+>
+inline
+bool
+operator>=(
+	fcppt::strong_typedef<
+		T,
+		Tag
+	> const &_left,
+	fcppt::strong_typedef<
+		T,
+		Tag
+	> const &_right
+)
+{
+	return
+		_left.get()
+		>=
+		_right.get();
+}
+
+/**
+\brief Operator equal.
+
+\ingroup fcpptstrongtypedef
+*/
+template<
+	typename T,
+	typename Tag
+>
+inline
+bool
+operator==(
+	fcppt::strong_typedef<
+		T,
+		Tag
+	> const &_left,
+	fcppt::strong_typedef<
+		T,
+		Tag
+	> const &_right
+)
+{
+	return
+		_left.get()
+		==
+		_right.get();
+}
+
+/**
+\brief Operator not equal.
+
+\ingroup fcpptstrongtypedef
+*/
+template<
+	typename T,
+	typename Tag
+>
+inline
+bool
+operator!=(
+	fcppt::strong_typedef<
+		T,
+		Tag
+	> const &_left,
+	fcppt::strong_typedef<
+		T,
+		Tag
+	> const &_right
+)
+{
+	return
+		_left.get()
+		!=
+		_right.get();
+}
 
 }
 

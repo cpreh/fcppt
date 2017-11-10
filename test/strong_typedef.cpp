@@ -42,6 +42,11 @@ FCPPT_MAKE_STRONG_TYPEDEF(
 	strong_int_const_ref
 );
 
+FCPPT_MAKE_STRONG_TYPEDEF(
+	unsigned,
+	strong_uint
+);
+
 }
 
 FCPPT_PP_PUSH_WARNING
@@ -74,21 +79,6 @@ FCPPT_PP_POP_WARNING
 	BOOST_CHECK_EQUAL(
 		test1 * test2,
 		strong_int(8)
-	);
-
-	BOOST_CHECK_EQUAL(
-		test2 / test1,
-		strong_int(2)
-	);
-
-	BOOST_CHECK_EQUAL(
-		test2 % test1,
-		strong_int(0)
-	);
-
-	BOOST_CHECK_EQUAL(
-		+test1,
-		strong_int(2)
 	);
 
 	BOOST_CHECK_EQUAL(
@@ -131,7 +121,7 @@ FCPPT_PP_PUSH_WARNING
 FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
 
 BOOST_AUTO_TEST_CASE(
-	strong_typedef_assignment
+	strong_typedef_assignment_arithmetic
 )
 {
 FCPPT_PP_POP_WARNING
@@ -152,6 +142,94 @@ FCPPT_PP_POP_WARNING
 	BOOST_CHECK_EQUAL(
 		test,
 		strong_int(2)
+	);
+
+	test *= strong_int(2);
+
+	BOOST_CHECK_EQUAL(
+		test,
+		strong_int(4)
+	);
+}
+
+FCPPT_PP_PUSH_WARNING
+FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
+
+BOOST_AUTO_TEST_CASE(
+	strong_typedef_assignment_bitwise
+)
+{
+FCPPT_PP_POP_WARNING
+
+	strong_uint test1{
+		3u
+	};
+
+	test1 &= strong_uint{2u};
+
+	BOOST_CHECK_EQUAL(
+		test1,
+		strong_uint{2u}
+	);
+
+	test1 |= strong_uint{3u};
+
+	BOOST_CHECK_EQUAL(
+		test1,
+		strong_uint{3u}
+	);
+
+	test1 ^= strong_uint{2u};
+
+	BOOST_CHECK_EQUAL(
+		test1,
+		strong_uint{1u}
+	);
+}
+
+FCPPT_PP_PUSH_WARNING
+FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
+
+BOOST_AUTO_TEST_CASE(
+	strong_typedef_bitwise
+)
+{
+FCPPT_PP_POP_WARNING
+
+	strong_uint const
+		test1(
+			2u
+		),
+		test2(
+			3u
+		);
+
+	BOOST_CHECK_EQUAL(
+		test1
+		&
+		test2,
+		strong_uint{2u}
+	);
+
+	BOOST_CHECK_EQUAL(
+		test1
+		|
+		test2,
+		strong_uint{3u}
+	);
+
+	BOOST_CHECK_EQUAL(
+		test1
+		^
+		test2,
+		strong_uint{1u}
+	);
+
+	BOOST_CHECK_EQUAL(
+		~test1,
+		strong_uint{
+			~2u
+		}
 	);
 }
 

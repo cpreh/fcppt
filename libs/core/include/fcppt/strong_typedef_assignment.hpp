@@ -8,20 +8,208 @@
 #define FCPPT_STRONG_TYPEDEF_ASSIGNMENT_HPP_INCLUDED
 
 #include <fcppt/strong_typedef_impl.hpp>
-#include <fcppt/detail/strong_typedef/assignment_operator.hpp>
-#include <fcppt/detail/strong_typedef/foreach_assignment_operator.hpp>
 
 
 namespace fcppt
 {
 
-/** \addtogroup fcpptstrongtypedef
-*  @{
+/**
+\brief Add and assign operator.
+
+\ingroup fcpptstrongtypedef
 */
-FCPPT_DETAIL_STRONG_TYPEDEF_FOREACH_ASSIGNMENT_OPERATOR(
-	FCPPT_DETAIL_STRONG_TYPEDEF_ASSIGNMENT_OPERATOR
+template<
+	typename T,
+	typename Tag
+>
+inline
+fcppt::strong_typedef<
+	T,
+	Tag
+> &
+operator +=(
+	fcppt::strong_typedef<
+		T,
+		Tag
+	> &_left,
+	fcppt::strong_typedef<
+		T,
+		Tag
+	> const &_right
 )
-/** @}*/
+{
+	_left.get()
+	+=
+	_right.get();
+
+	return
+		_left;
+}
+
+/**
+\brief Subtract and assign operator.
+
+\ingroup fcpptstrongtypedef
+*/
+template<
+	typename T,
+	typename Tag
+>
+inline
+fcppt::strong_typedef<
+	T,
+	Tag
+> &
+operator -=(
+	fcppt::strong_typedef<
+		T,
+		Tag
+	> &_left,
+	fcppt::strong_typedef<
+		T,
+		Tag
+	> const &_right
+)
+{
+	_left.get()
+	-=
+	_right.get();
+
+	return
+		_left;
+}
+
+/**
+\brief Multiply and assign operator.
+
+\ingroup fcpptstrongtypedef
+*/
+template<
+	typename T,
+	typename Tag
+>
+inline
+fcppt::strong_typedef<
+	T,
+	Tag
+> &
+operator *=(
+	fcppt::strong_typedef<
+		T,
+		Tag
+	> &_left,
+	fcppt::strong_typedef<
+		T,
+		Tag
+	> const &_right
+)
+{
+	_left.get()
+	*=
+	_right.get();
+
+	return
+		_left;
+}
+
+/**
+\brief Bitwise and and assign operator.
+
+\ingroup fcpptstrongtypedef
+*/
+template<
+	typename T,
+	typename Tag
+>
+inline
+fcppt::strong_typedef<
+	T,
+	Tag
+> &
+operator &=(
+	fcppt::strong_typedef<
+		T,
+		Tag
+	> &_left,
+	fcppt::strong_typedef<
+		T,
+		Tag
+	> const &_right
+)
+{
+	_left.get()
+	&=
+	_right.get();
+
+	return
+		_left;
+}
+
+/**
+\brief Bitwise or and assign operator.
+
+\ingroup fcpptstrongtypedef
+*/
+template<
+	typename T,
+	typename Tag
+>
+inline
+fcppt::strong_typedef<
+	T,
+	Tag
+> &
+operator |=(
+	fcppt::strong_typedef<
+		T,
+		Tag
+	> &_left,
+	fcppt::strong_typedef<
+		T,
+		Tag
+	> const &_right
+)
+{
+	_left.get()
+	|=
+	_right.get();
+
+	return
+		_left;
+}
+
+/**
+\brief Bitwise xor and assign operator.
+
+\ingroup fcpptstrongtypedef
+*/
+template<
+	typename T,
+	typename Tag
+>
+inline
+fcppt::strong_typedef<
+	T,
+	Tag
+> &
+operator ^=(
+	fcppt::strong_typedef<
+		T,
+		Tag
+	> &_left,
+	fcppt::strong_typedef<
+		T,
+		Tag
+	> const &_right
+)
+{
+	_left.get()
+	^=
+	_right.get();
+
+	return
+		_left;
+}
 
 }
 
