@@ -7,6 +7,7 @@
 #ifndef FCPPT_ASSERT_MESSAGE_HPP_INCLUDED
 #define FCPPT_ASSERT_MESSAGE_HPP_INCLUDED
 
+#include <fcppt/make_strong_typedef.hpp>
 #include <fcppt/string.hpp>
 #include <fcppt/strong_typedef.hpp>
 

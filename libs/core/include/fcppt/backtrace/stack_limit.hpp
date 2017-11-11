@@ -8,6 +8,7 @@
 #ifndef FCPPT_BACKTRACE_STACK_LIMIT_HPP_INCLUDED
 #define FCPPT_BACKTRACE_STACK_LIMIT_HPP_INCLUDED
 
+#include <fcppt/make_strong_typedef.hpp>
 #include <fcppt/strong_typedef.hpp>
 #include <fcppt/backtrace/stack_frame.hpp>
 

@@ -8,6 +8,7 @@
 #define FCPPT_OPTIONS_STATE_HPP_INCLUDED
 
 #include <fcppt/args_vector.hpp>
+#include <fcppt/make_strong_typedef.hpp>
 #include <fcppt/optional_string_fwd.hpp>
 #include <fcppt/string.hpp>
 #include <fcppt/strong_typedef.hpp>

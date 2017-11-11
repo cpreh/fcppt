@@ -7,6 +7,7 @@
 #ifndef FCPPT_RANDOM_GENERATOR_BASIC_PSEUDO_DECL_HPP_INCLUDED
 #define FCPPT_RANDOM_GENERATOR_BASIC_PSEUDO_DECL_HPP_INCLUDED
 
+#include <fcppt/make_strong_typedef.hpp>
 #include <fcppt/noncopyable.hpp>
 #include <fcppt/strong_typedef.hpp>
 #include <fcppt/random/generator/basic_pseudo_fwd.hpp>

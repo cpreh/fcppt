@@ -5,6 +5,7 @@
 
 
 #include <fcppt/make_cref.hpp>
+#include <fcppt/make_strong_typedef.hpp>
 #include <fcppt/reference_comparison.hpp>
 #include <fcppt/reference_output.hpp>
 #include <fcppt/strong_typedef.hpp>

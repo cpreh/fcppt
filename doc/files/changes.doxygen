@@ -106,6 +106,12 @@
 	</ul>
 </li>
 
+<li>\ref fcpptstrongtypedef
+	<ul>
+	<li>Removed <code>make_strong_typedef.hpp</code> from <code>strong_typedef.hpp</code>.</li>
+	</ul>
+</li>
+
 </ul>
 
 \subsection changes_removed_functionality_to_270 Removed functionality

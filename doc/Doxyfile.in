@@ -1966,9 +1966,7 @@ INCLUDE_FILE_PATTERNS  =
 # recursively expanded use the := operator instead of the = operator.
 # This tag requires that the tag ENABLE_PREPROCESSING is set to YES.
 
-PREDEFINED             = "FCPPT_DETAIL_SYMBOL=" \
-                         "FCPPT_CLASS_SYMBOL=" \
-                         "FCPPT_MAKE_STRONG_TYPEDEF(T,N)= typedef fcppt::strong_typedef<T,_> N"
+PREDEFINED             = "FCPPT_MAKE_STRONG_TYPEDEF(T,N)= typedef fcppt::strong_typedef<T,_> N"
 
 # If the MACRO_EXPANSION and EXPAND_ONLY_PREDEF tags are set to YES then this
 # tag can be used to specify a list of macro names that should be expanded. The
@@ -1978,15 +1976,7 @@ PREDEFINED             = "FCPPT_DETAIL_SYMBOL=" \
 # This tag requires that the tag ENABLE_PREPROCESSING is set to YES.
 
 EXPAND_AS_DEFINED      = FCPPT_NONCOPYABLE \
-                         FCPPT_NONASSIGNABLE \
-                         FCPPT_DETAIL_STRONG_TYPEDEF_ASSIGNMENT_OPERATOR \
-                         FCPPT_DETAIL_STRONG_TYPEDEF_BINARY_OPERATOR \
-                         FCPPT_DETAIL_STRONG_TYPEDEF_COMPARISON_OPERATOR \
-                         FCPPT_DETAIL_STRONG_TYPEDEF_FOREACH_ASSIGNMENT_OPERATOR \
-                         FCPPT_DETAIL_STRONG_TYPEDEF_FOREACH_INC_DEC_OPERATOR \
-                         FCPPT_DETAIL_STRONG_TYPEDEF_POST_INC_DEC_OPERATOR \
-                         FCPPT_DETAIL_STRONG_TYPEDEF_PRE_INC_DEC_OPERATOR \
-                         FCPPT_DETAIL_STRONG_TYPEDEF_UNARY_OPERATOR
+                         FCPPT_NONASSIGNABLE
 
 # If the SKIP_FUNCTION_MACROS tag is set to YES then doxygen's preprocessor will
 # remove all references to function-like macros that are alone on a line, have

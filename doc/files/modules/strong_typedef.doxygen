@@ -109,7 +109,7 @@ fcppt::strong_typedef\endlink to make it a distinct type.
 </tr>
 <tr>
 <td><code>strong_typedef.hpp</code></td>
-<td>Includes <code>make_strong_typedef.hpp</code>, <code>strong_typedef_impl.hpp</code>,
+<td>Includes <code>strong_typedef_impl.hpp</code>,
 <code>strong_typedef_operators.hpp</code> and <code>strong_typedef_std_hash.hpp</code>.</td>
 </tr>
 <tr>

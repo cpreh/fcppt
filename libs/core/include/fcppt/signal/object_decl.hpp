@@ -9,6 +9,7 @@
 #define FCPPT_SIGNAL_OBJECT_DECL_HPP_INCLUDED
 
 #include <fcppt/function.hpp>
+#include <fcppt/make_strong_typedef.hpp>
 #include <fcppt/noncopyable.hpp>
 #include <fcppt/strong_typedef.hpp>
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>

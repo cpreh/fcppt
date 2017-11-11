@@ -5,6 +5,7 @@
 
 
 // ![decorate_simple_include]
+#include <fcppt/make_strong_typedef.hpp>
 #include <fcppt/strong_typedef.hpp>
 #include <fcppt/type_iso/decorate.hpp>
 #include <fcppt/type_iso/strong_typedef.hpp>

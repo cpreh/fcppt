@@ -9,6 +9,7 @@
 
 #include <fcppt/strong_typedef_fwd.hpp>
 
+
 /**
 \brief Creates a new strong typedef using strong_typedef.
 \ingroup fcpptstrongtypedef
@@ -17,7 +18,10 @@
 
 Read the \link fcpptstrongtypedef module description \endlink for more information.
 */
-#define FCPPT_MAKE_STRONG_TYPEDEF(type, name)\
+#define FCPPT_MAKE_STRONG_TYPEDEF(\
+	type,\
+	name\
+)\
 struct fcppt_strong_typedef_##name##_tag\
 {};\
 \

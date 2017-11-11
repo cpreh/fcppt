@@ -7,8 +7,10 @@
 #ifndef FCPPT_ASSERT_FILE_HPP_INCLUDED
 #define FCPPT_ASSERT_FILE_HPP_INCLUDED
 
+#include <fcppt/make_strong_typedef.hpp>
 #include <fcppt/string.hpp>
 #include <fcppt/strong_typedef.hpp>
+
 
 namespace fcppt
 {
