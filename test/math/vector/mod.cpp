@@ -4,13 +4,13 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/optional/comparison.hpp>
-#include <fcppt/optional/make.hpp>
-#include <fcppt/optional/output.hpp>
 #include <fcppt/math/vector/comparison.hpp>
 #include <fcppt/math/vector/mod.hpp>
 #include <fcppt/math/vector/output.hpp>
 #include <fcppt/math/vector/static.hpp>
+#include <fcppt/optional/comparison.hpp>
+#include <fcppt/optional/make.hpp>
+#include <fcppt/optional/output.hpp>
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>

@@ -10,10 +10,10 @@
 #include <fcppt/literal.hpp>
 #include <fcppt/cast/to_signed.hpp>
 #include <fcppt/cast/to_unsigned.hpp>
-#include <fcppt/optional/map.hpp>
-#include <fcppt/optional/make_if.hpp>
-#include <fcppt/optional/object_impl.hpp>
 #include <fcppt/math/ceil_div.hpp>
+#include <fcppt/optional/make_if.hpp>
+#include <fcppt/optional/map.hpp>
+#include <fcppt/optional/object_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>

@@ -7,11 +7,11 @@
 #include <fcppt/const.hpp>
 #include <fcppt/math/diff.hpp>
 #include <fcppt/math/pi.hpp>
-#include <fcppt/math/vector/static.hpp>
 #include <fcppt/math/vector/angle_between.hpp>
 #include <fcppt/math/vector/angle_between_cast.hpp>
 #include <fcppt/math/vector/signed_angle_between.hpp>
 #include <fcppt/math/vector/signed_angle_between_cast.hpp>
+#include <fcppt/math/vector/static.hpp>
 #include <fcppt/optional/make.hpp>
 #include <fcppt/optional/maybe_multi.hpp>
 #include <fcppt/optional/object_impl.hpp>

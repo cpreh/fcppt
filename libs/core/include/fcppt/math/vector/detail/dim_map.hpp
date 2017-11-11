@@ -8,8 +8,8 @@
 #define FCPPT_MATH_VECTOR_DETAIL_DIM_MAP_HPP_INCLUDED
 
 #include <fcppt/math/size_type.hpp>
-#include <fcppt/math/dim/object_impl.hpp>
 #include <fcppt/math/detail/binary_map.hpp>
+#include <fcppt/math/dim/object_impl.hpp>
 #include <fcppt/math/vector/object_impl.hpp>
 #include <fcppt/math/vector/static.hpp>
 #include <fcppt/config/external_begin.hpp>

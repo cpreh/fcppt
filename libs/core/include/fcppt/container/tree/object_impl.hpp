@@ -13,8 +13,8 @@
 #include <fcppt/reference_impl.hpp>
 #include <fcppt/container/maybe_back.hpp>
 #include <fcppt/container/maybe_front.hpp>
-#include <fcppt/container/pop_front.hpp>
 #include <fcppt/container/pop_back.hpp>
+#include <fcppt/container/pop_front.hpp>
 #include <fcppt/container/tree/object_decl.hpp>
 #include <fcppt/optional/map.hpp>
 #include <fcppt/optional/object_impl.hpp>
