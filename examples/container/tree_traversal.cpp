@@ -42,7 +42,7 @@ try
 		FCPPT_TEXT("baz")
 	);
 
-	tree.front().push_back(
+	tree.front().get_unsafe().get().push_back(
 		FCPPT_TEXT("qux")
 	);
 

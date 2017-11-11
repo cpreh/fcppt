@@ -5,9 +5,11 @@
 
 
 #include <fcppt/make_unique_ptr.hpp>
+#include <fcppt/reference_impl.hpp>
 #include <fcppt/unique_ptr.hpp>
 #include <fcppt/algorithm/map.hpp>
 #include <fcppt/container/tree/object_impl.hpp>
+#include <fcppt/optional/maybe.hpp>
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
@@ -28,9 +30,11 @@ BOOST_AUTO_TEST_CASE(
 {
 FCPPT_PP_POP_WARNING
 
-	typedef fcppt::container::tree::object<
+	typedef
+	fcppt::container::tree::object<
 		std::string
-	> string_tree;
+	>
+	string_tree;
 
 	string_tree tree1(
 		"root"
@@ -59,18 +63,48 @@ FCPPT_PP_POP_WARNING
 		!tree2.empty()
 	);
 
-	BOOST_CHECK_EQUAL(
-		tree2.front().value(),
-		std::string("child1")
-	);
+	fcppt::optional::maybe(
+		tree2.front(),
+		[]{
+			BOOST_CHECK(
+				false
+			);
+		},
+		[
+			&tree2
+		](
+			fcppt::reference<
+				string_tree
+			> const _front
+		)
+		{
+			BOOST_CHECK_EQUAL(
+				_front.get().value(),
+				std::string("child1")
+			);
 
-	BOOST_CHECK(
-		tree2.front().parent().has_value()
-	);
-
-	BOOST_CHECK_EQUAL(
-		&tree2.front().parent().get_unsafe().get(),
-		&tree2
+			fcppt::optional::maybe(
+				_front.get().parent(),
+				[]{
+					BOOST_CHECK(
+						false
+					);
+				},
+				[
+					&tree2
+				](
+					fcppt::reference<
+						string_tree
+					> const _parent
+				)
+				{
+					BOOST_CHECK_EQUAL(
+						&_parent.get(),
+						&tree2
+					);
+				}
+			);
+		}
 	);
 
 	string_tree tree3(
@@ -95,18 +129,48 @@ FCPPT_PP_POP_WARNING
 		!tree3.empty()
 	);
 
-	BOOST_CHECK_EQUAL(
-		tree3.front().value(),
-		std::string("child1")
-	);
+	fcppt::optional::maybe(
+		tree3.front(),
+		[]{
+			BOOST_CHECK(
+				false
+			);
+		},
+		[
+			&tree3
+		](
+			fcppt::reference<
+				string_tree
+			> const _front
+		)
+		{
+			BOOST_CHECK_EQUAL(
+				_front.get().value(),
+				std::string("child1")
+			);
 
-	BOOST_CHECK(
-		tree3.front().parent().has_value()
-	);
-
-	BOOST_CHECK_EQUAL(
-		&tree3.front().parent().get_unsafe().get(),
-		&tree3
+			fcppt::optional::maybe(
+				_front.get().parent(),
+				[]{
+					BOOST_CHECK(
+						false
+					);
+				},
+				[
+					&tree3
+				](
+					fcppt::reference<
+						string_tree
+					> const _parent
+				)
+				{
+					BOOST_CHECK_EQUAL(
+						&_parent.get(),
+						&tree3
+					);
+				}
+			);
+		}
 	);
 }
 

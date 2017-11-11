@@ -5,9 +5,11 @@
 
 
 #include <fcppt/make_unique_ptr.hpp>
+#include <fcppt/reference_impl.hpp>
 #include <fcppt/unique_ptr.hpp>
 #include <fcppt/container/tree/map.hpp>
 #include <fcppt/container/tree/object_impl.hpp>
+#include <fcppt/optional/maybe.hpp>
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
@@ -75,8 +77,23 @@ FCPPT_PP_POP_WARNING
 		42
 	);
 
-	BOOST_CHECK_EQUAL(
-		*result.back().value(),
-		13
+	fcppt::optional::maybe(
+		result.back(),
+		[]{
+			BOOST_CHECK(
+				false
+			);
+		},
+		[](
+			fcppt::reference<
+				int_unique_ptr_tree const
+			> const _ref
+		)
+		{
+			BOOST_CHECK_EQUAL(
+				13,
+				*_ref.get().value()
+			);
+		}
 	);
 }

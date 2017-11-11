@@ -4,8 +4,10 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
+#include <fcppt/reference_impl.hpp>
 #include <fcppt/container/tree/child_position.hpp>
 #include <fcppt/container/tree/object_impl.hpp>
+#include <fcppt/optional/bind.hpp>
 #include <fcppt/optional/maybe.hpp>
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
@@ -43,9 +45,21 @@ FCPPT_PP_POP_WARNING
 	};
 
 	fcppt::optional::maybe(
-		fcppt::container::tree::child_position(
-			test,
-			test.front()
+		fcppt::optional::bind(
+			test.front(),
+			[
+				&test
+			](
+				fcppt::reference<
+					int_tree
+				> const _child
+			){
+				return
+					fcppt::container::tree::child_position(
+						test,
+						_child.get()
+					);
+			}
 		),
 		[]{
 			BOOST_CHECK(

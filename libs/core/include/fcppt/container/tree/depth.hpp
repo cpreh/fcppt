@@ -7,6 +7,7 @@
 #ifndef FCPPT_CONTAINER_TREE_DEPTH_HPP_INCLUDED
 #define FCPPT_CONTAINER_TREE_DEPTH_HPP_INCLUDED
 
+#include <fcppt/algorithm/fold.hpp>
 #include <fcppt/container/tree/object_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <algorithm>
@@ -19,34 +20,55 @@ namespace container
 {
 namespace tree
 {
-template<typename Value>
+
+template<
+	typename Value
+>
 typename
-fcppt::container::tree::object<Value>::size_type
+fcppt::container::tree::object<
+	Value
+>::size_type
 depth(
-	fcppt::container::tree::object<Value> const &_tree)
+	fcppt::container::tree::object<
+		Value
+	> const &_tree
+)
 {
 	typedef
-	fcppt::container::tree::object<Value>
+	fcppt::container::tree::object<
+		Value
+	>
 	tree_type;
 
-	typedef typename
+	typedef
+	typename
 	tree_type::size_type
 	size_type;
 
-	size_type result =
-		0u;
-
-	for(
-		typename tree_type::const_reference ref : _tree)
-		result =
-			std::max(
-				result,
-				fcppt::container::tree::depth(
-					ref));
-
 	return
-		1u + result;
+		fcppt::algorithm::fold(
+			_tree.children(),
+			size_type{
+				0u
+			},
+			[](
+				tree_type const &_ref,
+				size_type const _result
+			)
+			{
+				return
+					std::max(
+						_result,
+						fcppt::container::tree::depth(
+							_ref
+						)
+					);
+			}
+		)
+		+
+		1u;
 }
+
 }
 }
 }

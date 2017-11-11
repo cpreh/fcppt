@@ -4,6 +4,7 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
+#include <fcppt/reference_impl.hpp>
 #include <fcppt/container/tree/object_impl.hpp>
 #include <fcppt/container/tree/pre_order.hpp>
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
@@ -33,15 +34,19 @@ FCPPT_PP_POP_WARNING
 		1
 	);
 
-	tree.push_back(
-		2
-	);
+	fcppt::reference<
+		i_tree
+	> const child_1{
+		tree.push_back(
+			2
+		)
+	};
 
-	tree.front().push_back(
+	child_1.get().push_back(
 		3
 	);
 
-	tree.front().push_back(
+	child_1.get().push_back(
 		4
 	);
 

@@ -350,8 +350,6 @@ set(
 	libs/core/include/fcppt/container/tree/child_position.hpp
 	libs/core/include/fcppt/container/tree/comparison.hpp
 	libs/core/include/fcppt/container/tree/depth.hpp
-	libs/core/include/fcppt/container/tree/detail/copy_children.hpp
-	libs/core/include/fcppt/container/tree/detail/move_children.hpp
 	libs/core/include/fcppt/container/tree/detail/print.hpp
 	libs/core/include/fcppt/container/tree/is_object.hpp
 	libs/core/include/fcppt/container/tree/level.hpp
@@ -362,10 +360,6 @@ set(
 	libs/core/include/fcppt/container/tree/object_decl.hpp
 	libs/core/include/fcppt/container/tree/object_fwd.hpp
 	libs/core/include/fcppt/container/tree/object_impl.hpp
-	libs/core/include/fcppt/container/tree/optional_ref.hpp
-	libs/core/include/fcppt/container/tree/optional_ref_decl.hpp
-	libs/core/include/fcppt/container/tree/optional_ref_fwd.hpp
-	libs/core/include/fcppt/container/tree/optional_ref_impl.hpp
 	libs/core/include/fcppt/container/tree/pre_order.hpp
 	libs/core/include/fcppt/container/tree/print.hpp
 	libs/core/include/fcppt/container/tree/to_root.hpp

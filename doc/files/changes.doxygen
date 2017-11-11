@@ -81,6 +81,13 @@
 
 <ul>
 
+<li>\ref fcpptcontainertree
+	<ul>
+	<li>Removed nonconst access to the children list.</li>
+	<li>\link fcppt::container::tree::object::front\endlink and \link fcppt::container::tree::object::back\endlink now return optional references.</li>
+	</ul>
+</li>
+
 <li>\ref fcpptmath
 	<ul>
 	<li>\link fcppt::math::ceil_div\endlink and \link fcppt::math::ceil_div_signed\endlink now return optionals.</li>

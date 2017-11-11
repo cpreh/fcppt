@@ -5,14 +5,15 @@
 
 
 #include <fcppt/exception.hpp>
+#include <fcppt/reference_impl.hpp>
 #include <fcppt/string.hpp>
 #include <fcppt/text.hpp>
 #include <fcppt/container/tree/object.hpp>
 #include <fcppt/io/cerr.hpp>
 #include <fcppt/io/cout.hpp>
+#include <fcppt/optional/maybe_void.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <cstdlib>
-#include <iterator>
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
@@ -34,7 +35,7 @@ try
 
 	// Immediately change the value
 	tree.value(
-		tree.value()+FCPPT_TEXT(" world")
+		tree.value() + FCPPT_TEXT(" world")
 	);
 
 	// The tree is empty since it has no children
@@ -100,14 +101,20 @@ try
 			<< item.value()
 			<< FCPPT_TEXT('\n');
 
-	string_tree &first_child(
-		tree.front()
+	fcppt::optional::maybe_void(
+		tree.front(),
+		[](
+			fcppt::reference<
+				string_tree
+			> const _first_child
+		)
+		{
+			fcppt::io::cout()
+				<< FCPPT_TEXT("First child has a parent: ")
+				<< _first_child.get().parent().has_value()
+				<< FCPPT_TEXT('\n');
+		}
 	);
-
-	fcppt::io::cout()
-		<< FCPPT_TEXT("First child has a parent: ")
-		<< first_child.has_parent()
-		<< FCPPT_TEXT('\n');
 //! [main]
 }
 catch(

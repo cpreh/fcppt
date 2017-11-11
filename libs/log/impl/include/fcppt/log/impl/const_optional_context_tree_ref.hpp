@@ -7,8 +7,8 @@
 #ifndef FCPPT_LOG_IMPL_CONST_OPTIONAL_CONTEXT_TREE_REF_HPP_INCLUDED
 #define FCPPT_LOG_IMPL_CONST_OPTIONAL_CONTEXT_TREE_REF_HPP_INCLUDED
 
-#include <fcppt/container/tree/optional_ref_impl.hpp>
 #include <fcppt/log/impl/const_optional_context_tree_ref_fwd.hpp>
+#include <fcppt/optional/reference.hpp>
 
 
 #endif

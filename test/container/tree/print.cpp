@@ -4,6 +4,7 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
+#include <fcppt/reference_impl.hpp>
 #include <fcppt/container/tree/object_impl.hpp>
 #include <fcppt/container/tree/print.hpp>
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
@@ -27,17 +28,23 @@ BOOST_AUTO_TEST_CASE(
 {
 FCPPT_PP_POP_WARNING
 
-	typedef fcppt::container::tree::object<
+	typedef
+	fcppt::container::tree::object<
 		std::string
-	> string_tree;
+	>
+	string_tree;
 
 	string_tree tree("a");
 
-	tree.push_back(
-		std::string("b")
-	);
+	fcppt::reference<
+		string_tree
+	> const child{
+		tree.push_back(
+			std::string("b")
+		)
+	};
 
-	tree.back().push_back(
+	child.get().push_back(
 		std::string("c")
 	);
 

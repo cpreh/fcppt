@@ -4,7 +4,6 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/make_ref.hpp>
 #include <fcppt/log/name_fwd.hpp>
 #include <fcppt/log/detail/context_tree.hpp>
 #include <fcppt/log/detail/context_tree_node.hpp>
@@ -29,16 +28,12 @@ fcppt::log::impl::find_or_create_child(
 				&_node,
 				&_name
 			]{
-				_node.push_back(
-					fcppt::log::detail::context_tree_node{
-						_name,
-						_node.value().level()
-					}
-				);
-
 				return
-					fcppt::make_ref(
-						_node.back()
+					_node.push_back(
+						fcppt::log::detail::context_tree_node{
+							_name,
+							_node.value().level()
+						}
 					);
 			}
 		).get();

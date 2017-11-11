@@ -10,8 +10,8 @@
 #include <fcppt/reference_comparison.hpp>
 #include <fcppt/reference_impl.hpp>
 #include <fcppt/container/tree/is_object.hpp>
-#include <fcppt/container/tree/optional_ref_impl.hpp>
 #include <fcppt/optional/comparison.hpp>
+#include <fcppt/optional/reference.hpp>
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
@@ -94,7 +94,7 @@ private:
 	tree_ref;
 
 	typedef
-	fcppt::container::tree::optional_ref<
+	fcppt::optional::reference<
 		Tree
 	>
 	optional_tree_ref;
@@ -192,11 +192,7 @@ FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
 					);
 
 				current_ =
-					optional_tree_ref(
-						tree_ref(
-							cur_deref.front()
-						)
-					);
+					cur_deref.front();
 			}
 			else if(
 				positions_.empty()

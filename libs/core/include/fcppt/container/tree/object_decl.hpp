@@ -7,8 +7,10 @@
 #ifndef FCPPT_CONTAINER_TREE_OBJECT_DECL_HPP_INCLUDED
 #define FCPPT_CONTAINER_TREE_OBJECT_DECL_HPP_INCLUDED
 
+#include <fcppt/reference_fwd.hpp>
 #include <fcppt/container/tree/object_fwd.hpp>
-#include <fcppt/container/tree/optional_ref_decl.hpp>
+#include <fcppt/optional/object_decl.hpp>
+#include <fcppt/optional/reference_fwd.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <list>
 #include <type_traits>
@@ -50,15 +52,6 @@ public:
 
 	typedef
 	typename
-	child_list::difference_type
-	difference_type;
-
-	typedef object &reference;
-
-	typedef object const &const_reference;
-
-	typedef
-	typename
 	child_list::iterator
 	iterator;
 
@@ -78,16 +71,28 @@ public:
 	const_reverse_iterator;
 
 	typedef
-	fcppt::container::tree::optional_ref<
+	fcppt::optional::reference<
 		object
 	>
 	optional_ref;
 
 	typedef
-	fcppt::container::tree::optional_ref<
+	fcppt::optional::reference<
 		object const
 	>
 	const_optional_ref;
+
+	typedef
+	fcppt::optional::object<
+		object
+	>
+	optional_object;
+
+	typedef
+	fcppt::reference<
+		object
+	>
+	reference;
 
 	/// Constructs the object using the given value
 	explicit
@@ -148,9 +153,6 @@ public:
 
 	~object();
 
-	child_list &
-	children();
-
 	child_list const &
 	children() const;
 
@@ -165,20 +167,6 @@ public:
 	*/
 	const_optional_ref
 	parent() const;
-
-	/**
-	\brief Returns if this tree has a parent.
-	*/
-	bool
-	has_parent() const;
-
-	/**
-	\brief Sets a new parent
-	*/
-	void
-	parent(
-		optional_ref const &
-	);
 
 	/**
 	\brief Detaches the given child from the parent and returns it.
@@ -216,7 +204,7 @@ public:
 	/**
 	\brief Inserts a new child at the end of the child list
 	*/
-	void
+	reference
 	push_back(
 		object &&
 	);
@@ -224,12 +212,12 @@ public:
 	/**
 	\brief Inserts a new child at the end of the child list
 	*/
-	void
+	reference
 	push_back(
 		T const &
 	);
 
-	void
+	reference
 	push_back(
 		T &&
 	);
@@ -237,13 +225,13 @@ public:
 	/**
 	\brief Removes a child from the end of the child list
 	*/
-	void
+	optional_object
 	pop_back();
 
 	/**
 	\brief Adds a child in front of the child list
 	*/
-	void
+	reference
 	push_front(
 		object &&
 	);
@@ -251,20 +239,20 @@ public:
 	/**
 	\brief Adds a child in front of the child list
 	*/
-	void
+	reference
 	push_front(
 		T const &
 	);
 
-	void
+	reference
 	push_front(
 		T &&
 	);
 
 	/**
-	\brief Removes a child from the front of the child list
+	\brief Removes a child from the front of the children list and returns it.
 	*/
-	void
+	optional_object
 	pop_front();
 
 	/**
@@ -273,109 +261,41 @@ public:
 	void
 	clear();
 
-	/**
-	\brief Returns a reference to the last child.
-
-	Behaviour is undefined if \link fcppt::container::tree::object::empty empty \endlink is true.
-	*/
-	reference
+	optional_ref
 	back();
 
-	/**
-	\brief Returns a reference to the last child.
-
-	Behaviour is undefined if \link fcppt::container::tree::object::empty empty \endlink is true.
-	*/
-	const_reference
+	const_optional_ref
 	back() const;
 
-	/**
-	\brief Returns a reference to the first child.
-
-	Behaviour is undefined if \link fcppt::container::tree::object::empty empty \endlink is true.
-	*/
-	reference
+	optional_ref
 	front();
 
-	/**
-	\brief Returns a reference to the first child.
-
-	Behaviour is undefined if \link fcppt::container::tree::object::empty empty \endlink is true.
-	*/
-	const_reference
+	const_optional_ref
 	front() const;
 
-	/**
-	\brief Returns an iterator to the first child (if present)
-	*/
 	iterator
 	begin();
 
-	/**
-	\brief Returns an iterator to "one past the last child", if present, otherwise returns \link fcppt::container::tree::object::begin begin \endlink
-	*/
 	iterator
 	end();
 
-	/**
-	\brief Returns an iterator to the first child (if present)
-	*/
 	const_iterator
 	begin() const;
 
-	/**
-	\brief Returns an iterator to "one past the last child", if present, otherwise returns \link fcppt::container::tree::object::begin begin \endlink
-	*/
 	const_iterator
 	end() const;
 
-	/**
-	\brief Returns a reverse_iterator to the last element (if present)
-	*/
 	reverse_iterator
 	rbegin();
 
-	/**
-	\brief Returns a reverse_iterator to the first element (if present)
-	*/
 	reverse_iterator
 	rend();
 
-	/**
-	\brief Returns a const_reverse_iterator to the last element (if present)
-	*/
 	const_reverse_iterator
 	rbegin() const;
 
-	/**
-	\brief Returns a const_reverse_iterator to the first element (if present)
-	*/
 	const_reverse_iterator
 	rend() const;
-
-	/**
-	\brief Returns a const_iterator to the first child (if present)
-	*/
-	const_iterator
-	cbegin() const;
-
-	/**
-	\brief Returns a const_iterator to the first child (if present)
-	*/
-	const_iterator
-	cend() const;
-
-	/**
-	\brief Returns a const_reverse_iterator to the last element (if present)
-	*/
-	const_reverse_iterator
-	crbegin() const;
-
-	/**
-	\brief Returns a const_reverse_iterator to the first element (if present)
-	*/
-	const_reverse_iterator
-	crend() const;
 
 	/**
 	\brief Inserts an element before the given iterator
@@ -420,17 +340,9 @@ public:
 
 	/**
 	\brief Returns the number of children
-
-	The complexity of this is O(n)
 	*/
 	size_type
 	size() const;
-
-	/**
-	\brief Returns the list's max_size
-	*/
-	size_type
-	max_size() const;
 
 	/**
 	\brief Returns if the container is empty
@@ -463,6 +375,16 @@ public:
 		Predicate const &
 	);
 private:
+	child_list
+	copy_children(
+		child_list const &
+	);
+
+	child_list
+	move_children(
+		child_list &&
+	);
+
 	T value_;
 
 	optional_ref parent_;

@@ -8,9 +8,9 @@
 #define FCPPT_LOG_IMPL_FIND_CHILD_TPL_HPP_INCLUDED
 
 #include <fcppt/algorithm/find_if_opt.hpp>
-#include <fcppt/container/tree/optional_ref.hpp>
 #include <fcppt/log/name.hpp>
 #include <fcppt/optional/deref.hpp>
+#include <fcppt/optional/reference.hpp>
 
 
 namespace fcppt
@@ -23,7 +23,7 @@ namespace impl
 template<
 	typename Tree
 >
-fcppt::container::tree::optional_ref<
+fcppt::optional::reference<
 	Tree
 >
 find_child_tpl(

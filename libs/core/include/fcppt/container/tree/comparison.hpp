@@ -8,9 +8,6 @@
 #define FCPPT_CONTAINER_TREE_COMPARISON_HPP_INCLUDED
 
 #include <fcppt/container/tree/object_impl.hpp>
-#include <fcppt/config/external_begin.hpp>
-#include <algorithm>
-#include <fcppt/config/external_end.hpp>
 
 
 namespace fcppt
@@ -41,15 +38,9 @@ operator==(
 		==
 		_b.value()
 		&&
-		_a.size()
+		_a.children()
 		==
-		_b.size()
-		&&
-		std::equal(
-			_a.begin(),
-			_a.end(),
-			_b.begin()
-		);
+		_b.children();
 }
 
 /**

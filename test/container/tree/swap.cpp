@@ -60,7 +60,7 @@ FCPPT_PP_POP_WARNING
 	);
 
 	BOOST_CHECK_EQUAL(
-		tree2.front().value(),
+		tree2.front().get_unsafe().get().value(),
 		20
 	);
 }

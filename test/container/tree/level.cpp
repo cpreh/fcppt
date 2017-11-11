@@ -4,6 +4,7 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
+#include <fcppt/reference_impl.hpp>
 #include <fcppt/container/tree/level.hpp>
 #include <fcppt/container/tree/object_impl.hpp>
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
@@ -40,9 +41,13 @@ FCPPT_PP_POP_WARNING
 		0u
 	);
 
-	tree.push_back(
-		13
-	);
+	fcppt::reference<
+		int_tree
+	> const back{
+		tree.push_back(
+			13
+		)
+	};
 
 	BOOST_CHECK_EQUAL(
 		fcppt::container::tree::level(
@@ -53,7 +58,7 @@ FCPPT_PP_POP_WARNING
 
 	BOOST_CHECK_EQUAL(
 		fcppt::container::tree::level(
-			tree.back()
+			back.get()
 		),
 		1u
 	);

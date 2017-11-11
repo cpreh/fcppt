@@ -51,7 +51,7 @@ print(
 	);
 
 	_stream
-		<< _tree.value()
+		<<_tree.value()
 		<< _stream.widen('\n');
 
 	for(

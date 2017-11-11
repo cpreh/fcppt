@@ -4,7 +4,9 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
+#include <fcppt/reference_impl.hpp>
 #include <fcppt/container/tree/object_impl.hpp>
+#include <fcppt/optional/maybe.hpp>
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
@@ -54,31 +56,91 @@ FCPPT_PP_POP_WARNING
 		2u
 	);
 
-	BOOST_CHECK_EQUAL(
-		head2.front().value(),
-		20
+	fcppt::optional::maybe(
+		head2.front(),
+		[]{
+			BOOST_CHECK(
+				false
+			);
+		},
+		[
+			&head2
+		](
+			fcppt::reference<
+				i_tree const
+			> const _front
+		)
+		{
+			BOOST_CHECK_EQUAL(
+				_front.get().value(),
+				20
+			);
+
+			fcppt::optional::maybe(
+				_front.get().parent(),
+				[]{
+					BOOST_CHECK(
+						false
+					);
+				},
+				[
+					&head2
+				](
+					fcppt::reference<
+						i_tree const
+					> const _parent
+				)
+				{
+					BOOST_CHECK_EQUAL(
+						&_parent.get(),
+						&head2
+					);
+				}
+			);
+		}
 	);
 
-	BOOST_CHECK_EQUAL(
-		head2.back().value(),
-		30
-	);
+	fcppt::optional::maybe(
+		head2.back(),
+		[]{
+			BOOST_CHECK(
+				false
+			);
+		},
+		[
+			&head2
+		](
+			fcppt::reference<
+				i_tree const
+			> const _back
+		)
+		{
+			BOOST_CHECK_EQUAL(
+				_back.get().value(),
+				30
+			);
 
-	BOOST_REQUIRE(
-		head2.front().has_parent()
-	);
-
-	BOOST_CHECK_EQUAL(
-		&head2.front().parent().get_unsafe().get(),
-		&head2
-	);
-
-	BOOST_REQUIRE(
-		head2.back().has_parent()
-	);
-
-	BOOST_CHECK_EQUAL(
-		&head2.back().parent().get_unsafe().get(),
-		&head2
+			fcppt::optional::maybe(
+				_back.get().parent(),
+				[]{
+					BOOST_CHECK(
+						false
+					);
+				},
+				[
+					&head2
+				](
+					fcppt::reference<
+						i_tree const
+					> const _parent
+				)
+				{
+					BOOST_CHECK_EQUAL(
+						&_parent.get(),
+						&head2
+					);
+				}
+			);
+		}
 	);
 }

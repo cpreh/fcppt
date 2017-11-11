@@ -7,6 +7,7 @@
 #ifndef FCPPT_CONTAINER_TREE_MAP_HPP_INCLUDED
 #define FCPPT_CONTAINER_TREE_MAP_HPP_INCLUDED
 
+#include <fcppt/algorithm/map.hpp>
 #include <fcppt/container/tree/is_object.hpp>
 #include <fcppt/container/tree/object_impl.hpp>
 
@@ -35,7 +36,7 @@ map(
 	fcppt::container::tree::object<
 		Value
 	> const &_tree,
-	Function const _function
+	Function const &_function
 )
 {
 	static_assert(
@@ -45,28 +46,34 @@ map(
 		"The result of tree::map must be a tree"
 	);
 
-	Result result(
-		_function(
-			_tree.value()
-		)
-	);
-
-	for(
-		auto const &child
-		:
-		_tree
-	)
-		result.push_back(
-			fcppt::container::tree::map<
-				Result
-			>(
-				child,
-				_function
-			)
-		);
-
 	return
-		result;
+		Result{
+			_function(
+				_tree.value()
+			),
+			fcppt::algorithm::map<
+				typename
+				Result::child_list
+			>(
+				_tree.children(),
+				[
+					&_function
+				](
+					fcppt::container::tree::object<
+						Value
+					> const &_child
+				)
+				{
+					return
+						fcppt::container::tree::map<
+							Result
+						>(
+							_child,
+							_function
+						);
+				}
+			)
+		};
 }
 
 }
