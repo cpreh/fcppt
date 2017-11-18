@@ -227,7 +227,6 @@ set(
 	libs/core/include/fcppt/algorithm/join.hpp
 	libs/core/include/fcppt/algorithm/join_strings.hpp
 	libs/core/include/fcppt/algorithm/key_set.hpp
-	libs/core/include/fcppt/algorithm/levenshtein.hpp
 	libs/core/include/fcppt/algorithm/loop.hpp
 	libs/core/include/fcppt/algorithm/loop_break.hpp
 	libs/core/include/fcppt/algorithm/loop_break_impl.hpp
@@ -248,7 +247,6 @@ set(
 	libs/core/include/fcppt/algorithm/set_difference.hpp
 	libs/core/include/fcppt/algorithm/set_intersection.hpp
 	libs/core/include/fcppt/algorithm/set_union.hpp
-	libs/core/include/fcppt/algorithm/shortest_levenshtein.hpp
 	libs/core/include/fcppt/algorithm/update_action.hpp
 	libs/core/include/fcppt/algorithm/update_action_fwd.hpp
 	libs/core/include/fcppt/algorithm/vararg_map.hpp

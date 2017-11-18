@@ -73,10 +73,6 @@ add_fcppt_algorithm_test(
 )
 
 add_fcppt_algorithm_test(
-	levenshtein
-)
-
-add_fcppt_algorithm_test(
 	loop
 )
 

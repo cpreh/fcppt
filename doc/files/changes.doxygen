@@ -125,6 +125,12 @@
 
 <ul>
 
+<li>\ref fcpptalgorithm
+	<ul>
+	<li>Removed <code>fcppt::algorithm::levenshtein</code> and <code>fcppt::algorithm::shortest_levenshtein</code>,</li>
+	</ul>
+</li>
+
 <li>\ref fcpptmathdim
 	<ul>
 	<li>Removed <code>operator%</code>, <code>operator%=</code> and <code>operator/=</code>.</li>

@@ -7,7 +7,6 @@
 #include <fcppt/algorithm/append.hpp>
 #include <fcppt/algorithm/array_map.hpp>
 #include <fcppt/algorithm/join_strings.hpp>
-#include <fcppt/algorithm/levenshtein.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <array>
 #include <iostream>
@@ -71,22 +70,6 @@ std::string const result{
 // Outputs "ab,cd,efg"
 std::cout << result << "\n";
 //! [join_strings]
-}
-
-{
-//! [levenshtein]
-std::string const a{"foobarbaz"};
-std::string const b{"fobarbax"};
-
-std::string::size_type const result{
-	fcppt::algorithm::levenshtein(
-		a,
-		b
-	)
-};
-
-std::cout << result << "\n";
-//! [levenshtein]
 }
 
 }
