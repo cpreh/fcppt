@@ -9,7 +9,7 @@
 
 #include <fcppt/algorithm/detail/has_insert_range.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/utility/enable_if.hpp>
+#include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -26,10 +26,10 @@ template<
 >
 inline
 typename
-boost::disable_if<
-	fcppt::algorithm::detail::has_insert_range<
+std::enable_if<
+	!fcppt::algorithm::detail::has_insert_range<
 		Result
-	>,
+	>::value,
 	void
 >::type
 join_insert(
@@ -51,10 +51,10 @@ template<
 >
 inline
 typename
-boost::enable_if<
+std::enable_if<
 	fcppt::algorithm::detail::has_insert_range<
 		Result
-	>,
+	>::value,
 	void
 >::type
 join_insert(

@@ -13,7 +13,7 @@
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/utility/enable_if.hpp>
+#include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -39,10 +39,10 @@ template<
 struct storage_size<
 	T,
 	typename
-	boost::disable_if<
-		fcppt::math::detail::is_static_storage<
+	std::enable_if<
+		!fcppt::math::detail::is_static_storage<
 			T
-		>
+		>::value
 	>::type
 >
 :
@@ -56,10 +56,10 @@ template<
 struct storage_size<
 	T,
 	typename
-	boost::enable_if<
+	std::enable_if<
 		fcppt::math::detail::is_static_storage<
 			T
-		>
+		>::value
 	>::type
 >
 :

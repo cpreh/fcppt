@@ -17,8 +17,8 @@
 #include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/type_traits/constructible_from.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/utility/enable_if.hpp>
 #include <iosfwd>
+#include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -36,11 +36,11 @@ template<
 >
 inline
 typename
-boost::enable_if<
+std::enable_if<
 	fcppt::type_traits::constructible_from<
 		Type,
 		fcppt::no_init
-	>,
+	>::value,
 	fcppt::optional::object<
 		Type
 	>
@@ -80,11 +80,11 @@ template<
 >
 inline
 typename
-boost::disable_if<
-	fcppt::type_traits::constructible_from<
+std::enable_if<
+	!fcppt::type_traits::constructible_from<
 		Type,
 		fcppt::no_init
-	>,
+	>::value,
 	fcppt::optional::object<
 		Type
 	>

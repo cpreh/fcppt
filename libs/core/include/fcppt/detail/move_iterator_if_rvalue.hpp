@@ -8,7 +8,6 @@
 #define FCPPT_DETAIL_MOVE_ITERATOR_IF_RVALUE_HPP_INCLUDED
 
 #include <fcppt/config/external_begin.hpp>
-#include <boost/utility/enable_if.hpp>
 #include <iterator>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
@@ -25,10 +24,10 @@ template<
 >
 inline
 typename
-boost::enable_if<
+std::enable_if<
 	std::is_lvalue_reference<
 		Type
-	>,
+	>::value,
 	Iterator
 >::type
 move_iterator_if_rvalue(
@@ -45,10 +44,10 @@ template<
 >
 inline
 typename
-boost::disable_if<
-	std::is_lvalue_reference<
+std::enable_if<
+	!std::is_lvalue_reference<
 		Type
-	>,
+	>::value,
 	decltype(
 		std::make_move_iterator(
 			std::declval<

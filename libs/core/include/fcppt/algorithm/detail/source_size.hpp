@@ -15,8 +15,8 @@
 #include <boost/mpl/is_sequence.hpp>
 #include <boost/mpl/not.hpp>
 #include <boost/mpl/size.hpp>
-#include <boost/utility/enable_if.hpp>
 #include <iterator>
+#include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -32,7 +32,7 @@ template<
 >
 inline
 typename
-boost::enable_if<
+std::enable_if<
 	boost::mpl::and_<
 		fcppt::algorithm::detail::has_random_access_iterator<
 			Source
@@ -42,7 +42,7 @@ boost::enable_if<
 				Source
 			>
 		>
-	>,
+	>::value,
 	typename
 	std::iterator_traits<
 		typename
@@ -64,10 +64,10 @@ template<
 >
 inline
 typename
-boost::enable_if<
+std::enable_if<
 	fcppt::algorithm::detail::has_size<
 		Source
-	>,
+	>::value,
 	typename
 	Source::size_type
 >::type
@@ -84,10 +84,10 @@ template<
 >
 inline
 typename
-boost::enable_if<
+std::enable_if<
 	boost::mpl::is_sequence<
 		Source
-	>,
+	>::value,
 	typename
 	fcppt::algorithm::detail::mpl_size_type<
 		Source

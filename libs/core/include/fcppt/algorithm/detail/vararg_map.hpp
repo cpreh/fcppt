@@ -11,7 +11,6 @@
 #include <fcppt/config/external_begin.hpp>
 #include <boost/fusion/iterator/deref.hpp>
 #include <boost/fusion/iterator/next.hpp>
-#include <boost/utility/enable_if.hpp>
 #include <type_traits>
 #include <utility>
 #include <fcppt/config/external_end.hpp>
@@ -42,11 +41,11 @@ struct vararg_map<
 	Iterator,
 	EndIterator,
 	typename
-	boost::enable_if<
+	std::enable_if<
 		std::is_same<
 			Iterator,
 			EndIterator
-		>
+		>::value
 	>::type
 >
 {
@@ -89,11 +88,11 @@ struct vararg_map<
 	Iterator,
 	EndIterator,
 	typename
-	boost::disable_if<
-		std::is_same<
+	std::enable_if<
+		!std::is_same<
 			Iterator,
 			EndIterator
-		>
+		>::value
 	>::type
 >
 {

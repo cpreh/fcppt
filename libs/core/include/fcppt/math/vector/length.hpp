@@ -12,7 +12,6 @@
 #include <fcppt/math/vector/length_square.hpp>
 #include <fcppt/math/vector/object_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/utility/enable_if.hpp>
 #include <cmath>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>

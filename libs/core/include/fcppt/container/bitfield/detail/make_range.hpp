@@ -12,7 +12,6 @@
 #include <fcppt/enum/make_range.hpp>
 #include <fcppt/enum/range_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/utility/enable_if.hpp>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
@@ -32,10 +31,10 @@ template<
 >
 inline
 typename
-boost::enable_if<
+std::enable_if<
 	std::is_enum<
 		Element
-	>,
+	>::value,
 	fcppt::enum_::range<
 		Element
 	>
@@ -54,10 +53,10 @@ template<
 >
 inline
 typename
-boost::enable_if<
+std::enable_if<
 	std::is_integral<
 		Element
-	>,
+	>::value,
 	fcppt::int_range<
 		Element
 	>

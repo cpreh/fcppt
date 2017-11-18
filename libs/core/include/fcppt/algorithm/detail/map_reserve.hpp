@@ -11,7 +11,7 @@
 #include <fcppt/algorithm/detail/source_size.hpp>
 #include <fcppt/cast/size.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/utility/enable_if.hpp>
+#include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -28,11 +28,11 @@ template<
 >
 inline
 typename
-boost::enable_if<
+std::enable_if<
 	fcppt::algorithm::detail::optimize_map<
 		Dest,
 		Source
-	>,
+	>::value,
 	void
 >::type
 map_reserve(
@@ -59,11 +59,11 @@ template<
 >
 inline
 typename
-boost::disable_if<
-	fcppt::algorithm::detail::optimize_map<
+std::enable_if<
+	!fcppt::algorithm::detail::optimize_map<
 		Dest,
 		Source
-	>,
+	>::value,
 	void
 >::type
 map_reserve(

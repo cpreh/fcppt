@@ -11,7 +11,6 @@
 #include <fcppt/algorithm/detail/tuple_loop_break.hpp>
 #include <fcppt/type_traits/is_std_tuple.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/utility/enable_if.hpp>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
@@ -27,13 +26,13 @@ template<
 struct loop_break_impl<
 	Range,
 	typename
-	boost::enable_if<
+	std::enable_if<
 		fcppt::type_traits::is_std_tuple<
 			typename
 			std::decay<
 				Range
 			>::type
-		>
+		>::value
 	>::type
 >
 {

@@ -8,7 +8,6 @@
 #define FCPPT_ALGORITHM_DETAIL_REVERSE_HPP_INCLUDED
 
 #include <fcppt/config/external_begin.hpp>
-#include <boost/utility/enable_if.hpp>
 #include <algorithm>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
@@ -26,10 +25,10 @@ template<
 >
 inline
 typename
-boost::disable_if<
-	std::is_lvalue_reference<
+std::enable_if<
+	!std::is_lvalue_reference<
 		Container
-	>,
+	>::value,
 	Container
 >::type
 reverse(

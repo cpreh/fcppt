@@ -12,7 +12,6 @@
 #include <fcppt/record/has_label.hpp>
 #include <fcppt/record/label_value_type.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/utility/enable_if.hpp>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
@@ -42,14 +41,14 @@ struct get_either<
 	Record1,
 	Record2,
 	typename
-	boost::enable_if<
+	std::enable_if<
 		fcppt::record::has_label<
 			typename
 			std::decay<
 				Record1
 			>::type,
 			Label
-		>
+		>::value
 	>::type
 >
 {
@@ -93,14 +92,14 @@ struct get_either<
 	Record1,
 	Record2,
 	typename
-	boost::enable_if<
+	std::enable_if<
 		fcppt::record::has_label<
 			typename
 			std::decay<
 				Record2
 			>::type,
 			Label
-		>
+		>::value
 	>::type
 >
 {

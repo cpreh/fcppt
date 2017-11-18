@@ -12,7 +12,6 @@
 #include <fcppt/config/external_begin.hpp>
 #include <boost/mpl/deref.hpp>
 #include <boost/mpl/next.hpp>
-#include <boost/utility/enable_if.hpp>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
@@ -31,11 +30,11 @@ template<
 >
 inline
 typename
-boost::enable_if<
+std::enable_if<
 	std::is_same<
 		Iterator,
 		LastIterator
-	>,
+	>::value,
 	void
 >::type
 for_each_break(
@@ -51,11 +50,11 @@ template<
 >
 inline
 typename
-boost::disable_if<
-	std::is_same<
+std::enable_if<
+	!std::is_same<
 		Iterator,
 		LastIterator
-	>,
+	>::value,
 	void
 >::type
 for_each_break(

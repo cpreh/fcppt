@@ -14,7 +14,7 @@
 #include <boost/mpl/is_sequence.hpp>
 #include <boost/mpl/placeholders.hpp>
 #include <boost/mpl/vector/vector10.hpp>
-#include <boost/utility/enable_if.hpp>
+#include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -37,10 +37,10 @@ template<
 struct flatten<
 	Type,
 	typename
-	boost::enable_if<
+	std::enable_if<
 		boost::mpl::is_sequence<
 			Type
-		>
+		>::value
 	>::type
 >
 {
@@ -67,10 +67,10 @@ template<
 struct flatten<
 	Type,
 	typename
-	boost::disable_if<
-		boost::mpl::is_sequence<
+	std::enable_if<
+		!boost::mpl::is_sequence<
 			Type
-		>
+		>::value
 	>::type
 >
 {

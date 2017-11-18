@@ -11,7 +11,6 @@
 #include <fcppt/mpl/for_each_break.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/mpl/is_sequence.hpp>
-#include <boost/utility/enable_if.hpp>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
@@ -27,13 +26,13 @@ template<
 struct loop_break_impl<
 	Range,
 	typename
-	boost::enable_if<
+	std::enable_if<
 		boost::mpl::is_sequence<
 			typename
 			std::decay<
 				Range
 			>::type
-		>
+		>::value
 	>::type
 >
 {

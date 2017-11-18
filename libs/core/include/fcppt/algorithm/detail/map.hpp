@@ -13,7 +13,7 @@
 #include <fcppt/algorithm/detail/map_reserve.hpp>
 #include <fcppt/type_traits/is_std_array.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/utility/enable_if.hpp>
+#include <type_traits>
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
@@ -31,10 +31,10 @@ template<
 	typename Function
 >
 typename
-boost::disable_if<
-	fcppt::type_traits::is_std_array<
+std::enable_if<
+	!fcppt::type_traits::is_std_array<
 		TargetContainer
-	>,
+	>::value,
 	TargetContainer
 >::type
 map(
@@ -85,10 +85,10 @@ template<
 	typename Function
 >
 typename
-boost::enable_if<
+std::enable_if<
 	fcppt::type_traits::is_std_array<
 		TargetContainer
-	>,
+	>::value,
 	TargetContainer
 >::type
 map(

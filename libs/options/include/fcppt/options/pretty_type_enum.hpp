@@ -12,7 +12,6 @@
 #include <fcppt/enum/names.hpp>
 #include <fcppt/options/pretty_type_impl_fwd.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/utility/enable_if.hpp>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
@@ -33,10 +32,10 @@ template<
 struct pretty_type_impl<
 	Enum,
 	typename
-	boost::enable_if<
+	std::enable_if<
 		std::is_enum<
 			Enum
-		>
+		>::value
 	>::type
 >
 {

@@ -10,7 +10,7 @@
 #include <fcppt/detail/equal.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/mpl/equal_to.hpp>
-#include <boost/utility/enable_if.hpp>
+#include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -27,13 +27,13 @@ template<
 >
 inline
 typename
-boost::enable_if<
+std::enable_if<
 	boost::mpl::equal_to<
 		typename
 		T1::static_size,
 		typename
 		T2::static_size
-	>,
+	>::value,
 	bool
 >::type
 array_equal(
