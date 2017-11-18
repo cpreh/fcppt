@@ -40,7 +40,7 @@ class weak_ptr
 {
 public:
 	/**
-	\brief The type if the <code>boost::weak_ptr</code> used to implement
+	\brief The type if the <code>std::weak_ptr</code> used to implement
 	this class
 	*/
 	typedef
@@ -134,7 +134,7 @@ public:
 	count of the shared object will be returned.
 
 	\note This type is <code>long</code> because
-	<code>boost::shared_ptr</code> also uses <code>long</code>.
+	<code>std::shared_ptr</code> also uses <code>long</code>.
 	*/
 	long
 	use_count() const
@@ -164,7 +164,7 @@ public:
 	noexcept;
 
 	/**
-	\brief Returns the underlying <code>boost::weak_ptr</code> object
+	\brief Returns the underlying <code>std::weak_ptr</code> object
 	*/
 	impl_type
 	std_ptr() const;
