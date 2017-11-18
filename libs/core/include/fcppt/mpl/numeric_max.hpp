@@ -11,8 +11,8 @@
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/config/external_begin.hpp>
+#include <boost/mpl/integral_c.hpp>
 #include <limits>
-#include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -34,7 +34,7 @@ template<
 >
 struct numeric_max
 :
-std::integral_constant<
+boost::mpl::integral_c<
 	Type,
 	std::numeric_limits<
 		Type
