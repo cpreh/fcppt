@@ -20,7 +20,6 @@ set(
 	libs/core/include/fcppt/algorithm/detail/has_insert_range.hpp
 	libs/core/include/fcppt/algorithm/detail/has_random_access_iterator.hpp
 	libs/core/include/fcppt/algorithm/detail/has_reserve.hpp
-	libs/core/include/fcppt/algorithm/detail/has_size.hpp
 	libs/core/include/fcppt/algorithm/detail/join_all.hpp
 	libs/core/include/fcppt/algorithm/detail/join_impl.hpp
 	libs/core/include/fcppt/algorithm/detail/join_insert.hpp
@@ -220,7 +219,9 @@ set(
 	libs/core/include/fcppt/container/data.hpp
 	libs/core/include/fcppt/container/data_end.hpp
 	libs/core/include/fcppt/container/detail/array_size.hpp
+	libs/core/include/fcppt/container/detail/has_size.hpp
 	libs/core/include/fcppt/container/detail/output.hpp
+	libs/core/include/fcppt/container/detail/size.hpp
 	libs/core/include/fcppt/container/dynamic_array.hpp
 	libs/core/include/fcppt/container/dynamic_array_decl.hpp
 	libs/core/include/fcppt/container/dynamic_array_fwd.hpp
@@ -340,6 +341,8 @@ set(
 	libs/core/include/fcppt/container/raw_vector/rep_decl.hpp
 	libs/core/include/fcppt/container/raw_vector/rep_fwd.hpp
 	libs/core/include/fcppt/container/raw_vector/rep_impl.hpp
+	libs/core/include/fcppt/container/size.hpp
+	libs/core/include/fcppt/container/size_result_type.hpp
 	libs/core/include/fcppt/container/to_iterator_type.hpp
 	libs/core/include/fcppt/container/to_mapped_type.hpp
 	libs/core/include/fcppt/container/to_pointer_type.hpp

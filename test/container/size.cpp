@@ -4,60 +4,54 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_ALGORITHM_DETAIL_HAS_SIZE_HPP_INCLUDED
-#define FCPPT_ALGORITHM_DETAIL_HAS_SIZE_HPP_INCLUDED
-
-#include <fcppt/detail/void.hpp>
+#include <fcppt/container/size.hpp>
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <type_traits>
+#include <boost/test/unit_test.hpp>
+#include <list>
+#include <vector>
 #include <fcppt/config/external_end.hpp>
 
-
-namespace fcppt
-{
-namespace algorithm
-{
-namespace detail
-{
 
 FCPPT_PP_PUSH_WARNING
 FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
 
-template<
-	typename Type,
-	typename Test = void
->
-struct has_size
-:
-std::false_type
+BOOST_AUTO_TEST_CASE(
+	container_size
+)
 {
-};
-
-template<
-	typename Type
->
-struct has_size<
-	Type,
-	decltype(
-		fcppt::detail::void_(
-			std::declval<
-				Type
-			>().size()
-		)
-	)
->
-:
-std::true_type
-{
-};
-
 FCPPT_PP_POP_WARNING
 
-}
-}
-}
+	std::list<
+		int
+	> const test{
+		1,
+		2,
+		3,
+		4
+	};
 
-#endif
+	std::vector<
+		int
+	> test2{
+		1,
+		2
+	};
+
+	BOOST_CHECK_EQUAL(
+		fcppt::container::size(
+			test
+		),
+		4
+	);
+
+	BOOST_CHECK_EQUAL(
+		fcppt::container::size(
+			test2
+		),
+		2
+	);
+
+}

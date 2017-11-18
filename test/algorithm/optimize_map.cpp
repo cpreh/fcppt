@@ -6,9 +6,9 @@
 
 #include <fcppt/int_range_impl.hpp>
 #include <fcppt/algorithm/detail/has_reserve.hpp>
-#include <fcppt/algorithm/detail/has_size.hpp>
 #include <fcppt/algorithm/detail/optimize_map.hpp>
 #include <fcppt/config/compiler.hpp>
+#include <fcppt/container/detail/has_size.hpp>
 #include <fcppt/container/grid/object.hpp>
 #include <fcppt/container/grid/pos_range.hpp>
 #include <fcppt/container/grid/pos_ref_range.hpp>
@@ -66,7 +66,7 @@ main()
 	);
 
 	static_assert(
-		fcppt::algorithm::detail::has_size<
+		fcppt::container::detail::has_size<
 			int_vector
 		>::value,
 		"vector::size() not detected"
@@ -87,7 +87,7 @@ main()
 	);
 
 	static_assert(
-		fcppt::algorithm::detail::has_size<
+		fcppt::container::detail::has_size<
 			int_int_map
 		>::value,
 		"map::size() not detected"

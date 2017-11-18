@@ -9,7 +9,7 @@
 
 #include <fcppt/algorithm/detail/has_random_access_iterator.hpp>
 #include <fcppt/algorithm/detail/has_reserve.hpp>
-#include <fcppt/algorithm/detail/has_size.hpp>
+#include <fcppt/container/detail/has_size.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/mpl/and.hpp>
 #include <boost/mpl/is_sequence.hpp>
@@ -38,7 +38,7 @@ boost::mpl::and_<
 		fcppt::algorithm::detail::has_random_access_iterator<
 			Source
 		>,
-		fcppt::algorithm::detail::has_size<
+		fcppt::container::detail::has_size<
 			Source
 		>,
 		boost::mpl::is_sequence<

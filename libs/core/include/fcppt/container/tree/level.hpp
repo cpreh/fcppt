@@ -7,11 +7,9 @@
 #ifndef FCPPT_CONTAINER_TREE_LEVEL_HPP_INCLUDED
 #define FCPPT_CONTAINER_TREE_LEVEL_HPP_INCLUDED
 
+#include <fcppt/container/size.hpp>
 #include <fcppt/container/tree/object_impl.hpp>
 #include <fcppt/container/tree/to_root.hpp>
-#include <fcppt/config/external_begin.hpp>
-#include <boost/range/size.hpp>
-#include <fcppt/config/external_end.hpp>
 
 
 namespace fcppt
@@ -43,7 +41,7 @@ level(
 )
 {
 	return
-		boost::size(
+		fcppt::container::size(
 			fcppt::container::tree::to_root<
 				fcppt::container::tree::object<
 					Value

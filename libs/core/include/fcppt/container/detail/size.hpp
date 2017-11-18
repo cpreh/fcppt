@@ -4,22 +4,19 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_ALGORITHM_DETAIL_SOURCE_SIZE_HPP_INCLUDED
-#define FCPPT_ALGORITHM_DETAIL_SOURCE_SIZE_HPP_INCLUDED
+#ifndef FCPPT_CONTAINER_DETAIL_SIZE_HPP_INCLUDED
+#define FCPPT_CONTAINER_DETAIL_SIZE_HPP_INCLUDED
 
-#include <fcppt/algorithm/detail/mpl_size_type.hpp>
-#include <fcppt/container/size.hpp>
-#include <fcppt/container/size_result_type.hpp>
+#include <fcppt/container/detail/has_size.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/mpl/is_sequence.hpp>
-#include <boost/mpl/size.hpp>
+#include <iterator>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
 
 namespace fcppt
 {
-namespace algorithm
+namespace container
 {
 namespace detail
 {
@@ -30,20 +27,23 @@ template<
 inline
 typename
 std::enable_if<
-	!boost::mpl::is_sequence<
+	!fcppt::container::detail::has_size<
 		Source
 	>::value,
-	fcppt::container::size_result_type<
-		Source
-	>
+	typename
+	std::iterator_traits<
+		typename
+		Source::iterator
+	>::difference_type
 >::type
-source_size(
+size(
 	Source const &_source
 )
 {
 	return
-		fcppt::container::size(
-			_source
+		std::distance(
+			_source.begin(),
+			_source.end()
 		);
 }
 
@@ -53,22 +53,18 @@ template<
 inline
 typename
 std::enable_if<
-	boost::mpl::is_sequence<
+	fcppt::container::detail::has_size<
 		Source
 	>::value,
 	typename
-	fcppt::algorithm::detail::mpl_size_type<
-		Source
-	>::type
+	Source::size_type
 >::type
-source_size(
-	Source const &
+size(
+	Source const &_source
 )
 {
 	return
-		boost::mpl::size<
-			Source
-		>::value;
+		_source.size();
 }
 
 }
