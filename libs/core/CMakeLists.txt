@@ -1143,8 +1143,6 @@ set(
 	libs/core/include/fcppt/type_name_from_info.hpp
 	libs/core/include/fcppt/type_traits/constructible_from.hpp
 	libs/core/include/fcppt/type_traits/detail/constructible_from.hpp
-	libs/core/include/fcppt/type_traits/detail/function_pointer_to_reference.hpp
-	libs/core/include/fcppt/type_traits/function_pointer_to_reference.hpp
 	libs/core/include/fcppt/type_traits/is_base_of.hpp
 	libs/core/include/fcppt/type_traits/is_bidirectional_iterator.hpp
 	libs/core/include/fcppt/type_traits/is_float_or_double.hpp

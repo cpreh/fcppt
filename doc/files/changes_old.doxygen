@@ -201,8 +201,8 @@ can be omitted from <code>return</code> statements.</li>
 
 <li>\ref fcppttypetraits
 	<ul>
-	<li>Added \link
-	fcppt::type_traits::function_pointer_to_reference\endlink.</li>
+	<li>Added
+	<code>fcppt::type_traits::function_pointer_to_reference</code>.</li>
 	</ul>
 </li>
 
