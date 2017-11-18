@@ -1144,20 +1144,15 @@ set(
 	libs/core/include/fcppt/type_traits/constructible_from.hpp
 	libs/core/include/fcppt/type_traits/detail/constructible_from.hpp
 	libs/core/include/fcppt/type_traits/detail/function_pointer_to_reference.hpp
-	libs/core/include/fcppt/type_traits/detail/has_const_iterator.hpp
-	libs/core/include/fcppt/type_traits/detail/has_iterator.hpp
 	libs/core/include/fcppt/type_traits/detail/is_iterator.hpp
 	libs/core/include/fcppt/type_traits/function_pointer_to_reference.hpp
 	libs/core/include/fcppt/type_traits/generate_has_member_function.hpp
 	libs/core/include/fcppt/type_traits/generate_has_type.hpp
-	libs/core/include/fcppt/type_traits/has_const_iterator.hpp
-	libs/core/include/fcppt/type_traits/has_iterator.hpp
 	libs/core/include/fcppt/type_traits/is_base_of.hpp
 	libs/core/include/fcppt/type_traits/is_bidirectional_iterator.hpp
 	libs/core/include/fcppt/type_traits/is_float_or_double.hpp
 	libs/core/include/fcppt/type_traits/is_forward_iterator.hpp
 	libs/core/include/fcppt/type_traits/is_input_iterator.hpp
-	libs/core/include/fcppt/type_traits/is_iterable.hpp
 	libs/core/include/fcppt/type_traits/is_iterator.hpp
 	libs/core/include/fcppt/type_traits/is_iterator_of_category.hpp
 	libs/core/include/fcppt/type_traits/is_output_iterator.hpp

@@ -161,6 +161,12 @@
 	</ul>
 </li>
 
+<li>\ref fcppttypetraits
+	<ul>
+	<li>Removed <code>fcppt::type_traits::is_iterable</code>, <code>fcppt::type_traits::has_iterator</code> and <code>fcppt::type_traits::has_const_iterator</code>.</li>
+	</ul>
+</li>
+
 </ul>
 
 

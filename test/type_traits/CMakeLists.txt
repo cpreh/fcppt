@@ -34,11 +34,6 @@ add_fcppt_type_traits_test(
 )
 
 add_fcppt_type_traits_test(
-	is_iterable
-	NO_CODE
-)
-
-add_fcppt_type_traits_test(
 	is_iterator
 	NO_CODE
 )
