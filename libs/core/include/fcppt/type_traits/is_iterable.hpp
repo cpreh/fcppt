@@ -10,7 +10,6 @@
 #include <fcppt/type_traits/has_const_iterator.hpp>
 #include <fcppt/type_traits/has_iterator.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/mpl/if.hpp>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
@@ -37,10 +36,10 @@ template<
 using is_iterable
 =
 typename
-boost::mpl::if_<
+std::conditional<
 	std::is_const<
 		Type
-	>,
+	>::value,
 	fcppt::type_traits::has_const_iterator<
 		Type
 	>,

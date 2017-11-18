@@ -8,7 +8,6 @@
 #define FCPPT_TYPE_TRAITS_IS_RAW_POINTER_HPP_INCLUDED
 
 #include <fcppt/config/external_begin.hpp>
-#include <boost/mpl/and.hpp>
 #include <boost/mpl/contains.hpp>
 #include <boost/mpl/vector/vector10.hpp>
 #include <type_traits>
@@ -25,10 +24,12 @@ template<
 >
 using is_raw_pointer
 =
-boost::mpl::and_<
+std::integral_constant<
+	bool,
 	std::is_pointer<
 		Type
-	>,
+	>::value
+	&&
 	boost::mpl::contains<
 		boost::mpl::vector2<
 			char,
@@ -41,7 +42,7 @@ boost::mpl::and_<
 				Type
 			>::type
 		>::type
-	>
+	>::value
 >;
 
 }

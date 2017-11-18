@@ -8,7 +8,6 @@
 #define FCPPT_TYPE_TRAITS_IS_FLOAT_OR_DOUBLE_HPP_INCLUDED
 
 #include <fcppt/config/external_begin.hpp>
-#include <boost/mpl/or.hpp>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
@@ -32,15 +31,17 @@ template<
 >
 using is_float_or_double
 =
-boost::mpl::or_<
+std::integral_constant<
+	bool,
 	std::is_same<
 		Type,
 		float
-	>,
+	>::value
+	||
 	std::is_same<
 		Type,
 		double
-	>
+	>::value
 >;
 
 }

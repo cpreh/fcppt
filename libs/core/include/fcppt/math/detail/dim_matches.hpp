@@ -9,7 +9,7 @@
 
 #include <fcppt/math/size_type.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/mpl/bool.hpp>
+#include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -26,7 +26,8 @@ template<
 >
 using dim_matches
 =
-boost::mpl::bool_<
+std::integral_constant<
+	bool,
 	Desired
 	==
 	Current

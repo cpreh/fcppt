@@ -9,7 +9,6 @@
 
 #include <fcppt/type_traits/remove_cv_ref.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/mpl/or.hpp>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
@@ -29,21 +28,22 @@ using disable_object
 =
 typename
 std::enable_if<
-	!boost::mpl::or_<
+	!(
 		std::is_const<
 			typename
 			std::remove_reference<
 				U
 			>::type
-		>,
+		>::value
+		||
 		std::is_same<
 			typename
 			fcppt::type_traits::remove_cv_ref<
 				U
 			>::type,
 			Variant
-		>
-	>::value,
+		>::value
+	),
 	Variant
 >::type;
 

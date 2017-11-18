@@ -10,13 +10,11 @@
 #include <fcppt/no_init_fwd.hpp>
 #include <fcppt/math/difference_type.hpp>
 #include <fcppt/math/size_type.hpp>
+#include <fcppt/math/static_size.hpp>
 #include <fcppt/math/matrix/object_fwd.hpp>
 #include <fcppt/math/matrix/row_type_fwd.hpp>
 #include <fcppt/math/matrix/detail/row_view_fwd.hpp>
 #include <fcppt/math/vector/object_decl.hpp>
-#include <fcppt/config/external_begin.hpp>
-#include <boost/mpl/times.hpp>
-#include <fcppt/config/external_end.hpp>
 
 
 namespace fcppt
@@ -70,11 +68,11 @@ public:
 	static_size;
 
 	typedef
-	typename
-	boost::mpl::times<
-		static_rows,
-		static_columns
-	>::type
+	fcppt::math::static_size<
+		static_rows::value
+		*
+		static_columns::value
+	>
 	dim_wrapper;
 
 	/**

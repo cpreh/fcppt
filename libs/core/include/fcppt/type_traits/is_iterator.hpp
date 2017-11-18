@@ -9,7 +9,7 @@
 
 #include <fcppt/type_traits/detail/is_iterator.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/mpl/bool.hpp>
+#include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -35,7 +35,8 @@ template<
 >
 using is_iterator
 =
-boost::mpl::bool_<
+std::integral_constant<
+	bool,
 	fcppt::type_traits::detail::is_iterator<
 		Type
 	>::value

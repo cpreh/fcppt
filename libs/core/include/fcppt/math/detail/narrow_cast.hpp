@@ -11,7 +11,6 @@
 #include <fcppt/math/detail/checked_access.hpp>
 #include <fcppt/math/detail/init.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/mpl/less.hpp>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
@@ -42,10 +41,9 @@ narrow_cast(
 	);
 
 	static_assert(
-		boost::mpl::less<
-			typename T::dim_wrapper,
-			typename U::dim_wrapper
-		>::value,
+		T::dim_wrapper::value
+		<
+		U::dim_wrapper::value,
 		"narrow_cast can only cast to types with lesser dimensions"
 	);
 
