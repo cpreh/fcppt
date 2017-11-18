@@ -1146,8 +1146,6 @@ set(
 	libs/core/include/fcppt/type_traits/detail/function_pointer_to_reference.hpp
 	libs/core/include/fcppt/type_traits/detail/is_iterator.hpp
 	libs/core/include/fcppt/type_traits/function_pointer_to_reference.hpp
-	libs/core/include/fcppt/type_traits/generate_has_member_function.hpp
-	libs/core/include/fcppt/type_traits/generate_has_type.hpp
 	libs/core/include/fcppt/type_traits/is_base_of.hpp
 	libs/core/include/fcppt/type_traits/is_bidirectional_iterator.hpp
 	libs/core/include/fcppt/type_traits/is_float_or_double.hpp

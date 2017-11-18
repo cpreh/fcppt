@@ -7,8 +7,6 @@
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
-#include <fcppt/type_traits/generate_has_member_function.hpp>
-#include <fcppt/type_traits/generate_has_type.hpp>
 #include <fcppt/type_traits/is_float_or_double.hpp>
 #include <fcppt/type_traits/is_string.hpp>
 #include <fcppt/config/external_begin.hpp>
@@ -23,71 +21,6 @@ FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
 
 namespace
 {
-
-// ![generate_has_member_function]
-FCPPT_TYPE_TRAITS_GENERATE_HAS_MEMBER_FUNCTION(
-	worm
-);
-
-struct apple
-{
-	void
-	worm()
-	{
-	}
-};
-
-struct orange
-{
-};
-
-// apple has a worm function
-static_assert(
-	has_worm<
-		apple,
-		void (apple::*)()
-	>::value,
-	"apples have worms"
-);
-
-// orange doesn't have a worm function
-static_assert(
-	!has_worm<
-		orange,
-		void (orange::*)()
-	>::value,
-	"oranges have no worms"
-);
-// ![generate_has_member_function]
-
-// ![generate_has_type]
-FCPPT_TYPE_TRAITS_GENERATE_HAS_TYPE(
-	iterator
-);
-
-struct normal
-{
-};
-
-struct container
-{
-	typedef int *iterator;
-};
-
-static_assert(
-	has_iterator<
-		container
-	>::value,
-	"container has an iterator"
-);
-
-static_assert(
-	!has_iterator<
-		normal
-	>::value,
-	"normal doesn't have an iterator"
-);
-// ![generate_has_type]
 
 // A function which is only valid for something "derived from" std::basic_string
 template<
@@ -139,9 +72,5 @@ int main()
 	std::cout << edit_string(s) << '\n';
 	// Would give a compiler error, although operator+ is defined
 	//std::cout << edit_string(10) << '\n';
-
-	apple foo;
-
-	foo.worm();
 }
 //]
