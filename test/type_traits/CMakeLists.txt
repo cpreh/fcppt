@@ -24,11 +24,6 @@ add_fcppt_type_traits_test(
 )
 
 add_fcppt_type_traits_test(
-	is_iterator
-	NO_CODE
-)
-
-add_fcppt_type_traits_test(
 	iterator_category
 	NO_CODE
 )
