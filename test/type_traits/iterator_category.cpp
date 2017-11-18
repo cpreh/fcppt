@@ -4,11 +4,7 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/type_traits/is_bidirectional_iterator.hpp>
-#include <fcppt/type_traits/is_forward_iterator.hpp>
-#include <fcppt/type_traits/is_input_iterator.hpp>
-#include <fcppt/type_traits/is_output_iterator.hpp>
-#include <fcppt/type_traits/is_random_access_iterator.hpp>
+#include <fcppt/type_traits/is_iterator_of_category.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <iterator>
 #include <list>
@@ -19,51 +15,57 @@ int
 main()
 {
 	static_assert(
-		fcppt::type_traits::is_input_iterator<
-			int *
+		fcppt::type_traits::is_iterator_of_category<
+			int *,
+			std::input_iterator_tag
 		>::value,
 		""
 	);
 
 	static_assert(
-		fcppt::type_traits::is_random_access_iterator<
-			int *
+		fcppt::type_traits::is_iterator_of_category<
+			int *,
+			std::random_access_iterator_tag
 		>::value,
 		""
 	);
 
 	static_assert(
-		!fcppt::type_traits::is_random_access_iterator<
+		!fcppt::type_traits::is_iterator_of_category<
 			std::list<
 				int
-			>::const_iterator
+			>::const_iterator,
+			std::random_access_iterator_tag
 		>::value,
 		""
 	);
 
 	static_assert(
-		fcppt::type_traits::is_bidirectional_iterator<
+		fcppt::type_traits::is_iterator_of_category<
 			std::list<
 				int
-			>::const_iterator
+			>::const_iterator,
+			std::bidirectional_iterator_tag
 		>::value,
 		""
 	);
 
 	static_assert(
-		fcppt::type_traits::is_forward_iterator<
+		fcppt::type_traits::is_iterator_of_category<
 			std::list<
 				int
-			>::const_iterator
+			>::const_iterator,
+			std::forward_iterator_tag
 		>::value,
 		""
 	);
 
 	static_assert(
-		fcppt::type_traits::is_output_iterator<
+		fcppt::type_traits::is_iterator_of_category<
 			std::ostream_iterator<
 				int
-			>
+			>,
+			std::output_iterator_tag
 		>::value,
 		""
 	);

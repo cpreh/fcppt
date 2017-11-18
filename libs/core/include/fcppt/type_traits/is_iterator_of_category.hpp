@@ -38,7 +38,8 @@ using is_iterator_of_category
 =
 std::is_base_of<
 	Category,
-	typename std::iterator_traits<
+	typename
+	std::iterator_traits<
 		Iterator
 	>::iterator_category
 >;

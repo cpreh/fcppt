@@ -167,6 +167,9 @@
 	<li>Removed <code>FCPPT_TYPE_TRAITS_GENERATE_HAS_TYPE</code> and <code>FCPPT_TYPE_TRAITS_GENERATE_HAS_MEMBER_FUNCTION</code>.</li>
 	<li>Removed <code>fcppt::type_traits::is_iterator</code>.</li>
 	<li>Removed <code>fcppt::type_traits::function_pointer_to_reference</code>.</li>
+	<li>Removed <code>fcppt::type_traits::is_input_iterator</code>, <code>fcppt::type_traits::is_output_iterator</code>,
+	<code>fcppt::type_traits::is_forward_iterator</code>, <code>fcppt::type_traits::bidirectional_iterator</code> and
+	<code>fcppt::type_traits::is_random_access_iterator</code>.</li>
 	</ul>
 </li>
 

@@ -8,7 +8,10 @@
 #define FCPPT_CONTAINER_OUTPUT_HPP_INCLUDED
 
 #include <fcppt/container/detail/output.hpp>
-#include <fcppt/type_traits/is_forward_iterator.hpp>
+#include <fcppt/type_traits/is_iterator_of_category.hpp>
+#include <fcppt/config/external_begin.hpp>
+#include <iterator>
+#include <fcppt/config/external_end.hpp>
 
 
 namespace fcppt
@@ -36,9 +39,10 @@ output(
 noexcept
 {
 	static_assert(
-		fcppt::type_traits::is_forward_iterator<
+		fcppt::type_traits::is_iterator_of_category<
 			typename
-			Container::const_iterator
+			Container::const_iterator,
+			std::forward_iterator_tag
 		>::value,
 		"Container must provide a forward iterator!"
 	);

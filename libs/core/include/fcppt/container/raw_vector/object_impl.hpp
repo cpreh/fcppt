@@ -10,7 +10,7 @@
 #include <fcppt/cast/to_unsigned.hpp>
 #include <fcppt/container/raw_vector/object_decl.hpp>
 #include <fcppt/container/raw_vector/rep_impl.hpp>
-#include <fcppt/type_traits/is_input_iterator.hpp>
+#include <fcppt/type_traits/is_iterator_of_category.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <algorithm>
 #include <initializer_list>
@@ -1009,8 +1009,9 @@ template<
 >
 typename
 std::enable_if<
-	fcppt::type_traits::is_input_iterator<
-		In
+	!fcppt::type_traits::is_iterator_of_category<
+		In,
+		std::forward_iterator_tag
 	>::value,
 	void
 >::type
@@ -1046,8 +1047,9 @@ template<
 >
 typename
 std::enable_if<
-	!fcppt::type_traits::is_input_iterator<
-		In
+	fcppt::type_traits::is_iterator_of_category<
+		In,
+		std::forward_iterator_tag
 	>::value,
 	void
 >::type
@@ -1099,7 +1101,7 @@ fcppt::container::raw_vector::object<
 			!this->empty()
 		)
 			std::uninitialized_copy(
-				begin(),
+				this->begin(),
 				_position,
 				new_memory
 			);

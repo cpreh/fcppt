@@ -10,9 +10,10 @@
 #include <fcppt/noncopyable.hpp>
 #include <fcppt/container/raw_vector/object_fwd.hpp>
 #include <fcppt/container/raw_vector/rep_fwd.hpp>
-#include <fcppt/type_traits/is_input_iterator.hpp>
+#include <fcppt/type_traits/is_iterator_of_category.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <initializer_list>
+#include <iterator>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
@@ -318,8 +319,9 @@ private:
 	>
 	typename
 	std::enable_if<
-		fcppt::type_traits::is_input_iterator<
-			In
+		!fcppt::type_traits::is_iterator_of_category<
+			In,
+			std::forward_iterator_tag
 		>::value,
 		void
 	>::type
@@ -334,8 +336,9 @@ private:
 	>
 	typename
 	std::enable_if<
-		!fcppt::type_traits::is_input_iterator<
-			In
+		fcppt::type_traits::is_iterator_of_category<
+			In,
+			std::forward_iterator_tag
 		>::value,
 		void
 	>::type

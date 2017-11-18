@@ -11,8 +11,9 @@
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
-#include <fcppt/type_traits/is_random_access_iterator.hpp>
+#include <fcppt/type_traits/is_iterator_of_category.hpp>
 #include <fcppt/config/external_begin.hpp>
+#include <iterator>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
@@ -51,12 +52,13 @@ struct has_random_access_iterator<
 	)
 >
 :
-fcppt::type_traits::is_random_access_iterator<
+fcppt::type_traits::is_iterator_of_category<
 	decltype(
 		std::declval<
 			Type
 		>().begin()
-	)
+	),
+	std::random_access_iterator_tag
 >
 {
 };

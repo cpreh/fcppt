@@ -1144,13 +1144,8 @@ set(
 	libs/core/include/fcppt/type_traits/constructible_from.hpp
 	libs/core/include/fcppt/type_traits/detail/constructible_from.hpp
 	libs/core/include/fcppt/type_traits/is_base_of.hpp
-	libs/core/include/fcppt/type_traits/is_bidirectional_iterator.hpp
 	libs/core/include/fcppt/type_traits/is_float_or_double.hpp
-	libs/core/include/fcppt/type_traits/is_forward_iterator.hpp
-	libs/core/include/fcppt/type_traits/is_input_iterator.hpp
 	libs/core/include/fcppt/type_traits/is_iterator_of_category.hpp
-	libs/core/include/fcppt/type_traits/is_output_iterator.hpp
-	libs/core/include/fcppt/type_traits/is_random_access_iterator.hpp
 	libs/core/include/fcppt/type_traits/is_raw_pointer.hpp
 	libs/core/include/fcppt/type_traits/is_std_array.hpp
 	libs/core/include/fcppt/type_traits/is_std_tuple.hpp
