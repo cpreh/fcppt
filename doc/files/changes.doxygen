@@ -3,6 +3,12 @@
 
 \section changes_changes_to_270 2.7.0
 
+\subsection changes_general_to_270 General changes
+
+<ul>
+<li>Removed <code>-Weffc++</code> warning. Unfortunately, this warning has become even more broken in <code>gcc-8</code>.</li>
+</ul>
+
 \subsection changes_added_functionality_to_270 Added functionality
 
 <ul>

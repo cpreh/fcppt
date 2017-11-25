@@ -141,7 +141,6 @@ if(
 		"-Wconversion"
 		"-Wconversion-null"
 		"-Wdelete-non-virtual-dtor"
-		"-Weffc++"
 		"-Wfloat-equal"
 		"-Winit-self"
 		"-Wmissing-declarations"
