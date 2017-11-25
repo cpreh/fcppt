@@ -15,6 +15,7 @@
 #include <boost/mpl/vector/vector10.hpp>
 #include <boost/test/unit_test.hpp>
 #include <tuple>
+#include <type_traits>
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
@@ -51,9 +52,12 @@ BOOST_AUTO_TEST_CASE(
 				return
 					fcppt::cast::to_unsigned(
 						fcppt::literal<
-							decltype(
-								_tag
-							)
+							typename
+							std::remove_const<
+								decltype(
+									_tag
+								)
+							>::type
 						>(
 							42
 						)
