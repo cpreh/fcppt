@@ -1153,6 +1153,7 @@ set(
 	libs/core/include/fcppt/type_traits/is_std_array.hpp
 	libs/core/include/fcppt/type_traits/is_std_tuple.hpp
 	libs/core/include/fcppt/type_traits/is_string.hpp
+	libs/core/include/fcppt/type_traits/is_value.hpp
 	libs/core/include/fcppt/type_traits/remove_cv_ref.hpp
 	libs/core/include/fcppt/unique_ptr.hpp
 	libs/core/include/fcppt/unique_ptr_decl.hpp
