@@ -26,15 +26,15 @@ namespace io
 {
 
 /**
-\brief Reads an object of fundamental type from a stream
+\brief Reads an object of arithmetic type from a stream
 
 \ingroup fcpptio
 
-Reads a fundamental type \a Type from \a _stream using the endianness of \a
+Reads an arithmetic type \a Type from \a _stream using the endianness of \a
 _format. The read will be done binary. If it fails, an empty optional will be
 returned.
 
-\tparam Type Must be a fundamental type
+\tparam Type Must be an arithmetic type
 
 \param _stream The stream to read from
 
@@ -55,10 +55,10 @@ read(
 )
 {
 	static_assert(
-		std::is_fundamental<
+		std::is_arithmetic<
 			Type
 		>::value,
-		"io::read must return a fundamental type"
+		"io::read must return an arithmetic type"
 	);
 
 	typedef fcppt::optional::object<

@@ -25,14 +25,14 @@ namespace io
 {
 
 /**
-\brief Writes an object of fundamental type to a stream
+\brief Writes an object of arithmetic type to a stream
 
 \ingroup fcpptio
 
 Writes \a _value to \a _stream using the endianness of \a _format. The write
 will be done binary.
 
-\tparam Type Must be a fundamental type
+\tparam Type Must be an arithmetic type
 
 \param _stream The stream to write to
 
@@ -51,10 +51,10 @@ write(
 )
 {
 	static_assert(
-		std::is_fundamental<
+		std::is_arithmetic<
 			Type
 		>::value,
-		"io::write can only be used on fundamental types"
+		"io::write can only be used on arithmetic types"
 	);
 
 	Type const tmp(

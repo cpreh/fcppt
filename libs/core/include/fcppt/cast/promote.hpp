@@ -26,7 +26,7 @@ namespace cast
 Converts \a _value to its promoted type. This can be used if explicit promotion
 is desired (e.g. when outputting to an ostream).
 
-\tparam Type Must be a fundamental type
+\tparam Type Must be an arithmetic type
 */
 template<
 	typename Type
@@ -43,10 +43,10 @@ promote(
 noexcept
 {
 	static_assert(
-		std::is_fundamental<
+		std::is_arithmetic<
 			Type
 		>::value,
-		"promote can only promote fundamental types"
+		"promote can only promote arithmetic types"
 	);
 
 	return

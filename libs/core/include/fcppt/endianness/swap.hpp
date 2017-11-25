@@ -27,7 +27,7 @@ namespace endianness
 
 Swaps the endiannness of \a _value.
 
-\tparam Type Must be a fundamental type
+\tparam Type Must be an arithmetic type
 
 \param _value The value to swap the endianness for
 
@@ -42,10 +42,10 @@ swap(
 )
 {
 	static_assert(
-		std::is_fundamental<
+		std::is_arithmetic<
 			Type
 		>::value,
-		"endianness::swap can only be used on fundamental types"
+		"endianness::swap can only be used on arithmetic types"
 	);
 
 	fcppt::endianness::reverse_mem(

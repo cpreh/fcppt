@@ -29,7 +29,7 @@ will have its endianness converted, otherwise it will be returned as-is. This
 function can be used to convert from the host format to \a _format, or from \a
 _format to the host format.
 
-\tparam Type Must be a fundamental type
+\tparam Type Must be an arithmetic type
 
 \param _value The value to convert
 
@@ -47,10 +47,10 @@ convert(
 )
 {
 	static_assert(
-		std::is_fundamental<
+		std::is_arithmetic<
 			Type
 		>::value,
-		"endianness::convert can only be used on fundamental types"
+		"endianness::convert can only be used on arithmetic types"
 	);
 
 	return

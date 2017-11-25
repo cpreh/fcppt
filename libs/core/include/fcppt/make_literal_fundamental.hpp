@@ -27,7 +27,7 @@ struct make_literal<
 	Type,
 	typename
 	std::enable_if<
-		std::is_fundamental<
+		std::is_arithmetic<
 			Type
 		>::value
 	>::type
@@ -38,25 +38,25 @@ struct make_literal<
 	decorated_type;
 
 	template<
-		typename Fundamental
+		typename Arg
 	>
 	static
 	constexpr
 	decorated_type
 	get(
-		Fundamental const _fundamental
+		Arg const _value
 	)
 	{
 		FCPPT_CHECK_LITERAL_CONVERSION(
 			decorated_type,
-			Fundamental
+			Arg
 		);
 
 		return
 			static_cast<
 				decorated_type
 			>(
-				_fundamental
+				_value
 			);
 	}
 };

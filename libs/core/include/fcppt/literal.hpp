@@ -26,11 +26,11 @@ fcppt::make_literal to do any conversions if necessary.
 
 \tparam Type The literal type to create
 
-\tparam Fundamental A fundamental type
+\tparam Arg An arithmetic type
 */
 template<
 	typename Type,
-	typename Fundamental
+	typename Arg
 >
 constexpr
 typename
@@ -38,14 +38,14 @@ fcppt::make_literal<
 	Type
 >::decorated_type
 literal(
-	Fundamental const &&_integral
+	Arg const &&_integral
 )
 {
 	static_assert(
-		std::is_fundamental<
-			Fundamental
+		std::is_arithmetic<
+			Arg
 		>::value,
-		"literal can only be used on fundamental types"
+		"literal can only be used on arithmetic types"
 	);
 
 	return
