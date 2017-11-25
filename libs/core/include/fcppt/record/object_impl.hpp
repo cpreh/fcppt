@@ -11,9 +11,6 @@
 #include <fcppt/use.hpp>
 #include <fcppt/algorithm/vararg_map.hpp>
 #include <fcppt/mpl/index_of_iterator.hpp>
-#include <fcppt/preprocessor/disable_gcc_warning.hpp>
-#include <fcppt/preprocessor/pop_warning.hpp>
-#include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/record/element_to_label.hpp>
 #include <fcppt/record/label_value_type.hpp>
 #include <fcppt/record/object_decl.hpp>
@@ -50,9 +47,6 @@ fcppt::record::object<
 	);
 }
 
-FCPPT_PP_PUSH_WARNING
-FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
-
 template<
 	typename Types
 >
@@ -74,8 +68,6 @@ fcppt::record::object<
 )
 {
 }
-
-FCPPT_PP_POP_WARNING
 
 template<
 	typename Types

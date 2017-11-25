@@ -7,9 +7,6 @@
 #ifndef FCPPT_MPL_APPEND_HPP_INCLUDED
 #define FCPPT_MPL_APPEND_HPP_INCLUDED
 
-#include <fcppt/preprocessor/disable_gcc_warning.hpp>
-#include <fcppt/preprocessor/pop_warning.hpp>
-#include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/mpl/fold.hpp>
 #include <boost/mpl/placeholders.hpp>
@@ -21,9 +18,6 @@ namespace fcppt
 {
 namespace mpl
 {
-
-FCPPT_PP_PUSH_WARNING
-FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
 
 /**
 \brief Appends two MPL sequences
@@ -54,8 +48,6 @@ boost::mpl::fold<
 >
 {
 };
-
-FCPPT_PP_POP_WARNING
 
 }
 }

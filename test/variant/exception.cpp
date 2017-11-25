@@ -6,9 +6,6 @@
 
 #include <fcppt/exception.hpp>
 #include <fcppt/text.hpp>
-#include <fcppt/preprocessor/disable_gcc_warning.hpp>
-#include <fcppt/preprocessor/pop_warning.hpp>
-#include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/variant/object.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/mpl/vector/vector10.hpp>
@@ -59,15 +56,10 @@ struct throw_cctor
 
 }
 
-FCPPT_PP_PUSH_WARNING
-FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
-
 BOOST_AUTO_TEST_CASE(
 	variant_exception
 )
 {
-FCPPT_PP_POP_WARNING
-
 	typedef fcppt::variant::object<
 		boost::mpl::vector2<
 			std::string,

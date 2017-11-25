@@ -7,9 +7,6 @@
 #include <fcppt/string.hpp>
 #include <fcppt/text.hpp>
 #include <fcppt/io/ostringstream.hpp>
-#include <fcppt/preprocessor/disable_gcc_warning.hpp>
-#include <fcppt/preprocessor/pop_warning.hpp>
-#include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/variant/object.hpp>
 #include <fcppt/variant/output.hpp>
 #include <fcppt/config/external_begin.hpp>
@@ -18,15 +15,10 @@
 #include <fcppt/config/external_end.hpp>
 
 
-FCPPT_PP_PUSH_WARNING
-FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
-
 BOOST_AUTO_TEST_CASE(
 	variant_output
 )
 {
-FCPPT_PP_POP_WARNING
-
 	typedef
 	fcppt::variant::object<
 		boost::mpl::vector1<

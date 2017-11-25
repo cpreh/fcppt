@@ -7,9 +7,6 @@
 #ifndef FCPPT_TYPE_TRAITS_CONSTRUCTIBLE_FROM_HPP_INCLUDED
 #define FCPPT_TYPE_TRAITS_CONSTRUCTIBLE_FROM_HPP_INCLUDED
 
-#include <fcppt/preprocessor/disable_gcc_warning.hpp>
-#include <fcppt/preprocessor/pop_warning.hpp>
-#include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/type_traits/detail/constructible_from.hpp>
 
 
@@ -17,9 +14,6 @@ namespace fcppt
 {
 namespace type_traits
 {
-
-FCPPT_PP_PUSH_WARNING
-FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
 
 /**
 \brief Checks if a type can be constructed from certain arguments
@@ -40,8 +34,6 @@ fcppt::type_traits::detail::constructible_from<
 >::type
 {
 };
-
-FCPPT_PP_POP_WARNING
 
 }
 }

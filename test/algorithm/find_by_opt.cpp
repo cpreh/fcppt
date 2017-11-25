@@ -7,9 +7,6 @@
 #include <fcppt/algorithm/find_by_opt.hpp>
 #include <fcppt/optional/comparison.hpp>
 #include <fcppt/optional/object_impl.hpp>
-#include <fcppt/preprocessor/disable_gcc_warning.hpp>
-#include <fcppt/preprocessor/pop_warning.hpp>
-#include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/test/unit_test.hpp>
 #include <string>
@@ -17,15 +14,10 @@
 #include <fcppt/config/external_end.hpp>
 
 
-FCPPT_PP_PUSH_WARNING
-FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
-
 BOOST_AUTO_TEST_CASE(
 	algorithm_find_by_opt
 )
 {
-FCPPT_PP_POP_WARNING
-
 	typedef
 	std::vector<
 		int

@@ -6,9 +6,6 @@
 
 #include <fcppt/make_unique_ptr.hpp>
 #include <fcppt/unique_ptr.hpp>
-#include <fcppt/preprocessor/disable_gcc_warning.hpp>
-#include <fcppt/preprocessor/pop_warning.hpp>
-#include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/signal/auto_connection.hpp>
 #include <fcppt/signal/object.hpp>
 #include <fcppt/config/external_begin.hpp>
@@ -16,15 +13,10 @@
 #include <fcppt/config/external_end.hpp>
 
 
-FCPPT_PP_PUSH_WARNING
-FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
-
 BOOST_AUTO_TEST_CASE(
 	signal_move
 )
 {
-FCPPT_PP_POP_WARNING
-
 	typedef
 	fcppt::unique_ptr<
 		int

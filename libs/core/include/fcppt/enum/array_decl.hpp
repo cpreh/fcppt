@@ -9,7 +9,6 @@
 
 #include <fcppt/enum/array_fwd.hpp>
 #include <fcppt/enum/size.hpp>
-#include <fcppt/preprocessor/disable_gcc_warning.hpp>
 #include <fcppt/preprocessor/disable_vc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
@@ -24,7 +23,6 @@ namespace enum_
 {
 
 FCPPT_PP_PUSH_WARNING
-FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
 FCPPT_PP_DISABLE_VC_WARNING(4623)
 
 /**

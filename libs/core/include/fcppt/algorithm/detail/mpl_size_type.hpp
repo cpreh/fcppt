@@ -7,9 +7,6 @@
 #ifndef FCPPT_ALGORITHM_DETAIL_MPL_SIZE_TYPE_HPP_INCLUDED
 #define FCPPT_ALGORITHM_DETAIL_MPL_SIZE_TYPE_HPP_INCLUDED
 
-#include <fcppt/preprocessor/disable_gcc_warning.hpp>
-#include <fcppt/preprocessor/pop_warning.hpp>
-#include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/mpl/is_sequence.hpp>
 #include <boost/mpl/size.hpp>
@@ -23,9 +20,6 @@ namespace algorithm
 {
 namespace detail
 {
-
-FCPPT_PP_PUSH_WARNING
-FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
 
 template<
 	typename Type,
@@ -58,8 +52,6 @@ struct mpl_size_type<
 	>::value_type
 	type;
 };
-
-FCPPT_PP_POP_WARNING
 
 }
 }

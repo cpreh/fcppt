@@ -7,9 +7,6 @@
 #ifndef FCPPT_RECORD_ELEMENT_MAP_TPL_HPP_INCLUDED
 #define FCPPT_RECORD_ELEMENT_MAP_TPL_HPP_INCLUDED
 
-#include <fcppt/preprocessor/disable_gcc_warning.hpp>
-#include <fcppt/preprocessor/pop_warning.hpp>
-#include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/record/element_to_label_tpl.hpp>
 #include <fcppt/record/element_to_type_tpl.hpp>
 #include <fcppt/record/element_vector.hpp>
@@ -27,9 +24,6 @@ namespace fcppt
 {
 namespace record
 {
-
-FCPPT_PP_PUSH_WARNING
-FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
 
 /**
 \brief A metafunction computing the element map of a record
@@ -68,8 +62,6 @@ boost::mpl::fold<
 		"Record must be an fcppt::record::object"
 	);
 };
-
-FCPPT_PP_POP_WARNING
 
 }
 }

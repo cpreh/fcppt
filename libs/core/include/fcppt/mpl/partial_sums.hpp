@@ -7,9 +7,6 @@
 #ifndef FCPPT_MPL_PARTIAL_SUMS_HPP_INCLUDED
 #define FCPPT_MPL_PARTIAL_SUMS_HPP_INCLUDED
 
-#include <fcppt/preprocessor/disable_gcc_warning.hpp>
-#include <fcppt/preprocessor/pop_warning.hpp>
-#include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/mpl/back.hpp>
 #include <boost/mpl/fold.hpp>
@@ -24,9 +21,6 @@ namespace fcppt
 {
 namespace mpl
 {
-
-FCPPT_PP_PUSH_WARNING
-FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
 
 /**
 \brief Calculates a new sequence that consists of the sums of the old sequence
@@ -67,8 +61,6 @@ boost::mpl::fold<
 >
 {
 };
-
-FCPPT_PP_POP_WARNING
 
 }
 }

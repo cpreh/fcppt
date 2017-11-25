@@ -7,23 +7,15 @@
 #include <fcppt/make_cref.hpp>
 #include <fcppt/make_ref.hpp>
 #include <fcppt/optional/reference.hpp>
-#include <fcppt/preprocessor/disable_gcc_warning.hpp>
-#include <fcppt/preprocessor/pop_warning.hpp>
-#include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/test/unit_test.hpp>
 #include <fcppt/config/external_end.hpp>
 
 
-FCPPT_PP_PUSH_WARNING
-FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
-
 BOOST_AUTO_TEST_CASE(
 	optional_ref
 )
 {
-FCPPT_PP_POP_WARNING
-
 	typedef
 	fcppt::optional::reference<
 		int
@@ -63,15 +55,10 @@ FCPPT_PP_POP_WARNING
 	);
 }
 
-FCPPT_PP_PUSH_WARNING
-FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
-
 BOOST_AUTO_TEST_CASE(
 	optional_ref_const
 )
 {
-FCPPT_PP_POP_WARNING
-
 	typedef
 	fcppt::optional::reference<
 		int const

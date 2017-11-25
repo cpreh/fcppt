@@ -11,9 +11,6 @@
 #include <fcppt/optional/comparison.hpp>
 #include <fcppt/optional/output.hpp>
 #include <fcppt/optional/reference.hpp>
-#include <fcppt/preprocessor/disable_gcc_warning.hpp>
-#include <fcppt/preprocessor/pop_warning.hpp>
-#include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/variant/to_optional_ref.hpp>
 #include <fcppt/variant/variadic.hpp>
 #include <fcppt/config/external_begin.hpp>
@@ -21,15 +18,10 @@
 #include <fcppt/config/external_end.hpp>
 
 
-FCPPT_PP_PUSH_WARNING
-FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
-
 BOOST_AUTO_TEST_CASE(
 	variant_to_optional_ref
 )
 {
-FCPPT_PP_POP_WARNING
-
 	typedef
 	fcppt::variant::variadic<
 		int,

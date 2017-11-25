@@ -15,24 +15,16 @@
 #include <fcppt/optional/object_impl.hpp>
 #include <fcppt/optional/output.hpp>
 #include <fcppt/optional/reference.hpp>
-#include <fcppt/preprocessor/disable_gcc_warning.hpp>
-#include <fcppt/preprocessor/pop_warning.hpp>
-#include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/test/unit_test.hpp>
 #include <vector>
 #include <fcppt/config/external_end.hpp>
 
 
-FCPPT_PP_PUSH_WARNING
-FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
-
 BOOST_AUTO_TEST_CASE(
 	optional_deref_unique_ptr
 )
 {
-FCPPT_PP_POP_WARNING
-
 	typedef
 	fcppt::unique_ptr<
 		int
@@ -67,15 +59,10 @@ FCPPT_PP_POP_WARNING
 	);
 }
 
-FCPPT_PP_PUSH_WARNING
-FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
-
 BOOST_AUTO_TEST_CASE(
 	optional_deref_vector
 )
 {
-FCPPT_PP_POP_WARNING
-
 	typedef
 	std::vector<
 		int

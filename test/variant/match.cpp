@@ -6,9 +6,6 @@
 
 #include <fcppt/make_unique_ptr.hpp>
 #include <fcppt/unique_ptr.hpp>
-#include <fcppt/preprocessor/disable_gcc_warning.hpp>
-#include <fcppt/preprocessor/pop_warning.hpp>
-#include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/variant/match.hpp>
 #include <fcppt/variant/object.hpp>
 #include <fcppt/config/external_begin.hpp>
@@ -18,15 +15,10 @@
 #include <fcppt/config/external_end.hpp>
 
 
-FCPPT_PP_PUSH_WARNING
-FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
-
 BOOST_AUTO_TEST_CASE(
 	variant_match
 )
 {
-FCPPT_PP_POP_WARNING
-
 	typedef
 	fcppt::variant::object<
 		boost::mpl::vector2<
@@ -66,15 +58,10 @@ FCPPT_PP_POP_WARNING
 	);
 }
 
-FCPPT_PP_PUSH_WARNING
-FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
-
 BOOST_AUTO_TEST_CASE(
 	variant_match_move
 )
 {
-FCPPT_PP_POP_WARNING
-
 	typedef
 	fcppt::unique_ptr<
 		int

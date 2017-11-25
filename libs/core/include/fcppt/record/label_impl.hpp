@@ -7,18 +7,12 @@
 #ifndef FCPPT_RECORD_LABEL_IMPL_HPP_INCLUDED
 #define FCPPT_RECORD_LABEL_IMPL_HPP_INCLUDED
 
-#include <fcppt/preprocessor/disable_gcc_warning.hpp>
-#include <fcppt/preprocessor/pop_warning.hpp>
-#include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/record/label_decl.hpp>
 #include <fcppt/record/detail/element_init_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
-
-FCPPT_PP_PUSH_WARNING
-FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
 
 template<
 	typename Tag
@@ -54,7 +48,5 @@ fcppt::record::label<
 			)
 		);
 }
-
-FCPPT_PP_POP_WARNING
 
 #endif

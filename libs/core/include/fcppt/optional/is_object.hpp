@@ -8,9 +8,6 @@
 #define FCPPT_OPTIONAL_IS_OBJECT_HPP_INCLUDED
 
 #include <fcppt/optional/object_fwd.hpp>
-#include <fcppt/preprocessor/disable_gcc_warning.hpp>
-#include <fcppt/preprocessor/pop_warning.hpp>
-#include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
@@ -20,9 +17,6 @@ namespace fcppt
 {
 namespace optional
 {
-
-FCPPT_PP_PUSH_WARNING
-FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
 
 /**
 \brief Checks if a given type is an \link fcppt::optional::object\endlink.
@@ -50,8 +44,6 @@ struct is_object<
 std::true_type
 {
 };
-
-FCPPT_PP_POP_WARNING
 
 }
 }

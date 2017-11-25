@@ -6,9 +6,6 @@
 
 #include <fcppt/enum/array.hpp>
 #include <fcppt/enum/index_of_array.hpp>
-#include <fcppt/preprocessor/disable_gcc_warning.hpp>
-#include <fcppt/preprocessor/pop_warning.hpp>
-#include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/test/unit_test.hpp>
 #include <fcppt/config/external_end.hpp>
@@ -26,15 +23,10 @@ enum class test_enum
 
 }
 
-FCPPT_PP_PUSH_WARNING
-FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
-
 BOOST_AUTO_TEST_CASE(
 	enum_index_of_array
 )
 {
-FCPPT_PP_POP_WARNING
-
 	typedef
 	fcppt::enum_::array<
 		test_enum,

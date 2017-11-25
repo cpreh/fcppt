@@ -4,9 +4,6 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/preprocessor/disable_gcc_warning.hpp>
-#include <fcppt/preprocessor/pop_warning.hpp>
-#include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/record/comparison.hpp>
 #include <fcppt/record/element.hpp>
 #include <fcppt/record/element_to_type.hpp>
@@ -89,15 +86,10 @@ init_test()
 
 }
 
-FCPPT_PP_PUSH_WARNING
-FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
-
 BOOST_AUTO_TEST_CASE(
 	record_init
 )
 {
-FCPPT_PP_POP_WARNING
-
 	typedef
 	fcppt::record::object<
 		boost::mpl::vector1<

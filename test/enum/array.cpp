@@ -23,15 +23,10 @@ enum class my_enum
 
 }
 
-FCPPT_PP_PUSH_WARNING
-FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
-
 BOOST_AUTO_TEST_CASE(
 	enum_array
 )
 {
-FCPPT_PP_POP_WARNING
-
 	typedef
 	fcppt::enum_::array<
 		my_enum,

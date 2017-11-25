@@ -8,9 +8,6 @@
 #define FCPPT_RECORD_DETAIL_CONTAINS_INITIALIZER_HPP_INCLUDED
 
 #include <fcppt/mpl/contains_if.hpp>
-#include <fcppt/preprocessor/disable_gcc_warning.hpp>
-#include <fcppt/preprocessor/pop_warning.hpp>
-#include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/record/element_to_label.hpp>
 #include <fcppt/record/detail/label_is_same.hpp>
 #include <fcppt/config/external_begin.hpp>
@@ -24,9 +21,6 @@ namespace record
 {
 namespace detail
 {
-
-FCPPT_PP_PUSH_WARNING
-FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
 
 template<
 	typename Args,
@@ -45,8 +39,6 @@ fcppt::mpl::contains_if<
 >
 {
 };
-
-FCPPT_PP_POP_WARNING
 
 }
 }

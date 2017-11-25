@@ -4,9 +4,6 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/preprocessor/disable_gcc_warning.hpp>
-#include <fcppt/preprocessor/pop_warning.hpp>
-#include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/record/comparison.hpp>
 #include <fcppt/record/element.hpp>
 #include <fcppt/record/make_label.hpp>
@@ -17,15 +14,10 @@
 #include <fcppt/config/external_end.hpp>
 
 
-FCPPT_PP_PUSH_WARNING
-FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
-
 BOOST_AUTO_TEST_CASE(
 	record_comparison
 )
 {
-FCPPT_PP_POP_WARNING
-
 	FCPPT_RECORD_MAKE_LABEL(
 		int_label
 	);

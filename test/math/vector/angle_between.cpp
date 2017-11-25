@@ -15,9 +15,6 @@
 #include <fcppt/optional/make.hpp>
 #include <fcppt/optional/maybe_multi.hpp>
 #include <fcppt/optional/object_impl.hpp>
-#include <fcppt/preprocessor/disable_gcc_warning.hpp>
-#include <fcppt/preprocessor/pop_warning.hpp>
-#include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/test/unit_test.hpp>
 #include <limits>
@@ -95,15 +92,10 @@ fvector2;
 
 }
 
-FCPPT_PP_PUSH_WARNING
-FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
-
 BOOST_AUTO_TEST_CASE(
 	vector_angle_between
 )
 {
-FCPPT_PP_POP_WARNING
-
 	BOOST_CHECK(
 		::compare(
 			fcppt::math::vector::angle_between(
@@ -136,15 +128,10 @@ FCPPT_PP_POP_WARNING
 	);
 }
 
-FCPPT_PP_PUSH_WARNING
-FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
-
 BOOST_AUTO_TEST_CASE(
 	vector_angle_between_cast
 )
 {
-FCPPT_PP_POP_WARNING
-
 	BOOST_CHECK(
 		::compare(
 			fcppt::math::vector::angle_between_cast<
@@ -166,15 +153,10 @@ FCPPT_PP_POP_WARNING
 	);
 }
 
-FCPPT_PP_PUSH_WARNING
-FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
-
 BOOST_AUTO_TEST_CASE(
 	vector_signed_angle_between
 )
 {
-FCPPT_PP_POP_WARNING
-
 	BOOST_CHECK(
 		::compare(
 			fcppt::math::vector::signed_angle_between(
@@ -194,15 +176,10 @@ FCPPT_PP_POP_WARNING
 	);
 }
 
-FCPPT_PP_PUSH_WARNING
-FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
-
 BOOST_AUTO_TEST_CASE(
 	vector_signed_angle_between_cast
 )
 {
-FCPPT_PP_POP_WARNING
-
 	BOOST_CHECK(
 		::compare(
 			fcppt::math::vector::signed_angle_between_cast<

@@ -11,9 +11,6 @@
 #include <fcppt/math/size_type.hpp>
 #include <fcppt/math/vector/object.hpp>
 #include <fcppt/math/vector/static.hpp>
-#include <fcppt/preprocessor/disable_gcc_warning.hpp>
-#include <fcppt/preprocessor/pop_warning.hpp>
-#include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/iterator/iterator_facade.hpp>
 #include <boost/test/unit_test.hpp>
@@ -110,9 +107,6 @@ struct raw_iterator_base
 	> type;
 
 };
-
-FCPPT_PP_PUSH_WARNING
-FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
 
 template<
 	typename Type,
@@ -255,8 +249,6 @@ private:
 	pointer data_;
 };
 
-FCPPT_PP_POP_WARNING
-
 template<
 	typename Type
 >
@@ -342,15 +334,10 @@ private:
 
 }
 
-FCPPT_PP_PUSH_WARNING
-FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
-
 BOOST_AUTO_TEST_CASE(
 	math_vector_raw_view
 )
 {
-FCPPT_PP_POP_WARNING
-
 	typedef unsigned value_type;
 
 	typedef raw_view<

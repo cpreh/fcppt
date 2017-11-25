@@ -22,15 +22,10 @@
 #include <fcppt/config/external_end.hpp>
 
 
-FCPPT_PP_PUSH_WARNING
-FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
-
 BOOST_AUTO_TEST_CASE(
 	container_find_opt
 )
 {
-FCPPT_PP_POP_WARNING
-
 	FCPPT_MAKE_STRONG_TYPEDEF(
 		int,
 		strong_int

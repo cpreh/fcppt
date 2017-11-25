@@ -9,24 +9,15 @@
 #include <fcppt/noncopyable.hpp>
 #include <fcppt/reference_impl.hpp>
 #include <fcppt/reference_to_base.hpp>
-#include <fcppt/preprocessor/disable_gcc_warning.hpp>
-#include <fcppt/preprocessor/pop_warning.hpp>
-#include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/test/unit_test.hpp>
 #include <fcppt/config/external_end.hpp>
 
 
-FCPPT_PP_PUSH_WARNING
-FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
-
 BOOST_AUTO_TEST_CASE(
 	reference_to_base
 )
 {
-
-FCPPT_PP_POP_WARNING
-
 	class base
 	{
 		FCPPT_NONCOPYABLE(

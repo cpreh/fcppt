@@ -11,9 +11,6 @@
 #include <fcppt/enum/max_value.hpp>
 #include <fcppt/enum/size_fwd.hpp>
 #include <fcppt/enum/size_type.hpp>
-#include <fcppt/preprocessor/disable_gcc_warning.hpp>
-#include <fcppt/preprocessor/pop_warning.hpp>
-#include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
@@ -23,9 +20,6 @@ namespace fcppt
 {
 namespace enum_
 {
-
-FCPPT_PP_PUSH_WARNING
-FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
 
 /**
 \brief The number of enumerators in an enum
@@ -70,8 +64,6 @@ std::integral_constant<
 		"Type must be an enum type"
 	);
 };
-
-FCPPT_PP_POP_WARNING
 
 }
 }

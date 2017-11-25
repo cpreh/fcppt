@@ -10,9 +10,6 @@
 #include <fcppt/math/size_type.hpp>
 #include <fcppt/math/detail/dim_matches.hpp>
 #include <fcppt/math/dim/object_fwd.hpp>
-#include <fcppt/preprocessor/disable_gcc_warning.hpp>
-#include <fcppt/preprocessor/pop_warning.hpp>
-#include <fcppt/preprocessor/push_warning.hpp>
 
 
 namespace fcppt
@@ -21,9 +18,6 @@ namespace math
 {
 namespace dim
 {
-
-FCPPT_PP_PUSH_WARNING
-FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
 
 /**
 \brief Metafunction to check the dimension of a static dim
@@ -59,8 +53,6 @@ fcppt::math::detail::dim_matches<
 {
 };
 /// \endcond
-
-FCPPT_PP_POP_WARNING
 
 }
 }

@@ -7,24 +7,16 @@
 #include <fcppt/reference_impl.hpp>
 #include <fcppt/container/tree/depth.hpp>
 #include <fcppt/container/tree/object_impl.hpp>
-#include <fcppt/preprocessor/disable_gcc_warning.hpp>
-#include <fcppt/preprocessor/pop_warning.hpp>
-#include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/test/unit_test.hpp>
 #include <string>
 #include <fcppt/config/external_end.hpp>
 
 
-FCPPT_PP_PUSH_WARNING
-FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
-
 BOOST_AUTO_TEST_CASE(
 	container_tree_depth
 )
 {
-FCPPT_PP_POP_WARNING
-
 	typedef
 	fcppt::container::tree::object<
 		std::string

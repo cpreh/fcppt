@@ -16,13 +16,7 @@
 #include <fcppt/math/detail/index_at.hpp>
 #include <fcppt/math/detail/member_operator.hpp>
 #include <fcppt/math/dim/object_decl.hpp>
-#include <fcppt/preprocessor/disable_gcc_warning.hpp>
-#include <fcppt/preprocessor/pop_warning.hpp>
-#include <fcppt/preprocessor/push_warning.hpp>
 
-
-FCPPT_PP_PUSH_WARNING
-FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
 
 template<
 	typename T,
@@ -42,8 +36,6 @@ fcppt::math::dim::object<
 		S
 	);
 }
-
-FCPPT_PP_POP_WARNING
 
 template<
 	typename T,

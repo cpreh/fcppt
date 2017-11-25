@@ -14,23 +14,15 @@
 #include <fcppt/container/grid/sup_from_pos.hpp>
 #include <fcppt/math/vector/comparison.hpp>
 #include <fcppt/math/vector/null.hpp>
-#include <fcppt/preprocessor/disable_gcc_warning.hpp>
-#include <fcppt/preprocessor/pop_warning.hpp>
-#include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/test/unit_test.hpp>
 #include <fcppt/config/external_end.hpp>
 
 
-FCPPT_PP_PUSH_WARNING
-FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
-
 BOOST_AUTO_TEST_CASE(
 	container_grid_pos_ref_range
 )
 {
-FCPPT_PP_POP_WARNING
-
 	typedef
 	fcppt::container::grid::pos<
 		std::size_t,

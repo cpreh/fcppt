@@ -4,9 +4,6 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/preprocessor/disable_gcc_warning.hpp>
-#include <fcppt/preprocessor/pop_warning.hpp>
-#include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/variant/apply_binary.hpp>
 #include <fcppt/variant/apply_ternary.hpp>
 #include <fcppt/variant/apply_unary.hpp>
@@ -35,15 +32,10 @@ variant;
 
 }
 
-FCPPT_PP_PUSH_WARNING
-FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
-
 BOOST_AUTO_TEST_CASE(
 	variany_apply_nonconst_unary
 )
 {
-FCPPT_PP_POP_WARNING
-
 	variant v1(
 		std::string(
 			"foo"
@@ -76,15 +68,10 @@ FCPPT_PP_POP_WARNING
 	);
 }
 
-FCPPT_PP_PUSH_WARNING
-FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
-
 BOOST_AUTO_TEST_CASE(
 	variany_apply_nonconst_binary
 )
 {
-FCPPT_PP_POP_WARNING
-
 	variant v1(
 		std::string(
 			"foo"
@@ -140,15 +127,10 @@ FCPPT_PP_POP_WARNING
 	);
 }
 
-FCPPT_PP_PUSH_WARNING
-FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
-
 BOOST_AUTO_TEST_CASE(
 	variany_apply_nonconst_ternary
 )
 {
-FCPPT_PP_POP_WARNING
-
 	variant v1(
 		std::string(
 			"foo"

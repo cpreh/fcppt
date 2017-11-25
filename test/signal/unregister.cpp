@@ -4,9 +4,6 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/preprocessor/disable_gcc_warning.hpp>
-#include <fcppt/preprocessor/pop_warning.hpp>
-#include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/signal/auto_connection.hpp>
 #include <fcppt/signal/object.hpp>
 #include <fcppt/signal/unregister/base.hpp>
@@ -30,15 +27,10 @@ signal_type;
 
 }
 
-FCPPT_PP_PUSH_WARNING
-FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
-
 BOOST_AUTO_TEST_CASE(
 	signals_unregister
 )
 {
-FCPPT_PP_POP_WARNING
-
 	std::vector<
 		int
 	> values;
@@ -111,15 +103,10 @@ FCPPT_PP_POP_WARNING
 	);
 }
 
-FCPPT_PP_PUSH_WARNING
-FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
-
 BOOST_AUTO_TEST_CASE(
 	signal_simple_move
 )
 {
-FCPPT_PP_POP_WARNING
-
 	signal_type sig;
 
 	bool done{

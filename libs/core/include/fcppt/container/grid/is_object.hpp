@@ -9,9 +9,6 @@
 
 #include <fcppt/container/grid/object_fwd.hpp>
 #include <fcppt/container/grid/size_type.hpp>
-#include <fcppt/preprocessor/disable_gcc_warning.hpp>
-#include <fcppt/preprocessor/pop_warning.hpp>
-#include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
@@ -23,9 +20,6 @@ namespace container
 {
 namespace grid
 {
-
-FCPPT_PP_PUSH_WARNING
-FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
 
 template<
 	typename Type
@@ -52,8 +46,6 @@ struct is_object<
 std::true_type
 {
 };
-
-FCPPT_PP_POP_WARNING
 
 }
 }

@@ -9,18 +9,12 @@
 
 #include <fcppt/mpl/set_difference.hpp>
 #include <fcppt/mpl/set_union.hpp>
-#include <fcppt/preprocessor/disable_gcc_warning.hpp>
-#include <fcppt/preprocessor/pop_warning.hpp>
-#include <fcppt/preprocessor/push_warning.hpp>
 
 
 namespace fcppt
 {
 namespace mpl
 {
-
-FCPPT_PP_PUSH_WARNING
-FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
 
 /**
 \brief The symmetric difference of two sets
@@ -53,8 +47,6 @@ fcppt::mpl::set_union<
 >
 {
 };
-
-FCPPT_PP_POP_WARNING
 
 }
 }

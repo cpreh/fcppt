@@ -7,9 +7,6 @@
 #include <fcppt/make_unique_ptr.hpp>
 #include <fcppt/unique_ptr.hpp>
 #include <fcppt/assert/unreachable.hpp>
-#include <fcppt/preprocessor/disable_gcc_warning.hpp>
-#include <fcppt/preprocessor/pop_warning.hpp>
-#include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/variant/apply_ternary.hpp>
 #include <fcppt/variant/object.hpp>
 #include <fcppt/config/external_begin.hpp>
@@ -135,15 +132,10 @@ variant;
 
 }
 
-FCPPT_PP_PUSH_WARNING
-FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
-
 BOOST_AUTO_TEST_CASE(
 	variant_apply_movable
 )
 {
-FCPPT_PP_POP_WARNING
-
 	variant int_variant(
 		fcppt::make_unique_ptr<
 			int
@@ -180,15 +172,10 @@ FCPPT_PP_POP_WARNING
 	);
 }
 
-FCPPT_PP_PUSH_WARNING
-FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
-
 BOOST_AUTO_TEST_CASE(
 	variant_apply_move
 )
 {
-FCPPT_PP_POP_WARNING
-
 	move_result const result{
 		fcppt::variant::apply_ternary(
 			move_function{},

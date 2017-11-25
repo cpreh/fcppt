@@ -9,9 +9,6 @@
 
 #include <fcppt/container/array_size.hpp>
 #include <fcppt/math/detail/is_static_storage.hpp>
-#include <fcppt/preprocessor/disable_gcc_warning.hpp>
-#include <fcppt/preprocessor/pop_warning.hpp>
-#include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
@@ -23,9 +20,6 @@ namespace math
 {
 namespace detail
 {
-
-FCPPT_PP_PUSH_WARNING
-FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
 
 template<
 	typename T,
@@ -69,8 +63,6 @@ fcppt::container::array_size<
 >
 {
 };
-
-FCPPT_PP_POP_WARNING
 
 }
 }

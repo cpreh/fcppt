@@ -12,9 +12,6 @@
 #include <fcppt/container/tree/is_object.hpp>
 #include <fcppt/optional/comparison.hpp>
 #include <fcppt/optional/reference.hpp>
-#include <fcppt/preprocessor/disable_gcc_warning.hpp>
-#include <fcppt/preprocessor/pop_warning.hpp>
-#include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/iterator/iterator_facade.hpp>
 #include <boost/range/iterator_range_core.hpp>
@@ -116,10 +113,6 @@ private:
 	>
 	iterator_base;
 public:
-
-FCPPT_PP_PUSH_WARNING
-FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
-
 	class iterator final
 	:
 		public iterator_base
@@ -233,8 +226,6 @@ FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
 
 		stack_type positions_;
 	};
-
-FCPPT_PP_POP_WARNING
 
 	typedef
 	iterator

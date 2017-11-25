@@ -17,15 +17,10 @@
 #include <fcppt/config/external_end.hpp>
 
 
-FCPPT_PP_PUSH_WARNING
-FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
-
 BOOST_AUTO_TEST_CASE(
 	options_state_from_args
 )
 {
-FCPPT_PP_POP_WARNING
-
 	fcppt::options::state result{
 		fcppt::options::detail::state_from_args(
 			fcppt::args_vector{

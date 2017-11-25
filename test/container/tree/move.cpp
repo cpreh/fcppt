@@ -10,9 +10,6 @@
 #include <fcppt/algorithm/map.hpp>
 #include <fcppt/container/tree/object_impl.hpp>
 #include <fcppt/optional/maybe.hpp>
-#include <fcppt/preprocessor/disable_gcc_warning.hpp>
-#include <fcppt/preprocessor/pop_warning.hpp>
-#include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/test/unit_test.hpp>
 #include <string>
@@ -21,15 +18,10 @@
 #include <fcppt/config/external_end.hpp>
 
 
-FCPPT_PP_PUSH_WARNING
-FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
-
 BOOST_AUTO_TEST_CASE(
 	container_tree_move
 )
 {
-FCPPT_PP_POP_WARNING
-
 	typedef
 	fcppt::container::tree::object<
 		std::string
@@ -174,14 +166,10 @@ FCPPT_PP_POP_WARNING
 	);
 }
 
-FCPPT_PP_PUSH_WARNING
-FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
-
 BOOST_AUTO_TEST_CASE(
 	container_tree_move_map
 )
 {
-FCPPT_PP_POP_WARNING
 	typedef
 	fcppt::unique_ptr<
 		std::string

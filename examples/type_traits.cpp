@@ -4,9 +4,6 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/preprocessor/disable_gcc_warning.hpp>
-#include <fcppt/preprocessor/pop_warning.hpp>
-#include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/type_traits/is_float_or_double.hpp>
 #include <fcppt/type_traits/is_string.hpp>
 #include <fcppt/config/external_begin.hpp>
@@ -15,9 +12,6 @@
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
-
-FCPPT_PP_PUSH_WARNING
-FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
 
 namespace
 {
@@ -60,8 +54,6 @@ divide_by_1000(
 }
 
 }
-
-FCPPT_PP_POP_WARNING
 
 int main()
 {

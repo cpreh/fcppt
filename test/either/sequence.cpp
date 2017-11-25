@@ -10,9 +10,6 @@
 #include <fcppt/either/object.hpp>
 #include <fcppt/either/output.hpp>
 #include <fcppt/either/sequence.hpp>
-#include <fcppt/preprocessor/disable_gcc_warning.hpp>
-#include <fcppt/preprocessor/pop_warning.hpp>
-#include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/test/unit_test.hpp>
 #include <string>
@@ -20,15 +17,10 @@
 #include <fcppt/config/external_end.hpp>
 
 
-FCPPT_PP_PUSH_WARNING
-FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
-
 BOOST_AUTO_TEST_CASE(
 	either_sequence
 )
 {
-FCPPT_PP_POP_WARNING
-
 	typedef
 	fcppt::either::object<
 		std::string,
@@ -117,15 +109,10 @@ FCPPT_PP_POP_WARNING
 	);
 }
 
-FCPPT_PP_PUSH_WARNING
-FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
-
 BOOST_AUTO_TEST_CASE(
 	either_sequence_move
 )
 {
-FCPPT_PP_POP_WARNING
-
 	typedef
 	fcppt::unique_ptr<
 		int

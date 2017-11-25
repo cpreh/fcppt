@@ -12,9 +12,6 @@
 #include <fcppt/make_strong_typedef.hpp>
 #include <fcppt/noncopyable.hpp>
 #include <fcppt/strong_typedef.hpp>
-#include <fcppt/preprocessor/disable_gcc_warning.hpp>
-#include <fcppt/preprocessor/pop_warning.hpp>
-#include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/signal/base_decl.hpp>
 #include <fcppt/signal/object_fwd.hpp>
 #include <fcppt/signal/detail/enable_if_void.hpp>
@@ -27,9 +24,6 @@ namespace fcppt
 {
 namespace signal
 {
-
-FCPPT_PP_PUSH_WARNING
-FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
 
 /**
 \brief Represents a signal with a non-void return value
@@ -222,8 +216,6 @@ public:
 
 	using base::empty;
 };
-
-FCPPT_PP_POP_WARNING
 
 }
 }

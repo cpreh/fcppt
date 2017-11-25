@@ -25,15 +25,10 @@
 #include <fcppt/config/external_end.hpp>
 
 
-FCPPT_PP_PUSH_WARNING
-FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
-
 BOOST_AUTO_TEST_CASE(
 	options_apply
 )
 {
-FCPPT_PP_POP_WARNING
-
 	FCPPT_RECORD_MAKE_LABEL(
 		arg_label
 	);

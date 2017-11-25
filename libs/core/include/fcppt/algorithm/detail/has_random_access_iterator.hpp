@@ -8,9 +8,6 @@
 #define FCPPT_ALGORITHM_DETAIL_HAS_RANDOM_ACCESS_ITERATOR_HPP_INCLUDED
 
 #include <fcppt/detail/void.hpp>
-#include <fcppt/preprocessor/disable_gcc_warning.hpp>
-#include <fcppt/preprocessor/pop_warning.hpp>
-#include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/type_traits/is_iterator_of_category.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <iterator>
@@ -24,9 +21,6 @@ namespace algorithm
 {
 namespace detail
 {
-
-FCPPT_PP_PUSH_WARNING
-FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
 
 template<
 	typename Type,
@@ -62,8 +56,6 @@ fcppt::type_traits::is_iterator_of_category<
 >
 {
 };
-
-FCPPT_PP_POP_WARNING
 
 }
 }

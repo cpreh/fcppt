@@ -13,15 +13,10 @@
 #include <fcppt/config/external_end.hpp>
 
 
-FCPPT_PP_PUSH_WARNING
-FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
-
 BOOST_AUTO_TEST_CASE(
 	container_bitfield_hash
 )
 {
-FCPPT_PP_POP_WARNING
-
 	enum class test_enum
 	{
 		test1,

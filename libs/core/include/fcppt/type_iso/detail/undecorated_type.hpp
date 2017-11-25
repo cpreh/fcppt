@@ -7,9 +7,6 @@
 #ifndef FCPPT_TYPE_ISO_DETAIL_UNDECORATED_TYPE_HPP_INCLUDED
 #define FCPPT_TYPE_ISO_DETAIL_UNDECORATED_TYPE_HPP_INCLUDED
 
-#include <fcppt/preprocessor/disable_gcc_warning.hpp>
-#include <fcppt/preprocessor/pop_warning.hpp>
-#include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/type_iso/transform.hpp>
 #include <fcppt/type_iso/detail/is_terminal.hpp>
 #include <fcppt/config/external_begin.hpp>
@@ -48,9 +45,6 @@ struct undecorated_type<
 	type;
 };
 
-FCPPT_PP_PUSH_WARNING
-FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
-
 template<
 	typename Type
 >
@@ -72,8 +66,6 @@ fcppt::type_iso::detail::undecorated_type<
 >
 {
 };
-
-FCPPT_PP_POP_WARNING
 
 }
 }

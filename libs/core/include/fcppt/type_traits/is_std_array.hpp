@@ -7,9 +7,6 @@
 #ifndef FCPPT_TYPE_TRAITS_IS_STD_ARRAY_HPP_INCLUDED
 #define FCPPT_TYPE_TRAITS_IS_STD_ARRAY_HPP_INCLUDED
 
-#include <fcppt/preprocessor/disable_gcc_warning.hpp>
-#include <fcppt/preprocessor/pop_warning.hpp>
-#include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <array>
 #include <cstddef>
@@ -21,9 +18,6 @@ namespace fcppt
 {
 namespace type_traits
 {
-
-FCPPT_PP_PUSH_WARNING
-FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
 
 /**
 \brief Checks if an type is a std::array
@@ -57,8 +51,6 @@ struct is_std_array<
 std::true_type
 {
 };
-
-FCPPT_PP_POP_WARNING
 
 }
 }

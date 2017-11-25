@@ -9,9 +9,6 @@
 
 #include <fcppt/container/grid/spiral_iterator_fwd.hpp>
 #include <fcppt/container/grid/detail/spiral_iterator_base.hpp>
-#include <fcppt/preprocessor/disable_gcc_warning.hpp>
-#include <fcppt/preprocessor/pop_warning.hpp>
-#include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/iterator/iterator_facade.hpp>
 #include <type_traits>
@@ -24,9 +21,6 @@ namespace container
 {
 namespace grid
 {
-
-FCPPT_PP_PUSH_WARNING
-FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
 
 template<
 	typename Pos
@@ -110,8 +104,6 @@ private:
 
 	static pos const start_dir;
 };
-
-FCPPT_PP_POP_WARNING
 
 }
 }

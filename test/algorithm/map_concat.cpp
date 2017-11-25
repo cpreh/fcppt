@@ -8,9 +8,6 @@
 #include <fcppt/unique_ptr.hpp>
 #include <fcppt/algorithm/map_concat.hpp>
 #include <fcppt/assign/make_container.hpp>
-#include <fcppt/preprocessor/disable_gcc_warning.hpp>
-#include <fcppt/preprocessor/pop_warning.hpp>
-#include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/test/unit_test.hpp>
 #include <vector>
@@ -40,15 +37,10 @@ int_unique_ptr_vector;
 
 }
 
-FCPPT_PP_PUSH_WARNING
-FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
-
 BOOST_AUTO_TEST_CASE(
 	algorithm_map_concat
 )
 {
-FCPPT_PP_POP_WARNING
-
 	int_unique_ptr_vector const ptrs{
 		fcppt::assign::make_container<
 			int_unique_ptr_vector
@@ -110,15 +102,10 @@ FCPPT_PP_POP_WARNING
 	);
 }
 
-FCPPT_PP_PUSH_WARNING
-FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
-
 BOOST_AUTO_TEST_CASE(
 	algorithm_map_concat_move
 )
 {
-FCPPT_PP_POP_WARNING
-
 	int_vector const ints{
 		1,
 		2

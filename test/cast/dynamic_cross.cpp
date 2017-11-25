@@ -9,9 +9,6 @@
 #include <fcppt/cast/dynamic_cross.hpp>
 #include <fcppt/cast/dynamic_cross_exn.hpp>
 #include <fcppt/cast/dynamic_cross_fun.hpp>
-#include <fcppt/preprocessor/disable_gcc_warning.hpp>
-#include <fcppt/preprocessor/pop_warning.hpp>
-#include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/test/unit_test.hpp>
 #include <fcppt/config/external_end.hpp>
@@ -50,15 +47,10 @@ public:
 
 }
 
-FCPPT_PP_PUSH_WARNING
-FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
-
 BOOST_AUTO_TEST_CASE(
 	cast_dynamic_cross
 )
 {
-FCPPT_PP_POP_WARNING
-
 	derived1 d1{};
 
 	BOOST_CHECK(

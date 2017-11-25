@@ -7,9 +7,6 @@
 #ifndef FCPPT_RECORD_IS_OBJECT_HPP_INCLUDED
 #define FCPPT_RECORD_IS_OBJECT_HPP_INCLUDED
 
-#include <fcppt/preprocessor/disable_gcc_warning.hpp>
-#include <fcppt/preprocessor/pop_warning.hpp>
-#include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/record/object_fwd.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <type_traits>
@@ -20,9 +17,6 @@ namespace fcppt
 {
 namespace record
 {
-
-FCPPT_PP_PUSH_WARNING
-FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
 
 /**
 \brief Tests if a type is an \link fcppt::record::object\endlink.
@@ -50,8 +44,6 @@ struct is_object<
 std::true_type
 {
 };
-
-FCPPT_PP_POP_WARNING
 
 }
 }

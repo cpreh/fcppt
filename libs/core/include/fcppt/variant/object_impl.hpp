@@ -10,9 +10,6 @@
 #include <fcppt/cast/from_void_ptr.hpp>
 #include <fcppt/detail/call_destructor.hpp>
 #include <fcppt/detail/placement_new.hpp>
-#include <fcppt/preprocessor/disable_gcc_warning.hpp>
-#include <fcppt/preprocessor/pop_warning.hpp>
-#include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/variant/apply_binary.hpp>
 #include <fcppt/variant/apply_unary.hpp>
 #include <fcppt/variant/object_decl.hpp>
@@ -28,9 +25,6 @@
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
-
-FCPPT_PP_PUSH_WARNING
-FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
 
 template<
 	typename Types
@@ -77,8 +71,6 @@ fcppt::variant::object<
 		)
 	);
 }
-
-FCPPT_PP_POP_WARNING
 
 template<
 	typename Types

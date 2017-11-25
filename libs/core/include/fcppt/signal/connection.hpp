@@ -21,7 +21,6 @@ namespace signal
 {
 
 FCPPT_PP_PUSH_WARNING
-FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
 FCPPT_PP_DISABLE_GCC_WARNING(-Wnon-virtual-dtor)
 
 /**

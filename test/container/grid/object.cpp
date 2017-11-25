@@ -12,9 +12,6 @@
 #include <fcppt/math/dim/output.hpp>
 #include <fcppt/math/vector/comparison.hpp>
 #include <fcppt/math/vector/output.hpp>
-#include <fcppt/preprocessor/disable_gcc_warning.hpp>
-#include <fcppt/preprocessor/pop_warning.hpp>
-#include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/test/unit_test.hpp>
 #include <algorithm>
@@ -35,15 +32,10 @@ int2_grid;
 
 }
 
-FCPPT_PP_PUSH_WARNING
-FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
-
 BOOST_AUTO_TEST_CASE(
 	container_grid_init_reference
 )
 {
-FCPPT_PP_POP_WARNING
-
 	int2_grid const test(
 		int2_grid::dim(
 			10u,
@@ -62,15 +54,10 @@ FCPPT_PP_POP_WARNING
 	);
 }
 
-FCPPT_PP_PUSH_WARNING
-FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
-
 BOOST_AUTO_TEST_CASE(
 	container_grid_index_2d
 )
 {
-FCPPT_PP_POP_WARNING
-
 	int2_grid const test(
 		int2_grid::dim(
 			5u,
@@ -122,15 +109,10 @@ FCPPT_PP_POP_WARNING
 		}
 }
 
-FCPPT_PP_PUSH_WARNING
-FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
-
 BOOST_AUTO_TEST_CASE(
 	container_grid_index_3d
 )
 {
-FCPPT_PP_POP_WARNING
-
 	typedef
 	fcppt::container::grid::object<
 		int,
@@ -198,15 +180,10 @@ FCPPT_PP_POP_WARNING
 			}
 }
 
-FCPPT_PP_PUSH_WARNING
-FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
-
 BOOST_AUTO_TEST_CASE(
 	container_grid_const_data
 )
 {
-FCPPT_PP_POP_WARNING
-
 	int2_grid const test(
 		int2_grid::dim(
 			5u,
@@ -225,15 +202,10 @@ FCPPT_PP_POP_WARNING
 	);
 }
 
-FCPPT_PP_PUSH_WARNING
-FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
-
 BOOST_AUTO_TEST_CASE(
 	container_grid_size
 )
 {
-FCPPT_PP_POP_WARNING
-
 	int2_grid const test(
 		int2_grid::dim(
 			3u,
@@ -248,15 +220,10 @@ FCPPT_PP_POP_WARNING
 	);
 }
 
-FCPPT_PP_PUSH_WARNING
-FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
-
 BOOST_AUTO_TEST_CASE(
 	container_grid_move
 )
 {
-FCPPT_PP_POP_WARNING
-
 	int2_grid grid1(
 		int2_grid::dim(
 			2u,
@@ -363,14 +330,10 @@ FCPPT_PP_POP_WARNING
 	);
 }
 
-FCPPT_PP_PUSH_WARNING
-FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
-
 BOOST_AUTO_TEST_CASE(
 	container_grid_init_function
 )
 {
-FCPPT_PP_POP_WARNING
 	int2_grid const grid(
 		int2_grid::dim(
 			2u,

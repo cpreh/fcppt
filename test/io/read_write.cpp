@@ -10,9 +10,6 @@
 #include <fcppt/optional/comparison.hpp>
 #include <fcppt/optional/object_impl.hpp>
 #include <fcppt/optional/output.hpp>
-#include <fcppt/preprocessor/disable_gcc_warning.hpp>
-#include <fcppt/preprocessor/pop_warning.hpp>
-#include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/test/unit_test.hpp>
 #include <sstream>
@@ -65,15 +62,10 @@ test_read_write(
 }
 
 
-FCPPT_PP_PUSH_WARNING
-FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
-
 BOOST_AUTO_TEST_CASE(
 	io_read_write
 )
 {
-FCPPT_PP_POP_WARNING
-
 	test_read_write(
 		fcppt::endianness::format::big
 	);

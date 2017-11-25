@@ -10,9 +10,6 @@
 #include <fcppt/enum/names_impl_fwd.hpp>
 #include <fcppt/enum/to_string.hpp>
 #include <fcppt/optional/object.hpp>
-#include <fcppt/preprocessor/disable_gcc_warning.hpp>
-#include <fcppt/preprocessor/pop_warning.hpp>
-#include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/test/unit_test.hpp>
 #include <fcppt/config/external_end.hpp>
@@ -62,9 +59,6 @@ struct names_impl<
 
 }
 }
-
-FCPPT_PP_PUSH_WARNING
-FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
 
 BOOST_AUTO_TEST_CASE(
 	enum_string

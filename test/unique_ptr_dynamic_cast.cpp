@@ -10,9 +10,6 @@
 #include <fcppt/unique_ptr_dynamic_cast.hpp>
 #include <fcppt/unique_ptr_to_base.hpp>
 #include <fcppt/cast/dynamic_fun.hpp>
-#include <fcppt/preprocessor/disable_gcc_warning.hpp>
-#include <fcppt/preprocessor/pop_warning.hpp>
-#include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/variant/holds_type.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/test/unit_test.hpp>
@@ -60,15 +57,10 @@ public:
 
 }
 
-FCPPT_PP_PUSH_WARNING
-FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
-
 BOOST_AUTO_TEST_CASE(
 	unique_ptr_to_base
 )
 {
-FCPPT_PP_POP_WARNING
-
 	typedef
 	fcppt::unique_ptr<
 		base

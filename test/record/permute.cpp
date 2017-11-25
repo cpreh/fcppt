@@ -6,9 +6,6 @@
 
 #include <fcppt/make_unique_ptr.hpp>
 #include <fcppt/unique_ptr_impl.hpp>
-#include <fcppt/preprocessor/disable_gcc_warning.hpp>
-#include <fcppt/preprocessor/pop_warning.hpp>
-#include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/record/element.hpp>
 #include <fcppt/record/make_label.hpp>
 #include <fcppt/record/permute.hpp>
@@ -18,15 +15,10 @@
 #include <fcppt/config/external_end.hpp>
 
 
-FCPPT_PP_PUSH_WARNING
-FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
-
 BOOST_AUTO_TEST_CASE(
 	record_permute
 )
 {
-FCPPT_PP_POP_WARNING
-
 	FCPPT_RECORD_MAKE_LABEL(
 		int_label
 	);

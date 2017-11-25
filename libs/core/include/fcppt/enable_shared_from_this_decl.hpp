@@ -9,9 +9,6 @@
 
 #include <fcppt/enable_shared_from_this_fwd.hpp>
 #include <fcppt/shared_ptr_fwd.hpp>
-#include <fcppt/preprocessor/disable_gcc_warning.hpp>
-#include <fcppt/preprocessor/pop_warning.hpp>
-#include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <memory>
 #include <fcppt/config/external_end.hpp>
@@ -19,9 +16,6 @@
 
 namespace fcppt
 {
-
-FCPPT_PP_PUSH_WARNING
-FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
 
 /**
 \brief Allows an object to obtain a shared ptr to itself.
@@ -69,8 +63,6 @@ protected:
 	>
 	fcppt_shared_from_this() const;
 };
-
-FCPPT_PP_POP_WARNING
 
 }
 

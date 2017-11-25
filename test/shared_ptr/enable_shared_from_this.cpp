@@ -8,9 +8,6 @@
 #include <fcppt/make_shared_ptr.hpp>
 #include <fcppt/shared_ptr_impl.hpp>
 #include <fcppt/shared_ptr_output.hpp>
-#include <fcppt/preprocessor/disable_gcc_warning.hpp>
-#include <fcppt/preprocessor/pop_warning.hpp>
-#include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/test/unit_test.hpp>
 #include <fcppt/config/external_end.hpp>
@@ -32,9 +29,6 @@ fcppt::shared_ptr<
 	test_class const
 >
 const_test_shared_ptr;
-
-FCPPT_PP_PUSH_WARNING
-FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
 
 class test_class
 :
@@ -59,19 +53,12 @@ public:
 	}
 };
 
-FCPPT_PP_POP_WARNING
-
 }
-
-FCPPT_PP_PUSH_WARNING
-FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
 
 BOOST_AUTO_TEST_CASE(
 	enable_shared_from_this
 )
 {
-FCPPT_PP_POP_WARNING
-
 	test_shared_ptr const ptr{
 		fcppt::make_shared_ptr<
 			test_class

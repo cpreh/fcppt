@@ -8,9 +8,6 @@
 #include <fcppt/enum/make_range_start.hpp>
 #include <fcppt/enum/make_range_start_end.hpp>
 #include <fcppt/enum/range_impl.hpp>
-#include <fcppt/preprocessor/disable_gcc_warning.hpp>
-#include <fcppt/preprocessor/pop_warning.hpp>
-#include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/test/unit_test.hpp>
 #include <vector>
@@ -62,16 +59,10 @@ test(
 
 }
 
-FCPPT_PP_PUSH_WARNING
-FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
-
 BOOST_AUTO_TEST_CASE(
 	enum_range
 )
 {
-
-FCPPT_PP_POP_WARNING
-
 	test(
 		fcppt::enum_::make_range<
 			test_enum
@@ -84,16 +75,10 @@ FCPPT_PP_POP_WARNING
 	);
 }
 
-FCPPT_PP_PUSH_WARNING
-FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
-
 BOOST_AUTO_TEST_CASE(
 	enum_range_start
 )
 {
-
-FCPPT_PP_POP_WARNING
-
 	test(
 		fcppt::enum_::make_range_start(
 			test_enum::test2
@@ -105,16 +90,10 @@ FCPPT_PP_POP_WARNING
 	);
 }
 
-FCPPT_PP_PUSH_WARNING
-FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
-
 BOOST_AUTO_TEST_CASE(
 	enum_range_start_end
 )
 {
-
-FCPPT_PP_POP_WARNING
-
 	test(
 		fcppt::enum_::make_range_start_end(
 			test_enum::test2,

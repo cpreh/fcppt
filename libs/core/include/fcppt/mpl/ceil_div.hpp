@@ -8,9 +8,6 @@
 #define FCPPT_MPL_CEIL_DIV_HPP_INCLUDED
 
 #include <fcppt/literal.hpp>
-#include <fcppt/preprocessor/disable_gcc_warning.hpp>
-#include <fcppt/preprocessor/pop_warning.hpp>
-#include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/mpl/integral_c.hpp>
 #include <type_traits>
@@ -21,9 +18,6 @@ namespace fcppt
 {
 namespace mpl
 {
-
-FCPPT_PP_PUSH_WARNING
-FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
 
 /**
 \brief Calculates a division of integral contants rounded towards infinity
@@ -83,8 +77,6 @@ boost::mpl::integral_c<
 		"ceil_div only works on unsigned types"
 	);
 };
-
-FCPPT_PP_POP_WARNING
 
 }
 }

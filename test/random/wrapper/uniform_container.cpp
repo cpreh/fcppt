@@ -7,9 +7,6 @@
 #include <fcppt/strong_typedef_output.hpp>
 #include <fcppt/algorithm/contains.hpp>
 #include <fcppt/assert/optional_error.hpp>
-#include <fcppt/preprocessor/disable_gcc_warning.hpp>
-#include <fcppt/preprocessor/pop_warning.hpp>
-#include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/random/generator/minstd_rand.hpp>
 #include <fcppt/random/generator/seed_from_chrono.hpp>
 #include <fcppt/random/wrapper/make_uniform_container.hpp>
@@ -21,16 +18,10 @@
 #include <fcppt/config/external_end.hpp>
 
 
-FCPPT_PP_PUSH_WARNING
-FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
-
 BOOST_AUTO_TEST_CASE(
 	random_wrapper_uniform_container
 )
 {
-
-FCPPT_PP_POP_WARNING
-
 	typedef
 	std::vector<
 		std::string

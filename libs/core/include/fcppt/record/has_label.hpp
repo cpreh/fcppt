@@ -7,9 +7,6 @@
 #ifndef FCPPT_RECORD_HAS_LABEL_HPP_INCLUDED
 #define FCPPT_RECORD_HAS_LABEL_HPP_INCLUDED
 
-#include <fcppt/preprocessor/disable_gcc_warning.hpp>
-#include <fcppt/preprocessor/pop_warning.hpp>
-#include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/record/label_set.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/mpl/has_key.hpp>
@@ -20,9 +17,6 @@ namespace fcppt
 {
 namespace record
 {
-
-FCPPT_PP_PUSH_WARNING
-FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
 
 /**
 \brief Tests if a record has an \link fcppt::record::label\endlink.
@@ -43,8 +37,6 @@ boost::mpl::has_key<
 >
 {
 };
-
-FCPPT_PP_POP_WARNING
 
 }
 }

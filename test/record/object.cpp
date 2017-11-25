@@ -5,9 +5,6 @@
 
 
 #include <fcppt/noncopyable.hpp>
-#include <fcppt/preprocessor/disable_gcc_warning.hpp>
-#include <fcppt/preprocessor/pop_warning.hpp>
-#include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/record/element.hpp>
 #include <fcppt/record/get.hpp>
 #include <fcppt/record/make_label.hpp>
@@ -19,15 +16,10 @@
 #include <fcppt/config/external_end.hpp>
 
 
-FCPPT_PP_PUSH_WARNING
-FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
-
 BOOST_AUTO_TEST_CASE(
 	record_object
 )
 {
-FCPPT_PP_POP_WARNING
-
 	class copy_only
 	{
 	public:

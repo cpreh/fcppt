@@ -10,23 +10,15 @@
 #include <fcppt/cast/enum_to_int.hpp>
 #include <fcppt/container/bitfield/enum_object.hpp>
 #include <fcppt/container/bitfield/underlying_value.hpp>
-#include <fcppt/preprocessor/disable_gcc_warning.hpp>
-#include <fcppt/preprocessor/pop_warning.hpp>
-#include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/test/unit_test.hpp>
 #include <fcppt/config/external_end.hpp>
 
 
-FCPPT_PP_PUSH_WARNING
-FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
-
 BOOST_AUTO_TEST_CASE(
 	container_bitfield_underlying_value
 )
 {
-FCPPT_PP_POP_WARNING
-
 	enum class test_enum
 	{
 		test1,

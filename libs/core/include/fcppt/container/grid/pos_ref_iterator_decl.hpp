@@ -13,9 +13,6 @@
 #include <fcppt/container/grid/pos_iterator_impl.hpp>
 #include <fcppt/container/grid/pos_ref_iterator_fwd.hpp>
 #include <fcppt/container/grid/detail/pos_ref_iterator_base.hpp>
-#include <fcppt/preprocessor/disable_gcc_warning.hpp>
-#include <fcppt/preprocessor/pop_warning.hpp>
-#include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/iterator/iterator_facade.hpp>
 #include <fcppt/config/external_end.hpp>
@@ -27,9 +24,6 @@ namespace container
 {
 namespace grid
 {
-
-FCPPT_PP_PUSH_WARNING
-FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
 
 /**
 \brief An iterator over grid references
@@ -126,8 +120,6 @@ private:
 
 	dim size_;
 };
-
-FCPPT_PP_POP_WARNING
 
 }
 }

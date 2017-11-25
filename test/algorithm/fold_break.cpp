@@ -8,9 +8,6 @@
 #include <fcppt/make_unique_ptr.hpp>
 #include <fcppt/unique_ptr_impl.hpp>
 #include <fcppt/algorithm/fold_break.hpp>
-#include <fcppt/preprocessor/disable_gcc_warning.hpp>
-#include <fcppt/preprocessor/pop_warning.hpp>
-#include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/test/unit_test.hpp>
 #include <functional>
@@ -19,15 +16,10 @@
 #include <fcppt/config/external_end.hpp>
 
 
-FCPPT_PP_PUSH_WARNING
-FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
-
 BOOST_AUTO_TEST_CASE(
 	algorithm_fold_break
 )
 {
-FCPPT_PP_POP_WARNING
-
 	typedef
 	std::vector<
 		int
@@ -78,15 +70,10 @@ FCPPT_PP_POP_WARNING
 	);
 }
 
-FCPPT_PP_PUSH_WARNING
-FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
-
 BOOST_AUTO_TEST_CASE(
 	algorithm_fold_break_move
 )
 {
-FCPPT_PP_POP_WARNING
-
 	typedef
 	std::vector<
 		int

@@ -8,9 +8,6 @@
 #define FCPPT_MPL_INDEX_OF_HPP_INCLUDED
 
 #include <fcppt/mpl/index_of_iterator.hpp>
-#include <fcppt/preprocessor/disable_gcc_warning.hpp>
-#include <fcppt/preprocessor/pop_warning.hpp>
-#include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/mpl/contains.hpp>
 #include <boost/mpl/find.hpp>
@@ -21,9 +18,6 @@ namespace fcppt
 {
 namespace mpl
 {
-
-FCPPT_PP_PUSH_WARNING
-FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
 
 /**
 \brief Calculates the index of an element in a sequence
@@ -61,8 +55,6 @@ fcppt::mpl::index_of_iterator<
 		"mpl::index_of<S,E> used but S doesn't contain E"
 	);
 };
-
-FCPPT_PP_POP_WARNING
 
 }
 }

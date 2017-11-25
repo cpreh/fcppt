@@ -19,16 +19,10 @@
 #include <fcppt/math/matrix/detail/init_storage.hpp>
 #include <fcppt/math/matrix/detail/row_view_impl.hpp>
 #include <fcppt/math/vector/object_impl.hpp>
-#include <fcppt/preprocessor/disable_gcc_warning.hpp>
-#include <fcppt/preprocessor/pop_warning.hpp>
-#include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <array>
 #include <fcppt/config/external_end.hpp>
 
-
-FCPPT_PP_PUSH_WARNING
-FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
 
 template<
 	typename T,
@@ -50,8 +44,6 @@ fcppt::math::matrix::object<
 		S
 	);
 }
-
-FCPPT_PP_POP_WARNING
 
 template<
 	typename T,

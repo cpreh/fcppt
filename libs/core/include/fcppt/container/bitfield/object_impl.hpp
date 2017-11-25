@@ -11,13 +11,7 @@
 #include <fcppt/container/bitfield/object_decl.hpp>
 #include <fcppt/container/bitfield/proxy_impl.hpp>
 #include <fcppt/container/bitfield/detail/null_array.hpp>
-#include <fcppt/preprocessor/disable_gcc_warning.hpp>
-#include <fcppt/preprocessor/pop_warning.hpp>
-#include <fcppt/preprocessor/push_warning.hpp>
 
-
-FCPPT_PP_PUSH_WARNING
-FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
 
 template<
 	typename ElementType,
@@ -34,8 +28,6 @@ fcppt::container::bitfield::object<
 // Don't initialize array_
 {
 }
-
-FCPPT_PP_POP_WARNING
 
 template<
 	typename ElementType,

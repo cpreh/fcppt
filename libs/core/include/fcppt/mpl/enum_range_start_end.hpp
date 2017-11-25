@@ -12,9 +12,6 @@
 #include <fcppt/cast/int_to_enum_fun.hpp>
 #include <fcppt/mpl/copy.hpp>
 #include <fcppt/mpl/integral_cast_tpl.hpp>
-#include <fcppt/preprocessor/disable_gcc_warning.hpp>
-#include <fcppt/preprocessor/pop_warning.hpp>
-#include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/mpl/fold.hpp>
 #include <boost/mpl/placeholders.hpp>
@@ -28,9 +25,6 @@ namespace fcppt
 {
 namespace mpl
 {
-
-FCPPT_PP_PUSH_WARNING
-FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
 
 /**
 \brief An MPL range over enums from a minimum to a maximum
@@ -87,8 +81,6 @@ boost::mpl::transform<
 >::type
 {
 };
-
-FCPPT_PP_POP_WARNING
 
 }
 }

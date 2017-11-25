@@ -7,9 +7,6 @@
 #ifndef FCPPT_CONTAINER_DETAIL_ARRAY_SIZE_HPP_INCLUDED
 #define FCPPT_CONTAINER_DETAIL_ARRAY_SIZE_HPP_INCLUDED
 
-#include <fcppt/preprocessor/disable_gcc_warning.hpp>
-#include <fcppt/preprocessor/pop_warning.hpp>
-#include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <array>
 #include <cstddef>
@@ -29,9 +26,6 @@ template<
 >
 struct array_size;
 
-FCPPT_PP_PUSH_WARNING
-FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
-
 template<
 	typename T,
 	std::size_t N
@@ -49,8 +43,6 @@ std::integral_constant<
 >
 {
 };
-
-FCPPT_PP_POP_WARNING
 
 }
 }

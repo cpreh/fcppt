@@ -14,9 +14,6 @@
 #include <fcppt/optional/make.hpp>
 #include <fcppt/optional/object.hpp>
 #include <fcppt/optional/output.hpp>
-#include <fcppt/preprocessor/disable_gcc_warning.hpp>
-#include <fcppt/preprocessor/pop_warning.hpp>
-#include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/test/unit_test.hpp>
 #include <sstream>
@@ -50,15 +47,10 @@ FCPPT_MAKE_STRONG_TYPEDEF(
 
 }
 
-FCPPT_PP_PUSH_WARNING
-FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
-
 BOOST_AUTO_TEST_CASE(
 	strong_typedef_arithmetic
 )
 {
-FCPPT_PP_POP_WARNING
-
 	strong_int
 		test1(
 			2
@@ -118,15 +110,10 @@ FCPPT_PP_POP_WARNING
 	);
 }
 
-FCPPT_PP_PUSH_WARNING
-FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
-
 BOOST_AUTO_TEST_CASE(
 	strong_typedef_assignment_arithmetic
 )
 {
-FCPPT_PP_POP_WARNING
-
 	strong_int test(
 		1
 	);
@@ -153,15 +140,10 @@ FCPPT_PP_POP_WARNING
 	);
 }
 
-FCPPT_PP_PUSH_WARNING
-FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
-
 BOOST_AUTO_TEST_CASE(
 	strong_typedef_assignment_bitwise
 )
 {
-FCPPT_PP_POP_WARNING
-
 	strong_uint test1{
 		3u
 	};
@@ -188,15 +170,10 @@ FCPPT_PP_POP_WARNING
 	);
 }
 
-FCPPT_PP_PUSH_WARNING
-FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
-
 BOOST_AUTO_TEST_CASE(
 	strong_typedef_bitwise
 )
 {
-FCPPT_PP_POP_WARNING
-
 	strong_uint const
 		test1(
 			2u
@@ -234,15 +211,10 @@ FCPPT_PP_POP_WARNING
 	);
 }
 
-FCPPT_PP_PUSH_WARNING
-FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
-
 BOOST_AUTO_TEST_CASE(
 	strong_typedef_comparison
 )
 {
-FCPPT_PP_POP_WARNING
-
 	strong_int const
 		test1(
 			1
@@ -279,15 +251,10 @@ FCPPT_PP_POP_WARNING
 	);
 }
 
-FCPPT_PP_PUSH_WARNING
-FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
-
 BOOST_AUTO_TEST_CASE(
 	strong_typedef_io
 )
 {
-FCPPT_PP_POP_WARNING
-
 	{
 		std::stringstream stream;
 
@@ -337,15 +304,10 @@ FCPPT_PP_POP_WARNING
 	}
 }
 
-FCPPT_PP_PUSH_WARNING
-FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
-
 BOOST_AUTO_TEST_CASE(
 	strong_typedef_hash
 )
 {
-FCPPT_PP_POP_WARNING
-
 	typedef std::unordered_set<
 		strong_int
 	> hash_set;
@@ -375,15 +337,10 @@ FCPPT_PP_POP_WARNING
 	);
 }
 
-FCPPT_PP_PUSH_WARNING
-FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
-
 BOOST_AUTO_TEST_CASE(
 	strong_typedef_move
 )
 {
-FCPPT_PP_POP_WARNING
-
 	typedef
 	fcppt::unique_ptr<
 		int

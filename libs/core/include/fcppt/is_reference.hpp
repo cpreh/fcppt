@@ -8,9 +8,6 @@
 #define FCPPT_IS_REFERENCE_HPP_INCLUDED
 
 #include <fcppt/reference_fwd.hpp>
-#include <fcppt/preprocessor/disable_gcc_warning.hpp>
-#include <fcppt/preprocessor/pop_warning.hpp>
-#include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
@@ -18,9 +15,6 @@
 
 namespace fcppt
 {
-
-FCPPT_PP_PUSH_WARNING
-FCPPT_PP_DISABLE_GCC_WARNING(-Weffc++)
 
 /**
 \brief Tests if a type is an \link fcppt::reference\endlink.
@@ -48,8 +42,6 @@ struct is_reference<
 std::true_type
 {
 };
-
-FCPPT_PP_POP_WARNING
 
 }
 
