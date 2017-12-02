@@ -7,9 +7,9 @@
 #ifndef FCPPT_TYPE_TRAITS_IS_ITERATOR_OF_CATEGORY_HPP_INCLUDED
 #define FCPPT_TYPE_TRAITS_IS_ITERATOR_OF_CATEGORY_HPP_INCLUDED
 
+#include <fcppt/iterator/category_at_least.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <iterator>
-#include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -36,12 +36,12 @@ template<
 >
 using is_iterator_of_category
 =
-std::is_base_of<
-	Category,
+fcppt::iterator::category_at_least<
 	typename
 	std::iterator_traits<
 		Iterator
-	>::iterator_category
+	>::iterator_category,
+	Category
 >;
 
 }

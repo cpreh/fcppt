@@ -8,9 +8,10 @@
 #define FCPPT_INT_ITERATOR_DECL_HPP_INCLUDED
 
 #include <fcppt/int_iterator_fwd.hpp>
-#include <fcppt/detail/int_iterator_base.hpp>
+#include <fcppt/iterator/base_decl.hpp>
+#include <fcppt/iterator/types_fwd.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/iterator/iterator_facade.hpp>
+#include <iterator>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -28,31 +29,39 @@ template<
 class int_iterator final
 :
 	public
-		fcppt::detail::int_iterator_base<
-			Int
+		fcppt::iterator::base<
+			fcppt::iterator::types<
+				fcppt::int_iterator<
+					Int
+				>,
+				Int,
+				Int,
+				Int,
+				std::input_iterator_tag
+			>
 		>
 {
 public:
-	int_iterator();
-
 	explicit
 	int_iterator(
 		Int
-	);
-private:
-	friend class boost::iterator_core_access;
+	)
+	noexcept;
 
 	void
-	increment();
+	increment()
+	noexcept;
 
 	bool
 	equal(
 		int_iterator
-	) const;
+	) const
+	noexcept;
 
 	Int
-	dereference() const;
-
+	dereference() const
+	noexcept;
+private:
 	Int value_;
 };
 

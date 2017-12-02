@@ -10,8 +10,9 @@
 #include <fcppt/container/grid/pos_fwd.hpp>
 #include <fcppt/container/grid/pos_iterator_fwd.hpp>
 #include <fcppt/container/grid/size_type.hpp>
+#include <fcppt/iterator/base_fwd.hpp>
+#include <fcppt/iterator/types_fwd.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/iterator/iterator_facade.hpp>
 #include <iterator>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
@@ -32,24 +33,26 @@ template<
 >
 using pos_iterator_base
 =
-boost::iterator_facade<
-	fcppt::container::grid::pos_iterator<
-		SizeType,
-		Size
-	>,
-	fcppt::container::grid::pos<
-		SizeType,
-		Size
-	>,
-	std::forward_iterator_tag,
-	fcppt::container::grid::pos<
-		SizeType,
-		Size
-	>,
-	typename
-	std::make_signed<
-		SizeType
-	>::type
+fcppt::iterator::base<
+	fcppt::iterator::types<
+		fcppt::container::grid::pos_iterator<
+			SizeType,
+			Size
+		>,
+		fcppt::container::grid::pos<
+			SizeType,
+			Size
+		>,
+		fcppt::container::grid::pos<
+			SizeType,
+			Size
+		>,
+		typename
+		std::make_signed<
+			SizeType
+		>::type,
+		std::input_iterator_tag
+	>
 >;
 
 }

@@ -10,11 +10,11 @@
 #include <fcppt/reference_comparison.hpp>
 #include <fcppt/reference_impl.hpp>
 #include <fcppt/container/tree/is_object.hpp>
+#include <fcppt/iterator/base_impl.hpp>
+#include <fcppt/iterator/types_fwd.hpp>
 #include <fcppt/optional/comparison.hpp>
 #include <fcppt/optional/reference.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/iterator/iterator_facade.hpp>
-#include <boost/range/iterator_range_core.hpp>
 #include <iterator>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
@@ -75,11 +75,15 @@ private:
 	optional_tree_ref;
 
 	typedef
-	boost::iterator_facade<
-		iterator,
-		tree_value_type,
-		std::forward_iterator_tag,
-		Tree &
+	fcppt::iterator::base<
+		fcppt::iterator::types<
+			iterator,
+			tree_value_type,
+			Tree &,
+			typename
+			tree_value_type::difference_type,
+			std::forward_iterator_tag
+		>
 	>
 	iterator_base;
 public:
@@ -88,14 +92,20 @@ public:
 		public iterator_base
 	{
 	public:
+		iterator()
+		:
+			current_{}
+		{
+		}
+
 		explicit
 		iterator(
 			optional_tree_ref const _current
 		)
 		:
-			current_(
+			current_{
 				_current
-			)
+			}
 		{
 		}
 
@@ -124,8 +134,6 @@ public:
 		iterator_base::iterator_category
 		iterator_category;
 
-		friend class boost::iterator_core_access;
-	private:
 		void
 		increment()
 		{
@@ -150,7 +158,7 @@ public:
 				==
 				_other.current_;
 		}
-
+	private:
 		optional_tree_ref current_;
 	};
 

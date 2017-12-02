@@ -11,9 +11,7 @@
 #include <fcppt/cyclic_iterator_fwd.hpp>
 #include <fcppt/homogenous_pair_impl.hpp>
 #include <fcppt/detail/cyclic_iterator_base.hpp>
-#include <fcppt/config/external_begin.hpp>
-#include <boost/iterator/iterator_facade.hpp>
-#include <fcppt/config/external_end.hpp>
+#include <fcppt/iterator/base_decl.hpp>
 
 
 namespace fcppt
@@ -47,57 +45,36 @@ class cyclic_iterator final
 		>
 {
 public:
-	/**
-	\brief The base type which is a <code>boost::iterator_facade</code>
-	*/
 	typedef
 	fcppt::detail::cyclic_iterator_base<
 		ContainerIterator
 	>
 	base_type;
 
-	/**
-	\brief The underlying iterator type
-	*/
 	typedef
 	ContainerIterator
 	container_iterator_type;
 
-	/**
-	\brief The value type adapted from \a ContainerIterator
-	*/
 	typedef
 	typename
 	base_type::value_type
 	value_type;
 
-	/**
-	\brief The reference type adapted from \a ContainerIterator
-	*/
 	typedef
 	typename
 	base_type::reference
 	reference;
 
-	/**
-	\brief The pointer type adapted from \a ContainerIterator
-	*/
 	typedef
 	typename
 	base_type::pointer
 	pointer;
 
-	/**
-	\brief The difference type adapted from \a ContainerIterator
-	*/
 	typedef
 	typename
 	base_type::difference_type
 	difference_type;
 
-	/**
-	\brief The iterator category, either Forward or Bidirectional
-	*/
 	typedef
 	typename
 	base_type::iterator_category
@@ -108,6 +85,8 @@ public:
 		container_iterator_type
 	>
 	boundary;
+
+	cyclic_iterator();
 
 	/**
 	\brief Copy constructs from another cyclic iterator
@@ -169,8 +148,6 @@ public:
 	*/
 	container_iterator_type
 	get() const;
-private:
-	friend class boost::iterator_core_access;
 
 	void
 	advance(

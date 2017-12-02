@@ -9,10 +9,26 @@
 #define FCPPT_CYCLIC_ITERATOR_IMPL_HPP_INCLUDED
 
 #include <fcppt/cyclic_iterator_decl.hpp>
+#include <fcppt/iterator/base_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <iterator>
 #include <fcppt/config/external_end.hpp>
 
+
+template<
+	typename ContainerIterator
+>
+fcppt::cyclic_iterator<
+	ContainerIterator
+>::cyclic_iterator()
+:
+	it_{},
+	boundary_{
+		container_iterator_type{},
+		container_iterator_type{}
+	}
+{
+}
 
 template<
 	typename ContainerIterator

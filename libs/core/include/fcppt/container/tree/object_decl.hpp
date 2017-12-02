@@ -52,6 +52,11 @@ public:
 
 	typedef
 	typename
+	child_list::difference_type
+	difference_type;
+
+	typedef
+	typename
 	child_list::iterator
 	iterator;
 

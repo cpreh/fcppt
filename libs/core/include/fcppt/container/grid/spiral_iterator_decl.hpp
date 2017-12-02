@@ -9,8 +9,8 @@
 
 #include <fcppt/container/grid/spiral_iterator_fwd.hpp>
 #include <fcppt/container/grid/detail/spiral_iterator_base.hpp>
+#include <fcppt/iterator/base_decl.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/iterator/iterator_facade.hpp>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
@@ -49,7 +49,8 @@ public:
 
 	static_assert(
 		std::is_signed<
-			typename Pos::value_type
+			typename
+			Pos::value_type
 		>::value,
 		"spiral_iterator only works with signed integers"
 	);
@@ -78,8 +79,6 @@ public:
 		pos current,
 		difference_type max_dist
 	);
-private:
-	friend class boost::iterator_core_access;
 
 	void
 	increment();
@@ -91,7 +90,7 @@ private:
 	equal(
 		spiral_iterator const &
 	) const;
-
+private:
 	pos cur_;
 
 	difference_type max_dist_;

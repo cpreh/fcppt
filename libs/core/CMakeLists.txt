@@ -377,7 +377,6 @@ set(
 	libs/core/include/fcppt/detail/const.hpp
 	libs/core/include/fcppt/detail/cyclic_iterator_base.hpp
 	libs/core/include/fcppt/detail/equal.hpp
-	libs/core/include/fcppt/detail/int_iterator_base.hpp
 	libs/core/include/fcppt/detail/main.hpp
 	libs/core/include/fcppt/detail/main_wchar.hpp
 	libs/core/include/fcppt/detail/make_shared_wrapper.hpp
@@ -441,7 +440,6 @@ set(
 	libs/core/include/fcppt/enum/array_fwd.hpp
 	libs/core/include/fcppt/enum/array_impl.hpp
 	libs/core/include/fcppt/enum/array_init.hpp
-	libs/core/include/fcppt/enum/detail/iterator_base.hpp
 	libs/core/include/fcppt/enum/from_int.hpp
 	libs/core/include/fcppt/enum/from_int_exn.hpp
 	libs/core/include/fcppt/enum/from_string.hpp
@@ -545,6 +543,14 @@ set(
 	libs/core/include/fcppt/io/write_chars.hpp
 	libs/core/include/fcppt/is_reference.hpp
 	libs/core/include/fcppt/is_strong_typedef.hpp
+	libs/core/include/fcppt/iterator/base_decl.hpp
+	libs/core/include/fcppt/iterator/base_fwd.hpp
+	libs/core/include/fcppt/iterator/base_impl.hpp
+	libs/core/include/fcppt/iterator/category_at_least.hpp
+	libs/core/include/fcppt/iterator/is_types.hpp
+	libs/core/include/fcppt/iterator/types.hpp
+	libs/core/include/fcppt/iterator/types_from.hpp
+	libs/core/include/fcppt/iterator/types_fwd.hpp
 	libs/core/include/fcppt/literal.hpp
 	libs/core/include/fcppt/loop.hpp
 	libs/core/include/fcppt/loop_fwd.hpp

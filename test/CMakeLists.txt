@@ -157,6 +157,10 @@ add_subdirectory(
 	io
 )
 
+add_subdirectory(
+	iterator
+)
+
 add_fcppt_test(
 	literal
 )

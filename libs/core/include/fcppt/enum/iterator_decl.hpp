@@ -9,9 +9,11 @@
 
 #include <fcppt/enum/iterator_fwd.hpp>
 #include <fcppt/enum/size_type.hpp>
-#include <fcppt/enum/detail/iterator_base.hpp>
+#include <fcppt/iterator/base_decl.hpp>
+#include <fcppt/iterator/types_fwd.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/iterator/iterator_facade.hpp>
+#include <iterator>
+#include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -29,8 +31,21 @@ template<
 class iterator final
 :
 	public
-		fcppt::enum_::detail::iterator_base<
-			Enum
+		fcppt::iterator::base<
+			fcppt::iterator::types<
+				fcppt::enum_::iterator<
+					Enum
+				>,
+				Enum,
+				Enum,
+				typename
+				std::make_signed<
+					fcppt::enum_::size_type<
+						Enum
+					>
+				>::type,
+				std::input_iterator_tag
+			>
 		>
 {
 public:
@@ -40,16 +55,11 @@ public:
 	>
 	size_type;
 
-	iterator()
-	noexcept;
-
 	explicit
 	iterator(
 		size_type
 	)
 	noexcept;
-private:
-	friend class boost::iterator_core_access;
 
 	void
 	increment()
@@ -64,7 +74,7 @@ private:
 	Enum
 	dereference() const
 	noexcept;
-
+private:
 	size_type value_;
 };
 

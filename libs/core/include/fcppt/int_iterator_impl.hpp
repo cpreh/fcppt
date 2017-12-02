@@ -8,18 +8,8 @@
 #define FCPPT_INT_ITERATOR_IMPL_HPP_INCLUDED
 
 #include <fcppt/int_iterator_decl.hpp>
+#include <fcppt/iterator/base_impl.hpp>
 
-
-template<
-	typename Int
->
-fcppt::int_iterator<
-	Int
->::int_iterator()
-:
-	value_{}
-{
-}
 
 template<
 	typename Int
@@ -29,10 +19,11 @@ fcppt::int_iterator<
 >::int_iterator(
 	Int const _value
 )
+noexcept
 :
-	value_(
+	value_{
 		_value
-	)
+	}
 {
 }
 
@@ -43,6 +34,7 @@ void
 fcppt::int_iterator<
 	Int
 >::increment()
+noexcept
 {
 	++value_;
 }
@@ -56,6 +48,7 @@ fcppt::int_iterator<
 >::equal(
 	int_iterator const _other
 ) const
+noexcept
 {
 	return
 		value_
@@ -70,6 +63,7 @@ Int
 fcppt::int_iterator<
 	Int
 >::dereference() const
+noexcept
 {
 	return
 		value_;

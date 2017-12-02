@@ -4,6 +4,7 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
+#include <fcppt/int_iterator_impl.hpp>
 #include <fcppt/int_range_impl.hpp>
 #include <fcppt/make_int_range.hpp>
 #include <fcppt/make_int_range_count.hpp>
@@ -13,12 +14,42 @@
 #include <fcppt/type_iso/strong_typedef.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/test/unit_test.hpp>
+#include <iterator>
+#include <type_traits>
 #include <vector>
 #include <fcppt/config/external_end.hpp>
 
 
 namespace
 {
+
+template<
+	typename Iterator
+>
+void
+check_category(
+	Iterator
+)
+{
+	static_assert(
+		std::is_same<
+			typename
+			Iterator::iterator_category,
+			std::input_iterator_tag
+		>::value,
+		""
+	);
+}
+
+static_assert(
+	std::is_same<
+		fcppt::int_iterator<
+			int
+		>::iterator_category,
+		std::input_iterator_tag
+	>::value,
+	""
+);
 
 template<
 	typename Int
@@ -33,6 +64,10 @@ test(
 	> const &_result
 )
 {
+	check_category(
+		_range.begin()
+	);
+
 	typedef
 	std::vector<
 		Int
@@ -65,7 +100,6 @@ test(
 		==
 		_result
 	));
-
 }
 
 FCPPT_MAKE_STRONG_TYPEDEF(

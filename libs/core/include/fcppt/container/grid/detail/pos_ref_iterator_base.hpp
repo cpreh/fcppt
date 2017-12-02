@@ -9,8 +9,9 @@
 
 #include <fcppt/container/grid/pos_ref_iterator_fwd.hpp>
 #include <fcppt/container/grid/pos_reference_fwd.hpp>
+#include <fcppt/iterator/base_fwd.hpp>
+#include <fcppt/iterator/types_fwd.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/iterator/iterator_facade.hpp>
 #include <iterator>
 #include <fcppt/config/external_end.hpp>
 
@@ -29,18 +30,20 @@ template<
 >
 using pos_ref_iterator_base
 =
-boost::iterator_facade<
-	fcppt::container::grid::pos_ref_iterator<
-		Grid
-	>,
-	typename
-	Grid::value_type,
-	std::forward_iterator_tag,
-	fcppt::container::grid::pos_reference<
-		Grid
-	>,
-	typename
-	Grid::difference_type
+fcppt::iterator::base<
+	fcppt::iterator::types<
+		fcppt::container::grid::pos_ref_iterator<
+			Grid
+		>,
+		typename
+		Grid::value_type,
+		fcppt::container::grid::pos_reference<
+			Grid
+		>,
+		typename
+		Grid::difference_type,
+		std::input_iterator_tag
+	>
 >;
 
 }

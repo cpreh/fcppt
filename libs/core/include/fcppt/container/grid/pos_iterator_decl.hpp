@@ -13,9 +13,7 @@
 #include <fcppt/container/grid/size_type.hpp>
 #include <fcppt/container/grid/sup.hpp>
 #include <fcppt/container/grid/detail/pos_iterator_base.hpp>
-#include <fcppt/config/external_begin.hpp>
-#include <boost/iterator/iterator_facade.hpp>
-#include <fcppt/config/external_end.hpp>
+#include <fcppt/iterator/base_decl.hpp>
 
 
 namespace fcppt
@@ -102,8 +100,6 @@ public:
 		min,
 		sup
 	);
-private:
-	friend class boost::iterator_core_access;
 
 	void
 	increment();
@@ -115,7 +111,7 @@ private:
 	equal(
 		pos_iterator const &
 	) const;
-
+private:
 	pos current_;
 
 	min min_;

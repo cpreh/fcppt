@@ -10,6 +10,7 @@
 #include <fcppt/container/grid/next_position.hpp>
 #include <fcppt/container/grid/pos_iterator_decl.hpp>
 #include <fcppt/container/grid/size_type.hpp>
+#include <fcppt/iterator/base_impl.hpp>
 #include <fcppt/math/vector/comparison.hpp>
 
 

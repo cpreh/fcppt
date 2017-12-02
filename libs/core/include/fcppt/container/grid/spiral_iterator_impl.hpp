@@ -8,6 +8,7 @@
 #define FCPPT_CONTAINER_GRID_SPIRAL_ITERATOR_IMPL_HPP_INCLUDED
 
 #include <fcppt/container/grid/spiral_iterator_decl.hpp>
+#include <fcppt/iterator/base_impl.hpp>
 #include <fcppt/math/vector/comparison.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <utility>

@@ -14,6 +14,7 @@
 #include <fcppt/container/grid/pos.hpp>
 #include <fcppt/container/grid/pos_ref_iterator_decl.hpp>
 #include <fcppt/container/grid/pos_reference_impl.hpp>
+#include <fcppt/iterator/base_impl.hpp>
 #include <fcppt/math/vector/comparison.hpp>
 
 

@@ -9,19 +9,8 @@
 
 #include <fcppt/cast/int_to_enum.hpp>
 #include <fcppt/enum/iterator_decl.hpp>
+#include <fcppt/iterator/base_impl.hpp>
 
-
-template<
-	typename Enum
->
-fcppt::enum_::iterator<
-	Enum
->::iterator()
-noexcept
-:
-	value_{}
-{
-}
 
 template<
 	typename Enum
@@ -33,9 +22,9 @@ fcppt::enum_::iterator<
 )
 noexcept
 :
-	value_(
+	value_{
 		_value
-	)
+	}
 {
 }
 
