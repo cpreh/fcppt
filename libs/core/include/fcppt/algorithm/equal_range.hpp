@@ -8,8 +8,9 @@
 #define FCPPT_ALGORITHM_EQUAL_RANGE_HPP_INCLUDED
 
 #include <fcppt/container/to_iterator_type.hpp>
+#include <fcppt/iterator/make_range.hpp>
+#include <fcppt/iterator/range_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/range/iterator_range_core.hpp>
 #include <algorithm>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
@@ -32,7 +33,7 @@ template<
 	typename T
 >
 inline
-boost::iterator_range<
+fcppt::iterator::range<
 	fcppt::container::to_iterator_type<
 		typename
 		std::remove_reference<
@@ -54,7 +55,7 @@ equal_range(
 	};
 
 	return
-		boost::make_iterator_range(
+		fcppt::iterator::make_range(
 			result.first,
 			result.second
 		);

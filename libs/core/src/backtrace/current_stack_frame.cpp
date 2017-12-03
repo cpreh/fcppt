@@ -9,6 +9,8 @@
 #include <fcppt/backtrace/stack_limit.hpp>
 #include <fcppt/impl/private_config.hpp>
 #if defined(FCPPT_HAVE_BACKTRACE)
+#include <fcppt/c_deleter.hpp>
+#include <fcppt/from_std_string.hpp>
 #include <fcppt/unique_ptr.hpp>
 #include <fcppt/algorithm/map.hpp>
 #include <fcppt/cast/size.hpp>
@@ -16,10 +18,8 @@
 #include <fcppt/cast/to_unsigned.hpp>
 #include <fcppt/container/buffer/object.hpp>
 #include <fcppt/container/buffer/read_from.hpp>
-#include <fcppt/c_deleter.hpp>
-#include <fcppt/from_std_string.hpp>
+#include <fcppt/iterator/make_range.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/range/iterator_range_core.hpp>
 #include <execinfo.h>
 #include <fcppt/config/external_end.hpp>
 #endif
@@ -95,7 +95,7 @@ fcppt::backtrace::current_stack_frame(
 		fcppt::algorithm::map<
 			fcppt::backtrace::stack_frame
 		>(
-			boost::make_iterator_range(
+			fcppt::iterator::make_range(
 				raw_symbols.get_pointer(),
 				raw_symbols.get_pointer()
 				+

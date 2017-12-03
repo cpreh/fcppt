@@ -9,6 +9,7 @@
 
 #include <fcppt/algorithm/equal_range.hpp>
 #include <fcppt/container/to_iterator_type.hpp>
+#include <fcppt/iterator/singular_range.hpp>
 #include <fcppt/optional/object_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <type_traits>
@@ -66,9 +67,9 @@ binary_search(
 	result_type;
 
 	return
-		result.size()
-		==
-		1
+		fcppt::iterator::singular_range(
+			result
+		)
 		?
 			result_type{
 				result.begin()

@@ -11,11 +11,11 @@
 #include <fcppt/reference_impl.hpp>
 #include <fcppt/container/tree/is_object.hpp>
 #include <fcppt/iterator/base_impl.hpp>
+#include <fcppt/iterator/make_range.hpp>
 #include <fcppt/iterator/types_fwd.hpp>
 #include <fcppt/optional/comparison.hpp>
 #include <fcppt/optional/reference.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/range/iterator_range_core.hpp>
 #include <iterator>
 #include <stack>
 #include <type_traits>
@@ -181,7 +181,7 @@ public:
 				for(
 					reference element
 					:
-					boost::make_iterator_range(
+					fcppt::iterator::make_range(
 						cur_deref.rbegin(),
 						std::prev(
 							cur_deref.rend()

@@ -9,8 +9,8 @@
 #include <fcppt/args_vector.hpp>
 #include <fcppt/algorithm/map.hpp>
 #include <fcppt/detail/main_wchar.hpp>
+#include <fcppt/iterator/make_range.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/range/iterator_range_core.hpp>
 #include <string>
 #include <fcppt/config/external_end.hpp>
 
@@ -31,7 +31,7 @@ fcppt::args(
 		fcppt::algorithm::map<
 			fcppt::args_vector
 		>(
-			boost::make_iterator_range(
+			fcppt::iterator::make_range(
 				_argv,
 				_argv + _argc
 			),

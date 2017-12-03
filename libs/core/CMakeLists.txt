@@ -548,6 +548,12 @@ set(
 	libs/core/include/fcppt/iterator/base_impl.hpp
 	libs/core/include/fcppt/iterator/category_at_least.hpp
 	libs/core/include/fcppt/iterator/is_types.hpp
+	libs/core/include/fcppt/iterator/make_range.hpp
+	libs/core/include/fcppt/iterator/range_decl.hpp
+	libs/core/include/fcppt/iterator/range_empty.hpp
+	libs/core/include/fcppt/iterator/range_fwd.hpp
+	libs/core/include/fcppt/iterator/range_impl.hpp
+	libs/core/include/fcppt/iterator/singular_range.hpp
 	libs/core/include/fcppt/iterator/types.hpp
 	libs/core/include/fcppt/iterator/types_from.hpp
 	libs/core/include/fcppt/iterator/types_fwd.hpp
