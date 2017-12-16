@@ -8,8 +8,8 @@
 #ifndef FCPPT_SIGNAL_DETAIL_ENABLE_IF_VOID_HPP_INCLUDED
 #define FCPPT_SIGNAL_DETAIL_ENABLE_IF_VOID_HPP_INCLUDED
 
+#include <fcppt/type_traits/function_result.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/type_traits/function_traits.hpp>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
@@ -28,9 +28,10 @@ using enable_if_void
 =
 std::enable_if<
 	std::is_void<
-		typename boost::function_traits<
+		typename
+		fcppt::type_traits::function_result<
 			T
-		>::result_type
+		>::type
 	>::value
 >;
 

@@ -15,9 +15,7 @@
 #include <fcppt/signal/base_decl.hpp>
 #include <fcppt/signal/object_fwd.hpp>
 #include <fcppt/signal/detail/enable_if_void.hpp>
-#include <fcppt/config/external_begin.hpp>
-#include <boost/type_traits/function_traits.hpp>
-#include <fcppt/config/external_end.hpp>
+#include <fcppt/type_traits/function_result.hpp>
 
 
 namespace fcppt
@@ -66,9 +64,9 @@ public:
 	*/
 	typedef
 	typename
-	boost::function_traits<
+	fcppt::type_traits::function_result<
 		T
-	>::result_type
+	>::type
 	result_type;
 
 	typedef

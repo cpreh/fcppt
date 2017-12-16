@@ -90,6 +90,7 @@
 <li>\ref fcppttypetraits
 	<ul>
 	<li>Added \link fcppt::type_traits::is_value\endlink.</li>
+	<li>Added \link fcppt::type_traits::function_result\endlink.</li>
 	</ul>
 </li>
 
