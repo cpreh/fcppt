@@ -690,6 +690,21 @@ set(
 	libs/core/include/fcppt/int_range_decl.hpp
 	libs/core/include/fcppt/int_range_fwd.hpp
 	libs/core/include/fcppt/int_range_impl.hpp
+	libs/core/include/fcppt/intrusive/base.hpp
+	libs/core/include/fcppt/intrusive/base_decl.hpp
+	libs/core/include/fcppt/intrusive/base_fwd.hpp
+	libs/core/include/fcppt/intrusive/base_impl.hpp
+	libs/core/include/fcppt/intrusive/detail/iterator_base.hpp
+	libs/core/include/fcppt/intrusive/detail/link_decl.hpp
+	libs/core/include/fcppt/intrusive/detail/link_fwd.hpp
+	libs/core/include/fcppt/intrusive/detail/link_impl.hpp
+	libs/core/include/fcppt/intrusive/iterator_decl.hpp
+	libs/core/include/fcppt/intrusive/iterator_fwd.hpp
+	libs/core/include/fcppt/intrusive/iterator_impl.hpp
+	libs/core/include/fcppt/intrusive/list.hpp
+	libs/core/include/fcppt/intrusive/list_decl.hpp
+	libs/core/include/fcppt/intrusive/list_fwd.hpp
+	libs/core/include/fcppt/intrusive/list_impl.hpp
 	libs/core/include/fcppt/io/basic_scoped_rdbuf_decl.hpp
 	libs/core/include/fcppt/io/basic_scoped_rdbuf_fwd.hpp
 	libs/core/include/fcppt/io/basic_scoped_rdbuf_impl.hpp
@@ -1342,6 +1357,7 @@ set(
 	libs/core/include/fcppt/type_name_from_info.hpp
 	libs/core/include/fcppt/type_traits/constructible_from.hpp
 	libs/core/include/fcppt/type_traits/detail/constructible_from.hpp
+	libs/core/include/fcppt/type_traits/function_result.hpp
 	libs/core/include/fcppt/type_traits/is_base_of.hpp
 	libs/core/include/fcppt/type_traits/is_float_or_double.hpp
 	libs/core/include/fcppt/type_traits/is_iterator_of_category.hpp

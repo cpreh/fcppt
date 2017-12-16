@@ -161,6 +161,10 @@ add_subdirectory(
 	iterator
 )
 
+add_subdirectory(
+	intrusive
+)
+
 add_fcppt_test(
 	literal
 )
