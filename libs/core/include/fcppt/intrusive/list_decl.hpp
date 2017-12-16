@@ -8,9 +8,10 @@
 #define FCPPT_INTRUSIVE_LIST_DECL_HPP_INCLUDED
 
 #include <fcppt/noncopyable.hpp>
-#include <fcppt/intrusive/base_fwd.hpp>
+#include <fcppt/intrusive/base_decl.hpp>
 #include <fcppt/intrusive/list_fwd.hpp>
-#include <fcppt/intrusive/detail/link_decl.hpp>
+#include <fcppt/intrusive/iterator_fwd.hpp>
+#include <fcppt/intrusive/detail/link_fwd.hpp>
 
 
 namespace fcppt
