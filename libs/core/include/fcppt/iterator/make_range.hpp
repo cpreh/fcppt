@@ -15,9 +15,15 @@ namespace fcppt
 namespace iterator
 {
 
+/**
+\brief Makes an iterator range.
+
+\ingroup fcpptiterator
+*/
 template<
 	typename Iterator
 >
+inline
 fcppt::iterator::range<
 	Iterator
 >

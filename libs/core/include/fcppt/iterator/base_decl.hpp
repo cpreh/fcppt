@@ -24,6 +24,46 @@ namespace fcppt
 namespace iterator
 {
 
+/**
+\brief A template for implementing iterators.
+
+\ingroup fcpptiterator
+
+This class is meant to be derived from in order to implement an iterator. It
+provides all functions to fulfil the iterator requirements of a specific
+iterator category. The derived class <code>D</code> is expected to implement
+certain public functions depending on what the category is:
+
+<ul>
+<li>Input iterator:
+	<ul>
+	<li><code>void increment()</code>: Increments the iterator.</li>
+	<li><code>bool equal(D) const</code>: Compares two iterators for equality.</li>
+	<li><code>Types::reference dereference() const</code>: Returns the current element.</li>
+	</ul>
+</li>
+<li>Forward iterator:
+	<ul>
+	<li><code>Types::reference</code> must be <code>Types::value_type (const) &</code>.</li>
+	<li><code>D</code> must have a default constructor.</li>
+	</ul>
+</li>
+<li>Bidirectional iterator:
+	<ul>
+	<li><code>void decrement()</code>: Decrements the iterator.</li>
+	</ul>
+</li>
+<li>Random Access iterator:
+	<ul>
+	<li><code>void advance(Types::difference_type)</code>: Moves the iterator forwards/backwards.</li>
+	<li><code>Types::difference_type distance_to(D) const</code>: The value to advance <code>*this</code> with
+	in order to be equal to the argument.</li>
+	</ul>
+</li>
+</ul>
+
+\tparam Types Must be an fcppt::iterator::types.
+*/
 template<
 	typename Types
 >

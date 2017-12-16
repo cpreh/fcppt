@@ -36,6 +36,11 @@
 	</ul>
 </li>
 
+<li>\ref fcpptiterator
+	<p>New library that provides a base class to implement iterators from
+	and an iterator range.</p>
+</li>
+
 <li>\ref fcpptmath
 	<ul>
 	<li>Added \link fcppt::math::div\endlink.</li>
@@ -68,6 +73,12 @@
 	<ul>
 	<li>Added \link fcppt::optional::sequence\endlink.</li>
 	</ul>
+</li>
+
+<li>\ref fcpptrange
+	<p>
+	New library that implements some utility functions for ranges.
+	</p>
 </li>
 
 <li>\ref fcpptref
@@ -123,6 +134,12 @@
 	\link fcppt::math::vector::signed_angle_between\endlink and \link fcppt::math::vector::signed_angle_between_cast\endlink
 	now return optionals.</li>
 	<li>All versions of <code>operator/</code> now return optionals.</li>
+	</ul>
+</li>
+
+<li>\ref fcpptrange
+	<ul>
+	<li>Moved <code>fcppt::range_hash</code> to \link fcppt::range::hash\endlink.</li>
 	</ul>
 </li>
 

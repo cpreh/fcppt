@@ -7,7 +7,7 @@
 #ifndef FCPPT_RANGE_HASH_DECL_HPP_INCLUDED
 #define FCPPT_RANGE_HASH_DECL_HPP_INCLUDED
 
-#include <fcppt/range_hash_fwd.hpp>
+#include <fcppt/range/hash_fwd.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <cstddef>
 #include <fcppt/config/external_end.hpp>
@@ -15,18 +15,18 @@
 
 namespace fcppt
 {
+namespace range
+{
 
 /**
 \brief Hashes a range
 
-\ingroup fcpptvarious
-
-Hashes a range of type \a Type using begin and end
+\ingroup fcpptrange
 */
 template<
 	typename Type
 >
-struct range_hash
+struct hash
 {
 	std::size_t
 	operator()(
@@ -34,6 +34,7 @@ struct range_hash
 	) const;
 };
 
+}
 }
 
 #endif

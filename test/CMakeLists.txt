@@ -198,6 +198,10 @@ add_subdirectory(
 )
 
 add_subdirectory(
+	range
+)
+
+add_subdirectory(
 	record
 )
 

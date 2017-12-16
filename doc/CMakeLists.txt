@@ -67,6 +67,7 @@ set(
 	doc/files/modules/fcppt.doxygen
 	doc/files/modules/filesystem.doxygen
 	doc/files/modules/io.doxygen
+	doc/files/modules/iterator.doxygen
 	doc/files/modules/literal.doxygen
 	doc/files/modules/log.doxygen
 	doc/files/modules/math/base.doxygen
@@ -80,6 +81,7 @@ set(
 	doc/files/modules/options.doxygen
 	doc/files/modules/preprocessor.doxygen
 	doc/files/modules/random.doxygen
+	doc/files/modules/range.doxygen
 	doc/files/modules/record.doxygen
 	doc/files/modules/ref.doxygen
 	doc/files/modules/signal.doxygen
@@ -732,10 +734,8 @@ set(
 	libs/core/include/fcppt/iterator/is_types.hpp
 	libs/core/include/fcppt/iterator/make_range.hpp
 	libs/core/include/fcppt/iterator/range_decl.hpp
-	libs/core/include/fcppt/iterator/range_empty.hpp
 	libs/core/include/fcppt/iterator/range_fwd.hpp
 	libs/core/include/fcppt/iterator/range_impl.hpp
-	libs/core/include/fcppt/iterator/singular_range.hpp
 	libs/core/include/fcppt/iterator/types.hpp
 	libs/core/include/fcppt/iterator/types_from.hpp
 	libs/core/include/fcppt/iterator/types_fwd.hpp
@@ -1161,10 +1161,12 @@ set(
 	libs/core/include/fcppt/random/wrapper/uniform_container_decl.hpp
 	libs/core/include/fcppt/random/wrapper/uniform_container_fwd.hpp
 	libs/core/include/fcppt/random/wrapper/uniform_container_impl.hpp
-	libs/core/include/fcppt/range_hash.hpp
-	libs/core/include/fcppt/range_hash_decl.hpp
-	libs/core/include/fcppt/range_hash_fwd.hpp
-	libs/core/include/fcppt/range_hash_impl.hpp
+	libs/core/include/fcppt/range/empty.hpp
+	libs/core/include/fcppt/range/hash.hpp
+	libs/core/include/fcppt/range/hash_decl.hpp
+	libs/core/include/fcppt/range/hash_fwd.hpp
+	libs/core/include/fcppt/range/hash_impl.hpp
+	libs/core/include/fcppt/range/singular.hpp
 	libs/core/include/fcppt/record/are_disjoint.hpp
 	libs/core/include/fcppt/record/are_equivalent.hpp
 	libs/core/include/fcppt/record/comparison.hpp

@@ -1,0 +1,5 @@
+/**
+\defgroup fcpptrange fcppt.range
+\ingroup fcpptmain
+\brief Range utilities
+*/

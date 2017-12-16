@@ -7,7 +7,7 @@
 #ifndef FCPPT_RANGE_HASH_IMPL_HPP_INCLUDED
 #define FCPPT_RANGE_HASH_IMPL_HPP_INCLUDED
 
-#include <fcppt/range_hash_decl.hpp>
+#include <fcppt/range/hash_decl.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/functional/hash/hash.hpp>
 #include <cstddef>
@@ -19,7 +19,7 @@ template<
 	typename Type
 >
 std::size_t
-fcppt::range_hash<
+fcppt::range::hash<
 	Type
 >::operator()(
 	Type const &_value

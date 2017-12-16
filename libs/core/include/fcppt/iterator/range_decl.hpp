@@ -15,6 +15,13 @@ namespace fcppt
 namespace iterator
 {
 
+/**
+\brief A range formed from two iterators.
+
+\ingroup fcpptiterator
+
+\tparam Iterator Must be an iterator.
+*/
 template<
 	typename Iterator
 >

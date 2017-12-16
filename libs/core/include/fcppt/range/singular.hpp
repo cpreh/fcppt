@@ -4,10 +4,10 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_ITERATOR_SINGULAR_RANGE_HPP_INCLUDED
-#define FCPPT_ITERATOR_SINGULAR_RANGE_HPP_INCLUDED
+#ifndef FCPPT_RANGE_SINGULAR_HPP_INCLUDED
+#define FCPPT_RANGE_SINGULAR_HPP_INCLUDED
 
-#include <fcppt/iterator/range_empty.hpp>
+#include <fcppt/range/empty.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <iterator>
 #include <fcppt/config/external_end.hpp>
@@ -15,19 +15,24 @@
 
 namespace fcppt
 {
-namespace iterator
+namespace range
 {
 
+/**
+\brief Tests if a range consists of a single element.
+
+\ingroup fcpptrange
+*/
 template<
 	typename Range
 >
 bool
-singular_range(
+singular(
 	Range const &_range
 )
 {
 	return
-		!fcppt::iterator::range_empty(
+		!fcppt::range::empty(
 			_range
 		)
 		&&

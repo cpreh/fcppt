@@ -4,20 +4,26 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_ITERATOR_RANGE_EMPTY_HPP_INCLUDED
-#define FCPPT_ITERATOR_RANGE_EMPTY_HPP_INCLUDED
+#ifndef FCPPT_RANGE_EMPTY_HPP_INCLUDED
+#define FCPPT_RANGE_EMPTY_HPP_INCLUDED
 
 
 namespace fcppt
 {
-namespace iterator
+namespace range
 {
 
+/**
+\brief Tests if a range is empty.
+
+\ingroup fcpptrange
+*/
 template<
 	typename Range
 >
+inline
 bool
-range_empty(
+empty(
 	Range const &_range
 )
 {

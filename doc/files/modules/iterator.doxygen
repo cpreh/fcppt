@@ -1,0 +1,5 @@
+/**
+\defgroup fcpptiterator fcppt.iterator
+\ingroup fcpptmain
+\brief Iterator adaptors and utilities
+*/

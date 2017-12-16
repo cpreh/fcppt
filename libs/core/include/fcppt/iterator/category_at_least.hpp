@@ -17,6 +17,20 @@ namespace fcppt
 namespace iterator
 {
 
+/**
+\brief Checks if an iterator category includes another.
+
+\ingroup fcpptiterator
+
+Checks if \a Category models \a CategoryRef. For example,
+if \a Category is <code>std::bidirectional_iterator_category</code>
+and \a CategoryRef is <code>std::forward_iterator_category</code>, then
+the value is true.
+
+\tparam Category Must be one of the <code>std::</code> iterator category classes.
+
+\tparam CategoryRef Must be one of the <code>std::</code> iterator category classes.
+*/
 template<
 	typename Category,
 	typename CategoryRef

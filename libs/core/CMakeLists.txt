@@ -550,10 +550,8 @@ set(
 	libs/core/include/fcppt/iterator/is_types.hpp
 	libs/core/include/fcppt/iterator/make_range.hpp
 	libs/core/include/fcppt/iterator/range_decl.hpp
-	libs/core/include/fcppt/iterator/range_empty.hpp
 	libs/core/include/fcppt/iterator/range_fwd.hpp
 	libs/core/include/fcppt/iterator/range_impl.hpp
-	libs/core/include/fcppt/iterator/singular_range.hpp
 	libs/core/include/fcppt/iterator/types.hpp
 	libs/core/include/fcppt/iterator/types_from.hpp
 	libs/core/include/fcppt/iterator/types_fwd.hpp
@@ -979,10 +977,12 @@ set(
 	libs/core/include/fcppt/random/wrapper/uniform_container_decl.hpp
 	libs/core/include/fcppt/random/wrapper/uniform_container_fwd.hpp
 	libs/core/include/fcppt/random/wrapper/uniform_container_impl.hpp
-	libs/core/include/fcppt/range_hash.hpp
-	libs/core/include/fcppt/range_hash_decl.hpp
-	libs/core/include/fcppt/range_hash_fwd.hpp
-	libs/core/include/fcppt/range_hash_impl.hpp
+	libs/core/include/fcppt/range/empty.hpp
+	libs/core/include/fcppt/range/hash.hpp
+	libs/core/include/fcppt/range/hash_decl.hpp
+	libs/core/include/fcppt/range/hash_fwd.hpp
+	libs/core/include/fcppt/range/hash_impl.hpp
+	libs/core/include/fcppt/range/singular.hpp
 	libs/core/include/fcppt/record/are_disjoint.hpp
 	libs/core/include/fcppt/record/are_equivalent.hpp
 	libs/core/include/fcppt/record/comparison.hpp

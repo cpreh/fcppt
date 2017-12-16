@@ -5,8 +5,8 @@
 
 
 #include <fcppt/algorithm/equal_range.hpp>
-#include <fcppt/iterator/range_empty.hpp>
-#include <fcppt/iterator/singular_range.hpp>
+#include <fcppt/range/empty.hpp>
+#include <fcppt/range/singular.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/test/unit_test.hpp>
 #include <iterator>
@@ -39,7 +39,7 @@ BOOST_AUTO_TEST_CASE(
 		);
 
 		BOOST_CHECK(
-			fcppt::iterator::range_empty(
+			fcppt::range::empty(
 				result
 			)
 		);
@@ -54,7 +54,7 @@ BOOST_AUTO_TEST_CASE(
 		);
 
 		BOOST_REQUIRE(
-			fcppt::iterator::singular_range(
+			fcppt::range::singular(
 				result
 			)
 		);
