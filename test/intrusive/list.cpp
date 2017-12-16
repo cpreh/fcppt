@@ -53,12 +53,13 @@ public:
 	=
 	default;
 
+/*
 	test_class &
 	operator=(
 		test_class &&
 	)
 	=
-	default;
+	default;*/
 
 	~test_class()
 	{
