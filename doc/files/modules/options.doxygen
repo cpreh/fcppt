@@ -22,21 +22,21 @@
 
 \section fcpptoptions_introduction Introduction
 
-In C++, the main function receives an array of strings in the form of
-<code>(int argc, char **argv)</code>, which is most of the time not immediately
-usable in a program. Consider a program that expects a single integer
-argument. We not only have to check if <code>argc</code> has the right value
-but we also have to convert the first string into an integer. Although this
-example is as simple as it can get, using <code>argc</code> and <code>argv</code>
-directly is already difficult. In more complicated examples that involve
-optional arguments, flags, or even arbitrary many arguments, this process gets
-even more error-prone.
+In C++ the main function receives its arguments as an array of strings in the
+form of <code>(int argc, char **argv)</code>, where the first argument is
+usually the name of the executable. Consider a program that expects a single
+integer argument: It first checks if <code>argc</code> is <code>2</code> and if
+so, it tries to convert the second string from <code>argv</code> into an
+integer. If any of these two steps fails, it should also print an appropriate
+error message and exit. Handling arguments this way quickly gets out of
+hand. For example, we might have to deal with optional arguments, flags or
+arbitrary many arguments.
 
-<code>fcppt.options</code> features declarative <em>parsers</em> that carry
-attributes of the right type, similar to optparse-applicative in Haskell, though here
-the attribute of a parser is always an \link fcppt::record::object\endlink, so
-that accessing individual parts is done by <em>labels</em> in order to make their
-purpose clearer. For example, a parser that expects a single integer with label
+<code>fcppt.options</code> features declarative <em>parsers</em>.
+Instead of writing parsing code by hand, we only write down the arguments
+and their types that our program excepts. A parser (if it succeeds)
+produces an \link fcppt::record::object\endlink.
+For example, a parser that expects a single integer with label
 name <code>age</code> has type <code>{ age : int }</code>. Parsers can be combined
 to yield more complicated parsers, so for example a parser that expects zero or
 more strings with label name <code>first_names</code> has type <code>{ first_names :
@@ -99,6 +99,30 @@ Finally, we use \link fcppt::either::match\endlink to call one of these function
 
 \snippet options/simple.cpp options_match
 
+Here are a few example invocations:
+
+\code{.unparsed}
+./fcppt_example_options_simple
+Missing argument "age".
+Usage: age : int - Your age
+\endcode
+
+\code{.unparsed}
+./bin/fcppt_example_options_simple 10 20
+Too many arguments: 20.
+Usage: age : int - Your age
+\endcode
+
+\code{.unparsed}
+./fcppt_example_options_simple test
+Failed to convert "test" to int for argument "age".
+Usage: age : int - Your age
+\endcode
+
+\code{.unparsed}
+./fcppt_example_options_simple 42
+Your age is 42
+\endcode
 
 \section fcpptoptions_parsers Parser types
 
