@@ -98,7 +98,7 @@ fcppt::options::detail::leftover_error(
 
 		result
 			+=
-			FCPPT_TEXT("Unknown flags: ")
+			FCPPT_TEXT("Excess flags: ")
 			+
 			fcppt::algorithm::join_strings(
 				get_key_names(
@@ -124,7 +124,7 @@ fcppt::options::detail::leftover_error(
 
 		result
 			+=
-			FCPPT_TEXT("Unknown flags: ")
+			FCPPT_TEXT("Excess options: ")
 			+
 			fcppt::algorithm::join_strings(
 				get_key_names(
