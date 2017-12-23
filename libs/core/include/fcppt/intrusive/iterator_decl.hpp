@@ -11,6 +11,9 @@
 #include <fcppt/intrusive/iterator_fwd.hpp>
 #include <fcppt/intrusive/detail/iterator_base.hpp>
 #include <fcppt/iterator/base_impl.hpp>
+#include <fcppt/config/external_begin.hpp>
+#include <type_traits>
+#include <fcppt/config/external_end.hpp>
 
 
 namespace fcppt
@@ -40,11 +43,22 @@ public:
 	base_type::reference
 	reference;
 
+	typedef
+	typename
+	std::conditional<
+		std::is_const<
+			Type
+		>::value,
+		fcppt::intrusive::base const,
+		fcppt::intrusive::base
+	>::type
+	pointer_type;
+
 	iterator();
 
 	explicit
 	iterator(
-		fcppt::intrusive::base *
+		pointer_type *
 	);
 
 	void
@@ -61,7 +75,7 @@ public:
 		iterator const &
 	) const;
 private:
-	fcppt::intrusive::base *cur_;
+	pointer_type *cur_;
 };
 
 }
