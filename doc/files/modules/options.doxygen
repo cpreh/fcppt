@@ -108,7 +108,7 @@ Usage: age : int - Your age
 \endcode
 
 \code{.unparsed}
-./bin/fcppt_example_options_simple 10 20
+./fcppt_example_options_simple 10 20
 Too many arguments: 20.
 Usage: age : int - Your age
 \endcode
