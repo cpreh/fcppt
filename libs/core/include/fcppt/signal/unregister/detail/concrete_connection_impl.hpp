@@ -8,24 +8,28 @@
 #ifndef FCPPT_SIGNAL_UNREGISTER_DETAIL_CONCRETE_CONNECTION_IMPL_HPP_INCLUDED
 #define FCPPT_SIGNAL_UNREGISTER_DETAIL_CONCRETE_CONNECTION_IMPL_HPP_INCLUDED
 
-#include <fcppt/signal/connection.hpp>
-#include <fcppt/signal/detail/connection_base.hpp>
+#include <fcppt/signal/connection_impl.hpp>
 #include <fcppt/signal/unregister/function.hpp>
-#include <fcppt/signal/unregister/detail/concrete_connection.hpp>
+#include <fcppt/signal/unregister/detail/concrete_connection_decl.hpp>
 
 
 template<
-	typename T
+	typename Function
 >
-fcppt::signal::unregister::detail::concrete_connection<T>::concrete_connection(
+fcppt::signal::unregister::detail::concrete_connection<
+	Function
+>::concrete_connection(
+	list_type &_list,
 	function_type const &_function,
 	fcppt::signal::unregister::function const &_unregister
 )
 :
-	fcppt::signal::connection(),
-	function_(
+	fcppt::signal::connection{
+		_list
+	},
+	function_{
 		_function
-	),
+	},
 	unregister_(
 		_unregister
 	)
@@ -33,22 +37,30 @@ fcppt::signal::unregister::detail::concrete_connection<T>::concrete_connection(
 }
 
 template<
-	typename T
+	typename Function
 >
-fcppt::signal::unregister::detail::concrete_connection<T>::~concrete_connection()
+fcppt::signal::unregister::detail::concrete_connection<
+	Function
+>::~concrete_connection()
 {
-	this->signal::detail::connection_base::unlink();
+	this->unlink();
 
 	unregister_();
 }
 
 template<
-	typename T
+	typename Function
 >
-typename fcppt::signal::unregister::detail::concrete_connection<T>::function_type &
-fcppt::signal::unregister::detail::concrete_connection<T>::function()
+typename
+fcppt::signal::unregister::detail::concrete_connection<
+	Function
+>::function_type const &
+fcppt::signal::unregister::detail::concrete_connection<
+	Function
+>::function() const
 {
-	return function_;
+	return
+		function_;
 }
 
 #endif

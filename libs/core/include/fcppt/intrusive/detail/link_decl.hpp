@@ -29,7 +29,12 @@ public:
 	void
 	unlink();
 
-	fcppt::intrusive::detail::link
+	void
+	reset(
+		fcppt::intrusive::base &
+	);
+
+	void
 	move_to(
 		fcppt::intrusive::base &
 	);

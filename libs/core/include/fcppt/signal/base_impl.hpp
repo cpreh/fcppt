@@ -10,7 +10,7 @@
 
 #include <fcppt/make_unique_ptr.hpp>
 #include <fcppt/unique_ptr_to_base.hpp>
-#include <fcppt/cast/static_downcast.hpp>
+#include <fcppt/intrusive/list_impl.hpp>
 #include <fcppt/signal/auto_connection.hpp>
 #include <fcppt/signal/base_decl.hpp>
 #include <fcppt/signal/connection.hpp>
@@ -27,28 +27,17 @@ fcppt::signal::base<
 	function const &_function
 )
 {
-	fcppt::signal::auto_connection con(
+	return
 		fcppt::unique_ptr_to_base<
 			fcppt::signal::connection
 		>(
 			fcppt::make_unique_ptr<
 				concrete_connection
 			>(
+				connections_,
 				_function
 			)
-		)
-	);
-
-	connections_.push_back(
-		fcppt::cast::static_downcast<
-			concrete_connection &
-		>(
-			*con
-		)
-	);
-
-	return
-		con;
+		);
 }
 
 template<
@@ -107,7 +96,8 @@ fcppt::signal::base<
 template<
 	typename T
 >
-typename fcppt::signal::base<
+typename
+fcppt::signal::base<
 	T
 >::connection_list &
 fcppt::signal::base<

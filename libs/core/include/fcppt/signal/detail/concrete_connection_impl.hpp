@@ -8,19 +8,24 @@
 #ifndef FCPPT_SIGNAL_DETAIL_CONCRETE_CONNECTION_IMPL_HPP_INCLUDED
 #define FCPPT_SIGNAL_DETAIL_CONCRETE_CONNECTION_IMPL_HPP_INCLUDED
 
-#include <fcppt/signal/detail/concrete_connection.hpp>
+#include <fcppt/intrusive/list_fwd.hpp>
+#include <fcppt/signal/connection_impl.hpp>
+#include <fcppt/signal/detail/concrete_connection_decl.hpp>
 
 
 template<
-	typename T
+	typename Function
 >
 fcppt::signal::detail::concrete_connection<
-	T
+	Function
 >::concrete_connection(
+	list_type &_list,
 	function_type const &_function
 )
 :
-	fcppt::signal::connection(),
+	fcppt::signal::connection{
+		_list
+	},
 	function_(
 		_function
 	)
@@ -28,25 +33,27 @@ fcppt::signal::detail::concrete_connection<
 }
 
 template<
-	typename T
+	typename Function
 >
 fcppt::signal::detail::concrete_connection<
-	T
+	Function
 >::~concrete_connection()
 {
 }
 
 template<
-	typename T
+	typename Function
 >
-typename fcppt::signal::detail::concrete_connection<
-	T
->::function_type &
+typename
 fcppt::signal::detail::concrete_connection<
-	T
->::function()
+	Function
+>::function_type const &
+fcppt::signal::detail::concrete_connection<
+	Function
+>::function() const
 {
-	return function_;
+	return
+		function_;
 }
 
 #endif

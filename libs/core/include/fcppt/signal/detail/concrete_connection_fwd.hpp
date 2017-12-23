@@ -5,17 +5,24 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_SIGNAL_IMPL_CONNECTION_HPP_INCLUDED
-#define FCPPT_SIGNAL_IMPL_CONNECTION_HPP_INCLUDED
+#ifndef FCPPT_SIGNAL_DETAIL_CONCRETE_CONNECTION_FWD_HPP_INCLUDED
+#define FCPPT_SIGNAL_DETAIL_CONCRETE_CONNECTION_FWD_HPP_INCLUDED
 
-inline
-fcppt::signal::connection::connection()
+
+namespace fcppt
 {
+namespace signal
+{
+namespace detail
+{
+
+template<
+	typename Function
+>
+class concrete_connection;
+
 }
-
-inline
-fcppt::signal::connection::~connection()
-{
+}
 }
 
 #endif

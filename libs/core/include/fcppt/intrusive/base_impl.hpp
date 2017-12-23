@@ -36,12 +36,11 @@ fcppt::intrusive::base::base(
 )
 :
 	link_{
-		_other.link_.move_to(
+		_other.move_to(
 			*this
 		)
 	}
 {
-	_other.link_.unlink();
 }
 
 inline
@@ -51,7 +50,7 @@ fcppt::intrusive::base::operator=(
 )
 {
 	link_ =
-		_other.link_.move_to(
+		_other.move_to(
 			*this
 		);
 
@@ -61,6 +60,13 @@ fcppt::intrusive::base::operator=(
 
 inline
 fcppt::intrusive::base::~base()
+{
+	this->unlink();
+}
+
+inline
+void
+fcppt::intrusive::base::unlink()
 {
 	link_.unlink();
 }
@@ -73,6 +79,28 @@ fcppt::intrusive::base::base()
 		this
 	}
 {
+}
+
+inline
+fcppt::intrusive::detail::link
+fcppt::intrusive::base::move_to(
+	base &_other
+)
+{
+	fcppt::intrusive::detail::link const temp{
+		link_
+	};
+
+	link_.move_to(
+		_other
+	);
+
+	link_.reset(
+		*this
+	);
+
+	return
+		temp;
 }
 
 #endif

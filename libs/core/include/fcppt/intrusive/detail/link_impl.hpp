@@ -32,7 +32,7 @@ fcppt::intrusive::detail::link::unlink()
 	if(
 		next_
 		==
-		nullptr
+		prev_
 	)
 		return;
 
@@ -43,7 +43,19 @@ fcppt::intrusive::detail::link::unlink()
 		next_;
 }
 
-fcppt::intrusive::detail::link
+void
+fcppt::intrusive::detail::link::reset(
+	fcppt::intrusive::base &_self
+)
+{
+	next_ =
+		&_self;
+
+	prev_ =
+		&_self;
+}
+
+void
 fcppt::intrusive::detail::link::move_to(
 	fcppt::intrusive::base &_base
 )
@@ -53,16 +65,6 @@ fcppt::intrusive::detail::link::move_to(
 
 	prev_->link_.next_ =
 		&_base;
-
-	fcppt::intrusive::detail::link const result{
-		*this
-	};
-
-	next_ =
-		nullptr;
-
-	return
-		result;
 }
 
 #endif

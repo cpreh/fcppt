@@ -91,83 +91,103 @@ BOOST_AUTO_TEST_CASE(
 		0
 	);
 
-	test_class test1{
-		my_list,
-		42
-	};
-
-	BOOST_CHECK_EQUAL(
-		std::distance(
-			my_list.begin(),
-			my_list.end()
-		),
-		1
-	);
-
-	BOOST_CHECK(
-		std::next(
-			my_list.begin()
-		)
-		==
-		my_list.end()
-	);
-
 	{
-		test_class test2{
+		test_class test1{
 			my_list,
-			10
+			42
 		};
+
+		BOOST_CHECK_EQUAL(
+			std::distance(
+				my_list.begin(),
+				my_list.end()
+			),
+			1
+		);
 
 		BOOST_CHECK(
 			std::next(
-				std::next(
-					my_list.begin()
-				)
+				my_list.begin()
 			)
 			==
 			my_list.end()
 		);
 
-		BOOST_CHECK_EQUAL(
-			std::distance(
-				my_list.begin(),
+		{
+			test_class test2{
+				my_list,
+				10
+			};
+
+			BOOST_CHECK(
+				std::next(
+					std::next(
+						my_list.begin()
+					)
+				)
+				==
 				my_list.end()
-			),
-			2
-		);
+			);
 
-		BOOST_CHECK_EQUAL(
-			my_list.begin()->value(),
-			42
-		);
+			BOOST_CHECK_EQUAL(
+				std::distance(
+					my_list.begin(),
+					my_list.end()
+				),
+				2
+			);
 
-		BOOST_CHECK_EQUAL(
+			BOOST_CHECK_EQUAL(
+				my_list.begin()->value(),
+				42
+			);
+
+			BOOST_CHECK_EQUAL(
+				std::next(
+					my_list.begin()
+				)->value(),
+				10
+			);
+
+			test_class test3{
+				std::move(
+					test2
+				)
+			};
+
+			BOOST_CHECK_EQUAL(
+				std::distance(
+					my_list.begin(),
+					my_list.end()
+				),
+				2
+			);
+		}
+
+		BOOST_CHECK(
 			std::next(
 				my_list.begin()
-			)->value(),
-			10
+			)
+			==
+			my_list.end()
 		);
 
-		test_class test3{
+		test_list my_list2{
 			std::move(
-				test2
+				my_list
 			)
 		};
 
-		BOOST_CHECK_EQUAL(
-			std::distance(
-				my_list.begin(),
-				my_list.end()
-			),
-			2
+		BOOST_CHECK(
+			my_list.empty()
+		);
+
+		BOOST_CHECK(
+			std::next(
+				my_list2.begin()
+			)
+			==
+			my_list2.end()
 		);
 	}
-
-	BOOST_CHECK(
-		std::next(
-			my_list.begin()
-		)
-		==
-		my_list.end()
-	);
 }

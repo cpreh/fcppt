@@ -127,6 +127,20 @@ fcppt::intrusive::list<
 template<
 	typename Type
 >
+bool
+fcppt::intrusive::list<
+	Type
+>::empty() const
+{
+	return
+		this->begin()
+		==
+		this->end();
+}
+
+template<
+	typename Type
+>
 fcppt::intrusive::detail::link
 fcppt::intrusive::list<
 	Type

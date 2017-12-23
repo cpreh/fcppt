@@ -10,12 +10,10 @@
 
 #include <fcppt/function.hpp>
 #include <fcppt/noncopyable.hpp>
+#include <fcppt/intrusive/list_decl.hpp>
 #include <fcppt/signal/auto_connection_fwd.hpp>
 #include <fcppt/signal/base_fwd.hpp>
-#include <fcppt/signal/detail/concrete_connection.hpp>
-#include <fcppt/config/external_begin.hpp>
-#include <boost/intrusive/list.hpp>
-#include <fcppt/config/external_end.hpp>
+#include <fcppt/signal/detail/concrete_connection_fwd.hpp>
 
 
 namespace fcppt
@@ -69,16 +67,17 @@ public:
 	bool
 	empty() const;
 protected:
-	typedef fcppt::signal::detail::concrete_connection<
+	typedef
+	fcppt::signal::detail::concrete_connection<
 		function_signature
-	> concrete_connection;
+	>
+	concrete_connection;
 
-	typedef boost::intrusive::list<
-		concrete_connection,
-		boost::intrusive::constant_time_size<
-			false
-		>
-	> connection_list;
+	typedef
+	fcppt::intrusive::list<
+		concrete_connection
+	>
+	connection_list;
 
 	base();
 

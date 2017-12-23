@@ -41,7 +41,15 @@ public:
 	);
 
 	~base();
+
+	void
+	unlink();
 private:
+	fcppt::intrusive::detail::link
+	move_to(
+		base &
+	);
+
 	template<
 		typename Type
 	>

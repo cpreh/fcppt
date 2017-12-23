@@ -64,6 +64,9 @@ public:
 
 	const_iterator
 	end() const;
+
+	bool
+	empty() const;
 private:
 	fcppt::intrusive::detail::link
 	push_back(

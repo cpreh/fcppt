@@ -5,26 +5,24 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_SIGNAL_UNREGISTER_DETAIL_CONCRETE_CONNECTION_HPP_INCLUDED
-#define FCPPT_SIGNAL_UNREGISTER_DETAIL_CONCRETE_CONNECTION_HPP_INCLUDED
+#ifndef FCPPT_SIGNAL_DETAIL_CONCRETE_CONNECTION_DECL_HPP_INCLUDED
+#define FCPPT_SIGNAL_DETAIL_CONCRETE_CONNECTION_DECL_HPP_INCLUDED
 
 #include <fcppt/function.hpp>
 #include <fcppt/noncopyable.hpp>
-#include <fcppt/signal/connection.hpp>
-#include <fcppt/signal/unregister/function.hpp>
+#include <fcppt/intrusive/list_fwd.hpp>
+#include <fcppt/signal/connection_decl.hpp>
 
 
 namespace fcppt
 {
 namespace signal
 {
-namespace unregister
-{
 namespace detail
 {
 
 template<
-	typename T
+	typename Function
 >
 class concrete_connection
 :
@@ -35,32 +33,33 @@ class concrete_connection
 	);
 public:
 	typedef
-	T
-	function_signature;
-
-	typedef
 	fcppt::function<
-		T
+		Function
 	>
 	function_type;
 
+	typedef
+	fcppt::intrusive::list<
+		fcppt::signal::detail::concrete_connection<
+			Function
+		>
+	>
+	list_type;
+
 	concrete_connection(
-		function_type const &,
-		fcppt::signal::unregister::function const &
+		list_type &,
+		function_type const &
 	);
 
 	~concrete_connection()
 	override;
 
-	function_type &
-	function();
+	function_type const &
+	function() const;
 private:
-	function_type function_;
-
-	fcppt::signal::unregister::function unregister_;
+	function_type const function_;
 };
 
-}
 }
 }
 }

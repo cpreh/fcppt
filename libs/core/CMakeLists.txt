@@ -1094,12 +1094,13 @@ set(
 	libs/core/include/fcppt/signal/base_fwd.hpp
 	libs/core/include/fcppt/signal/base_impl.hpp
 	libs/core/include/fcppt/signal/connection.hpp
+	libs/core/include/fcppt/signal/connection_decl.hpp
 	libs/core/include/fcppt/signal/connection_fwd.hpp
-	libs/core/include/fcppt/signal/detail/concrete_connection.hpp
+	libs/core/include/fcppt/signal/connection_impl.hpp
+	libs/core/include/fcppt/signal/detail/concrete_connection_decl.hpp
+	libs/core/include/fcppt/signal/detail/concrete_connection_fwd.hpp
 	libs/core/include/fcppt/signal/detail/concrete_connection_impl.hpp
-	libs/core/include/fcppt/signal/detail/connection_base.hpp
 	libs/core/include/fcppt/signal/detail/enable_if_void.hpp
-	libs/core/include/fcppt/signal/impl/connection.hpp
 	libs/core/include/fcppt/signal/object.hpp
 	libs/core/include/fcppt/signal/object_decl.hpp
 	libs/core/include/fcppt/signal/object_fwd.hpp
@@ -1110,7 +1111,8 @@ set(
 	libs/core/include/fcppt/signal/unregister/base_decl.hpp
 	libs/core/include/fcppt/signal/unregister/base_fwd.hpp
 	libs/core/include/fcppt/signal/unregister/base_impl.hpp
-	libs/core/include/fcppt/signal/unregister/detail/concrete_connection.hpp
+	libs/core/include/fcppt/signal/unregister/detail/concrete_connection_decl.hpp
+	libs/core/include/fcppt/signal/unregister/detail/concrete_connection_fwd.hpp
 	libs/core/include/fcppt/signal/unregister/detail/concrete_connection_impl.hpp
 	libs/core/include/fcppt/signal/unregister/function.hpp
 	libs/core/include/fcppt/spirit_traits/optional_basic.hpp
