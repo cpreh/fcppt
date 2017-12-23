@@ -18,17 +18,21 @@ namespace fcppt
 namespace intrusive
 {
 
+template<
+	typename Type
+>
 class base
 {
 public:
-	template<
-		typename Type
+	typedef
+	fcppt::intrusive::list<
+		Type
 	>
+	list_type;
+
 	explicit
 	base(
-		fcppt::intrusive::list<
-			Type
-		> &
+		list_type &
 	);
 
 	base(
@@ -45,26 +49,35 @@ public:
 	void
 	unlink();
 private:
-	fcppt::intrusive::detail::link
+	typedef
+	fcppt::intrusive::detail::link<
+		Type
+	>
+	link_type;
+
+	link_type
 	move_to(
 		base &
 	);
 
 	template<
-		typename Type
+		typename T
 	>
 	friend class fcppt::intrusive::list;
 
 	template<
-		typename Type
+		typename T
 	>
 	friend class fcppt::intrusive::iterator;
 
+	template<
+		typename T
+	>
 	friend class fcppt::intrusive::detail::link;
 
 	base();
 
-	fcppt::intrusive::detail::link link_;
+	link_type link_;
 };
 
 }

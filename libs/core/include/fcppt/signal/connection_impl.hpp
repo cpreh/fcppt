@@ -8,24 +8,11 @@
 #ifndef FCPPT_SIGNAL_CONNECTION_IMPL_HPP_INCLUDED
 #define FCPPT_SIGNAL_CONNECTION_IMPL_HPP_INCLUDED
 
-#include <fcppt/intrusive/base_impl.hpp>
-#include <fcppt/intrusive/list_fwd.hpp>
 #include <fcppt/signal/connection_decl.hpp>
 
 
-template<
-	typename Type
->
 inline
-fcppt::signal::connection::connection(
-	fcppt::intrusive::list<
-		Type
-	> &_list
-)
-:
-	fcppt::intrusive::base{
-		_list
-	}
+fcppt::signal::connection::connection()
 {
 }
 

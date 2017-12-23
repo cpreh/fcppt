@@ -141,15 +141,18 @@ fcppt::intrusive::list<
 template<
 	typename Type
 >
-fcppt::intrusive::detail::link
+typename
+fcppt::intrusive::list<
+	Type
+>::link_type
 fcppt::intrusive::list<
 	Type
 >::push_back(
-	fcppt::intrusive::base &_base
+	base_type &_base
 )
 noexcept
 {
-	fcppt::intrusive::detail::link const result{
+	link_type const result{
 		head_.link_.prev_,
 		&head_
 	};

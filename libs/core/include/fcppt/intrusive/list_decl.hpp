@@ -68,15 +68,30 @@ public:
 	bool
 	empty() const;
 private:
-	fcppt::intrusive::detail::link
+	typedef
+	fcppt::intrusive::detail::link<
+		Type
+	>
+	link_type;
+
+	typedef
+	fcppt::intrusive::base<
+		Type
+	>
+	base_type;
+
+	link_type
 	push_back(
-		fcppt::intrusive::base &
+		base_type &
 	)
 	noexcept;
 
+	template<
+		typename T
+	>
 	friend class fcppt::intrusive::base;
 
-	fcppt::intrusive::base head_;
+	base_type head_;
 };
 
 }

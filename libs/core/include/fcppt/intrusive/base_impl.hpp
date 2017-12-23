@@ -16,10 +16,10 @@ template<
 	typename Type
 >
 inline
-fcppt::intrusive::base::base(
-	fcppt::intrusive::list<
-		Type
-	> &_list
+fcppt::intrusive::base<
+	Type
+>::base(
+	list_type &_list
 )
 :
 	link_{
@@ -30,8 +30,13 @@ fcppt::intrusive::base::base(
 {
 }
 
+template<
+	typename Type
+>
 inline
-fcppt::intrusive::base::base(
+fcppt::intrusive::base<
+	Type
+>::base(
 	base &&_other
 )
 :
@@ -43,9 +48,16 @@ fcppt::intrusive::base::base(
 {
 }
 
+template<
+	typename Type
+>
 inline
-fcppt::intrusive::base &
-fcppt::intrusive::base::operator=(
+fcppt::intrusive::base<
+	Type
+> &
+fcppt::intrusive::base<
+	Type
+>::operator=(
 	base &&_other
 )
 {
@@ -58,21 +70,36 @@ fcppt::intrusive::base::operator=(
 		*this;
 }
 
+template<
+	typename Type
+>
 inline
-fcppt::intrusive::base::~base()
+fcppt::intrusive::base<
+	Type
+>::~base()
 {
 	this->unlink();
 }
 
+template<
+	typename Type
+>
 inline
 void
-fcppt::intrusive::base::unlink()
+fcppt::intrusive::base<
+	Type
+>::unlink()
 {
 	link_.unlink();
 }
 
+template<
+	typename Type
+>
 inline
-fcppt::intrusive::base::base()
+fcppt::intrusive::base<
+	Type
+>::base()
 :
 	link_{
 		this,
@@ -81,13 +108,21 @@ fcppt::intrusive::base::base()
 {
 }
 
+template<
+	typename Type
+>
 inline
-fcppt::intrusive::detail::link
-fcppt::intrusive::base::move_to(
+typename
+fcppt::intrusive::base<
+	Type
+>::link_type
+fcppt::intrusive::base<
+	Type
+>::move_to(
 	base &_other
 )
 {
-	fcppt::intrusive::detail::link const temp{
+	link_type const temp{
 		link_
 	};
 

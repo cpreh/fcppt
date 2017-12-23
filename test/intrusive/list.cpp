@@ -27,7 +27,10 @@ test_list;
 
 class test_class
 :
-	public fcppt::intrusive::base
+	public
+		fcppt::intrusive::base<
+			test_class
+		>
 {
 	FCPPT_NONCOPYABLE(
 		test_class
@@ -38,7 +41,9 @@ public:
 		int const _value
 	)
 	:
-		fcppt::intrusive::base{
+		fcppt::intrusive::base<
+			test_class
+		>{
 			_list
 		},
 		value_{

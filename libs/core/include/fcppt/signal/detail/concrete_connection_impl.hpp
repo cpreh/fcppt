@@ -8,7 +8,7 @@
 #ifndef FCPPT_SIGNAL_DETAIL_CONCRETE_CONNECTION_IMPL_HPP_INCLUDED
 #define FCPPT_SIGNAL_DETAIL_CONCRETE_CONNECTION_IMPL_HPP_INCLUDED
 
-#include <fcppt/intrusive/list_fwd.hpp>
+#include <fcppt/intrusive/base_impl.hpp>
 #include <fcppt/signal/connection_impl.hpp>
 #include <fcppt/signal/detail/concrete_connection_decl.hpp>
 
@@ -23,7 +23,8 @@ fcppt::signal::detail::concrete_connection<
 	function_type const &_function
 )
 :
-	fcppt::signal::connection{
+	fcppt::signal::connection{},
+	base_type{
 		_list
 	},
 	function_(

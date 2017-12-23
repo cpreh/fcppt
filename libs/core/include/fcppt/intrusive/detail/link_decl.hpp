@@ -18,12 +18,21 @@ namespace intrusive
 namespace detail
 {
 
+template<
+	typename Type
+>
 class link
 {
 public:
+	typedef
+	fcppt::intrusive::base<
+		Type
+	>
+	base_type;
+
 	link(
-		fcppt::intrusive::base *prev,
-		fcppt::intrusive::base *next
+		base_type *prev,
+		base_type *next
 	);
 
 	void
@@ -31,17 +40,17 @@ public:
 
 	void
 	reset(
-		fcppt::intrusive::base &
+		base_type &
 	);
 
 	void
 	move_to(
-		fcppt::intrusive::base &
+		base_type &
 	);
 
-	fcppt::intrusive::base *prev_;
+	base_type *prev_;
 
-	fcppt::intrusive::base *next_;
+	base_type *next_;
 };
 
 }

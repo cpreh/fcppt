@@ -8,6 +8,7 @@
 #ifndef FCPPT_SIGNAL_UNREGISTER_DETAIL_CONCRETE_CONNECTION_IMPL_HPP_INCLUDED
 #define FCPPT_SIGNAL_UNREGISTER_DETAIL_CONCRETE_CONNECTION_IMPL_HPP_INCLUDED
 
+#include <fcppt/intrusive/base_impl.hpp>
 #include <fcppt/signal/connection_impl.hpp>
 #include <fcppt/signal/unregister/function.hpp>
 #include <fcppt/signal/unregister/detail/concrete_connection_decl.hpp>
@@ -24,7 +25,8 @@ fcppt::signal::unregister::detail::concrete_connection<
 	fcppt::signal::unregister::function const &_unregister
 )
 :
-	fcppt::signal::connection{
+	fcppt::signal::connection{},
+	base_type{
 		_list
 	},
 	function_{

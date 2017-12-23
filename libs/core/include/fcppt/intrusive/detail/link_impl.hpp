@@ -11,10 +11,15 @@
 #include <fcppt/intrusive/detail/link_decl.hpp>
 
 
+template<
+	typename Type
+>
 inline
-fcppt::intrusive::detail::link::link(
-	fcppt::intrusive::base *const _prev,
-	fcppt::intrusive::base *const _next
+fcppt::intrusive::detail::link<
+	Type
+>::link(
+	base_type *const _prev,
+	base_type *const _next
 )
 :
 	prev_{
@@ -26,8 +31,13 @@ fcppt::intrusive::detail::link::link(
 {
 }
 
+template<
+	typename Type
+>
 void
-fcppt::intrusive::detail::link::unlink()
+fcppt::intrusive::detail::link<
+	Type
+>::unlink()
 {
 	if(
 		next_
@@ -43,9 +53,14 @@ fcppt::intrusive::detail::link::unlink()
 		next_;
 }
 
+template<
+	typename Type
+>
 void
-fcppt::intrusive::detail::link::reset(
-	fcppt::intrusive::base &_self
+fcppt::intrusive::detail::link<
+	Type
+>::reset(
+	base_type &_self
 )
 {
 	next_ =
@@ -55,9 +70,14 @@ fcppt::intrusive::detail::link::reset(
 		&_self;
 }
 
+template<
+	typename Type
+>
 void
-fcppt::intrusive::detail::link::move_to(
-	fcppt::intrusive::base &_base
+fcppt::intrusive::detail::link<
+	Type
+>::move_to(
+	base_type &_base
 )
 {
 	next_->link_.prev_ =

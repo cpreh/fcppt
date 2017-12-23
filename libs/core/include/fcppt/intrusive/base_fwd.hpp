@@ -13,6 +13,9 @@ namespace fcppt
 namespace intrusive
 {
 
+template<
+	typename Type
+>
 class base;
 
 }

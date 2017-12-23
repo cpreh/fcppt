@@ -15,6 +15,9 @@ namespace intrusive
 namespace detail
 {
 
+template<
+	typename Type
+>
 class link;
 
 }

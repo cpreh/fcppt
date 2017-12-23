@@ -19,6 +19,7 @@ fcppt::intrusive::iterator<
 	Type
 >::iterator()
 :
+	iterator_base{},
 	cur_{
 		nullptr
 	}
@@ -31,9 +32,10 @@ template<
 fcppt::intrusive::iterator<
 	Type
 >::iterator(
-	pointer_type *const _cur
+	pointer_type const _cur
 )
 :
+	iterator_base{},
 	cur_{
 		_cur
 	}

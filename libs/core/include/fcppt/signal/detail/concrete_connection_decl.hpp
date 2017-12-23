@@ -10,7 +10,7 @@
 
 #include <fcppt/function.hpp>
 #include <fcppt/noncopyable.hpp>
-#include <fcppt/intrusive/list_fwd.hpp>
+#include <fcppt/intrusive/base_decl.hpp>
 #include <fcppt/signal/connection_decl.hpp>
 
 
@@ -26,7 +26,14 @@ template<
 >
 class concrete_connection
 :
-	public fcppt::signal::connection
+	public
+		fcppt::signal::connection,
+	public
+		fcppt::intrusive::base<
+			fcppt::signal::detail::concrete_connection<
+				Function
+			>
+		>
 {
 	FCPPT_NONCOPYABLE(
 		concrete_connection
@@ -39,11 +46,16 @@ public:
 	function_type;
 
 	typedef
-	fcppt::intrusive::list<
+	fcppt::intrusive::base<
 		fcppt::signal::detail::concrete_connection<
 			Function
 		>
 	>
+	base_type;
+
+	typedef
+	typename
+	base_type::list_type
 	list_type;
 
 	concrete_connection(

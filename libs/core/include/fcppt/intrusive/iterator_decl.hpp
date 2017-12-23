@@ -36,12 +36,21 @@ public:
 	fcppt::intrusive::detail::iterator_base<
 		Type
 	>
-	base_type;
+	iterator_base;
 
 	typedef
 	typename
-	base_type::reference
+	iterator_base::reference
 	reference;
+
+	typedef
+	fcppt::intrusive::base<
+		typename
+		std::remove_const<
+			Type
+		>::type
+	>
+	base_type;
 
 	typedef
 	typename
@@ -49,16 +58,16 @@ public:
 		std::is_const<
 			Type
 		>::value,
-		fcppt::intrusive::base const,
-		fcppt::intrusive::base
-	>::type
+		base_type const,
+		base_type
+	>::type *
 	pointer_type;
 
 	iterator();
 
 	explicit
 	iterator(
-		pointer_type *
+		pointer_type
 	);
 
 	void
@@ -75,7 +84,7 @@ public:
 		iterator const &
 	) const;
 private:
-	pointer_type *cur_;
+	pointer_type cur_;
 };
 
 }
