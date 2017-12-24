@@ -7,10 +7,12 @@
 #ifndef FCPPT_CONTAINER_UNTUPLE_HPP_INCLUDED
 #define FCPPT_CONTAINER_UNTUPLE_HPP_INCLUDED
 
-#include <fcppt/identity.hpp>
-#include <fcppt/algorithm/vararg_map.hpp>
+#include <fcppt/container/detail/untuple.hpp>
+#include <fcppt/type_traits/is_std_tuple.hpp>
+#include <fcppt/type_traits/remove_cv_ref.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <utility>
+#include <tuple>
+#include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -22,10 +24,12 @@ namespace container
 /**
 \brief Passes tuple elements as variadic parameters to a function.
 
+\ingroup fcpptcontainer
+
 For <code>_tuple = (x_1,...,x_n)</code>, <code>_function(x_1,...,_x_n)</code>
 is returned.
 
-\tparam Tuple A tuple type that boost.fusion can iterate over.
+\tparam Tuple A std::tuple.
 
 \tparam Function A function callable as <code>R (T_1,...,T_n)</code>, where
 <code>Tuple=(T_1,...,T_n)</code> and <code>R</code> is the result type.
@@ -43,31 +47,32 @@ untuple(
 	Function const &_function
 )
 {
+	typedef
+	typename
+	fcppt::type_traits::remove_cv_ref<
+		Tuple
+	>::type
+	tuple_type;
+
+	static_assert(
+		fcppt::type_traits::is_std_tuple<
+			tuple_type
+		>::value,
+		"Tuple must be a tuple"
+	);
+
 	return
-		fcppt::algorithm::vararg_map(
-			std::forward<
+		fcppt::container::detail::untuple<
+			!std::is_lvalue_reference<
 				Tuple
-			>(
-				_tuple
-			),
-			[
-				&_function
-			](
-				auto &&..._elements
-			)
-			{
-				return
-					_function(
-						std::forward<
-							decltype(
-								_elements
-							)
-						>(
-							_elements
-						)...
-					);
-			},
-			fcppt::identity{}
+			>::value,
+			0u,
+			std::tuple_size<
+				tuple_type
+			>::value
+		>:: template execute(
+			_tuple,
+			_function
 		);
 }
 

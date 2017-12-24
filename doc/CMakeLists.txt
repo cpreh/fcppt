@@ -215,7 +215,6 @@ set(
 	libs/core/include/fcppt/algorithm/detail/reverse.hpp
 	libs/core/include/fcppt/algorithm/detail/source_size.hpp
 	libs/core/include/fcppt/algorithm/detail/tuple_loop_break.hpp
-	libs/core/include/fcppt/algorithm/detail/vararg_map.hpp
 	libs/core/include/fcppt/algorithm/equal.hpp
 	libs/core/include/fcppt/algorithm/equal_range.hpp
 	libs/core/include/fcppt/algorithm/find_by_opt.hpp
@@ -248,6 +247,7 @@ set(
 	libs/core/include/fcppt/algorithm/set_difference.hpp
 	libs/core/include/fcppt/algorithm/set_intersection.hpp
 	libs/core/include/fcppt/algorithm/set_union.hpp
+	libs/core/include/fcppt/algorithm/tuple_map.hpp
 	libs/core/include/fcppt/algorithm/update_action.hpp
 	libs/core/include/fcppt/algorithm/update_action_fwd.hpp
 	libs/core/include/fcppt/algorithm/vararg_map.hpp
@@ -406,6 +406,7 @@ set(
 	libs/core/include/fcppt/container/detail/has_size.hpp
 	libs/core/include/fcppt/container/detail/output.hpp
 	libs/core/include/fcppt/container/detail/size.hpp
+	libs/core/include/fcppt/container/detail/untuple.hpp
 	libs/core/include/fcppt/container/dynamic_array.hpp
 	libs/core/include/fcppt/container/dynamic_array_decl.hpp
 	libs/core/include/fcppt/container/dynamic_array_fwd.hpp
@@ -505,6 +506,7 @@ set(
 	libs/core/include/fcppt/container/index_map_fwd.hpp
 	libs/core/include/fcppt/container/index_map_impl.hpp
 	libs/core/include/fcppt/container/insert.hpp
+	libs/core/include/fcppt/container/integer_sequence_to_tuple.hpp
 	libs/core/include/fcppt/container/make_array.hpp
 	libs/core/include/fcppt/container/make_move_range.hpp
 	libs/core/include/fcppt/container/map_values_copy.hpp
@@ -1024,6 +1026,7 @@ set(
 	libs/core/include/fcppt/mpl/contains_if.hpp
 	libs/core/include/fcppt/mpl/copy.hpp
 	libs/core/include/fcppt/mpl/detail/flatten.hpp
+	libs/core/include/fcppt/mpl/detail/fold_tuple.hpp
 	libs/core/include/fcppt/mpl/detail/for_each_break.hpp
 	libs/core/include/fcppt/mpl/detail/integral_cast_value.hpp
 	libs/core/include/fcppt/mpl/detail/print.hpp
@@ -1048,6 +1051,7 @@ set(
 	libs/core/include/fcppt/mpl/print.hpp
 	libs/core/include/fcppt/mpl/runtime_index.hpp
 	libs/core/include/fcppt/mpl/sequence_to_string.hpp
+	libs/core/include/fcppt/mpl/sequence_to_tuple.hpp
 	libs/core/include/fcppt/mpl/set_difference.hpp
 	libs/core/include/fcppt/mpl/set_intersection.hpp
 	libs/core/include/fcppt/mpl/set_symmetric_difference.hpp
@@ -1206,6 +1210,8 @@ set(
 	libs/core/include/fcppt/record/element_fwd.hpp
 	libs/core/include/fcppt/record/element_map.hpp
 	libs/core/include/fcppt/record/element_map_tpl.hpp
+	libs/core/include/fcppt/record/element_tag_tuple.hpp
+	libs/core/include/fcppt/record/element_tag_tuple_tpl.hpp
 	libs/core/include/fcppt/record/element_to_label.hpp
 	libs/core/include/fcppt/record/element_to_label_tpl.hpp
 	libs/core/include/fcppt/record/element_to_type.hpp

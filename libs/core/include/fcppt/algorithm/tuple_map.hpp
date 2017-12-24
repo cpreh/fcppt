@@ -4,12 +4,13 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_ALGORITHM_VARARG_MAP_HPP_INCLUDED
-#define FCPPT_ALGORITHM_VARARG_MAP_HPP_INCLUDED
+#ifndef FCPPT_ALGORITHM_TUPLE_MAP_HPP_INCLUDED
+#define FCPPT_ALGORITHM_TUPLE_MAP_HPP_INCLUDED
 
 #include <fcppt/move_if_rvalue.hpp>
-#include <fcppt/container/untuple.hpp>
+#include <fcppt/algorithm/vararg_map.hpp>
 #include <fcppt/config/external_begin.hpp>
+#include <tuple>
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
@@ -20,55 +21,51 @@ namespace algorithm
 {
 
 /**
-\brief Map a std::tuple to variadic arguments.
+\brief Maps over a tuple.
 
 \ingroup fcpptalgorithm
 
-Let \a _tuple be <code>(v_1,...,v_n)</code>. The result is
-<code>_anchor(_element(v_1),...,_element(v_n))</code>.
+Let \a _tuple be <code>(v_1,...,v_n)</code>.  The result of the function is the
+tuple <code>(_function(v_1),...,_function(v_n))</code>.
 
-\tparam Tuple A std::tuple.
+\tparam Tuple A std::tuple
+
+\tparam Function Must be callable with every type in \a Tuple.
 */
 template<
 	typename Tuple,
-	typename AnchorFunction,
-	typename ElementFunction
+	typename Function
 >
 inline
 decltype(
 	auto
 )
-vararg_map(
+tuple_map(
 	Tuple &&_tuple,
-	AnchorFunction const &_anchor,
-	ElementFunction const &_element
+	Function const &_function
 )
 {
 	return
-		fcppt::container::untuple(
+		fcppt::algorithm::vararg_map(
 			std::forward<
 				Tuple
 			>(
 				_tuple
 			),
-			[
-				&_anchor,
-				&_element
-			](
+			[](
 				auto &&... _args
 			)
 			{
 				return
-					_anchor(
-						_element(
-							fcppt::move_if_rvalue<
-								Tuple
-							>(
-								_args
-							)
+					std::make_tuple(
+						fcppt::move_if_rvalue<
+							Tuple
+						>(
+							_args
 						)...
 					);
-			}
+			},
+			_function
 		);
 }
 

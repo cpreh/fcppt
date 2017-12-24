@@ -9,6 +9,7 @@
 
 #include <fcppt/no_init_fwd.hpp>
 #include <fcppt/mpl/all_of.hpp>
+#include <fcppt/mpl/sequence_to_tuple.hpp>
 #include <fcppt/preprocessor/disable_vc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
@@ -70,11 +71,11 @@ public:
 	all_types;
 
 	/**
-	\brief The tuple type <code>(T_1,...,T_n)</code>.
+	\brief The std::tuple type <code>(T_1,...,T_n)</code>.
 	*/
 	typedef
 	typename
-	boost::fusion::result_of::as_vector<
+	fcppt::mpl::sequence_to_tuple<
 		boost::mpl::transform_view<
 			all_types,
 			fcppt::record::element_to_type_tpl<

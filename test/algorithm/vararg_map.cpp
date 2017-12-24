@@ -6,16 +6,14 @@
 
 #include <fcppt/literal.hpp>
 #include <fcppt/noncopyable.hpp>
+#include <fcppt/tag.hpp>
+#include <fcppt/tag_type.hpp>
 #include <fcppt/use.hpp>
 #include <fcppt/algorithm/vararg_map.hpp>
 #include <fcppt/cast/to_unsigned.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/fusion/adapted/mpl.hpp>
-#include <boost/fusion/adapted/std_tuple.hpp>
-#include <boost/mpl/vector/vector10.hpp>
 #include <boost/test/unit_test.hpp>
 #include <tuple>
-#include <type_traits>
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
@@ -29,9 +27,13 @@ BOOST_AUTO_TEST_CASE(
 		unsigned long
 	> const result(
 		fcppt::algorithm::vararg_map(
-			boost::mpl::vector2<
-				int,
-				long
+			std::tuple<
+				fcppt::tag<
+					int
+				>,
+				fcppt::tag<
+					long
+				>
 			>{},
 			[](
 				auto const &... _args
@@ -52,12 +54,11 @@ BOOST_AUTO_TEST_CASE(
 				return
 					fcppt::cast::to_unsigned(
 						fcppt::literal<
-							typename
-							std::remove_const<
+							fcppt::tag_type<
 								decltype(
 									_tag
 								)
-							>::type
+							>
 						>(
 							42
 						)

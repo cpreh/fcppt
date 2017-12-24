@@ -7,14 +7,11 @@
 #ifndef FCPPT_ALGORITHM_ARRAY_INIT_HPP_INCLUDED
 #define FCPPT_ALGORITHM_ARRAY_INIT_HPP_INCLUDED
 
-#include <fcppt/use.hpp>
 #include <fcppt/algorithm/vararg_map.hpp>
 #include <fcppt/container/array_size.hpp>
+#include <fcppt/container/integer_sequence_to_tuple.hpp>
 #include <fcppt/type_traits/is_std_array.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/fusion/adapted/mpl.hpp>
-#include <boost/mpl/range_c.hpp>
-#include <cstddef>
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
@@ -33,7 +30,7 @@ Constructs an array of type \a Array by calling
 <code>_function(std::integral_constant<std::size_t, Index>)</code> for every
 index.
 
-\tparam Array Must be a <code>std::array</code>
+\tparam Array Must be a <code>std::array</code>.
 
 \tparam Function Must be a function callable as <code>Array::value_type
 (std::integral_constant<std::size_t, I>)</code>.
@@ -57,13 +54,14 @@ array_init(
 
 	return
 		fcppt::algorithm::vararg_map(
-			boost::mpl::range_c<
-				std::size_t,
-				0,
-				fcppt::container::array_size<
-					Array
-				>::value
-			>{},
+			typename
+			fcppt::container::integer_sequence_to_tuple<
+				std::make_index_sequence<
+					fcppt::container::array_size<
+						Array
+					>::value
+				>
+			>::type{},
 			[](
 				auto &&... _args_array
 			)
@@ -79,26 +77,7 @@ array_init(
 						)...
 					}};
 			},
-			[
-				&_function
-			](
-				auto const _fcppt_init_index
-			)
-			{
-				FCPPT_USE(
-					_fcppt_init_index
-				);
-
-				return
-					_function(
-						std::integral_constant<
-							std::size_t,
-							decltype(
-								_fcppt_init_index
-							)::value
-						>{}
-					);
-			}
+			_function
 		);
 }
 

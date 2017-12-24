@@ -11,6 +11,7 @@
 #include <fcppt/use.hpp>
 #include <fcppt/algorithm/vararg_map.hpp>
 #include <fcppt/mpl/index_of_iterator.hpp>
+#include <fcppt/record/element_tag_tuple.hpp>
 #include <fcppt/record/element_to_label.hpp>
 #include <fcppt/record/label_value_type.hpp>
 #include <fcppt/record/object_decl.hpp>
@@ -18,7 +19,6 @@
 #include <fcppt/record/detail/element_at.hpp>
 #include <fcppt/record/detail/label_is_same.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/fusion/adapted/mpl.hpp>
 #include <boost/mpl/empty.hpp>
 #include <boost/mpl/find_if.hpp>
 #include <boost/mpl/placeholders.hpp>
@@ -98,7 +98,9 @@ fcppt::record::object<
 
 			return
 				fcppt::algorithm::vararg_map(
-					all_types{},
+					fcppt::record::element_tag_tuple<
+						this_type
+					>{},
 					[](
 						auto &&... _args_inner
 					)

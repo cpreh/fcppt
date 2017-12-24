@@ -7,8 +7,8 @@
 #ifndef FCPPT_ALGORITHM_ARRAY_INIT_MOVE_HPP_INCLUDED
 #define FCPPT_ALGORITHM_ARRAY_INIT_MOVE_HPP_INCLUDED
 
+#include <fcppt/use.hpp>
 #include <fcppt/algorithm/array_init.hpp>
-#include <fcppt/cast/to_void.hpp>
 #include <fcppt/type_traits/is_std_array.hpp>
 
 
@@ -56,7 +56,7 @@ array_init_move(
 				auto const _index
 			)
 			{
-				fcppt::cast::to_void(
+				FCPPT_USE(
 					_index
 				);
 

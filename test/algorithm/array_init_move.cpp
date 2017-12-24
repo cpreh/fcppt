@@ -63,32 +63,34 @@ BOOST_AUTO_TEST_CASE(
 	>
 	array;
 
-	int counter{
-		0
-	};
-
 	array const inited(
 		fcppt::algorithm::array_init_move<
 			array
 		>(
-			[
-				&counter
-			]{
+			[]{
 				return
-					movable(
-						counter++
-					);
+					movable{
+						42
+					};
 			}
 		)
 	);
 
 	BOOST_CHECK_EQUAL(
-		inited[0].value(),
-		0
+		std::get<
+			0
+		>(
+			inited
+		).value(),
+		42
 	);
 
 	BOOST_CHECK_EQUAL(
-		inited[1].value(),
-		1
+		std::get<
+			1
+		>(
+			inited
+		).value(),
+		42
 	);
 }

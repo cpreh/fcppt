@@ -8,7 +8,6 @@
 #include <fcppt/unique_ptr_impl.hpp>
 #include <fcppt/container/untuple.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/fusion/adapted/std_tuple.hpp>
 #include <boost/test/unit_test.hpp>
 #include <string>
 #include <tuple>

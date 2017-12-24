@@ -10,7 +10,7 @@
 #include <fcppt/mpl/index_of_iterator.hpp>
 #include <fcppt/record/detail/find_element.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/fusion/sequence/intrinsic/at.hpp>
+#include <tuple>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -35,14 +35,14 @@ element_at(
 )
 {
 	return
-		boost::fusion::at<
+		std::get<
 			fcppt::mpl::index_of_iterator<
 				Types,
 				fcppt::record::detail::find_element<
 					Types,
 					Label
 				>
-			>
+			>::value
 		>(
 			_elements
 		);
