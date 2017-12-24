@@ -122,13 +122,14 @@ fcppt::intrusive::base<
 	base &_other
 )
 {
-	link_type const temp{
-		link_
-	};
-
+	// This may change link_ as well, in case it points to itself.
 	link_.move_to(
 		_other
 	);
+
+	link_type const temp{
+		link_
+	};
 
 	link_.reset(
 		*this
