@@ -16,7 +16,7 @@
 #define FCPPT_CONFIG_DETAIL_MSVC_VERSION_AT_LEAST(\
 	version\
 ) \
-((version) >= _MSC_VER)
+((version) <= _MSC_VER)
 
 #else
 
