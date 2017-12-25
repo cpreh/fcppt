@@ -76,6 +76,12 @@
 	</ul>
 </li>
 
+<li>\ref fcpptmpl
+	<ul>
+	<li>Added \link fcppt::mpl::sequence_to_tuple\endlink.</li>
+	</ul>
+</li>
+
 <li>\ref fcpptoptional
 	<ul>
 	<li>Added \link fcppt::optional::sequence\endlink.</li>
@@ -86,6 +92,12 @@
 	<p>
 	New library that implements some utility functions for ranges.
 	</p>
+</li>
+
+<li>\ref fcpptrecord
+	<ul>
+	<li>Added \link fcppt::record::element_tag_tuple\endlink and \link fcppt::record::element_tag_tuple_tpl\endlink.</li>
+	</ul>
 </li>
 
 <li>\ref fcpptref
