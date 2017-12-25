@@ -45,7 +45,7 @@ public:
 	list_type;
 
 	/**
-	\brief Inserts this element into a list.
+	\brief Inserts the element at the back of a list.
 	*/
 	explicit
 	base(
