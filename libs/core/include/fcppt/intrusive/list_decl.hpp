@@ -19,6 +19,16 @@ namespace fcppt
 namespace intrusive
 {
 
+/**
+\brief An intrusive list.
+
+\ingroup fcpptintrusive
+
+Elements that are going to be part of a list must derive from
+<code>fcppt::intrusive::base<Type></code>. They get a list as a constructor
+parameter and as long as they are not destroyed or moved from, they are part of
+the list.
+*/
 template<
 	typename Type
 >

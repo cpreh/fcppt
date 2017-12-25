@@ -20,6 +20,11 @@ namespace fcppt
 namespace mpl
 {
 
+/**
+\brief Converts an MPL sequence to a <code>std::tuple</code>.
+
+\ingroup fcpptmpl
+*/
 template<
 	typename Sequence
 >

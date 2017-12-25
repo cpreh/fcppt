@@ -16,7 +16,7 @@ namespace record
 {
 
 /**
-\brief The elements of record as an MPL vector
+\brief The elements of record as an MPL vector.
 
 \ingroup fcpptrecord
 

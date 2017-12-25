@@ -36,6 +36,13 @@
 	</ul>
 </li>
 
+<li>\ref fcpptintrusive
+	<p>New library that is a simple replacement for <code>boost::intrusive::list</code>.
+	It only supports movable types. Furthermore, an element must be initialized
+	with the list it is going to be a member of.
+	</p>
+</li>
+
 <li>\ref fcpptiterator
 	<p>New library that provides a base class to implement iterators from
 	and an iterator range.</p>

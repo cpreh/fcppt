@@ -19,6 +19,16 @@ namespace fcppt
 namespace intrusive
 {
 
+/**
+\brief The base class of an element.
+
+\ingroup fcpptintrusive
+
+Every type that is used as an element of an \link
+fcppt::intrusive::list\endlink must derive from this class.
+
+\tparam Type The derived type.
+*/
 template<
 	typename Type
 >
@@ -34,6 +44,9 @@ public:
 	>
 	list_type;
 
+	/**
+	\brief Inserts this element into a list.
+	*/
 	explicit
 	base(
 		list_type &
@@ -50,6 +63,9 @@ public:
 
 	~base();
 
+	/**
+	\brief Unlinks this element from the list.
+	*/
 	void
 	unlink();
 private:

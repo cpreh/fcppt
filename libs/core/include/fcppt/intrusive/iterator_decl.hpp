@@ -21,6 +21,13 @@ namespace fcppt
 namespace intrusive
 {
 
+/**
+\brief The iterator type of an intrusive list.
+
+\ingroup fcpptintrusive
+
+This is a bidirectional iterator.
+*/
 template<
 	typename Type
 >

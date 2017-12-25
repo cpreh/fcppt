@@ -22,6 +22,13 @@ namespace fcppt
 namespace record
 {
 
+/**
+\brief A metafunction returning the elements of record as a <code>std::tuple</code> of <code>fcppt::tag</code> types.
+
+\ingroup fcpptrecord
+
+\tparam Record Must be an \link fcppt::record::object\endlink.
+*/
 template<
 	typename Record
 >

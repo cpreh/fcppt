@@ -16,7 +16,7 @@ namespace record
 {
 
 /**
-\brief A metafunction returning the elements of record as an MPL vector
+\brief A metafunction returning the elements of record as an MPL vector.
 
 \ingroup fcpptrecord
 

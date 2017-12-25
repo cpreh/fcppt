@@ -66,6 +66,7 @@ set(
 	doc/files/modules/export.doxygen
 	doc/files/modules/fcppt.doxygen
 	doc/files/modules/filesystem.doxygen
+	doc/files/modules/intrusive.doxygen
 	doc/files/modules/io.doxygen
 	doc/files/modules/iterator.doxygen
 	doc/files/modules/literal.doxygen

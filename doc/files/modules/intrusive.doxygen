@@ -1,0 +1,5 @@
+/**
+\defgroup fcpptintrusive fcppt.intrusive
+\ingroup fcpptmain
+\brief Intrusive list implementation
+*/
