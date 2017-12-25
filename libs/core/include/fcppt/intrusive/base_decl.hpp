@@ -7,6 +7,7 @@
 #ifndef FCPPT_INTRUSIVE_BASE_DECL_HPP_INCLUDED
 #define FCPPT_INTRUSIVE_BASE_DECL_HPP_INCLUDED
 
+#include <fcppt/noncopyable.hpp>
 #include <fcppt/intrusive/base_fwd.hpp>
 #include <fcppt/intrusive/iterator_fwd.hpp>
 #include <fcppt/intrusive/list_fwd.hpp>
@@ -23,6 +24,9 @@ template<
 >
 class base
 {
+	FCPPT_NONCOPYABLE(
+		base
+	);
 public:
 	typedef
 	fcppt::intrusive::list<

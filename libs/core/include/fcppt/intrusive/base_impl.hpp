@@ -10,7 +10,13 @@
 #include <fcppt/intrusive/base_decl.hpp>
 #include <fcppt/intrusive/list_fwd.hpp>
 #include <fcppt/intrusive/detail/link_impl.hpp>
+#include <fcppt/preprocessor/disable_vc_warning.hpp>
+#include <fcppt/preprocessor/pop_warning.hpp>
+#include <fcppt/preprocessor/push_warning.hpp>
 
+
+FCPPT_PP_PUSH_WARNING
+FCPPT_PP_DISABLE_VC_WARNING(4355)
 
 template<
 	typename Type
@@ -47,6 +53,8 @@ fcppt::intrusive::base<
 	}
 {
 }
+
+FCPPT_PP_POP_WARNING
 
 template<
 	typename Type
@@ -93,6 +101,9 @@ fcppt::intrusive::base<
 	link_.unlink();
 }
 
+FCPPT_PP_PUSH_WARNING
+FCPPT_PP_DISABLE_VC_WARNING(4355)
+
 template<
 	typename Type
 >
@@ -107,6 +118,8 @@ fcppt::intrusive::base<
 	}
 {
 }
+
+FCPPT_PP_POP_WARNING
 
 template<
 	typename Type

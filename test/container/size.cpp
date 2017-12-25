@@ -36,14 +36,14 @@ BOOST_AUTO_TEST_CASE(
 		fcppt::container::size(
 			test
 		),
-		4
+		4u
 	);
 
 	BOOST_CHECK_EQUAL(
 		fcppt::container::size(
 			test2
 		),
-		2
+		2u
 	);
 
 }
