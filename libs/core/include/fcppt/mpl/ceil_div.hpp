@@ -27,8 +27,6 @@ namespace mpl
 Calculates <code>Dividend / Divisor</code> rounded towards infinity. For
 example, <code>5 / 3</code> would result in <code>2</code>.
 
-\snippet mpl/various.cpp mpl_ceil_div
-
 \tparam Type Must be an unsigned integral type
 
 \tparam Dividend The dividend

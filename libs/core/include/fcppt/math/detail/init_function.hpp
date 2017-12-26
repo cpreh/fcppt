@@ -10,7 +10,7 @@
 #include <fcppt/nonassignable.hpp>
 #include <fcppt/cast/size_fun.hpp>
 #include <fcppt/math/size_type.hpp>
-#include <fcppt/mpl/integral_cast.hpp>
+#include <fcppt/brigand/integral_cast.hpp>
 
 
 namespace fcppt
@@ -54,7 +54,7 @@ public:
 	{
 		return
 			function_(
-				fcppt::mpl::integral_cast<
+				fcppt::brigand::integral_cast<
 					fcppt::math::size_type,
 					fcppt::cast::size_fun,
 					T

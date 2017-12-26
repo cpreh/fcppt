@@ -11,7 +11,7 @@
 #include <fcppt/tag_type.hpp>
 #include <fcppt/use.hpp>
 #include <fcppt/algorithm/fold_break.hpp>
-#include <fcppt/algorithm/loop_break_mpl.hpp>
+#include <fcppt/algorithm/loop_break_brigand.hpp>
 #include <fcppt/cast/apply.hpp>
 #include <fcppt/optional/map.hpp>
 #include <fcppt/optional/object_impl.hpp>

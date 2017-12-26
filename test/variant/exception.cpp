@@ -6,9 +6,8 @@
 
 #include <fcppt/exception.hpp>
 #include <fcppt/text.hpp>
-#include <fcppt/variant/object.hpp>
+#include <fcppt/variant/variadic.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/mpl/vector/vector10.hpp>
 #include <boost/test/unit_test.hpp>
 #include <string>
 #include <fcppt/config/external_end.hpp>
@@ -60,12 +59,12 @@ BOOST_AUTO_TEST_CASE(
 	variant_exception
 )
 {
-	typedef fcppt::variant::object<
-		boost::mpl::vector2<
-			std::string,
-			throw_cctor
-		>
-	> variant;
+	typedef
+	fcppt::variant::variadic<
+		std::string,
+		throw_cctor
+	>
+	variant;
 
 	variant test(
 		std::string("test")

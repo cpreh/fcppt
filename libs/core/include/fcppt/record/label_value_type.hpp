@@ -7,7 +7,9 @@
 #ifndef FCPPT_RECORD_LABEL_VALUE_TYPE_HPP_INCLUDED
 #define FCPPT_RECORD_LABEL_VALUE_TYPE_HPP_INCLUDED
 
-#include <fcppt/record/label_value_type_tpl.hpp>
+#include <fcppt/record/element_to_type.hpp>
+#include <fcppt/record/element_vector.hpp>
+#include <fcppt/record/detail/find_element.hpp>
 
 
 namespace fcppt
@@ -16,7 +18,7 @@ namespace record
 {
 
 /**
-\brief The value type of a label inside a record
+\brief Metafunction that computes the value type of a label inside a record
 
 \ingroup fcpptrecord
 
@@ -26,13 +28,17 @@ template<
 	typename Record,
 	typename Label
 >
-using label_value_type
+using
+label_value_type
 =
-typename
-fcppt::record::label_value_type_tpl<
-	Record,
-	Label
->::type;
+fcppt::record::element_to_type<
+	fcppt::record::detail::find_element<
+		fcppt::record::element_vector<
+			Record
+		>,
+		Label
+	>
+>;
 
 }
 }

@@ -7,17 +7,18 @@
 #ifndef FCPPT_VARIANT_OBJECT_DECL_HPP_INCLUDED
 #define FCPPT_VARIANT_OBJECT_DECL_HPP_INCLUDED
 
-#include <fcppt/mpl/max_value.hpp>
+#include <fcppt/brigand/max_value.hpp>
+#include <fcppt/type_traits/is_brigand_sequence.hpp>
 #include <fcppt/variant/object_fwd.hpp>
 #include <fcppt/variant/size_type.hpp>
 #include <fcppt/variant/detail/disable_object.hpp>
 #include <fcppt/variant/detail/nothrow_move_assignable.hpp>
 #include <fcppt/variant/detail/nothrow_move_constructible.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/mpl/placeholders.hpp>
-#include <boost/mpl/size.hpp>
-#include <boost/mpl/sizeof.hpp>
-#include <boost/type_traits/alignment_of.hpp>
+#include <brigand/algorithms/transform.hpp>
+#include <brigand/functions/misc/sizeof.hpp>
+#include <brigand/sequences/size.hpp>
+#include <brigand/types/args.hpp>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
@@ -44,6 +45,13 @@ template<
 class object
 {
 public:
+	static_assert(
+		fcppt::type_traits::is_brigand_sequence<
+			Types
+		>::value,
+		"Types must be a brigand sequence"
+	);
+
 	/**
 	\brief An mpl sequence of the possible types
 	*/
@@ -261,25 +269,32 @@ private:
 	raw_data() const;
 
 	static fcppt::variant::size_type const elements =
-		boost::mpl::size<
+		::brigand::size<
 			Types
 		>::value
 	;
 
-	typedef typename std::aligned_storage<
-		fcppt::mpl::max_value<
-			Types,
-			boost::mpl::sizeof_<
-				boost::mpl::_1
+	typedef
+	typename
+	std::aligned_storage<
+		fcppt::brigand::max_value<
+			::brigand::transform<
+				Types,
+				::brigand::sizeof_<
+					::brigand::_1
+				>
 			>
 		>::value,
-		fcppt::mpl::max_value<
-			Types,
-			boost::alignment_of<
-				boost::mpl::_1
+		fcppt::brigand::max_value<
+			::brigand::transform<
+				Types,
+				std::alignment_of<
+					::brigand::_1
+				>
 			>
 		>::value
-	>::type storage_type;
+	>::type
+	storage_type;
 
 	storage_type storage_;
 

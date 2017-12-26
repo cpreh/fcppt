@@ -20,6 +20,12 @@
 	</ul>
 </li>
 
+<li>\ref fcpptbrigand
+	<p>
+	New library for brigand utility functions.
+	</p>
+</li>
+
 <li>\ref fcpptcasts
 	<ul>
 	<li>Added \link fcppt::cast::to_uint_ptr\endlink.</li>
@@ -73,12 +79,6 @@
 	<ul>
 	<li>Added \link fcppt::math::vector::binary_map\endlink.</li>
 	<li>Added \link fcppt::math::vector::sequence\endlink.</li>
-	</ul>
-</li>
-
-<li>\ref fcpptmpl
-	<ul>
-	<li>Added \link fcppt::mpl::sequence_to_tuple\endlink.</li>
 	</ul>
 </li>
 

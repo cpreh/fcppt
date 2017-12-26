@@ -35,8 +35,6 @@ out of range, the result of <code>_fail_function()</code> is returned.
 \note The compile time and the runtime complexities of this function are linear
 in the size of the MPL sequence
 
-\snippet mpl/invoke_on.cpp mpl_invoke_on
-
 \tparam Sequence An MPL sequence
 
 \tparam Index An unsigned type

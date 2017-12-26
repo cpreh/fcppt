@@ -7,9 +7,8 @@
 #include <fcppt/make_unique_ptr.hpp>
 #include <fcppt/unique_ptr.hpp>
 #include <fcppt/variant/match.hpp>
-#include <fcppt/variant/object.hpp>
+#include <fcppt/variant/variadic.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/mpl/vector/vector10.hpp>
 #include <boost/test/unit_test.hpp>
 #include <string>
 #include <fcppt/config/external_end.hpp>
@@ -20,11 +19,9 @@ BOOST_AUTO_TEST_CASE(
 )
 {
 	typedef
-	fcppt::variant::object<
-		boost::mpl::vector2<
-			int,
-			std::string
-		>
+	fcppt::variant::variadic<
+		int,
+		std::string
 	>
 	variant;
 
@@ -69,11 +66,9 @@ BOOST_AUTO_TEST_CASE(
 	int_unique_ptr;
 
 	typedef
-	fcppt::variant::object<
-		boost::mpl::vector2<
-			int_unique_ptr,
-			std::string
-		>
+	fcppt::variant::variadic<
+		int_unique_ptr,
+		std::string
 	>
 	variant;
 

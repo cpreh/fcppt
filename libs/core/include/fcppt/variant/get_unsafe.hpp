@@ -8,6 +8,7 @@
 #define FCPPT_VARIANT_GET_UNSAFE_HPP_INCLUDED
 
 #include <fcppt/variant/object_impl.hpp>
+#include <fcppt/variant/detail/get_unsafe.hpp>
 
 
 namespace fcppt
@@ -28,6 +29,7 @@ template<
 	typename Type,
 	typename Elements
 >
+inline
 Type &
 get_unsafe(
 	fcppt::variant::object<
@@ -36,9 +38,11 @@ get_unsafe(
 )
 {
 	return
-		_object. template get_unsafe<
+		fcppt::variant::detail::get_unsafe<
 			Type
-		>();
+		>(
+			_object
+		);
 }
 
 /**
@@ -54,6 +58,7 @@ template<
 	typename Type,
 	typename Elements
 >
+inline
 Type const &
 get_unsafe(
 	fcppt::variant::object<
@@ -62,9 +67,11 @@ get_unsafe(
 )
 {
 	return
-		_object. template get_unsafe<
+		fcppt::variant::detail::get_unsafe<
 			Type
-		>();
+		>(
+			_object
+		);
 }
 
 }

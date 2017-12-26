@@ -13,10 +13,11 @@
 #include <fcppt/options/result_fwd.hpp>
 #include <fcppt/options/result_of.hpp>
 #include <fcppt/options/state_fwd.hpp>
-#include <fcppt/record/element_to_type_tpl.hpp>
+#include <fcppt/record/element_to_type.hpp>
 #include <fcppt/record/map_elements.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/mpl/placeholders.hpp>
+#include <brigand/functions/lambda/bind.hpp>
+#include <brigand/types/args.hpp>
 #include <vector>
 #include <fcppt/config/external_end.hpp>
 
@@ -78,9 +79,11 @@ public:
 		fcppt::options::result_of<
 			Parser
 		>,
-		std::vector<
-			fcppt::record::element_to_type_tpl<
-				boost::mpl::_
+		::brigand::bind<
+			std::vector,
+			::brigand::bind<
+				fcppt::record::element_to_type,
+				::brigand::_1
 			>
 		>
 	>

@@ -8,7 +8,7 @@
 #define FCPPT_VARIANT_TYPES_STRING_HPP_INCLUDED
 
 #include <fcppt/string.hpp>
-#include <fcppt/mpl/sequence_to_string.hpp>
+#include <fcppt/brigand/sequence_to_string.hpp>
 #include <fcppt/variant/types_of.hpp>
 
 
@@ -32,7 +32,7 @@ fcppt::string
 types_string()
 {
 	return
-		fcppt::mpl::sequence_to_string<
+		fcppt::brigand::sequence_to_string<
 			fcppt::variant::types_of<
 				Variant
 			>

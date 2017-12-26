@@ -5,9 +5,8 @@
 
 
 #include <fcppt/variant/compare.hpp>
-#include <fcppt/variant/object.hpp>
+#include <fcppt/variant/variadic.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/mpl/vector/vector10.hpp>
 #include <boost/test/unit_test.hpp>
 #include <fcppt/config/external_end.hpp>
 
@@ -39,13 +38,13 @@ BOOST_AUTO_TEST_CASE(
 	variant_equal
 )
 {
-	typedef fcppt::variant::object<
-		boost::mpl::vector3<
-			bool,
-			int,
-			std::string
-		>
-	> variant;
+	typedef
+	fcppt::variant::variadic<
+		bool,
+		int,
+		std::string
+	>
+	variant;
 
 	std::string const string(
 		"hello world"

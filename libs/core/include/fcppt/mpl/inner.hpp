@@ -21,8 +21,6 @@ namespace mpl
 Extracts the type contained within \a Type. The result is the same type as
 <code>typename Type::type</code>.
 
-\snippet mpl/various.cpp mpl_inner
-
 \tparam Type Can be any type containing a <code>type</code> typedef
 */
 template<

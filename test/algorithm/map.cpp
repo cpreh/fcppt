@@ -11,15 +11,15 @@
 #include <fcppt/tag_type.hpp>
 #include <fcppt/unique_ptr.hpp>
 #include <fcppt/use.hpp>
-#include <fcppt/algorithm/loop_break_mpl.hpp>
+#include <fcppt/algorithm/loop_break_brigand.hpp>
 #include <fcppt/algorithm/map.hpp>
 #include <fcppt/assign/make_container.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/mpl/int.hpp>
-#include <boost/mpl/vector/vector10.hpp>
 #include <boost/test/unit_test.hpp>
+#include <brigand/sequences/list.hpp>
 #include <array>
 #include <string>
+#include <type_traits>
 #include <vector>
 #include <fcppt/config/external_end.hpp>
 
@@ -148,11 +148,13 @@ BOOST_AUTO_TEST_CASE(
 )
 {
 	typedef
-	boost::mpl::vector2<
-		boost::mpl::int_<
+	brigand::list<
+		std::integral_constant<
+			int,
 			1
 		>,
-		boost::mpl::int_<
+		std::integral_constant<
+			int,
 			2
 		>
 	>

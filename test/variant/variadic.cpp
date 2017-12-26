@@ -7,7 +7,7 @@
 #include <fcppt/variant/object.hpp>
 #include <fcppt/variant/variadic.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/mpl/vector.hpp>
+#include <brigand/sequences/list.hpp>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
@@ -22,7 +22,7 @@ main()
 				float
 			>,
 			fcppt::variant::object<
-				boost::mpl::vector<
+				brigand::list<
 					int,
 					float
 				>

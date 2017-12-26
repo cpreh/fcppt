@@ -7,7 +7,7 @@
 #ifndef FCPPT_MATH_TO_ARRAY_TYPE_HPP_INCLUDED
 #define FCPPT_MATH_TO_ARRAY_TYPE_HPP_INCLUDED
 
-#include <fcppt/math/to_array_type_tpl.hpp>
+#include <fcppt/math/detail/to_array_type.hpp>
 
 
 namespace fcppt
@@ -27,7 +27,7 @@ using
 to_array_type
 =
 typename
-fcppt::math::to_array_type_tpl<
+fcppt::math::detail::to_array_type<
 	Type
 >::type;
 

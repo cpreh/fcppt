@@ -7,11 +7,16 @@
 #ifndef FCPPT_RECORD_DETAIL_CONTAINS_INITIALIZER_HPP_INCLUDED
 #define FCPPT_RECORD_DETAIL_CONTAINS_INITIALIZER_HPP_INCLUDED
 
-#include <fcppt/mpl/contains_if.hpp>
 #include <fcppt/record/element_to_label.hpp>
 #include <fcppt/record/detail/label_is_same.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/mpl/placeholders.hpp>
+#include <brigand/algorithms/find.hpp>
+#include <brigand/functions/lambda/apply.hpp>
+#include <brigand/functions/lambda/bind.hpp>
+#include <brigand/functions/logical/not.hpp>
+#include <brigand/sequences/list.hpp>
+#include <brigand/types/args.hpp>
+#include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -26,19 +31,26 @@ template<
 	typename Args,
 	typename Element
 >
-struct contains_initializer
-:
-fcppt::mpl::contains_if<
-	Args,
-	fcppt::record::detail::label_is_same<
-		fcppt::record::element_to_label<
-			Element
+using
+contains_initializer
+=
+::brigand::not_<
+	std::is_same<
+		::brigand::find<
+			Args,
+			::brigand::bind<
+				fcppt::record::detail::label_is_same,
+				::brigand::pin<
+					fcppt::record::element_to_label<
+						Element
+					>
+				>,
+				::brigand::_1
+			>
 		>,
-		boost::mpl::_1
+		::brigand::list<>
 	>
->
-{
-};
+>;
 
 }
 }

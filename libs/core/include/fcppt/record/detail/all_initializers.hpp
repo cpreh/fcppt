@@ -7,10 +7,12 @@
 #ifndef FCPPT_RECORD_DETAIL_ALL_INITIALIZERS_HPP_INCLUDED
 #define FCPPT_RECORD_DETAIL_ALL_INITIALIZERS_HPP_INCLUDED
 
-#include <fcppt/mpl/all_of.hpp>
+#include <fcppt/brigand/all_of.hpp>
 #include <fcppt/record/detail/contains_initializer.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/mpl/placeholders.hpp>
+#include <brigand/functions/lambda/apply.hpp>
+#include <brigand/functions/lambda/bind.hpp>
+#include <brigand/types/args.hpp>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -22,16 +24,20 @@ namespace detail
 {
 
 template<
-	typename InitTypes,
+	typename Elements,
 	typename Args
 >
-using all_initializers
+using
+all_initializers
 =
-fcppt::mpl::all_of<
-	InitTypes,
-	fcppt::record::detail::contains_initializer<
-		Args,
-		boost::mpl::_1
+fcppt::brigand::all_of<
+	Elements,
+	::brigand::bind<
+		fcppt::record::detail::contains_initializer,
+		::brigand::pin<
+			Args
+		>,
+		::brigand::_1
 	>
 >;
 

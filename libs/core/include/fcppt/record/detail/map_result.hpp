@@ -24,19 +24,17 @@ template<
 	typename Function,
 	typename Arg
 >
-struct map_result
-{
-	typedef
-	typename
-	std::result_of<
-		Function(
-			fcppt::record::element_to_type<
-				Arg
-			>
-		)
-	>::type
-	type;
-};
+using
+map_result
+=
+typename
+std::result_of<
+	Function(
+		fcppt::record::element_to_type<
+			Arg
+		>
+	)
+>::type;
 
 }
 }

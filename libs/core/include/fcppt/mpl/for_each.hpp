@@ -26,8 +26,6 @@ elements. This function is similar to <code>boost::mpl::for_each</code> but can
 be used with unconstructible types like abstract classes. Calls
 <code>_function(fcppt::tag<T>)</code> for each type T in \a Sequence.
 
-\snippet mpl/for_each.cpp mpl_for_each
-
 \tparam Sequence The MPL sequence
 
 \tparam Function The polymorphic function callable as <code>void

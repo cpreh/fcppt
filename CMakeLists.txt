@@ -188,6 +188,11 @@ if(
 endif()
 
 find_package(
+	Brigand
+	REQUIRED
+)
+
+find_package(
 	Boost
 	1.47.0
 	REQUIRED
@@ -197,10 +202,6 @@ find_package(
 
 unset(
 	NEEDED_BOOST_LIBS
-)
-
-link_directories(
-	${Boost_LIBRARY_DIRS}
 )
 
 set(
@@ -272,6 +273,7 @@ function(
 		TRANSITIVE_FCPPT_DEPS
 		OTHER_DEPS
 		TRANSITIVE_DEPS
+		INCLUDE_DIRS
 	)
 
 	cmake_parse_arguments(
@@ -340,6 +342,7 @@ function(
 		"$<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>"
 		"$<BUILD_INTERFACE:${FCPPT_UTILS_PROJECT_BINARY_DIR}/include>"
 		${Boost_INCLUDE_DIRS}
+		${_INCLUDE_DIRS}
 	)
 
 	if(
@@ -421,6 +424,7 @@ function(
 		TRANSITIVE_FCPPT_DEPS
 		OTHER_DEPS
 		TRANSITIVE_DEPS
+		INCLUDE_DIRS
 	)
 
 	set(
@@ -524,6 +528,8 @@ function(
 				${_OTHER_DEPS}
 			TRANSITIVE_DEPS
 				${_TRANSITIVE_DEPS}
+			INCLUDE_DIRS
+				${_INCLUDE_DIRS}
 		)
 	endif()
 
@@ -592,6 +598,7 @@ set(
 
 install(
 	FILES
+	${FCPPT_CMAKE_MODULES_DIR}/FindBrigand.cmake
 	${FCPPT_CMAKE_MODULES_DIR}/FindFcpptThreads.cmake
 	${FCPPT_CMAKE_MODULES_DIR}/FcpptCMakeUtils.cmake
 	${FCPPT_CMAKE_MODULES_DIR}/FcpptExport.cmake

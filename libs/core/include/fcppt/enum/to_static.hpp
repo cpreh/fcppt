@@ -13,8 +13,8 @@
 #include <fcppt/cast/static_cast_fun.hpp>
 #include <fcppt/enum/max_value.hpp>
 #include <fcppt/enum/size.hpp>
-#include <fcppt/mpl/integral_cast.hpp>
-#include <fcppt/mpl/runtime_index.hpp>
+#include <fcppt/brigand/integral_cast.hpp>
+#include <fcppt/brigand/runtime_index.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
@@ -58,7 +58,7 @@ to_static(
 	int_type;
 
 	return
-		fcppt::mpl::runtime_index<
+		fcppt::brigand::runtime_index<
 			fcppt::enum_::size<
 				Enum
 			>
@@ -84,7 +84,7 @@ to_static(
 
 				return
 					_function(
-						fcppt::mpl::integral_cast<
+						fcppt::brigand::integral_cast<
 							Enum,
 							fcppt::cast::static_cast_fun,
 							decltype(

@@ -7,9 +7,9 @@
 #ifndef FCPPT_VARIANT_DETAIL_NOTHROW_MOVE_CONSTRUCTIBLE_HPP_INCLUDED
 #define FCPPT_VARIANT_DETAIL_NOTHROW_MOVE_CONSTRUCTIBLE_HPP_INCLUDED
 
-#include <fcppt/mpl/all_of.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/mpl/placeholders.hpp>
+#include <brigand/algorithms/all.hpp>
+#include <brigand/types/args.hpp>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
@@ -27,10 +27,10 @@ template<
 using
 nothrow_move_constructible
 =
-fcppt::mpl::all_of<
+::brigand::all<
 	Types,
 	std::is_nothrow_move_constructible<
-		boost::mpl::_1
+		::brigand::_1
 	>
 >;
 

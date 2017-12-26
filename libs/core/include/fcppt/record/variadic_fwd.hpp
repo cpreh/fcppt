@@ -9,7 +9,7 @@
 
 #include <fcppt/record/object_fwd.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/mpl/vector.hpp>
+#include <brigand/sequences/list.hpp>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -30,7 +30,7 @@ using
 variadic
 =
 fcppt::record::object<
-	boost::mpl::vector<
+	::brigand::list<
 		Types...
 	>
 >;

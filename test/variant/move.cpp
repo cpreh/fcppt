@@ -10,7 +10,6 @@
 #include <fcppt/variant/apply_ternary.hpp>
 #include <fcppt/variant/apply_unary.hpp>
 #include <fcppt/variant/get_exn.hpp>
-#include <fcppt/variant/object_impl.hpp>
 #include <fcppt/variant/variadic.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/mpl/vector/vector10.hpp>
@@ -31,11 +30,9 @@ BOOST_AUTO_TEST_CASE(
 	int_unique_ptr;
 
 	typedef
-	fcppt::variant::object<
-		boost::mpl::vector2<
-			int_unique_ptr,
-			std::string
-		>
+	fcppt::variant::variadic<
+		int_unique_ptr,
+		std::string
 	>
 	variant;
 

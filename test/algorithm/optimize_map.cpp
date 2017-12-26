@@ -18,7 +18,7 @@
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/mpl/vector/vector10.hpp>
+#include <brigand/sequences/list.hpp>
 #include <list>
 #include <map>
 #include <vector>
@@ -208,7 +208,7 @@ main()
 
 	static_assert(
 		source_optimized<
-			boost::mpl::vector1<
+			brigand::list<
 				int
 			>
 		>::value,

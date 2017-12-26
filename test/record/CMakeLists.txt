@@ -9,12 +9,22 @@ function(
 endfunction()
 
 add_fcppt_record_test(
+	all_initializers
+	NO_CODE
+)
+
+add_fcppt_record_test(
 	are_disjoint
 	NO_CODE
 )
 
 add_fcppt_record_test(
 	are_equivalent
+	NO_CODE
+)
+
+add_fcppt_record_test(
+	contains_initializer
 	NO_CODE
 )
 
@@ -35,9 +45,19 @@ add_fcppt_record_test(
 )
 
 add_fcppt_record_test(
+	element_tag_tuple
+	NO_CODE
+)
+
+add_fcppt_record_test(
 	init
 	LINK_LIBS
 		"${fcppt_core_TARGET}"
+)
+
+add_fcppt_record_test(
+	label_value_type
+	NO_CODE
 )
 
 add_fcppt_record_test(

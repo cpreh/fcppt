@@ -11,10 +11,9 @@
 #include <fcppt/record/init.hpp>
 #include <fcppt/record/label_value_type.hpp>
 #include <fcppt/record/make_label.hpp>
-#include <fcppt/record/object.hpp>
 #include <fcppt/record/output.hpp>
+#include <fcppt/record/variadic.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/mpl/vector/vector10.hpp>
 #include <boost/test/unit_test.hpp>
 #include <fcppt/config/external_end.hpp>
 
@@ -91,12 +90,10 @@ BOOST_AUTO_TEST_CASE(
 )
 {
 	typedef
-	fcppt::record::object<
-		boost::mpl::vector1<
-			fcppt::record::element<
-				int_label,
-				int
-			>
+	fcppt::record::variadic<
+		fcppt::record::element<
+			int_label,
+			int
 		>
 	>
 	my_record;

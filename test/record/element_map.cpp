@@ -9,7 +9,7 @@
 #include <fcppt/record/make_label.hpp>
 #include <fcppt/record/variadic.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/mpl/at.hpp>
+#include <brigand/sequences/map.hpp>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -45,10 +45,10 @@ main()
 
 	static_assert(
 		std::is_same<
-			boost::mpl::at<
+			brigand::lookup<
 				element_map,
 				int_label
-			>::type,
+			>,
 			int
 		>::value,
 		""
@@ -56,10 +56,10 @@ main()
 
 	static_assert(
 		std::is_same<
-			boost::mpl::at<
+			brigand::lookup<
 				element_map,
 				bool_label
-			>::type,
+			>,
 			bool
 		>::value,
 		""

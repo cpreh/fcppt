@@ -28,8 +28,6 @@ Calculates the maximum value in \a Sequence according to \a MetaFunction. \a
 MetaFunction will be invoked on every type in \a Sequence and the maximum value
 of them will be returned.
 
-\snippet mpl/various.cpp mpl_max_value
-
 \tparam Sequence An MPL sequence
 
 \tparam MetaFunction A metafunction transforming every type in the sequence

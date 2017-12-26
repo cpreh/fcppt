@@ -7,7 +7,7 @@
 #ifndef FCPPT_RECORD_ELEMENT_TO_TYPE_HPP_INCLUDED
 #define FCPPT_RECORD_ELEMENT_TO_TYPE_HPP_INCLUDED
 
-#include <fcppt/record/element_to_type_tpl.hpp>
+#include <fcppt/record/detail/element_to_type.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
@@ -32,7 +32,7 @@ using
 element_to_type
 =
 typename
-fcppt::record::element_to_type_tpl<
+fcppt::record::detail::element_to_type<
 	typename
 	std::decay<
 		Element

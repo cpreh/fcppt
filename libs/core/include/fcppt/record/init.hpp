@@ -7,6 +7,7 @@
 #ifndef FCPPT_RECORD_INIT_HPP_INCLUDED
 #define FCPPT_RECORD_INIT_HPP_INCLUDED
 
+#include <fcppt/tag_type.hpp>
 #include <fcppt/use.hpp>
 #include <fcppt/algorithm/vararg_map.hpp>
 #include <fcppt/record/element_to_label.hpp>
@@ -83,9 +84,11 @@ init(
 				);
 
 				typedef
-				decltype(
-					_fcppt_element
-				)
+				fcppt::tag_type<
+					decltype(
+						_fcppt_element
+					)
+				>
 				fcppt_element;
 
 				return

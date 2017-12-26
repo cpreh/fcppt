@@ -7,10 +7,10 @@
 #ifndef FCPPT_MATH_INT_RANGE_HPP_INCLUDED
 #define FCPPT_MATH_INT_RANGE_HPP_INCLUDED
 
-#include <fcppt/algorithm/loop_break_mpl.hpp>
+#include <fcppt/algorithm/loop_break_brigand.hpp>
 #include <fcppt/math/size_type.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/mpl/range_c.hpp>
+#include <brigand/sequences/range.hpp>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -31,7 +31,7 @@ template<
 using
 int_range
 =
-boost::mpl::range_c<
+::brigand::range<
 	fcppt::math::size_type,
 	Start,
 	End

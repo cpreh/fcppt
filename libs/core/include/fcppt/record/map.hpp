@@ -13,6 +13,9 @@
 #include <fcppt/record/get.hpp>
 #include <fcppt/record/init.hpp>
 #include <fcppt/record/map_result.hpp>
+#include <fcppt/config/external_begin.hpp>
+#include <type_traits>
+#include <fcppt/config/external_end.hpp>
 
 
 namespace fcppt
@@ -73,9 +76,12 @@ map(
 						>(
 							fcppt::record::get<
 								fcppt::record::element_to_label<
-									decltype(
-										_element
-									)
+									typename
+									std::remove_const<
+										decltype(
+											_element
+										)
+									>::type
 								>
 							>(
 								_record

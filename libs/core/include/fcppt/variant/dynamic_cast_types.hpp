@@ -9,8 +9,8 @@
 
 #include <fcppt/add_reference.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/mpl/placeholders.hpp>
-#include <boost/mpl/transform.hpp>
+#include <brigand/algorithms/transform.hpp>
+#include <brigand/types/args.hpp>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -30,13 +30,12 @@ template<
 using
 dynamic_cast_types
 =
-typename
-boost::mpl::transform<
+::brigand::transform<
 	Types,
 	fcppt::add_reference<
-		boost::mpl::_1
+		::brigand::_1
 	>
->::type;
+>;
 
 }
 }

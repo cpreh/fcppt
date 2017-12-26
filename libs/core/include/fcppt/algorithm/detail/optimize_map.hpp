@@ -10,10 +10,11 @@
 #include <fcppt/algorithm/detail/has_random_access_iterator.hpp>
 #include <fcppt/algorithm/detail/has_reserve.hpp>
 #include <fcppt/container/detail/has_size.hpp>
+#include <fcppt/type_traits/is_brigand_sequence.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/mpl/and.hpp>
+#include <brigand/functions/logical/and.hpp>
+#include <brigand/functions/logical/or.hpp>
 #include <boost/mpl/is_sequence.hpp>
-#include <boost/mpl/or.hpp>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -28,17 +29,21 @@ template<
 	typename Dest,
 	typename Source
 >
-using optimize_map
+using
+optimize_map
 =
-boost::mpl::and_<
+::brigand::and_<
 	fcppt::algorithm::detail::has_reserve<
 		Dest
 	>,
-	boost::mpl::or_<
+	::brigand::or_<
 		fcppt::algorithm::detail::has_random_access_iterator<
 			Source
 		>,
 		fcppt::container::detail::has_size<
+			Source
+		>,
+		fcppt::type_traits::is_brigand_sequence<
 			Source
 		>,
 		boost::mpl::is_sequence<

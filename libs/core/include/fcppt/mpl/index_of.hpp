@@ -26,8 +26,6 @@ namespace mpl
 
 Calculates the index of \a Element in \a Sequence.
 
-\snippet mpl/various.cpp mpl_index_of
-
 \tparam Sequence Must be an MPL sequence.
 
 \tparam Element The element to calculate the index of. Must be an element of \a Sequence.

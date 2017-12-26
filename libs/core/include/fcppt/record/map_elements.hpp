@@ -8,14 +8,12 @@
 #define FCPPT_RECORD_MAP_ELEMENTS_HPP_INCLUDED
 
 #include <fcppt/record/element.hpp>
-#include <fcppt/record/element_to_label_tpl.hpp>
 #include <fcppt/record/element_vector.hpp>
 #include <fcppt/record/object_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/mpl/bind.hpp>
-#include <boost/mpl/lambda.hpp>
-#include <boost/mpl/placeholders.hpp>
-#include <boost/mpl/transform.hpp>
+#include <brigand/algorithms/transform.hpp>
+#include <brigand/functions/lambda/bind.hpp>
+#include <brigand/types/args.hpp>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -32,7 +30,7 @@ namespace record
 \tparam Record Must be an \link fcppt::record::object\endlink.
 
 \tparam Function A metafunction accepting \link fcppt::record::element\endlink
-as parameters and returning the new mapped types.
+as parameter and returning the new mapped type.
 */
 template<
 	typename Record,
@@ -42,24 +40,19 @@ using
 map_elements
 =
 fcppt::record::object<
-	typename
-	boost::mpl::transform<
+	::brigand::transform<
 		fcppt::record::element_vector<
 			Record
 		>,
-		fcppt::record::element<
-			fcppt::record::element_to_label_tpl<
-				boost::mpl::_1
+		::brigand::bind<
+			fcppt::record::element,
+			::brigand::bind<
+				fcppt::record::element_to_label,
+				::brigand::_1
 			>,
-			boost::mpl::bind<
-				typename
-				boost::mpl::lambda<
-					Function
-				>::type,
-				boost::mpl::_1
-			>
+			Function
 		>
-	>::type
+	>
 >;
 
 }

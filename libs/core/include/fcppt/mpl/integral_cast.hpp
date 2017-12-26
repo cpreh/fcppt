@@ -23,8 +23,6 @@ namespace mpl
 Casts \a Integral to an integral constant of type \a IntegralType. The cast is
 done using \a Conv from fcppt.casts.
 
-\snippet mpl/various.cpp mpl_integral_cast
-
 \tparam IntegralType An integral type to cast to
 
 \tparam Conv A cast function from fcppt.casts

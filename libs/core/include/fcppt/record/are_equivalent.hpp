@@ -7,15 +7,16 @@
 #ifndef FCPPT_RECORD_ARE_EQUIVALENT_HPP_INCLUDED
 #define FCPPT_RECORD_ARE_EQUIVALENT_HPP_INCLUDED
 
-#include <fcppt/mpl/all_of.hpp>
-#include <fcppt/mpl/set_symmetric_difference.hpp>
+#include <fcppt/brigand/set_symmetric_difference.hpp>
 #include <fcppt/record/element_map.hpp>
 #include <fcppt/record/label_set.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/mpl/and.hpp>
-#include <boost/mpl/at.hpp>
-#include <boost/mpl/empty.hpp>
-#include <boost/mpl/placeholders.hpp>
+#include <brigand/algorithms/all.hpp>
+#include <brigand/functions/lambda/apply.hpp>
+#include <brigand/functions/lambda/bind.hpp>
+#include <brigand/functions/logical/and.hpp>
+#include <brigand/sequences/set.hpp>
+#include <brigand/types/args.hpp>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
@@ -37,38 +38,43 @@ template<
 using
 are_equivalent
 =
-boost::mpl::and_<
-	boost::mpl::empty<
-		typename
-		fcppt::mpl::set_symmetric_difference<
+::brigand::and_<
+	std::is_same<
+		fcppt::brigand::set_symmetric_difference<
 			fcppt::record::label_set<
 				Record1
 			>,
 			fcppt::record::label_set<
 				Record2
 			>
-		>::type
+		>,
+		::brigand::set<>
 	>,
-	typename
-	fcppt::mpl::all_of<
+	::brigand::all<
 		fcppt::record::label_set<
 			Record1
 		>,
 		std::is_same<
-			boost::mpl::at<
-				fcppt::record::element_map<
-					Record1
+			::brigand::bind<
+				::brigand::lookup,
+				::brigand::pin<
+					fcppt::record::element_map<
+						Record1
+					>
 				>,
-				boost::mpl::_1
+				::brigand::_1
 			>,
-			boost::mpl::at<
-				fcppt::record::element_map<
-					Record2
+			::brigand::bind<
+				::brigand::lookup,
+				::brigand::pin<
+					fcppt::record::element_map<
+						Record2
+					>
 				>,
-				boost::mpl::_1
+				::brigand::_1
 			>
 		>
-	>::type
+	>
 >;
 
 }

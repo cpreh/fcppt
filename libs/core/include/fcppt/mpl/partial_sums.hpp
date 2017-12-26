@@ -30,8 +30,6 @@ namespace mpl
 For the integral constantsn (c_1, ..., c_n) in \a Sequence, the resulting
 sequence will consist of the values (0, c_1, c_1 + c_2, ..., c_1 + ... c_n)
 
-\snippet mpl/various.cpp mpl_partial_sums
-
 \tparam Sequence An MPL sequence of integral constant types
 
 \tparam IntType The integer type to use for the first zero

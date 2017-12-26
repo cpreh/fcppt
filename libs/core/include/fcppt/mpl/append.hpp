@@ -26,8 +26,6 @@ namespace mpl
 
 Appends \a Sequence2 to \a Sequence1
 
-\snippet mpl/various.cpp mpl_append
-
 \tparam Sequence1 The MPL sequence to append to
 
 \tparam Sequence2 The MPL sequence to append

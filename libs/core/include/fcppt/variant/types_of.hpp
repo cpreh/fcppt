@@ -7,7 +7,7 @@
 #ifndef FCPPT_VARIANT_TYPES_OF_HPP_INCLUDED
 #define FCPPT_VARIANT_TYPES_OF_HPP_INCLUDED
 
-#include <fcppt/variant/types_of_tpl.hpp>
+#include <fcppt/variant/detail/types_of.hpp>
 
 
 namespace fcppt
@@ -27,7 +27,7 @@ using
 types_of
 =
 typename
-fcppt::variant::types_of_tpl<
+fcppt::variant::detail::types_of<
 	Variant
 >::type;
 

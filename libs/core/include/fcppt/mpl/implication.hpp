@@ -26,8 +26,6 @@ namespace mpl
 Calculates the implication of \a Left and \a Right. Equal to (not \a Left) or
 \a Right)
 
-\snippet mpl/various.cpp mpl_implication
-
 \tparam Left A boolean expression
 
 \tparam Right A boolean expression

@@ -57,3 +57,8 @@ add_fcppt_mpl_test(
 	set_union
 	NO_CODE
 )
+
+add_fcppt_mpl_test(
+	to_brigand
+	NO_CODE
+)

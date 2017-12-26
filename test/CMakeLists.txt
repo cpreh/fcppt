@@ -90,6 +90,10 @@ add_fcppt_test(
 )
 
 add_subdirectory(
+	brigand
+)
+
+add_subdirectory(
 	cast
 )
 

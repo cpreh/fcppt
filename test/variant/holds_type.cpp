@@ -7,7 +7,7 @@
 #include <fcppt/variant/holds_type.hpp>
 #include <fcppt/variant/object.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/mpl/vector/vector10.hpp>
+#include <brigand/sequences/list.hpp>
 #include <boost/test/unit_test.hpp>
 #include <string>
 #include <fcppt/config/external_end.hpp>
@@ -17,12 +17,14 @@ BOOST_AUTO_TEST_CASE(
 	variant_holds_type
 )
 {
-	typedef fcppt::variant::object<
-		boost::mpl::vector2<
+	typedef
+	fcppt::variant::object<
+		brigand::list<
 			int,
 			std::string
 		>
-	> variant;
+	>
+	variant;
 
 	std::string const string(
 		"hello world"

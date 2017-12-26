@@ -15,11 +15,11 @@
 #include <fcppt/either/failure_opt.hpp>
 #include <fcppt/either/is_object.hpp>
 #include <fcppt/either/object_impl.hpp>
-#include <fcppt/mpl/all_of.hpp>
 #include <fcppt/optional/object_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/mpl/placeholders.hpp>
-#include <boost/mpl/vector.hpp>
+#include <brigand/algorithms/all.hpp>
+#include <brigand/sequences/list.hpp>
+#include <brigand/types/args.hpp>
 #include <array>
 #include <cstddef>
 #include <type_traits>
@@ -92,15 +92,15 @@ fcppt::either::object<
 	);
 
 	static_assert(
-		fcppt::mpl::all_of<
-			boost::mpl::vector<
+		::brigand::all<
+			::brigand::list<
 				typename
 				std::decay<
 					Eithers
 				>::type...
 			>,
 			fcppt::either::is_object<
-				boost::mpl::_1
+				::brigand::_1
 			>
 		>::value,
 		"Eithers must all be eithers"

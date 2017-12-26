@@ -18,7 +18,7 @@
 #include <fcppt/variant/object_impl.hpp>
 #include <fcppt/variant/output.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/mpl/vector/vector10.hpp>
+#include <brigand/sequences/list.hpp>
 #include <boost/test/unit_test.hpp>
 #include <fcppt/config/external_end.hpp>
 
@@ -103,7 +103,7 @@ BOOST_AUTO_TEST_CASE(
 )
 {
 	typedef
-	boost::mpl::vector2<
+	brigand::list<
 		derived1,
 		derived2
 	>
@@ -179,7 +179,7 @@ BOOST_AUTO_TEST_CASE(
 )
 {
 	typedef
-	boost::mpl::vector2<
+	brigand::list<
 		derived1 const,
 		derived2 const
 	>

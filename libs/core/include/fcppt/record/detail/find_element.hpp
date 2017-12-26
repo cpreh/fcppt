@@ -7,11 +7,10 @@
 #ifndef FCPPT_RECORD_DETAIL_FIND_ELEMENT_HPP_INCLUDED
 #define FCPPT_RECORD_DETAIL_FIND_ELEMENT_HPP_INCLUDED
 
-#include <fcppt/record/element_to_label_tpl.hpp>
+#include <fcppt/record/detail/find_element_predicate.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/mpl/find_if.hpp>
-#include <boost/mpl/placeholders.hpp>
-#include <type_traits>
+#include <brigand/algorithms/find.hpp>
+#include <brigand/sequences/front.hpp>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -26,18 +25,17 @@ template<
 	typename Elements,
 	typename Label
 >
-using find_element
+using
+find_element
 =
-typename
-boost::mpl::find_if<
-	Elements,
-	std::is_same<
-		fcppt::record::element_to_label_tpl<
-			boost::mpl::_1
-		>,
-		Label
+::brigand::front<
+	::brigand::find<
+		Elements,
+		fcppt::record::detail::find_element_predicate<
+			Label
+		>
 	>
->::type;
+>;
 
 }
 }
