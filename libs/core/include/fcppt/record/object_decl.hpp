@@ -18,7 +18,6 @@
 #include <fcppt/record/label_value_type.hpp>
 #include <fcppt/record/object_fwd.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/fusion/container/vector.hpp>
 #include <boost/mpl/placeholders.hpp>
 #include <boost/mpl/transform_view.hpp>
 #include <fcppt/config/external_end.hpp>
