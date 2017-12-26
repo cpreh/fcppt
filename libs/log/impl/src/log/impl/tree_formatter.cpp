@@ -11,6 +11,7 @@
 #include <fcppt/log/format/chain.hpp>
 #include <fcppt/log/format/optional_function.hpp>
 #include <fcppt/log/format/prefix.hpp>
+#include <fcppt/log/format/prefix_string.hpp>
 #include <fcppt/log/impl/tree_formatter.hpp>
 
 
@@ -43,7 +44,9 @@ fcppt::log::impl::tree_formatter(
 							fcppt::log::format::chain(
 								fcppt::log::format::optional_function(
 									fcppt::log::format::prefix(
-										name.get()
+										fcppt::log::format::prefix_string{
+											name.get()
+										}
 									)
 								),
 								_state

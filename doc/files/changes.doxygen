@@ -132,6 +132,12 @@
 	</ul>
 </li>
 
+<li>\ref fcpptlog
+	<ul>
+	<li>Removed <code>boost::format</code> from \link fcppt::log::format::inserter\endlink.</li>
+	</ul>
+</li>
+
 <li>\ref fcpptmath
 	<ul>
 	<li>\link fcppt::math::ceil_div\endlink and \link fcppt::math::ceil_div_signed\endlink now return optionals.</li>

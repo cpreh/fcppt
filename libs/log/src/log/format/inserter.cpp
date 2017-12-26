@@ -4,34 +4,35 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/format.hpp>
 #include <fcppt/string.hpp>
 #include <fcppt/log/format/function.hpp>
 #include <fcppt/log/format/inserter.hpp>
+#include <fcppt/log/format/prefix_string.hpp>
+#include <fcppt/log/format/suffix_string.hpp>
 
 
 fcppt::log::format::function
 fcppt::log::format::inserter(
-	fcppt::string const &_format
+	fcppt::log::format::prefix_string const &_prefix,
+	fcppt::log::format::suffix_string const &_suffix
 )
 {
 	return
 		fcppt::log::format::function(
 			[
-				_format
+				_prefix,
+				_suffix
 			](
 				fcppt::string const &_text
 			)
 			-> fcppt::string
 			{
 				return
-					(
-						fcppt::format(
-							_format
-						)
-						%
-						_text
-					).str();
+					_prefix.get()
+					+
+					_text
+					+
+					_suffix.get();
 			}
 		);
 }

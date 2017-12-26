@@ -19,14 +19,12 @@ namespace format
 {
 
 /**
-\brief Creates a formatter that prints a time stamp
+\brief Creates a formatter that prints a time stamp.
 
 \ingroup fcpptlog
 
 Creates a formatter that prints a time stamp in front like \link
 fcppt::log::format::time_stamp \endlink does.
-
-\return A new formatter that prints a time stamp
 */
 FCPPT_LOG_DETAIL_SYMBOL
 fcppt::log::format::function

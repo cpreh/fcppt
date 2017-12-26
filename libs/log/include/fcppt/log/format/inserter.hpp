@@ -7,9 +7,10 @@
 #ifndef FCPPT_LOG_FORMAT_INSERTER_HPP_INCLUDED
 #define FCPPT_LOG_FORMAT_INSERTER_HPP_INCLUDED
 
-#include <fcppt/string.hpp>
 #include <fcppt/log/detail/symbol.hpp>
 #include <fcppt/log/format/function.hpp>
+#include <fcppt/log/format/prefix_string.hpp>
+#include <fcppt/log/format/suffix_string.hpp>
 
 
 namespace fcppt
@@ -20,21 +21,15 @@ namespace format
 {
 
 /**
-\brief Creates a formatter using \link fcppt::format \endlink
+\brief Creates a formatter from a prefix and a suffix.
 
 \ingroup fcpptlog
-
-Creates a formatter that behaves like \link fcppt::log::format::inserter
-\endlink called with \a format.
-
-\param format The format string to use
-
-\return A new formatter using \link fcppt::format \endlink with \a format
 */
 FCPPT_LOG_DETAIL_SYMBOL
 fcppt::log::format::function
 inserter(
-	fcppt::string const &format
+	fcppt::log::format::prefix_string const &,
+	fcppt::log::format::suffix_string const &
 );
 
 }

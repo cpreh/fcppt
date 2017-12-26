@@ -1492,6 +1492,8 @@ set(
 	libs/log/include/fcppt/log/format/optional_function.hpp
 	libs/log/include/fcppt/log/format/optional_function_fwd.hpp
 	libs/log/include/fcppt/log/format/prefix.hpp
+	libs/log/include/fcppt/log/format/prefix_string.hpp
+	libs/log/include/fcppt/log/format/suffix_string.hpp
 	libs/log/include/fcppt/log/format/time_stamp.hpp
 	libs/log/include/fcppt/log/info.hpp
 	libs/log/include/fcppt/log/level.hpp

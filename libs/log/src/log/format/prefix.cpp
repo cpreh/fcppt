@@ -7,19 +7,30 @@
 #include <fcppt/string.hpp>
 #include <fcppt/text.hpp>
 #include <fcppt/log/format/function.hpp>
-#include <fcppt/log/format/inserter.hpp>
 #include <fcppt/log/format/prefix.hpp>
+#include <fcppt/log/format/prefix_string.hpp>
 
 
 fcppt::log::format::function
 fcppt::log::format::prefix(
-	fcppt::string const &_prefix
+	fcppt::log::format::prefix_string const &_prefix
 )
 {
 	return
-		fcppt::log::format::inserter(
-			_prefix
-			+
-			FCPPT_TEXT(": %1%")
-		);
+		fcppt::log::format::function{
+			[
+				_prefix
+			](
+				fcppt::string const &_text
+			)
+			-> fcppt::string
+			{
+				return
+					_prefix.get()
+					+
+					FCPPT_TEXT(": ")
+					+
+					_text;
+			}
+		};
 }

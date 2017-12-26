@@ -7,9 +7,9 @@
 #ifndef FCPPT_LOG_FORMAT_PREFIX_HPP_INCLUDED
 #define FCPPT_LOG_FORMAT_PREFIX_HPP_INCLUDED
 
-#include <fcppt/string.hpp>
 #include <fcppt/log/detail/symbol.hpp>
 #include <fcppt/log/format/function.hpp>
+#include <fcppt/log/format/prefix_string.hpp>
 
 
 namespace fcppt
@@ -20,20 +20,16 @@ namespace format
 {
 
 /**
-\brief Creates a prefix formatter
+\brief Creates a prefix formatter.
 
 \ingroup fcpptlog
 
-Creates a formatter that output \a prefix in front.
-
-\param prefix The prefix to print in front
-
-\return A new formatter printing \a prefix in front
+Creates a formatter that outputs \a prefix in front.
 */
 FCPPT_LOG_DETAIL_SYMBOL
 fcppt::log::format::function
 prefix(
-	fcppt::string const &prefix
+	fcppt::log::format::prefix_string const &prefix
 );
 
 }
