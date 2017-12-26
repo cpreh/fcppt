@@ -20,7 +20,7 @@ namespace type_traits
 {
 
 /**
-\brief Checks if an type is a std::array
+\brief Checks if a type is a std::array
 
 \ingroup fcppttypetraits
 

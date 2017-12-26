@@ -19,7 +19,7 @@ namespace type_traits
 {
 
 /**
-\brief Checks if an type is a std::tuple
+\brief Checks if a type is a std::tuple
 
 \ingroup fcppttypetraits
 
