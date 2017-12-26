@@ -19,9 +19,14 @@ namespace range
 {
 
 /**
-\brief Hashes a range
+\brief Hashes a range.
 
 \ingroup fcpptrange
+
+This is a naive implementation for hashing a range that combines invidiual
+hashes of the elements in the range.
+
+\tparam Type Must be supported by std::hash.
 */
 template<
 	typename Type
@@ -30,7 +35,7 @@ struct hash
 {
 	std::size_t
 	operator()(
-		Type const &_value
+		Type const &
 	) const;
 };
 

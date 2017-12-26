@@ -7,17 +7,18 @@
 #ifndef FCPPT_RANGE_HASH_IMPL_HPP_INCLUDED
 #define FCPPT_RANGE_HASH_IMPL_HPP_INCLUDED
 
+#include <fcppt/algorithm/fold.hpp>
 #include <fcppt/range/hash_decl.hpp>
+#include <fcppt/range/detail/hash_combine.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/functional/hash/hash.hpp>
 #include <cstddef>
-#include <iterator>
 #include <fcppt/config/external_end.hpp>
 
 
 template<
 	typename Type
 >
+inline
 std::size_t
 fcppt::range::hash<
 	Type
@@ -25,17 +26,25 @@ fcppt::range::hash<
 	Type const &_value
 ) const
 {
-	using std::begin;
-	using std::end;
-
 	return
-		boost::hash_range(
-			begin(
-				_value
-			),
-			end(
-				_value
+		fcppt::algorithm::fold(
+			_value,
+			std::size_t{
+				0u
+			},
+			[](
+				auto const &_element,
+				std::size_t const _cur
 			)
+			->
+			std::size_t
+			{
+				return
+					fcppt::range::detail::hash_combine(
+						_cur,
+						_element
+					);
+			}
 		);
 }
 
