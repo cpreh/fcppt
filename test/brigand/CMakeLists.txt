@@ -29,6 +29,16 @@ add_fcppt_brigand_test(
 )
 
 add_fcppt_brigand_test(
+	flip_map
+	NO_CODE
+)
+
+add_fcppt_brigand_test(
+	flip_pair
+	NO_CODE
+)
+
+add_fcppt_brigand_test(
 	for_each_break
 )
 

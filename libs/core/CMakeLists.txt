@@ -132,6 +132,8 @@ set(
 	libs/core/include/fcppt/brigand/enum_range.hpp
 	libs/core/include/fcppt/brigand/enum_range_start_end.hpp
 	libs/core/include/fcppt/brigand/equal_to.hpp
+	libs/core/include/fcppt/brigand/flip_map.hpp
+	libs/core/include/fcppt/brigand/flip_pair.hpp
 	libs/core/include/fcppt/brigand/for_each_break.hpp
 	libs/core/include/fcppt/brigand/found_t.hpp
 	libs/core/include/fcppt/brigand/implication.hpp
