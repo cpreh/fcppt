@@ -4,35 +4,44 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/cast/promote.hpp>
+#ifndef FCPPT_CAST_DETAIL_PROMOTE_INT_TYPE_HPP_INCLUDED
+#define FCPPT_CAST_DETAIL_PROMOTE_INT_TYPE_HPP_INCLUDED
+
 #include <fcppt/config/external_begin.hpp>
-#include <boost/test/unit_test.hpp>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
 
-BOOST_AUTO_TEST_CASE(
-	cast_promote
-)
+namespace fcppt
 {
-	BOOST_CHECK_EQUAL(
-		fcppt::cast::promote(
-			'c'
-		),
-		'c'
+namespace cast
+{
+namespace detail
+{
+
+template<
+	typename Type
+>
+struct promote_int_type
+{
+	static_assert(
+		std::is_integral<
+			Type
+		>::value,
+		"Type must be an integral type."
 	);
 
-	static_assert(
-		std::is_same<
-			decltype(
-				fcppt::cast::promote(
-					'c'
-				)
-			),
-			decltype(
-				+'c'
-			)
-		>::value,
-		""
-	);
+	typedef
+	decltype(
+		+std::declval<
+			Type
+		>()
+	)
+	type;
+};
+
 }
+}
+}
+
+#endif

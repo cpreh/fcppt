@@ -28,6 +28,7 @@
 
 <li>\ref fcpptcasts
 	<ul>
+	<li>Added \link fcppt::cast::promote_int\endlink.</li>
 	<li>Added \link fcppt::cast::to_uint_ptr\endlink.</li>
 	</ul>
 </li>
@@ -185,6 +186,12 @@
 <li>\ref fcpptalgorithm
 	<ul>
 	<li>Removed <code>fcppt::algorithm::levenshtein</code> and <code>fcppt::algorithm::shortest_levenshtein</code>,</li>
+	</ul>
+</li>
+
+<li>\ref fcpptcasts
+	<ul>
+	<li>Removed <code>fcppt::cast::promote</code>.</li>
 	</ul>
 </li>
 

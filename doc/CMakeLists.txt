@@ -366,7 +366,6 @@ set(
 	libs/core/include/fcppt/cast/int_to_enum_fun.hpp
 	libs/core/include/fcppt/cast/int_to_float.hpp
 	libs/core/include/fcppt/cast/int_to_float_fun.hpp
-	libs/core/include/fcppt/cast/promote.hpp
 	libs/core/include/fcppt/cast/safe.hpp
 	libs/core/include/fcppt/cast/safe_numeric.hpp
 	libs/core/include/fcppt/cast/size.hpp

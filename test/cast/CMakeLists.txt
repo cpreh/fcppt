@@ -25,7 +25,7 @@ add_fcppt_cast_test(
 )
 
 add_fcppt_cast_test(
-	promote
+	promote_int
 )
 
 add_fcppt_cast_test(
