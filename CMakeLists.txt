@@ -64,10 +64,6 @@ include(
 	CheckCXXSourceCompiles
 )
 
-include(
-	CheckCXXSourceRuns
-)
-
 if(
 	WIN32
 )
@@ -88,11 +84,100 @@ option(
 	${ENABLE_NARROW_STRING_DEFAULT}
 )
 
+find_package(
+	Brigand
+	REQUIRED
+)
+
+find_package(
+	Boost
+	1.47.0
+	COMPONENTS
+	filesystem
+	signals
+	system
+	unit_test_framework
+)
+
+if(
+	NOT
+	"${Boost_INCLUDE_DIRS}"
+	STREQUAL
+	""
+)
+	set(
+		ENABLE_BOOST_DEFAULT
+		ON
+	)
+else()
+	set(
+		ENABLE_BOOST_DEFAULT
+		OFF
+	)
+endif()
+
+option(
+	ENABLE_BOOST
+	"Build the boost support library"
+	${ENABLE_BOOST_DEFAULT}
+)
+
+option(
+	ENABLE_FILESYSTEM
+	"Build the filesystem library"
+	${Boost_FILESYSTEM_FOUND}
+)
+
+option(
+	ENABLE_SYSTEM
+	"Build the system library"
+	${Boost_SYSTEM_FOUND}
+)
+
+option(
+	ENABLE_EXAMPLES
+	"Build the examples"
+	ON
+)
+
+option(
+	ENABLE_TEST
+	"Build the tests"
+	${Boost_UNIT_TEST_FRAMEWORK_FOUND}
+)
+
+set(
+	SIGNALS_BENCHMARK_BACKEND
+	"fcppt"
+	CACHE
+	STRING
+	"Which backend to use for the signal benchmark example (fcppt/boostsignals/boostsignals2)"
+)
+
+if(
+	${SIGNALS_BENCHMARK_BACKEND}
+	STREQUAL
+	"boostsignals"
+	AND
+	NOT
+	${Boost_SIGNALS_FOUND}
+)
+	message(
+		FATAL_ERROR
+		"Boost signals is required to run the boostsignals benchmark"
+	)
+endif()
+
 fcppt_utils_static_shared()
 
 set(
 	FCPPT_NARROW_STRING
 	${ENABLE_NARROW_STRING}
+)
+
+set(
+	FCPPT_BOOST_SUPPORT
+	${ENABLE_BOOST}
 )
 
 if(
@@ -108,107 +193,6 @@ if(
 		FCPPT_HAVE_GCC_DEMANGLE
 	)
 endif()
-
-set(
-	SIGNALS_BENCHMARK_BACKEND
-	"fcppt"
-	CACHE
-	STRING
-	"Which backend to use for the signal benchmark example (fcppt/boostsignals/boostsignals2)"
-)
-
-option(
-	ENABLE_FILESYSTEM
-	"Build the filesystem library"
-	ON
-)
-
-option(
-	ENABLE_SYSTEM
-	"Build the system library"
-	ON
-)
-
-if(
-	ENABLE_FILESYSTEM
-)
-	list(
-		APPEND
-		NEEDED_BOOST_LIBS
-		filesystem
-		system
-	)
-endif()
-
-if(
-	ENABLE_SYSTEM
-	AND
-	NOT
-	ENABLE_FILESYSTEM
-)
-	list(
-		APPEND
-		NEEDED_BOOST_LIBS
-		system
-	)
-endif()
-
-if(
-	${SIGNALS_BENCHMARK_BACKEND}
-	STREQUAL
-	"boostsignals"
-)
-	list(
-		APPEND
-		NEEDED_BOOST_LIBS
-		"signals"
-	)
-endif()
-
-option(
-	ENABLE_EXAMPLES
-	"Build the examples"
-	ON
-)
-
-option(
-	ENABLE_TEST
-	"Build the tests"
-	ON
-)
-
-if(
-	ENABLE_TEST
-)
-	list(
-		APPEND
-		NEEDED_BOOST_LIBS
-		"unit_test_framework"
-	)
-endif()
-
-find_package(
-	Brigand
-	REQUIRED
-)
-
-find_package(
-	Boost
-	1.47.0
-	REQUIRED
-	COMPONENTS
-	"${NEEDED_BOOST_LIBS}"
-)
-
-unset(
-	NEEDED_BOOST_LIBS
-)
-
-set(
-	CMAKE_REQUIRED_INCLUDES
-	${FCPPT_UTILS_PROJECT_SOURCE_DIR}/include
-	${Boost_INCLUDE_DIRS}
-)
 
 CHECK_CXX_SOURCE_COMPILES(
 	"#include <execinfo.h>
