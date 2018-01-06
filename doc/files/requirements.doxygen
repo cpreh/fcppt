@@ -18,9 +18,9 @@
 			<li>\ref requirements_download_installation_using_from_build_directory</li>
 			<li>\ref requirements_download_installation_using_from_installation</li>
 			<li>\ref requirements_download_installation_modify_cmakelists</li>
+			<li>\ref requirements_download_installation_static_and_shared_builds</li>
 		</ul>
 	</li>
-	<li>\ref requirements_download_installation_static_and_shared_builds</li>
 </ul>
 
 </td>
@@ -31,11 +31,13 @@
 
 fcppt needs the following at build time:
 <ul>
-	<li><a href="http://www.cmake.org">>=cmake-3.1.0</a></li>
-	<li><a href="http://www.boost.org">>=boost-1.47</a></li>
+	<li><a href="https://www.cmake.org">>=cmake-3.1.0</a></li>
+	<li><a href="https://github.com/edouarda/brigand">brigand</a></li>
 </ul>
 
-To build the documentation you also need
+To build fcppt.filesystem, fcppt.system or the fcppt tests you need
+<a href="https://boost.org">>=boost-1.47</a>
+and to build the documentation you need
 <a href="http://www.doxygen.org/">>=doxygen-1.7.5</a>.
 
 \section requirements_download_installation_tested_platforms Tested Platforms
@@ -43,10 +45,9 @@ To build the documentation you also need
 The following platforms are tested by us:
 
 <ul>
-	<li>gcc-7.1 (Gentoo Linux)</li>
-	<li>gcc-6.3 (Gentoo Linux)</li>
+	<li>gcc-7.2 (Gentoo Linux)</li>
 	<li>gcc-6.3 (MinGW)</li>
-	<li>clang 4.0 (Gentoo Linux)</li>
+	<li>clang 5.0 (Gentoo Linux)</li>
 </ul>
 
 fcppt needs a C++14-conforming compiler which probably excludes everything
@@ -70,6 +71,31 @@ we refer to as <code>$build</code>. Change directory into
 <pre>cmake <code>$fcpptpath</code></pre> and pass all relevant arguments, e.g.
 <code>-G Ninja</code>, to CMake.
 
+To specify where to find Brigand, use <code>-DBRIGAND_INCLUDE_DIR=$path</code>
+where <code>$path</code> points to Brigand's <code>include</code> directory.
+
+Several CMake options are available:
+<ul>
+<li><code>ENABLE_BOOST</code>: Whether to build <code>fcppt_boost</code>.
+This is also required for <code>ENABLE_FILESYSTEM</code>, <code>ENABLE_SYSTEM</code>
+and <code>ENABLE_TEST</code>. Take a look at CMake's <code>FindBoost.cmake</code>
+on how to specify which Boost installation to use.</li>
+<li><code>ENABLE_FILESYSTEM</code>: Whether to build the <code>boost.filesystem</code>
+support library. <code>ENABLE_BOOST</code> is required for this.</li>
+<li><code>ENABLE_SYSTEM</code>: Whether to build the <code>boost.system</code>
+support library. <code>ENABLE_BOOST</code> is required for this.</li>
+<li><code>ENABLE_EXAMPLES</code>: Whether to build fcppt's examples.
+This is probably something you want to turn off when you install fcppt only.</li>
+<li><code>ENABLE_TEST</code>: Whether to build fcppt's tests.
+<code>ENABLE_BOOST</code> is required from this.</li>
+<li><code>ENABLE_DOC</code>: Whether to build fcppt's documentation.
+<code>Doxygen</code> is required for this. Take a look at CMake's <code>FindDoxygen.cmake</code>
+on how to specify which Doxygen installation to use.</li>
+<li><code>ENABLE_SHARED</code>: Build shared libraries. This defaults to on.</li>
+<li><code>ENABLE_STATIC</code>: Build static libraries. This defaults to off.</li>
+</ul>
+You need at least one of <code>ENABLE_SHARED</code> or <code>ENABLE_STATIC</code>.
+
 fcppt does not need to be installed in order to be used. After fcppt has been
 built you can directly use it from its source directory. If you want to install
 don't forget to set <code>CMAKE_INSTALL_PREFIX</code>.
@@ -79,7 +105,8 @@ don't forget to set <code>CMAKE_INSTALL_PREFIX</code>.
 \subsection requirements_download_installation_modify_cmakelists Modify your CMakeLists.txt
 
 fcppt comes with an exported CMake file that defines all of fcppt's targets, which currently
-are core, filesystem, log and options.
+are <code>boost</code>, <code>core</code>, <code>filesystem</code>, <code>log</code> and
+<code>options</code>.
 The following code provides a small example in which the target <code>mytarget</code>
 links to core and log:
 <pre>
@@ -111,6 +138,8 @@ target_link_libraries(
 	fcppt_core_interface
 )
 </pre>
+The boost support library only provides an interface target.
+
 Interfaces are CMake targets that do not include a library to link to but, as
 with regular targets, provide include directories and build flags.
 
@@ -131,7 +160,7 @@ If fcppt is installed, fcppt's config is installed to
 <code>find_package(fcppt)</code> is used. Otherwise, you have to specify
 <code>fcppt_DIR</code> manually.
 
-\section requirements_download_installation_static_and_shared_builds Static and shared builds
+\subsection requirements_download_installation_static_and_shared_builds Static and shared builds
 
 fcppt can be built as a static or shared library, which is controlled by
 <code>ENABLE_STATIC</code> and <code>ENABLE_SHARED</code>, respectively. If you
