@@ -181,16 +181,8 @@ Here is an example that shows how such a sprite can be initialized:
 <td>Contains \link fcppt::record::element_to_label\endlink.</td>
 </tr>
 <tr>
-<td><code>element_to_label_tpl.hpp</code></td>
-<td>Contains \link fcppt::record::element_to_label_tpl\endlink.</td>
-</tr>
-<tr>
 <td><code>element_to_type.hpp</code></td>
 <td>Contains \link fcppt::record::element_to_type\endlink.</td>
-</tr>
-<tr>
-<td><code>element_to_type_tpl.hpp</code></td>
-<td>Contains \link fcppt::record::element_to_type_tpl\endlink.</td>
 </tr>
 <tr>
 <td><code>get.hpp</code></td>

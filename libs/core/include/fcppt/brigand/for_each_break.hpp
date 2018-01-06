@@ -16,14 +16,10 @@ namespace brigand
 {
 
 /**
-\brief Invoke a function on each element of a sequence without constructing
-them and giving the ability to break out of the loop.
+\brief Invoke a function on each element of a sequence
+while giving the ability to break out of the loop.
 
 \ingroup fcpptbrigand
-
-Similar to \link fcppt::brigand::for_each\endlink, but can break out of a loop early.
-
-\see fcppt::brigand::for_each
 
 \tparam Sequence A brigand sequence.
 
