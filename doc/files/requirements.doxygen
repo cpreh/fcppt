@@ -71,7 +71,7 @@ we refer to as <code>$build</code>. Change directory into
 <pre>cmake <code>$fcpptpath</code></pre> and pass all relevant arguments, e.g.
 <code>-G Ninja</code>, to CMake.
 
-To specify where to find Brigand, use <code>-DBRIGAND_INCLUDE_DIR=$path</code>
+To specify where to find Brigand, use <code>-DBRIGAND_INCLUDEDIR=$path</code>
 where <code>$path</code> points to Brigand's <code>include</code> directory.
 
 Several CMake options are available:
