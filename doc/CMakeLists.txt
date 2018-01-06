@@ -1062,8 +1062,6 @@ set(
 	libs/core/include/fcppt/mpl/detail/fold_tuple.hpp
 	libs/core/include/fcppt/mpl/detail/for_each_break.hpp
 	libs/core/include/fcppt/mpl/detail/integral_cast_value.hpp
-	libs/core/include/fcppt/mpl/detail/print.hpp
-	libs/core/include/fcppt/mpl/detail/print_one.hpp
 	libs/core/include/fcppt/mpl/detail/runtime_index.hpp
 	libs/core/include/fcppt/mpl/detail/to_brigand.hpp
 	libs/core/include/fcppt/mpl/enum_range.hpp
@@ -1072,26 +1070,13 @@ set(
 	libs/core/include/fcppt/mpl/flatten_tpl.hpp
 	libs/core/include/fcppt/mpl/for_each.hpp
 	libs/core/include/fcppt/mpl/for_each_break.hpp
-	libs/core/include/fcppt/mpl/implication.hpp
-	libs/core/include/fcppt/mpl/index_of.hpp
-	libs/core/include/fcppt/mpl/index_of_iterator.hpp
 	libs/core/include/fcppt/mpl/inner.hpp
 	libs/core/include/fcppt/mpl/integral_cast.hpp
 	libs/core/include/fcppt/mpl/integral_cast_tpl.hpp
 	libs/core/include/fcppt/mpl/invoke_on.hpp
-	libs/core/include/fcppt/mpl/max_value.hpp
-	libs/core/include/fcppt/mpl/numeric_max.hpp
 	libs/core/include/fcppt/mpl/partial_sums.hpp
-	libs/core/include/fcppt/mpl/print.hpp
 	libs/core/include/fcppt/mpl/runtime_index.hpp
-	libs/core/include/fcppt/mpl/sequence_to_string.hpp
-	libs/core/include/fcppt/mpl/sequence_to_tuple.hpp
-	libs/core/include/fcppt/mpl/set_difference.hpp
-	libs/core/include/fcppt/mpl/set_intersection.hpp
-	libs/core/include/fcppt/mpl/set_symmetric_difference.hpp
-	libs/core/include/fcppt/mpl/set_union.hpp
 	libs/core/include/fcppt/mpl/to_brigand.hpp
-	libs/core/include/fcppt/mpl/value_type.hpp
 	libs/core/include/fcppt/narrow.hpp
 	libs/core/include/fcppt/no_init.hpp
 	libs/core/include/fcppt/no_init_fwd.hpp
