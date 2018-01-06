@@ -8,11 +8,18 @@ function(
 	)
 endfunction()
 
-add_fcppt_random_example(
-	complex
-	LINK_LIBS
-		${fcppt_core_TARGET}
+if(
+	ENABLE_BOOST
 )
+	add_fcppt_random_example(
+		complex
+		INCLUDE_DIRS
+			${Boost_INCLUDE_DIRS}
+		LINK_LIBS
+			fcppt_boost_interface
+			${fcppt_core_TARGET}
+	)
+endif()
 
 add_fcppt_random_example(
 	enum

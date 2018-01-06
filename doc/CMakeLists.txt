@@ -189,6 +189,42 @@ set(
 	examples/version.cpp
 	examples/visibility.cpp
 	examples/weak_ptr.cpp
+	libs/boost/include/fcppt/algorithm/loop_break_mpl.hpp
+	libs/boost/include/fcppt/boost_units_value.hpp
+	libs/boost/include/fcppt/format.hpp
+	libs/boost/include/fcppt/make_literal_boost_units.hpp
+	libs/boost/include/fcppt/math/is_zero_boost_units.hpp
+	libs/boost/include/fcppt/mpl/all_of.hpp
+	libs/boost/include/fcppt/mpl/append.hpp
+	libs/boost/include/fcppt/mpl/ceil_div.hpp
+	libs/boost/include/fcppt/mpl/contains_if.hpp
+	libs/boost/include/fcppt/mpl/copy.hpp
+	libs/boost/include/fcppt/mpl/detail/flatten.hpp
+	libs/boost/include/fcppt/mpl/detail/fold_tuple.hpp
+	libs/boost/include/fcppt/mpl/detail/for_each_break.hpp
+	libs/boost/include/fcppt/mpl/detail/integral_cast_value.hpp
+	libs/boost/include/fcppt/mpl/detail/runtime_index.hpp
+	libs/boost/include/fcppt/mpl/detail/to_brigand.hpp
+	libs/boost/include/fcppt/mpl/enum_range.hpp
+	libs/boost/include/fcppt/mpl/enum_range_start_end.hpp
+	libs/boost/include/fcppt/mpl/flatten.hpp
+	libs/boost/include/fcppt/mpl/flatten_tpl.hpp
+	libs/boost/include/fcppt/mpl/for_each.hpp
+	libs/boost/include/fcppt/mpl/for_each_break.hpp
+	libs/boost/include/fcppt/mpl/inner.hpp
+	libs/boost/include/fcppt/mpl/integral_cast.hpp
+	libs/boost/include/fcppt/mpl/integral_cast_tpl.hpp
+	libs/boost/include/fcppt/mpl/invoke_on.hpp
+	libs/boost/include/fcppt/mpl/partial_sums.hpp
+	libs/boost/include/fcppt/mpl/runtime_index.hpp
+	libs/boost/include/fcppt/mpl/to_brigand.hpp
+	libs/boost/include/fcppt/scoped_state_machine.hpp
+	libs/boost/include/fcppt/scoped_state_machine_decl.hpp
+	libs/boost/include/fcppt/scoped_state_machine_fwd.hpp
+	libs/boost/include/fcppt/scoped_state_machine_impl.hpp
+	libs/boost/include/fcppt/spirit_traits/optional_basic.hpp
+	libs/boost/include/fcppt/spirit_traits/variant_basic.hpp
+	libs/boost/include/fcppt/type_iso/boost_units.hpp
 	libs/core/include/fcppt/absurd.hpp
 	libs/core/include/fcppt/add_reference.hpp
 	libs/core/include/fcppt/algorithm/all_of.hpp
@@ -234,7 +270,6 @@ set(
 	libs/core/include/fcppt/algorithm/loop_break_brigand.hpp
 	libs/core/include/fcppt/algorithm/loop_break_impl.hpp
 	libs/core/include/fcppt/algorithm/loop_break_impl_fwd.hpp
-	libs/core/include/fcppt/algorithm/loop_break_mpl.hpp
 	libs/core/include/fcppt/algorithm/loop_break_tuple.hpp
 	libs/core/include/fcppt/algorithm/map.hpp
 	libs/core/include/fcppt/algorithm/map_concat.hpp
@@ -307,7 +342,6 @@ set(
 	libs/core/include/fcppt/bit/shifted_mask.hpp
 	libs/core/include/fcppt/bit/shifted_mask_c.hpp
 	libs/core/include/fcppt/bit/test.hpp
-	libs/core/include/fcppt/boost_units_value.hpp
 	libs/core/include/fcppt/brigand/all_of.hpp
 	libs/core/include/fcppt/brigand/ceil_div.hpp
 	libs/core/include/fcppt/brigand/detail/all_of_impl.hpp
@@ -345,6 +379,7 @@ set(
 	libs/core/include/fcppt/cast/bad_truncation_check.hpp
 	libs/core/include/fcppt/cast/detail/dynamic.hpp
 	libs/core/include/fcppt/cast/detail/dynamic_exn.hpp
+	libs/core/include/fcppt/cast/detail/promote_int_type.hpp
 	libs/core/include/fcppt/cast/detail/safe.hpp
 	libs/core/include/fcppt/cast/detail/truncation_check.hpp
 	libs/core/include/fcppt/cast/dynamic.hpp
@@ -366,6 +401,8 @@ set(
 	libs/core/include/fcppt/cast/int_to_enum_fun.hpp
 	libs/core/include/fcppt/cast/int_to_float.hpp
 	libs/core/include/fcppt/cast/int_to_float_fun.hpp
+	libs/core/include/fcppt/cast/promote_int.hpp
+	libs/core/include/fcppt/cast/promote_int_type.hpp
 	libs/core/include/fcppt/cast/safe.hpp
 	libs/core/include/fcppt/cast/safe_numeric.hpp
 	libs/core/include/fcppt/cast/size.hpp
@@ -696,7 +733,6 @@ set(
 	libs/core/include/fcppt/error/strerror.hpp
 	libs/core/include/fcppt/exception.hpp
 	libs/core/include/fcppt/extract_from_string.hpp
-	libs/core/include/fcppt/format.hpp
 	libs/core/include/fcppt/from_std_string.hpp
 	libs/core/include/fcppt/from_std_string_locale.hpp
 	libs/core/include/fcppt/from_std_wstring.hpp
@@ -797,7 +833,6 @@ set(
 	libs/core/include/fcppt/make_homogenous_pair.hpp
 	libs/core/include/fcppt/make_int_range.hpp
 	libs/core/include/fcppt/make_int_range_count.hpp
-	libs/core/include/fcppt/make_literal_boost_units.hpp
 	libs/core/include/fcppt/make_literal_fundamental.hpp
 	libs/core/include/fcppt/make_literal_fwd.hpp
 	libs/core/include/fcppt/make_literal_strong_typedef.hpp
@@ -917,7 +952,6 @@ set(
 	libs/core/include/fcppt/math/interval_distance.hpp
 	libs/core/include/fcppt/math/is_power_of_2.hpp
 	libs/core/include/fcppt/math/is_zero.hpp
-	libs/core/include/fcppt/math/is_zero_boost_units.hpp
 	libs/core/include/fcppt/math/is_zero_impl_fwd.hpp
 	libs/core/include/fcppt/math/is_zero_literal.hpp
 	libs/core/include/fcppt/math/log2.hpp
@@ -1052,30 +1086,6 @@ set(
 	libs/core/include/fcppt/move_if.hpp
 	libs/core/include/fcppt/move_if_rvalue.hpp
 	libs/core/include/fcppt/move_iterator_if_rvalue.hpp
-	libs/core/include/fcppt/mpl/all_of.hpp
-	libs/core/include/fcppt/mpl/append.hpp
-	libs/core/include/fcppt/mpl/ceil_div.hpp
-	libs/core/include/fcppt/mpl/contains_if.hpp
-	libs/core/include/fcppt/mpl/copy.hpp
-	libs/core/include/fcppt/mpl/detail/flatten.hpp
-	libs/core/include/fcppt/mpl/detail/fold_tuple.hpp
-	libs/core/include/fcppt/mpl/detail/for_each_break.hpp
-	libs/core/include/fcppt/mpl/detail/integral_cast_value.hpp
-	libs/core/include/fcppt/mpl/detail/runtime_index.hpp
-	libs/core/include/fcppt/mpl/detail/to_brigand.hpp
-	libs/core/include/fcppt/mpl/enum_range.hpp
-	libs/core/include/fcppt/mpl/enum_range_start_end.hpp
-	libs/core/include/fcppt/mpl/flatten.hpp
-	libs/core/include/fcppt/mpl/flatten_tpl.hpp
-	libs/core/include/fcppt/mpl/for_each.hpp
-	libs/core/include/fcppt/mpl/for_each_break.hpp
-	libs/core/include/fcppt/mpl/inner.hpp
-	libs/core/include/fcppt/mpl/integral_cast.hpp
-	libs/core/include/fcppt/mpl/integral_cast_tpl.hpp
-	libs/core/include/fcppt/mpl/invoke_on.hpp
-	libs/core/include/fcppt/mpl/partial_sums.hpp
-	libs/core/include/fcppt/mpl/runtime_index.hpp
-	libs/core/include/fcppt/mpl/to_brigand.hpp
 	libs/core/include/fcppt/narrow.hpp
 	libs/core/include/fcppt/no_init.hpp
 	libs/core/include/fcppt/no_init_fwd.hpp
@@ -1278,10 +1288,6 @@ set(
 	libs/core/include/fcppt/reference_std_hash.hpp
 	libs/core/include/fcppt/reference_to_base.hpp
 	libs/core/include/fcppt/reference_to_const.hpp
-	libs/core/include/fcppt/scoped_state_machine.hpp
-	libs/core/include/fcppt/scoped_state_machine_decl.hpp
-	libs/core/include/fcppt/scoped_state_machine_fwd.hpp
-	libs/core/include/fcppt/scoped_state_machine_impl.hpp
 	libs/core/include/fcppt/shared_ptr.hpp
 	libs/core/include/fcppt/shared_ptr_decl.hpp
 	libs/core/include/fcppt/shared_ptr_fwd.hpp
@@ -1320,8 +1326,6 @@ set(
 	libs/core/include/fcppt/signal/unregister/detail/concrete_connection_fwd.hpp
 	libs/core/include/fcppt/signal/unregister/detail/concrete_connection_impl.hpp
 	libs/core/include/fcppt/signal/unregister/function.hpp
-	libs/core/include/fcppt/spirit_traits/optional_basic.hpp
-	libs/core/include/fcppt/spirit_traits/variant_basic.hpp
 	libs/core/include/fcppt/static_pointer_cast.hpp
 	libs/core/include/fcppt/string.hpp
 	libs/core/include/fcppt/string_conv_locale.hpp
@@ -1362,7 +1366,6 @@ set(
 	libs/core/include/fcppt/to_std_string_locale.hpp
 	libs/core/include/fcppt/to_std_wstring.hpp
 	libs/core/include/fcppt/to_std_wstring_locale.hpp
-	libs/core/include/fcppt/type_iso/boost_units.hpp
 	libs/core/include/fcppt/type_iso/decorate.hpp
 	libs/core/include/fcppt/type_iso/detail/decorate.hpp
 	libs/core/include/fcppt/type_iso/detail/is_terminal.hpp

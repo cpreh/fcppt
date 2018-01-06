@@ -325,7 +325,6 @@ function(
 		PUBLIC_INCLUDES
 		"$<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>"
 		"$<BUILD_INTERFACE:${FCPPT_UTILS_PROJECT_BINARY_DIR}/include>"
-		${Boost_INCLUDE_DIRS}
 		${_INCLUDE_DIRS}
 	)
 
@@ -394,6 +393,7 @@ function(
 )
 	set(
 		OPTION_ARGS
+		IS_INTERFACE
 		HAS_IMPL_DIR
 	)
 
@@ -441,14 +441,19 @@ function(
 		)
 	endif()
 
-	fcppt_generate_symbol_header(
-		EXPORTS_NAME
-			"${FULL_NAME}"
-		SYMBOL_NAME
-			"${_SYMBOL_NAME}_DETAIL"
-		STATIC_LINK_FLAG
-			"${FCPPT_STATIC_LINK_FLAG}"
+	if(
+		NOT
+		${_IS_INTERFACE}
 	)
+		fcppt_generate_symbol_header(
+			EXPORTS_NAME
+				"${FULL_NAME}"
+			SYMBOL_NAME
+				"${_SYMBOL_NAME}_DETAIL"
+			STATIC_LINK_FLAG
+				"${FCPPT_STATIC_LINK_FLAG}"
+		)
+	endif()
 
 	fcppt_utils_interface_link_name(
 		${FULL_NAME}
@@ -465,6 +470,9 @@ function(
 
 	if(
 		ENABLE_SHARED
+		AND
+		NOT
+		${_IS_INTERFACE}
 	)
 		make_fcppt_library_base(
 			"${FULL_NAME}"
@@ -477,6 +485,9 @@ function(
 
 	if(
 		ENABLE_STATIC
+		AND
+		NOT
+		${_IS_INTERFACE}
 	)
 		foreach(
 			FCPPTDEP

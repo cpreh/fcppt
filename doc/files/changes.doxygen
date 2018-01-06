@@ -6,6 +6,14 @@
 \subsection changes_general_to_270 General changes
 
 <ul>
+<li>
+Boost is now optional, which can be controlled by the <code>ENABLE_BOOST</code> CMake flag. It defaults
+to <code>ON</code> if Boost is found. To build <code>fcppt_filesystem</code>, <code>fcppt_system</code>
+or fcppt's tests, Boost is still required.
+Furthermore, all Boost-specific functionality has been moved to <code>fcppt_boost</code>.
+To replace <code>boost::mpl</code>, <code>Brigand</code> has been added as a dependency, which
+can be obtained from <a href="https://github.com/edouarda/brigand">here</a>. It is a small, header-only
+C++11 library that has no dependencies itself.</li>
 <li>Removed <code>-Weffc++</code> warning. Unfortunately, this warning has become even more broken in <code>gcc-8</code>.</li>
 </ul>
 

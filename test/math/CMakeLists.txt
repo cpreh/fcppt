@@ -52,9 +52,15 @@ add_subdirectory(
 	vector
 )
 
-add_fcppt_math_test(
-	units
+if(
+	ENABLE_BOOST
 )
+	add_fcppt_math_test(
+		units
+		LINK_LIBS
+			fcppt_boost_interface
+	)
+endif()
 
 add_fcppt_math_test(
 	util

@@ -4,6 +4,8 @@ function(
 )
 	add_fcppt_test(
 		mpl/${TEST_NAME}
+		LINK_LIBS
+			fcppt_boost_interface
 		${ARGN}
 	)
 endfunction()

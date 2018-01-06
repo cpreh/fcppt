@@ -55,7 +55,6 @@ function(
 		COMPILE_DEFINITIONS
 			${_COMPILE_DEFINITIONS}
 		INCLUDE_DIRS
-			${Boost_INCLUDE_DIRS}
 			${FCPPT_UTILS_PROJECT_BINARY_DIR}/include
 	)
 endfunction()
