@@ -110,7 +110,6 @@ set(
 	examples/assert_complete.cpp
 	examples/assign.cpp
 	examples/backtrace.cpp
-	examples/brigand/for_each.cpp
 	examples/brigand/invoke_on.cpp
 	examples/brigand/various.cpp
 	examples/cast.cpp
@@ -321,7 +320,6 @@ set(
 	libs/core/include/fcppt/brigand/enum_range.hpp
 	libs/core/include/fcppt/brigand/enum_range_start_end.hpp
 	libs/core/include/fcppt/brigand/equal_to.hpp
-	libs/core/include/fcppt/brigand/for_each.hpp
 	libs/core/include/fcppt/brigand/for_each_break.hpp
 	libs/core/include/fcppt/brigand/found_t.hpp
 	libs/core/include/fcppt/brigand/implication.hpp
@@ -340,7 +338,6 @@ set(
 	libs/core/include/fcppt/brigand/set_intersection.hpp
 	libs/core/include/fcppt/brigand/set_symmetric_difference.hpp
 	libs/core/include/fcppt/brigand/set_union.hpp
-	libs/core/include/fcppt/brigand/value_type.hpp
 	libs/core/include/fcppt/c_deleter.hpp
 	libs/core/include/fcppt/c_deleter_fwd.hpp
 	libs/core/include/fcppt/cast/apply.hpp

@@ -25,14 +25,14 @@ namespace brigand
 {
 
 /**
-\brief The intersection of two sets
+\brief The intersection of two sets.
 
 \ingroup fcpptbrigand
 
 The result contains every element that is both in \a Set1 and \a Set2.
 
-\tparam Set1 Must be an BRIGAND set
-\tparam Set2 Must be an BRIGAND set
+\tparam Set1 Must be a brigand set.
+\tparam Set2 Must be a brigand set.
 */
 template<
 	typename Set1,

@@ -17,15 +17,15 @@ namespace brigand
 {
 
 /**
-\brief The symmetric difference of two sets
+\brief The symmetric difference of two sets.
 
 \ingroup fcpptbrigand
 
 The result contains every element that is either in \a Set1 or in \a Set2, but
 not in both.
 
-\tparam Set1 Must be an BRIGAND set
-\tparam Set2 Must be an BRIGAND set
+\tparam Set1 Must be a brigand set.
+\tparam Set2 Must be a brigand set.
 */
 template<
 	typename Set1,

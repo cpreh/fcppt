@@ -7,7 +7,7 @@
 #ifndef FCPPT_BRIGAND_DETAIL_PRINT_ONE_HPP_INCLUDED
 #define FCPPT_BRIGAND_DETAIL_PRINT_ONE_HPP_INCLUDED
 
-#include <fcppt/type_name.hpp>
+#include <fcppt/type_name_from_info.hpp>
 #include <fcppt/io/ostream.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <typeinfo>
@@ -32,10 +32,10 @@ print_one(
 {
 	_stream
 		<<
-		fcppt::type_name(
+		fcppt::type_name_from_info(
 			typeid(
 				Type
-			).name()
+			)
 		);
 }
 

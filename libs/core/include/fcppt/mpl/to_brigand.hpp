@@ -24,9 +24,11 @@ namespace mpl
 \brief Converts and MPL sequence to a brigand::list.
 
 \ingroup fcpptmpl
+
+\tparam Sequence Must be an MPL sequence.
 */
 template<
-	typename Seq
+	typename Sequence
 >
 using
 to_brigand
@@ -35,11 +37,11 @@ typename
 fcppt::mpl::detail::to_brigand<
 	typename
 	boost::mpl::begin<
-		Seq
+		Sequence
 	>::type,
 	typename
 	boost::mpl::end<
-		Seq
+		Sequence
 	>::type,
 	::brigand::list<>
 >::type;

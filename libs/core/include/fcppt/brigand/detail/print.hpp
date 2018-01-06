@@ -11,11 +11,12 @@
 #include <fcppt/text.hpp>
 #include <fcppt/use.hpp>
 #include <fcppt/io/ostream.hpp>
-#include <fcppt/brigand/for_each.hpp>
 #include <fcppt/brigand/detail/print_one.hpp>
 #include <fcppt/config/external_begin.hpp>
+#include <brigand/algorithms/for_each.hpp>
 #include <brigand/sequences/back.hpp>
 #include <brigand/sequences/list.hpp>
+#include <brigand/types/type.hpp>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
@@ -59,7 +60,7 @@ print(
 	fcppt::io::ostream &_stream
 )
 {
-	fcppt::brigand::for_each<
+	::brigand::for_each<
 		::brigand::pop_back<
 			Sequence
 		>
@@ -75,7 +76,7 @@ print(
 			);
 
 			fcppt::brigand::detail::print_one<
-				fcppt::tag_type<
+				::brigand::type_from<
 					decltype(
 						_type
 					)

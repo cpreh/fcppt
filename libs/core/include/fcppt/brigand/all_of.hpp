@@ -19,6 +19,10 @@ namespace brigand
 \brief Checks if a predicate is true for every element.
 
 \ingroup fcpptbrigand
+
+\tparam Sequence Must be a brigand sequence.
+
+\tparam Predicate A unary predicate.
 */
 template<
 	typename Sequence,

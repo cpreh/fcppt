@@ -19,9 +19,11 @@ namespace brigand
 {
 
 /**
-\brief Metafunction to compute the maximum value of a type
+\brief Metafunction to compute the maximum value of a type.
 
 \ingroup fcpptbrigand
+
+\tparam Type Must be a type such that <code>std::numeric_limits<Type>::max()</code> is defined.
 */
 template<
 	typename Type

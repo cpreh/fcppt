@@ -18,7 +18,7 @@ namespace brigand
 {
 
 /**
-\brief Pretty prints an BRIGAND sequence
+\brief Pretty prints a brigand sequence.
 
 \ingroup fcpptbrigand
 
@@ -26,9 +26,9 @@ Pretty prints \a Sequence to \a _stream. Every type in \a Sequence will be
 converted to a string using fcppt::type_name. The resulting format of the
 printed sequence will be <code>(name_1, ..., name_n)</code>.
 
-\tparam Sequence An BRIGAND sequence
+\tparam Sequence Must be a brigand sequence.
 
-\param _stream The stream to print to
+\param _stream The stream to print to.
 
 \return \a _stream
 */

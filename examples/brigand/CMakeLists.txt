@@ -9,12 +9,6 @@ function(
 endfunction()
 
 add_fcppt_brigand_example(
-	for_each
-	LINK_LIBS
-		${fcppt_core_TARGET}
-)
-
-add_fcppt_brigand_example(
 	invoke_on
 	LINK_LIBS
 		fcppt_core_interface

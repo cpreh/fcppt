@@ -18,7 +18,7 @@ namespace brigand
 {
 
 /**
-\brief An BRIGAND range over enums
+\brief A brigand range over enums
 
 \ingroup fcpptenum
 */

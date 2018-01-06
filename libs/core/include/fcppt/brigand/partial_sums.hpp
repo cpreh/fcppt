@@ -23,7 +23,7 @@ namespace brigand
 {
 
 /**
-\brief Calculates a new sequence that consists of the sums of the old sequence
+\brief Calculates a new sequence that consists of the sums of the old sequence.
 
 \ingroup fcpptbrigand
 
@@ -32,13 +32,12 @@ sequence will consist of the values (0, c_1, c_1 + c_2, ..., c_1 + ... c_n)
 
 \snippet brigand/various.cpp brigand_partial_sums
 
-\tparam Sequence An BRIGAND sequence of integral constant types
+\tparam Sequence A brigand sequence of integral constant types.
 
-\tparam IntType The integer type to use for the first zero
+\tparam IntType The integer type to use for the first zero.
 */
 template<
 	typename Sequence,
-	// brigand::plus<> converts its operands, so int is most conservative
 	typename IntType = int
 >
 using

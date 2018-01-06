@@ -26,7 +26,7 @@ namespace brigand
 {
 
 /**
-\brief An BRIGAND range over enums from a minimum to a maximum
+\brief A brigand range over enums from a minimum to a maximum.
 
 \ingroup fcpptenum
 */

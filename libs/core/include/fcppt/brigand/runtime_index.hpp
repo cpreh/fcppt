@@ -29,7 +29,7 @@ Otherwise, the result of \a _fail_function is returned.
 
 \tparam Index An unsigned integer type.
 
-\tparam MaxIndex An integral constant.
+\tparam MaxIndex An integral constant with element type \a Index.
 
 \tparam Function A function callable as <code>R (std::integral_constant<Index,N>)</code> for
 every N of type \a Index, where R is the result type.

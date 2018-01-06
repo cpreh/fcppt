@@ -25,6 +25,13 @@ namespace brigand
 \brief Checks if two sequences of integral constants are equal.
 
 \ingroup fcpptbrigand
+
+Checks if \a Sequence1 is equal to \a Sequence2. Both sequences must be a of
+the same length.
+
+\tparam Sequence1 A brigand sequence of integral constants.
+
+\tparam Sequence2 A brigand sequence of integral constants.
 */
 template<
 	typename Sequence1,

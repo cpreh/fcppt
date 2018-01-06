@@ -17,19 +17,21 @@ namespace brigand
 
 /**
 \brief Invoke a function on each element of a sequence without constructing
-them and giving the ability to break out of the loop
+them and giving the ability to break out of the loop.
 
 \ingroup fcpptbrigand
 
-Similar to fcppt::brigand::for_each, but can break out of a loop early.
+Similar to \link fcppt::brigand::for_each\endlink, but can break out of a loop early.
 
 \see fcppt::brigand::for_each
+
+\tparam Sequence A brigand sequence.
 
 \tparam Function The polymorphic function callable as <code>fcppt::loop
 (fcppt::tag<T>)</code> for every T in \a Sequence.
 */
 template<
-	typename List,
+	typename Sequence,
 	typename Function
 >
 inline
@@ -40,7 +42,7 @@ for_each_break(
 {
 	return
 		fcppt::brigand::detail::for_each_break<
-			List,
+			Sequence,
 			0u
 		>(
 			_function

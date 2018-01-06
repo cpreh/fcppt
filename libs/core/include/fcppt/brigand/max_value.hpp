@@ -30,7 +30,7 @@ Calculates the maximum value in \a Sequence.
 
 \snippet brigand/various.cpp brigand_max_value
 
-\tparam Sequence A non empty BRIGAND sequence
+\tparam Sequence A non empty brigand sequence.
 */
 template<
 	typename Sequence
