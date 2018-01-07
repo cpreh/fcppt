@@ -143,11 +143,11 @@ fcppt::options::many<
 			result_type
 		>(
 			[](
-				auto const _element
+				auto const _fcppt_options_many_element
 			)
 			{
 				FCPPT_USE(
-					_element
+					_fcppt_options_many_element
 				);
 
 				return
@@ -155,7 +155,7 @@ fcppt::options::many<
 						typename
 						std::remove_const<
 							decltype(
-								_element
+								_fcppt_options_many_element
 							)
 						>::type
 					>{};
@@ -206,18 +206,18 @@ fcppt::options::many<
 							&result,
 							&_inner
 						](
-							auto const _element
+							auto const _fcppt_inner_element
 						)
 						{
 							FCPPT_USE(
-								_element
+								_fcppt_inner_element
 							);
 
 							typedef
 							typename
 							std::remove_const<
 								decltype(
-									_element
+									_fcppt_inner_element
 								)
 							>::type
 							element;

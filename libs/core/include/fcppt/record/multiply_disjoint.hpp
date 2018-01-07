@@ -70,11 +70,11 @@ multiply_disjoint(
 				&_record1,
 				&_record2
 			](
-				auto const _element
+				auto const _fcppt_multiply_disjoint_element
 			)
 			{
 				FCPPT_USE(
-					_element
+					_fcppt_multiply_disjoint_element
 				);
 
 				return
@@ -83,7 +83,7 @@ multiply_disjoint(
 							typename
 							std::remove_const<
 								decltype(
-									_element
+									_fcppt_multiply_disjoint_element
 								)
 							>::type
 						>,

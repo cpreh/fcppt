@@ -60,7 +60,7 @@ struct untuple<
 	execute(
 		Tuple &,
 		Function const &_function,
-		Args &&... _args
+		Args &&... _fcppt_untuple_args
 	)
 	{
 		return
@@ -68,7 +68,7 @@ struct untuple<
 				fcppt::move_if<
 					Move
 				>(
-					_args
+					_fcppt_untuple_args
 				)...
 			);
 	}
@@ -104,7 +104,7 @@ struct untuple<
 	execute(
 		Tuple &_tuple,
 		Function const &_function,
-		Args &&... _args
+		Args &&... _fcppt_untuple_args
 	)
 	{
 		return
@@ -118,7 +118,7 @@ struct untuple<
 				std::forward<
 					Args
 				>(
-					_args
+					_fcppt_untuple_args
 				)...,
 				fcppt::move_if<
 					Move

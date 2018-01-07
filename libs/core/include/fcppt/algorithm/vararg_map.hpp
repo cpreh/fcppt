@@ -25,7 +25,7 @@ namespace algorithm
 \ingroup fcpptalgorithm
 
 Let \a _tuple be <code>(v_1,...,v_n)</code>. The result is
-<code>_anchor(_element(v_1),...,_element(v_n))</code>.
+<code>_anchor_function(_element_function(v_1),...,_element_function(v_n))</code>.
 
 \tparam Tuple A std::tuple.
 */
@@ -40,8 +40,8 @@ decltype(
 )
 vararg_map(
 	Tuple &&_tuple,
-	AnchorFunction const &_anchor,
-	ElementFunction const &_element
+	AnchorFunction const &_anchor_function,
+	ElementFunction const &_element_function
 )
 {
 	return
@@ -52,19 +52,19 @@ vararg_map(
 				_tuple
 			),
 			[
-				&_anchor,
-				&_element
+				&_anchor_function,
+				&_element_function
 			](
-				auto &&... _args
+				auto &&... _fcppt_vararg_args
 			)
 			{
 				return
-					_anchor(
-						_element(
+					_anchor_function(
+						_element_function(
 							fcppt::move_if_rvalue<
 								Tuple
 							>(
-								_args
+								_fcppt_vararg_args
 							)
 						)...
 					);

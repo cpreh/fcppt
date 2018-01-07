@@ -60,16 +60,16 @@ init(
 				Result
 			>{},
 			[](
-				auto &&... _args
+				auto &&... _fcppt_record_init_args
 			){
 				return
 					Result{
 						std::forward<
 							decltype(
-								_args
+								_fcppt_record_init_args
 							)
 						>(
-							_args
+							_fcppt_record_init_args
 						)...
 					};
 			},
