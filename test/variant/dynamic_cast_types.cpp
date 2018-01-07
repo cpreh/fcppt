@@ -7,8 +7,8 @@
 #include <fcppt/reference_impl.hpp>
 #include <fcppt/variant/dynamic_cast_types.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/mpl/at.hpp>
-#include <boost/mpl/vector.hpp>
+#include <brigand/sequences/at.hpp>
+#include <brigand/sequences/list.hpp>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
@@ -18,7 +18,7 @@ main()
 {
 	typedef
 	fcppt::variant::dynamic_cast_types<
-		boost::mpl::vector<
+		brigand::list<
 			int,
 			char const
 		>
@@ -27,10 +27,10 @@ main()
 
 	static_assert(
 		std::is_same<
-			boost::mpl::at_c<
+			brigand::at_c<
 				types,
 				0
-			>::type,
+			>,
 			fcppt::reference<
 				int
 			>
@@ -40,10 +40,10 @@ main()
 
 	static_assert(
 		std::is_same<
-			boost::mpl::at_c<
+			brigand::at_c<
 				types,
 				1
-			>::type,
+			>,
 			fcppt::reference<
 				char const
 			>

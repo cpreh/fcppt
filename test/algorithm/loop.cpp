@@ -8,9 +8,9 @@
 #include <fcppt/tag_type.hpp>
 #include <fcppt/use.hpp>
 #include <fcppt/algorithm/loop.hpp>
-#include <fcppt/algorithm/loop_break_mpl.hpp>
+#include <fcppt/algorithm/loop_break_brigand.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/mpl/range_c.hpp>
+#include <brigand/sequences/range.hpp>
 #include <boost/test/unit_test.hpp>
 #include <fcppt/config/external_end.hpp>
 
@@ -24,7 +24,7 @@ BOOST_AUTO_TEST_CASE(
 	};
 
 	fcppt::algorithm::loop(
-		boost::mpl::range_c<
+		brigand::range<
 			int,
 			0,
 			5

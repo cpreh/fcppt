@@ -7,7 +7,7 @@
 #ifndef FCPPT_OPTIONAL_VALUE_TYPE_HPP_INCLUDED
 #define FCPPT_OPTIONAL_VALUE_TYPE_HPP_INCLUDED
 
-#include <fcppt/optional/value_type_tpl.hpp>
+#include <fcppt/optional/detail/value_type.hpp>
 
 
 namespace fcppt
@@ -29,7 +29,7 @@ using
 value_type
 =
 typename
-fcppt::optional::value_type_tpl<
+fcppt::optional::detail::value_type<
 	Optional
 >::type;
 

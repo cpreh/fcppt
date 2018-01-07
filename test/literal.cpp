@@ -4,8 +4,11 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
+#include <fcppt/public_config.hpp>
 #include <fcppt/literal.hpp>
+#if defined(FCPPT_BOOST_SUPPORT)
 #include <fcppt/make_literal_boost_units.hpp>
+#endif
 #include <fcppt/make_literal_strong_typedef.hpp>
 #include <fcppt/make_strong_typedef.hpp>
 #include <fcppt/strong_typedef_impl.hpp>
@@ -30,6 +33,7 @@ BOOST_AUTO_TEST_CASE(
 	);
 }
 
+#if defined(FCPPT_BOOST_SUPPORT)
 BOOST_AUTO_TEST_CASE(
 	literal_boost_units
 )
@@ -50,6 +54,7 @@ BOOST_AUTO_TEST_CASE(
 		2
 	);
 }
+#endif
 
 BOOST_AUTO_TEST_CASE(
 	literal_strong_typedef

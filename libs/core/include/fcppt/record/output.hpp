@@ -10,7 +10,7 @@
 #include <fcppt/tag_type.hpp>
 #include <fcppt/use.hpp>
 #include <fcppt/algorithm/loop.hpp>
-#include <fcppt/algorithm/loop_break_mpl.hpp>
+#include <fcppt/algorithm/loop_break_brigand.hpp>
 #include <fcppt/io/widen_string.hpp>
 #include <fcppt/record/element_to_label.hpp>
 #include <fcppt/record/get.hpp>

@@ -21,6 +21,7 @@ update_sublibrary()
 }
 
 LIBS=(
+	boost
 	core
 	filesystem
 	log
@@ -35,6 +36,7 @@ done
 update_cmake \
 	doc/CMakeLists.txt \
 	FCPPT_DOC_FILES \
+	libs/boost/include \
 	libs/core/include \
 	libs/filesystem/include \
 	libs/log/include \

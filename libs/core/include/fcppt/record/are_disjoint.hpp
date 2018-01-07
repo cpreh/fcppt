@@ -7,10 +7,11 @@
 #ifndef FCPPT_RECORD_ARE_DISJOINT_HPP_INCLUDED
 #define FCPPT_RECORD_ARE_DISJOINT_HPP_INCLUDED
 
-#include <fcppt/mpl/set_intersection.hpp>
+#include <fcppt/brigand/set_intersection.hpp>
 #include <fcppt/record/label_set.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/mpl/empty.hpp>
+#include <brigand/sequences/set.hpp>
+#include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -29,16 +30,16 @@ template<
 using
 are_disjoint
 =
-boost::mpl::empty<
-	typename
-	fcppt::mpl::set_intersection<
+std::is_same<
+	fcppt::brigand::set_intersection<
 		fcppt::record::label_set<
 			RecordL
 		>,
 		fcppt::record::label_set<
 			RecordR
 		>
-	>::type
+	>,
+	::brigand::set<>
 >;
 
 }

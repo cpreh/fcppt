@@ -7,11 +7,11 @@
 #ifndef FCPPT_VARIANT_DETAIL_NOTHROW_MOVE_ASSIGNABLE_HPP_INCLUDED
 #define FCPPT_VARIANT_DETAIL_NOTHROW_MOVE_ASSIGNABLE_HPP_INCLUDED
 
-#include <fcppt/mpl/all_of.hpp>
 #include <fcppt/variant/detail/nothrow_move_constructible.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/mpl/and.hpp>
-#include <boost/mpl/placeholders.hpp>
+#include <brigand/algorithms/all.hpp>
+#include <brigand/functions/logical/and.hpp>
+#include <brigand/types/args.hpp>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
@@ -29,14 +29,14 @@ template<
 using
 nothrow_move_assignable
 =
-boost::mpl::and_<
+::brigand::and_<
 	fcppt::variant::detail::nothrow_move_constructible<
 		Types
 	>,
-	fcppt::mpl::all_of<
+	::brigand::all<
 		Types,
 		std::is_nothrow_move_assignable<
-			boost::mpl::_1
+			::brigand::_1
 		>
 	>
 >;

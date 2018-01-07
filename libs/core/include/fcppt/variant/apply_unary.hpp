@@ -10,13 +10,14 @@
 #include <fcppt/absurd.hpp>
 #include <fcppt/move_if_rvalue.hpp>
 #include <fcppt/use.hpp>
-#include <fcppt/mpl/runtime_index.hpp>
+#include <fcppt/brigand/runtime_index.hpp>
 #include <fcppt/variant/is_object.hpp>
 #include <fcppt/variant/types_of.hpp>
+#include <fcppt/variant/detail/get_unsafe.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/mpl/at.hpp>
-#include <boost/mpl/front.hpp>
-#include <boost/mpl/size.hpp>
+#include <brigand/sequences/at.hpp>
+#include <brigand/sequences/front.hpp>
+#include <brigand/sequences/size.hpp>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
@@ -70,11 +71,10 @@ apply_unary(
 	types;
 
 	return
-		fcppt::mpl::runtime_index<
-			typename
-			boost::mpl::size<
+		fcppt::brigand::runtime_index<
+			::brigand::size<
 				types
-			>::type
+			>
 		>(
 			_obj.type_index(),
 			[
@@ -97,13 +97,16 @@ apply_unary(
 						fcppt::move_if_rvalue<
 							Variant
 						>(
-							_obj . template get_unsafe<
-								typename
-								boost::mpl::at_c<
+							fcppt::variant::detail::get_unsafe<
+								::brigand::at<
 									types,
-									_index_value.value
-								>::type
-							>()
+									decltype(
+										_index_value
+									)
+								>
+							>(
+								_obj
+							)
 						)
 					);
 			},
@@ -113,12 +116,13 @@ apply_unary(
 						fcppt::move_if_rvalue<
 							Variant
 						>(
-							_obj . template get_unsafe<
-								typename
-								boost::mpl::front<
+							fcppt::variant::detail::get_unsafe<
+								::brigand::front<
 									types
-								>::type
-							>()
+								>
+							>(
+								_obj
+							)
 						)
 					)
 				)

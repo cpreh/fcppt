@@ -7,7 +7,6 @@
 #include <fcppt/tag_type.hpp>
 #include <fcppt/use.hpp>
 #include <fcppt/algorithm/loop.hpp>
-#include <fcppt/mpl/copy.hpp>
 #include <fcppt/record/element.hpp>
 #include <fcppt/record/element_to_label.hpp>
 #include <fcppt/record/element_to_type.hpp>
@@ -21,10 +20,11 @@
 #include <fcppt/record/set.hpp>
 #include <fcppt/record/variadic.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/mpl/placeholders.hpp>
-#include <boost/mpl/range_c.hpp>
-#include <boost/mpl/transform.hpp>
-#include <boost/mpl/vector.hpp>
+#include <brigand/sequences/list.hpp>
+#include <brigand/algorithms/transform.hpp>
+#include <brigand/functions/lambda/bind.hpp>
+#include <brigand/sequences/range.hpp>
+#include <brigand/types/args.hpp>
 #include <iostream>
 #include <ostream>
 #include <sstream>
@@ -91,7 +91,7 @@ name_element;
 //! [record_object]
 typedef
 fcppt::record::object<
-	boost::mpl::vector<
+	brigand::list<
 		age_element,
 		name_element
 	>
@@ -259,17 +259,15 @@ FCPPT_RECORD_MAKE_LABEL_ARG(
 template<
 	typename I
 >
-struct sprite_element
-{
-	typedef
-	fcppt::record::element<
-		texture<
-			I::value
-		>,
-		std::string
-	>
-	type;
-};
+using
+sprite_element
+=
+fcppt::record::element<
+	texture<
+		I::value
+	>,
+	std::string
+>;
 // ![sprite_element]
 
 // ![sprite_generic]
@@ -280,21 +278,17 @@ using
 sprite
 =
 fcppt::record::object<
-	typename
-	boost::mpl::transform<
-		// copy is needed because transform does not work on range_c
-		typename
-		fcppt::mpl::copy<
-			boost::mpl::range_c<
-				unsigned,
-				0u,
-				N
-			>
-		>::type,
-		sprite_element<
-			boost::mpl::_
+	brigand::transform<
+		brigand::range<
+			unsigned,
+			0u,
+			N
+		>,
+		brigand::bind<
+			sprite_element,
+			brigand::_1
 		>
-	>::type
+	>
 >;
 // ![sprite_generic]
 

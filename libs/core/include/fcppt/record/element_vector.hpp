@@ -7,8 +7,6 @@
 #ifndef FCPPT_RECORD_ELEMENT_VECTOR_HPP_INCLUDED
 #define FCPPT_RECORD_ELEMENT_VECTOR_HPP_INCLUDED
 
-#include <fcppt/record/element_vector_tpl.hpp>
-
 
 namespace fcppt
 {
@@ -16,7 +14,7 @@ namespace record
 {
 
 /**
-\brief The elements of record as an MPL vector.
+\brief A metafunction returning the elements of record as an MPL vector.
 
 \ingroup fcpptrecord
 
@@ -29,9 +27,7 @@ using
 element_vector
 =
 typename
-fcppt::record::element_vector_tpl<
-	Record
->::type;
+Record::all_types;
 
 }
 }

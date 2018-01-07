@@ -46,7 +46,9 @@ map_reserve(
 			typename
 			Dest::size_type
 		>(
-			fcppt::algorithm::detail::source_size(
+			fcppt::algorithm::detail::source_size<
+				Source
+			>::get(
 				_src
 			)
 		)

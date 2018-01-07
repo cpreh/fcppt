@@ -18,7 +18,7 @@
 #include <vector>
 #include <fcppt/config/external_end.hpp>
 #else
-#error "Wtf"
+#error "Wrong option"
 #endif
 #include <fcppt/config/external_begin.hpp>
 #include <iostream>

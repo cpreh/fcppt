@@ -1,0 +1,11 @@
+/**
+\defgroup fcpptbrigand fcppt.brigand
+\ingroup fcpptmain
+\brief MPL related helper functions and metafunctions
+*/
+
+namespace fcppt
+{
+/// MPL related helper functions and metafunctions
+namespace brigand {}
+}

@@ -30,6 +30,7 @@
 #include <fcppt/record/init.hpp>
 #include <fcppt/variant/match.hpp>
 #include <fcppt/config/external_begin.hpp>
+#include <type_traits>
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
@@ -151,9 +152,12 @@ fcppt::options::many<
 
 				return
 					fcppt::record::element_to_type<
-						decltype(
-							_element
-						)
+						typename
+						std::remove_const<
+							decltype(
+								_element
+							)
+						>::type
 					>{};
 			}
 		)
@@ -210,9 +214,12 @@ fcppt::options::many<
 							);
 
 							typedef
-							decltype(
-								_element
-							)
+							typename
+							std::remove_const<
+								decltype(
+									_element
+								)
+							>::type
 							element;
 
 							typedef

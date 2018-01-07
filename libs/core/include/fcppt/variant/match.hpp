@@ -8,9 +8,10 @@
 #define FCPPT_VARIANT_MATCH_HPP_INCLUDED
 
 #include <fcppt/move_if_rvalue.hpp>
-#include <fcppt/mpl/index_of.hpp>
 #include <fcppt/variant/apply_unary.hpp>
+#include <fcppt/variant/types_of.hpp>
 #include <fcppt/config/external_begin.hpp>
+#include <brigand/algorithms/index_of.hpp>
 #include <tuple>
 #include <type_traits>
 #include <utility>
@@ -63,11 +64,13 @@ match(
 			{
 				return
 					std::get<
-						fcppt::mpl::index_of<
-							typename
-							std::decay<
-								Variant
-							>::type::types,
+						::brigand::index_of<
+							fcppt::variant::types_of<
+								typename
+								std::decay<
+									Variant
+								>::type
+							>,
 							typename
 							std::decay<
 								decltype(

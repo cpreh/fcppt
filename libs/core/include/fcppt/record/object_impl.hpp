@@ -8,9 +8,9 @@
 #define FCPPT_RECORD_OBJECT_IMPL_HPP_INCLUDED
 
 #include <fcppt/no_init_fwd.hpp>
+#include <fcppt/tag_type.hpp>
 #include <fcppt/use.hpp>
 #include <fcppt/algorithm/vararg_map.hpp>
-#include <fcppt/mpl/index_of_iterator.hpp>
 #include <fcppt/record/element_tag_tuple.hpp>
 #include <fcppt/record/element_to_label.hpp>
 #include <fcppt/record/label_value_type.hpp>
@@ -19,11 +19,12 @@
 #include <fcppt/record/detail/element_at.hpp>
 #include <fcppt/record/detail/label_is_same.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/mpl/empty.hpp>
-#include <boost/mpl/find_if.hpp>
-#include <boost/mpl/placeholders.hpp>
-#include <boost/mpl/size.hpp>
-#include <boost/mpl/vector.hpp>
+#include <brigand/algorithms/find.hpp>
+#include <brigand/functions/lambda/apply.hpp>
+#include <brigand/functions/lambda/bind.hpp>
+#include <brigand/sequences/list.hpp>
+#include <brigand/sequences/size.hpp>
+#include <brigand/types/args.hpp>
 #include <tuple>
 #include <type_traits>
 #include <utility>
@@ -40,8 +41,9 @@ fcppt::record::object<
 	elements_()
 {
 	static_assert(
-		boost::mpl::empty<
-			all_types
+		std::is_same<
+			all_types,
+			::brigand::list<>
 		>::value,
 		"record not empty"
 	);
@@ -96,6 +98,15 @@ fcppt::record::object<
 				)...
 			);
 
+			typedef
+			::brigand::list<
+				typename
+				std::decay<
+					Args
+				>::type...
+			>
+			args_list;
+
 			return
 				fcppt::algorithm::vararg_map(
 					fcppt::record::element_tag_tuple<
@@ -127,29 +138,21 @@ fcppt::record::object<
 						);
 
 						typedef
-						boost::mpl::vector<
-							typename
-							std::decay<
-								Args
-							>::type...
-						>
-						vector_type;
-
-						typedef
-						fcppt::mpl::index_of_iterator<
-							vector_type,
-							typename
-							boost::mpl::find_if<
-								vector_type,
-								fcppt::record::detail::label_is_same<
+						::brigand::index_if<
+							args_list,
+							::brigand::bind<
+								fcppt::record::detail::label_is_same,
+								::brigand::pin<
 									fcppt::record::element_to_label<
-										decltype(
-											_fcppt_element
-										)
-									>,
-									boost::mpl::_1
-								>
-							>::type
+										fcppt::tag_type<
+											decltype(
+												_fcppt_element
+											)
+										>
+									>
+								>,
+								::brigand::_1
+							>
 						>
 						index_type;
 
@@ -173,7 +176,7 @@ fcppt::record::object<
 	)
 {
 	static_assert(
-		boost::mpl::size<
+		::brigand::size<
 			all_types
 		>::value
 		==
@@ -186,7 +189,7 @@ fcppt::record::object<
 	static_assert(
 		fcppt::record::detail::all_initializers<
 			all_types,
-			boost::mpl::vector<
+			::brigand::list<
 				Args...
 			>
 		>::value,

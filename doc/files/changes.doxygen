@@ -6,6 +6,14 @@
 \subsection changes_general_to_270 General changes
 
 <ul>
+<li>
+Boost is now optional, which can be controlled by the <code>ENABLE_BOOST</code> CMake flag. It defaults
+to <code>ON</code> if Boost is found. To build <code>fcppt_filesystem</code>, <code>fcppt_system</code>
+or fcppt's tests, Boost is still required.
+Furthermore, all Boost-specific functionality has been moved to <code>fcppt_boost</code>.
+To replace <code>boost::mpl</code>, <code>Brigand</code> has been added as a dependency, which
+can be obtained from <a href="https://github.com/edouarda/brigand">here</a>. It is a small, header-only
+C++11 library that has no dependencies itself.</li>
 <li>Removed <code>-Weffc++</code> warning. Unfortunately, this warning has become even more broken in <code>gcc-8</code>.</li>
 </ul>
 
@@ -20,8 +28,15 @@
 	</ul>
 </li>
 
+<li>\ref fcpptbrigand
+	<p>
+	New library for brigand utility functions.
+	</p>
+</li>
+
 <li>\ref fcpptcasts
 	<ul>
+	<li>Added \link fcppt::cast::promote_int\endlink.</li>
 	<li>Added \link fcppt::cast::to_uint_ptr\endlink.</li>
 	</ul>
 </li>
@@ -76,12 +91,6 @@
 	</ul>
 </li>
 
-<li>\ref fcpptmpl
-	<ul>
-	<li>Added \link fcppt::mpl::sequence_to_tuple\endlink.</li>
-	</ul>
-</li>
-
 <li>\ref fcpptoptional
 	<ul>
 	<li>Added \link fcppt::optional::sequence\endlink.</li>
@@ -96,7 +105,7 @@
 
 <li>\ref fcpptrecord
 	<ul>
-	<li>Added \link fcppt::record::element_tag_tuple\endlink and \link fcppt::record::element_tag_tuple_tpl\endlink.</li>
+	<li>Added \link fcppt::record::element_tag_tuple\endlink.</li>
 	</ul>
 </li>
 
@@ -188,6 +197,18 @@
 	</ul>
 </li>
 
+<li>\ref fcpptcasts
+	<ul>
+	<li>Removed <code>fcppt::cast::promote</code>.</li>
+	</ul>
+</li>
+
+<li>\ref fcpptmath
+	<ul>
+	<li>Removed <code>fcppt::math::to_array_type_tpl</code>.</li>
+	</ul>
+</li>
+
 <li>\ref fcpptmathdim
 	<ul>
 	<li>Removed <code>operator%</code>, <code>operator%=</code> and <code>operator/=</code>.</li>
@@ -210,6 +231,22 @@
 	</ul>
 </li>
 
+<li>\ref fcpptmpl
+	<p>This library is in the process of being replaced by \ref fcpptbrigand.</p>
+</li>
+
+<li>\ref fcpptrecord
+	<ul>
+	<li>Removed <code>fcppt::record::disjoint_product_tpl</code>,</li>
+	<li>Removed <code>fcppt::record::element_map_tpl</code>,</li>
+	<li>Removed <code>fcppt::record::element_to_label_tpl</code>,</li>
+	<li>Removed <code>fcppt::record::element_to_type_tpl</code>,</li>
+	<li>Removed <code>fcppt::record::element_vector_tpl</code>,</li>
+	<li>Removed <code>fcppt::record::label_set_tpl</code>,</li>
+	<li>Removed <code>fcppt::record::label_value_type_tpl</code>,</li>
+	</ul>
+</li>
+
 <li>\ref fcpptstrongtypedef
 	<ul>
 	<li>Removed <code>operator/</code>, <code>operator/=</code>, <code>operator%</code> and <code>operator%=</code>.</li>
@@ -227,6 +264,12 @@
 	<li>Removed <code>fcppt::type_traits::is_input_iterator</code>, <code>fcppt::type_traits::is_output_iterator</code>,
 	<code>fcppt::type_traits::is_forward_iterator</code>, <code>fcppt::type_traits::bidirectional_iterator</code> and
 	<code>fcppt::type_traits::is_random_access_iterator</code>.</li>
+	</ul>
+</li>
+
+<li>\ref fcpptvariant
+	<ul>
+	<li>Removed <code>fcppt::variant::types_of_tpl</code>.</li>
 	</ul>
 </li>
 
@@ -517,13 +560,13 @@
 
 <li>\ref fcpptmpl
 	<ul>
-	<li>Added \link fcppt::mpl::sequence_to_string\endlink.</li>
+	<li>Added <code>fcppt::mpl::sequence_to_string</code>.</li>
 	</ul>
 </li>
 
 <li>\ref fcpptvariant
 	<ul>
-	<li>Added \link fcppt::variant::types_of\endlink and \link fcppt::variant::types_of_tpl\endlink.</li>
+	<li>Added \link fcppt::variant::types_of\endlink and <code>fcppt::variant::types_of_tpl</code>.</li>
 	<li>Added move semantics to \link fcppt::variant::apply_unary\endlink, \link fcppt::variant::apply_binary\endlink and \link fcppt::variant::apply_ternary\endlink.</li>
 	<li>Improved the error message of \link fcppt::variant::invalid_get\endlink.</li>
 	<li>Added \link fcppt::variant::types_string\endlink.</li>
@@ -567,16 +610,16 @@
 
 <li>\ref fcpptmath
 	<ul>
-	<li>Added \link fcppt::math::to_array_type\endlink, \link fcppt::math::to_array_type_tpl\endlink, \link fcppt::math::from_array\endlink and \link fcppt::math::to_array\endlink.</li>
+	<li>Added \link fcppt::math::to_array_type\endlink, <code>fcppt::math::to_array_type_tpl</code>, \link fcppt::math::from_array\endlink and \link fcppt::math::to_array\endlink.</li>
 	</ul>
 </li>
 
 <li>\ref fcpptmpl
 	<ul>
-	<li>Added \link fcppt::mpl::set_intersection\endlink.</li>
-	<li>Added \link fcppt::mpl::set_union\endlink.</li>
-	<li>Added \link fcppt::mpl::set_difference\endlink.</li>
-	<li>Added \link fcppt::mpl::set_symmetric_difference\endlink.</li>
+	<li>Added <code>fcppt::mpl::set_intersection</code>.</li>
+	<li>Added <code>fcppt::mpl::set_union</code>.</li>
+	<li>Added <code>fcppt::mpl::set_difference</code>.</li>
+	<li>Added <code>fcppt::mpl::set_symmetric_difference</code>.</li>
 	</ul>
 </li>
 
@@ -595,19 +638,19 @@
 
 <li>\ref fcpptrecord
 	<ul>
-	<li>Added \link fcppt::record::label_set\endlink and \link fcppt::record::label_set_tpl\endlink.</li>
+	<li>Added \link fcppt::record::label_set\endlink and <code>fcppt::record::label_set_tpl</code>.</li>
 	<li>Added \link fcppt::record::are_disjoint\endlink.</li>
-	<li>Added \link fcppt::record::disjoint_product\endlink and \link fcppt::record::disjoint_product_tpl\endlink.</li>
+	<li>Added \link fcppt::record::disjoint_product\endlink and <code>fcppt::record::disjoint_product_tpl</code>.</li>
 	<li>Added \link fcppt::record::multiply_disjoint\endlink.</li>
 	<li>Added nonconst \link fcppt::record::get\endlink and \link fcppt::record::object::get\endlink.</li>
 	<li>Added \link fcppt::record::has_label\endlink.</li>
-	<li>Added \link fcppt::record::label_value_type_tpl\endlink.</li>
+	<li>Added <code>fcppt::record::label_value_type_tpl</code>.</li>
 	<li>Added \link fcppt::record::are_equivalent\endlink.</li>
-	<li>Added \link fcppt::record::element_map\endlink and \link fcppt::record::element_map_tpl\endlink.</li>
+	<li>Added \link fcppt::record::element_map\endlink and <code>fcppt::record::element_map_tpl</code>.</li>
 	<li>Allow <code>==</code> and <code>!=</code> comparison for equivalent records.</li>
 	<li>Added \link fcppt::record::permute\endlink.</li>
 	<li>Added \link fcppt::record::map_elements\endlink and \link fcppt::record::map\endlink.</li>
-	<li>Added \link fcppt::record::element_vector \endlink and \link fcppt::record::element_vector_tpl\endlink.</li>
+	<li>Added \link fcppt::record::element_vector \endlink and <code>fcppt::record::element_vector_tpl</code>.</li>
 	</ul>
 </li>
 
@@ -815,7 +858,7 @@
 
 <li>\ref fcpptmpl
 	<ul>
-	<li>Added \link fcppt::mpl::index_of_iterator\endlink.</li>
+	<li>Added <code>fcppt::mpl::index_of_iterator</code>.</li>
 	</ul>
 </li>
 
@@ -1072,7 +1115,7 @@
 <li>\ref fcpptmpl
 	<ul>
 	<li>Added \link fcppt::mpl::flatten\endlink.</li>
-	<li>Added \link fcppt::mpl::numeric_max\endlink.</li>
+	<li>Added <code>fcppt::mpl::numeric_max</code>.</li>
 	</ul>
 </li>
 

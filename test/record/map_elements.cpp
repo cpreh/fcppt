@@ -8,13 +8,13 @@
 #include <fcppt/optional/object_impl.hpp>
 #include <fcppt/record/element.hpp>
 #include <fcppt/record/element_to_type.hpp>
-#include <fcppt/record/element_to_type_tpl.hpp>
 #include <fcppt/record/label_value_type.hpp>
 #include <fcppt/record/make_label.hpp>
 #include <fcppt/record/map_elements.hpp>
 #include <fcppt/record/variadic.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/mpl/placeholders.hpp>
+#include <brigand/functions/lambda/bind.hpp>
+#include <brigand/types/args.hpp>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
@@ -26,19 +26,17 @@ template<
 	typename Function,
 	typename Param
 >
-struct result_helper
-{
-	typedef
-	typename
-	std::result_of<
-		Function(
-			fcppt::record::element_to_type<
-				Param
-			>
-		)
-	>::type
-	type;
-};
+using
+result_helper
+=
+typename
+std::result_of<
+	Function(
+		fcppt::record::element_to_type<
+			Param
+		>
+	)
+>::type;
 
 }
 
@@ -69,13 +67,15 @@ main()
 	typedef
 	fcppt::record::map_elements<
 		my_record,
-		fcppt::optional::object<
-			fcppt::record::element_to_type_tpl<
-				boost::mpl::_
+		brigand::bind<
+			fcppt::optional::object,
+			brigand::bind<
+				fcppt::record::element_to_type,
+				brigand::_1
 			>
 		>
 	>
-	result;
+	result1;
 
 	auto const transform(
 		[](
@@ -92,11 +92,12 @@ main()
 	typedef
 	fcppt::record::map_elements<
 		my_record,
-		result_helper<
+		brigand::bind<
+			result_helper,
 			decltype(
 				transform
 			),
-			boost::mpl::_
+			brigand::_1
 		>
 	>
 	result2;
@@ -104,34 +105,52 @@ main()
 	static_assert(
 		std::is_same<
 			fcppt::record::label_value_type<
-				result,
+				result1,
 				int_label
 			>,
 			fcppt::optional::object<
 				int
 			>
 		>::value,
-		""
+		"Invalid int label in result1"
 	);
 
 	static_assert(
 		std::is_same<
 			fcppt::record::label_value_type<
-				result,
+				result1,
 				bool_label
 			>,
 			fcppt::optional::object<
 				bool
 			>
 		>::value,
-		""
+		"Invalid bool label in result1"
 	);
 
 	static_assert(
 		std::is_same<
-			result,
-			result2
+			fcppt::record::label_value_type<
+				result2,
+				int_label
+			>,
+			fcppt::optional::object<
+				int
+			>
 		>::value,
-		""
+		"Invalid int label in result2"
+	);
+
+	static_assert(
+		std::is_same<
+			fcppt::record::label_value_type<
+				result2,
+				bool_label
+			>,
+			fcppt::optional::object<
+				bool
+			>
+		>::value,
+		"Invalid bool label in result2"
 	);
 }

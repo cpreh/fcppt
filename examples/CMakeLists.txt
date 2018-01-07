@@ -55,7 +55,6 @@ function(
 		COMPILE_DEFINITIONS
 			${_COMPILE_DEFINITIONS}
 		INCLUDE_DIRS
-			${Boost_INCLUDE_DIRS}
 			${FCPPT_UTILS_PROJECT_BINARY_DIR}/include
 	)
 endfunction()
@@ -266,6 +265,10 @@ add_fcppt_example(
 )
 
 add_subdirectory(
+	brigand
+)
+
+add_subdirectory(
 	cast
 )
 
@@ -283,10 +286,6 @@ add_subdirectory(
 
 add_subdirectory(
 	math
-)
-
-add_subdirectory(
-	mpl
 )
 
 add_subdirectory(

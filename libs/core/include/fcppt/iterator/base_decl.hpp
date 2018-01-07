@@ -11,9 +11,9 @@
 #include <fcppt/iterator/category_at_least.hpp>
 #include <fcppt/iterator/is_types.hpp>
 #include <fcppt/iterator/types.hpp>
-#include <fcppt/mpl/implication.hpp>
+#include <fcppt/brigand/implication.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/mpl/or.hpp>
+#include <brigand/functions/logical/or.hpp>
 #include <iterator>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
@@ -121,11 +121,11 @@ private:
 	>;
 
 	static_assert(
-		fcppt::mpl::implication<
+		fcppt::brigand::implication<
 			my_category_at_least<
 				std::forward_iterator_tag
 			>,
-			boost::mpl::or_<
+			::brigand::or_<
 				std::is_same<
 					reference,
 					value_type &
@@ -140,7 +140,7 @@ private:
 	);
 
 	static_assert(
-		fcppt::mpl::implication<
+		fcppt::brigand::implication<
 			my_category_at_least<
 				std::random_access_iterator_tag
 			>,

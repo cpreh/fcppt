@@ -11,7 +11,10 @@
 #include <fcppt/variant/size_type.hpp>
 #include <fcppt/variant/detail/index_of.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/mpl/contains.hpp>
+#include <brigand/algorithms/any.hpp>
+#include <brigand/functions/lambda/apply.hpp>
+#include <brigand/types/args.hpp>
+#include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -53,9 +56,14 @@ holds_type(
 )
 {
 	static_assert(
-		boost::mpl::contains<
+		::brigand::any<
 			Elements,
-			Type
+			std::is_same<
+				::brigand::pin<
+					Type
+				>,
+				::brigand::_1
+			>
 		>::value,
 		"Invalid Type in variant::holds_type"
 	);

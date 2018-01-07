@@ -7,13 +7,17 @@
 #ifndef FCPPT_ALGORITHM_DETAIL_OPTIMIZE_MAP_HPP_INCLUDED
 #define FCPPT_ALGORITHM_DETAIL_OPTIMIZE_MAP_HPP_INCLUDED
 
+#include <fcppt/public_config.hpp>
 #include <fcppt/algorithm/detail/has_random_access_iterator.hpp>
 #include <fcppt/algorithm/detail/has_reserve.hpp>
 #include <fcppt/container/detail/has_size.hpp>
+#include <fcppt/type_traits/is_brigand_sequence.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/mpl/and.hpp>
+#include <brigand/functions/logical/and.hpp>
+#include <brigand/functions/logical/or.hpp>
+#if defined(FCPPT_BOOST_SUPPORT)
 #include <boost/mpl/is_sequence.hpp>
-#include <boost/mpl/or.hpp>
+#endif
 #include <fcppt/config/external_end.hpp>
 
 
@@ -28,22 +32,29 @@ template<
 	typename Dest,
 	typename Source
 >
-using optimize_map
+using
+optimize_map
 =
-boost::mpl::and_<
+::brigand::and_<
 	fcppt::algorithm::detail::has_reserve<
 		Dest
 	>,
-	boost::mpl::or_<
+	::brigand::or_<
 		fcppt::algorithm::detail::has_random_access_iterator<
 			Source
 		>,
 		fcppt::container::detail::has_size<
 			Source
 		>,
+		fcppt::type_traits::is_brigand_sequence<
+			Source
+		>
+#if defined(FCPPT_BOOST_SUPPORT)
+		,
 		boost::mpl::is_sequence<
 			Source
 		>
+#endif
 	>
 >;
 

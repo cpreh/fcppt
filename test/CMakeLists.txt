@@ -64,6 +64,15 @@ fcppt_utils_link_target(
 	fcppt_options
 )
 
+if(
+	ENABLE_BOOST
+)
+	set(
+		FCPPT_TEST_BOOST_INTERFACE
+		fcppt_boost_interface
+	)
+endif()
+
 add_fcppt_test(
 	absurd
 	NO_CODE
@@ -85,8 +94,18 @@ add_fcppt_test(
 	bit
 )
 
-add_fcppt_test(
-	boost_units_value
+if(
+	ENABLE_BOOST
+)
+	add_fcppt_test(
+		boost_units_value
+		LINK_LIBS
+			fcppt_boost_interface
+	)
+endif()
+
+add_subdirectory(
+	brigand
 )
 
 add_subdirectory(
@@ -167,6 +186,8 @@ add_subdirectory(
 
 add_fcppt_test(
 	literal
+	LINK_LIBS
+		${FCPPT_TEST_BOOST_INTERFACE}
 )
 
 add_fcppt_test(
@@ -177,9 +198,13 @@ add_subdirectory(
 	math
 )
 
-add_subdirectory(
-	mpl
+if(
+	ENABLE_BOOST
 )
+	add_subdirectory(
+		mpl
+	)
+endif()
 
 add_fcppt_test(
 	move_clear
@@ -221,9 +246,15 @@ add_fcppt_test(
 	reference_to_const
 )
 
-add_fcppt_test(
-	scoped_state_machine
+if(
+	ENABLE_BOOST
 )
+	add_fcppt_test(
+		scoped_state_machine
+		LINK_LIBS
+			fcppt_boost_interface
+	)
+endif()
 
 add_subdirectory(
 	shared_ptr

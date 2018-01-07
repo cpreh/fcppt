@@ -7,7 +7,14 @@
 #ifndef FCPPT_RECORD_ELEMENT_TAG_TUPLE_HPP_INCLUDED
 #define FCPPT_RECORD_ELEMENT_TAG_TUPLE_HPP_INCLUDED
 
-#include <fcppt/record/element_tag_tuple_tpl.hpp>
+#include <fcppt/tag.hpp>
+#include <fcppt/record/element_vector.hpp>
+#include <fcppt/config/external_begin.hpp>
+#include <brigand/adapted/tuple.hpp>
+#include <brigand/algorithms/transform.hpp>
+#include <brigand/functions/lambda/bind.hpp>
+#include <brigand/types/args.hpp>
+#include <fcppt/config/external_end.hpp>
 
 
 namespace fcppt
@@ -16,7 +23,7 @@ namespace record
 {
 
 /**
-\brief The elements of record as a <code>std::tuple</code> of <code>fcppt::tag</code> types.
+\brief A metafunction returning the elements of record as a <code>std::tuple</code> of <code>fcppt::tag</code> types.
 
 \ingroup fcpptrecord
 
@@ -28,10 +35,17 @@ template<
 using
 element_tag_tuple
 =
-typename
-fcppt::record::element_tag_tuple_tpl<
-	Record
->::type;
+::brigand::as_tuple<
+	::brigand::transform<
+		fcppt::record::element_vector<
+			Record
+		>,
+		::brigand::bind<
+			fcppt::tag,
+			::brigand::_1
+		>
+	>
+>;
 
 }
 }

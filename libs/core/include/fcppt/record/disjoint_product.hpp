@@ -7,7 +7,7 @@
 #ifndef FCPPT_RECORD_DISJOINT_PRODUCT_HPP_INCLUDED
 #define FCPPT_RECORD_DISJOINT_PRODUCT_HPP_INCLUDED
 
-#include <fcppt/record/disjoint_product_tpl.hpp>
+#include <fcppt/record/detail/disjoint_product.hpp>
 
 
 namespace fcppt
@@ -17,6 +17,8 @@ namespace record
 
 /**
 \brief The product of two disjoint records
+
+\ingroup fcpptrecord
 */
 template<
 	typename RecordL,
@@ -26,7 +28,7 @@ using
 disjoint_product
 =
 typename
-fcppt::record::disjoint_product_tpl<
+fcppt::record::detail::disjoint_product<
 	RecordL,
 	RecordR
 >::type;

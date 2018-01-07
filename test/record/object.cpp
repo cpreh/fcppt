@@ -162,7 +162,7 @@ BOOST_AUTO_TEST_CASE(
 		4
 	};
 
-	my_record test(
+	my_record test{
 		int_label{} =
 			arg1,
 		bool_label{} =
@@ -175,7 +175,7 @@ BOOST_AUTO_TEST_CASE(
 			move_only{
 				10
 			}
-	);
+	};
 
 	BOOST_CHECK_EQUAL(
 		fcppt::record::get<

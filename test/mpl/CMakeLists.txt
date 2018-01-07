@@ -4,6 +4,8 @@ function(
 )
 	add_fcppt_test(
 		mpl/${TEST_NAME}
+		LINK_LIBS
+			fcppt_boost_interface
 		${ARGN}
 	)
 endfunction()
@@ -34,26 +36,6 @@ add_fcppt_mpl_test(
 )
 
 add_fcppt_mpl_test(
-	numeric_max
-	NO_CODE
-)
-
-add_fcppt_mpl_test(
-	set_difference
-	NO_CODE
-)
-
-add_fcppt_mpl_test(
-	set_intersection
-	NO_CODE
-)
-
-add_fcppt_mpl_test(
-	set_symmetric_difference
-	NO_CODE
-)
-
-add_fcppt_mpl_test(
-	set_union
+	to_brigand
 	NO_CODE
 )

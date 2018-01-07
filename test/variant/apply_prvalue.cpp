@@ -5,9 +5,8 @@
 
 
 #include <fcppt/variant/apply_ternary.hpp>
-#include <fcppt/variant/object.hpp>
+#include <fcppt/variant/variadic.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/mpl/vector/vector10.hpp>
 #include <boost/test/unit_test.hpp>
 #include <string>
 #include <fcppt/config/external_end.hpp>
@@ -57,12 +56,10 @@ BOOST_AUTO_TEST_CASE(
 )
 {
 	typedef
-	fcppt::variant::object<
-		boost::mpl::vector3<
-			bool,
-			int,
-			std::string
-		>
+	fcppt::variant::variadic<
+		bool,
+		int,
+		std::string
 	>
 	variant;
 

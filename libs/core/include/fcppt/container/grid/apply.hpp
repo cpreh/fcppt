@@ -9,13 +9,14 @@
 
 #include <fcppt/move_if_rvalue.hpp>
 #include <fcppt/algorithm/all_of.hpp>
+#include <fcppt/brigand/all_of.hpp>
 #include <fcppt/container/grid/is_object.hpp>
 #include <fcppt/container/grid/object_impl.hpp>
 #include <fcppt/math/dim/comparison.hpp>
-#include <fcppt/mpl/all_of.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/mpl/placeholders.hpp>
-#include <boost/mpl/vector.hpp>
+#include <brigand/functions/lambda/bind.hpp>
+#include <brigand/sequences/list.hpp>
+#include <brigand/types/args.hpp>
 #include <array>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
@@ -100,15 +101,16 @@ fcppt::container::grid::object<
 	);
 
 	static_assert(
-		fcppt::mpl::all_of<
-			boost::mpl::vector<
+		fcppt::brigand::all_of<
+			::brigand::list<
 				typename
 				std::decay<
 					Grids
 				>::type...
 			>,
-			fcppt::container::grid::is_object<
-				boost::mpl::_1
+			::brigand::bind<
+				fcppt::container::grid::is_object,
+				::brigand::_1
 			>
 		>::value,
 		"Grids must all be grids"

@@ -64,10 +64,6 @@ include(
 	CheckCXXSourceCompiles
 )
 
-include(
-	CheckCXXSourceRuns
-)
-
 if(
 	WIN32
 )
@@ -88,11 +84,100 @@ option(
 	${ENABLE_NARROW_STRING_DEFAULT}
 )
 
+find_package(
+	Brigand
+	REQUIRED
+)
+
+find_package(
+	Boost
+	1.47.0
+	COMPONENTS
+	filesystem
+	signals
+	system
+	unit_test_framework
+)
+
+if(
+	NOT
+	"${Boost_INCLUDE_DIRS}"
+	STREQUAL
+	""
+)
+	set(
+		ENABLE_BOOST_DEFAULT
+		ON
+	)
+else()
+	set(
+		ENABLE_BOOST_DEFAULT
+		OFF
+	)
+endif()
+
+option(
+	ENABLE_BOOST
+	"Build the boost support library"
+	${ENABLE_BOOST_DEFAULT}
+)
+
+option(
+	ENABLE_FILESYSTEM
+	"Build the filesystem library"
+	${Boost_FILESYSTEM_FOUND}
+)
+
+option(
+	ENABLE_SYSTEM
+	"Build the system library"
+	${Boost_SYSTEM_FOUND}
+)
+
+option(
+	ENABLE_EXAMPLES
+	"Build the examples"
+	ON
+)
+
+option(
+	ENABLE_TEST
+	"Build the tests"
+	${Boost_UNIT_TEST_FRAMEWORK_FOUND}
+)
+
+set(
+	SIGNALS_BENCHMARK_BACKEND
+	"fcppt"
+	CACHE
+	STRING
+	"Which backend to use for the signal benchmark example (fcppt/boostsignals/boostsignals2)"
+)
+
+if(
+	${SIGNALS_BENCHMARK_BACKEND}
+	STREQUAL
+	"boostsignals"
+	AND
+	NOT
+	${Boost_SIGNALS_FOUND}
+)
+	message(
+		FATAL_ERROR
+		"Boost signals is required to run the boostsignals benchmark"
+	)
+endif()
+
 fcppt_utils_static_shared()
 
 set(
 	FCPPT_NARROW_STRING
 	${ENABLE_NARROW_STRING}
+)
+
+set(
+	FCPPT_BOOST_SUPPORT
+	${ENABLE_BOOST}
 )
 
 if(
@@ -108,106 +193,6 @@ if(
 		FCPPT_HAVE_GCC_DEMANGLE
 	)
 endif()
-
-set(
-	SIGNALS_BENCHMARK_BACKEND
-	"fcppt"
-	CACHE
-	STRING
-	"Which backend to use for the signal benchmark example (fcppt/boostsignals/boostsignals2)"
-)
-
-option(
-	ENABLE_FILESYSTEM
-	"Build the filesystem library"
-	ON
-)
-
-option(
-	ENABLE_SYSTEM
-	"Build the system library"
-	ON
-)
-
-if(
-	ENABLE_FILESYSTEM
-)
-	list(
-		APPEND
-		NEEDED_BOOST_LIBS
-		filesystem
-		system
-	)
-endif()
-
-if(
-	ENABLE_SYSTEM
-	AND
-	NOT
-	ENABLE_FILESYSTEM
-)
-	list(
-		APPEND
-		NEEDED_BOOST_LIBS
-		system
-	)
-endif()
-
-if(
-	${SIGNALS_BENCHMARK_BACKEND}
-	STREQUAL
-	"boostsignals"
-)
-	list(
-		APPEND
-		NEEDED_BOOST_LIBS
-		"signals"
-	)
-endif()
-
-option(
-	ENABLE_EXAMPLES
-	"Build the examples"
-	ON
-)
-
-option(
-	ENABLE_TEST
-	"Build the tests"
-	ON
-)
-
-if(
-	ENABLE_TEST
-)
-	list(
-		APPEND
-		NEEDED_BOOST_LIBS
-		"unit_test_framework"
-	)
-endif()
-
-find_package(
-	Boost
-	1.47.0
-	REQUIRED
-	COMPONENTS
-	"${NEEDED_BOOST_LIBS}"
-)
-
-unset(
-	NEEDED_BOOST_LIBS
-)
-
-link_directories(
-	${Boost_LIBRARY_DIRS}
-)
-
-set(
-	CMAKE_REQUIRED_INCLUDES
-	${FCPPT_UTILS_PROJECT_SOURCE_DIR}/include
-	${Boost_INCLUDE_DIRS}
-)
 
 CHECK_CXX_SOURCE_COMPILES(
 	"#include <execinfo.h>
@@ -272,6 +257,7 @@ function(
 		TRANSITIVE_FCPPT_DEPS
 		OTHER_DEPS
 		TRANSITIVE_DEPS
+		INCLUDE_DIRS
 	)
 
 	cmake_parse_arguments(
@@ -339,7 +325,7 @@ function(
 		PUBLIC_INCLUDES
 		"$<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>"
 		"$<BUILD_INTERFACE:${FCPPT_UTILS_PROJECT_BINARY_DIR}/include>"
-		${Boost_INCLUDE_DIRS}
+		${_INCLUDE_DIRS}
 	)
 
 	if(
@@ -407,6 +393,7 @@ function(
 )
 	set(
 		OPTION_ARGS
+		IS_INTERFACE
 		HAS_IMPL_DIR
 	)
 
@@ -421,6 +408,7 @@ function(
 		TRANSITIVE_FCPPT_DEPS
 		OTHER_DEPS
 		TRANSITIVE_DEPS
+		INCLUDE_DIRS
 	)
 
 	set(
@@ -453,14 +441,19 @@ function(
 		)
 	endif()
 
-	fcppt_generate_symbol_header(
-		EXPORTS_NAME
-			"${FULL_NAME}"
-		SYMBOL_NAME
-			"${_SYMBOL_NAME}_DETAIL"
-		STATIC_LINK_FLAG
-			"${FCPPT_STATIC_LINK_FLAG}"
+	if(
+		NOT
+		${_IS_INTERFACE}
 	)
+		fcppt_generate_symbol_header(
+			EXPORTS_NAME
+				"${FULL_NAME}"
+			SYMBOL_NAME
+				"${_SYMBOL_NAME}_DETAIL"
+			STATIC_LINK_FLAG
+				"${FCPPT_STATIC_LINK_FLAG}"
+		)
+	endif()
 
 	fcppt_utils_interface_link_name(
 		${FULL_NAME}
@@ -477,6 +470,9 @@ function(
 
 	if(
 		ENABLE_SHARED
+		AND
+		NOT
+		${_IS_INTERFACE}
 	)
 		make_fcppt_library_base(
 			"${FULL_NAME}"
@@ -489,6 +485,9 @@ function(
 
 	if(
 		ENABLE_STATIC
+		AND
+		NOT
+		${_IS_INTERFACE}
 	)
 		foreach(
 			FCPPTDEP
@@ -524,6 +523,8 @@ function(
 				${_OTHER_DEPS}
 			TRANSITIVE_DEPS
 				${_TRANSITIVE_DEPS}
+			INCLUDE_DIRS
+				${_INCLUDE_DIRS}
 		)
 	endif()
 
@@ -592,6 +593,7 @@ set(
 
 install(
 	FILES
+	${FCPPT_CMAKE_MODULES_DIR}/FindBrigand.cmake
 	${FCPPT_CMAKE_MODULES_DIR}/FindFcpptThreads.cmake
 	${FCPPT_CMAKE_MODULES_DIR}/FcpptCMakeUtils.cmake
 	${FCPPT_CMAKE_MODULES_DIR}/FcpptExport.cmake

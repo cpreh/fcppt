@@ -9,7 +9,7 @@
 
 #include <fcppt/record/label_set.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/mpl/has_key.hpp>
+#include <brigand/sequences/has_key.hpp>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -27,16 +27,15 @@ template<
 	typename Record,
 	typename Label
 >
-struct has_label
-:
-boost::mpl::has_key<
+using
+has_label
+=
+::brigand::has_key<
 	fcppt::record::label_set<
 		Record
 	>,
 	Label
->
-{
-};
+>;
 
 }
 }

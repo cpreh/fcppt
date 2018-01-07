@@ -132,7 +132,7 @@ to the <code>I</code>'th texture element:
 \snippet record.cpp sprite_element
 
 Finally, to declare our sprite with N textures, we use
-<code>boost::mpl::transform</code> to transform a sequence of integers
+<code>brigand::transform</code> to transform a sequence of integers
 <code>0,...,N-1</code> to <code>sprite_element<0>, ..., sprite_element<N-1></code>.
 
 \snippet record.cpp sprite_generic
@@ -181,16 +181,8 @@ Here is an example that shows how such a sprite can be initialized:
 <td>Contains \link fcppt::record::element_to_label\endlink.</td>
 </tr>
 <tr>
-<td><code>element_to_label_tpl.hpp</code></td>
-<td>Contains \link fcppt::record::element_to_label_tpl\endlink.</td>
-</tr>
-<tr>
 <td><code>element_to_type.hpp</code></td>
 <td>Contains \link fcppt::record::element_to_type\endlink.</td>
-</tr>
-<tr>
-<td><code>element_to_type_tpl.hpp</code></td>
-<td>Contains \link fcppt::record::element_to_type_tpl\endlink.</td>
 </tr>
 <tr>
 <td><code>get.hpp</code></td>

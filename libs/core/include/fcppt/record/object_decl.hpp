@@ -8,18 +8,20 @@
 #define FCPPT_RECORD_OBJECT_DECL_HPP_INCLUDED
 
 #include <fcppt/no_init_fwd.hpp>
-#include <fcppt/mpl/all_of.hpp>
-#include <fcppt/mpl/sequence_to_tuple.hpp>
 #include <fcppt/preprocessor/disable_vc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
-#include <fcppt/record/element_to_type_tpl.hpp>
+#include <fcppt/record/element_to_type.hpp>
 #include <fcppt/record/is_element.hpp>
 #include <fcppt/record/label_value_type.hpp>
 #include <fcppt/record/object_fwd.hpp>
+#include <fcppt/type_traits/is_brigand_sequence.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/mpl/placeholders.hpp>
-#include <boost/mpl/transform_view.hpp>
+#include <brigand/adapted/tuple.hpp>
+#include <brigand/algorithms/all.hpp>
+#include <brigand/algorithms/transform.hpp>
+#include <brigand/functions/lambda/bind.hpp>
+#include <brigand/types/args.hpp>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -50,10 +52,17 @@ class object
 {
 public:
 	static_assert(
-		fcppt::mpl::all_of<
+		fcppt::type_traits::is_brigand_sequence<
+			Types
+		>::value,
+		"Types must be a brigand sequence"
+	);
+
+	static_assert(
+		::brigand::all<
 			Types,
 			fcppt::record::is_element<
-				boost::mpl::_1
+				::brigand::_1
 			>
 		>::value,
 		"Types of record::object must all be fcppt::record::element<>"
@@ -73,15 +82,15 @@ public:
 	\brief The std::tuple type <code>(T_1,...,T_n)</code>.
 	*/
 	typedef
-	typename
-	fcppt::mpl::sequence_to_tuple<
-		boost::mpl::transform_view<
+	::brigand::as_tuple<
+		::brigand::transform<
 			all_types,
-			fcppt::record::element_to_type_tpl<
-				boost::mpl::_1
+			::brigand::bind<
+				fcppt::record::element_to_type,
+				::brigand::_1
 			>
 		>
-	>::type
+	>
 	tuple;
 
 	/**

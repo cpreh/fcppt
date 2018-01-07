@@ -7,11 +7,13 @@
 #ifndef FCPPT_CONTAINER_MAKE_ARRAY_HPP_INCLUDED
 #define FCPPT_CONTAINER_MAKE_ARRAY_HPP_INCLUDED
 
-#include <fcppt/mpl/all_of.hpp>
+#include <fcppt/brigand/all_of.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/mpl/front.hpp>
-#include <boost/mpl/placeholders.hpp>
-#include <boost/mpl/vector.hpp>
+#include <brigand/functions/lambda/apply.hpp>
+#include <brigand/functions/lambda/bind.hpp>
+#include <brigand/sequences/front.hpp>
+#include <brigand/sequences/list.hpp>
+#include <brigand/types/args.hpp>
 #include <array>
 #include <type_traits>
 #include <utility>
@@ -38,15 +40,14 @@ template<
 >
 inline
 std::array<
-	typename
-	boost::mpl::front<
-		boost::mpl::vector<
+	::brigand::front<
+		::brigand::list<
 			typename
 			std::decay<
 				Args
 			>::type...
 		>
-	>::type,
+	>,
 	sizeof...(Args)
 >
 make_array(
@@ -54,7 +55,7 @@ make_array(
 )
 {
 	typedef
-	boost::mpl::vector<
+	::brigand::list<
 		typename
 		std::decay<
 			Args
@@ -63,10 +64,9 @@ make_array(
 	decayed_args;
 
 	typedef
-	typename
-	boost::mpl::front<
+	::brigand::front<
 		decayed_args
-	>::type
+	>
 	first_type;
 
 	typedef
@@ -77,11 +77,14 @@ make_array(
 	result_type;
 
 	static_assert(
-		fcppt::mpl::all_of<
+		fcppt::brigand::all_of<
 			decayed_args,
-			std::is_same<
-				first_type,
-				boost::mpl::_1
+			::brigand::bind<
+				std::is_same,
+				::brigand::pin<
+					first_type
+				>,
+				::brigand::_1
 			>
 		>::value,
 		"All types of make_array must be the same"

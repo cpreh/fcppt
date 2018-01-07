@@ -10,7 +10,7 @@
 #include <fcppt/record/make_label.hpp>
 #include <fcppt/record/variadic.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/mpl/has_key.hpp>
+#include <brigand/sequences/has_key.hpp>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -57,7 +57,7 @@ main()
 	product_labels;
 
 	static_assert(
-		boost::mpl::has_key<
+		brigand::has_key<
 			product_labels,
 			int_label
 		>::value,
@@ -65,7 +65,7 @@ main()
 	);
 
 	static_assert(
-		boost::mpl::has_key<
+		brigand::has_key<
 			product_labels,
 			bool_label
 		>::value,

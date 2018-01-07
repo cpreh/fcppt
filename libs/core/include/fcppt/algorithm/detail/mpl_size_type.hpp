@@ -7,9 +7,14 @@
 #ifndef FCPPT_ALGORITHM_DETAIL_MPL_SIZE_TYPE_HPP_INCLUDED
 #define FCPPT_ALGORITHM_DETAIL_MPL_SIZE_TYPE_HPP_INCLUDED
 
+#include <fcppt/public_config.hpp>
+#include <fcppt/type_traits/is_brigand_sequence.hpp>
 #include <fcppt/config/external_begin.hpp>
+#include <brigand/sequences/size.hpp>
+#if defined(FCPPT_BOOST_SUPPORT)
 #include <boost/mpl/is_sequence.hpp>
 #include <boost/mpl/size.hpp>
+#endif
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
@@ -39,6 +44,28 @@ struct mpl_size_type<
 	Type,
 	typename
 	std::enable_if<
+		fcppt::type_traits::is_brigand_sequence<
+			Type
+		>::value
+	>::type
+>
+{
+	typedef
+	typename
+	::brigand::size<
+		Type
+	>::value_type
+	type;
+};
+
+#if defined(FCPPT_BOOST_SUPPORT)
+template<
+	typename Type
+>
+struct mpl_size_type<
+	Type,
+	typename
+	std::enable_if<
 		boost::mpl::is_sequence<
 			Type
 		>::value
@@ -52,6 +79,7 @@ struct mpl_size_type<
 	>::value_type
 	type;
 };
+#endif
 
 }
 }

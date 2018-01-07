@@ -8,9 +8,11 @@
 #define FCPPT_VARIANT_DETAIL_INDEX_OF_HPP_INCLUDED
 
 #include <fcppt/cast/static_cast_fun.hpp>
-#include <fcppt/mpl/index_of.hpp>
-#include <fcppt/mpl/integral_cast.hpp>
+#include <fcppt/brigand/integral_cast.hpp>
 #include <fcppt/variant/size_type.hpp>
+#include <fcppt/config/external_begin.hpp>
+#include <brigand/algorithms/index_of.hpp>
+#include <fcppt/config/external_end.hpp>
 
 
 namespace fcppt
@@ -26,10 +28,10 @@ template<
 >
 using index_of
 =
-fcppt::mpl::integral_cast<
+fcppt::brigand::integral_cast<
 	fcppt::variant::size_type,
 	fcppt::cast::static_cast_fun,
-	fcppt::mpl::index_of<
+	::brigand::index_of<
 		Types,
 		Element
 	>

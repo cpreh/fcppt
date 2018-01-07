@@ -7,9 +7,9 @@
 #ifndef FCPPT_RECORD_DETAIL_ELEMENT_AT_HPP_INCLUDED
 #define FCPPT_RECORD_DETAIL_ELEMENT_AT_HPP_INCLUDED
 
-#include <fcppt/mpl/index_of_iterator.hpp>
-#include <fcppt/record/detail/find_element.hpp>
+#include <fcppt/record/detail/find_element_predicate.hpp>
 #include <fcppt/config/external_begin.hpp>
+#include <brigand/algorithms/index_of.hpp>
 #include <tuple>
 #include <fcppt/config/external_end.hpp>
 
@@ -36,10 +36,9 @@ element_at(
 {
 	return
 		std::get<
-			fcppt::mpl::index_of_iterator<
+			::brigand::index_if<
 				Types,
-				fcppt::record::detail::find_element<
-					Types,
+				fcppt::record::detail::find_element_predicate<
 					Label
 				>
 			>::value

@@ -14,6 +14,14 @@ if(
 	)
 endif()
 
+if(
+	ENABLE_BOOST
+)
+	add_subdirectory(
+		boost
+	)
+endif()
+
 add_subdirectory(
 	core
 )
