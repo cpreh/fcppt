@@ -7,11 +7,11 @@
 #ifndef FCPPT_CONTAINER_DETAIL_UNTUPLE_HPP_INCLUDED
 #define FCPPT_CONTAINER_DETAIL_UNTUPLE_HPP_INCLUDED
 
-#include <fcppt/move_if.hpp>
+#include <fcppt/move_if_rvalue.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <cstddef>
 #include <tuple>
-#include <type_traits>
+#include <utility>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -23,115 +23,35 @@ namespace detail
 {
 
 template<
-	bool Move,
-	std::size_t Cur,
-	std::size_t Size,
-	typename Enable = void
+	typename Tuple,
+	typename Function,
+	std::size_t... Indices
 >
-struct untuple;
-
-template<
-	bool Move,
-	std::size_t Cur,
-	std::size_t Size
->
-struct untuple<
-	Move,
-	Cur,
-	Size,
-	typename
-	std::enable_if<
-		Cur
-		==
-		Size
-	>::type
->
-{
-	template<
-		typename Tuple,
-		typename Function,
-		typename... Args
+inline
+decltype(
+	auto
+)
+untuple(
+	Tuple &&_tuple,
+	Function const &_function,
+	std::index_sequence<
+		Indices...
 	>
-	inline
-	static
-	decltype(
-		auto
-	)
-	execute(
-		Tuple &,
-		Function const &_function,
-		Args &&... _fcppt_untuple_args
-	)
-	{
-		return
-			_function(
-				fcppt::move_if<
-					Move
-				>(
-					_fcppt_untuple_args
-				)...
-			);
-	}
-};
-
-template<
-	bool Move,
-	std::size_t Cur,
-	std::size_t Size
->
-struct untuple<
-	Move,
-	Cur,
-	Size,
-	typename
-	std::enable_if<
-		Cur
-		!=
-		Size
-	>::type
->
+)
 {
-	template<
-		typename Tuple,
-		typename Function,
-		typename... Args
-	>
-	inline
-	static
-	decltype(
-		auto
-	)
-	execute(
-		Tuple &_tuple,
-		Function const &_function,
-		Args &&... _fcppt_untuple_args
-	)
-	{
-		return
-			fcppt::container::detail::untuple<
-				Move,
-				Cur + 1u,
-				Size
-			>::execute(
-				_tuple,
-				_function,
-				std::forward<
-					Args
+	return
+		_function(
+			fcppt::move_if_rvalue<
+				Tuple
+			>(
+				std::get<
+					Indices
 				>(
-					_fcppt_untuple_args
-				)...,
-				fcppt::move_if<
-					Move
-				>(
-					std::get<
-						Cur
-					>(
-						_tuple
-					)
+					_tuple
 				)
-			);
-	}
-};
+			)...
+		);
+}
 
 }
 }

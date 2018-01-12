@@ -12,7 +12,7 @@
 #include <fcppt/type_traits/remove_cv_ref.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <tuple>
-#include <type_traits>
+#include <utility>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -62,17 +62,18 @@ untuple(
 	);
 
 	return
-		fcppt::container::detail::untuple<
-			!std::is_lvalue_reference<
+		fcppt::container::detail::untuple(
+			std::forward<
 				Tuple
-			>::value,
-			0u,
-			std::tuple_size<
-				tuple_type
-			>::value
-		>:: template execute(
-			_tuple,
-			_function
+			>(
+				_tuple
+			),
+			_function,
+			std::make_index_sequence<
+				std::tuple_size<
+					tuple_type
+				>::value
+			>{}
 		);
 }
 
