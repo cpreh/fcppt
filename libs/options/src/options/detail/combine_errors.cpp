@@ -8,8 +8,10 @@
 #include <fcppt/options/error.hpp>
 #include <fcppt/options/other_error.hpp>
 #include <fcppt/options/detail/combine_errors.hpp>
+#include <fcppt/type_traits/remove_cv_ref.hpp>
 #include <fcppt/variant/apply_binary.hpp>
 #include <fcppt/config/external_begin.hpp>
+#include <brigand/functions/logical/or.hpp>
 #include <type_traits>
 #include <utility>
 #include <fcppt/config/external_end.hpp>
@@ -41,15 +43,41 @@ append_errors(
 		);
 }
 
+template<
+	typename Error1,
+	typename Error2
+>
+using
+errors_same
+=
+std::is_same<
+	typename
+	fcppt::type_traits::remove_cv_ref<
+		Error1
+	>::type,
+	typename
+	fcppt::type_traits::remove_cv_ref<
+		Error2
+	>::type
+>;
+
 struct combiner
 {
 	template<
-		typename Error
+		typename Error1,
+		typename Error2
 	>
-	fcppt::options::error
+	typename
+	std::enable_if<
+		errors_same<
+			Error1,
+			Error2
+		>::value,
+		fcppt::options::error
+	>::type
 	operator()(
-		Error &&_error1,
-		Error &&_error2
+		Error1 &&_error1,
+		Error2 &&_error2
 	) const
 	{
 		return
@@ -69,29 +97,37 @@ struct combiner
 		typename Error1,
 		typename Error2
 	>
-	fcppt::options::error
+	typename
+	std::enable_if<
+		!errors_same<
+			Error1,
+			Error2
+		>::value,
+		fcppt::options::error
+	>::type
 	operator()(
 		Error1 &&_error1,
 		Error2 &&_error2
 	) const
 	{
 		static_assert(
-			std::is_same<
-				typename
-				std::decay<
-					Error1
-				>::type,
-				fcppt::options::other_error
-			>::value
-			||
-			std::is_same<
-				typename
-				std::decay<
-					Error2
-				>::type,
-				fcppt::options::other_error
+			::brigand::or_<
+				std::is_same<
+					typename
+					fcppt::type_traits::remove_cv_ref<
+						Error1
+					>::type,
+					fcppt::options::other_error
+				>,
+				std::is_same<
+					typename
+					fcppt::type_traits::remove_cv_ref<
+						Error2
+					>::type,
+					fcppt::options::other_error
+				>
 			>::value,
-			""
+			"One of the types must be other_error"
 		);
 
 		return
