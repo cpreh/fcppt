@@ -56,6 +56,10 @@ add_fcppt_record_test(
 )
 
 add_fcppt_record_test(
+	label_arg
+)
+
+add_fcppt_record_test(
 	label_value_type
 	NO_CODE
 )
