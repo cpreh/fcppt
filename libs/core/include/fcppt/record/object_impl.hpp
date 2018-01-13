@@ -8,24 +8,15 @@
 #define FCPPT_RECORD_OBJECT_IMPL_HPP_INCLUDED
 
 #include <fcppt/no_init_fwd.hpp>
-#include <fcppt/tag_type.hpp>
-#include <fcppt/use.hpp>
-#include <fcppt/algorithm/vararg_map.hpp>
 #include <fcppt/record/element_tag_tuple.hpp>
-#include <fcppt/record/element_to_label.hpp>
 #include <fcppt/record/label_value_type.hpp>
 #include <fcppt/record/object_decl.hpp>
 #include <fcppt/record/detail/all_initializers.hpp>
 #include <fcppt/record/detail/element_at.hpp>
-#include <fcppt/record/detail/label_is_same.hpp>
+#include <fcppt/record/detail/init_ctor.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <brigand/algorithms/find.hpp>
-#include <brigand/functions/lambda/apply.hpp>
-#include <brigand/functions/lambda/bind.hpp>
 #include <brigand/sequences/list.hpp>
 #include <brigand/sequences/size.hpp>
-#include <brigand/types/args.hpp>
-#include <tuple>
 #include <type_traits>
 #include <utility>
 #include <fcppt/config/external_end.hpp>
@@ -83,97 +74,21 @@ fcppt::record::object<
 	Args && ..._args
 )
 :
-	elements_(
-		[](
-			auto &&... _args2
-		){
-			std::tuple<
-				typename
-				std::decay<
-					Args
-				>::type...
-			> arguments(
-				std::move(
-					_args2
-				)...
-			);
-
-			typedef
-			::brigand::list<
-				typename
-				std::decay<
-					Args
-				>::type...
-			>
-			args_list;
-
-			return
-				fcppt::algorithm::vararg_map(
-					fcppt::record::element_tag_tuple<
-						this_type
-					>{},
-					[](
-						auto &&... _args_inner
-					)
-					{
-						return
-							tuple{
-								std::forward<
-									decltype(
-										_args_inner
-									)
-								>(
-									_args_inner
-								)...
-							};
-					},
-					[
-						&arguments
-					](
-						auto const _fcppt_element
-					)
-					{
-						FCPPT_USE(
-							_fcppt_element
-						);
-
-						typedef
-						::brigand::index_if<
-							args_list,
-							::brigand::bind<
-								fcppt::record::detail::label_is_same,
-								::brigand::pin<
-									fcppt::record::element_to_label<
-										fcppt::tag_type<
-											decltype(
-												_fcppt_element
-											)
-										>
-									>
-								>,
-								::brigand::_1
-							>
-						>
-						index_type;
-
-						return
-							std::move(
-								std::get<
-									index_type::value
-								>(
-									arguments
-								).value()
-							);
-					}
-				);
-		}(
+	elements_{
+		fcppt::record::detail::init_ctor<
+			tuple,
+			fcppt::record::element_tag_tuple<
+				this_type
+			>,
+			Args...
+		>(
 			std::forward<
 				Args
 			>(
 				_args
 			)...
 		)
-	)
+	}
 {
 	static_assert(
 		::brigand::size<

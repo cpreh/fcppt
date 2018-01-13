@@ -1010,6 +1010,7 @@ set(
 	libs/core/include/fcppt/record/detail/find_element.hpp
 	libs/core/include/fcppt/record/detail/find_element_predicate.hpp
 	libs/core/include/fcppt/record/detail/get_either.hpp
+	libs/core/include/fcppt/record/detail/init_ctor.hpp
 	libs/core/include/fcppt/record/detail/is_tag.hpp
 	libs/core/include/fcppt/record/detail/label_is_same.hpp
 	libs/core/include/fcppt/record/detail/make_tag.hpp
