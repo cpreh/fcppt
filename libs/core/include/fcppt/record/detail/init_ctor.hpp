@@ -14,6 +14,7 @@
 #include <fcppt/record/detail/label_is_same.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <brigand/algorithms/find.hpp>
+#include <brigand/algorithms/index_of.hpp>
 #include <brigand/functions/lambda/apply.hpp>
 #include <brigand/functions/lambda/bind.hpp>
 #include <brigand/sequences/list.hpp>
