@@ -21,15 +21,12 @@
 #include <fcppt/record/variadic.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <brigand/sequences/list.hpp>
-#include <brigand/algorithms/transform.hpp>
-#include <brigand/functions/lambda/bind.hpp>
-#include <brigand/sequences/range.hpp>
-#include <brigand/types/args.hpp>
 #include <iostream>
 #include <ostream>
 #include <sstream>
 #include <stdexcept>
 #include <string>
+#include <utility>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -257,14 +254,14 @@ FCPPT_RECORD_MAKE_LABEL_ARG(
 
 // ![sprite_element]
 template<
-	typename I
+	unsigned I
 >
 using
 sprite_element
 =
 fcppt::record::element<
 	texture<
-		I::value
+		I
 	>,
 	std::string
 >;
@@ -272,33 +269,55 @@ fcppt::record::element<
 
 // ![sprite_generic]
 template<
+	typename T
+>
+struct sprite_from_ints;
+
+template<
+	unsigned... Ints
+>
+struct sprite_from_ints<
+	std::integer_sequence<
+		unsigned,
+		Ints...
+	>
+>
+{
+	typedef
+	fcppt::record::variadic<
+		sprite_element<
+			Ints
+		>...
+	>
+	type;
+};
+
+template<
 	unsigned N
 >
 using
 sprite
 =
-fcppt::record::object<
-	brigand::transform<
-		brigand::range<
-			unsigned,
-			0u,
-			N
-		>,
-		brigand::bind<
-			sprite_element,
-			brigand::_1
-		>
+typename
+sprite_from_ints<
+	std::make_integer_sequence<
+		unsigned,
+		N
 	>
->;
+>::type;
 // ![sprite_generic]
 
 void
 test()
 {
 // ![sprite_example]
+	typedef
 	sprite<
-		2
-	> const test_sprite{
+		2u
+	>
+	sprite_type;
+
+	sprite_type const test_sprite{
 		texture<0>{} = std::string("ground"),
 		texture<1>{} = std::string("clouds")
 	};

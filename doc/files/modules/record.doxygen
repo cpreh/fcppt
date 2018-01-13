@@ -132,8 +132,8 @@ to the <code>I</code>'th texture element:
 \snippet record.cpp sprite_element
 
 Finally, to declare our sprite with N textures, we use
-<code>brigand::transform</code> to transform a sequence of integers
-<code>0,...,N-1</code> to <code>sprite_element<0>, ..., sprite_element<N-1></code>.
+a <code>std::integer_sequence</code> to create a record
+with types <code>sprite_element<0>, ..., sprite_element<N-1></code>.
 
 \snippet record.cpp sprite_generic
 
