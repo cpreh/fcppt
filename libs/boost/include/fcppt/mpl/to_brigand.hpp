@@ -9,9 +9,9 @@
 
 #include <fcppt/mpl/detail/to_brigand.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <brigand/sequences/list.hpp>
 #include <boost/mpl/begin.hpp>
 #include <boost/mpl/end.hpp>
+#include <brigand/sequences/list.hpp>
 #include <fcppt/config/external_end.hpp>
 
 

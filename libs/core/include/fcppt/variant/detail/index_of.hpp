@@ -7,8 +7,8 @@
 #ifndef FCPPT_VARIANT_DETAIL_INDEX_OF_HPP_INCLUDED
 #define FCPPT_VARIANT_DETAIL_INDEX_OF_HPP_INCLUDED
 
-#include <fcppt/cast/static_cast_fun.hpp>
 #include <fcppt/brigand/integral_cast.hpp>
+#include <fcppt/cast/static_cast_fun.hpp>
 #include <fcppt/variant/size_type.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <brigand/algorithms/index_of.hpp>

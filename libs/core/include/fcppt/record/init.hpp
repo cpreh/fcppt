@@ -10,8 +10,8 @@
 #include <fcppt/tag_type.hpp>
 #include <fcppt/use.hpp>
 #include <fcppt/algorithm/vararg_map.hpp>
-#include <fcppt/record/element_to_label.hpp>
 #include <fcppt/record/element_tag_tuple.hpp>
+#include <fcppt/record/element_to_label.hpp>
 #include <fcppt/record/is_object.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <utility>

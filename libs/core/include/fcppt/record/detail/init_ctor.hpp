@@ -7,8 +7,8 @@
 #ifndef FCPPT_RECORD_DETAIL_INIT_CTOR_HPP_INCLUDED
 #define FCPPT_RECORD_DETAIL_INIT_CTOR_HPP_INCLUDED
 
-#include <fcppt/use.hpp>
 #include <fcppt/tag_type.hpp>
+#include <fcppt/use.hpp>
 #include <fcppt/algorithm/vararg_map.hpp>
 #include <fcppt/record/element_to_label.hpp>
 #include <fcppt/record/detail/label_is_same.hpp>

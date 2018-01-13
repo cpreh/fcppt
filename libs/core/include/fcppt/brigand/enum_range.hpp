@@ -7,9 +7,9 @@
 #ifndef FCPPT_BRIGAND_ENUM_RANGE_HPP_INCLUDED
 #define FCPPT_BRIGAND_ENUM_RANGE_HPP_INCLUDED
 
+#include <fcppt/brigand/enum_range_start_end.hpp>
 #include <fcppt/enum/max_value.hpp>
 #include <fcppt/enum/min_value.hpp>
-#include <fcppt/brigand/enum_range_start_end.hpp>
 
 
 namespace fcppt

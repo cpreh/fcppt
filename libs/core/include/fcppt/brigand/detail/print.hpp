@@ -10,8 +10,8 @@
 #include <fcppt/tag_type.hpp>
 #include <fcppt/text.hpp>
 #include <fcppt/use.hpp>
-#include <fcppt/io/ostream.hpp>
 #include <fcppt/brigand/detail/print_one.hpp>
+#include <fcppt/io/ostream.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <brigand/algorithms/for_each.hpp>
 #include <brigand/sequences/back.hpp>

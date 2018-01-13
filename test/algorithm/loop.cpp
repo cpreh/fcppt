@@ -10,8 +10,8 @@
 #include <fcppt/algorithm/loop.hpp>
 #include <fcppt/algorithm/loop_break_brigand.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <brigand/sequences/range.hpp>
 #include <boost/test/unit_test.hpp>
+#include <brigand/sequences/range.hpp>
 #include <fcppt/config/external_end.hpp>
 
 

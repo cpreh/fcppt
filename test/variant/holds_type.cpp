@@ -7,8 +7,8 @@
 #include <fcppt/variant/holds_type.hpp>
 #include <fcppt/variant/object.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <brigand/sequences/list.hpp>
 #include <boost/test/unit_test.hpp>
+#include <brigand/sequences/list.hpp>
 #include <string>
 #include <fcppt/config/external_end.hpp>
 

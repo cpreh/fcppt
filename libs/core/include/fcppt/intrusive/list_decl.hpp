@@ -9,8 +9,8 @@
 
 #include <fcppt/noncopyable.hpp>
 #include <fcppt/intrusive/base_decl.hpp>
-#include <fcppt/intrusive/list_fwd.hpp>
 #include <fcppt/intrusive/iterator_fwd.hpp>
+#include <fcppt/intrusive/list_fwd.hpp>
 #include <fcppt/intrusive/detail/link_fwd.hpp>
 
 

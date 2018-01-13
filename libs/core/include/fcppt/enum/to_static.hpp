@@ -9,12 +9,12 @@
 
 #include <fcppt/absurd.hpp>
 #include <fcppt/use.hpp>
+#include <fcppt/brigand/integral_cast.hpp>
+#include <fcppt/brigand/runtime_index.hpp>
 #include <fcppt/cast/enum_to_int.hpp>
 #include <fcppt/cast/static_cast_fun.hpp>
 #include <fcppt/enum/max_value.hpp>
 #include <fcppt/enum/size.hpp>
-#include <fcppt/brigand/integral_cast.hpp>
-#include <fcppt/brigand/runtime_index.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>

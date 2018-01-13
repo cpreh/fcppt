@@ -8,8 +8,8 @@
 #define FCPPT_BRIGAND_PRINT_HPP_INCLUDED
 
 #include <fcppt/text.hpp>
-#include <fcppt/io/ostream.hpp>
 #include <fcppt/brigand/detail/print.hpp>
+#include <fcppt/io/ostream.hpp>
 
 
 namespace fcppt

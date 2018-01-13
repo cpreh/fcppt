@@ -8,8 +8,8 @@
 #define FCPPT_ITERATOR_BASE_IMPL_HPP_INCLUDED
 
 #include <fcppt/literal.hpp>
-#include <fcppt/cast/static_downcast.hpp>
 #include <fcppt/brigand/implication.hpp>
+#include <fcppt/cast/static_downcast.hpp>
 #include <fcppt/iterator/base_decl.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <iterator>

@@ -8,9 +8,9 @@
 #define FCPPT_MATH_DETAIL_INIT_FUNCTION_HPP_INCLUDED
 
 #include <fcppt/nonassignable.hpp>
+#include <fcppt/brigand/integral_cast.hpp>
 #include <fcppt/cast/size_fun.hpp>
 #include <fcppt/math/size_type.hpp>
-#include <fcppt/brigand/integral_cast.hpp>
 
 
 namespace fcppt

@@ -8,9 +8,9 @@
 #define FCPPT_BRIGAND_ENUM_RANGE_START_END_HPP_INCLUDED
 
 #include <fcppt/literal.hpp>
+#include <fcppt/brigand/integral_cast.hpp>
 #include <fcppt/cast/enum_to_int.hpp>
 #include <fcppt/cast/int_to_enum_fun.hpp>
-#include <fcppt/brigand/integral_cast.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <brigand/algorithms/transform.hpp>
 #include <brigand/functions/lambda/bind.hpp>

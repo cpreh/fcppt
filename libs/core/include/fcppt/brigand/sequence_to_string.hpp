@@ -8,8 +8,8 @@
 #define FCPPT_BRIGAND_SEQUENCE_TO_STRING_HPP_INCLUDED
 
 #include <fcppt/string.hpp>
-#include <fcppt/io/ostringstream.hpp>
 #include <fcppt/brigand/print.hpp>
+#include <fcppt/io/ostringstream.hpp>
 
 
 namespace fcppt

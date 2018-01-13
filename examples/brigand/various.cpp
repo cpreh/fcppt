@@ -5,8 +5,6 @@
 
 
 #include <fcppt/text.hpp>
-#include <fcppt/cast/to_unsigned_fun.hpp>
-#include <fcppt/io/cout.hpp>
 #include <fcppt/brigand/ceil_div.hpp>
 #include <fcppt/brigand/equal_to.hpp>
 #include <fcppt/brigand/implication.hpp>
@@ -15,6 +13,8 @@
 #include <fcppt/brigand/max_value.hpp>
 #include <fcppt/brigand/partial_sums.hpp>
 #include <fcppt/brigand/print.hpp>
+#include <fcppt/cast/to_unsigned_fun.hpp>
+#include <fcppt/io/cout.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <brigand/algorithms/transform.hpp>
 #include <brigand/functions/comparison/equal_to.hpp>

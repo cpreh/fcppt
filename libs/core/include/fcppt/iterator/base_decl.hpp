@@ -7,11 +7,11 @@
 #ifndef FCPPT_ITERATOR_BASE_DECL_HPP_INCLUDED
 #define FCPPT_ITERATOR_BASE_DECL_HPP_INCLUDED
 
+#include <fcppt/brigand/implication.hpp>
 #include <fcppt/iterator/base_fwd.hpp>
 #include <fcppt/iterator/category_at_least.hpp>
 #include <fcppt/iterator/is_types.hpp>
 #include <fcppt/iterator/types.hpp>
-#include <fcppt/brigand/implication.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <brigand/functions/logical/or.hpp>
 #include <iterator>

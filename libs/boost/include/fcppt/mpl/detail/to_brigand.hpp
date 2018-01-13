@@ -8,10 +8,10 @@
 #define FCPPT_MPL_DETAIL_TO_BRIGAND_HPP_INCLUDED
 
 #include <fcppt/config/external_begin.hpp>
-#include <brigand/sequences/back.hpp>
 #include <boost/mpl/deref.hpp>
 #include <boost/mpl/next.hpp>
 #include <boost/utility/enable_if.hpp>
+#include <brigand/sequences/back.hpp>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
