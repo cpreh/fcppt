@@ -243,7 +243,7 @@ init_stream()
 
 }
 
-namespace sprite
+namespace sprite_ns
 {
 
 // ![make_label_arg]
@@ -343,5 +343,5 @@ main()
 		<<
 		'\n';
 
-	sprite::test();
+	sprite_ns::test();
 }
