@@ -33,14 +33,18 @@ BOOST_AUTO_TEST_CASE(
 	>
 	bitfield;
 
+	typedef
+	bitfield::internal_type
+	internal_type;
+
 	auto const check_bit(
 		[](
-			bitfield::internal_type const _value,
+			internal_type const _value,
 			test_enum const _enum
 		)
 		-> bool
 		{
-			return
+		return
 				fcppt::bit::test(
 					_value,
 					fcppt::bit::shifted_mask<
@@ -69,7 +73,7 @@ BOOST_AUTO_TEST_CASE(
 			field1
 		)
 	);
-
+#
 	BOOST_CHECK(
 		!check_bit(
 			value,
@@ -91,5 +95,3 @@ BOOST_AUTO_TEST_CASE(
 		)
 	);
 }
-
-
