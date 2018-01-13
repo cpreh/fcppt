@@ -125,6 +125,7 @@ set(
 	libs/core/include/fcppt/brigand/detail/all_of_impl.hpp
 	libs/core/include/fcppt/brigand/detail/ceil_div.hpp
 	libs/core/include/fcppt/brigand/detail/for_each_break.hpp
+	libs/core/include/fcppt/brigand/detail/integral_cast_value.hpp
 	libs/core/include/fcppt/brigand/detail/print.hpp
 	libs/core/include/fcppt/brigand/detail/print_one.hpp
 	libs/core/include/fcppt/brigand/detail/runtime_index.hpp

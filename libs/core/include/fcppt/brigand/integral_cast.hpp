@@ -7,7 +7,7 @@
 #ifndef FCPPT_BRIGAND_INTEGRAL_CAST_HPP_INCLUDED
 #define FCPPT_BRIGAND_INTEGRAL_CAST_HPP_INCLUDED
 
-#include <fcppt/cast/apply.hpp>
+#include <fcppt/brigand/detail/integral_cast_value.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
@@ -44,12 +44,11 @@ integral_cast
 =
 std::integral_constant<
 	IntegralType,
-	fcppt::cast::apply<
+	fcppt::brigand::detail::integral_cast_value<
+		IntegralType,
 		Conv,
-		IntegralType
-	>(
-		Integral::value
-	)
+		Integral
+	>::value
 >;
 
 }
