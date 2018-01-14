@@ -150,6 +150,12 @@ add_fcppt_example(
 )
 
 add_fcppt_example(
+	iterator
+	LINK_LIBS
+		fcppt_core_interface
+)
+
+add_fcppt_example(
         intrusive
 	LINK_LIBS
 		fcppt_core_interface

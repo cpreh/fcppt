@@ -137,6 +137,7 @@ set(
 	examples/intrusive.cpp
 	examples/io/endianness.cpp
 	examples/io/scoped_rdbuf.cpp
+	examples/iterator.cpp
 	examples/literal.cpp
 	examples/log/context.cpp
 	examples/log/formatting.cpp

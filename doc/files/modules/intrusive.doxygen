@@ -3,7 +3,7 @@
 \ingroup fcpptmain
 \brief Intrusive list implementation.
 
-\section intrusive_lists Intrusive lists
+\section fcpptintrusive_lists Intrusive lists
 
 An intrusive list is a list that does not actually own elements.
 Instead, when an element is constructed it gets the list it is going

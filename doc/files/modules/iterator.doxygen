@@ -2,4 +2,154 @@
 \defgroup fcpptiterator fcppt.iterator
 \ingroup fcpptmain
 \brief Iterator adaptors and utilities
+
+\section fcpptiterator_implementation Implementing iterators
+
+There are five iterator categories. Each one dictates which
+operations an iterator needs to provide and what these
+operations mean:
+<ul>
+<li><em>Input iterator</em>: Defines a single-pass range that can only be read from.</li>
+<li><em>Output itereator</em>: Defines a single-pass range that can only be written to.</li>
+<li><em>Forward iterator</em>: Defines a range that consists of real objects, i.e. dereferencing an iterator yields a reference.
+Such an iterator can only be incremented. A forward iterator is also in input iterator.</li>
+<li><em>Bidirectional iterator</em>: A forward iterator that can also be decremented.</li>
+<li><em>Random access iterator</em>: A bidirectional iterator that supports random access.</li>
+</ul>
+Forward, bidirectional and random access iterators are also output iterators if they are not const iterators.
+
+The standard library provides a tag type for each iterator category.
+<code>std::random_access_iterator_tag</code> derives from <code>std::bidirectional_iterator_tag</code>,
+which derives from <code>std::forward_iterator_tag</code>, which derives from
+<code>std::input_iterator_tag</code>. In this hierarchy, <code>std::output_iterator_tag</code> is
+not used, meaning that this tag only comes into play when an iterator is an output iterator only.
+
+For each category, a multitude of operations need to be implemented, a lot of which can
+be implemented from other operations, which commonly leads to a lot of boiler-plate code.
+For example, <code>operator!=</code> can be implemented from <code>operator==</code>, and
+<code>operator<</code> (and <code><=</code>,<code>></code> and <code>>=</code>)
+can be implemented from <code>operator-</code> that calculates the distance of two
+random access iterators. However, you might want to provide fundamentally
+different implementations for all of these (for performance reasons), but this
+is very rare. To make implementing iterators easier, \link fcppt::iterator::base\endlink
+provides most operations using a default implementation, which the actual iterator type derives from.
+This class gets an \link fcppt::iterator::types\endlink as its template parameter,
+which consists of:
+<ul>
+<li>The actual iterator type, which is the type deriving from \link fcppt::iterator::base\endlink.</li>
+<li>The <code>reference</code> type of the iterator, which is what <code>operator*</code> returns.</li>
+<li>The <code>value_type</code>, which is what users of the iterator can use to store a copy of
+a dereferenced object.</li>
+<li>The <code>difference_type</code>, which is used to calculate distances between two iterators.
+This is only significant for random access iterator. Usually, this is
+<code>std::ptrdiff_t</code>.</li>
+<li>The <code>iterator_category</code>.</li>
+</ul>
+Deriving from \link fcppt::iterator::base\endlink also inherits all of these typedefs.
+In addition, <code>pointer</code> is also defined which is always
+<code>std::remove_reference<reference>::type *</code>, i.e. for forward iterators
+it is <code>T *</code> if <code>reference</code> is <code>T &</code> and
+<code>T const *</code> if <code>reference</code> is <code>T const &</code>
+for some type <code>T</code>.
+
+Let <code>It</code> be the type of the iterator we are going to implement,
+i.e. the type deriving from \link fcppt::iterator::base\endlink.
+The following operations need to be implemented by the derived class as <em>public</em>
+member functions:
+
+<ul>
+<li>For Input iterator and output iterators:
+<table>
+<tr>
+<td>
+<code>reference operator*() const</code>
+</td>
+<td>
+Returns the object at the current position.
+</td>
+</tr>
+<tr>
+<td>
+<code>bool equal(It it) const</code>
+</td>
+<td>
+Returns <code>true</code> if <code>*this</code> and <code>it</code> point to the same position.
+For input and output iterators, this is only used to tell if they reached their end.
+</td>
+</tr>
+<tr>
+<td>
+<code>void increment()</code>
+</td>
+<td>
+Moves the iterator to the next position.
+</td>
+</tr>
+</table>
+</li>
+<li>Forward iterators must provide the same operations as input iterators.
+In addition, they must have a default constructor and <code>reference</code>
+must be an actual reference type.
+</li>
+<li>Bidirectional iterators must provide the same operations as forward iterators.
+In addition, they must also provide:
+<table>
+<tr>
+<td>
+<code>void decrement()</code>
+</td>
+<td>
+Moves the iterator to the previous position. This operation is the inverse to
+<code>void increment()</code>.
+</td>
+</tr>
+</table>
+</li>
+<li>
+Random access iterators must provide the same operations as bidirectional iterators.
+In addition, they must also provide:
+<table>
+<tr>
+<td>
+<code>void advance(difference_type d)</code>
+</td>
+<td>
+Moves the iterator forwards (backwards if <code>d</code> is negative) by <code>d</code>
+positions. This must be equal to <code>d</code> increment operations (<code>-d</code>
+decrement operations if <code>d</code> is negative).
+</td>
+</tr>
+<tr>
+<td>
+<code>difference_type distance_to(It it) const</code>
+</td>
+<td>
+The distance <code>d</code> of <code>*this</code> to <code>it</code>, meaning that if <code>*this</code>
+is moved forwards by <code>d</code> positions, then <code>*this</code> and <code>it</code> are equal.
+</td>
+</tr>
+</table>
+</li>
+</ul>
+
+\note For random access iterators, we could define <code>void increment()</code> in terms
+of <code>advance(1)</code>, <code>void decrement()</code> in terms of <code>advance(-1)</code>
+and <code>bool equal_to(It it) const</code> as <code>distance_to(it) == 0</code>.
+For the time being, this is not done so that the sets of operations to implement
+are consistent with the order of iterator categories.
+
+Here is an example of how to implement a random access iterator which is also
+an output iterator. For simplicity, we implement
+a simple iterator using pointers over <code>int</code>. First, we declare the types we are going to use:
+
+\snippet iterator.cpp iterator_types
+
+Next, we derive from \link fcppt::iterator::base\endlink and implement all operations required
+for random access iterators:
+
+\snippet iterator.cpp iterator_impl
+
+Here is an example showing how our iterator can be used:
+
+\snippet iterator.cpp iterator_example
 */

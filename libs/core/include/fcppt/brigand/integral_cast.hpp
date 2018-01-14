@@ -32,7 +32,7 @@ done using \a Conv from fcppt.casts.
 
 \tparam Conv A cast function from fcppt.casts
 
-\tparam Integral An BRIGAND integral constant to cast from
+\tparam Integral An integral constant to cast from
 */
 template<
 	typename IntegralType,

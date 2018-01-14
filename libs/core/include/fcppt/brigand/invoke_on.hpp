@@ -38,7 +38,7 @@ in the size of the BRIGAND sequence.
 
 \snippet brigand/invoke_on.cpp brigand_invoke_on
 
-\tparam Sequence An BRIGAND sequence.
+\tparam Sequence A brigand sequence.
 
 \tparam Index An unsigned type.
 
