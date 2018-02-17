@@ -1,6 +1,21 @@
 /**
 \page changes Changes
 
+\section changes_changes_to_280 2.8.0
+
+\subsection changes_added_functionality_to_280 Added functionality
+
+<ul>
+
+<li>\ref fcpptalgorithm
+	<ul>
+	<li>Added \link fcppt::algorithm::unique\endlink and \link fcppt::algorithm::unique_if\endlink.</lI>
+	</ul>
+</li>
+
+</ul>
+
+
 \section changes_changes_to_270 2.7.0
 
 \subsection changes_general_to_270 General changes

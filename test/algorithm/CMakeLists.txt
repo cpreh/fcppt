@@ -142,5 +142,9 @@ add_fcppt_algorithm_test(
 )
 
 add_fcppt_algorithm_test(
+	unique
+)
+
+add_fcppt_algorithm_test(
 	vararg_map
 )
