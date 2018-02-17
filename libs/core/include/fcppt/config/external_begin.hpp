@@ -102,6 +102,10 @@ FCPPT_PP_DISABLE_GCC_WARNING(-Wzero-as-null-pointer-constant)
 FCPPT_PP_DISABLE_GCC_WARNING(-Wnull-dereference)
 #endif
 
+#if FCPPT_CONFIG_GCC_VERSION_AT_LEAST(8, 0)
+FCPPT_PP_DISABLE_GCC_WARNING(-Wclass-memaccess)
+#endif
+
 #endif
 
 FCPPT_PP_DISABLE_GCC_WARNING(-Wdelete-non-virtual-dtor)
