@@ -1232,3 +1232,84 @@ function(
 		${_LINK_LIBS}
 	)
 endfunction()
+
+function(
+	fcppt_utils_link_pkgconfig_target_single
+	TARGET_NAME
+	VISIBILITY
+	PKGCONFIG_NAME
+)
+	get_target_property(
+		INCLUDE_DIRS
+		${PKGCONFIG_NAME}
+		INTERFACE_INCLUDE_DIRECTORIES
+	)
+
+	if(
+		NOT
+		"${INCLUDE_DIRS}"
+		STREQUAL
+		"INCLUDE_DIRS-NOTFOUND"
+	)
+		target_include_directories(
+			${TARGET_NAME}
+			${VISIBILITY}
+			${INCLUDE_DIRS}
+		)
+	endif()
+
+	get_target_property(
+		LINK_LIBRARIES
+		${PKGCONFIG_NAME}
+		INTERFACE_LINK_LIBRARIES
+	)
+
+	if(
+		NOT
+		"${LINK_LIBRARIES}"
+		STREQUAL
+		"LINK_LIBRARIES-NOTFOUND"
+	)
+		target_link_libraries(
+			${TARGET_NAME}
+			${VISIBILITY}
+			${LINK_LIBRARIES}
+		)
+	endif()
+
+	get_target_property(
+		COMPILE_DEFINITIONS
+		${PKGCONFIG_NAME}
+		INTERFACE_COMPILE_DEFINITIONS
+	)
+
+	if(
+		NOT
+		"${COMPILE_DEFINITIONS}"
+		STREQUAL
+		"COMPILE_DEFINITIONS-NOTFOUND"
+	)
+		target_compile_definitions(
+			${TARGET_NAME}
+			${VISIBILITY}
+			${COMPILE_DEFINITIONS}
+		)
+	endif()
+endfunction()
+
+function(
+	fcppt_utils_link_pkgconfig_targets
+	TARGET_NAME
+	VISIBILITY
+)
+	foreach(
+		CURNAME
+		${ARGN}
+	)
+		fcppt_utils_link_pkgconfig_target_single(
+			${TARGET_NAME}
+			${VISIBILITY}
+			${CURNAME}
+		)
+	endforeach()
+endfunction()
