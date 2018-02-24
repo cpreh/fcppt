@@ -1278,21 +1278,21 @@ function(
 	endif()
 
 	get_target_property(
-		COMPILE_DEFINITIONS
+		COMPILE_OPTIONS
 		${PKGCONFIG_NAME}
-		INTERFACE_COMPILE_DEFINITIONS
+		INTERFACE_COMPILE_OPTIONS
 	)
 
 	if(
 		NOT
-		"${COMPILE_DEFINITIONS}"
+		"${COMPILE_OPTIONS}"
 		STREQUAL
-		"COMPILE_DEFINITIONS-NOTFOUND"
+		"COMPILE_OPTIONS-NOTFOUND"
 	)
-		target_compile_definitions(
+		target_compile_options(
 			${TARGET_NAME}
 			${VISIBILITY}
-			${COMPILE_DEFINITIONS}
+			${COMPILE_OPTIONS}
 		)
 	endif()
 endfunction()
