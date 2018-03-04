@@ -79,7 +79,7 @@ headers.
 \section fcpptstrongtypedef_internal Internals
 
 When declaring two strong typedefs with the same underlying type, two distinct
-types are be created:
+types need to be created:
 
 \snippet strong_typedef.cpp strong_typedef_is_same
 
