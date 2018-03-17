@@ -99,6 +99,10 @@ find_package(
 	unit_test_framework
 )
 
+find_package(
+	Catch2
+)
+
 if(
 	NOT
 	"${Boost_INCLUDE_DIRS}"

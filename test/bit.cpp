@@ -10,7 +10,7 @@
 #include <fcppt/bit/shifted_mask_c.hpp>
 #include <fcppt/bit/test.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/test/unit_test.hpp>
+#include <catch.hpp>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -30,16 +30,18 @@ static_assert(
 
 }
 
-BOOST_AUTO_TEST_CASE(
-	bit
+TEST_CASE(
+	"Bit test",
+	"[bit_test]"
 )
 {
-	BOOST_CHECK_EQUAL(
+	CHECK(
 		fcppt::bit::shifted_mask<
 			unsigned
 		>(
 			10
-		).get(),
+		).get()
+		==
 		1u
 		<<
 		10
@@ -52,13 +54,14 @@ BOOST_AUTO_TEST_CASE(
 		>()
 	);
 
-	BOOST_CHECK_EQUAL(
-		mask_c.get(),
+	CHECK(
+		mask_c.get()
+		==
 		0xFFu
 	);
 
-	BOOST_CHECK(
-		!fcppt::bit::test(
+	CHECK_FALSE(
+		fcppt::bit::test(
 			0xF0u,
 			fcppt::bit::mask<
 				unsigned
@@ -68,7 +71,7 @@ BOOST_AUTO_TEST_CASE(
 		)
 	);
 
-	BOOST_CHECK(
+	CHECK(
 		fcppt::bit::test(
 			0xF0u,
 			fcppt::bit::mask<
