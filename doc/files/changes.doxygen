@@ -13,6 +13,12 @@
 	</ul>
 </li>
 
+<li>\ref fcpptcontainergrid
+	<ul>
+	<li>Added \link fcppt::container::grid::dim_type\endlink and \link fcppt::container::grid::pos_type\endlink.</li>
+	</ul>
+</li>
+
 <li>\ref fcppteither
 	<ul>
 	<li>Added \link fcppt::either::failure_type\endlink and \link fcppt::either::success_type\endlink.</li>

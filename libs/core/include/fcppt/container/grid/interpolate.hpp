@@ -11,6 +11,7 @@
 #include <fcppt/literal.hpp>
 #include <fcppt/cast/float_to_int_fun.hpp>
 #include <fcppt/container/grid/object_impl.hpp>
+#include <fcppt/container/grid/pos_type.hpp>
 #include <fcppt/container/grid/size_type.hpp>
 #include <fcppt/container/grid/detail/interpolate.hpp>
 #include <fcppt/math/vector/bit_strings.hpp>
@@ -90,8 +91,9 @@ interpolate(
 	grid_type;
 
 	typedef
-	typename
-	grid_type::pos
+	fcppt::container::grid::pos_type<
+		grid_type
+	>
 	integer_vector_type;
 
 	typedef

@@ -9,6 +9,7 @@
 
 #include <fcppt/container/grid/in_range_dim.hpp>
 #include <fcppt/container/grid/object_impl.hpp>
+#include <fcppt/container/grid/pos_type.hpp>
 #include <fcppt/container/grid/size_type.hpp>
 
 
@@ -40,12 +41,13 @@ in_range(
 		N,
 		A
 	> const &_grid,
-	typename
-	fcppt::container::grid::object<
-		T,
-		N,
-		A
-	>::pos const &_pos
+	fcppt::container::grid::pos_type<
+		fcppt::container::grid::object<
+			T,
+			N,
+			A
+		>
+	> const &_pos
 )
 {
 	return

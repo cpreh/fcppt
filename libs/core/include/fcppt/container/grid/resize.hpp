@@ -11,8 +11,10 @@
 #include <fcppt/reference_impl.hpp>
 #include <fcppt/container/to_value_type.hpp>
 #include <fcppt/container/grid/at_optional.hpp>
+#include <fcppt/container/grid/dim_type.hpp>
 #include <fcppt/container/grid/is_object.hpp>
 #include <fcppt/container/grid/object_impl.hpp>
+#include <fcppt/container/grid/pos_type.hpp>
 #include <fcppt/optional/maybe.hpp>
 #include <fcppt/type_traits/remove_cv_ref_t.hpp>
 #include <fcppt/config/external_begin.hpp>
@@ -52,10 +54,11 @@ fcppt::type_traits::remove_cv_ref_t<
 >
 resize(
 	Grid &&_grid,
-	typename
-	fcppt::type_traits::remove_cv_ref_t<
-		Grid
-	>::dim const &_new_size,
+	fcppt::container::grid::dim_type<
+		fcppt::type_traits::remove_cv_ref_t<
+			Grid
+		>
+	> const &_new_size,
 	Function const &_init
 )
 {
@@ -79,8 +82,9 @@ resize(
 				&_grid,
 				&_init
 			](
-				typename
-				result_type::pos const _fcppt_pos
+				fcppt::container::grid::pos_type<
+					result_type
+				> const _fcppt_pos
 			)
 			{
 				return

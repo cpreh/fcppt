@@ -41,6 +41,11 @@ add_fcppt_container_grid_test(
 )
 
 add_fcppt_container_grid_test(
+	dim_type
+	NO_CODE
+)
+
+add_fcppt_container_grid_test(
 	fill
 )
 
@@ -78,6 +83,11 @@ add_fcppt_container_grid_test(
 
 add_fcppt_container_grid_test(
 	pos_ref_range
+)
+
+add_fcppt_container_grid_test(
+	pos_type
+	NO_CODE
 )
 
 add_fcppt_container_grid_test(

@@ -10,8 +10,10 @@
 #include <fcppt/move_if_rvalue.hpp>
 #include <fcppt/algorithm/all_of.hpp>
 #include <fcppt/brigand/all_of.hpp>
+#include <fcppt/container/grid/dim_type.hpp>
 #include <fcppt/container/grid/is_object.hpp>
 #include <fcppt/container/grid/object_impl.hpp>
+#include <fcppt/container/grid/pos_type.hpp>
 #include <fcppt/math/dim/comparison.hpp>
 #include <fcppt/type_traits/remove_cv_ref_t.hpp>
 #include <fcppt/config/external_begin.hpp>
@@ -61,10 +63,11 @@ fcppt::container::grid::object<
 			>(
 				_grid1.get_unsafe(
 					std::declval<
-						typename
-						fcppt::type_traits::remove_cv_ref_t<
-							Grid1
-						>::pos
+						fcppt::container::grid::pos_type<
+							fcppt::type_traits::remove_cv_ref_t<
+								Grid1
+							>
+						>
 					>()
 				)
 			),
@@ -73,10 +76,11 @@ fcppt::container::grid::object<
 			>(
 				_grids.get_unsafe(
 					std::declval<
-						typename
-						fcppt::type_traits::remove_cv_ref_t<
-							Grid1
-						>::pos
+						fcppt::container::grid::pos_type<
+							fcppt::type_traits::remove_cv_ref_t<
+								Grid1
+							>
+						>
 					>()
 				)
 			)...
@@ -116,8 +120,9 @@ fcppt::container::grid::object<
 	);
 
 	typedef
-	typename
-	grid1::pos
+	fcppt::container::grid::pos_type<
+		grid1
+	>
 	pos_type;
 
 	typedef
@@ -149,8 +154,9 @@ fcppt::container::grid::object<
 	result_type;
 
 	typedef
-	typename
-	grid1::dim
+	fcppt::container::grid::dim_type<
+		grid1
+	>
 	dim_type;
 
 	return

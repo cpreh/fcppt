@@ -500,13 +500,16 @@ set(
 	libs/core/include/fcppt/container/grid/clamped_sup.hpp
 	libs/core/include/fcppt/container/grid/clamped_sup_signed.hpp
 	libs/core/include/fcppt/container/grid/comparison.hpp
+	libs/core/include/fcppt/container/grid/detail/dim_type.hpp
 	libs/core/include/fcppt/container/grid/detail/interpolate.hpp
 	libs/core/include/fcppt/container/grid/detail/pos_iterator_base.hpp
 	libs/core/include/fcppt/container/grid/detail/pos_ref_iterator_base.hpp
+	libs/core/include/fcppt/container/grid/detail/pos_type.hpp
 	libs/core/include/fcppt/container/grid/detail/print_recurse.hpp
 	libs/core/include/fcppt/container/grid/detail/spiral_iterator_base.hpp
 	libs/core/include/fcppt/container/grid/dim.hpp
 	libs/core/include/fcppt/container/grid/dim_fwd.hpp
+	libs/core/include/fcppt/container/grid/dim_type.hpp
 	libs/core/include/fcppt/container/grid/end_position.hpp
 	libs/core/include/fcppt/container/grid/fill.hpp
 	libs/core/include/fcppt/container/grid/in_range.hpp
@@ -560,6 +563,7 @@ set(
 	libs/core/include/fcppt/container/grid/pos_reference_decl.hpp
 	libs/core/include/fcppt/container/grid/pos_reference_fwd.hpp
 	libs/core/include/fcppt/container/grid/pos_reference_impl.hpp
+	libs/core/include/fcppt/container/grid/pos_type.hpp
 	libs/core/include/fcppt/container/grid/range_dim.hpp
 	libs/core/include/fcppt/container/grid/range_size.hpp
 	libs/core/include/fcppt/container/grid/resize.hpp

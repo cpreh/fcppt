@@ -11,6 +11,10 @@
 #include <fcppt/container/to_reference_type.hpp>
 #include <fcppt/container/grid/pos.hpp>
 #include <fcppt/container/grid/pos_reference_fwd.hpp>
+#include <fcppt/container/grid/pos_type.hpp>
+#include <fcppt/config/external_begin.hpp>
+#include <type_traits>
+#include <fcppt/config/external_end.hpp>
 
 
 namespace fcppt
@@ -35,8 +39,11 @@ class pos_reference
 	);
 public:
 	typedef
-	typename
-	Grid::pos
+	fcppt::container::grid::pos_type<
+		std::remove_cv_t<
+			Grid
+		>
+	>
 	pos_type;
 
 	typedef

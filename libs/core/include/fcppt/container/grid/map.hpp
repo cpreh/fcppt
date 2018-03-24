@@ -10,6 +10,7 @@
 #include <fcppt/move_if_rvalue.hpp>
 #include <fcppt/container/grid/is_object.hpp>
 #include <fcppt/container/grid/object_impl.hpp>
+#include <fcppt/container/grid/pos_type.hpp>
 #include <fcppt/type_traits/remove_cv_ref_t.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <type_traits>
@@ -53,10 +54,11 @@ fcppt::container::grid::object<
 			>(
 				_source.get_unsafe(
 					std::declval<
-						typename
-						fcppt::type_traits::remove_cv_ref_t<
-							Source
-						>::pos
+						fcppt::container::grid::pos_type<
+							fcppt::type_traits::remove_cv_ref_t<
+								Source
+							>
+						>
 					>()
 				)
 			)
@@ -89,8 +91,9 @@ fcppt::container::grid::object<
 				>(
 					_source.get_unsafe(
 						std::declval<
-							typename
-							source_type::pos
+							fcppt::container::grid::pos_type<
+								source_type
+							>
 						>()
 					)
 				)
@@ -107,8 +110,9 @@ fcppt::container::grid::object<
 				&_source,
 				&_function
 			](
-				typename
-				source_type::pos const _pos
+				fcppt::container::grid::pos_type<
+					source_type
+				> const _pos
 			)
 			{
 				return

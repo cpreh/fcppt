@@ -10,9 +10,13 @@
 #include <fcppt/container/grid/make_pos_ref_range_start_end.hpp>
 #include <fcppt/container/grid/min_from_pos.hpp>
 #include <fcppt/container/grid/pos_ref_range_impl.hpp>
+#include <fcppt/container/grid/pos_type.hpp>
 #include <fcppt/container/grid/sup_from_pos.hpp>
 #include <fcppt/math/dim/to_vector.hpp>
 #include <fcppt/math/vector/null.hpp>
+#include <fcppt/config/external_begin.hpp>
+#include <type_traits>
+#include <fcppt/config/external_end.hpp>
 
 
 namespace fcppt
@@ -39,8 +43,11 @@ make_pos_ref_range(
 )
 {
 	typedef
-	typename
-	Grid::pos
+	fcppt::container::grid::pos_type<
+		std::remove_cv_t<
+			Grid
+		>
+	>
 	pos;
 
 	return

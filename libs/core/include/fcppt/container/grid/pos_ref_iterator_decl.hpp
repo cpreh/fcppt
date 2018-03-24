@@ -9,11 +9,16 @@
 
 #include <fcppt/container/to_iterator_type.hpp>
 #include <fcppt/container/grid/dim.hpp>
+#include <fcppt/container/grid/dim_type.hpp>
 #include <fcppt/container/grid/object_decl.hpp>
 #include <fcppt/container/grid/pos_iterator_impl.hpp>
 #include <fcppt/container/grid/pos_ref_iterator_fwd.hpp>
+#include <fcppt/container/grid/pos_type.hpp>
 #include <fcppt/container/grid/detail/pos_ref_iterator_base.hpp>
 #include <fcppt/iterator/base_decl.hpp>
+#include <fcppt/config/external_begin.hpp>
+#include <type_traits>
+#include <fcppt/config/external_end.hpp>
 
 
 namespace fcppt
@@ -45,13 +50,19 @@ class pos_ref_iterator final
 	base_type;
 
 	typedef
-	typename
-	Grid::dim
+	fcppt::container::grid::dim_type<
+		std::remove_cv_t<
+			Grid
+		>
+	>
 	dim;
 
 	typedef
-	typename
-	Grid::pos
+	fcppt::container::grid::pos_type<
+		std::remove_cv_t<
+			Grid
+		>
+	>
 	pos;
 
 	typedef

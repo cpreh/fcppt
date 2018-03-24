@@ -8,7 +8,9 @@
 #define FCPPT_CONTAINER_GRID_DETAIL_PRINT_RECURSE_HPP_INCLUDED
 
 #include <fcppt/make_int_range_count.hpp>
+#include <fcppt/container/grid/dim_type.hpp>
 #include <fcppt/container/grid/object_impl.hpp>
+#include <fcppt/container/grid/pos_type.hpp>
 #include <fcppt/container/grid/size_type.hpp>
 #include <fcppt/math/dim/at.hpp>
 #include <fcppt/math/vector/at.hpp>
@@ -49,12 +51,13 @@ print_recurse(
 		Size,
 		Alloc
 	> const &_object,
-	typename
-	fcppt::container::grid::object<
-		Type,
-		Size,
-		Alloc
-	>::pos const _pos
+	fcppt::container::grid::pos_type<
+		fcppt::container::grid::object<
+			Type,
+			Size,
+			Alloc
+		>
+	> const _pos
 )
 {
 	_stream
@@ -86,12 +89,13 @@ print_recurse(
 		Size,
 		Alloc
 	> const &_object,
-	typename
-	fcppt::container::grid::object<
-		Type,
-		Size,
-		Alloc
-	>::pos _pos
+	fcppt::container::grid::pos_type<
+		fcppt::container::grid::object<
+			Type,
+			Size,
+			Alloc
+		>
+	> _pos
 )
 {
 	constexpr size_type const index(
@@ -103,11 +107,13 @@ print_recurse(
 
 	typedef
 	typename
-	fcppt::container::grid::object<
-		Type,
-		Size,
-		Alloc
-	>::dim::value_type
+	fcppt::container::grid::dim_type<
+		fcppt::container::grid::object<
+			Type,
+			Size,
+			Alloc
+		>
+	>::value_type
 	dim_value_type;
 
 	dim_value_type const sz{

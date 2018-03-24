@@ -10,7 +10,11 @@
 #include <fcppt/make_ref.hpp>
 #include <fcppt/container/to_value_type.hpp>
 #include <fcppt/container/grid/in_range.hpp>
+#include <fcppt/container/grid/pos_type.hpp>
 #include <fcppt/optional/reference.hpp>
+#include <fcppt/config/external_begin.hpp>
+#include <type_traits>
+#include <fcppt/config/external_end.hpp>
 
 
 namespace fcppt
@@ -38,7 +42,11 @@ fcppt::optional::reference<
 >
 at_optional(
 	Grid &_grid,
-	typename Grid::pos const _pos
+	fcppt::container::grid::pos_type<
+		std::remove_cv_t<
+			Grid
+		>
+	> const _pos
 )
 {
 	typedef
