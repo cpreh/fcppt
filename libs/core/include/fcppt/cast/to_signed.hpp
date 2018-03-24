@@ -32,10 +32,9 @@ template<
 >
 inline
 constexpr
-typename
-std::make_signed<
+std::make_signed_t<
 	Type
->::type
+>
 to_signed(
 	Type const _value
 )
@@ -50,10 +49,9 @@ noexcept
 
 	return
 		static_cast<
-			typename
-			std::make_signed<
+			std::make_signed_t<
 				Type
-			>::type
+			>
 		>(
 			_value
 		);

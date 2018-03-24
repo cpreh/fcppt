@@ -38,10 +38,9 @@ get_exn_impl(
 )
 {
 	typedef
-	typename
-	std::remove_const<
+	std::remove_const_t<
 		Ret
-	>::type
+	>
 	return_type;
 
 	if(
@@ -64,10 +63,9 @@ get_exn_impl(
 				FCPPT_TEXT("\" from variant with types \"")
 				+
 				fcppt::variant::types_string<
-					typename
-					std::remove_const<
+					std::remove_const_t<
 						Variant
-					>::type
+					>
 				>()
 				+
 				FCPPT_TEXT("\". Current type was \"")

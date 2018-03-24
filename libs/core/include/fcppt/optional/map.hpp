@@ -45,8 +45,7 @@ map(
 )
 ->
 fcppt::optional::object<
-	typename
-	std::remove_cv<
+	std::remove_cv_t<
 		decltype(
 			_function(
 				fcppt::move_if_rvalue<
@@ -56,7 +55,7 @@ fcppt::optional::object<
 				)
 			)
 		)
-	>::type
+	>
 >
 {
 	typedef
@@ -71,15 +70,13 @@ fcppt::optional::object<
 
 	typedef
 	fcppt::optional::object<
-		typename
-		std::remove_cv<
-			typename
-			std::result_of<
+		std::remove_cv_t<
+			std::result_of_t<
 				Function(
 					arg_type
 				)
-			>::type
-		>::type
+			>
+		>
 	>
 	result_type;
 

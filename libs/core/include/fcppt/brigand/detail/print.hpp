@@ -31,14 +31,13 @@ namespace detail
 template<
 	typename Sequence
 >
-typename
-std::enable_if<
+std::enable_if_t<
 	std::is_same<
 		Sequence,
 		::brigand::list<>
 	>::value,
 	void
->::type
+>
 print(
 	fcppt::io::ostream &
 )
@@ -48,14 +47,13 @@ print(
 template<
 	typename Sequence
 >
-typename
-std::enable_if<
+std::enable_if_t<
 	!std::is_same<
 		Sequence,
 		::brigand::list<>
 	>::value,
 	void
->::type
+>
 print(
 	fcppt::io::ostream &_stream
 )

@@ -29,14 +29,13 @@ template<
 	typename Fun
 >
 inline
-typename
-std::enable_if<
+std::enable_if_t<
 	std::is_same<
 		Iterator,
 		LastIterator
 	>::value,
 	void
->::type
+>
 for_each_break(
 	Fun const &
 )
@@ -49,14 +48,13 @@ template<
 	typename Fun
 >
 inline
-typename
-std::enable_if<
+std::enable_if_t<
 	!std::is_same<
 		Iterator,
 		LastIterator
 	>::value,
 	void
->::type
+>
 for_each_break(
 	Fun const &_func
 )

@@ -42,12 +42,11 @@ template<
 >
 struct mpl_size_type<
 	Type,
-	typename
-	std::enable_if<
+	std::enable_if_t<
 		fcppt::type_traits::is_brigand_sequence<
 			Type
 		>::value
-	>::type
+	>
 >
 {
 	typedef
@@ -64,12 +63,11 @@ template<
 >
 struct mpl_size_type<
 	Type,
-	typename
-	std::enable_if<
+	std::enable_if_t<
 		boost::mpl::is_sequence<
 			Type
 		>::value
-	>::type
+	>
 >
 {
 	typedef

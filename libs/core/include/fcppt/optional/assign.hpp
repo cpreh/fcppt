@@ -60,10 +60,9 @@ fcppt::optional::assign(
 	static_assert(
 		std::is_same<
 			Element,
-			typename
-			std::remove_cv<
+			std::remove_cv_t<
 				Arg
-			>::type
+			>
 		>::value,
 		"Argument type must be the same as the optional's element type"
 	);

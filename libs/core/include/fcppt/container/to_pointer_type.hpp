@@ -34,8 +34,7 @@ template<
 using
 to_pointer_type
 =
-typename
-std::conditional<
+std::conditional_t<
 	std::is_const<
 		Container
 	>::value,
@@ -43,7 +42,7 @@ std::conditional<
 	Container::const_pointer,
 	typename
 	Container::pointer
->::type;
+>;
 
 }
 }

@@ -34,8 +34,7 @@ template<
 using
 to_value_type
 =
-typename
-std::conditional<
+std::conditional_t<
 	std::is_const<
 		Container
 	>::value,
@@ -43,7 +42,7 @@ std::conditional<
 	Container::value_type const,
 	typename
 	Container::value_type
->::type;
+>;
 
 }
 }

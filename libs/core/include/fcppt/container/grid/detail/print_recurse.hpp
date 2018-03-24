@@ -35,11 +35,10 @@ template<
 	fcppt::container::grid::size_type Size,
 	typename Alloc
 >
-typename
-std::enable_if<
+std::enable_if_t<
 	Level == 0,
 	void
->::type
+>
 print_recurse(
 	std::basic_ostream<
 		Ch,
@@ -73,11 +72,10 @@ template<
 	fcppt::container::grid::size_type Size,
 	typename Alloc
 >
-typename
-std::enable_if<
+std::enable_if_t<
 	Level != 0,
 	void
->::type
+>
 print_recurse(
 	std::basic_ostream<
 		Ch,

@@ -48,10 +48,9 @@ child_position(
 {
 	static_assert(
 		fcppt::container::tree::is_object<
-			typename
-			std::remove_const<
+			std::remove_const_t<
 				T
-			>::type
+			>
 		>::value,
 		"T must be a tree"
 	);

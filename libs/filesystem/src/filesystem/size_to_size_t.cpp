@@ -21,8 +21,7 @@ namespace
 template<
 	typename Size
 >
-typename
-std::enable_if<
+std::enable_if_t<
 	sizeof(
 		Size
 	)
@@ -31,7 +30,7 @@ std::enable_if<
 		boost::uintmax_t
 	),
 	bool
->::type
+>
 check_size(
 	boost::uintmax_t
 )
@@ -43,8 +42,7 @@ check_size(
 template<
 	typename Size
 >
-typename
-std::enable_if<
+std::enable_if_t<
 	sizeof(
 		Size
 	)
@@ -53,7 +51,7 @@ std::enable_if<
 		boost::uintmax_t
 	),
 	bool
->::type
+>
 check_size(
 	boost::uintmax_t const _size
 )

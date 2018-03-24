@@ -33,10 +33,9 @@ template<
 class to_root
 {
 	typedef
-	typename
-	std::remove_cv<
+	std::remove_cv_t<
 		Tree
-	>::type
+	>
 	tree_value_type;
 
 	static_assert(

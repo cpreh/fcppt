@@ -36,10 +36,9 @@ template<
 >
 inline
 fcppt::math::dim::static_<
-	typename
-	std::make_unsigned<
+	std::make_unsigned_t<
 		T
-	>::type,
+	>,
 	N
 >
 to_unsigned(
@@ -53,10 +52,9 @@ to_unsigned(
 	return
 		fcppt::math::dim::structure_cast<
 			fcppt::math::dim::static_<
-				typename
-				std::make_unsigned<
+				std::make_unsigned_t<
 					T
-				>::type,
+				>,
 				N
 			>,
 			fcppt::cast::to_unsigned_fun

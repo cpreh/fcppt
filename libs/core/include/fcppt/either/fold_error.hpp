@@ -59,10 +59,9 @@ decltype(
 	_function(
 		std::declval<
 			fcppt::container::to_value_type<
-				typename
-				std::remove_reference<
+				std::remove_reference_t<
 					Sequence
-				>::type
+				>
 			>
 		>()
 	)
@@ -73,10 +72,9 @@ decltype(
 		_function(
 			std::declval<
 				fcppt::container::to_value_type<
-					typename
-					std::remove_reference<
+					std::remove_reference_t<
 						Sequence
-					>::type
+					>
 				>
 			>()
 		)

@@ -30,15 +30,14 @@ template<
 	typename Size
 >
 inline
-typename
-std::enable_if<
+std::enable_if_t<
 	std::is_enum<
 		Element
 	>::value,
 	fcppt::enum_::range<
 		Element
 	>
->::type
+>
 make_range()
 {
 	return
@@ -52,15 +51,14 @@ template<
 	typename Size
 >
 inline
-typename
-std::enable_if<
+std::enable_if_t<
 	std::is_integral<
 		Element
 	>::value,
 	fcppt::int_range<
 		Element
 	>
->::type
+>
 make_range()
 {
 	return

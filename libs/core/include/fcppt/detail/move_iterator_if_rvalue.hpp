@@ -23,13 +23,12 @@ template<
 	typename Iterator
 >
 inline
-typename
-std::enable_if<
+std::enable_if_t<
 	std::is_lvalue_reference<
 		Type
 	>::value,
 	Iterator
->::type
+>
 move_iterator_if_rvalue(
 	Iterator const &_iterator
 )
@@ -43,8 +42,7 @@ template<
 	typename Iterator
 >
 inline
-typename
-std::enable_if<
+std::enable_if_t<
 	!std::is_lvalue_reference<
 		Type
 	>::value,
@@ -55,7 +53,7 @@ std::enable_if<
 			>()
 		)
 	)
->::type
+>
 move_iterator_if_rvalue(
 	Iterator const &_iterator
 )

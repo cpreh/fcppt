@@ -27,14 +27,13 @@ template<
 	typename Source
 >
 inline
-typename
-std::enable_if<
+std::enable_if_t<
 	fcppt::algorithm::detail::optimize_map<
 		Dest,
 		Source
 	>::value,
 	void
->::type
+>
 map_reserve(
 	Dest &_dest,
 	Source const &_src
@@ -60,14 +59,13 @@ template<
 	typename Source
 >
 inline
-typename
-std::enable_if<
+std::enable_if_t<
 	!fcppt::algorithm::detail::optimize_map<
 		Dest,
 		Source
 	>::value,
 	void
->::type
+>
 map_reserve(
 	Dest &,
 	Source const &

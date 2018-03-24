@@ -29,11 +29,10 @@ template<
 	typename ForwardIterator,
 	typename Vector
 >
-typename
-std::enable_if<
+std::enable_if_t<
 	N == 0u,
 	void
->::type
+>
 bit_strings(
 	ForwardIterator &it,
 	Vector _vector
@@ -75,11 +74,10 @@ template<
 	typename ForwardIterator,
 	typename Vector
 >
-typename
-std::enable_if<
+std::enable_if_t<
 	N != 0u,
 	void
->::type
+>
 bit_strings(
 	ForwardIterator &it,
 	Vector _vector

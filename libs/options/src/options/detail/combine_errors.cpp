@@ -8,7 +8,7 @@
 #include <fcppt/options/error.hpp>
 #include <fcppt/options/other_error.hpp>
 #include <fcppt/options/detail/combine_errors.hpp>
-#include <fcppt/type_traits/remove_cv_ref.hpp>
+#include <fcppt/type_traits/remove_cv_ref_t.hpp>
 #include <fcppt/variant/apply_binary.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <brigand/functions/logical/or.hpp>
@@ -51,14 +51,12 @@ using
 errors_same
 =
 std::is_same<
-	typename
-	fcppt::type_traits::remove_cv_ref<
+	fcppt::type_traits::remove_cv_ref_t<
 		Error1
-	>::type,
-	typename
-	fcppt::type_traits::remove_cv_ref<
+	>,
+	fcppt::type_traits::remove_cv_ref_t<
 		Error2
-	>::type
+	>
 >;
 
 struct combiner
@@ -67,14 +65,13 @@ struct combiner
 		typename Error1,
 		typename Error2
 	>
-	typename
-	std::enable_if<
+	std::enable_if_t<
 		errors_same<
 			Error1,
 			Error2
 		>::value,
 		fcppt::options::error
-	>::type
+	>
 	operator()(
 		Error1 &&_error1,
 		Error2 &&_error2
@@ -97,14 +94,13 @@ struct combiner
 		typename Error1,
 		typename Error2
 	>
-	typename
-	std::enable_if<
+	std::enable_if_t<
 		!errors_same<
 			Error1,
 			Error2
 		>::value,
 		fcppt::options::error
-	>::type
+	>
 	operator()(
 		Error1 &&_error1,
 		Error2 &&_error2
@@ -113,17 +109,15 @@ struct combiner
 		static_assert(
 			::brigand::or_<
 				std::is_same<
-					typename
-					fcppt::type_traits::remove_cv_ref<
+					fcppt::type_traits::remove_cv_ref_t<
 						Error1
-					>::type,
+					>,
 					fcppt::options::other_error
 				>,
 				std::is_same<
-					typename
-					fcppt::type_traits::remove_cv_ref<
+					fcppt::type_traits::remove_cv_ref_t<
 						Error2
-					>::type,
+					>,
 					fcppt::options::other_error
 				>
 			>::value,

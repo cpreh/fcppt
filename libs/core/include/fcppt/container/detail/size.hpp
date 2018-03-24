@@ -25,8 +25,7 @@ template<
 	typename Source
 >
 inline
-typename
-std::enable_if<
+std::enable_if_t<
 	!fcppt::container::detail::has_size<
 		Source
 	>::value,
@@ -35,7 +34,7 @@ std::enable_if<
 		typename
 		Source::iterator
 	>::difference_type
->::type
+>
 size(
 	Source const &_source
 )
@@ -51,14 +50,13 @@ template<
 	typename Source
 >
 inline
-typename
-std::enable_if<
+std::enable_if_t<
 	fcppt::container::detail::has_size<
 		Source
 	>::value,
 	typename
 	Source::size_type
->::type
+>
 size(
 	Source const &_source
 )

@@ -36,12 +36,11 @@ template<
 >
 inline
 fcppt::math::dim::static_<
-	typename
-	std::result_of<
+	std::result_of_t<
 		Function(
 			T
 		)
-	>::type,
+	>,
 	N
 >
 map(
@@ -56,12 +55,11 @@ map(
 	return
 		fcppt::math::detail::map<
 			fcppt::math::dim::static_<
-				typename
-				std::result_of<
+				std::result_of_t<
 					Function(
 						T
 					)
-				>::type,
+				>,
 				N
 			>
 		>(

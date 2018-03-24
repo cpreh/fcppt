@@ -152,12 +152,11 @@ fcppt::options::many<
 
 				return
 					fcppt::record::element_to_type<
-						typename
-						std::remove_const<
+						std::remove_const_t<
 							decltype(
 								_fcppt_options_many_element
 							)
-						>::type
+						>
 					>{};
 			}
 		)
@@ -214,12 +213,11 @@ fcppt::options::many<
 							);
 
 							typedef
-							typename
-							std::remove_const<
+							std::remove_const_t<
 								decltype(
 									_fcppt_inner_element
 								)
-							>::type
+							>
 							element;
 
 							typedef

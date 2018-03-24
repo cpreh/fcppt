@@ -40,32 +40,28 @@ enum_range_start_end
 =
 ::brigand::transform<
 	::brigand::range<
-		typename
-		std::underlying_type<
+		std::underlying_type_t<
 			Enum
-		>::type,
+		>,
 		fcppt::cast::enum_to_int<
-			typename
-			std::underlying_type<
+			std::underlying_type_t<
 				Enum
-			>::type
+			>
 		>(
 			Start
 		),
 		fcppt::cast::enum_to_int<
-			typename
-			std::underlying_type<
+			std::underlying_type_t<
 				Enum
-			>::type
+			>
 		>(
 			Max
 		)
 		+
 		fcppt::literal<
-			typename
-			std::underlying_type<
+			std::underlying_type_t<
 				Enum
-			>::type
+			>
 		>(
 			1
 		)

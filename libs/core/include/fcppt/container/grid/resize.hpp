@@ -102,10 +102,9 @@ resize(
 						[](
 							fcppt::reference<
 								fcppt::container::to_value_type<
-									typename
-									std::remove_reference<
+									std::remove_reference_t<
 										Grid
-									>::type
+									>
 								>
 							> const _ref
 						)

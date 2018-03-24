@@ -36,10 +36,9 @@ template<
 >
 inline
 fcppt::math::vector::static_<
-	typename
-	std::make_signed<
+	std::make_signed_t<
 		T
-	>::type,
+	>,
 	N
 >
 to_signed(
@@ -53,10 +52,9 @@ to_signed(
 	return
 		fcppt::math::vector::structure_cast<
 			fcppt::math::vector::static_<
-				typename
-				std::make_signed<
+				std::make_signed_t<
 					T
-				>::type,
+				>,
 				N
 			>,
 			fcppt::cast::to_signed_fun

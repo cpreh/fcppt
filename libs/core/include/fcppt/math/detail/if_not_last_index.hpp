@@ -25,13 +25,12 @@ template<
 	typename Function
 >
 inline
-typename
-std::enable_if<
+std::enable_if_t<
 	Index::value
 	!=
 	Size::value - 1u,
 	void
->::type
+>
 if_not_last_index(
 	Index,
 	Size,
@@ -47,13 +46,12 @@ template<
 	typename Function
 >
 inline
-typename
-std::enable_if<
+std::enable_if_t<
 	Index::value
 	==
 	Size::value - 1u,
 	void
->::type
+>
 if_not_last_index(
 	Index,
 	Size,

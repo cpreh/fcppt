@@ -317,14 +317,13 @@ private:
 	template<
 		typename In
 	>
-	typename
-	std::enable_if<
+	std::enable_if_t<
 		!fcppt::type_traits::is_iterator_of_category<
 			In,
 			std::forward_iterator_tag
 		>::value,
 		void
-	>::type
+	>
 	insert_impl(
 		iterator position,
 		In begin,
@@ -334,14 +333,13 @@ private:
 	template<
 		typename In
 	>
-	typename
-	std::enable_if<
+	std::enable_if_t<
 		fcppt::type_traits::is_iterator_of_category<
 			In,
 			std::forward_iterator_tag
 		>::value,
 		void
-	>::type
+	>
 	insert_impl(
 		iterator position,
 		In begin,

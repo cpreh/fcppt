@@ -34,10 +34,9 @@ template<
 	typename Optional,
 	typename Default
 >
-typename
-std::result_of<
+std::result_of_t<
 	Default()
->::type
+>
 from(
 	Optional &&_optional,
 	Default const _default

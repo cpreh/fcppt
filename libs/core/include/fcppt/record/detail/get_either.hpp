@@ -40,8 +40,7 @@ struct get_either<
 	Label,
 	Record1,
 	Record2,
-	typename
-	std::enable_if<
+	std::enable_if_t<
 		fcppt::record::has_label<
 			typename
 			std::decay<
@@ -49,7 +48,7 @@ struct get_either<
 			>::type,
 			Label
 		>::value
-	>::type
+	>
 >
 {
 	template<
@@ -91,8 +90,7 @@ struct get_either<
 	Label,
 	Record1,
 	Record2,
-	typename
-	std::enable_if<
+	std::enable_if_t<
 		fcppt::record::has_label<
 			typename
 			std::decay<
@@ -100,7 +98,7 @@ struct get_either<
 			>::type,
 			Label
 		>::value
-	>::type
+	>
 >
 {
 	template<

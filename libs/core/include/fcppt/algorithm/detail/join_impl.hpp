@@ -50,13 +50,12 @@ template<
 	typename... Args
 >
 inline
-typename
-std::enable_if<
+std::enable_if_t<
 	!std::is_lvalue_reference<
 		Container
 	>::value,
 	Container
->::type
+>
 join_impl(
 	Container &&_first,
 	Args && ..._args

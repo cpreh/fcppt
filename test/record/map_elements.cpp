@@ -29,14 +29,13 @@ template<
 using
 result_helper
 =
-typename
-std::result_of<
+std::result_of_t<
 	Function(
 		fcppt::record::element_to_type<
 			Param
 		>
 	)
->::type;
+>;
 
 }
 

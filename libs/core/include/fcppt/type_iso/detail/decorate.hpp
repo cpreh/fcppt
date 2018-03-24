@@ -25,14 +25,13 @@ template<
 	typename Type
 >
 inline
-typename
-std::enable_if<
+std::enable_if_t<
 	std::is_same<
 		Result,
 		Type
 	>::value,
 	Result
->::type
+>
 decorate(
 	Type const &_value
 )
@@ -46,14 +45,13 @@ template<
 	typename Type
 >
 inline
-typename
-std::enable_if<
+std::enable_if_t<
 	!std::is_same<
 		Result,
 		Type
 	>::value,
 	Result
->::type
+>
 decorate(
 	Type const &_value
 )

@@ -26,13 +26,12 @@ template<
 	typename Type
 >
 inline
-typename
-std::enable_if<
+std::enable_if_t<
 	fcppt::type_iso::detail::is_terminal<
 		Type
 	>::value,
 	Type
->::type
+>
 undecorate(
 	Type const &_value
 )
@@ -45,15 +44,14 @@ template<
 	typename Type
 >
 inline
-typename
-std::enable_if<
+std::enable_if_t<
 	!fcppt::type_iso::detail::is_terminal<
 		Type
 	>::value,
 	fcppt::type_iso::undecorated_type<
 		Type
 	>
->::type
+>
 undecorate(
 	Type const &_value
 )

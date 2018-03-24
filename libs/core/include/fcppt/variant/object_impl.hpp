@@ -480,9 +480,9 @@ fcppt::variant::object<
 	new (
 		this->raw_data()
 	)
-	typename std::remove_reference<
+	std::remove_reference_t<
 		U
-	>::type(
+	>(
 		std::move(
 			_other
 		)

@@ -33,10 +33,9 @@ template<
 >
 inline
 fcppt::container::move_range<
-	typename
-	std::remove_reference<
+	std::remove_reference_t<
 		Container
-	>::type
+	>
 >
 make_move_range(
 	Container &&_container
@@ -53,10 +52,9 @@ make_move_range(
 
 	return
 		fcppt::container::move_range<
-			typename
-			std::remove_reference<
+			std::remove_reference_t<
 				Container
-			>::type
+			>
 		>(
 			std::move(
 				_container

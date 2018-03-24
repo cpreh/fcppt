@@ -71,10 +71,9 @@ public:
 
 	~unique_ptr();
 
-	typename
-	std::add_lvalue_reference<
+	std::add_lvalue_reference_t<
 		Type
-	>::type
+	>
 	operator*() const
 	noexcept;
 

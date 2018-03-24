@@ -52,15 +52,14 @@ public:
 	template<
 		typename Index
 	>
-	typename
-	std::enable_if<
+	std::enable_if_t<
 		Index::value
 		!=
 		fcppt::container::array_size<
 			Source
 		>::value,
 		value_type
-	>::type
+	>
 	operator()(
 		Index
 	) const
@@ -74,15 +73,14 @@ public:
 	template<
 		typename Index
 	>
-	typename
-	std::enable_if<
+	std::enable_if_t<
 		Index::value
 		==
 		fcppt::container::array_size<
 			Source
 		>::value,
 		value_type
-	>::type
+	>
 	operator()(
 		Index
 	) const

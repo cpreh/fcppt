@@ -25,14 +25,13 @@ template<
 >
 inline
 // TODO: apply_const?
-typename
-std::conditional<
+std::conditional_t<
 	std::is_const<
 		Variant
 	>::value,
 	Type const &,
 	Type &
->::type
+>
 get_unsafe(
 	Variant &_object
 )

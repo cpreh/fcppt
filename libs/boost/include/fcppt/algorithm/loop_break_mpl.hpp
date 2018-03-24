@@ -25,15 +25,14 @@ template<
 >
 struct loop_break_impl<
 	Range,
-	typename
-	std::enable_if<
+	std::enable_if_t<
 		boost::mpl::is_sequence<
 			typename
 			std::decay<
 				Range
 			>::type
 		>::value
-	>::type
+	>
 >
 {
 	template<

@@ -34,10 +34,9 @@ template<
 inline
 fcppt::optional::object<
 	fcppt::container::to_iterator_type<
-		typename
-		std::remove_reference<
+		std::remove_reference_t<
 			Range
-		>::type
+		>
 	>
 >
 find_if_opt(
@@ -47,10 +46,9 @@ find_if_opt(
 {
 	typedef
 	fcppt::container::to_iterator_type<
-		typename
-		std::remove_reference<
+		std::remove_reference_t<
 			Range
-		>::type
+		>
 	>
 	iterator_type;
 

@@ -30,13 +30,12 @@ struct print_visitor
 	template<
 		typename T
 	>
-	typename
-	std::enable_if<
+	std::enable_if_t<
 		!std::is_integral<
 			T
 		>::value,
 		void
-	>::type
+	>
 	operator()(
 		T const &_value
 	) const
@@ -50,13 +49,12 @@ struct print_visitor
 	template<
 		typename T
 	>
-	typename
-	std::enable_if<
+	std::enable_if_t<
 		std::is_integral<
 			T
 		>::value,
 		void
-	>::type
+	>
 	operator()(
 		T const _value
 	) const

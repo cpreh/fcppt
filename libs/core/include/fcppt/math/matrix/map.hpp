@@ -37,12 +37,11 @@ template<
 >
 inline
 fcppt::math::matrix::static_<
-	typename
-	std::result_of<
+	std::result_of_t<
 		Function(
 			T
 		)
-	>::type,
+	>,
 	R,
 	C
 >
@@ -59,12 +58,11 @@ map(
 	return
 		fcppt::math::detail::map<
 			fcppt::math::matrix::static_<
-				typename
-				std::result_of<
+				std::result_of_t<
 					Function(
 						T
 					)
-				>::type,
+				>,
 				R,
 				C
 			>

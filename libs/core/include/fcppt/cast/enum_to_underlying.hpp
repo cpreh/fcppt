@@ -31,10 +31,9 @@ template<
 >
 inline
 constexpr
-typename
-std::underlying_type<
+std::underlying_type_t<
 	Enum
->::type
+>
 enum_to_underlying(
 	Enum const _enum
 )
@@ -49,10 +48,9 @@ noexcept
 
 	return
 		static_cast<
-			typename
-			std::underlying_type<
+			std::underlying_type_t<
 				Enum
-			>::type
+			>
 		>(
 			_enum
 		);

@@ -25,15 +25,14 @@ template<
 >
 struct loop_break_impl<
 	Range,
-	typename
-	std::enable_if<
+	std::enable_if_t<
 		fcppt::type_traits::is_brigand_sequence<
 			typename
 			std::decay<
 				Range
 			>::type
 		>::value
-	>::type
+	>
 >
 {
 	template<

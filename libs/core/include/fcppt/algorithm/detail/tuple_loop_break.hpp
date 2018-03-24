@@ -29,8 +29,7 @@ template<
 	typename Body
 >
 inline
-typename
-std::enable_if<
+std::enable_if_t<
 	Index
 	==
 	std::tuple_size<
@@ -39,7 +38,7 @@ std::enable_if<
 			Tuple
 		>::type
 	>::value
->::type
+>
 tuple_loop_break(
 	Tuple &&,
 	Body const &
@@ -53,8 +52,7 @@ template<
 	typename Body
 >
 inline
-typename
-std::enable_if<
+std::enable_if_t<
 	Index
 	<
 	std::tuple_size<
@@ -63,7 +61,7 @@ std::enable_if<
 			Tuple
 		>::type
 	>::value
->::type
+>
 tuple_loop_break(
 	Tuple &&_tuple,
 	Body const &_body

@@ -27,10 +27,9 @@ template<
 >
 inline
 fcppt::container::to_reference_type<
-	typename
-	std::remove_reference<
+	std::remove_reference_t<
 		T
-	>::type
+	>
 >
 checked_access(
 	T &&_value
@@ -38,9 +37,9 @@ checked_access(
 {
 	typedef
 	typename
-	std::remove_reference<
+	std::remove_reference_t<
 		T
-	>::type::static_size
+	>::static_size
 	static_size;
 
 	static_assert(

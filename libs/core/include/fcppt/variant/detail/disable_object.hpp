@@ -7,7 +7,7 @@
 #ifndef FCPPT_VARIANT_DETAIL_DISABLE_OBJECT_HPP_INCLUDED
 #define FCPPT_VARIANT_DETAIL_DISABLE_OBJECT_HPP_INCLUDED
 
-#include <fcppt/type_traits/remove_cv_ref.hpp>
+#include <fcppt/type_traits/remove_cv_ref_t.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
@@ -26,26 +26,23 @@ template<
 >
 using disable_object
 =
-typename
-std::enable_if<
+std::enable_if_t<
 	!(
 		std::is_const<
-			typename
-			std::remove_reference<
+			std::remove_reference_t<
 				U
-			>::type
+			>
 		>::value
 		||
 		std::is_same<
-			typename
-			fcppt::type_traits::remove_cv_ref<
+			fcppt::type_traits::remove_cv_ref_t<
 				U
-			>::type,
+			>,
 			Variant
 		>::value
 	),
 	Variant
->::type;
+>;
 
 }
 }

@@ -24,13 +24,12 @@ template<
 	typename Container
 >
 inline
-typename
-std::enable_if<
+std::enable_if_t<
 	!std::is_lvalue_reference<
 		Container
 	>::value,
 	Container
->::type
+>
 reverse(
 	Container &&_container
 )

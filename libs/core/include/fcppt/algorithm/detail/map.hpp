@@ -30,13 +30,12 @@ template<
 	typename SourceRange,
 	typename Function
 >
-typename
-std::enable_if<
+std::enable_if_t<
 	!fcppt::type_traits::is_std_array<
 		TargetContainer
 	>::value,
 	TargetContainer
->::type
+>
 map(
 	SourceRange &&_source,
 	Function const &_function
@@ -84,13 +83,12 @@ template<
 	typename SourceRange,
 	typename Function
 >
-typename
-std::enable_if<
+std::enable_if_t<
 	fcppt::type_traits::is_std_array<
 		TargetContainer
 	>::value,
 	TargetContainer
->::type
+>
 map(
 	SourceRange &&_source,
 	Function const &_function

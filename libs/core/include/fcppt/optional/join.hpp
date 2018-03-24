@@ -9,10 +9,9 @@
 
 #include <fcppt/move_if_rvalue.hpp>
 #include <fcppt/optional/object_impl.hpp>
+#include <fcppt/optional/value_type.hpp>
 #include <fcppt/optional/detail/check.hpp>
-#include <fcppt/config/external_begin.hpp>
-#include <type_traits>
-#include <fcppt/config/external_end.hpp>
+#include <fcppt/type_traits/remove_cv_ref_t.hpp>
 
 
 namespace fcppt
@@ -33,25 +32,21 @@ template<
 	typename Optional
 >
 inline
-typename
-std::remove_cv<
-	typename
-	std::remove_reference<
+fcppt::optional::value_type<
+	fcppt::type_traits::remove_cv_ref_t<
 		Optional
-	>::type
->::type::value_type
+	>
+>
 join(
 	Optional &&_source
 )
 {
 	typedef
-	typename
-	std::remove_cv<
-		typename
-		std::remove_reference<
+	fcppt::optional::value_type<
+		fcppt::type_traits::remove_cv_ref_t<
 			Optional
-		>::type
-	>::type::value_type
+		>
+	>
 	result_type;
 
 	static_assert(

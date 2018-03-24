@@ -35,8 +35,7 @@ template<
 	typename Traits
 >
 inline
-typename
-std::enable_if<
+std::enable_if_t<
 	fcppt::type_traits::constructible_from<
 		Type,
 		fcppt::no_init
@@ -44,7 +43,7 @@ std::enable_if<
 	fcppt::optional::object<
 		Type
 	>
->::type
+>
 extract(
 	std::basic_istream<
 		Ch,
@@ -79,8 +78,7 @@ template<
 	typename Traits
 >
 inline
-typename
-std::enable_if<
+std::enable_if_t<
 	!fcppt::type_traits::constructible_from<
 		Type,
 		fcppt::no_init
@@ -88,7 +86,7 @@ std::enable_if<
 	fcppt::optional::object<
 		Type
 	>
->::type
+>
 extract(
 	std::basic_istream<
 		Ch,

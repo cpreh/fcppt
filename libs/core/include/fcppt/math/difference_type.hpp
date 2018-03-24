@@ -22,9 +22,11 @@ namespace math
 \brief The difference type used for structure sizes
 \ingroup fcpptmath
 */
-typedef std::make_signed<
+typedef
+std::make_signed_t<
 	fcppt::math::size_type
->::type difference_type;
+>
+difference_type;
 
 }
 }

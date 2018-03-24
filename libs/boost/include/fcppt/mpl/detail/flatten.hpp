@@ -36,12 +36,11 @@ template<
 >
 struct flatten<
 	Type,
-	typename
-	std::enable_if<
+	std::enable_if_t<
 		boost::mpl::is_sequence<
 			Type
 		>::value
-	>::type
+	>
 >
 {
 	typedef
@@ -66,12 +65,11 @@ template<
 >
 struct flatten<
 	Type,
-	typename
-	std::enable_if<
+	std::enable_if_t<
 		!boost::mpl::is_sequence<
 			Type
 		>::value
-	>::type
+	>
 >
 {
 	typedef

@@ -46,23 +46,21 @@ template<
 	typename Base
 >
 inline
-typename
-std::enable_if<
+std::enable_if_t<
 	std::is_reference<
 		Derived
 	>::value,
 	Derived
->::type
+>
 dynamic_exn(
 	Base &_src
 )
 {
 	static_assert(
 		fcppt::type_traits::is_base_of<
-			typename
-			std::remove_cv<
+			std::remove_cv_t<
 				Base
-			>::type,
+			>,
 			typename
 			std::decay<
 				Derived

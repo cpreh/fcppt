@@ -37,10 +37,9 @@ template<
 >
 fcppt::optional::object<
 	fcppt::container::to_iterator_type<
-		typename
-		std::remove_reference<
+		std::remove_reference_t<
 			Range
-		>::type
+		>
 	>
 >
 binary_search(
@@ -58,10 +57,9 @@ binary_search(
 	typedef
 	fcppt::optional::object<
 		fcppt::container::to_iterator_type<
-			typename
-			std::remove_reference<
+			std::remove_reference_t<
 				Range
-			>::type
+			>
 		>
 	>
 	result_type;

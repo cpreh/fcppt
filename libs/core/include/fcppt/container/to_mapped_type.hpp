@@ -34,8 +34,7 @@ template<
 using
 to_mapped_type
 =
-typename
-std::conditional<
+std::conditional_t<
 	std::is_const<
 		Container
 	>::value,
@@ -43,7 +42,7 @@ std::conditional<
 	Container::mapped_type const,
 	typename
 	Container::mapped_type
->::type;
+>;
 
 }
 }

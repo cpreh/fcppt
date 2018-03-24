@@ -35,10 +35,9 @@ template<
 inline
 fcppt::iterator::range<
 	fcppt::container::to_iterator_type<
-		typename
-		std::remove_reference<
+		std::remove_reference_t<
 			Range
-		>::type
+		>
 	>
 >
 equal_range(

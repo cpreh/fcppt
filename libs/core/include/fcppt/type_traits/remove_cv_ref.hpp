@@ -33,9 +33,9 @@ template<
 using remove_cv_ref
 =
 std::remove_cv<
-	typename std::remove_reference<
+	std::remove_reference_t<
 		Type
-	>::type
+	>
 >;
 
 }

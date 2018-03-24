@@ -41,10 +41,9 @@ template<
 	typename Default,
 	typename Transform
 >
-typename
-std::result_of<
+std::result_of_t<
 	Default()
->::type
+>
 maybe(
 	Optional &&_optional,
 	Default const _default,

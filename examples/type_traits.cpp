@@ -20,13 +20,12 @@ namespace
 template<
 	typename T
 >
-typename
-std::enable_if<
+std::enable_if_t<
 	fcppt::type_traits::is_string<
 		T
 	>::value,
 	T
->::type
+>
 edit_string(
 	T const &t
 )
@@ -38,13 +37,12 @@ edit_string(
 template<
 	typename T
 >
-typename
-std::enable_if<
+std::enable_if_t<
 	fcppt::type_traits::is_float_or_double<
 		T
 	>::value,
 	T
->::type
+>
 divide_by_1000(
 	T const &t
 )

@@ -73,13 +73,12 @@ template<
 	typename S
 >
 inline
-typename
-std::enable_if<
+std::enable_if_t<
 	std::is_floating_point<
 		T
 	>::value,
 	T
->::type
+>
 length(
 	fcppt::math::vector::object<
 		T,
@@ -146,13 +145,12 @@ template<
 	typename S
 >
 inline
-typename
-std::enable_if<
+std::enable_if_t<
 	!std::is_floating_point<
 		T
 	>::value,
 	Dest
->::type
+>
 length(
 	fcppt::math::vector::object<
 		T,

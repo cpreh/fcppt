@@ -40,10 +40,9 @@ class proxy
 	);
 
 	typedef
-	typename
-	std::remove_const<
+	std::remove_const_t<
 		StoredType
-	>::type
+	>
 	array_type;
 
 	typedef

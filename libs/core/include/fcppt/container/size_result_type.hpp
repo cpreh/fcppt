@@ -31,8 +31,7 @@ template<
 using
 size_result_type
 =
-typename
-std::make_unsigned<
+std::make_unsigned_t<
 	decltype(
 		fcppt::container::detail::size(
 			std::declval<
@@ -40,7 +39,7 @@ std::make_unsigned<
 			>()
 		)
 	)
->::type;
+>;
 
 }
 }

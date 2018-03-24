@@ -39,13 +39,12 @@ template<
 >
 inline
 fcppt::math::matrix::static_<
-	typename
-	std::result_of<
+	std::result_of_t<
 		Function(
 			T1,
 			T2
 		)
-	>::type,
+	>,
 	R,
 	C
 >
@@ -68,13 +67,12 @@ binary_map(
 	return
 		fcppt::math::detail::binary_map<
 			fcppt::math::matrix::static_<
-				typename
-				std::result_of<
+				std::result_of_t<
 					Function(
 						T1,
 						T2
 					)
-				>::type,
+				>,
 				R,
 				C
 			>

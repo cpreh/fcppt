@@ -31,12 +31,11 @@ template<
 >
 struct pretty_type_impl<
 	Enum,
-	typename
-	std::enable_if<
+	std::enable_if_t<
 		std::is_enum<
 			Enum
 		>::value
-	>::type
+	>
 >
 {
 	static

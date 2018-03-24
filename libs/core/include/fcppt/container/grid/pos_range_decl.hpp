@@ -73,11 +73,10 @@ public:
 	end() const;
 
 	typedef
-	typename
-	std::make_unsigned<
+	std::make_unsigned_t<
 		typename
 		iterator::difference_type
-	>::type
+	>
 	size_type;
 
 	size_type

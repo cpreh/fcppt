@@ -35,10 +35,9 @@ fcppt::iterator::base<
 		fcppt::intrusive::iterator<
 			Type
 		>,
-		typename
-		std::remove_const<
+		std::remove_const_t<
 			Type
-		>::type,
+		>,
 		Type &,
 		std::ptrdiff_t,
 		std::bidirectional_iterator_tag

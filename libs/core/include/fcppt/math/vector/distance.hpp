@@ -37,13 +37,12 @@ template<
 	typename S1,
 	typename S2
 >
-typename
-std::enable_if<
+std::enable_if_t<
 	std::is_floating_point<
 		T
 	>::value,
 	T
->::type
+>
 distance(
 	fcppt::math::vector::object<
 		T,
@@ -77,13 +76,12 @@ template<
 	typename S1,
 	typename S2
 >
-typename
-std::enable_if<
+std::enable_if_t<
 	!std::is_floating_point<
 		T
 	>::value,
 	Dest
->::type
+>
 distance(
 	fcppt::math::vector::object<
 		T,

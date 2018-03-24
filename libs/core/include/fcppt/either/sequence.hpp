@@ -59,10 +59,9 @@ sequence(
 )
 {
 	typedef
-	typename
-	std::remove_reference<
+	std::remove_reference_t<
 		Source
-	>::type
+	>
 	source_type;
 
 	typedef

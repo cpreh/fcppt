@@ -38,10 +38,9 @@ template<
 	fcppt::container::grid::size_type Size
 >
 fcppt::container::grid::min<
-	typename
-	std::make_unsigned<
+	std::make_unsigned_t<
 		Source
-	>::type,
+	>,
 	Size
 >
 clamped_min(
@@ -59,10 +58,9 @@ clamped_min(
 	);
 
 	typedef
-	typename
-	std::make_unsigned<
+	std::make_unsigned_t<
 		Source
-	>::type
+	>
 	dest_type;
 
 	return

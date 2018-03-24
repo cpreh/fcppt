@@ -39,10 +39,9 @@ linear_access(
 		Index
 		<
 		fcppt::math::detail::storage_size<
-			typename
-			std::remove_const<
+			std::remove_const_t<
 				Storage
-			>::type
+			>
 		>::value,
 		"linear_access out of range"
 	);

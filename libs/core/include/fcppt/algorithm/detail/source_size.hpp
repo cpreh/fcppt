@@ -55,12 +55,11 @@ template<
 >
 struct source_size<
 	Source,
-	typename
-	std::enable_if<
+	std::enable_if_t<
 		fcppt::type_traits::is_brigand_sequence<
 			Source
 		>::value
-	>::type
+	>
 >{
 	static
 	typename
@@ -84,12 +83,11 @@ template<
 >
 struct source_size<
 	Source,
-	typename
-	std::enable_if<
+	std::enable_if_t<
 		boost::mpl::is_sequence<
 			Source
 		>::value
-	>::type
+	>
 >{
 	static
 	typename

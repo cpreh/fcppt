@@ -36,10 +36,9 @@ template<
 >
 inline
 fcppt::container::to_reference_type<
-	typename
-	std::remove_reference<
+	std::remove_reference_t<
 		Matrix
-	>::type
+	>
 >
 at_r(
 	Matrix &_value

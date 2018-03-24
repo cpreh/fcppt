@@ -33,10 +33,9 @@ template<
 	typename Optional,
 	typename Function
 >
-typename
-std::remove_reference<
+std::remove_reference_t<
 	Optional
->::type
+>
 alternative(
 	Optional &&_optional1,
 	Function const &_optional2
@@ -51,10 +50,9 @@ alternative(
 
 	static_assert(
 		fcppt::optional::detail::check<
-			typename
-			std::result_of<
+			std::result_of_t<
 				Function()
-			>::type
+			>
 		>::value,
 		"Function must return an optional"
 	);

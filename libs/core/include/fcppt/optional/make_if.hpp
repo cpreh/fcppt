@@ -34,10 +34,9 @@ template<
 >
 inline
 fcppt::optional::object<
-	typename
-	std::result_of<
+	std::result_of_t<
 		Function()
-	>::type
+	>
 >
 make_if(
 	bool const _is_set,
@@ -46,10 +45,9 @@ make_if(
 {
 	typedef
 	fcppt::optional::object<
-		typename
-		std::result_of<
+		std::result_of_t<
 			Function()
-		>::type
+		>
 	>
 	result_type;
 

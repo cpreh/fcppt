@@ -36,12 +36,11 @@ template<
 struct runtime_index<
 	MaxIndex,
 	CurrentIndex,
-	typename
-	std::enable_if<
+	std::enable_if_t<
 		CurrentIndex::value
 		==
 		MaxIndex::value
-	>::type
+	>
 >
 {
 	template<
@@ -71,12 +70,11 @@ template<
 struct runtime_index<
 	MaxIndex,
 	CurrentIndex,
-	typename
-	std::enable_if<
+	std::enable_if_t<
 		CurrentIndex::value
 		!=
 		MaxIndex::value
-	>::type
+	>
 >
 {
 	template<

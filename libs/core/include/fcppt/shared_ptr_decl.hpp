@@ -72,9 +72,11 @@ public:
 	/**
 	\brief The reference type, same as <code>value_type &</code>
 	*/
-	typedef typename std::add_lvalue_reference<
+	typedef
+	std::add_lvalue_reference_t<
 		element_type
-	>::type reference;
+	>
+	reference;
 
 	/**
 	\brief Constructs a shared_ptr from a compatible pointer type

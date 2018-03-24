@@ -27,14 +27,13 @@ template<
 using
 map_result
 =
-typename
-std::result_of<
+std::result_of_t<
 	Function(
 		fcppt::record::element_to_type<
 			Arg
 		>
 	)
->::type;
+>;
 
 }
 }

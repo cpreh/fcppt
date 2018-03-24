@@ -284,14 +284,16 @@ private:
 	void
 	destroy();
 
-	typedef typename std::aligned_storage<
+	typedef
+	std::aligned_storage_t<
 		sizeof(
 			T
 		),
 		std::alignment_of<
 			T
 		>::value
-	>::type storage_type;
+	>
+	storage_type;
 
 	storage_type storage_;
 

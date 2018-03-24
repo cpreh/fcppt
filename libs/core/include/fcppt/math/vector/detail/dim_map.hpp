@@ -36,13 +36,12 @@ template<
 >
 inline
 fcppt::math::vector::static_<
-	typename
-	std::result_of<
+	std::result_of_t<
 		Function(
 			L,
 			R
 		)
-	>::type,
+	>,
 	N
 >
 dim_map(
@@ -62,13 +61,12 @@ dim_map(
 	return
 		fcppt::math::detail::binary_map<
 			fcppt::math::vector::static_<
-				typename
-				std::result_of<
+				std::result_of_t<
 					Function(
 						L,
 						R
 					)
-				>::type,
+				>,
 				N
 			>
 		>(

@@ -39,23 +39,21 @@ template<
 	typename Src
 >
 inline
-typename
-std::enable_if<
+std::enable_if_t<
 	std::is_reference<
 		Dest
 	>::value,
 	Dest
->::type
+>
 dynamic_cross_exn(
 	Src &_src
 )
 {
 	static_assert(
 		!fcppt::type_traits::is_base_of<
-			typename
-			std::remove_cv<
+			std::remove_cv_t<
 				Src
-			>::type,
+			>,
 			typename
 			std::decay<
 				Dest

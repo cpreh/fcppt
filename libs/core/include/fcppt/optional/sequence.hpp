@@ -13,6 +13,7 @@
 #include <fcppt/optional/is_object.hpp>
 #include <fcppt/optional/make_if.hpp>
 #include <fcppt/optional/object_impl.hpp>
+#include <fcppt/type_traits/remove_cv_ref_t.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <type_traits>
 #include <utility>
@@ -54,14 +55,9 @@ sequence(
 {
 	typedef
 	typename
-	std::remove_reference<
+	fcppt::type_traits::remove_cv_ref_t<
 		Source
-	>::type
-	source_type;
-
-	typedef
-	typename
-	source_type::value_type
+	>::value_type
 	source_optional;
 
 	static_assert(

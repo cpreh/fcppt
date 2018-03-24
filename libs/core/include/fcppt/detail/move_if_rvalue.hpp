@@ -23,13 +23,12 @@ template<
 	typename Arg
 >
 inline
-typename
-std::enable_if<
+std::enable_if_t<
 	std::is_lvalue_reference<
 		Type
 	>::value,
 	Arg &
->::type
+>
 move_if_rvalue(
 	Arg &_arg
 )
@@ -43,13 +42,12 @@ template<
 	typename Arg
 >
 inline
-typename
-std::enable_if<
+std::enable_if_t<
 	!std::is_lvalue_reference<
 		Type
 	>::value,
 	Arg &&
->::type
+>
 move_if_rvalue(
 	Arg &_arg
 )

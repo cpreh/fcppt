@@ -48,10 +48,9 @@ class pre_order
 {
 	static_assert(
 		fcppt::container::tree::is_object<
-			typename
-			std::remove_cv<
+			std::remove_cv_t<
 				Tree
-			>::type
+			>
 		>::value,
 		"pre_order can only be used with trees"
 	);
@@ -73,8 +72,7 @@ public:
 	class iterator;
 private:
 	typedef
-	typename
-	std::conditional<
+	std::conditional_t<
 		std::is_const<
 			Tree
 		>::value,
@@ -82,7 +80,7 @@ private:
 		Tree::const_reverse_iterator,
 		typename
 		Tree::reverse_iterator
-	>::type
+	>
 	tree_iterator;
 
 	typedef

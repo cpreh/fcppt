@@ -97,10 +97,9 @@ template<
 	typename Deleter
 >
 inline
-typename
-std::add_lvalue_reference<
+std::add_lvalue_reference_t<
 	Type
->::type
+>
 fcppt::unique_ptr<
 	Type,
 	Deleter

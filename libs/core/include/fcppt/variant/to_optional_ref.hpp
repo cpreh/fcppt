@@ -44,10 +44,9 @@ to_optional_ref(
 	result_type;
 
 	typedef
-	typename
-	std::remove_cv<
+	std::remove_cv_t<
 		Type
-	>::type
+	>
 	element_type;
 
 	return

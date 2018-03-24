@@ -32,13 +32,11 @@ struct is_raw_pointer
 	);
 
 	typedef
-	typename
-	std::remove_cv<
-		typename
-		std::remove_pointer<
+	std::remove_cv_t<
+		std::remove_pointer_t<
 			Type
-		>::type
-	>::type
+		>
+	>
 	base_type;
 
 	typedef

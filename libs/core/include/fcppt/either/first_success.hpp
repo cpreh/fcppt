@@ -41,16 +41,16 @@ template<
 fcppt::either::object<
 	std::vector<
 		typename
-		std::result_of<
+		std::result_of_t<
 			typename
 			Functions::value_type()
-		>::type::failure
+		>::failure
 	>,
 	typename
-	std::result_of<
+	std::result_of_t<
 		typename
 		Functions::value_type()
-	>::type::success
+	>::success
 >
 first_success(
 	Functions const &_functions
@@ -59,10 +59,10 @@ first_success(
 	typedef
 	std::vector<
 		typename
-		std::result_of<
+		std::result_of_t<
 			typename
 			Functions::value_type()
-		>::type::failure
+		>::failure
 	>
 	failure_container;
 
@@ -70,10 +70,10 @@ first_success(
 	fcppt::either::object<
 		failure_container,
 		typename
-		std::result_of<
+		std::result_of_t<
 			typename
 			Functions::value_type()
-		>::type::success
+		>::success
 	>
 	result_type;
 

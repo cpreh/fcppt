@@ -147,10 +147,9 @@ template<
 class object<
 	T,
 	Base,
-	typename
 	fcppt::signal::detail::enable_if_void<
 		T
-	>::type
+	>
 >
 :
 private

@@ -35,15 +35,14 @@ template<
 	typename CheckRemove
 >
 fcppt::optional::object<
-	typename
-	std::result_of<
+	std::result_of_t<
 		GetResult(
 			fcppt::reference<
 				typename
 				Map::mapped_type
 			>
 		)
-	>::type
+	>
 >
 get_element(
 	Map &_map,

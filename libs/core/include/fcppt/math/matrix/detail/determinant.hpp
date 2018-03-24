@@ -58,8 +58,7 @@ template<
 	fcppt::math::size_type N,
 	typename S
 >
-typename
-std::enable_if<
+std::enable_if_t<
 	!fcppt::math::matrix::has_dim<
 		fcppt::math::matrix::object<
 			T,
@@ -71,7 +70,7 @@ std::enable_if<
 		1
 	>::value,
 	T
->::type
+>
 determinant(
 	fcppt::math::matrix::object<
 		T,

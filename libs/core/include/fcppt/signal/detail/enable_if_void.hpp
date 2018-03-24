@@ -26,7 +26,7 @@ template<
 >
 using enable_if_void
 =
-std::enable_if<
+std::enable_if_t<
 	std::is_void<
 		typename
 		fcppt::type_traits::function_result<

@@ -38,13 +38,11 @@ struct size_type_impl
 	);
 
 	typedef
-	typename
-	std::make_unsigned<
-		typename
-		std::underlying_type<
+	std::make_unsigned_t<
+		std::underlying_type_t<
 			Type
-		>::type
-	>::type
+		>
+	>
 	type;
 };
 

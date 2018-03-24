@@ -25,12 +25,11 @@ template<
 >
 struct make_literal<
 	Type,
-	typename
-	std::enable_if<
+	std::enable_if_t<
 		std::is_arithmetic<
 			Type
 		>::value
-	>::type
+	>
 >
 {
 	typedef

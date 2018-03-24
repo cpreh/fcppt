@@ -76,12 +76,11 @@ map(
 						>(
 							fcppt::record::get<
 								fcppt::record::element_to_label<
-									typename
-									std::remove_const<
+									std::remove_const_t<
 										decltype(
 											_element
 										)
-									>::type
+									>
 								>
 							>(
 								_record

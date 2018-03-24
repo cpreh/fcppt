@@ -32,12 +32,11 @@ template<
 >
 struct undecorated_type<
 	Type,
-	typename
-	std::enable_if<
+	std::enable_if_t<
 		fcppt::type_iso::detail::is_terminal<
 			Type
 		>::value
-	>::type
+	>
 >
 {
 	typedef
@@ -50,12 +49,11 @@ template<
 >
 struct undecorated_type<
 	Type,
-	typename
-	std::enable_if<
+	std::enable_if_t<
 		!fcppt::type_iso::detail::is_terminal<
 			Type
 		>::value
-	>::type
+	>
 >
 :
 fcppt::type_iso::detail::undecorated_type<

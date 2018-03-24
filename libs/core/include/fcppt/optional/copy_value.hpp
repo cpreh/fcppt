@@ -30,10 +30,9 @@ template<
 	typename Type
 >
 fcppt::optional::object<
-	typename
-	std::remove_cv<
+	std::remove_cv_t<
 		Type
-	>::type
+	>
 >
 copy_value(
 	fcppt::optional::reference<

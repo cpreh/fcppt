@@ -91,12 +91,11 @@ permute(
 					>(
 						fcppt::record::get<
 							fcppt::record::element_to_label<
-								typename
-								std::remove_const<
+								std::remove_const_t<
 									decltype(
 										_fcppt_permute_element
 									)
-								>::type
+								>
 							>
 						>(
 							_arg

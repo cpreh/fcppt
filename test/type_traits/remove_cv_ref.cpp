@@ -4,37 +4,32 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_OPTIONAL_DETAIL_CHECK_HPP_INCLUDED
-#define FCPPT_OPTIONAL_DETAIL_CHECK_HPP_INCLUDED
-
-#include <fcppt/optional/is_object.hpp>
 #include <fcppt/type_traits/remove_cv_ref_t.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
 
-namespace fcppt
+int
+main()
 {
-namespace optional
-{
-namespace detail
-{
+	static_assert(
+		std::is_same<
+			fcppt::type_traits::remove_cv_ref_t<
+				int const &
+			>,
+			int
+		>::value,
+		"remove_cv_ref of int const & should be int"
+	);
 
-template<
-	typename Type
->
-using
-check
-=
-fcppt::optional::is_object<
-	fcppt::type_traits::remove_cv_ref_t<
-		Type
-	>
->;
-
+	static_assert(
+		std::is_same<
+			fcppt::type_traits::remove_cv_ref_t<
+				int &
+			>,
+			int
+		>::value,
+		"remove_cv_ref of int & should be int"
+	);
 }
-}
-}
-
-#endif

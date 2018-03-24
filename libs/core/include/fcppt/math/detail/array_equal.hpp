@@ -25,13 +25,12 @@ template<
 	typename T2
 >
 inline
-typename
-std::enable_if<
+std::enable_if_t<
 	T1::static_size::value
 	==
 	T2::static_size::value,
 	bool
->::type
+>
 array_equal(
 	T1 const &_v1,
 	T2 const &_v2

@@ -49,9 +49,9 @@ make_pos_ref_range_start_end(
 {
 	static_assert(
 		fcppt::container::grid::is_object<
-			typename std::remove_const<
+			std::remove_const_t<
 				Grid
-			>::type
+			>
 		>::value,
 		"Grid must be a grid::object"
 	);

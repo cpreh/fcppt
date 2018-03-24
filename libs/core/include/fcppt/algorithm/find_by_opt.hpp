@@ -50,10 +50,9 @@ decltype(
 {
 	typedef
 	fcppt::container::to_iterator_type<
-		typename
-		std::remove_reference<
+		std::remove_reference_t<
 			Range
-		>::type
+		>
 	>
 	iterator_type;
 
@@ -67,10 +66,9 @@ decltype(
 
 	static_assert(
 		fcppt::optional::is_object<
-			typename
-			std::remove_const<
+			std::remove_const_t<
 				result_type
-			>::type
+			>
 		>::value,
 		"Function must return an optional"
 	);

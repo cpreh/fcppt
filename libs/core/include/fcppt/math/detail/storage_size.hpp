@@ -32,12 +32,11 @@ template<
 >
 struct storage_size<
 	T,
-	typename
-	std::enable_if<
+	std::enable_if_t<
 		!fcppt::math::detail::is_static_storage<
 			T
 		>::value
-	>::type
+	>
 >
 :
 T::static_size
@@ -49,12 +48,11 @@ template<
 >
 struct storage_size<
 	T,
-	typename
-	std::enable_if<
+	std::enable_if_t<
 		fcppt::math::detail::is_static_storage<
 			T
 		>::value
-	>::type
+	>
 >
 :
 fcppt::container::array_size<

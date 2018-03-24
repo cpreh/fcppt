@@ -9,7 +9,7 @@
 
 #include <fcppt/container/detail/untuple.hpp>
 #include <fcppt/type_traits/is_std_tuple.hpp>
-#include <fcppt/type_traits/remove_cv_ref.hpp>
+#include <fcppt/type_traits/remove_cv_ref_t.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <tuple>
 #include <utility>
@@ -48,10 +48,9 @@ untuple(
 )
 {
 	typedef
-	typename
-	fcppt::type_traits::remove_cv_ref<
+	fcppt::type_traits::remove_cv_ref_t<
 		Tuple
-	>::type
+	>
 	tuple_type;
 
 	static_assert(

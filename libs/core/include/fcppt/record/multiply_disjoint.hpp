@@ -80,12 +80,11 @@ multiply_disjoint(
 				return
 					fcppt::record::detail::get_either<
 						fcppt::record::element_to_label<
-							typename
-							std::remove_const<
+							std::remove_const_t<
 								decltype(
 									_fcppt_multiply_disjoint_element
 								)
-							>::type
+							>
 						>,
 						Record1,
 						Record2

@@ -52,22 +52,20 @@ public:
 
 	typedef
 	fcppt::intrusive::base<
-		typename
-		std::remove_const<
+		std::remove_const_t<
 			Type
-		>::type
+		>
 	>
 	base_type;
 
 	typedef
-	typename
-	std::conditional<
+	std::conditional_t<
 		std::is_const<
 			Type
 		>::value,
 		base_type const,
 		base_type
-	>::type *
+	> *
 	pointer_type;
 
 	iterator();

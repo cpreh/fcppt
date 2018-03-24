@@ -25,8 +25,7 @@ template<
 	typename U
 >
 constexpr
-typename
-std::enable_if<
+std::enable_if_t<
 	!(
 		std::is_arithmetic<
 			T
@@ -37,7 +36,7 @@ std::enable_if<
 		>::value
 	),
 	T
->::type
+>
 safe(
 	U const &_other
 )
@@ -51,8 +50,7 @@ template<
 	typename U
 >
 constexpr
-typename
-std::enable_if<
+std::enable_if_t<
 	std::is_arithmetic<
 		T
 	>::value
@@ -61,7 +59,7 @@ std::enable_if<
 		U
 	>::value,
 	T
->::type
+>
 safe(
 	U const &_other
 )

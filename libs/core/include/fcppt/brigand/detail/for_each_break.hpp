@@ -28,15 +28,14 @@ template<
 	unsigned Index,
 	typename Fun
 >
-typename
-std::enable_if<
+std::enable_if_t<
 	::brigand::size<
 		List
 	>::value
 	==
 	Index,
 	void
->::type
+>
 for_each_break(
 	Fun const &
 )
@@ -49,15 +48,14 @@ template<
 	typename Fun
 >
 inline
-typename
-std::enable_if<
+std::enable_if_t<
 	::brigand::size<
 		List
 	>::value
 	!=
 	Index,
 	void
->::type
+>
 for_each_break(
 	Fun const &_func
 )

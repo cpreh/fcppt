@@ -30,8 +30,7 @@ template<
 	typename Dest,
 	typename Source
 >
-typename
-std::enable_if<
+std::enable_if_t<
 	std::is_signed<
 		Dest
 	>::value
@@ -50,7 +49,7 @@ std::enable_if<
 	fcppt::optional::object<
 		Dest
 	>
->::type
+>
 truncation_check(
 	Source const _source
 )
@@ -67,8 +66,7 @@ template<
 	typename Dest,
 	typename Source
 >
-typename
-std::enable_if<
+std::enable_if_t<
 	std::is_unsigned<
 		Dest
 	>::value
@@ -87,7 +85,7 @@ std::enable_if<
 	fcppt::optional::object<
 		Dest
 	>
->::type
+>
 truncation_check(
 	Source const _source
 )
@@ -125,8 +123,7 @@ template<
 	typename Dest,
 	typename Source
 >
-typename
-std::enable_if<
+std::enable_if_t<
 	std::is_signed<
 		Dest
 	>::value
@@ -145,7 +142,7 @@ std::enable_if<
 	fcppt::optional::object<
 		Dest
 	>
->::type
+>
 truncation_check(
 	Source const _source
 )
@@ -191,8 +188,7 @@ template<
 	typename Dest,
 	typename Source
 >
-typename
-std::enable_if<
+std::enable_if_t<
 	std::is_unsigned<
 		Dest
 	>::value
@@ -203,7 +199,7 @@ std::enable_if<
 	fcppt::optional::object<
 		Dest
 	>
->::type
+>
 truncation_check(
 	Source const _source
 )
@@ -236,8 +232,7 @@ template<
 	typename Dest,
 	typename Source
 >
-typename
-std::enable_if<
+std::enable_if_t<
 	std::is_signed<
 		Dest
 	>::value
@@ -248,7 +243,7 @@ std::enable_if<
 	fcppt::optional::object<
 		Dest
 	>
->::type
+>
 truncation_check(
 	Source const _source
 )
@@ -257,9 +252,11 @@ truncation_check(
 		Dest
 	> dest_type;
 
-	typedef typename std::make_unsigned<
+	typedef
+	std::make_unsigned_t<
 		Dest
-	>::type intermediate_type;
+	>
+	intermediate_type;
 
 	typedef fcppt::optional::object<
 		intermediate_type

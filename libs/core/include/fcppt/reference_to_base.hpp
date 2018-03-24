@@ -41,14 +41,12 @@ noexcept
 {
 	static_assert(
 		fcppt::type_traits::is_base_of<
-			typename
-			std::remove_cv<
+			std::remove_cv_t<
 				Base
-			>::type,
-			typename
-			std::remove_cv<
+			>,
+			std::remove_cv_t<
 				Type
-			>::type
+			>
 		>::value,
 		"Base must be a base of Type"
 	);

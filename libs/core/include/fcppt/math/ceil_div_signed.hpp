@@ -93,10 +93,9 @@ ceil_div_signed(
 					)
 				),
 				[](
-					typename
-					std::make_unsigned<
+					std::make_unsigned_t<
 						T
-					>::type const _result
+					> const _result
 				)
 				{
 					return

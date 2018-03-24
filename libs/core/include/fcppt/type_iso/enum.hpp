@@ -25,19 +25,17 @@ template<
 >
 struct transform<
 	Enum,
-	typename
-	std::enable_if<
+	std::enable_if_t<
 		std::is_enum<
 			Enum
 		>::value
-	>::type
+	>
 >
 {
 	typedef
-	typename
-	std::underlying_type<
+	std::underlying_type_t<
 		Enum
-	>::type
+	>
 	undecorated_type;
 
 	static

@@ -35,14 +35,13 @@ template<
 inline
 fcppt::optional::object<
 	fcppt::reference<
-		typename
-		std::remove_reference<
+		std::remove_reference_t<
 			decltype(
 				*std::declval<
 					Element
 				>()
 			)
-		>::type
+		>
 	>
 >
 deref(
@@ -60,14 +59,13 @@ deref(
 			{
 				return
 					fcppt::reference<
-						typename
-						std::remove_reference<
+						std::remove_reference_t<
 							decltype(
 								*std::declval<
 									Element
 								>()
 							)
-						>::type
+						>
 					>(
 						*_element
 					);

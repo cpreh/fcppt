@@ -275,8 +275,7 @@ private:
 	;
 
 	typedef
-	typename
-	std::aligned_storage<
+	std::aligned_storage_t<
 		fcppt::brigand::max_value<
 			::brigand::transform<
 				Types,
@@ -293,7 +292,7 @@ private:
 				>
 			>
 		>::value
-	>::type
+	>
 	storage_type;
 
 	storage_type storage_;

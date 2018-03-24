@@ -46,10 +46,9 @@ noexcept
 		>::value
 		&&
 		std::is_void<
-			typename
-			std::remove_cv<
+			std::remove_cv_t<
 				Source
-			>::type
+			>
 		>::value,
 		"from_void_ptr can only cast from a pointer to (cv) void to a different pointer type"
 	);

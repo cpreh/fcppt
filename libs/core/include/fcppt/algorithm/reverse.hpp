@@ -30,10 +30,9 @@ template<
 	typename Container
 >
 inline
-typename
-std::remove_reference<
+std::remove_reference_t<
 	Container
->::type
+>
 reverse(
 	Container &&_container
 )

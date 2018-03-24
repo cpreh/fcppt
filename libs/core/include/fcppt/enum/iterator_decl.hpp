@@ -38,12 +38,11 @@ class iterator final
 				>,
 				Enum,
 				Enum,
-				typename
-				std::make_signed<
+				std::make_signed_t<
 					fcppt::enum_::size_type<
 						Enum
 					>
-				>::type,
+				>,
 				std::input_iterator_tag
 			>
 		>

@@ -21,9 +21,9 @@
 static_assert((\
 	::fcppt::variant::detail::index_of<\
 		types,\
-		typename std::remove_reference<\
+		std::remove_reference_t<\
 			other\
-		>::type\
+		>\
 	>::value\
 	< elements\
 	),\

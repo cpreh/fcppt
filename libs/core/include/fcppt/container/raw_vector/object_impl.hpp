@@ -1007,14 +1007,13 @@ template<
 template<
 	typename In
 >
-typename
-std::enable_if<
+std::enable_if_t<
 	!fcppt::type_traits::is_iterator_of_category<
 		In,
 		std::forward_iterator_tag
 	>::value,
 	void
->::type
+>
 fcppt::container::raw_vector::object<
 	T,
 	A
@@ -1045,14 +1044,13 @@ template<
 template<
 	typename In
 >
-typename
-std::enable_if<
+std::enable_if_t<
 	fcppt::type_traits::is_iterator_of_category<
 		In,
 		std::forward_iterator_tag
 	>::value,
 	void
->::type
+>
 fcppt::container::raw_vector::object<
 	T,
 	A

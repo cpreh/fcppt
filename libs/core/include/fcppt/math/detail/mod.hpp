@@ -24,13 +24,12 @@ template<
 	typename T
 >
 inline
-typename
-std::enable_if<
+std::enable_if_t<
 	std::is_floating_point<
 		T
 	>::value,
 	T
->::type
+>
 mod(
 	T const &_a,
 	T const &_b
@@ -47,13 +46,12 @@ template<
 	typename T
 >
 inline
-typename
-std::enable_if<
+std::enable_if_t<
 	std::is_unsigned<
 		T
 	>::value,
 	T
->::type
+>
 mod(
 	T const &_a,
 	T const &_b

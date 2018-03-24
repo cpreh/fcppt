@@ -47,10 +47,9 @@ fcppt::iterator::base<
 			SizeType,
 			Size
 		>,
-		typename
-		std::make_signed<
+		std::make_signed_t<
 			SizeType
-		>::type,
+		>,
 		std::input_iterator_tag
 	>
 >;

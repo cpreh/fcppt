@@ -10,6 +10,7 @@
 #include <fcppt/move_if_rvalue.hpp>
 #include <fcppt/optional/object_impl.hpp>
 #include <fcppt/optional/detail/check.hpp>
+#include <fcppt/type_traits/remove_cv_ref_t.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
@@ -45,8 +46,7 @@ bind(
 	Function const &_function
 )
 ->
-typename
-std::remove_reference<
+std::remove_reference_t<
 	decltype(
 		_function(
 			fcppt::move_if_rvalue<
@@ -56,24 +56,20 @@ std::remove_reference<
 			)
 		)
 	)
->::type
+>
 {
 	typedef
-	typename
-	std::remove_cv<
-		typename
-		std::remove_reference<
-			decltype(
-				_function(
-					fcppt::move_if_rvalue<
-						Optional
-					>(
-						_source.get_unsafe()
-					)
+	fcppt::type_traits::remove_cv_ref_t<
+		decltype(
+			_function(
+				fcppt::move_if_rvalue<
+					Optional
+				>(
+					_source.get_unsafe()
 				)
 			)
-		>::type
-	>::type
+		)
+	>
 	result_type;
 
 	static_assert(

@@ -26,12 +26,12 @@ template<
 	typename T
 >
 inline
-typename std::enable_if<
+std::enable_if_t<
 	!std::is_unsigned<
 		T
 	>::value,
 	T
->::type
+>
 diff(
 	T const &a,
 	T const &b
@@ -47,12 +47,12 @@ template<
 	typename T
 >
 inline
-typename std::enable_if<
+std::enable_if_t<
 	std::is_unsigned<
 		T
 	>::value,
 	T
->::type
+>
 diff(
 	T const &a,
 	T const &b

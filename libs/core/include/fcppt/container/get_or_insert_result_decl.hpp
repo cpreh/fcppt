@@ -66,10 +66,9 @@ public:
 	inserted() const;
 private:
 	fcppt::reference<
-		typename
-		std::remove_reference<
+		std::remove_reference_t<
 			Reference
-		>::type
+		>
 	>
 	reference_;
 

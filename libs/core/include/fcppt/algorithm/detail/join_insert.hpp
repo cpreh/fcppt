@@ -25,13 +25,12 @@ template<
 	typename Iterator
 >
 inline
-typename
-std::enable_if<
+std::enable_if_t<
 	!fcppt::algorithm::detail::has_insert_range<
 		Result
 	>::value,
 	void
->::type
+>
 join_insert(
 	Result &_result,
 	Iterator const _begin,
@@ -50,13 +49,12 @@ template<
 	typename Iterator
 >
 inline
-typename
-std::enable_if<
+std::enable_if_t<
 	fcppt::algorithm::detail::has_insert_range<
 		Result
 	>::value,
 	void
->::type
+>
 join_insert(
 	Result &_result,
 	Iterator const _begin,

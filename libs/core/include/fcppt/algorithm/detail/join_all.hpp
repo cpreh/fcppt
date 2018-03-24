@@ -44,10 +44,9 @@ template<
 	typename... Args
 >
 inline
-typename
-std::remove_cv<
+std::remove_cv_t<
 	Result
->::type
+>
 join_all(
 	Result &&_result,
 	Container &&_container,

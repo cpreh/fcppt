@@ -28,12 +28,11 @@ template<
 using
 iterator_type
 =
-typename
-std::conditional<
+std::conditional_t<
 	IsConst,
 	string_vector::const_iterator,
 	string_vector::iterator
->::type;
+>;
 
 template<
 	bool IsConst

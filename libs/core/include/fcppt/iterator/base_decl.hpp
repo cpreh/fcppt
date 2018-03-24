@@ -98,10 +98,9 @@ public:
 	difference_type;
 
 	typedef
-	typename
-	std::remove_reference<
+	std::add_pointer_t<
 		reference
-	>::type *
+	>
 	pointer;
 
 	typedef
