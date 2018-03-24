@@ -10,6 +10,7 @@
 #include <fcppt/move_if_rvalue.hpp>
 #include <fcppt/either/is_object.hpp>
 #include <fcppt/either/object_impl.hpp>
+#include <fcppt/either/success_type.hpp>
 #include <fcppt/type_traits/remove_cv_ref_t.hpp>
 
 
@@ -51,10 +52,11 @@ fcppt::either::object<
 			)
 		)
 	),
-	typename
-	fcppt::type_traits::remove_cv_ref_t<
-		Either
-	>::success
+	fcppt::either::success_type<
+		fcppt::type_traits::remove_cv_ref_t<
+			Either
+		>
+	>
 >
 {
 	typedef
@@ -81,10 +83,11 @@ fcppt::either::object<
 				)
 			)
 		),
-		typename
-		fcppt::type_traits::remove_cv_ref_t<
-			Either
-		>::success
+		fcppt::either::success_type<
+			fcppt::type_traits::remove_cv_ref_t<
+				Either
+			>
+		>
 	>
 	result_type;
 

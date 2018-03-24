@@ -13,6 +13,7 @@
 #include <fcppt/algorithm/all_of.hpp>
 #include <fcppt/algorithm/find_if_opt.hpp>
 #include <fcppt/either/failure_opt.hpp>
+#include <fcppt/either/failure_type.hpp>
 #include <fcppt/either/is_object.hpp>
 #include <fcppt/either/object_impl.hpp>
 #include <fcppt/optional/object_impl.hpp>
@@ -57,10 +58,11 @@ apply(
 )
 ->
 fcppt::either::object<
-	typename
-	fcppt::type_traits::remove_cv_ref_t<
-		Either1
-	>::failure,
+	fcppt::either::failure_type<
+		fcppt::type_traits::remove_cv_ref_t<
+			Either1
+		>
+	>,
 	decltype(
 		_function(
 			fcppt::move_if_rvalue<
@@ -105,8 +107,9 @@ fcppt::either::object<
 	);
 
 	typedef
-	typename
-	either1::failure
+	fcppt::either::failure_type<
+		either1
+	>
 	failure;
 
 	typedef

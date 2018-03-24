@@ -11,9 +11,11 @@
 #include <fcppt/move_if_rvalue.hpp>
 #include <fcppt/algorithm/fold_break.hpp>
 #include <fcppt/container/to_value_type.hpp>
+#include <fcppt/either/failure_type.hpp>
 #include <fcppt/either/is_object.hpp>
 #include <fcppt/either/match.hpp>
 #include <fcppt/either/no_error.hpp>
+#include <fcppt/either/success_type.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <type_traits>
 #include <utility>
@@ -90,8 +92,9 @@ decltype(
 
 	static_assert(
 		std::is_same<
-			typename
-			either_type::success,
+			fcppt::either::success_type<
+				either_type
+			>,
 			fcppt::either::no_error
 		>::value,
 		"Function must return an either::error"
@@ -124,8 +127,9 @@ decltype(
 							)
 						),
 						[](
-							typename
-							either_type::failure &&_error
+							fcppt::either::failure_type<
+								either_type
+							> &&_error
 						)
 						{
 							return

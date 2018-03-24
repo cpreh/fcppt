@@ -25,6 +25,11 @@ add_fcppt_either_test(
 )
 
 add_fcppt_either_test(
+	failure_type
+	NO_CODE
+)
+
+add_fcppt_either_test(
 	first_success
 )
 
@@ -66,6 +71,11 @@ add_fcppt_either_test(
 
 add_fcppt_either_test(
 	success_opt
+)
+
+add_fcppt_either_test(
+	success_type
+	NO_CODE
 )
 
 add_fcppt_either_test(

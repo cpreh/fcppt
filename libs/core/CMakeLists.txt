@@ -64,6 +64,8 @@ set(
 	libs/core/include/fcppt/algorithm/set_intersection.hpp
 	libs/core/include/fcppt/algorithm/set_union.hpp
 	libs/core/include/fcppt/algorithm/tuple_map.hpp
+	libs/core/include/fcppt/algorithm/unique.hpp
+	libs/core/include/fcppt/algorithm/unique_if.hpp
 	libs/core/include/fcppt/algorithm/update_action.hpp
 	libs/core/include/fcppt/algorithm/update_action_fwd.hpp
 	libs/core/include/fcppt/algorithm/vararg_map.hpp
@@ -430,10 +432,13 @@ set(
 	libs/core/include/fcppt/either/apply.hpp
 	libs/core/include/fcppt/either/bind.hpp
 	libs/core/include/fcppt/either/comparison.hpp
+	libs/core/include/fcppt/either/detail/failure_type.hpp
+	libs/core/include/fcppt/either/detail/success_type.hpp
 	libs/core/include/fcppt/either/error.hpp
 	libs/core/include/fcppt/either/error_from_optional.hpp
 	libs/core/include/fcppt/either/error_fwd.hpp
 	libs/core/include/fcppt/either/failure_opt.hpp
+	libs/core/include/fcppt/either/failure_type.hpp
 	libs/core/include/fcppt/either/first_success.hpp
 	libs/core/include/fcppt/either/fold_error.hpp
 	libs/core/include/fcppt/either/from_optional.hpp
@@ -452,6 +457,7 @@ set(
 	libs/core/include/fcppt/either/output.hpp
 	libs/core/include/fcppt/either/sequence.hpp
 	libs/core/include/fcppt/either/success_opt.hpp
+	libs/core/include/fcppt/either/success_type.hpp
 	libs/core/include/fcppt/either/to_exception.hpp
 	libs/core/include/fcppt/either/try_call.hpp
 	libs/core/include/fcppt/enable_shared_from_this.hpp
@@ -1176,6 +1182,7 @@ set(
 	libs/core/include/fcppt/type_traits/is_string.hpp
 	libs/core/include/fcppt/type_traits/is_value.hpp
 	libs/core/include/fcppt/type_traits/remove_cv_ref.hpp
+	libs/core/include/fcppt/type_traits/remove_cv_ref_t.hpp
 	libs/core/include/fcppt/unique_ptr.hpp
 	libs/core/include/fcppt/unique_ptr_decl.hpp
 	libs/core/include/fcppt/unique_ptr_dynamic_cast.hpp

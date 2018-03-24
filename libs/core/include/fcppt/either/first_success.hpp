@@ -7,7 +7,9 @@
 #ifndef FCPPT_EITHER_FIRST_SUCCESS_HPP_INCLUDED
 #define FCPPT_EITHER_FIRST_SUCCESS_HPP_INCLUDED
 
+#include <fcppt/either/failure_type.hpp>
 #include <fcppt/either/object_impl.hpp>
+#include <fcppt/either/success_type.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <type_traits>
 #include <utility>
@@ -40,17 +42,19 @@ template<
 >
 fcppt::either::object<
 	std::vector<
-		typename
+		fcppt::either::failure_type<
+			std::result_of_t<
+				typename
+				Functions::value_type()
+			>
+		>
+	>,
+	fcppt::either::success_type<
 		std::result_of_t<
 			typename
 			Functions::value_type()
-		>::failure
-	>,
-	typename
-	std::result_of_t<
-		typename
-		Functions::value_type()
-	>::success
+		>
+	>
 >
 first_success(
 	Functions const &_functions
@@ -58,22 +62,24 @@ first_success(
 {
 	typedef
 	std::vector<
-		typename
-		std::result_of_t<
-			typename
-			Functions::value_type()
-		>::failure
+		fcppt::either::failure_type<
+			std::result_of_t<
+				typename
+				Functions::value_type()
+			>
+		>
 	>
 	failure_container;
 
 	typedef
 	fcppt::either::object<
 		failure_container,
-		typename
-		std::result_of_t<
-			typename
-			Functions::value_type()
-		>::success
+		fcppt::either::success_type<
+			std::result_of_t<
+				typename
+				Functions::value_type()
+			>
+		>
 	>
 	result_type;
 

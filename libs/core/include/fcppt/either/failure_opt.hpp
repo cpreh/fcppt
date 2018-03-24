@@ -8,6 +8,7 @@
 #define FCPPT_EITHER_FAILURE_OPT_HPP_INCLUDED
 
 #include <fcppt/move_if_rvalue.hpp>
+#include <fcppt/either/failure_type.hpp>
 #include <fcppt/either/is_object.hpp>
 #include <fcppt/either/object_impl.hpp>
 #include <fcppt/optional/object_impl.hpp>
@@ -28,10 +29,11 @@ template<
 	typename Either
 >
 fcppt::optional::object<
-	typename
-	fcppt::type_traits::remove_cv_ref_t<
-		Either
-	>::failure
+	fcppt::either::failure_type<
+		fcppt::type_traits::remove_cv_ref_t<
+			Either
+		>
+	>
 >
 failure_opt(
 	Either &&_either
@@ -52,8 +54,9 @@ failure_opt(
 
 	typedef
 	fcppt::optional::object<
-		typename
-		either::failure
+		fcppt::either::failure_type<
+			either
+		>
 	>
 	result_type;
 

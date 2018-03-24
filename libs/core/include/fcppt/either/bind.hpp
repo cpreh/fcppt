@@ -8,6 +8,7 @@
 #define FCPPT_EITHER_BIND_HPP_INCLUDED
 
 #include <fcppt/move_if_rvalue.hpp>
+#include <fcppt/either/failure_type.hpp>
 #include <fcppt/either/is_object.hpp>
 #include <fcppt/either/object_impl.hpp>
 #include <fcppt/type_traits/remove_cv_ref_t.hpp>
@@ -86,10 +87,12 @@ decltype(
 
 	static_assert(
 		std::is_same<
-			typename
-			result_type::failure,
-			typename
-			either::failure
+			fcppt::either::failure_type<
+				result_type
+			>,
+			fcppt::either::failure_type<
+				either
+			>
 		>::value,
 		"failure types must be the same"
 	);

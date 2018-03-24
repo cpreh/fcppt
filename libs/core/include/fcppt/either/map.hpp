@@ -8,6 +8,7 @@
 #define FCPPT_EITHER_MAP_HPP_INCLUDED
 
 #include <fcppt/move_if_rvalue.hpp>
+#include <fcppt/either/failure_type.hpp>
 #include <fcppt/either/is_object.hpp>
 #include <fcppt/either/object_impl.hpp>
 #include <fcppt/type_traits/remove_cv_ref_t.hpp>
@@ -42,10 +43,11 @@ map(
 )
 ->
 fcppt::either::object<
-	typename
-	fcppt::type_traits::remove_cv_ref_t<
-		Either
-	>::failure,
+	fcppt::either::failure_type<
+		fcppt::type_traits::remove_cv_ref_t<
+			Either
+		>
+	>,
 	decltype(
 		_function(
 			fcppt::move_if_rvalue<
@@ -72,10 +74,11 @@ fcppt::either::object<
 
 	typedef
 	fcppt::either::object<
-		typename
-		fcppt::type_traits::remove_cv_ref_t<
-			Either
-		>::failure,
+		fcppt::either::failure_type<
+			fcppt::type_traits::remove_cv_ref_t<
+				Either
+			>
+		>,
 		decltype(
 			_function(
 				fcppt::move_if_rvalue<

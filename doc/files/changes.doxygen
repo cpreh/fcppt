@@ -13,6 +13,12 @@
 	</ul>
 </li>
 
+<li>\ref fcppteither
+	<ul>
+	<li>Added \link fcppt::either::failure_type\endlink and \link fcppt::either::success_type\endlink.</li>
+	</ul>
+</li>
+
 <li>\ref fcppttypetraits
 	<ul>
 	<li>Added \link fcppt::type_traits::remove_cv_ref_t\endlink.</li>

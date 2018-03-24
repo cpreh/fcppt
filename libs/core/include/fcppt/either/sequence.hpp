@@ -11,8 +11,10 @@
 #include <fcppt/algorithm/find_if_opt.hpp>
 #include <fcppt/algorithm/map.hpp>
 #include <fcppt/container/to_iterator_type.hpp>
+#include <fcppt/either/failure_type.hpp>
 #include <fcppt/either/is_object.hpp>
 #include <fcppt/either/object_impl.hpp>
+#include <fcppt/either/success_type.hpp>
 #include <fcppt/optional/maybe.hpp>
 #include <fcppt/type_traits/remove_cv_ref_t.hpp>
 #include <fcppt/config/external_begin.hpp>
@@ -49,10 +51,12 @@ template<
 	typename Source
 >
 fcppt::either::object<
-	typename
-	fcppt::type_traits::remove_cv_ref_t<
-		Source
-	>::value_type::failure,
+	fcppt::either::failure_type<
+		typename
+		fcppt::type_traits::remove_cv_ref_t<
+			Source
+		>::value_type
+	>,
 	ResultContainer
 >
 sequence(
@@ -79,8 +83,9 @@ sequence(
 
 	typedef
 	fcppt::either::object<
-		typename
-		source_either::failure,
+		fcppt::either::failure_type<
+			source_either
+		>,
 		ResultContainer
 	>
 	result_type;
@@ -89,8 +94,9 @@ sequence(
 		std::is_same<
 			typename
 			ResultContainer::value_type,
-			typename
-			source_either::success
+			fcppt::either::success_type<
+				source_either
+			>
 		>::value,
 		"ResultContainer must be a container of the source's success type"
 	);
