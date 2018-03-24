@@ -33,10 +33,9 @@ element_to_type
 =
 typename
 fcppt::record::detail::element_to_type<
-	typename
-	std::decay<
+	std::remove_cv_t<
 		Element
-	>::type
+	>
 >::type;
 
 }

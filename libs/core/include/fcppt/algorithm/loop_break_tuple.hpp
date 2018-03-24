@@ -12,6 +12,7 @@
 #include <fcppt/type_traits/is_std_tuple.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <type_traits>
+#include <utility>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -27,22 +28,20 @@ struct loop_break_impl<
 	Range,
 	std::enable_if_t<
 		fcppt::type_traits::is_std_tuple<
-			typename
-			std::decay<
-				Range
-			>::type
+			Range
 		>::value
 	>
 >
 {
 	template<
+		typename Tuple,
 		typename Body
 	>
 	inline
 	static
 	void
 	execute(
-		Range &&_range,
+		Tuple &&_range,
 		Body const &_body
 	)
 	{
@@ -50,7 +49,7 @@ struct loop_break_impl<
 			0u
 		>(
 			std::forward<
-				Range
+				Tuple
 			>(
 				_range
 			),

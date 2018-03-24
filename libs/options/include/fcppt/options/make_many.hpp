@@ -8,8 +8,8 @@
 #define FCPPT_OPTIONS_MAKE_MANY_HPP_INCLUDED
 
 #include <fcppt/options/many_impl.hpp>
+#include <fcppt/type_traits/remove_cv_ref_t.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <type_traits>
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
@@ -32,10 +32,9 @@ template<
 >
 inline
 fcppt::options::many<
-	typename
-	std::decay<
+	fcppt::type_traits::remove_cv_ref_t<
 		Parser
-	>::type
+	>
 >
 make_many(
 	Parser &&_parser
@@ -43,10 +42,9 @@ make_many(
 {
 	return
 		fcppt::options::many<
-			typename
-			std::decay<
+			fcppt::type_traits::remove_cv_ref_t<
 				Parser
-			>::type
+			>
 		>{
 			std::forward<
 				Parser

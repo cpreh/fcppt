@@ -4,6 +4,7 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
+#include <fcppt/type_traits/remove_cv_ref_t.hpp>
 #include <fcppt/variant/apply_binary.hpp>
 #include <fcppt/variant/apply_ternary.hpp>
 #include <fcppt/variant/apply_unary.hpp>
@@ -12,7 +13,6 @@
 #include <fcppt/config/external_begin.hpp>
 #include <boost/test/unit_test.hpp>
 #include <string>
-#include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -45,12 +45,11 @@ BOOST_AUTO_TEST_CASE(
 		)
 		{
 			_val =
-				typename
-				std::decay<
+				fcppt::type_traits::remove_cv_ref_t<
 					decltype(
 						_val
 					)
-				>::type{};
+				>{};
 		},
 		v1
 	);
@@ -86,20 +85,18 @@ BOOST_AUTO_TEST_CASE(
 		)
 		{
 			_val1 =
-				typename
-				std::decay<
+				fcppt::type_traits::remove_cv_ref_t<
 					decltype(
 						_val1
 					)
-				>::type{};
+				>{};
 
 			_val2 =
-				typename
-				std::decay<
+				fcppt::type_traits::remove_cv_ref_t<
 					decltype(
 						_val2
 					)
-				>::type{};
+				>{};
 		},
 		v1,
 		v2
@@ -150,28 +147,25 @@ BOOST_AUTO_TEST_CASE(
 		)
 		{
 			_val1 =
-				typename
-				std::decay<
+				fcppt::type_traits::remove_cv_ref_t<
 					decltype(
 						_val1
 					)
-				>::type{};
+				>{};
 
 			_val2 =
-				typename
-				std::decay<
+				fcppt::type_traits::remove_cv_ref_t<
 					decltype(
 						_val2
 					)
-				>::type{};
+				>{};
 
 			_val3 =
-				typename
-				std::decay<
+				fcppt::type_traits::remove_cv_ref_t<
 					decltype(
 						_val3
 					)
-				>::type{};
+				>{};
 		},
 		v1,
 		v2,

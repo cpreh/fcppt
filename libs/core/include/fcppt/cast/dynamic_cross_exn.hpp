@@ -9,6 +9,7 @@
 
 #include <fcppt/cast/detail/dynamic_exn.hpp>
 #include <fcppt/type_traits/is_base_of.hpp>
+#include <fcppt/type_traits/remove_cv_ref_t.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
@@ -54,10 +55,9 @@ dynamic_cross_exn(
 			std::remove_cv_t<
 				Src
 			>,
-			typename
-			std::decay<
+			fcppt::type_traits::remove_cv_ref_t<
 				Dest
-			>::type
+			>
 		>::value,
 		"dynamic_cross_exn can only be used on unrelated types"
 	);

@@ -46,10 +46,9 @@ at(
 {
 	static_assert(
 		fcppt::math::vector::is_vector<
-			typename
-			std::decay<
+			std::remove_cv_t<
 				Vector
-			>::type
+			>
 		>::value,
 		"Vector must be a vector"
 	);

@@ -7,12 +7,10 @@
 #ifndef FCPPT_VARIANT_LESS_HPP_INCLUDED
 #define FCPPT_VARIANT_LESS_HPP_INCLUDED
 
+#include <fcppt/type_traits/remove_cv_ref_t.hpp>
 #include <fcppt/variant/apply_unary.hpp>
 #include <fcppt/variant/get_unsafe.hpp>
 #include <fcppt/variant/object_fwd.hpp>
-#include <fcppt/config/external_begin.hpp>
-#include <type_traits>
-#include <fcppt/config/external_end.hpp>
 
 
 namespace fcppt
@@ -61,12 +59,11 @@ operator<(
 				){
 					return
 						fcppt::variant::get_unsafe<
-							typename
-							std::decay<
+							fcppt::type_traits::remove_cv_ref_t<
 								decltype(
 									_right_inner
 								)
-							>::type
+							>
 						>(
 							_left
 						)

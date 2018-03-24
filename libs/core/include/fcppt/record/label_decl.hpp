@@ -10,9 +10,7 @@
 #include <fcppt/record/label_fwd.hpp>
 #include <fcppt/record/detail/element_init_fwd.hpp>
 #include <fcppt/record/detail/is_tag.hpp>
-#include <fcppt/config/external_begin.hpp>
-#include <type_traits>
-#include <fcppt/config/external_end.hpp>
+#include <fcppt/type_traits/remove_cv_ref_t.hpp>
 
 
 namespace fcppt
@@ -51,10 +49,9 @@ struct label
 	>
 	fcppt::record::detail::element_init<
 		Tag,
-		typename
-		std::decay<
+		fcppt::type_traits::remove_cv_ref_t<
 			Arg
-		>::type
+		>
 	>
 	operator=(
 		Arg &&

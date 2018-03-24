@@ -9,12 +9,10 @@
 
 #include <fcppt/const.hpp>
 #include <fcppt/optional/maybe.hpp>
+#include <fcppt/type_traits/remove_cv_ref_t.hpp>
 #include <fcppt/variant/apply_unary.hpp>
 #include <fcppt/variant/object_impl.hpp>
 #include <fcppt/variant/to_optional.hpp>
-#include <fcppt/config/external_begin.hpp>
-#include <type_traits>
-#include <fcppt/config/external_end.hpp>
 
 
 namespace fcppt
@@ -59,12 +57,11 @@ operator==(
 				return
 					fcppt::optional::maybe(
 						fcppt::variant::to_optional<
-							typename
-							std::decay<
+							fcppt::type_traits::remove_cv_ref_t<
 								decltype(
 									_right_inner
 								)
-							>::type
+							>
 						>(
 							_left
 						),

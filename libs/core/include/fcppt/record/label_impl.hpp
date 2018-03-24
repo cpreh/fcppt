@@ -9,6 +9,7 @@
 
 #include <fcppt/record/label_decl.hpp>
 #include <fcppt/record/detail/element_init_impl.hpp>
+#include <fcppt/type_traits/remove_cv_ref_t.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <utility>
 #include <fcppt/config/external_end.hpp>
@@ -22,10 +23,9 @@ template<
 >
 fcppt::record::detail::element_init<
 	Tag,
-	typename
-	std::decay<
+	fcppt::type_traits::remove_cv_ref_t<
 		Arg
-	>::type
+	>
 >
 fcppt::record::label<
 	Tag
@@ -36,10 +36,9 @@ fcppt::record::label<
 	return
 		fcppt::record::detail::element_init<
 			Tag,
-			typename
-			std::decay<
+			fcppt::type_traits::remove_cv_ref_t<
 				Arg
-			>::type
+			>
 		>(
 			std::forward<
 				Arg

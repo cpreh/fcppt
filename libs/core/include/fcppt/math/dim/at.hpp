@@ -46,10 +46,9 @@ at(
 {
 	static_assert(
 		fcppt::math::dim::is_dim<
-			typename
-			std::decay<
+			std::remove_cv_t<
 				Dim
-			>::type
+			>
 		>::value,
 		"Dim must be a dim"
 	);

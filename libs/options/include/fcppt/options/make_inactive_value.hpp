@@ -8,8 +8,8 @@
 #define FCPPT_OPTIONS_MAKE_INACTIVE_VALUE_HPP_INCLUDED
 
 #include <fcppt/options/inactive_value.hpp>
+#include <fcppt/type_traits/remove_cv_ref_t.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <type_traits>
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
@@ -29,10 +29,9 @@ template<
 >
 inline
 fcppt::options::inactive_value<
-	typename
-	std::decay<
+	fcppt::type_traits::remove_cv_ref_t<
 		Type
-	>::type
+	>
 >
 make_inactive_value(
 	Type &&_value
@@ -40,10 +39,9 @@ make_inactive_value(
 {
 	return
 		fcppt::options::inactive_value<
-			typename
-			std::decay<
+			fcppt::type_traits::remove_cv_ref_t<
 				Type
-			>::type
+			>
 		>{
 			std::forward<
 				Type

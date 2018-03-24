@@ -10,7 +10,6 @@
 #include <fcppt/algorithm/range_element_type.hpp>
 #include <fcppt/optional/is_object.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <type_traits>
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
@@ -62,16 +61,14 @@ map_optional(
 
 		static_assert(
 			fcppt::optional::is_object<
-				typename
-				std::decay<
-					decltype(
-						result_element
-					)
-				>::type
+				decltype(
+					result_element
+				)
 			>::value,
 			"map_optional requires a function that returns an optional"
 		);
 
+		// TODO: maybe_void
 		if(
 			result_element.has_value()
 		)

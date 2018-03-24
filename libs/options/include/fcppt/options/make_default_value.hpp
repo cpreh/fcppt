@@ -9,8 +9,8 @@
 
 #include <fcppt/optional/is_object.hpp>
 #include <fcppt/options/default_value.hpp>
+#include <fcppt/type_traits/remove_cv_ref_t.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <type_traits>
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
@@ -32,20 +32,18 @@ template<
 >
 inline
 fcppt::options::default_value<
-	typename
-	std::decay<
+	fcppt::type_traits::remove_cv_ref_t<
 		Type
-	>::type
+	>
 >
 make_default_value(
 	Type &&_value
 )
 {
 	typedef
-	typename
-	std::decay<
+	fcppt::type_traits::remove_cv_ref_t<
 		Type
-	>::type
+	>
 	value_type;
 
 	static_assert(

@@ -14,6 +14,7 @@
 #include <fcppt/container/grid/is_object.hpp>
 #include <fcppt/container/grid/object_impl.hpp>
 #include <fcppt/optional/maybe.hpp>
+#include <fcppt/type_traits/remove_cv_ref_t.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
@@ -46,24 +47,22 @@ template<
 	typename Grid,
 	typename Function
 >
-typename
-std::decay<
+fcppt::type_traits::remove_cv_ref_t<
 	Grid
->::type
+>
 resize(
 	Grid &&_grid,
 	typename
-	std::decay<
+	fcppt::type_traits::remove_cv_ref_t<
 		Grid
-	>::type::dim const &_new_size,
+	>::dim const &_new_size,
 	Function const &_init
 )
 {
 	typedef
-	typename
-	std::decay<
+	fcppt::type_traits::remove_cv_ref_t<
 		Grid
-	>::type
+	>
 	result_type;
 
 	static_assert(

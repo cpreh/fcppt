@@ -11,9 +11,7 @@
 #include <fcppt/algorithm/array_init.hpp>
 #include <fcppt/container/array_size.hpp>
 #include <fcppt/type_traits/is_std_array.hpp>
-#include <fcppt/config/external_begin.hpp>
-#include <type_traits>
-#include <fcppt/config/external_end.hpp>
+#include <fcppt/type_traits/remove_cv_ref_t.hpp>
 
 
 namespace fcppt
@@ -60,10 +58,9 @@ array_map(
 	);
 
 	typedef
-	typename
-	std::decay<
+	fcppt::type_traits::remove_cv_ref_t<
 		SourceArray
-	>::type
+	>
 	source_array;
 
 	static_assert(

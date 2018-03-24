@@ -8,8 +8,8 @@
 #define FCPPT_OPTIONS_MAKE_OPTIONAL_HPP_INCLUDED
 
 #include <fcppt/options/optional_impl.hpp>
+#include <fcppt/type_traits/remove_cv_ref_t.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <type_traits>
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
@@ -33,10 +33,9 @@ template<
 >
 inline
 fcppt::options::optional<
-	typename
-	std::decay<
+	fcppt::type_traits::remove_cv_ref_t<
 		Parser
-	>::type
+	>
 >
 make_optional(
 	Parser &&_parser
@@ -44,10 +43,9 @@ make_optional(
 {
 	return
 		fcppt::options::optional<
-			typename
-			std::decay<
+			fcppt::type_traits::remove_cv_ref_t<
 				Parser
-			>::type
+			>
 		>{
 			std::forward<
 				Parser

@@ -8,12 +8,12 @@
 #define FCPPT_VARIANT_MATCH_HPP_INCLUDED
 
 #include <fcppt/move_if_rvalue.hpp>
+#include <fcppt/type_traits/remove_cv_ref_t.hpp>
 #include <fcppt/variant/apply_unary.hpp>
 #include <fcppt/variant/types_of.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <brigand/algorithms/index_of.hpp>
 #include <tuple>
-#include <type_traits>
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
@@ -66,17 +66,15 @@ match(
 					std::get<
 						::brigand::index_of<
 							fcppt::variant::types_of<
-								typename
-								std::decay<
+								fcppt::type_traits::remove_cv_ref_t<
 									Variant
-								>::type
+								>
 							>,
-							typename
-							std::decay<
+							fcppt::type_traits::remove_cv_ref_t<
 								decltype(
 									_arg
 								)
-							>::type
+							>
 						>::value
 					>(
 						tuple

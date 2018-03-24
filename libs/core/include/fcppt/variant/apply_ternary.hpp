@@ -7,11 +7,11 @@
 #ifndef FCPPT_VARIANT_APPLY_TERNARY_HPP_INCLUDED
 #define FCPPT_VARIANT_APPLY_TERNARY_HPP_INCLUDED
 
+#include <fcppt/type_traits/remove_cv_ref_t.hpp>
 #include <fcppt/variant/apply_binary.hpp>
 #include <fcppt/variant/apply_unary.hpp>
 #include <fcppt/variant/is_object.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <type_traits>
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
@@ -55,30 +55,27 @@ apply_ternary(
 {
 	static_assert(
 		fcppt::variant::is_object<
-			typename
-			std::decay<
+			fcppt::type_traits::remove_cv_ref_t<
 				Variant1
-			>::type
+			>
 		>::value,
 		"Variant1 must be a variant::object"
 	);
 
 	static_assert(
 		fcppt::variant::is_object<
-			typename
-			std::decay<
+			fcppt::type_traits::remove_cv_ref_t<
 				Variant2
-			>::type
+			>
 		>::value,
 		"Variant2 must be a variant::object"
 	);
 
 	static_assert(
 		fcppt::variant::is_object<
-			typename
-			std::decay<
+			fcppt::type_traits::remove_cv_ref_t<
 				Variant3
-			>::type
+			>
 		>::value,
 		"Variant3 must be a variant::object"
 	);

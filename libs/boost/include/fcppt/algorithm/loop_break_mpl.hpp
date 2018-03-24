@@ -27,10 +27,7 @@ struct loop_break_impl<
 	Range,
 	std::enable_if_t<
 		boost::mpl::is_sequence<
-			typename
-			std::decay<
-				Range
-			>::type
+			Range
 		>::value
 	>
 >
@@ -47,10 +44,7 @@ struct loop_break_impl<
 	)
 	{
 		fcppt::mpl::for_each_break<
-			typename
-			std::decay<
-				Range
-			>::type
+			Range
 		>(
 			_body
 		);

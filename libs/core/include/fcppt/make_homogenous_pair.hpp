@@ -8,6 +8,7 @@
 #define FCPPT_MAKE_HOMOGENOUS_PAIR_HPP_INCLUDED
 
 #include <fcppt/homogenous_pair_impl.hpp>
+#include <fcppt/type_traits/remove_cv_ref_t.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <type_traits>
 #include <utility>
@@ -28,10 +29,9 @@ template<
 >
 inline
 fcppt::homogenous_pair<
-	typename
-	std::decay<
+	fcppt::type_traits::remove_cv_ref_t<
 		Type1
-	>::type
+	>
 >
 make_homogenous_pair(
 	Type1 &&_first,
@@ -40,23 +40,20 @@ make_homogenous_pair(
 {
 	static_assert(
 		std::is_same<
-			typename
-			std::decay<
+			fcppt::type_traits::remove_cv_ref_t<
 				Type1
-			>::type,
-			typename
-			std::decay<
+			>,
+			fcppt::type_traits::remove_cv_ref_t<
 				Type2
-			>::type
+			>
 		>::value,
 		"Type1 and Type2 must be the same decayed type"
 	);
 
 	typedef
-	typename
-	std::decay<
+	fcppt::type_traits::remove_cv_ref_t<
 		Type1
-	>::type
+	>
 	result_type;
 
 	return

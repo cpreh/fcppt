@@ -59,10 +59,9 @@ noexcept
 			std::remove_cv_t<
 				Base
 			>,
-			typename
-			std::decay<
+			std::remove_cv_t<
 				Derived
-			>::type
+			>
 		>::value,
 		"dynamic can only cast from references to base classes to references to derived classes"
 	);

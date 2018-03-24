@@ -10,7 +10,9 @@
 #include <fcppt/move_if_rvalue.hpp>
 #include <fcppt/assign/make_container.hpp>
 #include <fcppt/optional/maybe.hpp>
+#include <fcppt/optional/value_type.hpp>
 #include <fcppt/optional/detail/check.hpp>
+#include <fcppt/type_traits/remove_cv_ref_t.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <type_traits>
 #include <utility>
@@ -54,10 +56,11 @@ to_container(
 		std::is_same<
 			typename
 			Container::value_type,
-			typename
-			std::decay<
-				Optional
-			>::type::value_type
+			fcppt::optional::value_type<
+				fcppt::type_traits::remove_cv_ref_t<
+					Optional
+				>
+			>
 		>::value,
 		"Container must have the same value_type as Optional"
 	);

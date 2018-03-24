@@ -10,6 +10,7 @@
 #include <fcppt/move_if_rvalue.hpp>
 #include <fcppt/either/is_object.hpp>
 #include <fcppt/either/object_impl.hpp>
+#include <fcppt/type_traits/remove_cv_ref_t.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
@@ -59,10 +60,9 @@ decltype(
 {
 	static_assert(
 		fcppt::either::is_object<
-			typename
-			std::decay<
+			fcppt::type_traits::remove_cv_ref_t<
 				Either
-			>::type
+			>
 		>::value,
 		"Either must be an either"
 	);

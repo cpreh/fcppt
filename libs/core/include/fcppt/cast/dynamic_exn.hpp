@@ -9,6 +9,7 @@
 
 #include <fcppt/cast/detail/dynamic_exn.hpp>
 #include <fcppt/type_traits/is_base_of.hpp>
+#include <fcppt/type_traits/remove_cv_ref_t.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
@@ -61,10 +62,9 @@ dynamic_exn(
 			std::remove_cv_t<
 				Base
 			>,
-			typename
-			std::decay<
+			fcppt::type_traits::remove_cv_ref_t<
 				Derived
-			>::type
+			>
 		>::value,
 		"dynamic_exn can only cast from references to base classes to references to derived classes"
 	);

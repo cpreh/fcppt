@@ -10,6 +10,7 @@
 #include <fcppt/move_if_rvalue.hpp>
 #include <fcppt/container/grid/is_object.hpp>
 #include <fcppt/container/grid/object_impl.hpp>
+#include <fcppt/type_traits/remove_cv_ref_t.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
@@ -53,24 +54,23 @@ fcppt::container::grid::object<
 				_source.get_unsafe(
 					std::declval<
 						typename
-						std::decay<
+						fcppt::type_traits::remove_cv_ref_t<
 							Source
-						>::type::pos
+						>::pos
 					>()
 				)
 			)
 		)
 	),
-	std::decay<
+	fcppt::type_traits::remove_cv_ref_t<
 		Source
-	>::type::static_size::value
+	>::static_size::value
 >
 {
 	typedef
-	typename
-	std::decay<
+	fcppt::type_traits::remove_cv_ref_t<
 		Source
-	>::type
+	>
 	source_type;
 
 	static_assert(

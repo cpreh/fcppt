@@ -13,6 +13,7 @@
 #include <fcppt/container/grid/is_object.hpp>
 #include <fcppt/container/grid/object_impl.hpp>
 #include <fcppt/math/dim/comparison.hpp>
+#include <fcppt/type_traits/remove_cv_ref_t.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <brigand/functions/lambda/bind.hpp>
 #include <brigand/sequences/list.hpp>
@@ -61,9 +62,9 @@ fcppt::container::grid::object<
 				_grid1.get_unsafe(
 					std::declval<
 						typename
-						std::decay<
+						fcppt::type_traits::remove_cv_ref_t<
 							Grid1
-						>::type::pos
+						>::pos
 					>()
 				)
 			),
@@ -73,24 +74,23 @@ fcppt::container::grid::object<
 				_grids.get_unsafe(
 					std::declval<
 						typename
-						std::decay<
+						fcppt::type_traits::remove_cv_ref_t<
 							Grid1
-						>::type::pos
+						>::pos
 					>()
 				)
 			)...
 		)
 	),
-	std::decay<
+	fcppt::type_traits::remove_cv_ref_t<
 		Grid1
-	>::type::static_size::value
+	>::static_size::value
 >
 {
 	typedef
-	typename
-	std::decay<
+	fcppt::type_traits::remove_cv_ref_t<
 		Grid1
-	>::type
+	>
 	grid1;
 
 	static_assert(
@@ -103,10 +103,9 @@ fcppt::container::grid::object<
 	static_assert(
 		fcppt::brigand::all_of<
 			::brigand::list<
-				typename
-				std::decay<
+				fcppt::type_traits::remove_cv_ref_t<
 					Grids
-				>::type...
+				>...
 			>,
 			::brigand::bind<
 				fcppt::container::grid::is_object,

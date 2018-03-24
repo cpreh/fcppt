@@ -8,8 +8,8 @@
 #define FCPPT_OPTIONAL_MAKE_HPP_INCLUDED
 
 #include <fcppt/optional/object_impl.hpp>
+#include <fcppt/type_traits/remove_cv_ref_t.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <type_traits>
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
@@ -29,10 +29,9 @@ template<
 >
 inline
 fcppt::optional::object<
-	typename
-	std::decay<
+	fcppt::type_traits::remove_cv_ref_t<
 		Type
-	>::type
+	>
 >
 make(
 	Type &&_value
@@ -40,10 +39,9 @@ make(
 {
 	return
 		fcppt::optional::object<
-			typename
-			std::decay<
+			fcppt::type_traits::remove_cv_ref_t<
 				Type
-			>::type
+			>
 		>{
 			std::forward<
 				Type

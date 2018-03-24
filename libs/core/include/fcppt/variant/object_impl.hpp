@@ -10,6 +10,7 @@
 #include <fcppt/cast/from_void_ptr.hpp>
 #include <fcppt/detail/call_destructor.hpp>
 #include <fcppt/detail/placement_new.hpp>
+#include <fcppt/type_traits/remove_cv_ref_t.hpp>
 #include <fcppt/variant/apply_binary.hpp>
 #include <fcppt/variant/apply_unary.hpp>
 #include <fcppt/variant/object_decl.hpp>
@@ -208,10 +209,9 @@ fcppt::variant::object<
 		index_
 	)
 		this-> template get_unsafe<
-			typename
-			std::decay<
+			fcppt::type_traits::remove_cv_ref_t<
 				U
-			>::type
+			>
 		>() =
 			std::move(
 				_other
@@ -256,12 +256,11 @@ fcppt::variant::object<
 			)
 			{
 				this-> template get_unsafe<
-					typename
-					std::decay<
+					fcppt::type_traits::remove_cv_ref_t<
 						decltype(
 							_other_inner
 						)
-					>::type
+					>
 				>() =
 					_other_inner;
 			},
@@ -315,12 +314,11 @@ noexcept(
 			)
 			{
 				this->template get_unsafe<
-					typename
-					std::decay<
+					fcppt::type_traits::remove_cv_ref_t<
 						decltype(
 							_other_inner
 						)
-					>::type
+					>
 				>() =
 					std::move(
 						_other_inner

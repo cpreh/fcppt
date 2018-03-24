@@ -8,8 +8,8 @@
 #define FCPPT_ALGORITHM_JOIN_HPP_INCLUDED
 
 #include <fcppt/algorithm/detail/join_impl.hpp>
+#include <fcppt/type_traits/remove_cv_ref_t.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <type_traits>
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
@@ -39,10 +39,9 @@ template<
 	typename... Args
 >
 inline
-typename
-std::decay<
+fcppt::type_traits::remove_cv_ref_t<
 	Container
->::type
+>
 join(
 	Container &&_first,
 	Args && ..._args

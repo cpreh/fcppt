@@ -12,6 +12,7 @@
 #include <fcppt/algorithm/vararg_map.hpp>
 #include <fcppt/record/element_to_label.hpp>
 #include <fcppt/record/detail/label_is_same.hpp>
+#include <fcppt/type_traits/remove_cv_ref_t.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <brigand/algorithms/find.hpp>
 #include <brigand/algorithms/index_of.hpp>
@@ -20,7 +21,6 @@
 #include <brigand/sequences/list.hpp>
 #include <brigand/types/args.hpp>
 #include <tuple>
-#include <type_traits>
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
@@ -43,10 +43,9 @@ init_ctor(
 )
 {
 	std::tuple<
-		typename
-		std::decay<
+		fcppt::type_traits::remove_cv_ref_t<
 			Args
-		>::type...
+		>...
 	> arguments(
 		std::move(
 			_args
@@ -55,10 +54,9 @@ init_ctor(
 
 	typedef
 	::brigand::list<
-		typename
-		std::decay<
+		fcppt::type_traits::remove_cv_ref_t<
 			Args
-		>::type...
+		>...
 	>
 	args_list;
 

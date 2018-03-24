@@ -14,6 +14,7 @@
 #include <fcppt/either/is_object.hpp>
 #include <fcppt/either/object_impl.hpp>
 #include <fcppt/optional/maybe.hpp>
+#include <fcppt/type_traits/remove_cv_ref_t.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <type_traits>
 #include <utility>
@@ -49,9 +50,9 @@ template<
 >
 fcppt::either::object<
 	typename
-	std::decay<
+	fcppt::type_traits::remove_cv_ref_t<
 		Source
-	>::type::value_type::failure,
+	>::value_type::failure,
 	ResultContainer
 >
 sequence(

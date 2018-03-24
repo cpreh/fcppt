@@ -8,6 +8,7 @@
 #define FCPPT_CONTAINER_MAKE_ARRAY_HPP_INCLUDED
 
 #include <fcppt/brigand/all_of.hpp>
+#include <fcppt/type_traits/remove_cv_ref_t.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <brigand/functions/lambda/apply.hpp>
 #include <brigand/functions/lambda/bind.hpp>
@@ -33,7 +34,7 @@ the same type <code>T</code>. The result is
 <code>std::array<T,n>{a_1,...,a_n}</code>.
 
 \tparam Args A parameter pack <code>t_1,...,t_n</code> such that
-<code>std::decay<t_1> = ... = std::decay<t_n></code>.
+<code>remove_cv_ref<t_1> = ... = remove_cv_ref<t_n></code>.
 */
 template<
 	typename... Args
@@ -42,10 +43,9 @@ inline
 std::array<
 	::brigand::front<
 		::brigand::list<
-			typename
-			std::decay<
+			fcppt::type_traits::remove_cv_ref_t<
 				Args
-			>::type...
+			>...
 		>
 	>,
 	sizeof...(Args)
@@ -56,10 +56,9 @@ make_array(
 {
 	typedef
 	::brigand::list<
-		typename
-		std::decay<
+		fcppt::type_traits::remove_cv_ref_t<
 			Args
-		>::type...
+		>...
 	>
 	decayed_args;
 

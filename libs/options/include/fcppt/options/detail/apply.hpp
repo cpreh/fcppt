@@ -8,8 +8,8 @@
 #define FCPPT_OPTIONS_DETAIL_APPLY_HPP_INCLUDED
 
 #include <fcppt/options/product_impl.hpp>
+#include <fcppt/type_traits/remove_cv_ref_t.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <type_traits>
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
@@ -25,10 +25,9 @@ template<
 	typename Parser1
 >
 inline
-typename
-std::decay<
+fcppt::type_traits::remove_cv_ref_t<
 	Parser1
->::type
+>
 apply(
 	Parser1 &&_parser1
 )
@@ -54,10 +53,9 @@ apply(
 {
 	return
 		fcppt::options::product<
-			typename
-			std::decay<
+			fcppt::type_traits::remove_cv_ref_t<
 				Parser1
-			>::type,
+			>,
 			decltype(
 				fcppt::options::detail::apply(
 					std::forward<

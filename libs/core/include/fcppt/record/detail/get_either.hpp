@@ -11,6 +11,7 @@
 #include <fcppt/record/get.hpp>
 #include <fcppt/record/has_label.hpp>
 #include <fcppt/record/label_value_type.hpp>
+#include <fcppt/type_traits/remove_cv_ref_t.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
@@ -42,10 +43,9 @@ struct get_either<
 	Record2,
 	std::enable_if_t<
 		fcppt::record::has_label<
-			typename
-			std::decay<
+			fcppt::type_traits::remove_cv_ref_t<
 				Record1
-			>::type,
+			>,
 			Label
 		>::value
 	>
@@ -57,10 +57,9 @@ struct get_either<
 	>
 	static
 	fcppt::record::label_value_type<
-		typename
-		std::decay<
+		fcppt::type_traits::remove_cv_ref_t<
 			Record1
-		>::type,
+		>,
 		Label
 	>
 	get(
@@ -92,10 +91,9 @@ struct get_either<
 	Record2,
 	std::enable_if_t<
 		fcppt::record::has_label<
-			typename
-			std::decay<
+			fcppt::type_traits::remove_cv_ref_t<
 				Record2
-			>::type,
+			>,
 			Label
 		>::value
 	>
@@ -107,10 +105,9 @@ struct get_either<
 	>
 	static
 	fcppt::record::label_value_type<
-		typename
-		std::decay<
+		fcppt::type_traits::remove_cv_ref_t<
 			Record2
-		>::type,
+		>,
 		Label
 	>
 	get(

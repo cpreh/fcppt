@@ -10,10 +10,10 @@
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
+#include <fcppt/type_traits/remove_cv_ref_t.hpp>
 #include <fcppt/variant/apply_unary.hpp>
 #include <fcppt/variant/is_object.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <type_traits>
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
@@ -53,20 +53,18 @@ apply_binary(
 {
 	static_assert(
 		fcppt::variant::is_object<
-			typename
-			std::decay<
+			fcppt::type_traits::remove_cv_ref_t<
 				Variant1
-			>::type
+			>
 		>::value,
 		"Variant1 must be a variant::object"
 	);
 
 	static_assert(
 		fcppt::variant::is_object<
-			typename
-			std::decay<
+			fcppt::type_traits::remove_cv_ref_t<
 				Variant2
-			>::type
+			>
 		>::value,
 		"Variant2 must be a variant::object"
 	);

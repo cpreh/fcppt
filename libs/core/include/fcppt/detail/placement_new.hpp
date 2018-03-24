@@ -7,9 +7,9 @@
 #ifndef FCPPT_DETAIL_PLACEMENT_NEW_HPP_INCLUDED
 #define FCPPT_DETAIL_PLACEMENT_NEW_HPP_INCLUDED
 
+#include <fcppt/type_traits/remove_cv_ref_t.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <new>
-#include <type_traits>
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
@@ -32,10 +32,9 @@ placement_new(
 	new (
 		_store
 	)
-	typename
-	std::decay<
+	fcppt::type_traits::remove_cv_ref_t<
 		Type
-	>::type(
+	>(
 		std::forward<
 			Type
 		>(

@@ -12,6 +12,7 @@
 #include <fcppt/record/element_to_label.hpp>
 #include <fcppt/record/init.hpp>
 #include <fcppt/record/detail/get_either.hpp>
+#include <fcppt/type_traits/remove_cv_ref_t.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
@@ -35,14 +36,12 @@ template<
 	typename Record2
 >
 fcppt::record::disjoint_product<
-	typename
-	std::decay<
+	fcppt::type_traits::remove_cv_ref_t<
 		Record1
-	>::type,
-	typename
-	std::decay<
+	>,
+	fcppt::type_traits::remove_cv_ref_t<
 		Record2
-	>::type
+	>
 >
 multiply_disjoint(
 	Record1 &&_record1,
@@ -51,14 +50,12 @@ multiply_disjoint(
 {
 	typedef
 	fcppt::record::disjoint_product<
-		typename
-		std::decay<
+		fcppt::type_traits::remove_cv_ref_t<
 			Record1
-		>::type,
-		typename
-		std::decay<
+		>,
+		fcppt::type_traits::remove_cv_ref_t<
 			Record2
-		>::type
+		>
 	>
 	result_type;
 

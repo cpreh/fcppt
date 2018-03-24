@@ -11,6 +11,7 @@
 #include <fcppt/move_if_rvalue.hpp>
 #include <fcppt/use.hpp>
 #include <fcppt/brigand/runtime_index.hpp>
+#include <fcppt/type_traits/remove_cv_ref_t.hpp>
 #include <fcppt/variant/is_object.hpp>
 #include <fcppt/variant/types_of.hpp>
 #include <fcppt/variant/detail/get_unsafe.hpp>
@@ -18,7 +19,6 @@
 #include <brigand/sequences/at.hpp>
 #include <brigand/sequences/front.hpp>
 #include <brigand/sequences/size.hpp>
-#include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -51,10 +51,9 @@ apply_unary(
 )
 {
 	typedef
-	typename
-	std::decay<
+	fcppt::type_traits::remove_cv_ref_t<
 		Variant
-	>::type
+	>
 	variant_type;
 
 	static_assert(

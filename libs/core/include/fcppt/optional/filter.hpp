@@ -7,8 +7,9 @@
 #ifndef FCPPT_OPTIONAL_FILTER_HPP_INCLUDED
 #define FCPPT_OPTIONAL_FILTER_HPP_INCLUDED
 
+#include <fcppt/optional/detail/check.hpp>
+#include <fcppt/type_traits/remove_cv_ref_t.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <type_traits>
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
@@ -32,15 +33,21 @@ template<
 	typename Optional,
 	typename Function
 >
-typename
-std::decay<
+fcppt::type_traits::remove_cv_ref_t<
 	Optional
->::type
+>
 filter(
 	Optional &&_source,
 	Function const &_function
 )
 {
+	static_assert(
+		fcppt::optional::detail::check<
+			Optional
+		>::value,
+		"Optional must be an optional"
+	);
+
 	return
 		_source.has_value()
 		&&
@@ -54,10 +61,9 @@ filter(
 				_source
 			)
 		:
-			typename
-			std::decay<
+			fcppt::type_traits::remove_cv_ref_t<
 				Optional
-			>::type{}
+			>{}
 		;
 }
 

@@ -8,6 +8,7 @@
 #define FCPPT_ALGORITHM_DETAIL_TUPLE_LOOP_BREAK_HPP_INCLUDED
 
 #include <fcppt/loop.hpp>
+#include <fcppt/type_traits/remove_cv_ref_t.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <cstddef>
 #include <tuple>
@@ -33,10 +34,9 @@ std::enable_if_t<
 	Index
 	==
 	std::tuple_size<
-		typename
-		std::decay<
+		fcppt::type_traits::remove_cv_ref_t<
 			Tuple
-		>::type
+		>
 	>::value
 >
 tuple_loop_break(
@@ -56,10 +56,9 @@ std::enable_if_t<
 	Index
 	<
 	std::tuple_size<
-		typename
-		std::decay<
+		fcppt::type_traits::remove_cv_ref_t<
 			Tuple
-		>::type
+		>
 	>::value
 >
 tuple_loop_break(

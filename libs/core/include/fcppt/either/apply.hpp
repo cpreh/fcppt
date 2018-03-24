@@ -16,13 +16,13 @@
 #include <fcppt/either/is_object.hpp>
 #include <fcppt/either/object_impl.hpp>
 #include <fcppt/optional/object_impl.hpp>
+#include <fcppt/type_traits/remove_cv_ref_t.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <brigand/algorithms/all.hpp>
 #include <brigand/sequences/list.hpp>
 #include <brigand/types/args.hpp>
 #include <array>
 #include <cstddef>
-#include <type_traits>
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
@@ -58,9 +58,9 @@ apply(
 ->
 fcppt::either::object<
 	typename
-	std::decay<
+	fcppt::type_traits::remove_cv_ref_t<
 		Either1
-	>::type::failure,
+	>::failure,
 	decltype(
 		_function(
 			fcppt::move_if_rvalue<
@@ -78,10 +78,9 @@ fcppt::either::object<
 >
 {
 	typedef
-	typename
-	std::decay<
+	fcppt::type_traits::remove_cv_ref_t<
 		Either1
-	>::type
+	>
 	either1;
 
 	static_assert(
@@ -94,10 +93,9 @@ fcppt::either::object<
 	static_assert(
 		::brigand::all<
 			::brigand::list<
-				typename
-				std::decay<
+				fcppt::type_traits::remove_cv_ref_t<
 					Eithers
-				>::type...
+				>...
 			>,
 			fcppt::either::is_object<
 				::brigand::_1

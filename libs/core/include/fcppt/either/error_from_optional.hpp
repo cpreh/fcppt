@@ -11,9 +11,10 @@
 #include <fcppt/either/error.hpp>
 #include <fcppt/either/no_error.hpp>
 #include <fcppt/optional/maybe.hpp>
+#include <fcppt/optional/value_type.hpp>
 #include <fcppt/optional/detail/check.hpp>
+#include <fcppt/type_traits/remove_cv_ref_t.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <type_traits>
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
@@ -40,10 +41,11 @@ error_from_optional(
 )
 ->
 fcppt::either::error<
-	typename
-	std::decay<
-		Optional
-	>::type::value_type
+	fcppt::optional::value_type<
+		fcppt::type_traits::remove_cv_ref_t<
+			Optional
+		>
+	>
 >
 {
 	static_assert(
@@ -55,10 +57,11 @@ fcppt::either::error<
 
 	typedef
 	fcppt::either::error<
-		typename
-		std::decay<
-			Optional
-		>::type::value_type
+		fcppt::optional::value_type<
+			fcppt::type_traits::remove_cv_ref_t<
+				Optional
+			>
+		>
 	>
 	result_type;
 

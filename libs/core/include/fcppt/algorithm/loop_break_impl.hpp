@@ -24,19 +24,20 @@ template<
 struct loop_break_impl
 {
 	template<
+		typename Arg,
 		typename Body
 	>
 	inline
 	static
 	void
 	execute(
-		Range &&_range,
+		Arg &&_range,
 		Body const &_body
 	)
 	{
 		for(
 			fcppt::algorithm::range_element_type<
-				Range
+				Arg
 			> element
 			:
 			_range

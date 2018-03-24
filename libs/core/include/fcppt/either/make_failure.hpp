@@ -8,8 +8,8 @@
 #define FCPPT_EITHER_MAKE_FAILURE_HPP_INCLUDED
 
 #include <fcppt/either/object_impl.hpp>
+#include <fcppt/type_traits/remove_cv_ref_t.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <type_traits>
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
@@ -32,10 +32,9 @@ template<
 >
 inline
 fcppt::either::object<
-	typename
-	std::decay<
+	fcppt::type_traits::remove_cv_ref_t<
 		Failure
-	>::type,
+	>,
 	Success
 >
 make_failure(
@@ -44,10 +43,9 @@ make_failure(
 {
 	return
 		fcppt::either::object<
-			typename
-			std::decay<
+			fcppt::type_traits::remove_cv_ref_t<
 				Failure
-			>::type,
+			>,
 			Success
 		>{
 			std::forward<

@@ -53,10 +53,9 @@ at_r_c(
 {
 	static_assert(
 		fcppt::math::matrix::is_matrix<
-			typename
-			std::decay<
+			std::remove_cv_t<
 				Matrix
-			>::type
+			>
 		>::value,
 		"Matrix must be a matrix"
 	);

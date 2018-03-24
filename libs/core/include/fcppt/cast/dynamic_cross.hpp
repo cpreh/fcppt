@@ -57,10 +57,9 @@ noexcept
 			std::remove_cv_t<
 				Src
 			>,
-			typename
-			std::decay<
+			std::remove_cv_t<
 				Dest
-			>::type
+			>
 		>::value,
 		"dynamic_cross can only be used on unrelated types"
 	);

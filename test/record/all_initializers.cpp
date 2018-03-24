@@ -7,9 +7,9 @@
 #include <fcppt/record/element.hpp>
 #include <fcppt/record/make_label.hpp>
 #include <fcppt/record/detail/all_initializers.hpp>
+#include <fcppt/type_traits/remove_cv_ref_t.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <brigand/sequences/list.hpp>
-#include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -56,10 +56,9 @@ test(
 
 	typedef
 	brigand::list<
-		typename
-		std::decay<
+		fcppt::type_traits::remove_cv_ref_t<
 			Args
-		>::type ...
+		>...
 	>
 	args_type;
 

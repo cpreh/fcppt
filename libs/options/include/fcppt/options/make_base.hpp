@@ -12,8 +12,8 @@
 #include <fcppt/options/base_impl.hpp>
 #include <fcppt/options/base_unique_ptr.hpp>
 #include <fcppt/options/detail/concrete_impl.hpp>
+#include <fcppt/type_traits/remove_cv_ref_t.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <type_traits>
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
@@ -54,10 +54,9 @@ make_base(
 			fcppt::make_unique_ptr<
 				fcppt::options::detail::concrete<
 					Result,
-					typename
-					std::decay<
+					fcppt::type_traits::remove_cv_ref_t<
 						Parser
-					>::type
+					>
 				>
 			>(
 				std::forward<
