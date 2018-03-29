@@ -5,9 +5,9 @@
 
 
 #include <fcppt/cast/float_to_int_fun.hpp>
-#include <fcppt/math/vector/construct.hpp>
 #include <fcppt/math/vector/narrow_cast.hpp>
 #include <fcppt/math/vector/output.hpp>
+#include <fcppt/math/vector/push_back.hpp>
 #include <fcppt/math/vector/static.hpp>
 #include <fcppt/math/vector/structure_cast.hpp>
 #include <fcppt/math/vector/to_unsigned.hpp>
@@ -60,7 +60,7 @@ int main()
 
 	// construct a three dimensional vector from a two dimensional one
 	unsigned3_vec const vecui3(
-		fcppt::math::vector::construct(
+		fcppt::math::vector::push_back(
 			vecui2,
 			42u
 		)

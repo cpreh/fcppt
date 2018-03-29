@@ -893,7 +893,6 @@ set(
 	libs/core/include/fcppt/math/detail/binary_type.hpp
 	libs/core/include/fcppt/math/detail/checked_access.hpp
 	libs/core/include/fcppt/math/detail/componentwise_equal.hpp
-	libs/core/include/fcppt/math/detail/construct.hpp
 	libs/core/include/fcppt/math/detail/copy.hpp
 	libs/core/include/fcppt/math/detail/diff.hpp
 	libs/core/include/fcppt/math/detail/dim_matches.hpp
@@ -913,6 +912,7 @@ set(
 	libs/core/include/fcppt/math/detail/null_storage.hpp
 	libs/core/include/fcppt/math/detail/one_dimensional_input.hpp
 	libs/core/include/fcppt/math/detail/one_dimensional_output.hpp
+	libs/core/include/fcppt/math/detail/push_back.hpp
 	libs/core/include/fcppt/math/detail/sequence.hpp
 	libs/core/include/fcppt/math/detail/static_storage_decl.hpp
 	libs/core/include/fcppt/math/detail/static_storage_fwd.hpp
@@ -929,7 +929,6 @@ set(
 	libs/core/include/fcppt/math/dim/binary_map.hpp
 	libs/core/include/fcppt/math/dim/comparison.hpp
 	libs/core/include/fcppt/math/dim/componentwise_equal.hpp
-	libs/core/include/fcppt/math/dim/construct.hpp
 	libs/core/include/fcppt/math/dim/contents.hpp
 	libs/core/include/fcppt/math/dim/fill.hpp
 	libs/core/include/fcppt/math/dim/has_dim.hpp
@@ -945,6 +944,7 @@ set(
 	libs/core/include/fcppt/math/dim/object_fwd.hpp
 	libs/core/include/fcppt/math/dim/object_impl.hpp
 	libs/core/include/fcppt/math/dim/output.hpp
+	libs/core/include/fcppt/math/dim/push_back.hpp
 	libs/core/include/fcppt/math/dim/sequence.hpp
 	libs/core/include/fcppt/math/dim/static.hpp
 	libs/core/include/fcppt/math/dim/static_decl.hpp
@@ -1054,7 +1054,6 @@ set(
 	libs/core/include/fcppt/math/vector/ceil_div_signed.hpp
 	libs/core/include/fcppt/math/vector/comparison.hpp
 	libs/core/include/fcppt/math/vector/componentwise_equal.hpp
-	libs/core/include/fcppt/math/vector/construct.hpp
 	libs/core/include/fcppt/math/vector/cross.hpp
 	libs/core/include/fcppt/math/vector/detail/bit_strings.hpp
 	libs/core/include/fcppt/math/vector/detail/dim_map.hpp
@@ -1080,6 +1079,7 @@ set(
 	libs/core/include/fcppt/math/vector/object_impl.hpp
 	libs/core/include/fcppt/math/vector/output.hpp
 	libs/core/include/fcppt/math/vector/point_rotate.hpp
+	libs/core/include/fcppt/math/vector/push_back.hpp
 	libs/core/include/fcppt/math/vector/sequence.hpp
 	libs/core/include/fcppt/math/vector/signed_angle_between.hpp
 	libs/core/include/fcppt/math/vector/signed_angle_between_cast.hpp

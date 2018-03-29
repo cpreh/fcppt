@@ -4,11 +4,11 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_MATH_VECTOR_CONSTRUCT_HPP_INCLUDED
-#define FCPPT_MATH_VECTOR_CONSTRUCT_HPP_INCLUDED
+#ifndef FCPPT_MATH_VECTOR_PUSH_BACK_HPP_INCLUDED
+#define FCPPT_MATH_VECTOR_PUSH_BACK_HPP_INCLUDED
 
 #include <fcppt/math/size_type.hpp>
-#include <fcppt/math/detail/construct.hpp>
+#include <fcppt/math/detail/push_back.hpp>
 #include <fcppt/math/vector/object_impl.hpp>
 #include <fcppt/math/vector/static.hpp>
 
@@ -21,18 +21,9 @@ namespace vector
 {
 
 /**
-\brief Constructs a vector with dimension \p N+1 from a vector with dimension
-\p N
+\brief Pushes an element to the back of a vector.
 
 \ingroup fcpptmathvector
-
-\param _base The "narrow" vector
-
-\param _t The element to insert to "widen" \p _base
-
-The inverse operation is fcppt::math::vector::narrow_cast.
-
-\see fcppt::math::vector::narrow_cast
 */
 template<
 	typename T,
@@ -43,24 +34,24 @@ fcppt::math::vector::static_<
 	T,
 	N + 1
 >
-construct(
+push_back(
 	fcppt::math::vector::object<
 		T,
 		N,
 		S
-	> const &_base,
-	T const &_t
+	> const &_vector,
+	T const &_value
 )
 {
 	return
-		fcppt::math::detail::construct<
+		fcppt::math::detail::push_back<
 			fcppt::math::vector::static_<
 				T,
 				N + 1
 			>
 		>(
-			_base,
-			_t
+			_vector,
+			_value
 		);
 }
 

@@ -15,9 +15,9 @@
 #include <fcppt/math/int_range_count.hpp>
 #include <fcppt/math/size_type.hpp>
 #include <fcppt/math/vector/at.hpp>
-#include <fcppt/math/vector/construct.hpp>
 #include <fcppt/math/vector/init.hpp>
 #include <fcppt/math/vector/object.hpp>
+#include <fcppt/math/vector/push_back.hpp>
 #include <fcppt/math/vector/static.hpp>
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
@@ -207,7 +207,7 @@ FCPPT_PP_DISABLE_GCC_WARNING(-Wattributes)
 				);
 
 				result_type const cos_angles(
-					fcppt::math::vector::construct(
+					fcppt::math::vector::push_back(
 						fcppt::math::vector::init<
 							fcppt::math::vector::static_<
 								T,

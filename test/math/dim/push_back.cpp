@@ -5,8 +5,8 @@
 
 
 #include <fcppt/math/dim/comparison.hpp>
-#include <fcppt/math/dim/construct.hpp>
 #include <fcppt/math/dim/output.hpp>
+#include <fcppt/math/dim/push_back.hpp>
 #include <fcppt/math/dim/static.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/test/unit_test.hpp>
@@ -14,7 +14,7 @@
 
 
 BOOST_AUTO_TEST_CASE(
-	math_dim_construct
+	math_dim_push_back
 )
 {
 	typedef
@@ -32,7 +32,7 @@ BOOST_AUTO_TEST_CASE(
 	i3_dim;
 
 	i3_dim const dim(
-		fcppt::math::dim::construct(
+		fcppt::math::dim::push_back(
 			i2_dim(
 				1,
 				2

@@ -25,10 +25,6 @@ add_fcppt_math_dim_test(
 )
 
 add_fcppt_math_dim_test(
-	construct
-)
-
-add_fcppt_math_dim_test(
 	fill
 )
 
@@ -55,6 +51,10 @@ add_fcppt_math_dim_test(
 
 add_fcppt_math_dim_test(
 	narrow_cast
+)
+
+add_fcppt_math_dim_test(
+	push_back
 )
 
 add_fcppt_math_dim_test(

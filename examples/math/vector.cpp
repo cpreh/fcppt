@@ -18,12 +18,12 @@ FCPPT_PP_PUSH_WARNING
 FCPPT_PP_DISABLE_GCC_WARNING(-Wfloat-equal)
 #include <fcppt/math/vector/comparison.hpp>
 FCPPT_PP_POP_WARNING
-#include <fcppt/math/vector/construct.hpp>
 #include <fcppt/math/vector/length.hpp>
 #include <fcppt/math/vector/narrow_cast.hpp>
 #include <fcppt/math/vector/null.hpp>
 #include <fcppt/math/vector/object_impl.hpp>
 #include <fcppt/math/vector/output.hpp>
+#include <fcppt/math/vector/push_back.hpp>
 #include <fcppt/math/vector/static.hpp>
 #include <fcppt/math/vector/structure_cast.hpp>
 #include <fcppt/optional/object_impl.hpp>
@@ -113,9 +113,9 @@ convert()
 
 
 void
-construct_narrow()
+push_back_narrow()
 {
-// ![construct_narrow]
+// ![push_back_narrow]
 	fcppt::math::vector::static_<
 		int,
 		1
@@ -128,7 +128,7 @@ construct_narrow()
 		int,
 		2
 	> const bigger(
-		fcppt::math::vector::construct(
+		fcppt::math::vector::push_back(
 			small,
 			20
 		)
@@ -145,7 +145,7 @@ construct_narrow()
 			bigger
 		)
 	);
-// ![construct_narrow]
+// ![push_back_narrow]
 
 	std::cout << small_again << '\n';
 }
@@ -321,7 +321,7 @@ main()
 
 	convert();
 
-	construct_narrow();
+	push_back_narrow();
 
 	null();
 

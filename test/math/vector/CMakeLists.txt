@@ -81,6 +81,10 @@ add_fcppt_math_vector_test(
 )
 
 add_fcppt_math_vector_test(
+	push_back
+)
+
+add_fcppt_math_vector_test(
 	raw_view
 )
 

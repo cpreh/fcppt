@@ -45,6 +45,18 @@
 	</ul>
 </li>
 
+<li>\ref fcpptmathdim
+	<ul>
+	<li>Renamed <code>fcppt::math::dim::construct</code> to \link fcppt::math::dim::push_back\endlink.</li>
+	</ul>
+</li>
+
+<li>\ref fcpptmathvector
+	<ul>
+	<li>Renamed <code>fcppt::math::vector::construct</code> to \link fcppt::math::vector::push_back\endlink.</li>
+	</ul>
+</li>
+
 </ul>
 
 \section changes_changes_to_270 2.7.0

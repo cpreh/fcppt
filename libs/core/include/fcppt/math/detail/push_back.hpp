@@ -4,8 +4,8 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_MATH_DETAIL_CONSTRUCT_HPP_INCLUDED
-#define FCPPT_MATH_DETAIL_CONSTRUCT_HPP_INCLUDED
+#ifndef FCPPT_MATH_DETAIL_PUSH_BACK_HPP_INCLUDED
+#define FCPPT_MATH_DETAIL_PUSH_BACK_HPP_INCLUDED
 
 #include <fcppt/use.hpp>
 #include <fcppt/container/array_init.hpp>
@@ -29,7 +29,7 @@ template<
 >
 inline
 Dest
-construct(
+push_back(
 	Src const &_src,
 	typename Src::value_type const &_value
 )

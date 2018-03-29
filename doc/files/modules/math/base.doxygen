@@ -90,11 +90,11 @@ object.
 
 \snippet math/vector.cpp convert
 
-<code>vector</code> and <code>dim</code> have functions <code>construct</code>,
+<code>vector</code> and <code>dim</code> have functions <code>push_back</code>,
 which increases the dimension by one, and <code>narrow_cast</code>, which
 decreases the dimension.
 
-\snippet math/vector.cpp construct_narrow
+\snippet math/vector.cpp push_back_narrow
 
 \subsection fcpptmath_comparison Comparison
 
