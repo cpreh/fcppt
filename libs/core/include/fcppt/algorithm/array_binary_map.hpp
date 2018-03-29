@@ -7,13 +7,16 @@
 #ifndef FCPPT_ALGORITHM_ARRAY_BINARY_MAP_HPP_INCLUDED
 #define FCPPT_ALGORITHM_ARRAY_BINARY_MAP_HPP_INCLUDED
 
+#include <fcppt/move_if_rvalue.hpp>
 #include <fcppt/use.hpp>
 #include <fcppt/container/array_init.hpp>
 #include <fcppt/container/array_size.hpp>
 #include <fcppt/type_traits/is_std_array.hpp>
+#include <fcppt/type_traits/remove_cv_ref_t.hpp>
+#include <fcppt/type_traits/value_type.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <array>
-#include <cstddef>
+#include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -31,51 +34,117 @@ array containing the results.
 Calls <code>_function(element1, element2)</code> for every element1 of \a
 _source1 and element2 of \a _source2.
 
-\tparam TargetArray Must be a <code>std::array</code>.
+\tparam SourceArray1 Must be a std::array
 
-\tparam SourceCount The number of elements in the source arrays.
+\tparam SourceArray2 Must be a std::array
 
-\tparam Function Must be a function callable as <code>TargetArray::value_type (SourceType1, SourceType2)</code>.
+\tparam Function Must be a function callable as <code>R (SourceArray1::value_type, SourceArray2::value_type)</code>,
+where <code>R</code> is the result type.
 **/
 template<
-	typename TargetArray,
-	typename SourceType1,
-	typename SourceType2,
-	std::size_t SourceCount,
+	typename SourceArray1,
+	typename SourceArray2,
 	typename Function
 >
-TargetArray
+auto
 array_binary_map(
-	std::array<
-		SourceType1,
-		SourceCount
-	> const &_source1,
-	std::array<
-		SourceType2,
-		SourceCount
-	> const &_source2,
+	SourceArray1 &&_source1,
+	SourceArray2 &&_source2,
 	Function const &_function
 )
+->
+std::array<
+	fcppt::type_traits::remove_cv_ref_t<
+		decltype(
+			_function(
+				std::declval<
+					fcppt::type_traits::value_type<
+						fcppt::type_traits::remove_cv_ref_t<
+							SourceArray1
+						>
+					>
+				>(),
+				std::declval<
+					fcppt::type_traits::value_type<
+						fcppt::type_traits::remove_cv_ref_t<
+							SourceArray2
+						>
+					>
+				>()
+			)
+		)
+	>,
+	fcppt::container::array_size<
+		fcppt::type_traits::remove_cv_ref_t<
+			SourceArray1
+		>
+	>::value
+>
 {
+	typedef
+	fcppt::type_traits::remove_cv_ref_t<
+		SourceArray1
+	>
+	source1;
+
+	typedef
+	fcppt::type_traits::remove_cv_ref_t<
+		SourceArray2
+	>
+	source2;
+
 	static_assert(
 		fcppt::type_traits::is_std_array<
-			TargetArray
+			source1
 		>::value,
-		"TargetArray must be a std::array"
+		"Source1 must be a std::array"
+	);
+
+	static_assert(
+		fcppt::type_traits::is_std_array<
+			source2
+		>::value,
+		"Source2 must be a std::array"
 	);
 
 	static_assert(
 		fcppt::container::array_size<
-			TargetArray
+			source1
 		>::value
 		==
-		SourceCount,
+		fcppt::container::array_size<
+			source2
+		>::value,
 		"Both arrays must have the same number of elements"
 	);
 
+	typedef
+	std::array<
+		fcppt::type_traits::remove_cv_ref_t<
+			decltype(
+				_function(
+					std::declval<
+						fcppt::type_traits::value_type<
+							source1
+						>
+					>(),
+					std::declval<
+						fcppt::type_traits::value_type<
+							source2
+						>
+					>()
+				)
+			)
+		>,
+		fcppt::container::array_size<
+			source1
+		>::value
+	>
+	result_type;
+
 	return
 		fcppt::container::array_init<
-			TargetArray
+			result_type
 		>(
 			[
 				&_source1,
@@ -98,15 +167,23 @@ array_binary_map(
 
 				return
 					_function(
-						std::get<
-							index::value
+						fcppt::move_if_rvalue<
+							SourceArray1
 						>(
-							_source1
+							std::get<
+								index::value
+							>(
+								_source1
+							)
 						),
-						std::get<
-							index::value
+						fcppt::move_if_rvalue<
+							SourceArray2
 						>(
-							_source2
+							std::get<
+								index::value
+							>(
+								_source2
+							)
 						)
 					);
 			}

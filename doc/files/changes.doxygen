@@ -10,6 +10,7 @@
 <li>\ref fcpptalgorithm
 	<ul>
 	<li>Added \link fcppt::algorithm::unique\endlink and \link fcppt::algorithm::unique_if\endlink.</lI>
+	<li>Allow rvalues in \link fcppt::algorithm::array_binary_map\endlink.</li>
 	</ul>
 </li>
 
@@ -46,7 +47,7 @@
 
 <li>\ref fcpptalgorithm
 	<ul>
-	<li>\link fcppt::algorithm::array_map\endlink no longers uses an explicit result type.</li>
+	<li>\link fcppt::algorithm::array_map\endlink and \link fcppt::algorithm::array_binary_map\endlink no longer use an explicit result type.</li>
 	<li>Moved <code>fcppt::algorithm::array_init</code>, <code>fcppt::algorithm::array_init_const</code>,
 	<code>fcppt::algorithm::array_init_move</code> and <code>fcppt::algorithm::array_push_back</code>
 	to \ref fcpptcontainer.</li>

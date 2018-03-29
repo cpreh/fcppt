@@ -54,17 +54,19 @@ array_map(
 )
 ->
 std::array<
-	decltype(
-		_function(
-			std::declval<
-				fcppt::type_traits::value_type<
-					fcppt::type_traits::remove_cv_ref_t<
-						SourceArray
+	fcppt::type_traits::remove_cv_ref_t<
+		decltype(
+			_function(
+				std::declval<
+					fcppt::type_traits::value_type<
+						fcppt::type_traits::remove_cv_ref_t<
+							SourceArray
+						>
 					>
-				>
-			>()
+				>()
+			)
 		)
-	),
+	>,
 	fcppt::container::array_size<
 		fcppt::type_traits::remove_cv_ref_t<
 			SourceArray
@@ -87,15 +89,17 @@ std::array<
 
 	typedef
 	std::array<
-		decltype(
-			_function(
-				std::declval<
-					fcppt::type_traits::value_type<
-						source_array
-					>
-				>()
+		fcppt::type_traits::remove_cv_ref_t<
+			decltype(
+				_function(
+					std::declval<
+						fcppt::type_traits::value_type<
+							source_array
+						>
+					>()
+				)
 			)
-		),
+		>,
 		fcppt::container::array_size<
 			source_array
 		>::value

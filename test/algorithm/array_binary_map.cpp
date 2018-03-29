@@ -4,22 +4,18 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/insert_to_std_string.hpp>
-#include <fcppt/make_strong_typedef.hpp>
 #include <fcppt/make_unique_ptr.hpp>
 #include <fcppt/unique_ptr.hpp>
-#include <fcppt/strong_typedef_impl.hpp>
-#include <fcppt/algorithm/array_map.hpp>
+#include <fcppt/algorithm/array_binary_map.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/test/unit_test.hpp>
 #include <array>
-#include <string>
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
 
 BOOST_AUTO_TEST_CASE(
-	algorithm_array_map
+	algorithm_binary_array_map
 )
 {
 	typedef
@@ -31,26 +27,40 @@ BOOST_AUTO_TEST_CASE(
 
 	typedef
 	std::array<
-		std::string,
+		int,
 		2
 	>
-	string_2_array;
+	bool_2_array;
 
-	string_2_array const result(
-		fcppt::algorithm::array_map(
+	typedef
+	std::array<
+		std::pair<
+			int,
+			bool
+		>,
+		2
+	>
+	result_array;
+
+	result_array const result(
+		fcppt::algorithm::array_binary_map(
 			int_2_array{{
 				1,
 				2
 			}},
+			bool_2_array{{
+				true,
+				false
+			}},
 			[](
-				int const _value
+				int const _value1,
+				bool const _value2
 			)
-			->
-			std::string
 			{
 				return
-					fcppt::insert_to_std_string(
-						_value
+					std::make_pair(
+						_value1,
+						_value2
 					);
 			}
 		)
@@ -61,8 +71,17 @@ BOOST_AUTO_TEST_CASE(
 			0
 		>(
 			result
-		),
-		"1"
+		).first,
+		1
+	);
+
+	BOOST_CHECK_EQUAL(
+		std::get<
+			0
+		>(
+			result
+		).second,
+		true
 	);
 
 	BOOST_CHECK_EQUAL(
@@ -70,13 +89,22 @@ BOOST_AUTO_TEST_CASE(
 			1
 		>(
 			result
-		),
-		"2"
+		).first,
+		2
+	);
+
+	BOOST_CHECK_EQUAL(
+		std::get<
+			1
+		>(
+			result
+		).second,
+		false
 	);
 }
 
 BOOST_AUTO_TEST_CASE(
-	algorithm_array_map_move
+	algorithm_array_binary_map_move
 )
 {
 	typedef
@@ -84,32 +112,34 @@ BOOST_AUTO_TEST_CASE(
 		fcppt::unique_ptr<
 			int
 		>,
-		2
+		1
 	>
-	int_2_array;
-
-	FCPPT_MAKE_STRONG_TYPEDEF(
-		fcppt::unique_ptr<
-			int
-		>,
-		strong_ptr
-	);
+	int_1_array;
 
 	typedef
 	std::array<
-		strong_ptr,
-		2
+		std::pair<
+			fcppt::unique_ptr<
+				int
+			>,
+			fcppt::unique_ptr<
+				int
+			>
+		>,
+		1
 	>
 	result_array;
 
 	result_array const result(
-		fcppt::algorithm::array_map(
-			int_2_array{{
+		fcppt::algorithm::array_binary_map(
+			int_1_array{{
 				fcppt::make_unique_ptr<
 					int
 				>(
 					1
-				),
+				)
+			}},
+			int_1_array{{
 				fcppt::make_unique_ptr<
 					int
 				>(
@@ -119,15 +149,21 @@ BOOST_AUTO_TEST_CASE(
 			[](
 				fcppt::unique_ptr<
 					int
-				> &&_arg
+				> &&_arg1,
+				fcppt::unique_ptr<
+					int
+				> &&_arg2
 			)
 			{
 				return
-					strong_ptr{
+					std::make_pair(
 						std::move(
-							_arg
+							_arg1
+						),
+						std::move(
+							_arg2
 						)
-					};
+					);
 			}
 		)
 	);
@@ -137,16 +173,16 @@ BOOST_AUTO_TEST_CASE(
 			0
 		>(
 			result
-		).get(),
+		).first,
 		1
 	);
 
 	BOOST_CHECK_EQUAL(
 		*std::get<
-			1
+			0
 		>(
 			result
-		).get(),
+		).second,
 		2
 	);
 }
