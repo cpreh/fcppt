@@ -9,8 +9,8 @@
 
 #include <fcppt/literal.hpp>
 #include <fcppt/cast/size.hpp>
-#include <fcppt/type_traits/value_type.hpp>
 #include <fcppt/math/vector/at.hpp>
+#include <fcppt/type_traits/value_type.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <cstddef>
 #include <type_traits>

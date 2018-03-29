@@ -10,7 +10,6 @@
 
 #include <fcppt/literal.hpp>
 #include <fcppt/cast/float_to_int_fun.hpp>
-#include <fcppt/type_traits/value_type.hpp>
 #include <fcppt/container/grid/object_impl.hpp>
 #include <fcppt/container/grid/pos_type.hpp>
 #include <fcppt/container/grid/size_type.hpp>
@@ -20,6 +19,7 @@
 #include <fcppt/math/vector/static.hpp>
 #include <fcppt/math/vector/structure_cast.hpp>
 #include <fcppt/math/vector/to_unsigned.hpp>
+#include <fcppt/type_traits/value_type.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <array>
 #include <cstddef>

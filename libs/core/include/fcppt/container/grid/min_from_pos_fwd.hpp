@@ -7,9 +7,9 @@
 #ifndef FCPPT_CONTAINER_GRID_MIN_FROM_POS_FWD_HPP_INCLUDED
 #define FCPPT_CONTAINER_GRID_MIN_FROM_POS_FWD_HPP_INCLUDED
 
-#include <fcppt/type_traits/value_type.hpp>
 #include <fcppt/container/grid/min_fwd.hpp>
 #include <fcppt/container/grid/pos.hpp>
+#include <fcppt/type_traits/value_type.hpp>
 
 
 namespace fcppt

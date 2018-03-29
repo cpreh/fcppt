@@ -8,10 +8,10 @@
 #define FCPPT_CONTAINER_ARRAY_PUSH_BACK_HPP_INCLUDED
 
 #include <fcppt/container/array_size.hpp>
-#include <fcppt/type_traits/value_type.hpp>
 #include <fcppt/container/detail/array_push_back.hpp>
 #include <fcppt/type_traits/is_std_array.hpp>
 #include <fcppt/type_traits/remove_cv_ref_t.hpp>
+#include <fcppt/type_traits/value_type.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <array>
 #include <type_traits>

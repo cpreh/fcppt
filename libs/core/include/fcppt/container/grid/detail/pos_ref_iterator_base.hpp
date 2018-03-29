@@ -7,11 +7,11 @@
 #ifndef FCPPT_CONTAINER_GRID_DETAIL_POS_REF_ITERATOR_BASE_HPP_INCLUDED
 #define FCPPT_CONTAINER_GRID_DETAIL_POS_REF_ITERATOR_BASE_HPP_INCLUDED
 
-#include <fcppt/type_traits/value_type.hpp>
 #include <fcppt/container/grid/pos_ref_iterator_fwd.hpp>
 #include <fcppt/container/grid/pos_reference_fwd.hpp>
 #include <fcppt/iterator/base_fwd.hpp>
 #include <fcppt/iterator/types_fwd.hpp>
+#include <fcppt/type_traits/value_type.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <iterator>
 #include <fcppt/config/external_end.hpp>

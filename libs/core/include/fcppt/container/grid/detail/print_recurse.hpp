@@ -8,13 +8,13 @@
 #define FCPPT_CONTAINER_GRID_DETAIL_PRINT_RECURSE_HPP_INCLUDED
 
 #include <fcppt/make_int_range_count.hpp>
-#include <fcppt/type_traits/value_type.hpp>
 #include <fcppt/container/grid/dim_type.hpp>
 #include <fcppt/container/grid/object_impl.hpp>
 #include <fcppt/container/grid/pos_type.hpp>
 #include <fcppt/container/grid/size_type.hpp>
 #include <fcppt/math/dim/at.hpp>
 #include <fcppt/math/vector/at.hpp>
+#include <fcppt/type_traits/value_type.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <ostream>
 #include <type_traits>

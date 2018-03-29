@@ -9,8 +9,8 @@
 
 #include <fcppt/cast/to_void.hpp>
 #include <fcppt/container/array_init.hpp>
-#include <fcppt/type_traits/value_type.hpp>
 #include <fcppt/type_traits/is_std_array.hpp>
+#include <fcppt/type_traits/value_type.hpp>
 
 
 namespace fcppt
