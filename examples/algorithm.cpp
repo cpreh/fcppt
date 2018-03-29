@@ -41,7 +41,7 @@ three_ints;
 three_ints const a{{ 1,2,3 }};
 
 three_ints const b(
-	fcppt::algorithm::array_map<three_ints>(
+	fcppt::algorithm::array_map(
 		a,
 		[](int const _arg) { return _arg * 3; }
 	)

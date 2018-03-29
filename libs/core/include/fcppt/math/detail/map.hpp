@@ -10,7 +10,6 @@
 #include <fcppt/algorithm/array_map.hpp>
 #include <fcppt/math/from_array.hpp>
 #include <fcppt/math/to_array.hpp>
-#include <fcppt/math/to_array_type.hpp>
 
 
 namespace fcppt
@@ -36,11 +35,7 @@ map(
 		fcppt::math::from_array<
 			Dest
 		>(
-			fcppt::algorithm::array_map<
-				fcppt::math::to_array_type<
-					Dest
-				>
-			>(
+			fcppt::algorithm::array_map(
 				fcppt::math::to_array(
 					_source
 				),

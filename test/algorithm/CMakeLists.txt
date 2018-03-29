@@ -17,6 +17,10 @@ add_fcppt_algorithm_test(
 )
 
 add_fcppt_algorithm_test(
+	array_map
+)
+
+add_fcppt_algorithm_test(
 	binary_search
 )
 

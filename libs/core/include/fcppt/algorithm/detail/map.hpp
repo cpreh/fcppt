@@ -95,9 +95,7 @@ map(
 )
 {
 	return
-		fcppt::algorithm::array_map<
-			TargetContainer
-		>(
+		fcppt::algorithm::array_map(
 			std::forward<
 				SourceRange
 			>(

@@ -8,10 +8,16 @@
 #define FCPPT_ALGORITHM_ARRAY_MAP_HPP_INCLUDED
 
 #include <fcppt/move_if_rvalue.hpp>
+#include <fcppt/use.hpp>
 #include <fcppt/container/array_init.hpp>
 #include <fcppt/container/array_size.hpp>
 #include <fcppt/type_traits/is_std_array.hpp>
 #include <fcppt/type_traits/remove_cv_ref_t.hpp>
+#include <fcppt/type_traits/value_type.hpp>
+#include <fcppt/config/external_begin.hpp>
+#include <array>
+#include <type_traits>
+#include <fcppt/config/external_end.hpp>
 
 
 namespace fcppt
@@ -31,32 +37,41 @@ Example:
 
 \snippet algorithm.cpp array_map
 
-\tparam TargetArray Must be a std::array
-
 \tparam SourceArray Must be a std::array
 
-\tparam Function Must be a function callable as <code>TargetArray::value_type
-(SourceArray::value_type)</code>.
+\tparam Function Must be a function callable as <code>R (SourceArray::value_type)</code>,
+where <code>R</code> is the result type.
 **/
 template<
-	typename TargetArray,
 	typename SourceArray,
 	typename Function
 >
 inline
-TargetArray
+auto
 array_map(
 	SourceArray &&_source,
 	Function const &_function
 )
+->
+std::array<
+	decltype(
+		_function(
+			std::declval<
+				fcppt::type_traits::value_type<
+					fcppt::type_traits::remove_cv_ref_t<
+						SourceArray
+					>
+				>
+			>()
+		)
+	),
+	fcppt::container::array_size<
+		fcppt::type_traits::remove_cv_ref_t<
+			SourceArray
+		>
+	>::value
+>
 {
-	static_assert(
-		fcppt::type_traits::is_std_array<
-			TargetArray
-		>::value,
-		"TargetArray must be a std::array"
-	);
-
 	typedef
 	fcppt::type_traits::remove_cv_ref_t<
 		SourceArray
@@ -70,20 +85,26 @@ array_map(
 		"SourceArray must be a std::array"
 	);
 
-	static_assert(
-		fcppt::container::array_size<
-			TargetArray
-		>::value
-		==
+	typedef
+	std::array<
+		decltype(
+			_function(
+				std::declval<
+					fcppt::type_traits::value_type<
+						source_array
+					>
+				>()
+			)
+		),
 		fcppt::container::array_size<
 			source_array
-		>::value,
-		"All arrays must have the same number of elements"
-	);
+		>::value
+	>
+	result_array;
 
 	return
 		fcppt::container::array_init<
-			TargetArray
+			result_array
 		>(
 			[
 				&_source,
@@ -92,14 +113,20 @@ array_map(
 				auto const _index
 			)
 			{
+				FCPPT_USE(
+					_index
+				);
+
 				return
 					_function(
 						fcppt::move_if_rvalue<
 							SourceArray
 						>(
-							_source[
+							std::get<
 								_index()
-							]
+							>(
+								_source
+							)
 						)
 					);
 			}
