@@ -13,6 +13,13 @@
 	</ul>
 </li>
 
+<li>\ref fcpptcontainer
+	<ul>
+	<li>Allow rvalues in \link fcppt::container::array_push_back\endlink.</li>
+	<li>Added \link fcppt::container::value_type\endlink.</li>
+	</ul>
+</li>
+
 <li>\ref fcpptcontainergrid
 	<ul>
 	<li>Added \link fcppt::container::grid::dim_type\endlink and \link fcppt::container::grid::pos_type\endlink.</li>

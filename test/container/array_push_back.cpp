@@ -4,6 +4,9 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
+#include <fcppt/make_unique_ptr.hpp>
+#include <fcppt/unique_ptr.hpp>
+#include <fcppt/container/array_init_move.hpp>
 #include <fcppt/container/array_push_back.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/test/unit_test.hpp>
@@ -19,13 +22,15 @@ BOOST_AUTO_TEST_CASE(
 	std::array<
 		int,
 		3
-	> int3_array;
+	>
+	int3_array;
 
 	typedef
 	std::array<
 		int,
 		4
-	> int4_array;
+	>
+	int4_array;
 
 	int3_array const test{{
 		1,
@@ -41,22 +46,95 @@ BOOST_AUTO_TEST_CASE(
 	);
 
 	BOOST_CHECK_EQUAL(
-		result[0],
+		std::get<
+			0
+		>(
+			result
+		),
 		1
 	);
 
 	BOOST_CHECK_EQUAL(
-		result[1],
+		std::get<
+			1
+		>(
+			result
+		),
 		2
 	);
 
 	BOOST_CHECK_EQUAL(
-		result[2],
+		std::get<
+			2
+		>(
+			result
+		),
 		3
 	);
 
 	BOOST_CHECK_EQUAL(
-		result[3],
+		std::get<
+			3
+		>(
+			result
+		),
 		4
+	);
+}
+
+BOOST_AUTO_TEST_CASE(
+	array_push_back_move
+)
+{
+	typedef
+	fcppt::unique_ptr<
+		int
+	>
+	int_unique_ptr;
+
+	std::array<
+		int_unique_ptr,
+		2
+	> const result(
+		fcppt::container::array_push_back(
+			fcppt::container::array_init_move<
+				std::array<
+					int_unique_ptr,
+					1
+				>
+			>(
+				[]{
+					return
+						fcppt::make_unique_ptr<
+							int
+						>(
+							1
+						);
+				}
+			),
+			fcppt::make_unique_ptr<
+				int
+			>(
+				2
+			)
+		)
+	);
+
+	BOOST_CHECK_EQUAL(
+		*std::get<
+			0
+		>(
+			result
+		),
+		1
+	);
+
+	BOOST_CHECK_EQUAL(
+		*std::get<
+			1
+		>(
+			result
+		),
+		2
 	);
 }

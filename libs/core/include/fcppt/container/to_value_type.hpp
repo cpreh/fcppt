@@ -7,6 +7,7 @@
 #ifndef FCPPT_CONTAINER_TO_VALUE_TYPE_HPP_INCLUDED
 #define FCPPT_CONTAINER_TO_VALUE_TYPE_HPP_INCLUDED
 
+#include <fcppt/container/value_type.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
@@ -18,7 +19,7 @@ namespace container
 {
 
 /**
-\brief Gets the value type of a container.
+\brief The value type of a container depending on its constness.
 
 \ingroup fcpptcontainer
 
@@ -38,10 +39,12 @@ std::conditional_t<
 	std::is_const<
 		Container
 	>::value,
-	typename
-	Container::value_type const,
-	typename
-	Container::value_type
+	fcppt::container::value_type<
+		Container
+	> const,
+	fcppt::container::value_type<
+		Container
+	>
 >;
 
 }
