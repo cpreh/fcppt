@@ -4,11 +4,11 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_ALGORITHM_ARRAY_PUSH_BACK_HPP_INCLUDED
-#define FCPPT_ALGORITHM_ARRAY_PUSH_BACK_HPP_INCLUDED
+#ifndef FCPPT_CONTAINER_ARRAY_PUSH_BACK_HPP_INCLUDED
+#define FCPPT_CONTAINER_ARRAY_PUSH_BACK_HPP_INCLUDED
 
-#include <fcppt/algorithm/array_init.hpp>
-#include <fcppt/algorithm/detail/array_push_back_function.hpp>
+#include <fcppt/container/array_init.hpp>
+#include <fcppt/container/detail/array_push_back_function.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <array>
 #include <cstddef>
@@ -17,13 +17,13 @@
 
 namespace fcppt
 {
-namespace algorithm
+namespace container
 {
 
 /**
 \brief Pushes a new element to the back of an array.
 
-\ingroup fcpptalgorithm
+\ingroup fcpptcontainer
 
 Pushes \a _element to the back of \a _source.
 */
@@ -58,10 +58,10 @@ array_push_back(
 	dest_array;
 
 	return
-		fcppt::algorithm::array_init<
+		fcppt::container::array_init<
 			dest_array
 		>(
-			fcppt::algorithm::detail::array_push_back_function<
+			fcppt::container::detail::array_push_back_function<
 				source_array
 			>(
 				_source,

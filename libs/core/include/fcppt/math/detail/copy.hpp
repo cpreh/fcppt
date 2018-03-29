@@ -8,8 +8,8 @@
 #define FCPPT_MATH_DETAIL_COPY_HPP_INCLUDED
 
 #include <fcppt/use.hpp>
-#include <fcppt/algorithm/array_init.hpp>
 #include <fcppt/cast/size.hpp>
+#include <fcppt/container/array_init.hpp>
 #include <fcppt/math/size_type.hpp>
 #include <fcppt/math/detail/assert_static_storage.hpp>
 #include <fcppt/math/detail/linear_access.hpp>
@@ -41,7 +41,7 @@ copy(
 
 	return
 		Result{
-			fcppt::algorithm::array_init<
+			fcppt::container::array_init<
 				typename
 				Result::array_type
 			>(

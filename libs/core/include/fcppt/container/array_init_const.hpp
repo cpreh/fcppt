@@ -4,23 +4,23 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_ALGORITHM_ARRAY_INIT_CONST_HPP_INCLUDED
-#define FCPPT_ALGORITHM_ARRAY_INIT_CONST_HPP_INCLUDED
+#ifndef FCPPT_CONTAINER_ARRAY_INIT_CONST_HPP_INCLUDED
+#define FCPPT_CONTAINER_ARRAY_INIT_CONST_HPP_INCLUDED
 
-#include <fcppt/algorithm/array_init.hpp>
 #include <fcppt/cast/to_void.hpp>
+#include <fcppt/container/array_init.hpp>
 #include <fcppt/type_traits/is_std_array.hpp>
 
 
 namespace fcppt
 {
-namespace algorithm
+namespace container
 {
 
 /**
 \brief Constructs an array from a value.
 
-\ingroup fcpptalgorithm
+\ingroup fcpptcontainer
 
 Constructs an array of type \a Array by initializing every element with \a
 _value.
@@ -44,7 +44,7 @@ array_init_const(
 	);
 
 	return
-		fcppt::algorithm::array_init<
+		fcppt::container::array_init<
 			Array
 		>(
 			[

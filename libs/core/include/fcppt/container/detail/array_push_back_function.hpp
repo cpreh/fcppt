@@ -4,8 +4,8 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_ALGORITHM_DETAIL_ARRAY_PUSH_BACK_FUNCTION_HPP_INCLUDED
-#define FCPPT_ALGORITHM_DETAIL_ARRAY_PUSH_BACK_FUNCTION_HPP_INCLUDED
+#ifndef FCPPT_CONTAINER_DETAIL_ARRAY_PUSH_BACK_FUNCTION_HPP_INCLUDED
+#define FCPPT_CONTAINER_DETAIL_ARRAY_PUSH_BACK_FUNCTION_HPP_INCLUDED
 
 #include <fcppt/nonassignable.hpp>
 #include <fcppt/container/array_size.hpp>
@@ -16,7 +16,7 @@
 
 namespace fcppt
 {
-namespace algorithm
+namespace container
 {
 namespace detail
 {

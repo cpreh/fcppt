@@ -231,15 +231,10 @@ set(
 	libs/core/include/fcppt/algorithm/all_of.hpp
 	libs/core/include/fcppt/algorithm/append.hpp
 	libs/core/include/fcppt/algorithm/array_binary_map.hpp
-	libs/core/include/fcppt/algorithm/array_init.hpp
-	libs/core/include/fcppt/algorithm/array_init_const.hpp
-	libs/core/include/fcppt/algorithm/array_init_move.hpp
 	libs/core/include/fcppt/algorithm/array_map.hpp
-	libs/core/include/fcppt/algorithm/array_push_back.hpp
 	libs/core/include/fcppt/algorithm/binary_search.hpp
 	libs/core/include/fcppt/algorithm/contains.hpp
 	libs/core/include/fcppt/algorithm/contains_if.hpp
-	libs/core/include/fcppt/algorithm/detail/array_push_back_function.hpp
 	libs/core/include/fcppt/algorithm/detail/has_insert_range.hpp
 	libs/core/include/fcppt/algorithm/detail/has_random_access_iterator.hpp
 	libs/core/include/fcppt/algorithm/detail/has_reserve.hpp
@@ -437,6 +432,10 @@ set(
 	libs/core/include/fcppt/config/platform.hpp
 	libs/core/include/fcppt/const.hpp
 	libs/core/include/fcppt/const_pointer_cast.hpp
+	libs/core/include/fcppt/container/array_init.hpp
+	libs/core/include/fcppt/container/array_init_const.hpp
+	libs/core/include/fcppt/container/array_init_move.hpp
+	libs/core/include/fcppt/container/array_push_back.hpp
 	libs/core/include/fcppt/container/array_size.hpp
 	libs/core/include/fcppt/container/at_optional.hpp
 	libs/core/include/fcppt/container/bitfield/array.hpp
@@ -476,6 +475,7 @@ set(
 	libs/core/include/fcppt/container/buffer/to_raw_vector.hpp
 	libs/core/include/fcppt/container/data.hpp
 	libs/core/include/fcppt/container/data_end.hpp
+	libs/core/include/fcppt/container/detail/array_push_back_function.hpp
 	libs/core/include/fcppt/container/detail/array_size.hpp
 	libs/core/include/fcppt/container/detail/has_size.hpp
 	libs/core/include/fcppt/container/detail/output.hpp

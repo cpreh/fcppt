@@ -8,7 +8,7 @@
 #define FCPPT_ALGORITHM_ARRAY_BINARY_MAP_HPP_INCLUDED
 
 #include <fcppt/use.hpp>
-#include <fcppt/algorithm/array_init.hpp>
+#include <fcppt/container/array_init.hpp>
 #include <fcppt/container/array_size.hpp>
 #include <fcppt/type_traits/is_std_array.hpp>
 #include <fcppt/config/external_begin.hpp>
@@ -74,7 +74,7 @@ array_binary_map(
 	);
 
 	return
-		fcppt::algorithm::array_init<
+		fcppt::container::array_init<
 			TargetArray
 		>(
 			[

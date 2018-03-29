@@ -5,29 +5,77 @@
 
 
 #include <fcppt/noncopyable.hpp>
-#include <fcppt/algorithm/array_init_const.hpp>
+#include <fcppt/container/array_init.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/test/unit_test.hpp>
 #include <array>
+#include <cstddef>
 #include <fcppt/config/external_end.hpp>
 
 
+namespace
+{
+
+class movable
+{
+	FCPPT_NONCOPYABLE(
+		movable
+	);
+public:
+	explicit
+	movable(
+		std::size_t const _value
+	)
+	:
+		value_{
+			_value
+		}
+	{
+	}
+
+	~movable()
+	{
+	}
+
+	movable(
+		movable &&
+	) = default;
+
+	std::size_t
+	value() const
+	{
+		return
+			value_;
+	}
+private:
+	std::size_t value_;
+};
+
+}
+
 BOOST_AUTO_TEST_CASE(
-	array_init_const
+	array_init
 )
 {
 	typedef
 	std::array<
-		int,
+		movable,
 		2
 	>
 	array;
 
 	array const inited(
-		fcppt::algorithm::array_init_const<
+		fcppt::container::array_init<
 			array
 		>(
-			42
+			[](
+				auto const _index
+			){
+				return
+					movable{
+						_index()
+					};
+			}
 		)
 	);
 
@@ -36,8 +84,8 @@ BOOST_AUTO_TEST_CASE(
 			0
 		>(
 			inited
-		),
-		42
+		).value(),
+		0u
 	);
 
 	BOOST_CHECK_EQUAL(
@@ -45,7 +93,7 @@ BOOST_AUTO_TEST_CASE(
 			1
 		>(
 			inited
-		),
-		42
+		).value(),
+		1u
 	);
 }

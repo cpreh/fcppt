@@ -8,8 +8,8 @@
 #define FCPPT_MATH_MATRIX_DETAIL_INIT_STORAGE_HPP_INCLUDED
 
 #include <fcppt/use.hpp>
-#include <fcppt/algorithm/array_init.hpp>
 #include <fcppt/cast/size.hpp>
+#include <fcppt/container/array_init.hpp>
 #include <fcppt/math/size_type.hpp>
 #include <fcppt/math/detail/checked_access.hpp>
 #include <fcppt/math/matrix/row_type.hpp>
@@ -69,7 +69,7 @@ init_storage(
 
 	return
 		result_type{
-			fcppt::algorithm::array_init<
+			fcppt::container::array_init<
 				typename
 				result_type::array_type
 			>(

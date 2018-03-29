@@ -33,6 +33,19 @@
 
 </ul>
 
+\subsection changes_changed_functionality_to_280 Changed functionality
+
+<ul>
+
+<li>\ref fcpptalgorithm
+	<ul>
+	<li>Moved <code>fcppt::algorithm::array_init</code>, <code>fcppt::algorithm::array_init_const</code>,
+	<code>fcppt::algorithm::array_init_move</code> and <code>fcppt::algorithm::array_push_back</code>
+	to \ref fcpptcontainer.</li>
+	</ul>
+</li>
+
+</ul>
 
 \section changes_changes_to_270 2.7.0
 
@@ -1464,12 +1477,12 @@ C++11 library that has no dependencies itself.</li>
 	fcppt::algorithm::map_iteration_second\endlink now expect their
 	function to return \link fcppt::algorithm::update_action\endlink
 	instead of a bool.</li>
-	<li>Renamed <code>%fcppt::algorithm::array_fold_static</code> to \link
-	fcppt::algorithm::array_init\endlink,
+	<li>Renamed <code>%fcppt::algorithm::array_fold_static</code> to
+	<code>%fcppt::algorithm::array_init</code>,
 	<code>%fcppt::algorithm::enum_array_fold_static</code> to
 	<code>%fcppt::algorithm::enum_array_init</code> and
-	<code>%fcppt::algorithm::array_init</code> to \link
-	fcppt::algorithm::array_init_const\endlink.</li>
+	<code>%fcppt::algorithm::array_init</code> to
+	<code>%fcppt::algorithm::array_init_const</code>.</li>
 	</ul>
 </li>
 

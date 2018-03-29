@@ -8,7 +8,7 @@
 #define FCPPT_ALGORITHM_ARRAY_MAP_HPP_INCLUDED
 
 #include <fcppt/move_if_rvalue.hpp>
-#include <fcppt/algorithm/array_init.hpp>
+#include <fcppt/container/array_init.hpp>
 #include <fcppt/container/array_size.hpp>
 #include <fcppt/type_traits/is_std_array.hpp>
 #include <fcppt/type_traits/remove_cv_ref_t.hpp>
@@ -82,7 +82,7 @@ array_map(
 	);
 
 	return
-		fcppt::algorithm::array_init<
+		fcppt::container::array_init<
 			TargetArray
 		>(
 			[

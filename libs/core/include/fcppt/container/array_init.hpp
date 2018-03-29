@@ -4,8 +4,8 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_ALGORITHM_ARRAY_INIT_HPP_INCLUDED
-#define FCPPT_ALGORITHM_ARRAY_INIT_HPP_INCLUDED
+#ifndef FCPPT_CONTAINER_ARRAY_INIT_HPP_INCLUDED
+#define FCPPT_CONTAINER_ARRAY_INIT_HPP_INCLUDED
 
 #include <fcppt/algorithm/vararg_map.hpp>
 #include <fcppt/container/array_size.hpp>
@@ -18,13 +18,13 @@
 
 namespace fcppt
 {
-namespace algorithm
+namespace container
 {
 
 /**
 \brief Constructs an array by calling a function with static indices.
 
-\ingroup fcpptalgorithm
+\ingroup fcpptcontainer
 
 Constructs an array of type \a Array by calling
 <code>_function(std::integral_constant<std::size_t, Index>)</code> for every

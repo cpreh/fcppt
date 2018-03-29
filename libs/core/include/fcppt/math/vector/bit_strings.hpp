@@ -9,7 +9,7 @@
 #define FCPPT_MATH_VECTOR_BIT_STRINGS_HPP_INCLUDED
 
 #include <fcppt/literal.hpp>
-#include <fcppt/algorithm/array_init_const.hpp>
+#include <fcppt/container/array_init_const.hpp>
 #include <fcppt/math/power_of_2.hpp>
 #include <fcppt/math/size_type.hpp>
 #include <fcppt/math/vector/null.hpp>
@@ -98,7 +98,7 @@ bit_strings()
 	result_type;
 
 	result_type result(
-		fcppt::algorithm::array_init_const<
+		fcppt::container::array_init_const<
 			result_type
 		>(
 			fcppt::math::vector::null<

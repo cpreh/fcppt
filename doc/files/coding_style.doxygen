@@ -106,7 +106,7 @@ can sometimes be hard to express. Consider an array of arbitrary size in a templ
 
 \snippet coding_style.cpp coding_style_make_array
 
-This case is handled by \link fcppt::algorithm::array_init\endlink, for example:
+This case is handled by \link fcppt::container::array_init\endlink, for example:
 
 \snippet coding_style.cpp coding_style_array_fold
 

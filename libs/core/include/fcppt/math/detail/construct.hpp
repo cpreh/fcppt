@@ -8,8 +8,8 @@
 #define FCPPT_MATH_DETAIL_CONSTRUCT_HPP_INCLUDED
 
 #include <fcppt/use.hpp>
-#include <fcppt/algorithm/array_init.hpp>
-#include <fcppt/algorithm/array_push_back.hpp>
+#include <fcppt/container/array_init.hpp>
+#include <fcppt/container/array_push_back.hpp>
 #include <fcppt/math/from_array.hpp>
 #include <fcppt/math/detail/assert_static_storage.hpp>
 #include <fcppt/math/detail/checked_access.hpp>
@@ -60,8 +60,8 @@ construct(
 		fcppt::math::from_array<
 			Dest
 		>(
-			fcppt::algorithm::array_push_back(
-				fcppt::algorithm::array_init<
+			fcppt::container::array_push_back(
+				fcppt::container::array_init<
 					typename
 					src_storage::array_type
 				>(
