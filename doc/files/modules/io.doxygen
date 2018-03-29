@@ -23,7 +23,7 @@ endianness at the same time, also living in the io namespace.
 
 \section fcpptio_endianness I/O and endianness
 
-Thetwo three functions dealing with I/O and endianness are \link fcppt::io::read\endlink
+The functions dealing with I/O and endianness are \link fcppt::io::read\endlink
 and \link fcppt::io::write\endlink. They can be used to read or write
 objects of fundamental types from or to char based streams. All of these
 functions treat the data as binary data, which means they don't use the stream
