@@ -13,6 +13,7 @@
 #include <fcppt/container/grid/pos_ref_iterator_fwd.hpp>
 #include <fcppt/container/grid/pos_ref_range_fwd.hpp>
 #include <fcppt/container/grid/pos_type.hpp>
+#include <fcppt/type_traits/value_type.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
@@ -48,12 +49,13 @@ public:
 
 	typedef
 	fcppt::container::grid::pos_range<
-		typename
-		fcppt::container::grid::pos_type<
-			std::remove_cv_t<
-				Grid
+		fcppt::type_traits::value_type<
+			fcppt::container::grid::pos_type<
+				std::remove_cv_t<
+					Grid
+				>
 			>
-		>::value_type,
+		>,
 		Grid::static_size::value
 	>
 	pos_range;

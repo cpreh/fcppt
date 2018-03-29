@@ -17,6 +17,7 @@
 #include <fcppt/either/success_type.hpp>
 #include <fcppt/optional/maybe.hpp>
 #include <fcppt/type_traits/remove_cv_ref_t.hpp>
+#include <fcppt/type_traits/value_type.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <type_traits>
 #include <utility>
@@ -52,10 +53,11 @@ template<
 >
 fcppt::either::object<
 	fcppt::either::failure_type<
-		typename
-		fcppt::type_traits::remove_cv_ref_t<
-			Source
-		>::value_type
+		fcppt::type_traits::value_type<
+			fcppt::type_traits::remove_cv_ref_t<
+				Source
+			>
+		>
 	>,
 	ResultContainer
 >
@@ -70,8 +72,9 @@ sequence(
 	source_type;
 
 	typedef
-	typename
-	source_type::value_type
+	fcppt::type_traits::value_type<
+		source_type
+	>
 	source_either;
 
 	static_assert(
@@ -92,8 +95,9 @@ sequence(
 
 	static_assert(
 		std::is_same<
-			typename
-			ResultContainer::value_type,
+			fcppt::type_traits::value_type<
+				ResultContainer
+			>,
 			fcppt::either::success_type<
 				source_either
 			>

@@ -4,7 +4,7 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/container/value_type.hpp>
+#include <fcppt/type_traits/value_type.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <array>
 #include <vector>
@@ -30,7 +30,7 @@ main()
 
 	static_assert(
 		std::is_same<
-			fcppt::container::value_type<
+			fcppt::type_traits::value_type<
 				vector
 			>,
 			int
@@ -40,7 +40,7 @@ main()
 
 	static_assert(
 		std::is_same<
-			fcppt::container::value_type<
+			fcppt::type_traits::value_type<
 				array
 			>,
 			bool

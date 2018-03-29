@@ -13,6 +13,7 @@
 #include <fcppt/math/box/is_box.hpp>
 #include <fcppt/math/detail/init_function.hpp>
 #include <fcppt/math/vector/init.hpp>
+#include <fcppt/type_traits/value_type.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <array>
 #include <fcppt/config/external_end.hpp>
@@ -48,8 +49,9 @@ init(
 	typedef
 	std::array<
 		fcppt::homogenous_pair<
-			typename
-			Box::value_type
+			fcppt::type_traits::value_type<
+				Box
+			>
 		>,
 		Box::dim_wrapper::value
 	>

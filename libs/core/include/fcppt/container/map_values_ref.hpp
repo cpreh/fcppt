@@ -9,6 +9,7 @@
 
 #include <fcppt/is_reference.hpp>
 #include <fcppt/algorithm/map.hpp>
+#include <fcppt/type_traits/value_type.hpp>
 
 
 namespace fcppt
@@ -36,8 +37,9 @@ map_values_ref(
 {
 	static_assert(
 		fcppt::is_reference<
-			typename
-			Result::value_type
+			fcppt::type_traits::value_type<
+				Result
+			>
 		>::value,
 		"Result::value_type must be an fcppt::reference"
 	);
@@ -52,8 +54,9 @@ map_values_ref(
 			)
 			{
 				return
-					typename
-					Result::value_type{
+					fcppt::type_traits::value_type<
+						Result
+					>{
 						_element.second
 					};
 			}

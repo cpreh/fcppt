@@ -7,6 +7,7 @@
 #ifndef FCPPT_CONTAINER_GRID_DETAIL_SPIRAL_ITERATOR_BASE_HPP_INCLUDED
 #define FCPPT_CONTAINER_GRID_DETAIL_SPIRAL_ITERATOR_BASE_HPP_INCLUDED
 
+#include <fcppt/type_traits/value_type.hpp>
 #include <fcppt/container/grid/spiral_iterator_fwd.hpp>
 #include <fcppt/iterator/base_fwd.hpp>
 #include <fcppt/iterator/types_fwd.hpp>
@@ -27,7 +28,8 @@ namespace detail
 template<
 	typename Pos
 >
-using spiral_iterator_base
+using
+spiral_iterator_base
 =
 fcppt::iterator::base<
 	fcppt::iterator::types<
@@ -36,8 +38,9 @@ fcppt::iterator::base<
 		>,
 		Pos,
 		Pos,
-		typename
-		Pos::value_type,
+		fcppt::type_traits::value_type<
+			Pos
+		>,
 		std::input_iterator_tag
 	>
 >;

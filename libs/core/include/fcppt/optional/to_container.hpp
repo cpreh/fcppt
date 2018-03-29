@@ -13,6 +13,7 @@
 #include <fcppt/optional/value_type.hpp>
 #include <fcppt/optional/detail/check.hpp>
 #include <fcppt/type_traits/remove_cv_ref_t.hpp>
+#include <fcppt/type_traits/value_type.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <type_traits>
 #include <utility>
@@ -54,8 +55,9 @@ to_container(
 
 	static_assert(
 		std::is_same<
-			typename
-			Container::value_type,
+			fcppt::type_traits::value_type<
+				Container
+			>,
 			fcppt::optional::value_type<
 				fcppt::type_traits::remove_cv_ref_t<
 					Optional

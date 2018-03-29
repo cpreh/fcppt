@@ -10,6 +10,7 @@
 #include <fcppt/math/vector/dot.hpp>
 #include <fcppt/math/vector/output.hpp>
 #include <fcppt/math/vector/static.hpp>
+#include <fcppt/type_traits/value_type.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <iostream>
 #include <ostream>
@@ -69,7 +70,9 @@ main()
 // ![vector_dim]
 
 	// Computes the dot product of two vectors
-	float3_vec::value_type const dotp(
+	fcppt::type_traits::value_type<
+		float3_vec
+	> const dotp(
 		fcppt::math::vector::dot(
 			vec1,
 			vec2

@@ -15,6 +15,7 @@
 #include <fcppt/iterator/types_fwd.hpp>
 #include <fcppt/optional/comparison.hpp>
 #include <fcppt/optional/reference.hpp>
+#include <fcppt/type_traits/value_type.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <iterator>
 #include <stack>
@@ -105,8 +106,9 @@ private:
 	fcppt::iterator::base<
 		fcppt::iterator::types<
 			iterator,
-			typename
-			tree_iterator::value_type,
+			fcppt::type_traits::value_type<
+				tree_iterator
+			>,
 			typename
 			tree_iterator::reference,
 			typename
@@ -141,8 +143,9 @@ public:
 		}
 
 		typedef
-		typename
-		iterator_base::value_type
+		fcppt::type_traits::value_type<
+			iterator_base
+		>
 		value_type;
 
 		typedef

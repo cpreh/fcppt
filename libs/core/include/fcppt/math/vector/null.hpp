@@ -10,6 +10,7 @@
 #include <fcppt/math/detail/null_storage.hpp>
 #include <fcppt/math/vector/is_vector.hpp>
 #include <fcppt/math/vector/static.hpp>
+#include <fcppt/type_traits/value_type.hpp>
 
 
 namespace fcppt
@@ -28,8 +29,9 @@ template<
 	typename Vector
 >
 fcppt::math::vector::static_<
-	typename
-	Vector::value_type,
+	fcppt::type_traits::value_type<
+		Vector
+	>,
 	Vector::static_size::value
 >
 null()
@@ -43,8 +45,9 @@ null()
 
 	typedef
 	fcppt::math::vector::static_<
-		typename
-		Vector::value_type,
+		fcppt::type_traits::value_type<
+			Vector
+		>,
 		Vector::static_size::value
 	>
 	result_type;

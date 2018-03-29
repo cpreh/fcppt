@@ -14,6 +14,7 @@
 #include <fcppt/math/detail/assert_static_storage.hpp>
 #include <fcppt/math/detail/checked_access.hpp>
 #include <fcppt/math/detail/static_storage_impl.hpp>
+#include <fcppt/type_traits/value_type.hpp>
 
 
 namespace fcppt
@@ -31,7 +32,9 @@ inline
 Dest
 push_back(
 	Src const &_src,
-	typename Src::value_type const &_value
+	fcppt::type_traits::value_type<
+		Src
+	> const &_value
 )
 {
 	static_assert(
@@ -50,8 +53,9 @@ push_back(
 
 	typedef
 	fcppt::math::detail::static_storage<
-		typename
-		Src::value_type,
+		fcppt::type_traits::value_type<
+			Src
+		>,
 		Src::static_size::value
 	>
 	src_storage;

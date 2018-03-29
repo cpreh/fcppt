@@ -10,6 +10,7 @@
 #include <fcppt/either/failure_type.hpp>
 #include <fcppt/either/object_impl.hpp>
 #include <fcppt/either/success_type.hpp>
+#include <fcppt/type_traits/value_type.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <type_traits>
 #include <utility>
@@ -44,15 +45,17 @@ fcppt::either::object<
 	std::vector<
 		fcppt::either::failure_type<
 			std::result_of_t<
-				typename
-				Functions::value_type()
+				fcppt::type_traits::value_type<
+					Functions
+				>()
 			>
 		>
 	>,
 	fcppt::either::success_type<
 		std::result_of_t<
-			typename
-			Functions::value_type()
+			fcppt::type_traits::value_type<
+				Functions
+			>()
 		>
 	>
 >
@@ -64,8 +67,9 @@ first_success(
 	std::vector<
 		fcppt::either::failure_type<
 			std::result_of_t<
-				typename
-				Functions::value_type()
+				fcppt::type_traits::value_type<
+					Functions
+				>()
 			>
 		>
 	>
@@ -76,8 +80,9 @@ first_success(
 		failure_container,
 		fcppt::either::success_type<
 			std::result_of_t<
-				typename
-				Functions::value_type()
+				fcppt::type_traits::value_type<
+					Functions
+				>()
 			>
 		>
 	>
@@ -86,8 +91,9 @@ first_success(
 	failure_container failures;
 
 	for(
-		typename
-		Functions::value_type const &function
+		fcppt::type_traits::value_type<
+			Functions
+		> const &function
 		:
 		_functions
 	)

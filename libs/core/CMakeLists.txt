@@ -407,7 +407,6 @@ set(
 	libs/core/include/fcppt/container/tree/print.hpp
 	libs/core/include/fcppt/container/tree/to_root.hpp
 	libs/core/include/fcppt/container/untuple.hpp
-	libs/core/include/fcppt/container/value_type.hpp
 	libs/core/include/fcppt/cyclic_iterator.hpp
 	libs/core/include/fcppt/cyclic_iterator_decl.hpp
 	libs/core/include/fcppt/cyclic_iterator_fwd.hpp
@@ -1189,6 +1188,7 @@ set(
 	libs/core/include/fcppt/type_traits/is_value.hpp
 	libs/core/include/fcppt/type_traits/remove_cv_ref.hpp
 	libs/core/include/fcppt/type_traits/remove_cv_ref_t.hpp
+	libs/core/include/fcppt/type_traits/value_type.hpp
 	libs/core/include/fcppt/unique_ptr.hpp
 	libs/core/include/fcppt/unique_ptr_decl.hpp
 	libs/core/include/fcppt/unique_ptr_dynamic_cast.hpp

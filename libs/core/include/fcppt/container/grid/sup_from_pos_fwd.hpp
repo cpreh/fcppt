@@ -9,6 +9,7 @@
 
 #include <fcppt/container/grid/pos.hpp>
 #include <fcppt/container/grid/sup_fwd.hpp>
+#include <fcppt/type_traits/value_type.hpp>
 
 
 namespace fcppt
@@ -30,8 +31,9 @@ using
 sup_from_pos
 =
 fcppt::container::grid::sup<
-	typename
-	Pos::value_type,
+	fcppt::type_traits::value_type<
+		Pos
+	>,
 	Pos::static_size::value
 >;
 

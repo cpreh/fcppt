@@ -7,7 +7,7 @@
 #ifndef FCPPT_CONTAINER_TO_VALUE_TYPE_HPP_INCLUDED
 #define FCPPT_CONTAINER_TO_VALUE_TYPE_HPP_INCLUDED
 
-#include <fcppt/container/value_type.hpp>
+#include <fcppt/type_traits/value_type.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
@@ -39,10 +39,10 @@ std::conditional_t<
 	std::is_const<
 		Container
 	>::value,
-	fcppt::container::value_type<
+	fcppt::type_traits::value_type<
 		Container
 	> const,
-	fcppt::container::value_type<
+	fcppt::type_traits::value_type<
 		Container
 	>
 >;

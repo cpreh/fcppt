@@ -23,6 +23,7 @@
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
+#include <fcppt/type_traits/value_type.hpp>
 
 
 namespace fcppt
@@ -82,8 +83,9 @@ operator *(
 			)
 			{
 				typedef
-				typename
-				result_type::value_type
+				fcppt::type_traits::value_type<
+					result_type
+				>
 				value_type;
 
 FCPPT_PP_PUSH_WARNING

@@ -8,6 +8,7 @@
 #define FCPPT_ALGORITHM_MAP_ITERATION_SECOND_HPP_INCLUDED
 
 #include <fcppt/algorithm/map_iteration.hpp>
+#include <fcppt/type_traits/value_type.hpp>
 
 
 namespace fcppt
@@ -45,7 +46,9 @@ map_iteration_second(
 		[
 			&_update_action
 		](
-			typename Map::value_type &_element
+			fcppt::type_traits::value_type<
+				Map
+			> &_element
 		)
 		{
 			return

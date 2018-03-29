@@ -16,6 +16,7 @@
 #include <fcppt/container/grid/pos_type.hpp>
 #include <fcppt/container/grid/detail/pos_ref_iterator_base.hpp>
 #include <fcppt/iterator/base_decl.hpp>
+#include <fcppt/type_traits/value_type.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
@@ -72,8 +73,9 @@ class pos_ref_iterator final
 	iterator;
 public:
 	typedef
-	typename
-	base_type::value_type
+	fcppt::type_traits::value_type<
+		base_type
+	>
 	value_type;
 
 	typedef
@@ -98,8 +100,9 @@ public:
 
 	typedef
 	fcppt::container::grid::pos_iterator<
-		typename
-		pos::value_type,
+		fcppt::type_traits::value_type<
+			pos
+		>,
 		pos::static_size::value
 	>
 	pos_iterator;

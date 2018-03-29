@@ -10,6 +10,7 @@
 #include <fcppt/is_strong_typedef.hpp>
 #include <fcppt/strong_typedef_impl.hpp>
 #include <fcppt/cast/apply.hpp>
+#include <fcppt/type_traits/value_type.hpp>
 
 
 namespace fcppt
@@ -41,8 +42,9 @@ strong_typedef_construct_cast(
 		StrongTypedef(
 			fcppt::cast::apply<
 				Conv,
-				typename
-				StrongTypedef::value_type
+				fcppt::type_traits::value_type<
+					StrongTypedef
+				>
 			>(
 				_arg
 			)

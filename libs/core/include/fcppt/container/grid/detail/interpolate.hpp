@@ -9,6 +9,7 @@
 
 #include <fcppt/literal.hpp>
 #include <fcppt/cast/size.hpp>
+#include <fcppt/type_traits/value_type.hpp>
 #include <fcppt/math/vector/at.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <cstddef>
@@ -25,38 +26,38 @@ namespace grid
 namespace detail
 {
 
-template
-<
+template<
 	std::size_t N,
 	typename Grid,
 	typename IndexSequence,
 	typename FloatVector,
 	typename Interpolator
 >
-typename
-std::enable_if
-<
+std::enable_if_t<
 	N == 1u,
-	typename Grid::value_type
->::type
+	fcppt::type_traits::value_type<
+		Grid
+	>
+>
 interpolate(
-	Grid const &grid,
-	IndexSequence const &indices,
-	typename IndexSequence::size_type const value_index,
-	FloatVector const &p,
-	Interpolator const &interpolator)
+	Grid const &_grid,
+	IndexSequence const &_indices,
+	typename IndexSequence::size_type const _value_index,
+	FloatVector const &_pos,
+	Interpolator const &_interpolator
+)
 {
 	return
-		interpolator(
-			p.x(),
-			grid.get_unsafe(
-				indices[
-					value_index
+		_interpolator(
+			_pos.x(),
+			_grid.get_unsafe(
+				_indices[
+					_value_index
 				]
 			),
-			grid.get_unsafe(
-				indices[
-					value_index
+			_grid.get_unsafe(
+				_indices[
+					_value_index
 					+
 					1u
 				]
@@ -64,26 +65,26 @@ interpolate(
 		);
 }
 
-template
-<
+template<
 	std::size_t N,
 	typename Grid,
 	typename IndexSequence,
 	typename FloatVector,
 	typename Interpolator
 >
-typename
-std::enable_if
-<
+std::enable_if_t<
 	N != 1u,
-	typename Grid::value_type
->::type
+	fcppt::type_traits::value_type<
+		Grid
+	>
+>
 interpolate(
-	Grid const &grid,
-	IndexSequence const &indices,
-	typename IndexSequence::size_type const value_index,
-	FloatVector const &p,
-	Interpolator const &interpolator)
+	Grid const &_grid,
+	IndexSequence const &_indices,
+	typename IndexSequence::size_type const _value_index,
+	FloatVector const &_pos,
+	Interpolator const &_interpolator
+)
 {
 	typedef typename
 	FloatVector::size_type
@@ -104,7 +105,7 @@ interpolate(
 	);
 
 	return
-		interpolator(
+		_interpolator(
 			fcppt::math::vector::at<
 				fcppt::cast::size<
 					float_vector_size_type
@@ -112,25 +113,26 @@ interpolate(
 					next_n
 				)
 			>(
-				p
+				_pos
 			),
 			fcppt::container::grid::detail::interpolate<
 				next_n
 			>(
-				grid,
-				indices,
-				value_index,
-				p,
-				interpolator),
+				_grid,
+				_indices,
+				_value_index,
+				_pos,
+				_interpolator
+			),
 			fcppt::container::grid::detail::interpolate<
 				next_n
 			>(
-				grid,
-				indices,
+				_grid,
+				_indices,
 				fcppt::cast::size<
 					index_sequence_size_type
 				>(
-					value_index
+					_value_index
 					+
 					(
 						fcppt::literal<
@@ -142,8 +144,8 @@ interpolate(
 						next_n
 					)
 				),
-				p,
-				interpolator
+				_pos,
+				_interpolator
 			)
 		);
 }

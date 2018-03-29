@@ -10,6 +10,7 @@
 #include <fcppt/container/grid/spiral_iterator_fwd.hpp>
 #include <fcppt/container/grid/detail/spiral_iterator_base.hpp>
 #include <fcppt/iterator/base_decl.hpp>
+#include <fcppt/type_traits/value_type.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
@@ -43,14 +44,16 @@ class spiral_iterator final
 	pos;
 public:
 	typedef
-	typename
-	base_type::value_type
+	fcppt::type_traits::value_type<
+		base_type
+	>
 	value_type;
 
 	static_assert(
 		std::is_signed<
-			typename
-			Pos::value_type
+			fcppt::type_traits::value_type<
+				Pos
+			>
 		>::value,
 		"spiral_iterator only works with signed integers"
 	);

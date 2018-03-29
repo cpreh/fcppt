@@ -10,6 +10,7 @@
 #include <fcppt/literal.hpp>
 #include <fcppt/math/size_type.hpp>
 #include <fcppt/math/vector/at.hpp>
+#include <fcppt/type_traits/value_type.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
@@ -44,8 +45,9 @@ bit_strings(
 		_vector
 	) =
 		fcppt::literal<
-			typename
-			Vector::value_type
+			fcppt::type_traits::value_type<
+				Vector
+			>
 		>(
 			0
 		);
@@ -59,8 +61,9 @@ bit_strings(
 		_vector
 	) =
 		fcppt::literal<
-			typename
-			Vector::value_type
+			fcppt::type_traits::value_type<
+				Vector
+			>
 		>(
 			1
 		);
@@ -89,8 +92,9 @@ bit_strings(
 		_vector
 	) =
 		fcppt::literal<
-			typename
-			Vector::value_type
+			fcppt::type_traits::value_type<
+				Vector
+			>
 		>(
 			0
 		);
@@ -110,8 +114,9 @@ bit_strings(
 		_vector
 	) =
 		fcppt::literal<
-			typename
-			Vector::value_type
+			fcppt::type_traits::value_type<
+				Vector
+			>
 		>(
 			1
 		);

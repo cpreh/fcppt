@@ -9,6 +9,7 @@
 
 #include <fcppt/literal.hpp>
 #include <fcppt/container/array_init_const.hpp>
+#include <fcppt/type_traits/value_type.hpp>
 
 
 namespace fcppt
@@ -32,8 +33,9 @@ null_array()
 			Array
 		>(
 			fcppt::literal<
-				typename
-				Array::value_type
+				fcppt::type_traits::value_type<
+					Array
+				>
 			>(
 				0
 			)

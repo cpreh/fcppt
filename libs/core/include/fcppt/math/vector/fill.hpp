@@ -9,6 +9,7 @@
 
 #include <fcppt/math/detail/fill.hpp>
 #include <fcppt/math/vector/is_vector.hpp>
+#include <fcppt/type_traits/value_type.hpp>
 
 
 namespace fcppt
@@ -32,7 +33,9 @@ template<
 >
 Vector
 fill(
-	typename Vector::value_type const &_value
+	fcppt::type_traits::value_type<
+		Vector
+	> const &_value
 )
 {
 	static_assert(

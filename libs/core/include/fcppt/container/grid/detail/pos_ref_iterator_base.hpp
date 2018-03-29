@@ -7,6 +7,7 @@
 #ifndef FCPPT_CONTAINER_GRID_DETAIL_POS_REF_ITERATOR_BASE_HPP_INCLUDED
 #define FCPPT_CONTAINER_GRID_DETAIL_POS_REF_ITERATOR_BASE_HPP_INCLUDED
 
+#include <fcppt/type_traits/value_type.hpp>
 #include <fcppt/container/grid/pos_ref_iterator_fwd.hpp>
 #include <fcppt/container/grid/pos_reference_fwd.hpp>
 #include <fcppt/iterator/base_fwd.hpp>
@@ -28,15 +29,17 @@ namespace detail
 template<
 	typename Grid
 >
-using pos_ref_iterator_base
+using
+pos_ref_iterator_base
 =
 fcppt::iterator::base<
 	fcppt::iterator::types<
 		fcppt::container::grid::pos_ref_iterator<
 			Grid
 		>,
-		typename
-		Grid::value_type,
+		fcppt::type_traits::value_type<
+			Grid
+		>,
 		fcppt::container::grid::pos_reference<
 			Grid
 		>,

@@ -10,6 +10,7 @@
 #include <fcppt/cast/apply.hpp>
 #include <fcppt/math/detail/assert_static_storage.hpp>
 #include <fcppt/math/detail/init.hpp>
+#include <fcppt/type_traits/value_type.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
@@ -61,7 +62,9 @@ structure_cast(
 				return
 					fcppt::cast::apply<
 						Conv,
-						typename T::value_type
+						fcppt::type_traits::value_type<
+							T
+						>
 					>(
 						_other.storage()[
 							_index

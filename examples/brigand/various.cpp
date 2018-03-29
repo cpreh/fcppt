@@ -15,6 +15,7 @@
 #include <fcppt/brigand/print.hpp>
 #include <fcppt/cast/to_unsigned_fun.hpp>
 #include <fcppt/io/cout.hpp>
+#include <fcppt/type_traits/value_type.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <brigand/algorithms/transform.hpp>
 #include <brigand/functions/comparison/equal_to.hpp>
@@ -92,7 +93,9 @@ result;
 
 static_assert(
 	std::is_same<
-		result::value_type,
+		fcppt::type_traits::value_type<
+			result
+		>,
 		unsigned
 	>::value
 	&&

@@ -8,6 +8,7 @@
 #ifndef FCPPT_ALGORITHM_JOIN_STRINGS_HPP_INCLUDED
 #define FCPPT_ALGORITHM_JOIN_STRINGS_HPP_INCLUDED
 
+#include <fcppt/type_traits/value_type.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <iterator>
 #include <fcppt/config/external_end.hpp>
@@ -34,13 +35,19 @@ Example:
 template<
 	typename Range
 >
-typename Range::value_type
+fcppt::type_traits::value_type<
+	Range
+>
 join_strings(
 	Range const &_range,
-	typename Range::value_type const &_delim
+	fcppt::type_traits::value_type<
+		Range
+	> const &_delim
 )
 {
-	typename Range::value_type result;
+	fcppt::type_traits::value_type<
+		Range
+	> result;
 
 	for(
 		typename Range::const_iterator it(

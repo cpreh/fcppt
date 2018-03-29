@@ -16,7 +16,6 @@
 <li>\ref fcpptcontainer
 	<ul>
 	<li>Allow rvalues in \link fcppt::container::array_push_back\endlink.</li>
-	<li>Added \link fcppt::container::value_type\endlink.</li>
 	</ul>
 </li>
 
@@ -35,6 +34,7 @@
 <li>\ref fcppttypetraits
 	<ul>
 	<li>Added \link fcppt::type_traits::remove_cv_ref_t\endlink.</li>
+	<li>Added \link fcppt::type_traits::value_type\endlink.</li>
 	</ul>
 </li>
 

@@ -4,19 +4,19 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_CONTAINER_VALUE_TYPE_HPP_INCLUDED
-#define FCPPT_CONTAINER_VALUE_TYPE_HPP_INCLUDED
+#ifndef FCPPT_TYPE_TRAITS_VALUE_TYPE_HPP_INCLUDED
+#define FCPPT_TYPE_TRAITS_VALUE_TYPE_HPP_INCLUDED
 
 
 namespace fcppt
 {
-namespace container
+namespace type_traits
 {
 
 /**
 \brief The value type of a container.
 
-\ingroup fcpptcontainer
+\ingroup fcppttypetraits
 */
 template<
 	typename Container

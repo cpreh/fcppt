@@ -7,6 +7,7 @@
 #ifndef FCPPT_CONTAINER_GRID_MAKE_SPIRAL_RANGE_HPP_INCLUDED
 #define FCPPT_CONTAINER_GRID_MAKE_SPIRAL_RANGE_HPP_INCLUDED
 
+#include <fcppt/type_traits/value_type.hpp>
 #include <fcppt/container/grid/spiral_range_impl.hpp>
 
 
@@ -26,7 +27,9 @@ fcppt::container::grid::spiral_range<
 >
 make_spiral_range(
 	Pos const _start,
-	typename Pos::value_type const _max_dist
+	fcppt::type_traits::value_type<
+		Pos
+	> const _max_dist
 )
 {
 	return

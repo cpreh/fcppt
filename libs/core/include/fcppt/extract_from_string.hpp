@@ -11,6 +11,7 @@
 #include <fcppt/optional/nothing.hpp>
 #include <fcppt/optional/object_impl.hpp>
 #include <fcppt/type_traits/is_string.hpp>
+#include <fcppt/type_traits/value_type.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <locale>
 #include <sstream>
@@ -65,8 +66,9 @@ extract_from_string(
 
 	typedef
 	std::basic_istringstream<
-		typename
-		Source::value_type,
+		fcppt::type_traits::value_type<
+			Source
+		>,
 		typename
 		Source::traits_type
 	>

@@ -8,6 +8,7 @@
 #define FCPPT_OPTIONAL_DETAIL_VALUE_TYPE_HPP_INCLUDED
 
 #include <fcppt/optional/is_object.hpp>
+#include <fcppt/type_traits/value_type.hpp>
 
 
 namespace fcppt
@@ -30,8 +31,9 @@ struct value_type
 	);
 
 	typedef
-	typename
-	Optional::value_type
+	fcppt::type_traits::value_type<
+		Optional
+	>
 	type;
 };
 

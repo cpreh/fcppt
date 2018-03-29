@@ -7,6 +7,7 @@
 #ifndef FCPPT_CONTAINER_GRID_MIN_FROM_POS_FWD_HPP_INCLUDED
 #define FCPPT_CONTAINER_GRID_MIN_FROM_POS_FWD_HPP_INCLUDED
 
+#include <fcppt/type_traits/value_type.hpp>
 #include <fcppt/container/grid/min_fwd.hpp>
 #include <fcppt/container/grid/pos.hpp>
 
@@ -30,8 +31,9 @@ using
 min_from_pos
 =
 fcppt::container::grid::min<
-	typename
-	Pos::value_type,
+	fcppt::type_traits::value_type<
+		Pos
+	>,
 	Pos::static_size::value
 >;
 

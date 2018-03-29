@@ -8,6 +8,7 @@
 #define FCPPT_INSERT_TO_STRING_HPP_INCLUDED
 
 #include <fcppt/type_traits/is_string.hpp>
+#include <fcppt/type_traits/value_type.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <locale>
 #include <sstream>
@@ -53,10 +54,14 @@ insert_to_string(
 		"insert_ot_string must return a string"
 	);
 
-	typedef std::basic_ostringstream<
-		typename Dest::value_type,
+	typedef
+	std::basic_ostringstream<
+		fcppt::type_traits::value_type<
+			Dest
+		>,
 		typename Dest::traits_type
-	> ostringstream;
+	>
+	ostringstream;
 
 	ostringstream oss;
 

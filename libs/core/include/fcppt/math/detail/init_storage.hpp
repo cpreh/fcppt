@@ -9,6 +9,7 @@
 
 #include <fcppt/container/array_init_const.hpp>
 #include <fcppt/math/detail/assert_static_storage.hpp>
+#include <fcppt/type_traits/value_type.hpp>
 
 
 namespace fcppt
@@ -24,7 +25,9 @@ template<
 inline
 Result
 init_storage(
-	typename Result::value_type const &_value
+	fcppt::type_traits::value_type<
+		Result
+	> const &_value
 )
 {
 	FCPPT_MATH_DETAIL_ASSERT_STATIC_STORAGE(

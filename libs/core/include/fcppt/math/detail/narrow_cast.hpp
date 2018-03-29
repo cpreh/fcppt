@@ -10,6 +10,7 @@
 #include <fcppt/use.hpp>
 #include <fcppt/math/detail/checked_access.hpp>
 #include <fcppt/math/detail/init.hpp>
+#include <fcppt/type_traits/value_type.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
@@ -34,8 +35,12 @@ narrow_cast(
 {
 	static_assert(
 		std::is_same<
-			typename T::value_type,
-			typename U::value_type
+			fcppt::type_traits::value_type<
+				T
+			>,
+			fcppt::type_traits::value_type<
+				U
+			>
 		>::value,
 		"narrow_cast can only be used on the same value_types"
 	);

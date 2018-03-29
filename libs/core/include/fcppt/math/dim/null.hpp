@@ -10,6 +10,7 @@
 #include <fcppt/math/detail/null_storage.hpp>
 #include <fcppt/math/dim/is_dim.hpp>
 #include <fcppt/math/dim/static.hpp>
+#include <fcppt/type_traits/value_type.hpp>
 
 
 namespace fcppt
@@ -28,8 +29,9 @@ template<
 	typename Dim
 >
 fcppt::math::dim::static_<
-	typename
-	Dim::value_type,
+	fcppt::type_traits::value_type<
+		Dim
+	>,
 	Dim::static_size::value
 >
 null()
@@ -43,8 +45,9 @@ null()
 
 	typedef
 	fcppt::math::dim::static_<
-		typename
-		Dim::value_type,
+		fcppt::type_traits::value_type<
+			Dim
+		>,
 		Dim::static_size::value
 	>
 	result_type;

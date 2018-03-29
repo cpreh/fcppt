@@ -7,6 +7,7 @@
 #ifndef FCPPT_RANDOM_GENERATOR_SEED_FROM_CHRONO_HPP_INCLUDED
 #define FCPPT_RANDOM_GENERATOR_SEED_FROM_CHRONO_HPP_INCLUDED
 
+#include <fcppt/type_traits/value_type.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <chrono>
 #include <type_traits>
@@ -42,7 +43,9 @@ seed_from_chrono()
 {
 	static_assert(
 		std::is_integral<
-			typename Seed::value_type
+			fcppt::type_traits::value_type<
+				Seed
+			>
 		>::value,
 		"seed_from_chrono requires Seeds with integral type"
 	);
@@ -50,7 +53,9 @@ seed_from_chrono()
 	return
 		Seed(
 			static_cast<
-				typename Seed::value_type
+				fcppt::type_traits::value_type<
+					Seed
+				>
 			>(
 				std::chrono::high_resolution_clock::now().time_since_epoch().count()
 			)

@@ -10,6 +10,7 @@
 #include <fcppt/nonassignable.hpp>
 #include <fcppt/container/grid/spiral_iterator_fwd.hpp>
 #include <fcppt/container/grid/spiral_range_fwd.hpp>
+#include <fcppt/type_traits/value_type.hpp>
 
 
 namespace fcppt
@@ -35,8 +36,9 @@ public:
 	);
 
 	typedef
-	typename
-	Pos::value_type
+	fcppt::type_traits::value_type<
+		Pos
+	>
 	value_type;
 
 	spiral_range(

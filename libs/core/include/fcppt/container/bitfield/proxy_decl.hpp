@@ -9,6 +9,7 @@
 
 #include <fcppt/nonassignable.hpp>
 #include <fcppt/bit/mask_fwd.hpp>
+#include <fcppt/type_traits/value_type.hpp>
 #include <fcppt/container/bitfield/object_fwd.hpp>
 #include <fcppt/container/bitfield/proxy_fwd.hpp>
 #include <fcppt/container/bitfield/value_type.hpp>
@@ -51,8 +52,9 @@ class proxy
 	size_type;
 
 	typedef
-	typename
-	array_type::value_type
+	fcppt::type_traits::value_type<
+		array_type
+	>
 	internal_type;
 
 	typedef

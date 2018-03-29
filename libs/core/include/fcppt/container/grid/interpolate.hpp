@@ -10,6 +10,7 @@
 
 #include <fcppt/literal.hpp>
 #include <fcppt/cast/float_to_int_fun.hpp>
+#include <fcppt/type_traits/value_type.hpp>
 #include <fcppt/container/grid/object_impl.hpp>
 #include <fcppt/container/grid/pos_type.hpp>
 #include <fcppt/container/grid/size_type.hpp>
@@ -130,8 +131,9 @@ interpolate(
 
 	binary_vector_array_type binary_vectors(
 		fcppt::math::vector::bit_strings<
-			typename
-			integer_vector_type::value_type,
+			fcppt::type_traits::value_type<
+				integer_vector_type
+			>,
 			N
 		>()
 	);

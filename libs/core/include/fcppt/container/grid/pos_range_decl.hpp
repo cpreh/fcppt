@@ -11,6 +11,7 @@
 #include <fcppt/container/grid/pos_iterator_fwd.hpp>
 #include <fcppt/container/grid/pos_range_fwd.hpp>
 #include <fcppt/container/grid/size_type.hpp>
+#include <fcppt/type_traits/value_type.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
@@ -47,8 +48,9 @@ public:
 	const_iterator;
 
 	typedef
-	typename
-	iterator::value_type
+	fcppt::type_traits::value_type<
+		iterator
+	>
 	pos;
 
 	typedef

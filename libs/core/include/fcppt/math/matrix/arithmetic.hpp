@@ -20,6 +20,7 @@
 #include <fcppt/math/matrix/map.hpp>
 #include <fcppt/math/matrix/object_impl.hpp>
 #include <fcppt/math/matrix/static.hpp>
+#include <fcppt/type_traits/value_type.hpp>
 
 
 namespace fcppt
@@ -175,8 +176,9 @@ operator *(
 	result_type;
 
 	typedef
-	typename
-	result_type::value_type
+	fcppt::type_traits::value_type<
+		result_type
+	>
 	value_type;
 
 	return

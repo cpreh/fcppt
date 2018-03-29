@@ -7,6 +7,7 @@
 #ifndef FCPPT_CONTAINER_GRID_POS_ITERATOR_DECL_HPP_INCLUDED
 #define FCPPT_CONTAINER_GRID_POS_ITERATOR_DECL_HPP_INCLUDED
 
+#include <fcppt/type_traits/value_type.hpp>
 #include <fcppt/container/grid/min.hpp>
 #include <fcppt/container/grid/pos.hpp>
 #include <fcppt/container/grid/pos_iterator_fwd.hpp>
@@ -14,6 +15,7 @@
 #include <fcppt/container/grid/sup.hpp>
 #include <fcppt/container/grid/detail/pos_iterator_base.hpp>
 #include <fcppt/iterator/base_decl.hpp>
+#include <fcppt/type_traits/value_type.hpp>
 
 
 namespace fcppt
@@ -48,8 +50,9 @@ class pos_iterator final
 	base_type;
 public:
 	typedef
-	typename
-	base_type::value_type
+	fcppt::type_traits::value_type<
+		base_type
+	>
 	value_type;
 
 	typedef
@@ -57,8 +60,9 @@ public:
 	pos;
 
 	typedef
-	typename
-	pos::value_type
+	fcppt::type_traits::value_type<
+		pos
+	>
 	size_type;
 
 	typedef

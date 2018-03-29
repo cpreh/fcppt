@@ -9,6 +9,7 @@
 
 #include <fcppt/math/detail/fill.hpp>
 #include <fcppt/math/dim/is_dim.hpp>
+#include <fcppt/type_traits/value_type.hpp>
 
 
 namespace fcppt
@@ -29,7 +30,9 @@ template<
 >
 Dim
 fill(
-	typename Dim::value_type const &_value
+	fcppt::type_traits::value_type<
+		Dim
+	> const &_value
 )
 {
 	static_assert(

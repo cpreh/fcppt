@@ -10,6 +10,7 @@
 #include <fcppt/literal.hpp>
 #include <fcppt/math/size_type.hpp>
 #include <fcppt/math/vector/init.hpp>
+#include <fcppt/type_traits/value_type.hpp>
 
 
 namespace fcppt
@@ -54,8 +55,9 @@ unit(
 			{
 				return
 					fcppt::literal<
-						typename
-						Vec::value_type
+						fcppt::type_traits::value_type<
+							Vec
+						>
 					>(
 						_index
 						==

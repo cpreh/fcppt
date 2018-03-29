@@ -14,6 +14,7 @@
 #include <fcppt/optional/make_if.hpp>
 #include <fcppt/optional/object_impl.hpp>
 #include <fcppt/type_traits/remove_cv_ref_t.hpp>
+#include <fcppt/type_traits/value_type.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <type_traits>
 #include <utility>
@@ -54,10 +55,11 @@ sequence(
 )
 {
 	typedef
-	typename
-	fcppt::type_traits::remove_cv_ref_t<
-		Source
-	>::value_type
+	fcppt::type_traits::value_type<
+		fcppt::type_traits::remove_cv_ref_t<
+			Source
+		>
+	>
 	source_optional;
 
 	static_assert(
@@ -69,10 +71,12 @@ sequence(
 
 	static_assert(
 		std::is_same<
-			typename
-			ResultContainer::value_type,
-			typename
-			source_optional::value_type
+			fcppt::type_traits::value_type<
+				ResultContainer
+			>,
+			fcppt::type_traits::value_type<
+				source_optional
+			>
 		>::value,
 		"ResultContainer must be a container of the source's success type"
 	);

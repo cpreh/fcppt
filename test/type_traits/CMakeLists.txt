@@ -42,3 +42,8 @@ add_fcppt_type_traits_test(
 	remove_cv_ref
 	NO_CODE
 )
+
+add_fcppt_type_traits_test(
+	value_type
+	NO_CODE
+)

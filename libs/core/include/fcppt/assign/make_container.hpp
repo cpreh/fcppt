@@ -9,6 +9,7 @@
 
 #include <fcppt/reference_impl.hpp>
 #include <fcppt/algorithm/map.hpp>
+#include <fcppt/type_traits/value_type.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <array>
 #include <utility>
@@ -37,8 +38,9 @@ make_container(
 {
 	typedef
 	fcppt::reference<
-		typename
-		Container::value_type
+		fcppt::type_traits::value_type<
+			Container
+		>
 	>
 	reference_type;
 

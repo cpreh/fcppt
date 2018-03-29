@@ -13,6 +13,7 @@
 #include <fcppt/math/diff.hpp>
 #include <fcppt/math/int_range_count.hpp>
 #include <fcppt/math/detail/linear_access.hpp>
+#include <fcppt/type_traits/value_type.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
@@ -40,13 +41,15 @@ componentwise_equal(
 {
 	static_assert(
 		std::is_floating_point<
-			typename
-			Range1::value_type
+			fcppt::type_traits::value_type<
+				Range1
+			>
 		>::value
 		&&
 		std::is_floating_point<
-			typename
-			Range2::value_type
+			fcppt::type_traits::value_type<
+				Range2
+			>
 		>::value,
 		"componentwise_equal can only be used on ranges of floating point type"
 	);

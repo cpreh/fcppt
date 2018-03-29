@@ -22,6 +22,7 @@
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
+#include <fcppt/type_traits/value_type.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <cmath>
 #include <fcppt/config/external_end.hpp>
@@ -143,8 +144,9 @@ hypersphere_to_cartesian(
 	result_type;
 
 	typedef
-	typename
-	result_type::value_type
+	fcppt::type_traits::value_type<
+		result_type
+	>
 	value_type;
 
 	return

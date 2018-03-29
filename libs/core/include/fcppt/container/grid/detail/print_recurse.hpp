@@ -8,6 +8,7 @@
 #define FCPPT_CONTAINER_GRID_DETAIL_PRINT_RECURSE_HPP_INCLUDED
 
 #include <fcppt/make_int_range_count.hpp>
+#include <fcppt/type_traits/value_type.hpp>
 #include <fcppt/container/grid/dim_type.hpp>
 #include <fcppt/container/grid/object_impl.hpp>
 #include <fcppt/container/grid/pos_type.hpp>
@@ -106,14 +107,15 @@ print_recurse(
 		<< _stream.widen('(');
 
 	typedef
-	typename
-	fcppt::container::grid::dim_type<
-		fcppt::container::grid::object<
-			Type,
-			Size,
-			Alloc
+	fcppt::type_traits::value_type<
+		fcppt::container::grid::dim_type<
+			fcppt::container::grid::object<
+				Type,
+				Size,
+				Alloc
+			>
 		>
-	>::value_type
+	>
 	dim_value_type;
 
 	dim_value_type const sz{

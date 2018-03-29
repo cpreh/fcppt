@@ -8,6 +8,7 @@
 #define FCPPT_ALGORITHM_UNIQUE_HPP_INCLUDED
 
 #include <fcppt/algorithm/unique_if.hpp>
+#include <fcppt/type_traits/value_type.hpp>
 
 
 namespace fcppt
@@ -32,8 +33,9 @@ unique(
 )
 {
 	typedef
-	typename
-	Container::value_type
+	fcppt::type_traits::value_type<
+		Container
+	>
 	value_type;
 
 	return

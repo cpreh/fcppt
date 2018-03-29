@@ -9,6 +9,7 @@
 
 #include <fcppt/cast/to_void.hpp>
 #include <fcppt/container/array_init.hpp>
+#include <fcppt/type_traits/value_type.hpp>
 #include <fcppt/type_traits/is_std_array.hpp>
 
 
@@ -33,7 +34,9 @@ template<
 inline
 Array
 array_init_const(
-	typename Array::value_type const &_value
+	fcppt::type_traits::value_type<
+		Array
+	> const &_value
 )
 {
 	static_assert(
