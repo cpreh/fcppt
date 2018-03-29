@@ -362,7 +362,6 @@ set(
 	libs/core/include/fcppt/container/index_map_fwd.hpp
 	libs/core/include/fcppt/container/index_map_impl.hpp
 	libs/core/include/fcppt/container/insert.hpp
-	libs/core/include/fcppt/container/integer_sequence_to_tuple.hpp
 	libs/core/include/fcppt/container/make_array.hpp
 	libs/core/include/fcppt/container/make_move_range.hpp
 	libs/core/include/fcppt/container/map_values_copy.hpp
