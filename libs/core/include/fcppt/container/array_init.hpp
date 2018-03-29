@@ -7,9 +7,8 @@
 #ifndef FCPPT_CONTAINER_ARRAY_INIT_HPP_INCLUDED
 #define FCPPT_CONTAINER_ARRAY_INIT_HPP_INCLUDED
 
-#include <fcppt/algorithm/vararg_map.hpp>
 #include <fcppt/container/array_size.hpp>
-#include <fcppt/container/integer_sequence_to_tuple.hpp>
+#include <fcppt/container/detail/array_init.hpp>
 #include <fcppt/type_traits/is_std_array.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <utility>
@@ -53,30 +52,14 @@ array_init(
 	);
 
 	return
-		fcppt::algorithm::vararg_map(
-			typename
-			fcppt::container::integer_sequence_to_tuple<
-				std::make_index_sequence<
-					fcppt::container::array_size<
-						Array
-					>::value
-				>
-			>::type{},
-			[](
-				auto &&... _args_array
-			)
-			{
-				return
-					Array{{
-						std::forward<
-							decltype(
-								_args_array
-							)
-						>(
-							_args_array
-						)...
-					}};
-			},
+		fcppt::container::detail::array_init<
+			Array
+		>(
+			std::make_index_sequence<
+				fcppt::container::array_size<
+					Array
+				>::value
+			>{},
 			_function
 		);
 }

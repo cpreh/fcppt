@@ -475,6 +475,7 @@ set(
 	libs/core/include/fcppt/container/buffer/to_raw_vector.hpp
 	libs/core/include/fcppt/container/data.hpp
 	libs/core/include/fcppt/container/data_end.hpp
+	libs/core/include/fcppt/container/detail/array_init.hpp
 	libs/core/include/fcppt/container/detail/array_push_back_function.hpp
 	libs/core/include/fcppt/container/detail/array_size.hpp
 	libs/core/include/fcppt/container/detail/has_size.hpp
