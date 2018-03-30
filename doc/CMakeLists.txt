@@ -481,6 +481,8 @@ set(
 	libs/core/include/fcppt/container/detail/has_size.hpp
 	libs/core/include/fcppt/container/detail/output.hpp
 	libs/core/include/fcppt/container/detail/size.hpp
+	libs/core/include/fcppt/container/detail/tuple_push_back.hpp
+	libs/core/include/fcppt/container/detail/tuple_push_back_result.hpp
 	libs/core/include/fcppt/container/detail/untuple.hpp
 	libs/core/include/fcppt/container/dynamic_array.hpp
 	libs/core/include/fcppt/container/dynamic_array_decl.hpp
@@ -628,6 +630,8 @@ set(
 	libs/core/include/fcppt/container/tree/pre_order.hpp
 	libs/core/include/fcppt/container/tree/print.hpp
 	libs/core/include/fcppt/container/tree/to_root.hpp
+	libs/core/include/fcppt/container/tuple_push_back.hpp
+	libs/core/include/fcppt/container/tuple_push_back_result.hpp
 	libs/core/include/fcppt/container/untuple.hpp
 	libs/core/include/fcppt/cyclic_iterator.hpp
 	libs/core/include/fcppt/cyclic_iterator_decl.hpp

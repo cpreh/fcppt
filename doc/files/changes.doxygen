@@ -17,6 +17,7 @@
 <li>\ref fcpptcontainer
 	<ul>
 	<li>Allow rvalues in \link fcppt::container::array_push_back\endlink.</li>
+	<li>Added \link fcppt::container::tuple_push_back\endlink.</li>
 	</ul>
 </li>
 
