@@ -15,7 +15,7 @@ make_fcppt_library(
 		fcppt_core
 	TRANSITIVE_FCPPT_DEPS
 		fcppt_core_interface
-	OTHER_DEPS
+	DEPS
 		${Boost_SYSTEM_LIBRARIES}
 	TRANSITIVE_DEPS
 		${Boost_SYSTEM_LIBRARIES}

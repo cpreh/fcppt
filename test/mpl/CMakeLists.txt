@@ -38,4 +38,6 @@ add_fcppt_mpl_test(
 add_fcppt_mpl_test(
 	to_brigand
 	NO_CODE
+	LINK_LIBS
+		Brigand
 )

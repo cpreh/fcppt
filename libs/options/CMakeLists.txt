@@ -122,4 +122,8 @@ make_fcppt_library(
 		fcppt_core
 	TRANSITIVE_FCPPT_DEPS
 		fcppt_core_interface
+	IMPORTED_DEPS
+		Brigand
+	TRANSITIVE_IMPORTED_DEPS
+		Brigand
 )

@@ -74,6 +74,8 @@ add_fcppt_algorithm_test(
 
 add_fcppt_algorithm_test(
 	loop
+	LINK_LIBS
+		Brigand
 )
 
 add_fcppt_algorithm_test(
@@ -82,6 +84,8 @@ add_fcppt_algorithm_test(
 
 add_fcppt_algorithm_test(
 	map
+	LINK_LIBS
+		Brigand
 )
 
 add_fcppt_algorithm_test(
@@ -103,6 +107,8 @@ add_fcppt_algorithm_test(
 add_fcppt_algorithm_test(
 	optimize_map
 	NO_CODE
+	LINK_LIBS
+		Brigand
 )
 
 add_fcppt_algorithm_test(

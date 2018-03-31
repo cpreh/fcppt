@@ -202,6 +202,7 @@ add_fcppt_example(
 	record
 	LINK_LIBS
 		${fcppt_core_TARGET}
+		Brigand
 )
 
 add_fcppt_example(

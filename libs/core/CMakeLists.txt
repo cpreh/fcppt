@@ -1295,11 +1295,6 @@ set(
 	libs/core/src/widen.cpp
 )
 
-set(
-	CORE_INCLUDE_DIRS
-	"${BRIGAND_INCLUDE_DIRS}"
-)
-
 if(
 	ENABLE_BOOST
 )
@@ -1316,6 +1311,10 @@ make_fcppt_library(
 	HAS_IMPL_DIR
 	SYMBOL_NAME
 		FCPPT
+	IMPORTED_DEPS
+		Brigand
+	TRANSITIVE_IMPORTED_DEPS
+		Brigand
 	INCLUDE_DIRS
 		${CORE_INCLUDE_DIRS}
 )

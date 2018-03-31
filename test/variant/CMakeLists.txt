@@ -36,6 +36,8 @@ add_fcppt_variant_test(
 
 add_fcppt_variant_test(
 	dynamic_cast
+	LINK_LIBS
+		Brigand
 )
 
 add_fcppt_variant_test(
@@ -59,6 +61,8 @@ add_fcppt_variant_test(
 
 add_fcppt_variant_test(
 	holds_type
+	LINK_LIBS
+		Brigand
 )
 
 add_fcppt_variant_test(
@@ -90,4 +94,6 @@ add_fcppt_variant_test(
 add_fcppt_variant_test(
 	variadic
 	NO_CODE
+	LINK_LIBS
+		Brigand
 )

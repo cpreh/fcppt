@@ -4,6 +4,8 @@ function(
 )
 	add_fcppt_test(
 		brigand/${TEST_NAME}
+		LINK_LIBS
+			Brigand
 		${ARGN}
 	)
 endfunction()

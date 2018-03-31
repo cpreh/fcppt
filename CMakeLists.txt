@@ -255,8 +255,10 @@ function(
 		MULTI_ARGS
 		FCPPT_DEPS
 		TRANSITIVE_FCPPT_DEPS
-		OTHER_DEPS
+		DEPS
 		TRANSITIVE_DEPS
+		IMPORTED_DEPS
+		TRANSITIVE_IMPORTED_DEPS
 		INCLUDE_DIRS
 	)
 
@@ -342,6 +344,12 @@ function(
 			"$<BUILD_INTERFACE:${FCPPT_UTILS_PROJECT_BINARY_DIR}/impl/include>"
 		)
 
+		fcppt_utils_link_imported_targets(
+			${TARGETNAME}
+			PRIVATE
+			${_IMPORTED_DEPS}
+		)
+
 		if(
 			${_HAS_IMPL_DIR}
 		)
@@ -360,6 +368,12 @@ function(
 		"$<INSTALL_INTERFACE:${CMAKE_INSTALL_FULL_INCLUDEDIR}>"
 	)
 
+	fcppt_utils_link_imported_targets(
+		${TARGETNAME}
+		INTERFACE
+		${_TRANSITIVE_IMPORTED_DEPS}
+	)
+
 	if(
 		NOT
 		${_VARIANT}
@@ -370,7 +384,7 @@ function(
 			${TARGETNAME}
 			PRIVATE
 			${_FCPPT_DEPS}
-			${_OTHER_DEPS}
+			${_DEPS}
 		)
 	endif()
 
@@ -406,7 +420,7 @@ function(
 		MULTI_ARGS
 		FCPPT_DEPS
 		TRANSITIVE_FCPPT_DEPS
-		OTHER_DEPS
+		DEPS
 		TRANSITIVE_DEPS
 		INCLUDE_DIRS
 	)
@@ -519,8 +533,8 @@ function(
 				${REAL_FCPPT_DEPS}
 			TRANSITIVE_FCPPT_DEPS
 				${_TRANSITIVE_FCPPT_DEPS}
-			OTHER_DEPS
-				${_OTHER_DEPS}
+			DEPS
+				${_DEPS}
 			TRANSITIVE_DEPS
 				${_TRANSITIVE_DEPS}
 			INCLUDE_DIRS

@@ -18,8 +18,17 @@ find_package_handle_standard_args(
 if(
 	BRIGAND_FOUND
 )
-	set(
-		BRIGAND_INCLUDE_DIRS
+	add_library(
+		Brigand
+		INTERFACE
+		IMPORTED
+	)
+
+	set_property(
+		TARGET
+		Brigand
+		PROPERTY
+		INTERFACE_INCLUDE_DIRECTORIES
 		"${BRIGAND_INCLUDE_DIR}"
 	)
 endif()

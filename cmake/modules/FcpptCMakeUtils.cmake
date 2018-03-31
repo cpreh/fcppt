@@ -1234,7 +1234,7 @@ function(
 endfunction()
 
 function(
-	fcppt_utils_link_pkgconfig_target_single
+	fcppt_utils_link_imported_target_single
 	TARGET_NAME
 	VISIBILITY
 	PKGCONFIG_NAME
@@ -1298,7 +1298,7 @@ function(
 endfunction()
 
 function(
-	fcppt_utils_link_pkgconfig_targets
+	fcppt_utils_link_imported_targets
 	TARGET_NAME
 	VISIBILITY
 )
@@ -1306,7 +1306,7 @@ function(
 		CURNAME
 		${ARGN}
 	)
-		fcppt_utils_link_pkgconfig_target_single(
+		fcppt_utils_link_imported_target_single(
 			${TARGET_NAME}
 			${VISIBILITY}
 			${CURNAME}

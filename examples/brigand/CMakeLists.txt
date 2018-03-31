@@ -4,6 +4,8 @@ function(
 )
 	add_fcppt_example(
 		brigand/${EXAMPLE_NAME}
+		LINK_LIBS
+			Brigand
 		${ARGN}
 	)
 endfunction()
