@@ -12,6 +12,4 @@
 // String config
 #cmakedefine FCPPT_NARROW_STRING
 
-#cmakedefine FCPPT_BOOST_SUPPORT
-
 #endif
