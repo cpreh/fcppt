@@ -11,7 +11,6 @@
 #include <fcppt/variant/invalid_get.hpp>
 #include <fcppt/variant/variadic.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/mpl/vector/vector10.hpp>
 #include <cstdlib>
 #include <iostream>
 #include <string>

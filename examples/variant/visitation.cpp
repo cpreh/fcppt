@@ -7,7 +7,6 @@
 #include <fcppt/variant/apply_unary.hpp>
 #include <fcppt/variant/variadic.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/mpl/vector/vector10.hpp>
 #include <iostream>
 #include <string>
 #include <type_traits>
