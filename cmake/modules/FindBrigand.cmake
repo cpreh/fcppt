@@ -1,8 +1,8 @@
 find_path(
-	BRIGAND_INCLUDE_DIR
+	Brigand_INCLUDE_DIR
 	brigand/brigand.hpp
 	HINTS
-	"${BRIGAND_INCLUDEDIR}"
+	"${Brigand_INCLUDEDIR}"
 )
 
 include(
@@ -10,13 +10,13 @@ include(
 )
 
 find_package_handle_standard_args(
-	BRIGAND
+	Brigand
 	DEFAULT_MSG
-	BRIGAND_INCLUDE_DIR
+	Brigand_INCLUDE_DIR
 )
 
 if(
-	BRIGAND_FOUND
+	Brigand_FOUND
 )
 	add_library(
 		Brigand
@@ -29,10 +29,10 @@ if(
 		Brigand
 		PROPERTY
 		INTERFACE_INCLUDE_DIRECTORIES
-		"${BRIGAND_INCLUDE_DIR}"
+		"${Brigand_INCLUDE_DIR}"
 	)
 endif()
 
 mark_as_advanced(
-	BRIGAND_INCLUDE_DIR
+	Brigand_INCLUDE_DIR
 )
