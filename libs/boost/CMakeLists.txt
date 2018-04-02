@@ -1,34 +1,9 @@
 set(
 	FCPPT_BOOST_FILES
-	libs/boost/include/fcppt/algorithm/loop_break_mpl.hpp
 	libs/boost/include/fcppt/boost_units_value.hpp
 	libs/boost/include/fcppt/format.hpp
 	libs/boost/include/fcppt/make_literal_boost_units.hpp
 	libs/boost/include/fcppt/math/is_zero_boost_units.hpp
-	libs/boost/include/fcppt/mpl/all_of.hpp
-	libs/boost/include/fcppt/mpl/append.hpp
-	libs/boost/include/fcppt/mpl/ceil_div.hpp
-	libs/boost/include/fcppt/mpl/contains_if.hpp
-	libs/boost/include/fcppt/mpl/copy.hpp
-	libs/boost/include/fcppt/mpl/detail/flatten.hpp
-	libs/boost/include/fcppt/mpl/detail/fold_tuple.hpp
-	libs/boost/include/fcppt/mpl/detail/for_each_break.hpp
-	libs/boost/include/fcppt/mpl/detail/integral_cast_value.hpp
-	libs/boost/include/fcppt/mpl/detail/runtime_index.hpp
-	libs/boost/include/fcppt/mpl/detail/to_brigand.hpp
-	libs/boost/include/fcppt/mpl/enum_range.hpp
-	libs/boost/include/fcppt/mpl/enum_range_start_end.hpp
-	libs/boost/include/fcppt/mpl/flatten.hpp
-	libs/boost/include/fcppt/mpl/flatten_tpl.hpp
-	libs/boost/include/fcppt/mpl/for_each.hpp
-	libs/boost/include/fcppt/mpl/for_each_break.hpp
-	libs/boost/include/fcppt/mpl/inner.hpp
-	libs/boost/include/fcppt/mpl/integral_cast.hpp
-	libs/boost/include/fcppt/mpl/integral_cast_tpl.hpp
-	libs/boost/include/fcppt/mpl/invoke_on.hpp
-	libs/boost/include/fcppt/mpl/partial_sums.hpp
-	libs/boost/include/fcppt/mpl/runtime_index.hpp
-	libs/boost/include/fcppt/mpl/to_brigand.hpp
 	libs/boost/include/fcppt/scoped_state_machine.hpp
 	libs/boost/include/fcppt/scoped_state_machine_decl.hpp
 	libs/boost/include/fcppt/scoped_state_machine_fwd.hpp

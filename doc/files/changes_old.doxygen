@@ -280,10 +280,10 @@ can be omitted from <code>return</code> statements.</li>
 	</ul>
 </li>
 
-<li>\ref fcpptmpl
+<li><code>fcpptmpl</code>
 	<ul>
-	<li>Changed \link fcppt::mpl::for_each\endlink and \link
-	fcppt::mpl::invoke_on\endlink to use \link fcppt::tag\endlink to call
+	<li>Changed <code>fcppt::mpl::for_each</code> and
+	<code>fcppt::mpl::invoke_on</code> to use \link fcppt::tag\endlink to call
 	its function.</li>
 	</ul>
 </li>
@@ -465,7 +465,7 @@ callable with one parameter instead of zero parameters. This also goes towards
 supporting VC++ again.</li>
 
 <li>Require cast functions from \ref fcpptcasts in fcppt::strong_typedef_construct_cast
-and fcppt::mpl::integral_cast.</li>
+and <code>fcppt::mpl::integral_cast</code>.</li>
 
 </ul>
 
@@ -816,10 +816,10 @@ longer supported.</li>
 	</ul>
 </li>
 
-<li>\ref fcpptmpl
+<li><code>fcpptmpl</code>
 	<ul>
 
-	<li>Generalized fcppt::mpl::invoke_on by adding fcppt::mpl::runtime_index.</li>
+	<li>Generalized <code>fcppt::mpl::invoke_on</code> by adding <code>fcppt::mpl::runtime_index</code>.</li>
 
 	</ul>
 </li>
@@ -1154,7 +1154,7 @@ for matrix</li>
 fcppt::assign::make_container so that you don't have to call
 <code>std::make_pair</code></li>
 
-<li>Added fcppt::mpl::all_of</li>
+<li>Added <code>fcppt::mpl::all_of</code></li>
 
 <li>Added fcppt::math::step</li>
 
@@ -1341,12 +1341,12 @@ into their own libraries, namely <code>fcppt_filesystem</code> and
 	</ul>
 </li>
 
-<li>\ref fcpptmpl
+<li><code>fcpptmpl</code>
 	<ul>
 
-	<li>Added fcppt::mpl::contains_if</li>
+	<li>Added <code>fcppt::mpl::contains_if</code>.</li>
 
-	<li>Added fcppt::mpl::integral_cast</li>
+	<li>Added <code>fcppt::mpl::integral_cast</code>.</li>
 
 	</ul>
 </li>
@@ -1701,7 +1701,7 @@ new \ref fcpptassert "assert" framework</li>
 
 <ul>
 
-<li>Fixed fcppt::mpl::index_of to only allow types that are part of the
+<li>Fixed <code>fcppt::mpl::index_of</code> to only allow types that are part of the
 sequence. This also fixes invalid uses of fcppt::variant::object::get </li>
 
 <li>Fixed fcppt::variant::holds_type when recursive types are involved.</li>

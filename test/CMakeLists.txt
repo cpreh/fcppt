@@ -198,14 +198,6 @@ add_subdirectory(
 	math
 )
 
-if(
-	ENABLE_BOOST
-)
-	add_subdirectory(
-		mpl
-	)
-endif()
-
 add_fcppt_test(
 	move_clear
 )

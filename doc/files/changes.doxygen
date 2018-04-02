@@ -69,6 +69,14 @@
 
 </ul>
 
+\subsection changes_removed_functionality_to_280 Removed functionality
+
+<ul>
+
+<li>Removed <code>fcppt.mpl</code>.</li>
+
+</ul>
+
 \section changes_changes_to_270 2.7.0
 
 \subsection changes_general_to_270 General changes
@@ -299,7 +307,7 @@ C++11 library that has no dependencies itself.</li>
 	</ul>
 </li>
 
-<li>\ref fcpptmpl
+<li><code>fcpptmpl</code>
 	<p>This library is in the process of being replaced by \ref fcpptbrigand.</p>
 </li>
 
@@ -626,7 +634,7 @@ C++11 library that has no dependencies itself.</li>
 
 <ul>
 
-<li>\ref fcpptmpl
+<li><code>fcpptmpl</code>
 	<ul>
 	<li>Added <code>fcppt::mpl::sequence_to_string</code>.</li>
 	</ul>
@@ -682,7 +690,7 @@ C++11 library that has no dependencies itself.</li>
 	</ul>
 </li>
 
-<li>\ref fcpptmpl
+<li><code>fcpptmpl</code>
 	<ul>
 	<li>Added <code>fcppt::mpl::set_intersection</code>.</li>
 	<li>Added <code>fcppt::mpl::set_union</code>.</li>
@@ -924,7 +932,7 @@ C++11 library that has no dependencies itself.</li>
 	</ul>
 </li>
 
-<li>\ref fcpptmpl
+<li><code>fcpptmpl</code>
 	<ul>
 	<li>Added <code>fcppt::mpl::index_of_iterator</code>.</li>
 	</ul>
@@ -1026,9 +1034,9 @@ C++11 library that has no dependencies itself.</li>
 	</ul>
 </li>
 
-<li>\ref fcpptmpl
+<li><code>fcpptmpl</code>
 	<ul>
-	<li>The type of the first zero in \link fcppt::mpl::partial_sums\endlink can now be specified.</li>
+	<li>The type of the first zero in <code>fcppt::mpl::partial_sums</code> can now be specified.</li>
 	</ul>
 </li>
 
@@ -1180,9 +1188,9 @@ C++11 library that has no dependencies itself.</li>
 	</ul>
 </li>
 
-<li>\ref fcpptmpl
+<li><code>fcpptmpl</code>
 	<ul>
-	<li>Added \link fcppt::mpl::flatten\endlink.</li>
+	<li>Added <code>fcppt::mpl::flatten</code>.</li>
 	<li>Added <code>fcppt::mpl::numeric_max</code>.</li>
 	</ul>
 </li>
@@ -1412,8 +1420,7 @@ C++11 library that has no dependencies itself.</li>
 
 <li>\ref fcpptenum
 	<ul>
-	<li>Added \link fcppt::mpl::enum_range\endlink and \link
-	fcppt::mpl::enum_range_start_end\endlink.</li>
+	<li>Added <code>fcppt::mpl::enum_range</code> and <code>fcppt::mpl::enum_range_start_end</code>.<li>
 	</ul>
 </li>
 
@@ -1439,11 +1446,11 @@ C++11 library that has no dependencies itself.</li>
 	</ul>
 </li>
 
-<li>\ref fcpptmpl
+<li><code>fcpptmpl</code>
 	<ul>
-	<li>Added \link fcppt::mpl::copy\endlink.</li>
-	<li>Added \link fcppt::mpl::for_each_break\endlink.</li>
-	<li>Added \link fcppt::mpl::integral_cast_tpl\endlink.</li>
+	<li>Added <code>fcppt::mpl::copy</code>.</li>
+	<li>Added <code>fcppt::mpl::for_each_break</code>.</li>
+	<li>Added <code>fcppt::mpl::integral_cast_tpl</code>.</li>
 	</ul>
 </li>
 
