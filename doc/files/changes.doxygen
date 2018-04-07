@@ -9,7 +9,7 @@
 
 <li>\ref fcpptalgorithm
 	<ul>
-	<li>Added \link fcppt::algorithm::unique\endlink and \link fcppt::algorithm::unique_if\endlink.</lI>
+	<li>Added \link fcppt::algorithm::unique\endlink and \link fcppt::algorithm::unique_if\endlink.</li>
 	</ul>
 </li>
 
@@ -53,21 +53,26 @@
 
 <li>\ref fcpptalgorithm
 	<ul>
-	<li>\link fcppt::container::array::map\endlink no longer uses an explicit result type.</li>
-	<li>Moved <code>fcppt::algorithm::array_map</code>
+	<li>Moved <code>fcppt::algorithm::array_map</code>,
 	<code>fcppt::algorithm::array_init</code>, <code>fcppt::algorithm::array_init_const</code>,
 	<code>fcppt::algorithm::array_init_move</code>, <code>fcppt::algorithm::array_push_back</code>
 	and <code>fcppt::container::make_array</code>
 	to \ref fcpptcontainerarray.</li>
-	<li>Moved <code>fcppt::algorithm::vararg_map</code> to \link fcppt::container::tuple::vararg_map\endlink.</li>
+	<li>Renamed <code>fcppt::algorithm::vararg_map</code> to \link fcppt::container::tuple::vararg_map\endlink.</li>
 	</ul>
 </li>
 
 <li>\ref fcpptcontainer
 	<ul>
-	<li>Moved <code>fcppt::container::untuple</code> to \link fcppt::container::tuple::to_varargs\endlink.</li>
+	<li>Renamed <code>fcppt::container::untuple</code> to \link fcppt::container::tuple::to_varargs\endlink.</li>
 	</ul>
-</lI>
+</li>
+
+<li>\ref fcpptcontainerarray
+	<ul>
+	<li>\link fcppt::container::array::map\endlink no longer uses an explicit result type.</li>
+	</ul>
+</li>
 
 <li>\ref fcpptmathdim
 	<ul>
