@@ -403,10 +403,13 @@ set(
 	libs/core/include/fcppt/container/tree/pre_order.hpp
 	libs/core/include/fcppt/container/tree/print.hpp
 	libs/core/include/fcppt/container/tree/to_root.hpp
+	libs/core/include/fcppt/container/tuple/detail/map.hpp
+	libs/core/include/fcppt/container/tuple/detail/map_result.hpp
 	libs/core/include/fcppt/container/tuple/detail/push_back.hpp
 	libs/core/include/fcppt/container/tuple/detail/push_back_result.hpp
 	libs/core/include/fcppt/container/tuple/detail/to_varargs.hpp
 	libs/core/include/fcppt/container/tuple/map.hpp
+	libs/core/include/fcppt/container/tuple/map_result.hpp
 	libs/core/include/fcppt/container/tuple/push_back.hpp
 	libs/core/include/fcppt/container/tuple/push_back_result.hpp
 	libs/core/include/fcppt/container/tuple/to_varargs.hpp

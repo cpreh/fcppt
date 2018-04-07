@@ -7,8 +7,10 @@
 #ifndef FCPPT_CONTAINER_TUPLE_MAP_HPP_INCLUDED
 #define FCPPT_CONTAINER_TUPLE_MAP_HPP_INCLUDED
 
-#include <fcppt/move_if_rvalue.hpp>
-#include <fcppt/algorithm/vararg_map.hpp>
+#include <fcppt/container/tuple/map_result.hpp>
+#include <fcppt/container/tuple/detail/map.hpp>
+#include <fcppt/type_traits/is_std_tuple.hpp>
+#include <fcppt/type_traits/remove_cv_ref_t.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <tuple>
 #include <utility>
@@ -39,34 +41,47 @@ template<
 	typename Function
 >
 inline
-decltype(
-	auto
-)
+auto
 map(
 	Tuple &&_tuple,
 	Function const &_function
 )
+->
+fcppt::container::tuple::map_result<
+	Tuple,
+	Function
+>
 {
+	typedef
+	fcppt::type_traits::remove_cv_ref_t<
+		Tuple
+	>
+	source_type;
+
+	static_assert(
+		fcppt::type_traits::is_std_tuple<
+			source_type
+		>::value,
+		"Tuple must be a std::tuple"
+	);
+
 	return
-		fcppt::algorithm::vararg_map(
+		fcppt::container::tuple::detail::map<
+			fcppt::container::tuple::map_result<
+				Tuple,
+				Function
+			>
+		>(
+			std::make_index_sequence<
+				std::tuple_size<
+					source_type
+				>::value
+			>{},
 			std::forward<
 				Tuple
 			>(
 				_tuple
 			),
-			[](
-				auto &&... _args
-			)
-			{
-				return
-					std::make_tuple(
-						fcppt::move_if_rvalue<
-							Tuple
-						>(
-							_args
-						)...
-					);
-			},
 			_function
 		);
 }
