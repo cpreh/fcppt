@@ -26,7 +26,7 @@ namespace tuple
 /**
 \brief Combination of \link fcppt::container::tuple::map\endlink and \link fcppt::container::tuple::to_varargs\endlink.
 
-\ingroup fcpptalgorithm
+\ingroup fcpptcontainertuple
 
 \tparam Tuple Must be a <code>std::tuple</code>.
 */
