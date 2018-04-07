@@ -9,7 +9,7 @@ function(
 endfunction()
 
 add_fcppt_container_array_test(
-	binary_map
+	apply
 )
 
 add_fcppt_container_array_test(

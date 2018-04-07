@@ -9,14 +9,15 @@
 
 #include <fcppt/move_if_rvalue.hpp>
 #include <fcppt/use.hpp>
+#include <fcppt/container/to_reference_type.hpp>
 #include <fcppt/container/array/init.hpp>
 #include <fcppt/container/array/size.hpp>
 #include <fcppt/type_traits/is_std_array.hpp>
 #include <fcppt/type_traits/remove_cv_ref_t.hpp>
-#include <fcppt/type_traits/value_type.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <array>
 #include <type_traits>
+#include <utility>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -39,46 +40,48 @@ Example:
 
 \snippet container/array.cpp array_map
 
-\tparam SourceArray Must be a <code>std::array</code>.
+\tparam Array Must be a <code>std::array</code>.
 
-\tparam Function Must be a function callable as <code>R (SourceArray::value_type)</code>,
+\tparam Function Must be a function callable as <code>R (Array::value_type)</code>,
 where <code>R</code> is the result type.
 **/
 template<
-	typename SourceArray,
+	typename Array,
 	typename Function
 >
 inline
 auto
 map(
-	SourceArray &&_source,
+	Array &&_source,
 	Function const &_function
 )
 ->
 std::array<
-	fcppt::type_traits::remove_cv_ref_t<
-		decltype(
-			_function(
+	decltype(
+		_function(
+			fcppt::move_if_rvalue<
+				Array
+			>(
 				std::declval<
-					fcppt::type_traits::value_type<
-						fcppt::type_traits::remove_cv_ref_t<
-							SourceArray
+					fcppt::container::to_reference_type<
+						std::remove_reference_t<
+							Array
 						>
 					>
 				>()
 			)
 		)
-	>,
+	),
 	fcppt::container::array::size<
 		fcppt::type_traits::remove_cv_ref_t<
-			SourceArray
+			Array
 		>
 	>::value
 >
 {
 	typedef
 	fcppt::type_traits::remove_cv_ref_t<
-		SourceArray
+		Array
 	>
 	source_array;
 
@@ -86,22 +89,26 @@ std::array<
 		fcppt::type_traits::is_std_array<
 			source_array
 		>::value,
-		"SourceArray must be a std::array"
+		"Array must be a std::array"
 	);
 
 	typedef
 	std::array<
-		fcppt::type_traits::remove_cv_ref_t<
-			decltype(
-				_function(
+		decltype(
+			_function(
+				fcppt::move_if_rvalue<
+					Array
+				>(
 					std::declval<
-						fcppt::type_traits::value_type<
-							source_array
+						fcppt::container::to_reference_type<
+							std::remove_reference_t<
+								Array
+							>
 						>
 					>()
 				)
 			)
-		>,
+		),
 		fcppt::container::array::size<
 			source_array
 		>::value
@@ -126,7 +133,7 @@ std::array<
 				return
 					_function(
 						fcppt::move_if_rvalue<
-							SourceArray
+							Array
 						>(
 							std::get<
 								_index()

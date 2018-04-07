@@ -406,7 +406,7 @@ set(
 	libs/core/include/fcppt/config/platform.hpp
 	libs/core/include/fcppt/const.hpp
 	libs/core/include/fcppt/const_pointer_cast.hpp
-	libs/core/include/fcppt/container/array/binary_map.hpp
+	libs/core/include/fcppt/container/array/apply.hpp
 	libs/core/include/fcppt/container/array/detail/init.hpp
 	libs/core/include/fcppt/container/array/detail/push_back.hpp
 	libs/core/include/fcppt/container/array/detail/size.hpp

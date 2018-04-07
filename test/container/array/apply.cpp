@@ -6,7 +6,9 @@
 
 #include <fcppt/make_unique_ptr.hpp>
 #include <fcppt/unique_ptr.hpp>
-#include <fcppt/container/array/binary_map.hpp>
+#include <fcppt/unit.hpp>
+#include <fcppt/container/array/apply.hpp>
+#include <fcppt/container/array/make.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/test/unit_test.hpp>
 #include <array>
@@ -15,23 +17,9 @@
 
 
 BOOST_AUTO_TEST_CASE(
-	array_binar_map
+	array_apply
 )
 {
-	typedef
-	std::array<
-		int,
-		2
-	>
-	int_2_array;
-
-	typedef
-	std::array<
-		int,
-		2
-	>
-	bool_2_array;
-
 	typedef
 	std::array<
 		std::pair<
@@ -43,15 +31,7 @@ BOOST_AUTO_TEST_CASE(
 	result_array;
 
 	result_array const result(
-		fcppt::container::array::binary_map(
-			int_2_array{{
-				1,
-				2
-			}},
-			bool_2_array{{
-				true,
-				false
-			}},
+		fcppt::container::array::apply(
 			[](
 				int const _value1,
 				bool const _value2
@@ -62,7 +42,15 @@ BOOST_AUTO_TEST_CASE(
 						_value1,
 						_value2
 					);
-			}
+			},
+			fcppt::container::array::make(
+				1,
+				2
+			),
+			fcppt::container::array::make(
+				true,
+				false
+			)
 		)
 	);
 
@@ -104,18 +92,9 @@ BOOST_AUTO_TEST_CASE(
 }
 
 BOOST_AUTO_TEST_CASE(
-	array_binary_map_move
+	array_apply_move
 )
 {
-	typedef
-	std::array<
-		fcppt::unique_ptr<
-			int
-		>,
-		1
-	>
-	int_1_array;
-
 	typedef
 	std::array<
 		std::pair<
@@ -131,21 +110,7 @@ BOOST_AUTO_TEST_CASE(
 	result_array;
 
 	result_array const result(
-		fcppt::container::array::binary_map(
-			int_1_array{{
-				fcppt::make_unique_ptr<
-					int
-				>(
-					1
-				)
-			}},
-			int_1_array{{
-				fcppt::make_unique_ptr<
-					int
-				>(
-					2
-				)
-			}},
+		fcppt::container::array::apply(
 			[](
 				fcppt::unique_ptr<
 					int
@@ -164,7 +129,21 @@ BOOST_AUTO_TEST_CASE(
 							_arg2
 						)
 					);
-			}
+			},
+			fcppt::container::array::make(
+				fcppt::make_unique_ptr<
+					int
+				>(
+					1
+				)
+			),
+			fcppt::container::array::make(
+				fcppt::make_unique_ptr<
+					int
+				>(
+					2
+				)
+			)
 		)
 	);
 
@@ -184,5 +163,38 @@ BOOST_AUTO_TEST_CASE(
 			result
 		).second,
 		2
+	);
+}
+
+BOOST_AUTO_TEST_CASE(
+	array_apply_empty
+)
+{
+	std::array<
+		fcppt::unit,
+		0
+	> const result(
+		fcppt::container::array::apply(
+			[](
+				bool,
+				int
+			)
+			{
+				return
+					fcppt::unit{};
+			},
+			std::array<
+				bool,
+				0
+			>{},
+			std::array<
+				int,
+				0
+			>{}
+		)
+	);
+
+	BOOST_CHECK(
+		result.empty()
 	);
 }

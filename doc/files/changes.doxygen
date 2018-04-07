@@ -10,20 +10,25 @@
 <li>\ref fcpptalgorithm
 	<ul>
 	<li>Added \link fcppt::algorithm::unique\endlink and \link fcppt::algorithm::unique_if\endlink.</lI>
-	<li>Allow rvalues in \link fcppt::container::array::binary_map\endlink.</li>
 	</ul>
 </li>
 
-<li>\ref fcpptcontainer
+<li>\ref fcpptcontainerarray
 	<ul>
 	<li>Allow rvalues in \link fcppt::container::array::push_back\endlink.</li>
-	<li>Added \link fcppt::container::tuple::push_back\endlink.</li>
+	<li>Added \link fcppt::container::array::apply\endlink.</li>
 	</ul>
 </li>
 
 <li>\ref fcpptcontainergrid
 	<ul>
 	<li>Added \link fcppt::container::grid::dim_type\endlink and \link fcppt::container::grid::pos_type\endlink.</li>
+	</ul>
+</li>
+
+<li>\ref fcpptcontainertuple
+	<ul>
+	<li>Added \link fcppt::container::tuple::push_back\endlink.</li>
 	</ul>
 </li>
 
@@ -48,8 +53,8 @@
 
 <li>\ref fcpptalgorithm
 	<ul>
-	<li>\link fcppt::container::array::map\endlink and \link fcppt::container::array::binary_map\endlink no longer use an explicit result type.</li>
-	<li>Moved <code>fcppt::algorithm::array_map</code>, <code>fcppt::algorithm::array_binary_map</code>,
+	<li>\link fcppt::container::array::map\endlink no longer uses an explicit result type.</li>
+	<li>Moved <code>fcppt::algorithm::array_map</code>
 	<code>fcppt::algorithm::array_init</code>, <code>fcppt::algorithm::array_init_const</code>,
 	<code>fcppt::algorithm::array_init_move</code>, <code>fcppt::algorithm::array_push_back</code>
 	and <code>fcppt::container::make_array</code>
@@ -82,6 +87,12 @@
 <ul>
 
 <li>Removed <code>fcppt.mpl</code>.</li>
+
+<li>\ref fcpptalgorithm
+	<ul>
+	<li> Removed <code>fcppt::algorithm::array_binary_map</code>. This has been replaced by \link fcppt::container::array::apply\endlink.</li>
+	</ul>
+</li>
 
 </ul>
 
