@@ -38,12 +38,13 @@ struct size<
 		N
 	>
 >
-:
-std::integral_constant<
-	std::size_t,
-	N
->
 {
+	typedef
+	std::integral_constant<
+		std::size_t,
+		N
+	>
+	type;
 };
 
 }

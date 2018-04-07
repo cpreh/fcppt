@@ -31,9 +31,10 @@ template<
 >
 using size
 =
+typename
 fcppt::container::array::detail::size<
 	Array
->;
+>::type;
 
 }
 }
