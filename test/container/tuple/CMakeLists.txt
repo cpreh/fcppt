@@ -9,6 +9,10 @@ function(
 endfunction()
 
 add_fcppt_container_tuple_test(
+	map
+)
+
+add_fcppt_container_tuple_test(
 	push_back
 )
 
