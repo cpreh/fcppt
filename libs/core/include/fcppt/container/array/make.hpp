@@ -7,9 +7,9 @@
 #ifndef FCPPT_CONTAINER_ARRAY_MAKE_HPP_INCLUDED
 #define FCPPT_CONTAINER_ARRAY_MAKE_HPP_INCLUDED
 
-#include <fcppt/brigand/all_of.hpp>
 #include <fcppt/type_traits/remove_cv_ref_t.hpp>
 #include <fcppt/config/external_begin.hpp>
+#include <brigand/algorithms/all.hpp>
 #include <brigand/functions/lambda/apply.hpp>
 #include <brigand/functions/lambda/bind.hpp>
 #include <brigand/sequences/front.hpp>
@@ -80,7 +80,7 @@ make(
 	result_type;
 
 	static_assert(
-		fcppt::brigand::all_of<
+		::brigand::all<
 			decayed_args,
 			::brigand::bind<
 				std::is_same,

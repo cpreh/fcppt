@@ -31,7 +31,8 @@ main()
 	);
 
 	static_assert(
-		!fcppt::brigand::equal_to<
+		not
+		fcppt::brigand::equal_to<
 			fcppt::brigand::list_c<
 				int,
 				3,

@@ -9,7 +9,6 @@
 
 #include <fcppt/move_if_rvalue.hpp>
 #include <fcppt/algorithm/all_of.hpp>
-#include <fcppt/brigand/all_of.hpp>
 #include <fcppt/container/grid/dim_type.hpp>
 #include <fcppt/container/grid/is_object.hpp>
 #include <fcppt/container/grid/object_impl.hpp>
@@ -17,6 +16,7 @@
 #include <fcppt/math/dim/comparison.hpp>
 #include <fcppt/type_traits/remove_cv_ref_t.hpp>
 #include <fcppt/config/external_begin.hpp>
+#include <brigand/algorithms/all.hpp>
 #include <brigand/functions/lambda/bind.hpp>
 #include <brigand/sequences/list.hpp>
 #include <brigand/types/args.hpp>
@@ -105,7 +105,7 @@ fcppt::container::grid::object<
 	);
 
 	static_assert(
-		fcppt::brigand::all_of<
+		::brigand::all<
 			::brigand::list<
 				fcppt::type_traits::remove_cv_ref_t<
 					Grids

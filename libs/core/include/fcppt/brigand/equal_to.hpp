@@ -7,10 +7,12 @@
 #ifndef FCPPT_BRIGAND_EQUAL_TO_HPP_INCLUDED
 #define FCPPT_BRIGAND_EQUAL_TO_HPP_INCLUDED
 
-#include <fcppt/brigand/all_of.hpp>
 #include <fcppt/config/external_begin.hpp>
+#include <brigand/algorithms/all.hpp>
 #include <brigand/algorithms/transform.hpp>
+#include <brigand/functions/arithmetic/identity.hpp>
 #include <brigand/functions/comparison/equal_to.hpp>
+#include <brigand/functions/lambda/apply.hpp>
 #include <brigand/functions/lambda/bind.hpp>
 #include <brigand/types/args.hpp>
 #include <fcppt/config/external_end.hpp>
@@ -40,17 +42,22 @@ template<
 using
 equal_to
 =
-fcppt::brigand::all_of<
+::brigand::all<
 	::brigand::transform<
 		Sequence1,
 		Sequence2,
 		::brigand::bind<
-			::brigand::equal_to,
-			::brigand::_1,
-			::brigand::_2
+			::brigand::apply,
+			::brigand::bind<
+				::brigand::equal_to,
+				::brigand::_1,
+				::brigand::_2
+			>
 		>
 	>,
-	::brigand::_1
+	::brigand::identity<
+		::brigand::_1
+	>
 >;
 
 }
