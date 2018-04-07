@@ -8,7 +8,7 @@
 #define FCPPT_CONTAINER_BITFIELD_OBJECT_DECL_HPP_INCLUDED
 
 #include <fcppt/no_init_fwd.hpp>
-#include <fcppt/container/array_size.hpp>
+#include <fcppt/container/array/size.hpp>
 #include <fcppt/container/bitfield/array.hpp>
 #include <fcppt/container/bitfield/object_fwd.hpp>
 #include <fcppt/container/bitfield/proxy_fwd.hpp>
@@ -70,7 +70,7 @@ public:
 	*/
 	typedef
 	typename
-	fcppt::container::array_size<
+	fcppt::container::array::size<
 		array_type
 	>::type
 	array_size;

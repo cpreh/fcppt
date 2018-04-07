@@ -8,7 +8,7 @@
 #define FCPPT_CONTAINER_BITFIELD_DETAIL_NULL_ARRAY_HPP_INCLUDED
 
 #include <fcppt/literal.hpp>
-#include <fcppt/container/array_init_const.hpp>
+#include <fcppt/container/array/init_const.hpp>
 #include <fcppt/type_traits/value_type.hpp>
 
 
@@ -29,7 +29,7 @@ Array
 null_array()
 {
 	return
-		fcppt::container::array_init_const<
+		fcppt::container::array::init_const<
 			Array
 		>(
 			fcppt::literal<

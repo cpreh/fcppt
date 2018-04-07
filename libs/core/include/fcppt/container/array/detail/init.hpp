@@ -4,8 +4,8 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_CONTAINER_DETAIL_ARRAY_INIT_HPP_INCLUDED
-#define FCPPT_CONTAINER_DETAIL_ARRAY_INIT_HPP_INCLUDED
+#ifndef FCPPT_CONTAINER_ARRAY_DETAIL_INIT_HPP_INCLUDED
+#define FCPPT_CONTAINER_ARRAY_DETAIL_INIT_HPP_INCLUDED
 
 #include <fcppt/config/external_begin.hpp>
 #include <cstddef>
@@ -18,6 +18,8 @@ namespace fcppt
 {
 namespace container
 {
+namespace array
+{
 namespace detail
 {
 
@@ -28,7 +30,7 @@ template<
 >
 inline
 Array
-array_init(
+init(
 	std::index_sequence<
 		Ints...
 	>,
@@ -46,6 +48,7 @@ array_init(
 		}};
 }
 
+}
 }
 }
 }

@@ -5,7 +5,7 @@
 
 
 #include <fcppt/noncopyable.hpp>
-#include <fcppt/container/array_init_const.hpp>
+#include <fcppt/container/array/init_const.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/test/unit_test.hpp>
 #include <array>
@@ -24,7 +24,7 @@ BOOST_AUTO_TEST_CASE(
 	array;
 
 	array const inited(
-		fcppt::container::array_init_const<
+		fcppt::container::array::init_const<
 			array
 		>(
 			42

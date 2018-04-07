@@ -7,32 +7,35 @@
 #ifndef FCPPT_CONTAINER_TUPLE_PUSH_BACK_RESULT_HPP_INCLUDED
 #define FCPPT_CONTAINER_TUPLE_PUSH_BACK_RESULT_HPP_INCLUDED
 
-#include <fcppt/container/detail/tuple_push_back_result.hpp>
+#include <fcppt/container/tuple/detail/push_back_result.hpp>
 
 
 namespace fcppt
 {
 namespace container
 {
+namespace tuple
+{
 
 /**
-\brief The result of \link fcppt::container::tuple_push_back\endlink.
+\brief The result type of \link fcppt::container::tuple::push_back\endlink.
 
-\ingroup fcpptcontainer
+\ingroup fcpptcontainertuple
 */
 template<
 	typename Tuple,
 	typename NewElement
 >
 using
-tuple_push_back_result
+push_back_result
 =
 typename
-fcppt::container::detail::tuple_push_back_result<
+fcppt::container::tuple::detail::push_back_result<
 	Tuple,
 	NewElement
 >::type;
 
+}
 }
 }
 

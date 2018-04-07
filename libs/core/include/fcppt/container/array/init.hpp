@@ -7,8 +7,8 @@
 #ifndef FCPPT_CONTAINER_ARRAY_INIT_HPP_INCLUDED
 #define FCPPT_CONTAINER_ARRAY_INIT_HPP_INCLUDED
 
-#include <fcppt/container/array_size.hpp>
-#include <fcppt/container/detail/array_init.hpp>
+#include <fcppt/container/array/size.hpp>
+#include <fcppt/container/array/detail/init.hpp>
 #include <fcppt/type_traits/is_std_array.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <utility>
@@ -19,11 +19,13 @@ namespace fcppt
 {
 namespace container
 {
+namespace array
+{
 
 /**
 \brief Constructs an array by calling a function with static indices.
 
-\ingroup fcpptcontainer
+\ingroup fcpptcontainerarray
 
 Constructs an array of type \a Array by calling
 <code>_function(std::integral_constant<std::size_t, Index>)</code> for every
@@ -40,7 +42,7 @@ template<
 >
 inline
 Array
-array_init(
+init(
 	Function const &_function
 )
 {
@@ -52,11 +54,11 @@ array_init(
 	);
 
 	return
-		fcppt::container::detail::array_init<
+		fcppt::container::array::detail::init<
 			Array
 		>(
 			std::make_index_sequence<
-				fcppt::container::array_size<
+				fcppt::container::array::size<
 					Array
 				>::value
 			>{},
@@ -64,6 +66,7 @@ array_init(
 		);
 }
 
+}
 }
 }
 

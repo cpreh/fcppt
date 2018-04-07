@@ -4,8 +4,8 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_CONTAINER_DETAIL_TUPLE_PUSH_BACK_HPP_INCLUDED
-#define FCPPT_CONTAINER_DETAIL_TUPLE_PUSH_BACK_HPP_INCLUDED
+#ifndef FCPPT_CONTAINER_TUPLE_DETAIL_PUSH_BACK_HPP_INCLUDED
+#define FCPPT_CONTAINER_TUPLE_DETAIL_PUSH_BACK_HPP_INCLUDED
 
 #include <fcppt/move_if_rvalue.hpp>
 #include <fcppt/config/external_begin.hpp>
@@ -19,6 +19,8 @@ namespace fcppt
 {
 namespace container
 {
+namespace tuple
+{
 namespace detail
 {
 
@@ -30,7 +32,7 @@ template<
 >
 inline
 Result
-tuple_push_back(
+push_back(
 	std::index_sequence<
 		Indices...
 	>,
@@ -57,6 +59,7 @@ tuple_push_back(
 		};
 }
 
+}
 }
 }
 }

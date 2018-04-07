@@ -9,7 +9,7 @@
 
 #include <fcppt/use.hpp>
 #include <fcppt/cast/size.hpp>
-#include <fcppt/container/array_init.hpp>
+#include <fcppt/container/array/init.hpp>
 #include <fcppt/math/size_type.hpp>
 #include <fcppt/math/detail/assert_static_storage.hpp>
 #include <fcppt/math/detail/linear_access.hpp>
@@ -41,7 +41,7 @@ copy(
 
 	return
 		Result{
-			fcppt::container::array_init<
+			fcppt::container::array::init<
 				typename
 				Result::array_type
 			>(

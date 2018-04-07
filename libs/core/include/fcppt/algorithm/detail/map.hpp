@@ -8,9 +8,9 @@
 #define FCPPT_ALGORITHM_DETAIL_MAP_HPP_INCLUDED
 
 #include <fcppt/move_if_rvalue.hpp>
-#include <fcppt/algorithm/array_map.hpp>
 #include <fcppt/algorithm/loop.hpp>
 #include <fcppt/algorithm/detail/map_reserve.hpp>
+#include <fcppt/container/array/map.hpp>
 #include <fcppt/type_traits/is_std_array.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <type_traits>
@@ -95,7 +95,7 @@ map(
 )
 {
 	return
-		fcppt::algorithm::array_map(
+		fcppt::container::array::map(
 			std::forward<
 				SourceRange
 			>(

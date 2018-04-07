@@ -8,7 +8,7 @@
 #define FCPPT_ALGORITHM_VARARG_MAP_HPP_INCLUDED
 
 #include <fcppt/move_if_rvalue.hpp>
-#include <fcppt/container/untuple.hpp>
+#include <fcppt/container/tuple/to_varargs.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <utility>
 #include <fcppt/config/external_end.hpp>
@@ -45,7 +45,7 @@ vararg_map(
 )
 {
 	return
-		fcppt::container::untuple(
+		fcppt::container::tuple::to_varargs(
 			std::forward<
 				Tuple
 			>(

@@ -8,7 +8,7 @@
 #define FCPPT_CONTAINER_ARRAY_INIT_CONST_HPP_INCLUDED
 
 #include <fcppt/cast/to_void.hpp>
-#include <fcppt/container/array_init.hpp>
+#include <fcppt/container/array/init.hpp>
 #include <fcppt/type_traits/is_std_array.hpp>
 #include <fcppt/type_traits/value_type.hpp>
 
@@ -17,11 +17,13 @@ namespace fcppt
 {
 namespace container
 {
+namespace array
+{
 
 /**
 \brief Constructs an array from a value.
 
-\ingroup fcpptcontainer
+\ingroup fcpptcontainerarray
 
 Constructs an array of type \a Array by initializing every element with \a
 _value.
@@ -33,7 +35,7 @@ template<
 >
 inline
 Array
-array_init_const(
+init_const(
 	fcppt::type_traits::value_type<
 		Array
 	> const &_value
@@ -47,7 +49,7 @@ array_init_const(
 	);
 
 	return
-		fcppt::container::array_init<
+		fcppt::container::array::init<
 			Array
 		>(
 			[
@@ -66,6 +68,7 @@ array_init_const(
 		);
 }
 
+}
 }
 }
 

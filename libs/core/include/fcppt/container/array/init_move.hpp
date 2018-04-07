@@ -8,7 +8,7 @@
 #define FCPPT_CONTAINER_ARRAY_INIT_MOVE_HPP_INCLUDED
 
 #include <fcppt/use.hpp>
-#include <fcppt/container/array_init.hpp>
+#include <fcppt/container/array/init.hpp>
 #include <fcppt/type_traits/is_std_array.hpp>
 
 
@@ -16,16 +16,18 @@ namespace fcppt
 {
 namespace container
 {
+namespace array
+{
 
 /**
 \brief Constructs an array by calling a function for every element.
 
-\ingroup fcpptcontainer
+\ingroup fcpptcontainerarray
 
 Constructs an array of type \a Array by initializing every element with
 <code>_function()</code>.
 
-\tparam Array Must be a std::array
+\tparam Array Must be a <code>std::array</code>.
 
 \tparam Function A function callable as <code>Array::value_type ()</code>.
 */
@@ -35,7 +37,7 @@ template<
 >
 inline
 Array
-array_init_move(
+init_move(
 	Function const &_function
 )
 {
@@ -47,7 +49,7 @@ array_init_move(
 	);
 
 	return
-		fcppt::container::array_init<
+		fcppt::container::array::init<
 			Array
 		>(
 			[
@@ -66,6 +68,7 @@ array_init_move(
 		);
 }
 
+}
 }
 }
 

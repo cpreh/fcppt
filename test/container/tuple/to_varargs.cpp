@@ -6,7 +6,7 @@
 
 #include <fcppt/make_unique_ptr.hpp>
 #include <fcppt/unique_ptr_impl.hpp>
-#include <fcppt/container/untuple.hpp>
+#include <fcppt/container/tuple/to_varargs.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/test/unit_test.hpp>
 #include <string>
@@ -15,7 +15,7 @@
 
 
 BOOST_AUTO_TEST_CASE(
-	container_untuple
+	tuple_to_varargs
 )
 {
 	std::tuple<
@@ -26,7 +26,7 @@ BOOST_AUTO_TEST_CASE(
 		"42"
 	};
 
-	fcppt::container::untuple(
+	fcppt::container::tuple::to_varargs(
 		tuple1,
 		[](
 			int const _val,
@@ -45,7 +45,7 @@ BOOST_AUTO_TEST_CASE(
 		}
 	);
 
-	fcppt::container::untuple(
+	fcppt::container::tuple::to_varargs(
 		std::make_tuple(
 			fcppt::make_unique_ptr<
 				int

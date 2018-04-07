@@ -1,0 +1,16 @@
+namespace fcppt
+{
+namespace container
+{
+/// Functions for <code>std::tuple</code>.
+namespace tuple
+{
+}
+}
+}
+
+/**
+\defgroup fcpptcontainertuple fcppt.container.tuple
+\ingroup fcpptcontainer
+\brief Functions for <code>std::tuple</code>
+*/

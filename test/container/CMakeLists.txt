@@ -8,20 +8,8 @@ function(
 	)
 endfunction()
 
-add_fcppt_container_test(
-	array_init
-)
-
-add_fcppt_container_test(
-	array_init_const
-)
-
-add_fcppt_container_test(
-	array_init_move
-)
-
-add_fcppt_container_test(
-	array_push_back
+add_subdirectory(
+	array
 )
 
 add_fcppt_container_test(
@@ -116,10 +104,6 @@ add_subdirectory(
 	tree
 )
 
-add_fcppt_container_test(
-	tuple_push_back
-)
-
-add_fcppt_container_test(
-	untuple
+add_subdirectory(
+	tuple
 )

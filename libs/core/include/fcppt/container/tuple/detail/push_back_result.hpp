@@ -4,13 +4,11 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_CONTAINER_DETAIL_ARRAY_SIZE_HPP_INCLUDED
-#define FCPPT_CONTAINER_DETAIL_ARRAY_SIZE_HPP_INCLUDED
+#ifndef FCPPT_CONTAINER_TUPLE_DETAIL_PUSH_BACK_RESULT_HPP_INCLUDED
+#define FCPPT_CONTAINER_TUPLE_DETAIL_PUSH_BACK_RESULT_HPP_INCLUDED
 
 #include <fcppt/config/external_begin.hpp>
-#include <array>
-#include <cstddef>
-#include <type_traits>
+#include <tuple>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -18,32 +16,37 @@ namespace fcppt
 {
 namespace container
 {
+namespace tuple
+{
 namespace detail
 {
 
 template<
-	typename Type
+	typename Tuple,
+	typename NewElement
 >
-struct array_size;
+struct push_back_result;
 
 template<
-	typename T,
-	std::size_t N
+	typename NewElement,
+	typename... Types
 >
-struct array_size<
-	std::array<
-		T,
-		N
-	>
->
-:
-std::integral_constant<
-	std::size_t,
-	N
+struct push_back_result<
+	std::tuple<
+		Types...
+	>,
+	NewElement
 >
 {
+	typedef
+	std::tuple<
+		Types...,
+		NewElement
+	>
+	type;
 };
 
+}
 }
 }
 }

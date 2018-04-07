@@ -7,7 +7,7 @@
 #ifndef FCPPT_MATH_DETAIL_STORAGE_SIZE_HPP_INCLUDED
 #define FCPPT_MATH_DETAIL_STORAGE_SIZE_HPP_INCLUDED
 
-#include <fcppt/container/array_size.hpp>
+#include <fcppt/container/array/size.hpp>
 #include <fcppt/math/detail/is_static_storage.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <type_traits>
@@ -55,7 +55,7 @@ struct storage_size<
 	>
 >
 :
-fcppt::container::array_size<
+fcppt::container::array::size<
 	typename
 	T::array_type
 >

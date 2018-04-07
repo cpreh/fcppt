@@ -8,7 +8,7 @@
 #include <fcppt/reference.hpp>
 #include <fcppt/algorithm/map.hpp>
 #include <fcppt/cast/size.hpp>
-#include <fcppt/container/array_init.hpp>
+#include <fcppt/container/array/init.hpp>
 #include <fcppt/container/at_optional.hpp>
 #include <fcppt/optional/maybe.hpp>
 #include <fcppt/optional/reference.hpp>
@@ -64,7 +64,7 @@ template<std::size_t N>
 std::array<unsigned int, N>
 init_array()
 {
-	return fcppt::container::array_init<std::array<unsigned int,N>>(
+	return fcppt::container::array::init<std::array<unsigned int,N>>(
 		[](auto const _index) { return make_value<_index>::value; }
 	);
 }

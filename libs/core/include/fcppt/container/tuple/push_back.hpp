@@ -7,8 +7,8 @@
 #ifndef FCPPT_CONTAINER_TUPLE_PUSH_BACK_HPP_INCLUDED
 #define FCPPT_CONTAINER_TUPLE_PUSH_BACK_HPP_INCLUDED
 
-#include <fcppt/container/tuple_push_back_result.hpp>
-#include <fcppt/container/detail/tuple_push_back.hpp>
+#include <fcppt/container/tuple/push_back_result.hpp>
+#include <fcppt/container/tuple/detail/push_back.hpp>
 #include <fcppt/type_traits/is_std_tuple.hpp>
 #include <fcppt/type_traits/remove_cv_ref_t.hpp>
 #include <fcppt/config/external_begin.hpp>
@@ -21,27 +21,39 @@ namespace fcppt
 {
 namespace container
 {
+namespace tuple
+{
 
+/**
+\brief Pushes an element to the back of a <code>std::tuple</code>.
+
+\ingroup fcpptcontainertuple
+
+Let \a _tuple be <code>(v_1,...,v_n)</code>.
+The result of the function is <code>(v_1,...,v_n,_new_element)</code>.
+
+\tparam Tuple Must be a <code>std::tuple</code>.
+*/
 template<
-	typename Source,
+	typename Tuple,
 	typename NewElement
 >
-fcppt::container::tuple_push_back_result<
+fcppt::container::tuple::push_back_result<
 	fcppt::type_traits::remove_cv_ref_t<
-		Source
+		Tuple
 	>,
 	fcppt::type_traits::remove_cv_ref_t<
 		NewElement
 	>
 >
-tuple_push_back(
-	Source &&_source,
+push_back(
+	Tuple &&_tuple,
 	NewElement &&_new_element
 )
 {
 	typedef
 	fcppt::type_traits::remove_cv_ref_t<
-		Source
+		Tuple
 	>
 	source_type;
 
@@ -49,12 +61,12 @@ tuple_push_back(
 		fcppt::type_traits::is_std_tuple<
 			source_type
 		>::value,
-		"Source must be a std::tuple"
+		"Tuple must be a std::tuple"
 	);
 
 	return
-		fcppt::container::detail::tuple_push_back<
-			fcppt::container::tuple_push_back_result<
+		fcppt::container::tuple::detail::push_back<
+			fcppt::container::tuple::push_back_result<
 				source_type,
 				fcppt::type_traits::remove_cv_ref_t<
 					NewElement
@@ -67,9 +79,9 @@ tuple_push_back(
 				>::value
 			>{},
 			std::forward<
-				Source
+				Tuple
 			>(
-				_source
+				_tuple
 			),
 			std::forward<
 				NewElement
@@ -79,6 +91,7 @@ tuple_push_back(
 		);
 }
 
+}
 }
 }
 

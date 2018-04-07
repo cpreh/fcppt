@@ -7,8 +7,8 @@
 #ifndef FCPPT_CONTAINER_ARRAY_PUSH_BACK_HPP_INCLUDED
 #define FCPPT_CONTAINER_ARRAY_PUSH_BACK_HPP_INCLUDED
 
-#include <fcppt/container/array_size.hpp>
-#include <fcppt/container/detail/array_push_back.hpp>
+#include <fcppt/container/array/size.hpp>
+#include <fcppt/container/array/detail/push_back.hpp>
 #include <fcppt/type_traits/is_std_array.hpp>
 #include <fcppt/type_traits/remove_cv_ref_t.hpp>
 #include <fcppt/type_traits/value_type.hpp>
@@ -23,15 +23,17 @@ namespace fcppt
 {
 namespace container
 {
+namespace array
+{
 
 /**
 \brief Pushes a new element to the back of an array.
 
-\ingroup fcpptcontainer
+\ingroup fcpptcontainerarray
 
 Pushes \a _new_element to the back of \a _source.
 
-\tparam Source A std::array
+\tparam Source Must be a <code>std::array</code>.
 
 \tparam NewElement Must be the same as <code>value_type<Source></code>
 */
@@ -45,7 +47,7 @@ std::array<
 			Source
 		>
 	>,
-	fcppt::container::array_size<
+	fcppt::container::array::size<
 		fcppt::type_traits::remove_cv_ref_t<
 			Source
 		>
@@ -53,7 +55,7 @@ std::array<
 	+
 	1u
 >
-array_push_back(
+push_back(
 	Source &&_source,
 	NewElement && _new_element
 )
@@ -88,7 +90,7 @@ array_push_back(
 	);
 
 	typedef
-	fcppt::container::array_size<
+	fcppt::container::array::size<
 		source_type
 	>
 	source_size;
@@ -103,7 +105,7 @@ array_push_back(
 	dest_array;
 
 	return
-		fcppt::container::detail::array_push_back<
+		fcppt::container::array::detail::push_back<
 			dest_array
 		>(
 			std::make_index_sequence<
@@ -122,6 +124,7 @@ array_push_back(
 		);
 }
 
+}
 }
 }
 

@@ -6,7 +6,7 @@
 
 #include <fcppt/make_int_range.hpp>
 #include <fcppt/algorithm/fold.hpp>
-#include <fcppt/container/array_init.hpp>
+#include <fcppt/container/array/init.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <array>
 #include <cstddef>
@@ -67,7 +67,7 @@ template<typename T, std::size_t N>
 std::array<T,N> make_array()
 {
 // ![coding_style_array_fold]
-return fcppt::container::array_init<std::array<T,N>>(
+return fcppt::container::array::init<std::array<T,N>>(
 	[](std::size_t i) { return from_int<T>(i); });
 // ![coding_style_array_fold]
 }

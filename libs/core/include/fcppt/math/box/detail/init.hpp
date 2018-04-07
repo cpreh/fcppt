@@ -9,7 +9,7 @@
 
 #include <fcppt/homogenous_pair.hpp>
 #include <fcppt/use.hpp>
-#include <fcppt/container/array_init.hpp>
+#include <fcppt/container/array/init.hpp>
 #include <fcppt/math/box/is_box.hpp>
 #include <fcppt/math/detail/init_function.hpp>
 #include <fcppt/math/vector/init.hpp>
@@ -58,7 +58,7 @@ init(
 	result_array;
 
 	result_array const results(
-		fcppt::container::array_init<
+		fcppt::container::array::init<
 			result_array
 		>(
 			fcppt::math::detail::init_function<

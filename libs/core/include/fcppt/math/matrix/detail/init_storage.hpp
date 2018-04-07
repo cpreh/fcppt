@@ -9,7 +9,7 @@
 
 #include <fcppt/use.hpp>
 #include <fcppt/cast/size.hpp>
-#include <fcppt/container/array_init.hpp>
+#include <fcppt/container/array/init.hpp>
 #include <fcppt/math/size_type.hpp>
 #include <fcppt/math/detail/checked_access.hpp>
 #include <fcppt/math/matrix/row_type.hpp>
@@ -69,7 +69,7 @@ init_storage(
 
 	return
 		result_type{
-			fcppt::container::array_init<
+			fcppt::container::array::init<
 				typename
 				result_type::array_type
 			>(

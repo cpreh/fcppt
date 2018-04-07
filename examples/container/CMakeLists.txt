@@ -9,6 +9,12 @@ function(
 endfunction()
 
 add_fcppt_container_example(
+	array
+	LINK_LIBS
+		fcppt_core_interface
+)
+
+add_fcppt_container_example(
 	bitfield
 	LINK_LIBS
 		${fcppt_core_TARGET}

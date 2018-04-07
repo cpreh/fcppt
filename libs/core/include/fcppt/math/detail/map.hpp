@@ -7,7 +7,7 @@
 #ifndef FCPPT_MATH_DETAIL_MAP_HPP_INCLUDED
 #define FCPPT_MATH_DETAIL_MAP_HPP_INCLUDED
 
-#include <fcppt/algorithm/array_map.hpp>
+#include <fcppt/container/array/map.hpp>
 #include <fcppt/math/from_array.hpp>
 #include <fcppt/math/to_array.hpp>
 
@@ -35,7 +35,7 @@ map(
 		fcppt::math::from_array<
 			Dest
 		>(
-			fcppt::algorithm::array_map(
+			fcppt::container::array::map(
 				fcppt::math::to_array(
 					_source
 				),

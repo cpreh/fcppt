@@ -55,12 +55,14 @@ set(
 	doc/files/modules/brigand.doxygen
 	doc/files/modules/casts.doxygen
 	doc/files/modules/config.doxygen
+	doc/files/modules/container/array.doxygen
 	doc/files/modules/container/base.doxygen
 	doc/files/modules/container/bitfield.doxygen
 	doc/files/modules/container/buffer.doxygen
 	doc/files/modules/container/grid.doxygen
 	doc/files/modules/container/raw_vector.doxygen
 	doc/files/modules/container/tree.doxygen
+	doc/files/modules/container/tuple.doxygen
 	doc/files/modules/either.doxygen
 	doc/files/modules/endianness.doxygen
 	doc/files/modules/enum.doxygen
@@ -121,6 +123,7 @@ set(
 	examples/coding_style.cpp
 	examples/coding_style_asthetic.cpp
 	examples/config.cpp
+	examples/container/array.cpp
 	examples/container/bitfield.cpp
 	examples/container/buffer.cpp
 	examples/container/grid.cpp
@@ -204,8 +207,6 @@ set(
 	libs/core/include/fcppt/add_reference.hpp
 	libs/core/include/fcppt/algorithm/all_of.hpp
 	libs/core/include/fcppt/algorithm/append.hpp
-	libs/core/include/fcppt/algorithm/array_binary_map.hpp
-	libs/core/include/fcppt/algorithm/array_map.hpp
 	libs/core/include/fcppt/algorithm/binary_search.hpp
 	libs/core/include/fcppt/algorithm/contains.hpp
 	libs/core/include/fcppt/algorithm/contains_if.hpp
@@ -255,7 +256,6 @@ set(
 	libs/core/include/fcppt/algorithm/set_difference.hpp
 	libs/core/include/fcppt/algorithm/set_intersection.hpp
 	libs/core/include/fcppt/algorithm/set_union.hpp
-	libs/core/include/fcppt/algorithm/tuple_map.hpp
 	libs/core/include/fcppt/algorithm/unique.hpp
 	libs/core/include/fcppt/algorithm/unique_if.hpp
 	libs/core/include/fcppt/algorithm/update_action.hpp
@@ -406,11 +406,16 @@ set(
 	libs/core/include/fcppt/config/platform.hpp
 	libs/core/include/fcppt/const.hpp
 	libs/core/include/fcppt/const_pointer_cast.hpp
-	libs/core/include/fcppt/container/array_init.hpp
-	libs/core/include/fcppt/container/array_init_const.hpp
-	libs/core/include/fcppt/container/array_init_move.hpp
-	libs/core/include/fcppt/container/array_push_back.hpp
-	libs/core/include/fcppt/container/array_size.hpp
+	libs/core/include/fcppt/container/array/binary_map.hpp
+	libs/core/include/fcppt/container/array/detail/init.hpp
+	libs/core/include/fcppt/container/array/detail/push_back.hpp
+	libs/core/include/fcppt/container/array/detail/size.hpp
+	libs/core/include/fcppt/container/array/init.hpp
+	libs/core/include/fcppt/container/array/init_const.hpp
+	libs/core/include/fcppt/container/array/init_move.hpp
+	libs/core/include/fcppt/container/array/map.hpp
+	libs/core/include/fcppt/container/array/push_back.hpp
+	libs/core/include/fcppt/container/array/size.hpp
 	libs/core/include/fcppt/container/at_optional.hpp
 	libs/core/include/fcppt/container/bitfield/array.hpp
 	libs/core/include/fcppt/container/bitfield/comparison.hpp
@@ -449,15 +454,9 @@ set(
 	libs/core/include/fcppt/container/buffer/to_raw_vector.hpp
 	libs/core/include/fcppt/container/data.hpp
 	libs/core/include/fcppt/container/data_end.hpp
-	libs/core/include/fcppt/container/detail/array_init.hpp
-	libs/core/include/fcppt/container/detail/array_push_back.hpp
-	libs/core/include/fcppt/container/detail/array_size.hpp
 	libs/core/include/fcppt/container/detail/has_size.hpp
 	libs/core/include/fcppt/container/detail/output.hpp
 	libs/core/include/fcppt/container/detail/size.hpp
-	libs/core/include/fcppt/container/detail/tuple_push_back.hpp
-	libs/core/include/fcppt/container/detail/tuple_push_back_result.hpp
-	libs/core/include/fcppt/container/detail/untuple.hpp
 	libs/core/include/fcppt/container/dynamic_array.hpp
 	libs/core/include/fcppt/container/dynamic_array_decl.hpp
 	libs/core/include/fcppt/container/dynamic_array_fwd.hpp
@@ -604,9 +603,13 @@ set(
 	libs/core/include/fcppt/container/tree/pre_order.hpp
 	libs/core/include/fcppt/container/tree/print.hpp
 	libs/core/include/fcppt/container/tree/to_root.hpp
-	libs/core/include/fcppt/container/tuple_push_back.hpp
-	libs/core/include/fcppt/container/tuple_push_back_result.hpp
-	libs/core/include/fcppt/container/untuple.hpp
+	libs/core/include/fcppt/container/tuple/detail/push_back.hpp
+	libs/core/include/fcppt/container/tuple/detail/push_back_result.hpp
+	libs/core/include/fcppt/container/tuple/detail/to_varargs.hpp
+	libs/core/include/fcppt/container/tuple/map.hpp
+	libs/core/include/fcppt/container/tuple/push_back.hpp
+	libs/core/include/fcppt/container/tuple/push_back_result.hpp
+	libs/core/include/fcppt/container/tuple/to_varargs.hpp
 	libs/core/include/fcppt/cyclic_iterator.hpp
 	libs/core/include/fcppt/cyclic_iterator_decl.hpp
 	libs/core/include/fcppt/cyclic_iterator_fwd.hpp

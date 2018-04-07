@@ -9,7 +9,7 @@
 #define FCPPT_MATH_BOX_CORNER_POINTS_HPP_INCLUDED
 
 #include <fcppt/use.hpp>
-#include <fcppt/container/array_init.hpp>
+#include <fcppt/container/array/init.hpp>
 #include <fcppt/math/power_of_2.hpp>
 #include <fcppt/math/size_type.hpp>
 #include <fcppt/math/box/object_impl.hpp>
@@ -83,7 +83,7 @@ corner_points(
 	);
 
 	return
-		fcppt::container::array_init<
+		fcppt::container::array::init<
 			result_type
 		>(
 			[

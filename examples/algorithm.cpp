@@ -5,10 +5,8 @@
 
 
 #include <fcppt/algorithm/append.hpp>
-#include <fcppt/algorithm/array_map.hpp>
 #include <fcppt/algorithm/join_strings.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <array>
 #include <iostream>
 #include <ostream>
 #include <string>
@@ -26,30 +24,11 @@ std::vector<int> w{4,5};
 
 fcppt::algorithm::append(
 	v,
-	w);
+	w
+);
 
 // Now v contains: 1,2,3,4,5
 //! [append]
-}
-
-{
-//! [array_map]
-typedef
-std::array<int,3>
-three_ints;
-
-three_ints const a{{ 1,2,3 }};
-
-three_ints const b(
-	fcppt::algorithm::array_map(
-		a,
-		[](int const _arg) { return _arg * 3; }
-	)
-);
-
-// b now contains: 3, 6, 9
-//! [array_map]
-std::cout << b.empty() << '\n';
 }
 
 {

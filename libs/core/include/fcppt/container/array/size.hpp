@@ -7,18 +7,20 @@
 #ifndef FCPPT_CONTAINER_ARRAY_SIZE_HPP_INCLUDED
 #define FCPPT_CONTAINER_ARRAY_SIZE_HPP_INCLUDED
 
-#include <fcppt/container/detail/array_size.hpp>
+#include <fcppt/container/array/detail/size.hpp>
 
 
 namespace fcppt
 {
 namespace container
 {
+namespace array
+{
 
 /**
 \brief Gets the size of an array.
 
-\ingroup fcpptcontainer
+\ingroup fcpptcontainerarray
 
 Derives from an integral constant that contains the size of \a Array.
 
@@ -27,12 +29,13 @@ Derives from an integral constant that contains the size of \a Array.
 template<
 	typename Array
 >
-using array_size
+using size
 =
-fcppt::container::detail::array_size<
+fcppt::container::array::detail::size<
 	Array
 >;
 
+}
 }
 }
 

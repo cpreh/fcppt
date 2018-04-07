@@ -4,13 +4,13 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_ALGORITHM_ARRAY_BINARY_MAP_HPP_INCLUDED
-#define FCPPT_ALGORITHM_ARRAY_BINARY_MAP_HPP_INCLUDED
+#ifndef FCPPT_CONTAINER_ARRAY_BINARY_MAP_HPP_INCLUDED
+#define FCPPT_CONTAINER_ARRAY_BINARY_MAP_HPP_INCLUDED
 
 #include <fcppt/move_if_rvalue.hpp>
 #include <fcppt/use.hpp>
-#include <fcppt/container/array_init.hpp>
-#include <fcppt/container/array_size.hpp>
+#include <fcppt/container/array/init.hpp>
+#include <fcppt/container/array/size.hpp>
 #include <fcppt/type_traits/is_std_array.hpp>
 #include <fcppt/type_traits/remove_cv_ref_t.hpp>
 #include <fcppt/type_traits/value_type.hpp>
@@ -22,14 +22,16 @@
 
 namespace fcppt
 {
-namespace algorithm
+namespace container
+{
+namespace array
 {
 
 /**
 \brief Applies a function to each pair of elements of two arrays and returns an
 array containing the results.
 
-\ingroup fcpptalgorithm
+\ingroup fcpptcontainerarray
 
 Calls <code>_function(element1, element2)</code> for every element1 of \a
 _source1 and element2 of \a _source2.
@@ -47,7 +49,7 @@ template<
 	typename Function
 >
 auto
-array_binary_map(
+binary_map(
 	SourceArray1 &&_source1,
 	SourceArray2 &&_source2,
 	Function const &_function
@@ -74,7 +76,7 @@ std::array<
 			)
 		)
 	>,
-	fcppt::container::array_size<
+	fcppt::container::array::size<
 		fcppt::type_traits::remove_cv_ref_t<
 			SourceArray1
 		>
@@ -108,11 +110,11 @@ std::array<
 	);
 
 	static_assert(
-		fcppt::container::array_size<
+		fcppt::container::array::size<
 			source1
 		>::value
 		==
-		fcppt::container::array_size<
+		fcppt::container::array::size<
 			source2
 		>::value,
 		"Both arrays must have the same number of elements"
@@ -136,14 +138,14 @@ std::array<
 				)
 			)
 		>,
-		fcppt::container::array_size<
+		fcppt::container::array::size<
 			source1
 		>::value
 	>
 	result_type;
 
 	return
-		fcppt::container::array_init<
+		fcppt::container::array::init<
 			result_type
 		>(
 			[
@@ -190,6 +192,7 @@ std::array<
 		);
 }
 
+}
 }
 }
 

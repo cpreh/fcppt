@@ -6,44 +6,43 @@
 
 #include <fcppt/make_unique_ptr.hpp>
 #include <fcppt/unique_ptr.hpp>
-#include <fcppt/container/tuple_push_back.hpp>
+#include <fcppt/container/array/push_back.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/test/unit_test.hpp>
-#include <string>
-#include <tuple>
+#include <array>
 #include <fcppt/config/external_end.hpp>
 
 
 BOOST_AUTO_TEST_CASE(
-	tuple_push_back
+	array_push_back
 )
 {
 	typedef
-	std::tuple<
+	std::array<
 		int,
-		bool
+		3
 	>
-	source_tuple;
+	int3_array;
 
 	typedef
-	std::tuple<
+	std::array<
 		int,
-		bool,
-		std::string
+		4
 	>
-	result_tuple;
+	int4_array;
 
-	result_tuple const result{
-		fcppt::container::tuple_push_back(
-			source_tuple{
-				1,
-				false
-			},
-			std::string{
-				"test"
-			}
+	int3_array const test{{
+		1,
+		2,
+		3
+	}};
+
+	int4_array const result(
+		fcppt::container::array::push_back(
+			test,
+			4
 		)
-	};
+	);
 
 	BOOST_CHECK_EQUAL(
 		std::get<
@@ -60,7 +59,7 @@ BOOST_AUTO_TEST_CASE(
 		>(
 			result
 		),
-		false
+		2
 	);
 
 	BOOST_CHECK_EQUAL(
@@ -69,14 +68,21 @@ BOOST_AUTO_TEST_CASE(
 		>(
 			result
 		),
-		std::string{
-			"test"
-		}
+		3
+	);
+
+	BOOST_CHECK_EQUAL(
+		std::get<
+			3
+		>(
+			result
+		),
+		4
 	);
 }
 
 BOOST_AUTO_TEST_CASE(
-	tuple_push_back_move
+	array_push_back_move
 )
 {
 	typedef
@@ -85,20 +91,21 @@ BOOST_AUTO_TEST_CASE(
 	>
 	int_unique_ptr;
 
-	std::tuple<
+	std::array<
 		int_unique_ptr,
-		int_unique_ptr
+		2
 	> const result(
-		fcppt::container::tuple_push_back(
-			std::tuple<
-				int_unique_ptr
-			>{
+		fcppt::container::array::push_back(
+			std::array<
+				int_unique_ptr,
+				1
+			>{{
 				fcppt::make_unique_ptr<
 					int
 				>(
 					1
 				)
-			},
+			}},
 			fcppt::make_unique_ptr<
 				int
 			>(

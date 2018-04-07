@@ -4,13 +4,13 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_CONTAINER_DETAIL_ARRAY_PUSH_BACK_HPP_INCLUDED
-#define FCPPT_CONTAINER_DETAIL_ARRAY_PUSH_BACK_HPP_INCLUDED
+#ifndef FCPPT_CONTAINER_TUPLE_DETAIL_TO_VARARGS_HPP_INCLUDED
+#define FCPPT_CONTAINER_TUPLE_DETAIL_TO_VARARGS_HPP_INCLUDED
 
 #include <fcppt/move_if_rvalue.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <array>
 #include <cstddef>
+#include <tuple>
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
@@ -19,44 +19,43 @@ namespace fcppt
 {
 namespace container
 {
+namespace tuple
+{
 namespace detail
 {
 
 template<
-	typename Array,
-	typename Source,
-	typename NewElement,
-	std::size_t... Ints
+	typename Tuple,
+	typename Function,
+	std::size_t... Indices
 >
 inline
-Array
-array_push_back(
+decltype(
+	auto
+)
+to_varargs(
+	Tuple &&_tuple,
+	Function const &_function,
 	std::index_sequence<
-		Ints...
-	>,
-	Source &&_source,
-	NewElement &&_new_element
+		Indices...
+	>
 )
 {
 	return
-		Array{{
+		_function(
 			fcppt::move_if_rvalue<
-				Source
+				Tuple
 			>(
 				std::get<
-					Ints
+					Indices
 				>(
-					_source
+					_tuple
 				)
-			)...,
-			std::forward<
-				NewElement
-			>(
-				_new_element
-			)
-		}};
+			)...
+		);
 }
 
+}
 }
 }
 }

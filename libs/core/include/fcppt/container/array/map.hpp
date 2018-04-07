@@ -4,13 +4,13 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_ALGORITHM_ARRAY_MAP_HPP_INCLUDED
-#define FCPPT_ALGORITHM_ARRAY_MAP_HPP_INCLUDED
+#ifndef FCPPT_CONTAINER_ARRAY_MAP_HPP_INCLUDED
+#define FCPPT_CONTAINER_ARRAY_MAP_HPP_INCLUDED
 
 #include <fcppt/move_if_rvalue.hpp>
 #include <fcppt/use.hpp>
-#include <fcppt/container/array_init.hpp>
-#include <fcppt/container/array_size.hpp>
+#include <fcppt/container/array/init.hpp>
+#include <fcppt/container/array/size.hpp>
 #include <fcppt/type_traits/is_std_array.hpp>
 #include <fcppt/type_traits/remove_cv_ref_t.hpp>
 #include <fcppt/type_traits/value_type.hpp>
@@ -22,22 +22,24 @@
 
 namespace fcppt
 {
-namespace algorithm
+namespace container
+{
+namespace array
 {
 
 /**
 \brief Applies a function to every element of an array and returns an array of
 the results.
 
-\ingroup fcpptalgorithm
+\ingroup fcpptcontainerarray
 
 Calls <code>_function(element)</code> for every element of \a _source.
 
 Example:
 
-\snippet algorithm.cpp array_map
+\snippet container/array.cpp array_map
 
-\tparam SourceArray Must be a std::array
+\tparam SourceArray Must be a <code>std::array</code>.
 
 \tparam Function Must be a function callable as <code>R (SourceArray::value_type)</code>,
 where <code>R</code> is the result type.
@@ -48,7 +50,7 @@ template<
 >
 inline
 auto
-array_map(
+map(
 	SourceArray &&_source,
 	Function const &_function
 )
@@ -67,7 +69,7 @@ std::array<
 			)
 		)
 	>,
-	fcppt::container::array_size<
+	fcppt::container::array::size<
 		fcppt::type_traits::remove_cv_ref_t<
 			SourceArray
 		>
@@ -100,14 +102,14 @@ std::array<
 				)
 			)
 		>,
-		fcppt::container::array_size<
+		fcppt::container::array::size<
 			source_array
 		>::value
 	>
 	result_array;
 
 	return
-		fcppt::container::array_init<
+		fcppt::container::array::init<
 			result_array
 		>(
 			[
@@ -137,6 +139,7 @@ std::array<
 		);
 }
 
+}
 }
 }
 

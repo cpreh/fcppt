@@ -1,0 +1,16 @@
+namespace fcppt
+{
+namespace container
+{
+/// Functions for <code>std::array</code>.
+namespace array
+{
+}
+}
+}
+
+/**
+\defgroup fcpptcontainerarray fcppt.container.array
+\ingroup fcpptcontainer
+\brief Functions for <code>std::array</code>
+*/

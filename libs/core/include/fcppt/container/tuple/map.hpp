@@ -4,8 +4,8 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_ALGORITHM_TUPLE_MAP_HPP_INCLUDED
-#define FCPPT_ALGORITHM_TUPLE_MAP_HPP_INCLUDED
+#ifndef FCPPT_CONTAINER_TUPLE_MAP_HPP_INCLUDED
+#define FCPPT_CONTAINER_TUPLE_MAP_HPP_INCLUDED
 
 #include <fcppt/move_if_rvalue.hpp>
 #include <fcppt/algorithm/vararg_map.hpp>
@@ -17,18 +17,20 @@
 
 namespace fcppt
 {
-namespace algorithm
+namespace container
+{
+namespace tuple
 {
 
 /**
 \brief Maps over a tuple.
 
-\ingroup fcpptalgorithm
+\ingroup fcpptcontainertuple
 
-Let \a _tuple be <code>(v_1,...,v_n)</code>.  The result of the function is the
-tuple <code>(_function(v_1),...,_function(v_n))</code>.
+Let \a _tuple be <code>(v_1,...,v_n)</code>.
+The result of the function is the tuple <code>(_function(v_1),...,_function(v_n))</code>.
 
-\tparam Tuple A std::tuple
+\tparam Tuple Must be a <code>std::tuple</code>.
 
 \tparam Function Must be callable with every type in \a Tuple.
 */
@@ -40,7 +42,7 @@ inline
 decltype(
 	auto
 )
-tuple_map(
+map(
 	Tuple &&_tuple,
 	Function const &_function
 )
@@ -69,6 +71,7 @@ tuple_map(
 		);
 }
 
+}
 }
 }
 

@@ -10,14 +10,14 @@
 <li>\ref fcpptalgorithm
 	<ul>
 	<li>Added \link fcppt::algorithm::unique\endlink and \link fcppt::algorithm::unique_if\endlink.</lI>
-	<li>Allow rvalues in \link fcppt::algorithm::array_binary_map\endlink.</li>
+	<li>Allow rvalues in \link fcppt::container::array::binary_map\endlink.</li>
 	</ul>
 </li>
 
 <li>\ref fcpptcontainer
 	<ul>
-	<li>Allow rvalues in \link fcppt::container::array_push_back\endlink.</li>
-	<li>Added \link fcppt::container::tuple_push_back\endlink.</li>
+	<li>Allow rvalues in \link fcppt::container::array::push_back\endlink.</li>
+	<li>Added \link fcppt::container::tuple::push_back\endlink.</li>
 	</ul>
 </li>
 
@@ -48,12 +48,19 @@
 
 <li>\ref fcpptalgorithm
 	<ul>
-	<li>\link fcppt::algorithm::array_map\endlink and \link fcppt::algorithm::array_binary_map\endlink no longer use an explicit result type.</li>
-	<li>Moved <code>fcppt::algorithm::array_init</code>, <code>fcppt::algorithm::array_init_const</code>,
+	<li>\link fcppt::container::array::map\endlink and \link fcppt::container::array::binary_map\endlink no longer use an explicit result type.</li>
+	<li>Moved <code>fcppt::algorithm::array_map</code>, <code>fcppt::algorithm::array_binary_map</code>,
+	<code>fcppt::algorithm::array_init</code>, <code>fcppt::algorithm::array_init_const</code>,
 	<code>fcppt::algorithm::array_init_move</code> and <code>fcppt::algorithm::array_push_back</code>
-	to \ref fcpptcontainer.</li>
+	to \ref fcpptcontainerarray.</li>
 	</ul>
 </li>
+
+<li>\ref fcpptcontainer
+	<ul>
+	<li>Moved <code>fcppt::container::untuple</code> to \link fcppt::container::tuple::to_varargs\endlink.</li>
+	</ul>
+</lI>
 
 <li>\ref fcpptmathdim
 	<ul>
@@ -100,7 +107,7 @@ C++11 library that has no dependencies itself.</li>
 <li>\ref fcpptalgorithm
 	<ul>
 	<li>Allow <code>std::array</code> in \link fcppt::algorithm::map\endlink.</li>
-	<li>Allow rvalues in \link fcppt::algorithm::array_map\endlink.</li>
+	<li>Allow rvalues in <code>fcppt::algorithm::array_map</code>.</li>
 	</ul>
 </li>
 
@@ -916,7 +923,7 @@ C++11 library that has no dependencies itself.</li>
 
 <li>\ref fcpptcontainer
 	<ul>
-	<li>Added \link fcppt::container::untuple\endlink.</li>
+	<li>Added <code>fcppt::container::untuple</code>.</li>
 	</ul>
 </li>
 
