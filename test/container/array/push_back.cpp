@@ -6,6 +6,7 @@
 
 #include <fcppt/make_unique_ptr.hpp>
 #include <fcppt/unique_ptr.hpp>
+#include <fcppt/container/array/make.hpp>
 #include <fcppt/container/array/push_back.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/test/unit_test.hpp>
@@ -96,16 +97,13 @@ BOOST_AUTO_TEST_CASE(
 		2
 	> const result(
 		fcppt::container::array::push_back(
-			std::array<
-				int_unique_ptr,
-				1
-			>{{
+			fcppt::container::array::make(
 				fcppt::make_unique_ptr<
 					int
 				>(
 					1
 				)
-			}},
+			),
 			fcppt::make_unique_ptr<
 				int
 			>(

@@ -51,7 +51,8 @@
 	<li>\link fcppt::container::array::map\endlink and \link fcppt::container::array::binary_map\endlink no longer use an explicit result type.</li>
 	<li>Moved <code>fcppt::algorithm::array_map</code>, <code>fcppt::algorithm::array_binary_map</code>,
 	<code>fcppt::algorithm::array_init</code>, <code>fcppt::algorithm::array_init_const</code>,
-	<code>fcppt::algorithm::array_init_move</code> and <code>fcppt::algorithm::array_push_back</code>
+	<code>fcppt::algorithm::array_init_move</code>, <code>fcppt::algorithm::array_push_back</code>
+	and <code>fcppt::container::make_array</code>
 	to \ref fcpptcontainerarray.</li>
 	</ul>
 </li>
@@ -1152,7 +1153,7 @@ C++11 library that has no dependencies itself.</li>
 
 <li>\ref fcpptcontainer
 	<ul>
-	<li>Added \link fcppt::container::make_array\endlink.</li>
+	<li>Added <code>fcppt::container::make_array</code>.</li>
 	</ul>
 </li>
 

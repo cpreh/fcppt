@@ -4,8 +4,8 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_CONTAINER_MAKE_ARRAY_HPP_INCLUDED
-#define FCPPT_CONTAINER_MAKE_ARRAY_HPP_INCLUDED
+#ifndef FCPPT_CONTAINER_ARRAY_MAKE_HPP_INCLUDED
+#define FCPPT_CONTAINER_ARRAY_MAKE_HPP_INCLUDED
 
 #include <fcppt/brigand/all_of.hpp>
 #include <fcppt/type_traits/remove_cv_ref_t.hpp>
@@ -25,9 +25,13 @@ namespace fcppt
 {
 namespace container
 {
+namespace array
+{
 
 /**
 \brief Make an array out of a parameter pack.
+
+\ingroup fcpptcontainerarray
 
 Let \a _args be <code>(a_1,...,a_n)</code>. All elements of \a _args must be of
 the same type <code>T</code>. The result is
@@ -50,7 +54,7 @@ std::array<
 	>,
 	sizeof...(Args)
 >
-make_array(
+make(
 	Args &&... _args
 )
 {
@@ -86,7 +90,7 @@ make_array(
 				::brigand::_1
 			>
 		>::value,
-		"All types of make_array must be the same"
+		"All types of array::make must be the same"
 	);
 
 	return
@@ -99,6 +103,7 @@ make_array(
 		}};
 }
 
+}
 }
 }
 

@@ -4,7 +4,7 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/container/make_array.hpp>
+#include <fcppt/container/array/make.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/test/unit_test.hpp>
 #include <array>
@@ -13,7 +13,7 @@
 
 
 BOOST_AUTO_TEST_CASE(
-	container_make_array
+	array_make
 )
 {
 	std::string const string_ref{
@@ -24,7 +24,7 @@ BOOST_AUTO_TEST_CASE(
 		std::string,
 		2
 	> const result(
-		fcppt::container::make_array(
+		fcppt::container::array::make(
 			std::string{"42"},
 			string_ref
 		)

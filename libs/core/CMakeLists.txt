@@ -213,6 +213,7 @@ set(
 	libs/core/include/fcppt/container/array/init.hpp
 	libs/core/include/fcppt/container/array/init_const.hpp
 	libs/core/include/fcppt/container/array/init_move.hpp
+	libs/core/include/fcppt/container/array/make.hpp
 	libs/core/include/fcppt/container/array/map.hpp
 	libs/core/include/fcppt/container/array/push_back.hpp
 	libs/core/include/fcppt/container/array/size.hpp
@@ -360,7 +361,6 @@ set(
 	libs/core/include/fcppt/container/index_map_fwd.hpp
 	libs/core/include/fcppt/container/index_map_impl.hpp
 	libs/core/include/fcppt/container/insert.hpp
-	libs/core/include/fcppt/container/make_array.hpp
 	libs/core/include/fcppt/container/make_move_range.hpp
 	libs/core/include/fcppt/container/map_values_copy.hpp
 	libs/core/include/fcppt/container/map_values_ref.hpp

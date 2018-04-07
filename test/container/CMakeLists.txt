@@ -57,10 +57,6 @@ add_fcppt_container_test(
 )
 
 add_fcppt_container_test(
-	make_array
-)
-
-add_fcppt_container_test(
 	maybe_back
 )
 

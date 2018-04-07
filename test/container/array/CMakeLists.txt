@@ -25,6 +25,10 @@ add_fcppt_container_array_test(
 )
 
 add_fcppt_container_array_test(
+	make
+)
+
+add_fcppt_container_array_test(
 	map
 )
 

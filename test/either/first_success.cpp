@@ -5,7 +5,7 @@
 
 
 #include <fcppt/function_impl.hpp>
-#include <fcppt/container/make_array.hpp>
+#include <fcppt/container/array/make.hpp>
 #include <fcppt/either/first_success.hpp>
 #include <fcppt/either/object_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
@@ -74,7 +74,7 @@ BOOST_AUTO_TEST_CASE(
 
 	result_type const result_s{
 		fcppt::either::first_success(
-			fcppt::container::make_array(
+			fcppt::container::array::make(
 				f2,
 				f1
 			)
@@ -92,7 +92,7 @@ BOOST_AUTO_TEST_CASE(
 
 	result_type const result_f{
 		fcppt::either::first_success(
-			fcppt::container::make_array(
+			fcppt::container::array::make(
 				f2,
 				f3
 			)
