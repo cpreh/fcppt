@@ -35,7 +35,7 @@ namespace array
 {
 
 /**
-\brief Applies a function to each pair of elements of two arrays and returns an
+\brief Applies a function to each tuple of elements of multiple arrays and returns an
 array containing the results.
 
 \ingroup fcpptcontainerarray
