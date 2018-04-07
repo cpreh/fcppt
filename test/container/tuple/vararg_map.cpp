@@ -9,8 +9,8 @@
 #include <fcppt/tag.hpp>
 #include <fcppt/tag_type.hpp>
 #include <fcppt/use.hpp>
-#include <fcppt/algorithm/vararg_map.hpp>
 #include <fcppt/cast/to_unsigned.hpp>
+#include <fcppt/container/tuple/vararg_map.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/test/unit_test.hpp>
 #include <tuple>
@@ -19,14 +19,14 @@
 
 
 BOOST_AUTO_TEST_CASE(
-	vararg_map
+	tuple_vararg_map
 )
 {
 	std::tuple<
 		unsigned,
 		unsigned long
 	> const result(
-		fcppt::algorithm::vararg_map(
+		fcppt::container::tuple::vararg_map(
 			std::tuple<
 				fcppt::tag<
 					int
@@ -127,11 +127,11 @@ private:
 }
 
 BOOST_AUTO_TEST_CASE(
-	vararg_map_move
+	tuple_vararg_map_move
 )
 {
 	movable const result{
-		fcppt::algorithm::vararg_map(
+		fcppt::container::tuple::vararg_map(
 			std::make_tuple(
 				movable{
 					42

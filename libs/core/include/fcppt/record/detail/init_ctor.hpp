@@ -9,7 +9,7 @@
 
 #include <fcppt/tag_type.hpp>
 #include <fcppt/use.hpp>
-#include <fcppt/algorithm/vararg_map.hpp>
+#include <fcppt/container/tuple/vararg_map.hpp>
 #include <fcppt/record/element_to_label.hpp>
 #include <fcppt/record/detail/label_is_same.hpp>
 #include <fcppt/type_traits/remove_cv_ref_t.hpp>
@@ -61,7 +61,7 @@ init_ctor(
 	args_list;
 
 	return
-		fcppt::algorithm::vararg_map(
+		fcppt::container::tuple::vararg_map(
 			TagTuple{},
 			[](
 				auto &&... _args_inner

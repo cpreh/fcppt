@@ -19,3 +19,7 @@ add_fcppt_container_tuple_test(
 add_fcppt_container_tuple_test(
 	to_varargs
 )
+
+add_fcppt_container_tuple_test(
+	vararg_map
+)

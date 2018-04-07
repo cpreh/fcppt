@@ -9,7 +9,7 @@
 
 #include <fcppt/tag_type.hpp>
 #include <fcppt/use.hpp>
-#include <fcppt/algorithm/vararg_map.hpp>
+#include <fcppt/container/tuple/vararg_map.hpp>
 #include <fcppt/record/element_tag_tuple.hpp>
 #include <fcppt/record/element_to_label.hpp>
 #include <fcppt/record/is_object.hpp>
@@ -55,7 +55,7 @@ init(
 	);
 
 	return
-		fcppt::algorithm::vararg_map(
+		fcppt::container::tuple::vararg_map(
 			fcppt::record::element_tag_tuple<
 				Result
 			>{},

@@ -60,7 +60,6 @@ set(
 	libs/core/include/fcppt/algorithm/unique_if.hpp
 	libs/core/include/fcppt/algorithm/update_action.hpp
 	libs/core/include/fcppt/algorithm/update_action_fwd.hpp
-	libs/core/include/fcppt/algorithm/vararg_map.hpp
 	libs/core/include/fcppt/args.hpp
 	libs/core/include/fcppt/args_char.hpp
 	libs/core/include/fcppt/args_from_second.hpp
@@ -413,6 +412,7 @@ set(
 	libs/core/include/fcppt/container/tuple/push_back.hpp
 	libs/core/include/fcppt/container/tuple/push_back_result.hpp
 	libs/core/include/fcppt/container/tuple/to_varargs.hpp
+	libs/core/include/fcppt/container/tuple/vararg_map.hpp
 	libs/core/include/fcppt/cyclic_iterator.hpp
 	libs/core/include/fcppt/cyclic_iterator_decl.hpp
 	libs/core/include/fcppt/cyclic_iterator_fwd.hpp
