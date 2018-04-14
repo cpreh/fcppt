@@ -9,8 +9,9 @@
 #include <fcppt/text.hpp>
 #include <fcppt/optional/comparison.hpp>
 #include <fcppt/optional/output.hpp>
-#include <fcppt/options/has_parameter_set.hpp>
 #include <fcppt/options/state.hpp>
+#include <fcppt/options/name_set.hpp>
+#include <fcppt/options/option_name_set.hpp>
 #include <fcppt/options/detail/state_from_args.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/test/unit_test.hpp>
@@ -35,8 +36,10 @@ BOOST_AUTO_TEST_CASE(
 				FCPPT_TEXT("arg2"),
 				FCPPT_TEXT("--long-flag")
 			},
-			fcppt::options::has_parameter_set{
-				FCPPT_TEXT("notflag")
+			fcppt::options::option_name_set{
+				fcppt::options::name_set{
+					FCPPT_TEXT("notflag")
+				}
 			}
 		)
 	};

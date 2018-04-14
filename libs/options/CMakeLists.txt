@@ -19,16 +19,19 @@ set(
 	libs/options/include/fcppt/options/default_value_fwd.hpp
 	libs/options/include/fcppt/options/default_value_tag.hpp
 	libs/options/include/fcppt/options/detail/apply.hpp
+	libs/options/include/fcppt/options/detail/check_short_long_names.hpp
 	libs/options/include/fcppt/options/detail/combine_errors.hpp
 	libs/options/include/fcppt/options/detail/concrete_decl.hpp
 	libs/options/include/fcppt/options/detail/concrete_fwd.hpp
 	libs/options/include/fcppt/options/detail/concrete_impl.hpp
 	libs/options/include/fcppt/options/detail/deref.hpp
+	libs/options/include/fcppt/options/detail/duplicate_names_text.hpp
 	libs/options/include/fcppt/options/detail/help_error.hpp
 	libs/options/include/fcppt/options/detail/help_label.hpp
 	libs/options/include/fcppt/options/detail/help_text.hpp
 	libs/options/include/fcppt/options/detail/leftover_error.hpp
 	libs/options/include/fcppt/options/detail/long_or_short_name.hpp
+	libs/options/include/fcppt/options/detail/make_name_set_base.hpp
 	libs/options/include/fcppt/options/detail/parse.hpp
 	libs/options/include/fcppt/options/detail/parse_result.hpp
 	libs/options/include/fcppt/options/detail/parse_result_decl.hpp
@@ -37,21 +40,29 @@ set(
 	libs/options/include/fcppt/options/detail/parse_to_empty.hpp
 	libs/options/include/fcppt/options/detail/result_of.hpp
 	libs/options/include/fcppt/options/detail/state_from_args.hpp
+	libs/options/include/fcppt/options/detail/state_from_parser.hpp
 	libs/options/include/fcppt/options/detail/type_annotation.hpp
+	libs/options/include/fcppt/options/duplicate_names.hpp
+	libs/options/include/fcppt/options/duplicate_names_fwd.hpp
 	libs/options/include/fcppt/options/error.hpp
 	libs/options/include/fcppt/options/error_fwd.hpp
 	libs/options/include/fcppt/options/error_output.hpp
+	libs/options/include/fcppt/options/exception.hpp
+	libs/options/include/fcppt/options/exception_fwd.hpp
 	libs/options/include/fcppt/options/flag.hpp
 	libs/options/include/fcppt/options/flag_decl.hpp
 	libs/options/include/fcppt/options/flag_fwd.hpp
 	libs/options/include/fcppt/options/flag_impl.hpp
-	libs/options/include/fcppt/options/has_parameter_set.hpp
+	libs/options/include/fcppt/options/flag_name_set.hpp
+	libs/options/include/fcppt/options/flag_name_set_fwd.hpp
 	libs/options/include/fcppt/options/help_result.hpp
 	libs/options/include/fcppt/options/help_result_fwd.hpp
 	libs/options/include/fcppt/options/help_switch.hpp
 	libs/options/include/fcppt/options/help_switch_fwd.hpp
 	libs/options/include/fcppt/options/help_text.hpp
 	libs/options/include/fcppt/options/help_text_fwd.hpp
+	libs/options/include/fcppt/options/impl/duplicate_names.hpp
+	libs/options/include/fcppt/options/impl/exception.hpp
 	libs/options/include/fcppt/options/inactive_value.hpp
 	libs/options/include/fcppt/options/inactive_value_fwd.hpp
 	libs/options/include/fcppt/options/inactive_value_tag.hpp
@@ -69,11 +80,14 @@ set(
 	libs/options/include/fcppt/options/many_impl.hpp
 	libs/options/include/fcppt/options/missing_error.hpp
 	libs/options/include/fcppt/options/missing_error_fwd.hpp
+	libs/options/include/fcppt/options/name_set.hpp
 	libs/options/include/fcppt/options/no_default_value.hpp
 	libs/options/include/fcppt/options/option.hpp
 	libs/options/include/fcppt/options/option_decl.hpp
 	libs/options/include/fcppt/options/option_fwd.hpp
 	libs/options/include/fcppt/options/option_impl.hpp
+	libs/options/include/fcppt/options/option_name_set.hpp
+	libs/options/include/fcppt/options/option_name_set_fwd.hpp
 	libs/options/include/fcppt/options/optional_decl.hpp
 	libs/options/include/fcppt/options/optional_fwd.hpp
 	libs/options/include/fcppt/options/optional_help_text.hpp
@@ -104,11 +118,14 @@ set(
 	libs/options/include/fcppt/options/switch_fwd.hpp
 	libs/options/include/fcppt/options/switch_impl.hpp
 	libs/options/src/options/default_help_switch.cpp
+	libs/options/src/options/detail/check_short_long_names.cpp
 	libs/options/src/options/detail/combine_errors.cpp
+	libs/options/src/options/detail/duplicate_names_text.cpp
 	libs/options/src/options/detail/help_error.cpp
 	libs/options/src/options/detail/help_text.cpp
 	libs/options/src/options/detail/leftover_error.cpp
 	libs/options/src/options/detail/long_or_short_name.cpp
+	libs/options/src/options/detail/make_name_set_base.cpp
 	libs/options/src/options/detail/state_from_args.cpp
 	libs/options/src/options/is_option.cpp
 	libs/options/src/options/pretty_type_impl.cpp

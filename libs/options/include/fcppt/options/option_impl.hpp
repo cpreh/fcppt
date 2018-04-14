@@ -17,11 +17,12 @@
 #include <fcppt/optional/bind.hpp>
 #include <fcppt/optional/map.hpp>
 #include <fcppt/optional/maybe.hpp>
-#include <fcppt/optional/maybe_void.hpp>
 #include <fcppt/options/error.hpp>
-#include <fcppt/options/has_parameter_set.hpp>
+#include <fcppt/options/flag_name_set.hpp>
+#include <fcppt/options/option_name_set.hpp>
 #include <fcppt/options/long_name.hpp>
 #include <fcppt/options/missing_error.hpp>
+#include <fcppt/options/name_set.hpp>
 #include <fcppt/options/option_decl.hpp>
 #include <fcppt/options/optional_help_text.hpp>
 #include <fcppt/options/optional_short_name.hpp>
@@ -30,8 +31,10 @@
 #include <fcppt/options/result.hpp>
 #include <fcppt/options/short_name.hpp>
 #include <fcppt/options/state.hpp>
+#include <fcppt/options/detail/check_short_long_names.hpp>
 #include <fcppt/options/detail/help_text.hpp>
 #include <fcppt/options/detail/long_or_short_name.hpp>
+#include <fcppt/options/detail/make_name_set_base.hpp>
 #include <fcppt/options/detail/type_annotation.hpp>
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
@@ -70,6 +73,10 @@ fcppt::options::option<
 		_help_text
 	}
 {
+	fcppt::options::detail::check_short_long_names(
+		_short_name,
+		_long_name
+	);
 }
 
 template<
@@ -233,33 +240,35 @@ template<
 	typename Label,
 	typename Type
 >
-fcppt::options::has_parameter_set
+fcppt::options::flag_name_set
 fcppt::options::option<
 	Label,
 	Type
->::parameters() const
+>::flag_names() const
 {
-	fcppt::options::has_parameter_set result{
-		long_name_.get()
-	};
-
-	// TODO: Make a function for this?
-	fcppt::optional::maybe_void(
-		short_name_,
-		[
-			&result
-		](
-			fcppt::options::short_name const &_short_name
-		)
-		{
-			result.insert(
-				_short_name.get()
-			);
-		}
-	);
-
 	return
-		result;
+		fcppt::options::flag_name_set{
+			fcppt::options::name_set{}
+		};
+}
+
+template<
+	typename Label,
+	typename Type
+>
+fcppt::options::option_name_set
+fcppt::options::option<
+	Label,
+	Type
+>::option_names() const
+{
+	return
+		fcppt::options::option_name_set{
+			fcppt::options::detail::make_name_set_base(
+				long_name_,
+				short_name_
+			)
+		};
 }
 
 template<

@@ -25,7 +25,7 @@
 #include <fcppt/options/detail/parse.hpp>
 #include <fcppt/options/detail/parse_result.hpp>
 #include <fcppt/options/detail/parse_to_empty.hpp>
-#include <fcppt/options/detail/state_from_args.hpp>
+#include <fcppt/options/detail/state_from_parser.hpp>
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
@@ -82,11 +82,9 @@ parse_help(
 		fcppt::either::match(
 			fcppt::options::detail::parse(
 				_help,
-				fcppt::options::detail::state_from_args(
+				fcppt::options::detail::state_from_parser(
 					_args,
-					fcppt::options::detail::deref(
-						_parser
-					).parameters()
+					_parser
 				)
 			),
 			[](

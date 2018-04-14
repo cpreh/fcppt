@@ -15,9 +15,11 @@
 #include <fcppt/optional/map.hpp>
 #include <fcppt/options/argument_decl.hpp>
 #include <fcppt/options/error.hpp>
-#include <fcppt/options/has_parameter_set.hpp>
+#include <fcppt/options/flag_name_set.hpp>
+#include <fcppt/options/option_name_set.hpp>
 #include <fcppt/options/long_name.hpp>
 #include <fcppt/options/missing_error.hpp>
+#include <fcppt/options/name_set.hpp>
 #include <fcppt/options/optional_help_text.hpp>
 #include <fcppt/options/other_error.hpp>
 #include <fcppt/options/pretty_type.hpp>
@@ -151,14 +153,32 @@ template<
 	typename Label,
 	typename Type
 >
-fcppt::options::has_parameter_set
+fcppt::options::flag_name_set
 fcppt::options::argument<
 	Label,
 	Type
->::parameters() const
+>::flag_names() const
 {
 	return
-		fcppt::options::has_parameter_set();
+		fcppt::options::flag_name_set{
+			fcppt::options::name_set{}
+		};
+}
+
+template<
+	typename Label,
+	typename Type
+>
+fcppt::options::option_name_set
+fcppt::options::argument<
+	Label,
+	Type
+>::option_names() const
+{
+	return
+		fcppt::options::option_name_set{
+			fcppt::options::name_set{}
+		};
 }
 
 template<

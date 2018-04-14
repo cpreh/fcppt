@@ -9,19 +9,23 @@
 
 #include <fcppt/string.hpp>
 #include <fcppt/text.hpp>
+#include <fcppt/algorithm/set_intersection.hpp>
 #include <fcppt/algorithm/set_union.hpp>
 #include <fcppt/either/failure_opt.hpp>
 #include <fcppt/either/map.hpp>
 #include <fcppt/either/match.hpp>
 #include <fcppt/optional/maybe.hpp>
+#include <fcppt/options/duplicate_names.hpp>
 #include <fcppt/options/error.hpp>
-#include <fcppt/options/has_parameter_set.hpp>
+#include <fcppt/options/flag_name_set.hpp>
+#include <fcppt/options/option_name_set.hpp>
 #include <fcppt/options/product_decl.hpp>
 #include <fcppt/options/result.hpp>
 #include <fcppt/options/result_of.hpp>
 #include <fcppt/options/state_fwd.hpp>
 #include <fcppt/options/detail/combine_errors.hpp>
 #include <fcppt/options/detail/deref.hpp>
+#include <fcppt/options/detail/duplicate_names_text.hpp>
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
@@ -50,6 +54,7 @@ fcppt::options::product<
 		_right
 	)
 {
+	this->check_disjoint();
 }
 
 template<
@@ -75,6 +80,7 @@ fcppt::options::product<
 		)
 	)
 {
+	this->check_disjoint();
 }
 
 template<
@@ -266,21 +272,48 @@ template<
 	typename Left,
 	typename Right
 >
-fcppt::options::has_parameter_set
+fcppt::options::flag_name_set
 fcppt::options::product<
 	Left,
 	Right
->::parameters() const
+>::flag_names() const
 {
+	// TODO: strong_typedef_apply
 	return
-		fcppt::algorithm::set_union(
-			fcppt::options::detail::deref(
-				left_
-			).parameters(),
-			fcppt::options::detail::deref(
-				right_
-			).parameters()
-		);
+		fcppt::options::flag_name_set{
+			fcppt::algorithm::set_union(
+				fcppt::options::detail::deref(
+					left_
+				).flag_names().get(),
+				fcppt::options::detail::deref(
+					right_
+				).flag_names().get()
+			)
+		};
+}
+
+template<
+	typename Left,
+	typename Right
+>
+fcppt::options::option_name_set
+fcppt::options::product<
+	Left,
+	Right
+>::option_names() const
+{
+	// TODO: strong_typedef_apply
+	return
+		fcppt::options::option_name_set{
+			fcppt::algorithm::set_union(
+				fcppt::options::detail::deref(
+					left_
+				).option_names().get(),
+				fcppt::options::detail::deref(
+					right_
+				).option_names().get()
+			)
+		};
 }
 
 template<
@@ -303,6 +336,57 @@ fcppt::options::product<
 		fcppt::options::detail::deref(
 			right_
 		).usage();
+}
+
+template<
+	typename Left,
+	typename Right
+>
+void
+fcppt::options::product<
+	Left,
+	Right
+>::check_disjoint() const
+{
+	auto const all_parameters(
+		[](
+			auto const &_parser
+		)
+		->
+		fcppt::options::name_set
+		{
+			return
+				fcppt::algorithm::set_union(
+					_parser.flag_names().get(),
+					_parser.option_names().get()
+				);
+		}
+	);
+
+	fcppt::options::name_set const common_names{
+		fcppt::algorithm::set_intersection(
+			all_parameters(
+				fcppt::options::detail::deref(
+					left_
+				)
+			),
+			all_parameters(
+				fcppt::options::detail::deref(
+					right_
+				)
+			)
+		)
+	};
+
+	if(
+		!common_names.empty()
+	)
+		throw
+			fcppt::options::duplicate_names{
+				fcppt::options::detail::duplicate_names_text(
+					common_names
+				)
+			};
 }
 
 #endif

@@ -9,7 +9,8 @@
 
 #include <fcppt/string.hpp>
 #include <fcppt/either/map.hpp>
-#include <fcppt/options/has_parameter_set.hpp>
+#include <fcppt/options/flag_name_set.hpp>
+#include <fcppt/options/option_name_set.hpp>
 #include <fcppt/options/result.hpp>
 #include <fcppt/options/result_of.hpp>
 #include <fcppt/options/state_fwd.hpp>
@@ -117,16 +118,32 @@ template<
 	typename Result,
 	typename Parser
 >
-fcppt::options::has_parameter_set
+fcppt::options::flag_name_set
 fcppt::options::detail::concrete<
 	Result,
 	Parser
->::parameters() const
+>::flag_names() const
 {
 	return
 		fcppt::options::detail::deref(
 			parser_
-		).parameters();
+		).flag_names();
+}
+
+template<
+	typename Result,
+	typename Parser
+>
+fcppt::options::option_name_set
+fcppt::options::detail::concrete<
+	Result,
+	Parser
+>::option_names() const
+{
+	return
+		fcppt::options::detail::deref(
+			parser_
+		).option_names();
 }
 
 template<

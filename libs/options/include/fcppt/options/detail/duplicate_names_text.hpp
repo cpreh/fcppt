@@ -4,12 +4,11 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_OPTIONS_DETAIL_STATE_FROM_ARGS_HPP_INCLUDED
-#define FCPPT_OPTIONS_DETAIL_STATE_FROM_ARGS_HPP_INCLUDED
+#ifndef FCPPT_OPTIONS_DETAIL_DUPLICATE_NAMES_TEXT_HPP_INCLUDED
+#define FCPPT_OPTIONS_DETAIL_DUPLICATE_NAMES_TEXT_HPP_INCLUDED
 
-#include <fcppt/args_vector.hpp>
-#include <fcppt/options/option_name_set.hpp>
-#include <fcppt/options/state.hpp>
+#include <fcppt/string.hpp>
+#include <fcppt/options/name_set.hpp>
 #include <fcppt/options/detail/symbol.hpp>
 
 
@@ -21,10 +20,9 @@ namespace detail
 {
 
 FCPPT_OPTIONS_DETAIL_SYMBOL
-fcppt::options::state
-state_from_args(
-	fcppt::args_vector const &,
-	fcppt::options::option_name_set const &
+fcppt::string
+duplicate_names_text(
+	fcppt::options::name_set const &
 );
 
 }

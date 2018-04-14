@@ -8,8 +8,9 @@
 #define FCPPT_OPTIONS_SWITCH_IMPL_HPP_INCLUDED
 
 #include <fcppt/string.hpp>
-#include <fcppt/options/has_parameter_set.hpp>
+#include <fcppt/options/flag_name_set.hpp>
 #include <fcppt/options/long_name_fwd.hpp>
+#include <fcppt/options/option_name_set.hpp>
 #include <fcppt/options/optional_help_text_fwd.hpp>
 #include <fcppt/options/optional_short_name_fwd.hpp>
 #include <fcppt/options/result.hpp>
@@ -68,13 +69,25 @@ fcppt::options::switch_<
 template<
 	typename Label
 >
-fcppt::options::has_parameter_set
+fcppt::options::flag_name_set
 fcppt::options::switch_<
 	Label
->::parameters() const
+>::flag_names() const
 {
 	return
-		impl_.parameters();
+		impl_.flag_names();
+}
+
+template<
+	typename Label
+>
+fcppt::options::option_name_set
+fcppt::options::switch_<
+	Label
+>::option_names() const
+{
+	return
+		impl_.option_names();
 }
 
 template<

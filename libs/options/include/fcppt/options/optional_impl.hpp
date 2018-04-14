@@ -16,7 +16,8 @@
 #include <fcppt/optional/nothing.hpp>
 #include <fcppt/optional/object_impl.hpp>
 #include <fcppt/options/error.hpp>
-#include <fcppt/options/has_parameter_set.hpp>
+#include <fcppt/options/flag_name_set.hpp>
+#include <fcppt/options/option_name_set.hpp>
 #include <fcppt/options/missing_error.hpp>
 #include <fcppt/options/optional_decl.hpp>
 #include <fcppt/options/other_error.hpp>
@@ -231,15 +232,29 @@ fcppt::options::optional<
 template<
 	typename Parser
 >
-fcppt::options::has_parameter_set
+fcppt::options::flag_name_set
 fcppt::options::optional<
 	Parser
->::parameters() const
+>::flag_names() const
 {
 	return
 		fcppt::options::detail::deref(
 			parser_
-		).parameters();
+		).flag_names();
+}
+
+template<
+	typename Parser
+>
+fcppt::options::option_name_set
+fcppt::options::optional<
+	Parser
+>::option_names() const
+{
+	return
+		fcppt::options::detail::deref(
+			parser_
+		).option_names();
 }
 
 template<

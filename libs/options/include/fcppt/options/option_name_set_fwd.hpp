@@ -4,13 +4,11 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_OPTIONS_HAS_PARAMETER_SET_HPP_INCLUDED
-#define FCPPT_OPTIONS_HAS_PARAMETER_SET_HPP_INCLUDED
+#ifndef FCPPT_OPTIONS_OPTION_NAME_SET_FWD_HPP_INCLUDED
+#define FCPPT_OPTIONS_OPTION_NAME_SET_FWD_HPP_INCLUDED
 
-#include <fcppt/string.hpp>
-#include <fcppt/config/external_begin.hpp>
-#include <unordered_set>
-#include <fcppt/config/external_end.hpp>
+#include <fcppt/make_strong_typedef.hpp>
+#include <fcppt/options/name_set.hpp>
 
 
 namespace fcppt
@@ -19,18 +17,17 @@ namespace options
 {
 
 /**
-\brief The set of option names
+\brief The set of option names.
 
 \ingroup fcpptoptions
 
 Each string in this set is expected to be followed by a value,
 e.g. "--foo bar".
 */
-typedef
-std::unordered_set<
-	fcppt::string
->
-has_parameter_set;
+FCPPT_MAKE_STRONG_TYPEDEF(
+	fcppt::options::name_set,
+	option_name_set
+);
 
 }
 }

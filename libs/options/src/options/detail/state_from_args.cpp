@@ -15,7 +15,7 @@
 #include <fcppt/optional/make.hpp>
 #include <fcppt/optional/make_if.hpp>
 #include <fcppt/optional/maybe.hpp>
-#include <fcppt/options/has_parameter_set.hpp>
+#include <fcppt/options/option_name_set.hpp>
 #include <fcppt/options/is_option.hpp>
 #include <fcppt/options/state.hpp>
 #include <fcppt/options/detail/state_from_args.hpp>
@@ -89,7 +89,7 @@ get_type(
 fcppt::options::state
 fcppt::options::detail::state_from_args(
 	fcppt::args_vector const &_args,
-	fcppt::options::has_parameter_set const &_parameters
+	fcppt::options::option_name_set const &_option_names
 )
 {
 	fcppt::args_vector args;
@@ -127,7 +127,7 @@ fcppt::options::detail::state_from_args(
 				);
 			},
 			[
-				&_parameters,
+				&_option_names,
 				&it,
 				end,
 				&flags,
@@ -136,7 +136,7 @@ fcppt::options::detail::state_from_args(
 				fcppt::options::state::name_pair const &_name
 			){
 				if(
-					_parameters.count(
+					_option_names.get().count(
 						_name.first
 					)
 					==

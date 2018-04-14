@@ -10,7 +10,8 @@
 #include <fcppt/noncopyable.hpp>
 #include <fcppt/string.hpp>
 #include <fcppt/options/base_fwd.hpp>
-#include <fcppt/options/has_parameter_set.hpp>
+#include <fcppt/options/flag_name_set_fwd.hpp>
+#include <fcppt/options/option_name_set_fwd.hpp>
 #include <fcppt/options/result_fwd.hpp>
 #include <fcppt/options/state_fwd.hpp>
 #include <fcppt/record/is_object.hpp>
@@ -66,8 +67,12 @@ public:
 	) const = 0;
 
 	virtual
-	fcppt::options::has_parameter_set
-	parameters() const = 0;
+	fcppt::options::flag_name_set
+	flag_names() const = 0;
+
+	virtual
+	fcppt::options::option_name_set
+	option_names() const = 0;
 
 	virtual
 	fcppt::string

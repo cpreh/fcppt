@@ -10,9 +10,10 @@
 #include <fcppt/string.hpp>
 #include <fcppt/options/active_value.hpp>
 #include <fcppt/options/flag_fwd.hpp>
-#include <fcppt/options/has_parameter_set.hpp>
+#include <fcppt/options/flag_name_set.hpp>
 #include <fcppt/options/inactive_value.hpp>
 #include <fcppt/options/long_name.hpp>
+#include <fcppt/options/option_name_set.hpp>
 #include <fcppt/options/optional_help_text.hpp>
 #include <fcppt/options/optional_short_name.hpp>
 #include <fcppt/options/result_fwd.hpp>
@@ -102,8 +103,11 @@ public:
 		fcppt::options::state &
 	) const;
 
-	fcppt::options::has_parameter_set
-	parameters() const;
+	fcppt::options::flag_name_set
+	flag_names() const;
+
+	fcppt::options::option_name_set
+	option_names() const;
 
 	fcppt::string
 	usage() const;
