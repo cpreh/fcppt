@@ -86,6 +86,13 @@
 	</ul>
 </li>
 
+<li>\ref fcpptoptions
+	<ul>
+	<li>The active and inactive values in \link fcppt::options::flag\endlink must be different now.</li>
+	<li>All long and short names must be distinct now.</li>
+	</ul>
+</li>
+
 </ul>
 
 \subsection changes_removed_functionality_to_280 Removed functionality
