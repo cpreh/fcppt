@@ -6,8 +6,8 @@
 
 #include <fcppt/make_strong_typedef.hpp>
 #include <fcppt/strong_typedef_comparison.hpp>
-#include <fcppt/strong_typedef_input.hpp>
 #include <fcppt/strong_typedef_impl.hpp>
+#include <fcppt/strong_typedef_input.hpp>
 #include <fcppt/strong_typedef_output.hpp>
 #include <fcppt/io/extract.hpp>
 #include <fcppt/optional/make.hpp>

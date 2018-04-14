@@ -8,8 +8,8 @@
 #include <fcppt/reference.hpp>
 #include <fcppt/algorithm/map.hpp>
 #include <fcppt/cast/size.hpp>
-#include <fcppt/container/array/init.hpp>
 #include <fcppt/container/at_optional.hpp>
+#include <fcppt/container/array/init.hpp>
 #include <fcppt/optional/maybe.hpp>
 #include <fcppt/optional/reference.hpp>
 #include <fcppt/config/external_begin.hpp>

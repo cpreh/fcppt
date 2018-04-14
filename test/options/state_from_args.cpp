@@ -9,9 +9,9 @@
 #include <fcppt/text.hpp>
 #include <fcppt/optional/comparison.hpp>
 #include <fcppt/optional/output.hpp>
-#include <fcppt/options/state.hpp>
 #include <fcppt/options/name_set.hpp>
 #include <fcppt/options/option_name_set.hpp>
+#include <fcppt/options/state.hpp>
 #include <fcppt/options/detail/state_from_args.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/test/unit_test.hpp>

@@ -16,10 +16,10 @@
 #include <fcppt/options/argument_decl.hpp>
 #include <fcppt/options/error.hpp>
 #include <fcppt/options/flag_name_set.hpp>
-#include <fcppt/options/option_name_set.hpp>
 #include <fcppt/options/long_name.hpp>
 #include <fcppt/options/missing_error.hpp>
 #include <fcppt/options/name_set.hpp>
+#include <fcppt/options/option_name_set.hpp>
 #include <fcppt/options/optional_help_text.hpp>
 #include <fcppt/options/other_error.hpp>
 #include <fcppt/options/pretty_type.hpp>

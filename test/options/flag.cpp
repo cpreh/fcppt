@@ -8,8 +8,8 @@
 #include <fcppt/text.hpp>
 #include <fcppt/either/comparison.hpp>
 #include <fcppt/either/make_success.hpp>
-#include <fcppt/options/exception.hpp>
 #include <fcppt/options/error.hpp>
+#include <fcppt/options/exception.hpp>
 #include <fcppt/options/flag.hpp>
 #include <fcppt/options/long_name.hpp>
 #include <fcppt/options/make_active_value.hpp>

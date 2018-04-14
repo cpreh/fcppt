@@ -13,8 +13,8 @@
 #include <fcppt/text.hpp>
 #include <fcppt/either/make_success.hpp>
 #include <fcppt/optional/maybe.hpp>
-#include <fcppt/options/exception.hpp>
 #include <fcppt/options/error.hpp>
+#include <fcppt/options/exception.hpp>
 #include <fcppt/options/flag_decl.hpp>
 #include <fcppt/options/flag_name_set.hpp>
 #include <fcppt/options/long_name.hpp>

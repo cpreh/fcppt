@@ -7,8 +7,8 @@
 #ifndef FCPPT_OPTIONS_PRODUCT_IMPL_HPP_INCLUDED
 #define FCPPT_OPTIONS_PRODUCT_IMPL_HPP_INCLUDED
 
-#include <fcppt/strong_typedef_apply.hpp>
 #include <fcppt/string.hpp>
+#include <fcppt/strong_typedef_apply.hpp>
 #include <fcppt/text.hpp>
 #include <fcppt/algorithm/set_intersection.hpp>
 #include <fcppt/algorithm/set_union.hpp>

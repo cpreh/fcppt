@@ -15,8 +15,8 @@
 #include <fcppt/optional/make.hpp>
 #include <fcppt/optional/make_if.hpp>
 #include <fcppt/optional/maybe.hpp>
-#include <fcppt/options/option_name_set.hpp>
 #include <fcppt/options/is_option.hpp>
+#include <fcppt/options/option_name_set.hpp>
 #include <fcppt/options/state.hpp>
 #include <fcppt/options/detail/state_from_args.hpp>
 #include <fcppt/variant/match.hpp>

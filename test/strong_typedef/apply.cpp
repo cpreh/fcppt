@@ -4,12 +4,12 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/make_unique_ptr.hpp>
-#include <fcppt/unique_ptr_impl.hpp>
 #include <fcppt/make_strong_typedef.hpp>
-#include <fcppt/strong_typedef_impl.hpp>
+#include <fcppt/make_unique_ptr.hpp>
 #include <fcppt/strong_typedef_apply.hpp>
+#include <fcppt/strong_typedef_impl.hpp>
 #include <fcppt/strong_typedef_tag.hpp>
+#include <fcppt/unique_ptr_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/test/unit_test.hpp>
 #include <utility>

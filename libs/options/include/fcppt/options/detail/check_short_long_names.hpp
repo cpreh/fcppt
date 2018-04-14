@@ -7,9 +7,9 @@
 #ifndef FCPPT_OPTIONS_DETAIL_CHECK_SHORT_LONG_NAMES_HPP_INCLUDED
 #define FCPPT_OPTIONS_DETAIL_CHECK_SHORT_LONG_NAMES_HPP_INCLUDED
 
-#include <fcppt/options/detail/symbol.hpp>
 #include <fcppt/options/long_name_fwd.hpp>
 #include <fcppt/options/optional_short_name_fwd.hpp>
+#include <fcppt/options/detail/symbol.hpp>
 
 
 namespace fcppt

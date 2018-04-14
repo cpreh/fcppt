@@ -279,6 +279,7 @@ set(
 	libs/core/include/fcppt/assert/error.hpp
 	libs/core/include/fcppt/assert/error_message.hpp
 	libs/core/include/fcppt/assert/exception.hpp
+	libs/core/include/fcppt/assert/exception_fwd.hpp
 	libs/core/include/fcppt/assert/file.hpp
 	libs/core/include/fcppt/assert/function.hpp
 	libs/core/include/fcppt/assert/impl/exception.hpp
@@ -349,7 +350,9 @@ set(
 	libs/core/include/fcppt/c_deleter_fwd.hpp
 	libs/core/include/fcppt/cast/apply.hpp
 	libs/core/include/fcppt/cast/bad_dynamic.hpp
+	libs/core/include/fcppt/cast/bad_dynamic_fwd.hpp
 	libs/core/include/fcppt/cast/bad_truncation_check.hpp
+	libs/core/include/fcppt/cast/bad_truncation_check_fwd.hpp
 	libs/core/include/fcppt/cast/detail/dynamic.hpp
 	libs/core/include/fcppt/cast/detail/dynamic_exn.hpp
 	libs/core/include/fcppt/cast/detail/promote_int_type.hpp
@@ -636,6 +639,7 @@ set(
 	libs/core/include/fcppt/detail/noncopyable.hpp
 	libs/core/include/fcppt/detail/placement_new.hpp
 	libs/core/include/fcppt/detail/strong_typedef_cast.hpp
+	libs/core/include/fcppt/detail/strong_typedef_tag.hpp
 	libs/core/include/fcppt/detail/tag_type.hpp
 	libs/core/include/fcppt/detail/text.hpp
 	libs/core/include/fcppt/detail/void.hpp
@@ -729,6 +733,7 @@ set(
 	libs/core/include/fcppt/error/strerrno.hpp
 	libs/core/include/fcppt/error/strerror.hpp
 	libs/core/include/fcppt/exception.hpp
+	libs/core/include/fcppt/exception_fwd.hpp
 	libs/core/include/fcppt/extract_from_string.hpp
 	libs/core/include/fcppt/from_std_string.hpp
 	libs/core/include/fcppt/from_std_string_locale.hpp
@@ -1328,6 +1333,7 @@ set(
 	libs/core/include/fcppt/string.hpp
 	libs/core/include/fcppt/string_conv_locale.hpp
 	libs/core/include/fcppt/strong_typedef.hpp
+	libs/core/include/fcppt/strong_typedef_apply.hpp
 	libs/core/include/fcppt/strong_typedef_arithmetic.hpp
 	libs/core/include/fcppt/strong_typedef_assignment.hpp
 	libs/core/include/fcppt/strong_typedef_bitwise.hpp
@@ -1341,9 +1347,11 @@ set(
 	libs/core/include/fcppt/strong_typedef_hash_impl.hpp
 	libs/core/include/fcppt/strong_typedef_impl.hpp
 	libs/core/include/fcppt/strong_typedef_input.hpp
+	libs/core/include/fcppt/strong_typedef_map.hpp
 	libs/core/include/fcppt/strong_typedef_operators.hpp
 	libs/core/include/fcppt/strong_typedef_output.hpp
 	libs/core/include/fcppt/strong_typedef_std_hash.hpp
+	libs/core/include/fcppt/strong_typedef_tag.hpp
 	libs/core/include/fcppt/symbol/class.hpp
 	libs/core/include/fcppt/symbol/export.hpp
 	libs/core/include/fcppt/symbol/export_class_instantiation.hpp
@@ -1355,6 +1363,7 @@ set(
 	libs/core/include/fcppt/text.hpp
 	libs/core/include/fcppt/time/ctime.hpp
 	libs/core/include/fcppt/time/exception.hpp
+	libs/core/include/fcppt/time/exception_fwd.hpp
 	libs/core/include/fcppt/time/gmtime.hpp
 	libs/core/include/fcppt/time/impl/exception.hpp
 	libs/core/include/fcppt/time/localtime.hpp
@@ -1427,12 +1436,14 @@ set(
 	libs/core/include/fcppt/variant/dynamic_cast_types.hpp
 	libs/core/include/fcppt/variant/equal.hpp
 	libs/core/include/fcppt/variant/exception.hpp
+	libs/core/include/fcppt/variant/exception_fwd.hpp
 	libs/core/include/fcppt/variant/get_exn.hpp
 	libs/core/include/fcppt/variant/get_unsafe.hpp
 	libs/core/include/fcppt/variant/holds_type.hpp
 	libs/core/include/fcppt/variant/impl/exception.hpp
 	libs/core/include/fcppt/variant/impl/invalid_get.hpp
 	libs/core/include/fcppt/variant/invalid_get.hpp
+	libs/core/include/fcppt/variant/invalid_get_fwd.hpp
 	libs/core/include/fcppt/variant/is_object.hpp
 	libs/core/include/fcppt/variant/less.hpp
 	libs/core/include/fcppt/variant/match.hpp
