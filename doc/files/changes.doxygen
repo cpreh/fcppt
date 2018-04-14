@@ -40,6 +40,7 @@
 
 <li>\ref fcpptstrongtypedef
 	<ul>
+	<li>Added \link fcppt::strong_typedef_map\endlink.</li>
 	<li>Added \link fcppt::strong_typedef_tag\endlink.</li>
 	</ul>
 </li>

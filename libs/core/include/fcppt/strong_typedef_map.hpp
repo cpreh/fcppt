@@ -7,10 +7,28 @@
 #ifndef FCPPT_STRONG_TYPEDEF_MAP_HPP_INCLUDED
 #define FCPPT_STRONG_TYPEDEF_MAP_HPP_INCLUDED
 
+#include <fcppt/is_strong_typedef.hpp>
+#include <fcppt/move_if_rvalue.hpp>
+#include <fcppt/strong_typedef_impl.hpp>
+#include <fcppt/strong_typedef_tag.hpp>
+#include <fcppt/type_traits/remove_cv_ref_t.hpp>
+
 
 namespace fcppt
 {
 
+/**
+\brief Maps over a strong typedef.
+
+\ingroup fcpptstrongtypedef
+
+Returns a strong typedef with the same tag type and value <code>_function(_input.get())</code>.
+
+\tparam StrongTypedef Must be an \link fcppt::strong_typedef\endlink.
+
+\tparam Function Must be a function callable as <code>R StrongTypedef::value_type</code>,
+where <code>R</code> is the result type.
+*/
 template<
 	typename StrongTypedef,
 	typename Function
@@ -33,14 +51,14 @@ fcppt::strong_typedef<
 		)
 	),
 	fcppt::strong_typedef_tag<
-		fcppt::type_traits::remove_cv_ref<
+		fcppt::type_traits::remove_cv_ref_t<
 			StrongTypedef
 		>
 	>
 >
 {
 	typedef
-	fcppt::type_traits::remove_cv_ref<
+	fcppt::type_traits::remove_cv_ref_t<
 		StrongTypedef
 	>
 	input_type;

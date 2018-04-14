@@ -261,6 +261,10 @@ add_fcppt_test(
 )
 
 add_subdirectory(
+	strong_typedef
+)
+
+add_subdirectory(
 	type_traits
 )
 
