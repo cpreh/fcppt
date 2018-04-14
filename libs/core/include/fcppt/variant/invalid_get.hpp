@@ -9,6 +9,7 @@
 
 #include <fcppt/string.hpp>
 #include <fcppt/variant/exception.hpp>
+#include <fcppt/variant/invalid_get_fwd.hpp>
 
 
 namespace fcppt

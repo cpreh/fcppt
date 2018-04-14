@@ -9,6 +9,7 @@
 
 #include <fcppt/exception.hpp>
 #include <fcppt/string.hpp>
+#include <fcppt/cast/bad_truncation_check_fwd.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <typeindex>
 #include <fcppt/config/external_end.hpp>

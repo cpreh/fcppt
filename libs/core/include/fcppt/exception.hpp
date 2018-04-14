@@ -7,6 +7,7 @@
 #ifndef FCPPT_EXCEPTION_HPP_INCLUDED
 #define FCPPT_EXCEPTION_HPP_INCLUDED
 
+#include <fcppt/exception_fwd.hpp>
 #include <fcppt/string.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <exception>

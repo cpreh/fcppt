@@ -8,6 +8,7 @@
 #define FCPPT_CAST_BAD_DYNAMIC_HPP_INCLUDED
 
 #include <fcppt/exception.hpp>
+#include <fcppt/cast/bad_dynamic_fwd.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <typeindex>
 #include <fcppt/config/external_end.hpp>

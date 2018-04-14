@@ -7,8 +7,10 @@
 #ifndef FCPPT_ASSERT_EXCEPTION_HPP_INCLUDED
 #define FCPPT_ASSERT_EXCEPTION_HPP_INCLUDED
 
+#include <fcppt/assert/exception_fwd.hpp>
 #include <fcppt/assert/information.hpp>
 #include <fcppt/exception.hpp>
+
 
 namespace fcppt
 {

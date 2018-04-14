@@ -9,6 +9,7 @@
 
 #include <fcppt/exception.hpp>
 #include <fcppt/string.hpp>
+#include <fcppt/time/exception_fwd.hpp>
 
 
 namespace fcppt
