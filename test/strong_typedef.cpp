@@ -9,6 +9,7 @@
 #include <fcppt/strong_typedef.hpp>
 #include <fcppt/strong_typedef_input.hpp>
 #include <fcppt/strong_typedef_output.hpp>
+#include <fcppt/strong_typedef_tag.hpp>
 #include <fcppt/unique_ptr.hpp>
 #include <fcppt/io/extract.hpp>
 #include <fcppt/optional/make.hpp>
@@ -18,6 +19,7 @@
 #include <boost/test/unit_test.hpp>
 #include <sstream>
 #include <unordered_set>
+#include <type_traits>
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
@@ -43,6 +45,16 @@ FCPPT_MAKE_STRONG_TYPEDEF(
 FCPPT_MAKE_STRONG_TYPEDEF(
 	unsigned,
 	strong_uint
+);
+
+static_assert(
+	std::is_same<
+		fcppt::strong_typedef_tag<
+			strong_uint
+		>,
+		strong_uint::tag_type
+	>::value,
+	""
 );
 
 }
