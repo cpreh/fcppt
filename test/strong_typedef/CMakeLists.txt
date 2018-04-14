@@ -13,5 +13,26 @@ add_fcppt_strong_typedef_test(
 )
 
 add_fcppt_strong_typedef_test(
+	hash
+)
+
+add_fcppt_strong_typedef_test(
+	io
+)
+
+add_fcppt_strong_typedef_test(
 	map
+)
+
+add_fcppt_strong_typedef_test(
+	move
+)
+
+add_fcppt_strong_typedef_test(
+	operations
+)
+
+add_fcppt_strong_typedef_test(
+	tag
+	NO_CODE
 )

@@ -256,10 +256,6 @@ add_subdirectory(
 	signal
 )
 
-add_fcppt_test(
-	strong_typedef
-)
-
 add_subdirectory(
 	strong_typedef
 )
