@@ -8,10 +8,12 @@
 #define FCPPT_OPTIONS_FLAG_IMPL_HPP_INCLUDED
 
 #include <fcppt/const.hpp>
+#include <fcppt/insert_to_fcppt_string.hpp>
 #include <fcppt/string.hpp>
 #include <fcppt/text.hpp>
 #include <fcppt/either/make_success.hpp>
 #include <fcppt/optional/maybe.hpp>
+#include <fcppt/options/exception.hpp>
 #include <fcppt/options/error.hpp>
 #include <fcppt/options/flag_decl.hpp>
 #include <fcppt/options/flag_name_set.hpp>
@@ -66,6 +68,20 @@ fcppt::options::flag<
 		_short_name,
 		_long_name
 	);
+
+	if(
+		_active_value.get()
+		==
+		_inactive_value.get()
+	)
+		throw
+			fcppt::options::exception{
+				FCPPT_TEXT("The active and the inactive value must be different: ")
+				+
+				fcppt::insert_to_fcppt_string(
+					_active_value.get()
+				)
+			};
 }
 
 template<

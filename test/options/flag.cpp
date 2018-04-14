@@ -8,6 +8,7 @@
 #include <fcppt/text.hpp>
 #include <fcppt/either/comparison.hpp>
 #include <fcppt/either/make_success.hpp>
+#include <fcppt/options/exception.hpp>
 #include <fcppt/options/error.hpp>
 #include <fcppt/options/flag.hpp>
 #include <fcppt/options/long_name.hpp>
@@ -24,6 +25,20 @@
 #include <boost/test/unit_test.hpp>
 #include <fcppt/config/external_end.hpp>
 
+
+namespace
+{
+
+bool
+check_exception(
+	fcppt::options::exception const &
+)
+{
+	return
+		true;
+}
+
+}
 
 BOOST_AUTO_TEST_CASE(
 	options_flag
@@ -108,5 +123,23 @@ BOOST_AUTO_TEST_CASE(
 					= 10
 			}
 		)
+	);
+
+	BOOST_CHECK_EXCEPTION(
+		int_flag_type(
+			fcppt::options::optional_short_name{},
+			fcppt::options::long_name{
+				FCPPT_TEXT("flag")
+			},
+			fcppt::options::make_active_value(
+				0
+			),
+			fcppt::options::make_inactive_value(
+				0
+			),
+			fcppt::options::optional_help_text{}
+		),
+		fcppt::options::exception,
+		check_exception
 	);
 }

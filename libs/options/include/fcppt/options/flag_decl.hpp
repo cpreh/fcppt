@@ -65,6 +65,8 @@ public:
 	/**
 	\brief Constructs a flag parser.
 
+	\note The active and the inactive value must be different.
+
 	\param short_name An optional short name ("-f") this parser will match.
 
 	\param long_name The long name ("--flag") this parser will match.
