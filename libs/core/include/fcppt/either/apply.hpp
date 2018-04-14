@@ -20,10 +20,13 @@
 #include <fcppt/type_traits/remove_cv_ref_t.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <brigand/algorithms/all.hpp>
+#include <brigand/functions/lambda/apply.hpp>
+#include <brigand/functions/lambda/bind.hpp>
 #include <brigand/sequences/list.hpp>
 #include <brigand/types/args.hpp>
 #include <array>
 #include <cstddef>
+#include <type_traits>
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
@@ -92,13 +95,17 @@ fcppt::either::object<
 		"Either1 must be an either"
 	);
 
+	typedef
+	::brigand::list<
+		fcppt::type_traits::remove_cv_ref_t<
+			Eithers
+		>...
+	>
+	eithers;
+
 	static_assert(
 		::brigand::all<
-			::brigand::list<
-				fcppt::type_traits::remove_cv_ref_t<
-					Eithers
-				>...
-			>,
+			eithers,
 			fcppt::either::is_object<
 				::brigand::_1
 			>
@@ -111,6 +118,23 @@ fcppt::either::object<
 		either1
 	>
 	failure;
+
+	static_assert(
+		::brigand::all<
+			eithers,
+			::brigand::bind<
+				std::is_same,
+				::brigand::pin<
+					failure
+				>,
+				::brigand::bind<
+					fcppt::either::failure_type,
+					::brigand::_1
+				>
+			>
+		>::value,
+		"All eithers must have the same failure type"
+	);
 
 	typedef
 	fcppt::either::object<
