@@ -7,6 +7,7 @@
 #ifndef FCPPT_OPTIONS_PRODUCT_IMPL_HPP_INCLUDED
 #define FCPPT_OPTIONS_PRODUCT_IMPL_HPP_INCLUDED
 
+#include <fcppt/strong_typedef_apply.hpp>
 #include <fcppt/string.hpp>
 #include <fcppt/text.hpp>
 #include <fcppt/algorithm/set_intersection.hpp>
@@ -18,6 +19,7 @@
 #include <fcppt/options/duplicate_names.hpp>
 #include <fcppt/options/error.hpp>
 #include <fcppt/options/flag_name_set.hpp>
+#include <fcppt/options/name_set.hpp>
 #include <fcppt/options/option_name_set.hpp>
 #include <fcppt/options/product_decl.hpp>
 #include <fcppt/options/result.hpp>
@@ -278,18 +280,26 @@ fcppt::options::product<
 	Right
 >::flag_names() const
 {
-	// TODO: strong_typedef_apply
 	return
-		fcppt::options::flag_name_set{
-			fcppt::algorithm::set_union(
-				fcppt::options::detail::deref(
-					left_
-				).flag_names().get(),
-				fcppt::options::detail::deref(
-					right_
-				).flag_names().get()
+		fcppt::strong_typedef_apply(
+			[](
+				fcppt::options::name_set const &_left_set,
+				fcppt::options::name_set const &_right_set
 			)
-		};
+			{
+				return
+					fcppt::algorithm::set_union(
+						_left_set,
+						_right_set
+					);
+			},
+			fcppt::options::detail::deref(
+				left_
+			).flag_names(),
+			fcppt::options::detail::deref(
+				right_
+			).flag_names()
+		);
 }
 
 template<
@@ -302,18 +312,26 @@ fcppt::options::product<
 	Right
 >::option_names() const
 {
-	// TODO: strong_typedef_apply
 	return
-		fcppt::options::option_name_set{
-			fcppt::algorithm::set_union(
-				fcppt::options::detail::deref(
-					left_
-				).option_names().get(),
-				fcppt::options::detail::deref(
-					right_
-				).option_names().get()
+		fcppt::strong_typedef_apply(
+			[](
+				fcppt::options::name_set const &_left_set,
+				fcppt::options::name_set const &_right_set
 			)
-		};
+			{
+				return
+					fcppt::algorithm::set_union(
+						_left_set,
+						_right_set
+					);
+			},
+			fcppt::options::detail::deref(
+				left_
+			).option_names(),
+			fcppt::options::detail::deref(
+				right_
+			).option_names()
+		);
 }
 
 template<

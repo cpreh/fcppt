@@ -9,5 +9,9 @@ function(
 endfunction()
 
 add_fcppt_strong_typedef_test(
+	apply
+)
+
+add_fcppt_strong_typedef_test(
 	map
 )

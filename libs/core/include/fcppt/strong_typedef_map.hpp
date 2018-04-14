@@ -26,7 +26,7 @@ Returns a strong typedef with the same tag type and value <code>_function(_input
 
 \tparam StrongTypedef Must be an \link fcppt::strong_typedef\endlink.
 
-\tparam Function Must be a function callable as <code>R StrongTypedef::value_type</code>,
+\tparam Function Must be a function callable as <code>R (StrongTypedef::value_type)</code>,
 where <code>R</code> is the result type.
 */
 template<
