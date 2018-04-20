@@ -9,6 +9,7 @@
 
 #include <fcppt/config/external_begin.hpp>
 #include <algorithm>
+#include <utility>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
@@ -40,7 +41,9 @@ reverse(
 	);
 
 	return
-		_container;
+		std::move(
+			_container
+		);
 }
 
 template<

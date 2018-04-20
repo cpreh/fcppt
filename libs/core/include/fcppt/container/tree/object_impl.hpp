@@ -460,7 +460,9 @@ fcppt::container::tree::object<
 					optional_ref{};
 
 				return
-					_result;
+					std::move(
+						_result
+					);
 			}
 		);
 }
@@ -565,7 +567,9 @@ fcppt::container::tree::object<
 					optional_ref{};
 
 				return
-					_result;
+					std::move(
+						_result
+					);
 			}
 		);
 }
