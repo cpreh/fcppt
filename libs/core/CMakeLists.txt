@@ -63,6 +63,8 @@ set(
 	libs/core/include/fcppt/args.hpp
 	libs/core/include/fcppt/args_char.hpp
 	libs/core/include/fcppt/args_from_second.hpp
+	libs/core/include/fcppt/args_range.hpp
+	libs/core/include/fcppt/args_range_fwd.hpp
 	libs/core/include/fcppt/args_vector.hpp
 	libs/core/include/fcppt/assert/basic/conditional.hpp
 	libs/core/include/fcppt/assert/basic/conditional_message.hpp
