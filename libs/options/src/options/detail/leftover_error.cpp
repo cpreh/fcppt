@@ -4,140 +4,41 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/string.hpp>
+#include <fcppt/insert_to_fcppt_string.hpp>
 #include <fcppt/text.hpp>
-#include <fcppt/algorithm/join_strings.hpp>
-#include <fcppt/algorithm/map.hpp>
-#include <fcppt/algorithm/reverse.hpp>
+#include <fcppt/container/output.hpp>
+#include <fcppt/optional/make_if.hpp>
+#include <fcppt/options/error.hpp>
+#include <fcppt/options/other_error.hpp>
 #include <fcppt/options/state.hpp>
 #include <fcppt/options/detail/leftover_error.hpp>
-#include <fcppt/config/external_begin.hpp>
-#include <vector>
-#include <fcppt/config/external_end.hpp>
+#include <fcppt/options/detail/optional_error.hpp>
 
 
-fcppt::string
+fcppt::options::detail::optional_error
 fcppt::options::detail::leftover_error(
 	fcppt::options::state const &_state
 )
 {
-	// TODO: Make this less ugly
-
-	fcppt::string result;
-
-	if(
-		!_state.leftover_args().empty()
-	)
-		result
-			+=
-			FCPPT_TEXT("Too many arguments: ")
-			+
-			fcppt::algorithm::join_strings(
-				fcppt::algorithm::reverse(
-					_state.leftover_args()
-				),
-				fcppt::string{
-					FCPPT_TEXT(",")
-				}
-			)
-			+
-			FCPPT_TEXT('.');
-
-	auto const get_key_names(
-		[](
-			auto const &_map
-		)
-		{
-			return
-				fcppt::algorithm::map<
-					std::vector<
-						fcppt::string
-					>
-				>(
-					_map,
-					[](
-						auto const &_value
-					)
-					{
-						auto const expand_name(
-							[](
-								fcppt::options::state::name_pair const &_name
-							)
-							{
-								return
-									(
-										_name.second.get()
-										?
-											FCPPT_TEXT("-")
-										:
-											FCPPT_TEXT("--")
-									)
-									+
-									_name.first;
-							}
-						);
-
-						return
-							expand_name(
-								_value.first
-							);
-					}
-				);
-		}
-	);
-
-	if(
-		!_state.leftover_flags().empty()
-	)
-	{
-		if(
-			!result.empty()
-		)
-			result +=
-				FCPPT_TEXT(' ');
-
-		result
-			+=
-			FCPPT_TEXT("Excess flags: ")
-			+
-			fcppt::algorithm::join_strings(
-				get_key_names(
-					_state.leftover_flags()
-				),
-				fcppt::string{
-					FCPPT_TEXT(',')
-				}
-			)
-			+
-			FCPPT_TEXT('.');
-	}
-
-	if(
-		!_state.leftover_options().empty()
-	)
-	{
-		if(
-			!result.empty()
-		)
-			result +=
-				FCPPT_TEXT(' ');
-
-		result
-			+=
-			FCPPT_TEXT("Excess options: ")
-			+
-			fcppt::algorithm::join_strings(
-				get_key_names(
-					_state.leftover_options()
-				),
-				fcppt::string{
-					FCPPT_TEXT(',')
-				}
-			)
-			+
-			FCPPT_TEXT('.');
-	}
-
 	return
-		result;
+		fcppt::optional::make_if(
+			not
+			_state.args_.empty(),
+			[
+				&_state
+			]{
+				return
+					fcppt::options::error{
+						fcppt::options::other_error{
+							FCPPT_TEXT("Leftover arguments ")
+							+
+							fcppt::insert_to_fcppt_string(
+								fcppt::container::output(
+									_state.args_
+								)
+							)
+						}
+					};
+			}
+		);
 }

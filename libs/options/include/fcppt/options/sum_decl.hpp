@@ -4,17 +4,17 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_OPTIONS_PRODUCT_DECL_HPP_INCLUDED
-#define FCPPT_OPTIONS_PRODUCT_DECL_HPP_INCLUDED
+#ifndef FCPPT_OPTIONS_SUM_DECL_HPP_INCLUDED
+#define FCPPT_OPTIONS_SUM_DECL_HPP_INCLUDED
 
 #include <fcppt/string.hpp>
 #include <fcppt/options/flag_name_set.hpp>
 #include <fcppt/options/option_name_set.hpp>
 #include <fcppt/options/parse_arguments_fwd.hpp>
-#include <fcppt/options/product_fwd.hpp>
+#include <fcppt/options/sum_fwd.hpp>
 #include <fcppt/options/result_fwd.hpp>
 #include <fcppt/options/result_of.hpp>
-#include <fcppt/record/disjoint_product.hpp>
+#include <fcppt/variant/variadic_fwd.hpp>
 
 
 namespace fcppt
@@ -23,57 +23,52 @@ namespace options
 {
 
 /**
-\brief A product of two parsers.
+\brief A sum of two parsers.
 
 \ingroup fcpptoptions
 
-This parser first applies its left parser and if that succeeds also applies its
-right parser. Use \link fcppt::options::apply\endlink to create a product of
-two or more parsers. The result type is a record that contains the elements of
-<em>both</em> \a Left and \a Right. Therefore, \a Left and \a Right must have
-<em>disjoint</em> label sets.
-
-\see fcppt::options::apply
+This parser first tries its left parser and if that succeeds returns its result.
+Otherwise, it tries the second parser and returns its result.
 */
 template<
 	typename Left,
 	typename Right
 >
-class product
+class sum
 {
 public:
-	product(
+	sum(
 		Left const &,
 		Right const &
 	);
 
-	product(
+	sum(
 		Left &&,
 		Right &&
 	);
 
-	product(
-		product const &
+	sum(
+		sum const &
 	);
 
-	product(
-		product &&
+	sum(
+		sum &&
 	);
 
-	product &
+	sum &
 	operator=(
-		product const &
+		sum const &
 	);
 
-	product &
+	sum &
 	operator=(
-		product &&
+		sum &&
 	);
 
-	~product();
+	~sum();
 
 	typedef
-	fcppt::record::disjoint_product<
+	fcppt::variant::variadic<
 		fcppt::options::result_of<
 			Left
 		>,
@@ -99,9 +94,6 @@ public:
 	fcppt::string
 	usage() const;
 private:
-	void
-	check_disjoint() const;
-
 	Left left_;
 
 	Right right_;

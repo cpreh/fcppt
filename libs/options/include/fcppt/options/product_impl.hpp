@@ -21,10 +21,10 @@
 #include <fcppt/options/flag_name_set.hpp>
 #include <fcppt/options/name_set.hpp>
 #include <fcppt/options/option_name_set.hpp>
+#include <fcppt/options/parse_arguments_fwd.hpp>
 #include <fcppt/options/product_decl.hpp>
 #include <fcppt/options/result.hpp>
 #include <fcppt/options/result_of.hpp>
-#include <fcppt/options/state_fwd.hpp>
 #include <fcppt/options/detail/combine_errors.hpp>
 #include <fcppt/options/detail/deref.hpp>
 #include <fcppt/options/detail/duplicate_names_text.hpp>
@@ -167,7 +167,7 @@ fcppt::options::product<
 	Left,
 	Right
 >::parse(
-	fcppt::options::state &_state
+	fcppt::options::parse_arguments &_state
 ) const
 {
 FCPPT_PP_PUSH_WARNING

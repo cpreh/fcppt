@@ -21,9 +21,9 @@
 #include <fcppt/options/option_name_set.hpp>
 #include <fcppt/options/optional_decl.hpp>
 #include <fcppt/options/other_error.hpp>
+#include <fcppt/options/parse_arguments_fwd.hpp>
 #include <fcppt/options/result.hpp>
 #include <fcppt/options/result_of.hpp>
-#include <fcppt/options/state_fwd.hpp>
 #include <fcppt/options/detail/deref.hpp>
 #include <fcppt/record/init.hpp>
 #include <fcppt/record/map.hpp>
@@ -133,7 +133,7 @@ fcppt::options::result<
 fcppt::options::optional<
 	Parser
 >::parse(
-	fcppt::options::state &_state
+	fcppt::options::parse_arguments &_state
 ) const
 {
 	return

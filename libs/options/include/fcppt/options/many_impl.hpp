@@ -21,9 +21,9 @@
 #include <fcppt/options/missing_error.hpp>
 #include <fcppt/options/option_name_set.hpp>
 #include <fcppt/options/other_error.hpp>
+#include <fcppt/options/parse_arguments_fwd.hpp>
 #include <fcppt/options/result.hpp>
 #include <fcppt/options/result_of.hpp>
-#include <fcppt/options/state_fwd.hpp>
 #include <fcppt/options/detail/deref.hpp>
 #include <fcppt/record/element_to_label.hpp>
 #include <fcppt/record/element_to_type.hpp>
@@ -135,7 +135,7 @@ fcppt::options::result<
 fcppt::options::many<
 	Parser
 >::parse(
-	fcppt::options::state &_state
+	fcppt::options::parse_arguments &_state
 ) const
 {
 	// TODO: This is super ugly

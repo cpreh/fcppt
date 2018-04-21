@@ -11,9 +11,9 @@
 #include <fcppt/either/map.hpp>
 #include <fcppt/options/flag_name_set.hpp>
 #include <fcppt/options/option_name_set.hpp>
+#include <fcppt/options/parse_arguments_fwd.hpp>
 #include <fcppt/options/result.hpp>
 #include <fcppt/options/result_of.hpp>
-#include <fcppt/options/state_fwd.hpp>
 #include <fcppt/options/detail/concrete_decl.hpp>
 #include <fcppt/options/detail/deref.hpp>
 #include <fcppt/record/permute.hpp>
@@ -86,7 +86,7 @@ fcppt::options::detail::concrete<
 	Result,
 	Parser
 >::parse(
-	fcppt::options::state &_state
+	fcppt::options::parse_arguments &_state
 ) const
 {
 	return

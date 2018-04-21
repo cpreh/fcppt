@@ -4,20 +4,27 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/args_vector.hpp>
+#include <fcppt/options/option_name_set.hpp>
+#include <fcppt/options/parse_arguments.hpp>
 #include <fcppt/options/state.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
 
-fcppt::options::state::state(
-	fcppt::args_vector &&_args
+fcppt::options::parse_arguments::parse_arguments(
+	fcppt::options::state &&_state,
+	fcppt::options::option_name_set &&_option_names
 )
 :
-	args_{
+	state_{
 		std::move(
-			_args
+			_state
+		)
+	},
+	option_names_{
+		std::move(
+			_option_names
 		)
 	}
 {

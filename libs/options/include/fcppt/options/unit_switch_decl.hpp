@@ -4,19 +4,21 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_OPTIONS_SWITCH_DECL_HPP_INCLUDED
-#define FCPPT_OPTIONS_SWITCH_DECL_HPP_INCLUDED
+#ifndef FCPPT_OPTIONS_UNIT_SWITCH_DECL_HPP_INCLUDED
+#define FCPPT_OPTIONS_UNIT_SWITCH_DECL_HPP_INCLUDED
 
 #include <fcppt/string.hpp>
-#include <fcppt/options/flag_impl.hpp>
+#include <fcppt/unit.hpp>
+#include <fcppt/options/switch_impl.hpp>
 #include <fcppt/options/flag_name_set.hpp>
 #include <fcppt/options/long_name_fwd.hpp>
 #include <fcppt/options/option_name_set.hpp>
-#include <fcppt/options/optional_help_text_fwd.hpp>
 #include <fcppt/options/optional_short_name_fwd.hpp>
 #include <fcppt/options/parse_arguments_fwd.hpp>
 #include <fcppt/options/result_fwd.hpp>
-#include <fcppt/options/switch_fwd.hpp>
+#include <fcppt/options/unit_switch_fwd.hpp>
+#include <fcppt/record/element.hpp>
+#include <fcppt/record/variadic_fwd.hpp>
 
 
 namespace fcppt
@@ -25,23 +27,21 @@ namespace options
 {
 
 /**
-\brief A switch parser.
+\brief A required switch.
 
 \ingroup fcpptoptions
 
-A switch parser is similar to \link fcppt::options::flag\endlink, but its value
-type is fixed to <code>bool</code>, where its active value is <code>true</code>
-and its inactive value is <code>false</code>.
+This parser is similar to \link fcppt::options::switch_\endlink but it
+requires its switch to be specified.
 */
 template<
 	typename Label
 >
-class switch_
+class unit_switch
 {
 	typedef
-	fcppt::options::flag<
-		Label,
-		bool
+	fcppt::options::switch_<
+		Label
 	>
 	impl;
 public:
@@ -51,18 +51,19 @@ public:
 	\param short_name An optional short name ("-f") this parser will match.
 
 	\param long_name The long name ("--flag") this parser will match.
-
-	\param help_text Optional help text for this flag.
 	*/
-	switch_(
+	unit_switch(
 		fcppt::options::optional_short_name const &short_name,
-		fcppt::options::long_name const &long_name,
-		fcppt::options::optional_help_text const &help_text
+		fcppt::options::long_name const &long_name
 	);
 
 	typedef
-	typename
-	impl::result_type
+	fcppt::record::variadic<
+		fcppt::record::element<
+			Label,
+			fcppt::unit
+		>
+	>
 	result_type;
 
 	fcppt::options::result<

@@ -7,7 +7,7 @@
 #ifndef FCPPT_OPTIONS_HELP_SWITCH_FWD_HPP_INCLUDED
 #define FCPPT_OPTIONS_HELP_SWITCH_FWD_HPP_INCLUDED
 
-#include <fcppt/options/switch_fwd.hpp>
+#include <fcppt/options/unit_switch_fwd.hpp>
 #include <fcppt/options/detail/help_label.hpp>
 
 
@@ -24,7 +24,7 @@ namespace options
 A help parser is a switch used to display a help message.
 */
 typedef
-fcppt::options::switch_<
+fcppt::options::unit_switch<
 	fcppt::options::detail::help_label
 >
 help_switch;

@@ -4,8 +4,8 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_OPTIONS_PRODUCT_FWD_HPP_INCLUDED
-#define FCPPT_OPTIONS_PRODUCT_FWD_HPP_INCLUDED
+#ifndef FCPPT_OPTIONS_SUM_FWD_HPP_INCLUDED
+#define FCPPT_OPTIONS_SUM_FWD_HPP_INCLUDED
 
 
 namespace fcppt
@@ -17,7 +17,7 @@ template<
 	typename Left,
 	typename Right
 >
-class product;
+class sum;
 
 }
 }

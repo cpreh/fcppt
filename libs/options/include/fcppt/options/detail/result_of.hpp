@@ -7,6 +7,7 @@
 #ifndef FCPPT_OPTIONS_DETAIL_RESULT_OF_HPP_INCLUDED
 #define FCPPT_OPTIONS_DETAIL_RESULT_OF_HPP_INCLUDED
 
+#include <fcppt/reference_fwd.hpp>
 #include <fcppt/options/base_unique_ptr_fwd.hpp>
 
 
@@ -40,6 +41,21 @@ struct result_of<
 	typedef
 	Result
 	type;
+};
+
+template<
+	typename Parser
+>
+struct result_of<
+	fcppt::reference<
+		Parser const
+	>
+>
+:
+fcppt::options::detail::result_of<
+	Parser
+>
+{
 };
 
 }

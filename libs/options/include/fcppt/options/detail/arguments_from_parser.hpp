@@ -4,13 +4,13 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_OPTIONS_DETAIL_STATE_FROM_PARSER_HPP_INCLUDED
-#define FCPPT_OPTIONS_DETAIL_STATE_FROM_PARSER_HPP_INCLUDED
+#ifndef FCPPT_OPTIONS_DETAIL_ARGUMENTS_FROM_PARSER_HPP_INCLUDED
+#define FCPPT_OPTIONS_DETAIL_ARGUMENTS_FROM_PARSER_HPP_INCLUDED
 
 #include <fcppt/args_vector.hpp>
+#include <fcppt/options/parse_arguments.hpp>
 #include <fcppt/options/state.hpp>
 #include <fcppt/options/detail/deref.hpp>
-#include <fcppt/options/detail/state_from_args.hpp>
 
 
 namespace fcppt
@@ -24,19 +24,23 @@ template<
 	typename Parser
 >
 inline
-fcppt::options::state
-state_from_parser(
+fcppt::options::parse_arguments
+arguments_from_parser(
 	fcppt::args_vector const &_args,
 	Parser const &_parser
 )
 {
 	return
-		fcppt::options::detail::state_from_args(
-			_args,
+		fcppt::options::parse_arguments{
+			fcppt::options::state{
+				fcppt::args_vector{
+					_args
+				}
+			},
 			fcppt::options::detail::deref(
 				_parser
 			).option_names()
-		);
+		};
 }
 
 }

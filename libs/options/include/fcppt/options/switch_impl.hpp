@@ -14,7 +14,7 @@
 #include <fcppt/options/optional_help_text_fwd.hpp>
 #include <fcppt/options/optional_short_name_fwd.hpp>
 #include <fcppt/options/result.hpp>
-#include <fcppt/options/state_fwd.hpp>
+#include <fcppt/options/parse_arguments.hpp>
 #include <fcppt/options/switch_decl.hpp>
 
 
@@ -57,7 +57,7 @@ fcppt::options::result<
 fcppt::options::switch_<
 	Label
 >::parse(
-	fcppt::options::state &_state
+	fcppt::options::parse_arguments &_state
 ) const
 {
 	return

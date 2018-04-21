@@ -7,6 +7,7 @@
 #ifndef FCPPT_OPTIONS_DETAIL_DEREF_HPP_INCLUDED
 #define FCPPT_OPTIONS_DETAIL_DEREF_HPP_INCLUDED
 
+#include <fcppt/reference_fwd.hpp>
 #include <fcppt/options/base_fwd.hpp>
 #include <fcppt/options/base_unique_ptr_fwd.hpp>
 
@@ -46,6 +47,23 @@ deref(
 {
 	return
 		*_ptr;
+}
+
+template<
+	typename Parser
+>
+inline
+Parser const &
+deref(
+	fcppt::reference<
+		Parser const
+	> const &_ref
+)
+{
+	return
+		fcppt::options::detail::deref(
+			_ref.get()
+		);
 }
 
 }

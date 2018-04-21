@@ -8,14 +8,16 @@
 #define FCPPT_OPTIONS_DETAIL_PARSE_TO_EMPTY_HPP_INCLUDED
 
 #include <fcppt/either/bind.hpp>
+#include <fcppt/optional/maybe.hpp>
 #include <fcppt/options/error.hpp>
-#include <fcppt/options/other_error.hpp>
 #include <fcppt/options/result.hpp>
 #include <fcppt/options/result_of.hpp>
-#include <fcppt/options/state.hpp>
+#include <fcppt/options/parse_arguments.hpp>
+#include <fcppt/options/detail/deref.hpp>
 #include <fcppt/options/detail/leftover_error.hpp>
-#include <fcppt/options/detail/parse.hpp>
-#include <fcppt/options/detail/parse_result.hpp>
+#include <fcppt/preprocessor/disable_gcc_warning.hpp>
+#include <fcppt/preprocessor/pop_warning.hpp>
+#include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <utility>
 #include <fcppt/config/external_end.hpp>
@@ -38,7 +40,7 @@ fcppt::options::result<
 >
 parse_to_empty(
 	Parser const &_parser,
-	fcppt::options::state &&_state
+	fcppt::options::parse_arguments &&_arguments
 )
 {
 	typedef
@@ -49,16 +51,15 @@ parse_to_empty(
 
 	return
 		fcppt::either::bind(
-			fcppt::options::detail::parse(
-				_parser,
-				std::move(
-					_state
-				)
+			fcppt::options::detail::deref(
+				_parser
+			).parse(
+				_arguments
 			),
-			[](
-				fcppt::options::detail::parse_result<
-					result_type
-				> &&_result
+			[
+				&_arguments
+			](
+				result_type &&_result
 			)
 			{
 				typedef
@@ -67,29 +68,38 @@ parse_to_empty(
 				>
 				return_type;
 
-				fcppt::options::state const &state{
-					_result.remaining_state()
-				};
+				FCPPT_PP_PUSH_WARNING
+				FCPPT_PP_DISABLE_GCC_WARNING(-Wattributes)
 
 				return
-					state.empty()
-					?
-						return_type{
-							std::move(
-								_result.value()
-							)
-						}
-					:
-						return_type{
-							fcppt::options::error{
-								fcppt::options::other_error{
-									fcppt::options::detail::leftover_error(
-										state
+					fcppt::optional::maybe(
+						fcppt::options::detail::leftover_error(
+							_arguments.state_
+						),
+						[
+							&_result
+						]{
+							return
+								return_type{
+									std::move(
+										_result
 									)
-								}
-							}
+								};
+						},
+						[](
+							fcppt::options::error &&_error
+						)
+						{
+							return
+								return_type{
+									std::move(
+										_error
+									)
+								};
 						}
-					;
+					);
+
+				FCPPT_PP_POP_WARNING
 			}
 		);
 }

@@ -4,11 +4,11 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_OPTIONS_DETAIL_STATE_FROM_ARGS_HPP_INCLUDED
-#define FCPPT_OPTIONS_DETAIL_STATE_FROM_ARGS_HPP_INCLUDED
+#ifndef FCPPT_OPTIONS_PARSE_ARGUMENTS_HPP_INCLUDED
+#define FCPPT_OPTIONS_PARSE_ARGUMENTS_HPP_INCLUDED
 
-#include <fcppt/args_vector.hpp>
 #include <fcppt/options/option_name_set.hpp>
+#include <fcppt/options/parse_arguments_fwd.hpp>
 #include <fcppt/options/state.hpp>
 #include <fcppt/options/detail/symbol.hpp>
 
@@ -17,17 +17,21 @@ namespace fcppt
 {
 namespace options
 {
-namespace detail
+
+class parse_arguments
 {
+public:
+	FCPPT_OPTIONS_DETAIL_SYMBOL
+	parse_arguments(
+		fcppt::options::state &&,
+		fcppt::options::option_name_set &&
+	);
 
-FCPPT_OPTIONS_DETAIL_SYMBOL
-fcppt::options::state
-state_from_args(
-	fcppt::args_vector const &,
-	fcppt::options::option_name_set const &
-);
+	fcppt::options::state state_;
 
-}
+	fcppt::options::option_name_set option_names_;
+};
+
 }
 }
 

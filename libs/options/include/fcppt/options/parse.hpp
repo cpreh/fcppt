@@ -10,8 +10,8 @@
 #include <fcppt/args_vector.hpp>
 #include <fcppt/options/result.hpp>
 #include <fcppt/options/result_of.hpp>
+#include <fcppt/options/detail/arguments_from_parser.hpp>
 #include <fcppt/options/detail/parse_to_empty.hpp>
-#include <fcppt/options/detail/state_from_parser.hpp>
 
 
 namespace fcppt
@@ -42,7 +42,7 @@ parse(
 	return
 		fcppt::options::detail::parse_to_empty(
 			_parser,
-			fcppt::options::detail::state_from_parser(
+			fcppt::options::detail::arguments_from_parser(
 				_args,
 				_parser
 			)

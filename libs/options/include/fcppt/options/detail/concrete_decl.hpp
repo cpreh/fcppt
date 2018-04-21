@@ -12,8 +12,8 @@
 #include <fcppt/options/base_decl.hpp>
 #include <fcppt/options/flag_name_set.hpp>
 #include <fcppt/options/option_name_set.hpp>
+#include <fcppt/options/parse_arguments_fwd.hpp>
 #include <fcppt/options/result_fwd.hpp>
-#include <fcppt/options/state_fwd.hpp>
 #include <fcppt/options/detail/concrete_fwd.hpp>
 
 
@@ -66,7 +66,7 @@ public:
 		result_type
 	>
 	parse(
-		fcppt::options::state &
+		fcppt::options::parse_arguments &
 	) const
 	override;
 

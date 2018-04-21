@@ -1,0 +1,103 @@
+//          Copyright Carl Philipp Reh 2009 - 2017.
+// Distributed under the Boost Software License, Version 1.0.
+//    (See accompanying file LICENSE_1_0.txt or copy at
+//          http://www.boost.org/LICENSE_1_0.txt)
+
+
+#include <fcppt/args_vector.hpp>
+#include <fcppt/optional_string.hpp>
+#include <fcppt/reference_impl.hpp>
+#include <fcppt/string.hpp>
+#include <fcppt/options/state.hpp>
+#include <fcppt/options/detail/flag_is_short.hpp>
+#include <fcppt/options/detail/flag_name.hpp>
+#include <fcppt/options/detail/missing_option_argument.hpp>
+#include <fcppt/options/detail/use_option.hpp>
+#include <fcppt/options/detail/use_option_result.hpp>
+#include <fcppt/config/external_begin.hpp>
+#include <algorithm>
+#include <iterator>
+#include <utility>
+#include <fcppt/config/external_end.hpp>
+
+
+fcppt::options::detail::use_option_result
+fcppt::options::detail::use_option(
+	fcppt::reference<
+		fcppt::options::state
+	> const _state,
+	fcppt::string const &_name,
+	fcppt::options::detail::flag_is_short const _is_short
+)
+{
+	fcppt::string const flag_name{
+		fcppt::options::detail::flag_name(
+			_name,
+			_is_short
+		)
+	};
+
+	// TODO: This is terrible
+	fcppt::args_vector &args{
+		_state.get().args_
+	};
+
+	fcppt::args_vector::iterator const end{
+		args.end()
+	};
+
+	fcppt::args_vector::iterator pos{
+		std::find(
+			args.begin(),
+			end,
+			flag_name
+		)
+	};
+
+	if(
+		pos
+		==
+		end
+	)
+		return
+			fcppt::options::detail::use_option_result{
+				fcppt::optional_string{}
+			};
+
+	if(
+		std::next(
+			pos
+		)
+		==
+		end
+	)
+		return
+			fcppt::options::detail::use_option_result{
+				fcppt::options::detail::missing_option_argument{
+					flag_name
+				}
+			};
+
+	fcppt::string result{
+		*std::next(
+			pos
+		)
+	};
+
+	args.erase(
+		pos,
+		std::next(
+			pos,
+			2
+		)
+	);
+
+	return
+		fcppt::options::detail::use_option_result{
+			fcppt::optional_string{
+				std::move(
+					result
+				)
+			}
+		};
+}

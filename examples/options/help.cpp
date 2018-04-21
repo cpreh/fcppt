@@ -9,6 +9,7 @@
 #include <fcppt/main.hpp>
 #include <fcppt/strong_typedef_output.hpp>
 #include <fcppt/text.hpp>
+#include <fcppt/either/output.hpp>
 #include <fcppt/io/cout.hpp>
 #include <fcppt/options/argument.hpp>
 #include <fcppt/options/default_help_switch.hpp>
@@ -23,7 +24,9 @@
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
 #include <fcppt/record/make_label.hpp>
+#include <fcppt/record/output.hpp>
 #include <fcppt/variant/match.hpp>
+#include <fcppt/variant/output.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <cstdlib>
 #include <fcppt/config/external_end.hpp>
@@ -85,10 +88,14 @@ FCPPT_MAIN(
 				fcppt::options::result_of<
 					parser_type
 				>
-			> const &
+			> const &_result
 		)
 		{
-			// ...
+			fcppt::io::cout()
+				<<
+				_result
+				<<
+				FCPPT_TEXT('\n');
 		},
 		[](
 			fcppt::options::help_text const &_help_text

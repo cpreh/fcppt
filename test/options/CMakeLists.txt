@@ -44,9 +44,17 @@ add_fcppt_options_test(
 )
 
 add_fcppt_options_test(
-	state_from_args
+	parse_help
+)
+
+add_fcppt_options_test(
+	sum
 )
 
 add_fcppt_options_test(
 	switch
+)
+
+add_fcppt_options_test(
+	unit_switch
 )

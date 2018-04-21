@@ -4,11 +4,12 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_OPTIONS_DETAIL_HELP_ERROR_HPP_INCLUDED
-#define FCPPT_OPTIONS_DETAIL_HELP_ERROR_HPP_INCLUDED
+#ifndef FCPPT_OPTIONS_DETAIL_POP_ARG_HPP_INCLUDED
+#define FCPPT_OPTIONS_DETAIL_POP_ARG_HPP_INCLUDED
 
-#include <fcppt/options/error.hpp>
-#include <fcppt/options/help_switch_fwd.hpp>
+#include <fcppt/optional_string.hpp>
+#include <fcppt/reference_fwd.hpp>
+#include <fcppt/options/parse_arguments_fwd.hpp>
 #include <fcppt/options/detail/symbol.hpp>
 
 
@@ -20,10 +21,11 @@ namespace detail
 {
 
 FCPPT_OPTIONS_DETAIL_SYMBOL
-fcppt::options::error
-help_error(
-	fcppt::options::help_switch const &,
-	fcppt::options::error &&
+fcppt::optional_string
+pop_arg(
+	fcppt::reference<
+		fcppt::options::parse_arguments
+	>
 );
 
 }

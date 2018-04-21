@@ -8,6 +8,7 @@
 #define FCPPT_OPTIONS_ARGUMENT_IMPL_HPP_INCLUDED
 
 #include <fcppt/extract_from_string.hpp>
+#include <fcppt/make_ref.hpp>
 #include <fcppt/string.hpp>
 #include <fcppt/text.hpp>
 #include <fcppt/either/bind.hpp>
@@ -22,10 +23,11 @@
 #include <fcppt/options/option_name_set.hpp>
 #include <fcppt/options/optional_help_text.hpp>
 #include <fcppt/options/other_error.hpp>
-#include <fcppt/options/pretty_type.hpp>
+#include <fcppt/options/parse_arguments.hpp>
 #include <fcppt/options/result.hpp>
-#include <fcppt/options/state.hpp>
+#include <fcppt/options/pretty_type.hpp>
 #include <fcppt/options/detail/help_text.hpp>
+#include <fcppt/options/detail/pop_arg.hpp>
 #include <fcppt/options/detail/type_annotation.hpp>
 #include <fcppt/record/element.hpp>
 #include <fcppt/record/variadic.hpp>
@@ -70,13 +72,17 @@ fcppt::options::argument<
 	Label,
 	Type
 >::parse(
-	fcppt::options::state &_state
+	fcppt::options::parse_arguments &_arguments
 ) const
 {
 	return
 		fcppt::either::bind(
 			fcppt::either::from_optional(
-				_state.pop_arg(),
+				fcppt::options::detail::pop_arg(
+					fcppt::make_ref(
+						_arguments
+					)
+				),
 				[
 					this
 				]{
@@ -95,7 +101,7 @@ fcppt::options::argument<
 			[
 				this
 			](
-				fcppt::string const &_string
+				fcppt::string const &_arg
 			)
 			{
 				return
@@ -104,7 +110,7 @@ fcppt::options::argument<
 							fcppt::extract_from_string<
 								Type
 							>(
-								_string
+								_arg
 							),
 							[](
 								Type &&_value
@@ -121,14 +127,14 @@ fcppt::options::argument<
 						),
 						[
 							this,
-							&_string
+							&_arg
 						]{
 							return
 								fcppt::options::error{
 									fcppt::options::other_error{
 										FCPPT_TEXT("Failed to convert \"")
 										+
-										_string
+										_arg
 										+
 										FCPPT_TEXT("\" to ")
 										+

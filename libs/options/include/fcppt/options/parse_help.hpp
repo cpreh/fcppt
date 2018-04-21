@@ -8,28 +8,22 @@
 #define FCPPT_OPTIONS_PARSE_HELP_HPP_INCLUDED
 
 #include <fcppt/args_vector.hpp>
+#include <fcppt/make_cref.hpp>
 #include <fcppt/text.hpp>
-#include <fcppt/either/make_failure.hpp>
-#include <fcppt/either/make_success.hpp>
 #include <fcppt/either/match.hpp>
-#include <fcppt/options/error.hpp>
 #include <fcppt/options/help_result.hpp>
 #include <fcppt/options/help_switch.hpp>
 #include <fcppt/options/help_text.hpp>
-#include <fcppt/options/other_error.hpp>
+#include <fcppt/options/make_sum.hpp>
+#include <fcppt/options/result.hpp>
 #include <fcppt/options/result_of.hpp>
+#include <fcppt/options/detail/arguments_from_parser.hpp>
 #include <fcppt/options/detail/deref.hpp>
-#include <fcppt/options/detail/help_error.hpp>
-#include <fcppt/options/detail/help_label.hpp>
-#include <fcppt/options/detail/long_or_short_name.hpp>
-#include <fcppt/options/detail/parse.hpp>
-#include <fcppt/options/detail/parse_result.hpp>
 #include <fcppt/options/detail/parse_to_empty.hpp>
-#include <fcppt/options/detail/state_from_parser.hpp>
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
-#include <fcppt/record/get.hpp>
+#include <fcppt/variant/match.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <utility>
 #include <fcppt/config/external_end.hpp>
@@ -67,24 +61,37 @@ parse_help(
 )
 {
 	typedef
-	fcppt::options::result_of<
-		Parser
-	>
-	result_type;
-
-	typedef
 	fcppt::options::help_result<
-		result_type
+		fcppt::options::result_of<
+			Parser
+		>
 	>
 	return_type;
 
+	typedef
+	fcppt::options::result<
+		fcppt::options::result_of<
+			Parser
+		>
+	>
+	result_type;
+
+	auto const combined_parser{
+		fcppt::options::make_sum(
+			_help,
+			fcppt::make_cref(
+				_parser
+			)
+		)
+	};
+
 	return
 		fcppt::either::match(
-			fcppt::options::detail::parse(
-				_help,
-				fcppt::options::detail::state_from_parser(
+			fcppt::options::detail::parse_to_empty(
+				combined_parser,
+				fcppt::options::detail::arguments_from_parser(
 					_args,
-					_parser
+					combined_parser
 				)
 			),
 			[](
@@ -93,107 +100,65 @@ parse_help(
 			{
 				return
 					return_type{
-						fcppt::either::make_failure<
-							result_type
-						>(
+						result_type{
 							std::move(
 								_error
 							)
-						)
+						}
 					};
 			},
 			[
-				&_parser,
-				&_help
+				&_parser
 			](
-				fcppt::options::detail::parse_result<
-					fcppt::options::result_of<
-						fcppt::options::help_switch
-					>
+				fcppt::options::result_of<
+					decltype(
+						combined_parser
+					)
 				> &&_result
 			)
 			{
-FCPPT_PP_PUSH_WARNING
-FCPPT_PP_DISABLE_GCC_WARNING(-Wattributes)
+				FCPPT_PP_PUSH_WARNING
+				FCPPT_PP_DISABLE_GCC_WARNING(-Wattributes)
+
 				return
-					fcppt::record::get<
-						fcppt::options::detail::help_label
-					>(
-						_result.value()
-					)
-					?
-						_result.remaining_state().empty()
-						?
-							return_type{
-								fcppt::options::help_text{
-									fcppt::options::detail::deref(
-										_parser
-									).usage()
-								}
-							}
-						:
-							return_type{
-								fcppt::either::make_failure<
-									result_type
-								>(
-									fcppt::options::error{
-										fcppt::options::other_error{
-											FCPPT_TEXT("The help option ")
-											+
-											fcppt::options::detail::long_or_short_name(
-												_help.long_name(),
-												_help.short_name()
-											)
-											+
-											FCPPT_TEXT(" cannot be specified with other options at the same time.")
-										}
+					fcppt::variant::match(
+						_result,
+						[
+							&_parser
+						](
+							fcppt::options::result_of<
+								fcppt::options::help_switch
+							> const &
+						)
+						{
+							return
+								return_type{
+									fcppt::options::help_text{
+										fcppt::options::detail::deref(
+											_parser
+										).usage()
 									}
-								)
-							}
-					:
-						return_type{
-							fcppt::either::match(
-								fcppt::options::detail::parse_to_empty(
-									_parser,
-									std::move(
-										_result.remaining_state()
-									)
-								),
-								[
-									&_help
-								](
-									fcppt::options::error &&_error
-								)
-								{
-									return
-										fcppt::either::make_failure<
-											result_type
-										>(
-											fcppt::options::detail::help_error(
-												_help,
-												std::move(
-													_error
-												)
-											)
-										);
-								},
-								[](
-									result_type &&_inner_result
-								)
-								{
-									return
-										fcppt::either::make_success<
-											fcppt::options::error
-										>(
-											std::move(
-												_inner_result
-											)
-										);
-								}
-							)
+								};
+						},
+						[](
+							// TODO: rvalue ref
+							fcppt::options::result_of<
+								Parser
+							> _inner_result
+						)
+						{
+							return
+								return_type{
+									result_type{
+										std::move(
+											_inner_result
+										)
+									}
+								};
 						}
-					;
-FCPPT_PP_POP_WARNING
+					);
+
+				FCPPT_PP_POP_WARNING
 			}
 		);
 }

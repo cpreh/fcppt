@@ -7,10 +7,11 @@
 #ifndef FCPPT_OPTIONS_FLAG_IMPL_HPP_INCLUDED
 #define FCPPT_OPTIONS_FLAG_IMPL_HPP_INCLUDED
 
-#include <fcppt/const.hpp>
 #include <fcppt/insert_to_fcppt_string.hpp>
+#include <fcppt/reference_impl.hpp>
 #include <fcppt/string.hpp>
 #include <fcppt/text.hpp>
+#include <fcppt/either/make_failure.hpp>
 #include <fcppt/either/make_success.hpp>
 #include <fcppt/optional/maybe.hpp>
 #include <fcppt/options/error.hpp>
@@ -22,15 +23,22 @@
 #include <fcppt/options/option_name_set.hpp>
 #include <fcppt/options/optional_help_text.hpp>
 #include <fcppt/options/optional_short_name.hpp>
+#include <fcppt/options/other_error.hpp>
+#include <fcppt/options/parse_arguments.hpp>
 #include <fcppt/options/result.hpp>
 #include <fcppt/options/short_name.hpp>
 #include <fcppt/options/state.hpp>
 #include <fcppt/options/detail/check_short_long_names.hpp>
+#include <fcppt/options/detail/flag_is_short.hpp>
 #include <fcppt/options/detail/help_text.hpp>
 #include <fcppt/options/detail/long_or_short_name.hpp>
 #include <fcppt/options/detail/make_name_set_base.hpp>
+#include <fcppt/options/detail/use_flag.hpp>
 #include <fcppt/record/element.hpp>
 #include <fcppt/record/variadic.hpp>
+#include <fcppt/config/external_begin.hpp>
+#include <utility>
+#include <fcppt/config/external_end.hpp>
 
 
 template<
@@ -99,46 +107,112 @@ fcppt::options::flag<
 	Label,
 	Type
 >::parse(
-	fcppt::options::state &_state
+	fcppt::options::parse_arguments &_arguments
 ) const
 {
+	fcppt::reference<
+		fcppt::options::state
+	> const state{
+		_arguments.state_
+	};
+
+	bool const long_found{
+		fcppt::options::detail::use_flag(
+			state,
+			long_name_.get(),
+			fcppt::options::detail::flag_is_short{
+				false
+			}
+		)
+	};
+
+	auto const make_success(
+		[
+			this
+		](
+			bool const _value
+		)
+		->
+		fcppt::options::result<
+			result_type
+		>
+		{
+			return
+				fcppt::either::make_success<
+					fcppt::options::error
+				>(
+					result_type{
+						Label{} =
+							_value
+							?
+								this->active_value_.get()
+							:
+								this->inactive_value_.get()
+					}
+				);
+		}
+	);
+
 	return
-		fcppt::either::make_success<
-			fcppt::options::error
-		>(
-			result_type{
-				Label{} =
-					_state.pop_flag(
-						long_name_.get(),
-						fcppt::options::state::is_short{
-							false
+		fcppt::optional::maybe(
+			short_name_,
+			[
+				make_success,
+				long_found
+			]{
+				return
+					make_success(
+						long_found
+					);
+			},
+			[
+				this,
+				make_success,
+				long_found,
+				state
+			](
+				fcppt::options::short_name const &_short_name
+			)
+			{
+				bool const short_found{
+					fcppt::options::detail::use_flag(
+						state,
+						_short_name.get(),
+						fcppt::options::detail::flag_is_short{
+							true
 						}
 					)
-					||
-					fcppt::optional::maybe(
-						short_name_,
-						fcppt::const_(
-							false
-						),
-						[
-							&_state
-						](
-							fcppt::options::short_name const &_short_name
-						)
-						{
-							return
-								_state.pop_flag(
-									_short_name.get(),
-									fcppt::options::state::is_short{
-										true
-									}
-								);
-						}
-					)
+				};
+
+				return
+					long_found
+					&&
+					short_found
 					?
-						active_value_.get()
+						fcppt::either::make_failure<
+							result_type
+						>(
+							fcppt::options::error{
+								fcppt::options::other_error{
+									FCPPT_TEXT("Both the short flag name ")
+									+
+									_short_name.get()
+									+
+									FCPPT_TEXT(" and the long flag name ")
+									+
+									this->long_name_.get()
+									+
+									FCPPT_TEXT(" were specified at the same time")
+								}
+							}
+						)
 					:
-						inactive_value_.get()
+						make_success(
+							short_found
+							||
+							long_found
+						)
+					;
 			}
 		);
 }
