@@ -5,8 +5,8 @@
 
 
 #include <fcppt/args_vector.hpp>
-#include <fcppt/string.hpp>
 #include <fcppt/reference_impl.hpp>
+#include <fcppt/string.hpp>
 #include <fcppt/options/state.hpp>
 #include <fcppt/options/detail/flag_is_short.hpp>
 #include <fcppt/options/detail/flag_name.hpp>

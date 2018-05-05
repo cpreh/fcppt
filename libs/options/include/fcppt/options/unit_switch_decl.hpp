@@ -9,13 +9,13 @@
 
 #include <fcppt/string.hpp>
 #include <fcppt/unit.hpp>
-#include <fcppt/options/switch_impl.hpp>
 #include <fcppt/options/flag_name_set.hpp>
 #include <fcppt/options/long_name_fwd.hpp>
 #include <fcppt/options/option_name_set.hpp>
 #include <fcppt/options/optional_short_name_fwd.hpp>
 #include <fcppt/options/parse_arguments_fwd.hpp>
 #include <fcppt/options/result_fwd.hpp>
+#include <fcppt/options/switch_impl.hpp>
 #include <fcppt/options/unit_switch_fwd.hpp>
 #include <fcppt/record/element.hpp>
 #include <fcppt/record/variadic_fwd.hpp>

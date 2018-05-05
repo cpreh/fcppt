@@ -24,8 +24,8 @@
 #include <fcppt/options/optional_help_text.hpp>
 #include <fcppt/options/other_error.hpp>
 #include <fcppt/options/parse_arguments.hpp>
-#include <fcppt/options/result.hpp>
 #include <fcppt/options/pretty_type.hpp>
+#include <fcppt/options/result.hpp>
 #include <fcppt/options/detail/help_text.hpp>
 #include <fcppt/options/detail/pop_arg.hpp>
 #include <fcppt/options/detail/type_annotation.hpp>

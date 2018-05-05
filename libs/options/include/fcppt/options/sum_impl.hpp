@@ -17,9 +17,9 @@
 #include <fcppt/options/name_set.hpp>
 #include <fcppt/options/option_name_set.hpp>
 #include <fcppt/options/parse_arguments.hpp>
-#include <fcppt/options/sum_decl.hpp>
 #include <fcppt/options/result.hpp>
 #include <fcppt/options/result_of.hpp>
+#include <fcppt/options/sum_decl.hpp>
 #include <fcppt/options/detail/deref.hpp>
 #include <fcppt/variant/variadic.hpp>
 #include <fcppt/config/external_begin.hpp>

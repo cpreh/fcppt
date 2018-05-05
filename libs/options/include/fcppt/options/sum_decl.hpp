@@ -11,9 +11,9 @@
 #include <fcppt/options/flag_name_set.hpp>
 #include <fcppt/options/option_name_set.hpp>
 #include <fcppt/options/parse_arguments_fwd.hpp>
-#include <fcppt/options/sum_fwd.hpp>
 #include <fcppt/options/result_fwd.hpp>
 #include <fcppt/options/result_of.hpp>
+#include <fcppt/options/sum_fwd.hpp>
 #include <fcppt/variant/variadic_fwd.hpp>
 
 

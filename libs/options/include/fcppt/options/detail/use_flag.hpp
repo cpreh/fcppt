@@ -7,8 +7,8 @@
 #ifndef FCPPT_OPTIONS_DETAIL_USE_FLAG_HPP_INCLUDED
 #define FCPPT_OPTIONS_DETAIL_USE_FLAG_HPP_INCLUDED
 
-#include <fcppt/string.hpp>
 #include <fcppt/reference_fwd.hpp>
+#include <fcppt/string.hpp>
 #include <fcppt/options/state_fwd.hpp>
 #include <fcppt/options/detail/flag_is_short.hpp>
 #include <fcppt/options/detail/symbol.hpp>

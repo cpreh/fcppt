@@ -5,9 +5,9 @@
 
 
 #include <fcppt/args_vector.hpp>
+#include <fcppt/text.hpp>
 #include <fcppt/unit.hpp>
 #include <fcppt/unit_comparison.hpp>
-#include <fcppt/text.hpp>
 #include <fcppt/either/comparison.hpp>
 #include <fcppt/either/make_success.hpp>
 #include <fcppt/options/error.hpp>

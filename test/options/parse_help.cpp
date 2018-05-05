@@ -11,8 +11,8 @@
 #include <fcppt/options/argument.hpp>
 #include <fcppt/options/default_help_switch.hpp>
 #include <fcppt/options/error.hpp>
-#include <fcppt/options/help_text.hpp>
 #include <fcppt/options/help_result.hpp>
+#include <fcppt/options/help_text.hpp>
 #include <fcppt/options/long_name.hpp>
 #include <fcppt/options/optional_help_text.hpp>
 #include <fcppt/options/parse_help.hpp>

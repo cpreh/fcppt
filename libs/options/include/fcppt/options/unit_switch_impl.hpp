@@ -19,9 +19,9 @@
 #include <fcppt/options/missing_error.hpp>
 #include <fcppt/options/option_name_set.hpp>
 #include <fcppt/options/optional_short_name_fwd.hpp>
+#include <fcppt/options/parse_arguments_fwd.hpp>
 #include <fcppt/options/result.hpp>
 #include <fcppt/options/result_of.hpp>
-#include <fcppt/options/parse_arguments_fwd.hpp>
 #include <fcppt/options/unit_switch_decl.hpp>
 #include <fcppt/options/detail/long_or_short_name.hpp>
 #include <fcppt/record/get.hpp>

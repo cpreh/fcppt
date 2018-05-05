@@ -13,8 +13,8 @@
 #include <fcppt/options/option_name_set.hpp>
 #include <fcppt/options/optional_help_text_fwd.hpp>
 #include <fcppt/options/optional_short_name_fwd.hpp>
-#include <fcppt/options/result.hpp>
 #include <fcppt/options/parse_arguments.hpp>
+#include <fcppt/options/result.hpp>
 #include <fcppt/options/switch_decl.hpp>
 
 

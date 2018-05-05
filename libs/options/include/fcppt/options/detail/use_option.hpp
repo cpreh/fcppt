@@ -8,12 +8,12 @@
 #define FCPPT_OPTIONS_DETAIL_USE_OPTION_HPP_INCLUDED
 
 #include <fcppt/optional_string.hpp>
-#include <fcppt/string.hpp>
 #include <fcppt/reference_fwd.hpp>
+#include <fcppt/string.hpp>
 #include <fcppt/options/state_fwd.hpp>
 #include <fcppt/options/detail/flag_is_short.hpp>
-#include <fcppt/options/detail/use_option_result.hpp>
 #include <fcppt/options/detail/symbol.hpp>
+#include <fcppt/options/detail/use_option_result.hpp>
 
 
 namespace fcppt

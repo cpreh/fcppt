@@ -39,9 +39,9 @@
 #include <fcppt/options/detail/help_text.hpp>
 #include <fcppt/options/detail/long_or_short_name.hpp>
 #include <fcppt/options/detail/make_name_set_base.hpp>
+#include <fcppt/options/detail/type_annotation.hpp>
 #include <fcppt/options/detail/use_option.hpp>
 #include <fcppt/options/detail/use_option_result.hpp>
-#include <fcppt/options/detail/type_annotation.hpp>
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
 #include <fcppt/preprocessor/push_warning.hpp>
