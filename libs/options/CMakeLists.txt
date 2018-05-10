@@ -14,6 +14,9 @@ set(
 	libs/options/include/fcppt/options/base_impl.hpp
 	libs/options/include/fcppt/options/base_unique_ptr.hpp
 	libs/options/include/fcppt/options/base_unique_ptr_fwd.hpp
+	libs/options/include/fcppt/options/commands_decl.hpp
+	libs/options/include/fcppt/options/commands_fwd.hpp
+	libs/options/include/fcppt/options/commands_impl.hpp
 	libs/options/include/fcppt/options/default_help_switch.hpp
 	libs/options/include/fcppt/options/default_value.hpp
 	libs/options/include/fcppt/options/default_value_fwd.hpp
@@ -42,6 +45,7 @@ set(
 	libs/options/include/fcppt/options/detail/parse_to_empty.hpp
 	libs/options/include/fcppt/options/detail/pop_arg.hpp
 	libs/options/include/fcppt/options/detail/result_of.hpp
+	libs/options/include/fcppt/options/detail/split_command.hpp
 	libs/options/include/fcppt/options/detail/type_annotation.hpp
 	libs/options/include/fcppt/options/detail/use_flag.hpp
 	libs/options/include/fcppt/options/detail/use_option.hpp
@@ -76,10 +80,12 @@ set(
 	libs/options/include/fcppt/options/long_name_fwd.hpp
 	libs/options/include/fcppt/options/make_active_value.hpp
 	libs/options/include/fcppt/options/make_base.hpp
+	libs/options/include/fcppt/options/make_commands.hpp
 	libs/options/include/fcppt/options/make_default_value.hpp
 	libs/options/include/fcppt/options/make_inactive_value.hpp
 	libs/options/include/fcppt/options/make_many.hpp
 	libs/options/include/fcppt/options/make_optional.hpp
+	libs/options/include/fcppt/options/make_sub_command.hpp
 	libs/options/include/fcppt/options/make_sum.hpp
 	libs/options/include/fcppt/options/many_decl.hpp
 	libs/options/include/fcppt/options/many_fwd.hpp
@@ -101,6 +107,7 @@ set(
 	libs/options/include/fcppt/options/optional_impl.hpp
 	libs/options/include/fcppt/options/optional_short_name.hpp
 	libs/options/include/fcppt/options/optional_short_name_fwd.hpp
+	libs/options/include/fcppt/options/options_label.hpp
 	libs/options/include/fcppt/options/other_error.hpp
 	libs/options/include/fcppt/options/other_error_fwd.hpp
 	libs/options/include/fcppt/options/parse.hpp
@@ -121,6 +128,10 @@ set(
 	libs/options/include/fcppt/options/short_name_fwd.hpp
 	libs/options/include/fcppt/options/state.hpp
 	libs/options/include/fcppt/options/state_fwd.hpp
+	libs/options/include/fcppt/options/sub_command_decl.hpp
+	libs/options/include/fcppt/options/sub_command_fwd.hpp
+	libs/options/include/fcppt/options/sub_command_impl.hpp
+	libs/options/include/fcppt/options/sub_command_label.hpp
 	libs/options/include/fcppt/options/sum_decl.hpp
 	libs/options/include/fcppt/options/sum_fwd.hpp
 	libs/options/include/fcppt/options/sum_impl.hpp
@@ -143,6 +154,7 @@ set(
 	libs/options/src/options/detail/long_or_short_name.cpp
 	libs/options/src/options/detail/make_name_set_base.cpp
 	libs/options/src/options/detail/pop_arg.cpp
+	libs/options/src/options/detail/split_command.cpp
 	libs/options/src/options/detail/use_flag.cpp
 	libs/options/src/options/detail/use_option.cpp
 	libs/options/src/options/is_option.cpp

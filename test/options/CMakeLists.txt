@@ -24,6 +24,10 @@ add_fcppt_options_test(
 )
 
 add_fcppt_options_test(
+	commands
+)
+
+add_fcppt_options_test(
 	flag
 )
 
