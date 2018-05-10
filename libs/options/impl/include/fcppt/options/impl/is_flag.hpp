@@ -4,8 +4,8 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#ifndef FCPPT_OPTIONS_DETAIL_IS_FLAG_HPP_INCLUDED
-#define FCPPT_OPTIONS_DETAIL_IS_FLAG_HPP_INCLUDED
+#ifndef FCPPT_OPTIONS_IMPL_IS_FLAG_HPP_INCLUDED
+#define FCPPT_OPTIONS_IMPL_IS_FLAG_HPP_INCLUDED
 
 #include <fcppt/string.hpp>
 
@@ -14,10 +14,9 @@ namespace fcppt
 {
 namespace options
 {
-namespace detail
+namespace impl
 {
 
-// TODO: impl
 bool
 is_flag(
 	fcppt::string const &

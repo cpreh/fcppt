@@ -9,8 +9,8 @@
 #include <fcppt/optional/object_impl.hpp>
 #include <fcppt/options/parse_arguments.hpp>
 #include <fcppt/options/state.hpp>
-#include <fcppt/options/detail/is_flag.hpp>
 #include <fcppt/options/detail/split_command.hpp>
+#include <fcppt/options/impl/is_flag.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <iterator>
 #include <utility>
@@ -56,7 +56,7 @@ fcppt::options::detail::split_command(
 	)
 	{
 		if(
-			fcppt::options::detail::is_flag(
+			fcppt::options::impl::is_flag(
 				*cur
 			)
 		)

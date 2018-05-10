@@ -10,8 +10,8 @@
 #include <fcppt/string.hpp>
 #include <fcppt/options/parse_arguments.hpp>
 #include <fcppt/options/state.hpp>
-#include <fcppt/options/detail/is_flag.hpp>
 #include <fcppt/options/detail/pop_arg.hpp>
+#include <fcppt/options/impl/is_flag.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <iterator>
 #include <fcppt/config/external_end.hpp>
@@ -41,7 +41,7 @@ fcppt::options::detail::pop_arg(
 	)
 	{
 		if(
-			fcppt::options::detail::is_flag(
+			fcppt::options::impl::is_flag(
 				*cur
 			)
 		)

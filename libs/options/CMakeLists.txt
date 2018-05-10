@@ -1,5 +1,7 @@
 set(
 	FCPPT_OPTIONS_FILES
+	libs/options/impl/include/fcppt/options/impl/is_flag.hpp
+	libs/options/impl/src/options/impl/is_flag.cpp
 	libs/options/include/fcppt/options/active_value.hpp
 	libs/options/include/fcppt/options/active_value_fwd.hpp
 	libs/options/include/fcppt/options/active_value_tag.hpp
@@ -34,7 +36,6 @@ set(
 	libs/options/include/fcppt/options/detail/flag_name.hpp
 	libs/options/include/fcppt/options/detail/help_label.hpp
 	libs/options/include/fcppt/options/detail/help_text.hpp
-	libs/options/include/fcppt/options/detail/is_flag.hpp
 	libs/options/include/fcppt/options/detail/leftover_error.hpp
 	libs/options/include/fcppt/options/detail/long_or_short_name.hpp
 	libs/options/include/fcppt/options/detail/make_name_set_base.hpp
@@ -149,7 +150,6 @@ set(
 	libs/options/src/options/detail/duplicate_names_text.cpp
 	libs/options/src/options/detail/flag_name.cpp
 	libs/options/src/options/detail/help_text.cpp
-	libs/options/src/options/detail/is_flag.cpp
 	libs/options/src/options/detail/leftover_error.cpp
 	libs/options/src/options/detail/long_or_short_name.cpp
 	libs/options/src/options/detail/make_name_set_base.cpp
@@ -166,6 +166,7 @@ set(
 make_fcppt_library(
 	options
 	"${FCPPT_OPTIONS_FILES}"
+	HAS_IMPL_DIR
 	FCPPT_DEPS
 		fcppt_core
 	TRANSITIVE_FCPPT_DEPS

@@ -10,11 +10,11 @@
 #include <fcppt/optional/comparison.hpp>
 #include <fcppt/optional/copy_value.hpp>
 #include <fcppt/optional/make.hpp>
-#include <fcppt/options/detail/is_flag.hpp>
+#include <fcppt/options/impl/is_flag.hpp>
 
 
 bool
-fcppt::options::detail::is_flag(
+fcppt::options::impl::is_flag(
 	fcppt::string const &_value
 )
 {

@@ -1587,7 +1587,6 @@ set(
 	libs/options/include/fcppt/options/detail/flag_name.hpp
 	libs/options/include/fcppt/options/detail/help_label.hpp
 	libs/options/include/fcppt/options/detail/help_text.hpp
-	libs/options/include/fcppt/options/detail/is_flag.hpp
 	libs/options/include/fcppt/options/detail/leftover_error.hpp
 	libs/options/include/fcppt/options/detail/long_or_short_name.hpp
 	libs/options/include/fcppt/options/detail/make_name_set_base.hpp
