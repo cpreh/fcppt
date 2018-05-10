@@ -1,7 +1,9 @@
 set(
 	FCPPT_OPTIONS_FILES
 	libs/options/impl/include/fcppt/options/impl/is_flag.hpp
+	libs/options/impl/include/fcppt/options/impl/next_arg.hpp
 	libs/options/impl/src/options/impl/is_flag.cpp
+	libs/options/impl/src/options/impl/next_arg.cpp
 	libs/options/include/fcppt/options/active_value.hpp
 	libs/options/include/fcppt/options/active_value_fwd.hpp
 	libs/options/include/fcppt/options/active_value_tag.hpp

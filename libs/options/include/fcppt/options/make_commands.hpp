@@ -20,6 +20,11 @@ namespace fcppt
 namespace options
 {
 
+/**
+\brief Makes a commands parser.
+
+\ingroup fcpptoptions
+*/
 template<
 	typename OptionsParser,
 	typename... SubCommands

@@ -30,6 +30,26 @@ namespace fcppt
 namespace options
 {
 
+/**
+\brief A parser for multiple sub commands.
+
+\ingroup fcpptoptions
+
+A commands parser parses multiple sub commands.  Each sub command consists of a
+parser and a name, i.e. <code>(name_1, parser_1), ..., (name_n, parser_n)</code>.
+The parser first searches for the first argument, ignoring all option names
+from \a OptionsParser.  If none is found, the parser fails.  Otherwise, the
+first argument is <code>arg</code>, which is then compared to
+<code>name_1, ..., name_n</code>. If none of these is equal to <code>arg</code>, the parser
+fails.  Otherwise, let <code>arg = name_i</code>, then the \a OptionsParser
+is used to parse everything up to the first argument, and <code>parser_i</code>
+is used to parse everything after.
+
+\warning Be careful not to include anything other than options or flags
+in \a OptionsParser, because otherwise this may lead to very confusing results.
+
+\tparam OptionsParser A parser that should only parse options.
+*/
 template<
 	typename OptionsParser,
 	typename... SubCommands
