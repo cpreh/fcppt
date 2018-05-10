@@ -13,8 +13,8 @@
 #include <fcppt/options/option_name_set_fwd.hpp>
 #include <fcppt/options/options_label.hpp>
 #include <fcppt/options/parse_arguments_fwd.hpp>
-#include <fcppt/options/result_of.hpp>
 #include <fcppt/options/result_fwd.hpp>
+#include <fcppt/options/result_of.hpp>
 #include <fcppt/options/sub_command_impl.hpp>
 #include <fcppt/options/sub_command_label.hpp>
 #include <fcppt/record/element_fwd.hpp>

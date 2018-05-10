@@ -11,6 +11,7 @@
 #include <fcppt/string.hpp>
 #include <fcppt/optional/object_impl.hpp>
 #include <fcppt/options/parse_arguments_fwd.hpp>
+#include <fcppt/options/detail/symbol.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <utility>
 #include <fcppt/config/external_end.hpp>

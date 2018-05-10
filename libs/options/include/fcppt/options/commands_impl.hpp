@@ -23,13 +23,13 @@
 #include <fcppt/options/commands_decl.hpp>
 #include <fcppt/options/error.hpp>
 #include <fcppt/options/flag_name_set.hpp>
-#include <fcppt/options/name_set.hpp>
 #include <fcppt/options/missing_error.hpp>
+#include <fcppt/options/name_set.hpp>
 #include <fcppt/options/option_name_set.hpp>
 #include <fcppt/options/options_label.hpp>
 #include <fcppt/options/parse_arguments.hpp>
-#include <fcppt/options/state.hpp>
 #include <fcppt/options/result.hpp>
+#include <fcppt/options/state.hpp>
 #include <fcppt/options/sub_command_impl.hpp>
 #include <fcppt/options/sub_command_label.hpp>
 #include <fcppt/options/detail/split_command.hpp>

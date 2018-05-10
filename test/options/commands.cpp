@@ -4,26 +4,25 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
+#include <fcppt/strong_typedef_output.hpp>
 #include <fcppt/text.hpp>
+#include <fcppt/either/output.hpp>
+#include <fcppt/io/cout.hpp>
 #include <fcppt/options/argument.hpp>
+#include <fcppt/options/long_name.hpp>
 #include <fcppt/options/make_commands.hpp>
 #include <fcppt/options/make_sub_command.hpp>
 #include <fcppt/options/no_default_value.hpp>
-#include <fcppt/options/long_name.hpp>
 #include <fcppt/options/option.hpp>
 #include <fcppt/options/optional_help_text.hpp>
 #include <fcppt/options/optional_short_name.hpp>
 #include <fcppt/options/parse.hpp>
 #include <fcppt/record/make_label.hpp>
+#include <fcppt/record/output.hpp>
+#include <fcppt/variant/output.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/test/unit_test.hpp>
 #include <fcppt/config/external_end.hpp>
-
-#include <fcppt/strong_typedef_output.hpp>
-#include <fcppt/either/output.hpp>
-#include <fcppt/record/output.hpp>
-#include <fcppt/variant/output.hpp>
-#include <fcppt/io/cout.hpp>
 
 
 BOOST_AUTO_TEST_CASE(
