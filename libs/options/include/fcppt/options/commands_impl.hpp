@@ -34,11 +34,13 @@
 #include <fcppt/options/result.hpp>
 #include <fcppt/options/state.hpp>
 #include <fcppt/options/sub_command_label.hpp>
+#include <fcppt/options/detail/parse_to_empty.hpp>
 #include <fcppt/options/detail/split_command.hpp>
 #include <fcppt/record/element.hpp>
 #include <fcppt/record/variadic.hpp>
 #include <fcppt/variant/variadic.hpp>
 #include <fcppt/config/external_begin.hpp>
+#include <tuple>
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
@@ -100,38 +102,35 @@ fcppt::options::commands<
 			&_arguments
 		](
 			auto const &_parser,
-			std::pair<
-				fcppt::args_vector,
-				fcppt::args_vector
-			> &&_split_args
+			fcppt::args_vector const &_first_args,
+			fcppt::args_vector const &_second_args
 		)
 		->
 		fcppt::options::result<
 			result_type
 		>
 		{
-			fcppt::options::parse_arguments option_args{
-				fcppt::options::state{
-					std::move(
-						_split_args.first
-					)
-				},
-				// TODO: move?
-				fcppt::options::option_name_set{
-					_arguments.option_names_
-				}
-			};
-
 			return
 				fcppt::either::bind(
-					fcppt::options::deref(
-						this->options_parser_
-					).parse(
-						option_args
+					fcppt::options::detail::parse_to_empty(
+						this->options_parser_,
+						fcppt::options::parse_arguments{
+							fcppt::options::state{
+								// TODO: move
+								fcppt::args_vector{
+									_first_args
+								}
+							},
+							fcppt::options::option_name_set{
+								fcppt::options::deref(
+									this->options_parser_
+								).option_names()
+							}
+						}
 					),
 					[
 						&_parser,
-						&_split_args,
+						&_second_args,
 						&_arguments
 					](
 						auto &&_options_result
@@ -141,12 +140,12 @@ fcppt::options::commands<
 						result_type
 					>
 					{
-						// TODO: Move state
 						_arguments.state_ =
 							fcppt::options::state{
-								std::move(
-									_split_args.second
-								)
+								// TODO: Move args
+								fcppt::args_vector{
+									_second_args
+								}
 							};
 
 						return
@@ -184,15 +183,6 @@ fcppt::options::commands<
 		}
 	);
 
-	fcppt::options::parse_arguments const option_arguments{
-		fcppt::options::state{
-			_arguments.state_
-		},
-		fcppt::options::deref(
-			options_parser_
-		).option_names()
-	};
-
 	typedef
 	fcppt::optional::object<
 		fcppt::options::result<
@@ -202,61 +192,15 @@ fcppt::options::commands<
 	optional_result_type;
 
 	return
-		fcppt::optional::from(
-			fcppt::algorithm::fold_break(
-				sub_commands_,
-				optional_result_type{},
-				[
-					parse_inner,
-					&option_arguments
-				](
-					auto const &_parser,
-					optional_result_type &&_result
-				)
-				{
-					return
-						fcppt::optional::maybe(
-							fcppt::options::detail::split_command(
-								option_arguments,
-								fcppt::options::deref(
-									_parser
-								).name()
-							),
-							[
-								&_result
-							]{
-								return
-									std::make_pair(
-										fcppt::loop::continue_,
-										std::move(
-											_result
-										)
-									);
-							},
-							[
-								parse_inner,
-								&_parser
-							](
-								std::pair<
-									fcppt::args_vector,
-									fcppt::args_vector
-								> &&_split_args
-							)
-							{
-								return
-									std::make_pair(
-										fcppt::loop::break_,
-										optional_result_type{
-											parse_inner(
-												_parser,
-												std::move(
-													_split_args
-												)
-											)
-										}
-									);
-							}
-						);
+		fcppt::optional::maybe(
+			fcppt::options::detail::split_command(
+				fcppt::options::parse_arguments{
+					fcppt::options::state{
+						_arguments.state_
+					},
+					fcppt::options::deref(
+						options_parser_
+					).option_names()
 				}
 			),
 			[
@@ -296,6 +240,91 @@ fcppt::options::commands<
 								+
 								FCPPT_TEXT("]")
 							}
+						}
+					);
+			},
+			[
+				this,
+				parse_inner
+			](
+				std::tuple<
+					fcppt::args_vector,
+					fcppt::string,
+					fcppt::args_vector
+				> const &_split_arguments
+			)
+			{
+				return
+					fcppt::optional::from(
+						fcppt::algorithm::fold_break(
+							this->sub_commands_,
+							optional_result_type{},
+							[
+								&_split_arguments,
+								parse_inner
+							](
+								auto const &_parser,
+								optional_result_type &&_result
+							)
+							{
+								return
+									std::get<
+										1
+									>(
+										_split_arguments
+									)
+									==
+									fcppt::options::deref(
+										_parser
+									).name()
+									?
+										std::make_pair(
+											fcppt::loop::break_,
+											optional_result_type{
+												parse_inner(
+													_parser,
+													std::get<
+														0
+													>(
+														_split_arguments
+													),
+													std::get<
+														2
+													>(
+														_split_arguments
+													)
+												)
+											}
+										)
+									:
+										std::make_pair(
+											fcppt::loop::continue_,
+											std::move(
+												_result
+											)
+										)
+									;
+							}
+						),
+						[
+							&_split_arguments
+						]{
+							return
+								fcppt::either::make_failure<
+									result_type
+								>(
+									fcppt::options::error{
+										fcppt::options::other_error{
+											FCPPT_TEXT("Invalid command ")
+											+
+											std::get<
+												1
+											>(
+												_split_arguments
+											)
+										}
+									}
+								);
 						}
 					);
 			}

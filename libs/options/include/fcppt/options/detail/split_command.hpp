@@ -13,7 +13,7 @@
 #include <fcppt/options/parse_arguments_fwd.hpp>
 #include <fcppt/options/detail/symbol.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <utility>
+#include <tuple>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -26,14 +26,14 @@ namespace detail
 
 FCPPT_OPTIONS_DETAIL_SYMBOL
 fcppt::optional::object<
-	std::pair<
+	std::tuple<
 		fcppt::args_vector,
+		fcppt::string,
 		fcppt::args_vector
 	>
 >
 split_command(
-	fcppt::options::parse_arguments const &,
-	fcppt::string const &
+	fcppt::options::parse_arguments const &
 );
 
 }

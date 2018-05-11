@@ -5,10 +5,16 @@
 
 
 #include <fcppt/args_vector.hpp>
+#include <fcppt/const.hpp>
+#include <fcppt/optional/maybe.hpp>
 #include <fcppt/optional/object_impl.hpp>
 #include <fcppt/options/option_name_set.hpp>
+#include <fcppt/options/detail/flag_is_short.hpp>
 #include <fcppt/options/impl/is_flag.hpp>
 #include <fcppt/options/impl/next_arg.hpp>
+#include <fcppt/config/external_begin.hpp>
+#include <utility>
+#include <fcppt/config/external_end.hpp>
 
 
 fcppt::optional::object<
@@ -38,33 +44,52 @@ fcppt::options::impl::next_arg(
 	)
 	{
 		if(
-			fcppt::options::impl::is_flag(
-				*cur
+			fcppt::optional::maybe(
+				fcppt::options::impl::is_flag(
+					*cur
+				),
+				fcppt::const_(
+					false
+				),
+				[
+					&_option_names,
+					&cur,
+					&end
+				](
+					std::pair<
+						fcppt::options::detail::flag_is_short,
+						fcppt::string
+					> const &_flag
+				)
+				{
+					++cur;
+
+					if(
+						cur
+						!=
+						end
+						&&
+						// FIXME: We should check if this flag is short or not
+						_option_names.get().count(
+							_flag.second
+						)
+						>=
+						1u
+					)
+						++cur;
+
+					return
+						true;
+				}
 			)
 		)
-		{
-			++cur;
-
-			if(
-				cur
-				!=
-				end
-				&&
-				_option_names.get().count(
-					*cur
-				)
-				>=
-				1u
-			)
-				++cur;
-
 			continue;
-		}
+		else
 
-		return
-			result_type{
-				cur
-			};
+			return
+				result_type{
+					cur
+				};
 	}
 
 	return

@@ -10,10 +10,10 @@
 #include <fcppt/string.hpp>
 #include <fcppt/options/state.hpp>
 #include <fcppt/options/detail/flag_is_short.hpp>
-#include <fcppt/options/detail/flag_name.hpp>
 #include <fcppt/options/detail/missing_option_argument.hpp>
 #include <fcppt/options/detail/use_option.hpp>
 #include <fcppt/options/detail/use_option_result.hpp>
+#include <fcppt/options/impl/flag_name.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <algorithm>
 #include <iterator>
@@ -31,7 +31,7 @@ fcppt::options::detail::use_option(
 )
 {
 	fcppt::string const flag_name{
-		fcppt::options::detail::flag_name(
+		fcppt::options::impl::flag_name(
 			_name,
 			_is_short
 		)

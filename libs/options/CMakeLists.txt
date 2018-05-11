@@ -1,7 +1,9 @@
 set(
 	FCPPT_OPTIONS_FILES
+	libs/options/impl/include/fcppt/options/impl/flag_name.hpp
 	libs/options/impl/include/fcppt/options/impl/is_flag.hpp
 	libs/options/impl/include/fcppt/options/impl/next_arg.hpp
+	libs/options/impl/src/options/impl/flag_name.cpp
 	libs/options/impl/src/options/impl/is_flag.cpp
 	libs/options/impl/src/options/impl/next_arg.cpp
 	libs/options/include/fcppt/options/active_value.hpp
@@ -36,7 +38,6 @@ set(
 	libs/options/include/fcppt/options/detail/deref.hpp
 	libs/options/include/fcppt/options/detail/duplicate_names_text.hpp
 	libs/options/include/fcppt/options/detail/flag_is_short.hpp
-	libs/options/include/fcppt/options/detail/flag_name.hpp
 	libs/options/include/fcppt/options/detail/help_label.hpp
 	libs/options/include/fcppt/options/detail/help_text.hpp
 	libs/options/include/fcppt/options/detail/leftover_error.hpp
@@ -155,7 +156,6 @@ set(
 	libs/options/src/options/detail/check_short_long_names.cpp
 	libs/options/src/options/detail/combine_errors.cpp
 	libs/options/src/options/detail/duplicate_names_text.cpp
-	libs/options/src/options/detail/flag_name.cpp
 	libs/options/src/options/detail/help_text.cpp
 	libs/options/src/options/detail/leftover_error.cpp
 	libs/options/src/options/detail/long_or_short_name.cpp

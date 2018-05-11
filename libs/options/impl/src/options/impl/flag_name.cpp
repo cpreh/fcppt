@@ -7,11 +7,11 @@
 #include <fcppt/string.hpp>
 #include <fcppt/text.hpp>
 #include <fcppt/options/detail/flag_is_short.hpp>
-#include <fcppt/options/detail/flag_name.hpp>
+#include <fcppt/options/impl/flag_name.hpp>
 
 
 fcppt::string
-fcppt::options::detail::flag_name(
+fcppt::options::impl::flag_name(
 	fcppt::string const &_name,
 	fcppt::options::detail::flag_is_short const _is_short
 )

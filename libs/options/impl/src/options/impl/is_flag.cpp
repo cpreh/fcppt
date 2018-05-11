@@ -4,29 +4,94 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
+#include <fcppt/char_type.hpp>
 #include <fcppt/string.hpp>
 #include <fcppt/text.hpp>
-#include <fcppt/container/at_optional.hpp>
-#include <fcppt/optional/comparison.hpp>
-#include <fcppt/optional/copy_value.hpp>
-#include <fcppt/optional/make.hpp>
+#include <fcppt/optional/object_impl.hpp>
 #include <fcppt/options/impl/is_flag.hpp>
+#include <fcppt/options/detail/flag_is_short.hpp>
+#include <fcppt/config/external_begin.hpp>
+#include <utility>
+#include <fcppt/config/external_end.hpp>
 
 
-bool
+fcppt::optional::object<
+	std::pair<
+		fcppt::options::detail::flag_is_short,
+		fcppt::string
+	>
+>
 fcppt::options::impl::is_flag(
 	fcppt::string const &_value
 )
 {
-	return
-		fcppt::optional::copy_value(
-			fcppt::container::at_optional(
-				_value,
-				0u
-			)
+	// TODO: This is terrible
+	fcppt::string::const_iterator pos{
+		_value.begin()
+	};
+
+	typedef
+	fcppt::optional::object<
+		std::pair<
+			fcppt::options::detail::flag_is_short,
+			fcppt::string
+		>
+	>
+	result_type;
+
+	auto const is_dash(
+		[](
+			fcppt::char_type const _ch
 		)
+		{
+			return
+				_ch
+				==
+				FCPPT_TEXT('-');
+		}
+	);
+
+	if(
+		pos
 		==
-		fcppt::optional::make(
-			FCPPT_TEXT('-')
-		);
+		_value.end()
+		||
+		not
+		is_dash(
+			*pos
+		)
+	)
+		return
+			result_type{};
+
+	++pos;
+
+	return
+		result_type{
+			is_dash(
+				*pos
+			)
+			?
+				std::make_pair(
+					fcppt::options::detail::flag_is_short{
+						false
+					},
+					fcppt::string{
+						std::next(
+							pos
+						),
+						_value.end()
+					}
+				)
+			:
+				std::make_pair(
+					fcppt::options::detail::flag_is_short{
+						true
+					},
+					fcppt::string{
+						pos,
+						_value.end()
+					}
+				)
+		};
 }

@@ -8,6 +8,11 @@
 #define FCPPT_OPTIONS_IMPL_IS_FLAG_HPP_INCLUDED
 
 #include <fcppt/string.hpp>
+#include <fcppt/optional/object_impl.hpp>
+#include <fcppt/options/detail/flag_is_short.hpp>
+#include <fcppt/config/external_begin.hpp>
+#include <utility>
+#include <fcppt/config/external_end.hpp>
 
 
 namespace fcppt
@@ -17,7 +22,12 @@ namespace options
 namespace impl
 {
 
-bool
+fcppt::optional::object<
+	std::pair<
+		fcppt::options::detail::flag_is_short,
+		fcppt::string
+	>
+>
 is_flag(
 	fcppt::string const &
 );
