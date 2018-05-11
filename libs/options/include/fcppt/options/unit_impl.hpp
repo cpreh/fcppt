@@ -11,13 +11,13 @@
 #include <fcppt/unit.hpp>
 #include <fcppt/either/make_failure.hpp>
 #include <fcppt/options/error.hpp>
-#include <fcppt/options/other_error.hpp>
 #include <fcppt/options/flag_name_set.hpp>
 #include <fcppt/options/make_success.hpp>
 #include <fcppt/options/option_name_set.hpp>
+#include <fcppt/options/other_error.hpp>
 #include <fcppt/options/parse_arguments.hpp>
-#include <fcppt/options/unit_decl.hpp>
 #include <fcppt/options/result.hpp>
+#include <fcppt/options/unit_decl.hpp>
 #include <fcppt/record/element.hpp>
 #include <fcppt/record/variadic.hpp>
 

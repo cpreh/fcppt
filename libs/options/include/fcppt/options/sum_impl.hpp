@@ -11,6 +11,7 @@
 #include <fcppt/text.hpp>
 #include <fcppt/either/map.hpp>
 #include <fcppt/either/match.hpp>
+#include <fcppt/options/deref.hpp>
 #include <fcppt/options/error.hpp>
 #include <fcppt/options/flag_name_set.hpp>
 #include <fcppt/options/make_success.hpp>
@@ -20,7 +21,6 @@
 #include <fcppt/options/result.hpp>
 #include <fcppt/options/result_of.hpp>
 #include <fcppt/options/sum_decl.hpp>
-#include <fcppt/options/deref.hpp>
 #include <fcppt/variant/variadic.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <utility>

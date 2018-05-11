@@ -8,8 +8,8 @@
 #include <fcppt/string.hpp>
 #include <fcppt/text.hpp>
 #include <fcppt/optional/object_impl.hpp>
-#include <fcppt/options/impl/is_flag.hpp>
 #include <fcppt/options/detail/flag_is_short.hpp>
+#include <fcppt/options/impl/is_flag.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <utility>
 #include <fcppt/config/external_end.hpp>

@@ -9,10 +9,10 @@
 #include <fcppt/either/comparison.hpp>
 #include <fcppt/options/argument.hpp>
 #include <fcppt/options/default_help_switch.hpp>
-#include <fcppt/options/make_success.hpp>
 #include <fcppt/options/help_result.hpp>
 #include <fcppt/options/help_text.hpp>
 #include <fcppt/options/long_name.hpp>
+#include <fcppt/options/make_success.hpp>
 #include <fcppt/options/optional_help_text.hpp>
 #include <fcppt/options/parse_help.hpp>
 #include <fcppt/options/result_of.hpp>

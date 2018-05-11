@@ -7,9 +7,9 @@
 #include <fcppt/args_vector.hpp>
 #include <fcppt/text.hpp>
 #include <fcppt/either/comparison.hpp>
-#include <fcppt/options/make_success.hpp>
 #include <fcppt/options/argument.hpp>
 #include <fcppt/options/long_name.hpp>
+#include <fcppt/options/make_success.hpp>
 #include <fcppt/options/optional_help_text.hpp>
 #include <fcppt/options/parse.hpp>
 #include <fcppt/record/comparison.hpp>

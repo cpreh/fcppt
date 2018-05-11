@@ -16,6 +16,7 @@
 #include <fcppt/either/map.hpp>
 #include <fcppt/either/match.hpp>
 #include <fcppt/optional/maybe.hpp>
+#include <fcppt/options/deref.hpp>
 #include <fcppt/options/duplicate_names.hpp>
 #include <fcppt/options/error.hpp>
 #include <fcppt/options/flag_name_set.hpp>
@@ -26,7 +27,6 @@
 #include <fcppt/options/result.hpp>
 #include <fcppt/options/result_of.hpp>
 #include <fcppt/options/detail/combine_errors.hpp>
-#include <fcppt/options/deref.hpp>
 #include <fcppt/options/detail/duplicate_names_text.hpp>
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>

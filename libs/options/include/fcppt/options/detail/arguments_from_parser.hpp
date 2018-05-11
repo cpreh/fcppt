@@ -8,8 +8,8 @@
 #define FCPPT_OPTIONS_DETAIL_ARGUMENTS_FROM_PARSER_HPP_INCLUDED
 
 #include <fcppt/args_vector.hpp>
-#include <fcppt/options/parse_arguments.hpp>
 #include <fcppt/options/deref.hpp>
+#include <fcppt/options/parse_arguments.hpp>
 #include <fcppt/options/state.hpp>
 
 

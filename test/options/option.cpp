@@ -8,9 +8,9 @@
 #include <fcppt/text.hpp>
 #include <fcppt/either/comparison.hpp>
 #include <fcppt/optional/make.hpp>
-#include <fcppt/options/make_success.hpp>
 #include <fcppt/options/long_name.hpp>
 #include <fcppt/options/make_default_value.hpp>
+#include <fcppt/options/make_success.hpp>
 #include <fcppt/options/no_default_value.hpp>
 #include <fcppt/options/option.hpp>
 #include <fcppt/options/optional_help_text.hpp>

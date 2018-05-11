@@ -11,6 +11,7 @@
 #include <fcppt/make_cref.hpp>
 #include <fcppt/text.hpp>
 #include <fcppt/either/match.hpp>
+#include <fcppt/options/deref.hpp>
 #include <fcppt/options/help_result.hpp>
 #include <fcppt/options/help_switch.hpp>
 #include <fcppt/options/help_text.hpp>
@@ -18,7 +19,6 @@
 #include <fcppt/options/result.hpp>
 #include <fcppt/options/result_of.hpp>
 #include <fcppt/options/detail/arguments_from_parser.hpp>
-#include <fcppt/options/deref.hpp>
 #include <fcppt/options/detail/parse_to_empty.hpp>
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>

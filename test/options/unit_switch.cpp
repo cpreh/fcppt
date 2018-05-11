@@ -9,8 +9,8 @@
 #include <fcppt/unit.hpp>
 #include <fcppt/unit_comparison.hpp>
 #include <fcppt/either/comparison.hpp>
-#include <fcppt/options/make_success.hpp>
 #include <fcppt/options/long_name.hpp>
+#include <fcppt/options/make_success.hpp>
 #include <fcppt/options/optional_short_name.hpp>
 #include <fcppt/options/parse.hpp>
 #include <fcppt/options/result_of.hpp>

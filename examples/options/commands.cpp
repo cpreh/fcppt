@@ -12,9 +12,9 @@
 #include <fcppt/string.hpp>
 #include <fcppt/strong_typedef_output.hpp>
 #include <fcppt/text.hpp>
+#include <fcppt/either/match.hpp>
 #include <fcppt/io/cerr.hpp>
 #include <fcppt/io/cout.hpp>
-#include <fcppt/either/match.hpp>
 #include <fcppt/optional/maybe_void.hpp>
 #include <fcppt/options/argument.hpp>
 #include <fcppt/options/error.hpp>
@@ -25,12 +25,12 @@
 #include <fcppt/options/make_sub_command.hpp>
 #include <fcppt/options/no_default_value.hpp>
 #include <fcppt/options/option.hpp>
-#include <fcppt/options/options_label.hpp>
 #include <fcppt/options/optional_help_text.hpp>
 #include <fcppt/options/optional_short_name.hpp>
+#include <fcppt/options/options_label.hpp>
 #include <fcppt/options/parse.hpp>
-#include <fcppt/options/sub_command_label.hpp>
 #include <fcppt/options/result_of.hpp>
+#include <fcppt/options/sub_command_label.hpp>
 #include <fcppt/options/unit.hpp>
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
