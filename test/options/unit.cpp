@@ -9,8 +9,7 @@
 #include <fcppt/unit.hpp>
 #include <fcppt/unit_comparison.hpp>
 #include <fcppt/either/comparison.hpp>
-#include <fcppt/either/make_success.hpp>
-#include <fcppt/options/error.hpp>
+#include <fcppt/options/make_success.hpp>
 #include <fcppt/options/parse.hpp>
 #include <fcppt/options/unit.hpp>
 #include <fcppt/record/comparison.hpp>
@@ -43,9 +42,7 @@ BOOST_AUTO_TEST_CASE(
 			fcppt::args_vector{}
 		)
 		==
-		fcppt::either::make_success<
-			fcppt::options::error
-		>(
+		fcppt::options::make_success(
 			unit_type::result_type{
 				dummy_label{}
 					= fcppt::unit{}

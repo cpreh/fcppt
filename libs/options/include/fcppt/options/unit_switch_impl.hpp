@@ -12,10 +12,10 @@
 #include <fcppt/unit.hpp>
 #include <fcppt/either/bind.hpp>
 #include <fcppt/either/make_failure.hpp>
-#include <fcppt/either/make_success.hpp>
 #include <fcppt/options/error.hpp>
 #include <fcppt/options/flag_name_set.hpp>
 #include <fcppt/options/long_name_fwd.hpp>
+#include <fcppt/options/make_success.hpp>
 #include <fcppt/options/missing_error.hpp>
 #include <fcppt/options/option_name_set.hpp>
 #include <fcppt/options/optional_short_name_fwd.hpp>
@@ -81,9 +81,7 @@ fcppt::options::unit_switch<
 						_result
 					)
 					?
-						fcppt::either::make_success<
-							fcppt::options::error
-						>(
+						fcppt::options::make_success(
 							result_type{
 								Label{} =
 									fcppt::unit{}

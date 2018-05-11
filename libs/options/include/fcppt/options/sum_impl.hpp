@@ -9,11 +9,11 @@
 
 #include <fcppt/string.hpp>
 #include <fcppt/text.hpp>
-#include <fcppt/either/make_success.hpp>
 #include <fcppt/either/map.hpp>
 #include <fcppt/either/match.hpp>
 #include <fcppt/options/error.hpp>
 #include <fcppt/options/flag_name_set.hpp>
+#include <fcppt/options/make_success.hpp>
 #include <fcppt/options/name_set.hpp>
 #include <fcppt/options/option_name_set.hpp>
 #include <fcppt/options/parse_arguments.hpp>
@@ -210,9 +210,7 @@ fcppt::options::sum<
 			)
 			{
 				return
-					fcppt::either::make_success<
-						fcppt::options::error
-					>(
+					fcppt::options::make_success(
 						result_type{
 							std::move(
 								_result

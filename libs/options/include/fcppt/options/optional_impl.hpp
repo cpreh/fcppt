@@ -10,13 +10,13 @@
 #include <fcppt/string.hpp>
 #include <fcppt/text.hpp>
 #include <fcppt/either/make_failure.hpp>
-#include <fcppt/either/make_success.hpp>
 #include <fcppt/either/match.hpp>
 #include <fcppt/optional/make.hpp>
 #include <fcppt/optional/nothing.hpp>
 #include <fcppt/optional/object_impl.hpp>
 #include <fcppt/options/error.hpp>
 #include <fcppt/options/flag_name_set.hpp>
+#include <fcppt/options/make_success.hpp>
 #include <fcppt/options/missing_error.hpp>
 #include <fcppt/options/option_name_set.hpp>
 #include <fcppt/options/optional_decl.hpp>
@@ -157,9 +157,7 @@ fcppt::options::optional<
 						)
 						{
 							return
-								fcppt::either::make_success<
-									fcppt::options::error
-								>(
+								fcppt::options::make_success(
 									fcppt::record::init<
 										result_type
 									>(
@@ -201,9 +199,7 @@ fcppt::options::optional<
 			)
 			{
 				return
-					fcppt::either::make_success<
-						fcppt::options::error
-					>(
+					fcppt::options::make_success(
 						fcppt::record::permute<
 							result_type
 						>(

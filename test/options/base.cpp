@@ -7,10 +7,9 @@
 #include <fcppt/args_vector.hpp>
 #include <fcppt/text.hpp>
 #include <fcppt/either/comparison.hpp>
-#include <fcppt/either/make_success.hpp>
 #include <fcppt/options/argument.hpp>
 #include <fcppt/options/base_unique_ptr.hpp>
-#include <fcppt/options/error.hpp>
+#include <fcppt/options/make_success.hpp>
 #include <fcppt/options/long_name.hpp>
 #include <fcppt/options/make_base.hpp>
 #include <fcppt/options/optional_help_text.hpp>
@@ -68,9 +67,7 @@ BOOST_AUTO_TEST_CASE(
 			}
 		)
 		==
-		fcppt::either::make_success<
-			fcppt::options::error
-		>(
+		fcppt::options::make_success(
 			result_type{
 				arg_label{}
 					= 123

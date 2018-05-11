@@ -10,10 +10,10 @@
 #include <fcppt/string.hpp>
 #include <fcppt/unit.hpp>
 #include <fcppt/either/make_failure.hpp>
-#include <fcppt/either/make_success.hpp>
 #include <fcppt/options/error.hpp>
 #include <fcppt/options/other_error.hpp>
 #include <fcppt/options/flag_name_set.hpp>
+#include <fcppt/options/make_success.hpp>
 #include <fcppt/options/option_name_set.hpp>
 #include <fcppt/options/parse_arguments.hpp>
 #include <fcppt/options/unit_decl.hpp>
@@ -49,9 +49,7 @@ fcppt::options::unit<
 	return
 		_args.state_.empty()
 		?
-			fcppt::either::make_success<
-				fcppt::options::error
-			>(
+			fcppt::options::make_success(
 				result_type{
 					Label{} =
 						fcppt::unit{}

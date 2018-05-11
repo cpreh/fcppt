@@ -91,6 +91,7 @@ set(
 	libs/options/include/fcppt/options/make_many.hpp
 	libs/options/include/fcppt/options/make_optional.hpp
 	libs/options/include/fcppt/options/make_sub_command.hpp
+	libs/options/include/fcppt/options/make_success.hpp
 	libs/options/include/fcppt/options/make_sum.hpp
 	libs/options/include/fcppt/options/many_decl.hpp
 	libs/options/include/fcppt/options/many_fwd.hpp

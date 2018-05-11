@@ -7,9 +7,8 @@
 #include <fcppt/args_vector.hpp>
 #include <fcppt/text.hpp>
 #include <fcppt/either/comparison.hpp>
-#include <fcppt/either/make_success.hpp>
+#include <fcppt/options/make_success.hpp>
 #include <fcppt/options/argument.hpp>
-#include <fcppt/options/error.hpp>
 #include <fcppt/options/long_name.hpp>
 #include <fcppt/options/make_many.hpp>
 #include <fcppt/options/optional_help_text.hpp>
@@ -60,9 +59,7 @@ BOOST_AUTO_TEST_CASE(
 			}
 		)
 		==
-		fcppt::either::make_success<
-			fcppt::options::error
-		>(
+		fcppt::options::make_success(
 			parser_type::result_type{
 				arg_label{} =
 					std::vector<
@@ -91,9 +88,7 @@ BOOST_AUTO_TEST_CASE(
 			fcppt::args_vector{}
 		)
 		==
-		fcppt::either::make_success<
-			fcppt::options::error
-		>(
+		fcppt::options::make_success(
 			parser_type::result_type{
 				arg_label{} =
 					std::vector<
