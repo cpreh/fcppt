@@ -26,7 +26,7 @@
 #include <fcppt/options/result.hpp>
 #include <fcppt/options/result_of.hpp>
 #include <fcppt/options/detail/combine_errors.hpp>
-#include <fcppt/options/detail/deref.hpp>
+#include <fcppt/options/deref.hpp>
 #include <fcppt/options/detail/duplicate_names_text.hpp>
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
@@ -174,7 +174,7 @@ FCPPT_PP_PUSH_WARNING
 FCPPT_PP_DISABLE_GCC_WARNING(-Wattributes)
 	return
 		fcppt::either::match(
-			fcppt::options::detail::deref(
+			fcppt::options::deref(
 				left_
 			).parse(
 				_state
@@ -192,7 +192,7 @@ FCPPT_PP_DISABLE_GCC_WARNING(-Wattributes)
 					>{
 						fcppt::optional::maybe(
 							fcppt::either::failure_opt(
-								fcppt::options::detail::deref(
+								fcppt::options::deref(
 									right_
 								).parse(
 									_state
@@ -241,7 +241,7 @@ FCPPT_PP_DISABLE_GCC_WARNING(-Wattributes)
 			{
 				return
 					fcppt::either::map(
-						fcppt::options::detail::deref(
+						fcppt::options::deref(
 							right_
 						).parse(
 							_state
@@ -293,10 +293,10 @@ fcppt::options::product<
 						_right_set
 					);
 			},
-			fcppt::options::detail::deref(
+			fcppt::options::deref(
 				left_
 			).flag_names(),
-			fcppt::options::detail::deref(
+			fcppt::options::deref(
 				right_
 			).flag_names()
 		);
@@ -325,10 +325,10 @@ fcppt::options::product<
 						_right_set
 					);
 			},
-			fcppt::options::detail::deref(
+			fcppt::options::deref(
 				left_
 			).option_names(),
-			fcppt::options::detail::deref(
+			fcppt::options::deref(
 				right_
 			).option_names()
 		);
@@ -345,13 +345,13 @@ fcppt::options::product<
 >::usage() const
 {
 	return
-		fcppt::options::detail::deref(
+		fcppt::options::deref(
 			left_
 		).usage()
 		+
 		FCPPT_TEXT('\n')
 		+
-		fcppt::options::detail::deref(
+		fcppt::options::deref(
 			right_
 		).usage();
 }
@@ -384,12 +384,12 @@ fcppt::options::product<
 	fcppt::options::name_set const common_names{
 		fcppt::algorithm::set_intersection(
 			all_parameters(
-				fcppt::options::detail::deref(
+				fcppt::options::deref(
 					left_
 				)
 			),
 			all_parameters(
-				fcppt::options::detail::deref(
+				fcppt::options::deref(
 					right_
 				)
 			)

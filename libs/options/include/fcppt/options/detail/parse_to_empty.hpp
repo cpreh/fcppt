@@ -13,7 +13,7 @@
 #include <fcppt/options/parse_arguments.hpp>
 #include <fcppt/options/result.hpp>
 #include <fcppt/options/result_of.hpp>
-#include <fcppt/options/detail/deref.hpp>
+#include <fcppt/options/deref.hpp>
 #include <fcppt/options/detail/leftover_error.hpp>
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
@@ -51,7 +51,7 @@ parse_to_empty(
 
 	return
 		fcppt::either::bind(
-			fcppt::options::detail::deref(
+			fcppt::options::deref(
 				_parser
 			).parse(
 				_arguments

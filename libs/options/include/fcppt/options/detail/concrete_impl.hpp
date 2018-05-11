@@ -9,13 +9,13 @@
 
 #include <fcppt/string.hpp>
 #include <fcppt/either/map.hpp>
+#include <fcppt/options/deref.hpp>
 #include <fcppt/options/flag_name_set.hpp>
 #include <fcppt/options/option_name_set.hpp>
 #include <fcppt/options/parse_arguments_fwd.hpp>
 #include <fcppt/options/result.hpp>
 #include <fcppt/options/result_of.hpp>
 #include <fcppt/options/detail/concrete_decl.hpp>
-#include <fcppt/options/detail/deref.hpp>
 #include <fcppt/record/permute.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <utility>
@@ -91,7 +91,7 @@ fcppt::options::detail::concrete<
 {
 	return
 		fcppt::either::map(
-			fcppt::options::detail::deref(
+			fcppt::options::deref(
 				parser_
 			).parse(
 				_state
@@ -125,7 +125,7 @@ fcppt::options::detail::concrete<
 >::flag_names() const
 {
 	return
-		fcppt::options::detail::deref(
+		fcppt::options::deref(
 			parser_
 		).flag_names();
 }
@@ -141,7 +141,7 @@ fcppt::options::detail::concrete<
 >::option_names() const
 {
 	return
-		fcppt::options::detail::deref(
+		fcppt::options::deref(
 			parser_
 		).option_names();
 }
@@ -157,7 +157,7 @@ fcppt::options::detail::concrete<
 >::usage() const
 {
 	return
-		fcppt::options::detail::deref(
+		fcppt::options::deref(
 			parser_
 		).usage();
 }

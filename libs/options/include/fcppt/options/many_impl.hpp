@@ -24,7 +24,7 @@
 #include <fcppt/options/parse_arguments_fwd.hpp>
 #include <fcppt/options/result.hpp>
 #include <fcppt/options/result_of.hpp>
-#include <fcppt/options/detail/deref.hpp>
+#include <fcppt/options/deref.hpp>
 #include <fcppt/record/element_to_label.hpp>
 #include <fcppt/record/element_to_type.hpp>
 #include <fcppt/record/get.hpp>
@@ -172,7 +172,7 @@ fcppt::options::many<
 		!optional_error.has_value()
 	)
 		fcppt::either::match(
-			fcppt::options::detail::deref(
+			fcppt::options::deref(
 				parser_
 			).parse(
 				_state
@@ -303,7 +303,7 @@ fcppt::options::many<
 >::flag_names() const
 {
 	return
-		fcppt::options::detail::deref(
+		fcppt::options::deref(
 			parser_
 		).flag_names();
 }
@@ -317,7 +317,7 @@ fcppt::options::many<
 >::option_names() const
 {
 	return
-		fcppt::options::detail::deref(
+		fcppt::options::deref(
 			parser_
 		).option_names();
 }
@@ -333,7 +333,7 @@ fcppt::options::many<
 	return
 		FCPPT_TEXT("[ ")
 		+
-		fcppt::options::detail::deref(
+		fcppt::options::deref(
 			parser_
 		).usage()
 		+

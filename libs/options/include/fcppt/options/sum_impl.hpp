@@ -20,7 +20,7 @@
 #include <fcppt/options/result.hpp>
 #include <fcppt/options/result_of.hpp>
 #include <fcppt/options/sum_decl.hpp>
-#include <fcppt/options/detail/deref.hpp>
+#include <fcppt/options/deref.hpp>
 #include <fcppt/variant/variadic.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <utility>
@@ -165,7 +165,7 @@ fcppt::options::sum<
 
 	return
 		fcppt::either::match(
-			fcppt::options::detail::deref(
+			fcppt::options::deref(
 				left_
 			).parse(
 				_state
@@ -183,7 +183,7 @@ fcppt::options::sum<
 
 				return
 					fcppt::either::map(
-						fcppt::options::detail::deref(
+						fcppt::options::deref(
 							this->right_
 						).parse(
 							_state
@@ -266,14 +266,14 @@ fcppt::options::sum<
 >::usage() const
 {
 	return
-		fcppt::options::detail::deref(
+		fcppt::options::deref(
 			left_
 		).usage()
 		+
 		// TODO: Format this better
 		FCPPT_TEXT("\nOR\n")
 		+
-		fcppt::options::detail::deref(
+		fcppt::options::deref(
 			right_
 		).usage();
 }

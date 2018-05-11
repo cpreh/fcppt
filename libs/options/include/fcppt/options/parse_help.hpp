@@ -18,7 +18,7 @@
 #include <fcppt/options/result.hpp>
 #include <fcppt/options/result_of.hpp>
 #include <fcppt/options/detail/arguments_from_parser.hpp>
-#include <fcppt/options/detail/deref.hpp>
+#include <fcppt/options/deref.hpp>
 #include <fcppt/options/detail/parse_to_empty.hpp>
 #include <fcppt/preprocessor/disable_gcc_warning.hpp>
 #include <fcppt/preprocessor/pop_warning.hpp>
@@ -134,7 +134,7 @@ parse_help(
 							return
 								return_type{
 									fcppt::options::help_text{
-										fcppt::options::detail::deref(
+										fcppt::options::deref(
 											_parser
 										).usage()
 									}

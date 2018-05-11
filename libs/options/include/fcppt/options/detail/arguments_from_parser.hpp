@@ -9,8 +9,8 @@
 
 #include <fcppt/args_vector.hpp>
 #include <fcppt/options/parse_arguments.hpp>
+#include <fcppt/options/deref.hpp>
 #include <fcppt/options/state.hpp>
-#include <fcppt/options/detail/deref.hpp>
 
 
 namespace fcppt
@@ -37,7 +37,7 @@ arguments_from_parser(
 					_args
 				}
 			},
-			fcppt::options::detail::deref(
+			fcppt::options::deref(
 				_parser
 			).option_names()
 		};
