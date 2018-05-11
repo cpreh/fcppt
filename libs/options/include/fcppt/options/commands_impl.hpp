@@ -140,13 +140,21 @@ fcppt::options::commands<
 						result_type
 					>
 					{
-						_arguments.state_ =
+						fcppt::options::parse_arguments inner_args{
 							fcppt::options::state{
-								// TODO: Move args
+								// TODO: move
 								fcppt::args_vector{
 									_second_args
 								}
-							};
+							},
+							fcppt::options::option_name_set{
+								fcppt::options::deref(
+									fcppt::options::deref(
+										_parser
+									).parser()
+								).option_names()
+							}
+						};
 
 						return
 							fcppt::either::map(
@@ -155,14 +163,22 @@ fcppt::options::commands<
 										_parser
 									).parser()
 								).parse(
-									_arguments
+									inner_args
 								),
 								[
+									&inner_args,
+									&_arguments,
 									&_options_result
 								](
 									auto &&_parser_result
 								)
 								{
+									// TODO: Return state
+									_arguments.state_ =
+										std::move(
+											inner_args.state_
+										);
+
 									return
 										result_type{
 											fcppt::options::options_label{} =
