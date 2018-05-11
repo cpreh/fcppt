@@ -22,3 +22,10 @@ fcppt::options::state::state(
 	}
 {
 }
+
+bool
+fcppt::options::state::empty() const
+{
+	return
+		args_.empty();
+}

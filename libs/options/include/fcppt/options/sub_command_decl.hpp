@@ -8,6 +8,7 @@
 #define FCPPT_OPTIONS_SUB_COMMAND_DECL_HPP_INCLUDED
 
 #include <fcppt/string.hpp>
+#include <fcppt/options/optional_help_text.hpp>
 #include <fcppt/options/result_of.hpp>
 #include <fcppt/options/sub_command_fwd.hpp>
 
@@ -30,7 +31,8 @@ class sub_command
 public:
 	sub_command(
 		fcppt::string &&,
-		Parser &&
+		Parser &&,
+		fcppt::options::optional_help_text &&
 	);
 
 	fcppt::string const &
@@ -38,6 +40,9 @@ public:
 
 	Parser const &
 	parser() const;
+
+	fcppt::options::optional_help_text const &
+	help_text() const;
 
 	typedef
 	fcppt::options::result_of<
@@ -48,6 +53,8 @@ private:
 	fcppt::string name_;
 
 	Parser parser_;
+
+	fcppt::options::optional_help_text help_text_;
 };
 
 }

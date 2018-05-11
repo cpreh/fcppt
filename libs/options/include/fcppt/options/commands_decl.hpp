@@ -15,7 +15,6 @@
 #include <fcppt/options/parse_arguments_fwd.hpp>
 #include <fcppt/options/result_fwd.hpp>
 #include <fcppt/options/result_of.hpp>
-#include <fcppt/options/sub_command_impl.hpp>
 #include <fcppt/options/sub_command_label.hpp>
 #include <fcppt/record/element_fwd.hpp>
 #include <fcppt/record/variadic_fwd.hpp>
@@ -66,12 +65,20 @@ public:
 		"You must specify at least one subparser"
 	);
 
+	/**
+	\brief Constructs a commands parser.
+
+	\tparam OptionsParserArg A cv-ref to \a OptionsParser
+	\tparam SubCommandsArgs Cv-refs to \a SubCommands
+	*/
+	template<
+		typename OptionsParserArg,
+		typename... SubCommandsArgs
+	>
 	explicit
 	commands(
-		OptionsParser &&,
-		fcppt::options::sub_command<
-			SubCommands
-		> &&...
+		OptionsParserArg &&,
+		SubCommandsArgs &&...
 	);
 
 	typedef
@@ -116,9 +123,7 @@ private:
 	OptionsParser options_parser_;
 
 	std::tuple<
-		fcppt::options::sub_command<
-			SubCommands
-		>...
+		SubCommands...
 	>
 	sub_commands_;
 };

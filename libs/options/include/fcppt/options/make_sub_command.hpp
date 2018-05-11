@@ -8,6 +8,7 @@
 #define FCPPT_OPTIONS_MAKE_SUB_COMMAND_HPP_INCLUDED
 
 #include <fcppt/string.hpp>
+#include <fcppt/options/optional_help_text.hpp>
 #include <fcppt/options/sub_command_impl.hpp>
 #include <fcppt/type_traits/remove_cv_ref_t.hpp>
 #include <fcppt/config/external_begin.hpp>
@@ -36,7 +37,8 @@ fcppt::options::sub_command<
 >
 make_sub_command(
 	fcppt::string &&_name,
-	Parser &&_parser
+	Parser &&_parser,
+	fcppt::options::optional_help_text &&_help_text
 )
 {
 	return
@@ -48,8 +50,13 @@ make_sub_command(
 			std::move(
 				_name
 			),
-			std::move(
+			std::forward<
+				Parser
+			>(
 				_parser
+			),
+			std::move(
+				_help_text
 			)
 		);
 }

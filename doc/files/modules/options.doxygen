@@ -12,6 +12,7 @@
 	<li>\ref fcpptoptions_simple</li>
 	<li>\ref fcpptoptions_parsers</li>
 	<li>\ref fcpptoptions_complex</li>
+	<li>\ref fcpptoptions_commands</li>
 	<li>\ref fcpptoptions_help</li>
 	<li>\ref fcpptoptions_base</li>
 </ul>
@@ -158,6 +159,9 @@ Parses a flag, e.g. <code>"-f"</code> or <code>"--flag"</code>. Depending on
 whether the flag was specified or not, the result type is either its
 <em>inactive value</em> or its <em>active value</em>. Flags never produce an
 error.
+As a shortcut, \link fcppt::options::switch_\endlink is a short-hand for a flag
+of type <code>bool</code>. There is also \link fcppt::options::unit_switch\endlink
+for a flag that always has to be specified (e.g. if you want to parse <code>--help</code>).
 </td>
 </tr>
 <tr>
@@ -172,10 +176,17 @@ default value has been specified or the option's value cannot be converted to
 the parser's result type, an error occurs.
 </td>
 </tr>
+<tr>
+<td>
+\link fcppt::options::unit\endlink
+</td>
+<td>
+A parser that parses the empty command-line. This is useful, for example, when you want a
+sub-command that takes no arguments or options.
+</td>
+</tr>
 </table>
 
-As a shortcut, \link fcppt::options::switch_\endlink is a short-hand for a flag
-of type <code>bool</code>.
 
 
 \subsection fcpptoptions_parsers_combinators Combinator parser types
@@ -190,6 +201,7 @@ Type:
 Description:
 </th>
 </tr>
+
 <tr>
 <td>
 \link fcppt::options::product\endlink
@@ -199,9 +211,25 @@ A parser of type <code>fcppt::options::product<Left,Right></code> combines two
 parsers of type <code>Left</code> and <code>Right</code>, which must have
 <em>disjoint</em> records. The product parser first tries the left parser and
 then the right parser. It only succeeds if both succeed. Its result type is the
-<em> disjoint union</em> (see \link fcppt::record::multiply_disjoint\endlink)
+<em>disjoint union</em> (see \link fcppt::record::multiply_disjoint\endlink)
 of Left's and Right's result types. To combine two or more parsers at once, use
 \link fcppt::options::apply\endlink.
+</td>
+</tr>
+<tr>
+<td>
+\link fcppt::options::sum\endlink
+</td>
+<td>
+A parser of type <code>fcppt::options::sum<Left,Right></code> first
+tries <code>Left</code> and if that fails tries <code>Right</code>.
+It returns the result of the first one that succeeded or an error
+if both fail. Its result type is an <code>fcppt::variant::object</code>
+of <code>Left's</code> and <code>Right's</code> result types.
+You have to make sure that both are distinct.
+</td>
+</tr>
+
 <tr>
 <td>
 \link fcppt::options::optional\endlink
@@ -214,6 +242,7 @@ fcppt::optional::object\endlink layer added on top. See \link
 fcppt::options::make_optional\endlink.
 </td>
 </tr>
+
 <tr>
 <td>
 \link fcppt::options::many\endlink
@@ -224,6 +253,39 @@ type <code>Parser</code> into a parser that parsers zero or more occurrences.
 Its result type has the same labels as Parser's result type, but with an extra
 <code>std::vector</code> layer added on top. See \link
 fcppt::options::make_many\endlink.
+</td>
+</tr>
+
+<tr>
+<td>
+\link fcppt::options::commands\endlink
+</td>
+<td>
+A commands parser combines several sub-commands into a single parser.
+It gets a parser that parses options common to all sub-commands
+and for each sub-command, it gets a parser plus the name of the sub-command.
+
+For parsers <code>O,S_1,...,S_n</code> (<code>n >= 1</code>),
+a parser of type <code>fcppt::options::commands<O,S_1,...,S_n></code>
+gets a list of <em>sub-command names</em> <code>C_1,...,C_n</code>
+in its constructor, passed as
+<code>fcppt::options::sub_command<S_1>,...,fcppt::options::sub_command<S_n></code>.
+Here, <code>O</code> is the common options parser and <code>S_1,...,S_n</code>
+are the sub-parsers.
+Its result is a record with
+<ul>
+<li>
+the result of <code>O</code> with label name <code>fcppt::options::options_label</code> and
+</li>
+<li>
+a variant of results of <code>S_1,...,S_n</code> with label name <code>fcppt::options::sub_command_label</code>.
+</li>
+</ul>
+You have to make sure that the result types of <code>S_1,...,S_n</code> are all distinct.
+
+See \link fcppt::options::make_sub_command\endlink and \link fcppt::options::make_commands\endlink.
+
+\warning Do not include anything other than flags or options in <code>O</code>.
 </td>
 </tr>
 </table>
@@ -324,6 +386,43 @@ the output filename has been specified. If not, we use the default of
 Second, the openmode needs to be passed as well.
 
 \snippet options/complex.cpp options_open_output
+
+\section fcpptoptions_commands Commands
+
+Instead of creating one program per command, it is useful to combine several
+commands into a single parser, where the sub-command is chosen by a specific name.
+Examples of this are used in several programs, namemly <code>git</code>.
+For example, <code>git clone</code> and <code>git pull</code> are
+different commands that take different arguments and options themselves.
+However, the <code>git</code> program itself can also take options
+common to all sub-commands, for example <code>--git-dir</code> which
+specifies the directory of the repository.
+In fcppt, this is handled by \link fcppt::options::commands\endlink.
+First, we declare the parser for the common options:
+
+\snippet options/commands.cpp common_options
+
+This parser can optionally take a <code>--git-dir</code> option.
+
+Then, we declare two parsers, one for each sub-command.
+We want the <code>clone</code> command to take exactly one argument,
+which is the path to clone from. The pull command, on the other hand,
+should take no arguments, for which we make use of the unit parser.
+
+\snippet options/commands.cpp sub_parsers
+
+Next, we turn each of the parsers into a sub-command, giving it a name
+and an optional help text.
+
+\snippet options/commands.cpp sub_commands
+
+Finally, we combine everything into a commands parser.
+
+\snippet options/commands.cpp commands
+
+Here is an example of how its result can be used:
+
+\snippet options/commands.cpp usage
 
 \section fcpptoptions_help Help option
 

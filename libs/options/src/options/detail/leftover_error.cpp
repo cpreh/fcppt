@@ -23,7 +23,7 @@ fcppt::options::detail::leftover_error(
 	return
 		fcppt::optional::make_if(
 			not
-			_state.args_.empty(),
+			_state.empty(),
 			[
 				&_state
 			]{

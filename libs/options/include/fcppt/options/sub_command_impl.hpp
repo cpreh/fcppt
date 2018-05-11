@@ -8,6 +8,7 @@
 #define FCPPT_OPTIONS_SUB_COMMAND_IMPL_HPP_INCLUDED
 
 #include <fcppt/string.hpp>
+#include <fcppt/options/optional_help_text.hpp>
 #include <fcppt/options/sub_command_decl.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <utility>
@@ -21,7 +22,8 @@ fcppt::options::sub_command<
 	Parser
 >::sub_command(
 	fcppt::string &&_name,
-	Parser &&_parser
+	Parser &&_parser,
+	fcppt::options::optional_help_text &&_help_text
 )
 :
 	name_{
@@ -32,6 +34,11 @@ fcppt::options::sub_command<
 	parser_{
 		std::move(
 			_parser
+		)
+	},
+	help_text_{
+		std::move(
+			_help_text
 		)
 	}
 {
@@ -59,6 +66,18 @@ fcppt::options::sub_command<
 {
 	return
 		parser_;
+}
+
+template<
+	typename Parser
+>
+fcppt::options::optional_help_text const &
+fcppt::options::sub_command<
+	Parser
+>::help_text() const
+{
+	return
+		help_text_;
 }
 
 #endif

@@ -60,5 +60,9 @@ add_fcppt_options_test(
 )
 
 add_fcppt_options_test(
+	unit
+)
+
+add_fcppt_options_test(
 	unit_switch
 )

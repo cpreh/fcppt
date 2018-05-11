@@ -15,6 +15,11 @@ namespace fcppt
 namespace options
 {
 
+/**
+\brief The options label name in \link fcppt::options::commands\endlink.
+
+\ingroup fcpptoptions
+*/
 FCPPT_RECORD_MAKE_LABEL(
 	options_label
 );

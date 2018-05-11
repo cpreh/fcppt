@@ -70,7 +70,8 @@ BOOST_AUTO_TEST_CASE(
 						FCPPT_TEXT("arg1")
 					},
 					fcppt::options::optional_help_text{}
-				}
+				},
+				fcppt::options::optional_help_text{}
 			)
 		)
 	};

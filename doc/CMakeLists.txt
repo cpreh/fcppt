@@ -160,6 +160,7 @@ set(
 	examples/noncopyable.cpp
 	examples/optional.cpp
 	examples/options/base.cpp
+	examples/options/commands.cpp
 	examples/options/complex.cpp
 	examples/options/help.cpp
 	examples/options/simple.cpp
@@ -1574,6 +1575,7 @@ set(
 	libs/options/include/fcppt/options/default_value.hpp
 	libs/options/include/fcppt/options/default_value_fwd.hpp
 	libs/options/include/fcppt/options/default_value_tag.hpp
+	libs/options/include/fcppt/options/deref.hpp
 	libs/options/include/fcppt/options/detail/apply.hpp
 	libs/options/include/fcppt/options/detail/arguments_from_parser.hpp
 	libs/options/include/fcppt/options/detail/check_short_long_names.hpp
@@ -1691,6 +1693,10 @@ set(
 	libs/options/include/fcppt/options/switch_decl.hpp
 	libs/options/include/fcppt/options/switch_fwd.hpp
 	libs/options/include/fcppt/options/switch_impl.hpp
+	libs/options/include/fcppt/options/unit.hpp
+	libs/options/include/fcppt/options/unit_decl.hpp
+	libs/options/include/fcppt/options/unit_fwd.hpp
+	libs/options/include/fcppt/options/unit_impl.hpp
 	libs/options/include/fcppt/options/unit_switch.hpp
 	libs/options/include/fcppt/options/unit_switch_decl.hpp
 	libs/options/include/fcppt/options/unit_switch_fwd.hpp

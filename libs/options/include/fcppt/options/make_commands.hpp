@@ -8,7 +8,6 @@
 #define FCPPT_OPTIONS_MAKE_COMMANDS_HPP_INCLUDED
 
 #include <fcppt/options/commands_impl.hpp>
-#include <fcppt/options/sub_command_impl.hpp>
 #include <fcppt/type_traits/remove_cv_ref_t.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <utility>
@@ -24,6 +23,8 @@ namespace options
 \brief Makes a commands parser.
 
 \ingroup fcpptoptions
+
+\tparam SubCommands A parameter pack of \link fcppt::options::sub_command\endlink.
 */
 template<
 	typename OptionsParser,
@@ -34,13 +35,13 @@ fcppt::options::commands<
 	fcppt::type_traits::remove_cv_ref_t<
 		OptionsParser
 	>,
-	SubCommands...
+	fcppt::type_traits::remove_cv_ref_t<
+		SubCommands
+	>...
 >
 make_commands(
 	OptionsParser &&_options_parser,
-	fcppt::options::sub_command<
-		SubCommands
-	> &&... _sub_commands
+	SubCommands &&... _sub_commands
 )
 {
 	return
@@ -48,12 +49,18 @@ make_commands(
 			fcppt::type_traits::remove_cv_ref_t<
 				OptionsParser
 			>,
-			SubCommands...
+			fcppt::type_traits::remove_cv_ref_t<
+				SubCommands
+			> ...
 		>{
-			std::move(
+			std::forward<
+				OptionsParser
+			>(
 				_options_parser
 			),
-			std::move(
+			std::forward<
+				SubCommands
+			>(
 				_sub_commands
 			)...
 		};

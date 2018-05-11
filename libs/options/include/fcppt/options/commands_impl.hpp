@@ -8,6 +8,7 @@
 #define FCPPT_OPTIONS_COMMANDS_IMPL_HPP_INCLUDED
 
 #include <fcppt/args_vector.hpp>
+#include <fcppt/const.hpp>
 #include <fcppt/loop.hpp>
 #include <fcppt/string.hpp>
 #include <fcppt/text.hpp>
@@ -21,8 +22,10 @@
 #include <fcppt/optional/maybe.hpp>
 #include <fcppt/optional/object_impl.hpp>
 #include <fcppt/options/commands_decl.hpp>
+#include <fcppt/options/deref.hpp>
 #include <fcppt/options/error.hpp>
 #include <fcppt/options/flag_name_set.hpp>
+#include <fcppt/options/help_text.hpp>
 #include <fcppt/options/missing_error.hpp>
 #include <fcppt/options/name_set.hpp>
 #include <fcppt/options/option_name_set.hpp>
@@ -30,7 +33,6 @@
 #include <fcppt/options/parse_arguments.hpp>
 #include <fcppt/options/result.hpp>
 #include <fcppt/options/state.hpp>
-#include <fcppt/options/sub_command_impl.hpp>
 #include <fcppt/options/sub_command_label.hpp>
 #include <fcppt/options/detail/split_command.hpp>
 #include <fcppt/record/element.hpp>
@@ -45,23 +47,29 @@ template<
 	typename OptionsParser,
 	typename... SubCommands
 >
+template<
+	typename OptionsParserArg,
+	typename... SubCommandsArgs
+>
 fcppt::options::commands<
 	OptionsParser,
 	SubCommands...
 >::commands(
-	OptionsParser &&_options_parser,
-	fcppt::options::sub_command<
-		SubCommands
-	> &&... _sub_commands
+	OptionsParserArg &&_options_parser,
+	SubCommandsArgs &&... _sub_commands
 )
 :
 	options_parser_{
-		std::move(
+		std::forward<
+			OptionsParserArg
+		>(
 			_options_parser
 		)
 	},
 	sub_commands_{
-		std::move(
+		std::forward<
+			SubCommandsArgs
+		>(
 			_sub_commands
 		)...
 	}
@@ -116,7 +124,9 @@ fcppt::options::commands<
 
 			return
 				fcppt::either::bind(
-					this->options_parser_.parse(
+					fcppt::options::deref(
+						this->options_parser_
+					).parse(
 						option_args
 					),
 					[
@@ -141,7 +151,11 @@ fcppt::options::commands<
 
 						return
 							fcppt::either::map(
-								_parser.parser().parse(
+								fcppt::options::deref(
+									fcppt::options::deref(
+										_parser
+									).parser()
+								).parse(
 									_arguments
 								),
 								[
@@ -174,7 +188,9 @@ fcppt::options::commands<
 		fcppt::options::state{
 			_arguments.state_
 		},
-		options_parser_.option_names()
+		fcppt::options::deref(
+			options_parser_
+		).option_names()
 	};
 
 	typedef
@@ -202,7 +218,9 @@ fcppt::options::commands<
 						fcppt::optional::maybe(
 							fcppt::options::detail::split_command(
 								option_arguments,
-								_parser.name()
+								fcppt::options::deref(
+									_parser
+								).name()
 							),
 							[
 								&_result
@@ -267,7 +285,9 @@ fcppt::options::commands<
 												_state
 											)
 											+
-											_parser.name()
+											fcppt::options::deref(
+												_parser
+											).name()
 											+
 											// TODO
 											FCPPT_TEXT(", ");
@@ -325,7 +345,9 @@ fcppt::options::commands<
 >::usage() const
 {
 	return
-		options_parser_.usage()
+		fcppt::options::deref(
+			options_parser_
+		).usage()
 		+
 		FCPPT_TEXT("\n")
 		+
@@ -344,11 +366,37 @@ fcppt::options::commands<
 						_state
 					)
 					+
-					_sub_command.name()
+					fcppt::options::deref(
+						_sub_command
+					).name()
 					+
 					FCPPT_TEXT(": ")
 					+
-					_sub_command.parser().usage()
+					fcppt::options::deref(
+						fcppt::options::deref(
+							_sub_command
+						).parser()
+					).usage()
+					+
+					fcppt::optional::maybe(
+						fcppt::options::deref(
+							_sub_command
+						).help_text(),
+						fcppt::const_(
+							fcppt::string{}
+						),
+						[](
+							fcppt::options::help_text const &_help_text
+						)
+						{
+							return
+								FCPPT_TEXT(" (")
+								+
+								_help_text.get()
+								+
+								FCPPT_TEXT(")");
+						}
+					)
 					+
 					FCPPT_TEXT("\n");
 			}
