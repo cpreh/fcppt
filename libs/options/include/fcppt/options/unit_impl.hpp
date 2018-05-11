@@ -8,6 +8,7 @@
 #define FCPPT_OPTIONS_UNIT_IMPL_HPP_INCLUDED
 
 #include <fcppt/string.hpp>
+#include <fcppt/text.hpp>
 #include <fcppt/unit.hpp>
 #include <fcppt/either/make_failure.hpp>
 #include <fcppt/options/error.hpp>

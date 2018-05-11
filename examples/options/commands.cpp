@@ -123,7 +123,7 @@ try
 			),
 			fcppt::options::optional_help_text{
 				fcppt::options::help_text{
-					"Clone from another repository"
+					FCPPT_TEXT("Clone from another repository")
 				}
 			}
 		)
@@ -137,7 +137,7 @@ try
 			),
 			fcppt::options::optional_help_text{
 				fcppt::options::help_text{
-					"Pull all changes"
+					FCPPT_TEXT("Pull all changes")
 				}
 			}
 		)
