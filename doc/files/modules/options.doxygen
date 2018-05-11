@@ -15,6 +15,7 @@
 	<li>\ref fcpptoptions_commands</li>
 	<li>\ref fcpptoptions_help</li>
 	<li>\ref fcpptoptions_base</li>
+	<li>\ref fcpptoptions_implementation</li>
 </ul>
 
 </td>
@@ -466,6 +467,72 @@ It is also possible to use such an \link
 fcppt::options::base_unique_ptr\endlink as an argument to another parser:
 
 \snippet options/base.cpp options_base_combine
+
+\section fcpptoptions_implementation Implementation
+
+The implementation of a parser consists of the following functions and types:
+<table>
+<tr>
+<th>
+Type/Function:
+</th>
+<th>
+Description
+</th>
+</tr>
+
+<tr>
+<td>
+<code>result_type</code>
+</td>
+<td>
+The type returned by a successful parse.
+</td>
+</tr>
+
+<tr>
+<td>
+<code>fcppt::options::flag_name_set flag_names() const</code>
+</td>
+<td>
+A set of flag names (parameters without an argument) this parser recognizes.
+</td>
+</tr>
+
+<tr>
+<td>
+<code>fcppt::options::option_name_set option_names() const</code>
+</td>
+<td>
+A set of option names (parameters with an argument) this parser recognizes.
+</td>
+</tr>
+
+<tr>
+<td>
+<code>fcppt::string usage() const</code>
+</td>
+<td>
+A description on how to use this parser.
+</td>
+</tr>
+
+<tr>
+<td>
+<code>fcppt::options::result<result_type> parse(fcppt::options::parse_arguments &) const</code>
+</td>
+<td>
+This is the main parsing function. An \link fcppt::options::parse_arguments\endlink
+contains the current command-line which the parser modifies in-place by removing
+arguments, flags or options. It also contains information on which option names
+the parent parser recognizes.
+</td>
+</tr>
+</table>
+
+The function \link fcppt::options::deref\endlink dereferences a parser,
+which currently can be a copy, an \link fcppt::reference\endlink or an \link fcppt::unique_ptr\endlink.
+This is used internally by a parser to access its sub-parsers.
 */
 
 namespace fcppt
