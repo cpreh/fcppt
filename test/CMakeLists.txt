@@ -71,8 +71,14 @@ function(
 		)
 	endif()
 
-	fcppt_utils_add_test(
+	set(
+		TEST_DIR
 		${FCPPT_UTILS_PROJECT_SOURCE_DIR}/test
+	)
+
+	# TODO: Move Catch stuff to fcppt_utils_add_test
+	fcppt_utils_add_test(
+		${TEST_DIR}
 		"${PATH_NAME}"
 		${NO_CODE}
 		LINK_LIBS
@@ -80,6 +86,8 @@ function(
 			catch_main
 			Catch2::Catch
 			fcppt_core_interface
+		INCLUDE_DIRS
+			${TEST_DIR}/include
 	)
 endfunction()
 
@@ -205,6 +213,8 @@ add_fcppt_test(
 
 add_fcppt_test(
 	insert_to_string
+	LINK_LIBS
+		"${fcppt_core_TARGET}"
 )
 
 add_fcppt_test(

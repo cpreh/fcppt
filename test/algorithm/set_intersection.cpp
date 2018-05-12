@@ -6,13 +6,14 @@
 
 #include <fcppt/algorithm/set_intersection.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/test/unit_test.hpp>
+#include <catch.hpp>
 #include <set>
 #include <fcppt/config/external_end.hpp>
 
 
-BOOST_AUTO_TEST_CASE(
-	algorithm_set_intersection
+TEST_CASE(
+	"algorithm set_intersection",
+	"[algorithm_set_intersection]"
 )
 {
 	typedef
@@ -21,7 +22,7 @@ BOOST_AUTO_TEST_CASE(
 	>
 	int_set;
 
-	BOOST_CHECK((
+	CHECK(
 		fcppt::algorithm::set_intersection(
 			int_set{
 				1, 2, 3
@@ -34,5 +35,5 @@ BOOST_AUTO_TEST_CASE(
 		int_set{
 			2, 3
 		}
-	));
+	);
 }

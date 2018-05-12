@@ -5,15 +5,19 @@
 
 
 #include <fcppt/algorithm/binary_search.hpp>
+#include <fcppt/optional/comparison.hpp>
+#include <fcppt/optional/make.hpp>
+#include <fcppt/test/defer.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/test/unit_test.hpp>
+#include <catch.hpp>
 #include <iterator>
 #include <vector>
 #include <fcppt/config/external_end.hpp>
 
 
-BOOST_AUTO_TEST_CASE(
-	algorithm_binary_search
+TEST_CASE(
+	"algorithm binary search"
+	"[algorithm_binary_search]"
 )
 {
 	typedef
@@ -28,38 +32,26 @@ BOOST_AUTO_TEST_CASE(
 		7
 	};
 
-	{
-		auto const result(
-			fcppt::algorithm::binary_search(
-				vec,
-				3
-			)
-		);
+	CHECK(
+		!fcppt::algorithm::binary_search(
+			vec,
+			3
+		).has_value()
+	);
 
-		BOOST_CHECK(
-			!result.has_value()
-		);
-	}
-
-	{
-		auto const result(
+	CHECK(
+		fcppt::test::defer(
 			fcppt::algorithm::binary_search(
 				vec,
 				5
 			)
-		);
-
-		BOOST_REQUIRE(
-			result.has_value()
-		);
-
-		BOOST_CHECK(
-			result.get_unsafe()
 			==
-			std::next(
-				vec.begin(),
-				1
+			fcppt::optional::make(
+				std::next(
+					vec.begin(),
+					1
+				)
 			)
-		);
-	}
+		)
+	);
 }

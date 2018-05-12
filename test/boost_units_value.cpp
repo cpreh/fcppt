@@ -6,24 +6,26 @@
 
 #include <fcppt/boost_units_value.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/test/unit_test.hpp>
+#include <catch.hpp>
 #include <boost/units/quantity.hpp>
 #include <boost/units/systems/si/length.hpp>
 #include <fcppt/config/external_end.hpp>
 
 
-BOOST_AUTO_TEST_CASE(
-	boost_units_value
+TEST_CASE(
+	"boost_units_value",
+	"[boost_units_value]"
 )
 {
 	fcppt::boost_units_value const op{};
 
-	BOOST_CHECK_EQUAL(
+	CHECK(
 		op(
 			42
 			*
 			boost::units::si::meter
-		),
+		)
+		==
 		42
 	);
 }

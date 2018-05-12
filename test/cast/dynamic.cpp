@@ -36,7 +36,7 @@ struct base
 
 struct derived1
 :
-base
+	base
 {
 	FCPPT_NONCOPYABLE(
 		derived1
@@ -54,7 +54,7 @@ base
 
 struct derived2
 :
-base
+	base
 {
 	FCPPT_NONCOPYABLE(
 		derived2

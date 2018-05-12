@@ -39,11 +39,23 @@
 	</ul>
 </li>
 
+<li>\ref fcpptiterator
+	<ul>
+	<li>Added <code>operator==</code> to \link fcppt::iterator::range\endlink.</li>
+	</ul>
+</li>
+
 <li>\ref fcpptoptions
 	<ul>
 	<li>Added \link fcppt::options::commands\endlink, which parses sub-commands.</li>
 	<li>Added \link fcppt::options::unit_switch\endlink and \link fcppt::options::unit\endlink.</li>
 	<li>Added \link fcppt::options::sum\endlink.</li>
+	</ul>
+</li>
+
+<li>\ref fcpptstring
+	<ul>
+	<li>Added \link fcppt::insert_to_std_string_convert\endlink.</li>
 	</ul>
 </li>
 

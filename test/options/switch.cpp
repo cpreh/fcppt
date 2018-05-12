@@ -14,6 +14,10 @@
 #include <fcppt/options/parse.hpp>
 #include <fcppt/options/short_name.hpp>
 #include <fcppt/options/switch.hpp>
+#include <fcppt/test/catch/either.hpp>
+#include <fcppt/test/catch/record.hpp>
+#include <fcppt/test/catch/strong_typedef.hpp>
+#include <fcppt/test/catch/variant.hpp>
 #include <fcppt/record/comparison.hpp>
 #include <fcppt/record/make_label.hpp>
 #include <fcppt/variant/comparison.hpp>

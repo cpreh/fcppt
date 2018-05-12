@@ -6,12 +6,13 @@
 
 #include <fcppt/algorithm/repeat.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/test/unit_test.hpp>
+#include <catch.hpp>
 #include <fcppt/config/external_end.hpp>
 
 
-BOOST_AUTO_TEST_CASE(
-	algorithm_repeat
+TEST_CASE(
+	"algorithm repeat",
+	"[algorithm_repeat]"
 )
 {
 	int value(
@@ -28,7 +29,7 @@ BOOST_AUTO_TEST_CASE(
 		}
 	);
 
-	BOOST_CHECK(
+	CHECK(
 		value
 		==
 		10

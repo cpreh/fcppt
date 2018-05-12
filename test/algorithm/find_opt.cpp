@@ -5,15 +5,19 @@
 
 
 #include <fcppt/algorithm/find_opt.hpp>
+#include <fcppt/optional/comparison.hpp>
+#include <fcppt/optional/make.hpp>
+#include <fcppt/test/defer.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/test/unit_test.hpp>
+#include <catch.hpp>
 #include <iterator>
 #include <vector>
 #include <fcppt/config/external_end.hpp>
 
 
-BOOST_AUTO_TEST_CASE(
-	algorithm_find_opt
+TEST_CASE(
+	"algorithm find_opt"
+	"[algorithm_find_opt]"
 )
 {
 	typedef
@@ -28,19 +32,23 @@ BOOST_AUTO_TEST_CASE(
 		3
 	};
 
-	BOOST_CHECK(
-		fcppt::algorithm::find_opt(
-			vec,
-			2
-		).get_unsafe()
-		==
-		std::next(
-			vec.begin(),
-			1
+	CHECK(
+		fcppt::test::defer(
+			fcppt::algorithm::find_opt(
+				vec,
+				2
+			)
+			==
+			fcppt::optional::make(
+				std::next(
+					vec.begin(),
+					1
+				)
+			)
 		)
 	);
 
-	BOOST_CHECK(
+	CHECK(
 		!fcppt::algorithm::find_opt(
 			vec,
 			4

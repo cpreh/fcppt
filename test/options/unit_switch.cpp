@@ -18,6 +18,10 @@
 #include <fcppt/options/unit_switch.hpp>
 #include <fcppt/record/comparison.hpp>
 #include <fcppt/record/make_label.hpp>
+#include <fcppt/test/catch/either.hpp>
+#include <fcppt/test/catch/record.hpp>
+#include <fcppt/test/catch/strong_typedef.hpp>
+#include <fcppt/test/catch/variant.hpp>
 #include <fcppt/variant/comparison.hpp>
 #include <fcppt/config/external_begin.hpp>
 #include <boost/test/unit_test.hpp>

@@ -5,14 +5,18 @@
 
 
 #include <fcppt/algorithm/index_of.hpp>
+#include <fcppt/optional/comparison.hpp>
+#include <fcppt/optional/make.hpp>
+#include <fcppt/optional/output.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/test/unit_test.hpp>
+#include <catch.hpp>
 #include <vector>
 #include <fcppt/config/external_end.hpp>
 
 
-BOOST_AUTO_TEST_CASE(
-	algorithm_find_opt
+TEST_CASE(
+	"algorithm find_opt"
+	"[algorithm_find_opt]"
 )
 {
 	typedef
@@ -27,23 +31,33 @@ BOOST_AUTO_TEST_CASE(
 		3
 	};
 
-	BOOST_CHECK_EQUAL(
+	CHECK(
 		fcppt::algorithm::index_of(
 			vec,
 			2
-		).get_unsafe(),
-		1u
+		)
+		==
+		fcppt::optional::make(
+			int_vector::size_type{
+				1u
+			}
+		)
 	);
 
-	BOOST_CHECK_EQUAL(
+	CHECK(
 		fcppt::algorithm::index_of(
 			vec,
 			3
-		).get_unsafe(),
-		2u
+		)
+		==
+		fcppt::optional::make(
+			int_vector::size_type{
+				2u
+			}
+		)
 	);
 
-	BOOST_CHECK(
+	CHECK(
 		!fcppt::algorithm::index_of(
 			vec,
 			4

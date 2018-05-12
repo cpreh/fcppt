@@ -7,15 +7,17 @@
 #include <fcppt/algorithm/find_by_opt.hpp>
 #include <fcppt/optional/comparison.hpp>
 #include <fcppt/optional/object_impl.hpp>
+#include <fcppt/optional/output.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/test/unit_test.hpp>
+#include <catch.hpp>
 #include <string>
 #include <vector>
 #include <fcppt/config/external_end.hpp>
 
 
-BOOST_AUTO_TEST_CASE(
-	algorithm_find_by_opt
+TEST_CASE(
+	"algorithm find_by_opt",
+	"[algorithm_find_by_opt]",
 )
 {
 	typedef
@@ -36,7 +38,7 @@ BOOST_AUTO_TEST_CASE(
 	>
 	result_type;
 
-	BOOST_CHECK(
+	CHECK(
 		fcppt::algorithm::find_by_opt(
 			vec,
 			[](
@@ -66,7 +68,7 @@ BOOST_AUTO_TEST_CASE(
 		)
 	);
 
-	BOOST_CHECK(
+	CHECK(
 		!fcppt::algorithm::find_by_opt(
 			vec,
 			[](

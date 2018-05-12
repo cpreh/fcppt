@@ -5,8 +5,10 @@
 
 
 #include <fcppt/args_vector.hpp>
+#include <fcppt/strong_typedef_output.hpp>
 #include <fcppt/text.hpp>
 #include <fcppt/either/comparison.hpp>
+#include <fcppt/either/output.hpp>
 #include <fcppt/options/exception.hpp>
 #include <fcppt/options/flag.hpp>
 #include <fcppt/options/long_name.hpp>
@@ -19,28 +21,21 @@
 #include <fcppt/options/short_name.hpp>
 #include <fcppt/record/comparison.hpp>
 #include <fcppt/record/make_label.hpp>
+#include <fcppt/record/output.hpp>
+#include <fcppt/test/catch/either.hpp>
+#include <fcppt/test/catch/record.hpp>
+#include <fcppt/test/catch/strong_typedef.hpp>
+#include <fcppt/test/catch/variant.hpp>
 #include <fcppt/variant/comparison.hpp>
+#include <fcppt/variant/output.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/test/unit_test.hpp>
+#include <catch.hpp>
 #include <fcppt/config/external_end.hpp>
 
 
-namespace
-{
-
-bool
-check_exception(
-	fcppt::options::exception const &
-)
-{
-	return
-		true;
-}
-
-}
-
-BOOST_AUTO_TEST_CASE(
-	options_flag
+TEST_CASE(
+	"parser for flag options",
+	"[options_flag]"
 )
 {
 	FCPPT_RECORD_MAKE_LABEL(
@@ -72,7 +67,7 @@ BOOST_AUTO_TEST_CASE(
 		fcppt::options::optional_help_text{}
 	};
 
-	BOOST_CHECK(
+	CHECK(
 		fcppt::options::parse(
 			int_flag,
 			fcppt::args_vector{
@@ -88,7 +83,7 @@ BOOST_AUTO_TEST_CASE(
 		)
 	);
 
-	BOOST_CHECK(
+	CHECK(
 		fcppt::options::parse(
 			int_flag,
 			fcppt::args_vector{
@@ -104,7 +99,7 @@ BOOST_AUTO_TEST_CASE(
 		)
 	);
 
-	BOOST_CHECK(
+	CHECK(
 		fcppt::options::parse(
 			int_flag,
 			fcppt::args_vector{}
@@ -118,7 +113,7 @@ BOOST_AUTO_TEST_CASE(
 		)
 	);
 
-	BOOST_CHECK_EXCEPTION(
+	CHECK_THROWS_AS(
 		int_flag_type(
 			fcppt::options::optional_short_name{},
 			fcppt::options::long_name{
@@ -132,7 +127,6 @@ BOOST_AUTO_TEST_CASE(
 			),
 			fcppt::options::optional_help_text{}
 		),
-		fcppt::options::exception,
-		check_exception
+		fcppt::options::exception
 	);
 }

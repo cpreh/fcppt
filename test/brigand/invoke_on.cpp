@@ -8,14 +8,15 @@
 #include <fcppt/tag_type.hpp>
 #include <fcppt/brigand/invoke_on.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/test/unit_test.hpp>
+#include <catch.hpp>
 #include <brigand/sequences/list.hpp>
 #include <type_traits>
 #include <fcppt/config/external_end.hpp>
 
 
-BOOST_AUTO_TEST_CASE(
-	mpl_invoke_on
+TEST_CASE(
+	"brigand invoke_on",
+	"[brigand_invoke_on]"
 )
 {
 	typedef
@@ -25,7 +26,7 @@ BOOST_AUTO_TEST_CASE(
 	>
 	list_type;
 
-	BOOST_CHECK(
+	CHECK(
 		fcppt::brigand::invoke_on<
 			list_type
 		>(
@@ -55,7 +56,7 @@ BOOST_AUTO_TEST_CASE(
 		)
 	);
 
-	BOOST_CHECK(
+	CHECK(
 		fcppt::brigand::invoke_on<
 			list_type
 		>(
@@ -85,7 +86,7 @@ BOOST_AUTO_TEST_CASE(
 		)
 	);
 
-	BOOST_CHECK(
+	CHECK(
 		fcppt::brigand::invoke_on<
 			list_type
 		>(

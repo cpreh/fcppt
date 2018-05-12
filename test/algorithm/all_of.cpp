@@ -6,13 +6,14 @@
 
 #include <fcppt/algorithm/all_of.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/test/unit_test.hpp>
+#include <catch.hpp>
 #include <vector>
 #include <fcppt/config/external_end.hpp>
 
 
-BOOST_AUTO_TEST_CASE(
-	algorithm_all_of
+TEST_CASE(
+	"algorithm all_of",
+	"[algorithm_all_of]"
 )
 {
 	typedef
@@ -21,7 +22,7 @@ BOOST_AUTO_TEST_CASE(
 	>
 	int_vector;
 
-	BOOST_CHECK(
+	CHECK(
 		fcppt::algorithm::all_of(
 			int_vector{
 				2,
@@ -39,7 +40,7 @@ BOOST_AUTO_TEST_CASE(
 		)
 	);
 
-	BOOST_CHECK(
+	CHECK(
 		!fcppt::algorithm::all_of(
 			int_vector{
 				2,

@@ -9,26 +9,30 @@
 #include <fcppt/algorithm/join.hpp>
 #include <fcppt/assign/make_container.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/test/unit_test.hpp>
+#include <catch.hpp>
 #include <map>
+#include <utility>
 #include <vector>
 #include <fcppt/config/external_end.hpp>
 
 
-BOOST_AUTO_TEST_CASE(
-	algorithm_join_vector
+TEST_CASE(
+	"algorithm_join std::vector"
+	"[algorithm_join]"
 )
 {
-	typedef std::vector<
+	typedef
+	std::vector<
 		int
-	> int_vector;
+	>
+	int_vector;
 
 	int_vector const vec3{
 		5,
 		6
 	};
 
-	int_vector const result(
+	CHECK(
 		fcppt::algorithm::join(
 			int_vector{
 				1,
@@ -40,46 +44,21 @@ BOOST_AUTO_TEST_CASE(
 			},
 			vec3
 		)
-	);
-
-	BOOST_REQUIRE_EQUAL(
-		result.size(),
-		6u
-	);
-
-	BOOST_CHECK_EQUAL(
-		result[0],
-		1
-	);
-
-	BOOST_CHECK_EQUAL(
-		result[1],
-		2
-	);
-
-	BOOST_CHECK_EQUAL(
-		result[2],
-		3
-	);
-
-	BOOST_CHECK_EQUAL(
-		result[3],
-		4
-	);
-
-	BOOST_CHECK_EQUAL(
-		result[4],
-		5
-	);
-
-	BOOST_CHECK_EQUAL(
-		result[5],
-		6
+		==
+		int_vector{
+			1,
+			2,
+			3,
+			4,
+			5,
+			6
+		}
 	);
 }
 
-BOOST_AUTO_TEST_CASE(
-	algorithm_join_move
+TEST_CASE(
+	"algorithm_join move"
+	"[algorithm_join]"
 )
 {
 	typedef
@@ -141,44 +120,52 @@ BOOST_AUTO_TEST_CASE(
 		)
 	);
 
-	BOOST_REQUIRE_EQUAL(
-		result.size(),
+	REQUIRE(
+		result.size()
+		==
 		6u
 	);
 
-	BOOST_CHECK_EQUAL(
-		*result[0],
+	CHECK(
+		*result[0]
+		==
 		1
 	);
 
-	BOOST_CHECK_EQUAL(
-		*result[1],
+	CHECK(
+		*result[1]
+		==
 		2
 	);
 
-	BOOST_CHECK_EQUAL(
-		*result[2],
+	CHECK(
+		*result[2]
+		==
 		3
 	);
 
-	BOOST_CHECK_EQUAL(
-		*result[3],
+	CHECK(
+		*result[3]
+		==
 		4
 	);
 
-	BOOST_CHECK_EQUAL(
-		*result[4],
+	CHECK(
+		*result[4]
+		==
 		5
 	);
 
-	BOOST_CHECK_EQUAL(
-		*result[5],
+	CHECK(
+		*result[5]
+		==
 		6
 	);
 }
 
-BOOST_AUTO_TEST_CASE(
-	algorithm_join_map
+TEST_CASE(
+	"algorithm_join std::map"
+	"[algorithm_join]"
 )
 {
 	typedef
@@ -188,7 +175,7 @@ BOOST_AUTO_TEST_CASE(
 	>
 	int_map;
 
-	int_map result(
+	CHECK(
 		fcppt::algorithm::join(
 			int_map{
 				std::make_pair(
@@ -211,28 +198,20 @@ BOOST_AUTO_TEST_CASE(
 				)
 			}
 		)
-	);
-
-	BOOST_CHECK(
-		result.find(
-			4
-		)
 		==
-		result.end()
-	);
-
-	BOOST_CHECK_EQUAL(
-		result[1],
-		'a'
-	);
-
-	BOOST_CHECK_EQUAL(
-		result[2],
-		'b'
-	);
-
-	BOOST_CHECK_EQUAL(
-		result[3],
-		'd'
+		int_map{
+			std::make_pair(
+				1,
+				'a'
+			),
+			std::make_pair(
+				2,
+				'b'
+			),
+			std::make_pair(
+				3,
+				'd'
+			)
+		}
 	);
 }

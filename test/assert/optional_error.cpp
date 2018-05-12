@@ -9,12 +9,13 @@
 #include <fcppt/assert/optional_error.hpp>
 #include <fcppt/optional/object_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/test/unit_test.hpp>
+#include <catch.hpp>
 #include <fcppt/config/external_end.hpp>
 
 
-BOOST_AUTO_TEST_CASE(
-	assert_optional_error
+TEST_CASE(
+	"assert optional_error",
+	"[assert_optional_error]"
 )
 {
 	typedef
@@ -35,17 +36,18 @@ BOOST_AUTO_TEST_CASE(
 	>
 	optional_int_unique_ptr;
 
-	BOOST_CHECK_EQUAL(
+	CHECK(
 		FCPPT_ASSERT_OPTIONAL_ERROR(
 			optional_int(
 				42
 			)
-		),
+		)
+		==
 		42
 	);
 
-	int_unique_ptr const ptr(
-		FCPPT_ASSERT_OPTIONAL_ERROR(
+	CHECK(
+		*FCPPT_ASSERT_OPTIONAL_ERROR(
 			optional_int_unique_ptr(
 				fcppt::make_unique_ptr<
 					int
@@ -54,29 +56,29 @@ BOOST_AUTO_TEST_CASE(
 				)
 			)
 		)
-	);
-
-	BOOST_CHECK_EQUAL(
-		*ptr,
+		==
 		10
 	);
 
-	optional_int_unique_ptr const opt_ptr(
-		fcppt::make_unique_ptr<
-			int
-		>(
+	{
+		optional_int_unique_ptr const opt_ptr(
+			fcppt::make_unique_ptr<
+				int
+			>(
+				42
+			)
+		);
+
+		int_unique_ptr const &ptr_ref(
+			FCPPT_ASSERT_OPTIONAL_ERROR(
+				opt_ptr
+			)
+		);
+
+		CHECK(
+			*ptr_ref
+			==
 			42
-		)
-	);
-
-	int_unique_ptr const &ptr_ref(
-		FCPPT_ASSERT_OPTIONAL_ERROR(
-			opt_ptr
-		)
-	);
-
-	BOOST_CHECK_EQUAL(
-		*ptr_ref,
-		42
-	);
+		);
+	}
 }

@@ -6,15 +6,16 @@
 
 #include <fcppt/algorithm/key_set.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/test/unit_test.hpp>
+#include <catch.hpp>
 #include <map>
 #include <set>
 #include <string>
 #include <fcppt/config/external_end.hpp>
 
 
-BOOST_AUTO_TEST_CASE(
-	algorithm_key_set
+TEST_CASE(
+	"algorithm key_set"
+	"[algorithm_key_set]"
 )
 {
 	typedef
@@ -30,35 +31,29 @@ BOOST_AUTO_TEST_CASE(
 	>
 	int_string_map;
 
-	int_string_map const map{
-		std::make_pair(
-			42,
-			std::string(
-				"test"
-			)
-		),
-		std::make_pair(
-			10,
-			std::string(
-				"test2"
-			)
-		)
-	};
-
-	int_set const keys(
+	CHECK(
 		fcppt::algorithm::key_set<
 			int_set
 		>(
-			map
+			int_string_map{
+				std::make_pair(
+					42,
+					std::string(
+						"test"
+					)
+				),
+				std::make_pair(
+					10,
+					std::string(
+						"test2"
+					)
+				)
+			}
 		)
-	);
-
-	BOOST_CHECK((
-		keys
 		==
 		int_set{
 			10,
 			42
 		}
-	));
+	);
 }

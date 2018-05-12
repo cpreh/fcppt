@@ -6,13 +6,14 @@
 
 #include <fcppt/algorithm/reverse.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/test/unit_test.hpp>
+#include <catch.hpp>
 #include <vector>
 #include <fcppt/config/external_end.hpp>
 
 
-BOOST_AUTO_TEST_CASE(
-	algorithm_reverse
+TEST_CASE(
+	"algorithm reverse",
+	"[algorithm_reverse]"
 )
 {
 	typedef
@@ -30,30 +31,22 @@ BOOST_AUTO_TEST_CASE(
 			1,2,3
 		};
 
-		int_vector const result{
+		CHECK(
 			fcppt::algorithm::reverse(
 				vec
 			)
-		};
-
-		BOOST_CHECK(
-			result
 			==
 			expected
 		);
 	}
 
 	{
-		int_vector const result{
+		CHECK(
 			fcppt::algorithm::reverse(
 				int_vector{
 					1,2,3
 				}
 			)
-		};
-
-		BOOST_CHECK(
-			result
 			==
 			expected
 		);

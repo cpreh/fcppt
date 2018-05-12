@@ -6,13 +6,14 @@
 
 #include <fcppt/algorithm/set_union.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/test/unit_test.hpp>
+#include <catch.hpp>
 #include <set>
 #include <fcppt/config/external_end.hpp>
 
 
-BOOST_AUTO_TEST_CASE(
-	algorithm_set_union
+TEST_CASE(
+	"algorithm set_union",
+	"[algorithm_set_union]"
 )
 {
 	typedef
@@ -21,7 +22,7 @@ BOOST_AUTO_TEST_CASE(
 	>
 	int_set;
 
-	BOOST_CHECK((
+	CHECK(
 		fcppt::algorithm::set_union(
 			int_set{
 				1, 2, 3
@@ -34,5 +35,5 @@ BOOST_AUTO_TEST_CASE(
 		int_set{
 			1, 2, 3, 4
 		}
-	));
+	);
 }

@@ -6,17 +6,18 @@
 
 #include <fcppt/algorithm/equal.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/test/unit_test.hpp>
+#include <catch.hpp>
 #include <list>
 #include <vector>
 #include <fcppt/config/external_end.hpp>
 
 
-BOOST_AUTO_TEST_CASE(
-	algorithm_equal
+TEST_CASE(
+	"algorithm equal"
+	"[algorithm_equal]"
 )
 {
-	BOOST_CHECK(
+	CHECK(
 		fcppt::algorithm::equal(
 			std::vector<
 				int
@@ -33,7 +34,7 @@ BOOST_AUTO_TEST_CASE(
 		)
 	);
 
-	BOOST_CHECK(
+	CHECK(
 		!fcppt::algorithm::equal(
 			std::vector<
 				int
@@ -49,7 +50,7 @@ BOOST_AUTO_TEST_CASE(
 		)
 	);
 
-	BOOST_CHECK(
+	CHECK(
 		!fcppt::algorithm::equal(
 			std::vector<
 				int

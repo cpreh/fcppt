@@ -9,7 +9,7 @@
 #include <fcppt/algorithm/map_concat.hpp>
 #include <fcppt/assign/make_container.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/test/unit_test.hpp>
+#include <catch.hpp>
 #include <vector>
 #include <fcppt/config/external_end.hpp>
 
@@ -37,32 +37,29 @@ int_unique_ptr_vector;
 
 }
 
-BOOST_AUTO_TEST_CASE(
-	algorithm_map_concat
+TEST_CASE(
+	"algorithm map_concat"
+	"[algorithm_map_concat]"
 )
 {
-	int_unique_ptr_vector const ptrs{
-		fcppt::assign::make_container<
-			int_unique_ptr_vector
-		>(
-			fcppt::make_unique_ptr<
-				int
-			>(
-				1
-			),
-			fcppt::make_unique_ptr<
-				int
-			>(
-				2
-			)
-		)
-	};
-
-	int_vector const result(
+	CHECK(
 		fcppt::algorithm::map_concat<
 			int_vector
 		>(
-			ptrs,
+			fcppt::assign::make_container<
+				int_unique_ptr_vector
+			>(
+				fcppt::make_unique_ptr<
+					int
+				>(
+					1
+				),
+				fcppt::make_unique_ptr<
+					int
+				>(
+					2
+				)
+			),
 			[](
 				int_unique_ptr const &_value
 			)
@@ -74,36 +71,19 @@ BOOST_AUTO_TEST_CASE(
 					};
 			}
 		)
-	);
-
-	BOOST_REQUIRE_EQUAL(
-		result.size(),
-		4u
-	);
-
-	BOOST_CHECK_EQUAL(
-		result[0],
-		1
-	);
-
-	BOOST_CHECK_EQUAL(
-		result[1],
-		6
-	);
-
-	BOOST_CHECK_EQUAL(
-		result[2],
-		2
-	);
-
-	BOOST_CHECK_EQUAL(
-		result[3],
-		7
+		==
+		int_vector{
+			1,
+			6,
+			2,
+			7
+		}
 	);
 }
 
-BOOST_AUTO_TEST_CASE(
-	algorithm_map_concat_move
+TEST_CASE(
+	"algorithm_map_concat move",
+	"[algorithm_map_concat]"
 )
 {
 	int_vector const ints{
@@ -139,28 +119,33 @@ BOOST_AUTO_TEST_CASE(
 		)
 	);
 
-	BOOST_REQUIRE_EQUAL(
-		result.size(),
+	REQUIRE(
+		result.size()
+		==
 		4u
 	);
 
-	BOOST_CHECK_EQUAL(
-		*result[0],
+	CHECK(
+		*result[0]
+		==
 		1
 	);
 
-	BOOST_CHECK_EQUAL(
-		*result[1],
+	CHECK(
+		*result[1]
+		==
 		6
 	);
 
-	BOOST_CHECK_EQUAL(
-		*result[2],
+	CHECK(
+		*result[2]
+		==
 		2
 	);
 
-	BOOST_CHECK_EQUAL(
-		*result[3],
+	CHECK(
+		*result[3]
+		==
 		7
 	);
 }

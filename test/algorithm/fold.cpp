@@ -6,14 +6,15 @@
 
 #include <fcppt/algorithm/fold.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/test/unit_test.hpp>
+#include <catch.hpp>
 #include <functional>
 #include <vector>
 #include <fcppt/config/external_end.hpp>
 
 
-BOOST_AUTO_TEST_CASE(
-	algorithm_fold
+TEST_CASE(
+	"algorithm_fold"
+	"[algorithm_fold]"
 )
 {
 	typedef
@@ -28,20 +29,18 @@ BOOST_AUTO_TEST_CASE(
 	>
 	int_vector_vector;
 
-	int_vector_vector const vectors{
-		int_vector{
-			1,
-			2
-		},
-		int_vector{
-			3,
-			4
-		}
-	};
-
-	int const sum(
+	CHECK(
 		fcppt::algorithm::fold(
-			vectors,
+			int_vector_vector{
+				int_vector{
+					1,
+					2
+				},
+				int_vector{
+					3,
+					4
+				}
+			},
 			0,
 			[](
 				int_vector const &_vec,
@@ -58,10 +57,7 @@ BOOST_AUTO_TEST_CASE(
 					);
 			}
 		)
-	);
-
-	BOOST_CHECK_EQUAL(
-		sum,
+		==
 		10
 	);
 }

@@ -7,13 +7,14 @@
 #include <fcppt/algorithm/sequence_iteration.hpp>
 #include <fcppt/algorithm/update_action.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/test/unit_test.hpp>
+#include <catch.hpp>
 #include <vector>
 #include <fcppt/config/external_end.hpp>
 
 
-BOOST_AUTO_TEST_CASE(
-	algorithm_sequence_iteration
+TEST_CASE(
+	"algorithm sequence_iteration",
+	"[algorithm_sequence_iteration]"
 )
 {
 	typedef
@@ -49,12 +50,12 @@ BOOST_AUTO_TEST_CASE(
 		}
 	);
 
-	BOOST_CHECK((
+	CHECK(
 		seq
 		==
 		sequence{
 			2,
 			4
 		}
-	));
+	);
 }

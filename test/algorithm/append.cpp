@@ -8,13 +8,14 @@
 #include <fcppt/unique_ptr_impl.hpp>
 #include <fcppt/algorithm/append.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/test/unit_test.hpp>
+#include <catch.hpp>
 #include <vector>
 #include <fcppt/config/external_end.hpp>
 
 
-BOOST_AUTO_TEST_CASE(
-	append_copy
+TEST_CASE(
+	"append with copy",
+	"[algorithm_append]"
 )
 {
 	typedef
@@ -38,15 +39,16 @@ BOOST_AUTO_TEST_CASE(
 		1,2,3,4,5,6
 	};
 
-	BOOST_CHECK(
+	CHECK(
 		ints
 		==
 		result
 	);
 }
 
-BOOST_AUTO_TEST_CASE(
-	append_move
+TEST_CASE(
+	"append with move",
+	"[algorithm_append]"
 )
 {
 	typedef
@@ -101,28 +103,33 @@ BOOST_AUTO_TEST_CASE(
 		}()
 	);
 
-	BOOST_REQUIRE_EQUAL(
-		ints.size(),
+	REQUIRE(
+		ints.size()
+		==
 		4u
 	);
 
-	BOOST_CHECK_EQUAL(
-		*ints[0],
+	CHECK(
+		*ints[0]
+		==
 		1
 	);
 
-	BOOST_CHECK_EQUAL(
-		*ints[1],
+	CHECK(
+		*ints[1]
+		==
 		2
 	);
 
-	BOOST_CHECK_EQUAL(
-		*ints[2],
+	CHECK(
+		*ints[2]
+		==
 		3
 	);
 
-	BOOST_CHECK_EQUAL(
-		*ints[3],
+	CHECK(
+		*ints[3]
+		==
 		4
 	);
 }

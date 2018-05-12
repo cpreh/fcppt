@@ -9,7 +9,7 @@
 #include <fcppt/cast/dynamic_any.hpp>
 #include <fcppt/cast/dynamic_any_fun.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/test/unit_test.hpp>
+#include <catch.hpp>
 #include <fcppt/config/external_end.hpp>
 
 
@@ -34,7 +34,7 @@ struct base
 
 struct derived1
 :
-base
+	base
 {
 	FCPPT_NONCOPYABLE(
 		derived1
@@ -68,8 +68,9 @@ struct other
 
 }
 
-BOOST_AUTO_TEST_CASE(
-	cast_dynamic_any
+TEST_CASE(
+	"cast dynamic_any",
+	"[cast_dynamic_any]"
 )
 {
 	derived1 d1{};
@@ -80,7 +81,7 @@ BOOST_AUTO_TEST_CASE(
 		d1
 	};
 
-	BOOST_CHECK(
+	CHECK(
 		fcppt::cast::dynamic_any<
 			derived1
 		>(
@@ -88,16 +89,16 @@ BOOST_AUTO_TEST_CASE(
 		).has_value()
 	);
 
-	BOOST_CHECK((
+	CHECK(
 		fcppt::cast::apply<
 			fcppt::cast::dynamic_any_fun,
 			derived1
 		>(
 			b1
 		).has_value()
-	));
+	);
 
-	BOOST_CHECK(
+	CHECK(
 		!fcppt::cast::dynamic_any<
 			other
 		>(

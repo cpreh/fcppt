@@ -15,7 +15,7 @@
 #include <fcppt/algorithm/map.hpp>
 #include <fcppt/assign/make_container.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/test/unit_test.hpp>
+#include <catch.hpp>
 #include <brigand/sequences/list.hpp>
 #include <array>
 #include <string>
@@ -47,32 +47,29 @@ int_unique_ptr_vector;
 
 }
 
-BOOST_AUTO_TEST_CASE(
-	algorithm_map
+TEST_CASE(
+	"algorithm_map"
+	"[algorithm_map]"
 )
 {
-	int_unique_ptr_vector const ptrs{
-		fcppt::assign::make_container<
-			int_unique_ptr_vector
-		>(
-			fcppt::make_unique_ptr<
-				int
-			>(
-				1
-			),
-			fcppt::make_unique_ptr<
-				int
-			>(
-				2
-			)
-		)
-	};
-
-	int_vector const result(
+	CHECK(
 		fcppt::algorithm::map<
 			int_vector
 		>(
-			ptrs,
+			fcppt::assign::make_container<
+				int_unique_ptr_vector
+			>(
+				fcppt::make_unique_ptr<
+					int
+				>(
+					1
+				),
+				fcppt::make_unique_ptr<
+					int
+				>(
+					2
+				)
+			),
 			[](
 				int_unique_ptr const &_value
 			)
@@ -81,26 +78,17 @@ BOOST_AUTO_TEST_CASE(
 					*_value;
 			}
 		)
-	);
-
-	BOOST_REQUIRE_EQUAL(
-		result.size(),
-		ptrs.size()
-	);
-
-	BOOST_CHECK_EQUAL(
-		result[0],
-		1
-	);
-
-	BOOST_CHECK_EQUAL(
-		result[1],
-		2
+		==
+		int_vector{
+			1,
+			2
+		}
 	);
 }
 
-BOOST_AUTO_TEST_CASE(
-	algorithm_map_move
+TEST_CASE(
+	"algorithm_map move"
+	"[algorithm_map]"
 )
 {
 	int_vector const ints{
@@ -127,44 +115,44 @@ BOOST_AUTO_TEST_CASE(
 		)
 	);
 
-	BOOST_REQUIRE_EQUAL(
-		result.size(),
+	REQUIRE(
+		result.size()
+		==
 		ints.size()
 	);
 
-	BOOST_CHECK_EQUAL(
-		*result[0],
+	CHECK(
+		*result[0]
+		==
 		1
 	);
 
-	BOOST_CHECK_EQUAL(
-		*result[1],
+	CHECK(
+		*result[1]
+		==
 		2
 	);
 }
 
-BOOST_AUTO_TEST_CASE(
-	algorithm_map_mpl
+TEST_CASE(
+	"algorithm_map brigand",
+	"[algorithm_map]"
 )
 {
-	typedef
-	brigand::list<
-		std::integral_constant<
-			int,
-			1
-		>,
-		std::integral_constant<
-			int,
-			2
-		>
-	>
-	types;
-
-	int_vector const ints(
+	CHECK(
 		fcppt::algorithm::map<
 			int_vector
 		>(
-			types{},
+			brigand::list<
+				std::integral_constant<
+					int,
+					1
+				>,
+				std::integral_constant<
+					int,
+					2
+				>
+			>{},
 			[](
 				auto const _value
 			)
@@ -185,47 +173,34 @@ BOOST_AUTO_TEST_CASE(
 					type::value;
 			}
 		)
-	);
-
-	BOOST_REQUIRE_EQUAL(
-		ints.size(),
-		2u
-	);
-
-	BOOST_CHECK_EQUAL(
-		ints[0],
-		1
-	);
-
-	BOOST_CHECK_EQUAL(
-		ints[1],
-		2
+		==
+		int_vector{
+			1,
+			2
+		}
 	);
 }
 
-BOOST_AUTO_TEST_CASE(
-	algorithm_map_array
+TEST_CASE(
+	"algorithm_map array",
+	"[algorithm_map]"
 )
 {
-	typedef
-	std::array<
-		int,
-		2
-	>
-	source_array;
-
 	typedef
 	std::array<
 		std::string,
 		2
 	>
-	dest_array;
+	string_2_array;
 
-	dest_array const result(
+	CHECK(
 		fcppt::algorithm::map<
-			dest_array
+			string_2_array
 		>(
-			source_array{{
+			std::array<
+				int,
+				2
+			>{{
 				1,
 				2
 			}},
@@ -240,29 +215,17 @@ BOOST_AUTO_TEST_CASE(
 					);
 			}
 		)
-	);
-
-	BOOST_CHECK_EQUAL(
-		std::get<
-			0
-		>(
-			result
-		),
-		"1"
-	);
-
-	BOOST_CHECK_EQUAL(
-		std::get<
-			1
-		>(
-			result
-		),
-		"2"
+		==
+		string_2_array{
+			"1",
+			"2"
+		}
 	);
 }
 
-BOOST_AUTO_TEST_CASE(
-	algorithm_map_array_move
+TEST_CASE(
+	"algorithm_map array move",
+	"[algorithm_map]"
 )
 {
 	FCPPT_MAKE_STRONG_TYPEDEF(
@@ -315,21 +278,23 @@ BOOST_AUTO_TEST_CASE(
 		)
 	);
 
-	BOOST_CHECK_EQUAL(
+	CHECK(
 		*std::get<
 			0
 		>(
 			result
-		).get(),
+		).get()
+		==
 		1
 	);
 
-	BOOST_CHECK_EQUAL(
+	CHECK(
 		*std::get<
 			1
 		>(
 			result
-		).get(),
+		).get()
+		==
 		2
 	);
 }

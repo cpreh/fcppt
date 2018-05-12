@@ -9,15 +9,16 @@
 #include <fcppt/unique_ptr_impl.hpp>
 #include <fcppt/algorithm/fold_break.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/test/unit_test.hpp>
+#include <catch.hpp>
 #include <functional>
 #include <utility>
 #include <vector>
 #include <fcppt/config/external_end.hpp>
 
 
-BOOST_AUTO_TEST_CASE(
-	algorithm_fold_break
+TEST_CASE(
+	"algorithm fold_break"
+	"[algorithm_fold_break]"
 )
 {
 	typedef
@@ -26,16 +27,14 @@ BOOST_AUTO_TEST_CASE(
 	>
 	int_vector;
 
-	int_vector const vector{
-		1,
-		2,
-		3,
-		4
-	};
-
-	int const sum(
+	CHECK(
 		fcppt::algorithm::fold_break(
-			vector,
+			int_vector{
+				1,
+				2,
+				3,
+				4
+			},
 			0,
 			[](
 				int const _element,
@@ -62,16 +61,14 @@ BOOST_AUTO_TEST_CASE(
 					);
 			}
 		)
-	);
-
-	BOOST_CHECK_EQUAL(
-		sum,
+		==
 		6
 	);
 }
 
-BOOST_AUTO_TEST_CASE(
-	algorithm_fold_break_move
+TEST_CASE(
+	"algorithm fold_break move"
+	"[algorithm_fold_break]"
 )
 {
 	typedef
@@ -80,22 +77,20 @@ BOOST_AUTO_TEST_CASE(
 	>
 	int_vector;
 
-	int_vector const vector{
-		1,
-		2,
-		3,
-		4
-	};
-
 	typedef
 	fcppt::unique_ptr<
 		int
 	>
 	int_unique_ptr;
 
-	int_unique_ptr const sum_ptr(
-		fcppt::algorithm::fold_break(
-			vector,
+	CHECK(
+		*fcppt::algorithm::fold_break(
+			int_vector{
+				1,
+				2,
+				3,
+				4
+			},
 			fcppt::make_unique_ptr<
 				int
 			>(
@@ -129,10 +124,7 @@ BOOST_AUTO_TEST_CASE(
 					);
 			}
 		)
-	);
-
-	BOOST_CHECK_EQUAL(
-		*sum_ptr,
+		==
 		6
 	);
 }

@@ -6,13 +6,14 @@
 
 #include <fcppt/algorithm/generate_n.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/test/unit_test.hpp>
+#include <catch.hpp>
 #include <vector>
 #include <fcppt/config/external_end.hpp>
 
 
-BOOST_AUTO_TEST_CASE(
-	algorithm_generate_n
+TEST_CASE(
+	"algorithm generate_n",
+	"[algorithm_generate_n]"
 )
 {
 	typedef
@@ -21,7 +22,7 @@ BOOST_AUTO_TEST_CASE(
 	>
 	int_vector;
 
-	int_vector const result(
+	CHECK(
 		fcppt::algorithm::generate_n<
 			int_vector
 		>(
@@ -35,25 +36,11 @@ BOOST_AUTO_TEST_CASE(
 					index++;
 			}
 		)
-	);
-
-	BOOST_REQUIRE_EQUAL(
-		result.size(),
-		3u
-	);
-
-	BOOST_CHECK_EQUAL(
-		result[0],
-		0
-	);
-
-	BOOST_CHECK_EQUAL(
-		result[1],
-		1
-	);
-
-	BOOST_CHECK_EQUAL(
-		result[2],
-		2
+		==
+		int_vector{
+			0,
+			1,
+			2
+		}
 	);
 }

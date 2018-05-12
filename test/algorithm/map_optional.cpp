@@ -9,13 +9,14 @@
 #include <fcppt/algorithm/map_optional.hpp>
 #include <fcppt/optional/object_impl.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/test/unit_test.hpp>
+#include <catch.hpp>
 #include <vector>
 #include <fcppt/config/external_end.hpp>
 
 
-BOOST_AUTO_TEST_CASE(
-	algorithm_map_optional
+TEST_CASE(
+	"algorithm map_optional",
+	"[algorithm_map_optional]",
 )
 {
 	typedef
@@ -74,13 +75,15 @@ BOOST_AUTO_TEST_CASE(
 		)
 	);
 
-	BOOST_REQUIRE_EQUAL(
-		result.size(),
+	REQUIRE(
+		result.size()
+		==
 		1u
 	);
 
-	BOOST_CHECK_EQUAL(
-		*result[0],
+	CHECK(
+		*result[0]
+		==
 		1
 	);
 }

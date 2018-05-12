@@ -10,13 +10,14 @@
 #include <fcppt/algorithm/loop.hpp>
 #include <fcppt/algorithm/loop_break_brigand.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/test/unit_test.hpp>
+#include <catch.hpp>
 #include <brigand/sequences/range.hpp>
 #include <fcppt/config/external_end.hpp>
 
 
-BOOST_AUTO_TEST_CASE(
-	algorithm_loop_mpl
+TEST_CASE(
+	"algorithm_loop mpl"
+	"[algorithm_loop]"
 )
 {
 	int value{
@@ -59,14 +60,16 @@ BOOST_AUTO_TEST_CASE(
 		}
 	);
 
-	BOOST_CHECK_EQUAL(
-		value,
+	CHECK(
+		value
+		==
 		10
 	);
 }
 
-BOOST_AUTO_TEST_CASE(
-	algorithm_loop_range
+TEST_CASE(
+	"algorithm_loop_range",
+	"[algorithm_loop]"
 )
 {
 	int value{
@@ -88,8 +91,9 @@ BOOST_AUTO_TEST_CASE(
 		}
 	);
 
-	BOOST_CHECK_EQUAL(
-		value,
+	CHECK(
+		value
+		==
 		10
 	);
 }

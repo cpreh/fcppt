@@ -6,6 +6,7 @@
 
 #include <fcppt/insert_to_fcppt_string.hpp>
 #include <fcppt/insert_to_std_string.hpp>
+#include <fcppt/insert_to_std_string_convert.hpp>
 #include <fcppt/insert_to_std_wstring.hpp>
 #include <fcppt/text.hpp>
 #include <fcppt/config/external_begin.hpp>
@@ -38,5 +39,13 @@ BOOST_AUTO_TEST_CASE(
 		)
 		==
 		L"42"
+	);
+
+	BOOST_CHECK(
+		fcppt::insert_to_std_string_convert(
+			42
+		)
+		==
+		"42"
 	);
 }

@@ -7,15 +7,16 @@
 #include <fcppt/algorithm/map_iteration_second.hpp>
 #include <fcppt/algorithm/update_action.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/test/unit_test.hpp>
+#include <catch.hpp>
 #include <map>
 #include <string>
 #include <utility>
 #include <fcppt/config/external_end.hpp>
 
 
-BOOST_AUTO_TEST_CASE(
-	algorithm_map_iteration_second
+TEST_CASE(
+	"algorithm map_iteration_second",
+	"[algorithm_map_iteration_second]"
 )
 {
 	typedef
@@ -74,7 +75,7 @@ BOOST_AUTO_TEST_CASE(
 		}
 	);
 
-	BOOST_CHECK((
+	CHECK(
 		seq
 		==
 		sequence{
@@ -87,5 +88,5 @@ BOOST_AUTO_TEST_CASE(
 				"4"
 			)
 		}
-	));
+	);
 }

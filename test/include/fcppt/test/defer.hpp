@@ -4,22 +4,26 @@
 //          http://www.boost.org/LICENSE_1_0.txt)
 
 
-#include <fcppt/const.hpp>
-#include <fcppt/config/external_begin.hpp>
-#include <catch.hpp>
-#include <fcppt/config/external_end.hpp>
+#ifndef FCPPT_TEST_DEFER_HPP_INCLUDED
+#define FCPPT_TEST_DEFER_HPP_INCLUDED
 
 
-TEST_CASE(
-	"const function"
-	"[const_]"
+namespace fcppt
+{
+namespace test
+{
+
+inline
+bool
+defer(
+	bool const _value
 )
 {
-	CHECK(
-		fcppt::const_(
-			5
-		)()
-		==
-		5
-	);
+	return
+		_value;
 }
+
+}
+}
+
+#endif

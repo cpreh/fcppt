@@ -36,7 +36,7 @@ operator<<(
 		Ch,
 		Traits
 	> &_stream,
-	strong_typedef<
+	fcppt::strong_typedef<
 		T,
 		Tag
 	> const &_value

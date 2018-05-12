@@ -6,13 +6,14 @@
 
 #include <fcppt/algorithm/unique.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/test/unit_test.hpp>
+#include <catch.hpp>
 #include <vector>
 #include <fcppt/config/external_end.hpp>
 
 
-BOOST_AUTO_TEST_CASE(
-	algorithm_unique
+TEST_CASE(
+	"algorithm unique",
+	"[algorithm_unique]"
 )
 {
 	typedef
@@ -33,23 +34,13 @@ BOOST_AUTO_TEST_CASE(
 		vec
 	);
 
-	BOOST_REQUIRE_EQUAL(
-		vec.size(),
-		3u
-	);
-
-	BOOST_CHECK_EQUAL(
-		vec[0],
-		1
-	);
-
-	BOOST_CHECK_EQUAL(
-		vec[1],
-		2
-	);
-
-	BOOST_CHECK_EQUAL(
-		vec[2],
-		3
+	CHECK(
+		vec
+		==
+		int_vector{
+			1,
+			2,
+			3
+		}
 	);
 }

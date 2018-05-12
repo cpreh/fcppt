@@ -6,13 +6,14 @@
 
 #include <fcppt/algorithm/remove.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/test/unit_test.hpp>
+#include <catch.hpp>
 #include <vector>
 #include <fcppt/config/external_end.hpp>
 
 
-BOOST_AUTO_TEST_CASE(
-	algorithm_remove
+TEST_CASE(
+	"algorithm remove",
+	"[algorithm_remove]"
 )
 {
 	typedef
@@ -27,25 +28,19 @@ BOOST_AUTO_TEST_CASE(
 		3
 	};
 
-	BOOST_REQUIRE(
+	REQUIRE(
 		fcppt::algorithm::remove(
 			vec,
 			2
 		)
 	);
 
-	BOOST_REQUIRE_EQUAL(
-		vec.size(),
-		2u
-	);
-
-	BOOST_CHECK_EQUAL(
-		vec[0],
-		1
-	);
-
-	BOOST_CHECK_EQUAL(
-		vec[1],
-		3
+	CHECK(
+		vec
+		==
+		int_vector{
+			1,
+			3
+		}
 	);
 }

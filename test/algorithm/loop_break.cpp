@@ -8,14 +8,15 @@
 #include <fcppt/algorithm/loop_break.hpp>
 #include <fcppt/algorithm/loop_break_tuple.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/test/unit_test.hpp>
+#include <catch.hpp>
 #include <string>
 #include <tuple>
 #include <fcppt/config/external_end.hpp>
 
 
-BOOST_AUTO_TEST_CASE(
-	algorithm_loop_break_tuple
+TEST_CASE(
+	"algorithm_loop_break tuple"
+	"[algorithm_loop_break]"
 )
 {
 	auto const tuple(
@@ -25,7 +26,7 @@ BOOST_AUTO_TEST_CASE(
 		)
 	);
 
-	std::string result;
+	std::string result{};
 
 	fcppt::algorithm::loop_break(
 		tuple,
@@ -45,8 +46,9 @@ BOOST_AUTO_TEST_CASE(
 		}
 	);
 
-	BOOST_CHECK_EQUAL(
-		result,
+	CHECK(
+		result
+		==
 		"4210"
 	);
 }

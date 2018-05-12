@@ -5,17 +5,19 @@
 
 
 #include <fcppt/algorithm/equal_range.hpp>
+#include <fcppt/iterator/make_range.hpp>
+#include <fcppt/iterator/range_comparison.hpp>
 #include <fcppt/range/empty.hpp>
-#include <fcppt/range/singular.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/test/unit_test.hpp>
+#include <catch.hpp>
 #include <iterator>
 #include <vector>
 #include <fcppt/config/external_end.hpp>
 
 
-BOOST_AUTO_TEST_CASE(
-	algorithm_equal_range
+TEST_CASE(
+	"algorithm equal_range"
+	"[algorithm_equal_range]"
 )
 {
 	typedef
@@ -30,51 +32,30 @@ BOOST_AUTO_TEST_CASE(
 		7
 	};
 
-	{
-		auto const result(
+	CHECK(
+		fcppt::range::empty(
 			fcppt::algorithm::equal_range(
 				vec,
 				3
 			)
-		);
+		)
+	);
 
-		BOOST_CHECK(
-			fcppt::range::empty(
-				result
-			)
-		);
-	}
-
-	{
-		auto const result(
-			fcppt::algorithm::equal_range(
-				vec,
-				5
-			)
-		);
-
-		BOOST_REQUIRE(
-			fcppt::range::singular(
-				result
-			)
-		);
-
-		BOOST_CHECK(
-			result.begin()
-			==
+	CHECK(
+		fcppt::algorithm::equal_range(
+			vec,
+			5
+		)
+		==
+		fcppt::iterator::make_range(
 			std::next(
 				vec.begin(),
 				1
-			)
-		);
-
-		BOOST_CHECK(
-			result.end()
-			==
+			),
 			std::next(
 				vec.begin(),
 				2
 			)
-		);
-	}
+		)
+	);
 }
