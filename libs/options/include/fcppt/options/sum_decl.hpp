@@ -28,7 +28,7 @@ namespace options
 \ingroup fcpptoptions
 
 This parser first tries its left parser and if that succeeds returns its result.
-Otherwise, it tries the second parser and returns its result.
+Otherwise, it tries the right parser and returns its result.
 */
 template<
 	typename Left,

@@ -24,7 +24,7 @@ namespace options
 {
 
 /**
-\brief A parser that always succeeds.
+\brief A parser that succeeds when provided with no arguments.
 
 \ingroup fcpptoptions
 
