@@ -6,28 +6,29 @@
 
 #include <fcppt/math/is_zero.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/test/unit_test.hpp>
+#include <catch.hpp>
 #include <fcppt/config/external_end.hpp>
 
 
-BOOST_AUTO_TEST_CASE(
-	is_zero
+TEST_CASE(
+	"math::is_zero",
+	"[math]"
 )
 {
-	BOOST_CHECK(
+	CHECK(
 		fcppt::math::is_zero(
 			0
 		)
 	);
 
-	BOOST_CHECK(
+	CHECK(
 		fcppt::math::is_zero(
 			0.f
 		)
 	);
 
-	BOOST_CHECK(
-		!fcppt::math::is_zero(
+	CHECK_FALSE(
+		fcppt::math::is_zero(
 			1
 		)
 	);

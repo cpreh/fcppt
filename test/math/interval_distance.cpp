@@ -7,15 +7,16 @@
 #include <fcppt/make_homogenous_pair.hpp>
 #include <fcppt/math/interval_distance.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/test/unit_test.hpp>
+#include <catch.hpp>
 #include <fcppt/config/external_end.hpp>
 
 
-BOOST_AUTO_TEST_CASE(
-	interval_distance
+TEST_CASE(
+	"math::interval_distance",
+	"[math]"
 )
 {
-	BOOST_CHECK_EQUAL(
+	CHECK(
 		fcppt::math::interval_distance(
 			fcppt::make_homogenous_pair(
 				0,
@@ -25,11 +26,12 @@ BOOST_AUTO_TEST_CASE(
 				3,
 				10
 			)
-		),
+		)
+		==
 		1
 	);
 
-	BOOST_CHECK_EQUAL(
+	CHECK(
 		fcppt::math::interval_distance(
 			fcppt::make_homogenous_pair(
 				3,
@@ -39,11 +41,12 @@ BOOST_AUTO_TEST_CASE(
 				0,
 				2
 			)
-		),
+		)
+		==
 		1
 	);
 
-	BOOST_CHECK_EQUAL(
+	CHECK(
 		fcppt::math::interval_distance(
 			fcppt::make_homogenous_pair(
 				2,
@@ -53,11 +56,12 @@ BOOST_AUTO_TEST_CASE(
 				4,
 				7
 			)
-		),
+		)
+		==
 		-1
 	);
 
-	BOOST_CHECK_EQUAL(
+	CHECK(
 		fcppt::math::interval_distance(
 			fcppt::make_homogenous_pair(
 				4,
@@ -67,11 +71,12 @@ BOOST_AUTO_TEST_CASE(
 				2,
 				5
 			)
-		),
+		)
+		==
 		-1
 	);
 
-	BOOST_CHECK_EQUAL(
+	CHECK(
 		fcppt::math::interval_distance(
 			fcppt::make_homogenous_pair(
 				4,
@@ -81,11 +86,12 @@ BOOST_AUTO_TEST_CASE(
 				6,
 				7
 			)
-		),
+		)
+		==
 		0
 	);
 
-	BOOST_CHECK_EQUAL(
+	CHECK(
 		fcppt::math::interval_distance(
 			fcppt::make_homogenous_pair(
 				6,
@@ -95,11 +101,12 @@ BOOST_AUTO_TEST_CASE(
 				4,
 				6
 			)
-		),
+		)
+		==
 		0
 	);
 
-	BOOST_CHECK_EQUAL(
+	CHECK(
 		fcppt::math::interval_distance(
 			fcppt::make_homogenous_pair(
 				3,
@@ -109,7 +116,8 @@ BOOST_AUTO_TEST_CASE(
 				0,
 				10
 			)
-		),
+		)
+		==
 		-3
 	);
 }

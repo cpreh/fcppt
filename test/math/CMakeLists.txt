@@ -16,10 +16,6 @@ add_fcppt_math_test(
 	ceil_div
 )
 
-add_fcppt_math_test(
-	circle
-)
-
 add_subdirectory(
 	dim
 )
@@ -46,6 +42,10 @@ add_fcppt_math_test(
 
 add_subdirectory(
 	matrix
+)
+
+add_fcppt_math_test(
+	sphere
 )
 
 add_subdirectory(

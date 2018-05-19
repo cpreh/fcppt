@@ -6,46 +6,47 @@
 
 #include <fcppt/math/is_power_of_2.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/test/unit_test.hpp>
+#include <catch.hpp>
 #include <fcppt/config/external_end.hpp>
 
 
-BOOST_AUTO_TEST_CASE(
-	is_power_of_2
+TEST_CASE(
+	"math::is_power_of_2",
+	"[math]"
 )
 {
-	BOOST_CHECK(
-		!fcppt::math::is_power_of_2(
+	CHECK_FALSE(
+		fcppt::math::is_power_of_2(
 			0u
 		)
 	);
 
-	BOOST_CHECK(
+	CHECK(
 		fcppt::math::is_power_of_2(
 			1u
 		)
 	);
 
-	BOOST_CHECK(
+	CHECK(
 		fcppt::math::is_power_of_2(
 			2u
 		)
 	);
 
-	BOOST_CHECK(
+	CHECK(
 		fcppt::math::is_power_of_2(
 			4u
 		)
 	);
 
-	BOOST_CHECK(
-		!fcppt::math::is_power_of_2(
+	CHECK_FALSE(
+		fcppt::math::is_power_of_2(
 			3u
 		)
 	);
 
-	BOOST_CHECK(
-		!fcppt::math::is_power_of_2(
+	CHECK_FALSE(
+		fcppt::math::is_power_of_2(
 			5u
 		)
 	);

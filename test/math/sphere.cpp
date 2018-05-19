@@ -10,12 +10,13 @@
 #include <fcppt/math/sphere/object_impl.hpp>
 #include <fcppt/math/sphere/output.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/test/unit_test.hpp>
+#include <catch.hpp>
 #include <fcppt/config/external_end.hpp>
 
 
-BOOST_AUTO_TEST_CASE(
-	circle_intersects
+TEST_CASE(
+	"math::sphere::intersects",
+	"[math],[sphere]"
 )
 {
 	typedef
@@ -24,7 +25,7 @@ BOOST_AUTO_TEST_CASE(
 	>
 	circle_type;
 
-	BOOST_CHECK(
+	CHECK(
 		fcppt::math::sphere::intersects(
 			circle_type(
 				circle_type::point_type(
@@ -44,8 +45,9 @@ BOOST_AUTO_TEST_CASE(
 	);
 }
 
-BOOST_AUTO_TEST_CASE(
-	circle_comparison
+TEST_CASE(
+	"math::sphere comparison",
+	"[math],[sphere]"
 )
 {
 	typedef
@@ -54,14 +56,15 @@ BOOST_AUTO_TEST_CASE(
 	>
 	circle_type;
 
-	BOOST_CHECK_EQUAL(
+	CHECK(
 		circle_type(
 			circle_type::point_type(
 				1,
 				3
 			),
 			2
-		),
+		)
+		==
 		circle_type(
 			circle_type::point_type(
 				1,

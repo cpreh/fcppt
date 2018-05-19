@@ -11,12 +11,13 @@
 #include <fcppt/math/matrix/row.hpp>
 #include <fcppt/math/matrix/static.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/test/unit_test.hpp>
+#include <catch.hpp>
 #include <fcppt/config/external_end.hpp>
 
 
-BOOST_AUTO_TEST_CASE(
-	math_matrix_access
+TEST_CASE(
+	"math::matrix access",
+	"[math],[matrix]"
 )
 {
 	typedef
@@ -51,32 +52,36 @@ BOOST_AUTO_TEST_CASE(
 	};
 
 	// Row 0
-	BOOST_CHECK_EQUAL(
-		mat.m00(),
+	CHECK(
+		mat.m00()
+		==
 		fcppt::make_homogenous_pair(
 			0u,
 			0u
 		)
 	);
 
-	BOOST_CHECK_EQUAL(
-		mat.m01(),
+	CHECK(
+		mat.m01()
+		==
 		fcppt::make_homogenous_pair(
 			0u,
 			1u
 		)
 	);
 
-	BOOST_CHECK_EQUAL(
-		mat.m02(),
+	CHECK(
+		mat.m02()
+		==
 		fcppt::make_homogenous_pair(
 			0u,
 			2u
 		)
 	);
 
-	BOOST_CHECK_EQUAL(
-		mat.m03(),
+	CHECK(
+		mat.m03()
+		==
 		fcppt::make_homogenous_pair(
 			0u,
 			3u
@@ -84,32 +89,36 @@ BOOST_AUTO_TEST_CASE(
 	);
 
 
-	BOOST_CHECK_EQUAL(
-		mat_nc.m00(),
+	CHECK(
+		mat_nc.m00()
+		==
 		fcppt::make_homogenous_pair(
 			0u,
 			0u
 		)
 	);
 
-	BOOST_CHECK_EQUAL(
-		mat_nc.m01(),
+	CHECK(
+		mat_nc.m01()
+		==
 		fcppt::make_homogenous_pair(
 			0u,
 			1u
 		)
 	);
 
-	BOOST_CHECK_EQUAL(
-		mat_nc.m02(),
+	CHECK(
+		mat_nc.m02()
+		==
 		fcppt::make_homogenous_pair(
 			0u,
 			2u
 		)
 	);
 
-	BOOST_CHECK_EQUAL(
-		mat_nc.m03(),
+	CHECK(
+		mat_nc.m03()
+		==
 		fcppt::make_homogenous_pair(
 			0u,
 			3u
@@ -117,32 +126,36 @@ BOOST_AUTO_TEST_CASE(
 	);
 
 	// Row 1
-	BOOST_CHECK_EQUAL(
-		mat.m10(),
+	CHECK(
+		mat.m10()
+		==
 		fcppt::make_homogenous_pair(
 			1u,
 			0u
 		)
 	);
 
-	BOOST_CHECK_EQUAL(
-		mat.m11(),
+	CHECK(
+		mat.m11()
+		==
 		fcppt::make_homogenous_pair(
 			1u,
 			1u
 		)
 	);
 
-	BOOST_CHECK_EQUAL(
-		mat.m12(),
+	CHECK(
+		mat.m12()
+		==
 		fcppt::make_homogenous_pair(
 			1u,
 			2u
 		)
 	);
 
-	BOOST_CHECK_EQUAL(
-		mat.m13(),
+	CHECK(
+		mat.m13()
+		==
 		fcppt::make_homogenous_pair(
 			1u,
 			3u
@@ -150,32 +163,36 @@ BOOST_AUTO_TEST_CASE(
 	);
 
 
-	BOOST_CHECK_EQUAL(
-		mat_nc.m10(),
+	CHECK(
+		mat_nc.m10()
+		==
 		fcppt::make_homogenous_pair(
 			1u,
 			0u
 		)
 	);
 
-	BOOST_CHECK_EQUAL(
-		mat_nc.m11(),
+	CHECK(
+		mat_nc.m11()
+		==
 		fcppt::make_homogenous_pair(
 			1u,
 			1u
 		)
 	);
 
-	BOOST_CHECK_EQUAL(
-		mat_nc.m12(),
+	CHECK(
+		mat_nc.m12()
+		==
 		fcppt::make_homogenous_pair(
 			1u,
 			2u
 		)
 	);
 
-	BOOST_CHECK_EQUAL(
-		mat_nc.m13(),
+	CHECK(
+		mat_nc.m13()
+		==
 		fcppt::make_homogenous_pair(
 			1u,
 			3u
@@ -183,32 +200,36 @@ BOOST_AUTO_TEST_CASE(
 	);
 
 	// Row 2
-	BOOST_CHECK_EQUAL(
-		mat.m20(),
+	CHECK(
+		mat.m20()
+		==
 		fcppt::make_homogenous_pair(
 			2u,
 			0u
 		)
 	);
 
-	BOOST_CHECK_EQUAL(
-		mat.m21(),
+	CHECK(
+		mat.m21()
+		==
 		fcppt::make_homogenous_pair(
 			2u,
 			1u
 		)
 	);
 
-	BOOST_CHECK_EQUAL(
-		mat.m22(),
+	CHECK(
+		mat.m22()
+		==
 		fcppt::make_homogenous_pair(
 			2u,
 			2u
 		)
 	);
 
-	BOOST_CHECK_EQUAL(
-		mat.m23(),
+	CHECK(
+		mat.m23()
+		==
 		fcppt::make_homogenous_pair(
 			2u,
 			3u
@@ -216,32 +237,36 @@ BOOST_AUTO_TEST_CASE(
 	);
 
 
-	BOOST_CHECK_EQUAL(
-		mat_nc.m20(),
+	CHECK(
+		mat_nc.m20()
+		==
 		fcppt::make_homogenous_pair(
 			2u,
 			0u
 		)
 	);
 
-	BOOST_CHECK_EQUAL(
-		mat_nc.m21(),
+	CHECK(
+		mat_nc.m21()
+		==
 		fcppt::make_homogenous_pair(
 			2u,
 			1u
 		)
 	);
 
-	BOOST_CHECK_EQUAL(
-		mat_nc.m22(),
+	CHECK(
+		mat_nc.m22()
+		==
 		fcppt::make_homogenous_pair(
 			2u,
 			2u
 		)
 	);
 
-	BOOST_CHECK_EQUAL(
-		mat_nc.m23(),
+	CHECK(
+		mat_nc.m23()
+		==
 		fcppt::make_homogenous_pair(
 			2u,
 			3u
@@ -249,32 +274,36 @@ BOOST_AUTO_TEST_CASE(
 	);
 
 	// Row 3
-	BOOST_CHECK_EQUAL(
-		mat.m30(),
+	CHECK(
+		mat.m30()
+		==
 		fcppt::make_homogenous_pair(
 			3u,
 			0u
 		)
 	);
 
-	BOOST_CHECK_EQUAL(
-		mat.m31(),
+	CHECK(
+		mat.m31()
+		==
 		fcppt::make_homogenous_pair(
 			3u,
 			1u
 		)
 	);
 
-	BOOST_CHECK_EQUAL(
-		mat.m32(),
+	CHECK(
+		mat.m32()
+		==
 		fcppt::make_homogenous_pair(
 			3u,
 			2u
 		)
 	);
 
-	BOOST_CHECK_EQUAL(
-		mat.m33(),
+	CHECK(
+		mat.m33()
+		==
 		fcppt::make_homogenous_pair(
 			3u,
 			3u
@@ -282,32 +311,36 @@ BOOST_AUTO_TEST_CASE(
 	);
 
 
-	BOOST_CHECK_EQUAL(
-		mat_nc.m30(),
+	CHECK(
+		mat_nc.m30()
+		==
 		fcppt::make_homogenous_pair(
 			3u,
 			0u
 		)
 	);
 
-	BOOST_CHECK_EQUAL(
-		mat_nc.m31(),
+	CHECK(
+		mat_nc.m31()
+		==
 		fcppt::make_homogenous_pair(
 			3u,
 			1u
 		)
 	);
 
-	BOOST_CHECK_EQUAL(
-		mat_nc.m32(),
+	CHECK(
+		mat_nc.m32()
+		==
 		fcppt::make_homogenous_pair(
 			3u,
 			2u
 		)
 	);
 
-	BOOST_CHECK_EQUAL(
-		mat_nc.m33(),
+	CHECK(
+		mat_nc.m33()
+		==
 		fcppt::make_homogenous_pair(
 			3u,
 			3u

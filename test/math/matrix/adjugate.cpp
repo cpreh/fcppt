@@ -11,14 +11,13 @@
 #include <fcppt/math/matrix/row.hpp>
 #include <fcppt/math/matrix/static.hpp>
 #include <fcppt/config/external_begin.hpp>
-#include <boost/test/unit_test.hpp>
-#include <iostream>
-#include <ostream>
+#include <catch.hpp>
 #include <fcppt/config/external_end.hpp>
 
 
-BOOST_AUTO_TEST_CASE(
-	math_matrix_adjugate
+TEST_CASE(
+	"math::matrix::adjugate",
+	"[math],[matrix]"
 )
 {
 	typedef
@@ -29,31 +28,22 @@ BOOST_AUTO_TEST_CASE(
 	>
 	matrix_type;
 
-	matrix_type const t(
-		fcppt::math::matrix::row(
-			-3, 2, -5
-		),
-		fcppt::math::matrix::row(
-			-1, 0, -2
-		),
-		fcppt::math::matrix::row(
-			3, -4, 1
-		)
-	);
-
-	matrix_type const result(
+	CHECK(
 		fcppt::math::matrix::adjugate(
-			t
+			matrix_type{
+				fcppt::math::matrix::row(
+					-3, 2, -5
+				),
+				fcppt::math::matrix::row(
+					-1, 0, -2
+				),
+				fcppt::math::matrix::row(
+					3, -4, 1
+				)
+			}
 		)
-	);
-
-	std::cout
-		<< result
-		<< '\n';
-
-	BOOST_CHECK_EQUAL(
-		result,
-		matrix_type(
+		==
+		matrix_type{
 			fcppt::math::matrix::row(
 				-8,18,-4
 			),
@@ -63,6 +53,6 @@ BOOST_AUTO_TEST_CASE(
 			fcppt::math::matrix::row(
 				4,-6,2
 			)
-		)
+		}
 	);
 }
